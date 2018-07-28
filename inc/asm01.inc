@@ -30,22 +30,27 @@
 
 /* External Symbols */
 .include "asm03.inc"
-// .extern sub_802D246
-// .extern sub_802F164
-// .extern sub_803C620
-// .extern sub_803DCE8
-// .extern sub_803DE88
-// .extern sub_803DEB4
-// .extern sub_803EA2C
-// .extern sub_803EA60
-// .extern sub_803F524
-// .extern sub_803F740
+.equ sub_802D246, 0x802D246
+.equ sub_802F164, 0x802F164
+.equ sub_803C620, 0x803C620
+.equ sub_803DCE8, 0x803DCE8
+.equ sub_803DE88, 0x803DE88
+.equ sub_803DEB4, 0x803DEB4
+.equ sub_803EA2C, 0x803EA2C
+.equ sub_803EA60, 0x803EA60
+.equ sub_803F524, 0x803F524
+.equ sub_803F740, 0x803F740
+
+.include "asm37.inc"
+.equ sub_813D60C, 0x813D60C
+.equ sub_813D66C, 0x813D66C
+.equ sub_8144D04, 0x8144D04
 
 .include "asm00.inc"
-// .extern CpuSet_ZeroFillWord
-// .extern sub_8000900
-// .extern sub_800093C
-// .extern sub_800A0D6
+.equ CpuSet_ZeroFillWord, 0x80008E0
+.equ sub_8000900, 0x8000900
+.equ sub_800093C, 0x800093C
+.equ sub_800A0D6, 0x800A0D6
 
 
 /* Undeclared Symbols */
@@ -98,8 +103,5 @@
 .equ off_80B6C20, 0x80B6C20
 .equ off_80B71D4, 0x80B71D4
 .equ off_80B79C0, 0x80B79C0
-.equ sub_813D60C, 0x813D60C
-.equ sub_813D66C, 0x813D66C
-.equ sub_8144D04, 0x8144D04
 
 .endif // INC_ASM01

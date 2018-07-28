@@ -21,15 +21,18 @@
 
 /* External Symbols */
 .include "asm03.inc"
-// .extern sub_802F114
+.equ sub_802F114, 0x802F114
+
+.include "asm36.inc"
+.equ sub_81376B8, 0x81376B8
 
 .include "asm00.inc"
-// .extern sub_80008C0
-// .extern CpuSet_ZeroFillWord
-// .extern sub_800093C
-// .extern sub_8006E70
-// .extern sub_8006E84
-// .extern sub_8006EA4
+.equ sub_80008C0, 0x80008C0
+.equ CpuSet_ZeroFillWord, 0x80008E0
+.equ sub_800093C, 0x800093C
+.equ sub_8006E70, 0x8006E70
+.equ sub_8006E84, 0x8006E84
+.equ sub_8006EA4, 0x8006EA4
 
 
 /* Undeclared Symbols */
@@ -39,6 +42,5 @@
 .equ unk_20018EC, 0x20018EC
 .equ unk_203A0A0, 0x203A0A0
 .equ dword_8021DA8, 0x8021DA8
-.equ sub_81376B8, 0x81376B8
 
 .endif // INC_ASM02

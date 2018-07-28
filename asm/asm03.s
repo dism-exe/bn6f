@@ -505,10 +505,10 @@ loc_8026858:
     bl sub_8029EC8
     add r4, r0, #0
 loc_8026898:
-    ldr r0, [pc, #0x80269a0-0x8026898-4] // =loc_86E625C
+    ldr r0, [pc, #0x80269a0-0x8026898-4] // =unk_86E625C
     tst r4, r4
     beq loc_80268A0
-    ldr r0, [pc, #0x80269a4-0x802689e-2] // =loc_86E64B4
+    ldr r0, [pc, #0x80269a4-0x802689e-2] // =unk_86E64B4
 loc_80268A0:
     ldr r1, [pc, #0x80269c8-0x80268a0-4] // =unk_2035000
     ldr r2, [pc, #0x80269a8-0x80268a2-2] // =0x258
@@ -617,8 +617,8 @@ loc_802696E:
 dword_8026994:    .word 0x30172
 off_8026998:    .word 0x400
 dword_802699C:    .word 0x20130
-off_80269A0:    .word loc_86E625C
-off_80269A4:    .word loc_86E64B4
+off_80269A0:    .word unk_86E625C
+off_80269A4:    .word unk_86E64B4
 off_80269A8:    .word 0x258
 off_80269AC:    .word byte_8027B2C
 dword_80269B0:    .word 0xFFF
@@ -1446,7 +1446,7 @@ loc_8027096:
     mul r0, r1
     add r0, #0x18
     str r0, [r5,#0x44]
-    ldr r0, [pc, #0x80270c4-0x80270b0-4] // =loc_872CF94
+    ldr r0, [pc, #0x80270c4-0x80270b0-4] // =unk_872CF94
     ldr r1, [pc, #0x80270c8-0x80270b2-2] // =unk_30016F0
     mov r2, #0x20 
     bl loc_8000AC8
@@ -1454,7 +1454,7 @@ loc_8027096:
     strh r0, [r5,#2]
     pop {r4,pc}
 dword_80270C0:    .word 0x60172C0
-off_80270C4:    .word loc_872CF94
+off_80270C4:    .word unk_872CF94
 off_80270C8:    .word unk_30016F0
 off_80270CC:    .word dword_8725894
 .thumb
@@ -2543,14 +2543,14 @@ loc_80278D6:
 locret_80278DA:
     pop {pc}
 off_80278DC:    .word off_80278E0
-off_80278E0:    .word loc_86E670C
-    .word loc_86E6964
-    .word loc_86E6BBC
-    .word loc_86E6E14
-    .word loc_86E706C
-    .word loc_86E72C4
-    .word loc_86E751C
-    .word loc_86E7774
+off_80278E0:    .word unk_86E670C
+    .word unk_86E6964
+    .word unk_86E6BBC
+    .word unk_86E6E14
+    .word unk_86E706C
+    .word unk_86E72C4
+    .word unk_86E751C
+    .word unk_86E7774
 off_8027900:    .word 0x258
 off_8027904:    .word byte_8027B4A
 dword_8027908:    .word 0xFFF
@@ -2683,7 +2683,7 @@ loc_80279E6:
 .thumb
 sub_80279FC:
     push {lr}
-    ldr r0, [pc, #0x8027a48-0x80279fe-2] // =loc_86E64B4
+    ldr r0, [pc, #0x8027a48-0x80279fe-2] // =unk_86E64B4
     ldr r1, [pc, #0x8027b24-0x8027a00-4] // =unk_2035000
     ldr r2, [pc, #0x8027a4c-0x8027a02-2] // =0x258
     bl sub_8000950
@@ -2720,7 +2720,7 @@ loc_8027A0E:
     pop {r4,r5}
     pop {pc}
     .balign 4, 0x00
-off_8027A48:    .word loc_86E64B4
+off_8027A48:    .word unk_86E64B4
 off_8027A4C:    .word 0x258
 off_8027A50:    .word byte_8027B2C
 dword_8027A54:    .word 0xFFF
@@ -25425,7 +25425,7 @@ off_8034670:    .word off_80665A4
     .word dword_807F1F8
     .word dword_807F204
 off_8034728:    .word off_80665BC
-    .word off_8067DEC
+    .word pt_8067DEC
     .word off_806931C
     .word off_806A284
     .word 0x0
@@ -51688,7 +51688,7 @@ off_8044620:    .word off_8044634
     .word off_8044684
 off_8044634:    .word dword_87643E4
     .word dword_8764FAC
-    .word loc_87658F0
+    .word unk_87658F0
     .word dword_87666B4
     .word dword_8766BFC
 off_8044648:    .word dword_87680AC
@@ -51713,7 +51713,7 @@ off_8044684:    .word off_87694B4
     .word dword_8769DE8
 off_8044698:    .word dword_8755C18
     .word dword_8756124
-    .word loc_87565E8
+    .word unk_87565E8
     .word dword_8756AA4
     .word dword_8756C9C
 off_80446AC:    .word dword_873F908
@@ -51849,7 +51849,7 @@ off_80448C4:    .word dword_877C0FC
 off_80448D8:    .word dword_877CD94
     .word dword_877CD94
     .word dword_877D7D4
-    .word loc_877D8CC
+    .word unk_877D8CC
     .word dword_877DAB4
 off_80448EC:    .word dword_877DF6C
     .word dword_877DF6C
@@ -51895,7 +51895,7 @@ off_8044984:    .word dword_8781784
     .word dword_8781B18
     .word dword_8781CB4
 off_8044998:    .word dword_875BFD8
-    .word locret_875C22C
+    .word unk_875C22C
     .word dword_875C4B8
     .word dword_875C83C
 off_80449A8:    .word dword_8745100
@@ -51963,7 +51963,7 @@ off_8044A8C:    .word dword_87979CC
 off_8044AA0:    .word dword_875D780
     .word dword_875D800
 off_8044AA8:    .word dword_87461A0
-    .word loc_87462D0
+    .word unk_87462D0
     .word dword_87463F4
     .word dword_87464AC
 off_8044AB8:    .word off_8044AC4
@@ -52119,7 +52119,7 @@ off_8044D00:    .word dword_875DF2C
     .word 0x0
     .word dword_875DF50
     .word dword_875DF78
-off_8044D1C:    .word loc_87477F4
+off_8044D1C:    .word unk_87477F4
     .word dword_8747D30
     .word dword_8748650
     .word dword_8748F44
@@ -52489,7 +52489,7 @@ off_8045298:    .word dword_8795A38
     .word dword_8795A38
     .word dword_8795A44
     .word dword_8795D58
-    .word loc_8795E14
+    .word unk_8795E14
 off_80452AC:    .word dword_8796494
     .word dword_8796494
     .word dword_87964A0

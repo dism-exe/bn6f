@@ -1,0 +1,197 @@
+.include "asm20.inc"
+
+.thumb
+sub_807ECD0:
+    push {r4-r7,lr}
+    mov r7, r10
+    ldr r0, [pc, #0x807ed28-0x807ecd4-4] // =off_807EA6C
+    ldr r1, [r7,#0x14]
+    ldrb r2, [r5,#5]
+    lsl r4, r2, #2
+    add r0, r0, r4
+    ldr r0, [r0]
+    str r0, [r1,#0x14]
+    bl sub_807EDD4
+    ldrb r0, [r5,#4]
+    ldrb r1, [r5,#5]
+    bl sub_803037C
+    ldrb r0, [r5,#4]
+    ldrb r1, [r5,#5]
+    bl sub_8030AA4
+    ldr r0, [r5,#0x24]
+    ldr r1, [r5,#0x28]
+    ldr r2, [r5,#0x2c]
+    ldrb r3, [r5,#4]
+    ldrb r4, [r5,#5]
+    bl sub_802FF4C
+    bl loc_8030472
+    ldr r0, [pc, #0x807ed2c-0x807ed08-4] // =unk_2037800
+    bl sub_80028D4
+    ldrb r1, [r5,#5]
+    lsl r1, r1, #2
+    ldr r0, [pc, #0x807ed30-0x807ed12-2] // =off_807ED34
+    ldr r0, [r0,r1]
+    bl sub_8002906
+    bl sub_803FD08
+    bl sub_807EE92
+    bl sub_8034FB8
+    pop {r4-r7,pc}
+off_807ED28:    .word off_807EA6C
+off_807ED2C:    .word unk_2037800
+off_807ED30:    .word off_807ED34
+off_807ED34:    .word loc_807ED40
+    .word 0x807ED4E, 0x807ED60
+// end of function sub_807ECD0
+
+loc_807ED40:
+    lsr r4, r3, #0x18
+    sub r4, r3, #4
+    mov r0, #0x1c
+    ldr r3, [pc, #0x807edb8-0x807ed46-2] // =0xFFFFFFFF
+    strh r4, [r3,#0x30]
+    ldrh r4, [r3,#0x38]
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0x1C
+    .byte 0xE
+    .byte 0x1C
+    .byte 0x1F
+    .byte 0x1C
+    .byte 0x20
+    .byte 0x1C
+    .byte 0x4B 
+    .byte 0x1C
+    .byte 0x8E
+    .byte 0x1C
+    .byte 0x9B
+    .byte 0x1C
+    .byte 0x99
+    .byte 0x18
+    .byte 0x5B 
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0x1C
+    .byte 0x9C
+    .byte 0x1C
+    .byte 0x9A
+    .byte 0x18
+    .byte 0x34 
+    .byte 0x18
+    .byte 0x36 
+    .byte 0x1C
+    .byte 0x99
+    .byte 0xFF
+    .byte 0xFF
+.thumb
+sub_807ED6C:
+    push {lr}
+    lsl r1, r1, #2
+    ldr r0, [pc, #0x807ed7c-0x807ed70-4] // =off_807ED80
+    ldr r0, [r0,r1]
+    bl sub_8002354
+    pop {pc}
+    .balign 4, 0x00
+off_807ED7C:    .word off_807ED80
+off_807ED80:    .word off_807ED8C
+    .word off_807EDA8
+    .word off_807EDBC
+off_807ED8C:    .word off_807EB18
+    .word 0x807EB68
+    .word 0x807EBB8
+// end of function sub_807ED6C
+
+    stc p8, c0, [r8], {7}
+    mrrc p8, 0, r0,r8,c7
+    stc p8, c0, [r8],#0x1c
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+off_807EDA8:    .word off_807EB18
+    .word 0x807EB68
+    .word 0x807EBB8
+    .word 0x807ECA8
+off_807EDB8:    .word 0xFFFFFFFF
+off_807EDBC:    .word off_807EB18
+    .word 0x807EB68
+    .word 0x807EBB8
+    .word 0x807EC58
+    .word 0x807ECA8
+    .word 0xFFFFFFFF
+.thumb
+sub_807EDD4:
+    push {r4-r7,lr}
+    mov r5, r10
+    ldr r5, [r5,#0x3c]
+    ldrb r1, [r5,#5]
+    lsl r1, r1, #4
+    ldr r7, [pc, #0x807ee08-0x807edde-2] // =off_807EE0C
+    add r7, r7, r1
+    ldr r0, [r7]
+    ldr r1, [r7,#4]
+    ldr r2, [r7,#8]
+    bl sub_800195C
+    bl sub_8001780
+    ldr r1, [r7,#0xc]
+    orr r0, r1
+    bl sub_8001778
+    ldr r0, [pc, #0x807ee3c-0x807edf8-4] // =off_807EE40
+    ldrb r1, [r5,#5]
+    lsl r1, r1, #2
+    ldr r0, [r0,r1]
+    bl sub_80304E8
+    pop {r4-r7,pc}
+    .balign 4, 0x00
+off_807EE08:    .word off_807EE0C
+off_807EE0C:    .word locret_8001AB4+1
+    .word loc_8001A46+1
+    .word 0x3005CD9, 0x800, 0x8001AB5, 0x8001A47, 0x3005CD9
+    .word 0x800, 0x8001AB5, 0x8001A47, 0x3005CD9, 0x800
+off_807EE3C:    .word off_807EE40
+off_807EE40:    .word off_807EE4C
+    .word off_807EE4C
+    .word off_807EE4C
+off_807EE4C:    .word off_8619174
+    .word 0x6008020, 0x8619474, 0x1800, 0x0, 0x0, 0x0
+// end of function sub_807EDD4
+
+loc_807EE68:
+    push {r4-r7,lr}
+    mov r5, r10
+    ldr r5, [r5,#0x3c]
+    ldrb r6, [r5,#5]
+    lsl r6, r6, #2
+    ldr r7, [pc, #0x807ee7c-0x807ee72-2] // =off_807EE80
+    ldr r7, [r7,r6]
+    mov lr, pc
+    bx r7
+    pop {r4-r7,pc}
+off_807EE7C:    .word off_807EE80
+off_807EE80:    .word locret_807EE8C+1
+    .word locret_807EE8E+1
+    .word locret_807EE90+1
+locret_807EE8C:
+    mov pc, lr
+locret_807EE8E:
+    mov pc, lr
+locret_807EE90:
+    mov pc, lr
+.thumb
+sub_807EE92:
+    push {lr}
+    mov r0, r10
+    ldr r0, [r0,#0x3c]
+    ldrb r0, [r0,#5]
+    lsl r0, r0, #2
+    ldr r1, [pc, #0x807eea8-0x807ee9c-4] // =pt_807EEAC
+    ldr r0, [r1,r0]
+    bl loc_8003570
+    pop {pc}
+    .balign 4, 0x00
+off_807EEA8:    .word pt_807EEAC
+pt_807EEAC:    .word dword_807EEB8
+    .word dword_807EFD4
+    .word dword_807F1E0  // <endpool> <endfile>
+// end of function sub_807EE92
+
+/*For debugging purposes, connect comment at any range!*/
