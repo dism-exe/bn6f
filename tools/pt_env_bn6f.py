@@ -19,8 +19,8 @@ pt.env(incPath='inc/')
 pt.env(gameFiles={
     'start.s':        (0x8000000, 0x80002BC),
     'main.s':         (0x80002BC, 0x80005AC),
-    # 'asm00.s':        (0x8000550, 0x8017C08),
-    # 'bin00.bin':      (0x8017C08, 0x8019010),
+    'asm00.s':        (0x80005AC, 0x801ECB4),
+    'bin00.bin':      (0x801ECB4, 0x801FE00), # 0x115A
 })
 
 print("Environment set!")

@@ -14,6 +14,10 @@
 .include "main.inc"
 // .extern main_
 
+.include "asm00.inc"
+// .extern CpuSet_toolKit
+// .extern sub_8006C22
+
 
 /* Undeclared Symbols */
 .equ byte_20081B0, 0x20081B0
@@ -31,8 +35,6 @@
 .equ GeneralLCDStatus_STAT_LYC_, 0x4000004
 .equ KeyInterruptControl, 0x4000132
 .equ GamePakWaitstateControl, 0x4000204
-.equ CpuSet_toolKit, 0x8006BC0
-.equ sub_8006C22, 0x8006C22
 .equ loc_81D6000, 0x81D6000
 
 .endif // INC_START
