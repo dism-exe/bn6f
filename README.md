@@ -1,10 +1,10 @@
-# RockMan EXE 4: Tournament Red Sun
+# MegaMan Battle Network 6: Cybeast Falzar
 
-This is a disassembly of RockMan EXE 4: Tournament Red Sun
+This is a disassembly of MegaMan Battle Network 6: Cybeast Falzar
 
 It builds the following rom:
 
-* exe4rs.gba `sha1: 03a22270b7068ee7762726da4519c20f584951b7`
+* bn6f.gba `sha1: 0676ecd4d58a976af3346caebb44b9b6489ad099`
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
 To contribute, see [CONTRIBUTE.md](CONTRIBUTE.md).
