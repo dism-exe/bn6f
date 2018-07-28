@@ -3055,7 +3055,7 @@ loc_8001C6A:
     mov r7, r8
     push {r4,r7}
     ldr r5, [pc, #0x8001c90-0x8001c80-4] // =byte_200BE70
-    bl loc_8030808
+    bl sub_8030808
     pop {r4,r7}
     mov r0, #0
     strb r0, [r7]
@@ -6120,50 +6120,39 @@ unk_8003220:    .byte 0
 off_8003234:    .word dword_200AF70
     .word off_800323C
 off_800323C:    .word unk_8003250
-    .word unk_8003258
-    .word unk_8003260
-    .word unk_8003268
-    .word unk_8003270
+    .word loc_8003258
+    .word loc_8003260
+    .word loc_8003268
+    .word loc_8003270
 unk_8003250:    .byte 0x1B
     .byte 0
-    .byte 0x50 
-    .byte 0x25 
-    .byte 0x30 
-    .byte 0x32 
-    .byte 0x78 
-    .byte 0
-unk_8003258:    .byte 0x1B
-    .byte 0
-    .byte 0x45 
-    .byte 0x25 
-    .byte 0x30 
-    .byte 0x32 
-    .byte 0x78 
-    .byte 0
-unk_8003260:    .byte 0x1B
-    .byte 0
-    .byte 0x4D 
-    .byte 0x25 
-    .byte 0x30 
-    .byte 0x32 
-    .byte 0x78 
-    .byte 0
-unk_8003268:    .byte 0x1B
-    .byte 0
-    .byte 0x53 
-    .byte 0x25 
-    .byte 0x30 
-    .byte 0x32 
-    .byte 0x78 
-    .byte 0
-unk_8003270:    .byte 0x1B
-    .byte 0
-    .byte 0x46 
-    .byte 0x25 
-    .byte 0x30 
-    .byte 0x32 
-    .byte 0x78 
-    .byte 0
+.thumb
+sub_8003252:
+    mov r5, #0x50 
+    add r2, #0x30 
+    lsl r0, r7, #1
+loc_8003258:
+    .hword 0x1b // mov r3, r3  // <mkdata>
+    mov r5, #0x45 
+    add r2, #0x30 
+    lsl r0, r7, #1
+loc_8003260:
+    .hword 0x1b // mov r3, r3  // <mkdata>
+    mov r5, #0x4d 
+    add r2, #0x30 
+    lsl r0, r7, #1
+loc_8003268:
+    .hword 0x1b // mov r3, r3  // <mkdata>
+    mov r5, #0x53 
+    add r2, #0x30 
+    lsl r0, r7, #1
+loc_8003270:
+    .hword 0x1b // mov r3, r3  // <mkdata>
+    mov r5, #0x46 
+    add r2, #0x30 
+    lsl r0, r7, #1
+// end of function sub_8003252
+
 .thumb
 sub_8003278:
     push {r4,r6,r7,lr}
@@ -7451,7 +7440,8 @@ loc_8003C04:
     ldr r2, [pc, #0x8003c6c-0x8003c26-2] // =loc_3006440+1
     mov lr, pc
     bx r2
-    .word 0xE00DBC23
+    pop {r0,r1,r5}
+    b loc_8003C4C
 loc_8003C30:
     add r4, r5, #0
     add r4, #0x90
@@ -7636,8 +7626,8 @@ loc_8003E28:
     ldr r2, [pc, #0x8003e94-0x8003e50-4] // =loc_3006440+1
     mov lr, pc
     bx r2
-    .hword 0xBCD0
-    .byte 0xD, 0xE0
+    pop {r4,r6,r7}
+    b loc_8003E76
 loc_8003E5A:
     add r0, r5, #0
     add r0, #0x90
@@ -7806,7 +7796,7 @@ off_8003EC4:    .word loc_80C4E58+1
     .word loc_80D1B48+1
     .word loc_80D1C20+1
     .word loc_80D2034+1
-    .word loc_80D2290+1
+    .word sub_80D2290+1
     .word loc_80D2460+1
     .word loc_80D25D4+1
     .word loc_80D2A94+1
@@ -7944,8 +7934,8 @@ loc_8004228:
     ldr r2, [pc, #0x8004294-0x8004250-4] // =loc_3006440+1
     mov lr, pc
     bx r2
-    .hword 0xBCD0
-    .byte 0xD, 0xE0
+    pop {r4,r6,r7}
+    b loc_8004276
 loc_800425A:
     add r0, r5, #0
     add r0, #0x90
@@ -8182,8 +8172,8 @@ loc_8004520:
     ldr r2, [pc, #0x800458c-0x8004548-4] // =loc_3006440+1
     mov lr, pc
     bx r2
-    .hword 0xBCD0
-    .byte 0xD, 0xE0
+    pop {r4,r6,r7}
+    b loc_800456E
 loc_8004552:
     add r0, r5, #0
     add r0, #0x80
@@ -8380,7 +8370,8 @@ loc_800468C:
     ldr r2, [pc, #0x80046f4-0x80046ae-2] // =loc_3006440+1
     mov lr, pc
     bx r2
-    .word 0xE00DBC23
+    pop {r0,r1,r5}
+    b loc_80046D4
 loc_80046B8:
     add r4, r5, #0
     add r4, #0xa0
@@ -8710,7 +8701,8 @@ loc_8004944:
     ldr r2, [pc, #0x80049ac-0x8004966-2] // =loc_3006440+1
     mov lr, pc
     bx r2
-    .word 0xE00DBC23
+    pop {r0,r1,r5}
+    b loc_800498C
 loc_8004970:
     add r4, r5, #0
     add r4, #0x40 
@@ -51651,7 +51643,7 @@ dword_80198E8:    .word 0x7F00007F, 0x10000, 0x7F00017F, 0xFF000000, 0x7F0100
 off_8019B78:    .word dword_80198E8
     .word dword_80198E8+1
     .word dword_80198E8+4
-    .word 0x80198F1, 0x80198F4, 0x80198FB, 0x8019900, 0x8019907
+dword_8019B84:    .word 0x80198F1, 0x80198F4, 0x80198FB, 0x8019900, 0x8019907
     .word 0x8019910, 0x801991D, 0x8019928, 0x8019931, 0x801993C
     .word 0x8019945, 0x801994C, 0x8019951, 0x8019964, 0x8019975
     .word 0x8019982, 0x8019989, 0x8019990, 0x8019999, 0x80199A2

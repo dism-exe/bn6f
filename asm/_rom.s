@@ -10,6 +10,9 @@ to make the ROM. This file is compiled to define the whole ROM region.
 .include "start.inc"
 .include "main.inc"
 .include "asm00.inc"
+.include "asm01.inc"
+.include "asm02.inc"
+.include "asm03.inc"
 
 
 start:
@@ -19,6 +22,17 @@ main:
 asm00:
 .include "asm/asm00.s"
 .incbin "bin/bin00.bin"
+asm01:
+.include "asm/asm01.s"
+.incbin "bin/bin01.bin"
+asm02:
+.include "asm/asm02.s"
+.incbin "bin/bin02.bin"
+asm03:
+.include "asm/asm03.s"
+.incbin "bin/bin03.bin"
+
+
 /**/
 // include parts of the ROM not disassembled yet
 // run 'make tail' if this label's location changes to re-compute bin/tail.bin

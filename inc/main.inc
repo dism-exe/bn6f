@@ -6,6 +6,34 @@
 
 
 /* External Symbols */
+.include "asm03.inc"
+// .extern Load_cb_802F544
+// .extern sub_802FDB0
+// .extern objRender_802FE0C
+// .extern sub_802FF2C
+// .extern cb_jack_80341B6
+// .extern sub_8036ED4
+// .extern sub_8036F24
+// .extern cb_8038AD0
+// .extern cb_80395A4
+// .extern cb_803CBA6
+// .extern cb_803CCD6
+// .extern sub_803D1A8
+// .extern cb_803D1CA
+// .extern sub_803DE5C
+// .extern sub_803E900
+// .extern sub_803EBC8
+// .extern sub_803F4C8
+// .extern cb_803FB3C
+// .extern sub_803FCF0
+// .extern chatbox_onUpdate_803FEB4
+// .extern sub_804657C
+// .extern sub_80467D8
+// .extern cb_8046CF8
+// .extern cb_8048FD4
+// .extern cb_8049E04
+// .extern cb_804A304
+
 .include "start.inc"
 // .extern start_800023C
 // .extern start_800024C
@@ -63,32 +91,6 @@
 .equ loc_3006814, 0x3006814
 .equ GeneralLCDStatus_STAT_LYC_, 0x4000004
 .equ KeyStatus, 0x4000130
-.equ Load_cb_802F544, 0x802F544
-.equ sub_802FDB0, 0x802FDB0
-.equ objRender_802FE0C, 0x802FE0C
-.equ sub_802FF2C, 0x802FF2C
-.equ cb_jack_80341B6, 0x80341B6
-.equ sub_8036ED4, 0x8036ED4
-.equ sub_8036F24, 0x8036F24
-.equ cb_8038AD0, 0x8038AD0
-.equ cb_80395A4, 0x80395A4
-.equ cb_803CBA6, 0x803CBA6
-.equ cb_803CCD6, 0x803CCD6
-.equ sub_803D1A8, 0x803D1A8
-.equ cb_803D1CA, 0x803D1CA
-.equ sub_803DE5C, 0x803DE5C
-.equ sub_803E900, 0x803E900
-.equ sub_803EBC8, 0x803EBC8
-.equ sub_803F4C8, 0x803F4C8
-.equ cb_803FB3C, 0x803FB3C
-.equ sub_803FCF0, 0x803FCF0
-.equ chatbox_onUpdate_803FEB4, 0x803FEB4
-.equ sub_804657C, 0x804657C
-.equ sub_80467D8, 0x80467D8
-.equ cb_8046CF8, 0x8046CF8
-.equ cb_8048FD4, 0x8048FD4
-.equ cb_8049E04, 0x8049E04
-.equ cb_804A304, 0x804A304
 .equ menuControl_cb_openSubmenu, 0x811F774
 .equ menuControl_cb_email, 0x81279F8
 .equ cb_81382AC, 0x81382AC
