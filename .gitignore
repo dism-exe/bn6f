@@ -1,0 +1,12 @@
+# build output
+*.o
+*.map
+*.elf
+
+# ROMS and ROM files
+*.gba
+*.sav
+*.ss1
+*.ss2
+*.sa1
+*.sg1
