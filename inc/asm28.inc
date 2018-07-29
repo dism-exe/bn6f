@@ -2,7 +2,7 @@
 .equ INC_ASM28, 0
 
 /* Public Symbols */
-.extern loc_80991F4
+.extern unk_80991F4
 .extern dword_8099DC0
 .extern dword_8099E04
 .extern dword_8099EA0
@@ -12,7 +12,7 @@
 .extern sub_809C968
 .extern sub_809CA40
 .extern sub_809CA84
-.extern loc_809CAD8
+.extern unk_809CAD8
 .extern sub_809CF2C
 .extern sub_809E04C
 .extern sub_809E064
@@ -57,117 +57,117 @@
 
 /* External Symbols */
 .include "asm03.inc"
-.equ sub_802D15E, 0x802D15E
-.equ sub_802F110, 0x802F110
-.equ sub_802F114, 0x802F114
-.equ sub_802F12C, 0x802F12C
-.equ sub_802F130, 0x802F130
-.equ sub_802F148, 0x802F148
-.equ sub_802F164, 0x802F164
-.equ sub_802F168, 0x802F168
-.equ sub_802F238, 0x802F238
-.equ sub_80301B2, 0x80301B2
-.equ sub_80301DC, 0x80301DC
-.equ sub_80302A8, 0x80302A8
-.equ sub_8030B6A, 0x8030B6A
-.equ sub_8031612, 0x8031612
-.equ sub_8031A7A, 0x8031A7A
-.equ sub_8033978, 0x8033978
-.equ sub_8033FC0, 0x8033FC0
-.equ sub_8034C36, 0x8034C36
-.equ sub_8035694, 0x8035694
-.equ sub_8036E90, 0x8036E90
-.equ sub_8036F36, 0x8036F36
-.equ sub_803CD98, 0x803CD98
-.equ sub_803CE28, 0x803CE28
-.equ sub_803D080, 0x803D080
-.equ sub_803D108, 0x803D108
-.equ sub_803F798, 0x803F798
-.equ sub_803F9E4, 0x803F9E4
-.equ chatbox_runScript_202da04, 0x803FD68
-.equ chatbox_runScript, 0x8040384
-.equ sub_8040818, 0x8040818
-.equ off_8044470, 0x8044470
-.equ off_80444C4, 0x80444C4
-.equ sub_8045EFC, 0x8045EFC
-.equ sub_8045F3C, 0x8045F3C
-.equ sub_8045F4C, 0x8045F4C
-.equ render_graphicalText_8045F8C, 0x8045F8C
-.equ sub_80465A0, 0x80465A0
-.equ sub_80465BC, 0x80465BC
-.equ sub_80465F8, 0x80465F8
-.equ sub_8046664, 0x8046664
+// .extern sub_802D15E
+// .extern sub_802F110
+// .extern sub_802F114
+// .extern sub_802F12C
+// .extern sub_802F130
+// .extern sub_802F148
+// .extern sub_802F164
+// .extern sub_802F168
+// .extern sub_802F238
+// .extern sub_80301B2
+// .extern sub_80301DC
+// .extern sub_80302A8
+// .extern sub_8030B6A
+// .extern sub_8031612
+// .extern sub_8031A7A
+// .extern sub_8033978
+// .extern sub_8033FC0
+// .extern sub_8034C36
+// .extern sub_8035694
+// .extern sub_8036E90
+// .extern sub_8036F36
+// .extern sub_803CD98
+// .extern sub_803CE28
+// .extern sub_803D080
+// .extern sub_803D108
+// .extern sub_803F798
+// .extern sub_803F9E4
+// .extern chatbox_runScript_202da04
+// .extern chatbox_runScript
+// .extern sub_8040818
+// .extern off_8044470
+// .extern off_80444C4
+// .extern sub_8045EFC
+// .extern sub_8045F3C
+// .extern sub_8045F4C
+// .extern render_graphicalText_8045F8C
+// .extern sub_80465A0
+// .extern sub_80465BC
+// .extern sub_80465F8
+// .extern sub_8046664
 
 .include "asm32.inc"
-.equ sub_811980C, 0x811980C
-.equ sub_8119854, 0x8119854
-.equ sub_811EBE0, 0x811EBE0
+// .extern sub_811980C
+// .extern sub_8119854
+// .extern sub_811EBE0
 
 .include "asm02.inc"
-.equ dword_8021AEC, 0x8021AEC
+// .extern dword_8021AEC
 
 .include "asm37.inc"
-.equ sub_813D41C, 0x813D41C
-.equ loc_813D48C, 0x813D48C
-.equ sub_81407D8, 0x81407D8
-.equ sub_8140974, 0x8140974
-.equ sub_8143B88, 0x8143B88
-.equ sub_8143DBC, 0x8143DBC
-.equ SWI_Div, 0x814D8BC
+// .extern sub_813D41C
+// .extern loc_813D48C
+// .extern sub_81407D8
+// .extern sub_8140974
+// .extern sub_8143B88
+// .extern sub_8143DBC
+// .extern SWI_Div
 
 .include "asm00.inc"
-.equ sound_play, 0x80005CC
-.equ sub_80005D4, 0x80005D4
-.equ CpuSet_ZeroFillWord, 0x80008E0
-.equ sub_8000900, 0x8000900
-.equ sub_800093C, 0x800093C
-.equ initMemblockToByte, 0x8000964
-.equ sub_8000B30, 0x8000B30
-.equ sub_8000E3A, 0x8000E3A
-.equ getPETNaviSelect, 0x80010B6
-.equ sub_8001172, 0x8001172
-.equ calcAngle_800117C, 0x800117C
-.equ sub_8001850, 0x8001850
-.equ sub_80018C2, 0x80018C2
-.equ sprite_loadAnimationData_80026A4, 0x80026A4
-.equ anim_80026C4, 0x80026C4
-.equ sub_80026E4, 0x80026E4
-.equ sub_8002C24, 0x8002C24
-.equ sub_8002C52, 0x8002C52
-.equ sub_8002C68, 0x8002C68
-.equ sub_8002C7A, 0x8002C7A
-.equ sub_8002CCE, 0x8002CCE
-.equ sub_8002D14, 0x8002D14
-.equ sprite_makeUnscalable, 0x8002D52
-.equ sprite_setPallete, 0x8002D80
-.equ sprite_setAnimation, 0x8002DA4
-.equ sub_8002DEA, 0x8002DEA
-.equ sub_8002E14, 0x8002E14
-.equ sub_8002E3C, 0x8002E3C
-.equ sub_8002E52, 0x8002E52
-.equ sub_8002ED0, 0x8002ED0
-.equ sub_8002EE8, 0x8002EE8
-.equ sub_8002EF6, 0x8002EF6
-.equ sub_8002F2C, 0x8002F2C
-.equ sub_8002F5C, 0x8002F5C
-.equ sub_8002F90, 0x8002F90
-.equ sub_8002FA6, 0x8002FA6
-.equ sub_8003006, 0x8003006
-.equ sub_80037AC, 0x80037AC
-.equ sub_8003962, 0x8003962
-.equ sub_8003984, 0x8003984
-.equ sub_800399A, 0x800399A
-.equ sub_8003AB2, 0x8003AB2
-.equ sub_8003AD4, 0x8003AD4
-.equ sub_8003AEA, 0x8003AEA
-.equ sub_8003B4C, 0x8003B4C
-.equ sub_8003B86, 0x8003B86
-.equ sub_8004602, 0x8004602
-.equ sub_80047E0, 0x80047E0
-.equ sub_80062C8, 0x80062C8
-.equ engine_isScreeneffectAnimating, 0x80062F8
-.equ sub_8013704, 0x8013704
-.equ sub_80137B6, 0x80137B6
+// .extern sound_play
+// .extern sub_80005D4
+// .extern CpuSet_ZeroFillWord
+// .extern sub_8000900
+// .extern sub_800093C
+// .extern initMemblockToByte
+// .extern sub_8000B30
+// .extern sub_8000E3A
+// .extern getPETNaviSelect
+// .extern sub_8001172
+// .extern calcAngle_800117C
+// .extern sub_8001850
+// .extern sub_80018C2
+// .extern sprite_loadAnimationData_80026A4
+// .extern anim_80026C4
+// .extern sub_80026E4
+// .extern sub_8002C24
+// .extern sub_8002C52
+// .extern sub_8002C68
+// .extern sub_8002C7A
+// .extern sub_8002CCE
+// .extern sub_8002D14
+// .extern sprite_makeUnscalable
+// .extern sprite_setPallete
+// .extern sprite_setAnimation
+// .extern sub_8002DEA
+// .extern sub_8002E14
+// .extern sub_8002E3C
+// .extern sub_8002E52
+// .extern sub_8002ED0
+// .extern sub_8002EE8
+// .extern sub_8002EF6
+// .extern sub_8002F2C
+// .extern sub_8002F5C
+// .extern sub_8002F90
+// .extern sub_8002FA6
+// .extern sub_8003006
+// .extern sub_80037AC
+// .extern sub_8003962
+// .extern sub_8003984
+// .extern sub_800399A
+// .extern sub_8003AB2
+// .extern sub_8003AD4
+// .extern sub_8003AEA
+// .extern sub_8003B4C
+// .extern sub_8003B86
+// .extern sub_8004602
+// .extern sub_80047E0
+// .extern sub_80062C8
+// .extern engine_isScreeneffectAnimating
+// .extern sub_8013704
+// .extern sub_80137B6
 
 
 /* Undeclared Symbols */

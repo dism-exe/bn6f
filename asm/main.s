@@ -271,8 +271,10 @@ loc_80004C0:
     mov r1, #1
     strh r1, [r0]
     mov r0, r10
-    ldr r0, [r0]  // memBlock
-    mov r1, #8  // numWords
+// memBlock
+    ldr r0, [r0]
+// numWords
+    mov r1, #8
     bl CpuSet_ZeroFillWord
     bl sub_803D1A8
     bl sub_803E900

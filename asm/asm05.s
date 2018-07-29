@@ -117,7 +117,8 @@ off_8052808:    .word dword_8052834
     .word dword_8052C10
     .word dword_8052D54
     .word dword_8052D80
-    .word dword_8052D84  // <endpool> <endfile>
+// <endpool> <endfile>
+    .word dword_8052D84
 // end of function sub_80527F0
 
 /*For debugging purposes, connect comment at any range!*/

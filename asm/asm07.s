@@ -92,11 +92,12 @@ sub_805DFF0:
     bl loc_8003570
     pop {pc}
 off_805E004:    .word pt_805E008
+// <endpool> <endfile>
 pt_805E008:    .word dword_805E01C
     .word dword_805E084
     .word dword_805E09C
     .word dword_805E118
-    .word dword_805E158  // <endpool> <endfile>
+    .word dword_805E158
 // end of function sub_805DFF0
 
 /*For debugging purposes, connect comment at any range!*/

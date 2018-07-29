@@ -370,6 +370,7 @@ loc_8081392:
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_8081398:    .word pt_808139C
+// <endpool> <endfile>
 pt_808139C:    .word dword_80813F8
     .word dword_80813FC
     .word dword_8081400
@@ -392,7 +393,7 @@ pt_808139C:    .word dword_80813F8
     .word dword_8081444
     .word dword_8081448
     .word dword_808144C
-    .word dword_8081450  // <endpool> <endfile>
+    .word dword_8081450
 // end of function sub_808137C
 
 /*For debugging purposes, connect comment at any range!*/

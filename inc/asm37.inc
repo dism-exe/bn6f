@@ -223,9 +223,7 @@
 .extern SWI_LZ77UnCompReadNormalWrite16bit
 .extern SWI_LZ77UnCompReadNormalWrite8bit
 .extern SWI_Sqrt
-.extern loc_814D8CE
 .extern sub_814D8F0
-.extern loc_814D8F2
 .extern sub_814D954
 .extern sub_814D9C4
 .extern loc_814E0DE
@@ -238,121 +236,121 @@
 
 /* External Symbols */
 .include "asm03.inc"
-.equ sub_802D064, 0x802D064
-.equ sub_802D158, 0x802D158
-.equ sub_802D15E, 0x802D15E
-.equ sub_802F110, 0x802F110
-.equ sub_802F114, 0x802F114
-.equ sub_802F12C, 0x802F12C
-.equ sub_802F130, 0x802F130
-.equ sub_802F164, 0x802F164
-.equ sub_802F168, 0x802F168
-.equ sub_802F17E, 0x802F17E
-.equ loc_802F182, 0x802F182
-.equ sub_802F1A8, 0x802F1A8
-.equ loc_802F1AC, 0x802F1AC
-.equ sub_802FE28, 0x802FE28
-.equ sub_80302A8, 0x80302A8
-.equ sub_80307D8, 0x80307D8
-.equ sub_8030A60, 0x8030A60
-.equ sub_8031A7A, 0x8031A7A
-.equ sub_8036E90, 0x8036E90
-.equ sub_8036F36, 0x8036F36
-.equ sub_803C514, 0x803C514
-.equ sub_803CB00, 0x803CB00
-.equ sub_803CE28, 0x803CE28
-.equ sub_803CE44, 0x803CE44
-.equ sub_803CED4, 0x803CED4
-.equ sub_803D108, 0x803D108
-.equ sub_803DD30, 0x803DD30
-.equ sub_803DE88, 0x803DE88
-.equ sub_803ECFC, 0x803ECFC
-.equ sub_803F030, 0x803F030
-.equ sub_803F05C, 0x803F05C
-.equ sub_803F334, 0x803F334
-.equ sub_803F618, 0x803F618
-.equ chatbox_runScript, 0x8040384
-.equ reqBBS_80404C0, 0x80404C0
-.equ sub_8040818, 0x8040818
-.equ sub_8045F3C, 0x8045F3C
-.equ render_graphicalText_8045F8C, 0x8045F8C
-.equ sub_8045FC6, 0x8045FC6
-.equ sub_80465A0, 0x80465A0
-.equ sub_80465BC, 0x80465BC
-.equ sub_80465F8, 0x80465F8
-.equ sub_8046664, 0x8046664
-.equ sub_8046818, 0x8046818
-.equ sub_8046854, 0x8046854
-.equ sub_80468BA, 0x80468BA
-.equ sub_80468C6, 0x80468C6
-.equ sub_804691A, 0x804691A
+// .extern sub_802D064
+// .extern sub_802D158
+// .extern sub_802D15E
+// .extern sub_802F110
+// .extern sub_802F114
+// .extern sub_802F12C
+// .extern sub_802F130
+// .extern sub_802F164
+// .extern sub_802F168
+// .extern sub_802F17E
+// .extern loc_802F182
+// .extern sub_802F1A8
+// .extern loc_802F1AC
+// .extern sub_802FE28
+// .extern sub_80302A8
+// .extern sub_80307D8
+// .extern sub_8030A60
+// .extern sub_8031A7A
+// .extern sub_8036E90
+// .extern sub_8036F36
+// .extern sub_803C514
+// .extern sub_803CB00
+// .extern sub_803CE28
+// .extern sub_803CE44
+// .extern sub_803CED4
+// .extern sub_803D108
+// .extern sub_803DD30
+// .extern sub_803DE88
+// .extern sub_803ECFC
+// .extern sub_803F030
+// .extern sub_803F05C
+// .extern sub_803F334
+// .extern sub_803F618
+// .extern chatbox_runScript
+// .extern reqBBS_80404C0
+// .extern sub_8040818
+// .extern sub_8045F3C
+// .extern render_graphicalText_8045F8C
+// .extern sub_8045FC6
+// .extern sub_80465A0
+// .extern sub_80465BC
+// .extern sub_80465F8
+// .extern sub_8046664
+// .extern sub_8046818
+// .extern sub_8046854
+// .extern sub_80468BA
+// .extern sub_80468C6
+// .extern sub_804691A
 
 .include "start.inc"
-.equ start_800027C, 0x800027C
+// .extern start_800027C
 
 .include "asm02.inc"
-.equ sub_8021AA4, 0x8021AA4
-.equ sub_8021AE0, 0x8021AE0
+// .extern sub_8021AA4
+// .extern sub_8021AE0
 
 .include "asm32.inc"
-.equ sub_811E0BA, 0x811E0BA
-.equ sub_811E744, 0x811E744
-.equ sub_811EBE0, 0x811EBE0
-.equ sub_811F7F8, 0x811F7F8
-.equ sub_811FA98, 0x811FA98
-.equ loc_8121154, 0x8121154
+// .extern sub_811E0BA
+// .extern sub_811E744
+// .extern sub_811EBE0
+// .extern sub_811F7F8
+// .extern sub_811FA98
+// .extern loc_8121154
 
 .include "asm24.inc"
-.equ dword_808BF48, 0x808BF48
-.equ dword_808BF48, 0x808BF48
+// .extern dword_808BF48
+// .extern dword_808BF48
 
 .include "asm36.inc"
-.equ sub_8136C24, 0x8136C24
+// .extern sub_8136C24
 
 .include "asm28.inc"
-.equ sub_809E122, 0x809E122
-.equ sub_809E1AE, 0x809E1AE
-.equ sub_809E2B8, 0x809E2B8
-.equ sub_809E462, 0x809E462
+// .extern sub_809E122
+// .extern sub_809E1AE
+// .extern sub_809E2B8
+// .extern sub_809E462
 
 .include "asm00.inc"
-.equ sound_play, 0x80005CC
-.equ sub_80008B4, 0x80008B4
-.equ sub_80008C0, 0x80008C0
-.equ CpuSet_ZeroFillWord, 0x80008E0
-.equ sub_8000920, 0x8000920
-.equ sub_800092A, 0x800092A
-.equ sub_800093C, 0x800093C
-.equ initMemblockToByte, 0x8000964
-.equ loc_8000AC8, 0x8000AC8
-.equ sub_8000B30, 0x8000B30
-.equ sub_8000E3A, 0x8000E3A
-.equ getPETNaviSelect, 0x80010B6
-.equ sub_80010BE, 0x80010BE
-.equ sub_80010D4, 0x80010D4
-.equ sub_80010EC, 0x80010EC
-.equ calcAngle_800117C, 0x800117C
-.equ sub_80014D4, 0x80014D4
-.equ sub_800151C, 0x800151C
-.equ sub_80015FC, 0x80015FC
-.equ sub_8001778, 0x8001778
-.equ sub_8001788, 0x8001788
-.equ sub_80017A0, 0x80017A0
-.equ sub_80017AA, 0x80017AA
-.equ sub_80017E0, 0x80017E0
-.equ sub_800183C, 0x800183C
-.equ sub_80018C2, 0x80018C2
-.equ sub_80018D0, 0x80018D0
-.equ sub_8002FA6, 0x8002FA6
-.equ sub_8003A64, 0x8003A64
-.equ sub_8004822, 0x8004822
-.equ sub_8005F84, 0x8005F84
-.equ engine_setScreeneffect, 0x8006270
-.equ engine_isScreeneffectAnimating, 0x80062F8
-.equ sub_801379E, 0x801379E
-.equ sub_80137B6, 0x80137B6
-.equ sub_80137E6, 0x80137E6
-.equ sub_80137FE, 0x80137FE
+// .extern sound_play
+// .extern sub_80008B4
+// .extern sub_80008C0
+// .extern CpuSet_ZeroFillWord
+// .extern sub_8000920
+// .extern sub_800092A
+// .extern sub_800093C
+// .extern initMemblockToByte
+// .extern loc_8000AC8
+// .extern sub_8000B30
+// .extern sub_8000E3A
+// .extern getPETNaviSelect
+// .extern sub_80010BE
+// .extern sub_80010D4
+// .extern sub_80010EC
+// .extern calcAngle_800117C
+// .extern sub_80014D4
+// .extern sub_800151C
+// .extern sub_80015FC
+// .extern sub_8001778
+// .extern sub_8001788
+// .extern sub_80017A0
+// .extern sub_80017AA
+// .extern sub_80017E0
+// .extern sub_800183C
+// .extern sub_80018C2
+// .extern sub_80018D0
+// .extern sub_8002FA6
+// .extern sub_8003A64
+// .extern sub_8004822
+// .extern sub_8005F84
+// .extern engine_setScreeneffect
+// .extern engine_isScreeneffectAnimating
+// .extern sub_801379E
+// .extern sub_80137B6
+// .extern sub_80137E6
+// .extern sub_80137FE
 
 
 /* Undeclared Symbols */
@@ -603,6 +601,7 @@
 .equ unk_2010440, 0x2010440
 .equ byte_201047C, 0x201047C
 .equ byte_2010480, 0x2010480
+.equ unk_2010690, 0x2010690
 .equ byte_2010B90, 0x2010B90
 .equ dword_2010CA0, 0x2010CA0
 .equ dword_2010CAC, 0x2010CAC

@@ -648,7 +648,8 @@ off_812EFD0:    .word unk_2025A70
 .thumb
 sub_812EFD4:
     push {r4-r7,lr}
-    pop {r4-r7,pc}  // <endpool> <endfile>
+// <endpool> <endfile>
+    pop {r4-r7,pc}
 // end of function sub_812EFD4
 
 /*For debugging purposes, connect comment at any range!*/

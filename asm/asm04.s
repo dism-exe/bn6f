@@ -89,11 +89,13 @@ sub_804E720:
     bl loc_8003570
     pop {pc}
 off_804E734:    .word off_804E738
-off_804E738:    .word dword_804E74C  // <endpool>
+// <endpool>
+off_804E738:    .word dword_804E74C
 // end of function sub_804E720
 
     .word dword_804E87C
     .word dword_804E8D0
     .word dword_804E8D4
-    .word dword_804E8D8  // <endfile>
+// <endfile>
+    .word dword_804E8D8
 /*For debugging purposes, connect comment at any range!*/

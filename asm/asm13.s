@@ -495,6 +495,7 @@ sub_806FFDA:
     pop {pc}
     .byte 0, 0
 off_806FFF0:    .word pt_806FFF4
+// <endpool> <endfile>
 pt_806FFF4:    .word dword_8070034
     .word dword_8070074
     .word dword_80700B4
@@ -510,7 +511,7 @@ pt_806FFF4:    .word dword_8070034
     .word dword_80701CC
     .word dword_80701E4
     .word dword_80701FC
-    .word dword_8070214  // <endpool> <endfile>
+    .word dword_8070214
 // end of function sub_806FFDA
 
 /*For debugging purposes, connect comment at any range!*/

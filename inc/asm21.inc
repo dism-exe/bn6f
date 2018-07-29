@@ -8,31 +8,31 @@
 
 /* External Symbols */
 .include "asm03.inc"
-.equ sub_802D234, 0x802D234
-.equ sub_802F168, 0x802F168
-.equ sub_80304E8, 0x80304E8
-.equ sub_803537C, 0x803537C
-.equ sub_8035424, 0x8035424
+// .extern sub_802D234
+// .extern sub_802F168
+// .extern sub_80304E8
+// .extern sub_803537C
+// .extern sub_8035424
 
 .include "asm11.inc"
-.equ dword_806992C, 0x806992C
-.equ dword_806992C, 0x806992C
-.equ off_806A810, 0x806A810
-.equ dword_806C1E0, 0x806C1E0
+// .extern dword_806992C
+// .extern dword_806992C
+// .extern off_806A810
+// .extern dword_806C1E0
 
 .include "asm00.inc"
-.equ sub_80008B4, 0x80008B4
-.equ sub_8001778, 0x8001778
-.equ sub_8001780, 0x8001780
-.equ sub_800195C, 0x800195C
-.equ locret_80019B0, 0x80019B0
-.equ loc_80019B4, 0x80019B4
-.equ loc_80019EC, 0x80019EC
-.equ loc_8001A10, 0x8001A10
-.equ loc_8001A34, 0x8001A34
-.equ loc_8001A58, 0x8001A58
-.equ locret_8001AB4, 0x8001AB4
-.equ sub_8002354, 0x8002354
+// .extern sub_80008B4
+// .extern sub_8001778
+// .extern sub_8001780
+// .extern sub_800195C
+// .extern locret_80019B0
+// .extern loc_80019B4
+// .extern loc_80019EC
+// .extern loc_8001A10
+// .extern loc_8001A34
+// .extern loc_8001A58
+// .extern locret_8001AB4
+// .extern sub_8002354
 
 
 /* Undeclared Symbols */

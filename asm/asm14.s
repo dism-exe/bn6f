@@ -400,12 +400,14 @@ sub_8072BA4:
     str r0, [r5,#0x3c]
     mov r0, #0
     str r0, [r5,#0x38]
-    pop {r4-r7,pc}  // <endpool>
+// <endpool>
+    pop {r4-r7,pc}
 // end of function sub_8072BA4
 
 dword_8072BB4:    .word 0x1FF
 off_8072BB8:    .word 0x258
 off_8072BBC:    .word dword_8072BC0
 dword_8072BC0:    .word 0x1D501D6, 0x193
-off_8072BC8:    .word dword_8072C3C  // <endfile>
+// <endfile>
+off_8072BC8:    .word dword_8072C3C
 /*For debugging purposes, connect comment at any range!*/

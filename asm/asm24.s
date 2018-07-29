@@ -59,12 +59,14 @@ dword_808BF48:    .word 0x80CFF27, 0x4A086A07, 0x3B015403, 0x4FF0440, 0x4FF0047
     .word 0x3CFF0208, 0x27FFFF4E, 0x70808FF, 0x43F183F, 0x40003C00
     .word 0x8C28015, 0x8, 0x92, 0xD00000, 0xFF500000
     .word 0x200000, 0x1000192, 0xFDF80000, 0xFFF40000, 0x0
-// end of function sub_808BEFC
-
-    mov r7, r7
-    cmp r1, #6
-    add r1, #0xff
-    bx r2
+    .byte 0x3F 
+    .byte 0
+    .byte 6
+    .byte 0x29 
+    .byte 0xFF
+    .byte 0x31 
+    .byte 0x17
+    .byte 0x47 
     .word 0x4700FF01, 0x4D32FF00, 0x794B01A5, 0x4B0808C3, 0x81432D9
     .word 0x147C005, 0x43F00FF, 0x6003F00, 0x7E0DEC3E, 0x41C08
     .word 0x808C32B, 0x3601041C, 0x4C0808C3, 0x8C2D020, 0xC3411508
@@ -72,6 +74,8 @@ dword_808BF48:    .word 0x80CFF27, 0x4A086A07, 0x3B015403, 0x4FF0440, 0x4FF0047
     .word 0x1EFF0204, 0x400FF3A, 0x1EFF0280, 0x14, 0xCFF2700
     .word 0xFF290708, 0x23B0960, 0x804C3CFF, 0x0
     .word 0xC3721500, 0x43F0808, 0x0
+// end of function sub_808BEFC
+
     push {r4-r7,lr}
     mov r0, #0x70 
     add r7, r5, r0
@@ -642,7 +646,8 @@ loc_808CDDA:
     add r3, r7, #0
     lsl r3, r3, #3
     ldrh r0, [r6,r3]
-    .hword 0x1c00 // add r0, r0, #0  // <mkdata>
+// <mkdata>
+    .hword 0x1c00 // add r0, r0, #0
     bl sub_802F168
     beq loc_808CE02
     add r3, r7, #0
@@ -651,7 +656,8 @@ loc_808CDDA:
     ldrh r0, [r6,r3]
     add r3, #2
     ldrh r1, [r6,r3]
-    .hword 0x1c00 // add r0, r0, #0  // <mkdata>
+// <mkdata>
+    .hword 0x1c00 // add r0, r0, #0
     add r2, r1, #0
     bl loc_802F200
     beq loc_808CE02
@@ -697,14 +703,16 @@ loc_808CE3C:
     add r6, r7, #0
     lsl r6, r6, #3
     ldrh r0, [r4,r6]
-    .hword 0x1c00 // add r0, r0, #0  // <mkdata>
+// <mkdata>
+    .hword 0x1c00 // add r0, r0, #0
     bl sub_802F168
     beq loc_808CE5A
     add r6, #2
     ldrh r0, [r4,r6]
     add r6, #2
     ldrh r1, [r4,r6]
-    .hword 0x1c00 // add r0, r0, #0  // <mkdata>
+// <mkdata>
+    .hword 0x1c00 // add r0, r0, #0
     add r2, r1, #0
     bl loc_802F1AC
 loc_808CE5A:
@@ -738,13 +746,15 @@ loc_808CE84:
     add r6, r7, #0
     lsl r6, r6, #3
     ldrh r0, [r4,r6]
-    .hword 0x1c00 // add r0, r0, #0  // <mkdata>
+// <mkdata>
+    .hword 0x1c00 // add r0, r0, #0
     bl sub_802F114
     add r6, #2
     ldrh r0, [r4,r6]
     add r6, #2
     ldrh r1, [r4,r6]
-    .hword 0x1c00 // add r0, r0, #0  // <mkdata>
+// <mkdata>
+    .hword 0x1c00 // add r0, r0, #0
     add r2, r1, #0
     bl loc_802F1AC
     add r7, #1
@@ -779,7 +789,7 @@ sub_808CF34:
     mov r4, #0
     bl sub_808D084
     lsl r0, r0, #1
-    ldr r1, [pc, #0x808cf78-0x808cf3e-2] // =loc_808CF84
+    ldr r1, [pc, #0x808cf78-0x808cf3e-2] // =unk_808CF84
     ldrh r1, [r1,r0]
     add r0, r1, #0
     bl sub_802F168
@@ -796,32 +806,38 @@ sub_808CF50:
     bl sub_808D084
     lsl r0, r0, #1
     add r4, r0, #0
-    ldr r1, [pc, #0x808cf74-0x808cf5a-2] // =loc_808CF7C
+    ldr r1, [pc, #0x808cf74-0x808cf5a-2] // =unk_808CF7C
     ldrh r1, [r1,r4]
     add r0, r1, #0
     bl sub_802F168
     bne locret_808CF70
-    ldr r1, [pc, #0x808cf78-0x808cf66-2] // =loc_808CF84
+    ldr r1, [pc, #0x808cf78-0x808cf66-2] // =unk_808CF84
     ldrh r1, [r1,r4]
     add r0, r1, #0
     bl sub_802F114
 locret_808CF70:
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_808CF74:    .word loc_808CF7C
-off_808CF78:    .word loc_808CF84
+off_808CF74:    .word unk_808CF7C
+off_808CF78:    .word unk_808CF84
+unk_808CF7C:    .byte 0xF8
+    .byte 9
+    .byte 0xFB
+    .byte 9
+    .byte 0xFE
+    .byte 9
+    .byte 0xFD
+    .byte 0xF
+unk_808CF84:    .byte 0xDA
+    .byte 9
+    .byte 0xDB
+    .byte 9
+    .byte 0xDC
+    .byte 9
+    .byte 0xC5
+    .byte 0xF
 // end of function sub_808CF50
 
-loc_808CF7C:
-    lsr r0, r7, #7
-    lsr r3, r7, #7
-    lsr r6, r7, #7
-    lsr r5, r7, #0x1f
-loc_808CF84:
-    lsr r2, r3, #7
-    lsr r3, r3, #7
-    lsr r4, r3, #7
-    lsr r5, r0, #0x1f
 .thumb
 sub_808CF8C:
     push {r4,lr}
@@ -1096,7 +1112,8 @@ sub_808D25C:
     push {lr}
     bl sub_8048F88
     mov r0, #0
-    pop {pc}  // <endpool> <endfile>
+// <endpool> <endfile>
+    pop {pc}
 // end of function sub_808D25C
 
 /*For debugging purposes, connect comment at any range!*/

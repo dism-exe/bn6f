@@ -1843,10 +1843,10 @@ loc_81D7188:
     add r0, r0, r1
     pop {pc}
 dword_81D719C:    .word 0x5040404
-    mov r5, r0
-    lsl r3, r0, #0x10
-    lsl r4, r0, #0x10
-    .hword 0x4 // mov r4, r0  // <mkdata>
+    .word 0x4030005
+    .word 0x40404
+.thumb
+sub_81D71A8:
     push {lr}
     ldrb r1, [r0,#1]
     cmp r1, #1
@@ -1868,6 +1868,8 @@ loc_81D71B6:
     add r0, #3
     mov r4, #1
     pop {pc}
+// end of function sub_81D71A8
+
     push {r3,lr}
     push {r0,r2,r4-r6}
     ldrb r1, [r0,#1]
@@ -3148,7 +3150,8 @@ loc_81D7EEA:
     bl loc_81D7E04
 locret_81D7EF2:
     pop {r4-r6,pc}
-dword_81D7EF4:    .word 0x708  // <endpool> <endfile>
+// <endpool> <endfile>
+dword_81D7EF4:    .word 0x708
 // end of function sub_81D7EA4
 
 /*For debugging purposes, connect comment at any range!*/

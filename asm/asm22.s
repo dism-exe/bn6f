@@ -465,7 +465,8 @@ sub_80871C0:
     bl sub_802F168
     pop {pc}
     .hword 0x0
-off_80871D4:    .word dword_80871D8  // <endpool> <endfile>
+// <endpool> <endfile>
+off_80871D4:    .word dword_80871D8
 // end of function sub_80871C0
 
 /*For debugging purposes, connect comment at any range!*/

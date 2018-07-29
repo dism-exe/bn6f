@@ -6,12 +6,12 @@
 
 /* External Symbols */
 .include "asm03.inc"
-.equ sub_80307D8, 0x80307D8
+// .extern sub_80307D8
 
 .include "asm00.inc"
-.equ CpuSet_ZeroFillWord, 0x80008E0
-.equ sub_800092A, 0x800092A
-.equ sub_8000B30, 0x8000B30
+// .extern CpuSet_ZeroFillWord
+// .extern sub_800092A
+// .extern sub_8000B30
 
 
 /* Undeclared Symbols */

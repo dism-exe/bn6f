@@ -258,8 +258,10 @@ dword_8021C64:    .word 0x1FF
 sub_8021C68:
     push {lr}
     mov r0, r10
-    ldr r0, [r0,#0x4c]  // memBlock
-    ldr r1, [pc, #0x8021c78-0x8021c6e-2] // =0xF00  // numWords
+// memBlock
+    ldr r0, [r0,#0x4c]
+// numWords
+    ldr r1, [pc, #0x8021c78-0x8021c6e-2] // =0xF00
     bl CpuSet_ZeroFillWord
     pop {pc}
     .balign 4, 0x00
@@ -408,12 +410,14 @@ dword_8021D78:    .word 0x20007D6
 dword_8021D7C:    .word 0x200083A
 off_8021D80:    .word dword_8021D88
 dword_8021D84:    .word 0x8021D8A
-dword_8021D88:    .word 0x7E7E0002, 0xE67E7E, 0x0  // <endpool>
+// <endpool>
+dword_8021D88:    .word 0x7E7E0002, 0xE67E7E, 0x0
 // end of function sub_8021D36
 
 off_8021D94:    .word unk_203A0A0
 off_8021D98:    .word 0x2E0
 off_8021D9C:    .word 0x170
 off_8021DA0:    .word unk_203A0A0
-off_8021DA4:    .word unk_203A0A0  // <endfile>
+// <endfile>
+off_8021DA4:    .word unk_203A0A0
 /*For debugging purposes, connect comment at any range!*/

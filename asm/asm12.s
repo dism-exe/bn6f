@@ -249,6 +249,7 @@ sub_806DCD4:
     bl loc_8003570
     pop {pc}
 off_806DCE8:    .word pt_806DCEC
+// <endpool> <endfile>
 pt_806DCEC:    .word dword_806DD2C
     .word dword_806DD44
     .word dword_806DD84
@@ -264,7 +265,7 @@ pt_806DCEC:    .word dword_806DD2C
     .word dword_806DEEC
     .word dword_806DF18
     .word dword_806DF44
-    .word dword_806DF70  // <endpool> <endfile>
+    .word dword_806DF70
 // end of function sub_806DCD4
 
 /*For debugging purposes, connect comment at any range!*/

@@ -410,8 +410,10 @@ off_8020130:    .word dword_203F7D8
 .thumb
 sub_8020134:
     push {lr}
-    ldr r0, [pc, #0x8020164-0x8020136-2] // =unk_2038160  // memBlock
-    mov r1, #4  // numWords
+// memBlock
+    ldr r0, [pc, #0x8020164-0x8020136-2] // =unk_2038160
+// numWords
+    mov r1, #4
     bl CpuSet_ZeroFillWord
     pop {pc}
 // end of function sub_8020134
@@ -436,7 +438,8 @@ locret_802015C:
 sub_802015E:
     ldr r0, [pc, #0x802016c-0x802015e-2] // =unk_2038160
     ldrb r0, [r0,#0x1] // (byte_2038161 - 0x2038160)
-    mov pc, lr  // <endpool>
+// <endpool>
+    mov pc, lr
 // end of function sub_802015E
 
 off_8020164:    .word unk_2038160
@@ -562,5 +565,6 @@ off_80202F8:    .word off_80B1B7C
     .word off_80B66A8
     .word off_80B6C20
     .word off_80B71D4
-    .word off_80B79C0  // <endfile>
+// <endfile>
+    .word off_80B79C0
 /*For debugging purposes, connect comment at any range!*/

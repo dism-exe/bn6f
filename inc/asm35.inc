@@ -6,41 +6,41 @@
 
 /* External Symbols */
 .include "asm03.inc"
-.equ sub_803CE28, 0x803CE28
-.equ sub_803EBF4, 0x803EBF4
-.equ render_graphicalText_8045F8C, 0x8045F8C
-.equ sub_80465A0, 0x80465A0
-.equ sub_8046664, 0x8046664
-.equ sub_80466C4, 0x80466C4
+// .extern sub_803CE28
+// .extern sub_803EBF4
+// .extern render_graphicalText_8045F8C
+// .extern sub_80465A0
+// .extern sub_8046664
+// .extern sub_80466C4
 
 .include "asm32.inc"
-.equ sub_811BC00, 0x811BC00
-.equ sub_811F7EC, 0x811F7EC
-.equ sub_811F7F8, 0x811F7F8
-.equ sub_811FAF4, 0x811FAF4
-.equ sub_8120280, 0x8120280
-.equ sub_8120CC8, 0x8120CC8
+// .extern sub_811BC00
+// .extern sub_811F7EC
+// .extern sub_811F7F8
+// .extern sub_811FAF4
+// .extern sub_8120280
+// .extern sub_8120CC8
 
 .include "asm37.inc"
-.equ sub_813B780, 0x813B780
-.equ sub_813B9FC, 0x813B9FC
+// .extern sub_813B780
+// .extern sub_813B9FC
 
 .include "asm33.inc"
-.equ dword_8129178, 0x8129178
-.equ dword_8129180, 0x8129180
+// .extern dword_8129178
+// .extern dword_8129180
 
 .include "asm36.inc"
-.equ sub_8132280, 0x8132280
+// .extern sub_8132280
 
 .include "asm00.inc"
-.equ sound_play, 0x80005CC
-.equ sub_8000900, 0x8000900
-.equ sub_800183C, 0x800183C
-.equ sub_80018C2, 0x80018C2
-.equ sub_80018D0, 0x80018D0
-.equ sub_800307C, 0x800307C
-.equ engine_setScreeneffect, 0x8006270
-.equ sub_80062C8, 0x80062C8
+// .extern sound_play
+// .extern sub_8000900
+// .extern sub_800183C
+// .extern sub_80018C2
+// .extern sub_80018D0
+// .extern sub_800307C
+// .extern engine_setScreeneffect
+// .extern sub_80062C8
 
 
 /* Undeclared Symbols */

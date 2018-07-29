@@ -12,11 +12,11 @@
 
 /* External Symbols */
 .include "main.inc"
-.equ main_, 0x80002BC
+// .extern main_
 
 .include "asm00.inc"
-.equ CpuSet_toolKit, 0x8006BC0
-.equ sub_8006C22, 0x8006C22
+// .extern CpuSet_toolKit
+// .extern sub_8006C22
 
 
 /* Undeclared Symbols */

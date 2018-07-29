@@ -39,7 +39,8 @@ sub_8094714:
 .thumb
 sub_8094720:
     push {r4-r7,lr}
-    ldr r0, [pc, #0x8094778-0x8094722-2] // =unk_2026404  // memBlock
+// memBlock
+    ldr r0, [pc, #0x8094778-0x8094722-2] // =unk_2026404
     mov r1, #0x10
     lsl r1, r1, #8
     bl CpuSet_ZeroFillWord
@@ -79,10 +80,12 @@ loc_8094752:
     blt loc_8094752
     bl sub_80307D8
     mov r0, #0
-    pop {r4-r7,pc}  // <endpool>
+// <endpool>
+    pop {r4-r7,pc}
 // end of function sub_8094738
 
     .balign 4, 0x00
 off_8094774:    .word unk_2025404
-off_8094778:    .word unk_2026404  // <endfile>
+// <endfile>
+off_8094778:    .word unk_2026404
 /*For debugging purposes, connect comment at any range!*/

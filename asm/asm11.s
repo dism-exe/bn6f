@@ -992,60 +992,112 @@ dword_806B334:    .word 0x520FC205, 0x80806B3, 0x4925271F, 0x148141C, 0x26
     .word 0x8031580, 0x291C0225, 0x81451581, 0x25080315, 0x82291C02
     .word 0x15824515, 0x2250803, 0x1583291C, 0x3158345, 0x806B3EC
     .word 0x806B3FF
-// end of function sub_806AD00
-
-    push {r0-r2,r4}
-    lsr r6, r0, #0x20
-    push {r1,r4,r5}
-    lsr r6, r0, #0x20
-    push {r0,r4,r6}
-    lsr r6, r0, #0x20
-    push {r4-r6}
-    lsr r6, r0, #0x20
-    lsl r7, r7, #3
-    .hword 0x0 // mov r0, r0  // <mkdata>
-    sub r0, r1, #4
-    asr r7, r4, #0x1c
-    asr r7, r6, #0x10
-    lsl r6, r7, #3
-    lsl r2, r2, #1
-    mov r0, r4
-    lsl r6, r2, #4
-    ldmia r4, {r1,r2,r4,r5}
-    lsr r6, r6, #7
-    lsr r0, r1, #0x20
-    mov r7, #0x1f
-    sub r4, #0x17
-    add r4, r2
-    cmp r2, #1
-    .hword 0x0 // mov r0, r0  // <mkdata>
-    asr r0, r0, #0x18
-    sub r5, r0, r4
-    lsl r0, r2, #8
-    mov r3, r5
-    sub r7, #0x40 
-    lsl r0, r1, #4
-    lsr r3, r0, #4
-    mov r7, #0x1f
-    ldr r1, [pc, #0x806b4b0-0x806b41a-2] // =dword_80802C4
-    asr r4, r3, #0x10
-    lsl r0, r1, #5
-    mov r6, r4
-    .hword 0x0 // mov r0, r0  // <mkdata>
-    lsl r6, r5, #8
-    lsl r7, r1, #4
-    sub r7, #0x1b
-    lsl r0, r1, #4
-    add r6, #8
-    movt.w r8, #0xc809
-    stmia r3!, {r0,r2}
-    str r7, [r1,r0]
-    lsl r4, r6, #0x1a
-    lsr r0, r1, #0x20
-    mov r7, #0x1f
-    cmp r7, #0x25 
-    asr r4, r3, #0x10
-    lsl r0, r1, #5
+    .byte 0x17
+    .byte 0xB4
+    .byte 6
+    .byte 8
+    .byte 0x32 
+    .byte 0xB4
+    .byte 6
+    .byte 8
+    .byte 0x51 
+    .byte 0xB4
+    .byte 6
+    .byte 8
+    .byte 0x70 
+    .byte 0xB4
+    .byte 6
+    .byte 8
+    .byte 0xFF
+    .byte 0
+    .byte 0
+    .byte 0
+    .byte 8
+    .byte 0x1F
+    .byte 0x27 
+    .byte 0x17
+    .byte 0x37 
+    .byte 0x14
+    .byte 0xFE
+    .byte 0
+    .byte 0x52 
+    .byte 0
+    .byte 0x20
+    .byte 0
+    .byte 0x16
+    .byte 1
+    .byte 0x36 
+    .byte 0xCC
+    .byte 0xF6
+    .byte 9
+    .byte 8
+    .byte 8
+    .byte 0x1F
+    .byte 0x27 
+    .byte 0x17
+    .byte 0x3C 
+    .byte 0x14
+    .byte 0x44 
+    .byte 1
+    .byte 0x2A 
+    .byte 0
+    .byte 0
+    .byte 0
+    .byte 0x16
+    .byte 5
+    .byte 0x1B
+    .byte 0x10
+    .byte 2
+    .byte 0x2B 
+    .byte 0
+    .byte 0x40 
+    .byte 0x3F 
+    .byte 8
+    .byte 1
+    .byte 3
+    .byte 9
+    .byte 0x1F
+    .byte 0x27 
+    .byte 0x25 
+    .byte 0x49 
+    .byte 0x1C
+    .byte 0x14
+    .byte 0x48 
+    .byte 1
+    .byte 0x26 
+    .byte 0
+    .byte 0
+    .byte 0
+    .byte 0x2E 
+    .byte 2
+    .byte 0xF
+    .byte 1
+    .byte 0x1B
+    .byte 0x3F 
+    .byte 8
+    .byte 1
+    .byte 8
+    .byte 0x36 
+    .byte 0xCC
+    .byte 0xF6
+    .byte 9
+    .byte 8
+    .byte 5
+    .byte 0xC3
+    .byte 0xF
+    .byte 0x50 
+    .byte 0xB4
+    .byte 6
+    .byte 8
+    .byte 8
+    .byte 0x1F
+    .byte 0x27 
+    .byte 0x25 
+    .byte 0x2F 
+    .byte 0x1C
+    .byte 0x14
+    .byte 0x48 
+    .byte 1
     .hword 0xFFC8
     .byte 0
     .byte 0
@@ -1155,7 +1207,7 @@ dword_806B334:    .word 0x520FC205, 0x80806B3, 0x4925271F, 0x148141C, 0x26
     .byte 1
     .byte 0x36 
     .byte 0xCC
-dword_806B4B0:    .word 0x80809F6
+    .word 0x80809F6
     .word 0x3C17271F, 0xC8014414, 0x160000FF, 0x2101B05, 0x3F40002B
     .word 0x9030108, 0x2F25271F, 0x148141C, 0xFFC8, 0x20F122E
     .word 0x1083F1B, 0xF6CC3608, 0xC2050809, 0x6B5040F, 0x271F0808
@@ -1343,6 +1395,8 @@ dword_806C1E0:    .word 0x20, 0xFFFF0100, 0x85D27B0, 0x8, 0x85D27D0, 0x8, 0x85D2
     .word 0x8, 0x85D2810, 0x8, 0x1, 0x3001960, 0x20, 0xFFFF0200
     .word 0x8615B04, 0xC, 0x8615B24, 0xC, 0x8615B44, 0xC, 0x8615B64
     .word 0xC, 0x1
+// end of function sub_806AD00
+
 .thumb
 sub_806C23C:
     push {r4-r7,lr}
@@ -1619,7 +1673,8 @@ sub_806C59C:
     bl loc_8003570
     pop {pc}
 off_806C5B0:    .word pt_806C5B4
-pt_806C5B4:    .word dword_806C5D0  // <endpool>
+// <endpool>
+pt_806C5B4:    .word dword_806C5D0
 // end of function sub_806C59C
 
     .word dword_806C638
@@ -1627,5 +1682,6 @@ pt_806C5B4:    .word dword_806C5D0  // <endpool>
     .word dword_806C68C
     .byte 0, 0, 0, 0
     .word dword_806C6E0
-    .word dword_806C748  // <endfile>
+// <endfile>
+    .word dword_806C748
 /*For debugging purposes, connect comment at any range!*/

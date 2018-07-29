@@ -89,8 +89,9 @@ loc_80001C8:
 // end of function start_clearMemory
 
 .arm
+// size
 start_copyMemory:
-    subs r2, r2, #4  // size
+    subs r2, r2, #4
     ldr r3, [r0,r2]
     str r3, [r1,r2]
     bne start_copyMemory

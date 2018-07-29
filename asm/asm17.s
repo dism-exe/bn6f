@@ -139,8 +139,9 @@ sub_807948C:
     bl loc_8003570
     pop {pc}
 off_80794A0:    .word pt_80794A4
+// <endpool> <endfile>
 pt_80794A4:    .word dword_80794AC
-    .word dword_80794EC  // <endpool> <endfile>
+    .word dword_80794EC
 // end of function sub_807948C
 
 /*For debugging purposes, connect comment at any range!*/

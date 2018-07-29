@@ -243,7 +243,7 @@ loc_808966E:
     bl sub_8142896
     bl sub_809E2AE
     bl sub_809E2B8
-    ldr r1, [pc, #0x80896a4-0x8089686-2] // =loc_80896A8
+    ldr r1, [pc, #0x80896a4-0x8089686-2] // =unk_80896A8
     ldrb r0, [r1,r0]
     bl sub_809E13C
     bl sub_8089D26
@@ -255,14 +255,17 @@ loc_808966E:
 loc_80896A0:
     mov r0, #1
     pop {r4-r7,pc}
-off_80896A4:    .word loc_80896A8
+off_80896A4:    .word unk_80896A8
+unk_80896A8:    .byte 0xFF
+    .byte 0x29 
+    .byte 0xFF
+    .byte 0x2A 
+    .byte 0xFF
+    .byte 0x2B 
+    .byte 0xFF
+    .byte 0x2C 
 // end of function sub_808964C
 
-loc_80896A8:
-    cmp r1, #0xff
-    cmp r2, #0xff
-    cmp r3, #0xff
-    cmp r4, #0xff
 .thumb
 sub_80896B0:
     push {r4-r7,lr}
@@ -615,7 +618,7 @@ sub_808991C:
     bl sub_8142B58
     bl sub_809E2AE
     bl sub_809E2B8
-    ldr r1, [pc, #0x8089954-0x8089938-4] // =loc_8089958
+    ldr r1, [pc, #0x8089954-0x8089938-4] // =unk_8089958
     ldrb r0, [r1,r0]
     bl sub_809E13C
     bl sub_8089CDC
@@ -627,14 +630,17 @@ loc_808994E:
     mov r0, #1
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_8089954:    .word loc_8089958
+off_8089954:    .word unk_8089958
+unk_8089958:    .byte 0xFF
+    .byte 0x2E 
+    .byte 0xFF
+    .byte 0x2F 
+    .byte 0xFF
+    .byte 0x30 
+    .byte 0xFF
+    .byte 0x31 
 // end of function sub_808991C
 
-loc_8089958:
-    cmp r6, #0xff
-    cmp r7, #0xff
-    add r0, #0xff
-    add r1, #0xff
 .thumb
 sub_8089960:
     push {r4-r7,lr}
@@ -769,7 +775,8 @@ sub_8089A60:
     bl sub_8089CB4
     beq loc_8089AC6
     bl sub_81427CE
-    .hword 0x1c00 // add r0, r0, #0  // <mkdata>
+// <mkdata>
+    .hword 0x1c00 // add r0, r0, #0
     bl sub_802F130
     bl sub_814219C
     str r0, [r7,#0x10]
@@ -1173,7 +1180,8 @@ sub_8089D44:
     mov r1, #0
     mov r2, #0
     bl sub_80468C6
-    pop {r4-r7,pc}  // <endpool> <endfile>
+// <endpool> <endfile>
+    pop {r4-r7,pc}
 // end of function sub_8089D44
 
 /*For debugging purposes, connect comment at any range!*/

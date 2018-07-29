@@ -264,8 +264,10 @@ sub_8000784:
 .thumb
 sub_80007B2:
     push {lr}
-    ldr r0, [pc, #0x800085c-0x80007b4-4] // =dword_200A490  // memBlock
-    ldr r1, [pc, #0x80008a0-0x80007b6-2] // =0x20C  // numWords
+// memBlock
+    ldr r0, [pc, #0x800085c-0x80007b4-4] // =dword_200A490
+// numWords
+    ldr r1, [pc, #0x80008a0-0x80007b6-2] // =0x20C
     bl CpuSet_ZeroFillWord
     pop {pc}
 // end of function sub_80007B2
@@ -2463,8 +2465,10 @@ dword_800181C:    .word 0x5000000
 sub_8001820:
     push {lr}
     mov r2, r10
-    ldr r0, [r2,#0x20]  // memBlock
-    mov r1, #8  // numWords
+// memBlock
+    ldr r0, [r2,#0x20]
+// numWords
+    mov r1, #8
     bl CpuSet_ZeroFillWord
     pop {pc}
 // end of function sub_8001820
@@ -2473,8 +2477,10 @@ sub_8001820:
 sub_800182E:
     push {lr}
     mov r2, r10
-    ldr r0, [r2,#0x1c]  // memBlock
-    mov r1, #0xc  // numWords
+// memBlock
+    ldr r0, [r2,#0x1c]
+// numWords
+    mov r1, #0xc
     bl CpuSet_ZeroFillWord
     pop {pc}
 // end of function sub_800182E
@@ -2860,8 +2866,10 @@ off_8001AB8:    .word unk_200DF40
 .thumb
 sub_8001AFC:
     push {lr}
-    ldr r0, [pc, #0x8001c40-0x8001afe-2] // =byte_20094C0  // memBlock
-    ldr r1, [pc, #0x8001b08-0x8001b00-4] // =0x1B0  // numWords
+// memBlock
+    ldr r0, [pc, #0x8001c40-0x8001afe-2] // =byte_20094C0
+// numWords
+    ldr r1, [pc, #0x8001b08-0x8001b00-4] // =0x1B0
     bl CpuSet_ZeroFillWord
     pop {pc}
 off_8001B08:    .word 0x1B0
@@ -3924,13 +3932,15 @@ sub_8002338:
     ldr r0, [r0]
     cmp r0, #0
     blt loc_8002348
-    .hword 0x1c00 // add r0, r0, #0  // <mkdata>
+// <mkdata>
+    .hword 0x1c00 // add r0, r0, #0
     bl sub_802F114
     b locret_8002352
 loc_8002348:
     lsl r0, r0, #1
     lsr r0, r0, #1
-    .hword 0x1c00 // add r0, r0, #0  // <mkdata>
+// <mkdata>
+    .hword 0x1c00 // add r0, r0, #0
     bl sub_802F130
 locret_8002352:
     pop {pc}
@@ -3954,8 +3964,10 @@ locret_8002366:
 .thumb
 sub_8002368:
     push {lr}
-    ldr r0, [pc, #0x8002464-0x800236a-2] // =byte_20097A0  // memBlock
-    ldr r1, [pc, #0x8002374-0x800236c-4] // =0x108  // numWords
+// memBlock
+    ldr r0, [pc, #0x8002464-0x800236a-2] // =byte_20097A0
+// numWords
+    ldr r1, [pc, #0x8002374-0x800236c-4] // =0x108
     bl CpuSet_ZeroFillWord
     pop {pc}
 off_8002374:    .word 0x108
@@ -3997,8 +4009,10 @@ sub_800239A:
 .thumb
 sub_80023A8:
     push {lr}
-    ldr r0, [pc, #0x8002464-0x80023aa-2] // =byte_20097A0  // memBlock
-    ldr r1, [pc, #0x80023b4-0x80023ac-4] // =0xD8  // numWords
+// memBlock
+    ldr r0, [pc, #0x8002464-0x80023aa-2] // =byte_20097A0
+// numWords
+    ldr r1, [pc, #0x80023b4-0x80023ac-4] // =0xD8
     bl CpuSet_ZeroFillWord
     pop {pc}
 off_80023B4:    .word 0xD8
@@ -4085,8 +4099,10 @@ sub_8002468:
     push {r4-r7,lr}
     ldr r5, [pc, #0x80024c8-0x800246a-2] // =byte_200A6A0
     push {r0-r2}
-    add r0, r5, #0  // memBlock
-    mov r1, #0x50   // numWords
+// memBlock
+    add r0, r5, #0
+// numWords
+    mov r1, #0x50 
     bl CpuSet_ZeroFillWord
     pop {r0-r2}
     str r0, [r5,#0x4] // (dword_200A6A4 - 0x200a6a0)
@@ -4116,8 +4132,10 @@ loc_8002498:
 .thumb
 sub_80024A2:
     push {r4-r7,lr}
-    ldr r0, [pc, #0x80024c8-0x80024a4-4] // =byte_200A6A0  // memBlock
-    mov r1, #0x50   // numWords
+// memBlock
+    ldr r0, [pc, #0x80024c8-0x80024a4-4] // =byte_200A6A0
+// numWords
+    mov r1, #0x50 
     bl CpuSet_ZeroFillWord
     pop {r4-r7,pc}
 // end of function sub_80024A2
@@ -4701,8 +4719,10 @@ sub_80028D4:
     push {r5,lr}
     ldr r5, [pc, #0x8002bf0-0x80028d6-2] // =byte_200DCA0
     push {r0}
-    add r0, r5, #0  // memBlock
-    mov r1, #0x50   // numWords
+// memBlock
+    add r0, r5, #0
+// numWords
+    mov r1, #0x50 
     bl CpuSet_ZeroFillWord
     pop {r0}
     str r0, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
@@ -6131,23 +6151,27 @@ sub_8003252:
     mov r5, #0x50 
     add r2, #0x30 
     lsl r0, r7, #1
+// <mkdata>
 loc_8003258:
-    .hword 0x1b // mov r3, r3  // <mkdata>
+    .hword 0x1b // mov r3, r3
     mov r5, #0x45 
     add r2, #0x30 
     lsl r0, r7, #1
+// <mkdata>
 loc_8003260:
-    .hword 0x1b // mov r3, r3  // <mkdata>
+    .hword 0x1b // mov r3, r3
     mov r5, #0x4d 
     add r2, #0x30 
     lsl r0, r7, #1
+// <mkdata>
 loc_8003268:
-    .hword 0x1b // mov r3, r3  // <mkdata>
+    .hword 0x1b // mov r3, r3
     mov r5, #0x53 
     add r2, #0x30 
     lsl r0, r7, #1
+// <mkdata>
 loc_8003270:
-    .hword 0x1b // mov r3, r3  // <mkdata>
+    .hword 0x1b // mov r3, r3
     mov r5, #0x46 
     add r2, #0x30 
     lsl r0, r7, #1
@@ -6184,8 +6208,10 @@ loc_80032A6:
     str r6, [r1]
     add r5, #0x10
     mov r0, #4
-    add r0, r0, r5  // memBlock
-    ldrb r1, [r7,#0xd]  // numWords
+// memBlock
+    add r0, r0, r5
+// numWords
+    ldrb r1, [r7,#0xd]
     bl CpuSet_ZeroFillWord
     ldrb r0, [r7,#0xe]
     strb r0, [r5]
@@ -6446,14 +6472,17 @@ sub_8003490:
     add r7, r7, r1
     lsl r1, r0, #2
     ldr r4, [pc, #0x8003530-0x800349a-2] // =off_8003144
-    ldr r0, [r4,r1]  // memBlock
+// memBlock
+    ldr r0, [r4,r1]
     ldrb r1, [r7,#0xc]
     add r1, #0x1f
     lsr r1, r1, #5
     lsl r1, r1, #2
     bl CpuSet_ZeroFillWord
-    ldr r0, [r7]  // memBlock
-    ldrh r1, [r7,#8]  // numWords
+// memBlock
+    ldr r0, [r7]
+// numWords
+    ldrh r1, [r7,#8]
     bl CpuSet_ZeroFillWord
     ldr r0, [r7,#4]
     mov r1, #0
@@ -6806,8 +6835,10 @@ off_8003788:    .word byte_2036830
 .thumb
 sub_800378C:
     push {lr}
-    ldr r0, [pc, #0x80037a0-0x800378e-2] // =unk_20081D0  // memBlock
-    ldr r1, [pc, #0x80037a4-0x8003790-4] // =0x280  // numWords
+// memBlock
+    ldr r0, [pc, #0x80037a0-0x800378e-2] // =unk_20081D0
+// numWords
+    ldr r1, [pc, #0x80037a4-0x8003790-4] // =0x280
     bl CpuSet_ZeroFillWord
     ldr r0, [pc, #0x80037a8-0x8003796-2] // =dword_200AC18
     mov r1, #0
@@ -6998,8 +7029,10 @@ off_80038E8:    .word sub_8142248+1
 .thumb
 sub_8003908:
     push {r4-r7,lr}
-    ldr r0, [pc, #0x80039f0-0x800390a-2] // =byte_2000780  // memBlock
-    mov r1, #0x48   // numWords
+// memBlock
+    ldr r0, [pc, #0x80039f0-0x800390a-2] // =byte_2000780
+// numWords
+    mov r1, #0x48 
     bl CpuSet_ZeroFillWord
     pop {r4-r7,pc}
 // end of function sub_8003908
@@ -7009,8 +7042,10 @@ sub_8003914:
     push {r4-r7,lr}
     ldr r5, [pc, #0x80039f0-0x8003916-2] // =byte_2000780
     push {r0}
-    add r0, r5, #0  // memBlock
-    mov r1, #0x48   // numWords
+// memBlock
+    add r0, r5, #0
+// numWords
+    mov r1, #0x48 
     bl CpuSet_ZeroFillWord
     pop {r0}
     strb r0, [r5,#0x1] // (byte_2000781 - 0x2000780)
@@ -7043,9 +7078,11 @@ sub_8003940:
     beq loc_8003958
     mov lr, pc
     bx r0
+// memBlock
 loc_8003958:
-    add r0, r5, #0  // memBlock
-    mov r1, #0x48   // numWords
+    add r0, r5, #0
+// numWords
+    mov r1, #0x48 
     bl CpuSet_ZeroFillWord
     pop {r4-r7,pc}
 // end of function sub_8003940
@@ -7057,8 +7094,10 @@ sub_8003962:
     ldrb r0, [r5,#0x2] // (byte_2000782 - 0x2000780)
     tst r0, r0
     bne loc_8003974
-    add r0, r5, #0  // memBlock
-    mov r1, #0x48   // numWords
+// memBlock
+    add r0, r5, #0
+// numWords
+    mov r1, #0x48 
     bl CpuSet_ZeroFillWord
 loc_8003974:
     mov r0, #1
@@ -7164,8 +7203,10 @@ off_80039F8:    .word sub_81419A0+1
 .thumb
 sub_8003A58:
     push {r4-r7,lr}
-    ldr r0, [pc, #0x8003b40-0x8003a5a-2] // =byte_2001010  // memBlock
-    mov r1, #0x48   // numWords
+// memBlock
+    ldr r0, [pc, #0x8003b40-0x8003a5a-2] // =byte_2001010
+// numWords
+    mov r1, #0x48 
     bl CpuSet_ZeroFillWord
     pop {r4-r7,pc}
 // end of function sub_8003A58
@@ -7175,8 +7216,10 @@ sub_8003A64:
     push {r4-r7,lr}
     ldr r5, [pc, #0x8003b40-0x8003a66-2] // =byte_2001010
     push {r0}
-    add r0, r5, #0  // memBlock
-    mov r1, #0x48   // numWords
+// memBlock
+    add r0, r5, #0
+// numWords
+    mov r1, #0x48 
     bl CpuSet_ZeroFillWord
     pop {r0}
     strb r0, [r5,#0x1] // (byte_2001011 - 0x2001010)
@@ -7220,8 +7263,10 @@ sub_8003AB2:
     ldrb r0, [r5,#0x2] // (byte_2001012 - 0x2001010)
     tst r0, r0
     bne loc_8003AC4
-    add r0, r5, #0  // memBlock
-    mov r1, #0x48   // numWords
+// memBlock
+    add r0, r5, #0
+// numWords
+    mov r1, #0x48 
     bl CpuSet_ZeroFillWord
 loc_8003AC4:
     mov r0, #1
@@ -7726,7 +7771,7 @@ off_8003EC4:    .word loc_80C4E58+1
     .word loc_80C8FFC+1
     .word loc_80C91A0+1
     .word loc_80C93CC+1
-    .word loc_80C96A0+1
+    .word sub_80C96A0+1
     .word locret_80C980C+1
     .word locret_80C9814+1
     .word loc_80C9824+1
@@ -7750,7 +7795,7 @@ off_8003EC4:    .word loc_80C4E58+1
     .word loc_80CB900+1
     .word loc_80CBB44+1
     .word loc_80CC044+1
-    .word loc_80CC0E8+1
+    .word sub_80CC0E8+1
     .word loc_80CC4C4+1
     .word loc_80CC5A8+1
     .word loc_80CC76C+1
@@ -7758,10 +7803,10 @@ off_8003EC4:    .word loc_80C4E58+1
     .word loc_80CCA40+1
     .word loc_80CCC48+1
     .word loc_80CCD70+1
-    .word loc_80CCFDC+1
+    .word sub_80CCFDC+1
     .word loc_80CD2EC+1
     .word loc_80CD4EC+1
-    .word loc_80CD8EC+1
+    .word sub_80CD8EC+1
     .word loc_80CDD44+1
     .word loc_80CDF84+1
     .word loc_80CE118+1
@@ -7770,9 +7815,9 @@ off_8003EC4:    .word loc_80C4E58+1
     .word loc_80CE70C+1
     .word loc_80CE81C+1
     .word loc_80CEB00+1
-    .word loc_80CEE78+1
-    .word loc_80CF0D0+1
-    .word loc_80CF3BE+1
+    .word sub_80CEE78+1
+    .word sub_80CF0D0+1
+    .word sub_80CF3BE+1
     .word loc_80CF5C8+1
     .word loc_80CF7F0+1
     .word loc_80CF954+1
@@ -7795,17 +7840,17 @@ off_8003EC4:    .word loc_80C4E58+1
     .word loc_80D1A08+1
     .word loc_80D1B48+1
     .word loc_80D1C20+1
-    .word loc_80D2034+1
+    .word sub_80D2034+1
     .word sub_80D2290+1
     .word loc_80D2460+1
-    .word loc_80D25D4+1
+    .word sub_80D25D4+1
     .word loc_80D2A94+1
     .word loc_80D2BDC+1
     .word loc_80D2EBC+1
     .word loc_80D30D0+1
-    .word loc_80D34CC+1
+    .word sub_80D34CC+1
     .word loc_80D385C+1
-    .word loc_80D39BC+1
+    .word sub_80D39BC+1
     .word loc_80D4088+1
     .word loc_80D4440+1
     .word loc_80D46B8+1
@@ -7829,7 +7874,7 @@ off_8003EC4:    .word loc_80C4E58+1
     .word loc_80D6A20+1
     .word loc_80D6BD4+1
     .word loc_80D6D80+1
-    .word loc_80D6EE0+1
+    .word sub_80D6EE0+1
     .word loc_80D7068+1
     .word loc_80D7278+1
     .word loc_80D7400+1
@@ -7868,7 +7913,7 @@ off_8003EC4:    .word loc_80C4E58+1
     .word loc_80DB994+1
     .word loc_80DBB40+1
     .word loc_80DBCEC+1
-    .word loc_80DBEE6+1
+    .word sub_80DBEE6+1
     .word loc_80DC0E8+1
     .word loc_80DC260+1
     .word loc_80DC3F8+1
@@ -8028,7 +8073,7 @@ off_80042C8:    .word loc_80E0548+1
     .word loc_80E2B7C+1
     .word loc_80E2CA4+1
     .word loc_80E2E34+1
-    .word loc_80E2F56+1
+    .word sub_80E2F56+1
     .word loc_80E309C+1
     .word loc_80E3150+1
     .word loc_80E31D8+1
@@ -8045,7 +8090,7 @@ off_80042C8:    .word loc_80E0548+1
     .word loc_80E3FD0+1
     .word loc_80E40EC+1
     .word loc_80E4188+1
-    .word loc_80E4344+1
+    .word sub_80E4344+1
     .word loc_80E440C+1
     .word loc_80E4634+1
     .word loc_80E46D8+1
@@ -8064,7 +8109,7 @@ off_80042C8:    .word loc_80E0548+1
     .word loc_80E5944+1
     .word loc_80E59E8+1
     .word locret_80E5B60+1
-    .word loc_80E5C2C+1
+    .word sub_80E5C2C+1
     .word loc_80E5D44+1
     .word loc_80E5E00+1
     .word loc_80E5ECC+1
@@ -8251,7 +8296,8 @@ loc_80045DC:
     orr r2, r1
     str r2, [r0]
     mov r0, #4
-    add r0, r0, r5  // memBlock
+// memBlock
+    add r0, r0, r5
     mov r1, #0x4e 
     lsl r1, r1, #1
     bl CpuSet_ZeroFillWord
@@ -8437,7 +8483,7 @@ off_8004724:    .word ho_80A4984+1
     .word loc_80A54F0+1
     .word loc_80A57AC+1
     .word loc_80A5AD4+1
-    .word loc_80A6A16+1
+    .word sub_80A6A16+1
     .word loc_80A6E98+1
     .word loc_80A72B4+1
     .word loc_80A77A8+1
@@ -9493,7 +9539,8 @@ sub_8004DF0:
     bl sub_803532C
     bl sub_8021D36
     mov r0, r10
-    ldr r0, [r0,#0x48]  // memBlock
+// memBlock
+    ldr r0, [r0,#0x48]
     mov r1, #0x3c 
     mov r2, #3
     mul r1, r2
@@ -11231,8 +11278,10 @@ loc_80062DA:
     ldr r5, [pc, #0x80063bc-0x80062da-2] // =byte_200A440
     add r5, r5, r0
     bl sub_8006330
-    add r0, r5, #0  // memBlock
-    mov r1, #0x20   // numWords
+// memBlock
+    add r0, r5, #0
+// numWords
+    mov r1, #0x20 
     bl CpuSet_ZeroFillWord
     pop {r5,pc}
 // end of function sub_80062D6
@@ -12680,8 +12729,10 @@ sub_8006D00:
     push {r4-r7,lr}
     ldr r5, [pc, #0x8006e38-0x8006d02-2] // =dword_2001060
     ldr r4, [r5]
-    add r0, r5, #0  // memBlock
-    mov r1, #0x80  // numWords
+// memBlock
+    add r0, r5, #0
+// numWords
+    mov r1, #0x80
     bl CpuSet_ZeroFillWord
     mov r0, #0
     and r4, r0
@@ -13384,16 +13435,22 @@ sub_80071D4:
     push {r4,r5,r7,lr}
     mov r7, #0
     push {r0}
-    ldr r0, [pc, #0x8007320-0x80071da-2] // =dword_2033000  // memBlock
-    ldr r1, [pc, #0x8007324-0x80071dc-4] // =0x6AA0  // numWords
+// memBlock
+    ldr r0, [pc, #0x8007320-0x80071da-2] // =dword_2033000
+// numWords
+    ldr r1, [pc, #0x8007324-0x80071dc-4] // =0x6AA0
     bl CpuSet_ZeroFillWord
-    ldr r0, [pc, #0x8007328-0x80071e2-2] // =unk_2039ADC  // memBlock
+// memBlock
+    ldr r0, [pc, #0x8007328-0x80071e2-2] // =unk_2039ADC
     ldr r1, [pc, #0x800732c-0x80071e4-4] // =unk_203CCE0
-    sub r1, r1, r0  // numWords
+// numWords
+    sub r1, r1, r0
     bl CpuSet_ZeroFillWord
-    ldr r0, [pc, #0x8007330-0x80071ec-4] // =unk_203CDA8  // memBlock
+// memBlock
+    ldr r0, [pc, #0x8007330-0x80071ec-4] // =unk_203CDA8
     ldr r1, [pc, #0x8007334-0x80071ee-2] // =0x2040000
-    sub r1, r1, r0  // numWords
+// numWords
+    sub r1, r1, r0
     bl CpuSet_ZeroFillWord
     bl sub_8006C18
     pop {r0}
@@ -13409,8 +13466,10 @@ loc_8007208:
     add r4, r0, #0
     mov r5, r10
     ldr r5, [r5,#0x18]
-    add r0, r5, #0  // memBlock
-    mov r1, #0xf0  // numWords
+// memBlock
+    add r0, r5, #0
+// numWords
+    mov r1, #0xf0
     bl CpuSet_ZeroFillWord
     str r4, [r5,#0x3c]
     mov r0, #1
@@ -14131,11 +14190,15 @@ unk_80073A0:    .byte 0xCD
 .thumb
 sub_80075CA:
     push {r5,lr}
-    ldr r0, [pc, #0x8007624-0x80075cc-4] // =0x6008000  // memBlock
-    mov r1, #0x40   // numWords
+// memBlock
+    ldr r0, [pc, #0x8007624-0x80075cc-4] // =0x6008000
+// numWords
+    mov r1, #0x40 
     bl CpuSet_ZeroFillWord
-    ldr r0, [pc, #0x8007618-0x80075d4-4] // =0x6008000  // memBlock
-    mov r1, #0x40   // numWords
+// memBlock
+    ldr r0, [pc, #0x8007618-0x80075d4-4] // =0x6008000
+// numWords
+    mov r1, #0x40 
     bl CpuSet_ZeroFillWord
     ldr r0, [pc, #0x80075ec-0x80075dc-4] // =off_80075F0
     bl sub_8000B8E
@@ -15915,8 +15978,10 @@ locret_80084BE:
 .thumb
 sub_80084C0:
     push {r5,lr}
-    ldr r0, [pc, #0x80084cc-0x80084c2-2] // =byte_203CA70  // memBlock
-    mov r1, #0xc  // numWords
+// memBlock
+    ldr r0, [pc, #0x80084cc-0x80084c2-2] // =byte_203CA70
+// numWords
+    mov r1, #0xc
     bl CpuSet_ZeroFillWord
     pop {r5,pc}
 off_80084CC:    .word byte_203CA70
@@ -16503,8 +16568,10 @@ off_8008924:    .word 0x200
 .thumb
 sub_8008928:
     push {lr}
-    ldr r0, [pc, #0x8008934-0x800892a-2] // =byte_203CA70  // memBlock
-    mov r1, #0xc  // numWords
+// memBlock
+    ldr r0, [pc, #0x8008934-0x800892a-2] // =byte_203CA70
+// numWords
+    mov r1, #0xc
     bl CpuSet_ZeroFillWord
     pop {pc}
 off_8008934:    .word byte_203CA70
@@ -17031,8 +17098,10 @@ off_8008D3C:    .word 0x200
 .thumb
 sub_8008D40:
     push {lr}
-    ldr r0, [pc, #0x8008d4c-0x8008d42-2] // =byte_203CA70  // memBlock
-    mov r1, #0xc  // numWords
+// memBlock
+    ldr r0, [pc, #0x8008d4c-0x8008d42-2] // =byte_203CA70
+// numWords
+    mov r1, #0xc
     bl CpuSet_ZeroFillWord
     pop {pc}
 off_8008D4C:    .word byte_203CA70
@@ -17555,8 +17624,10 @@ off_800913C:    .word 0x200
 .thumb
 sub_8009140:
     push {lr}
-    ldr r0, [pc, #0x800914c-0x8009142-2] // =byte_203CA70  // memBlock
-    mov r1, #0xc  // numWords
+// memBlock
+    ldr r0, [pc, #0x800914c-0x8009142-2] // =byte_203CA70
+// numWords
+    mov r1, #0xc
     bl CpuSet_ZeroFillWord
     pop {pc}
 off_800914C:    .word byte_203CA70
@@ -20860,7 +20931,8 @@ sub_800A954:
 sub_800A964:
     push {r4,lr}
     add r4, r0, #0
-    mov r1, #0x50   // numWords
+// numWords
+    mov r1, #0x50 
     bl CpuSet_ZeroFillWord
     add r0, r4, #2
     mov r1, #0xc
@@ -20962,7 +21034,8 @@ batle_clearEnemyFadeinList:
     push {lr}
     mov r0, #0
     bl sub_800AAAE
-    mov r1, #0x80  // numWords
+// numWords
+    mov r1, #0x80
     bl CpuSet_ZeroFillWord
     pop {pc}
 // end of function batle_clearEnemyFadeinList
@@ -21208,8 +21281,10 @@ loc_800AB6C:
 .thumb
 sub_800AB70:
     push {lr}
-    ldr r0, [pc, #0x800ac14-0x800ab72-2] // =unk_203EAE0  // memBlock
-    mov r1, #0x20   // numWords
+// memBlock
+    ldr r0, [pc, #0x800ac14-0x800ab72-2] // =unk_203EAE0
+// numWords
+    mov r1, #0x20 
     bl CpuSet_ZeroFillWord
     pop {pc}
 // end of function sub_800AB70
@@ -22696,7 +22771,8 @@ loc_800B71A:
     blt loc_800B72C
     ldr r1, [pc, #0x800b868-0x800b722-2] // =0x300
     add r0, r0, r1
-    .hword 0x1c00 // add r0, r0, #0  // <mkdata>
+// <mkdata>
+    .hword 0x1c00 // add r0, r0, #0
     bl sub_802F114
 loc_800B72C:
     add r7, #2
@@ -23800,8 +23876,10 @@ sub_800BF5C:
 .thumb
 sub_800BF66:
     push {lr}
-    ldr r0, [pc, #0x800bf84-0x800bf68-4] // =unk_203CF00  // memBlock
-    mov r1, #0xa0  // numWords
+// memBlock
+    ldr r0, [pc, #0x800bf84-0x800bf68-4] // =unk_203CF00
+// numWords
+    mov r1, #0xa0
     bl CpuSet_ZeroFillWord
     pop {pc}
     .balign 4, 0x00
@@ -24292,7 +24370,8 @@ sub_800C4BC:
     str r0, [sp]
     mov r0, #0
     bl sub_800C8C2
-    mov r1, #0x40   // numWords
+// numWords
+    mov r1, #0x40 
     bl CpuSet_ZeroFillWord
     mov r0, #0
     bl sub_800C8C2
@@ -24314,8 +24393,10 @@ loc_800C4F0:
     add r4, #1
     cmp r4, #8
     blt loc_800C4DE
-    ldr r0, [pc, #0x800c584-0x800c4fa-2] // =byte_2039AE0  // memBlock
-    ldr r1, [pc, #0x800c588-0x800c4fc-4] // =0x500  // numWords
+// memBlock
+    ldr r0, [pc, #0x800c584-0x800c4fa-2] // =byte_2039AE0
+// numWords
+    ldr r1, [pc, #0x800c588-0x800c4fc-4] // =0x500
     bl CpuSet_ZeroFillWord
     mov r5, #0
 loc_800C504:
@@ -31262,7 +31343,8 @@ off_800ED28:    .word dword_203F6A0
 .thumb
 object_createAIData:
     push {r4,r5,lr}
-    ldr r0, [pc, #0x800ed78-0x800ed2e-2] // =unk_2034080  // memBlock
+// memBlock
+    ldr r0, [pc, #0x800ed78-0x800ed2e-2] // =unk_2034080
     ldr r3, [pc, #0x800ed7c-0x800ed30-4] // =dword_203F6A0
     ldr r2, [r3]
     mov r1, #1
@@ -31286,15 +31368,20 @@ loc_800ED52:
     orr r2, r1
     str r2, [r3]
     add r4, r0, #0
-    mov r1, #0x7c   // numWords
+// numWords
+    mov r1, #0x7c 
     bl CpuSet_ZeroFillWord
     mov r0, #0x80
-    add r0, r0, r4  // memBlock
-    mov r1, #0x20   // numWords
+// memBlock
+    add r0, r0, r4
+// numWords
+    mov r1, #0x20 
     bl CpuSet_ZeroFillWord
     mov r0, #0xa0
-    add r0, r0, r4  // memBlock
-    mov r1, #0x50   // numWords
+// memBlock
+    add r0, r0, r4
+// numWords
+    mov r1, #0x50 
     bl CpuSet_ZeroFillWord
     add r0, r4, #0
     pop {r4,r5,pc}
@@ -38245,7 +38332,7 @@ loc_8011F9A:
     strb r0, [r6,#0xd]
     add r0, #0x6c 
     ldrb r0, [r6,r0]
-    ldr r2, [pc, #0x8012010-0x8011fa2-2] // =loc_80E98C0
+    ldr r2, [pc, #0x8012010-0x8011fa2-2] // =dword_80E98C0
     mov r1, #0xf
     and r1, r0
     lsl r1, r1, #1
@@ -38283,7 +38370,7 @@ loc_8011FDC:
     strb r0, [r6,#0xd]
     add r0, #0x6c 
     ldrb r0, [r6,r0]
-    ldr r2, [pc, #0x8012014-0x8011fe4-4] // =loc_80E98C0
+    ldr r2, [pc, #0x8012014-0x8011fe4-4] // =dword_80E98C0
     mov r1, #0xf
     and r1, r0
     lsl r1, r1, #1
@@ -38306,8 +38393,8 @@ loc_8011FDC:
     mov r0, #0x11
 locret_801200E:
     pop {pc}
-off_8012010:    .word loc_80E98C0
-off_8012014:    .word loc_80E98C0
+off_8012010:    .word dword_80E98C0
+off_8012014:    .word dword_80E98C0
 // end of function sub_8011FCE
 
 .thumb
@@ -39542,7 +39629,8 @@ loc_8012998:
 .thumb
 sub_801299C:
     push {lr}
-    mov r1, #0x10  // numWords
+// numWords
+    mov r1, #0x10
     bl CpuSet_ZeroFillWord
     pop {pc}
 // end of function sub_801299C
@@ -40945,8 +41033,10 @@ off_8013434:    .word unk_203CE00
 sub_8013438:
     push {r4,lr}
     add r4, r0, #0
-    add r0, r4, #0  // memBlock
-    mov r1, #0x64   // numWords
+// memBlock
+    add r0, r4, #0
+// numWords
+    mov r1, #0x64 
     bl CpuSet_ZeroFillWord
     mov r0, #1
     mov r1, #0x20 
@@ -41022,8 +41112,10 @@ loc_80134B8:
 sub_80134C8:
     push {r4,lr}
     add r4, r0, #0
-    add r0, r4, #0  // memBlock
-    mov r1, #0x64   // numWords
+// memBlock
+    add r0, r4, #0
+// numWords
+    mov r1, #0x64 
     bl CpuSet_ZeroFillWord
     mov r0, #1
     mov r1, #0x20 
@@ -41094,8 +41186,10 @@ off_8013550:    .word 0x1F4
 sub_8013554:
     push {r4,lr}
     add r4, r0, #0
-    add r0, r4, #0  // memBlock
-    mov r1, #0x64   // numWords
+// memBlock
+    add r0, r4, #0
+// numWords
+    mov r1, #0x64 
     bl CpuSet_ZeroFillWord
     mov r0, #0x46 
     strb r0, [r4,#4]
@@ -41172,8 +41266,10 @@ loc_80135DE:
 sub_80135E8:
     push {r4,lr}
     add r4, r0, #0
-    add r0, r4, #0  // memBlock
-    mov r1, #0x64   // numWords
+// memBlock
+    add r0, r4, #0
+// numWords
+    mov r1, #0x64 
     bl CpuSet_ZeroFillWord
     mov r0, #0x4c 
     strb r0, [r4,#4]
@@ -51551,9 +51647,11 @@ sub_801986C:
     lsl r5, r5, #0x1f
     mov r4, r10
     ldr r4, [r4,#0x30]
+// memBlock
 loc_801987C:
-    add r0, r4, #0  // memBlock
-    mov r1, #0xa8  // numWords
+    add r0, r4, #0
+// numWords
+    mov r1, #0xa8
     bl CpuSet_ZeroFillWord
     str r5, [r4,#0x44]
     add r4, #0xa8
@@ -51567,7 +51665,8 @@ loc_801987C:
 sub_8019892:
     push {r4,lr}
     mov r0, r10
-    ldr r0, [r0,#0x30]  // memBlock
+// memBlock
+    ldr r0, [r0,#0x30]
     ldr r3, [pc, #0x80198e4-0x8019898-4] // =dword_2035310
     ldr r2, [r3]
     mov r1, #1
@@ -51584,11 +51683,14 @@ loc_80198AE:
     orr r2, r1
     str r2, [r3]
     add r4, r0, #0
-    mov r1, #0x44   // numWords
+// numWords
+    mov r1, #0x44 
     bl CpuSet_ZeroFillWord
     mov r0, #0x48 
-    add r0, r0, r4  // memBlock
-    mov r1, #0x60   // numWords
+// memBlock
+    add r0, r0, r4
+// numWords
+    mov r1, #0x60 
     bl CpuSet_ZeroFillWord
     add r0, r4, #0
     mov r1, #1
@@ -51772,8 +51874,10 @@ sub_8019F9E:
 .thumb
 sub_8019FA4:
     push {lr}
-    ldr r0, [pc, #0x8019fb0-0x8019fa6-2] // =unk_2034F60  // memBlock
-    mov r1, #0xa0  // numWords
+// memBlock
+    ldr r0, [pc, #0x8019fb0-0x8019fa6-2] // =unk_2034F60
+// numWords
+    mov r1, #0xa0
     bl CpuSet_ZeroFillWord
     pop {pc}
 off_8019FB0:    .word unk_2034F60
@@ -55694,8 +55798,10 @@ off_801BE6C:    .word dword_8019C34
 .thumb
 sub_801BE70:
     push {lr}
-    ldr r0, [pc, #0x801bfe8-0x801be72-2] // =byte_2035280  // memBlock
-    mov r1, #0x60   // numWords
+// memBlock
+    ldr r0, [pc, #0x801bfe8-0x801be72-2] // =byte_2035280
+// numWords
+    mov r1, #0x60 
     bl CpuSet_ZeroFillWord
     mov r2, #0x20 
     ldr r1, [pc, #0x801bfe8-0x801be7c-4] // =byte_2035280
@@ -55703,11 +55809,15 @@ sub_801BE70:
     mov r2, #0
     sub r2, #1
     strh r2, [r1,#0x26] // (word_20352A6 - 0x2035280)
-    ldr r0, [pc, #0x801bea8-0x801be86-2] // =dword_20352E0  // memBlock
-    mov r1, #0x30   // numWords
+// memBlock
+    ldr r0, [pc, #0x801bea8-0x801be86-2] // =dword_20352E0
+// numWords
+    mov r1, #0x30 
     bl CpuSet_ZeroFillWord
-    ldr r0, [pc, #0x801beac-0x801be8e-2] // =byte_203EB50  // memBlock
-    mov r1, #0x50   // numWords
+// memBlock
+    ldr r0, [pc, #0x801beac-0x801be8e-2] // =byte_203EB50
+// numWords
+    mov r1, #0x50 
     bl CpuSet_ZeroFillWord
     ldr r0, [pc, #0x801beb0-0x801be96-2] // =dword_203CA48
     mov r1, #0
@@ -58454,7 +58564,8 @@ off_801D508:    .word 0x40
 off_801D50C:    .word loc_801D510
 loc_801D510:
     lsl r0, r0, #0xc
-    .hword 0x1 // mov r1, r0  // <mkdata>
+// <mkdata>
+    .hword 0x1 // mov r1, r0
     push {lr}
     ldrh r0, [r5,#0x32]
     sub r0, #1
@@ -59000,7 +59111,8 @@ off_801DB50:    .word byte_2035280
 sub_801DB54:
     push {lr}
     mov r0, #1
-    .hword 0x0 // mov r0, r0  // <mkdata>
+// <mkdata>
+    .hword 0x0 // mov r0, r0
     bl sub_801BEC2
     pop {pc}
 // end of function sub_801DB54
@@ -59009,7 +59121,8 @@ sub_801DB54:
 sub_801DB60:
     push {lr}
     mov r0, #1
-    .hword 0x0 // mov r0, r0  // <mkdata>
+// <mkdata>
+    .hword 0x0 // mov r0, r0
     bl sub_801BEB8
     pop {pc}
 // end of function sub_801DB60
@@ -61305,7 +61418,8 @@ sub_801EC90:
     pop {r4,r5,pc}
     .balign 4, 0x00
 off_801ECA8:    .word dword_86E9A0C
-off_801ECAC:    .word unk_30016D0  // <endpool>
+// <endpool>
+off_801ECAC:    .word unk_30016D0
 // end of function sub_801EC90
 
 off_801ECB0:    .word byte_2035280

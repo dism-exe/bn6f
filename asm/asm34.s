@@ -132,7 +132,7 @@ off_812D3E0:    .word unk_2023FC0
     ldr r2, [pc, #0x812d4f4-0x812d49c-4] // =unk_202E144
     mov r3, #0xa
     lsl r3, r3, #0xc
-    ldr r4, [pc, #0x812d4f8-0x812d4a2-2] // =0x200
+    ldr r4, [pc, #0x812d4f8-0x812d4a2-2] // =0x0
     orr r3, r4
     mov r5, #7
     bl sub_8120618
@@ -159,9 +159,10 @@ dword_812D4E8:    .word 0x216
 off_812D4EC:    .word unk_202E10C
 dword_812D4F0:    .word 0x34F
 off_812D4F4:    .word unk_202E144
-loc_812D4F8:
-    lsl r0, r0, #8
-    .hword 0x0 // mov r0, r0  // <mkdata>
+unk_812D4F8:    .byte 0
+    .byte 2
+    .byte 0
+    .byte 0
 .thumb
 sub_812D4FC:
     push {r4-r7,lr}
@@ -881,7 +882,8 @@ loc_812DA84:
     strb r1, [r5,#0xc]
     strb r1, [r5,#3]
     bl sub_8120AB8
-    pop {r0,pc}  // <endpool> <endfile>
+// <endpool> <endfile>
+    pop {r0,pc}
 // end of function sub_812DA60
 
 /*For debugging purposes, connect comment at any range!*/

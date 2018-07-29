@@ -6,49 +6,6 @@ to make the ROM. This file is compiled to define the whole ROM region.
 // assign section to be set to 0x08000000
 .section .r__start, "ax"
 
-// Include all header files for when disassembly is not complete
-.include "start.inc"
-.include "main.inc"
-.include "asm00.inc"
-.include "asm01.inc"
-.include "asm02.inc"
-.include "asm03.inc"
-.include "asm04.inc"
-.include "asm05.inc"
-.include "asm06.inc"
-.include "asm07.inc"
-.include "asm08.inc"
-.include "asm09.inc"
-.include "asm10.inc"
-.include "asm11.inc"
-.include "asm12.inc"
-.include "asm13.inc"
-.include "asm14.inc"
-.include "asm15.inc"
-.include "asm16.inc"
-.include "asm17.inc"
-.include "asm18.inc"
-.include "asm19.inc"
-.include "asm20.inc"
-.include "asm21.inc"
-.include "asm22.inc"
-.include "asm23.inc"
-.include "asm24.inc"
-.include "asm25.inc"
-.include "asm26.inc"
-.include "asm27.inc"
-.include "asm28.inc"
-.include "asm29.inc"
-.include "asm30.inc"
-.include "asm31.inc"
-.include "asm32.inc"
-.include "asm33.inc"
-.include "asm34.inc"
-.include "asm35.inc"
-.include "asm36.inc"
-.include "asm37.inc"
-.include "asm38.inc"
-
 start:
 .include "asm/start.s"
 main:
@@ -83,96 +40,96 @@ asm08:
 asm09:
 .include "asm/asm09.s"
 .incbin "bin/bin09.bin"
-// asm10:
-// .include "asm/asm10.s"
-// .incbin "bin/bin10.bin"
-// asm11:
-// .include "asm/asm11.s"
-// .incbin "bin/bin11.bin"
-// asm12:
-// .include "asm/asm12.s"
-// .incbin "bin/bin12.bin"
-// asm13:
-// .include "asm/asm13.s"
-// .incbin "bin/bin13.bin"
-// asm14:
-// .include "asm/asm14.s"
-// .incbin "bin/bin14.bin"
-// asm15:
-// .include "asm/asm15.s"
-// .incbin "bin/bin15.bin"
-// asm16:
-// .include "asm/asm16.s"
-// .incbin "bin/bin16.bin"
-// asm17:
-// .include "asm/asm17.s"
-// .incbin "bin/bin17.bin"
-// asm18:
-// .include "asm/asm18.s"
-// .incbin "bin/bin18.bin"
-// asm19:
-// .include "asm/asm19.s"
-// .incbin "bin/bin19.bin"
-// asm20:
-// .include "asm/asm20.s"
-// .incbin "bin/bin20.bin"
-// asm21:
-// .include "asm/asm21.s"
-// .incbin "bin/bin21.bin"
-// asm22:
-// .include "asm/asm22.s"
-// .incbin "bin/bin22.bin"
-// asm23:
-// .include "asm/asm23.s"
-// .incbin "bin/bin23.bin"
-// asm24:
-// .include "asm/asm24.s"
-// .incbin "bin/bin24.bin"
-// asm25:
-// .include "asm/asm25.s"
-// .incbin "bin/bin25.bin"
-// asm26:
-// .include "asm/asm26.s"
-// .incbin "bin/bin26.bin"
-// asm27:
-// .include "asm/asm27.s"
-// .incbin "bin/bin27.bin"
-// asm28:
-// .include "asm/asm28.s"
-// .incbin "bin/bin28.bin"
-// asm29:
-// .include "asm/asm29.s"
-// .incbin "bin/bin29.bin"
-// asm30:
-// .include "asm/asm30.s"
-// .incbin "bin/bin30.bin"
-// asm31:
-// .include "asm/asm31.s"
-// .incbin "bin/bin31.bin"
-// asm32:
-// .include "asm/asm32.s"
-// .incbin "bin/bin32.bin"
-// asm33:
-// .include "asm/asm33.s"
-// .incbin "bin/bin33.bin"
-// asm34:
-// .include "asm/asm34.s"
-// .incbin "bin/bin34.bin"
-// asm35:
-// .include "asm/asm35.s"
-// .incbin "bin/bin35.bin"
-// asm36:
-// .include "asm/asm36.s"
-// .incbin "bin/bin36.bin"
-// asm37:
-// .include "asm/asm37.s"
-// .incbin "bin/bin37.bin"
-// asm38:
-// .include "asm/asm38.s"
-// .incbin "bin/bin38.bin"
+asm10:
+.include "asm/asm10.s"
+.incbin "bin/bin10.bin"
+asm11:
+.include "asm/asm11.s"
+.incbin "bin/bin11.bin"
+asm12:
+.include "asm/asm12.s"
+.incbin "bin/bin12.bin"
+asm13:
+.include "asm/asm13.s"
+.incbin "bin/bin13.bin"
+asm14:
+.include "asm/asm14.s"
+.incbin "bin/bin14.bin"
+asm15:
+.include "asm/asm15.s"
+.incbin "bin/bin15.bin"
+asm16:
+.include "asm/asm16.s"
+.incbin "bin/bin16.bin"
+asm17:
+.include "asm/asm17.s"
+.incbin "bin/bin17.bin"
+asm18:
+.include "asm/asm18.s"
+.incbin "bin/bin18.bin"
+asm19:
+.include "asm/asm19.s"
+.incbin "bin/bin19.bin"
+asm20:
+.include "asm/asm20.s"
+.incbin "bin/bin20.bin"
+asm21:
+.include "asm/asm21.s"
+.incbin "bin/bin21.bin"
+asm22:
+.include "asm/asm22.s"
+.incbin "bin/bin22.bin"
+asm23:
+.include "asm/asm23.s"
+.incbin "bin/bin23.bin"
+asm24:
+.include "asm/asm24.s"
+.incbin "bin/bin24.bin"
+asm25:
+.include "asm/asm25.s"
+.incbin "bin/bin25.bin"
+asm26:
+.include "asm/asm26.s"
+.incbin "bin/bin26.bin"
+asm27:
+.include "asm/asm27.s"
+.incbin "bin/bin27.bin"
+asm28:
+.include "asm/asm28.s"
+.incbin "bin/bin28.bin"
+asm29:
+.include "asm/asm29.s"
+.incbin "bin/bin29.bin"
+asm30:
+.include "asm/asm30.s"
+.incbin "bin/bin30.bin"
+asm31:
+.include "asm/asm31.s"
+.incbin "bin/bin31.bin"
+asm32:
+.include "asm/asm32.s"
+.incbin "bin/bin32.bin"
+asm33:
+.include "asm/asm33.s"
+.incbin "bin/bin33.bin"
+asm34:
+.include "asm/asm34.s"
+.incbin "bin/bin34.bin"
+asm35:
+.include "asm/asm35.s"
+.incbin "bin/bin35.bin"
+asm36:
+.include "asm/asm36.s"
+.incbin "bin/bin36.bin"
+asm37:
+.include "asm/asm37.s"
+.incbin "bin/bin37.bin"
+asm38:
+.include "asm/asm38.s"
+.incbin "bin/bin38.bin"
 
 /**/
 // include parts of the ROM not disassembled yet
 // run 'make tail' if this label's location changes to re-compute bin/tail.bin
 tail:
-.incbin "bin/tail.bin"
+// .incbin "bin/tail.bin"

@@ -6,54 +6,54 @@
 
 /* External Symbols */
 .include "asm03.inc"
-.equ sub_803C754, 0x803C754
-.equ sub_803EA60, 0x803EA60
-.equ sub_803EBF4, 0x803EBF4
-.equ sub_8040818, 0x8040818
-.equ sub_80465A0, 0x80465A0
-.equ sub_8046664, 0x8046664
-.equ sub_80466C4, 0x80466C4
+// .extern sub_803C754
+// .extern sub_803EA60
+// .extern sub_803EBF4
+// .extern sub_8040818
+// .extern sub_80465A0
+// .extern sub_8046664
+// .extern sub_80466C4
 
 .include "asm32.inc"
-.equ sub_811980C, 0x811980C
-.equ sub_8119854, 0x8119854
-.equ sub_811F7EC, 0x811F7EC
-.equ sub_811F7F8, 0x811F7F8
-.equ sub_811FA22, 0x811FA22
-.equ sub_811FA98, 0x811FA98
-.equ sub_811FAF4, 0x811FAF4
-.equ sub_811FE7C, 0x811FE7C
-.equ loc_8120018, 0x8120018
-.equ sub_8120194, 0x8120194
-.equ sub_8120228, 0x8120228
-.equ sub_8120390, 0x8120390
-.equ sub_81203E4, 0x81203E4
-.equ sub_8120458, 0x8120458
-.equ sub_81204C4, 0x81204C4
-.equ sub_8120618, 0x8120618
-.equ sub_8120A88, 0x8120A88
-.equ sub_8120AB8, 0x8120AB8
-.equ sub_8120CC8, 0x8120CC8
+// .extern sub_811980C
+// .extern sub_8119854
+// .extern sub_811F7EC
+// .extern sub_811F7F8
+// .extern sub_811FA22
+// .extern sub_811FA98
+// .extern sub_811FAF4
+// .extern sub_811FE7C
+// .extern loc_8120018
+// .extern sub_8120194
+// .extern sub_8120228
+// .extern sub_8120390
+// .extern sub_81203E4
+// .extern sub_8120458
+// .extern sub_81204C4
+// .extern sub_8120618
+// .extern sub_8120A88
+// .extern sub_8120AB8
+// .extern sub_8120CC8
 
 .include "asm37.inc"
-.equ sub_81440D8, 0x81440D8
+// .extern sub_81440D8
 
 .include "asm33.inc"
-.equ dword_8129178, 0x8129178
-.equ dword_8129180, 0x8129180
+// .extern dword_8129178
+// .extern dword_8129180
 
 .include "asm36.inc"
-.equ sub_8132280, 0x8132280
+// .extern sub_8132280
 
 .include "asm00.inc"
-.equ sound_play, 0x80005CC
-.equ sub_8000900, 0x8000900
-.equ sub_800183C, 0x800183C
-.equ sub_80018C2, 0x80018C2
-.equ sub_80018D0, 0x80018D0
-.equ sub_800307C, 0x800307C
-.equ engine_setScreeneffect, 0x8006270
-.equ sub_80062C8, 0x80062C8
+// .extern sound_play
+// .extern sub_8000900
+// .extern sub_800183C
+// .extern sub_80018C2
+// .extern sub_80018D0
+// .extern sub_800307C
+// .extern engine_setScreeneffect
+// .extern sub_80062C8
 
 
 /* Undeclared Symbols */

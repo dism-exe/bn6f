@@ -672,8 +672,10 @@ loc_808FE4E:
 sub_808FE64:
     push {lr}
     ldr r0, [pc, #0x808fea0-0x808fe66-2] // =off_808FDB8
-    ldr r0, [r0,#0x4] // (dword_808FDBC - 0x808fdb8)  // memBlock
-    mov r1, #0x80  // numWords
+// memBlock
+    ldr r0, [r0,#0x4] // (dword_808FDBC - 0x808fdb8)
+// numWords
+    mov r1, #0x80
     bl CpuSet_ZeroFillWord
     mov r0, #0
     pop {pc}
@@ -758,7 +760,7 @@ sub_808FF00:
 loc_808FF10:
     ldrb r1, [r0,#5]
 loc_808FF12:
-    ldr r0, [pc, #0x808ff28-0x808ff12-2] // =loc_808FF2C
+    ldr r0, [pc, #0x808ff28-0x808ff12-2] // =unk_808FF2C
     ldrb r4, [r0,r1]
     strb r4, [r5,#0xa]
     mov r0, #0xb
@@ -769,12 +771,13 @@ loc_808FF12:
 loc_808FF24:
     add r0, r4, #0
     pop {r4,pc}
-off_808FF28:    .word loc_808FF2C
+off_808FF28:    .word unk_808FF2C
+unk_808FF2C:    .byte 1
+    .byte 2
+    .byte 2
+    .byte 2
 // end of function sub_808FF00
 
-loc_808FF2C:
-    lsl r1, r0, #8
-    lsl r2, r0, #8
 .thumb
 sub_808FF30:
     push {lr}
@@ -1123,15 +1126,17 @@ loc_80901AC:
     add r1, r4, #0
     lsl r1, r1, #1
     ldrh r0, [r0,r1]
-    .hword 0x1c00 // add r0, r0, #0  // <mkdata>
+// <mkdata>
+    .hword 0x1c00 // add r0, r0, #0
     bl sub_802F168
     bne loc_80901DC
     mov r6, #1
-    ldr r0, [pc, #0x8090218-0x80901c6-2] // =loc_8090220
+    ldr r0, [pc, #0x8090218-0x80901c6-2] // =unk_8090220
     add r1, r4, #0
     lsl r1, r1, #1
     ldrh r0, [r0,r1]
-    .hword 0x1c00 // add r0, r0, #0  // <mkdata>
+// <mkdata>
+    .hword 0x1c00 // add r0, r0, #0
     bl sub_802F114
     ldrb r0, [r5,#0xb]
     sub r0, #1
@@ -1156,11 +1161,12 @@ sub_80901EC:
     mov r4, #0
     strb r4, [r5,#0xc]
 loc_80901F4:
-    ldr r0, [pc, #0x8090218-0x80901f4-4] // =loc_8090220
+    ldr r0, [pc, #0x8090218-0x80901f4-4] // =unk_8090220
     add r1, r4, #0
     lsl r1, r1, #1
     ldrh r0, [r0,r1]
-    .hword 0x1c00 // add r0, r0, #0  // <mkdata>
+// <mkdata>
+    .hword 0x1c00 // add r0, r0, #0
     bl sub_802F168
     beq loc_809020A
     mov r6, #1
@@ -1175,17 +1181,22 @@ loc_8090210:
     tst r0, r0
     pop {r4,r6,pc}
     .balign 4, 0x00
-off_8090218:    .word loc_8090220
+off_8090218:    .word unk_8090220
 dword_809021C:    .word 0x8090226
+unk_8090220:    .byte 0xEC
+    .byte 0xB
+    .byte 0xED
+    .byte 0xB
+    .byte 0xEE
+    .byte 0xB
+    .byte 0xE9
+    .byte 0xB
+    .byte 0xEA
+    .byte 0xB
+    .byte 0xEB
+    .byte 0xB
 // end of function sub_80901EC
 
-loc_8090220:
-    lsr r4, r5, #0xf
-    lsr r5, r5, #0xf
-    lsr r6, r5, #0xf
-    lsr r1, r5, #0xf
-    lsr r2, r5, #0xf
-    lsr r3, r5, #0xf
 .thumb
 sub_809022C:
     push {r4-r7,lr}
@@ -1302,19 +1313,23 @@ loc_80902EC:
     ldrb r1, [r0,#5]
 loc_80902EE:
     lsl r1, r1, #1
-    ldr r0, [pc, #0x80902fc-0x80902f0-4] // =loc_8090300
+    ldr r0, [pc, #0x80902fc-0x80902f0-4] // =unk_8090300
     ldrh r0, [r0,r1]
-    .hword 0x1c00 // add r0, r0, #0  // <mkdata>
+// <mkdata>
+    .hword 0x1c00 // add r0, r0, #0
     bl sub_802F168
     pop {r4-r7,pc}
-off_80902FC:    .word loc_8090300
+off_80902FC:    .word unk_8090300
+unk_8090300:    .byte 0xE1
+    .byte 0xB
+    .byte 0xE2
+    .byte 0xB
+    .byte 0xE3
+    .byte 0xB
+    .byte 0xD2
+    .byte 0xF
 // end of function sub_80902DC
 
-loc_8090300:
-    lsr r1, r4, #0xf
-    lsr r2, r4, #0xf
-    lsr r3, r4, #0xf
-    lsr r2, r2, #0x1f
 .thumb
 sub_8090308:
     push {r4,lr}
@@ -1347,7 +1362,8 @@ sub_809032C:
     bl sub_8003940
 loc_809033C:
     mov r0, #0
-    pop {pc}  // <endpool> <endfile>
+// <endpool> <endfile>
+    pop {pc}
 // end of function sub_809032C
 
 /*For debugging purposes, connect comment at any range!*/

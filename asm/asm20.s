@@ -39,17 +39,20 @@ sub_807ECD0:
 off_807ED28:    .word off_807EA6C
 off_807ED2C:    .word unk_2037800
 off_807ED30:    .word off_807ED34
-off_807ED34:    .word loc_807ED40
+off_807ED34:    .word unk_807ED40
     .word 0x807ED4E, 0x807ED60
-// end of function sub_807ECD0
-
-loc_807ED40:
-    lsr r4, r3, #0x18
-    sub r4, r3, #4
-    mov r0, #0x1c
-    ldr r3, [pc, #0x807edb8-0x807ed46-2] // =0xFFFFFFFF
-    strh r4, [r3,#0x30]
-    ldrh r4, [r3,#0x38]
+unk_807ED40:    .byte 0x1C
+    .byte 0xE
+    .byte 0x1C
+    .byte 0x1F
+    .byte 0x1C
+    .byte 0x20
+    .byte 0x1C
+    .byte 0x4B 
+    .byte 0x1C
+    .byte 0x86
+    .byte 0x1C
+    .byte 0x8F
     .byte 0xFF
     .byte 0xFF
     .byte 0x1C
@@ -82,6 +85,8 @@ loc_807ED40:
     .byte 0x99
     .byte 0xFF
     .byte 0xFF
+// end of function sub_807ECD0
+
 .thumb
 sub_807ED6C:
     push {lr}
@@ -98,11 +103,18 @@ off_807ED80:    .word off_807ED8C
 off_807ED8C:    .word off_807EB18
     .word 0x807EB68
     .word 0x807EBB8
-// end of function sub_807ED6C
-
-    stc p8, c0, [r8], {7}
-    mrrc p8, 0, r0,r8,c7
-    stc p8, c0, [r8],#0x1c
+    .byte 8
+    .byte 0xEC
+    .byte 7
+    .byte 8
+    .byte 0x58 
+    .byte 0xEC
+    .byte 7
+    .byte 8
+    .byte 0xA8
+    .byte 0xEC
+    .byte 7
+    .byte 8
     .byte 0xFF
     .byte 0xFF
     .byte 0xFF
@@ -111,13 +123,15 @@ off_807EDA8:    .word off_807EB18
     .word 0x807EB68
     .word 0x807EBB8
     .word 0x807ECA8
-off_807EDB8:    .word 0xFFFFFFFF
+    .word 0xFFFFFFFF
 off_807EDBC:    .word off_807EB18
     .word 0x807EB68
     .word 0x807EBB8
     .word 0x807EC58
     .word 0x807ECA8
     .word 0xFFFFFFFF
+// end of function sub_807ED6C
+
 .thumb
 sub_807EDD4:
     push {r4-r7,lr}
@@ -189,9 +203,10 @@ sub_807EE92:
     pop {pc}
     .balign 4, 0x00
 off_807EEA8:    .word pt_807EEAC
+// <endpool> <endfile>
 pt_807EEAC:    .word dword_807EEB8
     .word dword_807EFD4
-    .word dword_807F1E0  // <endpool> <endfile>
+    .word dword_807F1E0
 // end of function sub_807EE92
 
 /*For debugging purposes, connect comment at any range!*/
