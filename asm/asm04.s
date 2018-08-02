@@ -1,6 +1,6 @@
 .include "asm04.inc"
 
-.thumb
+.func .thumb
 sub_804E62C:
     push {r4-r7,lr}
     mov r7, r10
@@ -48,9 +48,9 @@ off_804E698:    .word dword_804E6AC
     .word 0x804E6BE, 0x804E6C2, 0x804E6C6, 0x804E6C8
 dword_804E6AC:    .word 0x151C111C, 0x511C161C, 0x2418131C, 0x1C182518, 0x71CFFFF
     .word 0x141CFFFF, 0xFFFFFFFF, 0x9D1C961C, 0xFFFF1C18
-// end of function sub_804E62C
+.endfunc // end of function sub_804E62C
 
-.thumb
+.func .thumb
 sub_804E6D0:
     push {lr}
     lsl r1, r1, #2
@@ -75,9 +75,9 @@ off_804E70C:    .word 0x804E5D4
 dword_804E714:    .word 0xFFFFFFFF
 off_804E718:    .word 0x804E604
     .word 0xFFFFFFFF
-// end of function sub_804E6D0
+.endfunc // end of function sub_804E6D0
 
-.thumb
+.func .thumb
 sub_804E720:
     push {lr}
     mov r0, r10
@@ -91,7 +91,7 @@ sub_804E720:
 off_804E734:    .word off_804E738
 // <endpool>
 off_804E738:    .word dword_804E74C
-// end of function sub_804E720
+.endfunc // end of function sub_804E720
 
     .word dword_804E87C
     .word dword_804E8D0

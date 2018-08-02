@@ -1,6 +1,6 @@
 .include "start.inc"
 
-.arm
+.func .arm
 start_:
     b loc_80000D0
 dword_8000004:    .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B2411
@@ -76,9 +76,9 @@ loc_80000D0:
     ldr r0, [pc, #0x8000238-0x80001b8-8] // =main_+1
     bx r0
     b start_
-// end of function start_
+.endfunc // end of function start_
 
-.arm
+.func .arm
 start_clearMemory:
     mov r2, #0
 loc_80001C8:
@@ -86,9 +86,9 @@ loc_80001C8:
     str r2, [r0,r1]
     bne loc_80001C8
     bx lr
-// end of function start_clearMemory
+.endfunc // end of function start_clearMemory
 
-.arm
+.func .arm
 // size
 start_copyMemory:
     subs r2, r2, #4
@@ -116,9 +116,9 @@ off_800022C:    .word GeneralLCDStatus_STAT_LYC_
 off_8000230:    .word KeyInterruptControl
 dword_8000234:    .word 0x83FF
 off_8000238:    .word main_+1
-// end of function start_copyMemory
+.endfunc // end of function start_copyMemory
 
-.thumb
+.func .thumb
 start_800023C:
     push {lr}
     ldr r0, [pc, #0x8000248-0x800023e-2] // =sub_3005DA0+1
@@ -127,9 +127,9 @@ start_800023C:
     pop {r0}
     bx r0
 off_8000248:    .word sub_3005DA0+1
-// end of function start_800023C
+.endfunc // end of function start_800023C
 
-.thumb
+.func .thumb
 start_800024C:
     push {lr}
     ldr r2, [pc, #0x8000258-0x800024e-2] // =sub_3005DD4+1
@@ -138,9 +138,9 @@ start_800024C:
     pop {r0}
     bx r0
 off_8000258:    .word sub_3005DD4+1
-// end of function start_800024C
+.endfunc // end of function start_800024C
 
-.thumb
+.func .thumb
 start_dead_800025C:
     push {lr}
     ldr r1, [pc, #0x8000274-0x800025e-2] // =loc_3005DEC+1
@@ -148,9 +148,9 @@ start_dead_800025C:
     bx r1
     pop {r0}
     bx r0
-// end of function start_dead_800025C
+.endfunc // end of function start_dead_800025C
 
-.thumb
+.func .thumb
 start_dead_8000268:
     push {lr}
     ldr r1, [pc, #0x8000278-0x800026a-2] // =loc_3005E02+1
@@ -160,9 +160,9 @@ start_dead_8000268:
     bx r0
 off_8000274:    .word loc_3005DEC+1
 off_8000278:    .word loc_3005E02+1
-// end of function start_dead_8000268
+.endfunc // end of function start_dead_8000268
 
-.thumb
+.func .thumb
 start_800027C:
     push {lr}
     ldr r1, [pc, #0x8000294-0x800027e-2] // =loc_3005E18
@@ -170,9 +170,9 @@ start_800027C:
     bx r1
     pop {r0}
     bx r0
-// end of function start_800027C
+.endfunc // end of function start_800027C
 
-.thumb
+.func .thumb
 start_8000288:
     push {lr}
     ldr r1, [pc, #0x8000298-0x800028a-2] // =loc_3005E2C+1
@@ -182,9 +182,9 @@ start_8000288:
     bx r0
     .word 0x3005E19
 off_8000298:    .word loc_3005E2C+1
-// end of function start_8000288
+.endfunc // end of function start_8000288
 
-.thumb
+.func .thumb
 start_800029C:
     push {lr}
     ldr r1, [pc, #0x80002b4-0x800029e-2] // =loc_3005E60+1
@@ -192,9 +192,9 @@ start_800029C:
     bx r1
     pop {r0}
     bx r0
-// end of function start_800029C
+.endfunc // end of function start_800029C
 
-.thumb
+.func .thumb
 start_80002A8:
     push {lr}
     ldr r1, [pc, #0x80002b8-0x80002aa-2] // =loc_3005E6A+1
@@ -204,6 +204,6 @@ start_80002A8:
     bx r0
 off_80002B4:    .word loc_3005E60+1
 off_80002B8:    .word loc_3005E6A+1
-// end of function start_80002A8
+.endfunc // end of function start_80002A8
 
 /*For debugging purposes, connect comment at any range!*/

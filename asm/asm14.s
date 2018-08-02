@@ -1,6 +1,6 @@
 .include "asm14.inc"
 
-.thumb
+.func .thumb
 sub_8071B50:
     push {r4-r7,lr}
     mov r7, r10
@@ -43,9 +43,9 @@ off_8071BB4:    .word dword_8071BC0
     .word 0x8071BCA, 0x8071BD2
 dword_8071BC0:    .word 0xE1C2B1C, 0x821C7C1C, 0xE1CFFFF, 0x821C7C1C, 0x271CFFFF
     .word 0x1D1C281C, 0x1F1C1E1C, 0xE1C201C, 0xFFFF951C
-// end of function sub_8071B50
+.endfunc // end of function sub_8071B50
 
-.thumb
+.func .thumb
 sub_8071BE4:
     push {lr}
     lsl r1, r1, #2
@@ -69,9 +69,9 @@ off_8071C18:    .word dword_8071670+0x10
 off_8071C24:    .word dword_8071670+0x10
     .word dword_8071670+0x440
     .word 0xFFFFFFFF
-// end of function sub_8071BE4
+.endfunc // end of function sub_8071BE4
 
-.thumb
+.func .thumb
 sub_8071C30:
     push {r4-r7,lr}
     mov r5, r10
@@ -107,7 +107,7 @@ off_8071C9C:    .word off_8071CA8
 off_8071CA8:    .word off_8617068
     .word 0x6008020, 0x8617190, 0x1800, 0x86172E4, 0x3001960
     .word 0x20
-// end of function sub_8071C30
+.endfunc // end of function sub_8071C30
 
 loc_8071CC4:
     push {r4-r7,lr}
@@ -130,7 +130,7 @@ locret_8071CEA:
     mov pc, lr
 locret_8071CEC:
     mov pc, lr
-.thumb
+.func .thumb
 sub_8071CEE:
     push {lr}
     mov r0, r10
@@ -342,9 +342,9 @@ dword_80726C0:    .word 0x16501821, 0x16F7FF1F, 0x16F8FF1F, 0x126FF03, 0x80726D8
     .word 0x508072B, 0x3D11C1FF, 0x2608072B, 0x80990B8, 0x1FF00F2
     .word 0x72B3D01, 0x55250008, 0x8072B, 0x25000000, 0x8072B71
     .word 0x2, 0x0
-// end of function sub_8071CEE
+.endfunc // end of function sub_8071CEE
 
-.thumb
+.func .thumb
 sub_8072B54:
     push {r4-r7,lr}
     mov r5, r10
@@ -360,9 +360,9 @@ sub_8072B54:
 loc_8072B6C:
     str r0, [r5,#0x38]
     pop {r4-r7,pc}
-// end of function sub_8072B54
+.endfunc // end of function sub_8072B54
 
-.thumb
+.func .thumb
 sub_8072B70:
     push {r4-r7,lr}
     mov r5, r10
@@ -389,9 +389,9 @@ loc_8072B88:
 locret_8072BA0:
     pop {r4-r7,pc}
     .balign 4, 0x00
-// end of function sub_8072B70
+.endfunc // end of function sub_8072B70
 
-.thumb
+.func .thumb
 sub_8072BA4:
     push {r4-r7,lr}
     mov r5, r10
@@ -402,7 +402,7 @@ sub_8072BA4:
     str r0, [r5,#0x38]
 // <endpool>
     pop {r4-r7,pc}
-// end of function sub_8072BA4
+.endfunc // end of function sub_8072BA4
 
 dword_8072BB4:    .word 0x1FF
 off_8072BB8:    .word 0x258

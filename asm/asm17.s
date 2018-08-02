@@ -1,6 +1,6 @@
 .include "asm17.inc"
 
-.thumb
+.func .thumb
 sub_807931C:
     push {r4-r7,lr}
     mov r7, r10
@@ -44,9 +44,9 @@ off_8079380:    .word dword_8079388
 dword_8079388:    .word 0x201C0E1C, 0xFFFF4B1C
 dword_8079390:    .word 0x5A180E1C, 0x991C5B18
     .byte 0xFF, 0xFF
-// end of function sub_807931C
+.endfunc // end of function sub_807931C
 
-.thumb
+.func .thumb
 sub_807939A:
     push {lr}
     lsl r1, r1, #2
@@ -70,9 +70,9 @@ off_80793CC:    .word off_80790EC
     .word dword_80790F0+0x1B4
     .word dword_80790F0+0x204
     .word 0xFFFFFFFF
-// end of function sub_807939A
+.endfunc // end of function sub_807939A
 
-.thumb
+.func .thumb
 sub_80793E8:
     push {r4-r7,lr}
     mov r5, r10
@@ -107,7 +107,7 @@ off_8079444:    .word off_807944C
 off_807944C:    .word dword_8618DFC
     .word 0x6008020, 0x8618E40, 0x1800, 0x8618910, 0x3001960
     .word 0x20
-// end of function sub_80793E8
+.endfunc // end of function sub_80793E8
 
 loc_8079468:
     push {r4-r7,lr}
@@ -127,7 +127,7 @@ locret_8079488:
     mov pc, lr
 locret_807948A:
     mov pc, lr
-.thumb
+.func .thumb
 sub_807948C:
     push {lr}
     mov r0, r10
@@ -142,6 +142,6 @@ off_80794A0:    .word pt_80794A4
 // <endpool> <endfile>
 pt_80794A4:    .word dword_80794AC
     .word dword_80794EC
-// end of function sub_807948C
+.endfunc // end of function sub_807948C
 
 /*For debugging purposes, connect comment at any range!*/

@@ -1,6 +1,6 @@
 .include "asm02.inc"
 
-.thumb
+.func .thumb
 sub_8021AA4:
     ldr r1, [pc, #0x8021ab0-0x8021aa4-4] // =dword_8021DA8
     mov r2, #0x2c 
@@ -9,9 +9,9 @@ sub_8021AA4:
     mov pc, lr
     .byte 0, 0
 off_8021AB0:    .word dword_8021DA8
-// end of function sub_8021AA4
+.endfunc // end of function sub_8021AA4
 
-.thumb
+.func .thumb
 sub_8021AB4:
     push {r4,r6,r7,lr}
     mov r2, #0x3c 
@@ -33,9 +33,9 @@ loc_8021ACC:
     cmp r6, #0x3c 
     blt loc_8021ACC
     pop {r4,r6,r7,pc}
-// end of function sub_8021AB4
+.endfunc // end of function sub_8021AB4
 
-.thumb
+.func .thumb
 sub_8021AE0:
     push {lr}
     lsr r1, r0, #9
@@ -44,7 +44,7 @@ sub_8021AE0:
     pop {pc}
     .balign 4, 0x00
 dword_8021AEC:    .word 0xB51001FF
-// end of function sub_8021AE0
+.endfunc // end of function sub_8021AE0
 
     push {r0-r2}
     bl sub_8006E70
@@ -71,7 +71,7 @@ loc_8021B00:
     pop {r3}
     add r0, r3, #0
     pop {r4,pc}
-.thumb
+.func .thumb
 sub_8021B2A:
     push {lr}
     push {r0-r2}
@@ -94,9 +94,9 @@ loc_8021B3C:
     bl sub_8021B5A
     add r0, r3, #0
     pop {pc}
-// end of function sub_8021B2A
+.endfunc // end of function sub_8021B2A
 
-.thumb
+.func .thumb
 sub_8021B5A:
     mov r3, #1
     ldrb r1, [r0]
@@ -113,9 +113,9 @@ loc_8021B6E:
     mov pc, lr
     .balign 4, 0x00
 off_8021B74:    .word 0x1E20
-// end of function sub_8021B5A
+.endfunc // end of function sub_8021B5A
 
-.thumb
+.func .thumb
 sub_8021B78:
     push {lr}
     push {r0-r2}
@@ -129,9 +129,9 @@ loc_8021B84:
     pop {r2}
     strb r2, [r0]
     pop {pc}
-// end of function sub_8021B78
+.endfunc // end of function sub_8021B78
 
-.thumb
+.func .thumb
 sub_8021B92:
     push {r4,lr}
     push {r2}
@@ -157,9 +157,9 @@ loc_8021BB0:
 loc_8021BBC:
     add r0, r3, #0
     pop {r4,pc}
-// end of function sub_8021B92
+.endfunc // end of function sub_8021B92
 
-.thumb
+.func .thumb
 sub_8021BC0:
     push {r4,lr}
     push {r0,r1}
@@ -172,9 +172,9 @@ sub_8021BC0:
 loc_8021BD4:
     mov r0, #0
     pop {r4,pc}
-// end of function sub_8021BC0
+.endfunc // end of function sub_8021BC0
 
-.thumb
+.func .thumb
 sub_8021BD8:
     push {r7,lr}
     push {r0}
@@ -197,9 +197,9 @@ sub_8021BD8:
 loc_8021BFE:
     mov r0, #0
     pop {r7,pc}
-// end of function sub_8021BD8
+.endfunc // end of function sub_8021BD8
 
-.thumb
+.func .thumb
 sub_8021C02:
     push {r4-r7,lr}
     sub sp, sp, #4
@@ -252,9 +252,9 @@ loc_8021C48:
     .byte 0, 0
 off_8021C60:    .word unk_20018EC
 dword_8021C64:    .word 0x1FF
-// end of function sub_8021C02
+.endfunc // end of function sub_8021C02
 
-.thumb
+.func .thumb
 sub_8021C68:
     push {lr}
     mov r0, r10
@@ -266,9 +266,9 @@ sub_8021C68:
     pop {pc}
     .balign 4, 0x00
 dword_8021C78:    .word 0xF00
-// end of function sub_8021C68
+.endfunc // end of function sub_8021C68
 
-.thumb
+.func .thumb
 sub_8021C7C:
     push {r4,r7,lr}
     add r2, r0, #0
@@ -293,9 +293,9 @@ loc_8021C9A:
     add r7, r7, r1
     add r0, r7, r3
     pop {r4,r7,pc}
-// end of function sub_8021C7C
+.endfunc // end of function sub_8021C7C
 
-.thumb
+.func .thumb
 sub_8021CA8:
     push {r4-r7,lr}
     mov r4, #0
@@ -346,18 +346,18 @@ loc_8021CF4:
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_8021D04:    .word 0x140
-// end of function sub_8021CA8
+.endfunc // end of function sub_8021CA8
 
-.thumb
+.func .thumb
 sub_8021D08:
     push {lr}
     ldr r0, [pc, #0x8021d94-0x8021d0a-2] // =unk_203A0A0
     ldr r1, [pc, #0x8021d98-0x8021d0c-4] // =0x2E0
     bl sub_80008C0
     pop {pc}
-// end of function sub_8021D08
+.endfunc // end of function sub_8021D08
 
-.thumb
+.func .thumb
 sub_8021D14:
     push {lr}
     ldr r2, [pc, #0x8021d9c-0x8021d16-2] // =0x170
@@ -371,7 +371,7 @@ sub_8021D14:
     strb r2, [r0,r1]
 locret_8021D28:
     pop {pc}
-// end of function sub_8021D14
+.endfunc // end of function sub_8021D14
 
     ldr r2, [pc, #0x8021d9c-0x8021d2a-2] // =0x170
     mul r2, r0
@@ -379,7 +379,7 @@ locret_8021D28:
     add r0, r0, r2
     ldrb r0, [r0,r1]
     mov pc, lr
-.thumb
+.func .thumb
 sub_8021D36:
     push {lr}
     ldr r0, [pc, #0x8021d6c-0x8021d38-4] // =unk_2000AF0
@@ -412,7 +412,7 @@ off_8021D80:    .word dword_8021D88
 dword_8021D84:    .word 0x8021D8A
 // <endpool>
 dword_8021D88:    .word 0x7E7E0002, 0xE67E7E, 0x0
-// end of function sub_8021D36
+.endfunc // end of function sub_8021D36
 
 off_8021D94:    .word unk_203A0A0
 off_8021D98:    .word 0x2E0

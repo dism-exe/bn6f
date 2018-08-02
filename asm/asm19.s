@@ -1,6 +1,6 @@
 .include "asm19.inc"
 
-.thumb
+.func .thumb
 sub_807CDEC:
     push {r4-r7,lr}
     mov r7, r10
@@ -46,9 +46,9 @@ off_807CE50:    .word dword_807CE60
 dword_807CE60:    .word 0x721C711C, 0xFFFF5A18
 dword_807CE68:    .word 0x1F1C0E1C, 0x721C201C, 0x9B1C4B1C, 0x9C1C931C, 0xFFFF5B18
 dword_807CE7C:    .word 0x811C5F1C, 0x3818951C, 0x3A183918, 0x721CFFFF, 0xFFFF861C
-// end of function sub_807CDEC
+.endfunc // end of function sub_807CDEC
 
-.thumb
+.func .thumb
 sub_807CE90:
     push {lr}
     lsl r1, r1, #2
@@ -90,9 +90,9 @@ off_807CF10:    .word off_807C94C
     .word dword_807C978+0x3D4
     .word dword_807C978+0x424
     .word 0xFFFFFFFF
-// end of function sub_807CE90
+.endfunc // end of function sub_807CE90
 
-.thumb
+.func .thumb
 sub_807CF24:
     push {r4-r7,lr}
     mov r5, r10
@@ -130,7 +130,7 @@ off_807CFA0:    .word off_807CFB0
 off_807CFB0:    .word dword_8618DFC
     .word 0x6008020, 0x8618E40, 0x1800, 0x8618F50, 0x3001960
     .word 0x20
-// end of function sub_807CF24
+.endfunc // end of function sub_807CF24
 
 loc_807CFCC:
     push {r4-r7,lr}
@@ -156,7 +156,7 @@ locret_807CFF8:
     mov pc, lr
 locret_807CFFA:
     mov pc, lr
-.thumb
+.func .thumb
 sub_807CFFC:
     push {lr}
     mov r0, r10
@@ -173,6 +173,6 @@ pt_807D014:    .word dword_807D024
     .word dword_807D0B4
     .word dword_807D1A8
     .word dword_807D210
-// end of function sub_807CFFC
+.endfunc // end of function sub_807CFFC
 
 /*For debugging purposes, connect comment at any range!*/

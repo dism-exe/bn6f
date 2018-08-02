@@ -1,6 +1,6 @@
 .include "asm08.inc"
 
-.thumb
+.func .thumb
 sub_806036C:
     push {r4-r7,lr}
     mov r7, r10
@@ -49,9 +49,9 @@ off_80603D8:    .word dword_80603E8
 dword_80603E8:    .word 0x2118131C, 0x6E1CFFFF, 0x411C581C, 0x911C901C, 0xFFFF4B1C
     .word 0x651CFFFF, 0x25182418
     .byte 0xFF, 0xFF
-// end of function sub_806036C
+.endfunc // end of function sub_806036C
 
-.thumb
+.func .thumb
 sub_8060406:
     push {lr}
     lsl r1, r1, #2
@@ -73,9 +73,9 @@ off_806043C:    .word dword_8060288+0x74
     .word 0xFFFFFFFF
 off_8060444:    .word dword_8060288+0xA4
     .word 0xFFFFFFFF
-// end of function sub_8060406
+.endfunc // end of function sub_8060406
 
-.thumb
+.func .thumb
 sub_806044C:
     push {lr}
     mov r0, r10
@@ -92,6 +92,6 @@ pt_8060464:    .word dword_8060474
     .word dword_80604A0
     .word dword_80605E4
     .word dword_80605E8
-// end of function sub_806044C
+.endfunc // end of function sub_806044C
 
 /*For debugging purposes, connect comment at any range!*/

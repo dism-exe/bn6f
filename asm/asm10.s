@@ -1,6 +1,6 @@
 .include "asm10.inc"
 
-.thumb
+.func .thumb
 sub_80663D0:
     push {r4-r7,lr}
     mov r7, r10
@@ -42,9 +42,9 @@ off_8066430:    .word off_8066434
 off_8066434:    .word dword_806643C
     .word 0x8066446
 dword_806643C:    .word 0xC1C0B1C, 0xE1C1A1C, 0xB1CFFFF, 0x1A1C0C1C, 0xFFFF0E1C
-// end of function sub_80663D0
+.endfunc // end of function sub_80663D0
 
-.thumb
+.func .thumb
 sub_8066450:
     push {lr}
     lsl r1, r1, #2
@@ -68,9 +68,9 @@ off_8066484:    .word off_8066048
     .word dword_8066220+0x108
     .word dword_8066220+0x148
     .word 0xFFFFFFFF
-// end of function sub_8066450
+.endfunc // end of function sub_8066450
 
-.thumb
+.func .thumb
 sub_806649C:
     push {r4-r7,lr}
     mov r5, r10
@@ -105,7 +105,7 @@ off_80664F8:    .word off_8066500
 off_8066500:    .word off_8610B04
     .word 0x6008020, 0x8610C18, 0x1800, 0x8610D64, 0x3001960
     .word 0x20
-// end of function sub_806649C
+.endfunc // end of function sub_806649C
 
 loc_806651C:
     push {r4-r7,lr}
@@ -125,7 +125,7 @@ locret_806653C:
     mov pc, lr
 locret_806653E:
     mov pc, lr
-.thumb
+.func .thumb
 sub_8066540:
     push {lr}
     mov r0, r10
@@ -643,9 +643,9 @@ off_8067914:    .word dword_859E6D0
     .word 0x859E43C, 0x6, 0x859E45C, 0x6, 0x859E43C, 0x18, 0x859E47C
     .word 0x6, 0x859E43C, 0x6, 0x859E47C, 0x6, 0x859E43C, 0x6
     .word 0x859E47C, 0x6, 0x859E43C, 0x6, 0x859E47C, 0x6, 0x1
-// end of function sub_8066540
+.endfunc // end of function sub_8066540
 
-.thumb
+.func .thumb
 sub_8067B5C:
     push {r4-r7,lr}
     mov r7, r10
@@ -690,9 +690,9 @@ off_8067BC0:    .word dword_8067BCC
 dword_8067BCC:    .word 0x461C451C, 0xFFFF2F1C
 dword_8067BD4:    .word 0x461C451C, 0xFFFF2F1C
 dword_8067BDC:    .word 0x461C451C, 0xFFFF2F1C
-// end of function sub_8067B5C
+.endfunc // end of function sub_8067B5C
 
-.thumb
+.func .thumb
 sub_8067BE4:
     push {lr}
     lsl r1, r1, #2
@@ -738,9 +738,9 @@ off_8067C5C:    .word 0x8067754
     .word 0x8067A9C
     .word 0x8067ACC
     .word 0xFFFFFFFF
-// end of function sub_8067BE4
+.endfunc // end of function sub_8067BE4
 
-.thumb
+.func .thumb
 sub_8067C88:
     push {r4-r7,lr}
     mov r5, r10
@@ -776,7 +776,7 @@ off_8067CF4:    .word off_8067D00
 off_8067D00:    .word off_86116C8
     .word 0x6008020, 0x861184C, 0x1800, 0x86119C4, 0x3001960
     .word 0x20
-// end of function sub_8067C88
+.endfunc // end of function sub_8067C88
 
 loc_8067D1C:
     push {r4-r7,lr}
@@ -799,7 +799,7 @@ locret_8067D42:
     mov pc, lr
 locret_8067D44:
     mov pc, lr
-.thumb
+.func .thumb
 sub_8067D46:
     push {lr}
     mov r0, r10
@@ -816,7 +816,7 @@ off_8067D5C:    .word pt_8067D60
 pt_8067D60:    .word dword_8067D6C
     .word dword_8067D84
     .word dword_8067D9C
-// end of function sub_8067D46
+.endfunc // end of function sub_8067D46
 
 dword_8067D6C:    .word 0x305, 0xDC0000, 0xFED60000, 0x100000, 0x4, 0xFF
 dword_8067D84:    .word 0x305, 0xFE520000, 0xFF9C0000, 0x100000, 0x5, 0xFF

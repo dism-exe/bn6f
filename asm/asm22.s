@@ -1,6 +1,6 @@
 .include "asm22.inc"
 
-.thumb
+.func .thumb
 sub_8086F18:
     push {r4-r7,lr}
     ldr r5, [pc, #0x8086fa0-0x8086f1a-2] // =dword_8086A54+708
@@ -40,9 +40,9 @@ unk_8086F58:    .byte 1
     .byte 1
     .byte 3
     .byte 2
-// end of function sub_8086F18
+.endfunc // end of function sub_8086F18
 
-.thumb
+.func .thumb
 sub_8086F5C:
     push {r4-r7,lr}
     ldr r5, [pc, #0x8086fa0-0x8086f5e-2] // =dword_8086A54+708
@@ -134,9 +134,9 @@ off_8086FA0:    .word dword_8086A54+0x2C4
     .byte 0xE3
     .byte 5
     .hword 0xFC0
-// end of function sub_8086F5C
+.endfunc // end of function sub_8086F5C
 
-.thumb
+.func .thumb
 sub_8086FD8:
     push {r4-r7,lr}
     ldrb r0, [r5,#1]
@@ -452,9 +452,9 @@ off_8087114:    .word dword_8086260+0x208
     .byte 0xBD
     .byte 0
     .byte 0
-// end of function sub_8086FD8
+.endfunc // end of function sub_8086FD8
 
-.thumb
+.func .thumb
 sub_80871C0:
     push {lr}
     ldrb r0, [r5,#0xc]
@@ -467,6 +467,6 @@ sub_80871C0:
     .hword 0x0
 // <endpool> <endfile>
 off_80871D4:    .word dword_80871D8
-// end of function sub_80871C0
+.endfunc // end of function sub_80871C0
 
 /*For debugging purposes, connect comment at any range!*/

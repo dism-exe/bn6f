@@ -1,6 +1,6 @@
 .include "asm15.inc"
 
-.thumb
+.func .thumb
 sub_807544C:
     push {r4-r7,lr}
     mov r7, r10
@@ -46,9 +46,9 @@ dword_80754BC:    .word 0x491C3E1C, 0x4B1C4A1C, 0xFFFF0E1C
 dword_80754C8:    .word 0x491C0E1C, 0x4B1C4A1C, 0x491CFFFF, 0x4B1C4A1C, 0xE1C381C
     .word 0x251C951C
     .byte 0xFF, 0xFF
-// end of function sub_807544C
+.endfunc // end of function sub_807544C
 
-.thumb
+.func .thumb
 sub_80754E2:
     push {lr}
     lsl r1, r1, #2
@@ -72,9 +72,9 @@ off_8075520:    .word dword_8074FCC+0x400
     .word dword_8074FCC+0x430
     .word dword_8074FCC+0x90
     .word 0xFFFFFFFF
-// end of function sub_80754E2
+.endfunc // end of function sub_80754E2
 
-.thumb
+.func .thumb
 sub_8075530:
     push {r4-r7,lr}
     mov r5, r10
@@ -148,7 +148,7 @@ off_807559C:    .word off_80755A8
 off_80755A8:    .word off_8617068
     .word 0x6008020, 0x8617190, 0x1800, 0x86185C8, 0x3001960
     .word 0x20
-// end of function sub_8075530
+.endfunc // end of function sub_8075530
 
 loc_80755C4:
     push {r4-r7,lr}
@@ -171,7 +171,7 @@ locret_80755EA:
     mov pc, lr
 locret_80755EC:
     mov pc, lr
-.thumb
+.func .thumb
 sub_80755EE:
     push {lr}
     mov r0, r10
@@ -186,7 +186,7 @@ sub_80755EE:
 off_8075604:    .word off_8075608
 // <endpool>
 off_8075608:    .word dword_8075614
-// end of function sub_80755EE
+.endfunc // end of function sub_80755EE
 
     .word dword_8075708
 // <endfile>

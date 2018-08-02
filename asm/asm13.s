@@ -1,6 +1,6 @@
 .include "asm13.inc"
 
-.thumb
+.func .thumb
 sub_806FC08:
     push {r4-r7,lr}
     mov r7, r10
@@ -53,9 +53,9 @@ dword_806FCB8:    .word 0x121C061C, 0x61CFFFF, 0x61CFFFF, 0xFFFF121C, 0x121C061C
     .word 0xFFFF1B1C, 0x121C061C, 0x61CFFFF, 0x61CFFFF, 0xFFFF5518
     .word 0xFFFF061C, 0xFFFF061C, 0xFFFF061C, 0xFFFF061C, 0xFFFF061C
     .word 0xFFFF061C
-// end of function sub_806FC08
+.endfunc // end of function sub_806FC08
 
-.thumb
+.func .thumb
 sub_806FCF8:
     push {lr}
     lsl r1, r1, #2
@@ -83,9 +83,9 @@ off_806FD0C:    .word off_806FD4C
     .word off_806FD4C
 off_806FD4C:    .word unk_806D820
     .word 0xFFFFFFFF
-// end of function sub_806FCF8
+.endfunc // end of function sub_806FCF8
 
-.thumb
+.func .thumb
 sub_806FD54:
     push {r4-r7,lr}
     mov r5, r10
@@ -383,7 +383,7 @@ off_806FED0:    .word off_8616598
 off_806FEEC:    .word off_8616598
     .word 0x6008020, 0x8616634, 0x1800, 0x8616EC4, 0x3001960
     .word 0x20
-// end of function sub_806FD54
+.endfunc // end of function sub_806FD54
 
 loc_806FF08:
     push {r4-r7,lr}
@@ -423,7 +423,7 @@ off_806FF34:    .word sub_806FF76+1
     .word locret_806FF74+1
 locret_806FF74:
     mov pc, lr
-.thumb
+.func .thumb
 sub_806FF76:
     push {lr}
     cmp r0, #2
@@ -439,9 +439,9 @@ loc_806FF82:
     mov r1, #0x8f
     bl sub_802F110
     pop {pc}
-// end of function sub_806FF76
+.endfunc // end of function sub_806FF76
 
-.thumb
+.func .thumb
 sub_806FF94:
     push {lr}
     cmp r0, #3
@@ -462,9 +462,9 @@ loc_806FFAA:
     mov r1, #0x8f
     bl sub_802F110
     pop {pc}
-// end of function sub_806FF94
+.endfunc // end of function sub_806FF94
 
-.thumb
+.func .thumb
 sub_806FFBC:
     push {lr}
     cmp r0, #3
@@ -480,9 +480,9 @@ loc_806FFC8:
     mov r1, #0x8f
     bl sub_802F110
     pop {pc}
-// end of function sub_806FFBC
+.endfunc // end of function sub_806FFBC
 
-.thumb
+.func .thumb
 sub_806FFDA:
     push {lr}
     mov r0, r10
@@ -512,6 +512,6 @@ pt_806FFF4:    .word dword_8070034
     .word dword_80701E4
     .word dword_80701FC
     .word dword_8070214
-// end of function sub_806FFDA
+.endfunc // end of function sub_806FFDA
 
 /*For debugging purposes, connect comment at any range!*/
