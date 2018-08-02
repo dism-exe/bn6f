@@ -28,13 +28,13 @@ in the 0x2000000 RAM region
 */
 #define s_2034880 (void*)0x2034880)
 #define sBtlPlayer ((Battle*)0x203A9B0)
-#define sBtlEnemyA ((Battle*)0x203AA88)
-#define sBtlEnemyB ((Battle*)0x203AB60)
-#define sBtlEnemyC ((Battle*)0x203AC38)
+#define sBtlEnemyA ((Battle*)0x203AA88) // DEAD: no xrefs. Last @ 203A9B0
+#define sBtlEnemyB ((Battle*)0x203AB60) // DEAD: no xrefs. Last @ 203A9B0
+#define sBtlEnemyC ((Battle*)0x203AC38) // DEAD: no xrefs. Last @ 203A9B0
 /*
   Chaud (ACDC), Subship seller guy
 */
-#define npc_2005F48 ((NPC*) 0x2005F48)
+#define npc_2005F48 ((NPC*) 0x2005F48) // DEAD: no xrefs. Last @ 2005810
 /*
   Note from the past: those are sorta weird
   TODO: check this and see what's up with it
