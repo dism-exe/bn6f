@@ -439,15 +439,15 @@
 
 
 /* Undeclared Symbols */
-.equ unk_2000000, 0x2000000
+.equ timer_2000000, 0x2000000
 .equ unk_2000310, 0x2000310
 .equ byte_2000780, 0x2000780
 .equ byte_2001010, 0x2001010
 .equ dword_2001020, 0x2001020
 .equ dword_2001020, 0x2001020
-.equ byte_2001150, 0x2001150
+.equ reqBBS_bxo_2001150, 0x2001150
 .equ unk_20018EC, 0x20018EC
-.equ byte_2005780, 0x2005780
+.equ sReqBBS_GUI, 0x2005780
 .equ unk_20065C0, 0x20065C0
 .equ unk_20096E0, 0x20096E0
 .equ byte_2009A30, 0x2009A30

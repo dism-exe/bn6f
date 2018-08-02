@@ -1,6 +1,8 @@
 .include "asm08.inc"
 
-.func .thumb
+.func
+ .thumb_func
+.thumb
 sub_806036C:
     push {r4-r7,lr}
     mov r7, r10
@@ -39,6 +41,7 @@ sub_806036C:
     ldr r0, [r0,r1]
     str r0, [r5,#0x64]
     pop {r4-r7,pc}
+.endfunc // sub_806036C
     .balign 4, 0x00
 off_80603C8:    .word off_8060184
 off_80603CC:    .word unk_2037800
@@ -49,9 +52,11 @@ off_80603D8:    .word dword_80603E8
 dword_80603E8:    .word 0x2118131C, 0x6E1CFFFF, 0x411C581C, 0x911C901C, 0xFFFF4B1C
     .word 0x651CFFFF, 0x25182418
     .byte 0xFF, 0xFF
-.endfunc // end of function sub_806036C
 
-.func .thumb
+
+.func
+ .thumb_func
+.thumb
 sub_8060406:
     push {lr}
     lsl r1, r1, #2
@@ -59,6 +64,7 @@ sub_8060406:
     ldr r0, [r0,r1]
     bl sub_8002354
     pop {pc}
+.endfunc // sub_8060406
 off_8060414:    .word off_8060418
 off_8060418:    .word off_8060428
     .word off_8060430
@@ -73,9 +79,11 @@ off_806043C:    .word dword_8060288+0x74
     .word 0xFFFFFFFF
 off_8060444:    .word dword_8060288+0xA4
     .word 0xFFFFFFFF
-.endfunc // end of function sub_8060406
 
-.func .thumb
+
+.func
+ .thumb_func
+.thumb
 sub_806044C:
     push {lr}
     mov r0, r10
@@ -86,12 +94,13 @@ sub_806044C:
     ldr r0, [r1,r0]
     bl loc_8003570
     pop {pc}
+.endfunc // sub_806044C
 off_8060460:    .word pt_8060464
 // <endpool> <endfile>
 pt_8060464:    .word dword_8060474
     .word dword_80604A0
     .word dword_80605E4
     .word dword_80605E8
-.endfunc // end of function sub_806044C
+
 
 /*For debugging purposes, connect comment at any range!*/

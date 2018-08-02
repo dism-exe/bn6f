@@ -616,7 +616,7 @@
 
 
 /* Undeclared Symbols */
-.equ unk_2000000, 0x2000000
+.equ timer_2000000, 0x2000000
 .equ unk_200150C, 0x200150C
 .equ dword_2009380, 0x2009380
 .equ dword_2009384, 0x2009384

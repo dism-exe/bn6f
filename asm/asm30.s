@@ -1,6 +1,8 @@
 .include "asm30.inc"
 
-.func .thumb
+.func
+ .thumb_func
+.thumb
 sub_80AED50:
     push {lr}
     bl sub_80182B4
@@ -16,13 +18,14 @@ sub_80AED50:
     mul r3, r1
     add r0, r0, r3
     pop {pc}
+.endfunc // sub_80AED50
     .byte 0, 0
 off_80AED70:    .word off_80AED74
 // <endpool>
 off_80AED74:    .word off_80AED80
     .word off_80AEE0C
     .word off_80AEE0C
-.endfunc // end of function sub_80AED50
+
 
 off_80AED80:    .word dword_8109AA4
     .word dword_8109BFC

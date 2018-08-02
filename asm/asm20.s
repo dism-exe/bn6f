@@ -1,6 +1,8 @@
 .include "asm20.inc"
 
-.func .thumb
+.func
+ .thumb_func
+.thumb
 sub_807ECD0:
     push {r4-r7,lr}
     mov r7, r10
@@ -36,6 +38,7 @@ sub_807ECD0:
     bl sub_807EE92
     bl sub_8034FB8
     pop {r4-r7,pc}
+.endfunc // sub_807ECD0
 off_807ED28:    .word off_807EA6C
 off_807ED2C:    .word unk_2037800
 off_807ED30:    .word off_807ED34
@@ -85,9 +88,11 @@ unk_807ED40:    .byte 0x1C
     .byte 0x99
     .byte 0xFF
     .byte 0xFF
-.endfunc // end of function sub_807ECD0
 
-.func .thumb
+
+.func
+ .thumb_func
+.thumb
 sub_807ED6C:
     push {lr}
     lsl r1, r1, #2
@@ -95,6 +100,7 @@ sub_807ED6C:
     ldr r0, [r0,r1]
     bl sub_8002354
     pop {pc}
+.endfunc // sub_807ED6C
     .balign 4, 0x00
 off_807ED7C:    .word off_807ED80
 off_807ED80:    .word off_807ED8C
@@ -130,9 +136,11 @@ off_807EDBC:    .word off_807EB18
     .word 0x807EC58
     .word 0x807ECA8
     .word 0xFFFFFFFF
-.endfunc // end of function sub_807ED6C
 
-.func .thumb
+
+.func
+ .thumb_func
+.thumb
 sub_807EDD4:
     push {r4-r7,lr}
     mov r5, r10
@@ -155,6 +163,7 @@ sub_807EDD4:
     ldr r0, [r0,r1]
     bl sub_80304E8
     pop {r4-r7,pc}
+.endfunc // sub_807EDD4
     .balign 4, 0x00
 off_807EE08:    .word off_807EE0C
 off_807EE0C:    .word locret_8001AB4+1
@@ -167,7 +176,7 @@ off_807EE40:    .word off_807EE4C
     .word off_807EE4C
 off_807EE4C:    .word off_8619174
     .word 0x6008020, 0x8619474, 0x1800, 0x0, 0x0, 0x0
-.endfunc // end of function sub_807EDD4
+
 
 loc_807EE68:
     push {r4-r7,lr}
@@ -190,7 +199,9 @@ locret_807EE8E:
     mov pc, lr
 locret_807EE90:
     mov pc, lr
-.func .thumb
+.func
+ .thumb_func
+.thumb
 sub_807EE92:
     push {lr}
     mov r0, r10
@@ -201,12 +212,13 @@ sub_807EE92:
     ldr r0, [r1,r0]
     bl loc_8003570
     pop {pc}
+.endfunc // sub_807EE92
     .balign 4, 0x00
 off_807EEA8:    .word pt_807EEAC
 // <endpool> <endfile>
 pt_807EEAC:    .word dword_807EEB8
     .word dword_807EFD4
     .word dword_807F1E0
-.endfunc // end of function sub_807EE92
+
 
 /*For debugging purposes, connect comment at any range!*/

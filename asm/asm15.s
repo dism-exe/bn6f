@@ -1,6 +1,8 @@
 .include "asm15.inc"
 
-.func .thumb
+.func
+ .thumb_func
+.thumb
 sub_807544C:
     push {r4-r7,lr}
     mov r7, r10
@@ -36,6 +38,7 @@ sub_807544C:
     bl sub_80755EE
     bl sub_8034FB8
     pop {r4-r7,pc}
+.endfunc // sub_807544C
 off_80754A4:    .word off_8074F30
 off_80754A8:    .word unk_2037800
 off_80754AC:    .word off_80754B0
@@ -46,9 +49,11 @@ dword_80754BC:    .word 0x491C3E1C, 0x4B1C4A1C, 0xFFFF0E1C
 dword_80754C8:    .word 0x491C0E1C, 0x4B1C4A1C, 0x491CFFFF, 0x4B1C4A1C, 0xE1C381C
     .word 0x251C951C
     .byte 0xFF, 0xFF
-.endfunc // end of function sub_807544C
 
-.func .thumb
+
+.func
+ .thumb_func
+.thumb
 sub_80754E2:
     push {lr}
     lsl r1, r1, #2
@@ -56,6 +61,7 @@ sub_80754E2:
     ldr r0, [r0,r1]
     bl sub_8002354
     pop {pc}
+.endfunc // sub_80754E2
 off_80754F0:    .word off_80754F4
 off_80754F4:    .word off_8075500
     .word off_8075510
@@ -72,9 +78,11 @@ off_8075520:    .word dword_8074FCC+0x400
     .word dword_8074FCC+0x430
     .word dword_8074FCC+0x90
     .word 0xFFFFFFFF
-.endfunc // end of function sub_80754E2
 
-.func .thumb
+
+.func
+ .thumb_func
+.thumb
 sub_8075530:
     push {r4-r7,lr}
     mov r5, r10
@@ -97,6 +105,7 @@ sub_8075530:
     ldr r0, [r0,r1]
     bl sub_80304E8
     pop {r4-r7,pc}
+.endfunc // sub_8075530
     .balign 4, 0x00
 off_8075564:    .word off_8075568
 off_8075568:    .word locret_8001AB4+1
@@ -148,7 +157,7 @@ off_807559C:    .word off_80755A8
 off_80755A8:    .word off_8617068
     .word 0x6008020, 0x8617190, 0x1800, 0x86185C8, 0x3001960
     .word 0x20
-.endfunc // end of function sub_8075530
+
 
 loc_80755C4:
     push {r4-r7,lr}
@@ -171,7 +180,9 @@ locret_80755EA:
     mov pc, lr
 locret_80755EC:
     mov pc, lr
-.func .thumb
+.func
+ .thumb_func
+.thumb
 sub_80755EE:
     push {lr}
     mov r0, r10
@@ -182,11 +193,12 @@ sub_80755EE:
     ldr r0, [r1,r0]
     bl loc_8003570
     pop {pc}
+.endfunc // sub_80755EE
     .balign 4, 0x00
 off_8075604:    .word off_8075608
 // <endpool>
 off_8075608:    .word dword_8075614
-.endfunc // end of function sub_80755EE
+
 
     .word dword_8075708
 // <endfile>

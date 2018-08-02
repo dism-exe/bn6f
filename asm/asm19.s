@@ -1,6 +1,8 @@
 .include "asm19.inc"
 
-.func .thumb
+.func
+ .thumb_func
+.thumb
 sub_807CDEC:
     push {r4-r7,lr}
     mov r7, r10
@@ -36,6 +38,7 @@ sub_807CDEC:
     bl sub_807CFFC
     bl sub_8034FB8
     pop {r4-r7,pc}
+.endfunc // sub_807CDEC
 off_807CE44:    .word off_807C82C
 off_807CE48:    .word unk_2037800
 off_807CE4C:    .word off_807CE50
@@ -46,9 +49,11 @@ off_807CE50:    .word dword_807CE60
 dword_807CE60:    .word 0x721C711C, 0xFFFF5A18
 dword_807CE68:    .word 0x1F1C0E1C, 0x721C201C, 0x9B1C4B1C, 0x9C1C931C, 0xFFFF5B18
 dword_807CE7C:    .word 0x811C5F1C, 0x3818951C, 0x3A183918, 0x721CFFFF, 0xFFFF861C
-.endfunc // end of function sub_807CDEC
 
-.func .thumb
+
+.func
+ .thumb_func
+.thumb
 sub_807CE90:
     push {lr}
     lsl r1, r1, #2
@@ -56,6 +61,7 @@ sub_807CE90:
     ldr r0, [r0,r1]
     bl sub_8002354
     pop {pc}
+.endfunc // sub_807CE90
     .byte 0, 0
 off_807CEA0:    .word off_807CEA4
 off_807CEA4:    .word off_807CEB4
@@ -90,9 +96,11 @@ off_807CF10:    .word off_807C94C
     .word dword_807C978+0x3D4
     .word dword_807C978+0x424
     .word 0xFFFFFFFF
-.endfunc // end of function sub_807CE90
 
-.func .thumb
+
+.func
+ .thumb_func
+.thumb
 sub_807CF24:
     push {r4-r7,lr}
     mov r5, r10
@@ -115,6 +123,7 @@ sub_807CF24:
     ldr r0, [r0,r1]
     bl sub_80304E8
     pop {r4-r7,pc}
+.endfunc // sub_807CF24
     .balign 4, 0x00
 off_807CF58:    .word off_807CF5C
 off_807CF5C:    .word locret_8001AB4+1
@@ -130,7 +139,7 @@ off_807CFA0:    .word off_807CFB0
 off_807CFB0:    .word dword_8618DFC
     .word 0x6008020, 0x8618E40, 0x1800, 0x8618F50, 0x3001960
     .word 0x20
-.endfunc // end of function sub_807CF24
+
 
 loc_807CFCC:
     push {r4-r7,lr}
@@ -156,7 +165,9 @@ locret_807CFF8:
     mov pc, lr
 locret_807CFFA:
     mov pc, lr
-.func .thumb
+.func
+ .thumb_func
+.thumb
 sub_807CFFC:
     push {lr}
     mov r0, r10
@@ -167,12 +178,13 @@ sub_807CFFC:
     ldr r0, [r1,r0]
     bl loc_8003570
     pop {pc}
+.endfunc // sub_807CFFC
 off_807D010:    .word pt_807D014
 // <endpool> <endfile>
 pt_807D014:    .word dword_807D024
     .word dword_807D0B4
     .word dword_807D1A8
     .word dword_807D210
-.endfunc // end of function sub_807CFFC
+
 
 /*For debugging purposes, connect comment at any range!*/

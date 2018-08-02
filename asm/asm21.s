@@ -1,16 +1,21 @@
 .include "asm21.inc"
 
-.func .thumb
+.func
+ .thumb_func
+.thumb
 sub_8080D90:
     push {lr}
     ldr r0, [pc, #0x8080d9c-0x8080d92-2] // =dword_2009690
     mov r1, #8
     bl sub_80008B4
     pop {pc}
+.endfunc // sub_8080D90
 off_8080D9C:    .word dword_2009690
-.endfunc // end of function sub_8080D90
 
-.func .thumb
+
+.func
+ .thumb_func
+.thumb
 sub_8080DA0:
     push {r4-r7,lr}
     bl sub_8081308
@@ -41,7 +46,8 @@ sub_8080DA0:
     bl sub_8035424
 locret_8080DE8:
     pop {r4-r7,pc}
-.endfunc // end of function sub_8080DA0
+.endfunc // sub_8080DA0
+
 
     push {r4-r7,lr}
     bl sub_808137C
@@ -295,7 +301,9 @@ off_80812F4:    .word off_807EB18
 off_80812FC:    .word dword_80802C4+0x614
     .word dword_806992C+0x354
     .word 0xFFFFFFFF
-.func .thumb
+.func
+ .thumb_func
+.thumb
 sub_8081308:
     push {r4-r7,lr}
     mov r0, r10
@@ -345,14 +353,17 @@ locret_808135C:
 loc_808135E:
     mov r0, #7
     pop {r4-r7,pc}
+.endfunc // sub_8081308
     .balign 4, 0x00
 off_8081364:    .word word_8081368
 word_8081368:    .hword 0x83
 word_808136A:    .hword 0xBE1
     .word 0xBE20183, 0xBE30283, 0xFD20285, 0x0
-.endfunc // end of function sub_8081308
 
-.func .thumb
+
+.func
+ .thumb_func
+.thumb
 sub_808137C:
     push {r4-r7,lr}
     cmp r1, #0x80
@@ -368,6 +379,7 @@ sub_808137C:
 loc_8081392:
     mov r0, #7
     pop {r4-r7,pc}
+.endfunc // sub_808137C
     .balign 4, 0x00
 off_8081398:    .word pt_808139C
 // <endpool> <endfile>
@@ -394,6 +406,6 @@ pt_808139C:    .word dword_80813F8
     .word dword_8081448
     .word dword_808144C
     .word dword_8081450
-.endfunc // end of function sub_808137C
+
 
 /*For debugging purposes, connect comment at any range!*/

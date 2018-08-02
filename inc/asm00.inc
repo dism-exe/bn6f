@@ -1464,17 +1464,17 @@
 
 
 /* Undeclared Symbols */
-.equ unk_2000000, 0x2000000
+.equ timer_2000000, 0x2000000
 .equ dword_2000060, 0x2000060
 .equ unk_2000260, 0x2000260
-.equ unk_20004E0, 0x20004E0
+.equ byte_20004E0, 0x20004E0
 .equ unk_2000670, 0x2000670
 .equ byte_2000780, 0x2000780
 .equ byte_2000781, 0x2000781
 .equ byte_2000782, 0x2000782
 .equ byte_2000783, 0x2000783
 .equ dword_2000784, 0x2000784
-.equ unk_20008A0, 0x20008A0
+.equ byte_20008A0, 0x20008A0
 .equ dword_2000B30, 0x2000B30
 .equ word_2000FA0, 0x2000FA0
 .equ byte_2001010, 0x2001010
@@ -1487,17 +1487,17 @@
 .equ dword_20010E0, 0x20010E0
 .equ dword_2001120, 0x2001120
 .equ dword_20013F0, 0x20013F0
-.equ unk_2001600, 0x2001600
+.equ byte_2001600, 0x2001600
 .equ dword_20018B8, 0x20018B8
 .equ unk_20018C0, 0x20018C0
 .equ dword_20018E8, 0x20018E8
-.equ unk_2001B80, 0x2001B80
-.equ byte_20057B0, 0x20057B0
-.equ byte_20057B1, 0x20057B1
-.equ dword_20057B4, 0x20057B4
-.equ dword_20057D4, 0x20057D4
-.equ dword_20057D8, 0x20057D8
-.equ dword_20057DC, 0x20057DC
+.equ gameState, 0x2001B80
+.equ sReqBBS_GUI, 0x2005780
+.equ sReqBBS_GUI, 0x2005780
+.equ sReqBBS_GUI, 0x2005780
+.equ sReqBBS_GUI, 0x2005780
+.equ sReqBBS_GUI, 0x2005780
+.equ sReqBBS_GUI, 0x2005780
 .equ byte_2006530, 0x2006530
 .equ unk_2006840, 0x2006840
 .equ byte_2006848, 0x2006848
@@ -1517,7 +1517,7 @@
 .equ dword_2009384, 0x2009384
 .equ dword_20093A4, 0x20093A4
 .equ dword_20093A8, 0x20093A8
-.equ unk_20093B0, 0x20093B0
+.equ sToolkit, 0x20093B0
 .equ byte_20094C0, 0x20094C0
 .equ word_20094C2, 0x20094C2
 .equ dword_20094C4, 0x20094C4
@@ -1561,7 +1561,7 @@
 .equ dword_2009F44, 0x2009F44
 .equ dword_2009F48, 0x2009F48
 .equ dword_2009F5C, 0x2009F5C
-.equ dword_2009F60, 0x2009F60
+.equ pCoords, 0x2009F60
 .equ dword_2009F64, 0x2009F64
 .equ word_2009FB2, 0x2009FB2
 .equ word_2009FB4, 0x2009FB4
@@ -1695,7 +1695,7 @@
 .equ word_203401E, 0x203401E
 .equ unk_2034080, 0x2034080
 .equ dword_20340FC, 0x20340FC
-.equ unk_2034880, 0x2034880
+.equ s_2034880, 0x2034880
 .equ byte_20349C0, 0x20349C0
 .equ byte_2034A10, 0x2034A10
 .equ unk_2034A60, 0x2034A60
@@ -1811,7 +1811,7 @@
 .equ unk_203A980, 0x203A980
 .equ unk_203A990, 0x203A990
 .equ unk_203A9A0, 0x203A9A0
-.equ unk_203A9B0, 0x203A9B0
+.equ sBtlPlayer, 0x203A9B0
 .equ unk_203C4A0, 0x203C4A0
 .equ unk_203C4E0, 0x203C4E0
 .equ byte_203C960, 0x203C960

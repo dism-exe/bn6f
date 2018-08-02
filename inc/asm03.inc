@@ -1095,7 +1095,7 @@
 
 
 /* Undeclared Symbols */
-.equ unk_2000000, 0x2000000
+.equ timer_2000000, 0x2000000
 .equ unk_2000070, 0x2000070
 .equ unk_20000A0, 0x20000A0
 .equ unk_2000260, 0x2000260
@@ -1122,7 +1122,7 @@
 .equ unk_2001A04, 0x2001A04
 .equ unk_2001A60, 0x2001A60
 .equ unk_2001ABC, 0x2001ABC
-.equ byte_2005780, 0x2005780
+.equ sReqBBS_GUI, 0x2005780
 .equ byte_2006530, 0x2006530
 .equ unk_2006710, 0x2006710
 .equ dword_2006714, 0x2006714
@@ -1566,7 +1566,7 @@
 .equ unk_2039A00, 0x2039A00
 .equ unk_203A0A0, 0x203A0A0
 .equ unk_203A980, 0x203A980
-.equ unk_203A9B0, 0x203A9B0
+.equ sBtlPlayer, 0x203A9B0
 .equ unk_203C4A0, 0x203C4A0
 .equ unk_203C4E0, 0x203C4E0
 .equ unk_203C6E0, 0x203C6E0

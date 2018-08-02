@@ -192,9 +192,9 @@
 .equ dword_2000AB0, 0x2000AB0
 .equ dword_2000AB4, 0x2000AB4
 .equ dword_2000AB8, 0x2000AB8
-.equ byte_2005780, 0x2005780
-.equ byte_20057B0, 0x20057B0
-.equ byte_20057C0, 0x20057C0
+.equ sReqBBS_GUI, 0x2005780
+.equ sReqBBS_GUI, 0x2005780
+.equ sReqBBS_GUI, 0x2005780
 .equ dword_2005800, 0x2005800
 .equ dword_2005810, 0x2005810
 .equ byte_2009F40, 0x2009F40

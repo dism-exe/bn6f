@@ -1,6 +1,8 @@
 .include "asm16.inc"
 
-.func .thumb
+.func
+ .thumb_func
+.thumb
 sub_8077D00:
     push {r4-r7,lr}
     mov r7, r10
@@ -36,6 +38,7 @@ sub_8077D00:
     bl sub_8077E84
     bl sub_8034FB8
     pop {r4-r7,pc}
+.endfunc // sub_8077D00
 off_8077D58:    .word off_8077618
 off_8077D5C:    .word unk_2037800
 off_8077D60:    .word off_8077D64
@@ -44,9 +47,11 @@ off_8077D64:    .word dword_8077D6C
 dword_8077D6C:    .word 0x671C661C, 0x6A1C681C, 0xFFFF1F1C
 dword_8077D78:    .word 0x531C2B1C, 0x661C1F1C, 0x681C671C, 0x1C186A1C
     .byte 0xFF, 0xFF
-.endfunc // end of function sub_8077D00
 
-.func .thumb
+
+.func
+ .thumb_func
+.thumb
 sub_8077D8A:
     push {lr}
     lsl r1, r1, #2
@@ -54,6 +59,7 @@ sub_8077D8A:
     ldr r0, [r0,r1]
     bl sub_8002354
     pop {pc}
+.endfunc // sub_8077D8A
 off_8077D98:    .word off_8077D9C
 off_8077D9C:    .word off_8077DA4
     .word off_8077DC4
@@ -72,9 +78,11 @@ off_8077DC4:    .word off_8077720
     .word dword_8077724+0x54C
     .word dword_8077724+0x59C
     .word 0xFFFFFFFF
-.endfunc // end of function sub_8077D8A
 
-.func .thumb
+
+.func
+ .thumb_func
+.thumb
 sub_8077DE0:
     push {r4-r7,lr}
     mov r5, r10
@@ -97,6 +105,7 @@ sub_8077DE0:
     ldr r0, [r0,r1]
     bl sub_80304E8
     pop {r4-r7,pc}
+.endfunc // sub_8077DE0
     .balign 4, 0x00
 off_8077E14:    .word off_8077E18
 off_8077E18:    .word locret_8001AB4+1
@@ -109,7 +118,7 @@ off_8077E3C:    .word off_8077E44
 off_8077E44:    .word off_8617068
     .word 0x6008020, 0x8617190, 0x1800, 0x861876C, 0x3001960
     .word 0x20
-.endfunc // end of function sub_8077DE0
+
 
 loc_8077E60:
     push {r4-r7,lr}
@@ -129,7 +138,9 @@ locret_8077E80:
     mov pc, lr
 locret_8077E82:
     mov pc, lr
-.func .thumb
+.func
+ .thumb_func
+.thumb
 sub_8077E84:
     push {lr}
     mov r0, r10
@@ -140,10 +151,11 @@ sub_8077E84:
     ldr r0, [r1,r0]
     bl loc_8003570
     pop {pc}
+.endfunc // sub_8077E84
 off_8077E98:    .word pt_8077E9C
 // <endpool> <endfile>
 pt_8077E9C:    .word dword_8077EA4
     .word dword_8077EF8
-.endfunc // end of function sub_8077E84
+
 
 /*For debugging purposes, connect comment at any range!*/
