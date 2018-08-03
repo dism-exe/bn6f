@@ -10,6 +10,6 @@
 #include "NPC.h"
 #include "OWPlayer.h"
 #include "reqBBS_GUI.h"
-#include "startScreen.h"
+#include "StartScreen.h"
 
 #endif // STRUCTS__STRUCTS_H

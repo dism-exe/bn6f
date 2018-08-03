@@ -14,27 +14,49 @@
 #include "../ChatBoxPropreties.h"
 
 /**
- * This structure is essential in game. It is always available in R10,
+ * This table is essential in game. It is always available in R10,
  * and hosts important other structures the game accesses.
  * Always accessible. Seems to be the toolkit to everything else.
+ Table:
+ 	0x020093B0: 0200A480 0200A270 0200AC40 02009980
+	0x020093C0: 02011C50 02011BB0 02034880 0200F3A0
+	0x020093D0: 02009740 0200A210 030025C0 02009CD0
+	0x020093E0: 020384F0 02009A30 0200A220 02001B80
+	0x020093F0: 02001C04 02001C88 02002178 02002230
+	0x02009400: 02003134 020032C8 0200414C 02004190
+	0x02009410: 0200431C 02004330 02004334 02004338
+	0x02009420: 02004348 020047CC 02004A8C 02004C20
+	0x02009430: 02004E24 02005028 02005030 02005038
+	0x02009440: 4F4DD170 00000000 00000000 00000000
  */
 typedef struct{
+	// 0200A480
 	u8 *jo_gameSubsysSel;          // loc=0x0
+	// 0200A270
 	Joystick *joystick;                // loc=0x4
+	// 0200AC40
 	s_rendering_0200AC40 *sRender_08;                // loc=0x8
+	// 02009980
 	Camera *camera;                // loc=0xC
+	// 02011C50
 	s_02011C50 *unk_10;                // loc=0x10
+	// 02011BB0
 	void *unk_14;                // loc=0x14
+	// 02034880
 	s_02034880 *unk_18;                // loc=0x18
+	// 0200F3A0
 	void *unk_1C;                // loc=0x1C
+	// 02009740
 	void *unk_20;                // loc=0x20
+	// 0200A210
 	u16 *currFrame;                // loc=0x24
 	void *gfx_28;                // loc=0x28
 	ChatBoxPropreties *chatbox;  // loc=0x2C
 	void *unk_30;                // loc=0x30
+	// 02009A30
 	MenuControl *submenu;                // loc=0x34
 	void *unk_38;                // loc=0x38
-	GameState *unk_3C;          // loc=0x3C
+	GameState *gamestate;          // loc=0x3C
 	void *unk_40;                // loc=0x40
 	/*
 	bot dog disappeared while zeroing this
@@ -69,7 +91,7 @@ typedef struct{
 	// size=0x94
 }Toolkit;
 
-// Function Accesses (TODO: MMBN6F)
+// Function Accesses
 /*
 	03005E74? 03005EBA? 0300631C 03006388? 03006B94
 	03006C18 03006C3C 03006C72 03006CD0 030070B0
@@ -156,11 +178,11 @@ typedef struct{
 	0813DC88 0813DE00 0813DFA0 0813E18C 0813E458
 	0813E940 0813E998 0813EC80 08141254 08141330
 	08141370 081416D0 08141E2C 08142138
-Functions: chiefStruct*/
+Functions*/
 
-// Accesses (TODO: MMBN6F)
+// Accesses
 /*
-	name=ChiefStruct, size=0x94
+	name=toolkit, size=0x94
 	0800172C::08001730 u32(0x08), 0800172C::08001744 u32(0x1C), 0800172C::0800174E u32(0x20),
 	0800172C::0800175A u32(0x08), 080015D0::080015D4 u32(0x28), 080015D0::080015E0 u32(0x28),
 	080003DE?::080003E6 u32(0x04), 080002B4?::08000302 u32(0x24), 08000E04?::08000E12 u32(0x40),
@@ -338,6 +360,6 @@ Functions: chiefStruct*/
 	0806392C::08063932 u32(0x14), 08063A48::08063A4C u32(0x3C), 08053508::0805350E u32(0x14),
 	08053670::08053674 u32(0x3C), 08035640::08035646 u32(0x3C),
 
-Accesses: chiefStruct*/
+Accesses*/
 
 #endif /* STRUCT_TOOLKIT_H */

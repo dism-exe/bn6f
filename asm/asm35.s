@@ -2,7 +2,6 @@
 
 .func
 .thumb_func
-
 sub_812EAAC:
     push {r4-r7,lr}
     mov r0, #0
@@ -18,7 +17,6 @@ off_812EAC0:    .word unk_201EE20
 
 .func
 .thumb_func
-
 sub_812EAC4:
     push {r4-r7,lr}
     sub sp, sp, #4
@@ -123,7 +121,6 @@ off_812EB84:    .word dword_812DA94
     b loc_812EB9A
 .func
 .thumb_func
-
 sub_812EB92:
     push {r4-r7,lr}
     mov r2, #0x3c 
@@ -146,7 +143,6 @@ off_812EBB4:    .word dword_812DA94+0x30
 
 .func
 .thumb_func
-
 sub_812EBB8:
     push {r4-r7,lr}
     mov r1, #1
@@ -166,7 +162,6 @@ off_812EBD4:    .word dword_812DA94+0x38
 
 .func
 .thumb_func
-
 sub_812EBD8:
     push {r4-r7,lr}
     sub sp, sp, #4
@@ -211,7 +206,6 @@ loc_812EBFE:
 off_812EC28:    .word word_2023FA0
 .func
 .thumb_func
-
 sub_812EC2C:
     push {r4-r7,lr}
     add r6, r2, #0
@@ -343,7 +337,6 @@ locret_812ED2A:
     pop {r4-r7,pc}
 .func
 .thumb_func
-
 sub_812ED2C:
     ldr r0, [pc, #0x812ed30-0x812ed2c-4] // =unk_2037780
     mov pc, lr
@@ -426,7 +419,6 @@ locret_812ED90:
 off_812EDE0:    .word unk_201E920
 .func
 .thumb_func
-
 sub_812EDE4:
     push {lr}
     ldr r0, [pc, #0x812edf4-0x812ede6-2] // =dword_812DA94+64
@@ -442,7 +434,6 @@ off_812EDF8:    .word dword_812DA94+0x48
 
 .func
 .thumb_func
-
 sub_812EDFC:
     push {r4,lr}
     lsl r1, r1, #2
@@ -462,7 +453,6 @@ off_812EE18:    .word unk_2024F90
 
 .func
 .thumb_func
-
 sub_812EE20:
     push {r4-r7,lr}
     mov r0, #0
@@ -548,7 +538,6 @@ off_812EED8:    .word unk_2030000
     .word 0x1010202, 0x3000000, 0x1020202, 0x1
 .func
 .thumb_func
-
 sub_812EEEC:
     push {r4-r7,lr}
     bl sub_812ED2C
@@ -583,7 +572,6 @@ loc_812EF1A:
 
 .func
 .thumb_func
-
 sub_812EF20:
     push {r4-r7,lr}
     bl sub_812ED2C
@@ -615,7 +603,6 @@ sub_812EF20:
     .word unk_2024F90
 .func
 .thumb_func
-
 sub_812EF60:
     push {r4-r7,lr}
     add r1, r0, #0
@@ -646,7 +633,6 @@ off_812EF9C:    .word dword_86A5D60
 off_812EFA0:    .word unk_2025A70
 .func
 .thumb_func
-
 sub_812EFA4:
     push {r4-r7,lr}
     ldr r7, [pc, #0x812efcc-0x812efa6-2] // =0x21C0
@@ -675,7 +661,6 @@ off_812EFD0:    .word unk_2025A70
 
 .func
 .thumb_func
-
 sub_812EFD4:
     push {r4-r7,lr}
 // <endpool> <endfile>

@@ -1517,7 +1517,7 @@
 .equ dword_2009384, 0x2009384
 .equ dword_20093A4, 0x20093A4
 .equ dword_20093A8, 0x20093A8
-.equ sToolkit, 0x20093B0
+.equ toolkit, 0x20093B0
 .equ byte_20094C0, 0x20094C0
 .equ word_20094C2, 0x20094C2
 .equ dword_20094C4, 0x20094C4

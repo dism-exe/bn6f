@@ -19,9 +19,9 @@ typedef struct {
 	u8 unk_0E;     // loc=0xE
 	u8 unk_0F;     // loc=0xF
 	// size=0x10
-}startScreen;
+}StartScreen;
 
-// Access Functions (TODO: MMBN6F)
+// Access Functions
 /*
 0802F544 0802F574 0802F60C 0802F624 0802F63C
 0802F668 0802F6A4 0802F6B2 0802F710 0802F756

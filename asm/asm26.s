@@ -2,7 +2,6 @@
 
 .func
 .thumb_func
-
 sub_80924D0:
     push {lr}
     bl sub_8005D88

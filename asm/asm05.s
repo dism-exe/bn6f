@@ -2,7 +2,6 @@
 
 .func
 .thumb_func
-
 sub_8052688:
     push {r4-r7,lr}
     mov r7, r10
@@ -57,7 +56,6 @@ dword_8052720:    .word 0x101C091C, 0x231C191C, 0x91CFFFF, 0x91CFFFF, 0x91CFFFF
 
 .func
 .thumb_func
-
 sub_8052764:
     push {lr}
     lsl r1, r1, #2
@@ -101,7 +99,6 @@ dword_80527EC:    .word 0xFFFFFFFF
 
 .func
 .thumb_func
-
 sub_80527F0:
     push {lr}
     mov r0, r10

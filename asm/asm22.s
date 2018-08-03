@@ -2,7 +2,6 @@
 
 .func
 .thumb_func
-
 sub_8086F18:
     push {r4-r7,lr}
     ldr r5, [pc, #0x8086fa0-0x8086f1a-2] // =dword_8086A54+708
@@ -46,7 +45,6 @@ unk_8086F58:    .byte 1
 
 .func
 .thumb_func
-
 sub_8086F5C:
     push {r4-r7,lr}
     ldr r5, [pc, #0x8086fa0-0x8086f5e-2] // =dword_8086A54+708
@@ -142,7 +140,6 @@ off_8086FA0:    .word dword_8086A54+0x2C4
 
 .func
 .thumb_func
-
 sub_8086FD8:
     push {r4-r7,lr}
     ldrb r0, [r5,#1]
@@ -462,7 +459,6 @@ off_8087114:    .word dword_8086260+0x208
 
 .func
 .thumb_func
-
 sub_80871C0:
     push {lr}
     ldrb r0, [r5,#0xc]

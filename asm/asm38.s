@@ -2,7 +2,6 @@
 
 .func
 .thumb_func
-
 sub_81D61DA:
     push {lr}
     ldr r0, [pc, #0x81d6220-0x81d61dc-4] // =sub_803EA68+1
@@ -19,7 +18,6 @@ sub_81D61DA:
 
 .func
 .thumb_func
-
 sub_81D61F0:
     push {lr}
     bl sub_81D6224
@@ -42,7 +40,6 @@ off_81D6220:    .word sub_803EA68+1
 
 .func
 .thumb_func
-
 sub_81D6224:
     push {lr}
     ldr r1, [pc, #0x81d6268-0x81d6226-2] // =byte_20081B0
@@ -88,7 +85,6 @@ off_81D6274:    .word sub_80068E0+1
 
 .func
 .thumb_func
-
 sub_81D6278:
     push {lr}
     push {lr}
@@ -108,7 +104,6 @@ off_81D6294:    .word sub_80005C4+1
 
 .func
 .thumb_func
-
 nullsub_24:
     bx lr
     .balign 4, 0x00
@@ -117,7 +112,6 @@ nullsub_24:
 
 .func
 .thumb_func
-
 sub_81D62A0:
     push {r4-r7,lr}
     bl sub_81D6318
@@ -147,7 +141,6 @@ dword_81D62D0:    .word 0x2005
 
 .func
 .thumb_func
-
 sub_81D62D4:
     push {r4,lr}
     ldr r3, [pc, #0x81d6354-0x81d62d6-2] // =InterruptMasterEnableRegister
@@ -164,7 +157,6 @@ off_81D62E8:    .word dword_3000E70
 
 .func
 .thumb_func
-
 sub_81D62EC:
     push {r4,lr}
     ldr r3, [pc, #0x81d6354-0x81d62ee-2] // =InterruptMasterEnableRegister
@@ -181,7 +173,6 @@ sub_81D62EC:
 
 .func
 .thumb_func
-
 sub_81D6302:
     push {r4,lr}
     ldr r3, [pc, #0x81d6354-0x81d6304-4] // =InterruptMasterEnableRegister
@@ -198,7 +189,6 @@ sub_81D6302:
 
 .func
 .thumb_func
-
 sub_81D6318:
     push {r4,lr}
     ldr r3, [pc, #0x81d6354-0x81d631a-2] // =InterruptMasterEnableRegister
@@ -214,7 +204,6 @@ sub_81D6318:
 
 .func
 .thumb_func
-
 sub_81D632C:
     push {r4,lr}
     ldr r3, [pc, #0x81d6354-0x81d632e-2] // =InterruptMasterEnableRegister
@@ -241,7 +230,6 @@ off_81D635C:    .word dword_3001D60
 
 .func
 .thumb_func
-
 sub_81D6360:
     push {r4,lr}
     ldr r3, [pc, #0x81d6374-0x81d6362-2] // =InterruptMasterEnableRegister
@@ -252,7 +240,6 @@ sub_81D6360:
 
 .func
 .thumb_func
-
 sub_81D636A:
     push {r4,lr}
     ldr r3, [pc, #0x81d6374-0x81d636c-4] // =InterruptMasterEnableRegister
@@ -270,7 +257,6 @@ off_81D637C:    .word sub_81446AC+1
 
 .func
 .thumb_func
-
 sub_81D6390:
     mov r2, #0x1f
     mvn r2, r2
@@ -327,7 +313,6 @@ loc_81D63DE:
     mov pc, lr
 .func
 .thumb_func
-
 sub_81D63F0:
     push {r5,lr}
     cmp r6, #0
@@ -362,7 +347,6 @@ dword_81D6430:    .word 0x3DEF
 
 .func
 .thumb_func
-
 sub_81D6434:
     add r4, r0, #0
     and r4, r1
@@ -385,7 +369,6 @@ sub_81D6434:
 
 .func
 .thumb_func
-
 sub_81D6456:
     mvn r5, r1
     add r4, r0, #0
@@ -408,7 +391,6 @@ sub_81D6456:
 
 .func
 .thumb_func
-
 sub_81D6478:
     push {r5,lr}
     cmp r6, #0
@@ -445,7 +427,6 @@ dword_81D64AC:    .word 0x3005FB0
 
 .func
 .thumb_func
-
 sub_81D64B8:
     ldrsh r1, [r0,r7]
     lsl r0, r0, #0xc
@@ -484,7 +465,6 @@ sub_81D64B8:
 
 .func
 .thumb_func
-
 sub_81D64FA:
     mov r8, r5
     lsl r0, r5, #0x1b
@@ -513,7 +493,6 @@ sub_81D64FA:
 
 .func
 .thumb_func
-
 sub_81D6528:
     push {r5,lr}
     ldrb r7, [r5,#2]
@@ -624,7 +603,6 @@ off_81D6604:    .word loc_8000AC8+1
 
 .func
 .thumb_func
-
 sub_81D6608:
     push {lr}
     ldr r0, [r5,#0x1c]
@@ -715,7 +693,6 @@ off_81D66A4:    .word unk_3001550
 
 .func
 .thumb_func
-
 sub_81D66A8:
     ldr r1, [pc, #0x81d66e0-0x81d66a8-4] // =dword_20093A8
     ldr r1, [r1]
@@ -740,7 +717,6 @@ loc_81D66C2:
 
 .func
 .thumb_func
-
 sub_81D66C8:
     ldr r2, [pc, #0x81d66e0-0x81d66c8-4] // =dword_20093A8
     ldr r3, [r2]
@@ -760,7 +736,6 @@ off_81D66E4:    .word dword_200A890
 
 .func
 .thumb_func
-
 sub_81D66E8:
     push {r5,lr}
     mov r1, r10
@@ -928,7 +903,6 @@ off_81D6810:    .word loc_3006314
 
 .func
 .thumb_func
-
 sub_81D681C:
     push {lr}
     mov r2, #4
@@ -991,7 +965,6 @@ off_81D6888:    .word sub_8031612+1
 
 .func
 .thumb_func
-
 sub_81D688C:
     add r6, r4, #0
     mov r3, r10
@@ -1062,7 +1035,6 @@ locret_81D6902:
 
 .func
 .thumb_func
-
 sub_81D6904:
     push {lr}
     ldrh r3, [r0]
@@ -1085,7 +1057,6 @@ off_81D6924:    .word byte_20098A8
 
 .func
 .thumb_func
-
 sub_81D6928:
     push {lr}
     ldr r3, [pc, #0x81d693c-0x81d692a-2] // =byte_20098A8
@@ -1276,7 +1247,6 @@ off_81D6A8C:    .word dword_20096D0
 off_81D6A90:    .word unk_3002400
 .func
 .thumb_func
-
 sub_81D6A94:
     mov r3, #3
     lsl r3, r3, #8
@@ -1465,7 +1435,6 @@ off_81D6C2C:    .word dword_8006660
 
 .func
 .thumb_func
-
 sub_81D6C30:
     push {lr}
     ldrb r0, [r5,#3]
@@ -1726,7 +1695,6 @@ locret_81D6E1E:
     pop {r4-r7,pc}
 .func
 .thumb_func
-
 sub_81D6E20:
     push {r4-r7,lr}
     mov r4, r8
@@ -1834,7 +1802,6 @@ off_81D6E9C:    .word dword_3002590
 
 .func
 .thumb_func
-
 sub_81D7118:
     push {r0,r6,lr}
     lsl r7, r1, #6
@@ -1913,7 +1880,6 @@ dword_81D719C:    .word 0x5040404
     .word 0x40404
 .func
 .thumb_func
-
 sub_81D71A8:
     push {lr}
     ldrb r1, [r0,#1]
@@ -2483,7 +2449,6 @@ locret_81D7930:
     pop {r4,r6,r7,pc}
 .func
 .thumb_func
-
 sub_81D7932:
     mov r2, #5
     mul r0, r2
@@ -2501,7 +2466,6 @@ dword_81D7940:    .word 0x3007444
 
 .func
 .thumb_func
-
 sub_81D7960:
     push {lr}
     ldrb r0, [r6,#2]
@@ -2539,7 +2503,6 @@ locret_81D79A0:
 
 .func
 .thumb_func
-
 sub_81D79A2:
     push {r4,lr}
     mov r4, #0
@@ -2558,7 +2521,6 @@ loc_81D79B6:
 
 .func
 .thumb_func
-
 sub_81D79BA:
     push {r4,r5,lr}
     mov r4, #0
@@ -2586,7 +2548,6 @@ loc_81D79DE:
 
 .func
 .thumb_func
-
 sub_81D79E2:
     mov r2, #0
     tst r0, r1
@@ -2715,7 +2676,6 @@ locret_81D7B4A:
 off_81D7B4C:    .word unk_2034F60
 .func
 .thumb_func
-
 sub_81D7B50:
     push {r6,r7,lr}
     ldr r2, [r0,#0x34]
@@ -2734,7 +2694,6 @@ locret_81D7B6A:
 
 .func
 .thumb_func
-
 sub_81D7B6C:
     push {r4,lr}
     add r4, r1, #0
@@ -2998,7 +2957,6 @@ locret_81D7D60:
 off_81D7D64:    .word off_8019B78
 .func
 .thumb_func
-
 sub_81D7D68:
     ldr r3, [pc, #0x81d7d7c-0x81d7d68-4] // =unk_2034F60
     lsl r1, r1, #3
@@ -3015,7 +2973,6 @@ off_81D7D7C:    .word unk_2034F60
 
 .func
 .thumb_func
-
 sub_81D7D80:
     ldr r3, [pc, #0x81d7d98-0x81d7d80-4] // =unk_2034F60
     lsl r1, r1, #3
@@ -3057,7 +3014,6 @@ loc_81D7DCE:
     pop {r4,r5,pc}
 .func
 .thumb_func
-
 sub_81D7DE0:
     push {r4-r7,lr}
     add r4, r0, #0
@@ -3149,7 +3105,6 @@ dword_81D7E20:    .word 0x3007924
 
 .func
 .thumb_func
-
 sub_81D7E58:
     sub r3, r0, #1
     cmp r3, #6
@@ -3171,7 +3126,6 @@ off_81D7E74:    .word byte_2039AE0
 
 .func
 .thumb_func
-
 sub_81D7E78:
     lsl r1, r1, #3
     add r0, r0, r1
@@ -3202,7 +3156,6 @@ off_81D7EA0:    .word unk_2034F60
 
 .func
 .thumb_func
-
 sub_81D7EA4:
     push {r4-r6,lr}
     add r4, r0, #0

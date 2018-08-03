@@ -2,7 +2,6 @@
 
 .func
 .thumb_func
-
 sub_8080D90:
     push {lr}
     ldr r0, [pc, #0x8080d9c-0x8080d92-2] // =dword_2009690
@@ -14,7 +13,6 @@ off_8080D9C:    .word dword_2009690
 
 .func
 .thumb_func
-
 sub_8080DA0:
     push {r4-r7,lr}
     bl sub_8081308
@@ -301,7 +299,6 @@ off_80812FC:    .word dword_80802C4+0x614
     .word 0xFFFFFFFF
 .func
 .thumb_func
-
 sub_8081308:
     push {r4-r7,lr}
     mov r0, r10
@@ -360,7 +357,6 @@ word_808136A:    .hword 0xBE1
 
 .func
 .thumb_func
-
 sub_808137C:
     push {r4-r7,lr}
     cmp r1, #0x80

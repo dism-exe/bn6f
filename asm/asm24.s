@@ -2,7 +2,6 @@
 
 .func
 .thumb_func
-
 sub_808BEFC:
     push {lr}
     bl sub_8005D88
@@ -379,7 +378,6 @@ dword_808CB98:    .word 0x13B
 off_808CB9C:    .word dword_808C684+0x3C0
 .func
 .thumb_func
-
 sub_808CBA0:
     push {r4-r7,lr}
     mov r6, #0
@@ -414,7 +412,6 @@ loc_808CBBC:
 
 .func
 .thumb_func
-
 sub_808CBD8:
     push {r4-r7,lr}
     push {r5}
@@ -444,7 +441,6 @@ dword_808CC0C:    .word 0x13B
 
 .func
 .thumb_func
-
 sub_808CC10:
     push {r4-r7,lr}
     mov r4, #0
@@ -467,7 +463,6 @@ loc_808CC2E:
 
 .func
 .thumb_func
-
 sub_808CC34:
     push {r4,r6,lr}
     mov r4, #0
@@ -508,7 +503,6 @@ off_808CC80:    .word dword_808C684+0x2AC
 
 .func
 .thumb_func
-
 sub_808CC84:
     push {lr}
     bl sub_809E1AE
@@ -532,7 +526,6 @@ sub_808CC84:
     pop {pc}
 .func
 .thumb_func
-
 sub_808CCAC:
     push {r4-r7,lr}
     bl sub_809E2B8
@@ -588,7 +581,6 @@ loc_808CCFC:
 
 .func
 .thumb_func
-
 sub_808CD04:
     push {r4-r7,lr}
     ldr r5, [pc, #0x808d030-0x808cd06-2] // =dword_808C684+960
@@ -610,7 +602,6 @@ loc_808CD1C:
 
 .func
 .thumb_func
-
 sub_808CD24:
     push {r4-r7,lr}
     ldr r5, [pc, #0x808d030-0x808cd26-2] // =dword_808C684+960
@@ -650,7 +641,6 @@ dword_808CD78:    .word 0x9DE09DD, 0x9E009DF, 0x9E209E1, 0x9E409E3, 0x9E609E5
 
 .func
 .thumb_func
-
 sub_808CDC4:
     push {r4-r7,lr}
     mov r0, r8
@@ -710,7 +700,6 @@ loc_808CE14:
 
 .func
 .thumb_func
-
 sub_808CE28:
     push {r4-r7,lr}
     mov r0, r8
@@ -755,7 +744,6 @@ loc_808CE68:
 
 .func
 .thumb_func
-
 sub_808CE70:
     push {r4-r7,lr}
     mov r0, r8
@@ -809,7 +797,6 @@ dword_808CF14:    .word 0xFC60FFA, 0x3, 0xFC90FFB, 0x3, 0xFCC0FFC, 0x3, 0xFCF0FF
 
 .func
 .thumb_func
-
 sub_808CF34:
     push {r4-r7,lr}
     mov r4, #0
@@ -828,7 +815,6 @@ loc_808CF4C:
 
 .func
 .thumb_func
-
 sub_808CF50:
     push {r4-r7,lr}
     bl sub_808D084
@@ -868,7 +854,6 @@ unk_808CF84:    .byte 0xDA
 
 .func
 .thumb_func
-
 sub_808CF8C:
     push {r4,lr}
     mov r4, #0
@@ -894,7 +879,6 @@ dword_808CFB4:    .word 0x122
 
 .func
 .thumb_func
-
 sub_808CFB8:
     push {r4-r7,lr}
     ldr r5, [pc, #0x808d030-0x808cfba-2] // =dword_808C684+960
@@ -958,7 +942,6 @@ off_808D030:    .word dword_808C684+0x3C0
 
 .func
 .thumb_func
-
 sub_808D034:
     push {r4,r5,lr}
     push {r0,r1}
@@ -985,7 +968,6 @@ sub_808D034:
 
 .func
 .thumb_func
-
 sub_808D060:
     push {lr}
     bl sub_808D084
@@ -1004,7 +986,6 @@ dword_808D07C:    .word 0x40C0E04, 0xF6FC040A
 
 .func
 .thumb_func
-
 sub_808D084:
     push {lr}
     mov r0, r10
@@ -1022,7 +1003,6 @@ locret_808D096:
 
 .func
 .thumb_func
-
 sub_808D098:
     push {r4-r7,lr}
     push {r0,r1}
@@ -1083,7 +1063,6 @@ byte_808D105:    .byte 0x84
 
 .func
 .thumb_func
-
 sub_808D108:
     push {r4-r6,lr}
     bl sub_8142CB0
@@ -1096,7 +1075,6 @@ sub_808D108:
 
 .func
 .thumb_func
-
 sub_808D11C:
     push {r4-r7,lr}
     ldr r5, [pc, #0x808d16c-0x808d11e-2] // =dword_808C684+960
@@ -1153,7 +1131,6 @@ off_808D16C:    .word dword_808C684+0x3C0
 
 .func
 .thumb_func
-
 sub_808D25C:
     push {lr}
     bl sub_8048F88

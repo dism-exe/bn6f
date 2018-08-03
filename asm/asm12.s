@@ -2,7 +2,6 @@
 
 .func
 .thumb_func
-
 sub_806D8F8:
     push {r4-r7,lr}
     mov r7, r10
@@ -54,7 +53,6 @@ dword_806D99C:    .word 0x121C061C, 0x61CFFFF, 0x1B1CFFFF, 0x61C1C1C, 0xFFFF121C
 
 .func
 .thumb_func
-
 sub_806D9FC:
     push {lr}
     lsl r1, r1, #2
@@ -86,7 +84,6 @@ off_806DA50:    .word unk_806D820
 
 .func
 .thumb_func
-
 sub_806DA58:
     push {r4-r7,lr}
     mov r5, r10
@@ -191,7 +188,6 @@ locret_806DC78:
     mov pc, lr
 .func
 .thumb_func
-
 sub_806DC7A:
     push {lr}
     cmp r0, #2
@@ -211,7 +207,6 @@ loc_806DC86:
 
 .func
 .thumb_func
-
 sub_806DC98:
     push {lr}
     cmp r0, #4
@@ -231,7 +226,6 @@ loc_806DCA4:
 
 .func
 .thumb_func
-
 sub_806DCB6:
     push {lr}
     cmp r0, #5
@@ -251,7 +245,6 @@ loc_806DCC2:
 
 .func
 .thumb_func
-
 sub_806DCD4:
     push {lr}
     mov r0, r10

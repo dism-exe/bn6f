@@ -2,7 +2,6 @@
 
 .func
 .thumb_func
-
 main_:
     bl main_static_80004A4
     bl sub_8001514
@@ -76,7 +75,6 @@ main_jt_subsystem:    .word Load_cb_802F544+1
 
 .func
 .thumb_func
-
 main_static_awaitFrame_80003A0:
     push {lr}
 loc_80003A2:
@@ -104,7 +102,6 @@ off_80003CC:    .word GeneralLCDStatus_STAT_LYC_
 
 .func
 .thumb_func
-
 main_static_await_80003D0:
     push {lr}
     ldr r0, [pc, #0x80003e0-0x80003d2-2] // =GeneralLCDStatus_STAT_LYC_
@@ -120,7 +117,6 @@ off_80003E0:    .word GeneralLCDStatus_STAT_LYC_
 
 .func
 .thumb_func
-
 main_static_80003E4:
     mov r7, r10
     ldr r0, [r7,#4]
@@ -186,7 +182,6 @@ dword_8000450:    .word 0x3FF
 
 .func
 .thumb_func
-
 main_static_8000454:
     push {r4-r7,lr}
     bl engine_isScreeneffectAnimating
@@ -229,7 +224,6 @@ locret_80004A2:
 
 .func
 .thumb_func
-
 main_static_80004A4:
     mov r0, #1
     b loc_80004AA
@@ -299,7 +293,6 @@ off_800056C:    .word dword_2009930
 
 .func
 .thumb_func
-
 main_static_8000570:
     push {lr}
     bl sub_814E8A0

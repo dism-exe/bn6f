@@ -120,7 +120,6 @@ off_8000238:    .word main_+1
 
 .func
 .thumb_func
-
 start_800023C:
     push {lr}
     ldr r0, [pc, #0x8000248-0x800023e-2] // =sub_3005DA0+1
@@ -133,7 +132,6 @@ off_8000248:    .word sub_3005DA0+1
 
 .func
 .thumb_func
-
 start_800024C:
     push {lr}
     ldr r2, [pc, #0x8000258-0x800024e-2] // =sub_3005DD4+1
@@ -146,7 +144,6 @@ off_8000258:    .word sub_3005DD4+1
 
 .func
 .thumb_func
-
 start_dead_800025C:
     push {lr}
     ldr r1, [pc, #0x8000274-0x800025e-2] // =loc_3005DEC+1
@@ -158,7 +155,6 @@ start_dead_800025C:
 
 .func
 .thumb_func
-
 start_dead_8000268:
     push {lr}
     ldr r1, [pc, #0x8000278-0x800026a-2] // =loc_3005E02+1
@@ -172,7 +168,6 @@ off_8000278:    .word loc_3005E02+1
 
 .func
 .thumb_func
-
 start_800027C:
     push {lr}
     ldr r1, [pc, #0x8000294-0x800027e-2] // =loc_3005E18
@@ -184,7 +179,6 @@ start_800027C:
 
 .func
 .thumb_func
-
 start_8000288:
     push {lr}
     ldr r1, [pc, #0x8000298-0x800028a-2] // =loc_3005E2C+1
@@ -198,7 +192,6 @@ off_8000298:    .word loc_3005E2C+1
 
 .func
 .thumb_func
-
 start_800029C:
     push {lr}
     ldr r1, [pc, #0x80002b4-0x800029e-2] // =loc_3005E60+1
@@ -210,7 +203,6 @@ start_800029C:
 
 .func
 .thumb_func
-
 start_80002A8:
     push {lr}
     ldr r1, [pc, #0x80002b8-0x80002aa-2] // =loc_3005E6A+1

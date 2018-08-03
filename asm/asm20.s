@@ -2,7 +2,6 @@
 
 .func
 .thumb_func
-
 sub_807ECD0:
     push {r4-r7,lr}
     mov r7, r10
@@ -91,7 +90,6 @@ unk_807ED40:    .byte 0x1C
 
 .func
 .thumb_func
-
 sub_807ED6C:
     push {lr}
     lsl r1, r1, #2
@@ -138,7 +136,6 @@ off_807EDBC:    .word off_807EB18
 
 .func
 .thumb_func
-
 sub_807EDD4:
     push {r4-r7,lr}
     mov r5, r10
@@ -198,7 +195,6 @@ locret_807EE90:
     mov pc, lr
 .func
 .thumb_func
-
 sub_807EE92:
     push {lr}
     mov r0, r10
