@@ -773,7 +773,7 @@ off_8040380:    .word unk_2034A04
 chatbox_runScript:
     push {r4-r6,lr}
     mov r5, r10
-    ldr r5, [r5,#0x2c] // ChatBoxPropreties.pScriptCursor
+    ldr r5, [r5,#0x2c] // Toolkit.chatbox
     ldr r2, [r5,#0x4c] // ChatBoxPropreties.unk_4C
     ldr r3, [r5,#0x50] // ChatBoxPropreties.unk_50
     ldr r4, [r5,#0x54] // ChatBoxPropreties.unk_54
@@ -3107,18 +3107,9 @@ loc_8041546:
     bl sub_8040920
     mov r0, #0
     pop {pc}
-    .byte 0xF2
-    .byte 1
-    .byte 0
-    .byte 0
-    .byte 0xF3
-    .byte 1
-    .byte 0
-    .byte 0
-    .byte 0xF0
-    .byte 1
-    .byte 0
-    .byte 0
+    .word 0x1F2
+    .word 0x1F3
+    .word 0x1F0
 .endfunc // sub_80414A8
 
 .func
