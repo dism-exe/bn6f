@@ -1,8 +1,8 @@
 .include "asm12.inc"
 
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_806D8F8:
     push {r4-r7,lr}
     mov r7, r10
@@ -38,7 +38,6 @@ sub_806D8F8:
     bl sub_806DCD4
     bl sub_8034FB8
     pop {r4-r7,pc}
-.endfunc // sub_806D8F8
 off_806D950:    .word off_806D6B0
 off_806D954:    .word unk_2037800
 off_806D958:    .word off_806D95C
@@ -51,11 +50,11 @@ dword_806D99C:    .word 0x121C061C, 0x61CFFFF, 0x1B1CFFFF, 0x61C1C1C, 0xFFFF121C
     .word 0x121C061C, 0x5E1CFFFF, 0x121C061C, 0x61CFFFF, 0x5C1CFFFF
     .word 0xFFFF061C, 0xFFFF061C, 0x61C5C1C, 0x5C1CFFFF, 0xFFFF061C
     .word 0x61C5C1C, 0x5C1CFFFF, 0xFFFF061C, 0xFFFF061C
-
+.endfunc // sub_806D8F8
 
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_806D9FC:
     push {lr}
     lsl r1, r1, #2
@@ -63,7 +62,6 @@ sub_806D9FC:
     ldr r0, [r0,r1]
     bl sub_8002354
     pop {pc}
-.endfunc // sub_806D9FC
     .balign 4, 0x00
 off_806DA0C:    .word off_806DA10
 off_806DA10:    .word off_806DA50
@@ -84,11 +82,11 @@ off_806DA10:    .word off_806DA50
     .word off_806DA50
 off_806DA50:    .word unk_806D820
     .word 0xFFFFFFFF
-
+.endfunc // sub_806D9FC
 
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_806DA58:
     push {r4-r7,lr}
     mov r5, r10
@@ -111,7 +109,6 @@ sub_806DA58:
     ldr r0, [r0,r1]
     bl sub_80304E8
     pop {r4-r7,pc}
-.endfunc // sub_806DA58
     .balign 4, 0x00
 off_806DA8C:    .word off_806DA90
 off_806DA90:    .word locret_8001AB4+1
@@ -152,7 +149,7 @@ off_806DBD4:    .word off_8616598
 off_806DBF0:    .word off_8616598
     .word 0x6008020, 0x8616634, 0x1800, 0x8616EC4, 0x3001960
     .word 0x20
-
+.endfunc // sub_806DA58
 
 loc_806DC0C:
     push {r4-r7,lr}
@@ -193,8 +190,8 @@ off_806DC38:    .word locret_806DC78+1
 locret_806DC78:
     mov pc, lr
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_806DC7A:
     push {lr}
     cmp r0, #2
@@ -212,10 +209,9 @@ loc_806DC86:
     pop {pc}
 .endfunc // sub_806DC7A
 
-
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_806DC98:
     push {lr}
     cmp r0, #4
@@ -233,10 +229,9 @@ loc_806DCA4:
     pop {pc}
 .endfunc // sub_806DC98
 
-
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_806DCB6:
     push {lr}
     cmp r0, #5
@@ -254,10 +249,9 @@ loc_806DCC2:
     pop {pc}
 .endfunc // sub_806DCB6
 
-
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_806DCD4:
     push {lr}
     mov r0, r10
@@ -268,7 +262,6 @@ sub_806DCD4:
     ldr r0, [r1,r0]
     bl loc_8003570
     pop {pc}
-.endfunc // sub_806DCD4
 off_806DCE8:    .word pt_806DCEC
 // <endpool> <endfile>
 pt_806DCEC:    .word dword_806DD2C
@@ -287,6 +280,6 @@ pt_806DCEC:    .word dword_806DD2C
     .word dword_806DF18
     .word dword_806DF44
     .word dword_806DF70
-
+.endfunc // sub_806DCD4
 
 /*For debugging purposes, connect comment at any range!*/

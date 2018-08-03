@@ -1,15 +1,14 @@
 .include "asm27.inc"
 
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_80946C4:
     push {r4-r7,lr}
     ldr r0, [pc, #0x80946d0-0x80946c6-2] // =dword_80946D4
     bl sub_8000B30
     mov r0, #0
     pop {r4-r7,pc}
-.endfunc // sub_80946C4
 off_80946D0:    .word dword_80946D4
 dword_80946D4:    .word 0x8857CCC8, 0x600C000, 0x2024400, 0x8857D43C, 0x0
     .word unk_2025400
@@ -19,11 +18,11 @@ dword_80946D4:    .word 0x8857CCC8, 0x600C000, 0x2024400, 0x8857D43C, 0x0
     .word unk_3001B00
     .word 0x40
     .byte 0, 0, 0, 0
-
+.endfunc // sub_80946C4
 
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_8094708:
     push {r4-r7,lr}
     ldr r0, [pc, #0x8094774-0x809470a-2] // =unk_2025404
@@ -32,10 +31,9 @@ sub_8094708:
     pop {r4-r7,pc}
 .endfunc // sub_8094708
 
-
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_8094714:
     push {r4-r7,lr}
     ldr r0, [pc, #0x8094778-0x8094716-2] // =unk_2026404
@@ -44,10 +42,9 @@ sub_8094714:
     pop {r4-r7,pc}
 .endfunc // sub_8094714
 
-
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_8094720:
     push {r4-r7,lr}
 // memBlock
@@ -59,13 +56,12 @@ sub_8094720:
     bl sub_8094738
     mov r0, #0
     pop {r4-r7,pc}
-.endfunc // sub_8094720
     .balign 4, 0x00
-
+.endfunc // sub_8094720
 
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_8094738:
     push {r4-r7,lr}
     ldr r5, [pc, #0x809477c-0x809473a-2] // =byte_200BE70
@@ -97,7 +93,6 @@ loc_8094752:
 // <endpool>
     pop {r4-r7,pc}
 .endfunc // sub_8094738
-
 
     .balign 4, 0x00
 off_8094774:    .word unk_2025404

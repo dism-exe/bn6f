@@ -1,8 +1,8 @@
 .include "asm04.inc"
 
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_804E62C:
     push {r4-r7,lr}
     mov r7, r10
@@ -41,7 +41,6 @@ sub_804E62C:
     ldr r0, [r0,r1]
     str r0, [r5,#0x64]
     pop {r4-r7,pc}
-.endfunc // sub_804E62C
     .balign 4, 0x00
 off_804E688:    .word off_804E38C
 off_804E68C:    .word unk_2037800
@@ -51,11 +50,11 @@ off_804E698:    .word dword_804E6AC
     .word 0x804E6BE, 0x804E6C2, 0x804E6C6, 0x804E6C8
 dword_804E6AC:    .word 0x151C111C, 0x511C161C, 0x2418131C, 0x1C182518, 0x71CFFFF
     .word 0x141CFFFF, 0xFFFFFFFF, 0x9D1C961C, 0xFFFF1C18
-
+.endfunc // sub_804E62C
 
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_804E6D0:
     push {lr}
     lsl r1, r1, #2
@@ -63,7 +62,6 @@ sub_804E6D0:
     ldr r0, [r0,r1]
     bl sub_8002354
     pop {pc}
-.endfunc // sub_804E6D0
     .byte 0, 0
 off_804E6E0:    .word off_804E6E4
 off_804E6E4:    .word dword_804E6F8
@@ -81,11 +79,11 @@ off_804E70C:    .word 0x804E5D4
 dword_804E714:    .word 0xFFFFFFFF
 off_804E718:    .word 0x804E604
     .word 0xFFFFFFFF
-
+.endfunc // sub_804E6D0
 
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_804E720:
     push {lr}
     mov r0, r10
@@ -96,11 +94,10 @@ sub_804E720:
     ldr r0, [r1,r0]
     bl loc_8003570
     pop {pc}
-.endfunc // sub_804E720
 off_804E734:    .word off_804E738
 // <endpool>
 off_804E738:    .word dword_804E74C
-
+.endfunc // sub_804E720
 
     .word dword_804E87C
     .word dword_804E8D0

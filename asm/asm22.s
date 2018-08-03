@@ -1,8 +1,8 @@
 .include "asm22.inc"
 
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_8086F18:
     push {r4-r7,lr}
     ldr r5, [pc, #0x8086fa0-0x8086f1a-2] // =dword_8086A54+708
@@ -35,7 +35,6 @@ loc_8086F36:
     blt loc_8086F36
     mov r0, #0
     pop {r4-r7,pc}
-.endfunc // sub_8086F18
     .byte 0
     .byte 0
 off_8086F54:    .word unk_8086F58
@@ -43,11 +42,11 @@ unk_8086F58:    .byte 1
     .byte 1
     .byte 3
     .byte 2
-
+.endfunc // sub_8086F18
 
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_8086F5C:
     push {r4-r7,lr}
     ldr r5, [pc, #0x8086fa0-0x8086f5e-2] // =dword_8086A54+708
@@ -80,7 +79,6 @@ loc_8086F7A:
     blt loc_8086F7A
     mov r0, #0
     pop {r4-r7,pc}
-.endfunc // sub_8086F5C
     .byte 0
     .byte 0
 off_8086F98:    .word unk_8086F9C
@@ -140,11 +138,11 @@ off_8086FA0:    .word dword_8086A54+0x2C4
     .byte 0xE3
     .byte 5
     .hword 0xFC0
-
+.endfunc // sub_8086F5C
 
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_8086FD8:
     push {r4-r7,lr}
     ldrb r0, [r5,#1]
@@ -284,7 +282,6 @@ loc_80870F2:
     bl sub_8036E90
 locret_80870F6:
     pop {r4-r7,pc}
-.endfunc // sub_8086FD8
 off_80870F8:    .word dword_8086A54+0x2CC
 off_80870FC:    .word dword_8086A54+0x2DC
 off_8087100:    .word dword_8086D5C
@@ -461,11 +458,11 @@ off_8087114:    .word dword_8086260+0x208
     .byte 0xBD
     .byte 0
     .byte 0
-
+.endfunc // sub_8086FD8
 
 .func
- .thumb_func
-.thumb
+.thumb_func
+
 sub_80871C0:
     push {lr}
     ldrb r0, [r5,#0xc]
@@ -475,10 +472,9 @@ sub_80871C0:
     add r0, r1, #0
     bl sub_802F168
     pop {pc}
-.endfunc // sub_80871C0
     .hword 0x0
 // <endpool> <endfile>
 off_80871D4:    .word dword_80871D8
-
+.endfunc // sub_80871C0
 
 /*For debugging purposes, connect comment at any range!*/
