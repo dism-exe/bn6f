@@ -213,23 +213,23 @@ dword_8123394:    .word 0xC391C390, 0xC393C392, 0xC395C394, 0xC397C396, 0xC399C3
 sub_8123408:
     push {r4,lr}
     ldr r0, [pc, #0x812342c-0x812340a-2] // =unk_2037780
-    ldr r1, [pc, #0x8123430-0x812340c-4] // =byte_2009A30
+    ldr r1, [pc, #0x8123430-0x812340c-4] // =sSubmenu
     add r4, r1, #0
     mov r2, #0x80
     bl sub_800093C
     mov r0, #0
     strb r0, [r4]
     mov r0, #0x10
-    strb r0, [r4,#0x1] // (byte_2009A31 - 0x2009a30)
+    strb r0, [r4,#0x1] // (ssubmenu.jo_01 - 0x2009a30)
     mov r0, #0
-    strb r0, [r4,#0x2] // (byte_2009A32 - 0x2009a30)
+    strb r0, [r4,#0x2] // (ssubmenu.unk_02 - 0x2009a30)
     mov r4, r10
     ldr r4, [r4]
     mov r0, #0x28 
     strb r0, [r4]
     pop {r4,pc}
 off_812342C:    .word unk_2037780
-off_8123430:    .word byte_2009A30
+off_8123430:    .word sSubmenu
 .endfunc // sub_8123408
 
 .func
@@ -8007,12 +8007,12 @@ sub_8127990:
     bl sub_811F6C0
     tst r4, r4
     beq locret_81279A2
-    ldr r1, [pc, #0x81279a4-0x812799c-4] // =byte_2009A30
+    ldr r1, [pc, #0x81279a4-0x812799c-4] // =sSubmenu
     mov r0, #1
-    strb r0, [r1,#0xd] // (byte_2009A3D - 0x2009a30)
+    strb r0, [r1,#0xd] // (ssubmenu.unk_0d - 0x2009a30)
 locret_81279A2:
     pop {r4,pc}
-off_81279A4:    .word byte_2009A30
+off_81279A4:    .word sSubmenu
 .endfunc // sub_8127990
 
 .func
@@ -8061,14 +8061,14 @@ off_81279F4:    .word dword_812851C
 
 menuControl_cb_email:
     push {r5,lr}
-    ldr r5, [pc, #0x8127a08-0x81279fa-2] // =byte_2009A30
+    ldr r5, [pc, #0x8127a08-0x81279fa-2] // =sSubmenu
     ldr r0, [pc, #0x8127a0c-0x81279fc-4] // =off_8127A10
-    ldrb r1, [r5,#0x1] // (byte_2009A31 - 0x2009a30)
+    ldrb r1, [r5,#0x1] // (ssubmenu.jo_01 - 0x2009a30)
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
     pop {r5,pc}
-off_8127A08:    .word byte_2009A30
+off_8127A08:    .word sSubmenu
 off_8127A0C:    .word off_8127A10
 off_8127A10:    .word sub_8127A1C+1
     .word sub_8127ACC+1
@@ -10547,11 +10547,11 @@ dword_8129184:    .word 0xC238, 0xA392A390, 0xA396A394, 0xA39AA398, 0xA39EA39C
 .thumb_func
 sub_81291D8:
     push {r5,lr}
-    ldr r5, [pc, #0x81291e4-0x81291da-2] // =byte_2009A30
+    ldr r5, [pc, #0x81291e4-0x81291da-2] // =sSubmenu
     bl sub_812A76C
     pop {r5,pc}
     .balign 4, 0x00
-off_81291E4:    .word byte_2009A30
+off_81291E4:    .word sSubmenu
 .endfunc // sub_81291D8
 
 .func
@@ -15023,13 +15023,13 @@ sub_812B4AC:
     bl sub_80018D0
     pop {r4-r7,pc}
     push {r4-r7,lr}
-    ldr r5, [pc, #0x812b4f8-0x812b4d2-2] // =byte_2009A30
+    ldr r5, [pc, #0x812b4f8-0x812b4d2-2] // =sSubmenu
     bl sub_8129248
     bl sub_8132614
     mov r0, #0x10
-    strb r0, [r5,#0x3] // (byte_2009A33 - 0x2009a30)
+    strb r0, [r5,#0x3] // (ssubmenu.unk_03 - 0x2009a30)
     mov r0, #0
-    strb r0, [r5,#0x1e] // (word_2009A4E - 0x2009a30)
+    strb r0, [r5,#0x1e] // (ssubmenu.unk_1e - 0x2009a30)
     ldr r0, [pc, #0x812b4fc-0x812b4e4-4] // =unk_20251A0
     mov r1, #0x10
     bl CpuSet_ZeroFillWord
@@ -15037,7 +15037,7 @@ sub_812B4AC:
     ldr r0, [pc, #0x812b500-0x812b4f0-4] // =dword_812913C+20
     bl sub_80465A0
     pop {r4-r7,pc}
-off_812B4F8:    .word byte_2009A30
+off_812B4F8:    .word sSubmenu
 off_812B4FC:    .word unk_20251A0
 off_812B500:    .word dword_812913C+0x14
 .func

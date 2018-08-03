@@ -2039,7 +2039,7 @@ sub_80013A2:
     sub sp, sp, #0x40
     str r6, [sp,#4]
     str r7, [sp,#0x10]
-    ldr r7, [pc, #0x80014b8-0x80013b2-2] // =byte_20099CC
+    ldr r7, [pc, #0x80014b8-0x80013b2-2] // =sCamera+76
     ldrb r7, [r7]
     str r3, [sp,#0x24]
     str r4, [sp,#0x28]
@@ -2171,7 +2171,7 @@ loc_80014A8:
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_80014B4:    .word dword_80014BC
-off_80014B8:    .word byte_20099CC
+off_80014B8:    .word sCamera+0x4C // sCamera.unk_4C
 dword_80014BC:    .word 0x10100808, 0x40402020, 0x8200810, 0x20401020, 0x20081008
     .word 0x40202010
 .func
@@ -6885,7 +6885,7 @@ sub_800362C:
     ldr r4, [r3,#0x3c]
     asr r4, r4, #0x10
     sub r1, r1, r4
-    ldr r6, [pc, #0x8003690-0x800363c-4] // =byte_20099CC
+    ldr r6, [pc, #0x8003690-0x800363c-4] // =sCamera+76
     ldrb r6, [r6]
     tst r6, r6
     beq loc_8003646
@@ -6929,7 +6929,7 @@ loc_8003688:
     mov r1, #0x50 
     mov r2, #0
     pop {r4-r7,pc}
-off_8003690:    .word byte_20099CC
+off_8003690:    .word sCamera+0x4C // sCamera.unk_4C
 .endfunc // sub_800362C
 
 .func
@@ -9519,7 +9519,7 @@ sub_8004D48:
     strb r0, [r1,#0x1c] // (byte_200ACFC - 0x200ace0)
     bl sub_809E098
     mov r0, #0
-    ldr r1, [pc, #0x8004de8-0x8004d88-4] // =byte_20099CC
+    ldr r1, [pc, #0x8004de8-0x8004d88-4] // =sCamera+76
     strb r0, [r1]
     ldr r1, [pc, #0x8004dec-0x8004d8c-4] // =dword_20096D0
     strb r0, [r1]
@@ -9553,7 +9553,7 @@ loc_8004DDA:
     pop {r4-r7,pc}
 off_8004DE0:    .word byte_200ACE0
 off_8004DE4:    .word byte_200F410
-off_8004DE8:    .word byte_20099CC
+off_8004DE8:    .word sCamera+0x4C // sCamera.unk_4C
 off_8004DEC:    .word dword_20096D0
 .endfunc // sub_8004D48
 
@@ -12938,7 +12938,7 @@ off_8006BBC:    .word 0x101
 .thumb_func
 CpuSet_toolKit:
     push {lr}
-    ldr r0, [pc, #0x8006bd8-0x8006bc2-2] // =off_8006BDC
+    ldr r0, [pc, #0x8006bd8-0x8006bc2-2] // =toolkit_table
     ldr r1, [pc, #0x8006bd4-0x8006bc4-4] // =toolkit
     mov r2, #0x3c 
     bl sub_800093C
@@ -12947,21 +12947,21 @@ CpuSet_toolKit:
     pop {r0}
     bx r0
 off_8006BD4:    .word toolkit
-off_8006BD8:    .word off_8006BDC
-off_8006BDC:    .word unk_200A480
-    .word unk_200A270
+off_8006BD8:    .word toolkit_table
+toolkit_table:    .word i_joGameSubsysSel
+    .word sJoystick
     .word unk_200AC40
-    .word unk_2009980
+    .word sCamera
     .word unk_2011C50
     .word unk_2011BB0
     .word s_2034880
     .word unk_200F3A0
     .word unk_2009740
-    .word word_200A210
+    .word iCurrFrame
     .word unk_30025C0
-    .word unk_2009CD0
+    .word sChatbox
     .word unk_20384F0
-    .word byte_2009A30
+    .word sSubmenu
     .word byte_200A220
 .endfunc // CpuSet_toolKit
 
@@ -12988,9 +12988,9 @@ sub_8006C22:
     mov r0, #0
     and r3, r0
     str r4, [r5]
-    ldr r0, [pc, #0x8006c94-0x8006c3a-2] // =gameState
+    ldr r0, [pc, #0x8006c94-0x8006c3a-2] // =sGameState
     add r0, r0, r3
-    ldr r1, [pc, #0x8006c94-0x8006c3e-2] // =gameState
+    ldr r1, [pc, #0x8006c94-0x8006c3e-2] // =sGameState
     add r1, r1, r4
     ldr r2, [pc, #0x8006c9c-0x8006c42-2] // =0x35BC
     ldr r3, [pc, #0x8006ca0-0x8006c44-4] // =sub_80014EC+1
@@ -13000,7 +13000,7 @@ sub_8006C22:
     mov r1, #0x3c 
     add r0, r0, r1
     mov r1, #0
-    ldr r2, [pc, #0x8006c94-0x8006c52-2] // =gameState
+    ldr r2, [pc, #0x8006c94-0x8006c52-2] // =sGameState
     ldr r3, [r5]
     add r2, r2, r3
     ldr r3, [pc, #0x8006ca8-0x8006c58-4] // =dword_8006CAC
@@ -13025,7 +13025,7 @@ sub_8006C6C:
     mov r1, #0x3c 
     add r0, r0, r1
     mov r1, #0
-    ldr r2, [pc, #0x8006c94-0x8006c78-4] // =gameState
+    ldr r2, [pc, #0x8006c94-0x8006c78-4] // =sGameState
     ldr r3, [r5]
     mov r4, #0
     and r3, r4
@@ -13040,7 +13040,7 @@ loc_8006C84:
     blt loc_8006C84
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_8006C94:    .word gameState
+off_8006C94:    .word sGameState
 off_8006C98:    .word dword_2001060
 dword_8006C9C:    .word 0x35BC
 off_8006CA0:    .word sub_80014EC+1
@@ -13873,7 +13873,7 @@ loc_8007236:
     lsl r1, r1, #8
     bl sub_8000900
     mov r0, #0
-    ldr r1, [pc, #0x800730c-0x8007260-4] // =byte_20099CC
+    ldr r1, [pc, #0x800730c-0x8007260-4] // =sCamera+76
     strb r0, [r1]
     bl sub_800A01C
     bl sub_80075CA
@@ -13932,7 +13932,7 @@ loc_80072E2:
     pop {r4,r5,r7,pc}
     .balign 4, 0x00
 off_8007308:    .word dword_2036820
-off_800730C:    .word byte_20099CC
+off_800730C:    .word sCamera+0x4C // sCamera.unk_4C
 off_8007310:    .word dword_20364C0
 dword_8007314:    .word 0x6014000
     .word dword_2033000
@@ -15052,13 +15052,13 @@ loc_80079B8:
     bl sub_803DD60
 loc_80079BC:
     strb r0, [r5,#0xd]
-    ldr r1, [pc, #0x80079cc-0x80079be-2] // =byte_20099CC
+    ldr r1, [pc, #0x80079cc-0x80079be-2] // =sCamera+76
     strb r0, [r1]
     bl sub_800B144
     mov r0, #8
     strb r0, [r5,#2]
     pop {pc}
-off_80079CC:    .word byte_20099CC
+off_80079CC:    .word sCamera+0x4C // sCamera.unk_4C
 .endfunc // sub_80079A8
 
 .func

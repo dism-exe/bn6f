@@ -14,7 +14,7 @@ in the 0x2000000 RAM region
 #define timer_2000000 ((u32*)                   0x2000000)
 #define reqBBS_requestEntries_list ((u8*)       0x2000290)
 #define reqBBS_bxo_2001150 ((u8*)               0x2001150)
-#define gameState ((GameState*)                 0x2001B80)
+#define sGameState ((GameState*)                0x2001B80)
 #define sReqBBS_GUI ((reqBBS_GUI*)              0x2005780)
 /*
   [DEAD] no xrefs. Last @ 2005810
@@ -26,18 +26,18 @@ in the 0x2000000 RAM region
   Always in r10
 */
 #define toolkit ((Toolkit*)                     0x20093B0)
-#define camera ((Camera*)                       0x2009980)
-#define submenu ((MenuControl*)                 0x2009A30)
-#define chatbox ((ChatBoxPropreties*)           0x2009CD0)
+#define sCamera ((Camera*)                      0x2009980)
+#define sSubmenu ((MenuControl*)                0x2009A30)
+#define sChatbox ((ChatBoxPropreties*)          0x2009CD0)
 /*
   Note from the past: those are sorta weird
   TODO: check this and see what's up with it
 */
 #define pCoords ((u32*)                         0x2009F60)
-#define currFrame ((u16*)                       0x200A210)
-#define joystick ((Joystick*)                   0x200A270)
-#define jo_gameSubsysSel ((u8*)                 0x200A480)
-#define startscreen ((StartScreen*)             0x200AD10)
+#define iCurrFrame ((u16*)                      0x200A210)
+#define sJoystick ((Joystick*)                  0x200A270)
+#define i_joGameSubsysSel ((u8*)                0x200A480)
+#define sStartScr ((StartScreen*)               0x200AD10)
 #define reqBBS_tile_data ((u8*)                 0x2018204)
 #define reqBBS_requestEntries_IDs ((u8*)        0x2023A00)
 #define reqBBS_requestNames_textualData ((u8*)  0x2025A04)

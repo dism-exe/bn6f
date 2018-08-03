@@ -436,12 +436,12 @@
 .equ byte_20096D8, 0x20096D8
 .equ unk_2009750, 0x2009750
 .equ unk_20098B0, 0x20098B0
-.equ byte_20099D0, 0x20099D0
-.equ byte_20099D6, 0x20099D6
-.equ dword_2009A08, 0x2009A08
-.equ dword_2009A0C, 0x2009A0C
+.equ sCamera, 0x2009980
+.equ sCamera, 0x2009980
+.equ sCamera, 0x2009980
+.equ sCamera, 0x2009980
 .equ dword_2009A28, 0x2009A28
-.equ unk_2009CD0, 0x2009CD0
+.equ sChatbox, 0x2009CD0
 .equ unk_2009F00, 0x2009F00
 .equ byte_200AF80, 0x200AF80
 .equ byte_200AF81, 0x200AF81

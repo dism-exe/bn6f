@@ -57,8 +57,8 @@
 .equ byte_20098A8, 0x20098A8
 .equ byte_20098A9, 0x20098A9
 .equ word_20098AA, 0x20098AA
-.equ byte_20099CC, 0x20099CC
-.equ byte_20099D0, 0x20099D0
+.equ sCamera, 0x2009980
+.equ sCamera, 0x2009980
 .equ dword_2009CC0, 0x2009CC0
 .equ word_200A6F0, 0x200A6F0
 .equ word_200A6F2, 0x200A6F2

@@ -4,7 +4,7 @@
 #include "../inttypes.h"
 
 /*
-jt=0811F7A0, jumptable of submenu callbacks  (TODO: MMBN6F)
+jt=0811F7A0, jumptable of submenu callbacks
 */
 typedef struct {
 	u8 unk_00;      // loc=0x0

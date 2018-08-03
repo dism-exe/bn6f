@@ -218,7 +218,7 @@
 .equ dword_2009F5C, 0x2009F5C
 .equ pCoords, 0x2009F60
 .equ dword_2009F64, 0x2009F64
-.equ word_200A210, 0x200A210
+.equ iCurrFrame, 0x200A210
 .equ byte_200A6A0, 0x200A6A0
 .equ dword_200A6AC, 0x200A6AC
 .equ unk_2010000, 0x2010000

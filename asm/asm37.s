@@ -4258,11 +4258,11 @@ off_813D8C0:    .word 0x200
 .func
 .thumb_func
 sub_813D8C4:
-    ldr r0, [pc, #0x813d8cc-0x813d8c4-4] // =byte_20099D0
+    ldr r0, [pc, #0x813d8cc-0x813d8c4-4] // =sCamera+80
     mov r1, #4
     str r1, [r0,#0x58] // (dword_2009A28 - 0x20099d0)
     mov pc, lr
-off_813D8CC:    .word byte_20099D0
+off_813D8CC:    .word sCamera+0x50 // sCamera.unk_50
 .endfunc // sub_813D8C4
 
 .func
@@ -4499,8 +4499,8 @@ loc_813DA22:
 locret_813DA36:
     pop {r4,pc}
     push {lr}
-    ldr r3, [pc, #0x813da7c-0x813da3a-2] // =byte_20099D0
-    ldrb r3, [r3,#0x6] // (byte_20099D6 - 0x20099d0)
+    ldr r3, [pc, #0x813da7c-0x813da3a-2] // =sCamera+80
+    ldrb r3, [r3,#0x6] // (scamera.pad_56 - 0x20099d0)
     cmp r3, #1
     bne locret_813DA4C
     add r2, r1, #0
@@ -4515,24 +4515,24 @@ locret_813DA4C:
     pop {pc}
     push {r4,lr}
     add r2, r1, #0
-    ldr r3, [pc, #0x813da7c-0x813da5c-4] // =byte_20099D0
-    ldrb r0, [r3,#0x6] // (byte_20099D6 - 0x20099d0)
+    ldr r3, [pc, #0x813da7c-0x813da5c-4] // =sCamera+80
+    ldrb r0, [r3,#0x6] // (scamera.pad_56 - 0x20099d0)
     cmp r0, #1
     bne locret_813DA78
     strb r1, [r7,#6]
-    ldr r1, [r3,#0x38] // (dword_2009A08 - 0x20099d0)
+    ldr r1, [r3,#0x38] // (scamera.unk_88 - 0x20099d0)
     ldr r4, [pc, #0x813da80-0x813da68-4] // =byte_200BC50
     ldrb r4, [r4,#0x1] // (byte_200BC51 - 0x200bc50)
     tst r4, r4
     beq loc_813DA72
-    ldr r1, [r3,#0x3c] // (dword_2009A0C - 0x20099d0)
+    ldr r1, [r3,#0x3c] // (scamera.unk_8c - 0x20099d0)
 loc_813DA72:
     mov r2, #0xa
     bl sub_800092A
 locret_813DA78:
     pop {r4,pc}
     .balign 4, 0x00
-off_813DA7C:    .word byte_20099D0
+off_813DA7C:    .word sCamera+0x50 // sCamera.unk_50
 off_813DA80:    .word byte_200BC50
 .func
 .thumb_func
@@ -4638,11 +4638,11 @@ loc_813DB36:
     strb r0, [r4]
     mov r5, #0
 loc_813DB3C:
-    ldr r1, [pc, #0x813dbbc-0x813db3c-4] // =byte_20099D0
-    ldr r6, [r1,#0x3c] // (dword_2009A0C - 0x20099d0)
+    ldr r1, [pc, #0x813dbbc-0x813db3c-4] // =sCamera+80
+    ldr r6, [r1,#0x3c] // (scamera.unk_8c - 0x20099d0)
     tst r5, r5
     bne loc_813DB46
-    ldr r6, [r1,#0x38] // (dword_2009A08 - 0x20099d0)
+    ldr r6, [r1,#0x38] // (scamera.unk_88 - 0x20099d0)
 loc_813DB46:
     ldr r0, [r6]
     ldr r1, [pc, #0x813dba4-0x813db48-4] // =0x42523545
@@ -4657,16 +4657,16 @@ loc_813DB58:
     add r5, #1
     cmp r5, #2
     blt loc_813DB3C
-    ldr r1, [pc, #0x813dbbc-0x813db5e-2] // =byte_20099D0
-    ldr r6, [r1,#0x38] // (dword_2009A08 - 0x20099d0)
+    ldr r1, [pc, #0x813dbbc-0x813db5e-2] // =sCamera+80
+    ldr r6, [r1,#0x38] // (scamera.unk_88 - 0x20099d0)
     str r6, [sp]
-    ldr r6, [r1,#0x3c] // (dword_2009A0C - 0x20099d0)
+    ldr r6, [r1,#0x3c] // (scamera.unk_8c - 0x20099d0)
     ldrb r5, [r4]
     tst r5, r5
     beq loc_813DB72
-    ldr r6, [r1,#0x3c] // (dword_2009A0C - 0x20099d0)
+    ldr r6, [r1,#0x3c] // (scamera.unk_8c - 0x20099d0)
     str r6, [sp]
-    ldr r6, [r1,#0x38] // (dword_2009A08 - 0x20099d0)
+    ldr r6, [r1,#0x38] // (scamera.unk_88 - 0x20099d0)
 loc_813DB72:
     ldr r0, [r6]
     ldr r1, [pc, #0x813dba4-0x813db74-4] // =0x42523545
@@ -4699,7 +4699,7 @@ dword_813DBA4:    .word 0x42523545
 off_813DBA8:    .word dword_813DBAC
 dword_813DBAC:    .word 0x4000, 0x200, 0x0
     .word 0x1
-off_813DBBC:    .word byte_20099D0
+off_813DBBC:    .word sCamera+0x50 // sCamera.unk_50
 .endfunc // sub_813DB24
 
 .func
@@ -8250,7 +8250,7 @@ sub_813FAB0:
     sub r0, #1
     strb r0, [r5,#8]
     bgt loc_813FB02
-    ldr r0, [pc, #0x813fd9c-0x813fae0-4] // =unk_2009CD0
+    ldr r0, [pc, #0x813fd9c-0x813fae0-4] // =sChatbox
     ldr r1, [pc, #0x813fda0-0x813fae2-2] // =sReqBBS_GUI
     ldr r2, [pc, #0x813fb1c-0x813fae4-4] // =0xF
     ldr r3, [pc, #0x813fb20-0x813fae6-2] // =0x50
@@ -8578,7 +8578,7 @@ off_813FD8C:    .word unk_2000770
 off_813FD90:    .word reqBBS_requestEntriesList
 off_813FD94:    .word reqBBS_numRequestsSent
 off_813FD98:    .word unk_2000770
-off_813FD9C:    .word unk_2009CD0
+off_813FD9C:    .word sChatbox
 off_813FDA0:    .word sReqBBS_GUI
 off_813FDA4:    .word sReqBBS_GUI
 .func
@@ -9579,7 +9579,7 @@ sub_8140414:
 
     pop {r5}
     bl reqBBS_changeChatboxHeader
-    ldr r0, [pc, #0x8140488-0x8140458-4] // =unk_2009CD0
+    ldr r0, [pc, #0x8140488-0x8140458-4] // =sChatbox
     ldr r2, [pc, #0x8140480-0x814045a-2] // =0xC
     ldrb r1, [r5,r2]
     ldr r2, [pc, #0x8140484-0x814045e-2] // =0x4C
@@ -9588,7 +9588,7 @@ sub_8140414:
     ldrb r0, [r5,r1]
     ldr r1, [pc, #0x8140490-0x8140466-2] // =dword_8140494
     ldrb r1, [r1,r0]
-    ldr r0, [pc, #0x8140488-0x814046a-2] // =unk_2009CD0
+    ldr r0, [pc, #0x8140488-0x814046a-2] // =sChatbox
     ldr r2, [pc, #0x814049c-0x814046c-4] // =0x54
     str r1, [r0,r2]
     mov r7, r10
@@ -9601,7 +9601,7 @@ sub_8140414:
     pop {pc}
 dword_8140480:    .word 0xD
 off_8140484:    .word 0x4C
-off_8140488:    .word unk_2009CD0
+off_8140488:    .word sChatbox
 dword_814048C:    .word 0xE
 off_8140490:    .word dword_8140494
 dword_8140494:    .word 0x4B23190A, 0x4B

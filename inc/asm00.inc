@@ -1491,7 +1491,7 @@
 .equ dword_20018B8, 0x20018B8
 .equ unk_20018C0, 0x20018C0
 .equ dword_20018E8, 0x20018E8
-.equ gameState, 0x2001B80
+.equ sGameState, 0x2001B80
 .equ sReqBBS_GUI, 0x2005780
 .equ sReqBBS_GUI, 0x2005780
 .equ sReqBBS_GUI, 0x2005780
@@ -1548,13 +1548,13 @@
 .equ byte_20098A8, 0x20098A8
 .equ byte_20098A9, 0x20098A9
 .equ word_20098AA, 0x20098AA
-.equ unk_2009980, 0x2009980
-.equ byte_20099CC, 0x20099CC
-.equ byte_2009A30, 0x2009A30
+.equ sCamera, 0x2009980
+.equ sCamera, 0x2009980
+.equ sSubmenu, 0x2009A30
 .equ dword_2009AB0, 0x2009AB0
 .equ dword_2009AB4, 0x2009AB4
 .equ dword_2009CC0, 0x2009CC0
-.equ unk_2009CD0, 0x2009CD0
+.equ sChatbox, 0x2009CD0
 .equ dword_2009F34, 0x2009F34
 .equ byte_2009F40, 0x2009F40
 .equ byte_2009F41, 0x2009F41
@@ -1572,9 +1572,9 @@
 .equ byte_200A00B, 0x200A00B
 .equ word_200A00C, 0x200A00C
 .equ word_200A00E, 0x200A00E
-.equ word_200A210, 0x200A210
+.equ iCurrFrame, 0x200A210
 .equ byte_200A220, 0x200A220
-.equ unk_200A270, 0x200A270
+.equ sJoystick, 0x200A270
 .equ byte_200A440, 0x200A440
 .equ byte_200A441, 0x200A441
 .equ byte_200A442, 0x200A442
@@ -1586,7 +1586,7 @@
 .equ dword_200A454, 0x200A454
 .equ word_200A458, 0x200A458
 .equ word_200A45C, 0x200A45C
-.equ unk_200A480, 0x200A480
+.equ i_joGameSubsysSel, 0x200A480
 .equ dword_200A490, 0x200A490
 .equ byte_200A494, 0x200A494
 .equ dword_200A498, 0x200A498

@@ -9880,7 +9880,7 @@ loc_80AA670:
     mov r0, #0
     b loc_80AA68E
 loc_80AA678:
-    ldr r0, [pc, #0x80aa884-0x80aa678-4] // =word_200A210
+    ldr r0, [pc, #0x80aa884-0x80aa678-4] // =iCurrFrame
     ldrh r0, [r0]
     add r1, r4, #0
     svc 6
@@ -10152,7 +10152,7 @@ off_80AA874:    .word dword_8020CE4
 off_80AA878:    .word dword_8020C5C
 off_80AA87C:    .word dword_2000B30
 off_80AA880:    .word dword_2000B30
-off_80AA884:    .word word_200A210
+off_80AA884:    .word iCurrFrame
 off_80AA888:    .word dword_2000B30
 .func
 .thumb_func
