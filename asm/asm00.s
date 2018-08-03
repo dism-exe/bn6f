@@ -6599,7 +6599,7 @@ off_8003114:    .word sub_8003B86+1
     .word sub_80048B2+1
 off_800312C:    .word byte_2009F40
     .word sBtlPlayer
-    .word 0x20057B0 // sReqBBS_GUI.unk_30
+    .word sReqBBS_GUI+0x30 // sReqBBS_GUI.unk_30
     .word unk_203CFE0
     .word unk_2036870
     .word byte_2011EE0
@@ -8550,7 +8550,7 @@ off_8003EC4:    .word loc_80C4E58+1
     .word loc_80CDF84+1
     .word loc_80CE118+1
     .word loc_80CE24C+1
-    .word loc_80CE530+1
+    .word sub_80CE530+1
     .word loc_80CE70C+1
     .word loc_80CE81C+1
     .word loc_80CEB00+1
@@ -8649,7 +8649,7 @@ off_8003EC4:    .word loc_80C4E58+1
 
     push {r0,r4-r6,lr}
     lsr r5, r1, #0x20
-    .word loc_80DB6A4+1
+    .word sub_80DB6A4+1
     .word loc_80DB8CC+1
     .word loc_80DB994+1
     .word loc_80DBB40+1
@@ -9244,7 +9244,7 @@ loc_8004706:
     mov pc, lr
 .endfunc // sub_8004702
 off_8004718:    .word dword_20010E0
-off_800471C:    .word 0x20057B0 // sReqBBS_GUI.unk_30
+off_800471C:    .word sReqBBS_GUI+0x30 // sReqBBS_GUI.unk_30
 off_8004720:    .word byte_2006530
 off_8004724:    .word ho_80A4984+1
     .word loc_80A4A98+1

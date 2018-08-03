@@ -2,21 +2,21 @@
 .equ INC_START, 0
 
 /* Public Symbols */
-.extern start_
-.extern dword_80001F4
-.extern start_800023C
-.extern start_800024C
-.extern start_800027C
-.extern start_8000288
+.global start_
+.global dword_80001F4
+.global start_800023C
+.global start_800024C
+.global start_800027C
+.global start_8000288
 
 
 /* External Symbols */
 .include "main.inc"
-// .extern main_
+// .global main_
 
 .include "asm00.inc"
-// .extern CpuSet_toolKit
-// .extern sub_8006C22
+// .global CpuSet_toolKit
+// .global sub_8006C22
 
 
 /* Undeclared Symbols */

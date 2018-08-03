@@ -2,55 +2,55 @@
 .equ INC_ASM01, 0
 
 /* Public Symbols */
-.extern sub_801FE00
-.extern sub_801FE24
-.extern sub_801FE5E
-.extern sub_801FE64
-.extern sub_801FE6C
-.extern sub_801FEE8
-.extern loc_801FEEE
-.extern sub_80200A4
-.extern sub_8020134
-.extern sub_8020140
-.extern sub_802015E
-.extern off_8020170
-.extern off_8020174
-.extern off_8020178
-.extern off_802017C
-.extern off_8020180
-.extern off_8020184
-.extern off_8020188
-.extern off_802018C
-.extern off_8020190
-.extern off_80201E4
-.extern pt_8020240
-.extern pt_802029C
-.extern off_80202F8
+.global sub_801FE00
+.global sub_801FE24
+.global sub_801FE5E
+.global sub_801FE64
+.global sub_801FE6C
+.global sub_801FEE8
+.global loc_801FEEE
+.global sub_80200A4
+.global sub_8020134
+.global sub_8020140
+.global sub_802015E
+.global off_8020170
+.global off_8020174
+.global off_8020178
+.global off_802017C
+.global off_8020180
+.global off_8020184
+.global off_8020188
+.global off_802018C
+.global off_8020190
+.global off_80201E4
+.global pt_8020240
+.global pt_802029C
+.global off_80202F8
 
 
 /* External Symbols */
 .include "asm03.inc"
-// .extern sub_802D246
-// .extern sub_802F164
-// .extern sub_803C620
-// .extern sub_803DCE8
-// .extern sub_803DE88
-// .extern sub_803DEB4
-// .extern sub_803EA2C
-// .extern sub_803EA60
-// .extern sub_803F524
-// .extern sub_803F740
+// .global sub_802D246
+// .global sub_802F164
+// .global sub_803C620
+// .global sub_803DCE8
+// .global sub_803DE88
+// .global sub_803DEB4
+// .global sub_803EA2C
+// .global sub_803EA60
+// .global sub_803F524
+// .global sub_803F740
 
 .include "asm37.inc"
-// .extern sub_813D60C
-// .extern sub_813D66C
-// .extern sub_8144D04
+// .global sub_813D60C
+// .global sub_813D66C
+// .global sub_8144D04
 
 .include "asm00.inc"
-// .extern CpuSet_ZeroFillWord
-// .extern sub_8000900
-// .extern sub_800093C
-// .extern sub_800A0D6
+// .global CpuSet_ZeroFillWord
+// .global sub_8000900
+// .global sub_800093C
+// .global sub_800A0D6
 
 
 /* Undeclared Symbols */

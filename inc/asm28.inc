@@ -2,172 +2,172 @@
 .equ INC_ASM28, 0
 
 /* Public Symbols */
-.extern unk_80991F4
-.extern dword_8099DC0
-.extern dword_8099E04
-.extern dword_8099EA0
-.extern sub_809BA14
-.extern sub_809C890
-.extern sub_809C940
-.extern sub_809C968
-.extern sub_809CA40
-.extern sub_809CA84
-.extern unk_809CAD8
-.extern sub_809CF2C
-.extern sub_809E04C
-.extern sub_809E064
-.extern sub_809E098
-.extern sub_809E0B0
-.extern sub_809E122
-.extern sub_809E13C
-.extern sub_809E14C
-.extern sub_809E188
-.extern sub_809E1AE
-.extern sub_809E228
-.extern sub_809E230
-.extern sub_809E23C
-.extern sub_809E248
-.extern sub_809E254
-.extern sub_809E2AE
-.extern sub_809E2B8
-.extern sub_809E2C2
-.extern sub_809E2F4
-.extern sub_809E2FC
-.extern loc_809E2FE
-.extern sub_809E304
-.extern loc_809E306
-.extern sub_809E312
-.extern loc_809E314
-.extern sub_809E3A2
-.extern sub_809E3AA
-.extern sub_809E3B2
-.extern sub_809E3C4
-.extern sub_809E434
-.extern sub_809E462
-.extern sub_809F68C
-.extern dword_809F6CC
-.extern sub_809F90C
-.extern sub_809F942
-.extern sub_809F9BE
-.extern sub_809F9C8
-.extern sub_809F9DC
-.extern sub_809FAF4
-.extern off_809FEA0
+.global unk_80991F4
+.global dword_8099DC0
+.global dword_8099E04
+.global dword_8099EA0
+.global sub_809BA14
+.global sub_809C890
+.global sub_809C940
+.global sub_809C968
+.global sub_809CA40
+.global sub_809CA84
+.global unk_809CAD8
+.global sub_809CF2C
+.global sub_809E04C
+.global sub_809E064
+.global sub_809E098
+.global sub_809E0B0
+.global sub_809E122
+.global sub_809E13C
+.global sub_809E14C
+.global sub_809E188
+.global sub_809E1AE
+.global sub_809E228
+.global sub_809E230
+.global sub_809E23C
+.global sub_809E248
+.global sub_809E254
+.global sub_809E2AE
+.global sub_809E2B8
+.global sub_809E2C2
+.global sub_809E2F4
+.global sub_809E2FC
+.global loc_809E2FE
+.global sub_809E304
+.global loc_809E306
+.global sub_809E312
+.global loc_809E314
+.global sub_809E3A2
+.global sub_809E3AA
+.global sub_809E3B2
+.global sub_809E3C4
+.global sub_809E434
+.global sub_809E462
+.global sub_809F68C
+.global dword_809F6CC
+.global sub_809F90C
+.global sub_809F942
+.global sub_809F9BE
+.global sub_809F9C8
+.global sub_809F9DC
+.global sub_809FAF4
+.global off_809FEA0
 
 
 /* External Symbols */
 .include "asm03.inc"
-// .extern sub_802D15E
-// .extern sub_802F110
-// .extern sub_802F114
-// .extern sub_802F12C
-// .extern sub_802F130
-// .extern sub_802F148
-// .extern sub_802F164
-// .extern sub_802F168
-// .extern sub_802F238
-// .extern sub_80301B2
-// .extern sub_80301DC
-// .extern sub_80302A8
-// .extern sub_8030B6A
-// .extern sub_8031612
-// .extern sub_8031A7A
-// .extern sub_8033978
-// .extern sub_8033FC0
-// .extern sub_8034C36
-// .extern sub_8035694
-// .extern sub_8036E90
-// .extern sub_8036F36
-// .extern sub_803CD98
-// .extern sub_803CE28
-// .extern sub_803D080
-// .extern sub_803D108
-// .extern sub_803F798
-// .extern sub_803F9E4
-// .extern chatbox_runScript_202da04
-// .extern chatbox_runScript
-// .extern sub_8040818
-// .extern off_8044470
-// .extern off_80444C4
-// .extern sub_8045EFC
-// .extern sub_8045F3C
-// .extern sub_8045F4C
-// .extern render_graphicalText_8045F8C
-// .extern sub_80465A0
-// .extern sub_80465BC
-// .extern sub_80465F8
-// .extern sub_8046664
+// .global sub_802D15E
+// .global sub_802F110
+// .global sub_802F114
+// .global sub_802F12C
+// .global sub_802F130
+// .global sub_802F148
+// .global sub_802F164
+// .global sub_802F168
+// .global sub_802F238
+// .global sub_80301B2
+// .global sub_80301DC
+// .global sub_80302A8
+// .global sub_8030B6A
+// .global sub_8031612
+// .global sub_8031A7A
+// .global sub_8033978
+// .global sub_8033FC0
+// .global sub_8034C36
+// .global sub_8035694
+// .global sub_8036E90
+// .global sub_8036F36
+// .global sub_803CD98
+// .global sub_803CE28
+// .global sub_803D080
+// .global sub_803D108
+// .global sub_803F798
+// .global sub_803F9E4
+// .global chatbox_runScript_202da04
+// .global chatbox_runScript
+// .global sub_8040818
+// .global off_8044470
+// .global off_80444C4
+// .global sub_8045EFC
+// .global sub_8045F3C
+// .global sub_8045F4C
+// .global render_graphicalText_8045F8C
+// .global sub_80465A0
+// .global sub_80465BC
+// .global sub_80465F8
+// .global sub_8046664
 
 .include "asm32.inc"
-// .extern sub_811980C
-// .extern sub_8119854
-// .extern sub_811EBE0
+// .global sub_811980C
+// .global sub_8119854
+// .global sub_811EBE0
 
 .include "asm02.inc"
-// .extern dword_8021AEC
+// .global dword_8021AEC
 
 .include "asm37.inc"
-// .extern sub_813D41C
-// .extern loc_813D48C
-// .extern sub_81407D8
-// .extern sub_8140974
-// .extern sub_8143B88
-// .extern sub_8143DBC
-// .extern SWI_Div
+// .global sub_813D41C
+// .global loc_813D48C
+// .global sub_81407D8
+// .global sub_8140974
+// .global sub_8143B88
+// .global sub_8143DBC
+// .global SWI_Div
 
 .include "asm00.inc"
-// .extern sound_play
-// .extern sub_80005D4
-// .extern CpuSet_ZeroFillWord
-// .extern sub_8000900
-// .extern sub_800093C
-// .extern initMemblockToByte
-// .extern sub_8000B30
-// .extern sub_8000E3A
-// .extern getPETNaviSelect
-// .extern sub_8001172
-// .extern calcAngle_800117C
-// .extern sub_8001850
-// .extern sub_80018C2
-// .extern sprite_loadAnimationData_80026A4
-// .extern anim_80026C4
-// .extern sub_80026E4
-// .extern sub_8002C24
-// .extern sub_8002C52
-// .extern sub_8002C68
-// .extern sub_8002C7A
-// .extern sub_8002CCE
-// .extern sub_8002D14
-// .extern sprite_makeUnscalable
-// .extern sprite_setPallete
-// .extern sprite_setAnimation
-// .extern sub_8002DEA
-// .extern sub_8002E14
-// .extern sub_8002E3C
-// .extern sub_8002E52
-// .extern sub_8002ED0
-// .extern sub_8002EE8
-// .extern sub_8002EF6
-// .extern sub_8002F2C
-// .extern sub_8002F5C
-// .extern sub_8002F90
-// .extern sub_8002FA6
-// .extern sub_8003006
-// .extern sub_80037AC
-// .extern sub_8003962
-// .extern sub_8003984
-// .extern sub_800399A
-// .extern sub_8003AB2
-// .extern sub_8003AD4
-// .extern sub_8003AEA
-// .extern sub_8003B4C
-// .extern sub_8003B86
-// .extern sub_8004602
-// .extern sub_80047E0
-// .extern sub_80062C8
-// .extern engine_isScreeneffectAnimating
-// .extern sub_8013704
-// .extern sub_80137B6
+// .global sound_play
+// .global sub_80005D4
+// .global CpuSet_ZeroFillWord
+// .global sub_8000900
+// .global sub_800093C
+// .global initMemblockToByte
+// .global sub_8000B30
+// .global sub_8000E3A
+// .global getPETNaviSelect
+// .global sub_8001172
+// .global calcAngle_800117C
+// .global sub_8001850
+// .global sub_80018C2
+// .global sprite_loadAnimationData_80026A4
+// .global anim_80026C4
+// .global sub_80026E4
+// .global sub_8002C24
+// .global sub_8002C52
+// .global sub_8002C68
+// .global sub_8002C7A
+// .global sub_8002CCE
+// .global sub_8002D14
+// .global sprite_makeUnscalable
+// .global sprite_setPallete
+// .global sprite_setAnimation
+// .global sub_8002DEA
+// .global sub_8002E14
+// .global sub_8002E3C
+// .global sub_8002E52
+// .global sub_8002ED0
+// .global sub_8002EE8
+// .global sub_8002EF6
+// .global sub_8002F2C
+// .global sub_8002F5C
+// .global sub_8002F90
+// .global sub_8002FA6
+// .global sub_8003006
+// .global sub_80037AC
+// .global sub_8003962
+// .global sub_8003984
+// .global sub_800399A
+// .global sub_8003AB2
+// .global sub_8003AD4
+// .global sub_8003AEA
+// .global sub_8003B4C
+// .global sub_8003B86
+// .global sub_8004602
+// .global sub_80047E0
+// .global sub_80062C8
+// .global engine_isScreeneffectAnimating
+// .global sub_8013704
+// .global sub_80137B6
 
 
 /* Undeclared Symbols */

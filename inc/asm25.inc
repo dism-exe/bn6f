@@ -6,67 +6,67 @@
 
 /* External Symbols */
 .include "asm03.inc"
-// .extern sub_802F110
-// .extern sub_802F114
-// .extern sub_802F12C
-// .extern sub_802F164
-// .extern sub_802F168
-// .extern sub_802F1A8
-// .extern sub_80301B2
-// .extern sub_80301DC
-// .extern sub_8036E90
-// .extern sub_8046818
-// .extern sub_8046854
-// .extern sub_80468BA
-// .extern sub_80468C6
+// .global sub_802F110
+// .global sub_802F114
+// .global sub_802F12C
+// .global sub_802F164
+// .global sub_802F168
+// .global sub_802F1A8
+// .global sub_80301B2
+// .global sub_80301DC
+// .global sub_8036E90
+// .global sub_8046818
+// .global sub_8046854
+// .global sub_80468BA
+// .global sub_80468C6
 
 .include "asm32.inc"
-// .extern sub_811EBE0
+// .global sub_811EBE0
 
 .include "asm28.inc"
-// .extern sub_809E13C
-// .extern sub_809E188
-// .extern sub_809E1AE
-// .extern sub_809E230
-// .extern sub_809E23C
-// .extern sub_809E248
-// .extern sub_809E254
-// .extern sub_809E2AE
-// .extern sub_809E2B8
-// .extern sub_809E2FC
-// .extern loc_809E2FE
-// .extern sub_809E304
-// .extern loc_809E306
-// .extern sub_809E312
-// .extern loc_809E314
-// .extern sub_809E3B2
-// .extern sub_809E3C4
+// .global sub_809E13C
+// .global sub_809E188
+// .global sub_809E1AE
+// .global sub_809E230
+// .global sub_809E23C
+// .global sub_809E248
+// .global sub_809E254
+// .global sub_809E2AE
+// .global sub_809E2B8
+// .global sub_809E2FC
+// .global loc_809E2FE
+// .global sub_809E304
+// .global loc_809E306
+// .global sub_809E312
+// .global loc_809E314
+// .global sub_809E3B2
+// .global sub_809E3C4
 
 .include "asm37.inc"
-// .extern sub_81409E4
-// .extern sub_8140A00
-// .extern sub_8140A0C
-// .extern dword_81434E4
-// .extern dword_81434E4
-// .extern dword_81434E4
-// .extern dword_81434E4
-// .extern dword_81434E4
+// .global sub_81409E4
+// .global sub_8140A00
+// .global sub_8140A0C
+// .global dword_81434E4
+// .global dword_81434E4
+// .global dword_81434E4
+// .global dword_81434E4
+// .global dword_81434E4
 
 .include "asm00.inc"
-// .extern sound_play
-// .extern CpuSet_ZeroFillWord
-// .extern sub_8001172
-// .extern sub_800118A
-// .extern sprite_loadAnimationData_80026A4
-// .extern anim_80026C4
-// .extern sub_80026E4
-// .extern sprite_setAnimation
-// .extern sub_8002F90
-// .extern sub_8003914
-// .extern sub_8003940
-// .extern sub_80039D4
-// .extern sub_80047E0
-// .extern engine_isScreeneffectAnimating
+// .global sound_play
+// .global CpuSet_ZeroFillWord
+// .global sub_8001172
+// .global sub_800118A
+// .global sprite_loadAnimationData_80026A4
+// .global anim_80026C4
+// .global sub_80026E4
+// .global sprite_setAnimation
+// .global sub_8002F90
+// .global sub_8003914
+// .global sub_8003940
+// .global sub_80039D4
+// .global sub_80047E0
+// .global engine_isScreeneffectAnimating
 
 
 /* Undeclared Symbols */

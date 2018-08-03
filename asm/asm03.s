@@ -56190,7 +56190,7 @@ off_80447F0:    .word dword_8740E90
     .word dword_87414AC
     .word dword_8741D04
     .word dword_8742318
-off_8044800:    .word 0x8044814 // aTWH0w07wLaw0ew
+off_8044800:    .word aTWH0w07wLaw0ew
     .word aTWH0w07wLaw0ew+0x14
     .word aJwPlwXpwTwVw
     .word aJwPlwXpwTwVw+0x14

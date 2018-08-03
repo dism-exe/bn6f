@@ -6,7 +6,7 @@
 
 /* External Symbols */
 .include "asm00.inc"
-// .extern sub_8005D88
+// .global sub_8005D88
 
 
 .endif // INC_ASM26

@@ -6,18 +6,18 @@
 
 /* External Symbols */
 .include "asm03.inc"
-// .extern sub_802F110
-// .extern sub_802F12C
-// .extern sub_802F164
-// .extern sub_802F168
-// .extern sub_8036E90
+// .global sub_802F110
+// .global sub_802F12C
+// .global sub_802F164
+// .global sub_802F168
+// .global sub_8036E90
 
 .include "asm37.inc"
-// .extern sub_81409F4
+// .global sub_81409F4
 
 .include "asm00.inc"
-// .extern sub_800060A
-// .extern sub_80047E0
+// .global sub_800060A
+// .global sub_80047E0
 
 
 /* Undeclared Symbols */

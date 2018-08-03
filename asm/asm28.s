@@ -5146,7 +5146,7 @@ loc_809E03A:
 locret_809E042:
     pop {pc}
 .endfunc // sub_809E01C
-off_809E044:    .word 0x20057B0 // sReqBBS_GUI.unk_30
+off_809E044:    .word sReqBBS_GUI+0x30 // sReqBBS_GUI.unk_30
 dword_809E048:    .word 0xD80
 
 
@@ -8278,7 +8278,7 @@ loc_809F680:
     pop {r7}
     mov pc, lr
     .balign 4, 0x00
-off_809F688:    .word 0x20057B0 // sReqBBS_GUI.unk_30
+off_809F688:    .word sReqBBS_GUI+0x30 // sReqBBS_GUI.unk_30
 .func
  .thumb_func
 .thumb
@@ -8297,7 +8297,7 @@ loc_809F694:
     blt loc_809F694
     pop {pc}
 .endfunc // sub_809F68C
-off_809F6A4:    .word 0x20057B0 // sReqBBS_GUI.unk_30
+off_809F6A4:    .word sReqBBS_GUI+0x30 // sReqBBS_GUI.unk_30
 off_809F6A8:    .word 0xD80
 off_809F6AC:    .word 0x400
 dword_809F6B0:    .word 0x1400

@@ -278,7 +278,7 @@ loc_80A4B7A:
 .endfunc // sub_80A4ACC
 dword_80A4B80:    .word 0x140000
 off_80A4B84:    .word off_80A4B88
-off_80A4B88:    .word 0x20057D4 // sReqBBS_GUI.unk_54
+off_80A4B88:    .word sReqBBS_GUI+0x54 // sReqBBS_GUI.unk_54
     .word 0xD8
     .word dword_2009F5C
     .word 0xC8
@@ -10123,7 +10123,7 @@ loc_80AA33E:
 
 
     pop {r4-r7,pc}
-off_80AA360:    .word 0x20057B0 // sReqBBS_GUI.unk_30
+off_80AA360:    .word sReqBBS_GUI+0x30 // sReqBBS_GUI.unk_30
 off_80AA364:    .word dword_808850C+8
 off_80AA368:    .word dword_80886B8+0x50
 .func

@@ -6,44 +6,44 @@
 
 /* External Symbols */
 .include "asm03.inc"
-// .extern sub_802F110
-// .extern sub_802F114
-// .extern sub_802F12C
-// .extern sub_802F164
-// .extern sub_802F168
-// .extern loc_802F1AC
-// .extern loc_802F200
-// .extern sub_80302A8
-// .extern sub_8036E90
-// .extern sub_8048F88
+// .global sub_802F110
+// .global sub_802F114
+// .global sub_802F12C
+// .global sub_802F164
+// .global sub_802F168
+// .global loc_802F1AC
+// .global loc_802F200
+// .global sub_80302A8
+// .global sub_8036E90
+// .global sub_8048F88
 
 .include "asm32.inc"
-// .extern sub_811EBE0
+// .global sub_811EBE0
 
 .include "asm28.inc"
-// .extern sub_809E13C
-// .extern sub_809E188
-// .extern sub_809E1AE
-// .extern sub_809E2AE
-// .extern sub_809E2B8
+// .global sub_809E13C
+// .global sub_809E188
+// .global sub_809E1AE
+// .global sub_809E2AE
+// .global sub_809E2B8
 
 .include "asm37.inc"
-// .extern sub_81409E4
-// .extern sub_8140A00
-// .extern sub_8142C94
-// .extern sub_8142CB0
-// .extern sub_8142CC8
-// .extern sub_8142D4C
-// .extern sub_8143294
+// .global sub_81409E4
+// .global sub_8140A00
+// .global sub_8142C94
+// .global sub_8142CB0
+// .global sub_8142CC8
+// .global sub_8142D4C
+// .global sub_8143294
 
 .include "asm00.inc"
-// .extern sound_play
-// .extern sub_8000672
-// .extern CpuSet_ZeroFillWord
-// .extern sub_8001172
-// .extern sub_800151C
-// .extern sub_80047E0
-// .extern sub_8005D88
+// .global sound_play
+// .global sub_8000672
+// .global CpuSet_ZeroFillWord
+// .global sub_8001172
+// .global sub_800151C
+// .global sub_80047E0
+// .global sub_8005D88
 
 
 /* Undeclared Symbols */

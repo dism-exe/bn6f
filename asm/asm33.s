@@ -12891,7 +12891,7 @@ sub_8129F48:
     ldr r1, [pc, #0x8129f84-0x8129f70-4] // =0x2000
     mov r2, #0
     bl sub_803DCD8
-    bl loc_81322E8
+    bl sub_81322E8
     pop {pc}
     .byte 0, 0
 dword_8129F80:    .word 0x42523545
@@ -13110,7 +13110,7 @@ sub_812A0E8:
     ldr r1, [pc, #0x812a130-0x812a108-4] // =0x2000
     mov r2, #0
     bl sub_803DCD8
-    bl loc_81322E8
+    bl sub_81322E8
     bl sub_803EF60
     mov r0, #0
     bl sub_8048F9C
@@ -13180,7 +13180,7 @@ sub_812A168:
     ldr r1, [pc, #0x812a1bc-0x812a188-4] // =0x2000
     mov r2, #0
     bl sub_803DCD8
-    bl loc_81322E8
+    bl sub_81322E8
     bl sub_8132664
     bl sub_8132670
     ldr r1, [pc, #0x812a1c0-0x812a19c-4] // =byte_2023BC0
@@ -13282,7 +13282,7 @@ sub_812A240:
     ldr r1, [pc, #0x812a278-0x812a25a-2] // =0x2000
     mov r2, #0
     bl sub_803DCD8
-    bl loc_81322E8
+    bl sub_81322E8
     bl sub_803EF60
     mov r0, #4
     strb r0, [r5,#3]
@@ -13638,7 +13638,7 @@ sub_812A4FC:
     ldr r1, [pc, #0x812a53c-0x812a516-2] // =0x2000
     mov r2, #0
     bl sub_803DCD8
-    bl loc_81322E8
+    bl sub_81322E8
     bl sub_803EF60
     mov r0, #4
     strb r0, [r5,#3]

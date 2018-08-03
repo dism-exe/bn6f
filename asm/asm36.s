@@ -3928,7 +3928,7 @@ sub_8131F3C:
     ldr r1, [pc, #0x8131f7c-0x8131f58-4] // =0x2000
     mov r2, #0
     bl sub_803DCD8
-    bl loc_81322E8
+    bl sub_81322E8
     bl sub_803EF60
     mov r0, #8
     mov r1, #0x10
@@ -3993,7 +3993,7 @@ sub_8131FC4:
     ldr r1, [pc, #0x8132018-0x8131fe4-4] // =0x2000
     mov r2, #0
     bl sub_803DCD8
-    bl loc_81322E8
+    bl sub_81322E8
     bl sub_803EF60
     mov r0, #4
     strb r0, [r5,#3]
@@ -4382,27 +4382,19 @@ loc_81322AC:
     mov r2, #0xd9
     lsr r3, r2, #0x20
     ldrb r0, [r5,#0x12]
-    ldr r1, [pc, #0x81322c0-0x81322ba-2] // =sub_81322C4
+    ldr r1, [pc, #0x81322c0-0x81322ba-2] // =dword_81322C4
     ldrb r0, [r1,r0]
     mov pc, lr
-off_81322C0:    .word sub_81322C4
+off_81322C0:    .word dword_81322C4
+dword_81322C4:    .word 0x1C1818
+    .word 0x49017CA8
+    .word 0x46F75C08
+    .word dword_81322D4
+dword_81322D4:    .word 0x2420, 0x49017CA8, 0x46F75C08, 0x81322E4, 0x302C28
 .func
  .thumb_func
 .thumb
-sub_81322C4:
-    add r0, r3, r0
-// <mkdata>
-    .hword 0x1c // mov r4, r3
-    ldrb r0, [r5,#0x12]
-    ldr r1, [pc, #0x81322d0-0x81322ca-2] // =dword_81322D4
-    ldrb r0, [r1,r0]
-    mov pc, lr
-.endfunc // sub_81322C4
-off_81322D0:    .word dword_81322D4
-dword_81322D4:    .word 0x2420, 0x49017CA8, 0x46F75C08, 0x81322E4, 0x302C28
-
-
-loc_81322E8:
+sub_81322E8:
     push {lr}
     bl sub_803E8F8
     add r2, r0, #0
@@ -4413,9 +4405,12 @@ loc_81322E8:
     mov lr, pc
     bx r0
     pop {pc}
+.endfunc // sub_81322E8
     .byte 0, 0
 off_8132300:    .word off_8132304
 off_8132304:    .word loc_8132310+1
+
+
     mov r3, #0x6d 
     lsr r3, r2, #0x20
     mov r3, #0x81
@@ -4825,38 +4820,18 @@ unk_81325F0:    .byte 8
  .thumb_func
 .thumb
 sub_81325F4:
-    ldr r1, [pc, #0x81325fc-0x81325f4-4] // =sub_8132600
+    ldr r1, [pc, #0x81325fc-0x81325f4-4] // =dword_8132600
     ldrb r0, [r1,r0]
     mov pc, lr
 .endfunc // sub_81325F4
     .balign 4, 0x00
-off_81325FC:    .word sub_8132600
-
-
-.func
- .thumb_func
-.thumb
-sub_8132600:
-    add r4, r2, r0
-// <mkdata>
-    .hword 0x1c // mov r4, r3
-    ldr r1, [pc, #0x813260c-0x8132604-4] // =unk_8132610
-    mov pc, lr
-.endfunc // sub_8132600
-
-
-.func
- .thumb_func
-.thumb
-nullsub_25:
-    mov pc, lr
-.endfunc // nullsub_25
+off_81325FC:    .word dword_8132600
+dword_8132600:    .word 0x1C1814
+    .word 0x46F74901
+    .hword 0x46F7
     .balign 4, 0x00
-off_813260C:    .word unk_8132610
-unk_8132610:    .byte 0x14
-    .byte 0x18
-    .byte 0x1C
-    .byte 0
+    .word dword_8132610
+dword_8132610:    .word 0x1C1814
 
 
 .func

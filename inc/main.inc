@@ -2,103 +2,103 @@
 .equ INC_MAIN, 0
 
 /* Public Symbols */
-.extern main_
+.global main_
 
 
 /* External Symbols */
 .include "asm03.inc"
-// .extern Load_cb_802F544
-// .extern sub_802FDB0
-// .extern objRender_802FE0C
-// .extern sub_802FF2C
-// .extern cb_jack_80341B6
-// .extern sub_8036ED4
-// .extern sub_8036F24
-// .extern cb_8038AD0
-// .extern cb_80395A4
-// .extern cb_803CBA6
-// .extern cb_803CCD6
-// .extern sub_803D1A8
-// .extern cb_803D1CA
-// .extern sub_803DE5C
-// .extern sub_803E900
-// .extern sub_803EBC8
-// .extern sub_803F4C8
-// .extern cb_803FB3C
-// .extern sub_803FCF0
-// .extern chatbox_onUpdate_803FEB4
-// .extern sub_804657C
-// .extern sub_80467D8
-// .extern cb_8046CF8
-// .extern cb_8048FD4
-// .extern cb_8049E04
-// .extern cb_804A304
+// .global Load_cb_802F544
+// .global sub_802FDB0
+// .global objRender_802FE0C
+// .global sub_802FF2C
+// .global cb_jack_80341B6
+// .global sub_8036ED4
+// .global sub_8036F24
+// .global cb_8038AD0
+// .global cb_80395A4
+// .global cb_803CBA6
+// .global cb_803CCD6
+// .global sub_803D1A8
+// .global cb_803D1CA
+// .global sub_803DE5C
+// .global sub_803E900
+// .global sub_803EBC8
+// .global sub_803F4C8
+// .global cb_803FB3C
+// .global sub_803FCF0
+// .global chatbox_onUpdate_803FEB4
+// .global sub_804657C
+// .global sub_80467D8
+// .global cb_8046CF8
+// .global cb_8048FD4
+// .global cb_8049E04
+// .global cb_804A304
 
 .include "start.inc"
-// .extern start_800023C
-// .extern start_800024C
+// .global start_800023C
+// .global start_800024C
 
 .include "asm32.inc"
-// .extern menuControl_cb_openSubmenu
+// .global menuControl_cb_openSubmenu
 
 .include "asm37.inc"
-// .extern sub_813D60C
-// .extern sub_813D960
-// .extern reqBBS_cb_draw_813E0A4
-// .extern reqBBS_cb_813F404
-// .extern sub_8144240
-// .extern sub_814E8A0
-// .extern sub_814EE2C
+// .global sub_813D60C
+// .global sub_813D960
+// .global reqBBS_cb_draw_813E0A4
+// .global reqBBS_cb_813F404
+// .global sub_8144240
+// .global sub_814E8A0
+// .global sub_814EE2C
 
 .include "asm33.inc"
-// .extern menuControl_cb_email
+// .global menuControl_cb_email
 
 .include "asm36.inc"
-// .extern cb_81382AC
+// .global cb_81382AC
 
 .include "asm00.inc"
-// .extern sub_80007B2
-// .extern sub_80007BE
-// .extern CpuSet_ZeroFillWord
-// .extern sub_8000A3C
-// .extern objRender_8000A44
-// .extern sub_8000E10
-// .extern sub_8001514
-// .extern sub_800154C
-// .extern sub_80015B4
-// .extern render_80015D0
-// .extern render_800172C
-// .extern sub_8001778
-// .extern main_static_80017EC
-// .extern renderPalletes_8001808
-// .extern sub_8001820
-// .extern sub_800182E
-// .extern sub_8001850
-// .extern sub_8001974
-// .extern cb_call_200A880
-// .extern loc_80019A0
-// .extern sub_8001AFC
-// .extern PET_onUpdate_8001B94
-// .extern sub_8002368
-// .extern getPalleteAndTransition_80023E0
-// .extern sub_80024A2
-// .extern sub_800260C
-// .extern renderPalletesAndObjs_8002650
-// .extern sub_80027C4
-// .extern handleObjSprites_800289C
-// .extern sub_8003962
-// .extern sub_8003AB2
-// .extern sub_8004D48
-// .extern sub_8004DF0
-// .extern cb_80050EC
-// .extern sub_80062EC
-// .extern engine_isScreeneffectAnimating
-// .extern subsystem_triggerTransition_800630A
-// .extern sub_8006910
-// .extern CpuSet_toolKit
-// .extern sub_8006C22
-// .extern sub_80071B4
-// .extern zf_checkSameSubsystem_800A732
+// .global sub_80007B2
+// .global sub_80007BE
+// .global CpuSet_ZeroFillWord
+// .global sub_8000A3C
+// .global objRender_8000A44
+// .global sub_8000E10
+// .global sub_8001514
+// .global sub_800154C
+// .global sub_80015B4
+// .global render_80015D0
+// .global render_800172C
+// .global sub_8001778
+// .global main_static_80017EC
+// .global renderPalletes_8001808
+// .global sub_8001820
+// .global sub_800182E
+// .global sub_8001850
+// .global sub_8001974
+// .global cb_call_200A880
+// .global loc_80019A0
+// .global sub_8001AFC
+// .global PET_onUpdate_8001B94
+// .global sub_8002368
+// .global getPalleteAndTransition_80023E0
+// .global sub_80024A2
+// .global sub_800260C
+// .global renderPalletesAndObjs_8002650
+// .global sub_80027C4
+// .global handleObjSprites_800289C
+// .global sub_8003962
+// .global sub_8003AB2
+// .global sub_8004D48
+// .global sub_8004DF0
+// .global cb_80050EC
+// .global sub_80062EC
+// .global engine_isScreeneffectAnimating
+// .global subsystem_triggerTransition_800630A
+// .global sub_8006910
+// .global CpuSet_toolKit
+// .global sub_8006C22
+// .global sub_80071B4
+// .global zf_checkSameSubsystem_800A732
 
 
 /* Undeclared Symbols */

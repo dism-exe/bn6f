@@ -2,46 +2,46 @@
 .equ INC_ASM38, 0
 
 /* Public Symbols */
-.extern loc_81D6746
+.global loc_81D6746
 
 
 /* External Symbols */
 .include "asm03.inc"
-// .extern off_802FD70
-// .extern dword_802FD74
-// .extern sub_8031612
-// .extern sub_803DE72
-// .extern sub_803EA68
-// .extern sub_8040D5C
-// .extern off_8043C8C
+// .global off_802FD70
+// .global dword_802FD74
+// .global sub_8031612
+// .global sub_803DE72
+// .global sub_803EA68
+// .global sub_8040D5C
+// .global off_8043C8C
 
 .include "asm37.inc"
-// .extern sub_813D5DC
-// .extern sub_814469C
-// .extern sub_81446AC
-// .extern sub_814DA9C
+// .global sub_813D5DC
+// .global sub_814469C
+// .global sub_81446AC
+// .global sub_814DA9C
 
 .include "asm00.inc"
-// .extern sub_80005AC
-// .extern sub_80005C4
-// .extern sub_80008B4
-// .extern sub_8000920
-// .extern sub_800098C
-// .extern loc_8000AC8
-// .extern sub_8000C00
-// .extern sub_8000C5C
-// .extern dword_80065D0
-// .extern dword_8006660
-// .extern sub_80068E0
-// .extern battle_isPaused
-// .extern battle_isTimeStop
-// .extern object_isValidPanel
-// .extern object_checkPanelParameters
-// .extern sub_800E2C2
-// .extern object_getFlipDirection
-// .extern off_8019B78
-// .extern dword_8019C34
-// .extern sub_801A29A
+// .global sub_80005AC
+// .global sub_80005C4
+// .global sub_80008B4
+// .global sub_8000920
+// .global sub_800098C
+// .global loc_8000AC8
+// .global sub_8000C00
+// .global sub_8000C5C
+// .global dword_80065D0
+// .global dword_8006660
+// .global sub_80068E0
+// .global battle_isPaused
+// .global battle_isTimeStop
+// .global object_isValidPanel
+// .global object_checkPanelParameters
+// .global sub_800E2C2
+// .global object_getFlipDirection
+// .global off_8019B78
+// .global dword_8019C34
+// .global sub_801A29A
 
 
 /* Undeclared Symbols */

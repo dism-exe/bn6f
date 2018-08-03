@@ -2043,25 +2043,15 @@ sub_813C4A8:
     push {lr}
     mov r0, #0x71 
     bl sub_803CE28
-    ldr r1, [pc, #0x813c4b8-0x813c4b0-4] // =sub_813C4BC
+    ldr r1, [pc, #0x813c4b8-0x813c4b0-4] // =pt_813C4BC
     lsl r0, r0, #2
     ldr r1, [r1,r0]
     pop {pc}
 .endfunc // sub_813C4A8
-off_813C4B8:    .word sub_813C4BC
-
-
-.func
- .thumb_func
-.thumb
-sub_813C4BC:
-    push {r0-r3,r7}
-    lsr r3, r2, #0x20
-    push {r6,r7}
-    lsr r3, r2, #0x20
-    push {r0,r4-r7}
-    lsr r3, r2, #0x20
-.endfunc // sub_813C4BC
+off_813C4B8:    .word pt_813C4BC
+pt_813C4BC:    .word dword_813B48C+3
+    .word dword_813B4B0+16
+    .word dword_813B4D4+29
 
 
 .func
@@ -9245,8 +9235,8 @@ off_813FF2C:    .word reqBBS_requestEntries_IDs
     .byte 0x52, 0x31, 0x52
     .byte 0x32 
     .byte 0x52, 0x33, 0x52
-    .word 0x813FF48 // a0r1r0r1r0r1r0r
-    .word 0x813FFC8 // a0r1r0r1r0r1r0r+0x80
+    .word a0r1r0r1r0r1r0r
+    .word a0r1r0r1r0r1r0r+0x80
 a0r1r0r1r0r1r0r:    .byte 0x30
     .byte 0x52
     .byte 0x31

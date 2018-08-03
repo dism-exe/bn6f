@@ -6,54 +6,54 @@
 
 /* External Symbols */
 .include "asm03.inc"
-// .extern sub_803C754
-// .extern sub_803EA60
-// .extern sub_803EBF4
-// .extern sub_8040818
-// .extern sub_80465A0
-// .extern sub_8046664
-// .extern sub_80466C4
+// .global sub_803C754
+// .global sub_803EA60
+// .global sub_803EBF4
+// .global sub_8040818
+// .global sub_80465A0
+// .global sub_8046664
+// .global sub_80466C4
 
 .include "asm32.inc"
-// .extern sub_811980C
-// .extern sub_8119854
-// .extern sub_811F7EC
-// .extern sub_811F7F8
-// .extern sub_811FA22
-// .extern sub_811FA98
-// .extern sub_811FAF4
-// .extern sub_811FE7C
-// .extern loc_8120018
-// .extern sub_8120194
-// .extern sub_8120228
-// .extern sub_8120390
-// .extern sub_81203E4
-// .extern sub_8120458
-// .extern sub_81204C4
-// .extern sub_8120618
-// .extern sub_8120A88
-// .extern sub_8120AB8
-// .extern sub_8120CC8
+// .global sub_811980C
+// .global sub_8119854
+// .global sub_811F7EC
+// .global sub_811F7F8
+// .global sub_811FA22
+// .global sub_811FA98
+// .global sub_811FAF4
+// .global sub_811FE7C
+// .global loc_8120018
+// .global sub_8120194
+// .global sub_8120228
+// .global sub_8120390
+// .global sub_81203E4
+// .global sub_8120458
+// .global sub_81204C4
+// .global sub_8120618
+// .global sub_8120A88
+// .global sub_8120AB8
+// .global sub_8120CC8
 
 .include "asm37.inc"
-// .extern sub_81440D8
+// .global sub_81440D8
 
 .include "asm33.inc"
-// .extern dword_8129178
-// .extern dword_8129180
+// .global dword_8129178
+// .global dword_8129180
 
 .include "asm36.inc"
-// .extern sub_8132280
+// .global sub_8132280
 
 .include "asm00.inc"
-// .extern sound_play
-// .extern sub_8000900
-// .extern sub_800183C
-// .extern sub_80018C2
-// .extern sub_80018D0
-// .extern sub_800307C
-// .extern engine_setScreeneffect
-// .extern sub_80062C8
+// .global sound_play
+// .global sub_8000900
+// .global sub_800183C
+// .global sub_80018C2
+// .global sub_80018D0
+// .global sub_800307C
+// .global engine_setScreeneffect
+// .global sub_80062C8
 
 
 /* Undeclared Symbols */

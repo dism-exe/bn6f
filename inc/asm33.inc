@@ -2,278 +2,278 @@
 .equ INC_ASM33, 0
 
 /* Public Symbols */
-.extern sub_8123208
-.extern sub_8123300
-.extern sub_8123360
-.extern sub_8123408
-.extern dword_8124B1C
-.extern sub_8127990
-.extern sub_81279A8
-.extern sub_81284A4
-.extern dword_8129178
-.extern dword_8129180
-.extern sub_81291D8
-.extern sub_8129248
-.extern sub_812AF3C
-.extern sub_812AF78
-.extern sub_812AFC8
-.extern sub_812B530
+.global sub_8123208
+.global sub_8123300
+.global sub_8123360
+.global sub_8123408
+.global dword_8124B1C
+.global sub_8127990
+.global sub_81279A8
+.global sub_81284A4
+.global dword_8129178
+.global dword_8129180
+.global sub_81291D8
+.global sub_8129248
+.global sub_812AF3C
+.global sub_812AF78
+.global sub_812AFC8
+.global sub_812B530
 
 
 /* External Symbols */
 .include "asm03.inc"
-// .extern sub_802B2A0
-// .extern sub_802B358
-// .extern sub_802B438
-// .extern sub_802B4D4
-// .extern sub_802B51C
-// .extern sub_802D27C
-// .extern sub_802D280
-// .extern sub_802D28C
-// .extern sub_802D2AC
-// .extern sub_802F110
-// .extern sub_802F114
-// .extern sub_802F12C
-// .extern sub_802F130
-// .extern sub_802F164
-// .extern sub_802F168
-// .extern sub_802FE28
-// .extern sub_8036E78
-// .extern sub_803C28A
-// .extern sub_803C59C
-// .extern sub_803C604
-// .extern sub_803C612
-// .extern sub_803C620
-// .extern sub_803C754
-// .extern sub_803CB00
-// .extern sub_803CB0C
-// .extern sub_803CB18
-// .extern sub_803CE08
-// .extern sub_803CE28
-// .extern sub_803DCD8
-// .extern sub_803DCE8
-// .extern sub_803DD60
-// .extern sub_803DDA4
-// .extern sub_803DE24
-// .extern sub_803DE88
-// .extern sub_803DEAC
-// .extern sub_803E8F8
-// .extern sub_803EA50
-// .extern sub_803EA60
-// .extern sub_803EA70
-// .extern loc_803EA78
-// .extern sub_803EAE4
-// .extern sub_803EBAC
-// .extern sub_803EBF4
-// .extern sub_803EF60
-// .extern sub_803EF74
-// .extern sub_803EF7C
-// .extern sub_803F4EC
-// .extern sub_803F524
-// .extern sub_803F674
-// .extern sub_803F798
-// .extern sub_803FD78
-// .extern sub_803FD9C
-// .extern loc_803FDA4
-// .extern sub_803FE08
-// .extern sub_803FE10
-// .extern sub_8040818
-// .extern sub_8045F1C
-// .extern sub_8045F2C
-// .extern sub_8045F3C
-// .extern sub_8045F4C
-// .extern render_graphicalText_8045F8C
-// .extern sub_80465A0
-// .extern sub_80465BC
-// .extern sub_80465F8
-// .extern sub_8046664
-// .extern sub_8046670
-// .extern sub_8046696
-// .extern sub_80466C4
-// .extern sub_8048F9C
-// .extern sub_8048FC4
-// .extern cb_8048FD4
-// .extern sub_8049D42
-// .extern sub_8049D7C
-// .extern sub_8049D98
-// .extern sub_8049DA0
-// .extern sub_8049DC4
-// .extern sub_8049DDC
+// .global sub_802B2A0
+// .global sub_802B358
+// .global sub_802B438
+// .global sub_802B4D4
+// .global sub_802B51C
+// .global sub_802D27C
+// .global sub_802D280
+// .global sub_802D28C
+// .global sub_802D2AC
+// .global sub_802F110
+// .global sub_802F114
+// .global sub_802F12C
+// .global sub_802F130
+// .global sub_802F164
+// .global sub_802F168
+// .global sub_802FE28
+// .global sub_8036E78
+// .global sub_803C28A
+// .global sub_803C59C
+// .global sub_803C604
+// .global sub_803C612
+// .global sub_803C620
+// .global sub_803C754
+// .global sub_803CB00
+// .global sub_803CB0C
+// .global sub_803CB18
+// .global sub_803CE08
+// .global sub_803CE28
+// .global sub_803DCD8
+// .global sub_803DCE8
+// .global sub_803DD60
+// .global sub_803DDA4
+// .global sub_803DE24
+// .global sub_803DE88
+// .global sub_803DEAC
+// .global sub_803E8F8
+// .global sub_803EA50
+// .global sub_803EA60
+// .global sub_803EA70
+// .global loc_803EA78
+// .global sub_803EAE4
+// .global sub_803EBAC
+// .global sub_803EBF4
+// .global sub_803EF60
+// .global sub_803EF74
+// .global sub_803EF7C
+// .global sub_803F4EC
+// .global sub_803F524
+// .global sub_803F674
+// .global sub_803F798
+// .global sub_803FD78
+// .global sub_803FD9C
+// .global loc_803FDA4
+// .global sub_803FE08
+// .global sub_803FE10
+// .global sub_8040818
+// .global sub_8045F1C
+// .global sub_8045F2C
+// .global sub_8045F3C
+// .global sub_8045F4C
+// .global render_graphicalText_8045F8C
+// .global sub_80465A0
+// .global sub_80465BC
+// .global sub_80465F8
+// .global sub_8046664
+// .global sub_8046670
+// .global sub_8046696
+// .global sub_80466C4
+// .global sub_8048F9C
+// .global sub_8048FC4
+// .global cb_8048FD4
+// .global sub_8049D42
+// .global sub_8049D7C
+// .global sub_8049D98
+// .global sub_8049DA0
+// .global sub_8049DC4
+// .global sub_8049DDC
 
 .include "start.inc"
-// .extern start_800027C
-// .extern start_8000288
+// .global start_800027C
+// .global start_8000288
 
 .include "asm02.inc"
-// .extern sub_8021AA4
+// .global sub_8021AA4
 
 .include "asm32.inc"
-// .extern sub_8116FDC
-// .extern sub_8117084
-// .extern sub_81171F4
-// .extern sub_81190F8
-// .extern sub_8119118
-// .extern sub_811980C
-// .extern sub_811983C
-// .extern sub_8119854
-// .extern sub_8119BE8
-// .extern sub_8119C74
-// .extern sub_8119C94
-// .extern sub_811A1F4
-// .extern sub_811A220
-// .extern sub_811A610
-// .extern sub_811A768
-// .extern sub_811B010
-// .extern sub_811B314
-// .extern sub_811B46C
-// .extern sub_811B48C
-// .extern sub_811BDFC
-// .extern sub_811BED4
-// .extern sub_811C23C
-// .extern sub_811C2A8
-// .extern sub_811C4D8
-// .extern sub_811DC88
-// .extern sub_811DF0C
-// .extern sub_811EBF4
-// .extern sub_811F6C0
-// .extern sub_811F708
-// .extern sub_811F728
-// .extern sub_811F7EC
-// .extern sub_811F7F8
-// .extern sub_811F91C
-// .extern sub_811FA0C
-// .extern sub_811FA22
-// .extern sub_811FA98
-// .extern sub_811FAF4
-// .extern sub_811FB64
-// .extern sub_811FB84
-// .extern sub_811FCB8
-// .extern loc_8120018
-// .extern sub_81200EC
-// .extern sub_8120348
-// .extern sub_8120390
-// .extern sub_81203E4
-// .extern sub_8120458
-// .extern sub_81204C4
-// .extern sub_812053C
-// .extern sub_81207F8
-// .extern sub_8120900
-// .extern sub_81209DC
-// .extern sub_8120A38
-// .extern sub_8120C94
-// .extern sub_8120CC8
-// .extern sub_8120D10
-// .extern sub_8121198
-// .extern dword_81211B4
-// .extern pt_8121200
+// .global sub_8116FDC
+// .global sub_8117084
+// .global sub_81171F4
+// .global sub_81190F8
+// .global sub_8119118
+// .global sub_811980C
+// .global sub_811983C
+// .global sub_8119854
+// .global sub_8119BE8
+// .global sub_8119C74
+// .global sub_8119C94
+// .global sub_811A1F4
+// .global sub_811A220
+// .global sub_811A610
+// .global sub_811A768
+// .global sub_811B010
+// .global sub_811B314
+// .global sub_811B46C
+// .global sub_811B48C
+// .global sub_811BDFC
+// .global sub_811BED4
+// .global sub_811C23C
+// .global sub_811C2A8
+// .global sub_811C4D8
+// .global sub_811DC88
+// .global sub_811DF0C
+// .global sub_811EBF4
+// .global sub_811F6C0
+// .global sub_811F708
+// .global sub_811F728
+// .global sub_811F7EC
+// .global sub_811F7F8
+// .global sub_811F91C
+// .global sub_811FA0C
+// .global sub_811FA22
+// .global sub_811FA98
+// .global sub_811FAF4
+// .global sub_811FB64
+// .global sub_811FB84
+// .global sub_811FCB8
+// .global loc_8120018
+// .global sub_81200EC
+// .global sub_8120348
+// .global sub_8120390
+// .global sub_81203E4
+// .global sub_8120458
+// .global sub_81204C4
+// .global sub_812053C
+// .global sub_81207F8
+// .global sub_8120900
+// .global sub_81209DC
+// .global sub_8120A38
+// .global sub_8120C94
+// .global sub_8120CC8
+// .global sub_8120D10
+// .global sub_8121198
+// .global dword_81211B4
+// .global pt_8121200
 
 .include "asm37.inc"
-// .extern sub_813B9FC
-// .extern sub_813C3AC
-// .extern sub_813D5D0
-// .extern sub_813D60C
-// .extern sub_813D638
-// .extern sub_813D648
-// .extern sub_813D90C
-// .extern sub_813D960
-// .extern sub_813D978
-// .extern sub_81440D8
-// .extern sub_8144240
-// .extern sub_8146588
-// .extern sub_81465BC
-// .extern sub_8146724
-// .extern sub_8146738
-// .extern sub_81468BC
-// .extern sub_81468C8
-// .extern sub_81468E0
-// .extern sub_814695C
-// .extern sub_81469A0
-// .extern sub_81469BC
-// .extern sub_81469E8
-// .extern sub_8146E5C
-// .extern sub_8146E60
-// .extern sub_8147350
-// .extern sub_81475D4
-// .extern sub_8147B24
-// .extern sub_8147F98
-// .extern sub_8148224
-// .extern sub_8148540
-// .extern sub_8148D24
-// .extern sub_8149568
-// .extern sub_8149644
-// .extern SWI_LZ77UnCompReadNormalWrite8bit
+// .global sub_813B9FC
+// .global sub_813C3AC
+// .global sub_813D5D0
+// .global sub_813D60C
+// .global sub_813D638
+// .global sub_813D648
+// .global sub_813D90C
+// .global sub_813D960
+// .global sub_813D978
+// .global sub_81440D8
+// .global sub_8144240
+// .global sub_8146588
+// .global sub_81465BC
+// .global sub_8146724
+// .global sub_8146738
+// .global sub_81468BC
+// .global sub_81468C8
+// .global sub_81468E0
+// .global sub_814695C
+// .global sub_81469A0
+// .global sub_81469BC
+// .global sub_81469E8
+// .global sub_8146E5C
+// .global sub_8146E60
+// .global sub_8147350
+// .global sub_81475D4
+// .global sub_8147B24
+// .global sub_8147F98
+// .global sub_8148224
+// .global sub_8148540
+// .global sub_8148D24
+// .global sub_8149568
+// .global sub_8149644
+// .global SWI_LZ77UnCompReadNormalWrite8bit
 
 .include "asm36.inc"
-// .extern byte_8130905
-// .extern sub_8132280
-// .extern sub_8132290
-// .extern loc_81322E8
-// .extern sub_8132398
-// .extern sub_81323B0
-// .extern sub_8132430
-// .extern sub_8132538
-// .extern sub_81325C0
-// .extern sub_81325CC
-// .extern sub_81325E4
-// .extern sub_81325F4
-// .extern sub_8132614
-// .extern sub_8132664
-// .extern sub_8132670
-// .extern sub_81326D4
-// .extern loc_8132764
-// .extern sub_81348DC
-// .extern sub_8134930
-// .extern sub_81352A0
-// .extern sub_8135314
-// .extern unk_813565C
-// .extern sub_8137884
-// .extern loc_81378B4
+// .global byte_8130905
+// .global sub_8132280
+// .global sub_8132290
+// .global sub_81322E8
+// .global sub_8132398
+// .global sub_81323B0
+// .global sub_8132430
+// .global sub_8132538
+// .global sub_81325C0
+// .global sub_81325CC
+// .global sub_81325E4
+// .global sub_81325F4
+// .global sub_8132614
+// .global sub_8132664
+// .global sub_8132670
+// .global sub_81326D4
+// .global loc_8132764
+// .global sub_81348DC
+// .global sub_8134930
+// .global sub_81352A0
+// .global sub_8135314
+// .global unk_813565C
+// .global sub_8137884
+// .global loc_81378B4
 
 .include "asm28.inc"
-// .extern sub_809F9BE
+// .global sub_809F9BE
 
 .include "asm00.inc"
-// .extern sound_play
-// .extern sub_8000784
-// .extern sub_80008B4
-// .extern CpuSet_ZeroFillWord
-// .extern sub_8000900
-// .extern sub_8000920
-// .extern sub_800092A
-// .extern sub_800093C
-// .extern sub_8000950
-// .extern sub_800096C
-// .extern loc_8000AC8
-// .extern sub_8000B30
-// .extern sub_8000C00
-// .extern getPETNaviSelect
-// .extern sub_80010BE
-// .extern sub_80015FC
-// .extern sub_80017AA
-// .extern sub_80017E0
-// .extern sub_800183C
-// .extern sub_80018C2
-// .extern sub_80018D0
-// .extern sub_80024A2
-// .extern sub_80035A2
-// .extern sub_8003962
-// .extern sub_8003AB2
-// .extern sub_8004702
-// .extern sub_8005F40
-// .extern engine_setScreeneffect
-// .extern engine_isScreeneffectAnimating
-// .extern sub_8006C22
-// .extern sub_8006DEC
-// .extern sub_80070BC
-// .extern sub_80070E6
-// .extern sub_800710A
-// .extern sub_80071D4
-// .extern loc_8007800
-// .extern getBattleSettingsFromList1
-// .extern sub_801379E
-// .extern sub_80137B6
-// .extern sub_80137E6
-// .extern sub_80137FE
+// .global sound_play
+// .global sub_8000784
+// .global sub_80008B4
+// .global CpuSet_ZeroFillWord
+// .global sub_8000900
+// .global sub_8000920
+// .global sub_800092A
+// .global sub_800093C
+// .global sub_8000950
+// .global sub_800096C
+// .global loc_8000AC8
+// .global sub_8000B30
+// .global sub_8000C00
+// .global getPETNaviSelect
+// .global sub_80010BE
+// .global sub_80015FC
+// .global sub_80017AA
+// .global sub_80017E0
+// .global sub_800183C
+// .global sub_80018C2
+// .global sub_80018D0
+// .global sub_80024A2
+// .global sub_80035A2
+// .global sub_8003962
+// .global sub_8003AB2
+// .global sub_8004702
+// .global sub_8005F40
+// .global engine_setScreeneffect
+// .global engine_isScreeneffectAnimating
+// .global sub_8006C22
+// .global sub_8006DEC
+// .global sub_80070BC
+// .global sub_80070E6
+// .global sub_800710A
+// .global sub_80071D4
+// .global loc_8007800
+// .global getBattleSettingsFromList1
+// .global sub_801379E
+// .global sub_80137B6
+// .global sub_80137E6
+// .global sub_80137FE
 
 
 /* Undeclared Symbols */

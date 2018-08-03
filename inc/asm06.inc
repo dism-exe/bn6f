@@ -6,17 +6,17 @@
 
 /* External Symbols */
 .include "asm03.inc"
-// .extern sub_802FF4C
-// .extern sub_803037C
-// .extern loc_8030472
-// .extern sub_8030AA4
-// .extern sub_803FD08
+// .global sub_802FF4C
+// .global sub_803037C
+// .global loc_8030472
+// .global sub_8030AA4
+// .global sub_803FD08
 
 .include "asm00.inc"
-// .extern sub_8002354
-// .extern sub_80028D4
-// .extern sub_8002906
-// .extern loc_8003570
+// .global sub_8002354
+// .global sub_80028D4
+// .global sub_8002906
+// .global loc_8003570
 
 
 /* Undeclared Symbols */

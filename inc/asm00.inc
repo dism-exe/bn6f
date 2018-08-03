@@ -2,1465 +2,1465 @@
 .equ INC_ASM00, 0
 
 /* Public Symbols */
-.extern sub_80005AC
-.extern sub_80005C4
-.extern sound_play
-.extern sub_80005D4
-.extern sub_80005F2
-.extern sub_800060A
-.extern sub_8000642
-.extern sub_8000672
-.extern sub_800068A
-.extern sub_80006A2
-.extern sub_8000784
-.extern sub_80007B2
-.extern sub_80007BE
-.extern sub_80008B4
-.extern sub_80008C0
-.extern CpuSet_ZeroFillWord
-.extern sub_8000900
-.extern sub_8000920
-.extern sub_800092A
-.extern sub_800093C
-.extern sub_8000950
-.extern initMemblockToByte
-.extern sub_800096C
-.extern sub_800098C
-.extern sub_80009AC
-.extern sub_8000A3C
-.extern objRender_8000A44
-.extern loc_8000AC4
-.extern loc_8000AC8
-.extern loc_8000ACA
-.extern sub_8000B30
-.extern sub_8000B8E
-.extern sub_8000C00
-.extern sub_8000C5C
-.extern sub_8000C72
-.extern sub_8000CDA
-.extern sub_8000D12
-.extern sub_8000D84
-.extern sub_8000DE0
-.extern sub_8000E10
-.extern sub_8000E28
-.extern sub_8000E3A
-.extern sub_8000EB6
-.extern sub_8000EE4
-.extern sub_8000F86
-.extern sub_8001040
-.extern loc_8001048
-.extern getPETNaviSelect
-.extern sub_80010BE
-.extern sub_80010C6
-.extern sub_80010D4
-.extern sub_80010EC
-.extern sub_8001158
-.extern sub_8001172
-.extern calcAngle_800117C
-.extern sub_800118A
-.extern sub_80011A0
-.extern sub_80011D6
-.extern sub_800120E
-.extern sub_8001330
-.extern sub_8001382
-.extern sub_800139A
-.extern sub_80014D4
-.extern sub_8001514
-.extern sub_800151C
-.extern sub_8001532
-.extern sub_800154C
-.extern sub_8001562
-.extern sub_80015B4
-.extern render_80015D0
-.extern sub_80015FC
-.extern render_800172C
-.extern sub_8001778
-.extern sub_8001780
-.extern sub_8001788
-.extern sub_80017A0
-.extern sub_80017AA
-.extern sub_80017E0
-.extern main_static_80017EC
-.extern off_8001800
-.extern renderPalletes_8001808
-.extern sub_8001820
-.extern sub_800182E
-.extern sub_800183C
-.extern sub_8001850
-.extern sub_800187C
-.extern sub_8001890
-.extern sub_80018C2
-.extern sub_80018D0
-.extern sub_80018E0
-.extern sub_8001930
-.extern sub_800195C
-.extern sub_8001974
-.extern cb_call_200A880
-.extern loc_80019A0
-.extern locret_80019B2
-.extern loc_80019B4
-.extern sub_8001AFC
-.extern sub_8001B1C
-.extern sub_8001B6C
-.extern sub_8001B84
-.extern PET_onUpdate_8001B94
-.extern sub_8002354
-.extern sub_8002368
-.extern sub_8002378
-.extern sub_800239A
-.extern sub_80023A8
-.extern getPalleteAndTransition_80023E0
-.extern sub_8002468
-.extern loc_8002484
-.extern sub_80024A2
-.extern sub_80024C0
-.extern sub_800260C
-.extern renderPalletesAndObjs_8002650
-.extern sub_8002668
-.extern loc_8002676
-.extern sub_8002694
-.extern sprite_loadAnimationData_80026A4
-.extern sub_80026B6
-.extern anim_80026C4
-.extern sub_80026D6
-.extern sub_80026E4
-.extern sub_800275A
-.extern sub_8002770
-.extern loc_8002774
-.extern sub_80027B4
-.extern sub_80027C4
-.extern sub_80027F4
-.extern sub_8002818
-.extern sub_800286C
-.extern sub_8002874
-.extern handleObjSprites_800289C
-.extern sub_80028D4
-.extern sub_8002906
-.extern sub_8002A64
-.extern sub_8002ADE
-.extern sub_8002B30
-.extern sub_8002C24
-.extern sub_8002C52
-.extern sub_8002C68
-.extern sub_8002C7A
-.extern loc_8002C7E
-.extern sub_8002CCE
-.extern sub_8002CE0
-.extern sub_8002D14
-.extern sprite_makeUnscalable
-.extern sprite_setPallete
-.extern sub_8002D8C
-.extern sprite_setAnimation
-.extern sub_8002DB0
-.extern loc_8002DB4
-.extern sub_8002DC8
-.extern sub_8002DD8
-.extern sub_8002DEA
-.extern sub_8002E04
-.extern sub_8002E14
-.extern sub_8002E3C
-.extern sub_8002E52
-.extern sub_8002EAC
-.extern sub_8002ED0
-.extern sub_8002EDC
-.extern sub_8002EE8
-.extern sub_8002EF6
-.extern loc_8002F02
-.extern sub_8002F2C
-.extern sub_8002F3E
-.extern sub_8002F5C
-.extern sub_8002F7E
-.extern sub_8002F90
-.extern sub_8002FA6
-.extern sub_8002FB2
-.extern sub_8002FEC
-.extern sub_8003006
-.extern sub_800302A
-.extern sub_800304A
-.extern sub_8003060
-.extern sub_800306C
-.extern sub_800307C
-.extern sub_800308A
-.extern sub_80030A8
-.extern sub_80030BA
-.extern object_spawnType1
-.extern object_spawnType3
-.extern sub_8003374
-.extern object_spawnType4
-.extern sub_80033E4
-.extern object_freeMemory
-.extern loc_8003570
-.extern sub_80035A2
-.extern sub_800362C
-.extern sub_8003694
-.extern sub_800378C
-.extern sub_80037AC
-.extern sub_80037F4
-.extern sub_8003914
-.extern sub_8003940
-.extern sub_8003962
-.extern sub_8003984
-.extern sub_800399A
-.extern sub_80039CC
-.extern sub_80039D4
-.extern sub_8003A64
-.extern loc_8003A90
-.extern sub_8003AB2
-.extern sub_8003AD4
-.extern sub_8003AEA
-.extern sub_8003B1C
-.extern sub_8003B4C
-.extern sub_8003B86
-.extern sub_8003BA2
-.extern sub_8003BF4
-.extern sub_8003E98
-.extern sub_8004298
-.extern sub_8004590
-.extern sub_80045C0
-.extern sub_8004602
-.extern sub_800461E
-.extern sub_800467C
-.extern sub_8004702
-.extern sub_80047E0
-.extern sub_8004822
-.extern sub_80048B2
-.extern sub_80048D2
-.extern sub_8004934
-.extern sub_8004D48
-.extern sub_8004DF0
-.extern sub_8005524
-.extern sub_8005BC8
-.extern sub_8005C04
-.extern subsystem_launchBBS
-.extern subsystem_launchReqBBS
-.extern subsystem_launchShop
-.extern subsystem_launchChipTrader
-.extern sub_8005D88
-.extern sub_8005EA2
-.extern subsystem_launchMail
-.extern sub_8005F40
-.extern sub_8005F6C
-.extern sub_8005F84
-.extern engine_setScreeneffect
-.extern loc_8006274
-.extern sub_80062C8
-.extern sub_80062EC
-.extern engine_isScreeneffectAnimating
-.extern loc_80062FC
-.extern subsystem_triggerTransition_800630A
-.extern dword_8006660
-.extern sub_80068E0
-.extern sub_80068EC
-.extern sub_8006910
-.extern CpuSet_toolKit
-.extern sub_8006C22
-.extern sub_8006C6C
-.extern sub_8006DEC
-.extern sub_8006DF6
-.extern save_8006E0E
-.extern save_8006E26
-.extern load_8006E3C
-.extern sub_8006E50
-.extern sub_8006E70
-.extern sub_8006E84
-.extern sub_8006EA4
-.extern sub_8006F1E
-.extern sub_8006F54
-.extern sub_8006F78
-.extern sub_8006FAC
-.extern sub_8006FD0
-.extern sub_80070BC
-.extern sub_80070E6
-.extern sub_800710A
-.extern sub_80071B4
-.extern sub_80071D4
-.extern sub_80076A0
-.extern sub_80077B4
-.extern loc_8007800
-.extern off_8008000
-.extern sub_8009FF8
-.extern battle_isPaused
-.extern battle_isTimeStop
-.extern sub_800A0A4
-.extern sub_800A0D6
-.extern sub_800A11C
-.extern sub_800A152
-.extern battle_isBattleOver
-.extern battle_setFlags
-.extern battle_clearFlags
-.extern battle_getFlags
-.extern sub_800A704
-.extern sub_800A70C
-.extern getBattleSettingsFromList0
-.extern getBattleSettingsFromList1
-.extern zf_checkSameSubsystem_800A732
-.extern sub_800A772
-.extern sub_800A7D0
-.extern sub_800A7E2
-.extern sub_800A832
-.extern sub_800A856
-.extern sub_800A8F8
-.extern sub_800A908
-.extern sub_800A97A
-.extern sub_800A9D6
-.extern sub_800A9E2
-.extern battle_networkInvert
-.extern sub_800AA92
-.extern sub_800AABC
-.extern sub_800AB2E
-.extern sub_800AB3A
-.extern sub_800AB46
-.extern sub_800ABC6
-.extern sub_800AE54
-.extern sub_800AE90
-.extern sub_800AFBA
-.extern sub_800B022
-.extern sub_800B3A2
-.extern sub_800B3D8
-.extern sub_800B460
-.extern sub_800B46C
-.extern sub_800B6B0
-.extern sub_800B6CE
-.extern sub_800B6D4
-.extern sub_800B6DA
-.extern sub_800B6E0
-.extern sub_800B734
-.extern sub_800BCC0
-.extern object_timefreezeEnd
-.extern sub_800BF16
-.extern sub_800BF5C
-.extern object_getPanelParameters
-.extern sub_800C90A
-.extern object_crackPanel
-.extern object_crackPanelDup1
-.extern object_breakPanel
-.extern object_breakPanel_dup1
-.extern object_breakPanel_dup2
-.extern object_breakPanel_dup3
-.extern object_breakPanelLoud
-.extern object_highlightPanel
-.extern object_setPanelType
-.extern object_setPanelAlliance
-.extern object_setPanelAllianceTimerLong
-.extern object_setPanelAllianceTimerShort
-.extern object_setPanelTypeBlink
-.extern object_isCurrentPanelValid
-.extern object_isValidPanel
-.extern object_checkPanelParameters
-.extern object_isCurrentPanelSolid
-.extern object_isPanelSolid
-.extern object_highlightCurrentCollisionPanels
-.extern object_highlightPanelRegion
-.extern object_highlightPanelRegionBlue
-.extern object_hidePanel
-.extern object_getPanelsExceptCurrentFilterred
-.extern sub_800CEA0
-.extern sub_800CF14
-.extern sub_800CF42
-.extern sub_800CF70
-.extern sub_800CFA6
-.extern sub_800CFDC
-.extern sub_800D012
-.extern sub_800D06A
-.extern sub_800D086
-.extern sub_800D0BC
-.extern sub_800D120
-.extern sub_800D3FE
-.extern sub_800D45C
-.extern sub_800D4C2
-.extern sub_800D4D0
-.extern sub_800D58C
-.extern sub_800D5F0
-.extern sub_800D618
-.extern sub_800D668
-.extern sub_800E24C
-.extern sub_800E258
-.extern sub_800E276
-.extern sub_800E29C
-.extern sub_800E2AC
-.extern sub_800E2C0
-.extern sub_800E2C2
-.extern sub_800E2CA
-.extern object_getFlipDirection
-.extern object_subtractHP
-.extern object_addHP
-.extern sub_800E2FC
-.extern sub_800E3BE
-.extern sub_800E456
-.extern object_canMove
-.extern sub_800E5FC
-.extern sub_800E680
-.extern sub_800E6E8
-.extern sub_800E708
-.extern object_setCounterTime
-.extern sub_800EA0E
-.extern sub_800EA22
-.extern sub_800EA90
-.extern sub_800EABA
-.extern sub_800EAC4
-.extern sub_800EADA
-.extern object_setInvulnerableTime
-.extern sub_800EB08
-.extern sub_800EB6C
-.extern object_getEnemyByNameRange
-.extern sub_800EC3C
-.extern sub_800EC48
-.extern sub_800ED90
-.extern sub_800F214
-.extern sub_800F23C
-.extern sub_800F26C
-.extern sub_800F29C
-.extern sub_800F2AA
-.extern sub_800F2B6
-.extern sub_800F2C6
-.extern sub_800F2FC
-.extern sub_800F322
-.extern sub_800F378
-.extern sub_800F46C
-.extern sub_800F486
-.extern sub_800F49E
-.extern sub_800F614
-.extern sub_800F656
-.extern sub_800F672
-.extern sub_800F884
-.extern sub_800F898
-.extern sub_800F8B0
-.extern sub_800F8CE
-.extern sub_800F90E
-.extern sub_800F964
-.extern sub_800F998
-.extern sub_800FA20
-.extern sub_800FA54
-.extern sub_800FAAC
-.extern sub_800FAF6
-.extern sub_800FB54
-.extern sub_800FC30
-.extern sub_800FC7C
-.extern sub_800FC9E
-.extern sub_800FCFC
-.extern sub_800FDB6
-.extern sub_800FE12
-.extern sub_800FE28
-.extern sub_800FE36
-.extern sub_800FE52
-.extern sub_800FFE4
-.extern sub_800FFEE
-.extern sub_800FFFE
-.extern sub_8010004
-.extern sub_8010018
-.extern sub_801002C
-.extern sub_80100EC
-.extern sub_801011A
-.extern sub_80101AE
-.extern sub_80101C4
-.extern sub_80101D4
-.extern sub_80101F8
-.extern sub_8010300
-.extern sub_8010312
-.extern sub_801031C
-.extern sub_801032C
-.extern sub_8010332
-.extern sub_80103A8
-.extern sub_80103BC
-.extern sub_80103EC
-.extern sub_80103F8
-.extern sub_8010474
-.extern sub_801056A
-.extern sub_80105F2
-.extern sub_8010660
-.extern sub_80106C0
-.extern sub_8010740
-.extern sub_80107C0
-.extern sub_80107D4
-.extern sub_801086C
-.extern sub_80108FC
-.extern loc_80109A4
-.extern sub_8010C76
-.extern sub_8010CE0
-.extern sub_8010DD0
-.extern loc_8010DF6
-.extern sub_8011020
-.extern loc_8011044
-.extern loc_8011268
-.extern loc_8011384
-.extern sub_8011420
-.extern sub_8011450
-.extern sub_8011504
-.extern sub_801155A
-.extern sub_801156A
-.extern sub_801162A
-.extern sub_801164C
-.extern sub_8011680
-.extern sub_8011684
-.extern sub_8011688
-.extern loc_801168C
-.extern loc_8011690
-.extern loc_8011694
-.extern sub_80116AE
-.extern sub_80116D8
-.extern sub_8011714
-.extern loc_801171C
-.extern sub_8011764
-.extern sub_801177A
-.extern sub_8011790
-.extern loc_80117A4
-.extern sub_801265A
-.extern sub_80126E4
-.extern sub_8012792
-.extern sub_8012956
-.extern sub_801299C
-.extern sub_8012E74
-.extern sub_8012EA8
-.extern sub_8013682
-.extern sub_80136CC
-.extern sub_80136D8
-.extern sub_80136E4
-.extern sub_80136F0
-.extern sub_8013704
-.extern sub_8013754
-.extern sub_8013764
-.extern sub_8013774
-.extern sub_8013790
-.extern sub_801379E
-.extern sub_80137B6
-.extern sub_80137E6
-.extern sub_80137FE
-.extern sub_8013816
-.extern sub_801382E
-.extern sub_8013846
-.extern sub_8013864
-.extern sub_8013874
-.extern sub_801393A
-.extern sub_80139C4
-.extern sub_8013B4E
-.extern loc_8013B64
-.extern sub_8013CC4
-.extern sub_8013D5E
-.extern sub_8013DA0
-.extern sub_8013FAE
-.extern sub_8013FD0
-.extern sub_8014018
-.extern sub_801401E
-.extern sub_80141AC
-.extern loc_8014216
-.extern sub_80142C2
-.extern sub_80143A6
-.extern loc_80143B4
-.extern sub_801443C
-.extern sub_8014446
-.extern sub_80144C0
-.extern sub_8015940
-.extern sub_8015952
-.extern sub_8015B00
-.extern sub_8015B54
-.extern sub_8015B5C
-.extern sub_8015BEC
-.extern sub_8015C32
-.extern sub_8015C48
-.extern sub_8015C94
-.extern sub_8015CC0
-.extern sub_8015D80
-.extern sub_8015E46
-.extern sub_8016004
-.extern sub_8016218
-.extern sub_801632C
-.extern sub_80165B8
-.extern sub_80165C2
-.extern sub_8016934
-.extern sub_80169BE
-.extern byte_8016B02
-.extern byte_8016B03
-.extern sub_8016B36
-.extern sub_8016B72
-.extern sub_8016C8A
-.extern sub_8016C9C
-.extern loc_8016CE8
-.extern sub_8016E64
-.extern sub_8016EC4
-.extern sub_80170C4
-.extern sub_80174FE
-.extern sub_80175B8
-.extern sub_8017688
-.extern sub_8017768
-.extern sub_8017CC0
-.extern sub_80182B4
-.extern sub_8018810
-.extern sub_8018842
-.extern sub_8019892
-.extern sub_80198CE
-.extern off_8019B78
-.extern dword_8019C34
-.extern sub_8019F86
-.extern sub_8019F8C
-.extern sub_8019FB4
-.extern sub_801A00E
-.extern sub_801A018
-.extern sub_801A04C
-.extern sub_801A066
-.extern sub_801A074
-.extern sub_801A07C
-.extern sub_801A082
-.extern sub_801A0D4
-.extern sub_801A100
-.extern sub_801A140
-.extern sub_801A146
-.extern object_setFlag
-.extern object_clearFlag
-.extern object_getFlag
-.extern sub_801A16C
-.extern sub_801A176
-.extern sub_801A180
-.extern sub_801A258
-.extern sub_801A264
-.extern sub_801A284
-.extern sub_801A29A
-.extern sub_801A2B0
-.extern sub_801A4D0
-.extern sub_801A4DC
-.extern sub_801A5E2
-.extern sub_801A66C
-.extern sub_801A67E
-.extern sub_801A7CC
-.extern sub_801A7F4
-.extern sub_801ABB8
-.extern sub_801AC6C
-.extern sub_801AD12
-.extern sub_801AD6A
-.extern sub_801AD9E
-.extern sub_801ADFA
-.extern sub_801AF44
-.extern sub_801B1C4
-.extern sub_801B394
-.extern sub_801B4D4
-.extern sub_801B610
-.extern loc_801B750
-.extern loc_801B878
-.extern sub_801BB1C
-.extern sub_801BB46
-.extern sub_801BBAC
-.extern sub_801BBF4
-.extern sub_801BC24
-.extern sub_801BC64
-.extern sub_801BCA6
-.extern sub_801BCD0
-.extern sub_801BCF4
-.extern sub_801BD3C
-.extern sub_801BDDE
-.extern sub_801BE04
-.extern nullsub_10
-.extern sub_801BE2A
-.extern sub_801BEB8
-.extern sub_801BEC2
-.extern sub_801BECC
-.extern sub_801BED6
-.extern sub_801DA48
-.extern sub_801DACC
-.extern sub_801DBD4
-.extern sub_801DC36
-.extern sub_801DC7C
-.extern sub_801DCCC
-.extern sub_801DD34
-.extern sub_801DED0
-.extern sub_801DEEE
-.extern sub_801DF0C
-.extern sub_801DF8C
-.extern sub_801DF92
-.extern sub_801DFA2
-.extern sub_801E0A0
-.extern sub_801E0D0
-.extern sub_801E2BA
-.extern sub_801E408
-.extern sub_801E474
-.extern sub_801E574
-.extern sub_801E658
-.extern sub_801E660
-.extern sub_801E71C
-.extern sub_801E754
-.extern sub_801E780
-.extern loc_801E792
-.extern sub_801E914
-.extern sub_801EB18
-.extern sub_801EC44
+.global sub_80005AC
+.global sub_80005C4
+.global sound_play
+.global sub_80005D4
+.global sub_80005F2
+.global sub_800060A
+.global sub_8000642
+.global sub_8000672
+.global sub_800068A
+.global sub_80006A2
+.global sub_8000784
+.global sub_80007B2
+.global sub_80007BE
+.global sub_80008B4
+.global sub_80008C0
+.global CpuSet_ZeroFillWord
+.global sub_8000900
+.global sub_8000920
+.global sub_800092A
+.global sub_800093C
+.global sub_8000950
+.global initMemblockToByte
+.global sub_800096C
+.global sub_800098C
+.global sub_80009AC
+.global sub_8000A3C
+.global objRender_8000A44
+.global loc_8000AC4
+.global loc_8000AC8
+.global loc_8000ACA
+.global sub_8000B30
+.global sub_8000B8E
+.global sub_8000C00
+.global sub_8000C5C
+.global sub_8000C72
+.global sub_8000CDA
+.global sub_8000D12
+.global sub_8000D84
+.global sub_8000DE0
+.global sub_8000E10
+.global sub_8000E28
+.global sub_8000E3A
+.global sub_8000EB6
+.global sub_8000EE4
+.global sub_8000F86
+.global sub_8001040
+.global loc_8001048
+.global getPETNaviSelect
+.global sub_80010BE
+.global sub_80010C6
+.global sub_80010D4
+.global sub_80010EC
+.global sub_8001158
+.global sub_8001172
+.global calcAngle_800117C
+.global sub_800118A
+.global sub_80011A0
+.global sub_80011D6
+.global sub_800120E
+.global sub_8001330
+.global sub_8001382
+.global sub_800139A
+.global sub_80014D4
+.global sub_8001514
+.global sub_800151C
+.global sub_8001532
+.global sub_800154C
+.global sub_8001562
+.global sub_80015B4
+.global render_80015D0
+.global sub_80015FC
+.global render_800172C
+.global sub_8001778
+.global sub_8001780
+.global sub_8001788
+.global sub_80017A0
+.global sub_80017AA
+.global sub_80017E0
+.global main_static_80017EC
+.global off_8001800
+.global renderPalletes_8001808
+.global sub_8001820
+.global sub_800182E
+.global sub_800183C
+.global sub_8001850
+.global sub_800187C
+.global sub_8001890
+.global sub_80018C2
+.global sub_80018D0
+.global sub_80018E0
+.global sub_8001930
+.global sub_800195C
+.global sub_8001974
+.global cb_call_200A880
+.global loc_80019A0
+.global locret_80019B2
+.global loc_80019B4
+.global sub_8001AFC
+.global sub_8001B1C
+.global sub_8001B6C
+.global sub_8001B84
+.global PET_onUpdate_8001B94
+.global sub_8002354
+.global sub_8002368
+.global sub_8002378
+.global sub_800239A
+.global sub_80023A8
+.global getPalleteAndTransition_80023E0
+.global sub_8002468
+.global loc_8002484
+.global sub_80024A2
+.global sub_80024C0
+.global sub_800260C
+.global renderPalletesAndObjs_8002650
+.global sub_8002668
+.global loc_8002676
+.global sub_8002694
+.global sprite_loadAnimationData_80026A4
+.global sub_80026B6
+.global anim_80026C4
+.global sub_80026D6
+.global sub_80026E4
+.global sub_800275A
+.global sub_8002770
+.global loc_8002774
+.global sub_80027B4
+.global sub_80027C4
+.global sub_80027F4
+.global sub_8002818
+.global sub_800286C
+.global sub_8002874
+.global handleObjSprites_800289C
+.global sub_80028D4
+.global sub_8002906
+.global sub_8002A64
+.global sub_8002ADE
+.global sub_8002B30
+.global sub_8002C24
+.global sub_8002C52
+.global sub_8002C68
+.global sub_8002C7A
+.global loc_8002C7E
+.global sub_8002CCE
+.global sub_8002CE0
+.global sub_8002D14
+.global sprite_makeUnscalable
+.global sprite_setPallete
+.global sub_8002D8C
+.global sprite_setAnimation
+.global sub_8002DB0
+.global loc_8002DB4
+.global sub_8002DC8
+.global sub_8002DD8
+.global sub_8002DEA
+.global sub_8002E04
+.global sub_8002E14
+.global sub_8002E3C
+.global sub_8002E52
+.global sub_8002EAC
+.global sub_8002ED0
+.global sub_8002EDC
+.global sub_8002EE8
+.global sub_8002EF6
+.global loc_8002F02
+.global sub_8002F2C
+.global sub_8002F3E
+.global sub_8002F5C
+.global sub_8002F7E
+.global sub_8002F90
+.global sub_8002FA6
+.global sub_8002FB2
+.global sub_8002FEC
+.global sub_8003006
+.global sub_800302A
+.global sub_800304A
+.global sub_8003060
+.global sub_800306C
+.global sub_800307C
+.global sub_800308A
+.global sub_80030A8
+.global sub_80030BA
+.global object_spawnType1
+.global object_spawnType3
+.global sub_8003374
+.global object_spawnType4
+.global sub_80033E4
+.global object_freeMemory
+.global loc_8003570
+.global sub_80035A2
+.global sub_800362C
+.global sub_8003694
+.global sub_800378C
+.global sub_80037AC
+.global sub_80037F4
+.global sub_8003914
+.global sub_8003940
+.global sub_8003962
+.global sub_8003984
+.global sub_800399A
+.global sub_80039CC
+.global sub_80039D4
+.global sub_8003A64
+.global loc_8003A90
+.global sub_8003AB2
+.global sub_8003AD4
+.global sub_8003AEA
+.global sub_8003B1C
+.global sub_8003B4C
+.global sub_8003B86
+.global sub_8003BA2
+.global sub_8003BF4
+.global sub_8003E98
+.global sub_8004298
+.global sub_8004590
+.global sub_80045C0
+.global sub_8004602
+.global sub_800461E
+.global sub_800467C
+.global sub_8004702
+.global sub_80047E0
+.global sub_8004822
+.global sub_80048B2
+.global sub_80048D2
+.global sub_8004934
+.global sub_8004D48
+.global sub_8004DF0
+.global sub_8005524
+.global sub_8005BC8
+.global sub_8005C04
+.global subsystem_launchBBS
+.global subsystem_launchReqBBS
+.global subsystem_launchShop
+.global subsystem_launchChipTrader
+.global sub_8005D88
+.global sub_8005EA2
+.global subsystem_launchMail
+.global sub_8005F40
+.global sub_8005F6C
+.global sub_8005F84
+.global engine_setScreeneffect
+.global loc_8006274
+.global sub_80062C8
+.global sub_80062EC
+.global engine_isScreeneffectAnimating
+.global loc_80062FC
+.global subsystem_triggerTransition_800630A
+.global dword_8006660
+.global sub_80068E0
+.global sub_80068EC
+.global sub_8006910
+.global CpuSet_toolKit
+.global sub_8006C22
+.global sub_8006C6C
+.global sub_8006DEC
+.global sub_8006DF6
+.global save_8006E0E
+.global save_8006E26
+.global load_8006E3C
+.global sub_8006E50
+.global sub_8006E70
+.global sub_8006E84
+.global sub_8006EA4
+.global sub_8006F1E
+.global sub_8006F54
+.global sub_8006F78
+.global sub_8006FAC
+.global sub_8006FD0
+.global sub_80070BC
+.global sub_80070E6
+.global sub_800710A
+.global sub_80071B4
+.global sub_80071D4
+.global sub_80076A0
+.global sub_80077B4
+.global loc_8007800
+.global off_8008000
+.global sub_8009FF8
+.global battle_isPaused
+.global battle_isTimeStop
+.global sub_800A0A4
+.global sub_800A0D6
+.global sub_800A11C
+.global sub_800A152
+.global battle_isBattleOver
+.global battle_setFlags
+.global battle_clearFlags
+.global battle_getFlags
+.global sub_800A704
+.global sub_800A70C
+.global getBattleSettingsFromList0
+.global getBattleSettingsFromList1
+.global zf_checkSameSubsystem_800A732
+.global sub_800A772
+.global sub_800A7D0
+.global sub_800A7E2
+.global sub_800A832
+.global sub_800A856
+.global sub_800A8F8
+.global sub_800A908
+.global sub_800A97A
+.global sub_800A9D6
+.global sub_800A9E2
+.global battle_networkInvert
+.global sub_800AA92
+.global sub_800AABC
+.global sub_800AB2E
+.global sub_800AB3A
+.global sub_800AB46
+.global sub_800ABC6
+.global sub_800AE54
+.global sub_800AE90
+.global sub_800AFBA
+.global sub_800B022
+.global sub_800B3A2
+.global sub_800B3D8
+.global sub_800B460
+.global sub_800B46C
+.global sub_800B6B0
+.global sub_800B6CE
+.global sub_800B6D4
+.global sub_800B6DA
+.global sub_800B6E0
+.global sub_800B734
+.global sub_800BCC0
+.global object_timefreezeEnd
+.global sub_800BF16
+.global sub_800BF5C
+.global object_getPanelParameters
+.global sub_800C90A
+.global object_crackPanel
+.global object_crackPanelDup1
+.global object_breakPanel
+.global object_breakPanel_dup1
+.global object_breakPanel_dup2
+.global object_breakPanel_dup3
+.global object_breakPanelLoud
+.global object_highlightPanel
+.global object_setPanelType
+.global object_setPanelAlliance
+.global object_setPanelAllianceTimerLong
+.global object_setPanelAllianceTimerShort
+.global object_setPanelTypeBlink
+.global object_isCurrentPanelValid
+.global object_isValidPanel
+.global object_checkPanelParameters
+.global object_isCurrentPanelSolid
+.global object_isPanelSolid
+.global object_highlightCurrentCollisionPanels
+.global object_highlightPanelRegion
+.global object_highlightPanelRegionBlue
+.global object_hidePanel
+.global object_getPanelsExceptCurrentFilterred
+.global sub_800CEA0
+.global sub_800CF14
+.global sub_800CF42
+.global sub_800CF70
+.global sub_800CFA6
+.global sub_800CFDC
+.global sub_800D012
+.global sub_800D06A
+.global sub_800D086
+.global sub_800D0BC
+.global sub_800D120
+.global sub_800D3FE
+.global sub_800D45C
+.global sub_800D4C2
+.global sub_800D4D0
+.global sub_800D58C
+.global sub_800D5F0
+.global sub_800D618
+.global sub_800D668
+.global sub_800E24C
+.global sub_800E258
+.global sub_800E276
+.global sub_800E29C
+.global sub_800E2AC
+.global sub_800E2C0
+.global sub_800E2C2
+.global sub_800E2CA
+.global object_getFlipDirection
+.global object_subtractHP
+.global object_addHP
+.global sub_800E2FC
+.global sub_800E3BE
+.global sub_800E456
+.global object_canMove
+.global sub_800E5FC
+.global sub_800E680
+.global sub_800E6E8
+.global sub_800E708
+.global object_setCounterTime
+.global sub_800EA0E
+.global sub_800EA22
+.global sub_800EA90
+.global sub_800EABA
+.global sub_800EAC4
+.global sub_800EADA
+.global object_setInvulnerableTime
+.global sub_800EB08
+.global sub_800EB6C
+.global object_getEnemyByNameRange
+.global sub_800EC3C
+.global sub_800EC48
+.global sub_800ED90
+.global sub_800F214
+.global sub_800F23C
+.global sub_800F26C
+.global sub_800F29C
+.global sub_800F2AA
+.global sub_800F2B6
+.global sub_800F2C6
+.global sub_800F2FC
+.global sub_800F322
+.global sub_800F378
+.global sub_800F46C
+.global sub_800F486
+.global sub_800F49E
+.global sub_800F614
+.global sub_800F656
+.global sub_800F672
+.global sub_800F884
+.global sub_800F898
+.global sub_800F8B0
+.global sub_800F8CE
+.global sub_800F90E
+.global sub_800F964
+.global sub_800F998
+.global sub_800FA20
+.global sub_800FA54
+.global sub_800FAAC
+.global sub_800FAF6
+.global sub_800FB54
+.global sub_800FC30
+.global sub_800FC7C
+.global sub_800FC9E
+.global sub_800FCFC
+.global sub_800FDB6
+.global sub_800FE12
+.global sub_800FE28
+.global sub_800FE36
+.global sub_800FE52
+.global sub_800FFE4
+.global sub_800FFEE
+.global sub_800FFFE
+.global sub_8010004
+.global sub_8010018
+.global sub_801002C
+.global sub_80100EC
+.global sub_801011A
+.global sub_80101AE
+.global sub_80101C4
+.global sub_80101D4
+.global sub_80101F8
+.global sub_8010300
+.global sub_8010312
+.global sub_801031C
+.global sub_801032C
+.global sub_8010332
+.global sub_80103A8
+.global sub_80103BC
+.global sub_80103EC
+.global sub_80103F8
+.global sub_8010474
+.global sub_801056A
+.global sub_80105F2
+.global sub_8010660
+.global sub_80106C0
+.global sub_8010740
+.global sub_80107C0
+.global sub_80107D4
+.global sub_801086C
+.global sub_80108FC
+.global loc_80109A4
+.global sub_8010C76
+.global sub_8010CE0
+.global sub_8010DD0
+.global loc_8010DF6
+.global sub_8011020
+.global loc_8011044
+.global loc_8011268
+.global loc_8011384
+.global sub_8011420
+.global sub_8011450
+.global sub_8011504
+.global sub_801155A
+.global sub_801156A
+.global sub_801162A
+.global sub_801164C
+.global sub_8011680
+.global sub_8011684
+.global sub_8011688
+.global loc_801168C
+.global loc_8011690
+.global loc_8011694
+.global sub_80116AE
+.global sub_80116D8
+.global sub_8011714
+.global loc_801171C
+.global sub_8011764
+.global sub_801177A
+.global sub_8011790
+.global loc_80117A4
+.global sub_801265A
+.global sub_80126E4
+.global sub_8012792
+.global sub_8012956
+.global sub_801299C
+.global sub_8012E74
+.global sub_8012EA8
+.global sub_8013682
+.global sub_80136CC
+.global sub_80136D8
+.global sub_80136E4
+.global sub_80136F0
+.global sub_8013704
+.global sub_8013754
+.global sub_8013764
+.global sub_8013774
+.global sub_8013790
+.global sub_801379E
+.global sub_80137B6
+.global sub_80137E6
+.global sub_80137FE
+.global sub_8013816
+.global sub_801382E
+.global sub_8013846
+.global sub_8013864
+.global sub_8013874
+.global sub_801393A
+.global sub_80139C4
+.global sub_8013B4E
+.global loc_8013B64
+.global sub_8013CC4
+.global sub_8013D5E
+.global sub_8013DA0
+.global sub_8013FAE
+.global sub_8013FD0
+.global sub_8014018
+.global sub_801401E
+.global sub_80141AC
+.global loc_8014216
+.global sub_80142C2
+.global sub_80143A6
+.global loc_80143B4
+.global sub_801443C
+.global sub_8014446
+.global sub_80144C0
+.global sub_8015940
+.global sub_8015952
+.global sub_8015B00
+.global sub_8015B54
+.global sub_8015B5C
+.global sub_8015BEC
+.global sub_8015C32
+.global sub_8015C48
+.global sub_8015C94
+.global sub_8015CC0
+.global sub_8015D80
+.global sub_8015E46
+.global sub_8016004
+.global sub_8016218
+.global sub_801632C
+.global sub_80165B8
+.global sub_80165C2
+.global sub_8016934
+.global sub_80169BE
+.global byte_8016B02
+.global byte_8016B03
+.global sub_8016B36
+.global sub_8016B72
+.global sub_8016C8A
+.global sub_8016C9C
+.global loc_8016CE8
+.global sub_8016E64
+.global sub_8016EC4
+.global sub_80170C4
+.global sub_80174FE
+.global sub_80175B8
+.global sub_8017688
+.global sub_8017768
+.global sub_8017CC0
+.global sub_80182B4
+.global sub_8018810
+.global sub_8018842
+.global sub_8019892
+.global sub_80198CE
+.global off_8019B78
+.global dword_8019C34
+.global sub_8019F86
+.global sub_8019F8C
+.global sub_8019FB4
+.global sub_801A00E
+.global sub_801A018
+.global sub_801A04C
+.global sub_801A066
+.global sub_801A074
+.global sub_801A07C
+.global sub_801A082
+.global sub_801A0D4
+.global sub_801A100
+.global sub_801A140
+.global sub_801A146
+.global object_setFlag
+.global object_clearFlag
+.global object_getFlag
+.global sub_801A16C
+.global sub_801A176
+.global sub_801A180
+.global sub_801A258
+.global sub_801A264
+.global sub_801A284
+.global sub_801A29A
+.global sub_801A2B0
+.global sub_801A4D0
+.global sub_801A4DC
+.global sub_801A5E2
+.global sub_801A66C
+.global sub_801A67E
+.global sub_801A7CC
+.global sub_801A7F4
+.global sub_801ABB8
+.global sub_801AC6C
+.global sub_801AD12
+.global sub_801AD6A
+.global sub_801AD9E
+.global sub_801ADFA
+.global sub_801AF44
+.global sub_801B1C4
+.global sub_801B394
+.global sub_801B4D4
+.global sub_801B610
+.global loc_801B750
+.global loc_801B878
+.global sub_801BB1C
+.global sub_801BB46
+.global sub_801BBAC
+.global sub_801BBF4
+.global sub_801BC24
+.global sub_801BC64
+.global sub_801BCA6
+.global sub_801BCD0
+.global sub_801BCF4
+.global sub_801BD3C
+.global sub_801BDDE
+.global sub_801BE04
+.global nullsub_10
+.global sub_801BE2A
+.global sub_801BEB8
+.global sub_801BEC2
+.global sub_801BECC
+.global sub_801BED6
+.global sub_801DA48
+.global sub_801DACC
+.global sub_801DBD4
+.global sub_801DC36
+.global sub_801DC7C
+.global sub_801DCCC
+.global sub_801DD34
+.global sub_801DED0
+.global sub_801DEEE
+.global sub_801DF0C
+.global sub_801DF8C
+.global sub_801DF92
+.global sub_801DFA2
+.global sub_801E0A0
+.global sub_801E0D0
+.global sub_801E2BA
+.global sub_801E408
+.global sub_801E474
+.global sub_801E574
+.global sub_801E658
+.global sub_801E660
+.global sub_801E71C
+.global sub_801E754
+.global sub_801E780
+.global loc_801E792
+.global sub_801E914
+.global sub_801EB18
+.global sub_801EC44
 
 
 /* External Symbols */
 .include "asm03.inc"
-// .extern sub_8026840
-// .extern loc_8026A28
-// .extern sub_8027D10
-// .extern sub_802A866
-// .extern loc_802A87C
-// .extern loc_802BD60
-// .extern sub_802C34E
-// .extern sub_802C8FA
-// .extern sub_802C9B8
-// .extern sub_802C9EA
-// .extern sub_802CA82
-// .extern sub_802CB38
-// .extern loc_802CB78
-// .extern off_802CCB4
-// .extern sub_802CDD0
-// .extern sub_802CDFE
-// .extern sub_802CE10
-// .extern sub_802CE54
-// .extern sub_802CE60
-// .extern sub_802CE78
-// .extern sub_802CEA6
-// .extern sub_802CEC8
-// .extern sub_802CEF4
-// .extern sub_802CFF8
-// .extern sub_802D08C
-// .extern sub_802D1B4
-// .extern sub_802D1BE
-// .extern sub_802D234
-// .extern sub_802D246
-// .extern sub_802D254
-// .extern sub_802D26A
-// .extern sub_802D2B2
-// .extern sub_802D310
-// .extern sub_802D638
-// .extern sub_802D644
-// .extern sub_802D65E
-// .extern sub_802D6A0
-// .extern sub_802D6C4
-// .extern loc_802D714
-// .extern loc_802D926
-// .extern sub_802DCDE
-// .extern sub_802DCEC
-// .extern sub_802DD2A
-// .extern sub_802DE5C
-// .extern sub_802DFC8
-// .extern sub_802DFFC
-// .extern sub_802E014
-// .extern sub_802E032
-// .extern sub_802E066
-// .extern sub_802E070
-// .extern sub_802E09A
-// .extern sub_802E112
-// .extern sub_802E156
-// .extern sub_802E1D8
-// .extern sub_802E240
-// .extern sub_802E440
-// .extern sub_802E44A
-// .extern sub_802E454
-// .extern sub_802E45E
-// .extern sub_802E4B8
-// .extern sub_802E830
-// .extern sub_802EF5C
-// .extern dword_802F0A8
-// .extern sub_802F0C4
-// .extern sub_802F0D8
-// .extern sub_802F0F4
-// .extern sub_802F110
-// .extern sub_802F114
-// .extern sub_802F12C
-// .extern sub_802F130
-// .extern sub_802F164
-// .extern sub_802F168
-// .extern sub_802F17E
-// .extern sub_802F1FC
-// .extern sub_802F2C8
-// .extern sub_802FDB0
-// .extern loc_802FDB4
-// .extern sub_802FE28
-// .extern sub_802FE48
-// .extern sub_802FE6A
-// .extern sub_802FE7A
-// .extern sub_802FF2C
-// .extern sub_802FF4C
-// .extern loc_802FFF4
-// .extern sub_80301B2
-// .extern sub_80302A8
-// .extern sub_80302B6
-// .extern sub_80303E8
-// .extern sub_8030580
-// .extern sub_8030808
-// .extern loc_8030A00
-// .extern sub_8030A30
-// .extern sub_8031A7A
-// .extern dword_8031CC4
-// .extern dword_8032530
-// .extern dword_8032530
-// .extern off_803385C
-// .extern dword_8033878
-// .extern sub_8033948
-// .extern loc_80339CC
-// .extern sub_80341AA
-// .extern sub_8034B4C
-// .extern sub_8034BB8
-// .extern sub_803532C
-// .extern sub_80355A8
-// .extern sub_80355EC
-// .extern sub_80356EC
-// .extern sub_8035738
-// .extern sub_8036E90
-// .extern sub_8036EFE
-// .extern sub_8036F24
-// .extern sub_8036F36
-// .extern sub_80385F0
-// .extern sub_8038A9C
-// .extern sub_803C3E0
-// .extern sub_803C59C
-// .extern sub_803C754
-// .extern sub_803CD74
-// .extern sub_803CEB8
-// .extern sub_803D0C8
-// .extern sub_803D0F4
-// .extern loc_803D1AC
-// .extern sub_803DD60
-// .extern sub_803DDA4
-// .extern sub_803DE24
-// .extern sub_803EA60
-// .extern sub_803EBF4
-// .extern loc_803ED90
-// .extern sub_803F4EC
-// .extern sub_803F500
-// .extern sub_803F524
-// .extern sub_803F530
-// .extern sub_803F6B0
-// .extern sub_803F79E
-// .extern sub_803F838
-// .extern sub_803FB28
-// .extern loc_8040000
-// .extern chatbox_runScript
-// .extern sub_8040818
-// .extern sub_8045F2C
-// .extern sub_8045F3C
-// .extern render_graphicalText_8045F8C
-// .extern sub_8046664
-// .extern sub_8046CC8
-// .extern sub_8048C68
-// .extern sub_8048C98
-// .extern sub_8049CF8
-// .extern sub_804A17A
-// .extern sub_804A2CC
+// .global sub_8026840
+// .global loc_8026A28
+// .global sub_8027D10
+// .global sub_802A866
+// .global loc_802A87C
+// .global loc_802BD60
+// .global sub_802C34E
+// .global sub_802C8FA
+// .global sub_802C9B8
+// .global sub_802C9EA
+// .global sub_802CA82
+// .global sub_802CB38
+// .global loc_802CB78
+// .global off_802CCB4
+// .global sub_802CDD0
+// .global sub_802CDFE
+// .global sub_802CE10
+// .global sub_802CE54
+// .global sub_802CE60
+// .global sub_802CE78
+// .global sub_802CEA6
+// .global sub_802CEC8
+// .global sub_802CEF4
+// .global sub_802CFF8
+// .global sub_802D08C
+// .global sub_802D1B4
+// .global sub_802D1BE
+// .global sub_802D234
+// .global sub_802D246
+// .global sub_802D254
+// .global sub_802D26A
+// .global sub_802D2B2
+// .global sub_802D310
+// .global sub_802D638
+// .global sub_802D644
+// .global sub_802D65E
+// .global sub_802D6A0
+// .global sub_802D6C4
+// .global loc_802D714
+// .global loc_802D926
+// .global sub_802DCDE
+// .global sub_802DCEC
+// .global sub_802DD2A
+// .global sub_802DE5C
+// .global sub_802DFC8
+// .global sub_802DFFC
+// .global sub_802E014
+// .global sub_802E032
+// .global sub_802E066
+// .global sub_802E070
+// .global sub_802E09A
+// .global sub_802E112
+// .global sub_802E156
+// .global sub_802E1D8
+// .global sub_802E240
+// .global sub_802E440
+// .global sub_802E44A
+// .global sub_802E454
+// .global sub_802E45E
+// .global sub_802E4B8
+// .global sub_802E830
+// .global sub_802EF5C
+// .global dword_802F0A8
+// .global sub_802F0C4
+// .global sub_802F0D8
+// .global sub_802F0F4
+// .global sub_802F110
+// .global sub_802F114
+// .global sub_802F12C
+// .global sub_802F130
+// .global sub_802F164
+// .global sub_802F168
+// .global sub_802F17E
+// .global sub_802F1FC
+// .global sub_802F2C8
+// .global sub_802FDB0
+// .global loc_802FDB4
+// .global sub_802FE28
+// .global sub_802FE48
+// .global sub_802FE6A
+// .global sub_802FE7A
+// .global sub_802FF2C
+// .global sub_802FF4C
+// .global loc_802FFF4
+// .global sub_80301B2
+// .global sub_80302A8
+// .global sub_80302B6
+// .global sub_80303E8
+// .global sub_8030580
+// .global sub_8030808
+// .global loc_8030A00
+// .global sub_8030A30
+// .global sub_8031A7A
+// .global dword_8031CC4
+// .global dword_8032530
+// .global dword_8032530
+// .global off_803385C
+// .global dword_8033878
+// .global sub_8033948
+// .global loc_80339CC
+// .global sub_80341AA
+// .global sub_8034B4C
+// .global sub_8034BB8
+// .global sub_803532C
+// .global sub_80355A8
+// .global sub_80355EC
+// .global sub_80356EC
+// .global sub_8035738
+// .global sub_8036E90
+// .global sub_8036EFE
+// .global sub_8036F24
+// .global sub_8036F36
+// .global sub_80385F0
+// .global sub_8038A9C
+// .global sub_803C3E0
+// .global sub_803C59C
+// .global sub_803C754
+// .global sub_803CD74
+// .global sub_803CEB8
+// .global sub_803D0C8
+// .global sub_803D0F4
+// .global loc_803D1AC
+// .global sub_803DD60
+// .global sub_803DDA4
+// .global sub_803DE24
+// .global sub_803EA60
+// .global sub_803EBF4
+// .global loc_803ED90
+// .global sub_803F4EC
+// .global sub_803F500
+// .global sub_803F524
+// .global sub_803F530
+// .global sub_803F6B0
+// .global sub_803F79E
+// .global sub_803F838
+// .global sub_803FB28
+// .global loc_8040000
+// .global chatbox_runScript
+// .global sub_8040818
+// .global sub_8045F2C
+// .global sub_8045F3C
+// .global render_graphicalText_8045F8C
+// .global sub_8046664
+// .global sub_8046CC8
+// .global sub_8048C68
+// .global sub_8048C98
+// .global sub_8049CF8
+// .global sub_804A17A
+// .global sub_804A2CC
 
 .include "start.inc"
-// .extern start_
-// .extern dword_8000004
-// .extern dword_8000004
-// .extern start_800024C
+// .global start_
+// .global dword_8000004
+// .global dword_8000004
+// .global start_800024C
 
 .include "asm02.inc"
-// .extern sub_8021AA4
-// .extern sub_8021AB4
-// .extern sub_8021C68
-// .extern sub_8021C7C
-// .extern sub_8021D08
-// .extern sub_8021D14
-// .extern sub_8021D36
+// .global sub_8021AA4
+// .global sub_8021AB4
+// .global sub_8021C68
+// .global sub_8021C7C
+// .global sub_8021D08
+// .global sub_8021D14
+// .global sub_8021D36
 
 .include "asm21.inc"
-// .extern sub_8080D90
-// .extern sub_8080DA0
+// .global sub_8080D90
+// .global sub_8080DA0
 
 .include "asm37.inc"
-// .extern sub_813B768
-// .extern sub_813B934
-// .extern sub_813BF1C
-// .extern sub_813C324
-// .extern sub_813C3AC
-// .extern sub_813D60C
-// .extern sub_813E07C
-// .extern sub_813E5DC
-// .extern sub_813E616
-// .extern reqBBS_init_s_2005780
-// .extern sub_813F9A0
-// .extern reqBBS_initMemory_813F9DA
-// .extern sub_8140984
-// .extern sub_81419A0
-// .extern sub_8142248
-// .extern sub_8143482
-// .extern sub_8144048
-// .extern sub_81440D8
-// .extern sub_8144EEC
-// .extern SWI_CpuFastSet
-// .extern SWI_CpuSet
-// .extern SWI_Div
-// .extern SWI_LZ77UnCompReadNormalWrite16bit
-// .extern SWI_LZ77UnCompReadNormalWrite8bit
-// .extern SWI_Sqrt
-// .extern sub_814E87C
-// .extern sub_814E918
-// .extern m4a_SongNumStart
-// .extern sub_814E9F0
-// .extern sub_814EA58
-// .extern sub_814EAF0
-// .extern sub_814EB1C
-// .extern sub_814F00C
-// .extern sub_814F988
-// .extern sub_814F9AC
-// .extern sub_814FA14
+// .global sub_813B768
+// .global sub_813B934
+// .global sub_813BF1C
+// .global sub_813C324
+// .global sub_813C3AC
+// .global sub_813D60C
+// .global sub_813E07C
+// .global sub_813E5DC
+// .global sub_813E616
+// .global reqBBS_init_s_2005780
+// .global sub_813F9A0
+// .global reqBBS_initMemory_813F9DA
+// .global sub_8140984
+// .global sub_81419A0
+// .global sub_8142248
+// .global sub_8143482
+// .global sub_8144048
+// .global sub_81440D8
+// .global sub_8144EEC
+// .global SWI_CpuFastSet
+// .global SWI_CpuSet
+// .global SWI_Div
+// .global SWI_LZ77UnCompReadNormalWrite16bit
+// .global SWI_LZ77UnCompReadNormalWrite8bit
+// .global SWI_Sqrt
+// .global sub_814E87C
+// .global sub_814E918
+// .global m4a_SongNumStart
+// .global sub_814E9F0
+// .global sub_814EA58
+// .global sub_814EAF0
+// .global sub_814EB1C
+// .global sub_814F00C
+// .global sub_814F988
+// .global sub_814F9AC
+// .global sub_814FA14
 
 .include "asm33.inc"
-// .extern sub_8127990
-// .extern sub_81284A4
+// .global sub_8127990
+// .global sub_81284A4
 
 .include "asm29.inc"
-// .extern ho_80A4984
-// .extern loc_80A4A98
-// .extern loc_80A4BDC
-// .extern loc_80A51C4
-// .extern loc_80A5428
-// .extern loc_80A54F0
-// .extern loc_80A57AC
-// .extern loc_80A5AD4
-// .extern sub_80A6A16
-// .extern loc_80A6E98
-// .extern loc_80A72B4
-// .extern loc_80A77A8
-// .extern loc_80A781C
-// .extern loc_80A78B8
-// .extern loc_80A7C84
-// .extern loc_80A7D90
-// .extern loc_80A8208
-// .extern loc_80A8394
-// .extern loc_80A8654
-// .extern loc_80A8728
-// .extern loc_80A87F0
-// .extern loc_80A8870
-// .extern loc_80A89DC
-// .extern loc_80A8AB4
-// .extern loc_80A8E74
-// .extern loc_80A92B8
-// .extern loc_80A9430
-// .extern loc_80A9658
-// .extern loc_80A9824
-// .extern loc_80A98D4
-// .extern loc_80A9A0C
-// .extern loc_80A9B70
-// .extern loc_80A9D10
-// .extern loc_80A9ECC
-// .extern loc_80A9F58
-// .extern sub_80AA004
-// .extern loc_80AA058
-// .extern sub_80AA104
-// .extern loc_80AA140
-// .extern loc_80AA1E0
-// .extern loc_80AA2D8
-// .extern loc_80AA374
-// .extern sub_80AA4C0
-// .extern sub_80AA88C
-// .extern sub_80AAB88
+// .global ho_80A4984
+// .global loc_80A4A98
+// .global loc_80A4BDC
+// .global loc_80A51C4
+// .global loc_80A5428
+// .global loc_80A54F0
+// .global loc_80A57AC
+// .global loc_80A5AD4
+// .global sub_80A6A16
+// .global loc_80A6E98
+// .global loc_80A72B4
+// .global loc_80A77A8
+// .global loc_80A781C
+// .global loc_80A78B8
+// .global loc_80A7C84
+// .global loc_80A7D90
+// .global loc_80A8208
+// .global loc_80A8394
+// .global loc_80A8654
+// .global loc_80A8728
+// .global loc_80A87F0
+// .global loc_80A8870
+// .global loc_80A89DC
+// .global loc_80A8AB4
+// .global loc_80A8E74
+// .global loc_80A92B8
+// .global loc_80A9430
+// .global loc_80A9658
+// .global loc_80A9824
+// .global loc_80A98D4
+// .global loc_80A9A0C
+// .global loc_80A9B70
+// .global loc_80A9D10
+// .global loc_80A9ECC
+// .global loc_80A9F58
+// .global sub_80AA004
+// .global loc_80AA058
+// .global sub_80AA104
+// .global loc_80AA140
+// .global loc_80AA1E0
+// .global loc_80AA2D8
+// .global loc_80AA374
+// .global sub_80AA4C0
+// .global sub_80AA88C
+// .global sub_80AAB88
 
 .include "asm32.inc"
-// .extern sub_811EBE0
-// .extern sub_811EC00
-// .extern sub_811EC10
-// .extern sub_811EC50
-// .extern loc_811ED1C
-// .extern sub_811F6C0
-// .extern sub_811F6E0
-// .extern sub_811F7EC
-// .extern sub_811FB78
-// .extern sub_81207F8
-// .extern sub_81209DC
-// .extern sub_8120A38
-// .extern sub_8121144
-// .extern sub_8121198
+// .global sub_811EBE0
+// .global sub_811EC00
+// .global sub_811EC10
+// .global sub_811EC50
+// .global loc_811ED1C
+// .global sub_811F6C0
+// .global sub_811F6E0
+// .global sub_811F7EC
+// .global sub_811FB78
+// .global sub_81207F8
+// .global sub_81209DC
+// .global sub_8120A38
+// .global sub_8121144
+// .global sub_8121198
 
 .include "asm01.inc"
-// .extern sub_801FE00
-// .extern sub_801FE24
-// .extern sub_801FE5E
-// .extern sub_801FE64
-// .extern sub_801FE6C
-// .extern sub_801FEE8
-// .extern loc_801FEEE
-// .extern sub_80200A4
-// .extern sub_8020134
-// .extern sub_8020140
-// .extern sub_802015E
+// .global sub_801FE00
+// .global sub_801FE24
+// .global sub_801FE5E
+// .global sub_801FE64
+// .global sub_801FE6C
+// .global sub_801FEE8
+// .global loc_801FEEE
+// .global sub_80200A4
+// .global sub_8020134
+// .global sub_8020140
+// .global sub_802015E
 
 .include "asm36.inc"
-// .extern sub_81376E8
-// .extern sub_8137700
-// .extern sub_8137808
-// .extern sub_8138294
+// .global sub_81376E8
+// .global sub_8137700
+// .global sub_8137808
+// .global sub_8138294
 
 .include "asm28.inc"
-// .extern loc_809D19C
-// .extern sub_809E04C
-// .extern sub_809E098
-// .extern sub_809E2C2
-// .extern sub_809E2F4
-// .extern sub_809E2FC
-// .extern sub_809E304
-// .extern sub_809E312
-// .extern sub_809E3AA
-// .extern sub_809E3B2
-// .extern sub_809E462
-// .extern loc_809E570
-// .extern sub_809F68C
-// .extern sub_809F90C
-// .extern sub_809F942
-// .extern sub_809F9C8
-// .extern sub_809F9DC
-// .extern sub_809FAF4
+// .global loc_809D19C
+// .global sub_809E04C
+// .global sub_809E098
+// .global sub_809E2C2
+// .global sub_809E2F4
+// .global sub_809E2FC
+// .global sub_809E304
+// .global sub_809E312
+// .global sub_809E3AA
+// .global sub_809E3B2
+// .global sub_809E462
+// .global loc_809E570
+// .global sub_809F68C
+// .global sub_809F90C
+// .global sub_809F942
+// .global sub_809F9C8
+// .global sub_809F9DC
+// .global sub_809FAF4
 
 .include "asm30.inc"
-// .extern battleSettingsList0
-// .extern battleSettingsList1
+// .global battleSettingsList0
+// .global battleSettingsList1
 
 .include "asm31.inc"
-// .extern sub_80B81EC
-// .extern sub_80B8210
-// .extern loc_80B85E0
-// .extern loc_80B88D0
-// .extern loc_80B8A18
-// .extern loc_80B8CD8
-// .extern loc_80B8EA0
-// .extern loc_80B9078
-// .extern loc_80B92B8
-// .extern loc_80B94BC
-// .extern loc_80B97C0
-// .extern loc_80B99C0
-// .extern loc_80B9C14
-// .extern loc_80B9F44
-// .extern loc_80BA364
-// .extern loc_80BA708
-// .extern loc_80BAA8C
-// .extern loc_80BAF50
-// .extern loc_80BB2A0
-// .extern loc_80BB608
-// .extern loc_80BB914
-// .extern loc_80BBB98
-// .extern loc_80BBF0C
-// .extern loc_80BC17C
-// .extern loc_80BC4FC
-// .extern loc_80BC650
-// .extern sub_80BC844
-// .extern loc_80BC87C
-// .extern loc_80BCA04
-// .extern loc_80BCB50
-// .extern loc_80BCD14
-// .extern loc_80BD388
-// .extern loc_80BDBA4
-// .extern loc_80BE4D8
-// .extern loc_80BE798
-// .extern loc_80BF260
-// .extern loc_80BF6EC
-// .extern loc_80BFDFC
-// .extern loc_80BFF68
-// .extern loc_80C0178
-// .extern loc_80C0334
-// .extern loc_80C04AC
-// .extern loc_80C065C
-// .extern loc_80C07BC
-// .extern loc_80C0E04
-// .extern loc_80C0F6C
-// .extern loc_80C11AC
-// .extern loc_80C1570
-// .extern loc_80C1A10
-// .extern loc_80C2138
-// .extern loc_80C26F0
-// .extern loc_80C2A78
-// .extern loc_80C3000
-// .extern loc_80C3218
-// .extern loc_80C34E0
-// .extern loc_80C3734
-// .extern loc_80C3970
-// .extern loc_80C3CE8
-// .extern loc_80C3EE0
-// .extern loc_80C40D8
-// .extern sub_80C41D8
-// .extern sub_80C4204
-// .extern loc_80C4348
-// .extern sub_80C44A8
-// .extern sub_80C44C8
-// .extern sub_80C44D2
-// .extern loc_80C4530
-// .extern sub_80C468C
-// .extern sub_80C46B0
-// .extern sub_80C46B6
-// .extern sub_80C46C0
-// .extern loc_80C46FC
-// .extern loc_80C4828
-// .extern loc_80C4B18
-// .extern sub_80C4C12
-// .extern sub_80C4C3A
-// .extern loc_80C4E58
-// .extern sub_80C4FFE
-// .extern loc_80C50B8
-// .extern loc_80C51AC
-// .extern loc_80C52B0
-// .extern sub_80C53A6
-// .extern loc_80C53C0
-// .extern loc_80C55B0
-// .extern loc_80C57C0
-// .extern loc_80C5A34
-// .extern sub_80C5B76
-// .extern loc_80C5BB0
-// .extern loc_80C5DDC
-// .extern loc_80C5F60
-// .extern loc_80C60A8
-// .extern loc_80C6280
-// .extern loc_80C6414
-// .extern loc_80C6580
-// .extern loc_80C67F8
-// .extern loc_80C6946
-// .extern loc_80C6B40
-// .extern loc_80C6DCC
-// .extern loc_80C7074
-// .extern loc_80C71A4
-// .extern loc_80C740C
-// .extern loc_80C793C
-// .extern loc_80C7C18
-// .extern loc_80C7D78
-// .extern sub_80C7F20
-// .extern loc_80C7F40
-// .extern loc_80C8098
-// .extern loc_80C81CC
-// .extern loc_80C8388
-// .extern loc_80C853C
-// .extern loc_80C86D8
-// .extern loc_80C882C
-// .extern loc_80C8AA4
-// .extern loc_80C8C74
-// .extern loc_80C8E08
-// .extern loc_80C8FFC
-// .extern loc_80C91A0
-// .extern loc_80C93CC
-// .extern sub_80C96A0
-// .extern locret_80C980C
-// .extern locret_80C9814
-// .extern loc_80C9824
-// .extern loc_80C9BC4
-// .extern loc_80C9D00
-// .extern loc_80C9F78
-// .extern loc_80CA2A8
-// .extern loc_80CA544
-// .extern loc_80CA6B8
-// .extern loc_80CA938
-// .extern loc_80CAB68
-// .extern loc_80CAD28
-// .extern loc_80CAEF0
-// .extern loc_80CB0DC
-// .extern loc_80CB284
-// .extern loc_80CB6F8
-// .extern loc_80CB900
-// .extern loc_80CBB44
-// .extern loc_80CC044
-// .extern sub_80CC0B2
-// .extern sub_80CC0E8
-// .extern loc_80CC4C4
-// .extern loc_80CC5A8
-// .extern loc_80CC76C
-// .extern loc_80CC944
-// .extern loc_80CCA40
-// .extern loc_80CCC48
-// .extern loc_80CCD70
-// .extern sub_80CCFDC
-// .extern loc_80CD2EC
-// .extern loc_80CD4EC
-// .extern sub_80CD8EC
-// .extern loc_80CDD44
-// .extern loc_80CDF84
-// .extern loc_80CE118
-// .extern loc_80CE24C
-// .extern loc_80CE530
-// .extern loc_80CE70C
-// .extern loc_80CE81C
-// .extern loc_80CEB00
-// .extern sub_80CEE78
-// .extern sub_80CF0D0
-// .extern sub_80CF3BE
-// .extern loc_80CF5C8
-// .extern loc_80CF7F0
-// .extern loc_80CF954
-// .extern sub_80CFBC4
-// .extern loc_80CFC08
-// .extern loc_80CFCF8
-// .extern loc_80CFEC4
-// .extern loc_80D00A0
-// .extern loc_80D0268
-// .extern loc_80D0394
-// .extern loc_80D0500
-// .extern loc_80D0610
-// .extern loc_80D07CC
-// .extern loc_80D0AA8
-// .extern loc_80D0D7C
-// .extern loc_80D0F8C
-// .extern loc_80D1218
-// .extern loc_80D1514
-// .extern loc_80D17A4
-// .extern loc_80D18D8
-// .extern loc_80D1A08
-// .extern loc_80D1B48
-// .extern loc_80D1C20
-// .extern sub_80D2034
-// .extern sub_80D2290
-// .extern loc_80D2460
-// .extern sub_80D25D4
-// .extern loc_80D2A94
-// .extern loc_80D2BDC
-// .extern loc_80D2EBC
-// .extern loc_80D30D0
-// .extern sub_80D34CC
-// .extern loc_80D385C
-// .extern sub_80D39BC
-// .extern loc_80D4088
-// .extern loc_80D4440
-// .extern loc_80D46B8
-// .extern loc_80D4A28
-// .extern loc_80D4B68
-// .extern loc_80D4C84
-// .extern loc_80D5028
-// .extern loc_80D5138
-// .extern loc_80D535C
-// .extern loc_80D5580
-// .extern loc_80D5740
-// .extern loc_80D58B4
-// .extern loc_80D5ABC
-// .extern loc_80D5C48
-// .extern loc_80D5D54
-// .extern loc_80D5F08
-// .extern loc_80D622C
-// .extern loc_80D655C
-// .extern loc_80D67EC
-// .extern loc_80D6924
-// .extern loc_80D6A20
-// .extern loc_80D6BD4
-// .extern loc_80D6D80
-// .extern sub_80D6EE0
-// .extern loc_80D7068
-// .extern loc_80D7278
-// .extern loc_80D7400
-// .extern loc_80D75FC
-// .extern loc_80D7ACC
-// .extern loc_80D7DE4
-// .extern loc_80D807C
-// .extern loc_80D825C
-// .extern loc_80D8444
-// .extern loc_80D8620
-// .extern loc_80D879C
-// .extern loc_80D88E0
-// .extern loc_80D8C5C
-// .extern loc_80D8E10
-// .extern loc_80D8FC4
-// .extern loc_80D9154
-// .extern loc_80D9350
-// .extern loc_80D954C
-// .extern loc_80D96A4
-// .extern loc_80D984C
-// .extern sub_80D99EC
-// .extern loc_80D9A50
-// .extern loc_80D9D4C
-// .extern loc_80DA050
-// .extern loc_80DA470
-// .extern loc_80DA5FC
-// .extern loc_80DA80C
-// .extern loc_80DAA28
-// .extern loc_80DACE4
-// .extern loc_80DAE94
-// .extern loc_80DB0E4
-// .extern loc_80DB304
-// .extern loc_80DB6A4
-// .extern loc_80DB8CC
-// .extern loc_80DB994
-// .extern loc_80DBB40
-// .extern loc_80DBCEC
-// .extern sub_80DBEE6
-// .extern loc_80DC0E8
-// .extern loc_80DC260
-// .extern loc_80DC3F8
-// .extern loc_80DC4FC
-// .extern loc_80DC5F8
-// .extern loc_80DC70C
-// .extern loc_80DCB1C
-// .extern loc_80DCCD4
-// .extern loc_80DCE38
-// .extern loc_80DCEF4
-// .extern loc_80DD0AC
-// .extern loc_80DD34C
-// .extern loc_80DD764
-// .extern loc_80DD940
-// .extern loc_80DDA84
-// .extern loc_80DDC10
-// .extern loc_80DDDF0
-// .extern loc_80DE000
-// .extern loc_80DE13C
-// .extern loc_80DE404
-// .extern loc_80DE7F4
-// .extern loc_80DEA7C
-// .extern loc_80DEE60
-// .extern loc_80DF0A4
-// .extern loc_80DF188
-// .extern loc_80DF328
-// .extern loc_80DF4FC
-// .extern loc_80DF90C
-// .extern loc_80DFC38
-// .extern loc_80DFE40
-// .extern loc_80DFFB8
-// .extern loc_80E0548
-// .extern sub_80E05F6
-// .extern loc_80E0638
-// .extern sub_80E06F8
-// .extern loc_80E0710
-// .extern loc_80E0844
-// .extern sub_80E08C4
-// .extern locret_80E08E0
-// .extern loc_80E08FC
-// .extern sub_80E09EE
-// .extern loc_80E0AD4
-// .extern sub_80E0D98
-// .extern loc_80E0DF0
-// .extern sub_80E0F02
-// .extern loc_80E0FA0
-// .extern loc_80E10A4
-// .extern sub_80E11E0
-// .extern loc_80E11FC
-// .extern loc_80E1520
-// .extern sub_80E1620
-// .extern sub_80E1662
-// .extern loc_80E17E8
-// .extern sub_80E192C
-// .extern loc_80E19BC
-// .extern sub_80E1A6A
-// .extern sub_80E1A86
-// .extern loc_80E1A90
-// .extern loc_80E1B48
-// .extern loc_80E1CF8
-// .extern sub_80E1D7A
-// .extern loc_80E1D88
-// .extern loc_80E1E4C
-// .extern loc_80E2080
-// .extern loc_80E21D8
-// .extern loc_80E225C
-// .extern loc_80E23A4
-// .extern loc_80E24E4
-// .extern loc_80E25D0
-// .extern loc_80E28A8
-// .extern loc_80E2AE8
-// .extern loc_80E2B7C
-// .extern loc_80E2CA4
-// .extern loc_80E2E34
-// .extern sub_80E2F56
-// .extern loc_80E309C
-// .extern loc_80E3150
-// .extern loc_80E31D8
-// .extern loc_80E32B8
-// .extern loc_80E342C
-// .extern loc_80E34C0
-// .extern loc_80E35A4
-// .extern loc_80E3728
-// .extern sub_80E37D2
-// .extern loc_80E37F4
-// .extern loc_80E39A0
-// .extern loc_80E3AB8
-// .extern loc_80E3B70
-// .extern loc_80E3D68
-// .extern loc_80E3FD0
-// .extern loc_80E40EC
-// .extern loc_80E4188
-// .extern sub_80E4344
-// .extern loc_80E440C
-// .extern loc_80E4634
-// .extern loc_80E46D8
-// .extern loc_80E47B4
-// .extern loc_80E4848
-// .extern loc_80E4910
-// .extern loc_80E4A1C
-// .extern sub_80E4B34
-// .extern loc_80E4CB8
-// .extern sub_80E4D8A
-// .extern sub_80E4DA2
-// .extern loc_80E4DB0
-// .extern loc_80E50C4
-// .extern loc_80E5244
-// .extern sub_80E5410
-// .extern sub_80E544C
-// .extern loc_80E5470
-// .extern loc_80E55C0
-// .extern loc_80E5710
-// .extern loc_80E5944
-// .extern loc_80E59E8
-// .extern locret_80E5B60
-// .extern sub_80E5C2C
-// .extern loc_80E5D44
-// .extern loc_80E5E00
-// .extern loc_80E5ECC
-// .extern loc_80E5F9C
-// .extern sub_80E5FBC
-// .extern loc_80E6088
-// .extern loc_80E6254
-// .extern loc_80E6480
-// .extern loc_80E655C
-// .extern loc_80E6758
-// .extern loc_80E680C
-// .extern loc_80E689C
-// .extern loc_80E6A90
-// .extern loc_80E6BDC
-// .extern loc_80E6E44
-// .extern loc_80E6F88
-// .extern loc_80E702C
-// .extern loc_80E70C8
-// .extern loc_80E71C4
-// .extern loc_80E7260
-// .extern loc_80E74D4
-// .extern loc_80E7568
-// .extern loc_80E7624
-// .extern loc_80E76F8
-// .extern loc_80E7788
-// .extern loc_80E78BC
-// .extern loc_80E795C
-// .extern loc_80E7ACC
-// .extern loc_80E7BFC
-// .extern loc_80E7CCC
-// .extern loc_80E7DC4
-// .extern loc_80E7E9C
-// .extern loc_80E7F38
-// .extern loc_80E7FDC
-// .extern loc_80E807C
-// .extern sub_80E8124
-// .extern loc_80E8138
-// .extern loc_80E81D8
-// .extern loc_80E8268
-// .extern loc_80E83B8
-// .extern loc_80E857C
-// .extern loc_80E8688
-// .extern loc_80E8794
-// .extern loc_80E88A0
-// .extern loc_80E8938
-// .extern loc_80E8A60
-// .extern loc_80E8B00
-// .extern loc_80E8DF0
-// .extern loc_80E8EE0
-// .extern loc_80E8FE0
-// .extern sub_80E90FE
-// .extern loc_80E9120
-// .extern loc_80E91E4
-// .extern loc_80E9310
-// .extern loc_80E9460
-// .extern loc_80E9570
-// .extern loc_80E97F0
-// .extern dword_80E98C0
-// .extern sub_80E996E
-// .extern loc_80E9994
-// .extern loc_80E9AF0
-// .extern sub_80E9BDC
-// .extern loc_80E9C88
-// .extern loc_80E9DF0
-// .extern loc_80EA010
-// .extern loc_80EA14C
-// .extern loc_80EA258
-// .extern loc_80EA364
-// .extern sub_80EA438
-// .extern off_80EA814
-// .extern loc_80EA8D8
-// .extern off_80EAC60
-// .extern loc_80EAD9C
-// .extern loc_80EB04C
-// .extern loc_80EB234
-// .extern loc_80EE90C
-// .extern loc_80EEA3C
-// .extern loc_80EED56
-// .extern off_80F24D8
-// .extern off_80F253C
-// .extern sub_80FF668
-// .extern off_81090D0
-// .extern off_8109150
-// .extern sub_81096FA
+// .global sub_80B81EC
+// .global sub_80B8210
+// .global loc_80B85E0
+// .global loc_80B88D0
+// .global loc_80B8A18
+// .global loc_80B8CD8
+// .global loc_80B8EA0
+// .global loc_80B9078
+// .global loc_80B92B8
+// .global loc_80B94BC
+// .global loc_80B97C0
+// .global loc_80B99C0
+// .global loc_80B9C14
+// .global loc_80B9F44
+// .global loc_80BA364
+// .global loc_80BA708
+// .global loc_80BAA8C
+// .global loc_80BAF50
+// .global loc_80BB2A0
+// .global loc_80BB608
+// .global loc_80BB914
+// .global loc_80BBB98
+// .global loc_80BBF0C
+// .global loc_80BC17C
+// .global loc_80BC4FC
+// .global loc_80BC650
+// .global sub_80BC844
+// .global loc_80BC87C
+// .global loc_80BCA04
+// .global loc_80BCB50
+// .global loc_80BCD14
+// .global loc_80BD388
+// .global loc_80BDBA4
+// .global loc_80BE4D8
+// .global loc_80BE798
+// .global loc_80BF260
+// .global loc_80BF6EC
+// .global loc_80BFDFC
+// .global loc_80BFF68
+// .global loc_80C0178
+// .global loc_80C0334
+// .global loc_80C04AC
+// .global loc_80C065C
+// .global loc_80C07BC
+// .global loc_80C0E04
+// .global loc_80C0F6C
+// .global loc_80C11AC
+// .global loc_80C1570
+// .global loc_80C1A10
+// .global loc_80C2138
+// .global loc_80C26F0
+// .global loc_80C2A78
+// .global loc_80C3000
+// .global loc_80C3218
+// .global loc_80C34E0
+// .global loc_80C3734
+// .global loc_80C3970
+// .global loc_80C3CE8
+// .global loc_80C3EE0
+// .global loc_80C40D8
+// .global sub_80C41D8
+// .global sub_80C4204
+// .global loc_80C4348
+// .global sub_80C44A8
+// .global sub_80C44C8
+// .global sub_80C44D2
+// .global loc_80C4530
+// .global sub_80C468C
+// .global sub_80C46B0
+// .global sub_80C46B6
+// .global sub_80C46C0
+// .global loc_80C46FC
+// .global loc_80C4828
+// .global loc_80C4B18
+// .global sub_80C4C12
+// .global sub_80C4C3A
+// .global loc_80C4E58
+// .global sub_80C4FFE
+// .global loc_80C50B8
+// .global loc_80C51AC
+// .global loc_80C52B0
+// .global sub_80C53A6
+// .global loc_80C53C0
+// .global loc_80C55B0
+// .global loc_80C57C0
+// .global loc_80C5A34
+// .global sub_80C5B76
+// .global loc_80C5BB0
+// .global loc_80C5DDC
+// .global loc_80C5F60
+// .global loc_80C60A8
+// .global loc_80C6280
+// .global loc_80C6414
+// .global loc_80C6580
+// .global loc_80C67F8
+// .global loc_80C6946
+// .global loc_80C6B40
+// .global loc_80C6DCC
+// .global loc_80C7074
+// .global loc_80C71A4
+// .global loc_80C740C
+// .global loc_80C793C
+// .global loc_80C7C18
+// .global loc_80C7D78
+// .global sub_80C7F20
+// .global loc_80C7F40
+// .global loc_80C8098
+// .global loc_80C81CC
+// .global loc_80C8388
+// .global loc_80C853C
+// .global loc_80C86D8
+// .global loc_80C882C
+// .global loc_80C8AA4
+// .global loc_80C8C74
+// .global loc_80C8E08
+// .global loc_80C8FFC
+// .global loc_80C91A0
+// .global loc_80C93CC
+// .global sub_80C96A0
+// .global locret_80C980C
+// .global locret_80C9814
+// .global loc_80C9824
+// .global loc_80C9BC4
+// .global loc_80C9D00
+// .global loc_80C9F78
+// .global loc_80CA2A8
+// .global loc_80CA544
+// .global loc_80CA6B8
+// .global loc_80CA938
+// .global loc_80CAB68
+// .global loc_80CAD28
+// .global loc_80CAEF0
+// .global loc_80CB0DC
+// .global loc_80CB284
+// .global loc_80CB6F8
+// .global loc_80CB900
+// .global loc_80CBB44
+// .global loc_80CC044
+// .global sub_80CC0B2
+// .global sub_80CC0E8
+// .global loc_80CC4C4
+// .global loc_80CC5A8
+// .global loc_80CC76C
+// .global loc_80CC944
+// .global loc_80CCA40
+// .global loc_80CCC48
+// .global loc_80CCD70
+// .global sub_80CCFDC
+// .global loc_80CD2EC
+// .global loc_80CD4EC
+// .global sub_80CD8EC
+// .global loc_80CDD44
+// .global loc_80CDF84
+// .global loc_80CE118
+// .global loc_80CE24C
+// .global sub_80CE530
+// .global loc_80CE70C
+// .global loc_80CE81C
+// .global loc_80CEB00
+// .global sub_80CEE78
+// .global sub_80CF0D0
+// .global sub_80CF3BE
+// .global loc_80CF5C8
+// .global loc_80CF7F0
+// .global loc_80CF954
+// .global sub_80CFBC4
+// .global loc_80CFC08
+// .global loc_80CFCF8
+// .global loc_80CFEC4
+// .global loc_80D00A0
+// .global loc_80D0268
+// .global loc_80D0394
+// .global loc_80D0500
+// .global loc_80D0610
+// .global loc_80D07CC
+// .global loc_80D0AA8
+// .global loc_80D0D7C
+// .global loc_80D0F8C
+// .global loc_80D1218
+// .global loc_80D1514
+// .global loc_80D17A4
+// .global loc_80D18D8
+// .global loc_80D1A08
+// .global loc_80D1B48
+// .global loc_80D1C20
+// .global sub_80D2034
+// .global sub_80D2290
+// .global loc_80D2460
+// .global sub_80D25D4
+// .global loc_80D2A94
+// .global loc_80D2BDC
+// .global loc_80D2EBC
+// .global loc_80D30D0
+// .global sub_80D34CC
+// .global loc_80D385C
+// .global sub_80D39BC
+// .global loc_80D4088
+// .global loc_80D4440
+// .global loc_80D46B8
+// .global loc_80D4A28
+// .global loc_80D4B68
+// .global loc_80D4C84
+// .global loc_80D5028
+// .global loc_80D5138
+// .global loc_80D535C
+// .global loc_80D5580
+// .global loc_80D5740
+// .global loc_80D58B4
+// .global loc_80D5ABC
+// .global loc_80D5C48
+// .global loc_80D5D54
+// .global loc_80D5F08
+// .global loc_80D622C
+// .global loc_80D655C
+// .global loc_80D67EC
+// .global loc_80D6924
+// .global loc_80D6A20
+// .global loc_80D6BD4
+// .global loc_80D6D80
+// .global sub_80D6EE0
+// .global loc_80D7068
+// .global loc_80D7278
+// .global loc_80D7400
+// .global loc_80D75FC
+// .global loc_80D7ACC
+// .global loc_80D7DE4
+// .global loc_80D807C
+// .global loc_80D825C
+// .global loc_80D8444
+// .global loc_80D8620
+// .global loc_80D879C
+// .global loc_80D88E0
+// .global loc_80D8C5C
+// .global loc_80D8E10
+// .global loc_80D8FC4
+// .global loc_80D9154
+// .global loc_80D9350
+// .global loc_80D954C
+// .global loc_80D96A4
+// .global loc_80D984C
+// .global sub_80D99EC
+// .global loc_80D9A50
+// .global loc_80D9D4C
+// .global loc_80DA050
+// .global loc_80DA470
+// .global loc_80DA5FC
+// .global loc_80DA80C
+// .global loc_80DAA28
+// .global loc_80DACE4
+// .global loc_80DAE94
+// .global loc_80DB0E4
+// .global loc_80DB304
+// .global sub_80DB6A4
+// .global loc_80DB8CC
+// .global loc_80DB994
+// .global loc_80DBB40
+// .global loc_80DBCEC
+// .global sub_80DBEE6
+// .global loc_80DC0E8
+// .global loc_80DC260
+// .global loc_80DC3F8
+// .global loc_80DC4FC
+// .global loc_80DC5F8
+// .global loc_80DC70C
+// .global loc_80DCB1C
+// .global loc_80DCCD4
+// .global loc_80DCE38
+// .global loc_80DCEF4
+// .global loc_80DD0AC
+// .global loc_80DD34C
+// .global loc_80DD764
+// .global loc_80DD940
+// .global loc_80DDA84
+// .global loc_80DDC10
+// .global loc_80DDDF0
+// .global loc_80DE000
+// .global loc_80DE13C
+// .global loc_80DE404
+// .global loc_80DE7F4
+// .global loc_80DEA7C
+// .global loc_80DEE60
+// .global loc_80DF0A4
+// .global loc_80DF188
+// .global loc_80DF328
+// .global loc_80DF4FC
+// .global loc_80DF90C
+// .global loc_80DFC38
+// .global loc_80DFE40
+// .global loc_80DFFB8
+// .global loc_80E0548
+// .global sub_80E05F6
+// .global loc_80E0638
+// .global sub_80E06F8
+// .global loc_80E0710
+// .global loc_80E0844
+// .global sub_80E08C4
+// .global locret_80E08E0
+// .global loc_80E08FC
+// .global sub_80E09EE
+// .global loc_80E0AD4
+// .global sub_80E0D98
+// .global loc_80E0DF0
+// .global sub_80E0F02
+// .global loc_80E0FA0
+// .global loc_80E10A4
+// .global sub_80E11E0
+// .global loc_80E11FC
+// .global loc_80E1520
+// .global sub_80E1620
+// .global sub_80E1662
+// .global loc_80E17E8
+// .global sub_80E192C
+// .global loc_80E19BC
+// .global sub_80E1A6A
+// .global sub_80E1A86
+// .global loc_80E1A90
+// .global loc_80E1B48
+// .global loc_80E1CF8
+// .global sub_80E1D7A
+// .global loc_80E1D88
+// .global loc_80E1E4C
+// .global loc_80E2080
+// .global loc_80E21D8
+// .global loc_80E225C
+// .global loc_80E23A4
+// .global loc_80E24E4
+// .global loc_80E25D0
+// .global loc_80E28A8
+// .global loc_80E2AE8
+// .global loc_80E2B7C
+// .global loc_80E2CA4
+// .global loc_80E2E34
+// .global sub_80E2F56
+// .global loc_80E309C
+// .global loc_80E3150
+// .global loc_80E31D8
+// .global loc_80E32B8
+// .global loc_80E342C
+// .global loc_80E34C0
+// .global loc_80E35A4
+// .global loc_80E3728
+// .global sub_80E37D2
+// .global loc_80E37F4
+// .global loc_80E39A0
+// .global loc_80E3AB8
+// .global loc_80E3B70
+// .global loc_80E3D68
+// .global loc_80E3FD0
+// .global loc_80E40EC
+// .global loc_80E4188
+// .global sub_80E4344
+// .global loc_80E440C
+// .global loc_80E4634
+// .global loc_80E46D8
+// .global loc_80E47B4
+// .global loc_80E4848
+// .global loc_80E4910
+// .global loc_80E4A1C
+// .global sub_80E4B34
+// .global loc_80E4CB8
+// .global sub_80E4D8A
+// .global sub_80E4DA2
+// .global loc_80E4DB0
+// .global loc_80E50C4
+// .global loc_80E5244
+// .global sub_80E5410
+// .global sub_80E544C
+// .global loc_80E5470
+// .global loc_80E55C0
+// .global loc_80E5710
+// .global loc_80E5944
+// .global loc_80E59E8
+// .global locret_80E5B60
+// .global sub_80E5C2C
+// .global loc_80E5D44
+// .global loc_80E5E00
+// .global loc_80E5ECC
+// .global loc_80E5F9C
+// .global sub_80E5FBC
+// .global loc_80E6088
+// .global loc_80E6254
+// .global loc_80E6480
+// .global loc_80E655C
+// .global loc_80E6758
+// .global loc_80E680C
+// .global loc_80E689C
+// .global loc_80E6A90
+// .global loc_80E6BDC
+// .global loc_80E6E44
+// .global loc_80E6F88
+// .global loc_80E702C
+// .global loc_80E70C8
+// .global loc_80E71C4
+// .global loc_80E7260
+// .global loc_80E74D4
+// .global loc_80E7568
+// .global loc_80E7624
+// .global loc_80E76F8
+// .global loc_80E7788
+// .global loc_80E78BC
+// .global loc_80E795C
+// .global loc_80E7ACC
+// .global loc_80E7BFC
+// .global loc_80E7CCC
+// .global loc_80E7DC4
+// .global loc_80E7E9C
+// .global loc_80E7F38
+// .global loc_80E7FDC
+// .global loc_80E807C
+// .global sub_80E8124
+// .global loc_80E8138
+// .global loc_80E81D8
+// .global loc_80E8268
+// .global loc_80E83B8
+// .global loc_80E857C
+// .global loc_80E8688
+// .global loc_80E8794
+// .global loc_80E88A0
+// .global loc_80E8938
+// .global loc_80E8A60
+// .global loc_80E8B00
+// .global loc_80E8DF0
+// .global loc_80E8EE0
+// .global loc_80E8FE0
+// .global sub_80E90FE
+// .global loc_80E9120
+// .global loc_80E91E4
+// .global loc_80E9310
+// .global loc_80E9460
+// .global loc_80E9570
+// .global loc_80E97F0
+// .global dword_80E98C0
+// .global sub_80E996E
+// .global loc_80E9994
+// .global loc_80E9AF0
+// .global sub_80E9BDC
+// .global loc_80E9C88
+// .global loc_80E9DF0
+// .global loc_80EA010
+// .global loc_80EA14C
+// .global loc_80EA258
+// .global loc_80EA364
+// .global sub_80EA438
+// .global off_80EA814
+// .global loc_80EA8D8
+// .global off_80EAC60
+// .global loc_80EAD9C
+// .global loc_80EB04C
+// .global loc_80EB234
+// .global loc_80EE90C
+// .global loc_80EEA3C
+// .global loc_80EED56
+// .global off_80F24D8
+// .global off_80F253C
+// .global sub_80FF668
+// .global off_81090D0
+// .global off_8109150
+// .global sub_81096FA
 
 
 /* Undeclared Symbols */

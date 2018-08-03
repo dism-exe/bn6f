@@ -2,38 +2,38 @@
 .equ INC_ASM10, 0
 
 /* Public Symbols */
-.extern off_80665A4
-.extern dword_80665AC
-.extern off_80665B4
-.extern off_80665BC
-.extern off_8067914
-.extern off_8067DC8
-.extern dword_8067DD4
-.extern off_8067DE0
-.extern pt_8067DEC
+.global off_80665A4
+.global dword_80665AC
+.global off_80665B4
+.global off_80665BC
+.global off_8067914
+.global off_8067DC8
+.global dword_8067DD4
+.global off_8067DE0
+.global pt_8067DEC
 
 
 /* External Symbols */
 .include "asm03.inc"
-// .extern sub_802FF4C
-// .extern sub_803037C
-// .extern loc_8030472
-// .extern sub_80304E8
-// .extern sub_8030AA4
-// .extern sub_8034FB8
-// .extern sub_803FD08
+// .global sub_802FF4C
+// .global sub_803037C
+// .global loc_8030472
+// .global sub_80304E8
+// .global sub_8030AA4
+// .global sub_8034FB8
+// .global sub_803FD08
 
 .include "asm00.inc"
-// .extern sub_8001778
-// .extern sub_8001780
-// .extern sub_800195C
-// .extern loc_80019FE
-// .extern loc_8001A6A
-// .extern locret_8001AB4
-// .extern sub_8002354
-// .extern sub_80028D4
-// .extern sub_8002906
-// .extern loc_8003570
+// .global sub_8001778
+// .global sub_8001780
+// .global sub_800195C
+// .global loc_80019FE
+// .global loc_8001A6A
+// .global locret_8001AB4
+// .global sub_8002354
+// .global sub_80028D4
+// .global sub_8002906
+// .global loc_8003570
 
 
 /* Undeclared Symbols */
