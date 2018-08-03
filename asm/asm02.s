@@ -233,7 +233,7 @@ loc_8021C16:
     mov r2, #0
 loc_8021C28:
     ldrh r7, [r3,r2]
-    ldr r6, [pc, #0x8021c64-0x8021c2a-2] // =0x1F8
+    ldr r6, [pc, #0x8021c64-0x8021c2a-2] // =0x1FF
     and r6, r7
     lsr r7, r7, #9
     cmp r0, r6

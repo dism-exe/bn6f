@@ -9,7 +9,7 @@
 // .global sub_802F110
 // .global sub_802F12C
 // .global sub_802F164
-// .global sub_802F168
+// .global zf_802F168
 // .global sub_8036E90
 
 .include "asm37.inc"

@@ -425,7 +425,7 @@ loc_808FB64:
     bl sub_809E230
     bl sub_8140A0C
     bl sub_809E3B2
-    ldr r0, [pc, #0x808fb9c-0x808fb8a-2] // =0x1AC
+    ldr r0, [pc, #0x808fb9c-0x808fb8a-2] // =0x1AE
     bl sound_play
     mov r0, #0
     pop {pc}
@@ -1154,7 +1154,7 @@ loc_80901AC:
     ldrh r0, [r0,r1]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_80901DC
     mov r6, #1
     ldr r0, [pc, #0x8090218-0x80901c6-2] // =unk_8090220
@@ -1194,7 +1194,7 @@ loc_80901F4:
     ldrh r0, [r0,r1]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_809020A
     mov r6, #1
     strb r4, [r5,#0xc]
@@ -1346,7 +1346,7 @@ loc_80902EE:
     ldrh r0, [r0,r1]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     pop {r4-r7,pc}
 off_80902FC:    .word unk_8090300
 unk_8090300:    .byte 0xE1

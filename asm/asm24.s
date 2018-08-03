@@ -615,7 +615,7 @@ sub_808CD24:
     lsl r0, r0, #1
     ldrh r4, [r4,r0]
     add r0, r4, #0
-    bl sub_802F168
+    bl zf_802F168
     bne locret_808CD62
     add r0, r4, #0
     bl sub_802F114
@@ -658,7 +658,7 @@ loc_808CDDA:
     ldrh r0, [r6,r3]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_808CE02
     add r3, r7, #0
     lsl r3, r3, #3
@@ -716,7 +716,7 @@ loc_808CE3C:
     ldrh r0, [r4,r6]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_808CE5A
     add r6, #2
     ldrh r0, [r4,r6]
@@ -805,7 +805,7 @@ sub_808CF34:
     ldr r1, [pc, #0x808cf78-0x808cf3e-2] // =unk_808CF84
     ldrh r1, [r1,r0]
     add r0, r1, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_808CF4C
     mov r4, #1
 loc_808CF4C:
@@ -823,7 +823,7 @@ sub_808CF50:
     ldr r1, [pc, #0x808cf74-0x808cf5a-2] // =unk_808CF7C
     ldrh r1, [r1,r4]
     add r0, r1, #0
-    bl sub_802F168
+    bl zf_802F168
     bne locret_808CF70
     ldr r1, [pc, #0x808cf78-0x808cf66-2] // =unk_808CF84
     ldrh r1, [r1,r4]
@@ -866,7 +866,7 @@ sub_808CF8C:
     mov r2, #0x4c 
     ldrh r0, [r5,#6]
     str r0, [r1,r2]
-    ldr r0, [pc, #0x808cfb4-0x808cfa4-4] // =0x120
+    ldr r0, [pc, #0x808cfb4-0x808cfa4-4] // =0x122
     bl sound_play
     mov r4, #1
 loc_808CFAC:
@@ -921,7 +921,7 @@ loc_808CFDA:
     add r0, r1, #0
 loc_808D00A:
     strh r0, [r5,#0x6] // (word_2000B46 - 0x2000b40)
-    ldr r0, [pc, #0x808d028-0x808d00c-4] // =0x119
+    ldr r0, [pc, #0x808d028-0x808d00c-4] // =0x11B
     bl sound_play
     mov r0, #0x69 
     bl sound_play

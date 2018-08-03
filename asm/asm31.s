@@ -1545,7 +1545,7 @@ sub_80B8CF8:
     ldr r1, [pc, #0x80b8e8c-0x80b8d1a-2] // =0x1AC
     cmp r0, r1
     blt loc_80B8D36
-    ldr r1, [pc, #0x80b8e90-0x80b8d20-4] // =0x1B4
+    ldr r1, [pc, #0x80b8e90-0x80b8d20-4] // =0x1B5
     cmp r0, r1
     bgt loc_80B8D36
     ldrb r0, [r5,#0x16]
@@ -1586,7 +1586,7 @@ loc_80B8D38:
     mov r0, #0xb
     mov r1, #7
     neg r1, r1
-    ldr r2, [pc, #0x80b8e98-0x80b8d76-2] // =0x1B4
+    ldr r2, [pc, #0x80b8e98-0x80b8d76-2] // =0x1B6
     cmp r3, r2
     beq loc_80B8D94
     mov r0, #0
@@ -3233,7 +3233,7 @@ loc_80B991A:
     mov r3, #0
     ldr r4, [pc, #0x80b9968-0x80b9928-4] // =0x700FF11
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80b996c-0x80b992c-4] // =0x0
+    ldr r7, [pc, #0x80b996c-0x80b992c-4] // =0x1
     bl sub_80C53A6
     bl sub_800E456
     lsl r4, r0, #8
@@ -4569,7 +4569,7 @@ sub_80BA31C:
     mov r3, #0
     ldr r4, [pc, #0x80ba35c-0x80ba32c-4] // =0x700FF04
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80ba360-0x80ba330-4] // =0x0
+    ldr r7, [pc, #0x80ba360-0x80ba330-4] // =0x3
     bl sub_80C53A6
     bl sub_800E456
     lsl r4, r0, #8
@@ -5048,7 +5048,7 @@ sub_80BA686:
     mov r3, #0
     ldr r4, [pc, #0x80ba69c-0x80ba690-4] // =0x1605FF01
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80ba6a0-0x80ba694-4] // =0x0
+    ldr r7, [pc, #0x80ba6a0-0x80ba694-4] // =0x3
     bl sub_80C53A6
     pop {r4,r6,r7,pc}
 dword_80BA69C:    .word 0x1605FF01
@@ -5443,7 +5443,7 @@ sub_80BA946:
     mov r3, #0
     ldr r4, [pc, #0x80ba99c-0x80ba956-2] // =0x19050301
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80ba9a0-0x80ba95a-2] // =0x1100
+    ldr r7, [pc, #0x80ba9a0-0x80ba95a-2] // =0x1101
     bl sub_80C53A6
     bl sub_800E2CA
     mov r1, #2
@@ -5455,7 +5455,7 @@ sub_80BA946:
     mov r3, #0
     ldr r4, [pc, #0x80ba99c-0x80ba972-2] // =0x19050301
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80ba9a0-0x80ba976-2] // =0x1100
+    ldr r7, [pc, #0x80ba9a0-0x80ba976-2] // =0x1101
     bl sub_80C53A6
     bl sub_800E2CA
     mov r1, #3
@@ -5467,7 +5467,7 @@ sub_80BA946:
     mov r3, #0
     ldr r4, [pc, #0x80ba99c-0x80ba98e-2] // =0x19050301
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80ba9a0-0x80ba992-2] // =0x1100
+    ldr r7, [pc, #0x80ba9a0-0x80ba992-2] // =0x1101
     bl sub_80C53A6
     pop {r4,r6,r7,pc}
     .balign 4, 0x00
@@ -7889,7 +7889,7 @@ sub_80BBB18:
     mov r3, #0
     ldr r4, [pc, #0x80bbb30-0x80bbb22-2] // =0x6050A01
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80bbb34-0x80bbb26-2] // =0x0
+    ldr r7, [pc, #0x80bbb34-0x80bbb26-2] // =0x3
     bl sub_80C53A6
     pop {r4,r6,r7,pc}
     .byte 0, 0
@@ -8310,7 +8310,7 @@ sub_80BBE3A:
     mov r3, #0
     ldr r4, [pc, #0x80bbe50-0x80bbe44-4] // =0x15050A01
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80bbe54-0x80bbe48-4] // =0x0
+    ldr r7, [pc, #0x80bbe54-0x80bbe48-4] // =0x3
     bl sub_80C53A6
     pop {r4,r6,r7,pc}
 dword_80BBE50:    .word 0x15050A01
@@ -10234,7 +10234,7 @@ sub_80BCD38:
     str r1, [r5,#0x28]
     b loc_80BCD52
 loc_80BCD4E:
-    ldr r1, [pc, #0x80bce48-0x80bcd4e-2] // =0x1A4
+    ldr r1, [pc, #0x80bce48-0x80bcd4e-2] // =0x1AB
     strh r1, [r5,#0x28]
 loc_80BCD52:
     ldrb r0, [r5,#4]
@@ -12184,7 +12184,7 @@ sub_80BDBC8:
     ldr r2, [pc, #0x80bdcf0-0x80bdbd6-2] // =0x1A0
     cmp r1, r2
     beq loc_80BDBE6
-    ldr r2, [pc, #0x80bdcf4-0x80bdbdc-4] // =0x1A4
+    ldr r2, [pc, #0x80bdcf4-0x80bdbdc-4] // =0x1AB
     cmp r1, r2
     bgt loc_80BDBE6
     ldr r1, [pc, #0x80bdcf0-0x80bdbe2-2] // =0x1A0
@@ -19931,7 +19931,7 @@ sub_80C1514:
     ldr r2, [r5,#0x38]
     ldr r3, [r5,#0x3c]
     mov r3, #0
-    ldr r4, [pc, #0x80c1534-0x80c152a-2] // =0x0
+    ldr r4, [pc, #0x80c1534-0x80c152a-2] // =0x2
     orr r4, r0
     bl sub_80E05F6
 locret_80C1532:
@@ -20406,7 +20406,7 @@ sub_80C188C:
     ldrb r2, [r5,#0xe]
     mov r3, #0
     ldr r4, [pc, #0x80c18a8-0x80c189e-2] // =0x705FF04
-    ldr r7, [pc, #0x80c18ac-0x80c18a0-4] // =0x0
+    ldr r7, [pc, #0x80c18ac-0x80c18a0-4] // =0x3
     bl sub_80C53A6
     pop {r4-r7,pc}
 dword_80C18A8:    .word 0x705FF04
@@ -20632,7 +20632,7 @@ sub_80C1A34:
     bl sprite_setPallete
     bl sub_800E456
     bl sub_8002F5C
-    ldr r0, [pc, #0x80c1a78-0x80c1a68-4] // =0x1B4
+    ldr r0, [pc, #0x80c1a78-0x80c1a68-4] // =0x1B6
     strh r0, [r5,#0x28]
     mov r0, #0
     strb r0, [r5,#6]
@@ -21351,7 +21351,7 @@ sub_80C2000:
     ldr r6, [r1,r0]
     ldr r1, [r5,#0x60]
     add r6, r6, r1
-    ldr r7, [pc, #0x80c2040-0x80c2010-4] // =0x0
+    ldr r7, [pc, #0x80c2040-0x80c2010-4] // =0x3
     bl sub_800E2CA
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -21449,7 +21449,7 @@ loc_80C20E4:
     mov r6, #5
     ldr r7, [r5,#0x60]
     add r6, r6, r7
-    ldr r7, [pc, #0x80c2100-0x80c20f2-2] // =0x0
+    ldr r7, [pc, #0x80c2100-0x80c20f2-2] // =0x3
     bl sub_80C53A6
 locret_80C20F8:
     pop {r4,r6,r7,pc}
@@ -21521,7 +21521,7 @@ sub_80C215C:
     mov r1, #0x24 
     mov r2, #1
     bl loc_8010DF6
-    ldr r0, [pc, #0x80c21a8-0x80c219a-2] // =0x1B4
+    ldr r0, [pc, #0x80c21a8-0x80c219a-2] // =0x1B7
     strh r0, [r5,#0x28]
     mov r0, #0
     strb r0, [r5,#6]
@@ -22120,7 +22120,7 @@ sub_80C2600:
     ldr r6, [r6,r3]
     ldr r3, [r5,#0x60]
     add r6, r6, r3
-    ldr r7, [pc, #0x80c264c-0x80c2630-4] // =0x0
+    ldr r7, [pc, #0x80c264c-0x80c2630-4] // =0x3
     mov r3, #0
     bl sub_80C53A6
     pop {r4,r6,r7,pc}
@@ -23941,7 +23941,7 @@ sub_80C33CA:
     tst r0, r1
     beq locret_80C3406
     ldrh r0, [r5,#6]
-    ldr r1, [pc, #0x80c34dc-0x80c33d8-4] // =0x17D
+    ldr r1, [pc, #0x80c34dc-0x80c33d8-4] // =0x17E
     cmp r0, r1
     beq loc_80C33F4
     push {r5}
@@ -31030,7 +31030,7 @@ loc_80C6F5A:
     ldr r4, [pc, #0x80c6fc0-0x80c6f74-4] // =0x4050201
     push {r6}
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80c6fc4-0x80c6f7a-2] // =0x0
+    ldr r7, [pc, #0x80c6fc4-0x80c6f7a-2] // =0x3
     bl sub_80C53A6
     pop {r6}
     ldr r1, [sp]
@@ -31054,7 +31054,7 @@ loc_80C6F8E:
     ldr r4, [pc, #0x80c6fc0-0x80c6fa4-4] // =0x4050201
     push {r6}
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80c6fc4-0x80c6faa-2] // =0x0
+    ldr r7, [pc, #0x80c6fc4-0x80c6faa-2] // =0x3
     bl sub_80C53A6
     pop {r6}
     ldr r1, [sp]
@@ -31591,7 +31591,7 @@ loc_80C73C2:
     mov r3, #0
     ldr r4, [pc, #0x80c73f0-0x80c73cc-4] // =0x405FF01
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80c73f4-0x80c73d0-4] // =0x0
+    ldr r7, [pc, #0x80c73f4-0x80c73d0-4] // =0x3
     bl sub_80C536A
     pop {r4}
     tst r0, r0
@@ -33550,7 +33550,7 @@ loc_80C82D4:
     ldrb r1, [r5,#0x13]
     ldrb r2, [r5,#0xe]
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80c830c-0x80c82e6-2] // =0x0
+    ldr r7, [pc, #0x80c830c-0x80c82e6-2] // =0x3
     ldrb r4, [r5,#5]
     lsl r4, r4, #0x10
     orr r7, r4
@@ -35107,7 +35107,7 @@ loc_80C8FA4:
     push {r4}
     ldr r4, [pc, #0x80c8fd4-0x80c8fb8-4] // =0x4050101
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80c8fd8-0x80c8fbc-4] // =0x0
+    ldr r7, [pc, #0x80c8fd8-0x80c8fbc-4] // =0x3
     bl sub_80C536A
     pop {r4}
     tst r0, r0
@@ -35572,7 +35572,7 @@ loc_80C930C:
     push {r4,r6}
     ldr r4, [pc, #0x80c9358-0x80c933c-4] // =0x4050201
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80c935c-0x80c9340-4] // =0x0
+    ldr r7, [pc, #0x80c935c-0x80c9340-4] // =0x3
     bl sub_80C536A
     pop {r4,r6}
     ldr r1, [sp,#4]
@@ -39093,7 +39093,7 @@ sub_80CB0AE:
     mov r3, #0
     ldr r4, [pc, #0x80cb0cc-0x80cb0b8-4] // =0x4050101
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80cb0d0-0x80cb0bc-4] // =0x0
+    ldr r7, [pc, #0x80cb0d0-0x80cb0bc-4] // =0x3
     bl sub_80C536A
     tst r0, r0
     beq locret_80CB0CA
@@ -39284,7 +39284,7 @@ sub_80CB208:
     ldr r4, [pc, #0x80cb240-0x80cb22a-2] // =0xA050201
     push {r6}
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80cb244-0x80cb230-4] // =0x0
+    ldr r7, [pc, #0x80cb244-0x80cb230-4] // =0x3
     bl sub_80C53A6
     pop {r6}
     tst r0, r0
@@ -46475,7 +46475,7 @@ sub_80CEE38:
     mov r3, #0
     ldr r4, [pc, #0x80cee58-0x80cee42-2] // =0xA050101
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80cee5c-0x80cee46-2] // =0x0
+    ldr r7, [pc, #0x80cee5c-0x80cee46-2] // =0x3
     bl sub_80C536A
     tst r0, r0
     beq locret_80CEE54
@@ -48908,7 +48908,7 @@ sub_80D020E:
     lsl r3, r3, #0x10
     ldr r4, [pc, #0x80d0228-0x80d021a-2] // =0x4050604
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80d022c-0x80d021e-2] // =0x0
+    ldr r7, [pc, #0x80d022c-0x80d021e-2] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7,pc}
     .balign 4, 0x00
@@ -49386,7 +49386,7 @@ sub_80D05EC:
     mov r3, #0
     ldr r4, [pc, #0x80d0604-0x80d05f6-2] // =0x1200FF01
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80d0608-0x80d05fa-2] // =0x0
+    ldr r7, [pc, #0x80d0608-0x80d05fa-2] // =0x1
     bl sub_80C536A
     pop {r4,r6,r7,pc}
     .balign 4, 0x00
@@ -49925,7 +49925,7 @@ sub_80D0A5C:
     mov r3, #0
     ldr r4, [pc, #0x80d0a78-0x80d0a6c-4] // =0x405FF01
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80d0a7c-0x80d0a70-4] // =0x0
+    ldr r7, [pc, #0x80d0a7c-0x80d0a70-4] // =0x1
     bl sub_80C536A
 locret_80D0A76:
     pop {r4,r6,r7,pc}
@@ -50541,7 +50541,7 @@ loc_80D0F36:
     ldr r4, [pc, #0x80d0f68-0x80d0f52-2] // =0xA050301
     push {r6}
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80d0f6c-0x80d0f58-4] // =0x1200
+    ldr r7, [pc, #0x80d0f6c-0x80d0f58-4] // =0x1201
     bl sub_80C53A6
     pop {r6}
     add r6, #1
@@ -56938,7 +56938,7 @@ sub_80D4464:
 sub_80D4472:
     push {r4,lr}
     bl sub_800E29C
-    ldr r0, [pc, #0x80d46ac-0x80d4478-4] // =0x414
+    ldr r0, [pc, #0x80d46ac-0x80d4478-4] // =0x41F
     ldr r1, [pc, #0x80d46b0-0x80d447a-2] // =0xC0D0300
     bl sub_8011504
 .endfunc // sub_80D4472
@@ -59639,7 +59639,7 @@ sub_80D5A9C:
     mov r3, #0
     ldr r4, [pc, #0x80d5ab4-0x80d5aa6-2] // =0x15050A01
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80d5ab8-0x80d5aaa-2] // =0x0
+    ldr r7, [pc, #0x80d5ab8-0x80d5aaa-2] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7,pc}
     .balign 4, 0x00
@@ -60175,7 +60175,7 @@ sub_80D5EDE:
     mov r3, #0
     ldr r4, [pc, #0x80d5efc-0x80d5ee8-4] // =0xA050101
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80d5f00-0x80d5eec-4] // =0x0
+    ldr r7, [pc, #0x80d5f00-0x80d5eec-4] // =0x3
     bl sub_80C536A
     tst r0, r0
     beq locret_80D5EFA
@@ -60803,7 +60803,7 @@ loc_80D6478:
     lsl r6, r6, #2
     ldr r7, [pc, #0x80d64e8-0x80d64a8-4] // =dword_80D64EC
     ldr r6, [r7,r6]
-    ldr r7, [pc, #0x80d64e4-0x80d64ac-4] // =0x0
+    ldr r7, [pc, #0x80d64e4-0x80d64ac-4] // =0x3
     bl sub_80C536A
     pop {r0,r1,r6}
     bl sub_800E276
@@ -61903,7 +61903,7 @@ sub_80D6D3E:
     mov r3, #0
     ldr r4, [pc, #0x80d6d70-0x80d6d4e-2] // =0xA050101
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80d6d74-0x80d6d52-2] // =0x0
+    ldr r7, [pc, #0x80d6d74-0x80d6d52-2] // =0x3
     bl sub_80C536A
     beq locret_80D6D6C
 loc_80D6D5A:
@@ -61913,7 +61913,7 @@ loc_80D6D5A:
     mov r3, #0
     ldr r4, [pc, #0x80d6d70-0x80d6d62-2] // =0xA050101
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80d6d74-0x80d6d66-2] // =0x0
+    ldr r7, [pc, #0x80d6d74-0x80d6d66-2] // =0x3
     bl sub_80C53A6
 locret_80D6D6C:
     pop {r4,r6,r7,pc}
@@ -62910,7 +62910,7 @@ sub_80D761C:
     beq loc_80D76B4
     ldr r2, [pc, #0x80d77c4-0x80d76a6-2] // =0x7000
     and r2, r0
-    ldr r1, [pc, #0x80d77c8-0x80d76aa-2] // =0xFFC
+    ldr r1, [pc, #0x80d77c8-0x80d76aa-2] // =0xFFF
     and r0, r1
     lsl r0, r0, #1
     orr r0, r2
@@ -62919,7 +62919,7 @@ loc_80D76B4:
     ldr r0, [pc, #0x80d77cc-0x80d76b4-4] // =0xFA0
     strh r0, [r5,#0x26]
     ldrh r1, [r5,#0x2c]
-    ldr r2, [pc, #0x80d77c8-0x80d76ba-2] // =0xFFC
+    ldr r2, [pc, #0x80d77c8-0x80d76ba-2] // =0xFFF
     and r1, r2
     sub r0, r0, r1
     strh r0, [r5,#0x24]
@@ -62992,7 +62992,7 @@ sub_80D774C:
     ldr r0, [pc, #0x80d7794-0x80d7762-2] // =off_80D7798
     bl loc_801B878
     ldrh r0, [r5,#0x24]
-    ldr r1, [pc, #0x80d77d0-0x80d776a-2] // =0xBB8
+    ldr r1, [pc, #0x80d77d0-0x80d776a-2] // =0xBB9
     cmp r0, r1
     bgt loc_80D7772
     strh r1, [r5,#0x24]
@@ -63003,7 +63003,7 @@ loc_80D7772:
     beq loc_80D778A
     ldrh r0, [r5,#0x26]
     ldrh r1, [r5,#0x2c]
-    ldr r2, [pc, #0x80d77c8-0x80d7780-4] // =0xFFC
+    ldr r2, [pc, #0x80d77c8-0x80d7780-4] // =0xFFF
     and r1, r2
     sub r0, r0, r1
     strh r0, [r5,#0x24]
@@ -65136,7 +65136,7 @@ loc_80D8926:
     bl object_freeMemory
     b locret_80D8986
 loc_80D8942:
-    ldr r0, [pc, #0x80d8c34-0x80d8942-2] // =0xC40
+    ldr r0, [pc, #0x80d8c34-0x80d8942-2] // =0xC41
     ldr r1, [pc, #0x80d8c38-0x80d8944-4] // =0xE0F0300
     bl sub_8011504
     ldrb r0, [r5]
@@ -68959,7 +68959,7 @@ sub_80DA7EC:
     mov r3, #0
     ldr r4, [pc, #0x80da804-0x80da7f6-2] // =0xA05FF01
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80da808-0x80da7fa-2] // =0x0
+    ldr r7, [pc, #0x80da808-0x80da7fa-2] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7,pc}
     .balign 4, 0x00
@@ -70304,7 +70304,7 @@ sub_80DB324:
     mov r1, #2
     orr r0, r1
     strb r0, [r5]
-    ldr r0, [pc, #0x80db554-0x80db32e-2] // =0xC60
+    ldr r0, [pc, #0x80db554-0x80db32e-2] // =0xC62
     ldr r1, [pc, #0x80db558-0x80db330-4] // =0x15050300
     bl sub_8011504
 .endfunc // sub_80DB324
@@ -71005,7 +71005,7 @@ sub_80DB890:
     mov r3, #0
     ldr r4, [pc, #0x80db8c0-0x80db8a0-4] // =0x15050A01
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80db8c4-0x80db8a4-4] // =0x0
+    ldr r7, [pc, #0x80db8c4-0x80db8a4-4] // =0x3
     bl sub_80C536A
     b locret_80DB8BE
 loc_80DB8AC:
@@ -71015,7 +71015,7 @@ loc_80DB8AC:
     mov r3, #0
     ldr r4, [pc, #0x80db8c0-0x80db8b4-4] // =0x15050A01
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80db8c4-0x80db8b8-4] // =0x0
+    ldr r7, [pc, #0x80db8c4-0x80db8b8-4] // =0x3
     bl sub_80C53A6
 locret_80DB8BE:
     pop {r4,r6,r7,pc}
@@ -71195,7 +71195,7 @@ loc_80DBA1E:
     bl sub_801A140
     bl sub_801A018
     ldrh r0, [r5,#0x2c]
-    ldr r1, [pc, #0x80dba4c-0x80dba3e-2] // =0xFFC
+    ldr r1, [pc, #0x80dba4c-0x80dba3e-2] // =0xFFF
     and r0, r1
     str r0, [r5,#0x64]
     mov r0, #4
@@ -72530,7 +72530,7 @@ sub_80DC4DE:
     mov r3, #0
     ldr r4, [pc, #0x80dc4f4-0x80dc4e8-4] // =0xA050301
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80dc4f8-0x80dc4ec-4] // =0x0
+    ldr r7, [pc, #0x80dc4f8-0x80dc4ec-4] // =0x3
     bl sub_80C53A6
     pop {r4,r6,r7,pc}
 dword_80DC4F4:    .word 0xA050301
@@ -72661,7 +72661,7 @@ sub_80DC5DA:
     mov r3, #0
     ldr r4, [pc, #0x80dc5f0-0x80dc5e4-4] // =0xA050401
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80dc5f4-0x80dc5e8-4] // =0x0
+    ldr r7, [pc, #0x80dc5f4-0x80dc5e8-4] // =0x1
     bl sub_80C53A6
     pop {r4,r6,r7,pc}
 dword_80DC5F0:    .word 0xA050401
@@ -72840,7 +72840,7 @@ sub_80DC730:
     mov r0, #0xa0
     lsl r0, r0, #0x10
     str r0, [r5,#0x3c]
-    ldr r0, [pc, #0x80dcb0c-0x80dc756-2] // =0x100C
+    ldr r0, [pc, #0x80dcb0c-0x80dc756-2] // =0x100D
     ldr r1, [pc, #0x80dcb10-0x80dc758-4] // =0x4050300
     bl sub_8011504
 .endfunc // sub_80DC730
@@ -73489,7 +73489,7 @@ sub_80DCC96:
     mov r3, #0
     ldr r4, [pc, #0x80dccc8-0x80dcca6-2] // =0xA050701
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80dcccc-0x80dccaa-2] // =0x0
+    ldr r7, [pc, #0x80dcccc-0x80dccaa-2] // =0x3
     bl sub_80C536A
     beq locret_80DCCC4
 loc_80DCCB2:
@@ -73499,7 +73499,7 @@ loc_80DCCB2:
     mov r3, #0
     ldr r4, [pc, #0x80dccc8-0x80dccba-2] // =0xA050701
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80dcccc-0x80dccbe-2] // =0x0
+    ldr r7, [pc, #0x80dcccc-0x80dccbe-2] // =0x3
     bl sub_80C53A6
 locret_80DCCC4:
     pop {r4,r6,r7,pc}
@@ -73665,7 +73665,7 @@ sub_80DCDFA:
     mov r3, #0
     ldr r4, [pc, #0x80dce10-0x80dce04-4] // =0x15050601
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80dce14-0x80dce08-4] // =0x0
+    ldr r7, [pc, #0x80dce14-0x80dce08-4] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7,pc}
 dword_80DCE10:    .word 0x15050601
@@ -75758,7 +75758,7 @@ sub_80DDFDE:
     mov r3, #0
     ldr r4, [pc, #0x80ddff4-0x80ddfe8-4] // =0x6050A01
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80ddff8-0x80ddfec-4] // =0x0
+    ldr r7, [pc, #0x80ddff8-0x80ddfec-4] // =0x1
     bl sub_80C536A
     pop {r4,r6,r7,pc}
 dword_80DDFF4:    .word 0x6050A01
@@ -76256,7 +76256,7 @@ sub_80DE38C:
     ldr r2, [r5,#0x38]
     ldr r3, [r5,#0x3c]
     mov r3, #0
-    ldr r4, [pc, #0x80de3ac-0x80de3a2-2] // =0x0
+    ldr r4, [pc, #0x80de3ac-0x80de3a2-2] // =0x2
     orr r4, r0
     bl sub_80E05F6
 locret_80DE3AA:
@@ -76646,7 +76646,7 @@ sub_80DE70C:
     ldr r2, [r5,#0x38]
     ldr r3, [r5,#0x3c]
     mov r3, #0
-    ldr r4, [pc, #0x80de72c-0x80de722-2] // =0x0
+    ldr r4, [pc, #0x80de72c-0x80de722-2] // =0x2
     orr r4, r0
     bl sub_80E05F6
 locret_80DE72A:
@@ -76812,7 +76812,7 @@ sub_80DE818:
     mov r1, #2
     orr r0, r1
     strb r0, [r5]
-    ldr r0, [pc, #0x80dea30-0x80de854-4] // =0xC44
+    ldr r0, [pc, #0x80dea30-0x80de854-4] // =0xC45
     ldrb r1, [r5,#4]
     tst r1, r1
     beq loc_80DE85E
@@ -78004,7 +78004,7 @@ sub_80DF2A0:
     mov r3, #0
     ldr r4, [r7,#4]
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80df320-0x80df2c0-4] // =0x0
+    ldr r7, [pc, #0x80df320-0x80df2c0-4] // =0x3
     bl sub_80C53A6
 locret_80DF2C6:
     pop {r0,r4,r6,r7,pc}
@@ -79066,7 +79066,7 @@ sub_80DFB56:
     mov r3, #0
     ldr r4, [pc, #0x80dfb78-0x80dfb60-4] // =0x405FF81
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80dfb7c-0x80dfb64-4] // =0x0
+    ldr r7, [pc, #0x80dfb7c-0x80dfb64-4] // =0x2
     bl sub_80C536A
     ldr r0, [pc, #0x80dfb78-0x80dfb6a-2] // =0x405FF81
     mov r1, #0
@@ -79655,7 +79655,7 @@ sub_80DFFDC:
     mov r0, #0xa0
     lsl r0, r0, #0x10
     str r0, [r5,#0x3c]
-    ldr r0, [pc, #0x80e0388-0x80e0002-2] // =0x100C
+    ldr r0, [pc, #0x80e0388-0x80e0002-2] // =0x100D
     ldr r1, [pc, #0x80e038c-0x80e0004-4] // =0x4050100
     bl sub_8011504
 .endfunc // sub_80DFFDC
@@ -82189,7 +82189,7 @@ loc_80E159A:
     bl sub_80E1670
     add r4, r0, #0
     ldrh r0, [r4,#0x28]
-    ldr r1, [pc, #0x80e17dc-0x80e15b6-2] // =0x171
+    ldr r1, [pc, #0x80e17dc-0x80e15b6-2] // =0x173
     cmp r0, r1
     blt loc_80E15CE
     ldr r1, [pc, #0x80e17e0-0x80e15bc-4] // =0x178
@@ -82317,7 +82317,7 @@ sub_80E1670:
     eor r3, r0
     add r0, r4, #0
     mov r1, #0
-    ldr r2, [pc, #0x80e17e4-0x80e1680-4] // =0x1C1
+    ldr r2, [pc, #0x80e17e4-0x80e1680-4] // =0x1C3
     bl object_getEnemyByNameRange
     add r6, r0, #0
     lsl r3, r0, #2
@@ -90153,7 +90153,7 @@ sub_80E5174:
     mov r1, #1
     eor r3, r1
     ldr r1, [pc, #0x80e523c-0x80e5196-2] // =0x100
-    ldr r2, [pc, #0x80e5240-0x80e5198-4] // =0x1C1
+    ldr r2, [pc, #0x80e5240-0x80e5198-4] // =0x1C3
     bl object_getEnemyByNameRange
     add r0, r0, r4
     cmp r0, #2
@@ -90810,7 +90810,7 @@ loc_80E5616:
     mov r3, #0
     ldr r4, [pc, #0x80e5694-0x80e563a-2] // =dword_805FED8
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80e5698-0x80e563e-2] // =0x0
+    ldr r7, [pc, #0x80e5698-0x80e563e-2] // =0x3
     bl sub_80C53A6
     mov r0, #8
     strb r0, [r5,#9]
@@ -91687,7 +91687,7 @@ sub_80E5C4C:
     push {lr}
     ldrb r0, [r5,#4]
     add r0, r0, r0
-    ldr r1, [pc, #0x80e5c9c-0x80e5c52-2] // =0x80E5C26
+    ldr r1, [pc, #0x80e5c9c-0x80e5c52-2] // =0x80E5C28
     add r0, r0, r1
     ldrb r1, [r0]
     ldrb r2, [r0,#1]
@@ -94729,7 +94729,7 @@ loc_80E7406:
     ldrh r2, [r1,#0x24]
     cmp r2, r4
     blt loc_80E7416
-    ldr r0, [pc, #0x80e74d0-0x80e7414-4] // =0x119
+    ldr r0, [pc, #0x80e74d0-0x80e7414-4] // =0x11A
 loc_80E7416:
     bl sound_play
     strh r4, [r1,#0x24]
@@ -100991,7 +100991,7 @@ loc_80EA2C6:
     tst r5, r5
     beq loc_80EA2F8
     bl object_getFlag
-    ldr r1, [pc, #0x80ea360-0x80ea2d0-4] // =0x201
+    ldr r1, [pc, #0x80ea360-0x80ea2d0-4] // =0x202
     tst r0, r1
     beq loc_80EA2F8
     push {r4}
@@ -101046,7 +101046,7 @@ loc_80EA326:
     tst r5, r5
     beq loc_80EA33A
     bl sub_801A67E
-    ldr r0, [pc, #0x80ea360-0x80ea330-4] // =0x201
+    ldr r0, [pc, #0x80ea360-0x80ea330-4] // =0x202
     bl object_clearFlag
     add r4, #4
     b loc_80EA326
@@ -106565,7 +106565,7 @@ loc_80ED1A4:
     tst r1, r2
     beq loc_80ED226
     ldr r1, [r0,#0x70]
-    ldr r2, [pc, #0x80ed24c-0x80ed1ba-2] // =0x0
+    ldr r2, [pc, #0x80ed24c-0x80ed1ba-2] // =0x2
     tst r1, r2
     bne loc_80ED218
     ldr r0, [r7,#0x30]
@@ -108569,7 +108569,7 @@ sub_80EE0DC:
     ldrb r0, [r7,#0xe]
     cmp r0, #0
     beq loc_80EE0F4
-    ldr r4, [pc, #0x80ee29c-0x80ee0f2-2] // =0x1904
+    ldr r4, [pc, #0x80ee29c-0x80ee0f2-2] // =0x1906
 loc_80EE0F4:
     ldr r7, [r5,#0x58]
     add r7, #0x68 
@@ -111221,11 +111221,11 @@ loc_80EF578:
     bl sub_800FDB6
     mov r0, #4
     strh r0, [r7]
-    ldr r0, [pc, #0x80ef960-0x80ef58c-4] // =0x1C4
+    ldr r0, [pc, #0x80ef960-0x80ef58c-4] // =0x1C5
     ldrb r1, [r7,#0x12]
     cmp r1, #2
     beq loc_80EF596
-    ldr r0, [pc, #0x80ef964-0x80ef594-4] // =0x1C4
+    ldr r0, [pc, #0x80ef964-0x80ef594-4] // =0x1C6
 loc_80EF596:
     bl sound_play
     ldrb r1, [r7,#0x12]
@@ -111447,7 +111447,7 @@ loc_80EF788:
     mov r1, #0x2c 
     bl sub_8013774
     ldrh r1, [r7,#0x14]
-    ldr r2, [pc, #0x80ef968-0x80ef7b6-2] // =0x171
+    ldr r2, [pc, #0x80ef968-0x80ef7b6-2] // =0x173
     cmp r1, r2
     beq loc_80EF7C6
     ldrb r1, [r7,#4]
@@ -111612,7 +111612,7 @@ loc_80EF908:
     mov r1, #0x2c 
     bl sub_8013774
     ldrh r1, [r7,#0x14]
-    ldr r2, [pc, #0x80ef96c-0x80ef936-2] // =0x174
+    ldr r2, [pc, #0x80ef96c-0x80ef936-2] // =0x177
     cmp r1, r2
     beq loc_80EF946
     ldrb r1, [r7,#4]
@@ -113018,7 +113018,7 @@ loc_80F059C:
     ldrh r0, [r3,#0x14]
     tst r0, r0
     beq loc_80F05DE
-    ldr r1, [pc, #0x80f06ec-0x80f05d0-4] // =0x184
+    ldr r1, [pc, #0x80f06ec-0x80f05d0-4] // =0x185
     cmp r0, r1
     beq loc_80F05DE
     ldrh r1, [r3,#8]
@@ -113357,7 +113357,7 @@ sub_80F0832:
     ldr r4, [pc, #0x80f0890-0x80f085e-2] // =0x4050101
     ldr r6, [r7,#8]
     push {r7}
-    ldr r7, [pc, #0x80f0894-0x80f0864-4] // =0x0
+    ldr r7, [pc, #0x80f0894-0x80f0864-4] // =0x3
     bl sub_80C536A
     pop {r7}
     tst r0, r0
@@ -113785,7 +113785,7 @@ sub_80F0B80:
     mov r3, #0
     ldr r4, [pc, #0x80f0b9c-0x80f0b90-4] // =0x7050304
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x80f0ba0-0x80f0b94-4] // =0x1000
+    ldr r7, [pc, #0x80f0ba0-0x80f0b94-4] // =0x1001
     bl sub_80C536A
     pop {r4,r6,r7,pc}
 dword_80F0B9C:    .word 0x7050304
@@ -114526,7 +114526,7 @@ sub_80F10F2:
     mov r3, #0
     ldr r4, [pc, #0x80f1114-0x80f1106-2] // =0x705FF04
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x80f1118-0x80f110a-2] // =0x0
+    ldr r7, [pc, #0x80f1118-0x80f110a-2] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7,pc}
     .balign 4, 0x00
@@ -115013,7 +115013,7 @@ sub_80F149C:
     mov r3, #0
     ldr r4, [pc, #0x80f14b4-0x80f14a6-2] // =0x6050A01
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x80f14b8-0x80f14aa-2] // =0x0
+    ldr r7, [pc, #0x80f14b8-0x80f14aa-2] // =0x1
     bl sub_80C536A
     pop {r4,r6,r7,pc}
     .balign 4, 0x00
@@ -115518,7 +115518,7 @@ loc_80F183A:
     mov r3, #0
     ldr r4, [pc, #0x80f1880-0x80f184e-2] // =0x700FF11
     push {r7}
-    ldr r7, [pc, #0x80f1884-0x80f1852-2] // =0x0
+    ldr r7, [pc, #0x80f1884-0x80f1852-2] // =0x1
     bl sub_80C536A
     pop {r7}
     bl sub_800E456
@@ -116653,7 +116653,7 @@ sub_80F207C:
     mov r3, #0
     ldr r4, [pc, #0x80f2098-0x80f208c-4] // =0x6050A01
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x80f209c-0x80f2090-4] // =0x0
+    ldr r7, [pc, #0x80f209c-0x80f2090-4] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7,pc}
 dword_80F2098:    .word 0x6050A01
@@ -119415,7 +119415,7 @@ loc_80F3A94:
     eor r0, r1
     bl sub_80103BC
     str r0, [r7,#0x2c]
-    ldr r0, [pc, #0x80f3d18-0x80f3ac2-2] // =0x80F4658
+    ldr r0, [pc, #0x80f3d18-0x80f3ac2-2] // =0x80F4659
     str r0, [r7,#0x28]
     mov r0, #0xb
     bl sub_8011680
@@ -120712,7 +120712,7 @@ loc_80F44FA:
     mov r3, #0
     ldr r4, [pc, #0x80f4554-0x80f4516-2] // =0x705FF04
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x80f4558-0x80f451a-2] // =0x0
+    ldr r7, [pc, #0x80f4558-0x80f451a-2] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7}
     mov r0, #0xb0
@@ -121417,7 +121417,7 @@ sub_80F4AC6:
     bl sub_80F49F8
     strb r0, [r7,#0xc]
     strb r1, [r7,#0xd]
-    ldr r0, [pc, #0x80f4c18-0x80f4ae6-2] // =0x80F5484
+    ldr r0, [pc, #0x80f4c18-0x80f4ae6-2] // =0x80F5485
     str r0, [r7,#0x28]
     ldrb r0, [r5,#0x16]
     mov r1, #1
@@ -121850,7 +121850,7 @@ sub_80F4E44:
     ldr r4, [pc, #0x80f4ec4-0x80f4e74-4] // =0x700FF04
     ldr r6, [r7,#8]
     push {r7}
-    ldr r7, [pc, #0x80f4ec8-0x80f4e7a-2] // =0x0
+    ldr r7, [pc, #0x80f4ec8-0x80f4e7a-2] // =0x3
     bl sub_80C536A
     pop {r7}
     bl sub_800E456
@@ -121955,7 +121955,7 @@ sub_80F4F14:
     ldr r4, [pc, #0x80f4f80-0x80f4f3c-4] // =0x700FF02
     ldr r6, [r7,#8]
     push {r7}
-    ldr r7, [pc, #0x80f4f84-0x80f4f42-2] // =0x0
+    ldr r7, [pc, #0x80f4f84-0x80f4f42-2] // =0x3
     bl sub_80C536A
     pop {r7}
     bl sub_800E456
@@ -124339,7 +124339,7 @@ sub_80F622A:
     mov r3, #0
     ldr r4, [pc, #0x80f624c-0x80f623e-2] // =0x705FF04
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x80f6250-0x80f6242-2] // =0x0
+    ldr r7, [pc, #0x80f6250-0x80f6242-2] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7,pc}
     .balign 4, 0x00
@@ -126695,7 +126695,7 @@ sub_80F7520:
     mov r3, #0
     ldr r4, [pc, #0x80f7548-0x80f753c-4] // =0x4050601
     ldr r6, [r5,#0x2c]
-    ldr r7, [pc, #0x80f754c-0x80f7540-4] // =0x0
+    ldr r7, [pc, #0x80f754c-0x80f7540-4] // =0x3
     bl sub_80C536A
 locret_80F7546:
     pop {r4,r6,r7,pc}
@@ -127028,7 +127028,7 @@ sub_80F7856:
     eor r0, r1
     bl sub_80103BC
     str r0, [r7,#0x2c]
-    ldr r0, [pc, #0x80f79e8-0x80f787a-2] // =0x80F81C0
+    ldr r0, [pc, #0x80f79e8-0x80f787a-2] // =0x80F81C1
     str r0, [r7,#0x28]
     mov r0, #0xa
     bl sub_8011680
@@ -128506,7 +128506,7 @@ loc_80F8458:
     eor r0, r1
     bl sub_80103BC
     str r0, [r7,#0x2c]
-    ldr r0, [pc, #0x80f86f8-0x80f84a0-4] // =0x80F8DA8
+    ldr r0, [pc, #0x80f86f8-0x80f84a0-4] // =0x80F8DA9
     str r0, [r7,#0x28]
     mov r0, #0xb
     bl sub_8011680
@@ -129317,7 +129317,7 @@ loc_80F8AD4:
     ldr r4, [pc, #0x80f8b18-0x80f8ae2-2] // =0x700FF11
     ldr r6, [r7,#8]
     push {r7}
-    ldr r7, [pc, #0x80f8b1c-0x80f8ae8-4] // =0x0
+    ldr r7, [pc, #0x80f8b1c-0x80f8ae8-4] // =0x3
     bl sub_80C536A
     pop {r7}
     bl sub_800E456
@@ -131185,7 +131185,7 @@ loc_80F99CE:
     push {r4,r7}
     ldr r4, [pc, #0x80f99f4-0x80f99e0-4] // =0x400FF01
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x80f99f8-0x80f99e4-4] // =0x0
+    ldr r7, [pc, #0x80f99f8-0x80f99e4-4] // =0x3
     bl sub_80C536A
     pop {r4,r7}
     add r4, #1
@@ -131810,7 +131810,7 @@ sub_80F9F76:
     strh r0, [r7,#0x18]
     bl sub_80F9E90
     strb r0, [r7,#0xc]
-    ldr r0, [pc, #0x80fa0a8-0x80f9f94-4] // =0x80FAAA0
+    ldr r0, [pc, #0x80fa0a8-0x80f9f94-4] // =0x80FAAAD
     str r0, [r7,#0x28]
     mov r0, #0x60 
     add r0, r0, r5
@@ -131840,7 +131840,7 @@ sub_80F9FA6:
     mov r0, #3
     bl sub_80FA01A
     str r0, [r7,#0x30]
-    ldr r0, [pc, #0x80fa0ac-0x80f9fd4-4] // =0x80FAAA0
+    ldr r0, [pc, #0x80fa0ac-0x80f9fd4-4] // =0x80FAAD5
     str r0, [r7,#0x28]
     ldrb r0, [r5,#0x16]
     mov r1, #1
@@ -134481,7 +134481,7 @@ sub_80FB81E:
     mov r3, #0
     ldr r4, [pc, #0x80fb83c-0x80fb82e-2] // =0x6050A01
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x80fb840-0x80fb832-2] // =0x0
+    ldr r7, [pc, #0x80fb840-0x80fb832-2] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7,pc}
     .balign 4, 0x00
@@ -135229,7 +135229,7 @@ sub_80FBE60:
     strb r0, [r7,#2]
     mov r0, #0
     bl sub_80FBF92
-    ldr r0, [pc, #0x80fc064-0x80fbe72-2] // =0x80FCD68
+    ldr r0, [pc, #0x80fc064-0x80fbe72-2] // =0x80FCD71
     str r0, [r7,#0x28]
     bl sub_80FBD04
     strh r0, [r7,#0x18]
@@ -137232,7 +137232,7 @@ sub_80FCE40:
     ldrb r2, [r7,#2]
     mov r3, #0
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x80fce58-0x80fce4c-4] // =0x0
+    ldr r7, [pc, #0x80fce58-0x80fce4c-4] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7,pc}
 dword_80FCE54:    .word 0x705FF00
@@ -137413,7 +137413,7 @@ dword_80FCF80:    .word 0x6, 0x6, 0x6, 0x9
 .thumb_func
 sub_80FCF90:
     push {r4,r7,lr}
-    ldr r4, [pc, #0x80fd008-0x80fcf92-2] // =0xB10
+    ldr r4, [pc, #0x80fd008-0x80fcf92-2] // =0xB11
     add r7, r0, #0
     bl sub_80B8E30
     pop {r4,r7,pc}
@@ -137578,7 +137578,7 @@ loc_80FD1B8:
     strb r0, [r7,#3]
     mov r0, #1
     strb r0, [r7,#2]
-    ldr r0, [pc, #0x80fd4b8-0x80fd1c2-2] // =0x80FDB84
+    ldr r0, [pc, #0x80fd4b8-0x80fd1c2-2] // =0x80FDB85
     str r0, [r7,#0x28]
     bl sub_80FD2C0
     strh r0, [r7,#0x18]
@@ -140736,7 +140736,7 @@ sub_80FEB20:
     strb r0, [r7,#3]
     mov r0, #0
     strb r0, [r7,#2]
-    ldr r0, [pc, #0x80fec88-0x80feb2c-4] // =0x80FF614
+    ldr r0, [pc, #0x80fec88-0x80feb2c-4] // =0x80FF615
     str r0, [r7,#0x28]
     mov r0, #0
     bl sub_80FEBE4
@@ -140769,7 +140769,7 @@ sub_80FEB64:
     strb r0, [r7,#3]
     mov r0, #0
     strb r0, [r7,#2]
-    ldr r0, [pc, #0x80fec8c-0x80feb70-4] // =0x80FF614
+    ldr r0, [pc, #0x80fec8c-0x80feb70-4] // =0x80FF615
     str r0, [r7,#0x28]
     mov r0, #1
     bl sub_80FEBE4
@@ -141796,7 +141796,7 @@ sub_80FF378:
     lsl r3, r3, #0x10
     orr r4, r3
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x80ff3c0-0x80ff38c-4] // =0x181
+    ldr r7, [pc, #0x80ff3c0-0x80ff38c-4] // =0x183
     bl sub_80E9EFA
     add r2, r0, #0
     mov r1, #1
@@ -142258,7 +142258,7 @@ sub_80FF680:
     mov r3, #0
     ldr r4, [pc, #0x80ff6d8-0x80ff6cc-4] // =0x4000601
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x80ff6dc-0x80ff6d0-4] // =0x0
+    ldr r7, [pc, #0x80ff6dc-0x80ff6d0-4] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7,pc}
 dword_80FF6D8:    .word 0x4000601
@@ -143265,7 +143265,7 @@ sub_810007C:
     ldr r4, [pc, #0x81000d8-0x810008c-4] // =0x4050301
     ldr r6, [r7,#8]
     push {r7}
-    ldr r7, [pc, #0x81000dc-0x8100092-2] // =0x0
+    ldr r7, [pc, #0x81000dc-0x8100092-2] // =0x3
     bl sub_80C536A
     pop {r7}
     bl sub_800E2CA
@@ -143279,7 +143279,7 @@ sub_810007C:
     ldr r4, [pc, #0x81000d8-0x81000ac-4] // =0x4050301
     ldr r6, [r7,#8]
     push {r7}
-    ldr r7, [pc, #0x81000dc-0x81000b2-2] // =0x0
+    ldr r7, [pc, #0x81000dc-0x81000b2-2] // =0x3
     bl sub_80C536A
     pop {r7}
     bl sub_800E2CA
@@ -143292,7 +143292,7 @@ sub_810007C:
     mov r3, #0
     ldr r4, [pc, #0x81000d8-0x81000cc-4] // =0x4050301
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x81000dc-0x81000d0-4] // =0x0
+    ldr r7, [pc, #0x81000dc-0x81000d0-4] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7,pc}
 dword_81000D8:    .word 0x4050301
@@ -145753,7 +145753,7 @@ locret_8101604:
     strh r0, [r7,#0x18]
     bl sub_81014AC
     strb r0, [r7,#0xd]
-    ldr r0, [pc, #0x8101840-0x810163a-2] // =0x81038A4
+    ldr r0, [pc, #0x8101840-0x810163a-2] // =0x81038A5
     str r0, [r7,#0x28]
     ldrb r0, [r5,#0x16]
     mov r1, #1
@@ -145776,7 +145776,7 @@ locret_8101604:
     strh r0, [r7,#0x18]
     bl sub_81014D4
     strb r0, [r7,#0xd]
-    ldr r0, [pc, #0x8101844-0x8101674-4] // =0x81038A4
+    ldr r0, [pc, #0x8101844-0x8101674-4] // =0x81038A5
     str r0, [r7,#0x28]
     ldrb r0, [r5,#0x16]
     mov r1, #1
@@ -148747,7 +148747,7 @@ sub_81026EE:
     mov r0, #0
     strh r0, [r7,#0x10]
     push {r7}
-    ldr r4, [pc, #0x810279c-0x8102700-4] // =0xE00
+    ldr r4, [pc, #0x810279c-0x8102700-4] // =0xE03
     mov r7, #0x4c 
     add r7, r7, r5
     bl sub_80B8E30
@@ -149155,7 +149155,7 @@ sub_81029CE:
     push {r7}
     ldr r7, [r5,#0x58]
     add r7, #0x68 
-    ldr r4, [pc, #0x8102c1c-0x81029e0-4] // =0x2830
+    ldr r4, [pc, #0x8102c1c-0x81029e0-4] // =0x2831
     bl sub_80B8E30
     pop {r7}
     mov r0, #0
@@ -149203,7 +149203,7 @@ sub_8102A1C:
     cmp r2, #0
     beq loc_8102A3A
     mov r1, #0x2c 
-    ldr r4, [pc, #0x8102c24-0x8102a38-4] // =0x191
+    ldr r4, [pc, #0x8102c24-0x8102a38-4] // =0x193
 loc_8102A3A:
     bl sub_80B8E70
     add r0, r4, #0
@@ -151221,7 +151221,7 @@ sub_8103966:
     ldr r4, [pc, #0x810398c-0x810397e-2] // =dword_8103990
     ldr r4, [r4,r6]
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x81039a0-0x8103984-4] // =0x0
+    ldr r7, [pc, #0x81039a0-0x8103984-4] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7,pc}
 off_810398C:    .word dword_8103990
@@ -151820,7 +151820,7 @@ loc_8103F4C:
     strh r0, [r7,#0x18]
     strb r1, [r7,#0xc]
     strb r1, [r7,#0xd]
-    ldr r0, [pc, #0x8104180-0x8103f9c-4] // =0x8104F6C
+    ldr r0, [pc, #0x8104180-0x8103f9c-4] // =0x8104F6D
     str r0, [r7,#0x28]
     ldrb r0, [r5,#0x16]
     mov r1, #1
@@ -151841,7 +151841,7 @@ loc_8103F4C:
     strh r0, [r7,#0x18]
     strb r1, [r7,#0xc]
     strb r1, [r7,#0xd]
-    ldr r0, [pc, #0x8104184-0x8103fd0-4] // =0x8104EF8
+    ldr r0, [pc, #0x8104184-0x8103fd0-4] // =0x8104EF9
     str r0, [r7,#0x28]
     ldrb r0, [r5,#0x16]
     mov r1, #1
@@ -154743,7 +154743,7 @@ loc_8105768:
     strb r0, [r7,#3]
     mov r0, #0
     strb r0, [r7,#2]
-    ldr r0, [pc, #0x8105960-0x8105790-4] // =0x81064C4
+    ldr r0, [pc, #0x8105960-0x8105790-4] // =0x81064C5
     str r0, [r7,#0x28]
     mov r0, #0
     bl sub_810588E
@@ -154810,7 +154810,7 @@ loc_8105768:
     strb r0, [r7,#3]
     mov r0, #0
     strb r0, [r7,#2]
-    ldr r0, [pc, #0x810596c-0x8105834-4] // =0x81064DC
+    ldr r0, [pc, #0x810596c-0x8105834-4] // =0x81064DD
     str r0, [r7,#0x28]
     mov r0, #3
     bl sub_810588E
@@ -156907,7 +156907,7 @@ loc_81067DC:
     mov r3, #0
     ldr r4, [pc, #0x81067f4-0x81067e6-2] // =0x57050618
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x81067f8-0x81067ea-2] // =0x0
+    ldr r7, [pc, #0x81067f8-0x81067ea-2] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7,pc}
     .balign 4, 0x00
@@ -159037,7 +159037,7 @@ sub_81079DC:
     mov r3, #0
     ldr r4, [pc, #0x81079f8-0x81079ec-4] // =0x7050104
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x81079fc-0x81079f0-4] // =0x0
+    ldr r7, [pc, #0x81079fc-0x81079f0-4] // =0x3
     bl sub_80C536A
     pop {r4,r6,r7,pc}
 dword_81079F8:    .word 0x7050104
@@ -159058,7 +159058,7 @@ sub_8107A00:
     ldrb r2, [r7,#2]
     mov r3, #0
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x8107a2c-0x8107a18-4] // =0x0
+    ldr r7, [pc, #0x8107a2c-0x8107a18-4] // =0x1
     bl sub_80C536A
     pop {r4,r6,r7,pc}
 off_8107A20:    .word dword_8107A24
@@ -159103,7 +159103,7 @@ sub_8107A64:
     mov r3, #0
     ldr r4, [pc, #0x8107a80-0x8107a74-4] // =0x405FF02
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x8107a84-0x8107a78-4] // =0x1000
+    ldr r7, [pc, #0x8107a84-0x8107a78-4] // =0x1001
     bl sub_80C536A
     pop {r4,r6,r7,pc}
 dword_8107A80:    .word 0x405FF02
@@ -159555,7 +159555,7 @@ loc_8107FF0:
     strb r0, [r7,#2]
     mov r0, #2
     bl sub_8108124
-    ldr r0, [pc, #0x8108210-0x8108080-4] // =0x8108CAC
+    ldr r0, [pc, #0x8108210-0x8108080-4] // =0x8108CBB
     str r0, [r7,#0x28]
     bl sub_8107F48
     strh r0, [r7,#0x18]
@@ -159580,7 +159580,7 @@ loc_8107FF0:
     mov r0, #4
     bl sub_8108152
     str r0, [r7,#0x30]
-    ldr r0, [pc, #0x8108214-0x81080c0-4] // =0x8108CAC
+    ldr r0, [pc, #0x8108214-0x81080c0-4] // =0x8108CBB
     str r0, [r7,#0x28]
     bl sub_8107F80
     strh r0, [r7,#0x18]
@@ -159602,7 +159602,7 @@ loc_8107FF0:
     strb r0, [r7,#2]
     mov r0, #5
     bl sub_8108124
-    ldr r0, [pc, #0x8108218-0x81080f8-4] // =0x8108CAC
+    ldr r0, [pc, #0x8108218-0x81080f8-4] // =0x8108CDF
     str r0, [r7,#0x28]
     bl sub_8107FB8
     strh r0, [r7,#0x18]
@@ -161318,7 +161318,7 @@ sub_8108E34:
     ldrb r2, [r7,#2]
     mov r3, #0
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x8108e60-0x8108e4c-4] // =0x0
+    ldr r7, [pc, #0x8108e60-0x8108e4c-4] // =0x1
     bl sub_80C536A
     pop {r4,r6,r7,pc}
 off_8108E54:    .word dword_8108E58
@@ -161363,7 +161363,7 @@ sub_8108E98:
     mov r3, #0
     ldr r4, [pc, #0x8108eb4-0x8108ea8-4] // =0x405FF02
     ldr r6, [r7,#8]
-    ldr r7, [pc, #0x8108eb8-0x8108eac-4] // =0x1000
+    ldr r7, [pc, #0x8108eb8-0x8108eac-4] // =0x1001
     bl sub_80C536A
     pop {r4,r6,r7,pc}
 dword_8108EB4:    .word 0x405FF02

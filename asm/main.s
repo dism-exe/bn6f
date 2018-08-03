@@ -132,7 +132,7 @@ loc_80003F2:
     mvn r4, r4
     ldrh r5, [r0]
     strh r5, [r0,#6]
-    ldr r3, [pc, #0x8000450-0x80003fe-2] // =0x3FC
+    ldr r3, [pc, #0x8000450-0x80003fe-2] // =0x3FF
     strh r4, [r0]
     add r6, r4, #0
     and r6, r5
@@ -299,7 +299,7 @@ main_static_8000570:
     ldr r0, [pc, #0x800059c-0x8000576-2] // =0x93040D
     bl sub_814EE2C
     mov r0, #8
-    ldr r1, [pc, #0x80005a8-0x800057e-2] // =0x3005D78
+    ldr r1, [pc, #0x80005a8-0x800057e-2] // =0x3005D79
     bl start_800024C
     ldr r0, [pc, #0x80005a0-0x8000584-4] // =GeneralLCDStatus_STAT_LYC_
     ldrh r1, [r0]

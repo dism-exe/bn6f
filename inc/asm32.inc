@@ -158,7 +158,7 @@
 // .global sub_802D246
 // .global sub_802EF5C
 // .global sub_802F164
-// .global sub_802F168
+// .global zf_802F168
 // .global sub_802FE28
 // .global sub_8033978
 // .global sub_8036F70
@@ -274,7 +274,7 @@
 // .global sub_8001562
 // .global sub_80015FC
 // .global sub_8001850
-// .global sub_80018C2
+// .global draw_tiles
 // .global sub_8001B1C
 // .global sub_8001B84
 // .global loc_8002676

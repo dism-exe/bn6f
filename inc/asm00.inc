@@ -89,7 +89,7 @@
 .global sub_8001850
 .global sub_800187C
 .global sub_8001890
-.global sub_80018C2
+.global draw_tiles
 .global sub_80018D0
 .global sub_80018E0
 .global sub_8001930
@@ -474,7 +474,7 @@
 .global sub_80107D4
 .global sub_801086C
 .global sub_80108FC
-.global loc_80109A4
+.global sub_80109A4
 .global sub_8010C76
 .global sub_8010CE0
 .global sub_8010DD0
@@ -756,7 +756,7 @@
 // .global sub_802F12C
 // .global sub_802F130
 // .global sub_802F164
-// .global sub_802F168
+// .global zf_802F168
 // .global sub_802F17E
 // .global sub_802F1FC
 // .global sub_802F2C8
@@ -867,7 +867,7 @@
 // .global reqBBS_init_s_2005780
 // .global sub_813F9A0
 // .global reqBBS_initMemory_813F9DA
-// .global sub_8140984
+// .global reqBBS_8140984
 // .global sub_81419A0
 // .global sub_8142248
 // .global sub_8143482

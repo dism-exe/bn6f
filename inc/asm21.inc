@@ -9,7 +9,7 @@
 /* External Symbols */
 .include "asm03.inc"
 // .global sub_802D234
-// .global sub_802F168
+// .global zf_802F168
 // .global sub_80304E8
 // .global sub_803537C
 // .global sub_8035424

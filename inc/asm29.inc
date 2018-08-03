@@ -22,7 +22,7 @@
 // .global sub_802F12C
 // .global sub_802F130
 // .global sub_802F164
-// .global sub_802F168
+// .global zf_802F168
 // .global sub_80302A8
 // .global sub_8031612
 // .global sub_8031A7A
@@ -59,7 +59,7 @@
 // .global sub_81409F4
 // .global sub_8140A00
 // .global sub_8140A0C
-// .global sub_8140A5C
+// .global reqBBS_runDialog_8140A70
 // .global dword_8140C60
 // .global dword_8140C68
 // .global dword_8140C7C

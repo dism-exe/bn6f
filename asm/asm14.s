@@ -384,7 +384,7 @@ sub_8072B70:
 loc_8072B88:
     lsl r4, r4, #1
     bl sub_800151C
-    ldr r1, [pc, #0x8072bb4-0x8072b8e-2] // =0x1F8
+    ldr r1, [pc, #0x8072bb4-0x8072b8e-2] // =0x1FF
     and r0, r1
     ldr r1, [pc, #0x8072bb8-0x8072b92-2] // =0x258
     add r0, r0, r1

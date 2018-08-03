@@ -49,7 +49,7 @@
 // .global sound_play
 // .global sub_8000900
 // .global sub_800183C
-// .global sub_80018C2
+// .global draw_tiles
 // .global sub_80018D0
 // .global sub_800307C
 // .global engine_setScreeneffect

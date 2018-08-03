@@ -10,7 +10,7 @@ sub_812EAAC:
     ldr r3, [pc, #0x812eac0-0x812eab4-4] // =unk_201EE20
     mov r4, #0x1e
     mov r5, #0x14
-    bl sub_80018C2
+    bl draw_tiles
     pop {r4-r7,pc}
 off_812EAC0:    .word unk_201EE20
 .endfunc // sub_812EAAC
@@ -398,7 +398,7 @@ locret_812ED90:
     ldr r3, [pc, #0x812ede0-0x812eda6-2] // =unk_201E920
     mov r4, #0x1e
     mov r5, #0x14
-    bl sub_80018C2
+    bl draw_tiles
     add r5, r7, #0
     bl sub_812EB92
     ldrh r0, [r5,#0x2a]
@@ -475,7 +475,7 @@ loc_812EE38:
     ldr r4, [r1,r0]
     add r7, r4, #0
     ldrh r2, [r5,#0x30]
-    ldr r1, [pc, #0x812eed4-0x812ee48-4] // =0x812EEDC
+    ldr r1, [pc, #0x812eed4-0x812ee48-4] // =0x812EEE1
     ldrb r2, [r1,r2]
     add r7, r7, r2
 loc_812EE4E:
@@ -498,7 +498,7 @@ loc_812EE4E:
     mov r2, #2
     mov r4, #8
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
     pop {r4-r7,pc}
     push {r4-r7,lr}
     lsl r0, r0, #2
@@ -623,7 +623,7 @@ sub_812EF60:
     ldr r3, [pc, #0x812efa0-0x812ef80-4] // =unk_2025A70
     mov r4, #0xa
     mov r5, #6
-    bl sub_80018C2
+    bl draw_tiles
     pop {r4-r7,pc}
 off_812EF8C:    .word word_2023FA0
 off_812EF90:    .word unk_2025070

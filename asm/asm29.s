@@ -88,7 +88,7 @@ loc_80A4A2A:
     tst r3, r3
     beq loc_80A4A38
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_80A4A74
 loc_80A4A38:
     mov r0, #1
@@ -453,7 +453,7 @@ sub_80A51F8:
     ldrh r0, [r7]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_80A524E
     mov r0, #3
     strb r0, [r5]
@@ -506,7 +506,7 @@ sub_80A5268:
     ldrh r0, [r7]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_80A52DA
     bl sub_80062C8
     lsr r0, r0, #2
@@ -799,7 +799,7 @@ loc_80A552A:
     mov r2, #1
     and r1, r2
     bne loc_80A557A
-    ldr r0, [pc, #0x80a568c-0x80a556a-2] // =0x17D
+    ldr r0, [pc, #0x80a568c-0x80a556a-2] // =0x17F
     bl sound_play
     ldrb r0, [r5,#4]
     cmp r0, #0
@@ -931,7 +931,7 @@ loc_80A5648:
     ldrb r0, [r6,#0xf]
     cmp r0, #0
     bne locret_80A5674
-    ldr r0, [pc, #0x80a568c-0x80a5664-4] // =0x17D
+    ldr r0, [pc, #0x80a568c-0x80a5664-4] // =0x17F
     bl sound_play
     mov r0, #0xa
     strb r0, [r6,#0xf]
@@ -1728,7 +1728,7 @@ sub_80A5C9C:
     bl sub_80A5E44
     mov r0, #0
     ldrb r1, [r5,#6]
-    bl sub_8140A5C
+    bl reqBBS_runDialog_8140A70
     add r4, #1
     strb r4, [r5,#0xa]
     b loc_80A5CDE
@@ -2126,7 +2126,7 @@ loc_80A5F8E:
     ldrh r2, [r1,r0]
     mov r4, #1
     add r0, r2, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_80A5FAA
     mov r0, #1
     strb r0, [r5]
@@ -5450,7 +5450,7 @@ loc_80A82EE:
     ldrh r3, [r0,r2]
     mov r4, #0
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_80A830C
     mov r4, #1
     mov r0, #3
@@ -5505,7 +5505,7 @@ loc_80A8340:
     ldr r0, [r2,r4]
     ldrh r6, [r0,r6]
     add r0, r7, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_80A8362
     add r0, r6, #0
     bl sub_802F114
@@ -6218,7 +6218,7 @@ sub_80A88E2:
     ldr r0, [r5,#0xc]
     ldr r1, [r5,#0x10]
     ldr r2, [r5,#0x14]
-    ldr r3, [pc, #0x80a890c-0x80a88f4-4] // =0x808
+    ldr r3, [pc, #0x80a890c-0x80a88f4-4] // =0x80A
     ldr r4, [pc, #0x80a8910-0x80a88f6-2] // =0x40000
     ldr r5, [pc, #0x80a8914-0x80a88f8-4] // =0x10000
     bl sub_80037AC
@@ -6864,7 +6864,7 @@ sub_80A8DB0:
     beq locret_80A8DE6
     bl sub_8143088
     add r1, r0, #0
-    ldr r0, [pc, #0x80a8dec-0x80a8dcc-4] // =0x808C2F8
+    ldr r0, [pc, #0x80a8dec-0x80a8dcc-4] // =0x808C315
     bl sub_8036E90
     mov r0, #0x23 
     add r0, #0xff
@@ -7394,7 +7394,7 @@ sub_80A91D4:
     ldrh r0, [r0,r1]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     pop {pc}
     .balign 4, 0x00
 off_80A91E8:    .word dword_80A91EC
@@ -7977,7 +7977,7 @@ sub_80A9628:
     ldrh r0, [r1,r0]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_80A963E
     mov r4, #1
 loc_80A963E:
@@ -8026,7 +8026,7 @@ sub_80A9680:
     mov r0, #0
     str r0, [r5,#0x24]
     bl sub_80A97F4
-    ldr r0, [pc, #0x80a96c4-0x80a96b2-2] // =0x1B0
+    ldr r0, [pc, #0x80a96c4-0x80a96b2-2] // =0x1B3
     bl sound_play
     mov r0, #4
     strb r0, [r5,#8]
@@ -8549,7 +8549,7 @@ sub_80A9B9C:
     ldrh r0, [r7]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_80A9BBE
     mov r0, #1
     strb r0, [r5]
@@ -8611,7 +8611,7 @@ sub_80A9C26:
     ldrh r0, [r7]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_80A9C40
     mov r0, #1
     strb r0, [r5]
@@ -8635,7 +8635,7 @@ loc_80A9C54:
     ldrh r0, [r7]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_80A9CA0
     bl sub_80A9CAE
     tst r0, r0
@@ -8773,7 +8773,7 @@ sub_80A9D30:
     strh r0, [r5,#0x26]
     ldr r0, [pc, #0x80a9ec0-0x80a9d70-4] // =0x2AAAA
     str r0, [r5,#0x28]
-    ldr r0, [pc, #0x80a9ec4-0x80a9d74-4] // =0x16C0
+    ldr r0, [pc, #0x80a9ec4-0x80a9d74-4] // =0x16C1
     str r0, [r5,#0x2c]
     mov r0, #4
     strb r0, [r5,#8]
@@ -9311,7 +9311,7 @@ sub_80AA194:
     bl sub_8143B5E
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_80AA1C2
     mov r0, #1
     bl sprite_setAnimation
@@ -10944,13 +10944,13 @@ loc_80AADFC:
     mov r2, #0x20 
     tst r1, r2
     bne loc_80AAE24
-    ldr r1, [pc, #0x80aae88-0x80aae10-4] // =0x134
+    ldr r1, [pc, #0x80aae88-0x80aae10-4] // =0x137
     cmp r4, r1
     beq loc_80AAE24
     ldr r1, [pc, #0x80aae8c-0x80aae16-2] // =0x138
     cmp r4, r1
     beq loc_80AAE24
-    ldr r1, [pc, #0x80aae90-0x80aae1c-4] // =0x138
+    ldr r1, [pc, #0x80aae90-0x80aae1c-4] // =0x139
     cmp r4, r1
     beq loc_80AAE24
     b loc_80AAE28

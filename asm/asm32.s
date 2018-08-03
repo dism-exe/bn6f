@@ -2828,7 +2828,7 @@ locret_810FC0A:
     ldr r2, [r5,#0x38]
     ldr r3, [r5,#0x3c]
     mov r3, #0
-    ldr r4, [pc, #0x810fc2c-0x810fc22-2] // =0x0
+    ldr r4, [pc, #0x810fc2c-0x810fc22-2] // =0x2
     orr r4, r0
     bl sub_80E05F6
 locret_810FC2A:
@@ -10426,7 +10426,7 @@ sub_8116944:
 loc_811698A:
     strb r0, [r5,#9]
     strb r1, [r5]
-    ldr r0, [pc, #0x81169a8-0x811698e-2] // =0xAE
+    ldr r0, [pc, #0x81169a8-0x811698e-2] // =0xB0
     ldr r1, [pc, #0x81169ac-0x8116990-4] // =0x40
     bl sub_800307C
     mov r0, #0xff
@@ -11112,7 +11112,7 @@ sub_8116DEC:
     mov r0, #0x16
     mov r1, #0
     bl sub_800308A
-    ldr r2, [pc, #0x8116e04-0x8116df6-2] // =0x119
+    ldr r2, [pc, #0x8116e04-0x8116df6-2] // =0x11A
     cmp r0, r2
     blt locret_8116E00
     mov r0, #8
@@ -16861,7 +16861,7 @@ loc_8119A76:
     ldr r3, [pc, #0x8119a9c-0x8119a7e-2] // =0x8119904
     mov r4, #0xa
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_8119A48
 
     pop {r2,r5}
@@ -16886,7 +16886,7 @@ loc_8119AA6:
     mov r2, #0
     mov r4, #1
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_8119AA0
 
     pop {r0-r4}
@@ -21383,7 +21383,7 @@ loc_811BE64:
     mov r0, #2
     bl sub_8002E14
     ldrb r1, [r5,#0xc]
-    ldr r0, [pc, #0x811bf04-0x811be76-2] // =0x811BFB0
+    ldr r0, [pc, #0x811bf04-0x811be76-2] // =0x811BFB6
     ldrb r0, [r0,r1]
     bl sub_8003060
     ldrb r2, [r5,#0xc]
@@ -23185,7 +23185,7 @@ off_811D138:    .word sub_811D148+1
 .thumb_func
 sub_811D148:
     push {lr}
-    ldr r0, [pc, #0x811d158-0x811d14a-2] // =0xCC
+    ldr r0, [pc, #0x811d158-0x811d14a-2] // =0xCF
     strh r0, [r5,#0xc]
     mov r0, #4
     strb r0, [r5,#9]
@@ -23215,7 +23215,7 @@ sub_811D15C:
     ldrb r0, [r5,#5]
     cmp r0, #0
     bne loc_811D18A
-    ldr r0, [pc, #0x811d194-0x811d184-4] // =0x1C4
+    ldr r0, [pc, #0x811d194-0x811d184-4] // =0x1C6
     bl sound_play
 loc_811D18A:
     mov r0, #8
@@ -23556,7 +23556,7 @@ sub_811D464:
 .endfunc // sub_811D464
 
     bl sub_8002F90
-    ldr r1, [pc, #0x811d518-0x811d488-4] // =0x811D524
+    ldr r1, [pc, #0x811d518-0x811d488-4] // =0x811D526
     ldrb r0, [r5,#5]
     ldrb r0, [r1,r0]
     bl sprite_setPallete
@@ -23888,7 +23888,7 @@ loc_811D7E6:
     mov r0, #5
     bl sub_800304A
     ldrb r1, [r5,#5]
-    ldr r0, [pc, #0x811d868-0x811d804-4] // =0x811D88C
+    ldr r0, [pc, #0x811d868-0x811d804-4] // =0x811D88E
     ldrb r0, [r0,r1]
     bl sprite_setPallete
     ldr r0, [pc, #0x811d858-0x811d80c-4] // =0x1E0
@@ -24140,7 +24140,7 @@ sub_811DA00:
     mov r0, #3
     bl sub_8002E14
     ldrb r1, [r5,#5]
-    ldr r0, [pc, #0x811da80-0x811da50-4] // =0x811DA8C
+    ldr r0, [pc, #0x811da80-0x811da50-4] // =0x811DA8E
     ldrb r0, [r0,r1]
     bl sub_8003060
     mov r0, #0x80
@@ -24185,7 +24185,7 @@ sub_811DA94:
     bl sub_8002E14
     mov r0, #1
     bl sub_8003060
-    ldr r0, [pc, #0x811daec-0x811dacc-4] // =0x191
+    ldr r0, [pc, #0x811daec-0x811dacc-4] // =0x193
     bl sound_play
     mov r0, #0xf3
     bl sound_play
@@ -26457,7 +26457,7 @@ sub_811EF70:
     ldr r3, [pc, #0x811ef88-0x811ef7c-4] // =loc_86CAC4C
     mov r4, #0x1e
     mov r5, #0x14
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_811EF70
 
     pop {r4,r5,r7,pc}
@@ -26998,7 +26998,7 @@ loc_811F598:
     mov r2, #0
     mov r4, #9
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_811F54C
 
     ldr r3, [sp]
@@ -28204,7 +28204,7 @@ loc_811FE8C:
     ldr r1, [sp,#0x14]
     tst r1, r1
     beq loc_811FEB0
-    ldr r0, [pc, #0x811ff4c-0x811fe9c-4] // =0x134
+    ldr r0, [pc, #0x811ff4c-0x811fe9c-4] // =0x137
     cmp r7, r0
     beq loc_811FF34
     ldrb r1, [r5,#7]
@@ -28344,7 +28344,7 @@ sub_811FF80:
     and r1, r3
     beq loc_811FFAC
     ldrh r2, [r0,#0x1a]
-    ldr r1, [pc, #0x811ffbc-0x811ff9a-2] // =0x3E0
+    ldr r1, [pc, #0x811ffbc-0x811ff9a-2] // =0x3E7
     cmp r2, r1
     ble loc_811FFA8
     add r0, r4, #0
@@ -28376,10 +28376,10 @@ loc_811FFC4:
     add r7, r0, #0
     bl sub_8021AA4
     add r5, r0, #0
-    ldr r1, [pc, #0x8120010-0x811ffcc-4] // =0x134
+    ldr r1, [pc, #0x8120010-0x811ffcc-4] // =0x136
     cmp r7, r1
     bgt loc_811FFFC
-    ldr r1, [pc, #0x812000c-0x811ffd2-2] // =0x134
+    ldr r1, [pc, #0x812000c-0x811ffd2-2] // =0x137
     cmp r7, r1
     beq loc_811FFE6
     ldr r1, [pc, #0x8120014-0x811ffd8-4] // =0x138
@@ -28552,10 +28552,10 @@ loc_812010A:
     beq loc_812014E
     ldr r0, [pc, #0x8120174-0x8120112-2] // =dword_8120178
     push {r2}
-    ldr r2, [pc, #0x8120184-0x8120116-2] // =0x134
+    ldr r2, [pc, #0x8120184-0x8120116-2] // =0x137
     cmp r1, r2
     beq loc_8120128
-    ldr r2, [pc, #0x8120188-0x812011c-4] // =0x138
+    ldr r2, [pc, #0x8120188-0x812011c-4] // =0x139
     cmp r1, r2
     bne loc_812012E
     ldr r0, [pc, #0x8120190-0x8120122-2] // =0x200119E
@@ -29546,19 +29546,19 @@ loc_8120808:
     add r0, r0, r7
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_812082C
     ldrh r0, [r4,#2]
     add r0, r0, r7
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_812082C
     ldrh r0, [r4,#4]
     add r0, r0, r7
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_812086E
 loc_812082C:
     cmp r5, #4
@@ -29670,7 +29670,7 @@ loc_81208DE:
     pop {r5}
 loc_81208F0:
     add r7, #1
-    ldr r0, [pc, #0x81208fc-0x81208f2-2] // =0x13C
+    ldr r0, [pc, #0x81208fc-0x81208f2-2] // =0x13F
     cmp r7, r0
     ble loc_81208A0
     add r0, r6, #0
@@ -29791,7 +29791,7 @@ loc_81209B2:
     add r3, r7, #0
     mov r4, #0xb
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_8120900
 
     add sp, sp, #0x14
@@ -29845,7 +29845,7 @@ sub_8120A38:
     mov r0, #1
     bl sub_8120898
     str r0, [sp,#4]
-    ldr r0, [pc, #0x8120a84-0x8120a50-4] // =0x134
+    ldr r0, [pc, #0x8120a84-0x8120a50-4] // =0x137
     bl sub_8021BD8
     tst r0, r0
     beq loc_8120A60
@@ -30105,19 +30105,19 @@ sub_8120BE4:
     add r0, r0, r5
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_8120C84
     ldrh r0, [r4,#0x2] // (word_8120C8E - 0x8120c8c)
     add r0, r0, r5
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_8120C84
     ldrh r0, [r4,#0x4] // (word_8120C90 - 0x8120c8c)
     add r0, r0, r5
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_8120C84
     mov r7, #0
 loc_8120C84:
@@ -30581,7 +30581,7 @@ loc_812110E:
     ldr r0, [r4,r6]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_812111E
     sub r6, #4
     bge loc_812110E

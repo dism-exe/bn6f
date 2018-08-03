@@ -10,7 +10,7 @@
 // .global sub_802F114
 // .global sub_802F12C
 // .global sub_802F164
-// .global sub_802F168
+// .global zf_802F168
 // .global sub_802F1A8
 // .global sub_80301B2
 // .global sub_80301DC

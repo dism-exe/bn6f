@@ -64,7 +64,7 @@
 // .global sub_802F130
 // .global sub_802F148
 // .global sub_802F164
-// .global sub_802F168
+// .global zf_802F168
 // .global sub_802F238
 // .global sub_80301B2
 // .global sub_80301DC
@@ -109,8 +109,8 @@
 .include "asm37.inc"
 // .global sub_813D41C
 // .global loc_813D48C
-// .global sub_81407D8
-// .global sub_8140974
+// .global reqBBS_81407D8
+// .global reqBBS_8140974
 // .global sub_8143B88
 // .global sub_8143DBC
 // .global SWI_Div
@@ -128,7 +128,7 @@
 // .global sub_8001172
 // .global calcAngle_800117C
 // .global sub_8001850
-// .global sub_80018C2
+// .global draw_tiles
 // .global sprite_loadAnimationData_80026A4
 // .global anim_80026C4
 // .global sub_80026E4

@@ -51,7 +51,7 @@
 // .global sub_802F110
 // .global sub_802F12C
 // .global sub_802F164
-// .global sub_802F168
+// .global zf_802F168
 // .global sub_802F1A8
 // .global sub_802FE28
 // .global sub_802FF4C
@@ -94,7 +94,7 @@
 // .global sub_803EF60
 // .global sub_803EF74
 // .global sub_803EF7C
-// .global sub_803FD78
+// .global chatbox_803FD78
 // .global sub_803FD9C
 // .global chatbox_runScript
 // .global sub_8040818
@@ -259,7 +259,7 @@
 // .global sub_80017E0
 // .global sub_8001820
 // .global sub_800183C
-// .global sub_80018C2
+// .global draw_tiles
 // .global sub_80018D0
 // .global sub_80024A2
 // .global sub_800260C

@@ -59,17 +59,17 @@
 .global sub_813F9A0
 .global reqBBS_initMemory_813F9DA
 .global sub_81406FC
-.global sub_8140798
-.global sub_81407D8
-.global sub_81408B4
-.global sub_8140974
-.global sub_8140984
+.global reqBBS_getTotalPointsIndex
+.global reqBBS_81407D8
+.global reqBBS_81408B4
+.global reqBBS_8140974
+.global reqBBS_8140984
 .global sub_81409D0
 .global sub_81409E4
 .global sub_81409F4
 .global sub_8140A00
 .global sub_8140A0C
-.global sub_8140A5C
+.global reqBBS_runDialog_8140A70
 .global dword_8140C60
 .global dword_8140C68
 .global dword_8140C7C
@@ -244,7 +244,7 @@
 // .global sub_802F12C
 // .global sub_802F130
 // .global sub_802F164
-// .global sub_802F168
+// .global zf_802F168
 // .global sub_802F17E
 // .global loc_802F182
 // .global sub_802F1A8
@@ -339,7 +339,7 @@
 // .global sub_80017AA
 // .global sub_80017E0
 // .global sub_800183C
-// .global sub_80018C2
+// .global draw_tiles
 // .global sub_80018D0
 // .global sub_8002FA6
 // .global sub_8003A64

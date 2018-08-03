@@ -466,7 +466,7 @@ sub_80871C0:
     ldr r1, [pc, #0x80871d4-0x80871c6-2] // =dword_80871D8
     ldrh r1, [r1,r0]
     add r0, r1, #0
-    bl sub_802F168
+    bl zf_802F168
     pop {pc}
     .hword 0x0
 // <endpool> <endfile>

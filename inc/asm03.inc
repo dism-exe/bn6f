@@ -100,7 +100,7 @@
 .global sub_802F130
 .global sub_802F148
 .global sub_802F164
-.global sub_802F168
+.global zf_802F168
 .global sub_802F17E
 .global loc_802F182
 .global sub_802F1A8
@@ -262,7 +262,7 @@
 .global sub_803FCF0
 .global sub_803FD08
 .global chatbox_runScript_202da04
-.global sub_803FD78
+.global chatbox_803FD78
 .global sub_803FD9C
 .global loc_803FDA4
 .global sub_803FE08
@@ -391,8 +391,8 @@
 // .global sub_813E5DC
 // .global dword_813F380
 // .global sub_813F9A0
-// .global sub_8140798
-// .global sub_81408B4
+// .global reqBBS_getTotalPointsIndex
+// .global reqBBS_81408B4
 // .global sub_81421E0
 // .global sub_8142868
 // .global sub_81440D8
@@ -757,7 +757,7 @@
 // .global sub_8001850
 // .global sub_800187C
 // .global sub_8001890
-// .global sub_80018C2
+// .global draw_tiles
 // .global sub_80018D0
 // .global sub_80018E0
 // .global sub_8001930
@@ -922,7 +922,7 @@
 // .global sub_80103EC
 // .global sub_801086C
 // .global sub_80108FC
-// .global loc_80109A4
+// .global sub_80109A4
 // .global sub_8010DD0
 // .global sub_8011020
 // .global loc_8011268

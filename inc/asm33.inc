@@ -36,7 +36,7 @@
 // .global sub_802F12C
 // .global sub_802F130
 // .global sub_802F164
-// .global sub_802F168
+// .global zf_802F168
 // .global sub_802FE28
 // .global sub_8036E78
 // .global sub_803C28A
@@ -72,7 +72,7 @@
 // .global sub_803F524
 // .global sub_803F674
 // .global sub_803F798
-// .global sub_803FD78
+// .global chatbox_803FD78
 // .global sub_803FD9C
 // .global loc_803FDA4
 // .global sub_803FE08
@@ -252,7 +252,7 @@
 // .global sub_80017AA
 // .global sub_80017E0
 // .global sub_800183C
-// .global sub_80018C2
+// .global draw_tiles
 // .global sub_80018D0
 // .global sub_80024A2
 // .global sub_80035A2

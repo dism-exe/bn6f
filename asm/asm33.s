@@ -578,7 +578,7 @@ loc_812371A:
     mov r0, #1
     mov r1, #0
     bl sub_811B314
-    ldr r0, [pc, #0x8123770-0x8123726-2] // =0x181
+    ldr r0, [pc, #0x8123770-0x8123726-2] // =0x182
     bl sound_play
     mov r0, #0
     bl sub_8119118
@@ -780,7 +780,7 @@ loc_8123888:
     ldr r3, [pc, #0x8123a28-0x81238ba-2] // =unk_201BA20
     mov r4, #0x1e
     mov r5, #0x14
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_812386C
 
     mov r0, #9
@@ -789,7 +789,7 @@ loc_8123888:
     ldr r3, [pc, #0x8123a34-0x81238ca-2] // =unk_201BF20
     mov r4, #0x14
     mov r5, #0xd
-    bl sub_80018C2
+    bl draw_tiles
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_81238D8:    .word unk_201C220
@@ -905,7 +905,7 @@ sub_8123AB8:
     ldr r3, [pc, #0x8123b8c-0x8123ad6-2] // =unk_201D6E0
     mov r4, #8
     mov r5, #0xa
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_8123AB8
 
     ldrb r0, [r7,#0xc]
@@ -924,7 +924,7 @@ sub_8123AB8:
     ldr r3, [pc, #0x8123b90-0x8123afc-4] // =unk_201D7C0
     mov r4, #2
     mov r5, #0xa
-    bl sub_80018C2
+    bl draw_tiles
     ldrb r0, [r7,#0xc]
     ldr r1, [pc, #0x8123bb8-0x8123b08-4] // =unk_8123BBC
     ldrb r0, [r1,r0]
@@ -944,7 +944,7 @@ sub_8123AB8:
     ldr r3, [pc, #0x8123b9c-0x8123b28-4] // =unk_201D7F8
     mov r4, #2
     mov r5, #0xa
-    bl sub_80018C2
+    bl draw_tiles
     ldrb r0, [r7,#0xc]
     ldr r1, [pc, #0x8123bb8-0x8123b34-4] // =unk_8123BBC
     ldrb r0, [r1,r0]
@@ -953,7 +953,7 @@ sub_8123AB8:
     ldr r2, [pc, #0x8123ba8-0x8123b3c-4] // =unk_201D830
     mov r3, #0xb
     lsl r3, r3, #0xc
-    ldr r4, [pc, #0x8123bac-0x8123b42-2] // =0x214
+    ldr r4, [pc, #0x8123bac-0x8123b42-2] // =0x216
     orr r3, r4
     mov r5, #5
     bl sub_8120458
@@ -963,7 +963,7 @@ sub_8123AB8:
     ldr r3, [pc, #0x8123ba8-0x8123b52-2] // =unk_201D830
     mov r4, #1
     mov r5, #0xa
-    bl sub_80018C2
+    bl draw_tiles
     ldrb r0, [r7,#0xc]
     ldr r1, [pc, #0x8123bb8-0x8123b5e-2] // =unk_8123BBC
     ldrb r0, [r1,r0]
@@ -972,7 +972,7 @@ sub_8123AB8:
     ldr r2, [pc, #0x8123bb0-0x8123b66-2] // =unk_201D84C
     mov r3, #9
     lsl r3, r3, #0xc
-    ldr r4, [pc, #0x8123bb4-0x8123b6c-4] // =0x34C
+    ldr r4, [pc, #0x8123bb4-0x8123b6c-4] // =0x34F
     orr r3, r4
     mov r5, #5
     bl sub_81204C4
@@ -982,7 +982,7 @@ sub_8123AB8:
     ldr r3, [pc, #0x8123bb0-0x8123b7c-4] // =unk_201D84C
     mov r4, #2
     mov r5, #0xa
-    bl sub_80018C2
+    bl draw_tiles
     pop {r4-r7,pc}
 off_8123B88:    .word unk_201D220
 off_8123B8C:    .word unk_201D6E0
@@ -1154,7 +1154,7 @@ sub_8123C98:
     ldr r3, [pc, #0x8123ce4-0x8123cc8-4] // =unk_20347D8
     mov r4, #0xf
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
     ldrb r0, [r7,#0x14]
     mov r1, #9
     bl sub_80137B6
@@ -2006,7 +2006,7 @@ loc_81243CC:
     ldr r3, [pc, #0x8124498-0x81243fe-2] // =unk_201BA00
     mov r4, #0x1e
     mov r5, #0x14
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_81243B0
 
     pop {r4-r7,pc}
@@ -2040,7 +2040,7 @@ sub_81244EC:
     ldrh r1, [r5,#0x14]
     mov r3, #0x10
     mul r1, r3
-    ldr r2, [pc, #0x8124528-0x81244fc-4] // =0x2F
+    ldr r2, [pc, #0x8124528-0x81244fc-4] // =0x30
     add r1, r1, r2
     orr r0, r1
     ldr r1, [pc, #0x812452c-0x8124502-2] // =0x10002
@@ -2127,7 +2127,7 @@ loc_81245A4:
     ldr r3, [pc, #0x81245b8-0x81245aa-2] // =unk_201EBDC
     mov r4, #0xb
     mov r5, #6
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_8124588
 
 locret_81245B4:
@@ -2144,7 +2144,7 @@ sub_81245BC:
     ldr r3, [pc, #0x81245d0-0x81245c4-4] // =unk_201EC2C
     mov r4, #8
     mov r5, #0xc
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_81245BC
 
     pop {r4-r7,pc}
@@ -2382,7 +2382,7 @@ sub_812475C:
     ldr r3, [pc, #0x81247e0-0x812476e-2] // =unk_201EC8C
     mov r4, #8
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
     b loc_812478A
 loc_812477A:
     mov r0, #0x15
@@ -2405,7 +2405,7 @@ loc_812478A:
     ldr r3, [pc, #0x81247e4-0x812479a-2] // =unk_201ECAC
     mov r4, #8
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
     b loc_81247B6
 loc_81247A6:
     mov r0, #0x15
@@ -2425,7 +2425,7 @@ loc_81247B6:
     ldr r3, [pc, #0x81247e8-0x81247c2-2] // =unk_201ECCC
     mov r4, #8
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
     b locret_81247DE
 loc_81247CE:
     mov r0, #0x15
@@ -3521,7 +3521,7 @@ sub_81252C0:
     ldr r3, [pc, #0x8125378-0x81252ea-2] // =unk_201BA20
     mov r4, #0x1e
     mov r5, #0x14
-    bl sub_80018C2
+    bl draw_tiles
     ldr r0, [r7,#0x74]
     sub r0, #0x95
     mov r1, #2
@@ -3529,7 +3529,7 @@ sub_81252C0:
     ldr r3, [pc, #0x8125384-0x81252fc-4] // =unk_201BF20
     mov r4, #0x5b 
     mov r5, #0x11
-    bl sub_80018C2
+    bl draw_tiles
     pop {r4-r7,pc}
     .word 0xFFFFFFFF
 off_812530C:    .word dword_8125310
@@ -3588,7 +3588,7 @@ sub_812546C:
     ldr r3, [pc, #0x81254e8-0x8125478-4] // =dword_812489C
     mov r4, #9
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_812546C
 
     ldr r0, [r7,#0x74]
@@ -3598,7 +3598,7 @@ sub_812546C:
     ldr r3, [pc, #0x81254ec-0x812548a-2] // =dword_812489C+36
     mov r4, #9
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
     ldr r0, [r7,#0x74]
     sub r0, #0x70 
     mov r1, #2
@@ -3606,7 +3606,7 @@ sub_812546C:
     ldr r3, [pc, #0x81254f0-0x812549c-4] // =dword_812489C+72
     mov r4, #9
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
     ldr r0, [r7,#0x64]
     tst r0, r0
     bne loc_81254C0
@@ -3617,7 +3617,7 @@ sub_812546C:
     ldr r3, [pc, #0x81254f8-0x81254b4-4] // =dword_812489C+144
     mov r4, #9
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
     b locret_81254E4
 loc_81254C0:
     ldr r0, [r7,#0x74]
@@ -3627,7 +3627,7 @@ loc_81254C0:
     ldr r3, [pc, #0x81254f4-0x81254c8-4] // =dword_812489C+108
     mov r4, #9
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
     ldr r0, [r7,#0x74]
     sub r0, #0x4c 
     mov r1, #2
@@ -3635,7 +3635,7 @@ loc_81254C0:
     ldr r3, [pc, #0x81254f8-0x81254da-2] // =dword_812489C+144
     mov r4, #9
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
 locret_81254E4:
     pop {r5,pc}
     .balign 4, 0x00
@@ -4178,7 +4178,7 @@ off_81258E4:    .word 0x100
 .thumb_func
 sub_81258E8:
     push {lr}
-    ldr r0, [pc, #0x81258f4-0x81258ea-2] // =0x78
+    ldr r0, [pc, #0x81258f4-0x81258ea-2] // =0x7A
     bl sound_play
     pop {pc}
     .balign 4, 0x00
@@ -4220,7 +4220,7 @@ loc_8125908:
     ldr r3, [pc, #0x8125cf8-0x8125930-4] // =0x1E20
     add r3, r3, r4
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8125944
     strh r4, [r6]
     mov r0, #0
@@ -4230,7 +4230,7 @@ loc_8125944:
     ldr r3, [pc, #0x8125d04-0x8125944-4] // =0x2220
     add r3, r3, r4
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8125958
     strh r4, [r6]
     mov r0, #1
@@ -4240,7 +4240,7 @@ loc_8125958:
     ldr r3, [pc, #0x8125d00-0x8125958-4] // =0x2020
     add r3, r3, r4
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8125978
     strh r4, [r6]
     mov r0, #0x17
@@ -4255,7 +4255,7 @@ loc_8125976:
     strb r0, [r6,#2]
 loc_8125978:
     add r4, #1
-    ldr r0, [pc, #0x8125990-0x812597a-2] // =0x13C
+    ldr r0, [pc, #0x8125990-0x812597a-2] // =0x13F
     cmp r4, r0
     ble loc_8125908
     add r0, r5, #0
@@ -4301,7 +4301,7 @@ loc_81259A6:
     ldr r3, [pc, #0x8125cf8-0x81259cc-4] // =0x1E20
     add r3, r3, r4
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_81259E4
     add r5, #1
     strh r4, [r2]
@@ -4313,7 +4313,7 @@ loc_81259E4:
     ldr r3, [pc, #0x8125d04-0x81259e4-4] // =0x2220
     add r3, r3, r4
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_81259FC
     add r5, #1
     strh r4, [r2]
@@ -4325,7 +4325,7 @@ loc_81259FC:
     ldr r3, [pc, #0x8125d00-0x81259fc-4] // =0x2020
     add r3, r3, r4
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8125A26
     add r5, #1
     strh r4, [r2]
@@ -4345,7 +4345,7 @@ loc_8125A1C:
     add r6, #4
 loc_8125A26:
     add r4, #1
-    ldr r0, [pc, #0x8125cfc-0x8125a28-4] // =0x13C
+    ldr r0, [pc, #0x8125cfc-0x8125a28-4] // =0x13F
     cmp r4, r0
     ble loc_81259A6
     ldr r6, [pc, #0x8125a60-0x8125a2e-2] // =dword_201E420
@@ -4372,7 +4372,7 @@ loc_8125A4C:
 loc_8125A52:
     add r6, #4
     add r4, #1
-    ldr r0, [pc, #0x8125cfc-0x8125a56-2] // =0x13C
+    ldr r0, [pc, #0x8125cfc-0x8125a56-2] // =0x13F
     cmp r4, r0
     blt loc_8125A34
     add r0, r5, #0
@@ -4413,7 +4413,7 @@ loc_8125A7E:
     ldr r3, [pc, #0x8125cf8-0x8125a9c-4] // =0x1E20
     add r3, r3, r4
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8125AB4
     add r5, #1
     strh r4, [r2]
@@ -4425,7 +4425,7 @@ loc_8125AB4:
     ldr r3, [pc, #0x8125d04-0x8125ab4-4] // =0x2220
     add r3, r3, r4
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8125ACC
     add r5, #1
     strh r4, [r2]
@@ -4437,7 +4437,7 @@ loc_8125ACC:
     ldr r3, [pc, #0x8125d00-0x8125acc-4] // =0x2020
     add r3, r3, r4
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8125AF6
     add r5, #1
     strh r4, [r2]
@@ -4457,7 +4457,7 @@ loc_8125AEC:
     add r6, #4
 loc_8125AF6:
     add r4, #1
-    ldr r0, [pc, #0x8125cfc-0x8125af8-4] // =0x13C
+    ldr r0, [pc, #0x8125cfc-0x8125af8-4] // =0x13F
     cmp r4, r0
     ble loc_8125A7E
     ldr r6, [pc, #0x8125b30-0x8125afe-2] // =dword_201EC20
@@ -4484,7 +4484,7 @@ loc_8125B1C:
 loc_8125B22:
     add r6, #4
     add r4, #1
-    ldr r0, [pc, #0x8125cfc-0x8125b26-2] // =0x13C
+    ldr r0, [pc, #0x8125cfc-0x8125b26-2] // =0x13F
     cmp r4, r0
     blt loc_8125B04
     add r0, r5, #0
@@ -4525,7 +4525,7 @@ loc_8125B4E:
     ldr r3, [pc, #0x8125cf8-0x8125b6c-4] // =0x1E20
     add r3, r3, r4
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8125B84
     add r5, #1
     strh r4, [r2]
@@ -4537,7 +4537,7 @@ loc_8125B84:
     ldr r3, [pc, #0x8125d04-0x8125b84-4] // =0x2220
     add r3, r3, r4
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8125B9C
     add r5, #1
     strh r4, [r2]
@@ -4549,7 +4549,7 @@ loc_8125B9C:
     ldr r3, [pc, #0x8125d00-0x8125b9c-4] // =0x2020
     add r3, r3, r4
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8125BC0
     add r5, #1
     strh r4, [r2]
@@ -4566,7 +4566,7 @@ loc_8125BBC:
     add r6, #4
 loc_8125BC0:
     add r4, #1
-    ldr r0, [pc, #0x8125cfc-0x8125bc2-2] // =0x13C
+    ldr r0, [pc, #0x8125cfc-0x8125bc2-2] // =0x13F
     cmp r4, r0
     ble loc_8125B4E
     ldr r6, [pc, #0x8125bfc-0x8125bc8-4] // =dword_201F420
@@ -4593,7 +4593,7 @@ loc_8125BE6:
 loc_8125BEC:
     add r6, #4
     add r4, #1
-    ldr r0, [pc, #0x8125cfc-0x8125bf0-4] // =0x13C
+    ldr r0, [pc, #0x8125cfc-0x8125bf0-4] // =0x13F
     cmp r4, r0
     blt loc_8125BCE
     add r0, r5, #0
@@ -4632,7 +4632,7 @@ loc_8125C1A:
     ldr r3, [pc, #0x8125d0c-0x8125c32-2] // =0x1F60
     add r3, r3, r4
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8125C4E
     add r5, #1
     ldr r3, [pc, #0x8125cf4-0x8125c40-4] // =0x140
@@ -4650,7 +4650,7 @@ loc_8125C4E:
     sub r1, r1, r0
     add r3, r3, r1
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8125C72
     add r5, #1
     ldr r3, [pc, #0x8125cf4-0x8125c64-4] // =0x140
@@ -4668,7 +4668,7 @@ loc_8125C72:
     sub r1, r1, r0
     add r3, r3, r1
     add r0, r3, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8125CAA
     add r5, #1
     ldr r3, [pc, #0x8125cf4-0x8125c88-4] // =0x140
@@ -4718,7 +4718,7 @@ loc_8125CD0:
 loc_8125CD6:
     add r6, #4
     add r4, #1
-    ldr r0, [pc, #0x8125cf0-0x8125cda-2] // =0x13C
+    ldr r0, [pc, #0x8125cf0-0x8125cda-2] // =0x13F
     cmp r4, r0
     blt loc_8125CB8
     add r0, r5, #0
@@ -5375,7 +5375,7 @@ sub_812625C:
     add r3, r2, #0
     mov r2, #2
     mov r4, #3
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_812625C
 
     pop {r4-r7,pc}
@@ -5619,7 +5619,7 @@ loc_8126420:
     mov r2, #2
     mov r4, #8
     add r5, r6, #0
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_8126404
 
 locret_812642E:
@@ -5680,7 +5680,7 @@ sub_8126484:
     mov r2, #2
     mov r4, #2
     mov r5, #0xe
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_8126484
 
     pop {r4-r7,pc}
@@ -5738,7 +5738,7 @@ sub_81264E4:
     mov r2, #2
     mov r4, #3
     mov r5, #0xe
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_81264E4
 
     pop {r4-r7,pc}
@@ -5847,7 +5847,7 @@ loc_812658E:
     mul r2, r3
     add r1, r1, r2
     orr r0, r1
-    ldr r1, [pc, #0x81265d0-0x8126596-2] // =0x0
+    ldr r1, [pc, #0x81265d0-0x8126596-2] // =0x2
     ldr r2, [sp,#8]
     ldrb r2, [r5,r2]
     str r2, [sp,#0x14]
@@ -6379,7 +6379,7 @@ sub_8126B6C:
     strh r0, [r5,#0x3a]
     mov r0, #0xff
     strh r0, [r5,#0x26]
-    ldr r0, [pc, #0x8126cac-0x8126bcc-4] // =0x1D8
+    ldr r0, [pc, #0x8126cac-0x8126bcc-4] // =0x1DA
     strh r0, [r5,#0x32]
     mov r0, #1
     strh r0, [r5,#0x38]
@@ -6937,7 +6937,7 @@ sub_8127060:
     ldr r3, [pc, #0x8127198-0x812706a-2] // =unk_201BA20
     mov r4, #0x1e
     mov r5, #0x14
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_8127060
 
     mov r2, #0xd
@@ -6949,7 +6949,7 @@ sub_8127060:
     ldr r3, [pc, #0x81271a4-0x8127080-4] // =unk_201CF20
     mov r4, #0xe
     mov r5, #0xa
-    bl sub_80018C2
+    bl draw_tiles
     mov r2, #0xd
     ldrsb r0, [r7,r2]
     mov r1, #0x22 
@@ -6959,7 +6959,7 @@ sub_8127060:
     ldr r3, [pc, #0x81271b0-0x8127096-2] // =unk_201D120
     mov r4, #0xe
     mov r5, #0xa
-    bl sub_80018C2
+    bl draw_tiles
     mov r2, #0xd
     ldrsb r0, [r7,r2]
     mov r1, #0x30 
@@ -6969,7 +6969,7 @@ sub_8127060:
     ldr r3, [pc, #0x81271bc-0x81270ac-4] // =unk_201D320
     mov r4, #0xd
     mov r5, #0xa
-    bl sub_80018C2
+    bl draw_tiles
     mov r2, #0xd
     ldrsb r0, [r7,r2]
     mov r1, #1
@@ -6979,7 +6979,7 @@ sub_8127060:
     ldr r3, [pc, #0x81271c8-0x81270c2-2] // =unk_201D520
     mov r4, #0xc
     mov r5, #8
-    bl sub_80018C2
+    bl draw_tiles
     pop {r4-r7,pc}
     .byte 0, 0
 .func
@@ -7288,7 +7288,7 @@ sub_81273F0:
     ldr r3, [pc, #0x8127418-0x812740a-2] // =dword_81268F8+536
     mov r4, #3
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
 locret_8127414:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -7565,7 +7565,7 @@ sub_81275A8:
     ldr r3, [pc, #0x81275c4-0x81275b6-2] // =dword_81268F8+56
     mov r4, #0xb
     mov r5, #8
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_81275A8
 
     pop {r4-r7,pc}
@@ -7624,7 +7624,7 @@ sub_8127618:
     ldr r3, [pc, #0x8127634-0x8127628-4] // =dword_81268F8+232
     mov r4, #0xb
     mov r5, #6
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_8127618
 
     pop {r4-r7,pc}
@@ -7866,7 +7866,7 @@ sub_81277E0:
     ldr r3, [pc, #0x81277fc-0x81277ee-2] // =dword_81268F8+408
     mov r4, #8
     mov r5, #8
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_81277E0
 
     pop {r4-r7,pc}
@@ -7883,13 +7883,13 @@ loc_8127806:
     ldr r0, [r1,r6]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_812781E
     ldr r1, [pc, #0x8127878-0x8127812-2] // =off_812787C
     ldr r0, [r1,r6]
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8127828
 loc_812781E:
     mov r0, #0
@@ -7979,9 +7979,9 @@ sub_8127944:
     mov r1, #0xd
     ldrsb r0, [r5,r1]
     lsl r0, r0, #3
-    ldr r1, [pc, #0x8127970-0x812794c-4] // =0x224
+    ldr r1, [pc, #0x8127970-0x812794c-4] // =0x22A
     add r0, r0, r1
-    ldr r1, [pc, #0x8127974-0x8127950-4] // =0x6D
+    ldr r1, [pc, #0x8127974-0x8127950-4] // =0x6E
     mov r2, #0
     mov r3, #0x48 
     ldr r4, [pc, #0x8127964-0x8127956-2] // =dword_81268F8+20
@@ -8033,7 +8033,7 @@ loc_81279B6:
     add r0, r0, r1
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_81279DC
     mov r3, #4
     mul r3, r6
@@ -8437,7 +8437,7 @@ loc_8127D08:
 loc_8127D28:
     mov r4, #0x1e
     mov r5, #0x14
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_8127CB8
 
     add sp, sp, #4
@@ -8538,14 +8538,14 @@ sub_8127EF4:
     mov r4, #0
 loc_8127EFA:
     add r0, r6, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8127F3A
     ldr r1, [pc, #0x8127f48-0x8127f02-2] // =0x1CA0
     sub r0, r6, r1
     ldr r7, [pc, #0x8127f4c-0x8127f06-2] // =0x1D20
     add r7, r7, r0
     add r0, r7, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_8127F3A
     ldr r1, [pc, #0x8127f48-0x8127f12-2] // =0x1CA0
     sub r0, r6, r1
@@ -8627,7 +8627,7 @@ sub_8127F90:
     ldr r2, [pc, #0x8127fdc-0x8127f9a-2] // =0x18
     add r1, r1, r2
     orr r0, r1
-    ldr r1, [pc, #0x8127fe0-0x8127fa0-4] // =0x0
+    ldr r1, [pc, #0x8127fe0-0x8127fa0-4] // =0x3
     ldrb r2, [r5,#0xf]
     ldr r3, [pc, #0x8127fcc-0x8127fa4-4] // =dword_8127978
     ldr r4, [pc, #0x8127fd0-0x8127fa6-2] // =0x40000000
@@ -8876,7 +8876,7 @@ sub_812818C:
     add r0, r0, r1
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_81281AE
     ldr r4, [pc, #0x81281bc-0x81281ac-4] // =0x8000
 loc_81281AE:
@@ -8901,7 +8901,7 @@ sub_81281C0:
     ldr r3, [pc, #0x81281dc-0x81281ce-2] // =unk_2026700
     mov r4, #0x17
     mov r5, #8
-    bl sub_80018C2
+    bl draw_tiles
 locret_81281D8:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -9020,7 +9020,7 @@ loc_812828C:
     add r0, r0, r1
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_81282AC
     add r0, r5, #0
     bl sub_81282C0
@@ -9124,7 +9124,7 @@ loc_8128364:
     add r0, r0, r1
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_812837E
     sub r4, #1
     bgt loc_8128364
@@ -9280,7 +9280,7 @@ sub_812848C:
     ldr r3, [pc, #0x81284a0-0x8128494-4] // =unk_2028590
     mov r4, #8
     mov r5, #0xb
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_812848C
 
     pop {r4,r5,pc}
@@ -9651,7 +9651,7 @@ loc_8128918:
     ldr r3, [pc, #0x8128994-0x8128940-4] // =unk_201BA00
     mov r4, #0x1e
     mov r5, #0x14
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_81288FC
 
     pop {r4-r7,pc}
@@ -9672,7 +9672,7 @@ off_8128994:    .word unk_201BA00
 sub_81289C4:
     push {r4-r7,lr}
     ldr r0, [pc, #0x8128a24-0x81289c6-2] // =word_201BF00
-    ldr r1, [pc, #0x8128a28-0x81289c8-4] // =0xDC
+    ldr r1, [pc, #0x8128a28-0x81289c8-4] // =0xDE
     bl sub_80008B4
     mov r6, #0
     mov r4, #0
@@ -9866,7 +9866,7 @@ sub_8128B34:
     ldr r3, [pc, #0x8128b48-0x8128b3c-4] // =unk_201C040
     mov r4, #0x17
     mov r5, #8
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_8128B34
 
     pop {r4-r7,pc}
@@ -9949,7 +9949,7 @@ loc_8128BB8:
 loc_8128BDC:
     add r1, r0, #0
     ldr r0, [pc, #0x8128be8-0x8128bde-2] // =unk_201C1B0
-    bl sub_803FD78
+    bl chatbox_803FD78
 locret_8128BE4:
     pop {pc}
     .balign 4, 0x00
@@ -10329,7 +10329,7 @@ sub_8128F10:
     ldr r3, [pc, #0x8128f78-0x8128f18-4] // =unk_201BB60
     mov r4, #0xf
     mov r5, #0x14
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_8128F10
 
     mov r0, #0
@@ -10338,7 +10338,7 @@ sub_8128F10:
     ldr r3, [pc, #0x8128f84-0x8128f28-4] // =unk_201BDF8
     mov r4, #0x1e
     mov r5, #0x14
-    bl sub_80018C2
+    bl draw_tiles
     pop {r4-r7,pc}
 off_8128F34:    .word dword_8128F38
 dword_8128F38:    .word 0x886DD59C, 0x6008020, 0x2013A00, 0x886D6618, 0x6000020
@@ -10490,7 +10490,7 @@ loc_81290C8:
     ldr r3, [pc, #0x81290fc-0x81290e0-4] // =unk_813565C
     mov r4, #0xa
     mov r5, #6
-    bl sub_80018C2
+    bl draw_tiles
 locret_81290EA:
     pop {r4-r7,pc}
 off_81290EC:    .word unk_201C2F8
@@ -10507,7 +10507,7 @@ sub_8129104:
     str r1, [sp]
     add r7, r0, #0
     add r7, #0x16
-    ldr r3, [pc, #0x8129138-0x812910e-2] // =0x1C1
+    ldr r3, [pc, #0x8129138-0x812910e-2] // =0x1C2
     add r7, r7, r3
     mov r1, #0x1e
     add r4, r7, r1
@@ -14445,7 +14445,7 @@ sub_812AFB0:
     ldr r3, [pc, #0x812b0cc-0x812afb8-4] // =unk_201FDA0
     mov r4, #0x1e
     mov r5, #0x14
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_812AFB0
 
     bl sub_812B4AC
@@ -14460,7 +14460,7 @@ sub_812AFC8:
     ldr r3, [pc, #0x812b0c0-0x812afd0-4] // =unk_201D120
     mov r4, #0x1e
     mov r5, #0x14
-    bl sub_80018C2
+    bl draw_tiles
 .endfunc // sub_812AFC8
 
     bl sub_812B430
@@ -14984,14 +14984,14 @@ sub_812B430:
     ldr r3, [pc, #0x812b4a4-0x812b470-4] // =dword_8129184+4
     mov r4, #0xa
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
     mov r0, #0x11
     mov r1, #6
     mov r2, #2
     ldr r3, [pc, #0x812b4a8-0x812b480-4] // =dword_8129184+44
     mov r4, #0xa
     mov r5, #2
-    bl sub_80018C2
+    bl draw_tiles
     pop {r4-r7,pc}
 off_812B48C:    .word unk_201BA20
 off_812B490:    .word dword_86B7AE0
@@ -15387,7 +15387,7 @@ sub_812B7C4:
     ldr r0, [r0,#0x40]
     ldrh r1, [r0,#8]
     add r1, #1
-    ldr r2, [pc, #0x812b7fc-0x812b7d4-4] // =0x3E0
+    ldr r2, [pc, #0x812b7fc-0x812b7d4-4] // =0x3E7
     cmp r1, r2
     bgt locret_812B7DC
     strh r1, [r0,#8]
@@ -15407,7 +15407,7 @@ sub_812B7E0:
     ldr r0, [r0,#0x40]
     ldrh r1, [r0,#0xa]
     add r1, #1
-    ldr r2, [pc, #0x812b7fc-0x812b7f0-4] // =0x3E0
+    ldr r2, [pc, #0x812b7fc-0x812b7f0-4] // =0x3E7
     cmp r1, r2
     bgt locret_812B7F8
     strh r1, [r0,#0xa]
@@ -16038,19 +16038,19 @@ loc_812BCA8:
     add r0, r0, r6
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_812BCDA
     ldr r0, [pc, #0x812bd28-0x812bcc2-2] // =0x1E20
     add r0, r0, r6
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     bne loc_812BCDA
     ldr r0, [pc, #0x812bd2c-0x812bcce-2] // =0x2220
     add r0, r0, r6
 // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F168
+    bl zf_802F168
     beq loc_812BCE4
 loc_812BCDA:
     add r6, #1
@@ -16519,7 +16519,7 @@ sub_812C0EC:
     beq loc_812C104
     ldr r0, [pc, #0x812c18c-0x812c0fa-2] // =unk_2034400
     bl sub_812C21C
-    ldr r1, [pc, #0x812c184-0x812c100-4] // =0x2F
+    ldr r1, [pc, #0x812c184-0x812c100-4] // =0x30
     b loc_812C10C
 loc_812C104:
     ldr r0, [pc, #0x812c18c-0x812c104-4] // =unk_2034400
@@ -16545,7 +16545,7 @@ sub_812C11C:
     ldrb r1, [r5,#0x12]
     tst r1, r1
     beq loc_812C12E
-    ldr r1, [pc, #0x812c184-0x812c12a-2] // =0x2F
+    ldr r1, [pc, #0x812c184-0x812c12a-2] // =0x30
     b loc_812C130
 loc_812C12E:
     ldr r1, [pc, #0x812c180-0x812c12e-2] // =0x48
@@ -16590,7 +16590,7 @@ sub_812C160:
     ldrb r1, [r5,#0x12]
     tst r1, r1
     beq loc_812C172
-    ldr r2, [pc, #0x812c184-0x812c170-4] // =0x2F
+    ldr r2, [pc, #0x812c184-0x812c170-4] // =0x30
 loc_812C172:
     ldr r1, [r5,#0x40]
     add r1, #8
