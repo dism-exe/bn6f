@@ -5,23 +5,18 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
-// .global sub_802F110
-// .global sub_802F114
-// .global sub_802F12C
-// .global sub_802F164
-// .global zf_802F168
-// .global sub_802F1A8
-// .global sub_80301B2
-// .global sub_80301DC
-// .global sub_8036E90
-// .global sub_8046818
-// .global sub_8046854
-// .global sub_80468BA
-// .global sub_80468C6
-
 .include "asm32.inc"
 // .global sub_811EBE0
+
+.include "asm37.inc"
+// .global sub_81409E4
+// .global sub_8140A00
+// .global sub_8140A0C
+// .global dword_81434E4
+// .global dword_81434E4
+// .global dword_81434E4
+// .global dword_81434E4
+// .global dword_81434E4
 
 .include "asm28.inc"
 // .global sub_809E13C
@@ -42,16 +37,6 @@
 // .global sub_809E3B2
 // .global sub_809E3C4
 
-.include "asm37.inc"
-// .global sub_81409E4
-// .global sub_8140A00
-// .global sub_8140A0C
-// .global dword_81434E4
-// .global dword_81434E4
-// .global dword_81434E4
-// .global dword_81434E4
-// .global dword_81434E4
-
 .include "asm00.inc"
 // .global sound_play
 // .global CpuSet_ZeroFillWord
@@ -67,6 +52,23 @@
 // .global sub_80039D4
 // .global sub_80047E0
 // .global engine_isScreeneffectAnimating
+
+.include "asm03_0.inc"
+// .global sub_802F110
+// .global sub_802F114
+// .global sub_802F12C
+// .global sub_802F164
+// .global zf_802F168
+// .global sub_802F1A8
+// .global sub_80301B2
+// .global sub_80301DC
+// .global sub_8036E90
+
+.include "asm03_1.inc"
+// .global sub_8046818
+// .global sub_8046854
+// .global sub_80468BA
+// .global sub_80468C6
 
 
 /* Undeclared Symbols */

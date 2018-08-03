@@ -32,7 +32,7 @@ sub_8062AB0:
     ldr r0, [pc, #0x8062b18-0x8062aee-2] // =off_8062B1C
     ldr r0, [r0,r1]
     bl sub_8002906
-    bl sub_803FD08
+    bl chatbox_uncomp_803FD08
     bl sub_8062BCC
     ldr r0, [pc, #0x8062b14-0x8062afe-2] // =off_8063008
     ldrb r1, [r5,#5]

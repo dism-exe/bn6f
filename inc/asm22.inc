@@ -5,15 +5,15 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
+.include "asm37.inc"
+// .global sub_81409F4
+
+.include "asm03_0.inc"
 // .global sub_802F110
 // .global sub_802F12C
 // .global sub_802F164
 // .global zf_802F168
 // .global sub_8036E90
-
-.include "asm37.inc"
-// .global sub_81409F4
 
 .include "asm00.inc"
 // .global sub_800060A

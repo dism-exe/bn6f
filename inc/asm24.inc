@@ -5,27 +5,8 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
-// .global sub_802F110
-// .global sub_802F114
-// .global sub_802F12C
-// .global sub_802F164
-// .global zf_802F168
-// .global loc_802F1AC
-// .global loc_802F200
-// .global sub_80302A8
-// .global sub_8036E90
-// .global sub_8048F88
-
 .include "asm32.inc"
 // .global sub_811EBE0
-
-.include "asm28.inc"
-// .global sub_809E13C
-// .global sub_809E188
-// .global sub_809E1AE
-// .global sub_809E2AE
-// .global sub_809E2B8
 
 .include "asm37.inc"
 // .global sub_81409E4
@@ -36,6 +17,13 @@
 // .global sub_8142D4C
 // .global sub_8143294
 
+.include "asm28.inc"
+// .global sub_809E13C
+// .global sub_809E188
+// .global sub_809E1AE
+// .global sub_809E2AE
+// .global sub_809E2B8
+
 .include "asm00.inc"
 // .global sound_play
 // .global sub_8000672
@@ -44,6 +32,20 @@
 // .global sub_800151C
 // .global sub_80047E0
 // .global sub_8005D88
+
+.include "asm03_0.inc"
+// .global sub_802F110
+// .global sub_802F114
+// .global sub_802F12C
+// .global sub_802F164
+// .global zf_802F168
+// .global loc_802F1AC
+// .global loc_802F200
+// .global sub_80302A8
+// .global sub_8036E90
+
+.include "asm03_1.inc"
+// .global sub_8048F88
 
 
 /* Undeclared Symbols */

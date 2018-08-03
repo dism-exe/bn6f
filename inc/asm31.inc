@@ -115,39 +115,6 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
-// .global ho_8026554
-// .global sub_802B6EC
-// .global loc_802B734
-// .global off_802CCB4
-// .global off_802CD5C
-// .global sub_802CDE6
-// .global sub_802CE30
-// .global sub_802CE78
-// .global sub_802CE8A
-// .global sub_802CEA6
-// .global sub_802D234
-// .global sub_802D246
-// .global sub_802D26A
-// .global loc_802D322
-// .global loc_802D4C6
-// .global sub_802DD2A
-// .global sub_802E032
-// .global sub_802E04E
-// .global sub_802E070
-// .global sub_802E1BE
-// .global sub_802E4B8
-// .global sub_802E4E4
-// .global sub_802EF5C
-// .global sub_802F068
-// .global sub_80302A8
-// .global chatbox_runScript
-// .global sub_8045F3C
-// .global sub_80465BC
-// .global sub_80465F8
-// .global sub_8046664
-// .global sub_8046670
-
 .include "start.inc"
 // .global start_
 // .global dword_8000004
@@ -613,6 +580,43 @@
 // .global sub_801DF8C
 // .global sub_801E658
 // .global sub_801EB18
+
+.include "asm03_0.inc"
+// .global ho_8026554
+// .global sub_802B6EC
+// .global loc_802B734
+// .global off_802CCB4
+// .global off_802CD5C
+// .global sub_802CDE6
+// .global sub_802CE30
+// .global sub_802CE78
+// .global sub_802CE8A
+// .global sub_802CEA6
+// .global sub_802D234
+// .global sub_802D246
+// .global sub_802D26A
+// .global loc_802D322
+// .global loc_802D4C6
+// .global sub_802DD2A
+// .global sub_802E032
+// .global sub_802E04E
+// .global sub_802E070
+// .global sub_802E1BE
+// .global sub_802E4B8
+// .global sub_802E4E4
+// .global sub_802EF5C
+// .global sub_802F068
+// .global sub_80302A8
+
+.include "chatbox.inc"
+// .global chatbox_runScript
+// .global sub_8045F3C
+
+.include "asm03_1.inc"
+// .global sub_80465BC
+// .global sub_80465F8
+// .global sub_8046664
+// .global sub_8046670
 
 
 /* Undeclared Symbols */

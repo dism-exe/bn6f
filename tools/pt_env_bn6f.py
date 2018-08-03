@@ -26,7 +26,9 @@ pt.env(gameFiles={
     'bin01.bin':      (0x8020354, 0x8021AA4), # 0x1750
     'asm02.s':        (0x8021AA4, 0x8021DA8),
     'bin02.bin':      (0x8021DA8, 0x8026450), # 0x46A8
-    'asm03.s':        (0x8026450, 0x804CFBC),
+    'asm03_0.s':      (0x8026450, 0x803FD08),
+    'chatbox.s':      (0x803FD08, 0x8045F8C),
+    'asm03_1.s':      (0x8045F8C, 0x804CFBC),
     'bin03.bin':      (0x804CFBC, 0x804E62C), # 0x1670
     'asm04.s':        (0x804E62C, 0x804E74C),
     'bin04.bin':      (0x804E74C, 0x8052688), # 0x3F3C

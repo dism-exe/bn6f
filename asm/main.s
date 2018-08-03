@@ -22,7 +22,7 @@ main_gameRoutine:
     bl render_80015D0
     bl main_static_80003E4
     mov r0, r10
-    ldr r0, [r0,#0x24]
+    ldr r0, [r0,#0x24] // Toolkit.currFrame
     ldrh r1, [r0]
     add r1, #1
     strh r1, [r0]

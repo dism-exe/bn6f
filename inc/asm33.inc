@@ -21,85 +21,6 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
-// .global sub_802B2A0
-// .global sub_802B358
-// .global sub_802B438
-// .global sub_802B4D4
-// .global sub_802B51C
-// .global sub_802D27C
-// .global sub_802D280
-// .global sub_802D28C
-// .global sub_802D2AC
-// .global sub_802F110
-// .global sub_802F114
-// .global sub_802F12C
-// .global sub_802F130
-// .global sub_802F164
-// .global zf_802F168
-// .global sub_802FE28
-// .global sub_8036E78
-// .global sub_803C28A
-// .global sub_803C59C
-// .global sub_803C604
-// .global sub_803C612
-// .global sub_803C620
-// .global sub_803C754
-// .global sub_803CB00
-// .global sub_803CB0C
-// .global sub_803CB18
-// .global sub_803CE08
-// .global sub_803CE28
-// .global sub_803DCD8
-// .global sub_803DCE8
-// .global sub_803DD60
-// .global sub_803DDA4
-// .global sub_803DE24
-// .global sub_803DE88
-// .global sub_803DEAC
-// .global sub_803E8F8
-// .global sub_803EA50
-// .global sub_803EA60
-// .global sub_803EA70
-// .global loc_803EA78
-// .global sub_803EAE4
-// .global sub_803EBAC
-// .global sub_803EBF4
-// .global sub_803EF60
-// .global sub_803EF74
-// .global sub_803EF7C
-// .global sub_803F4EC
-// .global sub_803F524
-// .global sub_803F674
-// .global sub_803F798
-// .global chatbox_803FD78
-// .global sub_803FD9C
-// .global loc_803FDA4
-// .global sub_803FE08
-// .global sub_803FE10
-// .global sub_8040818
-// .global sub_8045F1C
-// .global sub_8045F2C
-// .global sub_8045F3C
-// .global sub_8045F4C
-// .global render_graphicalText_8045F8C
-// .global sub_80465A0
-// .global sub_80465BC
-// .global sub_80465F8
-// .global sub_8046664
-// .global sub_8046670
-// .global sub_8046696
-// .global sub_80466C4
-// .global sub_8048F9C
-// .global sub_8048FC4
-// .global cb_8048FD4
-// .global sub_8049D42
-// .global sub_8049D7C
-// .global sub_8049D98
-// .global sub_8049DA0
-// .global sub_8049DC4
-// .global sub_8049DDC
-
 .include "start.inc"
 // .global start_800027C
 // .global start_8000288
@@ -252,7 +173,7 @@
 // .global sub_80017AA
 // .global sub_80017E0
 // .global sub_800183C
-// .global draw_tiles
+// .global drawTiles
 // .global sub_80018D0
 // .global sub_80024A2
 // .global sub_80035A2
@@ -274,6 +195,89 @@
 // .global sub_80137B6
 // .global sub_80137E6
 // .global sub_80137FE
+
+.include "asm03_0.inc"
+// .global sub_802B2A0
+// .global sub_802B358
+// .global sub_802B438
+// .global sub_802B4D4
+// .global sub_802B51C
+// .global sub_802D27C
+// .global sub_802D280
+// .global sub_802D28C
+// .global sub_802D2AC
+// .global sub_802F110
+// .global sub_802F114
+// .global sub_802F12C
+// .global sub_802F130
+// .global sub_802F164
+// .global zf_802F168
+// .global sub_802FE28
+// .global sub_8036E78
+// .global sub_803C28A
+// .global sub_803C59C
+// .global sub_803C604
+// .global sub_803C612
+// .global sub_803C620
+// .global sub_803C754
+// .global sub_803CB00
+// .global sub_803CB0C
+// .global sub_803CB18
+// .global sub_803CE08
+// .global sub_803CE28
+// .global sub_803DCD8
+// .global sub_803DCE8
+// .global sub_803DD60
+// .global sub_803DDA4
+// .global sub_803DE24
+// .global sub_803DE88
+// .global sub_803DEAC
+// .global sub_803E8F8
+// .global sub_803EA50
+// .global sub_803EA60
+// .global sub_803EA70
+// .global loc_803EA78
+// .global sub_803EAE4
+// .global sub_803EBAC
+// .global sub_803EBF4
+// .global sub_803EF60
+// .global sub_803EF74
+// .global sub_803EF7C
+// .global sub_803F4EC
+// .global sub_803F524
+// .global sub_803F674
+// .global sub_803F798
+
+.include "chatbox.inc"
+// .global chatbox_803FD78
+// .global chatbox_803FD9C
+// .global loc_803FDA4
+// .global chatbox_803FE08
+// .global chatbox_803FE10
+// .global sub_8040818
+// .global sub_8045F1C
+// .global sub_8045F2C
+// .global sub_8045F3C
+// .global sub_8045F4C
+
+.include "asm03_1.inc"
+// .global render_graphicalText_8045F8C
+// .global sub_80465A0
+// .global sub_80465BC
+// .global sub_80465F8
+// .global sub_8046664
+// .global sub_8046670
+// .global sub_8046696
+// .global sub_80466C4
+// .global sub_8048F9C
+// .global sub_8048FC4
+// .global cb_8048FD4
+// .global sub_8049D42
+// .global sub_8049D7C
+// .global sub_8049D98
+// .global sub_8049DA0
+// .global sub_8049DC4
+// .global sub_8049DDC
 
 
 /* Undeclared Symbols */

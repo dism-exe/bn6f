@@ -16861,7 +16861,7 @@ loc_8119A76:
     ldr r3, [pc, #0x8119a9c-0x8119a7e-2] // =0x8119904
     mov r4, #0xa
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8119A48
 
     pop {r2,r5}
@@ -16886,7 +16886,7 @@ loc_8119AA6:
     mov r2, #0
     mov r4, #1
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8119AA0
 
     pop {r0-r4}
@@ -26457,7 +26457,7 @@ sub_811EF70:
     ldr r3, [pc, #0x811ef88-0x811ef7c-4] // =loc_86CAC4C
     mov r4, #0x1e
     mov r5, #0x14
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_811EF70
 
     pop {r4,r5,r7,pc}
@@ -26998,7 +26998,7 @@ loc_811F598:
     mov r2, #0
     mov r4, #9
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_811F54C
 
     ldr r3, [sp]
@@ -29791,7 +29791,7 @@ loc_81209B2:
     add r3, r7, #0
     mov r4, #0xb
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8120900
 
     add sp, sp, #0x14

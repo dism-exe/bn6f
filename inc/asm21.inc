@@ -7,18 +7,18 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
-// .global sub_802D234
-// .global zf_802F168
-// .global sub_80304E8
-// .global sub_803537C
-// .global sub_8035424
-
 .include "asm11.inc"
 // .global dword_806992C
 // .global dword_806992C
 // .global off_806A810
 // .global dword_806C1E0
+
+.include "asm03_0.inc"
+// .global sub_802D234
+// .global zf_802F168
+// .global sub_80304E8
+// .global sub_803537C
+// .global sub_8035424
 
 .include "asm00.inc"
 // .global sub_80008B4

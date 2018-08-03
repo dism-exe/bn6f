@@ -5,7 +5,7 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
+.include "asm03_0.inc"
 // .global sub_802FF4C
 // .global sub_803037C
 // .global loc_8030472
@@ -13,7 +13,9 @@
 // .global sub_8030540
 // .global sub_8030AA4
 // .global sub_8034FB8
-// .global sub_803FD08
+
+.include "chatbox.inc"
+// .global chatbox_uncomp_803FD08
 
 .include "asm00.inc"
 // .global sub_8001778

@@ -5404,7 +5404,7 @@ reqBBS_draw_813E224:
     lsl r2, r2, #2
     ldr r3, [pc, #0x813e290-0x813e26e-2] // =off_813E294
     ldr r2, [r3,r2]
-    bl reqBBS_80404C0
+    bl chatbox_reqBBS_80404C0
     bl reqBBS_draw_chatbox
     bl reqBBS_drawHeaderText
     mov r0, #0x10
@@ -6077,7 +6077,7 @@ reqBBS_813E890:
     ldr r3, [pc, #0x813e8c8-0x813e89a-2] // =unk_813DBE4
     mov r4, #0x17
     mov r5, #0x10
-    bl draw_tiles
+    bl drawTiles
     ldr r3, [r7,#0x28]
     ldr r3, [r3,#0x1c]
     mov r0, #0
@@ -6085,7 +6085,7 @@ reqBBS_813E890:
     mov r2, #1
     mov r4, #0x1e
     mov r5, #0x14
-    bl draw_tiles
+    bl drawTiles
     mov r0, #0
     mov r1, #0
     mov r2, #3
@@ -6239,7 +6239,7 @@ loc_813EAA6:
     ldr r3, [r3,r4]
     mov r4, #2
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7}
     b loc_813EAEE
 loc_813EAD6:
@@ -6267,7 +6267,7 @@ loc_813EAEE:
     ldr r3, [r3,r4]
     mov r4, #2
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     pop {r0-r7,pc}
 off_813EB08:    .word reqBBS_requestEntries_IDs
 off_813EB0C:    .word off_813EB10
@@ -6538,7 +6538,7 @@ reqBBS_draw_chatbox:
     mov r2, #1
     mov r4, #0x1a
     mov r5, #0xa
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7,pc}
 off_813ECD4:    .word unk_2018A04
 .endfunc // reqBBS_draw_chatbox
@@ -6567,7 +6567,7 @@ off_813ECF0:    .word unk_2018A04
     ldr r3, [pc, #0x813ed08-0x813ecfc-4] // =unk_2018A04
     mov r4, #0x18
     mov r5, #0xa
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7,pc}
 off_813ED08:    .word unk_2018A04
 .func
@@ -6870,7 +6870,7 @@ reqBBS_drawRequestBBS:
     ldr r3, [pc, #0x813ef40-0x813ef34-4] // =dword_813DF44
     mov r4, #0xc
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7,pc}
 off_813EF40:    .word dword_813DF44
 reqBBS_entriesGfx:    .byte 0x35, 0x0, 0x0, 0xFF, 0xFF
@@ -7638,7 +7638,7 @@ sub_813F5EC:
     ldr r1, [pc, #0x813f658-0x813f62e-2] // =reqBBS_requestEntries_IDs
     ldrb r1, [r1,r2]
     ldr r2, [pc, #0x813f654-0x813f632-2] // =reqBBS_textualShades
-    bl reqBBS_80404C0
+    bl chatbox_reqBBS_80404C0
     bl sub_8140600
     bl reqBBS_drawChatbox_dup1
     bl reqBBS_renderSelectedEntry_HeaderText
@@ -7709,7 +7709,7 @@ loc_813F6C0:
 loc_813F6C2:
     ldr r0, [pc, #0x813f6f4-0x813f6c2-2] // =reqBBS_dialogList
     ldr r2, [pc, #0x813f6f0-0x813f6c4-4] // =reqBBS_textualShades
-    bl reqBBS_80404C0
+    bl chatbox_reqBBS_80404C0
     mov r0, #0x40 
     strb r0, [r5]
 loc_813F6CE:
@@ -8275,7 +8275,7 @@ sub_813FAB0:
     ldr r0, [pc, #0x813fb18-0x813faec-4] // =reqBBS_dialogList
     mov r1, #6
     ldr r2, [pc, #0x813fb10-0x813faf0-4] // =reqBBS_textualShades
-    bl reqBBS_80404C0
+    bl chatbox_reqBBS_80404C0
     bl reqBBS_drawSelectChatbox
     bl reqBBS_changeChatboxHeader
     mov r0, #0x34 
@@ -8323,7 +8323,7 @@ loc_813FB40:
     ldr r2, [pc, #0x813fbbc-0x813fb56-2] // =0xF
     ldrb r1, [r1,r2]
     ldr r2, [pc, #0x813fbb8-0x813fb5a-2] // =reqBBS_textualShades
-    bl reqBBS_80404C0
+    bl chatbox_reqBBS_80404C0
     mov r0, #0x38 
     strb r0, [r5]
     bl reqBBS_drawChatbox_dup1
@@ -8691,7 +8691,7 @@ sub_813FEB0:
     ldr r3, [pc, #0x813fee8-0x813feba-2] // =unk_813EF4C
     mov r4, #0x17
     mov r5, #0x10
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_813FEB0
 
     ldr r3, [r7,#0x28]
@@ -8701,7 +8701,7 @@ sub_813FEB0:
     mov r2, #1
     mov r4, #0x1e
     mov r5, #0x14
-    bl draw_tiles
+    bl drawTiles
     mov r0, #0
     mov r1, #0
     mov r2, #3
@@ -9046,7 +9046,7 @@ loc_814005E:
     ldr r3, [r3,r4]
     mov r4, #2
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7}
     b loc_81400A6
 loc_814008E:
@@ -9072,7 +9072,7 @@ loc_81400A6:
     ldr r3, [r3,r4]
     mov r4, #2
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     pop {r0-r7,pc}
 off_81400C0:    .word reqBBS_requestEntries_IDs
 off_81400C4:    .word pt_81400C8
@@ -9144,7 +9144,7 @@ loc_81401CE:
     ldr r3, [pc, #0x8140234-0x81401ee-2] // =dword_8140238
     mov r4, #2
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7}
     b loc_8140228
 loc_81401FC:
@@ -9167,7 +9167,7 @@ loc_81401FC:
     ldr r3, [pc, #0x8140240-0x814021c-4] // =unk_8140244
     mov r4, #2
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7}
 loc_8140228:
     add r6, #1
@@ -9237,7 +9237,7 @@ loc_8140290:
     ldr r3, [pc, #0x81402c4-0x81402a0-4] // =unk_81402C8
     mov r4, #1
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7}
     pop {r0,r1}
     add r1, #1
@@ -9278,7 +9278,7 @@ loc_81402DE:
     ldr r3, [pc, #0x8140304-0x81402ea-2] // =unk_8140308
     mov r4, #1
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7}
     pop {r0,r1}
     add r1, #1
@@ -9317,7 +9317,7 @@ loc_8140320:
     ldr r3, [pc, #0x8140350-0x814032c-4] // =unk_8140354
     mov r4, #1
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7}
     pop {r0,r1}
     add r1, #1
@@ -9512,7 +9512,7 @@ reqBBS_drawChatbox_dup1:
     mov r2, #1
     mov r4, #0x1a
     mov r5, #0xa
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7,pc}
 off_81404B4:    .word unk_2018A04
 .endfunc // reqBBS_drawChatbox_dup1
@@ -9527,7 +9527,7 @@ reqBBS_drawSelectChatbox:
     mov r2, #1
     mov r4, #0x14
     mov r5, #0xa
-    bl draw_tiles
+    bl drawTiles
 .endfunc // reqBBS_drawSelectChatbox
 
     pop {r4-r7,pc}
@@ -9683,7 +9683,7 @@ sub_81405E8:
     ldr r3, [pc, #0x81405fc-0x81405f0-4] // =dword_813F32C
     mov r4, #8
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_81405E8
 
     pop {r4-r7,pc}

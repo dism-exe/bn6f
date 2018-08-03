@@ -6,24 +6,6 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
-// .global sub_802F110
-// .global sub_802F12C
-// .global sub_802F130
-// .global sub_802F164
-// .global sub_802FE28
-// .global sub_8035408
-// .global sub_8036E44
-// .global sub_8036E78
-// .global sub_8036F98
-// .global sub_8036FAA
-// .global chatbox_runScript
-// .global sub_8045EDC
-// .global sub_8045F3C
-// .global sub_8045F4C
-// .global sub_80468C6
-// .global sub_80468EC
-
 .include "asm37.inc"
 // .global sub_8140A0C
 // .global sub_814216E
@@ -66,6 +48,28 @@
 // .global sub_8005D88
 // .global engine_setScreeneffect
 // .global engine_isScreeneffectAnimating
+
+.include "asm03_0.inc"
+// .global sub_802F110
+// .global sub_802F12C
+// .global sub_802F130
+// .global sub_802F164
+// .global sub_802FE28
+// .global sub_8035408
+// .global sub_8036E44
+// .global sub_8036E78
+// .global sub_8036F98
+// .global sub_8036FAA
+
+.include "chatbox.inc"
+// .global chatbox_runScript
+// .global sub_8045EDC
+// .global sub_8045F3C
+// .global sub_8045F4C
+
+.include "asm03_1.inc"
+// .global sub_80468C6
+// .global sub_80468EC
 
 
 /* Undeclared Symbols */

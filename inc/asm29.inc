@@ -14,28 +14,6 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
-// .global sub_802D266
-// .global sub_802D652
-// .global sub_802F110
-// .global sub_802F114
-// .global sub_802F12C
-// .global sub_802F130
-// .global sub_802F164
-// .global zf_802F168
-// .global sub_80302A8
-// .global sub_8031612
-// .global sub_8031A7A
-// .global sub_8034C36
-// .global sub_8035694
-// .global sub_8036E90
-// .global sub_8036F36
-// .global sub_8036F40
-// .global sub_8036F58
-// .global sub_8036F70
-// .global sub_8045F3C
-// .global sub_8045F4C
-
 .include "start.inc"
 // .global dword_8000004
 
@@ -194,6 +172,30 @@
 
 .include "asm30.inc"
 // .global sub_80AED50
+
+.include "asm03_0.inc"
+// .global sub_802D266
+// .global sub_802D652
+// .global sub_802F110
+// .global sub_802F114
+// .global sub_802F12C
+// .global sub_802F130
+// .global sub_802F164
+// .global zf_802F168
+// .global sub_80302A8
+// .global sub_8031612
+// .global sub_8031A7A
+// .global sub_8034C36
+// .global sub_8035694
+// .global sub_8036E90
+// .global sub_8036F36
+// .global sub_8036F40
+// .global sub_8036F58
+// .global sub_8036F70
+
+.include "chatbox.inc"
+// .global sub_8045F3C
+// .global sub_8045F4C
 
 
 /* Undeclared Symbols */

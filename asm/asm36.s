@@ -326,7 +326,7 @@ dword_8130054:    .word 0xFEDB
     ldr r3, [pc, #0x8130190-0x8130184-4] // =unk_201F820
     mov r4, #0x1e
     mov r5, #0x14
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7,pc}
 off_8130190:    .word unk_201F820
     push {r4-r7,lr}
@@ -701,7 +701,7 @@ locret_8130462:
     ldr r3, [pc, #0x81304a0-0x8130476-2] // =unk_201F320
     mov r4, #0x1e
     mov r5, #0x14
-    bl draw_tiles
+    bl drawTiles
     add r5, r7, #0
     bl sub_8130290
     ldrh r0, [r5,#0x2a]
@@ -789,7 +789,7 @@ loc_813050C:
     ldr r3, [pc, #0x81305e8-0x8130528-4] // =unk_20243E8
     mov r4, #8
     mov r5, #0xa
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_81304EC
 
     ldrb r0, [r7,#0xc]
@@ -809,7 +809,7 @@ loc_813050C:
     ldr r3, [pc, #0x81305ec-0x8130550-4] // =unk_20244C8
     mov r4, #2
     mov r5, #0xa
-    bl draw_tiles
+    bl drawTiles
     ldrb r0, [r7,#0xc]
     sub r0, #1
     ldr r1, [pc, #0x8130614-0x813055e-2] // =dword_8130618
@@ -830,7 +830,7 @@ loc_813050C:
     ldr r3, [pc, #0x81305f8-0x813057e-2] // =unk_2024500
     mov r4, #2
     mov r5, #0xa
-    bl draw_tiles
+    bl drawTiles
     ldrb r0, [r7,#0xc]
     sub r0, #1
     ldr r1, [pc, #0x8130614-0x813058c-4] // =dword_8130618
@@ -850,7 +850,7 @@ loc_813050C:
     ldr r3, [pc, #0x8130604-0x81305aa-2] // =unk_2024538
     mov r4, #1
     mov r5, #0xa
-    bl draw_tiles
+    bl drawTiles
     ldrb r0, [r7,#0xc]
     sub r0, #1
     ldr r1, [pc, #0x8130614-0x81305b8-4] // =dword_8130618
@@ -870,7 +870,7 @@ loc_813050C:
     ldr r3, [pc, #0x813060c-0x81305d6-2] // =unk_2024554
     mov r4, #2
     mov r5, #0xa
-    bl draw_tiles
+    bl drawTiles
 locret_81305E0:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -1170,7 +1170,7 @@ sub_8130810:
     ldr r3, [pc, #0x8130848-0x813083c-4] // =unk_20347D8
     mov r4, #0xf
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
 locret_8130846:
     pop {r4-r7,pc}
 off_8130848:    .word unk_20347D8
@@ -2656,7 +2656,7 @@ sub_8131440:
     ldr r3, [pc, #0x8131454-0x8131448-4] // =unk_2021DA0
     mov r4, #0x1e
     mov r5, #0x14
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8131440
 
     pop {r4-r7,pc}
@@ -2824,7 +2824,7 @@ sub_8131570:
     ldr r3, [pc, #0x8131584-0x8131578-4] // =0x8130884
     mov r4, #8
     mov r5, #8
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8131570
 
     pop {r4-r7,pc}
@@ -4180,7 +4180,7 @@ sub_8132280:
     push {lr}
     add r1, r0, #0
     ldr r0, [pc, #0x813228c-0x8132284-4] // =unk_201BA20
-    bl sub_803FD9C
+    bl chatbox_803FD9C
     pop {pc}
 off_813228C:    .word unk_201BA20
 .endfunc // sub_8132280
@@ -5033,7 +5033,7 @@ sub_8132980:
     ldr r3, [pc, #0x8132994-0x8132988-4] // =unk_2022AA0
     mov r4, #0x1e
     mov r5, #0x14
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8132980
 
     pop {r4-r7,pc}
@@ -5457,7 +5457,7 @@ sub_8132BA8:
     bl sub_8132FD0
     ldr r0, [pc, #0x8132c30-0x8132c1c-4] // =word_201BF00
     mov r1, #0xa
-    bl sub_803FD9C
+    bl chatbox_803FD9C
     mov r0, #0x40 
     bl sub_8045F1C
     pop {pc}
@@ -5579,7 +5579,7 @@ loc_8132CD4:
     ldr r3, [pc, #0x8132d90-0x8132d06-2] // =unk_201BA00
     mov r4, #0x1e
     mov r5, #0x14
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8132CB8
 
     pop {r4-r7,pc}
@@ -5750,7 +5750,7 @@ sub_8132EF4:
     ldr r3, [pc, #0x8132f3c-0x8132efe-2] // =unk_201C400
     mov r4, #8
     mov r5, #8
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8132EF4
 
     mov r0, #0x12
@@ -5759,21 +5759,21 @@ sub_8132EF4:
     ldr r3, [pc, #0x8132f40-0x8132f0e-2] // =unk_201C480
     mov r4, #7
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     mov r0, #0x12
     mov r1, #7
     mov r2, #2
     ldr r3, [pc, #0x8132f44-0x8132f1e-2] // =unk_201C4A0
     mov r4, #7
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     mov r0, #0x12
     mov r1, #9
     mov r2, #2
     ldr r3, [pc, #0x8132f48-0x8132f2e-2] // =unk_201C4C0
     mov r4, #7
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_8132F3C:    .word unk_201C400
@@ -5961,7 +5961,7 @@ loc_813306A:
     mov r0, #0x19
     sub r0, r0, r4
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8132FD0
 
     add sp, sp, #0x10
@@ -7572,7 +7572,7 @@ sub_8133E88:
     ldr r3, [pc, #0x8134094-0x8133e92-2] // =unk_201CA20
     mov r4, #0x1e
     mov r5, #0x14
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8133E88
 
     mov r1, #0x18
@@ -7584,7 +7584,7 @@ sub_8133E88:
     ldr r3, [pc, #0x81340a0-0x8133ea8-4] // =unk_2020A20
     mov r4, #0x3c 
     mov r5, #0x11
-    bl draw_tiles
+    bl drawTiles
     bl sub_8134138
     pop {r4-r7,pc}
     .word 0xFFFFFFF0, 0x1B6
@@ -7631,7 +7631,7 @@ loc_8133EDC:
     ldr r3, [pc, #0x8134094-0x8133f0e-2] // =unk_201CA20
     mov r4, #0x1e
     mov r5, #0x14
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8133EC0
 
     mov r0, #0
@@ -7640,7 +7640,7 @@ loc_8133EDC:
     ldr r3, [pc, #0x81340a0-0x8133f1e-2] // =unk_2020A20
     mov r4, #0x3c 
     mov r5, #0x11
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_8133F2C:    .word dword_8133F30
@@ -7808,7 +7808,7 @@ sub_8134190:
     push {lr}
     add r1, r0, #0
     ldr r0, [pc, #0x813419c-0x8134194-4] // =unk_2028A20
-    bl sub_803FD9C
+    bl chatbox_803FD9C
     pop {pc}
 off_813419C:    .word unk_2028A20
 .endfunc // sub_8134190
@@ -7834,7 +7834,7 @@ sub_81341A0:
     ldr r3, [pc, #0x81342e4-0x81341c0-4] // =unk_2034458
     mov r4, #8
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_81341A0
 
     ldrh r0, [r7,#0x24]
@@ -7854,7 +7854,7 @@ sub_81341A0:
     ldr r3, [pc, #0x81342e8-0x81341e8-4] // =unk_2034538
     mov r4, #2
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
     ldrh r0, [r7,#0x24]
     ldr r1, [pc, #0x81342e0-0x81341f4-4] // =word_202A020
     ldr r2, [pc, #0x81342f4-0x81341f6-2] // =unk_2034570
@@ -7875,7 +7875,7 @@ sub_81341A0:
     ldr r3, [pc, #0x81342f4-0x8134216-2] // =unk_2034570
     mov r4, #2
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
     ldrh r0, [r7,#0x24]
     ldr r1, [pc, #0x81342e0-0x8134222-2] // =word_202A020
     ldr r2, [pc, #0x8134300-0x8134224-4] // =unk_20345A8
@@ -7895,7 +7895,7 @@ sub_81341A0:
     ldr r3, [pc, #0x8134300-0x8134242-2] // =unk_20345A8
     mov r4, #1
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
     ldrh r0, [r7,#0x24]
     ldr r1, [pc, #0x81342e0-0x813424e-2] // =word_202A020
     ldr r2, [pc, #0x8134308-0x8134250-4] // =unk_20345C4
@@ -7915,7 +7915,7 @@ sub_81341A0:
     ldr r3, [pc, #0x8134308-0x813426e-2] // =unk_20345C4
     mov r4, #2
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
     mov r1, #0x18
     ldrsh r1, [r7,r1]
     mov r2, #0x1a
@@ -8003,7 +8003,7 @@ sub_8134310:
     ldr r3, [pc, #0x813445c-0x8134330-4] // =unk_20345FC
     mov r4, #8
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8134310
 
     ldrh r0, [r7,#0x2e]
@@ -8023,7 +8023,7 @@ sub_8134310:
     ldr r3, [pc, #0x8134460-0x8134358-4] // =unk_20346DC
     mov r4, #2
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
     ldrh r0, [r7,#0x2e]
     ldr r1, [pc, #0x8134458-0x8134364-4] // =unk_202A3E0
     ldr r2, [pc, #0x813446c-0x8134366-2] // =unk_2034714
@@ -8044,7 +8044,7 @@ sub_8134310:
     ldr r3, [pc, #0x813446c-0x8134386-2] // =unk_2034714
     mov r4, #2
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
     ldrh r0, [r7,#0x2e]
     ldr r1, [pc, #0x8134458-0x8134392-2] // =unk_202A3E0
     ldr r2, [pc, #0x8134478-0x8134394-4] // =unk_203474C
@@ -8064,7 +8064,7 @@ sub_8134310:
     ldr r3, [pc, #0x8134478-0x81343b2-2] // =unk_203474C
     mov r4, #1
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
     ldrh r0, [r7,#0x2e]
     ldr r1, [pc, #0x8134458-0x81343be-2] // =unk_202A3E0
     ldr r2, [pc, #0x8134480-0x81343c0-4] // =unk_2034768
@@ -8084,7 +8084,7 @@ sub_8134310:
     ldr r3, [pc, #0x8134480-0x81343de-2] // =unk_2034768
     mov r4, #2
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
     ldrh r0, [r7,#0x2e]
     ldr r1, [pc, #0x8134458-0x81343ea-2] // =unk_202A3E0
     ldr r2, [pc, #0x8134488-0x81343ec-4] // =unk_20347A0
@@ -8104,7 +8104,7 @@ sub_8134310:
     ldr r3, [pc, #0x8134488-0x813440a-2] // =unk_20347A0
     mov r4, #2
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
     mov r1, #0x18
     ldrsh r1, [r7,r1]
     mov r2, #0x1a
@@ -8186,7 +8186,7 @@ loc_81344B8:
     ldr r3, [pc, #0x813451c-0x81344c6-2] // =unk_20347D8
     mov r4, #0xf
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8134490
 
     mov r0, #0xa
@@ -8205,7 +8205,7 @@ loc_81344B8:
     ldr r3, [pc, #0x8134520-0x81344ec-4] // =unk_2034814
     mov r4, #0x14
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     bl sub_81355D8
     beq loc_8134500
     mov r0, #0x1e
@@ -8512,7 +8512,7 @@ loc_813472C:
     ldr r3, [pc, #0x813473c-0x813472e-2] // =unk_203486C
     mov r4, #8
     mov r5, #0x11
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_813471C
 
     pop {r4-r7,pc}
@@ -11308,7 +11308,7 @@ loc_8135BB4:
     ldr r3, [pc, #0x8135cbc-0x8135be6-2] // =unk_201BE80
     mov r4, #0x1e
     mov r5, #0x14
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8135B94
 
     mov r0, #1
@@ -11321,14 +11321,14 @@ loc_8135BB4:
     ldr r3, [r3,r4]
     mov r4, #0x11
     mov r5, #0x11
-    bl draw_tiles
+    bl drawTiles
     mov r0, #0x11
     mov r1, #0xb
     mov r2, #2
     ldr r3, [pc, #0x8135cec-0x8135c0e-2] // =unk_201D180
     mov r4, #0xc
     mov r5, #9
-    bl draw_tiles
+    bl drawTiles
     add sp, sp, #4
     pop {r4-r7,pc}
 off_8135C1C:    .word unk_30019E0
@@ -11637,7 +11637,7 @@ sub_8135F34:
     ldr r3, [pc, #0x8135f84-0x8135f50-4] // =unk_813565C
     mov r4, #0xa
     mov r5, #6
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7,pc}
 .func
 .thumb_func
@@ -11665,7 +11665,7 @@ sub_8135F88:
     push {r4,lr}
     add r1, r0, #0
     ldr r0, [pc, #0x8135f94-0x8135f8c-4] // =unk_201D280
-    bl sub_803FD9C
+    bl chatbox_803FD9C
     pop {r4,pc}
 off_8135F94:    .word unk_201D280
     .word unk_201F2F0
@@ -13242,7 +13242,7 @@ sub_8136B58:
     ldr r3, [r3,r7]
     mov r4, #0x20 
     mov r5, #3
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8136B58
 
     pop {r4-r7,pc}
@@ -13291,7 +13291,7 @@ sub_8136BA0:
     ldr r3, [pc, #0x8136bd8-0x8136bbc-4] // =unk_813565C
     mov r4, #0xa
     mov r5, #6
-    bl draw_tiles
+    bl drawTiles
     pop {r4-r7,pc}
 off_8136BC8:    .word unk_201D280
 off_8136BCC:    .word unk_201B200
@@ -15305,7 +15305,7 @@ loc_8137AE8:
     ldr r3, [pc, #0x8137bc0-0x8137b1a-2] // =unk_201BA00
     mov r4, #0x1e
     mov r5, #0x14
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8137ACC
 
     pop {r4-r7,pc}
@@ -15469,7 +15469,7 @@ sub_8137DA4:
     mov r2, #2
     mov r4, #8
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8137DA4
 
     pop {r4-r7,pc}
@@ -15552,7 +15552,7 @@ sub_8137E3C:
     mov r2, #2
     mov r4, #7
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8137E3C
 
     pop {r4-r7,pc}
@@ -15640,7 +15640,7 @@ sub_8137EE0:
     mov r2, #2
     mov r4, #7
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_8137EE0
 
     pop {r4-r7,pc}
@@ -15851,7 +15851,7 @@ sub_813808C:
     mov r2, #2
     mov r4, #3
     mov r5, #0xe
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_813808C
 
     pop {r4-r7,pc}
@@ -16894,7 +16894,7 @@ loc_81388AA:
     mov r3, sp
     ldrb r4, [r6,#3]
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     add sp, sp, #0x60
     pop {r3-r7,pc}
 .func
@@ -16936,7 +16936,7 @@ sub_8138908:
     ldr r3, [pc, #0x8138938-0x813892a-2] // =unk_2016A00
     mov r4, #0xe
     mov r5, #6
-    bl draw_tiles
+    bl drawTiles
     pop {r3-r5,pc}
     .balign 4, 0x00
 // <endpool> <endfile>

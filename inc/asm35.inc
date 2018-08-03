@@ -5,14 +5,6 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
-// .global sub_803CE28
-// .global sub_803EBF4
-// .global render_graphicalText_8045F8C
-// .global sub_80465A0
-// .global sub_8046664
-// .global sub_80466C4
-
 .include "asm32.inc"
 // .global sub_811BC00
 // .global sub_811F7EC
@@ -36,11 +28,21 @@
 // .global sound_play
 // .global sub_8000900
 // .global sub_800183C
-// .global draw_tiles
+// .global drawTiles
 // .global sub_80018D0
 // .global sub_800307C
 // .global engine_setScreeneffect
 // .global sub_80062C8
+
+.include "asm03_0.inc"
+// .global sub_803CE28
+// .global sub_803EBF4
+
+.include "asm03_1.inc"
+// .global render_graphicalText_8045F8C
+// .global sub_80465A0
+// .global sub_8046664
+// .global sub_80466C4
 
 
 /* Undeclared Symbols */

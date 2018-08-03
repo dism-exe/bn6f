@@ -511,14 +511,14 @@ dword_809A344:    .word 0x86C57EC, 0x3001B20, 0x20, 0x86C5550, 0x600D000, 0x220
     ldr r3, [pc, #0x809a3a4-0x809a372-2] // =loc_86C54D4
     mov r4, #9
     mov r5, #5
-    bl draw_tiles
+    bl drawTiles
     add r0, r7, #1
     mov r1, #2
     mov r2, #0
     ldr r3, [pc, #0x809a3a8-0x809a382-2] // =dword_8099E04+88
     mov r4, #7
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     ldr r0, [pc, #0x809a3ac-0x809a38c-4] // =dword_86C580C
     mov r1, #0x40 
     ldr r2, [pc, #0x809a3b0-0x809a390-4] // =unk_200EF40
@@ -1048,7 +1048,7 @@ sub_809A80C:
     ldr r3, [pc, #0x809a850-0x809a81e-2] // =loc_86C5790
     mov r4, #9
     mov r5, #5
-    bl draw_tiles
+    bl drawTiles
 .endfunc // sub_809A80C
 
     add r0, r7, #2
@@ -1057,7 +1057,7 @@ sub_809A80C:
     ldr r3, [pc, #0x809a854-0x809a82e-2] // =0x8099E78
     mov r4, #6
     mov r5, #2
-    bl draw_tiles
+    bl drawTiles
     ldr r0, [pc, #0x809a858-0x809a838-4] // =unk_2033404
     mov r1, #6
     ldr r2, [pc, #0x809a85c-0x809a83c-4] // =unk_200EF40

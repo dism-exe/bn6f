@@ -19,8 +19,12 @@ asm01:
 asm02:
 .include "asm/asm02.s"
 .incbin "bin/bin02.bin"
-asm03:
-.include "asm/asm03.s"
+asm03_0:
+.include "asm/asm03_0.s"
+chatbox:
+.include "asm/chatbox.s"
+asm03_1:
+.include "asm/asm03_1.s"
 .incbin "bin/bin03.bin"
 asm04:
 .include "asm/asm04.s"

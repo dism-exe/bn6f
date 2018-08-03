@@ -33,7 +33,7 @@ sub_8069038:
     ldr r0, [pc, #0x8069098-0x806907a-2] // =off_806909C
     ldr r0, [r0,r1]
     bl sub_8002906
-    bl sub_803FD08
+    bl chatbox_uncomp_803FD08
     bl sub_80691FE
     bl sub_8034FB8
     pop {r4-r7,pc}
@@ -378,7 +378,7 @@ sub_8069FE8:
     ldr r0, [pc, #0x806a048-0x806a02a-2] // =off_806A04C
     ldr r0, [r0,r1]
     bl sub_8002906
-    bl sub_803FD08
+    bl chatbox_uncomp_803FD08
     bl sub_806A1DE
     bl sub_8034FB8
     pop {r4-r7,pc}
@@ -694,7 +694,7 @@ sub_806AA00:
     ldr r0, [pc, #0x806aa60-0x806aa42-2] // =off_806AA64
     ldr r0, [r0,r1]
     bl sub_8002906
-    bl sub_803FD08
+    bl chatbox_uncomp_803FD08
     bl sub_806AD00
     bl sub_8034FB8
     pop {r4-r7,pc}
@@ -1447,7 +1447,7 @@ sub_806C23C:
     ldr r0, [pc, #0x806c29c-0x806c27e-2] // =off_806C2A0
     ldr r0, [r0,r1]
     bl sub_8002906
-    bl sub_803FD08
+    bl chatbox_uncomp_803FD08
     bl sub_806C59C
     bl sub_8034FB8
     pop {r4-r7,pc}

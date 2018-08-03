@@ -152,41 +152,6 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
-// .global sub_802CDD0
-// .global sub_802D234
-// .global sub_802D246
-// .global sub_802EF5C
-// .global sub_802F164
-// .global zf_802F168
-// .global sub_802FE28
-// .global sub_8033978
-// .global sub_8036F70
-// .global sub_803C316
-// .global sub_803CE28
-// .global sub_803D06C
-// .global sub_803D0F4
-// .global sub_803D138
-// .global sub_803D148
-// .global sub_803DD60
-// .global sub_803F524
-// .global sub_803F674
-// .global sub_803F740
-// .global sub_8040818
-// .global sub_8045F2C
-// .global sub_8045F3C
-// .global render_graphicalText_8045F8C
-// .global sub_80465A0
-// .global sub_80465BC
-// .global sub_80465F8
-// .global sub_8046664
-// .global sub_8046670
-// .global sub_804668A
-// .global sub_80466C4
-// .global sub_80468E0
-// .global sub_8047D84
-// .global sub_804A24C
-
 .include "start.inc"
 // .global start_
 
@@ -274,7 +239,7 @@
 // .global sub_8001562
 // .global sub_80015FC
 // .global sub_8001850
-// .global draw_tiles
+// .global drawTiles
 // .global sub_8001B1C
 // .global sub_8001B84
 // .global loc_8002676
@@ -402,6 +367,45 @@
 
 .include "asm23.inc"
 // .global dword_8089128
+
+.include "asm03_0.inc"
+// .global sub_802CDD0
+// .global sub_802D234
+// .global sub_802D246
+// .global sub_802EF5C
+// .global sub_802F164
+// .global zf_802F168
+// .global sub_802FE28
+// .global sub_8033978
+// .global sub_8036F70
+// .global sub_803C316
+// .global sub_803CE28
+// .global sub_803D06C
+// .global sub_803D0F4
+// .global sub_803D138
+// .global sub_803D148
+// .global sub_803DD60
+// .global sub_803F524
+// .global sub_803F674
+// .global sub_803F740
+
+.include "chatbox.inc"
+// .global sub_8040818
+// .global sub_8045F2C
+// .global sub_8045F3C
+
+.include "asm03_1.inc"
+// .global render_graphicalText_8045F8C
+// .global sub_80465A0
+// .global sub_80465BC
+// .global sub_80465F8
+// .global sub_8046664
+// .global sub_8046670
+// .global sub_804668A
+// .global sub_80466C4
+// .global sub_80468E0
+// .global sub_8047D84
+// .global sub_804A24C
 
 .include "asm31.inc"
 // .global sub_80B8A0A

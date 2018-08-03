@@ -33,7 +33,7 @@ sub_8077D00:
     ldr r0, [pc, #0x8077d60-0x8077d42-2] // =off_8077D64
     ldr r0, [r0,r1]
     bl sub_8002906
-    bl sub_803FD08
+    bl chatbox_uncomp_803FD08
     bl sub_8077E84
     bl sub_8034FB8
     pop {r4-r7,pc}

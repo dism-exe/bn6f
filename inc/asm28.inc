@@ -56,55 +56,13 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
-// .global sub_802D15E
-// .global sub_802F110
-// .global sub_802F114
-// .global sub_802F12C
-// .global sub_802F130
-// .global sub_802F148
-// .global sub_802F164
-// .global zf_802F168
-// .global sub_802F238
-// .global sub_80301B2
-// .global sub_80301DC
-// .global sub_80302A8
-// .global sub_8030B6A
-// .global sub_8031612
-// .global sub_8031A7A
-// .global sub_8033978
-// .global sub_8033FC0
-// .global sub_8034C36
-// .global sub_8035694
-// .global sub_8036E90
-// .global sub_8036F36
-// .global sub_803CD98
-// .global sub_803CE28
-// .global sub_803D080
-// .global sub_803D108
-// .global sub_803F798
-// .global sub_803F9E4
-// .global chatbox_runScript_202da04
-// .global chatbox_runScript
-// .global sub_8040818
-// .global off_8044470
-// .global off_80444C4
-// .global sub_8045EFC
-// .global sub_8045F3C
-// .global sub_8045F4C
-// .global render_graphicalText_8045F8C
-// .global sub_80465A0
-// .global sub_80465BC
-// .global sub_80465F8
-// .global sub_8046664
+.include "asm02.inc"
+// .global dword_8021AEC
 
 .include "asm32.inc"
 // .global sub_811980C
 // .global sub_8119854
 // .global sub_811EBE0
-
-.include "asm02.inc"
-// .global dword_8021AEC
 
 .include "asm37.inc"
 // .global sub_813D41C
@@ -128,7 +86,7 @@
 // .global sub_8001172
 // .global calcAngle_800117C
 // .global sub_8001850
-// .global draw_tiles
+// .global drawTiles
 // .global sprite_loadAnimationData_80026A4
 // .global anim_80026C4
 // .global sub_80026E4
@@ -168,6 +126,52 @@
 // .global engine_isScreeneffectAnimating
 // .global sub_8013704
 // .global sub_80137B6
+
+.include "asm03_0.inc"
+// .global sub_802D15E
+// .global sub_802F110
+// .global sub_802F114
+// .global sub_802F12C
+// .global sub_802F130
+// .global sub_802F148
+// .global sub_802F164
+// .global zf_802F168
+// .global sub_802F238
+// .global sub_80301B2
+// .global sub_80301DC
+// .global sub_80302A8
+// .global sub_8030B6A
+// .global sub_8031612
+// .global sub_8031A7A
+// .global sub_8033978
+// .global sub_8033FC0
+// .global sub_8034C36
+// .global sub_8035694
+// .global sub_8036E90
+// .global sub_8036F36
+// .global sub_803CD98
+// .global sub_803CE28
+// .global sub_803D080
+// .global sub_803D108
+// .global sub_803F798
+// .global sub_803F9E4
+
+.include "chatbox.inc"
+// .global chatbox_runScript_202da04
+// .global chatbox_runScript
+// .global sub_8040818
+// .global off_8044470
+// .global off_80444C4
+// .global sub_8045EFC
+// .global sub_8045F3C
+// .global sub_8045F4C
+
+.include "asm03_1.inc"
+// .global render_graphicalText_8045F8C
+// .global sub_80465A0
+// .global sub_80465BC
+// .global sub_80465F8
+// .global sub_8046664
 
 
 /* Undeclared Symbols */

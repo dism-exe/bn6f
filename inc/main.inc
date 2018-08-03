@@ -6,34 +6,6 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
-// .global Load_cb_802F544
-// .global sub_802FDB0
-// .global objRender_802FE0C
-// .global sub_802FF2C
-// .global cb_jack_80341B6
-// .global sub_8036ED4
-// .global sub_8036F24
-// .global cb_8038AD0
-// .global cb_80395A4
-// .global cb_803CBA6
-// .global cb_803CCD6
-// .global sub_803D1A8
-// .global cb_803D1CA
-// .global sub_803DE5C
-// .global sub_803E900
-// .global sub_803EBC8
-// .global sub_803F4C8
-// .global cb_803FB3C
-// .global sub_803FCF0
-// .global chatbox_onUpdate_803FEB4
-// .global sub_804657C
-// .global sub_80467D8
-// .global cb_8046CF8
-// .global cb_8048FD4
-// .global cb_8049E04
-// .global cb_804A304
-
 .include "start.inc"
 // .global start_800023C
 // .global start_800024C
@@ -99,6 +71,38 @@
 // .global sub_8006C22
 // .global sub_80071B4
 // .global zf_checkSameSubsystem_800A732
+
+.include "asm03_0.inc"
+// .global Load_cb_802F544
+// .global sub_802FDB0
+// .global objRender_802FE0C
+// .global sub_802FF2C
+// .global cb_jack_80341B6
+// .global sub_8036ED4
+// .global sub_8036F24
+// .global cb_8038AD0
+// .global cb_80395A4
+// .global cb_803CBA6
+// .global cb_803CCD6
+// .global sub_803D1A8
+// .global cb_803D1CA
+// .global sub_803DE5C
+// .global sub_803E900
+// .global sub_803EBC8
+// .global sub_803F4C8
+// .global cb_803FB3C
+// .global sub_803FCF0
+
+.include "chatbox.inc"
+// .global chatbox_onUpdate_803FEB4
+
+.include "asm03_1.inc"
+// .global sub_804657C
+// .global sub_80467D8
+// .global cb_8046CF8
+// .global cb_8048FD4
+// .global cb_8049E04
+// .global cb_804A304
 
 
 /* Undeclared Symbols */

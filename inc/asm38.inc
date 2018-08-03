@@ -6,20 +6,22 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
-// .global off_802FD70
-// .global dword_802FD74
-// .global sub_8031612
-// .global sub_803DE72
-// .global sub_803EA68
-// .global sub_8040D5C
-// .global off_8043C8C
-
 .include "asm37.inc"
 // .global sub_813D5DC
 // .global sub_814469C
 // .global sub_81446AC
 // .global sub_814DA9C
+
+.include "asm03_0.inc"
+// .global off_802FD70
+// .global dword_802FD74
+// .global sub_8031612
+// .global sub_803DE72
+// .global sub_803EA68
+
+.include "chatbox.inc"
+// .global sub_8040D5C
+// .global off_8043C8C
 
 .include "asm00.inc"
 // .global sub_80005AC

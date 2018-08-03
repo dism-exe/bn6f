@@ -20,7 +20,7 @@
 
 
 /* External Symbols */
-.include "asm03.inc"
+.include "asm03_0.inc"
 // .global sub_802F114
 
 .include "asm36.inc"
