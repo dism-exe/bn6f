@@ -6,7 +6,7 @@ sub_808F810:
     push {r4-r7,lr}
     ldr r5, [pc, #0x808f8fc-0x808f812-2] // =off_808F5D4
     ldr r5, [r5]
-    bl sub_8140A00
+    bl reqBBS_8140A00
     ldrb r4, [r5,#0x2] // (byte_2000312 - 0x2000310)
     cmp r4, #0
     bgt loc_808F830
@@ -159,7 +159,7 @@ loc_808F954:
     bl sub_809E13C
     ldrb r0, [r5,#0x10] // (byte_2000320 - 0x2000310)
     bl sub_809E2AE
-    bl sub_8140A0C
+    bl reqBBS_8140A0C
     mov r0, #0
     pop {r4-r7,pc}
 loc_808F98A:
@@ -423,7 +423,7 @@ loc_808FB64:
     mov r2, #0
     bl sub_809E188
     bl sub_809E230
-    bl sub_8140A0C
+    bl reqBBS_8140A0C
     bl sub_809E3B2
     ldr r0, [pc, #0x808fb9c-0x808fb8a-2] // =0x1AE
     bl sound_play
@@ -925,7 +925,7 @@ off_808FFF4:    .word dword_81434E4
 sub_8090004:
     push {r4,lr}
     mov r4, #0
-    bl sub_81409E4
+    bl reqBBS_81409E4
     cmp r0, #0x70 
     blt loc_809001A
     cmp r0, #0x79 
@@ -943,7 +943,7 @@ loc_809001A:
 .thumb_func
 sub_8090020:
     push {r4,lr}
-    bl sub_81409E4
+    bl reqBBS_81409E4
     cmp r0, #0x60 
     blt loc_8090034
     cmp r0, #0x69 
@@ -970,7 +970,7 @@ sub_809003C:
     bl loc_809E306
     mov r0, #3
     bl sub_8001172
-    bl sub_8140A00
+    bl reqBBS_8140A00
 locret_8090058:
     pop {r4,pc}
     .balign 4, 0x00

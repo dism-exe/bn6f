@@ -31191,7 +31191,7 @@ sub_80382BA:
     add r6, r0, #0
 loc_80382CC:
     add r0, r6, #0
-    bl sub_813E5DC
+    bl reqBBS_813E5DC
     add r6, #1
     sub r4, #1
     bgt loc_80382CC
@@ -31454,7 +31454,7 @@ sub_8038484:
     add r6, r0, #0
 loc_8038496:
     add r0, r6, #0
-    bl sub_813F9A0
+    bl reqBBS_813F9A0
     add r6, #1
     sub r4, #1
     bgt loc_8038496
@@ -42545,7 +42545,7 @@ sub_803E978:
     mov r6, #1
     bl sub_803E930
     bne loc_803EA0A
-    bl loc_813DA94
+    bl sub_813DA94
     tst r0, r0
     bne loc_803E9A8
     bl sub_813D60C
@@ -44554,7 +44554,7 @@ sub_803F6B0:
     ldr r2, [pc, #0x803f730-0x803f6da-2] // =dword_803F734
     lsl r4, r4, #2
     ldr r2, [r2,r4]
-    bl sub_813DBC0
+    bl byte_813DBC0
     ldr r0, [pc, #0x803f738-0x803f6e4-4] // =sCamera+80
     mov r1, #0x3c 
     strh r1, [r0,#0xc] // (scamera.unk_5c - 0x20099d0)
@@ -44579,7 +44579,7 @@ sub_803F6B0:
     ldr r2, [pc, #0x803f730-0x803f716-2] // =dword_803F734
     lsl r4, r4, #2
     ldr r2, [r2,r4]
-    bl sub_813DBC0
+    bl byte_813DBC0
     ldr r0, [pc, #0x803f738-0x803f720-4] // =sCamera+80
     mov r1, #0x3c 
     strh r1, [r0,#0xc] // (scamera.unk_5c - 0x20099d0)

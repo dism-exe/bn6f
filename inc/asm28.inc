@@ -64,14 +64,14 @@
 // .global sub_8119854
 // .global sub_811EBE0
 
-.include "asm37.inc"
-// .global sub_813D41C
-// .global loc_813D48C
-// .global reqBBS_81407D8
-// .global reqBBS_8140974
+.include "asm37_1.inc"
 // .global sub_8143B88
 // .global sub_8143DBC
 // .global SWI_Div
+
+.include "reqBBS.inc"
+// .global reqBBS_81407D8
+// .global reqBBS_8140974
 
 .include "asm00.inc"
 // .global sound_play
@@ -126,6 +126,10 @@
 // .global engine_isScreeneffectAnimating
 // .global sub_8013704
 // .global sub_80137B6
+
+.include "asm37_0.inc"
+// .global sub_813D41C
+// .global loc_813D48C
 
 .include "asm03_0.inc"
 // .global sub_802D15E

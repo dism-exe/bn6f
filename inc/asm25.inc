@@ -8,16 +8,6 @@
 .include "asm32.inc"
 // .global sub_811EBE0
 
-.include "asm37.inc"
-// .global sub_81409E4
-// .global sub_8140A00
-// .global sub_8140A0C
-// .global dword_81434E4
-// .global dword_81434E4
-// .global dword_81434E4
-// .global dword_81434E4
-// .global dword_81434E4
-
 .include "asm28.inc"
 // .global sub_809E13C
 // .global sub_809E188
@@ -53,6 +43,11 @@
 // .global sub_80047E0
 // .global engine_isScreeneffectAnimating
 
+.include "reqBBS.inc"
+// .global reqBBS_81409E4
+// .global reqBBS_8140A00
+// .global reqBBS_8140A0C
+
 .include "asm03_0.inc"
 // .global sub_802F110
 // .global sub_802F114
@@ -63,6 +58,13 @@
 // .global sub_80301B2
 // .global sub_80301DC
 // .global sub_8036E90
+
+.include "asm37_1.inc"
+// .global dword_81434E4
+// .global dword_81434E4
+// .global dword_81434E4
+// .global dword_81434E4
+// .global dword_81434E4
 
 .include "asm03_1.inc"
 // .global sub_8046818

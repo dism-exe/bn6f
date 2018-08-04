@@ -10359,7 +10359,7 @@ sub_8116904:
     push {lr}
     push {r5}
     ldr r5, [pc, #0x8116918-0x8116908-4] // =reqBBS_bxo_2001150
-    bl sub_813EE58
+    bl reqBBS_813EE58
     pop {r5}
     bl anim_80026C4
 .endfunc // sub_8116904
@@ -21656,7 +21656,7 @@ sub_811C18C:
     push {lr}
     push {r5}
     ldr r5, [pc, #0x811c1a0-0x811c190-4] // =sReqBBS_GUI
-    bl sub_81406FC
+    bl reqBBS_81406FC
     pop {r5}
     bl anim_80026C4
 .endfunc // sub_811C18C

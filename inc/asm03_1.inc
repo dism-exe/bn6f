@@ -137,13 +137,7 @@
 // .global sub_8120AB8
 // .global sub_8120CC8
 
-.include "asm37.inc"
-// .global sub_813D5C8
-// .global sub_813D60C
-// .global sub_813D638
-// .global sub_813D648
-// .global sub_813D750
-// .global sub_813D978
+.include "asm37_1.inc"
 // .global sub_814656C
 // .global sub_8146588
 // .global sub_81465BC
@@ -212,6 +206,14 @@
 // .global engine_isScreeneffectAnimating
 // .global sub_8006F1E
 // .global sub_800A7D0
+
+.include "asm37_0.inc"
+// .global sub_813D5C8
+// .global sub_813D60C
+// .global sub_813D638
+// .global sub_813D648
+// .global sub_813D750
+// .global sub_813D978
 
 .include "asm03_0.inc"
 // .global sub_802F114

@@ -28,36 +28,7 @@
 .include "asm24.inc"
 // .global dword_808C684
 
-.include "asm33.inc"
-// .global sub_81279A8
-
-.include "asm37.inc"
-// .global sub_81409D0
-// .global sub_81409E4
-// .global sub_81409F4
-// .global sub_8140A00
-// .global sub_8140A0C
-// .global reqBBS_runDialog_8140A70
-// .global dword_8140C60
-// .global dword_8140C68
-// .global dword_8140C7C
-// .global dword_8140C90
-// .global dword_8140CA4
-// .global dword_8140CB8
-// .global dword_8140CCC
-// .global dword_8140CE0
-// .global dword_8140CF4
-// .global dword_8140D10
-// .global dword_8140D1C
-// .global dword_8140D58
-// .global dword_8140D6C
-// .global dword_8140E6C
-// .global dword_8140FBC
-// .global dword_814122C
-// .global dword_81414CC
-// .global dword_814154C
-// .global dword_81415F4
-// .global dword_814172C
+.include "asm37_1.inc"
 // .global sub_81418E4
 // .global sub_81418F0
 // .global sub_8142050
@@ -93,6 +64,37 @@
 // .global dword_8143794
 // .global dword_81437CC
 // .global sub_8143B5E
+
+.include "asm33.inc"
+// .global sub_81279A8
+
+.include "reqBBS.inc"
+// .global reqBBS_81409D0
+// .global reqBBS_81409E4
+// .global reqBBS_81409F4
+// .global reqBBS_8140A00
+// .global reqBBS_8140A0C
+// .global reqBBS_runDialog_8140A70
+// .global dword_8140C60
+// .global dword_8140C68
+// .global dword_8140C7C
+// .global dword_8140C90
+// .global dword_8140CA4
+// .global dword_8140CB8
+// .global dword_8140CCC
+// .global dword_8140CE0
+// .global dword_8140CF4
+// .global dword_8140D10
+// .global dword_8140D1C
+// .global dword_8140D58
+// .global dword_8140D6C
+// .global dword_8140E6C
+// .global dword_8140FBC
+// .global dword_814122C
+// .global dword_81414CC
+// .global dword_814154C
+// .global dword_81415F4
+// .global dword_814172C
 
 .include "asm01.inc"
 // .global off_8020170

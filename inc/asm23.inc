@@ -6,8 +6,7 @@
 
 
 /* External Symbols */
-.include "asm37.inc"
-// .global sub_8140A0C
+.include "asm37_1.inc"
 // .global sub_814216E
 // .global sub_8142190
 // .global sub_814219C
@@ -48,6 +47,9 @@
 // .global sub_8005D88
 // .global engine_setScreeneffect
 // .global engine_isScreeneffectAnimating
+
+.include "reqBBS.inc"
+// .global reqBBS_8140A0C
 
 .include "asm03_0.inc"
 // .global sub_802F110

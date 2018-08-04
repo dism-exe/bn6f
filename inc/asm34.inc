@@ -26,9 +26,6 @@
 // .global sub_8120AB8
 // .global sub_8120CC8
 
-.include "asm37.inc"
-// .global sub_81440D8
-
 .include "asm33.inc"
 // .global dword_8129178
 // .global dword_8129180
@@ -45,6 +42,9 @@
 // .global sub_800307C
 // .global engine_setScreeneffect
 // .global sub_80062C8
+
+.include "asm37_1.inc"
+// .global sub_81440D8
 
 .include "asm03_0.inc"
 // .global sub_803C754

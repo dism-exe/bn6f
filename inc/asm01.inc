@@ -29,10 +29,9 @@
 
 
 /* External Symbols */
-.include "asm37.inc"
+.include "asm37_0.inc"
 // .global sub_813D60C
 // .global sub_813D66C
-// .global sub_8144D04
 
 .include "asm03_0.inc"
 // .global sub_802D246
@@ -45,6 +44,9 @@
 // .global sub_803EA60
 // .global sub_803F524
 // .global sub_803F740
+
+.include "asm37_1.inc"
+// .global sub_8144D04
 
 .include "asm00.inc"
 // .global CpuSet_ZeroFillWord

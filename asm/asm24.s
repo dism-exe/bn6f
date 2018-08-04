@@ -305,7 +305,7 @@ off_808CAD0:    .word 0x100
     mov r1, #0xd7
     bl sub_802F110
     bl sub_808CBD8
-    bl sub_8140A00
+    bl reqBBS_8140A00
     mov r0, #3
     bl sub_8001172
 loc_808CB06:
@@ -421,7 +421,7 @@ sub_808CBD8:
     mov r3, #0
     bl sub_80047E0
     pop {r5}
-    bl sub_8140A00
+    bl reqBBS_8140A00
     mov r0, #3
     bl sub_8001172
     mov r0, r10
@@ -586,7 +586,7 @@ sub_808CD04:
     ldr r5, [pc, #0x808d030-0x808cd06-2] // =dword_808C684+960
     ldr r5, [r5]
     mov r4, #0
-    bl sub_81409E4
+    bl reqBBS_81409E4
     cmp r0, #0xc0
     blt loc_808CD1C
     cmp r0, #0xcc

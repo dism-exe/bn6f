@@ -13,17 +13,17 @@
 .include "asm32.inc"
 // .global menuControl_cb_openSubmenu
 
-.include "asm37.inc"
-// .global sub_813D60C
-// .global sub_813D960
-// .global reqBBS_cb_draw_813E0A4
-// .global reqBBS_cb_813F404
+.include "asm37_1.inc"
 // .global sub_8144240
 // .global sub_814E8A0
 // .global sub_814EE2C
 
 .include "asm33.inc"
 // .global menuControl_cb_email
+
+.include "reqBBS.inc"
+// .global reqBBS_cb_draw_813E0A4
+// .global reqBBS_cb_813F404
 
 .include "asm36.inc"
 // .global cb_81382AC
@@ -71,6 +71,10 @@
 // .global sub_8006C22
 // .global sub_80071B4
 // .global zf_checkSameSubsystem_800A732
+
+.include "asm37_0.inc"
+// .global sub_813D60C
+// .global sub_813D960
 
 .include "asm03_0.inc"
 // .global Load_cb_802F544

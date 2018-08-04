@@ -165,13 +165,7 @@
 // .global sub_8021BD8
 // .global sub_8021C7C
 
-.include "asm37.inc"
-// .global sub_813B780
-// .global loc_813B7A0
-// .global sub_813B9B4
-// .global sub_813B9FC
-// .global sub_813EE58
-// .global sub_81406FC
+.include "asm37_1.inc"
 // .global sub_81418E4
 // .global sub_8142190
 // .global sub_81421D0
@@ -196,6 +190,16 @@
 // .global loc_8128CBC
 // .global sub_81291E8
 // .global sub_8129248
+
+.include "reqBBS.inc"
+// .global reqBBS_813EE58
+// .global reqBBS_81406FC
+
+.include "asm37_0.inc"
+// .global sub_813B780
+// .global loc_813B7A0
+// .global sub_813B9B4
+// .global sub_813B9FC
 
 .include "asm36.inc"
 // .global sub_81312F4

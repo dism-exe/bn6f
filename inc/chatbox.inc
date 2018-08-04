@@ -42,13 +42,7 @@
 // .global sub_811FFC0
 // .global sub_81207F8
 
-.include "asm37.inc"
-// .global sub_813C030
-// .global sub_813E5DC
-// .global dword_813F380
-// .global sub_813F9A0
-// .global reqBBS_getTotalPointsIndex
-// .global reqBBS_81408B4
+.include "asm37_1.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit
 
 .include "asm29.inc"
@@ -112,6 +106,9 @@
 // .global sub_8013704
 // .global sub_80137FE
 
+.include "asm37_0.inc"
+// .global sub_813C030
+
 .include "asm03_0.inc"
 // .global sub_802F114
 // .global sub_802F130
@@ -146,6 +143,13 @@
 // .global sub_803F524
 // .global sub_803F798
 // .global dword_803FCE4
+
+.include "reqBBS.inc"
+// .global reqBBS_813E5DC
+// .global dword_813F380
+// .global reqBBS_813F9A0
+// .global reqBBS_getTotalPointsIndex
+// .global reqBBS_81408B4
 
 .include "asm03_1.inc"
 // .global sub_8048C24

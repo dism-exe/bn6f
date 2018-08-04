@@ -1476,7 +1476,7 @@ loc_8000FEC:
     bl zf_802F168
     bne loc_8000FFA
     add r0, r6, #0
-    bl sub_813E5DC
+    bl reqBBS_813E5DC
 loc_8000FFA:
     add r6, #1
     sub r4, #1
@@ -1502,7 +1502,7 @@ loc_800101A:
     bl zf_802F168
     bne loc_8001028
     add r0, r6, #0
-    bl sub_813F9A0
+    bl reqBBS_813F9A0
 loc_8001028:
     add r6, #1
     sub r4, #1
@@ -9835,7 +9835,7 @@ sub_8004DF0:
     bl sub_800AB22
     mov r0, #1
     bl sub_802E240
-    bl sub_813E616
+    bl reqBBS_813E616
     bl reqBBS_initMemory_813F9DA
     mov r0, #0x17
     mov r1, #0x3a 
@@ -11111,7 +11111,7 @@ off_8005CE4:    .word 0x40
 .thumb_func
 subsystem_launchBBS:
     push {r4-r7,lr}
-    bl sub_813E07C
+    bl reqBBS_813E07C
     mov r5, r10
     ldr r5, [r5,#0x3c]
     ldrh r0, [r5,#4]

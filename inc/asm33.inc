@@ -88,16 +88,7 @@
 // .global dword_81211B4
 // .global pt_8121200
 
-.include "asm37.inc"
-// .global sub_813B9FC
-// .global sub_813C3AC
-// .global sub_813D5D0
-// .global sub_813D60C
-// .global sub_813D638
-// .global sub_813D648
-// .global sub_813D90C
-// .global sub_813D960
-// .global sub_813D978
+.include "asm37_1.inc"
 // .global sub_81440D8
 // .global sub_8144240
 // .global sub_8146588
@@ -195,6 +186,17 @@
 // .global sub_80137B6
 // .global sub_80137E6
 // .global sub_80137FE
+
+.include "asm37_0.inc"
+// .global sub_813B9FC
+// .global sub_813C3AC
+// .global sub_813D5D0
+// .global sub_813D60C
+// .global sub_813D638
+// .global sub_813D648
+// .global sub_813D90C
+// .global sub_813D960
+// .global sub_813D978
 
 .include "asm03_0.inc"
 // .global sub_802B2A0

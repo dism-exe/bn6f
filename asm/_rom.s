@@ -125,8 +125,12 @@ asm35:
 asm36:
 .include "asm/asm36.s"
 .incbin "bin/bin36.bin"
-asm37:
-.include "asm/asm37.s"
+asm37_0:
+.include "asm/asm37_0.s"
+reqBBS:
+.include "asm/reqBBS.s"
+asm37_1:
+.include "asm/asm37_1.s"
 .incbin "bin/bin37.bin"
 asm38:
 .include "asm/asm38.s"

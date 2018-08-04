@@ -699,24 +699,20 @@
 // .global sub_8021D14
 // .global sub_8021D36
 
+.include "reqBBS.inc"
+// .global reqBBS_813E07C
+// .global reqBBS_813E5DC
+// .global reqBBS_813E616
+// .global reqBBS_init_s_2005780
+// .global reqBBS_813F9A0
+// .global reqBBS_initMemory_813F9DA
+// .global reqBBS_8140984
+
 .include "asm21.inc"
 // .global sub_8080D90
 // .global sub_8080DA0
 
-.include "asm37.inc"
-// .global sub_813B768
-// .global sub_813B934
-// .global sub_813BF1C
-// .global sub_813C324
-// .global sub_813C3AC
-// .global sub_813D60C
-// .global sub_813E07C
-// .global sub_813E5DC
-// .global sub_813E616
-// .global reqBBS_init_s_2005780
-// .global sub_813F9A0
-// .global reqBBS_initMemory_813F9DA
-// .global reqBBS_8140984
+.include "asm37_1.inc"
 // .global sub_81419A0
 // .global sub_8142248
 // .global sub_8143482
@@ -744,6 +740,14 @@
 .include "asm33.inc"
 // .global sub_8127990
 // .global sub_81284A4
+
+.include "asm37_0.inc"
+// .global sub_813B768
+// .global sub_813B934
+// .global sub_813BF1C
+// .global sub_813C324
+// .global sub_813C3AC
+// .global sub_813D60C
 
 .include "asm29.inc"
 // .global ho_80A4984

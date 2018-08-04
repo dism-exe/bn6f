@@ -6,11 +6,8 @@
 
 
 /* External Symbols */
-.include "asm37.inc"
+.include "asm37_0.inc"
 // .global sub_813D5DC
-// .global sub_814469C
-// .global sub_81446AC
-// .global sub_814DA9C
 
 .include "asm03_0.inc"
 // .global off_802FD70
@@ -18,6 +15,11 @@
 // .global sub_8031612
 // .global sub_803DE72
 // .global sub_803EA68
+
+.include "asm37_1.inc"
+// .global sub_814469C
+// .global sub_81446AC
+// .global sub_814DA9C
 
 .include "chatbox.inc"
 // .global sub_8040D5C

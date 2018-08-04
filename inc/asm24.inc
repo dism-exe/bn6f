@@ -8,15 +8,6 @@
 .include "asm32.inc"
 // .global sub_811EBE0
 
-.include "asm37.inc"
-// .global sub_81409E4
-// .global sub_8140A00
-// .global sub_8142C94
-// .global sub_8142CB0
-// .global sub_8142CC8
-// .global sub_8142D4C
-// .global sub_8143294
-
 .include "asm28.inc"
 // .global sub_809E13C
 // .global sub_809E188
@@ -33,6 +24,10 @@
 // .global sub_80047E0
 // .global sub_8005D88
 
+.include "reqBBS.inc"
+// .global reqBBS_81409E4
+// .global reqBBS_8140A00
+
 .include "asm03_0.inc"
 // .global sub_802F110
 // .global sub_802F114
@@ -43,6 +38,13 @@
 // .global loc_802F200
 // .global sub_80302A8
 // .global sub_8036E90
+
+.include "asm37_1.inc"
+// .global sub_8142C94
+// .global sub_8142CB0
+// .global sub_8142CC8
+// .global sub_8142D4C
+// .global sub_8143294
 
 .include "asm03_1.inc"
 // .global sub_8048F88

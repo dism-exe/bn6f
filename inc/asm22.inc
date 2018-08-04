@@ -5,8 +5,8 @@
 
 
 /* External Symbols */
-.include "asm37.inc"
-// .global sub_81409F4
+.include "reqBBS.inc"
+// .global reqBBS_81409F4
 
 .include "asm03_0.inc"
 // .global sub_802F110

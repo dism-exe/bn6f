@@ -103,36 +103,7 @@
 // .global sub_8120CC8
 // .global sub_8120DAC
 
-.include "asm37.inc"
-// .global sub_813B780
-// .global sub_813B84C
-// .global sub_813B920
-// .global sub_813B928
-// .global sub_813B950
-// .global sub_813B9B4
-// .global sub_813B9C4
-// .global sub_813B9E0
-// .global sub_813B9FC
-// .global sub_813BA08
-// .global sub_813BA48
-// .global sub_813BA64
-// .global sub_813BA80
-// .global sub_813BAA8
-// .global sub_813BAC4
-// .global sub_813BAEC
-// .global sub_813BB68
-// .global sub_813BBD4
-// .global sub_813BF60
-// .global sub_813BFB8
-// .global sub_813C06C
-// .global sub_813C1C0
-// .global sub_813C334
-// .global sub_813C3AC
-// .global sub_813D5D0
-// .global sub_813D60C
-// .global sub_813D638
-// .global sub_813D90C
-// .global sub_813D978
+.include "asm37_1.inc"
 // .global sub_81440D8
 // .global sub_81469A0
 // .global sub_81469DC
@@ -227,6 +198,37 @@
 // .global sub_8013B4E
 // .global sub_8014018
 // .global sub_801401E
+
+.include "asm37_0.inc"
+// .global sub_813B780
+// .global sub_813B84C
+// .global sub_813B920
+// .global sub_813B928
+// .global sub_813B950
+// .global sub_813B9B4
+// .global sub_813B9C4
+// .global sub_813B9E0
+// .global sub_813B9FC
+// .global sub_813BA08
+// .global sub_813BA48
+// .global sub_813BA64
+// .global sub_813BA80
+// .global sub_813BAA8
+// .global sub_813BAC4
+// .global sub_813BAEC
+// .global sub_813BB68
+// .global sub_813BBD4
+// .global sub_813BF60
+// .global sub_813BFB8
+// .global sub_813C06C
+// .global sub_813C1C0
+// .global sub_813C334
+// .global sub_813C3AC
+// .global sub_813D5D0
+// .global sub_813D60C
+// .global sub_813D638
+// .global sub_813D90C
+// .global sub_813D978
 
 .include "asm03_0.inc"
 // .global sub_802F0D8

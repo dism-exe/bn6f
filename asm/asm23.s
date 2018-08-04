@@ -929,7 +929,7 @@ sub_8089B54:
     bl sub_809E2AE
     bl sub_809E2B8
     bl sub_809E13C
-    bl sub_8140A0C
+    bl reqBBS_8140A0C
     mov r0, #0x18
     strb r0, [r5]
 loc_8089B7A:

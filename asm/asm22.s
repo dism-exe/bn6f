@@ -145,7 +145,7 @@ sub_8086FD8:
     ldrb r0, [r5,#1]
     cmp r0, #0
     bne loc_8087068
-    bl sub_81409F4
+    bl reqBBS_81409F4
     cmp r0, #0xc0
     bge loc_8086FF4
     cmp r0, #0xb0

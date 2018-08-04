@@ -2687,7 +2687,7 @@ sub_8041218:
 .thumb_func
 sub_804122C:
     push {lr}
-    bl sub_813E5DC
+    bl reqBBS_813E5DC
     add r4, #4
     pop {pc}
     .balign 4, 0x00
@@ -2697,7 +2697,7 @@ sub_804122C:
 .thumb_func
 sub_8041238:
     push {lr}
-    bl sub_813F9A0
+    bl reqBBS_813F9A0
     add r4, #4
     pop {pc}
     .balign 4, 0x00
