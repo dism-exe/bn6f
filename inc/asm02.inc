@@ -2,17 +2,17 @@
 .equ INC_ASM02, 0
 
 /* Public Symbols */
-.global sub_8021AA4
+.global refIndex_8021DA8 // (int idx) -> void*
 .global sub_8021AB4
 .global sub_8021AE0
 .global sub_8021B2A
-.global sub_8021B78
-.global sub_8021B92
+.global sub_8021B78 // (int idx, int searchItem, int off) -> void*
+.global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 .global sub_8021BC0
 .global sub_8021BD8
 .global sub_8021C02
 .global sub_8021C68
-.global sub_8021C7C
+.global computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
 .global sub_8021CA8
 .global sub_8021D08
 .global sub_8021D14
@@ -30,7 +30,7 @@
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord
 // .global sub_800093C
-// .global sub_8006E70
+// .global modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
 // .global sub_8006E84
 // .global sub_8006EA4
 

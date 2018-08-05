@@ -76,8 +76,8 @@ pt.env(gameFiles={
     'bin25.bin':      (0x8090340, 0x80924D0), # 0x2190
     'asm26.s':        (0x80924D0, 0x80924DA),
     'bin26.bin':      (0x80924DA, 0x80946C4), # 0x21EA
-    'asm27.s':        (0x80946C4, 0x809477C),
-    'bin27.bin':      (0x809477C, 0x8098BE8), # 0x446C
+    'asm27.s':        (0x80946C4, 0x8094780),
+    'bin27.bin':      (0x8094780, 0x8098BE8), # 0x446C
     'asm28.s':        (0x8098BE8, 0x809FEA8),
     'bin28.bin':      (0x809FEA8, 0x80A4984), # 0x4ADC
     'asm29.s':        (0x80A4984, 0x80AAEA8),
@@ -94,8 +94,8 @@ pt.env(gameFiles={
     'bin34.bin':      (0x812DA94, 0x812EAAC), # 0x1018
     'asm35.s':        (0x812EAAC, 0x812EFD8),
     'bin35.bin':      (0x812EFD8, 0x8130020), # 0x1048
-    'asm36.s':        (0x8130020, 0x813893C),
-    'bin36.bin':      (0x813893C, 0x813B768), # 0x2E2C
+    'asm36.s':        (0x8130020, 0x8138944),
+    'bin36.bin':      (0x8138944, 0x813B768), # 0x2E2C
     'asm37_0.s':      (0x813B768, 0x813E07C),
     'reqBBS.s':       (0x813E07C, 0x814187C),
     'asm37_1.s:':     (0x814187C, 0x814FE8D),

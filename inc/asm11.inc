@@ -32,7 +32,7 @@
 // .global off_8067914
 
 .include "chatbox.inc"
-// .global chatbox_uncomp_803FD08
+// .global chatbox_uncomp_803FD08 // () -> int
 
 .include "asm00.inc"
 // .global sub_8001778

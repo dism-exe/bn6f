@@ -112,7 +112,7 @@
 .global sub_811FE34
 .global sub_811FE7C
 .global sub_811FF6C
-.global sub_811FFC0
+.global sub_811FFC0 // () -> void
 .global loc_8120018
 .global sub_81200EC
 .global sub_8120194
@@ -156,14 +156,14 @@
 // .global start_
 
 .include "asm02.inc"
-// .global sub_8021AA4
+// .global refIndex_8021DA8 // (int idx) -> void*
 // .global sub_8021AE0
 // .global dword_8021AEC
 // .global sub_8021B2A
-// .global sub_8021B92
+// .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021BC0
 // .global sub_8021BD8
-// .global sub_8021C7C
+// .global computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
 
 .include "asm37_1.inc"
 // .global sub_81418E4
@@ -175,7 +175,7 @@
 // .global sub_8143F90
 // .global sub_8144010
 // .global sub_8144D30
-// .global SWI_LZ77UnCompReadNormalWrite8bit
+// .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 .include "asm33.inc"
 // .global sub_8123208
@@ -226,7 +226,7 @@
 // .global sound_play
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord
-// .global sub_8000900
+// .global sub_8000900 // (int a3, int a2) -> void
 // .global sub_800093C
 // .global sub_8000950
 // .global sub_800098C
@@ -243,7 +243,7 @@
 // .global sub_8001562
 // .global sub_80015FC
 // .global sub_8001850
-// .global drawTiles
+// .global drawTiles // (int a3, int a2, int a1) -> void
 // .global sub_8001B1C
 // .global sub_8001B84
 // .global loc_8002676
@@ -394,9 +394,9 @@
 // .global sub_803F740
 
 .include "chatbox.inc"
-// .global sub_8040818
-// .global sub_8045F2C
-// .global sub_8045F3C
+// .global chatbox_8040818
+// .global chatbox_8045F2C
+// .global chatbox_8045F3C
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C
@@ -496,7 +496,7 @@
 .equ byte_2011E40, 0x2011E40
 .equ byte_2011E42, 0x2011E42
 .equ byte_2011E46, 0x2011E46
-.equ unk_2016200, 0x2016200
+.equ aJ_0, 0x2016200
 .equ unk_2016300, 0x2016300
 .equ unk_2016400, 0x2016400
 .equ unk_2016A04, 0x2016A04

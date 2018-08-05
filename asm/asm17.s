@@ -5,7 +5,7 @@
 sub_807931C:
     push {r4-r7,lr}
     mov r7, r10
-    ldr r0, [pc, #0x8079374-0x8079320-4] // =off_80790A4
+    ldr r0, off_8079374 // =off_80790A4 
     ldr r1, [r7,#0x14]
     ldrb r2, [r5,#5]
     lsl r4, r2, #2
@@ -26,14 +26,14 @@ sub_807931C:
     ldrb r4, [r5,#5]
     bl sub_802FF4C
     bl loc_8030472
-    ldr r0, [pc, #0x8079378-0x8079354-4] // =unk_2037800
+    ldr r0, off_8079378 // =unk_2037800 
     bl sub_80028D4
     ldrb r1, [r5,#5]
     lsl r1, r1, #2
-    ldr r0, [pc, #0x807937c-0x807935e-2] // =off_8079380
+    ldr r0, off_807937C // =off_8079380 
     ldr r0, [r0,r1]
     bl sub_8002906
-    bl chatbox_uncomp_803FD08
+    bl chatbox_uncomp_803FD08 // () -> int
     bl sub_807948C
     bl sub_8034FB8
     pop {r4-r7,pc}
@@ -52,7 +52,7 @@ dword_8079390:    .word 0x5A180E1C, 0x991C5B18
 sub_807939A:
     push {lr}
     lsl r1, r1, #2
-    ldr r0, [pc, #0x80793a8-0x807939e-2] // =off_80793AC
+    ldr r0, off_80793A8 // =off_80793AC 
     ldr r0, [r0,r1]
     bl sub_8002354
     pop {pc}
@@ -82,7 +82,7 @@ sub_80793E8:
     ldr r5, [r5,#0x3c]
     ldrb r1, [r5,#5]
     lsl r1, r1, #4
-    ldr r7, [pc, #0x807941c-0x80793f2-2] // =off_8079420
+    ldr r7, off_807941C // =off_8079420 
     add r7, r7, r1
     ldr r0, [r7]
     ldr r1, [r7,#4]
@@ -92,7 +92,7 @@ sub_80793E8:
     ldr r1, [r7,#0xc]
     orr r0, r1
     bl sub_8001778
-    ldr r0, [pc, #0x8079440-0x807940c-4] // =off_8079444
+    ldr r0, off_8079440 // =off_8079444 
     ldrb r1, [r5,#5]
     lsl r1, r1, #2
     ldr r0, [r0,r1]
@@ -118,7 +118,7 @@ loc_8079468:
     ldr r5, [r5,#0x3c]
     ldrb r6, [r5,#5]
     lsl r6, r6, #2
-    ldr r7, [pc, #0x807947c-0x8079472-2] // =off_8079480
+    ldr r7, off_807947C // =off_8079480 
     ldr r7, [r7,r6]
     mov lr, pc
     bx r7
@@ -138,12 +138,12 @@ sub_807948C:
     ldr r0, [r0,#0x3c]
     ldrb r0, [r0,#5]
     lsl r0, r0, #2
-    ldr r1, [pc, #0x80794a0-0x8079496-2] // =pt_80794A4
+    ldr r1, off_80794A0 // =pt_80794A4 
     ldr r0, [r1,r0]
     bl loc_8003570
     pop {pc}
 off_80794A0:    .word pt_80794A4
-// <endpool> <endfile>
+    // <endpool> <endfile>
 pt_80794A4:    .word dword_80794AC
     .word dword_80794EC
 .endfunc // sub_807948C

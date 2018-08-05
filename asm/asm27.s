@@ -4,7 +4,7 @@
 .thumb_func
 sub_80946C4:
     push {r4-r7,lr}
-    ldr r0, [pc, #0x80946d0-0x80946c6-2] // =dword_80946D4
+    ldr r0, off_80946D0 // =dword_80946D4 
     bl sub_8000B30
     mov r0, #0
     pop {r4-r7,pc}
@@ -23,7 +23,7 @@ dword_80946D4:    .word 0x8857CCC8, 0x600C000, 0x2024400, 0x8857D43C, 0x0
 .thumb_func
 sub_8094708:
     push {r4-r7,lr}
-    ldr r0, [pc, #0x8094774-0x809470a-2] // =unk_2025404
+    ldr r0, off_8094774 // =unk_2025404 
     bl sub_8094738
     mov r0, #0
     pop {r4-r7,pc}
@@ -33,7 +33,7 @@ sub_8094708:
 .thumb_func
 sub_8094714:
     push {r4-r7,lr}
-    ldr r0, [pc, #0x8094778-0x8094716-2] // =unk_2026404
+    ldr r0, off_8094778 // =unk_2026404 
     bl sub_8094738
     mov r0, #0
     pop {r4-r7,pc}
@@ -43,12 +43,12 @@ sub_8094714:
 .thumb_func
 sub_8094720:
     push {r4-r7,lr}
-// memBlock
-    ldr r0, [pc, #0x8094778-0x8094722-2] // =unk_2026404
+    // memBlock
+    ldr r0, off_8094778 // =unk_2026404 
     mov r1, #0x10
     lsl r1, r1, #8
     bl CpuSet_ZeroFillWord
-    ldr r0, [pc, #0x8094778-0x809472c-4] // =unk_2026404
+    ldr r0, off_8094778 // =unk_2026404 
     bl sub_8094738
     mov r0, #0
     pop {r4-r7,pc}
@@ -59,7 +59,7 @@ sub_8094720:
 .thumb_func
 sub_8094738:
     push {r4-r7,lr}
-    ldr r5, [pc, #0x809477c-0x809473a-2] // =byte_200BE70
+    ldr r5, off_809477C // =byte_200BE70 
     ldr r7, [r5,#0xc] // (dword_200BE7C - 0x200be70)
     ldr r1, [r7,#8]
     add r7, r7, r1
@@ -85,12 +85,12 @@ loc_8094752:
     blt loc_8094752
     bl sub_80307D8
     mov r0, #0
-// <endpool>
     pop {r4-r7,pc}
-.endfunc // sub_8094738
-
     .balign 4, 0x00
 off_8094774:    .word unk_2025404
-// <endfile>
 off_8094778:    .word unk_2026404
+    // <endpool> <endfile>
+off_809477C:    .word byte_200BE70
+.endfunc // sub_8094738
+
 /*For debugging purposes, connect comment at any range!*/

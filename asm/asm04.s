@@ -5,7 +5,7 @@
 sub_804E62C:
     push {r4-r7,lr}
     mov r7, r10
-    ldr r0, [pc, #0x804e688-0x804e630-4] // =off_804E38C
+    ldr r0, off_804E688 // =off_804E38C 
     ldr r1, [r7,#0x14]
     ldrb r2, [r5,#5]
     lsl r4, r2, #2
@@ -25,16 +25,16 @@ sub_804E62C:
     ldrb r4, [r5,#5]
     bl sub_802FF4C
     bl loc_8030472
-    ldr r0, [pc, #0x804e68c-0x804e660-4] // =unk_2037800
+    ldr r0, off_804E68C // =unk_2037800 
     bl sub_80028D4
     ldrb r1, [r5,#5]
     lsl r1, r1, #2
-    ldr r0, [pc, #0x804e694-0x804e66a-2] // =off_804E698
+    ldr r0, off_804E694 // =off_804E698 
     ldr r0, [r0,r1]
     bl sub_8002906
-    bl chatbox_uncomp_803FD08
+    bl chatbox_uncomp_803FD08 // () -> int
     bl sub_804E720
-    ldr r0, [pc, #0x804e690-0x804e67a-2] // =off_804E9CC
+    ldr r0, off_804E690 // =off_804E9CC 
     ldrb r1, [r5,#5]
     lsl r1, r1, #2
     ldr r0, [r0,r1]
@@ -56,7 +56,7 @@ dword_804E6AC:    .word 0x151C111C, 0x511C161C, 0x2418131C, 0x1C182518, 0x71CFFF
 sub_804E6D0:
     push {lr}
     lsl r1, r1, #2
-    ldr r0, [pc, #0x804e6e0-0x804e6d4-4] // =off_804E6E4
+    ldr r0, off_804E6E0 // =off_804E6E4 
     ldr r0, [r0,r1]
     bl sub_8002354
     pop {pc}
@@ -87,18 +87,18 @@ sub_804E720:
     ldr r0, [r0,#0x3c]
     ldrb r0, [r0,#5]
     lsl r0, r0, #2
-    ldr r1, [pc, #0x804e734-0x804e72a-2] // =off_804E738
+    ldr r1, off_804E734 // =off_804E738 
     ldr r0, [r1,r0]
     bl loc_8003570
     pop {pc}
 off_804E734:    .word off_804E738
-// <endpool>
+    // <endpool>
 off_804E738:    .word dword_804E74C
 .endfunc // sub_804E720
 
     .word dword_804E87C
     .word dword_804E8D0
     .word dword_804E8D4
-// <endfile>
+    // <endfile>
     .word dword_804E8D8
 /*For debugging purposes, connect comment at any range!*/

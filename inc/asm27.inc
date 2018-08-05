@@ -22,7 +22,6 @@
 .equ unk_2026400, 0x2026400
 .equ unk_2026404, 0x2026404
 .equ unk_3001B00, 0x3001B00
-.equ off_809477C, 0x809477C
 .equ dword_857CC88, 0x857CC88
 
 .endif // INC_ASM27

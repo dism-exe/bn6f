@@ -2,15 +2,16 @@
 
 .func
 .thumb_func
-sub_8021AA4:
-    ldr r1, [pc, #0x8021ab0-0x8021aa4-4] // =dword_8021DA8
-    mov r2, #0x2c 
+// (int idx) -> void*
+refIndex_8021DA8:
+    ldr r1, off_8021AB0 // =dword_8021DA8 
+    mov r2, #44
     mul r0, r2
     add r0, r0, r1
     mov pc, lr
     .byte 0, 0
 off_8021AB0:    .word dword_8021DA8
-.endfunc // sub_8021AA4
+.endfunc // refIndex_8021DA8
 
 .func
 .thumb_func
@@ -42,7 +43,7 @@ loc_8021ACC:
 sub_8021AE0:
     push {lr}
     lsr r1, r0, #9
-    ldr r2, [pc, #0x8021aec-0x8021ae4-4] // =0xB51001FF
+    ldr r2, dword_8021AEC // =0xB51001FF 
     and r0, r2
     pop {pc}
     .balign 4, 0x00
@@ -50,7 +51,7 @@ dword_8021AEC:    .word 0xB51001FF
 .endfunc // sub_8021AE0
 
     push {r0-r2}
-    bl sub_8006E70
+    bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
     pop {r0-r2}
     tst r2, r2
     bne loc_8021B00
@@ -58,13 +59,13 @@ dword_8021AEC:    .word 0xB51001FF
     pop {r4,pc}
 loc_8021B00:
     push {r0-r2}
-    ldr r1, [pc, #0x8021b74-0x8021b02-2] // =0x1E20
+    ldr r1, off_8021B74 // =0x1E20 
     add r1, r1, r0
     add r0, r1, #0
     bl sub_802F114
     pop {r0-r2}
     push {r2}
-    bl sub_8021C7C
+    bl computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
     add r4, r3, #0
     pop {r2}
     bl sub_8021B5A
@@ -79,7 +80,7 @@ loc_8021B00:
 sub_8021B2A:
     push {lr}
     push {r0-r2}
-    bl sub_8006E70
+    bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
     pop {r0-r2}
     tst r2, r2
     bne loc_8021B3C
@@ -87,13 +88,13 @@ sub_8021B2A:
     pop {pc}
 loc_8021B3C:
     push {r0-r2}
-    ldr r1, [pc, #0x8021b74-0x8021b3e-2] // =0x1E20
+    ldr r1, off_8021B74 // =0x1E20 
     add r1, r1, r0
     add r0, r1, #0
     bl sub_802F114
     pop {r0-r2}
     push {r2}
-    bl sub_8021C7C
+    bl computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
     pop {r2}
     bl sub_8021B5A
     add r0, r3, #0
@@ -122,27 +123,32 @@ off_8021B74:    .word 0x1E20
 
 .func
 .thumb_func
+// (int idx, int searchItem, int off) -> void*
 sub_8021B78:
     push {lr}
     push {r0-r2}
     tst r2, r2
     beq loc_8021B84
-    bl sub_8006E70
+    bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
 loc_8021B84:
     pop {r0-r2}
     push {r2}
-    bl sub_8021C7C
+    bl computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
     pop {r2}
     strb r2, [r0]
+    // return itemRef
+    // [break-response]
+    //   When getting an item; like from mayl, or when loading shops
     pop {pc}
 .endfunc // sub_8021B78
 
 .func
 .thumb_func
+// (int idx, int searchItem, int off) -> void*
 sub_8021B92:
     push {r4,lr}
     push {r2}
-    bl sub_8021C7C
+    bl computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
     add r4, r3, #0
     pop {r2}
     mov r3, #1
@@ -174,7 +180,7 @@ sub_8021BC0:
     bl sub_8006EA4
     pop {r0,r1}
     bne loc_8021BD4
-    bl sub_8021C7C
+    bl computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
     ldrb r0, [r0]
     pop {r4,pc}
 loc_8021BD4:
@@ -224,7 +230,7 @@ sub_8021C02:
 loc_8021C16:
     mov r7, r10
     ldr r7, [r7,#0x48]
-    ldr r6, [pc, #0x8021c60-0x8021c1a-2] // =unk_20018EC
+    ldr r6, off_8021C60 // =unk_20018EC 
     ldrb r3, [r6,r4]
     lsr r2, r3, #4
     mov r3, #0x3c 
@@ -233,7 +239,7 @@ loc_8021C16:
     mov r2, #0
 loc_8021C28:
     ldrh r7, [r3,r2]
-    ldr r6, [pc, #0x8021c64-0x8021c2a-2] // =0x1FF
+    ldr r6, dword_8021C64 // =0x1FF 
     and r6, r7
     lsr r7, r7, #9
     cmp r0, r6
@@ -269,10 +275,10 @@ dword_8021C64:    .word 0x1FF
 sub_8021C68:
     push {lr}
     mov r0, r10
-// memBlock
+    // memBlock
     ldr r0, [r0,#0x4c]
-// numWords
-    ldr r1, [pc, #0x8021c78-0x8021c6e-2] // =0xF00
+    // numWords
+    ldr r1, dword_8021C78 // =0xF00 
     bl CpuSet_ZeroFillWord
     pop {pc}
     .balign 4, 0x00
@@ -281,31 +287,35 @@ dword_8021C78:    .word 0xF00
 
 .func
 .thumb_func
-sub_8021C7C:
+// (int idx, int searchItem, int off) -> void*
+computeItemRef_Toolkit_unk4C:
     push {r4,r7,lr}
     add r2, r0, #0
     push {r1,r2}
-    bl sub_8021AA4
+    bl refIndex_8021DA8 // (int idx) -> void*
     pop {r1,r2}
     add r0, #0
     mov r3, #0
+    // index of r1_searchItem in r0_ptr or 0
 loc_8021C8C:
     ldrb r4, [r0,r3]
     cmp r1, r4
     beq loc_8021C9A
     add r3, #1
     cmp r3, #4
+    // for 4 items
     blt loc_8021C8C
     mov r3, #0
 loc_8021C9A:
     mov r7, r10
-    ldr r7, [r7,#0x4c]
-    mov r1, #0xc
+    ldr r7, [r7,#0x4c] // Toolkit.unk_4C
+    mov r1, #12
     mul r1, r2
     add r7, r7, r1
     add r0, r7, r3
+    // return Toolkit.unk_4C + (12*r2_off) + r3_itemIdx
     pop {r4,r7,pc}
-.endfunc // sub_8021C7C
+.endfunc // computeItemRef_Toolkit_unk4C
 
 .func
 .thumb_func
@@ -314,10 +324,11 @@ sub_8021CA8:
     mov r4, #0
     mov r5, #0
     mov r2, #0
+    // idx
 loc_8021CB0:
     add r0, r2, #0
     push {r2}
-    bl sub_8021AA4
+    bl refIndex_8021DA8 // (int idx) -> void*
     pop {r2}
     push {r0,r2}
     add r0, r2, #0
@@ -351,7 +362,7 @@ loc_8021CEE:
     blt loc_8021CC8
 loc_8021CF4:
     add r2, #1
-    ldr r1, [pc, #0x8021d04-0x8021cf6-2] // =0x140
+    ldr r1, off_8021D04 // =0x140 
     cmp r2, r1
     blt loc_8021CB0
     add r0, r4, #0
@@ -365,8 +376,8 @@ off_8021D04:    .word 0x140
 .thumb_func
 sub_8021D08:
     push {lr}
-    ldr r0, [pc, #0x8021d94-0x8021d0a-2] // =unk_203A0A0
-    ldr r1, [pc, #0x8021d98-0x8021d0c-4] // =0x2E0
+    ldr r0, off_8021D94 // =unk_203A0A0 
+    ldr r1, off_8021D98 // =0x2E0 
     bl sub_80008C0
     pop {pc}
 .endfunc // sub_8021D08
@@ -375,9 +386,9 @@ sub_8021D08:
 .thumb_func
 sub_8021D14:
     push {lr}
-    ldr r2, [pc, #0x8021d9c-0x8021d16-2] // =0x170
+    ldr r2, off_8021D9C // =0x170 
     mul r2, r0
-    ldr r0, [pc, #0x8021da0-0x8021d1a-2] // =unk_203A0A0
+    ldr r0, off_8021DA0 // =unk_203A0A0 
     add r0, r0, r2
     ldrb r2, [r0,r1]
     cmp r2, #0xff
@@ -388,9 +399,9 @@ locret_8021D28:
     pop {pc}
 .endfunc // sub_8021D14
 
-    ldr r2, [pc, #0x8021d9c-0x8021d2a-2] // =0x170
+    ldr r2, off_8021D9C // =0x170 
     mul r2, r0
-    ldr r0, [pc, #0x8021da4-0x8021d2e-2] // =unk_203A0A0
+    ldr r0, off_8021DA4 // =unk_203A0A0 
     add r0, r0, r2
     ldrb r0, [r0,r1]
     mov pc, lr
@@ -398,23 +409,23 @@ locret_8021D28:
 .thumb_func
 sub_8021D36:
     push {lr}
-    ldr r0, [pc, #0x8021d6c-0x8021d38-4] // =unk_2000AF0
+    ldr r0, off_8021D6C // =unk_2000AF0 
     mov r1, #0x40 
     bl sub_80008C0
-    ldr r0, [pc, #0x8021d80-0x8021d40-4] // =dword_8021D88
-    ldr r1, [pc, #0x8021d70-0x8021d42-2] // =unk_2001184
+    ldr r0, off_8021D80 // =dword_8021D88 
+    ldr r1, off_8021D70 // =unk_2001184 
     mov r2, #8
     bl sub_800093C
-    ldr r0, [pc, #0x8021d80-0x8021d4a-2] // =dword_8021D88
-    ldr r1, [pc, #0x8021d74-0x8021d4c-4] // =unk_200119C
+    ldr r0, off_8021D80 // =dword_8021D88 
+    ldr r1, off_8021D74 // =unk_200119C 
     mov r2, #8
     bl sub_800093C
-    ldr r0, [pc, #0x8021d84-0x8021d54-4] // =dword_8021D88
-    ldr r1, [pc, #0x8021d78-0x8021d56-2] // =0x20007D6
+    ldr r0, dword_8021D84 // =dword_8021D88 
+    ldr r1, dword_8021D78 // =0x20007D6 
     mov r2, #8
     bl sub_800093C
-    ldr r0, [pc, #0x8021d84-0x8021d5e-2] // =dword_8021D88
-    ldr r1, [pc, #0x8021d7c-0x8021d60-4] // =0x200083A
+    ldr r0, dword_8021D84 // =dword_8021D88 
+    ldr r1, dword_8021D7C // =0x200083A 
     mov r2, #8
     bl sub_800093C
     pop {pc}
@@ -426,7 +437,7 @@ dword_8021D78:    .word 0x20007D6
 dword_8021D7C:    .word 0x200083A
 off_8021D80:    .word dword_8021D88
 dword_8021D84:    .word 0x8021D8A
-// <endpool>
+    // <endpool>
 dword_8021D88:    .word 0x7E7E0002, 0xE67E7E, 0x0
 .endfunc // sub_8021D36
 
@@ -434,6 +445,6 @@ off_8021D94:    .word unk_203A0A0
 off_8021D98:    .word 0x2E0
 off_8021D9C:    .word 0x170
 off_8021DA0:    .word unk_203A0A0
-// <endfile>
+    // <endfile>
 off_8021DA4:    .word unk_203A0A0
 /*For debugging purposes, connect comment at any range!*/

@@ -121,7 +121,7 @@
 // .global dword_80001F4
 
 .include "asm02.inc"
-// .global sub_8021AA4
+// .global refIndex_8021DA8 // (int idx) -> void*
 
 .include "asm21.inc"
 // .global aSa
@@ -609,8 +609,8 @@
 // .global sub_80302A8
 
 .include "chatbox.inc"
-// .global chatbox_runScript
-// .global sub_8045F3C
+// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_8045F3C
 
 .include "asm03_1.inc"
 // .global sub_80465BC

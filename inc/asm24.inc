@@ -17,7 +17,7 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global sub_8000672
+// .global sound_8000672
 // .global CpuSet_ZeroFillWord
 // .global sub_8001172
 // .global sub_800151C

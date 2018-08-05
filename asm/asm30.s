@@ -8,7 +8,7 @@ sub_80AED50:
     ldrb r1, [r0,#1]
     ldrb r2, [r0,#2]
     ldrb r3, [r0]
-    ldr r0, [pc, #0x80aed70-0x80aed5c-4] // =off_80AED74
+    ldr r0, off_80AED70 // =off_80AED74 
     lsl r1, r1, #2
     ldr r0, [r0,r1]
     lsl r2, r2, #2
@@ -19,7 +19,7 @@ sub_80AED50:
     pop {pc}
     .byte 0, 0
 off_80AED70:    .word off_80AED74
-// <endpool>
+    // <endpool>
 off_80AED74:    .word off_80AED80
     .word off_80AEE0C
     .word off_80AEE0C
@@ -595,7 +595,7 @@ battleSettingsList1:    .word 0x11000022, 0x11008834, 0x11008815, 0xF0001626, 0x
     .word 0x20088C, 0x80B19B6, 0x15640C, 0x380007, 0x20088C, 0x80B1989
     .word 0x15640C, 0x380007, 0x20088C, 0x80B1992, 0x1564CC, 0x380007
     .word 0x20088C, 0x80B19AD
-// <endfile>
+    // <endfile>
     .word 0x1564CC, 0x380007, 0x20088C, 0x80B19B6, 0x1564E1
     .word 0x380007, 0x20088C, 0x80B19AD, 0x1564E1, 0x380007
     .word 0x20088C, 0x80B19B6, 0x156487, 0x380007, 0x20088C

@@ -18,9 +18,9 @@
 // .global dword_8000004
 
 .include "asm02.inc"
-// .global sub_8021AA4
+// .global refIndex_8021DA8 // (int idx) -> void*
 // .global sub_8021B2A
-// .global sub_8021B92
+// .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 
 .include "asm32.inc"
 // .global sub_811EBE0
@@ -196,8 +196,8 @@
 // .global sub_8036F70
 
 .include "chatbox.inc"
-// .global sub_8045F3C
-// .global sub_8045F4C
+// .global chatbox_8045F3C
+// .global chatbox_8045F4C
 
 
 /* Undeclared Symbols */

@@ -50,7 +50,7 @@
 
 .include "asm00.inc"
 // .global CpuSet_ZeroFillWord
-// .global sub_8000900
+// .global sub_8000900 // (int a3, int a2) -> void
 // .global sub_800093C
 // .global sub_800A0D6
 

@@ -26,7 +26,7 @@
 // .global start_8000288
 
 .include "asm02.inc"
-// .global sub_8021AA4
+// .global refIndex_8021DA8 // (int idx) -> void*
 
 .include "asm32.inc"
 // .global sub_8116FDC
@@ -113,7 +113,7 @@
 // .global sub_8148D24
 // .global sub_8149568
 // .global sub_8149644
-// .global SWI_LZ77UnCompReadNormalWrite8bit
+// .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 .include "asm36.inc"
 // .global byte_8130905
@@ -149,7 +149,7 @@
 // .global sub_8000784
 // .global sub_80008B4
 // .global CpuSet_ZeroFillWord
-// .global sub_8000900
+// .global sub_8000900 // (int a3, int a2) -> void
 // .global sub_8000920
 // .global sub_800092A
 // .global sub_800093C
@@ -164,7 +164,7 @@
 // .global sub_80017AA
 // .global sub_80017E0
 // .global sub_800183C
-// .global drawTiles
+// .global drawTiles // (int a3, int a2, int a1) -> void
 // .global sub_80018D0
 // .global sub_80024A2
 // .global sub_80035A2
@@ -251,16 +251,16 @@
 // .global sub_803F798
 
 .include "chatbox.inc"
-// .global chatbox_803FD78
+// .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) ->
 // .global chatbox_803FD9C
 // .global loc_803FDA4
 // .global chatbox_803FE08
 // .global chatbox_803FE10
-// .global sub_8040818
-// .global sub_8045F1C
-// .global sub_8045F2C
-// .global sub_8045F3C
-// .global sub_8045F4C
+// .global chatbox_8040818
+// .global chatbox_8045F1C
+// .global chatbox_8045F2C
+// .global chatbox_8045F3C
+// .global chatbox_8045F4C
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C

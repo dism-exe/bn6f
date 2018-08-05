@@ -5,11 +5,11 @@
 .global sub_80005AC
 .global sub_80005C4
 .global sound_play
-.global sub_80005D4
+.global sound_80005D4 // (int a3) -> void
 .global sub_80005F2
 .global sub_800060A
 .global sub_8000642
-.global sub_8000672
+.global sound_8000672
 .global sub_800068A
 .global sub_80006A2
 .global sub_8000784
@@ -18,7 +18,7 @@
 .global sub_80008B4
 .global sub_80008C0
 .global CpuSet_ZeroFillWord
-.global sub_8000900
+.global sub_8000900 // (int a3, int a2) -> void
 .global sub_8000920
 .global sub_800092A
 .global sub_800093C
@@ -89,7 +89,7 @@
 .global sub_8001850
 .global sub_800187C
 .global sub_8001890
-.global drawTiles
+.global drawTiles // (int a3, int a2, int a1) -> void
 .global sub_80018D0
 .global sub_80018E0
 .global sub_8001930
@@ -261,7 +261,7 @@
 .global save_8006E26
 .global load_8006E3C
 .global sub_8006E50
-.global sub_8006E70
+.global modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
 .global sub_8006E84
 .global sub_8006EA4
 .global sub_8006F1E
@@ -691,10 +691,10 @@
 // .global start_800024C
 
 .include "asm02.inc"
-// .global sub_8021AA4
+// .global refIndex_8021DA8 // (int idx) -> void*
 // .global sub_8021AB4
 // .global sub_8021C68
-// .global sub_8021C7C
+// .global computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
 // .global sub_8021D08
 // .global sub_8021D14
 // .global sub_8021D36
@@ -719,11 +719,11 @@
 // .global sub_8144048
 // .global sub_81440D8
 // .global sub_8144EEC
-// .global SWI_CpuFastSet
-// .global SWI_CpuSet
+// .global SWI_CpuFastSet // (void *src, void *dest, int mode) -> void
+// .global SWI_CpuSet // (void *src, void *dest, int mode) -> void
 // .global SWI_Div
 // .global SWI_LZ77UnCompReadNormalWrite16bit
-// .global SWI_LZ77UnCompReadNormalWrite8bit
+// .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 // .global SWI_Sqrt
 // .global sub_814E87C
 // .global sub_814E918
@@ -995,10 +995,10 @@
 
 .include "chatbox.inc"
 // .global loc_8040000
-// .global chatbox_runScript
-// .global sub_8040818
-// .global sub_8045F2C
-// .global sub_8045F3C
+// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_8040818
+// .global chatbox_8045F2C
+// .global chatbox_8045F3C
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C

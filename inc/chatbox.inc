@@ -2,9 +2,9 @@
 .equ INC_CHATBOX, 0
 
 /* Public Symbols */
-.global chatbox_uncomp_803FD08
-.global chatbox_runScript_202da04
-.global chatbox_803FD78
+.global chatbox_uncomp_803FD08 // () -> int
+.global chatbox_runScript_202da04 // (u8 scriptID) -> void
+.global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) ->
 .global chatbox_803FD9C
 .global loc_803FDA4
 .global chatbox_803FE08
@@ -12,38 +12,38 @@
 .global chatbox_803FE74
 .global chatbox_onUpdate_803FEB4
 .global loc_8040000
-.global chatbox_runScript
+.global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
 .global chatbox_reqBBS_80404C0
-.global sub_8040818
-.global sub_8040D5C
+.global chatbox_8040818
+.global chatbox_8040D5C
 .global off_8043C8C
 .global off_8044470
 .global off_80444C4
-.global sub_8045ED0
-.global sub_8045EDC
-.global sub_8045EEC
-.global sub_8045EFC
-.global sub_8045F1C
-.global sub_8045F2C
-.global sub_8045F3C
-.global sub_8045F4C
+.global chatbox_8045ED0
+.global chatbox_8045EDC
+.global chatbox_8045EEC
+.global chatbox_8045EFC
+.global chatbox_8045F1C
+.global chatbox_8045F2C
+.global chatbox_8045F3C
+.global chatbox_8045F4C
 
 
 /* External Symbols */
 .include "asm02.inc"
 // .global dword_8021AEC
-// .global sub_8021B78
-// .global sub_8021B92
+// .global sub_8021B78 // (int idx, int searchItem, int off) -> void*
+// .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021BC0
 // .global sub_8021BD8
 // .global sub_8021C02
 
 .include "asm32.inc"
-// .global sub_811FFC0
+// .global sub_811FFC0 // () -> void
 // .global sub_81207F8
 
 .include "asm37_1.inc"
-// .global SWI_LZ77UnCompReadNormalWrite8bit
+// .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 .include "asm29.inc"
 // .global sub_80AA5F4
@@ -62,12 +62,12 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global sub_80005D4
+// .global sound_80005D4 // (int a3) -> void
 // .global sub_800068A
 // .global sub_80006A2
 // .global sub_8000784
 // .global CpuSet_ZeroFillWord
-// .global sub_8000900
+// .global sub_8000900 // (int a3, int a2) -> void
 // .global sub_8000920
 // .global sub_800092A
 // .global sub_800093C
@@ -79,7 +79,7 @@
 // .global sub_80010D4
 // .global sub_80010EC
 // .global sub_800151C
-// .global drawTiles
+// .global drawTiles // (int a3, int a2, int a1) -> void
 // .global sub_8002694
 // .global sprite_loadAnimationData_80026A4
 // .global sub_80026B6

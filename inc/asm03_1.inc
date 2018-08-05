@@ -51,9 +51,9 @@
 
 /* External Symbols */
 .include "asm02.inc"
-// .global sub_8021AA4
+// .global refIndex_8021DA8 // (int idx) -> void*
 // .global dword_8021AEC
-// .global sub_8021B92
+// .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021BC0
 // .global sub_8021BD8
 
@@ -147,7 +147,7 @@
 // .global sub_8147F98
 // .global sub_8148224
 // .global sub_8148D24
-// .global SWI_LZ77UnCompReadNormalWrite8bit
+// .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 .include "asm33.inc"
 // .global sub_8123408
@@ -164,7 +164,7 @@
 .include "asm00.inc"
 // .global sound_play
 // .global CpuSet_ZeroFillWord
-// .global sub_8000900
+// .global sub_8000900 // (int a3, int a2) -> void
 // .global sub_8000920
 // .global sub_800093C
 // .global sub_8000950
@@ -185,7 +185,7 @@
 // .global sub_80017E0
 // .global sub_800183C
 // .global sub_8001850
-// .global drawTiles
+// .global drawTiles // (int a3, int a2, int a1) -> void
 // .global sub_80018D0
 // .global sub_8002354
 // .global sub_8002694
@@ -294,18 +294,18 @@
 // .global sub_803F79E
 
 .include "chatbox.inc"
-// .global chatbox_uncomp_803FD08
-// .global chatbox_803FD78
-// .global chatbox_runScript
-// .global sub_8040818
+// .global chatbox_uncomp_803FD08 // () -> int
+// .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) ->
+// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_8040818
 // .global dword_8043C90
 // .global dword_8043C90
 // .global dword_8043C90
-// .global sub_8045EEC
-// .global sub_8045EFC
-// .global sub_8045F1C
-// .global sub_8045F3C
-// .global sub_8045F4C
+// .global chatbox_8045EEC
+// .global chatbox_8045EFC
+// .global chatbox_8045F1C
+// .global chatbox_8045F3C
+// .global chatbox_8045F4C
 
 
 /* Undeclared Symbols */
@@ -362,7 +362,7 @@
 .equ unk_2015A00, 0x2015A00
 .equ unk_2015E00, 0x2015E00
 .equ unk_2017200, 0x2017200
-.equ unk_2017204, 0x2017204
+.equ a345, 0x2017204
 .equ unk_2018A00, 0x2018A00
 .equ unk_2018A04, 0x2018A04
 .equ unk_2019200, 0x2019200

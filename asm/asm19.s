@@ -5,7 +5,7 @@
 sub_807CDEC:
     push {r4-r7,lr}
     mov r7, r10
-    ldr r0, [pc, #0x807ce44-0x807cdf0-4] // =off_807C82C
+    ldr r0, off_807CE44 // =off_807C82C 
     ldr r1, [r7,#0x14]
     ldrb r2, [r5,#5]
     lsl r4, r2, #2
@@ -26,14 +26,14 @@ sub_807CDEC:
     ldrb r4, [r5,#5]
     bl sub_802FF4C
     bl loc_8030472
-    ldr r0, [pc, #0x807ce48-0x807ce24-4] // =unk_2037800
+    ldr r0, off_807CE48 // =unk_2037800 
     bl sub_80028D4
     ldrb r1, [r5,#5]
     lsl r1, r1, #2
-    ldr r0, [pc, #0x807ce4c-0x807ce2e-2] // =off_807CE50
+    ldr r0, off_807CE4C // =off_807CE50 
     ldr r0, [r0,r1]
     bl sub_8002906
-    bl chatbox_uncomp_803FD08
+    bl chatbox_uncomp_803FD08 // () -> int
     bl sub_807CFFC
     bl sub_8034FB8
     pop {r4-r7,pc}
@@ -54,7 +54,7 @@ dword_807CE7C:    .word 0x811C5F1C, 0x3818951C, 0x3A183918, 0x721CFFFF, 0xFFFF86
 sub_807CE90:
     push {lr}
     lsl r1, r1, #2
-    ldr r0, [pc, #0x807cea0-0x807ce94-4] // =off_807CEA4
+    ldr r0, off_807CEA0 // =off_807CEA4 
     ldr r0, [r0,r1]
     bl sub_8002354
     pop {pc}
@@ -102,7 +102,7 @@ sub_807CF24:
     ldr r5, [r5,#0x3c]
     ldrb r1, [r5,#5]
     lsl r1, r1, #4
-    ldr r7, [pc, #0x807cf58-0x807cf2e-2] // =off_807CF5C
+    ldr r7, off_807CF58 // =off_807CF5C 
     add r7, r7, r1
     ldr r0, [r7]
     ldr r1, [r7,#4]
@@ -112,7 +112,7 @@ sub_807CF24:
     ldr r1, [r7,#0xc]
     orr r0, r1
     bl sub_8001778
-    ldr r0, [pc, #0x807cf9c-0x807cf48-4] // =off_807CFA0
+    ldr r0, off_807CF9C // =off_807CFA0 
     ldrb r1, [r5,#5]
     lsl r1, r1, #2
     ldr r0, [r0,r1]
@@ -141,7 +141,7 @@ loc_807CFCC:
     ldr r5, [r5,#0x3c]
     ldrb r6, [r5,#5]
     lsl r6, r6, #2
-    ldr r7, [pc, #0x807cfe0-0x807cfd6-2] // =off_807CFE4
+    ldr r7, off_807CFE0 // =off_807CFE4 
     ldr r7, [r7,r6]
     mov lr, pc
     bx r7
@@ -167,12 +167,12 @@ sub_807CFFC:
     ldr r0, [r0,#0x3c]
     ldrb r0, [r0,#5]
     lsl r0, r0, #2
-    ldr r1, [pc, #0x807d010-0x807d006-2] // =pt_807D014
+    ldr r1, off_807D010 // =pt_807D014 
     ldr r0, [r1,r0]
     bl loc_8003570
     pop {pc}
 off_807D010:    .word pt_807D014
-// <endpool> <endfile>
+    // <endpool> <endfile>
 pt_807D014:    .word dword_807D024
     .word dword_807D0B4
     .word dword_807D1A8

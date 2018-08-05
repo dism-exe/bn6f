@@ -75,9 +75,9 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global sub_80005D4
+// .global sound_80005D4 // (int a3) -> void
 // .global CpuSet_ZeroFillWord
-// .global sub_8000900
+// .global sub_8000900 // (int a3, int a2) -> void
 // .global sub_800093C
 // .global initMemblockToByte
 // .global sub_8000B30
@@ -86,7 +86,7 @@
 // .global sub_8001172
 // .global calcAngle_800117C
 // .global sub_8001850
-// .global drawTiles
+// .global drawTiles // (int a3, int a2, int a1) -> void
 // .global sprite_loadAnimationData_80026A4
 // .global anim_80026C4
 // .global sub_80026E4
@@ -161,14 +161,14 @@
 // .global sub_803F9E4
 
 .include "chatbox.inc"
-// .global chatbox_runScript_202da04
-// .global chatbox_runScript
-// .global sub_8040818
+// .global chatbox_runScript_202da04 // (u8 scriptID) -> void
+// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_8040818
 // .global off_8044470
 // .global off_80444C4
-// .global sub_8045EFC
-// .global sub_8045F3C
-// .global sub_8045F4C
+// .global chatbox_8045EFC
+// .global chatbox_8045F3C
+// .global chatbox_8045F4C
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C

@@ -22,7 +22,7 @@
 // .global sub_814DA9C
 
 .include "chatbox.inc"
-// .global sub_8040D5C
+// .global chatbox_8040D5C
 // .global off_8043C8C
 
 .include "asm00.inc"

@@ -46,10 +46,10 @@
 
 /* External Symbols */
 .include "asm02.inc"
-// .global sub_8021AA4
+// .global refIndex_8021DA8 // (int idx) -> void*
 // .global sub_8021AB4
 // .global sub_8021AE0
-// .global sub_8021B92
+// .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021C68
 // .global sub_8021CA8
 
@@ -133,12 +133,12 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global sub_80005D4
+// .global sound_80005D4 // (int a3) -> void
 // .global sub_800068A
 // .global sub_80008B4
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord
-// .global sub_8000900
+// .global sub_8000900 // (int a3, int a2) -> void
 // .global sub_8000920
 // .global sub_800093C
 // .global sub_8000950
@@ -156,7 +156,7 @@
 // .global sub_80017E0
 // .global sub_8001820
 // .global sub_800183C
-// .global drawTiles
+// .global drawTiles // (int a3, int a2, int a1) -> void
 // .global sub_80018D0
 // .global sub_80024A2
 // .global sub_800260C
@@ -281,14 +281,14 @@
 // .global sub_803EF7C
 
 .include "chatbox.inc"
-// .global chatbox_803FD78
+// .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) ->
 // .global chatbox_803FD9C
-// .global chatbox_runScript
-// .global sub_8040818
-// .global sub_8045F1C
-// .global sub_8045F2C
-// .global sub_8045F3C
-// .global sub_8045F4C
+// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_8040818
+// .global chatbox_8045F1C
+// .global chatbox_8045F2C
+// .global chatbox_8045F3C
+// .global chatbox_8045F4C
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C
@@ -470,8 +470,6 @@
 .equ dword_812EFDC, 0x812EFDC
 .equ dword_812EFDC, 0x812EFDC
 .equ dword_812EFDC, 0x812EFDC
-.equ dword_813893C, 0x813893C
-.equ dword_8138940, 0x8138940
 .equ dword_8138944, 0x8138944
 .equ dword_8138944, 0x8138944
 .equ off_8138C04, 0x8138C04

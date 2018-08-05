@@ -70,7 +70,7 @@
 // .global start_800027C
 
 .include "asm02.inc"
-// .global sub_8021AA4
+// .global refIndex_8021DA8 // (int idx) -> void*
 // .global sub_8021AE0
 
 .include "asm32.inc"

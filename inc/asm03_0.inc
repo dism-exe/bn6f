@@ -344,9 +344,9 @@
 // .global sub_806C59C
 
 .include "asm02.inc"
-// .global sub_8021AA4
+// .global refIndex_8021DA8 // (int idx) -> void*
 // .global dword_8021AEC
-// .global sub_8021B92
+// .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021BC0
 // .global sub_8021BD8
 // .global sub_8021D14
@@ -591,7 +591,7 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global sub_80005D4
+// .global sound_80005D4 // (int a3) -> void
 // .global sub_80005F2
 // .global sub_8000642
 // .global sub_800068A
@@ -599,7 +599,7 @@
 // .global sub_80008B4
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord
-// .global sub_8000900
+// .global sub_8000900 // (int a3, int a2) -> void
 // .global sub_8000920
 // .global sub_800092A
 // .global sub_800093C
@@ -640,7 +640,7 @@
 // .global sub_8001850
 // .global sub_800187C
 // .global sub_8001890
-// .global drawTiles
+// .global drawTiles // (int a3, int a2, int a1) -> void
 // .global sub_80018D0
 // .global sub_80018E0
 // .global sub_8001930
@@ -694,7 +694,7 @@
 // .global save_8006E26
 // .global load_8006E3C
 // .global sub_8006E50
-// .global sub_8006E70
+// .global modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
 // .global sub_8006F54
 // .global sub_8006F78
 // .global sub_8006FAC
@@ -913,7 +913,7 @@
 // .global sub_8148FC0
 // .global sub_8149644
 // .global sub_814A828
-// .global SWI_LZ77UnCompReadNormalWrite8bit
+// .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 // .global sub_814D8F0
 // .global sub_814D954
 // .global sub_814D9C4
@@ -971,13 +971,13 @@
 .include "chatbox.inc"
 // .global chatbox_803FD9C
 // .global chatbox_803FE74
-// .global chatbox_runScript
-// .global sub_8040818
-// .global sub_8045ED0
-// .global sub_8045F1C
-// .global sub_8045F2C
-// .global sub_8045F3C
-// .global sub_8045F4C
+// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_8040818
+// .global chatbox_8045ED0
+// .global chatbox_8045F1C
+// .global chatbox_8045F2C
+// .global chatbox_8045F3C
+// .global chatbox_8045F4C
 
 .include "asm12.inc"
 // .global sub_806D8F8

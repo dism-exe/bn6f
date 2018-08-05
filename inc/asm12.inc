@@ -16,7 +16,7 @@
 // .global sub_8034FB8
 
 .include "chatbox.inc"
-// .global chatbox_uncomp_803FD08
+// .global chatbox_uncomp_803FD08 // () -> int
 
 .include "asm00.inc"
 // .global sub_8001778

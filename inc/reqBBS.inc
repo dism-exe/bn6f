@@ -50,7 +50,7 @@
 // .global sub_811FA98
 
 .include "asm37_1.inc"
-// .global SWI_LZ77UnCompReadNormalWrite8bit
+// .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 .include "asm28.inc"
 // .global sub_809E122
@@ -71,7 +71,7 @@
 // .global sub_80017AA
 // .global sub_80017E0
 // .global sub_800183C
-// .global drawTiles
+// .global drawTiles // (int a3, int a2, int a1) -> void
 // .global sub_80018D0
 // .global sub_8002FA6
 // .global sub_8005F84
@@ -98,10 +98,10 @@
 // .global sub_8031A7A
 
 .include "chatbox.inc"
-// .global chatbox_runScript
+// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_reqBBS_80404C0
-// .global sub_8040818
-// .global sub_8045F3C
+// .global chatbox_8040818
+// .global chatbox_8045F3C
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C

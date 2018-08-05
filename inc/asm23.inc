@@ -64,10 +64,10 @@
 // .global sub_8036FAA
 
 .include "chatbox.inc"
-// .global chatbox_runScript
-// .global sub_8045EDC
-// .global sub_8045F3C
-// .global sub_8045F4C
+// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_8045EDC
+// .global chatbox_8045F3C
+// .global chatbox_8045F4C
 
 .include "asm03_1.inc"
 // .global sub_80468C6

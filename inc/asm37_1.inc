@@ -132,11 +132,11 @@
 .global sub_8149644
 .global sub_8149718
 .global sub_814A828
-.global SWI_CpuFastSet
-.global SWI_CpuSet
+.global SWI_CpuFastSet // (void *src, void *dest, int mode) -> void
+.global SWI_CpuSet // (void *src, void *dest, int mode) -> void
 .global SWI_Div
 .global SWI_LZ77UnCompReadNormalWrite16bit
-.global SWI_LZ77UnCompReadNormalWrite8bit
+.global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 .global SWI_Sqrt
 .global sub_814D8F0
 .global sub_814D954
@@ -222,7 +222,7 @@
 // .global sub_803F618
 
 .include "chatbox.inc"
-// .global sub_8045F3C
+// .global chatbox_8045F3C
 
 .include "asm03_1.inc"
 // .global sub_8046818

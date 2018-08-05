@@ -4,7 +4,7 @@
 .thumb_func
 sub_8080D90:
     push {lr}
-    ldr r0, [pc, #0x8080d9c-0x8080d92-2] // =dword_2009690
+    ldr r0, off_8080D9C // =dword_2009690 
     mov r1, #8
     bl sub_80008B4
     pop {pc}
@@ -18,7 +18,7 @@ sub_8080DA0:
     bl sub_8081308
     add r4, r0, #0
     lsl r1, r4, #4
-    ldr r7, [pc, #0x8080e30-0x8080daa-2] // =off_8080E34
+    ldr r7, off_8080E30 // =off_8080E34 
     add r7, r7, r1
     ldr r0, [r7]
     ldr r1, [r7,#4]
@@ -28,12 +28,12 @@ sub_8080DA0:
     ldr r1, [r7,#0xc]
     orr r0, r1
     bl sub_8001778
-    ldr r6, [pc, #0x8080f94-0x8080dc4-4] // =off_8080F98
+    ldr r6, off_8080F94 // =off_8080F98 
     lsl r1, r4, #2
     ldr r0, [r6,r1]
     bl sub_80304E8
     lsl r1, r4, #2
-    ldr r0, [pc, #0x8080e2c-0x8080dd0-4] // =off_8081220
+    ldr r0, off_8080E2C // =off_8081220 
     ldr r0, [r0,r1]
     bl sub_8002354
     bl sub_802D234
@@ -49,7 +49,7 @@ locret_8080DE8:
     bl sub_808137C
     add r4, r0, #0
     lsl r1, r4, #4
-    ldr r7, [pc, #0x8080e30-0x8080df4-4] // =off_8080E34
+    ldr r7, off_8080E30 // =off_8080E34 
     add r7, r7, r1
     ldr r0, [r7]
     ldr r1, [r7,#4]
@@ -59,12 +59,12 @@ locret_8080DE8:
     ldr r1, [r7,#0xc]
     orr r0, r1
     bl sub_8001778
-    ldr r6, [pc, #0x8080f94-0x8080e0e-2] // =off_8080F98
+    ldr r6, off_8080F94 // =off_8080F98 
     lsl r1, r4, #2
     ldr r0, [r6,r1]
     bl sub_80304E8
     lsl r1, r4, #2
-    ldr r0, [pc, #0x8080e2c-0x8080e1a-2] // =off_8081220
+    ldr r0, off_8080E2C // =off_8081220 
     ldr r0, [r0,r1]
     bl sub_8002354
     bl sub_803537C
@@ -313,7 +313,7 @@ sub_8081308:
     ldrb r0, [r0,#5]
     cmp r1, #0x80
     blt loc_808135E
-    ldr r2, [pc, #0x8081398-0x8081322-2] // =pt_808139C
+    ldr r2, off_8081398 // =pt_808139C 
     sub r1, #0x80
     lsl r1, r1, #2
     ldr r2, [r2,r1]
@@ -325,7 +325,7 @@ sub_8081308:
     mov r1, r10
     ldr r1, [r1,#0x3c]
     ldrh r1, [r1,#4]
-    ldr r3, [pc, #0x8081364-0x808133a-2] // =word_8081368
+    ldr r3, off_8081364 // =word_8081368 
 loc_808133C:
     ldrh r2, [r3]
     tst r2, r2
@@ -361,7 +361,7 @@ sub_808137C:
     push {r4-r7,lr}
     cmp r1, #0x80
     blt loc_8081392
-    ldr r2, [pc, #0x8081398-0x8081382-2] // =pt_808139C
+    ldr r2, off_8081398 // =pt_808139C 
     sub r1, #0x80
     lsl r1, r1, #2
     ldr r2, [r2,r1]
@@ -374,7 +374,7 @@ loc_8081392:
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_8081398:    .word pt_808139C
-// <endpool> <endfile>
+    // <endpool> <endfile>
 pt_808139C:    .word dword_80813F8
     .word dword_80813FC
     .word dword_8081400
