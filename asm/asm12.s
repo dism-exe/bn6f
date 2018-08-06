@@ -156,7 +156,7 @@ loc_806DC0C:
     bl sub_802F110
     mov r0, #0
     mov r1, #0x8f
-    bl sub_802F12C
+    bl sub_802F12C // (int a1, int a2) -> void
     pop {r0,r1}
     mov r5, r10
     ldr r5, [r5,#0x3c]
@@ -198,7 +198,7 @@ sub_806DC7A:
 loc_806DC86:
     mov r0, #0
     mov r1, #0x8e
-    bl sub_802F12C
+    bl sub_802F12C // (int a1, int a2) -> void
     mov r0, #0
     mov r1, #0x8f
     bl sub_802F110
@@ -217,7 +217,7 @@ sub_806DC98:
 loc_806DCA4:
     mov r0, #0
     mov r1, #0x8e
-    bl sub_802F12C
+    bl sub_802F12C // (int a1, int a2) -> void
     mov r0, #0
     mov r1, #0x8f
     bl sub_802F110
@@ -236,7 +236,7 @@ sub_806DCB6:
 loc_806DCC2:
     mov r0, #0
     mov r1, #0x8e
-    bl sub_802F12C
+    bl sub_802F12C // (int a1, int a2) -> void
     mov r0, #0
     mov r1, #0x8f
     bl sub_802F110

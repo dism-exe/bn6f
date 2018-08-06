@@ -2,12 +2,11 @@
 .equ INC_MAIN, 0
 
 /* Public Symbols */
-.global main_
 
 
 /* External Symbols */
 .include "start.inc"
-// .global start_800023C
+// .global start_800023C // () -> void
 // .global start_800024C
 
 .include "asm32.inc"
@@ -31,7 +30,7 @@
 .include "asm00.inc"
 // .global sub_80007B2
 // .global sub_80007BE
-// .global CpuSet_ZeroFillWord
+// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8000A3C
 // .global objRender_8000A44
 // .global sub_8000E10
@@ -50,7 +49,7 @@
 // .global cb_call_200A880
 // .global loc_80019A0
 // .global sub_8001AFC
-// .global PET_onUpdate_8001B94
+// .global PET_main_onUpdate
 // .global sub_8002368
 // .global getPalleteAndTransition_80023E0
 // .global sub_80024A2
@@ -70,7 +69,7 @@
 // .global CpuSet_toolKit
 // .global sub_8006C22
 // .global sub_80071B4
-// .global zf_checkSameSubsystem_800A732
+// .global isSameSubsystem // () -> zf
 
 .include "asm37_0.inc"
 // .global sub_813D60C
@@ -98,7 +97,7 @@
 // .global sub_803FCF0
 
 .include "chatbox.inc"
-// .global chatbox_onUpdate_803FEB4
+// .global chatbox_main_onUpdate // () -> void
 
 .include "asm03_1.inc"
 // .global sub_804657C

@@ -4,13 +4,16 @@
 .thumb_func
 sub_812EAAC:
     push {r4-r7,lr}
+    // a1
     mov r0, #0
+    // a2
     mov r1, #0
+    // a3
     mov r2, #1
     ldr r3, off_812EAC0 // =unk_201EE20 
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7,pc}
 off_812EAC0:    .word unk_201EE20
 .endfunc // sub_812EAAC
@@ -28,7 +31,7 @@ sub_812EAC4:
     ldr r0, off_812EB68 // =word_2023FA0 
     ldr r1, off_812EB74 // =0xBC 
     lsl r1, r1, #2
-    bl sub_8000900 // (int a3, int a2) -> void
+    bl CpuFastSet_8000900 // (int a1, int a2) -> void
     ldr r0, off_812EB68 // =word_2023FA0 
     mov r1, #0x90
     strh r1, [r0]
@@ -398,7 +401,7 @@ locret_812ED90:
     ldr r3, off_812EDE0 // =unk_201E920 
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     add r5, r7, #0
     bl sub_812EB92
     ldrh r0, [r5,#0x2a]
@@ -498,7 +501,7 @@ loc_812EE4E:
     mov r2, #2
     mov r4, #8
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7,pc}
     push {r4-r7,lr}
     lsl r0, r0, #2
@@ -623,7 +626,7 @@ sub_812EF60:
     ldr r3, off_812EFA0 // =unk_2025A70 
     mov r4, #0xa
     mov r5, #6
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7,pc}
 off_812EF8C:    .word word_2023FA0
 off_812EF90:    .word unk_2025070

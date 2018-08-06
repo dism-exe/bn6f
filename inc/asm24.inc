@@ -18,7 +18,7 @@
 .include "asm00.inc"
 // .global sound_play
 // .global sound_8000672
-// .global CpuSet_ZeroFillWord
+// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8001172
 // .global sub_800151C
 // .global sub_80047E0
@@ -30,9 +30,9 @@
 
 .include "asm03_0.inc"
 // .global sub_802F110
-// .global sub_802F114
-// .global sub_802F12C
-// .global sub_802F164
+// .global sub_802F114 // (int a1) -> void
+// .global sub_802F12C // (int a1, int a2) -> void
+// .global sub_802F164 // (int a1, int a2) -> zf
 // .global zf_802F168
 // .global loc_802F1AC
 // .global loc_802F200

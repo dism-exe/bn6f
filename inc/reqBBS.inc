@@ -58,8 +58,8 @@
 .include "asm00.inc"
 // .global sound_play
 // .global sub_80008C0
-// .global CpuSet_ZeroFillWord
-// .global initMemblockToByte
+// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global initMemToByte // (void *mem, int size, u8 byte) -> void
 // .global loc_8000AC8
 // .global sub_8000B30
 // .global getPETNaviSelect
@@ -71,7 +71,7 @@
 // .global sub_80017AA
 // .global sub_80017E0
 // .global sub_800183C
-// .global drawTiles // (int a3, int a2, int a1) -> void
+// .global drawTiles // (int a1, int a2, int a3) -> void
 // .global sub_80018D0
 // .global sub_8002FA6
 // .global sub_8005F84
@@ -88,20 +88,20 @@
 
 .include "asm03_0.inc"
 // .global sub_802F110
-// .global sub_802F114
-// .global sub_802F12C
-// .global sub_802F130
-// .global sub_802F164
+// .global sub_802F114 // (int a1) -> void
+// .global sub_802F12C // (int a1, int a2) -> void
+// .global loc_802F130
+// .global sub_802F164 // (int a1, int a2) -> zf
 // .global zf_802F168
-// .global sub_802F17E
+// .global sub_802F17E // (int a1, int a2) -> void
 // .global sub_802FE28
 // .global sub_8031A7A
 
 .include "chatbox.inc"
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_reqBBS_80404C0
-// .global chatbox_8040818
-// .global chatbox_8045F3C
+// .global chatbox_runScript_reqBBS // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_8040818 // () -> void
+// .global chatbox_maskBits_2009F38 // (int mask) -> void
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C

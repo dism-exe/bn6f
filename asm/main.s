@@ -35,13 +35,13 @@ main_gameRoutine:
     mov lr, pc
     bx r0
     bl sub_800154C
-    bl zf_checkSameSubsystem_800A732
+    bl isSameSubsystem // () -> zf
     beq loc_800032A
     bl subsystem_triggerTransition_800630A
 loc_800032A:
-    bl chatbox_onUpdate_803FEB4
+    bl chatbox_main_onUpdate // () -> void
     bl cb_call_200A880
-    bl PET_onUpdate_8001B94
+    bl PET_main_onUpdate
     ldr r0, off_8000344 // =loc_3006814+1 
     mov lr, pc
     bx r0
@@ -211,11 +211,19 @@ main_static_8000454:
     tst r2, r2
     beq loc_80004A0
     push {r1}
-    bl start_800023C
-    bl main_static_80004A4
-    bl sub_803F4C8
-    pop {r1}
-    mov r4, #0xa
+    bl start_800023C // () -> void
+    .byte 0
+    .byte 0xF0
+    .byte 6
+    .byte 0xF8
+    .byte 0x3F 
+    .byte 0xF0
+    .byte 0x16
+    .byte 0xF8
+    .byte 2
+    .byte 0xBC
+    .byte 0xA
+    .byte 0x24 
 loc_80004A0:
     strb r4, [r1]
 locret_80004A2:
@@ -281,7 +289,7 @@ loc_80004C0:
     ldr r0, [r0]
     // numWords
     mov r1, #8
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     bl sub_803D1A8
     bl sub_803E900
     pop {r5,pc}

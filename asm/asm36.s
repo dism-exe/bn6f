@@ -15,7 +15,7 @@ sub_8130020:
     mov r0, #0
     strb r0, [r5,#0x15]
     strb r0, [r5,#3]
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     ldrh r0, [r5,#0x2c]
     mov r1, #1
     bl sub_81302F4
@@ -326,7 +326,7 @@ dword_8130054:    .word 0xFEDB
     ldr r3, off_8130190 // =unk_201F820 
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7,pc}
 off_8130190:    .word unk_201F820
     push {r4-r7,lr}
@@ -334,7 +334,7 @@ off_8130190:    .word unk_201F820
     add r5, r0, #0
     ldr r0, off_81301D0 // =word_2023FA0 
     ldr r1, dword_81301D8 // =0x10 
-    bl sub_8000900 // (int a3, int a2) -> void
+    bl CpuFastSet_8000900 // (int a1, int a2) -> void
     ldr r4, off_81301D0 // =word_2023FA0 
     mov r1, #0x26 
     strh r1, [r4]
@@ -701,7 +701,7 @@ locret_8130462:
     ldr r3, off_81304A0 // =unk_201F320 
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     add r5, r7, #0
     bl sub_8130290
     ldrh r0, [r5,#0x2a]
@@ -783,13 +783,16 @@ loc_813050C:
     mov r3, #0xa
     mov r5, #5
     bl sub_81200EC
+    // a1
     mov r0, #0xa
+    // a2
     mov r1, #8
+    // a3
     mov r2, #2
     ldr r3, off_81305E8 // =unk_20243E8 
     mov r4, #8
     mov r5, #0xa
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_81304EC
 
     ldrb r0, [r7,#0xc]
@@ -809,7 +812,7 @@ loc_813050C:
     ldr r3, off_81305EC // =unk_20244C8 
     mov r4, #2
     mov r5, #0xa
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrb r0, [r7,#0xc]
     sub r0, #1
     ldr r1, off_8130614 // =dword_8130618 
@@ -830,7 +833,7 @@ loc_813050C:
     ldr r3, off_81305F8 // =unk_2024500 
     mov r4, #2
     mov r5, #0xa
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrb r0, [r7,#0xc]
     sub r0, #1
     ldr r1, off_8130614 // =dword_8130618 
@@ -850,7 +853,7 @@ loc_813050C:
     ldr r3, off_8130604 // =unk_2024538 
     mov r4, #1
     mov r5, #0xa
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrb r0, [r7,#0xc]
     sub r0, #1
     ldr r1, off_8130614 // =dword_8130618 
@@ -870,7 +873,7 @@ loc_813050C:
     ldr r3, off_813060C // =unk_2024554 
     mov r4, #2
     mov r5, #0xa
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 locret_81305E0:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -969,9 +972,11 @@ loc_81306AC:
     bl sub_8137884
     lsr r0, r0, #4
     bl sub_804A24C
+    // dest
     add r1, r7, #0
+    // size
     mov r2, #0x20 
-    bl sub_8000920
+    bl copyMemory // (void *src, void *dest, int size)
     pop {r0}
     mov r4, r10
     ldr r4, [r4,#0x48]
@@ -1170,7 +1175,7 @@ sub_8130810:
     ldr r3, off_8130848 // =unk_20347D8 
     mov r4, #0xf
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 locret_8130846:
     pop {r4-r7,pc}
 off_8130848:    .word unk_20347D8
@@ -1573,7 +1578,7 @@ sub_8130BC8:
     mov r0, #0x23 
     strb r0, [r5,#0x10]
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_8130BDA
     ldr r1, dword_8130C88 // =0xFEDC 
     strh r1, [r5,#0x2a]
@@ -2015,10 +2020,10 @@ loc_8130F36:
     tst r1, r0
     bne loc_8130F4E
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_8130F4E
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_8130F76
 loc_8130F4E:
     bl sub_803EA60
@@ -2051,7 +2056,7 @@ sub_8130F78:
     bl sub_8149644
     bl sub_8149568
 loc_8130F90:
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     bl sub_8129248
     bl sub_812B530
     bl sub_8132614
@@ -2063,7 +2068,7 @@ loc_8130F90:
     ldr r0, off_8130FBC // =unk_20251A0 
     // numWords
     mov r1, #0x10
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     bl sub_812AFC8
     ldr r0, off_8130FC0 // =dword_812913C+20 
     bl sub_80465A0
@@ -2317,7 +2322,7 @@ loc_813117E:
     strb r0, [r5,#2]
     cmp r0, #4
     beq loc_813118C
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     b loc_813119C
 loc_813118C:
     mov r0, #0x68 
@@ -2391,7 +2396,7 @@ sub_8131210:
     tst r1, r0
     beq loc_813123E
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_81312C8
     ldrb r1, [r7,#0x1b]
     mov r0, #0x20 
@@ -2523,7 +2528,7 @@ sub_81312FC:
     mov r0, #0x10
     bl sub_80015FC
     bl sub_8046664
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     mov r0, r10
     ldr r0, [r0,#8]
     ldr r1, dword_8131388 // =0x1F40 
@@ -2541,13 +2546,13 @@ sub_81312FC:
     ldrb r4, [r7,#0xc]
     add r0, r7, #0
     mov r1, #0x80
-    bl sub_8000900 // (int a3, int a2) -> void
+    bl CpuFastSet_8000900 // (int a1, int a2) -> void
     strb r4, [r7,#0xc]
     b loc_8131350
 loc_8131348:
     add r0, r7, #0
     mov r1, #0x80
-    bl sub_8000900 // (int a3, int a2) -> void
+    bl CpuFastSet_8000900 // (int a1, int a2) -> void
 loc_8131350:
     bl sub_8131400
     bl sub_8131440
@@ -2650,13 +2655,16 @@ dword_8131418:    .word 0x886D91FC, 0x2022AA0, 0x2013A00, 0x886D93E0, 0x20231A0
 .thumb_func
 sub_8131440:
     push {r4-r7,lr}
+    // a1
     mov r0, #0
+    // a2
     mov r1, #0
+    // a3
     mov r2, #1
     ldr r3, off_8131454 // =unk_2021DA0 
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8131440
 
     pop {r4-r7,pc}
@@ -2818,13 +2826,16 @@ unk_8131568:    .byte 0x9C
 .thumb_func
 sub_8131570:
     push {r4-r7,lr}
+    // a1
     mov r0, #0x11
+    // a2
     mov r1, #3
+    // a3
     mov r2, #0
     ldr r3, dword_8131584 // =0x8130884 
     mov r4, #8
     mov r5, #8
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8131570
 
     pop {r4-r7,pc}
@@ -3126,12 +3137,12 @@ sub_81317A8:
     ldr r0, off_81317E8 // =unk_202527C 
     // numWords
     mov r1, #0x40 
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     // memBlock
     ldr r0, off_81317EC // =unk_20252BC 
     // numWords
     mov r1, #0x40 
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     ldr r7, off_81317E0 // =unk_202523C 
     ldr r4, off_81317E4 // =unk_20251A0 
     mov r0, #0
@@ -3234,7 +3245,7 @@ sub_8131864:
     add r4, r0, #0
     // numWords
     mov r1, #0x80
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     mov r0, #0
     strb r0, [r4,#0xc] // (byte_203770C - 0x2037700)
     mov r0, #1
@@ -3244,7 +3255,7 @@ sub_8131864:
     mov r1, #8
     orr r0, r1
     strb r0, [r5,#0x1b]
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     pop {r4,pc}
 off_8131888:    .word unk_2037700
 .endfunc // sub_8131864
@@ -3650,7 +3661,7 @@ sub_8131E70:
     ldr r0, off_8131EE0 // =unk_20251A0 
     // numWords
     mov r1, #0x3c 
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     bl sub_800154C
     mov r1, #0xf
     and r0, r1
@@ -3690,7 +3701,7 @@ sub_8131EB0:
     ldr r0, off_8131EE0 // =unk_20251A0 
     // numWords
     mov r1, #0x3c 
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     ldr r4, off_8131EDC // =dword_202522C 
     ldr r7, off_8131EE0 // =unk_20251A0 
     mov r3, #0
@@ -4180,7 +4191,7 @@ sub_8132280:
     push {lr}
     add r1, r0, #0
     ldr r0, off_813228C // =unk_201BA20 
-    bl chatbox_803FD9C
+    bl chatbox_runScript_CpuSet_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
     pop {pc}
 off_813228C:    .word unk_201BA20
 .endfunc // sub_8132280
@@ -4276,7 +4287,7 @@ sub_8132398:
     push {lr}
     ldr r0, off_81323A8 // =unk_2033800 
     ldr r1, off_81323AC // =0x200 
-    bl sub_8000900 // (int a3, int a2) -> void
+    bl CpuFastSet_8000900 // (int a1, int a2) -> void
     mov r0, #1
     strb r1, [r5,#0xf]
     pop {pc}
@@ -4302,10 +4313,13 @@ sub_81323B0:
     mov r0, #0x20 
     mul r1, r0
     ldr r0, off_813242C // =unk_2033800 
+    // dest
     add r1, r1, r0
+    // src
     add r0, r7, #0
+    // mode
     mov r2, #0x10
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
 loc_81323D8:
     add r7, #0x10
     ldrb r1, [r7]
@@ -4320,10 +4334,13 @@ loc_81323D8:
     mul r1, r0
     add r1, #0x10
     ldr r0, off_813242C // =unk_2033800 
+    // dest
     add r1, r1, r0
+    // src
     add r0, r7, #0
+    // mode
     mov r2, #0x10
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     ldr r4, off_813242C // =unk_2033800 
     ldrb r3, [r5,#0xf]
     mov r0, #0x20 
@@ -4725,7 +4742,7 @@ loc_813268A:
     add r6, r0, #0
     mov r0, #1
     mov r1, #0x63 
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     bne loc_81326A0
     mov r6, #0
 loc_81326A0:
@@ -4896,14 +4913,17 @@ sub_813281C:
 loc_813282E:
     ldr r6, [sp,#0xc]
     mov r0, sp
+    // src
     ldr r0, [r0,r6]
     ldr r1, off_81328B4 // =off_81328B8 
     ldr r1, [r1,r6]
     mov r2, #2
     strh r2, [r1]
+    // dest
     add r1, #2
+    // size
     mov r2, #0x20 
-    bl sub_8000920
+    bl copyMemory // (void *src, void *dest, int size)
     ldr r0, off_81328B4 // =off_81328B8 
     ldr r0, [r0,r6]
     mov r1, #0
@@ -4972,14 +4992,17 @@ sub_81328D0:
 loc_81328E4:
     ldr r6, [sp,#0xc]
     mov r0, sp
+    // src
     ldr r0, [r0,r6]
     ldr r1, off_8132974 // =off_8132978 
     ldr r1, [r1,r6]
     mov r2, #2
     strh r2, [r1]
+    // dest
     add r1, #2
+    // size
     mov r2, #0x20 
-    bl sub_8000920
+    bl copyMemory // (void *src, void *dest, int size)
     ldr r0, off_8132974 // =off_8132978 
     ldr r0, [r0,r6]
     mov r1, #0
@@ -5027,13 +5050,16 @@ off_8132978:    .word unk_2024BD0
 .thumb_func
 sub_8132980:
     push {r4-r7,lr}
+    // a1
     mov r0, #0
+    // a2
     mov r1, #0
+    // a3
     mov r2, #1
     ldr r3, off_8132994 // =unk_2022AA0 
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8132980
 
     pop {r4-r7,pc}
@@ -5457,9 +5483,9 @@ sub_8132BA8:
     bl sub_8132FD0
     ldr r0, off_8132C30 // =word_201BF00 
     mov r1, #0xa
-    bl chatbox_803FD9C
+    bl chatbox_runScript_CpuSet_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
     mov r0, #0x40 
-    bl chatbox_8045F1C
+    bl chatbox_setBits_2009F38 // (int mask) -> void
     pop {pc}
 dword_8132C2C:    .word 0x1F40
 off_8132C30:    .word word_201BF00
@@ -5486,7 +5512,7 @@ sub_8132C50:
     bl engine_isScreeneffectAnimating
     beq loc_8132C62
     mov r0, #0x40 
-    bl chatbox_8045F2C
+    bl chatbox_clearBits_2009F38 // (int mask) -> void
     mov r0, #4
     strb r0, [r5,#2]
 loc_8132C62:
@@ -5499,13 +5525,13 @@ loc_8132C62:
 sub_8132C68:
     push {lr}
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne loc_8132C82
     mov r0, #0x20 
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_8132C96
     ldr r0, off_8132C9C // =0x110 
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_8132C96
 loc_8132C82:
     mov r0, #8
@@ -5514,7 +5540,7 @@ loc_8132C82:
     mov r1, #0xc
     bl engine_setScreeneffect
     mov r0, #0x40 
-    bl chatbox_8045F1C
+    bl chatbox_setBits_2009F38 // (int mask) -> void
     b loc_8132C96
 loc_8132C96:
     bl sub_8132F4C
@@ -5529,7 +5555,7 @@ sub_8132CA0:
     bl engine_isScreeneffectAnimating
     beq loc_8132CB2
     mov r0, #0x40 
-    bl chatbox_8045F1C
+    bl chatbox_setBits_2009F38 // (int mask) -> void
     bl sub_811F708
 loc_8132CB2:
     bl sub_8132F4C
@@ -5573,13 +5599,16 @@ loc_8132CD4:
     ldr r1, off_8132D4C // =word_201BF00 
     ldr r2, off_8132D50 // =word_2013A00 
     bl sub_8123300
+    // a1
     mov r0, #0
+    // a2
     mov r1, #0
+    // a3
     mov r2, #1
     ldr r3, off_8132D90 // =unk_201BA00 
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8132CB8
 
     pop {r4-r7,pc}
@@ -5744,13 +5773,16 @@ off_8132EF0:    .word dword_86B7AE0
 sub_8132EF4:
     push {r4-r7,lr}
     add r7, r5, #0
+    // a1
     mov r0, #6
+    // a2
     mov r1, #3
+    // a3
     mov r2, #2
     ldr r3, off_8132F3C // =unk_201C400 
     mov r4, #8
     mov r5, #8
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8132EF4
 
     mov r0, #0x12
@@ -5759,21 +5791,21 @@ sub_8132EF4:
     ldr r3, off_8132F40 // =unk_201C480 
     mov r4, #7
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     mov r0, #0x12
     mov r1, #7
     mov r2, #2
     ldr r3, off_8132F44 // =unk_201C4A0 
     mov r4, #7
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     mov r0, #0x12
     mov r1, #9
     mov r2, #2
     ldr r3, off_8132F48 // =unk_201C4C0 
     mov r4, #7
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_8132F3C:    .word unk_201C400
@@ -5954,14 +5986,17 @@ loc_813306A:
     add r0, #1
     sub r1, #1
     bgt loc_813306A
+    // a2
     mov r1, #5
+    // a3
     mov r2, #2
     ldr r3, off_81330A8 // =word_2013A00 
     lsr r4, r6, #2
     mov r0, #0x19
+    // a1
     sub r0, r0, r4
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8132FD0
 
     add sp, sp, #0x10
@@ -6105,10 +6140,13 @@ sub_8133228:
     str r0, [r5,#0x64]
     bl sub_81355D8
     beq loc_81332C8
+    // src
     ldr r0, off_8133398 // =unk_20251A0 
+    // dest
     ldr r1, off_813339C // =unk_20376AC 
+    // size
     mov r2, #0x3c 
-    bl sub_8000920
+    bl copyMemory // (void *src, void *dest, int size)
     ldr r0, off_8133398 // =unk_20251A0 
     ldr r1, off_813338C // =word_202A020 
     mov r2, #1
@@ -6272,7 +6310,7 @@ sub_8133434:
     bl sub_81345B0
     bl sub_8134548
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne loc_8133458
     mov r0, #4
     strb r0, [r5,#2]
@@ -6281,9 +6319,9 @@ sub_8133434:
     pop {pc}
 loc_8133458:
     mov r0, #0x20 
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_8133482
-    bl chatbox_8045F4C
+    bl chatbox_getLast3Bits_2009F38 // () -> int
     tst r0, r0
     beq loc_8133478
     mov r0, #0x81
@@ -6342,7 +6380,7 @@ sub_81334C8:
     b locret_8133534
 loc_81334E2:
     mov r0, #0x20 
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne loc_8133504
     mov r0, #6
     bl sub_811F7EC
@@ -6357,7 +6395,7 @@ loc_81334E2:
 loc_8133504:
     mov r0, #0x81
     bl sound_play
-    bl chatbox_8045F4C
+    bl chatbox_getLast3Bits_2009F38 // () -> int
     tst r0, r0
     beq loc_8133526
     bl sub_8134FE0
@@ -6405,7 +6443,7 @@ off_8133554:    .word sub_8133564+1
 sub_8133564:
     push {r4,lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_81335B6
     mov r0, r10
     ldr r0, [r0,#4]
@@ -6456,7 +6494,7 @@ sub_81335B8:
 sub_81335C0:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_81335D4
     mov r0, #0x14
     bl sub_8134190
@@ -6472,7 +6510,7 @@ locret_81335D4:
 sub_81335D8:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_81335EA
     mov r0, #4
     strb r0, [r5,#2]
@@ -6579,7 +6617,7 @@ dword_8133694:    .word 0x1, 0xE, 0xF
 sub_81336A0:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_81336BC
     ldr r0, [r5,#0x5c]
     ldr r1, dword_81336C0 // =0xFFFF 
@@ -6601,7 +6639,7 @@ dword_81336C0:    .word 0xFFFF
 sub_81336C4:
     push {r4,lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_8133738
     mov r0, r10
     ldr r0, [r0,#4]
@@ -6663,7 +6701,7 @@ dword_813373C:    .word 0xFFFF
 sub_8133740:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_8133758
     bl sub_8134FE0
     mov r0, #0xc
@@ -6680,7 +6718,7 @@ locret_8133758:
 sub_813375C:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_813376E
     mov r0, #4
     strb r0, [r5,#2]
@@ -6711,7 +6749,7 @@ locret_8133784:
 sub_8133788:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne loc_81337B0
     bl sub_81355D8
     beq loc_81337A8
@@ -7055,10 +7093,10 @@ sub_8133A68:
     b loc_8133AE2
 loc_8133A7C:
     ldr r0, off_8133B14 // =0x120 
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_8133AE2
     ldr r0, off_8133B10 // =0x100 
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_8133AA0
     mov r0, #0xb
     bl sub_8134190
@@ -7070,7 +7108,7 @@ loc_8133A7C:
     strb r0, [r5,#3]
     b loc_8133AE2
 loc_8133AA0:
-    bl chatbox_8045F4C
+    bl chatbox_getLast3Bits_2009F38 // () -> int
     cmp r0, #0
     beq loc_8133AC6
     cmp r0, #2
@@ -7566,13 +7604,16 @@ sub_8133E7C:
 sub_8133E88:
     push {r4-r7,lr}
     add r7, r5, #0
+    // a1
     mov r0, #0
+    // a2
     mov r1, #0
+    // a3
     mov r2, #1
     ldr r3, off_8134094 // =unk_201CA20 
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8133E88
 
     mov r1, #0x18
@@ -7584,7 +7625,7 @@ sub_8133E88:
     ldr r3, off_81340A0 // =unk_2020A20 
     mov r4, #0x3c 
     mov r5, #0x11
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     bl sub_8134138
     pop {r4-r7,pc}
     .word 0xFFFFFFF0, 0x1B6
@@ -7625,13 +7666,16 @@ loc_8133EDC:
     ldr r1, off_8133F64 // =unk_2028A20 
     ldr r2, off_8133F68 // =word_2013A00 
     bl sub_8123300
+    // a1
     mov r0, #0
+    // a2
     mov r1, #0
+    // a3
     mov r2, #1
     ldr r3, off_8134094 // =unk_201CA20 
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8133EC0
 
     mov r0, #0
@@ -7640,7 +7684,7 @@ loc_8133EDC:
     ldr r3, off_81340A0 // =unk_2020A20 
     mov r4, #0x3c 
     mov r5, #0x11
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_8133F2C:    .word dword_8133F30
@@ -7808,7 +7852,7 @@ sub_8134190:
     push {lr}
     add r1, r0, #0
     ldr r0, off_813419C // =unk_2028A20 
-    bl chatbox_803FD9C
+    bl chatbox_runScript_CpuSet_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
     pop {pc}
 off_813419C:    .word unk_2028A20
 .endfunc // sub_8134190
@@ -7828,13 +7872,16 @@ sub_81341A0:
     ldrsh r2, [r7,r1]
     add r1, r2, #0
     mov r0, #0xf
+    // a1
     sub r0, r0, r1
+    // a2
     mov r1, #4
+    // a3
     mov r2, #2
     ldr r3, off_81342E4 // =unk_2034458 
     mov r4, #8
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_81341A0
 
     ldrh r0, [r7,#0x24]
@@ -7854,7 +7901,7 @@ sub_81341A0:
     ldr r3, off_81342E8 // =unk_2034538 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrh r0, [r7,#0x24]
     ldr r1, off_81342E0 // =word_202A020 
     ldr r2, off_81342F4 // =unk_2034570 
@@ -7875,7 +7922,7 @@ sub_81341A0:
     ldr r3, off_81342F4 // =unk_2034570 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrh r0, [r7,#0x24]
     ldr r1, off_81342E0 // =word_202A020 
     ldr r2, off_8134300 // =unk_20345A8 
@@ -7895,7 +7942,7 @@ sub_81341A0:
     ldr r3, off_8134300 // =unk_20345A8 
     mov r4, #1
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrh r0, [r7,#0x24]
     ldr r1, off_81342E0 // =word_202A020 
     ldr r2, off_8134308 // =unk_20345C4 
@@ -7915,7 +7962,7 @@ sub_81341A0:
     ldr r3, off_8134308 // =unk_20345C4 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     mov r1, #0x18
     ldrsh r1, [r7,r1]
     mov r2, #0x1a
@@ -7997,13 +8044,16 @@ sub_8134310:
     ldrsh r2, [r7,r1]
     add r1, r2, #0
     mov r0, #0x21 
+    // a1
     sub r0, r0, r1
+    // a2
     mov r1, #4
+    // a3
     mov r2, #2
     ldr r3, off_813445C // =unk_20345FC 
     mov r4, #8
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8134310
 
     ldrh r0, [r7,#0x2e]
@@ -8023,7 +8073,7 @@ sub_8134310:
     ldr r3, off_8134460 // =unk_20346DC 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrh r0, [r7,#0x2e]
     ldr r1, off_8134458 // =unk_202A3E0 
     ldr r2, off_813446C // =unk_2034714 
@@ -8044,7 +8094,7 @@ sub_8134310:
     ldr r3, off_813446C // =unk_2034714 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrh r0, [r7,#0x2e]
     ldr r1, off_8134458 // =unk_202A3E0 
     ldr r2, off_8134478 // =unk_203474C 
@@ -8064,7 +8114,7 @@ sub_8134310:
     ldr r3, off_8134478 // =unk_203474C 
     mov r4, #1
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrh r0, [r7,#0x2e]
     ldr r1, off_8134458 // =unk_202A3E0 
     ldr r2, off_8134480 // =unk_2034768 
@@ -8084,7 +8134,7 @@ sub_8134310:
     ldr r3, off_8134480 // =unk_2034768 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrh r0, [r7,#0x2e]
     ldr r1, off_8134458 // =unk_202A3E0 
     ldr r2, off_8134488 // =unk_20347A0 
@@ -8104,7 +8154,7 @@ sub_8134310:
     ldr r3, off_8134488 // =unk_20347A0 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     mov r1, #0x18
     ldrsh r1, [r7,r1]
     mov r2, #0x1a
@@ -8180,13 +8230,16 @@ loc_81344B8:
     ldrsh r2, [r7,r1]
     add r1, r2, #0
     mov r0, #0xb
+    // a1
     sub r0, r0, r1
+    // a2
     mov r1, #2
+    // a3
     mov r2, #2
     ldr r3, off_813451C // =unk_20347D8 
     mov r4, #0xf
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8134490
 
     mov r0, #0xa
@@ -8205,7 +8258,7 @@ loc_81344B8:
     ldr r3, off_8134520 // =unk_2034814 
     mov r4, #0x14
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     bl sub_81355D8
     beq loc_8134500
     mov r0, #0x1e
@@ -8505,14 +8558,17 @@ sub_813471C:
     ldrb r2, [r5,#0xd]
     tst r2, r2
     beq loc_813472C
+    // a1
     mov r0, #0x15
+    // a2
     mov r1, #2
+    // a3
 loc_813472C:
     mov r2, #0
     ldr r3, off_813473C // =unk_203486C 
     mov r4, #8
     mov r5, #0x11
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_813471C
 
     pop {r4-r7,pc}
@@ -9121,10 +9177,13 @@ loc_8134B74:
     lsr r0, r7, #0x10
     sub r0, #1
     bne loc_8134BE8
+    // src
     add r0, r4, #0
+    // dest
     add r1, r6, #0
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     add r0, r4, #0
     add r0, #0x20 
     add r1, r4, #0
@@ -9154,20 +9213,26 @@ loc_8134BE8:
     lsr r2, r2, #0x10
     orr r0, r2
     str r0, [r4,#0x14]
+    // src
     add r0, r4, #0
+    // dest
     add r1, r6, #0
+    // mode
     mov r2, #0x14
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     b loc_8134CD6
 loc_8134C00:
     ldrh r0, [r6,#0x1c]
     bl sub_8134F40
     tst r0, r0
     beq loc_8134C58
+    // src
     add r0, r4, #0
+    // dest
     add r1, r6, #0
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     ldr r0, [r4,#0x14]
     lsr r1, r0, #0x10
     sub r1, #1
@@ -9206,18 +9271,27 @@ loc_8134C58:
     lsr r0, r7, #0x10
     sub r0, #1
     bne loc_8134C8E
+    // dest
     ldr r1, off_8134EA4 // =unk_2035C6C 
+    // src
     add r0, r6, #0
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
+    // src
     add r0, r4, #0
+    // dest
     add r1, r6, #0
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
+    // src
     ldr r0, off_8134EA4 // =unk_2035C6C 
+    // dest
     add r1, r4, #0
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     ldr r0, [r4,#0x14]
     lsl r0, r0, #0x10
     lsr r0, r0, #0x10
@@ -9233,14 +9307,20 @@ loc_8134C8E:
     lsr r2, r2, #0x10
     orr r0, r2
     str r0, [r4,#0x14]
+    // dest
     ldr r1, off_8134EA4 // =unk_2035C6C 
+    // src
     add r0, r6, #0
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
+    // src
     add r0, r4, #0
+    // dest
     add r1, r6, #0
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     ldrh r0, [r5,#0x28]
     add r0, #1
     strh r0, [r5,#0x28]
@@ -9248,11 +9328,14 @@ loc_8134C8E:
     sub r0, #1
     mov r2, #0x20 
     mul r0, r2
+    // dest
     add r1, r1, r0
     add r4, r1, #0
+    // src
     ldr r0, off_8134EA4 // =unk_2035C6C 
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     ldr r0, [r4,#0x14]
     lsl r0, r0, #0x10
     lsr r0, r0, #0x10
@@ -9316,20 +9399,23 @@ loc_8134D28:
     mov r1, #0x20 
     mul r1, r0
     ldr r0, off_8134E9C // =unk_202A3E0 
+    // dest
     add r1, r1, r0
+    // src
     add r0, r7, #0
     add r3, r0, #2
     mov r2, #1
     strh r2, [r3,#0x14]
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     ldrh r0, [r5,#0x28]
     add r0, #1
     strh r0, [r5,#0x28]
 loc_8134D50:
     add r0, r7, #0
     mov r1, #0x20 
-    bl sub_8000900 // (int a3, int a2) -> void
+    bl CpuFastSet_8000900 // (int a1, int a2) -> void
     ldrh r0, [r5,#0x1e]
     bl sub_8134EA8
     strb r0, [r5,#0x17]
@@ -9388,11 +9474,14 @@ loc_8134DC8:
     bl sound_play
     sub r6, #1
     bne loc_8134E10
+    // src
     add r0, r7, #0
     ldr r1, off_8134E98 // =word_202A020 
+    // dest
     add r1, r1, r4
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     ldrh r0, [r5,#0x1e]
     bl sub_8134EA8
     strb r0, [r5,#0x17]
@@ -9422,10 +9511,13 @@ loc_8134E10:
     orr r6, r2
     str r6, [r7,#0x14]
     ldr r1, off_8134E98 // =word_202A020 
+    // src
     add r0, r7, #0
+    // dest
     add r1, r1, r4
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     ldrh r0, [r5,#0x1e]
     bl sub_8134EA8
     strb r0, [r5,#0x17]
@@ -9446,19 +9538,28 @@ loc_8134E36:
     bl sub_8135054
     mov r0, #4
     bl sub_8135054
+    // dest
 loc_8134E58:
     ldr r1, off_8134EA4 // =unk_2035C6C 
+    // src
     add r0, r4, #0
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
+    // src
     add r0, r6, #0
+    // dest
     add r1, r4, #0
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
+    // src
     ldr r0, off_8134EA4 // =unk_2035C6C 
+    // dest
     add r1, r6, #0
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     mov r0, #0x81
     bl sound_play
     bl sub_8134F78
@@ -9493,7 +9594,7 @@ sub_8134EA8:
     add r5, r5, r7
     ldr r0, off_8134F34 // =unk_20343E0 
     ldr r1, off_8134F38 // =0x78 
-    bl sub_8000900 // (int a3, int a2) -> void
+    bl CpuFastSet_8000900 // (int a1, int a2) -> void
     ldr r6, off_8134F34 // =unk_20343E0 
 loc_8134EC4:
     mov r4, #0
@@ -10047,14 +10148,14 @@ sub_813527C:
     beq loc_8135294
     mov r3, #0x20 
     mul r2, r3
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     mov r1, #0x20 
     mul r1, r6
     add r4, r4, r1
 loc_8135294:
     add r0, r4, #0
     mov r1, #0x20 
-    bl sub_8000900 // (int a3, int a2) -> void
+    bl CpuFastSet_8000900 // (int a1, int a2) -> void
     pop {r4-r7,pc}
     .byte 0, 0
 .endfunc // sub_813527C
@@ -10251,10 +10352,13 @@ sub_8135404:
     mov r1, #0x20 
     mul r1, r0
     ldr r0, off_81354F4 // =word_202A020 
+    // src
     add r0, r0, r1
+    // dest
     ldr r1, off_81354F8 // =unk_203768C 
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     ldr r4, [r5,#0x5c]
     ldr r6, [r5,#0x60]
     cmp r4, r6
@@ -10263,24 +10367,30 @@ loc_8135426:
     mov r1, #0x20 
     mul r1, r6
     ldr r0, off_81354F4 // =word_202A020 
+    // dest
     add r1, r1, r0
     add r7, r6, #1
     mov r0, #0x20 
     mul r0, r7
     ldr r2, off_81354F4 // =word_202A020 
+    // src
     add r0, r0, r2
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     add r6, #1
     cmp r4, r6
     bgt loc_8135426
     mov r1, #0x20 
     mul r1, r6
     ldr r0, off_81354F4 // =word_202A020 
+    // dest
     add r1, r1, r0
+    // src
     ldr r0, off_81354F8 // =unk_203768C 
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     ldrh r0, [r5,#0x1c]
     ldr r1, dword_81354FC // =0xFFFF 
     cmp r0, r1
@@ -10309,24 +10419,30 @@ loc_813547C:
     mov r1, #0x20 
     mul r1, r6
     ldr r0, off_81354F4 // =word_202A020 
+    // dest
     add r1, r1, r0
     sub r7, r6, #1
     mov r0, #0x20 
     mul r0, r7
     ldr r2, off_81354F4 // =word_202A020 
+    // src
     add r0, r0, r2
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     sub r6, #1
     b loc_813547C
 loc_813549C:
     mov r1, #0x20 
     mul r1, r6
     ldr r0, off_81354F4 // =word_202A020 
+    // dest
     add r1, r1, r0
+    // src
     ldr r0, off_81354F8 // =unk_203768C 
+    // mode
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
     ldrh r0, [r5,#0x1c]
     ldr r1, dword_81354FC // =0xFFFF 
     cmp r0, r1
@@ -10763,7 +10879,7 @@ sub_81356F4:
     ldr r0, off_81357C0 // =dword_8135628 
     bl sub_80465A0
     mov r0, #0x1e
-    bl sound_80005D4 // (int a3) -> void
+    bl sound_80005D4 // (int a1) -> void
     pop {pc}
 dword_81357BC:    .word 0xDF40
 off_81357C0:    .word dword_8135628
@@ -11108,19 +11224,19 @@ loc_8135A3E:
 sub_8135A44:
     push {r4-r7,lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_8135AF2
     mov r0, #0x20 
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_8135AF2
     ldrb r0, [r5,#0x16]
     strb r0, [r5,#2]
-    bl chatbox_8045F4C
+    bl chatbox_getLast3Bits_2009F38 // () -> int
     beq loc_8135A66
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     b locret_8135AF2
 loc_8135A66:
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     mov r0, #0x10
     strb r0, [r5,#0xc]
     mov r0, #0
@@ -11192,12 +11308,12 @@ locret_8135AF2:
 sub_8135AF8:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_8135B2E
     mov r0, #0x20 
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_8135B2E
-    bl chatbox_8045F4C
+    bl chatbox_getLast3Bits_2009F38 // () -> int
     bne loc_8135B26
     mov r0, #8
     strb r0, [r5,#1]
@@ -11212,7 +11328,7 @@ loc_8135B26:
     mov r0, #4
     strb r0, [r5,#2]
 loc_8135B2A:
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
 locret_8135B2E:
     pop {pc}
     .word 0x120
@@ -11224,12 +11340,12 @@ locret_8135B2E:
 sub_8135B38:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_8135B52
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_8135B52
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     mov r0, #8
     strb r0, [r5,#2]
 locret_8135B52:
@@ -11244,16 +11360,16 @@ sub_8135B54:
     bl sub_80465F8
     bl engine_isScreeneffectAnimating
     beq locret_8135B90
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     mov r0, #0x40 
-    bl chatbox_8045F2C
+    bl chatbox_clearBits_2009F38 // (int mask) -> void
     ldrb r4, [r5]
     mov r0, r10
     // memBlock
     ldr r0, [r0,#0x34]
     // numWords
     mov r1, #0x80
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     cmp r4, #0x28 
     bne loc_8135B88
     bl sub_809E122
@@ -11303,17 +11419,23 @@ loc_8135BB4:
     bl sub_8000B30
     ldr r0, off_8135C60 // =aGj 
     bl sub_8000B30
+    // src
     ldr r0, off_8135C20 // =unk_201CF80 
+    // dest
     ldr r1, off_8135C1C // =unk_30019E0 
+    // mode
     ldr r2, off_8135C24 // =0x100 
-    bl sub_8000950
+    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
+    // a1
     mov r0, #0
+    // a2
     mov r1, #0
+    // a3
     mov r2, #1
     ldr r3, off_8135CBC // =unk_201BE80 
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8135B94
 
     mov r0, #1
@@ -11326,14 +11448,14 @@ loc_8135BB4:
     ldr r3, [r3,r4]
     mov r4, #0x11
     mov r5, #0x11
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     mov r0, #0x11
     mov r1, #0xb
     mov r2, #2
     ldr r3, off_8135CEC // =unk_201D180 
     mov r4, #0xc
     mov r5, #9
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     add sp, sp, #4
     pop {r4-r7,pc}
 off_8135C1C:    .word unk_30019E0
@@ -11394,7 +11516,7 @@ sub_8135D9C:
     ldr r0, off_8135ECC // =word_201DA80 
     ldr r1, off_8135ED4 // =0xBC 
     lsl r1, r1, #2
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     ldrb r0, [r5]
     cmp r0, #0x28 
     bne loc_8135DB6
@@ -11642,7 +11764,7 @@ sub_8135F34:
     ldr r3, off_8135F84 // =unk_813565C 
     mov r4, #0xa
     mov r5, #6
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7,pc}
 .func
 .thumb_func
@@ -11670,7 +11792,7 @@ sub_8135F88:
     push {r4,lr}
     add r1, r0, #0
     ldr r0, off_8135F94 // =unk_201D280 
-    bl chatbox_803FD9C
+    bl chatbox_runScript_CpuSet_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
     pop {r4,pc}
 off_8135F94:    .word unk_201D280
     .word unk_201F2F0
@@ -12400,7 +12522,7 @@ sub_81364E8:
     ldr r1, dword_8136528 // =0x2660 
     add r1, r1, r0
     add r0, r1, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_81364FC
     mov r4, #1
 loc_81364FC:
@@ -12548,20 +12670,26 @@ sub_813660C:
     push {lr}
     tst r0, r0
     beq loc_8136620
+    // src
     ldr r0, off_8136638 // =unk_201CF80 
+    // dest
     ldr r1, off_813663C // =unk_30019E0 
+    // mode
     ldr r2, off_8136640 // =0x100 
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     mov r0, #1
     b loc_8136632
 loc_8136620:
     ldr r0, off_8136638 // =unk_201CF80 
     mov r1, #0x10
     lsl r1, r1, #4
+    // src
     add r0, r0, r1
+    // dest
     ldr r1, off_813663C // =unk_30019E0 
+    // mode
     ldr r2, off_8136640 // =0x100 
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     mov r0, #0
 loc_8136632:
     bl sub_8136644
@@ -12728,10 +12856,13 @@ loc_8136768:
 .thumb_func
 sub_813676C:
     push {lr}
+    // src
     ldr r0, off_813679C // =unk_2000090 
+    // dest
     ldr r1, off_8136798 // =unk_2022B70 
+    // size
     mov r2, #8
-    bl sub_8000920
+    bl copyMemory // (void *src, void *dest, int size)
     pop {pc}
     .balign 4, 0x00
 .endfunc // sub_813676C
@@ -12740,10 +12871,13 @@ sub_813676C:
 .thumb_func
 sub_813677C:
     push {lr}
+    // src
     ldr r0, off_8136798 // =unk_2022B70 
+    // dest
     ldr r1, off_813679C // =unk_2000090 
+    // size
     mov r2, #8
-    bl sub_8000920
+    bl copyMemory // (void *src, void *dest, int size)
     pop {pc}
     .balign 4, 0x00
 .endfunc // sub_813677C
@@ -13137,15 +13271,15 @@ sub_8136AA0:
     cmp r0, #0x28 
     beq loc_8136ACC
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_8136AE2
     ldr r0, dword_8136AE4 // =0x20 
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_8136AE2
     bl sub_813BAA8
-    bl chatbox_8045F4C
+    bl chatbox_getLast3Bits_2009F38 // () -> int
     beq loc_8136ACC
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     bl sub_8136BDC
     b locret_8136AE2
 loc_8136ACC:
@@ -13157,7 +13291,7 @@ loc_8136ACC:
     mov r0, #0xc
     mov r1, #0x10
     bl engine_setScreeneffect
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
 locret_8136AE2:
     pop {pc}
 dword_8136AE4:    .word 0x20
@@ -13240,14 +13374,17 @@ sub_8136B58:
     lsl r7, r0, #2
     ldr r1, off_8136B98 // =unk_8136B9C 
     ldrb r0, [r5,#0xf]
+    // a2
     ldrb r1, [r1,r0]
+    // a1
     mov r0, #0
+    // a3
     mov r2, #3
     ldr r3, off_8136B8C // =off_8136B90 
     ldr r3, [r3,r7]
     mov r4, #0x20 
     mov r5, #3
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8136B58
 
     pop {r4-r7,pc}
@@ -13296,7 +13433,7 @@ sub_8136BA0:
     ldr r3, off_8136BD8 // =unk_813565C 
     mov r4, #0xa
     mov r5, #6
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7,pc}
 off_8136BC8:    .word unk_201D280
 off_8136BCC:    .word unk_201B200
@@ -13520,7 +13657,7 @@ sub_8136C24:
     ldr r0, off_8136DD8 // =dword_86A5D20 
     ldr r1, off_8136DDC // =unk_30019A0 
     mov r2, #0x20 
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     pop {pc}
     .balign 4, 0x00
 off_8136DD8:    .word dword_86A5D20
@@ -13642,7 +13779,7 @@ sub_8136F0C:
     push {lr}
     mov r0, #0
     mov r1, #0xee
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq locret_8136F3C
     mov r0, #0x48 
     mov r1, #0x40 
@@ -13650,7 +13787,7 @@ sub_8136F0C:
     bl sub_81375F4
     bl sub_8137618
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_8136F3C
     bl sub_81375D8
     mov r0, #1
@@ -13668,7 +13805,7 @@ sub_8136F40:
     push {lr}
     mov r0, #0
     mov r1, #0xee
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq locret_8136F70
     mov r0, #0x7a 
     mov r1, #0x30 
@@ -13676,7 +13813,7 @@ sub_8136F40:
     bl sub_81375F4
     bl sub_8137618
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_8136F70
     bl sub_81375D8
     mov r0, #2
@@ -13694,7 +13831,7 @@ sub_8136F74:
     push {lr}
     mov r0, #0
     mov r1, #0xee
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq locret_8136FA2
     mov r0, #0x48 
     mov r1, #0x61 
@@ -13703,7 +13840,7 @@ sub_8136F74:
     bl sub_8137618
     beq locret_8136FA2
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_8136FA2
     mov r0, #3
     bl sub_81376A8
@@ -13718,7 +13855,7 @@ locret_8136FA2:
 sub_8136FA4:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_8136FB6
     mov r0, #0
     strb r0, [r5,#4]
@@ -13780,7 +13917,7 @@ dword_8137014:    .word 0x1
 sub_8137018:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_8137026
     mov r0, #0x18
     strb r0, [r5]
@@ -13849,7 +13986,7 @@ off_8137098:    .word 0x34
 sub_813709C:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_81370AA
     mov r0, #0x20 
     strb r0, [r5]
@@ -13879,7 +14016,7 @@ locret_81370C2:
 sub_81370C4:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_81370D2
     mov r0, #0x30 
     strb r0, [r5]
@@ -13957,7 +14094,7 @@ dword_813715C:    .word 0x1
 sub_8137160:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_813716E
     mov r0, #0x30 
     strb r0, [r5]
@@ -13971,7 +14108,7 @@ sub_8137170:
     push {lr}
     mov r0, #0
     mov r1, #0xee
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq locret_813719E
     mov r0, #0x40 
     mov r1, #0x40 
@@ -13980,7 +14117,7 @@ sub_8137170:
     bl sub_8137618
     beq locret_813719E
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_813719E
     mov r0, #0x15
     bl sub_81376A8
@@ -13995,7 +14132,7 @@ locret_813719E:
 sub_81371A0:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_81371AE
     mov r0, #0x40 
     strb r0, [r5]
@@ -14070,7 +14207,7 @@ off_813722C:    .word 0x8C
 sub_8137234:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_8137242
     mov r0, #0x40 
     strb r0, [r5]
@@ -14100,7 +14237,7 @@ locret_813725A:
 sub_813725C:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_813726A
     mov r0, #0x50 
     strb r0, [r5]
@@ -14169,7 +14306,7 @@ dword_81372E0:    .word 0x1
 sub_81372E4:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_81372F2
     mov r0, #0x50 
     strb r0, [r5]
@@ -14183,7 +14320,7 @@ sub_81372F4:
     push {lr}
     mov r0, #0
     mov r1, #0xee
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq locret_8137332
     ldrb r0, [r5,#5]
     mov r1, #0x14
@@ -14198,7 +14335,7 @@ sub_81372F4:
     bl sub_8137618
     beq locret_8137332
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_8137332
     bl sub_81375D8
     mov r0, #0x1d
@@ -14215,7 +14352,7 @@ sub_8137334:
     push {lr}
     mov r0, #0
     mov r1, #0xee
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq locret_8137366
     mov r0, #0x48 
     mov r1, #0x52 
@@ -14224,7 +14361,7 @@ sub_8137334:
     bl sub_8137618
     beq locret_8137366
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_8137366
     bl sub_81375D8
     mov r0, #0x1e
@@ -14240,7 +14377,7 @@ locret_8137366:
 sub_8137368:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_8137376
     mov r0, #0x64 
     strb r0, [r5]
@@ -14390,7 +14527,7 @@ off_8137498:    .word 0x34
 sub_813749C:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_81374AA
     mov r0, #0x64 
     strb r0, [r5]
@@ -14420,7 +14557,7 @@ locret_81374C2:
 sub_81374C4:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_81374D2
     mov r0, #0x74 
     strb r0, [r5]
@@ -14474,7 +14611,7 @@ dword_8137524:    .word 0x1
 sub_8137528:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_8137536
     mov r0, #0x74 
     strb r0, [r5]
@@ -14524,7 +14661,7 @@ sub_813756C:
     push {lr}
     mov r0, #0
     mov r1, #0xee
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq locret_813759A
     mov r0, #0x3c 
     mov r1, #0x20 
@@ -14533,7 +14670,7 @@ sub_813756C:
     bl sub_8137618
     beq locret_813759A
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_813759A
     mov r0, #0x26 
     bl sub_81376A8
@@ -14548,7 +14685,7 @@ locret_813759A:
 sub_813759C:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne locret_81375AA
     mov r0, #0x8c
     strb r0, [r5]
@@ -14597,10 +14734,10 @@ sub_81375D8:
     strb r0, [r5,#3]
     mov r0, #0
     mov r1, #0xee
-    bl sub_802F12C
+    bl sub_802F12C // (int a1, int a2) -> void
     mov r0, #0
     mov r1, #0xef
-    bl sub_802F12C
+    bl sub_802F12C // (int a1, int a2) -> void
     pop {pc}
 .endfunc // sub_81375D8
 
@@ -14850,7 +14987,7 @@ loc_8137762:
 loc_8137774:
     mov r0, #1
     mov r1, #0x63 
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq loc_8137786
     bl getPETNaviSelect
     cmp r0, #0
@@ -14886,14 +15023,17 @@ sub_8137790:
     mul r0, r2
     mov r3, r10
     ldr r3, [r3,#0x48]
+    // src
     add r0, r0, r3
     mov r1, #2
     mul r1, r2
     mov r3, r10
     ldr r3, [r3,#0x48]
+    // dest
     add r1, r1, r3
+    // mode
     mov r2, #0x3c 
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     add r0, r4, #0
     mov r1, #1
     bl sub_8021AB4
@@ -15053,7 +15193,7 @@ sub_81378D4:
     mov r0, #0
     mov r1, #0xbf
     mov r2, #0x12
-    bl sub_802F1A8
+    bl sub_802F1A8 // (int a3, int a2) -> void
 loc_8137906:
     bl sub_8137BF0
     strh r0, [r5,#0x1e]
@@ -15131,7 +15271,7 @@ sub_81379A0:
     push {lr}
     mov r0, #0x17
     mov r1, #0x10
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     bne loc_81379D0
     mov r0, #1
     bl sub_811F7EC
@@ -15189,15 +15329,15 @@ locret_8137A1A:
 sub_8137A1C:
     push {lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_8137A6C
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne loc_8137A64
     mov r0, #0x20 
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq locret_8137A6C
-    bl chatbox_8045F4C
+    bl chatbox_getLast3Bits_2009F38 // () -> int
     cmp r0, #0
     beq loc_8137A64
     ldrh r0, [r5,#0x20]
@@ -15216,7 +15356,7 @@ sub_8137A1C:
     bl sub_8137E4C
     bl sub_8137F5C
 loc_8137A64:
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     mov r0, #4
     strb r0, [r5,#2]
 locret_8137A6C:
@@ -15236,20 +15376,20 @@ sub_8137A7C:
     bl sub_81380E0
     bl engine_isScreeneffectAnimating
     beq loc_8137AC8
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     mov r0, #0x40 
-    bl chatbox_8045F2C
+    bl chatbox_clearBits_2009F38 // (int mask) -> void
     mov r0, #0
     mov r1, #0xbf
     mov r2, #0x13
-    bl sub_802F1A8
+    bl sub_802F1A8 // (int a3, int a2) -> void
     mov r0, #0x17
     mov r1, #0x10
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq loc_8137ABA
     mov r0, #0x17
     mov r1, #0x10
-    bl sub_802F12C
+    bl sub_802F12C // (int a1, int a2) -> void
     mov r0, #1
     b locret_8137ACA
 loc_8137ABA:
@@ -15258,7 +15398,7 @@ loc_8137ABA:
     ldr r0, [r0,#0x34]
     // numWords
     mov r1, #0x80
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     mov r0, #0xc
     strb r0, [r5]
 loc_8137AC8:
@@ -15304,13 +15444,16 @@ loc_8137AE8:
     ldr r1, off_8137B60 // =word_201BF00 
     ldr r2, off_8137B64 // =word_2013A00 
     bl sub_8123300
+    // a1
     mov r0, #0
+    // a2
     mov r1, #0
+    // a3
     mov r2, #1
     ldr r3, off_8137BC0 // =unk_201BA00 
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8137ACC
 
     pop {r4-r7,pc}
@@ -15342,7 +15485,7 @@ sub_8137BF0:
     ldr r0, off_8137C44 // =unk_201CF00 
     // numWords
     mov r1, #0x24 
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     mov r5, #0
     mov r6, #0
     mov r7, #0
@@ -15351,13 +15494,13 @@ loc_8137C00:
     ldr r0, [r1,r6]
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     bne loc_8137C18
     ldr r1, off_8137C98 // =dword_8137C9C 
     ldr r0, [r1,r6]
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_8137C38
 loc_8137C18:
     add r2, r7, #0
@@ -15471,10 +15614,11 @@ off_8137DA0:    .word 0x200
 sub_8137DA4:
     push {r4-r7,lr}
     add r3, r2, #0
+    // a3
     mov r2, #2
     mov r4, #8
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8137DA4
 
     pop {r4-r7,pc}
@@ -15554,10 +15698,11 @@ off_8137E38:    .word 0x200
 sub_8137E3C:
     push {r4-r7,lr}
     add r3, r2, #0
+    // a3
     mov r2, #2
     mov r4, #7
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8137E3C
 
     pop {r4-r7,pc}
@@ -15642,10 +15787,11 @@ off_8137EDC:    .word 0x200
 sub_8137EE0:
     push {r4-r7,lr}
     add r3, r2, #0
+    // a3
     mov r2, #2
     mov r4, #7
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_8137EE0
 
     pop {r4-r7,pc}
@@ -15853,10 +15999,11 @@ dword_8138040:    .word 0xE5, 0xE8, 0xEB, 0xEE, 0xF1, 0xF4, 0xF7, 0xFA, 0xFD
 sub_813808C:
     push {r4-r7,lr}
     add r3, r2, #0
+    // a3
     mov r2, #2
     mov r4, #3
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_813808C
 
     pop {r4-r7,pc}
@@ -16045,7 +16192,7 @@ loc_8138196:
     str r2, [r4,#0x54]
     ldr r0, off_813820C // =word_201BF00 
     add r1, r7, #0
-    bl chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) ->
+    bl chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
     mov r5, #0
 loc_81381F6:
     add r0, r5, #0
@@ -16075,7 +16222,7 @@ sub_8138210:
     beq loc_8138232
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_8138232
     ldr r7, [sp]
 loc_8138232:
@@ -16096,7 +16243,7 @@ sub_8138294:
     bl sub_8138750
     // numWords
     mov r1, #0x24 
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     mov r1, r10
     ldr r1, [r1]
     mov r0, #0x38 
@@ -16158,7 +16305,7 @@ sub_81382D0:
     bl sub_81207F8
     strh r0, [r5,#0x12]
     mov r0, #0x1d
-    bl sound_80005D4 // (int a3) -> void
+    bl sound_80005D4 // (int a1) -> void
     mov r0, #0x78 
     strh r0, [r5,#4]
     mov r0, #4
@@ -16752,7 +16899,7 @@ sub_8138768:
     push {lr}
     ldr r0, dword_81387D4 // =0x6006000 
     mov r1, #0x20 
-    bl sub_8000900 // (int a3, int a2) -> void
+    bl CpuFastSet_8000900 // (int a1, int a2) -> void
     mov r0, r10
     ldr r0, [r0,#0x28]
     mov r1, #3
@@ -16899,7 +17046,7 @@ loc_81388AA:
     mov r3, sp
     ldrb r4, [r6,#3]
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     add sp, sp, #0x60
     pop {r3-r7,pc}
 .func
@@ -16935,13 +17082,16 @@ sub_8138908:
     mov r5, #8
     bl sub_80018D0
     pop {r1}
+    // a1
     mov r0, #9
+    // a2
     add r1, #1
+    // a3
     mov r2, #1
     ldr r3, off_8138938 // =unk_2016A00 
     mov r4, #0xe
     mov r5, #6
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r3-r5,pc}
     .balign 4, 0x00
 off_8138938:    .word unk_2016A00

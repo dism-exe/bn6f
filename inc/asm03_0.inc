@@ -7,7 +7,7 @@
 .global loc_8026A28
 .global sub_8027D10
 .global sub_802A866
-.global loc_802A87C
+.global sub_802A87C
 .global sub_802B2A0
 .global sub_802B358
 .global sub_802B438
@@ -95,18 +95,18 @@
 .global sub_802F0D8
 .global sub_802F0F4
 .global sub_802F110
-.global sub_802F114
-.global sub_802F12C
-.global sub_802F130
+.global sub_802F114 // (int a1) -> void
+.global sub_802F12C // (int a1, int a2) -> void
+.global loc_802F130
 .global sub_802F148
-.global sub_802F14C
-.global sub_802F164
+.global sub_802F14C // (int a1) -> void
+.global sub_802F164 // (int a1, int a2) -> zf
 .global zf_802F168
-.global sub_802F17E
+.global sub_802F17E // (int a1, int a2) -> void
 .global loc_802F182
-.global sub_802F1A8
+.global sub_802F1A8 // (int a3, int a2) -> void
 .global loc_802F1AC
-.global sub_802F1FC
+.global sub_802F1FC // (int a3, int a2) ->
 .global loc_802F200
 .global sub_802F238
 .global sub_802F2C8
@@ -591,20 +591,20 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global sound_80005D4 // (int a3) -> void
+// .global sound_80005D4 // (int a1) -> void
 // .global sub_80005F2
 // .global sub_8000642
 // .global sub_800068A
 // .global sub_8000784
 // .global sub_80008B4
 // .global sub_80008C0
-// .global CpuSet_ZeroFillWord
-// .global sub_8000900 // (int a3, int a2) -> void
-// .global sub_8000920
-// .global sub_800092A
-// .global sub_800093C
-// .global sub_8000950
-// .global initMemblockToByte
+// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuFastSet_8000900 // (int a1, int a2) -> void
+// .global copyMemory // (void *src, void *dest, int size)
+// .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
+// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
+// .global CpuSet_8000950 // (void *src, void *dest, int mode) -> void
+// .global initMemToByte // (void *mem, int size, u8 byte) -> void
 // .global sub_800096C
 // .global sub_800098C
 // .global loc_8000AC4
@@ -640,7 +640,7 @@
 // .global sub_8001850
 // .global sub_800187C
 // .global sub_8001890
-// .global drawTiles // (int a3, int a2, int a1) -> void
+// .global drawTiles // (int a1, int a2, int a3) -> void
 // .global sub_80018D0
 // .global sub_80018E0
 // .global sub_8001930
@@ -651,7 +651,7 @@
 // .global sub_8002354
 // .global sub_80023A8
 // .global sub_8002468
-// .global loc_8002484
+// .global sub_8002484
 // .global sub_80024C0
 // .global sub_800260C
 // .global sprite_loadAnimationData_80026A4
@@ -715,7 +715,7 @@
 // .global sub_800A70C
 // .global getBattleSettingsFromList0
 // .global getBattleSettingsFromList1
-// .global sub_800A7D0
+// .global sub_800A7D0 // () -> int
 // .global sub_800A7E2
 // .global sub_800A832
 // .global sub_800A856
@@ -969,15 +969,15 @@
 // .global sub_804CF84
 
 .include "chatbox.inc"
-// .global chatbox_803FD9C
-// .global chatbox_803FE74
+// .global chatbox_runScript_CpuSet_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_runScript_CpuSet_803FE74 // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_8040818
-// .global chatbox_8045ED0
-// .global chatbox_8045F1C
-// .global chatbox_8045F2C
-// .global chatbox_8045F3C
-// .global chatbox_8045F4C
+// .global chatbox_8040818 // () -> void
+// .global chatbox_8045ED0 // (int a1) -> int
+// .global chatbox_setBits_2009F38 // (int mask) -> void
+// .global chatbox_clearBits_2009F38 // (int mask) -> void
+// .global chatbox_maskBits_2009F38 // (int mask) -> void
+// .global chatbox_getLast3Bits_2009F38 // () -> int
 
 .include "asm12.inc"
 // .global sub_806D8F8

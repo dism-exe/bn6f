@@ -8,7 +8,7 @@
 .global sub_801FE64
 .global sub_801FE6C
 .global sub_801FEE8
-.global loc_801FEEE
+.global sub_801FEEE
 .global sub_80200A4
 .global sub_8020134
 .global sub_8020140
@@ -35,7 +35,7 @@
 
 .include "asm03_0.inc"
 // .global sub_802D246
-// .global sub_802F164
+// .global sub_802F164 // (int a1, int a2) -> zf
 // .global sub_803C620
 // .global sub_803DCE8
 // .global sub_803DE88
@@ -49,9 +49,9 @@
 // .global sub_8144D04
 
 .include "asm00.inc"
-// .global CpuSet_ZeroFillWord
-// .global sub_8000900 // (int a3, int a2) -> void
-// .global sub_800093C
+// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuFastSet_8000900 // (int a1, int a2) -> void
+// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
 // .global sub_800A0D6
 
 

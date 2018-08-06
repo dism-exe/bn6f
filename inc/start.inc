@@ -4,7 +4,7 @@
 /* Public Symbols */
 .global start_
 .global dword_80001F4
-.global start_800023C
+.global start_800023C // () -> void
 .global start_800024C
 .global start_800027C
 .global start_8000288
@@ -20,9 +20,12 @@
 
 
 /* Undeclared Symbols */
+.equ timer_2000000, 0x2000000
 .equ byte_20081B0, 0x20081B0
 .equ dword_2009930, 0x2009930
 .equ dword_200A870, 0x200A870
+.equ word_3000000, 0x3000000
+.equ loc_3005B00, 0x3005B00
 .equ sub_3005DA0, 0x3005DA0
 .equ sub_3005DD4, 0x3005DD4
 .equ loc_3005DEC, 0x3005DEC

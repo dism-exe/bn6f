@@ -39,29 +39,36 @@ typedef struct{
 	// 02009980
 	Camera *camera;                // loc=0xC
 	// 02011C50
-	s_02011C50 *unk_10;                // loc=0x10
+	s_02011C50 *unk_2011C50;                // loc=0x10
 	// 02011BB0
 	void *unk_14;                // loc=0x14
 	// 02034880
-	s_02034880 *unk_18;                // loc=0x18
+	s_02034880 *unk_2034880;     // loc=0x18
 	// 0200F3A0
-	void *unk_1C;                // loc=0x1C
+	void *unk_200F3A0;                // loc=0x1C
 	// 02009740
-	void *unk_20;                // loc=0x20
+	void *unk_2009740;                // loc=0x20
 	// 0200A210
 	u16 *currFrame;                // loc=0x24
-	void *gfx_28;                // loc=0x28
+	// 030025C0
+	void *gfx_30025C0;                // loc=0x28
+	// 02009CD0
 	ChatBoxPropreties *chatbox;  // loc=0x2C
-	void *unk_30;                // loc=0x30
+	// 020384F0
+	void *unk_20384F0;                // loc=0x30
 	// 02009A30
 	MenuControl *submenu;                // loc=0x34
-	void *unk_38;                // loc=0x38
+	// 0200A220
+	void *unk_200A220;                // loc=0x38
+	// 02001B80
 	GameState *gamestate;          // loc=0x3C
-	void *unk_40;                // loc=0x40
+	// 02001C04
+	void *unk_2001C04;                // loc=0x40
 	/*
 	bot dog disappeared while zeroing this
 	*/
-	void *unk_44;                // loc=0x44
+	// 02001C88
+	void *unk_2001C88;                // loc=0x44
 	/*
 	Involved w/ chip data. When changed, and modifying folder,
 	It says you have damaged chip data and freezes...

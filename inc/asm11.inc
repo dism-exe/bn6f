@@ -20,7 +20,7 @@
 /* External Symbols */
 .include "asm03_0.inc"
 // .global sub_802F110
-// .global sub_802F12C
+// .global sub_802F12C // (int a1, int a2) -> void
 // .global sub_802FF4C
 // .global sub_803037C
 // .global loc_8030472

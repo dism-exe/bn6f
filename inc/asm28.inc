@@ -75,18 +75,18 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global sound_80005D4 // (int a3) -> void
-// .global CpuSet_ZeroFillWord
-// .global sub_8000900 // (int a3, int a2) -> void
-// .global sub_800093C
-// .global initMemblockToByte
+// .global sound_80005D4 // (int a1) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuFastSet_8000900 // (int a1, int a2) -> void
+// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
+// .global initMemToByte // (void *mem, int size, u8 byte) -> void
 // .global sub_8000B30
 // .global sub_8000E3A
 // .global getPETNaviSelect
 // .global sub_8001172
 // .global calcAngle_800117C
 // .global sub_8001850
-// .global drawTiles // (int a3, int a2, int a1) -> void
+// .global drawTiles // (int a1, int a2, int a3) -> void
 // .global sprite_loadAnimationData_80026A4
 // .global anim_80026C4
 // .global sub_80026E4
@@ -134,11 +134,11 @@
 .include "asm03_0.inc"
 // .global sub_802D15E
 // .global sub_802F110
-// .global sub_802F114
-// .global sub_802F12C
-// .global sub_802F130
+// .global sub_802F114 // (int a1) -> void
+// .global sub_802F12C // (int a1, int a2) -> void
+// .global loc_802F130
 // .global sub_802F148
-// .global sub_802F164
+// .global sub_802F164 // (int a1, int a2) -> zf
 // .global zf_802F168
 // .global sub_802F238
 // .global sub_80301B2
@@ -163,12 +163,12 @@
 .include "chatbox.inc"
 // .global chatbox_runScript_202da04 // (u8 scriptID) -> void
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_8040818
+// .global chatbox_8040818 // () -> void
 // .global off_8044470
 // .global off_80444C4
-// .global chatbox_8045EFC
-// .global chatbox_8045F3C
-// .global chatbox_8045F4C
+// .global chatbox_set_8045EFC // (int unk_4C, int unk_50, int unk_54, int unk_58) -> void
+// .global chatbox_maskBits_2009F38 // (int mask) -> void
+// .global chatbox_getLast3Bits_2009F38 // () -> int
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C

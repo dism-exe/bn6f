@@ -93371,7 +93371,7 @@ sub_80E68F8:
     b locret_80E691E
 loc_80E6910:
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     tst r0, r0
     bne locret_80E691E
     mov r0, #4
@@ -149577,7 +149577,7 @@ sub_8102CF8:
     add r0, sp, #0x28
     // numWords
     mov r1, #0x30 
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     bl sub_800E2CA
     ldr r2, [sp]
     ldrb r2, [r2,#0x12]
@@ -149694,17 +149694,20 @@ loc_8102DDC:
     add r2, r0, #0
     add r0, sp, #0x40
     bl sub_8000C72
+    // src
     add r0, sp, #0x40
     add r1, sp, #0x28
+    // dest
     add r1, r1, r6
     ldr r2, [sp,#0xc]
     sub r2, r2, r6
     cmp r2, r4
     ble loc_8102E14
+    // size
     add r2, r4, #0
 loc_8102E14:
     add r4, r2, #0
-    bl sub_8000920
+    bl copyMemory // (void *src, void *dest, int size)
     add r6, r6, r4
 loc_8102E1C:
     add r0, r6, #0
@@ -149719,15 +149722,18 @@ loc_8102E1C:
 loc_8102E2E:
     add r2, r1, #0
     bl sub_8000C72
+    // src
     add r0, sp, #0x28
+    // dest
     ldr r1, [sp,#8]
     ldr r2, [sp,#0xc]
     cmp r2, r6
     ble loc_8102E40
+    // size
     add r2, r6, #0
 loc_8102E40:
     str r2, [sp,#0xc]
-    bl sub_8000920
+    bl copyMemory // (void *src, void *dest, int size)
     ldr r0, [sp,#0xc]
 loc_8102E48:
     add sp, sp, #0x5c

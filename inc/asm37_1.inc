@@ -170,9 +170,9 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global CpuSet_ZeroFillWord
-// .global sub_800093C
-// .global initMemblockToByte
+// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
+// .global initMemToByte // (void *mem, int size, u8 byte) -> void
 // .global loc_8000AC8
 // .global sub_8000E3A
 // .global getPETNaviSelect
@@ -201,12 +201,12 @@
 .include "asm03_0.inc"
 // .global sub_802D064
 // .global sub_802F110
-// .global sub_802F114
-// .global sub_802F12C
-// .global sub_802F130
-// .global sub_802F164
+// .global sub_802F114 // (int a1) -> void
+// .global sub_802F12C // (int a1, int a2) -> void
+// .global loc_802F130
+// .global sub_802F164 // (int a1, int a2) -> zf
 // .global zf_802F168
-// .global sub_802F1A8
+// .global sub_802F1A8 // (int a3, int a2) -> void
 // .global loc_802F1AC
 // .global sub_80302A8
 // .global sub_80307D8
@@ -222,7 +222,7 @@
 // .global sub_803F618
 
 .include "chatbox.inc"
-// .global chatbox_8045F3C
+// .global chatbox_maskBits_2009F38 // (int mask) -> void
 
 .include "asm03_1.inc"
 // .global sub_8046818

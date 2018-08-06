@@ -25,30 +25,43 @@ loc_80000D0:
     msr cpsr_cf, r0
     ldr sp, dword_80001F4 // =0x3007E00 
     ldr r0, off_80001F8 // =loc_3007FFC 
-    ldr r1, dword_80001FC // =0x3005B00 
+    ldr r1, dword_80001FC // =loc_3005B00 
     str r1, [r0]
     ldr r0, off_8000200 // =GamePakWaitstateControl 
     ldr r1, dword_8000204 // =0x45B4 
     str r1, [r0]
-    mov r0, #0x3000000
+    // mem
+    mov r0, #0x3000000 // word_3000000
+    // size
     mov r1, #0x7e00
-    bl start_clearMemory
-    mov r0, #0x2000000
+    bl start_clearMemory // (void *mem, int size) -> void
+    // mem
+    mov r0, #0x2000000 // timer_2000000
+    // size
     mov r1, #0x40000
-    bl start_clearMemory
+    bl start_clearMemory // (void *mem, int size) -> void
+    // mem
     mov r0, #0x6000000
+    // size
     mov r1, #0x18000
-    bl start_clearMemory
+    bl start_clearMemory // (void *mem, int size) -> void
+    // mem
     mov r0, #0x7000000
+    // size
     mov r1, #0x400
-    bl start_clearMemory
+    bl start_clearMemory // (void *mem, int size) -> void
+    // mem
     mov r0, #0x5000000
+    // size
     mov r1, #0x400
-    bl start_clearMemory
-    ldr r0, off_8000208 // =loc_81D6000 
-    ldr r1, dword_800020C // =0x3005B00 
-    ldr r2, dword_8000210 // =0x1ED4 
-    bl start_copyMemory
+    bl start_clearMemory // (void *mem, int size) -> void
+    // src
+    ldr r0, mem // =loc_81D6000 
+    // dest
+    ldr r1, a2 // =loc_3005B00 
+    // size
+    ldr r2, size // =0x1ED4 
+    bl start_copyMemory // (void *src, void *dest, int size) -> void
     ldr r0, off_8000214 // =CpuSet_toolKit+1 
     mov lr, pc
     bx r0
@@ -58,27 +71,79 @@ loc_80000D0:
     ldr r0, off_800021C // =start_800023C+1 
     mov lr, pc
     bx r0
-    ldr r0, off_8000220 // =byte_20081B0 
-    mov r1, #0
-    strb r1, [r0]
-    ldr r0, off_8000224 // =dword_2009930 
-    mov r1, #1
-    str r1, [r0]
-    ldr r0, off_8000228 // =dword_200A870 
-    mov r1, #0
-    str r1, [r0]
-    ldr r0, off_800022C // =GeneralLCDStatus_STAT_LYC_ 
-    mov r1, #8
-    strh r1, [r0]
-    ldr r0, off_8000230 // =KeyInterruptControl 
-    ldr r1, dword_8000234 // =0x83FF 
-    strh r1, [r0]
-    ldr r0, off_8000238 // =main_+1 
-    bx r0
+    .byte 0x9C
+    .byte 0
+    .byte 0x9F
+    .byte 0xE5
+    .byte 0
+    .byte 0x10
+    .byte 0xA0
+    .byte 0xE3
+    .byte 0
+    .byte 0x10
+    .byte 0xC0
+    .byte 0xE5
+    .byte 0x94
+    .byte 0
+    .byte 0x9F
+    .byte 0xE5
+    .byte 1
+    .byte 0x10
+    .byte 0xA0
+    .byte 0xE3
+    .byte 0
+    .byte 0x10
+    .byte 0x80
+    .byte 0xE5
+    .byte 0x8C
+    .byte 0
+    .byte 0x9F
+    .byte 0xE5
+    .byte 0
+    .byte 0x10
+    .byte 0xA0
+    .byte 0xE3
+    .byte 0
+    .byte 0x10
+    .byte 0x80
+    .byte 0xE5
+    .byte 0x84
+    .byte 0
+    .byte 0x9F
+    .byte 0xE5
+    .byte 8
+    .byte 0x10
+    .byte 0xA0
+    .byte 0xE3
+    .byte 0xB0
+    .byte 0x10
+    .byte 0xC0
+    .byte 0xE1
+    .byte 0x7C 
+    .byte 0
+    .byte 0x9F
+    .byte 0xE5
+    .byte 0x7C 
+    .byte 0x10
+    .byte 0x9F
+    .byte 0xE5
+    .byte 0xB0
+    .byte 0x10
+    .byte 0xC0
+    .byte 0xE1
+    .byte 0x78 
+    .byte 0
+    .byte 0x9F
+    .byte 0xE5
+    .byte 0x10
+    .byte 0xFF
+    .byte 0x2F 
+    .byte 0xE1
     b start_
 .endfunc // start_
 
 .func
+// (void *mem, int size) -> void
 start_clearMemory:
     mov r2, #0
 loc_80001C8:
@@ -89,6 +154,7 @@ loc_80001C8:
 .endfunc // start_clearMemory
 
 .func
+// (void *src, void *dest, int size) -> void
     // size
 start_copyMemory:
     subs r2, r2, #4
@@ -103,23 +169,24 @@ off_80001F8:    .word loc_3007FFC
 dword_80001FC:    .word 0x3005B00
 off_8000200:    .word GamePakWaitstateControl
 dword_8000204:    .word 0x45B4
-off_8000208:    .word loc_81D6000
-dword_800020C:    .word 0x3005B00
-dword_8000210:    .word 0x1ED4
+mem:    .word loc_81D6000
+a2:    .word loc_3005B00
+size:    .word 0x1ED4
 off_8000214:    .word CpuSet_toolKit+1
 off_8000218:    .word sub_8006C22+1
 off_800021C:    .word start_800023C+1
-off_8000220:    .word byte_20081B0
-off_8000224:    .word dword_2009930
-off_8000228:    .word dword_200A870
-off_800022C:    .word GeneralLCDStatus_STAT_LYC_
-off_8000230:    .word KeyInterruptControl
-dword_8000234:    .word 0x83FF
-off_8000238:    .word main_+1
+    .word byte_20081B0
+    .word dword_2009930
+    .word dword_200A870
+    .word GeneralLCDStatus_STAT_LYC_
+    .word KeyInterruptControl
+    .word 0x83FF
+    .word main_+1
 .endfunc // start_copyMemory
 
 .func
 .thumb_func
+// () -> void
 start_800023C:
     push {lr}
     ldr r0, off_8000248 // =sub_3005DA0+1 

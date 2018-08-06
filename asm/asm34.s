@@ -4,21 +4,26 @@
 .thumb_func
 sub_812D378:
     push {r4-r7,lr}
+    // a1
     mov r0, #0
+    // a2
     mov r1, #0
+    // a3
     mov r2, #1
     ldr r3, off_812D3A0 // =unk_201D620 
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     mov r0, #0x1e
     neg r0, r0
+    // a2
     mov r1, #2
+    // a3
     mov r2, #1
     ldr r3, off_812D3A4 // =unk_201DB20 
     mov r4, #0x3c 
     mov r5, #0x11
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7,pc}
     .byte 0, 0
 off_812D3A0:    .word unk_201D620
@@ -28,7 +33,7 @@ off_812D3A4:    .word unk_201DB20
     push {lr}
     ldr r0, off_812D3DC // =word_2023FA0 
     mov r1, #0x20 
-    bl sub_8000900 // (int a3, int a2) -> void
+    bl CpuFastSet_8000900 // (int a1, int a2) -> void
     bl sub_8120A88
     ldr r0, off_812D3E0 // =unk_2023FC0 
     mov r1, #1
@@ -64,7 +69,7 @@ off_812D3E0:    .word unk_2023FC0
     ldr r3, off_812D4C8 // =unk_202DFA0 
     mov r4, #8
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrh r0, [r7,#0x2e]
     ldr r1, off_812D4C4 // =word_2023FA0 
     ldr r2, off_812D4CC // =unk_202E080 
@@ -78,7 +83,7 @@ off_812D3E0:    .word unk_2023FC0
     ldr r3, off_812D4CC // =unk_202E080 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrh r0, [r7,#0x2e]
     ldr r1, off_812D4C4 // =word_2023FA0 
     ldr r2, off_812D4D8 // =unk_202E0B8 
@@ -95,7 +100,7 @@ off_812D3E0:    .word unk_2023FC0
     ldr r3, off_812D4D8 // =unk_202E0B8 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrh r0, [r7,#0x2e]
     ldr r1, off_812D4C4 // =word_2023FA0 
     ldr r2, off_812D4E4 // =unk_202E0F0 
@@ -111,7 +116,7 @@ off_812D3E0:    .word unk_2023FC0
     ldr r3, off_812D4E4 // =unk_202E0F0 
     mov r4, #1
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrh r0, [r7,#0x2e]
     ldr r1, off_812D4C4 // =word_2023FA0 
     ldr r2, off_812D4EC // =unk_202E10C 
@@ -127,7 +132,7 @@ off_812D3E0:    .word unk_2023FC0
     ldr r3, off_812D4EC // =unk_202E10C 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldrh r0, [r7,#0x2e]
     ldr r1, off_812D4C4 // =word_2023FA0 
     ldr r2, off_812D4F4 // =unk_202E144 
@@ -143,7 +148,7 @@ off_812D3E0:    .word unk_2023FC0
     ldr r3, off_812D4F4 // =unk_202E144 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     bl sub_812D5EC
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -522,13 +527,16 @@ locret_812D788:
 .thumb_func
 sub_812D78C:
     push {r4-r7,lr}
+    // a1
     mov r0, #0x15
+    // a2
     mov r1, #2
+    // a3
     mov r2, #0
     ldr r3, off_812D7A0 // =unk_20227A0 
     mov r4, #8
     mov r5, #0x11
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // sub_812D78C
 
     pop {r4-r7,pc}
@@ -600,7 +608,7 @@ off_812D80C:    .word unk_2023FC0
     sub r1, #1
     str r1, [r0,#0x6c]
     bne locret_812D82E
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     mov r0, #0
     tst r0, r0
 locret_812D82E:
@@ -686,7 +694,7 @@ locret_812D8C6:
     ldr r3, off_812D914 // =dword_201E420 
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     add r5, r7, #0
     bl sub_812D52E
     ldrh r0, [r5,#0x2a]
@@ -776,7 +784,7 @@ loc_812D970:
     mov r2, #2
     mov r4, #8
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
     push {r4-r7,lr}

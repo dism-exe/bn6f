@@ -148,12 +148,12 @@
 // .global sound_play
 // .global sub_8000784
 // .global sub_80008B4
-// .global CpuSet_ZeroFillWord
-// .global sub_8000900 // (int a3, int a2) -> void
-// .global sub_8000920
-// .global sub_800092A
-// .global sub_800093C
-// .global sub_8000950
+// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuFastSet_8000900 // (int a1, int a2) -> void
+// .global copyMemory // (void *src, void *dest, int size)
+// .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
+// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
+// .global CpuSet_8000950 // (void *src, void *dest, int mode) -> void
 // .global sub_800096C
 // .global loc_8000AC8
 // .global sub_8000B30
@@ -164,7 +164,7 @@
 // .global sub_80017AA
 // .global sub_80017E0
 // .global sub_800183C
-// .global drawTiles // (int a3, int a2, int a1) -> void
+// .global drawTiles // (int a1, int a2, int a3) -> void
 // .global sub_80018D0
 // .global sub_80024A2
 // .global sub_80035A2
@@ -209,10 +209,10 @@
 // .global sub_802D28C
 // .global sub_802D2AC
 // .global sub_802F110
-// .global sub_802F114
-// .global sub_802F12C
-// .global sub_802F130
-// .global sub_802F164
+// .global sub_802F114 // (int a1) -> void
+// .global sub_802F12C // (int a1, int a2) -> void
+// .global loc_802F130
+// .global sub_802F164 // (int a1, int a2) -> zf
 // .global zf_802F168
 // .global sub_802FE28
 // .global sub_8036E78
@@ -251,16 +251,16 @@
 // .global sub_803F798
 
 .include "chatbox.inc"
-// .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) ->
-// .global chatbox_803FD9C
-// .global loc_803FDA4
-// .global chatbox_803FE08
-// .global chatbox_803FE10
-// .global chatbox_8040818
-// .global chatbox_8045F1C
-// .global chatbox_8045F2C
-// .global chatbox_8045F3C
-// .global chatbox_8045F4C
+// .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_runScript_CpuSet_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_runScript_CpuSet_803FDA4
+// .global chatbox_runScript_CpuSet_803FE08 // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_runScript_CpuSet_803FE10 // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_8040818 // () -> void
+// .global chatbox_setBits_2009F38 // (int mask) -> void
+// .global chatbox_clearBits_2009F38 // (int mask) -> void
+// .global chatbox_maskBits_2009F38 // (int mask) -> void
+// .global chatbox_getLast3Bits_2009F38 // () -> int
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C

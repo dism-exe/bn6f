@@ -9,8 +9,8 @@
 // .global sub_80307D8
 
 .include "asm00.inc"
-// .global CpuSet_ZeroFillWord
-// .global sub_800092A
+// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
 // .global sub_8000B30
 
 

@@ -9,7 +9,7 @@ reqBBS_813E07C:
     ldr r0, off_813E0A0 // =reqBBS_bxo_2001150 
     // numWords
     mov r1, #0x2c 
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     pop {r0}
     ldr r5, off_813E0A0 // =reqBBS_bxo_2001150 
     strb r0, [r5,#0x4] // (byte_2001154 - 0x2001150)
@@ -239,7 +239,7 @@ reqBBS_draw_813E224:
     lsl r2, r2, #2
     ldr r3, off_813E290 // =off_813E294 
     ldr r2, [r3,r2]
-    bl chatbox_reqBBS_80404C0
+    bl chatbox_runScript_reqBBS // (u16 *scriptArr, u8 scriptID) -> void
     bl reqBBS_draw_chatbox
     bl reqBBS_drawHeaderText
     mov r0, #0x10
@@ -278,7 +278,7 @@ reqBBS_draw_813E2AC:
     strb r1, [r0,#9]
 loc_813E2C8:
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_813E320
     ldrh r0, [r5,#0x24] // reqBBS_GUI.pagePos
     ldrh r1, [r5,#0x20] // reqBBS_GUI.cursorPos
@@ -291,15 +291,15 @@ loc_813E2C8:
     mov r8, r0
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_813E2F6
     mov r0, r8
-    bl sub_802F130
+    bl loc_802F130 // (int a1, int a2) -> void
     ldrb r0, [r5,#5]
     add r0, #0
     strb r0, [r5,#5]
 loc_813E2F6:
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     bl reqBBS_813E834
     mov r0, #0x14
     strb r0, [r5]
@@ -548,9 +548,9 @@ reqBBS_draw_813E4AC:
     strb r1, [r0,#9]
 loc_813E4C8:
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_813E4EC
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     mov r0, #0x24 
     strb r0, [r5]
     mov r7, r10
@@ -699,7 +699,7 @@ reqBBS_813E5DC:
     mov r1, #2
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114
+    bl sub_802F114 // (int a1) -> void
     add r0, r7, #0
     ldr r3, off_813E6A4 // =0x17A0 
     sub r0, r0, r3
@@ -707,7 +707,7 @@ reqBBS_813E5DC:
     add r0, r0, r3
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114
+    bl sub_802F114 // (int a1) -> void
     ldr r1, off_813E6A4 // =0x17A0 
     sub r7, r7, r1
     lsr r3, r7, #6
@@ -729,20 +729,23 @@ reqBBS_813E5DC:
 .thumb_func
 reqBBS_813E616:
     push {lr}
+    // mem
     ldr r0, off_813E6B4 // =unk_2001400 
+    // size
     ldr r1, off_813E6B8 // =0x200 
+    // byte
     mov r2, #0x40 
-    bl initMemblockToByte
+    bl initMemToByte // (void *mem, int size, u8 byte) -> void
     // memBlock
     ldr r0, off_813E6BC // =unk_2000FC0 
     // numWords
     mov r1, #0x20 
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     // memBlock
     ldr r0, off_813E6C0 // =unk_2000FF0 
     // numWords
     mov r1, #0x20 
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     pop {pc}
 .endfunc // reqBBS_813E616
 
@@ -753,24 +756,27 @@ reqBBS_dead_813E634:
     add r4, r0, #0
     lsl r0, r0, #6
     ldr r1, off_813E6C4 // =unk_2001400 
+    // mem
     add r0, r0, r1
+    // size
     mov r1, #0x40 
+    // byte
     mov r2, #0x40 
-    bl initMemblockToByte
+    bl initMemToByte // (void *mem, int size, u8 byte) -> void
     lsl r0, r4, #2
     ldr r1, off_813E6C8 // =unk_2000FC0 
     // memBlock
     add r0, r0, r1
     // numWords
     mov r1, #4
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     lsl r0, r4, #2
     ldr r1, off_813E6CC // =unk_2000FF0 
     // memBlock
     add r0, r0, r1
     // numWords
     mov r1, #4
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     pop {r4,pc}
 .endfunc // reqBBS_dead_813E634
 
@@ -872,10 +878,13 @@ off_813E80C:    .word dword_87E7574
 .thumb_func
 reqBBS_813E834:
     push {r4-r7,lr}
+    // mem
     ldr r0, off_813E88C // =reqBBS_requestEntries_IDs 
+    // size
     mov r1, #0x30 
+    // byte
     mov r2, #0x2f 
-    bl initMemblockToByte
+    bl initMemToByte // (void *mem, int size, u8 byte) -> void
     ldr r6, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
     ldr r0, [r6,#0x10]
     ldr r0, [r0]
@@ -907,7 +916,7 @@ loc_813E870:
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     pop {r0,r1}
     beq loc_813E880
     add r7, #1
@@ -927,21 +936,27 @@ off_813E88C:    .word reqBBS_requestEntries_IDs
 reqBBS_813E890:
     push {r4-r7,lr}
     add r7, r5, #0
+    // a1
     mov r0, #5
+    // a2
     mov r1, #3
+    // a3
     mov r2, #2
     ldr r3, off_813E8C8 // =unk_813DBE4 
     mov r4, #0x17
     mov r5, #0x10
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     ldr r3, [r7,#0x28]
     ldr r3, [r3,#0x1c]
+    // a1
     mov r0, #0
+    // a2
     mov r1, #0
+    // a3
     mov r2, #1
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     mov r0, #0
     mov r1, #0
     mov r2, #3
@@ -1014,7 +1029,7 @@ loc_813E934:
     push {r3}
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     pop {r3}
     beq loc_813E968
     push {r4-r7}
@@ -1088,19 +1103,22 @@ loc_813EAA6:
     add r0, r2, r3
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_813EAD6
     push {r4-r7}
+    // a1
     mov r0, #2
     mov r1, #2
     mul r1, r6
+    // a2
     add r1, #3
+    // a3
     mov r2, #2
     ldr r3, off_813EB0C // =off_813EB10 
     ldr r3, [r3,r4]
     mov r4, #2
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7}
     b loc_813EAEE
 loc_813EAD6:
@@ -1128,7 +1146,7 @@ loc_813EAEE:
     ldr r3, [r3,r4]
     mov r4, #2
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r0-r7,pc}
 off_813EB08:    .word reqBBS_requestEntries_IDs
 off_813EB0C:    .word off_813EB10
@@ -1394,12 +1412,15 @@ reqBBS_static_813EC6C:
 reqBBS_draw_chatbox:
     push {r4-r7,lr}
     ldr r3, off_813ECD4 // =unk_2018A04 
+    // a1
     mov r0, #2
+    // a2
     mov r1, #5
+    // a3
     mov r2, #1
     mov r4, #0x1a
     mov r5, #0xa
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7,pc}
 off_813ECD4:    .word unk_2018A04
 .endfunc // reqBBS_draw_chatbox
@@ -1425,13 +1446,16 @@ off_813ECF0:    .word unk_2018A04
 .thumb_func
 dead_813ECF4:
     push {r4-r7,lr}
+    // a1
     mov r0, #3
+    // a2
     mov r1, #5
+    // a3
     mov r2, #1
     ldr r3, off_813ED08 // =unk_2018A04 
     mov r4, #0x18
     mov r5, #0xa
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7,pc}
 off_813ED08:    .word unk_2018A04
 .endfunc // dead_813ECF4
@@ -1500,7 +1524,7 @@ reqBBS_813ED60:
     ldr r1, [r1,#0xc]
     add r3, r3, r1
     add r0, r3, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq locret_813ED90
     add r0, r7, #0
     mov r1, #7
@@ -1735,13 +1759,16 @@ dword_813EF24:    .word 0x9080706, 0xA
 .thumb_func
 reqBBS_drawRequestBBS:
     push {r4-r7,lr}
+    // a1
     mov r0, #1
+    // a2
     mov r1, #0
+    // a3
     mov r2, #2
     ldr r3, off_813EF40 // =dword_813DF44 
     mov r4, #0xc
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7,pc}
 off_813EF40:    .word dword_813DF44
 reqBBS_entriesGfx:    .byte 0x35, 0x0, 0x0, 0xFF, 0xFF
@@ -2231,7 +2258,7 @@ reqBBS_init_s_2005780:
     push {r1-r3}
     // numWords
     mov r1, #0x2c 
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     pop {r1-r3}
     ldr r0, off_813F400 // =sReqBBS_GUI 
     mov r4, #0xd // reqBBS_GUI.numPoints
@@ -2300,7 +2327,7 @@ reqBBS_813F474:
     push {lr}
     mov r0, #0x17
     mov r1, #0x3a 
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq loc_813F4B6
     ldr r0, off_813F548 // =sReqBBS_GUI 
     ldr r1, dword_813F544 // =0xF 
@@ -2309,7 +2336,7 @@ reqBBS_813F474:
     ldr r3, [r3,#0x18] // (dword_813F364 - 0x813f34c)
     add r2, r2, r3
     add r0, r2, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_813F4B6
     ldr r0, off_813F548 // =sReqBBS_GUI 
     ldr r1, dword_813F544 // =0xF 
@@ -2317,11 +2344,12 @@ reqBBS_813F474:
     ldr r3, off_813F54C // =reqBBS_textualPointers 
     ldr r3, [r3,#0x14] // (dword_813F354+0xC - 0x813f34c)
     add r2, r2, r3
+    // a1
     add r0, r2, #0
-    bl sub_802F114
+    bl sub_802F114 // (int a1) -> void
     mov r0, #0x17
     mov r1, #0x3a 
-    bl sub_802F12C
+    bl sub_802F12C // (int a1, int a2) -> void
     ldr r0, off_813F548 // =sReqBBS_GUI 
     ldr r1, dword_813F544 // =0xF 
     mov r3, #0
@@ -2509,7 +2537,7 @@ reqBBS_813F5EC:
     ldr r1, off_813F658 // =reqBBS_requestEntries_IDs 
     ldrb r1, [r1,r2]
     ldr r2, off_813F654 // =reqBBS_textualShades 
-    bl chatbox_reqBBS_80404C0
+    bl chatbox_runScript_reqBBS // (u16 *scriptArr, u8 scriptID) -> void
     bl reqBBS_8140600
     bl reqBBS_drawChatbox_dup1
     bl reqBBS_renderSelectedEntry_HeaderText
@@ -2543,7 +2571,7 @@ reqBBS_813F65C:
     strb r1, [r0,#9]
 loc_813F678:
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_813F6CE
     ldrh r0, [r5,#0x24]
     ldrh r1, [r5,#0x20]
@@ -2556,15 +2584,15 @@ loc_813F678:
     mov r8, r0
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_813F6A6
     mov r0, r8
-    bl sub_802F130
+    bl loc_802F130 // (int a1, int a2) -> void
     ldrb r0, [r5,#5]
     add r0, #0
     strb r0, [r5,#5]
 loc_813F6A6:
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     ldrh r0, [r5,#0x24]
     ldrh r1, [r5,#0x20]
     add r0, r0, r1
@@ -2580,7 +2608,7 @@ loc_813F6C0:
 loc_813F6C2:
     ldr r0, off_813F6F4 // =reqBBS_dialogList 
     ldr r2, off_813F6F0 // =reqBBS_textualShades 
-    bl chatbox_reqBBS_80404C0
+    bl chatbox_runScript_reqBBS // (u16 *scriptArr, u8 scriptID) -> void
     mov r0, #0x40 
     strb r0, [r5]
 loc_813F6CE:
@@ -2816,9 +2844,9 @@ reqBBS_813F868:
     strb r1, [r0,#9]
 loc_813F884:
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_813F8A8
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     mov r0, #0x24 
     strb r0, [r5]
     mov r7, r10
@@ -2968,7 +2996,7 @@ reqBBS_813F9A0:
     mov r1, #2
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114
+    bl sub_802F114 // (int a1) -> void
     add r0, r7, #0
     ldr r3, off_813FD74 // =0x1B60 
     sub r0, r0, r3
@@ -2976,7 +3004,7 @@ reqBBS_813F9A0:
     add r0, r0, r3
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114
+    bl sub_802F114 // (int a1) -> void
     ldr r1, off_813FD74 // =0x1B60 
     sub r7, r7, r1
     lsr r3, r7, #6
@@ -2998,20 +3026,23 @@ reqBBS_813F9A0:
 .thumb_func
 reqBBS_initMemory_813F9DA:
     push {lr}
+    // mem
     ldr r0, off_813FD84 // =reqBBS_requestEntriesList 
+    // size
     mov r1, #0x80
+    // byte
     mov r2, #0x80
-    bl initMemblockToByte
+    bl initMemToByte // (void *mem, int size, u8 byte) -> void
     // memBlock
     ldr r0, off_813FD88 // =reqBBS_numRequestsSent 
     // numWords
     mov r1, #4
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     // memBlock
     ldr r0, off_813FD8C // =unk_2000770 
     // numWords
     mov r1, #4
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     pop {pc}
 .endfunc // reqBBS_initMemory_813F9DA
 
@@ -3022,24 +3053,27 @@ reqBBS_dead_initMemory_813F9F8:
     add r4, r0, #0
     lsl r0, r0, #7
     ldr r1, off_813FD90 // =reqBBS_requestEntriesList 
+    // mem
     add r0, r0, r1
+    // size
     mov r1, #0x80
+    // byte
     mov r2, #0x80
-    bl initMemblockToByte
+    bl initMemToByte // (void *mem, int size, u8 byte) -> void
     lsl r0, r4, #2
     ldr r1, off_813FD94 // =reqBBS_numRequestsSent 
     // memBlock
     add r0, r0, r1
     // numWords
     mov r1, #4
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     lsl r0, r4, #2
     ldr r1, off_813FD98 // =unk_2000770 
     // memBlock
     add r0, r0, r1
     // numWords
     mov r1, #4
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     pop {r4,pc}
 .endfunc // reqBBS_dead_initMemory_813F9F8
 
@@ -3152,7 +3186,7 @@ reqBBS_813FAB0:
     ldr r0, off_813FB18 // =reqBBS_dialogList 
     mov r1, #6
     ldr r2, off_813FB10 // =reqBBS_textualShades 
-    bl chatbox_reqBBS_80404C0
+    bl chatbox_runScript_reqBBS // (u16 *scriptArr, u8 scriptID) -> void
     bl reqBBS_drawSelectChatbox
     bl reqBBS_changeChatboxHeader
     mov r0, #0x34 
@@ -3189,25 +3223,25 @@ reqBBS_813FB24:
     strb r1, [r0,#9]
 loc_813FB40:
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_813FB98
     mov r0, #0x17
     mov r1, #0x3a 
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq loc_813FB6E
     ldr r0, off_813FBB4 // =reqBBS_requestInfo_textOffsets 
     ldr r1, off_813FDA4 // =sReqBBS_GUI 
     ldr r2, dword_813FBBC // =0xF 
     ldrb r1, [r1,r2]
     ldr r2, off_813FBB8 // =reqBBS_textualShades 
-    bl chatbox_reqBBS_80404C0
+    bl chatbox_runScript_reqBBS // (u16 *scriptArr, u8 scriptID) -> void
     mov r0, #0x38 
     strb r0, [r5]
     bl reqBBS_drawChatbox_dup1
     bl reqBBS_setChatboxHeaderBasedOn_0F
     b loc_813FB98
 loc_813FB6E:
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     bl reqBBS_813FE54
     mov r0, #0x3c 
     strb r0, [r5]
@@ -3261,9 +3295,9 @@ reqBBS_813FBC0:
     strb r1, [r0,#9]
 loc_813FBDC:
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_813FC0E
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     bl reqBBS_813FE54
     mov r0, #0x3c 
     strb r0, [r5]
@@ -3376,9 +3410,9 @@ loc_813FCA8:
     b loc_813FCF0
 loc_813FCBE:
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_813FCF0
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     bl reqBBS_813FE54
     mov r0, #0x14
     strb r0, [r5]
@@ -3431,9 +3465,9 @@ reqBBS_813FD14:
     strb r1, [r0,#9]
 loc_813FD30:
     mov r0, #8
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_813FD6C
-    bl chatbox_8040818
+    bl chatbox_8040818 // () -> void
     bl reqBBS_813FE54
     mov r0, #0x14
     strb r0, [r5]
@@ -3507,10 +3541,13 @@ dword_813FDCC:    .word 0x887EF884, 0x6000200, 0x2017A00, 0x887EFC28, 0x0
 .thumb_func
 reqBBS_813FE54:
     push {r4-r7,lr}
+    // mem
     ldr r0, off_813FEAC // =reqBBS_requestEntries_IDs 
+    // size
     mov r1, #0x30 
+    // byte
     mov r2, #0x2f 
-    bl initMemblockToByte
+    bl initMemToByte // (void *mem, int size, u8 byte) -> void
     ldr r6, [r5,#0x28]
     ldr r0, [r6,#0x1c]
     ldr r0, [r0]
@@ -3542,7 +3579,7 @@ loc_813FE90:
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     pop {r0,r1}
     beq loc_813FEA0
     add r7, #1
@@ -3562,13 +3599,16 @@ off_813FEAC:    .word reqBBS_requestEntries_IDs
 reqBBS_813FEB0:
     push {r4-r7,lr}
     add r7, r5, #0
+    // a1
     mov r0, #5
+    // a2
     mov r1, #3
+    // a3
     mov r2, #2
     ldr r3, off_813FEE8 // =unk_813EF4C 
     mov r4, #0x17
     mov r5, #0x10
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // reqBBS_813FEB0
 
     ldr r3, [r7,#0x28]
@@ -3578,7 +3618,7 @@ reqBBS_813FEB0:
     mov r2, #1
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     mov r0, #0
     mov r1, #0
     mov r2, #3
@@ -3911,19 +3951,22 @@ loc_814005E:
     add r0, r2, r3
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_814008E
     push {r4-r7}
+    // a1
     mov r0, #2
     mov r1, #2
     mul r1, r6
+    // a2
     add r1, #3
+    // a3
     mov r2, #2
     ldr r3, off_81400C4 // =pt_81400C8 
     ldr r3, [r3,r4]
     mov r4, #2
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7}
     b loc_81400A6
 loc_814008E:
@@ -3942,14 +3985,17 @@ loc_81400A6:
     add r6, #1
     cmp r6, #8
     bne loc_814005E
+    // a1
     mov r0, #0x15
+    // a2
     mov r1, #0
+    // a3
     mov r2, #2
     ldr r3, off_81400C4 // =pt_81400C8 
     ldr r3, [r3,r4]
     mov r4, #2
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r0-r7,pc}
 off_81400C0:    .word reqBBS_requestEntries_IDs
 off_81400C4:    .word pt_81400C8
@@ -4010,18 +4056,21 @@ loc_81401CE:
     add r0, r2, r3
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_81401FC
     push {r4-r7}
+    // a1
     mov r0, #2
     mov r1, #2
     mul r1, r6
+    // a2
     add r1, #3
+    // a3
     mov r2, #2
     ldr r3, off_8140234 // =dword_8140238 
     mov r4, #2
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7}
     b loc_8140228
 loc_81401FC:
@@ -4033,18 +4082,21 @@ loc_81401FC:
     add r0, r2, r3
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_8140228
     push {r4-r7}
+    // a1
     mov r0, #2
     mov r1, #2
     mul r1, r6
+    // a2
     add r1, #3
+    // a3
     mov r2, #2
     ldr r3, off_8140240 // =unk_8140244 
     mov r4, #2
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7}
 loc_8140228:
     add r6, #1
@@ -4080,7 +4132,7 @@ loc_8140252:
     add r0, r2, r3
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_81402B4
     push {r4-r7}
     mov r0, #0x16
@@ -4106,15 +4158,18 @@ loc_8140290:
     push {r0,r1}
     push {r4-r7}
     mov r0, #0x1a
+    // a1
     sub r0, r0, r1
     mov r1, #2
     mul r1, r6
+    // a2
     add r1, #3
+    // a3
     mov r2, #2
     ldr r3, off_81402C4 // =unk_81402C8 
     mov r4, #1
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7}
     pop {r0,r1}
     add r1, #1
@@ -4149,13 +4204,16 @@ loc_81402DE:
     push {r0,r1}
     push {r4-r7}
     mov r0, #0x1a
+    // a1
     sub r0, r0, r1
+    // a2
     mov r1, #6
+    // a3
     mov r2, #1
     ldr r3, off_8140304 // =unk_8140308 
     mov r4, #1
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7}
     pop {r0,r1}
     add r1, #1
@@ -4188,13 +4246,16 @@ loc_8140320:
     push {r0,r1}
     push {r4-r7}
     mov r0, #0x1a
+    // a1
     sub r0, r0, r1
+    // a2
     mov r1, #6
+    // a3
     mov r2, #1
     ldr r3, off_8140350 // =unk_8140354 
     mov r4, #1
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7}
     pop {r0,r1}
     add r1, #1
@@ -4384,12 +4445,15 @@ off_814049C:    .word 0x54
 reqBBS_drawChatbox_dup1:
     push {r4-r7,lr}
     ldr r3, off_81404B4 // =unk_2018A04 
+    // a1
     mov r0, #2
+    // a2
     mov r1, #5
+    // a3
     mov r2, #1
     mov r4, #0x1a
     mov r5, #0xa
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
     pop {r4-r7,pc}
 off_81404B4:    .word unk_2018A04
 .endfunc // reqBBS_drawChatbox_dup1
@@ -4399,12 +4463,15 @@ off_81404B4:    .word unk_2018A04
 reqBBS_drawSelectChatbox:
     push {r4-r7,lr}
     ldr r3, off_81404CC // =unk_201BA04 
+    // a1
     mov r0, #5
+    // a2
     mov r1, #5
+    // a3
     mov r2, #1
     mov r4, #0x14
     mov r5, #0xa
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // reqBBS_drawSelectChatbox
 
     pop {r4-r7,pc}
@@ -4554,13 +4621,16 @@ off_81405E4:    .word dword_86B7AE0
 .thumb_func
 reqBBS_81405E8:
     push {r4-r7,lr}
+    // a1
     mov r0, #0xa
+    // a2
     mov r1, #0
+    // a3
     mov r2, #2
     ldr r3, off_81405FC // =dword_813F32C 
     mov r4, #8
     mov r5, #2
-    bl drawTiles // (int a3, int a2, int a1) -> void
+    bl drawTiles // (int a1, int a2, int a3) -> void
 .endfunc // reqBBS_81405E8
 
     pop {r4-r7,pc}
@@ -4586,7 +4656,7 @@ reqBBS_8140604:
     ldr r1, [r1,#0xc]
     add r3, r3, r1
     add r0, r3, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq locret_8140634
     add r0, r7, #0
     mov r1, #7
@@ -4842,7 +4912,7 @@ reqBBS_81407D8:
     push {r4-r7,lr}
     mov r0, #0x17
     mov r1, #0x3a 
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq loc_8140814
     ldr r0, off_81409B4 // =sReqBBS_GUI 
     ldr r1, dword_8140820 // =0xF 
@@ -4883,7 +4953,7 @@ dword_8140828:    .word 0x4B23190A, 0x0
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_8140844
     mov r0, #1
     b locret_8140846
@@ -4901,7 +4971,7 @@ reqBBS_814084C:
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_8140860
     mov r0, #1
     b locret_8140862
@@ -4921,7 +4991,7 @@ reqBBS_8140868:
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_814087C
     mov r0, #1
     b locret_814087E
@@ -4961,7 +5031,7 @@ reqBBS_81408A0:
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114
+    bl sub_802F114 // (int a1) -> void
     pop {r4-r7,pc}
 off_81408B0:    .word reqBBS_textualPointers
 .endfunc // reqBBS_81408A0
@@ -4975,7 +5045,7 @@ reqBBS_81408B4:
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114
+    bl sub_802F114 // (int a1) -> void
     pop {r4-r7,pc}
 off_81408C4:    .word reqBBS_textualPointers
 .endfunc // reqBBS_81408B4
@@ -5012,13 +5082,13 @@ dword_81408EC:    .word 0xF
 reqBBS_81408F0:
     push {r4-r7,lr}
     mov r0, #0x80
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_814095E
     mov r0, #0x20 
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     beq loc_814096A
     ldr r0, off_8140970 // =0x110 
-    bl chatbox_8045F3C
+    bl chatbox_maskBits_2009F38 // (int mask) -> void
     bne loc_814096A
     bl reqBBS_81408C8
     bl reqBBS_8140868
@@ -5026,7 +5096,7 @@ reqBBS_81408F0:
     bne loc_814095E
     mov r0, #0x17
     mov r1, #0x3a 
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     bne loc_8140962
     bl reqBBS_81408C8
     bl reqBBS_8140884
@@ -5034,7 +5104,7 @@ reqBBS_81408F0:
     bne loc_8140966
     mov r0, #0x17
     mov r1, #0x1d
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq loc_814095A
     bl getPETNaviSelect
     cmp r0, #0
@@ -5162,7 +5232,7 @@ reqBBS_8140A0C:
     push {r4,r5,lr}
     mov r0, #0x17
     mov r1, #0
-    bl sub_802F12C
+    bl sub_802F12C // (int a1, int a2) -> void
     mov r5, r10
     ldr r5, [r5,#0x40]
     mov r3, #0x14
@@ -5176,11 +5246,11 @@ reqBBS_8140A0C:
     mov r0, #0x16
     mov r1, #0x40 
     mov r2, #0x40 
-    bl sub_802F17E
+    bl sub_802F17E // (int a1, int a2) -> void
     mov r0, #0x16
     mov r1, #0xc0
     mov r2, #0x10
-    bl sub_802F17E
+    bl sub_802F17E // (int a1, int a2) -> void
     mov r0, #0
     pop {pc}
     .byte 0, 0
@@ -5188,11 +5258,11 @@ reqBBS_8140A0C:
     mov r0, #0x16
     mov r1, #0xf3
     mov r2, #0xd
-    bl sub_802F17E
+    bl sub_802F17E // (int a1, int a2) -> void
     mov r0, #0x16
     mov r1, #0xc0
     mov r2, #0x10
-    bl sub_802F17E
+    bl sub_802F17E // (int a1, int a2) -> void
     mov r0, #0
     pop {pc}
     .balign 4, 0x00

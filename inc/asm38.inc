@@ -22,14 +22,14 @@
 // .global sub_814DA9C
 
 .include "chatbox.inc"
-// .global chatbox_8040D5C
+// .global chatbox_8040D5C // (int a1, int a2) -> (int r1, int r2)
 // .global off_8043C8C
 
 .include "asm00.inc"
 // .global sub_80005AC
 // .global sub_80005C4
 // .global sub_80008B4
-// .global sub_8000920
+// .global copyMemory // (void *src, void *dest, int size)
 // .global sub_800098C
 // .global loc_8000AC8
 // .global sub_8000C00

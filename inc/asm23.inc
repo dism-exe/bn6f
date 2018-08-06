@@ -53,9 +53,9 @@
 
 .include "asm03_0.inc"
 // .global sub_802F110
-// .global sub_802F12C
-// .global sub_802F130
-// .global sub_802F164
+// .global sub_802F12C // (int a1, int a2) -> void
+// .global loc_802F130
+// .global sub_802F164 // (int a1, int a2) -> zf
 // .global sub_802FE28
 // .global sub_8035408
 // .global sub_8036E44
@@ -65,9 +65,9 @@
 
 .include "chatbox.inc"
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_8045EDC
-// .global chatbox_8045F3C
-// .global chatbox_8045F4C
+// .global chatbox_8045EDC // (int a1, int a2) -> void
+// .global chatbox_maskBits_2009F38 // (int mask) -> void
+// .global chatbox_getLast3Bits_2009F38 // () -> int
 
 .include "asm03_1.inc"
 // .global sub_80468C6

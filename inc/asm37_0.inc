@@ -26,7 +26,7 @@
 .global sub_813BF1C
 .global sub_813BF60
 .global sub_813BFB8
-.global sub_813C030
+.global sub_813C030 // () -> void
 .global sub_813C06C
 .global sub_813C1C0
 .global sub_813C324
@@ -82,11 +82,11 @@
 .include "asm00.inc"
 // .global sound_play
 // .global sub_80008B4
-// .global CpuSet_ZeroFillWord
-// .global sub_8000920
-// .global sub_800092A
-// .global sub_800093C
-// .global initMemblockToByte
+// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global copyMemory // (void *src, void *dest, int size)
+// .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
+// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
+// .global initMemToByte // (void *mem, int size, u8 byte) -> void
 // .global getPETNaviSelect
 // .global sub_80010BE
 // .global sub_800151C
@@ -110,9 +110,9 @@
 // .global sub_802D158
 // .global sub_802D15E
 // .global sub_802F110
-// .global sub_802F114
-// .global sub_802F12C
-// .global sub_802F164
+// .global sub_802F114 // (int a1) -> void
+// .global sub_802F12C // (int a1, int a2) -> void
+// .global sub_802F164 // (int a1, int a2) -> zf
 // .global zf_802F168
 // .global loc_802F182
 // .global loc_802F1AC

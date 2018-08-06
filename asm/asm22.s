@@ -157,7 +157,7 @@ sub_8086FD8:
 loc_8086FF4:
     mov r0, #5
     mov r1, #0xf1
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq loc_8087004
     mov r0, #1
     strb r0, [r5,#9]
@@ -165,7 +165,7 @@ loc_8086FF4:
 loc_8087004:
     mov r0, #5
     mov r1, #0xf3
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq loc_808702C
     mov r0, #1
     strb r0, [r5,#5]
@@ -174,7 +174,7 @@ loc_8087004:
     strb r0, [r5,#1]
     mov r0, #5
     mov r1, #0xf3
-    bl sub_802F12C
+    bl sub_802F12C // (int a1, int a2) -> void
     mov r0, #5
     mov r1, #0xf2
     bl sub_802F110
@@ -183,14 +183,14 @@ loc_8087004:
 loc_808702C:
     mov r0, #5
     mov r1, #0xf4
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq locret_80870F6
     mov r0, #2
     strb r0, [r5,#5]
     strb r0, [r5,#7]
     mov r0, #5
     mov r1, #0xf4
-    bl sub_802F12C
+    bl sub_802F12C // (int a1, int a2) -> void
     ldr r0, off_80870F8 // =dword_8086A54+716 
     b loc_80870F2
 loc_8087048:
@@ -201,7 +201,7 @@ loc_808704C:
     bne loc_808705C
     mov r0, #5
     mov r1, #0xf2
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     bne loc_8087062
 loc_808705C:
     add r1, r4, #0
@@ -224,7 +224,7 @@ loc_8087068:
     bne loc_8087092
     mov r0, #5
     mov r1, #0xe1
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     bne loc_80870D8
     mov r0, #5
     mov r1, #0xe1
@@ -236,7 +236,7 @@ loc_8087092:
     bne loc_80870AC
     mov r0, #5
     mov r1, #0xe2
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     bne loc_80870D8
     mov r0, #5
     mov r1, #0xe2
@@ -246,7 +246,7 @@ loc_8087092:
 loc_80870AC:
     mov r0, #5
     mov r1, #0xe3
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     bne loc_80870D8
     mov r0, #5
     mov r1, #0xe3
@@ -256,7 +256,7 @@ loc_80870AC:
 loc_80870C2:
     mov r0, #0xf
     mov r1, #0xc0
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     bne loc_80870D8
     mov r0, #0xf
     mov r1, #0xc0
@@ -466,7 +466,7 @@ sub_80871C0:
     ldr r1, off_80871D4 // =dword_80871D8 
     ldrh r1, [r1,r0]
     add r0, r1, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     pop {pc}
     .hword 0x0
     // <endpool> <endfile>

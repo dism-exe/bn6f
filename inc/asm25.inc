@@ -29,7 +29,7 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global CpuSet_ZeroFillWord
+// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8001172
 // .global sub_800118A
 // .global sprite_loadAnimationData_80026A4
@@ -50,11 +50,11 @@
 
 .include "asm03_0.inc"
 // .global sub_802F110
-// .global sub_802F114
-// .global sub_802F12C
-// .global sub_802F164
+// .global sub_802F114 // (int a1) -> void
+// .global sub_802F12C // (int a1, int a2) -> void
+// .global sub_802F164 // (int a1, int a2) -> zf
 // .global zf_802F168
-// .global sub_802F1A8
+// .global sub_802F1A8 // (int a3, int a2) -> void
 // .global sub_80301B2
 // .global sub_80301DC
 // .global sub_8036E90

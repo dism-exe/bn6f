@@ -35,9 +35,9 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global sub_8000900 // (int a3, int a2) -> void
+// .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global sub_800183C
-// .global drawTiles // (int a3, int a2, int a1) -> void
+// .global drawTiles // (int a1, int a2, int a3) -> void
 // .global sub_80018D0
 // .global sub_800307C
 // .global engine_setScreeneffect
@@ -52,7 +52,7 @@
 // .global sub_803EBF4
 
 .include "chatbox.inc"
-// .global chatbox_8040818
+// .global chatbox_8040818 // () -> void
 
 .include "asm03_1.inc"
 // .global sub_80465A0

@@ -126,8 +126,8 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global sub_8000920
-// .global sub_800093C
+// .global copyMemory // (void *src, void *dest, int size)
+// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
 // .global getPETNaviSelect
 // .global sub_8001172
 // .global calcAngle_800117C
@@ -179,10 +179,10 @@
 // .global sub_802D266
 // .global sub_802D652
 // .global sub_802F110
-// .global sub_802F114
-// .global sub_802F12C
-// .global sub_802F130
-// .global sub_802F164
+// .global sub_802F114 // (int a1) -> void
+// .global sub_802F12C // (int a1, int a2) -> void
+// .global loc_802F130
+// .global sub_802F164 // (int a1, int a2) -> zf
 // .global zf_802F168
 // .global sub_80302A8
 // .global sub_8031612
@@ -196,8 +196,8 @@
 // .global sub_8036F70
 
 .include "chatbox.inc"
-// .global chatbox_8045F3C
-// .global chatbox_8045F4C
+// .global chatbox_maskBits_2009F38 // (int mask) -> void
+// .global chatbox_getLast3Bits_2009F38 // () -> int
 
 
 /* Undeclared Symbols */

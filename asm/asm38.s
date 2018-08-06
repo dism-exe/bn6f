@@ -1820,10 +1820,13 @@ loc_81D7126:
     add r4, #1
     add r5, #1
     pop {r0,r6,pc}
-.endfunc // sub_81D7118
-
     add r0, #1
     mov pc, lr
+.endfunc // sub_81D7118
+
+.func
+.thumb_func
+sub_81D713C:
     push {lr}
     mov r4, r10
     ldr r4, [r4,#0x38]
@@ -1853,6 +1856,11 @@ loc_81D7162:
 loc_81D716E:
     mov r3, #0
     pop {pc}
+.endfunc // sub_81D713C
+
+.func
+.thumb_func
+sub_81D7172:
     push {lr}
     mov r1, r10
     ldr r1, [r1,#0x38]
@@ -1868,6 +1876,11 @@ loc_81D7188:
     mov r4, #0
     add r0, #1
     pop {pc}
+.endfunc // sub_81D7172
+
+.func
+.thumb_func
+sub_81D718E:
     push {lr}
     ldrb r1, [r0,#1]
     ldr r2, dword_81D719C // =0x5040404 
@@ -1878,6 +1891,8 @@ loc_81D7188:
 dword_81D719C:    .word 0x5040404
     .word 0x4030005
     .word 0x40404
+.endfunc // sub_81D718E
+
 .func
 .thumb_func
 sub_81D71A8:
@@ -1904,6 +1919,9 @@ loc_81D71B6:
     pop {pc}
 .endfunc // sub_81D71A8
 
+.func
+.thumb_func
+sub_81D71D0:
     push {r3,lr}
     push {r0,r2,r4-r6}
     ldrb r1, [r0,#1]
@@ -2013,6 +2031,11 @@ loc_81D7292:
 off_81D7298:    .word sub_8000C00+1
 off_81D729C:    .word sub_8000C5C+1
 off_81D72A0:    .word off_8043C8C
+.endfunc // sub_81D71D0
+
+.func
+.thumb_func
+sub_81D72A4:
     push {r3,r7,lr}
     ldr r1, dword_81D72B4 // =0x3006DB8 
     ldrb r3, [r0,#1]
@@ -2029,8 +2052,13 @@ dword_81D72B4:    .word 0x3006DB8
     .word 0xBC41BC08, 0x37341C1F, 0x31016839, 0x629E6039, 0x62D83003
     .word 0xBDFE1C30
     .word 0x8043B54
-    .word sub_8000920+1
+    .word copyMemory+1
     .word 0x200DD20
+.endfunc // sub_81D72A4
+
+.func
+.thumb_func
+sub_81D731C:
     push {r3,r7,lr}
     push {r0}
     ldrb r3, [r0,#2]
@@ -2080,6 +2108,8 @@ loc_81D735C:
     pop {r3,r7,pc}
     .balign 4, 0x00
 off_81D7378:    .word chatbox_8040D5C+1
+.endfunc // sub_81D731C
+
     push {r3,r7,lr}
     ldr r1, dword_81D738C // =0x3006E90 
     ldrb r3, [r0,#1]
@@ -2098,7 +2128,7 @@ dword_81D738C:    .word 0x3006E90
     .word 0x2001186, 0x200119E, 0x20007D6, 0x200083A, 0x20018F4
     .word 0x2001950, 0x20019AC, 0x2001A08, 0x2001A64, 0x2001AC0
     .word 0x200AFA0
-    .word sub_8000920+1
+    .word copyMemory+1
     .word 0x200A220
     add r0, #4
     mov pc, lr

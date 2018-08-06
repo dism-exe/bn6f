@@ -21,10 +21,12 @@ sub_8021AB4:
     mul r1, r2
     mov r3, r10
     ldr r3, [r3,#0x48]
+    // dest
     add r1, r1, r3
+    // mode
     mov r2, #0x3c 
     push {r1}
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     pop {r7}
     mov r6, #0
 loc_8021ACC:
@@ -62,7 +64,7 @@ loc_8021B00:
     ldr r1, off_8021B74 // =0x1E20 
     add r1, r1, r0
     add r0, r1, #0
-    bl sub_802F114
+    bl sub_802F114 // (int a1) -> void
     pop {r0-r2}
     push {r2}
     bl computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
@@ -90,8 +92,9 @@ loc_8021B3C:
     push {r0-r2}
     ldr r1, off_8021B74 // =0x1E20 
     add r1, r1, r0
+    // a1
     add r0, r1, #0
-    bl sub_802F114
+    bl sub_802F114 // (int a1) -> void
     pop {r0-r2}
     push {r2}
     bl computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
@@ -124,6 +127,8 @@ off_8021B74:    .word 0x1E20
 .func
 .thumb_func
 // (int idx, int searchItem, int off) -> void*
+// [break (E7FE)]
+//   When getting an item; like from mayl, or when loading shops
 sub_8021B78:
     push {lr}
     push {r0-r2}
@@ -137,8 +142,6 @@ loc_8021B84:
     pop {r2}
     strb r2, [r0]
     // return itemRef
-    // [break-response]
-    //   When getting an item; like from mayl, or when loading shops
     pop {pc}
 .endfunc // sub_8021B78
 
@@ -279,7 +282,7 @@ sub_8021C68:
     ldr r0, [r0,#0x4c]
     // numWords
     ldr r1, dword_8021C78 // =0xF00 
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     pop {pc}
     .balign 4, 0x00
 dword_8021C78:    .word 0xF00
@@ -412,31 +415,43 @@ sub_8021D36:
     ldr r0, off_8021D6C // =unk_2000AF0 
     mov r1, #0x40 
     bl sub_80008C0
+    // src
     ldr r0, off_8021D80 // =dword_8021D88 
+    // dest
     ldr r1, off_8021D70 // =unk_2001184 
+    // mode
     mov r2, #8
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    // src
     ldr r0, off_8021D80 // =dword_8021D88 
+    // dest
     ldr r1, off_8021D74 // =unk_200119C 
+    // mode
     mov r2, #8
-    bl sub_800093C
-    ldr r0, dword_8021D84 // =dword_8021D88 
-    ldr r1, dword_8021D78 // =0x20007D6 
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    // src
+    ldr r0, off_8021D84 // =dword_8021D88+2 
+    // dest
+    ldr r1, off_8021D78 // =unk_20007D6 
+    // mode
     mov r2, #8
-    bl sub_800093C
-    ldr r0, dword_8021D84 // =dword_8021D88 
-    ldr r1, dword_8021D7C // =0x200083A 
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    // src
+    ldr r0, off_8021D84 // =dword_8021D88+2 
+    // dest
+    ldr r1, off_8021D7C // =unk_200083A 
+    // mode
     mov r2, #8
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     pop {pc}
     .balign 4, 0x00
 off_8021D6C:    .word unk_2000AF0
 off_8021D70:    .word unk_2001184
 off_8021D74:    .word unk_200119C
-dword_8021D78:    .word 0x20007D6
-dword_8021D7C:    .word 0x200083A
+off_8021D78:    .word unk_20007D6
+off_8021D7C:    .word unk_200083A
 off_8021D80:    .word dword_8021D88
-dword_8021D84:    .word 0x8021D8A
+off_8021D84:    .word dword_8021D88+2
     // <endpool>
 dword_8021D88:    .word 0x7E7E0002, 0xE67E7E, 0x0
 .endfunc // sub_8021D36

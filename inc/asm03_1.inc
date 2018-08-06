@@ -163,11 +163,11 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global CpuSet_ZeroFillWord
-// .global sub_8000900 // (int a3, int a2) -> void
-// .global sub_8000920
-// .global sub_800093C
-// .global sub_8000950
+// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuFastSet_8000900 // (int a1, int a2) -> void
+// .global copyMemory // (void *src, void *dest, int size)
+// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
+// .global CpuSet_8000950 // (void *src, void *dest, int mode) -> void
 // .global sub_800096C
 // .global sub_80009AC
 // .global loc_8000AC8
@@ -185,7 +185,7 @@
 // .global sub_80017E0
 // .global sub_800183C
 // .global sub_8001850
-// .global drawTiles // (int a3, int a2, int a1) -> void
+// .global drawTiles // (int a1, int a2, int a3) -> void
 // .global sub_80018D0
 // .global sub_8002354
 // .global sub_8002694
@@ -205,7 +205,7 @@
 // .global engine_setScreeneffect
 // .global engine_isScreeneffectAnimating
 // .global sub_8006F1E
-// .global sub_800A7D0
+// .global sub_800A7D0 // () -> int
 
 .include "asm37_0.inc"
 // .global sub_813D5C8
@@ -216,7 +216,7 @@
 // .global sub_813D978
 
 .include "asm03_0.inc"
-// .global sub_802F114
+// .global sub_802F114 // (int a1) -> void
 // .global zf_802F168
 // .global sub_802FE28
 // .global sub_802FF4C
@@ -295,17 +295,17 @@
 
 .include "chatbox.inc"
 // .global chatbox_uncomp_803FD08 // () -> int
-// .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) ->
+// .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_8040818
+// .global chatbox_8040818 // () -> void
 // .global dword_8043C90
 // .global dword_8043C90
 // .global dword_8043C90
-// .global chatbox_8045EEC
-// .global chatbox_8045EFC
-// .global chatbox_8045F1C
-// .global chatbox_8045F3C
-// .global chatbox_8045F4C
+// .global chatbox_8045EEC // (int a1) -> int
+// .global chatbox_set_8045EFC // (int unk_4C, int unk_50, int unk_54, int unk_58) -> void
+// .global chatbox_setBits_2009F38 // (int mask) -> void
+// .global chatbox_maskBits_2009F38 // (int mask) -> void
+// .global chatbox_getLast3Bits_2009F38 // () -> int
 
 
 /* Undeclared Symbols */

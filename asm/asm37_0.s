@@ -49,7 +49,7 @@ loc_813B7A0:
     ldr r1, dword_813B7E8 // =0x2660 
     add r1, r1, r4
     add r0, r1, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_813B7BC
     mov r2, #0xc
 loc_813B7BC:
@@ -74,10 +74,13 @@ dword_813B7E8:    .word 0x2660
 .thumb_func
 sub_813B7EC:
     push {lr}
+    // src
     add r0, r7, #0
+    // dest
     add r1, r4, #0
+    // size
     mov r2, #0x31 
-    bl sub_8000920
+    bl copyMemory // (void *src, void *dest, int size)
     pop {pc}
     .balign 4, 0x00
 .endfunc // sub_813B7EC
@@ -301,13 +304,13 @@ sub_813B934:
     ldr r0, [r0,#0x5c]
     // numWords
     ldr r1, off_813B94C // =0x188 
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     mov r0, r10
     // memBlock
     ldr r0, [r0,#0x58]
     // numWords
     mov r1, #0x40 
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     pop {pc}
 off_813B94C:    .word 0x188
 .endfunc // sub_813B934
@@ -500,15 +503,21 @@ sub_813BA48:
 sub_813BA64:
     push {lr}
     mov r0, r10
+    // src
     ldr r0, [r0,#0x58]
+    // dest
     ldr r1, off_813BA9C // =unk_201BA00 
+    // mode
     mov r2, #0x40 
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     mov r0, r10
+    // src
     ldr r0, [r0,#0x5c]
+    // dest
     ldr r1, off_813BAA0 // =unk_201BA40 
+    // mode
     ldr r2, off_813BAA4 // =0x188 
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     pop {pc}
 .endfunc // sub_813BA64
 
@@ -517,15 +526,21 @@ sub_813BA64:
 sub_813BA80:
     push {lr}
     mov r1, r10
+    // dest
     ldr r1, [r1,#0x58]
+    // src
     ldr r0, off_813BA9C // =unk_201BA00 
+    // mode
     mov r2, #0x40 
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     mov r1, r10
+    // dest
     ldr r1, [r1,#0x5c]
+    // src
     ldr r0, off_813BAA0 // =unk_201BA40 
+    // mode
     ldr r2, off_813BAA4 // =0x188 
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     pop {pc}
 off_813BA9C:    .word unk_201BA00
 off_813BAA0:    .word unk_201BA40
@@ -537,15 +552,21 @@ off_813BAA4:    .word 0x188
 sub_813BAA8:
     push {lr}
     mov r0, r10
+    // src
     ldr r0, [r0,#0x58]
+    // dest
     ldr r1, off_813BAE0 // =unk_201BC40 
+    // mode
     mov r2, #0x40 
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     mov r0, r10
+    // src
     ldr r0, [r0,#0x5c]
+    // dest
     ldr r1, off_813BAE4 // =unk_201BC80 
+    // mode
     ldr r2, off_813BAE8 // =0x188 
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     pop {pc}
 .endfunc // sub_813BAA8
 
@@ -554,15 +575,21 @@ sub_813BAA8:
 sub_813BAC4:
     push {lr}
     mov r1, r10
+    // dest
     ldr r1, [r1,#0x58]
+    // src
     ldr r0, off_813BAE0 // =unk_201BC40 
+    // mode
     mov r2, #0x40 
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     mov r1, r10
+    // dest
     ldr r1, [r1,#0x5c]
+    // src
     ldr r0, off_813BAE4 // =unk_201BC80 
+    // mode
     ldr r2, off_813BAE8 // =0x188 
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     pop {pc}
 off_813BAE0:    .word unk_201BC40
 off_813BAE4:    .word unk_201BC80
@@ -1113,11 +1140,14 @@ loc_813BE9E:
 .thumb_func
 sub_813BEA8:
     push {r4-r7,lr}
+    // mem
     ldr r0, off_813BF08 // =unk_2006D30 
     add r4, r0, #0
+    // size
     mov r1, #0x31 
+    // byte
     mov r2, #0xff
-    bl initMemblockToByte
+    bl initMemToByte // (void *mem, int size, u8 byte) -> void
     mov r6, #0
     mov r5, #0
 loc_813BEBA:
@@ -1186,12 +1216,12 @@ sub_813BF1C:
     mov r6, #1
     mov r0, #0x17
     mov r1, #0x20 
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq loc_813BF36
     b loc_813BF38
     mov r0, #0x17
     mov r1, #0x23 
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     bne loc_813BF38
 loc_813BF36:
     mov r6, #0
@@ -1345,6 +1375,7 @@ sub_813C020:
 
 .func
 .thumb_func
+// () -> void
 sub_813C030:
     push {r4-r7,lr}
     mov r5, #0x94
@@ -1799,16 +1830,16 @@ loc_813C366:
     ldr r2, dword_813C3A0 // =0x2660 
     add r2, r2, r3
     add r0, r2, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_813C386
     add r0, r2, #0
     mov r2, #4
-    bl loc_802F1AC
+    bl loc_802F1AC // (int a3, int a2) -> void
     b loc_813C38E
 loc_813C386:
     add r0, r2, #0
     mov r2, #4
-    bl loc_802F182
+    bl loc_802F182 // (int a1, int a2) -> void
 loc_813C38E:
     mov r0, #0x8b
     bl sound_play
@@ -1834,7 +1865,7 @@ loc_813C3B8:
     bl sub_813C458
     mov r0, #1
     mov r1, #0x63 
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq loc_813C3CC
     bl loc_8121154
     b loc_813C3CC
@@ -1846,7 +1877,7 @@ loc_813C3CC:
     bge loc_813C40E
     mov r0, #0x17
     mov r1, #0x1d
-    bl sub_802F164
+    bl sub_802F164 // (int a1, int a2) -> zf
     beq locret_813C454
     mov r0, #0
     mov r1, #0x42 
@@ -1911,7 +1942,7 @@ sub_813C458:
     bl sub_813C678
     mov r0, #0x17
     mov r1, #0xd
-    bl sub_802F12C
+    bl sub_802F12C // (int a1, int a2) -> void
     bl loc_813C684
     bl sub_813CBCC
     add r0, r4, #0
@@ -2937,7 +2968,7 @@ sub_813CBCC:
     push {r4-r7,lr}
     mov r0, #0x17
     mov r1, #0x20 
-    bl sub_802F12C
+    bl sub_802F12C // (int a1, int a2) -> void
     bl sub_813C490
     cmp r0, #1
     bne loc_813CBE4
@@ -3630,10 +3661,11 @@ loc_813D44A:
     ldr r4, dword_813D488 // =0x2620 
     add r4, r4, r5
     add r0, r4, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     bne loc_813D466
+    // a1
     add r0, r4, #0
-    bl sub_802F114
+    bl sub_802F114 // (int a1) -> void
     mov r0, #1
     ldrb r1, [r7]
     ldrh r2, [r7,#2]
@@ -3943,7 +3975,7 @@ sub_813D66C:
     push {lr}
     ldr r0, off_813D68C // =byte_200AF80 
     mov r1, #0x18
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     pop {pc}
 off_813D68C:    .word byte_200AF80
     push {lr}
@@ -4380,7 +4412,7 @@ sub_813D960:
     add r0, r7, #0
     // numWords
     mov r1, #0x10
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     strb r4, [r7,#0x7] // (byte_200BC57 - 0x200bc50)
     pop {r4,r7,pc}
     .balign 4, 0x00
@@ -4495,15 +4527,21 @@ sub_813DA0C:
     bl sub_813D9AC
     strb r0, [r4,#0x1] // (dword_203F7D8+1 - 0x203f7d8)
     b locret_813DA36
+    // src
 loc_813DA22:
     ldr r0, off_813DB10 // =word_2036780 
+    // dest
     ldr r1, off_813DB14 // =unk_20399F0 
+    // mode
     mov r2, #0x10
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    // src
     ldr r0, off_813DB18 // =word_2036780 
+    // dest
     ldr r1, off_813DB1C // =unk_2039A00 
+    // mode
     mov r2, #0x10
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
 locret_813DA36:
     pop {r4,pc}
 .endfunc // sub_813DA0C
@@ -4516,12 +4554,12 @@ locret_813DA36:
     add r2, r1, #0
     add r1, r0, #0
     ldr r0, [r3,#0x34]
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
 locret_813DA4C:
     pop {pc}
     .byte 0, 0
     push {lr}
-    bl sub_800093C
+    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
     pop {pc}
     push {r4,lr}
     add r2, r1, #0
@@ -4538,7 +4576,7 @@ locret_813DA4C:
     ldr r1, [r3,#0x3c] // (scamera.unk_8c - 0x20099d0)
 loc_813DA72:
     mov r2, #0xa
-    bl sub_800092A
+    bl CpuSet_800092A // (void *src, void *dest, int mode) -> void
 locret_813DA78:
     pop {r4,pc}
     .balign 4, 0x00
@@ -4552,7 +4590,7 @@ sub_813DA84:
     ldr r0, off_813DA90 // =byte_2010290 
     // numWords
     mov r1, #0x10
-    bl CpuSet_ZeroFillWord
+    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     pop {pc}
 off_813DA90:    .word byte_2010290
 .endfunc // sub_813DA84

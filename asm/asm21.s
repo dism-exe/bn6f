@@ -335,7 +335,7 @@ loc_808133C:
     push {r0}
     ldrh r2, [r3,#2]
     add r0, r2, #0
-    bl zf_802F168
+    bl zf_802F168 // (int a1, int a2) -> zf
     pop {r0}
     bne locret_808135C
     mov r0, #0x15
