@@ -12,7 +12,7 @@ pt.env(compareBinPath= '')
 
 ## disassembly utils
 # TODO set this to your project path relative to your analysis idb path
-pt.env(dismProjPath= 'GameDev/Disassembly/bn6f/')
+pt.env(dismProjPath= '../SPB_Data/dev/dis/bn6f/')
 pt.env(asmPath= 'asm/')
 pt.env(binPath='bin/')
 pt.env(incPath='inc/')
