@@ -31,7 +31,7 @@ sub_812EAC4:
     ldr r0, off_812EB68 // =word_2023FA0 
     ldr r1, off_812EB74 // =0xBC 
     lsl r1, r1, #2
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     ldr r0, off_812EB68 // =word_2023FA0 
     mov r1, #0x90
     strh r1, [r0]
@@ -113,7 +113,7 @@ off_812EB74:    .word 0xBC
 
     push {lr}
     ldr r0, off_812EB84 // =dword_812DA94 
-    bl sub_80465A0
+    bl sub_80465A0 // (void *a1) -> void
     pop {pc}
     .balign 4, 0x00
 off_812EB84:    .word dword_812DA94
@@ -170,7 +170,7 @@ sub_812EBD8:
     sub sp, sp, #4
     str r2, [sp]
     add r6, r1, #0
-    bl sub_80465A0
+    bl sub_80465A0 // (void *a1) -> void
     add r0, r6, #0
     bl sub_80466C4
     beq loc_812EBFE
@@ -394,7 +394,7 @@ locret_812ED90:
     push {r4-r7,lr}
     add r7, r5, #0
     bl sub_800183C
-    bl sub_8046664
+    bl sub_8046664 // () -> void
     mov r0, #0
     mov r1, #0
     mov r2, #1
@@ -427,9 +427,10 @@ sub_812EDE4:
     ldr r0, off_812EDF4 // =dword_812DA94+64 
     b loc_812EDEE
     push {lr}
+    // a1
     ldr r0, off_812EDF8 // =dword_812DA94+72 
 loc_812EDEE:
-    bl sub_80465A0
+    bl sub_80465A0 // (void *a1) -> void
     pop {pc}
 off_812EDF4:    .word dword_812DA94+0x40
 off_812EDF8:    .word dword_812DA94+0x48

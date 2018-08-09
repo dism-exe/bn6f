@@ -161,7 +161,7 @@ loc_81419CC:
     bl engine_isScreeneffectAnimating
     beq loc_8141A0C
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_8141A0C
     mov r0, r10
     ldr r0, [r0,#0x3c]
@@ -2314,7 +2314,7 @@ sub_8143406:
     mov r0, sp
     mov r1, #0x10
     mov r2, #0x20 
-    bl initMemToByte // (void *mem, int size, u8 byte) -> void
+    bl initMemblockToByte
     mov r0, sp
     mov r1, #0
     ldrb r2, [r5,#0xa] // (byte_200101A - 0x2001010)
@@ -2330,13 +2330,10 @@ sub_814343A:
     push {r4-r7,lr}
     ldr r5, off_81434E0 // =byte_2001010 
     sub sp, sp, #0x10
-    // mem
     mov r0, sp
-    // size
     mov r1, #0x10
-    // byte
     mov r2, #0x20 
-    bl initMemToByte // (void *mem, int size, u8 byte) -> void
+    bl initMemblockToByte
     mov r0, sp
     mov r1, #3
     bl sub_8000E3A
@@ -8972,22 +8969,16 @@ sub_8146B70:
     beq loc_8146BB0
     strb r1, [r2]
     ldr r4, off_8146BAC // =unk_20399F0 
-    // src
     add r0, r5, #0
-    // dest
     add r1, r4, #0
-    // mode
     mov r2, #0x10
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    bl CpuSet_800093C
     add r0, r5, #0
-    // src
     add r0, #0xc
     add r4, #0x10
-    // dest
     add r1, r4, #0
-    // mode
     mov r2, #0x10
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    bl CpuSet_800093C
     mov r0, #2
     b loc_8146BB2
     .balign 4, 0x00
@@ -9184,13 +9175,10 @@ loc_8146CDC:
 sub_8146CE4:
     push {lr}
     ldr r3, [r0,#8]
-    // dest
     ldr r1, off_8146CF8 // =byte_200DD10 
-    // mode
     ldr r2, [r0,#0x10]
-    // src
     add r0, r3, #0
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    bl CpuSet_800093C
     pop {r0}
     bx r0
     .balign 4, 0x00
@@ -9383,13 +9371,10 @@ off_8146E44:    .word byte_2010328
 sub_8146E48:
     push {lr}
     add r3, r1, #0
-    // dest
     ldr r1, [r0,#0xc]
-    // mode
     ldr r2, [r0,#0x14]
-    // src
     add r0, r3, #0
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    bl CpuSet_800093C
     pop {r0}
     bx r0
     .balign 4, 0x00
@@ -9910,13 +9895,10 @@ loc_81472A4:
     ldrb r0, [r0]
     cmp r0, #1
     bne loc_81472C4
-    // src
     ldr r0, off_81472F4 // =byte_200DD10 
-    // dest
     ldr r1, off_81472E4 // =byte_20101E0 
-    // mode
     mov r2, #0xc
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    bl CpuSet_800093C
 loc_81472C4:
     add r0, r4, #1
     lsl r0, r0, #0x18
@@ -11376,13 +11358,10 @@ sub_8147F00:
     bne loc_8147F3A
     add r0, r6, #1
     strb r0, [r4]
-    // src
     ldr r0, off_8147F4C // =byte_200DD10 
-    // dest
     add r1, r7, #0
-    // mode
     add r2, r5, #0
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    bl CpuSet_800093C
 loc_8147F3A:
     add sp, sp, #4
     pop {r4-r7}
@@ -12721,17 +12700,14 @@ loc_8148AD8:
     bne loc_8148B08
     lsl r0, r4, #4
     ldr r1, off_8148B74 // =unk_2010230 
-    // src
     add r0, r0, r1
     lsl r1, r4, #1
     add r1, r1, r4
     lsl r1, r1, #2
     ldr r2, off_8148B78 // =unk_20101EC 
-    // dest
     add r1, r1, r2
-    // mode
     mov r2, #0xc
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    bl CpuSet_800093C
 loc_8148B08:
     add r0, r4, #1
     lsl r0, r0, #0x18
@@ -25742,6 +25718,7 @@ sub_814E026:
     bx r3
     ldr r3, [r2,#0x54]
     ldr r3, [r6,#4]
+loc_814E02C:
     mov r12, r4
     mov r1, #0
     mov r2, #0

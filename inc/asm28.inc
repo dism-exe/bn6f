@@ -73,29 +73,32 @@
 // .global reqBBS_81407D8
 // .global reqBBS_8140974
 
+.include "asm25.inc"
+// .global off_8090000
+
 .include "asm00.inc"
 // .global sound_play
-// .global sound_80005D4 // (int a1) -> void
+// .global sound_bgmusic_play // (int a1) -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global CpuFastSet_8000900 // (int a1, int a2) -> void
-// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
-// .global initMemToByte // (void *mem, int size, u8 byte) -> void
-// .global sub_8000B30
+// .global sub_8000900 // (int a1, int a2) -> void
+// .global CpuSet_800093C
+// .global initMemblockToByte
+// .global decomp_initGfx_8000B30 // (u32 *dataList) -> void
 // .global sub_8000E3A
 // .global getPETNaviSelect
 // .global sub_8001172
 // .global calcAngle_800117C
 // .global sub_8001850
 // .global drawTiles // (int a1, int a2, int a3) -> void
-// .global sprite_loadAnimationData_80026A4
-// .global anim_80026C4
-// .global sub_80026E4
-// .global sub_8002C24
+// .global sprite_loadAnimationData
+// .global sprite_update
+// .global sprite_load
+// .global sprite_setScaleParameters
 // .global sub_8002C52
 // .global sub_8002C68
 // .global sub_8002C7A
 // .global sub_8002CCE
-// .global sub_8002D14
+// .global sprite_makeScalable
 // .global sprite_makeUnscalable
 // .global sprite_setPallete
 // .global sprite_setAnimation
@@ -163,19 +166,19 @@
 .include "chatbox.inc"
 // .global chatbox_runScript_202da04 // (u8 scriptID) -> void
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_8040818 // () -> void
+// .global chatbox_8040818
 // .global off_8044470
 // .global off_80444C4
-// .global chatbox_set_8045EFC // (int unk_4C, int unk_50, int unk_54, int unk_58) -> void
-// .global chatbox_maskBits_2009F38 // (int mask) -> void
-// .global chatbox_getLast3Bits_2009F38 // () -> int
+// .global chatbox_8045EFC
+// .global chatbox_8045F3C
+// .global chatbox_8045F4C
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C
-// .global sub_80465A0
+// .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
-// .global sub_80465F8
-// .global sub_8046664
+// .global sub_80465F8 // () -> void
+// .global sub_8046664 // () -> void
 
 
 /* Undeclared Symbols */

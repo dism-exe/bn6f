@@ -14,10 +14,10 @@ sub_801FE00:
     strb r0, [r3,#0x4] // (byte_2036784 - 0x2036780)
     ldr r0, off_80200BC // =dword_203F4A0 
     ldr r1, off_80200C0 // =0x200 
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     ldr r0, off_80200C4 // =dword_203CBE0 
     ldr r1, off_80200C8 // =0x100 
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     pop {pc}
 .endfunc // sub_801FE00
 
@@ -25,7 +25,7 @@ sub_801FE00:
 .thumb_func
 sub_801FE24:
     push {r4,lr}
-    bl sub_802D246
+    bl get_802D246 // () -> int
     mov r1, #8
     tst r0, r1
     bne loc_801FE4A
@@ -90,7 +90,7 @@ sub_801FE6C:
     cmp r0, #2
     bne locret_801FEE6
     push {r5}
-    bl sub_802D246
+    bl get_802D246 // () -> int
     mov r1, #8
     tst r0, r1
     pop {r5}
@@ -109,7 +109,7 @@ loc_801FEB0:
     b locret_801FEE6
 loc_801FEB6:
     push {r5}
-    bl sub_802D246
+    bl get_802D246 // () -> int
     mov r1, #8
     tst r0, r1
     pop {r5}
@@ -121,21 +121,15 @@ loc_801FECC:
     strb r6, [r4,#0x1] // (dword_203F7D8+1 - 0x203f7d8)
     ldrb r0, [r4,#0x1] // (dword_203F7D8+1 - 0x203f7d8)
     b locret_801FEE6
-    // src
 loc_801FED2:
     ldr r0, off_80200DC // =word_2036780 
-    // dest
     ldr r1, off_80200E0 // =unk_20399F0 
-    // mode
     mov r2, #0x10
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
-    // src
+    bl CpuSet_800093C
     ldr r0, off_80200E4 // =word_2036780 
-    // dest
     ldr r1, off_80200E8 // =unk_2039A00 
-    // mode
     mov r2, #0x10
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    bl CpuSet_800093C
 locret_801FEE6:
     pop {r4,r6,pc}
 .endfunc // sub_801FE6C
@@ -148,9 +142,7 @@ sub_801FEE8:
     mov pc, lr
 .endfunc // sub_801FEE8
 
-.func
-.thumb_func
-sub_801FEEE:
+loc_801FEEE:
     push {r4-r7,lr}
     add r7, r0, #0
     bl sub_803EA60
@@ -166,8 +158,6 @@ off_801FF08:    .word sub_801FF18+1
     .word sub_801FFD6+1
     .word sub_801FFD6+1
     .word sub_801FF18+1
-.endfunc // sub_801FEEE
-
 .func
 .thumb_func
 sub_801FF18:

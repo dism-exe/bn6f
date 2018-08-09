@@ -141,6 +141,7 @@
 .global sub_814D8F0
 .global sub_814D954
 .global sub_814D9C4
+.global sub_814DA9C
 .global loc_814E0DE
 .global sub_814E8A0
 .global sub_814E918
@@ -171,8 +172,8 @@
 .include "asm00.inc"
 // .global sound_play
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
-// .global initMemToByte // (void *mem, int size, u8 byte) -> void
+// .global CpuSet_800093C
+// .global initMemblockToByte
 // .global loc_8000AC8
 // .global sub_8000E3A
 // .global getPETNaviSelect
@@ -222,7 +223,7 @@
 // .global sub_803F618
 
 .include "chatbox.inc"
-// .global chatbox_maskBits_2009F38 // (int mask) -> void
+// .global chatbox_8045F3C
 
 .include "asm03_1.inc"
 // .global sub_8046818

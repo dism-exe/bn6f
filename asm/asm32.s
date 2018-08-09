@@ -10330,7 +10330,7 @@ sub_81168B4:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_81168B4
 
     bl sub_8002F90
@@ -10361,7 +10361,7 @@ sub_8116904:
     ldr r5, off_8116918 // =reqBBS_bxo_2001150 
     bl reqBBS_813EE58
     pop {r5}
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_8116904
 
     pop {pc}
@@ -10400,7 +10400,7 @@ sub_8116944:
     bl sub_8002770
     ldrb r0, [r5,#4]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_8116944
 
     bl sub_8002F90
@@ -10446,7 +10446,7 @@ loc_81169B0:
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
-    bl anim_80026C4
+    bl sprite_update
     pop {r7,pc}
 off_81169C4:    .word byte_200DF20
 off_81169C8:    .word off_81169CC
@@ -10471,7 +10471,7 @@ sub_81169D8:
     strb r0, [r5]
     mov r0, #1
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
 locret_8116A00:
     pop {pc}
@@ -10488,7 +10488,7 @@ sub_8116A04:
     beq locret_8116A26
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     bl sub_8116A44
     mov r0, #8
@@ -10644,7 +10644,7 @@ loc_8116B0C:
 loc_8116B24:
     add r0, r4, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     .byte 0xEC
     .byte 0xF6
     .byte 0x2F 
@@ -10753,7 +10753,7 @@ sub_8116B9C:
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
     .byte 0, 0
 off_8116BB0:    .word off_8116BB4
@@ -10962,7 +10962,7 @@ sub_8116D00:
     strb r0, [r5,#0xc]
     strb r0, [r5,#0xd]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     .byte 0xEC
     .byte 0xF6
     .byte 0x39 
@@ -11044,7 +11044,7 @@ sub_8116D6C:
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
     .byte 0, 0
 off_8116D80:    .word off_8116D84
@@ -11091,10 +11091,10 @@ loc_8116DC2:
     beq loc_8116DD8
     strb r0, [r5,#0xd]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
 loc_8116DD8:
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_8116DB4
 
     ldrb r0, [r7]
@@ -11168,7 +11168,7 @@ loc_8116E3C:
     ldr r0, off_8116EAC // =dword_8116F18 
     ldrb r0, [r0,r4]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     .byte 0xEC
     .byte 0xF6
     .byte 0x9A
@@ -11291,7 +11291,7 @@ sub_8116F34:
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
 off_8116F48:    .word jt_8116F4C
 jt_8116F4C:    .word sub_8116F60+1
@@ -11312,7 +11312,7 @@ sub_8116F60:
     mov r0, #1
 loc_8116F6C:
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_8116F60
 
     bl sub_8002F90
@@ -11576,7 +11576,7 @@ loc_811713E:
     bl sub_8002770
     ldrb r0, [r5,#4]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_8117130
 
     bl sub_8002F90
@@ -11623,7 +11623,7 @@ sub_81171B4:
     mov r0, #1
 loc_81171C2:
     strb r0, [r5]
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_81171B4
 
     pop {pc}
@@ -11708,7 +11708,7 @@ sub_8117238:
     bl loc_8002774
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_8117238
 
     bl sub_8002F90
@@ -11747,7 +11747,7 @@ sub_811727C:
     bl sub_800307C
 loc_811729E:
     strb r4, [r5]
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811727C
 
     pop {pc}
@@ -11800,7 +11800,7 @@ loc_81172E8:
     mov r1, #0x7f
     and r0, r1
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_81172D0
 
     bl sub_8002F90
@@ -11838,7 +11838,7 @@ off_8117348:    .word unk_2032A04
 .thumb_func
 sub_811734C:
     push {lr}
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811734C
 
     pop {pc}
@@ -11886,15 +11886,15 @@ sub_8117424:
     bl loc_8002774
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_8117424
 
     bl sub_8002F90
-    bl sub_8002D14
+    bl sprite_makeScalable
     mov r0, #0
     mov r1, #0x80
     mov r2, #0x80
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     mov r0, #5
     ldrb r1, [r5,#5]
     add r0, r0, r1
@@ -11927,7 +11927,7 @@ loc_811748A:
     mov lr, pc
     bx r0
     bne loc_811748A
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
 off_81174A0:    .word off_81174A4
 off_81174A4:    .word sub_81174C0+1
@@ -11979,7 +11979,7 @@ sub_81174C0:
     sub r0, r1, r0
     mov r1, #0x40 
     mov r2, #0x40 
-    bl sub_8002C24
+    bl sprite_setScaleParameters
 loc_8117508:
     bl sub_80030A8
     lsl r0, r0, #0x10
@@ -12068,7 +12068,7 @@ sub_8117592:
     bl sub_81175C4
     ldrh r0, [r0,#2]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_8117592
 
     mov r0, #4
@@ -12133,7 +12133,7 @@ sub_81175F0:
     bl sub_8002770
     ldrb r0, [r5,#4]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_81175F0
 
     bl sub_8002F90
@@ -12162,7 +12162,7 @@ dword_8117640:    .word 0x20, 0x60, 0x70, 0x80, 0x90, 0xA0, 0xB0, 0xC0, 0xD0
 .thumb_func
 sub_8117680:
     push {lr}
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_8117680
 
     pop {pc}
@@ -12333,7 +12333,7 @@ sub_81177A4:
     mov r0, #0
     str r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_81177A4
 
     bl sub_8002F90
@@ -12366,9 +12366,9 @@ sub_81177EC:
     beq loc_8117812
     str r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 loc_8117812:
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_81177EC
 
     pop {pc}
@@ -12514,7 +12514,7 @@ sub_81178FC:
     bl sub_8117998
     strb r0, [r5,#5]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_81178FC
 
     bl sub_8002F90
@@ -12564,9 +12564,9 @@ loc_8117962:
     beq loc_811798A
     strb r0, [r5,#5]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 loc_811798A:
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811794C
 
     pop {pc}
@@ -12655,7 +12655,7 @@ sub_8117A14:
     add r0, r6, #0
     mov r1, #0x20 
     lsl r1, r1, #4
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     // idx
     ldrh r0, [r4,#2]
     bl refIndex_8021DA8 // (int idx) -> void*
@@ -12704,13 +12704,10 @@ sub_8117A84:
     bgt loc_8117A98
     lsl r0, r0, #6
     ldr r1, off_8117A9C // =unk_2031344 
-    // src
     add r0, r0, r1
-    // dest
     add r1, r6, #0
-    // mode
     mov r2, #0x40 
-    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
+    bl sub_8000950
 loc_8117A98:
     add r6, #0x40 
     pop {pc}
@@ -12755,7 +12752,7 @@ sub_8117AB4:
     add r0, r6, #0
     mov r1, #0x10
     lsl r1, r1, #4
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     ldrh r0, [r4,#2]
     bl sub_813B780
     add r7, r0, #0
@@ -12847,24 +12844,18 @@ sub_8117B94:
     beq loc_8117BAE
     lsl r0, r0, #5
     ldr r1, off_8117BC4 // =unk_2031204 
-    // src
     add r0, r0, r1
-    // dest
     add r1, r6, #0
-    // mode
     mov r2, #0x20 
-    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
+    bl sub_8000950
 loc_8117BAE:
     add r6, #0x20 
     lsl r0, r7, #5
     ldr r1, off_8117BC4 // =unk_2031204 
-    // src
     add r0, r0, r1
-    // dest
     add r1, r6, #0
-    // mode
     mov r2, #0x20 
-    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
+    bl sub_8000950
     add r6, #0x20 
     pop {r7,pc}
     .balign 4, 0x00
@@ -12900,7 +12891,7 @@ sub_8117BE8:
     mov r0, #0
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     .byte 0xEB
     .byte 0xF6
     .byte 0xC5
@@ -12973,7 +12964,7 @@ sub_8117C4C:
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
     .byte 0, 0
 off_8117C60:    .word off_8117C64
@@ -12994,7 +12985,7 @@ sub_8117C70:
     beq loc_8117C8C
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
 loc_8117C8C:
     bl sub_8002DEA
@@ -13016,7 +13007,7 @@ sub_8117C9C:
     beq loc_8117CB4
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
 loc_8117CB4:
     bl sub_8002DEA
@@ -13126,7 +13117,7 @@ sub_8117D4C:
     add r0, #5
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_8117D4C
 
     bl sub_8002F90
@@ -13186,7 +13177,7 @@ sub_8117DE0:
     ldrb r1, [r7,#0x1] // (ssubmenu.jo_01 - 0x2009a30)
     cmp r1, #8
     bne loc_8117DF2
-    bl anim_80026C4
+    bl sprite_update
     b locret_8117DFA
 loc_8117DF2:
     ldrb r1, [r7,#0x2] // (ssubmenu.unk_02 - 0x2009a30)
@@ -13220,7 +13211,7 @@ sub_8117E20:
     beq loc_8117E5A
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     b loc_8117E5A
 loc_8117E42:
@@ -13231,10 +13222,10 @@ loc_8117E42:
     beq loc_8117E5A
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
 loc_8117E5A:
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_8117E20
 
     pop {pc}
@@ -13261,7 +13252,7 @@ loc_8117E7C:
     beq loc_8117EBA
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     b loc_8117EBA
 loc_8117E92:
@@ -13281,10 +13272,10 @@ loc_8117EA4:
     beq loc_8117EBA
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
 loc_8117EBA:
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_8117E60
 
     pop {pc}
@@ -13324,7 +13315,7 @@ sub_8117EE8:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_8117EE8
 
     bl sub_8002F90
@@ -13372,7 +13363,7 @@ loc_8117F78:
     mov lr, pc
     bx r0
     bl sub_8118234
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
     .byte 0, 0
 off_8117F90:    .word off_8117F94
@@ -13496,7 +13487,7 @@ loc_8118068:
     strb r2, [r5,#0x12]
     mov r0, #0
     mov r1, #0x40 
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     ldrb r0, [r5,#0x12]
     cmp r0, #0xff
     bne locret_81180DC
@@ -13528,7 +13519,7 @@ loc_81180A4:
     strb r2, [r5,#0x12]
     mov r0, #0
     mov r1, #0x40 
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     ldrb r0, [r5,#0x12]
     cmp r0, #0x40 
     bne locret_81180DC
@@ -13863,12 +13854,12 @@ loc_81182C2:
     mov r7, #4
     b loc_81182FA
 loc_81182DE:
-    bl sub_8002D14
+    bl sprite_makeScalable
     mov r0, #0
     mov r1, #0x40 
     mov r2, #0x40 
     strh r2, [r5,#0x12]
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     mov r0, #0xfc
     lsl r0, r0, #0x18
     mvn r0, r0
@@ -13945,7 +13936,7 @@ sub_8118368:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_8118368
 
     bl sub_8002F90
@@ -13982,8 +13973,8 @@ loc_81183C4:
     bx r0
     bl sub_81185C0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
-    bl anim_80026C4
+    bl sprite_loadAnimationData
+    bl sprite_update
     pop {pc}
     .balign 4, 0x00
 off_81183E4:    .word off_81183E8
@@ -14020,7 +14011,7 @@ sub_811842C:
     cmp r0, #0x28 
     beq loc_811843E
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_8118454
 loc_811843E:
     ldrb r0, [r6,#0xc]
@@ -14058,7 +14049,7 @@ sub_811847C:
     push {r4-r7,lr}
     mov r4, #1
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_811848A
     mov r4, #0x23 
 loc_811848A:
@@ -14097,7 +14088,7 @@ sub_81184C0:
     push {lr}
     mov r4, #1
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_81184CE
     mov r4, #0x23 
 loc_81184CE:
@@ -14137,7 +14128,7 @@ sub_8118510:
     push {lr}
     mov r4, #1
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_811851E
     mov r4, #0x23 
 loc_811851E:
@@ -14174,7 +14165,7 @@ sub_8118550:
     push {lr}
     mov r4, #1
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_811855E
     mov r4, #0x23 
 loc_811855E:
@@ -14196,7 +14187,7 @@ sub_811857C:
     push {lr}
     mov r4, #1
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_811858A
     mov r4, #0x23 
 loc_811858A:
@@ -14217,7 +14208,7 @@ loc_811858A:
 sub_81185A8:
     push {lr}
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     beq locret_81185B6
     mov r0, #1
     strb r0, [r5]
@@ -14571,7 +14562,7 @@ sub_811880C:
     mov r0, #0
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811880C
 
     bl sub_8002F90
@@ -14612,7 +14603,7 @@ loc_8118874:
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
     .balign 4, 0x00
 off_811888C:    .word off_8118890
@@ -14644,7 +14635,7 @@ sub_81188CC:
     cmp r0, r1
     beq locret_81188E8
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 locret_81188E8:
     pop {pc}
     .balign 4, 0x00
@@ -14671,7 +14662,7 @@ sub_81188EC:
     cmp r0, r1
     beq locret_8118918
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 locret_8118918:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -14683,7 +14674,7 @@ sub_811891C:
     push {r4-r7,lr}
     mov r4, #1
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_811892A
     mov r4, #0x23 
 loc_811892A:
@@ -14713,7 +14704,7 @@ loc_8118950:
     cmp r0, r1
     beq locret_8118962
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 locret_8118962:
     pop {r4-r7,pc}
 .endfunc // sub_811891C
@@ -14724,7 +14715,7 @@ sub_8118964:
     push {r4-r7,lr}
     mov r4, #1
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_8118972
     mov r4, #0x23 
 loc_8118972:
@@ -14742,7 +14733,7 @@ loc_8118982:
     cmp r0, r1
     beq locret_8118994
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 locret_8118994:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -14766,7 +14757,7 @@ loc_81189A8:
     cmp r0, r1
     beq locret_81189BC
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 locret_81189BC:
     pop {pc}
     .byte 0, 0
@@ -14812,7 +14803,7 @@ sub_81189E0:
     cmp r0, r1
     beq locret_81189FE
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 locret_81189FE:
     pop {pc}
 .endfunc // sub_81189E0
@@ -14823,7 +14814,7 @@ sub_8118A00:
     push {r4-r7,lr}
     mov r4, #1
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_8118A0E
     mov r4, #0x23 
 loc_8118A0E:
@@ -14836,7 +14827,7 @@ loc_8118A0E:
     cmp r0, r1
     beq locret_8118A28
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 locret_8118A28:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -14848,7 +14839,7 @@ sub_8118A2C:
     push {r4-r7,lr}
     mov r4, #1
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_8118A3A
     mov r4, #0x23 
 loc_8118A3A:
@@ -14861,7 +14852,7 @@ loc_8118A3A:
     cmp r0, r1
     beq locret_8118A54
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 locret_8118A54:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -14888,7 +14879,7 @@ sub_8118A58:
     cmp r0, r1
     beq locret_8118A84
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 locret_8118A84:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -14907,9 +14898,9 @@ sub_8118A88:
     cmp r0, r1
     beq loc_8118AA2
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 loc_8118AA2:
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_8118A88
 
     pop {pc}
@@ -15076,7 +15067,7 @@ sub_8118BC8:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     .byte 0xEA
     .byte 0xF6
     .byte 0xD6
@@ -15159,7 +15150,7 @@ sub_8118C2C:
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
     .balign 4, 0x00
 off_8118C44:    .word off_8118C48
@@ -15195,7 +15186,7 @@ sub_8118C8C:
     push {r4-r7,lr}
     mov r4, #1
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_8118C9A
     mov r4, #0x43 
 loc_8118C9A:
@@ -15331,7 +15322,7 @@ sub_8118D84:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     .byte 0xEA
     .byte 0xF6
     .byte 0xF8
@@ -15405,7 +15396,7 @@ sub_8118DE0:
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
     .balign 4, 0x00
 off_8118DF4:    .word off_8118DF8
@@ -15517,7 +15508,7 @@ sub_8118EA8:
     bl sub_8002770
     ldrb r0, [r6,#0xf]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_8118EA8
 
     bl sub_8002F90
@@ -15555,7 +15546,7 @@ aOGGx:    .byte 0x4F, 0x60
 .thumb_func
 sub_8118F14:
     push {lr}
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
 .endfunc // sub_8118F14
 
@@ -15596,7 +15587,7 @@ sub_8118F44:
     ldrb r0, [r5,#4]
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     .byte 0xEA
     .byte 0xF6
     .byte 0x17
@@ -15673,7 +15664,7 @@ sub_8118FC0:
     ldr r0, [r1,r0]
     mov lr, pc
     bx r0
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
 off_8118FD4:    .word off_8118FD8
 off_8118FD8:    .word sub_8118FE0+1
@@ -15704,7 +15695,7 @@ sub_8118FE4:
     beq locret_811900A
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     bl sub_81190E0
 locret_811900A:
@@ -15981,7 +15972,7 @@ loc_81193AA:
     ldr r1, off_8119638 // =dword_811963C 
     ldrb r0, [r1,r4]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_8119384
 
     bl sub_8002F90
@@ -16061,7 +16052,7 @@ loc_8119454:
     push {r0,r1}
     add r0, r1, #0
     ldr r1, dword_8119664 // =0x800 
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     pop {r0,r1}
     mov r2, #0xe0
     add r4, r2, #0
@@ -16083,13 +16074,10 @@ loc_8119478:
     ldrb r0, [r1]
     lsl r0, r0, #5
     ldr r1, off_811965C // =unk_3001550 
-    // dest
     add r1, r1, r0
-    // mode
     mov r2, #0x20 
-    // src
     ldr r0, [r7,#0x28]
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    bl CpuSet_800093C
     ldrb r0, [r5,#0xc]
     mov r1, #0x40 
     mul r0, r1
@@ -16107,13 +16095,10 @@ loc_8119478:
     ldrb r0, [r1]
     lsl r0, r0, #5
     ldr r1, off_811965C // =unk_3001550 
-    // dest
     add r1, r1, r0
-    // mode
     mov r2, #0x20 
-    // src
     ldr r0, off_8119668 // =dword_86E587C 
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    bl CpuSet_800093C
     ldrb r0, [r7,#6]
     mov r1, #0x80
     mul r0, r1
@@ -16131,13 +16116,10 @@ loc_8119478:
     ldrb r0, [r1]
     lsl r0, r0, #5
     ldr r1, off_811965C // =unk_3001550 
-    // dest
     add r1, r1, r0
-    // mode
     mov r2, #0x20 
-    // src
     ldr r0, off_8119674 // =dword_86E43DC 
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    bl CpuSet_800093C
     ldrh r0, [r7,#0x1a]
     ldrb r1, [r7,#9]
     mov r2, #0x10
@@ -16151,7 +16133,7 @@ loc_8119478:
     add r0, r0, r1
     ldr r1, off_8119684 // =0xC0 
     add r1, #0x40 
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     b loc_811955C
 loc_8119520:
     ldr r1, off_8119678 // =0x3E8 
@@ -16226,7 +16208,7 @@ sub_8119594:
     push {r0}
     add r0, r1, #0
     add r1, r2, #0
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     pop {r0}
     mov r1, #0xaa
     lsl r2, r1, #8
@@ -16245,15 +16227,12 @@ loc_81195C6:
     mov r0, #0xf
     and r0, r4
     lsr r4, r4, #4
-    // mode
     mov r2, #0x40 
     mul r0, r2
     ldr r1, off_811967C // =dword_86E411C 
-    // src
     add r0, r0, r1
-    // dest
     add r1, r7, #0
-    bl CpuSet_8000950 // (void *src, void *dest, int mode) -> void
+    bl sub_8000950
     sub r7, #0x40 
     sub r6, #1
     bgt loc_81195C6
@@ -16276,7 +16255,7 @@ sub_81195E4:
     push {r0,r1}
     add r0, r1, #0
     ldr r1, dword_8119694 // =0xA00 
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     pop {r0,r1}
     ldr r1, off_8119628 // =off_8119128 
     ldrb r2, [r5,#5]
@@ -16289,7 +16268,7 @@ sub_81195E4:
     push {r0,r1}
     add r0, r1, #0
     ldr r1, dword_8119698 // =0x780 
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     pop {r0,r1}
     pop {pc}
 off_8119620:    .word dword_8119624
@@ -16334,7 +16313,7 @@ loc_81196A0:
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
 off_81196B4:    .word off_81196B8
 off_81196B8:    .word loc_81196C4+1
@@ -16400,11 +16379,11 @@ sub_8119730:
     push {lr}
     mov r0, #0x90
     strb r0, [r5,#0x12]
-    bl sub_8002D14
+    bl sprite_makeScalable
     mov r0, #0
     mov r1, #0x90
     mov r2, #0x40 
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     mov r0, #8
     strb r0, [r5,#9]
     pop {pc}
@@ -16458,7 +16437,7 @@ loc_811978E:
     add r1, r0, #0
     mov r0, #0
     mov r2, #0x40 
-    bl sub_8002C24
+    bl sprite_setScaleParameters
 locret_8119798:
     pop {pc}
     .balign 4, 0x00
@@ -16873,7 +16852,7 @@ sub_8119A48:
     and r4, r3
     bne loc_8119A76
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_8119A76
     mov r0, #0x7e 
     bl sound_play
@@ -16988,7 +16967,7 @@ loc_8119B30:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_8119AEC
 
     bl sub_8002F90
@@ -17017,7 +16996,7 @@ sub_8119BD0:
     push {lr}
     bl sub_8119C08
     bl sprite_setPallete
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_8119BD0
 
     pop {pc}
@@ -17208,7 +17187,7 @@ loc_8119D86:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_8119D74
 
     bl sub_8002F90
@@ -17258,12 +17237,12 @@ loc_8119E18:
 loc_8119E1A:
     strb r4, [r5]
     add r0, r6, #0
-    bl sub_8002CE0
-    bl loc_8002C7E
+    bl sprite_getMosaicScalingParameters
+    bl sprite_setMosaicScalingParameters
     add r0, r6, #0
     bl sub_8002F3E
     bl loc_8002F02
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_8119DE8
 
     pop {r4-r7,pc}
@@ -17321,7 +17300,7 @@ loc_8119E76:
     ldr r1, off_811A018 // =dword_811A01C 
     ldrb r0, [r1,r4]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_8119E60
 
     bl sub_8002F90
@@ -17457,7 +17436,7 @@ sub_8119F88:
     push {r0,r1}
     add r0, r1, #0
     ldr r1, dword_811A098 // =0xA00 
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     pop {r0,r1}
     ldr r1, off_8119FCC // =off_8119FD0 
     ldrb r2, [r5,#5]
@@ -17470,7 +17449,7 @@ sub_8119F88:
     push {r0,r1}
     add r0, r1, #0
     ldr r1, dword_811A09C // =0x780 
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     pop {r0,r1}
     pop {pc}
 off_8119FC4:    .word dword_8119FC8
@@ -17526,7 +17505,7 @@ loc_811A0A4:
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
 off_811A0B8:    .word off_811A0BC
 off_811A0BC:    .word sub_811A0CC+1
@@ -17585,11 +17564,11 @@ sub_811A11C:
     push {lr}
     mov r0, #0x90
     strb r0, [r5,#0x12]
-    bl sub_8002D14
+    bl sprite_makeScalable
     mov r0, #0
     mov r1, #0x90
     mov r2, #0x40 
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     mov r0, #8
     strb r0, [r5,#9]
     pop {pc}
@@ -17648,7 +17627,7 @@ loc_811A182:
     add r1, r0, #0
     mov r0, #0
     mov r2, #0x40 
-    bl sub_8002C24
+    bl sprite_setScaleParameters
 locret_811A18C:
     pop {pc}
     .byte 0, 0
@@ -17945,7 +17924,7 @@ loc_811A38A:
     ldrb r0, [r1,r0]
     bl sprite_setPallete
 loc_811A394:
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811A370
 
     pop {pc}
@@ -17974,7 +17953,7 @@ sub_811A3AC:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811A3AC
 
     bl sub_8002F90
@@ -18056,7 +18035,7 @@ loc_811A45C:
     ldrb r0, [r5,#5]
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811A434
 
     bl sub_8002F90
@@ -18103,7 +18082,7 @@ loc_811A4DC:
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
 off_811A4F0:    .word off_811A4F4
 off_811A4F4:    .word sub_811A4FC+1
@@ -18292,7 +18271,7 @@ sub_811A610:
     add r0, r4, #0
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     .byte 0xE8
     .byte 0xF6
     .byte 0xAA
@@ -18510,7 +18489,7 @@ sub_811A7AC:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811A7AC
 
     bl sub_8002F90
@@ -18546,12 +18525,12 @@ sub_811A818:
     push {r4,lr}
     mov r4, #0x23 
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     beq loc_811A826
     mov r4, #1
 loc_811A826:
     strb r4, [r5]
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811A818
 
     pop {r4,pc}
@@ -18645,7 +18624,7 @@ sub_811A8D0:
     ldrb r4, [r5]
     mov r7, #2
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     beq loc_811A8E2
     bic r4, r7
     b loc_811A8E4
@@ -18653,7 +18632,7 @@ loc_811A8E2:
     orr r4, r7
 loc_811A8E4:
     strb r4, [r5]
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811A8D0
 
     pop {r4,r7,pc}
@@ -18717,7 +18696,7 @@ sub_811A940:
     add r5, r1, #0
     add r0, r4, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811A940
 
     bl sub_8002F90
@@ -18763,7 +18742,7 @@ sub_811A998:
     ldrb r0, [r5,#4]
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811A998
 
     bl sub_8002F90
@@ -18809,11 +18788,11 @@ sub_811AA14:
     beq loc_811AA3A
     strb r0, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     bl sub_811AB14
 loc_811AA3A:
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
 off_811AA40:    .word off_811AA44
 off_811AA44:    .word sub_811AA4C+1
@@ -18966,7 +18945,7 @@ sub_811AB7C:
     bl loc_8002774
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811AB7C
 
     bl sub_8002F90
@@ -19005,7 +18984,7 @@ loc_811ABD4:
     mov lr, pc
     bx r0
 loc_811ABE4:
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
     .balign 4, 0x00
 off_811ABEC:    .word off_811ABF0
@@ -19191,7 +19170,7 @@ sub_811AD58:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     .byte 0xE8
     .byte 0xF6
     .byte 0xE
@@ -19274,7 +19253,7 @@ sub_811ADC0:
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
-    bl anim_80026C4
+    bl sprite_update
     ldrb r0, [r5]
 .endfunc // sub_811ADC0
 
@@ -19313,7 +19292,7 @@ loc_811AE10:
     strb r2, [r5,#0x10]
     mov r0, #0
     mov r1, #0x40 
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     ldrb r0, [r5,#0x10]
     cmp r0, #0x40 
     bne locret_811AE28
@@ -19338,7 +19317,7 @@ loc_811AE38:
     strb r2, [r5,#0x10]
     mov r0, #0
     mov r1, #0x40 
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     ldrb r0, [r5,#0x10]
     cmp r0, #0xff
     bne locret_811AE50
@@ -19485,12 +19464,12 @@ off_811AFD4:    .word 0x200
     add r5, r1, #0
     mov r0, #0x23 
     strb r0, [r5]
-    bl sub_8002D14
+    bl sprite_makeScalable
     mov r0, #0
     mov r1, #0x40 
     mov r2, #0x40 
     strh r2, [r5,#0x10]
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     mov r0, #8
     strb r0, [r5,#9]
 locret_811AFFA:
@@ -19820,7 +19799,7 @@ sub_811B20C:
     mov r0, #1
 loc_811B232:
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811B20C
 
     bl sub_8002F90
@@ -19852,7 +19831,7 @@ off_811B280:    .word unk_2037780
 sub_811B284:
     push {lr}
     bl sub_811B298
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811B284
 
     pop {pc}
@@ -19887,7 +19866,7 @@ sub_811B298:
     mov r0, #1
 loc_811B2BC:
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
 loc_811B2C8:
     ldrb r0, [r5,#4]
@@ -19942,7 +19921,7 @@ sub_811B314:
     add r5, r1, #0
     add r0, r4, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     .byte 0xE7
     .byte 0xF6
     .byte 0x2D 
@@ -19976,7 +19955,7 @@ sub_811B35C:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811B35C
 
     bl sub_8002F90
@@ -20006,7 +19985,7 @@ loc_811B3B0:
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
     .balign 4, 0x00
 off_811B3C4:    .word off_811B3C8
@@ -20060,7 +20039,7 @@ sub_811B414:
     bl sub_8002770
     bl sub_80101F8
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811B414
 
     bl sub_8002F90
@@ -20083,7 +20062,7 @@ off_811B458:    .word 0xC0
 .thumb_func
 sub_811B45C:
     push {lr}
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811B45C
 
     pop {pc}
@@ -20165,7 +20144,7 @@ loc_811B4C0:
     bl sub_8002770
     mov r0, #1
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     mov r0, #3
     bl sub_8002E14
@@ -20216,7 +20195,7 @@ loc_811B570:
     mov lr, pc
     bx r0
     bl sub_811B8C8
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
     .balign 4, 0x00
 off_811B588:    .word jt_811B58C
@@ -20328,7 +20307,7 @@ loc_811B654:
     strb r2, [r5,#0x12]
     mov r0, #0
     mov r1, #0x40 
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     ldrb r0, [r5,#0x12]
     cmp r0, #0xff
     bne locret_811B6B4
@@ -20347,7 +20326,7 @@ loc_811B678:
     strb r2, [r5,#0x12]
     mov r0, #0
     mov r1, #0x40 
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     ldrb r0, [r5,#0x12]
     cmp r0, #0x40 
     bne locret_811B6B4
@@ -20606,7 +20585,7 @@ loc_811B84A:
     bl sub_813B780
     ldrb r0, [r0,#3]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
 locret_811B85C:
     pop {r4-r7,pc}
@@ -20732,12 +20711,12 @@ loc_811B932:
     mov r7, #4
     b loc_811B96A
 loc_811B94E:
-    bl sub_8002D14
+    bl sprite_makeScalable
     mov r0, #0
     mov r1, #0x40 
     mov r2, #0x40 
     strh r2, [r5,#0x12]
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     mov r0, #0xfc
     lsl r0, r0, #0x18
     mvn r0, r0
@@ -20787,7 +20766,7 @@ loc_811B9A2:
 loc_811B9B0:
     add r0, r2, #0
     mov pc, lr
-    .word 0x4E07B500
+dword_811B9B4:    .word 0x4E07B500
     .word 0x7A294802, 0x46FE5840, 0xBD004700
     .word off_811B9C8
 off_811B9C8:    .word sub_811B9D8+1
@@ -20807,7 +20786,7 @@ sub_811B9D8:
     bl sub_8002770
     mov r0, #6
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811B9D8
 
     bl sub_8002F90
@@ -20870,9 +20849,9 @@ sub_811BA58:
     beq loc_811BA76
     bl sub_811BAF4
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 loc_811BA76:
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
 off_811BA7C:    .word off_811BA80
 off_811BA80:    .word sub_811BA88+1
@@ -20883,7 +20862,7 @@ sub_811BA88:
     push {r4-r7,lr}
     mov r4, #1
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_811BAAC
     ldrb r0, [r6,#0xc]
     cmp r0, #0xc
@@ -20924,7 +20903,7 @@ loc_811BAD2:
     bl sub_811BBB8
     bl sub_811BB18
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811BAC4
 
     pop {pc}
@@ -21167,7 +21146,7 @@ sub_811BC68:
     bl sub_8002770
     mov r0, #3
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811BC68
 
     bl sub_8002F90
@@ -21239,7 +21218,7 @@ unk_811BD30:    .byte 0x3A
 .thumb_func
 sub_811BD34:
     push {lr}
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811BD34
 
     pop {pc}
@@ -21330,7 +21309,7 @@ loc_811BDCC:
     bx r0
     bl sub_811BE90
     beq locret_811BDE2
-    bl anim_80026C4
+    bl sprite_update
 locret_811BDE2:
     pop {pc}
 off_811BDE4:    .word off_811BDE8
@@ -21386,7 +21365,7 @@ sub_811BE1C:
     strb r1, [r5]
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     mov r0, #4
     bl sub_800304A
@@ -21530,7 +21509,7 @@ sub_811C01C:
     ldrb r0, [r5,#4]
     add r0, #8
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811C01C
 
     bl sub_8002F90
@@ -21565,7 +21544,7 @@ unk_811C078:    .byte 0x78
 .thumb_func
 sub_811C07C:
     push {lr}
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811C07C
 
     pop {pc}
@@ -21599,7 +21578,7 @@ sub_811C0AC:
     bl sub_8002770
     mov r0, #4
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     .hword 0xF6E6
     .word 0x480BFF65, 0xFFD0F6E6
     .word 0xF6E6200F
@@ -21612,7 +21591,7 @@ sub_811C0AC:
 .thumb_func
 sub_811C0F8:
     push {lr}
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811C0F8
 
     ldrb r0, [r5,#4]
@@ -21656,7 +21635,7 @@ sub_811C13C:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811C13C
 
     bl sub_8002F90
@@ -21687,7 +21666,7 @@ sub_811C18C:
     ldr r5, off_811C1A0 // =sReqBBS_GUI 
     bl reqBBS_81406FC
     pop {r5}
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811C18C
 
     pop {pc}
@@ -21724,7 +21703,7 @@ sub_811C1CC:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811C1CC
 
     bl sub_8002F90
@@ -21755,7 +21734,7 @@ off_811C228:    .word 0x28
 .thumb_func
 sub_811C22C:
     push {lr}
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811C22C
 
     pop {pc}
@@ -21820,7 +21799,7 @@ sub_811C27C:
 .thumb_func
 sub_811C298:
     push {lr}
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811C298
 
     pop {pc}
@@ -21867,7 +21846,7 @@ loc_811C2D8:
     ldr r0, off_811C41C // =off_811C420 
     ldrb r0, [r0,r1]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     mov r0, #0
     bl sprite_setPallete
@@ -22267,15 +22246,15 @@ sub_811CA1C:
     bl loc_8002774
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811CA1C
 
     bl sub_8002F90
-    bl sub_8002D14
+    bl sprite_makeScalable
     mov r0, #0
     mov r1, #0x80
     mov r2, #0x80
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     mov r0, #0
     ldrb r1, [r5,#4]
     add r0, r0, r1
@@ -22330,7 +22309,7 @@ loc_811CA96:
     orr r4, r1
 loc_811CAB6:
     strb r4, [r5]
-    bl anim_80026C4
+    bl sprite_update
     pop {pc}
     .byte 0, 0
 off_811CAC0:    .word off_811CAC4
@@ -22406,7 +22385,7 @@ loc_811CB4E:
     add r1, r2, #0
     lsr r1, r1, #8
     lsr r2, r2, #8
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     ldrh r1, [r5,#0x16]
     ldrh r2, [r5,#0x18]
     add r2, r2, r1
@@ -22489,7 +22468,7 @@ sub_811CBD0:
     mov r0, #0
     lsr r1, r1, #8
     add r2, r1, #0
-    bl sub_8002C24
+    bl sprite_setScaleParameters
     mov r0, #0xa
     bl sub_811CC60
     mov r0, #1
@@ -22512,7 +22491,7 @@ sub_811CC0C:
     bl sub_811CC68
     ldrh r0, [r0,#2]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811CC0C
 
     mov r0, #4
@@ -22641,7 +22620,7 @@ loc_811CD08:
     ldrb r0, [r5,#7]
     tst r0, r0
     bne locret_811CD20
-    bl anim_80026C4
+    bl sprite_update
 locret_811CD20:
     pop {pc}
     .balign 4, 0x00
@@ -22850,7 +22829,7 @@ sub_811CE88:
     sub r0, #5
     ldrb r0, [r1,r0]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
 locret_811CEB4:
     pop {pc}
@@ -22875,7 +22854,7 @@ sub_811CEC4:
     sub r0, #5
     ldrb r0, [r1,r0]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
 loc_811CEE8:
     ldrb r0, [r5,#4]
@@ -23084,7 +23063,7 @@ sub_811D058:
     ldrb r1, [r5,#0x10]
     add r0, r0, r1
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     mov r0, #0xf
     strh r0, [r5,#0xc]
@@ -23107,7 +23086,7 @@ sub_811D080:
     ldrb r1, [r5,#0x10]
     add r0, r0, r1
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     mov r0, #0x14
     strb r0, [r5,#9]
@@ -23172,7 +23151,7 @@ sub_811D0EC:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     mov r0, #2
     bl sub_8002E14
@@ -23240,7 +23219,7 @@ sub_811D15C:
     ldrh r1, [r1,r4]
     strh r1, [r5,#0xc]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     ldrb r0, [r5,#5]
     cmp r0, #0
@@ -23336,7 +23315,7 @@ sub_811D20C:
     cmp r0, #0xff
     beq loc_811D234
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     mov r1, #0x23 
     strb r1, [r5]
@@ -23364,7 +23343,7 @@ sub_811D248:
     ldrb r0, [r5,#5]
     ldrb r0, [r1,r0]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     mov r0, #0xc
     strb r0, [r5,#9]
@@ -23424,7 +23403,7 @@ loc_811D2D6:
     sub r0, #1
     strh r0, [r5,#0xc]
 loc_811D2DA:
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811D2C8
 
     pop {pc}
@@ -23475,7 +23454,7 @@ loc_811D320:
     ldr r0, off_811D3E4 // =dword_811D404 
     ldrb r0, [r0,r1]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811D2F8
 
     bl sub_8002F90
@@ -23544,7 +23523,7 @@ sub_811D410:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811D410
 
     bl sub_8002F90
@@ -23583,7 +23562,7 @@ sub_811D464:
     ldrb r0, [r5,#5]
     ldrb r0, [r1,r0]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811D464
 
     bl sub_8002F90
@@ -23647,7 +23626,7 @@ sub_811D530:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811D530
 
     bl sub_8002F90
@@ -23708,7 +23687,7 @@ sub_811D5F8:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811D5F8
 
     bl sub_8002F90
@@ -23849,7 +23828,7 @@ loc_811D70A:
     strb r1, [r5]
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     mov r0, #4
     bl sub_800304A
@@ -23916,7 +23895,7 @@ loc_811D7E6:
     strb r1, [r5]
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     mov r0, #5
     bl sub_800304A
@@ -23991,7 +23970,7 @@ loc_811D8AA:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     ldr r0, dword_811D91C // =0x811D945 
     ldrb r1, [r5,#5]
@@ -24090,7 +24069,7 @@ sub_811D954:
     ldrb r0, [r0,r1]
     strb r0, [r5,#0x10]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811D954
 
     bl sub_8002F90
@@ -24157,7 +24136,7 @@ sub_811DA00:
     ldr r0, off_811DA88 // =dword_811DA90 
     ldrb r0, [r0,r1]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     ldr r0, off_811DA64 // =dword_811DA68 
     ldrb r1, [r5,#5]
@@ -24204,7 +24183,7 @@ sub_811DA94:
     strb r1, [r5]
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811DA94
 
     bl sub_8002F90
@@ -24240,7 +24219,7 @@ sub_811DAF0:
     strb r1, [r5]
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811DAF0
 
     bl sub_8002F90
@@ -24288,7 +24267,7 @@ sub_811DB7C:
     strb r1, [r5]
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811DB7C
 
     bl sub_8002F90
@@ -24504,7 +24483,7 @@ loc_811DCBC:
     ldr r0, off_811DE0C // =off_811DE18 
     ldrb r0, [r0,r1]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     .byte 0xE5
     .byte 0xF6
     .byte 0x5B 
@@ -24688,7 +24667,7 @@ sub_811DF40:
     bl loc_8002774
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811DF40
 
     bl sub_8002F90
@@ -24724,7 +24703,7 @@ sub_811DF94:
     strb r0, [r6,#4]
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
     b loc_811DFBA
 loc_811DFB0:
@@ -24738,7 +24717,7 @@ loc_811DFBA:
 loc_811DFC0:
     bl sub_811E000
 loc_811DFC4:
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811DF94
 
     pop {r4,pc}
@@ -24790,7 +24769,7 @@ sub_811E000:
     bl sub_8002FA6
     mov r0, #1
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
     bl sub_8002F90
 locret_811E020:
     pop {pc}
@@ -24821,7 +24800,7 @@ sub_811E048:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811E048
 
     bl sub_8002F90
@@ -24859,7 +24838,7 @@ loc_811E0A2:
     mov r0, #0xbc
     mov r1, #0xa
     bl sub_800307C
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811E090
 
     pop {pc}
@@ -24991,7 +24970,7 @@ sub_811E18C:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811E18C
 
     bl sub_8002F90
@@ -25030,7 +25009,7 @@ loc_811E1E6:
     mov r0, #0xcc
     mov r1, #0x1e
     bl sub_800307C
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811E1D4
 
     pop {pc}
@@ -25103,7 +25082,7 @@ sub_811E26C:
     ldrb r0, [r5,#4]
     strb r0, [r5,#5]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811E26C
 
     bl sub_8002F90
@@ -25147,7 +25126,7 @@ loc_811E2C6:
     beq loc_811E2E4
     strb r0, [r5,#5]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 loc_811E2E4:
     mov r0, #0xdc
     mov r1, #0x24 
@@ -25161,7 +25140,7 @@ loc_811E2E4:
 loc_811E2F8:
     bl sub_800307C
     bl sub_811E314
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811E2B4
 
     pop {pc}
@@ -25235,7 +25214,7 @@ sub_811E384:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811E384
 
     bl sub_8002F90
@@ -25284,7 +25263,7 @@ loc_811E3DE:
     add r1, #8
 loc_811E3FC:
     bl sub_800307C
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811E3CC
 
     pop {pc}
@@ -25322,7 +25301,7 @@ sub_811E438:
     bl sub_8002770
     mov r0, #1
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811E438
 
     bl sub_8002F90
@@ -25404,7 +25383,7 @@ loc_811E4F0:
     ldrh r1, [r5,#0x12]
     bl sub_800307C
 loc_811E4F8:
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811E490
 
     pop {pc}
@@ -25418,7 +25397,7 @@ off_811E50C:    .word byte_2011E40
 sub_811E510:
     push {lr}
     bl sub_811E558
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811E510
 
     pop {pc}
@@ -25502,7 +25481,7 @@ sub_811E59C:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811E59C
 
     bl sub_8002F90
@@ -25530,7 +25509,7 @@ off_811E5E8:    .word 0x280
 sub_811E5EC:
     push {lr}
     bl sub_811E600
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811E5EC
 
     pop {pc}
@@ -25581,7 +25560,7 @@ sub_811E63C:
     bl sub_8002770
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811E63C
 
     bl sub_8002F90
@@ -25609,7 +25588,7 @@ off_811E688:    .word 0x2A8
 sub_811E68C:
     push {lr}
     bl sub_811E6A0
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811E68C
 
     pop {pc}
@@ -25660,7 +25639,7 @@ sub_811E6E4:
     bl loc_8002774
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811E6E4
 
     bl sub_8002F90
@@ -25687,7 +25666,7 @@ sub_811E72C:
     mov r0, #0x78 
     mov r1, #0x78 
     bl sub_800307C
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811E72C
 
     pop {pc}
@@ -25775,7 +25754,7 @@ sub_811E7F8:
     bl loc_8002774
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811E7F8
 
     bl sub_8002F90
@@ -25802,7 +25781,7 @@ sub_811E840:
     mov r0, #0x78 
     mov r1, #0x78 
     bl sub_800307C
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811E840
 
     pop {pc}
@@ -25838,7 +25817,7 @@ sub_811E87C:
     bl loc_8002774
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811E87C
 
     bl sub_8002F90
@@ -25866,7 +25845,7 @@ sub_811E8C4:
     mov r0, #0xe0
     mov r1, #0x3e 
     bl sub_800307C
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811E8C4
 
     pop {pc}
@@ -25920,7 +25899,7 @@ sub_811E938:
     bl loc_8002774
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811E938
 
     bl sub_8002F90
@@ -25950,7 +25929,7 @@ sub_811E980:
     mov r1, #0x42 
     sub r1, r1, r2
     bl sub_800307C
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811E980
 
     pop {pc}
@@ -25986,7 +25965,7 @@ sub_811E9C4:
     bl loc_8002774
     mov r0, #0
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_811E9C4
 
     bl sub_8002F90
@@ -26014,7 +25993,7 @@ sub_811EA0C:
     mov r0, #0xce
     mov r1, #0xc
     bl sub_800307C
-    bl anim_80026C4
+    bl sprite_update
 .endfunc // sub_811EA0C
 
     pop {pc}
@@ -26146,7 +26125,7 @@ sub_811EC10:
     bl sub_8120CC8
     strb r0, [r4,#0xa] // (byte_200DF2A - 0x200df20)
     strb r1, [r4,#0xb] // (byte_200DF2B - 0x200df20)
-    bl sub_8046664
+    bl sub_8046664 // () -> void
     pop {r4,pc}
     .balign 4, 0x00
 dword_811EC44:    .word 0xFFFFFFE0
@@ -26202,8 +26181,9 @@ loc_811EC9A:
     add r6, #4
     tst r0, r0
     bne loc_811EC9A
+    // dataList
     ldr r0, off_811ECF4 // =unk_20096E0 
-    bl sub_8000B8E
+    bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
     pop {r4-r7,pc}
     .byte 0, 0
 off_811ECB0:    .word dword_811ECB4
@@ -26226,7 +26206,7 @@ loc_811ED1C:
     mov lr, pc
     bx r0
     bl sub_80465BC
-    bl sub_80465F8
+    bl sub_80465F8 // () -> void
     bl sub_811F508
     pop {r5,pc}
 off_811ED38:    .word off_811ED3C
@@ -26258,8 +26238,9 @@ sub_811ED58:
     strb r0, [r5,#0xd]
     mov r0, #4
     strb r0, [r5]
+    // a1
     ldr r0, off_811EDA8 // =dword_811EB5C+28 
-    bl sub_80465A0
+    bl sub_80465A0 // (void *a1) -> void
     bl sub_811F1B8
     bl sub_811F24C
 loc_811ED8E:
@@ -26457,9 +26438,10 @@ sub_811EF28:
     push {lr}
     mov r0, #0
     strh r0, [r5,#0x10]
-    bl sub_8046664
+    bl sub_8046664 // () -> void
+    // a1
     ldr r0, off_811EF64 // =dword_811EB5C+72 
-    bl sub_80465A0
+    bl sub_80465A0 // (void *a1) -> void
     mov r0, #4
     strb r0, [r5]
     ldr r0, off_811EF68 // =dword_811EAB8+28 
@@ -26501,7 +26483,7 @@ sub_811EF70:
 off_811EF88:    .word loc_86CAC4C
     push {lr}
     ldr r0, off_811EF98 // =dword_811EF9C 
-    bl sub_8000B30
+    bl decomp_initGfx_8000B30 // (u32 *dataList) -> void
     pop {pc}
     .balign 4, 0x00
 off_811EF98:    .word dword_811EF9C
@@ -27297,9 +27279,9 @@ sub_811F728:
     mov r0, #6
     bl sub_80015FC
     bl sub_809F68C
-    bl chatbox_8040818 // () -> void
+    bl chatbox_8040818
     mov r0, #0x40 
-    bl chatbox_clearBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F2C
     pop {pc}
 .endfunc // sub_811F728
 
@@ -27318,11 +27300,14 @@ sub_811F758:
     pop {pc}
 off_811F76C:    .word 0x40
 off_811F770:    .word byte_200DF20
+.func
+.thumb_func
+// () -> void
 menuControl_cb_openSubmenu:
     push {r4-r7,lr}
     mov r5, r10
-    ldr r5, [r5,#0x34]
-    ldr r0, off_811F79C // =off_811F7A0 
+    ldr r5, [r5,#0x34] // Toolkit.submenu
+    ldr r0, off_811F79C // =jt_811F7A0 
     ldrb r1, [r5]
     ldr r0, [r0,r1]
     mov lr, pc
@@ -27340,9 +27325,9 @@ loc_811F794:
 locret_811F798:
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_811F79C:    .word off_811F7A0
-off_811F7A0:    .word sub_8123434+1
-    .word sub_8123F5C+1
+off_811F79C:    .word jt_811F7A0
+jt_811F7A0:    .word sub_8123434+1
+    .word ho_8123F5C+1
     .word sub_8124B3C+1
     .word sub_8126B4C+1
     .word menuControl_cb_email+1
@@ -27355,6 +27340,8 @@ off_811F7A0:    .word sub_8123434+1
     .word loc_81378B4+1
     .word loc_8128CBC+1
     .word 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+.endfunc // menuControl_cb_openSubmenu
+
 .func
 .thumb_func
 sub_811F7EC:
@@ -27995,7 +27982,7 @@ loc_811FCD0:
     bl sub_811FE34
     ldr r0, [sp,#0x14]
     mov r1, #0x78 
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
 loc_811FCDE:
     ldrh r0, [r7]
     bl sub_8021AE0
@@ -28186,7 +28173,7 @@ loc_811FE2A:
 sub_811FE34:
     push {lr}
     ldr r1, off_811FE40 // =0x3C0 
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     pop {pc}
     .byte 0, 0
 off_811FE40:    .word 0x3C0
@@ -28366,7 +28353,7 @@ unk_811FF60:    .byte 0
 sub_811FF6C:
     push {lr}
     ldr r1, dword_811FF78 // =0xA000 
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     pop {pc}
     .balign 4, 0x00
 dword_811FF78:    .word 0xA000
@@ -28940,13 +28927,10 @@ sub_8120390:
     str r1, [sp,#4]
     str r2, [sp,#8]
     str r5, [sp,#0xc]
-    // src
     add r0, r3, #0
-    // dest
     add r1, r2, #0
-    // mode
     mov r2, #0x38 
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    bl CpuSet_800093C
     mov r5, #0x20 
     ldr r0, [sp]
     mul r0, r5
@@ -30054,7 +30038,7 @@ sub_8120B54:
     bl sub_803F674
     cmp r0, #2
     blt loc_8120B74
-    bl sub_802D246
+    bl get_802D246 // () -> int
     mov r1, #8
     tst r0, r1
     bne loc_8120B74
@@ -30129,23 +30113,23 @@ sub_8120BE4:
     add r6, r0, #0
     mov r1, #9
     ldr r2, [sp]
-    bl sub_801379E
+    bl navicust_801379E // (int a1, int a2, int a3) -> void
     add r0, r6, #0
     mov r1, #0x2d 
     ldr r2, [sp,#4]
-    bl sub_801379E
+    bl navicust_801379E // (int a1, int a2, int a3) -> void
     add r0, r6, #0
     mov r1, #0x2e 
     ldr r2, [sp,#8]
-    bl sub_801379E
+    bl navicust_801379E // (int a1, int a2, int a3) -> void
     add r0, r6, #0
     mov r1, #0x2f 
     ldr r2, [sp,#0xc]
-    bl sub_801379E
+    bl navicust_801379E // (int a1, int a2, int a3) -> void
     add r0, r6, #0
     mov r1, #0x30 
     ldr r2, [sp,#0x10]
-    bl sub_801379E
+    bl navicust_801379E // (int a1, int a2, int a3) -> void
     add sp, sp, #0x14
     pop {r6,r7,pc}
 .endfunc // sub_8120BE4
@@ -30322,7 +30306,7 @@ loc_8120D8C:
 loc_8120D9A:
     ldr r0, [sp,#4]
     mov r1, #0x2d 
-    bl sub_801379E
+    bl navicust_801379E // (int a1, int a2, int a3) -> void
 loc_8120DA2:
     add sp, sp, #8
     add r1, r6, #0
@@ -30416,14 +30400,14 @@ loc_8120E3A:
     beq loc_8120F3C
     ldr r2, [r7]
     mov r0, #0
-    bl sub_801379E
+    bl navicust_801379E // (int a1, int a2, int a3) -> void
 loc_8120E50:
     add r7, #4
     add r6, #4
     b loc_8120E3A
 loc_8120E56:
     add r0, r7, #0
-    bl sub_8014018
+    bl navicust_8014018 // (int a1) -> int
     add r1, r7, #0
     bl sub_8013B4E
     add r7, r4, #0
@@ -30456,7 +30440,7 @@ loc_8120E8C:
     bne loc_8120EA0
 loc_8120E9A:
     ldr r2, [r7]
-    bl sub_801379E
+    bl navicust_801379E // (int a1, int a2, int a3) -> void
 loc_8120EA0:
     add r7, #4
     add r6, #4

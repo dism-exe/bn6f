@@ -134,7 +134,12 @@ asm37_1:
 .incbin "bin/bin37.bin"
 asm38:
 .include "asm/asm38.s"
-.incbin "bin/bin38.bin"
+bin38_0:
+.incbin "bin/bin38_0.bin"
+comp00:
+.incbin "data/compressedFiles/comp00.lz77"
+bin38_1:
+.incbin "bin/bin38_1.bin"
 
 /**/
 // include parts of the ROM not disassembled yet

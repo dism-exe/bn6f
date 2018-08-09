@@ -35,13 +35,13 @@ main_gameRoutine:
     mov lr, pc
     bx r0
     bl sub_800154C
-    bl isSameSubsystem // () -> zf
+    bl zf_checkSameSubsystem_800A732
     beq loc_800032A
     bl subsystem_triggerTransition_800630A
 loc_800032A:
-    bl chatbox_main_onUpdate // () -> void
+    bl chatbox_onUpdate_803FEB4
     bl cb_call_200A880
-    bl PET_main_onUpdate
+    bl PET_onUpdate_8001B94
     ldr r0, off_8000344 // =loc_3006814+1 
     mov lr, pc
     bx r0
@@ -50,26 +50,11 @@ loc_800032A:
     .balign 4, 0x00
 off_8000344:    .word loc_3006814+1
 off_8000348:    .word main_jt_subsystem
-main_jt_subsystem:    .word Load_cb_802F544+1
-    .word cb_80050EC+1
-    .word cb_jack_80341B6+1
-    .word cb_8038AD0+1
-    .word cb_803D1CA+1
-    .word cb_803FB3C+1
-    .word cb_80395A4+1
-    .word cb_803CBA6+1
-    .word cb_803CCD6+1
-    .word reqBBS_cb_draw_813E0A4+1
-    .word menuControl_cb_openSubmenu+1
-    .word cb_8046CF8+1
-    .word cb_8048FD4+1
-    .word cb_804A304+1
-    .word cb_81382AC+1
-    .word 0x0
-    .word 0x0
-    .word reqBBS_cb_813F404+1
-    .word menuControl_cb_email+1
-    .word cb_8049E04+1
+main_jt_subsystem:    .word Load_ho_802F544+1, cb_80050EC+1, ho_jackIn_80341B6+1, cb_8038AD0+1
+    .word cb_803D1CA+1, cb_803FB3C+1, cb_80395A4+1, cb_803CBA6+1
+    .word cb_803CCD6+1, reqBBS_cb_draw_813E0A4+1, menuControl_cb_openSubmenu+1, cb_8046CF8+1
+    .word cb_8048FD4+1, cb_804A304+1, cb_81382AC+1, 0x0
+    .word 0x0, reqBBS_cb_813F404+1, menuControl_cb_email+1, cb_8049E04+1
     .byte 0, 0, 0, 0
 .endfunc // main_
 
@@ -279,7 +264,7 @@ loc_80004C0:
     bl sub_803EBC8
     bl sub_813D960
     bl sub_80071B4
-    bl sub_804657C
+    bl sub_804657C // () -> void
     bl sub_80467D8
     ldr r0, off_800056C // =dword_2009930 
     mov r1, #1

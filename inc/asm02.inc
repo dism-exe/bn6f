@@ -29,15 +29,13 @@
 .include "asm00.inc"
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
+// .global CpuSet_800093C
 // .global modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
 // .global sub_8006E84
 // .global sub_8006EA4
 
 
 /* Undeclared Symbols */
-.equ unk_20007D6, 0x20007D6
-.equ unk_200083A, 0x200083A
 .equ unk_2000AF0, 0x2000AF0
 .equ unk_2001184, 0x2001184
 .equ unk_200119C, 0x200119C

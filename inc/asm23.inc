@@ -40,7 +40,7 @@
 // .global sound_play
 // .global getPETNaviSelect
 // .global sub_80010D4
-// .global sub_8001158
+// .global sub_8001158 // () -> void
 // .global off_8001800
 // .global sub_8004822
 // .global sub_80048B2
@@ -65,9 +65,9 @@
 
 .include "chatbox.inc"
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_8045EDC // (int a1, int a2) -> void
-// .global chatbox_maskBits_2009F38 // (int mask) -> void
-// .global chatbox_getLast3Bits_2009F38 // () -> int
+// .global chatbox_8045EDC
+// .global chatbox_8045F3C
+// .global chatbox_8045F4C
 
 .include "asm03_1.inc"
 // .global sub_80468C6

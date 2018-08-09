@@ -21,12 +21,10 @@ sub_8021AB4:
     mul r1, r2
     mov r3, r10
     ldr r3, [r3,#0x48]
-    // dest
     add r1, r1, r3
-    // mode
     mov r2, #0x3c 
     push {r1}
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    bl CpuSet_800093C
     pop {r7}
     mov r6, #0
 loc_8021ACC:
@@ -311,7 +309,7 @@ loc_8021C8C:
     mov r3, #0
 loc_8021C9A:
     mov r7, r10
-    ldr r7, [r7,#0x4c] // Toolkit.unk_4C
+    ldr r7, [r7,#0x4c] // Toolkit.unk_2002230
     mov r1, #12
     mul r1, r2
     add r7, r7, r1
@@ -415,43 +413,31 @@ sub_8021D36:
     ldr r0, off_8021D6C // =unk_2000AF0 
     mov r1, #0x40 
     bl sub_80008C0
-    // src
     ldr r0, off_8021D80 // =dword_8021D88 
-    // dest
     ldr r1, off_8021D70 // =unk_2001184 
-    // mode
     mov r2, #8
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
-    // src
+    bl CpuSet_800093C
     ldr r0, off_8021D80 // =dword_8021D88 
-    // dest
     ldr r1, off_8021D74 // =unk_200119C 
-    // mode
     mov r2, #8
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
-    // src
-    ldr r0, off_8021D84 // =dword_8021D88+2 
-    // dest
-    ldr r1, off_8021D78 // =unk_20007D6 
-    // mode
+    bl CpuSet_800093C
+    ldr r0, dword_8021D84 // =dword_8021D88 
+    ldr r1, dword_8021D78 // =0x20007D6 
     mov r2, #8
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
-    // src
-    ldr r0, off_8021D84 // =dword_8021D88+2 
-    // dest
-    ldr r1, off_8021D7C // =unk_200083A 
-    // mode
+    bl CpuSet_800093C
+    ldr r0, dword_8021D84 // =dword_8021D88 
+    ldr r1, dword_8021D7C // =0x200083A 
     mov r2, #8
-    bl CpuSet_800093C // (void *src, void *dest, int mode) -> void
+    bl CpuSet_800093C
     pop {pc}
     .balign 4, 0x00
 off_8021D6C:    .word unk_2000AF0
 off_8021D70:    .word unk_2001184
 off_8021D74:    .word unk_200119C
-off_8021D78:    .word unk_20007D6
-off_8021D7C:    .word unk_200083A
+dword_8021D78:    .word 0x20007D6
+dword_8021D7C:    .word 0x200083A
 off_8021D80:    .word dword_8021D88
-off_8021D84:    .word dword_8021D88+2
+dword_8021D84:    .word 0x8021D8A
     // <endpool>
 dword_8021D88:    .word 0x7E7E0002, 0xE67E7E, 0x0
 .endfunc // sub_8021D36

@@ -2,6 +2,7 @@
 .equ INC_ASM25, 0
 
 /* Public Symbols */
+.global off_8090000
 
 
 /* External Symbols */
@@ -32,9 +33,9 @@
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8001172
 // .global sub_800118A
-// .global sprite_loadAnimationData_80026A4
-// .global anim_80026C4
-// .global sub_80026E4
+// .global sprite_loadAnimationData
+// .global sprite_update
+// .global sprite_load
 // .global sprite_setAnimation
 // .global sub_8002F90
 // .global sub_8003914

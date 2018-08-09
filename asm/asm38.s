@@ -119,7 +119,7 @@ sub_81D62A0:
     mov r0, #0
     strh r0, [r4]
     mov r0, #0
-    ldr r1, off_81D62CC // =loc_3005CA0 
+    ldr r1, off_81D62CC // =unk_3005CA0 
     ldr r2, off_81D62E8 // =dword_3000E70 
 loc_81D62B2:
     ldr r3, [r1]
@@ -135,7 +135,7 @@ loc_81D62B2:
     mov r0, #1
     strh r0, [r4]
     pop {r4-r7,pc}
-off_81D62CC:    .word loc_3005CA0
+off_81D62CC:    .word unk_3005CA0
 dword_81D62D0:    .word 0x2005
 .endfunc // sub_81D62A0
 
@@ -396,7 +396,7 @@ sub_81D6478:
     cmp r6, #0
     ble locret_81D64AA
     mov r12, r0
-    ldr r1, dword_81D64AC // =0x3005FB0 
+    ldr r1, dword_81D64AC // =loc_3005FB0 
     ldr r1, [r1,r2]
     mov r9, r1
     add r5, r2, #0
@@ -1820,13 +1820,10 @@ loc_81D7126:
     add r4, #1
     add r5, #1
     pop {r0,r6,pc}
-    add r0, #1
-    mov pc, lr
 .endfunc // sub_81D7118
 
-.func
-.thumb_func
-sub_81D713C:
+    add r0, #1
+    mov pc, lr
     push {lr}
     mov r4, r10
     ldr r4, [r4,#0x38]
@@ -1856,11 +1853,6 @@ loc_81D7162:
 loc_81D716E:
     mov r3, #0
     pop {pc}
-.endfunc // sub_81D713C
-
-.func
-.thumb_func
-sub_81D7172:
     push {lr}
     mov r1, r10
     ldr r1, [r1,#0x38]
@@ -1876,11 +1868,6 @@ loc_81D7188:
     mov r4, #0
     add r0, #1
     pop {pc}
-.endfunc // sub_81D7172
-
-.func
-.thumb_func
-sub_81D718E:
     push {lr}
     ldrb r1, [r0,#1]
     ldr r2, dword_81D719C // =0x5040404 
@@ -1891,8 +1878,6 @@ sub_81D718E:
 dword_81D719C:    .word 0x5040404
     .word 0x4030005
     .word 0x40404
-.endfunc // sub_81D718E
-
 .func
 .thumb_func
 sub_81D71A8:
@@ -1919,9 +1904,6 @@ loc_81D71B6:
     pop {pc}
 .endfunc // sub_81D71A8
 
-.func
-.thumb_func
-sub_81D71D0:
     push {r3,lr}
     push {r0,r2,r4-r6}
     ldrb r1, [r0,#1]
@@ -2031,11 +2013,6 @@ loc_81D7292:
 off_81D7298:    .word sub_8000C00+1
 off_81D729C:    .word sub_8000C5C+1
 off_81D72A0:    .word off_8043C8C
-.endfunc // sub_81D71D0
-
-.func
-.thumb_func
-sub_81D72A4:
     push {r3,r7,lr}
     ldr r1, dword_81D72B4 // =0x3006DB8 
     ldrb r3, [r0,#1]
@@ -2054,11 +2031,6 @@ dword_81D72B4:    .word 0x3006DB8
     .word 0x8043B54
     .word copyMemory+1
     .word 0x200DD20
-.endfunc // sub_81D72A4
-
-.func
-.thumb_func
-sub_81D731C:
     push {r3,r7,lr}
     push {r0}
     ldrb r3, [r0,#2]
@@ -2108,8 +2080,6 @@ loc_81D735C:
     pop {r3,r7,pc}
     .balign 4, 0x00
 off_81D7378:    .word chatbox_8040D5C+1
-.endfunc // sub_81D731C
-
     push {r3,r7,lr}
     ldr r1, dword_81D738C // =0x3006E90 
     ldrb r3, [r0,#1]

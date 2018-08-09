@@ -126,8 +126,8 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global copyMemory // (void *src, void *dest, int size)
-// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
+// .global copyMemory // (void *src, void* dest, int size) -> void
+// .global CpuSet_800093C
 // .global getPETNaviSelect
 // .global sub_8001172
 // .global calcAngle_800117C
@@ -136,17 +136,17 @@
 // .global sub_80014D4
 // .global sub_800151C
 // .global sub_8001532
-// .global sprite_loadAnimationData_80026A4
-// .global anim_80026C4
-// .global sub_80026E4
-// .global sub_8002C24
+// .global sprite_loadAnimationData
+// .global sprite_update
+// .global sprite_load
+// .global sprite_setScaleParameters
 // .global sub_8002C7A
 // .global sub_8002CCE
-// .global sub_8002D14
+// .global sprite_makeScalable
 // .global sprite_makeUnscalable
 // .global sprite_setPallete
 // .global sprite_setAnimation
-// .global sub_8002DB0
+// .global sprite_forceWhitePallete
 // .global sub_8002DEA
 // .global sub_8002E04
 // .global sub_8002E14
@@ -196,8 +196,8 @@
 // .global sub_8036F70
 
 .include "chatbox.inc"
-// .global chatbox_maskBits_2009F38 // (int mask) -> void
-// .global chatbox_getLast3Bits_2009F38 // () -> int
+// .global chatbox_8045F3C
+// .global chatbox_8045F4C
 
 
 /* Undeclared Symbols */

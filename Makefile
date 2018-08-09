@@ -1,11 +1,8 @@
 # binary tools used in build
-# (devkitpro/devkitARM/bin should be in path)
+# (the arm-none-eabi toolchain should be in the path)
 MAKE = make
 CC = arm-none-eabi-gcc
-# CC = "/c/Program Files (x86)/GNU Tools Arm Embedded/7 2018-q2-update/bin/arm-none-eabi-gcc"
-AS = arm-none-eabi-as
 LD = arm-none-eabi-ld
-# CC = "/c/Program Files (x86)/GNU Tools Arm Embedded/7 2018-q2-update/bin/arm-none-eabi-ld"
 OBJCOPY = arm-none-eabi-objcopy
 SHA1SUM = sha1sum
 PY = py
@@ -42,7 +39,9 @@ $(ROM):
 	$(OBJCOPY) -O binary $(ROM).elf $(ROM).gba
 
 checksum:
-	$(SHA1SUM) -b $(BIN)/$(ROM).bin $(ROM).gba
+	$(SHA1SUM) -b $(ROM).gba
+	@echo "0676ecd4d58a976af3346caebb44b9b6489ad099 *Expected"
+
 
 fdiff:
 	$(PY) tools/fdiff.py bin/$(ROM).bin $(ROM).gba -s2

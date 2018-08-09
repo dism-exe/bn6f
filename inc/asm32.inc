@@ -181,7 +181,7 @@
 // .global sub_8123208
 // .global sub_8123360
 // .global sub_8123434
-// .global sub_8123F5C
+// .global ho_8123F5C
 // .global dword_8124B1C
 // .global sub_8124B3C
 // .global sub_8126B4C
@@ -226,14 +226,14 @@
 // .global sound_play
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global CpuFastSet_8000900 // (int a1, int a2) -> void
-// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
-// .global CpuSet_8000950 // (void *src, void *dest, int mode) -> void
+// .global sub_8000900 // (int a1, int a2) -> void
+// .global CpuSet_800093C
+// .global sub_8000950
 // .global sub_800098C
 // .global loc_8000AC4
 // .global loc_8000AC8
-// .global sub_8000B30
-// .global sub_8000B8E
+// .global decomp_initGfx_8000B30 // (u32 *dataList) -> void
+// .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
 // .global getPETNaviSelect
@@ -247,17 +247,17 @@
 // .global sub_8001B1C
 // .global sub_8001B84
 // .global loc_8002676
-// .global sprite_loadAnimationData_80026A4
-// .global anim_80026C4
+// .global sprite_loadAnimationData
+// .global sprite_update
 // .global sub_8002770
 // .global loc_8002774
-// .global sub_8002C24
+// .global sprite_setScaleParameters
 // .global sub_8002C52
 // .global sub_8002C7A
-// .global loc_8002C7E
+// .global sprite_setMosaicScalingParameters
 // .global sub_8002CCE
-// .global sub_8002CE0
-// .global sub_8002D14
+// .global sprite_getMosaicScalingParameters
+// .global sprite_makeScalable
 // .global sprite_makeUnscalable
 // .global sprite_setPallete
 // .global sprite_setAnimation
@@ -324,12 +324,12 @@
 // .global sub_8011714
 // .global loc_801171C
 // .global sub_80126E4
-// .global sub_801379E
+// .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6
 // .global sub_80137E6
 // .global sub_80137FE
 // .global sub_8013B4E
-// .global sub_8014018
+// .global navicust_8014018 // (int a1) -> int
 // .global sub_8015C48
 // .global sub_8015C94
 // .global sub_8015D80
@@ -375,7 +375,7 @@
 .include "asm03_0.inc"
 // .global sub_802CDD0
 // .global sub_802D234
-// .global sub_802D246
+// .global get_802D246 // () -> int
 // .global sub_802EF5C
 // .global sub_802F164 // (int a1, int a2) -> zf
 // .global zf_802F168
@@ -394,16 +394,16 @@
 // .global sub_803F740
 
 .include "chatbox.inc"
-// .global chatbox_8040818 // () -> void
-// .global chatbox_clearBits_2009F38 // (int mask) -> void
-// .global chatbox_maskBits_2009F38 // (int mask) -> void
+// .global chatbox_8040818
+// .global chatbox_8045F2C
+// .global chatbox_8045F3C
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C
-// .global sub_80465A0
+// .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
-// .global sub_80465F8
-// .global sub_8046664
+// .global sub_80465F8 // () -> void
+// .global sub_8046664 // () -> void
 // .global sub_8046670
 // .global sub_804668A
 // .global sub_80466C4

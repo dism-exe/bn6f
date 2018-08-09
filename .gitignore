@@ -9,3 +9,7 @@
 *.ss?
 *.sa?
 *.sg?
+
+# atom-specific settings
+.atom*
+*.json

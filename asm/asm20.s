@@ -103,8 +103,8 @@ off_807ED80:    .word off_807ED8C
     .word off_807EDA8
     .word off_807EDBC
 off_807ED8C:    .word off_807EB18
-    .word 0x807EB68
-    .word 0x807EBB8
+    .word dword_807EB68
+    .word dword_807EBB8
     .byte 8
     .byte 0xEC
     .byte 7
@@ -122,15 +122,15 @@ off_807ED8C:    .word off_807EB18
     .byte 0xFF
     .byte 0xFF
 off_807EDA8:    .word off_807EB18
-    .word 0x807EB68
-    .word 0x807EBB8
-    .word 0x807ECA8
+    .word dword_807EB68
+    .word dword_807EBB8
+    .word off_807ECA8
     .word 0xFFFFFFFF
 off_807EDBC:    .word off_807EB18
-    .word 0x807EB68
-    .word 0x807EBB8
-    .word 0x807EC58
-    .word 0x807ECA8
+    .word dword_807EB68
+    .word dword_807EBB8
+    .word off_807EC58
+    .word off_807ECA8
     .word 0xFFFFFFFF
 .endfunc // sub_807ED6C
 

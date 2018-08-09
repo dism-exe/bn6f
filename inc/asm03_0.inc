@@ -7,7 +7,7 @@
 .global loc_8026A28
 .global sub_8027D10
 .global sub_802A866
-.global sub_802A87C
+.global loc_802A87C
 .global sub_802B2A0
 .global sub_802B358
 .global sub_802B438
@@ -45,8 +45,8 @@
 .global sub_802D1B4
 .global sub_802D1BE
 .global sub_802D234
-.global sub_802D246
-.global sub_802D254
+.global get_802D246 // () -> int
+.global sub_802D254 // () -> int
 .global sub_802D266
 .global sub_802D26A
 .global sub_802D27C
@@ -591,7 +591,7 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global sound_80005D4 // (int a1) -> void
+// .global sound_bgmusic_play // (int a1) -> void
 // .global sub_80005F2
 // .global sub_8000642
 // .global sub_800068A
@@ -599,18 +599,18 @@
 // .global sub_80008B4
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global CpuFastSet_8000900 // (int a1, int a2) -> void
-// .global copyMemory // (void *src, void *dest, int size)
+// .global sub_8000900 // (int a1, int a2) -> void
+// .global copyMemory // (void *src, void* dest, int size) -> void
 // .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
-// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
-// .global CpuSet_8000950 // (void *src, void *dest, int mode) -> void
-// .global initMemToByte // (void *mem, int size, u8 byte) -> void
+// .global CpuSet_800093C
+// .global sub_8000950
+// .global initMemblockToByte
 // .global sub_800096C
 // .global sub_800098C
 // .global loc_8000AC4
 // .global loc_8000AC8
-// .global sub_8000B30
-// .global sub_8000B8E
+// .global decomp_initGfx_8000B30 // (u32 *dataList) -> void
+// .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
 // .global sub_8000C72
@@ -624,7 +624,7 @@
 // .global sub_80010BE
 // .global sub_80010C6
 // .global sub_80010D4
-// .global sub_8001158
+// .global sub_8001158 // () -> void
 // .global sub_8001172
 // .global sub_8001514
 // .global sub_800151C
@@ -654,14 +654,14 @@
 // .global sub_8002484
 // .global sub_80024C0
 // .global sub_800260C
-// .global sprite_loadAnimationData_80026A4
-// .global sub_80026E4
+// .global sprite_loadAnimationData
+// .global sprite_load
 // .global sub_80027C4
 // .global sub_8002A64
 // .global sub_8002ADE
 // .global sprite_setPallete
 // .global sprite_setAnimation
-// .global sub_8002DB0
+// .global sprite_forceWhitePallete
 // .global sub_8002E3C
 // .global sub_8002F5C
 // .global loc_8003570
@@ -715,7 +715,7 @@
 // .global sub_800A70C
 // .global getBattleSettingsFromList0
 // .global getBattleSettingsFromList1
-// .global sub_800A7D0 // () -> int
+// .global sub_800A7D0
 // .global sub_800A7E2
 // .global sub_800A832
 // .global sub_800A856
@@ -730,7 +730,7 @@
 // .global sub_800AB3A
 // .global sub_800AB46
 // .global sub_800AFBA
-// .global sub_800B022
+// .global sub_800B022 // (int a1) ->
 // .global sub_800B3A2
 // .global sub_800B3D8
 // .global sub_800B460
@@ -799,7 +799,7 @@
 // .global sub_8013764
 // .global sub_8013774
 // .global sub_8013790
-// .global sub_801379E
+// .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6
 // .global sub_80137E6
 // .global sub_80137FE
@@ -953,10 +953,10 @@
 // .global sub_8045FC6
 // .global loc_8045FD0
 // .global loc_8045FE4
-// .global sub_80465A0
+// .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
-// .global sub_80465F8
-// .global sub_8046664
+// .global sub_80465F8 // () -> void
+// .global sub_8046664 // () -> void
 // .global sub_8046670
 // .global sub_80467FC
 // .global sub_8046818
@@ -969,15 +969,15 @@
 // .global sub_804CF84
 
 .include "chatbox.inc"
-// .global chatbox_runScript_CpuSet_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_runScript_CpuSet_803FE74 // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_803FD9C
+// .global chatbox_803FE74
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_8040818 // () -> void
-// .global chatbox_8045ED0 // (int a1) -> int
-// .global chatbox_setBits_2009F38 // (int mask) -> void
-// .global chatbox_clearBits_2009F38 // (int mask) -> void
-// .global chatbox_maskBits_2009F38 // (int mask) -> void
-// .global chatbox_getLast3Bits_2009F38 // () -> int
+// .global chatbox_8040818
+// .global chatbox_8045ED0
+// .global chatbox_8045F1C
+// .global chatbox_8045F2C
+// .global chatbox_8045F3C
+// .global chatbox_8045F4C
 
 .include "asm12.inc"
 // .global sub_806D8F8
@@ -1383,7 +1383,7 @@
 .equ dword_3002590, 0x3002590
 .equ unk_30025B0, 0x30025B0
 .equ loc_30068E8, 0x30068E8
-.equ loc_3006920, 0x3006920
+.equ sub_3006920, 0x3006920
 .equ LCDControl, 0x4000000
 .equ BG1X_Offset, 0x4000014
 .equ dword_8021550, 0x8021550
@@ -1531,14 +1531,14 @@
 .equ off_860D678, 0x860D678
 .equ dword_8619B90, 0x8619B90
 .equ dword_861ABD4, 0x861ABD4
-.equ dword_861AD94, 0x861AD94
+.equ comp_861AD94, 0x861AD94
 .equ dword_861B320, 0x861B320
 .equ dword_861C344, 0x861C344
-.equ dword_861C780, 0x861C780
-.equ dword_861CC60, 0x861CC60
-.equ dword_861CEF8, 0x861CEF8
-.equ dword_861D06C, 0x861D06C
-.equ dword_861DCE8, 0x861DCE8
+.equ comp_861C780, 0x861C780
+.equ comp_861C780, 0x861C780
+.equ comp_861C780, 0x861C780
+.equ comp_861C780, 0x861C780
+.equ dword_861D87C, 0x861D87C
 .equ dword_861F710, 0x861F710
 .equ dword_8620350, 0x8620350
 .equ dword_8620A9C, 0x8620A9C
@@ -1584,8 +1584,8 @@
 .equ dword_86C0D20, 0x86C0D20
 .equ dword_86C1AA0, 0x86C1AA0
 .equ dword_86C1DC8, 0x86C1DC8
-.equ dword_86C1F80, 0x86C1F80
-.equ dword_86C1F80, 0x86C1F80
+.equ unk_86C1F80, 0x86C1F80
+.equ unk_86C22E0, 0x86C22E0
 .equ dword_86C41B4, 0x86C41B4
 .equ loc_86CB360, 0x86CB360
 .equ dword_86DDB24, 0x86DDB24
@@ -1642,6 +1642,8 @@
 .equ dword_8731DF4, 0x8731DF4
 .equ dword_8732154, 0x8732154
 .equ dword_87324B4, 0x87324B4
+.equ dword_8732814, 0x8732814
+.equ dword_8732874, 0x8732874
 .equ dword_8732E54, 0x8732E54
 .equ dword_8733394, 0x8733394
 .equ dword_87333B4, 0x87333B4

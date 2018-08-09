@@ -190,7 +190,7 @@
 // .global sound_play
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global copyMemory // (void *src, void *dest, int size)
+// .global copyMemory // (void *src, void* dest, int size) -> void
 // .global loc_8000AC8
 // .global sub_8000C72
 // .global sub_8000DE0
@@ -204,18 +204,18 @@
 // .global sub_8001532
 // .global sub_8002378
 // .global sub_800239A
-// .global sprite_loadAnimationData_80026A4
-// .global anim_80026C4
-// .global sub_80026E4
-// .global sub_8002B30
+// .global sprite_loadAnimationData
+// .global sprite_update
+// .global sprite_load
+// .global sprite_decompress
 // .global sub_8002C7A
-// .global loc_8002C7E
+// .global sprite_setMosaicScalingParameters
 // .global sub_8002CCE
-// .global sub_8002CE0
+// .global sprite_getMosaicScalingParameters
 // .global sprite_setPallete
-// .global sub_8002D8C
+// .global sprite_getPallete
 // .global sprite_setAnimation
-// .global sub_8002DB0
+// .global sprite_forceWhitePallete
 // .global loc_8002DB4
 // .global sub_8002DC8
 // .global sub_8002DD8
@@ -593,7 +593,7 @@
 // .global sub_802CE8A
 // .global sub_802CEA6
 // .global sub_802D234
-// .global sub_802D246
+// .global get_802D246 // () -> int
 // .global sub_802D26A
 // .global loc_802D322
 // .global loc_802D4C6
@@ -610,12 +610,12 @@
 
 .include "chatbox.inc"
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_maskBits_2009F38 // (int mask) -> void
+// .global chatbox_8045F3C
 
 .include "asm03_1.inc"
 // .global sub_80465BC
-// .global sub_80465F8
-// .global sub_8046664
+// .global sub_80465F8 // () -> void
+// .global sub_8046664 // () -> void
 // .global sub_8046670
 
 

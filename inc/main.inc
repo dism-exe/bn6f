@@ -10,7 +10,7 @@
 // .global start_800024C
 
 .include "asm32.inc"
-// .global menuControl_cb_openSubmenu
+// .global menuControl_cb_openSubmenu // () -> void
 
 .include "asm37_1.inc"
 // .global sub_8144240
@@ -49,7 +49,7 @@
 // .global cb_call_200A880
 // .global loc_80019A0
 // .global sub_8001AFC
-// .global PET_main_onUpdate
+// .global PET_onUpdate_8001B94
 // .global sub_8002368
 // .global getPalleteAndTransition_80023E0
 // .global sub_80024A2
@@ -69,18 +69,18 @@
 // .global CpuSet_toolKit
 // .global sub_8006C22
 // .global sub_80071B4
-// .global isSameSubsystem // () -> zf
+// .global zf_checkSameSubsystem_800A732
 
 .include "asm37_0.inc"
 // .global sub_813D60C
 // .global sub_813D960
 
 .include "asm03_0.inc"
-// .global Load_cb_802F544
+// .global Load_ho_802F544
 // .global sub_802FDB0
 // .global objRender_802FE0C
 // .global sub_802FF2C
-// .global cb_jack_80341B6
+// .global ho_jackIn_80341B6
 // .global sub_8036ED4
 // .global sub_8036F24
 // .global cb_8038AD0
@@ -97,10 +97,10 @@
 // .global sub_803FCF0
 
 .include "chatbox.inc"
-// .global chatbox_main_onUpdate // () -> void
+// .global chatbox_onUpdate_803FEB4
 
 .include "asm03_1.inc"
-// .global sub_804657C
+// .global sub_804657C // () -> void
 // .global sub_80467D8
 // .global cb_8046CF8
 // .global cb_8048FD4

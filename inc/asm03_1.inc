@@ -7,11 +7,11 @@
 .global sub_8045FC6
 .global loc_8045FD0
 .global loc_8045FE4
-.global sub_804657C
-.global sub_80465A0
+.global sub_804657C // () -> void
+.global sub_80465A0 // (void *a1) -> void
 .global sub_80465BC
-.global sub_80465F8
-.global sub_8046664
+.global sub_80465F8 // () -> void
+.global sub_8046664 // () -> void
 .global sub_8046670
 .global sub_804668A
 .global sub_8046696
@@ -101,6 +101,7 @@
 // .global loc_811B338
 // .global sub_811B3F4
 // .global sub_811B4AC
+// .global dword_811B9B4
 // .global sub_811BC44
 // .global sub_811BD64
 // .global loc_811DF1C
@@ -164,14 +165,14 @@
 .include "asm00.inc"
 // .global sound_play
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global CpuFastSet_8000900 // (int a1, int a2) -> void
-// .global copyMemory // (void *src, void *dest, int size)
-// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
-// .global CpuSet_8000950 // (void *src, void *dest, int mode) -> void
+// .global sub_8000900 // (int a1, int a2) -> void
+// .global copyMemory // (void *src, void* dest, int size) -> void
+// .global CpuSet_800093C
+// .global sub_8000950
 // .global sub_800096C
 // .global sub_80009AC
 // .global loc_8000AC8
-// .global sub_8000B30
+// .global decomp_initGfx_8000B30 // (u32 *dataList) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
 // .global getPETNaviSelect
@@ -205,7 +206,7 @@
 // .global engine_setScreeneffect
 // .global engine_isScreeneffectAnimating
 // .global sub_8006F1E
-// .global sub_800A7D0 // () -> int
+// .global sub_800A7D0
 
 .include "asm37_0.inc"
 // .global sub_813D5C8
@@ -297,15 +298,15 @@
 // .global chatbox_uncomp_803FD08 // () -> int
 // .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_8040818 // () -> void
+// .global chatbox_8040818
 // .global dword_8043C90
 // .global dword_8043C90
 // .global dword_8043C90
-// .global chatbox_8045EEC // (int a1) -> int
-// .global chatbox_set_8045EFC // (int unk_4C, int unk_50, int unk_54, int unk_58) -> void
-// .global chatbox_setBits_2009F38 // (int mask) -> void
-// .global chatbox_maskBits_2009F38 // (int mask) -> void
-// .global chatbox_getLast3Bits_2009F38 // () -> int
+// .global chatbox_8045EEC
+// .global chatbox_8045EFC
+// .global chatbox_8045F1C
+// .global chatbox_8045F3C
+// .global chatbox_8045F4C
 
 
 /* Undeclared Symbols */
@@ -450,9 +451,9 @@
 .equ dword_86CF4AC, 0x86CF4AC
 .equ a8Bdfhjlnprtvxz, 0x86EF71C
 .equ dword_873D9FC, 0x873D9FC
-.equ dword_873DE4C, 0x873DE4C
+.equ comp_873DE4C, 0x873DE4C
 .equ dword_873EA50, 0x873EA50
-.equ dword_873ECC8, 0x873ECC8
+.equ comp_873ECC8, 0x873ECC8
 .equ dword_87F0340, 0x87F0340
 .equ dword_87F05A4, 0x87F05A4
 .equ dword_87F0DA0, 0x87F0DA0

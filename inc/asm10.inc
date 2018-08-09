@@ -6,7 +6,16 @@
 .global dword_80665AC
 .global off_80665B4
 .global off_80665BC
+.global off_8067754
 .global off_8067914
+.global off_8067944
+.global off_80679A4
+.global off_80679D4
+.global off_8067A14
+.global off_8067A44
+.global off_8067A6C
+.global off_8067A9C
+.global off_8067ACC
 .global off_8067DC8
 .global dword_8067DD4
 .global off_8067DE0

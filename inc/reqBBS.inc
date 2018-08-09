@@ -59,9 +59,9 @@
 // .global sound_play
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global initMemToByte // (void *mem, int size, u8 byte) -> void
+// .global initMemblockToByte
 // .global loc_8000AC8
-// .global sub_8000B30
+// .global decomp_initGfx_8000B30 // (u32 *dataList) -> void
 // .global getPETNaviSelect
 // .global sub_800151C
 // .global sub_80015FC
@@ -99,17 +99,17 @@
 
 .include "chatbox.inc"
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_runScript_reqBBS // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_8040818 // () -> void
-// .global chatbox_maskBits_2009F38 // (int mask) -> void
+// .global chatbox_reqBBS_80404C0
+// .global chatbox_8040818
+// .global chatbox_8045F3C
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C
 // .global sub_8045FC6
-// .global sub_80465A0
+// .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
-// .global sub_80465F8
-// .global sub_8046664
+// .global sub_80465F8 // () -> void
+// .global sub_8046664 // () -> void
 
 
 /* Undeclared Symbols */

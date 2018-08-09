@@ -106,9 +106,9 @@ sub_8089280:
     bge loc_8089294
     ldr r0, off_80892F0 // =dword_80892F4 
 loc_8089294:
-    bl sub_8001158
+    bl sub_8001158 // () -> void
     ldr r0, off_8089340 // =dword_8089344 
-    bl sub_8001158
+    bl sub_8001158 // () -> void
     pop {r4-r7,pc}
 off_80892A0:    .word dword_80892A4
 dword_80892A4:    .word 0x80008, 0xD247, 0x740004, 0xD240, 0xE00008, 0xD241
@@ -421,9 +421,9 @@ sub_80897A6:
     tst r0, r0
     bne loc_80897E4
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_80897E4
-    bl chatbox_getLast3Bits_2009F38 // () -> int
+    bl chatbox_8045F4C
     cmp r0, #0
     beq loc_80897C8
     bl sub_8089D26
@@ -450,7 +450,7 @@ loc_80897E4:
 sub_80897E8:
     push {r4-r7,lr}
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_8089804
     bl sub_8089CB4
     beq loc_8089804
@@ -569,7 +569,7 @@ loc_80898AE:
 sub_80898B2:
     push {r4-r7,lr}
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_80898E4
     bl sub_814216E
     bne loc_80898CE
@@ -632,7 +632,7 @@ loc_8089918:
 sub_808991C:
     push {r4-r7,lr}
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_808994E
     bl sub_8089CB4
     beq loc_808994E
@@ -866,7 +866,7 @@ loc_8089AE4:
 sub_8089AE8:
     push {r4-r7,lr}
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_8089B2A
     bl sub_8089CB4
     beq loc_8089B2A
@@ -903,7 +903,7 @@ sub_8089B2E:
     beq loc_8089B50
     mov r0, #2
     ldr r1, [r7,#0x10]
-    bl chatbox_8045EDC // (int a1, int a2) -> void
+    bl chatbox_8045EDC
     mov r0, #0x11
     bl sub_8089CA4
     mov r0, #0x1e
@@ -921,7 +921,7 @@ loc_8089B50:
 sub_8089B54:
     push {r4-r7,lr}
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_8089B7A
     bl sub_8089CB4
     beq loc_8089B7A
@@ -957,7 +957,7 @@ loc_8089B90:
 sub_8089B94:
     push {r4-r7,lr}
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_8089BA6
     mov r0, #1
     strb r0, [r5,#8]
@@ -988,7 +988,7 @@ loc_8089BBC:
 sub_8089BC0:
     push {r4-r7,lr}
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_8089BE0
     mov r0, #7
     mov r1, #0x45 
@@ -1024,7 +1024,7 @@ loc_8089BF6:
 sub_8089BFA:
     push {r4-r7,lr}
     mov r0, #0x80
-    bl chatbox_maskBits_2009F38 // (int mask) -> void
+    bl chatbox_8045F3C
     bne loc_8089C12
     mov r0, #0
     strb r0, [r5,#8]

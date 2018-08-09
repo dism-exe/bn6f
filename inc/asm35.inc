@@ -22,7 +22,7 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global CpuFastSet_8000900 // (int a1, int a2) -> void
+// .global sub_8000900 // (int a1, int a2) -> void
 // .global sub_800183C
 // .global drawTiles // (int a1, int a2, int a3) -> void
 // .global sub_80018D0
@@ -40,8 +40,8 @@
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C
-// .global sub_80465A0
-// .global sub_8046664
+// .global sub_80465A0 // (void *a1) -> void
+// .global sub_8046664 // () -> void
 // .global sub_80466C4
 
 

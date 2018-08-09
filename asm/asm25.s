@@ -83,14 +83,14 @@ sub_808F8AC:
     mov r0, #0x80
     mov r1, #0x1c
     mov r2, #0x6c 
-    bl sub_80026E4
+    bl sprite_load
     ldrb r0, [r5,#0x14]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_808F8AC
 
     bl sub_8002F90
-    bl anim_80026C4
+    bl sprite_update
     ldr r1, off_808F8FC // =off_808F5D4 
     ldr r1, [r1]
     ldrb r0, [r1,#0x1c] // (byte_200032C - 0x2000310)
@@ -179,14 +179,14 @@ sub_808F990:
     mov r0, #0x80
     mov r1, #0x18
     mov r2, #0x37 
-    bl sub_80026E4
+    bl sprite_load
     ldrb r0, [r5,#0x14]
     bl sprite_setAnimation
-    bl sprite_loadAnimationData_80026A4
+    bl sprite_loadAnimationData
 .endfunc // sub_808F990
 
     bl sub_8002F90
-    bl anim_80026C4
+    bl sprite_update
     mov r0, #0
     pop {r5,pc}
 .func
@@ -917,7 +917,7 @@ off_808FFF0:    .word off_808FFF4
 off_808FFF4:    .word dword_81434E4
     .word dword_81434E4+0x28
     .word dword_81434E4+0x48
-    .word dword_81434E4+0x80
+off_8090000:    .word dword_81434E4+0x80
 .endfunc // sub_808FFC0
 
 .func

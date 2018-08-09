@@ -32,6 +32,10 @@
 .equ unk_2037800, 0x2037800
 .equ off_807EA6C, 0x807EA6C
 .equ off_807EB18, 0x807EB18
+.equ dword_807EB68, 0x807EB68
+.equ dword_807EBB8, 0x807EBB8
+.equ off_807EC58, 0x807EC58
+.equ off_807ECA8, 0x807ECA8
 .equ dword_807EEB8, 0x807EEB8
 .equ dword_807EFD4, 0x807EFD4
 .equ dword_807F1E0, 0x807F1E0

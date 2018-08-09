@@ -22,14 +22,14 @@
 // .global sub_814DA9C
 
 .include "chatbox.inc"
-// .global chatbox_8040D5C // (int a1, int a2) -> (int r1, int r2)
+// .global chatbox_8040D5C
 // .global off_8043C8C
 
 .include "asm00.inc"
 // .global sub_80005AC
 // .global sub_80005C4
 // .global sub_80008B4
-// .global copyMemory // (void *src, void *dest, int size)
+// .global copyMemory // (void *src, void* dest, int size) -> void
 // .global sub_800098C
 // .global loc_8000AC8
 // .global sub_8000C00
@@ -93,7 +93,7 @@
 .equ dword_3002590, 0x3002590
 .equ dword_3002594, 0x3002594
 .equ unk_30025B0, 0x30025B0
-.equ loc_3005CA0, 0x3005CA0
+.equ unk_3005CA0, 0x3005CA0
 .equ loc_3006314, 0x3006314
 .equ loc_300631C, 0x300631C
 .equ loc_300638C, 0x300638C

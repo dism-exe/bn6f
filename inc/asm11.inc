@@ -29,7 +29,16 @@
 // .global sub_8034FB8
 
 .include "asm10.inc"
+// .global off_8067754
 // .global off_8067914
+// .global off_8067944
+// .global off_80679A4
+// .global off_80679D4
+// .global off_8067A14
+// .global off_8067A44
+// .global off_8067A6C
+// .global off_8067A9C
+// .global off_8067ACC
 
 .include "chatbox.inc"
 // .global chatbox_uncomp_803FD08 // () -> int

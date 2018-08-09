@@ -69,13 +69,13 @@ off_804E6E4:    .word dword_804E6F8
     .word off_804E718
 dword_804E6F8:    .word 0xFFFFFFFF
 off_804E6FC:    .word off_804E450
-    .word 0x804E478
-    .word 0x804E4A0
+    .word off_804E478
+    .word off_804E4A0
     .word 0xFFFFFFFF
-off_804E70C:    .word 0x804E5D4
+off_804E70C:    .word dword_804E5D4
     .word 0xFFFFFFFF
 dword_804E714:    .word 0xFFFFFFFF
-off_804E718:    .word 0x804E604
+off_804E718:    .word unk_804E604
     .word 0xFFFFFFFF
 .endfunc // sub_804E6D0
 

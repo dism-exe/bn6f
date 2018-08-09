@@ -415,7 +415,7 @@ dword_8067704:    .word 0x5000081, 0x11C0000, 0xFEE40000, 0x100000, 0x7000281
     .word 0x8C0000, 0x100000, 0x70C0181, 0xFEC40000, 0x8C0000
     .word 0x100000
 dword_8067744:    .word 0x3000181, 0xFE440000, 0xFF760000, 0x100000
-    .word dword_8611B68
+off_8067754:    .word dword_8611B68
     .word 0x6008040, 0x1320004, 0x8067784, 0x14, 0x80677E8, 0x14
     .word 0x806784C, 0x14, 0x80678B0, 0x14, 0x1, 0x0
     .word 0x20001, 0x40003, 0x5, 0x0
@@ -617,31 +617,31 @@ aAbcdef232ghijk:    .byte 0x2C, 0x0
 off_8067914:    .word dword_859E6D0
     .word 0x6000020, 0x2060104, 0x8067974, 0xC, 0x8067980, 0xC
     .word 0x806798C, 0xC, 0x8067998, 0xC, 0x1
-    .word dword_859E6D0
+off_8067944:    .word dword_859E6D0
     .word 0x60000E0, 0x2060204, 0x8067980, 0xC, 0x806798C, 0xC
     .word 0x8067998, 0xC, 0x8067974, 0xC, 0x1, 0x10000
     .word 0x30002, 0x50004, 0x70006, 0x90008, 0xB000A, 0xD000C
     .word 0xF000E, 0x110010, 0x130012, 0x150014, 0x170016
-    .word unk_3001980
+off_80679A4:    .word unk_3001980
     .word 0x20, 0xFFFF0300, 0x859E3B8, 0xA, 0x859E3D8, 0xA, 0x859E3F8
     .word 0xA, 0x859E418, 0xA, 0x1
-    .word unk_3001A60
+off_80679D4:    .word unk_3001A60
     .word 0x20, 0xFFFF0400, 0x859E4A0, 0x18, 0x859E4C0, 0xC
     .word 0x859E4E0, 0xC, 0x859E500, 0x18, 0x859E4E0, 0xC
     .word 0x859E4C0, 0xC, 0x1
-    .word unk_3001A80
+off_8067A14:    .word unk_3001A80
     .word 0x20, 0xFFFF0500, 0x859E524, 0x10, 0x859E544, 0x10
     .word 0x859E564, 0x10, 0x859E584, 0x10, 0x1
-    .word unk_3001AA0
+off_8067A44:    .word unk_3001AA0
     .word 0x20, 0xFFFF0600, 0x859E5A8, 0xA, 0x859E5C8, 0xA, 0x859E5E8
     .word 0xA, 0x1
-    .word unk_3001AC0
+off_8067A6C:    .word unk_3001AC0
     .word 0x20, 0xFFFF0700, 0x859E60C, 0x3C, 0x859E62C, 0x18
     .word 0x859E64C, 0x1E, 0x859E62C, 0xE, 0x1
-    .word unk_3001AE0
+off_8067A9C:    .word unk_3001AE0
     .word 0x20, 0xFFFF0800, 0x859E670, 0x3C, 0x859E690, 0xE
     .word 0x859E6B0, 0x1E, 0x859E690, 0x18, 0x1
-    .word unk_3001A20
+off_8067ACC:    .word unk_3001A20
     .word 0x20, 0xFFFF0900, 0x859E43C, 0x17, 0x859E45C, 0x6, 0x859E43C
     .word 0x6, 0x859E45C, 0x6, 0x859E43C, 0x6, 0x859E45C, 0x6
     .word 0x859E43C, 0x6, 0x859E45C, 0x6, 0x859E43C, 0x18, 0x859E47C
@@ -711,38 +711,38 @@ off_8067BF4:    .word off_8067BF8
 off_8067BF8:    .word off_8067C04
     .word off_8067C30
     .word off_8067C5C
-off_8067C04:    .word 0x8067754
+off_8067C04:    .word off_8067754
     .word off_8067914
-    .word 0x8067944
-    .word 0x80679A4
-    .word 0x80679D4
-    .word 0x8067A14
-    .word 0x8067A44
-    .word 0x8067A6C
-    .word 0x8067A9C
-    .word 0x8067ACC
+    .word off_8067944
+    .word off_80679A4
+    .word off_80679D4
+    .word off_8067A14
+    .word off_8067A44
+    .word off_8067A6C
+    .word off_8067A9C
+    .word off_8067ACC
     .word 0xFFFFFFFF
-off_8067C30:    .word 0x8067754
+off_8067C30:    .word off_8067754
     .word off_8067914
-    .word 0x8067944
-    .word 0x80679A4
-    .word 0x80679D4
-    .word 0x8067A14
-    .word 0x8067A44
-    .word 0x8067A6C
-    .word 0x8067A9C
-    .word 0x8067ACC
+    .word off_8067944
+    .word off_80679A4
+    .word off_80679D4
+    .word off_8067A14
+    .word off_8067A44
+    .word off_8067A6C
+    .word off_8067A9C
+    .word off_8067ACC
     .word 0xFFFFFFFF
-off_8067C5C:    .word 0x8067754
+off_8067C5C:    .word off_8067754
     .word off_8067914
-    .word 0x8067944
-    .word 0x80679A4
-    .word 0x80679D4
-    .word 0x8067A14
-    .word 0x8067A44
-    .word 0x8067A6C
-    .word 0x8067A9C
-    .word 0x8067ACC
+    .word off_8067944
+    .word off_80679A4
+    .word off_80679D4
+    .word off_8067A14
+    .word off_8067A44
+    .word off_8067A6C
+    .word off_8067A9C
+    .word off_8067ACC
     .word 0xFFFFFFFF
 .endfunc // sub_8067BE4
 

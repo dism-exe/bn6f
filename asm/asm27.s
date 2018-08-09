@@ -4,8 +4,9 @@
 .thumb_func
 sub_80946C4:
     push {r4-r7,lr}
+    // dataList
     ldr r0, off_80946D0 // =dword_80946D4 
-    bl sub_8000B30
+    bl decomp_initGfx_8000B30 // (u32 *dataList) -> void
     mov r0, #0
     pop {r4-r7,pc}
 off_80946D0:    .word dword_80946D4

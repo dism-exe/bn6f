@@ -724,16 +724,16 @@ off_806AABC:    .word off_806AAD0
     .word off_806AB20
     .word off_806AB54
     .word off_806AB70
-off_806AAD0:    .word 0x8067754
+off_806AAD0:    .word off_8067754
     .word off_8067914
-    .word 0x8067944
-    .word 0x80679A4
-    .word 0x80679D4
-    .word 0x8067A14
-    .word 0x8067A44
-    .word 0x8067A6C
-    .word 0x8067A9C
-    .word 0x8067ACC
+    .word off_8067944
+    .word off_80679A4
+    .word off_80679D4
+    .word off_8067A14
+    .word off_8067A44
+    .word off_8067A6C
+    .word off_8067A9C
+    .word off_8067ACC
     .word 0xFFFFFFFF
 off_806AAFC:    .word off_8068D18
     .word dword_8068D1C+0x12C

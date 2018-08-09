@@ -83,14 +83,14 @@
 // .global sound_play
 // .global sub_80008B4
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global copyMemory // (void *src, void *dest, int size)
+// .global copyMemory // (void *src, void* dest, int size) -> void
 // .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
-// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
-// .global initMemToByte // (void *mem, int size, u8 byte) -> void
+// .global CpuSet_800093C
+// .global initMemblockToByte
 // .global getPETNaviSelect
 // .global sub_80010BE
 // .global sub_800151C
-// .global sub_801379E
+// .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6
 // .global sub_80137E6
 // .global sub_80137FE

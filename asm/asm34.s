@@ -33,7 +33,7 @@ off_812D3A4:    .word unk_201DB20
     push {lr}
     ldr r0, off_812D3DC // =word_2023FA0 
     mov r1, #0x20 
-    bl CpuFastSet_8000900 // (int a1, int a2) -> void
+    bl sub_8000900 // (int a1, int a2) -> void
     bl sub_8120A88
     ldr r0, off_812D3E0 // =unk_2023FC0 
     mov r1, #1
@@ -239,7 +239,7 @@ sub_812D56C:
     str r2, [sp]
     add r6, r1, #0
     add r4, r6, #2
-    bl sub_80465A0
+    bl sub_80465A0 // (void *a1) -> void
 loc_812D57A:
     add r0, r6, #0
     bl sub_80466C4
@@ -608,7 +608,7 @@ off_812D80C:    .word unk_2023FC0
     sub r1, #1
     str r1, [r0,#0x6c]
     bne locret_812D82E
-    bl chatbox_8040818 // () -> void
+    bl chatbox_8040818
     mov r0, #0
     tst r0, r0
 locret_812D82E:
@@ -687,7 +687,7 @@ locret_812D8C6:
     push {r4-r7,lr}
     add r7, r5, #0
     bl sub_800183C
-    bl sub_8046664
+    bl sub_8046664 // () -> void
     mov r0, #0
     mov r1, #0
     mov r2, #1
@@ -721,9 +721,10 @@ sub_812D91C:
     ldr r0, off_812D92C // =dword_812C258+32 
     b loc_812D926
     push {lr}
+    // a1
     ldr r0, off_812D930 // =dword_812C258+40 
 loc_812D926:
-    bl sub_80465A0
+    bl sub_80465A0 // (void *a1) -> void
     pop {pc}
 off_812D92C:    .word dword_812C258+0x20
 off_812D930:    .word dword_812C258+0x28

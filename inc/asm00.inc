@@ -5,7 +5,7 @@
 .global sub_80005AC
 .global sub_80005C4
 .global sound_play
-.global sound_80005D4 // (int a1) -> void
+.global sound_bgmusic_play // (int a1) -> void
 .global sub_80005F2
 .global sub_800060A
 .global sub_8000642
@@ -18,12 +18,12 @@
 .global sub_80008B4
 .global sub_80008C0
 .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-.global CpuFastSet_8000900 // (int a1, int a2) -> void
-.global copyMemory // (void *src, void *dest, int size)
+.global sub_8000900 // (int a1, int a2) -> void
+.global copyMemory // (void *src, void* dest, int size) -> void
 .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
-.global CpuSet_800093C // (void *src, void *dest, int mode) -> void
-.global CpuSet_8000950 // (void *src, void *dest, int mode) -> void
-.global initMemToByte // (void *mem, int size, u8 byte) -> void
+.global CpuSet_800093C
+.global sub_8000950
+.global initMemblockToByte
 .global sub_800096C
 .global sub_800098C
 .global sub_80009AC
@@ -32,8 +32,8 @@
 .global loc_8000AC4
 .global loc_8000AC8
 .global loc_8000ACA
-.global sub_8000B30
-.global sub_8000B8E
+.global decomp_initGfx_8000B30 // (u32 *dataList) -> void
+.global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 .global sub_8000C00
 .global sub_8000C5C
 .global sub_8000C72
@@ -54,7 +54,7 @@
 .global sub_80010C6
 .global sub_80010D4
 .global sub_80010EC
-.global sub_8001158
+.global sub_8001158 // () -> void
 .global sub_8001172
 .global calcAngle_800117C
 .global sub_800118A
@@ -103,7 +103,7 @@
 .global sub_8001B1C
 .global sub_8001B6C
 .global sub_8001B84
-.global PET_main_onUpdate
+.global PET_onUpdate_8001B94
 .global sub_8002354
 .global sub_8002368
 .global sub_8002378
@@ -119,11 +119,11 @@
 .global sub_8002668
 .global loc_8002676
 .global sub_8002694
-.global sprite_loadAnimationData_80026A4
+.global sprite_loadAnimationData
 .global sub_80026B6
-.global anim_80026C4
+.global sprite_update
 .global sub_80026D6
-.global sub_80026E4
+.global sprite_load
 .global sub_800275A
 .global sub_8002770
 .global loc_8002774
@@ -138,20 +138,20 @@
 .global sub_8002906
 .global sub_8002A64
 .global sub_8002ADE
-.global sub_8002B30
-.global sub_8002C24
+.global sprite_decompress
+.global sprite_setScaleParameters
 .global sub_8002C52
 .global sub_8002C68
 .global sub_8002C7A
-.global loc_8002C7E
+.global sprite_setMosaicScalingParameters
 .global sub_8002CCE
-.global sub_8002CE0
-.global sub_8002D14
+.global sprite_getMosaicScalingParameters
+.global sprite_makeScalable
 .global sprite_makeUnscalable
 .global sprite_setPallete
-.global sub_8002D8C
+.global sprite_getPallete
 .global sprite_setAnimation
-.global sub_8002DB0
+.global sprite_forceWhitePallete
 .global loc_8002DB4
 .global sub_8002DC8
 .global sub_8002DD8
@@ -293,9 +293,9 @@
 .global sub_800A70C
 .global getBattleSettingsFromList0
 .global getBattleSettingsFromList1
-.global isSameSubsystem // () -> zf
+.global zf_checkSameSubsystem_800A732
 .global sub_800A772
-.global sub_800A7D0 // () -> int
+.global sub_800A7D0
 .global sub_800A7E2
 .global sub_800A832
 .global sub_800A856
@@ -314,7 +314,7 @@
 .global sub_800AE54
 .global sub_800AE90
 .global sub_800AFBA
-.global sub_800B022
+.global sub_800B022 // (int a1) ->
 .global sub_800B3A2
 .global sub_800B3D8
 .global sub_800B460
@@ -521,7 +521,7 @@
 .global sub_8013764
 .global sub_8013774
 .global sub_8013790
-.global sub_801379E
+.global navicust_801379E // (int a1, int a2, int a3) -> void
 .global sub_80137B6
 .global sub_80137E6
 .global sub_80137FE
@@ -539,7 +539,7 @@
 .global sub_8013DA0
 .global sub_8013FAE
 .global sub_8013FD0
-.global sub_8014018
+.global navicust_8014018 // (int a1) -> int
 .global sub_801401E
 .global sub_80141AC
 .global loc_8014216
@@ -819,7 +819,7 @@
 // .global sub_801FE64
 // .global sub_801FE6C
 // .global sub_801FEE8
-// .global sub_801FEEE
+// .global loc_801FEEE
 // .global sub_80200A4
 // .global sub_8020134
 // .global sub_8020140
@@ -860,7 +860,7 @@
 // .global loc_8026A28
 // .global sub_8027D10
 // .global sub_802A866
-// .global sub_802A87C
+// .global loc_802A87C
 // .global loc_802BD60
 // .global sub_802C34E
 // .global sub_802C8FA
@@ -884,8 +884,8 @@
 // .global sub_802D1B4
 // .global sub_802D1BE
 // .global sub_802D234
-// .global sub_802D246
-// .global sub_802D254
+// .global get_802D246 // () -> int
+// .global sub_802D254 // () -> int
 // .global sub_802D26A
 // .global sub_802D2B2
 // .global sub_802D310
@@ -994,14 +994,15 @@
 // .global sub_803FB28
 
 .include "chatbox.inc"
+// .global loc_8040000
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_8040818 // () -> void
-// .global chatbox_clearBits_2009F38 // (int mask) -> void
-// .global chatbox_maskBits_2009F38 // (int mask) -> void
+// .global chatbox_8040818
+// .global chatbox_8045F2C
+// .global chatbox_8045F3C
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C
-// .global sub_8046664
+// .global sub_8046664 // () -> void
 // .global sub_8046CC8
 // .global sub_8048C68
 // .global sub_8048C98
@@ -1491,7 +1492,7 @@
 .equ dword_2001014, 0x2001014
 .equ dword_2001060, 0x2001060
 .equ dword_2001064, 0x2001064
-.equ dword_20010E0, 0x20010E0
+.equ map_activeNPCs, 0x20010E0
 .equ dword_2001120, 0x2001120
 .equ dword_20013F0, 0x20013F0
 .equ byte_2001600, 0x2001600
@@ -1944,20 +1945,20 @@
 .equ dword_3002188, 0x3002188
 .equ dword_300218C, 0x300218C
 .equ unk_30025C0, 0x30025C0
-.equ loc_3005E80, 0x3005E80
+.equ sub_3005E80, 0x3005E80
 .equ loc_3005EBA, 0x3005EBA
-.equ loc_3005EF0, 0x3005EF0
+.equ sub_3005EF0, 0x3005EF0
 .equ loc_3006028, 0x3006028
 .equ loc_30061E8, 0x30061E8
 .equ loc_3006440, 0x3006440
-.equ loc_3006730, 0x3006730
+.equ sub_3006730, 0x3006730
 .equ loc_3006792, 0x3006792
 .equ loc_3007550, 0x3007550
 .equ loc_300777C, 0x300777C
 .equ loc_30078C8, 0x30078C8
-.equ loc_30078E0, 0x30078E0
-.equ loc_3007958, 0x3007958
-.equ loc_30079A4, 0x30079A4
+.equ sub_30078E0, 0x30078E0
+.equ sub_3007958, 0x3007958
+.equ sub_30079A4, 0x30079A4
 .equ LCDControl, 0x4000000
 .equ VerticalCounter_LY_, 0x4000006
 .equ BG0Control, 0x4000008

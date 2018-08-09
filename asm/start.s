@@ -213,7 +213,7 @@ off_8000258:    .word sub_3005DD4+1
 .thumb_func
 start_dead_800025C:
     push {lr}
-    ldr r1, off_8000274 // =loc_3005DEC+1 
+    ldr r1, off_8000274 // =sub_3005DEC+1 
     mov lr, pc
     bx r1
     pop {r0}
@@ -224,20 +224,20 @@ start_dead_800025C:
 .thumb_func
 start_dead_8000268:
     push {lr}
-    ldr r1, off_8000278 // =loc_3005E02+1 
+    ldr r1, off_8000278 // =sub_3005E02+1 
     mov lr, pc
     bx r1
     pop {r0}
     bx r0
-off_8000274:    .word loc_3005DEC+1
-off_8000278:    .word loc_3005E02+1
+off_8000274:    .word sub_3005DEC+1
+off_8000278:    .word sub_3005E02+1
 .endfunc // start_dead_8000268
 
 .func
 .thumb_func
 start_800027C:
     push {lr}
-    ldr r1, dword_8000294 // =loc_3005E18 
+    ldr r1, dword_8000294 // =sub_3005E18 
     mov lr, pc
     bx r1
     pop {r0}
@@ -248,13 +248,15 @@ start_800027C:
 .thumb_func
 start_8000288:
     push {lr}
-    ldr r1, off_8000298 // =loc_3005E2C+1 
+    ldr r1, off_8000298 // =sub_3005E2C+1 
     mov lr, pc
     bx r1
-    pop {r0}
-    bx r0
+    .byte 1
+    .byte 0xBC
+    .byte 0
+    .byte 0x47 
 dword_8000294:    .word 0x3005E19
-off_8000298:    .word loc_3005E2C+1
+off_8000298:    .word sub_3005E2C+1
 .endfunc // start_8000288
 
 .func

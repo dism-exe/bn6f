@@ -133,17 +133,17 @@
 
 .include "asm00.inc"
 // .global sound_play
-// .global sound_80005D4 // (int a1) -> void
+// .global sound_bgmusic_play // (int a1) -> void
 // .global sub_800068A
 // .global sub_80008B4
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global CpuFastSet_8000900 // (int a1, int a2) -> void
-// .global copyMemory // (void *src, void *dest, int size)
-// .global CpuSet_800093C // (void *src, void *dest, int mode) -> void
-// .global CpuSet_8000950 // (void *src, void *dest, int mode) -> void
+// .global sub_8000900 // (int a1, int a2) -> void
+// .global copyMemory // (void *src, void* dest, int size) -> void
+// .global CpuSet_800093C
+// .global sub_8000950
 // .global loc_8000AC8
-// .global sub_8000B30
+// .global decomp_initGfx_8000B30 // (u32 *dataList) -> void
 // .global sub_8000C00
 // .global sub_8000D84
 // .global sub_8000E28
@@ -188,7 +188,7 @@
 // .global sub_80062C8
 // .global engine_isScreeneffectAnimating
 // .global sub_8010C76
-// .global sub_801379E
+// .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6
 // .global sub_80137E6
 // .global sub_80137FE
@@ -196,7 +196,7 @@
 // .global sub_8013864
 // .global sub_8013874
 // .global sub_8013B4E
-// .global sub_8014018
+// .global navicust_8014018 // (int a1) -> int
 // .global sub_801401E
 
 .include "asm37_0.inc"
@@ -282,22 +282,22 @@
 
 .include "chatbox.inc"
 // .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_runScript_CpuSet_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_803FD9C
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_8040818 // () -> void
-// .global chatbox_setBits_2009F38 // (int mask) -> void
-// .global chatbox_clearBits_2009F38 // (int mask) -> void
-// .global chatbox_maskBits_2009F38 // (int mask) -> void
-// .global chatbox_getLast3Bits_2009F38 // () -> int
+// .global chatbox_8040818
+// .global chatbox_8045F1C
+// .global chatbox_8045F2C
+// .global chatbox_8045F3C
+// .global chatbox_8045F4C
 
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C
 // .global sub_8045FBC
 // .global sub_8045FC6
-// .global sub_80465A0
+// .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
-// .global sub_80465F8
-// .global sub_8046664
+// .global sub_80465F8 // () -> void
+// .global sub_8046664 // () -> void
 // .global sub_8046670
 // .global sub_8046696
 // .global sub_80466C4
