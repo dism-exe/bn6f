@@ -155,8 +155,8 @@ loc_80001C8:
 
 .func
 // (void *src, void *dest, int size) -> void
-    // size
 start_copyMemory:
+    // size
     subs r2, r2, #4
     ldr r3, [r0,r2]
     str r3, [r1,r2]

@@ -158,7 +158,7 @@ loc_81419CC:
     bne loc_8141A0C
     bl sub_809E462
     bne loc_8141A0C
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_8141A0C
     mov r0, #0x80
     bl chatbox_8045F3C
@@ -3187,7 +3187,7 @@ loc_814407E:
     beq loc_8144092
     bl sub_811E744
 loc_8144092:
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_81440A6
     mov r0, r10
     ldr r0, [r0,#0x3c]
@@ -8479,8 +8479,8 @@ sub_8146854:
     ldr r6, off_8146880 // =unk_20098B0 
     ldr r5, off_8146884 // =unk_2009750 
     mov r4, #0
-    // memBlock
 loc_814685C:
+    // memBlock
     add r0, r6, #0
     // numWords
     mov r1, #0x10
@@ -10915,12 +10915,13 @@ off_8147B38:    .word unk_20103A0
 
 .func
 .thumb_func
+// () -> void
 sub_8147B3C:
     push {lr}
     ldr r0, off_8147B4C // =byte_2010390 
     ldr r1, off_8147B50 // =unk_20103A0 
     mov r2, #0xc
-    bl sub_8147C20
+    bl sub_8147C20 // (int a1, int a2, int a3) -> void
     pop {r0}
     bx r0
 off_8147B4C:    .word byte_2010390
@@ -11020,6 +11021,7 @@ off_8147C1C:    .word byte_200BC50
 
 .func
 .thumb_func
+// (int a1, int a2, int a3) -> void
 sub_8147C20:
     push {r4-r7,lr}
     add r6, r0, #0
@@ -24140,13 +24142,13 @@ off_814D8A4:    .word dword_2010CCC
 .func
 .thumb_func
 // (void *src, void *dest, int mode) -> void
+SWI_CpuFastSet:
     //   r0    Source address        (must be aligned by 4)
     //   r1    Destination address   (must be aligned by 4)
     //   r2    Length/Mode
     //           Bit 0-20  Wordcount (GBA: rounded-up to multiple of 8 words)
     //           Bit 24    Fixed Source Address (0=Copy, 1=Fill by WORD[r0])
     // Return: No return value, Data written to destination address.
-SWI_CpuFastSet:
     svc 0xc
     bx lr
 .endfunc // SWI_CpuFastSet
@@ -24154,6 +24156,7 @@ SWI_CpuFastSet:
 .func
 .thumb_func
 // (void *src, void *dest, int mode) -> void
+SWI_CpuSet:
     //   r0    Source address        (must be aligned by 4 for 32bit, by 2 for 16bit)
     //   r1    Destination address   (must be aligned by 4 for 32bit, by 2 for 16bit)
     //   r2    Length/Mode
@@ -24161,13 +24164,13 @@ SWI_CpuFastSet:
     //           Bit 24    Fixed Source Address (0=Copy, 1=Fill by {HALF}WORD[r0])
     //           Bit 26    Datasize (0=16bit, 1=32bit)
     // Return: No return value, Data written to destination address.
-SWI_CpuSet:
     svc 0xb
     bx lr
 .endfunc // SWI_CpuSet
 
 .func
 .thumb_func
+SWI_Div:
     // Signed Division, r0/r1.
     //   r0  signed 32bit Number
     //   r1  signed 32bit Denom
@@ -24175,13 +24178,13 @@ SWI_CpuSet:
     //   r0  Number DIV Denom ;signed
     //   r1  Number MOD Denom ;signed
     //   r3  ABS (Number DIV Denom) ;unsigned
-SWI_Div:
     svc 6
     bx lr
 .endfunc // SWI_Div
 
 .func
 .thumb_func
+SWI_LZ77UnCompReadNormalWrite16bit:
     //   r0  Source address, pointing to data as such:
     //        Data header (32bit)
     //          Bit 0-3   Reserved
@@ -24198,7 +24201,6 @@ SWI_Div:
     //          Bit 8-15  Disp LSBs
     //   r1  Destination address
     // Return: No return value.
-SWI_LZ77UnCompReadNormalWrite16bit:
     svc 0x12
     bx lr
 .endfunc // SWI_LZ77UnCompReadNormalWrite16bit
@@ -24206,6 +24208,7 @@ SWI_LZ77UnCompReadNormalWrite16bit:
 .func
 .thumb_func
 // (void *src, void *dest) -> void
+SWI_LZ77UnCompReadNormalWrite8bit:
     //   r0  Source address, pointing to data as such:
     //        Data header (32bit)
     //          Bit 0-3   Reserved
@@ -24222,18 +24225,17 @@ SWI_LZ77UnCompReadNormalWrite16bit:
     //          Bit 8-15  Disp LSBs
     //   r1  Destination address
     // Return: No return value.
-SWI_LZ77UnCompReadNormalWrite8bit:
     svc 0x11
     bx lr
 .endfunc // SWI_LZ77UnCompReadNormalWrite8bit
 
 .func
 .thumb_func
+SWI_Sqrt:
     // Calculate square root.
     //   r0   unsigned 32bit number
     // Return:
     //   r0   unsigned 16bit number
-SWI_Sqrt:
     svc 8
     bx lr
 word_814D8CC:    .hword 0xB510
@@ -30083,8 +30085,8 @@ sub_814FE60:
 
 .func
 .thumb_func
-    // <endpool>
 nullsub_23:
+    // <endpool>
     bx lr
 .endfunc // nullsub_23
 

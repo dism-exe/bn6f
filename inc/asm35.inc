@@ -27,8 +27,8 @@
 // .global drawTiles // (int a1, int a2, int a3) -> void
 // .global sub_80018D0
 // .global sub_800307C
-// .global engine_setScreeneffect
-// .global sub_80062C8
+// .global engine_setScreeneffect // (int a1) -> void
+// .global engine_80062C8
 
 .include "asm37_0.inc"
 // .global sub_813B780

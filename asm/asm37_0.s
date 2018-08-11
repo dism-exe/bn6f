@@ -3867,19 +3867,30 @@ sub_813D5E8:
     .balign 4, 0x00
 .endfunc // sub_813D5E8
 
+.func
+.thumb_func
+sub_813D5F4:
     ldr r1, off_813D608 // =byte_200AF80 
     ldrb r2, [r1,#0x5] // (byte_200AF85 - 0x200af80)
     bic r2, r0
     strb r2, [r1,#0x5] // (byte_200AF85 - 0x200af80)
     mov pc, lr
     .byte 0, 0
+.endfunc // sub_813D5F4
+
+.func
+.thumb_func
+sub_813D600:
     ldr r1, off_813D608 // =byte_200AF80 
     ldrb r2, [r1,#0x5] // (byte_200AF85 - 0x200af80)
     tst r2, r0
     mov pc, lr
 off_813D608:    .word byte_200AF80
+.endfunc // sub_813D600
+
 .func
 .thumb_func
+// () -> zf
 sub_813D60C:
     push {lr}
     ldr r1, off_813D618 // =byte_200BC50 
@@ -3890,6 +3901,9 @@ sub_813D60C:
 off_813D618:    .word byte_200BC50
 .endfunc // sub_813D60C
 
+.func
+.thumb_func
+sub_813D61C:
     push {lr}
     ldr r1, off_813D628 // =byte_200BC50 
     mov r0, #0
@@ -3897,6 +3911,8 @@ off_813D618:    .word byte_200BC50
     pop {pc}
     .balign 4, 0x00
 off_813D628:    .word byte_200BC50
+.endfunc // sub_813D61C
+
 .func
 .thumb_func
 sub_813D62C:
@@ -3930,29 +3946,45 @@ sub_813D648:
 dword_813D654:    .word 0x8001
 .endfunc // sub_813D648
 
+.func
+.thumb_func
+sub_813D658:
     push {r4,lr}
     bl sub_8146E78
     pop {r4,pc}
     .word byte_200AF80
     .word unk_200FFF0
     .word unk_2009480
+.endfunc // sub_813D658
+
 .func
 .thumb_func
+// () -> void
 sub_813D66C:
     push {r4,lr}
-    bl sub_8147B3C
+    bl sub_8147B3C // () -> void
     pop {r4,pc}
     .word byte_200AF80
     .word unk_200FFF0
     .word unk_2009480
 .endfunc // sub_813D66C
 
+.func
+.thumb_func
+sub_813D680:
     push {lr}
+    // memBlock
     ldr r0, off_813D68C // =byte_200AF80 
+    // numWords
     mov r1, #0x18
     bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     pop {pc}
 off_813D68C:    .word byte_200AF80
+.endfunc // sub_813D680
+
+.func
+.thumb_func
+sub_813D690:
     push {lr}
     push {r0}
     ldr r1, off_813D6C0 // =off_813D6C4 
@@ -3983,6 +4015,8 @@ off_813D6C4:    .word sub_813D6DC+1
     .word 0x0
     .word sub_813D714+1
     .word 0x0
+.endfunc // sub_813D690
+
 .func
 .thumb_func
 sub_813D6DC:
@@ -4034,6 +4068,9 @@ sub_813D714:
     .balign 4, 0x00
 .endfunc // sub_813D714
 
+.func
+.thumb_func
+sub_813D728:
     push {lr}
     mov r0, #0
     bl sub_802D064
@@ -4045,6 +4082,8 @@ sub_813D714:
     str r2, [r0,#4]
     pop {pc}
     .byte 0, 0
+.endfunc // sub_813D728
+
     push {lr}
     mov r0, #0
     bl sub_802D064

@@ -33,7 +33,7 @@
 .global loc_8000AC8
 .global loc_8000ACA
 .global decomp_initGfx_8000B30 // (u32 *dataList) -> void
-.global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+.global decomp_initGfx_8000B8E // (u32 *dataList) -> void
 .global sub_8000C00
 .global sub_8000C5C
 .global sub_8000C72
@@ -135,7 +135,7 @@
 .global sub_8002874
 .global handleObjSprites_800289C
 .global sub_80028D4
-.global sub_8002906
+.global decomp_8002906 // (int a1) -> bool
 .global sub_8002A64
 .global sub_8002ADE
 .global sprite_decompress
@@ -231,23 +231,23 @@
 .global sub_8005524
 .global sub_8005BC8
 .global sub_8005C04
-.global subsystem_launchBBS
-.global subsystem_launchReqBBS
-.global subsystem_launchShop
-.global subsystem_launchChipTrader
+.global subsystem_launchBBS // (int a1) -> void
+.global subsystem_launchReqBBS // (int a1) -> void
+.global subsystem_launchShop // () -> void
+.global subsystem_launchChipTrader // (int a1) -> bool
 .global sub_8005D88
 .global sub_8005EA2
 .global subsystem_launchMail
 .global sub_8005F40
 .global sub_8005F6C
 .global sub_8005F84
-.global engine_setScreeneffect
-.global loc_8006274
-.global sub_80062C8
-.global sub_80062EC
-.global engine_isScreeneffectAnimating
+.global engine_setScreeneffect // (int a1) -> void
+.global engine_setScreeneffect_r3_20
+.global engine_80062C8
+.global engine_80062EC
+.global engine_isScreeneffectAnimating // () -> zf
 .global loc_80062FC
-.global subsystem_triggerTransition_800630A
+.global engine_triggerTransition_800630A
 .global dword_8006660
 .global sub_80068E0
 .global sub_80068EC
@@ -276,10 +276,10 @@
 .global sub_80071D4
 .global sub_80076A0
 .global sub_80077B4
-.global loc_8007800
+.global sub_8007800
 .global off_8008000
 .global sub_8009FF8
-.global battle_isPaused
+.global battle_isPaused // () -> zf
 .global battle_isTimeStop
 .global sub_800A0A4
 .global sub_800A0D6
@@ -288,7 +288,7 @@
 .global battle_isBattleOver
 .global battle_setFlags
 .global battle_clearFlags
-.global battle_getFlags
+.global battle_getFlags // () -> int
 .global sub_800A704
 .global sub_800A70C
 .global getBattleSettingsFromList0
@@ -700,10 +700,10 @@
 // .global sub_8021D36
 
 .include "reqBBS.inc"
-// .global reqBBS_813E07C
+// .global reqBBS_813E07C // (int a1) -> void
 // .global reqBBS_813E5DC
 // .global reqBBS_813E616
-// .global reqBBS_init_s_2005780
+// .global reqBBS_init_s_2005780 // (int a1) -> void
 // .global reqBBS_813F9A0
 // .global reqBBS_initMemory_813F9DA
 // .global reqBBS_8140984
@@ -747,7 +747,7 @@
 // .global sub_813BF1C
 // .global sub_813C324
 // .global sub_813C3AC
-// .global sub_813D60C
+// .global sub_813D60C // () -> zf
 
 .include "asm29.inc"
 // .global ho_80A4984
@@ -808,7 +808,7 @@
 // .global sub_811FB78
 // .global sub_81207F8
 // .global sub_81209DC
-// .global sub_8120A38
+// .global sub_8120A38 // () -> (int n1, int n2, int n3, int n4)
 // .global sub_8121144
 // .global sub_8121198
 
@@ -819,7 +819,7 @@
 // .global sub_801FE64
 // .global sub_801FE6C
 // .global sub_801FEE8
-// .global loc_801FEEE
+// .global sub_801FEEE
 // .global sub_80200A4
 // .global sub_8020134
 // .global sub_8020140
@@ -938,7 +938,7 @@
 // .global sub_802FE6A
 // .global sub_802FE7A
 // .global sub_802FF2C
-// .global sub_802FF4C
+// .global sub_802FF4C // (int a1, int a2) ->
 // .global loc_802FFF4
 // .global sub_80301B2
 // .global sub_80302A8
@@ -946,7 +946,7 @@
 // .global sub_80303E8
 // .global sub_8030580
 // .global sub_8030808
-// .global loc_8030A00
+// .global sub_8030A00
 // .global sub_8030A30
 // .global sub_8031A7A
 // .global dword_8031CC4
@@ -1003,7 +1003,7 @@
 .include "asm03_1.inc"
 // .global render_graphicalText_8045F8C
 // .global sub_8046664 // () -> void
-// .global sub_8046CC8
+// .global sub_8046CC8 // () -> void
 // .global sub_8048C68
 // .global sub_8048C98
 // .global sub_8049CF8

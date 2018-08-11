@@ -1036,7 +1036,7 @@ loc_80B881A:
 sub_80B881E:
     push {r4,lr}
     mov r4, #0
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne loc_80B8840
     ldr r3, [r5,#0x4c]
     ldrh r0, [r3,#0x24]
@@ -1662,7 +1662,7 @@ sub_80B8DA6:
     bl battle_isTimeStop
     bne locret_80B8E2E
 loc_80B8E16:
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne locret_80B8E2E
     bl sub_801BBAC
     pop {r4,pc}
@@ -9100,7 +9100,7 @@ sub_80BC434:
     bl sub_802D234
     cmp r0, #6
     beq loc_80BC446
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne loc_80BC464
 loc_80BC446:
     ldr r3, [r5,#0x4c]
@@ -9125,7 +9125,7 @@ loc_80BC464:
 .thumb_func
 sub_80BC468:
     push {r4-r7,lr}
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne locret_80BC492
     ldr r3, [r5,#0x4c]
     ldrh r0, [r3,#0x24]
@@ -9724,7 +9724,7 @@ locret_80BC974:
 .thumb_func
 sub_80BC976:
     push {r4-r7,lr}
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne locret_80BC996
     bl battle_isTimeStop
     bne locret_80BC996
@@ -9784,7 +9784,7 @@ locret_80BC9D0:
 sub_80BC9D2:
     push {r4-r7,lr}
     mov r4, #0
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne loc_80BC9F4
     ldr r3, [r5,#0x4c]
     ldr r0, [r3,#0x54]
@@ -9964,7 +9964,7 @@ locret_80BCB32:
 sub_80BCB34:
     push {r4,lr}
     mov r4, #0
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne loc_80BCB4A
     bl battle_isTimeStop
     bne loc_80BCB4A
@@ -13707,7 +13707,7 @@ locret_80BE73C:
 sub_80BE73E:
     push {r4-r7,lr}
     mov r4, #0
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne loc_80BE766
     ldr r3, [r5,#0x4c]
     ldrh r0, [r3,#0x24]
@@ -17161,7 +17161,7 @@ sub_80C00CE:
 sub_80C00EA:
     push {r4,lr}
     mov r4, #0
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne loc_80C0112
     bl battle_isTimeStop
     bne loc_80C0112
@@ -17436,7 +17436,7 @@ sub_80C02DA:
 sub_80C02F8:
     push {r4,lr}
     mov r4, #0
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne loc_80C031A
     ldr r3, [r5,#0x4c]
     ldrh r0, [r3,#0x24]
@@ -19430,7 +19430,7 @@ sub_80C114E:
     bl sub_802D234
     cmp r0, #6
     beq loc_80C1160
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne loc_80C117E
 loc_80C1160:
     ldr r3, [r5,#0x4c]
@@ -19822,7 +19822,7 @@ locret_80C145E:
 sub_80C1466:
     push {r4,lr}
     mov r4, #0
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne loc_80C148E
     ldr r3, [r5,#0x4c]
     ldrh r0, [r3,#0x24]
@@ -19898,7 +19898,7 @@ dword_80C14E4:    .word 0x1, 0xFFFFFFFF
 sub_80C14EC:
     push {r4,lr}
     mov r4, #0
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne loc_80C1510
     ldr r3, [r5,#0x4c]
     ldrh r0, [r3,#0x24]
@@ -25602,7 +25602,7 @@ loc_80C3FF0:
 loc_80C4004:
     bl battle_isTimeStop
     bne locret_80C4036
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne locret_80C4036
     ldr r0, [r5,#0x4c]
     ldr r0, [r0,#0x54]
@@ -25823,7 +25823,7 @@ loc_80C41BE:
 loc_80C41C0:
     bl battle_isTimeStop
     bne locret_80C41D6
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne locret_80C41D6
     bl sub_801BBAC
     b locret_80C41D6
@@ -26477,7 +26477,7 @@ sub_80C4766:
     bne loc_80C47E6
     bl battle_isTimeStop
     bne locret_80C47EA
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne locret_80C47EA
     bl sub_801BBAC
     b locret_80C47EA
@@ -26910,7 +26910,7 @@ loc_80C4B18:
     bx r1
     bl battle_isTimeStop
     bne locret_80C4B34
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne locret_80C4B34
     bl sub_801BC64
 locret_80C4B34:
@@ -52931,7 +52931,7 @@ off_80D2348:    .word sub_80D236C+1
 .thumb_func
 sub_80D236C:
     push {lr}
-    bl battle_getFlags
+    bl battle_getFlags // () -> int
     mov r1, #1
     tst r0, r1
     bne loc_80D237E
@@ -64589,7 +64589,7 @@ off_80D8508:    .word sub_80D852C+1
 .thumb_func
 sub_80D852C:
     push {lr}
-    bl battle_getFlags
+    bl battle_getFlags // () -> int
     mov r1, #1
     tst r0, r1
     bne loc_80D853E
@@ -65621,7 +65621,7 @@ locret_80D8CEE:
 .thumb_func
 sub_80D8CF0:
     push {lr}
-    bl battle_getFlags
+    bl battle_getFlags // () -> int
     mov r1, #1
     tst r0, r1
     bne loc_80D8D02
@@ -66459,7 +66459,7 @@ loc_80D9350:
     ldr r1, [r1,r0]
     mov lr, pc
     bx r1
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     str r0, [r5,#0x68]
     bne locret_80D9368
     bl sub_801BCA6
@@ -66540,7 +66540,7 @@ dword_80D941C:    .word 0x10, 0x10, 0x11, 0x12, 0x11, 0x12
 .thumb_func
 sub_80D9434:
     push {lr}
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne locret_80D9482
     bl sub_801A00E
     bl sub_801A0D4
@@ -66616,7 +66616,7 @@ sub_80D94B8:
 .thumb_func
 sub_80D94C2:
     push {lr}
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     ldr r1, [r5,#0x68]
     cmp r0, r1
     bne locret_80D94E4
@@ -66671,7 +66671,7 @@ sub_80D94F2:
     orr r2, r1
     strb r2, [r0]
     push {r0}
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     add r1, r0, #0
     pop {r0}
     str r1, [r0,#0x68]
@@ -68159,8 +68159,8 @@ locret_80DA1E0:
     .word 0, 0, 0
     .byte 0, 0
 off_80DA1F0:    .word loc_80DA1F4
-    // <mkdata>
 loc_80DA1F4:
+    // <mkdata>
     .hword 0x1 // mov r1, r0
     // <mkdata>
     .hword 0x4 // mov r4, r0
@@ -69009,7 +69009,7 @@ sub_80DA834:
     bl sub_8002FA6
     mov r0, #4
     str r0, [r5,#8]
-    bl battle_getFlags
+    bl battle_getFlags // () -> int
     mov r2, #0
     mov r1, #1
     tst r0, r1
@@ -80301,14 +80301,14 @@ loc_80E06AC:
     mov r0, #8
 loc_80E06B8:
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #1
     ldr r1, off_80E06DC // =byte_2036740 
     strb r0, [r1]
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_80E06C8:
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     tst r0, r0
     bne locret_80E06DA
     mov r0, #1
@@ -80729,11 +80729,11 @@ loc_80E0AD4:
     ldr r1, [r1,r0]
     mov lr, pc
     bx r1
-    bl battle_getFlags
+    bl battle_getFlags // () -> int
     mov r1, #1
     tst r0, r1
     beq loc_80E0AF0
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne locret_80E0AF4
 loc_80E0AF0:
     bl sub_801BC64
@@ -81174,7 +81174,7 @@ sub_80E0E10:
 sub_80E0E20:
     push {r4,r6,r7,lr}
     ldr r4, [r5,#0x4c]
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     beq loc_80E0E3C
     ldr r0, [r4,#0x58]
     ldrb r0, [r0,#0x1e]
@@ -81554,7 +81554,7 @@ sub_80E10C0:
     mov r1, #2
     tst r0, r1
     bne loc_80E10EE
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne loc_80E10DE
     ldrb r0, [r5,#6]
     mov r1, #1
@@ -81623,7 +81623,7 @@ sub_80E114C:
     mov r1, #2
     tst r0, r1
     bne loc_80E1188
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne loc_80E116A
     ldrb r0, [r5,#6]
     mov r1, #2
@@ -86117,7 +86117,7 @@ loc_80E3386:
     cmp r0, #0x10
     blt loc_80E33A4
 loc_80E3394:
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne locret_80E33D0
     ldrh r0, [r5,#0x20]
     add r0, #1
@@ -87773,7 +87773,7 @@ loc_80E3FD0:
     ldr r1, [r1,r0]
     mov lr, pc
     bx r1
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     tst r0, r0
     bne locret_80E3FE8
     bl sub_801BCA6
@@ -100856,7 +100856,7 @@ sub_80EA1BC:
     mov r1, #2
     orr r0, r1
     strb r0, [r5]
-    bl battle_getFlags
+    bl battle_getFlags // () -> int
     mov r1, #1
     tst r0, r1
     beq loc_80EA1D8
@@ -101232,7 +101232,7 @@ loc_80EA498:
     bl sub_80107D4
     bl sub_80139C4
     bl sub_80100EC
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne locret_80EA4BE
     bl sub_801A018
 locret_80EA4BE:
@@ -113053,7 +113053,7 @@ locret_80F0604:
 
     mov pc, lr
     push {r4,r6,lr}
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne loc_80F068C
     mov r6, #0x64 
     mov r1, #0x29 

@@ -10,7 +10,7 @@
 
 /* External Symbols */
 .include "asm03_0.inc"
-// .global sub_802FF4C
+// .global sub_802FF4C // (int a1, int a2) ->
 // .global sub_80302C0
 // .global sub_803037C
 // .global loc_8030472
@@ -20,7 +20,7 @@
 // .global sub_8034FB8
 
 .include "chatbox.inc"
-// .global chatbox_uncomp_803FD08 // () -> int
+// .global chatbox_decomp_currMap_gameProgress_803FD08 // () -> int
 
 .include "asm00.inc"
 // .global sound_play
@@ -32,7 +32,7 @@
 // .global locret_8001AB4
 // .global sub_8002354
 // .global sub_80028D4
-// .global sub_8002906
+// .global decomp_8002906 // (int a1) -> bool
 // .global loc_8003570
 
 

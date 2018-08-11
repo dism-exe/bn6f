@@ -1497,6 +1497,7 @@ dword_8046A70:    .word 0x20531000, 0x20572055, 0x205B2059, 0x205F205D, 0x106210
 
 .func
 .thumb_func
+// () -> void
 sub_8046CC8:
     push {r4-r7,lr}
     ldr r5, off_8046D48 // =byte_2011C10 
@@ -1523,6 +1524,8 @@ off_8046CF0:    .word dword_8046A70+0x128
 off_8046CF4:    .word reqBBS_requestInfo_textOffsets
 .endfunc // sub_8046CC8
 
+.func
+.thumb_func
 cb_8046CF8:
     push {r4-r7,lr}
     mov r1, r8
@@ -1553,6 +1556,8 @@ off_8046D1C:    .word sub_8046D4C+1
     .word sub_8047066+1
     .word sub_804709C+1
 off_8046D48:    .word byte_2011C10
+.endfunc // cb_8046CF8
+
 .func
 .thumb_func
 sub_8046D4C:
@@ -1588,7 +1593,7 @@ sub_8046D4C:
     bl sub_80015FC
     mov r0, #8
     mov r1, #0xc
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     ldr r0, [r5,#0x1c]
     ldr r0, [r0]
     cmp r0, #1
@@ -1666,7 +1671,7 @@ sub_8046E06:
     strb r0, [r5]
     mov r0, #0xc
     mov r1, #0xc
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
 loc_8046E40:
     bl sub_8047134
 .endfunc // sub_8046E06
@@ -1680,7 +1685,7 @@ sub_8046E48:
     bl sub_8047134
 .endfunc // sub_8046E48
 
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_8046E80
     ldr r1, [r5,#0x28]
     add r0, r1, #0
@@ -2142,7 +2147,7 @@ uncomp_80471F8:
     // src
     ldr r0, [r0,#4]
     // dest
-    ldr r1, off_8047218 // =unk_2029A00 
+    ldr r1, off_8047218 // =decomp_2029A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     // src
     ldr r0, off_804721C // =comp_873DE4C 
@@ -2156,7 +2161,7 @@ uncomp_80471F8:
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_8047218:    .word unk_2029A00
+off_8047218:    .word decomp_2029A00
 off_804721C:    .word comp_873DE4C
 off_8047220:    .word unk_202BA00
 off_8047224:    .word comp_873ECC8
@@ -2337,8 +2342,8 @@ sub_8047384:
     ldrb r1, [r7,#4]
     bl sub_8047456
     beq loc_80473DA
-    // memBlock
 loc_80473B8:
+    // memBlock
     ldr r0, off_8047470 // =byte_2019A00 
     mov r1, #0x40 
     // numWords
@@ -2399,8 +2404,8 @@ loc_8047418:
     cmp r3, r4
     blt loc_80473F6
     b loc_8047436
-    // memBlock
 loc_8047422:
+    // memBlock
     ldr r0, off_8047470 // =byte_2019A00 
     mov r1, #0x40 
     // numWords
@@ -4402,7 +4407,7 @@ off_8049054:    .word 0x40
 .thumb_func
 sub_8049058:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq locret_804907A
     bl sub_80017AA
     bl sub_800183C
@@ -4510,7 +4515,7 @@ sub_8049164:
     beq loc_8049180
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #0x13
     bl sub_803BB2C
     mov r0, #0x10
@@ -4541,7 +4546,7 @@ sub_804918A:
     bl sub_8132664
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #0xa
     bl sub_803BB2C
     mov r0, #0x18
@@ -4554,14 +4559,14 @@ sub_804918A:
 .thumb_func
 sub_80491C4:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_80491E0
     mov r0, #8
     bl chatbox_8045F3C
     beq loc_80491E0
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #0x14
     strb r0, [r5,#1]
 loc_80491E0:
@@ -4573,7 +4578,7 @@ loc_80491E0:
 .thumb_func
 sub_80491E6:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_80491F6
     mov r0, #4
     strb r0, [r5]
@@ -4588,7 +4593,7 @@ loc_80491F6:
 .thumb_func
 sub_80491FC:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_8049218
     bl sub_803C320
     mov r0, #0x1c
@@ -4953,7 +4958,7 @@ sub_80494DE:
     mov r0, #0x10
     bl sub_803CB18
     bne loc_8049516
-    bl sub_813D60C
+    bl sub_813D60C // () -> zf
     bne loc_8049522
     mov r0, #0x83
     bl sound_play
@@ -5030,7 +5035,7 @@ sub_8049582:
     beq loc_8049596
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #0x50 
     strb r0, [r5,#1]
 loc_8049596:
@@ -5042,7 +5047,7 @@ loc_8049596:
 .thumb_func
 sub_804959C:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_80495AE
     bl sub_8001850
     bl sub_803CCC0
@@ -5060,7 +5065,7 @@ sub_80495B4:
     beq loc_80495C8
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #0x58 
     strb r0, [r5,#1]
 loc_80495C8:
@@ -5072,7 +5077,7 @@ loc_80495C8:
 .thumb_func
 sub_80495CE:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_80495E2
     bl sub_8001850
     ldr r0, off_80495E8 // =sub_8039570+1 
@@ -5092,7 +5097,7 @@ sub_80495EC:
     beq loc_8049600
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #0x60 
     strb r0, [r5,#1]
 loc_8049600:
@@ -5104,7 +5109,7 @@ loc_8049600:
 .thumb_func
 sub_8049606:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_8049616
     mov r0, #4
     strb r0, [r5]
@@ -5123,7 +5128,7 @@ sub_804961C:
     beq loc_8049630
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #0x68 
     strb r0, [r5,#1]
 loc_8049630:
@@ -5135,7 +5140,7 @@ loc_8049630:
 .thumb_func
 sub_8049636:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_8049646
     mov r0, #4
     strb r0, [r5]
@@ -5208,7 +5213,7 @@ sub_80496B4:
     bne loc_80496DE
     cmp r0, #1
     beq loc_80496CE
-    bl sub_813D60C
+    bl sub_813D60C // () -> zf
     bne loc_80496DE
     mov r0, #1
     pop {r4-r7,pc}
@@ -5240,7 +5245,7 @@ dword_80496EC:    .word 0x0
 sub_8049704:
     push {r4-r7,lr}
     bl sub_803C620
-    bl sub_813D60C
+    bl sub_813D60C // () -> zf
     bne loc_8049714
     mov r0, #1
     pop {r4-r7,pc}
@@ -5294,7 +5299,7 @@ sub_8049770:
     bl sub_8049A18
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #0
     strb r0, [r5,#8]
     strb r0, [r5,#0x12]
@@ -5321,7 +5326,7 @@ dword_80497CC:    .word 0x1F40
 .thumb_func
 sub_80497D0:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_80497E8
     mov r0, #0x14
     bl sub_803BB2C
@@ -5392,7 +5397,7 @@ sub_8049844:
 loc_804985C:
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #0x14
     strb r0, [r5,#1]
 loc_8049868:
@@ -5404,7 +5409,7 @@ loc_8049868:
 .thumb_func
 sub_804986E:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_8049882
     bl sub_8049CBC
     mov r0, #4
@@ -5531,7 +5536,7 @@ sub_8049934:
 loc_8049952:
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #0x30 
     strb r0, [r5,#1]
     b loc_8049964
@@ -5547,7 +5552,7 @@ loc_8049964:
 .thumb_func
 sub_804996A:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_804997E
     bl sub_8049CBC
     mov r0, #4
@@ -5575,7 +5580,7 @@ sub_8049984:
 loc_804999C:
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #0x3c 
     strb r0, [r5,#1]
 loc_80499A8:
@@ -5606,7 +5611,7 @@ loc_80499C8:
 .thumb_func
 sub_80499CE:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_8049A0E
     mov r4, #0
     bl sub_8049D42
@@ -5696,7 +5701,7 @@ dword_8049AD8:    .word 0x887E57BC, 0x6004000, 0x2027A00, 0x884E0C4C, 0x6000020
     .word 0x884E0C4C, 0x0
     .word unk_2029200
     .word 0x884E0C4C, 0x0
-    .word unk_2029A00
+    .word decomp_2029A00
     .word 0x884E0C4C, 0x0
     .word unk_2029E00
     .word 0x884E0C4C, 0x0
@@ -6046,7 +6051,7 @@ off_8049E58:    .word 0x40
 .thumb_func
 sub_8049E5C:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq locret_8049E7E
     bl sub_80017AA
     bl sub_800183C
@@ -6097,7 +6102,7 @@ sub_8049EBC:
     bl sub_804A0AC
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #0
     strb r0, [r5,#8]
     strb r0, [r5,#0x1c]
@@ -6140,7 +6145,7 @@ loc_8049F24:
 .thumb_func
 sub_8049F32:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_8049F4A
     mov r0, #0x14
     bl sub_803BB2C
@@ -6241,7 +6246,7 @@ sub_8049FE0:
 loc_8049FF8:
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #0x14
     strb r0, [r5,#1]
 loc_804A004:
@@ -6253,7 +6258,7 @@ loc_804A004:
 .thumb_func
 sub_804A00A:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_804A01E
     bl sub_804A14C
     mov r0, #4
@@ -6281,7 +6286,7 @@ sub_804A024:
 loc_804A03C:
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #0x20 
     strb r0, [r5,#1]
 loc_804A048:
@@ -6316,7 +6321,7 @@ loc_804A072:
 .thumb_func
 sub_804A078:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_804A0A2
     ldrh r0, [r5,#0x22]
     bl sub_804A230
@@ -6624,7 +6629,7 @@ sub_804A360:
     // numWords
     ldr r1, off_804A3F4 // =0x3C0 
     bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-    bl sub_8120A88
+    bl sub_8120A88 // () -> void
     ldr r0, off_804A3EC // =unk_202A3E0 
     mov r1, #1
     bl sub_811FE7C
@@ -6665,7 +6670,7 @@ sub_804A360:
     bl sub_804AF84
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #4
     strb r0, [r5]
     mov r0, #0
@@ -6680,7 +6685,7 @@ off_804A3F4:    .word 0x3C0
 .thumb_func
 sub_804A3FC:
     push {lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_804A436
     mov r0, #0
     strb r0, [r5,#3]
@@ -6734,7 +6739,7 @@ sub_804A460:
     bl sub_804A7C0
     bl sub_804A9A0
     bl sub_804AA58
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_804A4CC
     bl sub_8046664 // () -> void
     bl sub_809E122
@@ -6795,7 +6800,7 @@ loc_804A4FE:
     strb r0, [r5]
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
 loc_804A50A:
     bl sub_804AA58
     mov r0, #0
@@ -7422,7 +7427,7 @@ loc_804AABA:
     strb r0, [r5]
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
 locret_804AACC:
     pop {pc}
     .byte 0, 0
@@ -8985,7 +8990,7 @@ sub_804CE90:
     ldr r2, [r5,#0x2c]
     ldrb r3, [r5,#4]
     ldrb r4, [r5,#5]
-    bl sub_802FF4C
+    bl sub_802FF4C // (int a1, int a2) ->
     bl loc_8030472
     ldr r0, off_804CEF0 // =unk_2037800 
     bl sub_80028D4
@@ -8993,8 +8998,8 @@ sub_804CE90:
     lsl r1, r1, #2
     ldr r0, off_804CEF8 // =off_804CEFC 
     ldr r0, [r0,r1]
-    bl sub_8002906
-    bl chatbox_uncomp_803FD08 // () -> int
+    bl decomp_8002906 // (int a1) -> bool
+    bl chatbox_decomp_currMap_gameProgress_803FD08 // () -> int
     bl sub_804CF84
     ldr r0, off_804CEF4 // =off_804D0E4 
     ldrb r1, [r5,#5]

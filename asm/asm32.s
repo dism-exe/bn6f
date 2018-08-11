@@ -1326,7 +1326,7 @@ dword_810E7D8:    .word 0x810E4D5, 0x8109953, 0x810E57D, 0xA0064, 0xA0096
 .thumb_func
 sub_810E854:
     push {lr}
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne loc_810E87E
     bl battle_isTimeStop
     bne loc_810E87E
@@ -1401,7 +1401,7 @@ loc_810E8DA:
     bne loc_810E904
     bl battle_isTimeStop
     bne locret_810E90E
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne locret_810E90E
     ldr r0, [r5,#0x68]
     cmp r0, #0
@@ -8993,7 +8993,7 @@ dword_8115944:    .word 0x20, 0x2000, 0x8115938, 0x8016381, 0x80165B9, 0x81159C5
 .thumb_func
 sub_81159DC:
     push {lr}
-    bl battle_isPaused
+    bl battle_isPaused // () -> zf
     bne locret_8115A00
     bl battle_isTimeStop
     bne locret_8115A00
@@ -15860,7 +15860,7 @@ dword_8119190:    .word 0x2020203
 dword_8119194:    .word 0x6060607
 asc_8119198:    .byte 0x9, 0x8, 0x8, 0x8, 0x0
     .byte 0x9A, 0x1, 0x2
-    .word unk_2033A00
+    .word decomp_2033A00
     .word byte_2019A00
     .word unk_2017A00
     .word unk_2018200
@@ -26183,7 +26183,7 @@ loc_811EC9A:
     bne loc_811EC9A
     // dataList
     ldr r0, off_811ECF4 // =unk_20096E0 
-    bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+    bl decomp_initGfx_8000B8E // (u32 *dataList) -> void
     pop {r4-r7,pc}
     .byte 0, 0
 off_811ECB0:    .word dword_811ECB4
@@ -26278,7 +26278,7 @@ sub_811EDB4:
     strb r0, [r5,#9]
     b loc_811EE82
 loc_811EDD6:
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_811EE82
     mov r0, #0xa
     bl sub_811F7EC
@@ -27848,7 +27848,7 @@ sub_811FB64:
     bl sound_play
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     pop {pc}
 .endfunc // sub_811FB64
 
@@ -28224,8 +28224,8 @@ sub_811FE7C:
     add r6, r0, #0
     bl sub_811FF6C
     mov r7, #1
-    // idx
 loc_811FE8C:
+    // idx
     add r0, r7, #0
     bl refIndex_8021DA8 // (int idx) -> void*
     add r5, r0, #0
@@ -29599,8 +29599,8 @@ loc_812082C:
     ldr r1, off_8120884 // =0x140 
     add r0, r7, r1
     b loc_8120838
-    // idx
 loc_8120836:
+    // idx
     add r0, r7, #0
 loc_8120838:
     bl refIndex_8021DA8 // (int idx) -> void*
@@ -29659,8 +29659,8 @@ sub_8120898:
     add r5, r0, #0
     mov r6, #0
     mov r7, #1
-    // idx
 loc_81208A0:
+    // idx
     add r0, r7, #0
     bl refIndex_8021DA8 // (int idx) -> void*
     ldrb r1, [r0,#9]
@@ -29873,10 +29873,11 @@ byte_8120A35:    .byte 0x0
 
 .func
 .thumb_func
+// () -> (int n1, int n2, int n3, int n4)
 sub_8120A38:
     push {r4-r7,lr}
     sub sp, sp, #0x10
-    bl sub_8120A88
+    bl sub_8120A88 // () -> void
     mov r0, #0
     bl sub_8120898
     str r0, [sp]
@@ -29911,14 +29912,15 @@ dword_8120A84:    .word 0x137
 
 .func
 .thumb_func
+// () -> void
 sub_8120A88:
     push {r4-r7,lr}
     mov r0, r10
-    ldr r0, [r0,#0x40]
+    ldr r0, [r0,#0x40] // Toolkit.unk_2001C04
     ldrb r4, [r0,#5]
 loc_8120A90:
     mov r7, r10
-    ldr r7, [r7,#0x48]
+    ldr r7, [r7,#0x48] // Toolkit.sChip_2002178
     mov r2, #0x3c 
     sub r0, r4, #1
     mul r0, r2

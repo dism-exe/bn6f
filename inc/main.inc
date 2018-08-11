@@ -62,9 +62,9 @@
 // .global sub_8004D48
 // .global sub_8004DF0
 // .global cb_80050EC
-// .global sub_80062EC
-// .global engine_isScreeneffectAnimating
-// .global subsystem_triggerTransition_800630A
+// .global engine_80062EC
+// .global engine_isScreeneffectAnimating // () -> zf
+// .global engine_triggerTransition_800630A
 // .global sub_8006910
 // .global CpuSet_toolKit
 // .global sub_8006C22
@@ -72,7 +72,7 @@
 // .global zf_checkSameSubsystem_800A732
 
 .include "asm37_0.inc"
-// .global sub_813D60C
+// .global sub_813D60C // () -> zf
 // .global sub_813D960
 
 .include "asm03_0.inc"

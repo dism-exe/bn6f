@@ -24,7 +24,7 @@ sub_8069038:
     ldr r2, [r5,#0x2c]
     ldrb r3, [r5,#4]
     ldrb r4, [r5,#5]
-    bl sub_802FF4C
+    bl sub_802FF4C // (int a1, int a2) ->
     bl loc_8030472
     ldr r0, off_8069094 // =unk_2037800 
     bl sub_80028D4
@@ -32,8 +32,8 @@ sub_8069038:
     lsl r1, r1, #2
     ldr r0, off_8069098 // =off_806909C 
     ldr r0, [r0,r1]
-    bl sub_8002906
-    bl chatbox_uncomp_803FD08 // () -> int
+    bl decomp_8002906 // (int a1) -> bool
+    bl chatbox_decomp_currMap_gameProgress_803FD08 // () -> int
     bl sub_80691FE
     bl sub_8034FB8
     pop {r4-r7,pc}
@@ -369,7 +369,7 @@ sub_8069FE8:
     ldr r2, [r5,#0x2c]
     ldrb r3, [r5,#4]
     ldrb r4, [r5,#5]
-    bl sub_802FF4C
+    bl sub_802FF4C // (int a1, int a2) ->
     bl loc_8030472
     ldr r0, off_806A044 // =unk_2037800 
     bl sub_80028D4
@@ -377,8 +377,8 @@ sub_8069FE8:
     lsl r1, r1, #2
     ldr r0, off_806A048 // =off_806A04C 
     ldr r0, [r0,r1]
-    bl sub_8002906
-    bl chatbox_uncomp_803FD08 // () -> int
+    bl decomp_8002906 // (int a1) -> bool
+    bl chatbox_decomp_currMap_gameProgress_803FD08 // () -> int
     bl sub_806A1DE
     bl sub_8034FB8
     pop {r4-r7,pc}
@@ -685,7 +685,7 @@ sub_806AA00:
     ldr r2, [r5,#0x2c]
     ldrb r3, [r5,#4]
     ldrb r4, [r5,#5]
-    bl sub_802FF4C
+    bl sub_802FF4C // (int a1, int a2) ->
     bl loc_8030472
     ldr r0, off_806AA5C // =unk_2037800 
     bl sub_80028D4
@@ -693,8 +693,8 @@ sub_806AA00:
     lsl r1, r1, #2
     ldr r0, off_806AA60 // =off_806AA64 
     ldr r0, [r0,r1]
-    bl sub_8002906
-    bl chatbox_uncomp_803FD08 // () -> int
+    bl decomp_8002906 // (int a1) -> bool
+    bl chatbox_decomp_currMap_gameProgress_803FD08 // () -> int
     bl sub_806AD00
     bl sub_8034FB8
     pop {r4-r7,pc}
@@ -1438,7 +1438,7 @@ sub_806C23C:
     ldr r2, [r5,#0x2c]
     ldrb r3, [r5,#4]
     ldrb r4, [r5,#5]
-    bl sub_802FF4C
+    bl sub_802FF4C // (int a1, int a2) ->
     bl loc_8030472
     ldr r0, off_806C298 // =unk_2037800 
     bl sub_80028D4
@@ -1446,8 +1446,8 @@ sub_806C23C:
     lsl r1, r1, #2
     ldr r0, off_806C29C // =off_806C2A0 
     ldr r0, [r0,r1]
-    bl sub_8002906
-    bl chatbox_uncomp_803FD08 // () -> int
+    bl decomp_8002906 // (int a1) -> bool
+    bl chatbox_decomp_currMap_gameProgress_803FD08 // () -> int
     bl sub_806C59C
     bl sub_8034FB8
     pop {r4-r7,pc}

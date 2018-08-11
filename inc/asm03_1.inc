@@ -25,7 +25,7 @@
 .global sub_80468E0
 .global sub_80468EC
 .global sub_804691A
-.global sub_8046CC8
+.global sub_8046CC8 // () -> void
 .global sub_8047D84
 .global sub_8048C24
 .global sub_8048C68
@@ -134,7 +134,7 @@
 // .global sub_8120458
 // .global sub_81204C4
 // .global sub_8120618
-// .global sub_8120A88
+// .global sub_8120A88 // () -> void
 // .global sub_8120AB8
 // .global sub_8120CC8
 
@@ -193,7 +193,7 @@
 // .global sub_8002818
 // .global sub_8002874
 // .global sub_80028D4
-// .global sub_8002906
+// .global decomp_8002906 // (int a1) -> bool
 // .global sprite_makeUnscalable
 // .global sub_800307C
 // .global loc_8003570
@@ -203,14 +203,14 @@
 // .global sub_8003AEA
 // .global sub_8005F40
 // .global sub_8005F84
-// .global engine_setScreeneffect
-// .global engine_isScreeneffectAnimating
+// .global engine_setScreeneffect // (int a1) -> void
+// .global engine_isScreeneffectAnimating // () -> zf
 // .global sub_8006F1E
 // .global sub_800A7D0
 
 .include "asm37_0.inc"
 // .global sub_813D5C8
-// .global sub_813D60C
+// .global sub_813D60C // () -> zf
 // .global sub_813D638
 // .global sub_813D648
 // .global sub_813D750
@@ -220,7 +220,7 @@
 // .global sub_802F114 // (int a1) -> void
 // .global zf_802F168
 // .global sub_802FE28
-// .global sub_802FF4C
+// .global sub_802FF4C // (int a1, int a2) ->
 // .global sub_803037C
 // .global loc_8030472
 // .global sub_8030AA4
@@ -295,7 +295,7 @@
 // .global sub_803F79E
 
 .include "chatbox.inc"
-// .global chatbox_uncomp_803FD08 // () -> int
+// .global chatbox_decomp_currMap_gameProgress_803FD08 // () -> int
 // .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_8040818
@@ -385,7 +385,7 @@
 .equ unk_2028200, 0x2028200
 .equ unk_2028A00, 0x2028A00
 .equ unk_2029200, 0x2029200
-.equ unk_2029A00, 0x2029A00
+.equ decomp_2029A00, 0x2029A00
 .equ reqBBS_requestInfo_textOffsets, 0x2029A04
 .equ unk_2029E00, 0x2029E00
 .equ word_202A020, 0x202A020

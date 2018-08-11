@@ -3,18 +3,18 @@
 .func
 .thumb_func
 // () -> int
-chatbox_uncomp_803FD08:
+chatbox_decomp_currMap_gameProgress_803FD08:
     push {r4-r7,lr}
     mov r0, #0
-    bl chatbox_static_8040730
+    bl chatbox_static_8040730 // (int a1) -> void*
     // dest
     ldr r1, off_803FD30 // =unk_202DA00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-    bl chatbox_8040794
+    bl chatbox_gameProgress_8040794 // () -> void*
     // dest
     ldr r1, off_803FD34 // =unk_2033400 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-    bl chatbox_80407C8
+    bl chatbox_80407C8 // () -> void*
     // dest
     ldr r1, off_803FD38 // =unk_202FA00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
@@ -24,14 +24,14 @@ chatbox_uncomp_803FD08:
 off_803FD30:    .word unk_202DA00
 off_803FD34:    .word unk_2033400
 off_803FD38:    .word unk_202FA00
-.endfunc // chatbox_uncomp_803FD08
+.endfunc // chatbox_decomp_currMap_gameProgress_803FD08
 
 .func
 .thumb_func
 chatbox_dead_uncomp_803FD3C:
     push {r4-r7,lr}
     mov r0, #1
-    bl chatbox_static_8040730
+    bl chatbox_static_8040730 // (int a1) -> void*
     // dest
     ldr r1, off_803FD50 // =unk_2034A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
@@ -45,7 +45,7 @@ off_803FD50:    .word unk_2034A00
 .thumb_func
 chatbox_uncomp_803FD54:
     push {r4-r7,lr}
-    bl chatbox_8040794
+    bl chatbox_gameProgress_8040794 // () -> void*
     // dest
     ldr r1, off_803FD64 // =unk_2033400 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
@@ -116,8 +116,8 @@ loc_803FDC6:
     ldr r1, off_803FE00 // =unk_3001B40 
     mov r2, #0x20 
     bl sub_8000950
-    // src
 loc_803FDD0:
+    // src
     ldr r0, off_803FDE0 // =dword_803FDE4 
     mov r1, r10
     ldr r1, [r1,#0x2c] // Toolkit.chatbox
@@ -170,8 +170,8 @@ loc_803FE32:
     ldr r1, off_803FE6C // =unk_3001B40 
     mov r2, #0x20 
     bl sub_8000950
-    // src
 loc_803FE3C:
+    // src
     ldr r0, off_803FE4C // =dword_803FE50 
     mov r1, r10
     ldr r1, [r1,#0x2c]
@@ -1206,16 +1206,17 @@ off_804072C:    .word 0x1F5
 
 .func
 .thumb_func
+// (int a1) -> void*
 chatbox_static_8040730:
     push {r4-r7,lr}
     add r4, r0, #0
     mov r2, r10
     ldr r2, [r2,#0x3c] // Toolkit.gamestate
-    ldrb r0, [r2,#4]
-    ldrb r1, [r2,#5]
+    ldrb r0, [r2,#0x4] // GameState.MapSelect
+    ldrb r1, [r2,#0x5] // GameState.MapSubOffset
     mov r2, r10
     ldr r2, [r2,#0x3c] // Toolkit.gamestate
-    ldrb r2, [r2,#8]
+    ldrb r2, [r2,#0x8] // GameState.unk_08
     mov r6, #0
     cmp r0, #0x80
     bmi loc_804074C
@@ -1250,13 +1251,14 @@ dword_8040784:    .word 0x2500360, 0x1300240, 0x100120, 0x0
 
 .func
 .thumb_func
-chatbox_8040794:
+// () -> void*
+chatbox_gameProgress_8040794:
     push {r4-r7,lr}
     mov r2, r10
-    ldr r2, [r2,#0x3c]
-    ldrb r0, [r2,#4]
-    ldrb r1, [r2,#5]
-    ldrb r2, [r2,#6]
+    ldr r2, [r2,#0x3c] // Toolkit.gamestate
+    ldrb r0, [r2,#0x4] // GameState.MapSelect
+    ldrb r1, [r2,#0x5] // GameState.MapSubOffset
+    ldrb r2, [r2,#0x6] // GameState.gameProgress
     mov r6, #0
     cmp r0, #0x80
     bmi loc_80407AA
@@ -1275,16 +1277,17 @@ loc_80407AA:
 off_80407BC:    .word off_80407C0
 off_80407C0:    .word off_804448C
     .word off_8044520
-.endfunc // chatbox_8040794
+.endfunc // chatbox_gameProgress_8040794
 
 .func
 .thumb_func
+// () -> void*
 chatbox_80407C8:
     push {r4-r7,lr}
     mov r2, r10
-    ldr r2, [r2,#0x3c]
-    ldrb r0, [r2,#4]
-    ldrb r1, [r2,#5]
+    ldr r2, [r2,#0x3c] // Toolkit.gamestate
+    ldrb r0, [r2,#0x4] // GameState.MapSelect
+    ldrb r1, [r2,#0x5] // GameState.MapSubOffset
     mov r2, #4
     mov r6, #0
     cmp r0, #0x80
@@ -2225,8 +2228,8 @@ chatbox_E6_end:
     strb r0, [r5,#0x5] // ChatBoxPropreties.unk_05
     mov r0, #1
     pop {pc}
-    // a3
 loc_8040EB2:
+    // a3
     mov r0, #1
     bl chatbox_8040920 // (int a3) -> void
     ldr r0, dword_8040EEC // =0x100 
@@ -3097,8 +3100,8 @@ chatbox_EE_pause:
     tst r1, r1
     beq loc_80414C8
     b loc_80414F0
-    // a3
 loc_80414C8:
+    // a3
     mov r0, #1
     bl chatbox_8040920 // (int a3) -> void
     ldrb r0, [r5,#4]
@@ -3127,8 +3130,8 @@ loc_80414F0:
     add r4, #4
     mov r0, #1
     pop {pc}
-    // a3
 loc_8041500:
+    // a3
     mov r0, #1
     bl chatbox_8040920 // (int a3) -> void
     mov r0, #8
@@ -4078,8 +4081,8 @@ chatbox_F1_textspeed:
     mov r0, #0x40 
     bl chatbox_8040920 // (int a3) -> void
     b loc_8041BC8
-    // a3
 loc_8041BC2:
+    // a3
     ldr r0, dword_8041BD0 // =0x800 
     bl chatbox_8040920 // (int a3) -> void
 loc_8041BC8:
@@ -5237,7 +5240,7 @@ loc_804245C:
     bl sub_8005BC8
     mov r0, #0x2c 
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     pop {r4,r5}
     mov r0, #1
     strb r0, [r5,#4]
@@ -5271,7 +5274,7 @@ loc_804248C:
     bl sub_803522E
     mov r0, #0x2c 
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     pop {r4,r5,r7}
     mov r0, #1
     strb r0, [r5,#4]
@@ -5295,7 +5298,7 @@ chatbox_80424BC:
 loc_80424CC:
     push {r4,r5}
     ldrb r0, [r4,#2]
-    bl subsystem_launchShop
+    bl subsystem_launchShop // () -> void
     pop {r4,r5}
     mov r0, #1
     strb r0, [r5,#4]
@@ -5320,7 +5323,7 @@ loc_80424F0:
     ldrb r0, [r4,#2]
     cmp r0, #1
     beq loc_8042508
-    bl subsystem_launchChipTrader
+    bl subsystem_launchChipTrader // (int a1) -> bool
     bne loc_8042512
     mov r0, #1
     strb r0, [r5,#4]
@@ -5404,7 +5407,7 @@ chatbox_8042580:
     b loc_804259A
 loc_8042590:
     ldrb r0, [r4,#2]
-    bl subsystem_launchBBS
+    bl subsystem_launchBBS // (int a1) -> void
     mov r0, #1
     strb r0, [r5,#4]
 loc_804259A:
@@ -5448,7 +5451,7 @@ chatbox_80425C0:
     b loc_80425DA
 loc_80425D0:
     ldrb r0, [r4,#2]
-    bl subsystem_launchReqBBS
+    bl subsystem_launchReqBBS // (int a1) -> void
     mov r0, #1
     strb r0, [r5,#4]
 loc_80425DA:
@@ -5575,7 +5578,7 @@ chatbox_80426C4:
     push {lr}
     mov r0, #0xc
     mov r1, #0xc
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     add r4, #2
     mov r0, #1
     pop {pc}

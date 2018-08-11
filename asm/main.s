@@ -37,7 +37,7 @@ main_gameRoutine:
     bl sub_800154C
     bl zf_checkSameSubsystem_800A732
     beq loc_800032A
-    bl subsystem_triggerTransition_800630A
+    bl engine_triggerTransition_800630A
 loc_800032A:
     bl chatbox_onUpdate_803FEB4
     bl cb_call_200A880
@@ -169,9 +169,9 @@ dword_8000450:    .word 0x3FF
 .thumb_func
 main_static_8000454:
     push {r4-r7,lr}
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq locret_80004A2
-    bl sub_813D60C
+    bl sub_813D60C // () -> zf
     bne locret_80004A2
     mov r7, r10
     ldr r0, [r7]
@@ -197,18 +197,10 @@ main_static_8000454:
     beq loc_80004A0
     push {r1}
     bl start_800023C // () -> void
-    .byte 0
-    .byte 0xF0
-    .byte 6
-    .byte 0xF8
-    .byte 0x3F 
-    .byte 0xF0
-    .byte 0x16
-    .byte 0xF8
-    .byte 2
-    .byte 0xBC
-    .byte 0xA
-    .byte 0x24 
+    bl main_static_80004A4
+    bl sub_803F4C8
+    pop {r1}
+    mov r4, #0xa
 loc_80004A0:
     strb r4, [r1]
 locret_80004A2:
@@ -257,7 +249,7 @@ loc_80004C0:
     bl sub_8002368
     bl sub_8001820
     bl sub_800182E
-    bl sub_80062EC
+    bl engine_80062EC
     bl sub_8006910
     bl sub_803DE5C
     bl sub_8144240

@@ -363,12 +363,12 @@ off_812ED30:    .word unk_2037780
     pop {pc}
 off_812ED54:    .word word_2023FA0
     push {lr}
-    bl sub_80062C8
+    bl engine_80062C8
     cmp r0, #0xc
     bne loc_812ED6A
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
 loc_812ED6A:
     mov r0, #0x1c
     strb r0, [r5,#2]

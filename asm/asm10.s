@@ -24,7 +24,7 @@ sub_80663D0:
     ldr r2, [r5,#0x2c]
     ldrb r3, [r5,#4]
     ldrb r4, [r5,#5]
-    bl sub_802FF4C
+    bl sub_802FF4C // (int a1, int a2) ->
     bl loc_8030472
     ldr r0, off_806642C // =unk_2037800 
     bl sub_80028D4
@@ -32,8 +32,8 @@ sub_80663D0:
     lsl r1, r1, #2
     ldr r0, off_8066430 // =off_8066434 
     ldr r0, [r0,r1]
-    bl sub_8002906
-    bl chatbox_uncomp_803FD08 // () -> int
+    bl decomp_8002906 // (int a1) -> bool
+    bl chatbox_decomp_currMap_gameProgress_803FD08 // () -> int
     bl sub_8066540
     bl sub_8034FB8
     pop {r4-r7,pc}
@@ -673,7 +673,7 @@ sub_8067B5C:
     ldr r2, [r5,#0x2c]
     ldrb r3, [r5,#4]
     ldrb r4, [r5,#5]
-    bl sub_802FF4C
+    bl sub_802FF4C // (int a1, int a2) ->
     bl loc_8030472
     ldr r0, off_8067BB8 // =unk_2037800 
     bl sub_80028D4
@@ -681,8 +681,8 @@ sub_8067B5C:
     lsl r1, r1, #2
     ldr r0, off_8067BBC // =off_8067BC0 
     ldr r0, [r0,r1]
-    bl sub_8002906
-    bl chatbox_uncomp_803FD08 // () -> int
+    bl decomp_8002906 // (int a1) -> bool
+    bl chatbox_decomp_currMap_gameProgress_803FD08 // () -> int
     bl sub_8067D46
     bl sub_8034FB8
     pop {r4-r7,pc}

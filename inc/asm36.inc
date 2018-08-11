@@ -165,7 +165,7 @@
 // .global sub_80027F4
 // .global sub_800286C
 // .global sub_80028D4
-// .global sub_8002906
+// .global decomp_8002906 // (int a1) -> bool
 // .global sub_800307C
 // .global sub_80035A2
 // .global sub_800378C
@@ -184,9 +184,9 @@
 // .global sub_8005524
 // .global sub_8005F40
 // .global sub_8005F6C
-// .global engine_setScreeneffect
-// .global sub_80062C8
-// .global engine_isScreeneffectAnimating
+// .global engine_setScreeneffect // (int a1) -> void
+// .global engine_80062C8
+// .global engine_isScreeneffectAnimating // () -> zf
 // .global sub_8010C76
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6
@@ -225,7 +225,7 @@
 // .global sub_813C334
 // .global sub_813C3AC
 // .global sub_813D5D0
-// .global sub_813D60C
+// .global sub_813D60C // () -> zf
 // .global sub_813D638
 // .global sub_813D90C
 // .global sub_813D978
@@ -239,7 +239,7 @@
 // .global zf_802F168
 // .global sub_802F1A8 // (int a3, int a2) -> void
 // .global sub_802FE28
-// .global sub_802FF4C
+// .global sub_802FF4C // (int a1, int a2) ->
 // .global loc_802FFF4
 // .global sub_80301B2
 // .global sub_80301DC

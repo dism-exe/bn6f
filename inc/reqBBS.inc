@@ -2,12 +2,12 @@
 .equ INC_REQBBS, 0
 
 /* Public Symbols */
-.global reqBBS_813E07C
+.global reqBBS_813E07C // (int a1) -> void
 .global reqBBS_813E5DC
 .global reqBBS_813E616
 .global reqBBS_813EE58
 .global dword_813F380
-.global reqBBS_init_s_2005780
+.global reqBBS_init_s_2005780 // (int a1) -> void
 .global reqBBS_813F9A0
 .global reqBBS_initMemory_813F9DA
 .global reqBBS_81406FC
@@ -75,8 +75,8 @@
 // .global sub_80018D0
 // .global sub_8002FA6
 // .global sub_8005F84
-// .global engine_setScreeneffect
-// .global engine_isScreeneffectAnimating
+// .global engine_setScreeneffect // (int a1) -> void
+// .global engine_isScreeneffectAnimating // () -> zf
 
 .include "asm37_0.inc"
 // .global unk_813DBDC
@@ -143,11 +143,11 @@
 .equ unk_201C200, 0x201C200
 .equ unk_201CA00, 0x201CA00
 .equ reqBBS_requestEntries_IDs, 0x2023A00
-.equ unk_2025A00, 0x2025A00
+.equ decomp_2025A00, 0x2025A00
 .equ reqBBS_requestNames_textualData, 0x2025A04
-.equ unk_2029A00, 0x2029A00
+.equ decomp_2029A00, 0x2029A00
 .equ reqBBS_requestInfo_textOffsets, 0x2029A04
-.equ unk_2033A00, 0x2033A00
+.equ decomp_2033A00, 0x2033A00
 .equ reqBBS_dialogList, 0x2033A04
 .equ unk_3001750, 0x3001750
 .equ unk_30019C0, 0x30019C0

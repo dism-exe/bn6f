@@ -8,7 +8,7 @@
 .global sub_801FE64
 .global sub_801FE6C
 .global sub_801FEE8
-.global loc_801FEEE
+.global sub_801FEEE
 .global sub_80200A4
 .global sub_8020134
 .global sub_8020140
@@ -30,8 +30,8 @@
 
 /* External Symbols */
 .include "asm37_0.inc"
-// .global sub_813D60C
-// .global sub_813D66C
+// .global sub_813D60C // () -> zf
+// .global sub_813D66C // () -> void
 
 .include "asm03_0.inc"
 // .global get_802D246 // () -> int

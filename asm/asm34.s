@@ -34,7 +34,7 @@ off_812D3A4:    .word unk_201DB20
     ldr r0, off_812D3DC // =word_2023FA0 
     mov r1, #0x20 
     bl sub_8000900 // (int a1, int a2) -> void
-    bl sub_8120A88
+    bl sub_8120A88 // () -> void
     ldr r0, off_812D3E0 // =unk_2023FC0 
     mov r1, #1
     bl sub_811FE7C
@@ -650,12 +650,12 @@ off_812D850:    .word 0x64
     pop {pc}
 off_812D87C:    .word word_2023FA0
     push {lr}
-    bl sub_80062C8
+    bl engine_80062C8
     cmp r0, #0xc
     bne loc_812D892
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
 loc_812D892:
     ldrb r0, [r5,#2]
     strb r0, [r5,#0x16]
@@ -892,12 +892,12 @@ sub_812DA4C:
 .thumb_func
 sub_812DA60:
     push {r0,lr}
-    bl sub_80062C8
+    bl engine_80062C8
     cmp r0, #0xc
     bne loc_812DA72
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
 loc_812DA72:
     bl sub_803EA60
     cmp r0, #0

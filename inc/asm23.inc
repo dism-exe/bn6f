@@ -45,8 +45,8 @@
 // .global sub_8004822
 // .global sub_80048B2
 // .global sub_8005D88
-// .global engine_setScreeneffect
-// .global engine_isScreeneffectAnimating
+// .global engine_setScreeneffect // (int a1) -> void
+// .global engine_isScreeneffectAnimating // () -> zf
 
 .include "reqBBS.inc"
 // .global reqBBS_8140A0C

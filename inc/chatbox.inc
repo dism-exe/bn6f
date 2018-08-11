@@ -2,7 +2,7 @@
 .equ INC_CHATBOX, 0
 
 /* Public Symbols */
-.global chatbox_uncomp_803FD08 // () -> int
+.global chatbox_decomp_currMap_gameProgress_803FD08 // () -> int
 .global chatbox_runScript_202da04 // (u8 scriptID) -> void
 .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
 .global chatbox_803FD9C
@@ -95,13 +95,13 @@
 // .global sub_8002F90
 // .global sub_8003A64
 // .global sub_8005BC8
-// .global subsystem_launchBBS
-// .global subsystem_launchReqBBS
-// .global subsystem_launchShop
-// .global subsystem_launchChipTrader
+// .global subsystem_launchBBS // (int a1) -> void
+// .global subsystem_launchReqBBS // (int a1) -> void
+// .global subsystem_launchShop // () -> void
+// .global subsystem_launchChipTrader // (int a1) -> bool
 // .global sub_8005EA2
 // .global subsystem_launchMail
-// .global engine_setScreeneffect
+// .global engine_setScreeneffect // (int a1) -> void
 // .global getBattleSettingsFromList0
 // .global sub_800B6B0
 // .global sub_8013704

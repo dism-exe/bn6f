@@ -22,7 +22,7 @@
 // .global sub_8120458
 // .global sub_81204C4
 // .global sub_8120618
-// .global sub_8120A88
+// .global sub_8120A88 // () -> void
 // .global sub_8120AB8
 // .global sub_8120CC8
 
@@ -40,8 +40,8 @@
 // .global drawTiles // (int a1, int a2, int a3) -> void
 // .global sub_80018D0
 // .global sub_800307C
-// .global engine_setScreeneffect
-// .global sub_80062C8
+// .global engine_setScreeneffect // (int a1) -> void
+// .global engine_80062C8
 
 .include "asm37_1.inc"
 // .global sub_81440D8

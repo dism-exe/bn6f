@@ -125,8 +125,8 @@
 // .global sub_8003B86
 // .global sub_8004602
 // .global sub_80047E0
-// .global sub_80062C8
-// .global engine_isScreeneffectAnimating
+// .global engine_80062C8
+// .global engine_isScreeneffectAnimating // () -> zf
 // .global sub_8013704
 // .global sub_80137B6
 

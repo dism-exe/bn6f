@@ -4380,7 +4380,7 @@ sub_809D9E0:
     ldrb r0, [r7,#0x15] // (byte_200ACF5 - 0x200ace0)
     tst r0, r0
     bne loc_809DA98
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_809DA94
     push {r0}
     mov r0, #0x17
@@ -7986,7 +7986,7 @@ sub_809F4B8:
 .thumb_func
 sub_809F4EE:
     push {lr}
-    bl sub_80062C8
+    bl engine_80062C8
     cmp r1, #0
     beq loc_809F502
     add r0, r6, #1
@@ -9135,8 +9135,8 @@ sub_809FE7A:
     ldrb r1, [r3,#0x4] // (word_2000214 - 0x2000210)
     ldrb r2, [r3,#0x5] // (word_2000214+1 - 0x2000210)
     ldrb r3, [r3,#0x2] // (byte_2000212 - 0x2000210)
-    // <endpool>
 locret_809FE8E:
+    // <endpool>
     pop {r4-r7,pc}
 .endfunc // sub_809FE7A
 

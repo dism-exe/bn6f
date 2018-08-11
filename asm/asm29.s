@@ -508,7 +508,7 @@ sub_80A5268:
     .hword 0x1c00 // add r0, r0, #0
     bl zf_802F168 // (int a1, int a2) -> zf
     bne loc_80A52DA
-    bl sub_80062C8
+    bl engine_80062C8
     lsr r0, r0, #2
     mov r1, #1
     tst r0, r1
@@ -4750,7 +4750,7 @@ sub_80A7C58:
     bne loc_80A7C7E
     bl sub_809E462
     bne loc_80A7C7E
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_80A7C7E
     bl sub_809E3A2
     beq loc_80A7C7E
@@ -4856,7 +4856,7 @@ sub_80A7CFE:
     bne locret_80A7D70
     bl sub_809E462
     bne locret_80A7D70
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq locret_80A7D70
     mov r0, #0x17
     mov r1, #0x31 
@@ -6897,7 +6897,7 @@ sub_80A8DF0:
 loc_80A8E0A:
     bl sub_809E462
     bne loc_80A8E18
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_80A8E18
     mov r4, #0
 loc_80A8E18:
@@ -10944,8 +10944,8 @@ loc_80AADE4:
     bne loc_80AADE4
     mov r4, #0
     ldr r7, off_80AAE84 // =dword_2033000 
-    // idx
 loc_80AADFC:
+    // idx
     add r0, r4, #0
     bl refIndex_8021DA8 // (int idx) -> void*
     ldrb r1, [r0,#7]
@@ -10984,8 +10984,8 @@ sub_80AAE36:
     push {r4,r7,lr}
     mov r4, #1
     ldr r7, off_80AAE94 // =unk_2036750 
-    // idx
 loc_80AAE3C:
+    // idx
     add r0, r4, #0
     bl refIndex_8021DA8 // (int idx) -> void*
     ldrb r0, [r0,#9]

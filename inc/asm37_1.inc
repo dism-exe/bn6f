@@ -120,7 +120,7 @@
 .global sub_8147350
 .global sub_81475D4
 .global sub_8147B24
-.global sub_8147B3C
+.global sub_8147B3C // () -> void
 .global sub_8147F98
 .global sub_8148214
 .global sub_8148224
@@ -184,7 +184,7 @@
 // .global sub_800151C
 // .global sub_8003A64
 // .global sub_8004822
-// .global engine_isScreeneffectAnimating
+// .global engine_isScreeneffectAnimating // () -> zf
 
 .include "asm37_0.inc"
 // .global sub_813D760

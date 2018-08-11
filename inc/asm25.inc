@@ -42,7 +42,7 @@
 // .global sub_8003940
 // .global sub_80039D4
 // .global sub_80047E0
-// .global engine_isScreeneffectAnimating
+// .global engine_isScreeneffectAnimating // () -> zf
 
 .include "reqBBS.inc"
 // .global reqBBS_81409E4

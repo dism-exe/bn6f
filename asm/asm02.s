@@ -297,8 +297,8 @@ computeItemRef_Toolkit_unk4C:
     pop {r1,r2}
     add r0, #0
     mov r3, #0
-    // index of r1_searchItem in r0_ptr or 0
 loc_8021C8C:
+    // index of r1_searchItem in r0_ptr or 0
     ldrb r4, [r0,r3]
     cmp r1, r4
     beq loc_8021C9A
@@ -325,8 +325,8 @@ sub_8021CA8:
     mov r4, #0
     mov r5, #0
     mov r2, #0
-    // idx
 loc_8021CB0:
+    // idx
     add r0, r2, #0
     push {r2}
     bl refIndex_8021DA8 // (int idx) -> void*

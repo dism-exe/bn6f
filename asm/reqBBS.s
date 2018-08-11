@@ -2,6 +2,7 @@
 
 .func
 .thumb_func
+// (int a1) -> void
 reqBBS_813E07C:
     push {r4-r7,lr}
     push {r0}
@@ -66,7 +67,7 @@ reqBBS_static_draw_813E0F8:
     bl reqBBS_static_813E6D0
     bl reqBBS_813E834
     bl reqBBS_813E890
-    bl reqBBS_uncomp_813E5A0 // () -> void
+    bl reqBBS_decomp_813E5A0 // () -> void
     ldrh r0, [r5,#0x24] // reqBBS_GUI.pagePos
     bl reqBBS_813E8CC
     bl reqBBS_813EEF4
@@ -77,7 +78,7 @@ reqBBS_static_draw_813E0F8:
     bl sub_80015FC
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     // a1
     ldr r0, off_813E178 // =unk_813DBDC 
     bl sub_80465A0 // (void *a1) -> void
@@ -138,7 +139,7 @@ loc_813E1A2:
     strh r0, [r5,#0x22] // reqBBS_GUI.RO_cursorPos
     ldrh r0, [r5,#0x24] // reqBBS_GUI.pagePos
     strh r0, [r5,#0x26] // reqBBS_GUI.RO_pagePos
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_813E1B6
     mov r0, #0
     bl reqBBS_static_813EC10
@@ -160,7 +161,7 @@ reqBBS_draw_813E1C8:
     ldr r1, dword_813E220 // =0x1F40 
     strh r1, [r0]
     bl reqBBS_813E534
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_813E21C
     ldrb r0, [r5,#0x5] // reqBBS_GUI.numNewRequests
     ldr r1, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
@@ -400,7 +401,7 @@ reqBBS_draw_813E398:
     strb r1, [r0,#7]
     mov r1, #0x50 
     strb r1, [r0,#6]
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_813E3EA
     mov r7, r10
     ldr r7, [r7,#0x20]
@@ -450,7 +451,7 @@ reqBBS_draw_813E3F4:
     strb r1, [r0,#7]
     mov r1, #0x50 
     strb r1, [r0,#6]
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_813E446
     mov r7, r10
     ldr r7, [r7,#0x20] // Toolkit.unk_2009740
@@ -562,7 +563,7 @@ loc_813E4C8:
     strb r0, [r5,#8]
     mov r0, #0x10
     mov r1, #8
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
 loc_813E4EC:
     bl reqBBS_813E534
 .endfunc // reqBBS_draw_813E4AC
@@ -590,7 +591,7 @@ reqBBS_draw_813E4F4:
     bne loc_813E522
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #8
     strb r0, [r5]
     b loc_813E52A
@@ -661,9 +662,9 @@ dword_813E59C:    .word 0xC000
 .func
 .thumb_func
 // () -> void
-reqBBS_uncomp_813E5A0:
+reqBBS_decomp_813E5A0:
     push {r5,lr}
-    ldrb r0, [r5,#4]
+    ldrb r0, [r5,#0x4] // reqBBS_GUI.unk_04
     lsl r0, r0, #3
     ldr r3, off_813E5C8 // =dword_813DF7C+208 
     add r3, r3, r0
@@ -671,26 +672,26 @@ reqBBS_uncomp_813E5A0:
     // src
     ldr r0, [r3]
     // dest
-    ldr r1, off_813E5CC // =unk_2025A00 
+    ldr r1, off_813E5CC // =decomp_2025A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     pop {r3}
     // src
     ldr r0, [r3,#4]
-    // dest
-    ldr r1, off_813E5D0 // =unk_2029A00 
+    // dest (likely decompressed dialog)
+    ldr r1, off_813E5D0 // =decomp_2029A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     // src
     ldr r0, off_813E5D4 // =dword_87EE1AC 
     // dest
-    ldr r1, off_813E5D8 // =unk_2033A00 
+    ldr r1, off_813E5D8 // =decomp_2033A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     pop {r5,pc}
 off_813E5C8:    .word dword_813DF7C+0xD0
-off_813E5CC:    .word unk_2025A00
-off_813E5D0:    .word unk_2029A00
+off_813E5CC:    .word decomp_2025A00
+off_813E5D0:    .word decomp_2029A00
 off_813E5D4:    .word dword_87EE1AC
-off_813E5D8:    .word unk_2033A00
-.endfunc // reqBBS_uncomp_813E5A0
+off_813E5D8:    .word decomp_2033A00
+.endfunc // reqBBS_decomp_813E5A0
 
 .func
 .thumb_func
@@ -1348,7 +1349,7 @@ reqBBS_static_813EC54:
     push {lr}
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #8
     strb r0, [r5]
     mov r0, #0x68 
@@ -2238,6 +2239,7 @@ dword_813F380:    .word 0x1000000, 0x1010000, 0x1000000, 0x1000002, 0x1010102
 
 .func
 .thumb_func
+// (int a1) -> void
 reqBBS_init_s_2005780:
     push {r4-r7,lr}
     push {r0}
@@ -2372,7 +2374,7 @@ loc_813F4B6:
     bl sub_80015FC
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     ldr r0, off_813F534 // =reqBBS_entriesGfx 
     bl sub_80465A0 // (void *a1) -> void
     ldrh r0, [r5,#0x1e]
@@ -2432,7 +2434,7 @@ loc_813F56A:
     strh r0, [r5,#0x22]
     ldrh r0, [r5,#0x24]
     strh r0, [r5,#0x26]
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_813F57E
     mov r0, #0
     bl reqBBS_8140358
@@ -2456,7 +2458,7 @@ reqBBS_813F590:
     bl reqBBS_813F8F0
 .endfunc // reqBBS_813F590
 
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_813F5E4
     ldrb r0, [r5,#5]
     ldr r1, [r5,#0x28]
@@ -2689,7 +2691,7 @@ reqBBS_813F754:
     strb r1, [r0,#7]
     mov r1, #0x50 
     strb r1, [r0,#6]
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_813F7A6
     mov r7, r10
     ldr r7, [r7,#0x20]
@@ -2739,7 +2741,7 @@ reqBBS_813F7B0:
     strb r1, [r0,#7]
     mov r1, #0x50 
     strb r1, [r0,#6]
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_813F802
     mov r7, r10
     ldr r7, [r7,#0x20]
@@ -2851,7 +2853,7 @@ loc_813F884:
     strb r0, [r5,#8]
     mov r0, #0x10
     mov r1, #8
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
 loc_813F8A8:
     bl reqBBS_813F8F0
 .endfunc // reqBBS_813F868
@@ -2879,7 +2881,7 @@ reqBBS_813F8B0:
     bne loc_813F8DE
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #8
     strb r0, [r5]
     b loc_813F8E6
@@ -2961,25 +2963,25 @@ reqBBS_copyTextDataToRAM:
     // src
     ldr r0, [r3]
     // dest
-    ldr r1, off_813F990 // =unk_2025A00 
+    ldr r1, off_813F990 // =decomp_2025A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     pop {r3}
     // src
     ldr r0, [r3,#4]
     // dest
-    ldr r1, off_813F994 // =unk_2029A00 
+    ldr r1, off_813F994 // =decomp_2029A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     // src
     ldr r0, off_813F998 // =dword_87EFE14 
     // dest
-    ldr r1, off_813F99C // =unk_2033A00 
+    ldr r1, off_813F99C // =decomp_2033A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     pop {r5,pc}
 off_813F98C:    .word off_813F378
-off_813F990:    .word unk_2025A00
-off_813F994:    .word unk_2029A00
+off_813F990:    .word decomp_2025A00
+off_813F994:    .word decomp_2029A00
 off_813F998:    .word dword_87EFE14
-off_813F99C:    .word unk_2033A00
+off_813F99C:    .word decomp_2033A00
 .endfunc // reqBBS_copyTextDataToRAM
 
 .func
@@ -3106,7 +3108,7 @@ reqBBS_813FA54:
     strb r1, [r0,#7]
     mov r1, #0x50 
     strb r1, [r0,#6]
-    bl engine_isScreeneffectAnimating
+    bl engine_isScreeneffectAnimating // () -> zf
     beq loc_813FAA6
     mov r7, r10
     ldr r7, [r7,#0x20]
@@ -4310,7 +4312,7 @@ reqBBS_81403A8:
     push {lr}
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1) -> void
     mov r0, #8
     strb r0, [r5]
     mov r0, #0x68 
