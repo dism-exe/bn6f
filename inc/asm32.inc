@@ -89,7 +89,7 @@
 .global sub_811EC00
 .global sub_811EC10
 .global sub_811EC50
-.global loc_811ED1C
+.global ho_811ED1C // () -> void
 .global sub_811F290
 .global sub_811F6C0
 .global sub_811F6E0
@@ -134,8 +134,8 @@
 .global sub_81207F8
 .global sub_8120900
 .global sub_81209DC
-.global sub_8120A38 // () -> (int n1, int n2, int n3, int n4)
-.global sub_8120A88 // () -> void
+.global sub_8120A38
+.global sub_8120A88
 .global sub_8120AB8
 .global sub_8120B54
 .global sub_8120BE4
@@ -223,7 +223,7 @@
 // .global sub_809F68C
 
 .include "asm00.inc"
-// .global sound_play
+// .global sound_play // () -> void
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8000900 // (int a1, int a2) -> void
@@ -232,18 +232,18 @@
 // .global sub_800098C
 // .global loc_8000AC4
 // .global loc_8000AC8
-// .global decomp_initGfx_8000B30 // (u32 *dataList) -> void
-// .global decomp_initGfx_8000B8E // (u32 *dataList) -> void
+// .global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+// .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
-// .global getPETNaviSelect
+// .global getPETNaviSelect // () -> u8
 // .global sub_800139A
 // .global sub_800151C
 // .global sub_8001532
 // .global sub_8001562
 // .global sub_80015FC
 // .global sub_8001850
-// .global drawTiles // (int a1, int a2, int a3) -> void
+// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_8001B1C
 // .global sub_8001B84
 // .global loc_8002676
@@ -279,12 +279,12 @@
 // .global sub_800308A
 // .global sub_80030A8
 // .global sub_8005524
-// .global engine_setScreeneffect // (int a1) -> void
+// .global engine_setScreeneffect
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global dword_80065D0
 // .global dword_8006660
 // .global sub_80077B4
-// .global battle_isPaused // () -> zf
+// .global battle_isPaused
 // .global battle_isTimeStop
 // .global sub_800A11C
 // .global battle_isBattleOver
@@ -599,7 +599,7 @@
 .equ unk_2031344, 0x2031344
 .equ unk_2032A04, 0x2032A04
 .equ unk_2032D00, 0x2032D00
-.equ decomp_2033A00, 0x2033A00
+.equ unk_2033A00, 0x2033A00
 .equ unk_20343E0, 0x20343E0
 .equ unk_20347D8, 0x20347D8
 .equ unk_2034B6C, 0x2034B6C
@@ -659,8 +659,8 @@
 .equ dword_82FCA14, 0x82FCA14
 .equ dword_86A5D60, 0x86A5D60
 .equ dword_86B7AE0, 0x86B7AE0
-.equ loc_86CAC4C, 0x86CAC4C
-.equ loc_86CB360, 0x86CB360
+.equ PET_Gfx_tileRefs, 0x86CAC4C
+.equ unk_86CB360, 0x86CB360
 .equ dword_86CF4AC, 0x86CF4AC
 .equ dword_86DC2C4, 0x86DC2C4
 .equ dword_86E2E98, 0x86E2E98

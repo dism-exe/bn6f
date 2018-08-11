@@ -37,15 +37,15 @@
 // .global sub_809E2B8
 
 .include "asm00.inc"
-// .global sound_play
-// .global getPETNaviSelect
+// .global sound_play // () -> void
+// .global getPETNaviSelect // () -> u8
 // .global sub_80010D4
 // .global sub_8001158 // () -> void
 // .global off_8001800
 // .global sub_8004822
 // .global sub_80048B2
 // .global sub_8005D88
-// .global engine_setScreeneffect // (int a1) -> void
+// .global engine_setScreeneffect
 // .global engine_isScreeneffectAnimating // () -> zf
 
 .include "reqBBS.inc"

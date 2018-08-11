@@ -36,10 +36,10 @@
 .global loc_813D48C
 .global sub_813D5C8
 .global sub_813D5D0
-.global sub_813D60C // () -> zf
+.global sub_813D60C
 .global sub_813D638
 .global sub_813D648
-.global sub_813D66C // () -> void
+.global sub_813D66C
 .global sub_813D760
 .global sub_813D78C
 .global sub_813D7B8
@@ -80,14 +80,14 @@
 // .global sub_8136C24
 
 .include "asm00.inc"
-// .global sound_play
+// .global sound_play // () -> void
 // .global sub_80008B4
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global copyMemory // (void *src, void* dest, int size) -> void
 // .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
 // .global CpuSet_800093C
 // .global initMemblockToByte
-// .global getPETNaviSelect
+// .global getPETNaviSelect // () -> u8
 // .global sub_80010BE
 // .global sub_800151C
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
@@ -100,7 +100,7 @@
 // .global sub_814692C
 // .global sub_8146B70
 // .global sub_8146E78
-// .global sub_8147B3C // () -> void
+// .global sub_8147B3C
 // .global sub_8148884
 // .global sub_8148FC0
 // .global sub_8149718

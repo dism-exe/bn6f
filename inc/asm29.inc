@@ -125,10 +125,10 @@
 // .global sub_809E462
 
 .include "asm00.inc"
-// .global sound_play
+// .global sound_play // () -> void
 // .global copyMemory // (void *src, void* dest, int size) -> void
 // .global CpuSet_800093C
-// .global getPETNaviSelect
+// .global getPETNaviSelect // () -> u8
 // .global sub_8001172
 // .global calcAngle_800117C
 // .global sub_800118A
@@ -162,7 +162,7 @@
 // .global sub_80037AC
 // .global sub_80047E0
 // .global sub_80048B2
-// .global engine_80062C8
+// .global sub_80062C8
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global dword_80065D0
 // .global dword_8006660

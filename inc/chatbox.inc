@@ -2,7 +2,7 @@
 .equ INC_CHATBOX, 0
 
 /* Public Symbols */
-.global chatbox_decomp_currMap_gameProgress_803FD08 // () -> int
+.global chatbox_uncomp_803FD08 // () -> int
 .global chatbox_runScript_202da04 // (u8 scriptID) -> void
 .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
 .global chatbox_803FD9C
@@ -62,7 +62,7 @@
 // .global sub_809E2B8
 
 .include "asm00.inc"
-// .global sound_play
+// .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
 // .global sub_800068A
 // .global sub_80006A2
@@ -76,11 +76,11 @@
 // .global loc_8000AC8
 // .global sub_8000C00
 // .global sub_8000C5C
-// .global getPETNaviSelect
+// .global getPETNaviSelect // () -> u8
 // .global sub_80010D4
 // .global sub_80010EC
 // .global sub_800151C
-// .global drawTiles // (int a1, int a2, int a3) -> void
+// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_8002694
 // .global sprite_loadAnimationData
 // .global sub_80026B6
@@ -95,13 +95,13 @@
 // .global sub_8002F90
 // .global sub_8003A64
 // .global sub_8005BC8
-// .global subsystem_launchBBS // (int a1) -> void
-// .global subsystem_launchReqBBS // (int a1) -> void
-// .global subsystem_launchShop // () -> void
-// .global subsystem_launchChipTrader // (int a1) -> bool
+// .global subsystem_launchBBS
+// .global subsystem_launchReqBBS
+// .global subsystem_launchShop
+// .global subsystem_launchChipTrader
 // .global sub_8005EA2
 // .global subsystem_launchMail
-// .global engine_setScreeneffect // (int a1) -> void
+// .global engine_setScreeneffect
 // .global getBattleSettingsFromList0
 // .global sub_800B6B0
 // .global sub_8013704

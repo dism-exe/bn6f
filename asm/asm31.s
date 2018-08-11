@@ -927,10 +927,10 @@ loc_80B8748:
     add r1, #1
     bl object_crackPanel
     mov r0, #0xc0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xe
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80B877E:
     mov r0, #4
     strb r0, [r5,#0xa]
@@ -1036,7 +1036,7 @@ loc_80B881A:
 sub_80B881E:
     push {r4,lr}
     mov r4, #0
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_80B8840
     ldr r3, [r5,#0x4c]
     ldrh r0, [r3,#0x24]
@@ -1409,7 +1409,7 @@ loc_80B8B30:
     strb r0, [r5,#0x10]
     mov r0, #0x33 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80B8B3C:
     ldrh r0, [r5,#0x20]
     sub r0, #1
@@ -1427,7 +1427,7 @@ loc_80B8B3C:
     bl sub_80DBB0C
     mov r0, #0xac
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x5a 
 loc_80B8B66:
     strh r0, [r5,#0x20]
@@ -1662,7 +1662,7 @@ sub_80B8DA6:
     bl battle_isTimeStop
     bne locret_80B8E2E
 loc_80B8E16:
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_80B8E2E
     bl sub_801BBAC
     pop {r4,pc}
@@ -1825,7 +1825,7 @@ sub_80B8F30:
     mov r0, #3
     strb r0, [r5,#0x10]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -1914,7 +1914,7 @@ sub_80B8FB6:
     bl sub_80B903A
     mov r0, #0x80
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x3c 
     strh r0, [r5,#0x20]
     b locret_80B8FE8
@@ -2096,7 +2096,7 @@ sub_80B910C:
     mov r0, #3
     strb r0, [r5,#0x10]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -2408,7 +2408,7 @@ sub_80B9340:
     mov r0, #3
     strb r0, [r5,#0x10]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -2495,7 +2495,7 @@ sub_80B93C6:
     mov r0, #0x13
     strb r0, [r5,#0x10]
     mov r0, #0xc6
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     bl sub_80B9458
     mov r0, #0x78 
@@ -2689,7 +2689,7 @@ sub_80B954C:
     mov r0, #3
     strb r0, [r5,#0x10]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #2
     mov r1, #6
     mov r2, #1
@@ -2828,7 +2828,7 @@ sub_80B961A:
     bl sub_80E05F6
     mov r0, #0x2e 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x3c 
     strh r0, [r5,#0x20]
     b locret_80B966A
@@ -2909,7 +2909,7 @@ sub_80B96C2:
     strb r0, [r5,#0x10]
     mov r0, #0x8a
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x5a 
     strh r0, [r5,#0x20]
     bl sub_80B9776
@@ -3108,7 +3108,7 @@ sub_80B9848:
     mov r0, #3
     strb r0, [r5,#0x10]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -3251,7 +3251,7 @@ loc_80B991A:
     bl sub_80E05F6
     mov r0, #0xb
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     mov r1, #0x1e
     bl sub_80302A8
@@ -3393,7 +3393,7 @@ sub_80B9A60:
     mov r0, #7
     strb r0, [r5,#0x10]
     mov r0, #0xe1
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -3716,7 +3716,7 @@ sub_80B9CDC:
     mov r0, #3
     strb r0, [r5,#0x10]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -3888,7 +3888,7 @@ loc_80B9E0E:
 loc_80B9E26:
     mov r0, #0x3d 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 locret_80B9E2E:
     pop {r4,pc}
 off_80B9E30:    .word dword_80B9E34
@@ -3939,7 +3939,7 @@ sub_80B9E40:
     strh r0, [r5,#0x20]
     mov r0, #0x3d 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strh r0, [r5,#0x22]
     b locret_80B9EEE
@@ -4100,7 +4100,7 @@ sub_80B9FD8:
     mov r0, #3
     strb r0, [r5,#0x10]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -4329,7 +4329,7 @@ sub_80BA152:
     strb r0, [r5,#0x10]
     mov r0, #0x59 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80BA31C
     mov r0, #0x1e
     strh r0, [r5,#0x20]
@@ -4674,7 +4674,7 @@ sub_80BA414:
     mov r0, #0x13
     strb r0, [r5,#0x10]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -4835,7 +4835,7 @@ sub_80BA528:
     bl sub_80BA6A4
     mov r0, #0xab
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x2e 
     strh r0, [r5,#0x20]
     b locret_80BA56A
@@ -4855,7 +4855,7 @@ loc_80BA54A:
 loc_80BA562:
     mov r0, #0x15
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 locret_80BA56A:
     pop {pc}
 .endfunc // sub_80BA528
@@ -5184,7 +5184,7 @@ sub_80BA7A0:
     mov r0, #3
     strb r0, [r5,#0x10]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -5289,7 +5289,7 @@ sub_80BA84C:
     strb r0, [r5,#0x10]
     bl sub_80BA946
     mov r0, #0xba
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r5,#0x20]
     b locret_80BA89A
@@ -5683,7 +5683,7 @@ sub_80BAB30:
     mov r0, #3
     strb r0, [r5,#0x10]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -5762,7 +5762,7 @@ sub_80BABAC:
     bl sprite_setPallete
     mov r0, #0x35 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#4]
     strh r0, [r5,#0x20]
     mov r1, #0x14
@@ -5791,7 +5791,7 @@ loc_80BABDA:
     bl sprite_setPallete
     mov r0, #0x35 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#4]
     strh r0, [r5,#0x20]
 loc_80BAC0E:
@@ -5815,7 +5815,7 @@ loc_80BAC0E:
 loc_80BAC34:
     mov r0, #0x83
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xc
     strb r0, [r5,#9]
     mov r0, #0
@@ -5849,7 +5849,7 @@ sub_80BAC50:
     bl sub_80BAF06
     mov r0, #0x1c
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     b locret_80BAC96
 loc_80BAC78:
     ldrh r0, [r5,#0x20]
@@ -5944,7 +5944,7 @@ sub_80BAD06:
     strb r0, [r5,#0xb]
     bl sub_80BAE7A
     mov r0, #0x99
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r5,#0x20]
     b locret_80BAD32
@@ -6408,7 +6408,7 @@ sub_80BB048:
     bl sub_80BB23E
     mov r0, #0xf
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, off_80BB288 // =0x12C 
     strh r0, [r5,#0x22]
     mov r0, #6
@@ -6443,7 +6443,7 @@ sub_80BB098:
     bl ho_80BB170
     mov r0, #0xf
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80BB0BA:
     ldr r0, [r5,#0x4c]
     ldr r0, [r0,#0x58]
@@ -6453,7 +6453,7 @@ loc_80BB0BA:
     beq locret_80BB0D0
 loc_80BB0C6:
     mov r0, #0xbd
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strh r0, [r5,#0xa]
 locret_80BB0D0:
@@ -6874,7 +6874,7 @@ loc_80BB3BC:
     bl sub_80BB59A
     mov r0, #0xf
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, off_80BB5EC // =0x12C 
     strh r0, [r5,#0x22]
     mov r0, #0xc
@@ -6905,7 +6905,7 @@ sub_80BB3F6:
     bl sub_80BB4CE
     mov r0, #0xf
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80BB418:
     ldr r0, [r5,#0x4c]
     ldr r0, [r0,#0x58]
@@ -6945,7 +6945,7 @@ loc_80BB44E:
     strh r0, [r5,#0x20]
     bge locret_80BB468
     mov r0, #0xb4
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80BB52E
     mov r0, #0x3c 
     strh r0, [r5,#0x20]
@@ -7116,7 +7116,7 @@ loc_80BB546:
 loc_80BB588:
     mov r0, #0x10
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     mov r1, #0x1e
     bl sub_80302A8
@@ -7245,7 +7245,7 @@ sub_80BB694:
     mov r0, #3
     strb r0, [r5,#0x10]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -7322,7 +7322,7 @@ sub_80BB710:
     bl sub_80BB81C
     mov r0, #0xf
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, off_80BB910 // =0x168 
     strh r0, [r5,#0x20]
     ldrb r0, [r5,#4]
@@ -7351,7 +7351,7 @@ loc_80BB754:
     bl sub_80BB81C
     mov r0, #0xf
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#4]
     strh r0, [r5,#0x22]
 locret_80BB770:
@@ -7398,7 +7398,7 @@ sub_80BB79A:
     strb r0, [r5,#0x10]
     bl sub_80BB8B0
     mov r0, #0xba
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x3c 
     strh r0, [r5,#0x20]
     b locret_80BB7CA
@@ -7664,7 +7664,7 @@ sub_80BB99C:
     mov r0, #3
     strb r0, [r5,#0x10]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -7743,7 +7743,7 @@ sub_80BBA26:
     mov r0, #4
     strb r0, [r5,#0xa]
     mov r0, #0xe3
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80BBAEC
     b locret_80BBA8C
 loc_80BBA3E:
@@ -8021,7 +8021,7 @@ sub_80BBC2C:
     mov r0, #3
     strb r0, [r5,#0x10]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -8102,7 +8102,7 @@ loc_80BBCCC:
     mov r0, #0x11
     strb r0, [r5,#0x10]
     mov r0, #0xe6
-    bl sound_play
+    bl sound_play // () -> void
 locret_80BBCD6:
     pop {pc}
 .endfunc // sub_80BBC80
@@ -8121,7 +8121,7 @@ sub_80BBCD8:
     bl sub_80BBE0E
     mov r0, #0xc1
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r4, #1
     bl sub_80E7896
     str r0, [r5,#0x60]
@@ -8187,7 +8187,7 @@ sub_80BBD60:
     str r0, [r5,#0x64]
     str r0, [r5,#0x68]
     mov r0, #0xe5
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #2
     ldrh r1, [r5,#0x20]
     bl sub_80302A8
@@ -8463,7 +8463,7 @@ sub_80BBF94:
     mov r0, #3
     strb r0, [r5,#0x10]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -8529,7 +8529,7 @@ loc_80BC012:
     tst r0, r0
     beq locret_80BC022
     mov r0, #0xad
-    bl sound_play
+    bl sound_play // () -> void
 locret_80BC022:
     pop {pc}
 .endfunc // sub_80BBFE8
@@ -8579,7 +8579,7 @@ sub_80BC058:
     strb r1, [r5,#0xa]
     bl sub_80BC13E
     mov r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strb r0, [r5,#5]
     ldrb r0, [r5,#4]
@@ -8600,7 +8600,7 @@ loc_80BC080:
     bgt locret_80BC0AE
     bl sub_80BC160
     mov r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#5]
     add r0, #1
     strb r0, [r5,#5]
@@ -9100,7 +9100,7 @@ sub_80BC434:
     bl sub_802D234
     cmp r0, #6
     beq loc_80BC446
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_80BC464
 loc_80BC446:
     ldr r3, [r5,#0x4c]
@@ -9125,7 +9125,7 @@ loc_80BC464:
 .thumb_func
 sub_80BC468:
     push {r4-r7,lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_80BC492
     ldr r3, [r5,#0x4c]
     ldrh r0, [r3,#0x24]
@@ -9499,7 +9499,7 @@ loc_80BC7AC:
     mov r0, #1
     str r0, [r5,#0x74]
     mov r0, #0x8c
-    bl sound_play
+    bl sound_play // () -> void
 loc_80BC7C4:
     mov r0, #0x62 
     ldrh r1, [r5,r0]
@@ -9724,7 +9724,7 @@ locret_80BC974:
 .thumb_func
 sub_80BC976:
     push {r4-r7,lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_80BC996
     bl battle_isTimeStop
     bne locret_80BC996
@@ -9784,7 +9784,7 @@ locret_80BC9D0:
 sub_80BC9D2:
     push {r4-r7,lr}
     mov r4, #0
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_80BC9F4
     ldr r3, [r5,#0x4c]
     ldr r0, [r3,#0x54]
@@ -9964,7 +9964,7 @@ locret_80BCB32:
 sub_80BCB34:
     push {r4,lr}
     mov r4, #0
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_80BCB4A
     bl battle_isTimeStop
     bne loc_80BCB4A
@@ -10115,7 +10115,7 @@ loc_80BCC4E:
     strb r1, [r0,#0x10]
     mov r0, #0x81
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strh r0, [r5,#0xa]
 locret_80BCC86:
@@ -10423,7 +10423,7 @@ sub_80BCEB2:
     mov r1, #0x28 
     strh r1, [r0,#0x20]
     mov r0, #0x71 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x3c 
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -10449,7 +10449,7 @@ loc_80BCEF0:
     mov r1, #0x14
     strh r1, [r0,#0x20]
     mov r0, #0x72 
-    bl sound_play
+    bl sound_play // () -> void
 loc_80BCF20:
     ldrh r0, [r5,#0x20]
     sub r0, #1
@@ -10517,7 +10517,7 @@ sub_80BCF7A:
     mov r0, #0xf
     strh r0, [r5,#0x20]
     mov r0, #0x6a 
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r5,#0x64]
     bl sub_80B8E58
     mov r0, #0x64 
@@ -10646,7 +10646,7 @@ sub_80BD084:
     mov r0, #0x1f
     strb r0, [r5,#0xc]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -10778,7 +10778,7 @@ sub_80BD156:
     add r7, r7, r5
     bl sub_80B8E30
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xf
     strh r0, [r5,#0x20]
     bl sub_80BD2D8
@@ -11230,7 +11230,7 @@ sub_80BD4DC:
     mov r0, #0x1f
     strb r0, [r5,#7]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -11492,7 +11492,7 @@ sub_80BD6B6:
     add r7, r7, r5
     bl sub_80B8E30
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xa
     strh r0, [r5,#0x20]
     mov r0, #5
@@ -11692,7 +11692,7 @@ sub_80BD834:
     tst r0, r0
     bne loc_80BD850
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strh r0, [r5,#0x20]
     mov r0, #3
@@ -11820,7 +11820,7 @@ sub_80BD8BC:
     bl sub_80E05F6
     pop {r0,r1}
     mov r0, #0xc7
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #3
     mov r1, #0x23 
     bl sub_80302A8
@@ -12084,7 +12084,7 @@ sub_80BDB04:
     ldr r1, dword_80BDBA0 // =0x7FFF 
     strh r1, [r0,#0x20]
     mov r0, #0x71 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strh r0, [r5,#0x22]
     mov r0, #4
@@ -12126,7 +12126,7 @@ sub_80BDB3C:
     mov r1, #0x1e
     strh r1, [r0,#0x20]
     mov r0, #0x72 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strh r0, [r5,#0x22]
     mov r0, #8
@@ -12350,7 +12350,7 @@ sub_80BDD40:
     tst r0, r0
     bne loc_80BDD5C
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x3c 
     strh r0, [r5,#0x20]
     mov r0, #3
@@ -12446,7 +12446,7 @@ sub_80BDDCA:
     mov r0, #0xa
     strh r0, [r5,#0x20]
     mov r0, #0x6a 
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r5,#0x68]
     bl sub_80B8E58
     ldr r0, [r5,#0x70]
@@ -12698,7 +12698,7 @@ sub_80BDFA6:
     mov r0, #5
     strb r0, [r5,#0x10]
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r5,#0x4c]
     ldr r0, [r0,#0x58]
     ldrb r1, [r0]
@@ -12908,7 +12908,7 @@ sub_80BE144:
     tst r0, r0
     bne loc_80BE160
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x3c 
     strh r0, [r5,#0x20]
     mov r0, #1
@@ -12962,7 +12962,7 @@ sub_80BE190:
     add r7, r7, r5
     bl sub_80B8E30
     mov r0, #0xf8
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_80BE1B4:
@@ -13171,7 +13171,7 @@ sub_80BE312:
     mov r0, #5
     strb r0, [r5,#0x10]
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -13707,7 +13707,7 @@ locret_80BE73C:
 sub_80BE73E:
     push {r4-r7,lr}
     mov r4, #0
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_80BE766
     ldr r3, [r5,#0x4c]
     ldrh r0, [r3,#0x24]
@@ -14093,7 +14093,7 @@ sub_80BEA78:
     cmp r0, #3
     bge loc_80BEA98
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -14140,7 +14140,7 @@ sub_80BEACE:
     strh r0, [r5,#0x20]
     mov r0, #0x11
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_80BEAE6:
@@ -14296,7 +14296,7 @@ sub_80BEBD8:
     cmp r0, #3
     bge loc_80BEBF8
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     orr r0, r1
@@ -14469,7 +14469,7 @@ sub_80BED0C:
     mov r0, #5
     strb r0, [r5,#0x10]
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#6]
     ldr r1, dword_80BEDF0 // =dword_80BEDA8 
     ldrb r0, [r0,r1]
@@ -14594,7 +14594,7 @@ sub_80BEE04:
     strb r1, [r0]
     str r0, [r5,#0x68]
     mov r0, #0xba
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x46 
     strh r0, [r5,#0x20]
     ldr r4, dword_80BF234 // =0x10A00 
@@ -14683,7 +14683,7 @@ sub_80BEEA2:
     mov r0, #0x1e
     strh r0, [r5,#0x20]
     mov r0, #0xf0
-    bl sound_play
+    bl sound_play // () -> void
     ldr r4, dword_80BF234 // =0x10A00 
     bl sub_80E11E0
     ldr r1, dword_80BF240 // =0x10000 
@@ -14760,7 +14760,7 @@ sub_80BEF48:
     strb r0, [r5,#0x10]
     mov r0, #0x20 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r4, dword_80BF244 // =0x1002A 
     mov r7, #0x64 
     add r7, r7, r5
@@ -14871,7 +14871,7 @@ sub_80BF000:
     mov r1, #0x46 
     strh r1, [r0,#0x20]
     mov r0, #0x71 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_80BF03A:
@@ -14895,7 +14895,7 @@ loc_80BF03A:
     mov r1, #0x14
     strh r1, [r0,#0x20]
     mov r0, #0x72 
-    bl sound_play
+    bl sound_play // () -> void
 loc_80BF06A:
     ldrh r0, [r5,#0x20]
     add r0, #1
@@ -14956,7 +14956,7 @@ loc_80BF08E:
     ldr r4, dword_80BF254 // =0x12300 
     bl sub_80E11E0
     mov r0, #0xc3
-    bl sound_play
+    bl sound_play // () -> void
 loc_80BF0DE:
     ldrh r0, [r5,#0x20]
     add r0, #1
@@ -15236,7 +15236,7 @@ sub_80BF2FC:
     tst r0, r0
     bne loc_80BF312
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x3c 
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -15368,7 +15368,7 @@ sub_80BF3CC:
     strh r0, [r5,#0x20]
     mov r0, #0x11
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_80BF3E8:
@@ -15542,7 +15542,7 @@ sub_80BF4EC:
     strh r0, [r5,#0x20]
     mov r0, #0x11
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_80BF508:
@@ -15663,7 +15663,7 @@ loc_80BF5A0:
     str r0, [r5,#0x48]
     mov r0, #0x80
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strh r0, [r5,#0xa]
 locret_80BF5DE:
@@ -15698,7 +15698,7 @@ sub_80BF5E0:
     b loc_80BF656
 loc_80BF614:
     mov r0, #0xc3
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #3
     mov r1, #0x1e
     bl sub_80302A8
@@ -15955,7 +15955,7 @@ sub_80BF81C:
     tst r0, r0
     bne loc_80BF83C
     mov r0, #0xfc
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strh r0, [r5,#0x20]
     strh r0, [r5,#0x22]
@@ -16044,7 +16044,7 @@ sub_80BF8A8:
     add r7, r7, r5
     bl sub_80B8E30
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_80BF8CC:
@@ -16082,7 +16082,7 @@ loc_80BF8FC:
     bne loc_80BF90A
     mov r0, #0x2c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80BF90A:
     ldrh r0, [r5,#0x22]
     add r0, #1
@@ -16277,7 +16277,7 @@ sub_80BFA38:
     bne loc_80BFA74
     mov r0, #0x3c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strh r0, [r5,#0x20]
     bl sub_800E2CA
@@ -16399,7 +16399,7 @@ sub_80BFAF8:
     mov r1, #0x1e
     strh r1, [r0,#0x20]
     mov r0, #0x71 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x28 
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -16425,7 +16425,7 @@ loc_80BFB36:
     mov r1, #0xa
     strh r1, [r0,#0x20]
     mov r0, #0x72 
-    bl sound_play
+    bl sound_play // () -> void
 loc_80BFB66:
     ldrh r0, [r5,#0x20]
     sub r0, #1
@@ -16453,7 +16453,7 @@ sub_80BFB74:
     add r7, r7, r5
     bl sub_80B8E30
     mov r0, #0xce
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_80BFB98:
@@ -17161,7 +17161,7 @@ sub_80C00CE:
 sub_80C00EA:
     push {r4,lr}
     mov r4, #0
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_80C0112
     bl battle_isTimeStop
     bne loc_80C0112
@@ -17356,7 +17356,7 @@ loc_80C0278:
     bne loc_80C028A
     mov r0, #0x7c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80C028A:
     bl sub_80C02F8
     bl sub_8002DEA
@@ -17436,7 +17436,7 @@ sub_80C02DA:
 sub_80C02F8:
     push {r4,lr}
     mov r4, #0
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_80C031A
     ldr r3, [r5,#0x4c]
     ldrh r0, [r3,#0x24]
@@ -17715,7 +17715,7 @@ sub_80C04CC:
     orr r0, r1
     strb r0, [r5]
     mov r0, #0x8c
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     ldrb r1, [r5,#4]
     mov r2, #1
@@ -18203,7 +18203,7 @@ sub_80C088C:
     mov r0, #0x1f
     strb r0, [r5,#0x19]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -18310,7 +18310,7 @@ sub_80C0956:
     mov r0, #2
     strh r0, [r5,#0x10]
     mov r0, #0xbe
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #5
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -18547,7 +18547,7 @@ loc_80C0AEC:
     cmp r0, #1
     bne loc_80C0B00
     mov r0, #0xbf
-    bl sound_play
+    bl sound_play // () -> void
 loc_80C0B00:
     ldrh r0, [r5,#0x20]
     sub r0, #1
@@ -18637,7 +18637,7 @@ sub_80C0B90:
     mov r0, #2
     strh r0, [r5,#0x10]
     mov r0, #0xbe
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #5
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -19430,7 +19430,7 @@ sub_80C114E:
     bl sub_802D234
     cmp r0, #6
     beq loc_80C1160
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_80C117E
 loc_80C1160:
     ldr r3, [r5,#0x4c]
@@ -19822,7 +19822,7 @@ locret_80C145E:
 sub_80C1466:
     push {r4,lr}
     mov r4, #0
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_80C148E
     ldr r3, [r5,#0x4c]
     ldrh r0, [r3,#0x24]
@@ -19898,7 +19898,7 @@ dword_80C14E4:    .word 0x1, 0xFFFFFFFF
 sub_80C14EC:
     push {r4,lr}
     mov r4, #0
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_80C1510
     ldr r3, [r5,#0x4c]
     ldrh r0, [r3,#0x24]
@@ -20064,7 +20064,7 @@ sub_80C1630:
     tst r0, r0
     bne loc_80C1648
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x18
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -20083,7 +20083,7 @@ loc_80C1648:
     strb r0, [r5,#0x10]
     mov r0, #0x44 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strh r0, [r5,#0xa]
 locret_80C1668:
@@ -20245,7 +20245,7 @@ loc_80C1764:
     bl sub_80C188C
     mov r0, #0xb
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xc
     strh r0, [r5,#0xa]
 locret_80C1784:
@@ -20681,7 +20681,7 @@ sub_80C1AB8:
     orr r0, r1
     strb r0, [r5]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #3
     strh r0, [r5,#0x20]
     b locret_80C1AEC
@@ -20766,7 +20766,7 @@ sub_80C1B2E:
     mov r0, #5
     strb r0, [r5,#0x10]
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     ldr r4, dword_80C1BC4 // =0x10C03 
     mov r7, #0x64 
     add r7, r7, r5
@@ -20877,7 +20877,7 @@ sub_80C1BEC:
     mov r0, #1
     bl sub_80C2000
     mov r0, #0xf0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xa
     strh r0, [r5,#0x22]
     b locret_80C1C98
@@ -20993,7 +20993,7 @@ sub_80C1CC4:
     add r7, r7, r5
     bl sub_80B8E30
     mov r0, #0xb9
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #5
     strh r0, [r5,#0x22]
     b locret_80C1D96
@@ -21038,7 +21038,7 @@ loc_80C1D62:
     strb r0, [r5,#0x11]
     bl sub_80C20B4
     mov r0, #0xb9
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r5,#0x64]
     bl sub_80B8E7C
     ldr r0, [r5,#0x68]
@@ -21115,7 +21115,7 @@ sub_80C1DC4:
     mov r0, #0
     bl sub_80C2082
     mov r0, #0xc7
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #2
     ldrh r1, [r5,#0x20]
     add r1, #0x1e
@@ -21155,7 +21155,7 @@ loc_80C1E52:
     bl sub_80C2000
     mov r0, #0x59 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     bl sub_80C2082
     b locret_80C1E78
@@ -21567,7 +21567,7 @@ sub_80C21E0:
     orr r0, r1
     strb r0, [r5]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #3
     strh r0, [r5,#0x20]
     b locret_80C2214
@@ -21659,7 +21659,7 @@ sub_80C2256:
     mov r0, #0
     bl sub_80C2600
     mov r0, #0xb8
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strh r0, [r5,#0x22]
     b locret_80C22FA
@@ -21762,7 +21762,7 @@ sub_80C2324:
     strb r1, [r5,#0x15]
     bl sub_801BB1C
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #5
     strb r0, [r5,#0x10]
     ldr r4, dword_80C23C8 // =0x10D03 
@@ -21869,7 +21869,7 @@ sub_80C23F0:
     strb r1, [r5,#0x15]
     bl sub_801BB1C
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #5
     strb r0, [r5,#0x10]
     ldr r4, dword_80C2494 // =0x10D03 
@@ -22299,7 +22299,7 @@ sub_80C27B4:
     mov r0, #0x1f
     strb r0, [r5,#0x19]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -22555,7 +22555,7 @@ sub_80C296C:
     add r7, r7, r5
     bl sub_80B8E30
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x14
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -22781,7 +22781,7 @@ sub_80C2B3C:
     mov r0, #0x1f
     strb r0, [r5,#0x19]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -22836,7 +22836,7 @@ sub_80C2B8C:
     mov r4, #3
     bl sub_80E05F6
     mov r0, #0x77 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
     b locret_80C2BE4
@@ -22995,7 +22995,7 @@ loc_80C2CCA:
     ldrh r1, [r5,#0x20]
     strh r1, [r0,#0x20]
     mov r0, #0xbd
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
     b locret_80C2D04
@@ -23110,7 +23110,7 @@ sub_80C2D8C:
     bl sub_80B8E30
     pop {r7}
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x14
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -23420,7 +23420,7 @@ loc_80C2FC6:
     mov r1, #0x3c 
     strh r1, [r0,#0x20]
     mov r0, #0x92
-    bl sound_play
+    bl sound_play // () -> void
     push {r4}
     ldr r4, dword_80C2FFC // =0x11400 
     bl sub_80E11E0
@@ -23755,7 +23755,7 @@ sub_80C323C:
     bl sub_80C3460
     mov r0, #0x13
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strb r0, [r5,#0xe]
     mov r0, #0
@@ -23976,7 +23976,7 @@ sub_80C3408:
     beq loc_80C341C
     mov r0, #0x23 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80C341C:
     bl sub_801A074
     ldrh r0, [r5,#0x20]
@@ -24159,7 +24159,7 @@ sub_80C3584:
     strh r0, [r5,#0x20]
     mov r0, #0x21 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strh r0, [r5,#0xa]
     pop {pc}
@@ -24238,7 +24238,7 @@ loc_80C3616:
     pop {r5}
     mov r0, #0x27 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xc
     strh r0, [r5,#0xa]
 locret_80C3624:
@@ -24450,7 +24450,7 @@ sub_80C3758:
     strh r0, [r5,#0x20]
     mov r0, #0x17
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80C37AC
@@ -24529,7 +24529,7 @@ sub_80C3816:
     mov r0, #0x1e
     strh r0, [r5,#0x20]
     mov r0, #0xd4
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strh r0, [r5,#0xa]
 locret_80C383C:
@@ -24586,7 +24586,7 @@ loc_80C3890:
     mov r0, #0xa
     strh r0, [r5,#0x20]
     mov r0, #0xb2
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x10
     strh r0, [r5,#0xa]
 locret_80C389E:
@@ -24788,7 +24788,7 @@ sub_80C39BA:
     bl sub_80C468C
     str r0, [r5,#0x4c]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x64 
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -25258,7 +25258,7 @@ sub_80C3D32:
     bl sub_80C468C
     str r0, [r5,#0x4c]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x32 
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -25340,7 +25340,7 @@ loc_80C3E10:
     mov r0, #0xd
     strb r0, [r5,#0x10]
     mov r0, #0xfd
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -25602,7 +25602,7 @@ loc_80C3FF0:
 loc_80C4004:
     bl battle_isTimeStop
     bne locret_80C4036
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_80C4036
     ldr r0, [r5,#0x4c]
     ldr r0, [r0,#0x54]
@@ -25823,7 +25823,7 @@ loc_80C41BE:
 loc_80C41C0:
     bl battle_isTimeStop
     bne locret_80C41D6
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_80C41D6
     bl sub_801BBAC
     b locret_80C41D6
@@ -26477,7 +26477,7 @@ sub_80C4766:
     bne loc_80C47E6
     bl battle_isTimeStop
     bne locret_80C47EA
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_80C47EA
     bl sub_801BBAC
     b locret_80C47EA
@@ -26689,7 +26689,7 @@ loc_80C4978:
     strh r0, [r5,#0x22]
     bl sprite_forceWhitePallete
     mov r0, #0xd1
-    bl sound_play
+    bl sound_play // () -> void
 loc_80C4990:
     ldrh r0, [r5,#0x20]
     add r0, #1
@@ -26784,7 +26784,7 @@ loc_80C4A0E:
     bl sub_80101AE
     pop {r5}
     mov r0, #0x93
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r5,#0x60]
     mov r1, #0
     strb r1, [r0]
@@ -26819,9 +26819,9 @@ sub_80C4A6C:
     mov r0, #0x1e
     strh r0, [r5,#0x20]
     mov r0, #0x77 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xd1
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_80C4A94:
@@ -26910,7 +26910,7 @@ loc_80C4B18:
     bx r1
     bl battle_isTimeStop
     bne locret_80C4B34
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_80C4B34
     bl sub_801BC64
 locret_80C4B34:
@@ -27342,7 +27342,7 @@ sub_80C5014:
     mov r1, #0x28 
     bl sub_80302A8
     mov r0, #0xc3
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800E2CA
     lsl r0, r0, #1
     ldrb r1, [r5,#0x12]
@@ -27372,7 +27372,7 @@ sub_80C5050:
     mov r1, #0x28 
     bl sub_80302A8
     mov r0, #0xc3
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
     push {r0,r1}
@@ -27596,7 +27596,7 @@ loc_80C5234:
     bl sub_801A146
     bl sub_801A018
     ldrb r0, [r7,#2]
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     pop {r7,pc}
@@ -28196,7 +28196,7 @@ sub_80C5760:
     strh r0, [r5,#0x22]
     bge loc_80C5774
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strh r0, [r5,#0x22]
 loc_80C5774:
@@ -28438,7 +28438,7 @@ loc_80C5958:
     strb r0, [r5,#0x10]
     mov r0, #0xd1
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#9]
     mov r0, #0
@@ -28855,7 +28855,7 @@ loc_80C5CC0:
     mov r7, #0
     bl sub_801BD3C
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#9]
     mov r0, #0
@@ -29056,7 +29056,7 @@ loc_80C5EB2:
     bl sub_8109794
 loc_80C5EF2:
     mov r0, #0xb9
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#9]
     mov r0, #0
@@ -29382,7 +29382,7 @@ loc_80C61B2:
     bne loc_80C6238
     mov r0, #0x8b
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     b loc_80C6238
 loc_80C61D6:
     ldr r1, [r5,#0x3c]
@@ -29725,7 +29725,7 @@ sub_80C6438:
     ldr r0, dword_80C656C // =0x1000000 
     str r0, [r5,#0x3c]
     mov r0, #0xa1
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl sub_80C647C
@@ -29818,7 +29818,7 @@ sub_80C6524:
     mov r0, #1
     strb r0, [r5,#0x10]
     mov r0, #0xa2
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#9]
     pop {pc}
@@ -29996,7 +29996,7 @@ loc_80C66BC:
     mov r4, #0x23 
     bl sub_80E05F6
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xc
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -30015,7 +30015,7 @@ sub_80C66E4:
     and r0, r1
     bne loc_80C66F8
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
 loc_80C66F8:
     ldrh r0, [r5,#0x22]
     sub r0, #1
@@ -30200,7 +30200,7 @@ sub_80C681C:
     strb r0, [r5,#0x11]
     bl sub_800E29C
     mov r0, #0xbb
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80C6854
@@ -30432,7 +30432,7 @@ loc_80C6A9A:
     ldrh r0, [r0,#4]
     tst r0, r0
     beq loc_80C6AA6
-    bl sound_play
+    bl sound_play // () -> void
 loc_80C6AA6:
     mov r0, #4
     strh r0, [r5,#0xa]
@@ -30572,7 +30572,7 @@ loc_80C6BE8:
     bl sub_801A140
     bl sub_801A018
     mov r0, #0xa6
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     pop {r4,r7,pc}
@@ -31199,7 +31199,7 @@ sub_80C7098:
     bl sub_800E456
     bl sub_8002F5C
     mov r0, #0xd8
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80C70D8
@@ -31364,7 +31364,7 @@ loc_80C7222:
     bl sub_8019FB4
     bl sub_801A018
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x40 
     bl object_setFlag
     mov r0, #4
@@ -31467,7 +31467,7 @@ sub_80C72DC:
     mov r0, #0xff
     strb r0, [r5,#0x11]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#9]
     mov r0, #0
@@ -31492,7 +31492,7 @@ sub_80C7306:
     bl sub_80E1E20
     pop {r7}
     mov r0, #0xc6
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80C73BE
     mov r0, #1
     strb r0, [r5,#0x10]
@@ -31525,7 +31525,7 @@ sub_80C734E:
     mov r4, #0
     bl sub_80E05F6
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_801A074
     ldr r0, [r5,#0x64]
     tst r0, r0
@@ -32842,7 +32842,7 @@ loc_80C7CA8:
     bl sub_801A018
     mov r0, #0x2f 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
 locret_80C7CBE:
@@ -33089,7 +33089,7 @@ loc_80C7ECE:
     cmp r3, #2
     bmi loc_80C7ECE
     mov r0, #0xd9
-    bl sound_play
+    bl sound_play // () -> void
     pop {pc}
 off_80C7EFC:    .word dword_80C7F00
 dword_80C7F00:    .word 0x8000
@@ -33307,7 +33307,7 @@ loc_80C80D0:
     bl sub_80E05F6
     mov r0, #7
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
 locret_80C80FE:
@@ -33363,7 +33363,7 @@ loc_80C8154:
     bl sub_80E05F6
     mov r0, #7
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80C8192:
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
@@ -33961,7 +33961,7 @@ sub_80C8660:
     push {r4,r6,lr}
     mov r0, #0x1e
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
     ldrb r2, [r5,#0xe]
@@ -34297,7 +34297,7 @@ loc_80C8934:
     and r0, r1
     ldr r1, off_80C899C // =unk_80C89A0 
     ldrb r0, [r1,r0]
-    bl sound_play
+    bl sound_play // () -> void
 loc_80C8946:
     mov r0, #4
     strb r0, [r5,#9]
@@ -34532,7 +34532,7 @@ loc_80C8B12:
     strb r0, [r5,#7]
     mov r0, #7
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strh r0, [r5,#8]
 locret_80C8B3C:
@@ -34623,7 +34623,7 @@ loc_80C8BFE:
     strh r0, [r5,#0x3e]
     mov r0, #7
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#5]
     ldrb r1, [r5,#6]
     add r0, r0, r1
@@ -34774,7 +34774,7 @@ sub_80C8D64:
     mov r1, #4
     strb r1, [r5,#0xa]
     mov r0, #0xf7
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #5
     strh r0, [r5,#0x20]
     b locret_80C8D8C
@@ -34988,7 +34988,7 @@ loc_80C8EE8:
     bgt loc_80C8F00
     mov r0, #0x2c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x10
     strh r0, [r5,#0x22]
 loc_80C8F00:
@@ -35219,7 +35219,7 @@ sub_80C9074:
     pop {r4,r6,r7,pc}
 loc_80C90A6:
     mov r0, #0xbd
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_801A074
     bl sub_80C913C
     tst r0, r0
@@ -35459,7 +35459,7 @@ loc_80C9268:
     bgt loc_80C927E
     mov r0, #0x29 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x10
     str r0, [r5,#0x64]
 loc_80C927E:
@@ -35738,11 +35738,11 @@ loc_80C948C:
     cmp r1, #0xc
     bne loc_80C94A2
     mov r0, #0xc6
-    bl sound_play
+    bl sound_play // () -> void
     b loc_80C94A8
 loc_80C94A2:
     mov r0, #0xba
-    bl sound_play
+    bl sound_play // () -> void
 loc_80C94A8:
     ldr r0, [r5,#0x4c]
     cmp r0, #0
@@ -36041,7 +36041,7 @@ sub_80C96C8:
     bl sub_800E456
     bl sub_8002F5C
     mov r0, #0xa0
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r5,#0x34]
     str r0, [r5,#0x40]
     ldr r0, [r5,#0x38]
@@ -36267,7 +36267,7 @@ loc_80C98B2:
     bl sub_801A140
     bl sub_801A018
     mov r0, #0xb4
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80C98DC
@@ -36424,7 +36424,7 @@ sub_80C9A58:
     neg r3, r3
     push {r0-r3}
     mov r0, #0xb6
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0-r3}
 loc_80C9A70:
     add r0, r0, r2
@@ -36436,7 +36436,7 @@ loc_80C9A70:
     neg r2, r2
     push {r0-r3}
     mov r0, #0xb6
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0-r3}
     b loc_80C9A9A
 loc_80C9A8A:
@@ -36445,7 +36445,7 @@ loc_80C9A8A:
     neg r2, r2
     push {r0-r3}
     mov r0, #0xb6
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0-r3}
 loc_80C9A9A:
     pop {r0,r1}
@@ -36469,7 +36469,7 @@ sub_80C9AAA:
     neg r3, r3
     push {r0-r3}
     mov r0, #0xb6
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0-r3}
 loc_80C9AC2:
     add r0, r0, r2
@@ -36479,7 +36479,7 @@ loc_80C9AC2:
     neg r2, r2
     push {r0-r3}
     mov r0, #0xb6
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0-r3}
 loc_80C9AD6:
     pop {r0,r1}
@@ -36516,7 +36516,7 @@ loc_80C9AFA:
     beq loc_80C9B24
     push {r0-r3}
     mov r0, #0xb6
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0-r3}
     b loc_80C9B28
 loc_80C9B24:
@@ -36845,7 +36845,7 @@ sub_80C9DE0:
     bl sub_801A074
     mov r0, #0x45 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80C9E06:
     ldrh r0, [r5,#0x20]
     sub r0, #1
@@ -36891,7 +36891,7 @@ sub_80C9E20:
     ldr r6, [r5,#0x2c]
     bl sub_80C6ADA
     mov r0, #0xb9
-    bl sound_play
+    bl sound_play // () -> void
 loc_80C9E5C:
     ldrh r0, [r5,#0x20]
     sub r0, #1
@@ -37147,7 +37147,7 @@ loc_80CA038:
 loc_80CA046:
     bl sub_801A018
     mov r0, #0xb8
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80CA074
@@ -37561,7 +37561,7 @@ loc_80CA374:
     bl sub_801A018
     bl sub_80CA510
     mov r0, #0xb7
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     pop {pc}
@@ -37793,7 +37793,7 @@ loc_80CA59E:
     ldrb r1, [r5,#0x13]
     bl object_breakPanel
     mov r0, #0xda
-    bl sound_play
+    bl sound_play // () -> void
     mov r1, #0xc
     mov r2, #0x33 
     mov r0, #0x80
@@ -38023,7 +38023,7 @@ loc_80CA77C:
     bl sub_801A018
     mov r0, #0x88
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl sub_80CA7AC
@@ -38333,7 +38333,7 @@ loc_80CAAA0:
     mov r7, #0
     bl sub_801BD3C
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     b loc_80CAAD8
 loc_80CAABE:
     ldrb r0, [r5,#0x12]
@@ -38345,7 +38345,7 @@ loc_80CAABE:
     mov r4, #0x11
     bl sub_80E05F6
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
 loc_80CAAD8:
     mov r0, #4
     strb r0, [r5,#9]
@@ -38772,7 +38772,7 @@ sub_80CAE28:
     mov r3, #0
     bl sub_80E05F6
     mov r0, #0xeb
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x2a 
     strh r0, [r5,#0x20]
     b locret_80CAE92
@@ -38803,7 +38803,7 @@ loc_80CAE80:
     mov r0, #0x18
     strb r0, [r5,#0x10]
     mov r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#9]
     mov r0, #0
@@ -39156,7 +39156,7 @@ sub_80CB10C:
     bl sub_800E456
     bl sub_8002F5C
     mov r0, #0xa7
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     pop {pc}
@@ -39680,7 +39680,7 @@ loc_80CB574:
     str r0, [r5,#8]
     bl sub_80CB5B4
     mov r0, #0xa7
-    bl sound_play
+    bl sound_play // () -> void
     pop {r7,pc}
 off_80CB588:    .word dword_80CB58C
 dword_80CB58C:    .word 0x30000, 0x38000, 0x40000, 0x60000, 0x68000, 0x70000
@@ -39857,7 +39857,7 @@ loc_80CB730:
     str r0, [r5,#8]
     bl sub_80CB762
     mov r0, #0xae
-    bl sound_play
+    bl sound_play // () -> void
     pop {r7,pc}
 .func
 .thumb_func
@@ -39908,7 +39908,7 @@ loc_80CB7CE:
     mov r1, #0x28 
     bl sub_80302A8
     mov r0, #0xc3
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800E2CA
     ldrb r1, [r5,#0x12]
     sub r0, r1, r0
@@ -40065,7 +40065,7 @@ sub_80CB924:
     strb r0, [r5,#0x10]
     mov r0, #0x25 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     b locret_80CB962
 loc_80CB940:
     bl sub_8002DEA
@@ -40133,7 +40133,7 @@ loc_80CB98E:
     strh r0, [r5,#0x22]
     mov r0, #0x24 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r5,#0x70]
     bl sub_80E5B88
     ldr r0, [r5,#0x68]
@@ -40415,7 +40415,7 @@ loc_80CBC00:
     bl sub_80E05F6
     mov r0, #0x13
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x12]
     strb r0, [r5,#0x14]
     ldrb r1, [r5,#0x13]
@@ -40561,7 +40561,7 @@ sub_80CBD32:
     cmp r0, #0
     bne loc_80CBD98
     mov r0, #0xc3
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
     bl sub_800C90A
@@ -40608,7 +40608,7 @@ loc_80CBD98:
     bl sub_801BD3C
     mov r0, #0x10
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80CBDC2:
     bl sub_802EF5C
     bl sub_800F656
@@ -40655,7 +40655,7 @@ sub_80CBDE6:
     b loc_80CBE38
 loc_80CBE20:
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x34 
     add r0, r0, r5
     ldmia r0!, {r1-r3}
@@ -40948,7 +40948,7 @@ sub_80CC064:
     ldr r7, dword_80CC0CC // =0x4200 
     bl sub_80C536A
     mov r0, #0xfc
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80CC090
@@ -41237,7 +41237,7 @@ loc_80CC2C6:
     strh r0, [r5,#0x24]
     strh r0, [r5,#0x26]
     mov r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strh r0, [r5,#0xa]
     pop {pc}
@@ -41858,7 +41858,7 @@ sub_80CC868:
     mov r1, #4
     strb r1, [r5,#0xa]
     mov r0, #0xb7
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#5]
     strh r0, [r5,#0x20]
     b locret_80CC890
@@ -41912,7 +41912,7 @@ sub_80CC8BA:
     mov r1, #4
     strb r1, [r5,#0xa]
     mov r0, #0xb3
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800E2CA
     add r4, r0, #0
     ldr r2, off_80CC904 // =unk_80CC908 
@@ -42153,7 +42153,7 @@ sub_80CCA60:
     str r0, [r5,#0x3c]
     mov r0, #6
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl loc_80CCAB8
@@ -42201,7 +42201,7 @@ sub_80CCAF4:
     str r0, [r5,#0x3c]
     mov r0, #0x22 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
     mov r2, #2
@@ -42408,7 +42408,7 @@ sub_80CCC68:
     tst r0, r0
     bne loc_80CCCA8
     mov r0, #0xa1
-    bl sound_play
+    bl sound_play // () -> void
 loc_80CCCA8:
     mov r0, #4
     strb r0, [r5,#8]
@@ -42448,7 +42448,7 @@ sub_80CCCE0:
     tst r0, r0
     bne loc_80CCCFC
     mov r0, #0xa2
-    bl sound_play
+    bl sound_play // () -> void
 loc_80CCCFC:
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
@@ -42922,7 +42922,7 @@ off_80CD0B8:    .word sub_80CD0E0+1
 sub_80CD0E0:
     push {lr}
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldr r7, [r5,#0x60]
     ldrb r0, [r7]
     strh r0, [r5,#0x22]
@@ -42950,7 +42950,7 @@ off_80CD10C:    .word sub_80CD114+1
 sub_80CD114:
     push {lr}
     mov r0, #0xad
-    bl sound_play
+    bl sound_play // () -> void
     add r0, r5, #0
     ldrb r1, [r5,#0x16]
     mov r2, #0
@@ -43083,7 +43083,7 @@ loc_80CD1DC:
     b loc_80CD20E
 loc_80CD1FC:
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x34 
     add r0, r0, r5
     ldmia r0!, {r1-r3}
@@ -43407,7 +43407,7 @@ loc_80CD4C0:
     cmp r7, #3
     ble loc_80CD4C0
     mov r0, #0xad
-    bl sound_play
+    bl sound_play // () -> void
     pop {r4,r6,r7,pc}
     .balign 4, 0x00
 dword_80CD4E8:    .word 0x800000
@@ -43606,7 +43606,7 @@ loc_80CD688:
     tst r0, r0
     beq loc_80CD6D4
     mov r0, #0xc0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     mov r1, #0xf
     push {r5}
@@ -43700,7 +43700,7 @@ loc_80CD73E:
     tst r0, r0
     bne loc_80CD770
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     b loc_80CD778
 loc_80CD770:
     bl battle_isTimeStop
@@ -43795,7 +43795,7 @@ sub_80CD7D0:
     bl sub_80302A8
     pop {r5}
     mov r0, #0xc3
-    bl sound_play
+    bl sound_play // () -> void
 locret_80CD820:
     pop {r4,r6,r7,pc}
     .balign 4, 0x00
@@ -43909,7 +43909,7 @@ loc_80CD958:
     ldrh r0, [r5,#0x12]
     strh r0, [r5,#0x14]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r1, #0xd8
     ldrb r0, [r5,#4]
     cmp r0, #1
@@ -44090,7 +44090,7 @@ loc_80CDB0A:
     mov r0, #0x3c 
     strh r0, [r5,#0x20]
     mov r0, #0xc1
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xa]
 locret_80CDB26:
@@ -44111,7 +44111,7 @@ sub_80CDB2C:
     mov r0, #0x3c 
     strh r0, [r5,#0x20]
     mov r0, #0xc1
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#0xa]
 locret_80CDB4A:
@@ -44137,7 +44137,7 @@ sub_80CDB50:
     tst r0, r1
     bne loc_80CDB74
     mov r0, #0xc2
-    bl sound_play
+    bl sound_play // () -> void
 loc_80CDB74:
     mov r0, #0xc
     strb r0, [r5,#0xa]
@@ -44265,7 +44265,7 @@ loc_80CDC34:
     b loc_80CDC66
 loc_80CDC54:
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x34 
     add r0, r0, r5
     ldmia r0!, {r1-r3}
@@ -44359,7 +44359,7 @@ sub_80CDCBC:
     mov r1, #0x1e
     bl sub_80302A8
     mov r0, #0xc3
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#4]
     cmp r0, #1
     bne locret_80CDD28
@@ -44550,7 +44550,7 @@ loc_80CDEA2:
     bl sub_800E29C
     mov r0, #0x14
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     pop {r7,pc}
 .endfunc // sub_80CDE68
 
@@ -44586,7 +44586,7 @@ loc_80CDEEA:
 sub_80CDEF8:
     push {lr}
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x34 
     add r0, r0, r5
     ldmia r0!, {r1-r3}
@@ -44964,7 +44964,7 @@ loc_80CE1EA:
     bl object_addHP
     pop {r5}
     mov r0, #0x8a
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r5,#0x4c]
     add r0, #0x34 
     ldmia r0!, {r1-r3}
@@ -45201,7 +45201,7 @@ loc_80CE3D6:
     add r0, r0, r0
     ldr r1, off_80CE414 // =unk_80CE418 
     ldrh r0, [r1,r0]
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     str r0, [r5,#8]
     pop {r4,r6,r7,pc}
@@ -45441,7 +45441,7 @@ loc_80CE5BA:
     bl sprite_setAnimation
     bl sprite_loadAnimationData
     mov r0, #0xb3
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80CE5F0
@@ -45512,7 +45512,7 @@ sub_80CE690:
     strh r0, [r5,#0x20]
     mov r0, #0xd1
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#5]
     tst r0, r0
     beq loc_80CE6BA
@@ -45716,7 +45716,7 @@ loc_80CE858:
     bl sub_801A018
     mov r0, #0x21 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#8]
     pop {pc}
@@ -46319,7 +46319,7 @@ loc_80CECAC:
     mov r4, #0
     bl sub_80E05F6
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80CEE38
 loc_80CECFA:
     mov r0, #8
@@ -46649,7 +46649,7 @@ loc_80CEFA8:
     ldr r6, [r5,#0x2c]
     bl sub_80C6ADA
     mov r0, #0xb9
-    bl sound_play
+    bl sound_play // () -> void
     ldrh r0, [r5,#0x22]
     sub r0, #1
     strh r0, [r5,#0x22]
@@ -46950,7 +46950,7 @@ loc_80CF202:
     b loc_80CF23A
 loc_80CF222:
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x34 
     add r0, r0, r5
     ldmia r0!, {r1-r3}
@@ -47009,7 +47009,7 @@ loc_80CF296:
     mov r0, #1
     bl sub_801A07C
     mov r0, #0xc0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#9]
     mov r0, #0
@@ -47259,7 +47259,7 @@ sub_80CF4C8:
     mov r0, #0x10
     strh r0, [r5,#0x20]
     mov r0, #0xc4
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#9]
     mov r0, #0
@@ -47291,7 +47291,7 @@ sub_80CF4E6:
     mov r4, #5
     bl sub_80E05F6
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     ldr r7, [r5,#0x60]
     ldrb r0, [r7,#4]
     tst r0, r0
@@ -47967,7 +47967,7 @@ loc_80CFAFE:
     mov r0, #1
     bl sub_801A07C
     mov r0, #0xc0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#9]
     mov r0, #0
@@ -48047,7 +48047,7 @@ loc_80CFB7A:
     bl sub_80E05F6
     ldr r1, [r5,#0x60]
     ldrh r0, [r1,#4]
-    bl sound_play
+    bl sound_play // () -> void
 loc_80CFBB6:
     ldrb r0, [r5]
     mov r1, #2
@@ -48122,7 +48122,7 @@ sub_80CFC28:
     bl sub_8019FB4
     bl sub_801A074
     mov r0, #0xad
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80CFC5E
@@ -48266,7 +48266,7 @@ sub_80CFD1C:
     bl sub_800E456
     bl sub_8002F5C
     mov r0, #0xed
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80CFD64
@@ -48601,13 +48601,13 @@ loc_80CFFE8:
     mov r0, #1
     bl sub_801A07C
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#9]
     mov r0, #0x1e
     strh r0, [r5,#0x20]
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
     pop {r4,pc}
 loc_80D0010:
     bl sub_800E2CA
@@ -48836,7 +48836,7 @@ loc_80D01AC:
     bne locret_80D01BA
     mov r0, #0x81
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 locret_80D01BA:
     pop {r4,pc}
 .endfunc // sub_80D0168
@@ -49026,7 +49026,7 @@ sub_80D0310:
     strb r1, [r5,#0xa]
     mov r0, #0x47 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xb
     strh r0, [r5,#0x20]
     b locret_80D033A
@@ -49171,7 +49171,7 @@ loc_80D0420:
     bl sub_801A140
     bl sub_801A018
     mov r0, #0xb3
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
 locret_80D043E:
@@ -49709,7 +49709,7 @@ sub_80D08CC:
     strb r1, [r5,#0xa]
     bl sub_80D0A5C
     mov r0, #0xb7
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#4]
     ldr r1, off_80D0910 // =unk_80D0914 
     ldrb r0, [r1,r0]
@@ -49785,7 +49785,7 @@ sub_80D0952:
     mov r1, #4
     strb r1, [r5,#0xa]
     mov r0, #0xb3
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80D09BE
     b locret_80D0994
 loc_80D096A:
@@ -49952,7 +49952,7 @@ sub_80D0A80:
     mov r0, #1
     strb r0, [r5,#5]
     mov r0, #0x8b
-    bl sound_play
+    bl sound_play // () -> void
 locret_80D0AA4:
     pop {pc}
     .balign 4, 0x00
@@ -50453,7 +50453,7 @@ sub_80D0E9E:
     strb r0, [r5,#0x11]
     mov r0, #0x2f 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r5,#0x20]
     mov r0, #0x14
@@ -50687,7 +50687,7 @@ sub_80D10B8:
     bl sub_801A07C
     mov r0, #0x58 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xa
     strh r0, [r5,#0x20]
     b locret_80D1104
@@ -51359,7 +51359,7 @@ loc_80D1692:
 loc_80D169C:
     bl sub_80D1784
     mov r0, #0xbd
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
     bl sub_800E276
@@ -52668,7 +52668,7 @@ sub_80D214C:
     mov r1, #4
     strb r1, [r5,#0xa]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r5,#0x20]
     b locret_80D2174
@@ -52931,7 +52931,7 @@ off_80D2348:    .word sub_80D236C+1
 .thumb_func
 sub_80D236C:
     push {lr}
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     bne loc_80D237E
@@ -53112,7 +53112,7 @@ sub_80D2480:
 loc_80D24DC:
     bl sprite_setPallete
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80D24F0
@@ -53358,7 +53358,7 @@ sub_80D2714:
     strb r1, [r5,#0xb]
     bl sub_80D29F4
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r5,#0x20]
     b locret_80D274E
@@ -53447,7 +53447,7 @@ sub_80D27A0:
     mov r0, #0xff
     strb r0, [r5,#0x11]
     mov r0, #0x85
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0xa]
     add r0, #4
     cmp r0, #8
@@ -53553,7 +53553,7 @@ loc_80D2878:
     bgt loc_80D288C
     mov r0, #0x2c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x10
     strh r0, [r5,#0x22]
 loc_80D288C:
@@ -53827,7 +53827,7 @@ sub_80D2A68:
     mov r4, #0
     bl sub_80E05F6
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_801A074
     bl sub_80D2A58
     mov r0, #0
@@ -54245,7 +54245,7 @@ sub_80D2F70:
     lsl r0, r0, #0x10
     str r0, [r5,#0x48]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xa]
 loc_80D2F88:
@@ -54320,7 +54320,7 @@ sub_80D2FEC:
     tst r0, r1
     beq locret_80D3002
     mov r0, #0xb3
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strh r0, [r5,#0xa]
 locret_80D3002:
@@ -55068,7 +55068,7 @@ sub_80D35E0:
     mov r0, #0xa
     strh r0, [r5,#0x22]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#9]
     mov r0, #0
@@ -55101,7 +55101,7 @@ sub_80D3620:
     strh r0, [r5,#0x22]
     mov r0, #0xaa
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strh r0, [r5,#0xa]
     pop {pc}
@@ -55227,7 +55227,7 @@ loc_80D36E8:
     b loc_80D3720
 loc_80D3708:
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x34 
     add r0, r0, r5
     ldmia r0!, {r1-r3}
@@ -55449,7 +55449,7 @@ dword_80D3878:    .word 0x80D386C
     bl sub_801A07C
     bl sub_801A018
     mov r0, #0xb8
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80D390A
@@ -55864,7 +55864,7 @@ sub_80D3C6C:
     mov r4, #0x1e
     bl sub_80E05F6
     mov r0, #0xa5
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1c
     strb r0, [r5,#0x10]
     mov r0, #0x1e
@@ -56538,7 +56538,7 @@ sub_80D4198:
     mov r0, #0xa
     strh r0, [r5,#0x22]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#9]
     mov r0, #0
@@ -56644,7 +56644,7 @@ sub_80D4242:
     ldrb r0, [r5,#4]
     add r0, r0, r0
     ldrh r0, [r7,r0]
-    bl sound_play
+    bl sound_play // () -> void
 loc_80D4266:
     ldr r0, [r5,#0x64]
     sub r0, #1
@@ -56756,7 +56756,7 @@ loc_80D4302:
     b loc_80D433A
 loc_80D4322:
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x34 
     add r0, r0, r5
     ldmia r0!, {r1-r3}
@@ -57378,7 +57378,7 @@ loc_80D481E:
     mov r2, #4
     bl object_setPanelType
     mov r0, #0x90
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     str r0, [r5,#0x6c]
     mov r0, #8
@@ -57506,7 +57506,7 @@ loc_80D48E2:
     bl sub_80E05F6
     mov r0, #8
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80D493C:
     mov r0, #0x40 
     bl sub_801DACC
@@ -57705,7 +57705,7 @@ loc_80D4B0E:
 loc_80D4B2C:
     strb r0, [r5,#5]
     mov r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80D4B34:
     ldrb r0, [r5,#0x12]
     cmp r0, #7
@@ -58024,7 +58024,7 @@ loc_80D4DA8:
     mov r0, #1
     bl sub_801A07C
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#9]
     mov r0, #0
@@ -58143,7 +58143,7 @@ sub_80D4E64:
     pop {r5}
     mov r0, #0x2f 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     strb r0, [r5,#0x10]
     mov r0, #8
@@ -58268,7 +58268,7 @@ loc_80D4F70:
     bl sub_80E1D7A
 loc_80D4F8E:
     mov r0, #0x90
-    bl sound_play
+    bl sound_play // () -> void
 loc_80D4F94:
     bl sub_801A074
     ldrb r0, [r5]
@@ -58908,7 +58908,7 @@ loc_80D54DA:
     tst r0, r0
     bne loc_80D54E6
     mov r0, #0xd9
-    bl sound_play
+    bl sound_play // () -> void
 loc_80D54E6:
     bl sub_801A074
     mov r0, #8
@@ -59524,7 +59524,7 @@ loc_80D59BE:
     mov r1, #0x14
     bl sub_80302A8
     mov r0, #0xc0
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
     bl object_crackPanel
@@ -60077,7 +60077,7 @@ loc_80D5E2A:
     tst r0, r1
     beq loc_80D5E5C
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x34 
     add r0, r0, r5
     ldmia r0!, {r1-r3}
@@ -60764,7 +60764,7 @@ loc_80D643A:
     lsl r0, r0, #2
     ldr r1, off_80D64FC // =off_80D6500 
     ldr r0, [r1,r0]
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
     bl sub_800E276
@@ -60982,7 +60982,7 @@ loc_80D6624:
     bne loc_80D6646
     mov r0, #0xf
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     b locret_80D6686
 loc_80D6646:
     sub r0, #1
@@ -61252,7 +61252,7 @@ sub_80D6810:
     ldrb r0, [r5,#6]
     bl sprite_setPallete
     mov r0, #0xbd
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl loc_80D685A
@@ -61316,7 +61316,7 @@ loc_80D68A0:
     mov r4, #0x21 
     bl sub_80E05F6
     mov r0, #0xb9
-    bl sound_play
+    bl sound_play // () -> void
 loc_80D68C6:
     ldr r0, [r5,#0x4c]
     mov r1, #0
@@ -61596,7 +61596,7 @@ loc_80D6AF6:
 loc_80D6AFE:
     bl sub_801A018
     mov r0, #0xf3
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80D6B28
@@ -61800,7 +61800,7 @@ sub_80D6C88:
     str r0, [r5,#0x40]
     str r1, [r5,#0x48]
     mov r0, #0xc4
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x11
     strh r0, [r5,#0x20]
     b loc_80D6CF0
@@ -62164,7 +62164,7 @@ sub_80D6FDC:
     strb r1, [r5,#0xa]
     mov r0, #0x82
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xa
     strh r0, [r5,#0x20]
     b locret_80D7006
@@ -62331,7 +62331,7 @@ sub_80D715C:
     mov r0, #4
     strb r0, [r5,#0xa]
     mov r0, #0xb8
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xa
     strh r0, [r5,#0x20]
     b locret_80D7184
@@ -62547,7 +62547,7 @@ sub_80D7358:
     strh r0, [r5,#0x20]
     mov r0, #0x13
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_80D7370:
@@ -62729,7 +62729,7 @@ loc_80D74A2:
     bl sub_801A018
     mov r0, #0x21 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl sub_80D74DC
@@ -63075,7 +63075,7 @@ loc_80D7802:
     tst r0, r0
     beq loc_80D784E
     mov r0, #0xc0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     mov r1, #0xf
     push {r5}
@@ -63183,7 +63183,7 @@ loc_80D78DA:
     mov r4, #0
     bl sub_80E05F6
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     b loc_80D790E
 loc_80D7906:
     bl battle_isTimeStop
@@ -63235,7 +63235,7 @@ sub_80D795C:
     bl sub_802EF5C
     mov r0, #0x85
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     mov r1, #0
     mov r2, #0
@@ -63300,7 +63300,7 @@ loc_80D79E0:
     bne loc_80D79EE
     mov r0, #0x86
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80D79EE:
     ldrh r0, [r5,#0x22]
     sub r0, #1
@@ -63516,7 +63516,7 @@ sub_80D7BB0:
     mov r1, #4
     strb r1, [r5,#0xa]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#4]
     mov r1, #0xc
     mul r0, r1
@@ -64589,7 +64589,7 @@ off_80D8508:    .word sub_80D852C+1
 .thumb_func
 sub_80D852C:
     push {lr}
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     bne loc_80D853E
@@ -64995,7 +64995,7 @@ sub_80D881C:
     bne locret_80D883E
     mov r0, #0x4a 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 locret_80D883E:
     pop {pc}
 off_80D8840:    .word off_80D8844
@@ -65160,7 +65160,7 @@ loc_80D8942:
     bl sprite_setPallete
     mov r0, #0x21 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80D8988
@@ -65364,7 +65364,7 @@ loc_80D8AF0:
     strh r0, [r5,#0x20]
     bl sub_80D8BD4
     mov r0, #0xc7
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#5]
     sub r0, #1
     strb r0, [r5,#5]
@@ -65621,7 +65621,7 @@ locret_80D8CEE:
 .thumb_func
 sub_80D8CF0:
     push {lr}
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     bne loc_80D8D02
@@ -65654,7 +65654,7 @@ loc_80D8D26:
     b locret_80D8D4C
 loc_80D8D3A:
     mov r0, #0x6f 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80D8DEE
     bl sub_801A074
     mov r0, #8
@@ -65736,7 +65736,7 @@ loc_80D8DC0:
     b loc_80D8DE0
 loc_80D8DD8:
     mov r0, #0x85
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
 loc_80D8DE0:
     str r0, [sp,#4]
@@ -66236,7 +66236,7 @@ sub_80D9178:
     strb r1, [r5,r0]
     mov r0, #0xf
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     pop {pc}
@@ -66372,7 +66372,7 @@ sub_80D9298:
     push {r5,lr}
     mov r0, #0xf
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#5]
     cmp r0, #0
     beq loc_80D92BE
@@ -66459,7 +66459,7 @@ loc_80D9350:
     ldr r1, [r1,r0]
     mov lr, pc
     bx r1
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     str r0, [r5,#0x68]
     bne locret_80D9368
     bl sub_801BCA6
@@ -66540,7 +66540,7 @@ dword_80D941C:    .word 0x10, 0x10, 0x11, 0x12, 0x11, 0x12
 .thumb_func
 sub_80D9434:
     push {lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_80D9482
     bl sub_801A00E
     bl sub_801A0D4
@@ -66616,7 +66616,7 @@ sub_80D94B8:
 .thumb_func
 sub_80D94C2:
     push {lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     ldr r1, [r5,#0x68]
     cmp r0, r1
     bne locret_80D94E4
@@ -66671,7 +66671,7 @@ sub_80D94F2:
     orr r2, r1
     strb r2, [r0]
     push {r0}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     add r1, r0, #0
     pop {r0}
     str r1, [r0,#0x68]
@@ -67158,7 +67158,7 @@ loc_80D98BE:
     bl sub_80D98E8
     mov r0, #0x13
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     pop {r7,pc}
 dword_80D98E4:    .word 0xA0000
 .func
@@ -67266,7 +67266,7 @@ sub_80D99A4:
     mov r4, #2
     bl sub_80E05F6
     mov r0, #0xd9
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     bic r0, r1
@@ -67522,7 +67522,7 @@ sub_80D9C54:
     bl sub_80E11E0
     mov r0, #0xbe
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r5,#0x60]
     ldrb r0, [r0,#2]
     ldr r1, [r5,#0x2c]
@@ -67794,7 +67794,7 @@ loc_80D9EC2:
     strb r0, [r5]
     mov r0, #0x16
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#9]
     mov r0, #0
@@ -67849,7 +67849,7 @@ loc_80D9F3C:
     mov r1, #0xf
     bl sub_80302A8
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5]
     mov r1, #2
     bic r0, r1
@@ -68090,7 +68090,7 @@ sub_80DA15C:
     mov r0, #0xa
     strh r0, [r5,#0x22]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#9]
     mov r0, #0
@@ -68261,7 +68261,7 @@ loc_80DA2AE:
     strh r0, [r5,#0x20]
     mov r0, #0x9b
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strh r0, [r5,#0xa]
 locret_80DA2C8:
@@ -68335,7 +68335,7 @@ loc_80DA336:
     b locret_80DA378
 loc_80DA340:
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x34 
     add r0, r0, r5
     ldmia r0!, {r1-r3}
@@ -69009,7 +69009,7 @@ sub_80DA834:
     bl sub_8002FA6
     mov r0, #4
     str r0, [r5,#8]
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r2, #0
     mov r1, #1
     tst r0, r1
@@ -69613,7 +69613,7 @@ sub_80DADE0:
     bne loc_80DADFE
     mov r0, #0xc7
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80DADFE:
     ldr r1, [r5,#0x44]
     ldr r0, [r5,#0x38]
@@ -70116,7 +70116,7 @@ loc_80DB1BA:
     mov r0, #5
     strh r0, [r5,#0x22]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_80DB1C8:
@@ -70244,7 +70244,7 @@ loc_80DB2A0:
     mov r4, #2
     bl sub_80E05F6
     mov r0, #0x90
-    bl sound_play
+    bl sound_play // () -> void
 loc_80DB2B8:
     ldrb r0, [r5]
     mov r1, #2
@@ -70329,7 +70329,7 @@ sub_80DB324:
     mov r0, #0x10
     strh r0, [r5,#0x20]
     mov r0, #0xc4
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xa
     bl sub_801A140
     bl sub_801A074
@@ -70375,7 +70375,7 @@ sub_80DB3B4:
     mov r4, #5
     bl sub_80E05F6
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
     mov r3, #0xf
@@ -70899,7 +70899,7 @@ loc_80DB7DC:
     mov r1, #0x14
     bl sub_80302A8
     mov r0, #0xc0
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
     bl object_crackPanel
@@ -71236,7 +71236,7 @@ loc_80DBA8C:
     beq loc_80DBABC
     mov r0, #0x97
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrh r0, [r4,#0x2e]
     ldr r1, [r5,#0x64]
     add r0, r0, r1
@@ -71573,7 +71573,7 @@ sub_80DBD10:
     bl sub_800E456
     bl sub_8002F5C
     mov r0, #0xc4
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     pop {pc}
@@ -71855,7 +71855,7 @@ loc_80DBF90:
     bl sub_801A074
     bl sub_801A018
     mov r0, #0xc4
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#8]
     pop {r7,pc}
@@ -71916,7 +71916,7 @@ sub_80DC018:
     mov r4, #5
     bl sub_80E05F6
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     ldr r7, [r5,#0x60]
     ldrb r0, [r7,#4]
     tst r0, r0
@@ -72129,7 +72129,7 @@ loc_80DC1D2:
     bne loc_80DC1E0
     mov r0, #0x12
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80DC1E0:
     ldr r0, [r5,#0x60]
     add r0, #1
@@ -72481,7 +72481,7 @@ sub_80DC484:
     bl object_breakPanel_dup2
     mov r0, #0x2f 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x10
     strh r0, [r5,#0x20]
     b locret_80DC4B6
@@ -72612,7 +72612,7 @@ sub_80DC588:
     bl sub_80DC5DA
     mov r0, #0x82
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r5,#0x20]
     b locret_80DC5B2
@@ -72712,7 +72712,7 @@ loc_80DC630:
     mov r0, #0x28 
     bl sub_801A07C
     mov r0, #0xf3
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80DC668
@@ -72897,7 +72897,7 @@ loc_80DC81A:
     bne loc_80DC828
     mov r0, #0x41 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80DC828:
     ldrh r0, [r5,#0x20]
     sub r0, #1
@@ -73379,7 +73379,7 @@ sub_80DCBCC:
     mov r1, #4
     strb r1, [r5,#0xa]
     mov r0, #0xc4
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#4]
     lsl r0, r0, #2
     ldr r1, off_80DCC48 // =dword_80DCC4C 
@@ -73591,7 +73591,7 @@ sub_80DCD74:
     strb r1, [r5,#0xa]
     mov r0, #0x80
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r4, dword_80DCE34 // =0x80000 
     bl sub_800E2CA
     mul r0, r4
@@ -73882,7 +73882,7 @@ sub_80DCFF4:
     strb r1, [r5,#0xa]
     mov r0, #0xc3
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80DD062
 loc_80DD00C:
     ldr r0, [r5,#0x40]
@@ -74403,7 +74403,7 @@ loc_80DD416:
     strh r0, [r5,#0x22]
     mov r0, #0x41 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     pop {r7,pc}
@@ -74912,7 +74912,7 @@ sub_80DD87C:
     mov r0, #1
     bl sub_801A07C
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#9]
     mov r0, #0x1e
@@ -75409,7 +75409,7 @@ loc_80DDCCA:
     bl sub_801A074
     bl sub_801A018
     mov r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#8]
     pop {r7,pc}
@@ -75451,7 +75451,7 @@ sub_80DDD30:
     mov r4, #5
     bl sub_80E05F6
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     mov r1, #0xf
     bl sub_80302A8
@@ -75650,7 +75650,7 @@ sub_80DDF18:
     ldrb r0, [r1,r0]
     strb r0, [r5,#0x10]
     mov r0, #0xf0
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800E2CA
     ldr r1, dword_80DDFFC // =0x80000 
     mul r0, r1
@@ -75863,7 +75863,7 @@ loc_80DE098:
     lsl r0, r0, #1
     bl object_addHP
     mov r0, #0x8a
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #5
     add r4, r0, #0
     bl sub_801A7CC
@@ -76368,7 +76368,7 @@ loc_80DE482:
     mov r0, #1
     bl sub_80DE70C
     mov r0, #0xf7
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80DE4EC
@@ -76829,7 +76829,7 @@ loc_80DE85E:
     bl sub_801A074
     mov r0, #0x59 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80DE8C0
@@ -77124,7 +77124,7 @@ sub_80DEB70:
     pop {r5}
     str r0, [r5,#0x70]
     mov r0, #0xe1
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#9]
     mov r0, #0
@@ -77203,7 +77203,7 @@ loc_80DEBE8:
     strb r0, [r5,#0x10]
     mov r0, #0xbf
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     str r0, [r5,#0x3c]
     mov r0, #8
@@ -78185,7 +78185,7 @@ loc_80DF434:
     ldr r6, [r5,#0x2c]
     bl sub_80C6ADA
     mov r0, #0xb9
-    bl sound_play
+    bl sound_play // () -> void
     ldrh r0, [r5,#0x22]
     sub r0, #1
     strh r0, [r5,#0x22]
@@ -78543,7 +78543,7 @@ sub_80DF6CE:
     add r7, r7, r5
     bl sub_80B8E30
     mov r0, #0x6a 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x78 
     strh r0, [r5,#0x20]
     b locret_80DF740
@@ -78561,7 +78561,7 @@ loc_80DF6FE:
     ldr r0, [r5,#0x64]
     bl sub_80B8E7C
     mov r0, #0x6a 
-    bl sound_play
+    bl sound_play // () -> void
 loc_80DF720:
     ldrh r0, [r5,#0x20]
     sub r0, #1
@@ -78597,9 +78597,9 @@ sub_80DF742:
     mov r0, #4
     strb r0, [r5,#0x10]
     mov r0, #0xf8
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xf9
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xb
     str r0, [r5,#0x68]
     ldr r4, dword_80DF904 // =0x1090B 
@@ -78634,7 +78634,7 @@ loc_80DF7A6:
     cmp r0, #0
     bgt loc_80DF7BA
     mov r0, #0xf9
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xb
     str r0, [r5,#0x68]
 loc_80DF7BA:
@@ -78673,7 +78673,7 @@ sub_80DF7D6:
     mov r0, #0x78 
     strh r0, [r5,#0x20]
     mov r0, #0x6d 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strh r0, [r5,#0x22]
     b locret_80DF846
@@ -78696,7 +78696,7 @@ loc_80DF802:
     mov r0, #8
     strh r0, [r5,#0x22]
     mov r0, #0x6d 
-    bl sound_play
+    bl sound_play // () -> void
 loc_80DF82E:
     ldrh r0, [r5,#0x20]
     sub r0, #1
@@ -79049,7 +79049,7 @@ loc_80DFB3A:
 loc_80DFB48:
     bl sub_80DFB56
     mov r0, #0xc3
-    bl sound_play
+    bl sound_play // () -> void
 loc_80DFB52:
     mov r0, #1
 locret_80DFB54:
@@ -79140,7 +79140,7 @@ sub_80DFBE4:
     bl sub_80E05F6
     mov r0, #0xa3
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 locret_80DFC10:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -79564,7 +79564,7 @@ loc_80DFF18:
     bl sub_8109794
 loc_80DFF50:
     mov r0, #0xb9
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#9]
     mov r0, #0
@@ -79668,7 +79668,7 @@ sub_80DFFDC:
     bl sub_801A018
     mov r0, #0x41 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80E002C
@@ -80301,7 +80301,7 @@ loc_80E06AC:
     mov r0, #8
 loc_80E06B8:
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #1
     ldr r1, off_80E06DC // =byte_2036740 
     strb r0, [r1]
@@ -80633,7 +80633,7 @@ loc_80E0976:
     mov r0, #0x3c 
     strh r0, [r5,#0x20]
     mov r0, #0x88
-    bl sound_play
+    bl sound_play // () -> void
 loc_80E098E:
     ldr r4, [r5,#0x4c]
     ldrh r0, [r4,#0x28]
@@ -80729,11 +80729,11 @@ loc_80E0AD4:
     ldr r1, [r1,r0]
     mov lr, pc
     bx r1
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq loc_80E0AF0
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_80E0AF4
 loc_80E0AF0:
     bl sub_801BC64
@@ -80801,7 +80801,7 @@ loc_80E0B6C:
     bne loc_80E0B7E
     ldr r0, off_80E0DE0 // =0x12D 
 loc_80E0B7E:
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl loc_80E0B8C
@@ -80967,7 +80967,7 @@ sub_80E0CAA:
     bne loc_80E0CC6
     mov r0, #0x25 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80E0CC6:
     mov r0, #4
     strb r0, [r5,#0xb]
@@ -80997,7 +80997,7 @@ loc_80E0CCA:
     bne loc_80E0CFA
     ldr r0, off_80E0DE0 // =0x12D 
 loc_80E0CFA:
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strb r0, [r5,#9]
     mov r0, #0
@@ -81174,7 +81174,7 @@ sub_80E0E10:
 sub_80E0E20:
     push {r4,r6,r7,lr}
     ldr r4, [r5,#0x4c]
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     beq loc_80E0E3C
     ldr r0, [r4,#0x58]
     ldrb r0, [r0,#0x1e]
@@ -81379,7 +81379,7 @@ loc_80E0F78:
     cmp r0, #0
     bne locret_80E0F9E
     mov r0, #0x71 
-    bl sound_play
+    bl sound_play // () -> void
     pop {pc}
 loc_80E0F8C:
     ldr r0, [r5,#0x74]
@@ -81389,7 +81389,7 @@ loc_80E0F8C:
     cmp r0, #1
     bne locret_80E0F9E
     mov r0, #0x72 
-    bl sound_play
+    bl sound_play // () -> void
 locret_80E0F9E:
     pop {pc}
 .endfunc // sub_80E0F5E
@@ -81554,7 +81554,7 @@ sub_80E10C0:
     mov r1, #2
     tst r0, r1
     bne loc_80E10EE
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_80E10DE
     ldrb r0, [r5,#6]
     mov r1, #1
@@ -81623,7 +81623,7 @@ sub_80E114C:
     mov r1, #2
     tst r0, r1
     bne loc_80E1188
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_80E116A
     ldrb r0, [r5,#6]
     mov r1, #2
@@ -82869,7 +82869,7 @@ loc_80E1A30:
     tst r0, r0
     bne locret_80E1A5C
     mov r0, #0x6f 
-    bl sound_play
+    bl sound_play // () -> void
 locret_80E1A5C:
     pop {r4,r6,r7,pc}
 .endfunc // sub_80E1A0C
@@ -83056,7 +83056,7 @@ sub_80E1B68:
     orr r0, r1
     strb r0, [r5]
     mov r0, #0x8c
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     ldrb r1, [r5,#4]
     mov r2, #1
@@ -84473,13 +84473,13 @@ sub_80E2628:
     mov r4, #2
     bl sub_80E05F6
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
     b locret_80E2684
 loc_80E2678:
     mov r4, #1
     bl sub_80E1D7A
     mov r0, #0x90
-    bl sound_play
+    bl sound_play // () -> void
 locret_80E2684:
     pop {r4,r6,r7,pc}
 loc_80E2686:
@@ -84699,7 +84699,7 @@ sub_80E292C:
     cmp r0, #0xc
     beq loc_80E2952
     mov r0, #0xa3
-    bl sound_play
+    bl sound_play // () -> void
 loc_80E2952:
     pop {r0}
 loc_80E2954:
@@ -84774,7 +84774,7 @@ loc_80E29C6:
 loc_80E29DA:
     mov r0, #0x90
 loc_80E29DC:
-    bl sound_play
+    bl sound_play // () -> void
 loc_80E29E0:
     mov r0, #8
     strb r0, [r5,#8]
@@ -85233,7 +85233,7 @@ sub_80E2D08:
     tst r0, r0
     beq loc_80E2D22
     mov r0, #0x91
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -85483,7 +85483,7 @@ sub_80E2EBC:
     ldr r4, dword_80E2F10 // =0x13C00 
     bl sub_80E11E0
     mov r0, #0xbc
-    bl sound_play
+    bl sound_play // () -> void
     ldr r4, off_80E2F14 // =dword_80E2F18 
     ldrb r0, [r5,#0x16]
     lsl r0, r0, #2
@@ -85611,7 +85611,7 @@ sub_80E2F8C:
     ldrb r0, [r7,#1]
     tst r0, r0
     beq locret_80E2FD4
-    bl sound_play
+    bl sound_play // () -> void
 locret_80E2FD4:
     pop {r7,pc}
 loc_80E2FD6:
@@ -86117,7 +86117,7 @@ loc_80E3386:
     cmp r0, #0x10
     blt loc_80E33A4
 loc_80E3394:
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_80E33D0
     ldrh r0, [r5,#0x20]
     add r0, #1
@@ -86546,7 +86546,7 @@ loc_80E3662:
     ldrh r0, [r1,r0]
     tst r0, r0
     beq loc_80E368A
-    bl sound_play
+    bl sound_play // () -> void
 loc_80E368A:
     add r7, sp, #0
 loc_80E368C:
@@ -87234,7 +87234,7 @@ sub_80E3B94:
     str r5, [r0]
     mov r0, #0xf
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     pop {r4,pc}
@@ -87357,7 +87357,7 @@ sub_80E3CC4:
     mov r0, #1
     strb r0, [r5,#0x10]
     mov r0, #0xbd
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#4]
     strh r0, [r5,#0x20]
 loc_80E3CDE:
@@ -87525,7 +87525,7 @@ sub_80E3E38:
     mov r0, #0
     strh r0, [r5,#0x22]
     mov r0, #0xa0
-    bl sound_play
+    bl sound_play // () -> void
 loc_80E3E4E:
     cmp r0, #1
     bne loc_80E3E9C
@@ -87773,7 +87773,7 @@ loc_80E3FD0:
     ldr r1, [r1,r0]
     mov lr, pc
     bx r1
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     tst r0, r0
     bne locret_80E3FE8
     bl sub_801BCA6
@@ -88694,7 +88694,7 @@ sub_80E4678:
     bl sub_80CFBC4
     mov r0, #0x13
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x3c 
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -89423,7 +89423,7 @@ sub_80E4BD4:
     bl sub_80D006E
     pop {r0,r1}
     mov r0, #0x64 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x14
     strh r0, [r5,#0x20]
     b locret_80E4C24
@@ -89726,7 +89726,7 @@ loc_80E4E16:
     strb r0, [r5]
     mov r0, #0x89
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strh r0, [r5,#0x10]
     bl sprite_setAnimation
@@ -89860,10 +89860,10 @@ loc_80E4F66:
     mov r1, #0x1e
     bl sub_80302A8
     mov r0, #0xc0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xe
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#6]
     tst r0, r0
     beq loc_80E4FA8
@@ -90272,7 +90272,7 @@ sub_80E5264:
     mov r0, #3
     str r0, [r5,#0x6c]
     mov r0, #0xad
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80E527A
@@ -90829,7 +90829,7 @@ loc_80E564E:
     b locret_80E566A
 loc_80E5664:
     mov r0, #0xce
-    bl sound_play
+    bl sound_play // () -> void
 locret_80E566A:
     pop {r4,r6,r7,pc}
 .endfunc // sub_80E5600
@@ -91124,7 +91124,7 @@ sub_80E5872:
     mov r0, #1
     strh r0, [r5,#0x10]
     mov r0, #0xbd
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
     bl sub_80E5910
@@ -91754,7 +91754,7 @@ loc_80E5CD6:
     tst r1, r1
     bne loc_80E5CE6
     mov r0, #0xf9
-    bl sound_play
+    bl sound_play // () -> void
 loc_80E5CE6:
     ldrh r0, [r5,#0x22]
     add r0, #1
@@ -92923,7 +92923,7 @@ loc_80E65B2:
     bl sub_800E29C
     mov r0, #0x2a 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#8]
     bl sub_80E65E0
@@ -92975,7 +92975,7 @@ loc_80E6626:
     strb r0, [r5,#0x10]
     mov r0, #0x2b 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#9]
     mov r0, #0
@@ -93086,7 +93086,7 @@ loc_80E66F6:
     strh r3, [r0,#0x36]
 loc_80E6704:
     mov r0, #0x8c
-    bl sound_play
+    bl sound_play // () -> void
     ldr r1, [r5,#0x4c]
     mov r0, #0
     strb r0, [r1]
@@ -93403,7 +93403,7 @@ sub_80E6924:
     bl sub_80D3DC4
     str r0, [r5,#0x68]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r5,#0x20]
 loc_80E6956:
@@ -93637,7 +93637,7 @@ sub_80E6AF0:
     lsl r3, r3, #0x10
     bl sub_80E05F6
     mov r0, #0x77 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x14
     strh r0, [r5,#0x20]
     b locret_80E6B34
@@ -93831,7 +93831,7 @@ loc_80E6C5E:
     lsl r0, r0, #2
     ldr r1, off_80E6C74 // =dword_80E6C78 
     ldr r0, [r1,r0]
-    bl sound_play
+    bl sound_play // () -> void
 locret_80E6C70:
     pop {r4,r6,pc}
     .balign 4, 0x00
@@ -94613,7 +94613,7 @@ sub_80E72C8:
     bl sub_80E7774
     str r0, [r5,#0x74]
     mov r0, #0xbd
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0,r1}
     push {r0,r1}
     ldrb r2, [r5,#0x16]
@@ -94732,7 +94732,7 @@ loc_80E7406:
     blt loc_80E7416
     ldr r0, dword_80E74D0 // =0x11A 
 loc_80E7416:
-    bl sound_play
+    bl sound_play // () -> void
     strh r4, [r1,#0x24]
 loc_80E741C:
     add r7, #4
@@ -96717,7 +96717,7 @@ sub_80E82D4:
     bl sub_80D006E
     pop {r0,r1}
     mov r0, #0xb7
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x14
     strh r0, [r5,#0x20]
     b locret_80E8324
@@ -99350,7 +99350,7 @@ sub_80E95D8:
     bl sub_80E05F6
     mov r0, #0x1a
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     push {r5}
     ldr r5, [r5,#0x4c]
     bl sub_801265A
@@ -99417,7 +99417,7 @@ loc_80E96A8:
     cmp r0, #0x1c
     bne loc_80E96B4
     mov r0, #0x77 
-    bl sound_play
+    bl sound_play // () -> void
 loc_80E96B4:
     ldrh r0, [r5,#0x20]
     sub r0, #1
@@ -99450,7 +99450,7 @@ sub_80E96C6:
     bl sub_80E05F6
     mov r0, #0x44 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r2, [r5,#5]
     mov r1, #5
     bl sub_8013754
@@ -99516,7 +99516,7 @@ loc_80E9766:
     cmp r0, #0x28 
     bne loc_80E9772
     mov r0, #0x77 
-    bl sound_play
+    bl sound_play // () -> void
 loc_80E9772:
     ldrh r0, [r5,#0x20]
     sub r0, #1
@@ -100385,7 +100385,7 @@ sub_80E9E2C:
     bl sub_80302A8
     mov r0, #0xab
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x2e 
     strh r0, [r5,#0x20]
     b locret_80E9E9E
@@ -100409,7 +100409,7 @@ loc_80E9E6E:
 loc_80E9E90:
     mov r0, #0x15
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     b locret_80E9E9E
 loc_80E9E9A:
     mov r0, #8
@@ -100856,7 +100856,7 @@ sub_80EA1BC:
     mov r1, #2
     orr r0, r1
     strb r0, [r5]
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq loc_80EA1D8
@@ -101157,7 +101157,7 @@ loc_80EA3E6:
     strb r1, [r0]
     mov r0, #0x2f 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     b locret_80EA410
 loc_80EA40C:
     mov r0, #8
@@ -101232,7 +101232,7 @@ loc_80EA498:
     bl sub_80107D4
     bl sub_80139C4
     bl sub_80100EC
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_80EA4BE
     bl sub_801A018
 locret_80EA4BE:
@@ -102817,7 +102817,7 @@ loc_80EB370:
     mov r1, #0xf
     bl sub_80302A8
     mov r0, #0xc0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #3
     bl sub_800F2B6
     mov r0, #0
@@ -102939,12 +102939,12 @@ loc_80EB472:
     cmp r0, #1
     bne loc_80EB4F2
     mov r0, #0x6a 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r7,#3]
     cmp r0, #2
     bne loc_80EB4B0
     mov r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     push {r7}
     ldr r6, [r7,#8]
     ldr r7, [r7,#0x30]
@@ -103206,7 +103206,7 @@ loc_80EB676:
     bl sub_80B8E30
     pop {r7}
     mov r0, #0xb2
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     lsl r0, r0, #0x16
     bl object_setFlag
@@ -103456,7 +103456,7 @@ sub_80EB862:
 loc_80EB88C:
     mov r0, #0xce
 loc_80EB88E:
-    bl sound_play
+    bl sound_play // () -> void
     push {r7}
     bl sub_80EBB78
     add r4, r0, #0
@@ -103932,7 +103932,7 @@ loc_80EBCDC:
     cmp r0, #0xf
     bne loc_80EBD06
     mov r0, #0xae
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800E2CA
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -104142,7 +104142,7 @@ loc_80EBE76:
     cmp r0, #1
     bne loc_80EBEA2
     mov r0, #0x6a 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r7,#0xc]
     ldrh r1, [r7,#8]
     mov r3, #0x18
@@ -104312,7 +104312,7 @@ loc_80EBF98:
     ldrb r2, [r7,#2]
     bl sub_80C6ADA
     mov r0, #0xb9
-    bl sound_play
+    bl sound_play // () -> void
     ldrh r0, [r7,#0x12]
     sub r0, #1
     strh r0, [r7,#0x12]
@@ -104528,7 +104528,7 @@ loc_80EC15E:
     cmp r0, #5
     bne loc_80EC198
     mov r0, #0xae
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r7,#3]
     cmp r0, #3
     bne loc_80EC17C
@@ -104628,10 +104628,10 @@ loc_80EC234:
     bl sub_800F2B6
     mov r0, #0xc0
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xc8
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, dword_80EC348 // =0x10000 
     ldr r1, [r5,#0x38]
     add r1, r1, r0
@@ -104850,7 +104850,7 @@ off_80EC3F0:    .word sub_80104E0+1
     lsr r4, r1, #0x20
     push {lr}
     mov r0, #0x8d
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x16]
     mov r1, #0xff
     bl sub_8015BEC
@@ -104903,7 +104903,7 @@ loc_80EC4BC:
     cmp r0, #1
     bne loc_80EC4FE
     mov r0, #0xb9
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_8001532
     mov r1, #3
     and r0, r1
@@ -104926,7 +104926,7 @@ loc_80EC4BC:
     pop {r7}
     b loc_80EC4FE
     mov r0, #0
-    bl sound_play
+    bl sound_play // () -> void
 loc_80EC4FE:
     ldrh r0, [r7,#0x10]
     add r0, #1
@@ -105075,7 +105075,7 @@ loc_80EC62C:
     cmp r0, #1
     bne loc_80EC66E
     mov r0, #0xb3
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     ldr r1, off_80EC708 // =byte_80EC70C 
     ldrb r3, [r1,r0]
@@ -105102,7 +105102,7 @@ loc_80EC662:
     strb r1, [r7,#0xe]
     b loc_80EC66E
     mov r0, #0
-    bl sound_play
+    bl sound_play // () -> void
 loc_80EC66E:
     ldrh r0, [r7,#0x10]
     add r0, #1
@@ -105400,7 +105400,7 @@ sub_80EC8A0:
     bl sub_80B8E30
     pop {r7}
     mov r0, #0xaf
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r7,#1]
     b locret_80EC90C
@@ -105493,7 +105493,7 @@ sub_80EC97C:
     mov r0, #0xc
     bl sub_800F2B6
     mov r0, #0xd8
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800FDB6
     mov r0, #1
     lsl r0, r0, #0x16
@@ -105611,7 +105611,7 @@ loc_80ECA6E:
     cmp r0, #1
     bne loc_80ECA94
     mov r0, #0x6a 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800E2CA
     ldr r4, [r7,#0xc]
     ldrh r3, [r7,#6]
@@ -105835,7 +105835,7 @@ loc_80ECC08:
     add r1, #1
     strb r1, [r0,#0x10]
     mov r0, #0xaf
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800E2CA
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -106043,7 +106043,7 @@ loc_80ECDAA:
     bne loc_80ECDC0
     mov r0, #0x2c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80ECDC0:
     ldrh r0, [r7,#0x10]
     add r0, #1
@@ -106156,7 +106156,7 @@ loc_80ECE7C:
     bl sub_80ECF00
     mov r0, #0x8b
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r5,#0x58]
     ldr r0, [r0,#0x68]
     ldrb r1, [r0,#0x10]
@@ -106476,7 +106476,7 @@ loc_80ED0E6:
     strb r1, [r0,#0x10]
     mov r0, #0x81
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strh r0, [r7]
 locret_80ED116:
@@ -106600,7 +106600,7 @@ loc_80ED1DC:
     mov r4, #0
     bl sub_80C9CDA
     mov r0, #0xc5
-    bl sound_play
+    bl sound_play // () -> void
     b loc_80ED226
 loc_80ED206:
     cmp r4, #4
@@ -106743,7 +106743,7 @@ sub_80ED314:
     mov r0, #0xc
     bl sub_800F2B6
     mov r0, #0xd8
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800FDB6
     mov r0, #1
     lsl r0, r0, #0x16
@@ -106768,7 +106768,7 @@ loc_80ED33C:
     mov r3, #0
     bl sub_80CC73C
     mov r0, #0xb4
-    bl sound_play
+    bl sound_play // () -> void
 loc_80ED362:
     ldrh r0, [r7,#0x10]
     sub r0, #1
@@ -106856,7 +106856,7 @@ sub_80ED3B6:
     add r0, #0xa
     strh r0, [r7,#0x10]
     mov r0, #0xf0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r7,#1]
 loc_80ED40E:
@@ -107194,7 +107194,7 @@ sub_80ED668:
     mov r0, #0xc
     bl sub_800F2B6
     mov r0, #0xd8
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800FDB6
     mov r0, #1
     lsl r0, r0, #0x16
@@ -107336,7 +107336,7 @@ loc_80ED786:
     cmp r0, #1
     bne loc_80ED792
     mov r0, #0xf8
-    bl sound_play
+    bl sound_play // () -> void
 loc_80ED792:
     ldrh r0, [r7,#0x10]
     add r0, #1
@@ -107449,7 +107449,7 @@ loc_80ED85C:
     add r1, #1
     strb r1, [r0,#0x10]
     mov r0, #0xaf
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800E2CA
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -107553,7 +107553,7 @@ sub_80ED924:
     strh r0, [r7,#0x12]
     mov r0, #0x2c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80ED93A:
     ldrh r0, [r7,#0x10]
     sub r0, #1
@@ -107723,10 +107723,10 @@ loc_80EDA30:
     pop {r7}
     mov r0, #0xa7
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xa8
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r7,#1]
     mov r0, #0xa
@@ -107827,7 +107827,7 @@ sub_80EDB14:
     bl sub_80B8E30
     pop {r7}
     mov r0, #0xf8
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #6
     strh r0, [r7,#0x10]
     mov r0, #4
@@ -108253,7 +108253,7 @@ sub_80EDE4A:
     strb r1, [r0,#0x11]
     mov r0, #0xa9
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     pop {r4,r6,pc}
 .endfunc // sub_80EDE4A
 
@@ -108303,9 +108303,9 @@ loc_80EDEC2:
     ldr r6, [r7,#8]
     bl sub_80D398E
     mov r0, #0xf4
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xb8
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x3c 
     strh r0, [r7,#0x10]
     mov r0, #4
@@ -108430,7 +108430,7 @@ sub_80EDFC0:
     strh r0, [r7,#0x12]
     mov r0, #0x9b
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80EDFD6:
     ldrh r0, [r7,#0x10]
     sub r0, #1
@@ -108537,7 +108537,7 @@ loc_80EE086:
     ldr r6, [r7,#8]
     bl sub_80D5718
     mov r0, #0xb8
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x2d 
     strh r0, [r7,#0x10]
     mov r0, #4
@@ -108620,7 +108620,7 @@ sub_80EE110:
     bl sub_80D5890
     mov r0, #0x9b
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80EE154:
     ldrh r0, [r7,#0x12]
     sub r0, #1
@@ -108685,7 +108685,7 @@ sub_80EE1AC:
     bl sub_800FDB6
     mov r0, #0x20 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     push {r7}
     bl sub_80EBAE8
     lsl r0, r0, #8
@@ -108831,7 +108831,7 @@ sub_80EE2CE:
     bl sub_800F2B6
     bl sub_800FDB6
     mov r0, #0xc7
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     lsl r0, r0, #0x16
     bl object_setFlag
@@ -109009,7 +109009,7 @@ loc_80EE41C:
 loc_80EE43C:
     mov r0, #0xce
 loc_80EE43E:
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r7,#3]
     cmp r0, #0x10
     beq loc_80EE474
@@ -109412,7 +109412,7 @@ sub_80EE748:
     bl sub_80D7ED4
     pop {r7}
     mov r0, #0xf3
-    bl sound_play
+    bl sound_play // () -> void
 loc_80EE792:
     ldrh r0, [r7,#0x12]
     sub r0, #1
@@ -109497,7 +109497,7 @@ sub_80EE7EC:
     bl sub_80D8F98
     mov r0, #0x12
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x46 
     strh r0, [r7,#0x10]
     mov r0, #4
@@ -109594,7 +109594,7 @@ loc_80EE8E2:
     ldr r6, [r7,#8]
     bl sub_80D981C
     mov r0, #0xc4
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x14
     strh r0, [r7,#0x10]
     mov r0, #8
@@ -109664,7 +109664,7 @@ loc_80EE96E:
     bl sub_80E05F6
     mov r0, #8
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strh r0, [r7]
 locret_80EE994:
@@ -109707,7 +109707,7 @@ loc_80EE9BA:
     strb r2, [r0,#0x17]
 loc_80EE9D6:
     mov r0, #0xb7
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r7,#0x10]
     mov r0, #4
@@ -109778,7 +109778,7 @@ sub_80EEA5C:
     mov r0, #3
     strh r0, [r7,#0x12]
     mov r0, #0x77 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800FDB6
     ldr r0, dword_80EEE50 // =0xFFFF 
     bl object_setInvulnerableTime
@@ -109800,7 +109800,7 @@ sub_80EEA78:
     ldrb r0, [r5,#0x16]
     bl sub_802CEA6
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     push {r7}
     bl sub_80EBB34
     add r4, r0, #0
@@ -109920,7 +109920,7 @@ sub_80EEB68:
     mov r0, #5
     bl sub_800F2B6
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     push {r7}
     bl sub_80EBB34
     add r4, r0, #0
@@ -110106,7 +110106,7 @@ sub_80EECCC:
     bne loc_80EED14
     mov r0, #0xb
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r4, dword_80EED2C // =0x705FF11 
     ldr r6, [r7,#8]
     bl sub_800E2CA
@@ -110228,7 +110228,7 @@ loc_80EEDB6:
     bl sub_80E05F6
     mov r0, #8
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strh r0, [r7]
 locret_80EEDDC:
@@ -110420,7 +110420,7 @@ sub_80EEF02:
     bl sub_800FDB6
     mov r0, #0x59 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80EEF58:
     ldrh r0, [r7,#0x10]
     sub r0, #1
@@ -110660,7 +110660,7 @@ sub_80EF0E2:
     strh r0, [r7,#0x10]
     mov r0, #0xc0
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r7,#1]
 loc_80EF13C:
@@ -110889,7 +110889,7 @@ loc_80EF2D2:
     bl sub_80DDBAC
     mov r0, #0xc8
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x32 
     strh r0, [r7,#0x10]
     mov r0, #4
@@ -111229,7 +111229,7 @@ loc_80EF578:
     beq loc_80EF596
     ldr r0, dword_80EF964 // =0x1C6 
 loc_80EF596:
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r1, [r7,#0x12]
     mov r0, #2
     sub r0, r0, r1
@@ -111423,7 +111423,7 @@ loc_80EF774:
 loc_80EF778:
     push {r0}
     mov r0, #0x8b
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
 loc_80EF782:
     ldr r1, off_80EF7D4 // =loc_80EF7D8 
@@ -111589,7 +111589,7 @@ loc_80EF8F4:
 loc_80EF8F8:
     push {r0}
     mov r0, #0x8b
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
 loc_80EF902:
     ldr r1, off_80EF954 // =dword_80EF958 
@@ -111739,7 +111739,7 @@ loc_80EFA9E:
     bl sub_8019F86
     mov r0, #0x88
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, dword_80EFC14 // =0xFFFF 
     bl object_setInvulnerableTime
     mov r0, #4
@@ -111904,7 +111904,7 @@ sub_80EFC38:
     lsl r0, r0, #0x16
     bl object_setFlag
     mov r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r7,#1]
     mov r0, #0
@@ -112024,7 +112024,7 @@ loc_80EFD14:
     bic r1, r2
     strb r1, [r0]
     mov r0, #0xad
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #9
     strh r0, [r7,#0x10]
     mov r0, #4
@@ -112111,7 +112111,7 @@ sub_80EFDB2:
     tst r0, r0
     bne loc_80EFE2C
     mov r0, #0x8e
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_801A074
     ldrb r0, [r5,#0x14]
     strb r0, [r5,#0x12]
@@ -112287,7 +112287,7 @@ sub_80EFF28:
     add r1, #1
     str r1, [r7,#0x40]
     mov r0, #0x8b
-    bl sound_play
+    bl sound_play // () -> void
 loc_80EFF50:
     ldrb r0, [r7,#1]
     tst r0, r0
@@ -112301,7 +112301,7 @@ loc_80EFF50:
     bl sub_800FDB6
     mov r0, #0x32 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     push {r7}
     bl sub_80EBB34
     add r4, r0, #0
@@ -112558,7 +112558,7 @@ loc_80F0188:
     cmp r0, #1
     bne loc_80F01C8
     mov r0, #0x6a 
-    bl sound_play
+    bl sound_play // () -> void
     ldrh r0, [r7,#0x12]
     mov r1, #3
     svc 6
@@ -112682,7 +112682,7 @@ sub_80F0262:
     strh r0, [r7,#0x12]
     mov r0, #0x29 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80F027A:
     ldrh r0, [r7,#0x10]
     mov r1, #2
@@ -113053,7 +113053,7 @@ locret_80F0604:
 
     mov pc, lr
     push {r4,r6,lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_80F068C
     mov r6, #0x64 
     mov r1, #0x29 
@@ -113369,7 +113369,7 @@ sub_80F0832:
     mov r1, #0x3c 
     strh r1, [r0,#0x20]
     mov r0, #0xc0
-    bl sound_play
+    bl sound_play // () -> void
 loc_80F087A:
     mov r0, #0x3c 
     strh r0, [r7,#0x10]
@@ -113650,7 +113650,7 @@ sub_80F0A7A:
     bl sub_80F0B80
     bl sub_80F0BA4
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r7,#0x30]
     tst r0, r0
     beq locret_80F0AB4
@@ -114014,7 +114014,7 @@ sub_80F0D08:
     str r0, [r7,#0x30]
     mov r0, #0x65 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xa
     strh r0, [r7,#0x10]
     b locret_80F0D5C
@@ -114377,7 +114377,7 @@ sub_80F0FF8:
     mov r0, #0x14
     strb r0, [r5,#0x10]
     mov r0, #0xc7
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xa
     strh r0, [r7,#0x10]
     b locret_80F1030
@@ -114477,7 +114477,7 @@ sub_80F10A0:
     strb r0, [r5,#0x10]
     bl sub_80F1148
     mov r0, #0xba
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x3c 
     strh r0, [r7,#0x10]
     b locret_80F10CC
@@ -114654,7 +114654,7 @@ sub_80F11BC:
     str r0, [r7,#0x30]
     str r0, [r7,#0x34]
     mov r0, #0xe4
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, dword_80F1528 // =0x60000 
     bl sub_80F146E
     b locret_80F1282
@@ -114861,7 +114861,7 @@ loc_80F1382:
     bl sub_80F13B4
     mov r0, #0x47 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 locret_80F138E:
     pop {r4,pc}
 .endfunc // sub_80F1350
@@ -115146,7 +115146,7 @@ loc_80F156E:
     bl sub_80E05F6
     mov r0, #0x2e 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strh r0, [r7]
 locret_80F15A8:
@@ -115495,7 +115495,7 @@ sub_80F1808:
     strb r0, [r5,#0x10]
     mov r0, #0xb
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r7,#0x10]
     b locret_80F187E
@@ -115655,7 +115655,7 @@ loc_80F1936:
     bl sub_80302A8
     mov r0, #0xd
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80F197A
 locret_80F194A:
     pop {pc}
@@ -115762,7 +115762,7 @@ sub_80F19F0:
     strb r0, [r5,#0x10]
     bl sub_80F1ADE
     mov r0, #0xfb
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r7,#0x10]
     b locret_80F1A1C
@@ -115832,7 +115832,7 @@ sub_80F1A60:
     bl sub_80F1B24
     bl sub_80F1B78
     mov r0, #0xb8
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800E456
     lsl r4, r0, #8
     add r4, #0x41 
@@ -116008,7 +116008,7 @@ sub_80F1BC4:
     bl sub_80F1E08
     mov r0, #0x4d 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x46 
     strh r0, [r7,#0x10]
     b locret_80F1BF2
@@ -116127,7 +116127,7 @@ sub_80F1C78:
     bl sub_80F1E50
     mov r0, #0xc1
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r4, #0
     mov r3, #0xa
     lsl r3, r3, #8
@@ -116168,7 +116168,7 @@ loc_80F1CE4:
     strh r0, [r7,#0x10]
     bgt locret_80F1D18
     mov r0, #0xe5
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strh r0, [r7]
     b locret_80F1D18
@@ -116482,7 +116482,7 @@ sub_80F1F34:
     ldr r2, [r5,#0x38]
     ldr r3, [r5,#0x3c]
     mov r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x23 
     strh r0, [r7,#0x10]
     b locret_80F1F7A
@@ -116560,7 +116560,7 @@ sub_80F1FC0:
     bl sub_80E887C
     str r0, [r7,#0x30]
     mov r0, #0xad
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r7,#0x10]
     b loc_80F1FFE
@@ -116612,7 +116612,7 @@ loc_80F2040:
     bl sub_80F207C
     mov r0, #0x7c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 locret_80F204C:
     pop {r4,pc}
 .endfunc // sub_80F2004
@@ -116729,7 +116729,7 @@ off_80F210C:    .word sub_80F2124+1
 sub_80F2124:
     push {r4,r6,lr}
     mov r0, #0xad
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1c
     strb r0, [r5,#0x10]
     ldr r0, [r5,#0x70]
@@ -116819,7 +116819,7 @@ loc_80F21C0:
     strb r0, [r5,#0x10]
     bl sub_80F22DA
     mov r0, #0x6b 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_801A074
     mov r0, #0xff
     strh r0, [r7,#0x10]
@@ -116829,7 +116829,7 @@ loc_80F21C0:
 loc_80F21DE:
     mov r0, #0xa5
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80F21E6:
     mov r0, #0x14
     strh r0, [r7]
@@ -118426,7 +118426,7 @@ loc_80F325A:
     mov r0, #0x12
     bl object_setCounterTime
     mov r0, #0xc0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x10
     strh r0, [r7]
     b locret_80F32BA
@@ -120123,7 +120123,7 @@ sub_80F404E:
     ldr r6, [r7,#8]
     bl sub_80C8070
     mov r0, #0xba
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r7,#0x30]
     ldr r0, [r0]
     mov r1, #4
@@ -120720,7 +120720,7 @@ loc_80F44FA:
     bl sub_80C536A
     pop {r4,r6,r7}
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80F4778
     mov r0, #0xe
     ldrh r1, [r7,#0x18]
@@ -121838,7 +121838,7 @@ sub_80F4E44:
     strb r0, [r7,#1]
     mov r0, #0x59 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x10
     strb r0, [r5,#0x10]
     mov r0, #0xc
@@ -121945,7 +121945,7 @@ sub_80F4F14:
     mov r0, #4
     strb r0, [r7,#1]
     mov r0, #0xc7
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x11
     strb r0, [r5,#0x10]
     mov r0, #0xc
@@ -122181,7 +122181,7 @@ loc_80F50F8:
     strb r0, [r5,#0x10]
     mov r0, #0x65 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r1, #0x53 
     mov r2, #2
     mov r3, #3
@@ -123679,7 +123679,7 @@ sub_80F5D74:
     mov r0, #0x14
     strb r0, [r5,#0x10]
     mov r0, #0xc7
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xa
     strh r0, [r7,#0x10]
     b locret_80F5DAC
@@ -123864,7 +123864,7 @@ sub_80F5EDE:
     strb r0, [r5,#0x10]
     mov r0, #0xf
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80F62EC
 loc_80F5EFA:
     ldr r2, [r7,#0x34]
@@ -124027,7 +124027,7 @@ sub_80F5FF4:
     mov r0, #0x3c 
     strh r0, [r7,#0x10]
     mov r0, #0xba
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80F6310
     b locret_80F602C
 loc_80F6014:
@@ -125241,7 +125241,7 @@ sub_80F6A5C:
     mov r0, #0x10
     strb r0, [r5,#0x10]
     mov r0, #0xe3
-    bl sound_play
+    bl sound_play // () -> void
     ldrh r0, [r7,#0x18]
     strh r0, [r7,#0x10]
     mov r0, #0
@@ -125268,7 +125268,7 @@ loc_80F6A9C:
     str r0, [r7,#0x34]
     bgt loc_80F6AAE
     mov r0, #0xe3
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x20 
     str r0, [r7,#0x34]
 loc_80F6AAE:
@@ -125294,7 +125294,7 @@ sub_80F6ABC:
     mov r0, #0x11
     strb r0, [r5,#0x10]
     mov r0, #0xe4
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x16]
     ldr r1, off_80F6B80 // =dword_80F6B84 
     ldrb r0, [r1,r0]
@@ -125563,7 +125563,7 @@ loc_80F6CBC:
     bl object_setCounterTime
     mov r0, #0x47 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r4, #0
     mov r3, #1
     lsl r3, r3, #8
@@ -125772,7 +125772,7 @@ sub_80F6EA6:
     mov r0, #0xf
     strb r0, [r5,#0x10]
     mov r0, #0xe3
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80F742E
     mov r0, #0xc
     bl sub_80F7500
@@ -127474,7 +127474,7 @@ loc_80F7BFA:
     pop {r4}
     mov r0, #0x2e 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x14
     strh r0, [r7]
 locret_80F7C38:
@@ -127699,7 +127699,7 @@ sub_80F7DBA:
     bl object_setCounterTime
     mov r0, #0x8a
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r7,#0xe]
     add r0, #1
     strb r0, [r7,#0xe]
@@ -129097,7 +129097,7 @@ sub_80F8914:
     pop {r7}
     mov r0, #0xa
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xf
     strh r0, [r7,#0x10]
     b locret_80F8960
@@ -129296,7 +129296,7 @@ sub_80F8A9C:
     bl object_setCounterTime
     mov r0, #0xb
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r7,#0x10]
     b locret_80F8B14
@@ -129546,7 +129546,7 @@ sub_80F8C7A:
     bl object_setCounterTime
     mov r0, #0xd
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r7,#0x10]
     ldr r2, [r7,#0x34]
@@ -130550,7 +130550,7 @@ sub_80F94D8:
     mov r0, #0x16
     strb r0, [r5,#0x10]
     mov r0, #0xfb
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #6
     bl object_setCounterTime
     mov r0, #0x14
@@ -130739,7 +130739,7 @@ loc_80F9650:
     mov r0, #0x10
     strb r0, [r5,#0x10]
     mov r0, #0xb8
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800E456
     lsl r4, r0, #8
     add r4, #0x41 
@@ -130945,7 +130945,7 @@ sub_80F97C0:
     bl sub_8002E3C
     mov r0, #0x3d 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800E2CA
     ldrb r1, [r7,#3]
     lsl r1, r1, #3
@@ -132177,7 +132177,7 @@ sub_80FA284:
     strb r0, [r5,#0x10]
     mov r0, #0xc0
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r1, #0x3a 
     mov r2, #2
     mov r3, #3
@@ -132504,7 +132504,7 @@ loc_80FA51A:
     strb r1, [r7,#0x17]
     mov r0, #0x4d 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80FAB2C
     mov r0, #0xc
     strh r0, [r7]
@@ -132582,7 +132582,7 @@ sub_80FA5B4:
     mov r0, #0x16
     strb r0, [r5,#0x10]
     mov r0, #0xf0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     add r0, r0, r7
     mov r1, #0xff
@@ -132836,7 +132836,7 @@ sub_80FA7C2:
     mov r0, #0x11
     strb r0, [r5,#0x10]
     mov r0, #0xe6
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xc
     bl object_setCounterTime
     mov r0, #0x1e
@@ -132866,7 +132866,7 @@ sub_80FA7F2:
     strb r0, [r5,#0x10]
     mov r0, #0xc1
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x3c 
     strh r0, [r7,#0x10]
     b locret_80FA81C
@@ -132892,7 +132892,7 @@ sub_80FA81E:
     strb r0, [r7,#1]
     mov r0, #0xc2
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r1, #0x35 
     mov r2, #2
     mov r3, #3
@@ -132972,7 +132972,7 @@ loc_80FA8D0:
     strh r0, [r7,#0x10]
     bgt locret_80FA8E8
     mov r0, #0xe5
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x14
     strh r0, [r7]
     b locret_80FA8E8
@@ -134190,7 +134190,7 @@ sub_80FB30E:
     mov r0, #0x11
     strb r0, [r5,#0x10]
     mov r0, #0xad
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x18
     bl object_setCounterTime
     mov r4, #1
@@ -134270,7 +134270,7 @@ loc_80FB3A0:
 loc_80FB3B4:
     mov r0, #0x7c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80FB81E
     mov r0, #2
     mov r1, #0x1e
@@ -135708,7 +135708,7 @@ sub_80FC26A:
     ldr r0, [r7,#0x30]
     bl sub_80FCF90
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xc
     bl object_setCounterTime
     mov r0, #0x1e
@@ -135896,7 +135896,7 @@ sub_80FC3E2:
     ldrb r1, [r7,#0xd]
     bl sub_80D1BF4
     mov r0, #0xa0
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80E7A88
     str r0, [r7,#0x38]
     b locret_80FC442
@@ -136055,7 +136055,7 @@ sub_80FC51C:
     ldr r0, [r7,#0x30]
     bl sub_80FCF90
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xc
     bl object_setCounterTime
     mov r0, #0x1e
@@ -136307,7 +136307,7 @@ sub_80FC700:
     ldr r0, [r7,#0x30]
     bl sub_80FCF90
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xc
     bl object_setCounterTime
     mov r0, #0x1e
@@ -136565,7 +136565,7 @@ sub_80FC8FE:
     ldr r0, [r7,#0x30]
     bl sub_80FCF90
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xc
     bl object_setCounterTime
     mov r0, #0x1e
@@ -136692,7 +136692,7 @@ sub_80FC9F8:
     lsl r3, r3, #0x10
     bl sub_80E05F6
     mov r0, #0x77 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x14
     strh r0, [r7,#0x10]
     b locret_80FCA4C
@@ -136865,7 +136865,7 @@ sub_80FCB64:
     ldr r0, [r7,#0x30]
     bl sub_80FCF90
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80FCF36
     mov r0, #9
     add r0, r0, r5
@@ -138455,7 +138455,7 @@ sub_80FD852:
     bl sub_80C82A8
     mov r0, #0x7f
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r7,#3]
     ldr r1, off_80FD8A8 // =dword_80FD8AC 
     ldrb r0, [r1,r0]
@@ -138682,7 +138682,7 @@ loc_80FDA24:
     bl sub_80FDC2A
     mov r0, #0x80
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x18
     strh r0, [r7]
 locret_80FDA3C:
@@ -139634,7 +139634,7 @@ sub_80FE240:
     mov r0, #7
     strb r0, [r5,#0x10]
     mov r0, #0xe1
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x13
     strh r0, [r7,#0x10]
     b locret_80FE27E
@@ -139726,7 +139726,7 @@ loc_80FE2EC:
     ldr r6, [r7,#8]
     bl sub_80CB080
     mov r0, #0xae
-    bl sound_play
+    bl sound_play // () -> void
 locret_80FE30A:
     pop {r4,r6,pc}
 .endfunc // sub_80FE2A8
@@ -139787,7 +139787,7 @@ sub_80FE354:
     mov r0, #7
     strb r0, [r5,#0x10]
     mov r0, #0xe1
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x22 
     strh r0, [r7,#0x10]
     b locret_80FE38C
@@ -139947,7 +139947,7 @@ sub_80FE46C:
     mov r0, #7
     strb r0, [r5,#0x10]
     mov r0, #0xe1
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x13
     strh r0, [r7,#0x10]
     b locret_80FE4A4
@@ -141560,7 +141560,7 @@ sub_80FF1A2:
     strb r0, [r5,#0x11]
     bl sub_80FF668
     mov r0, #0xbf
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r7,#0xd]
     add r0, #0xc
     strh r0, [r7,#0x10]
@@ -142899,7 +142899,7 @@ loc_80FFDE8:
     mov r0, #7
     strb r0, [r5,#0x10]
     mov r0, #0xba
-    bl sound_play
+    bl sound_play // () -> void
 locret_80FFDF6:
     pop {r4,pc}
 .endfunc // sub_80FFDAC
@@ -144085,7 +144085,7 @@ sub_8100894:
     strb r0, [r5,#0x10]
     bl sub_8101218
     mov r0, #0x77 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x14
     strh r0, [r7,#0x10]
     b locret_81008C0
@@ -144492,7 +144492,7 @@ sub_8100B72:
     bl object_setCounterTime
     bl sub_81010A0
     mov r0, #0x99
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1e
     strh r0, [r7,#0x10]
     b locret_8100BA4
@@ -148759,7 +148759,7 @@ sub_81026EE:
     mov r0, #0x10
     bl object_setCounterTime
     mov r0, #0xce
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r7,#1]
     b locret_8102770
@@ -148924,7 +148924,7 @@ loc_8102838:
     bne loc_810284E
     mov r0, #0x2c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_810284E:
     ldrh r0, [r7,#0x10]
     add r0, #1
@@ -149165,7 +149165,7 @@ sub_81029CE:
     mov r0, #0
     strh r0, [r7,#0x10]
     mov r0, #0xfd
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     mov r1, #0x3c 
     bl sub_80302A8
@@ -149177,7 +149177,7 @@ loc_81029FE:
     and r0, r1
     bne loc_8102A0C
     mov r0, #0xe3
-    bl sound_play
+    bl sound_play // () -> void
 loc_8102A0C:
     ldrh r0, [r7,#0x10]
     add r0, #1
@@ -149211,7 +149211,7 @@ sub_8102A1C:
 loc_8102A3A:
     bl sub_80B8E70
     add r0, r4, #0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strh r0, [r7,#0x10]
     mov r0, #4
@@ -149293,7 +149293,7 @@ loc_8102AC0:
     bne loc_8102ADE
     mov r0, #0x2c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_8102ADE:
     ldrh r0, [r7,#0x10]
     add r0, #1
@@ -149761,7 +149761,7 @@ sub_8102E74:
     push {r4,r6,lr}
     add r4, r0, #0
     mov r0, #0xb9
-    bl sound_play
+    bl sound_play // () -> void
 loc_8102E7E:
     ldrb r0, [r4]
     tst r0, r0
@@ -150271,7 +150271,7 @@ sub_8103286:
     mov r4, #0x1c
     bl sub_80C47EC
     mov r0, #0xc7
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xc
     bl object_setCounterTime
     ldrb r0, [r7,#0xc]
@@ -150466,9 +150466,9 @@ sub_81033F6:
     ldrb r0, [r7,#0xe]
     bl sub_8103A08
     mov r0, #0xae
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xf
     strh r0, [r7,#0x10]
     ldrb r0, [r7,#0xe]
@@ -150825,7 +150825,7 @@ sub_81036A6:
     mov r4, #0x1d
     bl sub_80C47EC
     mov r0, #0xcf
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #5
     strh r0, [r7,#0x10]
     b locret_81036EE
@@ -152168,7 +152168,7 @@ sub_8104290:
     bl sub_80302A8
     mov r0, #0xc9
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     push {r4,r6,r7}
     mov r2, #0
     ldrb r4, [r7,#0xd]
@@ -152370,7 +152370,7 @@ sub_8104420:
     bl sub_80302A8
     mov r0, #0xc9
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xa
     strh r0, [r7,#0x10]
     b locret_8104472
@@ -152435,10 +152435,10 @@ sub_81044AA:
     bl object_setCounterTime
     mov r0, #0x92
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x2c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x78 
     strh r0, [r7,#0x10]
     mov r0, #0x10
@@ -152451,7 +152451,7 @@ loc_81044DE:
     bgt loc_81044F2
     mov r0, #0x2c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x10
     strh r0, [r7,#0x12]
 loc_81044F2:
@@ -152661,7 +152661,7 @@ sub_8104640:
     bl sub_80302A8
     mov r0, #0xc9
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xa
     strh r0, [r7,#0x10]
     b locret_8104692
@@ -152688,7 +152688,7 @@ sub_8104694:
     mov r0, #0x46 
     strb r0, [r5,#0x10]
     mov r0, #0xc6
-    bl sound_play
+    bl sound_play // () -> void
     mov r4, #0x53 
     mov r3, #0xb
     lsl r3, r3, #8
@@ -152716,7 +152716,7 @@ loc_81046D6:
     strh r0, [r7,#0x12]
     bgt loc_81046E8
     mov r0, #0xc6
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x10
     strh r0, [r7,#0x12]
 loc_81046E8:
@@ -152746,10 +152746,10 @@ sub_81046F6:
     bl sub_81050F2
     mov r0, #0x92
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x9b
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x78 
     strh r0, [r7,#0x10]
     mov r0, #0x10
@@ -152767,7 +152767,7 @@ loc_8104736:
     bgt loc_810474A
     mov r0, #0x9b
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x10
     strh r0, [r7,#0x12]
 loc_810474A:
@@ -153022,7 +153022,7 @@ sub_81048AA:
     strh r2, [r7,#0x10]
     mov r0, #0xc8
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     add r0, r0, r7
     mov r1, #0xff
@@ -153339,7 +153339,7 @@ sub_8104B68:
     mov r0, #0xff
     strb r0, [r5,#0x11]
     mov r0, #0xae
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r7,#0xe]
     tst r0, r0
     bne loc_8104B84
@@ -153436,9 +153436,9 @@ sub_8104C18:
     strb r0, [r5,#0x10]
     mov r0, #0x92
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xe3
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #2
     ldrh r1, [r7,#0x10]
     bl sub_80302A8
@@ -153453,7 +153453,7 @@ loc_8104C50:
     strh r0, [r7,#0x12]
     bgt loc_8104C62
     mov r0, #0xe3
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x10
     strh r0, [r7,#0x12]
 loc_8104C62:
@@ -153537,7 +153537,7 @@ sub_8104CC6:
     strb r0, [r5,#0x10]
     mov r0, #0xc8
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1d
     bl sub_801A07C
     mov r1, #0x3a 
@@ -153609,7 +153609,7 @@ sub_8104D5E:
     mov r0, #0x1e
     strh r0, [r7,#0x10]
     mov r0, #0xc0
-    bl sound_play
+    bl sound_play // () -> void
     push {r4,r6,r7}
     ldrb r2, [r7,#2]
     mov r4, #0xb4
@@ -153728,7 +153728,7 @@ sub_8104E36:
     mov r0, #0xa
     strb r0, [r7,#0xe]
     mov r0, #0xe4
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x20 
     strh r0, [r7,#0x12]
     b locret_8104E96
@@ -153749,7 +153749,7 @@ loc_8104E78:
     strh r0, [r7,#0x12]
     bgt loc_8104E8A
     mov r0, #0xe4
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x20 
     strh r0, [r7,#0x12]
 loc_8104E8A:
@@ -154955,7 +154955,7 @@ sub_8105994:
     strb r0, [r5,#0x10]
     mov r0, #0xc4
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x20 
     strh r0, [r7,#0x10]
     b locret_81059BE
@@ -155113,7 +155113,7 @@ sub_8105AC4:
     strb r0, [r5,#0x10]
     mov r0, #0xc4
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x20 
     strh r0, [r7,#0x10]
     b locret_8105AF4
@@ -155216,7 +155216,7 @@ sub_8105B84:
     strb r0, [r5,#0x10]
     mov r0, #0x94
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x3c 
     strh r0, [r7,#0x10]
     b locret_8105BBC
@@ -155384,7 +155384,7 @@ sub_8105CC0:
     strb r0, [r5,#0x10]
     mov r0, #0x94
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x3c 
     strh r0, [r7,#0x10]
     b locret_8105CEA
@@ -155537,7 +155537,7 @@ sub_8105DE6:
     mov r0, #0x1a
     strb r0, [r5,#0x10]
     mov r0, #0xf3
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #6
     bl object_setCounterTime
     bl sub_8106690
@@ -155622,7 +155622,7 @@ sub_8105E88:
     strb r0, [r5,#0x10]
     mov r0, #0x94
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x3c 
     strh r0, [r7,#0x10]
     b locret_8105EB2
@@ -155739,7 +155739,7 @@ sub_8105F66:
     bl sub_81066C0
     mov r0, #0x2c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r7,#0xc]
     strh r0, [r7,#0x10]
     mov r0, #0x10
@@ -155752,7 +155752,7 @@ loc_8105F8C:
     bgt loc_8105FA0
     mov r0, #0x2c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x10
     strh r0, [r7,#0x12]
 loc_8105FA0:
@@ -155828,7 +155828,7 @@ sub_8106014:
     strb r0, [r5,#0x10]
     mov r0, #0x94
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strb r0, [r7,#0x16]
     strb r0, [r7,#0x17]
@@ -156098,7 +156098,7 @@ sub_8106208:
     strb r0, [r5,#0x10]
     mov r0, #0x94
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strb r0, [r7,#0xd]
     mov r0, #0x3c 
@@ -156255,7 +156255,7 @@ sub_81062F8:
     bl sub_80302A8
     mov r0, #0xc8
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r7,#0xd]
     tst r0, r0
     beq locret_810637E
@@ -157673,7 +157673,7 @@ sub_8106FE6:
     mov r0, #0xa
     bl object_setCounterTime
     mov r0, #0xb0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x15
     strh r0, [r7,#0x10]
     bl sub_81079DC
@@ -158062,7 +158062,7 @@ sub_81072B8:
     bl object_setCounterTime
     mov r0, #0xc6
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     bl sub_8107A30
     mov r0, #0x14
@@ -158141,7 +158141,7 @@ sub_810733E:
     bl object_setCounterTime
     mov r0, #0xc7
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     bl sub_8107A30
     mov r0, #0x14
@@ -158383,7 +158383,7 @@ sub_8107518:
     strb r0, [r5,#0x10]
     mov r0, #0xc6
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     bl sub_8107A30
     mov r0, #0x14
@@ -158570,7 +158570,7 @@ sub_8107644:
     pop {r4,r7}
     str r0, [r7,#0x38]
     mov r0, #0xae
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x5a 
     strh r0, [r7,#0x10]
     mov r0, #5
@@ -158596,7 +158596,7 @@ loc_810769A:
     strb r0, [r5,#0x11]
     bl sub_8107B06
     mov r0, #0xae
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r7,#0x34]
     tst r0, r0
     beq loc_81076C2
@@ -158828,7 +158828,7 @@ sub_8107856:
     bl sub_8107AB2
     mov r0, #0x2c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r7,#0xd]
     strh r0, [r7,#0x10]
     mov r0, #0x10
@@ -158841,7 +158841,7 @@ loc_810787C:
     bgt loc_8107890
     mov r0, #0x2c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x10
     strh r0, [r7,#0x12]
 loc_8107890:
@@ -160264,7 +160264,7 @@ sub_8108602:
     bl object_setCounterTime
     mov r0, #0xc6
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     bl sub_8108E64
     mov r0, #0x14
@@ -160343,7 +160343,7 @@ sub_8108688:
     bl object_setCounterTime
     mov r0, #0xc7
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     bl sub_8108E64
     mov r0, #0x14
@@ -160594,7 +160594,7 @@ sub_810887A:
     strb r0, [r5,#0x10]
     mov r0, #0xc6
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     bl sub_8108E64
     mov r0, #0x14
@@ -160781,7 +160781,7 @@ sub_81089A6:
     pop {r4,r7}
     str r0, [r7,#0x38]
     mov r0, #0xae
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x5a 
     strh r0, [r7,#0x10]
     mov r0, #3
@@ -160807,7 +160807,7 @@ loc_81089FC:
     strb r0, [r5,#0x11]
     bl sub_8108EE6
     mov r0, #0xae
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r7,#0x34]
     tst r0, r0
     beq loc_8108A24
@@ -161041,7 +161041,7 @@ sub_8108BC2:
     strb r0, [r7,#1]
     bl sub_8108F28
     mov r0, #0xb8
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r7,#0xd]
     strh r0, [r7,#0x10]
     b locret_8108BEA
@@ -161491,7 +161491,7 @@ loc_8108F74:
     beq loc_8108FA0
     bl sub_801A264
     mov r0, #0x6e 
-    bl sound_play
+    bl sound_play // () -> void
 loc_8108FA0:
     bl sub_800EA22
     b loc_8109020
@@ -161518,7 +161518,7 @@ loc_8108FBC:
     bl sub_8115BB0
     mov r0, #0xcc
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     b loc_8109020
 loc_8108FDA:
     cmp r0, #0x61 
@@ -162962,7 +162962,7 @@ locret_810ABF4:
     add r7, r7, r6
     bl sub_80E0D98
     mov r0, #0x89
-    bl sound_play
+    bl sound_play // () -> void
 locret_810AC24:
     pop {r4-r7,pc}
     .balign 4, 0x00

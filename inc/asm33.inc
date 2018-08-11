@@ -80,7 +80,7 @@
 // .global sub_81207F8
 // .global sub_8120900
 // .global sub_81209DC
-// .global sub_8120A38 // () -> (int n1, int n2, int n3, int n4)
+// .global sub_8120A38
 // .global sub_8120C94
 // .global sub_8120CC8
 // .global sub_8120D10
@@ -145,7 +145,7 @@
 // .global sub_809F9BE
 
 .include "asm00.inc"
-// .global sound_play
+// .global sound_play // () -> void
 // .global sub_8000784
 // .global sub_80008B4
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
@@ -156,15 +156,15 @@
 // .global sub_8000950
 // .global sub_800096C
 // .global loc_8000AC8
-// .global decomp_initGfx_8000B30 // (u32 *dataList) -> void
+// .global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
 // .global sub_8000C00
-// .global getPETNaviSelect
+// .global getPETNaviSelect // () -> u8
 // .global sub_80010BE
 // .global sub_80015FC
 // .global sub_80017AA
 // .global sub_80017E0
 // .global sub_800183C
-// .global drawTiles // (int a1, int a2, int a3) -> void
+// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
 // .global sub_80024A2
 // .global sub_80035A2
@@ -172,7 +172,7 @@
 // .global sub_8003AB2
 // .global sub_8004702
 // .global sub_8005F40
-// .global engine_setScreeneffect // (int a1) -> void
+// .global engine_setScreeneffect
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global sub_8006C22
 // .global sub_8006DEC
@@ -180,7 +180,7 @@
 // .global sub_80070E6
 // .global sub_800710A
 // .global sub_80071D4
-// .global sub_8007800
+// .global loc_8007800
 // .global getBattleSettingsFromList1
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6
@@ -191,7 +191,7 @@
 // .global sub_813B9FC
 // .global sub_813C3AC
 // .global sub_813D5D0
-// .global sub_813D60C // () -> zf
+// .global sub_813D60C
 // .global sub_813D638
 // .global sub_813D648
 // .global sub_813D90C
@@ -342,7 +342,7 @@
 .equ unk_201C400, 0x201C400
 .equ unk_201C4B0, 0x201C4B0
 .equ unk_201C4DC, 0x201C4DC
-.equ unk_201C700, 0x201C700
+.equ aIiijjjjkkkkkjj, 0x201C700
 .equ unk_201CB5C, 0x201CB5C
 .equ unk_201CC20, 0x201CC20
 .equ unk_201CF20, 0x201CF20

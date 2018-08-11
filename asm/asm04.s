@@ -2,7 +2,6 @@
 
 .func
 .thumb_func
-// [break] change map
 sub_804E62C:
     push {r4-r7,lr}
     mov r7, r10
@@ -24,7 +23,7 @@ sub_804E62C:
     ldr r2, [r5,#0x2c]
     ldrb r3, [r5,#4]
     ldrb r4, [r5,#5]
-    bl sub_802FF4C // (int a1, int a2) ->
+    bl sub_802FF4C
     bl loc_8030472
     ldr r0, off_804E68C // =unk_2037800 
     bl sub_80028D4
@@ -32,8 +31,8 @@ sub_804E62C:
     lsl r1, r1, #2
     ldr r0, off_804E694 // =off_804E698 
     ldr r0, [r0,r1]
-    bl decomp_8002906 // (int a1) -> bool
-    bl chatbox_decomp_currMap_gameProgress_803FD08 // () -> int
+    bl sub_8002906
+    bl chatbox_uncomp_803FD08 // () -> int
     bl sub_804E720
     ldr r0, off_804E690 // =off_804E9CC 
     ldrb r1, [r5,#5]
@@ -76,7 +75,7 @@ off_804E6FC:    .word off_804E450
 off_804E70C:    .word dword_804E5D4
     .word 0xFFFFFFFF
 dword_804E714:    .word 0xFFFFFFFF
-off_804E718:    .word dword_804E604
+off_804E718:    .word unk_804E604
     .word 0xFFFFFFFF
 .endfunc // sub_804E6D0
 

@@ -426,7 +426,7 @@ loc_808FB64:
     bl reqBBS_8140A0C
     bl sub_809E3B2
     ldr r0, dword_808FB9C // =0x1AE 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     pop {pc}
 loc_808FB94:
@@ -525,7 +525,7 @@ off_808FCE0:    .word off_808F5D4
     mov r0, #0xf
     strb r0, [r5,#0x17] // (dword_2000324+3 - 0x2000310)
     mov r0, #0x6b 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     pop {r5,pc}
     .byte 0, 0

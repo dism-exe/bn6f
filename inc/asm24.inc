@@ -16,7 +16,7 @@
 // .global sub_809E2B8
 
 .include "asm00.inc"
-// .global sound_play
+// .global sound_play // () -> void
 // .global sound_8000672
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8001172

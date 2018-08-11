@@ -2,7 +2,6 @@
 
 .func
 .thumb_func
-// (int a1) -> void
 reqBBS_813E07C:
     push {r4-r7,lr}
     push {r0}
@@ -67,7 +66,7 @@ reqBBS_static_draw_813E0F8:
     bl reqBBS_static_813E6D0
     bl reqBBS_813E834
     bl reqBBS_813E890
-    bl reqBBS_decomp_813E5A0 // () -> void
+    bl reqBBS_uncomp_813E5A0 // () -> void
     ldrh r0, [r5,#0x24] // reqBBS_GUI.pagePos
     bl reqBBS_813E8CC
     bl reqBBS_813EEF4
@@ -78,7 +77,7 @@ reqBBS_static_draw_813E0F8:
     bl sub_80015FC
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     // a1
     ldr r0, off_813E178 // =unk_813DBDC 
     bl sub_80465A0 // (void *a1) -> void
@@ -563,7 +562,7 @@ loc_813E4C8:
     strb r0, [r5,#8]
     mov r0, #0x10
     mov r1, #8
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
 loc_813E4EC:
     bl reqBBS_813E534
 .endfunc // reqBBS_draw_813E4AC
@@ -591,7 +590,7 @@ reqBBS_draw_813E4F4:
     bne loc_813E522
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #8
     strb r0, [r5]
     b loc_813E52A
@@ -662,9 +661,9 @@ dword_813E59C:    .word 0xC000
 .func
 .thumb_func
 // () -> void
-reqBBS_decomp_813E5A0:
+reqBBS_uncomp_813E5A0:
     push {r5,lr}
-    ldrb r0, [r5,#0x4] // reqBBS_GUI.unk_04
+    ldrb r0, [r5,#4]
     lsl r0, r0, #3
     ldr r3, off_813E5C8 // =dword_813DF7C+208 
     add r3, r3, r0
@@ -672,26 +671,26 @@ reqBBS_decomp_813E5A0:
     // src
     ldr r0, [r3]
     // dest
-    ldr r1, off_813E5CC // =decomp_2025A00 
+    ldr r1, off_813E5CC // =unk_2025A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     pop {r3}
     // src
     ldr r0, [r3,#4]
-    // dest (likely decompressed dialog)
-    ldr r1, off_813E5D0 // =decomp_2029A00 
+    // dest
+    ldr r1, off_813E5D0 // =unk_2029A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     // src
     ldr r0, off_813E5D4 // =dword_87EE1AC 
     // dest
-    ldr r1, off_813E5D8 // =decomp_2033A00 
+    ldr r1, off_813E5D8 // =unk_2033A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     pop {r5,pc}
 off_813E5C8:    .word dword_813DF7C+0xD0
-off_813E5CC:    .word decomp_2025A00
-off_813E5D0:    .word decomp_2029A00
+off_813E5CC:    .word unk_2025A00
+off_813E5D0:    .word unk_2029A00
 off_813E5D4:    .word dword_87EE1AC
-off_813E5D8:    .word decomp_2033A00
-.endfunc // reqBBS_decomp_813E5A0
+off_813E5D8:    .word unk_2033A00
+.endfunc // reqBBS_uncomp_813E5A0
 
 .func
 .thumb_func
@@ -821,15 +820,15 @@ reqBBS_static_813E6D0:
     push {r5,lr}
     bl sub_80017AA
     bl sub_80017E0
-    // dataList
+    // initRefs
     ldr r0, off_813E6F8 // =dword_813E6FC 
-    bl decomp_initGfx_8000B30 // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     ldrb r0, [r5,#4]
     ldr r1, off_813E754 // =off_813E758 
     lsl r0, r0, #2
-    // dataList
+    // initRefs
     ldr r0, [r1,r0]
-    bl decomp_initGfx_8000B30 // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     bl sub_800183C
     bl sub_8046664 // () -> void
     pop {r5,pc}
@@ -931,27 +930,29 @@ off_813E88C:    .word reqBBS_requestEntries_IDs
 reqBBS_813E890:
     push {r4-r7,lr}
     add r7, r5, #0
-    // a1
+    // j
     mov r0, #5
-    // a2
+    // i
     mov r1, #3
-    // a3
+    // cpyOff
     mov r2, #2
+    // tileRefs
     ldr r3, off_813E8C8 // =unk_813DBE4 
     mov r4, #0x17
     mov r5, #0x10
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     ldr r3, [r7,#0x28]
+    // tileRefs
     ldr r3, [r3,#0x1c]
-    // a1
+    // j
     mov r0, #0
-    // a2
+    // i
     mov r1, #0
-    // a3
+    // cpyOff
     mov r2, #1
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     mov r0, #0
     mov r1, #0
     mov r2, #3
@@ -1101,19 +1102,20 @@ loc_813EAA6:
     bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_813EAD6
     push {r4-r7}
-    // a1
+    // j
     mov r0, #2
     mov r1, #2
     mul r1, r6
-    // a2
+    // i
     add r1, #3
-    // a3
+    // cpyOff
     mov r2, #2
     ldr r3, off_813EB0C // =off_813EB10 
+    // tileRefs
     ldr r3, [r3,r4]
     mov r4, #2
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7}
     b loc_813EAEE
 loc_813EAD6:
@@ -1141,7 +1143,7 @@ loc_813EAEE:
     ldr r3, [r3,r4]
     mov r4, #2
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r0-r7,pc}
 off_813EB08:    .word reqBBS_requestEntries_IDs
 off_813EB0C:    .word off_813EB10
@@ -1349,11 +1351,11 @@ reqBBS_static_813EC54:
     push {lr}
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #8
     strb r0, [r5]
     mov r0, #0x68 
-    bl sound_play
+    bl sound_play // () -> void
     pop {pc}
     .balign 4, 0x00
 .endfunc // reqBBS_static_813EC54
@@ -1379,7 +1381,7 @@ reqBBS_static_813EC6C:
     mov r1, #0x50 
     strb r1, [r0,#6]
     mov r0, #0x67 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #6
     strb r0, [r5,#8]
     push {r5}
@@ -1406,16 +1408,17 @@ reqBBS_static_813EC6C:
 .thumb_func
 reqBBS_draw_chatbox:
     push {r4-r7,lr}
+    // tileRefs
     ldr r3, off_813ECD4 // =unk_2018A04 
-    // a1
+    // j
     mov r0, #2
-    // a2
+    // i
     mov r1, #5
-    // a3
+    // cpyOff
     mov r2, #1
     mov r4, #0x1a
     mov r5, #0xa
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7,pc}
 off_813ECD4:    .word unk_2018A04
 .endfunc // reqBBS_draw_chatbox
@@ -1441,16 +1444,17 @@ off_813ECF0:    .word unk_2018A04
 .thumb_func
 dead_813ECF4:
     push {r4-r7,lr}
-    // a1
+    // j
     mov r0, #3
-    // a2
+    // i
     mov r1, #5
-    // a3
+    // cpyOff
     mov r2, #1
+    // tileRefs
     ldr r3, off_813ED08 // =unk_2018A04 
     mov r4, #0x18
     mov r5, #0xa
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7,pc}
 off_813ED08:    .word unk_2018A04
 .endfunc // dead_813ECF4
@@ -1754,16 +1758,17 @@ dword_813EF24:    .word 0x9080706, 0xA
 .thumb_func
 reqBBS_drawRequestBBS:
     push {r4-r7,lr}
-    // a1
+    // j
     mov r0, #1
-    // a2
+    // i
     mov r1, #0
-    // a3
+    // cpyOff
     mov r2, #2
+    // tileRefs
     ldr r3, off_813EF40 // =dword_813DF44 
     mov r4, #0xc
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7,pc}
 off_813EF40:    .word dword_813DF44
 reqBBS_entriesGfx:    .byte 0x35, 0x0, 0x0, 0xFF, 0xFF
@@ -2239,7 +2244,6 @@ dword_813F380:    .word 0x1000000, 0x1010000, 0x1000000, 0x1000002, 0x1010102
 
 .func
 .thumb_func
-// (int a1) -> void
 reqBBS_init_s_2005780:
     push {r4-r7,lr}
     push {r0}
@@ -2374,7 +2378,7 @@ loc_813F4B6:
     bl sub_80015FC
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     ldr r0, off_813F534 // =reqBBS_entriesGfx 
     bl sub_80465A0 // (void *a1) -> void
     ldrh r0, [r5,#0x1e]
@@ -2853,7 +2857,7 @@ loc_813F884:
     strb r0, [r5,#8]
     mov r0, #0x10
     mov r1, #8
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
 loc_813F8A8:
     bl reqBBS_813F8F0
 .endfunc // reqBBS_813F868
@@ -2881,7 +2885,7 @@ reqBBS_813F8B0:
     bne loc_813F8DE
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #8
     strb r0, [r5]
     b loc_813F8E6
@@ -2963,25 +2967,25 @@ reqBBS_copyTextDataToRAM:
     // src
     ldr r0, [r3]
     // dest
-    ldr r1, off_813F990 // =decomp_2025A00 
+    ldr r1, off_813F990 // =unk_2025A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     pop {r3}
     // src
     ldr r0, [r3,#4]
     // dest
-    ldr r1, off_813F994 // =decomp_2029A00 
+    ldr r1, off_813F994 // =unk_2029A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     // src
     ldr r0, off_813F998 // =dword_87EFE14 
     // dest
-    ldr r1, off_813F99C // =decomp_2033A00 
+    ldr r1, off_813F99C // =unk_2033A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     pop {r5,pc}
 off_813F98C:    .word off_813F378
-off_813F990:    .word decomp_2025A00
-off_813F994:    .word decomp_2029A00
+off_813F990:    .word unk_2025A00
+off_813F994:    .word unk_2029A00
 off_813F998:    .word dword_87EFE14
-off_813F99C:    .word decomp_2033A00
+off_813F99C:    .word unk_2033A00
 .endfunc // reqBBS_copyTextDataToRAM
 
 .func
@@ -3504,9 +3508,9 @@ reqBBS_813FDA8:
     push {r5,lr}
     bl sub_80017AA
     bl sub_80017E0
-    // dataList
+    // initRefs
     ldr r0, off_813FDC8 // =dword_813FDCC 
-    bl decomp_initGfx_8000B30 // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     bl reqBBS_8140600
     bl sub_800183C
     bl sub_8046664 // () -> void
@@ -3587,16 +3591,17 @@ off_813FEAC:    .word reqBBS_requestEntries_IDs
 reqBBS_813FEB0:
     push {r4-r7,lr}
     add r7, r5, #0
-    // a1
+    // j
     mov r0, #5
-    // a2
+    // i
     mov r1, #3
-    // a3
+    // cpyOff
     mov r2, #2
+    // tileRefs
     ldr r3, off_813FEE8 // =unk_813EF4C 
     mov r4, #0x17
     mov r5, #0x10
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // reqBBS_813FEB0
 
     ldr r3, [r7,#0x28]
@@ -3606,7 +3611,7 @@ reqBBS_813FEB0:
     mov r2, #1
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     mov r0, #0
     mov r1, #0
     mov r2, #3
@@ -3942,19 +3947,20 @@ loc_814005E:
     bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_814008E
     push {r4-r7}
-    // a1
+    // j
     mov r0, #2
     mov r1, #2
     mul r1, r6
-    // a2
+    // i
     add r1, #3
-    // a3
+    // cpyOff
     mov r2, #2
     ldr r3, off_81400C4 // =pt_81400C8 
+    // tileRefs
     ldr r3, [r3,r4]
     mov r4, #2
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7}
     b loc_81400A6
 loc_814008E:
@@ -3973,17 +3979,18 @@ loc_81400A6:
     add r6, #1
     cmp r6, #8
     bne loc_814005E
-    // a1
+    // j
     mov r0, #0x15
-    // a2
+    // i
     mov r1, #0
-    // a3
+    // cpyOff
     mov r2, #2
     ldr r3, off_81400C4 // =pt_81400C8 
+    // tileRefs
     ldr r3, [r3,r4]
     mov r4, #2
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r0-r7,pc}
 off_81400C0:    .word reqBBS_requestEntries_IDs
 off_81400C4:    .word pt_81400C8
@@ -4047,18 +4054,19 @@ loc_81401CE:
     bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_81401FC
     push {r4-r7}
-    // a1
+    // j
     mov r0, #2
     mov r1, #2
     mul r1, r6
-    // a2
+    // i
     add r1, #3
-    // a3
+    // cpyOff
     mov r2, #2
+    // tileRefs
     ldr r3, off_8140234 // =dword_8140238 
     mov r4, #2
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7}
     b loc_8140228
 loc_81401FC:
@@ -4073,18 +4081,19 @@ loc_81401FC:
     bl zf_802F168 // (int a1, int a2) -> zf
     beq loc_8140228
     push {r4-r7}
-    // a1
+    // j
     mov r0, #2
     mov r1, #2
     mul r1, r6
-    // a2
+    // i
     add r1, #3
-    // a3
+    // cpyOff
     mov r2, #2
+    // tileRefs
     ldr r3, off_8140240 // =unk_8140244 
     mov r4, #2
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7}
 loc_8140228:
     add r6, #1
@@ -4146,18 +4155,19 @@ loc_8140290:
     push {r0,r1}
     push {r4-r7}
     mov r0, #0x1a
-    // a1
+    // j
     sub r0, r0, r1
     mov r1, #2
     mul r1, r6
-    // a2
+    // i
     add r1, #3
-    // a3
+    // cpyOff
     mov r2, #2
+    // tileRefs
     ldr r3, off_81402C4 // =unk_81402C8 
     mov r4, #1
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7}
     pop {r0,r1}
     add r1, #1
@@ -4192,16 +4202,17 @@ loc_81402DE:
     push {r0,r1}
     push {r4-r7}
     mov r0, #0x1a
-    // a1
+    // j
     sub r0, r0, r1
-    // a2
+    // i
     mov r1, #6
-    // a3
+    // cpyOff
     mov r2, #1
+    // tileRefs
     ldr r3, off_8140304 // =unk_8140308 
     mov r4, #1
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7}
     pop {r0,r1}
     add r1, #1
@@ -4234,16 +4245,17 @@ loc_8140320:
     push {r0,r1}
     push {r4-r7}
     mov r0, #0x1a
-    // a1
+    // j
     sub r0, r0, r1
-    // a2
+    // i
     mov r1, #6
-    // a3
+    // cpyOff
     mov r2, #1
+    // tileRefs
     ldr r3, off_8140350 // =unk_8140354 
     mov r4, #1
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7}
     pop {r0,r1}
     add r1, #1
@@ -4312,11 +4324,11 @@ reqBBS_81403A8:
     push {lr}
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #8
     strb r0, [r5]
     mov r0, #0x68 
-    bl sound_play
+    bl sound_play // () -> void
     pop {pc}
     .byte 0, 0
 .endfunc // reqBBS_81403A8
@@ -4342,7 +4354,7 @@ reqBBS_81403C0:
     mov r1, #0x50 
     strb r1, [r0,#6]
     mov r0, #0x67 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #6
     strb r0, [r5,#8]
     push {r5}
@@ -4386,7 +4398,7 @@ reqBBS_8140414:
     mov r1, #0x50 
     strb r1, [r0,#6]
     mov r0, #0x67 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #6
     strb r0, [r5,#8]
     push {r5}
@@ -4432,16 +4444,17 @@ off_814049C:    .word 0x54
 .thumb_func
 reqBBS_drawChatbox_dup1:
     push {r4-r7,lr}
+    // tileRefs
     ldr r3, off_81404B4 // =unk_2018A04 
-    // a1
+    // j
     mov r0, #2
-    // a2
+    // i
     mov r1, #5
-    // a3
+    // cpyOff
     mov r2, #1
     mov r4, #0x1a
     mov r5, #0xa
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7,pc}
 off_81404B4:    .word unk_2018A04
 .endfunc // reqBBS_drawChatbox_dup1
@@ -4450,16 +4463,17 @@ off_81404B4:    .word unk_2018A04
 .thumb_func
 reqBBS_drawSelectChatbox:
     push {r4-r7,lr}
+    // tileRefs
     ldr r3, off_81404CC // =unk_201BA04 
-    // a1
+    // j
     mov r0, #5
-    // a2
+    // i
     mov r1, #5
-    // a3
+    // cpyOff
     mov r2, #1
     mov r4, #0x14
     mov r5, #0xa
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // reqBBS_drawSelectChatbox
 
     pop {r4-r7,pc}
@@ -4609,16 +4623,17 @@ off_81405E4:    .word dword_86B7AE0
 .thumb_func
 reqBBS_81405E8:
     push {r4-r7,lr}
-    // a1
+    // j
     mov r0, #0xa
-    // a2
+    // i
     mov r1, #0
-    // a3
+    // cpyOff
     mov r2, #2
+    // tileRefs
     ldr r3, off_81405FC // =dword_813F32C 
     mov r4, #8
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // reqBBS_81405E8
 
     pop {r4-r7,pc}
@@ -5094,7 +5109,7 @@ reqBBS_81408F0:
     mov r1, #0x1d
     bl sub_802F164 // (int a1, int a2) -> zf
     beq loc_814095A
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     cmp r0, #0
     bne loc_814095A
     mov r0, #0x17

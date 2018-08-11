@@ -3,18 +3,18 @@
 .func
 .thumb_func
 // () -> int
-chatbox_decomp_currMap_gameProgress_803FD08:
+chatbox_uncomp_803FD08:
     push {r4-r7,lr}
     mov r0, #0
-    bl chatbox_static_8040730 // (int a1) -> void*
+    bl chatbox_static_8040730
     // dest
     ldr r1, off_803FD30 // =unk_202DA00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-    bl chatbox_gameProgress_8040794 // () -> void*
+    bl chatbox_8040794
     // dest
     ldr r1, off_803FD34 // =unk_2033400 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-    bl chatbox_80407C8 // () -> void*
+    bl chatbox_80407C8
     // dest
     ldr r1, off_803FD38 // =unk_202FA00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
@@ -24,14 +24,14 @@ chatbox_decomp_currMap_gameProgress_803FD08:
 off_803FD30:    .word unk_202DA00
 off_803FD34:    .word unk_2033400
 off_803FD38:    .word unk_202FA00
-.endfunc // chatbox_decomp_currMap_gameProgress_803FD08
+.endfunc // chatbox_uncomp_803FD08
 
 .func
 .thumb_func
 chatbox_dead_uncomp_803FD3C:
     push {r4-r7,lr}
     mov r0, #1
-    bl chatbox_static_8040730 // (int a1) -> void*
+    bl chatbox_static_8040730
     // dest
     ldr r1, off_803FD50 // =unk_2034A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
@@ -45,7 +45,7 @@ off_803FD50:    .word unk_2034A00
 .thumb_func
 chatbox_uncomp_803FD54:
     push {r4-r7,lr}
-    bl chatbox_gameProgress_8040794 // () -> void*
+    bl chatbox_8040794
     // dest
     ldr r1, off_803FD64 // =unk_2033400 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
@@ -328,7 +328,7 @@ loc_803FF7C:
     bne loc_803FF9E
     mov r2, #0x68 // ChatBoxPropreties.unk_68
     ldrh r0, [r5,r2]
-    bl sound_play
+    bl sound_play // () -> void
 loc_803FF9E:
     cmp r1, #0xe4
     beq loc_803FFB4
@@ -754,17 +754,18 @@ chatbox_8040344:
     ldrb r1, [r5,#0x10] // ChatBoxPropreties.chatboxOpenState
     lsl r1, r1, #2
     add r4, r4, r1
+    // tileRefs
     ldr r3, [r3,r4]
     push {r5}
-    // a1
+    // j
     ldrb r0, [r5,#0x1c] // ChatBoxPropreties.unk_1C
-    // a2
+    // i
     ldrb r1, [r5,#0x1d] // ChatBoxPropreties.unk_1D
-    // a3
+    // cpyOff
     mov r2, #0
     ldrb r4, [r5,#0x1e] // ChatBoxPropreties.unk_1E
     ldrb r5, [r5,#0x1f] // ChatBoxPropreties.unk_1F
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r5}
     pop {pc}
     .balign 4, 0x00
@@ -1206,17 +1207,16 @@ off_804072C:    .word 0x1F5
 
 .func
 .thumb_func
-// (int a1) -> void*
 chatbox_static_8040730:
     push {r4-r7,lr}
     add r4, r0, #0
     mov r2, r10
     ldr r2, [r2,#0x3c] // Toolkit.gamestate
-    ldrb r0, [r2,#0x4] // GameState.MapSelect
-    ldrb r1, [r2,#0x5] // GameState.MapSubOffset
+    ldrb r0, [r2,#4]
+    ldrb r1, [r2,#5]
     mov r2, r10
     ldr r2, [r2,#0x3c] // Toolkit.gamestate
-    ldrb r2, [r2,#0x8] // GameState.unk_08
+    ldrb r2, [r2,#8]
     mov r6, #0
     cmp r0, #0x80
     bmi loc_804074C
@@ -1251,14 +1251,13 @@ dword_8040784:    .word 0x2500360, 0x1300240, 0x100120, 0x0
 
 .func
 .thumb_func
-// () -> void*
-chatbox_gameProgress_8040794:
+chatbox_8040794:
     push {r4-r7,lr}
     mov r2, r10
-    ldr r2, [r2,#0x3c] // Toolkit.gamestate
-    ldrb r0, [r2,#0x4] // GameState.MapSelect
-    ldrb r1, [r2,#0x5] // GameState.MapSubOffset
-    ldrb r2, [r2,#0x6] // GameState.gameProgress
+    ldr r2, [r2,#0x3c]
+    ldrb r0, [r2,#4]
+    ldrb r1, [r2,#5]
+    ldrb r2, [r2,#6]
     mov r6, #0
     cmp r0, #0x80
     bmi loc_80407AA
@@ -1277,17 +1276,16 @@ loc_80407AA:
 off_80407BC:    .word off_80407C0
 off_80407C0:    .word off_804448C
     .word off_8044520
-.endfunc // chatbox_gameProgress_8040794
+.endfunc // chatbox_8040794
 
 .func
 .thumb_func
-// () -> void*
 chatbox_80407C8:
     push {r4-r7,lr}
     mov r2, r10
-    ldr r2, [r2,#0x3c] // Toolkit.gamestate
-    ldrb r0, [r2,#0x4] // GameState.MapSelect
-    ldrb r1, [r2,#0x5] // GameState.MapSubOffset
+    ldr r2, [r2,#0x3c]
+    ldrb r0, [r2,#4]
+    ldrb r1, [r2,#5]
     mov r2, #4
     mov r6, #0
     cmp r0, #0x80
@@ -2896,7 +2894,7 @@ loc_80412FE:
     strh r0, [r5,#0xc] // ChatBoxPropreties.chatbox_y
     mov r2, #0x6c 
     ldrh r0, [r5,r2]
-    bl sound_play
+    bl sound_play // () -> void
 loc_804131E:
     ldrb r0, [r5,#0x13] // ChatBoxPropreties.choiceCursorPos
     pop {r7}
@@ -2962,7 +2960,7 @@ loc_8041388:
     bne loc_804139A
     mov r1, #0x6e 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
 loc_804139A:
     mov r0, #0x50 
     bl chatbox_clearFlags_3e // (int mask) -> void
@@ -3035,7 +3033,7 @@ loc_8041400:
     bne loc_804143A
     mov r1, #0x6a 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
 loc_804143A:
     mov r0, #2
     strb r0, [r5,#0x4] // ChatBoxPropreties.chatPageState
@@ -3776,7 +3774,7 @@ off_80419B0:    .word off_8043C64
 .thumb_func
 chatbox_80419B4:
     push {lr}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     add r0, #2
     ldrb r1, [r4,r0]
     cmp r1, #0xff
@@ -3819,7 +3817,7 @@ loc_80419F2:
 .thumb_func
 chatbox_80419F8:
     push {lr}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x3e 
     bl sub_80137FE
     ldrb r1, [r4,#2]
@@ -4203,7 +4201,7 @@ loc_8041C94:
 loc_8041CA0:
     push {r4,r5}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r4,#2]
     cmp r0, #0xff
     bne loc_8041CB8
@@ -4231,7 +4229,7 @@ loc_8041CC6:
 loc_8041CD8:
     push {r4,r5}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r4,#2]
     ldrb r1, [r4,#3]
     bl sub_803CDF8
@@ -4391,7 +4389,7 @@ chatbox_8041DF4:
     cmp r0, #2
     beq loc_8041E5A
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_811FFC0 // () -> void
     add r4, #2
     mov r0, #1
@@ -4399,7 +4397,7 @@ chatbox_8041DF4:
 loc_8041E12:
     push {r4,r5}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r4,#2]
     ldrb r1, [r4,#3]
     lsl r1, r1, #8
@@ -4436,7 +4434,7 @@ loc_8041E40:
 loc_8041E5A:
     push {r4,r5}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r4,#2]
     ldrb r1, [r4,#3]
     lsl r1, r1, #8
@@ -4728,7 +4726,7 @@ chatbox_80420BC:
     ldrb r0, [r5,#5]
     add r0, #1
     strb r0, [r5,#5]
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     add r1, r0, #0
     ldr r0, off_8042114 // =off_8042118 
     ldrb r2, [r4,#2]
@@ -5006,7 +5004,7 @@ chatbox_80422D4:
     ldrb r1, [r4,#3]
     lsl r1, r1, #8
     orr r0, r1
-    bl sound_play
+    bl sound_play // () -> void
     add r4, #4
     mov r0, #1
     pop {pc}
@@ -5164,7 +5162,7 @@ jt_804239C:    .word chatbox_80423DC+1
 chatbox_80423DC:
     push {lr}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r4,#2]
     lsl r0, r0, #2
     add r0, r0, r4
@@ -5197,7 +5195,7 @@ chatbox_80423DC:
 chatbox_8042418:
     push {lr}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r4,#2]
     lsl r0, r0, #1
     add r0, r0, r4
@@ -5240,7 +5238,7 @@ loc_804245C:
     bl sub_8005BC8
     mov r0, #0x2c 
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     pop {r4,r5}
     mov r0, #1
     strb r0, [r5,#4]
@@ -5274,7 +5272,7 @@ loc_804248C:
     bl sub_803522E
     mov r0, #0x2c 
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     pop {r4,r5,r7}
     mov r0, #1
     strb r0, [r5,#4]
@@ -5298,7 +5296,7 @@ chatbox_80424BC:
 loc_80424CC:
     push {r4,r5}
     ldrb r0, [r4,#2]
-    bl subsystem_launchShop // () -> void
+    bl subsystem_launchShop
     pop {r4,r5}
     mov r0, #1
     strb r0, [r5,#4]
@@ -5323,7 +5321,7 @@ loc_80424F0:
     ldrb r0, [r4,#2]
     cmp r0, #1
     beq loc_8042508
-    bl subsystem_launchChipTrader // (int a1) -> bool
+    bl subsystem_launchChipTrader
     bne loc_8042512
     mov r0, #1
     strb r0, [r5,#4]
@@ -5359,12 +5357,12 @@ loc_8042526:
 chatbox_804252C:
     push {lr}
     mov r0, #0x8a
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r7, [r4,#2]
     ldrb r0, [r4,#3]
     lsl r0, r0, #8
     orr r7, r0
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     add r6, r0, #0
     bl sub_80010D4
     add r1, r0, r7
@@ -5377,7 +5375,7 @@ chatbox_804252C:
 
     push {lr}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800151C
     ldrb r1, [r4,#2]
     and r1, r0
@@ -5407,7 +5405,7 @@ chatbox_8042580:
     b loc_804259A
 loc_8042590:
     ldrb r0, [r4,#2]
-    bl subsystem_launchBBS // (int a1) -> void
+    bl subsystem_launchBBS
     mov r0, #1
     strb r0, [r5,#4]
 loc_804259A:
@@ -5451,7 +5449,7 @@ chatbox_80425C0:
     b loc_80425DA
 loc_80425D0:
     ldrb r0, [r4,#2]
-    bl subsystem_launchReqBBS // (int a1) -> void
+    bl subsystem_launchReqBBS
     mov r0, #1
     strb r0, [r5,#4]
 loc_80425DA:
@@ -5537,7 +5535,7 @@ chatbox_8042678:
     tst r0, r0
     bne loc_804268E
     mov r0, #0x74 
-    bl sound_play
+    bl sound_play // () -> void
 loc_804268E:
     pop {r0,r4}
     add r0, #2
@@ -5578,7 +5576,7 @@ chatbox_80426C4:
     push {lr}
     mov r0, #0xc
     mov r1, #0xc
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     add r4, #2
     mov r0, #1
     pop {pc}
@@ -5959,7 +5957,7 @@ loc_8042ABA:
     beq loc_8042AD0
     push {r0}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
 loc_8042AD0:
     add r0, #4
@@ -5984,7 +5982,7 @@ loc_8042AE8:
     beq loc_8042B02
     push {r0}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
 loc_8042B02:
     add r4, #4
@@ -6053,7 +6051,7 @@ loc_8042B6A:
     pop {r4,r5}
     push {r0}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
     add r0, #6
     ldrb r1, [r4,r0]
@@ -6091,7 +6089,7 @@ loc_8042BA4:
     pop {r4,r5}
     push {r0}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
     add r4, #6
     mov r0, #1
@@ -6170,7 +6168,7 @@ loc_8042C4A:
     pop {r4,r5}
     push {r0}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
     add r0, #6
     ldrb r1, [r4,r0]
@@ -6208,7 +6206,7 @@ loc_8042C84:
     pop {r4,r5}
     push {r0}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
     add r4, #6
     mov r0, #1
@@ -6328,7 +6326,7 @@ loc_8042D96:
     beq loc_8042DB6
     mov r1, #0x6c 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#0x13]
 loc_8042DB6:
@@ -6340,7 +6338,7 @@ loc_8042DBA:
     bne loc_8042DB6
     mov r1, #0x6e 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x11
     bl chatbox_clearFlags_3e // (int mask) -> void
     mov r0, #7
@@ -6390,7 +6388,7 @@ loc_8042E1E:
     beq loc_8042E38
     mov r1, #0x6a 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     mov r2, #4
     b loc_8042EB2
 loc_8042E38:
@@ -6409,7 +6407,7 @@ loc_8042E38:
     beq loc_8042E62
     mov r1, #0x6c 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x80
     ldr r0, [r5,r0]
     sub r0, #1
@@ -6449,7 +6447,7 @@ loc_8042EA2:
     push {r0-r3}
     mov r1, #0x6e 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0-r3}
     mov r2, #0
 loc_8042EB0:
@@ -6883,7 +6881,7 @@ loc_80431AE:
     beq loc_80431CA
     mov r2, #0x6c 
     ldrh r0, [r5,r2]
-    bl sound_play
+    bl sound_play // () -> void
 loc_80431CA:
     ldrb r0, [r5,#0x13]
     ldrb r0, [r5,#0x13]
@@ -6914,7 +6912,7 @@ loc_80431F2:
 loc_80431FA:
     mov r1, #0x6c 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x13]
     add r0, #0x4c 
     strb r3, [r5,r0]
@@ -6973,7 +6971,7 @@ loc_8043252:
     beq loc_8043272
     mov r1, #0x6c 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#0x13]
 loc_8043272:
@@ -6985,7 +6983,7 @@ loc_8043276:
     bne loc_8043272
     mov r1, #0x6e 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x11
     bl chatbox_clearFlags_3e // (int mask) -> void
     mov r0, #7
@@ -7100,7 +7098,7 @@ loc_8043356:
     beq loc_8043372
     mov r2, #0x6c 
     ldrh r0, [r5,r2]
-    bl sound_play
+    bl sound_play // () -> void
 loc_8043372:
     mov r0, #0x80
     ldrb r0, [r5,r0]
@@ -7138,7 +7136,7 @@ loc_80433A8:
 loc_80433B0:
     mov r1, #0x6c 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     strb r3, [r5,r2]
 loc_80433BA:
     ldr r0, off_80434D0 // =0x154 
@@ -7198,7 +7196,7 @@ loc_8043412:
     beq loc_804342C
     mov r1, #0x6a 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     mov r2, #4
     b loc_80434A6
 loc_804342C:
@@ -7217,7 +7215,7 @@ loc_804342C:
     beq loc_8043456
     mov r1, #0x6c 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x80
     ldr r0, [r5,r0]
     sub r0, #1
@@ -7257,7 +7255,7 @@ loc_8043496:
     push {r0-r3}
     mov r1, #0x6e 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0-r3}
     mov r2, #0
 loc_80434A4:
@@ -7340,7 +7338,7 @@ loc_804352E:
     beq loc_804354A
     mov r2, #0x6c 
     ldrh r0, [r5,r2]
-    bl sound_play
+    bl sound_play // () -> void
 loc_804354A:
     mov r0, #0x80
     ldrb r0, [r5,r0]
@@ -7378,7 +7376,7 @@ loc_8043580:
 loc_8043588:
     mov r1, #0x6c 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     strb r3, [r5,r2]
 loc_8043592:
     ldr r0, off_80436A0 // =0x154 
@@ -7437,7 +7435,7 @@ loc_80435EA:
     beq loc_80435FE
     mov r1, #0x6a 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     mov r2, #4
     b loc_8043674
 loc_80435FE:
@@ -7456,7 +7454,7 @@ loc_80435FE:
     beq loc_8043628
     mov r1, #0x6c 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x80
     ldr r0, [r5,r0]
     sub r0, #1
@@ -7494,7 +7492,7 @@ loc_8043664:
     push {r0-r3}
     mov r1, #0x6e 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0-r3}
     mov r2, #0
 loc_8043672:
@@ -7600,7 +7598,7 @@ loc_8043720:
     beq loc_804373E
     mov r2, #0x6c 
     ldrh r0, [r5,r2]
-    bl sound_play
+    bl sound_play // () -> void
 loc_804373E:
     pop {r7}
     ldr r1, [r5,r7]
@@ -7704,7 +7702,7 @@ loc_80437EA:
     beq loc_8043804
     mov r1, #0x6a 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     mov r2, #4
     b loc_804387E
 loc_8043804:
@@ -7723,7 +7721,7 @@ loc_8043804:
     beq loc_804382E
     mov r1, #0x6c 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x80
     ldr r0, [r5,r0]
     sub r0, #1
@@ -7763,7 +7761,7 @@ loc_804386E:
     push {r0-r3}
     mov r1, #0x6e 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0-r3}
     mov r2, #0
 loc_804387C:
@@ -7864,7 +7862,7 @@ loc_8043920:
     beq loc_804393C
     mov r2, #0x6c 
     ldrh r0, [r5,r2]
-    bl sound_play
+    bl sound_play // () -> void
 loc_804393C:
     ldrb r0, [r5,#0x13]
     pop {r7}
@@ -7904,7 +7902,7 @@ loc_8043978:
 loc_8043980:
     mov r1, #0x6c 
     ldrh r0, [r5,r1]
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x13]
     add r0, #0x4c 
     strb r3, [r5,r0]
@@ -7972,7 +7970,7 @@ chatbox_8043A5C:
 loc_8043A70:
     push {r4,r5}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r4,#2]
     cmp r0, #0xff
     bne loc_8043A82
@@ -8005,7 +8003,7 @@ loc_8043A9A:
 loc_8043AB0:
     push {r4,r5}
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r4,#2]
     ldrb r1, [r4,#4]
     ldrb r2, [r4,#3]

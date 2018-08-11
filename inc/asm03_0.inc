@@ -120,7 +120,7 @@
 .global sub_802FE6A
 .global sub_802FE7A
 .global sub_802FF2C
-.global sub_802FF4C // (int a1, int a2) ->
+.global sub_802FF4C
 .global loc_802FFF4
 .global sub_80301B2
 .global sub_80301DC
@@ -137,7 +137,7 @@
 .global sub_8030580
 .global sub_80307D8
 .global sub_8030808
-.global sub_8030A00
+.global loc_8030A00
 .global sub_8030A30
 .global sub_8030A60
 .global sub_8030AA4
@@ -389,7 +389,7 @@
 // .global sub_813B780
 // .global sub_813C3AC
 // .global sub_813D5C8
-// .global sub_813D60C // () -> zf
+// .global sub_813D60C
 // .global sub_813D638
 // .global sub_813D648
 // .global sub_813D750
@@ -590,7 +590,7 @@
 // .global sub_805DFF0
 
 .include "asm00.inc"
-// .global sound_play
+// .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
 // .global sub_80005F2
 // .global sub_8000642
@@ -609,8 +609,8 @@
 // .global sub_800098C
 // .global loc_8000AC4
 // .global loc_8000AC8
-// .global decomp_initGfx_8000B30 // (u32 *dataList) -> void
-// .global decomp_initGfx_8000B8E // (u32 *dataList) -> void
+// .global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+// .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
 // .global sub_8000C72
@@ -620,7 +620,7 @@
 // .global sub_8000EB6
 // .global sub_8000EE4
 // .global sub_8001040
-// .global getPETNaviSelect
+// .global getPETNaviSelect // () -> u8
 // .global sub_80010BE
 // .global sub_80010C6
 // .global sub_80010D4
@@ -629,7 +629,7 @@
 // .global sub_8001514
 // .global sub_800151C
 // .global sub_8001532
-// .global sub_800154C
+// .global sub_800154C // () -> void
 // .global sub_80015FC
 // .global sub_8001778
 // .global sub_8001788
@@ -640,7 +640,7 @@
 // .global sub_8001850
 // .global sub_800187C
 // .global sub_8001890
-// .global drawTiles // (int a1, int a2, int a3) -> void
+// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
 // .global sub_80018E0
 // .global sub_8001930
@@ -678,9 +678,9 @@
 // .global sub_8005C04
 // .global sub_8005F40
 // .global sub_8005F6C
-// .global engine_setScreeneffect // (int a1) -> void
-// .global engine_setScreeneffect_r3_20
-// .global engine_80062EC
+// .global engine_setScreeneffect
+// .global loc_8006274
+// .global sub_80062EC
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global loc_80062FC
 // .global dword_80065D0
@@ -702,15 +702,15 @@
 // .global sub_80070BC
 // .global sub_80071D4
 // .global sub_80076A0
-// .global sub_8007800
+// .global loc_8007800
 // .global sub_8009FF8
-// .global battle_isPaused // () -> zf
+// .global battle_isPaused
 // .global battle_isTimeStop
 // .global sub_800A0A4
 // .global battle_isBattleOver
 // .global battle_setFlags
 // .global battle_clearFlags
-// .global battle_getFlags // () -> int
+// .global battle_getFlags
 // .global sub_800A704
 // .global sub_800A70C
 // .global getBattleSettingsFromList0
@@ -906,7 +906,7 @@
 // .global sub_8146E5C
 // .global sub_8146E78
 // .global sub_8147B24
-// .global sub_8147B3C // () -> void
+// .global sub_8147B3C
 // .global sub_8147F98
 // .global sub_8148214
 // .global sub_8148884
@@ -1202,7 +1202,7 @@
 .equ unk_2024E00, 0x2024E00
 .equ unk_2025200, 0x2025200
 .equ unk_2025600, 0x2025600
-.equ decomp_2025A00, 0x2025A00
+.equ unk_2025A00, 0x2025A00
 .equ unk_2025E00, 0x2025E00
 .equ unk_2026200, 0x2026200
 .equ unk_2026600, 0x2026600
@@ -1214,7 +1214,7 @@
 .equ unk_2028204, 0x2028204
 .equ unk_2028A00, 0x2028A00
 .equ unk_2029200, 0x2029200
-.equ decomp_2029A00, 0x2029A00
+.equ unk_2029A00, 0x2029A00
 .equ reqBBS_requestInfo_textOffsets, 0x2029A04
 .equ unk_2029E00, 0x2029E00
 .equ unk_2029E04, 0x2029E04
@@ -1264,6 +1264,8 @@
 .equ unk_2034A60, 0x2034A60
 .equ unk_2034B30, 0x2034B30
 .equ unk_2035000, 0x2035000
+.equ unk_203505A, 0x203505A
+.equ unk_2035186, 0x2035186
 .equ unk_2035188, 0x2035188
 .equ unk_203518C, 0x203518C
 .equ unk_2035190, 0x2035190
@@ -1587,7 +1589,7 @@
 .equ unk_86C1F80, 0x86C1F80
 .equ unk_86C22E0, 0x86C22E0
 .equ dword_86C41B4, 0x86C41B4
-.equ loc_86CB360, 0x86CB360
+.equ unk_86CB360, 0x86CB360
 .equ dword_86DDB24, 0x86DDB24
 .equ dword_86E1238, 0x86E1238
 .equ dword_86E2E98, 0x86E2E98

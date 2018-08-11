@@ -187,7 +187,7 @@
 // .global sub_8116878
 
 .include "asm00.inc"
-// .global sound_play
+// .global sound_play // () -> void
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global copyMemory // (void *src, void* dest, int size) -> void
@@ -243,17 +243,17 @@
 // .global sub_80033E4
 // .global object_freeMemory
 // .global sub_800362C
-// .global engine_setScreeneffect // (int a1) -> void
+// .global engine_setScreeneffect
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global dword_80065D0
 // .global dword_8006660
-// .global battle_isPaused // () -> zf
+// .global battle_isPaused
 // .global battle_isTimeStop
 // .global sub_800A152
 // .global battle_isBattleOver
 // .global battle_setFlags
 // .global battle_clearFlags
-// .global battle_getFlags // () -> int
+// .global battle_getFlags
 // .global sub_800A704
 // .global sub_800A772
 // .global sub_800A8F8

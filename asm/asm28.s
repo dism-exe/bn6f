@@ -476,9 +476,9 @@ dword_8099EA0:    .word 0x99FFD4B, 0x6003F08, 0x1731FF29, 0x4701FF02, 0x3E00FF01
 .thumb_func
 sub_809A308:
     push {lr}
-    // dataList
+    // initRefs
     ldr r0, off_809A314 // =dword_809A318 
-    bl decomp_initGfx_8000B30 // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     pop {pc}
     .balign 4, 0x00
 off_809A314:    .word dword_809A318
@@ -491,9 +491,9 @@ dword_809A318:    .word 0x886C7980, 0x2034E00
 .thumb_func
 sub_809A334:
     push {r4-r7,lr}
-    // dataList
+    // initRefs
     ldr r0, off_809A340 // =dword_809A344 
-    bl decomp_initGfx_8000B30 // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     pop {r4-r7,pc}
     .byte 0, 0
 off_809A340:    .word dword_809A344
@@ -513,14 +513,14 @@ dword_809A344:    .word 0x86C57EC, 0x3001B20, 0x20, 0x86C5550, 0x600D000, 0x220
     ldr r3, off_809A3A4 // =loc_86C54D4 
     mov r4, #9
     mov r5, #5
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     add r0, r7, #1
     mov r1, #2
     mov r2, #0
     ldr r3, off_809A3A8 // =dword_8099E04+88 
     mov r4, #7
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     ldr r0, off_809A3AC // =dword_86C580C 
     mov r1, #0x40 
     ldr r2, off_809A3B0 // =unk_200EF40 
@@ -626,7 +626,7 @@ loc_809A46C:
     mov r0, #1
     strb r0, [r5,#9]
     mov r0, #0x68 
-    bl sound_play
+    bl sound_play // () -> void
     bl chatbox_8040818
     b loc_809A4AA
 loc_809A488:
@@ -775,7 +775,7 @@ loc_809A5B8:
     mov r0, #1
     strb r0, [r5,#9]
     mov r0, #0x8a
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_809A880
     strh r0, [r5,#0x1a]
     mov r2, #0x88
@@ -1044,16 +1044,17 @@ sub_809A80C:
     ldr r0, [r0,#0x38]
     ldr r1, [r5,#0x70]
     str r1, [r0,#8]
-    // a1
+    // j
     add r0, r7, #0
-    // a2
+    // i
     mov r1, #0
-    // a3
+    // cpyOff
     mov r2, #0
+    // tileRefs
     ldr r3, off_809A850 // =loc_86C5790 
     mov r4, #9
     mov r5, #5
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_809A80C
 
     add r0, r7, #2
@@ -1062,7 +1063,7 @@ sub_809A80C:
     ldr r3, dword_809A854 // =0x8099E78 
     mov r4, #6
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     ldr r0, off_809A858 // =unk_2033404 
     mov r1, #6
     ldr r2, off_809A85C // =unk_200EF40 
@@ -1286,7 +1287,7 @@ loc_809AB3A:
     mov r0, #4
     strb r0, [r5,#8]
     mov r0, #0x68 
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, off_809AD78 // =unk_2033404 
     mov r1, #0xb
     bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
@@ -1338,7 +1339,7 @@ loc_809AB92:
     mov r2, #1
     bl dword_8021AEC+2
     ldr r0, off_809AC28 // =dword_809AC2C 
-    bl decomp_initGfx_8000B30 // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     mov r0, #0xf
     mov r1, #3
     b loc_809AC06
@@ -3161,7 +3162,7 @@ locret_809CA1E:
     pop {r4-r7,pc}
 loc_809CA20:
     mov r0, #0x69 
-    bl sound_play
+    bl sound_play // () -> void
 loc_809CA26:
     mov r0, #1
     mov r1, #0xba
@@ -3392,7 +3393,7 @@ loc_809D19C:
     mov r1, #0xe4
     bl sub_802F164 // (int a1, int a2) -> zf
     bne loc_809D1D2
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x35 
     bl sub_80137B6
     tst r0, r0
@@ -3484,7 +3485,7 @@ sub_809D270:
     push {r4,lr}
     mov r0, #3
     strb r0, [r5]
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     ldr r4, off_809D324 // =unk_809D328 
     ldrb r4, [r4,r0]
     mov r6, #0x18
@@ -4313,7 +4314,7 @@ sub_809D964:
     mov r0, #6
     strb r0, [r5,r1]
     mov r0, #0x98
-    bl sound_play
+    bl sound_play // () -> void
 loc_809D97E:
     mov r1, #0x64 
     ldrh r0, [r5,r1]
@@ -4551,7 +4552,7 @@ sub_809DB02:
     bl sub_802F110
     mov r0, #0x36 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     b loc_809DB4A
 loc_809DB4A:
     pop {r0,r1}
@@ -6629,7 +6630,7 @@ loc_809EB76:
     cmp r0, #0x70 
     bne loc_809EB98
     push {r0,r1,r3-r7}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     add r2, r0, #0
     pop {r0,r1,r3-r7}
     cmp r2, #0
@@ -7235,7 +7236,7 @@ off_809EFF8:    .word 0x100
 .thumb_func
 sub_809EFFC:
     push {lr}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     ldr r1, off_809F018 // =unk_809D328 
     ldrb r0, [r1,r0]
     strh r0, [r5,#0x3c]
@@ -7281,7 +7282,7 @@ sub_809F048:
     push {lr}
     add r0, r6, #1
     bl sub_809F64C
-    bl sound_play
+    bl sound_play // () -> void
     add r6, #3
     pop {pc}
 .endfunc // sub_809F048
@@ -7977,7 +7978,7 @@ sub_809F4B8:
     bl sub_80047E0
     pop {r5}
     mov r0, #0x76 
-    bl sound_play
+    bl sound_play // () -> void
     add r6, #1
     pop {pc}
 .endfunc // sub_809F4B8
@@ -7986,7 +7987,7 @@ sub_809F4B8:
 .thumb_func
 sub_809F4EE:
     push {lr}
-    bl engine_80062C8
+    bl sub_80062C8
     cmp r1, #0
     beq loc_809F502
     add r0, r6, #1
@@ -8843,7 +8844,7 @@ sub_809FC96:
     push {r4}
     add r6, r0, #0
     mov r5, #1
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x33 
     bl sub_8013704
     cmp r0, #1

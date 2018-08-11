@@ -29,7 +29,7 @@
 // .global sub_809E3C4
 
 .include "asm00.inc"
-// .global sound_play
+// .global sound_play // () -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8001172
 // .global sub_800118A

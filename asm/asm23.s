@@ -345,21 +345,21 @@ sub_8089704:
     bl sub_8142A84
     beq loc_808972E
     mov r0, #0x67 
-    bl sound_play
+    bl sound_play // () -> void
     mov r4, #2
     b loc_808978C
 loc_808972E:
     b loc_808978C
 loc_8089730:
     mov r0, #0x69 
-    bl sound_play
+    bl sound_play // () -> void
     b loc_808978C
 loc_8089738:
     mov r0, #2
     tst r0, r7
     beq loc_8089748
     mov r0, #0x68 
-    bl sound_play
+    bl sound_play // () -> void
     mov r4, #3
     b loc_808978C
 loc_8089748:
@@ -370,7 +370,7 @@ loc_8089748:
     tst r0, r7
     beq loc_808976C
     mov r0, #0x66 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_81421D0
     sub r0, #1
     bge loc_8089764
@@ -384,7 +384,7 @@ loc_808976C:
     tst r0, r7
     beq loc_808978C
     mov r0, #0x66 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_81421D0
     add r0, #1
     cmp r0, #4
@@ -456,7 +456,7 @@ sub_80897E8:
     beq loc_8089804
     mov r0, #4
     mov r1, #0xff
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x24 
     strb r0, [r5]
 loc_8089804:
@@ -472,7 +472,7 @@ sub_8089808:
     beq loc_8089822
     mov r0, #0
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #5
     bl sub_8089CB0
     mov r0, #0x28 
@@ -673,7 +673,7 @@ sub_8089960:
     beq loc_808997A
     mov r0, #4
     mov r1, #0xff
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x4c 
     strb r0, [r5]
 loc_808997A:
@@ -689,7 +689,7 @@ sub_808997E:
     beq loc_8089998
     mov r0, #0
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #5
     bl sub_8089CB0
     mov r0, #0x50 
@@ -718,7 +718,7 @@ loc_80899B2:
     strb r0, [r5]
     b loc_80899D4
 loc_80899C2:
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     bl sub_80010D4
     tst r0, r0
     beq loc_80899B2
@@ -829,7 +829,7 @@ sub_8089A60:
     bl sub_8035408
     mov r0, #0x65 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_8036E44
     bl sub_8036E78
 loc_8089ABA:
@@ -1046,12 +1046,12 @@ sub_8089C16:
     bne loc_8089C74
     mov r0, #1
     strb r0, [r5,#8]
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     bl sub_80010D4
     tst r0, r0
     bne loc_8089C4A
     strb r0, [r5,#8]
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     cmp r0, #0
     bne loc_8089C3E
     mov r0, #0x3a 

@@ -132,7 +132,7 @@
 // .global sub_809F90C
 
 .include "asm00.inc"
-// .global sound_play
+// .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
 // .global sub_800068A
 // .global sub_80008B4
@@ -143,20 +143,20 @@
 // .global CpuSet_800093C
 // .global sub_8000950
 // .global loc_8000AC8
-// .global decomp_initGfx_8000B30 // (u32 *dataList) -> void
+// .global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
 // .global sub_8000C00
 // .global sub_8000D84
 // .global sub_8000E28
 // .global sub_8000F86
 // .global loc_8001048
-// .global getPETNaviSelect
-// .global sub_800154C
+// .global getPETNaviSelect // () -> u8
+// .global sub_800154C // () -> void
 // .global sub_80015FC
 // .global sub_80017AA
 // .global sub_80017E0
 // .global sub_8001820
 // .global sub_800183C
-// .global drawTiles // (int a1, int a2, int a3) -> void
+// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
 // .global sub_80024A2
 // .global sub_800260C
@@ -165,7 +165,7 @@
 // .global sub_80027F4
 // .global sub_800286C
 // .global sub_80028D4
-// .global decomp_8002906 // (int a1) -> bool
+// .global sub_8002906
 // .global sub_800307C
 // .global sub_80035A2
 // .global sub_800378C
@@ -184,8 +184,8 @@
 // .global sub_8005524
 // .global sub_8005F40
 // .global sub_8005F6C
-// .global engine_setScreeneffect // (int a1) -> void
-// .global engine_80062C8
+// .global engine_setScreeneffect
+// .global sub_80062C8
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global sub_8010C76
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
@@ -225,7 +225,7 @@
 // .global sub_813C334
 // .global sub_813C3AC
 // .global sub_813D5D0
-// .global sub_813D60C // () -> zf
+// .global sub_813D60C
 // .global sub_813D638
 // .global sub_813D90C
 // .global sub_813D978
@@ -239,7 +239,7 @@
 // .global zf_802F168
 // .global sub_802F1A8 // (int a3, int a2) -> void
 // .global sub_802FE28
-// .global sub_802FF4C // (int a1, int a2) ->
+// .global sub_802FF4C
 // .global loc_802FFF4
 // .global sub_80301B2
 // .global sub_80301DC
@@ -369,7 +369,7 @@
 .equ word_201C4E2, 0x201C4E2
 .equ unk_201C4F0, 0x201C4F0
 .equ unk_201C500, 0x201C500
-.equ unk_201C780, 0x201C780
+.equ aIiijjjjkkkkkjj, 0x201C700
 .equ unk_201CA20, 0x201CA20
 .equ unk_201CB80, 0x201CB80
 .equ unk_201CF00, 0x201CF00

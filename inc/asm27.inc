@@ -11,7 +11,7 @@
 .include "asm00.inc"
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
-// .global decomp_initGfx_8000B30 // (u32 *dataList) -> void
+// .global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
 
 
 /* Undeclared Symbols */

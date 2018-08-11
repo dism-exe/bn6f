@@ -77,19 +77,19 @@
 // .global off_8090000
 
 .include "asm00.inc"
-// .global sound_play
+// .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8000900 // (int a1, int a2) -> void
 // .global CpuSet_800093C
 // .global initMemblockToByte
-// .global decomp_initGfx_8000B30 // (u32 *dataList) -> void
+// .global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
 // .global sub_8000E3A
-// .global getPETNaviSelect
+// .global getPETNaviSelect // () -> u8
 // .global sub_8001172
 // .global calcAngle_800117C
 // .global sub_8001850
-// .global drawTiles // (int a1, int a2, int a3) -> void
+// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sprite_loadAnimationData
 // .global sprite_update
 // .global sprite_load
@@ -125,7 +125,7 @@
 // .global sub_8003B86
 // .global sub_8004602
 // .global sub_80047E0
-// .global engine_80062C8
+// .global sub_80062C8
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global sub_8013704
 // .global sub_80137B6

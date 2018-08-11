@@ -142,9 +142,7 @@ sub_801FEE8:
     mov pc, lr
 .endfunc // sub_801FEE8
 
-.func
-.thumb_func
-sub_801FEEE:
+loc_801FEEE:
     push {r4-r7,lr}
     add r7, r0, #0
     bl sub_803EA60
@@ -160,8 +158,6 @@ off_801FF08:    .word sub_801FF18+1
     .word sub_801FFD6+1
     .word sub_801FFD6+1
     .word sub_801FF18+1
-.endfunc // sub_801FEEE
-
 .func
 .thumb_func
 sub_801FF18:
@@ -436,13 +432,13 @@ sub_8020134:
 .thumb_func
 sub_8020140:
     push {r7,lr}
-    bl sub_813D60C // () -> zf
+    bl sub_813D60C
     beq locret_802015C
     bl sub_803EA60
     cmp r0, #0xc
     bne locret_802015C
     ldr r7, off_8020168 // =unk_2038160 
-    bl sub_813D66C // () -> void
+    bl sub_813D66C
     bl sub_803C620
     strb r0, [r7,#0x1] // (byte_2038161 - 0x2038160)
 locret_802015C:

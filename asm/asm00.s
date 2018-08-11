@@ -21,6 +21,7 @@ sub_80005C4:
 
 .func
 .thumb_func
+// () -> void
 sound_play:
     push {r1-r7,lr}
     bl m4a_800061E // () -> void
@@ -799,11 +800,11 @@ locret_8000B2E:
 
 .func
 .thumb_func
-// (u32 *dataList) -> void
+// (u32 *initRefs) -> void
 decomp_initGfx_8000B30:
     push {r4-r7,lr}
     add r7, r0, #0
-parseDataList_8000B34:
+loc_8000B34:
     ldr r0, [r7]
     tst r0, r0
     beq locret_8000B8C
@@ -812,7 +813,7 @@ parseDataList_8000B34:
     lsr r0, r0, #1
     ldr r1, [r7,#4]
     ldr r2, [r7,#8]
-    b checkDataType_8000B5E
+    b loc_8000B5E
 Carried_isCompressedRef_8000B46:
     // src: (a1[0]<<1)>>1 (carry flag) first itr
     lsr r0, r0, #1
@@ -830,18 +831,18 @@ Carried_isCompressedRef_8000B46:
     lsr r2, r2, #8
     // mode
     sub r2, #4
-checkDataType_8000B5E:
+loc_8000B5E:
     mov r3, #1
     tst r3, r2
-    bne isCopyType_8000B72
+    bne loc_8000B72
     mov r3, #3
     tst r3, r2
     bne loc_8000B78
     mov r3, #0x1f
     tst r3, r2
     bne loc_8000B7E
-    b default_8000B84
-isCopyType_8000B72:
+    b loc_8000B84
+loc_8000B72:
     bl copyMemory // (void *src, void* dest, int size) -> void
     b continue_incR7_12_8000B88
 loc_8000B78:
@@ -850,19 +851,18 @@ loc_8000B78:
 loc_8000B7E:
     bl CpuSet_800093C
     b continue_incR7_12_8000B88
-default_8000B84:
+loc_8000B84:
     bl sub_8000950
 continue_incR7_12_8000B88:
     add r7, #0xc
-    // while (*R7 != 0);
-    b parseDataList_8000B34
+    b loc_8000B34
 locret_8000B8C:
     pop {r4-r7,pc}
 .endfunc // decomp_initGfx_8000B30
 
 .func
 .thumb_func
-// (u32 *dataList) -> void
+// (u32 *dataRefs) -> void
 // [break] open PET
 decomp_initGfx_8000B8E:
     push {r4-r7,lr}
@@ -1573,7 +1573,7 @@ loc_800104A:
     and r7, r6
     bne locret_8001078
     mov r0, #0x91
-    bl sound_play
+    bl sound_play // () -> void
 locret_8001078:
     pop {r4-r7,pc}
 .endfunc // sub_8001040
@@ -1595,9 +1595,6 @@ sub_800107A:
     mov pc, lr
 .endfunc // sub_800107A
 
-.func
-.thumb_func
-sub_8001092:
     push {r4-r7,lr}
     mov r5, r10
     ldr r5, [r5,#0x3c]
@@ -1607,11 +1604,6 @@ sub_8001092:
     str r3, [r5,#0x40]
     str r4, [r5,#0x44]
     pop {r4-r7,pc}
-.endfunc // sub_8001092
-
-.func
-.thumb_func
-sub_80010A4:
     push {r4-r7,lr}
     mov r5, r10
     ldr r5, [r5,#0x3c]
@@ -1621,14 +1613,13 @@ sub_80010A4:
     str r3, [r5,#0x54]
     str r4, [r5,#0x58]
     pop {r4-r7,pc}
-.endfunc // sub_80010A4
-
 .func
 .thumb_func
+// () -> u8
 getPETNaviSelect:
     mov r3, r10
-    ldr r3, [r3,#0x3c]
-    ldrb r0, [r3,#1]
+    ldr r3, [r3,#0x3c] // Toolkit.gamestate
+    ldrb r0, [r3,#0x1] // GameState.PET_naviSelect
     mov pc, lr
 .endfunc // getPETNaviSelect
 
@@ -1645,7 +1636,7 @@ sub_80010BE:
 .thumb_func
 sub_80010C6:
     push {lr}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r3, r10
     ldr r3, [r3,#0x40]
     strb r0, [r3,#7]
@@ -2302,6 +2293,7 @@ sub_8001532:
 
 .func
 .thumb_func
+// () -> void
 sub_800154C:
     push {r7,lr}
     ldr r7, off_80015A8 // =dword_2001120 
@@ -2700,27 +2692,26 @@ loc_80018A6:
 
 .func
 .thumb_func
-// (int a1, int a2, int a3) -> void
-// hyp
-drawTiles:
+// (int j, int i, int cpyOff, u16 *tileRefs) -> void
+copyTiles:
     push {r6,r7,lr}
-    ldr r7, off_80018CC // =sub_3005E80+1 
+    ldr r7, off_80018CC // =copyTiles_iram+1 
     mov lr, pc
     bx r7
     pop {r6,r7,pc}
-off_80018CC:    .word sub_3005E80+1
-.endfunc // drawTiles
+off_80018CC:    .word copyTiles_iram+1
+.endfunc // copyTiles
 
 .func
 .thumb_func
 sub_80018D0:
     push {r6,r7,lr}
-    ldr r7, off_80018DC // =loc_3005EBA+1 
+    ldr r7, off_80018DC // =sub_3005EBA+1 
     mov lr, pc
     bx r7
     pop {r6,r7,pc}
     .balign 4, 0x00
-off_80018DC:    .word loc_3005EBA+1
+off_80018DC:    .word sub_3005EBA+1
 .endfunc // sub_80018D0
 
 .func
@@ -4079,7 +4070,7 @@ sub_800232A:
     ldr r0, [r0]
     cmp r0, #0
     blt locret_8002336
-    bl sound_play
+    bl sound_play // () -> void
 locret_8002336:
     pop {pc}
 .endfunc // sub_800232A
@@ -4392,16 +4383,17 @@ loc_80024FE:
     ldrb r3, [r3,#0x1] // (byte_80025C9 - 0x80025c8)
     strh r1, [r2,r3]
     mov r2, r8
-    // a3
+    // cpyOff
     ldrb r2, [r2,#0x2] // (byte_80025CA - 0x80025c8)
+    // tileRefs
     mov r3, r9
     lsr r4, r4, #3
-    // a1
+    // j
     mov r0, #0
-    // a2
+    // i
     mov r1, #0
     lsr r5, r5, #3
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r0,r1}
     mov r5, r10
     ldr r5, [r5,#0x1c]
@@ -4949,8 +4941,7 @@ sub_80028D4:
 
 .func
 .thumb_func
-// (int a1) -> bool
-decomp_8002906:
+sub_8002906:
     push {r4-r7,lr}
     mov r1, r8
     mov r2, r9
@@ -4960,10 +4951,10 @@ decomp_8002906:
     ldr r4, off_8002BC0 // =dword_8031CC4 
     ldr r6, dword_8002BC4 // =0x2040000 
     add r7, r0, #0
-loop_8002918:
+loc_8002918:
     ldrb r0, [r7]
     cmp r0, #0xff
-    beq retTrue_R0EqFF_8002972
+    beq loc_8002972
     ldrb r3, [r7,#1]
     lsl r3, r3, #2
     ldr r2, [r4,r0]
@@ -4978,12 +4969,12 @@ loop_8002918:
     lsr r2, r2, #8
     add r3, r1, r2
     cmp r3, r6
-    bge retFalse_800297C
+    bge loc_800297C
     mov r9, r0
     ldrb r0, [r5]
     cmp r0, #0xc
     mov r0, r9
-    bge retFalse_800297C
+    bge loc_800297C
     push {r7}
     ldrb r3, [r5]
     lsl r7, r3, #1
@@ -5006,20 +4997,20 @@ loop_8002918:
     str r1, [r5,#0x4c]
     pop {r7}
     add r7, #2
-    b loop_8002918
-retTrue_R0EqFF_8002972:
+    b loc_8002918
+loc_8002972:
     mov r0, #1
     pop {r1,r2}
     mov r8, r1
     mov r9, r2
     pop {r4-r7,pc}
-retFalse_800297C:
+loc_800297C:
     mov r0, #0
     pop {r1,r2}
     mov r8, r1
     mov r9, r2
     pop {r4-r7,pc}
-.endfunc // decomp_8002906
+.endfunc // sub_8002906
 
 .func
 .thumb_func
@@ -5047,7 +5038,7 @@ loc_800299E:
 
 .func
 .thumb_func
-decomp_80029A8:
+sub_80029A8:
     push {r4-r7,lr}
     mov r1, r8
     mov r2, r9
@@ -5147,7 +5138,7 @@ loc_8002A58:
     mov r9, r2
     mov r12, r3
     pop {r4-r7,pc}
-.endfunc // decomp_80029A8
+.endfunc // sub_80029A8
 
 .func
 .thumb_func
@@ -6335,9 +6326,7 @@ off_80031A4:    .word dword_2009380
 off_80031A8:    .word dword_2009AB0
 .endfunc // sub_800318C
 
-.func
-.thumb_func
-sub_80031AC:
+loc_80031AC:
     push {r4-r7,lr}
     sub sp, sp, #0x10
     bl sub_800371A
@@ -6413,8 +6402,6 @@ off_800323C:    .word unk_8003250
     .word loc_8003270
 unk_8003250:    .byte 0x1B
     .byte 0
-.endfunc // sub_80031AC
-
 .func
 .thumb_func
 sub_8003252:
@@ -9924,35 +9911,25 @@ off_80050E8:    .word dword_80213AC
 
 .func
 .thumb_func
+// () -> void
 cb_80050EC:
     push {r4-r7,lr}
     ldr r0, off_8005108 // =jt_800510C 
     mov r5, r10
-    ldr r5, [r5,#0x3c]
+    ldr r5, [r5,#0x3c] // Toolkit.gamestate
     ldrb r1, [r5]
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
     bl sub_800151C
-    bl sub_800154C
+    bl sub_800154C // () -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_8005108:    .word jt_800510C
-jt_800510C:    .word sub_8005148+1
-    .word sub_8005268+1
-    .word sub_80052D8+1
-    .word sub_8005360+1
-    .word sub_800536E+1
-    .word sub_80053E4+1
-    .word sub_8005462+1
-    .word sub_800555A+1
-    .word sub_8005642+1
-    .word sub_80056B8+1
-    .word sub_800572C+1
-    .word sub_80057A0+1
-    .word sub_80055CE+1
-    .word sub_8005814+1
-    .word sub_800585A+1
+jt_800510C:    .word sub_8005148+1, sub_8005268+1, sub_80052D8+1, sub_8005360+1
+    .word sub_800536E+1, sub_80053E4+1, sub_8005462+1, sub_800555A+1
+    .word sub_8005642+1, sub_80056B8+1, sub_800572C+1, sub_80057A0+1
+    .word sub_80055CE+1, sub_8005814+1, sub_800585A+1
 .endfunc // cb_80050EC
 
 .func
@@ -9964,6 +9941,8 @@ sub_8005148:
     pop {pc}
 loc_8005152:
     bl sub_8005F40
+.endfunc // sub_8005148
+
     bl sub_8005F6C
     bl sub_80027C4
     bl sub_8003566
@@ -10037,7 +10016,7 @@ loc_80051AA:
     ldrb r1, [r5,#5]
     bl sub_8034B4C
     ldrb r0, [r5,#4]
-    bl sub_8030A00
+    bl loc_8030A00
     mov r0, #0x17
     mov r1, #0x3d 
     bl sub_802F12C // (int a1, int a2) -> void
@@ -10049,7 +10028,7 @@ loc_80051AA:
     bl sub_802F12C // (int a1, int a2) -> void
     ldrb r0, [r5,#0x16]
     ldrb r1, [r5,#0x17]
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #8
     strb r0, [r5,#0x16]
     mov r0, #0x10
@@ -10062,8 +10041,6 @@ loc_80051AA:
     strb r0, [r5]
     pop {pc}
 off_8005264:    .word 0x1740
-.endfunc // sub_8005148
-
 .func
 .thumb_func
 sub_8005268:
@@ -10156,7 +10133,7 @@ off_800535C:    .word 0x2180
 .thumb_func
 sub_8005360:
     push {lr}
-    bl sub_8007800
+    bl loc_8007800
     bne locret_800536C
     mov r0, #0
     strb r0, [r5]
@@ -10190,7 +10167,7 @@ sub_800536E:
     bne loc_80053BC
     mov r0, #0x72 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     b locret_80053DA
 loc_80053BC:
     cmp r0, #0x9e
@@ -10201,7 +10178,7 @@ loc_80053BC:
     ldr r1, off_80053DC // =unk_80053E0 
     lsl r0, r0, #1
     ldrh r0, [r1,r0]
-    bl sound_play
+    bl sound_play // () -> void
     b locret_80053DA
 loc_80053D2:
     bl chatbox_8040818
@@ -10266,6 +10243,7 @@ sub_8005460:
 
 .func
 .thumb_func
+// () -> void
 sub_8005462:
     push {r7,lr}
     ldr r7, off_8005520 // =byte_200DF20 
@@ -10305,13 +10283,13 @@ loc_8005474:
     bl chatbox_8040818
     b locret_800551C
 loc_80054D6:
-    bl loc_811ED1C
+    bl ho_811ED1C // () -> void
     ldrb r0, [r7,#0x1] // (byte_200DF21 - 0x200df20)
     cmp r0, #4
     bne loc_80054EA
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     b locret_800551C
 loc_80054EA:
     ldrb r0, [r7,#0x1] // (byte_200DF21 - 0x200df20)
@@ -10743,7 +10721,7 @@ sub_800596C:
     bl sub_802F110
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     bl sub_8035738
     mov r0, #0x10
     strb r0, [r5]
@@ -10762,7 +10740,7 @@ sub_8005990:
     bl sub_802F110
     mov r0, #4
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     bl sub_8035738
     mov r0, #0x10
     strb r0, [r5]
@@ -10852,7 +10830,7 @@ sub_8005A28:
     bl sub_802F110
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     bl sub_8035738
     mov r0, #0x3c 
     str r0, [r5,#0x68]
@@ -10873,7 +10851,7 @@ sub_8005A50:
     bl sub_802F110
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     bl sub_8035738
     mov r0, #0xa0
     str r0, [r5,#0x68]
@@ -10928,7 +10906,7 @@ sub_8005A8C:
     bl sub_8005BC8
     mov r0, #0x2c 
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
 locret_8005AF2:
     pop {r5,pc}
 .endfunc // sub_8005A8C
@@ -10972,7 +10950,7 @@ sub_8005AF4:
     bl sub_802F164 // (int a1, int a2) -> zf
     bne locret_8005B68
     mov r0, #0x79 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_800107A
     bl sub_811EC10
     bl sub_8003962
@@ -11055,7 +11033,7 @@ loc_8005BF0:
     strb r0, [r5]
     bl sub_8000784
     mov r0, #0x78 
-    bl sound_play
+    bl sound_play // () -> void
     pop {r4-r7,pc}
 dword_8005C00:    .word 0x4000
 .endfunc // sub_8005BC8
@@ -11180,10 +11158,9 @@ off_8005CE4:    .word 0x40
 
 .func
 .thumb_func
-// (int a1) -> void
 subsystem_launchBBS:
     push {r4-r7,lr}
-    bl reqBBS_813E07C // (int a1) -> void
+    bl reqBBS_813E07C
     mov r5, r10
     ldr r5, [r5,#0x3c]
     ldrh r0, [r5,#4]
@@ -11191,7 +11168,7 @@ subsystem_launchBBS:
     bl sub_800107A
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x1c
     strb r0, [r5]
     pop {r4-r7,pc}
@@ -11199,10 +11176,9 @@ subsystem_launchBBS:
 
 .func
 .thumb_func
-// (int a1) -> void
 subsystem_launchReqBBS:
     push {r4-r7,lr}
-    bl reqBBS_init_s_2005780 // (int a1) -> void
+    bl reqBBS_init_s_2005780
     mov r5, r10
     ldr r5, [r5,#0x3c]
     ldrh r0, [r5,#4]
@@ -11210,7 +11186,7 @@ subsystem_launchReqBBS:
     bl sub_800107A
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x30 
     strb r0, [r5]
     pop {r4-r7,pc}
@@ -11218,30 +11194,28 @@ subsystem_launchReqBBS:
 
 .func
 .thumb_func
-// () -> void
 subsystem_launchShop:
     push {r4-r7,lr}
-    bl sub_8046CC8 // () -> void
+    bl sub_8046CC8
     mov r5, r10
-    ldr r5, [r5,#0x3c] // Toolkit.gamestate
-    ldrh r0, [r5,#0x4] // GameState.MapSelect
-    strh r0, [r5,#0xc] // GameState.unk_0C
+    ldr r5, [r5,#0x3c]
+    ldrh r0, [r5,#4]
+    strh r0, [r5,#0xc]
     bl sub_800107A
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
-    mov r1, #0x20 // GameState.unk_20
+    bl engine_setScreeneffect
+    mov r1, #0x20 
     strb r1, [r5]
     pop {r4-r7,pc}
 .endfunc // subsystem_launchShop
 
 .func
 .thumb_func
-// (int a1) -> bool
 subsystem_launchChipTrader:
     push {r4,r5,lr}
     add r4, r0, #0
-    bl sub_8120A38 // () -> (int n1, int n2, int n3, int n4)
+    bl sub_8120A38
     add r0, r0, r1
     add r0, r0, r3
     cmp r0, r4
@@ -11266,7 +11240,7 @@ loc_8005D5C:
     strb r1, [r5]
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0
     pop {r4,r5,pc}
 .endfunc // subsystem_launchChipTrader
@@ -11388,7 +11362,7 @@ sub_8005E86:
     bl sub_800107A
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x28 
     strb r0, [r5]
     pop {r4-r7,pc}
@@ -11405,7 +11379,7 @@ sub_8005EA2:
     bl sub_800107A
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r1, #0x2c 
     strb r1, [r5]
     pop {r4-r7,pc}
@@ -11418,7 +11392,7 @@ subsystem_launchMail:
     push {r4,r5,lr}
     bl sub_8127990
     mov r5, r10
-    ldr r5, [r5,#0x3c] // Toolkit.gamestate
+    ldr r5, [r5,#0x3c]
     ldr r1, [r5,#0x18]
     ldr r0, [r1,#0x1c]
     str r0, [r5,#0x24]
@@ -11432,7 +11406,7 @@ subsystem_launchMail:
     strb r1, [r5]
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0
     pop {r4,r5,pc}
 .endfunc // subsystem_launchMail
@@ -11492,6 +11466,8 @@ sub_8005F40:
     bl sub_80017AA
     bl sub_80017E0
     bl sub_8001974
+.endfunc // sub_8005F40
+
     bl sub_8001AFC
     bl sub_80023A8
     bl sub_8001820
@@ -11500,8 +11476,6 @@ sub_8005F40:
     bl sub_8001788
     bl sub_80017A0
     pop {r4-r7,pc}
-.endfunc // sub_8005F40
-
 .func
 .thumb_func
 sub_8005F6C:
@@ -11542,7 +11516,7 @@ sub_8005F84:
     pop {r4-r7,pc}
     .byte 0, 0
 off_8005FB0:    .word 0x40
-jt_8005FB4:    .word sub_8006366+1
+off_8005FB4:    .word sub_8006366+1
     .word sub_800647C+1
     .word sub_8006366+1
     .word sub_800647C+1
@@ -11553,7 +11527,7 @@ jt_8005FB4:    .word sub_8006366+1
     .word sub_8006366+1
     .word sub_800647C+1
     .word sub_8006366+1
-    .word sub_80064BE+1
+    .word loc_80064BE+1
     .word sub_8006366+1
     .word sub_800647C+1
     .word sub_8006366+1
@@ -11606,11 +11580,10 @@ off_8006040:    .word unk_3001B60
 
 .func
 .thumb_func
-// (int a1) -> void
 engine_setScreeneffect:
     mov r3, #0
     b loc_8006276
-engine_setScreeneffect_r3_20:
+loc_8006274:
     mov r3, #0x20 
 loc_8006276:
     push {r5,lr}
@@ -11658,24 +11631,24 @@ off_80062C4:    .word off_8006040
 
 .func
 .thumb_func
-engine_80062C8:
+sub_80062C8:
     ldr r0, off_80063BC // =byte_200A440 
     ldrb r1, [r0,#0x3] // (byte_200A443 - 0x200a440)
     ldrb r0, [r0,#0x1] // (byte_200A441 - 0x200a440)
     mov pc, lr
-.endfunc // engine_80062C8
+.endfunc // sub_80062C8
 
 .func
 .thumb_func
-engine_80062D0:
+sub_80062D0:
     push {r5,lr}
     mov r0, #0
     b loc_80062DA
-.endfunc // engine_80062D0
+.endfunc // sub_80062D0
 
 .func
 .thumb_func
-engine_80062D6:
+sub_80062D6:
     push {r5,lr}
     mov r0, #0x20 
 loc_80062DA:
@@ -11688,16 +11661,16 @@ loc_80062DA:
     mov r1, #0x20 
     bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     pop {r5,pc}
-.endfunc // engine_80062D6
+.endfunc // sub_80062D6
 
 .func
 .thumb_func
-engine_80062EC:
+sub_80062EC:
     push {lr}
-    bl engine_80062D0
-    bl engine_80062D6
+    bl sub_80062D0
+    bl sub_80062D6
     pop {pc}
-.endfunc // engine_80062EC
+.endfunc // sub_80062EC
 
 .func
 .thumb_func
@@ -11718,7 +11691,7 @@ loc_80062FE:
 
 .func
 .thumb_func
-engine_triggerTransition_800630A:
+subsystem_triggerTransition_800630A:
     push {r4-r7,lr}
     ldr r5, off_80063BC // =byte_200A440 
     mov r4, #0
@@ -11728,7 +11701,7 @@ loc_8006310:
     cmp r0, r1
     bne loc_8006322
     ldrb r2, [r5,#1]
-    ldr r0, off_800632C // =jt_8005FB4 
+    ldr r0, off_800632C // =off_8005FB4 
     ldr r0, [r0,r2]
     mov lr, pc
     bx r0
@@ -11738,8 +11711,8 @@ loc_8006322:
     cmp r4, #2
     blt loc_8006310
     pop {r4-r7,pc}
-off_800632C:    .word jt_8005FB4
-.endfunc // engine_triggerTransition_800630A
+off_800632C:    .word off_8005FB4
+.endfunc // subsystem_triggerTransition_800630A
 
 .func
 .thumb_func
@@ -11916,7 +11889,7 @@ loc_800645E:
     bl sub_800634C
     mov r0, #0x64 
     mov r1, #0xff
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     bl sub_800647C
     pop {r6,pc}
 dword_8006474:    .word 0x10
@@ -11960,9 +11933,7 @@ loc_8006490:
     pop {r4-r7,pc}
 .endfunc // sub_800647C
 
-.func
-.thumb_func
-sub_80064BE:
+loc_80064BE:
     push {r4-r7,lr}
     ldrh r1, [r5,#6]
     ldrh r2, [r5,#4]
@@ -12004,8 +11975,6 @@ loc_80064D6:
 off_800650C:    .word off_8006510
 off_8006510:    .word sub_8006518+1
     .word sub_8006580+1
-.endfunc // sub_80064BE
-
 .func
 .thumb_func
 sub_8006518:
@@ -14046,7 +14015,7 @@ sub_8007338:
     mov r2, #0
     mov r3, #0xf0
     mov r4, #0
-    bl sub_802FF4C // (int a1, int a2) ->
+    bl sub_802FF4C
     mov r0, #0
     bl sub_80301B2
     pop {pc}
@@ -14669,7 +14638,7 @@ sub_80075CA:
     bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
     // dataList
     ldr r0, dataList // =off_80075F0 
-    bl decomp_initGfx_8000B8E // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
     ldr r0, off_800761C // =dword_86DDBA0 
     ldr r1, dword_8007620 // =0x6001460 
     bl SWI_LZ77UnCompReadNormalWrite16bit
@@ -14943,15 +14912,13 @@ sub_80077D2:
 dword_80077FC:    .word 0xFFFF
 .endfunc // sub_80077D2
 
-.func
-.thumb_func
-sub_8007800:
+loc_8007800:
     push {r4,r5,lr}
     bl sub_801FE6C
     bl sub_8020140
     mov r5, r10
     ldr r5, [r5,#0x18]
-    ldr r1, off_8007834 // =jt_8007838 
+    ldr r1, off_8007834 // =off_8007838 
     ldrb r0, [r5]
     ldr r1, [r1,r0]
     mov lr, pc
@@ -14968,18 +14935,14 @@ sub_8007800:
     add r3, r4, #0
     tst r0, r0
     pop {r4,r5,pc}
-off_8007834:    .word jt_8007838
-jt_8007838:    .word sub_8007850+1
+off_8007834:    .word off_8007838
+off_8007838:    .word loc_8007850+1
     .word loc_8007A44+1
     .word sub_8007B80+1
-    .word sub_8007E62+1
-    .word sub_8007F4E+1
-    .word word_8007FEA+1
-.endfunc // sub_8007800
-
-.func
-.thumb_func
-sub_8007850:
+    .word loc_8007E62+1
+    .word loc_8007F4E+1
+    .word unk_8007FEB
+loc_8007850:
     push {r4,lr}
     bl sub_801FEE8
     add r4, r0, #0
@@ -15064,11 +15027,11 @@ loc_80078EC:
     b locret_8007936
 loc_8007900:
     add r0, r4, #0
-    bl sub_801FEEE
+    bl loc_801FEEE
     mov r0, #8
     and r4, r0
     bne locret_8007936
-    ldr r1, off_8007938 // =jt_8007940 
+    ldr r1, off_8007938 // =off_8007940 
     ldrb r0, [r5,#1]
     ldr r1, [r1,r0]
     mov lr, pc
@@ -15091,13 +15054,11 @@ loc_8007918:
     b loc_8007862
 locret_8007936:
     pop {r4,pc}
-off_8007938:    .word jt_8007940
+off_8007938:    .word off_8007940
 off_800793C:    .word dword_200F3B0
-jt_8007940:    .word sub_800794C+1
-    .word sub_8007978+1
+off_8007940:    .word sub_800794C+1
+    .word loc_8007978+1
     .word sub_8007A0C+1
-.endfunc // sub_8007850
-
 .func
 .thumb_func
 sub_800794C:
@@ -15116,9 +15077,7 @@ sub_800794C:
     pop {pc}
 .endfunc // sub_800794C
 
-.func
-.thumb_func
-sub_8007978:
+loc_8007978:
     push {lr}
     ldr r1, off_8007988 // =off_800798C 
     ldrb r0, [r5,#2]
@@ -15132,8 +15091,6 @@ off_800798C:    .word sub_800799C+1
     .word sub_80079A8+1
     .word sub_80079D0+1
     .word sub_80079F0+1
-.endfunc // sub_8007978
-
 .func
 .thumb_func
 sub_800799C:
@@ -15207,6 +15164,8 @@ sub_8007A0C:
     push {lr}
     bl sub_801986C
     bl sub_800C8F0
+.endfunc // sub_8007A0C
+
     bl sub_800318C
     bl sub_800BFC4
     ldr r0, off_8007A40 // =byte_2011800 
@@ -15217,7 +15176,7 @@ sub_8007A0C:
     bne loc_8007A36
     ldr r0, [r5,#0x3c]
     ldr r0, [r0,#0xc]
-    bl decomp_80029A8
+    bl sub_80029A8
 loc_8007A36:
     bl batle_clearEnemyFadeinList
     mov r0, #4
@@ -15247,7 +15206,7 @@ loc_8007A66:
     b loc_8007B10
 loc_8007A6C:
     add r4, r0, #0
-    bl sub_801FEEE
+    bl loc_801FEEE
     mov r0, #8
     and r0, r4
     bne loc_8007B10
@@ -15271,11 +15230,11 @@ loc_8007A9A:
     bl sub_800A01C
     bl sub_802D234
     lsl r0, r0, #2
-    ldr r1, off_8007B4C // =jt_8007B50 
+    ldr r1, off_8007B4C // =off_8007B50 
     ldr r0, [r1,r0]
     mov lr, pc
     bx r0
-    bl sub_80031AC
+    bl loc_80031AC
     bl loc_802FFF4
     bl sub_800BFC4
     bl sub_800FDC0
@@ -15336,21 +15295,19 @@ loc_8007B10:
     bl sub_803C59C
     pop {r4,pc}
     .balign 4, 0x00
-off_8007B4C:    .word jt_8007B50
-jt_8007B50:    .word sub_8009158+1
-    .word sub_8009158+1
-    .word sub_8009158+1
-    .word sub_8009158+1
-    .word sub_8009158+1
-    .word sub_8009158+1
-    .word sub_800961C+1
-    .word sub_80099A4+1
-    .word sub_8009158+1
-    .word sub_8009C94+1
-    .word sub_8009158+1
-    .word sub_8009158+1
-.endfunc // sub_8007A0C
-
+off_8007B4C:    .word off_8007B50
+off_8007B50:    .word loc_8009158+1
+    .word loc_8009158+1
+    .word loc_8009158+1
+    .word loc_8009158+1
+    .word loc_8009158+1
+    .word loc_8009158+1
+    .word loc_800961C+1
+    .word loc_80099A4+1
+    .word loc_8009158+1
+    .word loc_8009C94+1
+    .word loc_8009158+1
+    .word loc_8009158+1
 .func
 .thumb_func
 sub_8007B80:
@@ -15377,7 +15334,7 @@ sub_8007B9C:
     ldr r1, [r1,r0]
     mov lr, pc
     bx r1
-    bl sub_80031AC
+    bl loc_80031AC
     bl sub_800BFC4
     bl sub_80027B4
     bl sub_800286C
@@ -15486,7 +15443,7 @@ loc_8007C74:
     bl sub_803C754
     b locret_8007C98
 loc_8007C84:
-    bl sub_813D60C // () -> zf
+    bl sub_813D60C
     tst r0, r0
     bne locret_8007C98
     bl sub_801FE64
@@ -15585,7 +15542,7 @@ loc_8007D4E:
     mov r1, #0x40 
     tst r0, r1
     beq loc_8007D72
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x40 
     ldrh r2, [r5,#0x34]
     cmp r2, #0
@@ -15606,7 +15563,7 @@ loc_8007D72:
     bl sub_8015B54
 loc_8007D8A:
     push {r2}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     pop {r2}
     mov r1, #0xe
     bl navicust_801379E // (int a1, int a2, int a3) -> void
@@ -15631,7 +15588,7 @@ loc_8007D8A:
     add r0, #1
 loc_8007DC4:
     push {r0}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     pop {r2}
     mov r1, #0x21 
     bl navicust_801379E // (int a1, int a2, int a3) -> void
@@ -15659,7 +15616,7 @@ loc_8007DFE:
     tst r0, r1
     beq loc_8007E14
     push {r0}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x21 
     mov r2, #3
     bl navicust_801379E // (int a1, int a2, int a3) -> void
@@ -15668,7 +15625,7 @@ loc_8007E14:
     ldr r1, dword_8008004 // =0x40000 
     tst r0, r1
     beq loc_8007E26
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0xe
     mov r2, #0x80
     bl navicust_801379E // (int a1, int a2, int a3) -> void
@@ -15699,9 +15656,7 @@ locret_8007E60:
     pop {r4,r6,r7,pc}
 .endfunc // sub_8007CA0
 
-.func
-.thumb_func
-sub_8007E62:
+loc_8007E62:
     push {lr}
     ldr r1, off_8007EA8 // =off_8007EAC 
     ldrb r0, [r5,#1]
@@ -15729,8 +15684,6 @@ off_8007EA8:    .word off_8007EAC
 off_8007EAC:    .word sub_8007EB8+1
     .word sub_8007F14+1
     .word sub_8007F2C+1
-.endfunc // sub_8007E62
-
 .func
 .thumb_func
 sub_8007EB8:
@@ -15744,8 +15697,8 @@ sub_8007EB8:
     bl sub_801DACC
     mov r0, #5
     bl sub_800A840
-    bl engine_80062EC
-    bl getPETNaviSelect
+    bl sub_80062EC
+    bl getPETNaviSelect // () -> u8
     add r4, r0, #0
     bl get_802D246 // () -> int
     ldr r1, dword_8008010 // =0x200000 
@@ -15785,7 +15738,7 @@ sub_8007F14:
     bne locret_8007F2A
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #8
     strb r0, [r5,#1]
 locret_8007F2A:
@@ -15812,9 +15765,7 @@ locret_8007F4C:
     pop {pc}
 .endfunc // sub_8007F2C
 
-.func
-.thumb_func
-sub_8007F4E:
+loc_8007F4E:
     push {lr}
     bl sub_800A01C
     ldr r1, off_8007F98 // =off_8007F9C 
@@ -15842,8 +15793,6 @@ sub_8007F4E:
 off_8007F98:    .word off_8007F9C
 off_8007F9C:    .word sub_8007FA4+1
     .word sub_8007FD2+1
-.endfunc // sub_8007F4E
-
 .func
 .thumb_func
 sub_8007FA4:
@@ -15853,10 +15802,10 @@ sub_8007FA4:
     bne loc_8007FC4
     bl sub_800A028
     bl sub_801FE64
-    bl engine_80062EC
+    bl sub_80062EC
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #4
     strb r0, [r5,#3]
 loc_8007FC4:
@@ -15873,7 +15822,7 @@ locret_8007FD0:
 .thumb_func
 sub_8007FD2:
     push {lr}
-    bl sub_813D60C // () -> zf
+    bl sub_813D60C
     tst r0, r0
     bne locret_8007FE8
     mov r0, #8
@@ -15884,7 +15833,8 @@ sub_8007FD2:
     strh r0, [r5,#2]
 locret_8007FE8:
     pop {pc}
-word_8007FEA:    .hword 0x0
+    .byte 0x0
+unk_8007FEB:    .byte 0
 off_8007FEC:    .word 0x400
 off_8007FF0:    .word dword_2000B30
 dword_8007FF4:    .word 0x10000
@@ -15899,12 +15849,10 @@ off_8008014:    .word dword_87370C0
 off_8008018:    .word dword_203F7D8
 .endfunc // sub_8007FD2
 
-.func
-.thumb_func
-sub_800801C:
+loc_800801C:
     push {r5,lr}
     ldr r5, off_8008060 // =byte_203CA70 
-    ldr r1, off_8008034 // =jt_8008038 
+    ldr r1, off_8008034 // =off_8008038 
     ldrb r0, [r5]
     ldr r1, [r1,r0]
     mov lr, pc
@@ -15913,20 +15861,18 @@ sub_800801C:
     ldrb r0, [r5,#0x4] // (byte_203CA74 - 0x203ca70)
     pop {r5,pc}
     .balign 4, 0x00
-off_8008034:    .word jt_8008038
-jt_8008038:    .word sub_800840C+1
+off_8008034:    .word off_8008038
+off_8008038:    .word sub_800840C+1
     .word sub_8008064+1
     .word sub_80080D2+1
     .word sub_80081A4+1
     .word sub_800825A+1
     .word sub_80082DC+1
-    .word sub_800834A+1
+    .word loc_800834A+1
     .word sub_80083E4+1
     .word sub_8008452+1
     .word sub_8008492+1
 off_8008060:    .word byte_203CA70
-.endfunc // sub_800801C
-
 .func
 .thumb_func
 sub_8008064:
@@ -16298,9 +16244,7 @@ locret_8008348:
     pop {pc}
 .endfunc // sub_80082DC
 
-.func
-.thumb_func
-sub_800834A:
+loc_800834A:
     push {lr}
     ldr r1, off_8008358 // =off_800835C 
     ldrb r0, [r5,#2]
@@ -16311,8 +16255,6 @@ sub_800834A:
 off_8008358:    .word off_800835C
 off_800835C:    .word sub_8008364+1
     .word sub_800838A+1
-.endfunc // sub_800834A
-
 .func
 .thumb_func
 sub_8008364:
@@ -16397,7 +16339,7 @@ sub_80083E4:
     tst r0, r0
     beq locret_8008400
     mov r0, #0x9f
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     str r0, [r5]
     ldr r0, off_8008408 // =0x200 
@@ -17101,7 +17043,7 @@ sub_8008900:
     tst r0, r0
     beq locret_800891C
     mov r0, #0x9f
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5]
     ldr r0, off_8008924 // =0x200 
@@ -17647,7 +17589,7 @@ sub_8008D18:
     tst r0, r0
     beq locret_8008D34
     mov r0, #0x9f
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5]
     ldr r0, off_8008D3C // =0x200 
@@ -18189,7 +18131,7 @@ sub_8009118:
     tst r0, r0
     beq locret_8009134
     mov r0, #0x9f
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5]
     ldr r0, off_800913C // =0x200 
@@ -18216,9 +18158,7 @@ dword_8009150:    .word 0x4C43
 off_8009154:    .word 0x400
 .endfunc // sub_8009140
 
-.func
-.thumb_func
-sub_8009158:
+loc_8009158:
     push {lr}
     ldr r1, off_80091B8 // =off_80091BC 
     ldrb r0, [r5,#1]
@@ -18277,8 +18217,6 @@ off_80091BC:    .word sub_80091F0+1
 dword_80091E4:    .word 0xFFFF
 off_80091E8:    .word 0x100
 dword_80091EC:    .word 0x11A
-.endfunc // sub_8009158
-
 .func
 .thumb_func
 sub_80091F0:
@@ -18520,7 +18458,7 @@ sub_800938A:
     mov r0, #4
     strb r0, [r5,#3]
 loc_800939A:
-    bl sub_800801C
+    bl loc_800801C
     bl sub_800B090
     cmp r0, #6
     bne loc_80093B0
@@ -18703,7 +18641,7 @@ loc_80094FA:
     mov r0, #0xc
 loc_80094FC:
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #4
     strb r0, [r5,#3]
     b locret_800951C
@@ -18828,7 +18766,7 @@ sub_80095C8:
     ldrb r0, [r5,#3]
     tst r0, r0
     bne loc_80095E4
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x73 
     add r1, r1, r0
     ldr r0, off_8009618 // =dword_87370C0 
@@ -18858,9 +18796,7 @@ off_8009614:    .word dword_86F53CC
 off_8009618:    .word dword_87370C0
 .endfunc // sub_80095C8
 
-.func
-.thumb_func
-sub_800961C:
+loc_800961C:
     push {lr}
     ldr r1, off_800962C // =off_8009630 
     ldrb r0, [r5,#1]
@@ -18878,8 +18814,6 @@ off_8009630:    .word sub_8009658+1
     .word sub_800993A+1
     .word 0x0, 0x0, 0x0
     .word sub_8009966+1
-.endfunc // sub_800961C
-
 .func
 .thumb_func
 sub_8009658:
@@ -19295,7 +19229,7 @@ sub_800993A:
     bne loc_8009950
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #4
     strb r0, [r5,#3]
     b locret_8009964
@@ -19318,7 +19252,7 @@ sub_8009966:
     ldrb r0, [r5,#3]
     tst r0, r0
     bne loc_8009982
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x73 
     add r1, r1, r0
     ldr r0, off_80099A0 // =dword_87370C0 
@@ -19342,9 +19276,7 @@ off_800999C:    .word unk_2035260
 off_80099A0:    .word dword_87370C0
 .endfunc // sub_8009966
 
-.func
-.thumb_func
-sub_80099A4:
+loc_80099A4:
     push {lr}
     ldr r1, off_80099B4 // =off_80099B8 
     ldrb r0, [r5,#1]
@@ -19362,8 +19294,6 @@ off_80099B8:    .word sub_80099E0+1
     .word sub_8009C2A+1
     .word 0x0, 0x0, 0x0
     .word sub_8009C56+1
-.endfunc // sub_80099A4
-
 .func
 .thumb_func
 sub_80099E0:
@@ -19697,7 +19627,7 @@ sub_8009C2A:
     bne loc_8009C40
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #4
     strb r0, [r5,#3]
     b locret_8009C54
@@ -19720,7 +19650,7 @@ sub_8009C56:
     ldrb r0, [r5,#3]
     tst r0, r0
     bne loc_8009C72
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x73 
     add r1, r1, r0
     ldr r0, off_8009C90 // =dword_87370C0 
@@ -19744,9 +19674,7 @@ off_8009C8C:    .word unk_2035260
 off_8009C90:    .word dword_87370C0
 .endfunc // sub_8009C56
 
-.func
-.thumb_func
-sub_8009C94:
+loc_8009C94:
     push {lr}
     ldr r1, off_8009CA4 // =off_8009CA8 
     ldrb r0, [r5,#1]
@@ -19764,8 +19692,6 @@ off_8009CA8:    .word sub_8009CD0+1
     .word sub_8009F5E+1
     .word 0x0, 0x0, 0x0
     .word sub_8009F8A+1
-.endfunc // sub_8009C94
-
 .func
 .thumb_func
 sub_8009CD0:
@@ -20140,7 +20066,7 @@ sub_8009F5E:
     bne loc_8009F74
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #4
     strb r0, [r5,#3]
     b locret_8009F88
@@ -20163,7 +20089,7 @@ sub_8009F8A:
     ldrb r0, [r5,#3]
     tst r0, r0
     bne loc_8009FA6
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x73 
     add r1, r1, r0
     ldr r0, off_8009FC8 // =dword_87370C0 
@@ -20267,7 +20193,6 @@ sub_800A032:
 
 .func
 .thumb_func
-// () -> zf
 battle_isPaused:
     mov r1, r10
     ldr r1, [r1,#0x3c]
@@ -20330,7 +20255,7 @@ off_800A094:    .word dword_2036820
 .thumb_func
 battle_isTimeStop:
     push {lr}
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #4
     and r0, r1
     pop {pc}
@@ -20342,10 +20267,10 @@ sub_800A0A4:
     push {lr}
     bl battle_isTimeStop
     bne loc_800A0C2
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     tst r0, r0
     beq loc_800A0C2
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #0x20 
     tst r0, r1
     bne loc_800A0C2
@@ -20545,12 +20470,12 @@ sub_800A1D0:
     cmp r0, #0x18
     bne loc_800A20A
 loc_800A200:
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #2
     tst r0, r1
     bne loc_800A214
 loc_800A20A:
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #0x10
     tst r0, r1
     beq loc_800A218
@@ -20684,10 +20609,9 @@ battle_clearFlags:
 
 .func
 .thumb_func
-// () -> int
 battle_getFlags:
     mov r1, r10
-    ldr r1, [r1,#0x18] // Toolkit.unk_2034880
+    ldr r1, [r1,#0x18]
     ldrh r0, [r1,#0x32]
     mov pc, lr
 .endfunc // battle_getFlags
@@ -20737,7 +20661,7 @@ loc_800A33E:
     cmp r0, r1
     bne loc_800A35C
     push {r0}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x2d 
     bl sub_800A540
     mov r2, #0x3c 
@@ -20846,7 +20770,7 @@ loc_800A414:
     cmp r0, r1
     bne loc_800A432
     push {r0}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x2d 
     bl sub_800A540
     mov r2, #0x3c 
@@ -20957,7 +20881,7 @@ sub_800A4E0:
     mov r0, #0xff
     b locret_800A504
 loc_800A4EE:
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     add r4, r0, #0
     mov r1, #0x2d 
     bl sub_800A540
@@ -20980,7 +20904,7 @@ sub_800A506:
     mov r1, #0xff
     b locret_800A53E
 loc_800A516:
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     add r4, r0, #0
     mov r1, #0x2d 
     bl sub_800A540
@@ -21203,11 +21127,11 @@ sub_800A6A6:
     push {lr}
     bl battle_isTimeStop
     bne locret_800A6D6
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_800A6D6
     bl battle_isBattleOver
     bne locret_800A6D6
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq locret_800A6D6
@@ -21228,12 +21152,12 @@ locret_800A6D6:
     push {lr}
     bl battle_isTimeStop
     bne locret_800A702
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_800A702
     bl battle_isBattleOver
     tst r0, r0
     bne locret_800A702
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq locret_800A702
@@ -22029,7 +21953,7 @@ sub_800AB70:
 sub_800AB7C:
     push {r4,lr}
     ldr r4, off_800AC18 // =byte_203CA70 
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     tst r0, r0
     bne loc_800ABAC
     bl battle_isTimeStop
@@ -22082,7 +22006,7 @@ sub_800ABC6:
     mov r0, #1
     bl sub_80E05F6
     mov r0, #0xa5
-    bl sound_play
+    bl sound_play // () -> void
     pop {r4,pc}
 off_800ABF0:    .word byte_20349C0
 off_800ABF4:    .word byte_2034A10
@@ -22452,7 +22376,7 @@ sub_800AE90:
     and r2, r3
     bne loc_800AEA6
     mov r0, #0x91
-    bl sound_play
+    bl sound_play // () -> void
 loc_800AEA6:
     pop {r0,r1}
     mov r2, #0x10
@@ -22857,7 +22781,7 @@ sub_800B144:
     beq loc_800B1DC
     cmp r0, #9
     beq loc_800B1E6
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     bl sub_801401E
     mov r1, #0xc
     add r1, r1, r4
@@ -22879,7 +22803,7 @@ loc_800B1A8:
     mov r1, #0x63 
     bl sub_802F164 // (int a1, int a2) -> zf
     bne loc_800B242
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     cmp r0, #0
     bne loc_800B242
     mov r0, #0xc
@@ -23827,7 +23751,7 @@ sub_800B8EE:
     mov r4, #0x1e
     bl sub_80E05F6
     mov r0, #0xa5
-    bl sound_play
+    bl sound_play // () -> void
     pop {r4,pc}
 .endfunc // sub_800B8EE
 
@@ -23869,7 +23793,7 @@ sub_800B94C:
     bne loc_800B964
     mov r0, #0x3c 
     mov r1, #4
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -23899,7 +23823,7 @@ sub_800B97E:
     bne loc_800B996
     mov r0, #0x78 
     mov r1, #0x80
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0
     strh r0, [r5,#0x20]
     mov r0, #4
@@ -23975,7 +23899,7 @@ loc_800BA12:
 loc_800BA1A:
     mov r0, #0x74 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
     b locret_800BA88
@@ -24085,7 +24009,7 @@ loc_800BAF2:
 loc_800BAFA:
     mov r0, #0x74 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
     b locret_800BB9E
@@ -24230,7 +24154,7 @@ loc_800BC12:
 loc_800BC1E:
     mov r0, #0x74 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
     b locret_800BC86
@@ -24299,7 +24223,7 @@ sub_800BC88:
 loc_800BCA4:
     mov r0, #0x38 
     mov r1, #4
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_800BCB0:
@@ -24333,7 +24257,7 @@ sub_800BCC0:
 loc_800BCDC:
     mov r0, #0x74 
     mov r1, #0x80
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_800BCE8:
@@ -24361,12 +24285,12 @@ locret_800BCF4:
     beq loc_800BD1A
     mov r0, #0x3c 
     ldr r1, off_800BF7C // =0x100 
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     b loc_800BD22
 loc_800BD1A:
     mov r0, #0x84
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
 loc_800BD22:
     mov r0, #4
     strb r0, [r5,#0xb]
@@ -24539,7 +24463,7 @@ loc_800BE56:
 loc_800BE5E:
     mov r0, #0x74 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
     b locret_800BED8
@@ -24735,7 +24659,7 @@ off_800BFC0:    .word byte_2036740
 .thumb_func
 sub_800BFC4:
     push {r4,r5,r7,lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     tst r0, r0
     bne locret_800C016
     bl battle_isTimeStop
@@ -24822,26 +24746,30 @@ loc_800C038:
     lsl r7, r4, #5
     add r6, r6, r7
 loc_800C066:
+    // j
     ldr r0, [sp]
+    // i
     ldr r1, [sp,#4]
+    // cpyOff
     mov r2, #2
+    // tileRefs
     add r3, r6, #0
     mov r4, #5
     mov r5, #3
-    ldr r6, off_800C080 // =sub_3005E80+1 
+    ldr r6, off_800C080 // =copyTiles_iram+1 
     mov lr, pc
     bx r6
-.endfunc // sub_800C01C
-
     add sp, sp, #0x28
     pop {r4-r7,pc}
 off_800C07C:    .word byte_86DFA98
-off_800C080:    .word sub_3005E80+1
+off_800C080:    .word copyTiles_iram+1
 off_800C084:    .word dword_800C08C
 dword_800C088:    .word 0x800C0AA
 dword_800C08C:    .word 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
     .word 0xFB0000, 0x140F0A05, 0x191E1E19, 0x50A0F14
     .byte 0x0, 0xFB
+.endfunc // sub_800C01C
+
 .func
 .thumb_func
 sub_800C0BA:
@@ -24859,18 +24787,19 @@ sub_800C0BA:
     mul r4, r1
     add r4, #6
     str r4, [sp,#4]
-    // a1
+    // j
     ldr r0, [sp]
-    // a2
+    // i
     ldr r1, [sp,#4]
     ldr r3, off_800C0F0 // =off_800C0F4 
     lsl r2, r2, #2
+    // tileRefs
     ldr r3, [r3,r2]
-    // a3
+    // cpyOff
     mov r2, #2
     mov r4, #5
     mov r5, #3
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_800C0BA
 
     add sp, sp, #0x28
@@ -24901,16 +24830,17 @@ sub_800C100:
     ldr r6, off_800C16C // =dword_86E0498 
     lsl r7, r2, #5
     add r6, r6, r7
-    // a1
+    // j
     ldr r0, [sp]
-    // a2
+    // i
     ldr r1, [sp,#4]
-    // a3
+    // cpyOff
     mov r2, #2
+    // tileRefs
     add r3, r6, #0
     mov r4, #5
     mov r5, #1
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_800C100
 
     add sp, sp, #0x28
@@ -24934,16 +24864,17 @@ sub_800C138:
     add r4, #6
     str r4, [sp,#4]
     ldr r6, off_800C170 // =dword_800C178 
-    // a1
+    // j
     ldr r0, [sp]
-    // a2
+    // i
     ldr r1, [sp,#4]
-    // a3
+    // cpyOff
     mov r2, #2
+    // tileRefs
     add r3, r6, #0
     mov r4, #5
     mov r5, #1
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_800C138
 
     add sp, sp, #0x28
@@ -25116,7 +25047,7 @@ loc_800C402:
     bl sub_800C488
     strh r1, [r7,#0xe]
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
 locret_800C436:
     pop {r4-r7,pc}
 loc_800C438:
@@ -25814,7 +25745,7 @@ object_crackPanel:
     strb r2, [r0,#2]
     strb r2, [r0,#6]
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     pop {pc}
 loc_800C96A:
@@ -25829,7 +25760,7 @@ loc_800C96A:
     strb r2, [r0,#2]
     strb r2, [r0,#6]
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     pop {pc}
 loc_800C988:
@@ -25863,7 +25794,7 @@ object_crackPanelDup1:
     strb r2, [r0,#2]
     strb r2, [r0,#6]
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     pop {pc}
 loc_800C9CA:
@@ -25878,7 +25809,7 @@ loc_800C9CA:
     strb r2, [r0,#2]
     strb r2, [r0,#6]
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     pop {pc}
 loc_800C9E8:
@@ -25911,7 +25842,7 @@ object_breakPanel:
     strb r2, [r0,#2]
     strb r2, [r0,#6]
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     pop {pc}
 loc_800CA28:
@@ -25943,7 +25874,7 @@ object_breakPanel_dup1:
     strb r2, [r0,#2]
     strb r2, [r0,#6]
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     pop {pc}
 loc_800CA64:
@@ -25957,7 +25888,7 @@ loc_800CA64:
     strb r2, [r0,#2]
     strb r2, [r0,#6]
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
 loc_800CA7C:
     mov r0, #0
     pop {pc}
@@ -25988,7 +25919,7 @@ object_breakPanel_dup2:
     strb r2, [r0,#2]
     strb r2, [r0,#6]
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     pop {pc}
 loc_800CABC:
@@ -26002,7 +25933,7 @@ loc_800CABC:
     strb r2, [r0,#2]
     strb r2, [r0,#6]
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     pop {pc}
 loc_800CAD8:
@@ -26035,7 +25966,7 @@ object_breakPanel_dup3:
     strb r2, [r0,#2]
     strb r2, [r0,#6]
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     pop {pc}
 loc_800CB18:
@@ -26049,7 +25980,7 @@ loc_800CB18:
     strb r2, [r0,#2]
     strb r2, [r0,#6]
     mov r0, #0x97
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     pop {pc}
 loc_800CB34:
@@ -26082,7 +26013,7 @@ object_breakPanelLoud:
     strb r2, [r0,#2]
     strb r2, [r0,#6]
     mov r0, #0xda
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     pop {pc}
 loc_800CB74:
@@ -26096,7 +26027,7 @@ loc_800CB74:
     strb r2, [r0,#2]
     strb r2, [r0,#6]
     mov r0, #0xda
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     pop {pc}
 loc_800CB90:
@@ -26127,7 +26058,7 @@ object_panel_setPoison:
     strb r2, [r0,#2]
     strb r2, [r0,#6]
     mov r0, #0x90
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     pop {pc}
 loc_800CBCC:
@@ -30820,7 +30751,7 @@ loc_800E314:
     mov r4, #6
     bl sub_80E05F6
     mov r0, #0x8a
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     b locret_800E35E
 loc_800E330:
@@ -31325,7 +31256,7 @@ sub_800E730:
     bl sub_801A180
     str r0, [sp]
     ldr r6, [r5,#0x54]
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     beq loc_800E744
     b loc_800E95C
 loc_800E744:
@@ -31978,7 +31909,7 @@ loc_800EB9A:
 .thumb_func
 object_spawnHiteffect:
     push {r4,r6,lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_800EBCE
     ldr r1, [r5,#0x54]
     ldr r0, [r1,#0x70]
@@ -31986,7 +31917,7 @@ object_spawnHiteffect:
     tst r1, r0
     beq locret_800EBCE
     mov r0, #0x6e 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x34 
     add r0, r0, r5
     ldmia r0!, {r1-r3}
@@ -32502,7 +32433,7 @@ sub_800EE98:
     add r0, r4, #0
     bl sub_801E2BA
     mov r0, #0x8d
-    bl sound_play
+    bl sound_play // () -> void
 loc_800EEBA:
     // idx
     ldrh r0, [r6,#0x34]
@@ -33728,7 +33659,7 @@ sub_800F672:
     bne loc_800F690
     bl battle_isTimeStop
     bne locret_800F6AA
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_800F6AA
     ldrh r0, [r5,#0x20]
     sub r0, #1
@@ -35517,7 +35448,7 @@ sub_8010162:
     tst r1, r1
     bne loc_801017E
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
 loc_801017E:
     bl object_getFlag
     ldr r1, dword_801022C // =0x400000 
@@ -35605,7 +35536,7 @@ locret_80101F6:
 .thumb_func
 sub_80101F8:
     push {r4,lr}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     add r4, r0, #0
     cmp r4, #0
     bne loc_8010216
@@ -35633,7 +35564,7 @@ sub_8010230:
     push {r4,lr}
     bl battle_isTimeStop
     bne locret_8010268
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_8010268
     ldr r4, [r5,#0x58]
     ldrh r0, [r5,#0x24]
@@ -35665,7 +35596,7 @@ sub_801026A:
     push {r4,lr}
     bl battle_isTimeStop
     bne locret_801029E
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_801029E
     ldr r4, [r5,#0x58]
     ldrh r0, [r5,#0x24]
@@ -35992,7 +35923,7 @@ sub_8010474:
     mov r0, #2
     bl object_setFlag
     mov r0, #0x93
-    bl sound_play
+    bl sound_play // () -> void
     pop {pc}
 .endfunc // sub_8010474
 
@@ -36018,7 +35949,7 @@ sub_8010488:
     strh r3, [r0,r1]
     mov r0, #0x58 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     pop {r4,r7,pc}
 loc_80104B6:
     ldrb r0, [r5,#0x12]
@@ -36036,7 +35967,7 @@ loc_80104B6:
     mov r4, #0
     bl sub_80E1D7A
     mov r0, #0x90
-    bl sound_play
+    bl sound_play // () -> void
     pop {r4,r7,pc}
 .endfunc // sub_8010488
 
@@ -36059,7 +35990,7 @@ sub_80104E0:
     mov r4, #0
     bl sub_80E1D7A
     mov r0, #0x90
-    bl sound_play
+    bl sound_play // () -> void
     pop {r4,r7,pc}
 .endfunc // sub_80104E0
 
@@ -36089,7 +36020,7 @@ loc_801051E:
     mov r4, #6
     bl sub_80E05F6
     mov r0, #0x8a
-    bl sound_play
+    bl sound_play // () -> void
 loc_801053E:
     add r7, #4
     add r6, #1
@@ -36514,7 +36445,7 @@ loc_8010836:
     bl sub_80E05F6
     mov r0, #0x1a
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     pop {r4,pc}
 .endfunc // sub_8010820
 
@@ -38127,11 +38058,11 @@ loc_8011594:
     b loc_80115C0
 loc_80115B0:
     mov r0, #0x85
-    bl sound_play
+    bl sound_play // () -> void
     b loc_80115BE
 loc_80115B8:
     mov r0, #0x6d 
-    bl sound_play
+    bl sound_play // () -> void
 loc_80115BE:
     mov r0, #0
 loc_80115C0:
@@ -38180,7 +38111,7 @@ loc_80115FC:
     b loc_801161C
 loc_8011614:
     mov r0, #0x85
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
 loc_801161C:
     str r0, [sp,#4]
@@ -38206,7 +38137,7 @@ sub_801162A:
     mov r4, #0
     bl sub_80E05F6
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
 locret_801164A:
     pop {r4,pc}
@@ -40674,7 +40605,7 @@ loc_8012844:
     add r1, r1, r0
     strh r1, [r7,#8]
     mov r0, #0x87
-    bl sound_play
+    bl sound_play // () -> void
 loc_801284E:
     ldr r0, [sp,#0xc]
     strh r0, [r7,#6]
@@ -40698,7 +40629,7 @@ loc_8012872:
     bl sub_80143A6
 loc_801287A:
     mov r0, #0x87
-    bl sound_play
+    bl sound_play // () -> void
 loc_8012880:
     ldrh r0, [r7,#8]
     ldr r1, [sp,#0x14]
@@ -41520,7 +41451,7 @@ sub_8012E74:
     bl battle_isBattleOver
     tst r0, r0
     bne loc_8012E90
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_8012E8E
     bl sub_8012EA0
     bl sub_8012EBC
@@ -41753,7 +41684,7 @@ loc_8013008:
     cmp r0, r1
     bne loc_8013044
     mov r0, #0x69 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_801EC44
     b loc_8013044
 loc_801303C:
@@ -41769,7 +41700,7 @@ loc_8013044:
     ldr r1, off_80133BC // =0x400 
     tst r0, r1
     bne loc_8013072
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #2
     tst r0, r1
     beq loc_801309C
@@ -43242,7 +43173,7 @@ loc_8013A94:
     mov r4, #0xe
     bl sub_80E08C4
     mov r0, #0x8e
-    bl sound_play
+    bl sound_play // () -> void
     b loc_8013ADC
 loc_8013AB4:
     cmp r1, #0xf5
@@ -43559,7 +43490,7 @@ loc_8013D20:
     ldrh r0, [r0,r1]
     tst r0, r0
     beq locret_8013D3C
-    bl sound_play
+    bl sound_play // () -> void
 locret_8013D3C:
     pop {r4-r7,pc}
     .byte 0, 0
@@ -43629,7 +43560,7 @@ loc_8013D92:
 sub_8013DA0:
     push {r4,r6,r7,lr}
     sub sp, sp, #0x10
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_8013E38
     mov r1, #0x24 
     bl sub_8013774
@@ -43955,7 +43886,7 @@ sub_8013FD0:
 loc_8013FEC:
     bl object_subtractHP
     mov r0, #0x6b 
-    bl sound_play
+    bl sound_play // () -> void
 locret_8013FF6:
     pop {r5,pc}
 .endfunc // sub_8013FD0
@@ -44033,7 +43964,7 @@ sub_8014040:
     mov r4, #6
     bl sub_80E05F6
     mov r0, #0x8a
-    bl sound_play
+    bl sound_play // () -> void
 locret_801407E:
     pop {r4,r5,pc}
 .endfunc // sub_8014040
@@ -44132,13 +44063,13 @@ locret_801414E:
 
     push {r4,lr}
     mov r4, #2
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x38 
     bl sub_80137B6
     tst r0, r0
     bne loc_8014174
     mov r4, #1
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x37 
     bl sub_80137B6
     tst r0, r0
@@ -44184,7 +44115,7 @@ unk_80141A0:    .byte 0x20
 .thumb_func
 sub_80141AC:
     push {lr}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x21 
     mov r2, #3
     bl navicust_801379E // (int a1, int a2, int a3) -> void
@@ -44493,7 +44424,7 @@ sub_80143FC:
     push {lr}
     bl battle_isTimeStop
     bne locret_801441E
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_801441E
     bl object_getFlag
     ldr r1, off_8014420 // =0xC00 
@@ -45195,7 +45126,7 @@ loc_8014900:
     mov r0, #0x44 
 loc_8014902:
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     ldr r0, dword_8014940 // =0x4000 
     bl sub_801DACC
     mov r0, #4
@@ -45285,7 +45216,7 @@ loc_80149A2:
     mov r0, #0x40 
 loc_80149A4:
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #4
     strb r0, [r5,#3]
 loc_80149AE:
@@ -45612,9 +45543,9 @@ loc_8014C72:
     neg r1, r1
     bl sub_801DC06
     mov r0, #0x8d
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x77 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r7,#1]
 loc_8014C9E:
@@ -45732,7 +45663,7 @@ loc_8014D82:
     ldr r0, dword_8014E04 // =0x80000 
     bl sub_8010312
     mov r0, #0xf7
-    bl sound_play
+    bl sound_play // () -> void
     mov r4, #0x2e 
     ldrb r0, [r5,#0x16]
     lsl r0, r0, #8
@@ -45765,7 +45696,7 @@ loc_8014D82:
     ldr r1, off_8014E00 // =0x1CD 
 loc_8014DD0:
     add r0, r1, #0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #2
     mov r1, #0x3c 
     bl sub_80302B6
@@ -45832,7 +45763,7 @@ sub_8014E08:
     bl sub_80E11E0
     mov r0, #1
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r1, #0x2c 
     bl sub_8013774
     cmp r0, #1
@@ -45989,7 +45920,7 @@ loc_8014FBA:
     ldr r0, dword_801503C // =0x80000 
     bl sub_8010312
     mov r0, #0xf7
-    bl sound_play
+    bl sound_play // () -> void
     mov r4, #0x2e 
     ldrb r0, [r5,#0x16]
     lsl r0, r0, #8
@@ -46022,7 +45953,7 @@ loc_8014FBA:
     ldr r1, off_8015038 // =0x1CD 
 loc_8015008:
     add r0, r1, #0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #2
     mov r1, #0x3c 
     bl sub_80302B6
@@ -46089,7 +46020,7 @@ sub_8015040:
     bl sub_80E11E0
     mov r0, #1
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r1, #0x2c 
     bl sub_8013774
     cmp r0, #1
@@ -46262,7 +46193,7 @@ loc_80151E6:
     strb r1, [r0]
     mov r0, #0x9b
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r4, #0x3e 
     orr r4, r6
     ldrb r0, [r5,#0x16]
@@ -46298,7 +46229,7 @@ loc_80151E6:
     ldr r1, off_80152C4 // =0x1CD 
 loc_801526E:
     add r0, r1, #0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #2
     mov r1, #0x4b 
     bl sub_80302B6
@@ -46317,7 +46248,7 @@ loc_8015288:
 loc_8015292:
     mov r0, #0x9b
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_801529A:
     ldrh r0, [r7,#0x10]
     sub r0, #1
@@ -46379,7 +46310,7 @@ sub_80152C8:
     bl sub_80E11E0
     mov r0, #1
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r1, #0x2c 
     bl sub_8013774
     cmp r0, #1
@@ -46647,9 +46578,9 @@ loc_8015578:
     neg r1, r1
     bl sub_801DC06
     mov r0, #0x8d
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x77 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r7,#1]
 loc_8015594:
@@ -46762,7 +46693,7 @@ loc_801565E:
     add r0, #1
     strb r0, [r7,#1]
     mov r0, #0x8e
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x14]
     strb r0, [r5,#0x12]
     ldrb r1, [r5,#0x15]
@@ -46880,7 +46811,7 @@ loc_801577C:
     mov r0, #4
     bl battle_setFlags
     mov r0, #0x8e
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#0x14]
     strb r0, [r5,#0x12]
     ldrb r1, [r5,#0x15]
@@ -48858,7 +48789,7 @@ loc_80163E2:
     tst r0, r0
     beq loc_8016410
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #2
     strh r0, [r5,#0x20]
     mov r0, #0x10
@@ -48984,7 +48915,7 @@ sub_80164C0:
     mov r0, #4
     strb r0, [r5,#0xb]
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x14
     strh r0, [r5,#0x20]
     mov r0, #0x1e
@@ -49036,7 +48967,7 @@ sub_8016520:
     strb r1, [r0]
     mov r0, #0x2a 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_8016552:
     ldrh r0, [r5,#0x22]
     sub r0, #1
@@ -49112,7 +49043,7 @@ sub_80165C2:
     ldr r1, dword_80165EC // =0x40000000 
     tst r0, r1
     bne loc_80165E0
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_80165E4
     ldr r1, off_80165E8 // =off_80165F0 
     ldrb r0, [r5,#0xa]
@@ -49825,7 +49756,7 @@ sub_8016B36:
     str r0, [r5,#0x4c]
     mov r0, #0x19
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_8016B5C:
@@ -49858,7 +49789,7 @@ sub_8016B72:
     str r0, [r5,#0x4c]
     mov r0, #0x2e 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_8016B9A:
@@ -49880,7 +49811,7 @@ loc_8016B9A:
     bne locret_8016BD0
     mov r0, #0x25 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r5,#0x5c]
     str r0, [r5,#8]
     mov r0, #0
@@ -50267,7 +50198,7 @@ loc_8016E84:
     bl sub_802D234
     cmp r0, #1
     beq loc_8016E92
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_8016EBE
 loc_8016E92:
     bl object_getFlag
@@ -50525,7 +50456,7 @@ dword_80170A4:    .word 0x1000000, 0x1000000, 0x0, 0x0
 .thumb_func
 sub_80170C4:
     push {lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_80170D6
     ldr r1, off_80170D8 // =off_80170DC 
     ldrb r0, [r5,#0xa]
@@ -50632,7 +50563,7 @@ locret_80171A4:
 .endfunc // sub_8017122
 
     push {lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_80171B8
     ldr r1, off_80171BC // =off_80171C0 
     ldrb r0, [r5,#0xa]
@@ -50716,7 +50647,7 @@ loc_801722C:
     bl sub_80077B4
     mov r0, #4
     mov r1, #4
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r4, #1
     ldr r7, [r5,#0x58]
     add r7, #0x74 
@@ -50954,7 +50885,7 @@ sub_801746E:
     str r0, [r1,#0x5c]
     str r0, [r1,#0x68]
     mov r0, #0x6c 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x34 
     add r0, r0, r5
     ldmia r0!, {r1-r3}
@@ -51200,7 +51131,7 @@ sub_8017688:
     bl sub_800EB08
     mov r0, #0x19
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, dword_8017764 // =0x20005F 
     bl sub_801031C
     bl sub_8012EA8
@@ -51293,7 +51224,7 @@ sub_8017768:
     bl sub_800EB08
     mov r0, #0x2e 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, dword_8017860 // =0x20005F 
     bl sub_801031C
     bl sub_8012EA8
@@ -51367,7 +51298,7 @@ loc_8017802:
     str r0, [r5,#0x3c]
     mov r0, #0x25 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     strb r0, [r5,#0x10]
     mov r0, #8
@@ -52380,7 +52311,7 @@ loc_801803C:
     strb r0, [r5,#0x19]
     mov r0, #0x2b 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_801A074
     mov r0, #4
     strb r0, [r5,#0x18]
@@ -52451,7 +52382,7 @@ sub_80180A8:
     strb r0, [r5,#0x19]
     mov r0, #0xd
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x10
     strb r0, [r5,#0x18]
 locret_80180EA:
@@ -53708,7 +53639,7 @@ sub_801A186:
     push {r7,lr}
     bl battle_isTimeStop
     bne locret_801A1FA
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_801A1FA
     ldr r7, [r5,#0x54]
     ldrb r0, [r7,#1]
@@ -53977,7 +53908,7 @@ sub_801A324:
     mov r4, #6
     bl sub_80E05F6
     mov r0, #0x8a
-    bl sound_play
+    bl sound_play // () -> void
 locret_801A368:
     pop {r4,pc}
 .endfunc // sub_801A324
@@ -53987,7 +53918,7 @@ locret_801A368:
 sub_801A36A:
     push {r4,r7,lr}
     ldr r7, [r5,#0x54]
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_801A38A
     bl battle_isTimeStop
     bne loc_801A38A
@@ -54153,7 +54084,7 @@ loc_801A47C:
     bl sub_801E270
     push {r0}
     mov r0, #0x86
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
 locret_801A4A4:
     pop {r4,r6,pc}
@@ -54352,7 +54283,7 @@ sub_801A5E2:
 .thumb_func
 sub_801A5EE:
     push {r6,lr}
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq locret_801A642
@@ -54380,7 +54311,7 @@ loc_801A610:
     tst r0, r1
     beq loc_801A632
     mov r0, #0x94
-    bl sound_play
+    bl sound_play // () -> void
 loc_801A632:
     ldr r0, dword_801A644 // =0x202 
     bl object_clearFlag
@@ -54398,7 +54329,7 @@ dword_801A644:    .word 0x202
 .thumb_func
 sub_801A648:
     push {lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_801A66A
     ldr r3, [r5,#0x54]
     ldrh r1, [r3,#0x24]
@@ -54668,7 +54599,7 @@ sub_801A7F4:
 .thumb_func
 sub_801A802:
     push {r4,r6,lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     beq loc_801A80C
     pop {r4,r6,pc}
 loc_801A80C:
@@ -54909,7 +54840,7 @@ sub_801A9B8:
     push {r4,r7,lr}
     bl sub_8002DD8
     ldr r7, [r5,#0x54]
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq locret_801AA3C
@@ -54963,7 +54894,7 @@ sub_801AA48:
     push {r4,r7,lr}
     bl sub_8002DD8
     ldr r7, [r5,#0x54]
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq locret_801AABE
@@ -55005,7 +54936,7 @@ sub_801AAC0:
     push {r4,r7,lr}
     bl sub_8002DD8
     ldr r7, [r5,#0x54]
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq locret_801AB3E
@@ -55051,7 +54982,7 @@ sub_801AB40:
     push {r4,r7,lr}
     bl sub_8002DD8
     ldr r7, [r5,#0x54]
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq locret_801ABB6
@@ -55093,7 +55024,7 @@ sub_801ABB8:
     push {r4,r7,lr}
     bl sub_8002DD8
     ldr r7, [r5,#0x54]
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq locret_801AC6A
@@ -55101,7 +55032,7 @@ sub_801ABB8:
     bl battle_isBattleOver
     tst r0, r0
     bne locret_801AC6A
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     tst r0, r0
     bne locret_801AC6A
     bl object_getFlag
@@ -55164,7 +55095,7 @@ sub_801AC6C:
     push {r4,r7,lr}
     bl sub_8002DD8
     ldr r7, [r5,#0x54]
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq locret_801AD10
@@ -55224,7 +55155,7 @@ sub_801AD12:
     push {r4,r7,lr}
     bl sub_8002DD8
     ldr r7, [r5,#0x54]
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq locret_801AD68
@@ -55265,7 +55196,7 @@ sub_801AD6A:
     push {r4,r7,lr}
     bl sub_8002DD8
     ldr r7, [r5,#0x54]
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq locret_801AD9C
@@ -55290,7 +55221,7 @@ sub_801AD9E:
     push {r4,r7,lr}
     bl sub_8002DD8
     ldr r7, [r5,#0x54]
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq locret_801ADF8
@@ -55332,7 +55263,7 @@ sub_801ADFA:
     push {r4,r7,lr}
     bl sub_8002DD8
     ldr r7, [r5,#0x54]
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #1
     tst r0, r1
     beq locret_801AE54
@@ -55496,7 +55427,7 @@ sub_801AF44:
     str r0, [sp]
     ldr r6, [r5,#0x54]
     ldr r7, [r5,#0x58]
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     tst r0, r0
     beq loc_801AF5E
     ldrb r0, [r5,#9]
@@ -55727,7 +55658,7 @@ loc_801B142:
     lsl r1, r1, #8
     tst r0, r1
     bne loc_801B18E
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     beq loc_801B188
     ldrb r0, [r5,#9]
     cmp r0, #0
@@ -55765,7 +55696,7 @@ sub_801B1C4:
     sub sp, sp, #4
     str r0, [sp]
     ldr r6, [r5,#0x54]
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     tst r0, r0
     beq loc_801B21C
     bl sub_801A180
@@ -55812,7 +55743,7 @@ loc_801B21C:
     push {r0}
     bl sprite_forceWhitePallete
     mov r0, #0x6d 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_801A67E
     pop {r0}
     bl object_subtractHP
@@ -55975,7 +55906,7 @@ sub_801B394:
     push {r0}
     bl sprite_forceWhitePallete
     mov r0, #0x85
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
     bl object_subtractHP
     tst r1, r1
@@ -56129,7 +56060,7 @@ sub_801B4D4:
     push {r0}
     bl sprite_forceWhitePallete
     mov r0, #0x85
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
     bl object_subtractHP
     tst r1, r1
@@ -56281,7 +56212,7 @@ sub_801B610:
     push {r0}
     bl sprite_forceWhitePallete
     mov r0, #0x85
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
     bl object_subtractHP
     tst r1, r1
@@ -56433,7 +56364,7 @@ loc_801B750:
     push {r0}
     bl sprite_forceWhitePallete
     mov r0, #0x85
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
     bl object_subtractHP
     tst r1, r1
@@ -56575,7 +56506,7 @@ loc_801B878:
     push {r0}
     bl sprite_forceWhitePallete
     mov r0, #0x85
-    bl sound_play
+    bl sound_play // () -> void
     pop {r0}
     bl object_subtractHP
     tst r1, r1
@@ -56804,7 +56735,7 @@ loc_801BA3A:
     mov r4, #0x6b 
 loc_801BA58:
     add r0, r4, #0
-    bl sound_play
+    bl sound_play // () -> void
     pop {r1}
     tst r1, r1
     beq loc_801BA76
@@ -56997,7 +56928,7 @@ locret_801BBA8:
 .thumb_func
 sub_801BBAC:
     push {lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_801BBF2
     ldrb r0, [r5]
     mov r1, #1
@@ -57037,7 +56968,7 @@ locret_801BBF2:
 .thumb_func
 sub_801BBF4:
     push {lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_801BC22
     ldrb r0, [r5]
     mov r1, #1
@@ -57064,7 +56995,7 @@ locret_801BC22:
 .thumb_func
 sub_801BC24:
     push {lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_801BC62
     ldrb r0, [r5]
     mov r1, #1
@@ -57183,7 +57114,7 @@ locret_801BCF2:
 .thumb_func
 sub_801BCF4:
     push {lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_801BD3A
     ldrb r0, [r5]
     mov r1, #1
@@ -58157,16 +58088,17 @@ loc_801C410:
 .thumb_func
 sub_801C416:
     push {r4,r5,lr}
-    // a1
+    // j
     mov r0, #0x11
-    // a2
+    // i
     mov r1, #0x12
-    // a3
+    // cpyOff
     mov r2, #0
-    ldr r3, off_801C450 // =dword_801D904 
+    // tileRefs
+    ldr r3, tileRefs // =dword_801D904 
     mov r4, #0xa
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_801C416
 
     ldr r0, dword_801C45C // =0x40780090 
@@ -58184,7 +58116,7 @@ sub_801C416:
 dword_801C444:    .word 0x600C980
 dword_801C448:    .word 0x600CA40
 off_801C44C:    .word off_801D8D8
-off_801C450:    .word dword_801D904
+tileRefs:    .word dword_801D904
 off_801C454:    .word unk_3001670
 off_801C458:    .word word_3001684
 dword_801C45C:    .word 0x40780090
@@ -58196,11 +58128,11 @@ off_801C46C:    .word off_801D92C
 .thumb_func
 sub_801C470:
     push {lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne locret_801C4AC
     bl battle_isTimeStop
     bne locret_801C4AC
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #2
     tst r0, r1
     bne locret_801C4AC
@@ -58218,7 +58150,7 @@ sub_801C470:
     mov r0, #2
     bl battle_setFlags
     mov r0, #0x8f
-    bl sound_play
+    bl sound_play // () -> void
 locret_801C4AC:
     pop {pc}
 .endfunc // sub_801C470
@@ -58227,7 +58159,7 @@ locret_801C4AC:
 .thumb_func
 sub_801C4AE:
     push {lr}
-    bl battle_getFlags // () -> int
+    bl battle_getFlags
     mov r1, #2
     tst r0, r1
     bne locret_801C4DA
@@ -58243,7 +58175,7 @@ sub_801C4AE:
     mov r0, #2
     bl battle_setFlags
     mov r0, #0x8f
-    bl sound_play
+    bl sound_play // () -> void
 locret_801C4DA:
     pop {pc}
 dword_801C4DC:    .word 0x4000
@@ -58428,7 +58360,7 @@ loc_801C620:
     lsl r0, r0, #1
     ldr r1, off_801C6E4 // =dword_801C6E8 
     ldrh r0, [r1,r0]
-    bl sound_play
+    bl sound_play // () -> void
 locret_801C63E:
     pop {pc}
 .func
@@ -58641,16 +58573,17 @@ loc_801C7DE:
     strh r1, [r2,#0x14]
 loc_801C806:
     add r0, r7, #0
-    // a1
+    // j
     add r0, #0
-    // a2
+    // i
     mov r1, #0x12
-    // a3
+    // cpyOff
     mov r2, #3
+    // tileRefs
     add r3, sp, #0xc
     mov r4, #9
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 loc_801C818:
     add sp, sp, #0x30
     pop {r4-r7,pc}
@@ -58684,7 +58617,7 @@ loc_801C85A:
     bl battle_isBattleOver
     tst r0, r0
     bne loc_801C886
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     bne loc_801C886
     ldrh r1, [r7,#0x24]
     ldrh r2, [r7,#0x26]
@@ -58699,7 +58632,7 @@ loc_801C85A:
     mov r0, #0
     strb r0, [r5,#6]
     mov r0, #0x84
-    bl sound_play
+    bl sound_play // () -> void
 loc_801C886:
     ldrb r0, [r5,#0x1c]
     cmp r0, #0
@@ -58809,16 +58742,17 @@ loc_801C92A:
     bpl loc_801C92A
     ldr r5, [sp]
     ldrb r0, [r5,#1]
-    // a1
+    // j
     add r0, #1
-    // a2
+    // i
     ldrb r1, [r5,#2]
-    // a3
+    // cpyOff
     mov r2, #3
+    // tileRefs
     add r3, r6, #0
     mov r4, #4
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_801C906
 
     pop {r5}
@@ -58889,14 +58823,15 @@ sub_801C9C8:
     push {r4,r5,lr}
     lsl r1, r1, #4
     ldr r3, off_801C9E0 // =unk_801D964 
+    // tileRefs
     add r3, r3, r1
-    // a2
+    // i
     mov r1, #2
-    // a3
+    // cpyOff
     mov r2, #3
     mov r4, #4
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_801C9C8
 
     pop {r4,r5,pc}
@@ -58959,17 +58894,18 @@ sub_801CA34:
     cmp r0, #0x20 
     bge loc_801CA5E
     mov r0, #0x16
-    // a1
+    // j
     sub r0, r0, r6
-    // a2
+    // i
     mov r1, #4
-    // a3
+    // cpyOff
     mov r2, #3
+    // tileRefs
     ldr r3, off_801CA74 // =dword_801D984 
     mov r4, #8
     add r4, r4, r6
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     b locret_801CA72
 loc_801CA5E:
     mov r0, #0x16
@@ -58993,7 +58929,7 @@ dword_801CA7C:    .word 0x30200
 sub_801CA80:
     push {r4-r7,lr}
     sub sp, sp, #0x24
-    // a2
+    // i
     mov r1, #0
     add r6, r5, #0
     add r6, #0x28 
@@ -59024,15 +58960,16 @@ loc_801CAAE:
     cmp r3, #0x12
     bne loc_801CAAE
     mov r0, #0x1e
-    // a1
+    // j
     sub r0, r0, r2
-    // a3
+    // cpyOff
     mov r2, #0
+    // tileRefs
     mov r3, sp
     mov r4, #9
     mov r5, #2
     push {r1}
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r1}
     add r1, #2
     add r6, #2
@@ -59740,7 +59677,7 @@ loc_801D070:
     mov r2, #3
     mov r4, #2
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7}
     ldrh r0, [r7,#0xc]
     bl sub_801D12A
@@ -59802,7 +59739,7 @@ loc_801D0FE:
     mov r3, sp
     mov r4, #4
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r0-r3}
     mov r0, #0x11
     mov r1, #5
@@ -59810,7 +59747,7 @@ loc_801D0FE:
     mov r3, sp
     mov r4, #4
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r0-r3}
 locret_801D128:
     pop {r4-r7,pc}
@@ -59984,16 +59921,17 @@ sub_801D2A4:
     push {r4,r6,r7,lr}
     sub sp, sp, #4
     push {r5}
-    // a1
+    // j
     mov r0, #1
-    // a2
+    // i
     mov r1, #0x12
-    // a3
+    // cpyOff
     mov r2, #0
+    // tileRefs
     ldr r3, off_801D340 // =dword_801D9B4 
     mov r4, #0x1c
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r5}
     ldr r0, [r5,#0x48]
     ldrb r0, [r0,#0x16]
@@ -60150,7 +60088,7 @@ loc_801D400:
 off_801D40C:    .word dword_801D410
 dword_801D410:    .word 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
     push {lr}
-    bl battle_isPaused // () -> zf
+    bl battle_isPaused
     tst r0, r0
     bne locret_801D478
     bl battle_isTimeStop
@@ -60518,16 +60456,17 @@ loc_801D7B8:
     bpl loc_801D7B8
     ldr r5, [sp]
     mov r0, #0x18
-    // a1
+    // j
     add r0, #1
-    // a2
+    // i
     mov r1, #0
-    // a3
+    // cpyOff
     mov r2, #3
+    // tileRefs
     add r3, r6, #0
     mov r4, #4
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_801D792
 
     pop {r5}
@@ -60688,7 +60627,7 @@ sub_801DA24:
     strh r0, [r1,#0xa]
     // dataList
     ldr r0, off_801DA40 // =off_801ECB4 
-    bl decomp_initGfx_8000B8E // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
     bl sub_80103EC
     ldr r1, off_801DB50 // =byte_2035280 
     str r0, [r1,#0x48] // (dword_20352C8 - 0x2035280)
@@ -61174,7 +61113,7 @@ sub_801DD7C:
 
     push {lr}
     ldr r0, off_801DDA0 // =off_801DDA4 
-    bl decomp_initGfx_8000B8E // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
     mov r0, #8
     bl sub_801BECC
     mov r0, #8
@@ -61219,7 +61158,7 @@ sub_801DDF6:
     ldr r3, off_801DEBC // =word_801ED6C 
     mov r4, #0x12
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     mov r0, #1
     mov r1, #4
     lsl r0, r1
@@ -61259,7 +61198,7 @@ sub_801DE3C:
     ldr r3, off_801DEBC // =word_801ED6C 
     mov r4, #0x12
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     mov r0, #1
     mov r1, #5
     lsl r0, r1
@@ -61308,7 +61247,7 @@ loc_801DE8C:
     ldr r3, off_801DEC0 // =word_801EDB4 
     mov r4, #0x12
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     mov r0, #1
     mov r1, #0x11
     lsl r0, r1
@@ -61359,7 +61298,7 @@ sub_801DF0C:
     bl sub_801DF92
     // dataList
     ldr r0, off_801DF5C // =off_801DF60 
-    bl decomp_initGfx_8000B8E // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
     mov r0, #1
     lsl r0, r0, #0x11
     bl sub_801BECC
@@ -61380,7 +61319,7 @@ sub_801DF32:
     bl sub_801DF92
     // dataList
     ldr r0, off_801DF5C // =off_801DF60 
-    bl decomp_initGfx_8000B8E // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
     ldr r0, off_801DF80 // =dword_86E1C78 
     ldr r1, off_801DF84 // =unk_3001B00 
     ldr r2, dword_801DF88 // =0x20 
@@ -61532,16 +61471,17 @@ sub_801E022:
 sub_801E03E:
     push {r4,r5,lr}
     ldr r3, off_801E0D8 // =byte_2035280 
-    // a1
+    // j
     ldrb r0, [r3,#0x1] // (byte_2035281 - 0x2035280)
-    // a2
+    // i
     ldrb r1, [r3,#0x2] // (byte_2035282 - 0x2035280)
-    // a3
+    // cpyOff
     mov r2, #3
+    // tileRefs
     ldr r3, off_801E05C // =dword_801EDFC 
     mov r4, #6
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_801E03E
 
     mov r0, #1
@@ -61571,16 +61511,17 @@ sub_801E060:
 sub_801E07C:
     push {r4,r5,lr}
     ldr r3, off_801E0D8 // =byte_2035280 
-    // a1
+    // j
     mov r0, #0x18
-    // a2
+    // i
     mov r1, #0
-    // a3
+    // cpyOff
     mov r2, #3
+    // tileRefs
     ldr r3, off_801E09C // =dword_801EDFC 
     mov r4, #6
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_801E07C
 
     mov r0, #1
@@ -61719,12 +61660,12 @@ sub_801E15C:
     bl sub_801DACC
     // dataList
     ldr r0, off_801E184 // =off_801E188 
-    bl decomp_initGfx_8000B8E // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
     mov r0, #1
     lsl r0, r0, #9
     bl sub_801DA48
     mov r0, #0x9f
-    bl sound_play
+    bl sound_play // () -> void
     pop {pc}
 off_801E184:    .word off_801E188
 off_801E188:    .word dword_86E611C
@@ -61781,21 +61722,22 @@ sub_801E1E4:
 loc_801E1F8:
     mov r0, #7
     lsr r1, r6, #1
-    // a1
+    // j
     add r0, r0, r1
-    // a2
+    // i
     mov r1, #2
-    // a3
+    // cpyOff
     mov r2, #3
     ldr r3, off_801E220 // =word_801EE14 
     cmp r6, #9
     bne loc_801E20A
+    // tileRefs
     ldr r3, off_801E224 // =word_801EE58 
 loc_801E20A:
     mov r4, #0x11
     sub r4, r4, r6
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     mov r0, #1
     lsl r0, r0, #8
     bl sub_801BEB8
@@ -61986,16 +61928,17 @@ sub_801E35A:
 .thumb_func
 sub_801E376:
     push {r4,r5,lr}
-    // a1
+    // j
     mov r0, #0xb
-    // a2
+    // i
     mov r1, #0
-    // a3
+    // cpyOff
     mov r2, #3
+    // tileRefs
     ldr r3, off_801E394 // =dword_801EE78 
     mov r4, #8
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     mov r0, #1
     lsl r0, r0, #0xb
     bl sub_801BEB8
@@ -62050,16 +61993,17 @@ dword_801E3E0:    .word 0x100000
 .thumb_func
 sub_801E3E4:
     push {r4,r5,lr}
-    // a1
+    // j
     mov r0, #0xb
-    // a2
+    // i
     mov r1, #0x10
-    // a3
+    // cpyOff
     mov r2, #3
+    // tileRefs
     ldr r3, off_801E404 // =dword_801EF10 
     mov r4, #8
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     ldr r0, dword_801E400 // =0x100000 
     bl sub_801BEB8
     pop {r4,r5,pc}
@@ -62136,7 +62080,7 @@ sub_801E474:
     lsl r0, r0, #2
     // dataList
     ldr r0, [r1,r0]
-    bl decomp_initGfx_8000B8E // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
     ldr r1, off_801E4AC // =byte_2035280 
     mov r0, #0x3f 
     strb r0, [r1]
@@ -62239,10 +62183,11 @@ loc_801E536:
     sub r6, #1
     bne loc_801E536
 loc_801E542:
-    // a2
+    // i
     add r1, r4, #0
-    // a3
+    // cpyOff
     mov r2, #3
+    // tileRefs
     mov r3, sp
     push {r4}
     mov r0, #0x1d
@@ -62251,11 +62196,11 @@ loc_801E542:
     blt loc_801E554
     mov r4, #8
 loc_801E554:
-    // a1
+    // j
     sub r0, r0, r4
     add r4, #1
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4}
 loc_801E560:
     add r7, #2
@@ -62919,7 +62864,7 @@ loc_801E9FC:
     bl loc_8000AC8
     // dataList
     ldr r0, off_801EAAC // =off_801EAB0 
-    bl decomp_initGfx_8000B8E // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
     mov r0, #0
     pop {r4-r7,pc}
     pop {r1-r3,r5}
@@ -63077,16 +63022,17 @@ sub_801EB50:
 .thumb_func
 sub_801EB7C:
     push {lr}
-    // a1
+    // j
     mov r0, #0
-    // a2
+    // i
     mov r1, #0x12
-    // a3
+    // cpyOff
     mov r2, #3
+    // tileRefs
     ldr r3, off_801EB98 // =dword_801EE98 
     mov r4, #0x1e
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     mov r0, #1
     lsl r0, r0, #0x12
     bl sub_801BEB8

@@ -120,7 +120,7 @@
 .global sub_8147350
 .global sub_81475D4
 .global sub_8147B24
-.global sub_8147B3C // () -> void
+.global sub_8147B3C
 .global sub_8147F98
 .global sub_8148214
 .global sub_8148224
@@ -170,13 +170,13 @@
 // .global sub_809E462
 
 .include "asm00.inc"
-// .global sound_play
+// .global sound_play // () -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global CpuSet_800093C
 // .global initMemblockToByte
 // .global loc_8000AC8
 // .global sub_8000E3A
-// .global getPETNaviSelect
+// .global getPETNaviSelect // () -> u8
 // .global sub_80010D4
 // .global sub_80010EC
 // .global calcAngle_800117C

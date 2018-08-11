@@ -1510,7 +1510,7 @@ loc_8142BBC:
     bl sub_8004822
     pop {r0-r7}
     mov r0, #0x6d 
-    bl sound_play
+    bl sound_play // () -> void
 loc_8142BEA:
     add r5, #8
     add r4, #1
@@ -1583,13 +1583,13 @@ loc_8142C38:
 sub_8142C46:
     push {r4-r7,lr}
     add r4, r0, #0
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     bl sub_80010D4
     sub r4, r0, r4
     bge loc_8142C58
     mov r4, #0
 loc_8142C58:
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     add r1, r4, #0
     bl sub_80010EC
     bl sub_809E1AE
@@ -1603,10 +1603,10 @@ loc_8142C58:
     mov r1, #0x14
     bl sub_80302A8
     mov r0, #0x6b 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xd
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     pop {r4-r7,pc}
 off_8142C8C:    .word unk_2006670
 .endfunc // sub_8142C46
@@ -3088,7 +3088,7 @@ dword_8143FC0:    .word 0x2000
     bne loc_8143FD6
     mov r0, #0xb9
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_8143FD6:
     ldr r0, [r5,#0x14] // (dword_2001024 - 0x2001010)
     ldr r1, [r5,#0x18] // (dword_2001028 - 0x2001010)
@@ -10915,13 +10915,12 @@ off_8147B38:    .word unk_20103A0
 
 .func
 .thumb_func
-// () -> void
 sub_8147B3C:
     push {lr}
     ldr r0, off_8147B4C // =byte_2010390 
     ldr r1, off_8147B50 // =unk_20103A0 
     mov r2, #0xc
-    bl sub_8147C20 // (int a1, int a2, int a3) -> void
+    bl sub_8147C20
     pop {r0}
     bx r0
 off_8147B4C:    .word byte_2010390
@@ -11021,7 +11020,6 @@ off_8147C1C:    .word byte_200BC50
 
 .func
 .thumb_func
-// (int a1, int a2, int a3) -> void
 sub_8147C20:
     push {r4-r7,lr}
     add r6, r0, #0

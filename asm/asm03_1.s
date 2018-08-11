@@ -1497,7 +1497,6 @@ dword_8046A70:    .word 0x20531000, 0x20572055, 0x205B2059, 0x205F205D, 0x106210
 
 .func
 .thumb_func
-// () -> void
 sub_8046CC8:
     push {r4-r7,lr}
     ldr r5, off_8046D48 // =byte_2011C10 
@@ -1524,8 +1523,6 @@ off_8046CF0:    .word dword_8046A70+0x128
 off_8046CF4:    .word reqBBS_requestInfo_textOffsets
 .endfunc // sub_8046CC8
 
-.func
-.thumb_func
 cb_8046CF8:
     push {r4-r7,lr}
     mov r1, r8
@@ -1556,8 +1553,6 @@ off_8046D1C:    .word sub_8046D4C+1
     .word sub_8047066+1
     .word sub_804709C+1
 off_8046D48:    .word byte_2011C10
-.endfunc // cb_8046CF8
-
 .func
 .thumb_func
 sub_8046D4C:
@@ -1593,7 +1588,7 @@ sub_8046D4C:
     bl sub_80015FC
     mov r0, #8
     mov r1, #0xc
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     ldr r0, [r5,#0x1c]
     ldr r0, [r0]
     cmp r0, #1
@@ -1671,7 +1666,7 @@ sub_8046E06:
     strb r0, [r5]
     mov r0, #0xc
     mov r1, #0xc
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
 loc_8046E40:
     bl sub_8047134
 .endfunc // sub_8046E06
@@ -1723,7 +1718,7 @@ sub_8046E84:
     tst r1, r0
     beq loc_8046E9E
     mov r0, #0x68 
-    bl sound_play
+    bl sound_play // () -> void
     b loc_8046EBC
 loc_8046E9E:
     mov r0, #0x20 
@@ -1765,7 +1760,7 @@ sub_8046ED2:
     mov r0, #1
     strb r0, [r5,#7]
     mov r0, #0x68 
-    bl sound_play
+    bl sound_play // () -> void
 loc_8046EF2:
     mov r0, #8
     bl chatbox_8045F3C
@@ -1779,7 +1774,7 @@ loc_8046EFC:
     tst r0, r0
     bne loc_8047000
     mov r0, #0x68 
-    bl sound_play
+    bl sound_play // () -> void
     b loc_8047000
 loc_8046F12:
     ldr r1, [r5,#0x1c]
@@ -1806,7 +1801,7 @@ loc_8046F32:
     cmp r0, #2
     bne loc_8046F42
     mov r0, #0x67 
-    bl sound_play
+    bl sound_play // () -> void
 loc_8046F42:
     ldr r7, [r5,#0x20]
     ldrb r2, [r7]
@@ -1891,7 +1886,7 @@ loc_8046FBE:
     mov r7, #0xff
     strb r7, [r5,#0xd]
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     b loc_8047020
 loc_8047000:
     ldr r0, [r5,#0x24]
@@ -1904,7 +1899,7 @@ loc_804700E:
     ldr r0, [r5,#0x24]
     bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
     mov r0, #0x69 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1c
     strb r0, [r5]
     b loc_8047020
@@ -2025,7 +2020,7 @@ sub_804709C:
     mov r7, #0xff
     strb r7, [r5,#0xd]
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     b loc_8047130
 loc_804710A:
     ldr r0, [r5,#0x24]
@@ -2041,7 +2036,7 @@ loc_8047118:
     ldr r0, [r5,#0x24]
     bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
     mov r0, #0x69 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x1c
     strb r0, [r5]
 loc_8047130:
@@ -2147,7 +2142,7 @@ uncomp_80471F8:
     // src
     ldr r0, [r0,#4]
     // dest
-    ldr r1, off_8047218 // =decomp_2029A00 
+    ldr r1, off_8047218 // =unk_2029A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     // src
     ldr r0, off_804721C // =comp_873DE4C 
@@ -2161,7 +2156,7 @@ uncomp_80471F8:
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_8047218:    .word decomp_2029A00
+off_8047218:    .word unk_2029A00
 off_804721C:    .word comp_873DE4C
 off_8047220:    .word unk_202BA00
 off_8047224:    .word comp_873ECC8
@@ -2472,9 +2467,9 @@ sub_804747C:
     push {r5,lr}
     bl sub_800183C
     bl sub_8046664 // () -> void
-    // dataList
+    // initRefs
     ldr r0, off_8047490 // =off_8047494 
-    bl decomp_initGfx_8000B30 // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     pop {r5,pc}
     .byte 0, 0
 off_8047490:    .word off_8047494
@@ -2678,7 +2673,7 @@ sub_8047664:
     b loc_80476C4
 loc_8047698:
     add r3, r2, #0
-    ldr r6, [r5,#0x1c] // (dword_1D - 1)
+    ldr r6, [r5,#0x1c] // (dword_1C+1 - 1)
     ldr r6, [r6]
     cmp r6, #2
     bne loc_80476C4
@@ -2849,16 +2844,17 @@ sub_8047800:
     push {r4-r7,lr}
     add r7, r5, #0
     ldrb r0, [r7,#8]
-    // a1
+    // j
     sub r0, #0x15
-    // a2
+    // i
     mov r1, #0
-    // a3
+    // cpyOff
     mov r2, #2
+    // tileRefs
     ldr r3, off_804782C // =unk_2018A04 
     mov r4, #0x15
     mov r5, #0xc
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_8047800
 
     ldrb r0, [r7,#8]
@@ -2869,7 +2865,7 @@ sub_8047800:
     ldr r3, off_8047830 // =unk_202F800 
     mov r4, #0x12
     mov r5, #0xa
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7,pc}
 off_804782C:    .word unk_2018A04
 off_8047830:    .word unk_202F800
@@ -2957,22 +2953,23 @@ sub_80478D4:
     ldrb r0, [r7,#8]
     sub r0, #0xc
     mov r1, #0x1e
-    // a1
+    // j
     sub r0, r1, r0
-    // a2
+    // i
     mov r1, #0
-    // a3
+    // cpyOff
     mov r2, #2
     ldr r3, off_8047938 // =unk_2019404 
     ldr r4, [r7,#0x1c]
     ldr r4, [r4]
     cmp r4, #1
     beq loc_80478F0
+    // tileRefs
     ldr r3, off_804793C // =unk_2019204 
 loc_80478F0:
     mov r4, #9
     mov r5, #5
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_80478D4
 
     ldrb r0, [r7,#8]
@@ -2984,7 +2981,7 @@ loc_80478F0:
     ldr r3, off_8047940 // =dword_8046A70+232 
     mov r4, #7
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     mov r1, #0xe
     ldr r2, [r7,#0x1c]
     ldr r2, [r2]
@@ -3045,7 +3042,7 @@ loc_8047976:
     beq loc_80479AC
 loc_8047988:
     mov r0, #0x66 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#5]
     mov r1, #0xff
     eor r0, r1
@@ -3168,7 +3165,7 @@ loc_8047A64:
     beq locret_8047A7E
 loc_8047A74:
     mov r0, #0x66 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xff
     strb r0, [r5,#0xd]
 locret_8047A7E:
@@ -3185,7 +3182,7 @@ sub_8047A80:
     mov r1, #2
     bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
     mov r0, #0x68 
-    bl sound_play
+    bl sound_play // () -> void
     pop {pc}
 .endfunc // sub_8047A80
 
@@ -3295,7 +3292,7 @@ loc_8047B3C:
     b loc_8047B68
 loc_8047B62:
     mov r0, #0x67 
-    bl sound_play
+    bl sound_play // () -> void
 loc_8047B68:
     ldr r0, [r5,#0x24]
     add r1, r7, #0
@@ -3303,7 +3300,7 @@ loc_8047B68:
     pop {r4-r7,pc}
 loc_8047B72:
     mov r0, #0x69 
-    bl sound_play
+    bl sound_play // () -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_8047B7C:    .word byte_2019A00
@@ -3362,7 +3359,7 @@ loc_8047BD4:
     pop {r0-r3}
     bne loc_8047C1A
     push {r0-r3}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     cmp r0, #0
     pop {r0-r3}
     beq loc_8047BFA
@@ -3803,7 +3800,7 @@ loc_8048C3A:
     tst r3, r3
     beq loc_8048C5C
     push {r0-r3}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     cmp r0, #0
     pop {r0-r3}
     beq loc_8048C58
@@ -4515,7 +4512,7 @@ sub_8049164:
     beq loc_8049180
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x13
     bl sub_803BB2C
     mov r0, #0x10
@@ -4546,7 +4543,7 @@ sub_804918A:
     bl sub_8132664
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0xa
     bl sub_803BB2C
     mov r0, #0x18
@@ -4566,7 +4563,7 @@ sub_80491C4:
     beq loc_80491E0
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x14
     strb r0, [r5,#1]
 loc_80491E0:
@@ -4749,12 +4746,12 @@ sub_804930C:
     mov r0, #0x28 
     strb r0, [r5,#1]
     mov r0, #0x81
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #1
     pop {r4-r7,pc}
 loc_804934C:
     mov r0, #0x69 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -4958,10 +4955,10 @@ sub_80494DE:
     mov r0, #0x10
     bl sub_803CB18
     bne loc_8049516
-    bl sub_813D60C // () -> zf
+    bl sub_813D60C
     bne loc_8049522
     mov r0, #0x83
-    bl sound_play
+    bl sound_play // () -> void
     mov r4, #0xf
     mov r0, #0x80
     bl sub_803CB18
@@ -5035,7 +5032,7 @@ sub_8049582:
     beq loc_8049596
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x50 
     strb r0, [r5,#1]
 loc_8049596:
@@ -5065,7 +5062,7 @@ sub_80495B4:
     beq loc_80495C8
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x58 
     strb r0, [r5,#1]
 loc_80495C8:
@@ -5097,7 +5094,7 @@ sub_80495EC:
     beq loc_8049600
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x60 
     strb r0, [r5,#1]
 loc_8049600:
@@ -5128,7 +5125,7 @@ sub_804961C:
     beq loc_8049630
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x68 
     strb r0, [r5,#1]
 loc_8049630:
@@ -5213,7 +5210,7 @@ sub_80496B4:
     bne loc_80496DE
     cmp r0, #1
     beq loc_80496CE
-    bl sub_813D60C // () -> zf
+    bl sub_813D60C
     bne loc_80496DE
     mov r0, #1
     pop {r4-r7,pc}
@@ -5245,7 +5242,7 @@ dword_80496EC:    .word 0x0
 sub_8049704:
     push {r4-r7,lr}
     bl sub_803C620
-    bl sub_813D60C // () -> zf
+    bl sub_813D60C
     bne loc_8049714
     mov r0, #1
     pop {r4-r7,pc}
@@ -5299,7 +5296,7 @@ sub_8049770:
     bl sub_8049A18
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0
     strb r0, [r5,#8]
     strb r0, [r5,#0x12]
@@ -5397,7 +5394,7 @@ sub_8049844:
 loc_804985C:
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x14
     strb r0, [r5,#1]
 loc_8049868:
@@ -5536,7 +5533,7 @@ sub_8049934:
 loc_8049952:
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x30 
     strb r0, [r5,#1]
     b loc_8049964
@@ -5580,7 +5577,7 @@ sub_8049984:
 loc_804999C:
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x3c 
     strb r0, [r5,#1]
 loc_80499A8:
@@ -5645,9 +5642,9 @@ sub_8049A18:
     bl sub_80017AA
     bl sub_800183C
     bl sub_8001850
-    // dataList
+    // initRefs
     ldr r0, off_8049A50 // =dword_8049A54 
-    bl decomp_initGfx_8000B30 // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     mov r3, r10
     ldr r3, [r3,#8]
     ldrh r0, [r3,#0x16]
@@ -5681,9 +5678,9 @@ sub_8049AAC:
     bl sub_80017AA
     bl sub_800183C
     bl sub_8001850
-    // dataList
+    // initRefs
     ldr r0, off_8049AD4 // =dword_8049AD8 
-    bl decomp_initGfx_8000B30 // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     mov r0, #4
     bl sub_803B91C
     mov r0, #5
@@ -5701,7 +5698,7 @@ dword_8049AD8:    .word 0x887E57BC, 0x6004000, 0x2027A00, 0x884E0C4C, 0x6000020
     .word 0x884E0C4C, 0x0
     .word unk_2029200
     .word 0x884E0C4C, 0x0
-    .word decomp_2029A00
+    .word unk_2029A00
     .word 0x884E0C4C, 0x0
     .word unk_2029E00
     .word 0x884E0C4C, 0x0
@@ -6102,7 +6099,7 @@ sub_8049EBC:
     bl sub_804A0AC
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0
     strb r0, [r5,#8]
     strb r0, [r5,#0x1c]
@@ -6246,7 +6243,7 @@ sub_8049FE0:
 loc_8049FF8:
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x14
     strb r0, [r5,#1]
 loc_804A004:
@@ -6286,7 +6283,7 @@ sub_804A024:
 loc_804A03C:
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #0x20 
     strb r0, [r5,#1]
 loc_804A048:
@@ -6347,9 +6344,9 @@ sub_804A0AC:
     bl sub_80017AA
     bl sub_800183C
     bl sub_8001850
-    // dataList
+    // initRefs
     ldr r0, off_804A0E4 // =dword_804A0E8 
-    bl decomp_initGfx_8000B30 // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     mov r3, r10
     ldr r3, [r3,#8]
     ldrh r0, [r3,#0x16]
@@ -6629,7 +6626,7 @@ sub_804A360:
     // numWords
     ldr r1, off_804A3F4 // =0x3C0 
     bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-    bl sub_8120A88 // () -> void
+    bl sub_8120A88
     ldr r0, off_804A3EC // =unk_202A3E0 
     mov r1, #1
     bl sub_811FE7C
@@ -6670,7 +6667,7 @@ sub_804A360:
     bl sub_804AF84
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
     mov r0, #4
     strb r0, [r5]
     mov r0, #0
@@ -6697,7 +6694,7 @@ sub_804A3FC:
     bl sub_811F7EC
     beq loc_804A42C
     mov r0, #0x9c
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0x18
     strb r0, [r5]
     mov r0, #0
@@ -6800,7 +6797,7 @@ loc_804A4FE:
     strb r0, [r5]
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
 loc_804A50A:
     bl sub_804AA58
     mov r0, #0
@@ -6918,7 +6915,7 @@ sub_804A5D4:
     mov r0, #0xc
     strb r0, [r5,#1]
     mov r0, #0x9e
-    bl sound_play
+    bl sound_play // () -> void
 locret_804A5E8:
     pop {pc}
     .balign 4, 0x00
@@ -6982,23 +6979,24 @@ loc_804A63C:
     blt loc_804A62A
     mov r0, #0
     str r0, [r4,r6]
-    // dataList
+    // initRefs
     ldr r0, off_804A6DC // =unk_20096E0 
-    bl decomp_initGfx_8000B30 // (u32 *dataList) -> void
-    // dataList
+    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+    // initRefs
     ldr r0, off_804A6E0 // =dword_804A6E4 
-    bl decomp_initGfx_8000B30 // (u32 *dataList) -> void
+    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     ldr r7, [sp]
-    // a1
+    // j
     mov r0, #0
-    // a2
+    // i
     mov r1, #0
-    // a3
+    // cpyOff
     mov r2, #1
+    // tileRefs
     ldr r3, off_804A7A8 // =unk_2020A20 
     mov r4, #0x1e
     mov r5, #0x14
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_804A61C
 
     mov r1, #0x1e
@@ -7009,14 +7007,14 @@ loc_804A63C:
     ldr r3, off_804A79C // =unk_201CA20 
     mov r4, #0x3c 
     mov r5, #0x11
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     mov r0, #0x13
     mov r1, #2
     mov r2, #1
     ldr r3, off_804A7B4 // =unk_2035C8C 
     mov r4, #0xb
     mov r5, #0x11
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     add sp, sp, #4
     pop {r4-r7,pc}
 off_804A698:    .word dword_804A69C
@@ -7058,16 +7056,17 @@ sub_804A7C0:
     mov r2, #0x1e
     add r1, r2, #0
     mov r0, #0x21 
-    // a1
+    // j
     sub r0, r0, r1
-    // a2
+    // i
     mov r1, #4
-    // a3
+    // cpyOff
     mov r2, #2
+    // tileRefs
     ldr r3, off_804A8C0 // =unk_20345FC 
     mov r4, #8
     mov r5, #0xe
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_804A7C0
 
     ldrh r0, [r7,#0x2e]
@@ -7086,7 +7085,7 @@ sub_804A7C0:
     ldr r3, off_804A8C4 // =unk_20346DC 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     ldrh r0, [r7,#0x2e]
     ldr r1, off_804A8BC // =unk_202A3E0 
     ldr r2, off_804A8D0 // =unk_2034714 
@@ -7106,7 +7105,7 @@ sub_804A7C0:
     ldr r3, off_804A8D0 // =unk_2034714 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     ldrh r0, [r7,#0x2e]
     ldr r1, off_804A8BC // =unk_202A3E0 
     ldr r2, off_804A8DC // =unk_203474C 
@@ -7125,7 +7124,7 @@ sub_804A7C0:
     ldr r3, off_804A8DC // =unk_203474C 
     mov r4, #1
     mov r5, #0xe
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     ldrh r0, [r7,#0x2e]
     ldr r1, off_804A8BC // =unk_202A3E0 
     ldr r2, off_804A8E4 // =unk_2034768 
@@ -7144,7 +7143,7 @@ sub_804A7C0:
     ldr r3, off_804A8E4 // =unk_2034768 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     ldrh r0, [r7,#0x2e]
     ldr r1, off_804A8BC // =unk_202A3E0 
     ldr r2, off_804A8EC // =unk_20347A0 
@@ -7163,7 +7162,7 @@ sub_804A7C0:
     ldr r3, off_804A8EC // =unk_20347A0 
     mov r4, #2
     mov r5, #0xe
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_804A8BC:    .word unk_202A3E0
@@ -7199,12 +7198,13 @@ loc_804A90A:
     mov r2, #0x1e
     add r1, r2, #0
     mov r0, #0x32 
-    // a1
+    // j
     sub r0, r0, r1
-    // a2
+    // i
     mov r1, #4
-    // a3
+    // cpyOff
     mov r2, #2
+    // tileRefs
     ldr r3, off_804A960 // =unk_2034458 
     mov r4, #8
     ldr r5, off_804A96C // =unk_200AC80 
@@ -7214,7 +7214,7 @@ loc_804A90A:
     mov r5, #7
 loc_804A928:
     lsl r5, r5, #1
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_804A8F4
 
     ldrh r0, [r7,#0x24]
@@ -7235,7 +7235,7 @@ loc_804A928:
     ldr r3, off_804A964 // =unk_20345A8 
     mov r4, #1
     mov r5, #0xe
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_804A95C:    .word word_202A020
@@ -7422,12 +7422,12 @@ sub_804AAA4:
     b locret_804AACC
 loc_804AABA:
     mov r0, #0x68 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5]
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect // (int a1) -> void
+    bl engine_setScreeneffect
 locret_804AACC:
     pop {pc}
     .byte 0, 0
@@ -7453,7 +7453,7 @@ loc_804AAE8:
     mov r0, #4
     strb r0, [r5]
     mov r0, #0x83
-    bl sound_play
+    bl sound_play // () -> void
     b locret_804AB0E
 loc_804AAFA:
     mov r0, #0x14
@@ -7461,7 +7461,7 @@ loc_804AAFA:
     mov r0, #0
     strh r0, [r5,#0x34]
     mov r0, #0x81
-    bl sound_play
+    bl sound_play // () -> void
     b locret_804AB0E
 loc_804AB0A:
     mov r0, #0
@@ -7494,7 +7494,7 @@ sub_804AB10:
     strb r0, [r5,r2]
     bl sub_804AB6C
     mov r0, #0x81
-    bl sound_play
+    bl sound_play // () -> void
 loc_804AB44:
     add r0, r6, #0
     tst r0, r0
@@ -7546,7 +7546,7 @@ sub_804AB6C:
     tst r0, r0
     bne loc_804AB98
     mov r0, #0x69 
-    bl sound_play
+    bl sound_play // () -> void
     b loc_804AC9E
 loc_804AB98:
     ldrh r0, [r7,#0x1c]
@@ -7605,7 +7605,7 @@ loc_804ABFA:
     blt loc_804ABFA
 loc_804AC06:
     mov r0, #0x69 
-    bl sound_play
+    bl sound_play // () -> void
     b loc_804AC9E
 loc_804AC0E:
     add r4, r1, #0
@@ -7898,7 +7898,7 @@ sub_804AE04:
     bl sub_811F7EC
     beq loc_804AE44
     mov r0, #0x81
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, r10
     ldr r0, [r0,#0x40]
     ldrh r2, [r5,#0x34]
@@ -7934,16 +7934,17 @@ off_804AE4C:    .word unk_202A3E0
 .thumb_func
 sub_804AE50:
     push {r4-r7,lr}
-    // a1
+    // j
     mov r0, #0x15
-    // a2
+    // i
     mov r1, #2
-    // a3
+    // cpyOff
     mov r2, #0
+    // tileRefs
     ldr r3, off_804AE64 // =unk_203486C 
     mov r4, #8
     mov r5, #0x11
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_804AE50
 
     pop {r4-r7,pc}
@@ -8029,7 +8030,7 @@ loc_804AEF4:
 loc_804AEFC:
     bl sub_804AF10
     mov r0, #0x69 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#3]
     strb r0, [r5,#0xd]
     mov r0, #8
@@ -8094,7 +8095,7 @@ loc_804AF6A:
     cmp r0, r1
     beq locret_804AF7C
     mov r0, #0x83
-    bl sound_play
+    bl sound_play // () -> void
 locret_804AF7C:
     pop {r4-r7,pc}
     .byte 0, 0
@@ -8144,16 +8145,17 @@ sub_804AFB8:
     mov r2, #0x1e
     add r1, r2, #0
     mov r0, #0x1f
-    // a1
+    // j
     sub r0, r0, r1
-    // a2
+    // i
     mov r1, #2
-    // a3
+    // cpyOff
     mov r2, #2
+    // tileRefs
     ldr r3, off_804AFE0 // =unk_2034814 
     mov r4, #0x14
     mov r5, #2
-    bl drawTiles // (int a1, int a2, int a3) -> void
+    bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 .endfunc // sub_804AFB8
 
     pop {r4-r7,pc}
@@ -8990,7 +8992,7 @@ sub_804CE90:
     ldr r2, [r5,#0x2c]
     ldrb r3, [r5,#4]
     ldrb r4, [r5,#5]
-    bl sub_802FF4C // (int a1, int a2) ->
+    bl sub_802FF4C
     bl loc_8030472
     ldr r0, off_804CEF0 // =unk_2037800 
     bl sub_80028D4
@@ -8998,8 +9000,8 @@ sub_804CE90:
     lsl r1, r1, #2
     ldr r0, off_804CEF8 // =off_804CEFC 
     ldr r0, [r0,r1]
-    bl decomp_8002906 // (int a1) -> bool
-    bl chatbox_decomp_currMap_gameProgress_803FD08 // () -> int
+    bl sub_8002906
+    bl chatbox_uncomp_803FD08 // () -> int
     bl sub_804CF84
     ldr r0, off_804CEF4 // =off_804D0E4 
     ldrb r1, [r5,#5]

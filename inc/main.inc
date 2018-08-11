@@ -35,7 +35,7 @@
 // .global objRender_8000A44
 // .global sub_8000E10
 // .global sub_8001514
-// .global sub_800154C
+// .global sub_800154C // () -> void
 // .global sub_80015B4
 // .global render_80015D0
 // .global render_800172C
@@ -61,10 +61,10 @@
 // .global sub_8003AB2
 // .global sub_8004D48
 // .global sub_8004DF0
-// .global cb_80050EC
-// .global engine_80062EC
+// .global cb_80050EC // () -> void
+// .global sub_80062EC
 // .global engine_isScreeneffectAnimating // () -> zf
-// .global engine_triggerTransition_800630A
+// .global subsystem_triggerTransition_800630A
 // .global sub_8006910
 // .global CpuSet_toolKit
 // .global sub_8006C22
@@ -72,7 +72,7 @@
 // .global zf_checkSameSubsystem_800A732
 
 .include "asm37_0.inc"
-// .global sub_813D60C // () -> zf
+// .global sub_813D60C
 // .global sub_813D960
 
 .include "asm03_0.inc"

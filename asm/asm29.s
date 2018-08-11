@@ -259,7 +259,7 @@ loc_80A4B6C:
     tst r0, r0
     beq loc_80A4B7A
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
 loc_80A4B7A:
     pop {r4}
     mov r8, r4
@@ -508,7 +508,7 @@ sub_80A5268:
     .hword 0x1c00 // add r0, r0, #0
     bl zf_802F168 // (int a1, int a2) -> zf
     bne loc_80A52DA
-    bl engine_80062C8
+    bl sub_80062C8
     lsr r0, r0, #2
     mov r1, #1
     tst r0, r1
@@ -534,7 +534,7 @@ loc_80A52A4:
     ldr r1, dword_80A52E0 // =0xFFFF 
     cmp r0, r1
     beq loc_80A52B0
-    bl sound_play
+    bl sound_play // () -> void
 loc_80A52B0:
     ldrh r0, [r7,#4]
     // <mkdata>
@@ -604,19 +604,19 @@ loc_80A531E:
     cmp r1, #0x32 
     bne loc_80A5330
     ldr r0, off_80A534C // =0x14C 
-    bl sound_play
+    bl sound_play // () -> void
     b loc_80A5346
 loc_80A5330:
     cmp r1, #0x4a 
     bne loc_80A533C
     mov r0, #0xe6
-    bl sound_play
+    bl sound_play // () -> void
     b loc_80A5346
 loc_80A533C:
     cmp r1, #0x5d 
     bne loc_80A5346
     mov r0, #0x99
-    bl sound_play
+    bl sound_play // () -> void
 loc_80A5346:
     bl sprite_update
 .endfunc // sub_80A5304
@@ -800,7 +800,7 @@ loc_80A552A:
     and r1, r2
     bne loc_80A557A
     ldr r0, dword_80A568C // =0x17F 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#4]
     cmp r0, #0
     bne loc_80A557A
@@ -932,7 +932,7 @@ loc_80A5648:
     cmp r0, #0
     bne locret_80A5674
     ldr r0, dword_80A568C // =0x17F 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xa
     strb r0, [r6,#0xf]
     b locret_80A5674
@@ -2107,7 +2107,7 @@ sub_80A5F68:
     bl sub_80047E0
     pop {r5}
     mov r0, #0x76 
-    bl sound_play
+    bl sound_play // () -> void
     pop {pc}
     .balign 4, 0x00
 .endfunc // sub_80A5F68
@@ -2680,7 +2680,7 @@ sub_80A6CD4:
 sub_80A6CFC:
     push {lr}
     push {r0}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     ldr r2, dword_80A6D34 // =unk_809D328 
     ldrb r2, [r2,r0]
     mov r0, #0x80
@@ -2843,7 +2843,7 @@ sub_80A6E0C:
     push {lr}
     bl sub_80A6E78
     ldrh r0, [r0,#2]
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     bl sub_80A6E70
     mov r0, #1
@@ -3320,7 +3320,7 @@ loc_80A7190:
     bl sprite_loadAnimationData
     bl sub_8002F90
     mov r0, #0xe1
-    bl sound_play
+    bl sound_play // () -> void
     add r4, #1
     strb r4, [r5,#9]
     b locret_80A71E8
@@ -3356,7 +3356,7 @@ sub_80A71EC:
     cmp r0, #1
     bne loc_80A71FE
     mov r0, #0xe2
-    bl sound_play
+    bl sound_play // () -> void
 loc_80A71FE:
     sub r0, #1
     str r0, [r5,#0x38]
@@ -3963,7 +3963,7 @@ loc_80A7670:
     bl sprite_loadAnimationData
     bl sub_8002F90
     mov r0, #0xe1
-    bl sound_play
+    bl sound_play // () -> void
     add r4, #1
     strb r4, [r5,#9]
     b locret_80A76C8
@@ -3999,7 +3999,7 @@ sub_80A76CC:
     cmp r0, #1
     bne loc_80A76DE
     mov r0, #0xe2
-    bl sound_play
+    bl sound_play // () -> void
 loc_80A76DE:
     sub r0, #1
     str r0, [r5,#0x34]
@@ -4712,7 +4712,7 @@ sub_80A7BC0:
     mov r0, #8
     strb r0, [r5,#8]
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_81418F0
     bl sub_81418E4
     add r4, r2, #0
@@ -5124,7 +5124,7 @@ sub_80A7EF8:
 
     mov r0, #0x7e 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#9]
     pop {r4-r7,pc}
@@ -5223,7 +5223,7 @@ sub_80A7FAC:
     bl sprite_loadAnimationData
     mov r0, #0x2b 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     str r0, [r5,#0x24]
     mov r0, #8
@@ -5242,7 +5242,7 @@ sub_80A7FD4:
     beq locret_80A8004
     mov r0, #0x2b 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r5,#0x24]
     sub r0, #1
     str r0, [r5,#0x24]
@@ -5986,7 +5986,7 @@ sub_80A86B4:
     mov r0, #1
     str r0, [r5,#0x24]
     mov r0, #0xbd
-    bl sound_play
+    bl sound_play // () -> void
 loc_80A86EA:
     strb r4, [r5]
     add r0, r6, #0
@@ -6070,7 +6070,7 @@ loc_80A8754:
     ldrh r0, [r0,r6]
     tst r0, r0
     beq loc_80A87A2
-    bl sound_play
+    bl sound_play // () -> void
 loc_80A87A2:
     mov r0, #4
     strb r0, [r5,#8]
@@ -6315,7 +6315,7 @@ sub_80A8988:
     mov r0, #8
     strb r0, [r5,#8]
     mov r0, #0x73 
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#4]
     bl sub_81430B6
     // <mkdata>
@@ -6328,7 +6328,7 @@ loc_80A89B4:
     strb r0, [r5,#8]
     mov r0, #0xa5
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#4]
     bl sub_81430B6
     // a1
@@ -6870,7 +6870,7 @@ sub_80A8DB0:
     bl sub_8036E90
     mov r0, #0x23 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldrb r0, [r5,#4]
     bl sub_8143204
     ldrb r0, [r5,#4]
@@ -7065,7 +7065,7 @@ sub_80A8FA0:
     mov r0, #0xc
     strb r0, [r5,#8]
     ldr r0, off_80A8FE0 // =0x160 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80A8FE4
     b loc_80A8FD8
 loc_80A8FC6:
@@ -7570,7 +7570,7 @@ sub_80A931C:
     mov r0, #8
     strb r0, [r5,#8]
     mov r0, #0x6b 
-    bl sound_play
+    bl sound_play // () -> void
     bl sub_80A9360
     b loc_80A935A
 loc_80A933E:
@@ -7924,7 +7924,7 @@ sub_80A95A8:
     mov r0, #8
     strb r0, [r5,#8]
     ldr r0, off_80A95E8 // =0x1A4 
-    bl sound_play
+    bl sound_play // () -> void
 locret_80A95E6:
     pop {r4,pc}
 off_80A95E8:    .word 0x1A4
@@ -8029,7 +8029,7 @@ sub_80A9680:
     str r0, [r5,#0x24]
     bl sub_80A97F4
     ldr r0, dword_80A96C4 // =0x1B3 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl sub_80A96C8
@@ -8187,7 +8187,7 @@ loc_80A97BC:
     mov r1, #0xe8
     bl sub_802F110
     mov r0, #0xd7
-    bl sound_play
+    bl sound_play // () -> void
 locret_80A97F0:
     pop {r4,pc}
     .balign 4, 0x00
@@ -8301,7 +8301,7 @@ loc_80A98B4:
     ldrb r0, [r5,#6]
     str r0, [r5,#0x28]
     mov r0, #0x70 
-    bl sound_play
+    bl sound_play // () -> void
 loc_80A98BE:
     pop {r4}
     mov r8, r4
@@ -8653,7 +8653,7 @@ loc_80A9C54:
     bl sub_8002F90
     mov r0, #0xd9
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     b loc_80A9CA0
 loc_80A9C88:
     ldr r0, [r5,#0x24]
@@ -8838,7 +8838,7 @@ loc_80A9DD8:
     bne loc_80A9DF8
     mov r0, #0x24 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80A9DF8:
     mov r0, #4
     strb r0, [r5,#9]
@@ -8872,7 +8872,7 @@ loc_80A9E20:
     bne loc_80A9E2E
     mov r0, #0x36 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80A9E2E:
     mov r0, #2
     bl sprite_setAnimation
@@ -8942,7 +8942,7 @@ sub_80A9E5E:
     bne loc_80A9EB0
     mov r0, #0xae
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
 loc_80A9EB0:
     mov r0, #0x10
     strb r0, [r5,#9]
@@ -9001,7 +9001,7 @@ sub_80A9EEC:
     bl sub_8035694
     bl sub_8002E14
     mov r0, #0x76 
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl sub_80A9F30
@@ -9323,7 +9323,7 @@ sub_80AA194:
     bl sub_80302A8
     mov r0, #0x7c 
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#8]
 loc_80AA1C2:
@@ -9411,9 +9411,9 @@ sub_80AA248:
     mov r1, #0xa
     bl sub_80302A8
     mov r0, #0xda
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #0xc0
-    bl sound_play
+    bl sound_play // () -> void
     mov r0, #8
     strb r0, [r5,#8]
 loc_80AA27C:
@@ -9632,7 +9632,7 @@ sub_80AA402:
     beq loc_80AA424
     mov r0, #0xcf
     add r0, #0xff
-    bl sound_play
+    bl sound_play // () -> void
     ldr r0, [r5,#0x28]
     add r0, #1
     str r0, [r5,#0x28]
@@ -9690,7 +9690,7 @@ loc_80AA4D4:
     beq loc_80AA5DC
     push {r0}
     add r4, r2, #0
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x28 
     bl sub_80137B6
     tst r0, r0
@@ -9759,7 +9759,7 @@ loc_80AA56E:
     tst r0, r0
     bne loc_80AA59E
 loc_80AA584:
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x27 
     bl sub_80137B6
     add r2, r0, #0
@@ -9774,7 +9774,7 @@ loc_80AA59E:
     tst r1, r1
     bne loc_80AA5B8
     push {r0}
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x1e
     bl sub_80137B6
     tst r0, r0
@@ -9784,7 +9784,7 @@ loc_80AA5B8:
     push {r0}
     bl sub_802D266
     add r4, r0, #0
-    bl getPETNaviSelect
+    bl getPETNaviSelect // () -> u8
     mov r1, #0x3e 
     bl sub_80137FE
     add r0, #4

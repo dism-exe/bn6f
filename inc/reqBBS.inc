@@ -2,12 +2,12 @@
 .equ INC_REQBBS, 0
 
 /* Public Symbols */
-.global reqBBS_813E07C // (int a1) -> void
+.global reqBBS_813E07C
 .global reqBBS_813E5DC
 .global reqBBS_813E616
 .global reqBBS_813EE58
 .global dword_813F380
-.global reqBBS_init_s_2005780 // (int a1) -> void
+.global reqBBS_init_s_2005780
 .global reqBBS_813F9A0
 .global reqBBS_initMemory_813F9DA
 .global reqBBS_81406FC
@@ -56,13 +56,13 @@
 // .global sub_809E122
 
 .include "asm00.inc"
-// .global sound_play
+// .global sound_play // () -> void
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global initMemblockToByte
 // .global loc_8000AC8
-// .global decomp_initGfx_8000B30 // (u32 *dataList) -> void
-// .global getPETNaviSelect
+// .global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+// .global getPETNaviSelect // () -> u8
 // .global sub_800151C
 // .global sub_80015FC
 // .global sub_8001778
@@ -71,11 +71,11 @@
 // .global sub_80017AA
 // .global sub_80017E0
 // .global sub_800183C
-// .global drawTiles // (int a1, int a2, int a3) -> void
+// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
 // .global sub_8002FA6
 // .global sub_8005F84
-// .global engine_setScreeneffect // (int a1) -> void
+// .global engine_setScreeneffect
 // .global engine_isScreeneffectAnimating // () -> zf
 
 .include "asm37_0.inc"
@@ -143,11 +143,11 @@
 .equ unk_201C200, 0x201C200
 .equ unk_201CA00, 0x201CA00
 .equ reqBBS_requestEntries_IDs, 0x2023A00
-.equ decomp_2025A00, 0x2025A00
+.equ unk_2025A00, 0x2025A00
 .equ reqBBS_requestNames_textualData, 0x2025A04
-.equ decomp_2029A00, 0x2029A00
+.equ unk_2029A00, 0x2029A00
 .equ reqBBS_requestInfo_textOffsets, 0x2029A04
-.equ decomp_2033A00, 0x2033A00
+.equ unk_2033A00, 0x2033A00
 .equ reqBBS_dialogList, 0x2033A04
 .equ unk_3001750, 0x3001750
 .equ unk_30019C0, 0x30019C0

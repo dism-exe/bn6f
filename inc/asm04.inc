@@ -6,18 +6,18 @@
 
 /* External Symbols */
 .include "asm03_0.inc"
-// .global sub_802FF4C // (int a1, int a2) ->
+// .global sub_802FF4C
 // .global sub_803037C
 // .global loc_8030472
 // .global sub_8030AA4
 
 .include "chatbox.inc"
-// .global chatbox_decomp_currMap_gameProgress_803FD08 // () -> int
+// .global chatbox_uncomp_803FD08 // () -> int
 
 .include "asm00.inc"
 // .global sub_8002354
 // .global sub_80028D4
-// .global decomp_8002906 // (int a1) -> bool
+// .global sub_8002906
 // .global loc_8003570
 
 
@@ -28,7 +28,7 @@
 .equ off_804E478, 0x804E478
 .equ off_804E4A0, 0x804E4A0
 .equ dword_804E5D4, 0x804E5D4
-.equ dword_804E604, 0x804E604
+.equ unk_804E604, 0x804E604
 .equ dword_804E74C, 0x804E74C
 .equ dword_804E87C, 0x804E87C
 .equ dword_804E8D0, 0x804E8D0

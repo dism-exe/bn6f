@@ -37,7 +37,7 @@
 // .global dword_80065D0
 // .global dword_8006660
 // .global sub_80068E0
-// .global battle_isPaused // () -> zf
+// .global battle_isPaused
 // .global battle_isTimeStop
 // .global object_isValidPanel
 // .global object_checkPanelParameters
