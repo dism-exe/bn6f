@@ -4762,7 +4762,7 @@ sub_81326D4:
     bl sub_800183C
     bl sub_8046664 // () -> void
     // initRefs
-    ldr r0, off_8132714 // =locret_8132718 
+    ldr r0, off_8132714 // =dword_8132718 
     bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     // a1
     ldr r0, off_8132710 // =dword_81326C8 
@@ -4773,8 +4773,6 @@ sub_81326D4:
     bl sub_813281C
     bl sub_81328C0
     bl sub_8132980
-.endfunc // sub_81326D4
-
     mov r1, #0
     mov r0, #0x48 
     strb r1, [r5,r0]
@@ -4784,31 +4782,35 @@ sub_81326D4:
     pop {pc}
     .byte 0, 0
 off_8132710:    .word dword_81326C8
-off_8132714:    .word locret_8132718
-locret_8132718:
-    pop {r2,r4,r7,pc}
-    .hword 0x886D
+off_8132714:    .word dword_8132718
+dword_8132718:    .word 0x886DBD94
     .word unk_202CA00
     .word word_2013A00
     .word 0x886DB0F8, 0x2022AA0, 0x2013A00, 0x886DBB0C, 0x2022FA0
     .word 0x2013A00, 0x886DBD64, 0x3001550, 0x2013A00, 0x886DBD7C
     .word 0x3001570, 0x2013A00, 0x887E6924, 0x6010600, 0x2013A00
     .word 0x0
-loc_8132764:
+.endfunc // sub_81326D4
+
+.func
+.thumb_func
+sub_8132764:
     push {lr}
     mov r0, #0x48 
     ldrb r1, [r5,r0]
-    ldr r0, off_8132774 // =off_8132778 
+    ldr r0, off_8132774 // =jt_8132778 
     ldr r0, [r0,r1]
     mov lr, pc
     bx r0
     pop {pc}
-off_8132774:    .word off_8132778
-off_8132778:    .word sub_813278C+1
+off_8132774:    .word jt_8132778
+jt_8132778:    .word sub_813278C+1
     .word sub_81327A0+1
     .word sub_81327B0+1
     .word sub_81327E8+1
     .word sub_8132810+1
+.endfunc // sub_8132764
+
 .func
 .thumb_func
 sub_813278C:
@@ -9189,7 +9191,7 @@ loc_8134B74:
     add r0, r4, #0
     add r1, r6, #0
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     add r0, r4, #0
     add r0, #0x20 
     add r1, r4, #0
@@ -9222,7 +9224,7 @@ loc_8134BE8:
     add r0, r4, #0
     add r1, r6, #0
     mov r2, #0x14
-    bl sub_8000950
+    bl CpuFastSet_8000950
     b loc_8134CD6
 loc_8134C00:
     ldrh r0, [r6,#0x1c]
@@ -9232,7 +9234,7 @@ loc_8134C00:
     add r0, r4, #0
     add r1, r6, #0
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldr r0, [r4,#0x14]
     lsr r1, r0, #0x10
     sub r1, #1
@@ -9274,15 +9276,15 @@ loc_8134C58:
     ldr r1, off_8134EA4 // =unk_2035C6C 
     add r0, r6, #0
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     add r0, r4, #0
     add r1, r6, #0
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldr r0, off_8134EA4 // =unk_2035C6C 
     add r1, r4, #0
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldr r0, [r4,#0x14]
     lsl r0, r0, #0x10
     lsr r0, r0, #0x10
@@ -9301,11 +9303,11 @@ loc_8134C8E:
     ldr r1, off_8134EA4 // =unk_2035C6C 
     add r0, r6, #0
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     add r0, r4, #0
     add r1, r6, #0
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldrh r0, [r5,#0x28]
     add r0, #1
     strh r0, [r5,#0x28]
@@ -9317,7 +9319,7 @@ loc_8134C8E:
     add r4, r1, #0
     ldr r0, off_8134EA4 // =unk_2035C6C 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldr r0, [r4,#0x14]
     lsl r0, r0, #0x10
     lsr r0, r0, #0x10
@@ -9387,7 +9389,7 @@ loc_8134D28:
     mov r2, #1
     strh r2, [r3,#0x14]
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldrh r0, [r5,#0x28]
     add r0, #1
     strh r0, [r5,#0x28]
@@ -9457,7 +9459,7 @@ loc_8134DC8:
     ldr r1, off_8134E98 // =word_202A020 
     add r1, r1, r4
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldrh r0, [r5,#0x1e]
     bl sub_8134EA8
     strb r0, [r5,#0x17]
@@ -9490,7 +9492,7 @@ loc_8134E10:
     add r0, r7, #0
     add r1, r1, r4
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldrh r0, [r5,#0x1e]
     bl sub_8134EA8
     strb r0, [r5,#0x17]
@@ -9515,15 +9517,15 @@ loc_8134E58:
     ldr r1, off_8134EA4 // =unk_2035C6C 
     add r0, r4, #0
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     add r0, r6, #0
     add r1, r4, #0
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldr r0, off_8134EA4 // =unk_2035C6C 
     add r1, r6, #0
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     mov r0, #0x81
     bl sound_play // () -> void
     bl sub_8134F78
@@ -10112,7 +10114,7 @@ sub_813527C:
     beq loc_8135294
     mov r3, #0x20 
     mul r2, r3
-    bl sub_8000950
+    bl CpuFastSet_8000950
     mov r1, #0x20 
     mul r1, r6
     add r4, r4, r1
@@ -10321,7 +10323,7 @@ sub_8135404:
     add r0, r0, r1
     ldr r1, off_81354F8 // =unk_203768C 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldr r4, [r5,#0x5c]
     ldr r6, [r5,#0x60]
     cmp r4, r6
@@ -10337,7 +10339,7 @@ loc_8135426:
     ldr r2, off_81354F4 // =word_202A020 
     add r0, r0, r2
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     add r6, #1
     cmp r4, r6
     bgt loc_8135426
@@ -10347,7 +10349,7 @@ loc_8135426:
     add r1, r1, r0
     ldr r0, off_81354F8 // =unk_203768C 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldrh r0, [r5,#0x1c]
     ldr r1, dword_81354FC // =0xFFFF 
     cmp r0, r1
@@ -10383,7 +10385,7 @@ loc_813547C:
     ldr r2, off_81354F4 // =word_202A020 
     add r0, r0, r2
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     sub r6, #1
     b loc_813547C
 loc_813549C:
@@ -10393,7 +10395,7 @@ loc_813549C:
     add r1, r1, r0
     ldr r0, off_81354F8 // =unk_203768C 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldrh r0, [r5,#0x1c]
     ldr r1, dword_81354FC // =0xFFFF 
     cmp r0, r1
@@ -11374,7 +11376,7 @@ loc_8135BB4:
     ldr r0, off_8135C20 // =unk_201CF80 
     ldr r1, off_8135C1C // =unk_30019E0 
     ldr r2, off_8135C24 // =0x100 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     // j
     mov r0, #0
     // i

@@ -12707,7 +12707,7 @@ sub_8117A84:
     add r0, r0, r1
     add r1, r6, #0
     mov r2, #0x40 
-    bl sub_8000950
+    bl CpuFastSet_8000950
 loc_8117A98:
     add r6, #0x40 
     pop {pc}
@@ -12847,7 +12847,7 @@ sub_8117B94:
     add r0, r0, r1
     add r1, r6, #0
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
 loc_8117BAE:
     add r6, #0x20 
     lsl r0, r7, #5
@@ -12855,7 +12855,7 @@ loc_8117BAE:
     add r0, r0, r1
     add r1, r6, #0
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     add r6, #0x20 
     pop {r7,pc}
     .balign 4, 0x00
@@ -16232,7 +16232,7 @@ loc_81195C6:
     ldr r1, off_811967C // =dword_86E411C 
     add r0, r0, r1
     add r1, r7, #0
-    bl sub_8000950
+    bl CpuFastSet_8000950
     sub r7, #0x40 
     sub r6, #1
     bgt loc_81195C6

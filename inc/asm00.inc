@@ -22,7 +22,7 @@
 .global copyMemory // (void *src, void* dest, int size) -> void
 .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
 .global CpuSet_800093C
-.global sub_8000950
+.global CpuFastSet_8000950
 .global initMemblockToByte
 .global sub_800096C
 .global sub_800098C
@@ -2033,7 +2033,7 @@
 .equ dword_86BA0A0, 0x86BA0A0
 .equ dword_86BA120, 0x86BA120
 .equ dword_86BEC80, 0x86BEC80
-.equ dword_86DDBA0, 0x86DDBA0
+.equ comp_86DD59C, 0x86DD59C
 .equ byte_86DFA98, 0x86DFA98
 .equ dword_86E0458, 0x86E0458
 .equ dword_86E0478, 0x86E0478

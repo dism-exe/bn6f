@@ -527,7 +527,7 @@ off_800094C:    .word LCDControl
 
 .func
 .thumb_func
-sub_8000950:
+CpuFastSet_8000950:
     push {r0-r3,lr}
     ldr r3, dword_8000960 // =0x0 
     lsr r2, r2, #2
@@ -536,7 +536,7 @@ sub_8000950:
     pop {r0-r3,pc}
     .byte 0, 0
 dword_8000960:    .word 0x0
-.endfunc // sub_8000950
+.endfunc // CpuFastSet_8000950
 
 .func
 .thumb_func
@@ -732,7 +732,7 @@ off_8000AA4:    .word off_8000AA8
 off_8000AA8:    .word copyMemory+1
     .word CpuSet_800092A+1
     .word CpuSet_800093C+1
-    .word sub_8000950+1
+    .word CpuFastSet_8000950+1
 .func
 .thumb_func
 sub_8000AB8:
@@ -801,6 +801,10 @@ locret_8000B2E:
 .func
 .thumb_func
 // (u32 *initRefs) -> void
+// This processes an array and performs different actions based on 
+// the time of u32 element in it.
+// If the last bit of the elem is set, then it is a reference to
+// compressed data: x_addr = x & ~0x80000000
 decomp_initGfx_8000B30:
     push {r4-r7,lr}
     add r7, r0, #0
@@ -809,12 +813,12 @@ loc_8000B34:
     tst r0, r0
     beq locret_8000B8C
     lsl r0, r0, #1
-    bcs Carried_isCompressedRef_8000B46
+    bcs isCompressedRef_8000B46
     lsr r0, r0, #1
     ldr r1, [r7,#4]
     ldr r2, [r7,#8]
-    b loc_8000B5E
-Carried_isCompressedRef_8000B46:
+    b switch_8000B5E
+isCompressedRef_8000B46:
     // src: (a1[0]<<1)>>1 (carry flag) first itr
     lsr r0, r0, #1
     // dest: a1[8]
@@ -824,36 +828,39 @@ Carried_isCompressedRef_8000B46:
     // dest
     ldr r1, [r7,#4]
     tst r1, r1
-    beq continue_incR7_12_8000B88
+    beq continue_advance3Elements_8000B88
     // src
     add r0, r4, #4
     ldr r2, [r4]
     lsr r2, r2, #8
     // mode
     sub r2, #4
-loc_8000B5E:
+switch_8000B5E:
     mov r3, #1
     tst r3, r2
-    bne loc_8000B72
+    bne R2_bit0_set_8000B72
     mov r3, #3
     tst r3, r2
-    bne loc_8000B78
+    bne R2_bit1_set_8000B78
     mov r3, #0x1f
     tst r3, r2
-    bne loc_8000B7E
-    b loc_8000B84
-loc_8000B72:
+    bne R2_bits5to0_set_8000B7E
+    b default_8000B84
+R2_bit0_set_8000B72:
     bl copyMemory // (void *src, void* dest, int size) -> void
-    b continue_incR7_12_8000B88
-loc_8000B78:
+    b continue_advance3Elements_8000B88
+R2_bit1_set_8000B78:
+    // if bit 0 or bit 1 are set. Since bit 0 was checked already, 
+    // this is for bit 1
     bl CpuSet_800092A // (void *src, void *dest, int mode) -> void
-    b continue_incR7_12_8000B88
-loc_8000B7E:
+    b continue_advance3Elements_8000B88
+R2_bits5to0_set_8000B7E:
+    // if any bit from 2 to 5 are set
     bl CpuSet_800093C
-    b continue_incR7_12_8000B88
-loc_8000B84:
-    bl sub_8000950
-continue_incR7_12_8000B88:
+    b continue_advance3Elements_8000B88
+default_8000B84:
+    bl CpuFastSet_8000950
+continue_advance3Elements_8000B88:
     add r7, #0xc
     b loc_8000B34
 locret_8000B8C:
@@ -2368,7 +2375,7 @@ render_80015D0:
     ldr r0, [r0,#0x28]
     ldr r1, dword_80015EC // =0x600E000 
     ldr r2, dword_80015F0 // =0x2000 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     mov r0, r10
     ldr r0, [r0,#0x28]
     ldr r1, dword_80015F4 // =0x800 
@@ -2579,7 +2586,7 @@ renderPalletes_8001808:
     ldr r1, dword_800181C // =0x5000000 
     mov r2, #0x20 
     lsl r2, r2, #4
-    bl sub_8000950
+    bl CpuFastSet_8000950
     pop {pc}
 off_8001818:    .word unk_3001B60
 dword_800181C:    .word 0x5000000
@@ -2631,11 +2638,11 @@ sub_8001850:
     ldr r0, off_8001868 // =dword_86A5520 
     ldr r1, dword_800186C // =0x600D400 
     ldr r2, dword_8001870 // =0x800 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldr r0, off_8001874 // =dword_86BEC80 
     ldr r1, off_8001878 // =unk_3001B40 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     pop {pc}
 off_8001868:    .word dword_86A5520
 dword_800186C:    .word 0x600D400
@@ -4200,12 +4207,12 @@ getPalleteAndTransition_80023E0:
     ldr r1, off_8002440 // =unk_3001B60 
     mov r2, #0x20 
     lsl r2, r2, #4
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldr r0, off_8002444 // =unk_3001550 
     ldr r1, off_8002448 // =unk_3001750 
     mov r2, #0x20 
     lsl r2, r2, #4
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldr r5, off_8002464 // =byte_20097A0 
 loc_80023FC:
     ldrb r0, [r5]
@@ -4516,7 +4523,7 @@ renderPalletesAndObjs_8002650:
     ldr r1, dword_8002664 // =0x5000200 
     mov r2, #0x20 
     lsl r2, r2, #4
-    bl sub_8000950
+    bl CpuFastSet_8000950
     pop {pc}
 off_8002660:    .word unk_3001750
 dword_8002664:    .word 0x5000200
@@ -4529,7 +4536,7 @@ sub_8002668:
     ldr r0, off_800268C // =dword_86A5500 
     ldr r1, off_8002690 // =unk_3001710 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     b loc_8002678
 loc_8002676:
     push {lr}
@@ -4537,7 +4544,7 @@ loc_8002678:
     ldr r0, off_8002684 // =dword_80025CC 
     ldr r1, off_8002688 // =unk_3001730 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     pop {pc}
 off_8002684:    .word dword_80025CC
 off_8002688:    .word unk_3001730
@@ -14639,7 +14646,7 @@ sub_80075CA:
     // dataList
     ldr r0, dataList // =off_80075F0 
     bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
-    ldr r0, off_800761C // =dword_86DDBA0 
+    ldr r0, off_800761C // =comp_86DD59C+1540 
     ldr r1, dword_8007620 // =0x6001460 
     bl SWI_LZ77UnCompReadNormalWrite16bit
     pop {r5,pc}
@@ -14651,7 +14658,7 @@ off_80075F0:    .word dword_86E08F8
     .word word_3001960
     .word 0x20, 0x86E09F8, 0x3001690, 0x20, 0x0
 dword_8007618:    .word 0x6008000
-off_800761C:    .word dword_86DDBA0
+off_800761C:    .word comp_86DD59C+0x604
 dword_8007620:    .word 0x6001460
 dword_8007624:    .word 0x6008000
 .endfunc // sub_80075CA
@@ -24917,7 +24924,7 @@ loc_800C1B6:
     ldr r0, [r2]
     ldr r1, [r6,#4]
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
 loc_800C1CC:
     add r7, #4
     b loc_800C198

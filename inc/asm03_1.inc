@@ -168,7 +168,7 @@
 // .global sub_8000900 // (int a1, int a2) -> void
 // .global copyMemory // (void *src, void* dest, int size) -> void
 // .global CpuSet_800093C
-// .global sub_8000950
+// .global CpuFastSet_8000950
 // .global sub_800096C
 // .global sub_80009AC
 // .global loc_8000AC8

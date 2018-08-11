@@ -170,7 +170,7 @@ loc_8123350:
     bl CpuSet_800093C
     b loc_812335A
 loc_8123356:
-    bl sub_8000950
+    bl CpuFastSet_8000950
 loc_812335A:
     add sp, sp, #0xc
     pop {r7,pc}
@@ -12744,7 +12744,7 @@ off_812A1C0:    .word byte_2023BC0
 sub_812A1C4:
     push {lr}
     bl loc_812A1D4
-    bl loc_8132764
+    bl sub_8132764
     pop {pc}
     .word byte_200A290
 .endfunc // sub_812A1C4
@@ -16160,7 +16160,7 @@ loc_812BC70:
     add r0, r6, #0
     add r1, r4, #0
     mov r2, #0x40 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     mov r7, #0x12
     mov r6, #0
 loc_812BCA8:

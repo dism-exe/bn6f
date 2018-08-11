@@ -20,7 +20,7 @@
 .global sub_8132664
 .global sub_8132670
 .global sub_81326D4
-.global loc_8132764
+.global sub_8132764
 .global sub_81329C8
 .global sub_8132A14
 .global sub_8132A50
@@ -141,7 +141,7 @@
 // .global sub_8000900 // (int a1, int a2) -> void
 // .global copyMemory // (void *src, void* dest, int size) -> void
 // .global CpuSet_800093C
-// .global sub_8000950
+// .global CpuFastSet_8000950
 // .global loc_8000AC8
 // .global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
 // .global sub_8000C00

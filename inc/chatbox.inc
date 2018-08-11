@@ -72,7 +72,7 @@
 // .global copyMemory // (void *src, void* dest, int size) -> void
 // .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
 // .global CpuSet_800093C
-// .global sub_8000950
+// .global CpuFastSet_8000950
 // .global loc_8000AC8
 // .global sub_8000C00
 // .global sub_8000C5C

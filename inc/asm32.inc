@@ -228,7 +228,7 @@
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8000900 // (int a1, int a2) -> void
 // .global CpuSet_800093C
-// .global sub_8000950
+// .global CpuFastSet_8000950
 // .global sub_800098C
 // .global loc_8000AC4
 // .global loc_8000AC8

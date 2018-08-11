@@ -109,13 +109,13 @@ loc_803FDA8:
     ldr r0, off_803FDFC // =dword_86BFE20 
     ldr r1, off_803FE00 // =unk_3001B40 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     b loc_803FDD0
 loc_803FDC6:
     ldr r0, off_803FE04 // =dword_86BFE20+32 
     ldr r1, off_803FE00 // =unk_3001B40 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
 loc_803FDD0:
     // src
     ldr r0, off_803FDE0 // =dword_803FDE4 
@@ -163,13 +163,13 @@ loc_803FE14:
     ldr r0, off_803FE68 // =dword_86C0900 
     ldr r1, off_803FE6C // =unk_3001B40 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     b loc_803FE3C
 loc_803FE32:
     ldr r0, off_803FE70 // =dword_86C0900+32 
     ldr r1, off_803FE6C // =unk_3001B40 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
 loc_803FE3C:
     // src
     ldr r0, off_803FE4C // =dword_803FE50 
@@ -204,7 +204,7 @@ chatbox_803FE74:
     ldr r0, off_803FEAC // =dword_84E0554 
     ldr r1, off_803FEB0 // =unk_3001B40 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     pop {r4,r5,pc}
     .word 0x803FE94, 0x83007E, 0x81007F
 off_803FE9C:    .word dword_84E0554
@@ -897,11 +897,11 @@ chatbox_runScript:
     ldr r0, off_804047C // =dword_86BEC80 
     ldr r1, off_8040480 // =unk_3001B40 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldr r0, off_8040484 // =dword_86B7AC0 
     ldr r1, off_8040488 // =unk_3001710 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     pop {r4-r6,pc}
     .balign 4, 0x00
 off_804046C:    .word dword_86BEB20
@@ -1038,11 +1038,11 @@ chatbox_reqBBS_80404C0:
     ldr r0, off_80405B4 // =dword_86BEC80 
     ldr r1, off_80405B8 // =unk_3001B40 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     pop {r0}
     ldr r1, off_80405C0 // =unk_3001710 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     pop {r4-r6,pc}
 off_80405A8:    .word dword_86BEB20
 dword_80405AC:    .word 0x600DC80
@@ -1176,11 +1176,11 @@ dead_80405F8:
     pop {r0}
     ldr r1, off_80406F0 // =unk_3001B40 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldr r0, off_80406F4 // =dword_86B7AC0 
     ldr r1, off_80406F8 // =unk_3001710 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     pop {r4-r6,pc}
     .byte 0, 0
     .word 0x86BEB20
@@ -4360,7 +4360,7 @@ chatbox_F6_textcolor:
     add r0, r0, r1
     ldr r1, off_8041DF0 // =unk_3001710 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     b loc_8041DE6
 loc_8041DD6:
     ldrb r0, [r4,#2]
@@ -4369,7 +4369,7 @@ loc_8041DD6:
     ldr r0, [r5,r0]
     ldr r1, off_8041DF0 // =unk_3001710 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
 loc_8041DE6:
     add r4, #3
     mov r0, #1

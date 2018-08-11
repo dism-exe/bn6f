@@ -540,7 +540,7 @@ loc_8026898:
 loc_80268A0:
     ldr r1, off_80269C8 // =unk_2035000 
     ldr r2, off_80269A8 // =0x258 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     mov r2, #0x9b
     ldr r6, off_80269AC // =byte_8027B2C 
 loc_80268AC:
@@ -2589,7 +2589,7 @@ loc_802786A:
 loc_8027876:
     ldr r1, off_8027B24 // =unk_2035000 
     ldr r2, off_8027900 // =0x258 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     push {r4-r6}
     mov r2, #0xe1
     ldr r6, off_8027904 // =byte_8027B4A 
@@ -2789,7 +2789,7 @@ sub_80279FC:
     ldr r0, off_8027A48 // =unk_86E64B4 
     ldr r1, off_8027B24 // =unk_2035000 
     ldr r2, off_8027A4C // =0x258 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     push {r4-r6}
     mov r2, #0x9b
     ldr r6, off_8027A50 // =byte_8027B2C 
@@ -9939,21 +9939,42 @@ dword_802B024:    .word 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0
 decomp_802B060:
     push {lr}
     // a1; src: (*a1)<<1>>1, dest= (u32)a1[8]
-    ldr r0, initRefs // =dword_802B070 
+    ldr r0, initRefs // =initRefs_802B070 
     bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     pop {pc}
     .balign 4, 0x00
-initRefs:    .word dword_802B070
-dword_802B070:    .word 0x886DD59C, 0x6008020, 0x2032000, 0x886DDAD0, 0x2030E60
-    .word 0x2032000, 0x886DD9B4
+initRefs:    .word initRefs_802B070
+initRefs_802B070:    .word comp_86DD59C | 0x80000000
+    .word 0x6008020
+    .word 0x2032000
+    .word 0x86DDAD0 | 0x80000000
+    .word 0x2030E60
+    .word 0x2032000
+    .word 0x86DD9B4 | 0x80000000
 off_802B08C:    .word unk_2035000
     .word unk_2032000
-    .word dword_86DDB24
+    .word 0x86DDB24
     .word unk_3001A80
-    .word 0x20, 0x86C9D6C, 0x30016B0, 0x20, 0x886C9BD4, 0x6016C80
-    .word 0x2032000, 0x886C9D38, 0x6016E00, 0x2032000, 0x886DDB44, 0x6016E40
-    .word 0x2032000, 0x886DDB7C, 0x6016E80, 0x2032000, 0x886D6974, 0x2030860
-    .word 0x2032000, 0x0
+    .word 0x20
+    .word 0x86C9D6C
+    .word 0x30016B0
+    .word 0x20
+    .word 0x86C9BD4 | 0x80000000
+    .word 0x6016C80
+    .word 0x2032000
+    .word 0x86C9D38 | 0x80000000
+    .word 0x6016E00
+    .word 0x2032000
+    .word 0x86DDB44 | 0x80000000
+    .word 0x6016E40
+    .word 0x2032000
+    .word 0x86DDB7C | 0x80000000
+    .word 0x6016E80
+    .word 0x2032000
+    .word 0x86D6974 | 0x80000000
+    .word 0x2030860
+    .word 0x2032000
+    .word 0x0
 .endfunc // decomp_802B060
 
 .func
@@ -12086,7 +12107,7 @@ sub_802C34E:
     ldr r1, off_802C440 // =unk_2034B30 
     mov r2, #0x36 
     lsl r2, r2, #4
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldrb r0, [r7,#0x4] // (dword_20364C4 - 0x20364c0)
     ldr r7, off_802C3F8 // =off_802C3FC 
     mov r1, #0xc
@@ -19328,13 +19349,13 @@ startScreen_initGfx_802FCC0:
     push {r4-r7,lr}
     bl sub_80017AA
     // initRefs
-    ldr r0, off_802FCD4 // =dword_802FCD8 
+    ldr r0, off_802FCD4 // =initRefs_802FCD8 
     bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     bl sub_800183C
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_802FCD4:    .word dword_802FCD8
-dword_802FCD8:    .word 0x887F36A0, 0x6013000, 0x2013A00, 0x87F40F4, 0x3001610
+off_802FCD4:    .word initRefs_802FCD8
+initRefs_802FCD8:    .word 0x887F36A0, 0x6013000, 0x2013A00, 0x87F40F4, 0x3001610
     .word 0xA0, 0x887F3370, 0x6010020, 0x2013A00, 0x87F3620
     .word 0x3001590, 0x80, 0x887F4394, 0x6000000, 0x2013A00
     .word 0x87F4194, 0x3001960, 0x1C0, 0x86A48C0, 0x6012800
@@ -19435,7 +19456,7 @@ objRender_802FE0C:
     ldr r0, off_802FE1C // =dword_3001D70 
     ldr r1, dword_802FE20 // =0x7000000 
     ldr r2, off_802FE24 // =0x400 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     pop {pc}
     .balign 4, 0x00
 off_802FE1C:    .word dword_3001D70
@@ -20348,7 +20369,7 @@ loc_8030472:
     lsl r2, r2, #5
     add r0, #4
     ldr r1, off_80304E0 // =word_3001960 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     mov r0, #0
     ldr r7, [r5,#0x14] // (dword_200BE84 - 0x200be70)
     add r6, r7, #0
@@ -20364,7 +20385,7 @@ loc_8030492:
     add r1, r1, r2
     ldr r2, [r7]
     lsl r2, r2, #2
-    bl sub_8000950
+    bl CpuFastSet_8000950
     add r7, #0xc
     pop {r0,r6}
     add r0, #1
@@ -20416,7 +20437,7 @@ loc_80304FC:
     ldr r1, [r5,#4]
     ldr r2, [r7]
     lsl r2, r2, #2
-    bl sub_8000950
+    bl CpuFastSet_8000950
     ldr r0, [r5,#8]
     // dest
     ldr r1, src // =unk_2034A00 
@@ -20433,7 +20454,7 @@ loc_80304FC:
     ldrb r3, [r3,#1]
     mul r2, r3
     lsl r2, r2, #1
-    bl sub_8000950
+    bl CpuFastSet_8000950
 locret_803053A:
     pop {r4-r7,pc}
 src:    .word unk_2034A00
@@ -25394,7 +25415,7 @@ loc_8033E5E:
     add r0, r0, r2
     ldr r1, off_8033ED4 // =unk_30016D0 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
 loc_8033E6A:
     ldrh r0, [r5,#8]
     bl sub_8000C00
@@ -25480,7 +25501,7 @@ loc_8033EFC:
     ldr r0, off_8033F44 // =dword_86BEAE0 
     ldr r1, off_8033F48 // =unk_3001B20 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     mov r0, #0x1e
     // j
     sub r0, r0, r4
@@ -25980,7 +26001,7 @@ sub_80342EC:
 decompJackInAnimationGfx_8034314:
     push {r4-r7,lr}
     // initRefs
-    ldr r0, off_8034334 // =dword_8034338 
+    ldr r0, off_8034334 // =initRefs_8034338 
     bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     ldr r3, off_80343FC // =off_8034400 
     mov r0, #0
@@ -25993,9 +26014,9 @@ decompJackInAnimationGfx_8034314:
     bl sub_80465A0 // (void *a1) -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_8034334:    .word dword_8034338
-    // src: x<<1>>1 = 86c23a0
-dword_8034338:    .word 0x886C23A0
+off_8034334:    .word initRefs_8034338
+    // src: x<<1>>1 = x & ~0x80000000 = 86c23a0
+initRefs_8034338:    .word 0x886C23A0
     .word 0x6000020
     .word word_2013A00
     .word 0x886C2E2C
@@ -31835,7 +31856,7 @@ sub_8038630:
 
     bl sub_8005F6C
     bl sub_80027C4
-    bl sub_80386CC
+    bl initGfx_80386CC
     mov r0, #0x63 
     bl sub_80005F2
     mov r0, #8
@@ -31904,17 +31925,17 @@ off_80386C8:    .word 0x40
 
 .func
 .thumb_func
-sub_80386CC:
+initGfx_80386CC:
     push {r4-r7,lr}
     bl sub_80017AA
     bl sub_800183C
     // initRefs
-    ldr r0, off_80386E0 // =dword_80386E4 
+    ldr r0, off_80386E0 // =initRefs_80386E4 
     bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     pop {r4-r7,pc}
     .byte 0, 0
-off_80386E0:    .word dword_80386E4
-dword_80386E4:    .word 0x0
+off_80386E0:    .word initRefs_80386E4
+initRefs_80386E4:    .word 0x0
 dword_80386E8:    .word 0x6, 0x106, 0x206, 0x306, 0x406, 0xFFFFFFFF, 0x42824280
     .word 0x42864284, 0x428A4288, 0x428E428C, 0x42924290, 0x42964294, 0x429A4298, 0x429E429C
     .word 0x42A242A0, 0x42A642A4, 0x42AA42A8, 0x428142AC, 0x42854283, 0x42894287, 0x428D428B
@@ -31955,7 +31976,7 @@ dword_8038A3C:    .word 0x8, 0x3001B60, 0xFF0B000C, 0x80004210, 0x3, 0x0
     .word 0x8, 0x3001750, 0xFF0C010C, 0x80004210, 0x3, 0x0
 dword_8038A6C:    .word 0x8, 0x3001B60, 0xFF0B000C, 0x80000000, 0x3, 0x0
 dword_8038A84:    .word 0x8, 0x3001750, 0xFF0C010C, 0x80000000, 0x3, 0x0
-.endfunc // sub_80386CC
+.endfunc // initGfx_80386CC
 
 .func
 .thumb_func
@@ -32022,7 +32043,7 @@ sub_8038B04:
 
     bl sub_8005F6C
     bl sub_80027C4
-    bl sub_8038F30
+    bl decomp_initGfx_8038F30 // () -> void
     bl sub_8038F74
     bl sub_80468BA
     bl sub_8046664 // () -> void
@@ -32539,18 +32560,19 @@ off_8038F2C:    .word 0x40
 
 .func
 .thumb_func
-sub_8038F30:
+// () -> void
+decomp_initGfx_8038F30:
     push {lr}
     // initRefs
-    ldr r0, off_8038F3C // =dword_8038F40 
+    ldr r0, off_8038F3C // =initRefs_8038F40 
     bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     pop {pc}
     .balign 4, 0x00
-off_8038F3C:    .word dword_8038F40
-dword_8038F40:    .word 0x86BEAE0, 0x30019E0, 0x20, 0x887E4500, 0x6004000
+off_8038F3C:    .word initRefs_8038F40
+initRefs_8038F40:    .word 0x86BEAE0, 0x30019E0, 0x20, 0x887E4500, 0x6004000
     .word 0x2013A00, 0x87E4FE0, 0x30019A0, 0x40, 0x887E5020
     .word 0x2018A00, 0x2013A00, 0x0
-.endfunc // sub_8038F30
+.endfunc // decomp_initGfx_8038F30
 
 .func
 .thumb_func
@@ -32942,7 +32964,7 @@ sub_80395E4:
     bl sub_8005F40
 .endfunc // sub_80395E4
 
-    bl sub_803B216
+    bl initGfx_803B216
     bl sub_803BEC0
     bl sub_803BA28
     mov r0, #0x22 
@@ -33014,7 +33036,7 @@ sub_8039694:
     mov r0, #8
     mov r1, #0x10
     bl engine_setScreeneffect
-    bl sub_803B216
+    bl initGfx_803B216
     bl sub_803C2EC
     bl sub_8046664 // () -> void
     bl chatbox_8040818
@@ -34538,7 +34560,7 @@ sub_803A25C:
     ldr r0, off_803A29C // =byte_87E672C 
     ldr r1, off_803A2A0 // =unk_3001AE0 
     mov r2, #0x20 
-    bl sub_8000950
+    bl CpuFastSet_8000950
     pop {r4-r7,pc}
     .balign 4, 0x00
 dword_803A298:    .word 0x1F40
@@ -36748,13 +36770,13 @@ loc_803B210:
 
 .func
 .thumb_func
-sub_803B216:
+initGfx_803B216:
     push {r4-r7,lr}
     bl sub_80017AA
     bl sub_800183C
     bl sub_8001850
     // initRefs
-    ldr r0, off_803B240 // =dword_803B244 
+    ldr r0, off_803B240 // =initRefs_803B244 
     bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
     mov r0, #0
     bl sub_803B91C
@@ -36764,24 +36786,16 @@ sub_803B216:
     bl sub_803B91C
     pop {r4-r7,pc}
     .byte 0, 0
-off_803B240:    .word dword_803B244
-dword_803B244:    .word 0x887E4500, 0x6004000, 0x2027A00, 0x884E0C4C, 0x6000020
-    .word 0x2027A00, 0x884E0C4C, 0x0
-    .word unk_2028200
-    .word 0x887E5020, 0x0
-    .word unk_2028A00
-    .word 0x884E0C4C, 0x0
-    .word unk_2029200
-    .word dword_87E4FE0
-    .word unk_30019A0
-    .word 0x40
-    .word 0x84E0554, 0x3001960, 0x40, 0x884E0C4C, 0x6011000
-    .word 0x2027A00, 0x86A4D40, 0x6010020, 0x240, 0x86A4A40
-    .word 0x6010300, 0x100, 0x86A5500, 0x3001550, 0x20
-    .word 0x87E5000, 0x30016D0, 0x20, 0x884E0C4C, 0x0
-    .word unk_2032A00
-    .word 0x0
-.endfunc // sub_803B216
+off_803B240:    .word initRefs_803B244
+initRefs_803B244:    .word 0x887E4500, 0x6004000, 0x2027A00, 0x884E0C4C, 0x6000020
+    .word 0x2027A00, 0x884E0C4C, 0x0, 0x2028200, 0x887E5020
+    .word 0x0, 0x2028A00, 0x884E0C4C, 0x0, 0x2029200
+    .word 0x87E4FE0, 0x30019A0, 0x40, 0x84E0554, 0x3001960
+    .word 0x40, 0x884E0C4C, 0x6011000, 0x2027A00, 0x86A4D40
+    .word 0x6010020, 0x240, 0x86A4A40, 0x6010300, 0x100
+    .word 0x86A5500, 0x3001550, 0x20, 0x87E5000, 0x30016D0
+    .word 0x20, 0x884E0C4C, 0x0, 0x2032A00, 0x0
+.endfunc // initGfx_803B216
 
 .func
 .thumb_func
@@ -43786,7 +43800,7 @@ loc_803F0C2:
     mul r2, r4
     add r1, r1, r2
     add r2, r6, #0
-    bl sub_8000950
+    bl CpuFastSet_8000950
     add r4, #1
     mov r1, #7
     and r4, r1

@@ -603,7 +603,7 @@
 // .global copyMemory // (void *src, void* dest, int size) -> void
 // .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
 // .global CpuSet_800093C
-// .global sub_8000950
+// .global CpuFastSet_8000950
 // .global initMemblockToByte
 // .global sub_800096C
 // .global sub_800098C
@@ -1373,7 +1373,6 @@
 .equ unk_30016F0, 0x30016F0
 .equ dword_3001950, 0x3001950
 .equ word_3001960, 0x3001960
-.equ unk_30019A0, 0x30019A0
 .equ unk_30019C0, 0x30019C0
 .equ unk_3001A80, 0x3001A80
 .equ unk_3001AA0, 0x3001AA0
@@ -1590,7 +1589,7 @@
 .equ unk_86C22E0, 0x86C22E0
 .equ dword_86C41B4, 0x86C41B4
 .equ unk_86CB360, 0x86CB360
-.equ dword_86DDB24, 0x86DDB24
+.equ comp_86DD59C, 0x86DD59C
 .equ dword_86E1238, 0x86E1238
 .equ dword_86E2E98, 0x86E2E98
 .equ dword_86E3598, 0x86E3598
@@ -1661,7 +1660,6 @@
 .equ aF_0, 0x873811C
 .equ dword_873B9E0, 0x873B9E0
 .equ dword_87E36F8, 0x87E36F8
-.equ dword_87E4FE0, 0x87E4FE0
 .equ dword_87E660C, 0x87E660C
 .equ byte_87E672C, 0x87E672C
 .equ word_87E672E, 0x87E672E
