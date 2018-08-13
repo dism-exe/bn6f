@@ -478,7 +478,7 @@ sub_809A308:
     push {lr}
     // initRefs
     ldr r0, off_809A314 // =dword_809A318 
-    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
     pop {pc}
     .balign 4, 0x00
 off_809A314:    .word dword_809A318
@@ -493,7 +493,7 @@ sub_809A334:
     push {r4-r7,lr}
     // initRefs
     ldr r0, off_809A340 // =dword_809A344 
-    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
     pop {r4-r7,pc}
     .byte 0, 0
 off_809A340:    .word dword_809A344
@@ -1302,7 +1302,7 @@ loc_809AB5A:
     add r0, #0x4c 
     mov r1, sp
     mov r2, #8
-    bl CpuSet_800093C
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
     mov r0, sp
     bl sub_813D41C
     str r4, [r5,#0x78]
@@ -1339,7 +1339,7 @@ loc_809AB92:
     mov r2, #1
     bl dword_8021AEC+2
     ldr r0, off_809AC28 // =dword_809AC2C 
-    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
     mov r0, #0xf
     mov r1, #3
     b loc_809AC06
@@ -8443,10 +8443,13 @@ loc_809F9F4:
     mov r12, r0
     sub sp, sp, #0x10
     mov r5, sp
+    // mem
     mov r0, sp
+    // byteCount
     mov r1, #0x10
+    // byte
     mov r2, #0xff
-    bl initMemblockToByte
+    bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 loc_809FA0C:
     ldrb r0, [r7]
     cmp r0, #0
@@ -8997,10 +9000,13 @@ loc_809FD96:
     ldr r1, [r1,#4]
     mov r2, sp
     push {r0-r2}
+    // mem
     add r0, r2, #0
+    // byteCount
     mov r1, #0x10
+    // byte
     mov r2, #0xff
-    bl initMemblockToByte
+    bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
     pop {r0-r2}
     bl sub_809FA68
     strb r1, [r6,#0x2] // (byte_2000212 - 0x2000210)
@@ -9033,10 +9039,13 @@ sub_809FDE0:
     tst r0, r0
     beq locret_809FE34
     sub sp, sp, #0x10
+    // mem
     mov r0, sp
+    // byteCount
     mov r1, #0x10
+    // byte
     mov r2, #0x20 
-    bl initMemblockToByte
+    bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
     mov r0, sp
     ldrh r1, [r6,#0x6] // (word_2000216 - 0x2000210)
     bl sub_8000E3A

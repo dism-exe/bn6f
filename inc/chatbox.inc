@@ -69,10 +69,10 @@
 // .global sub_8000784
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8000900 // (int a1, int a2) -> void
-// .global copyMemory // (void *src, void* dest, int size) -> void
-// .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
-// .global CpuSet_800093C
-// .global CpuFastSet_8000950
+// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 // .global loc_8000AC8
 // .global sub_8000C00
 // .global sub_8000C5C

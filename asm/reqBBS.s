@@ -730,10 +730,13 @@ reqBBS_813E5DC:
 .thumb_func
 reqBBS_813E616:
     push {lr}
+    // mem
     ldr r0, off_813E6B4 // =unk_2001400 
-    ldr r1, off_813E6B8 // =0x200 
+    // byteCount
+    ldr r1, byteCount // =0x200 
+    // byte
     mov r2, #0x40 
-    bl initMemblockToByte
+    bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
     // memBlock
     ldr r0, off_813E6BC // =unk_2000FC0 
     // numWords
@@ -754,10 +757,13 @@ reqBBS_dead_813E634:
     add r4, r0, #0
     lsl r0, r0, #6
     ldr r1, off_813E6C4 // =unk_2001400 
+    // mem
     add r0, r0, r1
+    // byteCount
     mov r1, #0x40 
+    // byte
     mov r2, #0x40 
-    bl initMemblockToByte
+    bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
     lsl r0, r4, #2
     ldr r1, off_813E6C8 // =unk_2000FC0 
     // memBlock
@@ -806,7 +812,7 @@ off_813E6A8:    .word 0x19A0
 off_813E6AC:    .word unk_2001400
 off_813E6B0:    .word unk_2000FC0
 off_813E6B4:    .word unk_2001400
-off_813E6B8:    .word 0x200
+byteCount:    .word 0x200
 off_813E6BC:    .word unk_2000FC0
 off_813E6C0:    .word unk_2000FF0
 off_813E6C4:    .word unk_2001400
@@ -822,13 +828,13 @@ reqBBS_static_813E6D0:
     bl sub_80017E0
     // initRefs
     ldr r0, off_813E6F8 // =dword_813E6FC 
-    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
     ldrb r0, [r5,#4]
     ldr r1, off_813E754 // =off_813E758 
     lsl r0, r0, #2
     // initRefs
     ldr r0, [r1,r0]
-    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
     bl sub_800183C
     bl sub_8046664 // () -> void
     pop {r5,pc}
@@ -875,10 +881,13 @@ off_813E80C:    .word dword_87E7574
 .thumb_func
 reqBBS_813E834:
     push {r4-r7,lr}
+    // mem
     ldr r0, off_813E88C // =reqBBS_requestEntries_IDs 
+    // byteCount
     mov r1, #0x30 
+    // byte
     mov r2, #0x2f 
-    bl initMemblockToByte
+    bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
     ldr r6, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
     ldr r0, [r6,#0x10]
     ldr r0, [r0]
@@ -974,7 +983,7 @@ reqBBS_813E8CC:
     add r5, r0, r1
     add r0, r7, #0
     mov r1, #0
-    ldr r2, off_813E900 // =word_2013A00 
+    ldr r2, off_813E900 // =decomp_2013A00 
     ldr r3, dword_813E904 // =0x6004000 
     ldr r6, off_813E908 // =dword_86A5D60 
 loc_813E8E0:
@@ -993,7 +1002,7 @@ loc_813E8E0:
     cmp r1, #8
     blt loc_813E8E0
     pop {r4-r7,pc}
-off_813E900:    .word word_2013A00
+off_813E900:    .word decomp_2013A00
 dword_813E904:    .word 0x6004000
 off_813E908:    .word dword_86A5D60
 off_813E90C:    .word reqBBS_requestEntries_IDs
@@ -3026,10 +3035,13 @@ reqBBS_813F9A0:
 .thumb_func
 reqBBS_initMemory_813F9DA:
     push {lr}
+    // mem
     ldr r0, off_813FD84 // =reqBBS_requestEntriesList 
+    // byteCount
     mov r1, #0x80
+    // byte
     mov r2, #0x80
-    bl initMemblockToByte
+    bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
     // memBlock
     ldr r0, off_813FD88 // =reqBBS_numRequestsSent 
     // numWords
@@ -3050,10 +3062,13 @@ reqBBS_dead_initMemory_813F9F8:
     add r4, r0, #0
     lsl r0, r0, #7
     ldr r1, off_813FD90 // =reqBBS_requestEntriesList 
+    // mem
     add r0, r0, r1
+    // byteCount
     mov r1, #0x80
+    // byte
     mov r2, #0x80
-    bl initMemblockToByte
+    bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
     lsl r0, r4, #2
     ldr r1, off_813FD94 // =reqBBS_numRequestsSent 
     // memBlock
@@ -3510,7 +3525,7 @@ reqBBS_813FDA8:
     bl sub_80017E0
     // initRefs
     ldr r0, off_813FDC8 // =dword_813FDCC 
-    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
     bl reqBBS_8140600
     bl sub_800183C
     bl sub_8046664 // () -> void
@@ -3536,10 +3551,13 @@ dword_813FDCC:    .word 0x887EF884, 0x6000200, 0x2017A00, 0x887EFC28, 0x0
 .thumb_func
 reqBBS_813FE54:
     push {r4-r7,lr}
+    // mem
     ldr r0, off_813FEAC // =reqBBS_requestEntries_IDs 
+    // byteCount
     mov r1, #0x30 
+    // byte
     mov r2, #0x2f 
-    bl initMemblockToByte
+    bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
     ldr r6, [r5,#0x28]
     ldr r0, [r6,#0x1c]
     ldr r0, [r0]
@@ -3631,7 +3649,7 @@ reqBBS_renderRequestNames:
     add r5, r0, r1
     add r0, r7, #0
     mov r1, #0
-    ldr r2, off_813FF20 // =word_2013A00 
+    ldr r2, off_813FF20 // =decomp_2013A00 
     ldr r3, dword_813FF24 // =0x6004000 
     ldr r6, off_813FF28 // =dword_86A5D60 
 loc_813FF00:
@@ -3650,7 +3668,7 @@ loc_813FF00:
     cmp r1, #8
     blt loc_813FF00
     pop {r4-r7,pc}
-off_813FF20:    .word word_2013A00
+off_813FF20:    .word decomp_2013A00
 dword_813FF24:    .word 0x6004000
 off_813FF28:    .word dword_86A5D60
 off_813FF2C:    .word reqBBS_requestEntries_IDs

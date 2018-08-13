@@ -227,12 +227,12 @@
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8000900 // (int a1, int a2) -> void
-// .global CpuSet_800093C
-// .global CpuFastSet_8000950
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 // .global sub_800098C
 // .global loc_8000AC4
 // .global loc_8000AC8
-// .global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+// .global decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C

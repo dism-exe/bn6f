@@ -126,8 +126,8 @@
 
 .include "asm00.inc"
 // .global sound_play // () -> void
-// .global copyMemory // (void *src, void* dest, int size) -> void
-// .global CpuSet_800093C
+// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001172
 // .global calcAngle_800117C

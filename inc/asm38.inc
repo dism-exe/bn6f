@@ -29,7 +29,7 @@
 // .global sub_80005AC
 // .global sub_80005C4
 // .global sub_80008B4
-// .global copyMemory // (void *src, void* dest, int size) -> void
+// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global sub_800098C
 // .global loc_8000AC8
 // .global sub_8000C00

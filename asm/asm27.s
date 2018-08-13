@@ -6,7 +6,7 @@ sub_80946C4:
     push {r4-r7,lr}
     // initRefs
     ldr r0, off_80946D0 // =dword_80946D4 
-    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
     mov r0, #0
     pop {r4-r7,pc}
 off_80946D0:    .word dword_80946D4
@@ -81,9 +81,9 @@ loc_8094752:
     mul r1, r6
     // dest
     add r1, r1, r7
-    // mode
+    // numHalfwords
     mov r2, #0x64 
-    bl CpuSet_800092A // (void *src, void *dest, int mode) -> void
+    bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
     add r4, #1
     cmp r4, #0x22 
     blt loc_8094752

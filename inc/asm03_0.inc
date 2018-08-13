@@ -600,16 +600,16 @@
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8000900 // (int a1, int a2) -> void
-// .global copyMemory // (void *src, void* dest, int size) -> void
-// .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
-// .global CpuSet_800093C
-// .global CpuFastSet_8000950
-// .global initMemblockToByte
-// .global sub_800096C
+// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+// .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+// .global CpuSet_800096C // (void *src, void *dest, int mode) -> void
 // .global sub_800098C
 // .global loc_8000AC4
 // .global loc_8000AC8
-// .global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+// .global decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
@@ -1188,7 +1188,7 @@
 .equ byte_2013946, 0x2013946
 .equ byte_2013947, 0x2013947
 .equ dword_2013954, 0x2013954
-.equ word_2013A00, 0x2013A00
+.equ decomp_2013A00, 0x2013A00
 .equ unk_2017A00, 0x2017A00
 .equ unk_2017A04, 0x2017A04
 .equ unk_2018A00, 0x2018A00
@@ -1587,6 +1587,7 @@
 .equ dword_86C1DC8, 0x86C1DC8
 .equ unk_86C1F80, 0x86C1F80
 .equ unk_86C22E0, 0x86C22E0
+.equ compFile_86C23A0, 0x86C23A0
 .equ dword_86C41B4, 0x86C41B4
 .equ unk_86CB360, 0x86CB360
 .equ comp_86DD59C, 0x86DD59C

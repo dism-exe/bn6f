@@ -83,10 +83,10 @@
 // .global sound_play // () -> void
 // .global sub_80008B4
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global copyMemory // (void *src, void* dest, int size) -> void
-// .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
-// .global CpuSet_800093C
-// .global initMemblockToByte
+// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010BE
 // .global sub_800151C

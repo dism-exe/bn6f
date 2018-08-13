@@ -19,12 +19,12 @@
 .global sub_80008C0
 .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 .global sub_8000900 // (int a1, int a2) -> void
-.global copyMemory // (void *src, void* dest, int size) -> void
-.global CpuSet_800092A // (void *src, void *dest, int mode) -> void
-.global CpuSet_800093C
-.global CpuFastSet_8000950
-.global initMemblockToByte
-.global sub_800096C
+.global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+.global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
+.global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+.global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+.global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+.global CpuSet_800096C // (void *src, void *dest, int mode) -> void
 .global sub_800098C
 .global sub_80009AC
 .global sub_8000A3C
@@ -32,7 +32,7 @@
 .global loc_8000AC4
 .global loc_8000AC8
 .global loc_8000ACA
-.global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+.global decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
 .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 .global sub_8000C00
 .global sub_8000C5C
@@ -719,7 +719,7 @@
 // .global sub_8144048
 // .global sub_81440D8
 // .global sub_8144EEC
-// .global SWI_CpuFastSet // (void *src, void *dest, int mode) -> void
+// .global SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
 // .global SWI_CpuSet // (void *src, void *dest, int mode) -> void
 // .global SWI_Div
 // .global SWI_LZ77UnCompReadNormalWrite16bit

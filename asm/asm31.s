@@ -149704,7 +149704,7 @@ loc_8102DDC:
     add r2, r4, #0
 loc_8102E14:
     add r4, r2, #0
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     add r6, r6, r4
 loc_8102E1C:
     add r0, r6, #0
@@ -149727,7 +149727,7 @@ loc_8102E2E:
     add r2, r6, #0
 loc_8102E40:
     str r2, [sp,#0xc]
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     ldr r0, [sp,#0xc]
 loc_8102E48:
     add sp, sp, #0x5c

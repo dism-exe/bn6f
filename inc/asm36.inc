@@ -139,11 +139,11 @@
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8000900 // (int a1, int a2) -> void
-// .global copyMemory // (void *src, void* dest, int size) -> void
-// .global CpuSet_800093C
-// .global CpuFastSet_8000950
+// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 // .global loc_8000AC8
-// .global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+// .global decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
 // .global sub_8000C00
 // .global sub_8000D84
 // .global sub_8000E28
@@ -337,7 +337,7 @@
 .equ byte_200A290, 0x200A290
 .equ byte_200BC50, 0x200BC50
 .equ unk_2011CE0, 0x2011CE0
-.equ word_2013A00, 0x2013A00
+.equ decomp_2013A00, 0x2013A00
 .equ unk_2014000, 0x2014000
 .equ unk_2014A00, 0x2014A00
 .equ unk_2016A00, 0x2016A00

@@ -51,7 +51,7 @@
 .include "asm00.inc"
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8000900 // (int a1, int a2) -> void
-// .global CpuSet_800093C
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
 // .global sub_800A0D6
 
 

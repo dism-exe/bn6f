@@ -2029,7 +2029,7 @@ dword_81D72B4:    .word 0x3006DB8
     .word 0xBC41BC08, 0x37341C1F, 0x31016839, 0x629E6039, 0x62D83003
     .word 0xBDFE1C30
     .word 0x8043B54
-    .word copyMemory+1
+    .word copyBytes+1
     .word 0x200DD20
     push {r3,r7,lr}
     push {r0}
@@ -2098,7 +2098,7 @@ dword_81D738C:    .word 0x3006E90
     .word 0x2001186, 0x200119E, 0x20007D6, 0x200083A, 0x20018F4
     .word 0x2001950, 0x20019AC, 0x2001A08, 0x2001A64, 0x2001AC0
     .word 0x200AFA0
-    .word copyMemory+1
+    .word copyBytes+1
     .word 0x200A220
     add r0, #4
     mov pc, lr

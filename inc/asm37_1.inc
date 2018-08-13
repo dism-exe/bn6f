@@ -132,7 +132,7 @@
 .global sub_8149644
 .global sub_8149718
 .global sub_814A828
-.global SWI_CpuFastSet // (void *src, void *dest, int mode) -> void
+.global SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
 .global SWI_CpuSet // (void *src, void *dest, int mode) -> void
 .global SWI_Div
 .global SWI_LZ77UnCompReadNormalWrite16bit
@@ -172,8 +172,8 @@
 .include "asm00.inc"
 // .global sound_play // () -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global CpuSet_800093C
-// .global initMemblockToByte
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global loc_8000AC8
 // .global sub_8000E3A
 // .global getPETNaviSelect // () -> u8

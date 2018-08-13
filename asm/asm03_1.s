@@ -2469,7 +2469,7 @@ sub_804747C:
     bl sub_8046664 // () -> void
     // initRefs
     ldr r0, off_8047490 // =off_8047494 
-    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
     pop {r5,pc}
     .byte 0, 0
 off_8047490:    .word off_8047494
@@ -2512,7 +2512,7 @@ sub_804754C:
     lsl r2, r2, #4
     add r1, r1, r2
     ldr r2, dword_804757C // =0x800 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     ldr r0, [r5,#0x24]
     mov r1, #0x10
     ldr r2, off_8047580 // =unk_2015E00 
@@ -2610,7 +2610,7 @@ sub_804760E:
     mul r4, r0
     push {r4,r5}
     ldr r0, off_804764C // =dword_873D9FC 
-    ldr r2, off_8047650 // =word_2013A00 
+    ldr r2, off_8047650 // =decomp_2013A00 
     ldr r3, dword_8047654 // =0x6008400 
     add r2, r2, r4
     add r3, r3, r4
@@ -2636,7 +2636,7 @@ sub_804760E:
     pop {r0,r5,r7,pc}
     .balign 4, 0x00
 off_804764C:    .word dword_873D9FC
-off_8047650:    .word word_2013A00
+off_8047650:    .word decomp_2013A00
 dword_8047654:    .word 0x6008400
 off_8047658:    .word unk_2013C00
 dword_804765C:    .word 0x6008600
@@ -2650,7 +2650,7 @@ sub_8047664:
     mul r4, r0
     push {r1-r4,r7}
     ldr r0, off_80476E0 // =dword_80476E4 
-    ldr r2, off_80476EC // =word_2013A00 
+    ldr r2, off_80476EC // =decomp_2013A00 
     ldr r3, dword_80476F0 // =0x6008400 
     add r2, r2, r4
     add r3, r3, r4
@@ -2708,7 +2708,7 @@ loc_80476C4:
     .byte 0, 0
 off_80476E0:    .word dword_80476E4
 dword_80476E4:    .word 0x86EA94C, 0x86EB354
-off_80476EC:    .word word_2013A00
+off_80476EC:    .word decomp_2013A00
 dword_80476F0:    .word 0x6008400
 off_80476F4:    .word a8Bdfhjlnprtvxz
 off_80476F8:    .word unk_2013C00
@@ -2725,7 +2725,7 @@ sub_8047708:
     push {r4,r5}
     ldr r0, off_8047748 // =dword_873EA50 
     lsr r1, r1, #2
-    ldr r2, off_804774C // =word_2013A00 
+    ldr r2, off_804774C // =decomp_2013A00 
     ldr r3, dword_8047750 // =0x6008400 
     add r2, r2, r4
     add r3, r3, r4
@@ -2751,7 +2751,7 @@ sub_8047708:
     pop {r0,r5,r7,pc}
     .balign 4, 0x00
 off_8047748:    .word dword_873EA50
-off_804774C:    .word word_2013A00
+off_804774C:    .word decomp_2013A00
 dword_8047750:    .word 0x6008400
 off_8047754:    .word unk_2013C00
 dword_8047758:    .word 0x6008600
@@ -2765,7 +2765,7 @@ sub_8047760:
     mul r4, r0
     ldr r0, [r5,#0x24]
     mov r1, #0x10
-    ldr r2, off_8047784 // =word_2013A00 
+    ldr r2, off_8047784 // =decomp_2013A00 
     ldr r3, dword_8047788 // =0x6008400 
     add r2, r2, r4
     add r3, r3, r4
@@ -2778,7 +2778,7 @@ sub_8047760:
 
     pop {r0,r5,r7,pc}
     .balign 4, 0x00
-off_8047784:    .word word_2013A00
+off_8047784:    .word decomp_2013A00
 dword_8047788:    .word 0x6008400
 off_804778C:    .word dword_86A5D60
 .func
@@ -3530,10 +3530,13 @@ locret_8047CEA:
 .thumb_func
 sub_8047CEC:
     push {lr}
+    // src
     ldr r0, off_8047D74 // =unk_80469F0 
+    // dest
     ldr r1, off_8047D6C // =unk_202F800 
-    ldr r2, off_8047D70 // =0x168 
-    bl CpuSet_800093C
+    // wordCount
+    ldr r2, wordCount // =0x168 
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
     pop {pc}
 .endfunc // sub_8047CEC
 
@@ -3602,7 +3605,7 @@ locret_8047D68:
     pop {r0-r7,pc}
     .balign 4, 0x00
 off_8047D6C:    .word unk_202F800
-off_8047D70:    .word 0x168
+wordCount:    .word 0x168
 off_8047D74:    .word unk_80469F0
 dword_8047D78:    .word 0x3000
 dword_8047D7C:    .word 0x4000
@@ -3844,7 +3847,7 @@ loc_8048C7C:
     beq loc_8048C90
     push {r0-r3}
     mov r2, #8
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     pop {r0-r3}
 loc_8048C90:
     add r0, #8
@@ -3951,7 +3954,7 @@ loc_8048D30:
     add r0, r6, #0
     add r1, r7, #0
     mov r2, #8
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     pop {r0,r1,r6,r7}
     b loc_8048D4E
 loc_8048D46:
@@ -5644,7 +5647,7 @@ sub_8049A18:
     bl sub_8001850
     // initRefs
     ldr r0, off_8049A50 // =dword_8049A54 
-    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
     mov r3, r10
     ldr r3, [r3,#8]
     ldrh r0, [r3,#0x16]
@@ -5680,7 +5683,7 @@ sub_8049AAC:
     bl sub_8001850
     // initRefs
     ldr r0, off_8049AD4 // =dword_8049AD8 
-    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
     mov r0, #4
     bl sub_803B91C
     mov r0, #5
@@ -5738,12 +5741,15 @@ loc_8049BC4:
     lsr r7, r0, #4
     ldr r0, off_8049C80 // =dword_8049C84 
     lsl r1, r6, #2
+    // src
     ldr r0, [r0,r1]
     ldr r1, off_8049C6C // =off_8049C70 
     lsl r2, r4, #2
+    // dest
     ldr r1, [r1,r2]
+    // wordCount
     mov r2, #0x20 
-    bl CpuSet_800093C
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
     ldr r3, off_8049C64 // =dword_8049C68 
     ldrb r3, [r3,r4]
     lsl r3, r3, #0xc
@@ -5812,13 +5818,13 @@ sub_8049CBC:
     add r1, r5, #0
     add r1, #0x30 
     mov r2, #0x20 
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     mov r0, #0x28 
     add r0, r0, r7
     add r1, r5, #0
     add r1, #0x90
     mov r2, #0x20 
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     mov r0, #0x10
     mov r1, #0x30 
     bl sub_803C132
@@ -5849,7 +5855,7 @@ sub_8049CF8:
     mov r3, #0xe5
     lsl r3, r3, #8
     orr r2, r3
-    bl sub_800096C
+    bl CpuSet_800096C // (void *src, void *dest, int mode) -> void
     add r0, r5, #0
     add r0, #8
     mov r1, #0xe6
@@ -5861,7 +5867,7 @@ sub_8049CF8:
     mov r3, #0xe5
     lsl r3, r3, #8
     orr r2, r3
-    bl sub_800096C
+    bl CpuSet_800096C // (void *src, void *dest, int mode) -> void
     add r0, r5, #0
     add r0, #0x28 
     mov r1, #0xe6
@@ -5896,13 +5902,13 @@ sub_8049D4A:
     ldr r1, off_8049D94 // =word_2001800 
     add r1, #8
     mov r2, #0x20 
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     ldr r0, off_8049D6C // =byte_200A290 
     add r0, #0xd0
     ldr r1, off_8049D94 // =word_2001800 
     add r1, #0x28 
     mov r2, #0x20 
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_8049D6C:    .word byte_200A290
@@ -6346,7 +6352,7 @@ sub_804A0AC:
     bl sub_8001850
     // initRefs
     ldr r0, off_804A0E4 // =dword_804A0E8 
-    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
     mov r3, r10
     ldr r3, [r3,#8]
     ldrh r0, [r3,#0x16]
@@ -6387,7 +6393,7 @@ sub_804A14C:
     add r1, r5, #0
     add r1, #0x30 
     mov r2, #0x20 
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     mov r0, #0x10
     mov r1, #0x30 
     bl sub_803C132
@@ -6417,7 +6423,7 @@ sub_804A17A:
     mov r3, #0xe5
     lsl r3, r3, #8
     orr r2, r3
-    bl sub_800096C
+    bl CpuSet_800096C // (void *src, void *dest, int mode) -> void
     mov r0, #0
     add r1, r5, #0
     add r1, #0
@@ -6433,7 +6439,7 @@ sub_804A17A:
     mov r3, #0xe5
     lsl r3, r3, #8
     orr r2, r3
-    bl sub_800096C
+    bl CpuSet_800096C // (void *src, void *dest, int mode) -> void
     mov r0, #1
     add r1, r5, #0
     add r1, #0x20 
@@ -6458,7 +6464,7 @@ sub_804A1D0:
     mov r3, #0xe5
     lsl r3, r3, #8
     orr r2, r3
-    bl sub_800096C
+    bl CpuSet_800096C // (void *src, void *dest, int mode) -> void
     add r0, r7, #0
     add r1, r5, #0
     add r1, #0x40 
@@ -6516,7 +6522,7 @@ sub_804A230:
     ldr r2, off_804A260 // =unk_2001850 
     add r1, r1, r2
     mov r2, #0x20 
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_804A248:    .word byte_200A290
@@ -6981,10 +6987,10 @@ loc_804A63C:
     str r0, [r4,r6]
     // initRefs
     ldr r0, off_804A6DC // =unk_20096E0 
-    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
     // initRefs
     ldr r0, off_804A6E0 // =dword_804A6E4 
-    bl decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
     ldr r7, [sp]
     // j
     mov r0, #0
@@ -7034,13 +7040,13 @@ dword_804A6E4:    .word 0x886C8054, 0x6000020, 0x2013A00, 0x86B7AE0, 0x6004000
     .word 0x2024A20, 0x2013A00, 0x886C73D8, 0x2026A20, 0x2013A00
     .word 0x886CE8AC
 off_804A79C:    .word unk_201CA20
-    .word word_2013A00
+    .word decomp_2013A00
     .word 0x886C5190
 off_804A7A8:    .word unk_2020A20
-    .word word_2013A00
+    .word decomp_2013A00
     .word 0x886C526C
 off_804A7B4:    .word unk_2035C8C
-    .word word_2013A00
+    .word decomp_2013A00
     .byte 0, 0, 0, 0
 .func
 .thumb_func
@@ -7563,7 +7569,7 @@ loc_804AB98:
     mov r2, #1
     strh r2, [r3,#0x14]
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     ldrh r0, [r5,#0x28]
     add r0, #1
     strh r0, [r5,#0x28]
@@ -7623,7 +7629,7 @@ loc_804AC1E:
     ldr r1, off_804ACB4 // =word_202A020 
     add r1, r1, r4
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     ldrh r0, [r5,#0x1e]
     bl sub_804ACC8
     strb r0, [r5,#0x17]
@@ -7656,7 +7662,7 @@ loc_804AC60:
     add r0, r7, #0
     add r1, r1, r4
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     ldrh r0, [r5,#0x1e]
     bl sub_804ACC8
     strb r0, [r5,#0x17]
@@ -7877,7 +7883,7 @@ sub_804ADE0:
     beq loc_804ADF8
     mov r3, #0x20 
     mul r2, r3
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     mov r1, #0x20 
     mul r1, r6
     add r4, r4, r1

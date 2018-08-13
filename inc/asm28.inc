@@ -81,9 +81,9 @@
 // .global sound_bgmusic_play // (int a1) -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8000900 // (int a1, int a2) -> void
-// .global CpuSet_800093C
-// .global initMemblockToByte
-// .global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+// .global decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
 // .global sub_8000E3A
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001172

@@ -59,9 +59,9 @@
 // .global sound_play // () -> void
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global initMemblockToByte
+// .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global loc_8000AC8
-// .global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+// .global decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_800151C
 // .global sub_80015FC
@@ -130,7 +130,7 @@
 .equ reqBBS_numRequestsSent, 0x20065B0
 .equ byte_2008450, 0x2008450
 .equ sChatbox, 0x2009CD0
-.equ word_2013A00, 0x2013A00
+.equ decomp_2013A00, 0x2013A00
 .equ unk_2018200, 0x2018200
 .equ reqBBS_tile_data, 0x2018204
 .equ unk_2018A00, 0x2018A00

@@ -78,9 +78,9 @@ chatbox_803FD78:
     ldr r1, [r1,#0x2c] // Toolkit.chatbox
     // dest
     add r1, #0x68 // ChatBoxPropreties.unk_68
-    // mode
+    // numHalfwords
     mov r2, #8
-    bl CpuSet_800092A // (void *src, void *dest, int mode) -> void
+    bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
     pop {r4,r5,pc}
     .byte 0, 0
 off_803FD90:    .word dword_803FD94
@@ -109,13 +109,13 @@ loc_803FDA8:
     ldr r0, off_803FDFC // =dword_86BFE20 
     ldr r1, off_803FE00 // =unk_3001B40 
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     b loc_803FDD0
 loc_803FDC6:
     ldr r0, off_803FE04 // =dword_86BFE20+32 
     ldr r1, off_803FE00 // =unk_3001B40 
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 loc_803FDD0:
     // src
     ldr r0, off_803FDE0 // =dword_803FDE4 
@@ -123,9 +123,9 @@ loc_803FDD0:
     ldr r1, [r1,#0x2c] // Toolkit.chatbox
     // dest
     add r1, #0x68 
-    // mode
+    // numHalfwords
     mov r2, #8
-    bl CpuSet_800092A // (void *src, void *dest, int mode) -> void
+    bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
     pop {r4,r5,pc}
 off_803FDE0:    .word dword_803FDE4
 dword_803FDE4:    .word 0x83007E, 0x81007F
@@ -163,13 +163,13 @@ loc_803FE14:
     ldr r0, off_803FE68 // =dword_86C0900 
     ldr r1, off_803FE6C // =unk_3001B40 
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     b loc_803FE3C
 loc_803FE32:
     ldr r0, off_803FE70 // =dword_86C0900+32 
     ldr r1, off_803FE6C // =unk_3001B40 
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 loc_803FE3C:
     // src
     ldr r0, off_803FE4C // =dword_803FE50 
@@ -177,9 +177,9 @@ loc_803FE3C:
     ldr r1, [r1,#0x2c]
     // dest
     add r1, #0x68 
-    // mode
+    // numHalfwords
     mov r2, #8
-    bl CpuSet_800092A // (void *src, void *dest, int mode) -> void
+    bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
     pop {r4,r5,pc}
 off_803FE4C:    .word dword_803FE50
 dword_803FE50:    .word 0x83007E, 0x81007F
@@ -204,7 +204,7 @@ chatbox_803FE74:
     ldr r0, off_803FEAC // =dword_84E0554 
     ldr r1, off_803FEB0 // =unk_3001B40 
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     pop {r4,r5,pc}
     .word 0x803FE94, 0x83007E, 0x81007F
 off_803FE9C:    .word dword_84E0554
@@ -836,9 +836,9 @@ chatbox_runScript:
     add r1, r5, #0
     // dest
     add r1, #0x68 
-    // mode
+    // numHalfwords
     mov r2, #8
-    bl CpuSet_800092A // (void *src, void *dest, int mode) -> void
+    bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
     mov r1, #0xc
     strb r1, [r5,#0x1d] // ChatBoxPropreties.unk_1D
     mov r2, #0x1e
@@ -897,11 +897,11 @@ chatbox_runScript:
     ldr r0, off_804047C // =dword_86BEC80 
     ldr r1, off_8040480 // =unk_3001B40 
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     ldr r0, off_8040484 // =dword_86B7AC0 
     ldr r1, off_8040488 // =unk_3001710 
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     pop {r4-r6,pc}
     .balign 4, 0x00
 off_804046C:    .word dword_86BEB20
@@ -977,9 +977,9 @@ chatbox_reqBBS_80404C0:
     add r1, r5, #0
     // dest
     add r1, #0x68 
-    // mode
+    // numHalfwords
     mov r2, #8
-    bl CpuSet_800092A // (void *src, void *dest, int mode) -> void
+    bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
     mov r1, #0xc
     strb r1, [r5,#0x1d] // ChatBoxPropreties.unk_1D
     mov r2, #0x1e
@@ -1038,11 +1038,11 @@ chatbox_reqBBS_80404C0:
     ldr r0, off_80405B4 // =dword_86BEC80 
     ldr r1, off_80405B8 // =unk_3001B40 
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     pop {r0}
     ldr r1, off_80405C0 // =unk_3001710 
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     pop {r4-r6,pc}
 off_80405A8:    .word dword_86BEB20
 dword_80405AC:    .word 0x600DC80
@@ -1116,9 +1116,9 @@ dead_80405F8:
     add r1, r5, #0
     // dest
     add r1, #0x68 
-    // mode
+    // numHalfwords
     mov r2, #8
-    bl CpuSet_800092A // (void *src, void *dest, int mode) -> void
+    bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
     mov r1, #0xc
     strb r1, [r5,#0x1d]
     mov r2, #0x1e
@@ -1176,11 +1176,11 @@ dead_80405F8:
     pop {r0}
     ldr r1, off_80406F0 // =unk_3001B40 
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     ldr r0, off_80406F4 // =dword_86B7AC0 
     ldr r1, off_80406F8 // =unk_3001710 
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     pop {r4-r6,pc}
     .byte 0, 0
     .word 0x86BEB20
@@ -4360,7 +4360,7 @@ chatbox_F6_textcolor:
     add r0, r0, r1
     ldr r1, off_8041DF0 // =unk_3001710 
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     b loc_8041DE6
 loc_8041DD6:
     ldrb r0, [r4,#2]
@@ -4369,7 +4369,7 @@ loc_8041DD6:
     ldr r0, [r5,r0]
     ldr r1, off_8041DF0 // =unk_3001710 
     mov r2, #0x20 
-    bl CpuFastSet_8000950
+    bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 loc_8041DE6:
     add r4, #3
     mov r0, #1
@@ -4685,7 +4685,7 @@ loc_8042014:
     add r1, r1, r2
     push {r1}
     mov r2, #0x40 
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     pop {r0}
     add r7, r5, #0
     add r7, #0x64 
@@ -4742,7 +4742,7 @@ chatbox_80420BC:
     add r1, r1, r2
     push {r1}
     mov r2, #0x40 
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     pop {r0}
     add r7, r5, #0
     add r7, #0x64 
@@ -4887,7 +4887,7 @@ chatbox_80421D8:
     add r1, r1, r2
     push {r1}
     mov r2, #3
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     pop {r0}
     mov r2, #0xe5
     strb r2, [r0,#3]
@@ -4927,16 +4927,18 @@ chatbox_804222C:
     add r0, r0, r1
     ldr r2, [r0,#4]
     push {r2}
+    // src
     ldr r0, [r0]
     add r7, r5, #0
     add r7, #0x64 
     ldrh r2, [r7]
     lsl r2, r2, #6
     ldr r1, off_8042284 // =unk_200AFA0 
+    // dest
     add r1, r1, r2
     pop {r2}
     push {r1}
-    bl CpuSet_800093C
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
     pop {r0}
     add r7, r5, #0
     add r7, #0x64 
@@ -6725,7 +6727,7 @@ loc_8043050:
     add r1, r1, r2
     push {r1}
     mov r2, #0x40 
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     pop {r0}
     add r7, r5, #0
     add r7, #0x64 
@@ -6773,7 +6775,7 @@ loc_80430B4:
     add r1, r1, r2
     push {r1}
     mov r2, #0x40 
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     pop {r0}
     add r7, r5, #0
     add r7, #0x64 

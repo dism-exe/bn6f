@@ -9132,7 +9132,7 @@ sub_80AA004:
     add r0, r0, r1
     ldr r1, off_80AA054 // =unk_2001130 
     mov r2, #0x10
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     mov r0, #0
     pop {r4-r7,pc}
 off_80AA018:    .word dword_80AA01C
@@ -9250,7 +9250,7 @@ sub_80AA104:
     add r0, r0, r1
     ldr r1, off_80AA13C // =unk_20018B0 
     mov r2, #8
-    bl copyMemory // (void *src, void* dest, int size) -> void
+    bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
     mov r0, #0
     pop {r4-r7,pc}
 off_80AA118:    .word dword_80AA11C
@@ -10921,10 +10921,13 @@ loc_80AADB6:
     sub r4, #1
     bne loc_80AADB6
     mov r0, r10
+    // src
     ldr r0, [r0,#0x4c]
+    // dest
     ldr r1, off_80AAE7C // =dword_2033000 
+    // wordCount
     ldr r2, off_80AAE80 // =0xF00 
-    bl CpuSet_800093C
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
     mov r0, r10
     ldr r0, [r0,#0x40]
     ldrb r0, [r0,#5]

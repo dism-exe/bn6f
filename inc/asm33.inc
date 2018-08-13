@@ -150,13 +150,13 @@
 // .global sub_80008B4
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8000900 // (int a1, int a2) -> void
-// .global copyMemory // (void *src, void* dest, int size) -> void
-// .global CpuSet_800092A // (void *src, void *dest, int mode) -> void
-// .global CpuSet_800093C
-// .global CpuFastSet_8000950
-// .global sub_800096C
+// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+// .global CpuSet_800096C // (void *src, void *dest, int mode) -> void
 // .global loc_8000AC8
-// .global decomp_initGfx_8000B30 // (u32 *initRefs) -> void
+// .global decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
 // .global sub_8000C00
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010BE
@@ -312,7 +312,7 @@
 .equ word_200DD00, 0x200DD00
 .equ word_200DD02, 0x200DD02
 .equ word_200DD04, 0x200DD04
-.equ word_2013A00, 0x2013A00
+.equ decomp_2013A00, 0x2013A00
 .equ unk_2017A00, 0x2017A00
 .equ unk_2017A20, 0x2017A20
 .equ unk_2017C80, 0x2017C80
