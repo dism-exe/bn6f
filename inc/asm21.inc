@@ -7,7 +7,7 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sub_80008B4
 // .global sub_8001778
 // .global sub_8001780
@@ -50,7 +50,7 @@
 .equ dword_80802C4, 0x80802C4
 .equ dword_80802C4, 0x80802C4
 .equ dword_80802C4, 0x80802C4
-.equ dword_80813F8, 0x80813F8
+// .global dword_80813F8
 .equ dword_80813FC, 0x80813FC
 .equ dword_8081400, 0x8081400
 .equ dword_8081404, 0x8081404

@@ -5,12 +5,14 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global sound_8000672
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8001172
 // .global sub_800151C
+
+.include "asm00_1.inc"
 // .global sub_80047E0
 // .global sub_8005D88
 
@@ -28,7 +30,7 @@
 .include "asm03_1.inc"
 // .global sub_8048F88
 
-.include "asm28.inc"
+.include "asm28_0.inc"
 // .global sub_809E13C
 // .global sub_809E188
 // .global sub_809E1AE

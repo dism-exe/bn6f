@@ -45,7 +45,7 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
@@ -63,6 +63,8 @@
 // .global sub_800183C
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
+
+.include "asm00_1.inc"
 // .global sub_8002FA6
 // .global sub_8005F84
 // .global engine_setScreeneffect
@@ -93,7 +95,7 @@
 // .global sub_80465F8 // () -> void
 // .global sub_8046664 // () -> void
 
-.include "asm28.inc"
+.include "asm28_0.inc"
 // .global sub_809E122
 
 .include "asm32.inc"

@@ -20,10 +20,12 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+
+.include "asm00_1.inc"
 // .global modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
 // .global sub_8006E84
 // .global sub_8006EA4
@@ -41,6 +43,6 @@
 .equ unk_200119C, 0x200119C
 .equ unk_20018EC, 0x20018EC
 .equ unk_203A0A0, 0x203A0A0
-.equ dword_8021DA8, 0x8021DA8
+// .global dword_8021DA8
 
 .endif // INC_ASM02

@@ -45,7 +45,7 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
 // .global sub_800068A
@@ -75,11 +75,15 @@
 // .global sub_80024A2
 // .global sub_800260C
 // .global sub_8002668
+
+.include "sprite.inc"
 // .global sub_80027B4
 // .global sub_80027F4
 // .global sub_800286C
 // .global sub_80028D4
 // .global sub_8002906
+
+.include "asm00_1.inc"
 // .global sub_800307C
 // .global sub_80035A2
 // .global sub_800378C
@@ -101,6 +105,8 @@
 // .global engine_setScreeneffect
 // .global sub_80062C8
 // .global engine_isScreeneffectAnimating // () -> zf
+
+.include "asm00_2.inc"
 // .global sub_8010C76
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6
@@ -199,8 +205,10 @@
 // .global sub_804A1D0
 // .global sub_804A24C
 
-.include "asm28.inc"
+.include "asm28_0.inc"
 // .global sub_809E122
+
+.include "asm28_1.inc"
 // .global sub_809F90C
 
 .include "asm32.inc"
@@ -470,8 +478,8 @@
 .equ dword_812EFDC, 0x812EFDC
 .equ dword_812EFDC, 0x812EFDC
 .equ dword_812EFDC, 0x812EFDC
-.equ dword_8138944, 0x8138944
-.equ dword_8138944, 0x8138944
+// .global dword_8138944
+// .global dword_8138944
 .equ off_8138C04, 0x8138C04
 .equ off_8138DBC, 0x8138DBC
 .equ off_8138F10, 0x8138F10

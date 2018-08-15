@@ -6,12 +6,14 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010D4
 // .global sub_8001158 // () -> void
 // .global off_8001800
+
+.include "asm00_1.inc"
 // .global sub_8004822
 // .global sub_80048B2
 // .global sub_8005D88
@@ -40,7 +42,7 @@
 // .global sub_80468C6
 // .global sub_80468EC
 
-.include "asm28.inc"
+.include "asm28_0.inc"
 // .global sub_809E13C
 // .global sub_809E2AE
 // .global sub_809E2B8

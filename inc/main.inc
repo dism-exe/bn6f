@@ -9,7 +9,7 @@
 // .global start_800023C // () -> void
 // .global start_800024C
 
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sub_80007B2
 // .global sub_80007BE
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
@@ -37,8 +37,12 @@
 // .global sub_80024A2
 // .global sub_800260C
 // .global renderPalletesAndObjs_8002650
+
+.include "sprite.inc"
 // .global sub_80027C4
-// .global handleObjSprites_800289C
+// .global sprite_handleObjSprites_800289C
+
+.include "asm00_1.inc"
 // .global sub_8003962
 // .global sub_8003AB2
 // .global sub_8004D48

@@ -5,10 +5,14 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sub_8002354
+
+.include "sprite.inc"
 // .global sub_80028D4
 // .global sub_8002906
+
+.include "asm00_1.inc"
 // .global loc_8003570
 
 .include "asm03_0.inc"
@@ -29,7 +33,7 @@
 .equ dword_8060288, 0x8060288
 .equ dword_8060288, 0x8060288
 .equ dword_8060288, 0x8060288
-.equ dword_8060474, 0x8060474
+// .global dword_8060474
 .equ dword_80604A0, 0x80604A0
 .equ dword_80605E4, 0x80605E4
 .equ dword_80605E8, 0x80605E8

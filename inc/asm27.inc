@@ -5,7 +5,7 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void

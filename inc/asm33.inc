@@ -25,7 +25,7 @@
 // .global start_800027C
 // .global start_8000288
 
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global sub_8000784
 // .global sub_80008B4
@@ -48,6 +48,8 @@
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
 // .global sub_80024A2
+
+.include "asm00_1.inc"
 // .global sub_80035A2
 // .global sub_8003962
 // .global sub_8003AB2
@@ -63,6 +65,8 @@
 // .global sub_80071D4
 // .global loc_8007800
 // .global getBattleSettingsFromList1
+
+.include "asm00_2.inc"
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6
 // .global sub_80137E6
@@ -154,7 +158,7 @@
 // .global sub_8049DC4
 // .global sub_8049DDC
 
-.include "asm28.inc"
+.include "asm28_1.inc"
 // .global sub_809F9BE
 
 .include "asm32.inc"
@@ -412,8 +416,8 @@
 .equ dword_203F7D8, 0x203F7D8
 .equ dword_203F7D8, 0x203F7D8
 .equ unk_30016B0, 0x30016B0
-.equ dword_812C258, 0x812C258
-.equ dword_812DA94, 0x812DA94
+// .global dword_812C258
+// .global dword_812DA94
 .equ dword_812EFDC, 0x812EFDC
 .equ dword_814FE94, 0x814FE94
 .equ dword_86A5D60, 0x86A5D60

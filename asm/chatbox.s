@@ -1790,7 +1790,7 @@ dword_8040B38:    .word 0xB520E3FE
     ldr r2, off_8040B88 // =0x1F8 
     add r5, r5, r2
     push {r0,r1}
-    bl sub_800275A
+    bl sprite_800275A
     pop {r0,r1}
     strb r1, [r5,#4]
     mov r1, #3
@@ -1811,7 +1811,7 @@ loc_8040B66:
     ldr r0, [r7,r2]
     lsl r0, r0, #4
     strb r0, [r5,#0x15]
-    bl sub_80026B6
+    bl sprite_80026B6
     ldr r1, off_8040B84 // =0x3C0 
     strh r1, [r5,#8]
     mov r1, #0x84
@@ -1887,9 +1887,9 @@ loc_8040BE4:
     ldr r1, off_8040C3C // =0x1F0 
     ldrb r1, [r7,r1]
     strb r1, [r5]
-    bl sub_80026B6
+    bl sprite_80026B6
 loc_8040C0C:
-    bl sub_80026D6
+    bl sprite_chatbox_80026D6
     strh r6, [r5,#6]
     pop {r7}
     bl sub_8002818

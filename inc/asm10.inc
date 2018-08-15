@@ -23,7 +23,7 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sub_8001778
 // .global sub_8001780
 // .global sub_800195C
@@ -31,8 +31,12 @@
 // .global loc_8001A6A
 // .global locret_8001AB4
 // .global sub_8002354
+
+.include "sprite.inc"
 // .global sub_80028D4
 // .global sub_8002906
+
+.include "asm00_1.inc"
 // .global loc_8003570
 
 .include "asm03_0.inc"
@@ -62,7 +66,7 @@
 .equ dword_8066220, 0x8066220
 .equ dword_8066220, 0x8066220
 .equ dword_8066220, 0x8066220
-.equ dword_8067DF8, 0x8067DF8
+// .global dword_8067DF8
 .equ dword_8067E08, 0x8067E08
 .equ dword_8067E18, 0x8067E18
 .equ dword_8067E2C, 0x8067E2C

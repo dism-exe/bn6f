@@ -5,7 +5,7 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_1.inc"
 // .global sub_8005D88
 
 

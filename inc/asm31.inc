@@ -120,7 +120,7 @@
 // .global dword_8000004
 // .global dword_80001F4
 
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
@@ -138,6 +138,8 @@
 // .global sub_8001532
 // .global sub_8002378
 // .global sub_800239A
+
+.include "sprite.inc"
 // .global sprite_loadAnimationData
 // .global sprite_update
 // .global sprite_load
@@ -151,6 +153,8 @@
 // .global sprite_setAnimation
 // .global sprite_forceWhitePallete
 // .global loc_8002DB4
+
+.include "asm00_1.inc"
 // .global sub_8002DC8
 // .global sub_8002DD8
 // .global sub_8002DEA
@@ -207,6 +211,8 @@
 // .global sub_800BBA8
 // .global sub_800BC88
 // .global sub_800BCC0
+
+.include "object.inc"
 // .global object_timefreezeEnd
 // .global loc_800BDB2
 // .global sub_800BF16
@@ -284,6 +290,8 @@
 // .global sub_800EB6C
 // .global object_getEnemyByNameRange
 // .global sub_800EC48
+
+.include "asm00_2.inc"
 // .global sub_800ED90
 // .global sub_800F214
 // .global sub_800F23C
@@ -661,8 +669,8 @@
 .equ byte_802136D, 0x802136D
 .equ dword_8080AC4, 0x8080AC4
 .equ dword_80A0BE0, 0x80A0BE0
-.equ dword_810C35C, 0x810C35C
-.equ dword_810C35C, 0x810C35C
+// .global dword_810C35C
+// .global dword_810C35C
 .equ dword_810C388, 0x810C388
 .equ dword_810C388, 0x810C388
 .equ dword_810CFE8, 0x810CFE8

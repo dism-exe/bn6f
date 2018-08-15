@@ -17,7 +17,7 @@
 .include "start.inc"
 // .global dword_8000004
 
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
@@ -29,6 +29,8 @@
 // .global sub_80014D4
 // .global sub_800151C
 // .global sub_8001532
+
+.include "sprite.inc"
 // .global sprite_loadAnimationData
 // .global sprite_update
 // .global sprite_load
@@ -40,6 +42,8 @@
 // .global sprite_setPallete
 // .global sprite_setAnimation
 // .global sprite_forceWhitePallete
+
+.include "asm00_1.inc"
 // .global sub_8002DEA
 // .global sub_8002E04
 // .global sub_8002E14
@@ -59,6 +63,8 @@
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global dword_80065D0
 // .global dword_8006660
+
+.include "asm00_2.inc"
 // .global sub_800F23C
 // .global sub_80136CC
 // .global sub_80137B6
@@ -112,7 +118,7 @@
 .include "asm24.inc"
 // .global dword_808C684
 
-.include "asm28.inc"
+.include "asm28_0.inc"
 // .global sub_809BA14
 // .global sub_809C890
 // .global sub_809C940
@@ -244,6 +250,6 @@
 .equ dword_8089DF4, 0x8089DF4
 .equ dword_8089DF4, 0x8089DF4
 .equ dword_80A3A44, 0x80A3A44
-.equ dword_80AAEA8, 0x80AAEA8
+// .global dword_80AAEA8
 
 .endif // INC_ASM29

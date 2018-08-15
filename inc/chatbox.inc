@@ -31,7 +31,7 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
 // .global sub_800068A
@@ -52,15 +52,19 @@
 // .global sub_800151C
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_8002694
+
+.include "sprite.inc"
 // .global sprite_loadAnimationData
-// .global sub_80026B6
+// .global sprite_80026B6
 // .global sprite_update
-// .global sub_80026D6
+// .global sprite_chatbox_80026D6
 // .global sprite_load
-// .global sub_800275A
+// .global sprite_800275A
 // .global sub_8002818
 // .global sub_8002874
 // .global sprite_setAnimation
+
+.include "asm00_1.inc"
 // .global sub_8002DEA
 // .global sub_8002F90
 // .global sub_8003A64
@@ -74,6 +78,8 @@
 // .global engine_setScreeneffect
 // .global getBattleSettingsFromList0
 // .global sub_800B6B0
+
+.include "asm00_2.inc"
 // .global sub_8013704
 // .global sub_80137FE
 
@@ -123,7 +129,7 @@
 .include "asm03_1.inc"
 // .global sub_8048C24
 
-.include "asm28.inc"
+.include "asm28_0.inc"
 // .global sub_809CA84
 // .global sub_809E0B0
 // .global sub_809E122

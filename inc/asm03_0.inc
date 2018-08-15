@@ -313,7 +313,7 @@
 // .global start_
 // .global start_8000288
 
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
 // .global sub_80005F2
@@ -378,6 +378,8 @@
 // .global sub_8002484
 // .global sub_80024C0
 // .global sub_800260C
+
+.include "sprite.inc"
 // .global sprite_loadAnimationData
 // .global sprite_load
 // .global sub_80027C4
@@ -386,6 +388,8 @@
 // .global sprite_setPallete
 // .global sprite_setAnimation
 // .global sprite_forceWhitePallete
+
+.include "asm00_1.inc"
 // .global sub_8002E3C
 // .global sub_8002F5C
 // .global loc_8003570
@@ -465,6 +469,8 @@
 // .global sub_800B6DA
 // .global sub_800B6E0
 // .global sub_800B734
+
+.include "object.inc"
 // .global object_getPanelParameters
 // .global sub_800C90A
 // .global object_isValidPanel
@@ -483,6 +489,8 @@
 // .global sub_800EB08
 // .global object_getEnemyByNameRange
 // .global sub_800EC3C
+
+.include "asm00_2.inc"
 // .global sub_800F214
 // .global sub_800F2B6
 // .global sub_800F2C6
@@ -775,7 +783,7 @@
 // .global loc_807EE68
 // .global sub_807EE92
 
-.include "asm28.inc"
+.include "asm28_0.inc"
 // .global dword_8098DD0
 // .global unk_80991F4
 // .global dword_8099DC0
@@ -813,6 +821,8 @@
 // .global sub_809E4A0
 // .global sub_809E4AE
 // .global sub_809E4BC
+
+.include "asm28_1.inc"
 // .global sub_809F9DC
 
 .include "asm29.inc"
@@ -1589,11 +1599,11 @@
 .equ unk_86C22E0, 0x86C22E0
 .equ compFile_86C23A0, 0x86C23A0
 .equ dword_86C41B4, 0x86C41B4
-.equ comp_86C9BD4, 0x86C9BD4
+// .global comp_86C9BD4
 .equ unk_86CB360, 0x86CB360
 .equ comp_86DD59C, 0x86DD59C
-.equ comp_86DD9B4, 0x86DD9B4
-.equ comp_86DDAD0, 0x86DDAD0
+// .global comp_86DD9B4
+// .global comp_86DDAD0
 .equ dword_86E1238, 0x86E1238
 .equ dword_86E2E98, 0x86E2E98
 .equ dword_86E3598, 0x86E3598

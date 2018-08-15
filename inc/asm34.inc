@@ -5,12 +5,14 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global sub_800183C
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
+
+.include "asm00_1.inc"
 // .global sub_800307C
 // .global engine_setScreeneffect
 // .global sub_80062C8
@@ -75,10 +77,10 @@
 .equ unk_202E10C, 0x202E10C
 .equ unk_202E144, 0x202E144
 .equ unk_2037780, 0x2037780
-.equ dword_812C258, 0x812C258
-.equ dword_812C258, 0x812C258
-.equ dword_812C258, 0x812C258
-.equ dword_812C258, 0x812C258
-.equ dword_812C258, 0x812C258
+// .global dword_812C258
+// .global dword_812C258
+// .global dword_812C258
+// .global dword_812C258
+// .global dword_812C258
 
 .endif // INC_ASM34

@@ -6,7 +6,7 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sub_80005AC
 // .global sub_80005C4
 // .global sub_80008B4
@@ -15,15 +15,21 @@
 // .global loc_8000AC8
 // .global sub_8000C00
 // .global sub_8000C5C
+
+.include "asm00_1.inc"
 // .global dword_80065D0
 // .global dword_8006660
 // .global sub_80068E0
 // .global battle_isPaused
 // .global battle_isTimeStop
+
+.include "object.inc"
 // .global object_isValidPanel
 // .global object_checkPanelParameters
 // .global sub_800E2C2
 // .global object_getFlipDirection // (int a1, int a2) -> int
+
+.include "asm00_2.inc"
 // .global off_8019B78
 // .global dword_8019C34
 // .global sub_801A29A

@@ -7,7 +7,7 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_2.inc"
 // .global sub_80182B4
 
 .include "asm31.inc"

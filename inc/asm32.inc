@@ -155,7 +155,7 @@
 .include "start.inc"
 // .global start_
 
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
@@ -180,6 +180,8 @@
 // .global sub_8001B1C
 // .global sub_8001B84
 // .global loc_8002676
+
+.include "sprite.inc"
 // .global sprite_loadAnimationData
 // .global sprite_update
 // .global sub_8002770
@@ -194,6 +196,8 @@
 // .global sprite_makeUnscalable
 // .global sprite_setPallete
 // .global sprite_setAnimation
+
+.include "asm00_1.inc"
 // .global sub_8002DEA
 // .global sub_8002E14
 // .global sub_8002ED0
@@ -222,6 +226,8 @@
 // .global sub_800A11C
 // .global battle_isBattleOver
 // .global sub_800A704
+
+.include "object.inc"
 // .global object_getPanelParameters
 // .global object_setPanelType
 // .global object_isCurrentPanelValid
@@ -245,6 +251,8 @@
 // .global object_canMove
 // .global object_setCounterTime
 // .global object_getEnemyByNameRange
+
+.include "asm00_2.inc"
 // .global sub_800ED90
 // .global sub_800F2C6
 // .global sub_800F322
@@ -354,7 +362,7 @@
 .include "asm23.inc"
 // .global dword_8089128
 
-.include "asm28.inc"
+.include "asm28_1.inc"
 // .global sub_809F68C
 
 .include "asm31.inc"
@@ -629,7 +637,7 @@
 .equ word_3001B58, 0x3001B58
 .equ loc_3006B94, 0x3006B94
 .equ LCDControl, 0x4000000
-.equ dword_8121270, 0x8121270
+// .global dword_8121270
 .equ dword_812127C, 0x812127C
 .equ dword_8121288, 0x8121288
 .equ dword_812129C, 0x812129C

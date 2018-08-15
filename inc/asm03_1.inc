@@ -50,7 +50,7 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
@@ -78,11 +78,15 @@
 // .global sub_80018D0
 // .global sub_8002354
 // .global sub_8002694
+
+.include "sprite.inc"
 // .global sub_8002818
 // .global sub_8002874
 // .global sub_80028D4
 // .global sub_8002906
 // .global sprite_makeUnscalable
+
+.include "asm00_1.inc"
 // .global sub_800307C
 // .global loc_8003570
 // .global sub_8003962
@@ -195,7 +199,7 @@
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C
 
-.include "asm28.inc"
+.include "asm28_0.inc"
 // .global sub_809E122
 
 .include "asm32.inc"
@@ -437,7 +441,7 @@
 .equ unk_30019C0, 0x30019C0
 .equ unk_3001B60, 0x3001B60
 .equ loc_3006B94, 0x3006B94
-.equ dword_804CFBC, 0x804CFBC
+// .global dword_804CFBC
 .equ dword_804CFD4, 0x804CFD4
 .equ dword_804D08C, 0x804D08C
 .equ dword_804D090, 0x804D090

@@ -18,7 +18,7 @@ main_gameRoutine:
     bl getPalleteAndTransition_80023E0
     bl renderPalletes_8001808
     bl renderPalletesAndObjs_8002650
-    bl handleObjSprites_800289C
+    bl sprite_handleObjSprites_800289C
     bl render_80015D0
     bl main_static_80003E4
     mov r0, r10

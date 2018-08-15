@@ -5,12 +5,14 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global sub_800183C
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
+
+.include "asm00_1.inc"
 // .global sub_800307C
 // .global engine_setScreeneffect
 // .global sub_80062C8
@@ -58,12 +60,12 @@
 .equ unk_2025A70, 0x2025A70
 .equ unk_2030000, 0x2030000
 .equ unk_2037780, 0x2037780
-.equ dword_812DA94, 0x812DA94
-.equ dword_812DA94, 0x812DA94
-.equ dword_812DA94, 0x812DA94
-.equ dword_812DA94, 0x812DA94
-.equ dword_812DA94, 0x812DA94
-.equ dword_812DA94, 0x812DA94
+// .global dword_812DA94
+// .global dword_812DA94
+// .global dword_812DA94
+// .global dword_812DA94
+// .global dword_812DA94
+// .global dword_812DA94
 .equ dword_86A5D60, 0x86A5D60
 
 .endif // INC_ASM35

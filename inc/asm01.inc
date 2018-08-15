@@ -29,10 +29,12 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+
+.include "asm00_1.inc"
 // .global sub_800A0D6
 
 .include "asm03_0.inc"
@@ -87,7 +89,7 @@
 .equ dword_203F7D8, 0x203F7D8
 .equ dword_203F7D8, 0x203F7D8
 .equ dword_203F7D8, 0x203F7D8
-.equ off_80B1B7C, 0x80B1B7C
+// .global off_80B1B7C
 .equ off_80B1ED8, 0x80B1ED8
 .equ off_80B23C8, 0x80B23C8
 .equ off_80B29CC, 0x80B29CC

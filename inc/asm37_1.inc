@@ -151,7 +151,7 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
@@ -164,6 +164,8 @@
 // .global calcAngle_800117C
 // .global sub_80014D4
 // .global sub_800151C
+
+.include "asm00_1.inc"
 // .global sub_8003A64
 // .global sub_8004822
 // .global engine_isScreeneffectAnimating // () -> zf
@@ -205,7 +207,7 @@
 // .global dword_808BF48
 // .global dword_808BF48
 
-.include "asm28.inc"
+.include "asm28_0.inc"
 // .global sub_809E1AE
 // .global sub_809E2B8
 // .global sub_809E462
@@ -522,7 +524,7 @@
 .equ InterruptRequestFlags_IRQAcknowledge, 0x4000202
 .equ GamePakWaitstateControl, 0x4000204
 .equ InterruptMasterEnableRegister, 0x4000208
-.equ dword_8072BCC, 0x8072BCC
+// .global dword_8072BCC
 .equ dword_8073610, 0x8073610
 .equ dword_808A128, 0x808A128
 .equ dword_814FE90, 0x814FE90

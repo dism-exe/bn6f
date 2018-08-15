@@ -69,7 +69,7 @@
 .include "start.inc"
 // .global start_800027C
 
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global sub_80008B4
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
@@ -80,6 +80,8 @@
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010BE
 // .global sub_800151C
+
+.include "asm00_2.inc"
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6
 // .global sub_80137E6

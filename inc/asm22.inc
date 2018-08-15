@@ -5,8 +5,10 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sub_800060A
+
+.include "asm00_1.inc"
 // .global sub_80047E0
 
 .include "asm03_0.inc"
@@ -32,6 +34,6 @@
 .equ dword_8086A54, 0x8086A54
 .equ dword_8086D5C, 0x8086D5C
 .equ unk_8086D74, 0x8086D74
-.equ dword_80871D8, 0x80871D8
+// .global dword_80871D8
 
 .endif // INC_ASM22

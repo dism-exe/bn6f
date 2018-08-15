@@ -6,15 +6,19 @@
 
 
 /* External Symbols */
-.include "asm00.inc"
+.include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global sub_8001172
 // .global sub_800118A
+
+.include "sprite.inc"
 // .global sprite_loadAnimationData
 // .global sprite_update
 // .global sprite_load
 // .global sprite_setAnimation
+
+.include "asm00_1.inc"
 // .global sub_8002F90
 // .global sub_8003914
 // .global sub_8003940
@@ -39,7 +43,7 @@
 // .global sub_80468BA
 // .global sub_80468C6
 
-.include "asm28.inc"
+.include "asm28_0.inc"
 // .global sub_809E13C
 // .global sub_809E188
 // .global sub_809E1AE
