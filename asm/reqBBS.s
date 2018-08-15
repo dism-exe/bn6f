@@ -828,13 +828,13 @@ reqBBS_static_813E6D0:
     bl sub_80017E0
     // initRefs
     ldr r0, off_813E6F8 // =dword_813E6FC 
-    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
     ldrb r0, [r5,#4]
     ldr r1, off_813E754 // =off_813E758 
     lsl r0, r0, #2
     // initRefs
     ldr r0, [r1,r0]
-    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
     bl sub_800183C
     bl sub_8046664 // () -> void
     pop {r5,pc}
@@ -3525,7 +3525,7 @@ reqBBS_813FDA8:
     bl sub_80017E0
     // initRefs
     ldr r0, off_813FDC8 // =dword_813FDCC 
-    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
     bl reqBBS_8140600
     bl sub_800183C
     bl sub_8046664 // () -> void

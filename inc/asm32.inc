@@ -155,84 +155,17 @@
 .include "start.inc"
 // .global start_
 
-.include "asm02.inc"
-// .global refIndex_8021DA8 // (int idx) -> void*
-// .global sub_8021AE0
-// .global dword_8021AEC
-// .global sub_8021B2A
-// .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
-// .global sub_8021BC0
-// .global sub_8021BD8
-// .global computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
-
-.include "asm37_1.inc"
-// .global sub_81418E4
-// .global sub_8142190
-// .global sub_81421D0
-// .global sub_8143198
-// .global sub_81433DA
-// .global sub_8143D4C
-// .global sub_8143F90
-// .global sub_8144010
-// .global sub_8144D30
-// .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-
-.include "asm33.inc"
-// .global sub_8123208
-// .global sub_8123360
-// .global sub_8123434
-// .global ho_8123F5C
-// .global dword_8124B1C
-// .global sub_8124B3C
-// .global sub_8126B4C
-// .global menuControl_cb_email
-// .global sub_8128730
-// .global loc_8128CBC
-// .global sub_81291E8
-// .global sub_8129248
-
-.include "reqBBS.inc"
-// .global reqBBS_813EE58
-// .global reqBBS_81406FC
-
-.include "asm37_0.inc"
-// .global sub_813B780
-// .global loc_813B7A0
-// .global sub_813B9B4
-// .global sub_813B9FC
-
-.include "asm36.inc"
-// .global sub_81312F4
-// .global sub_81329C8
-// .global sub_8132A14
-// .global sub_8132A50
-// .global dword_8132A9C
-// .global sub_8132B88
-// .global sub_8133200
-// .global sub_81355D8
-// .global sub_81356D4
-// .global loc_8136DE0
-// .global sub_81376CC
-// .global sub_8137718
-// .global sub_81377EC
-// .global sub_8137884
-// .global sub_8137890
-// .global loc_81378B4
-
-.include "asm28.inc"
-// .global sub_809F68C
-
 .include "asm00.inc"
 // .global sound_play // () -> void
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global sub_8000900 // (int a1, int a2) -> void
+// .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
 // .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 // .global sub_800098C
 // .global loc_8000AC4
 // .global loc_8000AC8
-// .global decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
@@ -308,7 +241,7 @@
 // .global sub_800E2AC
 // .global sub_800E2C0
 // .global sub_800E2C2
-// .global sub_800E2CA
+// .global object_getFlipDirection_800E2CA // () -> int
 // .global object_canMove
 // .global object_setCounterTime
 // .global object_getEnemyByNameRange
@@ -369,8 +302,15 @@
 // .global sub_801DD34
 // .global sub_801DFA2
 
-.include "asm23.inc"
-// .global dword_8089128
+.include "asm02.inc"
+// .global refIndex_8021DA8 // (int idx) -> void*
+// .global sub_8021AE0
+// .global dword_8021AEC
+// .global sub_8021B2A
+// .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
+// .global sub_8021BC0
+// .global sub_8021BD8
+// .global computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
 
 .include "asm03_0.inc"
 // .global sub_802CDD0
@@ -411,6 +351,12 @@
 // .global sub_8047D84
 // .global sub_804A24C
 
+.include "asm23.inc"
+// .global dword_8089128
+
+.include "asm28.inc"
+// .global sub_809F68C
+
 .include "asm31.inc"
 // .global sub_80B8A0A
 // .global sub_80BC998
@@ -444,6 +390,60 @@
 // .global sub_8109804
 // .global sub_8109952
 // .global loc_8109974
+
+.include "asm33.inc"
+// .global sub_8123208
+// .global sub_8123360
+// .global sub_8123434
+// .global ho_8123F5C
+// .global dword_8124B1C
+// .global sub_8124B3C
+// .global sub_8126B4C
+// .global menuControl_cb_email
+// .global sub_8128730
+// .global loc_8128CBC
+// .global sub_81291E8
+// .global sub_8129248
+
+.include "asm36.inc"
+// .global sub_81312F4
+// .global sub_81329C8
+// .global sub_8132A14
+// .global sub_8132A50
+// .global dword_8132A9C
+// .global sub_8132B88
+// .global sub_8133200
+// .global sub_81355D8
+// .global sub_81356D4
+// .global loc_8136DE0
+// .global sub_81376CC
+// .global sub_8137718
+// .global sub_81377EC
+// .global sub_8137884
+// .global sub_8137890
+// .global loc_81378B4
+
+.include "asm37_0.inc"
+// .global sub_813B780
+// .global loc_813B7A0
+// .global sub_813B9B4
+// .global sub_813B9FC
+
+.include "reqBBS.inc"
+// .global reqBBS_813EE58
+// .global reqBBS_81406FC
+
+.include "asm37_1.inc"
+// .global sub_81418E4
+// .global sub_8142190
+// .global sub_81421D0
+// .global sub_8143198
+// .global sub_81433DA
+// .global sub_8143D4C
+// .global sub_8143F90
+// .global sub_8144010
+// .global sub_8144D30
+// .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 
 /* Undeclared Symbols */

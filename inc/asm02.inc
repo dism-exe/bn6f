@@ -20,12 +20,6 @@
 
 
 /* External Symbols */
-.include "asm03_0.inc"
-// .global sub_802F114 // (int a1) -> void
-
-.include "asm36.inc"
-// .global sub_81376B8
-
 .include "asm00.inc"
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
@@ -34,10 +28,14 @@
 // .global sub_8006E84
 // .global sub_8006EA4
 
+.include "asm03_0.inc"
+// .global sub_802F114 // (int a1) -> void
+
+.include "asm36.inc"
+// .global sub_81376B8
+
 
 /* Undeclared Symbols */
-.equ unk_20007D6, 0x20007D6
-.equ unk_200083A, 0x200083A
 .equ unk_2000AF0, 0x2000AF0
 .equ unk_2001184, 0x2001184
 .equ unk_200119C, 0x200119C

@@ -5,6 +5,12 @@
 
 
 /* External Symbols */
+.include "asm00.inc"
+// .global sub_8002354
+// .global sub_80028D4
+// .global sub_8002906
+// .global loc_8003570
+
 .include "asm03_0.inc"
 // .global sub_802FF4C
 // .global sub_803037C
@@ -13,12 +19,6 @@
 
 .include "chatbox.inc"
 // .global chatbox_uncomp_803FD08 // () -> int
-
-.include "asm00.inc"
-// .global sub_8002354
-// .global sub_80028D4
-// .global sub_8002906
-// .global loc_8003570
 
 
 /* Undeclared Symbols */

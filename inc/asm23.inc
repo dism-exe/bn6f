@@ -6,6 +6,48 @@
 
 
 /* External Symbols */
+.include "asm00.inc"
+// .global sound_play // () -> void
+// .global getPETNaviSelect // () -> u8
+// .global sub_80010D4
+// .global sub_8001158 // () -> void
+// .global off_8001800
+// .global sub_8004822
+// .global sub_80048B2
+// .global sub_8005D88
+// .global engine_setScreeneffect
+// .global engine_isScreeneffectAnimating // () -> zf
+
+.include "asm03_0.inc"
+// .global sub_802F110
+// .global sub_802F12C // (int a1, int a2) -> void
+// .global loc_802F130
+// .global sub_802F164 // (int a1, int a2) -> zf
+// .global sub_802FE28
+// .global sub_8035408
+// .global sub_8036E44
+// .global sub_8036E78
+// .global sub_8036F98
+// .global sub_8036FAA
+
+.include "chatbox.inc"
+// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_8045EDC
+// .global chatbox_8045F3C
+// .global chatbox_8045F4C
+
+.include "asm03_1.inc"
+// .global sub_80468C6
+// .global sub_80468EC
+
+.include "asm28.inc"
+// .global sub_809E13C
+// .global sub_809E2AE
+// .global sub_809E2B8
+
+.include "reqBBS.inc"
+// .global reqBBS_8140A0C
+
 .include "asm37_1.inc"
 // .global sub_814216E
 // .global sub_8142190
@@ -30,48 +72,6 @@
 // .global sub_8142BFA
 // .global sub_8142C20
 // .global sub_8142C46
-
-.include "asm28.inc"
-// .global sub_809E13C
-// .global sub_809E2AE
-// .global sub_809E2B8
-
-.include "asm00.inc"
-// .global sound_play // () -> void
-// .global getPETNaviSelect // () -> u8
-// .global sub_80010D4
-// .global sub_8001158 // () -> void
-// .global off_8001800
-// .global sub_8004822
-// .global sub_80048B2
-// .global sub_8005D88
-// .global engine_setScreeneffect
-// .global engine_isScreeneffectAnimating // () -> zf
-
-.include "reqBBS.inc"
-// .global reqBBS_8140A0C
-
-.include "asm03_0.inc"
-// .global sub_802F110
-// .global sub_802F12C // (int a1, int a2) -> void
-// .global loc_802F130
-// .global sub_802F164 // (int a1, int a2) -> zf
-// .global sub_802FE28
-// .global sub_8035408
-// .global sub_8036E44
-// .global sub_8036E78
-// .global sub_8036F98
-// .global sub_8036FAA
-
-.include "chatbox.inc"
-// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_8045EDC
-// .global chatbox_8045F3C
-// .global chatbox_8045F4C
-
-.include "asm03_1.inc"
-// .global sub_80468C6
-// .global sub_80468EC
 
 
 /* Undeclared Symbols */

@@ -151,24 +151,6 @@
 
 
 /* External Symbols */
-.include "asm32.inc"
-// .global sub_811E0BA
-// .global sub_811E744
-// .global sub_811EBE0
-
-.include "asm24.inc"
-// .global dword_808BF48
-// .global dword_808BF48
-
-.include "reqBBS.inc"
-// .global reqBBS_8140A00
-// .global reqBBS_8140A0C
-
-.include "asm28.inc"
-// .global sub_809E1AE
-// .global sub_809E2B8
-// .global sub_809E462
-
 .include "asm00.inc"
 // .global sound_play // () -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
@@ -185,19 +167,6 @@
 // .global sub_8003A64
 // .global sub_8004822
 // .global engine_isScreeneffectAnimating // () -> zf
-
-.include "asm37_0.inc"
-// .global sub_813D760
-// .global sub_813D78C
-// .global sub_813D7B8
-// .global sub_813D8C4
-// .global sub_813D8D0
-// .global sub_813D924
-// .global sub_813D934
-// .global sub_813D94C
-// .global sub_813D960
-// .global sub_813D978
-// .global sub_813D98C
 
 .include "asm03_0.inc"
 // .global sub_802D064
@@ -231,6 +200,37 @@
 // .global sub_80468BA
 // .global sub_80468C6
 // .global sub_804691A
+
+.include "asm24.inc"
+// .global dword_808BF48
+// .global dword_808BF48
+
+.include "asm28.inc"
+// .global sub_809E1AE
+// .global sub_809E2B8
+// .global sub_809E462
+
+.include "asm32.inc"
+// .global sub_811E0BA
+// .global sub_811E744
+// .global sub_811EBE0
+
+.include "asm37_0.inc"
+// .global sub_813D760
+// .global sub_813D78C
+// .global sub_813D7B8
+// .global sub_813D8C4
+// .global sub_813D8D0
+// .global sub_813D924
+// .global sub_813D934
+// .global sub_813D94C
+// .global sub_813D960
+// .global sub_813D978
+// .global sub_813D98C
+
+.include "reqBBS.inc"
+// .global reqBBS_8140A00
+// .global reqBBS_8140A0C
 
 
 /* Undeclared Symbols */

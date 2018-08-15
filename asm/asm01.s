@@ -14,10 +14,10 @@ sub_801FE00:
     strb r0, [r3,#0x4] // (byte_2036784 - 0x2036780)
     ldr r0, off_80200BC // =dword_203F4A0 
     ldr r1, off_80200C0 // =0x200 
-    bl sub_8000900 // (int a1, int a2) -> void
+    bl CpuFastSet_8000900 // (int a1, int a2) -> void
     ldr r0, off_80200C4 // =dword_203CBE0 
     ldr r1, off_80200C8 // =0x100 
-    bl sub_8000900 // (int a1, int a2) -> void
+    bl CpuFastSet_8000900 // (int a1, int a2) -> void
     pop {pc}
 .endfunc // sub_801FE00
 
@@ -122,18 +122,12 @@ loc_801FECC:
     ldrb r0, [r4,#0x1] // (dword_203F7D8+1 - 0x203f7d8)
     b locret_801FEE6
 loc_801FED2:
-    // src
     ldr r0, off_80200DC // =word_2036780 
-    // dest
     ldr r1, off_80200E0 // =unk_20399F0 
-    // wordCount
     mov r2, #0x10
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
-    // src
     ldr r0, off_80200E4 // =word_2036780 
-    // dest
     ldr r1, off_80200E8 // =unk_2039A00 
-    // wordCount
     mov r2, #0x10
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
 locret_801FEE6:

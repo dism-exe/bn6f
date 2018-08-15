@@ -18,21 +18,21 @@
 .global sub_80008B4
 .global sub_80008C0
 .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-.global sub_8000900 // (int a1, int a2) -> void
+.global CpuFastSet_8000900 // (int a1, int a2) -> void
 .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-.global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
+.global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
 .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
-.global CpuSet_800096C // (void *src, void *dest, int mode) -> void
+.global sub_800096C
 .global sub_800098C
-.global sub_80009AC
+.global CpuFastSet_80009AC
 .global sub_8000A3C
 .global objRender_8000A44
 .global loc_8000AC4
 .global loc_8000AC8
 .global loc_8000ACA
-.global decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
+.global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
 .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 .global sub_8000C00
 .global sub_8000C5C
@@ -380,8 +380,8 @@
 .global sub_800E2AC
 .global sub_800E2C0
 .global sub_800E2C2
-.global sub_800E2CA
-.global object_getFlipDirection
+.global object_getFlipDirection_800E2CA // () -> int
+.global object_getFlipDirection // (int a1, int a2) -> int
 .global object_subtractHP
 .global object_addHP
 .global sub_800E2FC
@@ -690,128 +690,6 @@
 // .global dword_8000004
 // .global start_800024C
 
-.include "asm02.inc"
-// .global refIndex_8021DA8 // (int idx) -> void*
-// .global sub_8021AB4
-// .global sub_8021C68
-// .global computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
-// .global sub_8021D08
-// .global sub_8021D14
-// .global sub_8021D36
-
-.include "reqBBS.inc"
-// .global reqBBS_813E07C
-// .global reqBBS_813E5DC
-// .global reqBBS_813E616
-// .global reqBBS_init_s_2005780
-// .global reqBBS_813F9A0
-// .global reqBBS_initMemory_813F9DA
-// .global reqBBS_8140984
-
-.include "asm21.inc"
-// .global sub_8080D90
-// .global sub_8080DA0
-
-.include "asm37_1.inc"
-// .global sub_81419A0
-// .global sub_8142248
-// .global sub_8143482
-// .global sub_8144048
-// .global sub_81440D8
-// .global sub_8144EEC
-// .global SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
-// .global SWI_CpuSet // (void *src, void *dest, int mode) -> void
-// .global SWI_Div
-// .global SWI_LZ77UnCompReadNormalWrite16bit
-// .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-// .global SWI_Sqrt
-// .global sub_814E87C
-// .global sub_814E918
-// .global m4a_SongNumStart
-// .global sub_814E9F0
-// .global sub_814EA58
-// .global sub_814EAF0
-// .global sub_814EB1C
-// .global sub_814F00C
-// .global sub_814F988
-// .global sub_814F9AC
-// .global sub_814FA14
-
-.include "asm33.inc"
-// .global sub_8127990
-// .global sub_81284A4
-
-.include "asm37_0.inc"
-// .global sub_813B768
-// .global sub_813B934
-// .global sub_813BF1C
-// .global sub_813C324
-// .global sub_813C3AC
-// .global sub_813D60C
-
-.include "asm29.inc"
-// .global ho_80A4984
-// .global loc_80A4A98
-// .global loc_80A4BDC
-// .global loc_80A51C4
-// .global loc_80A5428
-// .global loc_80A54F0
-// .global loc_80A57AC
-// .global loc_80A5AD4
-// .global sub_80A6A16
-// .global loc_80A6E98
-// .global loc_80A72B4
-// .global loc_80A77A8
-// .global loc_80A781C
-// .global loc_80A78B8
-// .global loc_80A7C84
-// .global loc_80A7D90
-// .global loc_80A8208
-// .global loc_80A8394
-// .global loc_80A8654
-// .global loc_80A8728
-// .global loc_80A87F0
-// .global loc_80A8870
-// .global loc_80A89DC
-// .global loc_80A8AB4
-// .global loc_80A8E74
-// .global loc_80A92B8
-// .global loc_80A9430
-// .global loc_80A9658
-// .global loc_80A9824
-// .global loc_80A98D4
-// .global loc_80A9A0C
-// .global loc_80A9B70
-// .global loc_80A9D10
-// .global loc_80A9ECC
-// .global loc_80A9F58
-// .global sub_80AA004
-// .global loc_80AA058
-// .global sub_80AA104
-// .global loc_80AA140
-// .global loc_80AA1E0
-// .global loc_80AA2D8
-// .global loc_80AA374
-// .global sub_80AA4C0
-// .global sub_80AA88C
-// .global sub_80AAB88
-
-.include "asm32.inc"
-// .global sub_811EBE0
-// .global sub_811EC00
-// .global sub_811EC10
-// .global sub_811EC50
-// .global ho_811ED1C // () -> void
-// .global sub_811F6C0
-// .global sub_811F6E0
-// .global sub_811F7EC
-// .global sub_811FB78
-// .global sub_81207F8
-// .global sub_81209DC
-// .global sub_8120A38
-// .global sub_8121144
-// .global sub_8121198
-
 .include "asm01.inc"
 // .global sub_801FE00
 // .global sub_801FE24
@@ -825,35 +703,14 @@
 // .global sub_8020140
 // .global sub_802015E
 
-.include "asm36.inc"
-// .global sub_81376E8
-// .global sub_8137700
-// .global sub_8137808
-// .global sub_8138294
-
-.include "asm28.inc"
-// .global loc_809D19C
-// .global sub_809E04C
-// .global sub_809E098
-// .global sub_809E2C2
-// .global sub_809E2F4
-// .global sub_809E2FC
-// .global sub_809E304
-// .global sub_809E312
-// .global sub_809E3AA
-// .global sub_809E3B2
-// .global sub_809E462
-// .global loc_809E570
-// .global sub_809F68C
-// .global sub_809F90C
-// .global sub_809F942
-// .global sub_809F9C8
-// .global sub_809F9DC
-// .global sub_809FAF4
-
-.include "asm30.inc"
-// .global battleSettingsList0
-// .global battleSettingsList1
+.include "asm02.inc"
+// .global refIndex_8021DA8 // (int idx) -> void*
+// .global sub_8021AB4
+// .global sub_8021C68
+// .global computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
+// .global sub_8021D08
+// .global sub_8021D14
+// .global sub_8021D36
 
 .include "asm03_0.inc"
 // .global sub_8026840
@@ -1009,6 +866,81 @@
 // .global sub_8049CF8
 // .global sub_804A17A
 // .global sub_804A2CC
+
+.include "asm21.inc"
+// .global sub_8080D90
+// .global sub_8080DA0
+
+.include "asm28.inc"
+// .global loc_809D19C
+// .global sub_809E04C
+// .global sub_809E098
+// .global sub_809E2C2
+// .global sub_809E2F4
+// .global sub_809E2FC
+// .global sub_809E304
+// .global sub_809E312
+// .global sub_809E3AA
+// .global sub_809E3B2
+// .global sub_809E462
+// .global loc_809E570
+// .global sub_809F68C
+// .global sub_809F90C
+// .global sub_809F942
+// .global sub_809F9C8
+// .global sub_809F9DC
+// .global sub_809FAF4
+
+.include "asm29.inc"
+// .global ho_80A4984
+// .global loc_80A4A98
+// .global loc_80A4BDC
+// .global loc_80A51C4
+// .global loc_80A5428
+// .global loc_80A54F0
+// .global loc_80A57AC
+// .global loc_80A5AD4
+// .global sub_80A6A16
+// .global loc_80A6E98
+// .global loc_80A72B4
+// .global loc_80A77A8
+// .global loc_80A781C
+// .global loc_80A78B8
+// .global loc_80A7C84
+// .global loc_80A7D90
+// .global loc_80A8208
+// .global loc_80A8394
+// .global loc_80A8654
+// .global loc_80A8728
+// .global loc_80A87F0
+// .global loc_80A8870
+// .global loc_80A89DC
+// .global loc_80A8AB4
+// .global loc_80A8E74
+// .global loc_80A92B8
+// .global loc_80A9430
+// .global loc_80A9658
+// .global loc_80A9824
+// .global loc_80A98D4
+// .global loc_80A9A0C
+// .global loc_80A9B70
+// .global loc_80A9D10
+// .global loc_80A9ECC
+// .global loc_80A9F58
+// .global sub_80AA004
+// .global loc_80AA058
+// .global sub_80AA104
+// .global loc_80AA140
+// .global loc_80AA1E0
+// .global loc_80AA2D8
+// .global loc_80AA374
+// .global sub_80AA4C0
+// .global sub_80AA88C
+// .global sub_80AAB88
+
+.include "asm30.inc"
+// .global battleSettingsList0
+// .global battleSettingsList1
 
 .include "asm31.inc"
 // .global sub_80B81EC
@@ -1469,6 +1401,74 @@
 // .global off_81090D0
 // .global off_8109150
 // .global sub_81096FA
+
+.include "asm32.inc"
+// .global sub_811EBE0
+// .global sub_811EC00
+// .global sub_811EC10
+// .global sub_811EC50
+// .global ho_811ED1C // () -> void
+// .global sub_811F6C0
+// .global sub_811F6E0
+// .global sub_811F7EC
+// .global sub_811FB78
+// .global sub_81207F8
+// .global sub_81209DC
+// .global sub_8120A38
+// .global sub_8121144
+// .global sub_8121198
+
+.include "asm33.inc"
+// .global sub_8127990
+// .global sub_81284A4
+
+.include "asm36.inc"
+// .global sub_81376E8
+// .global sub_8137700
+// .global sub_8137808
+// .global sub_8138294
+
+.include "asm37_0.inc"
+// .global sub_813B768
+// .global sub_813B934
+// .global sub_813BF1C
+// .global sub_813C324
+// .global sub_813C3AC
+// .global sub_813D60C
+
+.include "reqBBS.inc"
+// .global reqBBS_813E07C
+// .global reqBBS_813E5DC
+// .global reqBBS_813E616
+// .global reqBBS_init_s_2005780
+// .global reqBBS_813F9A0
+// .global reqBBS_initMemory_813F9DA
+// .global reqBBS_8140984
+
+.include "asm37_1.inc"
+// .global sub_81419A0
+// .global sub_8142248
+// .global sub_8143482
+// .global sub_8144048
+// .global sub_81440D8
+// .global sub_8144EEC
+// .global SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
+// .global SWI_CpuSet // (void *src, void *dest, int mode) -> void
+// .global SWI_Div
+// .global SWI_LZ77UnCompReadNormalWrite16bit
+// .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+// .global SWI_Sqrt
+// .global sub_814E87C
+// .global sub_814E918
+// .global m4a_SongNumStart
+// .global sub_814E9F0
+// .global sub_814EA58
+// .global sub_814EAF0
+// .global sub_814EB1C
+// .global sub_814F00C
+// .global sub_814F988
+// .global sub_814F9AC
+// .global sub_814FA14
 
 
 /* Undeclared Symbols */
@@ -2033,7 +2033,7 @@
 .equ dword_86BA0A0, 0x86BA0A0
 .equ dword_86BA120, 0x86BA120
 .equ dword_86BEC80, 0x86BEC80
-.equ comp_86DD59C, 0x86DD59C
+.equ unk_86DDBA0, 0x86DDBA0
 .equ byte_86DFA98, 0x86DFA98
 .equ dword_86E0458, 0x86E0458
 .equ dword_86E0478, 0x86E0478

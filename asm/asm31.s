@@ -536,7 +536,7 @@ sub_80B845C:
     push {r4,r7,lr}
     sub sp, sp, #8
     mov r7, sp
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -582,7 +582,7 @@ sub_80B84A4:
     push {r4,r6,r7,lr}
     sub sp, sp, #8
     mov r7, sp
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -675,7 +675,7 @@ locret_80B8510:
     mov r2, #0
     mov r7, #3
     bl sub_80C53A6
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r2, r0, #0
     pop {r0,r1}
     add r0, r0, r2
@@ -973,7 +973,7 @@ locret_80B87A4:
     strb r2, [r5,#0x12]
     strb r3, [r5,#0x13]
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80B88BC // =0x140000 
     mul r1, r0
     ldr r2, [r5,#0x34]
@@ -1164,7 +1164,7 @@ sub_80B88F0:
 .thumb_func
 sub_80B8932:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r6, r0, #0
     ldr r4, [r5,#0x4c]
     mov r0, #0x34 
@@ -1415,7 +1415,7 @@ loc_80B8B3C:
     sub r0, #1
     strh r0, [r5,#0x20]
     bge locret_80B8B6C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0xa
     mul r0, r1
     lsl r0, r0, #0x10
@@ -2279,7 +2279,7 @@ locret_80B923E:
 .thumb_func
 sub_80B9240:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r0, [r5,#0x12]
     add r0, r0, r4
@@ -3007,7 +3007,7 @@ locret_80B9774:
 sub_80B9776:
     push {r4,r6,r7,lr}
     sub sp, sp, #0x18
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r6, r0, #0
     mov r4, #1
 loc_80B9782:
@@ -3225,7 +3225,7 @@ loc_80B9902:
     strh r0, [r5,#0xa]
     b locret_80B9966
 loc_80B991A:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -3239,7 +3239,7 @@ loc_80B991A:
     lsl r4, r0, #8
     mov r0, #0x33 
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -3823,7 +3823,7 @@ sub_80B9D6E:
     strb r1, [r5,#0x13]
     bl sub_800E29C
     bl sub_801A04C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80B9F34 // =0x50000 
     mul r0, r1
     mov r1, #0
@@ -3846,7 +3846,7 @@ loc_80B9DBC:
     ldrb r4, [r5,#0x12]
     bl sub_800E2AC
     bl sub_801A04C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80B9F38 // =0xA000 
     mul r0, r1
     ldr r1, [r5,#0x40]
@@ -3924,7 +3924,7 @@ sub_80B9E40:
     strb r1, [r5,#0x13]
     bl sub_800E29C
     bl sub_801A04C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80B9F3C // =0xC0000 
     mul r0, r1
     ldr r1, dword_80B9F40 // =0x73333 
@@ -4217,7 +4217,7 @@ loc_80BA0A0:
     bgt locret_80BA0D6
     ldrb r0, [r5,#5]
     bl sub_80BA238
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldrb r1, [r5,#5]
     add r0, r0, r1
@@ -4404,7 +4404,7 @@ locret_80BA1D4:
 sub_80BA1D6:
     push {r4,r6,r7,lr}
     sub sp, sp, #0x1c
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     str r0, [sp]
     mov r4, #6
@@ -4498,7 +4498,7 @@ sub_80BA294:
     sub sp, sp, #0x18
     mov r4, #1
 loc_80BA29A:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -4522,7 +4522,7 @@ loc_80BA29A:
     blt loc_80BA29A
     b loc_80BA2FE
 loc_80BA2CE:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r4, r0
     add r0, sp, #0
     ldrb r0, [r0]
@@ -4561,7 +4561,7 @@ dword_80BA318:    .word 0xF880080
 .thumb_func
 sub_80BA31C:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -4575,7 +4575,7 @@ sub_80BA31C:
     lsl r4, r0, #8
     mov r0, #0x39 
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -4773,7 +4773,7 @@ sub_80BA4BA:
     bne loc_80BA4E6
     mov r1, #4
     strb r1, [r5,#0xa]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -5435,7 +5435,7 @@ locret_80BA944:
 .thumb_func
 sub_80BA946:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -5445,7 +5445,7 @@ sub_80BA946:
     ldr r6, [r5,#0x2c]
     ldr r7, dword_80BA9A0 // =0x1101 
     bl sub_80C53A6
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -5457,7 +5457,7 @@ sub_80BA946:
     ldr r6, [r5,#0x2c]
     ldr r7, dword_80BA9A0 // =0x1101 
     bl sub_80C53A6
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -6169,7 +6169,7 @@ sub_80BAE7A:
     mov r7, #0
     sub r7, #1
 loc_80BAE80:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -6205,7 +6205,7 @@ loc_80BAEB8:
 sub_80BAEC0:
     push {r4,r6,r7,lr}
     add r4, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -6222,7 +6222,7 @@ sub_80BAEC0:
 sub_80BAEDC:
     push {r4,r6,r7,lr}
     add r4, r0, #1
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -6393,7 +6393,7 @@ off_80BB038:    .word sub_80BB048+1
 .thumb_func
 sub_80BB048:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r0, [r5,#0x16]
     ldr r1, off_80BB090 // =unk_80BB094 
@@ -6557,7 +6557,7 @@ locret_80BB16E:
 .thumb_func
 ho_80BB170:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r6, r0, #0
     ldr r1, off_80BB188 // =jt_80BB18C 
     ldrb r0, [r5,#0xb]
@@ -6652,7 +6652,7 @@ locret_80BB1FC:
 .thumb_func
 sub_80BB1FE:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r7, r0, #0
     ldr r0, [r5,#0x74]
     ldr r1, [r5,#0x78]
@@ -6688,7 +6688,7 @@ locret_80BB23C:
 .thumb_func
 sub_80BB23E:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r6, r0, #0
     mov r4, #0x48 
     ldr r0, [r5,#0x74]
@@ -6847,7 +6847,7 @@ off_80BB388:    .word sub_80BB398+1
 .thumb_func
 sub_80BB398:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     mov r1, #2
     str r1, [r5,#0x78]
@@ -7010,7 +7010,7 @@ locret_80BB4CC:
 .thumb_func
 sub_80BB4CE:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r6, r0, #0
     ldr r1, off_80BB4EC // =off_80BB4F0 
     ldrb r0, [r5,#0xb]
@@ -7072,7 +7072,7 @@ locret_80BB52C:
 .thumb_func
 sub_80BB52E:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r7, r0, #0
     mov r0, #4
     ldr r1, [r5,#0x7c]
@@ -7473,7 +7473,7 @@ sub_80BB81C:
     push {r4,r6,lr}
     mov r6, #1
 loc_80BB820:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r6
     ldr r1, [r5,#0x64]
     lsl r1, r1, #1
@@ -7554,7 +7554,7 @@ sub_80BB8B0:
     push {r4,r6,lr}
     mov r6, #1
 loc_80BB8B4:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r6
     ldr r1, [r5,#0x64]
     lsl r1, r1, #1
@@ -7855,7 +7855,7 @@ locret_80BBAEA:
 .thumb_func
 sub_80BBAEC:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80BBB94 // =0x40000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -7903,7 +7903,7 @@ sub_80BBB38:
     push {r4,r6,r7,lr}
     mov r4, #0
 loc_80BBB3C:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     add r1, r4, #1
     mul r0, r1
@@ -8067,7 +8067,7 @@ sub_80BBC80:
     strb r1, [r5,#0xa]
     mov r0, #0
     strb r0, [r5,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldr r1, dword_80BBF04 // =0x8000 
     mul r0, r1
@@ -8276,7 +8276,7 @@ locret_80BBE0C:
 .thumb_func
 sub_80BBE0E:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80BBF08 // =0x80000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -8937,7 +8937,7 @@ loc_80BC304:
 .thumb_func
 sub_80BC30E:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     add r3, r0, #0
     ldr r0, [r5,#0x40]
@@ -9043,7 +9043,7 @@ locret_80BC3B6:
     bl sub_800E29C
     mov r0, #4
     strb r0, [r5,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, off_80BC4E4 // =dword_810AA3C 
     mov r2, #0x64 
     ldrb r3, [r5,r2]
@@ -9184,7 +9184,7 @@ locret_80BC4B2:
     mov r1, #0x3c 
     svc 6
     add r2, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r2
     pop {r4-r7,pc}
 dword_80BC4DC:    .word 0x780000
@@ -9415,7 +9415,7 @@ sub_80BC670:
     svc 6
     str r0, [r5,#0x64]
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r2, r0, #0
     ldr r0, [r5,#0x64]
     mov r1, #0x62 
@@ -9510,7 +9510,7 @@ loc_80BC7C4:
     mov r1, #2
     strh r1, [r5,#0x20]
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r3, r0, #0
     mov r0, #0x68 
     ldr r0, [r5,r0]
@@ -9911,7 +9911,7 @@ sub_80BCAD4:
     bl sub_80BCB34
     tst r0, r0
     beq locret_80BCB10
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x64]
     tst r1, r1
     bne loc_80BCAF2
@@ -10098,7 +10098,7 @@ loc_80BCC4E:
     strh r0, [r5,#0x20]
     cmp r0, #0xa
     blt locret_80BCC86
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -10280,7 +10280,7 @@ loc_80BCD90:
     mov r1, #2
     orr r0, r1
     strb r0, [r5]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r7, r0, #0
     ldr r3, [r5,#0x4c]
     mov r0, #0x34 
@@ -10934,7 +10934,7 @@ sub_80BD278:
     push {r4,r6,r7,lr}
     sub sp, sp, #8
     str r1, [sp,#4]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -10984,7 +10984,7 @@ sub_80BD2D8:
     push {r4,r6,r7,lr}
     sub sp, sp, #0x28
     mov r6, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r0, [r5,#0x12]
     add r0, r0, r4
@@ -11118,7 +11118,7 @@ loc_80BD3CC:
     strb r0, [r5,#0x10]
     mov r0, #0xff
     strb r0, [r5,#0x11]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldr r3, [r5,#0x4c]
     mov r0, #0x34 
@@ -11297,7 +11297,7 @@ loc_80BD54A:
     strh r0, [r5,#0xa]
     b locret_80BD584
 loc_80BD568:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     strb r0, [r5,#0x14]
@@ -11354,7 +11354,7 @@ loc_80BD5C0:
     beq loc_80BD614
     push {r0,r1}
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r2, r0
     pop {r0,r1}
     add r0, r0, r2
@@ -11389,7 +11389,7 @@ loc_80BD614:
     cmp r1, #3
     ble loc_80BD5C0
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r2, r0, #0
     pop {r0,r1}
     add r0, r0, r2
@@ -11454,7 +11454,7 @@ sub_80BD67E:
     strb r0, [r5,#0x10]
     mov r0, #0
     strh r0, [r5,#0x20]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldrb r1, [r5,#0x14]
     add r0, r0, r1
@@ -11504,7 +11504,7 @@ loc_80BD6E6:
     ldrh r0, [r5,#0x20]
     cmp r0, #5
     bne loc_80BD734
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -11941,7 +11941,7 @@ dword_80BDA04:    .word 0x12800
 sub_80BDA08:
     push {lr}
     sub sp, sp, #0x10
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [sp,#8]
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -12246,7 +12246,7 @@ loc_80BDC3E:
     ldrb r0, [r5,#4]
     cmp r0, #0
     bne loc_80BDC76
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldr r3, [r5,#0x4c]
     mov r0, #0x34 
@@ -12471,7 +12471,7 @@ loc_80BDE06:
     bl sub_80B8E30
     ldr r0, [r5,#0x50]
     bl sub_80C44D2
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -12635,7 +12635,7 @@ sub_80BDF3C:
     bne loc_80BDF8C
     mov r0, #3
     strb r0, [r5,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldrb r1, [r5,#0x14]
     add r0, r0, r1
@@ -12766,7 +12766,7 @@ loc_80BE032:
     lsl r4, r0, #8
     ldr r0, [sp]
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -12776,7 +12776,7 @@ loc_80BE032:
     mov r3, #0x10
     lsl r3, r3, #0x10
     bl sub_80E05F6
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -12970,7 +12970,7 @@ loc_80BE1B4:
     sub r0, #1
     strh r0, [r5,#0x20]
     bgt locret_80BE1DA
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x50 
     mul r1, r0
     lsl r1, r1, #0x10
@@ -13004,7 +13004,7 @@ sub_80BE1DC:
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_80BE1F8:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r0, r0, r0
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -13118,7 +13118,7 @@ sub_80BE2B8:
     bne loc_80BE304
     mov r0, #1
     strb r0, [r5,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldrb r1, [r5,#0x14]
     add r0, r0, r1
@@ -13197,7 +13197,7 @@ loc_80BE348:
     lsl r4, r0, #8
     ldr r0, [sp]
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -13207,7 +13207,7 @@ loc_80BE348:
     mov r3, #0x10
     lsl r3, r3, #0x10
     bl sub_80E05F6
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -13333,7 +13333,7 @@ sub_80BE434:
     ldr r1, off_80BE4D0 // =off_80BE4C8 
     ldr r0, [r1,r0]
     str r0, [sp,#0x14]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [sp]
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -14159,7 +14159,7 @@ loc_80BEAF4:
     add r1, r1, r0
     ldrh r0, [r5,#0x20]
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
@@ -14308,7 +14308,7 @@ loc_80BEBF8:
     ldrb r1, [r2,r1]
     add r1, r1, r0
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
@@ -14487,7 +14487,7 @@ loc_80BED3A:
     ldrh r0, [r5,#0x20]
     cmp r0, #9
     bne loc_80BED94
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -14579,7 +14579,7 @@ sub_80BEE04:
     bne loc_80BEE44
     mov r0, #0xf
     strb r0, [r5,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -14784,7 +14784,7 @@ loc_80BEF8A:
     ldrh r0, [r5,#0x20]
     cmp r0, #0xc
     bne loc_80BEFB2
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -15074,7 +15074,7 @@ sub_80BF192:
     ldrb r1, [r5,#0x17]
     eor r1, r0
     ldrb r0, [r5,#0x16]
-    bl object_getFlipDirection
+    bl object_getFlipDirection // (int a1, int a2) -> int
     str r0, [sp,#0x1c]
     ldrb r0, [r5,#0x16]
     lsl r0, r0, #3
@@ -15863,7 +15863,7 @@ loc_80BF730:
     strb r0, [r5,#0x10]
     mov r0, #0xff
     strb r0, [r5,#0x11]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldr r3, [r5,#0x4c]
     mov r0, #0x34 
@@ -16280,7 +16280,7 @@ sub_80BFA38:
     bl sound_play // () -> void
     mov r0, #0
     strh r0, [r5,#0x20]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldr r1, dword_80BFAD0 // =0x640000 
     mul r1, r0
@@ -16289,7 +16289,7 @@ sub_80BFA38:
     str r0, [r5,#0x34]
     ldr r0, dword_80BFAD0 // =0x640000 
     str r0, [r5,#0x3c]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80BFAD4 // =0xA0000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -16460,7 +16460,7 @@ loc_80BFB98:
     ldrh r0, [r5,#0x20]
     cmp r0, #0xa
     bne loc_80BFBEA
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -16682,7 +16682,7 @@ sub_80BFD02:
     strb r0, [r7,#8]
     mov r0, #8
     strb r0, [r7,#0xa]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [sp,#4]
 loc_80BFD2C:
     ldr r6, [sp]
@@ -17967,7 +17967,7 @@ sub_80C06DC:
     bne loc_80C06F6
     mov r0, #0x14
     strh r0, [r5,#0x20]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r0, r0, r0
     lsl r0, r0, #0x10
     str r0, [r5,#0x40]
@@ -18530,7 +18530,7 @@ loc_80C0AA6:
     mov r0, #3
 loc_80C0AD6:
     str r0, [r5,#0x60]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -18559,7 +18559,7 @@ loc_80C0B00:
     sub r0, #1
     strh r0, [r5,#0x22]
     ble loc_80C0B24
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -18572,7 +18572,7 @@ loc_80C0B24:
     beq loc_80C0B44
     mov r0, #3
     strh r0, [r5,#0x22]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -18837,7 +18837,7 @@ loc_80C0CE8:
     cmp r2, r0
 loc_80C0CEA:
     ble loc_80C0D22
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldr r1, [sp,#0x20]
     add r0, r0, r1
@@ -20378,7 +20378,7 @@ sub_80C185C:
     eor r0, r1
     lsl r0, r0, #8
     push {r0}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -20399,7 +20399,7 @@ dword_80C1888:    .word 0x60216
 sub_80C188C:
     push {r4-r7,lr}
     ldr r6, [r5,#0x2c]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -20455,7 +20455,7 @@ loc_80C18E4:
     bne loc_80C190A
     cmp r1, #0x14
     bne loc_80C190A
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -20463,7 +20463,7 @@ loc_80C18E4:
     ldrb r1, [r5,#0x13]
     b loc_80C1914
 loc_80C190A:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -20492,7 +20492,7 @@ loc_80C1936:
     ldr r1, [r7,r0]
     push {r1}
     ldr r5, [r5,#0x4c]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     pop {r1}
     push {r0}
     ldrb r0, [r5,#0x12]
@@ -20532,7 +20532,7 @@ loc_80C1970:
     bne loc_80C19A2
     cmp r1, #0x14
     bne loc_80C19A2
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -20541,7 +20541,7 @@ loc_80C1970:
 loc_80C19A0:
     b loc_80C19F8
 loc_80C19A2:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -20574,7 +20574,7 @@ loc_80C19C6:
     bne loc_80C19EE
     cmp r1, #0x14
     bne loc_80C19EE
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -20582,7 +20582,7 @@ loc_80C19C6:
     ldrb r1, [r5,#0x13]
     b loc_80C19F8
 loc_80C19EE:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -21352,7 +21352,7 @@ sub_80C2000:
     ldr r1, [r5,#0x60]
     add r6, r6, r1
     ldr r7, dword_80C2040 // =0x3 
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -21381,7 +21381,7 @@ sub_80C205C:
     bl sub_800E29C
     mov r0, #0
     str r0, [r5,#0x3c]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0xa
     lsl r1, r1, #0x10
     mul r0, r1
@@ -21400,7 +21400,7 @@ sub_80C2082:
     bl sub_800E456
     lsl r0, r0, #8
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -21425,7 +21425,7 @@ sub_80C20B4:
     ldr r1, off_80C2104 // =dword_80C2108 
     ldr r6, [r1,r0]
 loc_80C20C0:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -21468,7 +21468,7 @@ sub_80C2110:
     bl sub_800E456
     lsl r0, r0, #8
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -22099,7 +22099,7 @@ dword_80C25FC:    .word 0xF880080
 sub_80C2600:
     push {r4,r6,r7,lr}
     add r7, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, off_80C2660 // =dword_80C2664 
     ldrb r1, [r1,r7]
     mul r0, r1
@@ -22148,7 +22148,7 @@ sub_80C2678:
     bl sub_800E29C
     mov r0, #0
     str r0, [r5,#0x3c]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mov r1, #0xa
     lsl r1, r1, #0x10
@@ -22167,7 +22167,7 @@ sub_80C26A0:
     bl sub_800E456
     lsl r0, r0, #8
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -22184,7 +22184,7 @@ sub_80C26A0:
 .thumb_func
 sub_80C26C8:
     push {r4,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -22364,7 +22364,7 @@ loc_80C2816:
     str r0, [r5,#8]
     b locret_80C2852
 loc_80C2834:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     strb r0, [r5,#0x14]
@@ -22426,7 +22426,7 @@ loc_80C2890:
     beq loc_80C28DE
     push {r0,r1}
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r2, r0
     pop {r0,r1}
     add r0, r0, r2
@@ -22458,7 +22458,7 @@ loc_80C28DE:
     cmp r1, #3
     ble loc_80C2890
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r2, r0, #0
     pop {r0,r1}
     add r0, r0, r2
@@ -22514,7 +22514,7 @@ sub_80C2934:
     strb r0, [r5,#0x10]
     mov r0, #3
     strh r0, [r5,#0x20]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldrb r1, [r5,#0x14]
     add r0, r0, r1
@@ -22565,7 +22565,7 @@ loc_80C299C:
     ldrh r0, [r5,#0x20]
     cmp r0, #0xa
     bne loc_80C29D8
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -22892,7 +22892,7 @@ sub_80C2C14:
     strb r0, [r7,#0x18]
     strb r0, [r7,#0x16]
     strb r0, [r7,#0x17]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
 loc_80C2C26:
@@ -22911,7 +22911,7 @@ loc_80C2C28:
     beq loc_80C2C86
     push {r0,r1}
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r2, r0
     pop {r0,r1}
     add r0, r0, r2
@@ -22951,7 +22951,7 @@ loc_80C2C86:
     cmp r1, #3
     ble loc_80C2C28
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r2, r0, #0
     pop {r0,r1}
     add r0, r0, r2
@@ -23134,7 +23134,7 @@ loc_80C2DCA:
     pop {r4}
     ldr r0, [r7,#0xc]
     mov r1, #0
-    bl object_getFlipDirection
+    bl object_getFlipDirection // (int a1, int a2) -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -23275,7 +23275,7 @@ sub_80C2EC4:
     eor r0, r1
     eor r0, r2
     strb r0, [r7,#0xc]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     add r2, r6, r6
     ldr r3, off_80C2F1C // =dword_80C2F20 
@@ -23617,7 +23617,7 @@ sub_80C314E:
 loc_80C316E:
     mov r0, #0x12
     strh r0, [r5,#0x20]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -25110,7 +25110,7 @@ loc_80C3C48:
     mov r4, #4
     b loc_80C3C6C
 loc_80C3C50:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r4, r0
     add r0, r4, #0
     ldr r3, off_80C3C8C // =dword_80C3C90 
@@ -25147,7 +25147,7 @@ dword_80C3C90:    .word 0x20, 0x0, 0x0
 .thumb_func
 sub_80C3CA0:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r4, #0x14
     lsl r4, r4, #0x10
     mul r4, r0
@@ -27222,7 +27222,7 @@ loc_80C4F2A:
     sub r0, #1
     strh r0, [r5,#0x20]
     bge loc_80C4FF8
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     strb r0, [r5,#0x12]
@@ -27343,7 +27343,7 @@ sub_80C5014:
     bl sub_80302A8
     mov r0, #0xc3
     bl sound_play // () -> void
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     lsl r0, r0, #1
     ldrb r1, [r5,#0x12]
     sub r0, r1, r0
@@ -27482,7 +27482,7 @@ loc_80C513E:
     sub r0, #1
     strh r0, [r5,#0x20]
     bge loc_80C5170
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     strb r0, [r5,#0x12]
@@ -27566,7 +27566,7 @@ sub_80C51CC:
     bl sprite_update
     bl sub_8002F90
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#4]
     mov r2, #3
     mul r1, r2
@@ -27854,7 +27854,7 @@ loc_80C5412:
     bl sub_800E456
     bl sub_8002F5C
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r2, [r5,#7]
     cmp r2, #1
     bne loc_80C5466
@@ -27954,7 +27954,7 @@ sub_80C552A:
     beq loc_80C5566
     sub r0, #1
     strb r0, [r5,#5]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -28797,7 +28797,7 @@ sub_80C5C9C:
     ldrb r0, [r5,#0xb]
     tst r0, r0
     bne loc_80C5CC0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r7, off_80C5D70 // =dword_80C5D58 
     ldmia r7!, {r1-r3}
     mul r1, r0
@@ -29317,7 +29317,7 @@ loc_80C613A:
     ldrb r0, [r7,#9]
     strb r0, [r5,#7]
     bl sub_800E2AC
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r7,#0xc]
     mul r0, r1
     str r0, [r5,#0x40]
@@ -29882,7 +29882,7 @@ off_80C6594:    .word sub_80C65A0+1
 sub_80C65A0:
     push {r7,lr}
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [r5,#0x40]
     bl sub_8019892
     tst r0, r0
@@ -30060,7 +30060,7 @@ sub_80C6726:
 .thumb_func
 sub_80C673A:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -30314,7 +30314,7 @@ sub_80C6964:
     ldr r7, off_80C6AF0 // =dword_80C68D4 
     add r7, r7, r0
     str r7, [r5,#0x60]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [r5,#0x40]
     bl sub_8019892
     tst r0, r0
@@ -30641,7 +30641,7 @@ loc_80C6C76:
     bl sub_80C6D1E
     b loc_80C6C98
 loc_80C6C8E:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -30736,7 +30736,7 @@ sub_80C6D1E:
     ldrb r2, [r5,#5]
     cmp r2, #0
     beq loc_80C6D42
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -30750,7 +30750,7 @@ sub_80C6D1E:
     add r1, r2, #0
     b locret_80C6DAE
 loc_80C6D42:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -30766,7 +30766,7 @@ loc_80C6D42:
     bl sub_8109708
     cmp r0, #0
     bne loc_80C6DA4
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -30796,7 +30796,7 @@ loc_80C6D88:
     strb r2, [r5,#5]
     b locret_80C6DAE
 loc_80C6DA4:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -30980,7 +30980,7 @@ sub_80C6F08:
     ldr r4, [r1,r0]
     mov r6, #1
 loc_80C6F16:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r6
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -31041,7 +31041,7 @@ loc_80C6F86:
     ble loc_80C6F5A
     mov r6, #1
 loc_80C6F8E:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r6
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -31093,7 +31093,7 @@ sub_80C6FC8:
     bl sub_80E3A92
     mov r6, #1
 loc_80C6FF2:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r6
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -31146,7 +31146,7 @@ loc_80C7050:
     ble loc_80C7036
     mov r6, #1
 loc_80C7058:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r6
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -31265,7 +31265,7 @@ locret_80C7130:
     str r2, [sp,#8]
     str r3, [sp,#0xc]
     str r6, [sp,#0x14]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [sp,#0x18]
     lsl r7, r4, #2
     ldr r0, off_80C7184 // =off_80C7188 
@@ -33140,7 +33140,7 @@ sub_80C7F64:
     bl sub_800E29C
     mov r0, #0
     strh r0, [r5,#0x3e]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x88
     mul r0, r1
     ldrh r1, [r5,#0x36]
@@ -33343,7 +33343,7 @@ loc_80C8154:
     sub r0, #1
     strh r0, [r5,#0x20]
     bgt loc_80C8192
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     strb r0, [r5,#0x12]
@@ -33543,7 +33543,7 @@ sub_80C82D0:
     mov r4, #1
 loc_80C82D4:
     push {r4,r5}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -33577,7 +33577,7 @@ sub_80C8310:
     mov r4, #1
     add r6, r0, #0
 loc_80C8316:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -33596,7 +33596,7 @@ sub_80C832E:
     mov r4, #1
     add r6, r0, #0
 loc_80C8334:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -33838,7 +33838,7 @@ off_80C8560:    .word sub_80C856C+1
 sub_80C856C:
     push {lr}
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x18
     lsl r1, r1, #0x10
     mul r0, r1
@@ -33905,7 +33905,7 @@ sub_80C85F4:
     bne loc_80C8626
     mov r1, #4
     strb r1, [r5,#0xa]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #4
     lsl r1, r1, #0x10
     mul r0, r1
@@ -33973,7 +33973,7 @@ sub_80C8660:
     push {r0,r1}
     bl sub_80C8806
     pop {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -34458,7 +34458,7 @@ locret_80C8A78:
     push {r7,lr}
     bl sub_80C89AC
     add r7, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r1, r0
     ldrb r0, [r5,#0x12]
@@ -34528,7 +34528,7 @@ loc_80C8B12:
     bl sub_801A018
     mov r0, #0
     strb r0, [r5,#0xb]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     strb r0, [r5,#7]
     mov r0, #7
     add r0, #0xff
@@ -35096,7 +35096,7 @@ sub_80C8FA0:
     push {r4,r6,r7,lr}
     mov r4, #0
 loc_80C8FA4:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mul r0, r4
     ldrb r1, [r5,#0x12]
@@ -35129,7 +35129,7 @@ sub_80C8FDC:
     push {r4,lr}
     mov r4, #0
 loc_80C8FE0:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mul r0, r4
     ldrb r1, [r5,#0x12]
@@ -35175,7 +35175,7 @@ sub_80C9024:
     bl sub_8002F90
     bl sprite_update
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [r5,#0x40]
     mov r0, #5
     strb r0, [r5,#0xe]
@@ -35264,7 +35264,7 @@ sub_80C90DC:
     bl sub_8018842
     lsl r6, r0, #0x10
     lsl r7, r1, #0x10
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mul r6, r0
     mov r0, #0x34 
@@ -35833,7 +35833,7 @@ sub_80C956C:
 
     cmp r0, #0
     bne loc_80C957C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     b loc_80C95BA
 loc_80C957C:
     ldrb r3, [r5,#0x13]
@@ -36242,7 +36242,7 @@ sub_80C9848:
     ldr r7, dword_80C98D8 // =0x80C9818 
     add r7, r7, r0
     str r7, [r5,#0x60]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [r5,#0x40]
     ldrb r1, [r5,#5]
     add r1, r1, r1
@@ -36701,7 +36701,7 @@ sub_80C9CA2:
     sub r0, #1
     strh r0, [r5,#0x20]
     bne locret_80C9CC2
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -36881,7 +36881,7 @@ sub_80C9E20:
     ldrb r3, [r1,r0]
     lsl r3, r3, #0x10
     push {r3}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     pop {r3}
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -37008,7 +37008,7 @@ locret_80C9F16:
 .thumb_func
 sub_80C9F18:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
@@ -37252,7 +37252,7 @@ loc_80CA10E:
     str r2, [sp,#8]
     str r3, [sp,#0xc]
     str r6, [sp,#0x14]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [sp,#0x18]
     lsl r7, r7, #2
     ldr r4, off_80CA158 // =dword_80CA170 
@@ -37321,7 +37321,7 @@ loc_80CA1A8:
     str r2, [sp,#8]
     str r3, [sp,#0xc]
     str r6, [sp,#0x14]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [sp,#0x18]
     lsl r7, r7, #2
     ldr r4, off_80CA1F0 // =unk_80CA208 
@@ -37594,7 +37594,7 @@ sub_80CA408:
     beq loc_80CA47C
     cmp r0, #1
     beq loc_80CA456
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x40]
     mul r1, r0
     ldr r0, [r5,#0x34]
@@ -37650,7 +37650,7 @@ loc_80CA47C:
     mov r1, #1
     eor r0, r1
     ldrb r1, [r5,#0x17]
-    bl object_getFlipDirection
+    bl object_getFlipDirection // (int a1, int a2) -> int
     ldr r1, [r5,#0x40]
     mul r1, r0
     ldr r0, [r5,#0x34]
@@ -37812,7 +37812,7 @@ loc_80CA59E:
     strb r0, [r5]
     bl sub_800E456
     bl sub_8002F5C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80CA6B4 // =0x80000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -37984,7 +37984,7 @@ loc_80CA72A:
     bl sub_8002F5C
     ldrb r0, [r5,#4]
     bl sprite_setPallete
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, off_80CA79C // =dword_80CA7A0 
     mov r2, #2
     ldrb r3, [r5,#6]
@@ -38415,7 +38415,7 @@ locret_80CAB42:
 
     push {lr}
     push {r1-r3}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -38889,7 +38889,7 @@ off_80CAF08:    .word sub_80CAF14+1
 sub_80CAF14:
     push {lr}
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80CB0D4 // =0x140000 
     mul r0, r1
     ldr r1, [r5,#0x34]
@@ -39381,7 +39381,7 @@ loc_80CB2F2:
     mov r0, #6
     bl sub_801A140
     bl sub_801A018
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     ldrb r2, [r5,#5]
     sub r2, r2, r1
@@ -39623,14 +39623,14 @@ sub_80CB4D4:
 
     bl sub_800E456
     bl sub_8002F5C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, off_80CB588 // =dword_80CB58C 
     ldrb r2, [r5,#4]
     lsl r2, r2, #2
     ldr r1, [r1,r2]
     mul r0, r1
     str r0, [r5,#0x40]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     sub r1, r1, r0
     strb r1, [r5,#0x12]
@@ -39715,7 +39715,7 @@ sub_80CB628:
     beq locret_80CB684
     mov r0, #1
     strb r0, [r5,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r1, r1, r0
     strb r1, [r5,#0x12]
@@ -39892,7 +39892,7 @@ loc_80CB7CE:
     bgt locret_80CB892
     mov r0, #0
     strb r0, [r5,#0xa]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     strb r0, [r5,#0x12]
@@ -39909,7 +39909,7 @@ loc_80CB7CE:
     bl sub_80302A8
     mov r0, #0xc3
     bl sound_play // () -> void
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     sub r0, r1, r0
     ldrb r1, [r5,#0x13]
@@ -40124,7 +40124,7 @@ loc_80CB98E:
     mov r0, #0x60 
     bl sub_801A258
     bl sub_801A018
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x60]
     mul r0, r1
     str r0, [r5,#0x40]
@@ -40715,7 +40715,7 @@ locret_80CBE80:
     cmp r2, #0
     bne loc_80CBF00
     push {r0}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r2, r0, #0
     pop {r0}
     ldr r3, [r4,#0x34]
@@ -40739,7 +40739,7 @@ loc_80CBEB2:
     cmp r0, #0
     beq loc_80CBF00
     push {r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r6, r0, #0
     ldrb r0, [r4,#0x12]
     ldrb r1, [r4,#0x13]
@@ -40778,7 +40778,7 @@ loc_80CBF00:
     cmp r2, #0
     bne loc_80CBF4E
     push {r0}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r2, r0, #0
     pop {r0}
     ldr r3, [r4,#0x34]
@@ -41640,7 +41640,7 @@ loc_80CC5FA:
     strb r0, [r5]
     ldrb r0, [r5,#4]
     bl sprite_setPallete
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, off_80CC658 // =dword_80CC65C 
     ldrb r2, [r5,#4]
     lsl r2, r2, #2
@@ -41913,7 +41913,7 @@ sub_80CC8BA:
     strb r1, [r5,#0xa]
     mov r0, #0xb3
     bl sound_play // () -> void
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldr r2, off_80CC904 // =unk_80CC908 
     ldrb r3, [r5,#4]
@@ -42686,7 +42686,7 @@ sub_80CCED0:
     lsl r0, r0, #2
     ldr r1, off_80CCF68 // =dword_80CCF6C 
     ldr r4, [r1,r0]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldrb r1, [r5,#5]
     lsl r1, r1, #1
@@ -43113,7 +43113,7 @@ locret_80CD234:
 sub_80CD236:
     push {r4,r6,r7,lr}
     add r6, r1, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r1, r6, #0
     neg r6, r0
     ldrb r0, [r5,#0x16]
@@ -43146,7 +43146,7 @@ locret_80CD26A:
 sub_80CD26C:
     push {r4,r6,r7,lr}
     push {r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r6, r0, #0
     pop {r1}
     ldrb r0, [r5,#0x16]
@@ -43260,7 +43260,7 @@ loc_80CD320:
     lsr r1, r1, #0x19
     eor r0, r1
     ldrb r1, [r5,#0x17]
-    bl object_getFlipDirection
+    bl object_getFlipDirection // (int a1, int a2) -> int
     ldr r1, dword_80CD3AC // =0xA0000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -45092,7 +45092,7 @@ sub_80CE308:
     ldrb r0, [r5,#0xb]
     tst r0, r0
     bne loc_80CE32C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r7, off_80CE520 // =dword_80CE3AC 
     ldmia r7!, {r1-r3}
     mul r1, r0
@@ -45400,7 +45400,7 @@ sub_80CE554:
     mul r0, r1
     bl sprite_setPallete
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80CE704 // =0xC0000 
     mul r1, r0
     str r1, [r5,#0x40]
@@ -45614,7 +45614,7 @@ loc_80CE75A:
     mov r0, #0
     bl sprite_setPallete
     bl sub_801A018
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x60]
     mul r0, r1
     str r0, [r5,#0x40]
@@ -45709,7 +45709,7 @@ sub_80CE83C:
     pop {pc}
 loc_80CE858:
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80CE878 // =0x50000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -46169,7 +46169,7 @@ sub_80CEBBE:
     strb r1, [r5,#0xa]
     mov r0, #0x1f
     strb r0, [r5,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80CEE60 // =0x260000 
     mul r0, r1
     ldr r1, [r5,#0x34]
@@ -46177,7 +46177,7 @@ sub_80CEBBE:
     str r1, [r5,#0x34]
     ldr r0, dword_80CEE64 // =0x540000 
     str r0, [r5,#0x3c]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80CEE68 // =0x60000 
     mul r1, r0
     ldr r2, dword_80CEE68 // =0x60000 
@@ -46221,7 +46221,7 @@ sub_80CEC1A:
     str r0, [r5,#0x64]
     str r1, [r5,#0x68]
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mov r2, #2
     mul r2, r0
@@ -46270,7 +46270,7 @@ sub_80CEC7C:
     bne loc_80CECAC
     mov r1, #4
     strb r1, [r5,#0xa]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#4]
     lsl r1, r1, #3
     ldr r2, off_80CED14 // =dword_80CED18 
@@ -46413,7 +46413,7 @@ loc_80CEDAE:
     add r4, #1
     cmp r4, #4
     blt loc_80CED98
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     str r0, [sp,#8]
     ldrb r0, [r5,#0x16]
@@ -46639,7 +46639,7 @@ loc_80CEFA8:
     ldrb r3, [r1,r0]
     lsl r3, r3, #0x10
     push {r3}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     pop {r3}
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -47191,7 +47191,7 @@ sub_80CF3DC:
     bl sub_800E456
     bl sub_8002F5C
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x10
     lsl r1, r1, #0x10
     mul r1, r0
@@ -47489,7 +47489,7 @@ sub_80CF700:
     bne loc_80CF728
     mov r1, #4
     strb r1, [r5,#0xa]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldr r2, off_80CF758 // =dword_80CF75C 
     ldrb r3, [r5,#4]
@@ -47655,7 +47655,7 @@ loc_80CF85A:
     str r0, [r5,#0x3c]
     mov r0, #0
     strh r0, [r5,#0x20]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x40]
     mul r0, r1
     str r0, [r5,#0x40]
@@ -48382,7 +48382,7 @@ sub_80CFE08:
     str r3, [sp,#8]
     str r4, [sp,#0xc]
     str r6, [sp,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [sp,#0x14]
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -48509,7 +48509,7 @@ sub_80CFEE4:
     bl sub_800E276
     str r1, [r5,#0x38]
     push {r0}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r2, r0
     pop {r0}
     mov r1, #0xb4
@@ -48610,7 +48610,7 @@ loc_80CFFE8:
     bl sound_play // () -> void
     pop {r4,pc}
 loc_80D0010:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80D009C // =0xC0000 
     ldr r2, [r5,#0x3c]
     sub r2, r2, r1
@@ -48918,7 +48918,7 @@ dword_80D022C:    .word 0x3
 
     push {r4,r6,lr}
     add r6, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x14
     lsl r1, r1, #0x10
     mul r0, r1
@@ -49130,7 +49130,7 @@ sub_80D03B8:
     ldrh r1, [r5,#0x3e]
     add r1, r1, r0
     strh r1, [r5,#0x3e]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#4]
     lsl r1, r1, #2
     ldr r2, off_80D0440 // =dword_80D0444 
@@ -49458,7 +49458,7 @@ loc_80D065C:
     beq loc_80D069E
     b loc_80D06B6
 loc_80D069E:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80D07C0 // =0x80000 
     mul r1, r0
     ldr r2, [r5,#0x34]
@@ -49848,7 +49848,7 @@ sub_80D09BE:
 loc_80D09CC:
     mov r6, #0
 loc_80D09CE:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r0, [r5,#0x12]
     add r0, r0, r4
@@ -49892,7 +49892,7 @@ loc_80D0A08:
     svc 6
     str r0, [r5,#0x44]
 loc_80D0A24:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#4]
     lsl r1, r1, #2
     ldr r2, off_80D0A50 // =dword_80D0A54 
@@ -51009,7 +51009,7 @@ loc_80D13D8:
     ldrb r0, [r5,#7]
     cmp r0, #0
     beq locret_80D13F4
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80D1508 // =0x30000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -51122,7 +51122,7 @@ sub_80D149E:
     ldrb r0, [r5,#7]
     cmp r0, #0
     beq loc_80D14D2
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     strb r0, [r5,#0x12]
@@ -51144,7 +51144,7 @@ sub_80D149E:
 loc_80D14D2:
     mov r0, #0
     str r0, [r5,#0x44]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80D150C // =0x1C000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -51294,7 +51294,7 @@ sub_80D1610:
     bne loc_80D162A
     mov r1, #4
     strb r1, [r5,#0xa]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x64]
     mul r0, r1
     str r0, [r5,#0x40]
@@ -51534,7 +51534,7 @@ sub_80D17C8:
     ldr r1, off_80D1850 // =dword_80D1854 
     ldrb r0, [r1,r0]
     strh r0, [r5,#0x3e]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mov r1, #8
     lsl r1, r1, #0x10
@@ -52137,7 +52137,7 @@ loc_80D1C84:
     ldr r0, [r2,r1]
     str r0, [r5,#0x64]
     bl sub_801A018
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x60]
     mul r0, r1
     str r0, [r5,#0x40]
@@ -52784,7 +52784,7 @@ locret_80D2220:
 .thumb_func
 sub_80D2222:
     push {r4,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldr r0, [r5,#0x68]
     tst r0, r0
@@ -52814,7 +52814,7 @@ loc_80D2250:
     str r1, [r5,#0x68]
     b locret_80D2276
 loc_80D2260:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x64]
     mul r0, r1
     str r0, [r5,#0x40]
@@ -53091,7 +53091,7 @@ sub_80D2480:
     eor r0, r1
     bl sub_8002F5C
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x40 
     mul r1, r0
     ldrh r2, [r5,#0x36]
@@ -53523,7 +53523,7 @@ sub_80D282C:
     str r0, [r5,#0x68]
     bl sub_80D2A14
     add r6, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -53591,7 +53591,7 @@ loc_80D28B6:
     bgt locret_80D2902
     bl sub_80D2A14
     add r6, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -53998,7 +53998,7 @@ locret_80D2BBE:
 .thumb_func
 sub_80D2BC0:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r2, [r5,#0x4c]
     ldrb r1, [r2,#0x12]
     add r1, r1, r0
@@ -54389,7 +54389,7 @@ sub_80D3058:
     ldr r0, [r5,#0x60]
     cmp r0, #0xff
     bne loc_80D307A
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80D30A0 // =0x100000 
     mul r0, r1
     mov r1, #0
@@ -54488,7 +54488,7 @@ loc_80D311E:
     ldr r0, [r2,r1]
     str r0, [r5,#0x64]
     bl sub_801A018
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x60]
     mul r0, r1
     str r0, [r5,#0x40]
@@ -54720,7 +54720,7 @@ loc_80D333C:
 .thumb_func
 sub_80D3342:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldr r0, [r5,#0x4c]
     ldrb r0, [r0,#0x12]
@@ -55344,7 +55344,7 @@ dword_80D37E4:    .word 0x10020, 0x0
 .thumb_func
 sub_80D37F4:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     mov r6, #0
     ldrb r1, [r5,#0x12]
@@ -55426,7 +55426,7 @@ dword_80D3878:    .word 0x80D386C
     bl sub_800E29C
     mov r0, #0
     str r0, [r5,#0x3c]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80D39B0 // =0x140000 
     mul r0, r1
     ldr r1, [r5,#0x34]
@@ -55852,7 +55852,7 @@ sub_80D3C6C:
     bne loc_80D3CA2
     mov r1, #4
     strb r1, [r5,#0xb]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x10
     lsl r1, r1, #0x10
     mul r0, r1
@@ -57596,7 +57596,7 @@ locret_80D49F4:
 
     push {lr}
     push {r1-r3}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r4, [r5,#0x13]
     lsl r4, r4, #0x18
     mov r1, #3
@@ -58542,7 +58542,7 @@ sub_80D5160:
     bl sub_801A140
     bl sub_801A074
     bl sub_801A018
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80D5358 // =0x49000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -58686,7 +58686,7 @@ locret_80D52F8:
 .endfunc // sub_80D52C4
 
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -59017,7 +59017,7 @@ sub_80D55A4:
     ldrb r0, [r5,#6]
     strh r0, [r5,#0x20]
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80D5738 // =0x280000 
     mul r0, r1
     ldr r1, [r5,#0x34]
@@ -59036,7 +59036,7 @@ sub_80D55F8:
     sub r0, #1
     strh r0, [r5,#0x20]
     ble loc_80D562E
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r7, r0, #0
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
@@ -59115,7 +59115,7 @@ sub_80D5684:
     ldrb r0, [r7,#2]
     cmp r0, #0
     beq locret_80D56B8
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r7]
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -59246,7 +59246,7 @@ sub_80D5764:
     ldrh r0, [r5,#0x3e]
     sub r0, #1
     strh r0, [r5,#0x3e]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x28 
     mul r1, r0
     lsl r1, r1, #0x10
@@ -59255,7 +59255,7 @@ sub_80D5764:
     str r0, [r5,#0x34]
     b loc_80D57F6
 loc_80D57E6:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x28 
     mul r1, r0
     lsl r1, r1, #0x10
@@ -59323,7 +59323,7 @@ sub_80D584E:
     ldrb r1, [r5,#5]
     cmp r0, r1
     bne locret_80D5872
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r0, [r5,#0x12]
     mov r7, #0x64 
@@ -59402,7 +59402,7 @@ sub_80D58D8:
     bl sub_800E29C
     mov r0, #0
     strh r0, [r5,#0x3e]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x12
     lsl r1, r1, #0x10
     mul r0, r1
@@ -59668,7 +59668,7 @@ sub_80D5AE0:
     bl sub_800E29C
     mov r0, #0x19
     strh r0, [r5,#0x3e]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0xf
     lsl r0, r0, #0x10
     mul r0, r1
@@ -59710,7 +59710,7 @@ loc_80D5B3E:
     mov r0, #6
     bl sub_801A140
     bl sub_801A018
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#4]
     lsl r1, r1, #2
     ldr r2, off_80D5B70 // =dword_80D5B74 
@@ -59895,7 +59895,7 @@ sub_80D5CC8:
 sub_80D5CDC:
     push {r4,r6,r7,lr}
     add r6, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     lsl r0, r6, #1
     ldr r3, off_80D5D20 // =unk_80D5D24 
@@ -59982,7 +59982,7 @@ off_80D5D6C:    .word sub_80D5D78+1
 sub_80D5D78:
     push {lr}
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0xa
     mul r0, r1
     ldrh r1, [r5,#0x36]
@@ -60280,7 +60280,7 @@ sub_80D6020:
     bne loc_80D6048
     mov r1, #4
     strb r1, [r5,#0xa]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -60913,7 +60913,7 @@ sub_80D6580:
     bl sub_80D67D2
     ldrb r0, [r5,#6]
     bl sprite_setPallete
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     str r0, [r5,#0x40]
     mov r0, #1
@@ -61083,7 +61083,7 @@ loc_80D66F4:
     sub r0, #1
     strh r0, [r5,#0x20]
     bge loc_80D6764
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x40]
     cmp r0, r1
     beq loc_80D6714
@@ -61538,7 +61538,7 @@ sub_80D6A44:
     ldrb r0, [r5,#6]
     strh r0, [r5,#0x20]
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x28 
     mul r1, r0
     ldrh r0, [r5,#0x36]
@@ -61727,7 +61727,7 @@ off_80D6BF8:    .word sub_80D6C04+1
 sub_80D6C04:
     push {lr}
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldr r1, dword_80D6D78 // =0xC00000 
     mul r0, r1
@@ -61793,7 +61793,7 @@ sub_80D6C88:
     bne loc_80D6CAE
     mov r1, #4
     strb r1, [r5,#0xa]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80D6D7C // =0xB0000 
     mul r0, r1
     ldr r1, dword_80D6D7C // =0xB0000 
@@ -62502,7 +62502,7 @@ sub_80D729C:
     bl sprite_loadAnimationData
     bl sprite_update
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r0, r1
     lsl r0, r0, #0x10
@@ -62690,7 +62690,7 @@ loc_80D745A:
     strb r0, [r5]
     ldrb r0, [r5,#4]
     bl sprite_setPallete
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, off_80D74D0 // =dword_80D74D4 
     ldrb r2, [r5,#5]
     lsl r2, r2, #2
@@ -63408,7 +63408,7 @@ locret_80D7A94:
 sub_80D7A96:
     push {r4,r7,lr}
     push {r0-r3}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r0, r1
     add r7, r0, #0
@@ -63677,7 +63677,7 @@ locret_80D7CCA:
 sub_80D7CCC:
     push {r4,r6,r7,lr}
     sub sp, sp, #8
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [sp]
     mov r0, #1
     ldrb r1, [r5,#0x16]
@@ -63866,7 +63866,7 @@ sub_80D7E08:
     ldrb r0, [r5,#4]
     strh r0, [r5,#0x20]
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x28 
     mul r1, r0
     ldrh r0, [r5,#0x36]
@@ -63975,7 +63975,7 @@ sub_80D7EF6:
     add r7, r2, #0
     str r0, [sp]
     str r1, [sp,#4]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     mov r6, #3
 loc_80D7F08:
@@ -64098,7 +64098,7 @@ loc_80D8106:
     ldrb r0, [r7,#9]
     strb r0, [r5,#7]
     bl sub_800E2AC
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r7,#0xc]
     mul r0, r1
     str r0, [r5,#0x40]
@@ -64838,7 +64838,7 @@ sub_80D8706:
     bne loc_80D8734
     mov r0, #0x96
     strh r0, [r5,#0x20]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -64962,7 +64962,7 @@ sub_80D87C0:
     bl sub_800E456
     bl sub_8002F5C
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x3c 
     mul r0, r1
     lsl r0, r0, #0x10
@@ -65040,7 +65040,7 @@ loc_80D887C:
     bge locret_80D88B0
     mov r0, #0xf
     strh r0, [r5,#0x20]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#5]
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -65143,7 +65143,7 @@ loc_80D8942:
     mov r1, #2
     orr r0, r1
     strb r0, [r5]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80D8C3C // =0x40000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -65470,7 +65470,7 @@ locret_80D8BBA:
 .thumb_func
 sub_80D8BBC:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -65813,7 +65813,7 @@ sub_80D8E34:
 loc_80D8E72:
     strh r0, [r5,#0x20]
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r2, [r5,#4]
     lsl r2, r2, #2
     ldr r1, off_80D8EA0 // =dword_80D8EA4 
@@ -65868,7 +65868,7 @@ sub_80D8EE4:
     beq locret_80D8F1E
     mov r0, #1
     strb r0, [r5,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r1, r0, #0
     ldrb r0, [r5,#0x12]
     mov r4, #5
@@ -66029,7 +66029,7 @@ sub_80D8FE4:
     bl sub_800E276
     str r0, [r5,#0x34]
     str r1, [r5,#0x38]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [r5,#0x40]
     ldr r0, [r5,#4]
     strh r0, [r5,#0x22]
@@ -66388,7 +66388,7 @@ loc_80D92BA:
     tst r0, r1
     bne loc_80D931E
 loc_80D92BE:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x16]
     mov r2, #1
     eor r1, r2
@@ -66932,7 +66932,7 @@ sub_80D96C8:
     strh r1, [r5,#0x20]
     svc 6
     str r0, [r5,#0x48]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80D9838 // =0x3C0000 
     mul r1, r0
     ldr r2, [r5,#0x34]
@@ -67575,7 +67575,7 @@ locret_80D9CC0:
 
     push {lr}
     push {r0-r3}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -67891,7 +67891,7 @@ locret_80D9FA6:
 
     push {r4,lr}
     push {r1-r3}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r0, r1
     pop {r1-r3}
@@ -68173,7 +68173,7 @@ loc_80DA1F4:
     ldr r1, off_80DA240 // =dword_80DA244 
     ldrb r0, [r1,r0]
     strb r0, [r5,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -68243,7 +68243,7 @@ sub_80DA290:
     ldr r1, off_80DA2D0 // =unk_80DA2D4 
     ldrb r0, [r1,r0]
     strb r0, [r5,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldr r0, dword_80DA464 // =0x80DA3E8 
     ldrb r1, [r5,#6]
@@ -68542,7 +68542,7 @@ sub_80DA494:
     ldrb r0, [r5,#4]
     tst r0, r0
     bne loc_80DA4B2
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x50 
     mul r0, r1
     ldrh r1, [r5,#0x36]
@@ -69183,7 +69183,7 @@ off_80DAA3C:    .word sub_80DAA48+1
 sub_80DAA48:
     push {r7,lr}
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [r5,#0x40]
     bl sub_8019892
     tst r0, r0
@@ -69928,7 +69928,7 @@ sub_80DB03E:
 .thumb_func
 sub_80DB04C:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x60]
     mul r0, r1
     str r0, [r5,#0x40]
@@ -70310,7 +70310,7 @@ sub_80DB324:
 .endfunc // sub_80DB324
 
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x10
     lsl r1, r1, #0x10
     mul r1, r0
@@ -70535,7 +70535,7 @@ sub_80DB4CE:
     mov r6, #0
     ldr r7, off_80DB53C // =byte_80DB540 
 loc_80DB50C:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r2, #0
     ldrsb r2, [r7,r2]
     mul r2, r0
@@ -70716,7 +70716,7 @@ locret_80DB682:
 .thumb_func
 sub_80DB684:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#4]
     ldr r2, dword_80DB6A0 // =0x3A0000 
     mul r1, r2
@@ -70763,7 +70763,7 @@ sub_80DB6D4:
     bl sub_800E29C
     mov r0, #0
     strh r0, [r5,#0x3e]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x12
     lsl r1, r1, #0x10
     mul r0, r1
@@ -70936,7 +70936,7 @@ locret_80DB826:
 .thumb_func
 sub_80DB828:
     push {r4,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r4, dword_80DB8C8 // =0x60000 
     mul r0, r4
     str r0, [r5,#0x40]
@@ -71187,7 +71187,7 @@ loc_80DBA1E:
     mov r2, #5
     mov r3, #3
     bl sub_8019FB4
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80DBB3C // =0x30000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -71379,7 +71379,7 @@ loc_80DBBC2:
     bl sub_8002F5C
 loc_80DBBC8:
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x12
     lsl r1, r1, #0x10
     mul r0, r1
@@ -71488,7 +71488,7 @@ locret_80DBCB8:
 .thumb_func
 sub_80DBCBA:
     push {r4,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r4, dword_80DBCE8 // =0x60000 
     mul r0, r4
     str r0, [r5,#0x40]
@@ -71532,7 +71532,7 @@ off_80DBD04:    .word sub_80DBD10+1
 sub_80DBD10:
     push {lr}
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80DBD80 // =0x860000 
     mul r1, r0
     ldr r0, [r5,#0x34]
@@ -71546,7 +71546,7 @@ sub_80DBD10:
     ldrb r1, [r5,#5]
     ldr r0, [r0,r1]
     str r0, [r5,#0x48]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, off_80DBD94 // =dword_80DBD98 
     ldrb r2, [r5,#5]
     ldr r1, [r1,r2]
@@ -71812,7 +71812,7 @@ sub_80DBF04:
     bl sub_800E456
     bl sub_8002F5C
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x14
     lsl r1, r1, #0x10
     ldr r2, [r5,#0x3c]
@@ -72042,7 +72042,7 @@ sub_80DC108:
     bl sub_800E456
     bl sub_8002F5C
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x28 
     mul r1, r0
     lsl r1, r1, #0x10
@@ -72109,7 +72109,7 @@ sub_80DC1A2:
     strh r0, [r5,#0x20]
     mov r0, #0
     strh r0, [r5,#0x22]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -72139,7 +72139,7 @@ loc_80DC1E0:
     mov r0, #0
     str r0, [r5,#0x60]
 loc_80DC1EE:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -72226,7 +72226,7 @@ off_80DC274:    .word sub_80DC280+1
 .thumb_func
 sub_80DC280:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #4
     mul r0, r1
     ldr r2, [r5,#0x4c]
@@ -72301,7 +72301,7 @@ loc_80DC32E:
     strb r0, [r5,#4]
 loc_80DC33C:
     ldrb r4, [r5,#0x12]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x14
     mul r0, r1
     ldr r2, [r5,#0x4c]
@@ -72703,7 +72703,7 @@ loc_80DC630:
     bl sub_800E456
     bl sub_8002F5C
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80DC6B8 // =0x280000 
     mul r0, r1
     ldr r1, [r5,#0x34]
@@ -72779,7 +72779,7 @@ locret_80DC6D0:
 .thumb_func
 sub_80DC6D2:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldr r6, off_80DC708 // =byte_80DC6FC 
 loc_80DC6DC:
@@ -72829,7 +72829,7 @@ sub_80DC730:
     ldrb r1, [r5,#0x13]
     strb r1, [r5,#0x15]
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mov r1, #0x50 
     lsl r1, r1, #0x10
@@ -72881,7 +72881,7 @@ sub_80DC7FC:
     ldrb r0, [r5,#0xb]
     tst r0, r0
     bne loc_80DC81A
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80DCB14 // =0x40000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -73107,7 +73107,7 @@ locret_80DC99A:
     str r2, [sp,#8]
     str r4, [sp,#0xc]
     str r6, [sp,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldr r0, [sp]
     ldr r1, [sp,#4]
@@ -73183,7 +73183,7 @@ sub_80DCA38:
     str r1, [sp]
     ldrb r1, [r0,#0x13]
     str r1, [sp,#4]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [sp,#8]
     ldr r0, [sp]
     ldrb r2, [r5,#0x12]
@@ -73240,7 +73240,7 @@ loc_80DCAB4:
     add r1, r7, #0
     bl sub_800E276
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r2, r0, #0
     pop {r0,r1}
     add r3, r4, #0
@@ -73315,7 +73315,7 @@ sub_80DCB4C:
     push {r4,lr}
     ldr r4, dword_80DCCD0 // =0xC00000 
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mul r0, r4
     ldr r1, [r5,#0x34]
@@ -73384,7 +73384,7 @@ sub_80DCBCC:
     lsl r0, r0, #2
     ldr r1, off_80DCC48 // =dword_80DCC4C 
     ldr r4, [r1,r0]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     str r0, [r5,#0x40]
     str r4, [r5,#0x48]
@@ -73529,7 +73529,7 @@ sub_80DCCF8:
     push {r4,lr}
     ldr r4, dword_80DCE30 // =0x300000 
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mul r0, r4
     ldr r1, [r5,#0x34]
@@ -73593,7 +73593,7 @@ sub_80DCD74:
     add r0, #0xff
     bl sound_play // () -> void
     ldr r4, dword_80DCE34 // =0x80000 
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     str r0, [r5,#0x40]
     str r4, [r5,#0x48]
@@ -73936,7 +73936,7 @@ locret_80DD060:
 .thumb_func
 sub_80DD062:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#4]
     lsl r1, r1, #2
     ldr r2, off_80DD094 // =dword_80DD098 
@@ -74206,7 +74206,7 @@ locret_80DD25C:
     ldr r1, off_80DD344 // =dword_8113DC0 
     ldr r0, [r1,r0]
     add r3, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r3
     str r0, [r5,#0x40]
     str r3, [r5,#0x44]
@@ -74247,7 +74247,7 @@ sub_80DD2E0:
     ldrb r1, [r0,#0x12]
     ldrb r2, [r5,#0x12]
     sub r3, r2, r1
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r3
     blt loc_80DD31E
     ldrb r0, [r5,#0x12]
@@ -74333,7 +74333,7 @@ locret_80DD380:
 sub_80DD382:
     push {r7,lr}
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r2, #0x18
     mul r2, r0
     ldrh r1, [r5,#0x36]
@@ -74513,7 +74513,7 @@ sub_80DD538:
     sub r0, #1
     strh r0, [r5,#0x20]
     bne loc_80DD57E
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r1, r1, r0
     strb r1, [r5,#0x12]
@@ -74689,7 +74689,7 @@ loc_80DD63A:
     mul r1, r0
 loc_80DD688:
     str r1, [r5,#0x44]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r2, [r5,#4]
     lsl r2, r2, #2
     ldr r1, off_80DD6CC // =dword_80DD6D0 
@@ -74764,7 +74764,7 @@ sub_80DD738:
     beq locret_80DD75C
     sub r0, #1
     strh r0, [r5,#0x22]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x40 
     lsl r1, r1, #8
     ldrb r2, [r5,#4]
@@ -75041,7 +75041,7 @@ sub_80DD970:
     ldr r1, off_80DD9F8 // =dword_80DD9FC 
     ldrb r0, [r1,r0]
     strh r0, [r5,#0x3e]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mov r1, #8
     lsl r1, r1, #0x10
@@ -75205,11 +75205,11 @@ sub_80DDAA8:
 
     bl sub_800E456
     bl sub_8002F5C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80DDC00 // =0xC0000 
     mul r0, r1
     str r0, [r5,#0x40]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     sub r1, r1, r0
     strb r1, [r5,#0x12]
@@ -75354,7 +75354,7 @@ sub_80DDC30:
     bl sub_800E456
     bl sub_8002F5C
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80DDCEC // =0x80000 
     mul r1, r0
     ldr r0, [r5,#0x34]
@@ -75651,7 +75651,7 @@ sub_80DDF18:
     strb r0, [r5,#0x10]
     mov r0, #0xf0
     bl sound_play // () -> void
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80DDFFC // =0x80000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -76185,7 +76185,7 @@ sub_80DE30E:
     ldr r0, [r0,r2]
     str r0, [r5,#0x44]
     add r2, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r2
     str r0, [r5,#0x40]
     add r1, r2, #0
@@ -76573,7 +76573,7 @@ sub_80DE67E:
     ldr r0, [r0,r2]
     str r0, [r5,#0x44]
     add r2, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r2
     str r0, [r5,#0x40]
     add r1, r2, #0
@@ -76801,7 +76801,7 @@ sub_80DE818:
     add r2, #2
     ldrb r0, [r1,r2]
     strh r0, [r5,#0x22]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80DEA28 // =0xFF880000 
     mul r0, r1
     str r0, [r5,#0x60]
@@ -76951,7 +76951,7 @@ sub_80DE984:
     add r1, r1, r2
     str r0, [r5,#0x34]
     str r1, [r5,#0x38]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r3, r0, #0
     ldrh r0, [r5,#0x20]
     ldr r1, off_80DE9D8 // =off_80DE9DC 
@@ -77302,7 +77302,7 @@ sub_80DECBC:
     strh r1, [r5,r2]
     mov r0, #1
     strb r0, [r5,#0x17]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r1, r1, r0
     mov r2, #0x60 
@@ -77675,7 +77675,7 @@ sub_80DF016:
     push {r4-r7,lr}
     mov r0, #1
     strb r0, [r5,#0x17]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r1, r1, r0
     mov r2, #0x60 
@@ -77859,7 +77859,7 @@ sub_80DF1AC:
     bl sub_800E29C
     mov r0, #0
     str r0, [r5,#0x3c]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80DF324 // =0x280000 
     mul r0, r1
     ldr r1, [r5,#0x34]
@@ -77994,7 +77994,7 @@ sub_80DF2A0:
     ldrb r0, [r7,#1]
     tst r0, r0
     beq locret_80DF2C6
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r7]
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -78175,7 +78175,7 @@ loc_80DF434:
     ldrb r3, [r1,r0]
     lsl r3, r3, #0x10
     push {r3}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     pop {r3}
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -79349,7 +79349,7 @@ locret_80DFDAA:
 .thumb_func
 sub_80DFDAC:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x4c]
     ldrb r2, [r1,#0x12]
     add r2, r2, r0
@@ -79644,7 +79644,7 @@ sub_80DFFDC:
     ldrb r1, [r5,#0x13]
     strb r1, [r5,#0x15]
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mov r1, #0x50 
     lsl r1, r1, #0x10
@@ -79699,7 +79699,7 @@ sub_80E00B0:
     ldrb r0, [r5,#0xb]
     tst r0, r0
     bne loc_80E00CE
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80E0390 // =0x40000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -79937,7 +79937,7 @@ sub_80E025E:
     str r2, [sp,#8]
     str r4, [sp,#0xc]
     str r6, [sp,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldr r0, [sp]
     ldr r1, [sp,#4]
@@ -80002,7 +80002,7 @@ dword_80E02EC:    .word 0x5800000, 0xA800000
 sub_80E02F4:
     push {r4,r6,r7,lr}
     mov r4, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -80035,7 +80035,7 @@ loc_80E0332:
     add r1, r7, #0
     bl sub_800E276
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r2, r0, #0
     pop {r0,r1}
     add r3, r4, #0
@@ -80863,7 +80863,7 @@ loc_80E0BD4:
 loc_80E0BF6:
     ldrb r0, [r4,#0x16]
     ldrb r1, [r4,#0x17]
-    bl object_getFlipDirection
+    bl object_getFlipDirection // (int a1, int a2) -> int
     add r6, r0, #0
     ldrh r0, [r4,#0x28]
     bl sub_800F26C
@@ -81037,7 +81037,7 @@ sub_80E0D38:
     ldrb r0, [r5,#0xb]
     tst r0, r0
     bne loc_80E0D66
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80E0DE8 // =0xFFF80000 
     mul r0, r1
     ldr r2, [r5,#0x68]
@@ -83771,7 +83771,7 @@ sub_80E20B0:
     mov r1, #0xf
     svc 6
     add r4, r1, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     add r3, r0, #0
     ldr r1, dword_80E21C8 // =0x140000 
@@ -83794,7 +83794,7 @@ sub_80E20B0:
     strh r0, [r5,#0x20]
     ldrb r0, [r5,#4]
     strh r0, [r5,#0x22]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80E21CC // =0x15555 
     lsl r1, r1, #1
     mul r0, r1
@@ -83862,7 +83862,7 @@ loc_80E2160:
     strh r0, [r5,#0x20]
     bgt locret_80E21A2
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldr r1, dword_80E21C8 // =0x140000 
     mul r0, r1
@@ -84866,7 +84866,7 @@ loc_80E2A5C:
 .thumb_func
 sub_80E2A64:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -85765,7 +85765,7 @@ sub_80E30E0:
     ldrb r0, [r5,#0xb]
     tst r0, r0
     bne loc_80E3116
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -85979,7 +85979,7 @@ locret_80E3262:
 .thumb_func
 sub_80E3264:
     push {r4,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
@@ -87219,7 +87219,7 @@ sub_80E3B94:
     bl sub_8002F90
     mov r0, #0
     bl sprite_setPallete
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x60]
     mul r0, r1
     str r0, [r5,#0x40]
@@ -87943,7 +87943,7 @@ sub_80E4130:
     ldrb r0, [r5,#0xb]
     tst r0, r0
     bne loc_80E4152
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -88167,7 +88167,7 @@ sub_80E42AA:
     mov r6, #0
     add r0, r1, #0
     add r1, r2, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     str r0, [sp,#0xc]
     ldr r0, [sp,#4]
@@ -88684,7 +88684,7 @@ sub_80E4678:
     ldrb r0, [r5,#0xb]
     tst r0, r0
     bne loc_80E46A4
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -88967,7 +88967,7 @@ sub_80E4868:
     bl sprite_setPallete
     bl sub_800E456
     bl sub_8002F5C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80E48B8 // =0x100000 
     mul r1, r0
     str r1, [r5,#0x40]
@@ -89696,14 +89696,14 @@ sub_80E4DD0:
     bl sub_800D086
     cmp r0, #0
     bne loc_80E4E14
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
 loc_80E4E14:
     strb r0, [r5,#0x12]
 loc_80E4E16:
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80E509C // =0x5F0000 
     mul r1, r0
     ldr r2, [r5,#0x34]
@@ -89792,7 +89792,7 @@ sub_80E4EC8:
     mov r0, #2
     strh r0, [r5,#0x20]
     bl sub_800E29C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80E50AC // =0xA0000 
     mul r1, r0
     ldr r2, [r5,#0x34]
@@ -90467,7 +90467,7 @@ sub_80E5386:
     ldrb r0, [r5,#0x16]
     ldrb r1, [r5,#0x17]
     eor r0, r1
-    bl object_getFlipDirection
+    bl object_getFlipDirection // (int a1, int a2) -> int
     add r6, r0, #0
     pop {r0,r1,r4}
     push {r0,r1}
@@ -90603,7 +90603,7 @@ sub_80E5494:
     bl sub_8002F90
     mov r0, #0
     bl sprite_setPallete
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x60]
     mul r0, r1
     str r0, [r5,#0x40]
@@ -90949,7 +90949,7 @@ off_80E5728:    .word sub_80E5734+1
 sub_80E5734:
     push {r4,r7,lr}
     ldr r7, [r5,#0x4c]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r0, [r7,#0x12]
     mov r1, #2
@@ -91071,7 +91071,7 @@ loc_80E5820:
     ldr r1, [r5,#0x48]
     add r0, r0, r1
     str r0, [r5,#0x74]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     mov r0, #0x78 
     ldr r1, [r5,#0x74]
@@ -91186,7 +91186,7 @@ sub_80E58D2:
 .thumb_func
 sub_80E58F4:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x78 
     mul r0, r1
     lsl r0, r0, #0x10
@@ -91942,7 +91942,7 @@ sub_80E5E44:
     ldrb r0, [r5,#0xb]
     tst r0, r0
     bne loc_80E5E82
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x16]
     lsl r1, r1, #3
     ldr r2, off_80E5E94 // =dword_80E5E98 
@@ -92043,7 +92043,7 @@ sub_80E5F10:
     ldrb r0, [r5,#0xb]
     tst r0, r0
     bne loc_80E5F52
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x16]
     lsl r1, r1, #3
     ldr r2, off_80E5F64 // =dword_80E5F68 
@@ -93170,7 +93170,7 @@ sub_80E679C:
     ldrb r0, [r5,#0xb]
     tst r0, r0
     bne loc_80E67D4
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -93487,7 +93487,7 @@ loc_80E69DA:
     blt loc_80E69A6
     mov r7, #1
 loc_80E69E2:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     mov r0, #1
     ldrb r1, [r5,#0x16]
@@ -94599,7 +94599,7 @@ sub_80E72C8:
     mov r1, #9
     tst r0, r1
     bne loc_80E73C4
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r0, r0, r0
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -94633,7 +94633,7 @@ loc_80E7314:
     bl sub_8018842
     lsl r6, r0, #0x10
     lsl r7, r1, #0x10
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mul r6, r0
     mov r0, #0x34 
@@ -95037,7 +95037,7 @@ sub_80E7668:
     ldrb r0, [r5,#0xb]
     tst r0, r0
     bne loc_80E76AC
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x16]
     lsl r1, r1, #3
     ldr r2, off_80E76C0 // =dword_80E76C4 
@@ -95593,7 +95593,7 @@ locret_80E7AAE:
 .thumb_func
 sub_80E7AB0:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x10
     mul r0, r1
     ldr r1, [r5,#0x4c]
@@ -95797,7 +95797,7 @@ sub_80E7C40:
     ldrb r0, [r5,#0xb]
     tst r0, r0
     bne loc_80E7C82
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x16]
     lsl r1, r1, #3
     ldr r2, off_80E7C94 // =dword_80E7C98 
@@ -96086,7 +96086,7 @@ locret_80E7E62:
 .thumb_func
 sub_80E7E64:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -96939,7 +96939,7 @@ sub_80E8486:
     ldr r7, [r7,r4]
     add r0, r2, #0
     add r1, r3, #0
-    bl object_getFlipDirection
+    bl object_getFlipDirection // (int a1, int a2) -> int
     add r4, r0, #0
     pop {r0,r1}
     add r0, r0, r4
@@ -96978,7 +96978,7 @@ sub_80E84D0:
     str r0, [r7,#4]
     mov r0, #1
     strb r0, [r7,#6]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -98686,7 +98686,7 @@ sub_80E9164:
     ldrb r0, [r5,#0xb]
     tst r0, r0
     bne loc_80E91A8
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -98694,7 +98694,7 @@ sub_80E9164:
     ldr r1, dword_80E91E0 // =0xF800010 
     and r0, r1
     bne loc_80E91AE
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -99649,7 +99649,7 @@ loc_80E985C:
     str r1, [r5,#0x64]
     ldrb r1, [r0,#0x17]
     ldrb r0, [r0,#0x16]
-    bl object_getFlipDirection
+    bl object_getFlipDirection // (int a1, int a2) -> int
     mov r1, #0x14
     mul r0, r1
     lsl r0, r0, #0x10
@@ -100667,7 +100667,7 @@ sub_80EA05C:
     ldrb r4, [r5,#4]
     cmp r4, #0
     bne loc_80EA074
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     b loc_80EA07A
@@ -100708,7 +100708,7 @@ sub_80EA0A0:
     ldrb r4, [r5,#4]
     cmp r4, #0
     bne loc_80EA0BA
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r0, r0, r0
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -101126,7 +101126,7 @@ sub_80EA3A4:
     mov r0, #8
     mov r1, #0x60 
     strh r0, [r5,r1]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x64 
     ldrb r1, [r5,r1]
     lsl r1, r1, #3
@@ -102948,7 +102948,7 @@ loc_80EB472:
     push {r7}
     ldr r6, [r7,#8]
     ldr r7, [r7,#0x30]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -103224,7 +103224,7 @@ loc_80EB69A:
     ldr r0, [r1,r0]
     mov r8, r0
     push {r7}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #4
     mul r1, r0
     ldr r0, [r5,#0x34]
@@ -103475,7 +103475,7 @@ loc_80EB88E:
     bl object_setFlag
     mov r0, #0x15
     strh r0, [r7,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -103540,7 +103540,7 @@ loc_80EB93E:
     lsl r2, r4, #2
     ldr r0, [r0,r2]
     mov r8, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -103933,7 +103933,7 @@ loc_80EBCDC:
     bne loc_80EBD06
     mov r0, #0xae
     bl sound_play // () -> void
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -104099,7 +104099,7 @@ sub_80EBE20:
     bne loc_80EBE42
     mov r0, #5
     strh r0, [r7,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -104300,7 +104300,7 @@ loc_80EBF98:
     ldrb r3, [r1,r0]
     lsl r3, r3, #0x10
     push {r3}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     pop {r3}
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -104396,7 +104396,7 @@ sub_80EC044:
     mov r0, #1
     lsl r0, r0, #0x16
     bl object_setFlag
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -104539,7 +104539,7 @@ loc_80EC15E:
     ldrh r0, [r1,r0]
     strh r0, [r7,#0xc]
 loc_80EC17C:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -104615,7 +104615,7 @@ loc_80EC234:
     strh r0, [r1,#0x2e]
     ldr r0, dword_80EC344 // =0xFFFF 
     bl object_setInvulnerableTime
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80EC348 // =0x10000 
     mul r1, r0
     str r1, [r5,#0x40]
@@ -105202,7 +105202,7 @@ loc_80EC710:
     ldrb r0, [r1,r0]
     lsl r0, r0, #0x18
     orr r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -105213,7 +105213,7 @@ loc_80EC710:
     push {r1-r3}
     bl sub_80C6248
     add r4, #2
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80ECA24 // =0x1E0000 
     mul r0, r1
     pop {r1-r3}
@@ -105288,7 +105288,7 @@ loc_80EC7E6:
     cmp r0, #1
     bne loc_80EC80E
     push {r7}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -105408,7 +105408,7 @@ loc_80EC8DE:
     ldrh r0, [r7,#0x10]
     cmp r0, #5
     bne loc_80EC8FE
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -105513,7 +105513,7 @@ loc_80EC9A4:
     lsl r4, r4, #2
     ldr r0, off_80ECA30 // =off_8019B78 
     ldr r4, [r0,r4]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     push {r0}
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -105612,7 +105612,7 @@ loc_80ECA6E:
     bne loc_80ECA94
     mov r0, #0x6a 
     bl sound_play // () -> void
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r4, [r7,#0xc]
     ldrh r3, [r7,#6]
     ldr r6, [r7,#8]
@@ -105732,7 +105732,7 @@ loc_80ECB4A:
     mov r0, #1
     mov r1, #0x14
     bl sub_80302A8
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -105836,7 +105836,7 @@ loc_80ECC08:
     strb r1, [r0,#0x10]
     mov r0, #0xaf
     bl sound_play // () -> void
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r7,#3]
@@ -105944,7 +105944,7 @@ loc_80ECCEE:
     cmp r0, #0xd
     bne loc_80ECD16
     push {r7}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -105996,7 +105996,7 @@ sub_80ECD44:
     ldr r1, [r7,#8]
     add r1, r1, r0
     str r1, [r7,#8]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r6, r0, #0
     mov r3, #0
     ldr r4, [r7,#0xc]
@@ -106107,7 +106107,7 @@ sub_80ECE18:
     ldr r1, [r7,#8]
     add r1, r1, r0
     str r1, [r7,#8]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
@@ -106381,7 +106381,7 @@ dword_80ED03C:    .word 0x10000
 .thumb_func
 sub_80ED040:
     push {r4,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r0, [r5,#0x12]
 loc_80ED04A:
@@ -106584,7 +106584,7 @@ loc_80ED1A4:
     bl sub_802E032
     b loc_80ED226
 loc_80ED1DC:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -106685,7 +106685,7 @@ loc_80ED29A:
     mov r1, #1
     b loc_80ED2BC
 loc_80ED2B2:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -106756,7 +106756,7 @@ loc_80ED33C:
     ldrh r0, [r7,#0x10]
     cmp r0, #0xd
     bne loc_80ED362
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -106953,7 +106953,7 @@ loc_80ED4B4:
     ldrh r0, [r7,#0x10]
     cmp r0, #0x20 
     bne loc_80ED51E
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r0
     add r0, r0, r1
@@ -107114,7 +107114,7 @@ loc_80ED5DC:
     ldr r1, off_80ED614 // =unk_80ED618 
     ldrb r0, [r1,r0]
     strb r0, [r7,#0xd]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -107207,7 +107207,7 @@ loc_80ED690:
     ldrh r0, [r7,#0x10]
     cmp r0, #0xd
     bne loc_80ED6B8
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0
     bl sub_80ED6CA
     ldrb r0, [r7,#3]
@@ -107450,7 +107450,7 @@ loc_80ED85C:
     strb r1, [r0,#0x10]
     mov r0, #0xaf
     bl sound_play // () -> void
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -107572,7 +107572,7 @@ sub_80ED94E:
     push {r4,r6,lr}
     ldr r6, off_80EDCB8 // =off_8019B78 
     ldr r6, [r6,#0x68] // (dword_8019B84+0x5C - 0x8019b78)
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -107700,7 +107700,7 @@ loc_80EDA30:
     mov r0, #0xa
     strh r0, [r7,#0x10]
     push {r7}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -107861,7 +107861,7 @@ loc_80EDB7C:
     add r0, r0, r1
     ldr r4, off_80EDBB4 // =dword_80EDBB8 
     ldrh r4, [r4,r0]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #0x50 
     mul r1, r0
     lsl r1, r1, #0x10
@@ -107917,7 +107917,7 @@ loc_80EDBEC:
     blt loc_80EDBF6
     ldr r4, dword_80EDC74 // =0x2C05FF11 
 loc_80EDBF6:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r0, r0, r0
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -107951,7 +107951,7 @@ loc_80EDC2C:
     ldrb r0, [r7,#3]
     cmp r0, #3
     bne loc_80EDC5C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r0, r0, r4
     add r1, r6, #0
     mov r4, #0
@@ -108058,7 +108058,7 @@ loc_80EDCFE:
     ldr r1, off_80EDD48 // =off_80EDD54 
     ldr r0, [r1,r0]
     str r0, [sp]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -108233,7 +108233,7 @@ locret_80EDE48:
 .thumb_func
 sub_80EDE4A:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -108293,7 +108293,7 @@ loc_80EDEC2:
     sub r0, #1
     strh r0, [r7,#0x10]
     bge locret_80EDEF4
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -108449,7 +108449,7 @@ sub_80EDFEA:
     push {r4,r6,lr}
     ldr r6, off_80EE03C // =off_8019B78 
     ldr r6, [r6,#0x68] // (dword_8019B84+0x5C - 0x8019b78)
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -108527,7 +108527,7 @@ loc_80EE086:
     beq locret_80EE0BA
     mov r0, #0x14
     bl sub_800F2B6
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -108607,7 +108607,7 @@ sub_80EE110:
     strh r0, [r7,#0x12]
     mov r0, #4
     strb r0, [r7,#1]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -108722,7 +108722,7 @@ loc_80EE210:
     ldrh r0, [r7,#0x10]
     cmp r0, #0xc
     bne loc_80EE260
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -108741,7 +108741,7 @@ loc_80EE210:
     mov r1, #0xa
     strh r1, [r0,#0x20]
     pop {r7}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     mov r1, #1
@@ -109055,7 +109055,7 @@ loc_80EE494:
     cmp r0, r1
     bne loc_80EE4CE
     ldrb r4, [r7,#3]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -109176,7 +109176,7 @@ loc_80EE5CE:
     mov r0, #4
     strb r0, [r7,#1]
     push {r7}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -109296,7 +109296,7 @@ loc_80EE696:
 .thumb_func
 sub_80EE6A4:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r5,#0x40]
     cmp r1, #0
     beq loc_80EE6BE
@@ -109397,7 +109397,7 @@ sub_80EE748:
     mov r0, #4
     strb r0, [r7,#1]
     push {r7}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -109482,7 +109482,7 @@ sub_80EE7EC:
     bl object_setFlag
     mov r0, #0x40 
     bl object_setFlag
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -109580,7 +109580,7 @@ loc_80EE8B4:
     add r4, #1
     b loc_80EE8B4
 loc_80EE8D4:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -109822,7 +109822,7 @@ loc_80EEAC0:
     ldrh r0, [r7,#0x10]
     cmp r0, #0xc
     bne loc_80EEAEC
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -110109,7 +110109,7 @@ sub_80EECCC:
     bl sound_play // () -> void
     ldr r4, dword_80EED2C // =0x705FF11 
     ldr r6, [r7,#8]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -110390,7 +110390,7 @@ sub_80EEF02:
     ldrh r0, [r7,#0x10]
     cmp r0, #0x14
     bne loc_80EEF58
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -110401,7 +110401,7 @@ sub_80EEF02:
     lsl r3, r3, #0x10
     mov r4, #0x52 
     bl sub_80E05F6
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -110877,7 +110877,7 @@ loc_80EF2D2:
     bge locret_80EF308
     mov r0, #0x13
     bl sub_800F2B6
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -111027,7 +111027,7 @@ sub_80EF3F4:
     push {r4,r6,r7,lr}
     sub sp, sp, #0x18
     push {r7}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -111154,7 +111154,7 @@ loc_80EF4F2:
     bl sub_80ED040
     cmp r1, #0
     bne loc_80EF508
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
 loc_80EF508:
@@ -111238,7 +111238,7 @@ loc_80EF596:
     ldrb r0, [r5,#0x16]
     lsl r0, r0, #8
     orr r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -111257,7 +111257,7 @@ loc_80EF596:
     lsl r0, r0, #2
     ldr r4, off_80EF5F0 // =dword_80EF5FC 
     ldr r4, [r4,r0]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -111701,7 +111701,7 @@ loc_80EFA9E:
     sub r0, #1
     strh r0, [r7,#0x10]
     bge locret_80EFB0A
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80EFC08 // =0xC0000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -111913,7 +111913,7 @@ loc_80EFC64:
     ldrh r0, [r7,#0x10]
     cmp r0, #1
     bne loc_80EFC7E
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -111996,7 +111996,7 @@ loc_80EFCF0:
     bl object_setFlag
     mov r0, #0x40 
     bl object_setFlag
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #7
     mov r3, #4
     cmp r4, #0x16
@@ -112329,7 +112329,7 @@ loc_80EFF96:
     mov r0, #1
     str r0, [r7,#0x44]
 loc_80EFFAC:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -112365,7 +112365,7 @@ loc_80EFFAC:
     bl sub_80E05F6
     b loc_80F0022
 loc_80EFFFC:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -112567,7 +112567,7 @@ loc_80F0188:
     ldrb r1, [r5,#0x13]
     add r1, r1, r0
     push {r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     pop {r1}
@@ -113271,7 +113271,7 @@ sub_80F0798:
     bl sub_801BB1C
     mov r0, #0x12
     strb r0, [r5,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -113410,7 +113410,7 @@ sub_80F0898:
 .thumb_func
 sub_80F08BA:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -113435,7 +113435,7 @@ sub_80F08BA:
     bl sub_80C8DE0
     mov r4, #0
 loc_80F08EE:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -113584,7 +113584,7 @@ sub_80F09DC:
     mov r0, #1
     lsl r0, r0, #0x16
     bl object_setFlag
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80F0C2C // =0x50000 
     mul r1, r0
     str r1, [r5,#0x40]
@@ -113807,7 +113807,7 @@ sub_80F0BA4:
     mov r0, #3
     lsl r0, r0, #0x10
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -113824,7 +113824,7 @@ sub_80F0BA4:
 .thumb_func
 sub_80F0BD2:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r4, [r5,#0x12]
     add r4, r4, r0
     ldrb r6, [r5,#0x13]
@@ -113836,7 +113836,7 @@ sub_80F0BD2:
     ldr r1, dword_80F0C30 // =0x3800000 
     tst r0, r1
     bne loc_80F0C1C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r0, r0, r4
     add r1, r6, #0
     bl object_getPanelParameters
@@ -114144,7 +114144,7 @@ locret_80F0E38:
 .thumb_func
 sub_80F0E3A:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -114194,7 +114194,7 @@ sub_80F0E96:
     ldrb r0, [r5,#0x13]
     cmp r0, #3
     bne loc_80F0EB2
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, [r7,#0x34]
     mul r1, r0
     str r1, [r5,#0x40]
@@ -114520,7 +114520,7 @@ locret_80F10F0:
 .thumb_func
 sub_80F10F2:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -114546,7 +114546,7 @@ sub_80F111C:
     lsl r4, r0, #8
     mov r0, #0x64 
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -114567,7 +114567,7 @@ sub_80F1148:
     push {r4,r6,lr}
     mov r6, #1
 loc_80F114C:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r6
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -114983,7 +114983,7 @@ sub_80F1460:
 sub_80F146E:
     push {r4,lr}
     add r4, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     str r0, [r5,#0x40]
     mov r0, #7
@@ -115231,7 +115231,7 @@ sub_80F162C:
     push {lr}
     bl object_canMove
     beq loc_80F167C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -115511,7 +115511,7 @@ loc_80F1826:
     strh r0, [r7]
     b locret_80F187E
 loc_80F183A:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -115529,7 +115529,7 @@ loc_80F183A:
     lsl r4, r0, #8
     mov r0, #0x33 
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -115696,7 +115696,7 @@ sub_80F197A:
     push {r4,r6,lr}
     mov r4, #1
 loc_80F197E:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -115890,7 +115890,7 @@ sub_80F1ADE:
     push {r4,lr}
     mov r4, #1
 loc_80F1AE2:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -115923,7 +115923,7 @@ sub_80F1B24:
     mov r4, #1
     mov r6, #1
 loc_80F1B2A:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     sub r1, r1, r4
     mul r0, r1
@@ -116314,7 +116314,7 @@ sub_80F1E08:
     mov r4, #0
     sub r4, #1
 loc_80F1E0E:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -116348,7 +116348,7 @@ dword_80F1E48:    .word 0xC01, 0x1801
 sub_80F1E50:
     push {r4,lr}
     add r4, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     str r0, [r5,#0x40]
     mov r0, #6
@@ -116649,7 +116649,7 @@ locret_80F207A:
 .thumb_func
 sub_80F207C:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -119085,7 +119085,7 @@ sub_80F3704:
     tst r0, r0
     pop {r0,r1}
     bne loc_80F3776
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r1, r4, #0
     add r0, r0, r1
     add r1, r6, #0
@@ -119213,7 +119213,7 @@ sub_80F382C:
     mov r0, #0
     str r0, [sp,#0x10]
 loc_80F383E:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -119281,7 +119281,7 @@ sub_80F38AA:
 loc_80F38B6:
     mov r4, #0
 loc_80F38B8:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mul r0, r4
     add r0, r0, r6
@@ -121062,7 +121062,7 @@ sub_80F4778:
     mov r0, #3
     lsl r0, r0, #0x10
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -121813,7 +121813,7 @@ loc_80F4E20:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs locret_80F4E42
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -121845,7 +121845,7 @@ sub_80F4E44:
     bl object_setCounterTime
     mov r0, #0xc
     strh r0, [r7,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -121861,7 +121861,7 @@ sub_80F4E44:
     lsl r4, r0, #8
     mov r0, #0x39 
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -121921,7 +121921,7 @@ loc_80F4EF0:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs locret_80F4F12
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -121950,7 +121950,7 @@ sub_80F4F14:
     strb r0, [r5,#0x10]
     mov r0, #0xc
     strh r0, [r7,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -121966,7 +121966,7 @@ sub_80F4F14:
     lsl r4, r0, #8
     mov r0, #0x3a 
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -122196,7 +122196,7 @@ loc_80F50F8:
     strb r1, [r2,#7]
     mov r0, #0x40 
     bl object_setFlag
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, off_80F5154 // =dword_80F5158 
     ldrb r2, [r7,#3]
     lsl r2, r2, #2
@@ -122650,7 +122650,7 @@ byte_80F547D:    .byte 0x0
     ldrb r1, [r0,#0x12]
     ldrb r2, [r0,#0x13]
     push {r1,r2}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     pop {r1,r2}
     add r0, r0, r1
@@ -124226,7 +124226,7 @@ sub_80F6154:
     pop {r0}
     bne loc_80F6190
     add r4, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mov r1, #2
     mul r0, r1
@@ -124314,7 +124314,7 @@ locret_80F6204:
     pop {pc}
     push {r6,lr}
     add r6, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mov r1, #2
     mul r0, r1
@@ -124333,7 +124333,7 @@ locret_80F6228:
 .thumb_func
 sub_80F622A:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -124359,7 +124359,7 @@ sub_80F6254:
     lsl r4, r0, #8
     mov r0, #0x64 
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -124449,7 +124449,7 @@ sub_80F6310:
     push {r4,r6,lr}
     mov r6, #1
 loc_80F6314:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r6
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -125255,7 +125255,7 @@ loc_80F6A80:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_80F6A9C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -126010,7 +126010,7 @@ loc_80F7084:
     b loc_80F7096
 loc_80F7088:
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     add r2, r0, #0
     pop {r0,r1}
@@ -126036,7 +126036,7 @@ sub_80F70A0:
     sub r0, r2, r0
 loc_80F70B6:
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r2, r0, #0
     neg r2, r2
     mov r3, #3
@@ -126096,7 +126096,7 @@ loc_80F70F6:
 .thumb_func
 sub_80F710A:
     push {r4,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r0, [r7,#3]
     lsl r0, r0, #2
@@ -126446,7 +126446,7 @@ sub_80F73CA:
     push {r4,r6,lr}
     mov r6, #1
 loc_80F73CE:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mul r0, r6
     ldrb r1, [r5,#0x12]
@@ -126519,7 +126519,7 @@ loc_80F7432:
     sub r0, r2, r0
 loc_80F7452:
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r2, r0, #0
     neg r2, r2
     mov r3, #3
@@ -128383,7 +128383,7 @@ sub_80F82B0:
     mov r2, #4
     ldrh r3, [r5,#0x16]
     bl object_highlightPanelRegion
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     mov r6, #1
 loc_80F82C6:
@@ -128407,7 +128407,7 @@ locret_80F82E0:
 .thumb_func
 sub_80F82E2:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r1, r1, r0
     ldr r2, [r7,#0x2c]
@@ -129312,7 +129312,7 @@ loc_80F8AC0:
     strh r0, [r7]
     b locret_80F8B14
 loc_80F8AD4:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -129328,7 +129328,7 @@ loc_80F8AD4:
     lsl r4, r0, #8
     mov r0, #0x33 
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -129656,7 +129656,7 @@ sub_80F8D3E:
     mov r4, #1
     mov r6, #0
 loc_80F8D4E:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r2, [sp]
     sub r2, r2, r4
     mul r0, r2
@@ -129707,7 +129707,7 @@ loc_80F8D9C:
     sub sp, sp, #0x18
     str r2, [sp]
     str r3, [sp,#4]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     str r0, [sp,#8]
     mov r6, #0
@@ -129795,7 +129795,7 @@ sub_80F8E48:
     push {r4,r6,lr}
     mov r4, #1
 loc_80F8E4C:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -129852,7 +129852,7 @@ loc_80F8EA6:
 .thumb_func
 sub_80F8EAA:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -130946,7 +130946,7 @@ sub_80F97C0:
     mov r0, #0x3d 
     add r0, #0xff
     bl sound_play // () -> void
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r7,#3]
     lsl r1, r1, #3
     ldr r2, off_80F9880 // =dword_80F9884 
@@ -131179,7 +131179,7 @@ sub_80F99CA:
     push {r4,r6,lr}
     mov r4, #1
 loc_80F99CE:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -131206,7 +131206,7 @@ sub_80F99FC:
     push {r4,lr}
     mov r4, #1
 loc_80F9A00:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -131231,7 +131231,7 @@ sub_80F9A18:
     mul r6, r0
     ldr r1, off_80F9A90 // =dword_80F9A94 
     add r6, r6, r1
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     neg r4, r4
     bl sub_80F9AE8
@@ -131296,7 +131296,7 @@ dword_80F9AE4:    .word 0x0
 sub_80F9AE8:
     push {r4,r6,r7,lr}
     sub sp, sp, #0x18
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r6, r0, #0
     mov r4, #1
     ldrb r0, [r5,#0x16]
@@ -132543,7 +132543,7 @@ sub_80FA540:
     strh r0, [r2,#0x2e]
     lsr r1, r1, #0x10
     strb r1, [r2,#7]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80FA634 // =0x49000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -132905,7 +132905,7 @@ sub_80FA81E:
     strh r0, [r2,#0x2e]
     lsr r1, r1, #0x10
     strb r1, [r2,#7]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r1, dword_80FA8EC // =0x120000 
     mul r0, r1
     str r0, [r5,#0x40]
@@ -134477,7 +134477,7 @@ sub_80FB812:
 .thumb_func
 sub_80FB81E:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -134494,7 +134494,7 @@ dword_80FB840:    .word 0x3
 .endfunc // sub_80FB81E
 
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -135676,7 +135676,7 @@ loc_80FC240:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_80FC25C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -135726,7 +135726,7 @@ loc_80FC292:
     strh r0, [r7]
     b locret_80FC2DA
 loc_80FC2A6:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -135736,7 +135736,7 @@ loc_80FC2A6:
     lsl r4, r0, #8
     mov r0, #0x25 
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -136023,7 +136023,7 @@ loc_80FC4F2:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_80FC50E
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -136073,7 +136073,7 @@ loc_80FC544:
     strh r0, [r7]
     b locret_80FC58C
 loc_80FC558:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -136083,7 +136083,7 @@ loc_80FC558:
     lsl r4, r0, #8
     mov r0, #0x18
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -136275,7 +136275,7 @@ loc_80FC6D6:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_80FC6F2
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -136325,7 +136325,7 @@ loc_80FC728:
     strh r0, [r7]
     b locret_80FC770
 loc_80FC73C:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -136335,7 +136335,7 @@ loc_80FC73C:
     lsl r4, r0, #8
     mov r0, #0x27 
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -136531,7 +136531,7 @@ loc_80FC8D0:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_80FC8F0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -136585,7 +136585,7 @@ loc_80FC926:
     strh r0, [r7]
     b locret_80FC9A0
 loc_80FC93E:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -136597,7 +136597,7 @@ loc_80FC93E:
     lsl r4, r0, #8
     mov r0, #0x27 
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -136614,7 +136614,7 @@ loc_80FC97A:
     lsl r4, r0, #8
     mov r0, #0x25 
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #1
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -137166,7 +137166,7 @@ sub_80FCDBA:
     push {r4,lr}
     add r4, r0, #0
     push {r2,r3}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldrb r1, [r4,#0x12]
     add r0, r0, r1
@@ -137209,7 +137209,7 @@ sub_80FCDDE:
     pop {r0,r1}
     beq loc_80FCE26
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r2, #2
     mul r2, r0
     pop {r0,r1}
@@ -137247,7 +137247,7 @@ dword_80FCE58:    .word 0x3
 .thumb_func
 sub_80FCE5C:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldr r2, [r7,#0x2c]
     ldrb r1, [r2,#0x12]
@@ -138218,7 +138218,7 @@ loc_80FD6C2:
     ldrb r0, [r0,r4]
     lsl r0, r0, #8
     orr r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -139043,7 +139043,7 @@ sub_80FDCA4:
     mov r4, #1
     add r6, r0, #0
 loc_80FDCAA:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r0, r4
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -142254,7 +142254,7 @@ sub_80FF680:
 .endfunc // sub_80FF680
 
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -142295,7 +142295,7 @@ sub_80FF6E0:
     bne locret_80FF778
     sub r4, r0, r2
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mul r4, r0
     pop {r0,r1}
     cmp r4, #0
@@ -142851,7 +142851,7 @@ loc_80FFD8E:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs locret_80FFDAA
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -143168,7 +143168,7 @@ sub_80FFFBC:
     str r0, [sp]
     str r2, [sp,#0xc]
     str r3, [sp,#0x10]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [sp,#4]
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
@@ -143177,7 +143177,7 @@ sub_80FFFBC:
 
     bl sub_800D58C
     add r4, r0, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     add r0, r0, r4
     str r0, [sp,#8]
@@ -143260,7 +143260,7 @@ loc_8100060:
 .thumb_func
 sub_810007C:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -143272,7 +143272,7 @@ sub_810007C:
     ldr r7, dword_81000DC // =0x3 
     bl sub_80C536A
     pop {r7}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -143286,7 +143286,7 @@ sub_810007C:
     ldr r7, dword_81000DC // =0x3 
     bl sub_80C536A
     pop {r7}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #3
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -144456,7 +144456,7 @@ loc_8100B42:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_8100B64
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -145082,7 +145082,7 @@ sub_8100F8A:
     ldrb r1, [r0,#0x12]
     ldrb r2, [r0,#0x13]
     push {r1,r2}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     pop {r1,r2}
     add r0, r0, r1
@@ -145229,7 +145229,7 @@ sub_81010A0:
     push {r4,r6,lr}
     mov r6, #0
 loc_81010A4:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r7,#0x16]
     add r0, r0, r1
     ldrb r1, [r7,#0x17]
@@ -145266,7 +145266,7 @@ sub_81010DA:
     beq loc_81010E6
     mov r6, #6
 loc_81010E6:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     add r0, r6, #0
     ldrb r1, [r5,#0x13]
@@ -145347,7 +145347,7 @@ dword_810118C:    .word 0xF880080
 .thumb_func
 sub_8101190:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -145368,7 +145368,7 @@ locret_81011B0:
 .thumb_func
 sub_81011B2:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r7,#0x16]
     add r0, r0, r1
     ldrb r1, [r7,#0x17]
@@ -148088,7 +148088,7 @@ off_810217C:    .word unk_810197C
     ldrb r0, [r2,#0x13]
     str r0, [sp,#0xc]
     add r6, r3, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
 loc_8102244:
     mov r0, #0
@@ -148617,7 +148617,7 @@ loc_8102600:
     mov r0, #1
     mov r1, #0x14
     bl sub_80302A8
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -148699,7 +148699,7 @@ loc_8102692:
     ldrh r0, [r7,#0x10]
     lsr r0, r0, #2
     bcc loc_81026E0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -148767,7 +148767,7 @@ loc_810271E:
     ldrh r0, [r7,#0x10]
     cmp r0, #0xa
     bne loc_8102762
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -148890,7 +148890,7 @@ sub_81027F4:
     ldrb r0, [r7,#1]
     tst r0, r0
     bne loc_8102838
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r6, r0, #0
     mov r3, #0
     ldr r4, [r7,#0xc]
@@ -149351,7 +149351,7 @@ locret_8102B32:
 .thumb_func
 sub_8102B34:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldr r6, off_8102C28 // =byte_8102B68 
     ldrb r0, [r7,#3]
@@ -149405,7 +149405,7 @@ sub_8102B84:
     ldr r1, off_8102C30 // =dword_8102BDC 
     ldr r1, [r1,r0]
     str r1, [sp]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [sp,#4]
 loc_8102BAA:
     ldr r6, [sp]
@@ -149444,7 +149444,7 @@ sub_8102BFC:
     ldrb r0, [r7,#3]
     cmp r0, #1
     bne locret_8102C18
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -149578,7 +149578,7 @@ sub_8102CF8:
     // numWords
     mov r1, #0x30 
     bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldr r2, [sp]
     ldrb r2, [r2,#0x12]
     ldrb r3, [r5,#0x12]
@@ -149617,7 +149617,7 @@ loc_8102D58:
     str r1, [sp,#0x1c]
     ldr r1, [r0,#4]
     str r1, [sp,#0x20]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     str r0, [sp,#0x18]
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -149882,7 +149882,7 @@ sub_8102F5C:
     mul r0, r2
     add r0, #1
     push {r0,r1}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r0, [r5,#0x16]
     lsl r0, r0, #3
@@ -149907,7 +149907,7 @@ sub_8102F98:
     neg r0, r0
     add r0, #6
     push {r0}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r4, r0
     ldrb r0, [r5,#0x16]
     lsl r0, r0, #3
@@ -149952,7 +149952,7 @@ sub_8102FF4:
     neg r0, r0
     add r0, #6
     push {r0}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r4, r0
     ldrb r0, [r5,#0x16]
     lsl r0, r0, #3
@@ -149974,7 +149974,7 @@ off_8103034:    .word dword_8103024
 .thumb_func
 sub_8103038:
     push {r4,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r7, r0
     ldrb r0, [r5,#0x16]
     mov r1, #5
@@ -151105,7 +151105,7 @@ byte_810389D:    .byte 0x0
     str r0, [sp]
     str r2, [sp,#8]
     str r3, [sp,#0xc]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     str r0, [sp,#4]
     mov r4, #6
@@ -151188,7 +151188,7 @@ sub_8103936:
     str r3, [sp,#4]
     ldrb r4, [r0,#0x12]
     ldrb r6, [r0,#0x13]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mov r1, #2
     mul r0, r1
@@ -153002,7 +153002,7 @@ sub_81048AA:
     bl sub_801A04C
     mov r0, #0x40 
     strh r0, [r5,#0x3e]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -153981,7 +153981,7 @@ off_8105040:    .word 0x30
 .thumb_func
 sub_8105050:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -154000,7 +154000,7 @@ sub_810506A:
     ldr r6, off_810538C // =off_8019B78 
     mov r0, #0x68 // (dword_8019B84+0x5C - 0x8019b78)
     ldr r6, [r6,r0]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r1, [r5,#0x12]
     mov r2, #2
@@ -154046,7 +154046,7 @@ locret_81050C0:
 .thumb_func
 sub_81050C2:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -154055,7 +154055,7 @@ sub_81050C2:
     mov r2, #8
     ldrh r3, [r5,#0x16]
     bl object_highlightPanelRegion
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -154071,7 +154071,7 @@ sub_81050C2:
 .thumb_func
 sub_81050F2:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #2
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -154227,7 +154227,7 @@ sub_81051EC:
     bl sub_80DAE48
     pop {r0}
     push {r0}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r2, r0, #0
     pop {r0}
     ldrb r4, [r7,#3]
@@ -154366,7 +154366,7 @@ sub_81052FC:
 .thumb_func
 sub_810530C:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r7,#3]
     lsl r1, r1, #2
     ldr r2, off_8105340 // =dword_8105344 
@@ -155505,7 +155505,7 @@ loc_8105DB8:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_8105DD8
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #1
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -156726,7 +156726,7 @@ unk_810668C:    .byte 5
 .thumb_func
 sub_8106690:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #1
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -156755,7 +156755,7 @@ sub_81066C0:
     push {r4,r6,lr}
     mov r6, #1
 loc_81066C4:
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #1
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -156778,7 +156778,7 @@ loc_81066C4:
 .thumb_func
 sub_81066EA:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     mov r1, #1
     mul r0, r1
     ldrb r1, [r5,#0x12]
@@ -156854,7 +156854,7 @@ unk_8106770:    .byte 3
 sub_8106774:
     push {lr}
     push {r0}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r3, r0, #0
     pop {r0}
     tst r0, r0
@@ -157641,7 +157641,7 @@ loc_8106FBC:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_8106FD8
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -157826,7 +157826,7 @@ sub_81070EC:
     mov r0, #0x18
     bl object_setCounterTime
     push {r4,r6,r7}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -158029,7 +158029,7 @@ loc_810728E:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_81072AA
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -158106,7 +158106,7 @@ loc_8107314:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_8107330
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -158352,7 +158352,7 @@ loc_81074EE:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_810750A
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -158431,7 +158431,7 @@ sub_8107568:
     bl object_setFlag
     bl object_canMove
     beq loc_81075D6
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mov r1, #3
     mul r0, r1
@@ -158796,7 +158796,7 @@ loc_810782C:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_8107848
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -158935,7 +158935,7 @@ sub_8107914:
     add r4, r0, #0
     str r2, [sp]
     str r3, [sp,#4]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldrb r1, [r4,#0x12]
     add r0, r0, r1
@@ -158949,7 +158949,7 @@ sub_8107914:
     tst r0, r0
     pop {r0,r1}
     bne loc_810796C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldrb r1, [r4,#0x12]
     add r0, r0, r1
@@ -158980,7 +158980,7 @@ sub_8107970:
     push {r4,lr}
     add r4, r0, #0
     push {r2,r3}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     ldrb r1, [r4,#0x12]
     add r0, r0, r1
@@ -159033,7 +159033,7 @@ dword_81079CC:    .word 0x0
 .thumb_func
 sub_81079DC:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -159055,7 +159055,7 @@ sub_8107A00:
     lsl r0, r0, #2
     ldr r1, off_8107A20 // =dword_8107A24 
     ldr r4, [r1,r0]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -159079,7 +159079,7 @@ sub_8107A30:
     bl sub_800E456
     lsl r0, r0, #8
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -159099,7 +159099,7 @@ dword_8107A60:    .word 0x393A
 .thumb_func
 sub_8107A64:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -159119,7 +159119,7 @@ dword_8107A84:    .word 0x1001
 sub_8107A88:
     push {r4,r6,lr}
     mov r6, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldr r1, [r7,#0x2c]
     ldrb r0, [r1,#0x12]
@@ -159148,7 +159148,7 @@ sub_8107AB2:
     ldr r6, off_8107B20 // =off_8019B78 
     mov r0, #0x68 // (dword_8019B84+0x5C - 0x8019b78)
     ldr r6, [r6,r0]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
@@ -159192,7 +159192,7 @@ locret_8107B04:
 .thumb_func
 sub_8107B06:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -160231,7 +160231,7 @@ loc_81085D8:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_81085F4
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -160308,7 +160308,7 @@ loc_810865E:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_810867A
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -160563,7 +160563,7 @@ loc_8108850:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_810886C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -160637,7 +160637,7 @@ sub_81088CA:
 
     bl object_canMove
     beq loc_810892A
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     neg r0, r0
     mov r1, #3
     mul r0, r1
@@ -161012,7 +161012,7 @@ loc_8108B98:
     strh r0, [r7,#0x12]
     lsr r0, r0, #3
     bcs loc_8108BB4
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -161315,7 +161315,7 @@ sub_8108E34:
     lsl r0, r0, #2
     ldr r1, off_8108E54 // =dword_8108E58 
     ldr r4, [r1,r0]
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -161339,7 +161339,7 @@ sub_8108E64:
     bl sub_800E456
     lsl r0, r0, #8
     add r4, r4, r0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -161359,7 +161359,7 @@ dword_8108E94:    .word 0x393A
 .thumb_func
 sub_8108E98:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -161379,7 +161379,7 @@ dword_8108EB8:    .word 0x1001
 sub_8108EBC:
     push {r4,r6,lr}
     mov r6, #0
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldr r1, [r7,#0x2c]
     ldrb r0, [r1,#0x12]
@@ -161411,7 +161411,7 @@ sub_8108EE6:
     ldr r1, off_8108F20 // =unk_8108F24 
     ldrb r4, [r1,r0]
     lsl r4, r4, #0x10
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -161440,7 +161440,7 @@ unk_8108F24:    .byte 0x24
 .thumb_func
 sub_8108F28:
     push {r4,r6,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -161950,7 +161950,7 @@ loc_8109742:
 .thumb_func
 sub_8109746:
     push {r4,r6,r7,lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r4, r0, #0
     ldrb r6, [r5,#0x12]
     add r6, r6, r4
@@ -163823,7 +163823,7 @@ sub_810B3E4:
     bl sub_810B58A
     cmp r0, #0
     bne loc_810B40C
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]
@@ -163860,7 +163860,7 @@ locret_810B434:
     bl sub_810B58A
     cmp r0, #0
     bne loc_810B47A
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     add r6, r0, #0
     ldrb r0, [r5,#0x16]
     ldrb r1, [r5,#0x13]
@@ -164082,7 +164082,7 @@ dword_810B5F4:    .word 0x5000, 0x7000, 0x0
 .thumb_func
 sub_810B60C:
     push {lr}
-    bl sub_800E2CA
+    bl object_getFlipDirection_800E2CA // () -> int
     ldrb r1, [r5,#0x12]
     add r0, r0, r1
     ldrb r1, [r5,#0x13]

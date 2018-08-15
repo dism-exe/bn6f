@@ -10921,11 +10921,8 @@ loc_80AADB6:
     sub r4, #1
     bne loc_80AADB6
     mov r0, r10
-    // src
     ldr r0, [r0,#0x4c]
-    // dest
     ldr r1, off_80AAE7C // =dword_2033000 
-    // wordCount
     ldr r2, off_80AAE80 // =0xF00 
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
     mov r0, r10

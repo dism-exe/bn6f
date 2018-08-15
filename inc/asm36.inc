@@ -45,92 +45,6 @@
 
 
 /* External Symbols */
-.include "asm02.inc"
-// .global refIndex_8021DA8 // (int idx) -> void*
-// .global sub_8021AB4
-// .global sub_8021AE0
-// .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
-// .global sub_8021C68
-// .global sub_8021CA8
-
-.include "asm32.inc"
-// .global sub_81171D4
-// .global sub_81171F4
-// .global sub_8117D10
-// .global sub_811980C
-// .global sub_8119854
-// .global sub_811A914
-// .global sub_811AD04
-// .global sub_811AE5C
-// .global sub_811AE7C
-// .global sub_811F6C0
-// .global sub_811F708
-// .global sub_811F728
-// .global sub_811F7EC
-// .global sub_811F7F8
-// .global sub_811F91C
-// .global sub_811FA0C
-// .global sub_811FA22
-// .global sub_811FA98
-// .global sub_811FAF4
-// .global sub_811FB64
-// .global sub_811FB84
-// .global sub_811FCA4
-// .global sub_811FCB8
-// .global sub_811FDB8
-// .global sub_811FE34
-// .global sub_811FE7C
-// .global sub_811FF6C
-// .global loc_8120018
-// .global sub_81200EC
-// .global sub_81202B4
-// .global sub_81202FC
-// .global sub_8120348
-// .global sub_8120390
-// .global sub_81203E4
-// .global sub_8120458
-// .global sub_81204C4
-// .global sub_812053C
-// .global sub_8120618
-// .global sub_81206C4
-// .global sub_81206F8
-// .global sub_8120740
-// .global sub_81207C4
-// .global sub_81207F8
-// .global sub_81209DC
-// .global sub_8120BE4
-// .global sub_8120C94
-// .global sub_8120CC8
-// .global sub_8120DAC
-
-.include "asm37_1.inc"
-// .global sub_81440D8
-// .global sub_81469A0
-// .global sub_81469DC
-// .global sub_81469E8
-// .global sub_8147B24
-// .global sub_8147F98
-// .global sub_8148224
-// .global sub_8148D24
-// .global sub_8149568
-// .global sub_8149644
-
-.include "asm33.inc"
-// .global sub_8123300
-// .global dword_812913C
-// .global dword_8129178
-// .global dword_8129180
-// .global sub_8129248
-// .global sub_812AC14
-// .global sub_812AF3C
-// .global sub_812AF78
-// .global sub_812AFC8
-// .global sub_812B530
-
-.include "asm28.inc"
-// .global sub_809E122
-// .global sub_809F90C
-
 .include "asm00.inc"
 // .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
@@ -138,12 +52,12 @@
 // .global sub_80008B4
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global sub_8000900 // (int a1, int a2) -> void
+// .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
 // .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 // .global loc_8000AC8
-// .global decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
 // .global sub_8000C00
 // .global sub_8000D84
 // .global sub_8000E28
@@ -199,36 +113,13 @@
 // .global navicust_8014018 // (int a1) -> int
 // .global sub_801401E
 
-.include "asm37_0.inc"
-// .global sub_813B780
-// .global sub_813B84C
-// .global sub_813B920
-// .global sub_813B928
-// .global sub_813B950
-// .global sub_813B9B4
-// .global sub_813B9C4
-// .global sub_813B9E0
-// .global sub_813B9FC
-// .global sub_813BA08
-// .global sub_813BA48
-// .global sub_813BA64
-// .global sub_813BA80
-// .global sub_813BAA8
-// .global sub_813BAC4
-// .global sub_813BAEC
-// .global sub_813BB68
-// .global sub_813BBD4
-// .global sub_813BF60
-// .global sub_813BFB8
-// .global sub_813C06C
-// .global sub_813C1C0
-// .global sub_813C334
-// .global sub_813C3AC
-// .global sub_813D5D0
-// .global sub_813D60C
-// .global sub_813D638
-// .global sub_813D90C
-// .global sub_813D978
+.include "asm02.inc"
+// .global refIndex_8021DA8 // (int idx) -> void*
+// .global sub_8021AB4
+// .global sub_8021AE0
+// .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
+// .global sub_8021C68
+// .global sub_8021CA8
 
 .include "asm03_0.inc"
 // .global sub_802F0D8
@@ -307,6 +198,115 @@
 // .global sub_8049D82
 // .global sub_804A1D0
 // .global sub_804A24C
+
+.include "asm28.inc"
+// .global sub_809E122
+// .global sub_809F90C
+
+.include "asm32.inc"
+// .global sub_81171D4
+// .global sub_81171F4
+// .global sub_8117D10
+// .global sub_811980C
+// .global sub_8119854
+// .global sub_811A914
+// .global sub_811AD04
+// .global sub_811AE5C
+// .global sub_811AE7C
+// .global sub_811F6C0
+// .global sub_811F708
+// .global sub_811F728
+// .global sub_811F7EC
+// .global sub_811F7F8
+// .global sub_811F91C
+// .global sub_811FA0C
+// .global sub_811FA22
+// .global sub_811FA98
+// .global sub_811FAF4
+// .global sub_811FB64
+// .global sub_811FB84
+// .global sub_811FCA4
+// .global sub_811FCB8
+// .global sub_811FDB8
+// .global sub_811FE34
+// .global sub_811FE7C
+// .global sub_811FF6C
+// .global loc_8120018
+// .global sub_81200EC
+// .global sub_81202B4
+// .global sub_81202FC
+// .global sub_8120348
+// .global sub_8120390
+// .global sub_81203E4
+// .global sub_8120458
+// .global sub_81204C4
+// .global sub_812053C
+// .global sub_8120618
+// .global sub_81206C4
+// .global sub_81206F8
+// .global sub_8120740
+// .global sub_81207C4
+// .global sub_81207F8
+// .global sub_81209DC
+// .global sub_8120BE4
+// .global sub_8120C94
+// .global sub_8120CC8
+// .global sub_8120DAC
+
+.include "asm33.inc"
+// .global sub_8123300
+// .global dword_812913C
+// .global dword_8129178
+// .global dword_8129180
+// .global sub_8129248
+// .global sub_812AC14
+// .global sub_812AF3C
+// .global sub_812AF78
+// .global sub_812AFC8
+// .global sub_812B530
+
+.include "asm37_0.inc"
+// .global sub_813B780
+// .global sub_813B84C
+// .global sub_813B920
+// .global sub_813B928
+// .global sub_813B950
+// .global sub_813B9B4
+// .global sub_813B9C4
+// .global sub_813B9E0
+// .global sub_813B9FC
+// .global sub_813BA08
+// .global sub_813BA48
+// .global sub_813BA64
+// .global sub_813BA80
+// .global sub_813BAA8
+// .global sub_813BAC4
+// .global sub_813BAEC
+// .global sub_813BB68
+// .global sub_813BBD4
+// .global sub_813BF60
+// .global sub_813BFB8
+// .global sub_813C06C
+// .global sub_813C1C0
+// .global sub_813C334
+// .global sub_813C3AC
+// .global sub_813D5D0
+// .global sub_813D60C
+// .global sub_813D638
+// .global sub_813D90C
+// .global sub_813D978
+
+.include "asm37_1.inc"
+// .global sub_81440D8
+// .global sub_81469A0
+// .global sub_81469DC
+// .global sub_81469E8
+// .global sub_8147B24
+// .global sub_8147F98
+// .global sub_8148224
+// .global sub_8148D24
+// .global sub_8149568
+// .global sub_8149644
 
 
 /* Undeclared Symbols */

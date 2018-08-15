@@ -478,7 +478,7 @@ sub_809A308:
     push {lr}
     // initRefs
     ldr r0, off_809A314 // =dword_809A318 
-    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
     pop {pc}
     .balign 4, 0x00
 off_809A314:    .word dword_809A318
@@ -493,7 +493,7 @@ sub_809A334:
     push {r4-r7,lr}
     // initRefs
     ldr r0, off_809A340 // =dword_809A344 
-    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
     pop {r4-r7,pc}
     .byte 0, 0
 off_809A340:    .word dword_809A344
@@ -1339,7 +1339,7 @@ loc_809AB92:
     mov r2, #1
     bl dword_8021AEC+2
     ldr r0, off_809AC28 // =dword_809AC2C 
-    bl decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
     mov r0, #0xf
     mov r1, #3
     b loc_809AC06
@@ -8414,7 +8414,7 @@ sub_809F9C8:
     mov r0, r10
     ldr r0, [r0,#0x70]
     ldr r1, off_809F9D8 // =0x480 
-    bl sub_8000900 // (int a1, int a2) -> void
+    bl CpuFastSet_8000900 // (int a1, int a2) -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_809F9D8:    .word 0x480

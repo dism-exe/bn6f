@@ -69,22 +69,12 @@
 .include "start.inc"
 // .global start_800027C
 
-.include "asm02.inc"
-// .global refIndex_8021DA8 // (int idx) -> void*
-// .global sub_8021AE0
-
-.include "asm32.inc"
-// .global loc_8121154
-
-.include "asm36.inc"
-// .global sub_8136C24
-
 .include "asm00.inc"
 // .global sound_play // () -> void
 // .global sub_80008B4
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
+// .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
 // .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global getPETNaviSelect // () -> u8
@@ -95,15 +85,9 @@
 // .global sub_80137E6
 // .global sub_80137FE
 
-.include "asm37_1.inc"
-// .global sub_81465BC
-// .global sub_814692C
-// .global sub_8146B70
-// .global sub_8146E78
-// .global sub_8147B3C
-// .global sub_8148884
-// .global sub_8148FC0
-// .global sub_8149718
+.include "asm02.inc"
+// .global refIndex_8021DA8 // (int idx) -> void*
+// .global sub_8021AE0
 
 .include "asm03_0.inc"
 // .global sub_802D064
@@ -122,6 +106,22 @@
 // .global sub_803CED4
 // .global sub_803D108
 // .global sub_803DD30
+
+.include "asm32.inc"
+// .global loc_8121154
+
+.include "asm36.inc"
+// .global sub_8136C24
+
+.include "asm37_1.inc"
+// .global sub_81465BC
+// .global sub_814692C
+// .global sub_8146B70
+// .global sub_8146E78
+// .global sub_8147B3C
+// .global sub_8148884
+// .global sub_8148FC0
+// .global sub_8149718
 
 
 /* Undeclared Symbols */

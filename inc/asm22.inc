@@ -5,8 +5,9 @@
 
 
 /* External Symbols */
-.include "reqBBS.inc"
-// .global reqBBS_81409F4
+.include "asm00.inc"
+// .global sub_800060A
+// .global sub_80047E0
 
 .include "asm03_0.inc"
 // .global sub_802F110
@@ -15,9 +16,8 @@
 // .global zf_802F168
 // .global sub_8036E90
 
-.include "asm00.inc"
-// .global sub_800060A
-// .global sub_80047E0
+.include "reqBBS.inc"
+// .global reqBBS_81409F4
 
 
 /* Undeclared Symbols */

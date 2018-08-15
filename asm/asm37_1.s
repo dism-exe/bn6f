@@ -8972,20 +8972,14 @@ sub_8146B70:
     beq loc_8146BB0
     strb r1, [r2]
     ldr r4, off_8146BAC // =unk_20399F0 
-    // src
     add r0, r5, #0
-    // dest
     add r1, r4, #0
-    // wordCount
     mov r2, #0x10
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
     add r0, r5, #0
-    // src
     add r0, #0xc
     add r4, #0x10
-    // dest
     add r1, r4, #0
-    // wordCount
     mov r2, #0x10
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
     mov r0, #2
@@ -9184,11 +9178,8 @@ loc_8146CDC:
 sub_8146CE4:
     push {lr}
     ldr r3, [r0,#8]
-    // dest
     ldr r1, off_8146CF8 // =byte_200DD10 
-    // wordCount
     ldr r2, [r0,#0x10]
-    // src
     add r0, r3, #0
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
     pop {r0}
@@ -9383,11 +9374,8 @@ off_8146E44:    .word byte_2010328
 sub_8146E48:
     push {lr}
     add r3, r1, #0
-    // dest
     ldr r1, [r0,#0xc]
-    // wordCount
     ldr r2, [r0,#0x14]
-    // src
     add r0, r3, #0
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
     pop {r0}
@@ -9910,11 +9898,8 @@ loc_81472A4:
     ldrb r0, [r0]
     cmp r0, #1
     bne loc_81472C4
-    // src
     ldr r0, off_81472F4 // =byte_200DD10 
-    // dest
     ldr r1, off_81472E4 // =byte_20101E0 
-    // wordCount
     mov r2, #0xc
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
 loc_81472C4:
@@ -11376,11 +11361,8 @@ sub_8147F00:
     bne loc_8147F3A
     add r0, r6, #1
     strb r0, [r4]
-    // src
     ldr r0, off_8147F4C // =byte_200DD10 
-    // dest
     add r1, r7, #0
-    // wordCount
     add r2, r5, #0
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
 loc_8147F3A:
@@ -12721,15 +12703,12 @@ loc_8148AD8:
     bne loc_8148B08
     lsl r0, r4, #4
     ldr r1, off_8148B74 // =unk_2010230 
-    // src
     add r0, r0, r1
     lsl r1, r4, #1
     add r1, r1, r4
     lsl r1, r1, #2
     ldr r2, off_8148B78 // =unk_20101EC 
-    // dest
     add r1, r1, r2
-    // wordCount
     mov r2, #0xc
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
 loc_8148B08:

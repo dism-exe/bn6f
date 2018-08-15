@@ -6,8 +6,38 @@
 
 
 /* External Symbols */
-.include "asm32.inc"
-// .global sub_811EBE0
+.include "asm00.inc"
+// .global sound_play // () -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global sub_8001172
+// .global sub_800118A
+// .global sprite_loadAnimationData
+// .global sprite_update
+// .global sprite_load
+// .global sprite_setAnimation
+// .global sub_8002F90
+// .global sub_8003914
+// .global sub_8003940
+// .global sub_80039D4
+// .global sub_80047E0
+// .global engine_isScreeneffectAnimating // () -> zf
+
+.include "asm03_0.inc"
+// .global sub_802F110
+// .global sub_802F114 // (int a1) -> void
+// .global sub_802F12C // (int a1, int a2) -> void
+// .global sub_802F164 // (int a1, int a2) -> zf
+// .global zf_802F168
+// .global sub_802F1A8 // (int a3, int a2) -> void
+// .global sub_80301B2
+// .global sub_80301DC
+// .global sub_8036E90
+
+.include "asm03_1.inc"
+// .global sub_8046818
+// .global sub_8046854
+// .global sub_80468BA
+// .global sub_80468C6
 
 .include "asm28.inc"
 // .global sub_809E13C
@@ -28,37 +58,13 @@
 // .global sub_809E3B2
 // .global sub_809E3C4
 
-.include "asm00.inc"
-// .global sound_play // () -> void
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global sub_8001172
-// .global sub_800118A
-// .global sprite_loadAnimationData
-// .global sprite_update
-// .global sprite_load
-// .global sprite_setAnimation
-// .global sub_8002F90
-// .global sub_8003914
-// .global sub_8003940
-// .global sub_80039D4
-// .global sub_80047E0
-// .global engine_isScreeneffectAnimating // () -> zf
+.include "asm32.inc"
+// .global sub_811EBE0
 
 .include "reqBBS.inc"
 // .global reqBBS_81409E4
 // .global reqBBS_8140A00
 // .global reqBBS_8140A0C
-
-.include "asm03_0.inc"
-// .global sub_802F110
-// .global sub_802F114 // (int a1) -> void
-// .global sub_802F12C // (int a1, int a2) -> void
-// .global sub_802F164 // (int a1, int a2) -> zf
-// .global zf_802F168
-// .global sub_802F1A8 // (int a3, int a2) -> void
-// .global sub_80301B2
-// .global sub_80301DC
-// .global sub_8036E90
 
 .include "asm37_1.inc"
 // .global dword_81434E4
@@ -66,12 +72,6 @@
 // .global dword_81434E4
 // .global dword_81434E4
 // .global dword_81434E4
-
-.include "asm03_1.inc"
-// .global sub_8046818
-// .global sub_8046854
-// .global sub_80468BA
-// .global sub_80468C6
 
 
 /* Undeclared Symbols */

@@ -25,138 +25,19 @@
 // .global start_800027C
 // .global start_8000288
 
-.include "asm02.inc"
-// .global refIndex_8021DA8 // (int idx) -> void*
-
-.include "asm32.inc"
-// .global sub_8116FDC
-// .global sub_8117084
-// .global sub_81171F4
-// .global sub_81190F8
-// .global sub_8119118
-// .global sub_811980C
-// .global sub_811983C
-// .global sub_8119854
-// .global sub_8119BE8
-// .global sub_8119C74
-// .global sub_8119C94
-// .global sub_811A1F4
-// .global sub_811A220
-// .global sub_811A610
-// .global sub_811A768
-// .global sub_811B010
-// .global sub_811B314
-// .global sub_811B46C
-// .global sub_811B48C
-// .global sub_811BDFC
-// .global sub_811BED4
-// .global sub_811C23C
-// .global sub_811C2A8
-// .global sub_811C4D8
-// .global sub_811DC88
-// .global sub_811DF0C
-// .global sub_811EBF4
-// .global sub_811F6C0
-// .global sub_811F708
-// .global sub_811F728
-// .global sub_811F7EC
-// .global sub_811F7F8
-// .global sub_811F91C
-// .global sub_811FA0C
-// .global sub_811FA22
-// .global sub_811FA98
-// .global sub_811FAF4
-// .global sub_811FB64
-// .global sub_811FB84
-// .global sub_811FCB8
-// .global loc_8120018
-// .global sub_81200EC
-// .global sub_8120348
-// .global sub_8120390
-// .global sub_81203E4
-// .global sub_8120458
-// .global sub_81204C4
-// .global sub_812053C
-// .global sub_81207F8
-// .global sub_8120900
-// .global sub_81209DC
-// .global sub_8120A38
-// .global sub_8120C94
-// .global sub_8120CC8
-// .global sub_8120D10
-// .global sub_8121198
-// .global dword_81211B4
-// .global pt_8121200
-
-.include "asm37_1.inc"
-// .global sub_81440D8
-// .global sub_8144240
-// .global sub_8146588
-// .global sub_81465BC
-// .global sub_8146724
-// .global sub_8146738
-// .global sub_81468BC
-// .global sub_81468C8
-// .global sub_81468E0
-// .global sub_814695C
-// .global sub_81469A0
-// .global sub_81469BC
-// .global sub_81469E8
-// .global sub_8146E5C
-// .global sub_8146E60
-// .global sub_8147350
-// .global sub_81475D4
-// .global sub_8147B24
-// .global sub_8147F98
-// .global sub_8148224
-// .global sub_8148540
-// .global sub_8148D24
-// .global sub_8149568
-// .global sub_8149644
-// .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-
-.include "asm36.inc"
-// .global byte_8130905
-// .global sub_8132280
-// .global sub_8132290
-// .global sub_81322E8
-// .global sub_8132398
-// .global sub_81323B0
-// .global sub_8132430
-// .global sub_8132538
-// .global sub_81325C0
-// .global sub_81325CC
-// .global sub_81325E4
-// .global sub_81325F4
-// .global sub_8132614
-// .global sub_8132664
-// .global sub_8132670
-// .global sub_81326D4
-// .global sub_8132764
-// .global sub_81348DC
-// .global sub_8134930
-// .global sub_81352A0
-// .global sub_8135314
-// .global unk_813565C
-// .global sub_8137884
-// .global loc_81378B4
-
-.include "asm28.inc"
-// .global sub_809F9BE
-
 .include "asm00.inc"
 // .global sound_play // () -> void
 // .global sub_8000784
 // .global sub_80008B4
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global sub_8000900 // (int a1, int a2) -> void
+// .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int numHalfwords) -> void
+// .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
 // .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
-// .global CpuSet_800096C // (void *src, void *dest, int mode) -> void
+// .global sub_800096C
 // .global loc_8000AC8
-// .global decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
 // .global sub_8000C00
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010BE
@@ -187,16 +68,8 @@
 // .global sub_80137E6
 // .global sub_80137FE
 
-.include "asm37_0.inc"
-// .global sub_813B9FC
-// .global sub_813C3AC
-// .global sub_813D5D0
-// .global sub_813D60C
-// .global sub_813D638
-// .global sub_813D648
-// .global sub_813D90C
-// .global sub_813D960
-// .global sub_813D978
+.include "asm02.inc"
+// .global refIndex_8021DA8 // (int idx) -> void*
 
 .include "asm03_0.inc"
 // .global sub_802B2A0
@@ -280,6 +153,133 @@
 // .global sub_8049DA0
 // .global sub_8049DC4
 // .global sub_8049DDC
+
+.include "asm28.inc"
+// .global sub_809F9BE
+
+.include "asm32.inc"
+// .global sub_8116FDC
+// .global sub_8117084
+// .global sub_81171F4
+// .global sub_81190F8
+// .global sub_8119118
+// .global sub_811980C
+// .global sub_811983C
+// .global sub_8119854
+// .global sub_8119BE8
+// .global sub_8119C74
+// .global sub_8119C94
+// .global sub_811A1F4
+// .global sub_811A220
+// .global sub_811A610
+// .global sub_811A768
+// .global sub_811B010
+// .global sub_811B314
+// .global sub_811B46C
+// .global sub_811B48C
+// .global sub_811BDFC
+// .global sub_811BED4
+// .global sub_811C23C
+// .global sub_811C2A8
+// .global sub_811C4D8
+// .global sub_811DC88
+// .global sub_811DF0C
+// .global sub_811EBF4
+// .global sub_811F6C0
+// .global sub_811F708
+// .global sub_811F728
+// .global sub_811F7EC
+// .global sub_811F7F8
+// .global sub_811F91C
+// .global sub_811FA0C
+// .global sub_811FA22
+// .global sub_811FA98
+// .global sub_811FAF4
+// .global sub_811FB64
+// .global sub_811FB84
+// .global sub_811FCB8
+// .global loc_8120018
+// .global sub_81200EC
+// .global sub_8120348
+// .global sub_8120390
+// .global sub_81203E4
+// .global sub_8120458
+// .global sub_81204C4
+// .global sub_812053C
+// .global sub_81207F8
+// .global sub_8120900
+// .global sub_81209DC
+// .global sub_8120A38
+// .global sub_8120C94
+// .global sub_8120CC8
+// .global sub_8120D10
+// .global sub_8121198
+// .global dword_81211B4
+// .global pt_8121200
+
+.include "asm36.inc"
+// .global byte_8130905
+// .global sub_8132280
+// .global sub_8132290
+// .global sub_81322E8
+// .global sub_8132398
+// .global sub_81323B0
+// .global sub_8132430
+// .global sub_8132538
+// .global sub_81325C0
+// .global sub_81325CC
+// .global sub_81325E4
+// .global sub_81325F4
+// .global sub_8132614
+// .global sub_8132664
+// .global sub_8132670
+// .global sub_81326D4
+// .global sub_8132764
+// .global sub_81348DC
+// .global sub_8134930
+// .global sub_81352A0
+// .global sub_8135314
+// .global unk_813565C
+// .global sub_8137884
+// .global loc_81378B4
+
+.include "asm37_0.inc"
+// .global sub_813B9FC
+// .global sub_813C3AC
+// .global sub_813D5D0
+// .global sub_813D60C
+// .global sub_813D638
+// .global sub_813D648
+// .global sub_813D90C
+// .global sub_813D960
+// .global sub_813D978
+
+.include "asm37_1.inc"
+// .global sub_81440D8
+// .global sub_8144240
+// .global sub_8146588
+// .global sub_81465BC
+// .global sub_8146724
+// .global sub_8146738
+// .global sub_81468BC
+// .global sub_81468C8
+// .global sub_81468E0
+// .global sub_814695C
+// .global sub_81469A0
+// .global sub_81469BC
+// .global sub_81469E8
+// .global sub_8146E5C
+// .global sub_8146E60
+// .global sub_8147350
+// .global sub_81475D4
+// .global sub_8147B24
+// .global sub_8147F98
+// .global sub_8148224
+// .global sub_8148540
+// .global sub_8148D24
+// .global sub_8149568
+// .global sub_8149644
+// .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 
 /* Undeclared Symbols */

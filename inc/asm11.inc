@@ -18,31 +18,6 @@
 
 
 /* External Symbols */
-.include "asm03_0.inc"
-// .global sub_802F110
-// .global sub_802F12C // (int a1, int a2) -> void
-// .global sub_802FF4C
-// .global sub_803037C
-// .global loc_8030472
-// .global sub_80304E8
-// .global sub_8030AA4
-// .global sub_8034FB8
-
-.include "asm10.inc"
-// .global off_8067754
-// .global off_8067914
-// .global off_8067944
-// .global off_80679A4
-// .global off_80679D4
-// .global off_8067A14
-// .global off_8067A44
-// .global off_8067A6C
-// .global off_8067A9C
-// .global off_8067ACC
-
-.include "chatbox.inc"
-// .global chatbox_uncomp_803FD08 // () -> int
-
 .include "asm00.inc"
 // .global sub_8001778
 // .global sub_8001780
@@ -56,6 +31,31 @@
 // .global sub_80028D4
 // .global sub_8002906
 // .global loc_8003570
+
+.include "asm03_0.inc"
+// .global sub_802F110
+// .global sub_802F12C // (int a1, int a2) -> void
+// .global sub_802FF4C
+// .global sub_803037C
+// .global loc_8030472
+// .global sub_80304E8
+// .global sub_8030AA4
+// .global sub_8034FB8
+
+.include "chatbox.inc"
+// .global chatbox_uncomp_803FD08 // () -> int
+
+.include "asm10.inc"
+// .global off_8067754
+// .global off_8067914
+// .global off_8067944
+// .global off_80679A4
+// .global off_80679D4
+// .global off_8067A14
+// .global off_8067A44
+// .global off_8067A6C
+// .global off_8067A9C
+// .global off_8067ACC
 
 
 /* Undeclared Symbols */

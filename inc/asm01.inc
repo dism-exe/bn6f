@@ -29,9 +29,11 @@
 
 
 /* External Symbols */
-.include "asm37_0.inc"
-// .global sub_813D60C
-// .global sub_813D66C
+.include "asm00.inc"
+// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuFastSet_8000900 // (int a1, int a2) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global sub_800A0D6
 
 .include "asm03_0.inc"
 // .global get_802D246 // () -> int
@@ -45,14 +47,12 @@
 // .global sub_803F524
 // .global sub_803F740
 
+.include "asm37_0.inc"
+// .global sub_813D60C
+// .global sub_813D66C
+
 .include "asm37_1.inc"
 // .global sub_8144D04
-
-.include "asm00.inc"
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global sub_8000900 // (int a1, int a2) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
-// .global sub_800A0D6
 
 
 /* Undeclared Symbols */

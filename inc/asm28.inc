@@ -56,34 +56,14 @@
 
 
 /* External Symbols */
-.include "asm02.inc"
-// .global dword_8021AEC
-
-.include "asm32.inc"
-// .global sub_811980C
-// .global sub_8119854
-// .global sub_811EBE0
-
-.include "asm37_1.inc"
-// .global sub_8143B88
-// .global sub_8143DBC
-// .global SWI_Div
-
-.include "reqBBS.inc"
-// .global reqBBS_81407D8
-// .global reqBBS_8140974
-
-.include "asm25.inc"
-// .global off_8090000
-
 .include "asm00.inc"
 // .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global sub_8000900 // (int a1, int a2) -> void
+// .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
 // .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
-// .global decomp_initGfx_processArr_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
 // .global sub_8000E3A
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001172
@@ -130,9 +110,8 @@
 // .global sub_8013704
 // .global sub_80137B6
 
-.include "asm37_0.inc"
-// .global sub_813D41C
-// .global loc_813D48C
+.include "asm02.inc"
+// .global dword_8021AEC
 
 .include "asm03_0.inc"
 // .global sub_802D15E
@@ -179,6 +158,27 @@
 // .global sub_80465BC
 // .global sub_80465F8 // () -> void
 // .global sub_8046664 // () -> void
+
+.include "asm25.inc"
+// .global off_8090000
+
+.include "asm32.inc"
+// .global sub_811980C
+// .global sub_8119854
+// .global sub_811EBE0
+
+.include "asm37_0.inc"
+// .global sub_813D41C
+// .global loc_813D48C
+
+.include "reqBBS.inc"
+// .global reqBBS_81407D8
+// .global reqBBS_8140974
+
+.include "asm37_1.inc"
+// .global sub_8143B88
+// .global sub_8143DBC
+// .global SWI_Div
 
 
 /* Undeclared Symbols */

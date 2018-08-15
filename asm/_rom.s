@@ -136,10 +136,19 @@ asm38:
 .include "asm/asm38.s"
 bin38_0:
 .incbin "bin/bin38_0.bin"
-comp00:
-.incbin "data/compressedFiles/comp00.lz77"
+comp_86C9BD4:
+.incbin "data/compressed/comp_86C9BD4.lz77"
 bin38_1:
 .incbin "bin/bin38_1.bin"
+comp_86DD9B4:
+.incbin "data/compressed/comp_86DD9B4.lz77"
+bin38_2:
+.incbin "bin/bin38_2.bin"
+comp_86DDAD0:
+.incbin "data/compressed/comp_86DDAD0.lz77"
+bin38_3:
+.incbin "bin/bin38_3.bin"
+
 
 /**/
 // include parts of the ROM not disassembled yet
