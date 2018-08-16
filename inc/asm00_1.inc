@@ -19,7 +19,7 @@
 .global sub_8002F3E
 .global sub_8002F5C
 .global sub_8002F7E
-.global sub_8002F90
+.global sub_8002F90 // () -> void
 .global sub_8002FA6
 .global sub_8002FB2
 .global sub_8002FEC
@@ -70,7 +70,7 @@
 .global sub_8004590
 .global sub_80045C0
 .global sub_8004602
-.global sub_800461E
+.global npc_800461E
 .global sub_800467C
 .global sub_8004702
 .global sub_80047E0
@@ -265,7 +265,7 @@
 // .global sub_800BFC4
 // .global sub_800C5E0
 // .global sub_800C8F0
-// .global sub_800E276
+// .global sub_800E276 // (int a1, int a2) -> (int n1, int n2)
 // .global sub_800ED00
 // .global object_createAIData
 

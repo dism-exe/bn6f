@@ -2,6 +2,7 @@
 
 .func
 .thumb_func
+// () -> void
 sprite_loadAnimationData:
     push {r4,r5,lr}
     ldrb r3, [r5,#2]
@@ -52,6 +53,7 @@ off_80026E0:    .word sub_3006792+1
 
 .func
 .thumb_func
+// (int a1, int a2, int a3) ->
 sprite_load:
     push {r4,r5,lr}
     ldrb r3, [r5]
@@ -1068,6 +1070,7 @@ locret_8002D7E:
 
 .func
 .thumb_func
+// (int pallete) -> void
 sprite_setPallete:
     ldrb r3, [r5,#2]
     lsr r3, r3, #4
@@ -1101,6 +1104,7 @@ sprite_setAnimationAlt:
 
 .func
 .thumb_func
+// (u8 a1) -> void
 sprite_setAnimation:
     ldrb r3, [r5,#2]
     lsr r3, r3, #4

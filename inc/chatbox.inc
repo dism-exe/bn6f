@@ -54,19 +54,19 @@
 // .global sub_8002694
 
 .include "sprite.inc"
-// .global sprite_loadAnimationData
+// .global sprite_loadAnimationData // () -> void
 // .global sprite_80026B6
 // .global sprite_update
 // .global sprite_chatbox_80026D6
-// .global sprite_load
+// .global sprite_load // (int a1, int a2, int a3) ->
 // .global sprite_800275A
 // .global sub_8002818
 // .global sub_8002874
-// .global sprite_setAnimation
+// .global sprite_setAnimation // (u8 a1) -> void
 
 .include "asm00_1.inc"
 // .global sub_8002DEA
-// .global sub_8002F90
+// .global sub_8002F90 // () -> void
 // .global sub_8003A64
 // .global sub_8005BC8
 // .global subsystem_launchBBS

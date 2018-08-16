@@ -16922,7 +16922,7 @@ sub_8138848:
     push {lr}
     bl sub_800378C
     bl sub_8003BA2
-    bl sub_800461E
+    bl npc_800461E
     bl sub_80048D2
     bl sub_80037F4
     bl loc_802FFF4

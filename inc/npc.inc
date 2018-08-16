@@ -12,9 +12,9 @@
 // .global calcAngle_800117C
 
 .include "sprite.inc"
-// .global sprite_loadAnimationData
+// .global sprite_loadAnimationData // () -> void
 // .global sprite_update
-// .global sprite_load
+// .global sprite_load // (int a1, int a2, int a3) ->
 // .global sprite_setScaleParameters
 // .global sub_8002C52
 // .global sub_8002C68
@@ -22,8 +22,8 @@
 // .global sub_8002CCE
 // .global sprite_makeScalable
 // .global sprite_makeUnscalable
-// .global sprite_setPallete
-// .global sprite_setAnimation
+// .global sprite_setPallete // (int pallete) -> void
+// .global sprite_setAnimation // (u8 a1) -> void
 
 .include "asm00_1.inc"
 // .global sub_8002DEA
@@ -33,7 +33,7 @@
 // .global sub_8002EF6
 // .global sub_8002F2C
 // .global sub_8002F5C
-// .global sub_8002F90
+// .global sub_8002F90 // () -> void
 // .global sub_8002FA6
 // .global sub_8003006
 // .global sub_8004602

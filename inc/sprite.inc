@@ -2,11 +2,11 @@
 .equ INC_SPRITE, 0
 
 /* Public Symbols */
-.global sprite_loadAnimationData
+.global sprite_loadAnimationData // () -> void
 .global sprite_80026B6
 .global sprite_update
 .global sprite_chatbox_80026D6
-.global sprite_load
+.global sprite_load // (int a1, int a2, int a3) ->
 .global sprite_800275A
 .global sub_8002770
 .global loc_8002774
@@ -35,9 +35,9 @@
 .global sprite_getMosaicScalingParameters
 .global sprite_makeScalable
 .global sprite_makeUnscalable
-.global sprite_setPallete
+.global sprite_setPallete // (int pallete) -> void
 .global sprite_getPallete
-.global sprite_setAnimation
+.global sprite_setAnimation // (u8 a1) -> void
 .global sprite_forceWhitePallete
 .global loc_8002DB4
 

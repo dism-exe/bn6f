@@ -140,17 +140,17 @@
 // .global sub_800239A
 
 .include "sprite.inc"
-// .global sprite_loadAnimationData
+// .global sprite_loadAnimationData // () -> void
 // .global sprite_update
-// .global sprite_load
+// .global sprite_load // (int a1, int a2, int a3) ->
 // .global sprite_decompress
 // .global sub_8002C7A
 // .global sprite_setMosaicScalingParameters
 // .global sub_8002CCE
 // .global sprite_getMosaicScalingParameters
-// .global sprite_setPallete
+// .global sprite_setPallete // (int pallete) -> void
 // .global sprite_getPallete
-// .global sprite_setAnimation
+// .global sprite_setAnimation // (u8 a1) -> void
 // .global sprite_forceWhitePallete
 // .global loc_8002DB4
 
@@ -169,7 +169,7 @@
 // .global sub_8002F3E
 // .global sub_8002F5C
 // .global sub_8002F7E
-// .global sub_8002F90
+// .global sub_8002F90 // () -> void
 // .global sub_8002FA6
 // .global sub_8003006
 // .global sub_800302A
@@ -263,8 +263,8 @@
 // .global sub_800D668
 // .global sub_800E24C
 // .global sub_800E258
-// .global sub_800E276
-// .global sub_800E29C
+// .global sub_800E276 // (int a1, int a2) -> (int n1, int n2)
+// .global sub_800E29C // () -> void
 // .global sub_800E2AC
 // .global sub_800E2C0
 // .global sub_800E2C2
@@ -274,7 +274,7 @@
 // .global object_addHP
 // .global sub_800E2FC
 // .global sub_800E3BE
-// .global sub_800E456
+// .global sub_800E456 // () -> int
 // .global object_canMove
 // .global sub_800E5FC
 // .global sub_800E6E8
@@ -461,14 +461,14 @@
 // .global sub_801A018
 // .global sub_801A04C
 // .global sub_801A066
-// .global sub_801A074
+// .global sub_801A074 // () -> void
 // .global sub_801A07C
 // .global sub_801A082
 // .global sub_801A0D4
 // .global sub_801A100
 // .global sub_801A140
 // .global sub_801A146
-// .global object_setFlag
+// .global object_setFlag // (int a1) -> void
 // .global object_clearFlag
 // .global object_getFlag
 // .global sub_801A16C

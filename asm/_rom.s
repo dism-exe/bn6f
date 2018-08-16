@@ -186,19 +186,58 @@ asm38:
 .include "asm/asm38.s"
 bin38_0:
 .incbin "bin/bin38_0.bin"
-comp_86C9BD4:
-.incbin "data/compressed/comp_86C9BD4.lz77"
+compFile_86C23A0:
+.incbin "data/compressed/compFile_86C23A0.lz77"
 bin38_1:
 .incbin "bin/bin38_1.bin"
-comp_86DD9B4:
-.incbin "data/compressed/comp_86DD9B4.lz77"
+comp_86C2E2C:
+.incbin "data/compressed/comp_86C2E2C.lz77"
 bin38_2:
 .incbin "bin/bin38_2.bin"
-comp_86DDAD0:
-.incbin "data/compressed/comp_86DDAD0.lz77"
+comp_86C33B4:
+.incbin "data/compressed/comp_86C33B4.lz77"
 bin38_3:
 .incbin "bin/bin38_3.bin"
-
+comp_86C9BD4:
+.incbin "data/compressed/comp_86C9BD4.lz77"
+bin38_4:
+.incbin "bin/bin38_4.bin"
+comp_86C9D38:
+.incbin "data/compressed/comp_86C9D38.lz77"
+bin38_5:
+.incbin "bin/bin38_5.bin"
+comp_86D6974:
+.incbin "data/compressed/comp_86D6974.lz77"
+bin38_6:
+.incbin "bin/bin38_6.bin"
+comp_86DD9B4:
+.incbin "data/compressed/comp_86DD9B4.lz77"
+bin38_7:
+.incbin "bin/bin38_7.bin"
+comp_86DDAD0:
+.incbin "data/compressed/comp_86DDAD0.lz77"
+bin38_8:
+.incbin "bin/bin38_8.bin"
+comp_86DDB44:
+.incbin "data/compressed/comp_86DDB44.lz77"
+bin38_9:
+.incbin "bin/bin38_9.bin"
+comp_86DDB7C:
+.incbin "data/compressed/comp_86DDB7C.lz77"
+bin38_10:
+.incbin "bin/bin38_10.bin"
+comp_87F3370:
+.incbin "data/compressed/comp_87F3370.lz77"
+bin38_11:
+.incbin "bin/bin38_11.bin"
+comp_87F36A0:
+.incbin "data/compressed/comp_87F36A0.lz77"
+bin38_12:
+.incbin "bin/bin38_12.bin"
+comp_87F4394:
+.incbin "data/compressed/comp_87F4394.lz77"
+dword_87F8EB0:
+.incbin "bin/bin38_13.bin"
 
 /**/
 // include parts of the ROM not disassembled yet

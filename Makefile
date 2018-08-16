@@ -44,11 +44,11 @@ checksum:
 
 
 fdiff:
-	$(PY) tools/fdiff.py bin/$(ROM).bin $(ROM).gba -s2
+	$(PY) tools/fdiff.py _$(ROM).gba $(ROM).gba -s2
 
 tail: $(ROM)
 	@# Create tail.bin using the tail location in current elf then compile again
-	$(PY) tools/gen_obj_tail.py $(ROM).elf bin/$(ROM).bin bin/tail.bin 'tail'
+	$(PY) tools/gen_obj_tail.py $(ROM).elf _$(ROM).gba bin/tail.bin 'tail'
 	@echo "Updated tail.bin!"
 
 clean:

@@ -380,13 +380,13 @@
 // .global sub_800260C
 
 .include "sprite.inc"
-// .global sprite_loadAnimationData
-// .global sprite_load
+// .global sprite_loadAnimationData // () -> void
+// .global sprite_load // (int a1, int a2, int a3) ->
 // .global sub_80027C4
 // .global sub_8002A64
 // .global sub_8002ADE
-// .global sprite_setPallete
-// .global sprite_setAnimation
+// .global sprite_setPallete // (int pallete) -> void
+// .global sprite_setAnimation // (u8 a1) -> void
 // .global sprite_forceWhitePallete
 
 .include "asm00_1.inc"
@@ -477,12 +477,12 @@
 // .global object_checkPanelParameters
 // .global sub_800D012
 // .global sub_800D086
-// .global sub_800E29C
+// .global sub_800E29C // () -> void
 // .global sub_800E2C0
 // .global sub_800E2C2
 // .global object_getFlipDirection_800E2CA // () -> int
 // .global object_addHP
-// .global sub_800E456
+// .global sub_800E456 // () -> int
 // .global sub_800E680
 // .global sub_800EA0E
 // .global object_setInvulnerableTime
@@ -555,7 +555,7 @@
 // .global sub_8015CC0
 // .global sub_80182B4
 // .global sub_801A04C
-// .global sub_801A074
+// .global sub_801A074 // () -> void
 // .global sub_801A07C
 // .global object_clearFlag
 // .global object_getFlag
@@ -1597,13 +1597,19 @@
 .equ dword_86C1DC8, 0x86C1DC8
 .equ unk_86C1F80, 0x86C1F80
 .equ unk_86C22E0, 0x86C22E0
-.equ compFile_86C23A0, 0x86C23A0
+// .global compFile_86C23A0
+// .global comp_86C2E2C
+// .global comp_86C33B4
 .equ dword_86C41B4, 0x86C41B4
 // .global comp_86C9BD4
+// .global comp_86C9D38
 .equ unk_86CB360, 0x86CB360
+// .global comp_86D6974
 .equ comp_86DD59C, 0x86DD59C
 // .global comp_86DD9B4
 // .global comp_86DDAD0
+// .global comp_86DDB44
+// .global comp_86DDB7C
 .equ dword_86E1238, 0x86E1238
 .equ dword_86E2E98, 0x86E2E98
 .equ dword_86E3598, 0x86E3598
@@ -1681,6 +1687,9 @@
 .equ aLlllllllllllll, 0x87F2654
 .equ aZz, 0x87F2808
 .equ aV, 0x87F2A1C
-.equ dword_87F8EB0, 0x87F8EB0
+// .global comp_87F3370
+// .global comp_87F36A0
+// .global comp_87F4394
+// .global dword_87F8EB0
 
 .endif // INC_ASM03_0

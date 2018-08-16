@@ -53,8 +53,8 @@ npc_809E590:
     mov r0, #0x80
     mov r1, #0x1c
     mov r2, #0xa0
-    bl sprite_load
-    bl sprite_loadAnimationData
+    bl sprite_load // (int a1, int a2, int a3) ->
+    bl sprite_loadAnimationData // () -> void
     bl npc_809E5E2
     pop {pc}
 .endfunc // npc_809E590
@@ -90,13 +90,13 @@ loc_809E60A:
     add r2, r0, #0
     mov r0, #0x80
     ldr r1, [r5,#0x78]
-    bl sprite_load
-    bl sprite_loadAnimationData
+    bl sprite_load // (int a1, int a2, int a3) ->
+    bl sprite_loadAnimationData // () -> void
     ldr r0, [r5,#0x60]
     mov r1, #0x80
     tst r0, r1
     bne loc_809E632
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     b loc_809E644
 loc_809E632:
     ldr r0, [r5,#0x60]
@@ -115,12 +115,12 @@ loc_809E648:
     ldrb r1, [r5,#0x15]
     cmp r0, r1
     beq loc_809E658
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 loc_809E658:
     bl sprite_update
     ldrb r0, [r5,#0x16]
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     ldr r0, [r5,#0x68]
     ldr r1, [r5,#0x6c]
     cmp r0, r1
@@ -153,7 +153,7 @@ locret_809E6A0:
     pop {pc}
     .balign 4, 0x00
 off_809E6A4:    .word sub_809E6C8+1
-off_809E6A8:    .word npc_809E6DC+1
+jt_809E6A8:    .word npc_809E6DC+1
     .word npc_809E8CC+1
     .word npc_809EA3C+1
     .word sub_809EA74+1
@@ -697,8 +697,8 @@ npc_809EAA0:
     mov r0, #0x80
     mov r1, #0x1c
     mov r2, #0xa0
-    bl sprite_load
-    bl sprite_loadAnimationData
+    bl sprite_load // (int a1, int a2, int a3) ->
+    bl sprite_loadAnimationData // () -> void
     bl sub_8004602
     bl npc_809F51E
 loc_809EAD4:
@@ -771,8 +771,8 @@ npc_809EB20:
     lsr r0, r0, #6
     lsl r0, r0, #1
     add r0, #1
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 loc_809EB54:
     ldr r2, [r5,#0x60]
     ldr r1, off_809EBB4 // =0x400 
@@ -1016,8 +1016,8 @@ npc_809ED94:
     mov r0, #0x80
     mov r1, #0x1c
     mov r2, #0xa0
-    bl sprite_load
-    bl sprite_loadAnimationData
+    bl sprite_load // (int a1, int a2, int a3) ->
+    bl sprite_loadAnimationData // () -> void
 .endfunc // npc_809ED94
 
     bl sub_8004602
@@ -1360,7 +1360,7 @@ npc_809EFB4:
     mov r1, #0x80
     bic r0, r1
     str r0, [r5,#0x60]
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     add r6, #1
     pop {pc}
 .endfunc // npc_809EFB4
@@ -1511,8 +1511,8 @@ loc_809F0BE:
     mov r0, #0x80
     mov r1, #0x1c
     mov r2, #0xa0
-    bl sprite_load
-    bl sprite_loadAnimationData
+    bl sprite_load // (int a1, int a2, int a3) ->
+    bl sprite_loadAnimationData // () -> void
 .endfunc // npc_809F058
 
     bl sub_8004602
@@ -2112,8 +2112,8 @@ loc_809F498:
     mov r0, #0x80
     mov r1, #0x1c
     mov r2, #0xa0
-    bl sprite_load
-    bl sprite_loadAnimationData
+    bl sprite_load // (int a1, int a2, int a3) ->
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_809F45A
 
     bl sub_8004602

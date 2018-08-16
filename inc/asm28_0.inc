@@ -60,16 +60,16 @@
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 
 .include "sprite.inc"
-// .global sprite_loadAnimationData
+// .global sprite_loadAnimationData // () -> void
 // .global sprite_update
-// .global sprite_load
+// .global sprite_load // (int a1, int a2, int a3) ->
 // .global sprite_setScaleParameters
 // .global sub_8002C7A
 // .global sub_8002CCE
 // .global sprite_makeScalable
 // .global sprite_makeUnscalable
-// .global sprite_setPallete
-// .global sprite_setAnimation
+// .global sprite_setPallete // (int pallete) -> void
+// .global sprite_setAnimation // (u8 a1) -> void
 
 .include "asm00_1.inc"
 // .global sub_8002DEA
@@ -78,7 +78,7 @@
 // .global sub_8002E52
 // .global sub_8002ED0
 // .global sub_8002EE8
-// .global sub_8002F90
+// .global sub_8002F90 // () -> void
 // .global sub_80037AC
 // .global sub_8003962
 // .global sub_8003984

@@ -33,8 +33,8 @@
 // .global getPETNaviSelect // () -> u8
 
 .include "sprite.inc"
-// .global sprite_loadAnimationData
-// .global sprite_setAnimation
+// .global sprite_loadAnimationData // () -> void
+// .global sprite_setAnimation // (u8 a1) -> void
 
 .include "asm00_1.inc"
 // .global sub_80037AC

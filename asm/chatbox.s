@@ -5691,11 +5691,11 @@ chatbox_8042770:
     ldr r5, off_80427A8 // =byte_2009F40 
     mov r0, #0x80
     mov r1, #0x18
-    bl sprite_load
+    bl sprite_load // (int a1, int a2, int a3) ->
     mov r0, #0
-    bl sprite_setAnimation
-    bl sub_8002F90
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sub_8002F90 // () -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // chatbox_8042770
 
     bl sprite_update

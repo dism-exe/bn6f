@@ -143,8 +143,8 @@ sub_809F612:
     tst r0, r1
     bne loc_809F632
     ldrb r0, [r5,#0x14]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 loc_809F632:
     mov r0, #0
     strb r0, [r5,#0x18]

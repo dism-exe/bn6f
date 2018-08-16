@@ -83,13 +83,13 @@ sub_808F8AC:
     mov r0, #0x80
     mov r1, #0x1c
     mov r2, #0x6c 
-    bl sprite_load
+    bl sprite_load // (int a1, int a2, int a3) ->
     ldrb r0, [r5,#0x14]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_808F8AC
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     bl sprite_update
     ldr r1, off_808F8FC // =off_808F5D4 
     ldr r1, [r1]
@@ -179,13 +179,13 @@ sub_808F990:
     mov r0, #0x80
     mov r1, #0x18
     mov r2, #0x37 
-    bl sprite_load
+    bl sprite_load // (int a1, int a2, int a3) ->
     ldrb r0, [r5,#0x14]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_808F990
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     bl sprite_update
     mov r0, #0
     pop {r5,pc}

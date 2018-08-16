@@ -334,6 +334,7 @@ sub_8002F7E:
 
 .func
 .thumb_func
+// () -> void
 sub_8002F90:
     ldrb r3, [r5,#2]
     lsr r3, r3, #4
@@ -2994,7 +2995,10 @@ sub_8004602:
 
 .func
 .thumb_func
-sub_800461E:
+// [break] continuously called
+// [disable] - NPCs are no longer loaded, if they were already loaded, they are not interactable. Some are exceptions, like Central Robo Dog.
+// - Scenes don't seem to load, either
+npc_800461E:
     push {r4-r7,lr}
     mov r4, r8
     mov r5, r9
@@ -3044,7 +3048,7 @@ loc_800466C:
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_8004678:    .word off_80045BC
-.endfunc // sub_800461E
+.endfunc // npc_800461E
 
 .func
 .thumb_func
@@ -4399,7 +4403,7 @@ sub_8005268:
     strb r0, [r5,#0xe]
     bl sub_800378C
     bl sub_8003BA2
-    bl sub_800461E
+    bl npc_800461E
     bl sub_80048D2
     bl sub_809F942
     bl loc_80339CC
@@ -9089,7 +9093,7 @@ loc_80076A8:
     add r7, r0, #0
     ldr r0, [sp,#4]
     ldr r1, [sp,#8]
-    bl sub_800E276
+    bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
     mov r3, #0
     add r2, r1, #0
     add r1, r0, #0
@@ -16342,7 +16346,7 @@ loc_800ABB8:
 .thumb_func
 sub_800ABC6:
     push {r4,lr}
-    bl sub_800E276
+    bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
     add r2, r1, #0
     add r1, r0, #0
     mov r3, #0x10
@@ -18094,7 +18098,7 @@ sub_800B8EE:
     mul r0, r1
     add r0, #2
     mov r1, #4
-    bl sub_800E276
+    bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
     add r2, r1, #0
     add r1, r0, #0
     mov r3, #0x78 

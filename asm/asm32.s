@@ -1429,7 +1429,7 @@ off_810E914:    .word sub_810E928+1
 .thumb_func
 sub_810E928:
     push {lr}
-    bl sub_801A074
+    bl sub_801A074 // () -> void
     bl sub_801A5E2
     bl sub_801A284
     bl sub_801A29A
@@ -1891,7 +1891,7 @@ sub_810EDB8:
     strb r0, [r7,#1]
     mov r0, #1
     lsl r0, r0, #0x16
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     ldrb r0, [r7,#0xe]
     mov r1, #4
     mul r0, r1
@@ -2946,7 +2946,7 @@ sub_810FD70:
     ldr r1, dword_810FD8C // =0xC000000 
     tst r0, r1
     beq loc_810FD84
-    bl sub_801A074
+    bl sub_801A074 // () -> void
 loc_810FD84:
     bl byte_8016B02
     pop {pc}
@@ -2965,7 +2965,7 @@ sub_810FD90:
     ldr r1, dword_810FDAC // =0xC000000 
     tst r0, r1
     beq loc_810FDA4
-    bl sub_801A074
+    bl sub_801A074 // () -> void
 loc_810FDA4:
     bl sub_8016B36
     pop {pc}
@@ -2984,7 +2984,7 @@ sub_810FDB0:
     ldr r1, dword_810FDCC // =0xC000000 
     tst r0, r1
     beq loc_810FDC4
-    bl sub_801A074
+    bl sub_801A074 // () -> void
 loc_810FDC4:
     bl sub_8016B72
     pop {pc}
@@ -3130,7 +3130,7 @@ loc_810FEBA:
     ldrb r0, [r0,r1]
     strh r0, [r7,#0x10]
     mov r0, #0x40 
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     mov r0, #0xa
     bl sub_8011680
     mov r0, #0
@@ -3718,7 +3718,7 @@ loc_8110814:
     ldrb r1, [r5,#0x15]
     strb r1, [r5,#0x13]
     bl sub_801BB46
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A066
     mov r0, #1
     strb r0, [r7,#0x1a]
@@ -3785,7 +3785,7 @@ loc_811088A:
     ldr r1, dword_81108E0 // =0xC000000 
     tst r0, r1
     beq loc_811089E
-    bl sub_801A074
+    bl sub_801A074 // () -> void
 loc_811089E:
     ldr r1, off_81108B0 // =off_81108B4 
     ldrb r0, [r7]
@@ -3863,7 +3863,7 @@ loc_811093E:
     mov r0, #0
     strb r0, [r5,#0x10]
     mov r0, #1
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     mov r0, #4
     strh r0, [r7]
     mov r0, #0
@@ -3898,7 +3898,7 @@ loc_811097E:
     strb r0, [r5,#0x12]
     strb r1, [r7,#0x17]
     strb r1, [r5,#0x13]
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A04C
     mov r0, #8
     strh r0, [r7]
@@ -3926,7 +3926,7 @@ loc_81109A6:
     strb r0, [r5,#0x12]
     strb r1, [r7,#0x17]
     strb r1, [r5,#0x13]
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A04C
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
@@ -3972,7 +3972,7 @@ loc_8110A16:
     strb r0, [r5,#0x12]
     strb r1, [r7,#0x17]
     strb r1, [r5,#0x13]
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A04C
     mov r0, #0xc
     strh r0, [r7]
@@ -4000,7 +4000,7 @@ loc_8110A3E:
     strb r0, [r5,#0x12]
     strb r1, [r7,#0x17]
     strb r1, [r5,#0x13]
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A04C
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
@@ -4148,7 +4148,7 @@ sub_8110B50:
     mov r0, #0
     strb r0, [r5,#0x10]
     mov r0, #1
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     mov r0, #0x20 
     strh r0, [r7]
     mov r0, #0
@@ -4202,7 +4202,7 @@ loc_8110BB6:
     strb r0, [r5,#0x12]
     strb r1, [r7,#0x17]
     strb r1, [r5,#0x13]
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A04C
     mov r0, #0x24 
     strh r0, [r7]
@@ -4228,7 +4228,7 @@ loc_8110BDE:
     strb r0, [r5,#0x12]
     strb r1, [r7,#0x17]
     strb r1, [r5,#0x13]
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A04C
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
@@ -4273,7 +4273,7 @@ loc_8110C46:
     strb r0, [r5,#0x12]
     strb r1, [r7,#0x17]
     strb r1, [r5,#0x13]
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A04C
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
@@ -4306,7 +4306,7 @@ loc_8110C7E:
     strb r0, [r5,#0x12]
     strb r1, [r7,#0x17]
     strb r1, [r5,#0x13]
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A04C
     ldrb r0, [r5,#0x12]
     ldrb r1, [r5,#0x13]
@@ -4507,7 +4507,7 @@ loc_8110EB8:
     mov r0, #0
     str r0, [r5,#0x6c]
     mov r0, #1
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     ldr r1, off_8110ED0 // =off_8110ED4 
     ldrb r0, [r6,#2]
     ldr r1, [r1,r0]
@@ -4543,7 +4543,7 @@ sub_8110EF8:
     mov r0, #0
     str r0, [r5,#0x6c]
     mov r0, #1
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     mov r0, #0x6c 
     mov r1, #0x67 
     mov r2, #0x6c 
@@ -4748,7 +4748,7 @@ sub_811109C:
     add r2, r0, #0
     pop {r0,r1}
     push {r2}
-    bl sub_800E276
+    bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
     add r2, r1, #0
     add r1, r0, #0
     mov r3, #0
@@ -4772,7 +4772,7 @@ sub_81110C8:
     add r2, r0, #0
     pop {r0,r1}
     push {r2}
-    bl sub_800E276
+    bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
     add r2, r1, #0
     add r1, r0, #0
     mov r3, #0
@@ -5167,7 +5167,7 @@ loc_811187C:
     strb r0, [r5,#0x12]
     strb r1, [r5,#0x13]
     bl sub_801BB46
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A04C
     ldr r0, dword_8111908 // =0x501040 
     bl object_clearFlag
@@ -5255,7 +5255,7 @@ sub_8111A28:
     strb r1, [r5,#0x15]
     bl sub_801BB1C
     mov r0, #0x40 
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     mov r0, #1
     strb r0, [r5,#0x10]
     mov r0, #0x10
@@ -5324,13 +5324,13 @@ loc_8111AB8:
     ldrb r1, [r5,#0x15]
     strb r1, [r5,#0x13]
     bl sub_801BB46
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A066
     mov r0, #0x40 
     bl object_clearFlag
     mov r0, #1
     lsl r0, r0, #0x13
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     mov r0, #1
     strb r0, [r7,#0x1a]
     mov r0, #0xc
@@ -5422,7 +5422,7 @@ sub_8111B70:
     strh r0, [r7,#0x12]
     mov r0, #1
     lsl r0, r0, #0x16
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     mov r0, #4
     strh r0, [r7]
     pop {pc}
@@ -6562,7 +6562,7 @@ sub_8113350:
     bl object_canMove
     beq loc_8113394
     mov r0, #0x40 
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     ldrb r0, [r6,#4]
     cmp r0, #1
     bne loc_8113378
@@ -6604,7 +6604,7 @@ sub_811339A:
     beq loc_81133AE
     ldrh r0, [r5,#0x12]
     str r0, [r7,#0x3c]
-    bl sub_801A074
+    bl sub_801A074 // () -> void
 loc_81133AE:
     ldrh r0, [r5,#0x12]
     ldr r1, [r7,#0x3c]
@@ -6680,7 +6680,7 @@ loc_8113440:
     ldrb r1, [r5,#0x12]
     cmp r0, r1
     beq loc_8113452
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     ldrh r0, [r7,#0x12]
     strh r0, [r7,#0x10]
     b locret_811348C
@@ -6696,13 +6696,13 @@ loc_811345A:
     strb r1, [r5,#0x13]
     bl sub_801BB46
 loc_8113466:
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A066
     mov r0, #0x40 
     bl object_clearFlag
     mov r0, #1
     lsl r0, r0, #0x13
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     mov r0, #1
     bl sub_801A07C
     ldrb r0, [r7]
@@ -7412,7 +7412,7 @@ loc_8114856:
     ldrb r0, [r5,r2]
     mov r2, #0x63 
     ldrb r1, [r5,r2]
-    bl sub_800E276
+    bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
     add r2, r1, #0
     add r1, r0, #0
     mov r3, #0
@@ -7493,7 +7493,7 @@ sub_8114910:
     ldrb r0, [r5,r2]
     mov r2, #0x63 
     ldrb r1, [r5,r2]
-    bl sub_800E276
+    bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
     add r2, r1, #0
     add r1, r0, #0
     mov r3, #0
@@ -7535,7 +7535,7 @@ sub_8114910:
     strh r0, [r7,#0x10]
     mov r0, #0
     strh r0, [r7,#0x12]
-    bl sub_801A074
+    bl sub_801A074 // () -> void
     mov r0, #0xa
     bl sub_8011680
     mov r0, #0
@@ -7578,7 +7578,7 @@ sub_81149E0:
 loc_8114A02:
     strb r0, [r5,#0x12]
     strb r1, [r5,#0x13]
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_8114AC4
     tst r0, r0
     beq locret_8114A48
@@ -7711,7 +7711,7 @@ sub_8114AF0:
     pop {r0,r1}
     strb r0, [r5,#0x12]
     strb r1, [r5,#0x13]
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A04C
     bl sub_8114D8E
     mov r2, #0x62 
@@ -7753,7 +7753,7 @@ loc_8114B6C:
     push {r0,r1}
     strb r0, [r5,#0x12]
     strb r1, [r5,#0x13]
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A04C
     bl sub_8114DAC
     pop {r0,r1}
@@ -8031,7 +8031,7 @@ loc_8114DC8:
     beq locret_8114DF0
     add r0, r6, #0
     add r1, r7, #0
-    bl sub_800E276
+    bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
     add r2, r1, #0
     add r1, r0, #0
     mov r3, #0
@@ -8270,7 +8270,7 @@ sub_8114F6A:
 sub_8114FAA:
     push {r4-r7,lr}
     mov r0, #0x40 
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     bl sub_80165B8
     pop {r4-r7,pc}
 .endfunc // sub_8114FAA
@@ -8460,10 +8460,10 @@ loc_81151E4:
     mov r3, #3
     bl sub_801A082
     mov r0, #0x40 
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     mov r0, #1
     lsl r0, r0, #0x16
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     bl sub_802D234
     cmp r0, #6
     beq loc_811520A
@@ -8525,7 +8525,7 @@ loc_811526C:
     beq loc_8115286
     ldrh r0, [r5,#0x12]
     str r0, [r7,#0x38]
-    bl sub_801A074
+    bl sub_801A074 // () -> void
 loc_8115286:
     ldrh r0, [r5,#0x12]
     ldr r1, [r7,#0x38]
@@ -8585,7 +8585,7 @@ loc_81152F4:
     strb r0, [r5,#0x12]
     ldrb r1, [r7,#0x17]
     strb r1, [r5,#0x13]
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A066
     ldrb r0, [r7,#0xc]
     sub r0, #1
@@ -8715,7 +8715,7 @@ sub_81154B8:
     mov r0, #3
     strb r0, [r5,#0x10]
     mov r0, #1
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
 locret_81154D4:
     pop {pc}
     .balign 4, 0x00
@@ -9328,7 +9328,7 @@ off_8115E84:    .word sub_8115E94+1
 .thumb_func
 sub_8115E94:
     push {r4-r7,lr}
-    bl sub_801A074
+    bl sub_801A074 // () -> void
     mov r0, #0x6b 
     ldrb r1, [r5,r0]
     add r1, #1
@@ -9352,7 +9352,7 @@ locret_8115EBA:
 .thumb_func
 sub_8115EBC:
     push {r4-r7,lr}
-    bl sub_801A074
+    bl sub_801A074 // () -> void
     bl sub_8002DEA
     mov r1, #0x80
     tst r0, r1
@@ -9806,7 +9806,7 @@ loc_8116276:
     mov r0, #0
     str r0, [r5,#0x60]
     mov r0, #0x40 
-    bl object_setFlag
+    bl object_setFlag // (int a1) -> void
     pop {r4-r7,pc}
 .func
 .thumb_func
@@ -9821,8 +9821,8 @@ sub_81162AE:
     push {r4-r7,lr}
     bl sub_80165B8
     ldr r0, dword_81162F4 // =0x800000 
-    bl object_setFlag
-    bl sub_801A074
+    bl object_setFlag // (int a1) -> void
+    bl sub_801A074 // () -> void
     pop {r4-r7,pc}
 dword_81162C0:    .word 0xA000
 off_81162C4:    .word dword_8115E08+0x2C
@@ -9864,10 +9864,10 @@ dword_81162F8:    .word 0x11F04, 0x1F, 0x8000001, 0x1003C, 0x3C0801, 0x8020001
 .thumb_func
 sub_8116414:
     push {lr}
-    bl sub_801A074
+    bl sub_801A074 // () -> void
     mov r0, #7
     strb r0, [r5,#0x12]
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A04C
     mov r0, #0
     mov r1, #0x60 
@@ -10080,10 +10080,10 @@ dword_81165BC:    .word 0x11F04, 0x1F, 0x800001E, 0x32003C, 0x3C0801, 0x8020046
     .word sub_8016B72+1
     .word loc_8116720+1
     push {lr}
-    bl sub_801A074
+    bl sub_801A074 // () -> void
     mov r0, #7
     strb r0, [r5,#0x12]
-    bl sub_800E29C
+    bl sub_800E29C // () -> void
     bl sub_801A04C
     ldrh r1, [r5,#0x26]
     ldr r0, dword_8116888 // =0x4000 
@@ -10329,15 +10329,15 @@ sub_81168B4:
     mov r0, #0x3e 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_81168B4
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #3
     bl sub_8002E14
     ldr r0, off_8116900 // =0x390 
@@ -10399,15 +10399,15 @@ sub_8116944:
     mov r0, #1
     bl sub_8002770
     ldrb r0, [r5,#4]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8116944
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0xc
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #0
     bl sub_8002E14
     ldr r0, off_81169A4 // =0x2D4 
@@ -10470,9 +10470,9 @@ sub_81169D8:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #1
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
 locret_8116A00:
     pop {pc}
     .balign 4, 0x00
@@ -10487,9 +10487,9 @@ sub_8116A04:
     tst r0, r1
     beq locret_8116A26
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     bl sub_8116A44
     mov r0, #8
     strb r0, [r5,#9]
@@ -10643,107 +10643,56 @@ loc_8116B0C:
     mov r4, #8
 loc_8116B24:
     add r0, r4, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x2F 
-    .byte 0xFA
-    .byte 0xD
-    .byte 0x20
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x89
-    .byte 0xFA
-    .byte 1
-    .byte 0x20
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x21 
-    .byte 0xF9
-    .byte 0
-    .byte 0x20
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x68 
-    .byte 0xF9
-    .byte 0x11
-    .byte 0x48 
-    .byte 0
-    .byte 0x68 
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x90
-    .byte 0xFA
-    .byte 0
-    .byte 0x20
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x87
-    .byte 0xFA
-    .byte 4
-    .byte 0x20
-    .byte 0x28 
-    .byte 0x72 
-    .byte 0
-    .byte 0x20
-    .byte 0x68 
-    .byte 0x72 
-    .byte 0x20
-    .byte 0x21 
-    .byte 0x68 
-    .byte 0x79 
-    .byte 0
-    .byte 0x42 
-    .byte 9
-    .byte 0xD0
-    .byte 0x21 
-    .byte 0x48 
-    .byte 0x29 
-    .byte 0x79 
-    .byte 0x49 
-    .byte 0
-    .byte 0x41 
-    .byte 0x5C 
-    .byte 0x3B 
-    .byte 0x79 
-    .byte 0x2A 
-    .byte 0x79 
-    .byte 0x93
-    .byte 0x42 
-    .byte 1
-    .byte 0xD1
-    .byte 0x1E
-    .byte 0x20
-    .byte 0
-    .byte 0xE0
-    .byte 0x16
-    .byte 0x20
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x80
-    .byte 0xFA
-    .byte 1
-    .byte 0x20
-    .byte 0x68 
-    .byte 0x73 
-    .byte 0
-    .byte 0x20
-    .byte 0x28 
-    .byte 0x73 
-    .byte 0
-    .byte 0xF0
-    .byte 0xA
-    .byte 0xF8
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+.endfunc // sub_8116B00
+
+    bl sub_8002F90 // () -> void
+    mov r0, #0xd
+    bl sub_800304A
+    mov r0, #1
+    bl sprite_setPallete // (int pallete) -> void
+    mov r0, #0
+    bl sub_8002E14
+    ldr r0, off_8116B8C // =off_8116B90 
+    ldr r0, [r0]
+    bl sub_800306C
+    mov r0, #0
+    bl sub_8003060
+    mov r0, #4
+    strb r0, [r5,#8]
+    mov r0, #0
+    strb r0, [r5,#9]
+    mov r1, #0x20 
+    ldrb r0, [r5,#5]
+    tst r0, r0
+    beq loc_8116B76
+    ldr r0, off_8116BE8 // =dword_8116BEC 
+    ldrb r1, [r5,#4]
+    lsl r1, r1, #1
+    ldrb r1, [r0,r1]
+    ldrb r3, [r7,#4]
+    ldrb r2, [r5,#4]
+    cmp r3, r2
+    bne loc_8116B76
+    mov r0, #0x1e
+    b loc_8116B78
+loc_8116B76:
+    mov r0, #0x16
+loc_8116B78:
+    bl sub_800307C
+    mov r0, #1
+    strb r0, [r5,#0xd]
+    mov r0, #0
+    strb r0, [r5,#0xc]
+    bl sub_8116B9C
     .byte 0x10
     .byte 0xBD
     .balign 4, 0x00
-    .word off_8116B90
+off_8116B8C:    .word off_8116B90
 off_8116B90:    .word 0x350
     .word dword_8116B98
 dword_8116B98:    .word 0x20
-.endfunc // sub_8116B00
-
 .func
 .thumb_func
 sub_8116B9C:
@@ -10909,7 +10858,7 @@ loc_8116CBA:
     add r0, r6, #0
     bl sub_800304A
     add r0, r4, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     pop {r4-r6,pc}
 off_8116CC8:    .word unk_8116CCC
 unk_8116CCC:    .byte 0xC
@@ -10961,80 +10910,41 @@ sub_8116D00:
     ldrb r0, [r5,#4]
     strb r0, [r5,#0xc]
     strb r0, [r5,#0xd]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x39 
-    .byte 0xF9
-    .byte 0xC
-    .byte 0x20
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x93
-    .byte 0xF9
-    .byte 0
-    .byte 0x20
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x2B 
-    .byte 0xF8
-    .byte 0
-    .byte 0x20
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x72 
-    .byte 0xF8
-    .byte 0xA
-    .byte 0x48 
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x9B
-    .byte 0xF9
-    .byte 0
-    .byte 0x20
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x92
-    .byte 0xF9
-    .byte 4
-    .byte 0x20
-    .byte 0x28 
-    .byte 0x72 
-    .byte 7
-    .byte 0x48 
-    .byte 0
-    .byte 0x22 
-    .byte 0x69 
-    .byte 0x79 
-    .byte 9
-    .byte 0x42 
-    .byte 1
-    .byte 0xD0
-    .byte 7
-    .byte 0x48 
-    .byte 4
-    .byte 0x22 
-    .byte 0x6A 
-    .byte 0x72 
-    .byte 4
-    .byte 0x49 
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x93
-    .byte 0xF9
-    .byte 0
-    .byte 0xF0
-    .byte 9
-    .byte 0xF8
-    .byte 0
-    .byte 0xBD
-    .word 0x38B
-    .word 0x11A
-    .word 0x97
-    .word 0xAA
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8116D00
 
+    bl sub_8002F90 // () -> void
+    mov r0, #0xc
+    bl sub_800304A
+    mov r0, #0
+    bl sprite_setPallete // (int pallete) -> void
+    mov r0, #0
+    bl sub_8002E14
+    ldr r0, dword_8116D5C // =0x38B 
+    bl sub_800306C
+    mov r0, #0
+    bl sub_8003060
+    mov r0, #4
+    strb r0, [r5,#8]
+    ldr r0, dword_8116D60 // =0x11A 
+    mov r2, #0
+    ldrb r1, [r5,#5]
+    tst r1, r1
+    beq loc_8116D4E
+    ldr r0, off_8116D68 // =0xAA 
+    mov r2, #4
+loc_8116D4E:
+    strb r2, [r5,#9]
+    ldr r1, dword_8116D64 // =0x97 
+    bl sub_800307C
+    bl sub_8116D6C
+    .byte 0
+    .byte 0xBD
+dword_8116D5C:    .word 0x38B
+dword_8116D60:    .word 0x11A
+dword_8116D64:    .word 0x97
+off_8116D68:    .word 0xAA
 .func
 .thumb_func
 sub_8116D6C:
@@ -11090,9 +11000,9 @@ loc_8116DC2:
     cmp r0, r1
     beq loc_8116DD8
     strb r0, [r5,#0xd]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
 loc_8116DD8:
     bl sprite_update
 .endfunc // sub_8116DB4
@@ -11167,96 +11077,51 @@ loc_8116E3C:
     bl sub_8002770
     ldr r0, off_8116EAC // =dword_8116F18 
     ldrb r0, [r0,r4]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0x9A
-    .byte 0xF8
-    .byte 0x14
-    .byte 0x48 
-    .byte 0
-    .byte 0x5D 
-    .byte 0xEB
-    .byte 0xF6
-    .byte 0x8E
-    .byte 0xFF
-    .byte 2
-    .byte 0x20
-    .byte 0x13
-    .byte 0x48 
-    .byte 0x69 
-    .byte 0x79 
-    .byte 0x89
-    .byte 0
-    .byte 0x40 
-    .byte 0x58 
-    .byte 0
-    .byte 0x5D 
-    .byte 0xEB
-    .byte 0xF6
-    .byte 0xD0
-    .byte 0xFF
-    .byte 0x13
-    .byte 0x48 
-    .byte 0x69 
-    .byte 0x79 
-    .byte 0x89
-    .byte 0
-    .byte 0x40 
-    .byte 0x58 
-    .byte 0xA2
-    .byte 0
-    .byte 0x80
-    .byte 0x58 
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0xF4
-    .byte 0xF8
-    .byte 0x18
-    .byte 0x48 
-    .byte 0x69 
-    .byte 0x79 
-    .byte 0x89
-    .byte 0
-    .byte 0x40 
-    .byte 0x58 
-    .byte 0
-    .byte 0x5D 
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0xDC
-    .byte 0xF8
-    .byte 0x19
-    .byte 0x48 
-    .byte 0x69 
-    .byte 0x79 
-    .byte 0x89
-    .byte 0
-    .byte 0x40 
-    .byte 0x58 
-    .byte 0
-    .byte 0x5D 
-    .byte 0xEC
-    .byte 0xF6
-    .byte 0xE0
-    .byte 0xF8
-    .byte 4
-    .byte 0x20
-    .byte 0x28 
-    .byte 0x72 
-    .byte 0
-    .byte 0xF0
-    .byte 0x46 
-    .byte 0xF8
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+.endfunc // sub_8116E30
+
+    bl sub_8002F90 // () -> void
+    ldr r0, dword_8116EB0 // =dword_8116F18 
+    ldrb r0, [r0,r4]
+    bl sprite_setPallete // (int pallete) -> void
+    mov r0, #2
+    ldr r0, off_8116EB4 // =dword_8116EB8 
+    ldrb r1, [r5,#5]
+    lsl r1, r1, #2
+    ldr r0, [r0,r1]
+    ldrb r0, [r0,r4]
+    bl sub_8002E14
+    ldr r0, off_8116EC4 // =off_8116EC8 
+    ldrb r1, [r5,#5]
+    lsl r1, r1, #2
+    ldr r0, [r0,r1]
+    lsl r2, r4, #2
+    ldr r0, [r0,r2]
+    bl sub_800306C
+    ldr r0, off_8116EE8 // =off_8116EEC 
+    ldrb r1, [r5,#5]
+    lsl r1, r1, #2
+    ldr r0, [r0,r1]
+    ldrb r0, [r0,r4]
+    bl sub_800304A
+    ldr r0, off_8116EF8 // =dword_8116EFC 
+    ldrb r1, [r5,#5]
+    lsl r1, r1, #2
+    ldr r0, [r0,r1]
+    ldrb r0, [r0,r4]
+    bl sub_8003060
+    mov r0, #4
+    strb r0, [r5,#8]
+    bl sub_8116F34
     .byte 0
     .byte 0xBD
     .balign 4, 0x00
 off_8116EAC:    .word dword_8116F18
-    .word 0x8116F1D
-    .word dword_8116EB8
+dword_8116EB0:    .word 0x8116F1D
+off_8116EB4:    .word dword_8116EB8
 dword_8116EB8:    .word 0x8116F23, 0x8116F23, 0x8116F23
-    .word off_8116EC8
+off_8116EC4:    .word off_8116EC8
 off_8116EC8:    .word off_8116ED4
     .word off_8116ED4
     .word off_8116ED4
@@ -11265,11 +11130,11 @@ off_8116ED4:    .word 0x140
     .word 0x160
     .word 0x140
     .word 0x150
-    .word off_8116EEC
+off_8116EE8:    .word off_8116EEC
 off_8116EEC:    .word dword_8116F28
     .word dword_8116F28
     .word dword_8116F28
-    .word dword_8116EFC
+off_8116EF8:    .word dword_8116EFC
 dword_8116EFC:    .word 0x8116F2D, 0x8116F2D, 0x8116F2D
 off_8116F08:    .word off_8116F0C
 off_8116F0C:    .word unk_2020500
@@ -11279,8 +11144,6 @@ dword_8116F18:    .word 0x1020200, 0x2, 0x2000000, 0x2020202
 dword_8116F28:    .word 0xA0A0A0A
     .word 0x101000A
     .word 0x100
-.endfunc // sub_8116E30
-
 .func
 .thumb_func
 sub_8116F34:
@@ -11311,11 +11174,11 @@ sub_8116F60:
     bne loc_8116F6C
     mov r0, #1
 loc_8116F6C:
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8116F60
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     ldrb r0, [r5,#4]
     cmp r0, #3
     beq locret_8116F88
@@ -11493,7 +11356,7 @@ sub_81170AC:
     bne loc_81170BA
     mov r0, #0
 loc_81170BA:
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     pop {pc}
 .endfunc // sub_81170AC
 
@@ -11575,13 +11438,13 @@ loc_811713E:
     ldr r1, [r1,r2]
     bl sub_8002770
     ldrb r0, [r5,#4]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8117130
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, off_8117194 // =off_8117198 
@@ -11707,11 +11570,11 @@ sub_8117238:
     mov r0, #0x18
     bl loc_8002774
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8117238
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #8
     bl sub_800304A
     ldr r0, off_8117278 // =0x380 
@@ -11799,11 +11662,11 @@ loc_81172E8:
     ldrb r0, [r5,#5]
     mov r1, #0x7f
     and r0, r1
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_81172D0
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     ldrb r0, [r5,#3]
     add r0, #1
     bl sub_800304A
@@ -11885,11 +11748,11 @@ sub_8117424:
     mov r0, #0xc
     bl loc_8002774
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8117424
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     bl sprite_makeScalable
     mov r0, #0
     mov r1, #0x80
@@ -12067,8 +11930,8 @@ sub_8117592:
     push {lr}
     bl sub_81175C4
     ldrh r0, [r0,#2]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8117592
 
     mov r0, #4
@@ -12132,11 +11995,11 @@ sub_81175F0:
     ldr r1, off_8117638 // =unk_2016A04 
     bl sub_8002770
     ldrb r0, [r5,#4]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_81175F0
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
     bl sub_800304A
     ldrb r0, [r5,#3]
@@ -12332,11 +12195,11 @@ sub_81177A4:
     bl sub_8002770
     mov r0, #0
     str r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_81177A4
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #8
     bl sub_800304A
     ldr r0, off_81177E8 // =0x40 
@@ -12365,8 +12228,8 @@ sub_81177EC:
     cmp r0, r1
     beq loc_8117812
     str r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 loc_8117812:
     bl sprite_update
 .endfunc // sub_81177EC
@@ -12438,7 +12301,7 @@ sub_8117872:
     ldrb r0, [r0,#3]
     sub r0, #1
 loc_8117886:
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     pop {r4-r7,pc}
 .endfunc // sub_8117872
 
@@ -12513,11 +12376,11 @@ sub_81178FC:
     bl loc_8002774
     bl sub_8117998
     strb r0, [r5,#5]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_81178FC
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #9
     ldrb r1, [r5,#4]
     add r0, r0, r1
@@ -12563,8 +12426,8 @@ loc_8117962:
     cmp r0, r1
     beq loc_811798A
     strb r0, [r5,#5]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 loc_811798A:
     bl sprite_update
 .endfunc // sub_811794C
@@ -12890,71 +12753,36 @@ sub_8117BE8:
     bl sub_8002770
     mov r0, #0
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    .byte 0xEB
-    .byte 0xF6
-    .byte 0xC5
-    .byte 0xF9
-    .byte 9
-    .byte 0x20
-    .byte 0xEB
-    .byte 0xF6
-    .byte 0x1F
-    .byte 0xFA
-    .byte 0
-    .byte 0x20
-    .byte 0xEB
-    .byte 0xF6
-    .byte 0xB7
-    .byte 0xF8
-    .byte 2
-    .byte 0x20
-    .byte 0xEB
-    .byte 0xF6
-    .byte 0xFE
-    .byte 0xF8
-    .byte 9
-    .byte 0x48 
-    .byte 0xEB
-    .byte 0xF6
-    .byte 0x27 
-    .byte 0xFA
-    .byte 0
-    .byte 0x20
-    .byte 0xEB
-    .byte 0xF6
-    .byte 0x1E
-    .byte 0xFA
-    .byte 7
-    .byte 0x48 
-    .byte 8
-    .byte 0x49 
-    .byte 0xEB
-    .byte 0xF6
-    .byte 0x28 
-    .byte 0xFA
-    .byte 4
-    .byte 0x20
-    .byte 0x28 
-    .byte 0x72 
-    .byte 0
-    .byte 0x20
-    .byte 0x68 
-    .byte 0x72 
-    .byte 0
-    .byte 0xF0
-    .byte 0xA
-    .byte 0xF8
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+.endfunc // sub_8117BE8
+
+    bl sub_8002F90 // () -> void
+    mov r0, #9
+    bl sub_800304A
+    mov r0, #0
+    bl sprite_setPallete // (int pallete) -> void
+    mov r0, #2
+    bl sub_8002E14
+    ldr r0, off_8117C40 // =0x170 
+    bl sub_800306C
+    mov r0, #0
+    bl sub_8003060
+    ldr r0, off_8117C44 // =0xD4 
+    ldr r1, dword_8117C48 // =0xC 
+    bl sub_800307C
+    mov r0, #4
+    strb r0, [r5,#8]
+    mov r0, #0
+    strb r0, [r5,#9]
+    bl sub_8117C4C
     .byte 0
     .byte 0xBD
     .balign 4, 0x00
 off_8117C3C:    .word unk_2034B6C
-    .word 0x170
-    .word 0xD4
-    .word 0xC
-.endfunc // sub_8117BE8
-
+off_8117C40:    .word 0x170
+off_8117C44:    .word 0xD4
+dword_8117C48:    .word 0xC
 .func
 .thumb_func
 sub_8117C4C:
@@ -12984,9 +12812,9 @@ sub_8117C70:
     cmp r0, r1
     beq loc_8117C8C
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
 loc_8117C8C:
     bl sub_8002DEA
     mov r1, #0xc0
@@ -13006,9 +12834,9 @@ sub_8117C9C:
     cmp r0, r1
     beq loc_8117CB4
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
 loc_8117CB4:
     bl sub_8002DEA
     mov r1, #0xc0
@@ -13116,13 +12944,13 @@ sub_8117D4C:
     ldrb r0, [r5,#4]
     add r0, #5
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8117D4C
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, off_8117DB0 // =off_8117DB4 
@@ -13210,9 +13038,9 @@ sub_8117E20:
     cmp r0, r1
     beq loc_8117E5A
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     b loc_8117E5A
 loc_8117E42:
     ldrb r0, [r5,#4]
@@ -13221,9 +13049,9 @@ loc_8117E42:
     cmp r0, r1
     beq loc_8117E5A
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
 loc_8117E5A:
     bl sprite_update
 .endfunc // sub_8117E20
@@ -13251,9 +13079,9 @@ loc_8117E7C:
     cmp r0, r1
     beq loc_8117EBA
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     b loc_8117EBA
 loc_8117E92:
     ldrb r0, [r5,#4]
@@ -13271,9 +13099,9 @@ loc_8117EA4:
     cmp r0, r1
     beq loc_8117EBA
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
 loc_8117EBA:
     bl sprite_update
 .endfunc // sub_8117E60
@@ -13314,11 +13142,11 @@ sub_8117EE8:
     ldr r1, off_8117F60 // =unk_201DD70 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8117EE8
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #3
     bl sub_8002E14
     ldr r0, off_8117F40 // =off_8117F44 
@@ -13808,7 +13636,7 @@ loc_8118280:
     add r0, r4, #0
     ldrb r1, [r5,#0xe]
     add r0, r0, r1
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     pop {r4-r7,pc}
 off_8118298:    .word unk_811829C
 unk_811829C:    .byte 9
@@ -13935,11 +13763,11 @@ sub_8118368:
     ldr r1, off_81183C0 // =unk_201F6F0 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8118368
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #3
     bl sub_8002E14
     ldr r0, off_81183BC // =0x1C0 
@@ -13972,8 +13800,8 @@ loc_81183C4:
     mov lr, pc
     bx r0
     bl sub_81185C0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
     bl sprite_update
     pop {pc}
     .balign 4, 0x00
@@ -14262,7 +14090,7 @@ sub_81185E4:
     bl sub_813B780
     ldrb r0, [r0,#3]
     sub r0, #1
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     pop {pc}
 .endfunc // sub_81185E4
 
@@ -14561,11 +14389,11 @@ sub_811880C:
     bl sub_8002770
     mov r0, #0
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811880C
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #3
     bl sub_8002E14
     ldr r0, off_811886C // =0x1D8 
@@ -14575,7 +14403,7 @@ sub_811880C:
     mov r0, #7
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #4
     strb r0, [r5,#8]
     mov r0, #0xff
@@ -14634,8 +14462,8 @@ sub_81188CC:
     ldrb r1, [r5,#0xd]
     cmp r0, r1
     beq locret_81188E8
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 locret_81188E8:
     pop {pc}
     .balign 4, 0x00
@@ -14661,8 +14489,8 @@ sub_81188EC:
     ldrb r1, [r5,#0xd]
     cmp r0, r1
     beq locret_8118918
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 locret_8118918:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -14703,8 +14531,8 @@ loc_8118950:
     ldrb r1, [r5,#0xd]
     cmp r0, r1
     beq locret_8118962
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 locret_8118962:
     pop {r4-r7,pc}
 .endfunc // sub_811891C
@@ -14732,8 +14560,8 @@ loc_8118982:
     ldrb r1, [r5,#0xd]
     cmp r0, r1
     beq locret_8118994
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 locret_8118994:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -14756,8 +14584,8 @@ loc_81189A8:
     ldrb r1, [r5,#0xd]
     cmp r0, r1
     beq locret_81189BC
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 locret_81189BC:
     pop {pc}
     .byte 0, 0
@@ -14802,8 +14630,8 @@ sub_81189E0:
     ldrb r1, [r5,#0xd]
     cmp r0, r1
     beq locret_81189FE
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 locret_81189FE:
     pop {pc}
 .endfunc // sub_81189E0
@@ -14826,8 +14654,8 @@ loc_8118A0E:
     ldrb r1, [r5,#0xd]
     cmp r0, r1
     beq locret_8118A28
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 locret_8118A28:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -14851,8 +14679,8 @@ loc_8118A3A:
     ldrb r1, [r5,#0xd]
     cmp r0, r1
     beq locret_8118A54
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 locret_8118A54:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -14878,8 +14706,8 @@ sub_8118A58:
     ldrb r1, [r5,#0xd]
     cmp r0, r1
     beq locret_8118A84
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 locret_8118A84:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -14897,8 +14725,8 @@ sub_8118A88:
     ldrb r1, [r5,#0xd]
     cmp r0, r1
     beq loc_8118AA2
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 loc_8118AA2:
     bl sprite_update
 .endfunc // sub_8118A88
@@ -15066,79 +14894,39 @@ sub_8118BC8:
     ldr r1, off_8118C28 // =unk_2021FF0 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0xD6
-    .byte 0xF9
-    .byte 3
-    .byte 0x20
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0x15
-    .byte 0xF9
-    .byte 0xE
-    .byte 0x48 
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0x3E 
-    .byte 0xFA
-    .byte 4
-    .byte 0x20
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0x35 
-    .byte 0xFA
-    .byte 6
-    .byte 0x20
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0x27 
-    .byte 0xFA
-    .byte 0
-    .byte 0x20
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0xBF
-    .byte 0xF8
-    .byte 4
-    .byte 0x20
-    .byte 0x28 
-    .byte 0x72 
-    .byte 0x80
-    .byte 0x20
-    .byte 0x1B
-    .byte 0x21 
-    .byte 0x32 
-    .byte 0x8C
-    .byte 0x14
-    .byte 0x23 
-    .byte 0x5A 
-    .byte 0x43 
-    .byte 0x89
-    .byte 0x18
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0x33 
-    .byte 0xFA
-    .byte 0xFF
-    .byte 0x20
-    .byte 0x28 
-    .byte 0x73 
-    .byte 0x68 
-    .byte 0x73 
-    .byte 0
-    .byte 0xF0
-    .byte 6
-    .byte 0xF8
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+.endfunc // sub_8118BC8
+
+    bl sub_8002F90 // () -> void
+    mov r0, #3
+    bl sub_8002E14
+    ldr r0, off_8118C24 // =0x1E0 
+    bl sub_800306C
+    mov r0, #4
+    bl sub_8003060
+    mov r0, #6
+    bl sub_800304A
+    mov r0, #0
+    bl sprite_setPallete // (int pallete) -> void
+    mov r0, #4
+    strb r0, [r5,#8]
+    mov r0, #0x80
+    mov r1, #0x1b
+    ldrh r2, [r6,#0x20]
+    mov r3, #0x14
+    mul r2, r3
+    add r1, r1, r2
+    bl sub_800307C
+    mov r0, #0xff
+    strb r0, [r5,#0xc]
+    strb r0, [r5,#0xd]
+    bl sub_8118C2C
     .byte 0
     .byte 0xBD
     .balign 4, 0x00
-    .word 0x1E0
+off_8118C24:    .word 0x1E0
 off_8118C28:    .word unk_2021FF0
-.endfunc // sub_8118BC8
-
 .func
 .thumb_func
 sub_8118C2C:
@@ -15321,72 +15109,35 @@ sub_8118D84:
     ldr r1, off_8118DDC // =unk_20222F0 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0xF8
-    .byte 0xF8
-    .byte 3
-    .byte 0x20
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0x37 
-    .byte 0xF8
-    .byte 0xC
-    .byte 0x48 
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0x60 
-    .byte 0xF9
-    .byte 4
-    .byte 0x20
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0x57 
-    .byte 0xF9
-    .byte 5
-    .byte 0x20
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0x49 
-    .byte 0xF9
-    .byte 0
-    .byte 0x20
-    .byte 0xE9
-    .byte 0xF6
-    .byte 0xE1
-    .byte 0xFF
-    .byte 4
-    .byte 0x20
-    .byte 0x28 
-    .byte 0x72 
-    .byte 0x80
-    .byte 0x20
-    .byte 0x1B
-    .byte 0x21 
-    .byte 0x32 
-    .byte 0x8C
-    .byte 0x14
-    .byte 0x23 
-    .byte 0x5A 
-    .byte 0x43 
-    .byte 0x89
-    .byte 0x18
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0x55 
-    .byte 0xF9
-    .byte 0
-    .byte 0xF0
-    .byte 5
-    .byte 0xF8
-    .byte 0
-    .byte 0xBD
-    .word 0x200
-off_8118DDC:    .word unk_20222F0
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8118D84
 
+    bl sub_8002F90 // () -> void
+    mov r0, #3
+    bl sub_8002E14
+    ldr r0, off_8118DD8 // =0x200 
+    bl sub_800306C
+    mov r0, #4
+    bl sub_8003060
+    mov r0, #5
+    bl sub_800304A
+    mov r0, #0
+    bl sprite_setPallete // (int pallete) -> void
+    mov r0, #4
+    strb r0, [r5,#8]
+    mov r0, #0x80
+    mov r1, #0x1b
+    ldrh r2, [r6,#0x20]
+    mov r3, #0x14
+    mul r2, r3
+    add r1, r1, r2
+    bl sub_800307C
+    bl sub_8118DE0
+    .byte 0
+    .byte 0xBD
+off_8118DD8:    .word 0x200
+off_8118DDC:    .word unk_20222F0
 .func
 .thumb_func
 sub_8118DE0:
@@ -15507,11 +15258,11 @@ sub_8118EA8:
     ldr r1, off_8118F04 // =unk_20226F0 
     bl sub_8002770
     ldrb r0, [r6,#0xf]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8118EA8
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
     bl sub_8002E14
     ldr r0, off_8118F00 // =0x220 
@@ -15521,7 +15272,7 @@ sub_8118EA8:
     mov r0, #4
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     bl sub_8002C52
     mov r0, #4
     strb r0, [r5,#8]
@@ -15586,74 +15337,38 @@ sub_8118F44:
     bl loc_8002774
     ldrb r0, [r5,#4]
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0x17
-    .byte 0xF8
-    .byte 0
-    .byte 0x20
-    .byte 0xE9
-    .byte 0xF6
-    .byte 0xC
-    .byte 0xFF
-    .byte 2
-    .byte 0x20
-    .byte 0xE9
-    .byte 0xF6
-    .byte 0x53 
-    .byte 0xFF
-    .byte 0xA
-    .byte 0x48 
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0x7C 
-    .byte 0xF8
-    .byte 0
-    .byte 0xF0
-    .byte 0xB4
-    .byte 0xF8
-    .byte 4
-    .byte 0x20
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0x71 
-    .byte 0xF8
-    .byte 8
-    .byte 0x4A 
-    .byte 0x69 
-    .byte 0x79 
-    .byte 0x89
-    .byte 0
-    .byte 0x50 
-    .byte 0x5A 
-    .byte 2
-    .byte 0x31 
-    .byte 0x51 
-    .byte 0x5A 
-    .byte 0xEA
-    .byte 0xF6
-    .byte 0x77 
-    .byte 0xF8
-    .byte 4
-    .byte 0x20
-    .byte 0x28 
-    .byte 0x72 
-    .byte 0
-    .byte 0xF0
-    .byte 0x15
-    .byte 0xF8
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+.endfunc // sub_8118F44
+
+    bl sub_8002F90 // () -> void
+    mov r0, #0
+    bl sprite_setPallete // (int pallete) -> void
+    mov r0, #2
+    bl sub_8002E14
+    ldr r0, dword_8118F98 // =0x0 
+    bl sub_800306C
+    bl sub_81190E0
+    mov r0, #4
+    bl sub_8003060
+    ldr r2, off_8118FA0 // =dword_8118FA4 
+    ldrb r1, [r5,#5]
+    lsl r1, r1, #2
+    ldrh r0, [r2,r1]
+    add r1, #2
+    ldrh r1, [r2,r1]
+    bl sub_800307C
+    mov r0, #4
+    strb r0, [r5,#8]
+    bl sub_8118FC0
     .byte 0
     .byte 0xBD
-    .word 0x0
+dword_8118F98:    .word 0x0
 off_8118F9C:    .word unk_201E284
-    .word dword_8118FA4
+off_8118FA0:    .word dword_8118FA4
 dword_8118FA4:    .word 0x200030
     .word 0x200078
     .word 0x2000C0, 0x62002A, 0x5A002A, 0x8118FBC, 0x100
-.endfunc // sub_8118F44
-
 .func
 .thumb_func
 sub_8118FC0:
@@ -15694,9 +15409,9 @@ sub_8118FE4:
     cmp r0, r1
     beq locret_811900A
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     bl sub_81190E0
 locret_811900A:
     pop {pc}
@@ -15971,13 +15686,13 @@ loc_81193AA:
     bl sub_8002770
     ldr r1, off_8119638 // =dword_811963C 
     ldrb r0, [r1,r4]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8119384
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     ldr r1, off_8119640 // =off_8119208 
     ldrb r0, [r5,#5]
     lsl r0, r0, #2
@@ -16489,7 +16204,7 @@ loc_81197E2:
     ldr r1, off_81197F4 // =dword_81197F8 
     ldrb r0, [r1,r0]
 loc_81197E8:
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     strh r4, [r5,#0x10]
     strb r6, [r5,#0xd]
 locret_81197F0:
@@ -16970,13 +16685,13 @@ loc_8119B24:
 loc_8119B30:
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8119AEC
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     bl sub_8119C08
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, dword_8119B6C // =0x0 
@@ -16999,7 +16714,7 @@ dword_8119B74:    .word 0x1B, 0x3F, 0x40, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46
 sub_8119BD0:
     push {lr}
     bl sub_8119C08
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     bl sprite_update
 .endfunc // sub_8119BD0
 
@@ -17190,11 +16905,11 @@ sub_8119D74:
 loc_8119D86:
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8119D74
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     ldr r0, dword_8119DC8 // =0x0 
     bl sub_8002FEC
     mov r0, #2
@@ -17303,13 +17018,13 @@ loc_8119E76:
     bl sub_8002770
     ldr r1, off_811A018 // =dword_811A01C 
     ldrb r0, [r1,r4]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_8119E60
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     ldr r1, off_811A020 // =dword_811A024 
     ldrb r0, [r5,#5]
     lsl r0, r0, #2
@@ -17670,7 +17385,7 @@ loc_811A1C2:
     ldrb r0, [r0,#7]
     ldr r1, off_811A1DC // =dword_811A1E0 
     ldrb r0, [r1,r0]
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     strh r4, [r5,#0x10]
     strb r6, [r5,#0xd]
 locret_811A1DA:
@@ -17926,7 +17641,7 @@ loc_811A38A:
     strb r0, [r5,#0xd]
     ldr r1, off_811A39C // =unk_811A3A0 
     ldrb r0, [r1,r0]
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
 loc_811A394:
     bl sprite_update
 .endfunc // sub_811A370
@@ -17956,13 +17671,13 @@ sub_811A3AC:
     ldr r1, off_811A3EC // =unk_201D700 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811A3AC
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, dword_811A3E8 // =0x0 
@@ -18038,13 +17753,13 @@ loc_811A45C:
     bl sub_8002770
     ldrb r0, [r5,#5]
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811A434
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r1, off_811A4B8 // =dword_811A4BC 
@@ -18274,12 +17989,9 @@ sub_811A610:
     beq locret_811A63C
     add r0, r4, #0
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    .byte 0xE8
-    .byte 0xF6
-    .byte 0xAA
-    .byte 0xFC
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
 locret_811A63C:
     pop {r4,r5,pc}
     .byte 0
@@ -18492,13 +18204,13 @@ sub_811A7AC:
     mov r0, #0x2a 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811A7AC
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, off_811A800 // =0x1D0 
@@ -18599,7 +18311,7 @@ sub_811A878:
 .endfunc // sub_811A878
 
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, off_811A8C8 // =0x1D0 
@@ -18699,11 +18411,11 @@ sub_811A940:
     bl sub_80466C4
     add r5, r1, #0
     add r0, r4, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811A940
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     cmp r4, #1
     bne locret_811A964
     mov r0, #0
@@ -18745,13 +18457,13 @@ sub_811A998:
     bl loc_8002774
     ldrb r0, [r5,#4]
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811A998
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, dword_811A9EC // =0x0 
@@ -18791,9 +18503,9 @@ sub_811AA14:
     cmp r0, r1
     beq loc_811AA3A
     strb r0, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     bl sub_811AB14
 loc_811AA3A:
     bl sprite_update
@@ -18948,13 +18660,13 @@ sub_811AB7C:
     ldr r1, off_811ABC4 // =unk_2024E8C 
     bl loc_8002774
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811AB7C
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, dword_811ABC0 // =0x0 
@@ -19173,71 +18885,36 @@ sub_811AD58:
     ldr r1, off_811ADB0 // =unk_2022FA0 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    .byte 0xE8
-    .byte 0xF6
-    .byte 0xE
-    .byte 0xF9
-    .byte 0
-    .byte 0x20
-    .byte 0xE8
-    .byte 0xF6
-    .byte 3
-    .byte 0xF8
-    .byte 2
-    .byte 0x20
-    .byte 0xE8
-    .byte 0xF6
-    .byte 0x4A 
-    .byte 0xF8
-    .byte 0xA
-    .byte 0x48 
-    .byte 0xE8
-    .byte 0xF6
-    .byte 0x73 
-    .byte 0xF9
-    .byte 2
-    .byte 0x20
-    .byte 0xE8
-    .byte 0xF6
-    .byte 0x5F 
-    .byte 0xF9
-    .byte 3
-    .byte 0x20
-    .byte 0xE8
-    .byte 0xF6
-    .byte 0x67 
-    .byte 0xF9
-    .byte 4
-    .byte 0x20
-    .byte 0x28 
-    .byte 0x72 
-    .byte 0xEA
-    .byte 0x78 
-    .byte 6
-    .byte 0x49 
-    .byte 0x93
-    .byte 0
-    .byte 0xC8
-    .byte 0x5A 
-    .byte 2
-    .byte 0x33 
-    .byte 0xC9
-    .byte 0x5A 
-    .byte 0
-    .byte 0xF0
-    .byte 0x5B 
-    .byte 0xF8
-    .byte 0
-    .byte 0xF0
-    .byte 0xB
-    .byte 0xF8
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+.endfunc // sub_811AD58
+
+    bl sub_8002F90 // () -> void
+    mov r0, #0
+    bl sprite_setPallete // (int pallete) -> void
+    mov r0, #2
+    bl sub_8002E14
+    ldr r0, off_811ADAC // =0xA0 
+    bl sub_800306C
+    mov r0, #2
+    bl sub_800304A
+    mov r0, #3
+    bl sub_8003060
+    mov r0, #4
+    strb r0, [r5,#8]
+    ldrb r2, [r5,#3]
+    ldr r1, off_811ADB4 // =aH 
+    lsl r3, r2, #2
+    ldrh r0, [r1,r3]
+    add r3, #2
+    ldrh r1, [r1,r3]
+    bl sub_811AE5C
+    bl sub_811ADC0
     .byte 0x10
     .byte 0xBD
-    .word 0xA0
+off_811ADAC:    .word 0xA0
 off_811ADB0:    .word unk_2022FA0
-    .word aH
+off_811ADB4:    .word aH
 aH:    .byte 0x7E
     .byte 0
     .byte 0x24 
@@ -19246,8 +18923,6 @@ aH:    .byte 0x7E
     .byte 0
     .byte 0x48 
     .byte 0
-.endfunc // sub_811AD58
-
 .func
 .thumb_func
 sub_811ADC0:
@@ -19802,13 +19477,13 @@ sub_811B20C:
     bne loc_811B232
     mov r0, #1
 loc_811B232:
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811B20C
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, off_811B270 // =0x130 
@@ -19869,9 +19544,9 @@ sub_811B298:
     bne loc_811B2BC
     mov r0, #1
 loc_811B2BC:
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
 loc_811B2C8:
     ldrb r0, [r5,#4]
     lsl r0, r0, #2
@@ -19924,12 +19599,9 @@ sub_811B314:
     bne locret_811B336
     add r5, r1, #0
     add r0, r4, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    .byte 0xE7
-    .byte 0xF6
-    .byte 0x2D 
-    .byte 0xFE
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
 locret_811B336:
     pop {r4,r5,pc}
 .endfunc // sub_811B314
@@ -19958,11 +19630,11 @@ sub_811B35C:
     ldr r1, off_811B3AC // =unk_2026A00 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811B35C
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
     bl sub_8002E14
     ldr r0, off_811B3A8 // =0x210 
@@ -19972,7 +19644,7 @@ sub_811B35C:
     mov r0, #0xa
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #4
     strb r0, [r5,#8]
     mov r0, #0x20 
@@ -20042,13 +19714,13 @@ sub_811B414:
     mov r0, #0x2c 
     bl sub_8002770
     bl sub_80101F8
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811B414
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, off_811B458 // =0xC0 
@@ -20147,9 +19819,9 @@ loc_811B4C0:
     ldr r1, off_811B554 // =unk_2024290 
     bl sub_8002770
     mov r0, #1
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     mov r0, #3
     bl sub_8002E14
     ldr r0, off_811B52C // =off_811B530 
@@ -20588,9 +20260,9 @@ loc_811B840:
 loc_811B84A:
     bl sub_813B780
     ldrb r0, [r0,#3]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
 locret_811B85C:
     pop {r4-r7,pc}
     .byte 0, 0
@@ -20789,11 +20461,11 @@ sub_811B9D8:
     ldr r1, off_811BA54 // =unk_2025AE8 
     bl sub_8002770
     mov r0, #6
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811B9D8
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #3
     bl sub_8002E14
     mov r0, #1
@@ -20852,8 +20524,8 @@ sub_811BA58:
     cmp r1, #4
     beq loc_811BA76
     bl sub_811BAF4
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 loc_811BA76:
     bl sprite_update
     pop {pc}
@@ -20906,8 +20578,8 @@ loc_811BAD2:
     bl sub_811BB50
     bl sub_811BBB8
     bl sub_811BB18
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811BAC4
 
     pop {pc}
@@ -20975,7 +20647,7 @@ sub_811BB30:
     bl sub_813B780
     ldrb r0, [r0,#3]
     sub r0, #1
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     pop {pc}
 .endfunc // sub_811BB30
 
@@ -20988,7 +20660,7 @@ sub_811BB50:
     bl sub_813B780
     ldrb r0, [r0,#3]
     sub r0, #1
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     pop {pc}
 .endfunc // sub_811BB50
 
@@ -21149,13 +20821,13 @@ sub_811BC68:
     mov r0, #0x29 
     bl sub_8002770
     mov r0, #3
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811BC68
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, off_811BCB8 // =off_811BCBC 
@@ -21368,9 +21040,9 @@ sub_811BE1C:
     mov r1, #0x23 
     strb r1, [r5]
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     mov r0, #4
     bl sub_800304A
     ldrb r1, [r5,#0xc]
@@ -21389,7 +21061,7 @@ loc_811BE60:
     ldr r0, off_811BF08 // =dword_811BFD8 
     ldrb r0, [r0,r1]
 loc_811BE64:
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     ldr r0, off_811BEF8 // =0x120 
     bl sub_800306C
     mov r0, #2
@@ -21512,17 +21184,17 @@ sub_811C01C:
     bl loc_8002774
     ldrb r0, [r5,#4]
     add r0, #8
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811C01C
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     ldr r0, off_811C070 // =0x1F8 
     bl sub_800306C
     mov r0, #0xb
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #0
     bl sub_8003060
     mov r0, #0
@@ -21581,8 +21253,8 @@ sub_811C0AC:
     mov r0, #0x3d 
     bl sub_8002770
     mov r0, #4
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
     .hword 0xF6E6
     .word 0x480BFF65, 0xFFD0F6E6
     .word 0xF6E6200F
@@ -21638,15 +21310,15 @@ sub_811C13C:
     mov r0, #0x3e 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811C13C
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #3
     bl sub_8002E14
     ldr r0, off_811C188 // =0x390 
@@ -21706,13 +21378,13 @@ sub_811C1CC:
     ldr r1, off_811C220 // =unk_20222A0 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811C1CC
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, off_811C21C // =0xF0 
@@ -21849,11 +21521,11 @@ loc_811C2D8:
     lsr r1, r4, #2
     ldr r0, off_811C41C // =off_811C420 
     ldrb r0, [r0,r1]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #0
     bl sub_8002E14
     ldr r0, dword_811C31C // =0x0 
@@ -22249,11 +21921,11 @@ sub_811CA1C:
     ldr r1, off_811CA90 // =unk_201BA04 
     bl loc_8002774
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811CA1C
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     bl sprite_makeScalable
     mov r0, #0
     mov r1, #0x80
@@ -22494,8 +22166,8 @@ sub_811CC0C:
     push {lr}
     bl sub_811CC68
     ldrh r0, [r0,#2]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811CC0C
 
     mov r0, #4
@@ -22832,9 +22504,9 @@ sub_811CE88:
     ldrb r0, [r5,#5]
     sub r0, #5
     ldrb r0, [r1,r0]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
 locret_811CEB4:
     pop {pc}
     .balign 4, 0x00
@@ -22857,9 +22529,9 @@ sub_811CEC4:
     ldrb r0, [r5,#5]
     sub r0, #5
     ldrb r0, [r1,r0]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
 loc_811CEE8:
     ldrb r0, [r5,#4]
     cmp r0, #5
@@ -23066,9 +22738,9 @@ sub_811D058:
     mov r0, #4
     ldrb r1, [r5,#0x10]
     add r0, r0, r1
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     mov r0, #0xf
     strh r0, [r5,#0xc]
     mov r0, #0x10
@@ -23089,9 +22761,9 @@ sub_811D080:
     mov r0, #5
     ldrb r1, [r5,#0x10]
     add r0, r0, r1
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     mov r0, #0x14
     strb r0, [r5,#9]
     mov r0, #0x32 
@@ -23154,9 +22826,9 @@ sub_811D0EC:
     mov r0, #0x8a
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     mov r0, #2
     bl sub_8002E14
     mov r0, #3
@@ -23222,9 +22894,9 @@ sub_811D15C:
     add r4, #2
     ldrh r1, [r1,r4]
     strh r1, [r5,#0xc]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     ldrb r0, [r5,#5]
     cmp r0, #0
     bne loc_811D18A
@@ -23318,9 +22990,9 @@ sub_811D20C:
     ldrb r0, [r1,r0]
     cmp r0, #0xff
     beq loc_811D234
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     mov r1, #0x23 
     strb r1, [r5]
 loc_811D234:
@@ -23346,9 +23018,9 @@ sub_811D248:
     ldr r1, off_811D298 // =dword_811D2B8 
     ldrb r0, [r5,#5]
     ldrb r0, [r1,r0]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     mov r0, #0xc
     strb r0, [r5,#9]
     ldrb r0, [r5,#4]
@@ -23457,13 +23129,13 @@ loc_811D320:
     lsr r1, r6, #2
     ldr r0, off_811D3E4 // =dword_811D404 
     ldrb r0, [r0,r1]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811D2F8
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, off_811D38C // =dword_811D390 
@@ -23526,13 +23198,13 @@ sub_811D410:
     ldr r0, dword_811D460 // =0x8E 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811D410
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, off_811D45C // =0x180 
@@ -23565,15 +23237,15 @@ sub_811D464:
     ldr r1, off_811D514 // =dword_811D51C 
     ldrb r0, [r5,#5]
     ldrb r0, [r1,r0]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811D464
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     ldr r1, dword_811D518 // =0x811D526 
     ldrb r0, [r5,#5]
     ldrb r0, [r1,r0]
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #2
     bl sub_8002E14
     ldr r0, off_811D4DC // =0x100 
@@ -23629,15 +23301,15 @@ sub_811D530:
     ldr r0, [r1,r0]
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811D530
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     ldr r1, dword_811D5CC // =dword_811D5E8 
     ldrb r0, [r5,#5]
     ldrb r0, [r1,r0]
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #3
     bl sub_8002E14
     ldr r0, off_811D594 // =off_811D598 
@@ -23690,11 +23362,11 @@ sub_811D5F8:
     ldr r0, dword_811D628 // =0x8F 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811D5F8
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0x80
     mov r1, #0x80
     bl sub_811DC00
@@ -23831,15 +23503,15 @@ loc_811D70A:
     mov r1, #0x23 
     strb r1, [r5]
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     mov r0, #4
     bl sub_800304A
     ldrb r1, [r5,#5]
     ldr r0, off_811D780 // =dword_811D7C4 
     ldrb r0, [r0,r1]
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     ldr r0, off_811D770 // =0x1A0 
     bl sub_800306C
     mov r0, #2
@@ -23898,15 +23570,15 @@ loc_811D7E6:
     mov r1, #0x23 
     strb r1, [r5]
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     mov r0, #5
     bl sub_800304A
     ldrb r1, [r5,#5]
     ldr r0, dword_811D868 // =0x811D88E 
     ldrb r0, [r0,r1]
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     ldr r0, off_811D858 // =0x1E0 
     bl sub_800306C
     mov r0, #2
@@ -23973,9 +23645,9 @@ sub_811D894:
 loc_811D8AA:
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     ldr r0, dword_811D91C // =0x811D945 
     ldrb r1, [r5,#5]
     ldrb r0, [r0,r1]
@@ -23983,7 +23655,7 @@ loc_811D8AA:
     ldrb r1, [r5,#5]
     ldr r0, dword_811D924 // =0x811D94F 
     ldrb r0, [r0,r1]
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     ldr r0, off_811D900 // =off_811D904 
     ldrb r1, [r5,#5]
     lsl r1, r1, #2
@@ -24072,17 +23744,17 @@ sub_811D954:
     ldr r0, off_811D9DC // =dword_811D9F4 
     ldrb r0, [r0,r1]
     strb r0, [r5,#0x10]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811D954
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     ldr r0, off_811D9E4 // =dword_811D9F8 
     ldrb r1, [r5,#5]
     ldrb r0, [r0,r1]
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     ldr r0, off_811D9B8 // =off_811D9BC 
     ldrb r1, [r5,#5]
     lsl r1, r1, #2
@@ -24139,15 +23811,15 @@ sub_811DA00:
     ldrb r1, [r5,#5]
     ldr r0, off_811DA88 // =dword_811DA90 
     ldrb r0, [r0,r1]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     ldr r0, off_811DA64 // =dword_811DA68 
     ldrb r1, [r5,#5]
     ldrb r0, [r0,r1]
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     ldr r0, off_811DA64 // =dword_811DA68 
     ldrb r1, [r5,#5]
     lsl r1, r1, #2
@@ -24186,15 +23858,15 @@ sub_811DA94:
     mov r1, #0x23 
     strb r1, [r5]
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811DA94
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #6
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     ldr r0, off_811DAE4 // =0x320 
     bl sub_800306C
     mov r0, #2
@@ -24222,15 +23894,15 @@ sub_811DAF0:
     mov r1, #1
     strb r1, [r5]
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811DAF0
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #6
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     ldr r0, off_811DB4C // =0x320 
     bl sub_800306C
     mov r0, #2
@@ -24270,15 +23942,15 @@ sub_811DB7C:
     mov r1, #1
     strb r1, [r5]
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811DB7C
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0xc
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     ldr r0, off_811DBC0 // =0x3A0 
     bl sub_800306C
     mov r0, #2
@@ -24486,65 +24158,31 @@ loc_811DCBC:
     lsr r1, r4, #2
     ldr r0, off_811DE0C // =off_811DE18 
     ldrb r0, [r0,r1]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    .byte 0xE5
-    .byte 0xF6
-    .byte 0x5B 
-    .byte 0xF9
-    .byte 0xA1
-    .byte 8
-    .byte 0x4D 
-    .byte 0x48 
-    .byte 0x40 
-    .byte 0x5C 
-    .byte 0xE5
-    .byte 0xF6
-    .byte 0x4E 
-    .byte 0xF8
-    .byte 0
-    .byte 0x20
-    .byte 0xE5
-    .byte 0xF6
-    .byte 0x95
-    .byte 0xF8
-    .byte 8
-    .byte 0x48 
-    .byte 0xE5
-    .byte 0xF6
-    .byte 0xBE
-    .byte 0xF9
-    .byte 1
-    .byte 0x20
-    .byte 0xE5
-    .byte 0xF6
-    .byte 0xAA
-    .byte 0xF9
-    .byte 0x46 
-    .byte 0x48 
-    .byte 0xA1
-    .byte 8
-    .byte 0x40 
-    .byte 0x5C 
-    .byte 0xE5
-    .byte 0xF6
-    .byte 0xB0
-    .byte 0xF9
-    .byte 0xA0
-    .byte 8
-    .byte 0
-    .byte 0xF0
-    .byte 0xB7
-    .byte 0xF8
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
+    lsr r1, r4, #2
+    ldr r0, dword_811DE10+4
+    ldrb r0, [r0,r1]
+    bl sprite_setPallete // (int pallete) -> void
+    mov r0, #0
+    bl sub_8002E14
+    ldr r0, off_811DD0C // =0x80 
+    bl sub_800306C
+    mov r0, #1
+    bl sub_800304A
+    ldr r0, dword_811DE10 // =0x811DE36 
+    lsr r1, r4, #2
+    ldrb r0, [r0,r1]
+    bl sub_8003060
+    lsr r0, r4, #2
+    bl sub_811DE74
 loc_811DD06:
     add sp, sp, #4
     pop {r4,r5,pc}
     .byte 0
     .byte 0
-    .byte 0x80
-    .byte 0
-    .byte 0
-    .byte 0
+off_811DD0C:    .word 0x80
 off_811DD10:    .word unk_811DD14
 unk_811DD14:    .byte 0
     .byte 0
@@ -24593,7 +24231,7 @@ dword_811DD94:    .word 0x0, 0x0, 0x0
     .word 0x8825DFB4, 0x0, 0x0
     .word 0x837D8E0, 0x0
 off_811DE0C:    .word off_811DE18
-    .word 0x811DE36, 0x811DE54
+dword_811DE10:    .word 0x811DE36, 0x811DE54
 off_811DE18:    .word word_3000000
     .word 0x7, 0x4000000, 0x0
     .word 0x8, 0x0
@@ -24605,6 +24243,9 @@ off_811DE18:    .word word_3000000
     .word 0x12, 0x0, 0x0, 0x0
 .endfunc // sub_811DC88
 
+.func
+.thumb_func
+sub_811DE74:
     push {lr}
     lsl r2, r0, #2
     ldr r1, off_811DE90 // =dword_811DE94 
@@ -24633,6 +24274,8 @@ dword_811DE94:    .word 0x0
     .byte 0
     .byte 0x10
     .byte 0
+.endfunc // sub_811DE74
+
 .func
 .thumb_func
 sub_811DF0C:
@@ -24670,15 +24313,15 @@ sub_811DF40:
     mov r0, #0x3b 
     bl loc_8002774
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811DF40
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0xb
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #0
     bl sub_8003060
     ldr r0, off_811DF90 // =0x270 
@@ -24706,9 +24349,9 @@ sub_811DF94:
     mov r0, #0xff
     strb r0, [r6,#4]
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
     b loc_811DFBA
 loc_811DFB0:
     mov r0, #0xb
@@ -24772,9 +24415,9 @@ sub_811E000:
     mov r0, #1
     bl sub_8002FA6
     mov r0, #1
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
-    bl sub_8002F90
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
+    bl sub_8002F90 // () -> void
 locret_811E020:
     pop {pc}
     .balign 4, 0x00
@@ -24803,11 +24446,11 @@ sub_811E048:
     mov r0, #0x31 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811E048
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0xb
     bl sub_800304A
     ldr r0, off_811E08C // =0x298 
@@ -24817,7 +24460,7 @@ sub_811E048:
     mov r0, #1
     bl sub_8002E14
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl sub_811E090
@@ -24973,11 +24616,11 @@ sub_811E18C:
     mov r0, #0x32 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811E18C
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0xa
     bl sub_800304A
     ldr r0, off_811E1D0 // =0x258 
@@ -24987,7 +24630,7 @@ sub_811E18C:
     mov r0, #1
     bl sub_8002E14
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl sub_811E1D4
@@ -25085,11 +24728,11 @@ sub_811E26C:
     bl loc_8002774
     ldrb r0, [r5,#4]
     strb r0, [r5,#5]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811E26C
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0xb
     bl sub_800304A
     ldr r0, off_811E2B0 // =0x290 
@@ -25099,7 +24742,7 @@ sub_811E26C:
     mov r0, #0
     bl sub_8002E14
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl sub_811E2B4
@@ -25129,8 +24772,8 @@ loc_811E2C6:
     cmp r0, r1
     beq loc_811E2E4
     strb r0, [r5,#5]
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 loc_811E2E4:
     mov r0, #0xdc
     mov r1, #0x24 
@@ -25217,11 +24860,11 @@ sub_811E384:
     mov r0, #0x36 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811E384
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0xa
     bl sub_800304A
     ldr r0, off_811E3C8 // =0x280 
@@ -25231,7 +24874,7 @@ sub_811E384:
     mov r0, #0
     bl sub_8002E14
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl sub_811E3CC
@@ -25304,17 +24947,17 @@ sub_811E438:
     mov r0, #0xa1
     bl sub_8002770
     mov r0, #1
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811E438
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     ldr r0, off_811E488 // =0x280 
     bl sub_800306C
     mov r0, #0xc
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #0
     bl sub_8003060
     mov r0, #2
@@ -25484,17 +25127,17 @@ sub_811E59C:
     mov r0, #0x3a 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811E59C
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     ldr r0, off_811E5E8 // =0x280 
     bl sub_800306C
     mov r0, #0xa
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #0
     bl sub_8003060
     mov r0, #0
@@ -25563,17 +25206,17 @@ sub_811E63C:
     mov r0, #0x39 
     bl sub_8002770
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811E63C
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     ldr r0, off_811E688 // =0x2A8 
     bl sub_800306C
     mov r0, #0xb
     bl sub_800304A
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #0
     bl sub_8003060
     mov r0, #0
@@ -25642,11 +25285,11 @@ sub_811E6E4:
     mov r0, #0x63 
     bl loc_8002774
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811E6E4
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0xb
     bl sub_800304A
     ldr r0, off_811E728 // =0x1F0 
@@ -25656,7 +25299,7 @@ sub_811E6E4:
     mov r0, #0
     bl sub_8002E14
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl sub_811E72C
@@ -25757,11 +25400,11 @@ sub_811E7F8:
     mov r0, #0x64 
     bl loc_8002774
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811E7F8
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0xb
     bl sub_800304A
     ldr r0, off_811E83C // =0x230 
@@ -25771,7 +25414,7 @@ sub_811E7F8:
     mov r0, #0
     bl sub_8002E14
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl sub_811E840
@@ -25820,11 +25463,11 @@ sub_811E87C:
     mov r0, #0x65 
     bl loc_8002774
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811E87C
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0xf
     bl sub_800304A
     ldr r0, off_811E8C0 // =0x290 
@@ -25834,7 +25477,7 @@ sub_811E87C:
     mov r0, #0
     bl sub_8002E14
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl sub_811E8C4
@@ -25902,11 +25545,11 @@ sub_811E938:
     mov r0, #0x66 
     bl loc_8002774
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811E938
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0xf
     bl sub_800304A
     ldr r0, off_811E97C // =0x2A8 
@@ -25916,7 +25559,7 @@ sub_811E938:
     mov r0, #0
     bl sub_8002E14
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl sub_811E980
@@ -25968,11 +25611,11 @@ sub_811E9C4:
     mov r0, #0x67 
     bl loc_8002774
     mov r0, #0
-    bl sprite_setAnimation
-    bl sprite_loadAnimationData
+    bl sprite_setAnimation // (u8 a1) -> void
+    bl sprite_loadAnimationData // () -> void
 .endfunc // sub_811E9C4
 
-    bl sub_8002F90
+    bl sub_8002F90 // () -> void
     mov r0, #0xf
     bl sub_800304A
     ldr r0, off_811EA08 // =0x250 
@@ -25982,7 +25625,7 @@ sub_811E9C4:
     mov r0, #0
     bl sub_8002E14
     mov r0, #0
-    bl sprite_setPallete
+    bl sprite_setPallete // (int pallete) -> void
     mov r0, #4
     strb r0, [r5,#8]
     bl sub_811EA0C

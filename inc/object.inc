@@ -62,8 +62,8 @@
 .global sub_800D668
 .global sub_800E24C
 .global sub_800E258
-.global sub_800E276
-.global sub_800E29C
+.global sub_800E276 // (int a1, int a2) -> (int n1, int n2)
+.global sub_800E29C // () -> void
 .global sub_800E2AC
 .global sub_800E2C0
 .global sub_800E2C2
@@ -75,7 +75,7 @@
 .global sub_800E3BE
 .global sub_800E3DE
 .global object_calculateFinalDamage2
-.global sub_800E456
+.global sub_800E456 // () -> int
 .global sub_800E45E
 .global sub_800E468
 .global sub_800E5AC
@@ -134,7 +134,7 @@
 // .global sub_80103BC
 // .global off_8019B78
 // .global dword_8019C34
-// .global object_setFlag
+// .global object_setFlag // (int a1) -> void
 // .global object_clearFlag
 // .global object_getFlag
 // .global sub_801A16C

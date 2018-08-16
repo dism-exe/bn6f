@@ -95,7 +95,7 @@
 // .global sub_8003E98
 // .global sub_8004298
 // .global sub_8004590
-// .global sub_800461E
+// .global npc_800461E
 // .global sub_800467C
 // .global sub_80048D2
 // .global sub_8004934

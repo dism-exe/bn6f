@@ -105,13 +105,33 @@ pt.env(gameFiles={
 'asm/asm37_1.s':      (0x814187C, 0x814FE8D), # size=0xE611
 'bin/bin37.bin':      (0x814FE8D, 0x81D61DA), # size=0x8634D
 'asm/asm38.s':        (0x81D61DA, 0x81D7EF8), # size=0x1D1E
-'bin/bin38_0.bin':    (0x81D7EF8, 0x86C9BD4), # size=0x4F1CDC
+'bin/bin38_0.bin':    (0x81D7EF8, 0x86C23A0), # size=0x4EA4A8
+'data/compressed/compFile_86C23A0.lz77':(0x86C23A0, 0x86C2E2A), # size=0xA8A
+'bin/bin38_1.bin':    (0x86C2E2A, 0x86C2E2C), # size=0x2
+'data/compressed/comp_86C2E2C.lz77':(0x86C2E2C, 0x86C33B1), # size=0x585
+'bin/bin38_2.bin':    (0x86C33B1, 0x86C33B4), # size=0x3
+'data/compressed/comp_86C33B4.lz77':(0x86C33B4, 0x86C3528), # size=0x174
+'bin/bin38_3.bin':    (0x86C3528, 0x86C9BD4), # size=0x66AC
 'data/compressed/comp_86C9BD4.lz77':(0x86C9BD4, 0x86C9C7F), # size=0xAB
-'bin/bin38_1.bin':    (0x86C9C7F, 0x86DD9B4), # size=0x13D35
+'bin/bin38_4.bin':    (0x86C9C7F, 0x86C9D38), # size=0xB9
+'data/compressed/comp_86C9D38.lz77':(0x86C9D38, 0x86C9D6B), # size=0x33
+'bin/bin38_5.bin':    (0x86C9D6B, 0x86D6974), # size=0xCC09
+'data/compressed/comp_86D6974.lz77':(0x86D6974, 0x86D6C6D), # size=0x2F9
+'bin/bin38_6.bin':    (0x86D6C6D, 0x86DD9B4), # size=0x6D47
 'data/compressed/comp_86DD9B4.lz77':(0x86DD9B4, 0x86DDA41), # size=0x8D
-'bin/bin38_2.bin':    (0x86DDA41, 0x86DDAD0), # size=0x8F
+'bin/bin38_7.bin':    (0x86DDA41, 0x86DDAD0), # size=0x8F
 'data/compressed/comp_86DDAD0.lz77':(0x86DDAD0, 0x86DDB21), # size=0x51
-'bin/bin38_3.bin':    (0x86DDB21, 0x8800000), # size=0x1224DF
+'bin/bin38_8.bin':    (0x86DDB21, 0x86DDB44), # size=0x23
+'data/compressed/comp_86DDB44.lz77':(0x86DDB44, 0x86DDB7B), # size=0x37
+'bin/bin38_9.bin':    (0x86DDB7B, 0x86DDB7C), # size=0x1
+'data/compressed/comp_86DDB7C.lz77':(0x86DDB7C, 0x86DDB9D), # size=0x21
+'bin/bin38_10.bin':   (0x86DDB9D, 0x87F3370), # size=0x1157D3
+'data/compressed/comp_87F3370.lz77':(0x87F3370, 0x87F3620), # size=0x2B0
+'bin/bin38_11.bin':   (0x87F3620, 0x87F36A0), # size=0x80
+'data/compressed/comp_87F36A0.lz77':(0x87F36A0, 0x87F40F3), # size=0xA53
+'bin/bin38_12.bin':   (0x87F40F3, 0x87F4394), # size=0x2A1
+'data/compressed/comp_87F4394.lz77':(0x87F4394, 0x87F8EB0), # size=0x4B1C
+'bin/bin38_13.bin':   (0x87F8EB0, 0x8800000), # size=0x7150
 })
 
 print("Environment set!")

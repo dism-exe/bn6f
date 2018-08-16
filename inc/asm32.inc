@@ -182,7 +182,7 @@
 // .global loc_8002676
 
 .include "sprite.inc"
-// .global sprite_loadAnimationData
+// .global sprite_loadAnimationData // () -> void
 // .global sprite_update
 // .global sub_8002770
 // .global loc_8002774
@@ -194,8 +194,8 @@
 // .global sprite_getMosaicScalingParameters
 // .global sprite_makeScalable
 // .global sprite_makeUnscalable
-// .global sprite_setPallete
-// .global sprite_setAnimation
+// .global sprite_setPallete // (int pallete) -> void
+// .global sprite_setAnimation // (u8 a1) -> void
 
 .include "asm00_1.inc"
 // .global sub_8002DEA
@@ -205,7 +205,7 @@
 // .global loc_8002F02
 // .global sub_8002F3E
 // .global sub_8002F5C
-// .global sub_8002F90
+// .global sub_8002F90 // () -> void
 // .global sub_8002FA6
 // .global sub_8002FB2
 // .global sub_8002FEC
@@ -242,8 +242,8 @@
 // .global sub_800D45C
 // .global sub_800D5F0
 // .global sub_800E258
-// .global sub_800E276
-// .global sub_800E29C
+// .global sub_800E276 // (int a1, int a2) -> (int n1, int n2)
+// .global sub_800E29C // () -> void
 // .global sub_800E2AC
 // .global sub_800E2C0
 // .global sub_800E2C2
@@ -290,10 +290,10 @@
 // .global off_8019B78
 // .global sub_801A04C
 // .global sub_801A066
-// .global sub_801A074
+// .global sub_801A074 // () -> void
 // .global sub_801A07C
 // .global sub_801A082
-// .global object_setFlag
+// .global object_setFlag // (int a1) -> void
 // .global object_clearFlag
 // .global object_getFlag
 // .global sub_801A176
