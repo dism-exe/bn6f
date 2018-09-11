@@ -218,7 +218,11 @@
 .equ dword_200A884, 0x200A884
 .equ dword_200A888, 0x200A888
 .equ dword_200AC1C, 0x200AC1C
-.equ unk_200B4B0, 0x200B4B0
+.equ dword_200B4B0, 0x200B4B0
+.equ dword_200B4B4, 0x200B4B4
+.equ dword_200B4B8, 0x200B4B8
+.equ dword_200B4BC, 0x200B4BC
+.equ dword_200B4C0, 0x200B4C0
 .equ byte_200BE70, 0x200BE70
 .equ dword_200BE7C, 0x200BE7C
 .equ unk_200DF40, 0x200DF40

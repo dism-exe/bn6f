@@ -1,13 +1,12 @@
-#ifndef BATTLE_SETTINGS_H
-#define BATTLE_SETTINGS_H
+#ifndef ROM_BATTLE_SETTINGS_H
+#define ROM_BATTLE_SETTINGS_H
 
-#include "inttypes.h"
-
+#include "../inttypes.h"
 
 /**
 this structure defines the battle settings for a battle.
 [Instances]
-Can be found through  <pCurrBattle> = 0x02001B9C (TODO: MMBN6F)
+Can be found through  <pCurrBattle> = 0x02001B9C
  */
 typedef struct {
 	u8 battlefield;                  // loc=0x0
@@ -24,6 +23,8 @@ typedef struct {
 	u32 UnknownOptionalSettings;     // loc=0x8
 	u32 *pEnemySetup;                // loc=0xC
 	// size=0x10
-}BattleSettings;
+} BattleSettings;
 
-#endif /* BATTLE_SETTINGS_H */
+BattleSettings x;
+
+#endif // ROM_BATTLE_SETTINGS_H

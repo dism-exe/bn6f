@@ -258,8 +258,8 @@ npc_809E704:
     str r0, [r5,#0x38]
     bl sub_809F5B0
     pop {pc}
-unk_809E77E:    .byte 0
-    .byte 0
+unk_809E77E:    .byte  0
+    .byte  0
     .word 0x80000, 0x0, 0x0
     .word 0x8, 0xFFF80000, 0x0, 0x0
     .word 0xFFF8, 0x1, 0x100, 0xFF, 0x900FF00, 0xD000B00, 0x1000F00
@@ -269,8 +269,8 @@ off_809E7C4:    .word unk_809E77E
 dword_809E7C8:    .word 0x80000
     .byte 0xAE
     .byte 0xE7
-    .byte 9
-    .byte 8
+    .byte  9
+    .byte  8
     .byte 0xB6
     .byte 0xE7
     .hword 0x809
@@ -607,13 +607,13 @@ loc_809EA26:
     .byte 0, 0
 off_809EA30:    .word unk_809EA34
 unk_809EA34:    .byte 0x26 
-    .byte 0
+    .byte  0
     .byte 0x2A 
-    .byte 0
+    .byte  0
     .byte 0x26 
-    .byte 1
+    .byte  1
     .byte 0x2A 
-    .byte 1
+    .byte  1
 .endfunc // npc_809E9DA
 
 .func
@@ -742,8 +742,8 @@ sub_809EB04:
     .word npc_809EB20+1
     .byte 0xBD
     .byte 0xEB
-    .byte 9
-    .byte 8
+    .byte  9
+    .byte  8
 dword_809EB1C:    .word 0x809EB14
 .endfunc // sub_809EB04
 

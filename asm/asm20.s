@@ -105,18 +105,18 @@ off_807ED80:    .word off_807ED8C
 off_807ED8C:    .word off_807EB18
     .word dword_807EB68
     .word dword_807EBB8
-    .byte 8
+    .byte  8
     .byte 0xEC
-    .byte 7
-    .byte 8
+    .byte  7
+    .byte  8
     .byte 0x58 
     .byte 0xEC
-    .byte 7
-    .byte 8
+    .byte  7
+    .byte  8
     .byte 0xA8
     .byte 0xEC
-    .byte 7
-    .byte 8
+    .byte  7
+    .byte  8
     .byte 0xFF
     .byte 0xFF
     .byte 0xFF

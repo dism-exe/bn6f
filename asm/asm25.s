@@ -785,10 +785,10 @@ loc_808FF24:
     add r0, r4, #0
     pop {r4,pc}
 off_808FF28:    .word unk_808FF2C
-unk_808FF2C:    .byte 1
-    .byte 2
-    .byte 2
-    .byte 2
+unk_808FF2C:    .byte  1
+    .byte  2
+    .byte  2
+    .byte  2
 .endfunc // sub_808FF00
 
 .func

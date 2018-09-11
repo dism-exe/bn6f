@@ -9,13 +9,14 @@
 .global loc_803FDA4
 .global chatbox_803FE08
 .global chatbox_803FE10
-.global chatbox_803FE74
+.global chatbox_runScript_803FE74 // (u16 *scriptArr, u8 scriptID) -> void
 .global chatbox_onUpdate_803FEB4
 .global loc_8040000
 .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
 .global chatbox_reqBBS_80404C0
 .global chatbox_8040818
-.global chatbox_maskFlags_3e
+.global chatbox_maskFlags_3e // (int mask) -> void
+// 
 .global chatbox_8040D5C
 .global off_8043C8C
 .global off_8044470
@@ -25,7 +26,7 @@
 .global chatbox_8045EEC
 .global chatbox_8045EFC
 .global chatbox_8045F1C
-.global chatbox_8045F2C
+.global chatbox_8045F2C // (int a1) ->
 .global chatbox_8045F3C
 .global chatbox_8045F4C
 
@@ -197,7 +198,7 @@
 .equ unk_2034A04, 0x2034A04
 .equ unk_3001710, 0x3001710
 .equ unk_3001B40, 0x3001B40
-.equ loc_3006F8C, 0x3006F8C
+.equ sub_3006F8C, 0x3006F8C
 .equ loc_3007038, 0x3007038
 .equ loc_30070B4, 0x30070B4
 .equ dword_8070604, 0x8070604

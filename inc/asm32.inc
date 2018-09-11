@@ -284,7 +284,7 @@
 // .global byte_8016B03
 // .global sub_8016B36
 // .global sub_8016B72
-// .global loc_8016CE8
+// .global sub_8016CE8
 // .global sub_8016EC4
 // .global sub_8018810
 // .global off_8019B78
@@ -343,7 +343,7 @@
 
 .include "chatbox.inc"
 // .global chatbox_8040818
-// .global chatbox_8045F2C
+// .global chatbox_8045F2C // (int a1) ->
 // .global chatbox_8045F3C
 
 .include "asm03_1.inc"

@@ -13,3 +13,6 @@
 # atom-specific settings
 .atom*
 *.json
+
+# intentionally ignore those junk/temp files
+*.ign

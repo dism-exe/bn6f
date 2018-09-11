@@ -183,7 +183,7 @@
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_8040818
 // .global chatbox_8045F1C
-// .global chatbox_8045F2C
+// .global chatbox_8045F2C // (int a1) ->
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C
 

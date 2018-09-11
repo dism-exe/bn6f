@@ -682,6 +682,8 @@ sub_8000A3C:
     mov pc, lr
 .endfunc // sub_8000A3C
 
+.func
+.thumb_func
 objRender_8000A44:
     push {lr}
     mov r0, r8
@@ -689,7 +691,7 @@ objRender_8000A44:
     push {r0,r1,r4-r7}
     ldr r0, off_8000B10 // =dword_200AC1C 
     ldr r1, [r0]
-    ldr r2, off_8000B14 // =unk_200B4B0 
+    ldr r2, off_8000B14 // =dword_200B4B0 
 loc_8000A52:
     sub r1, #1
     blt loc_8000A96
@@ -737,6 +739,8 @@ off_8000AA8:    .word copyBytes+1
     .word CpuSet_copyHalfwords+1
     .word CpuSet_copyWords+1
     .word CpuFastSet_byteCount+1
+.endfunc // objRender_8000A44
+
 .func
 .thumb_func
 sub_8000AB8:
@@ -763,7 +767,7 @@ loc_8000ACA:
     add r5, r4, #0
     add r4, #1
     str r4, [r3]
-    ldr r4, off_8000B14 // =unk_200B4B0 
+    ldr r4, off_8000B14 // =dword_200B4B0 
     mov r6, #0x14
     mul r5, r6
     add r4, r4, r5
@@ -781,7 +785,7 @@ loc_8000AF4:
 off_8000AF8:    .word off_8000AF8+4, 0x84000000, 0xFFFFFFFF, 0xFFFFFFFF
     .word 0xFFFFFFFF, 0xFFFFFFFF
 off_8000B10:    .word dword_200AC1C
-off_8000B14:    .word unk_200B4B0
+off_8000B14:    .word dword_200B4B0
 .endfunc // sub_8000AB8
 
 .func

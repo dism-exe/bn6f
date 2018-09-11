@@ -61,8 +61,8 @@ dword_808BF48:    .word 0x80CFF27, 0x4A086A07, 0x3B015403, 0x4FF0440, 0x4FF0047
     .word 0x8C28015, 0x8, 0x92, 0xD00000, 0xFF500000
     .word 0x200000, 0x1000192, 0xFDF80000, 0xFFF40000, 0x0
     .byte 0x3F 
-    .byte 0
-    .byte 6
+    .byte  0
+    .byte  6
     .byte 0x29 
     .byte 0xFF
     .byte 0x31 
@@ -837,19 +837,19 @@ locret_808CF70:
 off_808CF74:    .word unk_808CF7C
 off_808CF78:    .word unk_808CF84
 unk_808CF7C:    .byte 0xF8
-    .byte 9
+    .byte  9
     .byte 0xFB
-    .byte 9
+    .byte  9
     .byte 0xFE
-    .byte 9
+    .byte  9
     .byte 0xFD
     .byte 0xF
 unk_808CF84:    .byte 0xDA
-    .byte 9
+    .byte  9
     .byte 0xDB
-    .byte 9
+    .byte  9
     .byte 0xDC
-    .byte 9
+    .byte  9
     .byte 0xC5
     .byte 0xF
 .endfunc // sub_808CF50

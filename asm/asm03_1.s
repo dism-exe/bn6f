@@ -630,74 +630,74 @@ off_804646C:    .word sub_8116894+1
     .word sub_811BC44+1
     .word sub_811BD64+1
     .word 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
     .byte 0x8D
     .byte 0xC0
     .byte 0x11
-    .byte 8
+    .byte  8
     .byte 0x1D
     .byte 0xC1
     .byte 0x11
-    .byte 8
+    .byte  8
     .byte 0xAD
     .byte 0xC1
     .byte 0x11
-    .byte 8
+    .byte  8
     .byte 0x5D 
     .byte 0xC2
     .byte 0x11
-    .byte 8
+    .byte  8
     .byte 0xE9
     .byte 0xC4
     .byte 0x11
-    .byte 8
+    .byte  8
     .byte 0xFD
     .byte 0xC9
     .byte 0x11
-    .byte 8
+    .byte  8
     .byte 0x75 
     .byte 0xCC
     .byte 0x11
-    .byte 8
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
+    .byte  8
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
     .byte 0x35 
     .byte 0xDC
     .byte 0x11
-    .byte 8
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
+    .byte  8
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
 .func
 .thumb_func
 // () -> void
@@ -1393,9 +1393,9 @@ unk_80469F0:    .byte 0x20
     .byte 0x10, 0x2A, 0x10
     .byte 0x2C 
     .byte 0x10, 0x2E, 0x10
-    .byte 0
+    .byte  0
     .byte 0x10, 0x30, 0x10
-    .byte 0
+    .byte  0
     .byte 0x10, 0x32, 0x10
     .byte 0x34 
     .byte 0x10, 0x36, 0x10
@@ -1411,9 +1411,9 @@ unk_80469F0:    .byte 0x20
     .byte 0x10, 0x2B, 0x10
     .byte 0x2D 
     .byte 0x10, 0x2F, 0x10
-    .byte 0
+    .byte  0
     .byte 0x10, 0x31, 0x10
-    .byte 0
+    .byte  0
     .byte 0x10, 0x33, 0x10
     .byte 0x35 
     .byte 0x10, 0x37, 0x10
@@ -1424,7 +1424,7 @@ unk_80469F0:    .byte 0x20
 aBDFHJLN:    .byte 0x40, 0x20, 0x42, 0x20, 0x44, 0x20, 0x46, 0x20, 0x48, 0x20
     .byte 0x4A, 0x20, 0x4C, 0x20, 0x4E, 0x20, 0x0
     .byte 0x10, 0x50, 0x20
-    .byte 0
+    .byte  0
     .byte 0x10, 0x52, 0x20
 aTVXZACEGIKMO:    .byte 0x54, 0x20, 0x56, 0x20, 0x58, 0x20, 0x5A, 0x20, 0x5C, 0x20, 0x5E, 0x20, 0x41, 0x20, 0x43, 0x20
     .byte 0x45, 0x20, 0x47, 0x20, 0x49, 0x20, 0x4B, 0x20, 0x4D, 0x20, 0x4F, 0x20, 0x0
@@ -5168,10 +5168,10 @@ loc_804966E:
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_8049678:    .word unk_804967C
-unk_804967C:    .byte 0
+unk_804967C:    .byte  0
     .byte 0x4C 
     .byte 0x54 
-    .byte 0
+    .byte  0
 .func
 .thumb_func
 sub_8049680:
@@ -6396,7 +6396,7 @@ sub_804A14C:
     .byte 0, 0
 off_804A170:    .word unk_2001850
 off_804A174:    .word unk_804A178
-unk_804A178:    .byte 0
+unk_804A178:    .byte  0
     .byte 0x20
 .endfunc // sub_804A14C
 

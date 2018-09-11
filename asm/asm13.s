@@ -117,252 +117,252 @@ off_806FD8C:    .word locret_8001AB4+1
     .word loc_80019D0+1
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
 off_806FE8C:    .word off_806FE90
 off_806FE90:    .word off_806FEEC
     .word off_806FEEC

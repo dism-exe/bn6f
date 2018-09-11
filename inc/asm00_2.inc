@@ -193,7 +193,7 @@
 .global sub_8016B72
 .global sub_8016C8A
 .global sub_8016C9C
-.global loc_8016CE8
+.global sub_8016CE8
 .global sub_8016E64
 .global sub_8016EC4
 .global sub_80170C4

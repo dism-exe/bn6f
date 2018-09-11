@@ -1027,8 +1027,8 @@ off_80A5714:    .word dword_80A5358+0x58
     .word dword_80A5358+0xB0
 unk_80A5720:    .byte 0xB
     .byte 0xB
-    .byte 8
-    .byte 0
+    .byte  8
+    .byte  0
 .endfunc // sub_80A5690
 
 .func
@@ -4370,9 +4370,9 @@ off_80A79AC:    .word dword_80A79B0
 dword_80A79B0:    .word 0x3040404, 0x102, 0x0
     .word 0xFF000000
 off_80A79C0:    .word unk_80A79C4
-unk_80A79C4:    .byte 4
-    .byte 6
-    .byte 8
+unk_80A79C4:    .byte  4
+    .byte  6
+    .byte  8
     .byte 0xA
     .byte 0xC
     .byte 0xE
@@ -5427,19 +5427,19 @@ off_80A8310:    .word unk_80A8314
 unk_80A8314:    .byte 0xBE
     .byte 0x81
     .byte 0xA
-    .byte 8
+    .byte  8
     .byte 0xCC
     .byte 0x81
     .byte 0xA
-    .byte 8
+    .byte  8
     .byte 0xDE
     .byte 0x81
     .byte 0xA
-    .byte 8
+    .byte  8
     .byte 0xF0
     .byte 0x81
     .byte 0xA
-    .byte 8
+    .byte  8
 .endfunc // sub_80A82DC
 
 .func
@@ -5769,14 +5769,14 @@ loc_80A85A2:
     ldr r0, [r1,r4]
     pop {r4,pc}
 off_80A85A8:    .word unk_80A85AC
-unk_80A85AC:    .byte 0
+unk_80A85AC:    .byte  0
     .byte 0x40 
-    .byte 2
-    .byte 0
-    .byte 0
+    .byte  2
+    .byte  0
+    .byte  0
     .byte 0x20
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
 .endfunc // sub_80A8580
 
 .func
@@ -6241,9 +6241,9 @@ off_80A8958:    .word dword_80A895C
 dword_80A895C:    .word 0x3040404, 0x102, 0x0
     .word 0xFF000000
 off_80A896C:    .word unk_80A8970
-unk_80A8970:    .byte 4
-    .byte 6
-    .byte 8
+unk_80A8970:    .byte  4
+    .byte  6
+    .byte  8
     .byte 0xA
     .byte 0xC
     .byte 0xE
@@ -6352,14 +6352,14 @@ sub_80A89FC:
     bl sub_80A8A50
     pop {r4-r7,pc}
 off_80A8A44:    .word unk_80A8A48
-unk_80A8A48:    .byte 3
-    .byte 2
-    .byte 1
-    .byte 0
-    .byte 7
-    .byte 6
-    .byte 5
-    .byte 4
+unk_80A8A48:    .byte  3
+    .byte  2
+    .byte  1
+    .byte  0
+    .byte  7
+    .byte  6
+    .byte  5
+    .byte  4
 .func
 .thumb_func
 sub_80A8A50:
@@ -6648,10 +6648,10 @@ sub_80A8C7C:
     ldrb r0, [r1,r0]
     pop {r4-r7,pc}
 off_80A8C90:    .word unk_80A8C94
-unk_80A8C94:    .byte 2
-    .byte 3
-    .byte 0
-    .byte 1
+unk_80A8C94:    .byte  2
+    .byte  3
+    .byte  0
+    .byte  1
 .endfunc // sub_80A8C7C
 
 .func
@@ -7808,9 +7808,9 @@ off_80A9540:    .word dword_80A9544
 dword_80A9544:    .word 0x3040404, 0x102, 0x0
     .word 0xFF000000
 off_80A9554:    .word unk_80A9558
-unk_80A9558:    .byte 4
-    .byte 6
-    .byte 8
+unk_80A9558:    .byte  4
+    .byte  6
+    .byte  8
     .byte 0xA
     .byte 0xC
     .byte 0xE
@@ -9886,23 +9886,23 @@ off_80AA6B8:    .word loc_80AA6E8+1
     .word sub_80AA6EC+1
 .endfunc // sub_80AA6A4
 
-    .hword 0xa757 // adr r7, loc_80AA820
+    adr r7, loc_80AA820
     lsr r2, r1, #0x20
-    .hword 0xa765 // adr r7, loc_80AA85C
+    adr r7, loc_80AA85C
     lsr r2, r1, #0x20
-    .hword 0xa779 // adr r7, loc_80AA8B0
+    adr r7, loc_80AA8B0
     lsr r2, r1, #0x20
-    .hword 0xa78d // adr r7, loc_80AA904
+    adr r7, loc_80AA904
     lsr r2, r1, #0x20
-    .hword 0xa7ad // adr r7, loc_80AA988
+    adr r7, loc_80AA988
     lsr r2, r1, #0x20
-    .hword 0xa7c1 // adr r7, loc_80AA9DC
+    adr r7, loc_80AA9DC
     lsr r2, r1, #0x20
-    .hword 0xa7d5 // adr r7, loc_80AAA30
+    adr r7, loc_80AAA30
     lsr r2, r1, #0x20
-    .hword 0xa7e9 // adr r7, loc_80AAA84
+    adr r7, loc_80AAA84
     lsr r2, r1, #0x20
-    .hword 0xa7fd // adr r7, loc_80AAAD8
+    adr r7, loc_80AAAD8
     lsr r2, r1, #0x20
     add r0, sp, #0x44
     lsr r2, r1, #0x20

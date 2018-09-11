@@ -1189,133 +1189,133 @@ off_813EB10:    .word unk_813EB90
     .word unk_813EBD0
     .word unk_813EBD0
 unk_813EB90:    .byte 0x80
-    .byte 0
+    .byte  0
     .byte 0x81
-    .byte 0
+    .byte  0
     .byte 0x82
-    .byte 0
+    .byte  0
     .byte 0x83
-    .byte 0
+    .byte  0
     .byte 0x81
-    .byte 0
+    .byte  0
     .byte 0x83
-    .byte 0
+    .byte  0
     .byte 0x82
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x81
-    .byte 0
+    .byte  0
     .byte 0x83
-    .byte 0
+    .byte  0
     .byte 0x82
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x81
-    .byte 0
+    .byte  0
     .byte 0x83
-    .byte 0
+    .byte  0
     .byte 0x82
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x81
-    .byte 0
+    .byte  0
     .byte 0x83
-    .byte 0
+    .byte  0
     .byte 0x82
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x81
-    .byte 0
+    .byte  0
     .byte 0x83
-    .byte 0
+    .byte  0
     .byte 0x82
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x81
-    .byte 0
+    .byte  0
     .byte 0x83
-    .byte 0
+    .byte  0
     .byte 0x82
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x81
-    .byte 0
+    .byte  0
     .byte 0x83
-    .byte 0
+    .byte  0
     .byte 0x82
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
 unk_813EBD0:    .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x85
-    .byte 0
+    .byte  0
     .byte 0x86
-    .byte 0
+    .byte  0
     .byte 0x87
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x85
-    .byte 0
+    .byte  0
     .byte 0x86
-    .byte 0
+    .byte  0
     .byte 0x87
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x85
-    .byte 0
+    .byte  0
     .byte 0x86
-    .byte 0
+    .byte  0
     .byte 0x87
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x85
-    .byte 0
+    .byte  0
     .byte 0x86
-    .byte 0
+    .byte  0
     .byte 0x87
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x85
-    .byte 0
+    .byte  0
     .byte 0x86
-    .byte 0
+    .byte  0
     .byte 0x87
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x85
-    .byte 0
+    .byte  0
     .byte 0x86
-    .byte 0
+    .byte  0
     .byte 0x87
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x85
-    .byte 0
+    .byte  0
     .byte 0x86
-    .byte 0
+    .byte  0
     .byte 0x87
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x85
-    .byte 0
+    .byte  0
     .byte 0x86
-    .byte 0
+    .byte  0
     .byte 0x87
-    .byte 0
+    .byte  0
 .func
 .thumb_func
 reqBBS_static_813EC10:
@@ -1782,11 +1782,11 @@ reqBBS_drawRequestBBS:
 off_813EF40:    .word dword_813DF44
 reqBBS_entriesGfx:    .byte 0x35, 0x0, 0x0, 0xFF, 0xFF
     .byte 0xFF, 0xFF, 0xFF
-unk_813EF4C:    .byte 0
+unk_813EF4C:    .byte  0
     .byte 0x42, 0x2, 0x42
-    .byte 4
+    .byte  4
     .byte 0x42, 0x6, 0x42
-    .byte 8
+    .byte  8
     .byte 0x42, 0xA, 0x42
     .byte 0xC
     .byte 0x42, 0xE, 0x42
@@ -1806,9 +1806,9 @@ unk_813EF4C:    .byte 0
     .byte 0x42, 0x2A, 0x42
     .byte 0x2C 
     .byte 0x42, 0x1, 0x42
-    .byte 3
+    .byte  3
     .byte 0x42, 0x5, 0x42
-    .byte 7
+    .byte  7
     .byte 0x42, 0x9, 0x42
     .byte 0xB
     .byte 0x42, 0xD, 0x42
@@ -1966,11 +1966,11 @@ unk_813EF4C:    .byte 0
     .byte 0x52, 0xE9, 0x52
     .byte 0xEB
     .byte 0x52, 0xED, 0x52
-    .byte 0
+    .byte  0
     .byte 0x43, 0x2, 0x43
-    .byte 4
+    .byte  4
     .byte 0x43, 0x6, 0x43
-    .byte 8
+    .byte  8
     .byte 0x43, 0xA, 0x43
     .byte 0xC
     .byte 0x43, 0xE, 0x43
@@ -1990,9 +1990,9 @@ unk_813EF4C:    .byte 0
     .byte 0x43, 0x2A, 0x43
     .byte 0x2C 
     .byte 0x43, 0x1, 0x43
-    .byte 3
+    .byte  3
     .byte 0x43, 0x5, 0x43
-    .byte 7
+    .byte  7
     .byte 0x43, 0x9, 0x43
     .byte 0xB
     .byte 0x43, 0xD, 0x43
@@ -2150,9 +2150,9 @@ unk_813EF4C:    .byte 0
     .byte 0x53, 0xE9, 0x53
     .byte 0xEB
     .byte 0x53, 0xED, 0x53
-unk_813F22C:    .byte 0
+unk_813F22C:    .byte  0
     .byte 0x60, 0x0, 0x60
-    .byte 0
+    .byte  0
 a02468BDFHJL:    .byte 0x60, 0x20, 0x60, 0x22, 0x60, 0x24, 0x60, 0x26
     .byte 0x60, 0x28, 0x60, 0x2A, 0x60, 0x2C, 0x60, 0x2E
     .byte 0x60, 0x30, 0x60, 0x32, 0x60, 0x34, 0x60, 0x36
@@ -4123,13 +4123,13 @@ off_8140234:    .word dword_8140238
 dword_8140238:    .word 0x8B008A, 0x8D008C
 off_8140240:    .word unk_8140244
 unk_8140244:    .byte 0x8E
-    .byte 0
+    .byte  0
     .byte 0x8F
-    .byte 0
+    .byte  0
     .byte 0x90
-    .byte 0
+    .byte  0
     .byte 0x91
-    .byte 0
+    .byte  0
 .endfunc // reqBBS_renderRequestStatus
 
 .func

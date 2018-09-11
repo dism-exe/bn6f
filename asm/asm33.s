@@ -465,10 +465,10 @@ loc_8123628:
     pop {pc}
     .balign 4, 0x00
 off_812363C:    .word unk_8123640
-unk_8123640:    .byte 0
+unk_8123640:    .byte  0
     .byte 0xA
     .byte 0x14
-    .byte 0
+    .byte  0
 .func
 .thumb_func
 sub_8123644:
@@ -865,7 +865,7 @@ off_8123A78:    .word unk_8123A7C
 unk_8123A7C:    .byte 0x24 
     .byte 0x2E 
     .byte 0x38 
-    .byte 0
+    .byte  0
 .endfunc // sub_8123A50
 
 .func
@@ -1015,7 +1015,7 @@ off_8123BB8:    .word unk_8123BBC
 unk_8123BBC:    .byte 0x24 
     .byte 0x2E 
     .byte 0x38 
-    .byte 0
+    .byte  0
 .func
 .thumb_func
 sub_8123BC0:
@@ -1033,7 +1033,7 @@ off_8123BD8:    .word unk_8123BDC
 unk_8123BDC:    .byte 0x2E 
     .byte 0x2F 
     .byte 0x30 
-    .byte 0
+    .byte  0
 .endfunc // sub_8123BC0
 
 .func
@@ -1053,7 +1053,7 @@ off_8123BF8:    .word unk_8123BFC
 unk_8123BFC:    .byte 0x56 
     .byte 0x58 
     .byte 0x5A 
-    .byte 0
+    .byte  0
 .endfunc // sub_8123BE0
 
 .func
@@ -1073,7 +1073,7 @@ off_8123C18:    .word unk_8123C1C
 unk_8123C1C:    .byte 0x57 
     .byte 0x59 
     .byte 0x5B 
-    .byte 0
+    .byte  0
 .endfunc // sub_8123C00
 
 .func
@@ -2521,17 +2521,17 @@ dword_8124848:    .word 0x6004000, 0x6004200, 0x6004400, 0x6004600, 0x6004800
     .word 0x6004A00
 off_8124860:    .word unk_8124864
 unk_8124864:    .byte 0x80
-    .byte 0
+    .byte  0
     .byte 0x81
-    .byte 0
+    .byte  0
     .byte 0x82
-    .byte 0
+    .byte  0
     .byte 0x83
-    .byte 0
+    .byte  0
     .byte 0x84
-    .byte 0
+    .byte  0
     .byte 0x85
-    .byte 0
+    .byte  0
 .func
 .thumb_func
 sub_8124870:
@@ -3480,7 +3480,7 @@ sub_8125254:
     beq loc_8125276
     bl chatbox_8040818
     mov r0, #0x40 
-    bl chatbox_8045F2C
+    bl chatbox_8045F2C // (int a1) ->
     mov r0, #0x17
     mov r1, #0x11
     bl sub_802F12C // (int a1, int a2) -> void
@@ -6673,7 +6673,7 @@ sub_8126DF8:
     bl engine_isScreeneffectAnimating // () -> zf
     beq loc_8126E0A
     mov r0, #0x40 
-    bl chatbox_8045F2C
+    bl chatbox_8045F2C // (int a1) ->
     mov r0, #4
     strb r0, [r5,#2]
 loc_8126E0A:
@@ -6798,7 +6798,7 @@ loc_8126ED4:
     cmp r0, r1
     bne loc_8126F0E
     mov r0, #0x40 
-    bl chatbox_8045F2C
+    bl chatbox_8045F2C // (int a1) ->
     ldrb r0, [r5,#0x10]
     cmp r0, #2
     bne loc_8126EF2
@@ -6846,7 +6846,7 @@ sub_8126F40:
     bl engine_isScreeneffectAnimating // () -> zf
     beq locret_8126F88
     mov r0, #0x40 
-    bl chatbox_8045F2C
+    bl chatbox_8045F2C // (int a1) ->
     mov r0, #8
     bl chatbox_8045F3C
     beq locret_8126F88
@@ -6918,7 +6918,7 @@ loc_8126FC4:
     bl chatbox_8045F3C
     beq locret_8126FEC
     mov r0, #0x40 
-    bl chatbox_8045F2C
+    bl chatbox_8045F2C // (int a1) ->
     mov r0, #0x14
     strb r0, [r5,#2]
     mov r6, #0x35 
@@ -6953,7 +6953,7 @@ loc_8127006:
     bl engine_isScreeneffectAnimating // () -> zf
     beq locret_812705E
     mov r0, #0x40 
-    bl chatbox_8045F2C
+    bl chatbox_8045F2C // (int a1) ->
     bl sub_81440D8
     bl sub_8046664 // () -> void
     mov r0, #0x17
@@ -6973,7 +6973,7 @@ loc_812703A:
 loc_8127042:
     bl chatbox_8040818
     mov r0, #0x40 
-    bl chatbox_8045F2C
+    bl chatbox_8045F2C // (int a1) ->
     mov r0, r10
     // memBlock
     ldr r0, [r0,#0x34]
@@ -7464,8 +7464,8 @@ off_81274E8:    .word unk_2017A00
 off_81274EC:    .word unk_81274F8
 dword_81274F0:    .word 0x8127532
 off_81274F4:    .word unk_812756C
-unk_81274F8:    .byte 0
-    .byte 1
+unk_81274F8:    .byte  0
+    .byte  1
     .byte 0x71 
     .byte 0x72 
     .byte 0x54 
@@ -9060,21 +9060,21 @@ dword_8128244:    .word 0x40000000
 off_8128248:    .word 0x210
 off_812824C:    .word unk_8128250
 unk_8128250:    .byte 0x18
-    .byte 0
+    .byte  0
     .byte 0x18
-    .byte 0
+    .byte  0
     .byte 0x18
-    .byte 0
+    .byte  0
     .byte 0x28 
-    .byte 0
+    .byte  0
     .byte 0x18
-    .byte 0
+    .byte  0
     .byte 0x38 
-    .byte 0
+    .byte  0
     .byte 0x18
-    .byte 0
+    .byte  0
     .byte 0x48 
-    .byte 0
+    .byte  0
 .endfunc // sub_81281E0
 
 .func
@@ -10941,7 +10941,7 @@ off_812944C:    .word unk_8129450
 unk_8129450:    .byte 0x5D 
     .byte 0x5D 
     .byte 0x5C 
-    .byte 0
+    .byte  0
 .endfunc // sub_8129400
 
 .func
@@ -11046,7 +11046,7 @@ off_8129524:    .word unk_8129528
 unk_8129528:    .byte 0x5D 
     .byte 0x5D 
     .byte 0x5C 
-    .byte 0
+    .byte  0
 .endfunc // sub_8129454
 
 .func
@@ -11216,7 +11216,7 @@ sub_812968C:
     bl engine_isScreeneffectAnimating // () -> zf
     beq locret_812969E
     mov r0, #0x40 
-    bl chatbox_8045F2C
+    bl chatbox_8045F2C // (int a1) ->
     mov r0, #4
     strb r0, [r5,#3]
 locret_812969E:
@@ -14627,59 +14627,59 @@ dword_812B0E8:    .word 0x886C8054, 0x6000020, 0x2013A00, 0x886C9BD4, 0x6014800
     .byte 0x6C 
     .byte 0x9D
     .byte 0x6C 
-    .byte 8
+    .byte  8
     .byte 0xD0
     .byte 0x16
-    .byte 0
-    .byte 3
+    .byte  0
+    .byte  3
     .byte 0x20
-    .byte 0
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
+    .byte  0
     .byte 0xE0
     .byte 0x7A 
     .byte 0x6B 
-    .byte 8
-    .byte 0
+    .byte  8
+    .byte  0
     .byte 0x40 
-    .byte 0
-    .byte 6
-    .byte 0
+    .byte  0
+    .byte  6
+    .byte  0
     .byte 0x28 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xC0
     .byte 0x96
     .byte 0x6C 
     .byte 0x88
-    .byte 0
+    .byte  0
     .byte 0x68 
-    .byte 0
-    .byte 6
-    .byte 0
+    .byte  0
+    .byte  6
+    .byte  0
     .byte 0x3A 
-    .byte 1
-    .byte 2
+    .byte  1
+    .byte  2
     .byte 0xC
     .byte 0x98
     .byte 0x6C 
     .byte 0x88
     .byte 0x80
     .byte 0x6B 
-    .byte 0
-    .byte 6
-    .byte 0
+    .byte  0
+    .byte  6
+    .byte  0
     .byte 0x3A 
-    .byte 1
-    .byte 2
+    .byte  1
+    .byte  2
     .byte 0xD4
     .byte 0x9B
     .byte 0x6C 
     .byte 0x88
-    .byte 0
+    .byte  0
     .byte 0x48 
-    .byte 1
-    .byte 6
+    .byte  1
+    .byte  6
     .word decomp_2013A00
     .byte 0x38 
     .byte 0x9D
@@ -14687,40 +14687,40 @@ dword_812B0E8:    .word 0x886C8054, 0x6000020, 0x2013A00, 0x886C9BD4, 0x6014800
     .byte 0x88
     .byte 0x80
     .byte 0x49 
-    .byte 1
-    .byte 6
-    .byte 0
+    .byte  1
+    .byte  6
+    .byte  0
     .byte 0x3A 
-    .byte 1
-    .byte 2
+    .byte  1
+    .byte  2
     .byte 0x74 
     .byte 0x92
     .byte 0x6C 
     .byte 0x88
     .byte 0x20
     .byte 0x80
-    .byte 0
-    .byte 6
-    .byte 0
+    .byte  0
+    .byte  6
+    .byte  0
     .byte 0x3A 
-    .byte 1
-    .byte 2
+    .byte  1
+    .byte  2
     .byte 0x68 
     .byte 0x96
     .byte 0x6C 
     .byte 0x88
     .byte 0x20
     .byte 0x1A
-    .byte 0
-    .byte 3
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
     .byte 0x3A 
-    .byte 1
-    .byte 2
-    .byte 0
-    .byte 0
-    .byte 0
-    .byte 0
+    .byte  1
+    .byte  2
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
 off_812B164:    .word dword_812B168
 dword_812B168:    .word 0x886CE7D0, 0x201D620, 0x2013A00, 0x886CE8AC, 0x201DB20
     .word 0x2013A00, 0x886DC418, 0x201E420, 0x2013A00, 0x886CE9E8
@@ -14991,10 +14991,10 @@ sub_812B39C:
     pop {pc}
     .balign 4, 0x00
 off_812B3AC:    .word unk_812B3B0
-unk_812B3B0:    .byte 9
+unk_812B3B0:    .byte  9
     .byte 0xA
     .byte 0xB
-    .byte 0
+    .byte  0
 .endfunc // sub_812B39C
 
 .func
@@ -15025,7 +15025,7 @@ off_812B3DC:    .word unk_812B3E0
 unk_812B3E0:    .byte 0xE
     .byte 0xF
     .byte 0x10
-    .byte 0
+    .byte  0
 .endfunc // sub_812B3CC
 
 .func
@@ -15042,7 +15042,7 @@ off_812B3F4:    .word unk_812B3F8
 unk_812B3F8:    .byte 0x11
     .byte 0x12
     .byte 0x54 
-    .byte 0
+    .byte  0
 .endfunc // sub_812B3E4
 
 .func
@@ -15056,10 +15056,10 @@ sub_812B3FC:
     pop {pc}
     .balign 4, 0x00
 off_812B40C:    .word unk_812B410
-unk_812B410:    .byte 6
-    .byte 7
-    .byte 8
-    .byte 0
+unk_812B410:    .byte  6
+    .byte  7
+    .byte  8
+    .byte  0
 .endfunc // sub_812B3FC
 
 .func

@@ -603,12 +603,12 @@
 
 .include "chatbox.inc"
 // .global chatbox_803FD9C
-// .global chatbox_803FE74
+// .global chatbox_runScript_803FE74 // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_8040818
 // .global chatbox_8045ED0
 // .global chatbox_8045F1C
-// .global chatbox_8045F2C
+// .global chatbox_8045F2C // (int a1) ->
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C
 
@@ -1032,7 +1032,10 @@
 .equ unk_2009460, 0x2009460
 .equ unk_2009480, 0x2009480
 .equ byte_2009790, 0x2009790
-.equ unk_2009940, 0x2009940
+.equ word_2009940, 0x2009940
+.equ word_2009942, 0x2009942
+.equ word_2009944, 0x2009944
+.equ word_2009946, 0x2009946
 .equ sCamera, 0x2009980
 .equ sCamera, 0x2009980
 .equ sCamera, 0x2009980
@@ -1393,7 +1396,7 @@
 .equ unk_3002580, 0x3002580
 .equ dword_3002590, 0x3002590
 .equ unk_30025B0, 0x30025B0
-.equ loc_30068E8, 0x30068E8
+.equ sub_30068E8, 0x30068E8
 .equ sub_3006920, 0x3006920
 .equ LCDControl, 0x4000000
 .equ BG1X_Offset, 0x4000014
@@ -1680,6 +1683,8 @@
 .equ aF_0, 0x873811C
 .equ dword_873B9E0, 0x873B9E0
 .equ dword_87E36F8, 0x87E36F8
+.equ comp_87E4500, 0x87E4500
+.equ comp_87E5020, 0x87E5020
 .equ dword_87E660C, 0x87E660C
 .equ byte_87E672C, 0x87E672C
 .equ word_87E672E, 0x87E672E

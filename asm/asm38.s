@@ -2191,20 +2191,20 @@ loc_81D774E:
     mov r4, #4
     tst r0, r4
     beq loc_81D775C
-    ldr r4, dword_81D7A10+4
+    ldr r4, dword_81D7A10+4 // =0x1008 
     tst r3, r4
     bne loc_81D775C
     pop {r4,r6,r7,pc}
 loc_81D775C:
-    ldr r4, dword_81D7A10+8
+    ldr r4, dword_81D7A10+8 // =0x800000 
     tst r0, r4
     beq loc_81D776A
-    ldr r4, dword_81D7A10+0xC
+    ldr r4, dword_81D7A10+12 // =0xC003000 
     tst r3, r4
     bne loc_81D776A
     pop {r4,r6,r7,pc}
 loc_81D776A:
-    ldr r4, dword_81D7A10+0x10
+    ldr r4, dword_81D7A10+16 // =start_ 
     tst r0, r4
     beq loc_81D7772
     pop {r4,r6,r7,pc}
@@ -2230,21 +2230,21 @@ loc_81D7790:
     tst r2, r4
     beq loc_81D77A0
     ldr r3, [r7,#0x30]
-    ldr r4, dword_81D7A10+4
+    ldr r4, dword_81D7A10+4 // =0x1008 
     tst r3, r4
     bne loc_81D77A0
     pop {r4,r6,r7,pc}
 loc_81D77A0:
-    ldr r4, dword_81D7A10+8
+    ldr r4, dword_81D7A10+8 // =0x800000 
     tst r2, r4
     beq loc_81D77B0
     ldr r3, [r7,#0x30]
-    ldr r4, dword_81D7A10+0x14
+    ldr r4, dword_81D7A10+20 // =0x3000 
     tst r3, r4
     bne loc_81D77B0
     pop {r4,r6,r7,pc}
 loc_81D77B0:
-    ldr r4, dword_81D7A10+0x10
+    ldr r4, dword_81D7A10+16 // =start_ 
     tst r2, r4
     beq loc_81D77B8
     pop {r4,r6,r7,pc}
@@ -2262,13 +2262,13 @@ loc_81D77C8:
     tst r2, r4
     beq loc_81D780C
     ldr r1, [r7,#0x30]
-    ldr r4, dword_81D7A10+0x18
+    ldr r4, dword_81D7A10+24 // =0x4000 
     tst r1, r4
     bne loc_81D77DA
     mov r4, #2
     b loc_81D77DC
 loc_81D77DA:
-    ldr r4, dword_81D7A10+0x1C
+    ldr r4, dword_81D7A10+28 // =0x1002 
 loc_81D77DC:
     tst r1, r4
     bne loc_81D780C
@@ -2279,7 +2279,7 @@ loc_81D77DC:
     ldr r3, [r7,#0x30]
     mov r2, #0x10
     bic r3, r2
-    ldr r1, dword_81D7A10+0x20
+    ldr r1, dword_81D7A10+32 // =0xC005000 
     tst r3, r1
     bne loc_81D7804
     ldrb r2, [r7,#5]
@@ -2288,7 +2288,7 @@ loc_81D77DC:
     ldrb r2, [r6,#3]
     orr r2, r0
     strb r2, [r6,#3]
-    ldr r2, dword_81D7A10+0x24
+    ldr r2, dword_81D7A10+36 // =0x20000 
     orr r3, r2
 loc_81D7804:
     ldr r2, [r6,#0x70]
@@ -2297,21 +2297,21 @@ loc_81D7804:
     pop {r4,r6,r7,pc}
 loc_81D780C:
     ldr r3, [r6,#0x30]
-    ldr r4, dword_81D7A10+0x28
+    ldr r4, dword_81D7A10+40 // =0x100000 
     tst r3, r4
     beq loc_81D781E
     ldr r3, [r7,#0x30]
-    ldr r4, dword_81D7A10+0x2C
+    ldr r4, dword_81D7A10+44 // =0x8000 
     tst r3, r4
     beq loc_81D781E
     pop {r4,r6,r7,pc}
 loc_81D781E:
     ldr r3, [r6,#0x30]
-    ldr r4, dword_81D7A10+0x2C
+    ldr r4, dword_81D7A10+44 // =0x8000 
     tst r3, r4
     beq loc_81D7830
     ldr r3, [r7,#0x30]
-    ldr r4, dword_81D7A10+0x28
+    ldr r4, dword_81D7A10+40 // =0x100000 
     tst r3, r4
     beq loc_81D7830
     pop {r4,r6,r7,pc}
@@ -2730,7 +2730,7 @@ loc_81D7B92:
     tst r2, r4
     bne loc_81D7BB2
     ldr r1, [r7,#0x30]
-    ldr r4, dword_81D7DAC+4
+    ldr r4, dword_81D7DAC+4 // =0x10000 
     tst r1, r4
     bne loc_81D7BB2
     pop {r4,r6,r7,pc}
@@ -3049,58 +3049,58 @@ locret_81D7E1C:
     pop {r4-r7,pc}
     .byte 0, 0
 dword_81D7E20:    .word 0x3007924
-    .byte 0
+    .byte  0
     .byte 0x80
-    .byte 1
-    .byte 0
-    .byte 0
+    .byte  1
+    .byte  0
+    .byte  0
     .byte 0x40 
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0x10
-    .byte 0
-    .byte 1
-    .byte 0
+    .byte  0
+    .byte  1
+    .byte  0
     .byte 0x50 
-    .byte 0
-    .byte 1
-    .byte 0
+    .byte  0
+    .byte  1
+    .byte  0
     .byte 0x10
-    .byte 1
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  1
+    .byte  0
     .byte 0x10
     .byte 0x20
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0x10
-    .byte 4
-    .byte 1
-    .byte 0
+    .byte  4
+    .byte  1
+    .byte  0
     .byte 0x10
-    .byte 8
-    .byte 1
-    .byte 0
+    .byte  8
+    .byte  1
+    .byte  0
     .byte 0x10
     .byte 0x10
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0x10
-    .byte 2
-    .byte 1
-    .byte 0
+    .byte  2
+    .byte  1
+    .byte  0
     .byte 0x10
-    .byte 2
-    .byte 1
-    .byte 0
+    .byte  2
+    .byte  1
+    .byte  0
     .byte 0x10
-    .byte 2
-    .byte 1
-    .byte 0
+    .byte  2
+    .byte  1
+    .byte  0
     .byte 0x10
-    .byte 2
-    .byte 1
-    .byte 0
+    .byte  2
+    .byte  1
+    .byte  0
 .endfunc // sub_81D7DE0
 
 .func

@@ -106,44 +106,44 @@ off_8075568:    .word locret_8001AB4+1
     .word loc_80019D0+1
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xB5
     .byte 0x1A
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD1
     .byte 0x19
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xD9
     .byte 0x5C 
-    .byte 0
-    .byte 3
-    .byte 0
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  3
+    .byte  0
+    .byte  8
+    .byte  0
+    .byte  0
 off_8075598:    .word off_807559C
 off_807559C:    .word off_80755A8
     .word off_80755A8

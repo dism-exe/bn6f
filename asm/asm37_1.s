@@ -502,7 +502,7 @@ off_81420C0:    .word unk_81420C4
 unk_81420C4:    .byte 0x80
     .byte 0x40 
     .byte 0x40 
-    .byte 0
+    .byte  0
 .endfunc // sub_81420B0
 
 .func
@@ -733,7 +733,7 @@ sub_8142204:
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_814221C:    .word unk_8142220
-unk_8142220:    .byte 0
+unk_8142220:    .byte  0
     .byte 0xA
     .byte 0x14
     .byte 0x1E
@@ -805,38 +805,38 @@ loc_8142272:
     pop {r4-r7,pc}
     .byte 0, 0
 off_8142290:    .word unk_8142294
-unk_8142294:    .byte 2
-    .byte 2
-    .byte 1
-    .byte 1
-    .byte 2
-    .byte 2
-    .byte 4
-    .byte 1
-    .byte 3
-    .byte 4
-    .byte 4
-    .byte 2
-    .byte 4
-    .byte 4
-    .byte 3
-    .byte 3
-    .byte 3
-    .byte 3
-    .byte 3
-    .byte 3
-    .byte 3
-    .byte 5
-    .byte 4
-    .byte 3
-    .byte 4
-    .byte 6
-    .byte 4
-    .byte 6
-    .byte 3
-    .byte 4
-    .byte 5
-    .byte 3
+unk_8142294:    .byte  2
+    .byte  2
+    .byte  1
+    .byte  1
+    .byte  2
+    .byte  2
+    .byte  4
+    .byte  1
+    .byte  3
+    .byte  4
+    .byte  4
+    .byte  2
+    .byte  4
+    .byte  4
+    .byte  3
+    .byte  3
+    .byte  3
+    .byte  3
+    .byte  3
+    .byte  3
+    .byte  3
+    .byte  5
+    .byte  4
+    .byte  3
+    .byte  4
+    .byte  6
+    .byte  4
+    .byte  6
+    .byte  3
+    .byte  4
+    .byte  5
+    .byte  3
 .func
 .thumb_func
 sub_81422B4:
@@ -982,7 +982,7 @@ dword_81426F8:    .word 0x1900090, 0x910290, 0x2910191, 0x1930093, 0xB5F00000
     ldrb r0, [r7,r0]
     pop {r4-r7,pc}
 off_8142798:    .word unk_814279C
-unk_814279C:    .byte 7
+unk_814279C:    .byte  7
     .byte 0xB
     .byte 0xC
     .byte 0xD
@@ -1881,12 +1881,12 @@ off_8143078:    .word dword_808BF48+0xBC
     .word dword_808BF48+0x1AC
     .byte 0xF0
     .byte 0xC2
-    .byte 8
-    .byte 8
+    .byte  8
+    .byte  8
     .byte 0x20
     .byte 0xD
-    .byte 0
-    .byte 2
+    .byte  0
+    .byte  2
 .func
 .thumb_func
 sub_8143088:
@@ -1933,13 +1933,13 @@ sub_81430B6:
     .byte 0, 0
 off_81430D0:    .word unk_81430D4
 unk_81430D4:    .byte 0x70 
-    .byte 9
+    .byte  9
     .byte 0x78 
-    .byte 9
+    .byte  9
     .byte 0x80
-    .byte 9
+    .byte  9
     .byte 0x88
-    .byte 9
+    .byte  9
 .endfunc // sub_81430B6
 
 .func
@@ -1954,9 +1954,9 @@ sub_81430DC:
     .balign 4, 0x00
 off_81430EC:    .word unk_81430F0
 unk_81430F0:    .byte 0x6E 
-    .byte 9
+    .byte  9
     .byte 0x6F 
-    .byte 9
+    .byte  9
     .byte 0xF0
     .byte 0xB5
     .byte 0xFD
@@ -1970,22 +1970,22 @@ unk_81430F0:    .byte 0x6E
     .byte 0x19
     .byte 0x4C 
     .byte 0x80
-    .byte 0
+    .byte  0
     .byte 0x24 
     .byte 0x58 
     .byte 0x20
     .byte 0x78 
-    .byte 0
+    .byte  0
     .byte 0x42 
     .byte 0xE
     .byte 0xD0
     .byte 0x21 
     .byte 0x49 
-    .byte 4
+    .byte  4
     .byte 0x22 
     .byte 0x50 
     .byte 0x43 
-    .byte 9
+    .byte  9
     .byte 0x18
     .byte 0x60 
     .byte 0x68 
@@ -4871,11 +4871,11 @@ off_8144D38:    .word byte_200F460
     .balign 4, 0x00
 off_8144D54:    .word byte_200F440
 off_8144D58:    .word byte_200F448
-unk_8144D5C:    .byte 1
+unk_8144D5C:    .byte  1
     .byte 0x20
-unk_8144D5E:    .byte 2
+unk_8144D5E:    .byte  2
     .byte 0xBC
-    .byte 8
+    .byte  8
     .byte 0x47 
     .balign 4, 0x00
 .func
@@ -7849,11 +7849,11 @@ off_81463F0:    .word byte_200FE00
     mov r0, #5
     b unk_814642C
 off_8146418:    .word byte_200FE00
-unk_814641C:    .byte 5
+unk_814641C:    .byte  5
     .byte 0x4A 
     .byte 0x11
     .byte 0x88
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x10
     .byte 0x80
@@ -7863,13 +7863,13 @@ unk_814641C:    .byte 5
     .byte 0x86
     .byte 0x11
     .byte 0x80
-    .byte 0
+    .byte  0
     .byte 0x20
 unk_814642C:    .byte 0x30 
     .byte 0xBC
-    .byte 2
+    .byte  2
     .byte 0xBC
-    .byte 8
+    .byte  8
     .byte 0x47 
     .balign 4, 0x00
     .word InterruptMasterEnableRegister
@@ -7889,25 +7889,25 @@ unk_814642C:    .byte 0x30
     b unk_814646C
 off_8146454:    .word dword_2010CC0
 off_8146458:    .word byte_200FE00
-unk_814645C:    .byte 4
+unk_814645C:    .byte  4
     .byte 0x49 
-    .byte 6
+    .byte  6
     .byte 0x20
     .byte 0x88
     .byte 0x82
     .byte 0xF3
     .byte 0x20
-    .byte 1
+    .byte  1
     .byte 0x21 
     .byte 0xFF
     .byte 0xF7
     .byte 0xA3
     .byte 0xFE
-    .byte 6
+    .byte  6
     .byte 0x20
-unk_814646C:    .byte 2
+unk_814646C:    .byte  2
     .byte 0xBC
-    .byte 8
+    .byte  8
     .byte 0x47 
     .word byte_200FE00
     push {lr}
@@ -7930,23 +7930,23 @@ unk_814646C:    .byte 2
     b unk_81464AE
     .balign 4, 0x00
 off_814649C:    .word byte_200FE00
-unk_81464A0:    .byte 0
+unk_81464A0:    .byte  0
     .byte 0x2A 
-    .byte 2
+    .byte  2
     .byte 0xD0
-    .byte 1
+    .byte  1
     .byte 0x20
     .byte 0xC8
     .byte 0x72 
-    .byte 0
+    .byte  0
     .byte 0xE0
     .byte 0xCB
     .byte 0x72 
-    .byte 0
+    .byte  0
     .byte 0x20
-unk_81464AE:    .byte 2
+unk_81464AE:    .byte  2
     .byte 0xBC
-    .byte 8
+    .byte  8
     .byte 0x47 
     .balign 4, 0x00
 .func
@@ -8022,35 +8022,35 @@ jpt_8146518:    .word unk_8146540
     .word unk_8146558
     .word unk_8146558
     .word unk_814655E
-unk_8146540:    .byte 3
+unk_8146540:    .byte  3
     .byte 0x20
     .byte 0xD0
     .byte 0x71 
-    .byte 9
+    .byte  9
     .byte 0x20
     .byte 0xD
     .byte 0xE0
-unk_8146548:    .byte 2
+unk_8146548:    .byte  2
     .byte 0x20
     .byte 0xD0
     .byte 0x71 
-    .byte 1
+    .byte  1
     .byte 0x20
     .byte 0x50 
     .byte 0x83
-    .byte 9
+    .byte  9
     .byte 0xE0
-unk_8146552:    .byte 2
+unk_8146552:    .byte  2
     .byte 0x20
     .byte 0xD0
     .byte 0x71 
-    .byte 6
+    .byte  6
     .byte 0xE0
 unk_8146558:    .byte 0x28 
     .byte 0x20
     .byte 0x50 
     .byte 0x83
-    .byte 3
+    .byte  3
     .byte 0xE0
 unk_814655E:    .byte 0x28 
     .byte 0x20
@@ -8060,9 +8060,9 @@ unk_814655E:    .byte 0x28
     .byte 0x20
     .byte 0x10
     .byte 0x71 
-def_8146518:    .byte 1
+def_8146518:    .byte  1
     .byte 0xBC
-    .byte 0
+    .byte  0
     .byte 0x47 
     .balign 4, 0x00
 .func
@@ -14064,9 +14064,9 @@ off_81495D4:    .word byte_81C03D8
 off_81495D8:    .word byte_30000F0
     .byte 0x18
     .byte 0x78 
-    .byte 1
+    .byte  1
     .byte 0x33 
-    .byte 1
+    .byte  1
     .byte 0x32 
     .byte 0x81
     .byte 0x42 
@@ -14074,41 +14074,41 @@ off_81495D8:    .word byte_30000F0
     .byte 0xD1
 unk_81495E6:    .byte 0x11
     .byte 0x78 
-    .byte 0
+    .byte  0
     .byte 0x29 
     .byte 0xF7
     .byte 0xD1
     .byte 0xC0
     .byte 0x22 
     .byte 0x92
-    .byte 4
-    .byte 0
+    .byte  4
+    .byte  0
     .byte 0x23 
-    .byte 0
+    .byte  0
     .byte 0x21 
     .byte 0x10
     .byte 0x88
     .byte 0x18
     .byte 0x18
-    .byte 0
-    .byte 4
-    .byte 3
+    .byte  0
+    .byte  4
+    .byte  3
     .byte 0xC
-    .byte 2
+    .byte  2
     .byte 0x32 
     .byte 0x48 
     .byte 0x1C
-    .byte 0
-    .byte 6
-    .byte 1
+    .byte  0
+    .byte  6
+    .byte  1
     .byte 0xE
     .byte 0x59 
     .byte 0x29 
     .byte 0xF5
     .byte 0xD9
-    .byte 9
+    .byte  9
     .byte 0x48 
-    .byte 0
+    .byte  0
     .byte 0x88
     .byte 0x83
     .byte 0x42 
@@ -14117,42 +14117,42 @@ unk_81495E6:    .byte 0x11
     .byte 0xC0
     .byte 0x20
     .byte 0x80
-    .byte 4
-    .byte 7
+    .byte  4
+    .byte  7
     .byte 0x49 
-    .byte 9
+    .byte  9
     .byte 0x68 
     .byte 0x5A 
     .byte 0x22 
-    .byte 4
+    .byte  4
     .byte 0xF0
     .byte 0x4D 
     .byte 0xF9
-    .byte 6
+    .byte  6
     .byte 0x48 
-    .byte 2
+    .byte  2
     .byte 0x68 
     .byte 0x11
     .byte 0x78 
     .byte 0x80
     .byte 0x20
-    .byte 8
+    .byte  8
     .byte 0x43 
     .byte 0x10
     .byte 0x70 
-    .byte 0
+    .byte  0
     .byte 0x20
-    .byte 7
+    .byte  7
     .byte 0xE0
     .byte 0, 0
     .word word_30000FA
     .word dword_2010CC0
     .word dword_2010CC4
-    .byte 1
+    .byte  1
     .byte 0x20
-    .byte 2
+    .byte  2
     .byte 0xBC
-    .byte 8
+    .byte  8
     .byte 0x47 
     .balign 4, 0x00
 .func
@@ -16464,7 +16464,7 @@ sub_814A780:
     bx r0
 off_814A790:    .word sub_814A6AC+1
 word_814A794:    .hword 0xB570
-    .byte 5
+    .byte  5
     .byte 0x1C
     .byte 0xE
     .byte 0x1C
@@ -16472,27 +16472,27 @@ word_814A794:    .hword 0xB570
     .byte 0x68 
     .byte 0x31 
     .byte 0x68 
-    .byte 1
+    .byte  1
     .byte 0x3A 
-    .byte 1
+    .byte  1
     .byte 0x20
     .byte 0x40 
     .byte 0x42 
     .byte 0x82
     .byte 0x42 
-    .byte 7
+    .byte  7
     .byte 0xD0
-    .byte 4
+    .byte  4
     .byte 0x1C
     .byte 0x18
     .byte 0x78 
-    .byte 8
+    .byte  8
     .byte 0x70 
-    .byte 1
+    .byte  1
     .byte 0x33 
-    .byte 1
+    .byte  1
     .byte 0x31 
-    .byte 1
+    .byte  1
     .byte 0x3A 
     .byte 0xA2
     .byte 0x42 
@@ -16504,9 +16504,9 @@ word_814A794:    .hword 0xB570
     .byte 0x60 
     .byte 0x70 
     .byte 0xBC
-    .byte 1
+    .byte  1
     .byte 0xBC
-    .byte 0
+    .byte  0
     .byte 0x47 
     .balign 4, 0x00
 .endfunc // sub_814A780
@@ -20790,41 +20790,41 @@ off_814C740:    .word dword_2010CCC
     b unk_814C786
     .balign 4, 0x00
 off_814C768:    .word dword_2010CCC
-unk_814C76C:    .byte 8
+unk_814C76C:    .byte  8
     .byte 0x4A 
     .byte 0x11
     .byte 0x68 
-    .byte 1
+    .byte  1
     .byte 0x20
-    .byte 8
+    .byte  8
     .byte 0x71 
     .byte 0x10
     .byte 0x68 
     .byte 0x40 
     .byte 0x6A 
-    .byte 4
+    .byte  4
     .byte 0x30 
-    .byte 5
+    .byte  5
     .byte 0x70 
-    .byte 1
+    .byte  1
     .byte 0x30 
-    .byte 3
+    .byte  3
     .byte 0x70 
-    .byte 1
+    .byte  1
     .byte 0x30 
-    .byte 3
+    .byte  3
     .byte 0x70 
     .byte 0x43 
     .byte 0x70 
-unk_814C786:    .byte 0
+unk_814C786:    .byte  0
     .byte 0xF0
     .byte 0xC9
     .byte 0xF9
 unk_814C78A:    .byte 0x30 
     .byte 0xBC
-    .byte 1
+    .byte  1
     .byte 0xBC
-    .byte 0
+    .byte  0
     .byte 0x47 
     .word dword_2010CCC
     push {r4,r5,lr}
@@ -21433,8 +21433,8 @@ loc_814CC06:
     pop {r4}
     pop {r1}
     bx r1
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
 .endfunc // sub_814CB90
 
 .func
@@ -21863,28 +21863,28 @@ dword_814CF54:    .word 0xE1A0C00D
 dword_814CF64:    .word 0xE5902000
     .word 0xE24CB004
     .word 0xE352000A
-    .byte 6
-    .byte 0
-    .byte 0
+    .byte  6
+    .byte  0
+    .byte  0
     .byte 0x1A
     .byte 0x20
-    .byte 0
+    .byte  0
     .byte 0x90
     .byte 0xE5
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x50 
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x68 
     .byte 0x1B
-    .byte 9
+    .byte  9
     .word 0x12FFF1E
     .byte 0x49 
-    .byte 2
-    .byte 0
+    .byte  2
+    .byte  0
     .byte 0xEB
-    .byte 0
+    .byte  0
     .byte 0x68 
     .hword 0xE91B
     .word 0xE12FFF1E
@@ -21892,27 +21892,27 @@ dword_814CF64:    .word 0xE5902000
     .byte 0x30 
     .byte 0xD0
     .byte 0xE5
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0x53 
     .byte 0xE3
-    .byte 2
-    .byte 0
-    .byte 0
+    .byte  2
+    .byte  0
+    .byte  0
     .byte 0x1A
-    .byte 5
-    .byte 0
-    .byte 0
+    .byte  5
+    .byte  0
+    .byte  0
     .byte 0xEB
-    .byte 0
+    .byte  0
     .byte 0x68 
     .hword 0xE91B
     .word 0xE12FFF1E
     .byte 0xA6
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEB
-    .byte 0
+    .byte  0
     .byte 0x68 
     .hword 0xE91B
     .word 0xE12FFF1E
@@ -21926,16 +21926,16 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x2D 
     .byte 0xE9
     .byte 0x50 
-    .byte 0
+    .byte  0
     .byte 0xA0
     .byte 0xE3
-    .byte 4
+    .byte  4
     .byte 0xB0
     .byte 0x4C 
     .byte 0xE2
     .byte 0xBB
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0xEB
     .byte 0x12
     .byte 0x4E 
@@ -21945,116 +21945,116 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x22 
     .byte 0x9F
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0x43 
     .byte 0x84
     .byte 0xE2
-    .byte 0
+    .byte  0
     .byte 0xE0
     .byte 0x94
     .byte 0xE5
     .byte 0x0, 0xC0
     .byte 0x92
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x9C
     .byte 0xE5
-    .byte 2
+    .byte  2
     .byte 0x60 
     .byte 0xA0
     .byte 0xE1
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x53 
     .byte 0xE3
     .byte 0x11
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
-    .byte 2
-    .byte 1
+    .byte  2
+    .byte  1
     .byte 0x5E 
     .byte 0xE3
     .byte 0x2F 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
-    .byte 5
+    .byte  5
     .byte 0x20
     .byte 0xDC
     .byte 0xE5
-    .byte 4
+    .byte  4
     .byte 0x30 
     .byte 0xDC
     .byte 0xE5
-    .byte 3
-    .byte 0
+    .byte  3
+    .byte  0
     .byte 0x52 
     .byte 0xE1
-    .byte 7
-    .byte 0
-    .byte 0
+    .byte  7
+    .byte  0
+    .byte  0
     .byte 0x8A
     .byte 0x24 
     .byte 0x30 
     .byte 0x9C
     .byte 0xE5
-    .byte 2
+    .byte  2
     .byte 0x10
     .byte 0xA0
     .byte 0xE1
-    .byte 1
+    .byte  1
     .byte 0x21 
     .byte 0x93
     .byte 0xE7
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x84
     .byte 0xE5
-    .byte 5
+    .byte  5
     .byte 0x30 
     .byte 0xDC
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0x30 
     .byte 0x83
     .byte 0xE2
-    .byte 5
+    .byte  5
     .byte 0x30 
     .byte 0xCC
     .byte 0xE5
     .byte 0x3A 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
-    .byte 1
+    .byte  1
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x8C
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0xE0
     .byte 0x84
     .byte 0xE5
     .byte 0x36 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x9C
     .byte 0xE5
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0x53 
     .byte 0xE3
     .byte 0x20
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
     .byte 0x99
     .byte 0x34 
@@ -22064,7 +22064,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x38 
     .byte 0x83
     .byte 0xE2
-    .byte 2
+    .byte  2
     .byte 0x51 
     .byte 0xA0
     .byte 0xE3
@@ -22072,59 +22072,59 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x27 
     .byte 0xE
     .byte 0xE0
-    .byte 3
-    .byte 0
+    .byte  3
+    .byte  0
     .byte 0x52 
     .byte 0xE1
     .byte 0x16
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
-    .byte 8
+    .byte  8
     .byte 0x30 
     .byte 0xCC
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0x96
     .byte 0xE5
-    .byte 8
-    .byte 0
+    .byte  8
+    .byte  0
     .byte 0xD1
     .byte 0xE5
     .byte 0x28 
     .byte 0x20
     .byte 0x91
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0xE1
     .byte 0x82
     .byte 0xE7
-    .byte 8
+    .byte  8
     .byte 0x30 
     .byte 0xD1
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0x30 
     .byte 0x83
     .byte 0xE2
-    .byte 8
+    .byte  8
     .byte 0x30 
     .byte 0xC1
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x96
     .byte 0xE5
-    .byte 9
+    .byte  9
     .byte 0xE0
     .byte 0xC2
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x96
     .byte 0xE5
@@ -22132,75 +22132,75 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x24 
     .byte 0xA0
     .byte 0xE1
-    .byte 7
+    .byte  7
     .byte 0x20
     .byte 0xC3
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0x96
     .byte 0xE5
-    .byte 7
+    .byte  7
     .byte 0x20
     .byte 0xD1
     .byte 0xE5
-    .byte 8
+    .byte  8
     .byte 0x30 
     .byte 0xD1
     .byte 0xE5
-    .byte 3
-    .byte 0
+    .byte  3
+    .byte  0
     .byte 0x52 
     .byte 0xE1
     .byte 0x15
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x3A 
-    .byte 2
+    .byte  2
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x81
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x50 
     .byte 0x84
     .byte 0xE5
     .byte 0x16
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
     .byte 0xC3
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0xEB
     .byte 0x82
-    .byte 0
+    .byte  0
     .byte 0xA0
     .byte 0xE3
     .byte 0x7D 
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0xEB
     .byte 0x5D 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x9C
     .byte 0xE5
-    .byte 2
-    .byte 0
+    .byte  2
+    .byte  0
     .byte 0x53 
     .byte 0xE3
     .byte 0xF
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
-    .byte 8
+    .byte  8
     .byte 0x10
     .byte 0xDC
     .byte 0xE5
@@ -22208,91 +22208,91 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x20
     .byte 0x9C
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0xE1
     .byte 0x82
     .byte 0xE7
-    .byte 8
+    .byte  8
     .byte 0x30 
     .byte 0xDC
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0x30 
     .byte 0x83
     .byte 0xE2
-    .byte 8
+    .byte  8
     .byte 0x30 
     .byte 0xCC
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0x96
     .byte 0xE5
-    .byte 7
+    .byte  7
     .byte 0x20
     .byte 0xD1
     .byte 0xE5
-    .byte 8
+    .byte  8
     .byte 0x30 
     .byte 0xD1
     .byte 0xE5
-    .byte 3
-    .byte 0
+    .byte  3
+    .byte  0
     .byte 0x52 
     .byte 0xE1
-    .byte 2
-    .byte 0
-    .byte 0
+    .byte  2
+    .byte  0
+    .byte  0
     .byte 0x2A 
-    .byte 3
+    .byte  3
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x81
     .byte 0xE5
-    .byte 1
-    .byte 0
-    .byte 0
+    .byte  1
+    .byte  0
+    .byte  0
     .byte 0xEA
-    .byte 2
+    .byte  2
     .byte 0x31 
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x84
     .byte 0xE5
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0xA0
     .byte 0xE3
     .byte 0x4D 
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0xEB
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xA0
     .byte 0xE1
-    .byte 1
-    .byte 8
+    .byte  1
+    .byte  8
     .byte 0x50 
     .byte 0xE3
     .byte 0x45 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA
     .byte 0x4A 
     .byte 0x4F 
     .byte 0xA0
     .byte 0xE3
-    .byte 1
+    .byte  1
     .byte 0x43 
     .byte 0x84
     .byte 0xE2
-    .byte 5
+    .byte  5
     .byte 0x5A 
     .byte 0xA0
     .byte 0xE3
@@ -22304,87 +22304,87 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0xC4
     .byte 0xE1
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA0
     .byte 0xE3
     .byte 0x43 
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0xEB
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xA0
     .byte 0xE1
-    .byte 1
-    .byte 8
+    .byte  1
+    .byte  8
     .byte 0x50 
     .byte 0xE3
     .byte 0x3B 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA
     .byte 0x9D
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0xEB
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0x96
     .byte 0xE5
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x91
     .byte 0xE5
-    .byte 3
-    .byte 0
+    .byte  3
+    .byte  0
     .byte 0x50 
     .byte 0xE3
     .byte 0x32 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
-    .byte 9
+    .byte  9
     .byte 0x30 
     .byte 0xD1
     .byte 0xE5
     .byte 0xA5
-    .byte 0
+    .byte  0
     .byte 0x53 
     .byte 0xE3
     .byte 0xA7
-    .byte 0
+    .byte  0
     .byte 0x53 
     .byte 0x13
-    .byte 4
-    .byte 0
-    .byte 0
+    .byte  4
+    .byte  0
+    .byte  0
     .byte 0xA
     .byte 0xFF
     .byte 0x30 
-    .byte 3
+    .byte  3
     .byte 0xE2
     .byte 0xB5
-    .byte 0
+    .byte  0
     .byte 0x53 
     .byte 0xE3
-    .byte 1
-    .byte 0
-    .byte 0
+    .byte  1
+    .byte  0
+    .byte  0
     .byte 0xA
     .byte 0xB7
-    .byte 0
+    .byte  0
     .byte 0x53 
     .byte 0xE3
     .byte 0x11
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
     .byte 0x12
     .byte 0x1E
     .byte 0xA0
     .byte 0xE3
-    .byte 1
+    .byte  1
     .byte 0x13
     .byte 0x81
     .byte 0xE2
@@ -22392,15 +22392,15 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0xCF
     .byte 0xA0
     .byte 0xE3
-    .byte 1
+    .byte  1
     .byte 0xC3
     .byte 0x8C
     .byte 0xE2
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x96
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
@@ -22408,19 +22408,19 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0xC0
     .byte 0xE5
-    .byte 2
+    .byte  2
     .byte 0x21 
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x81
     .byte 0xE5
-    .byte 5
+    .byte  5
     .byte 0x3A 
     .byte 0x83
     .byte 0xE2
-    .byte 2
+    .byte  2
     .byte 0x20
     .byte 0x83
     .byte 0xE2
@@ -22436,31 +22436,31 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0xCC
     .byte 0xE1
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x96
     .byte 0xE5
-    .byte 5
+    .byte  5
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x82
     .byte 0xE5
     .byte 0xB
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
     .byte 0xEE
-    .byte 0
+    .byte  0
     .byte 0x53 
     .byte 0xE3
-    .byte 5
-    .byte 0
-    .byte 0
+    .byte  5
+    .byte  0
+    .byte  0
     .byte 0x1A
-    .byte 3
+    .byte  3
     .byte 0x30 
     .byte 0x85
     .byte 0xE2
@@ -22468,23 +22468,23 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0xC4
     .byte 0xE1
-    .byte 4
+    .byte  4
     .byte 0x20
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x81
     .byte 0xE5
     .byte 0xB2
-    .byte 1
+    .byte  1
     .byte 0xC1
     .byte 0xE1
-    .byte 3
-    .byte 0
-    .byte 0
+    .byte  3
+    .byte  0
+    .byte  0
     .byte 0xEA
-    .byte 3
+    .byte  3
     .byte 0x30 
     .byte 0x85
     .byte 0xE2
@@ -22492,19 +22492,19 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0xC4
     .byte 0xE1
-    .byte 4
+    .byte  4
     .byte 0x20
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x81
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x96
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
@@ -22512,39 +22512,39 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0xC2
     .byte 0xE5
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x96
     .byte 0xE5
     .byte 0x18
     .byte 0x20
     .byte 0x90
     .byte 0xE5
-    .byte 3
-    .byte 0
+    .byte  3
+    .byte  0
     .byte 0x52 
     .byte 0xE1
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0xA
     .byte 0xB2
     .byte 0x11
     .byte 0xD0
     .byte 0xE1
-    .byte 6
-    .byte 0
+    .byte  6
+    .byte  0
     .byte 0xD0
     .byte 0xE5
     .byte 0x9F
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0xEB
-    .byte 4
-    .byte 0
+    .byte  4
+    .byte  0
     .hword 0xEA00
     .word dword_2010CCC
-    .byte 3
+    .byte  3
     .byte 0x30 
     .byte 0x85
     .byte 0xE2
@@ -22577,14 +22577,14 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x9F
     .byte 0xE5
     .byte 0x64 
-    .byte 0
+    .byte  0
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x94
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x60 
     .byte 0xA0
     .byte 0xE3
@@ -22592,47 +22592,47 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x60 
     .byte 0xC3
     .byte 0xE5
-    .byte 4
+    .byte  4
     .byte 0xB0
     .byte 0x4C 
     .byte 0xE2
     .byte 0x13
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0xEB
-    .byte 6
-    .byte 0
+    .byte  6
+    .byte  0
     .byte 0xA0
     .byte 0xE1
     .byte 0xF7
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEB
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xA0
     .byte 0xE1
-    .byte 1
-    .byte 8
+    .byte  1
+    .byte  8
     .byte 0x50 
     .byte 0xE3
-    .byte 4
+    .byte  4
     .byte 0x50 
     .byte 0xA0
     .byte 0xE1
     .byte 0xF1
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA
     .byte 0x4A 
     .byte 0x3F 
     .byte 0xA0
     .byte 0xE3
-    .byte 1
+    .byte  1
     .byte 0x33 
     .byte 0x83
     .byte 0xE2
-    .byte 5
+    .byte  5
     .byte 0x2A 
     .byte 0xA0
     .byte 0xE3
@@ -22648,45 +22648,45 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0xEE
     .byte 0xA0
     .byte 0xE3
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x95
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0xE3
     .byte 0x8E
     .byte 0xE2
     .word 0xE59EC000
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x90
     .byte 0xE5
-    .byte 5
-    .byte 0
+    .byte  5
+    .byte  0
     .byte 0x53 
     .byte 0xE3
     .byte 0x30 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
     .byte 0x28 
     .byte 0x30 
     .byte 0x90
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0x40 
     .byte 0xA0
     .byte 0xE3
     .byte 0x99
-    .byte 4
+    .byte  4
     .byte 0xA0
     .byte 0xE3
     .word 0xE583C000
     .byte 0x66 
-    .byte 8
+    .byte  8
     .byte 0x80
     .byte 0xE2
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x95
     .byte 0xE5
@@ -22694,19 +22694,19 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x38 
     .byte 0xA0
     .byte 0xE1
-    .byte 5
+    .byte  5
     .byte 0x40 
     .byte 0xC2
     .byte 0xE5
     .byte 0x2C 
-    .byte 8
+    .byte  8
     .byte 0x53 
     .byte 0xE1
     .byte 0x79 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x95
     .byte 0xE5
@@ -22714,35 +22714,35 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x24 
     .byte 0xA0
     .byte 0xE1
-    .byte 4
+    .byte  4
     .byte 0x20
     .byte 0xC3
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x95
     .byte 0xE5
-    .byte 6
+    .byte  6
     .byte 0xC0
     .byte 0xC2
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0x95
     .byte 0xE5
-    .byte 4
+    .byte  4
     .byte 0x30 
     .byte 0xD1
     .byte 0xE5
-    .byte 6
-    .byte 0
+    .byte  6
+    .byte  0
     .byte 0x53 
     .byte 0xE1
     .byte 0x16
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
-    .byte 6
+    .byte  6
     .byte 0x20
     .byte 0xD1
     .byte 0xE5
@@ -22751,30 +22751,30 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x42 
     .byte 0xE2
     .byte 0x36 
-    .byte 0
+    .byte  0
     .byte 0x52 
     .byte 0xE3
-    .byte 2
-    .byte 0
+    .byte  2
+    .byte  0
     .byte 0x53 
     .byte 0x13
-    .byte 6
-    .byte 0
-    .byte 0
+    .byte  6
+    .byte  0
+    .byte  0
     .byte 0x8A
     .byte 0x80
     .byte 0x30 
     .byte 0x82
     .byte 0xE2
-    .byte 9
+    .byte  9
     .byte 0x30 
     .byte 0xC1
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x95
     .byte 0xE5
-    .byte 9
+    .byte  9
     .byte 0x30 
     .byte 0xD2
     .byte 0xE5
@@ -22782,13 +22782,13 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x10
     .byte 0x92
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x83
     .byte 0xE0
     .byte 0x2B 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
     .byte 0x24 
     .byte 0x20
@@ -22798,15 +22798,15 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x32 
     .byte 0x9F
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x82
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x95
     .byte 0xE5
-    .byte 6
+    .byte  6
     .byte 0x30 
     .byte 0xD2
     .byte 0xE5
@@ -22815,38 +22815,38 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x43 
     .byte 0xE2
     .byte 0x2D 
-    .byte 0
+    .byte  0
     .byte 0x53 
     .byte 0xE3
     .byte 0x31 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x8A
     .byte 0x24 
     .byte 0x30 
     .byte 0x92
     .byte 0xE5
-    .byte 4
+    .byte  4
     .byte 0x40 
     .byte 0x83
     .byte 0xE5
     .byte 0x31 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
-    .byte 2
+    .byte  2
     .byte 0x31 
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x8E
     .byte 0xE5
-    .byte 5
+    .byte  5
     .byte 0x40 
     .byte 0xC1
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x95
     .byte 0xE5
@@ -22854,27 +22854,27 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x31 
     .byte 0x83
     .byte 0xE2
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x82
     .byte 0xE5
     .byte 0x56 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x90
     .byte 0xE5
-    .byte 6
-    .byte 0
+    .byte  6
+    .byte  0
     .byte 0x53 
     .byte 0xE3
     .byte 0x3C 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
-    .byte 5
+    .byte  5
     .byte 0x10
     .byte 0xD0
     .byte 0xE5
@@ -22882,43 +22882,43 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x20
     .byte 0x90
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0xC1
     .byte 0x82
     .byte 0xE7
-    .byte 5
+    .byte  5
     .byte 0x30 
     .byte 0xD0
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0x30 
     .byte 0x83
     .byte 0xE2
-    .byte 5
+    .byte  5
     .byte 0x30 
     .byte 0xC0
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0x95
     .byte 0xE5
-    .byte 4
+    .byte  4
     .byte 0x20
     .byte 0xD1
     .byte 0xE5
-    .byte 5
+    .byte  5
     .byte 0x30 
     .byte 0xD1
     .byte 0xE5
-    .byte 3
-    .byte 0
+    .byte  3
+    .byte  0
     .byte 0x52 
     .byte 0xE1
     .byte 0x2E 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x2A 
-    .byte 6
+    .byte  6
     .byte 0x20
     .byte 0xD1
     .byte 0xE5
@@ -22927,30 +22927,30 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x42 
     .byte 0xE2
     .byte 0x36 
-    .byte 0
+    .byte  0
     .byte 0x52 
     .byte 0xE3
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0x53 
     .byte 0x13
     .byte 0xA
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x8A
     .byte 0x80
     .byte 0x30 
     .byte 0x82
     .byte 0xE2
-    .byte 9
+    .byte  9
     .byte 0x30 
     .byte 0xC1
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x95
     .byte 0xE5
-    .byte 9
+    .byte  9
     .byte 0x30 
     .byte 0xD2
     .byte 0xE5
@@ -22966,21 +22966,21 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x38 
     .byte 0x83
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x81
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x95
     .byte 0xE5
-    .byte 7
+    .byte  7
     .byte 0x60 
     .byte 0xC2
     .byte 0xE5
     .byte 0x12
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
     .byte 0x24 
     .byte 0x20
@@ -22990,15 +22990,15 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x31 
     .byte 0x9F
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x82
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x95
     .byte 0xE5
-    .byte 6
+    .byte  6
     .byte 0x30 
     .byte 0xD2
     .byte 0xE5
@@ -23007,50 +23007,50 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x43 
     .byte 0xE2
     .byte 0x2D 
-    .byte 0
+    .byte  0
     .byte 0x53 
     .byte 0xE3
     .byte 0x24 
     .byte 0x20
     .byte 0x92
     .byte 0x95
-    .byte 1
+    .byte  1
     .byte 0x30 
     .byte 0xA0
     .byte 0x93
-    .byte 1
-    .byte 0
-    .byte 0
+    .byte  1
+    .byte  0
+    .byte  0
     .byte 0x9A
     .byte 0x24 
     .byte 0x20
     .byte 0x92
     .byte 0xE5
-    .byte 2
+    .byte  2
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
-    .byte 4
+    .byte  4
     .byte 0x30 
     .byte 0x82
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x95
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
-    .byte 7
+    .byte  7
     .byte 0x30 
     .byte 0xC2
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0x95
     .byte 0xE5
-    .byte 2
+    .byte  2
     .byte 0x30 
     .byte 0x83
     .byte 0xE2
@@ -23058,8 +23058,8 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x31 
     .byte 0xC1
     .byte 0xE1
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x95
     .byte 0xE5
     .byte 0x24 
@@ -23070,99 +23070,99 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x3E 
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0x92
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0x33 
     .byte 0x83
     .byte 0xE2
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0x83
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0x20
     .byte 0xA0
     .byte 0xE3
-    .byte 8
+    .byte  8
     .byte 0x20
     .byte 0xC0
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0x95
     .byte 0xE5
-    .byte 7
+    .byte  7
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x81
     .byte 0xE5
     .byte 0x19
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
-    .byte 2
+    .byte  2
     .byte 0x31 
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x8E
     .byte 0xE5
     .byte 0x16
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x90
     .byte 0xE5
-    .byte 7
-    .byte 0
+    .byte  7
+    .byte  0
     .byte 0x53 
     .byte 0xE3
     .byte 0x13
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
-    .byte 2
-    .byte 1
+    .byte  2
+    .byte  1
     .byte 0x5C 
     .byte 0xE3
     .byte 0xD
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
-    .byte 7
+    .byte  7
     .byte 0x20
     .byte 0xD0
     .byte 0xE5
-    .byte 8
+    .byte  8
     .byte 0x30 
     .byte 0xD0
     .byte 0xE5
-    .byte 3
-    .byte 0
+    .byte  3
+    .byte  0
     .byte 0x52 
     .byte 0xE1
-    .byte 8
+    .byte  8
     .byte 0x30 
     .byte 0xA0
     .byte 0x33 
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x80
     .byte 0x35 
     .byte 0xB
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x3A 
-    .byte 8
+    .byte  8
     .byte 0x10
     .byte 0xD0
     .byte 0xE5
@@ -23170,99 +23170,99 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0x90
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0x21 
     .byte 0x93
     .byte 0xE7
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x8E
     .byte 0xE5
-    .byte 8
+    .byte  8
     .byte 0x30 
     .byte 0xD0
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0x30 
     .byte 0x83
     .byte 0xE2
-    .byte 8
+    .byte  8
     .byte 0x30 
     .byte 0xC0
     .byte 0xE5
-    .byte 3
-    .byte 0
-    .byte 0
+    .byte  3
+    .byte  0
+    .byte  0
     .byte 0xEA
     .byte 0xC0
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEB
     .byte 0x64 
-    .byte 0
+    .byte  0
     .byte 0xA0
     .byte 0xE3
     .byte 0x7A 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEB
     .byte 0x5D 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0xA0
     .byte 0xE3
     .byte 0x5D 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEB
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xA0
     .byte 0xE1
-    .byte 1
-    .byte 8
+    .byte  1
+    .byte  8
     .byte 0x50 
     .byte 0xE3
     .byte 0x58 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA
-    .byte 5
+    .byte  5
     .byte 0x60 
     .byte 0xA0
     .byte 0xE1
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x96
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x93
     .byte 0xE5
-    .byte 8
-    .byte 0
+    .byte  8
+    .byte  0
     .byte 0x52 
     .byte 0xE3
     .byte 0x27 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
     .byte 0x4A 
     .byte 0x4F 
     .byte 0xA0
     .byte 0xE3
-    .byte 1
+    .byte  1
     .byte 0x43 
     .byte 0x84
     .byte 0xE2
-    .byte 5
+    .byte  5
     .byte 0x3A 
     .byte 0xA0
     .byte 0xE3
-    .byte 2
+    .byte  2
     .byte 0x30 
     .byte 0x83
     .byte 0xE2
@@ -23271,30 +23271,30 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0xC4
     .byte 0xE1
     .byte 0xAD
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEB
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x96
     .byte 0xE5
     .byte 0xB2
     .byte 0x31 
     .byte 0xD0
     .byte 0xE1
-    .byte 3
-    .byte 0
+    .byte  3
+    .byte  0
     .byte 0x53 
     .byte 0xE3
-    .byte 8
-    .byte 0
-    .byte 0
+    .byte  8
+    .byte  0
+    .byte  0
     .byte 0x1A
     .byte 0xBC
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEB
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x96
     .byte 0xE5
@@ -23302,47 +23302,47 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x10
     .byte 0x93
     .byte 0xE5
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x51 
     .byte 0xE3
     .byte 0x44 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA
     .byte 0x7B 
     .byte 0xF
     .byte 0xA0
     .byte 0xE3
-    .byte 2
-    .byte 0
+    .byte  2
+    .byte  0
     .byte 0x80
     .byte 0xE2
     .byte 0xD9
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEB
     .byte 0x40 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
     .byte 0x12
     .byte 0x3E 
     .byte 0xA0
     .byte 0xE3
-    .byte 1
+    .byte  1
     .byte 0x33 
     .byte 0x83
     .byte 0xE2
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0x83
     .byte 0xE5
-    .byte 5
+    .byte  5
     .byte 0x2A 
     .byte 0xA0
     .byte 0xE3
@@ -23350,7 +23350,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x10
     .byte 0xC4
     .byte 0xE1
-    .byte 3
+    .byte  3
     .byte 0x20
     .byte 0x82
     .byte 0xE2
@@ -23358,7 +23358,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x20
     .byte 0xC4
     .byte 0xE1
-    .byte 1
+    .byte  1
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
@@ -23366,59 +23366,59 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0xC0
     .byte 0xE5
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x95
     .byte 0xE5
     .byte 0x1C
     .byte 0x20
     .byte 0x90
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0x80
     .byte 0xE5
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0x52 
     .byte 0xE1
     .byte 0x31 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA
-    .byte 4
+    .byte  4
     .byte 0x30 
     .byte 0xD0
     .byte 0xE5
-    .byte 6
-    .byte 0
+    .byte  6
+    .byte  0
     .byte 0xD0
     .byte 0xE5
-    .byte 2
+    .byte  2
     .byte 0x10
     .byte 0xA0
     .byte 0xE1
-    .byte 3
-    .byte 4
+    .byte  3
+    .byte  4
     .byte 0x80
     .byte 0xE1
     .byte 0xC4
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEB
     .byte 0x2B 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
     .byte 0x82
     .byte 0x3F 
     .byte 0xA0
     .byte 0xE3
-    .byte 1
+    .byte  1
     .byte 0x33 
     .byte 0x83
     .byte 0xE2
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0xA0
     .byte 0xE3
@@ -23426,7 +23426,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x20
     .byte 0xC3
     .byte 0xE1
-    .byte 1
+    .byte  1
     .byte 0x1C
     .byte 0xA0
     .byte 0xE3
@@ -23439,30 +23439,30 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0xD2
     .byte 0xE1
     .byte 0x80
-    .byte 0
+    .byte  0
     .byte 0x13
     .byte 0xE3
     .byte 0x17
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA
     .byte 0xB0
     .byte 0x30 
     .byte 0xD2
     .byte 0xE1
-    .byte 3
-    .byte 0
+    .byte  3
+    .byte  0
     .byte 0x13
     .byte 0xE3
     .byte 0xB
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x1A
     .byte 0xFF
     .byte 0x2C 
     .byte 0xA0
     .byte 0xE3
-    .byte 1
+    .byte  1
     .byte 0x13
     .byte 0x81
     .byte 0xE2
@@ -23474,25 +23474,25 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x20
     .byte 0x82
     .byte 0xE2
-    .byte 2
-    .byte 0
+    .byte  2
+    .byte  0
     .byte 0x53 
     .byte 0xE1
     .byte 0xE
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x9A
     .byte 0xB0
     .byte 0x30 
     .byte 0xD1
     .byte 0xE1
-    .byte 2
-    .byte 0
+    .byte  2
+    .byte  0
     .byte 0x53 
     .byte 0xE1
     .word 0x8AFFFFFC
     .byte 0xA
-    .byte 0
+    .byte  0
     .hword 0xEA00
     .word dword_2010CCC
     .word 0x996601EE
@@ -23500,7 +23500,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x2C 
     .byte 0xA0
     .byte 0xE3
-    .byte 1
+    .byte  1
     .byte 0x13
     .byte 0x81
     .byte 0xE2
@@ -23512,20 +23512,20 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x20
     .byte 0x82
     .byte 0xE2
-    .byte 2
-    .byte 0
+    .byte  2
+    .byte  0
     .byte 0x53 
     .byte 0xE1
-    .byte 2
-    .byte 0
-    .byte 0
+    .byte  2
+    .byte  0
+    .byte  0
     .byte 0x9A
     .byte 0xB0
     .byte 0x30 
     .byte 0xD1
     .byte 0xE1
-    .byte 2
-    .byte 0
+    .byte  2
+    .byte  0
     .byte 0x53 
     .byte 0xE1
     .byte 0xFC, 0xFF
@@ -23535,7 +23535,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x1F
     .byte 0xA0
     .byte 0xE3
-    .byte 1
+    .byte  1
     .byte 0x13
     .byte 0x81
     .byte 0xE2
@@ -23543,15 +23543,15 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0xF
     .byte 0xA0
     .byte 0xE3
-    .byte 1
-    .byte 3
+    .byte  1
+    .byte  3
     .byte 0x80
     .byte 0xE2
-    .byte 5
+    .byte  5
     .byte 0x3A 
     .byte 0xA0
     .byte 0xE3
-    .byte 2
+    .byte  2
     .byte 0x20
     .byte 0x83
     .byte 0xE2
@@ -23567,7 +23567,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0xC1
     .byte 0xE1
-    .byte 1
+    .byte  1
     .byte 0x20
     .byte 0xA0
     .byte 0xE3
@@ -23585,7 +23585,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0xC0
     .byte 0xA0
     .byte 0xE1
-    .byte 0
+    .byte  0
     .byte 0xD8
     .byte 0x2D 
     .byte 0xE9
@@ -23593,19 +23593,19 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x1F
     .byte 0xA0
     .byte 0xE3
-    .byte 1
+    .byte  1
     .byte 0x13
     .byte 0x81
     .byte 0xE2
-    .byte 0
-    .byte 8
+    .byte  0
+    .byte  8
     .byte 0xA0
     .byte 0xE1
     .byte 0x48 
     .byte 0x20
     .byte 0x9F
     .byte 0xE5
-    .byte 4
+    .byte  4
     .byte 0xB0
     .byte 0x4C 
     .byte 0xE2
@@ -23619,43 +23619,43 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0xDC
     .byte 0xE5
     .byte 0xFF
-    .byte 0
-    .byte 3
+    .byte  0
+    .byte  3
     .byte 0xE2
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0x50 
     .byte 0xE3
-    .byte 6
-    .byte 0
-    .byte 0
+    .byte  6
+    .byte  0
+    .byte  0
     .byte 0xA
     .byte 0xB0
     .byte 0x30 
     .byte 0xD1
     .byte 0xE1
-    .byte 4
+    .byte  4
     .byte 0x30 
-    .byte 3
+    .byte  3
     .byte 0xE2
     .byte 0xE
-    .byte 0
+    .byte  0
     .byte 0x53 
     .byte 0xE1
     .word 0x1AFFFFF7
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x68 
     .hword 0xE91B
     .word 0xE12FFF1E
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x92
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
@@ -23663,7 +23663,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0xC2
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x68 
     .hword 0xE91B
     .word 0xE12FFF1E
@@ -23680,15 +23680,15 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x1F
     .byte 0xA0
     .byte 0xE3
-    .byte 1
+    .byte  1
     .byte 0x13
     .byte 0x81
     .byte 0xE2
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
-    .byte 4
+    .byte  4
     .byte 0xB0
     .byte 0x4C 
     .byte 0xE2
@@ -23698,18 +23698,18 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0xE5
     .byte 0xFF
     .byte 0xE0
-    .byte 0
+    .byte  0
     .byte 0xE2
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x9C
     .byte 0xE5
     .byte 0x50 
-    .byte 0
+    .byte  0
     .byte 0x5E 
     .byte 0xE3
     .byte 0xA
-    .byte 0
+    .byte  0
     .byte 0xD2
     .byte 0xE5
     .byte 0xC
@@ -23724,15 +23724,15 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0xC1
     .byte 0xE1
-    .byte 0
-    .byte 1
+    .byte  0
+    .byte  1
     .byte 0xA0
     .byte 0xE1
-    .byte 1
+    .byte  1
     .byte 0x3C 
     .byte 0x83
     .byte 0xE2
-    .byte 1
+    .byte  1
     .byte 0x13
     .byte 0x83
     .byte 0xE2
@@ -23740,48 +23740,48 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x33 
     .byte 0x83
     .byte 0xE2
-    .byte 3
+    .byte  3
     .byte 0x50 
     .byte 0x80
     .byte 0xE0
     .byte 0xD
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA
-    .byte 2
-    .byte 0
+    .byte  2
+    .byte  0
     .hword 0xCA00
     .byte 0x32 
-    .byte 0
+    .byte  0
     .byte 0x5E 
     .byte 0xE3
-    .byte 5
-    .byte 0
-    .byte 0
+    .byte  5
+    .byte  0
+    .byte  0
     .byte 0xA
     .byte 0x1C
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
     .byte 0x64 
-    .byte 0
+    .byte  0
     .byte 0x52 
     .byte 0xE3
     .byte 0xD
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA
     .byte 0x82
-    .byte 0
+    .byte  0
     .byte 0x52 
     .byte 0xE3
     .byte 0x12
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA
     .byte 0x17
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
     .byte 0xCD
     .byte 0x3F 
@@ -23791,17 +23791,17 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0x80
     .byte 0xE1
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x94
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
     .byte 0x11
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
     .byte 0xAE
     .byte 0x34 
@@ -23815,23 +23815,23 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0x80
     .byte 0xE1
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x94
     .byte 0xE5
-    .byte 2
+    .byte  2
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
     .byte 0xB
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
     .byte 0x66 
     .byte 0x3E 
     .byte 0xE0
     .byte 0xE3
-    .byte 9
+    .byte  9
     .byte 0x30 
     .byte 0x43 
     .byte 0xE2
@@ -23839,23 +23839,23 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0x80
     .byte 0xE1
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x94
     .byte 0xE5
-    .byte 3
+    .byte  3
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
-    .byte 5
-    .byte 0
+    .byte  5
+    .byte  0
     .hword 0xEA00
     .word dword_2010CCC
     .byte 0x85
     .byte 0x3E 
     .byte 0xE0
     .byte 0xE3
-    .byte 2
+    .byte  2
     .byte 0x30 
     .byte 0x43 
     .byte 0xE2
@@ -23863,11 +23863,11 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0x80
     .byte 0xE1
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x94
     .byte 0xE5
-    .byte 4
+    .byte  4
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
@@ -23875,7 +23875,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0x82
     .byte 0xE5
-    .byte 2
+    .byte  2
     .byte 0xCC
     .byte 0xA0
     .byte 0xE3
@@ -23895,16 +23895,16 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x1F
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x94
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0x13
     .byte 0x81
     .byte 0xE2
     .byte 0xA
-    .byte 0
+    .byte  0
     .byte 0xD2
     .byte 0xE5
     .byte 0xBB
@@ -23919,7 +23919,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0xCC
     .byte 0xE1
-    .byte 1
+    .byte  1
     .byte 0x20
     .byte 0xA0
     .byte 0xE3
@@ -23937,11 +23937,11 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0xC0
     .byte 0xA0
     .byte 0xE1
-    .byte 0
+    .byte  0
     .byte 0xD8
     .byte 0x2D 
     .byte 0xE9
-    .byte 1
+    .byte  1
     .byte 0x1C
     .byte 0xA0
     .byte 0xE3
@@ -23949,15 +23949,15 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0xE0
     .byte 0x9F
     .byte 0xE5
-    .byte 1
-    .byte 3
+    .byte  1
+    .byte  3
     .byte 0x81
     .byte 0xE2
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x9E
     .byte 0xE5
-    .byte 4
+    .byte  4
     .byte 0xB0
     .byte 0x4C 
     .byte 0xE2
@@ -23972,7 +23972,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0xC0
     .byte 0x82
     .byte 0xE5
-    .byte 3
+    .byte  3
     .byte 0x31 
     .byte 0xA0
     .byte 0xE1
@@ -23980,7 +23980,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0xC0
     .byte 0x83
     .byte 0xE1
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x9E
     .byte 0xE5
@@ -23992,7 +23992,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x13
     .byte 0x81
     .byte 0xE2
-    .byte 3
+    .byte  3
     .byte 0x31 
     .byte 0xA0
     .byte 0xE1
@@ -24000,7 +24000,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0xC0
     .byte 0x83
     .byte 0xE1
-    .byte 0
+    .byte  0
     .byte 0x68 
     .hword 0xE91B
     .word 0xE12FFF1E
@@ -24009,27 +24009,27 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0xC0
     .byte 0xA0
     .byte 0xE1
-    .byte 0
+    .byte  0
     .byte 0xD8
     .byte 0x2D 
     .byte 0xE9
     .byte 0x78 
-    .byte 0
+    .byte  0
     .byte 0x9F
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x90
     .byte 0xE5
-    .byte 5
+    .byte  5
     .byte 0x30 
     .byte 0xA0
     .byte 0xE3
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x82
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0xA0
     .byte 0xE3
@@ -24037,55 +24037,55 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x10
     .byte 0xC2
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x90
     .byte 0xE5
-    .byte 4
+    .byte  4
     .byte 0x10
     .byte 0xC3
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x90
     .byte 0xE5
-    .byte 5
+    .byte  5
     .byte 0x10
     .byte 0xC2
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x90
     .byte 0xE5
-    .byte 6
+    .byte  6
     .byte 0x10
     .byte 0xC3
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x90
     .byte 0xE5
-    .byte 7
+    .byte  7
     .byte 0x10
     .byte 0xC2
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x90
     .byte 0xE5
-    .byte 8
+    .byte  8
     .byte 0x10
     .byte 0xC3
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x90
     .byte 0xE5
-    .byte 9
+    .byte  9
     .byte 0x10
     .byte 0xC2
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x30 
     .byte 0x90
     .byte 0xE5
@@ -24093,7 +24093,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x10
     .byte 0x83
     .byte 0xE5
-    .byte 4
+    .byte  4
     .byte 0xB0
     .byte 0x4C 
     .byte 0xE2
@@ -24108,7 +24108,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x0, 0xC0
     .byte 0x90
     .byte 0xE5
-    .byte 1
+    .byte  1
     .byte 0x23 
     .byte 0x82
     .byte 0xE2
@@ -24116,7 +24116,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x11
     .byte 0xCC
     .byte 0xE1
-    .byte 5
+    .byte  5
     .byte 0x3A 
     .byte 0xA0
     .byte 0xE3
@@ -24132,7 +24132,7 @@ off_814CFB4:    .word dword_2010CCC
     .byte 0x30 
     .byte 0xC2
     .byte 0xE1
-    .byte 0
+    .byte  0
     .byte 0x68 
     .hword 0xE91B
     .word 0xE12FFF1E
@@ -24240,27 +24240,27 @@ SWI_Sqrt:
     svc 8
     bx lr
 word_814D8CC:    .hword 0xB510
-    .byte 4
+    .byte  4
     .byte 0x1C
     .byte 0x53 
     .byte 0x1E
-    .byte 0
+    .byte  0
     .byte 0x2A 
-    .byte 8
+    .byte  8
     .byte 0xD0
-    .byte 1
+    .byte  1
     .byte 0x22 
     .byte 0x52 
     .byte 0x42 
     .byte 0x20
     .byte 0x78 
-    .byte 8
+    .byte  8
     .byte 0x70 
-    .byte 1
+    .byte  1
     .byte 0x34 
-    .byte 1
+    .byte  1
     .byte 0x31 
-    .byte 1
+    .byte  1
     .byte 0x3B 
     .byte 0x93
     .byte 0x42 
@@ -24268,9 +24268,9 @@ word_814D8CC:    .hword 0xB510
     .byte 0xD1
     .byte 0x10
     .byte 0xBC
-    .byte 1
+    .byte  1
     .byte 0xBC
-    .byte 0
+    .byte  0
     .byte 0x47 
     .byte 0, 0
 .endfunc // SWI_Sqrt
@@ -24364,17 +24364,17 @@ loc_814D984:
 off_814D98C:    .word GamePakWaitstateControl
 dword_814D990:    .word 0xFFFC
 word_814D994:    .hword 0xB530
-    .byte 5
+    .byte  5
     .byte 0x1C
     .byte 0xB
     .byte 0x1C
     .byte 0x54 
     .byte 0x1E
-    .byte 0
+    .byte  0
     .byte 0x2A 
     .byte 0xC
     .byte 0xD0
-    .byte 1
+    .byte  1
     .byte 0x22 
     .byte 0x52 
     .byte 0x42 
@@ -24382,31 +24382,31 @@ word_814D994:    .hword 0xB530
     .byte 0x78 
     .byte 0x28 
     .byte 0x78 
-    .byte 1
+    .byte  1
     .byte 0x35 
-    .byte 1
+    .byte  1
     .byte 0x33 
     .byte 0x81
     .byte 0x42 
-    .byte 1
+    .byte  1
     .byte 0xD0
     .byte 0x58 
     .byte 0x1E
-    .byte 3
+    .byte  3
     .byte 0xE0
-    .byte 1
+    .byte  1
     .byte 0x3C 
     .byte 0x94
     .byte 0x42 
     .byte 0xF4
     .byte 0xD1
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x30 
     .byte 0xBC
-    .byte 2
+    .byte  2
     .byte 0xBC
-    .byte 8
+    .byte  8
     .byte 0x47 
     .balign 4, 0x00
 .endfunc // sub_814D954
@@ -24638,8 +24638,8 @@ loc_814DB26:
 .thumb_func
 nullsub_1:
     mov pc, lr
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
 .endfunc // nullsub_1
 
 .func
@@ -24831,140 +24831,140 @@ off_814DC80:    .word 0x350
 off_814DC84:    .word 0x630
     .byte 0x43 
 unk_814DC89:    .byte 0x79 
-    .byte 0
+    .byte  0
     .byte 0x2B 
     .byte 0x2C 
     .byte 0xD0
-    .byte 1
+    .byte  1
     .byte 0xA1
-    .byte 8
+    .byte  8
     .byte 0x47 
     .balign 4, 0x00
-    .byte 2
-    .byte 0
+    .byte  2
+    .byte  0
     .byte 0x54 
     .byte 0xE3
     .byte 0x35 
     .byte 0x7E 
     .byte 0x80
-    .byte 2
-    .byte 8
+    .byte  2
+    .byte  8
     .byte 0x70 
     .byte 0x85
     .byte 0x10
-    .byte 8
+    .byte  8
     .byte 0x40 
     .byte 0xA0
     .byte 0xE1
     .byte 0xD6
-    .byte 0
+    .byte  0
     .byte 0x95
     .byte 0xE1
     .byte 0xD0
     .byte 0x10
     .byte 0xD5
     .byte 0xE1
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0x80
     .byte 0xE0
     .byte 0xD6
     .byte 0x10
     .byte 0x97
     .byte 0xE1
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0x80
     .byte 0xE0
     .byte 0xD1
     .byte 0x10
     .byte 0xD7
     .byte 0xE0
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0x80
     .byte 0xE0
     .byte 0x90
-    .byte 3
-    .byte 1
+    .byte  3
+    .byte  1
     .byte 0xE0
     .byte 0xC1
-    .byte 4
+    .byte  4
     .byte 0xA0
     .byte 0xE1
     .byte 0x80
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0xE3
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0x80
     .byte 0x12
-    .byte 6
-    .byte 0
+    .byte  6
+    .byte  0
     .byte 0xC5
     .byte 0xE7
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0xC5
     .byte 0xE4
-    .byte 1
+    .byte  1
     .byte 0x40 
     .byte 0x54 
     .byte 0xE2
     .word 0xCAFFFFF0
     .byte 0x2F 
-    .byte 0
+    .byte  0
     .byte 0x8F
     .byte 0xE2
     .word 0xE12FFF10
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x41 
     .byte 0x46 
     .byte 0x76 
     .byte 0x19
     .byte 0xC9
-    .byte 8
-    .byte 1
+    .byte  8
+    .byte  1
     .byte 0xD3
-    .byte 1
+    .byte  1
     .byte 0xC5
-    .byte 1
+    .byte  1
     .byte 0xC6
     .byte 0x49 
-    .byte 8
-    .byte 3
+    .byte  8
+    .byte  3
     .byte 0xD3
-    .byte 1
+    .byte  1
     .byte 0xC5
-    .byte 1
+    .byte  1
     .byte 0xC6
-    .byte 1
+    .byte  1
     .byte 0xC5
-    .byte 1
+    .byte  1
     .byte 0xC6
-    .byte 1
+    .byte  1
     .byte 0xC5
-    .byte 1
+    .byte  1
     .byte 0xC6
-    .byte 1
+    .byte  1
     .byte 0xC5
-    .byte 1
+    .byte  1
     .byte 0xC6
-    .byte 1
+    .byte  1
     .byte 0xC5
-    .byte 1
+    .byte  1
     .byte 0xC6
-    .byte 1
+    .byte  1
     .byte 0xC5
-    .byte 1
+    .byte  1
     .byte 0xC6
-    .byte 1
+    .byte  1
     .byte 0x39 
     .byte 0xF5
     .byte 0xDC
-    .byte 6
+    .byte  6
     .byte 0x9C
     .byte 0xA0
     .byte 0x69 
@@ -24974,29 +24974,29 @@ unk_814DC89:    .byte 0x79
     .byte 0x79 
     .byte 0x50 
     .byte 0x34 
-    .byte 1
+    .byte  1
     .byte 0x90
     .byte 0x63 
     .byte 0x6A 
-    .byte 5
+    .byte  5
     .byte 0x98
-    .byte 0
+    .byte  0
     .byte 0x28 
     .byte 0xA
     .byte 0xD0
-    .byte 4
+    .byte  4
     .byte 0x49 
-    .byte 9
+    .byte  9
     .byte 0x78 
     .byte 0xA0
     .byte 0x29 
-    .byte 0
+    .byte  0
     .byte 0xD2
     .byte 0xE4
     .byte 0x31 
     .byte 0x81
     .byte 0x42 
-    .byte 3
+    .byte  3
     .byte 0xD3
     .byte 0x6B 
     .byte 0xE1
@@ -25008,7 +25008,7 @@ unk_814DC89:    .byte 0x79
     .byte 0x20
     .byte 0x30 
     .byte 0x42 
-    .byte 0
+    .byte  0
     .byte 0xD1
     .byte 0x5E 
     .byte 0xE1
@@ -25024,7 +25024,7 @@ unk_814DC89:    .byte 0x79
     .byte 0x42 
     .byte 0x19
     .byte 0xD1
-    .byte 3
+    .byte  3
     .byte 0x26 
     .byte 0x26 
     .byte 0x70 
@@ -25038,7 +25038,7 @@ unk_814DC89:    .byte 0x79
     .byte 0x68 
     .byte 0xA0
     .byte 0x61 
-    .byte 0
+    .byte  0
     .byte 0x25 
     .byte 0x65 
     .byte 0x72 
@@ -25054,7 +25054,7 @@ unk_814DC89:    .byte 0x79
     .byte 0xD0
     .byte 0x10
     .byte 0x20
-    .byte 6
+    .byte  6
     .byte 0x43 
     .byte 0x26 
     .byte 0x70 
@@ -25062,21 +25062,21 @@ unk_814DC89:    .byte 0x79
     .byte 0xE0
     .byte 0x65 
     .byte 0x7A 
-    .byte 4
+    .byte  4
     .byte 0x20
     .byte 0x30 
     .byte 0x42 
-    .byte 6
+    .byte  6
     .byte 0xD0
     .byte 0x60 
     .byte 0x7B 
-    .byte 1
+    .byte  1
     .byte 0x38 
     .byte 0x60 
     .byte 0x73 
     .byte 0x2A 
     .byte 0xD8
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0x20
     .byte 0x70 
@@ -25102,23 +25102,23 @@ unk_814DC89:    .byte 0x79
     .byte 0xD8
     .byte 0x25 
     .byte 0x7B 
-    .byte 0
+    .byte  0
     .byte 0x2D 
     .byte 0xF0
     .byte 0xD0
-    .byte 4
+    .byte  4
     .byte 0x20
-    .byte 6
+    .byte  6
     .byte 0x43 
     .byte 0x26 
     .byte 0x70 
     .byte 0x17
     .byte 0xE0
-    .byte 3
+    .byte  3
     .byte 0x22 
     .byte 0x32 
     .byte 0x40 
-    .byte 2
+    .byte  2
     .byte 0x2A 
     .byte 0xA
     .byte 0xD1
@@ -25134,19 +25134,19 @@ unk_814DC89:    .byte 0x79
     .byte 0x42 
     .byte 0xD
     .byte 0xD8
-    .byte 5
+    .byte  5
     .byte 0x1C
     .byte 0xEC
     .byte 0xD0
-    .byte 1
+    .byte  1
     .byte 0x3E 
     .byte 0x26 
     .byte 0x70 
-    .byte 8
+    .byte  8
     .byte 0xE0
-    .byte 3
+    .byte  3
     .byte 0x2A 
-    .byte 6
+    .byte  6
     .byte 0xD1
     .byte 0x20
     .byte 0x79 
@@ -25154,31 +25154,31 @@ unk_814DC89:    .byte 0x79
     .byte 0x18
     .byte 0xFF
     .byte 0x2D 
-    .byte 2
+    .byte  2
     .byte 0xD3
     .byte 0xFF
     .byte 0x25 
-    .byte 1
+    .byte  1
     .byte 0x3E 
     .byte 0x26 
     .byte 0x70 
     .byte 0x65 
     .byte 0x72 
-    .byte 6
+    .byte  6
     .byte 0x98
     .byte 0xC0
     .byte 0x79 
-    .byte 1
+    .byte  1
     .byte 0x30 
     .byte 0x68 
     .byte 0x43 
-    .byte 5
-    .byte 9
+    .byte  5
+    .byte  9
     .byte 0xA0
     .byte 0x78 
     .byte 0x68 
     .byte 0x43 
-    .byte 0
+    .byte  0
     .byte 0xA
     .byte 0xA0
     .byte 0x72 
@@ -25186,7 +25186,7 @@ unk_814DC89:    .byte 0x79
     .byte 0x78 
     .byte 0x68 
     .byte 0x43 
-    .byte 0
+    .byte  0
     .byte 0xA
     .byte 0xE0
     .byte 0x72 
@@ -25194,9 +25194,9 @@ unk_814DC89:    .byte 0x79
     .byte 0x20
     .byte 0x30 
     .byte 0x40 
-    .byte 4
+    .byte  4
     .byte 0x90
-    .byte 7
+    .byte  7
     .byte 0xD0
     .byte 0x18
     .byte 0x1C
@@ -25206,26 +25206,26 @@ unk_814DC89:    .byte 0x79
     .byte 0x68 
     .byte 0x40 
     .byte 0x18
-    .byte 3
+    .byte  3
     .byte 0x90
     .byte 0xD8
     .byte 0x68 
     .byte 0x40 
     .byte 0x1A
-    .byte 4
+    .byte  4
     .byte 0x90
-    .byte 2
+    .byte  2
     .byte 0x9D
     .byte 0xA2
     .byte 0x69 
     .byte 0xA3
     .byte 0x6A 
-    .byte 1
+    .byte  1
     .byte 0xA0
-    .byte 0
+    .byte  0
     .byte 0x47 
     .byte 0, 0
-    .byte 0
+    .byte  0
     .byte 0x80
     .byte 0x8D
     .byte 0xE5
@@ -25245,62 +25245,62 @@ unk_814DC89:    .byte 0x79
     .byte 0xB8
     .byte 0xA0
     .byte 0xE1
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0xD4
     .byte 0xE5
-    .byte 8
-    .byte 0
+    .byte  8
+    .byte  0
     .byte 0x10
     .byte 0xE3
     .byte 0x47 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA
-    .byte 4
-    .byte 0
+    .byte  4
+    .byte  0
     .byte 0x52 
     .byte 0xE3
     .byte 0x19
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xDA
-    .byte 8
+    .byte  8
     .byte 0x20
     .byte 0x52 
     .byte 0xE0
-    .byte 0
+    .byte  0
     .byte 0xE0
     .byte 0xA0
     .byte 0xC3
-    .byte 5
-    .byte 0
+    .byte  5
+    .byte  0
     .hword 0xCA00
-    .byte 8
+    .byte  8
     .byte 0xE0
     .byte 0xA0
     .byte 0xE1
-    .byte 8
+    .byte  8
     .byte 0x20
     .byte 0x82
     .byte 0xE0
-    .byte 4
+    .byte  4
     .byte 0x80
     .byte 0x42 
     .byte 0xE2
-    .byte 8
+    .byte  8
     .byte 0xE0
     .byte 0x4E 
     .byte 0xE0
-    .byte 3
+    .byte  3
     .byte 0x20
     .byte 0x12
     .byte 0xE2
-    .byte 4
+    .byte  4
     .byte 0x20
     .byte 0xA0
-    .byte 3
-    .byte 0
+    .byte  3
+    .byte  0
     .byte 0x60 
     .byte 0x95
     .byte 0xE5
@@ -25309,12 +25309,12 @@ unk_814DC89:    .byte 0x79
     .byte 0x95
     .byte 0xE5
     .byte 0xD1
-    .byte 0
+    .byte  0
     .byte 0xD3
     .byte 0xE0
     .byte 0x9A
-    .byte 0
-    .byte 1
+    .byte  0
+    .byte  1
     .byte 0xE0
     .byte 0xFF
     .byte 0x18
@@ -25325,8 +25325,8 @@ unk_814DC89:    .byte 0x79
     .byte 0x81
     .byte 0xE0
     .byte 0x9B
-    .byte 0
-    .byte 1
+    .byte  0
+    .byte  1
     .byte 0xE0
     .byte 0xFF
     .byte 0x18
@@ -25336,7 +25336,7 @@ unk_814DC89:    .byte 0x79
     .byte 0x74 
     .byte 0x81
     .byte 0xE0
-    .byte 1
+    .byte  1
     .byte 0x51 
     .byte 0x95
     .byte 0xE2
@@ -25345,11 +25345,11 @@ unk_814DC89:    .byte 0x79
     .byte 0x76 
     .byte 0x85
     .byte 0xE5
-    .byte 4
+    .byte  4
     .byte 0x60 
     .byte 0x85
     .byte 0xE4
-    .byte 4
+    .byte  4
     .byte 0x80
     .byte 0x58 
     .byte 0xE2
@@ -25359,10 +25359,10 @@ unk_814DC89:    .byte 0x79
     .byte 0x98
     .byte 0xE0
     .byte 0x50 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA
-    .byte 0
+    .byte  0
     .byte 0x60 
     .byte 0x95
     .byte 0xE5
@@ -25371,12 +25371,12 @@ unk_814DC89:    .byte 0x79
     .byte 0x95
     .byte 0xE5
     .byte 0xD1
-    .byte 0
+    .byte  0
     .byte 0xD3
     .byte 0xE0
     .byte 0x9A
-    .byte 0
-    .byte 1
+    .byte  0
+    .byte  1
     .byte 0xE0
     .byte 0xFF
     .byte 0x18
@@ -25387,8 +25387,8 @@ unk_814DC89:    .byte 0x79
     .byte 0x81
     .byte 0xE0
     .byte 0x9B
-    .byte 0
-    .byte 1
+    .byte  0
+    .byte  1
     .byte 0xE0
     .byte 0xFF
     .byte 0x18
@@ -25398,15 +25398,15 @@ unk_814DC89:    .byte 0x79
     .byte 0x74 
     .byte 0x81
     .byte 0xE0
-    .byte 1
+    .byte  1
     .byte 0x20
     .byte 0x52 
     .byte 0xE2
     .byte 0x12
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xA
-    .byte 1
+    .byte  1
     .byte 0x51 
     .byte 0x95
     .byte 0xE2
@@ -25415,11 +25415,11 @@ unk_814DC89:    .byte 0x79
     .byte 0x76 
     .byte 0x85
     .byte 0xE5
-    .byte 4
+    .byte  4
     .byte 0x60 
     .byte 0x85
     .byte 0xE4
-    .byte 4
+    .byte  4
     .byte 0x80
     .byte 0x58 
     .byte 0xE2
@@ -25427,37 +25427,37 @@ unk_814DC89:    .byte 0x79
     .byte 0xFF
     .byte 0xCA
     .byte 0x3E 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
     .byte 0x18
-    .byte 0
+    .byte  0
     .byte 0x9D
     .byte 0xE5
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x50 
     .byte 0xE3
-    .byte 5
-    .byte 0
-    .byte 0
+    .byte  5
+    .byte  0
+    .byte  0
     .byte 0xA
     .byte 0x14
     .byte 0x30 
     .byte 0x9D
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x90
     .byte 0x62 
     .byte 0xE2
-    .byte 2
+    .byte  2
     .byte 0x20
     .byte 0x90
     .byte 0xE0
     .byte 0x2B 
-    .byte 0
+    .byte  0
     .hword 0xCA00
-    .byte 0
+    .byte  0
     .byte 0x90
     .byte 0x49 
     .byte 0xE0
@@ -25467,20 +25467,20 @@ unk_814DC89:    .byte 0x79
     .byte 0x10
     .byte 0xBD
     .byte 0xE8
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0xA0
     .byte 0xE3
-    .byte 3
-    .byte 0
-    .byte 0
+    .byte  3
+    .byte  0
+    .byte  0
     .byte 0xEA
     .byte 0x10
     .byte 0x20
     .byte 0x9D
     .byte 0xE5
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0x52 
     .byte 0xE3
     .byte 0xC
@@ -25488,7 +25488,7 @@ unk_814DC89:    .byte 0x79
     .byte 0x9D
     .byte 0x15
     .word 0x1AFFFFE8
-    .byte 0
+    .byte  0
     .byte 0x20
     .byte 0xC4
     .byte 0xE5
@@ -25496,16 +25496,16 @@ unk_814DC89:    .byte 0x79
     .byte 0xF
     .byte 0xA0
     .byte 0xE1
-    .byte 3
+    .byte  3
     .byte 0x51 
     .byte 0xC5
     .byte 0xE3
-    .byte 3
-    .byte 0
+    .byte  3
+    .byte  0
     .byte 0x60 
     .byte 0xE2
     .byte 0x80
-    .byte 1
+    .byte  1
     .byte 0xA0
     .byte 0xE1
     .byte 0x76 
@@ -25520,13 +25520,13 @@ unk_814DC89:    .byte 0x79
     .byte 0x76 
     .byte 0x85
     .byte 0xE5
-    .byte 4
+    .byte  4
     .byte 0x60 
     .byte 0x85
     .byte 0xE4
     .byte 0x26 
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
     .byte 0xEA
     .byte 0x10
     .byte 0x10
@@ -25540,22 +25540,22 @@ unk_814DC89:    .byte 0x79
     .byte 0x94
     .byte 0xE5
     .byte 0x9C
-    .byte 1
-    .byte 4
+    .byte  1
+    .byte  4
     .byte 0xE0
     .byte 0xD0
-    .byte 0
+    .byte  0
     .byte 0xD3
     .byte 0xE1
     .byte 0xD1
     .byte 0x10
     .byte 0xF3
     .byte 0xE1
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0x41 
     .byte 0xE0
-    .byte 0
+    .byte  0
     .byte 0x60 
     .byte 0x95
     .byte 0xE5
@@ -25564,15 +25564,15 @@ unk_814DC89:    .byte 0x79
     .byte 0x95
     .byte 0xE5
     .byte 0x9E
-    .byte 1
-    .byte 9
+    .byte  1
+    .byte  9
     .byte 0xE0
     .byte 0xC9
     .byte 0x9B
     .byte 0x80
     .byte 0xE0
     .byte 0x9A
-    .byte 9
+    .byte  9
     .byte 0xC
     .byte 0xE0
     .byte 0xFF
@@ -25584,7 +25584,7 @@ unk_814DC89:    .byte 0x79
     .byte 0x8C
     .byte 0xE0
     .byte 0x9B
-    .byte 9
+    .byte  9
     .byte 0xC
     .byte 0xE0
     .byte 0xFF
@@ -25595,7 +25595,7 @@ unk_814DC89:    .byte 0x79
     .byte 0x74 
     .byte 0x8C
     .byte 0xE0
-    .byte 4
+    .byte  4
     .byte 0xE0
     .byte 0x8E
     .byte 0xE0
@@ -25603,39 +25603,39 @@ unk_814DC89:    .byte 0x79
     .byte 0x9B
     .byte 0xB0
     .byte 0xE1
-    .byte 7
-    .byte 0
-    .byte 0
+    .byte  7
+    .byte  0
+    .byte  0
     .byte 0xA
     .byte 0xFE
     .byte 0xE5
     .hword 0xE3CE
-    .byte 9
+    .byte  9
     .byte 0x20
     .byte 0x52 
     .byte 0xE0
     .word 0xDAFFFFCE
-    .byte 1
+    .byte  1
     .byte 0x90
     .byte 0x59 
     .byte 0xE2
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0x80
-    .byte 0
+    .byte  0
     .byte 0xD9
-    .byte 0
+    .byte  0
     .byte 0xB3
     .byte 0x11
     .byte 0xD1
     .byte 0x10
     .byte 0xF3
     .byte 0xE1
-    .byte 0
+    .byte  0
     .byte 0x10
     .byte 0x41 
     .byte 0xE0
-    .byte 1
+    .byte  1
     .byte 0x51 
     .byte 0x95
     .byte 0xE2
@@ -25644,18 +25644,18 @@ unk_814DC89:    .byte 0x79
     .byte 0x76 
     .byte 0x85
     .byte 0xE5
-    .byte 4
+    .byte  4
     .byte 0x60 
     .byte 0x85
     .byte 0xE4
-    .byte 4
+    .byte  4
     .byte 0x80
     .byte 0x58 
     .byte 0xE2
     .byte 0xE4, 0xFF
     .byte 0xFF
     .byte 0xCA
-    .byte 1
+    .byte  1
     .byte 0x30 
     .byte 0x43 
     .byte 0xE2
@@ -25674,32 +25674,32 @@ unk_814DC89:    .byte 0x79
     .byte 0x30 
     .byte 0x84
     .byte 0xE5
-    .byte 0
+    .byte  0
     .byte 0x80
     .byte 0x9D
     .byte 0xE5
-    .byte 1
-    .byte 0
+    .byte  1
+    .byte  0
     .byte 0x8F
     .byte 0xE2
     .word 0xE12FFF10
-    .byte 1
+    .byte  1
     .byte 0x98
-    .byte 1
+    .byte  1
     .byte 0x38 
-    .byte 1
+    .byte  1
     .byte 0xDD
     .byte 0x40 
     .byte 0x34 
     .byte 0x86
     .byte 0xE6
-    .byte 6
+    .byte  6
     .byte 0x98
-    .byte 4
+    .byte  4
     .byte 0x4B 
-    .byte 3
+    .byte  3
     .byte 0x60 
-    .byte 7
+    .byte  7
     .byte 0xB0
     .byte 0xFF
     .byte 0xBC
@@ -25711,7 +25711,7 @@ unk_814DC89:    .byte 0x79
     .byte 0x46 
     .byte 0x9B
     .byte 0x46 
-    .byte 8
+    .byte  8
     .byte 0xBC
 .endfunc // sub_814DC04
 
@@ -25811,8 +25811,8 @@ loc_814E0A2:
     sub r1, #1
     bgt loc_814E0A2
     bx r12
-    .byte 0
-    .byte 0
+    .byte  0
+    .byte  0
 .endfunc // sub_814E09C
 
 .func
@@ -26110,7 +26110,7 @@ sub_814E248:
     ldr r0, off_814E25C // =Channel1Sweepregister_NR10_ 
     add r0, r0, r3
     bl loc_814E0D2
-    .byte 3
+    .byte  3
     .byte 0x70 
     .byte 0x60 
     .byte 0x47 

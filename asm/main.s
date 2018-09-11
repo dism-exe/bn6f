@@ -197,15 +197,15 @@ main_static_8000454:
     beq loc_80004A0
     push {r1}
     bl start_800023C // () -> void
-    .byte 0
+    .byte  0
     .byte 0xF0
-    .byte 6
+    .byte  6
     .byte 0xF8
     .byte 0x3F 
     .byte 0xF0
     .byte 0x16
     .byte 0xF8
-    .byte 2
+    .byte  2
     .byte 0xBC
     .byte 0xA
     .byte 0x24 
