@@ -81,7 +81,7 @@
 .global sub_8004D48
 .global sub_8004DF0
 .global sub_8005524
-.global sub_8005BC8
+.global gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
 .global sub_8005C04
 .global subsystem_launchBBS
 .global subsystem_launchReqBBS
@@ -93,7 +93,7 @@
 .global sub_8005F40
 .global sub_8005F6C
 .global sub_8005F84
-.global engine_setScreeneffect
+.global engine_setScreeneffect // (int a1, int a2) -> void
 .global loc_8006274
 .global sub_80062C8
 .global sub_80062EC
@@ -105,12 +105,12 @@
 .global sub_80068E0
 .global sub_80068EC
 .global sub_8006910
-.global CpuSet_toolKit
+.global CpuSet_toolKit // () -> void
 .global sub_8006C22
 .global sub_8006C6C
 .global sub_8006DEC
 .global sub_8006DF6
-.global save_8006E0E
+.global save_memSetFlags_8006E0E // (u8 *mem, int size) -> void
 .global save_8006E26
 .global load_8006E3C
 .global sub_8006E50
@@ -145,11 +145,11 @@
 .global battle_getFlags
 .global sub_800A704
 .global sub_800A70C
-.global getBattleSettingsFromList0
-.global getBattleSettingsFromList1
-.global zf_checkSameSubsystem_800A732
+.global getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
+.global getBattleSettingsFromList1 // (int battleSettingsIdx) -> BattleSettings*
+.global isSameSubsystem_800A732 // () -> zf
 .global sub_800A772
-.global sub_800A7D0
+.global sub_800A7D0 // () -> (zf, int)
 .global sub_800A7E2
 .global sub_800A832
 .global sub_800A856
@@ -200,27 +200,27 @@
 // .global sound_bgmusic_play // (int a1) -> void
 // .global sub_800065A
 // .global sound_8000672
-// .global sub_8000784
+// .global musicGameState_8000784 // () -> void
 // .global sub_80008B4
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global sub_800098C
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000D12
 // .global sub_8000D84
 // .global sub_8000FAC
-// .global sub_800107A
+// .global updatePlayerGameState_800107A // () -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001172
 // .global sub_800139A
 // .global sub_80013A2
-// .global sub_80014EC
-// .global sub_800151C
+// .global copyWords_80014EC // (void *src, void *dest, int size) -> void
+// .global change_20013F0_800151C // () -> int
 // .global sub_800154C // () -> void
 // .global sub_8001562
 // .global sub_8001708
@@ -285,16 +285,16 @@
 // .global sub_8012DFC
 // .global sub_80133EC
 // .global sub_8013422
-// .global sub_8013438
+// .global initStruct_8013438 // (void *struc) -> void
 // .global sub_80134C8
 // .global sub_8013554
 // .global sub_80135E8
-// .global sub_8013682
+// .global sub_8013682 // (int idx) -> void*
 // .global sub_80136CC
 // .global sub_8013754
 // .global sub_8013774
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
-// .global sub_80137B6
+// .global sub_80137B6 // (int a1, int a2) -> u8
 // .global sub_80137E6
 // .global sub_8013854
 // .global sub_8013884
@@ -345,10 +345,10 @@
 // .global sub_802015E
 
 .include "asm02.inc"
-// .global refIndex_8021DA8 // (int idx) -> void*
+// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
 // .global sub_8021AB4
 // .global sub_8021C68
-// .global computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
+// .global chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
 // .global sub_8021D08
 // .global sub_8021D36
 
@@ -374,7 +374,7 @@
 // .global get_802D246 // () -> int
 // .global sub_802D254 // () -> int
 // .global sub_802D26A
-// .global sub_802D2B2
+// .global battleSettings_802D2B2 // () -> BattleSettings*
 // .global sub_802D638
 // .global sub_802D6A0
 // .global sub_802D6C4
@@ -391,12 +391,12 @@
 // .global sub_802F0C4
 // .global sub_802F0D8
 // .global sub_802F0F4
-// .global sub_802F110
-// .global sub_802F114 // (int a1) -> void
-// .global sub_802F12C // (int a1, int a2) -> void
-// .global sub_802F164 // (int a1, int a2) -> zf
-// .global zf_802F168
-// .global sub_802F17E // (int a1, int a2) -> void
+// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 // .global sub_802F2C8
 // .global sub_802FDB0
 // .global loc_802FDB4
@@ -467,7 +467,7 @@
 .include "asm28_0.inc"
 // .global loc_809D19C
 // .global sub_809E04C
-// .global sub_809E098
+// .global setFlag3_2e2_2001C88
 // .global sub_809E2C2
 // .global sub_809E2F4
 // .global sub_809E2FC
@@ -535,9 +535,9 @@
 // .global sub_80AA88C
 // .global sub_80AAB88
 
-.include "asm30.inc"
+.include "BattleSettings.inc"
 // .global battleSettingsList0
-// .global battleSettingsList1
+// .global BattleSettingsList1
 
 .include "asm31.inc"
 // .global sub_80B81EC

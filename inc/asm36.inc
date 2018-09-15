@@ -54,7 +54,7 @@
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 // .global loc_8000AC8
 // .global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
@@ -102,27 +102,27 @@
 // .global sub_8005524
 // .global sub_8005F40
 // .global sub_8005F6C
-// .global engine_setScreeneffect
+// .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global sub_80062C8
 // .global engine_isScreeneffectAnimating // () -> zf
 
 .include "asm00_2.inc"
 // .global sub_8010C76
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
-// .global sub_80137B6
+// .global sub_80137B6 // (int a1, int a2) -> u8
 // .global sub_80137E6
 // .global sub_80137FE
 // .global sub_8013846
 // .global sub_8013864
 // .global sub_8013874
-// .global sub_8013B4E
-// .global navicust_8014018 // (int a1) -> int
+// .global init_8013B4E // (bool a1, int a2) -> void
+// .global navicust_8014018 // (int idx_8014034) -> bool
 // .global sub_801401E
 
 .include "asm02.inc"
-// .global refIndex_8021DA8 // (int idx) -> void*
+// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
 // .global sub_8021AB4
-// .global sub_8021AE0
+// .global split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021C68
 // .global sub_8021CA8
@@ -130,11 +130,11 @@
 .include "asm03_0.inc"
 // .global sub_802F0D8
 // .global sub_802F0F4
-// .global sub_802F110
-// .global sub_802F12C // (int a1, int a2) -> void
-// .global sub_802F164 // (int a1, int a2) -> zf
-// .global zf_802F168
-// .global sub_802F1A8 // (int a3, int a2) -> void
+// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 // .global sub_802FE28
 // .global sub_802FF4C
 // .global loc_802FFF4
@@ -179,7 +179,7 @@
 
 .include "chatbox.inc"
 // .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_803FD9C
+// .global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_8040818
 // .global chatbox_8045F1C

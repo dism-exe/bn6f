@@ -49,13 +49,13 @@
 .global sub_802D254 // () -> int
 .global sub_802D266
 .global sub_802D26A
-.global sub_802D27C
-.global sub_802D280
-.global sub_802D28C
-.global sub_802D2AC
-.global sub_802D2B2
+.global getBattleSettings_200AF60 // () -> BattleSettings*
+.global copyBattleSettingsTo_200AF60 // (BattleSettings *src) -> void
+.global battleSettings_setFlags_unkSettings // (int mask) -> void
+.global battleSettings_setBackground // (u8 background) -> void
+.global battleSettings_802D2B2 // () -> BattleSettings*
 .global sub_802D310
-.global loc_802D322
+.global sub_802D322
 .global loc_802D4C6
 .global sub_802D638
 .global sub_802D644
@@ -94,18 +94,18 @@
 .global sub_802F0C4
 .global sub_802F0D8
 .global sub_802F0F4
-.global sub_802F110
-.global sub_802F114 // (int a1) -> void
-.global sub_802F12C // (int a1, int a2) -> void
-.global loc_802F130
-.global sub_802F148
-.global sub_802F14C // (int a1) -> void
-.global sub_802F164 // (int a1, int a2) -> zf
-.global zf_802F168
-.global sub_802F17E // (int a1, int a2) -> void
-.global loc_802F182
-.global sub_802F1A8 // (int a3, int a2) -> void
-.global loc_802F1AC
+.global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+.global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+.global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+.global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+.global toggleFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+.global toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+.global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+.global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+.global setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+.global setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+.global clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+.global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 .global sub_802F1FC // (int a3, int a2) ->
 .global loc_802F200
 .global sub_802F238
@@ -319,14 +319,14 @@
 // .global sub_80005F2
 // .global sub_8000642
 // .global sub_800068A
-// .global sub_8000784
+// .global musicGameState_8000784 // () -> void
 // .global sub_80008B4
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 // .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global sub_800096C
@@ -351,7 +351,7 @@
 // .global sub_8001158 // () -> void
 // .global sub_8001172
 // .global sub_8001514
-// .global sub_800151C
+// .global change_20013F0_800151C // () -> int
 // .global sub_8001532
 // .global sub_800154C // () -> void
 // .global sub_80015FC
@@ -406,7 +406,7 @@
 // .global sub_8005C04
 // .global sub_8005F40
 // .global sub_8005F6C
-// .global engine_setScreeneffect
+// .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global loc_8006274
 // .global sub_80062EC
 // .global engine_isScreeneffectAnimating // () -> zf
@@ -418,7 +418,7 @@
 // .global sub_8006C22
 // .global sub_8006C6C
 // .global sub_8006DF6
-// .global save_8006E0E
+// .global save_memSetFlags_8006E0E // (u8 *mem, int size) -> void
 // .global save_8006E26
 // .global load_8006E3C
 // .global sub_8006E50
@@ -441,9 +441,9 @@
 // .global battle_getFlags
 // .global sub_800A704
 // .global sub_800A70C
-// .global getBattleSettingsFromList0
-// .global getBattleSettingsFromList1
-// .global sub_800A7D0
+// .global getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
+// .global getBattleSettingsFromList1 // (int battleSettingsIdx) -> BattleSettings*
+// .global sub_800A7D0 // () -> (zf, int)
 // .global sub_800A7E2
 // .global sub_800A832
 // .global sub_800A856
@@ -521,7 +521,7 @@
 // .global sub_80116AE
 // .global sub_8011714
 // .global sub_8012EA8
-// .global sub_8013682
+// .global sub_8013682 // (int idx) -> void*
 // .global sub_80136CC
 // .global sub_80136D8
 // .global sub_80136E4
@@ -532,13 +532,13 @@
 // .global sub_8013774
 // .global sub_8013790
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
-// .global sub_80137B6
+// .global sub_80137B6 // (int a1, int a2) -> u8
 // .global sub_80137E6
 // .global sub_80137FE
 // .global sub_8013816
 // .global sub_801382E
 // .global sub_801393A
-// .global loc_8013B64
+// .global init_8013B64 // (int idx, int a2) -> void
 // .global sub_8013D5E
 // .global sub_8013FD0
 // .global sub_80141AC
@@ -557,8 +557,8 @@
 // .global sub_801A04C
 // .global sub_801A074 // () -> void
 // .global sub_801A07C
-// .global object_clearFlag
-// .global object_getFlag
+// .global object_clearFlag // (int bitfield) -> void
+// .global object_getFlag // () -> int
 // .global sub_801A16C
 // .global sub_801A176
 // .global sub_801A264
@@ -594,15 +594,15 @@
 // .global sub_801EC44
 
 .include "asm02.inc"
-// .global refIndex_8021DA8 // (int idx) -> void*
-// .global dword_8021AEC
+// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global sub_8021AEE
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021BC0
 // .global sub_8021BD8
 // .global sub_8021D14
 
 .include "chatbox.inc"
-// .global chatbox_803FD9C
+// .global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript_803FE74 // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_8040818
@@ -727,7 +727,7 @@
 // .global sub_806FC08
 // .global sub_806FCF8
 // .global sub_806FD54
-// .global loc_806FF08
+// .global sub_806FF08
 // .global sub_806FFDA
 
 .include "asm14.inc"
@@ -797,7 +797,7 @@
 // .global unk_809CAD8
 // .global sub_809CF2C
 // .global sub_809E064
-// .global sub_809E0B0
+// .global updateFlags_809E0B0 // () -> void
 // .global loc_809E0FC
 // .global loc_809E114
 // .global sub_809E122
@@ -944,7 +944,7 @@
 .include "reqBBS.inc"
 // .global reqBBS_813E5DC
 // .global reqBBS_813F9A0
-// .global reqBBS_getTotalPointsIndex
+// .global reqBBS_getTotalPointsIndex // () -> u8
 
 .include "asm37_1.inc"
 // .global sub_81421E0
@@ -1032,10 +1032,7 @@
 .equ unk_2009460, 0x2009460
 .equ unk_2009480, 0x2009480
 .equ byte_2009790, 0x2009790
-.equ word_2009940, 0x2009940
-.equ word_2009942, 0x2009942
-.equ word_2009944, 0x2009944
-.equ word_2009946, 0x2009946
+.equ unk_2009940, 0x2009940
 .equ sCamera, 0x2009980
 .equ sCamera, 0x2009980
 .equ sCamera, 0x2009980
@@ -1099,9 +1096,9 @@
 .equ byte_200AD05, 0x200AD05
 .equ word_200AD06, 0x200AD06
 .equ sStartScr, 0x200AD10
-.equ unk_200AF60, 0x200AF60
-.equ byte_200AF64, 0x200AF64
-.equ dword_200AF68, 0x200AF68
+.equ BattleSettings_200AF60, 0x200AF60
+.equ BattleSettings_200AF60, 0x200AF60
+.equ BattleSettings_200AF60, 0x200AF60
 .equ byte_200AF80, 0x200AF80
 .equ byte_200AF81, 0x200AF81
 .equ byte_200AF82, 0x200AF82
@@ -1654,13 +1651,13 @@
 .equ dword_86F5834, 0x86F5834
 .equ dword_87225B4, 0x87225B4
 .equ dword_8722AF4, 0x8722AF4
-.equ dword_8723034, 0x8723034
+.equ unk_8723034, 0x8723034
 .equ dword_87257D4, 0x87257D4
 .equ dword_87257F4, 0x87257F4
 .equ dword_8725814, 0x8725814
 .equ dword_8725854, 0x8725854
 .equ dword_8725874, 0x8725874
-.equ dword_8725894, 0x8725894
+.equ unk_8725894, 0x8725894
 .equ unk_872CF94, 0x872CF94
 .equ dword_872F3F4, 0x872F3F4
 .equ dword_8731DF4, 0x8731DF4

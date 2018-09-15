@@ -35,7 +35,7 @@ main_gameRoutine:
     mov lr, pc
     bx r0
     bl sub_800154C // () -> void
-    bl zf_checkSameSubsystem_800A732
+    bl isSameSubsystem_800A732 // () -> zf
     beq loc_800032A
     bl subsystem_triggerTransition_800630A
 loc_800032A:
@@ -224,7 +224,7 @@ main_static_80004A4:
 loc_80004AA:
     push {r5,lr}
     push {r0}
-    bl CpuSet_toolKit
+    bl CpuSet_toolKit // () -> void
     bl sub_8006C22
     pop {r1}
     ldr r0, off_8000564 // =0x40 

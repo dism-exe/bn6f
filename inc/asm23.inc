@@ -17,14 +17,14 @@
 // .global sub_8004822
 // .global sub_80048B2
 // .global sub_8005D88
-// .global engine_setScreeneffect
+// .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
 
 .include "asm03_0.inc"
-// .global sub_802F110
-// .global sub_802F12C // (int a1, int a2) -> void
-// .global loc_802F130
-// .global sub_802F164 // (int a1, int a2) -> zf
+// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 // .global sub_802FE28
 // .global sub_8035408
 // .global sub_8036E44
@@ -48,7 +48,7 @@
 // .global sub_809E2B8
 
 .include "reqBBS.inc"
-// .global reqBBS_8140A0C
+// .global reqBBS_clearFlag_8140A0C
 
 .include "asm37_1.inc"
 // .global sub_814216E

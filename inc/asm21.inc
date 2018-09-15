@@ -23,7 +23,7 @@
 
 .include "asm03_0.inc"
 // .global sub_802D234
-// .global zf_802F168
+// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global sub_80304E8
 // .global sub_803537C
 // .global sub_8035424

@@ -254,7 +254,8 @@ off_8000704:    .word unk_2010690
 
 .func
 .thumb_func
-sub_8000784:
+// () -> void
+musicGameState_8000784:
     push {r7,lr}
     mov r1, r10
     push {r1}
@@ -263,12 +264,12 @@ sub_8000784:
     pop {r1}
     mov r10, r1
     mov r7, r10
-    ldr r7, [r7,#0x3c]
+    ldr r7, [r7,#0x3c] // Toolkit.gamestate
     mov r0, #0xff
-    strb r0, [r7,#0xf]
+    strb r0, [r7,#0xf] // GameState.bgMusicIndicator
     pop {r7,pc}
     .byte 0, 0
-.endfunc // sub_8000784
+.endfunc // musicGameState_8000784
 
     push {r1-r7,lr}
     mov r1, r10
@@ -514,10 +515,11 @@ dword_8000938:    .word 0x0
 
 .func
 .thumb_func
-// (u32 *src, u32 *dest, int wordCount) -> void
+// (u32 *src, u32 *dest, int size) -> void
 CpuSet_copyWords:
     push {r0-r3,lr}
     ldr r3, dword_800094C // =LCDControl 
+    // byteCount -> wordCount
     lsr r2, r2, #2
     orr r2, r3
     bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
@@ -870,7 +872,7 @@ bit1_set_8000B78:
     bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
     b continue_advance3Elements_8000B88
 bits5to0_set_8000B7E:
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     b continue_advance3Elements_8000B88
 default_8000B84:
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
@@ -1270,7 +1272,7 @@ sub_8000E3A:
     add r4, r1, #0
     push {r0,r1}
     push {r4}
-    bl sub_800151C
+    bl change_20013F0_800151C // () -> int
     lsr r4, r0, #0x1e
     mov r0, r10
     ldr r0, [r0,#0x24]
@@ -1279,7 +1281,7 @@ sub_8000E3A:
     and r0, r1
     add r4, r4, r0
 loc_8000E54:
-    bl sub_800151C
+    bl change_20013F0_800151C // () -> int
     sub r4, #1
     bge loc_8000E54
     pop {r4}
@@ -1373,9 +1375,11 @@ sub_8000EE4:
     push {r4-r7,lr}
     mov r4, #0
     mov r7, #0
+    // entryIdx
     mov r0, #0xe
+    // byteFlagIdx
     mov r1, #0
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_8000EFA
     add r4, #1
     mov r0, #0x80
@@ -1421,17 +1425,21 @@ loc_8000F3A:
     mov r0, #4
     orr r7, r0
 loc_8000F4A:
+    // entryIdx
     mov r0, #3
+    // byteFlagIdx
     mov r1, #0x70 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_8000F5A
     add r4, #1
     mov r0, #2
     orr r7, r0
 loc_8000F5A:
+    // entryIdx
     mov r0, #3
+    // byteFlagIdx
     mov r1, #0x40 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_8000F6C
     add r4, #1
     mov r0, #0x10
@@ -1460,12 +1468,14 @@ sub_8000F86:
     add r4, r0, #0
     bl sub_803F838
     bne locret_8000FAA
+    // flag 7 @ 0x2001C88[0xE<<5 + 0x0] (=2001E48)
     mov r0, #0xe
     mov r1, #0
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+    // flag 6 @ 0x2001C88[0x10<<5 + 0x0] (=2001E88)
     mov r0, #0x10
     mov r1, #1
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, r10
     ldr r0, [r0,#0x40]
     str r4, [r0,#0x18]
@@ -1479,10 +1489,11 @@ locret_8000FAA:
 sub_8000FAC:
     push {r4-r7,lr}
     mov r5, r10
-    ldr r5, [r5,#0x3c]
+    ldr r5, [r5,#0x3c] // Toolkit.gamestate
+    // flag 3 @ 0x2001C88[0x17<<5 + 0x1] (=2001F69)
     mov r0, #0x17
     mov r1, #0xc
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_8000FCE
     ldrb r0, [r5,#4]
     ldrb r1, [r5,#0xc]
@@ -1504,7 +1515,7 @@ loc_8000FCE:
 loc_8000FDC:
     mov r0, #0x17
     mov r1, #0xc
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {r4-r7,pc}
 .endfunc // sub_8000FAC
 
@@ -1516,7 +1527,7 @@ sub_8000FE6:
     add r4, r1, #0
 loc_8000FEC:
     add r0, r6, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     bne loc_8000FFA
     add r0, r6, #0
     bl reqBBS_813E5DC
@@ -1547,7 +1558,7 @@ sub_8001014:
     add r4, r1, #0
 loc_800101A:
     add r0, r6, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     bne loc_8001028
     add r0, r6, #0
     bl reqBBS_813F9A0
@@ -1601,20 +1612,21 @@ locret_8001078:
 
 .func
 .thumb_func
-sub_800107A:
+// () -> void
+updatePlayerGameState_800107A:
     mov r3, r10
-    ldr r3, [r3,#0x3c]
-    ldr r1, [r3,#0x18]
-    ldr r0, [r1,#0x1c]
-    str r0, [r3,#0x24]
-    ldr r0, [r1,#0x20]
-    str r0, [r3,#0x28]
+    ldr r3, [r3,#0x3c] // Toolkit.gamestate
+    ldr r1, [r3,#0x18] // GameState.player
+    ldr r0, [r1,#0x1c] // NPC.scriptArrayOffset
+    str r0, [r3,#0x24] // GameState.player_x
+    ldr r0, [r1,#0x20] // NPC.animationTimer
+    str r0, [r3,#0x28] // GameState.player_y
     ldr r0, [r1,#0x24]
     str r0, [r3,#0x2c]
     ldrb r0, [r1,#0x10]
     str r0, [r3,#0x30]
     mov pc, lr
-.endfunc // sub_800107A
+.endfunc // updatePlayerGameState_800107A
 
     push {r4-r7,lr}
     mov r5, r10
@@ -2243,31 +2255,34 @@ sub_80014D4:
 
 .func
 .thumb_func
-sub_80014EC:
+// (void *src, void *dest, int size) -> void
+copyWords_80014EC:
     push {r0-r7,lr}
     cmp r0, r1
-    blt loc_8001500
-loc_80014F2:
+    blt setPointersToLastElem_8001500
+copyWords_80014F2:
     ldr r3, [r0]
     str r3, [r1]
     add r0, #4
     add r1, #4
     sub r2, #4
-    bgt loc_80014F2
+    // while (a3_size > 0);
+    bgt copyWords_80014F2
     pop {r0-r7,pc}
-loc_8001500:
+setPointersToLastElem_8001500:
     sub r2, #4
     add r0, r0, r2
     add r1, r1, r2
-loc_8001506:
+reverseCopyWords_8001506:
     ldr r3, [r0]
     str r3, [r1]
     sub r0, #4
     sub r1, #4
     sub r2, #4
-    bge loc_8001506
+    // while (a3_size >= 0);
+    bge reverseCopyWords_8001506
     pop {r0-r7,pc}
-.endfunc // sub_80014EC
+.endfunc // copyWords_80014EC
 
 .func
 .thumb_func
@@ -2280,7 +2295,8 @@ sub_8001514:
 
 .func
 .thumb_func
-sub_800151C:
+// () -> int
+change_20013F0_800151C:
     push {r7,lr}
     ldr r7, off_800159C // =dword_20013F0 
     ldr r0, [r7]
@@ -2292,7 +2308,7 @@ sub_800151C:
     eor r0, r1
     str r0, [r7]
     pop {r7,pc}
-.endfunc // sub_800151C
+.endfunc // change_20013F0_800151C
 
 .func
 .thumb_func
@@ -2472,7 +2488,7 @@ render_800172C:
     add r0, #4
     ldr r1, off_800176C // =BG0Control 
     mov r2, #0x38 
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     // src
     ldr r0, [r7,#0x1c]
     // dest
@@ -4105,14 +4121,14 @@ sub_8002338:
     blt loc_8002348
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     b locret_8002352
 loc_8002348:
     lsl r0, r0, #1
     lsr r0, r0, #1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl loc_802F130 // (int a1, int a2) -> void
+    bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 locret_8002352:
     pop {pc}
 .endfunc // sub_8002338

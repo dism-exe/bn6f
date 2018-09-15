@@ -1563,10 +1563,10 @@ loc_806C4B0:
     push {r0,r1}
     mov r0, #0
     mov r1, #0x8e
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #0
     mov r1, #0x8f
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {r0,r1}
     mov r5, r10
     ldr r5, [r5,#0x3c]
@@ -1597,9 +1597,11 @@ sub_806C4F8:
 loc_806C504:
     ldr r0, off_806C598 // =dword_806C198+44 
     bl sub_8001B1C
+    // entryIdx
     mov r0, #0x16
+    // byteFlagIdx
     mov r1, #0xf1
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {pc}
 .endfunc // sub_806C4F8
 
@@ -1615,10 +1617,12 @@ sub_806C514:
 loc_806C520:
     mov r0, #0
     mov r1, #0x8e
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+    // entryIdx
     mov r0, #0
+    // byteFlagIdx
     mov r1, #0x8f
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {pc}
 .endfunc // sub_806C514
 
@@ -1639,10 +1643,12 @@ sub_806C532:
 loc_806C548:
     mov r0, #0
     mov r1, #0x8e
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+    // entryIdx
     mov r0, #0
+    // byteFlagIdx
     mov r1, #0x8f
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {pc}
 .endfunc // sub_806C532
 
@@ -1658,10 +1664,12 @@ sub_806C55A:
 loc_806C566:
     mov r0, #0
     mov r1, #0x8e
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+    // entryIdx
     mov r0, #0
+    // byteFlagIdx
     mov r1, #0x8f
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {pc}
 .endfunc // sub_806C55A
 
@@ -1677,10 +1685,12 @@ sub_806C578:
 loc_806C584:
     mov r0, #0
     mov r1, #0x8e
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+    // entryIdx
     mov r0, #0
+    // byteFlagIdx
     mov r1, #0x8f
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {pc}
     .balign 4, 0x00
 off_806C598:    .word dword_806C198+0x2C

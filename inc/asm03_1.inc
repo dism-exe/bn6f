@@ -55,7 +55,7 @@
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 // .global sub_800096C
 // .global CpuFastSet_80009AC
@@ -64,7 +64,7 @@
 // .global sub_8000C00
 // .global sub_8000C5C
 // .global getPETNaviSelect // () -> u8
-// .global sub_800151C
+// .global change_20013F0_800151C // () -> int
 // .global sub_8001532
 // .global sub_80015FC
 // .global sub_8001778
@@ -95,21 +95,21 @@
 // .global sub_8003AEA
 // .global sub_8005F40
 // .global sub_8005F84
-// .global engine_setScreeneffect
+// .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global sub_8006F1E
-// .global sub_800A7D0
+// .global sub_800A7D0 // () -> (zf, int)
 
 .include "asm02.inc"
-// .global refIndex_8021DA8 // (int idx) -> void*
-// .global dword_8021AEC
+// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global sub_8021AEE
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021BC0
 // .global sub_8021BD8
 
 .include "asm03_0.inc"
-// .global sub_802F114 // (int a1) -> void
-// .global zf_802F168
+// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global sub_802FE28
 // .global sub_802FF4C
 // .global sub_803037C

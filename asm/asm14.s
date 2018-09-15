@@ -383,7 +383,7 @@ sub_8072B70:
     b locret_8072BA0
 loc_8072B88:
     lsl r4, r4, #1
-    bl sub_800151C
+    bl change_20013F0_800151C // () -> int
     ldr r1, dword_8072BB4 // =0x1FF 
     and r0, r1
     ldr r1, off_8072BB8 // =0x258 

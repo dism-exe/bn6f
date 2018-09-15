@@ -113,7 +113,7 @@ sub_800EE26:
     push {r0,r1}
     // idx
     ldrh r0, [r6,#0x34]
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r0, [r0,#0xf]
     strb r0, [r7,#0x1d]
     ldrh r0, [r6,#0x34]
@@ -124,7 +124,7 @@ sub_800EE26:
     push {r1-r3}
     // idx
     ldrh r0, [r6,#0x34]
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r0, [r0,#9]
     pop {r1-r3}
     mov r4, #2
@@ -174,13 +174,13 @@ sub_800EE98:
 loc_800EEBA:
     // idx
     ldrh r0, [r6,#0x34]
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     add r4, r0, #0
-    ldrb r0, [r4,#0x16]
+    ldrb r0, [r4,#0x16] // ChipData.unk_16
     mov r1, #0x80
     tst r0, r1
     bne locret_800EEE2
-    ldrb r0, [r4,#7]
+    ldrb r0, [r4,#0x7] // ChipData.elemIdx
     add r0, r0, r0
     ldr r1, off_800EEF4 // =unk_800EEF8 
     ldrh r0, [r1,r0]
@@ -272,7 +272,7 @@ loc_800EF5C:
 loc_800EF6A:
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -297,7 +297,7 @@ loc_800EF8E:
 loc_800EF96:
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -320,7 +320,7 @@ loc_800EFB8:
 loc_800EFC0:
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -343,7 +343,7 @@ loc_800EFE2:
 loc_800EFEA:
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -366,7 +366,7 @@ loc_800F00C:
 loc_800F014:
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -385,7 +385,7 @@ loc_800F02E:
 loc_800F036:
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -409,7 +409,7 @@ loc_800F058:
     bgt loc_800F090
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -455,7 +455,7 @@ sub_800F09E:
     bne loc_800F0E0
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -479,7 +479,7 @@ loc_800F0E0:
     bne loc_800F106
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -499,7 +499,7 @@ loc_800F106:
     bne loc_800F12C
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -519,7 +519,7 @@ loc_800F12C:
     bne loc_800F14A
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -535,7 +535,7 @@ loc_800F14A:
     bne loc_800F170
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -555,7 +555,7 @@ loc_800F170:
     bne loc_800F196
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -575,7 +575,7 @@ loc_800F196:
     bne loc_800F1BC
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -1865,7 +1865,7 @@ unk_800F960:    .byte  0
 sub_800F964:
     push {r6,r7,lr}
     add r6, r0, #0
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0xc
     tst r0, r1
@@ -1900,7 +1900,7 @@ sub_800F998:
     ldr r3, off_800F9FC // =unk_800FA00 
     ldr r2, [r3,r2]
     str r2, [sp]
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0xc
     tst r0, r1
@@ -2014,7 +2014,7 @@ loc_800FA42:
 .thumb_func
 sub_800FA54:
     push {r6,r7,lr}
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0xc
     tst r0, r1
@@ -2039,7 +2039,7 @@ sub_800FA54:
     bne loc_800FA88
     b loc_800FA9C
 loc_800FA88:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0xf
     tst r0, r1
@@ -2169,7 +2169,7 @@ sub_800FB54:
     push {r4,r7,lr}
     ldr r7, [r5,#0x58]
     add r7, #0xa0
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_800FC28 // =0x1000 
     tst r0, r1
     bne loc_800FB70
@@ -2188,7 +2188,7 @@ loc_800FB74:
     beq loc_800FBEE
     add r0, r5, #0
     bl sub_800EDD0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r0, [r0,#6]
     ldr r1, [r5,#0x58]
     cmp r0, #0xa
@@ -2258,7 +2258,7 @@ loc_800FBEE:
 loc_800FC0C:
     // idx
     ldrh r0, [r7,#0x14]
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r0, [r0,#0xf]
     strb r0, [r7,#0x1d]
     b loc_800FC18
@@ -2290,7 +2290,7 @@ sub_800FC30:
     mov r1, #0x53 
     cmp r0, r1
     beq loc_800FC58
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r0, [r0,#9]
     mov r1, #1
     tst r0, r1
@@ -3147,7 +3147,7 @@ sub_801011A:
     push {r4,r7,lr}
     mov r7, #0x50 
     ldr r4, [r5,#0x54]
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #4
     tst r0, r1
     beq loc_8010152
@@ -3187,7 +3187,7 @@ sub_8010162:
     mov r0, #0x94
     bl sound_play // () -> void
 loc_801017E:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_801022C // =0x400000 
     tst r0, r1
     bne loc_8010190
@@ -3196,7 +3196,7 @@ loc_801017E:
     b locret_8010196
 loc_8010190:
     mov r0, #4
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
 locret_8010196:
     pop {r4,pc}
 .endfunc // sub_8010162
@@ -3241,7 +3241,7 @@ sub_80101C4:
     mov r0, #0
     strh r0, [r1,#0x26]
     mov r0, #4
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     pop {pc}
 .endfunc // sub_80101C4
 
@@ -3277,9 +3277,11 @@ sub_80101F8:
     add r4, r0, #0
     cmp r4, #0
     bne loc_8010216
+    // entryIdx
     mov r0, #1
+    // byteFlagIdx
     mov r1, #0x63 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_8010216
     bl sub_803F524
     beq loc_8010216
@@ -3494,7 +3496,7 @@ off_8010364:    .word dword_8020FE0
 .thumb_func
 sub_8010368:
     push {lr}
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_8010384 // =dword_8010388 
     mov r2, #0x10
     tst r0, r2
@@ -3983,7 +3985,7 @@ sub_80106C0:
     beq loc_8010738
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#7]
     cmp r1, #1
     beq loc_80106F6
@@ -4046,7 +4048,7 @@ sub_8010740:
     beq loc_80107B6
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#0x16]
     mov r2, #2
     tst r1, r2
@@ -4342,7 +4344,7 @@ sub_80109A4:
     ldr r2, dword_80109D8 // =0xFFFF 
     cmp r0, r2
     beq loc_80109D0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrh r0, [r0,#0x1a]
     mov r2, #0xfa
     lsl r2, r2, #2
@@ -4465,7 +4467,7 @@ locret_8010AE2:
 sub_8010AE4:
     push {r4,lr}
     add r4, r1, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrh r1, [r0,#0x1a]
     ldr r2, off_8010D28 // =0x3E9 
     sub r1, r1, r2
@@ -4691,7 +4693,7 @@ sub_8010C50:
     beq locret_8010C74
     // idx
     add r0, r4, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrh r0, [r0,#0x1a]
     ldr r1, dword_8010D40 // =0x3FF 
     sub r0, r0, r1
@@ -4705,7 +4707,7 @@ locret_8010C74:
 .thumb_func
 sub_8010C76:
     push {r4,lr}
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrh r1, [r0,#0x1a]
     ldr r2, off_8010D28 // =0x3E9 
     cmp r1, r2
@@ -4753,7 +4755,7 @@ dword_8010CB8:    .word 0x1000
 .thumb_func
 sub_8010CE0:
     push {r4,lr}
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrh r1, [r0,#0x1a]
     ldr r2, off_8010D28 // =0x3E9 
     cmp r1, r2
@@ -6039,7 +6041,7 @@ loc_801173E:
     bl sub_8012EA8
     mov r0, #1
     lsl r0, r0, #0x16
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
 loc_8011754:
     mov r0, #8
     strb r0, [r5,#9]
@@ -8174,7 +8176,7 @@ loc_80126EA:
     add r7, #0xa0
 loc_80126F6:
     strh r0, [r7,#0x14]
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     add r6, r0, #0
     ldr r1, [r6,#0x10]
     str r1, [r7,#0xc]
@@ -8303,7 +8305,7 @@ loc_80127E4:
     str r6, [sp,#0x14]
     lsr r4, r4, #8
     str r4, [sp,#0x18]
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     add r4, r0, #0
     ldrb r0, [r4,#0x1f]
     bl sub_8010D58
@@ -8320,7 +8322,7 @@ loc_80127E4:
     str r6, [sp,#0x14]
     lsr r4, r4, #8
     str r4, [sp,#0x18]
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     add r4, r0, #0
 loc_8012822:
     ldr r0, [sp,#4]
@@ -8449,7 +8451,7 @@ dword_80128F8:    .word 0xFFFF
     bne loc_8012998
 loc_8012928:
     ldr r0, [sp]
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -8526,7 +8528,7 @@ sub_801299C:
 
     push {r7,lr}
     strh r0, [r7,#0x14]
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldr r1, [r0,#0x10]
     str r1, [r7,#0xc]
     ldrb r1, [r0,#0xa]
@@ -8591,7 +8593,7 @@ sub_8012A38:
     mov r6, #0
     // idx
     add r0, r1, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     add r4, r0, #0
     ldrb r1, [r4,#9]
     mov r2, #2
@@ -8671,7 +8673,7 @@ sub_8012ABC:
     mov r7, #0
     // idx
     add r0, r6, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -8709,7 +8711,7 @@ loc_8012B1A:
     mov r7, #0
     // idx
     add r0, r6, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -8757,7 +8759,7 @@ loc_8012B6E:
     mov r7, #0
     // idx
     add r0, r6, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -8798,7 +8800,7 @@ sub_8012BA2:
     mov r7, #0
     // idx
     add r0, r6, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -8840,7 +8842,7 @@ loc_8012BE4:
     bgt loc_8012C30
     mov r7, #0
     add r0, r6, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -8885,7 +8887,7 @@ locret_8012C48:
 sub_8012C4A:
     push {r4,lr}
     add r4, r1, #0
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -9339,7 +9341,7 @@ sub_8012F62:
     bl sub_8010004
     ldr r1, dword_8012FC0 // =0xFFFF 
     beq loc_8012F90
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r0, [r0,#6]
     cmp r0, #0xa
     bne loc_8012F90
@@ -9686,7 +9688,7 @@ sub_8013236:
     blt loc_8013244
     b loc_8013360
 loc_8013244:
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     add r7, r0, #0
     ldrb r4, [r7,#6]
     mov r1, #0x2c 
@@ -9921,7 +9923,7 @@ sub_80133EC:
 loc_80133F6:
     add r0, r5, #0
     ldrb r1, [r6,r5]
-    bl sub_8013B4E
+    bl init_8013B4E // (bool a1, int a2) -> void
     add r5, #1
     cmp r5, #7
     blt loc_80133F6
@@ -9943,7 +9945,7 @@ sub_8013422:
     mov r1, #0x64 
     mul r0, r1
     add r0, r0, r2
-    bl sub_8013438
+    bl initStruct_8013438 // (void *struc) -> void
     pop {pc}
     .balign 4, 0x00
 off_8013434:    .word unk_203CE00
@@ -9951,7 +9953,8 @@ off_8013434:    .word unk_203CE00
 
 .func
 .thumb_func
-sub_8013438:
+// (void *struc) -> void
+initStruct_8013438:
     push {r4,lr}
     add r4, r0, #0
     // memBlock
@@ -10027,7 +10030,7 @@ loc_80134B8:
     mov r1, #0x21 
     strb r0, [r4,r1]
     pop {r4,pc}
-.endfunc // sub_8013438
+.endfunc // initStruct_8013438
 
 .func
 .thumb_func
@@ -10271,6 +10274,7 @@ loc_8013678:
 
 .func
 .thumb_func
+// (int idx) -> void*
 sub_8013682:
     mov r1, #0x64 
     mul r0, r1
@@ -10310,7 +10314,7 @@ sub_80136B0:
     push {r6,r7,lr}
     add r6, r1, #0
     add r7, r2, #0
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     strb r7, [r0,r6]
     pop {r6,r7,pc}
 .endfunc // sub_80136B0
@@ -10318,7 +10322,7 @@ sub_80136B0:
     push {r6,r7,lr}
     add r6, r1, #0
     add r7, r2, #0
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     strh r7, [r0,r6]
     pop {r6,r7,pc}
 .func
@@ -10326,7 +10330,7 @@ sub_80136B0:
 sub_80136CC:
     push {r6,lr}
     add r6, r1, #0
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     ldrb r0, [r0,r6]
     pop {r6,pc}
 .endfunc // sub_80136CC
@@ -10336,7 +10340,7 @@ sub_80136CC:
 sub_80136D8:
     push {r6,lr}
     add r6, r1, #0
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     ldrsb r0, [r0,r6]
     pop {r6,pc}
 .endfunc // sub_80136D8
@@ -10346,7 +10350,7 @@ sub_80136D8:
 sub_80136E4:
     push {r6,lr}
     add r6, r1, #0
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     ldrh r0, [r0,r6]
     pop {r6,pc}
 .endfunc // sub_80136E4
@@ -10428,7 +10432,7 @@ sub_8013754:
     ldrb r0, [r5,#0x16]
     add r6, r1, #0
     add r7, r2, #0
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     strb r7, [r0,r6]
     pop {r6,r7,pc}
 .endfunc // sub_8013754
@@ -10440,7 +10444,7 @@ sub_8013764:
     ldrb r0, [r5,#0x16]
     add r6, r1, #0
     add r7, r2, #0
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     strh r7, [r0,r6]
     pop {r6,r7,pc}
 .endfunc // sub_8013764
@@ -10451,7 +10455,7 @@ sub_8013774:
     push {r6,lr}
     ldrb r0, [r5,#0x16]
     add r6, r1, #0
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     ldrb r0, [r0,r6]
     pop {r6,pc}
 .endfunc // sub_8013774
@@ -10459,7 +10463,7 @@ sub_8013774:
     push {r6,lr}
     ldrb r0, [r5,#0x16]
     add r6, r1, #0
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     ldrb r0, [r0,r6]
     pop {r6,pc}
 .func
@@ -10468,7 +10472,7 @@ sub_8013790:
     push {r6,lr}
     ldrb r0, [r5,#0x16]
     add r6, r1, #0
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     ldrh r0, [r0,r6]
     pop {r6,pc}
 .endfunc // sub_8013790
@@ -10479,7 +10483,7 @@ sub_8013790:
 navicust_801379E:
     push {lr}
     push {r1,r2}
-    bl navicust_8014018 // (int a1) -> int
+    bl navicust_8014018 // (int idx_8014034) -> bool
     pop {r1,r2}
     mov r3, #0x64 
     mul r0, r3
@@ -10492,23 +10496,27 @@ navicust_801379E:
 
 .func
 .thumb_func
+// (int a1, int a2) -> u8
 sub_80137B6:
     push {lr}
     push {r1}
-    bl navicust_8014018 // (int a1) -> int
+    bl navicust_8014018 // (int idx_8014034) -> bool
     pop {r1}
-    mov r3, #0x64 
+    mov r3, #100
     mul r0, r3
     mov r3, r10
-    ldr r3, [r3,#0x74]
+    ldr r3, [r3,#0x74] // Toolkit.unk_20047CC
     add r3, r3, r0
     ldrb r0, [r3,r1]
     pop {pc}
 .endfunc // sub_80137B6
 
+.func
+.thumb_func
+sub_80137CE:
     push {lr}
     push {r1}
-    bl navicust_8014018 // (int a1) -> int
+    bl navicust_8014018 // (int idx_8014034) -> bool
     pop {r1}
     mov r3, #0x64 
     mul r0, r3
@@ -10517,12 +10525,14 @@ sub_80137B6:
     add r3, r3, r0
     ldrsb r0, [r3,r1]
     pop {pc}
+.endfunc // sub_80137CE
+
 .func
 .thumb_func
 sub_80137E6:
     push {lr}
     push {r1,r2}
-    bl navicust_8014018 // (int a1) -> int
+    bl navicust_8014018 // (int idx_8014034) -> bool
     pop {r1,r2}
     mov r3, #0x64 
     mul r0, r3
@@ -10538,7 +10548,7 @@ sub_80137E6:
 sub_80137FE:
     push {lr}
     push {r1}
-    bl navicust_8014018 // (int a1) -> int
+    bl navicust_8014018 // (int idx_8014034) -> bool
     pop {r1}
     mov r3, #0x64 
     mul r0, r3
@@ -10585,7 +10595,7 @@ sub_8013846:
     push {r4,lr}
     mov r0, #0
     bl sub_8013854
-    bl sub_8013438
+    bl initStruct_8013438 // (void *struc) -> void
     pop {r4,pc}
 .endfunc // sub_8013846
 
@@ -10641,7 +10651,7 @@ sub_8013884:
 sub_8013892:
     push {r6,r7,lr}
     ldrb r0, [r5,#0x16]
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     add r6, r0, #0
     ldr r7, [r5,#0x58]
     mov r0, #0xa
@@ -10698,7 +10708,7 @@ dword_8013908:    .word 0x10000
 sub_801390C:
     push {r6,r7,lr}
     ldrb r0, [r5,#0x16]
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     add r6, r0, #0
     ldr r7, [r5,#0x58]
 loc_8013918:
@@ -10707,7 +10717,7 @@ loc_8013918:
     ldrb r0, [r6,#7]
     strb r0, [r7,#8]
     ldr r0, dword_8013CA8 // =start_ 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     bl sub_800EB08
     ldr r0, [r7,#0x50]
     tst r0, r0
@@ -10724,7 +10734,7 @@ loc_8013938:
 sub_801393A:
     push {r6,r7,lr}
     ldrb r0, [r5,#0x16]
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     add r6, r0, #0
     ldr r7, [r5,#0x58]
     mov r1, #0x2c 
@@ -10747,7 +10757,7 @@ loc_8013956:
     bl sub_801A082
     b loc_8013980
 loc_8013970:
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     bl sub_80107C0
     mov r1, #1
     mov r2, #2
@@ -10760,7 +10770,7 @@ loc_8013980:
     bl object_setFlag // (int a1) -> void
     b loc_8013992
 loc_801398E:
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
 loc_8013992:
     ldr r0, off_8013CAC // =timer_2000000 
     bl object_setFlag // (int a1) -> void
@@ -10772,7 +10782,7 @@ loc_8013992:
     bl object_setFlag // (int a1) -> void
     b loc_80139AC
 loc_80139A8:
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
 loc_80139AC:
     mov r0, #1
     lsl r0, r0, #0x11
@@ -10783,7 +10793,7 @@ loc_80139AC:
     bl object_setFlag // (int a1) -> void
     b locret_80139C2
 loc_80139BE:
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
 locret_80139C2:
     pop {r6,r7,pc}
 .endfunc // sub_801393A
@@ -11003,7 +11013,8 @@ loc_8013B4A:
 
 .func
 .thumb_func
-sub_8013B4E:
+// (bool a1, int a2) -> void
+init_8013B4E:
     push {r4,r6,r7,lr}
     cmp r0, #0
     beq loc_8013B56
@@ -11011,19 +11022,24 @@ sub_8013B4E:
 loc_8013B56:
     add r4, r1, #0
     mov r7, r10
-    ldr r7, [r7,#0x74]
+    ldr r7, [r7,#0x74] // Toolkit.unk_20047CC
     mov r2, #0x64 
     mul r0, r2
     add r7, r7, r0
     b loc_8013B6E
-loc_8013B64:
+.endfunc // init_8013B4E
+
+.func
+.thumb_func
+// (int idx, int a2) -> void
+init_8013B64:
     push {r4,r6,r7,lr}
     add r4, r1, #0
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     add r7, r0, #0
 loc_8013B6E:
     add r0, r7, #0
-    bl sub_8013438
+    bl initStruct_8013438 // (void *struc) -> void
     mov r0, #0x10
     mul r0, r4
     ldr r6, dword_8013CB4 // =dword_8020FE0 
@@ -11075,13 +11091,16 @@ loc_8013B6E:
     mov r1, #0x39 
     strb r0, [r7,r1]
     pop {r4,r6,r7,pc}
-.endfunc // sub_8013B4E
+.endfunc // init_8013B64
 
+.func
+.thumb_func
+sub_8013BDA:
     push {r4,r6,r7,lr}
     add r7, r0, #0
     add r4, r1, #0
     add r0, r7, #0
-    bl sub_8013438
+    bl initStruct_8013438 // (void *struc) -> void
     mov r0, #0x10
     mul r0, r4
     ldr r6, dword_8013CB8 // =dword_8020FE0 
@@ -11134,9 +11153,14 @@ loc_8013B6E:
     mov r1, #0x39 
     strb r0, [r7,r1]
     pop {r4,r6,r7,pc}
+.endfunc // sub_8013BDA
+
+.func
+.thumb_func
+sub_8013C4E:
     push {r4,r6,lr}
     ldr r0, dword_8013CC0 // =0x20000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r1, #0x29 
     bl sub_8013774
     add r6, r0, #0
@@ -11161,6 +11185,8 @@ off_8013C70:    .word locret_8013CA4+1
     .word locret_8013CA4+1
     .word locret_8013CA4+1
     .word locret_8013CA4+1
+.endfunc // sub_8013C4E
+
 locret_8013CA4:
     mov pc, lr
     .balign 4, 0x00
@@ -11284,7 +11310,7 @@ loc_8013D88:
     add r4, #1
     b loc_8013D88
 loc_8013D92:
-    bl sub_800151C
+    bl change_20013F0_800151C // () -> int
     mov r1, #0xf
     and r0, r1
     ldrb r0, [r7,r0]
@@ -11396,7 +11422,7 @@ loc_8013E6C:
     cmp r0, #0xa
     bne loc_8013E8A
 loc_8013E7E:
-    bl sub_800151C
+    bl change_20013F0_800151C // () -> int
     mov r1, #3
     and r0, r1
     add r0, r0, r4
@@ -11591,7 +11617,7 @@ sub_8013FAE:
     bl sub_8013774
     add r4, r0, #0
     beq locret_8013FCE
-    bl sub_800151C
+    bl change_20013F0_800151C // () -> int
     mov r1, #7
     and r0, r1
     sub r1, r4, #1
@@ -11651,7 +11677,7 @@ locret_8014016:
 
 .func
 .thumb_func
-// (int a1) -> int
+// (int idx_8014034) -> bool
 navicust_8014018:
     ldr r1, off_8014030 // =byte_8014034 
     ldrb r0, [r1,r0]
@@ -11662,7 +11688,7 @@ navicust_8014018:
 .thumb_func
 sub_801401E:
     push {lr}
-    bl navicust_8014018 // (int a1) -> int
+    bl navicust_8014018 // (int idx_8014034) -> bool
     mov r1, #0x64 
     mul r0, r1
     mov r1, r10
@@ -11716,12 +11742,12 @@ sub_8014080:
     bne locret_80140EC
     mov r0, #1
     lsl r0, r0, #0x11
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r1, #0x23 
     mov r2, #0
     bl sub_8013754
     mov r0, #0x20 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     bl sub_80107C0
     mov r1, #1
     mov r2, #2
@@ -11731,12 +11757,12 @@ sub_8014080:
     bl sub_8013754
     mov r0, #1
     lsl r0, r0, #0x12
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r1, #0x1d
     mov r2, #0
     bl sub_8013754
     mov r0, #0x10
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r1, #0x1c
     mov r2, #0
     bl sub_8013754
@@ -11764,12 +11790,12 @@ sub_80140EE:
     bne locret_801414E
     mov r0, #1
     lsl r0, r0, #0x11
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r1, #0x23 
     mov r2, #0
     bl sub_8013754
     mov r0, #0x20 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     bl sub_80107C0
     mov r1, #1
     mov r2, #2
@@ -11778,7 +11804,7 @@ sub_80140EE:
     mov r2, #0
     bl sub_8013754
     mov r0, #0x10
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r1, #0x1c
     mov r2, #0
     bl sub_8013754
@@ -11798,23 +11824,28 @@ locret_801414E:
     pop {pc}
 .endfunc // sub_80140EE
 
+.func
+.thumb_func
+sub_8014150:
     push {r4,lr}
     mov r4, #2
     bl getPETNaviSelect // () -> u8
     mov r1, #0x38 
-    bl sub_80137B6
+    bl sub_80137B6 // (int a1, int a2) -> u8
     tst r0, r0
     bne loc_8014174
     mov r4, #1
     bl getPETNaviSelect // () -> u8
     mov r1, #0x37 
-    bl sub_80137B6
+    bl sub_80137B6 // (int a1, int a2) -> u8
     tst r0, r0
     bne loc_8014174
     mov r4, #0
 loc_8014174:
     add r0, r4, #0
     pop {r4,pc}
+.endfunc // sub_8014150
+
 .func
 .thumb_func
 sub_8014178:
@@ -12016,7 +12047,7 @@ sub_80142DC:
     bl sub_8013774
     cmp r0, #0
     bne locret_8014324
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x15
     tst r0, r1
@@ -12055,7 +12086,7 @@ sub_8014326:
     beq loc_8014394
     cmp r0, #1
     beq loc_8014394
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x15
     tst r0, r1
@@ -12096,7 +12127,7 @@ loc_8014394:
     bl sub_801A176
     mov r0, #1
     lsl r0, r0, #0x15
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
 locret_80143A4:
     pop {r4,pc}
 .endfunc // sub_8014326
@@ -12106,7 +12137,7 @@ locret_80143A4:
 sub_80143A6:
     push {lr}
     ldrb r0, [r5,#0x16]
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     mov r1, #0x80
     strb r1, [r0,#0xe]
     b loc_80143B6
@@ -12115,7 +12146,7 @@ loc_80143B4:
 loc_80143B6:
     mov r0, #1
     lsl r0, r0, #0x15
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     ldr r0, off_80144B4 // =0x200 
     bl sub_801A176
     ldr r1, [r5,#0x58]
@@ -12163,7 +12194,7 @@ sub_80143FC:
     bne locret_801441E
     bl battle_isPaused
     bne locret_801441E
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_8014420 // =0xC00 
     tst r0, r1
     beq loc_801441A
@@ -12720,20 +12751,20 @@ sub_80147E4:
     mov r1, #8
     add r1, r1, r5
     mov r2, #0x10
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     add r0, r6, #0
     ldr r1, off_8014824 // =unk_203A980 
     mov r2, #0x10
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     add r0, r7, #0
     mov r1, #0x18
     add r1, r1, r5
     mov r2, #0x10
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     add r0, r7, #0
     ldr r1, off_8014828 // =unk_203A990 
     mov r2, #0x10
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     mov r0, #0
     str r0, [r5]
     mov r0, #1
@@ -12863,7 +12894,7 @@ loc_8014900:
     mov r0, #0x44 
 loc_8014902:
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     ldr r0, dword_8014940 // =0x4000 
     bl sub_801DACC
     mov r0, #4
@@ -12953,7 +12984,7 @@ loc_80149A2:
     mov r0, #0x40 
 loc_80149A4:
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     mov r0, #4
     strb r0, [r5,#3]
 loc_80149AE:
@@ -14454,7 +14485,7 @@ loc_801565E:
     orr r1, r2
     strb r1, [r0]
     ldr r0, dword_8015928 // =0x8001440 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #0x10
     bl sub_801A176
     mov r0, #0
@@ -14577,7 +14608,7 @@ loc_801577C:
     orr r1, r2
     strb r1, [r0]
     ldr r0, dword_8015934 // =0x80111C40 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #0x10
     bl sub_801A176
     mov r0, #0
@@ -14689,7 +14720,7 @@ loc_80158C6:
 sub_80158CC:
     push {lr}
     ldrb r0, [r5,#0x16]
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     mov r1, #0x80
     strb r1, [r0,#0xe]
     bl sub_802D234
@@ -14714,7 +14745,7 @@ locret_80158F8:
 sub_80158FA:
     push {lr}
     ldr r0, dword_8015924 // =0x80111C40 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #0x10
     bl sub_801A176
     mov r0, #0
@@ -15072,7 +15103,7 @@ sub_8015B5C:
 sub_8015B64:
     push {r4-r6,lr}
     add r4, r0, #0
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     add r6, r0, #0
     add r0, r4, #0
     bl sub_80103BC
@@ -15158,7 +15189,7 @@ sub_8015BEC:
     bl sub_8014490
     bne locret_8015C10
     add r0, r6, #0
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     strb r4, [r0,#0xe]
 locret_8015C10:
     pop {r4-r6,pc}
@@ -15169,7 +15200,7 @@ locret_8015C10:
 sub_8015C12:
     push {r4,lr}
     add r4, r1, #0
-    bl sub_8013682
+    bl sub_8013682 // (int idx) -> void*
     ldrb r1, [r0,#0xe]
     tst r1, r1
     beq locret_8015C2A
@@ -16776,7 +16807,7 @@ sub_80165B8:
 .thumb_func
 sub_80165C2:
     push {lr}
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_80165EC // =0x40000000 
     tst r0, r1
     bne loc_80165E0
@@ -16953,7 +16984,7 @@ loc_8016722:
     strb r0, [r5,#0xf]
     mov r0, #1
     lsl r0, r0, #0xc
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     pop {r6,r7,pc}
 .func
 .thumb_func
@@ -16988,7 +17019,7 @@ loc_8016768:
     blt loc_80167B2
     cmp r4, #0xc
     bgt loc_80167B2
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #0x24 
     tst r0, r1
     bne loc_80167B2
@@ -17057,7 +17088,7 @@ loc_80167E6:
     strb r0, [r5,#0x1f]
     mov r0, #1
     lsl r0, r0, #0xc
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #0
     strb r0, [r5,#0xf]
     bl sub_801A066
@@ -17127,7 +17158,7 @@ loc_8016870:
     beq locret_80168A2
     cmp r0, #0x56 
     beq locret_80168A2
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #8
     tst r0, r1
     beq locret_80168A2
@@ -17185,7 +17216,7 @@ unk_80168A8:    .byte  0
 .thumb_func
 sub_80168C8:
     push {lr}
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #8
     lsl r1, r1, #8
     tst r0, r1
@@ -17209,7 +17240,7 @@ unk_80168EC:    .byte  0
 .thumb_func
 sub_80168F0:
     push {lr}
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x10
     tst r0, r1
@@ -17228,7 +17259,7 @@ unk_8016908:    .byte 0x94
 .thumb_func
 sub_801690A:
     push {lr}
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #0x40 
     lsl r1, r1, #8
     tst r0, r1
@@ -17261,7 +17292,7 @@ sub_8016934:
     orr r0, r1
     strb r0, [r5]
 loc_8016944:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_8016A28 // =0x100 
     tst r0, r1
     bne locret_80169BC
@@ -17291,7 +17322,7 @@ loc_8016964:
     beq locret_80169BC
     push {r5}
     add r5, r0, #0
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_8016A30 // =0x2000 
     tst r0, r1
     pop {r5}
@@ -17311,7 +17342,7 @@ loc_8016998:
     bne locret_80169BC
     mov r0, #5
     bl sub_801DA48
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_8016A34 // =0x2000 
     tst r0, r1
     beq locret_80169BC
@@ -17346,7 +17377,7 @@ loc_80169CE:
     beq locret_8016A26
     push {r5}
     add r5, r0, #0
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_8016A30 // =0x2000 
     tst r0, r1
     pop {r5}
@@ -17366,7 +17397,7 @@ loc_8016A02:
     bne locret_8016A26
     mov r0, #5
     bl sub_801DA48
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_8016A34 // =0x2000 
     tst r0, r1
     beq locret_8016A26
@@ -17459,7 +17490,7 @@ byte_8016B03:    .byte 0xB5
     tst r0, r0
     bne loc_8016B20
     ldr r0, dword_8016BD4 // =0x100000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     bl sub_800F394
     bl sub_80101C4
     mov r0, #0
@@ -17467,7 +17498,7 @@ byte_8016B03:    .byte 0xB5
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_8016B20:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0xb
     tst r0, r1
@@ -17486,7 +17517,7 @@ sub_8016B36:
     tst r0, r0
     bne loc_8016B5C
     ldr r0, dword_8016BD4 // =0x100000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     bl sub_800F3B0
     bl sub_80101C4
     mov r0, #0
@@ -17497,7 +17528,7 @@ sub_8016B36:
     mov r0, #4
     strb r0, [r5,#0xb]
 loc_8016B5C:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x10
     tst r0, r1
@@ -17519,7 +17550,7 @@ sub_8016B72:
     tst r0, r0
     bne loc_8016B9A
     ldr r0, dword_8016BD4 // =0x100000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     bl sub_800F3CC
     bl sub_80101C4
     mov r0, #0
@@ -17541,7 +17572,7 @@ loc_8016B9A:
     ldrh r1, [r4,#0x3c]
     add r0, r0, r1
     strh r0, [r5,#0x3e]
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x1f
     tst r0, r1
@@ -17764,7 +17795,7 @@ sub_8016D08:
     bl sub_800E29C // () -> void
     bl sub_801A04C
     ldr r0, dword_8016D80 // =0x1000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     bl sub_80101C4
     ldrb r0, [r5,#0x14]
     ldrb r1, [r5,#0x15]
@@ -17902,7 +17933,7 @@ sub_8016E3C:
     strb r0, [r5,#0xa]
     bge locret_8016E5E
     ldr r0, dword_8016E60 // =0x101000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #0x10
     bl sub_801A176
     mov r0, #0
@@ -17942,7 +17973,7 @@ loc_8016E84:
     bl battle_isPaused
     bne locret_8016EBE
 loc_8016E92:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_8016EC0 // =0x80110C00 
     tst r0, r1
     bne locret_8016EBE
@@ -18323,7 +18354,7 @@ off_80171C0:    .word sub_80171CC+1
 sub_80171CC:
     push {lr}
     bl sub_80170E4
-    bl sub_8000784
+    bl musicGameState_8000784 // () -> void
     pop {pc}
 .endfunc // sub_80171CC
 
@@ -18388,7 +18419,7 @@ loc_801722C:
     bl sub_80077B4
     mov r0, #4
     mov r1, #4
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     mov r4, #1
     ldr r7, [r5,#0x58]
     add r7, #0x74 
@@ -18706,9 +18737,9 @@ sub_80174FE:
     ldr r0, dword_80175B4 // =0x20005F 
     bl sub_801031C
     ldr r0, dword_80175A4 // =0x100041 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     bl sub_8012EA8
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0xc
     tst r0, r1
@@ -18748,7 +18779,7 @@ loc_8017582:
     strh r0, [r5,#0x20]
     bge locret_80175A2
     ldr r0, dword_80175B0 // =0x400400 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     ldr r0, dword_80175A8 // =0x1000043F 
     bl sub_800FFEE
     mov r0, #0
@@ -18777,12 +18808,12 @@ sub_80175B8:
     ldr r0, dword_8017674 // =0x400000 
     bl object_setFlag // (int a1) -> void
     ldr r0, dword_801766C // =0x100441 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     bl sub_80101C4
     ldr r0, dword_8017684 // =0x20005F 
     bl sub_801031C
     bl sub_8012EA8
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0xc
     tst r0, r1
@@ -18827,9 +18858,9 @@ loc_8017628:
     mov r1, #0
     strh r1, [r0,r2]
     ldr r0, off_8017678 // =0x800 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
 loc_8017646:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0xb
     tst r0, r1
@@ -18837,7 +18868,7 @@ loc_8017646:
     ldr r0, dword_801767C // =0x1000003F 
     bl sub_800FFEE
     ldr r0, dword_8017680 // =0x400000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #0
     strb r0, [r5,#0x10]
     mov r0, #8
@@ -18866,7 +18897,7 @@ sub_8017688:
     ldr r0, dword_8017754 // =0x400000 
     bl object_setFlag // (int a1) -> void
     ldr r0, dword_801774C // =0x100441 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     bl sub_801A67E
     bl sub_80101C4
     bl sub_800EB08
@@ -18876,7 +18907,7 @@ sub_8017688:
     ldr r0, dword_8017764 // =0x20005F 
     bl sub_801031C
     bl sub_8012EA8
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0xc
     tst r0, r1
@@ -18921,9 +18952,9 @@ loc_8017708:
     mov r1, #0
     strh r1, [r0,r2]
     ldr r0, dword_8017758 // =0x10000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
 loc_8017726:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x10
     tst r0, r1
@@ -18931,7 +18962,7 @@ loc_8017726:
     ldr r0, dword_801775C // =0x1000003F 
     bl sub_800FFEE
     ldr r0, dword_8017760 // =0x400000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #0
     strb r0, [r5,#0x10]
     mov r0, #8
@@ -18960,7 +18991,7 @@ sub_8017768:
     ldr r0, dword_8017850 // =0x400000 
     bl object_setFlag // (int a1) -> void
     ldr r0, dword_8017848 // =0x100441 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     bl sub_80101C4
     bl sub_800EB08
     mov r0, #0x2e 
@@ -18969,7 +19000,7 @@ sub_8017768:
     ldr r0, dword_8017860 // =0x20005F 
     bl sub_801031C
     bl sub_8012EA8
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0xc
     tst r0, r1
@@ -19014,7 +19045,7 @@ loc_80177E4:
     mov r1, #0
     strh r1, [r0,r2]
     ldr r0, dword_8017854 // =0x80000000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
 loc_8017802:
     ldr r0, [r5,#0x54]
     mov r2, #0x2c 
@@ -19026,7 +19057,7 @@ loc_8017802:
     ldrsb r0, [r1,r0]
     lsl r0, r0, #0x10
     str r0, [r5,#0x3c]
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x1f
     tst r0, r1
@@ -19034,7 +19065,7 @@ loc_8017802:
     ldr r0, dword_8017858 // =0x1000003F 
     bl sub_800FFEE
     ldr r0, dword_801785C // =0x400000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #0
     str r0, [r5,#0x3c]
     mov r0, #0x25 
@@ -19139,7 +19170,7 @@ sub_80178D4:
     str r0, [r5,#0x4c]
     ldr r1, [r5,#0x58]
     str r0, [r1,#0x68]
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r2, #2
     mov r1, #1
     lsl r1, r1, #0xb
@@ -19165,7 +19196,7 @@ loc_8017900:
     mov r0, #0
     strh r0, [r5,#0x3c]
     ldr r0, dword_8017A98 // =0x1441 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     bl sub_80101C4
     ldrb r0, [r5,#0x14]
     ldrb r1, [r5,#0x15]
@@ -19303,13 +19334,13 @@ sub_8017A38:
     sub r0, #1
     strh r0, [r5,#0x20]
     bge locret_8017A8E
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0xb
     tst r0, r1
     beq loc_8017A5E
     ldr r0, dword_8017AA4 // =0x100000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #4
     strb r0, [r5,#9]
     mov r0, #0
@@ -19317,7 +19348,7 @@ sub_8017A38:
     b locret_8017A8E
 loc_8017A5E:
     ldr r0, dword_8017AA8 // =0x501800 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     ldr r0, dword_8017AAC // =0x1000043F 
     bl sub_800FFEE
     ldr r0, dword_8017AB0 // =0x200000 
@@ -19371,7 +19402,7 @@ loc_8017AB4:
     lsl r1, r1, #0x10
     lsr r1, r1, #0x10
     beq loc_8017B5E
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r0, [r0,#9]
     mov r1, #1
     tst r0, r1
@@ -19628,7 +19659,7 @@ sub_8017CE0:
     bl sub_800E29C // () -> void
     bl sub_801A04C
     ldr r0, off_8017D58 // =0x1040 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     ldrb r0, [r5,#0x14]
     ldrb r1, [r5,#0x15]
     bl sub_801BB46
@@ -19766,7 +19797,7 @@ sub_8017E0A:
     bge locret_8017E24
     mov r0, #1
     lsl r0, r0, #0x14
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     ldr r0, [r5,#0x5c]
     str r0, [r5,#8]
     mov r0, #0
@@ -19801,7 +19832,7 @@ sub_8017E44:
     bl sub_800E29C // () -> void
     bl sub_801A04C
     ldr r0, off_8017F2C // =0x1040 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     ldrb r0, [r5,#0x14]
     ldrb r1, [r5,#0x15]
     bl sub_801BB46
@@ -19996,7 +20027,7 @@ sub_8017FE6:
     bge locret_8018000
     mov r0, #1
     lsl r0, r0, #0x14
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     ldr r0, [r5,#0x5c]
     str r0, [r5,#8]
     mov r0, #0
@@ -20243,7 +20274,7 @@ loc_80181AA:
     bl sub_800F656
     add r0, r5, #0
     bl sub_80E544C
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_80182A0 // =0x10000000 
     tst r0, r1
     beq loc_80181E2
@@ -20293,7 +20324,7 @@ loc_8018206:
     beq locret_801823A
     push {r5}
     add r5, r0, #0
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_80182B0 // =0x2000 
     tst r0, r1
     pop {r5}
@@ -21332,6 +21363,7 @@ object_setFlag:
 
 .func
 .thumb_func
+// (int bitfield) -> void
 object_clearFlag:
     ldr r1, [r5,#0x54]
     ldr r2, [r1,#0x3c]
@@ -21342,6 +21374,7 @@ object_clearFlag:
 
 .func
 .thumb_func
+// () -> int
 object_getFlag:
     ldr r1, [r5,#0x54]
     ldr r0, [r1,#0x3c]
@@ -21396,7 +21429,7 @@ sub_801A186:
     ldrb r0, [r0,#2]
     cmp r0, #4
     bne loc_801A1CE
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_801A1FC // =dword_8000004+36 
     tst r0, r1
     bne loc_801A1CE
@@ -21506,7 +21539,7 @@ sub_801A25E:
 sub_801A264:
     push {lr}
     ldr r0, dword_801A528 // =0x8001E800 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     ldr r0, dword_801A52C // =0x300E8 
     bl sub_801A176
     mov r0, #0
@@ -21525,7 +21558,7 @@ sub_801A264:
 sub_801A284:
     push {lr}
     ldr r0, off_801A530 // =0x800 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #8
     bl sub_801A176
     mov r0, #0
@@ -21539,7 +21572,7 @@ sub_801A284:
 sub_801A29A:
     push {lr}
     ldr r0, dword_801A534 // =0x10000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     ldr r0, dword_801A534 // =0x10000 
     bl sub_801A176
     mov r0, #0
@@ -21553,7 +21586,7 @@ sub_801A29A:
 sub_801A2B0:
     push {lr}
     ldr r0, dword_801A538 // =0x80000000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     ldr r0, dword_801A53C // =0x20000 
     bl sub_801A176
     mov r0, #0
@@ -21674,7 +21707,7 @@ sub_801A36A:
     bgt loc_801A38A
     b loc_801A3B8
 loc_801A38A:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_801A544 // =0x100040 
     tst r0, r1
     bne locret_801A3D8
@@ -21689,7 +21722,7 @@ loc_801A38A:
     bl sub_801A400
     pop {r4,r7,pc}
 loc_801A3AC:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x13
     tst r0, r1
@@ -21697,7 +21730,7 @@ loc_801A3AC:
 loc_801A3B8:
     mov r0, #1
     lsl r0, r0, #0x13
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     ldrb r0, [r7,#0xa]
     ldrb r1, [r7,#0xb]
     bl sub_800C90A
@@ -21720,7 +21753,7 @@ sub_801A3DA:
     ldrb r0, [r7,#2]
     cmp r0, #2
     beq locret_801A3FE
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #0x24 
     tst r0, r1
     bne locret_801A3FE
@@ -21743,7 +21776,7 @@ sub_801A400:
     ldrh r1, [r7,#0x38]
     tst r1, r1
     bne locret_801A41E
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #0x24 
     tst r0, r1
     bne locret_801A41E
@@ -22049,7 +22082,7 @@ loc_801A610:
     sub r0, #1
     strh r0, [r6,#0x24]
     bgt loc_801A63A
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #2
     tst r0, r1
     beq loc_801A632
@@ -22057,7 +22090,7 @@ loc_801A610:
     bl sound_play // () -> void
 loc_801A632:
     ldr r0, dword_801A644 // =0x202 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     b locret_801A642
 loc_801A63A:
     mov r0, #1
@@ -22591,7 +22624,7 @@ sub_801A9B8:
     bl battle_isBattleOver
     tst r0, r0
     bne locret_801AA3C
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -22645,7 +22678,7 @@ sub_801AA48:
     bl battle_isBattleOver
     tst r0, r0
     bne locret_801AABE
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -22687,7 +22720,7 @@ sub_801AAC0:
     bl battle_isBattleOver
     tst r0, r0
     bne locret_801AB3E
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -22733,7 +22766,7 @@ sub_801AB40:
     bl battle_isBattleOver
     tst r0, r0
     bne locret_801ABB6
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -22778,7 +22811,7 @@ sub_801ABB8:
     bl battle_isPaused
     tst r0, r0
     bne locret_801AC6A
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -22797,7 +22830,7 @@ sub_801ABB8:
     mov r1, #0x40 
     tst r4, r1
     beq loc_801AC32
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #0x40 
     tst r0, r1
     bne loc_801AC46
@@ -22810,7 +22843,7 @@ sub_801ABB8:
     strb r0, [r5,#0xf]
     b loc_801AC46
 loc_801AC32:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_801AF38 // =0x100040 
     tst r0, r1
     bne loc_801AC46
@@ -22846,7 +22879,7 @@ sub_801AC6C:
     bl battle_isBattleOver
     tst r0, r0
     bne locret_801AD10
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -22906,13 +22939,13 @@ sub_801AD12:
     bl battle_isBattleOver
     tst r0, r0
     bne locret_801AD68
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
     bne locret_801AD68
     ldrb r4, [r7,#0xf]
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #0x40 
     tst r0, r1
     bne loc_801AD60
@@ -22947,7 +22980,7 @@ sub_801AD6A:
     bl battle_isBattleOver
     tst r0, r0
     bne locret_801AD9C
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -22972,13 +23005,13 @@ sub_801AD9E:
     bl battle_isBattleOver
     tst r0, r0
     bne locret_801ADF8
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
     bne locret_801ADF8
     ldrb r4, [r7,#0xf]
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #0x40 
     tst r0, r1
     bne loc_801ADF0
@@ -23014,14 +23047,14 @@ sub_801ADFA:
     bl battle_isBattleOver
     tst r0, r0
     bne locret_801AE54
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
     bne locret_801AE54
     bl sub_801AE56
     ldrb r4, [r7,#0xf]
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #0x40 
     tst r0, r1
     bne loc_801AE4C
@@ -23090,7 +23123,7 @@ dword_801AEA0:    .word 0xFF0F0FFF, 0xFFFFFF0F, 0xFFFFFF0F, 0xFFFFFFFF
 sub_801AEB0:
     push {r4,r7,lr}
     ldrb r4, [r7,#0xf]
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_801AF40 // =0x220000 
     tst r0, r1
     bne loc_801AECA
@@ -23122,7 +23155,7 @@ loc_801AED6:
     strb r0, [r5,#0xf]
     b locret_801AF0C
 loc_801AEF8:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_801AF38 // =0x100040 
     tst r0, r1
     bne locret_801AF0C
@@ -23139,7 +23172,7 @@ locret_801AF0C:
 sub_801AF0E:
     push {r4,r7,lr}
     ldrb r4, [r7,#0xf]
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_801AF40 // =0x220000 
     tst r0, r1
     bne loc_801AF28
@@ -23184,7 +23217,7 @@ loc_801AF5E:
     bl sub_801A506
     bl sub_801BA12
     bl sub_801BADE
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -23320,7 +23353,7 @@ loc_801B096:
     strb r0, [r5,#0xd]
     b loc_801B142
 loc_801B0AA:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x14
     tst r0, r1
@@ -23340,7 +23373,7 @@ loc_801B0BC:
     bl loc_80166B6
     b loc_801B0EC
 loc_801B0D6:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0xc
     tst r0, r1
@@ -23396,7 +23429,7 @@ loc_801B142:
     bl sub_8016934
     bl sub_8016CA4
     bl sub_801728E
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -23453,7 +23486,7 @@ loc_801B1E8:
     ldrb r0, [r5,#9]
     cmp r0, #0
     beq loc_801B21C
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_801B384 // =0x40000100 
     tst r0, r1
     beq loc_801B1FA
@@ -23505,7 +23538,7 @@ loc_801B260:
     bl sub_801A16C
 loc_801B266:
     bl sub_801A200
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -23552,7 +23585,7 @@ loc_801B2CA:
     strb r0, [r5,#0xd]
     b loc_801B338
 loc_801B2D6:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x14
     tst r0, r1
@@ -23572,7 +23605,7 @@ loc_801B2E8:
     bl loc_80166B6
     b loc_801B318
 loc_801B302:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0xc
     tst r0, r1
@@ -23591,7 +23624,7 @@ loc_801B318:
     bgt loc_801B32C
 loc_801B324:
     ldr r0, dword_801B380 // =0x202 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     b loc_801B334
 loc_801B32C:
     mov r0, #1
@@ -23610,7 +23643,7 @@ loc_801B338:
     bl sub_80168F0
     bl sub_8016934
     bl sub_8016CA4
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -23674,7 +23707,7 @@ loc_801B3DA:
     mov r0, #1
     bl sub_801A16C
 loc_801B3E0:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -23702,7 +23735,7 @@ loc_801B40E:
     strb r0, [r5,#0x18]
     b loc_801B428
 loc_801B41E:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_801B4C4 // =LCDControl 
     tst r0, r1
     beq loc_801B42E
@@ -23718,7 +23751,7 @@ loc_801B42E:
     strb r0, [r5,#0x18]
     b loc_801B448
 loc_801B43E:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_801B4CC // =0x30000000 
     tst r0, r1
     beq loc_801B44E
@@ -23756,7 +23789,7 @@ loc_801B480:
     strb r0, [r5,#0xd]
     b loc_801B4A2
 loc_801B48C:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x14
     tst r0, r1
@@ -23826,7 +23859,7 @@ loc_801B516:
     mov r0, #1
     bl sub_801A16C
 loc_801B51C:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -23854,7 +23887,7 @@ loc_801B54A:
     strb r0, [r5,#0x18]
     b loc_801B564
 loc_801B55A:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_801B600 // =LCDControl 
     tst r0, r1
     beq loc_801B56A
@@ -23870,7 +23903,7 @@ loc_801B56A:
     strb r0, [r5,#0x18]
     b loc_801B584
 loc_801B57A:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_801B608 // =0x30000000 
     tst r0, r1
     beq loc_801B58A
@@ -23908,7 +23941,7 @@ loc_801B5BC:
     strb r0, [r5,#0xd]
     b loc_801B5DE
 loc_801B5C8:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x14
     tst r0, r1
@@ -23980,7 +24013,7 @@ loc_801B656:
     mov r0, #1
     bl sub_801A16C
 loc_801B65C:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -24008,7 +24041,7 @@ loc_801B68A:
     strb r0, [r5,#0x18]
     b loc_801B6A4
 loc_801B69A:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_801B744 // =LCDControl 
     tst r0, r1
     beq loc_801B6AA
@@ -24024,7 +24057,7 @@ loc_801B6AA:
     strb r0, [r5,#0x18]
     b loc_801B6C4
 loc_801B6BA:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_801B74C // =0x30000000 
     tst r0, r1
     beq loc_801B6CA
@@ -24062,7 +24095,7 @@ loc_801B6FC:
     strb r0, [r5,#0xd]
     b loc_801B71E
 loc_801B708:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x14
     tst r0, r1
@@ -24132,7 +24165,7 @@ loc_801B796:
     mov r0, #1
     bl sub_801A16C
 loc_801B79C:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -24160,7 +24193,7 @@ loc_801B7CA:
     strb r0, [r5,#0x18]
     b loc_801B7E4
 loc_801B7DA:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_801BB00 // =LCDControl 
     tst r0, r1
     beq loc_801B7EA
@@ -24176,7 +24209,7 @@ loc_801B7EA:
     strb r0, [r5,#0x18]
     b loc_801B804
 loc_801B7FA:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_801BB08 // =0x30000000 
     tst r0, r1
     beq loc_801B80A
@@ -24211,7 +24244,7 @@ loc_801B836:
     strb r0, [r5,#0xd]
     b loc_801B858
 loc_801B842:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x14
     tst r0, r1
@@ -24277,7 +24310,7 @@ loc_801B8C4:
     mov r0, #1
     bl sub_801A16C
 loc_801B8CA:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #8
     tst r0, r1
@@ -24305,7 +24338,7 @@ loc_801B8F8:
     strb r0, [r5,#0x18]
     b loc_801B912
 loc_801B908:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, off_801B9AC // =LCDControl 
     tst r0, r1
     beq loc_801B918
@@ -24321,7 +24354,7 @@ loc_801B918:
     strb r0, [r5,#0x18]
     b loc_801B932
 loc_801B928:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_801B9B4 // =0x30000000 
     tst r0, r1
     beq loc_801B938
@@ -24359,7 +24392,7 @@ loc_801B96A:
     strb r0, [r5,#0xd]
     b loc_801B98C
 loc_801B976:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #1
     lsl r1, r1, #0x14
     tst r0, r1
@@ -24403,7 +24436,7 @@ sub_801B9BC:
     beq locret_801B9E4
     push {r5}
     add r5, r0, #0
-    bl object_getFlag
+    bl object_getFlag // () -> int
     pop {r5}
     ldr r1, off_801BB0C // =0x100 
     tst r0, r1
@@ -24455,7 +24488,7 @@ sub_801BA12:
     ldrh r1, [r5,#0x24]
     cmp r1, #1
     ble loc_801BA3A
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_801BB14 // =0x40000 
     tst r0, r1
     beq loc_801BA3A
@@ -24985,7 +25018,7 @@ loc_801BDD0:
 sub_801BDDE:
     push {r4,r6,r7,lr}
     push {r0-r3}
-    bl sub_800151C
+    bl change_20013F0_800151C // () -> int
     add r7, r0, #0
     pop {r0-r3}
     add r4, r7, #0
@@ -25306,7 +25339,7 @@ loc_801C048:
 loc_801C050:
     lsl r0, r0, #0x17
     lsr r0, r0, #0x17
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldr r0, [r0,#0x20]
 loc_801C05A:
     add r1, r7, #0
@@ -26234,7 +26267,7 @@ sub_801C6EE:
     bl sub_80018E0
     // idx
     ldr r0, [sp]
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r1, [r0,#9]
     mov r2, #2
     tst r1, r2
@@ -27757,7 +27790,7 @@ sub_801D344:
     mov r1, #0x1c
     b loc_801D3A2
 loc_801D36C:
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r3, [r0,#7]
     cmp r3, #2
     ble loc_801D378
@@ -28241,9 +28274,11 @@ sub_801D814:
     beq loc_801D84A
     cmp r0, #5
     beq loc_801D848
+    // entryIdx
     mov r0, #1
+    // byteFlagIdx
     mov r1, #0x63 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_801D84A
     bl sub_802E09A
     bne loc_801D84A
@@ -28251,9 +28286,11 @@ sub_801D814:
     ldr r1, dword_801D850 // =0x200000 
     tst r0, r1
     bne loc_801D84A
+    // entryIdx
     mov r0, #0
+    // byteFlagIdx
     mov r1, #0xe0
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_801D84A
 loc_801D848:
     mov r4, #1
@@ -30535,7 +30572,7 @@ sub_801E95C:
     push {r2,r3}
     // idx
     ldrh r0, [r5,#4]
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     ldrb r0, [r0,#9]
     mov r1, #2
     tst r0, r1

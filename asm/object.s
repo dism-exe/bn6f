@@ -6722,7 +6722,7 @@ sub_800E5AC:
     add r7, r1, #0
     bl object_isValidPanel
     beq loc_800E5DE
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r2, #0
     mov r1, #0x10
     and r1, r0
@@ -6749,7 +6749,7 @@ loc_800E5DE:
 .thumb_func
 object_canMove:
     push {r4,lr}
-    bl object_getFlag
+    bl object_getFlag // () -> int
     add r4, r0, #0
     ldr r1, dword_800E5F8 // =0x5040 
     tst r4, r1
@@ -6766,7 +6766,7 @@ dword_800E5F8:    .word 0x5040
 .thumb_func
 sub_800E5FC:
     push {r4,lr}
-    bl object_getFlag
+    bl object_getFlag // () -> int
     add r4, r0, #0
     ldr r1, off_800E614 // =0x1040 
     tst r4, r1
@@ -6788,7 +6788,7 @@ sub_800E618:
     add r7, r1, #0
     bl object_isValidPanel
     beq loc_800E656
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #0x10
     tst r0, r1
     bne loc_800E63C
@@ -6840,7 +6840,7 @@ sub_800E680:
     add r7, r1, #0
     bl object_isValidPanel
     beq loc_800E6BE
-    bl object_getFlag
+    bl object_getFlag // () -> int
     mov r1, #0x10
     tst r0, r1
     bne loc_800E6A4
@@ -6968,7 +6968,7 @@ loc_800E744:
     strh r0, [r6,#0x1c]
     bgt loc_800E75E
     ldr r0, off_800E960 // =0x800 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #8
     bl sub_801A176
     mov r0, #0
@@ -6997,8 +6997,8 @@ loc_800E776:
     strh r0, [r6,#0x2c]
 loc_800E786:
     ldr r0, dword_800E964 // =0x80018000 
-    bl object_clearFlag
-    bl object_getFlag
+    bl object_clearFlag // (int bitfield) -> void
+    bl object_getFlag // () -> int
     ldr r1, off_800E960 // =0x800 
     tst r0, r1
     bne loc_800E7AE
@@ -7020,7 +7020,7 @@ loc_800E7AE:
     strh r0, [r6,#0x2a]
     bgt loc_800E7C2
     ldr r0, dword_800E968 // =0x10000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #0
     strh r0, [r6,#0x2a]
     b loc_800E820
@@ -7047,8 +7047,8 @@ loc_800E7DA:
     strh r0, [r6,#0x2c]
 loc_800E7EA:
     ldr r0, dword_800E970 // =0x80008000 
-    bl object_clearFlag
-    bl object_getFlag
+    bl object_clearFlag // (int bitfield) -> void
+    bl object_getFlag // () -> int
     ldr r1, dword_800E968 // =0x10000 
     tst r0, r1
     bne loc_800E820
@@ -7076,7 +7076,7 @@ loc_800E820:
     strh r0, [r6,#0x2c]
     bgt loc_800E836
     ldr r0, dword_800E974 // =0x80000000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #0
     strh r0, [r6,#0x2c]
     str r0, [r6,#0x60]
@@ -7104,8 +7104,8 @@ loc_800E84E:
     strh r0, [r6,#0x2a]
 loc_800E85E:
     ldr r0, dword_800E980 // =0x8000 
-    bl object_clearFlag
-    bl object_getFlag
+    bl object_clearFlag // (int bitfield) -> void
+    bl object_getFlag // () -> int
     ldr r1, dword_800E974 // =0x80000000 
     tst r0, r1
     bne loc_800E894
@@ -7133,7 +7133,7 @@ loc_800E894:
     strh r0, [r6,#0x1e]
     bgt loc_800E8B0
     ldr r0, dword_800E980 // =0x8000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #0x80
     bl sub_801A176
     mov r0, #0
@@ -7155,7 +7155,7 @@ loc_800E8C6:
     ldr r0, dword_800E980 // =0x8000 
     bl object_setFlag // (int a1) -> void
     ldr r0, dword_800E988 // =0x80010800 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r7, #0x48 
     add r7, r7, r6
     ldr r0, [r7]
@@ -7169,7 +7169,7 @@ loc_800E8E2:
     strh r0, [r6,#0x22]
     bgt loc_800E8F6
     ldr r0, dword_800E98C // =0x4000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #0
     strh r0, [r6,#0x22]
     b loc_800E908
@@ -7187,7 +7187,7 @@ loc_800E908:
     strh r0, [r6,#0x20]
     bgt loc_800E920
     ldr r0, off_800E990 // =0x2000 
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #0
     strh r0, [r6,#0x20]
     mov r1, #0x4c 
@@ -7214,7 +7214,7 @@ loc_800E942:
     strh r0, [r6,#0x28]
     bgt loc_800E956
     mov r0, #8
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     mov r0, #0
     strh r0, [r6,#0x28]
     b loc_800E95C
@@ -7520,7 +7520,7 @@ sub_800EB08:
     mov r0, #0
     strh r0, [r1,#0x28]
     mov r0, #8
-    bl object_clearFlag
+    bl object_clearFlag // (int bitfield) -> void
     pop {pc}
 .endfunc // sub_800EB08
 
@@ -7597,7 +7597,7 @@ sub_800EB6C:
     bne loc_800EB8C
     b loc_800EB9A
 loc_800EB8C:
-    bl object_getFlag
+    bl object_getFlag // () -> int
     ldr r1, dword_800ECE4 // =0x2000 
     tst r0, r1
     beq loc_800EB9A

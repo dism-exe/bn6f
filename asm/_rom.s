@@ -28,7 +28,9 @@ dword_8020354:
 .incbin "bin/bin01.bin"
 asm02:
 .include "asm/asm02.s"
-dword_8021DA8:
+ChipDataArr_8021DA8:
+.include "data/ChipDataArr_8021DA8.s"
+bin02:
 .incbin "bin/bin02.bin"
 asm03_0:
 .include "asm/asm03_0.s"
@@ -147,7 +149,9 @@ asm29:
 dword_80AAEA8:
 .incbin "bin/bin29.bin"
 asm30:
-.include "asm/asm30.s"
+.include "asm/asm30_0.s"
+BattleSettings:
+.include "data/BattleSettings.s"
 off_80B1B7C:
 .incbin "bin/bin30.bin"
 asm31:

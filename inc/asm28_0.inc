@@ -17,8 +17,8 @@
 .global unk_809D328
 .global sub_809E04C
 .global sub_809E064
-.global sub_809E098
-.global sub_809E0B0
+.global setFlag3_2e2_2001C88
+.global updateFlags_809E0B0 // () -> void
 .global sub_809E122
 .global sub_809E13C
 .global sub_809E14C
@@ -52,7 +52,7 @@
 .include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001172
@@ -91,20 +91,20 @@
 // .global engine_isScreeneffectAnimating // () -> zf
 
 .include "asm00_2.inc"
-// .global sub_80137B6
+// .global sub_80137B6 // (int a1, int a2) -> u8
 
 .include "asm02.inc"
-// .global dword_8021AEC
+// .global sub_8021AEE
 
 .include "asm03_0.inc"
 // .global sub_802D15E
-// .global sub_802F110
-// .global sub_802F114 // (int a1) -> void
-// .global sub_802F12C // (int a1, int a2) -> void
-// .global loc_802F130
-// .global sub_802F148
-// .global sub_802F164 // (int a1, int a2) -> zf
-// .global zf_802F168
+// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global toggleFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global sub_802F238
 // .global sub_80301B2
 // .global sub_80301DC

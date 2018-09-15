@@ -154,7 +154,7 @@
 .include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global loc_8000AC8
 // .global sub_8000E3A
@@ -163,7 +163,7 @@
 // .global sub_80010EC
 // .global calcAngle_800117C
 // .global sub_80014D4
-// .global sub_800151C
+// .global change_20013F0_800151C // () -> int
 
 .include "asm00_1.inc"
 // .global sub_8003A64
@@ -172,14 +172,14 @@
 
 .include "asm03_0.inc"
 // .global sub_802D064
-// .global sub_802F110
-// .global sub_802F114 // (int a1) -> void
-// .global sub_802F12C // (int a1, int a2) -> void
-// .global loc_802F130
-// .global sub_802F164 // (int a1, int a2) -> zf
-// .global zf_802F168
-// .global sub_802F1A8 // (int a3, int a2) -> void
-// .global loc_802F1AC
+// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+// .global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 // .global sub_80302A8
 // .global sub_80307D8
 // .global sub_8030A60
@@ -231,8 +231,8 @@
 // .global sub_813D98C
 
 .include "reqBBS.inc"
-// .global reqBBS_8140A00
-// .global reqBBS_8140A0C
+// .global reqBBS_setFlag_e17b0f7_8140A00
+// .global reqBBS_clearFlag_8140A0C
 
 
 /* Undeclared Symbols */

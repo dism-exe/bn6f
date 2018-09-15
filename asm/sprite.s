@@ -82,7 +82,7 @@ loc_8002708:
     ldr r0, off_8002728 // =dword_84E0554 
 loc_8002716:
     push {r1}
-    bl sprite_initialize
+    bl sprite_initialize // (void *a1) -> void
     pop {r1}
     strb r1, [r5,#3]
     pop {r4,r5,pc}
@@ -93,6 +93,7 @@ off_8002728:    .word dword_84E0554
 
 .func
 .thumb_func
+// (void *a1) -> void
 sprite_initialize:
     add r0, #4
     str r0, [r5,#0x18]
@@ -126,7 +127,7 @@ sprite_800275A:
     lsl r0, r0, #2
     ldr r1, off_800276C // =dword_8032530+104 
     ldr r0, [r0,r1]
-    bl sprite_initialize
+    bl sprite_initialize // (void *a1) -> void
     mov r0, #0x80
     strh r0, [r5,#0x16]
     pop {pc}
@@ -152,7 +153,7 @@ loc_8002776:
     bge loc_800278A
     add r0, r4, #0
 loc_800278A:
-    bl sprite_initialize
+    bl sprite_initialize // (void *a1) -> void
     strb r6, [r5,#3]
     mov r0, #0x80
     strh r0, [r5,#0x16]
@@ -166,7 +167,7 @@ off_8002798:    .word dword_8032530+0x1EC
     lsl r0, r0, #2
     ldr r1, off_80027B0 // =dword_8032530+104 
     ldr r0, [r0,r1]
-    bl sprite_initialize
+    bl sprite_initialize // (void *a1) -> void
     mov r0, #0x80
     strh r0, [r5,#0x16]
     pop {r5,pc}

@@ -81,9 +81,11 @@ sub_801FE6C:
     ldrb r0, [r4]
     tst r0, r0
     beq loc_801FED2
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x2d 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_801FEB6
     strb r6, [r4,#0x1] // (dword_203F7D8+1 - 0x203f7d8)
     ldrb r0, [r4,#0x1] // (dword_203F7D8+1 - 0x203f7d8)
@@ -125,11 +127,11 @@ loc_801FED2:
     ldr r0, off_80200DC // =word_2036780 
     ldr r1, off_80200E0 // =unk_20399F0 
     mov r2, #0x10
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     ldr r0, off_80200E4 // =word_2036780 
     ldr r1, off_80200E8 // =unk_2039A00 
     mov r2, #0x10
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 locret_801FEE6:
     pop {r4,r6,pc}
 .endfunc // sub_801FE6C

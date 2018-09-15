@@ -134,7 +134,7 @@
 // .global sub_8001330
 // .global sub_8001382
 // .global sub_800139A
-// .global sub_800151C
+// .global change_20013F0_800151C // () -> int
 // .global sub_8001532
 // .global sub_8002378
 // .global sub_800239A
@@ -181,7 +181,7 @@
 // .global sub_80033E4
 // .global object_freeMemory
 // .global sub_800362C
-// .global engine_setScreeneffect
+// .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global dword_80065D0
 // .global dword_8006660
@@ -391,7 +391,7 @@
 // .global sub_801299C
 // .global sub_8012E74
 // .global sub_8012EA8
-// .global sub_8013682
+// .global sub_8013682 // (int idx) -> void*
 // .global sub_80136CC
 // .global sub_8013754
 // .global sub_8013764
@@ -469,8 +469,8 @@
 // .global sub_801A140
 // .global sub_801A146
 // .global object_setFlag // (int a1) -> void
-// .global object_clearFlag
-// .global object_getFlag
+// .global object_clearFlag // (int bitfield) -> void
+// .global object_getFlag // () -> int
 // .global sub_801A16C
 // .global sub_801A176
 // .global sub_801A180
@@ -524,7 +524,7 @@
 // .global sub_801EB18
 
 .include "asm02.inc"
-// .global refIndex_8021DA8 // (int idx) -> void*
+// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
 
 .include "asm03_0.inc"
 // .global ho_8026554
@@ -540,7 +540,7 @@
 // .global sub_802D234
 // .global get_802D246 // () -> int
 // .global sub_802D26A
-// .global loc_802D322
+// .global sub_802D322
 // .global loc_802D4C6
 // .global sub_802DD2A
 // .global sub_802E032

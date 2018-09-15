@@ -168,16 +168,18 @@ dword_809F648:    .word 0x50000
 
 .func
 .thumb_func
-sub_809F64C:
+// (u8 bitfield_arr[2]) -> u16
+getBitfieldFromArr_809F64C:
     ldrb r1, [r0]
     ldrb r0, [r0,#1]
     lsl r0, r0, #8
     orr r0, r1
     mov pc, lr
-.endfunc // sub_809F64C
+.endfunc // getBitfieldFromArr_809F64C
 
 .func
 .thumb_func
+// (void* a1) -> int
 sub_809F656:
     ldrb r1, [r0]
     ldrb r2, [r0,#1]
@@ -192,6 +194,9 @@ sub_809F656:
     mov pc, lr
 .endfunc // sub_809F656
 
+.func
+.thumb_func
+sub_809F66C:
     push {r7}
     mov r3, #0x10
     ldr r7, off_809F688 // =sReqBBS_GUI+48 
@@ -209,6 +214,8 @@ loc_809F680:
     mov pc, lr
     .balign 4, 0x00
 off_809F688:    .word sReqBBS_GUI+0x30 // sReqBBS_GUI.unk_30
+.endfunc // sub_809F66C
+
 .func
 .thumb_func
 sub_809F68C:
@@ -266,9 +273,11 @@ dword_809F6CC:    .word 0xCC020110, 0x809F6, 0x390916, 0x3C100116, 0x4390D16
 .thumb_func
 sub_809F90C:
     push {lr}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #8
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne locret_809F920
     ldr r0, off_809F9C4 // =byte_2000210 
     mov r1, #0
@@ -282,9 +291,11 @@ locret_809F920:
 .thumb_func
 sub_809F922:
     push {r4,r6,r7,lr}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #8
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne locret_809F940
     ldr r7, off_809F9C4 // =byte_2000210 
     ldrb r6, [r7]
@@ -303,9 +314,11 @@ locret_809F940:
 .thumb_func
 sub_809F942:
     push {r4-r7,lr}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #8
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne locret_809F9BC
     ldr r7, off_809F9C4 // =byte_2000210 
     ldrb r6, [r7]
@@ -441,7 +454,7 @@ loc_809FA0C:
     ldrh r0, [r7,#2]
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl loc_802F130 // (int a1, int a2) -> void
+    bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     mov r0, r12
     add r0, #1
     mov r12, r0
@@ -601,7 +614,7 @@ loc_809FB18:
     ldrh r0, [r7,#2]
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl loc_802F130 // (int a1, int a2) -> void
+    bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 loc_809FB3E:
     add r7, #0xc
     b loc_809FB18
@@ -633,7 +646,7 @@ sub_809FB4C:
 loc_809FB64:
     push {r6,r7}
     add r0, r5, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     pop {r6,r7}
     beq loc_809FBE6
     mov r4, #0
@@ -1107,9 +1120,11 @@ sub_809FE5E:
 .thumb_func
 sub_809FE7A:
     push {r4-r7,lr}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x40 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq locret_809FE8E
     ldr r3, off_809FE9C // =byte_2000210 
     ldrb r1, [r3,#0x4] // (word_2000214 - 0x2000210)

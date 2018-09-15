@@ -2,16 +2,17 @@
 
 .func
 .thumb_func
-// (int idx) -> void*
-refIndex_8021DA8:
-    ldr r1, off_8021AB0 // =dword_8021DA8 
+// (int chip_idx) -> ChipData*
+getChip_8021DA8:
+    ldr r1, off_8021AB0 // =ChipDataArr_8021DA8 
     mov r2, #44
     mul r0, r2
     add r0, r0, r1
+    // return &u8_8021DA8[44*idx]
     mov pc, lr
     .byte 0, 0
-off_8021AB0:    .word dword_8021DA8
-.endfunc // refIndex_8021DA8
+off_8021AB0:    .word ChipDataArr_8021DA8
+.endfunc // getChip_8021DA8
 
 .func
 .thumb_func
@@ -24,12 +25,12 @@ sub_8021AB4:
     add r1, r1, r3
     mov r2, #0x3c 
     push {r1}
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     pop {r7}
     mov r6, #0
 loc_8021ACC:
     ldrh r0, [r7,r6]
-    bl sub_8021AE0
+    bl split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
     mov r2, #1
     bl sub_8021B2A
     add r6, #2
@@ -40,16 +41,22 @@ loc_8021ACC:
 
 .func
 .thumb_func
-sub_8021AE0:
+// (int bitfield) -> (int, int)
+split9BitsFromBitfield_8021AE0:
+    // splits bitfield into lower and upper 9 bits, and returns those in r0, r1
     push {lr}
     lsr r1, r0, #9
-    ldr r2, dword_8021AEC // =0xB51001FF 
+    ldr r2, word_8021AEC // =0x1FF 
     and r0, r2
     pop {pc}
     .balign 4, 0x00
-dword_8021AEC:    .word 0xB51001FF
-.endfunc // sub_8021AE0
+word_8021AEC:    .hword 0x1FF
+.endfunc // split9BitsFromBitfield_8021AE0
 
+.func
+.thumb_func
+sub_8021AEE:
+    push {r4,lr}
     push {r0-r2}
     bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
     pop {r0-r2}
@@ -61,11 +68,12 @@ loc_8021B00:
     push {r0-r2}
     ldr r1, off_8021B74 // =0x1E20 
     add r1, r1, r0
+    // bitfield
     add r0, r1, #0
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     pop {r0-r2}
     push {r2}
-    bl computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
+    bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
     add r4, r3, #0
     pop {r2}
     bl sub_8021B5A
@@ -75,6 +83,8 @@ loc_8021B00:
     pop {r3}
     add r0, r3, #0
     pop {r4,pc}
+.endfunc // sub_8021AEE
+
 .func
 .thumb_func
 sub_8021B2A:
@@ -90,12 +100,12 @@ loc_8021B3C:
     push {r0-r2}
     ldr r1, off_8021B74 // =0x1E20 
     add r1, r1, r0
-    // a1
+    // bitfield
     add r0, r1, #0
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     pop {r0-r2}
     push {r2}
-    bl computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
+    bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
     pop {r2}
     bl sub_8021B5A
     add r0, r3, #0
@@ -136,7 +146,7 @@ sub_8021B78:
 loc_8021B84:
     pop {r0-r2}
     push {r2}
-    bl computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
+    bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
     pop {r2}
     strb r2, [r0]
     // return itemRef
@@ -149,7 +159,7 @@ loc_8021B84:
 sub_8021B92:
     push {r4,lr}
     push {r2}
-    bl computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
+    bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
     add r4, r3, #0
     pop {r2}
     mov r3, #1
@@ -181,7 +191,7 @@ sub_8021BC0:
     bl sub_8006EA4
     pop {r0,r1}
     bne loc_8021BD4
-    bl computeItemRef_Toolkit_unk4C // (int idx, int searchItem, int off) -> void*
+    bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
     ldrb r0, [r0]
     pop {r4,pc}
 loc_8021BD4:
@@ -288,12 +298,12 @@ dword_8021C78:    .word 0xF00
 
 .func
 .thumb_func
-// (int idx, int searchItem, int off) -> void*
-computeItemRef_Toolkit_unk4C:
+// (int chip_idx, int searchItem, int off) -> void*
+chip_8021C7C:
     push {r4,r7,lr}
     add r2, r0, #0
     push {r1,r2}
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     pop {r1,r2}
     add r0, #0
     mov r3, #0
@@ -316,7 +326,7 @@ loc_8021C9A:
     add r0, r7, r3
     // return Toolkit.unk_4C + (12*r2_off) + r3_itemIdx
     pop {r4,r7,pc}
-.endfunc // computeItemRef_Toolkit_unk4C
+.endfunc // chip_8021C7C
 
 .func
 .thumb_func
@@ -329,7 +339,7 @@ loc_8021CB0:
     // idx
     add r0, r2, #0
     push {r2}
-    bl refIndex_8021DA8 // (int idx) -> void*
+    bl getChip_8021DA8 // (int chip_idx) -> ChipData*
     pop {r2}
     push {r0,r2}
     add r0, r2, #0
@@ -400,12 +410,17 @@ locret_8021D28:
     pop {pc}
 .endfunc // sub_8021D14
 
+.func
+.thumb_func
+sub_8021D2A:
     ldr r2, off_8021D9C // =0x170 
     mul r2, r0
     ldr r0, off_8021DA4 // =unk_203A0A0 
     add r0, r0, r2
     ldrb r0, [r0,r1]
     mov pc, lr
+.endfunc // sub_8021D2A
+
 .func
 .thumb_func
 sub_8021D36:
@@ -416,19 +431,19 @@ sub_8021D36:
     ldr r0, off_8021D80 // =dword_8021D88 
     ldr r1, off_8021D70 // =unk_2001184 
     mov r2, #8
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     ldr r0, off_8021D80 // =dword_8021D88 
     ldr r1, off_8021D74 // =unk_200119C 
     mov r2, #8
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     ldr r0, dword_8021D84 // =dword_8021D88 
     ldr r1, dword_8021D78 // =0x20007D6 
     mov r2, #8
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     ldr r0, dword_8021D84 // =dword_8021D88 
     ldr r1, dword_8021D7C // =0x200083A 
     mov r2, #8
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     pop {pc}
     .balign 4, 0x00
 off_8021D6C:    .word unk_2000AF0

@@ -59,9 +59,9 @@
 .global sub_813DB24
 .global byte_813DBC0
 .global unk_813DBDC
-.global unk_813DBE4
+.global tileRefs_813DBE4
 .global unk_813DEC4
-.global dword_813DF44
+.global tileRefs_813DF44
 .global off_813DF74
 
 
@@ -75,33 +75,33 @@
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010BE
-// .global sub_800151C
+// .global change_20013F0_800151C // () -> int
 
 .include "asm00_2.inc"
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
-// .global sub_80137B6
+// .global sub_80137B6 // (int a1, int a2) -> u8
 // .global sub_80137E6
 // .global sub_80137FE
 
 .include "asm02.inc"
-// .global refIndex_8021DA8 // (int idx) -> void*
-// .global sub_8021AE0
+// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
 
 .include "asm03_0.inc"
 // .global sub_802D064
 // .global sub_802D158
 // .global sub_802D15E
-// .global sub_802F110
-// .global sub_802F114 // (int a1) -> void
-// .global sub_802F12C // (int a1, int a2) -> void
-// .global sub_802F164 // (int a1, int a2) -> zf
-// .global zf_802F168
-// .global loc_802F182
-// .global loc_802F1AC
+// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 // .global sub_803CB00
 // .global sub_803CE28
 // .global sub_803CE44

@@ -18,13 +18,13 @@ sub_8098BE8:
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl loc_802F130 // (int a1, int a2) -> void
+    bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     ldr r0, dword_8098C24 // =0x1DA0 
     ldrb r1, [r5,#6]
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 loc_8098C16:
     mov r0, #0
     pop {r4-r7,pc}
@@ -340,7 +340,7 @@ loc_8099D58:
     bl sub_80301DC
     mov r0, #0x17
     mov r1, #0x15
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 loc_8099DA2:
     mov r0, #0
     pop {r4-r7,pc}
@@ -584,7 +584,7 @@ off_809A400:    .word dword_86C580C
     bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
     mov r0, #0x17
     mov r1, #0x25 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #8
     mov r1, #0x84
     str r0, [r5,r1]
@@ -607,7 +607,7 @@ off_809A448:    .word dword_86C580C
     bl sub_809A80C
     mov r0, #0x17
     mov r1, #0x25 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809A488
     mov r0, #0x84
     ldr r0, [r5,r0]
@@ -679,10 +679,10 @@ loc_809A4E2:
     push {r4-r7,lr}
     mov r0, #0
     mov r1, #0xf5
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #0x17
     mov r1, #0x25 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #1
     bl sub_8033FC0
     bl sub_8001850
@@ -726,7 +726,7 @@ loc_809A4E2:
     add r0, r2, #0
     add r1, r3, #0
     mov r2, #1
-    bl dword_8021AEC+2
+    bl sub_8021AEE
     mov r0, #0x37 
     mov r1, #0x8c
     str r0, [r5,r1]
@@ -826,7 +826,7 @@ loc_809A628:
     push {r4-r7,lr}
     mov r0, #0
     mov r1, #0xf6
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809A694
     ldrh r0, [r5,#0xc]
     sub r0, #1
@@ -842,7 +842,7 @@ loc_809A64E:
     str r0, [r5,#0x70]
     mov r0, #0
     mov r1, #0xf5
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809A694
     mov r0, #0x20 
     strb r0, [r5,#4]
@@ -862,7 +862,7 @@ loc_809A64E:
     bl sub_8119854
     mov r0, #0
     mov r1, #0xf6
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #0
     pop {r4-r7,pc}
 loc_809A694:
@@ -897,7 +897,7 @@ loc_809A6BC:
     bl sub_809A80C
     mov r0, #0
     mov r1, #0xf5
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809A6E6
     mov r0, #0
     pop {r4-r7,pc}
@@ -937,7 +937,7 @@ loc_809A72A:
     bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
     mov r0, #0x17
     mov r1, #0x25 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #8
     mov r1, #0x84
     str r0, [r5,r1]
@@ -1018,7 +1018,7 @@ loc_809A7C4:
     bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
     mov r0, #0x17
     mov r1, #0x25 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #8
     mov r1, #0x84
     str r0, [r5,r1]
@@ -1125,7 +1125,7 @@ dword_809A898:    .word 0x5000016, 0x5010116, 0x5020216, 0xFFFFFFFF, 0x2906003F
     push {r4-r7,lr}
     mov r0, #0
     mov r1, #0xf5
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809A982
     mov r0, #0
     strb r0, [r5,#4]
@@ -1171,7 +1171,7 @@ loc_809A9A4:
     bl sub_80465F8 // () -> void
     mov r0, #0
     mov r1, #0xf5
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809A9C8
     mov r0, #0
     pop {r4-r7,pc}
@@ -1248,7 +1248,7 @@ dword_809AA24:    .word 0x5000016, 0x5010116, 0x5020216, 0xFFFFFFFF, 0x2906003F
     strb r0, [r5,#8]
     mov r0, #0x17
     mov r1, #0x25 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #8
     mov r1, #0x84
     str r0, [r5,r1]
@@ -1268,7 +1268,7 @@ loc_809AB1A:
     push {r4-r7,lr}
     mov r0, #0x17
     mov r1, #0x25 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809AB5A
     mov r0, #0x84
     ldr r0, [r5,r0]
@@ -1302,7 +1302,7 @@ loc_809AB5A:
     add r0, #0x4c 
     mov r1, sp
     mov r2, #8
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     mov r0, sp
     bl sub_813D41C
     str r4, [r5,#0x78]
@@ -1337,7 +1337,7 @@ loc_809AB92:
     add r0, r2, #0
     add r1, r3, #0
     mov r2, #1
-    bl dword_8021AEC+2
+    bl sub_8021AEE
     ldr r0, off_809AC28 // =dword_809AC2C 
     bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
     mov r0, #0xf
@@ -1912,18 +1912,22 @@ sub_809B910:
     mov r0, #0
     str r0, [r6,#0x1c]
     str r0, [r5,#0x14]
+    // entryIdx
     mov r0, #0
+    // byteFlagIdx
     mov r1, #0x38 
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+    // entryIdx
     mov r0, #0
+    // byteFlagIdx
     mov r1, #0x39 
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     ldrh r0, [r7,#0x32]
     tst r0, r0
     beq loc_809B960
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl loc_802F130 // (int a1, int a2) -> void
+    bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 loc_809B960:
     mov r0, #0
     strb r0, [r5,#9]
@@ -2551,7 +2555,7 @@ dword_809BF04:    .word 0x40008, 0xFFFF0002, 0x4000800, 0xFFFF0200, 0xFC00F8
     add r0, r0, r2
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl loc_802F130 // (int a1, int a2) -> void
+    bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     bl reqBBS_8140974
     add r2, r0, #0
     ldr r0, dword_809C0EC // =0x1DA0 
@@ -2560,7 +2564,7 @@ dword_809BF04:    .word 0x40008, 0xFFFF0002, 0x4000800, 0xFFFF0200, 0xFC00F8
     add r0, r0, r2
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 loc_809C0DE:
     mov r0, #0
     pop {r4-r7,pc}
@@ -3056,7 +3060,7 @@ sub_809C940:
     ldr r0, [r0,#0x14]
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl loc_802F130 // (int a1, int a2) -> void
+    bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     pop {r4-r7,pc}
 off_809C950:    .word unk_2011C50
 .endfunc // sub_809C940
@@ -3067,7 +3071,7 @@ off_809C950:    .word unk_2011C50
     ldr r0, [r0,r1]
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     mov r0, #0
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -3077,13 +3081,17 @@ sub_809C968:
     push {r4-r7,lr}
     bl sub_8034C36
     beq loc_809CA26
+    // entryIdx
     mov r0, #2
+    // byteFlagIdx
     mov r1, #0x24 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809CA26
+    // entryIdx
     mov r0, #1
+    // byteFlagIdx
     mov r1, #0xb9
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809C9B6
     mov r7, r10
     ldr r7, [r7,#0x3c]
@@ -3104,18 +3112,24 @@ sub_809C968:
     ldr r1, off_809CABC // =byte_2009F40 
     mov r2, #0x83 // (byte_2009FC3 - 0x2009f40)
     strb r0, [r1,r2]
+    // entryIdx
     mov r0, #1
+    // byteFlagIdx
     mov r1, #0xb9
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     b locret_809CA1E
 loc_809C9B6:
+    // entryIdx
     mov r0, #1
+    // byteFlagIdx
     mov r1, #0xba
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809C9CA
+    // entryIdx
     mov r0, #1
+    // byteFlagIdx
     mov r1, #0xba
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     b locret_809CA1E
 loc_809C9CA:
     mov r3, r10
@@ -3146,7 +3160,7 @@ loc_809C9CA:
     ldr r0, [r4,#0x10]
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     bne loc_809CA26
     mov r0, #0x2c 
     bl sub_803CE28
@@ -3166,10 +3180,10 @@ loc_809CA20:
 loc_809CA26:
     mov r0, #1
     mov r1, #0xba
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #1
     mov r1, #0xb9
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {r4-r7,pc}
 off_809CA38:    .word off_809C0F0
 off_809CA3C:    .word dword_809C350+4
@@ -3203,7 +3217,7 @@ sub_809CA40:
     ldr r0, [r4,#0x10]
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq loc_809CA7A
     mov r0, #1
     pop {r4-r7,pc}
@@ -3388,14 +3402,14 @@ loc_809D19C:
     push {lr}
     mov r0, #0x17
     mov r1, #0x16
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #0xb
     mov r1, #0xe4
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809D1D2
     bl getPETNaviSelect // () -> u8
     mov r1, #0x35 
-    bl sub_80137B6
+    bl sub_80137B6 // (int a1, int a2) -> u8
     tst r0, r0
     beq loc_809D1D2
     mov r7, r10
@@ -3406,7 +3420,7 @@ loc_809D19C:
     blt loc_809D1D2
     mov r0, #0x17
     mov r1, #0x16
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 loc_809D1D2:
     ldr r0, off_809D258 // =off_809D25C 
     ldrb r1, [r5,#8]
@@ -3462,7 +3476,7 @@ loc_809D238:
     bl sprite_setPallete // (int pallete) -> void
     mov r0, #0x17
     mov r1, #0x3d 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809D252
     mov r0, r10
     ldr r0, [r0,#0x3c]
@@ -3496,9 +3510,11 @@ sub_809D270:
     cmp r0, r3
     bge loc_809D29E
     mov r4, #0x37 
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x29 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809D29E
     mov r4, #0
     mov r6, #0x18
@@ -3616,22 +3632,22 @@ loc_809D348:
     beq loc_809D3BC
     mov r0, #0x17
     mov r1, #0x16
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809D3BC
     mov r0, #0x17
     mov r1, #0x3d 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809D3A8
     mov r0, #0x17
     mov r1, #0x3f 
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 loc_809D3A8:
     mov r0, #0x17
     mov r1, #0x3d 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #0x17
     mov r1, #0x3e 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     bl sub_809DE60
 loc_809D3BC:
     bl sub_809E46E
@@ -3643,7 +3659,7 @@ loc_809D3BC:
     beq loc_809D3E6
     mov r0, #0xb
     mov r1, #0xe4
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809D3E6
     mov r0, #0x1c
     add r0, r0, r5
@@ -3653,11 +3669,11 @@ loc_809D3BC:
 loc_809D3E6:
     mov r0, #0x17
     mov r1, #0x18
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809D3FC
     mov r0, #0x17
     mov r1, #0x18
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     bl sub_809E0C8
 loc_809D3FC:
     ldrb r0, [r5,#0x16]
@@ -3797,9 +3813,11 @@ loc_809D572:
     ldrb r0, [r5,#0x10]
     ldr r7, off_809D5AC // =off_809D5B0 
     push {r0,r1,r3-r5}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x16
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809D584
     ldr r7, off_809D5B8 // =off_809D5BC 
 loc_809D584:
@@ -3849,9 +3867,11 @@ sub_809D5C4:
     mov r2, #1
     mov r3, #2
     push {r3}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x16
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     pop {r3}
     beq loc_809D5F4
     mov r2, #0
@@ -3883,13 +3903,17 @@ loc_809D60C:
 .thumb_func
 sub_809D61A:
     push {lr}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x16
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809D630
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3d 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809D646
 loc_809D630:
     bl sub_809D9E0
@@ -3971,17 +3995,23 @@ loc_809D6CE:
     ldrb r0, [r5,#0x10]
     ldr r7, off_809D718 // =off_809D71C 
     push {r0,r1,r3-r5}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x16
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809D6F4
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3d 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809D6F2
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3f 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809D6F4
 loc_809D6F2:
     ldr r7, off_809D724 // =off_809D728 
@@ -4186,9 +4216,11 @@ loc_809D856:
     ldrb r0, [r5,#0x17]
     tst r0, r0
     beq loc_809D886
+    // entryIdx
     mov r0, #0xb
+    // byteFlagIdx
     mov r1, #0xe4
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809D886
     mov r0, #0x1c
     add r0, r0, r5
@@ -4257,7 +4289,7 @@ sub_809D8F4:
     strb r0, [r7,#1]
     mov r0, #0x17
     mov r1, #0x17
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #0x10
     bl sub_809E004
 locret_809D91A:
@@ -4359,7 +4391,7 @@ sub_809D9A0:
 loc_809D9C4:
     mov r0, #0x17
     mov r1, #0x17
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #0
     strb r0, [r5,#9]
     mov r0, #0
@@ -4384,14 +4416,18 @@ sub_809D9E0:
     bl engine_isScreeneffectAnimating // () -> zf
     beq loc_809DA94
     push {r0}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x14
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     pop {r0}
     beq loc_809DA82
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x17
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809DA94
     bl sub_8036F36
     bne loc_809DA94
@@ -4532,24 +4568,34 @@ sub_809DB02:
     and r0, r1
     tst r0, r0
     beq loc_809DB4A
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3d 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809DB4A
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3f 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809DB4A
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x16
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809DB4A
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3d 
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3e 
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #0x36 
     add r0, #0xff
     bl sound_play // () -> void
@@ -4564,9 +4610,11 @@ loc_809DB4A:
 .thumb_func
 sub_809DB50:
     push {lr}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x17
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne locret_809DB5E
     mov r0, #0
 locret_809DB5E:
@@ -4581,9 +4629,11 @@ sub_809DB60:
     mov r1, #0x34 
     add r1, r1, r5
     bl sub_809DBC4
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3d 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809DB82
     mov r0, r10
     ldr r0, [r0,#4]
@@ -4734,13 +4784,17 @@ dword_809DDEC:    .word 0xC00000
 .thumb_func
 sub_809DDF0:
     push {lr}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x16
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq locret_809DE2A
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3d 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq locret_809DE2A
     ldr r1, [r5,#0x50]
     ldr r2, dword_809DE2C // =0xC00000 
@@ -4748,13 +4802,15 @@ sub_809DDF0:
     beq locret_809DE2A
     mov r0, #0x17
     mov r1, #0x3d 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #0x17
     mov r1, #0x3e 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3f 
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     bl sub_809DE60
 locret_809DE2A:
     pop {pc}
@@ -4765,24 +4821,30 @@ dword_809DE2C:    .word 0xC00000
 .thumb_func
 sub_809DE30:
     push {lr}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x16
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq locret_809DE5E
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3d 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_809DE4E
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3f 
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 loc_809DE4E:
     mov r0, #0x17
     mov r1, #0x3d 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #0x17
     mov r1, #0x3e 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 locret_809DE5E:
     pop {pc}
 .endfunc // sub_809DE30
@@ -4822,19 +4884,21 @@ off_809DE90:    .word dword_809CFB8+4
 .thumb_func
 sub_809DE98:
     push {lr}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x16
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809DEBE
     mov r0, #0x17
     mov r1, #0x3d 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #0x17
     mov r1, #0x3e 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #0x17
     mov r1, #0x3f 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     b locret_809DED2
 loc_809DEBE:
     mov r0, r10
@@ -4845,7 +4909,7 @@ loc_809DEBE:
     bne locret_809DED2
     mov r0, #0x17
     mov r1, #0x3f 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 locret_809DED2:
     pop {pc}
 .endfunc // sub_809DE98
@@ -4926,6 +4990,9 @@ loc_809DF3A:
 off_809DF40:    .word byte_200ACE0
 .endfunc // sub_809DF36
 
+.func
+.thumb_func
+sub_809DF44:
     push {lr}
     ldr r7, off_809DF9C // =off_809DF9C 
     lsl r0, r0, #3
@@ -4944,6 +5011,8 @@ off_809DF40:    .word byte_200ACE0
     .word 0xFFFF4AFC, 0xFFFF4AFC, 0x0
     .word 0xFFFF0000
 off_809DF9C:    .word off_809DF9C
+.endfunc // sub_809DF44
+
 .func
 .thumb_func
 sub_809DFA0:
@@ -5105,39 +5174,53 @@ locret_809E088:
     pop {r4-r7,pc}
 .func
 .thumb_func
-sub_809E098:
+setFlag3_2e2_2001C88:
     push {lr}
+    // flag 3 @ 0x2001c88[0x2e2] (=2001f6a)
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x14
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {pc}
-.endfunc // sub_809E098
+.endfunc // setFlag3_2e2_2001C88
 
 .func
 .thumb_func
-sub_809E0A4:
+// () -> void
+clearFlag3_2e2_2001C88:
     push {lr}
+    // clear flag 3 @ 0x2001c88[0x2e2] (=2001f6a)
     mov r0, #0x17
     mov r1, #0x14
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {pc}
-.endfunc // sub_809E0A4
+.endfunc // clearFlag3_2e2_2001C88
 
 .func
 .thumb_func
-sub_809E0B0:
+// () -> void
+updateFlags_809E0B0:
+    // [break] pressing L, jacking in, and talking to objects but not NPCs
     ldr r3, off_809E138 // =byte_200ACE0 
     mov r0, #1
     strb r0, [r3]
     push {lr}
+    // set flag 7 @ 0x2001c88[0x2e3] (=2001f6b)
+    // if not set, map location changes after function call (also when jacking in)
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x18
-    bl sub_802F110
-    bl sub_809E0A4
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+    bl clearFlag3_2e2_2001C88 // () -> void
     pop {pc}
-.endfunc // sub_809E0B0
+.endfunc // updateFlags_809E0B0
 
+.func
+.thumb_func
+nullsub_26:
     mov pc, lr
+.endfunc // nullsub_26
+
 .func
 .thumb_func
 sub_809E0C8:
@@ -5153,9 +5236,11 @@ sub_809E0C8:
     ldr r0, [r1,#0x24]
     str r0, [r3,#0x10] // (dword_200ACF0 - 0x200ace0)
     push {r3}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x19
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     pop {r3}
     bne locret_809E0FA
     mov r2, r10
@@ -5196,10 +5281,11 @@ sub_809E122:
     ldr r3, off_809E138 // =byte_200ACE0 
     mov r0, #0
     strb r0, [r3]
-    bl sub_809E098
+    bl setFlag3_2e2_2001C88
+    // flag 6 @ 0x2001c88[0x2e3] (=2001f6b)
     mov r0, #0x17
     mov r1, #0x19
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {pc}
 off_809E138:    .word byte_200ACE0
 .endfunc // sub_809E122
@@ -5209,10 +5295,12 @@ off_809E138:    .word byte_200ACE0
 sub_809E13C:
     push {lr}
     ldr r3, off_809E184 // =byte_200ACE0 
-    strb r0, [r3,#0x2] // (byte_200ACE2 - 0x200ace0)
+    strb r0, [r3,#2]
+    // flag 6 @ 0x2001c88[0x2e3] (=2001f6b)
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x19
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {pc}
 .endfunc // sub_809E13C
 
@@ -5225,9 +5313,11 @@ sub_809E14C:
     bl sub_809E462
     bne loc_809E164
     strb r4, [r7,#0x2] // (byte_200ACE2 - 0x200ace0)
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x19
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {r4-r7,pc}
 loc_809E164:
     strb r4, [r7,#0x1c] // (byte_200ACFC - 0x200ace0)
@@ -5244,7 +5334,7 @@ loc_809E164:
     strb r0, [r3,#0x15]
     mov r0, #0x17
     mov r1, #0x19
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {pc}
     .balign 4, 0x00
 off_809E184:    .word byte_200ACE0
@@ -5565,10 +5655,10 @@ loc_809E314:
     bl sub_8001172
     mov r0, #6
     mov r1, #0x8e
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #6
     mov r1, #0x8f
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {r4-r7,pc}
     push {r4-r7,lr}
     ldr r3, off_809E430 // =byte_2000AA0 
@@ -5755,9 +5845,11 @@ sub_809E46E:
     ldr r7, [r7,#0x18]
     mov r2, #0x64 
     strh r0, [r7,r2]
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x17
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 locret_809E494:
     pop {r7,pc}
 .endfunc // sub_809E46E
@@ -5794,14 +5886,16 @@ sub_809E4BC:
     push {r4-r7,lr}
     mov r0, #0x17
     mov r1, #0x29 
-    bl sub_802F148
+    bl toggleFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r5, r10
     ldr r5, [r5,#0x3c]
     ldr r5, [r5,#0x18]
     mov r4, #0x37 
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x29 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_809E4DA
     mov r4, #0
 loc_809E4DA:

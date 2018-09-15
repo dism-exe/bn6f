@@ -27,12 +27,12 @@
 // .global engine_isScreeneffectAnimating // () -> zf
 
 .include "asm03_0.inc"
-// .global sub_802F110
-// .global sub_802F114 // (int a1) -> void
-// .global sub_802F12C // (int a1, int a2) -> void
-// .global sub_802F164 // (int a1, int a2) -> zf
-// .global zf_802F168
-// .global sub_802F1A8 // (int a3, int a2) -> void
+// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 // .global sub_80301B2
 // .global sub_80301DC
 // .global sub_8036E90
@@ -67,8 +67,8 @@
 
 .include "reqBBS.inc"
 // .global reqBBS_81409E4
-// .global reqBBS_8140A00
-// .global reqBBS_8140A0C
+// .global reqBBS_setFlag_e17b0f7_8140A00
+// .global reqBBS_clearFlag_8140A0C
 
 .include "asm37_1.inc"
 // .global dword_81434E4

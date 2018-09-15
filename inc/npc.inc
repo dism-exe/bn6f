@@ -41,10 +41,10 @@
 // .global sub_80062C8
 
 .include "asm03_0.inc"
-// .global sub_802F114 // (int a1) -> void
-// .global loc_802F130
-// .global sub_802F164 // (int a1, int a2) -> zf
-// .global zf_802F168
+// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global sub_80302A8
 // .global sub_8031612
 // .global sub_8035694
@@ -65,8 +65,8 @@
 // .global sub_809F5FC
 // .global sub_809F612
 // .global sub_809F638
-// .global sub_809F64C
-// .global sub_809F656
+// .global getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+// .global sub_809F656 // (void* a1) -> int
 // .global off_809F6AC
 // .global dword_809F6B0
 // .global sub_809F922

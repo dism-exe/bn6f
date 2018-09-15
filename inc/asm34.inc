@@ -14,7 +14,7 @@
 
 .include "asm00_1.inc"
 // .global sub_800307C
-// .global engine_setScreeneffect
+// .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global sub_80062C8
 
 .include "asm03_0.inc"

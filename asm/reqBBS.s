@@ -77,7 +77,7 @@ reqBBS_static_draw_813E0F8:
     bl sub_80015FC
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     // a1
     ldr r0, off_813E178 // =unk_813DBDC 
     bl sub_80465A0 // (void *a1) -> void
@@ -292,10 +292,10 @@ loc_813E2C8:
     mov r8, r0
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq loc_813E2F6
     mov r0, r8
-    bl loc_802F130 // (int a1, int a2) -> void
+    bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     ldrb r0, [r5,#5]
     add r0, #0
     strb r0, [r5,#5]
@@ -562,7 +562,7 @@ loc_813E4C8:
     strb r0, [r5,#8]
     mov r0, #0x10
     mov r1, #8
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
 loc_813E4EC:
     bl reqBBS_813E534
 .endfunc // reqBBS_draw_813E4AC
@@ -590,7 +590,7 @@ reqBBS_draw_813E4F4:
     bne loc_813E522
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     mov r0, #8
     strb r0, [r5]
     b loc_813E52A
@@ -700,7 +700,7 @@ reqBBS_813E5DC:
     mov r1, #2
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     add r0, r7, #0
     ldr r3, off_813E6A4 // =0x17A0 
     sub r0, r0, r3
@@ -708,7 +708,7 @@ reqBBS_813E5DC:
     add r0, r0, r3
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     ldr r1, off_813E6A4 // =0x17A0 
     sub r7, r7, r1
     lsr r3, r7, #6
@@ -919,7 +919,7 @@ loc_813E870:
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     pop {r0,r1}
     beq loc_813E880
     add r7, #1
@@ -946,7 +946,7 @@ reqBBS_813E890:
     // cpyOff
     mov r2, #2
     // tileRefs
-    ldr r3, off_813E8C8 // =unk_813DBE4 
+    ldr r3, off_813E8C8 // =tileRefs_813DBE4 
     mov r4, #0x17
     mov r5, #0x10
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -970,7 +970,7 @@ reqBBS_813E890:
     mov r5, #0x14
     bl sub_80018D0
     pop {r4-r7,pc}
-off_813E8C8:    .word unk_813DBE4
+off_813E8C8:    .word tileRefs_813DBE4
 .endfunc // reqBBS_813E890
 
 .func
@@ -1034,7 +1034,7 @@ loc_813E934:
     push {r3}
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     pop {r3}
     beq loc_813E968
     push {r4-r7}
@@ -1108,7 +1108,7 @@ loc_813EAA6:
     add r0, r2, r3
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq loc_813EAD6
     push {r4-r7}
     // j
@@ -1360,7 +1360,7 @@ reqBBS_static_813EC54:
     push {lr}
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     mov r0, #8
     strb r0, [r5]
     mov r0, #0x68 
@@ -1532,7 +1532,7 @@ reqBBS_813ED60:
     ldr r1, [r1,#0xc]
     add r3, r3, r1
     add r0, r3, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq locret_813ED90
     add r0, r7, #0
     mov r1, #7
@@ -1774,382 +1774,60 @@ reqBBS_drawRequestBBS:
     // cpyOff
     mov r2, #2
     // tileRefs
-    ldr r3, off_813EF40 // =dword_813DF44 
+    ldr r3, off_813EF40 // =tileRefs_813DF44 
     mov r4, #0xc
     mov r5, #2
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7,pc}
-off_813EF40:    .word dword_813DF44
+off_813EF40:    .word tileRefs_813DF44
 reqBBS_entriesGfx:    .byte 0x35, 0x0, 0x0, 0xFF, 0xFF
     .byte 0xFF, 0xFF, 0xFF
-unk_813EF4C:    .byte  0
-    .byte 0x42, 0x2, 0x42
-    .byte  4
-    .byte 0x42, 0x6, 0x42
-    .byte  8
-    .byte 0x42, 0xA, 0x42
-    .byte 0xC
-    .byte 0x42, 0xE, 0x42
-    .byte 0x10
-    .byte 0x42, 0x12, 0x42
-    .byte 0x14
-    .byte 0x42, 0x16, 0x42
-    .byte 0x18
-    .byte 0x42, 0x1A, 0x42
-    .byte 0x1C
-    .byte 0x42, 0x1E, 0x42
-    .byte 0x20
-    .byte 0x42, 0x22, 0x42
-    .byte 0x24 
-    .byte 0x42, 0x26, 0x42
-    .byte 0x28 
-    .byte 0x42, 0x2A, 0x42
-    .byte 0x2C 
-    .byte 0x42, 0x1, 0x42
-    .byte  3
-    .byte 0x42, 0x5, 0x42
-    .byte  7
-    .byte 0x42, 0x9, 0x42
-    .byte 0xB
-    .byte 0x42, 0xD, 0x42
-    .byte 0xF
-    .byte 0x42, 0x11, 0x42
-    .byte 0x13
-    .byte 0x42, 0x15, 0x42
-    .byte 0x17
-    .byte 0x42, 0x19, 0x42
-    .byte 0x1B
-    .byte 0x42, 0x1D, 0x42
-    .byte 0x1F
-    .byte 0x42, 0x21, 0x42
-    .byte 0x23 
-    .byte 0x42, 0x25, 0x42
-    .byte 0x27 
-    .byte 0x42, 0x29, 0x42
-    .byte 0x2B 
-    .byte 0x42, 0x2D, 0x42
-    .byte 0x40 
-    .byte 0x52, 0x42, 0x52
-    .byte 0x44 
-    .byte 0x52, 0x46, 0x52
-    .byte 0x48 
-    .byte 0x52, 0x4A, 0x52
-    .byte 0x4C 
-    .byte 0x52, 0x4E, 0x52
-    .byte 0x50 
-    .byte 0x52, 0x52, 0x52
-    .byte 0x54 
-    .byte 0x52, 0x56, 0x52
-    .byte 0x58 
-    .byte 0x52, 0x5A, 0x52
-    .byte 0x5C 
-    .byte 0x52, 0x5E, 0x52
-    .byte 0x60 
-    .byte 0x52, 0x62, 0x52
-    .byte 0x64 
-    .byte 0x52, 0x66, 0x52
-    .byte 0x68 
-    .byte 0x52, 0x6A, 0x52
-    .byte 0x6C 
-    .byte 0x52, 0x41, 0x52
-    .byte 0x43 
-    .byte 0x52, 0x45, 0x52
-    .byte 0x47 
-    .byte 0x52, 0x49, 0x52
-    .byte 0x4B 
-    .byte 0x52, 0x4D, 0x52
-    .byte 0x4F 
-    .byte 0x52, 0x51, 0x52
-    .byte 0x53 
-    .byte 0x52, 0x55, 0x52
-    .byte 0x57 
-    .byte 0x52, 0x59, 0x52
-    .byte 0x5B 
-    .byte 0x52, 0x5D, 0x52
-    .byte 0x5F 
-    .byte 0x52, 0x61, 0x52
-    .byte 0x63 
-    .byte 0x52, 0x65, 0x52
-    .byte 0x67 
-    .byte 0x52, 0x69, 0x52
-    .byte 0x6B 
-    .byte 0x52, 0x6D, 0x52
-    .byte 0x80
-    .byte 0x42, 0x82, 0x42
-    .byte 0x84
-    .byte 0x42, 0x86, 0x42
-    .byte 0x88
-    .byte 0x42, 0x8A, 0x42
-    .byte 0x8C
-    .byte 0x42, 0x8E, 0x42
-    .byte 0x90
-    .byte 0x42, 0x92, 0x42
-    .byte 0x94
-    .byte 0x42, 0x96, 0x42
-    .byte 0x98
-    .byte 0x42, 0x9A, 0x42
-    .byte 0x9C
-    .byte 0x42, 0x9E, 0x42
-    .byte 0xA0
-    .byte 0x42, 0xA2, 0x42
-    .byte 0xA4
-    .byte 0x42, 0xA6, 0x42
-    .byte 0xA8
-    .byte 0x42, 0xAA, 0x42
-    .byte 0xAC
-    .byte 0x42, 0x81, 0x42
-    .byte 0x83
-    .byte 0x42, 0x85, 0x42
-    .byte 0x87
-    .byte 0x42, 0x89, 0x42
-    .byte 0x8B
-    .byte 0x42, 0x8D, 0x42
-    .byte 0x8F
-    .byte 0x42, 0x91, 0x42
-    .byte 0x93
-    .byte 0x42, 0x95, 0x42
-    .byte 0x97
-    .byte 0x42, 0x99, 0x42
-    .byte 0x9B
-    .byte 0x42, 0x9D, 0x42
-    .byte 0x9F
-    .byte 0x42, 0xA1, 0x42
-    .byte 0xA3
-    .byte 0x42, 0xA5, 0x42
-    .byte 0xA7
-    .byte 0x42, 0xA9, 0x42
-    .byte 0xAB
-    .byte 0x42, 0xAD, 0x42
-    .byte 0xC0
-    .byte 0x52, 0xC2, 0x52
-    .byte 0xC4
-    .byte 0x52, 0xC6, 0x52
-    .byte 0xC8
-    .byte 0x52, 0xCA, 0x52
-    .byte 0xCC
-    .byte 0x52, 0xCE, 0x52
-    .byte 0xD0
-    .byte 0x52, 0xD2, 0x52
-    .byte 0xD4
-    .byte 0x52, 0xD6, 0x52
-    .byte 0xD8
-    .byte 0x52, 0xDA, 0x52
-    .byte 0xDC
-    .byte 0x52, 0xDE, 0x52
-    .byte 0xE0
-    .byte 0x52, 0xE2, 0x52
-    .byte 0xE4
-    .byte 0x52, 0xE6, 0x52
-    .byte 0xE8
-    .byte 0x52, 0xEA, 0x52
-    .byte 0xEC
-    .byte 0x52, 0xC1, 0x52
-    .byte 0xC3
-    .byte 0x52, 0xC5, 0x52
-    .byte 0xC7
-    .byte 0x52, 0xC9, 0x52
-    .byte 0xCB
-    .byte 0x52, 0xCD, 0x52
-    .byte 0xCF
-    .byte 0x52, 0xD1, 0x52
-    .byte 0xD3
-    .byte 0x52, 0xD5, 0x52
-    .byte 0xD7
-    .byte 0x52, 0xD9, 0x52
-    .byte 0xDB
-    .byte 0x52, 0xDD, 0x52
-    .byte 0xDF
-    .byte 0x52, 0xE1, 0x52
-    .byte 0xE3
-    .byte 0x52, 0xE5, 0x52
-    .byte 0xE7
-    .byte 0x52, 0xE9, 0x52
-    .byte 0xEB
-    .byte 0x52, 0xED, 0x52
-    .byte  0
-    .byte 0x43, 0x2, 0x43
-    .byte  4
-    .byte 0x43, 0x6, 0x43
-    .byte  8
-    .byte 0x43, 0xA, 0x43
-    .byte 0xC
-    .byte 0x43, 0xE, 0x43
-    .byte 0x10
-    .byte 0x43, 0x12, 0x43
-    .byte 0x14
-    .byte 0x43, 0x16, 0x43
-    .byte 0x18
-    .byte 0x43, 0x1A, 0x43
-    .byte 0x1C
-    .byte 0x43, 0x1E, 0x43
-    .byte 0x20
-    .byte 0x43, 0x22, 0x43
-    .byte 0x24 
-    .byte 0x43, 0x26, 0x43
-    .byte 0x28 
-    .byte 0x43, 0x2A, 0x43
-    .byte 0x2C 
-    .byte 0x43, 0x1, 0x43
-    .byte  3
-    .byte 0x43, 0x5, 0x43
-    .byte  7
-    .byte 0x43, 0x9, 0x43
-    .byte 0xB
-    .byte 0x43, 0xD, 0x43
-    .byte 0xF
-    .byte 0x43, 0x11, 0x43
-    .byte 0x13
-    .byte 0x43, 0x15, 0x43
-    .byte 0x17
-    .byte 0x43, 0x19, 0x43
-    .byte 0x1B
-    .byte 0x43, 0x1D, 0x43
-    .byte 0x1F
-    .byte 0x43, 0x21, 0x43
-    .byte 0x23 
-    .byte 0x43, 0x25, 0x43
-    .byte 0x27 
-    .byte 0x43, 0x29, 0x43
-    .byte 0x2B 
-    .byte 0x43, 0x2D, 0x43
-    .byte 0x40 
-    .byte 0x53, 0x42, 0x53
-    .byte 0x44 
-    .byte 0x53, 0x46, 0x53
-    .byte 0x48 
-    .byte 0x53, 0x4A, 0x53
-    .byte 0x4C 
-    .byte 0x53, 0x4E, 0x53
-    .byte 0x50 
-    .byte 0x53, 0x52, 0x53
-    .byte 0x54 
-    .byte 0x53, 0x56, 0x53
-    .byte 0x58 
-    .byte 0x53, 0x5A, 0x53
-    .byte 0x5C 
-    .byte 0x53, 0x5E, 0x53
-    .byte 0x60 
-    .byte 0x53, 0x62, 0x53
-    .byte 0x64 
-    .byte 0x53, 0x66, 0x53
-    .byte 0x68 
-    .byte 0x53, 0x6A, 0x53
-    .byte 0x6C 
-    .byte 0x53, 0x41, 0x53
-    .byte 0x43 
-    .byte 0x53, 0x45, 0x53
-    .byte 0x47 
-    .byte 0x53, 0x49, 0x53
-    .byte 0x4B 
-    .byte 0x53, 0x4D, 0x53
-    .byte 0x4F 
-    .byte 0x53, 0x51, 0x53
-    .byte 0x53 
-    .byte 0x53, 0x55, 0x53
-    .byte 0x57 
-    .byte 0x53, 0x59, 0x53
-    .byte 0x5B 
-    .byte 0x53, 0x5D, 0x53
-    .byte 0x5F 
-    .byte 0x53, 0x61, 0x53
-    .byte 0x63 
-    .byte 0x53, 0x65, 0x53
-    .byte 0x67 
-    .byte 0x53, 0x69, 0x53
-    .byte 0x6B 
-    .byte 0x53, 0x6D, 0x53
-    .byte 0x80
-    .byte 0x43, 0x82, 0x43
-    .byte 0x84
-    .byte 0x43, 0x86, 0x43
-    .byte 0x88
-    .byte 0x43, 0x8A, 0x43
-    .byte 0x8C
-    .byte 0x43, 0x8E, 0x43
-    .byte 0x90
-    .byte 0x43, 0x92, 0x43
-    .byte 0x94
-    .byte 0x43, 0x96, 0x43
-    .byte 0x98
-    .byte 0x43, 0x9A, 0x43
-    .byte 0x9C
-    .byte 0x43, 0x9E, 0x43
-    .byte 0xA0
-    .byte 0x43, 0xA2, 0x43
-    .byte 0xA4
-    .byte 0x43, 0xA6, 0x43
-    .byte 0xA8
-    .byte 0x43, 0xAA, 0x43
-    .byte 0xAC
-    .byte 0x43, 0x81, 0x43
-    .byte 0x83
-    .byte 0x43, 0x85, 0x43
-    .byte 0x87
-    .byte 0x43, 0x89, 0x43
-    .byte 0x8B
-    .byte 0x43, 0x8D, 0x43
-    .byte 0x8F
-    .byte 0x43, 0x91, 0x43
-    .byte 0x93
-    .byte 0x43, 0x95, 0x43
-    .byte 0x97
-    .byte 0x43, 0x99, 0x43
-    .byte 0x9B
-    .byte 0x43, 0x9D, 0x43
-    .byte 0x9F
-    .byte 0x43, 0xA1, 0x43
-    .byte 0xA3
-    .byte 0x43, 0xA5, 0x43
-    .byte 0xA7
-    .byte 0x43, 0xA9, 0x43
-    .byte 0xAB
-    .byte 0x43, 0xAD, 0x43
-    .byte 0xC0
-    .byte 0x53, 0xC2, 0x53
-    .byte 0xC4
-    .byte 0x53, 0xC6, 0x53
-    .byte 0xC8
-    .byte 0x53, 0xCA, 0x53
-    .byte 0xCC
-    .byte 0x53, 0xCE, 0x53
-    .byte 0xD0
-    .byte 0x53, 0xD2, 0x53
-    .byte 0xD4
-    .byte 0x53, 0xD6, 0x53
-    .byte 0xD8
-    .byte 0x53, 0xDA, 0x53
-    .byte 0xDC
-    .byte 0x53, 0xDE, 0x53
-    .byte 0xE0
-    .byte 0x53, 0xE2, 0x53
-    .byte 0xE4
-    .byte 0x53, 0xE6, 0x53
-    .byte 0xE8
-    .byte 0x53, 0xEA, 0x53
-    .byte 0xEC
-    .byte 0x53, 0xC1, 0x53
-    .byte 0xC3
-    .byte 0x53, 0xC5, 0x53
-    .byte 0xC7
-    .byte 0x53, 0xC9, 0x53
-    .byte 0xCB
-    .byte 0x53, 0xCD, 0x53
-    .byte 0xCF
-    .byte 0x53, 0xD1, 0x53
-    .byte 0xD3
-    .byte 0x53, 0xD5, 0x53
-    .byte 0xD7
-    .byte 0x53, 0xD9, 0x53
-    .byte 0xDB
-    .byte 0x53, 0xDD, 0x53
-    .byte 0xDF
-    .byte 0x53, 0xE1, 0x53
-    .byte 0xE3
-    .byte 0x53, 0xE5, 0x53
-    .byte 0xE7
-    .byte 0x53, 0xE9, 0x53
-    .byte 0xEB
-    .byte 0x53, 0xED, 0x53
+tileRefs_813EF4C:    .hword 0x4200, 0x4202, 0x4204, 0x4206, 0x4208, 0x420A, 0x420C, 0x420E
+    .hword 0x4210, 0x4212, 0x4214, 0x4216, 0x4218, 0x421A, 0x421C, 0x421E
+    .hword 0x4220, 0x4222, 0x4224, 0x4226, 0x4228, 0x422A, 0x422C, 0x4201
+    .hword 0x4203, 0x4205, 0x4207, 0x4209, 0x420B, 0x420D, 0x420F, 0x4211
+    .hword 0x4213, 0x4215, 0x4217, 0x4219, 0x421B, 0x421D, 0x421F, 0x4221
+    .hword 0x4223, 0x4225, 0x4227, 0x4229, 0x422B, 0x422D, 0x5240, 0x5242
+    .hword 0x5244, 0x5246, 0x5248, 0x524A, 0x524C, 0x524E, 0x5250, 0x5252
+    .hword 0x5254, 0x5256, 0x5258, 0x525A, 0x525C, 0x525E, 0x5260, 0x5262
+    .hword 0x5264, 0x5266, 0x5268, 0x526A, 0x526C, 0x5241, 0x5243, 0x5245
+    .hword 0x5247, 0x5249, 0x524B, 0x524D, 0x524F, 0x5251, 0x5253, 0x5255
+    .hword 0x5257, 0x5259, 0x525B, 0x525D, 0x525F, 0x5261, 0x5263, 0x5265
+    .hword 0x5267, 0x5269, 0x526B, 0x526D, 0x4280, 0x4282, 0x4284, 0x4286
+    .hword 0x4288, 0x428A, 0x428C, 0x428E, 0x4290, 0x4292, 0x4294, 0x4296
+    .hword 0x4298, 0x429A, 0x429C, 0x429E, 0x42A0, 0x42A2, 0x42A4, 0x42A6
+    .hword 0x42A8, 0x42AA, 0x42AC, 0x4281, 0x4283, 0x4285, 0x4287, 0x4289
+    .hword 0x428B, 0x428D, 0x428F, 0x4291, 0x4293, 0x4295, 0x4297, 0x4299
+    .hword 0x429B, 0x429D, 0x429F, 0x42A1, 0x42A3, 0x42A5, 0x42A7, 0x42A9
+    .hword 0x42AB, 0x42AD, 0x52C0, 0x52C2, 0x52C4, 0x52C6, 0x52C8, 0x52CA
+    .hword 0x52CC, 0x52CE, 0x52D0, 0x52D2, 0x52D4, 0x52D6, 0x52D8, 0x52DA
+    .hword 0x52DC, 0x52DE, 0x52E0, 0x52E2, 0x52E4, 0x52E6, 0x52E8, 0x52EA
+    .hword 0x52EC, 0x52C1, 0x52C3, 0x52C5, 0x52C7, 0x52C9, 0x52CB, 0x52CD
+    .hword 0x52CF, 0x52D1, 0x52D3, 0x52D5, 0x52D7, 0x52D9, 0x52DB, 0x52DD
+    .hword 0x52DF, 0x52E1, 0x52E3, 0x52E5, 0x52E7, 0x52E9, 0x52EB, 0x52ED
+    .hword 0x4300, 0x4302, 0x4304, 0x4306, 0x4308, 0x430A, 0x430C, 0x430E
+    .hword 0x4310, 0x4312, 0x4314, 0x4316, 0x4318, 0x431A, 0x431C, 0x431E
+    .hword 0x4320, 0x4322, 0x4324, 0x4326, 0x4328, 0x432A, 0x432C, 0x4301
+    .hword 0x4303, 0x4305, 0x4307, 0x4309, 0x430B, 0x430D, 0x430F, 0x4311
+    .hword 0x4313, 0x4315, 0x4317, 0x4319, 0x431B, 0x431D, 0x431F, 0x4321
+    .hword 0x4323, 0x4325, 0x4327, 0x4329, 0x432B, 0x432D, 0x5340, 0x5342
+    .hword 0x5344, 0x5346, 0x5348, 0x534A, 0x534C, 0x534E, 0x5350, 0x5352
+    .hword 0x5354, 0x5356, 0x5358, 0x535A, 0x535C, 0x535E, 0x5360, 0x5362
+    .hword 0x5364, 0x5366, 0x5368, 0x536A, 0x536C, 0x5341, 0x5343, 0x5345
+    .hword 0x5347, 0x5349, 0x534B, 0x534D, 0x534F, 0x5351, 0x5353, 0x5355
+    .hword 0x5357, 0x5359, 0x535B, 0x535D, 0x535F, 0x5361, 0x5363, 0x5365
+    .hword 0x5367, 0x5369, 0x536B, 0x536D, 0x4380, 0x4382, 0x4384, 0x4386
+    .hword 0x4388, 0x438A, 0x438C, 0x438E, 0x4390, 0x4392, 0x4394, 0x4396
+    .hword 0x4398, 0x439A, 0x439C, 0x439E, 0x43A0, 0x43A2, 0x43A4, 0x43A6
+    .hword 0x43A8, 0x43AA, 0x43AC, 0x4381, 0x4383, 0x4385, 0x4387, 0x4389
+    .hword 0x438B, 0x438D, 0x438F, 0x4391, 0x4393, 0x4395, 0x4397, 0x4399
+    .hword 0x439B, 0x439D, 0x439F, 0x43A1, 0x43A3, 0x43A5, 0x43A7, 0x43A9
+    .hword 0x43AB, 0x43AD, 0x53C0, 0x53C2, 0x53C4, 0x53C6, 0x53C8, 0x53CA
+    .hword 0x53CC, 0x53CE, 0x53D0, 0x53D2, 0x53D4, 0x53D6, 0x53D8, 0x53DA
+    .hword 0x53DC, 0x53DE, 0x53E0, 0x53E2, 0x53E4, 0x53E6, 0x53E8, 0x53EA
+    .hword 0x53EC, 0x53C1, 0x53C3, 0x53C5, 0x53C7, 0x53C9, 0x53CB, 0x53CD
+    .hword 0x53CF, 0x53D1, 0x53D3, 0x53D5, 0x53D7, 0x53D9, 0x53DB, 0x53DD
+    .hword 0x53DF, 0x53E1, 0x53E3, 0x53E5, 0x53E7, 0x53E9, 0x53EB, 0x53ED
 unk_813F22C:    .byte  0
     .byte 0x60, 0x0, 0x60
     .byte  0
@@ -2334,9 +2012,11 @@ jt_813F42C:    .word reqBBS_813F474+1
 .thumb_func
 reqBBS_813F474:
     push {lr}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3a 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_813F4B6
     ldr r0, off_813F548 // =sReqBBS_GUI 
     ldr r1, dword_813F544 // =0xF 
@@ -2345,7 +2025,7 @@ reqBBS_813F474:
     ldr r3, [r3,#0x18] // (dword_813F364 - 0x813f34c)
     add r2, r2, r3
     add r0, r2, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq loc_813F4B6
     ldr r0, off_813F548 // =sReqBBS_GUI 
     ldr r1, dword_813F544 // =0xF 
@@ -2353,12 +2033,12 @@ reqBBS_813F474:
     ldr r3, off_813F54C // =reqBBS_textualPointers 
     ldr r3, [r3,#0x14] // (dword_813F354+0xC - 0x813f34c)
     add r2, r2, r3
-    // a1
+    // bitfield
     add r0, r2, #0
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     mov r0, #0x17
     mov r1, #0x3a 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     ldr r0, off_813F548 // =sReqBBS_GUI 
     ldr r1, dword_813F544 // =0xF 
     mov r3, #0
@@ -2387,7 +2067,7 @@ loc_813F4B6:
     bl sub_80015FC
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     ldr r0, off_813F534 // =reqBBS_entriesGfx 
     bl sub_80465A0 // (void *a1) -> void
     ldrh r0, [r5,#0x1e]
@@ -2593,10 +2273,10 @@ loc_813F678:
     mov r8, r0
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq loc_813F6A6
     mov r0, r8
-    bl loc_802F130 // (int a1, int a2) -> void
+    bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     ldrb r0, [r5,#5]
     add r0, #0
     strb r0, [r5,#5]
@@ -2866,7 +2546,7 @@ loc_813F884:
     strb r0, [r5,#8]
     mov r0, #0x10
     mov r1, #8
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
 loc_813F8A8:
     bl reqBBS_813F8F0
 .endfunc // reqBBS_813F868
@@ -2894,7 +2574,7 @@ reqBBS_813F8B0:
     bne loc_813F8DE
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     mov r0, #8
     strb r0, [r5]
     b loc_813F8E6
@@ -3005,7 +2685,7 @@ reqBBS_813F9A0:
     mov r1, #2
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     add r0, r7, #0
     ldr r3, off_813FD74 // =0x1B60 
     sub r0, r0, r3
@@ -3013,7 +2693,7 @@ reqBBS_813F9A0:
     add r0, r0, r3
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     ldr r1, off_813FD74 // =0x1B60 
     sub r7, r7, r1
     lsr r3, r7, #6
@@ -3234,9 +2914,11 @@ loc_813FB40:
     mov r0, #8
     bl chatbox_8045F3C
     beq loc_813FB98
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3a 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_813FB6E
     ldr r0, off_813FBB4 // =reqBBS_requestInfo_textOffsets 
     ldr r1, off_813FDA4 // =sReqBBS_GUI 
@@ -3589,7 +3271,7 @@ loc_813FE90:
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     pop {r0,r1}
     beq loc_813FEA0
     add r7, #1
@@ -3616,7 +3298,7 @@ reqBBS_813FEB0:
     // cpyOff
     mov r2, #2
     // tileRefs
-    ldr r3, off_813FEE8 // =unk_813EF4C 
+    ldr r3, off_813FEE8 // =tileRefs_813EF4C 
     mov r4, #0x17
     mov r5, #0x10
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -3638,7 +3320,7 @@ reqBBS_813FEB0:
     mov r5, #0x14
     bl sub_80018D0
     pop {r4-r7,pc}
-off_813FEE8:    .word unk_813EF4C
+off_813FEE8:    .word tileRefs_813EF4C
 .func
 .thumb_func
 reqBBS_renderRequestNames:
@@ -3962,7 +3644,7 @@ loc_814005E:
     add r0, r2, r3
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq loc_814008E
     push {r4-r7}
     // j
@@ -4069,7 +3751,7 @@ loc_81401CE:
     add r0, r2, r3
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq loc_81401FC
     push {r4-r7}
     // j
@@ -4096,7 +3778,7 @@ loc_81401FC:
     add r0, r2, r3
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq loc_8140228
     push {r4-r7}
     // j
@@ -4147,7 +3829,7 @@ loc_8140252:
     add r0, r2, r3
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq loc_81402B4
     push {r4-r7}
     mov r0, #0x16
@@ -4342,7 +4024,7 @@ reqBBS_81403A8:
     push {lr}
     mov r0, #0xc
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     mov r0, #8
     strb r0, [r5]
     mov r0, #0x68 
@@ -4563,7 +4245,7 @@ off_8140550:    .word sReqBBS_GUI
 .thumb_func
 reqBBS_changeChatboxHeader:
     push {r4-r7,lr}
-    bl reqBBS_getTotalPointsIndex
+    bl reqBBS_getTotalPointsIndex // () -> u8
     mov r1, #8
     add r1, r1, r0
     ldr r0, off_8140574 // =reqBBS_dialogList 
@@ -4677,7 +4359,7 @@ reqBBS_8140604:
     ldr r1, [r1,#0xc]
     add r3, r3, r1
     add r0, r3, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq locret_8140634
     add r0, r7, #0
     mov r1, #7
@@ -4881,6 +4563,7 @@ off_8140794:    .word byte_2008450
 
 .func
 .thumb_func
+// () -> u8
 reqBBS_getTotalPointsIndex:
     push {r4-r7,lr}
     ldr r0, off_81409A4 // =sReqBBS_GUI 
@@ -4931,9 +4614,11 @@ dword_81407D4:    .word 0xD
 .thumb_func
 reqBBS_81407D8:
     push {r4-r7,lr}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #0x3a 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_8140814
     ldr r0, off_81409B4 // =sReqBBS_GUI 
     ldr r1, dword_8140820 // =0xF 
@@ -4974,7 +4659,7 @@ dword_8140828:    .word 0x4B23190A, 0x0
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq loc_8140844
     mov r0, #1
     b locret_8140846
@@ -4992,7 +4677,7 @@ reqBBS_814084C:
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq loc_8140860
     mov r0, #1
     b locret_8140862
@@ -5012,7 +4697,7 @@ reqBBS_8140868:
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq loc_814087C
     mov r0, #1
     b locret_814087E
@@ -5028,7 +4713,7 @@ off_8140880:    .word reqBBS_textualPointers
 reqBBS_8140884:
     push {r4-r7,lr}
     push {r0}
-    bl reqBBS_getTotalPointsIndex
+    bl reqBBS_getTotalPointsIndex // () -> u8
     pop {r2}
     ldr r1, off_81409C0 // =dword_813F380 
     ldrb r1, [r1,r2]
@@ -5052,7 +4737,7 @@ reqBBS_81408A0:
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     pop {r4-r7,pc}
 off_81408B0:    .word reqBBS_textualPointers
 .endfunc // reqBBS_81408A0
@@ -5066,7 +4751,7 @@ reqBBS_81408B4:
     add r0, r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     pop {r4-r7,pc}
 off_81408C4:    .word reqBBS_textualPointers
 .endfunc // reqBBS_81408B4
@@ -5115,9 +4800,10 @@ reqBBS_81408F0:
     bl reqBBS_8140868
     tst r0, r0
     bne loc_814095E
+    // flag 5 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
     mov r0, #0x17
     mov r1, #0x3a 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_8140962
     bl reqBBS_81408C8
     bl reqBBS_8140884
@@ -5125,17 +4811,19 @@ reqBBS_81408F0:
     bne loc_8140966
     mov r0, #0x17
     mov r1, #0x1d
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_814095A
     bl getPETNaviSelect // () -> u8
     cmp r0, #0
     bne loc_814095A
+    // flag 5 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
     mov r0, #0x17
     mov r1, #0x3a 
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+    // flag 3 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
     mov r0, #0x17
     mov r1, #0x3c 
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     bl reqBBS_81408C8
     bl reqBBS_81408A0
     bl reqBBS_81408DC
@@ -5202,10 +4890,11 @@ off_81409CC:    .word sReqBBS_GUI
 
 .func
 .thumb_func
+// (int a1) -> int
 reqBBS_81409D0:
     push {r6,lr}
     add r6, r0, #0
-    bl sub_800151C
+    bl change_20013F0_800151C // () -> int
     mov r1, #0xff
     and r0, r1
     add r1, r6, #0
@@ -5219,9 +4908,9 @@ reqBBS_81409D0:
 reqBBS_81409E4:
     push {lr}
     mov r0, r10
-    ldr r0, [r0,#0x3c]
-    ldr r0, [r0,#0x18]
-    add r0, #0x1c
+    ldr r0, [r0,#0x3c] // Toolkit.gamestate
+    ldr r0, [r0,#0x18] // GameState.player
+    add r0, #0x1c // NPC.scriptArrayOffset
     bl sub_8031A7A
     pop {pc}
 .endfunc // reqBBS_81409E4
@@ -5231,62 +4920,75 @@ reqBBS_81409E4:
 reqBBS_81409F4:
     push {lr}
     mov r1, r10
-    ldr r1, [r1,#0x3c]
-    ldrb r0, [r1,#0xe]
+    ldr r1, [r1,#0x3c] // Toolkit.gamestate
+    ldrb r0, [r1,#0xe] // GameState.unk_0E
     pop {pc}
     .byte 0, 0
 .endfunc // reqBBS_81409F4
 
 .func
 .thumb_func
-reqBBS_8140A00:
+reqBBS_setFlag_e17b0f7_8140A00:
+    // entry 17, byte 0, flag 7
     push {lr}
+    // flag 7 @ 0x2001C88[0x17<<5 + 0x0] (=2001F68)
     mov r0, #0x17
     mov r1, #0
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     pop {pc}
-.endfunc // reqBBS_8140A00
+.endfunc // reqBBS_setFlag_e17b0f7_8140A00
 
 .func
 .thumb_func
-reqBBS_8140A0C:
+reqBBS_clearFlag_8140A0C:
     push {r4,r5,lr}
+    // flag 7 @ 0x2001C88[0x17<<5 + 0x0] (=2001F68)
     mov r0, #0x17
     mov r1, #0
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r5, r10
-    ldr r5, [r5,#0x40]
+    ldr r5, [r5,#0x40] // Toolkit.unk_2001C04
     mov r3, #0x14
     ldrh r0, [r5,r3]
     mov r3, #0x12
     strh r0, [r5,r3]
     pop {r4,r5,pc}
-.endfunc // reqBBS_8140A0C
+.endfunc // reqBBS_clearFlag_8140A0C
 
+.func
+.thumb_func
+reqBBS_setFlags_8140A24:
     push {lr}
     mov r0, #0x16
     mov r1, #0x40 
     mov r2, #0x40 
-    bl sub_802F17E // (int a1, int a2) -> void
+    bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
     mov r0, #0x16
     mov r1, #0xc0
     mov r2, #0x10
-    bl sub_802F17E // (int a1, int a2) -> void
+    bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
     mov r0, #0
     pop {pc}
     .byte 0, 0
+.endfunc // reqBBS_setFlags_8140A24
+
+.func
+.thumb_func
+reqBBS_setFlags_8140A40:
     push {lr}
     mov r0, #0x16
     mov r1, #0xf3
     mov r2, #0xd
-    bl sub_802F17E // (int a1, int a2) -> void
+    bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
     mov r0, #0x16
     mov r1, #0xc0
     mov r2, #0x10
-    bl sub_802F17E // (int a1, int a2) -> void
+    bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
     mov r0, #0
     pop {pc}
     .balign 4, 0x00
+.endfunc // reqBBS_setFlags_8140A40
+
 .func
 .thumb_func
 reqBBS_runDialog_8140A70:

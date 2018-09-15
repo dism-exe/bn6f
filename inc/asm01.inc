@@ -32,14 +32,14 @@
 .include "asm00_0.inc"
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 
 .include "asm00_1.inc"
 // .global sub_800A0D6
 
 .include "asm03_0.inc"
 // .global get_802D246 // () -> int
-// .global sub_802F164 // (int a1, int a2) -> zf
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 // .global sub_803C620
 // .global sub_803DCE8
 // .global sub_803DE88

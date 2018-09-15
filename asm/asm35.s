@@ -369,7 +369,7 @@ off_812ED54:    .word word_2023FA0
     bne loc_812ED6A
     mov r0, #8
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
 loc_812ED6A:
     mov r0, #0x1c
     strb r0, [r5,#2]

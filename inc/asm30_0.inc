@@ -1,10 +1,8 @@
-.ifndef INC_ASM30
-.equ INC_ASM30, 0
+.ifndef INC_ASM30_0
+.equ INC_ASM30_0, 0
 
 /* Public Symbols */
 .global sub_80AED50
-.global battleSettingsList0
-.global BattleSettingsList1
 
 
 /* External Symbols */
@@ -63,4 +61,4 @@
 .equ dword_810D198, 0x810D198
 .equ dword_810D724, 0x810D724
 
-.endif // INC_ASM30
+.endif // INC_ASM30_0

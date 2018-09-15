@@ -5,9 +5,9 @@
 .global chatbox_uncomp_803FD08 // () -> int
 .global chatbox_runScript_202da04 // (u8 scriptID) -> void
 .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
-.global chatbox_803FD9C
+.global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
 .global loc_803FDA4
-.global chatbox_803FE08
+.global chatbox_runScript_803FE08 // (u16 *scriptArr, u8 scriptID) -> void
 .global chatbox_803FE10
 .global chatbox_runScript_803FE74 // (u16 *scriptArr, u8 scriptID) -> void
 .global chatbox_onUpdate_803FEB4
@@ -37,12 +37,12 @@
 // .global sound_bgmusic_play // (int a1) -> void
 // .global sub_800068A
 // .global sub_80006A2
-// .global sub_8000784
+// .global musicGameState_8000784 // () -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 // .global loc_8000AC8
 // .global sub_8000C00
@@ -50,7 +50,7 @@
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010D4
 // .global sub_80010EC
-// .global sub_800151C
+// .global change_20013F0_800151C // () -> int
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_8002694
 
@@ -69,15 +69,15 @@
 // .global sub_8002DEA
 // .global sub_8002F90 // () -> void
 // .global sub_8003A64
-// .global sub_8005BC8
+// .global gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
 // .global subsystem_launchBBS
 // .global subsystem_launchReqBBS
 // .global subsystem_launchShop
 // .global subsystem_launchChipTrader
 // .global sub_8005EA2
 // .global subsystem_launchMail
-// .global engine_setScreeneffect
-// .global getBattleSettingsFromList0
+// .global engine_setScreeneffect // (int a1, int a2) -> void
+// .global getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
 // .global sub_800B6B0
 
 .include "asm00_2.inc"
@@ -85,7 +85,7 @@
 // .global sub_80137FE
 
 .include "asm02.inc"
-// .global dword_8021AEC
+// .global sub_8021AEE
 // .global sub_8021B78 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021BC0
@@ -93,13 +93,13 @@
 // .global sub_8021C02
 
 .include "asm03_0.inc"
-// .global sub_802F114 // (int a1) -> void
-// .global loc_802F130
-// .global sub_802F14C // (int a1) -> void
-// .global sub_802F164 // (int a1, int a2) -> zf
-// .global zf_802F168
-// .global loc_802F182
-// .global loc_802F1AC
+// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 // .global loc_802F200
 // .global sub_802F238
 // .global sub_802FE28
@@ -132,7 +132,7 @@
 
 .include "asm28_0.inc"
 // .global sub_809CA84
-// .global sub_809E0B0
+// .global updateFlags_809E0B0 // () -> void
 // .global sub_809E122
 // .global sub_809E13C
 // .global sub_809E14C
@@ -156,7 +156,7 @@
 // .global reqBBS_813E5DC
 // .global dword_813F380
 // .global reqBBS_813F9A0
-// .global reqBBS_getTotalPointsIndex
+// .global reqBBS_getTotalPointsIndex // () -> u8
 // .global reqBBS_81408B4
 
 .include "asm37_1.inc"
@@ -200,7 +200,7 @@
 .equ unk_3001B40, 0x3001B40
 .equ sub_3006F8C, 0x3006F8C
 .equ loc_3007038, 0x3007038
-.equ loc_30070B4, 0x30070B4
+.equ sub_30070B4, 0x30070B4
 .equ dword_8070604, 0x8070604
 .equ dword_84E0554, 0x84E0554
 .equ dword_86A4740, 0x86A4740

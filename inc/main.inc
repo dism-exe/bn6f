@@ -52,10 +52,10 @@
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global subsystem_triggerTransition_800630A
 // .global sub_8006910
-// .global CpuSet_toolKit
+// .global CpuSet_toolKit // () -> void
 // .global sub_8006C22
 // .global sub_80071B4
-// .global zf_checkSameSubsystem_800A732
+// .global isSameSubsystem_800A732 // () -> zf
 
 .include "asm03_0.inc"
 // .global Load_ho_802F544

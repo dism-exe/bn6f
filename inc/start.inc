@@ -15,7 +15,7 @@
 // .global main_
 
 .include "asm00_1.inc"
-// .global CpuSet_toolKit
+// .global CpuSet_toolKit // () -> void
 // .global sub_8006C22
 
 

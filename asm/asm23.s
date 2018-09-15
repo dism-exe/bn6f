@@ -456,7 +456,7 @@ sub_80897E8:
     beq loc_8089804
     mov r0, #4
     mov r1, #0xff
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     mov r0, #0x24 
     strb r0, [r5]
 loc_8089804:
@@ -472,7 +472,7 @@ sub_8089808:
     beq loc_8089822
     mov r0, #0
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     mov r0, #5
     bl sub_8089CB0
     mov r0, #0x28 
@@ -673,7 +673,7 @@ sub_8089960:
     beq loc_808997A
     mov r0, #4
     mov r1, #0xff
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     mov r0, #0x4c 
     strb r0, [r5]
 loc_808997A:
@@ -689,7 +689,7 @@ sub_808997E:
     beq loc_8089998
     mov r0, #0
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     mov r0, #5
     bl sub_8089CB0
     mov r0, #0x50 
@@ -805,23 +805,27 @@ sub_8089A60:
     bl sub_81427CE
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl loc_802F130 // (int a1, int a2) -> void
+    bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     bl sub_814219C
     str r0, [r7,#0x10]
     bl sub_81422B4
+    // entryIdx
     mov r0, #7
+    // byteFlagIdx
     mov r1, #0x40 
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #2
     mov r1, #0x25 
-    bl sub_802F12C // (int a1, int a2) -> void
+    bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, r10
     ldr r0, [r0,#0x3c]
     mov r1, #0
     strb r1, [r0,#0x15]
+    // entryIdx
     mov r0, #0
+    // byteFlagIdx
     mov r1, #0x28 
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_8089ABA
     bl sub_81426CE
     cmp r0, #6
@@ -929,7 +933,7 @@ sub_8089B54:
     bl sub_809E2AE
     bl sub_809E2B8
     bl sub_809E13C
-    bl reqBBS_8140A0C
+    bl reqBBS_clearFlag_8140A0C
     mov r0, #0x18
     strb r0, [r5]
 loc_8089B7A:
@@ -990,9 +994,11 @@ sub_8089BC0:
     mov r0, #0x80
     bl chatbox_8045F3C
     bne loc_8089BE0
+    // entryIdx
     mov r0, #7
+    // byteFlagIdx
     mov r1, #0x45 
-    bl sub_802F110
+    bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     mov r0, #0
     strb r0, [r5,#8]
     mov r0, #0x1e

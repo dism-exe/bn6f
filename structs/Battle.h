@@ -6,6 +6,7 @@
 
 /**
  * Structure obtained from sub_080182B4
+ * TODO: size not complete?
  */
 typedef struct {
 	// size=0x3

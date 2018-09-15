@@ -13,7 +13,7 @@
 .global sound_8000672
 .global sub_800068A
 .global sub_80006A2
-.global sub_8000784
+.global musicGameState_8000784 // () -> void
 .global sub_80007B2
 .global sub_80007BE
 .global sub_80008B4
@@ -22,7 +22,7 @@
 .global CpuFastSet_8000900 // (int a1, int a2) -> void
 .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-.global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+.global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 .global sub_800096C
@@ -51,7 +51,7 @@
 .global sub_8000FAC
 .global sub_8001040
 .global loc_8001048
-.global sub_800107A
+.global updatePlayerGameState_800107A // () -> void
 .global getPETNaviSelect // () -> u8
 .global sub_80010BE
 .global sub_80010C6
@@ -69,9 +69,9 @@
 .global sub_800139A
 .global sub_80013A2
 .global sub_80014D4
-.global sub_80014EC
+.global copyWords_80014EC // (void *src, void *dest, int size) -> void
 .global sub_8001514
-.global sub_800151C
+.global change_20013F0_800151C // () -> int
 .global sub_8001532
 .global sub_800154C // () -> void
 .global sub_8001562
@@ -148,12 +148,12 @@
 // .global sub_80137FE
 
 .include "asm03_0.inc"
-// .global sub_802F110
-// .global sub_802F114 // (int a1) -> void
-// .global sub_802F12C // (int a1, int a2) -> void
-// .global loc_802F130
-// .global sub_802F164 // (int a1, int a2) -> zf
-// .global zf_802F168
+// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global sub_802F1FC // (int a3, int a2) ->
 // .global sub_802FE28
 // .global sub_8030808

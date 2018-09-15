@@ -20,14 +20,14 @@
 .include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001172
 // .global calcAngle_800117C
 // .global sub_800118A
 // .global sub_80011D6
 // .global sub_80014D4
-// .global sub_800151C
+// .global change_20013F0_800151C // () -> int
 // .global sub_8001532
 
 .include "sprite.inc"
@@ -67,7 +67,7 @@
 .include "asm00_2.inc"
 // .global sub_800F23C
 // .global sub_80136CC
-// .global sub_80137B6
+// .global sub_80137B6 // (int a1, int a2) -> u8
 // .global sub_80137FE
 // .global sub_80182B4
 
@@ -87,19 +87,19 @@
 // .global off_80202F8
 
 .include "asm02.inc"
-// .global refIndex_8021DA8 // (int idx) -> void*
+// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
 // .global sub_8021B2A
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 
 .include "asm03_0.inc"
 // .global sub_802D266
 // .global sub_802D652
-// .global sub_802F110
-// .global sub_802F114 // (int a1) -> void
-// .global sub_802F12C // (int a1, int a2) -> void
-// .global loc_802F130
-// .global sub_802F164 // (int a1, int a2) -> zf
-// .global zf_802F168
+// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global sub_80302A8
 // .global sub_8031612
 // .global sub_8031A7A
@@ -122,7 +122,7 @@
 // .global sub_809BA14
 // .global sub_809C890
 // .global sub_809C940
-// .global sub_809E0B0
+// .global updateFlags_809E0B0 // () -> void
 // .global sub_809E122
 // .global sub_809E13C
 // .global sub_809E1AE
@@ -131,7 +131,7 @@
 // .global sub_809E3A2
 // .global sub_809E462
 
-.include "asm30.inc"
+.include "asm30_0.inc"
 // .global sub_80AED50
 
 .include "asm32.inc"
@@ -141,11 +141,11 @@
 // .global sub_81279A8
 
 .include "reqBBS.inc"
-// .global reqBBS_81409D0
+// .global reqBBS_81409D0 // (int a1) -> int
 // .global reqBBS_81409E4
 // .global reqBBS_81409F4
-// .global reqBBS_8140A00
-// .global reqBBS_8140A0C
+// .global reqBBS_setFlag_e17b0f7_8140A00
+// .global reqBBS_clearFlag_8140A0C
 // .global reqBBS_runDialog_8140A70
 // .global dword_8140C60
 // .global dword_8140C68

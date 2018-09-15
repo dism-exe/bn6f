@@ -11,7 +11,7 @@
 /* External Symbols */
 .include "asm00_0.inc"
 // .global sound_play // () -> void
-// .global sub_800151C
+// .global change_20013F0_800151C // () -> int
 // .global sub_8001778
 // .global sub_8001780
 // .global sub_800195C

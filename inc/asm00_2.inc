@@ -117,11 +117,11 @@
 .global sub_8012EA8
 .global sub_80133EC
 .global sub_8013422
-.global sub_8013438
+.global initStruct_8013438 // (void *struc) -> void
 .global sub_80134C8
 .global sub_8013554
 .global sub_80135E8
-.global sub_8013682
+.global sub_8013682 // (int idx) -> void*
 .global sub_80136CC
 .global sub_80136D8
 .global sub_80136E4
@@ -132,7 +132,7 @@
 .global sub_8013774
 .global sub_8013790
 .global navicust_801379E // (int a1, int a2, int a3) -> void
-.global sub_80137B6
+.global sub_80137B6 // (int a1, int a2) -> u8
 .global sub_80137E6
 .global sub_80137FE
 .global sub_8013816
@@ -144,14 +144,14 @@
 .global sub_8013884
 .global sub_801393A
 .global sub_80139C4
-.global sub_8013B4E
-.global loc_8013B64
+.global init_8013B4E // (bool a1, int a2) -> void
+.global init_8013B64 // (int idx, int a2) -> void
 .global sub_8013CC4
 .global sub_8013D5E
 .global sub_8013DA0
 .global sub_8013FAE
 .global sub_8013FD0
-.global navicust_8014018 // (int a1) -> int
+.global navicust_8014018 // (int idx_8014034) -> bool
 .global sub_801401E
 .global sub_8014040
 .global sub_8014178
@@ -225,8 +225,8 @@
 .global sub_801A140
 .global sub_801A146
 .global object_setFlag // (int a1) -> void
-.global object_clearFlag
-.global object_getFlag
+.global object_clearFlag // (int bitfield) -> void
+.global object_getFlag // () -> int
 .global sub_801A16C
 .global sub_801A176
 .global sub_801A180
@@ -323,10 +323,10 @@
 
 .include "asm00_0.inc"
 // .global sound_play // () -> void
-// .global sub_8000784
+// .global musicGameState_8000784 // () -> void
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global loc_8000AC4
 // .global loc_8000AC8
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
@@ -337,7 +337,7 @@
 // .global calcAngle_800117C
 // .global sub_80011A0
 // .global sub_800139A
-// .global sub_800151C
+// .global change_20013F0_800151C // () -> int
 // .global sub_8001532
 // .global sub_8001562
 // .global sub_800187C
@@ -369,7 +369,7 @@
 // .global sub_8002FB2
 // .global object_freeMemory
 // .global sub_800362C
-// .global engine_setScreeneffect
+// .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global sub_80077B4
 // .global battle_isPaused
@@ -446,7 +446,7 @@
 // .global sub_800EC56
 
 .include "asm02.inc"
-// .global refIndex_8021DA8 // (int idx) -> void*
+// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
 // .global sub_8021D14
 
 .include "asm03_0.inc"
@@ -483,7 +483,7 @@
 // .global sub_802E830
 // .global sub_802EF5C
 // .global dword_802F0A8
-// .global sub_802F164 // (int a1, int a2) -> zf
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 // .global sub_802FE28
 // .global sub_802FE48
 // .global sub_802FE6A

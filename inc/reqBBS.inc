@@ -11,16 +11,16 @@
 .global reqBBS_813F9A0
 .global reqBBS_initMemory_813F9DA
 .global reqBBS_81406FC
-.global reqBBS_getTotalPointsIndex
+.global reqBBS_getTotalPointsIndex // () -> u8
 .global reqBBS_81407D8
 .global reqBBS_81408B4
 .global reqBBS_8140974
 .global reqBBS_8140984
-.global reqBBS_81409D0
+.global reqBBS_81409D0 // (int a1) -> int
 .global reqBBS_81409E4
 .global reqBBS_81409F4
-.global reqBBS_8140A00
-.global reqBBS_8140A0C
+.global reqBBS_setFlag_e17b0f7_8140A00
+.global reqBBS_clearFlag_8140A0C
 .global reqBBS_runDialog_8140A70
 .global dword_8140C60
 .global dword_8140C68
@@ -53,7 +53,7 @@
 // .global loc_8000AC8
 // .global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
-// .global sub_800151C
+// .global change_20013F0_800151C // () -> int
 // .global sub_80015FC
 // .global sub_8001778
 // .global sub_8001788
@@ -67,17 +67,17 @@
 .include "asm00_1.inc"
 // .global sub_8002FA6
 // .global sub_8005F84
-// .global engine_setScreeneffect
+// .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
 
 .include "asm03_0.inc"
-// .global sub_802F110
-// .global sub_802F114 // (int a1) -> void
-// .global sub_802F12C // (int a1, int a2) -> void
-// .global loc_802F130
-// .global sub_802F164 // (int a1, int a2) -> zf
-// .global zf_802F168
-// .global sub_802F17E // (int a1, int a2) -> void
+// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 // .global sub_802FE28
 // .global sub_8031A7A
 
@@ -104,9 +104,9 @@
 
 .include "asm37_0.inc"
 // .global unk_813DBDC
-// .global unk_813DBE4
+// .global tileRefs_813DBE4
 // .global unk_813DEC4
-// .global dword_813DF44
+// .global tileRefs_813DF44
 // .global off_813DF74
 // .global dword_813DF7C
 

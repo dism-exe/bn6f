@@ -90,7 +90,8 @@ dword_803FD94:    .word 0x83007E
 
 .func
 .thumb_func
-chatbox_803FD9C:
+// (u16 *scriptArr, u8 scriptID) -> void
+chatbox_runScript_803FD9C:
     push {r4,r5,lr}
     mov r4, #0
     b loc_803FDA8
@@ -136,16 +137,17 @@ off_803FDF4:    .word 0x280
 off_803FDFC:    .word dword_86BFE20
 off_803FE00:    .word unk_3001B40
 off_803FE04:    .word dword_86BFE20+0x20
-.endfunc // chatbox_803FD9C
+.endfunc // chatbox_runScript_803FD9C
 
 .func
 .thumb_func
-chatbox_803FE08:
+// (u16 *scriptArr, u8 scriptID) -> void
+chatbox_runScript_803FE08:
     push {r4,r5,lr}
     mov r4, #0
     b loc_803FE14
     .byte 0, 0
-.endfunc // chatbox_803FE08
+.endfunc // chatbox_runScript_803FE08
 
 .func
 .thumb_func
@@ -282,7 +284,7 @@ locret_803FF26:
     pop {r4-r7,pc}
 off_803FF28:    .word 0x338
 off_803FF2C:    .word jt_803FF30
-jt_803FF30:    .word loc_804005C+1
+jt_803FF30:    .word sub_804005C+1
     .word chatbox_interpreteScriptChar+1
 off_803FF38:    .word off_803FF3C
 off_803FF3C:    .word 0x1D4
@@ -389,7 +391,7 @@ loc_8040000:
     beq loc_8040008
     ldrb r0, [r5,#2]
 loc_8040008:
-    ldr r1, off_8040034 // =loc_30070B4+1 
+    ldr r1, off_8040034 // =sub_30070B4+1 
     mov lr, pc
     bx r1
     ldrb r0, [r5,#0xf]
@@ -404,14 +406,16 @@ off_8040020:    .word chatbox_jt_ctrlCmds
     .word dword_8040028
 dword_8040028:    .word 0x254D0B00, 0x44
 off_8040030:    .word 0x100
-off_8040034:    .word loc_30070B4+1
+off_8040034:    .word sub_30070B4+1
 off_8040038:    .word sub_3006F8C+1
     .word dword_8040040
 dword_8040040:    .word 0x254D0B00, 0x2A44, 0x8043CA4, 0x800, 0x138, 0x1F4
     .word 0x1F5
 .endfunc // chatbox_interpreteScriptChar
 
-loc_804005C:
+.func
+.thumb_func
+sub_804005C:
     push {r4-r7,lr}
     mov r0, #0
     strb r0, [r5,#0x11]
@@ -428,13 +432,14 @@ loc_8040070:
     bmi loc_8040088
     sub r1, #0xe5
     lsl r1, r1, #2
-    ldr r2, dword_8040120 // =chatbox_jt_ctrlCmds 
+    ldr r2, off_8040120 // =chatbox_jt_ctrlCmds 
     ldr r1, [r2,r1]
     mov lr, pc
     bx r1
     bl chatbox_8040C9C
     b loc_80400B8
 loc_8040088:
+    // mask
     ldr r0, dword_804014C // =0x840 
     bl chatbox_setflags_3e // (int mask) -> void
     cmp r1, #0xe4
@@ -490,7 +495,7 @@ loc_80400E2:
     bne loc_8040112
 loc_80400F8:
     ldrb r0, [r5,#2]
-    ldr r1, off_8040134 // =loc_30070B4+1 
+    ldr r1, off_8040134 // =sub_30070B4+1 
     mov lr, pc
     bx r1
     ldrb r0, [r5,#0xf]
@@ -508,16 +513,18 @@ loc_8040112:
     mov r0, #1
     strb r0, [r5,#0x11]
     pop {r4-r7,pc}
-dword_8040120:    .word 0x8040E24
+off_8040120:    .word chatbox_jt_ctrlCmds
     .word dword_8040128
 dword_8040128:    .word 0x254D0B00, 0x44
 off_8040130:    .word 0x100
-off_8040134:    .word loc_30070B4+1
+off_8040134:    .word sub_30070B4+1
 off_8040138:    .word sub_3006F8C+1
     .word dword_8040140
 dword_8040140:    .word 0x254D0B00, 0x2A44, 0x8043CA4
 dword_804014C:    .word 0x840
     .word 0x138
+.endfunc // sub_804005C
+
 .func
 .thumb_func
 chatbox_8040154:
@@ -1696,10 +1703,7 @@ chatbox_80409E0:
     .byte 0x22 
     .byte 0x19
     .byte 0x88
-    .byte 0xAA
-    .byte 0x75 
-    .byte 0x50 
-    .byte 0xBD
+    .word 0xBD5075AA
     .byte  0
     .byte 0x80
     .byte  0
@@ -2683,7 +2687,7 @@ off_8041184:    .word chatbox_80411B0+1
 .thumb_func
 chatbox_80411B0:
     push {lr}
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     add r4, #4
     pop {pc}
     .balign 4, 0x00
@@ -2693,7 +2697,7 @@ chatbox_80411B0:
 .thumb_func
 chatbox_80411BC:
     push {lr}
-    bl loc_802F130 // (int a1, int a2) -> void
+    bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     add r4, #4
     pop {pc}
     .balign 4, 0x00
@@ -2703,7 +2707,7 @@ chatbox_80411BC:
 .thumb_func
 chatbox_80411C8:
     push {lr}
-    bl sub_802F14C // (int a1) -> void
+    bl toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     add r4, #4
     pop {pc}
     .balign 4, 0x00
@@ -2740,7 +2744,7 @@ chatbox_80411E8:
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
     add r2, r1, #0
-    bl loc_802F182 // (int a1, int a2) -> void
+    bl setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     add r4, #5
     pop {pc}
 .endfunc // chatbox_80411E8
@@ -2757,7 +2761,7 @@ chatbox_8041200:
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
     add r2, r1, #0
-    bl loc_802F1AC // (int a3, int a2) -> void
+    bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     add r4, #5
     pop {pc}
 .endfunc // chatbox_8041200
@@ -2769,9 +2773,9 @@ chatbox_8041218:
     ldrb r0, [r4,#2]
     lsl r0, r0, #2
     add r0, #0x4c 
-    // a1
+    // bitfield
     ldr r0, [r5,r0]
-    bl sub_802F114 // (int a1) -> void
+    bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
     add r4, #3
     pop {pc}
     .balign 4, 0x00
@@ -3175,7 +3179,7 @@ loc_8041510:
     orr r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     bne loc_80414F0
     // mask
     mov r0, #1
@@ -3204,7 +3208,7 @@ loc_8041546:
     orr r0, r1
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq loc_80414F0
     // mask
     mov r0, #1
@@ -3410,7 +3414,7 @@ chatbox_804171C:
     mov r2, #0
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
-    bl zf_802F168 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     bne loc_8041732
     mov r2, #1
 loc_8041732:
@@ -3963,7 +3967,7 @@ dword_8041AB4:    .word 0x4020100, 0x605
 .thumb_func
 chatbox_8041ABC:
     push {lr}
-    bl reqBBS_getTotalPointsIndex
+    bl reqBBS_getTotalPointsIndex // () -> u8
     mov r1, #2
     add r0, r0, r1
     ldrb r1, [r4,r0]
@@ -4009,7 +4013,7 @@ loc_8041B00:
     and r6, r0
     add r6, #2
 loc_8041B0C:
-    bl sub_800151C
+    bl change_20013F0_800151C // () -> int
     sub r6, #1
     bgt loc_8041B0C
     lsl r0, r0, #0x16
@@ -4019,9 +4023,11 @@ loc_8041B1A:
     ldrb r2, [r4,#1]
     lsr r6, r2, #7
     push {r0,r2}
+    // entryIdx
     mov r0, #0x17
+    // byteFlagIdx
     mov r1, #9
-    bl sub_802F164 // (int a1, int a2) -> zf
+    bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     pop {r0,r2}
     bne loc_8041B2E
     mov r6, #0
@@ -4447,7 +4453,7 @@ loc_8041E2A:
     ldr r1, [r5,#0x58]
 loc_8041E32:
     ldrb r2, [r4,#5]
-    bl dword_8021AEC+2
+    bl sub_8021AEE
     pop {r4,r5}
     add r4, #6
     mov r0, #1
@@ -4518,7 +4524,7 @@ chatbox_8041EB0:
     ldrb r0, [r5,#4]
     tst r0, r0
     bne loc_8041EC8
-    bl sub_809E0B0
+    bl updateFlags_809E0B0 // () -> void
     mov r0, #1
     strb r0, [r5,#4]
     b loc_8041EE2
@@ -4972,7 +4978,7 @@ chatbox_804222C:
     add r1, r1, r2
     pop {r2}
     push {r1}
-    bl CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+    bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     pop {r0}
     add r7, r5, #0
     add r7, #0x64 
@@ -5089,7 +5095,7 @@ chatbox_804230C:
 .thumb_func
 chatbox_804231C:
     push {lr}
-    bl sub_8000784
+    bl musicGameState_8000784 // () -> void
     add r4, #2
     mov r0, #1
     pop {pc}
@@ -5243,7 +5249,7 @@ chatbox_8042418:
     ldrb r0, [r0]
     str r0, [r5,#0x4c]
     push {r4}
-    bl dword_8021AEC+2
+    bl sub_8021AEE
     pop {r4}
     ldrb r0, [r4,#2]
     add r0, #1
@@ -5271,10 +5277,10 @@ loc_804245C:
     mov r2, #0x1f
     bl sub_80AA5F4
     mov r1, #1
-    bl sub_8005BC8
+    bl gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
     mov r0, #0x2c 
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     pop {r4,r5}
     mov r0, #1
     strb r0, [r5,#4]
@@ -5301,14 +5307,14 @@ loc_804248C:
     lsl r1, r1, #8
     orr r0, r1
     add r7, r0, #0
-    bl getBattleSettingsFromList0
+    bl getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
     mov r1, #1
-    bl sub_8005BC8
+    bl gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
     add r0, r7, #0
     bl sub_803522E
     mov r0, #0x2c 
     mov r1, #0x10
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     pop {r4,r5,r7}
     mov r0, #1
     strb r0, [r5,#4]
@@ -5412,7 +5418,7 @@ chatbox_804252C:
     push {lr}
     mov r0, #0x73 
     bl sound_play // () -> void
-    bl sub_800151C
+    bl change_20013F0_800151C // () -> int
     ldrb r1, [r4,#2]
     and r1, r0
     add r0, r1, r4
@@ -5612,7 +5618,7 @@ chatbox_80426C4:
     push {lr}
     mov r0, #0xc
     mov r1, #0xc
-    bl engine_setScreeneffect
+    bl engine_setScreeneffect // (int a1, int a2) -> void
     add r4, #2
     mov r0, #1
     pop {pc}

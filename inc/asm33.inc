@@ -27,13 +27,13 @@
 
 .include "asm00_0.inc"
 // .global sound_play // () -> void
-// .global sub_8000784
+// .global musicGameState_8000784 // () -> void
 // .global sub_80008B4
 // .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int wordCount) -> void
+// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 // .global sub_800096C
 // .global loc_8000AC8
@@ -55,7 +55,7 @@
 // .global sub_8003AB2
 // .global sub_8004702
 // .global sub_8005F40
-// .global engine_setScreeneffect
+// .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global sub_8006C22
 // .global sub_8006DEC
@@ -64,16 +64,16 @@
 // .global sub_800710A
 // .global sub_80071D4
 // .global loc_8007800
-// .global getBattleSettingsFromList1
+// .global getBattleSettingsFromList1 // (int battleSettingsIdx) -> BattleSettings*
 
 .include "asm00_2.inc"
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
-// .global sub_80137B6
+// .global sub_80137B6 // (int a1, int a2) -> u8
 // .global sub_80137E6
 // .global sub_80137FE
 
 .include "asm02.inc"
-// .global refIndex_8021DA8 // (int idx) -> void*
+// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
 
 .include "asm03_0.inc"
 // .global sub_802B2A0
@@ -81,16 +81,16 @@
 // .global sub_802B438
 // .global sub_802B4D4
 // .global sub_802B51C
-// .global sub_802D27C
-// .global sub_802D280
-// .global sub_802D28C
-// .global sub_802D2AC
-// .global sub_802F110
-// .global sub_802F114 // (int a1) -> void
-// .global sub_802F12C // (int a1, int a2) -> void
-// .global loc_802F130
-// .global sub_802F164 // (int a1, int a2) -> zf
-// .global zf_802F168
+// .global getBattleSettings_200AF60 // () -> BattleSettings*
+// .global copyBattleSettingsTo_200AF60 // (BattleSettings *src) -> void
+// .global battleSettings_setFlags_unkSettings // (int mask) -> void
+// .global battleSettings_setBackground // (u8 background) -> void
+// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global sub_802FE28
 // .global sub_8036E78
 // .global sub_803C28A
@@ -129,9 +129,9 @@
 
 .include "chatbox.inc"
 // .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_803FD9C
+// .global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
 // .global loc_803FDA4
-// .global chatbox_803FE08
+// .global chatbox_runScript_803FE08 // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_803FE10
 // .global chatbox_8040818
 // .global chatbox_8045F1C
