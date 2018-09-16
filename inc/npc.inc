@@ -51,7 +51,7 @@
 
 .include "chatbox.inc"
 // .global chatbox_runScript_202da04 // (u8 scriptID) -> void
-// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+// .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global off_8044470
 // .global off_80444C4
 

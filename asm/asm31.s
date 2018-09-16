@@ -93367,7 +93367,7 @@ sub_80E68F8:
     ldr r0, off_80E6920 // =aTuDhr 
     ldrb r1, [r5,#5]
     add r1, #0x1e
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     b locret_80E691E
 loc_80E6910:
     mov r0, #0x80

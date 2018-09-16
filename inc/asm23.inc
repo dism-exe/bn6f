@@ -33,7 +33,7 @@
 // .global sub_8036FAA
 
 .include "chatbox.inc"
-// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+// .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8045EDC
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C

@@ -428,19 +428,19 @@ sub_8021D36:
     ldr r0, off_8021D6C // =unk_2000AF0 
     mov r1, #0x40 
     bl sub_80008C0
-    ldr r0, off_8021D80 // =dword_8021D88 
+    ldr r0, off_8021D80 // =script_8021D88 
     ldr r1, off_8021D70 // =unk_2001184 
     mov r2, #8
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
-    ldr r0, off_8021D80 // =dword_8021D88 
+    ldr r0, off_8021D80 // =script_8021D88 
     ldr r1, off_8021D74 // =unk_200119C 
     mov r2, #8
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
-    ldr r0, dword_8021D84 // =dword_8021D88 
+    ldr r0, dword_8021D84 // =script_8021D88 
     ldr r1, dword_8021D78 // =0x20007D6 
     mov r2, #8
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
-    ldr r0, dword_8021D84 // =dword_8021D88 
+    ldr r0, dword_8021D84 // =script_8021D88 
     ldr r1, dword_8021D7C // =0x200083A 
     mov r2, #8
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
@@ -451,10 +451,11 @@ off_8021D70:    .word unk_2001184
 off_8021D74:    .word unk_200119C
 dword_8021D78:    .word 0x20007D6
 dword_8021D7C:    .word 0x200083A
-off_8021D80:    .word dword_8021D88
+off_8021D80:    .word script_8021D88
 dword_8021D84:    .word 0x8021D8A
     // <endpool>
-dword_8021D88:    .word 0x7E7E0002, 0xE67E7E, 0x0
+script_8021D88:    .byte 0x2, 0x0, 0x7E, 0x7E, 0x7E, 0x7E, 0xE6, 0x0
+    .byte 0x0, 0x0, 0x0, 0x0
 .endfunc // sub_8021D36
 
 off_8021D94:    .word unk_203A0A0

@@ -61,7 +61,7 @@ chatbox_runScript_202da04:
     push {r4,r5,lr}
     add r1, r0, #0
     ldr r0, off_803FD74 // =unk_202DA04 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     pop {r4,r5,pc}
 off_803FD74:    .word unk_202DA04
 .endfunc // chatbox_runScript_202da04
@@ -71,7 +71,7 @@ off_803FD74:    .word unk_202DA04
 // (u16 *scriptArr, u8 scriptID) -> void
 chatbox_803FD78:
     push {r4,r5,lr}
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     // src
     ldr r0, off_803FD90 // =dword_803FD94 
     mov r1, r10
@@ -100,7 +100,7 @@ loc_803FDA4:
     push {r4,r5,lr}
     mov r4, #1
 loc_803FDA8:
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     ldr r0, off_803FDEC // =dword_86BF480+1824 
     ldr r1, dword_803FDF0 // =0x600DC80 
     ldr r2, off_803FDF4 // =0x280 
@@ -155,7 +155,7 @@ chatbox_803FE10:
     push {r4,r5,lr}
     mov r4, #1
 loc_803FE14:
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     ldr r0, off_803FE58 // =dword_86BFE20+1984 
     ldr r1, dword_803FE5C // =0x600DC80 
     ldr r2, off_803FE60 // =0x320 
@@ -199,7 +199,7 @@ off_803FE70:    .word dword_86C0900+0x20
 // (u16 *scriptList, u8 scriptOffIdx) -> void
 chatbox_runScript_803FE74:
     push {r4,r5,lr}
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     ldr r0, off_803FE9C // =unk_84E0554 
     ldr r1, dword_803FEA0 // =0x600DC80 
     ldr r2, off_803FEA4 // =0x6F8 
@@ -799,14 +799,14 @@ chatbox_runTrainScript:
     push {r4,r5,lr}
     add r1, r0, #0
     ldr r0, off_8040380 // =unk_2034A04 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     pop {r4,r5,pc}
 off_8040380:    .word unk_2034A04
 .endfunc // chatbox_runTrainScript
 
 .func
 .thumb_func
-// (u16 *scriptList, u8 scriptOffIdx) -> void
+// (void *scripts, u8 scriptOffIdx) -> void
 chatbox_runScript:
     push {r4-r6,lr}
     mov r5, r10

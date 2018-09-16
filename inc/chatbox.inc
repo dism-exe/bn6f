@@ -14,7 +14,7 @@
 .global chatbox_onUpdate_803FEB4
 .global loc_8040000
 .global chatbox_runTrainScript // (u8 scriptOffIdx) -> void
-.global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+.global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 .global chatbox_reqBBS_80404C0
 .global chatbox_8040818
 .global chatbox_maskFlags_3e // (int mask) -> void

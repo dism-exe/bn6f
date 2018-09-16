@@ -180,7 +180,7 @@
 .include "chatbox.inc"
 // .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+// .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global chatbox_8045F1C
 // .global chatbox_8045F2C // (int a1) ->

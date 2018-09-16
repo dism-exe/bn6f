@@ -9416,7 +9416,7 @@ off_8007834:    .word off_8007838
 off_8007838:    .word loc_8007850+1
     .word loc_8007A44+1
     .word sub_8007B80+1
-    .word loc_8007E62+1
+    .word sub_8007E62+1
     .word loc_8007F4E+1
     .word unk_8007FEB
 loc_8007850:
@@ -10135,7 +10135,9 @@ locret_8007E60:
     pop {r4,r6,r7,pc}
 .endfunc // sub_8007CA0
 
-loc_8007E62:
+.func
+.thumb_func
+sub_8007E62:
     push {lr}
     ldr r1, off_8007EA8 // =off_8007EAC 
     ldrb r0, [r5,#1]
@@ -10163,6 +10165,8 @@ off_8007EA8:    .word off_8007EAC
 off_8007EAC:    .word sub_8007EB8+1
     .word sub_8007F14+1
     .word sub_8007F2C+1
+.endfunc // sub_8007E62
+
 .func
 .thumb_func
 sub_8007EB8:
@@ -10201,8 +10205,8 @@ loc_8007F04:
     mov r1, #0x5c 
     add r1, r1, r4
 loc_8007F08:
-    ldr r0, off_8008014 // =scriptList_87370C0 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    ldr r0, off_8008014 // =scripts_commErr_87370C0 
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#1]
     pop {r4,pc}
@@ -10324,7 +10328,7 @@ dword_8008004:    .word 0x40000
 off_8008008:    .word dword_203F7D8
 dword_800800C:    .word 0x280000
 dword_8008010:    .word 0x200000
-off_8008014:    .word scriptList_87370C0
+off_8008014:    .word scripts_commErr_87370C0
 off_8008018:    .word dword_203F7D8
 .endfunc // sub_8007FD2
 
@@ -13145,9 +13149,9 @@ sub_800951E:
     ldrb r0, [r5,#3]
     tst r0, r0
     bne loc_8009534
-    ldr r0, off_800960C // =dword_86F3F5C 
+    ldr r0, off_800960C // =scripts_fullSynchro_86F3F5C 
     mov r1, #0xa
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#3]
     b locret_8009550
@@ -13186,8 +13190,8 @@ sub_8009552:
 loc_8009568:
     mov r1, #0x20 
 loc_800956A:
-    ldr r0, off_8009610 // =dword_86F4498 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    ldr r0, off_8009610 // =scripts_dad_cybeastTut_86F4498 
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#3]
     b locret_8009592
@@ -13216,9 +13220,9 @@ sub_8009594:
     ldrb r0, [r5,#3]
     tst r0, r0
     bne loc_80095AA
-    ldr r0, off_8009614 // =dword_86F53CC 
+    ldr r0, off_8009614 // =scripts_shuko_crossTut_86F53CC 
     mov r1, #3
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#3]
     b locret_80095C6
@@ -13250,8 +13254,8 @@ sub_80095C8:
     bl getPETNaviSelect // () -> u8
     mov r1, #0x73 
     add r1, r1, r0
-    ldr r0, off_8009618 // =scriptList_87370C0 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    ldr r0, off_8009618 // =scripts_commErr_87370C0 
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#3]
     b locret_80095F4
@@ -13271,10 +13275,10 @@ dword_80095FC:    .word 0x1F2F3F4F
 off_8009600:    .word unk_2035260
 dword_8009604:    .word 0x173
 dword_8009608:    .word 0x17E
-off_800960C:    .word dword_86F3F5C
-off_8009610:    .word dword_86F4498
-off_8009614:    .word dword_86F53CC
-off_8009618:    .word scriptList_87370C0
+off_800960C:    .word scripts_fullSynchro_86F3F5C
+off_8009610:    .word scripts_dad_cybeastTut_86F4498
+off_8009614:    .word scripts_shuko_crossTut_86F53CC
+off_8009618:    .word scripts_commErr_87370C0
 .endfunc // sub_80095C8
 
 loc_800961C:
@@ -13738,8 +13742,8 @@ sub_8009966:
     bl getPETNaviSelect // () -> u8
     mov r1, #0x73 
     add r1, r1, r0
-    ldr r0, off_80099A0 // =scriptList_87370C0 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    ldr r0, off_80099A0 // =scripts_commErr_87370C0 
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#3]
     b locret_8009992
@@ -13756,7 +13760,7 @@ locret_8009992:
 off_8009994:    .word 0x400
 dword_8009998:    .word 0x1F2F3F4F
 off_800999C:    .word unk_2035260
-off_80099A0:    .word scriptList_87370C0
+off_80099A0:    .word scripts_commErr_87370C0
 .endfunc // sub_8009966
 
 loc_80099A4:
@@ -14138,8 +14142,8 @@ sub_8009C56:
     bl getPETNaviSelect // () -> u8
     mov r1, #0x73 
     add r1, r1, r0
-    ldr r0, off_8009C90 // =scriptList_87370C0 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    ldr r0, off_8009C90 // =scripts_commErr_87370C0 
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#3]
     b locret_8009C82
@@ -14156,7 +14160,7 @@ locret_8009C82:
 off_8009C84:    .word 0x400
 dword_8009C88:    .word 0x1F2F3F4F
 off_8009C8C:    .word unk_2035260
-off_8009C90:    .word scriptList_87370C0
+off_8009C90:    .word scripts_commErr_87370C0
 .endfunc // sub_8009C56
 
 loc_8009C94:
@@ -14386,7 +14390,7 @@ sub_8009E2C:
     ldr r0, [r5,r0]
     ldrb r1, [r0,#4]
     ldr r0, off_8009FBC // =a58 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #4
     strh r0, [r5,#2]
     pop {pc}
@@ -14579,8 +14583,8 @@ sub_8009F8A:
     bl getPETNaviSelect // () -> u8
     mov r1, #0x73 
     add r1, r1, r0
-    ldr r0, off_8009FC8 // =scriptList_87370C0 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    ldr r0, off_8009FC8 // =scripts_commErr_87370C0 
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#3]
     b locret_8009FB6
@@ -14598,7 +14602,7 @@ off_8009FB8:    .word 0x400
 off_8009FBC:    .word a58
 dword_8009FC0:    .word 0x1F2F3F4F
 off_8009FC4:    .word unk_2035260
-off_8009FC8:    .word scriptList_87370C0
+off_8009FC8:    .word scripts_commErr_87370C0
 .endfunc // sub_8009F8A
 
 .func

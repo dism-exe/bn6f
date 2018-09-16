@@ -224,176 +224,196 @@ comp_86C45A8:
 .incbin "data/compressed/comp_86C45A8.lz77"
 bin38_8:
 .incbin "bin/bin38_8.bin"
-comp_86C5190:
-.incbin "data/compressed/comp_86C5190.lz77"
+compScripts_credits_86C4B58:
+.incbin "data/scripts/compScripts_credits_86C4B58.lz77"
 bin38_9:
 .incbin "bin/bin38_9.bin"
-comp_86C526C:
-.incbin "data/compressed/comp_86C526C.lz77"
+comp_86C5190:
+.incbin "data/compressed/comp_86C5190.lz77"
 bin38_10:
 .incbin "bin/bin38_10.bin"
-comp_86C73D8:
-.incbin "data/compressed/comp_86C73D8.lz77"
+comp_86C526C:
+.incbin "data/compressed/comp_86C526C.lz77"
 bin38_11:
 .incbin "bin/bin38_11.bin"
-comp_86C7764:
-.incbin "data/compressed/comp_86C7764.lz77"
-bin38_12:
+scripts_86C580C:
+.incbin "data/scripts/scripts_86C580C.bin"
+byte_86C67E4:
 .incbin "bin/bin38_12.bin"
-comp_86C7980:
-.incbin "data/compressed/comp_86C7980.lz77"
+comp_86C73D8:
+.incbin "data/compressed/comp_86C73D8.lz77"
 bin38_13:
 .incbin "bin/bin38_13.bin"
-comp_86C8054:
-.incbin "data/compressed/comp_86C8054.lz77"
+comp_86C7764:
+.incbin "data/compressed/comp_86C7764.lz77"
 bin38_14:
 .incbin "bin/bin38_14.bin"
+comp_86C7980:
+.incbin "data/compressed/comp_86C7980.lz77"
+bin38_15:
+.incbin "bin/bin38_15.bin"
+comp_86C8054:
+.incbin "data/compressed/comp_86C8054.lz77"
+bin38_16:
+.incbin "bin/bin38_16.bin"
 comp_86C9274:
 .incbin "data/compressed/comp_86C9274.lz77"
 comp_86C9668:
 .incbin "data/compressed/comp_86C9668.lz77"
-bin38_15:
-.incbin "bin/bin38_15.bin"
-comp_86C96C0:
-.incbin "data/compressed/comp_86C96C0.lz77"
-bin38_16:
-.incbin "bin/bin38_16.bin"
-comp_86C980C:
-.incbin "data/compressed/comp_86C980C.lz77"
 bin38_17:
 .incbin "bin/bin38_17.bin"
-comp_86C9BD4:
-.incbin "data/compressed/comp_86C9BD4.lz77"
+comp_86C96C0:
+.incbin "data/compressed/comp_86C96C0.lz77"
 bin38_18:
 .incbin "bin/bin38_18.bin"
+comp_86C980C:
+.incbin "data/compressed/comp_86C980C.lz77"
+bin38_19:
+.incbin "bin/bin38_19.bin"
+comp_86C9BD4:
+.incbin "data/compressed/comp_86C9BD4.lz77"
+bin38_20:
+.incbin "bin/bin38_20.bin"
 comp_86C9CE4:
 .incbin "data/compressed/comp_86C9CE4.lz77"
 comp_86C9D38:
 .incbin "data/compressed/comp_86C9D38.lz77"
-bin38_19:
-.incbin "bin/bin38_19.bin"
-comp_86CE8AC:
-.incbin "data/compressed/comp_86CE8AC.lz77"
-bin38_20:
-.incbin "bin/bin38_20.bin"
-comp_86CE9E8:
-.incbin "data/compressed/comp_86CE9E8.lz77"
 bin38_21:
 .incbin "bin/bin38_21.bin"
-comp_86D6974:
-.incbin "data/compressed/comp_86D6974.lz77"
+comp_86CE8AC:
+.incbin "data/compressed/comp_86CE8AC.lz77"
 bin38_22:
 .incbin "bin/bin38_22.bin"
-comp_86DA1B8:
-.incbin "data/compressed/comp_86DA1B8.lz77"
+comp_86CE9E8:
+.incbin "data/compressed/comp_86CE9E8.lz77"
 bin38_23:
 .incbin "bin/bin38_23.bin"
+comp_86D6974:
+.incbin "data/compressed/comp_86D6974.lz77"
+bin38_24:
+.incbin "bin/bin38_24.bin"
+comp_86DA1B8:
+.incbin "data/compressed/comp_86DA1B8.lz77"
+bin38_25:
+.incbin "bin/bin38_25.bin"
 comp_86DBD94:
 .incbin "data/compressed/comp_86DBD94.lz77"
 dword_86DC2C4:
-.incbin "bin/bin38_24.bin"
+.incbin "bin/bin38_26.bin"
 comp_86DD9B4:
 .incbin "data/compressed/comp_86DD9B4.lz77"
-bin38_25:
-.incbin "bin/bin38_25.bin"
-comp_86DDAD0:
-.incbin "data/compressed/comp_86DDAD0.lz77"
-bin38_26:
-.incbin "bin/bin38_26.bin"
-comp_86DDB44:
-.incbin "data/compressed/comp_86DDB44.lz77"
 bin38_27:
 .incbin "bin/bin38_27.bin"
-comp_86DDB7C:
-.incbin "data/compressed/comp_86DDB7C.lz77"
+comp_86DDAD0:
+.incbin "data/compressed/comp_86DDAD0.lz77"
 bin38_28:
 .incbin "bin/bin38_28.bin"
-comp_87E4500:
-.incbin "data/compressed/comp_87E4500.lz77"
+comp_86DDB44:
+.incbin "data/compressed/comp_86DDB44.lz77"
 bin38_29:
 .incbin "bin/bin38_29.bin"
+comp_86DDB7C:
+.incbin "data/compressed/comp_86DDB7C.lz77"
+bin38_30:
+.incbin "bin/bin38_30.bin"
+scripts_fullSynchro_86F3F5C:
+.incbin "data/scripts/scripts_fullSynchro_86F3F5C.bin"
+scripts_dad_cybeastTut_86F4498:
+.incbin "data/scripts/scripts_dad_cybeastTut_86F4498.bin"
+scripts_shuko_crossTut_86F53CC:
+.incbin "data/scripts/scripts_shuko_crossTut_86F53CC.bin"
+unk_86F5834:
+.incbin "bin/bin38_31.bin"
+scripts_commErr_87370C0:
+.incbin "data/scripts/scripts_commErr_87370C0.bin"
+aF_0:
+.incbin "bin/bin38_32.bin"
+comp_87E4500:
+.incbin "data/compressed/comp_87E4500.lz77"
+bin38_33:
+.incbin "bin/bin38_33.bin"
 comp_87E5020:
 .incbin "data/compressed/comp_87E5020.lz77"
 comp_87E50D4:
 .incbin "data/compressed/comp_87E50D4.lz77"
-bin38_30:
-.incbin "bin/bin38_30.bin"
+bin38_34:
+.incbin "bin/bin38_34.bin"
 comp_87E5550:
 .incbin "data/compressed/comp_87E5550.lz77"
-bin38_31:
-.incbin "bin/bin38_31.bin"
+bin38_35:
+.incbin "bin/bin38_35.bin"
 comp_87E56A0:
 .incbin "data/compressed/comp_87E56A0.lz77"
-bin38_32:
-.incbin "bin/bin38_32.bin"
+bin38_36:
+.incbin "bin/bin38_36.bin"
 comp_87E57BC:
 .incbin "data/compressed/comp_87E57BC.lz77"
-bin38_33:
-.incbin "bin/bin38_33.bin"
+bin38_37:
+.incbin "bin/bin38_37.bin"
 comp_87E674C:
 .incbin "data/compressed/comp_87E674C.lz77"
 comp_87E6840:
 .incbin "data/compressed/comp_87E6840.lz77"
-bin38_34:
-.incbin "bin/bin38_34.bin"
-comp_87E6924:
-.incbin "data/compressed/comp_87E6924.lz77"
-bin38_35:
-.incbin "bin/bin38_35.bin"
-comp_87E6980:
-.incbin "data/compressed/comp_87E6980.lz77"
-bin38_36:
-.incbin "bin/bin38_36.bin"
-comp_87E6BFC:
-.incbin "data/compressed/comp_87E6BFC.lz77"
-bin38_37:
-.incbin "bin/bin38_37.bin"
-comp_87F006C:
-.incbin "data/compressed/comp_87F006C.lz77"
 bin38_38:
 .incbin "bin/bin38_38.bin"
+comp_87E6924:
+.incbin "data/compressed/comp_87E6924.lz77"
+bin38_39:
+.incbin "bin/bin38_39.bin"
+comp_87E6980:
+.incbin "data/compressed/comp_87E6980.lz77"
+bin38_40:
+.incbin "bin/bin38_40.bin"
+comp_87E6BFC:
+.incbin "data/compressed/comp_87E6BFC.lz77"
+bin38_41:
+.incbin "bin/bin38_41.bin"
+comp_87F006C:
+.incbin "data/compressed/comp_87F006C.lz77"
+bin38_42:
+.incbin "bin/bin38_42.bin"
 comp_87F0218:
 .incbin "data/compressed/comp_87F0218.lz77"
 unk_87F0340:
-.incbin "bin/bin38_39.bin"
+.incbin "bin/bin38_43.bin"
 comp_87F0360:
 .incbin "data/compressed/comp_87F0360.lz77"
-bin38_40:
-.incbin "bin/bin38_40.bin"
+bin38_44:
+.incbin "bin/bin38_44.bin"
 comp_87F04D4:
 .incbin "data/compressed/comp_87F04D4.lz77"
-bin38_41:
-.incbin "bin/bin38_41.bin"
+bin38_45:
+.incbin "bin/bin38_45.bin"
 comp_87F0534:
 .incbin "data/compressed/comp_87F0534.lz77"
-bin38_42:
-.incbin "bin/bin38_42.bin"
+bin38_46:
+.incbin "bin/bin38_46.bin"
 comp_87F056C:
 .incbin "data/compressed/comp_87F056C.lz77"
-bin38_43:
-.incbin "bin/bin38_43.bin"
+bin38_47:
+.incbin "bin/bin38_47.bin"
 comp_87F0664:
 .incbin "data/compressed/comp_87F0664.lz77"
 comp_87F0834:
 .incbin "data/compressed/comp_87F0834.lz77"
-bin38_44:
-.incbin "bin/bin38_44.bin"
+bin38_48:
+.incbin "bin/bin38_48.bin"
 comp_87F0C00:
 .incbin "data/compressed/comp_87F0C00.lz77"
-bin38_45:
-.incbin "bin/bin38_45.bin"
+bin38_49:
+.incbin "bin/bin38_49.bin"
 comp_87F3370:
 .incbin "data/compressed/comp_87F3370.lz77"
-bin38_46:
-.incbin "bin/bin38_46.bin"
+bin38_50:
+.incbin "bin/bin38_50.bin"
 comp_87F36A0:
 .incbin "data/compressed/comp_87F36A0.lz77"
-bin38_47:
-.incbin "bin/bin38_47.bin"
+bin38_51:
+.incbin "bin/bin38_51.bin"
 comp_87F4394:
 .incbin "data/compressed/comp_87F4394.lz77"
 dword_87F8EB0:
-.incbin "bin/bin38_48.bin"
+.incbin "bin/bin38_52.bin"
 
 /**/
 // include parts of the ROM not disassembled yet

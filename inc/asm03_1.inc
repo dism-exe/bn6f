@@ -188,7 +188,7 @@
 .include "chatbox.inc"
 // .global chatbox_uncomp_803FD08 // () -> int
 // .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+// .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global dword_8043C90
 // .global dword_8043C90
@@ -454,7 +454,7 @@
 .equ dword_86A5D60, 0x86A5D60
 // .global comp_86C5190
 // .global comp_86C526C
-.equ dword_86C580C, 0x86C580C
+// .global scripts_86C580C
 // .global comp_86C73D8
 // .global comp_86C7764
 // .global comp_86C7980

@@ -554,7 +554,7 @@
 // .global sub_80302A8
 
 .include "chatbox.inc"
-// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+// .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8045F3C
 
 .include "asm03_1.inc"

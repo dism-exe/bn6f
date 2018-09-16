@@ -517,7 +517,7 @@ reqBBS_draw_813E450:
 loc_813E48A:
     add r1, r0, #0
     ldr r0, off_813E4A4 // =reqBBS_dialogList 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     bl reqBBS_drawHeaderText
     mov r0, #0x20 
     strb r0, [r5]
@@ -2501,7 +2501,7 @@ reqBBS_813F80C:
 loc_813F846:
     add r1, r0, #0
     ldr r0, off_813F860 // =reqBBS_dialogList 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     bl reqBBS_renderSelectedEntry_HeaderText
     mov r0, #0x20 
     strb r0, [r5]
@@ -3095,7 +3095,7 @@ loc_813FCA8:
     beq loc_813FCBE
     add r1, r0, #0
     ldr r0, off_813FD0C // =reqBBS_dialogList 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #0x44 
     strb r0, [r5]
     b loc_813FCF0
@@ -4996,7 +4996,7 @@ reqBBS_runDialog_8140A70:
     ldr r2, off_8140A6C // =off_8140A70 
     lsl r0, r0, #2
     ldr r0, [r2,r0]
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     pop {pc}
     .balign 4, 0x00
 off_8140A6C:    .word off_8140A70

@@ -449,7 +449,7 @@
 // .global sub_803FB28
 
 .include "chatbox.inc"
-// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+// .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global chatbox_8045F2C // (int a1) ->
 // .global chatbox_8045F3C
@@ -1264,10 +1264,10 @@
 .equ unk_86DDBA0, 0x86DDBA0
 .equ dword_86E08F8, 0x86E08F8
 .equ dword_86E09F8, 0x86E09F8
-.equ dword_86F3F5C, 0x86F3F5C
-.equ dword_86F4498, 0x86F4498
-.equ dword_86F53CC, 0x86F53CC
-.equ scriptList_87370C0, 0x87370C0
+// .global scripts_fullSynchro_86F3F5C
+// .global scripts_dad_cybeastTut_86F4498
+// .global scripts_shuko_crossTut_86F53CC
+// .global scripts_commErr_87370C0
 .equ a58, 0x87F2F68
 
 .endif // INC_ASM00_1

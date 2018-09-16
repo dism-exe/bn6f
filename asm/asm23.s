@@ -1120,7 +1120,7 @@ sub_8089CA4:
     push {r4-r7,lr}
     add r1, r0, #0
     ldr r0, [r5,#0x30]
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     pop {r4-r7,pc}
 .endfunc // sub_8089CA4
 

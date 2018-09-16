@@ -136,7 +136,7 @@
 .include "chatbox.inc"
 // .global chatbox_dead_uncomp_803FD3C
 // .global chatbox_runTrainScript // (u8 scriptOffIdx) -> void
-// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+// .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C
@@ -213,7 +213,7 @@
 .equ dword_86A5D60, 0x86A5D60
 .equ loc_86C54D4, 0x86C54D4
 .equ loc_86C5790, 0x86C5790
-.equ dword_86C580C, 0x86C580C
-.equ byte_86C67E4, 0x86C67E4
+// .global scripts_86C580C
+// .global byte_86C67E4
 
 .endif // INC_ASM28_0

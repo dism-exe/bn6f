@@ -82,7 +82,7 @@
 // .global sub_8031A7A
 
 .include "chatbox.inc"
-// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+// .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_reqBBS_80404C0
 // .global chatbox_8040818
 // .global chatbox_8045F3C

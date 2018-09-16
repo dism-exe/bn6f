@@ -233,176 +233,196 @@ pt.env(gameFiles={
 'data/compressed/comp_86C45A8.lz77':
 	(0x86C45A8, 0x86C4660), # size=0xB8
 'bin/bin38_8.bin':
-	(0x86C4660, 0x86C5190), # size=0xB30
+	(0x86C4660, 0x86C4B58), # size=0x4F8
+'data/scripts/compScripts_credits_86C4B58.lz77':
+	(0x86C4B58, 0x86C4FAF), # size=0x457
+'bin/bin38_9.bin':
+	(0x86C4FAF, 0x86C5190), # size=0x1E1
 'data/compressed/comp_86C5190.lz77':
 	(0x86C5190, 0x86C526B), # size=0xDB
-'bin/bin38_9.bin':
+'bin/bin38_10.bin':
 	(0x86C526B, 0x86C526C), # size=0x1
 'data/compressed/comp_86C526C.lz77':
 	(0x86C526C, 0x86C52B4), # size=0x48
-'bin/bin38_10.bin':
-	(0x86C52B4, 0x86C73D8), # size=0x2124
+'bin/bin38_11.bin':
+	(0x86C52B4, 0x86C580C), # size=0x558
+'data/scripts/scripts_86C580C.bin':
+	(0x86C580C, 0x86C67E4), # size=0xFD8
+'bin/bin38_12.bin':
+	(0x86C67E4, 0x86C73D8), # size=0xBF4
 'data/compressed/comp_86C73D8.lz77':
 	(0x86C73D8, 0x86C7762), # size=0x38A
-'bin/bin38_11.bin':
+'bin/bin38_13.bin':
 	(0x86C7762, 0x86C7764), # size=0x2
 'data/compressed/comp_86C7764.lz77':
 	(0x86C7764, 0x86C797E), # size=0x21A
-'bin/bin38_12.bin':
+'bin/bin38_14.bin':
 	(0x86C797E, 0x86C7980), # size=0x2
 'data/compressed/comp_86C7980.lz77':
 	(0x86C7980, 0x86C7DCB), # size=0x44B
-'bin/bin38_13.bin':
+'bin/bin38_15.bin':
 	(0x86C7DCB, 0x86C8054), # size=0x289
 'data/compressed/comp_86C8054.lz77':
 	(0x86C8054, 0x86C9108), # size=0x10B4
-'bin/bin38_14.bin':
+'bin/bin38_16.bin':
 	(0x86C9108, 0x86C9274), # size=0x16C
 'data/compressed/comp_86C9274.lz77':
 	(0x86C9274, 0x86C9668), # size=0x3F4
 'data/compressed/comp_86C9668.lz77':
 	(0x86C9668, 0x86C9693), # size=0x2B
-'bin/bin38_15.bin':
+'bin/bin38_17.bin':
 	(0x86C9693, 0x86C96C0), # size=0x2D
 'data/compressed/comp_86C96C0.lz77':
 	(0x86C96C0, 0x86C980B), # size=0x14B
-'bin/bin38_16.bin':
+'bin/bin38_18.bin':
 	(0x86C980B, 0x86C980C), # size=0x1
 'data/compressed/comp_86C980C.lz77':
 	(0x86C980C, 0x86C9AA1), # size=0x295
-'bin/bin38_17.bin':
+'bin/bin38_19.bin':
 	(0x86C9AA1, 0x86C9BD4), # size=0x133
 'data/compressed/comp_86C9BD4.lz77':
 	(0x86C9BD4, 0x86C9C7F), # size=0xAB
-'bin/bin38_18.bin':
+'bin/bin38_20.bin':
 	(0x86C9C7F, 0x86C9CE4), # size=0x65
 'data/compressed/comp_86C9CE4.lz77':
 	(0x86C9CE4, 0x86C9D38), # size=0x54
 'data/compressed/comp_86C9D38.lz77':
 	(0x86C9D38, 0x86C9D6B), # size=0x33
-'bin/bin38_19.bin':
+'bin/bin38_21.bin':
 	(0x86C9D6B, 0x86CE8AC), # size=0x4B41
 'data/compressed/comp_86CE8AC.lz77':
 	(0x86CE8AC, 0x86CE9E7), # size=0x13B
-'bin/bin38_20.bin':
+'bin/bin38_22.bin':
 	(0x86CE9E7, 0x86CE9E8), # size=0x1
 'data/compressed/comp_86CE9E8.lz77':
 	(0x86CE9E8, 0x86CEAA8), # size=0xC0
-'bin/bin38_21.bin':
+'bin/bin38_23.bin':
 	(0x86CEAA8, 0x86D6974), # size=0x7ECC
 'data/compressed/comp_86D6974.lz77':
 	(0x86D6974, 0x86D6C6D), # size=0x2F9
-'bin/bin38_22.bin':
+'bin/bin38_24.bin':
 	(0x86D6C6D, 0x86DA1B8), # size=0x354B
 'data/compressed/comp_86DA1B8.lz77':
 	(0x86DA1B8, 0x86DA943), # size=0x78B
-'bin/bin38_23.bin':
+'bin/bin38_25.bin':
 	(0x86DA943, 0x86DBD94), # size=0x1451
 'data/compressed/comp_86DBD94.lz77':
 	(0x86DBD94, 0x86DC3F6), # size=0x662
-'bin/bin38_24.bin':
+'bin/bin38_26.bin':
 	(0x86DC3F6, 0x86DD9B4), # size=0x15BE
 'data/compressed/comp_86DD9B4.lz77':
 	(0x86DD9B4, 0x86DDA41), # size=0x8D
-'bin/bin38_25.bin':
+'bin/bin38_27.bin':
 	(0x86DDA41, 0x86DDAD0), # size=0x8F
 'data/compressed/comp_86DDAD0.lz77':
 	(0x86DDAD0, 0x86DDB21), # size=0x51
-'bin/bin38_26.bin':
+'bin/bin38_28.bin':
 	(0x86DDB21, 0x86DDB44), # size=0x23
 'data/compressed/comp_86DDB44.lz77':
 	(0x86DDB44, 0x86DDB7B), # size=0x37
-'bin/bin38_27.bin':
+'bin/bin38_29.bin':
 	(0x86DDB7B, 0x86DDB7C), # size=0x1
 'data/compressed/comp_86DDB7C.lz77':
 	(0x86DDB7C, 0x86DDB9D), # size=0x21
-'bin/bin38_28.bin':
-	(0x86DDB9D, 0x87E4500), # size=0x106963
+'bin/bin38_30.bin':
+	(0x86DDB9D, 0x86F3F5C), # size=0x163BF
+'data/scripts/scripts_fullSynchro_86F3F5C.bin':
+	(0x86F3F5C, 0x86F4498), # size=0x53C
+'data/scripts/scripts_dad_cybeastTut_86F4498.bin':
+	(0x86F4498, 0x86F53CC), # size=0xF34
+'data/scripts/scripts_shuko_crossTut_86F53CC.bin':
+	(0x86F53CC, 0x86F5834), # size=0x468
+'bin/bin38_31.bin':
+	(0x86F5834, 0x87370C0), # size=0x4188C
+'data/scripts/scripts_commErr_87370C0.bin':
+	(0x87370C0, 0x873811C), # size=0x105C
+'bin/bin38_32.bin':
+	(0x873811C, 0x87E4500), # size=0xAC3E4
 'data/compressed/comp_87E4500.lz77':
 	(0x87E4500, 0x87E4FDD), # size=0xADD
-'bin/bin38_29.bin':
+'bin/bin38_33.bin':
 	(0x87E4FDD, 0x87E5020), # size=0x43
 'data/compressed/comp_87E5020.lz77':
 	(0x87E5020, 0x87E50D4), # size=0xB4
 'data/compressed/comp_87E50D4.lz77':
 	(0x87E50D4, 0x87E54AE), # size=0x3DA
-'bin/bin38_30.bin':
+'bin/bin38_34.bin':
 	(0x87E54AE, 0x87E5550), # size=0xA2
 'data/compressed/comp_87E5550.lz77':
 	(0x87E5550, 0x87E569D), # size=0x14D
-'bin/bin38_31.bin':
+'bin/bin38_35.bin':
 	(0x87E569D, 0x87E56A0), # size=0x3
 'data/compressed/comp_87E56A0.lz77':
 	(0x87E56A0, 0x87E57BA), # size=0x11A
-'bin/bin38_32.bin':
+'bin/bin38_36.bin':
 	(0x87E57BA, 0x87E57BC), # size=0x2
 'data/compressed/comp_87E57BC.lz77':
 	(0x87E57BC, 0x87E6609), # size=0xE4D
-'bin/bin38_33.bin':
+'bin/bin38_37.bin':
 	(0x87E6609, 0x87E674C), # size=0x143
 'data/compressed/comp_87E674C.lz77':
 	(0x87E674C, 0x87E6840), # size=0xF4
 'data/compressed/comp_87E6840.lz77':
 	(0x87E6840, 0x87E6922), # size=0xE2
-'bin/bin38_34.bin':
+'bin/bin38_38.bin':
 	(0x87E6922, 0x87E6924), # size=0x2
 'data/compressed/comp_87E6924.lz77':
 	(0x87E6924, 0x87E697F), # size=0x5B
-'bin/bin38_35.bin':
+'bin/bin38_39.bin':
 	(0x87E697F, 0x87E6980), # size=0x1
 'data/compressed/comp_87E6980.lz77':
 	(0x87E6980, 0x87E6BDA), # size=0x25A
-'bin/bin38_36.bin':
+'bin/bin38_40.bin':
 	(0x87E6BDA, 0x87E6BFC), # size=0x22
 'data/compressed/comp_87E6BFC.lz77':
 	(0x87E6BFC, 0x87E6DCF), # size=0x1D3
-'bin/bin38_37.bin':
+'bin/bin38_41.bin':
 	(0x87E6DCF, 0x87F006C), # size=0x929D
 'data/compressed/comp_87F006C.lz77':
 	(0x87F006C, 0x87F0217), # size=0x1AB
-'bin/bin38_38.bin':
+'bin/bin38_42.bin':
 	(0x87F0217, 0x87F0218), # size=0x1
 'data/compressed/comp_87F0218.lz77':
 	(0x87F0218, 0x87F0340), # size=0x128
-'bin/bin38_39.bin':
+'bin/bin38_43.bin':
 	(0x87F0340, 0x87F0360), # size=0x20
 'data/compressed/comp_87F0360.lz77':
 	(0x87F0360, 0x87F04D2), # size=0x172
-'bin/bin38_40.bin':
+'bin/bin38_44.bin':
 	(0x87F04D2, 0x87F04D4), # size=0x2
 'data/compressed/comp_87F04D4.lz77':
 	(0x87F04D4, 0x87F0531), # size=0x5D
-'bin/bin38_41.bin':
+'bin/bin38_45.bin':
 	(0x87F0531, 0x87F0534), # size=0x3
 'data/compressed/comp_87F0534.lz77':
 	(0x87F0534, 0x87F0569), # size=0x35
-'bin/bin38_42.bin':
+'bin/bin38_46.bin':
 	(0x87F0569, 0x87F056C), # size=0x3
 'data/compressed/comp_87F056C.lz77':
 	(0x87F056C, 0x87F05A3), # size=0x37
-'bin/bin38_43.bin':
+'bin/bin38_47.bin':
 	(0x87F05A3, 0x87F0664), # size=0xC1
 'data/compressed/comp_87F0664.lz77':
 	(0x87F0664, 0x87F0834), # size=0x1D0
 'data/compressed/comp_87F0834.lz77':
 	(0x87F0834, 0x87F0BFF), # size=0x3CB
-'bin/bin38_44.bin':
+'bin/bin38_48.bin':
 	(0x87F0BFF, 0x87F0C00), # size=0x1
 'data/compressed/comp_87F0C00.lz77':
 	(0x87F0C00, 0x87F0D9D), # size=0x19D
-'bin/bin38_45.bin':
+'bin/bin38_49.bin':
 	(0x87F0D9D, 0x87F3370), # size=0x25D3
 'data/compressed/comp_87F3370.lz77':
 	(0x87F3370, 0x87F3620), # size=0x2B0
-'bin/bin38_46.bin':
+'bin/bin38_50.bin':
 	(0x87F3620, 0x87F36A0), # size=0x80
 'data/compressed/comp_87F36A0.lz77':
 	(0x87F36A0, 0x87F40F3), # size=0xA53
-'bin/bin38_47.bin':
+'bin/bin38_51.bin':
 	(0x87F40F3, 0x87F4394), # size=0x2A1
 'data/compressed/comp_87F4394.lz77':
 	(0x87F4394, 0x87F8EB0), # size=0x4B1C
-'bin/bin38_48.bin':
+'bin/bin38_52.bin':
 	(0x87F8EB0, 0x8800000), # size=0x7150
 })
 

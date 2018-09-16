@@ -1020,7 +1020,7 @@ sub_8026CCC:
 loc_8026CE6:
     mov r7, r10
     ldr r7, [r7,#4]
-    bl loc_8028B74
+    bl sub_8028B74
     bl loc_8028820
     bl sub_8029C08
     bl sub_802899C
@@ -1295,9 +1295,9 @@ loc_8026F04:
     mov r1, #0
     add r1, r1, r4
 loc_8026F0C:
-    ldr r0, off_8027008 // =dword_86EF78C 
+    ldr r0, off_8027008 // =notAdded_scripts_86EF78C 
 loc_8026F0E:
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #0x7b 
     bl sound_play // () -> void
     pop {pc}
@@ -1419,8 +1419,8 @@ loc_8026FD0:
     mov r1, #2
 loc_8026FE8:
     add r1, r1, r4
-    ldr r0, off_8027008 // =dword_86EF78C 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    ldr r0, off_8027008 // =notAdded_scripts_86EF78C 
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     b locret_8027004
 loc_8026FF2:
     mov r0, #0x80
@@ -1434,7 +1434,7 @@ loc_8026FF2:
 locret_8027004:
     pop {r4,pc}
     .balign 4, 0x00
-off_8027008:    .word dword_86EF78C
+off_8027008:    .word notAdded_scripts_86EF78C
 off_802700C:    .word byte_20366C0
 off_8027010:    .word off_8027014
 off_8027014:    .word off_8027020
@@ -1667,7 +1667,7 @@ sub_80271C2:
     lsl r2, r2, #2
     ldr r0, [r0,r2]
     mov r1, #0xa
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#0xd]
     mov r0, #0x34 
@@ -1812,7 +1812,7 @@ loc_80272E6:
     lsl r1, r1, #2
     ldr r0, [r0,r1]
     ldrb r1, [r4,#1]
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     add r4, #2
     str r4, [r5,#0x40]
     b locret_8027318
@@ -2378,7 +2378,7 @@ sub_80276D6:
     lsl r2, r2, #2
     ldr r0, [r0,r2]
     mov r1, #0xa
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#0xd]
     mov r0, #0x34 
@@ -2922,7 +2922,7 @@ sub_8027ADE:
     lsl r2, r2, #2
     ldr r0, [r0,r2]
     mov r1, #2
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#0xd]
     mov r0, #0x34 
@@ -2959,11 +2959,11 @@ byte_8027B4F:    .byte 0x0
     .word 0xA02030C, 0xFF000B
 off_8027BD0:    .word dword_86F2E60
     .word dword_86F3868
-    .word dword_86F3F5C
-off_8027BDC:    .word dword_86F4498
-    .word dword_86F4498
-    .word dword_86F4498
-    .word dword_86F53CC
+    .word scripts_fullSynchro_86F3F5C
+off_8027BDC:    .word scripts_dad_cybeastTut_86F4498
+    .word scripts_dad_cybeastTut_86F4498
+    .word scripts_dad_cybeastTut_86F4498
+    .word scripts_shuko_crossTut_86F53CC
 off_8027BEC:    .word dword_8027C08
     .word dword_8027C38
     .word dword_8027C50
@@ -3056,7 +3056,8 @@ off_8027D30:    .word dword_86EB354
 
 .func
 .thumb_func
-sub_8027D34:
+// (int chipID) -> void*
+chip_getScript_8027D34:
     add r1, r0, #0
     lsl r1, r1, #0x17
     lsr r1, r1, #0x17
@@ -3073,7 +3074,7 @@ loc_8027D46:
 off_8027D4C:    .word off_8027D50
 off_8027D50:    .word dword_86EB354+0x564
 off_8027D54:    .word dword_86EDB54+0x578
-.endfunc // sub_8027D34
+.endfunc // chip_getScript_8027D34
 
 .func
 .thumb_func
@@ -3656,7 +3657,7 @@ sub_8028164:
     ldrb r0, [r1,r0]
     mov r1, #0x80
     mul r0, r1
-    ldr r1, off_8028180 // =dword_86F5834 
+    ldr r1, off_8028180 // =unk_86F5834 
     add r0, r0, r1
     mov pc, lr
 .endfunc // sub_8028164
@@ -3671,7 +3672,7 @@ sub_8028172:
     ldr r1, off_8028184 // =dword_86E56FC 
     add r0, r0, r1
     mov pc, lr
-off_8028180:    .word dword_86F5834
+off_8028180:    .word unk_86F5834
 off_8028184:    .word dword_86E56FC
 off_8028188:    .word off_802818C
 off_802818C:    .word unk_2010100
@@ -4966,7 +4967,7 @@ loc_8028B3C:
     add r2, r2, r1
     ldrb r1, [r5,r2]
     add r1, #5
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #0x9c
     bl sound_play // () -> void
     mov r0, #0x58 
@@ -4980,7 +4981,9 @@ off_8028B6C:    .word 0x50
 dword_8028B70:    .word 0x55
 .endfunc // sub_8028A78
 
-loc_8028B74:
+.func
+.thumb_func
+sub_8028B74:
     push {r4,lr}
     ldrb r0, [r5,#7]
     bl getLocOfActiveChips_8027E1C // (int a1) -> void*
@@ -5106,8 +5109,8 @@ loc_8028C60:
     ldr r0, [r0,#8]
     ldrh r0, [r0]
     bl getChipID_802A54E // (int a1) -> int
-    bl sub_8027D34
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chip_getScript_8027D34 // (int chipID) -> void*
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #0x9c
     bl sound_play // () -> void
     mov r0, #0x18
@@ -5141,6 +5144,8 @@ off_8028C9C:    .word sub_8028CCC+1
     .word sub_8028E04+1
 off_8028CC4:    .word 0x100
 off_8028CC8:    .word 0x200
+.endfunc // sub_8028B74
+
 .func
 .thumb_func
 sub_8028CCC:
@@ -6949,7 +6954,7 @@ loc_8029952:
     ldrb r2, [r5,#0xc]
     lsl r2, r2, #2
     ldr r0, [r0,r2]
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     ldrb r0, [r5,#1]
     strb r0, [r5,#0xd]
     mov r0, #0x34 
@@ -7158,7 +7163,7 @@ loc_8029A90:
     ldrb r2, [r5,#0xc]
     lsl r2, r2, #2
     ldr r0, [r0,r2]
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     ldrb r0, [r5,#1]
     strb r0, [r5,#0xd]
     mov r0, #0x34 
@@ -7299,7 +7304,7 @@ loc_8029B6A:
     ldrb r2, [r5,#0xc]
     lsl r2, r2, #2
     ldr r0, [r0,r2]
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     ldrb r0, [r5,#1]
     strb r0, [r5,#0xd]
     mov r0, #0x34 
@@ -9509,7 +9514,7 @@ loc_802ACF2:
 loc_802AD0A:
     ldr r0, off_802AD78 // =aTuDhr 
     mov r1, #0x28 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #0x14
     strb r0, [r5,#1]
     mov r0, #0
@@ -10542,7 +10547,7 @@ sub_802B5DC:
     push {lr}
     add r1, r0, #0
     ldr r0, off_802B5E8 // =unk_2030860 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     pop {pc}
 off_802B5E8:    .word unk_2030860
 .endfunc // sub_802B5DC
@@ -10552,10 +10557,10 @@ off_802B5E8:    .word unk_2030860
 sub_802B5EC:
     push {lr}
     add r1, r0, #0
-    ldr r0, off_802B5F8 // =dword_86EF78C 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    ldr r0, off_802B5F8 // =notAdded_scripts_86EF78C 
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     pop {pc}
-off_802B5F8:    .word dword_86EF78C
+off_802B5F8:    .word notAdded_scripts_86EF78C
     // this looks like text
 dword_802B5FC:    .word 0x0
     .word 0x0
@@ -12025,7 +12030,7 @@ sub_802C2D0:
     bl sub_800AB3A
     add r1, r0, #0
     ldr r0, off_802C324 // =aF_0 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     mov r0, #1
     strb r0, [r5,#2]
     b locret_802C320
@@ -30358,7 +30363,7 @@ sub_8037332:
     mov r0, #2
     bl sub_8037480
     add r1, r4, #0
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     pop {r1}
     mov r0, #1
     add r1, #6
@@ -31287,7 +31292,7 @@ sub_8037A42:
     beq loc_8037A5C
     ldr r0, [r5,#0x30]
     ldrb r1, [r5,r4]
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     add r7, #2
     mov r0, #1
     pop {pc}
@@ -31296,7 +31301,7 @@ loc_8037A5C:
     bl sub_8036094
     add r1, r4, #0
     ldr r0, [r5,#0x30]
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     add r7, #3
     mov r0, #1
     pop {pc}
@@ -41443,7 +41448,7 @@ sub_803CD64:
     push {r4-r7,lr}
     add r1, r0, #0
     ldr r0, off_803CD70 // =dword_873B9E0 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     pop {r4-r7,pc}
 off_803CD70:    .word dword_873B9E0
 .endfunc // sub_803CD64

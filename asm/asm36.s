@@ -14829,7 +14829,7 @@ sub_81376A8:
     push {lr}
     add r1, r0, #0
     ldr r0, off_81376B4 // =dword_86D5224+1252 
-    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+    bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     pop {pc}
 off_81376B4:    .word dword_86D5224+0x4E4
 .endfunc // sub_81376A8

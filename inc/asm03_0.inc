@@ -612,7 +612,7 @@
 .include "chatbox.inc"
 // .global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript_803FE74 // (u16 *scriptList, u8 scriptOffIdx) -> void
-// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
+// .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global chatbox_8045ED0
 // .global chatbox_8045F1C
@@ -1668,15 +1668,15 @@
 .equ dword_86EDB54, 0x86EDB54
 .equ dword_86EF4D4, 0x86EF4D4
 .equ a8Bdfhjlnprtvxz, 0x86EF71C
-.equ dword_86EF78C, 0x86EF78C
+.equ notAdded_scripts_86EF78C, 0x86EF78C
 .equ aBdfhjlnprtvxzB, 0x86F0300
 .equ dword_86F047C, 0x86F047C
 .equ dword_86F2E60, 0x86F2E60
 .equ dword_86F3868, 0x86F3868
-.equ dword_86F3F5C, 0x86F3F5C
-.equ dword_86F4498, 0x86F4498
-.equ dword_86F53CC, 0x86F53CC
-.equ dword_86F5834, 0x86F5834
+// .global scripts_fullSynchro_86F3F5C
+// .global scripts_dad_cybeastTut_86F4498
+// .global scripts_shuko_crossTut_86F53CC
+// .global unk_86F5834
 .equ dword_87225B4, 0x87225B4
 .equ dword_8722AF4, 0x8722AF4
 .equ unk_8723034, 0x8723034
@@ -1705,7 +1705,7 @@
 .equ dword_87343F4, 0x87343F4
 .equ dword_8734934, 0x8734934
 .equ aTuDhr, 0x8736D74
-.equ aF_0, 0x873811C
+// .global aF_0
 .equ dword_873B9E0, 0x873B9E0
 .equ dword_87E36F8, 0x87E36F8
 // .global comp_87E4500
