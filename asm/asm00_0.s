@@ -285,9 +285,9 @@ sub_80007B2:
     push {lr}
     // memBlock
     ldr r0, memBlock // =dword_200A490 
-    // numWords
+    // size
     ldr r1, numWords // =0x20C 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 .endfunc // sub_80007B2
 
@@ -451,7 +451,7 @@ dword_80008DC:    .word 0x1000000
 
 .func
 .thumb_func
-// (void *memBlock, unsigned int numWords) -> void
+// (void *memBlock, int size) -> void
 CpuSet_ZeroFillWord:
     push {r0-r3,lr}
     ldr r2, dword_80008FC // =0x5000000 
@@ -820,7 +820,7 @@ locret_8000B2E:
 //   .word src | 1<<32
 //   .word
 //   .word dest
-decompAndCopyGfx_8000B30:
+decompAndCopyData_8000B30:
     push {r4-r7,lr}
     add r7, r0, #0
 loop_processArr_8000B34:
@@ -881,7 +881,7 @@ continue_advance3Elements_8000B88:
     b loop_processArr_8000B34
 ret_reachedTerminator_8000B8C:
     pop {r4-r7,pc}
-.endfunc // decompAndCopyGfx_8000B30
+.endfunc // decompAndCopyData_8000B30
 
 .func
 .thumb_func
@@ -2629,9 +2629,9 @@ sub_8001820:
     mov r2, r10
     // memBlock
     ldr r0, [r2,#0x20]
-    // numWords
+    // size
     mov r1, #8
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 .endfunc // sub_8001820
 
@@ -2642,9 +2642,9 @@ sub_800182E:
     mov r2, r10
     // memBlock
     ldr r0, [r2,#0x1c]
-    // numWords
+    // size
     mov r1, #0xc
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 .endfunc // sub_800182E
 
@@ -3043,9 +3043,9 @@ sub_8001AFC:
     push {lr}
     // memBlock
     ldr r0, off_8001C40 // =byte_20094C0 
-    // numWords
+    // size
     ldr r1, off_8001B08 // =0x1B0 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 off_8001B08:    .word 0x1B0
 .endfunc // sub_8001AFC
@@ -4155,9 +4155,9 @@ sub_8002368:
     push {lr}
     // memBlock
     ldr r0, off_8002464 // =byte_20097A0 
-    // numWords
+    // size
     ldr r1, off_8002374 // =0x108 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 off_8002374:    .word 0x108
 .endfunc // sub_8002368
@@ -4203,9 +4203,9 @@ sub_80023A8:
     push {lr}
     // memBlock
     ldr r0, off_8002464 // =byte_20097A0 
-    // numWords
+    // size
     ldr r1, off_80023B4 // =0xD8 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 off_80023B4:    .word 0xD8
 .endfunc // sub_80023A8
@@ -4294,9 +4294,9 @@ sub_8002468:
     push {r0-r2}
     // memBlock
     add r0, r5, #0
-    // numWords
+    // size
     mov r1, #0x50 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r0-r2}
     str r0, [r5,#0x4] // (dword_200A6A4 - 0x200a6a0)
     str r1, [r5,#0x8] // (dword_200A6A8 - 0x200a6a0)
@@ -4322,9 +4322,9 @@ sub_8002484:
 loc_8002498:
     // memBlock
     add r0, r5, #0
-    // numWords
+    // size
     mov r1, #0x50 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r4-r7,pc}
 .endfunc // sub_8002484
 
@@ -4334,9 +4334,9 @@ sub_80024A2:
     push {r4-r7,lr}
     // memBlock
     ldr r0, off_80024C8 // =byte_200A6A0 
-    // numWords
+    // size
     mov r1, #0x50 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r4-r7,pc}
 .endfunc // sub_80024A2
 

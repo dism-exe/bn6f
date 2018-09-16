@@ -52,7 +52,7 @@
 /* External Symbols */
 .include "asm00_0.inc"
 // .global sound_play // () -> void
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
@@ -60,7 +60,7 @@
 // .global sub_800096C
 // .global CpuFastSet_80009AC
 // .global loc_8000AC8
-// .global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
 // .global getPETNaviSelect // () -> u8
@@ -88,7 +88,7 @@
 
 .include "asm00_1.inc"
 // .global sub_800307C
-// .global loc_8003570
+// .global sub_8003570
 // .global sub_8003962
 // .global sub_800399A
 // .global sub_8003AB2
@@ -188,7 +188,7 @@
 .include "chatbox.inc"
 // .global chatbox_uncomp_803FD08 // () -> int
 // .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global dword_8043C90
 // .global dword_8043C90
@@ -216,7 +216,7 @@
 // .global sub_8117404
 // .global sub_81175D0
 // .global sub_8117690
-// .global loc_8117780
+// .global sub_8117780
 // .global loc_81178D8
 // .global sub_81179AE
 // .global sub_8117BC8
@@ -450,16 +450,50 @@
 .equ dword_804D09C, 0x804D09C
 .equ dword_804D0A0, 0x804D0A0
 .equ off_804D0E4, 0x804D0E4
+// .global comp_84E0C4C
 .equ dword_86A5D60, 0x86A5D60
+// .global comp_86C5190
+// .global comp_86C526C
 .equ dword_86C580C, 0x86C580C
+// .global comp_86C73D8
+// .global comp_86C7764
+// .global comp_86C7980
+// .global comp_86C8054
+// .global comp_86C9274
+// .global comp_86C9668
+// .global comp_86C96C0
+// .global comp_86C980C
+// .global comp_86C9BD4
+// .global comp_86C9CE4
+// .global comp_86C9D38
+// .global comp_86CE8AC
+// .global comp_86CE9E8
 .equ dword_86CF4AC, 0x86CF4AC
+// .global comp_86DA1B8
+// .global comp_86DBD94
 .equ a8Bdfhjlnprtvxz, 0x86EF71C
 .equ dword_873D9FC, 0x873D9FC
 .equ comp_873DE4C, 0x873DE4C
 .equ dword_873EA50, 0x873EA50
 .equ comp_873ECC8, 0x873ECC8
-.equ dword_87F0340, 0x87F0340
-.equ dword_87F05A4, 0x87F05A4
+// .global comp_87E50D4
+// .global comp_87E5550
+// .global comp_87E56A0
+// .global comp_87E57BC
+// .global comp_87E674C
+// .global comp_87E6840
+// .global comp_87E6924
+// .global comp_87F006C
+// .global comp_87F0218
+// .global unk_87F0340
+// .global comp_87F0360
+// .global comp_87F04D4
+// .global comp_87F0534
+// .global comp_87F056C
+.equ unk_87F05A4, 0x87F05A4
+// .global comp_87F0664
+// .global comp_87F0834
+// .global comp_87F0C00
 .equ dword_87F0DA0, 0x87F0DA0
 .equ dword_87F0FF4, 0x87F0FF4
 .equ dword_87F1278, 0x87F1278

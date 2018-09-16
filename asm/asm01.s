@@ -424,9 +424,9 @@ sub_8020134:
     push {lr}
     // memBlock
     ldr r0, off_8020164 // =unk_2038160 
-    // numWords
+    // size
     mov r1, #4
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 .endfunc // sub_8020134
 

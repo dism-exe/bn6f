@@ -818,7 +818,7 @@ loc_80A557A:
 .thumb_func
 sub_80A5588:
     push {lr}
-    bl sub_8036F40
+    bl s_2011C50_8036F40 // () -> zf
     bne locret_80A55CA
     bl sub_8036F58
     bne locret_80A55CA
@@ -3021,7 +3021,7 @@ loc_80A6F20:
 .thumb_func
 sub_80A6F2C:
     push {r4-r7,lr}
-    bl sub_8036F40
+    bl s_2011C50_8036F40 // () -> zf
     bne loc_80A6F66
     bl sub_8036F58
     bne loc_80A6F66
@@ -3536,7 +3536,7 @@ loc_80A7342:
 .thumb_func
 sub_80A7354:
     push {r4-r7,lr}
-    bl sub_8036F40
+    bl s_2011C50_8036F40 // () -> zf
     bne loc_80A738E
     bl sub_8036F58
     bne loc_80A738E
@@ -4766,7 +4766,7 @@ sub_80A7BC0:
     bl sub_8142080
     add r1, r0, #0
     ldr r0, off_80A7C54 // =dword_8089D64+116 
-    bl sub_8036E90
+    bl init_s_02011C50_8036E90
 locret_80A7C3C:
     pop {r4-r7,pc}
     .byte 0, 0
@@ -4786,7 +4786,7 @@ sub_80A7C58:
     mov r0, #0x80
     bl chatbox_8045F3C
     bne loc_80A7C7E
-    bl sub_8036F36
+    bl s_2011C50_ptr_1C_isNull // () -> zf
     bne loc_80A7C7E
     bl sub_809E462
     bne loc_80A7C7E
@@ -4892,7 +4892,7 @@ sub_80A7CFE:
     mov r0, #0x80
     bl chatbox_8045F3C
     bne locret_80A7D70
-    bl sub_8036F36
+    bl s_2011C50_ptr_1C_isNull // () -> zf
     bne locret_80A7D70
     bl sub_809E462
     bne locret_80A7D70
@@ -4909,7 +4909,7 @@ sub_80A7CFE:
     bne loc_80A7D60
     ldr r0, off_80A7D88 // =dword_8089DF4+80 
     add r1, r5, #0
-    bl sub_8036E90
+    bl init_s_02011C50_8036E90
     b locret_80A7D70
 loc_80A7D60:
     bl sub_81420B0
@@ -4917,7 +4917,7 @@ loc_80A7D60:
     bne locret_80A7D70
     ldr r0, off_80A7D8C // =dword_8089DF4+484 
     add r1, r5, #0
-    bl sub_8036E90
+    bl init_s_02011C50_8036E90
 locret_80A7D70:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -5624,7 +5624,7 @@ sub_80A8424:
     strb r0, [r5,#7]
     b loc_80A8478
 loc_80A843A:
-    bl sub_8036F36
+    bl s_2011C50_ptr_1C_isNull // () -> zf
     bne loc_80A8478
     bl sub_809E462
     bne loc_80A8478
@@ -6884,7 +6884,7 @@ sub_80A8DB0:
     bl sub_8143088
     add r1, r0, #0
     ldr r0, dword_80A8DEC // =0x808C315 
-    bl sub_8036E90
+    bl init_s_02011C50_8036E90
     mov r0, #0x23 
     add r0, #0xff
     bl sound_play // () -> void
@@ -6909,7 +6909,7 @@ sub_80A8DF0:
     ldr r0, dword_80A8E20 // =0x808C2F0 
     bl sub_8036F70
     bne loc_80A8E0A
-    bl sub_8036F36
+    bl s_2011C50_ptr_1C_isNull // () -> zf
     bne loc_80A8E18
 loc_80A8E0A:
     bl sub_809E462
@@ -7008,7 +7008,7 @@ sub_80A8F08:
     bl sub_80A8FA0
     b loc_80A8F3A
 loc_80A8F1E:
-    bl sub_8036F40
+    bl s_2011C50_8036F40 // () -> zf
     bne loc_80A8F3A
     bl sub_8036F58
     bne loc_80A8F3A
@@ -9855,6 +9855,9 @@ loc_80AA5DC:
     .word dword_8020CE4
 .endfunc // sub_80AA4C0
 
+.func
+.thumb_func
+sub_80AA5E4:
     push {r7,lr}
     mov r7, r10
     ldr r7, [r7,#0x3c]
@@ -9862,6 +9865,8 @@ loc_80AA5DC:
     bl sub_80AA5F4
     str r0, [r7,#0x1c]
     pop {r7,pc}
+.endfunc // sub_80AA5E4
+
 .func
 .thumb_func
 sub_80AA5F4:

@@ -51,13 +51,13 @@
 // .global sub_800068A
 // .global sub_80008B4
 // .global sub_80008C0
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 // .global loc_8000AC8
-// .global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global sub_8000C00
 // .global sub_8000D84
 // .global sub_8000E28
@@ -180,7 +180,7 @@
 .include "chatbox.inc"
 // .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global chatbox_8045F1C
 // .global chatbox_8045F2C // (int a1) ->

@@ -48,10 +48,10 @@
 .include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global sub_80008C0
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global loc_8000AC8
-// .global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
 // .global change_20013F0_800151C // () -> int
 // .global sub_80015FC
@@ -82,7 +82,7 @@
 // .global sub_8031A7A
 
 .include "chatbox.inc"
-// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
 // .global chatbox_reqBBS_80404C0
 // .global chatbox_8040818
 // .global chatbox_8045F3C
@@ -174,6 +174,6 @@
 .equ dword_87EF5A4, 0x87EF5A4
 .equ dword_87EFBA4, 0x87EFBA4
 .equ reqBBS_textualShades, 0x87EFBC8
-.equ dword_87EFE14, 0x87EFE14
+.equ unk_87EFE14, 0x87EFE14
 
 .endif // INC_REQBBS

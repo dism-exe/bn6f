@@ -8,7 +8,7 @@
 .global sprite_chatbox_80026D6
 .global sprite_load // (int a1, int a2, int a3) ->
 .global sprite_800275A
-.global sub_8002770
+.global sub_8002770 // (int a1, int a2) -> void
 .global loc_8002774
 .global sub_80027B4
 .global sub_80027C4
@@ -44,7 +44,7 @@
 
 /* External Symbols */
 .include "asm00_0.inc"
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global sub_800096C
 // .global sub_800098C
@@ -82,6 +82,6 @@
 .equ loc_30061E8, 0x30061E8
 .equ sub_3006730, 0x3006730
 .equ sub_3006792, 0x3006792
-.equ dword_84E0554, 0x84E0554
+.equ unk_84E0554, 0x84E0554
 
 .endif // INC_SPRITE

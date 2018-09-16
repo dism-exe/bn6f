@@ -288,9 +288,9 @@ sub_8021C68:
     mov r0, r10
     // memBlock
     ldr r0, [r0,#0x4c]
-    // numWords
+    // size
     ldr r1, dword_8021C78 // =0xF00 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
     .balign 4, 0x00
 dword_8021C78:    .word 0xF00

@@ -138,7 +138,7 @@ sub_8066540:
     lsl r0, r0, #2
     ldr r1, off_8066554 // =off_8066558 
     ldr r0, [r1,r0]
-    bl loc_8003570
+    bl sub_8003570
     pop {pc}
 off_8066554:    .word off_8066558
 off_8066558:    .word dword_8066560
@@ -816,7 +816,7 @@ sub_8067D46:
     lsl r0, r0, #2
     ldr r1, off_8067D5C // =pt_8067D60 
     ldr r0, [r1,r0]
-    bl loc_8003570
+    bl sub_8003570
     pop {pc}
     .balign 4, 0x00
 off_8067D5C:    .word pt_8067D60

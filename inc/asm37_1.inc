@@ -153,7 +153,7 @@
 /* External Symbols */
 .include "asm00_0.inc"
 // .global sound_play // () -> void
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global loc_8000AC8
@@ -183,8 +183,8 @@
 // .global sub_80302A8
 // .global sub_80307D8
 // .global sub_8030A60
-// .global sub_8036E90
-// .global sub_8036F36
+// .global init_s_02011C50_8036E90
+// .global s_2011C50_ptr_1C_isNull // () -> zf
 // .global sub_803C514
 // .global sub_803DE88
 // .global sub_803ECFC

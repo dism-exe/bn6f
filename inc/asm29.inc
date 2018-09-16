@@ -5,6 +5,7 @@
 .global sub_80AA004
 .global sub_80AA104
 .global sub_80AA4C0
+.global sub_80AA5E4
 .global sub_80AA5F4
 .global sub_80AA88C
 .global sub_80AA8E0
@@ -105,9 +106,9 @@
 // .global sub_8031A7A
 // .global sub_8034C36
 // .global sub_8035694
-// .global sub_8036E90
-// .global sub_8036F36
-// .global sub_8036F40
+// .global init_s_02011C50_8036E90
+// .global s_2011C50_ptr_1C_isNull // () -> zf
+// .global s_2011C50_8036F40 // () -> zf
 // .global sub_8036F58
 // .global sub_8036F70
 

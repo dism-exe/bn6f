@@ -39,11 +39,11 @@ typedef struct{
 	// 02009980
 	Camera *camera;                // loc=0xC
 	// 02011C50
-	s_02011C50 *unk_2011C50;                // loc=0x10
+	s_02011C50 *s_2011C50;                // loc=0x10
 	// 02011BB0
-	void *unk_14;                // loc=0x14
+	void *unk_2011BB0;                // loc=0x14
 	// 02034880
-	s_02034880 *unk_2034880;     // loc=0x18
+	s_02034880 *s_2034880;     // loc=0x18
 	// 0200F3A0
 	void *unk_200F3A0;                // loc=0x1C
 	// 02009740

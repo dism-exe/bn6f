@@ -654,9 +654,9 @@ sub_8123790:
     bl sub_8049DDC
     // memBlock
     add r0, r5, #0
-    // numWords
+    // size
     mov r1, #0x80
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 locret_81237B4:
     pop {pc}
     .balign 4, 0x00
@@ -777,10 +777,10 @@ loc_8123888:
     str r0, [r4,r6]
     // initRefs
     ldr r0, off_812395C // =unk_20096E0 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     // initRefs
     ldr r0, off_8123960 // =dword_8123964 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     ldr r0, off_81238E0 // =dword_81238E4 
     ldr r1, off_81238D8 // =unk_201C220 
     ldr r2, off_81238DC // =decomp_2013A00 
@@ -2024,10 +2024,10 @@ loc_81243CC:
     str r0, [r4,r6]
     // initRefs
     ldr r0, off_8124480 // =unk_20096E0 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     // initRefs
     ldr r0, off_8124484 // =dword_8124488 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     ldr r0, off_812440C // =dword_8124410 
     ldr r1, off_8124444 // =unk_201C100 
     ldr r2, off_8124448 // =decomp_2013A00 
@@ -3541,10 +3541,10 @@ loc_812529C:
     str r0, [r4,r6]
     // initRefs
     ldr r0, off_8125360 // =unk_2029000 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     // initRefs
     ldr r0, off_8125364 // =dword_8125368 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     pop {r4-r7,pc}
 .endfunc // sub_8125280
 
@@ -4249,9 +4249,9 @@ sub_81258F8:
     push {r4-r7,lr}
     // memBlock
     ldr r0, off_8125984 // =unk_201DC20 
-    // numWords
+    // size
     ldr r1, off_8125988 // =0x320 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r4, #1
     mov r5, #0
     ldr r7, off_8125984 // =unk_201DC20 
@@ -4333,9 +4333,9 @@ sub_8125994:
     push {r4-r7,lr}
     // memBlock
     ldr r0, off_8125A60 // =dword_201E420 
-    // numWords
+    // size
     ldr r1, off_8125A64 // =0x578 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r4, #1
     mov r5, #0
     mov r6, #0
@@ -4452,9 +4452,9 @@ sub_8125A6C:
     push {r4-r7,lr}
     // memBlock
     ldr r0, off_8125B30 // =dword_201EC20 
-    // numWords
+    // size
     ldr r1, off_8125B34 // =0x578 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r4, #1
     mov r5, #0
     mov r6, #0
@@ -4567,9 +4567,9 @@ sub_8125B3C:
     push {r4-r7,lr}
     // memBlock
     ldr r0, off_8125BFC // =dword_201F420 
-    // numWords
+    // size
     ldr r1, off_8125C00 // =0x578 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r4, #1
     mov r5, #0
     mov r6, #0
@@ -4680,9 +4680,9 @@ sub_8125C08:
     push {r4-r7,lr}
     // memBlock
     ldr r0, off_8125CE4 // =dword_201FC20 
-    // numWords
+    // size
     ldr r1, off_8125CE8 // =0x578 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r4, #0
     mov r5, #0
     mov r6, #0
@@ -7007,9 +7007,9 @@ loc_8127042:
     mov r0, r10
     // memBlock
     ldr r0, [r0,#0x34]
-    // numWords
+    // size
     mov r1, #0x80
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     strb r4, [r5]
     b locret_812705E
 loc_812705A:
@@ -7109,10 +7109,10 @@ loc_81270EC:
     str r0, [r4,r6]
     // initRefs
     ldr r0, off_8127180 // =unk_20096E0 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     // initRefs
     ldr r0, off_8127184 // =dword_8127188 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     ldr r0, off_812711C // =dword_8127120 
     ldr r1, off_8127154 // =unk_201BF20 
     ldr r2, off_8127158 // =decomp_2013A00 
@@ -8539,10 +8539,10 @@ loc_8127CDA:
     str r0, [r4,r6]
     // initRefs
     ldr r0, off_8127DE8 // =unk_20096E0 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     // initRefs
     ldr r0, off_8127DEC // =dword_8127DF0 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     ldr r0, off_8127D74 // =dword_8127D78 
     ldr r1, [sp]
     mov r2, #1
@@ -8551,7 +8551,7 @@ loc_8127CDA:
     // initRefs
     ldr r0, off_8127D94 // =dword_8127D98 
 loc_8127D08:
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     ldr r0, off_8127D34 // =dword_8127D38 
     ldr r1, off_8127D6C // =unk_201BA00 
     ldr r2, off_8127D70 // =decomp_2013A00 
@@ -9730,9 +9730,9 @@ sub_81288BC:
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     // memBlock
     add r0, r5, #0
-    // numWords
+    // size
     mov r1, #0x80
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r0, #0x30 
     strb r0, [r5]
     bl chatbox_8040818
@@ -9786,10 +9786,10 @@ loc_8128918:
     str r0, [r4,r6]
     // initRefs
     ldr r0, off_8128970 // =unk_20096E0 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     // initRefs
     ldr r0, off_8128974 // =dword_8128978 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     // j
     mov r0, #0
     // i
@@ -9881,7 +9881,7 @@ dword_8128A34:    .word 0x201BFDE
     push {lr}
     ldr r0, dword_8128AA0 // =0x6004020 
     mov r1, #0x20 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 .func
 .thumb_func
@@ -10473,7 +10473,7 @@ sub_8128F04:
     push {lr}
     // initRefs
     ldr r0, off_8128F34 // =dword_8128F38 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     pop {pc}
     .byte 0, 0
 .endfunc // sub_8128F04
@@ -13096,9 +13096,9 @@ sub_812A424:
     strb r0, [r5,#1]
     // memBlock
     ldr r0, off_812A48C // =unk_20251A0 
-    // numWords
+    // size
     mov r1, #0x10
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r0, #0
     strb r0, [r5,#0x1c]
     strb r0, [r5,#0x1e]
@@ -13401,9 +13401,9 @@ sub_812A694:
     strb r0, [r5,#1]
     // memBlock
     ldr r0, off_812A6F0 // =unk_20251A0 
-    // numWords
+    // size
     mov r1, #0x10
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r0, #0
     strb r0, [r5,#0x1c]
     strb r0, [r5,#0x1e]
@@ -14442,9 +14442,9 @@ loc_812AE96:
     strb r0, [r5,#0x1e]
     // memBlock
     ldr r0, off_812AEC0 // =unk_20251A0 
-    // numWords
+    // size
     mov r1, #0x10
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     bl sub_812AFC8
     // a1
     ldr r0, off_812AEC4 // =dword_812913C+20 
@@ -14520,7 +14520,7 @@ sub_812AF18:
     bl sub_812AF3C
     // initRefs
     ldr r0, off_812B088 // =dword_812B08C 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     bl sub_812AF78
     bl sub_812AF84
     bl sub_812AF98
@@ -14561,7 +14561,7 @@ loc_812AF58:
     str r0, [r4,r6]
     // initRefs
     ldr r0, off_812B084 // =unk_201D020 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
 .endfunc // sub_812AF3C
@@ -14572,7 +14572,7 @@ sub_812AF78:
     push {lr}
     // initRefs
     ldr r0, off_812B0E4 // =dword_812B0E8 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     pop {pc}
     .balign 4, 0x00
 .endfunc // sub_812AF78
@@ -14583,7 +14583,7 @@ sub_812AF84:
     push {lr}
     // initRefs
     ldr r0, off_812B164 // =dword_812B168 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     ldr r0, off_812AFE0 // =dword_812AFE4 
     ldr r1, off_812B018 // =unk_201BA20 
     ldr r2, off_812B01C // =decomp_2013A00 
@@ -14597,7 +14597,7 @@ sub_812AF98:
     push {lr}
     // initRefs
     ldr r0, off_812B19C // =dword_812B1A0 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     pop {pc}
     .balign 4, 0x00
 .endfunc // sub_812AF98
@@ -14608,7 +14608,7 @@ sub_812AFA4:
     push {lr}
     // initRefs
     ldr r0, off_812B1BC // =dword_812B1C0 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     pop {pc}
     .byte 0, 0
 .endfunc // sub_812AFA4
@@ -14790,9 +14790,9 @@ sub_812B1DC:
     add r4, r0, #0
     // memBlock
     ldr r0, off_812B258 // =unk_20251A0 
-    // numWords
+    // size
     mov r1, #0x10
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     ldrh r2, [r4,#2]
     ldrb r1, [r4,#1]
     ldrb r0, [r4]
@@ -15218,7 +15218,7 @@ sub_812B4AC:
     strb r0, [r5,#0x1e] // (ssubmenu.unk_1e - 0x2009a30)
     ldr r0, off_812B4FC // =unk_20251A0 
     mov r1, #0x10
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     bl sub_812AFC8
     ldr r0, off_812B500 // =dword_812913C+20 
     bl sub_80465A0 // (void *a1) -> void
@@ -15507,9 +15507,9 @@ loc_812B71A:
     strb r0, [r5,#0x1e]
     // memBlock
     ldr r0, off_812B750 // =unk_20251A0 
-    // numWords
+    // size
     mov r1, #0x10
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     bl sub_812AFC8
 .endfunc // sub_812B708
 
@@ -16568,9 +16568,9 @@ sub_812BFAC:
     strb r0, [r5,#0x1e]
     // memBlock
     ldr r0, off_812BFEC // =unk_20251A0 
-    // numWords
+    // size
     mov r1, #0x10
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     bl sub_812AFC8
     // a1
     ldr r0, off_812BFF0 // =dword_812913C+20 
@@ -16640,9 +16640,9 @@ sub_812C034:
     strb r0, [r5,#0x1e]
     // memBlock
     ldr r0, off_812C074 // =unk_20251A0 
-    // numWords
+    // size
     mov r1, #0x10
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     bl sub_812AFC8
     // a1
     ldr r0, off_812C078 // =dword_812913C+20 
@@ -16685,9 +16685,9 @@ sub_812C094:
     strb r0, [r5,#0x1e]
     // memBlock
     ldr r0, off_812C0C4 // =unk_20251A0 
-    // numWords
+    // size
     mov r1, #0x10
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     bl sub_812AFC8
     // a1
     ldr r0, off_812C0C8 // =dword_812913C+20 

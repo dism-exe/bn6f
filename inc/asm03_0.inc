@@ -170,16 +170,17 @@
 .global sub_803578C
 .global sub_8036E44
 .global sub_8036E78
-.global sub_8036E90
+.global init_s_02011C50_8036E90
 .global sub_8036ED4
 .global sub_8036EFE
 .global sub_8036F24
-.global sub_8036F36
-.global sub_8036F40
+.global s_2011C50_ptr_1C_isNull // () -> zf
+.global s_2011C50_8036F40 // () -> zf
 .global sub_8036F58
 .global sub_8036F70
 .global sub_8036F98
 .global sub_8036FAA
+.global sub_8037AEC
 .global sub_80385F0
 .global sub_8038A9C
 .global sub_803A104
@@ -319,10 +320,11 @@
 // .global sub_80005F2
 // .global sub_8000642
 // .global sub_800068A
+// .global sub_80006A2
 // .global musicGameState_8000784 // () -> void
 // .global sub_80008B4
 // .global sub_80008C0
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
@@ -333,7 +335,7 @@
 // .global sub_800098C
 // .global loc_8000AC4
 // .global loc_8000AC8
-// .global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
@@ -392,7 +394,7 @@
 .include "asm00_1.inc"
 // .global sub_8002E3C
 // .global sub_8002F5C
-// .global loc_8003570
+// .global sub_8003570
 // .global sub_80035A2
 // .global sub_8003914
 // .global sub_8003940
@@ -401,9 +403,15 @@
 // .global loc_8003A90
 // .global sub_8003B1C
 // .global sub_80045C0
+// .global sub_80047E0
+// .global sub_80048B2
 // .global sub_8004D48
 // .global sub_8004DF0
+// .global gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
 // .global sub_8005C04
+// .global sub_8005F00
+// .global sub_8005F14
+// .global sub_8005F32
 // .global sub_8005F40
 // .global sub_8005F6C
 // .global engine_setScreeneffect // (int a1, int a2) -> void
@@ -603,8 +611,8 @@
 
 .include "chatbox.inc"
 // .global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_runScript_803FE74 // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_runScript_803FE74 // (u16 *scriptList, u8 scriptOffIdx) -> void
+// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global chatbox_8045ED0
 // .global chatbox_8045F1C
@@ -785,7 +793,7 @@
 
 .include "asm28_0.inc"
 // .global dword_8098DD0
-// .global unk_80991F4
+// .global dword_80991F4
 // .global dword_8099DC0
 // .global dword_8099E04
 // .global dword_8099EA0
@@ -801,6 +809,11 @@
 // .global loc_809E0FC
 // .global loc_809E114
 // .global sub_809E122
+// .global sub_809E13C
+// .global loc_809E1A4
+// .global sub_809E1AE
+// .global sub_809E1FA
+// .global sub_809E218
 // .global sub_809E228
 // .global sub_809E230
 // .global sub_809E23C
@@ -813,11 +826,18 @@
 // .global sub_809E292
 // .global sub_809E2A0
 // .global sub_809E2AE
+// .global sub_809E2B8
+// .global sub_809E2C2
+// .global loc_809E2C8
+// .global sub_809E2DC
+// .global sub_809E2F4
+// .global loc_809E2F6
 // .global sub_809E312
 // .global sub_809E434
 // .global sub_809E442
 // .global sub_809E452
 // .global sub_809E462
+// .global sub_809E496
 // .global sub_809E4A0
 // .global sub_809E4AE
 // .global sub_809E4BC
@@ -826,6 +846,7 @@
 // .global sub_809F9DC
 
 .include "asm29.inc"
+// .global sub_80AA5E4
 // .global sub_80AA8E0
 // .global sub_80AABA4
 // .global sub_80AAC8C
@@ -1009,6 +1030,7 @@
 .equ byte_20010F0, 0x20010F0
 .equ dword_2001140, 0x2001140
 .equ unk_20018C0, 0x20018C0
+.equ sReqBBS_GUI, 0x2005780
 .equ byte_2006530, 0x2006530
 .equ unk_2006710, 0x2006710
 .equ dword_2006714, 0x2006714
@@ -1485,6 +1507,7 @@
 .equ dword_809895C, 0x809895C
 .equ dword_8098B40, 0x8098B40
 .equ dword_82E8388, 0x82E8388
+// .global comp_84E0C4C
 .equ dword_858F110, 0x858F110
 .equ off_8592304, 0x8592304
 .equ dword_85924A8, 0x85924A8
@@ -1600,7 +1623,12 @@
 // .global compFile_86C23A0
 // .global comp_86C2E2C
 // .global comp_86C33B4
-.equ dword_86C41B4, 0x86C41B4
+// .global comp_86C3528
+// .global comp_86C3E94
+.equ unk_86C41B4, 0x86C41B4
+// .global comp_86C41D0
+// .global comp_86C4490
+// .global comp_86C45A8
 // .global comp_86C9BD4
 // .global comp_86C9D38
 .equ unk_86CB360, 0x86CB360
@@ -1680,12 +1708,21 @@
 .equ aF_0, 0x873811C
 .equ dword_873B9E0, 0x873B9E0
 .equ dword_87E36F8, 0x87E36F8
-.equ comp_87E4500, 0x87E4500
-.equ comp_87E5020, 0x87E5020
+// .global comp_87E4500
+// .global comp_87E5020
+// .global comp_87E50D4
+// .global comp_87E5550
+// .global comp_87E56A0
+// .global comp_87E57BC
 .equ dword_87E660C, 0x87E660C
 .equ byte_87E672C, 0x87E672C
 .equ word_87E672E, 0x87E672E
-.equ dword_87E6BDC, 0x87E6BDC
+// .global comp_87E674C
+// .global comp_87E6840
+// .global comp_87E6924
+// .global comp_87E6980
+.equ unk_87E6BDC, 0x87E6BDC
+// .global comp_87E6BFC
 .equ aLlllllllllllll, 0x87F2654
 .equ aZz, 0x87F2808
 .equ aV, 0x87F2A1C

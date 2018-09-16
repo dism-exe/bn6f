@@ -10327,7 +10327,7 @@ sub_81168B4:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x3e 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -10397,7 +10397,7 @@ off_8116938:    .word sub_8116944+1
 sub_8116944:
     push {lr}
     mov r0, #1
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     ldrb r0, [r5,#4]
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -10633,7 +10633,7 @@ sub_8116B00:
 loc_8116B0C:
     strb r0, [r5]
     mov r0, #0
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     ldrb r4, [r5,#4]
     cmp r4, #3
     bne loc_8116B24
@@ -10906,7 +10906,7 @@ sub_8116D00:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #2
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     ldrb r0, [r5,#4]
     strb r0, [r5,#0xc]
     strb r0, [r5,#0xd]
@@ -11074,7 +11074,7 @@ loc_8116E3C:
     lsl r1, r1, #2
     ldr r2, off_8116F08 // =off_8116F0C 
     ldr r1, [r2,r1]
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     ldr r0, off_8116EAC // =dword_8116F18 
     ldrb r0, [r0,r4]
     bl sprite_setAnimation // (u8 a1) -> void
@@ -11436,7 +11436,7 @@ loc_811713E:
     ldrb r2, [r5,#5]
     lsl r2, r2, #2
     ldr r1, [r1,r2]
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     ldrb r0, [r5,#4]
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -11568,7 +11568,7 @@ sub_8117238:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x18
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -11658,7 +11658,7 @@ loc_81172E2:
 loc_81172E6:
     ldr r1, off_8117348 // =unk_2032A04 
 loc_81172E8:
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     ldrb r0, [r5,#5]
     mov r1, #0x7f
     and r0, r1
@@ -11746,7 +11746,7 @@ sub_8117424:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0xc
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -11993,7 +11993,7 @@ sub_81175F0:
     strb r0, [r5]
     mov r0, #0xd
     ldr r1, off_8117638 // =unk_2016A04 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     ldrb r0, [r5,#4]
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -12170,7 +12170,9 @@ locret_811777E:
     pop {pc}
 .endfunc // sub_8117768
 
-loc_8117780:
+.func
+.thumb_func
+sub_8117780:
     push {lr}
     ldr r6, off_81177A0 // =byte_2011C10 
     ldr r0, off_8117790 // =off_8117794 
@@ -12184,6 +12186,8 @@ off_8117794:    .word sub_81177A4+1
     .word sub_81177EC+1
     .word sub_8117818+1
 off_81177A0:    .word byte_2011C10
+.endfunc // sub_8117780
+
 .func
 .thumb_func
 sub_81177A4:
@@ -12192,13 +12196,11 @@ sub_81177A4:
     strb r1, [r5]
     mov r0, #0xf
     ldr r1, off_81177E4 // =unk_202FA04 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     str r0, [r5,#0xc]
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
-.endfunc // sub_81177A4
-
     bl sub_8002F90 // () -> void
     mov r0, #8
     bl sub_800304A
@@ -12214,6 +12216,8 @@ sub_81177A4:
     pop {pc}
 off_81177E4:    .word unk_202FA04
 off_81177E8:    .word 0x40
+.endfunc // sub_81177A4
+
 .func
 .thumb_func
 sub_81177EC:
@@ -12373,7 +12377,7 @@ sub_81178FC:
     strb r1, [r5]
     mov r0, #0x10
     ldr r1, off_8117944 // =unk_2030204 
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     bl sub_8117998
     strb r0, [r5,#5]
     bl sprite_setAnimation // (u8 a1) -> void
@@ -12750,7 +12754,7 @@ sub_8117BE8:
     strb r0, [r5]
     mov r0, #0xa
     ldr r1, off_8117C3C // =unk_2034B6C 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     strb r0, [r5,#0xc]
     bl sprite_setAnimation // (u8 a1) -> void
@@ -12940,7 +12944,7 @@ sub_8117D4C:
     strb r0, [r5]
     mov r0, #0x61 
     ldr r1, off_8117DBC // =unk_20251B0 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     ldrb r0, [r5,#4]
     add r0, #5
     strb r0, [r5,#0xc]
@@ -13140,7 +13144,7 @@ sub_8117EE8:
     strb r0, [r5]
     mov r0, #0x11
     ldr r1, off_8117F60 // =unk_201DD70 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -13761,7 +13765,7 @@ sub_8118368:
     strb r0, [r5]
     mov r0, #0x12
     ldr r1, off_81183C0 // =unk_201F6F0 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -14386,7 +14390,7 @@ sub_811880C:
     strb r0, [r5]
     mov r0, #0x15
     ldr r1, off_8118870 // =unk_20218F0 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     strb r0, [r5,#0xc]
     bl sprite_setAnimation // (u8 a1) -> void
@@ -14892,7 +14896,7 @@ sub_8118BC8:
     strb r0, [r5]
     mov r0, #0x13
     ldr r1, off_8118C28 // =unk_2021FF0 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -15107,7 +15111,7 @@ sub_8118D84:
     strb r0, [r5]
     mov r0, #0x14
     ldr r1, off_8118DDC // =unk_20222F0 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -15256,7 +15260,7 @@ sub_8118EA8:
     strb r0, [r5]
     mov r0, #0x17
     ldr r1, off_8118F04 // =unk_20226F0 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     ldrb r0, [r6,#0xf]
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -15334,7 +15338,7 @@ sub_8118F44:
     strb r0, [r5]
     mov r0, #8
     ldr r1, off_8118F9C // =unk_201E284 
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     ldrb r0, [r5,#4]
     strb r0, [r5,#0xc]
     bl sprite_setAnimation // (u8 a1) -> void
@@ -15683,7 +15687,7 @@ loc_81193AA:
     lsl r3, r3, #2
     ldr r1, [r1,r3]
     ldr r1, [r1,r2]
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     ldr r1, off_8119638 // =dword_811963C 
     ldrb r0, [r1,r4]
     bl sprite_setAnimation // (u8 a1) -> void
@@ -16685,7 +16689,7 @@ loc_8119B24:
     b loc_8119B30
     mov r0, #0x1b
 loc_8119B30:
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -16907,7 +16911,7 @@ sub_8119D74:
     beq loc_8119D86
     ldr r1, off_8119DC4 // =unk_2024A00 
 loc_8119D86:
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -17023,7 +17027,7 @@ loc_8119E76:
     lsl r3, r3, #2
     ldr r1, [r1,r3]
     ldr r1, [r1,r2]
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     ldr r1, off_811A018 // =dword_811A01C 
     ldrb r0, [r1,r4]
     bl sprite_setAnimation // (u8 a1) -> void
@@ -17677,7 +17681,7 @@ sub_811A3AC:
     strb r0, [r5]
     mov r0, #0x28 
     ldr r1, off_811A3EC // =unk_201D700 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -17758,7 +17762,7 @@ loc_811A448:
 loc_811A45C:
     add r0, r4, #0
     add r1, r7, #0
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     ldrb r0, [r5,#5]
     strb r0, [r5,#0xc]
     bl sprite_setAnimation // (u8 a1) -> void
@@ -18210,7 +18214,7 @@ sub_811A7AC:
     strb r4, [r5]
     ldr r1, off_811A804 // =unk_2022AA0 
     mov r0, #0x2a 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -18312,7 +18316,7 @@ sub_811A878:
     strb r4, [r5]
     ldr r1, off_811A8CC // =unk_2022FA0 
     mov r0, #0x2b 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     mov r1, #6
     bl sub_811A940
@@ -18462,7 +18466,7 @@ sub_811A998:
     strb r0, [r5]
     mov r0, #0x26 
     ldr r1, off_811A9F0 // =unk_202488C 
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     ldrb r0, [r5,#4]
     strb r0, [r5,#0xc]
     bl sprite_setAnimation // (u8 a1) -> void
@@ -18666,7 +18670,7 @@ sub_811AB7C:
     strb r0, [r5]
     mov r0, #8
     ldr r1, off_811ABC4 // =unk_2024E8C 
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -18891,7 +18895,7 @@ sub_811AD58:
     strb r0, [r5]
     mov r0, #0x68 
     ldr r1, off_811ADB0 // =unk_2022FA0 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -19474,7 +19478,7 @@ sub_811B20C:
     lsl r2, r2, #2
     ldr r1, off_811B274 // =off_811B278 
     ldr r1, [r1,r2]
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     ldrb r0, [r5,#4]
     tst r0, r0
     beq loc_811B232
@@ -19636,7 +19640,7 @@ sub_811B35C:
     strb r0, [r5]
     mov r0, #0x14
     ldr r1, off_811B3AC // =unk_2026A00 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -19720,7 +19724,7 @@ sub_811B414:
     mov r0, #1
     strb r0, [r5]
     mov r0, #0x2c 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     bl sub_80101F8
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -19825,7 +19829,7 @@ loc_811B4C0:
     strb r0, [r5]
     mov r0, #0x25 
     ldr r1, off_811B554 // =unk_2024290 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #1
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -20467,7 +20471,7 @@ sub_811B9D8:
     strb r0, [r5]
     mov r0, #0x12
     ldr r1, off_811BA54 // =unk_2025AE8 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #6
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -20827,7 +20831,7 @@ sub_811BC68:
     ldr r1, off_811BCC8 // =off_811BCCC 
     ldr r1, [r1,r0]
     mov r0, #0x29 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #3
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -21046,7 +21050,7 @@ sub_811BE1C:
     ldrb r0, [r2,r0]
     tst r0, r0
     beq locret_811BE8E
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r1, #0x23 
     strb r1, [r5]
     mov r0, #0
@@ -21191,7 +21195,7 @@ sub_811C01C:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x34 
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     ldrb r0, [r5,#4]
     add r0, #8
     bl sprite_setAnimation // (u8 a1) -> void
@@ -21261,7 +21265,7 @@ sub_811C0AC:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x3d 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #4
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -21318,7 +21322,7 @@ sub_811C13C:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x3e 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -21386,7 +21390,7 @@ sub_811C1CC:
     strb r0, [r5]
     mov r0, #0x69 
     ldr r1, off_811C220 // =unk_20222A0 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -21527,7 +21531,7 @@ loc_811C2CC:
 loc_811C2D8:
     ldr r0, off_811C320 // =dword_811C324 
     ldr r0, [r0,r4]
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     lsr r1, r4, #2
     ldr r0, off_811C41C // =off_811C420 
     ldrb r0, [r0,r1]
@@ -21929,7 +21933,7 @@ sub_811CA1C:
     strb r0, [r5]
     mov r0, #0x89
     ldr r1, off_811CA90 // =unk_201BA04 
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -22834,7 +22838,7 @@ sub_811D0EC:
     strb r0, [r5,#0xc]
     bne locret_811D11E
     mov r0, #0x8a
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -23135,7 +23139,7 @@ loc_811D312:
 loc_811D320:
     ldr r0, off_811D398 // =dword_811D39C 
     ldr r0, [r0,r4]
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     lsr r1, r6, #2
     ldr r0, off_811D3E4 // =dword_811D404 
     ldrb r0, [r0,r1]
@@ -23206,7 +23210,7 @@ sub_811D410:
     mov r1, #0x23 
     strb r1, [r5]
     ldr r0, dword_811D460 // =0x8E 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -23243,7 +23247,7 @@ sub_811D464:
     ldrb r0, [r5,#5]
     lsl r0, r0, #2
     ldr r0, [r1,r0]
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     ldr r1, off_811D514 // =dword_811D51C 
     ldrb r0, [r5,#5]
     ldrb r0, [r1,r0]
@@ -23309,7 +23313,7 @@ sub_811D530:
     ldrb r0, [r5,#5]
     lsl r0, r0, #2
     ldr r0, [r1,r0]
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -23370,7 +23374,7 @@ sub_811D5F8:
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     add r1, r7, #4
     ldr r0, dword_811D628 // =0x8F 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -23509,7 +23513,7 @@ sub_811D6F4:
     strb r0, [r5,#7]
     b locret_811D76C
 loc_811D70A:
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r1, #0x23 
     strb r1, [r5]
     mov r0, #0
@@ -23576,7 +23580,7 @@ sub_811D7D0:
     strb r0, [r5,#7]
     b locret_811D854
 loc_811D7E6:
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r1, #0x23 
     strb r1, [r5]
     mov r0, #0
@@ -23653,7 +23657,7 @@ sub_811D894:
     strb r0, [r5,#7]
     b locret_811D8FC
 loc_811D8AA:
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -23749,7 +23753,7 @@ sub_811D954:
     ldr r1, off_811D9E8 // =unk_201AA00 
     add r1, #4
     ldr r0, dword_811D9D0 // =0x93 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     ldrb r1, [r5,#5]
     ldr r0, off_811D9DC // =dword_811D9F4 
     ldrb r0, [r0,r1]
@@ -23815,7 +23819,7 @@ sub_811DA00:
     ldr r0, [r0,r1]
     tst r0, r0
     beq locret_811DA60
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r1, #0x23 
     strb r1, [r5]
     ldrb r1, [r5,#5]
@@ -23864,7 +23868,7 @@ dword_811DA90:    .word 0x0
 sub_811DA94:
     push {lr}
     ldr r0, dword_811DAE8 // =0x96 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r1, #0x23 
     strb r1, [r5]
     mov r0, #0
@@ -23900,7 +23904,7 @@ dword_811DAEC:    .word 0x193
 sub_811DAF0:
     push {lr}
     ldr r0, dword_811DB50 // =0x97 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r1, #1
     strb r1, [r5]
     mov r0, #0
@@ -23948,7 +23952,7 @@ off_811DB74:    .word unk_2010100
 sub_811DB7C:
     push {lr}
     ldr r0, dword_811DBC4 // =0x1E 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r1, #1
     strb r1, [r5]
     mov r0, #0
@@ -24162,7 +24166,7 @@ loc_811DCB0:
 loc_811DCBC:
     ldr r0, off_811DD10 // =unk_811DD14 
     ldr r0, [r0,r4]
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r1, #0x23 
     strb r1, [r5]
     lsr r1, r4, #2
@@ -24321,7 +24325,7 @@ sub_811DF40:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x3b 
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -24456,7 +24460,7 @@ sub_811E048:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x31 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -24518,7 +24522,7 @@ sub_811E0BA:
     add r7, r0, #0
     mov r1, #0xa
     lsl r1, r1, #5
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     ldr r1, off_811E164 // =byte_2001010 
     ldrb r4, [r1,#0x10] // (dword_2001020 - 0x2001010)
     cmp r4, #0
@@ -24626,7 +24630,7 @@ sub_811E18C:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x32 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -24737,7 +24741,7 @@ sub_811E26C:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x33 
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     ldrb r0, [r5,#4]
     strb r0, [r5,#5]
     bl sprite_setAnimation // (u8 a1) -> void
@@ -24870,7 +24874,7 @@ sub_811E384:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x36 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -24957,7 +24961,7 @@ sub_811E438:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0xa1
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #1
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -25137,7 +25141,7 @@ sub_811E59C:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x3a 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -25216,7 +25220,7 @@ sub_811E63C:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x39 
-    bl sub_8002770
+    bl sub_8002770 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -25295,7 +25299,7 @@ sub_811E6E4:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x63 
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -25345,7 +25349,7 @@ sub_811E744:
     ldr r0, off_811E798 // =unk_2027000 
     mov r1, #0x34 
     lsl r1, r1, #4
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     bl sub_8144010
     add r6, r0, #0
     ldr r7, off_811E798 // =unk_2027000 
@@ -25410,7 +25414,7 @@ sub_811E7F8:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x64 
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -25473,7 +25477,7 @@ sub_811E87C:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x65 
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -25555,7 +25559,7 @@ sub_811E938:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x66 
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -25621,7 +25625,7 @@ sub_811E9C4:
     mov r0, #0x23 
     strb r0, [r5]
     mov r0, #0x67 
-    bl loc_8002774
+    bl loc_8002774 // (int a1, int a2) -> void
     mov r0, #0
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -25752,9 +25756,9 @@ sub_811EC00:
     // memBlock
     ldr r0, off_811EC4C // =byte_200DF20 
     add r4, r0, #0
-    // numWords
+    // size
     mov r1, #0x18
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
     .byte 0, 0
 .endfunc // sub_811EC00
@@ -25766,15 +25770,15 @@ sub_811EC10:
     mov r0, r10
     // memBlock
     ldr r0, [r0,#0x34]
-    // numWords
+    // size
     mov r1, #0x80
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     // memBlock
     ldr r0, off_811EC4C // =byte_200DF20 
     add r4, r0, #0
-    // numWords
+    // size
     mov r1, #0x18
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r0, #1
     bl sub_811EBE8
     ldr r0, dword_811EC44 // =0xFFFFFFE0 
@@ -26155,7 +26159,7 @@ sub_811EF8C:
     push {lr}
     // initRefs
     ldr r0, off_811EF98 // =dword_811EF9C 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     pop {pc}
     .balign 4, 0x00
 off_811EF98:    .word dword_811EF9C
@@ -26882,9 +26886,9 @@ sub_811F6C0:
     // memBlock
     ldr r0, [r0,#0x34]
     add r4, r0, #0
-    // numWords
+    // size
     mov r1, #0x80
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     ldr r5, off_811F704 // =byte_200DF20 
     ldrb r0, [r5,#0x4] // (byte_200DF24 - 0x200df20)
     lsl r0, r0, #2
@@ -26904,9 +26908,9 @@ sub_811F6E0:
     // memBlock
     ldr r0, [r0,#0x34]
     add r4, r0, #0
-    // numWords
+    // size
     mov r1, #0x80
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     ldr r5, off_811F704 // =byte_200DF20 
     mov r0, #0x10
     strb r0, [r4]
@@ -28658,9 +28662,9 @@ sub_81203E4:
     str r5, [sp,#0xc]
     // memBlock
     add r0, r2, #0
-    // numWords
+    // size
     mov r1, #0x38 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r5, #0x20 
     ldr r0, [sp]
     mul r0, r5

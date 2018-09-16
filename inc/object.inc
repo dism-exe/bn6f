@@ -112,7 +112,7 @@
 .include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global sub_80008C0
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 // .global sub_8001532
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void

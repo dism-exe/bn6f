@@ -302,7 +302,7 @@ loc_80870E8:
     bl sub_8086F5C
     b locret_80870F6
 loc_80870F2:
-    bl sub_8036E90
+    bl init_s_02011C50_8036E90
 locret_80870F6:
     pop {r4-r7,pc}
 off_80870F8:    .word dword_8086A54+0x2CC

@@ -801,16 +801,16 @@ loc_809EB76:
     pop {r0,r1,r3-r7}
     cmp r2, #0
     beq loc_809EB98
-    mov r2, #0x94
+    mov r2, #0x94 // NPC.scriptArray
     ldr r0, [r5,r2]
     mov r1, #0x78 
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     b loc_809EBAA
 loc_809EB98:
     mov r2, #0x94
     ldr r0, [r5,r2]
     ldrb r1, [r5,#0x1c]
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     b loc_809EBAA
 loc_809EBA4:
     ldrb r0, [r5,#0x1c]

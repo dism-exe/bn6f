@@ -299,15 +299,15 @@ sub_813B934:
     mov r0, r10
     // memBlock
     ldr r0, [r0,#0x5c]
-    // numWords
+    // size
     ldr r1, off_813B94C // =0x188 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r0, r10
     // memBlock
     ldr r0, [r0,#0x58]
-    // numWords
+    // size
     mov r1, #0x40 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 off_813B94C:    .word 0x188
 .endfunc // sub_813B934
@@ -4004,7 +4004,7 @@ sub_813D66C:
     push {lr}
     ldr r0, off_813D68C // =byte_200AF80 
     mov r1, #0x18
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 off_813D68C:    .word byte_200AF80
     push {lr}
@@ -4439,9 +4439,9 @@ sub_813D960:
     ldrb r4, [r7,#0x7] // (byte_200BC57 - 0x200bc50)
     // memBlock
     add r0, r7, #0
-    // numWords
+    // size
     mov r1, #0x10
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     strb r4, [r7,#0x7] // (byte_200BC57 - 0x200bc50)
     pop {r4,r7,pc}
     .balign 4, 0x00
@@ -4611,9 +4611,9 @@ sub_813DA84:
     push {lr}
     // memBlock
     ldr r0, off_813DA90 // =byte_2010290 
-    // numWords
+    // size
     mov r1, #0x10
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 off_813DA90:    .word byte_2010290
 .endfunc // sub_813DA84

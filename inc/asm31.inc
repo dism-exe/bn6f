@@ -123,7 +123,7 @@
 .include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global sub_80008C0
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global loc_8000AC8
 // .global sub_8000C72
@@ -554,7 +554,7 @@
 // .global sub_80302A8
 
 .include "chatbox.inc"
-// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
 // .global chatbox_8045F3C
 
 .include "asm03_1.inc"

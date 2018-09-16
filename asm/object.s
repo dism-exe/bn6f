@@ -308,9 +308,9 @@ sub_800BF66:
     push {lr}
     // memBlock
     ldr r0, off_800BF84 // =unk_203CF00 
-    // numWords
+    // size
     mov r1, #0xa0
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
     .balign 4, 0x00
 dword_800BF74:    .word 0x10000
@@ -826,9 +826,9 @@ sub_800C4BC:
     str r0, [sp]
     mov r0, #0
     bl sub_800C8C2
-    // numWords
+    // size
     mov r1, #0x40 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r0, #0
     bl sub_800C8C2
     add r7, r0, #0
@@ -851,9 +851,9 @@ loc_800C4F0:
     blt loc_800C4DE
     // memBlock
     ldr r0, off_800C584 // =byte_2039AE0 
-    // numWords
+    // size
     ldr r1, off_800C588 // =0x500 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r5, #0
 loc_800C504:
     mov r4, #0
@@ -7944,21 +7944,21 @@ loc_800ED52:
     orr r2, r1
     str r2, [r3]
     add r4, r0, #0
-    // numWords
+    // size
     mov r1, #0x7c 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r0, #0x80
     // memBlock
     add r0, r0, r4
-    // numWords
+    // size
     mov r1, #0x20 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r0, #0xa0
     // memBlock
     add r0, r0, r4
-    // numWords
+    // size
     mov r1, #0x50 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     add r0, r4, #0
     pop {r4,r5,pc}
     .balign 4, 0x00

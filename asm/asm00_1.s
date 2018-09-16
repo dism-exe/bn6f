@@ -812,9 +812,9 @@ loc_80032A6:
     mov r0, #4
     // memBlock
     add r0, r0, r5
-    // numWords
+    // size
     ldrb r1, [r7,#0xd]
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     ldrb r0, [r7,#0xe]
     strb r0, [r5]
     ldr r7, [sp]
@@ -1090,12 +1090,12 @@ sub_8003490:
     add r1, #0x1f
     lsr r1, r1, #5
     lsl r1, r1, #2
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     // memBlock
     ldr r0, [r7]
-    // numWords
+    // size
     ldrh r1, [r7,#8]
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     ldr r0, [r7,#4]
     mov r1, #0
     ldrb r2, [r7,#0xa]
@@ -1174,7 +1174,9 @@ sub_8003566:
     pop {pc}
 .endfunc // sub_8003566
 
-loc_8003570:
+.func
+.thumb_func
+sub_8003570:
     push {r4-r7,lr}
     add r7, r0, #0
     mov r4, #0
@@ -1203,6 +1205,8 @@ loc_800359A:
 loc_800359E:
     add r0, r4, #0
     pop {r4-r7,pc}
+.endfunc // sub_8003570
+
 .func
 .thumb_func
 sub_80035A2:
@@ -1461,9 +1465,9 @@ sub_800378C:
     push {lr}
     // memBlock
     ldr r0, off_80037A0 // =unk_20081D0 
-    // numWords
+    // size
     ldr r1, off_80037A4 // =0x280 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     ldr r0, off_80037A8 // =dword_200AC18 
     mov r1, #0
     str r1, [r0]
@@ -1659,9 +1663,9 @@ sub_8003908:
     push {r4-r7,lr}
     // memBlock
     ldr r0, off_80039F0 // =byte_2000780 
-    // numWords
+    // size
     mov r1, #0x48 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r4-r7,pc}
 .endfunc // sub_8003908
 
@@ -1673,9 +1677,9 @@ sub_8003914:
     push {r0}
     // memBlock
     add r0, r5, #0
-    // numWords
+    // size
     mov r1, #0x48 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r0}
     strb r0, [r5,#0x1] // (byte_2000781 - 0x2000780)
     ldr r7, off_80039F4 // =off_80038E8 
@@ -1711,9 +1715,9 @@ sub_8003940:
 loc_8003958:
     // memBlock
     add r0, r5, #0
-    // numWords
+    // size
     mov r1, #0x48 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r4-r7,pc}
 .endfunc // sub_8003940
 
@@ -1727,9 +1731,9 @@ sub_8003962:
     bne loc_8003974
     // memBlock
     add r0, r5, #0
-    // numWords
+    // size
     mov r1, #0x48 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 loc_8003974:
     mov r0, #1
     strb r0, [r5,#0x3] // (byte_2000783 - 0x2000780)
@@ -1842,9 +1846,9 @@ sub_8003A58:
     push {r4-r7,lr}
     // memBlock
     ldr r0, off_8003B40 // =byte_2001010 
-    // numWords
+    // size
     mov r1, #0x48 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r4-r7,pc}
 .endfunc // sub_8003A58
 
@@ -1856,9 +1860,9 @@ sub_8003A64:
     push {r0}
     // memBlock
     add r0, r5, #0
-    // numWords
+    // size
     mov r1, #0x48 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r0}
     strb r0, [r5,#0x1] // (byte_2001011 - 0x2001010)
     ldr r7, off_8003B44 // =off_80039F8 
@@ -1892,7 +1896,7 @@ loc_8003A90:
 loc_8003AA8:
     add r0, r5, #0
     mov r1, #0x48 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r4-r7,pc}
 .func
 .thumb_func
@@ -1904,9 +1908,9 @@ sub_8003AB2:
     bne loc_8003AC4
     // memBlock
     add r0, r5, #0
-    // numWords
+    // size
     mov r1, #0x48 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 loc_8003AC4:
     mov r0, #1
     strb r0, [r5,#0x3] // (byte_2001013 - 0x2001010)
@@ -2960,7 +2964,7 @@ loc_80045DC:
     add r0, r0, r5
     mov r1, #0x4e 
     lsl r1, r1, #1
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r0, #9
     strb r0, [r5]
     pop {r0-r4}
@@ -4282,7 +4286,7 @@ sub_8004DF0:
     mov r1, #0x3c 
     mov r2, #3
     mul r1, r2
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     bl sub_8021C68
     ldr r0, off_80050E8 // =dword_80213AC 
     mov r1, #0
@@ -5073,7 +5077,7 @@ loc_80058D0:
     bne locret_800593C
     bl engine_isScreeneffectAnimating // () -> zf
     beq locret_800593C
-    bl sub_8036F36
+    bl s_2011C50_ptr_1C_isNull // () -> zf
     bne locret_800593C
     ldr r0, [r5,#0x18]
     add r0, #0x1c
@@ -5179,7 +5183,7 @@ sub_80059B4:
     bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     ldr r0, dword_8005A78 // =0x8098A02 
     mov r1, #0
-    bl sub_8036E90
+    bl init_s_02011C50_8036E90
     pop {pc}
 .endfunc // sub_80059B4
 
@@ -5199,7 +5203,7 @@ sub_80059D0:
     bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     ldr r0, off_8005A80 // =dword_8098A78 
     mov r1, #0
-    bl sub_8036E90
+    bl init_s_02011C50_8036E90
     pop {pc}
 .endfunc // sub_80059D0
 
@@ -5212,7 +5216,7 @@ sub_80059EC:
     bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     ldr r0, dword_8005A7C // =0x8098A2E 
     mov r1, #0
-    bl sub_8036E90
+    bl init_s_02011C50_8036E90
     pop {pc}
 .endfunc // sub_80059EC
 
@@ -5222,7 +5226,7 @@ sub_8005A00:
     push {lr}
     ldr r0, dword_8005A84 // =0x809B5AD 
     mov r1, #0
-    bl sub_8036E90
+    bl init_s_02011C50_8036E90
     pop {pc}
 .endfunc // sub_8005A00
 
@@ -5240,7 +5244,7 @@ sub_8005A0C:
     bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     ldr r0, off_8005A88 // =dword_8098B1C 
     mov r1, #0
-    bl sub_8036E90
+    bl init_s_02011C50_8036E90
     pop {pc}
 .endfunc // sub_8005A0C
 
@@ -5335,7 +5339,7 @@ sub_8005A8C:
     bne locret_8005AF2
     bl engine_isScreeneffectAnimating // () -> zf
     beq locret_8005AF2
-    bl sub_8036F36
+    bl s_2011C50_ptr_1C_isNull // () -> zf
     bne locret_8005AF2
     mov r0, #0x80
     bl chatbox_8045F3C
@@ -5381,7 +5385,7 @@ sub_8005AF4:
     bne loc_8005B64
     bl engine_isScreeneffectAnimating // () -> zf
     beq locret_8005B68
-    bl sub_8036F36
+    bl s_2011C50_ptr_1C_isNull // () -> zf
     bne locret_8005B68
     mov r0, #0x80
     bl chatbox_8045F3C
@@ -5433,7 +5437,7 @@ sub_8005B6A:
     bne locret_8005BC6
     bl engine_isScreeneffectAnimating // () -> zf
     beq locret_8005BC6
-    bl sub_8036F36
+    bl s_2011C50_ptr_1C_isNull // () -> zf
     bne locret_8005BC6
     mov r0, #0x80
     bl chatbox_8045F3C
@@ -5875,6 +5879,9 @@ sub_8005EEC:
     pop {r4-r7,pc}
 .endfunc // sub_8005EEC
 
+.func
+.thumb_func
+sub_8005F00:
     push {r4-r7,lr}
     bl sub_8005EEC
     mov r4, r10
@@ -5883,6 +5890,11 @@ sub_8005EEC:
     strb r0, [r4]
     bl sub_8035738
     pop {r4-r7,pc}
+.endfunc // sub_8005F00
+
+.func
+.thumb_func
+sub_8005F14:
     push {r4-r7,lr}
     bl sub_8005EEC
     mov r4, r10
@@ -5891,6 +5903,8 @@ sub_8005EEC:
     strb r0, [r4]
     bl sub_8035738
     pop {r4-r7,pc}
+.endfunc // sub_8005F14
+
 .func
 .thumb_func
 sub_8005F28:
@@ -5901,6 +5915,9 @@ sub_8005F28:
     mov pc, lr
 .endfunc // sub_8005F28
 
+.func
+.thumb_func
+sub_8005F32:
     mov r3, r10
     ldr r3, [r3,#0x14]
     ldr r0, [r3,#0x14]
@@ -5908,6 +5925,8 @@ sub_8005F28:
     sub r1, #1
     ldrb r2, [r3,#0x12]
     mov pc, lr
+.endfunc // sub_8005F32
+
 .func
 .thumb_func
 sub_8005F40:
@@ -6107,9 +6126,9 @@ loc_80062DA:
     bl sub_8006330
     // memBlock
     add r0, r5, #0
-    // numWords
+    // size
     mov r1, #0x20 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r5,pc}
 .endfunc // sub_80062D6
 
@@ -7588,9 +7607,9 @@ sub_8006D00:
     ldr r4, [r5]
     // memBlock
     add r0, r5, #0
-    // numWords
+    // size
     mov r1, #0x80
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r0, #0
     and r4, r0
     str r4, [r5]
@@ -8327,21 +8346,21 @@ sub_80071D4:
     push {r0}
     // memBlock
     ldr r0, off_8007320 // =dword_2033000 
-    // numWords
+    // size
     ldr r1, dword_8007324 // =0x6AA0 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     // memBlock
     ldr r0, off_8007328 // =unk_2039ADC 
     ldr r1, off_800732C // =unk_203CCE0 
-    // numWords
+    // size
     sub r1, r1, r0
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     // memBlock
     ldr r0, off_8007330 // =unk_203CDA8 
     ldr r1, dword_8007334 // =0x2040000 
-    // numWords
+    // size
     sub r1, r1, r0
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     bl CpuSet_toolkit_wrapper
     pop {r0}
     b loc_8007208
@@ -8355,12 +8374,12 @@ loc_8007204:
 loc_8007208:
     add r4, r0, #0
     mov r5, r10
-    ldr r5, [r5,#0x18] // Toolkit.unk_2034880
+    ldr r5, [r5,#0x18] // Toolkit.s_2034880
     // memBlock
     add r0, r5, #0
-    // numWords
+    // size
     mov r1, #0xf0
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     str r4, [r5,#0x3c]
     mov r0, #1
     strb r0, [r5,#0xa]
@@ -9086,14 +9105,14 @@ sub_80075CA:
     push {r5,lr}
     // memBlock
     ldr r0, dword_8007624 // =0x6008000 
-    // numWords
+    // size
     mov r1, #0x40 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     // memBlock
     ldr r0, dword_8007618 // =0x6008000 
-    // numWords
+    // size
     mov r1, #0x40 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     // dataList
     ldr r0, dataList // =off_80075F0 
     bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
@@ -10182,8 +10201,8 @@ loc_8007F04:
     mov r1, #0x5c 
     add r1, r1, r4
 loc_8007F08:
-    ldr r0, off_8008014 // =dword_87370C0 
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    ldr r0, off_8008014 // =scriptList_87370C0 
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#1]
     pop {r4,pc}
@@ -10305,7 +10324,7 @@ dword_8008004:    .word 0x40000
 off_8008008:    .word dword_203F7D8
 dword_800800C:    .word 0x280000
 dword_8008010:    .word 0x200000
-off_8008014:    .word dword_87370C0
+off_8008014:    .word scriptList_87370C0
 off_8008018:    .word dword_203F7D8
 .endfunc // sub_8007FD2
 
@@ -10913,9 +10932,9 @@ sub_80084C0:
     push {r5,lr}
     // memBlock
     ldr r0, off_80084CC // =byte_203CA70 
-    // numWords
+    // size
     mov r1, #0xc
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r5,pc}
 off_80084CC:    .word byte_203CA70
 off_80084D0:    .word 0x2900
@@ -11521,9 +11540,9 @@ sub_8008928:
     push {lr}
     // memBlock
     ldr r0, off_8008934 // =byte_203CA70 
-    // numWords
+    // size
     mov r1, #0xc
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 off_8008934:    .word byte_203CA70
 dword_8008938:    .word 0x820080
@@ -12067,9 +12086,9 @@ sub_8008D40:
     push {lr}
     // memBlock
     ldr r0, off_8008D4C // =byte_203CA70 
-    // numWords
+    // size
     mov r1, #0xc
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 off_8008D4C:    .word byte_203CA70
 dword_8008D50:    .word 0x4000
@@ -12609,9 +12628,9 @@ sub_8009140:
     push {lr}
     // memBlock
     ldr r0, off_800914C // =byte_203CA70 
-    // numWords
+    // size
     mov r1, #0xc
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 off_800914C:    .word byte_203CA70
 dword_8009150:    .word 0x4C43
@@ -13128,7 +13147,7 @@ sub_800951E:
     bne loc_8009534
     ldr r0, off_800960C // =dword_86F3F5C 
     mov r1, #0xa
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#3]
     b locret_8009550
@@ -13168,7 +13187,7 @@ loc_8009568:
     mov r1, #0x20 
 loc_800956A:
     ldr r0, off_8009610 // =dword_86F4498 
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#3]
     b locret_8009592
@@ -13199,7 +13218,7 @@ sub_8009594:
     bne loc_80095AA
     ldr r0, off_8009614 // =dword_86F53CC 
     mov r1, #3
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#3]
     b locret_80095C6
@@ -13231,8 +13250,8 @@ sub_80095C8:
     bl getPETNaviSelect // () -> u8
     mov r1, #0x73 
     add r1, r1, r0
-    ldr r0, off_8009618 // =dword_87370C0 
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    ldr r0, off_8009618 // =scriptList_87370C0 
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#3]
     b locret_80095F4
@@ -13255,7 +13274,7 @@ dword_8009608:    .word 0x17E
 off_800960C:    .word dword_86F3F5C
 off_8009610:    .word dword_86F4498
 off_8009614:    .word dword_86F53CC
-off_8009618:    .word dword_87370C0
+off_8009618:    .word scriptList_87370C0
 .endfunc // sub_80095C8
 
 loc_800961C:
@@ -13719,8 +13738,8 @@ sub_8009966:
     bl getPETNaviSelect // () -> u8
     mov r1, #0x73 
     add r1, r1, r0
-    ldr r0, off_80099A0 // =dword_87370C0 
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    ldr r0, off_80099A0 // =scriptList_87370C0 
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#3]
     b locret_8009992
@@ -13737,7 +13756,7 @@ locret_8009992:
 off_8009994:    .word 0x400
 dword_8009998:    .word 0x1F2F3F4F
 off_800999C:    .word unk_2035260
-off_80099A0:    .word dword_87370C0
+off_80099A0:    .word scriptList_87370C0
 .endfunc // sub_8009966
 
 loc_80099A4:
@@ -14119,8 +14138,8 @@ sub_8009C56:
     bl getPETNaviSelect // () -> u8
     mov r1, #0x73 
     add r1, r1, r0
-    ldr r0, off_8009C90 // =dword_87370C0 
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    ldr r0, off_8009C90 // =scriptList_87370C0 
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#3]
     b locret_8009C82
@@ -14137,7 +14156,7 @@ locret_8009C82:
 off_8009C84:    .word 0x400
 dword_8009C88:    .word 0x1F2F3F4F
 off_8009C8C:    .word unk_2035260
-off_8009C90:    .word dword_87370C0
+off_8009C90:    .word scriptList_87370C0
 .endfunc // sub_8009C56
 
 loc_8009C94:
@@ -14367,7 +14386,7 @@ sub_8009E2C:
     ldr r0, [r5,r0]
     ldrb r1, [r0,#4]
     ldr r0, off_8009FBC // =a58 
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     mov r0, #4
     strh r0, [r5,#2]
     pop {pc}
@@ -14560,8 +14579,8 @@ sub_8009F8A:
     bl getPETNaviSelect // () -> u8
     mov r1, #0x73 
     add r1, r1, r0
-    ldr r0, off_8009FC8 // =dword_87370C0 
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    ldr r0, off_8009FC8 // =scriptList_87370C0 
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     mov r0, #4
     strb r0, [r5,#3]
     b locret_8009FB6
@@ -14579,7 +14598,7 @@ off_8009FB8:    .word 0x400
 off_8009FBC:    .word a58
 dword_8009FC0:    .word 0x1F2F3F4F
 off_8009FC4:    .word unk_2035260
-off_8009FC8:    .word dword_87370C0
+off_8009FC8:    .word scriptList_87370C0
 .endfunc // sub_8009F8A
 
 .func
@@ -16040,9 +16059,9 @@ sub_800A954:
 sub_800A964:
     push {r4,lr}
     add r4, r0, #0
-    // numWords
+    // size
     mov r1, #0x50 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     // mem
     add r0, r4, #2
     // byteCount
@@ -16153,9 +16172,9 @@ batle_clearEnemyFadeinList:
     push {lr}
     mov r0, #0
     bl sub_800AAAE
-    // numWords
+    // size
     mov r1, #0x80
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 .endfunc // batle_clearEnemyFadeinList
 
@@ -16417,9 +16436,9 @@ sub_800AB70:
     push {lr}
     // memBlock
     ldr r0, off_800AC14 // =unk_203EAE0 
-    // numWords
+    // size
     mov r1, #0x20 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 .endfunc // sub_800AB70
 
@@ -17175,7 +17194,7 @@ sub_800B090:
     bne loc_800B0FA
 loc_800B0DE:
     mov r0, r10
-    ldr r0, [r0,#0x18] // Toolkit.unk_2034880
+    ldr r0, [r0,#0x18] // Toolkit.s_2034880
     ldrb r0, [r0,#0xd]
     mov r1, #0xa
     add r1, r1, r7

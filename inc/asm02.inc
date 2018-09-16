@@ -23,7 +23,7 @@
 /* External Symbols */
 .include "asm00_0.inc"
 // .global sub_80008C0
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 
 .include "asm00_1.inc"

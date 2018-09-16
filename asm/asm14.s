@@ -143,7 +143,7 @@ sub_8071CEE:
     lsl r0, r0, #2
     ldr r1, off_8071D04 // =off_8071D08 
     ldr r0, [r1,r0]
-    bl loc_8003570
+    bl sub_8003570
     pop {pc}
     .balign 4, 0x00
 off_8071D04:    .word off_8071D08

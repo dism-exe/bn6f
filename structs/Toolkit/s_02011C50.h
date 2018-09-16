@@ -3,6 +3,10 @@
 
 #include "../inttypes.h"
 
+/*
+	init: sub_8036E90
+	Size: 0x90 (sub_8036E90)
+*/
 typedef struct {
 		u8 pad_00[0x04];
 	u8 unk_04;     // loc=0x4 CONFLICT u32
@@ -15,13 +19,14 @@ typedef struct {
 		u8 pad_11[0x01];
 	u8 unk_12;     // loc=0x12
 		u8 pad_13[0x09];
-	u32 unk_1C;    // loc=0x1C
-	u32 unk_20;    // loc=0x20
-	u32 unk_24;    // loc=0x24
-	u32 unk_28;    // loc=0x28
+	// changes when a script plays
+ 	void *ptr_1C;    // loc=0x1C
+	void *ptr_20;    // loc=0x20
+	void *ptr_24;    // loc=0x24
+	void *ptr_28;    // loc=0x28
 	u32 unk_2C;    // loc=0x2C
-	u32 unk_30;    // loc=0x30
-	u32 unk_34;    // loc=0x34
+	void *ptr_30;    // loc=0x30
+	void *ptr_34;    // loc=0x34
 	u32 unk_38;    // loc=0x38
 	u32 unk_3C;    // loc=0x3C
 	u32 unk_40;    // loc=0x40

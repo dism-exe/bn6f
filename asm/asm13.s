@@ -514,7 +514,7 @@ sub_806FFDA:
     lsl r0, r0, #2
     ldr r1, off_806FFF0 // =pt_806FFF4 
     ldr r0, [r1,r0]
-    bl loc_8003570
+    bl sub_8003570
     pop {pc}
     .byte 0, 0
 off_806FFF0:    .word pt_806FFF4

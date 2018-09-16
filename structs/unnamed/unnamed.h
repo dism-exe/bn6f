@@ -1,4 +1,0 @@
-#ifndef STRUCTS_UNNAMED_H
-#define STRUCTS_UNNAMED_H
-
-#endif // STRUCTS_UNNAMED_H

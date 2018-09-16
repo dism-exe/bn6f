@@ -158,7 +158,7 @@ sub_80691FE:
     lsl r0, r0, #2
     ldr r1, off_8069214 // =off_8069218 
     ldr r0, [r1,r0]
-    bl loc_8003570
+    bl sub_8003570
     pop {pc}
     .balign 4, 0x00
 off_8069214:    .word off_8069218
@@ -514,7 +514,7 @@ sub_806A1DE:
     lsl r0, r0, #2
     ldr r1, off_806A1F4 // =off_806A1F8 
     ldr r0, [r1,r0]
-    bl loc_8003570
+    bl sub_8003570
     pop {pc}
     .balign 4, 0x00
 off_806A1F4:    .word off_806A1F8
@@ -891,7 +891,7 @@ sub_806AD00:
     lsl r0, r0, #2
     ldr r1, off_806AD14 // =off_806AD18 
     ldr r0, [r1,r0]
-    bl loc_8003570
+    bl sub_8003570
     pop {pc}
 off_806AD14:    .word off_806AD18
 off_806AD18:    .word dword_806AD2C
@@ -1706,7 +1706,7 @@ sub_806C59C:
     lsl r0, r0, #2
     ldr r1, off_806C5B0 // =pt_806C5B4 
     ldr r0, [r1,r0]
-    bl loc_8003570
+    bl sub_8003570
     pop {pc}
 off_806C5B0:    .word pt_806C5B4
     // <endpool>

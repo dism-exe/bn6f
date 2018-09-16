@@ -203,7 +203,7 @@ sub_807EE92:
     lsl r0, r0, #2
     ldr r1, off_807EEA8 // =pt_807EEAC 
     ldr r0, [r1,r0]
-    bl loc_8003570
+    bl sub_8003570
     pop {pc}
     .balign 4, 0x00
 off_807EEA8:    .word pt_807EEAC

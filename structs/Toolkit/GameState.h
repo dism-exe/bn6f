@@ -77,7 +77,7 @@ typedef struct {
 	u8 unk_12;                  // loc=0x12
 		u8 pad_13[0x01];
 	u8 unk_14;                  // loc=0x14
-	u8 unk_15;                  // loc=0x15
+	u8 scriptOffIdx_LMsg_15;                  // loc=0x15
 	u8 unk_16;                  // loc=0x16
 	u8 unk_17;                  // loc=0x17
 	OWPlayer *player;           // loc=0x18

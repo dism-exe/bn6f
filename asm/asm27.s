@@ -6,7 +6,7 @@ sub_80946C4:
     push {r4-r7,lr}
     // initRefs
     ldr r0, off_80946D0 // =dword_80946D4 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     mov r0, #0
     pop {r4-r7,pc}
 off_80946D0:    .word dword_80946D4
@@ -48,7 +48,7 @@ sub_8094720:
     ldr r0, off_8094778 // =unk_2026404 
     mov r1, #0x10
     lsl r1, r1, #8
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     ldr r0, off_8094778 // =unk_2026404 
     bl sub_8094738
     mov r0, #0

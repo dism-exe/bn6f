@@ -8,7 +8,7 @@
 /* External Symbols */
 .include "asm00_0.inc"
 // .global sound_play // () -> void
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global sub_8001172
 // .global sub_800118A
 
@@ -35,7 +35,7 @@
 // .global clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 // .global sub_80301B2
 // .global sub_80301DC
-// .global sub_8036E90
+// .global init_s_02011C50_8036E90
 
 .include "asm03_1.inc"
 // .global sub_8046818

@@ -3,16 +3,18 @@
 
 /* Public Symbols */
 .global chatbox_uncomp_803FD08 // () -> int
+.global chatbox_dead_uncomp_803FD3C
 .global chatbox_runScript_202da04 // (u8 scriptID) -> void
 .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
 .global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
 .global loc_803FDA4
 .global chatbox_runScript_803FE08 // (u16 *scriptArr, u8 scriptID) -> void
 .global chatbox_803FE10
-.global chatbox_runScript_803FE74 // (u16 *scriptArr, u8 scriptID) -> void
+.global chatbox_runScript_803FE74 // (u16 *scriptList, u8 scriptOffIdx) -> void
 .global chatbox_onUpdate_803FEB4
 .global loc_8040000
-.global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+.global chatbox_runTrainScript // (u8 scriptOffIdx) -> void
+.global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
 .global chatbox_reqBBS_80404C0
 .global chatbox_8040818
 .global chatbox_maskFlags_3e // (int mask) -> void
@@ -38,7 +40,7 @@
 // .global sub_800068A
 // .global sub_80006A2
 // .global musicGameState_8000784 // () -> void
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
@@ -202,7 +204,7 @@
 .equ loc_3007038, 0x3007038
 .equ sub_30070B4, 0x30070B4
 .equ dword_8070604, 0x8070604
-.equ dword_84E0554, 0x84E0554
+.equ unk_84E0554, 0x84E0554
 .equ dword_86A4740, 0x86A4740
 .equ dword_86A48A0, 0x86A48A0
 .equ dword_86A4A40, 0x86A4A40

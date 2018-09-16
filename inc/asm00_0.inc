@@ -18,7 +18,7 @@
 .global sub_80007BE
 .global sub_80008B4
 .global sub_80008C0
-.global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+.global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 .global CpuFastSet_8000900 // (int a1, int a2) -> void
 .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
@@ -33,7 +33,7 @@
 .global loc_8000AC4
 .global loc_8000AC8
 .global loc_8000ACA
-.global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+.global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 .global sub_8000C00
 .global sub_8000C5C

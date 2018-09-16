@@ -158,14 +158,14 @@
 .include "asm00_0.inc"
 // .global sound_play // () -> void
 // .global sub_80008C0
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 // .global sub_800098C
 // .global loc_8000AC4
 // .global loc_8000AC8
-// .global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
@@ -184,7 +184,7 @@
 .include "sprite.inc"
 // .global sprite_loadAnimationData // () -> void
 // .global sprite_update
-// .global sub_8002770
+// .global sub_8002770 // (int a1, int a2) -> void
 // .global loc_8002774
 // .global sprite_setScaleParameters
 // .global sub_8002C52

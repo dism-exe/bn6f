@@ -625,7 +625,7 @@ dword_808FDBC:    .word 0x2011B30
     ldr r0, off_808FEA0 // =off_808FDB8 
     ldr r0, [r0]
     mov r1, #0x60 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     bl sub_808FE64
     mov r0, #0xff
     strb r0, [r5,#0x4] // (byte_2000314 - 0x2000310)
@@ -670,7 +670,7 @@ loc_808FE10:
     ldr r0, off_808FEA0 // =off_808FDB8 
     ldr r0, [r0]
     mov r1, #0x60 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 loc_808FE4E:
     mov r0, #0xff
     str r0, [r5,#0x20] // (dword_2000330 - 0x2000310)
@@ -687,9 +687,9 @@ sub_808FE64:
     ldr r0, off_808FEA0 // =off_808FDB8 
     // memBlock
     ldr r0, [r0,#0x4] // (dword_808FDBC - 0x808fdb8)
-    // numWords
+    // size
     mov r1, #0x80
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     mov r0, #0
     pop {pc}
 .endfunc // sub_808FE64
@@ -708,7 +708,7 @@ loc_808FE90:
     bl sub_8090104
     cmp r0, #0
     beq locret_808FE9C
-    bl sub_8036E90
+    bl init_s_02011C50_8036E90
 locret_808FE9C:
     pop {r4-r7,pc}
     .byte 0, 0

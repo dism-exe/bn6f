@@ -92,7 +92,7 @@ sub_805DFF0:
     lsl r0, r0, #2
     ldr r1, off_805E004 // =pt_805E008 
     ldr r0, [r1,r0]
-    bl loc_8003570
+    bl sub_8003570
     pop {pc}
 off_805E004:    .word pt_805E008
     // <endpool> <endfile>

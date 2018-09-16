@@ -12,7 +12,7 @@
 .include "asm00_0.inc"
 // .global sub_80007B2
 // .global sub_80007BE
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global sub_8000A3C
 // .global objRender_8000A44
 // .global sub_8000E10

@@ -96,7 +96,7 @@ sub_8062BCC:
     lsl r0, r0, #2
     ldr r1, off_8062BE0 // =pt_8062BE4 
     ldr r0, [r1,r0]
-    bl loc_8003570
+    bl sub_8003570
     pop {pc}
 off_8062BE0:    .word pt_8062BE4
     // <endpool> <endfile>

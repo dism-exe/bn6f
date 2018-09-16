@@ -79,7 +79,7 @@ loc_8002708:
     ldr r0, [r4,r3]
     cmp r0, #0
     bge loc_8002716
-    ldr r0, off_8002728 // =dword_84E0554 
+    ldr r0, off_8002728 // =unk_84E0554 
 loc_8002716:
     push {r1}
     bl sprite_initialize // (void *a1) -> void
@@ -88,7 +88,7 @@ loc_8002716:
     pop {r4,r5,pc}
     .balign 4, 0x00
 off_8002724:    .word dword_8031CC4
-off_8002728:    .word dword_84E0554
+off_8002728:    .word unk_84E0554
 .endfunc // sprite_load
 
 .func
@@ -136,6 +136,7 @@ off_800276C:    .word dword_8032530+0x68
 
 .func
 .thumb_func
+// (int a1, int a2) -> void
 sub_8002770:
     mov r2, #0x80
     b loc_8002776
@@ -162,6 +163,9 @@ loc_800278A:
 off_8002798:    .word dword_8032530+0x1EC
 .endfunc // sub_8002770
 
+.func
+.thumb_func
+sub_800279C:
     push {r5,lr}
     add r5, #0x20 
     lsl r0, r0, #2
@@ -172,6 +176,8 @@ off_8002798:    .word dword_8032530+0x1EC
     strh r0, [r5,#0x16]
     pop {r5,pc}
 off_80027B0:    .word dword_8032530+0x68
+.endfunc // sub_800279C
+
 .func
 .thumb_func
 sub_80027B4:
@@ -361,9 +367,9 @@ sub_80028D4:
     push {r0}
     // memBlock
     add r0, r5, #0
-    // numWords
+    // size
     mov r1, #0x50 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r0}
     str r0, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
     add r0, r5, #0

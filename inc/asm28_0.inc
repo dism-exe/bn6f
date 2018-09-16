@@ -2,7 +2,7 @@
 .equ INC_ASM28_0, 0
 
 /* Public Symbols */
-.global unk_80991F4
+.global dword_80991F4
 .global dword_8099DC0
 .global dword_8099E04
 .global dword_8099EA0
@@ -23,7 +23,10 @@
 .global sub_809E13C
 .global sub_809E14C
 .global sub_809E188
+.global loc_809E1A4
 .global sub_809E1AE
+.global sub_809E1FA
+.global sub_809E218
 .global sub_809E228
 .global sub_809E230
 .global sub_809E23C
@@ -32,7 +35,10 @@
 .global sub_809E2AE
 .global sub_809E2B8
 .global sub_809E2C2
+.global loc_809E2C8
+.global sub_809E2DC
 .global sub_809E2F4
+.global loc_809E2F6
 .global sub_809E2FC
 .global loc_809E2FE
 .global sub_809E304
@@ -45,15 +51,16 @@
 .global sub_809E3C4
 .global sub_809E434
 .global sub_809E462
+.global sub_809E496
 .global dword_809E530
 
 
 /* External Symbols */
 .include "asm00_0.inc"
 // .global sound_play // () -> void
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
-// .global decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001172
 // .global sub_8001850
@@ -91,6 +98,7 @@
 // .global engine_isScreeneffectAnimating // () -> zf
 
 .include "asm00_2.inc"
+// .global sub_8013704
 // .global sub_80137B6 // (int a1, int a2) -> u8
 
 .include "asm02.inc"
@@ -115,8 +123,9 @@
 // .global sub_8033FC0
 // .global sub_8034C36
 // .global sub_8035694
-// .global sub_8036E90
-// .global sub_8036F36
+// .global init_s_02011C50_8036E90
+// .global s_2011C50_ptr_1C_isNull // () -> zf
+// .global sub_8037AEC
 // .global sub_803CD98
 // .global sub_803CE28
 // .global sub_803D080
@@ -125,7 +134,9 @@
 // .global sub_803F9E4
 
 .include "chatbox.inc"
-// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_dead_uncomp_803FD3C
+// .global chatbox_runTrainScript // (u8 scriptOffIdx) -> void
+// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C

@@ -34,7 +34,7 @@
 // .global sub_8002906
 
 .include "asm00_1.inc"
-// .global loc_8003570
+// .global sub_8003570
 
 .include "asm03_0.inc"
 // .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void

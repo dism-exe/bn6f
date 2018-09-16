@@ -14,5 +14,8 @@
 .atom*
 *.json
 
+# python generated files/folders
+__pycache__/
+
 # intentionally ignore those junk/temp files
 *.ign

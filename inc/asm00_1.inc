@@ -41,7 +41,7 @@
 .global sub_8003534
 .global sub_800355C
 .global sub_8003566
-.global loc_8003570
+.global sub_8003570
 .global sub_80035A2
 .global sub_800362C
 .global sub_8003694
@@ -90,6 +90,9 @@
 .global sub_8005D88
 .global sub_8005EA2
 .global subsystem_launchMail
+.global sub_8005F00
+.global sub_8005F14
+.global sub_8005F32
 .global sub_8005F40
 .global sub_8005F6C
 .global sub_8005F84
@@ -203,7 +206,7 @@
 // .global musicGameState_8000784 // () -> void
 // .global sub_80008B4
 // .global sub_80008C0
-// .global CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
@@ -420,10 +423,10 @@
 // .global sub_80355EC
 // .global sub_80356EC
 // .global sub_8035738
-// .global sub_8036E90
+// .global init_s_02011C50_8036E90
 // .global sub_8036EFE
 // .global sub_8036F24
-// .global sub_8036F36
+// .global s_2011C50_ptr_1C_isNull // () -> zf
 // .global sub_80385F0
 // .global sub_8038A9C
 // .global sub_803C3E0
@@ -446,7 +449,7 @@
 // .global sub_803FB28
 
 .include "chatbox.inc"
-// .global chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global chatbox_8045F2C // (int a1) ->
 // .global chatbox_8045F3C
@@ -1264,7 +1267,7 @@
 .equ dword_86F3F5C, 0x86F3F5C
 .equ dword_86F4498, 0x86F4498
 .equ dword_86F53CC, 0x86F53CC
-.equ dword_87370C0, 0x87370C0
+.equ scriptList_87370C0, 0x87370C0
 .equ a58, 0x87F2F68
 
 .endif // INC_ASM00_1

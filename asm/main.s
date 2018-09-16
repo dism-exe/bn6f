@@ -272,9 +272,9 @@ loc_80004C0:
     mov r0, r10
     // memBlock
     ldr r0, [r0]
-    // numWords
+    // size
     mov r1, #8
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     bl sub_803D1A8
     bl sub_803E900
     pop {r5,pc}

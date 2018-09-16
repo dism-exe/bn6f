@@ -93367,7 +93367,7 @@ sub_80E68F8:
     ldr r0, off_80E6920 // =aTuDhr 
     ldrb r1, [r5,#5]
     add r1, #0x1e
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     b locret_80E691E
 loc_80E6910:
     mov r0, #0x80
@@ -149575,9 +149575,9 @@ sub_8102CF8:
     add r7, sp, #0x28
     // memBlock
     add r0, sp, #0x28
-    // numWords
+    // size
     mov r1, #0x30 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     bl object_getFlipDirection_800E2CA // () -> int
     ldr r2, [sp]
     ldrb r2, [r2,#0x12]

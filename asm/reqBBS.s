@@ -7,9 +7,9 @@ reqBBS_813E07C:
     push {r0}
     // memBlock
     ldr r0, off_813E0A0 // =reqBBS_bxo_2001150 
-    // numWords
+    // size
     mov r1, #0x2c 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r0}
     ldr r5, off_813E0A0 // =reqBBS_bxo_2001150 
     strb r0, [r5,#0x4] // (byte_2001154 - 0x2001150)
@@ -517,7 +517,7 @@ reqBBS_draw_813E450:
 loc_813E48A:
     add r1, r0, #0
     ldr r0, off_813E4A4 // =reqBBS_dialogList 
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     bl reqBBS_drawHeaderText
     mov r0, #0x20 
     strb r0, [r5]
@@ -739,14 +739,14 @@ reqBBS_813E616:
     bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
     // memBlock
     ldr r0, off_813E6BC // =unk_2000FC0 
-    // numWords
+    // size
     mov r1, #0x20 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     // memBlock
     ldr r0, off_813E6C0 // =unk_2000FF0 
-    // numWords
+    // size
     mov r1, #0x20 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 .endfunc // reqBBS_813E616
 
@@ -768,16 +768,16 @@ reqBBS_dead_813E634:
     ldr r1, off_813E6C8 // =unk_2000FC0 
     // memBlock
     add r0, r0, r1
-    // numWords
+    // size
     mov r1, #4
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     lsl r0, r4, #2
     ldr r1, off_813E6CC // =unk_2000FF0 
     // memBlock
     add r0, r0, r1
-    // numWords
+    // size
     mov r1, #4
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r4,pc}
 .endfunc // reqBBS_dead_813E634
 
@@ -828,13 +828,13 @@ reqBBS_static_813E6D0:
     bl sub_80017E0
     // initRefs
     ldr r0, off_813E6F8 // =dword_813E6FC 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     ldrb r0, [r5,#4]
     ldr r1, off_813E754 // =off_813E758 
     lsl r0, r0, #2
     // initRefs
     ldr r0, [r1,r0]
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     bl sub_800183C
     bl sub_8046664 // () -> void
     pop {r5,pc}
@@ -1943,9 +1943,9 @@ reqBBS_init_s_2005780:
     mov r3, #0xf // (sreqbbs_gui.unk_0f - 0x2005780)
     ldrb r3, [r0,r3]
     push {r1-r3}
-    // numWords
+    // size
     mov r1, #0x2c 
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r1-r3}
     ldr r0, off_813F400 // =sReqBBS_GUI 
     mov r4, #0xd // reqBBS_GUI.numPoints
@@ -2501,7 +2501,7 @@ reqBBS_813F80C:
 loc_813F846:
     add r1, r0, #0
     ldr r0, off_813F860 // =reqBBS_dialogList 
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     bl reqBBS_renderSelectedEntry_HeaderText
     mov r0, #0x20 
     strb r0, [r5]
@@ -2665,7 +2665,7 @@ reqBBS_copyTextDataToRAM:
     ldr r1, off_813F994 // =unk_2029A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     // src
-    ldr r0, off_813F998 // =dword_87EFE14 
+    ldr r0, off_813F998 // =unk_87EFE14 
     // dest
     ldr r1, off_813F99C // =unk_2033A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
@@ -2673,7 +2673,7 @@ reqBBS_copyTextDataToRAM:
 off_813F98C:    .word off_813F378
 off_813F990:    .word unk_2025A00
 off_813F994:    .word unk_2029A00
-off_813F998:    .word dword_87EFE14
+off_813F998:    .word unk_87EFE14
 off_813F99C:    .word unk_2033A00
 .endfunc // reqBBS_copyTextDataToRAM
 
@@ -2724,14 +2724,14 @@ reqBBS_initMemory_813F9DA:
     bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
     // memBlock
     ldr r0, off_813FD88 // =reqBBS_numRequestsSent 
-    // numWords
+    // size
     mov r1, #4
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     // memBlock
     ldr r0, off_813FD8C // =unk_2000770 
-    // numWords
+    // size
     mov r1, #4
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {pc}
 .endfunc // reqBBS_initMemory_813F9DA
 
@@ -2753,16 +2753,16 @@ reqBBS_dead_initMemory_813F9F8:
     ldr r1, off_813FD94 // =reqBBS_numRequestsSent 
     // memBlock
     add r0, r0, r1
-    // numWords
+    // size
     mov r1, #4
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     lsl r0, r4, #2
     ldr r1, off_813FD98 // =unk_2000770 
     // memBlock
     add r0, r0, r1
-    // numWords
+    // size
     mov r1, #4
-    bl CpuSet_ZeroFillWord // (void *memBlock, unsigned int numWords) -> void
+    bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r4,pc}
 .endfunc // reqBBS_dead_initMemory_813F9F8
 
@@ -3095,7 +3095,7 @@ loc_813FCA8:
     beq loc_813FCBE
     add r1, r0, #0
     ldr r0, off_813FD0C // =reqBBS_dialogList 
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     mov r0, #0x44 
     strb r0, [r5]
     b loc_813FCF0
@@ -3207,7 +3207,7 @@ reqBBS_813FDA8:
     bl sub_80017E0
     // initRefs
     ldr r0, off_813FDC8 // =dword_813FDCC 
-    bl decompAndCopyGfx_8000B30 // (u32 *initRefs) -> void
+    bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     bl reqBBS_8140600
     bl sub_800183C
     bl sub_8046664 // () -> void
@@ -4996,7 +4996,7 @@ reqBBS_runDialog_8140A70:
     ldr r2, off_8140A6C // =off_8140A70 
     lsl r0, r0, #2
     ldr r0, [r2,r0]
-    bl chatbox_runScript // (u16 *scriptArr, u8 scriptID) -> void
+    bl chatbox_runScript // (u16 *scriptList, u8 scriptOffIdx) -> void
     pop {pc}
     .balign 4, 0x00
 off_8140A6C:    .word off_8140A70
