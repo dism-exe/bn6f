@@ -1,4 +1,4 @@
-.include "chatbox.inc"
+.include "asm/chatbox.inc"
 
 .func
 .thumb_func

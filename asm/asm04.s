@@ -1,4 +1,4 @@
-.include "asm04.inc"
+.include "asm/asm04.inc"
 
 .func
 .thumb_func
@@ -6,7 +6,7 @@ sub_804E62C:
     push {r4-r7,lr}
     mov r7, r10
     ldr r0, off_804E688 // =off_804E38C 
-    ldr r1, [r7,#0x14]
+    ldr r1, [r7,#0x14] // Toolkit.unk_2011BB0
     ldrb r2, [r5,#5]
     lsl r4, r2, #2
     add r0, r0, r4

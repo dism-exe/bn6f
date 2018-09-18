@@ -1,4 +1,4 @@
-.include "reqBBS.inc"
+.include "asm/reqBBS.inc"
 
 .func
 .thumb_func

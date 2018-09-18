@@ -20,164 +20,164 @@ object:
 .include "asm/object.s"
 asm00_2:
 .include "asm/asm00_2.s"
-off_801ECB4:
-.incbin "bin/bin00.bin"
+dat00:
+.include "data/dat00.s"
 asm01:
 .include "asm/asm01.s"
-dword_8020354:
-.incbin "bin/bin01.bin"
+dat01:
+.include "data/dat01.s"
 asm02:
 .include "asm/asm02.s"
 ChipDataArr_8021DA8:
 .include "data/ChipDataArr_8021DA8.s"
-bin02:
-.incbin "bin/bin02.bin"
+dat02:
+.include "data/dat02.s"
 asm03_0:
 .include "asm/asm03_0.s"
 chatbox:
 .include "asm/chatbox.s"
 asm03_1:
 .include "asm/asm03_1.s"
-dword_804CFBC:
-.incbin "bin/bin03.bin"
+dat03:
+.include "data/dat03.s"
 asm04:
 .include "asm/asm04.s"
-dword_804E74C:
-.incbin "bin/bin04.bin"
+dat04:
+.include "data/dat04.s"
 asm05:
 .include "asm/asm05.s"
-dword_8052834:
-.incbin "bin/bin05.bin"
+dat05:
+.include "data/dat05.s"
 asm06:
 .include "asm/asm06.s"
-dword_80596F4:
-.incbin "bin/bin06.bin"
+dat06:
+.include "data/dat06.s"
 asm07:
 .include "asm/asm07.s"
-dword_805E01C:
-.incbin "bin/bin07.bin"
+dat07:
+.include "data/dat07.s"
 asm08:
 .include "asm/asm08.s"
-dword_8060474:
-.incbin "bin/bin08.bin"
+dat08:
+.include "data/dat08.s"
 asm09:
 .include "asm/asm09.s"
-dword_8062BFC:
-.incbin "bin/bin09.bin"
+dat09:
+.include "data/dat09.s"
 asm10:
 .include "asm/asm10.s"
-dword_8067DF8:
-.incbin "bin/bin10.bin"
+dat10:
+.include "data/dat10.s"
 asm11:
 .include "asm/asm11.s"
-dword_806C5D0:
-.incbin "bin/bin11.bin"
+dat11:
+.include "data/dat11.s"
 asm12:
 .include "asm/asm12.s"
-dword_806DD2C:
-.incbin "bin/bin12.bin"
+dat12:
+.include "data/dat12.s"
 asm13:
 .include "asm/asm13.s"
-dword_8070034:
-.incbin "bin/bin13.bin"
+dat13:
+.include "data/dat13.s"
 asm14:
 .include "asm/asm14.s"
-dword_8072BCC:
-.incbin "bin/bin14.bin"
+dat14:
+.include "data/dat14.s"
 asm15:
 .include "asm/asm15.s"
-dword_8075614:
-.incbin "bin/bin15.bin"
+dat15:
+.include "data/dat15.s"
 asm16:
 .include "asm/asm16.s"
-dword_8077EA4:
-.incbin "bin/bin16.bin"
+dat16:
+.include "data/dat16.s"
 asm17:
 .include "asm/asm17.s"
-dword_80794AC:
-.incbin "bin/bin17.bin"
+dat17:
+.include "data/dat17.s"
 asm18:
 .include "asm/asm18.s"
-dword_807AAFC:
-.incbin "bin/bin18.bin"
+dat18:
+.include "data/dat18.s"
 asm19:
 .include "asm/asm19.s"
-dword_807D024:
-.incbin "bin/bin19.bin"
+dat19:
+.include "data/dat19.s"
 asm20:
 .include "asm/asm20.s"
-dword_807EEB8:
-.incbin "bin/bin20.bin"
+dat20:
+.include "data/dat20.s"
 asm21:
 .include "asm/asm21.s"
-dword_80813F8:
-.incbin "bin/bin21.bin"
+dat21:
+.include "data/dat21.s"
 asm22:
 .include "asm/asm22.s"
-dword_80871D8:
-.incbin "bin/bin22.bin"
+dat22:
+.include "data/dat22.s"
 asm23:
 .include "asm/asm23.s"
-bin23:
-.incbin "bin/bin23.bin"
+dat23:
+.include "data/dat23.s"
 asm24:
 .include "asm/asm24.s"
-bin24:
-.incbin "bin/bin24.bin"
+dat24:
+.include "data/dat24.s"
 asm25:
 .include "asm/asm25.s"
-bin25:
-.incbin "bin/bin25.bin"
+dat25:
+.include "data/dat25.s"
 asm26:
 .include "asm/asm26.s"
-bin26:
-.incbin "bin/bin26.bin"
+dat26:
+.include "data/dat26.s"
 asm27:
 .include "asm/asm27.s"
-bin27:
-.incbin "bin/bin27.bin"
+dat27:
+.include "data/dat27.s"
 asm28_0:
 .include "asm/asm28_0.s"
 npc:
 .include "asm/npc.s"
 asm28_1:
 .include "asm/asm28_1.s"
-bin28:
-.incbin "bin/bin28.bin"
+dat28:
+.include "data/dat28.s"
 asm29:
 .include "asm/asm29.s"
-dword_80AAEA8:
-.incbin "bin/bin29.bin"
+dat29:
+.include "data/dat29.s"
 asm30_0:
 .include "asm/asm30_0.s"
 BattleSettings:
 .include "data/BattleSettings.s"
-off_80B1B7C:
-.incbin "bin/bin30.bin"
+dat30:
+.include "data/dat30.s"
 asm31:
 .include "asm/asm31.s"
-dword_810C35C:
-.incbin "bin/bin31.bin"
+dat31:
+.include "data/dat31.s"
 asm32:
 .include "asm/asm32.s"
-dword_8121270:
-.incbin "bin/bin32.bin"
+dat32:
+.include "data/dat32.s"
 asm33:
 .include "asm/asm33.s"
-dword_812C258:
-.incbin "bin/bin33.bin"
+dat33:
+.include "data/dat33.s"
 asm34:
 .include "asm/asm34.s"
-dword_812DA94:
-.incbin "bin/bin34.bin"
+dat34:
+.include "data/dat34.s"
 asm35:
 .include "asm/asm35.s"
-bin35:
-.incbin "bin/bin35.bin"
+dat35:
+.include "data/dat35.s"
 asm36:
 .include "asm/asm36.s"
-dword_8138944:
-.incbin "bin/bin36.bin"
+dat36:
+.include "data/dat36.s"
 asm37_0:
 .include "asm/asm37_0.s"
 reqBBS:

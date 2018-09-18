@@ -1,0 +1,25 @@
+.ifndef INC_DATA_DAT09
+.equ INC_DATA_DAT09, 0
+
+/* Public Symbols */
+.global dword_8062BFC
+.global dword_8062DA4
+.global dword_8062DE4
+.global dword_8062E88
+.global dword_8062EB4
+.global dword_8062F1C
+.global off_8062F48
+.global off_8062F60
+.global off_8062F78
+.global off_8062F90
+.global off_8063008
+.global off_8066020
+.global off_8066048
+
+
+/* External Symbols */
+
+/* Undeclared Symbols */
+.equ dword_8610F08, 0x8610F08
+
+.endif // INC_DATA_DAT09

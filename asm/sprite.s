@@ -1,4 +1,4 @@
-.include "sprite.inc"
+.include "asm/sprite.inc"
 
 .func
 .thumb_func

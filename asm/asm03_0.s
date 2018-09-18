@@ -1,4 +1,4 @@
-.include "asm03_0.inc"
+.include "asm/asm03_0.inc"
 
 .func
 .thumb_func

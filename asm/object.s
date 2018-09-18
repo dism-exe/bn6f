@@ -1,4 +1,4 @@
-.include "object.inc"
+.include "asm/object.inc"
 
 .func
 .thumb_func

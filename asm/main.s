@@ -1,4 +1,4 @@
-.include "main.inc"
+.include "asm/main.inc"
 
 .func
 .thumb_func
@@ -197,18 +197,10 @@ main_static_8000454:
     beq loc_80004A0
     push {r1}
     bl start_800023C // () -> void
-    .byte  0
-    .byte 0xF0
-    .byte  6
-    .byte 0xF8
-    .byte 0x3F 
-    .byte 0xF0
-    .byte 0x16
-    .byte 0xF8
-    .byte  2
-    .byte 0xBC
-    .byte 0xA
-    .byte 0x24 
+    bl main_static_80004A4
+    bl sub_803F4C8
+    pop {r1}
+    mov r4, #0xa
 loc_80004A0:
     strb r4, [r1]
 locret_80004A2:

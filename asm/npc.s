@@ -1,4 +1,4 @@
-.include "npc.inc"
+.include "asm/npc.inc"
 
 .func
 .thumb_func

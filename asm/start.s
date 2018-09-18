@@ -1,4 +1,4 @@
-.include "start.inc"
+.include "asm/start.inc"
 
 .func
 start_:
