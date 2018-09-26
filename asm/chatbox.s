@@ -1508,7 +1508,7 @@ chatbox_ED_select_8040944:
     ldr r1, off_80409AC // =dword_80409B0+2 
     ldrb r0, [r1,r0]
     lsl r0, r0, #7
-    ldr r2, off_80409A4 // =dword_86A48A0+32 
+    ldr r2, off_80409A4 // =unk_86A48C0 
     add r0, r0, r2
     ldr r1, dword_80409A8 // =0x6017F80 
     mov r2, #0x80
@@ -1549,7 +1549,7 @@ loc_8040986:
     pop {pc}
     .byte 0, 0
 dword_80409A0:    .word 0x40000000
-off_80409A4:    .word dword_86A48A0+0x20
+off_80409A4:    .word unk_86A48C0
 dword_80409A8:    .word 0x6017F80
 off_80409AC:    .word dword_80409B0+2
 dword_80409B0:    .word 0xE3FC

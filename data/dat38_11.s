@@ -1,0 +1,47 @@
+.include "data/dat38_11.inc"
+
+    .byte 0x10
+    .byte 0x24 
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x24 
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x6D 
+    .byte 0x7F 
+    .byte  0
+    .byte  8
+    .byte 0x73 
+    .byte 0x22 
+    .byte 0x76 
+    .byte 0x82
+    .byte 0x35 
+    .byte 0xC3
+    .byte 0x59 
+    .byte  0
+    .byte 0xB3
+    .byte 0x7F 
+    .byte 0xD
+    .byte 0x73 
+    .byte 0x66 
+    .byte 0x52 
+    .byte 0xA2
+    .byte 0x51 
+    .byte  0
+    .byte 0xDE
+    .byte 0x7B 
+    .byte 0x42 
+    .byte 0x35 
+    .byte 0xF2
+    .byte  7
+    .byte 0xFF
+    .byte  2
+    .byte 0x80
+    .byte 0x10
+    .byte 0x1D
+    .byte  0
+/*For debugging purposes, connect comment at any range!*/

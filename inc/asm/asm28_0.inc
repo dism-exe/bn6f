@@ -164,6 +164,18 @@
 // .global reqBBS_81407D8
 // .global reqBBS_8140974
 
+.include "data/dat38_2.inc"
+// .global dword_86A5D60
+
+.include "data/dat38_7.inc"
+// .global loc_86C54D4
+// .global unk_86C5550
+// .global loc_86C5790
+// .global dword_86C57EC
+
+.include "data/dat38_8.inc"
+// .global byte_86C67E4
+
 
 /* Undeclared Symbols */
 .equ byte_2000AA0, 0x2000AA0
@@ -208,12 +220,13 @@
 .equ unk_202FA04, 0x202FA04
 .equ unk_2033404, 0x2033404
 .equ unk_2033700, 0x2033700
+.equ unk_2034E00, 0x2034E00
+.equ unk_2036500, 0x2036500
+.equ unk_3001B20, 0x3001B20
 .equ Undocumented_GreenSwap, 0x4000002
 .equ InterruptEnableRegister, 0x4000200
-.equ dword_86A5D60, 0x86A5D60
-.equ loc_86C54D4, 0x86C54D4
-.equ loc_86C5790, 0x86C5790
 // .global scripts_86C580C
-// .global byte_86C67E4
+// .global comp_86C73D8
+// .global comp_86C7980
 
 .endif // INC_ASM_ASM28_0

@@ -819,19 +819,58 @@ dword_812391C:    .word 0x86C9108, 0x2, 0x3001960, 0x20, 0x86C9B54, 0x2, 0x3001A
     .word 0x3001AE0, 0x20
 off_812395C:    .word unk_20096E0
 off_8123960:    .word dword_8123964
-dword_8123964:    .word 0x886CEC3C, 0x201D884, 0x2013A00, 0x886CDEA8, 0x201E284
-    .word 0x2013A00, 0x886CE51C, 0x2020484, 0x2013A00, 0x86B7AE0
-    .word 0x6004000, 0x2800, 0x86C9B54, 0x30016B0, 0x20
-    .word 0x886C96C0, 0x6006800, 0x2013A00, 0x886C980C, 0x6006B80
-    .word 0x2013A00, 0x886C9BD4, 0x6014800, 0x2013A00, 0x886C9D38
-    .word 0x6014980, 0x2013A00, 0x886CE63C, 0x6014A00, 0x2013A00
-    .word 0x86C9D6C, 0x30016D0, 0x20, 0x886C7E74, 0x6012800
-    .word 0x2013A00, 0x886C7F70, 0x30015F0, 0x2013A00, 0x886C7F98
-    .word 0x6012C00, 0x2013A00, 0x886C8034, 0x3001630, 0x2013A00
-    .word 0x886C8054, 0x6000020, 0x2013A00, 0x886CDCE4
+dword_8123964:    .word comp_86CEC3C + 1<<31
+    .word unk_201D884
+    .word decomp_2013A00
+    .word comp_86CDEA8 + 1<<31
+    .word unk_201E284
+    .word decomp_2013A00
+    .word comp_86CE51C + 1<<31
+    .word unk_2020484
+    .word decomp_2013A00
+    .word dword_86B7AE0
+    .word 0x6004000
+    .word 0x2800
+    .word dword_86C9B54
+    .word unk_30016B0
+    .word 0x20
+    .word comp_86C96C0 + 1<<31
+    .word 0x6006800
+    .word decomp_2013A00
+    .word comp_86C980C + 1<<31
+    .word 0x6006B80
+    .word decomp_2013A00
+    .word comp_86C9BD4 + 1<<31
+    .word 0x6014800
+    .word decomp_2013A00
+    .word comp_86C9D38 + 1<<31
+    .word 0x6014980
+    .word decomp_2013A00
+    .word comp_86CE63C + 1<<31
+    .word 0x6014A00
+    .word decomp_2013A00
+    .word unk_86C9D6C
+    .word unk_30016D0
+    .word 0x20
+    .word comp_86C7E74 + 1<<31
+    .word 0x6012800
+    .word decomp_2013A00
+    .word comp_86C7F70 + 1<<31
+    .word  0x30015F0
+    .word decomp_2013A00
+    .word comp_86C7F98 + 1<<31
+    .word 0x6012C00
+    .word decomp_2013A00
+    .word comp_86C8034 + 1<<31
+    .word 0x3001630
+    .word decomp_2013A00
+    .word comp_86C8054 + 1<<31
+    .word 0x6000020
+    .word decomp_2013A00
+    .word comp_86CDCE4 + 1<<31
 off_8123A28:    .word unk_201BA20
     .word decomp_2013A00
-    .word 0x886CDE2C
+    .word comp_86CDE2C + 1<<31
 off_8123A34:    .word unk_201BF20
     .word decomp_2013A00
     .byte 0, 0, 0, 0
@@ -2056,13 +2095,31 @@ dword_8124450:    .word 0x86C9108, 0x2, 0x3001960, 0x20, 0x86C9AF4, 0x2, 0x3001A
     .word 0x20, 0x86C9B54, 0x2, 0x3001A20, 0x20
 off_8124480:    .word unk_20096E0
 off_8124484:    .word dword_8124488
-dword_8124488:    .word 0x886C8054, 0x6000020, 0x2013A00, 0x886CF82C
+dword_8124488:    .word comp_86C8054 + 1<<31
+    .word 0x6000020
+    .word decomp_2013A00
+    .word comp_86CF82C + 1<<31
 off_8124498:    .word unk_201BA00
     .word decomp_2013A00
-    .word 0x886C9BD4, 0x6014840, 0x2013A00, 0x86C9D6C, 0x30016D0
-    .word 0x20, 0x886C9148, 0x6003C00, 0x2013A00, 0x886C9240
-    .word 0x3001A40, 0x2013A00, 0x886CFC64, 0x6010000, 0x2013A00
-    .word 0x886CFCFC, 0x3001690, 0x2013A00, 0x0
+    .word comp_86C9BD4 + 1<<31
+    .word 0x6014840
+    .word decomp_2013A00
+    .word unk_86C9D6C
+    .word unk_30016D0
+    .word 0x20
+    .word comp_86C9148 + 1<<31
+    .word 0x6003C00
+    .word decomp_2013A00
+    .word comp_86C9240 + 1<<31
+    .word unk_3001A40
+    .word decomp_2013A00
+    .word comp_86CFC64 + 1<<31
+    .word 0x6010000
+    .word decomp_2013A00
+    .word comp_86CFCFC + 1<<31
+    .word unk_3001690
+    .word decomp_2013A00
+    .word 0x0
 .endfunc // subchip_initGfx_81243B0
 
 .func
@@ -3517,7 +3574,7 @@ sub_8125280:
     ldr r4, off_8125360 // =unk_2029000 
     mov r6, #0
     mov r7, #0
-    ldr r5, off_812530C // =dword_8125310 
+    ldr r5, off_812530C // =off_8125310 
 loc_812528A:
     ldr r0, [r5,r7]
     add r7, #4
@@ -3586,30 +3643,84 @@ sub_81252C0:
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     pop {r4-r7,pc}
     .word 0xFFFFFFFF
-off_812530C:    .word dword_8125310
-dword_8125310:    .word 0x86C9108, 0x2, 0x3001960, 0x20, 0x86C9B54, 0x2, 0x3001AA0
-    .word 0x20, 0x86C9B94, 0x2, 0x3001AC0, 0x20, 0x886C9AA4, 0x2
-    .word 0x3001A60, 0x2013A00, 0x872CF94, 0x2, 0x3001AE0, 0x20
+off_812530C:    .word off_8125310
+off_8125310:    .word unk_86C9108
+    .word 0x2
+    .word word_3001960
+    .word 0x20
+    .word dword_86C9B54
+    .word 0x2
+    .word unk_3001AA0
+    .word 0x20
+    .word dword_86C9B94
+    .word 0x2
+    .word unk_3001AC0
+    .word 0x20
+    .word comp_86C9AA4 + 1<<31
+    .word 0x2
+    .word unk_3001A60
+    .word decomp_2013A00
+    .word unk_872CF94
+    .word 0x2
+    .word unk_3001AE0
+    .word 0x20
 off_8125360:    .word unk_2029000
 off_8125364:    .word dword_8125368
-dword_8125368:    .word 0x886C8054, 0x6000020, 0x2013A00, 0x886D6C70
+dword_8125368:    .word comp_86C8054 + 1<<31
+    .word 0x6000020
+    .word decomp_2013A00
+    .word comp_86D6C70 + 1<<31
 off_8125378:    .word unk_201BA20
     .word decomp_2013A00
-    .word 0x886D6D50
+    .word comp_86D6D50 + 1<<31
 off_8125384:    .word unk_201BF20
     .word decomp_2013A00
-    .word 0x886C9BD4, 0x6014800
+    .word comp_86C9BD4 + 1<<31
+    .word 0x6014800
     .word decomp_2013A00
-    .word 0x886C9C80, 0x60149C0, 0x2013A00, 0x886C7DCC, 0x6014A20
-    .word 0x2013A00, 0x886C9D38, 0x6014980, 0x2013A00, 0x86C9D6C
-    .word 0x30016D0, 0x20, 0x86B7AE0, 0x6004000, 0x2800
-    .word 0x886C96C0, 0x6006800, 0x2013A00, 0x886C7764, 0x2020500
-    .word 0x2013A00, 0x886C73D8, 0x2020C00, 0x2013A00, 0x886C7980
-    .word 0x2022C00, 0x2013A00, 0x886C6B30, 0x2024C00, 0x2013A00
-    .word 0x886C6FD0, 0x2026C00, 0x2013A00, 0x886D6F30, 0x2028000
-    .word 0x2013A00, 0x86C9BB4
+    .word comp_86C9C80 + 1<<31
+    .word 0x60149C0
+    .word decomp_2013A00
+    .word comp_86C7DCC + 1<<31
+    .word 0x6014A20
+    .word decomp_2013A00
+    .word comp_86C9D38 + 1<<31
+    .word 0x6014980
+    .word decomp_2013A00
+    .word unk_86C9D6C
+    .word unk_30016D0
+    .word 0x20
+    .word dword_86B7AE0
+    .word 0x6004000
+    .word 0x2800
+    .word comp_86C96C0 + 1<<31
+    .word 0x6006800
+    .word decomp_2013A00
+    .word comp_86C7764 + 1<<31
+    .word unk_2020500
+    .word decomp_2013A00
+    .word comp_86C73D8 + 1<<31
+    .word unk_2020C00
+    .word decomp_2013A00
+    .word comp_86C7980 + 1<<31
+    .word unk_2022C00
+    .word decomp_2013A00
+    .word comp_86C6B30 + 1<<31
+    .word unk_2024C00
+    .word decomp_2013A00
+    .word comp_86C6FD0 + 1<<31
+    .word unk_2026C00
+    .word decomp_2013A00
+    .word comp_86D6F30 + 1<<31
+    .word unk_2028000
+    .word decomp_2013A00
+    .word dword_86C9BB4
     .word unk_30016B0
-    .word 0x20, 0x886D6EE4, 0x201CC20, 0x2013A00, 0x0
+    .word 0x20
+    .word comp_86D6EE4 + 1<<31
+    .word unk_201CC20
+    .word decomp_2013A00
+    .word 0x0
 .func
 .thumb_func
 sub_8125444:
@@ -7085,7 +7196,7 @@ sub_81270D0:
     ldr r4, off_8127180 // =unk_20096E0 
     mov r6, #0
     mov r7, #0
-    ldr r5, off_812715C // =dword_8127160 
+    ldr r5, off_812715C // =off_8127160 
 loc_81270DA:
     ldr r0, [r5,r7]
     add r7, #4
@@ -7113,46 +7224,94 @@ loc_81270EC:
     // initRefs
     ldr r0, off_8127184 // =dword_8127188 
     bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
-    ldr r0, off_812711C // =dword_8127120 
+    ldr r0, off_812711C // =off_8127120 
     ldr r1, off_8127154 // =unk_201BF20 
     ldr r2, off_8127158 // =decomp_2013A00 
     bl sub_8123300
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_812711C:    .word dword_8127120
-dword_8127120:    .word 0x86D7578, 0x86D7578, 0x86D7578, 0x86D7578, 0x86D7578
-    .word 0x86D7578, 0x86D78C0, 0x86D7C24, 0x86D7F74, 0x86D82C4
-    .word 0x86D860C, 0x86D7578, 0x86D894C
+off_812711C:    .word off_8127120
+off_8127120:    .word unk_86D7578
+    .word unk_86D7578
+    .word unk_86D7578
+    .word unk_86D7578
+    .word unk_86D7578
+    .word unk_86D7578
+    .word unk_86D78C0
+    .word unk_86D7C24
+    .word unk_86D7F74
+    .word unk_86D82C4
+    .word unk_86D860C
+    .word unk_86D7578
+    .word unk_86D894C
 off_8127154:    .word unk_201BF20
 off_8127158:    .word decomp_2013A00
-off_812715C:    .word dword_8127160
-dword_8127160:    .word 0x86C9108, 0x2, 0x3001960, 0x20, 0x86C9B54, 0x2, 0x3001A40
+off_812715C:    .word off_8127160
+off_8127160:    .word unk_86C9108
+    .word 0x2
+    .word word_3001960
+    .word 0x20
+    .word dword_86C9B54
+    .word 0x2
+    .word unk_3001A40
     .word 0x20
 off_8127180:    .word unk_20096E0
 off_8127184:    .word dword_8127188
-dword_8127188:    .word 0x886C8054, 0x6000020, 0x2013A00, 0x886D74B0
+dword_8127188:    .word comp_86C8054 + 1<<31
+    .word 0x6000020
+    .word decomp_2013A00
+    .word comp_86D74B0 + 1<<31
 off_8127198:    .word unk_201BA20
     .word decomp_2013A00
-    .word 0x886D737C
+    .word comp_86D737C + 1<<31
 off_81271A4:    .word unk_201CF20
     .word decomp_2013A00
-    .word 0x886D73D4
+    .word comp_86D73D4 + 1<<31
 off_81271B0:    .word unk_201D120
     .word decomp_2013A00
-    .word 0x886D7424
+    .word comp_86D7424 + 1<<31
 off_81271BC:    .word unk_201D320
     .word decomp_2013A00
-    .word 0x886D747C
+    .word comp_86D747C + 1<<31
 off_81271C8:    .word unk_201D520
     .word decomp_2013A00
-    .word 0x886C9C80, 0x60149C0, 0x2013A00, 0x886C9D38, 0x6014980
-    .word 0x2013A00, 0x86C9D6C, 0x30016D0, 0x20, 0x886C9148
-    .word 0x6003C00, 0x2013A00, 0x886C9240, 0x3001A60, 0x2013A00
-    .word 0x886D8C80, 0x201D774, 0x2013A00, 0x886D9D10, 0x201F294
-    .word 0x2013A00, 0x86A5D40, 0x3001A00, 0x20, 0x86CDBE4
-    .word 0x30019E0, 0x20, 0x86C1F20, 0x3001670, 0x20
-    .word 0x86C1F80, 0x6011400, 0x340, 0x886C7764, 0x2022B94
-    .word 0x2013A00, 0x0
+    .word comp_86C9C80 + 1<<31
+    .word 0x60149C0
+    .word decomp_2013A00
+    .word comp_86C9D38 + 1<<31
+    .word 0x6014980
+    .word decomp_2013A00
+    .word unk_86C9D6C
+    .word unk_30016D0
+    .word 0x20
+    .word comp_86C9148 + 1<<31
+    .word 0x6003C00
+    .word decomp_2013A00
+    .word comp_86C9240 + 1<<31
+    .word unk_3001A60
+    .word decomp_2013A00
+    .word comp_86D8C80 + 1<<31
+    .word unk_201D774
+    .word decomp_2013A00
+    .word comp_86D9D10 + 1<<31
+    .word unk_201F294
+    .word decomp_2013A00
+    .word unk_86A5D40
+    .word unk_3001A00
+    .word 0x20
+    .word dword_86CDBE4
+    .word unk_30019E0
+    .word 0x20
+    .word unk_86C1F20
+    .word unk_3001670
+    .word 0x20
+    .word unk_86C1F80
+    .word 0x6011400
+    .word 0x340
+    .word comp_86C7764 + 1<<31
+    .word unk_2022B94
+    .word decomp_2013A00
+    .word 0x0
 .endfunc // sub_81270D0
 
 .func

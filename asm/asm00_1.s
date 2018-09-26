@@ -4336,7 +4336,7 @@ cb_80050EC:
     mov lr, pc
     bx r0
     bl change_20013F0_800151C // () -> int
-    bl sub_800154C // () -> void
+    bl rng_800154C // () -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_8005108:    .word jt_800510C
@@ -15506,7 +15506,7 @@ loc_800A5D2:
     beq loc_800A610
     mov r4, #0
 loc_800A5E8:
-    bl sub_8001562
+    bl rng_8001562
     mov r1, #0xc
     neg r1, r1
     add r1, r1, r5
@@ -15527,7 +15527,7 @@ loc_800A5E8:
 loc_800A610:
     mov r4, #0
 loc_800A612:
-    bl sub_8001562
+    bl rng_8001562
     mov r1, #0xb
     svc 6
     mov r3, #8
@@ -15546,7 +15546,7 @@ loc_800A634:
     ldr r0, [sp,#8]
     tst r0, r0
     beq loc_800A664
-    bl sub_8001562
+    bl rng_8001562
     mov r1, #0x13
     svc 6
     mov r0, #1

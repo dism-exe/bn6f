@@ -17,7 +17,7 @@
 // .global objRender_8000A44
 // .global sub_8000E10
 // .global sub_8001514
-// .global sub_800154C // () -> void
+// .global rng_800154C // () -> void
 // .global sub_80015B4
 // .global render_80015D0
 // .global render_800172C

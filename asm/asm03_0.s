@@ -1353,7 +1353,7 @@ loc_8026F72:
     add r2, r0, #1
     str r2, [r1,#0x8] // (dword_20349A8 - 0x20349a0)
     ldrb r4, [r3,r0]
-    bl sub_800154C // () -> void
+    bl rng_800154C // () -> void
     mov r1, #1
     mov r2, #0xf
     and r0, r2
@@ -8996,7 +8996,7 @@ sub_802A8A4:
     strb r0, [r5,#0x10]
     strb r0, [r5,#0x11]
     ldr r0, off_802A914 // =unk_2031000 
-    ldr r1, off_802A92C // =unk_2032000 
+    ldr r1, off_802A92C // =decomp_2032000 
     bl sub_802B358
 .endfunc // sub_802A8A4
 
@@ -9017,7 +9017,7 @@ dword_802A91C:    .word 0x9070
 dword_802A920:    .word 0x6008E00
 dword_802A924:    .word 0x90D4
 dword_802A928:    .word 0x6009A80
-off_802A92C:    .word unk_2032000
+off_802A92C:    .word decomp_2032000
 off_802A930:    .word unk_2030E60
 .func
 .thumb_func
@@ -9153,7 +9153,7 @@ loc_802AA38:
     mov r0, #0
     strb r0, [r5,#2]
     ldr r0, off_802ABB4 // =unk_2031000 
-    ldr r1, off_802ABB8 // =unk_2032000 
+    ldr r1, off_802ABB8 // =decomp_2032000 
     bl sub_802B358
     ldr r0, off_802ABCC // =unk_2030E60 
     ldr r1, off_802ABB4 // =unk_2031000 
@@ -9255,7 +9255,7 @@ loc_802AAE0:
     b loc_802AB98
 loc_802AB0E:
     ldr r0, off_802ABB4 // =unk_2031000 
-    ldr r1, off_802ABB8 // =unk_2032000 
+    ldr r1, off_802ABB8 // =decomp_2032000 
     bl sub_802B358
     ldr r0, off_802ABCC // =unk_2030E60 
     ldr r1, off_802ABB4 // =unk_2031000 
@@ -9312,7 +9312,7 @@ loc_802AB6C:
     strb r0, [r5,#2]
 loc_802AB7C:
     ldr r0, off_802ABB4 // =unk_2031000 
-    ldr r1, off_802ABB8 // =unk_2032000 
+    ldr r1, off_802ABB8 // =decomp_2032000 
     bl sub_802B358
     ldr r0, off_802ABCC // =unk_2030E60 
     ldr r1, off_802ABB4 // =unk_2031000 
@@ -9335,7 +9335,7 @@ loc_802ABAE:
     bl sub_802B270
     pop {r4-r7,pc}
 off_802ABB4:    .word unk_2031000
-off_802ABB8:    .word unk_2032000
+off_802ABB8:    .word decomp_2032000
 dword_802ABBC:    .word 0xFFFF
 off_802ABC0:    .word dword_802B5FC
 off_802ABC4:    .word 0x100
@@ -9963,34 +9963,34 @@ decomp_802B060:
 initRefs:    .word initRefs_802B070
 initRefs_802B070:    .word comp_86DD59C + 1<<31
     .word 0x6008020
-    .word 0x2032000
+    .word decomp_2032000
     .word comp_86DDAD0 + 1<<31
-    .word 0x2030E60
-    .word 0x2032000
+    .word unk_2030E60
+    .word decomp_2032000
     .word comp_86DD9B4 + 1<<31
 off_802B08C:    .word unk_2035000
-    .word unk_2032000
-    .word 0x86DDB24
+    .word decomp_2032000
+    .word unk_86DDB24
     .word unk_3001A80
     .word 0x20
-    .word 0x86C9D6C
-    .word 0x30016B0
+    .word unk_86C9D6C
+    .word unk_30016B0
     .word 0x20
     .word comp_86C9BD4 + 1<<31
     .word 0x6016C80
-    .word 0x2032000
+    .word decomp_2032000
     .word comp_86C9D38 + 1<<31
     .word 0x6016E00
-    .word 0x2032000
+    .word decomp_2032000
     .word comp_86DDB44 + 1<<31
     .word 0x6016E40
-    .word 0x2032000
+    .word decomp_2032000
     .word comp_86DDB7C + 1<<31
     .word 0x6016E80
-    .word 0x2032000
+    .word decomp_2032000
     .word comp_86D6974 + 1<<31
-    .word 0x2030860
-    .word 0x2032000
+    .word comp_2030860
+    .word decomp_2032000
     .word 0x0
 .endfunc // decomp_802B060
 
@@ -10302,7 +10302,7 @@ off_802B3DC:    .word aTuDhr
 dword_802B3E0:    .word 0xFFFF
 off_802B3E4:    .word dword_86B7AE0
 dword_802B3E8:    .word 0x6008E00
-    .word unk_2032000
+    .word decomp_2032000
 off_802B3F0:    .word dword_86F047C
 off_802B3F4:    .word dword_802B3F8
 dword_802B3F8:    .word 0x10000, 0xD0007, 0x190013, 0x25001F, 0x31002B, 0x3D0037
@@ -10498,7 +10498,7 @@ loc_802B57E:
     mov r0, #0xff
     strb r0, [r5,r1]
     ldr r0, off_802B5A4 // =unk_2031000 
-    ldr r1, off_802B5A8 // =unk_2032000 
+    ldr r1, off_802B5A8 // =decomp_2032000 
     bl sub_802B358
     ldr r0, off_802B5AC // =unk_2030E60 
     ldr r1, off_802B5A4 // =unk_2031000 
@@ -10508,7 +10508,7 @@ loc_802B57E:
 locret_802B5A2:
     pop {pc}
 off_802B5A4:    .word unk_2031000
-off_802B5A8:    .word unk_2032000
+off_802B5A8:    .word decomp_2032000
 off_802B5AC:    .word unk_2030E60
 .endfunc // sub_802B560
 
@@ -10546,10 +10546,10 @@ sub_802B5D0:
 sub_802B5DC:
     push {lr}
     add r1, r0, #0
-    ldr r0, off_802B5E8 // =unk_2030860 
+    ldr r0, off_802B5E8 // =comp_2030860 
     bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     pop {pc}
-off_802B5E8:    .word unk_2030860
+off_802B5E8:    .word comp_2030860
 .endfunc // sub_802B5DC
 
 .func
@@ -10966,7 +10966,7 @@ sub_802B80C:
     cmp r2, r1
     bge loc_802B86A
     lsr r1, r0, #9
-    ldr r0, off_802B9AC // =aBdfhjlnprtvxzB 
+    ldr r0, off_802B9AC // =byte_86F0300 
     ldr r2, off_802B990 // =0x48 
     mul r2, r3
     ldr r3, dword_802B9B4 // =0x6009760 
@@ -11139,7 +11139,7 @@ off_802B99C:    .word 0x160
 off_802B9A0:    .word unk_203C4E0
 dword_802B9A4:    .word 0x6009560
 off_802B9A8:    .word dword_86B7AE0
-off_802B9AC:    .word aBdfhjlnprtvxzB
+off_802B9AC:    .word byte_86F0300
 off_802B9B0:    .word unk_203C6E0
 dword_802B9B4:    .word 0x6009760
 .endfunc // sub_802B920
@@ -16909,7 +16909,7 @@ loc_802E8B4:
     blt loc_802E8D2
     bgt loc_802E8CE
     push {r0-r2}
-    bl sub_800154C // () -> void
+    bl rng_800154C // () -> void
     lsr r3, r0, #0x1c
     lsr r0, r3
     pop {r0-r2}
@@ -19456,27 +19456,27 @@ startScreen_initGfx_802FCC0:
 off_802FCD4:    .word initRefs_802FCD8
 initRefs_802FCD8:    .word comp_87F36A0 + 1<<31
     .word 0x6013000
-    .word 0x2013A00
-    .word 0x87F40F4
-    .word 0x3001610
+    .word decomp_2013A00
+    .word unk_87F40F4
+    .word unk_3001610
     .word 0xA0
     .word comp_87F3370 + 1<<31
     .word 0x6010020
-    .word 0x2013A00
-    .word 0x87F3620
-    .word 0x3001590
+    .word decomp_2013A00
+    .word unk_87F3620
+    .word unk_3001590
     .word 0x80
     .word comp_87F4394 + 1<<31
     .word 0x6000000
-    .word 0x2013A00
-    .word 0x87F4194
-    .word 0x3001960
+    .word decomp_2013A00
+    .word unk_87F4194
+    .word word_3001960
     .word 0x1C0
-    .word 0x86A48C0
+    .word unk_86A48C0
     .word 0x6012800
     .word 0x180
-    .word 0x86A5500
-    .word 0x3001570
+    .word dword_86A5500
+    .word unk_3001570
     .word 0x20
     .word 0x0
 .endfunc // startScreen_initGfx_802FCC0
@@ -20161,7 +20161,7 @@ loc_8030214:
     sub r1, r0, #1
     strh r1, [r5,#0x10]
 loc_8030226:
-    bl sub_800154C // () -> void
+    bl rng_800154C // () -> void
     ldr r2, [r7]
     and r0, r2
     lsl r0, r0, #0x10
@@ -20180,7 +20180,7 @@ loc_8030226:
     lsl r0, r0, #1
     str r0, [r5,#0x48]
 loc_803024C:
-    bl sub_800154C // () -> void
+    bl rng_800154C // () -> void
     ldr r2, [r7]
     and r0, r2
     lsl r0, r0, #0x10
@@ -25013,7 +25013,7 @@ loc_8033998:
     bl loc_8000AC8
 .endfunc // sub_8033978
 
-    ldr r0, off_80339C8 // =dword_86C1DC8+344 
+    ldr r0, off_80339C8 // =unk_86C1F20 
     ldr r1, off_80339BC // =unk_30016D0 
     mov r2, #0x20 
     bl loc_8000AC8
@@ -25025,7 +25025,7 @@ off_80339B8:    .word 0x100
 off_80339BC:    .word unk_30016D0
 off_80339C0:    .word unk_86C1F80
 off_80339C4:    .word 0x340
-off_80339C8:    .word dword_86C1DC8+0x158
+off_80339C8:    .word unk_86C1F20
 loc_80339CC:
     push {r4-r7,lr}
     mov r0, #1
@@ -25536,7 +25536,7 @@ loc_8033E42:
 loc_8033E5C:
     lsl r2, r6, #5
 loc_8033E5E:
-    ldr r0, off_8033ED0 // =dword_86C1DC8+344 
+    ldr r0, off_8033ED0 // =unk_86C1F20 
     add r0, r0, r2
     ldr r1, off_8033ED4 // =unk_30016D0 
     mov r2, #0x20 
@@ -25594,7 +25594,7 @@ loc_8033E9E:
     bl sub_802FE28
     pop {r5,pc}
     .byte 0, 0
-off_8033ED0:    .word dword_86C1DC8+0x158
+off_8033ED0:    .word unk_86C1F20
 off_8033ED4:    .word unk_30016D0
 dword_8033ED8:    .word 0x8000
 dword_8033EDC:    .word 0xC792
@@ -25690,7 +25690,7 @@ sub_8033F80:
     add r4, r0, #0
     bl sub_803F524
     beq locret_8033FA4
-    ldr r0, off_8033FA8 // =dword_86C1AA0 
+    ldr r0, off_8033FA8 // =unk_86C1AA0 
     ldr r1, dword_8033FAC // =0x6017580 
     mov r2, #0x80
     bl loc_8000AC8
@@ -25704,7 +25704,7 @@ sub_8033F80:
 locret_8033FA4:
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_8033FA8:    .word dword_86C1AA0
+off_8033FA8:    .word unk_86C1AA0
 dword_8033FAC:    .word 0x6017580
 off_8033FB0:    .word dword_8033FB4
 dword_8033FB4:    .word 0x40240006, 0x40300000
@@ -26170,8 +26170,8 @@ initRefs_8034338:    .word compFile_86C23A0 + 1<<31
     .word unk_2017A00
     .word comp_86C33B4 + 1<<31
     .word 0x0
-    .word 0x201BA00
-    .word 0x86C22C0
+    .word unk_201BA00
+    .word unk_86C22C0
     .word 0x3001960
     .word 0x20
     .word 0x0
@@ -33705,18 +33705,18 @@ decomp_initGfx_8038F30:
     pop {pc}
     .balign 4, 0x00
 off_8038F3C:    .word initRefs_8038F40
-initRefs_8038F40:    .word 0x86BEAE0
-    .word 0x30019E0
+initRefs_8038F40:    .word dword_86BEAE0
+    .word unk_30019E0
     .word 0x20
     .word comp_87E4500 + 1<<31
     .word 0x6004000
-    .word 0x2013A00
-    .word 0x87E4FE0
-    .word 0x30019A0
+    .word decomp_2013A00
+    .word dword_87E4FE0
+    .word unk_30019A0
     .word 0x40
     .word comp_87E5020 + 1<<31
-    .word 0x2018A00
-    .word 0x2013A00
+    .word unk_2018A00
+    .word decomp_2013A00
     .word 0x0
 .endfunc // decomp_initGfx_8038F30
 
@@ -37935,43 +37935,43 @@ copyData_803B216:
 off_803B240:    .word initRefs_803B244
 initRefs_803B244:    .word comp_87E4500 + 1<<31
     .word 0x6004000
-    .word 0x2027A00
+    .word unk_2027A00
     .word comp_84E0C4C + 1<<31
     .word 0x6000020
-    .word  0x2027A00
+    .word unk_2027A00
     .word comp_84E0C4C + 1<<31
     .word 0x0
-    .word  0x2028200
+    .word unk_2028200
     .word comp_87E5020 + 1<<31
     .word 0x0
-    .word  0x2028A00
+    .word unk_2028A00
     .word comp_84E0C4C + 1<<31
     .word 0x0
-    .word  0x2029200
-    .word 0x87E4FE0
-    .word  0x30019A0
+    .word unk_2029200
+    .word dword_87E4FE0
+    .word unk_30019A0
     .word 0x40
-    .word  0x84E0554
-    .word  0x3001960
+    .word unk_84E0554
+    .word word_3001960
     .word 0x40
     .word comp_84E0C4C + 1<<31
     .word 0x6011000
-    .word  0x2027A00
-    .word 0x86A4D40
+    .word unk_2027A00
+    .word unk_86A4D40
     .word 0x6010020
     .word 0x240
-    .word  0x86A4A40
+    .word dword_86A4A40
     .word 0x6010300
     .word 0x100
-    .word  0x86A5500
-    .word  0x3001550
+    .word dword_86A5500
+    .word unk_3001550
     .word 0x20
-    .word 0x87E5000
-    .word  0x30016D0
+    .word unk_87E5000
+    .word unk_30016D0
     .word 0x20
     .word comp_84E0C4C + 1<<31
     .word 0x0
-    .word  0x2032A00
+    .word unk_2032A00
     .word 0x0
 .endfunc // copyData_803B216
 
@@ -37996,10 +37996,10 @@ copyData_803B2E4:
 off_803B30C:    .word initRefs_803B310
 initRefs_803B310:    .word comp_87E57BC + 1<<31
     .word 0x6004000
-    .word 0x2027A00
+    .word unk_2027A00
     .word comp_84E0C4C + 1<<31
     .word 0x6000020
-    .word 0x2027A00
+    .word unk_2027A00
     .word comp_87E6840 + 1<<31
     .word 0x0
     .word unk_2028200
@@ -38024,20 +38024,20 @@ initRefs_803B310:    .word comp_87E57BC + 1<<31
     .word dword_87E660C
     .word unk_30019C0
     .word 0x140
-    .word  0x84E0554
+    .word unk_84E0554
     .word  0x3001980
     .word 0x40
-    .word 0x86A5180
+    .word unk_86A5180
     .word 0x6010020
     .word 0x180
     .word comp_87E6924 + 1<<31
     .word 0x6010280
-    .word  0x2027A00
-    .word  0x86A5500
+    .word unk_2027A00
+    .word dword_86A5500
     .word  0x3001550
     .word 0x20
-    .word  0x87E660C
-    .word  0x30015D0
+    .word dword_87E660C
+    .word unk_30015D0
     .word 0x120
     .word 0x0
 .endfunc // copyData_803B2E4
@@ -38072,24 +38072,24 @@ copyData_803B3C8:
 off_803B400:    .word initRefs_803B404
 initRefs_803B404:    .word comp_87E50D4 + 1<<31
     .word 0x6004000
-    .word  0x2027A00
+    .word unk_2027A00
     .word comp_87E5550 + 1<<31
     .word 0x0
     .word unk_2028200
     .word comp_87E56A0 + 1<<31
     .word 0x600D600
-    .word  0x2027A00
-    .word 0x87E54B0
-    .word  0x3001980
+    .word unk_2027A00
+    .word unk_87E54B0
+    .word unk_3001980
     .word 0xA0
-    .word 0x86A4D40
+    .word unk_86A4D40
     .word 0x6010020
     .word 0x240
-    .word  0x86A4A40
+    .word dword_86A4A40
     .word 0x6010300
     .word 0x100
-    .word  0x86A5500
-    .word  0x3001550
+    .word dword_86A5500
+    .word unk_3001550
     .word 0x20
     .word 0x0
 .endfunc // copyData_803B3C8
@@ -38117,10 +38117,10 @@ copyData_803B45C:
 off_803B48C:    .word initRefs_803B490
 initRefs_803B490:    .word comp_87E57BC + 1<<31
     .word 0x6004000
-    .word  0x2027A00
+    .word unk_2027A00
     .word comp_84E0C4C + 1<<31
     .word 0x600C000
-    .word  0x2027A00
+    .word unk_2027A00
     .word comp_84E0C4C + 1<<31
     .word 0x0
     .word unk_2028A00
@@ -38136,17 +38136,17 @@ initRefs_803B490:    .word comp_87E57BC + 1<<31
     .word dword_87E660C
     .word unk_30019C0
     .word 0x140
-    .word  0x84E0554
-    .word 0x3001A40
+    .word unk_84E0554
+    .word unk_3001A40
     .word 0x40
-    .word 0x86A4D40
+    .word unk_86A4D40
     .word 0x6010020
     .word 0x240
-    .word  0x86A4A40
+    .word dword_86A4A40
     .word 0x6010300
     .word 0x100
-    .word  0x86A5500
-    .word  0x3001550
+    .word dword_86A5500
+    .word unk_3001550
     .word 0x20
     .word 0x0
 .endfunc // copyData_803B45C
@@ -41335,7 +41335,7 @@ copyData_803CC60:
 off_803CC84:    .word dword_803CC88
 dword_803CC88:    .word comp_87E6980 + 1<<31
     .word 0x6000020
-    .word  0x2013A00
+    .word decomp_2013A00
     .word comp_87E6BFC + 1<<31
     .word 0x0
 off_803CC9C:    .word unk_2017A00
@@ -42249,7 +42249,7 @@ copyData_803D2B8:
     // cpyOff
     mov r2, #2
     // tileRefs
-    ldr r3, off_803D330 // =unk_86C41B4 
+    ldr r3, off_803D330 // =dword_86C41B4 
     mov r4, #0xe
     mov r5, #1
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -42257,13 +42257,21 @@ copyData_803D2B8:
 off_803D2EC:    .word dword_803D2F0
 dword_803D2F0:    .word comp_86C3528 + 1<<31
     .word 0x6000020
-    .word  0x2014A00
+    .word unk_2014A00
     .word comp_86C3E94 + 1<<31
     .word 0x0
 off_803D304:    .word decomp_2013A00
-    .word 0x86C3C94, 0x3001960, 0x20, 0x86C3FD4, 0x6001000, 0x1C0
-    .word 0x86C4194, 0x3001980, 0x20, 0x0
-off_803D330:    .word unk_86C41B4
+    .word byte_86C3C94
+    .word word_3001960
+    .word 0x20
+    .word unk_86C3FD4
+    .word 0x6001000
+    .word 0x1C0
+    .word byte_86C4194
+    .word unk_3001980
+    .word 0x20
+    .word 0x0
+off_803D330:    .word dword_86C41B4
     .word 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
     .word 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
     .word 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -46789,9 +46797,9 @@ copyData_803FC64:
 off_803FCA0:    .word dword_803FCA4
 dword_803FCA4:    .word comp_86C41D0 + 1<<31
     .word 0x6000000
-    .word  0x2013A00
-    .word 0x86C4660
-    .word  0x3001960
+    .word decomp_2013A00
+    .word unk_86C4660
+    .word word_3001960
     .word 0x20
     .word comp_86C4490 + 1<<31
     .word 0x0

@@ -13,8 +13,8 @@
 // .global dword_809F6CC
 // .global dword_809F6CC
 
+.include "data/dat38_0.inc"
+// .global dword_83F2408
 
-/* Undeclared Symbols */
-.equ dword_83F2408, 0x83F2408
 
 .endif // INC_DATA_DAT14

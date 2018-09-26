@@ -73,8 +73,8 @@
 .global sub_8001514
 .global change_20013F0_800151C // () -> int
 .global sub_8001532
-.global sub_800154C // () -> void
-.global sub_8001562
+.global rng_800154C // () -> void
+.global rng_8001562
 .global sub_80015B4
 .global render_80015D0
 .global sub_80015FC
@@ -187,9 +187,14 @@
 // .global sub_814F9AC
 // .global sub_814FA14
 
+.include "data/dat38_2.inc"
+// .global dword_86A5500
+// .global dword_86A5520
+// .global dword_86BEC80
+
 
 /* Undeclared Symbols */
-.equ dword_2001120, 0x2001120
+.equ rng_2001120, 0x2001120
 .equ dword_20013F0, 0x20013F0
 .equ dword_20018E8, 0x20018E8
 .equ unk_2006840, 0x2006840
@@ -289,8 +294,5 @@
 .equ DMA2WordCount, 0x40000D0
 .equ DMA3SourceAddress, 0x40000D4
 .equ DMA3WordCount, 0x40000DC
-.equ dword_86A5500, 0x86A5500
-.equ dword_86A5520, 0x86A5520
-.equ dword_86BEC80, 0x86BEC80
 
 .endif // INC_ASM_ASM00_0

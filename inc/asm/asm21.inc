@@ -68,23 +68,25 @@
 // .global dword_808144C
 // .global dword_8081450
 
+.include "data/dat38_2.inc"
+// .global off_8610B04
+// .global off_86116C8
+// .global dword_8612CF0
+// .global dword_8613AAC
+// .global dword_8614A0C
+// .global off_8614DE0
+// .global dword_86154A8
+// .global off_861578C
+// .global off_8615BA4
+// .global dword_8616264
+// .global off_8616598
+// .global dword_8617190
+// .global dword_8618DFC
+// .global off_8619174
+// .global dword_8619474
+
 
 /* Undeclared Symbols */
 .equ dword_2009690, 0x2009690
-.equ off_8610B04, 0x8610B04
-.equ off_86116C8, 0x86116C8
-.equ dword_8612CF0, 0x8612CF0
-.equ dword_8613AAC, 0x8613AAC
-.equ dword_8614A0C, 0x8614A0C
-.equ off_8614DE0, 0x8614DE0
-.equ dword_86154A8, 0x86154A8
-.equ off_861578C, 0x861578C
-.equ off_8615BA4, 0x8615BA4
-.equ dword_8616264, 0x8616264
-.equ off_8616598, 0x8616598
-.equ dword_8617190, 0x8617190
-.equ dword_8618DFC, 0x8618DFC
-.equ off_8619174, 0x8619174
-.equ dword_8619474, 0x8619474
 
 .endif // INC_ASM_ASM21

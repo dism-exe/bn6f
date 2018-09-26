@@ -294,6 +294,44 @@
 // .global sub_8149644
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
+.include "data/dat37.inc"
+// .global dword_814FE94
+
+.include "data/dat38_2.inc"
+// .global unk_86A5D40
+// .global dword_86A5D60
+// .global dword_86B7AE0
+// .global unk_86C1F20
+// .global unk_86C1F80
+
+.include "data/dat38_9.inc"
+// .global unk_86C9108
+
+.include "data/dat38_12.inc"
+// .global dword_86C9B54
+// .global dword_86C9B94
+// .global dword_86C9BB4
+
+.include "data/dat38_13.inc"
+// .global unk_86C9D6C
+// .global dword_86CDBE4
+
+.include "data/dat38_20.inc"
+// .global unk_86D7578
+// .global unk_86D78C0
+// .global unk_86D7C24
+// .global unk_86D7F74
+// .global unk_86D82C4
+// .global unk_86D860C
+// .global unk_86D894C
+
+.include "data/dat38_26.inc"
+// .global unk_872CF94
+
+.include "data/dat38_27.inc"
+// .global dword_873D9FC
+// .global dword_873EA50
+
 
 /* Undeclared Symbols */
 .equ byte_2000FE0, 0x2000FE0
@@ -368,14 +406,17 @@
 .equ unk_201D6E0, 0x201D6E0
 .equ unk_201D720, 0x201D720
 .equ byte_201D74C, 0x201D74C
+.equ unk_201D774, 0x201D774
 .equ unk_201D7C0, 0x201D7C0
 .equ unk_201D7F8, 0x201D7F8
 .equ unk_201D830, 0x201D830
 .equ unk_201D84C, 0x201D84C
 .equ unk_201D85C, 0x201D85C
+.equ unk_201D884, 0x201D884
 .equ unk_201DC20, 0x201DC20
 .equ unk_201DEDC, 0x201DEDC
 .equ unk_201E198, 0x201E198
+.equ unk_201E284, 0x201E284
 .equ dword_201E420, 0x201E420
 .equ unk_201E55C, 0x201E55C
 .equ unk_201E998, 0x201E998
@@ -386,6 +427,7 @@
 .equ unk_201ECAC, 0x201ECAC
 .equ unk_201ECCC, 0x201ECCC
 .equ unk_201F198, 0x201F198
+.equ unk_201F294, 0x201F294
 .equ dword_201F420, 0x201F420
 .equ unk_201F998, 0x201F998
 .equ dword_201FC20, 0x201FC20
@@ -395,14 +437,21 @@
 .equ unk_201FD80, 0x201FD80
 .equ unk_201FDA0, 0x201FDA0
 .equ unk_2020198, 0x2020198
+.equ unk_2020484, 0x2020484
+.equ unk_2020500, 0x2020500
+.equ unk_2020C00, 0x2020C00
+.equ unk_2022B94, 0x2022B94
+.equ unk_2022C00, 0x2022C00
 .equ word_2023BB0, 0x2023BB0
 .equ byte_2023BC0, 0x2023BC0
 .equ byte_2023BC8, 0x2023BC8
 .equ unk_2024394, 0x2024394
+.equ unk_2024C00, 0x2024C00
 .equ unk_20251A0, 0x20251A0
 .equ unk_2025700, 0x2025700
 .equ unk_2026700, 0x2026700
 .equ unk_2026870, 0x2026870
+.equ unk_2026C00, 0x2026C00
 .equ unk_2027570, 0x2027570
 .equ dword_2027590, 0x2027590
 .equ byte_2027594, 0x2027594
@@ -412,6 +461,7 @@
 .equ byte_20275A4, 0x20275A4
 .equ dword_20275A8, 0x20275A8
 .equ dword_20275AC, 0x20275AC
+.equ unk_2028000, 0x2028000
 .equ unk_2028590, 0x2028590
 .equ unk_2028690, 0x2028690
 .equ unk_2029000, 0x2029000
@@ -424,11 +474,56 @@
 .equ unk_2037780, 0x2037780
 .equ dword_203F7D8, 0x203F7D8
 .equ dword_203F7D8, 0x203F7D8
+.equ unk_3001670, 0x3001670
+.equ unk_3001690, 0x3001690
 .equ unk_30016B0, 0x30016B0
-.equ dword_814FE94, 0x814FE94
-.equ dword_86A5D60, 0x86A5D60
-.equ dword_86B7AE0, 0x86B7AE0
-.equ dword_873D9FC, 0x873D9FC
-.equ dword_873EA50, 0x873EA50
+.equ unk_30016D0, 0x30016D0
+.equ word_3001960, 0x3001960
+.equ unk_30019E0, 0x30019E0
+.equ unk_3001A00, 0x3001A00
+.equ unk_3001A40, 0x3001A40
+.equ unk_3001A60, 0x3001A60
+.equ unk_3001AA0, 0x3001AA0
+.equ unk_3001AC0, 0x3001AC0
+.equ unk_3001AE0, 0x3001AE0
+// .global comp_86C6B30
+// .global comp_86C6FD0
+// .global comp_86C73D8
+// .global comp_86C7764
+// .global comp_86C7980
+// .global comp_86C7DCC
+// .global comp_86C7E74
+// .global comp_86C7F70
+// .global comp_86C7F98
+// .global comp_86C8034
+// .global comp_86C8054
+// .global comp_86C9148
+// .global comp_86C9240
+// .global comp_86C96C0
+// .global comp_86C980C
+// .global comp_86C9AA4
+// .global comp_86C9BD4
+// .global comp_86C9C80
+// .global comp_86C9D38
+// .global comp_86CDCE4
+// .global comp_86CDE2C
+// .global comp_86CDEA8
+// .global comp_86CE51C
+// .global comp_86CE63C
+// .global comp_86CEC3C
+// .global comp_86CF82C
+// .global comp_86CFC64
+// .global comp_86CFCFC
+// .global comp_86D6C70
+// .global comp_86D6D50
+// .global comp_86D6EE4
+// .global comp_86D6F30
+// .global comp_86D737C
+// .global comp_86D73D4
+// .global comp_86D7424
+// .global comp_86D747C
+// .global comp_86D74B0
+// .global comp_86D8C80
+// .global comp_86D9D10
 
 .endif // INC_ASM_ASM33

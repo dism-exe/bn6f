@@ -241,6 +241,39 @@
 // .global reqBBS_setFlag_e17b0f7_8140A00
 // .global reqBBS_clearFlag_8140A0C
 
+.include "data/dat37.inc"
+// .global dword_814FE90
+// .global dword_814FE94
+// .global off_8158278
+// .global off_815827C
+// .global byte_8158280
+// .global word_8158282
+// .global sound_MusicTable
+// .global dword_81C03AC
+// .global byte_81C03D8
+// .global aNintendosio32i
+// .global off_81C0418
+// .global unk_81C04A8
+// .global byte_81C055A
+// .global byte_81C055B
+// .global dword_81C055C
+// .global dword_81C058C
+// .global byte_81C05A4
+// .global byte_81C05A5
+// .global byte_81C0626
+// .global byte_81C0627
+// .global dword_81C0628
+// .global byte_81C0640
+// .global byte_81C067B
+// .global dword_81C067C
+// .global unk_81C068C
+// .global off_81C06C0
+
+.include "data/dat38_2.inc"
+// .global dword_8619730
+// .global dword_8619B50
+// .global dword_8619B90
+
 
 /* Undeclared Symbols */
 .equ byte_2000780, 0x2000780
@@ -531,34 +564,5 @@
 .equ InterruptRequestFlags_IRQAcknowledge, 0x4000202
 .equ GamePakWaitstateControl, 0x4000204
 .equ InterruptMasterEnableRegister, 0x4000208
-.equ dword_814FE90, 0x814FE90
-.equ dword_814FE94, 0x814FE94
-.equ off_8158278, 0x8158278
-.equ off_815827C, 0x815827C
-.equ byte_8158280, 0x8158280
-.equ word_8158282, 0x8158282
-.equ sound_MusicTable, 0x81583F8
-.equ dword_81C03AC, 0x81C03AC
-.equ byte_81C03D8, 0x81C03D8
-.equ aNintendosio32i, 0x81C03E4
-.equ off_81C0418, 0x81C0418
-.equ unk_81C04A8, 0x81C04A8
-.equ byte_81C055A, 0x81C055A
-.equ byte_81C055B, 0x81C055B
-.equ dword_81C055C, 0x81C055C
-.equ dword_81C058C, 0x81C058C
-.equ byte_81C05A4, 0x81C05A4
-.equ byte_81C05A5, 0x81C05A5
-.equ byte_81C0626, 0x81C0626
-.equ byte_81C0627, 0x81C0627
-.equ dword_81C0628, 0x81C0628
-.equ byte_81C0640, 0x81C0640
-.equ byte_81C067B, 0x81C067B
-.equ dword_81C067C, 0x81C067C
-.equ unk_81C068C, 0x81C068C
-.equ off_81C06C0, 0x81C06C0
-.equ dword_8619730, 0x8619730
-.equ dword_8619B50, 0x8619B50
-.equ dword_8619B90, 0x8619B90
 
 .endif // INC_ASM_ASM37_1

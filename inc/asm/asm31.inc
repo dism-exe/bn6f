@@ -649,6 +649,9 @@
 // .global dword_81165BC
 // .global sub_8116878
 
+.include "data/dat38_26.inc"
+// .global aTuDhr
+
 
 /* Undeclared Symbols */
 .equ timer_2000000, 0x2000000
@@ -687,6 +690,5 @@
 .equ unk_3003D0C, 0x3003D0C
 .equ LCDControl, 0x4000000
 .equ BG2Rotation_ScalingParameterA_dx_, 0x4000020
-.equ aTuDhr, 0x8736D74
 
 .endif // INC_ASM_ASM31

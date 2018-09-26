@@ -78,10 +78,12 @@
 // .global sub_8143DBC
 // .global SWI_Div
 
+.include "data/dat38_27.inc"
+// .global dword_873D108
+// .global aPfffff
+
 
 /* Undeclared Symbols */
 .equ unk_202FA04, 0x202FA04
-.equ dword_873D108, 0x873D108
-.equ aPfffff, 0x87E30A0
 
 .endif // INC_ASM_NPC

@@ -224,8 +224,8 @@
 // .global sub_80013A2
 // .global copyWords_80014EC // (void *src, void *dest, int size) -> void
 // .global change_20013F0_800151C // () -> int
-// .global sub_800154C // () -> void
-// .global sub_8001562
+// .global rng_800154C // () -> void
+// .global rng_8001562
 // .global sub_8001708
 // .global sub_8001778
 // .global sub_8001788
@@ -1004,6 +1004,14 @@
 // .global sub_8144EEC
 // .global SWI_LZ77UnCompReadNormalWrite16bit
 
+.include "data/dat38_25.inc"
+// .global unk_86DDBA0
+// .global dword_86E08F8
+// .global dword_86E09F8
+
+.include "data/dat38_36.inc"
+// .global a58
+
 
 /* Undeclared Symbols */
 .equ dword_2000060, 0x2000060
@@ -1267,13 +1275,9 @@
 .equ loc_30061E8, 0x30061E8
 .equ loc_3006440, 0x3006440
 .equ Window0HorizontalDimensions, 0x4000040
-.equ unk_86DDBA0, 0x86DDBA0
-.equ dword_86E08F8, 0x86E08F8
-.equ dword_86E09F8, 0x86E09F8
 // .global scripts_fullSynchro_86F3F5C
 // .global scripts_dad_cybeastTut_86F4498
 // .global scripts_shuko_crossTut_86F53CC
 // .global scripts_commErr_87370C0
-.equ a58, 0x87F2F68
 
 .endif // INC_ASM_ASM00_1

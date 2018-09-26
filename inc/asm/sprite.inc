@@ -64,6 +64,9 @@
 .include "asm/asm37_1.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
+.include "data/dat38_0.inc"
+// .global unk_84E0554
+
 
 /* Undeclared Symbols */
 .equ dword_20093A8, 0x20093A8
@@ -82,6 +85,5 @@
 .equ loc_30061E8, 0x30061E8
 .equ sub_3006730, 0x3006730
 .equ sub_3006792, 0x3006792
-.equ unk_84E0554, 0x84E0554
 
 .endif // INC_ASM_SPRITE

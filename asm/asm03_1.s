@@ -1487,7 +1487,7 @@ dword_8046A70:    .word 0x20531000, 0x20572055, 0x205B2059, 0x205F205D, 0x106210
     .word dword_87F1BA8
     .word 0x3C0
     .word 0x8, 0x0
-    .word dword_87F1E10
+    .word unk_87F1E10
     .word 0x400
     .word 0x8, 0x0
     .word dword_87F195C
@@ -2478,7 +2478,7 @@ off_8047494:    .word unk_87F0340
     .word 0x20
     .word comp_87F006C + 1<<31
     .word 0x6000020
-    .word  0x2016A00
+    .word unk_2016A00
     .word comp_87F0218 + 1<<31
     .word 0x0
     .word unk_2017200
@@ -2487,7 +2487,7 @@ off_8047494:    .word unk_87F0340
     .word 0xC0
     .word comp_87F0360 + 1<<31
     .word 0x6000800
-    .word  0x2018200
+    .word unk_2018200
     .word comp_87F04D4 + 1<<31
     .word 0x0
     .word unk_2018A00
@@ -2497,10 +2497,10 @@ off_8047494:    .word unk_87F0340
     .word comp_87F056C + 1<<31
     .word 0x0
     .word unk_2019400
-    .word  0x86A48C0
+    .word unk_86A48C0
     .word 0x6010040
     .word 0x180
-    .word 0x86A4CC0
+    .word unk_86A4CC0
     .word 0x60101C0
     .word 0x80
     .word comp_86C7980 + 1<<31
@@ -2525,7 +2525,7 @@ off_8047494:    .word unk_87F0340
 .thumb_func
 sub_804754C:
     push {r5,lr}
-    ldr r0, off_8047578 // =a345 
+    ldr r0, off_8047578 // =unk_2017204 
     mov r1, r10
     ldr r1, [r1,#0x28]
     mov r2, #0x80
@@ -2546,7 +2546,7 @@ sub_804754C:
 
     pop {r5,pc}
     .balign 4, 0x00
-off_8047578:    .word a345
+off_8047578:    .word unk_2017204
 dword_804757C:    .word 0x800
 off_8047580:    .word unk_2015E00
 dword_8047584:    .word 0x6002000
@@ -5663,7 +5663,7 @@ copyData_8049A18:
     bl sub_800183C
     bl sub_8001850
     // initRefs
-    ldr r0, off_8049A50 // =dword_8049A54 
+    ldr r0, off_8049A50 // =initRefs_8049A54 
     bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     mov r3, r10
     ldr r3, [r3,#8]
@@ -5682,27 +5682,27 @@ copyData_8049A18:
     mov r0, #3
     bl sub_803B91C
     pop {r4-r7,pc}
-off_8049A50:    .word dword_8049A54
-dword_8049A54:    .word comp_87E50D4 + 1<<31
+off_8049A50:    .word initRefs_8049A54
+initRefs_8049A54:    .word comp_87E50D4 + 1<<31
     .word 0x6004000
-    .word  0x2027A00
+    .word unk_2027A00
     .word comp_87E5550 + 1<<31
     .word 0x0
     .word unk_2028200
     .word comp_87E56A0 + 1<<31
     .word 0x600D600
-    .word  0x2027A00
-    .word  0x87F25B4
-    .word  0x3001980
+    .word unk_2027A00
+    .word comp_87F24FC+0xB8
+    .word unk_3001980
     .word 0xA0
-    .word 0x86A4D40
+    .word unk_86A4D40
     .word 0x6010020
     .word 0x240
-    .word  0x86A4A40
+    .word dword_86A4A40
     .word 0x6010300
     .word 0x100
-    .word  0x86A5500
-    .word  0x3001550
+    .word dword_86A5500
+    .word unk_3001550
     .word 0x20
     .word 0x0
 .endfunc // copyData_8049A18
@@ -5728,10 +5728,10 @@ copyData_8049AAC:
 off_8049AD4:    .word dword_8049AD8
 dword_8049AD8:    .word comp_87E57BC + 1<<31
     .word 0x6004000
-    .word  0x2027A00
+    .word unk_2027A00
     .word comp_84E0C4C + 1<<31
     .word 0x6000020
-    .word  0x2027A00
+    .word unk_2027A00
     .word comp_87E6840 + 1<<31
     .word 0x0
     .word unk_2028200
@@ -5756,32 +5756,32 @@ dword_8049AD8:    .word comp_87E57BC + 1<<31
     .word dword_87F28DC
     .word unk_30019C0
     .word 0x140
-    .word  0x84E0554
-    .word  0x3001980
+    .word unk_84E0554
+    .word unk_3001980
     .word 0x40
-    .word 0x86A5180
+    .word unk_86A5180
     .word 0x6010020
     .word 0x180
     .word comp_87E6924 + 1<<31
     .word 0x6010280
-    .word  0x2027A00
-    .word  0x86A5500
-    .word  0x3001550
+    .word unk_2027A00
+    .word dword_86A5500
+    .word unk_3001550
     .word 0x20
-    .word  0x87F28DC
-    .word  0x30015D0
+    .word dword_87F28DC
+    .word unk_30015D0
     .word 0x120
-    .word 0x86C14A0
+    .word unk_86C14A0
     .word 0x6016600
     .word 0x400
-    .word  0x86C1B20
+    .word unk_86C1B20
     .word 0x6016A00
     .word 0x400
     .word comp_86DBD94 + 1<<31
     .word 0x0
     .word unk_202BA00
-    .word  0x86DC3F8
-    .word 0x3001570
+    .word unk_86DC3F8
+    .word unk_3001570
     .word 0x20
     .word 0x0
 .endfunc // copyData_8049AAC
@@ -6437,26 +6437,27 @@ copyData_804A0AC:
 off_804A0E4:    .word dword_804A0E8
 dword_804A0E8:    .word comp_87E50D4 + 1<<31
     .word 0x6004000
-    .word  0x2027A00
+    .word unk_2027A00
     .word comp_87E5550 + 1<<31
     .word 0x0
     .word unk_2028200
-    .word 0x887F24FC, 0x0
+    .word comp_87F24FC + 1<<31
+    .word 0x0
     .word unk_2028200
     .word comp_87E56A0 + 1<<31
     .word 0x600D600
-    .word  0x2027A00
-    .word  0x87F25B4
-    .word  0x3001980
+    .word unk_2027A00
+    .word comp_87F24FC+0xB8
+    .word unk_3001980
     .word 0xA0
-    .word 0x86A4D40
+    .word unk_86A4D40
     .word 0x6010020
     .word 0x240
-    .word  0x86A4A40
+    .word dword_86A4A40
     .word 0x6010300
     .word 0x100
-    .word  0x86A5500
-    .word  0x3001550
+    .word dword_86A5500
+    .word unk_3001550
     .word 0x20
     .word 0x0
 .endfunc // copyData_804A0AC
@@ -6560,7 +6561,7 @@ sub_804A1D0:
 .thumb_func
 sub_804A1FC:
     push {r4-r7,lr}
-    ldr r4, off_804A22C // =dword_86CF4AC 
+    ldr r4, off_804A22C // =unk_86CF4AC 
     lsl r0, r0, #1
     ldrh r0, [r4,r0]
     add r4, r4, r0
@@ -6588,7 +6589,7 @@ loc_804A224:
 locret_804A228:
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_804A22C:    .word dword_86CF4AC
+off_804A22C:    .word unk_86CF4AC
 .endfunc // sub_804A1FC
 
 .func
@@ -7069,7 +7070,7 @@ loc_804A63C:
     ldr r0, off_804A6DC // =unk_20096E0 
     bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     // initRefs
-    ldr r0, off_804A6E0 // =dword_804A6E4 
+    ldr r0, off_804A6E0 // =initRefs_804A6E4 
     bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     ldr r7, [sp]
     // j
@@ -7114,8 +7115,8 @@ dword_804A69C:    .word 0x86C9108, 0x2, 0x3001960, 0x20, 0x86C9B54, 0x2, 0x3001A
     .word 0x20, 0x886C9AA4, 0x2, 0x3001A80, 0x2013A00, 0x872CF94, 0x2
     .word 0x3001AE0, 0x20
 off_804A6DC:    .word unk_20096E0
-off_804A6E0:    .word dword_804A6E4
-dword_804A6E4:    .word comp_86C8054 + 1<<31
+off_804A6E0:    .word initRefs_804A6E4
+initRefs_804A6E4:    .word comp_86C8054 + 1<<31
     .word 0x6000020
     .word  0x2013A00
     .word  0x86B7AE0
@@ -7130,7 +7131,7 @@ dword_804A6E4:    .word comp_86C8054 + 1<<31
     .word comp_86C9CE4 + 1<<31
     .word 0x60149C0
     .word  0x2013A00
-    .word 0x86C9D6C
+    .word  0x86C9D6C
     .word  0x30016D0
     .word 0x20
     .word comp_86C7764 + 1<<31

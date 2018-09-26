@@ -87,6 +87,19 @@
 // .global dword_806C6E0
 // .global dword_806C748
 
+.include "data/dat38_2.inc"
+// .global off_8610B04
+// .global off_86116C8
+// .global off_8612A28
+// .global off_8613608
+// .global dword_8613DDC
+// .global off_8614444
+// .global off_8614DE0
+// .global off_8615360
+// .global off_861578C
+// .global off_8615BA4
+// .global off_861602C
+
 
 /* Undeclared Symbols */
 .equ unk_2037800, 0x2037800
@@ -94,16 +107,5 @@
 .equ unk_3001AC0, 0x3001AC0
 .equ unk_3001AE0, 0x3001AE0
 .equ LCDControl, 0x4000000
-.equ off_8610B04, 0x8610B04
-.equ off_86116C8, 0x86116C8
-.equ off_8612A28, 0x8612A28
-.equ off_8613608, 0x8613608
-.equ dword_8613DDC, 0x8613DDC
-.equ off_8614444, 0x8614444
-.equ off_8614DE0, 0x8614DE0
-.equ off_8615360, 0x8615360
-.equ off_861578C, 0x861578C
-.equ off_8615BA4, 0x8615BA4
-.equ off_861602C, 0x861602C
 
 .endif // INC_ASM_ASM11

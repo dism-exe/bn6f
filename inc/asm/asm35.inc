@@ -54,6 +54,9 @@
 // .global sub_813B780
 // .global sub_813B9FC
 
+.include "data/dat38_2.inc"
+// .global dword_86A5D60
+
 
 /* Undeclared Symbols */
 .equ unk_201B200, 0x201B200
@@ -68,6 +71,5 @@
 .equ unk_2025A70, 0x2025A70
 .equ unk_2030000, 0x2030000
 .equ unk_2037780, 0x2037780
-.equ dword_86A5D60, 0x86A5D60
 
 .endif // INC_ASM_ASM35

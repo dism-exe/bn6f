@@ -393,7 +393,7 @@ off_8130204:    .word dword_812EFDC+0x68
     ldrb r1, [r0,r1]
     mov r0, #0xf
     and r1, r0
-    ldr r0, off_8130238 // =dword_86CF4AC 
+    ldr r0, off_8130238 // =unk_86CF4AC 
     mov r4, #8
     mov r5, #1
     ldr r6, off_813024C // =dword_86B7AE0 
@@ -402,7 +402,7 @@ off_8130204:    .word dword_812EFDC+0x68
     pop {r4-r7,pc}
     .word unk_20347D8
 off_8130234:    .word word_2023FA0
-off_8130238:    .word dword_86CF4AC
+off_8130238:    .word unk_86CF4AC
 off_813023C:    .word off_8130240
 off_8130240:    .word unk_2017A00
 off_8130244:    .word dword_8130248
@@ -3385,7 +3385,7 @@ loc_8131C34:
     blt loc_8131C34
     mov r7, #8
 loc_8131C40:
-    bl sub_800154C // () -> void
+    bl rng_800154C // () -> void
     mov r1, #0xf
     and r0, r1
     lsl r0, r0, #2
@@ -3481,7 +3481,7 @@ sub_8131CAC:
     mvn r0, r0
     str r0, [sp]
 loc_8131CBA:
-    bl sub_800154C // () -> void
+    bl rng_800154C // () -> void
     mov r1, #0xf
     and r0, r1
     lsl r0, r0, #2
@@ -3495,7 +3495,7 @@ loc_8131CBA:
     add r6, #4
     cmp r6, #8
     blt loc_8131CBA
-    bl sub_800154C // () -> void
+    bl rng_800154C // () -> void
     mov r1, #0xf
     and r0, r1
     lsl r0, r0, #2
@@ -3586,7 +3586,7 @@ sub_8131D80:
     push {r4-r7,lr}
     ldr r4, off_8131DC0 // =dword_202522C 
     mov r6, #0
-    bl sub_800154C // () -> void
+    bl rng_800154C // () -> void
     mov r1, #0xf
     and r0, r1
     lsl r0, r0, #2
@@ -3594,7 +3594,7 @@ sub_8131D80:
     ldr r0, [r1,r0]
     str r0, [r4,r6]
     add r6, #4
-    bl sub_800154C // () -> void
+    bl rng_800154C // () -> void
     mov r1, #0xf
     and r0, r1
     lsl r0, r0, #2
@@ -3602,7 +3602,7 @@ sub_8131D80:
     ldr r0, [r1,r0]
     str r0, [r4,r6]
     add r6, #4
-    bl sub_800154C // () -> void
+    bl rng_800154C // () -> void
     mov r1, #7
     and r0, r1
     lsl r0, r0, #2
@@ -3666,7 +3666,7 @@ sub_8131E70:
     // size
     mov r1, #0x3c 
     bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-    bl sub_800154C // () -> void
+    bl rng_800154C // () -> void
     mov r1, #0xf
     and r0, r1
     lsl r4, r0, #2
@@ -13601,13 +13601,13 @@ sub_8136C24:
     .word 0x11C
     .word 0x120
     push {lr}
-    ldr r0, off_8136DD8 // =dword_86A5D20 
+    ldr r0, off_8136DD8 // =unk_86A5D20 
     ldr r1, off_8136DDC // =unk_30019A0 
     mov r2, #0x20 
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
     pop {pc}
     .balign 4, 0x00
-off_8136DD8:    .word dword_86A5D20
+off_8136DD8:    .word unk_86A5D20
 off_8136DDC:    .word unk_30019A0
 loc_8136DE0:
     push {r4-r7,lr}

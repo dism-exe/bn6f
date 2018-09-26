@@ -75,9 +75,11 @@
 // .global sub_8142C20
 // .global sub_8142C46
 
+.include "data/dat38_27.inc"
+// .global dword_87DE44C
+
 
 /* Undeclared Symbols */
 .equ unk_30016F0, 0x30016F0
-.equ dword_87DE44C, 0x87DE44C
 
 .endif // INC_ASM_ASM23

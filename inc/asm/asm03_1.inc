@@ -323,6 +323,53 @@
 // .global sub_8148D24
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
+.include "data/dat38_0.inc"
+// .global unk_84E0554
+
+.include "data/dat38_2.inc"
+// .global unk_86A48C0
+// .global dword_86A4A40
+// .global unk_86A4CC0
+// .global unk_86A4D40
+// .global unk_86A5180
+// .global dword_86A5500
+// .global dword_86A5D60
+// .global unk_86C14A0
+// .global unk_86C1B20
+
+.include "data/dat38_16.inc"
+// .global unk_86CF4AC
+
+.include "data/dat38_23.inc"
+// .global unk_86DC3F8
+
+.include "data/dat38_25.inc"
+// .global a8Bdfhjlnprtvxz
+
+.include "data/dat38_27.inc"
+// .global dword_873D9FC
+// .global comp_873DE4C
+// .global dword_873EA50
+// .global comp_873ECC8
+
+.include "data/dat38_33.inc"
+// .global unk_87F0340
+
+.include "data/dat38_34.inc"
+// .global unk_87F05A4
+
+.include "data/dat38_35.inc"
+// .global dword_87F0DA0
+// .global dword_87F0FF4
+// .global dword_87F1278
+// .global dword_87F14CC
+// .global dword_87F195C
+// .global dword_87F1BA8
+// .global unk_87F1E10
+
+.include "data/dat38_36.inc"
+// .global dword_87F28DC
+
 
 /* Undeclared Symbols */
 .equ word_2001800, 0x2001800
@@ -377,8 +424,10 @@
 .equ unk_2013C40, 0x2013C40
 .equ unk_2015A00, 0x2015A00
 .equ unk_2015E00, 0x2015E00
+.equ unk_2016A00, 0x2016A00
 .equ unk_2017200, 0x2017200
-.equ a345, 0x2017204
+.equ unk_2017204, 0x2017204
+.equ unk_2018200, 0x2018200
 .equ unk_2018A00, 0x2018A00
 .equ unk_2018A04, 0x2018A04
 .equ unk_2019200, 0x2019200
@@ -397,6 +446,7 @@
 .equ word_201AE06, 0x201AE06
 .equ unk_201CA20, 0x201CA20
 .equ unk_2020A20, 0x2020A20
+.equ unk_2027A00, 0x2027A00
 .equ unk_2028200, 0x2028200
 .equ unk_2028A00, 0x2028A00
 .equ unk_2029200, 0x2029200
@@ -442,6 +492,9 @@
 .equ unk_2037800, 0x2037800
 .equ unk_2037A00, 0x2037A00
 .equ word_3000000, 0x3000000
+.equ unk_3001550, 0x3001550
+.equ unk_3001570, 0x3001570
+.equ unk_30015D0, 0x30015D0
 .equ unk_3001650, 0x3001650
 .equ unk_30016B0, 0x30016B0
 .equ unk_30016D0, 0x30016D0
@@ -453,7 +506,6 @@
 .equ unk_3001B60, 0x3001B60
 .equ loc_3006B94, 0x3006B94
 // .global comp_84E0C4C
-.equ dword_86A5D60, 0x86A5D60
 // .global comp_86C5190
 // .global comp_86C526C
 // .global scripts_86C580C
@@ -470,14 +522,8 @@
 // .global comp_86C9D38
 // .global comp_86CE8AC
 // .global comp_86CE9E8
-.equ dword_86CF4AC, 0x86CF4AC
 // .global comp_86DA1B8
 // .global comp_86DBD94
-.equ a8Bdfhjlnprtvxz, 0x86EF71C
-.equ dword_873D9FC, 0x873D9FC
-.equ comp_873DE4C, 0x873DE4C
-.equ dword_873EA50, 0x873EA50
-.equ comp_873ECC8, 0x873ECC8
 // .global comp_87E50D4
 // .global comp_87E5550
 // .global comp_87E56A0
@@ -487,22 +533,14 @@
 // .global comp_87E6924
 // .global comp_87F006C
 // .global comp_87F0218
-// .global unk_87F0340
 // .global comp_87F0360
 // .global comp_87F04D4
 // .global comp_87F0534
 // .global comp_87F056C
-.equ unk_87F05A4, 0x87F05A4
 // .global comp_87F0664
 // .global comp_87F0834
 // .global comp_87F0C00
-.equ dword_87F0DA0, 0x87F0DA0
-.equ dword_87F0FF4, 0x87F0FF4
-.equ dword_87F1278, 0x87F1278
-.equ dword_87F14CC, 0x87F14CC
-.equ dword_87F195C, 0x87F195C
-.equ dword_87F1BA8, 0x87F1BA8
-.equ dword_87F1E10, 0x87F1E10
-.equ dword_87F28DC, 0x87F28DC
+// .global comp_87F24FC
+// .global comp_87F24FC
 
 .endif // INC_ASM_ASM03_1

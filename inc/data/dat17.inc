@@ -13,8 +13,8 @@
 
 
 /* External Symbols */
+.include "data/dat38_2.inc"
+// .global dword_8617488
 
-/* Undeclared Symbols */
-.equ dword_8617488, 0x8617488
 
 .endif // INC_DATA_DAT17

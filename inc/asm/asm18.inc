@@ -50,9 +50,11 @@
 // .global dword_807AC18
 // .global dword_807ACA8
 
+.include "data/dat38_2.inc"
+// .global off_8617068
+
 
 /* Undeclared Symbols */
 .equ unk_2037800, 0x2037800
-.equ off_8617068, 0x8617068
 
 .endif // INC_ASM_ASM18

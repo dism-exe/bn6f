@@ -2259,14 +2259,18 @@ dword_8099EA0:    .word 0x99FFD4B, 0x6003F08, 0x1731FF29, 0x4701FF02, 0x3E00FF01
 sub_809A308:
     push {lr}
     // initRefs
-    ldr r0, off_809A314 // =dword_809A318 
+    ldr r0, off_809A314 // =initRefs_809A318 
     bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     pop {pc}
     .balign 4, 0x00
-off_809A314:    .word dword_809A318
-dword_809A318:    .word 0x886C7980, 0x2034E00
+off_809A314:    .word initRefs_809A318
+initRefs_809A318:    .word comp_86C7980 + 1<<31
+    .word unk_2034E00
     .word unk_2033700
-    .word 0x886C73D8, 0x2036500, 0x2033700, 0x0
+    .word comp_86C73D8 + 1<<31
+    .word unk_2036500
+    .word unk_2033700
+    .word 0x0
 .endfunc // sub_809A308
 
 .func
@@ -2274,31 +2278,47 @@ dword_809A318:    .word 0x886C7980, 0x2034E00
 sub_809A334:
     push {r4-r7,lr}
     // initRefs
-    ldr r0, off_809A340 // =dword_809A344 
+    ldr r0, off_809A340 // =initRefs_809A344 
     bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     pop {r4-r7,pc}
     .byte 0, 0
-off_809A340:    .word dword_809A344
-dword_809A344:    .word 0x86C57EC, 0x3001B20, 0x20, 0x86C5550, 0x600D000, 0x220
+off_809A340:    .word initRefs_809A344
+initRefs_809A344:    .word dword_86C57EC
+    .word unk_3001B20
+    .word 0x20
+    .word unk_86C5550
+    .word 0x600D000
+    .word 0x220
     .word 0x0
 .endfunc // sub_809A334
 
+.func
+.thumb_func
+sub_809A360:
     push {r4-r7,lr}
     add r7, r0, #0
     mov r0, r10
-    ldr r0, [r0,#0x38]
+    ldr r0, [r0,#0x38] // Toolkit.unk_200A220
     ldr r1, [r5,#0x70]
     str r1, [r0,#8]
+    // j
     add r0, r7, #0
+    // i
     mov r1, #0
+    // cpyOff
     mov r2, #0
+    // tileRefs
     ldr r3, off_809A3A4 // =loc_86C54D4 
     mov r4, #9
     mov r5, #5
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+    // j
     add r0, r7, #1
+    // i
     mov r1, #2
+    // cpyOff
     mov r2, #0
+    // tileRefs
     ldr r3, off_809A3A8 // =dword_8099E04+88 
     mov r4, #7
     mov r5, #2
@@ -2320,6 +2340,8 @@ off_809A3AC:    .word scripts_86C580C
 off_809A3B0:    .word unk_200EF40
 dword_809A3B4:    .word 0x600D400
 off_809A3B8:    .word dword_86A5D60
+.endfunc // sub_809A360
+
     push {r4-r7,lr}
     bl sub_809A334
     mov r0, #0x20 
@@ -3003,6 +3025,9 @@ dword_809AA24:    .word 0x5000016, 0x5010116, 0x5020216, 0xFFFFFFFF, 0x2906003F
     .word 0xAC894B88, 0x81C0809, 0x9AA5000, 0xACA54B08, 0xD14B0809
     .word 0x20809AC, 0xD4B01FF, 0x3B0809AD, 0x9AD4D4B, 0x4B043F08
     .word 0x803FD55, 0x0
+.func
+.thumb_func
+sub_809AAB8:
     push {r4-r7,lr}
     mov r0, #0
     bl sub_8033FC0
@@ -3016,6 +3041,11 @@ dword_809AA24:    .word 0x5000016, 0x5010116, 0x5020216, 0xFFFFFFFF, 0x2906003F
     strb r0, [r5,#8]
     pop {r4-r7,pc}
     .balign 4, 0x00
+.endfunc // sub_809AAB8
+
+.func
+.thumb_func
+sub_809AADC:
     push {r4-r7,lr}
     mov r0, #8
     bl chatbox_8045F3C
@@ -3047,6 +3077,11 @@ loc_809AB1A:
     mov r0, #1
     pop {r4-r7,pc}
     .byte 0, 0
+.endfunc // sub_809AADC
+
+.func
+.thumb_func
+sub_809AB20:
     push {r4-r7,lr}
     mov r0, #0x17
     mov r1, #0x25 
@@ -3101,9 +3136,9 @@ loc_809AB5A:
     b loc_809AC20
 loc_809AB92:
     mov r4, r10
-    ldr r4, [r4,#0x2c]
-    str r2, [r4,#0x4c]
-    str r3, [r4,#0x50]
+    ldr r4, [r4,#0x2c] // Toolkit.chatbox
+    str r2, [r4,#0x4c] // ChatBoxPropreties.unk_4C
+    str r3, [r4,#0x50] // ChatBoxPropreties.unk_50
     cmp r1, #1
     beq loc_809ABC8
     cmp r1, #2
@@ -3120,6 +3155,7 @@ loc_809AB92:
     add r1, r3, #0
     mov r2, #1
     bl sub_8021AEE
+    // initRefs
     ldr r0, off_809AC28 // =dword_809AC2C 
     bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     mov r0, #0xf
@@ -3176,9 +3212,15 @@ loc_809AC24:
     mov r0, #1
     pop {r4-r7,pc}
 off_809AC28:    .word dword_809AC2C
-dword_809AC2C:    .word 0x886C7980, 0x2034E00
+dword_809AC2C:    .word comp_86C7980 + 1<<31
+    .word  0x2034E00
     .word unk_2033700
-    .word 0x886C73D8, 0x2036500, 0x2033700, 0x0
+    .word comp_86C73D8 + 1<<31
+    .word  0x2036500
+    .word  0x2033700
+    .word 0x0
+.endfunc // sub_809AB20
+
 .func
 .thumb_func
 sub_809AC48:

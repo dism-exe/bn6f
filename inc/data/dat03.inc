@@ -24,11 +24,13 @@
 
 
 /* External Symbols */
+.include "data/dat38_1.inc"
+// .global dword_850D034
+
 
 /* Undeclared Symbols */
 .equ word_3000000, 0x3000000
 .equ unk_3001A60, 0x3001A60
 .equ unk_3001A80, 0x3001A80
-.equ dword_850D034, 0x850D034
 
 .endif // INC_DATA_DAT03

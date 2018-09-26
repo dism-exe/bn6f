@@ -160,6 +160,14 @@
 // .global sub_80E4B34
 // .global sub_80E9BDC
 
+.include "data/dat38_25.inc"
+// .global byte_86DFA98
+// .global dword_86E0458
+// .global dword_86E0478
+// .global dword_86E0498
+// .global dword_86F047C
+// .global dword_86F0D7C
+
 
 /* Undeclared Symbols */
 .equ unk_2034010, 0x2034010
@@ -210,11 +218,5 @@
 .equ sub_30078E0, 0x30078E0
 .equ sub_3007958, 0x3007958
 .equ sub_30079A4, 0x30079A4
-.equ byte_86DFA98, 0x86DFA98
-.equ dword_86E0458, 0x86E0458
-.equ dword_86E0478, 0x86E0478
-.equ dword_86E0498, 0x86E0498
-.equ dword_86F047C, 0x86F047C
-.equ dword_86F0D7C, 0x86F0D7C
 
 .endif // INC_ASM_OBJECT

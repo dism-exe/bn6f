@@ -17,8 +17,8 @@
 .include "asm/asm03_0.inc"
 // .global loc_8030308
 
+.include "data/dat38_2.inc"
+// .global dword_8617488
 
-/* Undeclared Symbols */
-.equ dword_8617488, 0x8617488
 
 .endif // INC_DATA_DAT15

@@ -69,6 +69,12 @@
 // .global off_8068400
 // .global off_8068734
 
+.include "data/dat38_2.inc"
+// .global dword_859E6D0
+// .global off_8610B04
+// .global off_86116C8
+// .global dword_8611B68
+
 
 /* Undeclared Symbols */
 .equ unk_2037800, 0x2037800
@@ -79,9 +85,5 @@
 .equ unk_3001AA0, 0x3001AA0
 .equ unk_3001AC0, 0x3001AC0
 .equ unk_3001AE0, 0x3001AE0
-.equ dword_859E6D0, 0x859E6D0
-.equ off_8610B04, 0x8610B04
-.equ off_86116C8, 0x86116C8
-.equ dword_8611B68, 0x8611B68
 
 .endif // INC_ASM_ASM10

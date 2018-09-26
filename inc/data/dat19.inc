@@ -19,19 +19,21 @@
 
 
 /* External Symbols */
+.include "data/dat38_2.inc"
+// .global dword_860D840
+// .global dword_860DA24
+// .global dword_860DA44
+// .global dword_860DC28
+// .global dword_860DC28
+// .global dword_860DC8C
+// .global dword_860DD50
+// .global dword_860DD70
+// .global dword_860DD90
+
 
 /* Undeclared Symbols */
 .equ word_3001960, 0x3001960
 .equ unk_3001A20, 0x3001A20
 .equ unk_3001A80, 0x3001A80
-.equ dword_860D840, 0x860D840
-.equ dword_860DA24, 0x860DA24
-.equ dword_860DA44, 0x860DA44
-.equ dword_860DC28, 0x860DC28
-.equ dword_860DC28, 0x860DC28
-.equ dword_860DC8C, 0x860DC8C
-.equ dword_860DD50, 0x860DD50
-.equ dword_860DD70, 0x860DD70
-.equ dword_860DD90, 0x860DD90
 
 .endif // INC_DATA_DAT19

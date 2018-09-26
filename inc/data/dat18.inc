@@ -18,9 +18,9 @@
 .include "asm/asm28_1.inc"
 // .global dword_809F6CC
 
+.include "data/dat38_2.inc"
+// .global unk_8605FD8
+// .global dword_86190F4
 
-/* Undeclared Symbols */
-.equ unk_8605FD8, 0x8605FD8
-.equ dword_86190F4, 0x86190F4
 
 .endif // INC_DATA_DAT18

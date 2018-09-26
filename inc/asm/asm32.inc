@@ -173,7 +173,7 @@
 // .global sub_800139A
 // .global change_20013F0_800151C // () -> int
 // .global sub_8001532
-// .global sub_8001562
+// .global rng_8001562
 // .global sub_80015FC
 // .global sub_8001850
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -481,6 +481,38 @@
 // .global sub_8144D30
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
+.include "data/dat38_0.inc"
+// .global unk_81D8000
+// .global dword_82FCA14
+
+.include "data/dat38_2.inc"
+// .global dword_86A5D60
+// .global dword_86B7AE0
+
+.include "data/dat38_13.inc"
+// .global PET_Gfx_tileRefs
+// .global unk_86CB360
+// .global unk_86CBB7C
+// .global unk_86CC13C
+
+.include "data/dat38_16.inc"
+// .global unk_86CF4AC
+
+.include "data/dat38_23.inc"
+// .global unk_86DC3F8
+
+.include "data/dat38_25.inc"
+// .global dword_86E2E98
+// .global dword_86E3B9C
+// .global dword_86E411C
+// .global dword_86E43DC
+// .global dword_86E587C
+// .global dword_86EB354
+// .global dword_86EDB54
+
+.include "data/dat38_27.inc"
+// .global dword_873EA50
+
 
 /* Undeclared Symbols */
 .equ timer_2000000, 0x2000000
@@ -532,7 +564,7 @@
 .equ byte_2011E40, 0x2011E40
 .equ byte_2011E42, 0x2011E42
 .equ byte_2011E46, 0x2011E46
-.equ aJ_0, 0x2016200
+.equ unk_2016200, 0x2016200
 .equ unk_2016300, 0x2016300
 .equ unk_2016400, 0x2016400
 .equ unk_2016A04, 0x2016A04
@@ -665,21 +697,5 @@
 .equ word_3001B58, 0x3001B58
 .equ loc_3006B94, 0x3006B94
 .equ LCDControl, 0x4000000
-.equ unk_81D8000, 0x81D8000
-.equ dword_82FCA14, 0x82FCA14
-.equ dword_86A5D60, 0x86A5D60
-.equ dword_86B7AE0, 0x86B7AE0
-.equ PET_Gfx_tileRefs, 0x86CAC4C
-.equ unk_86CB360, 0x86CB360
-.equ dword_86CF4AC, 0x86CF4AC
-.equ dword_86DC2C4, 0x86DC2C4
-.equ dword_86E2E98, 0x86E2E98
-.equ dword_86E3B9C, 0x86E3B9C
-.equ dword_86E411C, 0x86E411C
-.equ dword_86E43DC, 0x86E43DC
-.equ dword_86E587C, 0x86E587C
-.equ dword_86EB354, 0x86EB354
-.equ dword_86EDB54, 0x86EDB54
-.equ dword_873EA50, 0x873EA50
 
 .endif // INC_ASM_ASM32

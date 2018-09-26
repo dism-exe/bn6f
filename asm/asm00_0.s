@@ -1046,14 +1046,14 @@ loc_8000C74:
 loc_8000CA8:
     push {r0,r2}
     push {r1}
-    bl sub_8001562
+    bl rng_8001562
     pop {r1}
     push {r1}
     svc 6
     add r3, r1, #0
     pop {r1}
     push {r1,r3}
-    bl sub_8001562
+    bl rng_8001562
     pop {r1}
     push {r1}
     svc 6
@@ -1106,14 +1106,14 @@ sub_8000D12:
 loc_8000D14:
     push {r0,r2}
     push {r1}
-    bl sub_8001562
+    bl rng_8001562
     pop {r1}
     push {r1}
     svc 6
     add r3, r1, #0
     pop {r1}
     push {r1,r3}
-    bl sub_8001562
+    bl rng_8001562
     pop {r1}
     push {r1}
     svc 6
@@ -2287,7 +2287,7 @@ reverseCopyWords_8001506:
 .func
 .thumb_func
 sub_8001514:
-    ldr r0, dword_8001594 // =0xA338244F 
+    ldr r0, rng_8001594 // =0xA338244F 
     ldr r1, off_8001598 // =dword_20013F0 
     str r0, [r1]
     mov pc, lr
@@ -2300,7 +2300,7 @@ change_20013F0_800151C:
     push {r7,lr}
     ldr r7, off_800159C // =dword_20013F0 
     ldr r0, [r7]
-    ldr r1, dword_80015A0 // =0x873CA9E5 
+    ldr r1, rng_80015A0 // =0x873CA9E5 
     lsl r2, r0, #1
     lsr r3, r0, #0x1f
     add r0, r2, r3
@@ -2316,7 +2316,7 @@ sub_8001532:
     push {r7,lr}
     ldr r7, off_80015A4 // =dword_20013F0 
     ldr r0, [r7]
-    ldr r1, dword_80015A0 // =0x873CA9E5 
+    ldr r1, rng_80015A0 // =0x873CA9E5 
     lsl r2, r0, #1
     lsr r3, r0, #0x1f
     add r0, r2, r3
@@ -2331,11 +2331,11 @@ sub_8001532:
 .func
 .thumb_func
 // () -> void
-sub_800154C:
+rng_800154C:
     push {r7,lr}
-    ldr r7, off_80015A8 // =dword_2001120 
+    ldr r7, off_80015A8 // =rng_2001120 
     ldr r0, [r7]
-    ldr r1, dword_80015A0 // =0x873CA9E5 
+    ldr r1, rng_80015A0 // =0x873CA9E5 
     lsl r2, r0, #1
     lsr r3, r0, #0x1f
     add r0, r2, r3
@@ -2343,15 +2343,15 @@ sub_800154C:
     eor r0, r1
     str r0, [r7]
     pop {r7,pc}
-.endfunc // sub_800154C
+.endfunc // rng_800154C
 
 .func
 .thumb_func
-sub_8001562:
+rng_8001562:
     push {r7,lr}
-    ldr r7, off_80015AC // =dword_2001120 
+    ldr r7, off_80015AC // =rng_2001120 
     ldr r0, [r7]
-    ldr r1, dword_80015A0 // =0x873CA9E5 
+    ldr r1, rng_80015A0 // =0x873CA9E5 
     lsl r2, r0, #1
     lsr r3, r0, #0x1f
     add r0, r2, r3
@@ -2361,12 +2361,15 @@ sub_8001562:
     lsl r0, r0, #1
     lsr r0, r0, #1
     pop {r7,pc}
-.endfunc // sub_8001562
+.endfunc // rng_8001562
 
+.func
+.thumb_func
+dead_rng_800157C:
     push {r7,lr}
     ldr r7, off_80015B0 // =dword_20018E8 
     ldr r0, [r7]
-    ldr r1, dword_80015A0 // =0x873CA9E5 
+    ldr r1, rng_80015A0 // =0x873CA9E5 
     lsl r2, r0, #1
     lsr r3, r0, #0x1f
     add r0, r2, r3
@@ -2375,14 +2378,16 @@ sub_8001562:
     str r0, [r7]
     pop {r7,pc}
     .balign 4, 0x00
-dword_8001594:    .word 0xA338244F
+rng_8001594:    .word 0xA338244F
 off_8001598:    .word dword_20013F0
 off_800159C:    .word dword_20013F0
-dword_80015A0:    .word 0x873CA9E5
+rng_80015A0:    .word 0x873CA9E5
 off_80015A4:    .word dword_20013F0
-off_80015A8:    .word dword_2001120
-off_80015AC:    .word dword_2001120
+off_80015A8:    .word rng_2001120
+off_80015AC:    .word rng_2001120
 off_80015B0:    .word dword_20018E8
+.endfunc // dead_rng_800157C
+
 .func
 .thumb_func
 sub_80015B4:

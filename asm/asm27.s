@@ -5,16 +5,24 @@
 sub_80946C4:
     push {r4-r7,lr}
     // initRefs
-    ldr r0, off_80946D0 // =dword_80946D4 
+    ldr r0, off_80946D0 // =initRefs_80946D4 
     bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     mov r0, #0
     pop {r4-r7,pc}
-off_80946D0:    .word dword_80946D4
-dword_80946D4:    .word 0x8857CCC8, 0x600C000, 0x2024400, 0x8857D43C, 0x0
+off_80946D0:    .word initRefs_80946D4
+initRefs_80946D4:    .word comp_857CCC8 + 1<<31
+    .word 0x600C000
+    .word unk_2024400
+    .word comp_857D43C + 1<<31
+    .word 0x0
     .word unk_2025400
-    .word 0x8857D63C, 0x0
+    .word comp_857D63C + 1<<31
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
     .word unk_2026400
-    .word dword_857CC88
+    .word unk_857CC88
     .word unk_3001B00
     .word 0x40
     .byte 0, 0, 0, 0

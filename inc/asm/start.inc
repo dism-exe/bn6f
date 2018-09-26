@@ -18,6 +18,9 @@
 // .global CpuSet_toolKit // () -> void
 // .global sub_8006C22
 
+.include "data/dat37.inc"
+// .global loc_81D6000
+
 
 /* Undeclared Symbols */
 .equ timer_2000000, 0x2000000
@@ -38,6 +41,5 @@
 .equ GeneralLCDStatus_STAT_LYC_, 0x4000004
 .equ KeyInterruptControl, 0x4000132
 .equ GamePakWaitstateControl, 0x4000204
-.equ loc_81D6000, 0x81D6000
 
 .endif // INC_ASM_START

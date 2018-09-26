@@ -113,6 +113,33 @@
 .include "asm/asm37_1.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
+.include "data/dat38_2.inc"
+// .global dword_86A5D60
+// .global dword_86ACD24
+// .global dword_86B7AE0
+
+.include "data/dat38_27.inc"
+// .global dword_87DAC90
+
+.include "data/dat38_32.inc"
+// .global dword_87E74F4
+// .global dword_87E7514
+// .global dword_87E7534
+// .global dword_87E7554
+// .global dword_87E7574
+// .global dword_87E76B8
+// .global dword_87E771C
+// .global dword_87E7780
+// .global dword_87E77E4
+// .global dword_87E7848
+// .global dword_87EE1AC
+// .global dword_87EE2F0
+// .global dword_87EE5B0
+// .global dword_87EF5A4
+// .global dword_87EFBA4
+// .global reqBBS_textualShades
+// .global unk_87EFE14
+
 
 /* Undeclared Symbols */
 .equ reqBBS_requestEntriesList, 0x2000290
@@ -154,26 +181,5 @@
 .equ unk_3001750, 0x3001750
 .equ unk_30019C0, 0x30019C0
 .equ unk_3001B60, 0x3001B60
-.equ dword_86A5D60, 0x86A5D60
-.equ dword_86ACD24, 0x86ACD24
-.equ dword_86B7AE0, 0x86B7AE0
-.equ dword_87DAC90, 0x87DAC90
-.equ dword_87E74F4, 0x87E74F4
-.equ dword_87E7514, 0x87E7514
-.equ dword_87E7534, 0x87E7534
-.equ dword_87E7554, 0x87E7554
-.equ dword_87E7574, 0x87E7574
-.equ dword_87E76B8, 0x87E76B8
-.equ dword_87E771C, 0x87E771C
-.equ dword_87E7780, 0x87E7780
-.equ dword_87E77E4, 0x87E77E4
-.equ dword_87E7848, 0x87E7848
-.equ dword_87EE1AC, 0x87EE1AC
-.equ dword_87EE2F0, 0x87EE2F0
-.equ dword_87EE5B0, 0x87EE5B0
-.equ dword_87EF5A4, 0x87EF5A4
-.equ dword_87EFBA4, 0x87EFBA4
-.equ reqBBS_textualShades, 0x87EFBC8
-.equ unk_87EFE14, 0x87EFE14
 
 .endif // INC_ASM_REQBBS

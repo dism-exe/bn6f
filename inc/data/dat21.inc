@@ -22,11 +22,13 @@
 
 
 /* External Symbols */
+.include "data/dat37.inc"
+// .global dword_81D4314
+
 
 /* Undeclared Symbols */
 .equ unk_2010800, 0x2010800
 .equ unk_3001750, 0x3001750
 .equ unk_3001B60, 0x3001B60
-.equ dword_81D4314, 0x81D4314
 
 .endif // INC_DATA_DAT21
