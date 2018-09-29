@@ -11,7 +11,7 @@ sub_813B768:
     mov r0, r10
     ldr r0, [r0,#0x60]
     mov r1, #0x10
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     pop {pc}
     .byte 0, 0
 .endfunc // sub_813B768
@@ -715,16 +715,16 @@ sub_813BBD4:
     ldr r0, [r0,#0x60]
     add r7, r0, #0
     mov r1, #0x10
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     ldr r0, off_813BD18 // =unk_2006CF8 
     mov r1, #0x31 
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     ldr r0, off_813BD1C // =unk_2006C88 
     mov r1, #0x31 
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     ldr r0, off_813BD20 // =unk_2006CC0 
     mov r1, #0x31 
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     add r0, r7, #0
     bl sub_813BC1C
     add r0, r7, #0
@@ -907,7 +907,7 @@ sub_813BD24:
 loc_813BD2C:
     ldr r0, off_813BE88 // =byte_2006C50 
     mov r1, #0x31 
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     ldr r0, off_813BE88 // =byte_2006C50 
     mov r8, r0
     add r0, r6, #0
@@ -1345,7 +1345,7 @@ sub_813C020:
     mov r0, r10
     ldr r0, [r0,#0x60]
     mov r1, #0x10
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     pop {pc}
     .byte 0, 0
 .endfunc // sub_813C020
@@ -1764,7 +1764,7 @@ sub_813C324:
     push {lr}
     ldr r0, off_813C330 // =unk_2000090 
     mov r1, #8
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     pop {pc}
 off_813C330:    .word unk_2000090
 .endfunc // sub_813C324
@@ -1781,7 +1781,7 @@ sub_813C334:
     tst r0, r0
     beq loc_813C394
     lsr r3, r7, #2
-    ldr r1, dword_813C398 // =0x813B522 
+    ldr r1, dword_813C398 // = 
     mov r2, #0xa
     mul r3, r2
     add r1, r1, r3
@@ -2028,10 +2028,10 @@ sub_813C584:
     str r0, [sp]
     ldr r0, off_813C638 // =unk_2006D68 
     mov r1, #0x31 
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     ldr r0, off_813C63C // =byte_2006DA0 
     mov r1, #0x31 
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     mov r7, #0
     mov r5, #0
 loc_813C59E:
@@ -2147,7 +2147,7 @@ sub_813C684:
     sub sp, sp, #4
     ldr r0, off_813C744 // =unk_2006DD8 
     mov r1, #8
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     mov r6, #6
     bl sub_813BD0C
     str r7, [sp]

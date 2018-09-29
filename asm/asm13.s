@@ -114,7 +114,7 @@ sub_806FD54:
     .balign 4, 0x00
 off_806FD88:    .word off_806FD8C
 off_806FD8C:    .word locret_8001AB4+1
-    .word loc_80019D0+1
+    .word sub_80019D0+1
     .byte 0xD9
     .byte 0x5C 
     .byte  0

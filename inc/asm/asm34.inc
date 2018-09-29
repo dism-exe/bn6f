@@ -17,7 +17,7 @@
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global sub_80062C8
 
-.include "asm/asm03_0.inc"
+.include "asm/asm03_1.inc"
 // .global sub_803C754
 // .global sub_803EA60
 // .global sub_803EBF4
@@ -25,7 +25,7 @@
 .include "asm/chatbox.inc"
 // .global chatbox_8040818
 
-.include "asm/asm03_1.inc"
+.include "asm/asm03_2.inc"
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_8046664 // () -> void
 // .global sub_80466C4

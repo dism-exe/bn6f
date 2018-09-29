@@ -27,15 +27,15 @@
 .include "data/dat05.inc"
 // .global off_8059294
 // .global off_8059378
-// .global dword_805937C
-// .global dword_805937C
-// .global dword_805937C
-// .global dword_805937C
-// .global dword_805937C
-// .global dword_805937C
-// .global dword_805937C
-// .global dword_805937C
-// .global dword_805937C
+// .global unk_80593B8
+// .global unk_80593F8
+// .global unk_8059438
+// .global unk_8059468
+// .global unk_80594A8
+// .global unk_80594E8
+// .global unk_8059528
+// .global unk_8059558
+// .global unk_8059588
 
 .include "data/dat06.inc"
 // .global dword_80596F4

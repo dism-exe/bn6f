@@ -2,6 +2,7 @@
 .equ INC_ASM_MAIN, 0
 
 /* Public Symbols */
+.global main_
 
 
 /* External Symbols */
@@ -16,7 +17,7 @@
 // .global sub_8000A3C
 // .global objRender_8000A44
 // .global sub_8000E10
-// .global sub_8001514
+// .global sub_8001514 // () -> void
 // .global rng_800154C // () -> void
 // .global sub_80015B4
 // .global render_80015D0
@@ -29,7 +30,7 @@
 // .global sub_8001850
 // .global sub_8001974
 // .global cb_call_200A880
-// .global loc_80019A0
+// .global sub_80019A0
 // .global sub_8001AFC
 // .global PET_onUpdate_8001B94
 // .global sub_8002368
@@ -62,6 +63,8 @@
 // .global sub_802FDB0
 // .global objRender_802FE0C
 // .global sub_802FF2C
+
+.include "asm/asm03_1.inc"
 // .global ho_jackIn_80341B6
 // .global sub_8036ED4
 // .global sub_8036F24
@@ -69,19 +72,19 @@
 // .global cb_80395A4
 // .global cb_803CBA6
 // .global cb_803CCD6
-// .global sub_803D1A8
+// .global sub_803D1A8 // () -> void
 // .global cb_803D1CA
 // .global sub_803DE5C
 // .global sub_803E900
 // .global sub_803EBC8
-// .global sub_803F4C8
+// .global clear_200AD04 // () -> void
 // .global cb_803FB3C
 // .global sub_803FCF0
 
 .include "asm/chatbox.inc"
 // .global chatbox_onUpdate_803FEB4
 
-.include "asm/asm03_1.inc"
+.include "asm/asm03_2.inc"
 // .global sub_804657C // () -> void
 // .global sub_80467D8
 // .global cb_8046CF8

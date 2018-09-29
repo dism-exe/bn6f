@@ -27,10 +27,10 @@
 .include "data/dat06.inc"
 // .global off_805DD24
 // .global off_805DE28
-// .global dword_805DE2C
-// .global dword_805DE2C
-// .global dword_805DE2C
-// .global dword_805DE2C
+// .global unk_805DE50
+// .global unk_805DE78
+// .global unk_805DEA8
+// .global unk_805DED8
 
 .include "data/dat07.inc"
 // .global dword_805E01C

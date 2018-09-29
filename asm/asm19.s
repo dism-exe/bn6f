@@ -121,7 +121,7 @@ sub_807CF24:
     .balign 4, 0x00
 off_807CF58:    .word off_807CF5C
 off_807CF5C:    .word locret_8001AB4+1
-    .word locret_80019B2+1
+    .word nullsub_36+1
     .word 0x3005CD9, 0x800, 0x8001AB5, 0x80019B3, 0x3005CD9
     .word 0x800, 0x8001AB5, 0x80019B3, 0x3005CD9, 0x800
     .word 0x8001AB5, 0x80019B3, 0x3005CD9, 0x800

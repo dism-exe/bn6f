@@ -13,7 +13,7 @@
 .include "asm/asm03_0.inc"
 // .global sub_80307D8
 
-.include "data/dat38_1.inc"
+.include "data/dat38_41.inc"
 // .global unk_857CC88
 
 

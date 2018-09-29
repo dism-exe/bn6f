@@ -72,13 +72,13 @@ off_805DFB4:    .word off_805DFC8
     .word off_805DFE8
 off_805DFC8:    .word off_805DE28
     .word 0xFFFFFFFF
-off_805DFD0:    .word dword_805DE2C+0x24
+off_805DFD0:    .word unk_805DE50
     .word 0xFFFFFFFF
-off_805DFD8:    .word dword_805DE2C+0x4C
+off_805DFD8:    .word unk_805DE78
     .word 0xFFFFFFFF
-off_805DFE0:    .word dword_805DE2C+0x7C
+off_805DFE0:    .word unk_805DEA8
     .word 0xFFFFFFFF
-off_805DFE8:    .word dword_805DE2C+0xAC
+off_805DFE8:    .word unk_805DED8
     .word 0xFFFFFFFF
 .endfunc // sub_805DFA2
 

@@ -15,7 +15,7 @@
 // .global sub_8001778
 // .global sub_8001780
 // .global sub_800195C
-// .global loc_80019D0
+// .global sub_80019D0
 // .global locret_8001AB4
 // .global sub_8002354
 
@@ -33,6 +33,8 @@
 // .global loc_8030472
 // .global sub_80304E8
 // .global sub_8030AA4
+
+.include "asm/asm03_1.inc"
 // .global sub_8034C36
 // .global sub_8034FB8
 
@@ -53,7 +55,7 @@
 // .global off_807360C
 // .global off_8073F1C
 
-.include "data/dat38_2.inc"
+.include "data/dat38_42.inc"
 // .global off_8617068
 
 

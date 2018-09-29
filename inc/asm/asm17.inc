@@ -9,7 +9,7 @@
 // .global sub_8001778
 // .global sub_8001780
 // .global sub_800195C
-// .global locret_80019B2
+// .global nullsub_36
 // .global locret_8001AB4
 // .global sub_8002354
 
@@ -26,6 +26,8 @@
 // .global loc_8030472
 // .global sub_80304E8
 // .global sub_8030AA4
+
+.include "asm/asm03_1.inc"
 // .global sub_8034FB8
 
 .include "asm/chatbox.inc"
@@ -49,7 +51,7 @@
 .include "data/dat18.inc"
 // .global off_807C974
 
-.include "data/dat38_2.inc"
+.include "data/dat38_42.inc"
 // .global dword_8618DFC
 
 

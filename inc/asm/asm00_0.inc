@@ -16,7 +16,7 @@
 .global musicGameState_8000784 // () -> void
 .global sub_80007B2
 .global sub_80007BE
-.global sub_80008B4
+.global clearBackwards_80008B4 // (void *mem, int size) -> void
 .global sub_80008C0
 .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 .global CpuFastSet_8000900 // (int a1, int a2) -> void
@@ -44,6 +44,7 @@
 .global sub_8000DE0
 .global sub_8000E10
 .global sub_8000E28
+.global sub_8000E30
 .global sub_8000E3A
 .global sub_8000EB6
 .global sub_8000EE4
@@ -68,9 +69,10 @@
 .global sub_8001382
 .global sub_800139A
 .global sub_80013A2
+.global loc_8001440
 .global sub_80014D4
 .global copyWords_80014EC // (void *src, void *dest, int size) -> void
-.global sub_8001514
+.global sub_8001514 // () -> void
 .global change_20013F0_800151C // () -> int
 .global sub_8001532
 .global rng_800154C // () -> void
@@ -102,9 +104,9 @@
 .global sub_800195C
 .global sub_8001974
 .global cb_call_200A880
-.global loc_80019A0
-.global locret_80019B2
-.global loc_80019B4
+.global sub_80019A0
+.global nullsub_36
+.global sub_80019B4
 .global sub_8001AFC
 .global sub_8001B1C
 .global sub_8001B6C
@@ -157,8 +159,10 @@
 // .global sub_802F1FC // (int a3, int a2) ->
 // .global sub_802FE28
 // .global sub_8030808
+
+.include "asm/asm03_1.inc"
 // .global off_803385C
-// .global dword_8033878
+// .global off_8033878
 // .global sub_803F79E
 // .global sub_803F838
 
@@ -187,14 +191,17 @@
 // .global sub_814F9AC
 // .global sub_814FA14
 
-.include "data/dat38_2.inc"
+.include "data/dat38_0.inc"
+// .global unk_8200810
+
+.include "data/dat38_42.inc"
 // .global dword_86A5500
 // .global dword_86A5520
 // .global dword_86BEC80
 
 
 /* Undeclared Symbols */
-.equ rng_2001120, 0x2001120
+.equ rngSeed_2001120, 0x2001120
 .equ dword_20013F0, 0x20013F0
 .equ dword_20018E8, 0x20018E8
 .equ unk_2006840, 0x2006840

@@ -26,6 +26,8 @@
 // .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 // .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 // .global sub_802FE28
+
+.include "asm/asm03_1.inc"
 // .global sub_8035408
 // .global sub_8036E44
 // .global sub_8036E78
@@ -38,7 +40,7 @@
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C
 
-.include "asm/asm03_1.inc"
+.include "asm/asm03_2.inc"
 // .global sub_80468C6
 // .global sub_80468EC
 
@@ -75,7 +77,7 @@
 // .global sub_8142C20
 // .global sub_8142C46
 
-.include "data/dat38_27.inc"
+.include "data/dat38_70.inc"
 // .global dword_87DE44C
 
 

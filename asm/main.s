@@ -4,14 +4,14 @@
 .thumb_func
 main_:
     bl main_static_80004A4
-    bl sub_8001514
-    bl sub_803F4C8
-    bl sub_803D1A8
+    bl sub_8001514 // () -> void
+    bl clear_200AD04 // () -> void
+    bl sub_803D1A8 // () -> void
 main_gameRoutine:
-    bl main_static_await_80003D0
+    bl main_static_await_80003D0 // () -> void
     bl main_static_awaitFrame_80003A0
     bl sub_80007BE
-    bl loc_80019A0
+    bl sub_80019A0
     bl render_800172C
     bl objRender_802FE0C
     bl objRender_8000A44
@@ -87,6 +87,7 @@ off_80003CC:    .word GeneralLCDStatus_STAT_LYC_
 
 .func
 .thumb_func
+// () -> void
 main_static_await_80003D0:
     push {lr}
     ldr r0, off_80003E0 // =GeneralLCDStatus_STAT_LYC_
@@ -198,7 +199,7 @@ main_static_8000454:
     push {r1}
     bl start_800023C // () -> void
     bl main_static_80004A4
-    bl sub_803F4C8
+    bl clear_200AD04 // () -> void
     pop {r1}
     mov r4, #0xa
 loc_80004A0:
@@ -267,7 +268,7 @@ loc_80004C0:
     // size
     mov r1, #8
     bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-    bl sub_803D1A8
+    bl sub_803D1A8 // () -> void
     bl sub_803E900
     pop {r5,pc}
     .balign 4, 0x00
@@ -284,7 +285,7 @@ main_static_8000570:
     ldr r0, dword_800059C // =0x93040D
     bl sub_814EE2C
     mov r0, #8
-    ldr r1, dword_80005A8 // =0x3005D79
+    ldr r1, dword_80005A8 // =
     bl start_800024C
     ldr r0, off_80005A0 // =GeneralLCDStatus_STAT_LYC_
     ldrh r1, [r0]

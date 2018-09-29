@@ -480,7 +480,7 @@ loc_812EE38:
     ldr r4, [r1,r0]
     add r7, r4, #0
     ldrh r2, [r5,#0x30]
-    ldr r1, dword_812EED4 // =0x812EEE1 
+    ldr r1, dword_812EED4 // = 
     ldrb r2, [r1,r2]
     add r7, r7, r2
 loc_812EE4E:

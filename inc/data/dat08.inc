@@ -11,7 +11,18 @@
 .global off_806065C
 .global off_806066C
 .global off_80606BC
+.global unk_8061416
+.global unk_8061622
 .global off_8062728
+.global unk_8062860
+.global unk_80628A0
+.global unk_80628E0
+.global unk_8062908
+.global unk_8062958
+.global unk_80629C0
+.global unk_80629F0
+.global unk_8062A30
+.global unk_8062A70
 
 
 /* External Symbols */

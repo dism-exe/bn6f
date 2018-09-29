@@ -68,12 +68,12 @@ off_8060418:    .word off_8060428
     .word off_8060444
 off_8060428:    .word off_8060284
     .word 0xFFFFFFFF
-off_8060430:    .word dword_8060288+0x1C
-    .word dword_8060288+0x44
+off_8060430:    .word unk_80602A4
+    .word unk_80602CC
     .word 0xFFFFFFFF
-off_806043C:    .word dword_8060288+0x74
+off_806043C:    .word unk_80602FC
     .word 0xFFFFFFFF
-off_8060444:    .word dword_8060288+0xA4
+off_8060444:    .word unk_806032C
     .word 0xFFFFFFFF
 .endfunc // sub_8060406
 

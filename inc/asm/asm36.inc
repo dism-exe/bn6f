@@ -49,7 +49,7 @@
 // .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
 // .global sub_800068A
-// .global sub_80008B4
+// .global clearBackwards_80008B4 // (void *mem, int size) -> void
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
@@ -122,10 +122,10 @@
 .include "data/dat01.inc"
 // .global dword_80213AC
 // .global dword_80213AC
-// .global dword_8021550
-// .global dword_8021550
-// .global dword_8021550
-// .global dword_8021550
+// .global unk_802158C
+// .global unk_80215C8
+// .global unk_8021604
+// .global unk_8021640
 
 .include "asm/asm02.inc"
 // .global getChip_8021DA8 // (int chip_idx) -> ChipData*
@@ -151,6 +151,8 @@
 // .global sub_80303F2
 // .global sub_8030A60
 // .global sub_8030AA4
+
+.include "asm/asm03_1.inc"
 // .global sub_803578C
 // .global sub_8036E78
 // .global sub_8036EFE
@@ -195,7 +197,7 @@
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C
 
-.include "asm/asm03_1.inc"
+.include "asm/asm03_2.inc"
 // .global render_graphicalText_8045F8C
 // .global sub_8045FBC
 // .global sub_8045FC6
@@ -344,24 +346,24 @@
 // .global sub_8149568
 // .global sub_8149644
 
-.include "data/dat38_2.inc"
+.include "data/dat38_42.inc"
 // .global unk_86A5D20
 // .global dword_86A5D60
-// .global dword_86ACD24
+// .global unk_86ACD60
 // .global dword_86B7AE0
 
-.include "data/dat38_16.inc"
+.include "data/dat38_53.inc"
 // .global unk_86CF4AC
 
-.include "data/dat38_18.inc"
-// .global dword_86D5224
+.include "data/dat38_56.inc"
+// .global unk_86D5708
 
-.include "data/dat38_25.inc"
+.include "data/dat38_68.inc"
 // .global dword_86E55FC
-// .global dword_86E56FC
+// .global unk_86E56FC
 // .global dword_86F0D7C
 
-.include "data/dat38_27.inc"
+.include "data/dat38_70.inc"
 // .global dword_873EA50
 
 

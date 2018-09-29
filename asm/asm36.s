@@ -3739,12 +3739,12 @@ sub_8131EE4:
 loc_8131EEC:
     ldrh r0, [r6,r4]
     mov r3, #0
-    ldr r1, dword_8131F18 // =0x8131BF4 
+    ldr r1, dword_8131F18 // = 
 loc_8131EF2:
     ldrh r2, [r1,r3]
     cmp r0, r2
     bne loc_8131EFE
-    ldr r1, dword_8131F1C // =0x8131BFC 
+    ldr r1, dword_8131F1C // = 
     ldrh r0, [r1,r3]
     b loc_8131F04
 loc_8131EFE:
@@ -4938,7 +4938,7 @@ loc_813282E:
     ldr r5, [r5,r6]
     ldr r7, off_81328A8 // =off_81328AC 
     ldr r7, [r7,r6]
-    ldr r6, off_8132874 // =dword_86ACD24+60 
+    ldr r6, off_8132874 // =unk_86ACD60 
     bl sub_8045FBC
     ldr r6, [sp,#0xc]
     add r6, #4
@@ -4948,7 +4948,7 @@ loc_813282E:
     add sp, sp, #0x10
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_8132874:    .word dword_86ACD24+0x3C
+off_8132874:    .word unk_86ACD60
 off_8132878:    .word dword_813287C
 dword_813287C:    .word 0x6010000, 0x6010200
 off_8132884:    .word dword_8132888
@@ -5014,7 +5014,7 @@ loc_81328E4:
     ldr r5, [r5,r6]
     ldr r7, off_8132968 // =off_813296C 
     ldr r7, [r7,r6]
-    ldr r6, off_8132934 // =dword_86ACD24+60 
+    ldr r6, off_8132934 // =unk_86ACD60 
     bl sub_8045FBC
     ldr r6, [sp,#0xc]
     add r6, #4
@@ -5026,7 +5026,7 @@ loc_81328E4:
 off_8132928:    .word unk_201FD60
 off_813292C:    .word unk_201FD80
 off_8132930:    .word unk_201FD80
-off_8132934:    .word dword_86ACD24+0x3C
+off_8132934:    .word unk_86ACD60
 off_8132938:    .word dword_813293C
 dword_813293C:    .word 0x6010800, 0x6010A00
 off_8132944:    .word dword_8132948
@@ -8700,7 +8700,7 @@ loc_8134812:
     strb r2, [r0,r1]
     cmp r2, r3
     beq loc_8134826
-    ldr r1, dword_81348CC // =0x30069A0 
+    ldr r1, dword_81348CC // = 
     ldrb r3, [r1,r2]
     mov r1, #4
     eor r3, r1
@@ -12828,7 +12828,7 @@ sub_813677C:
     push {lr}
     ldr r0, off_8136798 // =unk_2022B70 
     mov r1, #8
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     pop {pc}
 off_8136798:    .word unk_2022B70
 off_813679C:    .word unk_2000090
@@ -13587,7 +13587,7 @@ sub_8136C24:
     bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
     ldr r0, off_8136EC0 // =byte_2009390 
     mov r1, #0x10
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     ldr r0, off_8136EC4 // =off_8136EC8 
     bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
     bl sub_811F6C0
@@ -13688,7 +13688,7 @@ off_8136EC4:    .word off_8136EC8
 off_8136EC8:    .word dword_86E55FC
     .word 0x6014800
     .word 0x100
-    .word dword_86E56FC
+    .word unk_86E56FC
     .word unk_3001590
     .word 0x20, 0x0
 .func
@@ -14828,10 +14828,10 @@ sub_813768C:
 sub_81376A8:
     push {lr}
     add r1, r0, #0
-    ldr r0, off_81376B4 // =dword_86D5224+1252 
+    ldr r0, off_81376B4 // =unk_86D5708 
     bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
     pop {pc}
-off_81376B4:    .word dword_86D5224+0x4E4
+off_81376B4:    .word unk_86D5708
 .endfunc // sub_81376A8
 
 .func
@@ -15041,7 +15041,7 @@ sub_8137808:
     ldr r0, off_8137880 // =unk_20018EC 
     add r4, r0, #0
     mov r1, #4
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     mov r0, #0
     bl sub_813781C
     pop {r4,pc}
@@ -15089,10 +15089,10 @@ loc_813785E:
 off_8137864:    .word off_8137868
 off_8137868:    .word dword_80213AC
     .word dword_80213AC+0x3C
-    .word dword_8021550+0x3C
-    .word dword_8021550+0xB4
-    .word dword_8021550+0x78
-    .word dword_8021550+0xF0
+    .word unk_802158C
+    .word unk_8021604
+    .word unk_80215C8
+    .word unk_8021640
 off_8137880:    .word unk_20018EC
 .endfunc // sub_813781C
 
@@ -16440,7 +16440,7 @@ sub_8138478:
     ldr r3, off_81384CC // =unk_2014A00 
     mov r4, #0xc
     mov r5, #1
-    ldr r6, off_81384D0 // =dword_86ACD24+60 
+    ldr r6, off_81384D0 // =unk_86ACD60 
     ldr r7, off_81384D4 // =unk_2014000 
     bl sub_8045FC6
     pop {r0-r7}
@@ -16476,7 +16476,7 @@ sub_81384AC:
 off_81384C4:    .word 0x600
 off_81384C8:    .word decomp_2013A00
 off_81384CC:    .word unk_2014A00
-off_81384D0:    .word dword_86ACD24+0x3C
+off_81384D0:    .word unk_86ACD60
 off_81384D4:    .word unk_2014000
 dword_81384D8:    .word 0x6000000
 off_81384DC:    .word unk_2017A00

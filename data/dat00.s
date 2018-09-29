@@ -4,32 +4,49 @@
 off_801ECB4:    .word dword_86B7AC0
     .word unk_3001710
     .word 0x20
-    .word 0x86E1638
+    .word dword_86E1638
     .word 0x600B400
     .word 0x640
-    .word 0x86E1C78
-    .word 0x3001B00
+    .word dword_86E1C78
+    .word unk_3001B00
     .word 0x20
-    .word 0x86BA120
+    .word dword_86BA120
     .word 0x600BA40
     .word 0x40
-    .word 0x86B7BA0
+    .word dword_86B7BA0
     .word 0x600BA80
     .word 0x40
-    .word 0x86E1D38
+    .word unk_86E1D38
     .word 0x6008020
     .word 0x10E0
-    .word 0x86E2E18
+    .word unk_86E2E18
     .word 0x6009120
     .word 0x80
-    .word 0x872CFF4
-    .word 0x3001AC0
+    .word unk_872CFF4
+    .word unk_3001AC0
     .word 0x20
-    .word 0x872CFB4, 0x3001AE0, 0x20, 0x872CFD4, 0x3001690
-    .word 0x20, 0x86E58FC, 0x3001B20, 0x20, 0x86F2500
-    .word 0x60091A0, 0x1C0, 0x86E79CC, 0x600A3A0, 0x400
-    .word 0x86E609C, 0x600BAC0, 0x80, 0x86E7DCC, 0x600A720
-    .word 0xB40, 0x0
+    .word unk_872CFB4
+    .word unk_3001AE0
+    .word 0x20
+    .word unk_872CFD4
+    .word unk_3001690
+    .word 0x20
+    .word unk_86E58FC
+    .word unk_3001B20
+    .word 0x20
+    .word unk_86F2500
+    .word 0x60091A0
+    .word 0x1C0
+    .word unk_86E79CC
+    .word 0x600A3A0
+    .word 0x400
+    .word unk_86E609C
+    .word 0x600BAC0
+    .word 0x80
+    .word dword_86E7DCC
+    .word 0x600A720
+    .word 0xB40
+    .word 0x0
 word_801ED6C:    .hword 0x922B, 0x922D, 0x922D, 0x922D, 0x922D
     .hword 0x922D, 0x922D, 0x922E, 0x922F, 0x9230
     .hword 0x9231, 0x922D, 0x922D, 0x922D, 0x922D
@@ -70,11 +87,26 @@ dword_801EE98:    .word 0xB24BB24A, 0xB24DB24C, 0xB24FB24E, 0xB251B250, 0xB253B2
 dword_801EF10:    .word 0xD0C9D0C7, 0xD0CDD0CB, 0xD0D1D0CF, 0xD0D5D0D3, 0xD0CAD0C8
     .word 0xD0CED0CC, 0xD0D2D0D0, 0xD0D6D0D4
 off_801EF30:    .word dword_86F2040
-    .word 0x6009560, 0x200, 0x86F2900, 0x3001AA0, 0x20, 0x0
+    .word 0x6009560
+    .word 0x200
+    .word dword_86F2900
+    .word 0x3001AA0
+    .word 0x20
+    .word 0x0
 off_801EF4C:    .word dword_86F26C0
-    .word 0x6009560, 0x240, 0x86F2900, 0x3001AA0, 0x20, 0x0
+    .word 0x6009560
+    .word 0x240
+    .word dword_86F2900
+    .word unk_3001AA0
+    .word 0x20
+    .word 0x0
 off_801EF68:    .word dword_86F2240
-    .word 0x6009560, 0x2C0, 0x86F2900, 0x3001AA0, 0x20, 0x0
+    .word 0x6009560
+    .word 0x2C0
+    .word dword_86F2900
+    .word unk_3001AA0
+    .word 0x20
+    .word 0x0
 pt_801EF84:    .word dword_801F040
     .word dword_801F08C
     .word dword_801F0D8
@@ -122,53 +154,211 @@ pt_801EFD4:    .word word_801F554
     .word dword_801FC80
     .word dword_801FCD0
     .word dword_801FD18
-dword_801F040:    .word 0x4034, 0x86F1A40, 0x86F19C0, 0x86F1380, 0x86F1340
-    .word 0x86F1800, 0x86F1800, 0x86F1600, 0x86F1440, 0x86F19C0
-    .word 0x86F17C0, 0x86F1800, 0x86F1340, 0x86F1780, 0x86F1800
-    .word 0x86F1A00, 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801F08C:    .word 0x4034, 0x86F1A40, 0x86F19C0, 0x86F1440, 0x86F1680
-    .word 0x86F1440, 0x86F1640, 0x86F1940, 0x86F19C0, 0x86F1400
-    .word 0x86F1440, 0x86F1600, 0x86F1440, 0x86F1800, 0x86F1440
-    .word 0x86F1400, 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801F0D8:    .word 0x402C, 0x86F1A40, 0x86F19C0, 0x86F1640, 0x86F1440
-    .word 0x86F14C0, 0x86F1340, 0x86F1640, 0x86F1340, 0x86F1680
-    .word 0x86F19C0, 0x86F1400, 0x86F1440, 0x86F1600, 0x86F1440
-    .word 0x86F1800, 0x86F1440, 0x86F1400, 0x86F19C0, 0x86F1A80
-    .word 0x801FDC0
-dword_801F12C:    .word 0x14030, 0x86F1A40, 0x86F19C0, 0x86F1800, 0x86F1840
-    .word 0x86F1780, 0x86F1680, 0x86F19C0, 0x86F19C0, 0x86F19C0
-    .word 0x86F19C0, 0x86F17C0, 0x86F1800, 0x86F1340, 0x86F1780
-    .word 0x86F1800, 0x86F1A00, 0x86F19C0, 0x86F1A80, 0x801FDC0
+dword_801F040:    .word 0x4034
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F1380
+    .word dword_86F1340
+    .word dword_86F1800
+    .word dword_86F1800
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F19C0
+    .word dword_86F17C0
+    .word dword_86F1800
+    .word dword_86F1340
+    .word dword_86F1780
+    .word dword_86F1800
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F08C:    .word 0x4034
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F1440
+    .word unk_86F1680
+    .word dword_86F1440
+    .word unk_86F1640
+    .word unk_86F1940
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F0D8:    .word 0x402C
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1640
+    .word dword_86F1440
+    .word unk_86F14C0
+    .word dword_86F1340
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F12C:    .word 0x14030
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F1800
+    .word unk_86F1840
+    .word dword_86F1780
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word dword_86F19C0
+    .word dword_86F19C0
+    .word dword_86F19C0
+    .word dword_86F17C0
+    .word dword_86F1800
+    .word dword_86F1340
+    .word dword_86F1780
+    .word dword_86F1800
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
     .word 0x4068
-dword_801F180:    .word 0x403C, 0x86F1A40, 0x86F19C0, 0x86F1480, 0x86F1540
-    .word 0x86F1680, 0x86F1340, 0x86F1600, 0x86F19C0, 0x86F1800
-    .word 0x86F1840, 0x86F1780, 0x86F1680, 0x86F1A00, 0x86F19C0
-    .word 0x86F1A80, 0x801FDC0
-dword_801F1C4:    .word 0x4048, 0x86F1A40, 0x86F19C0, 0x86F1940, 0x86F16C0
-    .word 0x86F1840, 0x86F19C0, 0x86F18C0, 0x86F1540, 0x86F1680
-    .word 0x86F1A00, 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801F1FC:    .word 0x4048, 0x86F1A40, 0x86F19C0, 0x86F1940, 0x86F16C0
-    .word 0x86F1840, 0x86F19C0, 0x86F1600, 0x86F16C0, 0x86F17C0
-    .word 0x86F1440, 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801F234:    .word 0x4054, 0x86F1A40, 0x86F19C0, 0x86F1400, 0x86F1780
-    .word 0x86F1340, 0x86F18C0, 0x86F1A00, 0x86F19C0, 0x86F1A80
-    .word 0x801FDC0
-dword_801F260:    .word 0x14044, 0x86F1A40, 0x86F19C0, 0x86F1380, 0x86F1340
-    .word 0x86F1800, 0x86F1800, 0x86F1600, 0x86F1440, 0x86F19C0
-    .word 0x86F19C0, 0x86F19C0, 0x86F19C0, 0x86F1A80, 0x801FDC0
+dword_801F180:    .word 0x403C
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1480
+    .word unk_86F1540
+    .word unk_86F1680
+    .word dword_86F1340
+    .word dword_86F1600
+    .word dword_86F19C0
+    .word dword_86F1800
+    .word unk_86F1840
+    .word dword_86F1780
+    .word unk_86F1680
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F1C4:    .word 0x4048
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1940
+    .word unk_86F16C0
+    .word unk_86F1840
+    .word dword_86F19C0
+    .word unk_86F18C0
+    .word unk_86F1540
+    .word unk_86F1680
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F1FC:    .word 0x4048
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1940
+    .word unk_86F16C0
+    .word unk_86F1840
+    .word dword_86F19C0
+    .word dword_86F1600
+    .word unk_86F16C0
+    .word dword_86F17C0
+    .word dword_86F1440
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F234:    .word 0x4054
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1780
+    .word dword_86F1340
+    .word unk_86F18C0
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F260:    .word 0x14044
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F1380
+    .word dword_86F1340
+    .word dword_86F1800
+    .word dword_86F1800
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F19C0
+    .word dword_86F19C0
+    .word dword_86F19C0
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
     .word 0x408C
-dword_801F2A0:    .word 0x2180C, 0x86F1AC0, 0x86F1B00, 0x86F1B40, 0x86F1B80
-    .word 0x86F1BC0, 0x86F1C00, 0x86F1C40, 0x86F1C80, 0x86F1CC0
-    .word 0x86F1D00, 0x86F1D40, 0x86F1D80, 0x801FDC0
-dword_801F2D8:    .word 0x41028, 0x86F1A40, 0x86F19C0, 0x86F1500, 0x86F1540
-    .word 0x86F1800, 0x86F19C0, 0x86F1400, 0x86F1340, 0x86F1640
-    .word 0x86F1340, 0x86F14C0, 0x86F1440, 0x86F19C0, 0x86F1580
-    .word 0x86F1840, 0x86F1400, 0x86F14C0, 0x86F1440, 0x86F19C0
-    .word 0x86F1A80
-dword_801F32C:    .word 0x4038, 0x86F1A40, 0x86F19C0, 0x86F1480, 0x86F1600
-    .word 0x86F1340, 0x86F14C0, 0x86F19C0, 0x86F1400, 0x86F1440
-    .word 0x86F1600, 0x86F1440, 0x86F1800, 0x86F1440, 0x86F1400
-    .word 0x86F19C0, 0x86F1A80, 0x801FDC0
+dword_801F2A0:    .word 0x2180C
+    .word dword_86F1AC0
+    .word unk_86F1B00
+    .word unk_86F1B40
+    .word unk_86F1B80
+    .word unk_86F1BC0
+    .word unk_86F1C00
+    .word unk_86F1C40
+    .word unk_86F1C80
+    .word unk_86F1CC0
+    .word unk_86F1D00
+    .word unk_86F1D40
+    .word unk_86F1D80
+    .word dword_801FDC0
+dword_801F2D8:    .word 0x41028
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1500
+    .word unk_86F1540
+    .word dword_86F1800
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1340
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F14C0
+    .word dword_86F1440
+    .word dword_86F19C0
+    .word unk_86F1580
+    .word unk_86F1840
+    .word unk_86F1400
+    .word unk_86F14C0
+    .word dword_86F1440
+    .word dword_86F19C0
+    .word dword_86F1A80
+dword_801F32C:    .word 0x4038
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1480
+    .word dword_86F1600
+    .word dword_86F1340
+    .word unk_86F14C0
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
 word_801F374:    .hword 0x4028
 byte_801F376:    .byte 0x1
     .byte 0x0
@@ -193,144 +383,622 @@ byte_801F376:    .byte 0x1
     .word dword_86F19C0
     .word dword_86F1A80
     .word 0x4070
-dword_801F3CC:    .word 0x21884, 0x86F1AC0, 0x86F1B00, 0x86F1B40, 0x86F1B80
-    .word 0x86F1BC0, 0x86F1C00, 0x86F1C40, 0x86F1C80, 0x86F1CC0
-    .word 0x86F1D00, 0x86F1D40, 0x86F1D80, 0x801FDC0
-dword_801F404:    .word 0x4038, 0x86F1A40, 0x86F19C0, 0x86F1640, 0x86F1440
-    .word 0x86F14C0, 0x86F1340, 0x86F1640, 0x86F1340, 0x86F1680
-    .word 0x86F19C0, 0x86F18C0, 0x86F1540, 0x86F1680, 0x86F1A00
-    .word 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801F44C:    .word 0x1402C, 0x86F1A40, 0x86F19C0, 0x86F1780, 0x86F16C0
-    .word 0x86F1840, 0x86F1680, 0x86F1400, 0x86F19C0, 0x86F19C0
-    .word 0x86F19C0, 0x86F19C0, 0x86F1480, 0x86F1540, 0x86F14C0
-    .word 0x86F1500, 0x86F1800, 0x86F1A00, 0x86F19C0, 0x86F1A80
-    .word 0x801FDC0, 0x406C
-dword_801F4A4:    .word 0x4044, 0x86F1A40, 0x86F19C0, 0x86F1640, 0x86F1340
-    .word 0x86F1900, 0x86F19C0, 0x86F1640, 0x86F16C0, 0x86F1400
-    .word 0x86F1440, 0x86F1A00, 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801F4E0:    .word 0x404C, 0x86F1A40, 0x86F19C0, 0x86F1480, 0x86F1540
-    .word 0x86F1680, 0x86F1540, 0x86F17C0, 0x86F1500, 0x86F1A00
-    .word 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801F514:    .word 0x4044, 0x86F1A40, 0x86F19C0, 0x86F1700, 0x86F1440
-    .word 0x86F1680, 0x86F1340, 0x86F1600, 0x86F1800, 0x86F1940
-    .word 0x86F1A00, 0x86F1A00, 0x86F19C0, 0x86F1A80, 0x801FDC0
+dword_801F3CC:    .word 0x21884
+    .word dword_86F1AC0
+    .word unk_86F1B00
+    .word unk_86F1B40
+    .word unk_86F1B80
+    .word unk_86F1BC0
+    .word unk_86F1C00
+    .word unk_86F1C40
+    .word unk_86F1C80
+    .word unk_86F1CC0
+    .word unk_86F1D00
+    .word unk_86F1D40
+    .word unk_86F1D80
+    .word dword_801FDC0
+dword_801F404:    .word 0x4038
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1640
+    .word dword_86F1440
+    .word unk_86F14C0
+    .word dword_86F1340
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F18C0
+    .word unk_86F1540
+    .word unk_86F1680
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F44C:    .word 0x1402C
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F1780
+    .word unk_86F16C0
+    .word unk_86F1840
+    .word unk_86F1680
+    .word unk_86F1400
+    .word dword_86F19C0
+    .word dword_86F19C0
+    .word dword_86F19C0
+    .word dword_86F19C0
+    .word unk_86F1480
+    .word unk_86F1540
+    .word unk_86F14C0
+    .word unk_86F1500
+    .word dword_86F1800
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+    .word 0x406C
+dword_801F4A4:    .word 0x4044
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1900
+    .word dword_86F19C0
+    .word unk_86F1640
+    .word unk_86F16C0
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F4E0:    .word 0x404C
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1480
+    .word unk_86F1540
+    .word unk_86F1680
+    .word unk_86F1540
+    .word dword_86F17C0
+    .word unk_86F1500
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F514:    .word 0x4044
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1700
+    .word dword_86F1440
+    .word unk_86F1680
+    .word dword_86F1340
+    .word dword_86F1600
+    .word dword_86F1800
+    .word unk_86F1940
+    .word dword_86F1A00
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
 dword_801F550:    .word 0x32000
 word_801F554:    .hword 0x2078
 byte_801F556:    .byte 0x3
     .byte 0x0
-dword_801F558:    .word 0x4048, 0x86F1A40, 0x86F19C0, 0x86F1800, 0x86F1540
-    .word 0x86F1640, 0x86F1440, 0x86F19C0, 0x86F1840, 0x86F1700
-    .word 0x86F1A00, 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801F590:    .word 0x402C, 0x86F1A40, 0x86F1600, 0x86F1540, 0x86F1380
-    .word 0x86F1440, 0x86F1780, 0x86F1340, 0x86F1800, 0x86F1440
-    .word 0x86F19C0, 0x86F17C0, 0x86F1840, 0x86F13C0, 0x86F13C0
-    .word 0x86F1440, 0x86F17C0, 0x86F17C0, 0x86F1A00, 0x86F1A80
-    .word 0x801FDC0
-dword_801F5E4:    .word 0x4028, 0x86F1A40, 0x86F19C0, 0x86F1600, 0x86F1540
-    .word 0x86F1380, 0x86F1440, 0x86F1780, 0x86F1340, 0x86F1800
-    .word 0x86F1440, 0x86F19C0, 0x86F1480, 0x86F1340, 0x86F1540
-    .word 0x86F1600, 0x86F1440, 0x86F1400, 0x86F1A00, 0x86F19C0
-    .word 0x86F1A80
-dword_801F638:    .word 0x14028, 0x86F1A40, 0x86F19C0, 0x86F19C0, 0x86F19C0
-    .word 0x86F1800, 0x86F1840, 0x86F1780, 0x86F1680, 0x86F19C0
-    .word 0x86F1600, 0x86F1540, 0x86F1380, 0x86F1440, 0x86F1780
-    .word 0x86F1340, 0x86F1800, 0x86F1440, 0x86F1A00, 0x86F19C0
-    .word 0x86F1A80, 0x4038
-dword_801F690:    .word 0x402C, 0x86F1A40, 0x86F19C0, 0x86F1500, 0x86F1440
-    .word 0x86F1340, 0x86F1800, 0x86F1640, 0x86F1340, 0x86F1680
-    .word 0x86F19C0, 0x86F1400, 0x86F1440, 0x86F1600, 0x86F1440
-    .word 0x86F1800, 0x86F1440, 0x86F1400, 0x86F19C0, 0x86F1A80
-    .word 0x801FDC0
-dword_801F6E4:    .word 0x402C, 0x86F1A40, 0x86F19C0, 0x86F1440, 0x86F1600
-    .word 0x86F1440, 0x86F13C0, 0x86F1640, 0x86F1340, 0x86F1680
-    .word 0x86F19C0, 0x86F1400, 0x86F1440, 0x86F1600, 0x86F1440
-    .word 0x86F1800, 0x86F1440, 0x86F1400, 0x86F19C0, 0x86F1A80
-    .word 0x801FDC0
-dword_801F738:    .word 0x4030, 0x86F1A40, 0x86F17C0, 0x86F1600, 0x86F1340
-    .word 0x86F17C0, 0x86F1500, 0x86F1640, 0x86F1340, 0x86F1680
-    .word 0x86F19C0, 0x86F1400, 0x86F1440, 0x86F1600, 0x86F1440
-    .word 0x86F1800, 0x86F1440, 0x86F1400, 0x86F1A80, 0x801FDC0
-dword_801F788:    .word 0x4030, 0x86F1A40, 0x86F1440, 0x86F1780, 0x86F1340
-    .word 0x86F17C0, 0x86F1440, 0x86F1640, 0x86F1340, 0x86F1680
-    .word 0x86F19C0, 0x86F1400, 0x86F1440, 0x86F1600, 0x86F1440
-    .word 0x86F1800, 0x86F1440, 0x86F1400, 0x86F1A80, 0x801FDC0
-dword_801F7D8:    .word 0x402C, 0x86F1A40, 0x86F13C0, 0x86F1500, 0x86F1340
-    .word 0x86F1780, 0x86F14C0, 0x86F1440, 0x86F1640, 0x86F1340
-    .word 0x86F1680, 0x86F19C0, 0x86F1400, 0x86F1440, 0x86F1600
-    .word 0x86F1440, 0x86F1800, 0x86F1440, 0x86F1400, 0x86F1A80
-    .word 0x801FDC0
-dword_801F82C:    .word 0x4030, 0x86F1A40, 0x86F17C0, 0x86F1700, 0x86F16C0
-    .word 0x86F1840, 0x86F1800, 0x86F1640, 0x86F1340, 0x86F1680
-    .word 0x86F19C0, 0x86F1400, 0x86F1440, 0x86F1600, 0x86F1440
-    .word 0x86F1800, 0x86F1440, 0x86F1400, 0x86F1A80, 0x801FDC0
-dword_801F87C:    .word 0x402C, 0x86F1A40, 0x86F1800, 0x86F16C0, 0x86F1640
-    .word 0x86F1340, 0x86F1500, 0x86F1340, 0x86F18C0, 0x86F15C0
-    .word 0x86F1640, 0x86F1340, 0x86F1680, 0x86F1400, 0x86F1440
-    .word 0x86F1600, 0x86F1440, 0x86F1800, 0x86F1440, 0x86F1400
-    .word 0x86F1A80, 0x801FDC0
-dword_801F8D4:    .word 0x4030, 0x86F1A40, 0x86F1800, 0x86F1440, 0x86F1680
-    .word 0x86F14C0, 0x86F1840, 0x86F1640, 0x86F1340, 0x86F1680
-    .word 0x86F19C0, 0x86F1400, 0x86F1440, 0x86F1600, 0x86F1440
-    .word 0x86F1800, 0x86F1440, 0x86F1400, 0x86F1A80, 0x801FDC0
-dword_801F924:    .word 0x402C, 0x86F1A40, 0x86F14C0, 0x86F1780, 0x86F16C0
-    .word 0x86F1840, 0x86F1680, 0x86F1400, 0x86F1640, 0x86F1340
-    .word 0x86F1680, 0x86F19C0, 0x86F1400, 0x86F1440, 0x86F1600
-    .word 0x86F1440, 0x86F1800, 0x86F1440, 0x86F1400, 0x86F1A80
-    .word 0x801FDC0
-dword_801F978:    .word 0x402C, 0x86F1A40, 0x86F19C0, 0x86F1400, 0x86F1840
-    .word 0x86F17C0, 0x86F1800, 0x86F1640, 0x86F1340, 0x86F1680
-    .word 0x86F19C0, 0x86F1400, 0x86F1440, 0x86F1600, 0x86F1440
-    .word 0x86F1800, 0x86F1440, 0x86F1400, 0x86F19C0, 0x86F1A80
-    .word 0x801FDC0
-dword_801F9CC:    .word 0x4030, 0x86F1A40, 0x86F1700, 0x86F1780, 0x86F16C0
-    .word 0x86F1800, 0x86F16C0, 0x86F1640, 0x86F1340, 0x86F1680
-    .word 0x86F19C0, 0x86F1400, 0x86F1440, 0x86F1600, 0x86F1440
-    .word 0x86F1800, 0x86F1440, 0x86F1400, 0x86F1A80, 0x801FDC0
-dword_801FA1C:    .word 0x4038, 0x86F1A40, 0x86F19C0, 0x86F1500, 0x86F1440
-    .word 0x86F1340, 0x86F1800, 0x86F1640, 0x86F1340, 0x86F1680
-    .word 0x86F19C0, 0x86F18C0, 0x86F1540, 0x86F1680, 0x86F1A00
-    .word 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801FA64:    .word 0x4038, 0x86F1A40, 0x86F19C0, 0x86F1440, 0x86F1600
-    .word 0x86F1440, 0x86F13C0, 0x86F1640, 0x86F1340, 0x86F1680
-    .word 0x86F19C0, 0x86F18C0, 0x86F1540, 0x86F1680, 0x86F1A00
-    .word 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801FAAC:    .word 0x4034, 0x86F1A40, 0x86F19C0, 0x86F17C0, 0x86F1600
-    .word 0x86F1340, 0x86F17C0, 0x86F1500, 0x86F1640, 0x86F1340
-    .word 0x86F1680, 0x86F19C0, 0x86F18C0, 0x86F1540, 0x86F1680
-    .word 0x86F1A00, 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801FAF8:    .word 0x4034, 0x86F1A40, 0x86F19C0, 0x86F1440, 0x86F1780
-    .word 0x86F1340, 0x86F17C0, 0x86F1440, 0x86F1640, 0x86F1340
-    .word 0x86F1680, 0x86F19C0, 0x86F18C0, 0x86F1540, 0x86F1680
-    .word 0x86F1A00, 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801FB44:    .word 0x4030, 0x86F1A40, 0x86F19C0, 0x86F13C0, 0x86F1500
-    .word 0x86F1340, 0x86F1780, 0x86F14C0, 0x86F1440, 0x86F1640
-    .word 0x86F1340, 0x86F1680, 0x86F19C0, 0x86F18C0, 0x86F1540
-    .word 0x86F1680, 0x86F1A00, 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801FB94:    .word 0x4034, 0x86F1A40, 0x86F19C0, 0x86F17C0, 0x86F1700
-    .word 0x86F16C0, 0x86F1840, 0x86F1800, 0x86F1640, 0x86F1340
-    .word 0x86F1680, 0x86F19C0, 0x86F18C0, 0x86F1540, 0x86F1680
-    .word 0x86F1A00, 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801FBE0:    .word 0x4028, 0x86F1A40, 0x86F19C0, 0x86F1800, 0x86F16C0
-    .word 0x86F1640, 0x86F1340, 0x86F1500, 0x86F1340, 0x86F18C0
-    .word 0x86F15C0, 0x86F1640, 0x86F1340, 0x86F1680, 0x86F19C0
-    .word 0x86F18C0, 0x86F1540, 0x86F1680, 0x86F1A00, 0x86F19C0
-    .word 0x86F1A80
-dword_801FC34:    .word 0x4034, 0x86F1A40, 0x86F19C0, 0x86F1800, 0x86F1440
-    .word 0x86F1680, 0x86F14C0, 0x86F1840, 0x86F1640, 0x86F1340
-    .word 0x86F1680, 0x86F19C0, 0x86F18C0, 0x86F1540, 0x86F1680
-    .word 0x86F1A00, 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801FC80:    .word 0x4030, 0x86F1A40, 0x86F19C0, 0x86F14C0, 0x86F1780
-    .word 0x86F16C0, 0x86F1840, 0x86F1680, 0x86F1400, 0x86F1640
-    .word 0x86F1340, 0x86F1680, 0x86F19C0, 0x86F18C0, 0x86F1540
-    .word 0x86F1680, 0x86F1A00, 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801FCD0:    .word 0x4038, 0x86F1A40, 0x86F19C0, 0x86F1400, 0x86F1840
-    .word 0x86F17C0, 0x86F1800, 0x86F1640, 0x86F1340, 0x86F1680
-    .word 0x86F19C0, 0x86F18C0, 0x86F1540, 0x86F1680, 0x86F1A00
-    .word 0x86F19C0, 0x86F1A80, 0x801FDC0
-dword_801FD18:    .word 0x4034, 0x86F1A40, 0x86F19C0, 0x86F1700, 0x86F1780
-    .word 0x86F16C0, 0x86F1800, 0x86F16C0, 0x86F1640, 0x86F1340
-    .word 0x86F1680, 0x86F19C0, 0x86F18C0, 0x86F1540, 0x86F1680
-    .word 0x86F1A00, 0x86F19C0, 0x86F1A80, 0x801FDC0
+dword_801F558:    .word 0x4048
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F1800
+    .word unk_86F1540
+    .word unk_86F1640
+    .word dword_86F1440
+    .word dword_86F19C0
+    .word unk_86F1840
+    .word unk_86F1700
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F590:    .word 0x402C
+    .word dword_86F1A40
+    .word dword_86F1600
+    .word unk_86F1540
+    .word dword_86F1380
+    .word dword_86F1440
+    .word dword_86F1780
+    .word dword_86F1340
+    .word dword_86F1800
+    .word dword_86F1440
+    .word dword_86F19C0
+    .word dword_86F17C0
+    .word unk_86F1840
+    .word unk_86F13C0
+    .word unk_86F13C0
+    .word dword_86F1440
+    .word dword_86F17C0
+    .word dword_86F17C0
+    .word dword_86F1A00
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F5E4:    .word 0x4028
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F1600
+    .word unk_86F1540
+    .word dword_86F1380
+    .word dword_86F1440
+    .word dword_86F1780
+    .word dword_86F1340
+    .word dword_86F1800
+    .word dword_86F1440
+    .word dword_86F19C0
+    .word unk_86F1480
+    .word dword_86F1340
+    .word unk_86F1540
+    .word dword_86F1600
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+dword_801F638:    .word 0x14028
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F19C0
+    .word dword_86F19C0
+    .word dword_86F1800
+    .word unk_86F1840
+    .word dword_86F1780
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word dword_86F1600
+    .word unk_86F1540
+    .word dword_86F1380
+    .word dword_86F1440
+    .word dword_86F1780
+    .word dword_86F1340
+    .word dword_86F1800
+    .word dword_86F1440
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word 0x4038
+dword_801F690:    .word 0x402C
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1500
+    .word dword_86F1440
+    .word dword_86F1340
+    .word dword_86F1800
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F6E4:    .word 0x402C
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word unk_86F13C0
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F738:    .word 0x4030
+    .word dword_86F1A40
+    .word dword_86F17C0
+    .word dword_86F1600
+    .word dword_86F1340
+    .word dword_86F17C0
+    .word unk_86F1500
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F788:    .word 0x4030
+    .word dword_86F1A40
+    .word dword_86F1440
+    .word dword_86F1780
+    .word dword_86F1340
+    .word dword_86F17C0
+    .word dword_86F1440
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F7D8:    .word 0x402C
+    .word dword_86F1A40
+    .word unk_86F13C0
+    .word unk_86F1500
+    .word dword_86F1340
+    .word dword_86F1780
+    .word unk_86F14C0
+    .word dword_86F1440
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F82C:    .word 0x4030
+    .word dword_86F1A40
+    .word dword_86F17C0
+    .word unk_86F1700
+    .word unk_86F16C0
+    .word unk_86F1840
+    .word dword_86F1800
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F87C:    .word 0x402C
+    .word dword_86F1A40
+    .word dword_86F1800
+    .word unk_86F16C0
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1500
+    .word dword_86F1340
+    .word unk_86F18C0
+    .word unk_86F15C0
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F8D4:    .word 0x4030
+    .word dword_86F1A40
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1680
+    .word unk_86F14C0
+    .word unk_86F1840
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F924:    .word 0x402C
+    .word dword_86F1A40
+    .word unk_86F14C0
+    .word dword_86F1780
+    .word unk_86F16C0
+    .word unk_86F1840
+    .word unk_86F1680
+    .word unk_86F1400
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F978:    .word 0x402C
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word unk_86F1840
+    .word dword_86F17C0
+    .word dword_86F1800
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801F9CC:    .word 0x4030
+    .word dword_86F1A40
+    .word unk_86F1700
+    .word dword_86F1780
+    .word unk_86F16C0
+    .word dword_86F1800
+    .word unk_86F16C0
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1400
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801FA1C:    .word 0x4038
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1500
+    .word dword_86F1440
+    .word dword_86F1340
+    .word dword_86F1800
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F18C0
+    .word unk_86F1540
+    .word unk_86F1680
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801FA64:    .word 0x4038
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F1440
+    .word dword_86F1600
+    .word dword_86F1440
+    .word unk_86F13C0
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F18C0
+    .word unk_86F1540
+    .word unk_86F1680
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801FAAC:    .word 0x4034
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F17C0
+    .word dword_86F1600
+    .word dword_86F1340
+    .word dword_86F17C0
+    .word unk_86F1500
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F18C0
+    .word unk_86F1540
+    .word unk_86F1680
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801FAF8:    .word 0x4034
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F1440
+    .word dword_86F1780
+    .word dword_86F1340
+    .word dword_86F17C0
+    .word dword_86F1440
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F18C0
+    .word unk_86F1540
+    .word unk_86F1680
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801FB44:    .word 0x4030
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F13C0
+    .word unk_86F1500
+    .word dword_86F1340
+    .word dword_86F1780
+    .word unk_86F14C0
+    .word dword_86F1440
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F18C0
+    .word unk_86F1540
+    .word unk_86F1680
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801FB94:    .word 0x4034
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F17C0
+    .word unk_86F1700
+    .word unk_86F16C0
+    .word unk_86F1840
+    .word dword_86F1800
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F18C0
+    .word unk_86F1540
+    .word unk_86F1680
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801FBE0:    .word 0x4028
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F1800
+    .word unk_86F16C0
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1500
+    .word dword_86F1340
+    .word unk_86F18C0
+    .word unk_86F15C0
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F18C0
+    .word unk_86F1540
+    .word unk_86F1680
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+dword_801FC34:    .word 0x4034
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word dword_86F1800
+    .word dword_86F1440
+    .word unk_86F1680
+    .word unk_86F14C0
+    .word unk_86F1840
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F18C0
+    .word unk_86F1540
+    .word unk_86F1680
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801FC80:    .word 0x4030
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F14C0
+    .word dword_86F1780
+    .word unk_86F16C0
+    .word unk_86F1840
+    .word unk_86F1680
+    .word unk_86F1400
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F18C0
+    .word unk_86F1540
+    .word unk_86F1680
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801FCD0:    .word 0x4038
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1400
+    .word unk_86F1840
+    .word dword_86F17C0
+    .word dword_86F1800
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F18C0
+    .word unk_86F1540
+    .word unk_86F1680
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
+dword_801FD18:    .word 0x4034
+    .word dword_86F1A40
+    .word dword_86F19C0
+    .word unk_86F1700
+    .word dword_86F1780
+    .word unk_86F16C0
+    .word dword_86F1800
+    .word unk_86F16C0
+    .word unk_86F1640
+    .word dword_86F1340
+    .word unk_86F1680
+    .word dword_86F19C0
+    .word unk_86F18C0
+    .word unk_86F1540
+    .word unk_86F1680
+    .word dword_86F1A00
+    .word dword_86F19C0
+    .word dword_86F1A80
+    .word dword_801FDC0
 off_801FD64:    .word dword_86F1DC0
     .word dword_86F1E00
     .word dword_86F1E40

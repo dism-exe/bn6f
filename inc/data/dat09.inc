@@ -15,10 +15,15 @@
 .global off_8063008
 .global off_8066020
 .global off_8066048
+.global unk_80662B8
+.global unk_80662E8
+.global unk_8066328
+.global unk_8066368
+.global unk_80663A8
 
 
 /* External Symbols */
-.include "data/dat38_2.inc"
+.include "data/dat38_42.inc"
 // .global dword_8610F08
 
 

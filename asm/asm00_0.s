@@ -420,7 +420,8 @@ off_80008B0:    .word loc_800084E+1
 
 .func
 .thumb_func
-sub_80008B4:
+// (void *mem, int size) -> void
+clearBackwards_80008B4:
     push {r0-r2,lr}
     mov r2, #0
 loc_80008B8:
@@ -428,7 +429,7 @@ loc_80008B8:
     strb r2, [r0,r1]
     bne loc_80008B8
     pop {r0-r2,pc}
-.endfunc // sub_80008B4
+.endfunc // clearBackwards_80008B4
 
 .func
 .thumb_func
@@ -1260,11 +1261,16 @@ sub_8000E28:
     mov pc, lr
 .endfunc // sub_8000E28
 
+.func
+.thumb_func
+sub_8000E30:
     push {r4-r7,lr}
     mov r4, #0
     add r0, r4, #0
     tst r0, r0
     pop {r4-r7,pc}
+.endfunc // sub_8000E30
+
 .func
 .thumb_func
 sub_8000E3A:
@@ -2173,6 +2179,7 @@ loc_8001418:
     add r4, r4, r1
     add r4, r4, r4
     ldr r5, off_80014B4 // =dword_80014BC 
+loc_8001440:
     add r4, r4, r5
     ldrb r5, [r4]
     ldr r6, [sp,#0x38]
@@ -2234,7 +2241,11 @@ loc_80014A8:
     .balign 4, 0x00
 off_80014B4:    .word dword_80014BC
 off_80014B8:    .word sCamera+0x4C // sCamera.unk_4C
-dword_80014BC:    .word 0x10100808, 0x40402020, 0x8200810, 0x20401020, 0x20081008
+dword_80014BC:    .word 0x10100808
+    .word 0x40402020
+    .word unk_8200810
+    .word 0x20401020
+    .word 0x20081008
     .word 0x40202010
 .func
 .thumb_func
@@ -2286,6 +2297,7 @@ reverseCopyWords_8001506:
 
 .func
 .thumb_func
+// () -> void
 sub_8001514:
     ldr r0, rng_8001594 // =0xA338244F 
     ldr r1, off_8001598 // =dword_20013F0 
@@ -2333,7 +2345,7 @@ sub_8001532:
 // () -> void
 rng_800154C:
     push {r7,lr}
-    ldr r7, off_80015A8 // =rng_2001120 
+    ldr r7, off_80015A8 // =rngSeed_2001120 
     ldr r0, [r7]
     ldr r1, rng_80015A0 // =0x873CA9E5 
     lsl r2, r0, #1
@@ -2349,7 +2361,7 @@ rng_800154C:
 .thumb_func
 rng_8001562:
     push {r7,lr}
-    ldr r7, off_80015AC // =rng_2001120 
+    ldr r7, off_80015AC // =rngSeed_2001120 
     ldr r0, [r7]
     ldr r1, rng_80015A0 // =0x873CA9E5 
     lsl r2, r0, #1
@@ -2383,8 +2395,8 @@ off_8001598:    .word dword_20013F0
 off_800159C:    .word dword_20013F0
 rng_80015A0:    .word 0x873CA9E5
 off_80015A4:    .word dword_20013F0
-off_80015A8:    .word rng_2001120
-off_80015AC:    .word rng_2001120
+off_80015A8:    .word rngSeed_2001120
+off_80015AC:    .word rngSeed_2001120
 off_80015B0:    .word dword_20018E8
 .endfunc // dead_rng_800157C
 
@@ -2467,7 +2479,7 @@ sub_8001708:
     ldr r3, off_8001724 // =off_803385C 
     b loc_8001716
 loc_8001712:
-    ldr r3, off_8001728 // =dword_8033878 
+    ldr r3, off_8001728 // =off_8033878 
     sub r0, #0x80
 loc_8001716:
     lsl r0, r0, #2
@@ -2477,7 +2489,7 @@ loc_8001716:
     bl sub_80015FC
     pop {pc}
 off_8001724:    .word off_803385C
-off_8001728:    .word dword_8033878
+off_8001728:    .word off_8033878
 .endfunc // sub_8001708
 
 .func
@@ -2856,7 +2868,7 @@ sub_8001974:
     ldr r0, off_800198C // =locret_8001AB4+1 
     str r0, [r2]
     str r0, [r2,#0x8] // (dword_200A888 - 0x200a880)
-    ldr r1, dword_8001990 // =0x3005CD9 
+    ldr r1, dword_8001990 // =unk_3005CD9 
     str r1, [r2,#0x4] // (dword_200A884 - 0x200a880)
     mov r0, #4
     bl start_800024C
@@ -2873,7 +2885,9 @@ cb_call_200A880:
     mov lr, pc
     bx r0
     pop {pc}
-loc_80019A0:
+.func
+.thumb_func
+sub_80019A0:
     push {lr}
     ldr r1, off_80019AC // =dword_200A880 
     ldr r0, [r1,#0x8] // (dword_200A888 - 0x200a880)
@@ -2881,11 +2895,23 @@ loc_80019A0:
     bx r0
     pop {pc}
 off_80019AC:    .word dword_200A880
-locret_80019B0:
+.endfunc // sub_80019A0
+
+.func
+.thumb_func
+nullsub_35:
     mov pc, lr
-locret_80019B2:
+.endfunc // nullsub_35
+
+.func
+.thumb_func
+nullsub_36:
     mov pc, lr
-loc_80019B4:
+.endfunc // nullsub_36
+
+.func
+.thumb_func
+sub_80019B4:
     ldr r1, off_8001AB0 // =dword_2009690 
     ldr r2, [r1]
     sub r2, #8
@@ -2900,7 +2926,11 @@ loc_80019B4:
     strh r2, [r1,#0x10]
     strh r3, [r1,#0x12]
     mov pc, lr
-loc_80019D0:
+.endfunc // sub_80019B4
+
+.func
+.thumb_func
+sub_80019D0:
     ldr r1, off_8001AB0 // =dword_2009690 
     ldr r2, [r1]
     sub r2, #8
@@ -2915,7 +2945,11 @@ loc_80019D0:
     strh r2, [r1,#0x18]
     strh r3, [r1,#0x1a]
     mov pc, lr
-loc_80019EC:
+.endfunc // sub_80019D0
+
+.func
+.thumb_func
+sub_80019EC:
     ldr r1, off_8001AB0 // =dword_2009690 
     ldr r3, [r1]
     sub r3, #4
@@ -2925,7 +2959,11 @@ loc_80019EC:
     ldr r1, [r1,#8]
     strh r3, [r1,#0x12]
     mov pc, lr
-loc_80019FE:
+.endfunc // sub_80019EC
+
+.func
+.thumb_func
+sub_80019FE:
     ldr r1, off_8001AB0 // =dword_2009690 
     ldr r3, [r1]
     sub r3, #4
@@ -2935,7 +2973,11 @@ loc_80019FE:
     ldr r1, [r1,#8]
     strh r3, [r1,#0x1a]
     mov pc, lr
-loc_8001A10:
+.endfunc // sub_80019FE
+
+.func
+.thumb_func
+sub_8001A10:
     ldr r1, off_8001AB0 // =dword_2009690 
     ldr r2, [r1]
     add r2, #4
@@ -2945,6 +2987,11 @@ loc_8001A10:
     ldr r1, [r1,#8]
     strh r2, [r1,#0x12]
     mov pc, lr
+.endfunc // sub_8001A10
+
+.func
+.thumb_func
+sub_8001A22:
     ldr r1, off_8001AB0 // =dword_2009690 
     ldr r2, [r1]
     add r2, #4
@@ -2954,7 +3001,11 @@ loc_8001A10:
     ldr r1, [r1,#8]
     strh r2, [r1,#0x1a]
     mov pc, lr
-loc_8001A34:
+.endfunc // sub_8001A22
+
+.func
+.thumb_func
+sub_8001A34:
     ldr r1, off_8001AB0 // =dword_2009690 
     ldr r2, [r1]
     add r2, #1
@@ -2964,7 +3015,11 @@ loc_8001A34:
     ldr r1, [r1,#8]
     strh r2, [r1,#0x10]
     mov pc, lr
-loc_8001A46:
+.endfunc // sub_8001A34
+
+.func
+.thumb_func
+sub_8001A46:
     ldr r1, off_8001AB0 // =dword_2009690 
     ldr r2, [r1]
     add r2, #1
@@ -2974,7 +3029,11 @@ loc_8001A46:
     ldr r1, [r1,#8]
     strh r2, [r1,#0x18]
     mov pc, lr
-loc_8001A58:
+.endfunc // sub_8001A46
+
+.func
+.thumb_func
+sub_8001A58:
     ldr r1, off_8001AB0 // =dword_2009690 
     ldr r2, [r1]
     sub r2, #8
@@ -2984,7 +3043,11 @@ loc_8001A58:
     ldr r1, [r1,#8]
     strh r2, [r1,#0x10]
     mov pc, lr
-loc_8001A6A:
+.endfunc // sub_8001A58
+
+.func
+.thumb_func
+sub_8001A6A:
     ldr r1, off_8001AB0 // =dword_2009690 
     ldr r2, [r1]
     sub r2, #8
@@ -2994,6 +3057,11 @@ loc_8001A6A:
     ldr r1, [r1,#8]
     strh r2, [r1,#0x18]
     mov pc, lr
+.endfunc // sub_8001A6A
+
+.func
+.thumb_func
+sub_8001A7C:
     push {lr}
     bl sub_800139A
     mov r1, #0x10
@@ -3022,6 +3090,8 @@ locret_8001AAC:
     pop {pc}
     .byte 0, 0
 off_8001AB0:    .word dword_2009690
+.endfunc // sub_8001A7C
+
 locret_8001AB4:
     mov pc, lr
     .balign 4, 0x00
@@ -4541,7 +4611,7 @@ sub_800260C:
     bl sprite_handleObjSprites_800289C
     ldr r0, off_800264C // =unk_200F388 
     mov r1, #7
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     pop {r4,pc}
 dword_800263C:    .word 0x7000000
 off_8002640:    .word 0x400

@@ -70,6 +70,7 @@
 .global sub_811B314
 .global sub_811B46C
 .global sub_811B48C
+.global unk_811B9B5
 .global sub_811BC00
 .global sub_811BDFC
 .global sub_811BED4
@@ -218,7 +219,7 @@
 // .global sub_8005524
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
-// .global dword_80065D0
+// .global unk_80065E0
 // .global dword_8006660
 // .global sub_80077B4
 // .global battle_isPaused
@@ -280,8 +281,7 @@
 // .global sub_80165C2
 // .global sub_80166AE
 // .global sub_8016934
-// .global byte_8016B02
-// .global byte_8016B03
+// .global sub_8016B02
 // .global sub_8016B36
 // .global sub_8016B72
 // .global sub_8016CE8
@@ -328,6 +328,8 @@
 // .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 // .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global sub_802FE28
+
+.include "asm/asm03_1.inc"
 // .global sub_8033978
 // .global sub_8036F70
 // .global sub_803C316
@@ -346,7 +348,7 @@
 // .global chatbox_8045F2C // (int a1) ->
 // .global chatbox_8045F3C
 
-.include "asm/asm03_1.inc"
+.include "asm/asm03_2.inc"
 // .global render_graphicalText_8045F8C
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
@@ -482,35 +484,34 @@
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 .include "data/dat38_0.inc"
-// .global unk_81D8000
-// .global dword_82FCA14
+// .global byte_81D8000
 
-.include "data/dat38_2.inc"
+.include "data/dat38_42.inc"
 // .global dword_86A5D60
 // .global dword_86B7AE0
 
-.include "data/dat38_13.inc"
+.include "data/dat38_52.inc"
 // .global PET_Gfx_tileRefs
 // .global unk_86CB360
-// .global unk_86CBB7C
-// .global unk_86CC13C
+// .global byte_86CBB7C
+// .global byte_86CC13C
 
-.include "data/dat38_16.inc"
+.include "data/dat38_53.inc"
 // .global unk_86CF4AC
 
-.include "data/dat38_23.inc"
-// .global unk_86DC3F8
+.include "data/dat38_63.inc"
+// .global off_86DC3F8
 
-.include "data/dat38_25.inc"
+.include "data/dat38_68.inc"
 // .global dword_86E2E98
 // .global dword_86E3B9C
 // .global dword_86E411C
 // .global dword_86E43DC
-// .global dword_86E587C
-// .global dword_86EB354
-// .global dword_86EDB54
+// .global unk_86E587C
+// .global unk_86EB8B8
+// .global unk_86EE0CC
 
-.include "data/dat38_27.inc"
+.include "data/dat38_70.inc"
 // .global dword_873EA50
 
 
@@ -523,7 +524,7 @@
 .equ dword_2001020, 0x2001020
 .equ reqBBS_bxo_2001150, 0x2001150
 .equ unk_20018EC, 0x20018EC
-.equ sReqBBS_GUI, 0x2005780
+.equ dynaicArr, 0x2005780
 .equ unk_20065C0, 0x20065C0
 .equ unk_20096E0, 0x20096E0
 .equ sSubmenu, 0x2009A30
@@ -683,7 +684,7 @@
 .equ word_20377BC, 0x20377BC
 .equ word_20377C0, 0x20377C0
 .equ unk_2037A04, 0x2037A04
-.equ word_3000000, 0x3000000
+.equ unk_3000000, 0x3000000
 .equ unk_3001550, 0x3001550
 .equ unk_30015B0, 0x30015B0
 .equ unk_30015D0, 0x30015D0
@@ -697,5 +698,6 @@
 .equ word_3001B58, 0x3001B58
 .equ loc_3006B94, 0x3006B94
 .equ LCDControl, 0x4000000
+// .global comp_82FCA14
 
 .endif // INC_ASM_ASM32

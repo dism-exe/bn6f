@@ -196,9 +196,74 @@ dword_80A0B20:    .word 0x15800001, 0x80A0B54, 0x80A0B84, 0x15810001, 0x80A0B60
     .word 0x16FF2001, 0x33, 0x1FF2001, 0x3C, 0xFFF2001, 0x9E
     .word 0x18FF2001, 0xB3, 0xFFFF2003, 0x3E8, 0xFFFF2003, 0x578
     .word 0xFFFF2003, 0x6A4, 0xFFFF2005, 0x1, 0x0
-dword_80A0BE0:    .word 0x16FF2001, 0x33, 0x1FF2001, 0x3C, 0xFFF2001, 0x9E
-    .word 0x18FF2001, 0xB3, 0xFFFF2003, 0x3E8, 0xFFFF2003, 0x578
-    .word 0xFFFF2003, 0x6A4, 0xFFFF2005, 0x1, 0x0
+    .byte  1
+    .byte 0x20
+    .byte 0xFF
+    .byte 0x16
+    .byte 0x33 
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  1
+    .byte 0x20
+    .byte 0xFF
+    .byte  1
+    .byte 0x3C 
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  1
+    .byte 0x20
+    .byte 0xFF
+    .byte 0xF
+    .byte 0x9E
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  1
+    .byte 0x20
+    .byte 0xFF
+    .byte 0x18
+    .byte 0xB3
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  3
+    .byte 0x20
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xE8
+    .byte  3
+    .byte  0
+    .byte  0
+    .byte  3
+    .byte 0x20
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0x78 
+    .byte  5
+unk_80A0C0E:    .byte  0
+    .byte  0
+unk_80A0C10:    .byte  3
+    .byte 0x20
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xA4
+    .byte  6
+    .byte  0
+    .byte  0
+    .byte  5
+    .byte 0x20
+    .byte 0xFF
+    .byte 0xFF
+    .byte  1
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
 dword_80A0C24:    .word 0x15840001, 0x80A0C58, 0x80A0C88, 0x15850001, 0x80A0C64
     .word 0x80A0C94, 0x15860005, 0x80A0C70, 0x80A0CA0, 0x15870005
     .word 0x80A0C7C, 0x80A0CE4, 0x0

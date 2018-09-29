@@ -43,10 +43,14 @@ pt.env(gameFiles={
 'data/dat02.s':
 	(0x8024110, 0x8026450), # size=0x2340
 'asm/asm03_0.s':
-	(0x8026450, 0x803FD08), # size=0x198B8
+	(0x8026450, 0x8031CC4), # size=0xB874
+'data/pt_8031CC4.s':
+	(0x8031CC4, 0x8033764), # size=0x1AA0
+'asm/asm03_1.s':
+	(0x8033764, 0x803FD08), # size=0xC5A4
 'asm/chatbox.s':
 	(0x803FD08, 0x8045F8C), # size=0x6284
-'asm/asm03_1.s':
+'asm/asm03_2.s':
 	(0x8045F8C, 0x804CFBC), # size=0x7030
 'data/dat03.s':
 	(0x804CFBC, 0x804E62C), # size=0x1670
@@ -199,10 +203,406 @@ pt.env(gameFiles={
 'asm/asm38.s':
 	(0x81D61DA, 0x81D7EF8), # size=0x1D1E
 'data/dat38_0.s':
-	(0x81D7EF8, 0x84E0C4C), # size=0x308D54
+	(0x81D7EF8, 0x8241EC4), # size=0x69FCC
+'data/compressed/comp_8241EC4.lz77':
+	(0x8241EC4, 0x8242E94), # size=0xFD0
+'data/compressed/comp_8242E94.lz77':
+	(0x8242E94, 0x8244164), # size=0x12D0
+'data/dat38_1.s':
+	(0x8244164, 0x82455B0), # size=0x144C
+'data/compressed/comp_82455B0.lz77':
+	(0x82455B0, 0x8246A24), # size=0x1474
+'data/dat38_2.s':
+	(0x8246A24, 0x82489C8), # size=0x1FA4
+'data/compressed/comp_82489C8.lz77':
+	(0x82489C8, 0x82492FC), # size=0x934
+'data/compressed/comp_82492FC.lz77':
+	(0x82492FC, 0x8249C7C), # size=0x980
+'data/compressed/comp_8249C7C.lz77':
+	(0x8249C7C, 0x824AC94), # size=0x1018
+'data/dat38_3.s':
+	(0x824AC94, 0x824D23C), # size=0x25A8
+'data/compressed/comp_824D23C.lz77':
+	(0x824D23C, 0x824DC7C), # size=0xA40
+'data/compressed/comp_824DC7C.lz77':
+	(0x824DC7C, 0x824EAF4), # size=0xE78
+'data/dat38_4.s':
+	(0x824EAF4, 0x8252558), # size=0x3A64
+'data/compressed/comp_8252558.lz77':
+	(0x8252558, 0x82533F4), # size=0xE9C
+'data/dat38_5.s':
+	(0x82533F4, 0x8257994), # size=0x45A0
+'data/compressed/comp_8257994.lz77':
+	(0x8257994, 0x825859C), # size=0xC08
+'data/compressed/comp_825859C.lz77':
+	(0x825859C, 0x8258FF8), # size=0xA5C
+'data/compressed/comp_8258FF8.lz77':
+	(0x8258FF8, 0x825A0D8), # size=0x10E0
+'data/compressed/comp_825A0D8.lz77':
+	(0x825A0D8, 0x825AD90), # size=0xCB8
+'data/compressed/comp_825AD90.lz77':
+	(0x825AD90, 0x825B860), # size=0xAD0
+'data/compressed/comp_825B860.lz77':
+	(0x825B860, 0x825BFC4), # size=0x764
+'data/compressed/comp_825BFC4.lz77':
+	(0x825BFC4, 0x825C9AC), # size=0x9E8
+'data/dat38_6.s':
+	(0x825C9AC, 0x825DFB4), # size=0x1608
+'data/compressed/comp_825DFB4.lz77':
+	(0x825DFB4, 0x825F2C8), # size=0x1314
+'data/dat38_7.s':
+	(0x825F2C8, 0x8262CEC), # size=0x3A24
+'data/compressed/comp_8262CEC.lz77':
+	(0x8262CEC, 0x8263484), # size=0x798
+'data/compressed/comp_8263484.lz77':
+	(0x8263484, 0x82647E4), # size=0x1360
+'data/compressed/comp_82647E4.lz77':
+	(0x82647E4, 0x8264FA0), # size=0x7BC
+'data/dat38_8.s':
+	(0x8264FA0, 0x82CED74), # size=0x69DD4
+'data/compressed/comp_82CED74.lz77':
+	(0x82CED74, 0x82D2AC8), # size=0x3D54
+'data/compressed/comp_82D2AC8.lz77':
+	(0x82D2AC8, 0x82D6FE4), # size=0x451C
+'data/compressed/comp_82D6FE4.lz77':
+	(0x82D6FE4, 0x82DABC8), # size=0x3BE4
+'data/compressed/comp_82DABC8.lz77':
+	(0x82DABC8, 0x82DD9A8), # size=0x2DE0
+'data/compressed/comp_82DD9A8.lz77':
+	(0x82DD9A8, 0x82E0114), # size=0x276C
+'data/compressed/comp_82E0114.lz77':
+	(0x82E0114, 0x82E4050), # size=0x3F3C
+'data/compressed/comp_82E4050.lz77':
+	(0x82E4050, 0x82E8470), # size=0x4420
+'data/compressed/comp_82E8470.lz77':
+	(0x82E8470, 0x82EFE48), # size=0x79D8
+'data/dat38_9.s':
+	(0x82EFE48, 0x82FCA14), # size=0xCBCC
+'data/compressed/comp_82FCA14.lz77':
+	(0x82FCA14, 0x82FE378), # size=0x1964
+'data/dat38_10.s':
+	(0x82FE378, 0x8333CC8), # size=0x35950
+'data/compressed/comp_8333CC8.lz77':
+	(0x8333CC8, 0x8334B0C), # size=0xE44
+'data/compressed/comp_8334B0C.lz77':
+	(0x8334B0C, 0x83353F4), # size=0x8E8
+'data/compressed/comp_83353F4.lz77':
+	(0x83353F4, 0x8336320), # size=0xF2C
+'data/dat38_11.s':
+	(0x8336320, 0x8338170), # size=0x1E50
+'data/compressed/comp_8338170.lz77':
+	(0x8338170, 0x8338F18), # size=0xDA8
+'data/dat38_12.s':
+	(0x8338F18, 0x834FC40), # size=0x16D28
+'data/compressed/comp_834FC40.lz77':
+	(0x834FC40, 0x8350628), # size=0x9E8
+'data/dat38_13.s':
+	(0x8350628, 0x838B160), # size=0x3AB38
+'data/compressed/comp_838B160.lz77':
+	(0x838B160, 0x838B438), # size=0x2D8
+'data/compressed/comp_838B438.lz77':
+	(0x838B438, 0x838B930), # size=0x4F8
+'data/dat38_14.s':
+	(0x838B930, 0x83FDF7C), # size=0x7264C
+'data/compressed/comp_83FDF7C.lz77':
+	(0x83FDF7C, 0x83FEC68), # size=0xCEC
+'data/dat38_15.s':
+	(0x83FEC68, 0x840A4BC), # size=0xB854
+'data/compressed/comp_840A4BC.lz77':
+	(0x840A4BC, 0x840AC00), # size=0x744
+'data/compressed/comp_840AC00.lz77':
+	(0x840AC00, 0x840B3A4), # size=0x7A4
+'data/dat38_16.s':
+	(0x840B3A4, 0x840F4F4), # size=0x4150
+'data/compressed/comp_840F4F4.lz77':
+	(0x840F4F4, 0x84105EC), # size=0x10F8
+'data/compressed/comp_84105EC.lz77':
+	(0x84105EC, 0x8410A18), # size=0x42C
+'data/compressed/comp_8410A18.lz77':
+	(0x8410A18, 0x84114E8), # size=0xAD0
+'data/compressed/comp_84114E8.lz77':
+	(0x84114E8, 0x84119D0), # size=0x4E8
+'data/compressed/comp_84119D0.lz77':
+	(0x84119D0, 0x8411E90), # size=0x4C0
+'data/dat38_17.s':
+	(0x8411E90, 0x843A5AC), # size=0x2871C
+'data/compressed/comp_843A5AC.lz77':
+	(0x843A5AC, 0x843AE88), # size=0x8DC
+'data/compressed/comp_843AE88.lz77':
+	(0x843AE88, 0x843B99C), # size=0xB14
+'data/compressed/comp_843B99C.lz77':
+	(0x843B99C, 0x843C234), # size=0x898
+'data/dat38_18.s':
+	(0x843C234, 0x8495434), # size=0x59200
+'data/compressed/comp_8495434.lz77':
+	(0x8495434, 0x8495B88), # size=0x754
+'data/dat38_19.s':
+	(0x8495B88, 0x8499CF0), # size=0x4168
+'data/compressed/comp_8499CF0.lz77':
+	(0x8499CF0, 0x849AAD0), # size=0xDE0
+'data/compressed/comp_849AAD0.lz77':
+	(0x849AAD0, 0x849B424), # size=0x954
+'data/dat38_20.s':
+	(0x849B424, 0x84A03B8), # size=0x4F94
+'data/compressed/comp_84A03B8.lz77':
+	(0x84A03B8, 0x84A0920), # size=0x568
+'data/compressed/comp_84A0920.lz77':
+	(0x84A0920, 0x84A0DCC), # size=0x4AC
+'data/compressed/comp_84A0DCC.lz77':
+	(0x84A0DCC, 0x84A1458), # size=0x68C
+'data/compressed/comp_84A1458.lz77':
+	(0x84A1458, 0x84A1B14), # size=0x6BC
+'data/compressed/comp_84A1B14.lz77':
+	(0x84A1B14, 0x84A1E30), # size=0x31C
+'data/compressed/comp_84A1E30.lz77':
+	(0x84A1E30, 0x84A225C), # size=0x42C
+'data/compressed/comp_84A225C.lz77':
+	(0x84A225C, 0x84A24CC), # size=0x270
+'data/compressed/comp_84A24CC.lz77':
+	(0x84A24CC, 0x84A3048), # size=0xB7C
+'data/dat38_21.s':
+	(0x84A3048, 0x84A3708), # size=0x6C0
+'data/compressed/comp_84A3708.lz77':
+	(0x84A3708, 0x84A3B44), # size=0x43C
+'data/compressed/comp_84A3B44.lz77':
+	(0x84A3B44, 0x84A3E08), # size=0x2C4
+'data/compressed/comp_84A3E08.lz77':
+	(0x84A3E08, 0x84A40E0), # size=0x2D8
+'data/compressed/comp_84A40E0.lz77':
+	(0x84A40E0, 0x84A47F0), # size=0x710
+'data/compressed/comp_84A47F0.lz77':
+	(0x84A47F0, 0x84A4F0C), # size=0x71C
+'data/compressed/comp_84A4F0C.lz77':
+	(0x84A4F0C, 0x84A502C), # size=0x120
+'data/compressed/comp_84A502C.lz77':
+	(0x84A502C, 0x84A53C4), # size=0x398
+'data/dat38_22.s':
+	(0x84A53C4, 0x84A642C), # size=0x1068
+'data/compressed/comp_84A642C.lz77':
+	(0x84A642C, 0x84A6D14), # size=0x8E8
+'data/compressed/comp_84A6D14.lz77':
+	(0x84A6D14, 0x84A71A0), # size=0x48C
+'data/compressed/comp_84A71A0.lz77':
+	(0x84A71A0, 0x84A74A4), # size=0x304
+'data/compressed/comp_84A74A4.lz77':
+	(0x84A74A4, 0x84A77A4), # size=0x300
+'data/compressed/comp_84A77A4.lz77':
+	(0x84A77A4, 0x84A7A14), # size=0x270
+'data/compressed/comp_84A7A14.lz77':
+	(0x84A7A14, 0x84A7FA4), # size=0x590
+'data/compressed/comp_84A7FA4.lz77':
+	(0x84A7FA4, 0x84A8524), # size=0x580
+'data/compressed/comp_84A8524.lz77':
+	(0x84A8524, 0x84A8AC0), # size=0x59C
+'data/dat38_23.s':
+	(0x84A8AC0, 0x84A8F68), # size=0x4A8
+'data/compressed/comp_84A8F68.lz77':
+	(0x84A8F68, 0x84A914C), # size=0x1E4
+'data/compressed/comp_84A914C.lz77':
+	(0x84A914C, 0x84A96B8), # size=0x56C
+'data/compressed/comp_84A96B8.lz77':
+	(0x84A96B8, 0x84A97A8), # size=0xF0
+'data/dat38_24.s':
+	(0x84A97A8, 0x84AA028), # size=0x880
+'data/compressed/comp_84AA028.lz77':
+	(0x84AA028, 0x84AA640), # size=0x618
+'data/compressed/comp_84AA640.lz77':
+	(0x84AA640, 0x84AAC80), # size=0x640
+'data/compressed/comp_84AAC80.lz77':
+	(0x84AAC80, 0x84AAE70), # size=0x1F0
+'data/compressed/comp_84AAE70.lz77':
+	(0x84AAE70, 0x84AAF18), # size=0xA8
+'data/compressed/comp_84AAF18.lz77':
+	(0x84AAF18, 0x84AB2D0), # size=0x3B8
+'data/dat38_25.s':
+	(0x84AB2D0, 0x84AE340), # size=0x3070
+'data/compressed/comp_84AE340.lz77':
+	(0x84AE340, 0x84AF710), # size=0x13D0
+'data/dat38_26.s':
+	(0x84AF710, 0x84B42EC), # size=0x4BDC
+'data/compressed/comp_84B42EC.lz77':
+	(0x84B42EC, 0x84B4838), # size=0x54C
+'data/dat38_27.s':
+	(0x84B4838, 0x84B5734), # size=0xEFC
+'data/compressed/comp_84B5734.lz77':
+	(0x84B5734, 0x84B5C18), # size=0x4E4
+'data/dat38_28.s':
+	(0x84B5C18, 0x84B6744), # size=0xB2C
+'data/compressed/comp_84B6744.lz77':
+	(0x84B6744, 0x84B7414), # size=0xCD0
+'data/dat38_29.s':
+	(0x84B7414, 0x84BADF8), # size=0x39E4
+'data/compressed/comp_84BADF8.lz77':
+	(0x84BADF8, 0x84BB07C), # size=0x284
+'data/compressed/comp_84BB07C.lz77':
+	(0x84BB07C, 0x84BB704), # size=0x688
+'data/compressed/comp_84BB704.lz77':
+	(0x84BB704, 0x84BBA74), # size=0x370
+'data/compressed/comp_84BBA74.lz77':
+	(0x84BBA74, 0x84BC0C8), # size=0x654
+'data/dat38_30.s':
+	(0x84BC0C8, 0x84BC4D0), # size=0x408
+'data/compressed/comp_84BC4D0.lz77':
+	(0x84BC4D0, 0x84BC854), # size=0x384
+'data/dat38_31.s':
+	(0x84BC854, 0x84BD3FC), # size=0xBA8
+'data/compressed/comp_84BD3FC.lz77':
+	(0x84BD3FC, 0x84BD83C), # size=0x440
+'data/compressed/comp_84BD83C.lz77':
+	(0x84BD83C, 0x84BDDD4), # size=0x598
+'data/dat38_32.s':
+	(0x84BDDD4, 0x84BE924), # size=0xB50
+'data/compressed/comp_84BE924.lz77':
+	(0x84BE924, 0x84BECDC), # size=0x3B8
+'data/compressed/comp_84BECDC.lz77':
+	(0x84BECDC, 0x84BEF4C), # size=0x270
+'data/compressed/comp_84BEF4C.lz77':
+	(0x84BEF4C, 0x84BF174), # size=0x228
+'data/compressed/comp_84BF174.lz77':
+	(0x84BF174, 0x84BF6F8), # size=0x584
+'data/dat38_33.s':
+	(0x84BF6F8, 0x84C0150), # size=0xA58
+'data/compressed/comp_84C0150.lz77':
+	(0x84C0150, 0x84C0298), # size=0x148
+'data/dat38_34.s':
+	(0x84C0298, 0x84C3C90), # size=0x39F8
+'data/compressed/comp_84C3C90.lz77':
+	(0x84C3C90, 0x84C3F54), # size=0x2C4
+'data/compressed/comp_84C3F54.lz77':
+	(0x84C3F54, 0x84C43AC), # size=0x458
+'data/compressed/comp_84C43AC.lz77':
+	(0x84C43AC, 0x84C5194), # size=0xDE8
+'data/dat38_35.s':
+	(0x84C5194, 0x84C8DEC), # size=0x3C58
+'data/compressed/comp_84C8DEC.lz77':
+	(0x84C8DEC, 0x84C90B4), # size=0x2C8
+'data/dat38_36.s':
+	(0x84C90B4, 0x84CA1BC), # size=0x1108
+'data/compressed/comp_84CA1BC.lz77':
+	(0x84CA1BC, 0x84CA74C), # size=0x590
+'data/compressed/comp_84CA74C.lz77':
+	(0x84CA74C, 0x84CA9E8), # size=0x29C
+'data/compressed/comp_84CA9E8.lz77':
+	(0x84CA9E8, 0x84CAD70), # size=0x388
+'data/compressed/comp_84CAD70.lz77':
+	(0x84CAD70, 0x84CB0F4), # size=0x384
+'data/compressed/comp_84CB0F4.lz77':
+	(0x84CB0F4, 0x84CB3A8), # size=0x2B4
+'data/compressed/comp_84CB3A8.lz77':
+	(0x84CB3A8, 0x84CB638), # size=0x290
+'data/compressed/comp_84CB638.lz77':
+	(0x84CB638, 0x84CB930), # size=0x2F8
+'data/compressed/comp_84CB930.lz77':
+	(0x84CB930, 0x84CBC1C), # size=0x2EC
+'data/compressed/comp_84CBC1C.lz77':
+	(0x84CBC1C, 0x84CBDE8), # size=0x1CC
+'data/compressed/comp_84CBDE8.lz77':
+	(0x84CBDE8, 0x84CC308), # size=0x520
+'data/compressed/comp_84CC308.lz77':
+	(0x84CC308, 0x84CC8AC), # size=0x5A4
+'data/compressed/comp_84CC8AC.lz77':
+	(0x84CC8AC, 0x84CD83C), # size=0xF90
+'data/compressed/comp_84CD83C.lz77':
+	(0x84CD83C, 0x84CDCE8), # size=0x4AC
+'data/compressed/comp_84CDCE8.lz77':
+	(0x84CDCE8, 0x84CDE24), # size=0x13C
+'data/compressed/comp_84CDE24.lz77':
+	(0x84CDE24, 0x84CDF74), # size=0x150
+'data/dat38_37.s':
+	(0x84CDF74, 0x84CF9D8), # size=0x1A64
+'data/compressed/comp_84CF9D8.lz77':
+	(0x84CF9D8, 0x84CFC7C), # size=0x2A4
+'data/compressed/comp_84CFC7C.lz77':
+	(0x84CFC7C, 0x84D014C), # size=0x4D0
+'data/compressed/comp_84D014C.lz77':
+	(0x84D014C, 0x84D230C), # size=0x21C0
+'data/compressed/comp_84D230C.lz77':
+	(0x84D230C, 0x84D26BC), # size=0x3B0
+'data/compressed/comp_84D26BC.lz77':
+	(0x84D26BC, 0x84D2820), # size=0x164
+'data/compressed/comp_84D2820.lz77':
+	(0x84D2820, 0x84D2A54), # size=0x234
+'data/compressed/comp_84D2A54.lz77':
+	(0x84D2A54, 0x84D3998), # size=0xF44
+'data/compressed/comp_84D3998.lz77':
+	(0x84D3998, 0x84D3DBC), # size=0x424
+'data/dat38_38.s':
+	(0x84D3DBC, 0x84D4AC4), # size=0xD08
+'data/compressed/comp_84D4AC4.lz77':
+	(0x84D4AC4, 0x84D4CC8), # size=0x204
+'data/compressed/comp_84D4CC8.lz77':
+	(0x84D4CC8, 0x84D4FF0), # size=0x328
+'data/compressed/comp_84D4FF0.lz77':
+	(0x84D4FF0, 0x84D5764), # size=0x774
+'data/compressed/comp_84D5764.lz77':
+	(0x84D5764, 0x84D5C94), # size=0x530
+'data/compressed/comp_84D5C94.lz77':
+	(0x84D5C94, 0x84D5DF0), # size=0x15C
+'data/compressed/comp_84D5DF0.lz77':
+	(0x84D5DF0, 0x84D6370), # size=0x580
+'data/compressed/comp_84D6370.lz77':
+	(0x84D6370, 0x84D66B8), # size=0x348
+'data/compressed/comp_84D66B8.lz77':
+	(0x84D66B8, 0x84D6908), # size=0x250
+'data/compressed/comp_84D6908.lz77':
+	(0x84D6908, 0x84D6BF0), # size=0x2E8
+'data/compressed/comp_84D6BF0.lz77':
+	(0x84D6BF0, 0x84D6E50), # size=0x260
+'data/compressed/comp_84D6E50.lz77':
+	(0x84D6E50, 0x84D701C), # size=0x1CC
+'data/compressed/comp_84D701C.lz77':
+	(0x84D701C, 0x84D77D8), # size=0x7BC
+'data/compressed/comp_84D77D8.lz77':
+	(0x84D77D8, 0x84D84E4), # size=0xD0C
+'data/compressed/comp_84D84E4.lz77':
+	(0x84D84E4, 0x84D9344), # size=0xE60
+'data/compressed/comp_84D9344.lz77':
+	(0x84D9344, 0x84D9954), # size=0x610
+'data/compressed/comp_84D9954.lz77':
+	(0x84D9954, 0x84DA604), # size=0xCB0
+'data/compressed/comp_84DA604.lz77':
+	(0x84DA604, 0x84DAD14), # size=0x710
+'data/compressed/comp_84DAD14.lz77':
+	(0x84DAD14, 0x84DB04C), # size=0x338
+'data/compressed/comp_84DB04C.lz77':
+	(0x84DB04C, 0x84DB1CC), # size=0x180
+'data/compressed/comp_84DB1CC.lz77':
+	(0x84DB1CC, 0x84DB8F8), # size=0x72C
+'data/compressed/comp_84DB8F8.lz77':
+	(0x84DB8F8, 0x84DBD30), # size=0x438
+'data/compressed/comp_84DBD30.lz77':
+	(0x84DBD30, 0x84DC2B0), # size=0x580
+'data/compressed/comp_84DC2B0.lz77':
+	(0x84DC2B0, 0x84DCBD8), # size=0x928
+'data/compressed/comp_84DCBD8.lz77':
+	(0x84DCBD8, 0x84DD20C), # size=0x634
+'data/compressed/comp_84DD20C.lz77':
+	(0x84DD20C, 0x84DD40C), # size=0x200
+'data/compressed/comp_84DD40C.lz77':
+	(0x84DD40C, 0x84DDDB8), # size=0x9AC
+'data/compressed/comp_84DDDB8.lz77':
+	(0x84DDDB8, 0x84DDF94), # size=0x1DC
+'data/compressed/comp_84DDF94.lz77':
+	(0x84DDF94, 0x84DE328), # size=0x394
+'data/compressed/comp_84DE328.lz77':
+	(0x84DE328, 0x84DE598), # size=0x270
+'data/compressed/comp_84DE598.lz77':
+	(0x84DE598, 0x84DE728), # size=0x190
+'data/compressed/comp_84DE728.lz77':
+	(0x84DE728, 0x84DEFD8), # size=0x8B0
+'data/compressed/comp_84DEFD8.lz77':
+	(0x84DEFD8, 0x84DF674), # size=0x69C
+'data/compressed/comp_84DF674.lz77':
+	(0x84DF674, 0x84DF96C), # size=0x2F8
+'data/dat38_39.s':
+	(0x84DF96C, 0x84E00A0), # size=0x734
+'data/compressed/comp_84E00A0.lz77':
+	(0x84E00A0, 0x84E0554), # size=0x4B4
+'data/dat38_40.s':
+	(0x84E0554, 0x84E0C4C), # size=0x6F8
 'data/compressed/comp_84E0C4C.lz77':
 	(0x84E0C4C, 0x84E0E68), # size=0x21C
-'data/dat38_1.s':
+'data/dat38_41.s':
 	(0x84E0E68, 0x857CCC8), # size=0x9BE60
 'data/compressed/comp_857CCC8.lz77':
 	(0x857CCC8, 0x857D43C), # size=0x774
@@ -210,7 +610,7 @@ pt.env(gameFiles={
 	(0x857D43C, 0x857D63C), # size=0x200
 'data/compressed/comp_857D63C.lz77':
 	(0x857D63C, 0x857D86C), # size=0x230
-'data/dat38_2.s':
+'data/dat38_42.s':
 	(0x857D86C, 0x86C23A0), # size=0x144B34
 'data/compressed/compFile_86C23A0.lz77':
 	(0x86C23A0, 0x86C2E2C), # size=0xA8C
@@ -220,11 +620,11 @@ pt.env(gameFiles={
 	(0x86C33B4, 0x86C3528), # size=0x174
 'data/compressed/comp_86C3528.lz77':
 	(0x86C3528, 0x86C3C92), # size=0x76A
-'data/dat38_3.s':
+'data/dat38_43.s':
 	(0x86C3C92, 0x86C3E94), # size=0x202
 'data/compressed/comp_86C3E94.lz77':
 	(0x86C3E94, 0x86C3FD4), # size=0x140
-'data/dat38_4.s':
+'data/dat38_44.s':
 	(0x86C3FD4, 0x86C41D0), # size=0x1FC
 'data/compressed/comp_86C41D0.lz77':
 	(0x86C41D0, 0x86C4490), # size=0x2C0
@@ -232,21 +632,21 @@ pt.env(gameFiles={
 	(0x86C4490, 0x86C45A8), # size=0x118
 'data/compressed/comp_86C45A8.lz77':
 	(0x86C45A8, 0x86C4660), # size=0xB8
-'data/dat38_5.s':
+'data/dat38_45.s':
 	(0x86C4660, 0x86C4B58), # size=0x4F8
 'data/scripts/compScripts_credits_86C4B58.lz77':
 	(0x86C4B58, 0x86C4FB0), # size=0x458
-'data/dat38_6.s':
+'data/dat38_46.s':
 	(0x86C4FB0, 0x86C5190), # size=0x1E0
 'data/compressed/comp_86C5190.lz77':
 	(0x86C5190, 0x86C526C), # size=0xDC
 'data/compressed/comp_86C526C.lz77':
 	(0x86C526C, 0x86C52B4), # size=0x48
-'data/dat38_7.s':
+'data/dat38_47.s':
 	(0x86C52B4, 0x86C580C), # size=0x558
 'data/scripts/scripts_86C580C.bin':
 	(0x86C580C, 0x86C67E4), # size=0xFD8
-'data/dat38_8.s':
+'data/dat38_48.s':
 	(0x86C67E4, 0x86C6B30), # size=0x34C
 'data/compressed/comp_86C6B30.lz77':
 	(0x86C6B30, 0x86C6FD0), # size=0x4A0
@@ -270,7 +670,7 @@ pt.env(gameFiles={
 	(0x86C8034, 0x86C8054), # size=0x20
 'data/compressed/comp_86C8054.lz77':
 	(0x86C8054, 0x86C9108), # size=0x10B4
-'data/dat38_9.s':
+'data/dat38_49.s':
 	(0x86C9108, 0x86C9148), # size=0x40
 'data/compressed/comp_86C9148.lz77':
 	(0x86C9148, 0x86C9240), # size=0xF8
@@ -280,7 +680,7 @@ pt.env(gameFiles={
 	(0x86C9274, 0x86C9668), # size=0x3F4
 'data/compressed/comp_86C9668.lz77':
 	(0x86C9668, 0x86C9694), # size=0x2C
-'data/dat38_11.s':
+'data/dat38_50.s':
 	(0x86C9694, 0x86C96C0), # size=0x2C
 'data/compressed/comp_86C96C0.lz77':
 	(0x86C96C0, 0x86C980C), # size=0x14C
@@ -288,7 +688,7 @@ pt.env(gameFiles={
 	(0x86C980C, 0x86C9AA4), # size=0x298
 'data/compressed/comp_86C9AA4.lz77':
 	(0x86C9AA4, 0x86C9AF4), # size=0x50
-'data/dat38_12.s':
+'data/dat38_51.s':
 	(0x86C9AF4, 0x86C9BD4), # size=0xE0
 'data/compressed/comp_86C9BD4.lz77':
 	(0x86C9BD4, 0x86C9C80), # size=0xAC
@@ -298,7 +698,7 @@ pt.env(gameFiles={
 	(0x86C9CE4, 0x86C9D38), # size=0x54
 'data/compressed/comp_86C9D38.lz77':
 	(0x86C9D38, 0x86C9D6C), # size=0x34
-'data/dat38_13.s':
+'data/dat38_52.s':
 	(0x86C9D6C, 0x86CDCE4), # size=0x3F78
 'data/compressed/comp_86CDCE4.lz77':
 	(0x86CDCE4, 0x86CDE2C), # size=0x148
@@ -324,18 +724,34 @@ pt.env(gameFiles={
 	(0x86CEAA8, 0x86CEC3C), # size=0x194
 'data/compressed/comp_86CEC3C.lz77':
 	(0x86CEC3C, 0x86CEE84), # size=0x248
-'data/dat38_16.s':
+'data/dat38_53.s':
 	(0x86CEE84, 0x86CF82C), # size=0x9A8
 'data/compressed/comp_86CF82C.lz77':
 	(0x86CF82C, 0x86CF994), # size=0x168
-'data/dat38_17.s':
+'data/dat38_54.s':
 	(0x86CF994, 0x86CFC64), # size=0x2D0
 'data/compressed/comp_86CFC64.lz77':
 	(0x86CFC64, 0x86CFCFC), # size=0x98
 'data/compressed/comp_86CFCFC.lz77':
 	(0x86CFCFC, 0x86CFD1C), # size=0x20
-'data/dat38_18.s':
-	(0x86CFD1C, 0x86D6974), # size=0x6C58
+'data/compressed/comp_86CFD1C.lz77':
+	(0x86CFD1C, 0x86CFFA8), # size=0x28C
+'data/dat38_55.s':
+	(0x86CFFA8, 0x86D471C), # size=0x4774
+'data/compressed/comp_86D471C.lz77':
+	(0x86D471C, 0x86D497C), # size=0x260
+'data/compressed/comp_86D497C.lz77':
+	(0x86D497C, 0x86D4FC4), # size=0x648
+'data/compressed/comp_86D4FC4.lz77':
+	(0x86D4FC4, 0x86D5070), # size=0xAC
+'data/compressed/comp_86D5070.lz77':
+	(0x86D5070, 0x86D5224), # size=0x1B4
+'data/compressed/comp_86D5224.lz77':
+	(0x86D5224, 0x86D54F4), # size=0x2D0
+'data/compressed/comp_86D54F4.lz77':
+	(0x86D54F4, 0x86D55C8), # size=0xD4
+'data/dat38_56.s':
+	(0x86D55C8, 0x86D6974), # size=0x13AC
 'data/compressed/comp_86D6974.lz77':
 	(0x86D6974, 0x86D6C70), # size=0x2FC
 'data/compressed/comp_86D6C70.lz77':
@@ -356,35 +772,65 @@ pt.env(gameFiles={
 	(0x86D747C, 0x86D74B0), # size=0x34
 'data/compressed/comp_86D74B0.lz77':
 	(0x86D74B0, 0x86D7578), # size=0xC8
-'data/dat38_20.s':
+'data/dat38_57.s':
 	(0x86D7578, 0x86D8C80), # size=0x1708
 'data/compressed/comp_86D8C80.lz77':
-	(0x86D8C80, 0x86D8E98), # size=0x218
-'data/dat38_21.s':
-	(0x86D8E98, 0x86D9D10), # size=0xE78
+	(0x86D8C80, 0x86D8E94), # size=0x214
+'data/dat38_58.s':
+	(0x86D8E94, 0x86D91FC), # size=0x368
+'data/compressed/comp_86D91FC.lz77':
+	(0x86D91FC, 0x86D93E0), # size=0x1E4
+'data/compressed/comp_86D93E0.lz77':
+	(0x86D93E0, 0x86D9A00), # size=0x620
+'data/dat38_59.s':
+	(0x86D9A00, 0x86D9C40), # size=0x240
+'data/compressed/comp_86D9C40.lz77':
+	(0x86D9C40, 0x86D9D10), # size=0xD0
 'data/compressed/comp_86D9D10.lz77':
 	(0x86D9D10, 0x86DA1B8), # size=0x4A8
 'data/compressed/comp_86DA1B8.lz77':
 	(0x86DA1B8, 0x86DA944), # size=0x78C
 'data/compressed/comp_86DA944.lz77':
 	(0x86DA944, 0x86DAC40), # size=0x2FC
-'data/dat38_22.s':
-	(0x86DAC40, 0x86DBD94), # size=0x1154
+'data/dat38_60.s':
+	(0x86DAC40, 0x86DB208), # size=0x5C8
+'data/compressed/comp_86DB208.lz77':
+	(0x86DB208, 0x86DB9C4), # size=0x7BC
+'data/compressed/comp_86DB9C4.lz77':
+	(0x86DB9C4, 0x86DBB0C), # size=0x148
+'data/compressed/comp_86DBB0C.lz77':
+	(0x86DBB0C, 0x86DBD64), # size=0x258
+'data/dat38_62.s':
+	(0x86DBD64, 0x86DBD94), # size=0x30
 'data/compressed/comp_86DBD94.lz77':
 	(0x86DBD94, 0x86DC3F8), # size=0x664
-'data/dat38_23.s':
-	(0x86DC3F8, 0x86DD9B4), # size=0x15BC
+'data/dat38_63.s':
+	(0x86DC3F8, 0x86DC518), # size=0x120
+'data/compressed/comp_86DC518.lz77':
+	(0x86DC518, 0x86DC688), # size=0x170
+'data/compressed/comp_86DC688.lz77':
+	(0x86DC688, 0x86DCA9C), # size=0x414
+'data/dat38_64.s':
+	(0x86DCA9C, 0x86DCCF0), # size=0x254
+'data/compressed/comp_86DCCF0.lz77':
+	(0x86DCCF0, 0x86DD0AC), # size=0x3BC
+'data/dat38_65.s':
+	(0x86DD0AC, 0x86DD328), # size=0x27C
+'data/compressed/comp_86DD328.lz77':
+	(0x86DD328, 0x86DD488), # size=0x160
+'data/dat38_66.s':
+	(0x86DD488, 0x86DD9B4), # size=0x52C
 'data/compressed/comp_86DD9B4.lz77':
 	(0x86DD9B4, 0x86DDAD0), # size=0x11C
 'data/compressed/comp_86DDAD0.lz77':
 	(0x86DDAD0, 0x86DDB24), # size=0x54
-'data/dat38_24.s':
+'data/dat38_67.s':
 	(0x86DDB24, 0x86DDB44), # size=0x20
 'data/compressed/comp_86DDB44.lz77':
 	(0x86DDB44, 0x86DDB7C), # size=0x38
 'data/compressed/comp_86DDB7C.lz77':
 	(0x86DDB7C, 0x86DDBA0), # size=0x24
-'data/dat38_25.s':
+'data/dat38_68.s':
 	(0x86DDBA0, 0x86F3F5C), # size=0x163BC
 'data/scripts/scripts_fullSynchro_86F3F5C.bin':
 	(0x86F3F5C, 0x86F4498), # size=0x53C
@@ -392,21 +838,21 @@ pt.env(gameFiles={
 	(0x86F4498, 0x86F53CC), # size=0xF34
 'data/scripts/scripts_shuko_crossTut_86F53CC.bin':
 	(0x86F53CC, 0x86F5834), # size=0x468
-'data/dat38_26.s':
+'data/dat38_69.s':
 	(0x86F5834, 0x87370C0), # size=0x4188C
 'data/scripts/scripts_commErr_87370C0.bin':
 	(0x87370C0, 0x873811C), # size=0x105C
-'data/dat38_27.s':
+'data/dat38_70.s':
 	(0x873811C, 0x87E4500), # size=0xAC3E4
 'data/compressed/comp_87E4500.lz77':
 	(0x87E4500, 0x87E4FE0), # size=0xAE0
-'data/dat38_28.s':
+'data/dat38_71.s':
 	(0x87E4FE0, 0x87E5020), # size=0x40
 'data/compressed/comp_87E5020.lz77':
 	(0x87E5020, 0x87E50D4), # size=0xB4
 'data/compressed/comp_87E50D4.lz77':
 	(0x87E50D4, 0x87E54B0), # size=0x3DC
-'data/dat38_29.s':
+'data/dat38_72.s':
 	(0x87E54B0, 0x87E5550), # size=0xA0
 'data/compressed/comp_87E5550.lz77':
 	(0x87E5550, 0x87E56A0), # size=0x150
@@ -414,7 +860,7 @@ pt.env(gameFiles={
 	(0x87E56A0, 0x87E57BC), # size=0x11C
 'data/compressed/comp_87E57BC.lz77':
 	(0x87E57BC, 0x87E660C), # size=0xE50
-'data/dat38_30.s':
+'data/dat38_73.s':
 	(0x87E660C, 0x87E674C), # size=0x140
 'data/compressed/comp_87E674C.lz77':
 	(0x87E674C, 0x87E6840), # size=0xF4
@@ -424,17 +870,17 @@ pt.env(gameFiles={
 	(0x87E6924, 0x87E6980), # size=0x5C
 'data/compressed/comp_87E6980.lz77':
 	(0x87E6980, 0x87E6BDC), # size=0x25C
-'data/dat38_31.s':
+'data/dat38_74.s':
 	(0x87E6BDC, 0x87E6BFC), # size=0x20
 'data/compressed/comp_87E6BFC.lz77':
 	(0x87E6BFC, 0x87E6DD0), # size=0x1D4
-'data/dat38_32.s':
+'data/dat38_75.s':
 	(0x87E6DD0, 0x87F006C), # size=0x929C
 'data/compressed/comp_87F006C.lz77':
 	(0x87F006C, 0x87F0218), # size=0x1AC
 'data/compressed/comp_87F0218.lz77':
 	(0x87F0218, 0x87F0340), # size=0x128
-'data/dat38_33.s':
+'data/dat38_76.s':
 	(0x87F0340, 0x87F0360), # size=0x20
 'data/compressed/comp_87F0360.lz77':
 	(0x87F0360, 0x87F04D4), # size=0x174
@@ -444,7 +890,7 @@ pt.env(gameFiles={
 	(0x87F0534, 0x87F056C), # size=0x38
 'data/compressed/comp_87F056C.lz77':
 	(0x87F056C, 0x87F05A4), # size=0x38
-'data/dat38_34.s':
+'data/dat38_77.s':
 	(0x87F05A4, 0x87F0664), # size=0xC0
 'data/compressed/comp_87F0664.lz77':
 	(0x87F0664, 0x87F0834), # size=0x1D0
@@ -452,23 +898,23 @@ pt.env(gameFiles={
 	(0x87F0834, 0x87F0C00), # size=0x3CC
 'data/compressed/comp_87F0C00.lz77':
 	(0x87F0C00, 0x87F0DA0), # size=0x1A0
-'data/dat38_35.s':
+'data/dat38_78.s':
 	(0x87F0DA0, 0x87F24FC), # size=0x175C
 'data/compressed/comp_87F24FC.lz77':
-	(0x87F24FC, 0x87F25B8), # size=0xBC
-'data/dat38_36.s':
-	(0x87F25B8, 0x87F3370), # size=0xDB8
+	(0x87F24FC, 0x87F25B4), # size=0xB8
+'data/dat38_79.s':
+	(0x87F25B4, 0x87F3370), # size=0xDBC
 'data/compressed/comp_87F3370.lz77':
 	(0x87F3370, 0x87F3620), # size=0x2B0
-'data/dat38_37.s':
+'data/dat38_81.s':
 	(0x87F3620, 0x87F36A0), # size=0x80
 'data/compressed/comp_87F36A0.lz77':
 	(0x87F36A0, 0x87F40F4), # size=0xA54
-'data/dat38_38.s':
+'data/dat38_82.s':
 	(0x87F40F4, 0x87F4394), # size=0x2A0
 'data/compressed/comp_87F4394.lz77':
 	(0x87F4394, 0x87F8EB0), # size=0x4B1C
-'data/dat38_39.s':
+'data/dat38_84.s':
 	(0x87F8EB0, 0x8800000), # size=0x7150
 })
 

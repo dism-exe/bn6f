@@ -35,9 +35,11 @@
 // .global clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 // .global sub_80301B2
 // .global sub_80301DC
-// .global init_s_02011C50_8036E90
 
 .include "asm/asm03_1.inc"
+// .global init_s_02011C50_8036E90
+
+.include "asm/asm03_2.inc"
 // .global sub_8046818
 // .global sub_8046854
 // .global sub_80468BA

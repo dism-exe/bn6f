@@ -1935,19 +1935,19 @@ reqBBS_init_s_2005780:
     push {r4-r7,lr}
     push {r0}
     // memBlock
-    ldr r0, off_813F400 // =sReqBBS_GUI 
+    ldr r0, off_813F400 // =dynaicArr 
     mov r1, #0xd // reqBBS_GUI.numPoints
     ldrb r1, [r0,r1]
     mov r2, #0xe // reqBBS_GUI.totalPointsIndex
     ldrb r2, [r0,r2]
-    mov r3, #0xf // (sreqbbs_gui.unk_0f - 0x2005780)
+    mov r3, #0xf // (unk_200578F - 0x2005780)
     ldrb r3, [r0,r3]
     push {r1-r3}
     // size
     mov r1, #0x2c 
     bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     pop {r1-r3}
-    ldr r0, off_813F400 // =sReqBBS_GUI 
+    ldr r0, off_813F400 // =dynaicArr 
     mov r4, #0xd // reqBBS_GUI.numPoints
     strb r1, [r0,r4]
     mov r4, #0xe // reqBBS_GUI.totalPointsIndex
@@ -1955,7 +1955,7 @@ reqBBS_init_s_2005780:
     mov r4, #0xf // reqBBS_GUI.unk_0F
     strb r3, [r0,r4]
     pop {r0}
-    ldr r5, off_813F400 // =sReqBBS_GUI 
+    ldr r5, off_813F400 // =dynaicArr 
     strb r0, [r5,#0x4] // reqBBS_GUI.unk_04
     ldr r2, off_813F3FC // =reqBBS_textualPointers 
     mov r1, #0x2c 
@@ -1964,7 +1964,7 @@ reqBBS_init_s_2005780:
     str r0, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
     pop {r4-r7,pc}
 off_813F3FC:    .word reqBBS_textualPointers
-off_813F400:    .word sReqBBS_GUI
+off_813F400:    .word dynaicArr
 .endfunc // reqBBS_init_s_2005780
 
 .func
@@ -1975,7 +1975,7 @@ reqBBS_cb_813F404:
     mov r2, r9
     mov r3, r12
     push {r1-r3}
-    ldr r5, off_813F424 // =sReqBBS_GUI 
+    ldr r5, off_813F424 // =dynaicArr 
     ldr r0, off_813F428 // =jt_813F42C 
     ldrb r1, [r5]
     ldr r0, [r0,r1]
@@ -1986,7 +1986,7 @@ reqBBS_cb_813F404:
     mov r9, r2
     mov r12, r3
     pop {r4-r7,pc}
-off_813F424:    .word sReqBBS_GUI
+off_813F424:    .word dynaicArr
 off_813F428:    .word jt_813F42C
 jt_813F42C:    .word reqBBS_813F474+1
     .word reqBBS_813F550+1
@@ -2018,7 +2018,7 @@ reqBBS_813F474:
     mov r1, #0x3a 
     bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_813F4B6
-    ldr r0, off_813F548 // =sReqBBS_GUI 
+    ldr r0, off_813F548 // =dynaicArr 
     ldr r1, dword_813F544 // =0xF 
     ldrb r2, [r0,r1]
     ldr r3, off_813F54C // =reqBBS_textualPointers 
@@ -2027,7 +2027,7 @@ reqBBS_813F474:
     add r0, r2, #0
     bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     beq loc_813F4B6
-    ldr r0, off_813F548 // =sReqBBS_GUI 
+    ldr r0, off_813F548 // =dynaicArr 
     ldr r1, dword_813F544 // =0xF 
     ldrb r2, [r0,r1]
     ldr r3, off_813F54C // =reqBBS_textualPointers 
@@ -2039,7 +2039,7 @@ reqBBS_813F474:
     mov r0, #0x17
     mov r1, #0x3a 
     bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-    ldr r0, off_813F548 // =sReqBBS_GUI 
+    ldr r0, off_813F548 // =dynaicArr 
     ldr r1, dword_813F544 // =0xF 
     mov r3, #0
     strb r3, [r0,r1]
@@ -2105,7 +2105,7 @@ dword_813F538:    .word 0x5F40
 dword_813F53C:    .word 0x5E40
     .word 0x17A0
 dword_813F544:    .word 0xF
-off_813F548:    .word sReqBBS_GUI
+off_813F548:    .word dynaicArr
 off_813F54C:    .word reqBBS_textualPointers
 .func
 .thumb_func
@@ -2867,7 +2867,7 @@ reqBBS_813FAB0:
     strb r0, [r5,#8]
     bgt loc_813FB02
     ldr r0, off_813FD9C // =sChatbox 
-    ldr r1, off_813FDA0 // =sReqBBS_GUI 
+    ldr r1, off_813FDA0 // =dynaicArr 
     ldr r2, dword_813FB1C // =0xF 
     ldr r3, off_813FB20 // =0x50 
     ldrb r1, [r1,r2]
@@ -2921,7 +2921,7 @@ loc_813FB40:
     bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_813FB6E
     ldr r0, off_813FBB4 // =reqBBS_requestInfo_textOffsets 
-    ldr r1, off_813FDA4 // =sReqBBS_GUI 
+    ldr r1, off_813FDA4 // =dynaicArr 
     ldr r2, dword_813FBBC // =0xF 
     ldrb r1, [r1,r2]
     ldr r2, off_813FBB8 // =reqBBS_textualShades 
@@ -3197,8 +3197,8 @@ off_813FD90:    .word reqBBS_requestEntriesList
 off_813FD94:    .word reqBBS_numRequestsSent
 off_813FD98:    .word unk_2000770
 off_813FD9C:    .word sChatbox
-off_813FDA0:    .word sReqBBS_GUI
-off_813FDA4:    .word sReqBBS_GUI
+off_813FDA0:    .word dynaicArr
+off_813FDA4:    .word dynaicArr
 .func
 .thumb_func
 reqBBS_813FDA8:
@@ -3356,6 +3356,9 @@ off_813FF28:    .word dword_86A5D60
 off_813FF2C:    .word reqBBS_requestEntries_IDs
 .endfunc // reqBBS_renderRequestNames
 
+.func
+.thumb_func
+sub_813FF30:
     push {r4-r7,lr}
     pop {r4-r7,pc}
     .word unk_2018A04
@@ -3363,266 +3366,40 @@ off_813FF2C:    .word reqBBS_requestEntries_IDs
     .byte 0x52, 0x31, 0x52
     .byte 0x32 
     .byte 0x52, 0x33, 0x52
-    .word a0r1r0r1r0r1r0r
-    .word a0r1r0r1r0r1r0r+0x80
-a0r1r0r1r0r1r0r:    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x30
-    .byte 0x52
-    .byte 0x31
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x34
-    .byte 0x52
-    .byte 0x35
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x32
-    .byte 0x52
-    .byte 0x33
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x36
-    .byte 0x52
-    .byte 0x37
-    .byte 0x52
-    .byte 0x0
-    .byte 0x3A, 0x2, 0x2
+    .word byte_813FF48
+    .word byte_813FFC8
+byte_813FF48:    .byte 0x30, 0x52, 0x31, 0x52, 0x30, 0x52, 0x31, 0x52, 0x30
+    .byte 0x52, 0x31, 0x52, 0x30, 0x52, 0x31, 0x52, 0x30, 0x52
+    .byte 0x31, 0x52, 0x30, 0x52, 0x31, 0x52, 0x30, 0x52, 0x31
+    .byte 0x52, 0x30, 0x52, 0x31, 0x52, 0x30, 0x52, 0x31, 0x52
+    .byte 0x30, 0x52, 0x31, 0x52, 0x30, 0x52, 0x31, 0x52, 0x30
+    .byte 0x52, 0x31, 0x52, 0x30, 0x52, 0x31, 0x52, 0x30, 0x52
+    .byte 0x31, 0x52, 0x30, 0x52, 0x31, 0x52, 0x30, 0x52, 0x31
+    .byte 0x52, 0x34, 0x52, 0x35, 0x52, 0x34, 0x52, 0x35, 0x52
+    .byte 0x34, 0x52, 0x35, 0x52, 0x34, 0x52, 0x35, 0x52, 0x34
+    .byte 0x52, 0x35, 0x52, 0x34, 0x52, 0x35, 0x52, 0x34, 0x52
+    .byte 0x35, 0x52, 0x34, 0x52, 0x35, 0x52, 0x34, 0x52, 0x35
+    .byte 0x52, 0x34, 0x52, 0x35, 0x52, 0x34, 0x52, 0x35, 0x52
+    .byte 0x34, 0x52, 0x35, 0x52, 0x34, 0x52, 0x35, 0x52, 0x34
+    .byte 0x52, 0x35, 0x52, 0x34, 0x52, 0x35, 0x52, 0x34, 0x52
+    .byte 0x35, 0x52
+byte_813FFC8:    .byte 0x32, 0x52, 0x33, 0x52, 0x32, 0x52, 0x33, 0x52, 0x32
+    .byte 0x52, 0x33, 0x52, 0x32, 0x52, 0x33, 0x52, 0x32, 0x52
+    .byte 0x33, 0x52, 0x32, 0x52, 0x33, 0x52, 0x32, 0x52, 0x33
+    .byte 0x52, 0x32, 0x52, 0x33, 0x52, 0x32, 0x52, 0x33, 0x52
+    .byte 0x32, 0x52, 0x33, 0x52, 0x32, 0x52, 0x33, 0x52, 0x32
+    .byte 0x52, 0x33, 0x52, 0x32, 0x52, 0x33, 0x52, 0x32, 0x52
+    .byte 0x33, 0x52, 0x32, 0x52, 0x33, 0x52, 0x32, 0x52, 0x33
+    .byte 0x52, 0x36, 0x52, 0x37, 0x52, 0x36, 0x52, 0x37, 0x52
+    .byte 0x36, 0x52, 0x37, 0x52, 0x36, 0x52, 0x37, 0x52, 0x36
+    .byte 0x52, 0x37, 0x52, 0x36, 0x52, 0x37, 0x52, 0x36, 0x52
+    .byte 0x37, 0x52, 0x36, 0x52, 0x37, 0x52, 0x36, 0x52, 0x37
+    .byte 0x52, 0x36, 0x52, 0x37, 0x52, 0x36, 0x52, 0x37, 0x52
+    .byte 0x36, 0x52, 0x37, 0x52, 0x36, 0x52, 0x37, 0x52, 0x36
+    .byte 0x52, 0x37, 0x52, 0x36, 0x52, 0x37, 0x52, 0x36, 0x52
+    .byte 0x37, 0x52, 0x0, 0x3A, 0x2, 0x2
+.endfunc // sub_813FF30
+
 .func
 .thumb_func
 reqBBS_anim_814004C:
@@ -3932,7 +3709,7 @@ unk_8140308:    .byte 0x92
 .thumb_func
 reqBBS_814030C:
     push {r4-r7,lr}
-    ldr r0, off_8140344 // =sReqBBS_GUI 
+    ldr r0, off_8140344 // =dynaicArr 
     ldr r1, dword_8140348 // =0xF 
     ldrb r0, [r0,r1]
     ldr r1, off_814034C // =dword_813F380 
@@ -3964,7 +3741,7 @@ loc_8140320:
 locret_8140340:
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_8140344:    .word sReqBBS_GUI
+off_8140344:    .word dynaicArr
 dword_8140348:    .word 0xF
 off_814034C:    .word dword_813F380
 off_8140350:    .word unk_8140354
@@ -4219,7 +3996,7 @@ off_8140518:    .word dword_86A5D60
 .thumb_func
 reqBBS_setChatboxHeaderBasedOn_0F:
     push {r4-r7,lr}
-    ldr r0, off_8140550 // =sReqBBS_GUI 
+    ldr r0, off_8140550 // =dynaicArr 
     ldr r1, dword_814054C // =0xF 
     ldrb r1, [r0,r1]
     ldr r0, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
@@ -4238,7 +4015,7 @@ off_8140540:    .word unk_201B200
 dword_8140544:    .word 0x6008400
 off_8140548:    .word dword_86A5D60
 dword_814054C:    .word 0xF
-off_8140550:    .word sReqBBS_GUI
+off_8140550:    .word dynaicArr
 .endfunc // reqBBS_setChatboxHeaderBasedOn_0F
 
 .func
@@ -4253,7 +4030,7 @@ reqBBS_changeChatboxHeader:
     ldr r3, dword_814057C // =0x6008400 
     mov r4, #0xc
     mov r5, #1
-    ldr r6, off_8140580 // =dword_86ACD24+60 
+    ldr r6, off_8140580 // =unk_86ACD60 
     ldr r7, off_8140584 // =unk_201C200 
     bl sub_8045FC6
     pop {r4-r7,pc}
@@ -4261,7 +4038,7 @@ reqBBS_changeChatboxHeader:
 off_8140574:    .word reqBBS_dialogList
 off_8140578:    .word unk_201B200
 dword_814057C:    .word 0x6008400
-off_8140580:    .word dword_86ACD24+0x3C
+off_8140580:    .word unk_86ACD60
 off_8140584:    .word unk_201C200
 .endfunc // reqBBS_changeChatboxHeader
 
@@ -4566,7 +4343,7 @@ off_8140794:    .word byte_2008450
 // () -> u8
 reqBBS_getTotalPointsIndex:
     push {r4-r7,lr}
-    ldr r0, off_81409A4 // =sReqBBS_GUI 
+    ldr r0, off_81409A4 // =dynaicArr 
     ldr r1, dword_81407A4 // =0xE 
     ldrb r0, [r0,r1]
     pop {r4-r7,pc}
@@ -4578,7 +4355,7 @@ dword_81407A4:    .word 0xE
 .thumb_func
 reqBBS_81407A8:
     push {r4-r7,lr}
-    ldr r1, off_81409A8 // =sReqBBS_GUI 
+    ldr r1, off_81409A8 // =dynaicArr 
     ldr r2, dword_81407B4 // =0xE 
     strb r0, [r1,r2]
     pop {r4-r7,pc}
@@ -4590,7 +4367,7 @@ dword_81407B4:    .word 0xE
 .thumb_func
 reqBBS_81407B8:
     push {r4-r7,lr}
-    ldr r0, off_81409AC // =sReqBBS_GUI 
+    ldr r0, off_81409AC // =dynaicArr 
     ldr r1, dword_81407C4 // =0xD 
     ldrb r0, [r0,r1]
     pop {r4-r7,pc}
@@ -4602,7 +4379,7 @@ dword_81407C4:    .word 0xD
 .thumb_func
 reqBBS_81407C8:
     push {r4-r7,lr}
-    ldr r1, off_81409B0 // =sReqBBS_GUI 
+    ldr r1, off_81409B0 // =dynaicArr 
     ldr r2, dword_81407D4 // =0xD 
     strb r0, [r1,r2]
     pop {r4-r7,pc}
@@ -4620,13 +4397,13 @@ reqBBS_81407D8:
     mov r1, #0x3a 
     bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     beq loc_8140814
-    ldr r0, off_81409B4 // =sReqBBS_GUI 
+    ldr r0, off_81409B4 // =dynaicArr 
     ldr r1, dword_8140820 // =0xF 
     ldrb r0, [r0,r1]
     bl reqBBS_814084C
     tst r0, r0
     beq loc_8140814
-    ldr r0, off_81409B8 // =sReqBBS_GUI 
+    ldr r0, off_81409B8 // =dynaicArr 
     ldr r1, dword_8140818 // =0xD 
     ldr r2, dword_814081C // =0xE 
     ldrb r1, [r0,r1]
@@ -4638,7 +4415,7 @@ reqBBS_81407D8:
     cmp r0, r1
     bgt loc_8140814
     add r2, #1
-    ldr r0, off_81409BC // =sReqBBS_GUI 
+    ldr r0, off_81409BC // =dynaicArr 
     ldr r1, dword_814081C // =0xE 
     strb r2, [r0,r1]
     mov r0, #1
@@ -4775,7 +4552,7 @@ off_81408D8:    .word reqBBS_requestEntries_IDs
 reqBBS_81408DC:
     push {r4-r7,lr}
     bl reqBBS_81408C8
-    ldr r1, off_81409C4 // =sReqBBS_GUI 
+    ldr r1, off_81409C4 // =dynaicArr 
     ldr r2, dword_81408EC // =0xF 
     strb r0, [r1,r2]
     pop {r4-r7,pc}
@@ -4851,7 +4628,7 @@ off_8140970:    .word 0x110
 .thumb_func
 reqBBS_8140974:
     push {r4-r7,lr}
-    ldr r0, off_81409C8 // =sReqBBS_GUI 
+    ldr r0, off_81409C8 // =dynaicArr 
     ldr r1, dword_8140980 // =0xF 
     ldrb r0, [r0,r1]
     pop {r4-r7,pc}
@@ -4863,7 +4640,7 @@ dword_8140980:    .word 0xF
 .thumb_func
 reqBBS_8140984:
     push {r4-r7,lr}
-    ldr r0, off_81409CC // =sReqBBS_GUI 
+    ldr r0, off_81409CC // =dynaicArr 
     mov r1, #0
     ldr r2, dword_8140998 // =0xD 
     strb r1, [r0,r2]
@@ -4875,17 +4652,17 @@ reqBBS_8140984:
 dword_8140998:    .word 0xD
 dword_814099C:    .word 0xE
 dword_81409A0:    .word 0xF
-off_81409A4:    .word sReqBBS_GUI
-off_81409A8:    .word sReqBBS_GUI
-off_81409AC:    .word sReqBBS_GUI
-off_81409B0:    .word sReqBBS_GUI
-off_81409B4:    .word sReqBBS_GUI
-off_81409B8:    .word sReqBBS_GUI
-off_81409BC:    .word sReqBBS_GUI
+off_81409A4:    .word dynaicArr
+off_81409A8:    .word dynaicArr
+off_81409AC:    .word dynaicArr
+off_81409B0:    .word dynaicArr
+off_81409B4:    .word dynaicArr
+off_81409B8:    .word dynaicArr
+off_81409BC:    .word dynaicArr
 off_81409C0:    .word dword_813F380
-off_81409C4:    .word sReqBBS_GUI
-off_81409C8:    .word sReqBBS_GUI
-off_81409CC:    .word sReqBBS_GUI
+off_81409C4:    .word dynaicArr
+off_81409C8:    .word dynaicArr
+off_81409CC:    .word dynaicArr
 .endfunc // reqBBS_8140984
 
 .func
@@ -5026,7 +4803,7 @@ off_8140A70:    .word dword_87DAC90
     .word 0xFF0D0E0C, 0x80000010, 0x1, 0x0, 0x0
     .word unk_3001750
     .word 0xFF0C0F0C, 0x80000010, 0x1, 0x0
-    .word 0x4, 0x3001B60, 0xFF0D0E0C, 0x80000880, 0xA, 0x800010C0
+dword_8140BAC:    .word 0x4, 0x3001B60, 0xFF0D0E0C, 0x80000880, 0xA, 0x800010C0
     .word 0x1E, 0x80001900, 0x1E, 0x80002140, 0x1E, 0x80001940
     .word 0x1E, 0x80001100, 0x1E, 0x2, 0x8140BC0, 0x4
     .word 0x3001750, 0xFF0C0F0C, 0x80000880, 0xA, 0x2, 0x8140BC0

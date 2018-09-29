@@ -104,6 +104,7 @@
 .global sub_800EC3C
 .global sub_800EC48
 .global sub_800EC56
+.global sub_800EC80
 .global sub_800ED00
 .global object_createAIData
 
@@ -114,6 +115,7 @@
 // .global sub_80008C0
 // .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+// .global sub_8000E30
 // .global sub_8001532
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 
@@ -132,6 +134,8 @@
 
 .include "asm/asm00_2.inc"
 // .global sub_80103BC
+// .global sub_8014150
+// .global sub_80182B4
 // .global off_8019B78
 // .global dword_8019C34
 // .global object_setFlag // (int a1) -> void
@@ -160,11 +164,45 @@
 // .global sub_80E4B34
 // .global sub_80E9BDC
 
-.include "data/dat38_25.inc"
+.include "data/dat38_68.inc"
 // .global byte_86DFA98
 // .global dword_86E0458
 // .global dword_86E0478
-// .global dword_86E0498
+// .global unk_86E0498
+// .global unk_86E04D8
+// .global unk_86E04F8
+// .global unk_86E0518
+// .global unk_86E0538
+// .global unk_86E0558
+// .global unk_86E0578
+// .global unk_86E0598
+// .global unk_86E05B8
+// .global unk_86E05D8
+// .global unk_86E05F8
+// .global unk_86E0618
+// .global unk_86E0638
+// .global unk_86E0658
+// .global unk_86E0678
+// .global unk_86E06D8
+// .global unk_86E06F8
+// .global unk_86E0718
+// .global unk_86E0738
+// .global unk_86E0758
+// .global unk_86E0778
+// .global unk_86E0798
+// .global unk_86E07B8
+// .global unk_86E07D8
+// .global unk_86E07F8
+// .global unk_86E0818
+// .global unk_86E0838
+// .global unk_86E0858
+// .global unk_86E0878
+// .global unk_86E0918
+// .global unk_86E0938
+// .global unk_86E0958
+// .global unk_86E0998
+// .global unk_86E09B8
+// .global unk_86E09D8
 // .global dword_86F047C
 // .global dword_86F0D7C
 
@@ -213,6 +251,12 @@
 .equ byte_203F6B1, 0x203F6B1
 .equ byte_203F6B2, 0x203F6B2
 .equ byte_203F6B3, 0x203F6B3
+.equ unk_30019A0, 0x30019A0
+.equ unk_30019C0, 0x30019C0
+.equ unk_30019E0, 0x30019E0
+.equ unk_3001A20, 0x3001A20
+.equ unk_3001A40, 0x3001A40
+.equ unk_3001A60, 0x3001A60
 .equ copyTiles_iram, 0x3005E80
 .equ loc_30078C8, 0x30078C8
 .equ sub_30078E0, 0x30078E0

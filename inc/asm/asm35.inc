@@ -17,11 +17,11 @@
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global sub_80062C8
 
-.include "asm/asm03_0.inc"
+.include "asm/asm03_1.inc"
 // .global sub_803CE28
 // .global sub_803EBF4
 
-.include "asm/asm03_1.inc"
+.include "asm/asm03_2.inc"
 // .global render_graphicalText_8045F8C
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_8046664 // () -> void
@@ -54,7 +54,7 @@
 // .global sub_813B780
 // .global sub_813B9FC
 
-.include "data/dat38_2.inc"
+.include "data/dat38_42.inc"
 // .global dword_86A5D60
 
 

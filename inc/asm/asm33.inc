@@ -28,7 +28,7 @@
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global musicGameState_8000784 // () -> void
-// .global sub_80008B4
+// .global clearBackwards_80008B4 // (void *mem, int size) -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuFastSet_8000900 // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
@@ -92,6 +92,8 @@
 // .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 // .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global sub_802FE28
+
+.include "asm/asm03_1.inc"
 // .global sub_8036E78
 // .global sub_803C28A
 // .global sub_803C59C
@@ -139,7 +141,7 @@
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C
 
-.include "asm/asm03_1.inc"
+.include "asm/asm03_2.inc"
 // .global render_graphicalText_8045F8C
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
@@ -297,26 +299,26 @@
 .include "data/dat37.inc"
 // .global dword_814FE94
 
-.include "data/dat38_2.inc"
+.include "data/dat38_42.inc"
 // .global unk_86A5D40
 // .global dword_86A5D60
 // .global dword_86B7AE0
 // .global unk_86C1F20
 // .global unk_86C1F80
 
-.include "data/dat38_9.inc"
+.include "data/dat38_49.inc"
 // .global unk_86C9108
 
-.include "data/dat38_12.inc"
+.include "data/dat38_51.inc"
 // .global dword_86C9B54
 // .global dword_86C9B94
 // .global dword_86C9BB4
 
-.include "data/dat38_13.inc"
+.include "data/dat38_52.inc"
 // .global unk_86C9D6C
 // .global dword_86CDBE4
 
-.include "data/dat38_20.inc"
+.include "data/dat38_57.inc"
 // .global unk_86D7578
 // .global unk_86D78C0
 // .global unk_86D7C24
@@ -325,10 +327,10 @@
 // .global unk_86D860C
 // .global unk_86D894C
 
-.include "data/dat38_26.inc"
+.include "data/dat38_69.inc"
 // .global unk_872CF94
 
-.include "data/dat38_27.inc"
+.include "data/dat38_70.inc"
 // .global dword_873D9FC
 // .global dword_873EA50
 

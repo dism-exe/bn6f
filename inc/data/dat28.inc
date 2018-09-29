@@ -4,6 +4,8 @@
 /* Public Symbols */
 .global dword_809FEE4
 .global dword_809FFE8
+.global unk_80A0C0E
+.global unk_80A0C10
 .global dword_80A3360
 .global off_80A336C
 .global off_80A3370

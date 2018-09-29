@@ -8,16 +8,16 @@
 
 /* External Symbols */
 .include "asm/asm00_0.inc"
-// .global sub_80008B4
+// .global clearBackwards_80008B4 // (void *mem, int size) -> void
 // .global sub_8001778
 // .global sub_8001780
 // .global sub_800195C
-// .global locret_80019B0
-// .global loc_80019B4
-// .global loc_80019EC
-// .global loc_8001A10
-// .global loc_8001A34
-// .global loc_8001A58
+// .global nullsub_35
+// .global sub_80019B4
+// .global sub_80019EC
+// .global sub_8001A10
+// .global sub_8001A34
+// .global sub_8001A58
 // .global locret_8001AB4
 // .global sub_8002354
 
@@ -25,14 +25,16 @@
 // .global sub_802D234
 // .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global sub_80304E8
+
+.include "asm/asm03_1.inc"
 // .global sub_803537C
 // .global sub_8035424
 
 .include "asm/asm11.inc"
-// .global dword_806992C
-// .global dword_806992C
+// .global dword_8069AF0
+// .global off_8069C80
 // .global off_806A810
-// .global dword_806C1E0
+// .global off_806C20C
 
 .include "data/dat19.inc"
 // .global off_807EB18
@@ -45,11 +47,11 @@
 // .global dword_807FAC4
 // .global dword_807FAC4
 // .global dword_807FAC4
-// .global dword_80802C4
-// .global dword_80802C4
-// .global dword_80802C4
-// .global dword_80802C4
-// .global dword_80802C4
+// .global unk_8080598
+// .global unk_80805C0
+// .global unk_80808B0
+// .global unk_80808D8
+// .global unk_8080AA0
 
 .include "data/dat21.inc"
 // .global dword_80813F8
@@ -68,7 +70,7 @@
 // .global dword_808144C
 // .global dword_8081450
 
-.include "data/dat38_2.inc"
+.include "data/dat38_42.inc"
 // .global off_8610B04
 // .global off_86116C8
 // .global dword_8612CF0

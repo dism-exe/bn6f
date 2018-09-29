@@ -84,13 +84,13 @@ off_80527B4:    .word off_8052480
     .word 0xFFFFFFFF
 off_80527BC:    .word off_80524C0
     .word 0xFFFFFFFF
-off_80527C4:    .word dword_80524C4+0x24
+off_80527C4:    .word unk_80524E8
     .word 0xFFFFFFFF
-off_80527CC:    .word dword_80524C4+0x24
+off_80527CC:    .word unk_80524E8
     .word 0xFFFFFFFF
-off_80527D4:    .word dword_80524C4+0x4C
+off_80527D4:    .word unk_8052510
     .word 0xFFFFFFFF
-off_80527DC:    .word dword_80524C4+0x74
+off_80527DC:    .word unk_8052538
     .word 0xFFFFFFFF
 dword_80527E4:    .word 0xFFFFFFFF
 dword_80527E8:    .word 0xFFFFFFFF

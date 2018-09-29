@@ -47,6 +47,8 @@
 // .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global sub_80302A8
 // .global sub_8031612
+
+.include "asm/asm03_1.inc"
 // .global sub_8035694
 
 .include "asm/chatbox.inc"
@@ -78,9 +80,9 @@
 // .global sub_8143DBC
 // .global SWI_Div
 
-.include "data/dat38_27.inc"
+.include "data/dat38_70.inc"
 // .global dword_873D108
-// .global aPfffff
+// .global byte_87E30A0
 
 
 /* Undeclared Symbols */

@@ -17,6 +17,6 @@
 /* External Symbols */
 
 /* Undeclared Symbols */
-.equ word_3000000, 0x3000000
+.equ unk_3000000, 0x3000000
 
 .endif // INC_DATA_DAT36

@@ -16,9 +16,9 @@
 
 /* External Symbols */
 .include "asm/asm28_1.inc"
-// .global dword_809F6CC
+// .global unk_809F6EC
 
-.include "data/dat38_2.inc"
+.include "data/dat38_42.inc"
 // .global unk_8605FD8
 // .global dword_86190F4
 

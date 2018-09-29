@@ -101,19 +101,19 @@ loc_803FDA4:
     mov r4, #1
 loc_803FDA8:
     bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-    ldr r0, off_803FDEC // =dword_86BF480+1824 
+    ldr r0, off_803FDEC // =unk_86BFBA0 
     ldr r1, dword_803FDF0 // =0x600DC80 
     ldr r2, off_803FDF4 // =0x280 
     bl loc_8000AC8
     cmp r4, #1
     beq loc_803FDC6
-    ldr r0, off_803FDFC // =dword_86BFE20 
+    ldr r0, off_803FDFC // =unk_86BFE20 
     ldr r1, off_803FE00 // =unk_3001B40 
     mov r2, #0x20 
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     b loc_803FDD0
 loc_803FDC6:
-    ldr r0, off_803FE04 // =dword_86BFE20+32 
+    ldr r0, off_803FE04 // =unk_86BFE40 
     ldr r1, off_803FE00 // =unk_3001B40 
     mov r2, #0x20 
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
@@ -130,13 +130,13 @@ loc_803FDD0:
     pop {r4,r5,pc}
 off_803FDE0:    .word dword_803FDE4
 dword_803FDE4:    .word 0x83007E, 0x81007F
-off_803FDEC:    .word dword_86BF480+0x720
+off_803FDEC:    .word unk_86BFBA0
 dword_803FDF0:    .word 0x600DC80
 off_803FDF4:    .word 0x280
     .word 0x380
-off_803FDFC:    .word dword_86BFE20
+off_803FDFC:    .word unk_86BFE20
 off_803FE00:    .word unk_3001B40
-off_803FE04:    .word dword_86BFE20+0x20
+off_803FE04:    .word unk_86BFE40
 .endfunc // chatbox_runScript_803FD9C
 
 .func
@@ -156,19 +156,19 @@ chatbox_803FE10:
     mov r4, #1
 loc_803FE14:
     bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-    ldr r0, off_803FE58 // =dword_86BFE20+1984 
+    ldr r0, off_803FE58 // =unk_86C05E0 
     ldr r1, dword_803FE5C // =0x600DC80 
     ldr r2, off_803FE60 // =0x320 
     bl loc_8000AC8
     cmp r4, #1
     beq loc_803FE32
-    ldr r0, off_803FE68 // =dword_86C0900 
+    ldr r0, off_803FE68 // =unk_86C0900 
     ldr r1, off_803FE6C // =unk_3001B40 
     mov r2, #0x20 
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     b loc_803FE3C
 loc_803FE32:
-    ldr r0, off_803FE70 // =dword_86C0900+32 
+    ldr r0, off_803FE70 // =unk_86C0920 
     ldr r1, off_803FE6C // =unk_3001B40 
     mov r2, #0x20 
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
@@ -185,13 +185,13 @@ loc_803FE3C:
     pop {r4,r5,pc}
 off_803FE4C:    .word dword_803FE50
 dword_803FE50:    .word 0x83007E, 0x81007F
-off_803FE58:    .word dword_86BFE20+0x7C0
+off_803FE58:    .word unk_86C05E0
 dword_803FE5C:    .word 0x600DC80
 off_803FE60:    .word 0x320
     .word 0x380
-off_803FE68:    .word dword_86C0900
+off_803FE68:    .word unk_86C0900
 off_803FE6C:    .word unk_3001B40
-off_803FE70:    .word dword_86C0900+0x20
+off_803FE70:    .word unk_86C0920
 .endfunc // chatbox_803FE10
 
 .func
@@ -200,21 +200,21 @@ off_803FE70:    .word dword_86C0900+0x20
 chatbox_runScript_803FE74:
     push {r4,r5,lr}
     bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-    ldr r0, off_803FE9C // =unk_84E0554 
+    ldr r0, off_803FE9C // =byte_84E0554 
     ldr r1, dword_803FEA0 // =0x600DC80 
     ldr r2, off_803FEA4 // =0x6F8 
     bl loc_8000AC8
-    ldr r0, off_803FEAC // =unk_84E0554 
+    ldr r0, off_803FEAC // =byte_84E0554 
     ldr r1, off_803FEB0 // =unk_3001B40 
     mov r2, #0x20 
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     pop {r4,r5,pc}
 dword_803FE90:    .word 0x803FE94, 0x83007E, 0x81007F
-off_803FE9C:    .word unk_84E0554
+off_803FE9C:    .word byte_84E0554
 dword_803FEA0:    .word 0x600DC80
 off_803FEA4:    .word 0x6F8
     .word 0x380
-off_803FEAC:    .word unk_84E0554
+off_803FEAC:    .word byte_84E0554
 off_803FEB0:    .word unk_3001B40
 .endfunc // chatbox_runScript_803FE74
 
@@ -766,7 +766,7 @@ unk_8040340:    .byte  0
 .thumb_func
 chatbox_copyTiles_8040344:
     push {lr}
-    ldr r3, off_804036C // =dword_8045CEC 
+    ldr r3, off_804036C // =unk_8045CEC 
     ldr r4, dword_8040370 // =0x1D2 
     ldrb r4, [r5,r4]
     lsl r4, r4, #5
@@ -788,7 +788,7 @@ chatbox_copyTiles_8040344:
     pop {r5}
     pop {pc}
     .balign 4, 0x00
-off_804036C:    .word dword_8045CEC
+off_804036C:    .word unk_8045CEC
 dword_8040370:    .word 0x1D2
 .endfunc // chatbox_copyTiles_8040344
 
@@ -1505,7 +1505,7 @@ chatbox_maskFlags_3e:
 chatbox_ED_select_8040944:
     push {lr}
     ldrb r0, [r5,#0x16] // ChatBoxPropreties.unk_16
-    ldr r1, off_80409AC // =dword_80409B0+2 
+    ldr r1, off_80409AC // =unk_80409B2 
     ldrb r0, [r1,r0]
     lsl r0, r0, #7
     ldr r2, off_80409A4 // =unk_86A48C0 
@@ -1528,7 +1528,7 @@ chatbox_ED_select_8040944:
     lsl r0, r0, #0x10
     orr r0, r1
     ldrb r2, [r5,#0x16]
-    ldr r3, off_80409AC // =dword_80409B0+2 
+    ldr r3, off_80409AC // =unk_80409B2 
     add r2, #1
     ldrb r1, [r3,r2]
     cmp r1, #0xff
@@ -1539,7 +1539,7 @@ loc_8040986:
     strb r2, [r5,#0x16]
     ldr r2, dword_80409A0 // =0x40000000 
     orr r0, r2
-    ldr r1, dword_80409B0 // =0xE3FC 
+    ldr r1, unk_80409B0 // =0xFC 
     mov r2, #0
     lsl r2, r2, #0xa
     orr r1, r2
@@ -1551,8 +1551,11 @@ loc_8040986:
 dword_80409A0:    .word 0x40000000
 off_80409A4:    .word unk_86A48C0
 dword_80409A8:    .word 0x6017F80
-off_80409AC:    .word dword_80409B0+2
-dword_80409B0:    .word 0xE3FC
+off_80409AC:    .word unk_80409B2
+unk_80409B0:    .byte 0xFC
+    .byte 0xE3
+unk_80409B2:    .byte  0
+    .byte  0
     .word 0x0
     .word 0x1010101
     .word 0x2020101
@@ -1601,7 +1604,7 @@ chatbox_80409E0:
     .byte 0x23 
     .byte 0xEB
     .byte 0x5C 
-    .byte  1
+unk_8040A04:    .byte  1
     .byte 0x3B 
     .byte 0x99
     .byte 0x42 
@@ -2033,7 +2036,7 @@ loc_8040CDA:
     ldrb r4, [r5,r4]
     mov r0, #4
     mul r4, r0
-    ldr r0, off_8040D58 // =dword_8045CEC+232 
+    ldr r0, off_8040D58 // =unk_8045DD4 
     ldr r4, [r0,r4]
     push {r4,r6,r7}
     ldr r0, [r4,#8]
@@ -2086,7 +2089,7 @@ dword_8040D48:    .word 0x1D6
     .word 0x1D8
     .word 0x1E8
 off_8040D54:    .word 0x1EC
-off_8040D58:    .word dword_8045CEC+0xE8
+off_8040D58:    .word unk_8045DD4
 .func
 .thumb_func
 chatbox_8040D5C:
@@ -2432,7 +2435,7 @@ loc_8040FA0:
     cmp r3, #0xff
     beq loc_8040FBA
     lsl r3, r3, #2
-    ldr r0, off_8040FD8 // =dword_8045CEC+224 
+    ldr r0, off_8040FD8 // =unk_8045DCC 
     add r0, r0, r3
     ldrh r1, [r0]
     ldrh r2, [r0,#2]
@@ -2455,7 +2458,7 @@ locret_8040FD0:
     pop {pc}
     .balign 4, 0x00
 off_8040FD4:    .word off_8040FDC
-off_8040FD8:    .word dword_8045CEC+0xE0
+off_8040FD8:    .word unk_8045DCC
 off_8040FDC:    .word chatbox_804103E+1
     .word chatbox_8041090+1
     .word chatbox_80410F8+1
@@ -3113,7 +3116,7 @@ off_8041490:    .word chatbox_ED_select_8040944+1
     .word chatbox_80409E0+1
     .word 0x100
     .word off_80414A0
-off_80414A0:    .word dword_8070604+1
+off_80414A0:    .word unk_8070605
     .word 0xC0B0A09
 .endfunc // chatbox_ED_select
 
@@ -4967,7 +4970,7 @@ chatbox_804222C:
     strb r0, [r5,#5]
     ldrb r0, [r4,#2]
     lsl r0, r0, #3
-    ldr r1, off_8042288 // =dword_8043B0C+72 
+    ldr r1, off_8042288 // =unk_8043B54 
     add r0, r0, r1
     ldr r2, [r0,#4]
     push {r2}
@@ -5004,7 +5007,7 @@ chatbox_804222C:
     pop {r7,pc}
 off_8042280:    .word 0x140
 off_8042284:    .word unk_200AFA0
-off_8042288:    .word dword_8043B0C+0x48
+off_8042288:    .word unk_8043B54
 .endfunc // chatbox_804222C
 
 .func
@@ -5754,7 +5757,7 @@ dword_80427B0:    .word 0x37
 .thumb_func
 chatbox_80427B4:
     push {lr}
-    ldr r0, off_8042A94 // =sReqBBS_GUI 
+    ldr r0, off_8042A94 // =dynaicArr 
     ldr r1, dword_80427DC // =0xF 
     ldr r2, off_80427E0 // =dword_813F380 
     ldrb r1, [r0,r1]
@@ -5781,7 +5784,7 @@ off_80427E0:    .word dword_813F380
 .thumb_func
 chatbox_80427E4:
     push {lr}
-    ldr r0, off_8042A98 // =sReqBBS_GUI 
+    ldr r0, off_8042A98 // =dynaicArr 
     ldr r1, dword_80427FC // =0xF 
     ldr r2, off_8042800 // =dword_813F380 
     ldrb r1, [r0,r1]
@@ -5800,7 +5803,7 @@ off_8042800:    .word dword_813F380
 .thumb_func
 chatbox_8042804:
     push {lr}
-    ldr r0, off_8042818 // =sReqBBS_GUI 
+    ldr r0, off_8042818 // =dynaicArr 
     ldr r1, dword_804281C // =0xF 
     ldrb r0, [r0,r1]
     bl reqBBS_81408B4
@@ -5808,7 +5811,7 @@ chatbox_8042804:
     mov r0, #1
     pop {pc}
     .balign 4, 0x00
-off_8042818:    .word sReqBBS_GUI
+off_8042818:    .word dynaicArr
 dword_804281C:    .word 0xF
 .endfunc // chatbox_8042804
 
@@ -5970,8 +5973,8 @@ loc_8042A86:
     mov r7, #0
     strb r7, [r2,#2]
     pop {r4,r5,pc}
-off_8042A94:    .word sReqBBS_GUI
-off_8042A98:    .word sReqBBS_GUI
+off_8042A94:    .word dynaicArr
+off_8042A98:    .word dynaicArr
 .endfunc // chatbox_8042A14
 
 .func
@@ -8087,102 +8090,1815 @@ loc_8043AFA:
 off_8043B00:    .word sub_8033FC0+1
     .byte 0, 0, 0, 0
     .word sub_8003A64+1
-dword_8043B0C:    .word 0x8001155, 0x8003915, 0x814187D, 0x8142135, 0x8048F89
-    .word 0x814227B, 0x802D15F, 0x802D159, 0x813E661, 0x809E315
-    .word 0x813FA25, 0x809FE5F, 0x80351B5, 0x8035135, 0x8120DF1
-    .word 0x813C3AD, 0x803CEB9, 0x80AA86F, 0x200A2E0, 0x20
-    .word 0x200A340, 0x20, 0x200A300, 0x20, 0x200A360
-    .word 0x20, 0x202AA00, 0x20, 0x202AA20, 0x20
-    .word 0x202AA40, 0x20, 0x202AA60, 0x20, 0x202AA80
-    .word 0x20, 0x202AAA0, 0x20, 0x202AAC0, 0x20
-    .word 0x202AAE0, 0x20, 0x202AE00, 0x20, 0x202AE20
-    .word 0x20, 0x202AE40, 0x20, 0x202AE60, 0x20
-    .word 0x202AE80, 0x20, 0x202AEA0, 0x20, 0x202AEC0
-    .word 0x20, 0x202AEE0, 0x20, 0x202AB00, 0x20
-    .word 0x202AF00, 0x20, 0x2001186, 0x18, 0x200119E
-    .word 0x18, 0x20007D6, 0x64, 0x200083A, 0x64
-    .word 0x201FD60, 0x20, 0x2009A80, 0x4, 0x2009A82
-    .word 0x4, 0x2009A84, 0x4, 0x2009A86, 0x4
-    .word 0x2009A88, 0x4, 0x2009A8A, 0x4, 0x2009A8C
-    .word 0x4
+    .byte 0x55 
+    .byte 0x11
+    .byte  0
+    .byte  8
+    .byte 0x15
+    .byte 0x39 
+    .byte  0
+    .byte  8
+    .byte 0x7D 
+    .byte 0x18
+    .byte 0x14
+    .byte  8
+    .byte 0x35 
+    .byte 0x21 
+    .byte 0x14
+    .byte  8
+    .byte 0x89
+    .byte 0x8F
+    .byte  4
+    .byte  8
+    .byte 0x7B 
+    .byte 0x22 
+    .byte 0x14
+    .byte  8
+    .byte 0x5F 
+    .byte 0xD1
+    .byte  2
+    .byte  8
+    .byte 0x59 
+    .byte 0xD1
+    .byte  2
+    .byte  8
+    .byte 0x61 
+    .byte 0xE6
+    .byte 0x13
+    .byte  8
+    .byte 0x15
+    .byte 0xE3
+    .byte  9
+    .byte  8
+    .byte 0x25 
+    .byte 0xFA
+    .byte 0x13
+    .byte  8
+    .byte 0x5F 
+    .byte 0xFE
+    .byte  9
+    .byte  8
+    .byte 0xB5
+    .byte 0x51 
+    .byte  3
+    .byte  8
+    .byte 0x35 
+    .byte 0x51 
+    .byte  3
+    .byte  8
+    .byte 0xF1
+    .byte 0xD
+    .byte 0x12
+    .byte  8
+    .byte 0xAD
+    .byte 0xC3
+    .byte 0x13
+    .byte  8
+    .byte 0xB9
+    .byte 0xCE
+    .byte  3
+    .byte  8
+    .byte 0x6F 
+    .byte 0xA8
+    .byte 0xA
+    .byte  8
+unk_8043B54:    .byte 0xE0
+    .byte 0xA2
+    .byte  0
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x40 
+    .byte 0xA3
+    .byte  0
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0xA3
+    .byte  0
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x60 
+    .byte 0xA3
+    .byte  0
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0xAA
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x20
+    .byte 0xAA
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x40 
+    .byte 0xAA
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x60 
+    .byte 0xAA
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x80
+    .byte 0xAA
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0xA0
+    .byte 0xAA
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0xC0
+    .byte 0xAA
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0xE0
+    .byte 0xAA
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0xAE
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x20
+    .byte 0xAE
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x40 
+    .byte 0xAE
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x60 
+    .byte 0xAE
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x80
+    .byte 0xAE
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0xA0
+    .byte 0xAE
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0xC0
+    .byte 0xAE
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0xE0
+    .byte 0xAE
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0xAB
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0xAF
+    .byte  2
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x86
+    .byte 0x11
+    .byte  0
+    .byte  2
+    .byte 0x18
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x9E
+    .byte 0x11
+    .byte  0
+    .byte  2
+    .byte 0x18
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0xD6
+    .byte  7
+    .byte  0
+    .byte  2
+    .byte 0x64 
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x3A 
+    .byte  8
+    .byte  0
+    .byte  2
+    .byte 0x64 
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x60 
+    .byte 0xFD
+    .byte  1
+    .byte  2
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x80
+    .byte 0x9A
+    .byte  0
+    .byte  2
+    .byte  4
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x82
+    .byte 0x9A
+    .byte  0
+    .byte  2
+    .byte  4
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x84
+    .byte 0x9A
+    .byte  0
+    .byte  2
+    .byte  4
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x86
+    .byte 0x9A
+    .byte  0
+    .byte  2
+    .byte  4
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x88
+    .byte 0x9A
+    .byte  0
+    .byte  2
+    .byte  4
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x8A
+    .byte 0x9A
+    .byte  0
+    .byte  2
+    .byte  4
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x8C
+    .byte 0x9A
+    .byte  0
+    .byte  2
+    .byte  4
+    .byte  0
+    .byte  0
+    .byte  0
 off_8043C64:    .word unk_2011C54
     .word 0x2011C55, 0x2011C56, 0x2011C57, 0x200A293, 0x0, 0x0
     .word sSubmenu+0x20 // sSubmenu.unk_20
 dword_8043C84:    .word 0x2011A9D, 0x0
 off_8043C8C:    .word unk_2009A80
-dword_8043C90:    .word 0x2009A82, 0x2009A84, 0x2009A86, 0x2009A88, 0x2009A8A
-    .word 0x8080808, 0x8080808, 0x8080808, 0x8080808, 0x6080808
-    .word 0x8080808, 0x8080808, 0x8080808, 0x8080808, 0x7080808
-    .word 0x6080707, 0x6060707, 0x7080607, 0x7070707, 0x8070707
-    .word 0x8080808, 0x8080808, 0xB0B0B08, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0x8080808, 0x8080808
-    .word 0x8080808, 0x8080808, 0x8080808, 0x8080808, 0x8080808
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0x80B0B0B
-    .word 0x8080808, 0x8080808, 0x8080808, 0x8080808, 0x8080808
-    .word 0x8080808, 0x8080808, 0x8080808, 0x8080808, 0x6080808
-    .word 0x8080808, 0x8080808, 0x8080808, 0x8080808, 0x7080808
-    .word 0x6080707, 0x6060707, 0x7080607, 0x7070707, 0x8070707
-    .word 0x8080808, 0x8080808, 0xB0B0B08, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0x8080808, 0x8080808
-    .word 0x8080808, 0x8080808, 0x8080808, 0x8080808, 0x8080808
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0x80B0B0B
-    .word 0x8080808, 0x8080808, 0x8080808, 0x8080808, 0x8080808
-    .word 0x8080808, 0x8080808, 0x8080808, 0x8080808, 0x8080808
-    .word 0x8080808, 0x8080808, 0x8080808, 0x8080808, 0x8080808
-    .word 0x8080808, 0x8080808, 0x8080808, 0x8080808, 0x8080808
-    .word 0x8080808, 0x8080808, 0xB0B0B08, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0x8080808, 0x8080808
-    .word 0x8080808, 0x8080808, 0x8080808, 0x8080808, 0x8080808
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B
-    .word 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0xB0B0B0B, 0x80B0B0B
-    .word 0x8080808, 0x8080808, 0x8080808, 0x8080808, 0x8080808
+    .byte 0x82
+    .byte 0x9A
+    .byte  0
+    .byte  2
+    .byte 0x84
+    .byte 0x9A
+    .byte  0
+    .byte  2
+    .byte 0x86
+    .byte 0x9A
+    .byte  0
+    .byte  2
+    .byte 0x88
+    .byte 0x9A
+    .byte  0
+    .byte  2
+    .byte 0x8A
+    .byte 0x9A
+    .byte  0
+    .byte  2
+unk_8043CA4:    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  6
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  7
+    .byte  7
+    .byte  7
+    .byte  8
+    .byte  6
+    .byte  7
+    .byte  7
+    .byte  6
+    .byte  6
+    .byte  7
+    .byte  6
+    .byte  8
+    .byte  7
+    .byte  7
+    .byte  7
+    .byte  7
+    .byte  7
+    .byte  7
+    .byte  7
+    .byte  7
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+unk_8043E84:    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  6
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  7
+    .byte  7
+    .byte  7
+    .byte  8
+    .byte  6
+    .byte  7
+    .byte  7
+    .byte  6
+    .byte  6
+    .byte  7
+    .byte  6
+    .byte  8
+    .byte  7
+    .byte  7
+    .byte  7
+    .byte  7
+    .byte  7
+    .byte  7
+    .byte  7
+    .byte  7
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+unk_8044064:    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte 0xB
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
+    .byte  8
 byte_8044244:    .byte 0x3D
 byte_8044245:    .byte 0x3
     .hword 0x95C
@@ -8452,17 +10168,36 @@ off_80447F0:    .word dword_8740E90
     .word dword_87414AC
     .word dword_8741D04
     .word dword_8742318
-off_8044800:    .word aTWH0w07wLaw0ew
-    .word aTWH0w07wLaw0ew+0x14
-    .word aJwPlwXpwTwVw
-    .word aJwPlwXpwTwVw+0x14
+off_8044800:    .word byte_8044814
+    .word unk_8044828
+    .word byte_804483C
+    .word unk_8044850
     .word off_8044864
-aTWH0w07wLaw0ew:    .byte 0x74, 0x29, 0x77, 0x8, 0x68, 0x30, 0x77, 0x8, 0x30, 0x37, 0x77, 0x8, 0x6C, 0x41, 0x77, 0x8, 0x30, 0x45
-    .byte 0x77, 0x8, 0x48, 0x4F, 0x77, 0x8, 0x8, 0x52, 0x77, 0x8, 0x7C, 0x56, 0x77, 0x8, 0x60, 0x5B, 0x77, 0x8
-    .byte 0x0
+byte_8044814:    .byte 0x74, 0x29, 0x77, 0x8, 0x68, 0x30, 0x77, 0x8
+    .byte 0x30, 0x37, 0x77, 0x8, 0x6C, 0x41, 0x77, 0x8
+    .byte 0x30, 0x45, 0x77, 0x8
+unk_8044828:    .byte 0x48 
+    .byte 0x4F 
+    .byte 0x77 
+    .byte  8
+    .byte  8
+    .byte 0x52 
+    .byte 0x77 
+    .byte  8
+    .byte 0x7C 
+    .byte 0x56 
+    .byte 0x77 
+    .byte  8
+    .byte 0x60 
+    .byte 0x5B 
+    .byte 0x77 
+    .byte  8
+    .byte  0
     .byte 0x5E, 0x77, 0x8
-aJwPlwXpwTwVw:    .byte 0x20, 0x6A, 0x77, 0x8, 0x50, 0x6C, 0x77, 0x8, 0x78, 0x70, 0x77, 0x8
-    .byte 0x28, 0x74, 0x77, 0x8, 0x7C, 0x76, 0x77, 0x8, 0x0
+byte_804483C:    .byte 0x20, 0x6A, 0x77, 0x8, 0x50, 0x6C, 0x77, 0x8
+    .byte 0x78, 0x70, 0x77, 0x8, 0x28, 0x74, 0x77, 0x8
+    .byte 0x7C, 0x76, 0x77, 0x8
+unk_8044850:    .byte  0
     .byte 0x84, 0x77, 0x8
     .word dword_87786EC
     .word dword_8778810
@@ -8477,7 +10212,7 @@ off_8044878:    .word dword_8759EF8
     .word dword_875A2C4
     .word dword_875A918
     .word dword_875B064
-    .word dword_875B30C
+    .word unk_875B30C
 off_804488C:    .word dword_87428D4
     .word dword_8742D64
     .word dword_87433BC
@@ -8512,12 +10247,12 @@ off_8044900:    .word off_877E554
     .word off_877E560
     .word dword_877E56C
     .word dword_877E620
-off_8044914:    .word dword_875B30C+0x1A4
-    .word dword_875B30C+0x628
-    .word dword_875BB0C+0x1A8
-    .word dword_875BB0C+0x350
-    .word dword_875BB0C+0x474
-off_8044928:    .word dword_87439F8+0x574
+off_8044914:    .word unk_875B4B0
+    .word unk_875B934
+    .word unk_875BCB4
+    .word unk_875BE5C
+    .word unk_875BF80
+off_8044928:    .word unk_8743F6C
     .word 0x8743F6C
     .word 0x87444C8
     .word 0x8744B38
@@ -8525,8 +10260,8 @@ off_8044938:    .word off_8044948
     .word off_804495C
     .word off_8044970
     .word off_8044984
-off_8044948:    .word dword_877E668+0x770
-    .word dword_877E668+0x770
+off_8044948:    .word unk_877EDD8
+    .word unk_877EDD8
     .word 0x877EDD8
     .word 0x877F460
     .word dword_877F594
@@ -9068,7 +10803,7 @@ off_8045178:    .word dword_875F038
     .word dword_875F424
     .word dword_875F838
 off_8045184:    .word dword_874F5C4
-    .word dword_874F980
+    .word unk_874F980
     .word dword_87502B4
     .word dword_8750B80
 off_8045194:    .word off_804519C
@@ -9314,41 +11049,500 @@ dword_8045CCC:    .word 0x30501, 0x0
     .word 0x40605, 0x0
     .word 0x20100, 0x0
     .word 0x90207, 0x0
-dword_8045CEC:    .word 0x86BECA0, 0x86BEE80, 0x86BF060, 0x86BF240, 0x86BF240
-    .word 0x86BF060, 0x86BEE80, 0x86BECA0, 0x86BF420, 0x86BF600
-    .word 0x86BF7E0, 0x86BF9C0, 0x86BF9C0, 0x86BF7E0, 0x86BF600
-    .word 0x86BF420, 0x86BECA0, 0x86BEE80, 0x86BF060, 0x86BF240
-    .word 0x804590C, 0x8045A4C, 0x8045B8C, 0xFF, 0x201F070
-    .word 0x201F070, 0x201F070, 0x201F070, 0x201F070, 0x201F070
-    .word 0x201F070, 0x201F070, 0x86BFE60, 0x86C0040, 0x86C0220
-    .word 0x86C0400, 0x86C0400, 0x86C0220, 0x86C0040, 0x86BFE60
-    .word 0x84E0554, 0x84E0554, 0x84E0554, 0x84E0554, 0x84E0554
-    .word 0x84E0554, 0x84E0554, 0x84E0554, 0x86C0940, 0x86C0940
-    .word 0x86C0940, 0x86C0940, 0x86C0940, 0x86C0940, 0x86C0940
-    .word 0x86C0940, 0x8D00E2, 0x8D00CA, 0x8045DF0, 0x8045E10
-    .word 0x8045E30, 0x8045E50, 0x8045E70, 0x8045E90, 0x8045EB0
-    .word 0x40000001, 0x8010, 0x86F2980, 0x6010200, 0x80
-    .word 0x86F2960, 0x3001650, 0x20, 0x40000001, 0x8014
-    .word 0x86F2A00, 0x6010280, 0x80, 0x86F2960, 0x3001650
-    .word 0x20, 0x40000001, 0x8018, 0x86F2A80, 0x6010300
-    .word 0x80, 0x86F2960, 0x3001650, 0x20, 0x40000001
-    .word 0x801C, 0x86F2B00, 0x6010380, 0x80, 0x86F2960
-    .word 0x3001650, 0x20, 0x40000001, 0x8020, 0x86F2B80
-    .word 0x6010400, 0x80, 0x86F2960, 0x3001650, 0x20
-    .word 0x40000001, 0x8024, 0x86F2C00, 0x6010480, 0x80
-    .word 0x86F2960, 0x3001650, 0x20, 0x40000001, 0x8028
-    .word 0x86F2C80, 0x6010500, 0x80, 0x86F2960, 0x3001650
-    .word 0x20
+unk_8045CEC:    .byte 0xA0
+    .byte 0xEC
+    .byte 0x6B 
+    .byte  8
+    .byte 0x80
+    .byte 0xEE
+    .byte 0x6B 
+    .byte  8
+    .byte 0x60 
+    .byte 0xF0
+    .byte 0x6B 
+    .byte  8
+    .byte 0x40 
+    .byte 0xF2
+    .byte 0x6B 
+    .byte  8
+    .byte 0x40 
+    .byte 0xF2
+    .byte 0x6B 
+    .byte  8
+    .byte 0x60 
+    .byte 0xF0
+    .byte 0x6B 
+    .byte  8
+    .byte 0x80
+    .byte 0xEE
+    .byte 0x6B 
+    .byte  8
+    .byte 0xA0
+    .byte 0xEC
+    .byte 0x6B 
+    .byte  8
+    .byte 0x20
+    .byte 0xF4
+    .byte 0x6B 
+    .byte  8
+    .byte  0
+    .byte 0xF6
+    .byte 0x6B 
+    .byte  8
+    .byte 0xE0
+    .byte 0xF7
+    .byte 0x6B 
+    .byte  8
+    .byte 0xC0
+    .byte 0xF9
+    .byte 0x6B 
+    .byte  8
+    .byte 0xC0
+    .byte 0xF9
+    .byte 0x6B 
+    .byte  8
+    .byte 0xE0
+    .byte 0xF7
+    .byte 0x6B 
+    .byte  8
+    .byte  0
+    .byte 0xF6
+    .byte 0x6B 
+    .byte  8
+    .byte 0x20
+    .byte 0xF4
+    .byte 0x6B 
+    .byte  8
+    .byte 0xA0
+    .byte 0xEC
+    .byte 0x6B 
+    .byte  8
+    .byte 0x80
+    .byte 0xEE
+    .byte 0x6B 
+    .byte  8
+    .byte 0x60 
+    .byte 0xF0
+    .byte 0x6B 
+    .byte  8
+    .byte 0x40 
+    .byte 0xF2
+    .byte 0x6B 
+    .byte  8
+    .byte 0xC
+    .byte 0x59 
+    .byte  4
+    .byte  8
+    .byte 0x4C 
+    .byte 0x5A 
+    .byte  4
+    .byte  8
+    .byte 0x8C
+    .byte 0x5B 
+    .byte  4
+    .byte  8
+    .byte 0xFF
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x70 
+    .byte 0xF0
+    .byte  1
+    .byte  2
+    .byte 0x70 
+    .byte 0xF0
+    .byte  1
+    .byte  2
+    .byte 0x70 
+    .byte 0xF0
+    .byte  1
+    .byte  2
+    .byte 0x70 
+    .byte 0xF0
+    .byte  1
+    .byte  2
+    .byte 0x70 
+    .byte 0xF0
+    .byte  1
+    .byte  2
+    .byte 0x70 
+    .byte 0xF0
+    .byte  1
+    .byte  2
+    .byte 0x70 
+    .byte 0xF0
+    .byte  1
+    .byte  2
+    .byte 0x70 
+    .byte 0xF0
+    .byte  1
+    .byte  2
+    .byte 0x60 
+    .byte 0xFE
+    .byte 0x6B 
+    .byte  8
+    .byte 0x40 
+    .byte  0
+    .byte 0x6C 
+    .byte  8
+    .byte 0x20
+    .byte  2
+    .byte 0x6C 
+    .byte  8
+    .byte  0
+    .byte  4
+    .byte 0x6C 
+    .byte  8
+    .byte  0
+    .byte  4
+    .byte 0x6C 
+    .byte  8
+    .byte 0x20
+    .byte  2
+    .byte 0x6C 
+    .byte  8
+    .byte 0x40 
+    .byte  0
+    .byte 0x6C 
+    .byte  8
+    .byte 0x60 
+    .byte 0xFE
+    .byte 0x6B 
+    .byte  8
+    .byte 0x54 
+    .byte  5
+    .byte 0x4E 
+    .byte  8
+    .byte 0x54 
+    .byte  5
+    .byte 0x4E 
+    .byte  8
+    .byte 0x54 
+    .byte  5
+    .byte 0x4E 
+    .byte  8
+    .byte 0x54 
+    .byte  5
+    .byte 0x4E 
+    .byte  8
+    .byte 0x54 
+    .byte  5
+    .byte 0x4E 
+    .byte  8
+    .byte 0x54 
+    .byte  5
+    .byte 0x4E 
+    .byte  8
+    .byte 0x54 
+    .byte  5
+    .byte 0x4E 
+    .byte  8
+    .byte 0x54 
+    .byte  5
+    .byte 0x4E 
+    .byte  8
+    .byte 0x40 
+    .byte  9
+    .byte 0x6C 
+    .byte  8
+    .byte 0x40 
+    .byte  9
+    .byte 0x6C 
+    .byte  8
+    .byte 0x40 
+    .byte  9
+    .byte 0x6C 
+    .byte  8
+    .byte 0x40 
+    .byte  9
+    .byte 0x6C 
+    .byte  8
+    .byte 0x40 
+    .byte  9
+    .byte 0x6C 
+    .byte  8
+    .byte 0x40 
+    .byte  9
+    .byte 0x6C 
+    .byte  8
+    .byte 0x40 
+    .byte  9
+    .byte 0x6C 
+    .byte  8
+    .byte 0x40 
+    .byte  9
+    .byte 0x6C 
+    .byte  8
+unk_8045DCC:    .byte 0xE2
+    .byte  0
+    .byte 0x8D
+    .byte  0
+    .byte 0xCA
+    .byte  0
+    .byte 0x8D
+    .byte  0
+unk_8045DD4:    .byte 0xF0
+    .byte 0x5D 
+    .byte  4
+    .byte  8
+    .byte 0x10
+    .byte 0x5E 
+    .byte  4
+    .byte  8
+    .byte 0x30 
+    .byte 0x5E 
+    .byte  4
+    .byte  8
+    .byte 0x50 
+    .byte 0x5E 
+    .byte  4
+    .byte  8
+    .byte 0x70 
+    .byte 0x5E 
+    .byte  4
+    .byte  8
+    .byte 0x90
+    .byte 0x5E 
+    .byte  4
+    .byte  8
+    .byte 0xB0
+    .byte 0x5E 
+    .byte  4
+    .byte  8
+    .byte  1
+    .byte  0
+    .byte  0
+    .byte 0x40 
+    .byte 0x10
+    .byte 0x80
+    .byte  0
+    .byte  0
+    .byte 0x80
+    .byte 0x29 
+    .byte 0x6F 
+    .byte  8
+    .byte  0
+    .byte  2
+    .byte  1
+    .byte  6
+    .byte 0x80
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x60 
+    .byte 0x29 
+    .byte 0x6F 
+    .byte  8
+    .byte 0x50 
+    .byte 0x16
+    .byte  0
+    .byte  3
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  1
+    .byte  0
+    .byte  0
+    .byte 0x40 
+    .byte 0x14
+    .byte 0x80
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x2A 
+    .byte 0x6F 
+    .byte  8
+    .byte 0x80
+    .byte  2
+    .byte  1
+    .byte  6
+    .byte 0x80
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x60 
+    .byte 0x29 
+    .byte 0x6F 
+    .byte  8
+    .byte 0x50 
+    .byte 0x16
+    .byte  0
+    .byte  3
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  1
+    .byte  0
+    .byte  0
+    .byte 0x40 
+    .byte 0x18
+    .byte 0x80
+    .byte  0
+    .byte  0
+    .byte 0x80
+    .byte 0x2A 
+    .byte 0x6F 
+    .byte  8
+    .byte  0
+    .byte  3
+    .byte  1
+    .byte  6
+    .byte 0x80
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x60 
+    .byte 0x29 
+    .byte 0x6F 
+    .byte  8
+    .byte 0x50 
+    .byte 0x16
+    .byte  0
+    .byte  3
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  1
+    .byte  0
+    .byte  0
+    .byte 0x40 
+    .byte 0x1C
+    .byte 0x80
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x2B 
+    .byte 0x6F 
+    .byte  8
+    .byte 0x80
+    .byte  3
+    .byte  1
+    .byte  6
+    .byte 0x80
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x60 
+    .byte 0x29 
+    .byte 0x6F 
+    .byte  8
+    .byte 0x50 
+    .byte 0x16
+    .byte  0
+    .byte  3
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  1
+    .byte  0
+    .byte  0
+    .byte 0x40 
+    .byte 0x20
+    .byte 0x80
+    .byte  0
+    .byte  0
+    .byte 0x80
+    .byte 0x2B 
+    .byte 0x6F 
+    .byte  8
+    .byte  0
+    .byte  4
+    .byte  1
+    .byte  6
+    .byte 0x80
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x60 
+    .byte 0x29 
+    .byte 0x6F 
+    .byte  8
+    .byte 0x50 
+    .byte 0x16
+    .byte  0
+    .byte  3
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  1
+    .byte  0
+    .byte  0
+    .byte 0x40 
+    .byte 0x24 
+    .byte 0x80
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x2C 
+    .byte 0x6F 
+    .byte  8
+    .byte 0x80
+    .byte  4
+    .byte  1
+    .byte  6
+    .byte 0x80
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x60 
+    .byte 0x29 
+    .byte 0x6F 
+    .byte  8
+    .byte 0x50 
+    .byte 0x16
+    .byte  0
+    .byte  3
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte  1
+    .byte  0
+    .byte  0
+    .byte 0x40 
+    .byte 0x28 
+    .byte 0x80
+    .byte  0
+    .byte  0
+    .byte 0x80
+    .byte 0x2C 
+    .byte 0x6F 
+    .byte  8
+    .byte  0
+    .byte  5
+    .byte  1
+    .byte  6
+    .byte 0x80
+    .byte  0
+    .byte  0
+    .byte  0
+    .byte 0x60 
+    .byte 0x29 
+    .byte 0x6F 
+    .byte  8
+    .byte 0x50 
+    .byte 0x16
+    .byte  0
+    .byte  3
+    .byte 0x20
+    .byte  0
+    .byte  0
+    .byte  0
 .endfunc // chatbox_8043A5C
 
 .func
 .thumb_func
 chatbox_8045ED0:
     push {r1,lr}
-    ldr r1, off_8045ED8 // =dword_8043C90+20 
+    ldr r1, off_8045ED8 // =unk_8043CA4 
     ldrb r0, [r1,r0]
     pop {r1,pc}
-off_8045ED8:    .word dword_8043C90+0x14
+off_8045ED8:    .word unk_8043CA4
 .endfunc // chatbox_8045ED0
 
 .func

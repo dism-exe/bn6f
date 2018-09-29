@@ -71,7 +71,7 @@
 
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global sub_80008B4
+// .global clearBackwards_80008B4 // (void *mem, int size) -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
@@ -102,6 +102,8 @@
 // .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 // .global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+
+.include "asm/asm03_1.inc"
 // .global sub_803CB00
 // .global sub_803CE28
 // .global sub_803CE44

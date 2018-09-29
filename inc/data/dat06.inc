@@ -14,6 +14,10 @@
 .global off_8059DE8
 .global off_805DD24
 .global off_805DE28
+.global unk_805DE50
+.global unk_805DE78
+.global unk_805DEA8
+.global unk_805DED8
 
 
 /* External Symbols */

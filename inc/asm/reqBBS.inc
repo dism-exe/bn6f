@@ -22,6 +22,7 @@
 .global reqBBS_setFlag_e17b0f7_8140A00
 .global reqBBS_clearFlag_8140A0C
 .global reqBBS_runDialog_8140A70
+.global dword_8140BAC
 .global dword_8140C60
 .global dword_8140C68
 .global dword_8140C7C
@@ -87,7 +88,7 @@
 // .global chatbox_8040818
 // .global chatbox_8045F3C
 
-.include "asm/asm03_1.inc"
+.include "asm/asm03_2.inc"
 // .global render_graphicalText_8045F8C
 // .global sub_8045FC6
 // .global sub_80465A0 // (void *a1) -> void
@@ -113,15 +114,15 @@
 .include "asm/asm37_1.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
-.include "data/dat38_2.inc"
+.include "data/dat38_42.inc"
 // .global dword_86A5D60
-// .global dword_86ACD24
+// .global unk_86ACD60
 // .global dword_86B7AE0
 
-.include "data/dat38_27.inc"
+.include "data/dat38_70.inc"
 // .global dword_87DAC90
 
-.include "data/dat38_32.inc"
+.include "data/dat38_75.inc"
 // .global dword_87E74F4
 // .global dword_87E7514
 // .global dword_87E7534
@@ -150,12 +151,8 @@
 .equ byte_2001154, 0x2001154
 .equ dword_2001178, 0x2001178
 .equ unk_2001400, 0x2001400
-.equ sReqBBS_GUI, 0x2005780
-.equ sReqBBS_GUI, 0x2005780
-.equ sReqBBS_GUI, 0x2005780
-.equ sReqBBS_GUI, 0x2005780
-.equ sReqBBS_GUI, 0x2005780
-.equ sReqBBS_GUI, 0x2005780
+.equ dynaicArr, 0x2005780
+.equ unk_200578F, 0x200578F
 .equ reqBBS_numRequestsSent, 0x20065B0
 .equ byte_2008450, 0x2008450
 .equ sChatbox, 0x2009CD0

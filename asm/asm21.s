@@ -6,7 +6,7 @@ sub_8080D90:
     push {lr}
     ldr r0, off_8080D9C // =dword_2009690 
     mov r1, #8
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     pop {pc}
 off_8080D9C:    .word dword_2009690
 .endfunc // sub_8080D90
@@ -73,70 +73,70 @@ locret_8080DE8:
 off_8080E2C:    .word off_8081220
 off_8080E30:    .word off_8080E34
 off_8080E34:    .word locret_8001AB4+1
-    .word loc_80019B4+1
+    .word sub_80019B4+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_80019B4+1
+    .word sub_80019B4+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
     .word locret_8001AB4+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_80019B4+1
+    .word sub_80019B4+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_80019B4+1
+    .word sub_80019B4+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_80019B4+1
+    .word sub_80019B4+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_80019EC+1
+    .word sub_80019EC+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_80019B4+1
+    .word sub_80019B4+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_80019B4+1
+    .word sub_80019B4+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_80019B4+1
+    .word sub_80019B4+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_8001A58+1
+    .word sub_8001A58+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_80019B4+1
+    .word sub_80019B4+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_8001A58+1
+    .word sub_8001A58+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_80019B4+1
+    .word sub_80019B4+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_80019B4+1
+    .word sub_80019B4+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word locret_80019B0+1
+    .word nullsub_35+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_80019B4+1
+    .word sub_80019B4+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word locret_80019B0+1
+    .word nullsub_35+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_8001A10+1
+    .word sub_8001A10+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_80019B4+1
+    .word sub_80019B4+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_8001A34+1
+    .word sub_8001A34+1
     .word 0x3005CD9, 0x0
     .word locret_8001AB4+1
-    .word loc_80019B4+1
+    .word sub_80019B4+1
     .word 0x3005CD9, 0x0
 off_8080F94:    .word off_8080F98
 off_8080F98:    .word off_8080FF0
@@ -262,7 +262,7 @@ off_8081220:    .word dword_8081278
     .word off_80812F4
     .word off_80812FC
 dword_8081278:    .word 0xFFFFFFFF
-off_808127C:    .word dword_806C1E0+0x2C
+off_808127C:    .word off_806C20C
     .word 0xFFFFFFFF
 dword_8081284:    .word 0xFFFFFFFF
 off_8081288:    .word dword_807F604+0x8C
@@ -279,23 +279,23 @@ off_80812B0:    .word dword_807FAC4+0x6B4
     .word 0xFFFFFFFF
 off_80812B8:    .word dword_807FAC4+0x7E4
     .word 0xFFFFFFFF
-off_80812C0:    .word dword_80802C4+0x2FC
+off_80812C0:    .word unk_80805C0
     .word 0xFFFFFFFF
-off_80812C8:    .word dword_80802C4+0x5EC
+off_80812C8:    .word unk_80808B0
     .word 0xFFFFFFFF
-off_80812D0:    .word dword_80802C4+0x614
-    .word dword_806992C+0x1C4
+off_80812D0:    .word unk_80808D8
+    .word dword_8069AF0
     .word 0xFFFFFFFF
-off_80812DC:    .word dword_80802C4+0x2D4
+off_80812DC:    .word unk_8080598
     .word 0xFFFFFFFF
 off_80812E4:    .word off_806A810
     .word 0xFFFFFFFF
-off_80812EC:    .word dword_80802C4+0x7DC
+off_80812EC:    .word unk_8080AA0
     .word 0xFFFFFFFF
 off_80812F4:    .word off_807EB18
     .word 0xFFFFFFFF
-off_80812FC:    .word dword_80802C4+0x614
-    .word dword_806992C+0x354
+off_80812FC:    .word unk_80808D8
+    .word off_8069C80
     .word 0xFFFFFFFF
 .func
 .thumb_func

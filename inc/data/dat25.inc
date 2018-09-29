@@ -2,10 +2,11 @@
 .equ INC_DATA_DAT25, 0
 
 /* Public Symbols */
+.global unk_809083F
 
 
 /* External Symbols */
-.include "asm/asm03_0.inc"
+.include "asm/asm03_1.inc"
 // .global dword_80348F8
 // .global off_8034938
 

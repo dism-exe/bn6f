@@ -103,7 +103,7 @@ sub_8075530:
     .balign 4, 0x00
 off_8075564:    .word off_8075568
 off_8075568:    .word locret_8001AB4+1
-    .word loc_80019D0+1
+    .word sub_80019D0+1
     .byte 0xD9
     .byte 0x5C 
     .byte  0

@@ -3,7 +3,7 @@
 .func
 start_:
     b loc_80000D0
-dword_8000004:    .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B2411
+    .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B2411
     .word 0x217F81C0, 0x19BE52A3, 0x20CE0993, 0x4A4A4610, 0xEC3127F8
     .word 0x33E8C758, 0xBFCEE382, 0x94DFF485, 0xC1094BCE, 0xC08A5694
     .word 0xFCA77213, 0x734D849F, 0x619ACAA3, 0x27A39758, 0x769803FC
@@ -12,18 +12,18 @@ dword_8000004:    .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B241
     .word 0xFF34A2F9, 0x44033EBB, 0xCB900078, 0x943A1188, 0x637CC065
     .word 0xAF3CF087, 0x8BE425D6, 0x72AC0A38, 0x7F8D421, 0x4147454D
     .word 0x364E414D, 0x5858465F, 0x45365242, 0x963830, 0x0
+    .word 0x0, 0x5900, 0x0, 0x0, 0x0
     .word 0x0
-    .word 0x5900, 0x0, 0x0, 0x0, 0x0
 loc_80000D0:
     mov r0, #0x12
     msr cpsr_cf, r0
-    ldr r13, dword_80001EC // =0x3007F60 
+    ldr r13, dword_80001EC // = 
     mov r0, #0x13
     msr cpsr_cf, r0
-    ldr r13, dword_80001F0 // =0x3007FE0 
+    ldr r13, dword_80001F0 // = 
     mov r0, #0x1f
     msr cpsr_cf, r0
-    ldr r13, dword_80001F4 // =0x3007E00 
+    ldr r13, dword_80001F4 // = 
     ldr r0, off_80001F8 // =loc_3007FFC 
     ldr r1, dword_80001FC // =loc_3005B00 
     str r1, [r0]
@@ -31,7 +31,7 @@ loc_80000D0:
     ldr r1, dword_8000204 // =0x45B4 
     str r1, [r0]
     // mem
-    mov r0, #0x3000000 // word_3000000
+    mov r0, #0x3000000 // unk_3000000
     // size
     mov r1, #0x7e00
     bl start_clearMemory // (void *mem, int size) -> void
@@ -71,74 +71,23 @@ loc_80000D0:
     ldr r0, off_800021C // =start_800023C+1 
     mov lr, pc
     bx r0
-    .byte 0x9C
-    .byte  0
-    .byte 0x9F
-    .byte 0xE5
-    .byte  0
-    .byte 0x10
-    .byte 0xA0
-    .byte 0xE3
-    .byte  0
-    .byte 0x10
-    .byte 0xC0
-    .byte 0xE5
-    .byte 0x94
-    .byte  0
-    .byte 0x9F
-    .byte 0xE5
-    .byte  1
-    .byte 0x10
-    .byte 0xA0
-    .byte 0xE3
-    .byte  0
-    .byte 0x10
-    .byte 0x80
-    .byte 0xE5
-    .byte 0x8C
-    .byte  0
-    .byte 0x9F
-    .byte 0xE5
-    .byte  0
-    .byte 0x10
-    .byte 0xA0
-    .byte 0xE3
-    .byte  0
-    .byte 0x10
-    .byte 0x80
-    .byte 0xE5
-    .byte 0x84
-    .byte  0
-    .byte 0x9F
-    .byte 0xE5
-    .byte  8
-    .byte 0x10
-    .byte 0xA0
-    .byte 0xE3
-    .byte 0xB0
-    .byte 0x10
-    .byte 0xC0
-    .byte 0xE1
-    .byte 0x7C 
-    .byte  0
-    .byte 0x9F
-    .byte 0xE5
-    .byte 0x7C 
-    .byte 0x10
-    .byte 0x9F
-    .byte 0xE5
-    .byte 0xB0
-    .byte 0x10
-    .byte 0xC0
-    .byte 0xE1
-    .byte 0x78 
-    .byte  0
-    .byte 0x9F
-    .byte 0xE5
-    .byte 0x10
-    .byte 0xFF
-    .byte 0x2F 
-    .byte 0xE1
+    ldr r0, off_8000220 // =byte_20081B0 
+    mov r1, #0
+    strb r1, [r0]
+    ldr r0, off_8000224 // =dword_2009930 
+    mov r1, #1
+    str r1, [r0]
+    ldr r0, off_8000228 // =dword_200A870 
+    mov r1, #0
+    str r1, [r0]
+    ldr r0, off_800022C // =GeneralLCDStatus_STAT_LYC_ 
+    mov r1, #8
+    strh r1, [r0]
+    ldr r0, off_8000230 // =KeyInterruptControl 
+    ldr r1, dword_8000234 // =0x83FF 
+    strh r1, [r0]
+    ldr r0, off_8000238 // =main_+1 
+    bx r0
     b start_
 .endfunc // start_
 
@@ -175,13 +124,13 @@ size:    .word 0x1ED4
 off_8000214:    .word CpuSet_toolKit+1
 off_8000218:    .word sub_8006C22+1
 off_800021C:    .word start_800023C+1
-    .word byte_20081B0
-    .word dword_2009930
-    .word dword_200A870
-    .word GeneralLCDStatus_STAT_LYC_
-    .word KeyInterruptControl
-    .word 0x83FF
-    .word main_+1
+off_8000220:    .word byte_20081B0
+off_8000224:    .word dword_2009930
+off_8000228:    .word dword_200A870
+off_800022C:    .word GeneralLCDStatus_STAT_LYC_
+off_8000230:    .word KeyInterruptControl
+dword_8000234:    .word 0x83FF
+off_8000238:    .word main_+1
 .endfunc // start_copyMemory
 
 .func
@@ -251,10 +200,8 @@ start_8000288:
     ldr r1, off_8000298 // =sub_3005E2C+1 
     mov lr, pc
     bx r1
-    .byte  1
-    .byte 0xBC
-    .byte  0
-    .byte 0x47 
+    pop {r0}
+    bx r0
 dword_8000294:    .word 0x3005E19
 off_8000298:    .word sub_3005E2C+1
 .endfunc // start_8000288

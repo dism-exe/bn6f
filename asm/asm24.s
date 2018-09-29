@@ -312,6 +312,9 @@ loc_808CB06:
     mov r0, #0
     pop {r5,pc}
     .balign 4, 0x00
+.func
+.thumb_func
+sub_808CB0C:
     push {r4-r7,lr}
     ldr r5, off_808CB9C // =dword_808C684+960 
     ldr r5, [r5]
@@ -376,6 +379,8 @@ locret_808CB96:
     pop {r4-r7,pc}
 dword_808CB98:    .word 0x13B
 off_808CB9C:    .word dword_808C684+0x3C0
+.endfunc // sub_808CB0C
+
 .func
 .thumb_func
 sub_808CBA0:

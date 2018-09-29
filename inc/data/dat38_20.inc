@@ -2,15 +2,20 @@
 .equ INC_DATA_DAT38_20, 0
 
 /* Public Symbols */
-.global unk_86D7578
-.global unk_86D78C0
-.global unk_86D7C24
-.global unk_86D7F74
-.global unk_86D82C4
-.global unk_86D860C
-.global unk_86D894C
+.global byte_849B424
+.global byte_849BA28
+.global byte_849D164
+.global byte_849E54C
+.global byte_849FBC0
 
 
 /* External Symbols */
+.include "data/dat38_17.inc"
+// .global unk_8420000
+
+
+/* Undeclared Symbols */
+.equ unk_3000000, 0x3000000
+.equ LCDControl, 0x4000000
 
 .endif // INC_DATA_DAT38_20

@@ -856,7 +856,7 @@ dword_8123964:    .word comp_86CEC3C + 1<<31
     .word 0x6012800
     .word decomp_2013A00
     .word comp_86C7F70 + 1<<31
-    .word  0x30015F0
+    .word 0x30015F0
     .word decomp_2013A00
     .word comp_86C7F98 + 1<<31
     .word 0x6012C00
@@ -2014,7 +2014,7 @@ sub_8124384:
     ldr r0, off_81243AC // =unk_201C400 
     add r4, r0, #0
     mov r1, #0x10
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     mov r7, #0x80
     mov r3, #0
 loc_8124394:
@@ -7644,7 +7644,7 @@ loc_81274BC:
     blt loc_81274BC
     mov r3, #2
 loc_81274CA:
-    ldr r1, dword_81274F0 // =0x8127532 
+    ldr r1, dword_81274F0 // = 
     ldrb r0, [r1,r3]
 loc_81274CE:
     mov r1, #0xc0
@@ -7915,10 +7915,10 @@ sub_8127638:
     ldr r0, off_8127708 // =byte_201D74C 
     add r6, r0, #0
     mov r1, #0x28 
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     ldr r0, off_8127714 // =unk_2024394 
     mov r1, #0x28 
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     mov r4, #0
 loc_812764E:
     add r0, r4, #0
@@ -9077,7 +9077,7 @@ sub_81280DC:
     str r3, [sp]
     ldr r0, off_812816C // =unk_2026700 
     ldr r1, off_8128184 // =0x170 
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     ldr r1, [sp,#8]
     tst r1, r1
     beq loc_8128168
@@ -9981,7 +9981,7 @@ sub_81289C4:
     push {r4-r7,lr}
     ldr r0, off_8128A24 // =word_201BF00 
     ldr r1, dword_8128A28 // =0xDE 
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     mov r6, #0
     mov r4, #0
 loc_81289D2:
@@ -10003,7 +10003,7 @@ loc_81289EC:
     ble loc_81289D2
     strh r6, [r5,#0x1e]
     ldr r6, off_8128A24 // =word_201BF00 
-    ldr r7, dword_8128A34 // =0x201BFDE 
+    ldr r7, dword_8128A34 // = 
     mov r4, #0
 loc_81289FA:
     ldrh r0, [r6]
@@ -16981,7 +16981,7 @@ sub_812C194:
     add r1, #0x10
     mov r2, #0xf0
     and r1, r2
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     pop {r4-r7,pc}
 loc_812C1AE:
     add r0, r7, #0
@@ -16989,7 +16989,7 @@ loc_812C1AE:
     add r1, #0x10
     mov r2, #0xf0
     and r1, r2
-    bl sub_80008B4
+    bl clearBackwards_80008B4 // (void *mem, int size) -> void
     mov r0, #0x1e
     mov r1, #0x20 
     lsl r0, r0, #8

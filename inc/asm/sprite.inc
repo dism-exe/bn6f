@@ -57,15 +57,17 @@
 // .global sub_802FE48
 // .global sub_802FE6A
 // .global sub_802FE7A
-// .global dword_8031CC4
-// .global dword_8032530
-// .global dword_8032530
+
+.include "data/pt_8031CC4.inc"
+// .global pt_8031CC4
+// .global off_8032598
+// .global off_803271C
 
 .include "asm/asm37_1.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
-.include "data/dat38_0.inc"
-// .global unk_84E0554
+.include "data/dat38_40.inc"
+// .global byte_84E0554
 
 
 /* Undeclared Symbols */

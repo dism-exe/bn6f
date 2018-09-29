@@ -15,9 +15,6 @@
 
 
 /* External Symbols */
-.include "asm/start.inc"
-// .global dword_8000004
-
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
@@ -62,7 +59,7 @@
 // .global sub_80048B2
 // .global sub_80062C8
 // .global engine_isScreeneffectAnimating // () -> zf
-// .global dword_80065D0
+// .global unk_80065E0
 // .global dword_8006660
 
 .include "asm/asm00_2.inc"
@@ -109,6 +106,8 @@
 // .global sub_80302A8
 // .global sub_8031612
 // .global sub_8031A7A
+
+.include "asm/asm03_1.inc"
 // .global sub_8034C36
 // .global sub_8035694
 // .global init_s_02011C50_8036E90
@@ -241,10 +240,10 @@
 .equ dword_2000F9C, 0x2000F9C
 .equ unk_2001130, 0x2001130
 .equ unk_20018B0, 0x20018B0
-.equ sReqBBS_GUI, 0x2005780
-.equ sReqBBS_GUI, 0x2005780
-.equ sReqBBS_GUI, 0x2005780
-.equ sReqBBS_GUI, 0x2005780
+.equ unk_20057B0, 0x20057B0
+.equ unk_20057D4, 0x20057D4
+.equ unk_20057D8, 0x20057D8
+.equ unk_20057DC, 0x20057DC
 .equ byte_2009F40, 0x2009F40
 .equ dword_2009F5C, 0x2009F5C
 .equ pCoords, 0x2009F60

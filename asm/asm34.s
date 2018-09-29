@@ -568,7 +568,7 @@ loc_812D7BA:
     strb r2, [r0,r1]
     cmp r2, r3
     beq loc_812D7DE
-    ldr r1, dword_812D808 // =0x30069A0 
+    ldr r1, dword_812D808 // = 
     ldrb r3, [r1,r2]
     mov r1, #4
     eor r3, r1

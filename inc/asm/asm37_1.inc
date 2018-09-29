@@ -183,6 +183,8 @@
 // .global sub_80302A8
 // .global sub_80307D8
 // .global sub_8030A60
+
+.include "asm/asm03_1.inc"
 // .global init_s_02011C50_8036E90
 // .global s_2011C50_ptr_1C_isNull // () -> zf
 // .global sub_803C514
@@ -196,7 +198,7 @@
 .include "asm/chatbox.inc"
 // .global chatbox_8045F3C
 
-.include "asm/asm03_1.inc"
+.include "asm/asm03_2.inc"
 // .global sub_8046818
 // .global sub_8046854
 // .global sub_80468BA
@@ -269,10 +271,10 @@
 // .global unk_81C068C
 // .global off_81C06C0
 
-.include "data/dat38_2.inc"
+.include "data/dat38_42.inc"
 // .global dword_8619730
 // .global dword_8619B50
-// .global dword_8619B90
+// .global unk_8619B90
 
 
 /* Undeclared Symbols */
@@ -490,7 +492,7 @@
 .equ unk_2011EA0, 0x2011EA0
 .equ byte_2011EE0, 0x2011EE0
 .equ unk_20399F0, 0x20399F0
-.equ word_3000000, 0x3000000
+.equ unk_3000000, 0x3000000
 .equ byte_30000F0, 0x30000F0
 .equ word_30000FA, 0x30000FA
 .equ dword_3000E8C, 0x3000E8C

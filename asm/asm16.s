@@ -103,7 +103,7 @@ sub_8077DE0:
     .balign 4, 0x00
 off_8077E14:    .word off_8077E18
 off_8077E18:    .word locret_8001AB4+1
-    .word loc_80019D0+1
+    .word sub_80019D0+1
     .word 0x3005CD9, 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9
     .word 0x800
 off_8077E38:    .word off_8077E3C

@@ -12,7 +12,12 @@
 .global sub_809F68C
 .global off_809F6AC
 .global dword_809F6B0
-.global dword_809F6CC
+.global unk_809F6CC
+.global unk_809F6EC
+.global unk_809F880
+.global unk_809F889
+.global unk_809F8B3
+.global unk_809F8CA
 .global sub_809F90C
 .global sub_809F922
 .global sub_809F942
@@ -70,8 +75,7 @@
 .equ word_2000216, 0x2000216
 .equ dword_2000218, 0x2000218
 .equ dword_2000220, 0x2000220
-.equ sReqBBS_GUI, 0x2005780
-.equ sReqBBS_GUI, 0x2005780
+.equ unk_20057B0, 0x20057B0
 .equ dword_2005800, 0x2005800
 
 .endif // INC_ASM_ASM28_1

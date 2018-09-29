@@ -9,6 +9,7 @@
 .global byte_8158280
 .global word_8158282
 .global sound_MusicTable
+.global unk_81A081B
 .global dword_81C03AC
 .global byte_81C03D8
 .global aFuMboot
@@ -29,6 +30,7 @@
 .global dword_81C067C
 .global unk_81C068C
 .global off_81C06C0
+.global unk_81D081E
 .global dword_81D4314
 .global loc_81D6000
 
@@ -80,7 +82,7 @@
 .include "asm/asm38.inc"
 // .global loc_81D6746
 
-.include "data/dat38_39.inc"
+.include "data/dat38_84.inc"
 // .global dword_87FF8A0
 
 

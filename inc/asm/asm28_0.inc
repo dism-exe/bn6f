@@ -2,10 +2,17 @@
 .equ INC_ASM_ASM28_0, 0
 
 /* Public Symbols */
+.global unk_8098CA2
+.global unk_80990B8
 .global dword_80991F4
+.global unk_8099CEC
 .global dword_8099DC0
 .global dword_8099E04
 .global dword_8099EA0
+.global unk_809A8A8
+.global unk_809AA34
+.global unk_809AE68
+.global unk_809B5AD
 .global sub_809BA14
 .global sub_809C890
 .global sub_809C940
@@ -119,6 +126,8 @@
 // .global sub_8030B6A
 // .global sub_8031612
 // .global sub_8031A7A
+
+.include "asm/asm03_1.inc"
 // .global sub_8033978
 // .global sub_8033FC0
 // .global sub_8034C36
@@ -141,7 +150,7 @@
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C
 
-.include "asm/asm03_1.inc"
+.include "asm/asm03_2.inc"
 // .global render_graphicalText_8045F8C
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
@@ -164,16 +173,16 @@
 // .global reqBBS_81407D8
 // .global reqBBS_8140974
 
-.include "data/dat38_2.inc"
+.include "data/dat38_42.inc"
 // .global dword_86A5D60
 
-.include "data/dat38_7.inc"
+.include "data/dat38_47.inc"
 // .global loc_86C54D4
 // .global unk_86C5550
 // .global loc_86C5790
 // .global dword_86C57EC
 
-.include "data/dat38_8.inc"
+.include "data/dat38_48.inc"
 // .global byte_86C67E4
 
 
@@ -191,8 +200,8 @@
 .equ dword_2000AB0, 0x2000AB0
 .equ dword_2000AB4, 0x2000AB4
 .equ dword_2000AB8, 0x2000AB8
-.equ sReqBBS_GUI, 0x2005780
-.equ sReqBBS_GUI, 0x2005780
+.equ dynaicArr, 0x2005780
+.equ unk_20057B0, 0x20057B0
 .equ dword_2005800, 0x2005800
 .equ dword_2005810, 0x2005810
 .equ byte_2009F40, 0x2009F40

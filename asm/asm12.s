@@ -109,7 +109,7 @@ sub_806DA58:
     .balign 4, 0x00
 off_806DA8C:    .word off_806DA90
 off_806DA90:    .word locret_8001AB4+1
-    .word loc_80019D0+1
+    .word sub_80019D0+1
     .word 0x3005CD9, 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9
     .word 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9, 0x800
     .word 0x8001AB5, 0x80019D1, 0x3005CD9, 0x800, 0x8001AB5

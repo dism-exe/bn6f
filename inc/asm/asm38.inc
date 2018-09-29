@@ -9,7 +9,7 @@
 .include "asm/asm00_0.inc"
 // .global sub_80005AC
 // .global sub_80005C4
-// .global sub_80008B4
+// .global clearBackwards_80008B4 // (void *mem, int size) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global sub_800098C
 // .global loc_8000AC8
@@ -17,7 +17,7 @@
 // .global sub_8000C5C
 
 .include "asm/asm00_1.inc"
-// .global dword_80065D0
+// .global unk_80065E0
 // .global dword_8006660
 // .global sub_80068E0
 // .global battle_isPaused
@@ -38,6 +38,8 @@
 // .global off_802FD70
 // .global dword_802FD74
 // .global sub_8031612
+
+.include "asm/asm03_1.inc"
 // .global sub_803DE72
 // .global sub_803EA68
 
@@ -100,6 +102,9 @@
 .equ dword_3002594, 0x3002594
 .equ unk_30025B0, 0x30025B0
 .equ unk_3005CA0, 0x3005CA0
+.equ loc_3005FB0, 0x3005FB0
+.equ loc_3005FC0, 0x3005FC0
+.equ loc_3005FFA, 0x3005FFA
 .equ loc_3006314, 0x3006314
 .equ loc_300631C, 0x300631C
 .equ loc_300638C, 0x300638C

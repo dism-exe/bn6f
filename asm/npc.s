@@ -225,7 +225,7 @@ npc_809E704:
     add r0, r0, r1
     lsr r0, r0, #0xc
     strh r0, [r5,#0x20]
-    ldr r7, dword_809E7C0 // =0x809E79E 
+    ldr r7, dword_809E7C0 // = 
     ldrb r0, [r5,#0xe]
     add r0, r0, r0
     add r7, r7, r0
@@ -732,7 +732,7 @@ off_809EB00:    .word off_809EAFC
 .thumb_func
 sub_809EB04:
     push {lr}
-    ldr r7, dword_809EB1C // =0x809EB14 
+    ldr r7, dword_809EB1C // = 
     ldrb r0, [r5,#0xa]
     ldr r7, [r7,r0]
     mov lr, pc
@@ -1912,7 +1912,7 @@ sub_809F354:
     push {lr}
     mov r7, r10
     ldr r4, [r7,#0x1c]
-    ldr r7, off_809F4B4 // =aPfffff 
+    ldr r7, off_809F4B4 // =byte_87E30A0 
     bl sub_8002C68
     ldrb r0, [r6,#1]
     tst r0, r0
@@ -2094,7 +2094,7 @@ sub_809F45A:
     tst r1, r1
     beq loc_809F498
     strb r2, [r5,#0x1c]
-    ldr r3, off_809F4B4 // =aPfffff 
+    ldr r3, off_809F4B4 // =byte_87E30A0 
     mov r2, #0x94
     str r3, [r5,r2]
     add r0, r1, #0
@@ -2121,7 +2121,7 @@ loc_809F498:
     bl sub_8004602
     bl npc_809F51E
     pop {pc}
-off_809F4B4:    .word aPfffff
+off_809F4B4:    .word byte_87E30A0
 .func
 .thumb_func
 sub_809F4B8:

@@ -28,9 +28,9 @@
 // .global off_8052244
 // .global off_8052480
 // .global off_80524C0
-// .global dword_80524C4
-// .global dword_80524C4
-// .global dword_80524C4
+// .global unk_80524E8
+// .global unk_8052510
+// .global unk_8052538
 
 .include "data/dat05.inc"
 // .global dword_8052834

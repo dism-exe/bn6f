@@ -660,6 +660,9 @@ loc_808FE10:
     mov r0, #0
     pop {r5,pc}
     .balign 4, 0x00
+.func
+.thumb_func
+sub_808FE34:
     push {r5,lr}
     ldr r5, off_808FEA0 // =off_808FDB8 
     ldr r5, [r5]
@@ -680,6 +683,8 @@ loc_808FE4E:
     mov r0, #0
     pop {r5,pc}
     .balign 4, 0x00
+.endfunc // sub_808FE34
+
 .func
 .thumb_func
 sub_808FE64:
@@ -694,6 +699,9 @@ sub_808FE64:
     pop {pc}
 .endfunc // sub_808FE64
 
+.func
+.thumb_func
+sub_808FE74:
     push {r4-r7,lr}
     ldr r5, off_808FEA0 // =off_808FDB8 
     ldr r5, [r5]
@@ -713,6 +721,11 @@ locret_808FE9C:
     pop {r4-r7,pc}
     .byte 0, 0
 off_808FEA0:    .word off_808FDB8
+.endfunc // sub_808FE74
+
+.func
+.thumb_func
+sub_808FEA4:
     push {r4-r7,lr}
     mov r0, r10
     ldr r0, [r0,#0x3c]
@@ -737,6 +750,8 @@ locret_808FED0:
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_808FED4:    .word off_808FDB8
+.endfunc // sub_808FEA4
+
 .func
 .thumb_func
 sub_808FED8:
@@ -1168,7 +1183,7 @@ loc_80901AC:
     add r0, r4, #0
     bl sub_809022C
     beq loc_80901DC
-    ldr r0, dword_809021C // =0x8090226 
+    ldr r0, dword_809021C // = 
     add r1, r4, #0
     lsl r1, r1, #1
     ldrh r0, [r0,r1]

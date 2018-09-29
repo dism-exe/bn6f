@@ -26,15 +26,15 @@
 
 .include "data/dat08.inc"
 // .global off_8062728
-// .global dword_8062850
-// .global dword_8062850
-// .global dword_8062850
-// .global dword_8062850
-// .global dword_8062850
-// .global dword_8062850
-// .global dword_8062850
-// .global dword_8062850
-// .global dword_8062850
+// .global unk_8062860
+// .global unk_80628A0
+// .global unk_80628E0
+// .global unk_8062908
+// .global unk_8062958
+// .global unk_80629C0
+// .global unk_80629F0
+// .global unk_8062A30
+// .global unk_8062A70
 
 .include "data/dat09.inc"
 // .global dword_8062BFC

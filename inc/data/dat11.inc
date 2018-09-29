@@ -8,7 +8,7 @@
 .global dword_806C6E0
 .global dword_806C748
 .global off_806C7B0
-.global dword_806C7CC
+.global off_806C7CC
 .global off_806C7E8
 .global off_806C804
 .global off_806D6B0
@@ -16,5 +16,40 @@
 
 
 /* External Symbols */
+.include "asm/asm03_0.inc"
+// .global sub_8030808
+// .global loc_80315CC
+
+.include "data/dat13.inc"
+// .global unk_807083F
+
+.include "data/dat20.inc"
+// .global unk_80809F6
+
+.include "data/dat21.inc"
+// .global unk_8083F04
+
+.include "asm/asm28_1.inc"
+// .global unk_809F6CC
+// .global unk_809F889
+// .global unk_809F8B3
+// .global unk_809F8CA
+
+.include "data/dat38_14.inc"
+// .global unk_83C0116
+// .global unk_83C09C0
+// .global unk_83C1A16
+// .global unk_83F0016
+// .global unk_83F0116
+// .global unk_83F0208
+// .global unk_83F0608
+// .global unk_83F0907
+// .global unk_83F0E08
+// .global unk_83F1916
+// .global unk_83F3D16
+
+.include "data/dat38_42.inc"
+// .global unk_863FF05
+
 
 .endif // INC_DATA_DAT11

@@ -17,6 +17,11 @@
 .global dword_8081448
 .global dword_808144C
 .global dword_8081450
+.global unk_8083C05
+.global unk_8083C09
+.global unk_8083F04
+.global unk_8083F07
+.global unk_80865AC
 .global dword_8086D5C
 .global unk_8086D74
 

@@ -69,19 +69,19 @@ off_8059678:    .word off_805968C
     .word off_80596B4
     .word off_80596BC
 off_805968C:    .word off_8059378
-    .word dword_805937C+0x3C
-    .word dword_805937C+0x7C
-    .word dword_805937C+0xBC
+    .word unk_80593B8
+    .word unk_80593F8
+    .word unk_8059438
     .word 0xFFFFFFFF
-off_80596A0:    .word dword_805937C+0xEC
-    .word dword_805937C+0x12C
+off_80596A0:    .word unk_8059468
+    .word unk_80594A8
     .word 0xFFFFFFFF
-off_80596AC:    .word dword_805937C+0x16C
+off_80596AC:    .word unk_80594E8
     .word 0xFFFFFFFF
-off_80596B4:    .word dword_805937C+0x1AC
+off_80596B4:    .word unk_8059528
     .word 0xFFFFFFFF
-off_80596BC:    .word dword_805937C+0x1DC
-    .word dword_805937C+0x20C
+off_80596BC:    .word unk_8059558
+    .word unk_8059588
     .word 0xFFFFFFFF
 .endfunc // sub_8059664
 

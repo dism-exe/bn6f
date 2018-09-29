@@ -20,11 +20,20 @@
 .global off_8052EE8
 .global off_8059294
 .global off_8059378
+.global unk_80593B8
+.global unk_80593F8
+.global unk_8059438
+.global unk_8059468
+.global unk_80594A8
+.global unk_80594E8
+.global unk_8059528
+.global unk_8059558
+.global unk_8059588
 
 
 /* External Symbols */
 .include "asm/asm28_1.inc"
-// .global dword_809F6CC
+// .global unk_809F6CC
 
 
 /* Undeclared Symbols */

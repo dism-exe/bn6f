@@ -8,6 +8,7 @@
 .global sub_80BC9BE
 .global sub_80BCB12
 .global sub_80BE6D8
+.global loc_80C0B0E
 .global loc_80C1008
 .global sub_80C10E8
 .global sub_80C4038
@@ -35,7 +36,10 @@
 .global sub_80D6B78
 .global sub_80D8400
 .global sub_80D842E
+.global sub_80D8D5A
 .global sub_80D99EC
+.global sub_80DA9DC
+.global sub_80DA9FE
 .global sub_80DFAD6
 .global sub_80DFF84
 .global off_80E0408
@@ -57,6 +61,7 @@
 .global sub_80E4B34
 .global sub_80E4D8A
 .global sub_80E4DA2
+.global sub_80E5368
 .global sub_80E5410
 .global sub_80E544C
 .global sub_80E5B62
@@ -69,6 +74,13 @@
 .global sub_80EA438
 .global off_80EA814
 .global loc_80EA8D8
+.global loc_80EA9A0
+.global loc_80EAA04
+.global loc_80EAA68
+.global loc_80EAACC
+.global loc_80EAB30
+.global loc_80EAB94
+.global loc_80EABF8
 .global off_80EAC60
 .global loc_80EAD9C
 .global loc_80EB04C
@@ -76,9 +88,15 @@
 .global loc_80EE90C
 .global loc_80EEA3C
 .global loc_80EED56
-.global loc_80F0804
 .global off_80F24D8
 .global off_80F253C
+.global off_80F2604
+.global off_80F2668
+.global off_80F26CC
+.global off_80F2730
+.global off_80F2794
+.global off_80F27F8
+.global unk_80F285C
 .global dword_80F28F0
 .global dword_80F2A54
 .global dword_80F390C
@@ -96,6 +114,13 @@
 .global dword_80FE7D0
 .global off_81090D0
 .global off_8109150
+.global unk_8109250
+.global unk_81092D0
+.global unk_8109350
+.global unk_81093D0
+.global unk_8109450
+.global unk_81094D0
+.global unk_8109550
 .global sub_8109630
 .global sub_8109660
 .global sub_81096FA
@@ -117,7 +142,6 @@
 /* External Symbols */
 .include "asm/start.inc"
 // .global start_
-// .global dword_8000004
 // .global dword_80001F4
 
 .include "asm/asm00_0.inc"
@@ -183,7 +207,7 @@
 // .global sub_800362C
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
-// .global dword_80065D0
+// .global unk_80065E0
 // .global dword_8006660
 // .global battle_isPaused
 // .global battle_isTimeStop
@@ -214,7 +238,7 @@
 
 .include "asm/object.inc"
 // .global object_timefreezeEnd
-// .global loc_800BDB2
+// .global sub_800BDB2
 // .global sub_800BF16
 // .global sub_800BF5C
 // .global object_getPanelParameters
@@ -419,8 +443,7 @@
 // .global sub_80165C2
 // .global sub_80166AE
 // .global sub_80169BE
-// .global byte_8016B02
-// .global byte_8016B03
+// .global sub_8016B02
 // .global sub_8016B36
 // .global sub_8016B72
 // .global sub_8016C4E
@@ -445,14 +468,11 @@
 // .global sub_8018842
 // .global sub_8019892
 // .global sub_80198CE
-// .global dword_80198E8
-// .global dword_80198E8
-// .global dword_80198E8
-// .global dword_80198E8
-// .global dword_80198E8
-// .global dword_80198E8
+// .global unk_80198F4
+// .global unk_80199B6
+// .global unk_80199F5
 // .global off_8019B78
-// .global dword_8019B84
+// .global off_8019BE0
 // .global dword_8019C34
 // .global sub_8019F86
 // .global sub_8019F8C
@@ -525,6 +545,7 @@
 
 .include "data/dat01.inc"
 // .global dword_80205F8
+// .global unk_80211A0
 // .global dword_8021300
 // .global byte_802136D
 
@@ -562,7 +583,7 @@
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8045F3C
 
-.include "asm/asm03_1.inc"
+.include "asm/asm03_2.inc"
 // .global sub_80465BC
 // .global sub_80465F8 // () -> void
 // .global sub_8046664 // () -> void
@@ -575,7 +596,7 @@
 // .global aSa
 
 .include "data/dat28.inc"
-// .global dword_80A0BE0
+// .global unk_80A0C10
 
 .include "data/dat31.inc"
 // .global dword_810C35C
@@ -649,7 +670,7 @@
 // .global dword_81165BC
 // .global sub_8116878
 
-.include "data/dat38_26.inc"
+.include "data/dat38_69.inc"
 // .global aTuDhr
 
 

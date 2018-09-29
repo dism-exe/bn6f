@@ -25,9 +25,11 @@
 // .global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 // .global loc_802F200
 // .global sub_80302A8
-// .global init_s_02011C50_8036E90
 
 .include "asm/asm03_1.inc"
+// .global init_s_02011C50_8036E90
+
+.include "asm/asm03_2.inc"
 // .global sub_8048F88
 
 .include "asm/asm28_0.inc"
