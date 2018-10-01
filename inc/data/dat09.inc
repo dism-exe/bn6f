@@ -13,6 +13,8 @@
 .global off_8062F78
 .global off_8062F90
 .global off_8063008
+.global unk_8063050
+.global byte_8063056
 .global off_8066020
 .global off_8066048
 .global unk_80662B8

@@ -281,7 +281,7 @@ off_80812B8:    .word dword_807FAC4+0x7E4
     .word 0xFFFFFFFF
 off_80812C0:    .word unk_80805C0
     .word 0xFFFFFFFF
-off_80812C8:    .word unk_80808B0
+off_80812C8:    .word byte_80808B0
     .word 0xFFFFFFFF
 off_80812D0:    .word unk_80808D8
     .word dword_8069AF0

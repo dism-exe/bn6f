@@ -7,7 +7,7 @@
 
 /* External Symbols */
 .include "asm/asm03_1.inc"
-// .global dword_80348F8
+// .global off_80348FC
 // .global off_8034938
 
 

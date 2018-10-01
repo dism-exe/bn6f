@@ -193,9 +193,25 @@ off_80665AC:    .word unk_8066639
 off_80665B4:    .word off_8066988
     .word off_8066E10
 off_80665BC:    .word dword_80665C4
-    .word dword_80665D4
+    .word unk_80665D4
 dword_80665C4:    .word 0xFFFFFF00, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
-dword_80665D4:    .word 0xFFFF0100, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x1010
+unk_80665D4:    .byte  0
+    .byte  1
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+byte_80665E4:    .byte 0x10, 0x10, 0x0, 0x0
 asc_80665E8:    .byte 0x25, 0x3D, 0x3C, 0x8
     .byte 0x8, 0x0
     .byte 0, 0
@@ -3304,5 +3320,5 @@ off_8067DE0:    .word off_8068044
     // <endfile>
 pt_8067DEC:    .word dword_8067DF8
     .word dword_8067E08
-    .word dword_8067E18
+    .word unk_8067E18
 /*For debugging purposes, connect comment at any range!*/

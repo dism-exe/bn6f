@@ -9837,7 +9837,7 @@ loc_8007862:
     beq loc_8007872
     cmp r0, #8
     beq loc_8007872
-    bl sub_81440D8
+    bl sub_81440D8 // static () -> void
 loc_8007872:
     bl sub_801FE64
     mov r4, #5
@@ -10284,7 +10284,7 @@ loc_8007C2E:
     cmp r0, #2
     beq locret_8007C4C
 loc_8007C3C:
-    bl sub_81440D8
+    bl sub_81440D8 // static () -> void
     bl sub_801FE64
 loc_8007C44:
     mov r0, #4
@@ -10575,7 +10575,7 @@ off_8007EAC:    .word sub_8007EB8+1
 sub_8007EB8:
     push {r4,lr}
     bl sub_800A028
-    bl sub_81440D8
+    bl sub_81440D8 // static () -> void
     bl sub_801FE64
     ldr r0, dword_800800C // =0x280000 
     bl sub_801BED6

@@ -6,17 +6,20 @@
 .global off_8069304
 .global off_8069310
 .global off_806931C
+.global byte_8069358
 .global dword_8069AF0
 .global off_8069C80
 .global off_806A260
 .global off_806A26C
 .global off_806A278
 .global off_806A284
+.global byte_806A2C0
 .global off_806A810
 .global off_806AE08
 .global off_806AE1C
 .global off_806AE30
 .global off_806AE44
+.global byte_806AEA8
 .global off_806C20C
 
 

@@ -8,6 +8,8 @@
 .global off_8079534
 .global off_807953C
 .global off_8079544
+.global byte_807956C
+.global byte_807956E
 .global off_8079F74
 .global off_807A080
 

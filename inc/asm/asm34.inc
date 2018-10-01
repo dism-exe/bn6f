@@ -66,7 +66,7 @@
 // .global sub_8132280
 
 .include "asm/asm37_1.inc"
-// .global sub_81440D8
+// .global sub_81440D8 // static () -> void
 
 
 /* Undeclared Symbols */

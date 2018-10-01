@@ -138,7 +138,9 @@ off_807AA74:    .word off_8617068
 off_807AA90:    .word off_8617068
     .word 0x6008020, 0x8617190, 0x1800, 0x8618C58, 0x3001960
     .word 0x20
-loc_807AAAC:
+.func
+.thumb_func
+sub_807AAAC:
     push {r4-r7,lr}
     mov r5, r10
     ldr r5, [r5,#0x3c]
@@ -153,6 +155,8 @@ off_807AAC0:    .word off_807AAC4
 off_807AAC4:    .word locret_807AAD0+1
     .word locret_807AAD2+1
     .word locret_807AAD4+1
+.endfunc // sub_807AAAC
+
 locret_807AAD0:
     mov pc, lr
 locret_807AAD2:

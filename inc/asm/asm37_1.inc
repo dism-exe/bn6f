@@ -70,7 +70,7 @@
 .global sub_8143DBC
 .global sub_8143F90
 .global sub_8144010
-.global sub_81440D8
+.global sub_81440D8 // static () -> void
 .global sub_8144240
 .global sub_8144250
 .global sub_81445F8
@@ -142,6 +142,7 @@
 .global sub_814D954
 .global sub_814D9C4
 .global sub_814DA9C
+.global byte_814E02D
 .global loc_814E0DE
 .global sub_814E8A0
 .global sub_814E918

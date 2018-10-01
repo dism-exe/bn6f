@@ -18,6 +18,9 @@
 .global off_8052DE0
 .global off_8052E0C
 .global off_8052EE8
+.global byte_8052F6C
+.global byte_8052F77
+.global byte_8052F82
 .global off_8059294
 .global off_8059378
 .global unk_80593B8

@@ -89,21 +89,21 @@ dword_801EF10:    .word 0xD0C9D0C7, 0xD0CDD0CB, 0xD0D1D0CF, 0xD0D5D0D3, 0xD0CAD0
 off_801EF30:    .word dword_86F2040
     .word 0x6009560
     .word 0x200
-    .word dword_86F2900
+    .word unk_86F2900
     .word 0x3001AA0
     .word 0x20
     .word 0x0
 off_801EF4C:    .word dword_86F26C0
     .word 0x6009560
     .word 0x240
-    .word dword_86F2900
+    .word unk_86F2900
     .word unk_3001AA0
     .word 0x20
     .word 0x0
 off_801EF68:    .word dword_86F2240
     .word 0x6009560
     .word 0x2C0
-    .word dword_86F2900
+    .word unk_86F2900
     .word unk_3001AA0
     .word 0x20
     .word 0x0

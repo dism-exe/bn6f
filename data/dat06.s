@@ -108,13 +108,22 @@ off_8059DE8:    .word dword_8059DFC
     .word dword_8059E04
     .word dword_8059E0C
     .word dword_8059E14
-    .word dword_8059E1C
+    .word unk_8059E1C
 dword_8059DFC:    .word 0xFFFF1F0E, 0xFFFFFFFF
 dword_8059E04:    .word 0xFFFFFFFF, 0xFFFFFFFF
 dword_8059E0C:    .word 0xFFFFFF08, 0xFFFFFFFF
 dword_8059E14:    .word 0xFFFFFF22, 0xFFFFFFFF
-dword_8059E1C:    .word 0xFFFF2409, 0xFFFFFFFF, 0x6060606, 0xC0C0C06, 0xB0B0C0C
-    .word 0xB0B0B
+unk_8059E1C:    .byte  9
+    .byte 0x24 
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+byte_8059E24:    .byte 0x6, 0x6, 0x6, 0x6, 0x6
+byte_8059E29:    .byte 0xC, 0xC, 0xC, 0xC, 0xC
+byte_8059E2E:    .byte 0xB, 0xB, 0xB, 0xB, 0xB, 0x0
 unk_8059E34:    .byte  3
     .byte 0xFF
     .byte 0xB8

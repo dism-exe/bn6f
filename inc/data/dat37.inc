@@ -41,7 +41,7 @@
 // .global sub_814D8F0
 // .global word_814D994
 // .global sub_814D9C4
-// .global loc_814E02C
+// .global byte_814E02D
 // .global sub_814E044
 // .global sub_814E064
 // .global sub_814E0DC

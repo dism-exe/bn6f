@@ -6,6 +6,8 @@
 .global dword_8071EBC
 .global off_8071EC8
 .global off_8071ED4
+.global byte_8071F10
+.global byte_8071F13
 
 
 /* External Symbols */

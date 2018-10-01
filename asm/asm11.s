@@ -217,10 +217,26 @@ off_8069310:    .word off_80694B8
     .word off_8069648
 off_806931C:    .word dword_8069328
     .word dword_8069338
-    .word dword_8069348
+    .word unk_8069348
 dword_8069328:    .word 0xFF020100, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
 dword_8069338:    .word 0xFF020100, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
-dword_8069348:    .word 0x3020100, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x121212
+unk_8069348:    .byte  0
+    .byte  1
+    .byte  2
+    .byte  3
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+byte_8069358:    .byte 0x12, 0x12, 0x12, 0x0
 dword_806935C:    .word 0x93700016
     .word 0xD5250806
     .word 0x808CA
@@ -1299,10 +1315,26 @@ off_806A278:    .word off_806A5C0
     .word off_806A690
 off_806A284:    .word dword_806A290
     .word dword_806A2A0
-    .word dword_806A2B0
+    .word unk_806A2B0
 dword_806A290:    .word 0xFFFFFF00, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
 dword_806A2A0:    .word 0xFFFFFF00, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
-dword_806A2B0:    .word 0xFFFFFF00, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xA0A0A
+unk_806A2B0:    .byte  0
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+byte_806A2C0:    .byte 0xA, 0xA, 0xA, 0x0
 dword_806A2C4:    .word 0xA2D30011
     .word 0xFF1F0806
     .word 0xE00116F7
@@ -2196,13 +2228,28 @@ off_806AE44:    .word dword_806AE58
     .word dword_806AE68
     .word dword_806AE78
     .word dword_806AE88
-    .word dword_806AE98
+    .word unk_806AE98
 dword_806AE58:    .word 0xFFFF0100, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
 dword_806AE68:    .word 0x3020100, 0xFFFFFF04, 0xFFFFFFFF, 0xFFFFFFFF
 dword_806AE78:    .word 0xFFFF0100, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
 dword_806AE88:    .word 0xFFFF0100, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
-dword_806AE98:    .word 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x20202020
-    .word 0x20
+unk_806AE98:    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+byte_806AEA8:    .byte 0x20, 0x20, 0x20, 0x20, 0x20, 0x0, 0x0, 0x0
 dword_806AEB0:    .word 0xFC20304
     .word unk_806AEC6
     .word unk_86DF925

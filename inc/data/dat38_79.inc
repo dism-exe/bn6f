@@ -7,7 +7,7 @@
 .global dword_87F2808
 .global dword_87F28DC
 .global dword_87F2A1C
-.global dword_87F2E38
+.global byte_87F2E38
 .global dword_87F2ED0
 .global dword_87F2F68
 

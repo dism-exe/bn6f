@@ -48,13 +48,22 @@ off_805E1FC:    .word dword_805E210
     .word dword_805E218
     .word dword_805E220
     .word dword_805E228
-    .word dword_805E230
+    .word unk_805E230
 dword_805E210:    .word 0xFFFFFF20, 0xFFFFFFFF
 dword_805E218:    .word 0xFFFFFF0F, 0xFFFFFFFF
 dword_805E220:    .word 0xFFFFFF0D, 0xFFFFFFFF
 dword_805E228:    .word 0xFFFFFF1E, 0xFFFFFFFF
-dword_805E230:    .word 0xFFFFFFFF, 0xFFFFFFFF, 0x8080808, 0xC0C0C08, 0xB0B0C0C
-    .word 0xB0B0B
+unk_805E230:    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+byte_805E238:    .byte 0x8, 0x8, 0x8, 0x8, 0x8
+byte_805E23D:    .byte 0xC, 0xC, 0xC, 0xC, 0xC
+byte_805E242:    .byte 0xB, 0xB, 0xB, 0xB, 0xB, 0x0
 unk_805E248:    .byte 0x1F
     .byte 0xFF
     .byte 0xF5

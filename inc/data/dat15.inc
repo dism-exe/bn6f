@@ -9,6 +9,8 @@
 .global off_80758AC
 .global off_80758B8
 .global off_80758C4
+.global byte_8075900
+.global byte_8075903
 .global off_8077618
 .global off_8077720
 

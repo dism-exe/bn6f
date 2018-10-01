@@ -70,12 +70,27 @@ off_807D310:    .word off_807D918
 off_807D320:    .word dword_807D330
     .word dword_807D340
     .word dword_807D350
-    .word dword_807D360
+    .word unk_807D360
 dword_807D330:    .word 0x4FF0100, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
 dword_807D340:    .word 0x3FF01FF, 0x7060504, 0xFFFFFFFF, 0xFFFFFFFF
 dword_807D350:    .word 0x3FF0100, 0xFFFFFF04, 0xFFFFFFFF, 0xFFFFFFFF
-dword_807D360:    .word 0xFFFFFF00, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x14141414
-    .word 0x21212121
+unk_807D360:    .byte  0
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+byte_807D370:    .byte 0x14, 0x14, 0x14, 0x14, 0x21, 0x21, 0x21, 0x21
 unk_807D378:    .byte 0x1F
     .byte 0xFF
     .byte 0x42 

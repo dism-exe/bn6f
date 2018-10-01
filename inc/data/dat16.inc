@@ -8,6 +8,7 @@
 .global dword_807810C
 .global off_8078114
 .global off_807811C
+.global byte_8078144
 .global off_80790A4
 .global off_80790EC
 

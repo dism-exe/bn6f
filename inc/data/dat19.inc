@@ -10,6 +10,7 @@
 .global off_807D300
 .global off_807D310
 .global off_807D320
+.global byte_807D370
 .global off_807EA6C
 .global off_807EB18
 .global dword_807EB68

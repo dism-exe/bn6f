@@ -103,6 +103,7 @@
 .global byte_851DA78
 .global byte_851EC08
 .global byte_851EDAC
+.global byte_8521A12
 .global byte_852213C
 .global byte_85222E0
 .global byte_852360C

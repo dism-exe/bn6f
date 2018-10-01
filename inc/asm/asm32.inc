@@ -486,6 +486,22 @@
 .include "data/dat38_0.inc"
 // .global byte_81D8000
 
+.include "data/dat38_8.inc"
+// .global byte_8296F40
+// .global byte_829D818
+// .global byte_82A5AF0
+// .global byte_82B0690
+// .global byte_82BA7BC
+
+.include "data/dat38_14.inc"
+// .global byte_83BFD0C
+
+.include "data/dat38_17.inc"
+// .global byte_8430534
+
+.include "data/dat38_20.inc"
+// .global byte_849B424
+
 .include "data/dat38_42.inc"
 // .global dword_86A5D60
 // .global dword_86B7AE0
@@ -497,7 +513,7 @@
 // .global byte_86CC13C
 
 .include "data/dat38_53.inc"
-// .global unk_86CF4AC
+// .global byte_86CF4AC
 
 .include "data/dat38_63.inc"
 // .global off_86DC3F8
@@ -512,7 +528,7 @@
 // .global unk_86EE0CC
 
 .include "data/dat38_70.inc"
-// .global dword_873EA50
+// .global byte_873EA50
 
 
 /* Undeclared Symbols */
@@ -568,8 +584,8 @@
 .equ unk_2016200, 0x2016200
 .equ unk_2016300, 0x2016300
 .equ unk_2016400, 0x2016400
-.equ unk_2016A04, 0x2016A04
-.equ unk_2017A00, 0x2017A00
+.equ byte_2016A04, 0x2016A04
+.equ byte_2017A00, 0x2017A00
 .equ unk_2017C00, 0x2017C00
 .equ unk_2017E00, 0x2017E00
 .equ unk_2018000, 0x2018000
@@ -608,7 +624,6 @@
 .equ unk_201F294, 0x201F294
 .equ unk_201F6F0, 0x201F6F0
 .equ dword_201FC20, 0x201FC20
-.equ unk_2020200, 0x2020200
 .equ unk_2020484, 0x2020484
 .equ unk_2020500, 0x2020500
 .equ unk_2020C00, 0x2020C00

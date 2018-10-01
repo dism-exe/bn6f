@@ -11,6 +11,7 @@
 .global dword_8098824
 .global dword_80988E4
 .global dword_809895C
+.global byte_80989C1
 .global unk_8098A02
 .global unk_8098A2E
 .global dword_8098A78

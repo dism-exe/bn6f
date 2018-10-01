@@ -29,9 +29,25 @@ dword_807810C:    .word 0x807826F, 0x807844C
 off_8078114:    .word off_8078598
     .word off_80789BC
 off_807811C:    .word dword_8078124
-    .word dword_8078134
+    .word unk_8078134
 dword_8078124:    .word 0xFF0401FF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
-dword_8078134:    .word 0x30201FF, 0xFF060504, 0xFFFFFFFF, 0xFFFFFFFF, 0x21211313
+unk_8078134:    .byte 0xFF
+    .byte  1
+    .byte  2
+    .byte  3
+    .byte  4
+    .byte  5
+    .byte  6
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+byte_8078144:    .byte 0x13, 0x13, 0x21, 0x21
 dword_8078148:    .word 0x5B3F3002, 0x2080781, 0x81A35F50, 0xC1010807, 0x2080781
     .word 0x816E3434, 0x35020807, 0x7817335, 0x81C10108, 0xC1010807
     .word 0x29080781, 0x2011EA4, 0x8010502, 0x16F1FF1F, 0x11ECC29

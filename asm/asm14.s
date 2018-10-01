@@ -112,7 +112,9 @@ off_8071CA8:    .word off_8617068
     .word 0x20
 .endfunc // sub_8071C30
 
-loc_8071CC4:
+.func
+.thumb_func
+sub_8071CC4:
     push {r4-r7,lr}
     mov r5, r10
     ldr r5, [r5,#0x3c]
@@ -127,6 +129,8 @@ off_8071CD8:    .word off_8071CDC
 off_8071CDC:    .word locret_8071CE8+1
     .word locret_8071CEA+1
     .word locret_8071CEC+1
+.endfunc // sub_8071CC4
+
 locret_8071CE8:
     mov pc, lr
 locret_8071CEA:
@@ -179,11 +183,27 @@ off_8071EC8:    .word off_8072BC8
     .word off_8073F1C
 off_8071ED4:    .word dword_8071EE0
     .word dword_8071EF0
-    .word dword_8071F00
+    .word unk_8071F00
 dword_8071EE0:    .word 0x402FF00, 0xFF0C0605, 0xFFFFFFFF, 0xFFFFFFFF
 dword_8071EF0:    .word 0x302FF00, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
-dword_8071F00:    .word 0x3020100, 0x90805FF, 0xFFFFFF0C, 0xFFFFFFFF, 0x21131313
-    .word 0x2121
+unk_8071F00:    .byte  0
+    .byte  1
+    .byte  2
+    .byte  3
+    .byte 0xFF
+    .byte  5
+    .byte  8
+    .byte  9
+    .byte 0xC
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+byte_8071F10:    .byte 0x13, 0x13, 0x13
+byte_8071F13:    .byte 0x21, 0x21, 0x21, 0x0, 0x0
 dword_8071F18:    .word 0x16501821, 0x16703021, 0x16F6FF1F, 0x451F1002, 0x208071F
     .word 0x1F6B2F20, 0x50020807, 0x71FD35F, 0x8F600208, 0x8072015
     .word 0x7207201, 0x11110208, 0x8071F51, 0x7207201, 0x40FF0308

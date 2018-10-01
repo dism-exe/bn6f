@@ -21974,7 +21974,7 @@ dword_801898C:    .word 0x0, 0x0, 0x0, 0x0
     .word 0x25000000, 0x1C072300, 0x0
     .word 0x18181810, 0x18121812, 0x18181812, 0x18181818, 0x0
     .word 0x0
-    .word start_
+    .word 0x8000000
     .word 0x1A181719, 0x1A181718, 0x1600191C, 0x14281918, 0x14000800
     .word 0x30000, 0x0
     .word 0x41F80000, 0x3E023CFB, 0x0
@@ -22048,7 +22048,7 @@ dword_80191C8:    .word 0x0, 0x0, 0x0, 0x0
     .word 0xC100C10, 0xD140E10, 0xC160D15, 0x8000E20, 0x10200E1E
     .word 0x10000E12, 0xD140C16, 0xD141010, 0x8000D16, 0xF0780458
     .word 0x84010F8, 0x0
-    .word loc_8040000
+    .word 0x8040000
     .byte  0
     .byte  0
     .byte 0xA
@@ -31929,7 +31929,7 @@ off_801E184:    .word off_801E188
 off_801E188:    .word dword_86E611C
     .word 0x6016E00
     .word 0x140
-    .word dword_86F2900
+    .word unk_86F2900
     .word 0x30016B0
     .word 0x20
     .word 0x0
@@ -32951,7 +32951,7 @@ loc_801E890:
     add r1, #0x20 
     bl loc_8000AC8
 loc_801E8C0:
-    ldr r0, off_801E938 // =dword_86F2900 
+    ldr r0, off_801E938 // =unk_86F2900 
     ldr r1, off_801E93C // =unk_30016B0 
     mov r2, #0x20 
     bl loc_8000AC8
@@ -33019,7 +33019,7 @@ off_801E928:    .word pt_801EF84
 dword_801E92C:    .word 0x6016E00
 off_801E930:    .word off_801FD64
 dword_801E934:    .word 0x6017300
-off_801E938:    .word dword_86F2900
+off_801E938:    .word unk_86F2900
 off_801E93C:    .word unk_30016B0
 off_801E940:    .word off_801E944
 off_801E944:    .word sub_801E828+1

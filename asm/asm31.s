@@ -19203,8 +19203,6 @@ loc_80C0F9A:
     mov r2, #0x10
     bl sprite_load // (int a1, int a2, int a3) ->
     bl sprite_loadAnimationData // () -> void
-.endfunc // sub_80C0F8C
-
     bl sub_8002F90 // () -> void
     ldr r0, [r5,#0x4c]
     bl sprite_getPallete
@@ -19229,6 +19227,8 @@ loc_80C0F9A:
     bl sub_80C0FE8
     pop {r7,pc}
     .balign 4, 0x00
+.endfunc // sub_80C0F8C
+
 .func
 .thumb_func
 sub_80C0FE8:

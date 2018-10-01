@@ -10,9 +10,6 @@
 
 
 /* External Symbols */
-.include "data/dat38_17.inc"
-// .global unk_8420000
-
 
 /* Undeclared Symbols */
 .equ unk_3000000, 0x3000000

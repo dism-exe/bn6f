@@ -22,6 +22,7 @@
 .global dword_806DFF0
 .global off_806E030
 .global off_806E070
+.global byte_806E1B0
 .global off_806FA98
 
 

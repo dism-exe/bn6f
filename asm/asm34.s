@@ -905,7 +905,7 @@ loc_812DA72:
     bl sub_803EA60
     cmp r0, #0
     bne loc_812DA80
-    bl sub_81440D8
+    bl sub_81440D8 // static () -> void
     b loc_812DA84
 loc_812DA80:
     bl sub_803C754

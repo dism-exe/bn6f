@@ -9188,6 +9188,9 @@ sub_809E1BC:
     ldr r1, [r3,#0x1c]
     ldr r2, [r3,#0x24]
     mov pc, lr
+.func
+.thumb_func
+sub_809E1D8:
     push {r7}
     mov r7, r10
     ldr r7, [r7,#0x3c]
@@ -9205,6 +9208,8 @@ sub_809E1BC:
     add r3, r3, r2
     str r3, [r7,#0x24]
     pop {r7}
+.endfunc // sub_809E1D8
+
 .func
 .thumb_func
 sub_809E1FA:

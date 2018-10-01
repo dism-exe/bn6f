@@ -12,6 +12,7 @@
 .global sub_80339CC
 .global sub_8033FC0
 .global sub_80341AA
+.global off_80348FC
 .global off_8034938
 .global sub_8034B4C
 .global sub_8034BB8
@@ -350,6 +351,9 @@
 // .global off_804D0AC
 // .global off_804D0B4
 // .global off_804D0BC
+// .global byte_804D0FC
+// .global byte_804D0FE
+// .global byte_804D100
 
 .include "asm/asm04.inc"
 // .global sub_804E720
@@ -359,6 +363,11 @@
 // .global dword_804E940
 // .global off_804E954
 // .global off_804E968
+// .global unk_804EA08
+// .global byte_804EA0D
+// .global byte_804EA12
+// .global byte_804EA1C
+// .global byte_804EA1C
 // .global dword_80525C0
 // .global dword_80525DC
 
@@ -370,6 +379,9 @@
 // .global dword_8052DB4
 // .global off_8052DE0
 // .global off_8052E0C
+// .global byte_8052F6C
+// .global byte_8052F77
+// .global byte_8052F82
 
 .include "asm/asm06.inc"
 // .global sub_80596C8
@@ -379,6 +391,9 @@
 // .global dword_8059D5C
 // .global off_8059D70
 // .global off_8059D84
+// .global byte_8059E24
+// .global byte_8059E29
+// .global byte_8059E2E
 
 .include "asm/asm07.inc"
 // .global sub_805DFF0
@@ -388,6 +403,9 @@
 // .global off_805E170
 // .global off_805E184
 // .global off_805E198
+// .global byte_805E238
+// .global byte_805E23D
+// .global byte_805E242
 
 .include "asm/asm08.inc"
 // .global sub_806044C
@@ -397,6 +415,11 @@
 // .global off_806064C
 // .global off_806065C
 // .global off_806066C
+// .global unk_80606EC
+// .global byte_80606F0
+// .global byte_80606F4
+// .global byte_80606F4
+// .global byte_8060C02
 
 .include "asm/asm09.inc"
 // .global sub_8062BCC
@@ -406,6 +429,8 @@
 // .global off_8062F60
 // .global off_8062F78
 // .global off_8062F90
+// .global unk_8063050
+// .global byte_8063056
 
 .include "asm/asm10.inc"
 // .global sub_806649C
@@ -415,6 +440,7 @@
 // .global off_80665AC
 // .global off_80665B4
 // .global off_80665BC
+// .global byte_80665E4
 // .global sub_8067C88
 // .global sub_8067D1C
 // .global sub_8067D46
@@ -422,6 +448,9 @@
 // .global off_8067DD4
 // .global off_8067DE0
 // .global pt_8067DEC
+
+.include "data/dat10.inc"
+// .global byte_8067E28
 
 .include "asm/asm11.inc"
 // .global sub_8069140
@@ -431,6 +460,7 @@
 // .global off_8069304
 // .global off_8069310
 // .global off_806931C
+// .global byte_8069358
 // .global sub_806A120
 // .global sub_806A1B4
 // .global sub_806A1DE
@@ -438,6 +468,7 @@
 // .global off_806A26C
 // .global off_806A278
 // .global off_806A284
+// .global byte_806A2C0
 // .global sub_806AB94
 // .global sub_806ACC0
 // .global sub_806AD00
@@ -445,6 +476,7 @@
 // .global off_806AE1C
 // .global off_806AE30
 // .global off_806AE44
+// .global byte_806AEA8
 // .global sub_806C35C
 // .global sub_806C4B0
 // .global sub_806C59C
@@ -454,10 +486,11 @@
 // .global off_806C7CC
 // .global off_806C7E8
 // .global off_806C804
+// .global byte_806C870
 
 .include "asm/asm12.inc"
 // .global sub_806DA58
-// .global loc_806DC0C
+// .global sub_806DC0C
 // .global sub_806DCD4
 
 .include "data/dat12.inc"
@@ -465,6 +498,7 @@
 // .global dword_806DFF0
 // .global off_806E030
 // .global off_806E070
+// .global byte_806E1B0
 
 .include "asm/asm13.inc"
 // .global sub_806FD54
@@ -476,19 +510,22 @@
 // .global dword_807026C
 // .global off_80702AC
 // .global off_80702EC
+// .global byte_807042C
 
 .include "asm/asm14.inc"
 // .global sub_8071C30
-// .global loc_8071CC4
+// .global sub_8071CC4
 // .global sub_8071CEE
 // .global off_8071EB0
 // .global dword_8071EBC
 // .global off_8071EC8
 // .global off_8071ED4
+// .global byte_8071F10
+// .global byte_8071F13
 
 .include "asm/asm15.inc"
 // .global sub_8075530
-// .global loc_80755C4
+// .global sub_80755C4
 // .global sub_80755EE
 
 .include "data/dat15.inc"
@@ -496,10 +533,12 @@
 // .global off_80758AC
 // .global off_80758B8
 // .global off_80758C4
+// .global byte_8075900
+// .global byte_8075903
 
 .include "asm/asm16.inc"
 // .global sub_8077DE0
-// .global loc_8077E60
+// .global sub_8077E60
 // .global sub_8077E84
 
 .include "data/dat16.inc"
@@ -507,10 +546,11 @@
 // .global dword_807810C
 // .global off_8078114
 // .global off_807811C
+// .global byte_8078144
 
 .include "asm/asm17.inc"
 // .global sub_80793E8
-// .global loc_8079468
+// .global sub_8079468
 // .global sub_807948C
 
 .include "data/dat17.inc"
@@ -518,10 +558,12 @@
 // .global off_8079534
 // .global off_807953C
 // .global off_8079544
+// .global byte_807956C
+// .global byte_807956E
 
 .include "asm/asm18.inc"
 // .global sub_807A9CC
-// .global loc_807AAAC
+// .global sub_807AAAC
 // .global sub_807AAD6
 
 .include "data/dat18.inc"
@@ -529,10 +571,11 @@
 // .global dword_807ADF8
 // .global off_807AE04
 // .global off_807AE10
+// .global byte_807AE4C
 
 .include "asm/asm19.inc"
 // .global sub_807CF24
-// .global loc_807CFCC
+// .global sub_807CFCC
 // .global sub_807CFFC
 
 .include "data/dat19.inc"
@@ -540,10 +583,11 @@
 // .global off_807D300
 // .global off_807D310
 // .global off_807D320
+// .global byte_807D370
 
 .include "asm/asm20.inc"
 // .global sub_807EDD4
-// .global loc_807EE68
+// .global sub_807EE68
 // .global sub_807EE92
 
 .include "data/dat20.inc"
@@ -551,6 +595,7 @@
 // .global dword_807F204
 // .global dword_807F210
 // .global off_807F21C
+// .global byte_807F268
 
 .include "data/dat27.inc"
 // .global unk_8098358
@@ -559,6 +604,7 @@
 // .global dword_8098824
 // .global dword_80988E4
 // .global dword_809895C
+// .global byte_80989C1
 // .global unk_8098BB8
 
 .include "asm/asm28_0.inc"
@@ -580,8 +626,10 @@
 // .global loc_809E114
 // .global sub_809E122
 // .global sub_809E13C
+// .global sub_809E188
 // .global loc_809E1A4
 // .global sub_809E1AE
+// .global sub_809E1D8
 // .global sub_809E1FA
 // .global sub_809E218
 // .global sub_809E228
@@ -602,7 +650,9 @@
 // .global sub_809E2DC
 // .global sub_809E2F4
 // .global loc_809E2F6
+// .global loc_809E2FE
 // .global sub_809E312
+// .global loc_809E314
 // .global sub_809E434
 // .global sub_809E442
 // .global sub_809E452
@@ -726,13 +776,13 @@
 // .global unk_86C12A0
 // .global unk_86C13A0
 // .global unk_86C18A0
-// .global unk_86C18E0
-// .global unk_86C1920
-// .global unk_86C1960
-// .global unk_86C19A0
-// .global unk_86C19E0
+// .global byte_86C18E0
+// .global byte_86C1920
+// .global byte_86C1960
+// .global byte_86C19A0
+// .global byte_86C19E0
 // .global unk_86C1A20
-// .global unk_86C1A60
+// .global byte_86C1A60
 // .global unk_86C1AA0
 // .global unk_86C1B20
 // .global unk_86C1BA0
@@ -745,7 +795,12 @@
 // .global unk_86C1F20
 // .global unk_86C1F80
 // .global unk_86C22C0
-// .global unk_86C22E0
+// .global byte_86C22E0
+// .global byte_86C2300
+// .global byte_86C2320
+// .global byte_86C2340
+// .global byte_86C2360
+// .global byte_86C2380
 
 .include "data/dat38_43.inc"
 // .global byte_86C3C94
@@ -774,6 +829,7 @@
 
 .include "data/dat38_73.inc"
 // .global dword_87E660C
+// .global dword_87E66EC
 // .global byte_87E672C
 // .global word_87E672E
 
@@ -814,7 +870,7 @@
 .equ unk_2009460, 0x2009460
 .equ unk_2009480, 0x2009480
 .equ byte_2009790, 0x2009790
-.equ unk_2009940, 0x2009940
+.equ byte_2009940, 0x2009940
 .equ sCamera, 0x2009980
 .equ sCamera, 0x2009980
 .equ sCamera, 0x2009980
@@ -929,8 +985,8 @@
 .equ unk_2011EA0, 0x2011EA0
 .equ decomp_2013A00, 0x2013A00
 .equ unk_2014A00, 0x2014A00
-.equ unk_2017A00, 0x2017A00
-.equ unk_2017A04, 0x2017A04
+.equ byte_2017A00, 0x2017A00
+.equ byte_2017A04, 0x2017A04
 .equ unk_2018A00, 0x2018A00
 .equ unk_2018A04, 0x2018A04
 .equ unk_201AA00, 0x201AA00
@@ -965,6 +1021,7 @@
 .equ unk_202AB00, 0x202AB00
 .equ unk_202AF00, 0x202AF00
 .equ unk_202DA04, 0x202DA04
+.equ unk_2030003, 0x2030003
 .equ unk_2030A00, 0x2030A00
 .equ unk_2032A00, 0x2032A00
 .equ unk_2033400, 0x2033400
@@ -975,6 +1032,7 @@
 .equ unk_3001550, 0x3001550
 .equ unk_30015D0, 0x30015D0
 .equ unk_30016D0, 0x30016D0
+.equ unk_3001750, 0x3001750
 .equ word_3001960, 0x3001960
 .equ unk_3001980, 0x3001980
 .equ unk_30019A0, 0x30019A0
@@ -983,9 +1041,15 @@
 .equ unk_3001A40, 0x3001A40
 .equ unk_3001AE0, 0x3001AE0
 .equ unk_3001B20, 0x3001B20
+.equ unk_3001B60, 0x3001B60
 .equ LCDControl, 0x4000000
 .equ BG1X_Offset, 0x4000014
 // .global comp_82E8470
+// .global comp_84E0C4C
+// .global comp_84E0C4C
+// .global comp_84E0C4C
+// .global comp_84E0C4C
+// .global comp_84E0C4C
 // .global comp_84E0C4C
 // .global compFile_86C23A0
 // .global comp_86C2E2C

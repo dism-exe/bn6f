@@ -192,9 +192,9 @@
 // .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
-// .global unk_8043CA4
-// .global unk_8043E84
-// .global unk_8044064
+// .global byte_8043CA4
+// .global byte_8043E84
+// .global byte_8044064
 // .global chatbox_8045EEC
 // .global chatbox_8045EFC
 // .global chatbox_8045F1C
@@ -262,6 +262,14 @@
 // .global unk_811B9B5
 // .global sub_811BC44
 // .global sub_811BD64
+// .global sub_811C08C
+// .global sub_811C11C
+// .global sub_811C1AC
+// .global sub_811C25C
+// .global sub_811C4E8
+// .global sub_811C9FC
+// .global sub_811CC74
+// .global sub_811DC34
 // .global loc_811DF1C
 // .global loc_811E024
 // .global loc_811E168
@@ -336,22 +344,49 @@
 // .global unk_86A5180
 // .global dword_86A5500
 // .global dword_86A5D60
+// .global dword_86B7AE0
+// .global byte_86C0B20
+// .global byte_86C0B60
+// .global byte_86C0BA0
+// .global byte_86C0BE0
+// .global byte_86C0C20
+// .global byte_86C0C60
 // .global unk_86C14A0
+// .global byte_86C18E0
+// .global byte_86C1920
+// .global byte_86C1960
+// .global byte_86C19A0
+// .global byte_86C19E0
+// .global byte_86C1A60
 // .global unk_86C1B20
 
+.include "data/dat38_49.inc"
+// .global unk_86C9108
+
+.include "data/dat38_51.inc"
+// .global dword_86C9B54
+
+.include "data/dat38_52.inc"
+// .global unk_86C9D6C
+
 .include "data/dat38_53.inc"
-// .global unk_86CF4AC
+// .global byte_86CF4AC
 
 .include "data/dat38_63.inc"
 // .global off_86DC3F8
 
 .include "data/dat38_68.inc"
-// .global a8Bdfhjlnprtvxz
+// .global byte_86EA94C
+// .global byte_86EB354
+// .global byte_86EF71C
+
+.include "data/dat38_69.inc"
+// .global unk_872CF94
 
 .include "data/dat38_70.inc"
-// .global dword_873D9FC
+// .global byte_873D9FC
 // .global comp_873DE4C
-// .global dword_873EA50
+// .global byte_873EA50
 // .global comp_873ECC8
 
 .include "data/dat38_76.inc"
@@ -365,9 +400,11 @@
 // .global dword_87F0FF4
 // .global dword_87F1278
 // .global dword_87F14CC
+// .global dword_87F1714
 // .global dword_87F195C
 // .global dword_87F1BA8
 // .global unk_87F1E10
+// .global unk_87F2094
 
 .include "data/dat38_79.inc"
 // .global unk_87F25B4
@@ -427,9 +464,9 @@
 .equ unk_2013C40, 0x2013C40
 .equ unk_2015A00, 0x2015A00
 .equ unk_2015E00, 0x2015E00
-.equ unk_2016A00, 0x2016A00
-.equ unk_2017200, 0x2017200
-.equ unk_2017204, 0x2017204
+.equ byte_2016A00, 0x2016A00
+.equ byte_2017200, 0x2017200
+.equ byte_2017204, 0x2017204
 .equ unk_2018200, 0x2018200
 .equ unk_2018A00, 0x2018A00
 .equ unk_2018A04, 0x2018A04
@@ -498,7 +535,7 @@
 .equ unk_3001550, 0x3001550
 .equ unk_3001570, 0x3001570
 .equ unk_30015D0, 0x30015D0
-.equ unk_3001650, 0x3001650
+.equ byte_3001650, 0x3001650
 .equ unk_30016B0, 0x30016B0
 .equ unk_30016D0, 0x30016D0
 .equ unk_3001730, 0x3001730
@@ -506,8 +543,21 @@
 .equ word_3001960, 0x3001960
 .equ unk_3001980, 0x3001980
 .equ unk_30019C0, 0x30019C0
+.equ unk_3001A80, 0x3001A80
+.equ unk_3001AC0, 0x3001AC0
+.equ unk_3001AE0, 0x3001AE0
 .equ unk_3001B60, 0x3001B60
 .equ loc_3006B94, 0x3006B94
+.equ loc_3006C38, 0x3006C38
+.equ loc_3006C8E, 0x3006C8E
+.equ loc_3006CA8, 0x3006CA8
+.equ loc_3006F20, 0x3006F20
+.equ loc_3006F24, 0x3006F24
+.equ loc_3006F42, 0x3006F42
+.equ sub_3006F48, 0x3006F48
+.equ loc_3006F5C, 0x3006F5C
+.equ loc_3006F70, 0x3006F70
+.equ sub_3006F74, 0x3006F74
 // .global comp_84E0C4C
 // .global comp_86C5190
 // .global comp_86C526C
@@ -520,6 +570,7 @@
 // .global comp_86C9668
 // .global comp_86C96C0
 // .global comp_86C980C
+// .global comp_86C9AA4
 // .global comp_86C9BD4
 // .global comp_86C9CE4
 // .global comp_86C9D38

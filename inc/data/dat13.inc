@@ -22,6 +22,7 @@
 .global dword_807026C
 .global off_80702AC
 .global off_80702EC
+.global byte_807042C
 .global unk_8070605
 .global unk_807083F
 .global off_8071584

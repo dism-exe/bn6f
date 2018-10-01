@@ -1754,8 +1754,13 @@ loc_8001144:
     lsr r2, r1, #0xc
     lsr r0, r0, #0x14
     lsr r6, r1, #0x1c
+.func
+.thumb_func
+sub_8001154:
     push {r4-r7,lr}
     pop {r4-r7,pc}
+.endfunc // sub_8001154
+
 .func
 .thumb_func
 // () -> void
@@ -2686,7 +2691,7 @@ sub_8001850:
     ldr r1, dword_800186C // =0x600D400 
     ldr r2, dword_8001870 // =0x800 
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
-    ldr r0, off_8001874 // =dword_86BEC80 
+    ldr r0, off_8001874 // =unk_86BEC80 
     ldr r1, off_8001878 // =unk_3001B40 
     mov r2, #0x20 
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
@@ -2694,7 +2699,7 @@ sub_8001850:
 off_8001868:    .word dword_86A5520
 dword_800186C:    .word 0x600D400
 dword_8001870:    .word 0x800
-off_8001874:    .word dword_86BEC80
+off_8001874:    .word unk_86BEC80
 off_8001878:    .word unk_3001B40
 .endfunc // sub_8001850
 

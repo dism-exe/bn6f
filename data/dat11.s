@@ -47,13 +47,28 @@ off_806C804:    .word dword_806C820
     .word dword_806C840
     .byte 0, 0, 0, 0
     .word dword_806C850
-    .word dword_806C860
+    .word unk_806C860
 dword_806C820:    .word 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
 dword_806C830:    .word 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
 dword_806C840:    .word 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
 dword_806C850:    .word 0xFFFFFF00, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
-dword_806C860:    .word 0xFFFF0100, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x13001313
-    .word 0x131300
+unk_806C860:    .byte  0
+    .byte  1
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+    .byte 0xFF
+byte_806C870:    .byte 0x13, 0x13, 0x0, 0x13, 0x0, 0x13, 0x13, 0x0
 dword_806C878:    .word 0x842F2002
     .word 0x10806C8
     .word unk_806C8B8

@@ -11,6 +11,7 @@
 .global off_806C7CC
 .global off_806C7E8
 .global off_806C804
+.global byte_806C870
 .global off_806D6B0
 .global unk_806D820
 

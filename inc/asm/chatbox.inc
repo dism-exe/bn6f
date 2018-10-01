@@ -12,7 +12,6 @@
 .global chatbox_803FE10
 .global chatbox_runScript_803FE74 // (u16 *scriptList, u8 scriptOffIdx) -> void
 .global chatbox_onUpdate_803FEB4
-.global loc_8040000
 .global chatbox_runTrainScript // (u8 scriptOffIdx) -> void
 .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 .global chatbox_reqBBS_80404C0
@@ -22,9 +21,9 @@
 .global unk_8040A04
 .global chatbox_8040D5C
 .global off_8043C8C
-.global unk_8043CA4
-.global unk_8043E84
-.global unk_8044064
+.global byte_8043CA4
+.global byte_8043E84
+.global byte_8044064
 .global off_8044470
 .global off_80444C4
 .global chatbox_8045ED0
@@ -56,6 +55,7 @@
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010D4
 // .global sub_80010EC
+// .global sub_8001154
 // .global change_20013F0_800151C // () -> int
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_8002694
@@ -74,6 +74,7 @@
 .include "asm/asm00_1.inc"
 // .global sub_8002DEA
 // .global sub_8002F90 // () -> void
+// .global sub_8003914
 // .global sub_8003A64
 // .global gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
 // .global subsystem_launchBBS
@@ -99,6 +100,8 @@
 // .global sub_8021C02
 
 .include "asm/asm03_0.inc"
+// .global sub_802D158
+// .global sub_802D15E
 // .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 // .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 // .global toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
@@ -112,6 +115,8 @@
 
 .include "asm/asm03_1.inc"
 // .global sub_8033FC0
+// .global npc_getMapSpriteScriptOffsets
+// .global sub_80351B4
 // .global sub_803522E
 // .global sub_8036E44
 // .global sub_8036E78
@@ -119,6 +124,7 @@
 // .global sub_803CDF8
 // .global sub_803CE08
 // .global sub_803CE28
+// .global sub_803CEB8
 // .global sub_803CFF8
 // .global sub_803D02C
 // .global sub_803D040
@@ -137,6 +143,7 @@
 
 .include "asm/asm03_2.inc"
 // .global sub_8048C24
+// .global sub_8048F88
 
 .include "data/dat13.inc"
 // .global unk_8070605
@@ -149,32 +156,47 @@
 // .global sub_809E14C
 // .global sub_809E228
 // .global sub_809E2B8
+// .global loc_809E314
+
+.include "asm/asm28_1.inc"
+// .global sub_809FE5E
 
 .include "asm/asm29.inc"
 // .global sub_80AA5F4
+// .global sub_80AA86E
 
 .include "asm/asm32.inc"
 // .global sub_811FFC0 // () -> void
 // .global sub_81207F8
+// .global sub_8120DF0
 
 .include "asm/asm36.inc"
 // .global sub_8137718
 
 .include "asm/asm37_0.inc"
 // .global sub_813C030 // () -> void
+// .global sub_813C3AC
 
 .include "asm/reqBBS.inc"
 // .global reqBBS_813E5DC
+// .global reqBBS_813E660
 // .global dword_813F380
 // .global reqBBS_813F9A0
+// .global sub_813FA24
 // .global reqBBS_getTotalPointsIndex // () -> u8
 // .global reqBBS_81408B4
 
 .include "asm/asm37_1.inc"
+// .global sub_814187C
+// .global sub_8142134
+// .global sub_814227A
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 .include "data/dat38_40.inc"
 // .global byte_84E0554
+
+.include "data/dat38_41.inc"
+// .global byte_8521A12
 
 .include "data/dat38_42.inc"
 // .global dword_86A4740
@@ -183,16 +205,46 @@
 // .global dword_86B7AA0
 // .global dword_86B7AC0
 // .global dword_86BEB20
-// .global dword_86BEC80
+// .global unk_86BEC80
+// .global byte_86BECA0
+// .global byte_86BEE80
+// .global byte_86BF060
+// .global byte_86BF240
+// .global byte_86BF420
+// .global byte_86BF600
+// .global byte_86BF7E0
+// .global byte_86BF9C0
 // .global unk_86BFBA0
 // .global unk_86BFE20
 // .global unk_86BFE40
+// .global byte_86BFE60
+// .global byte_86C0040
+// .global byte_86C0220
+// .global byte_86C0400
 // .global unk_86C05E0
 // .global unk_86C0900
 // .global unk_86C0920
+// .global unk_86C0940
+
+.include "data/dat38_53.inc"
+// .global byte_86CF4AC
+
+.include "data/dat38_68.inc"
+// .global byte_86EA94C
+// .global byte_86EB354
+// .global byte_86EF71C
+// .global byte_86F2960
+// .global byte_86F2980
+// .global unk_86F2A00
+// .global unk_86F2A80
+// .global unk_86F2B00
+// .global unk_86F2B80
+// .global unk_86F2C00
+// .global byte_86F2C80
 
 .include "data/dat38_70.inc"
-// .global dword_873D9FC
+// .global byte_873D9FC
+// .global byte_873EA50
 // .global dword_873F008
 // .global dword_873F028
 // .global dword_873F048
@@ -210,6 +262,8 @@
 // .global dword_87433BC
 // .global dword_87439D8
 // .global unk_8743F6C
+// .global unk_87444C8
+// .global byte_8744B38
 // .global dword_8745100
 // .global dword_874584C
 // .global dword_8745DEC
@@ -454,6 +508,22 @@
 // .global dword_8771FB8
 // .global dword_8771FC4
 // .global dword_8771FD0
+// .global byte_8772974
+// .global byte_8773068
+// .global byte_8773730
+// .global byte_877416C
+// .global unk_8774530
+// .global byte_8774F48
+// .global byte_8775208
+// .global byte_877567C
+// .global byte_8775B60
+// .global unk_8775E00
+// .global byte_8776A20
+// .global byte_8776C50
+// .global byte_8777078
+// .global byte_8777428
+// .global byte_877767C
+// .global byte_8778400
 // .global dword_87786EC
 // .global dword_8778810
 // .global dword_87789F4
@@ -484,6 +554,7 @@
 // .global dword_877E56C
 // .global dword_877E620
 // .global unk_877EDD8
+// .global unk_877F460
 // .global dword_877F594
 // .global dword_8780104
 // .global dword_8780724
@@ -526,6 +597,11 @@
 // .global dword_878A004
 // .global dword_878A4E0
 // .global dword_878A898
+// .global byte_878B46C
+// .global byte_878B690
+// .global byte_878BC64
+// .global byte_878C214
+// .global byte_878C5C8
 // .global dword_878CE18
 // .global dword_878D038
 // .global dword_878D544
@@ -771,7 +847,7 @@
 // .global dword_87A3B84
 
 .include "data/dat38_79.inc"
-// .global dword_87F2E38
+// .global byte_87F2E38
 // .global dword_87F2ED0
 
 
@@ -785,8 +861,14 @@
 .equ dynaicArr, 0x2005780
 .equ sSubmenu, 0x2009A30
 .equ unk_2009A80, 0x2009A80
+.equ unk_2009A82, 0x2009A82
+.equ unk_2009A84, 0x2009A84
+.equ unk_2009A86, 0x2009A86
+.equ unk_2009A88, 0x2009A88
+.equ unk_2009A8A, 0x2009A8A
 .equ dword_2009F38, 0x2009F38
 .equ byte_2009F40, 0x2009F40
+.equ unk_200A293, 0x200A293
 .equ i_joGameSubsysSel, 0x200A480
 .equ unk_200AFA0, 0x200AFA0
 .equ unk_200B2B0, 0x200B2B0
@@ -801,13 +883,20 @@
 .equ unk_200C7E0, 0x200C7E0
 .equ unk_200C7F0, 0x200C7F0
 .equ dword_200CDA0, 0x200CDA0
+.equ unk_2011A9D, 0x2011A9D
 .equ unk_2011C54, 0x2011C54
+.equ unk_2011C55, 0x2011C55
+.equ unk_2011C56, 0x2011C56
+.equ unk_2011C57, 0x2011C57
+.equ byte_201F070, 0x201F070
+.equ reqBBS_requestNames_textualData, 0x2025A04
 .equ unk_202DA00, 0x202DA00
 .equ unk_202DA04, 0x202DA04
 .equ unk_202FA00, 0x202FA00
 .equ unk_2033400, 0x2033400
 .equ unk_2034A00, 0x2034A00
 .equ unk_2034A04, 0x2034A04
+.equ byte_3001650, 0x3001650
 .equ unk_3001710, 0x3001710
 .equ unk_3001B40, 0x3001B40
 .equ sub_3006F8C, 0x3006F8C

@@ -12,6 +12,10 @@
 .global off_804E954
 .global off_804E968
 .global off_804E9CC
+.global unk_804EA08
+.global byte_804EA0D
+.global byte_804EA12
+.global byte_804EA1C
 .global unk_8050202
 .global off_8052244
 .global off_8052480

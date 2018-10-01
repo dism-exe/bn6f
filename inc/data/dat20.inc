@@ -9,6 +9,7 @@
 .global dword_807F204
 .global dword_807F210
 .global off_807F21C
+.global byte_807F268
 .global off_807FAC0
 .global unk_8080598
 .global unk_80805C0
@@ -20,8 +21,8 @@
 .global unk_808068A
 .global unk_808068B
 .global unk_80806B3
-.global unk_8080808
-.global unk_80808B0
+.global byte_8080808
+.global byte_80808B0
 .global unk_80808D8
 .global unk_80809F6
 .global unk_8080AA0

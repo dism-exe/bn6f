@@ -270,7 +270,7 @@
 // .global sub_813D978
 
 .include "asm/asm37_1.inc"
-// .global sub_81440D8
+// .global sub_81440D8 // static () -> void
 // .global sub_8144240
 // .global sub_8146588
 // .global sub_81465BC
@@ -331,8 +331,8 @@
 // .global unk_872CF94
 
 .include "data/dat38_70.inc"
-// .global dword_873D9FC
-// .global dword_873EA50
+// .global byte_873D9FC
+// .global byte_873EA50
 
 
 /* Undeclared Symbols */
@@ -366,8 +366,8 @@
 .equ word_200DD02, 0x200DD02
 .equ word_200DD04, 0x200DD04
 .equ decomp_2013A00, 0x2013A00
-.equ unk_2017A00, 0x2017A00
-.equ unk_2017A20, 0x2017A20
+.equ byte_2017A00, 0x2017A00
+.equ byte_2017A20, 0x2017A20
 .equ unk_2017C80, 0x2017C80
 .equ unk_2017D20, 0x2017D20
 .equ unk_2017F60, 0x2017F60

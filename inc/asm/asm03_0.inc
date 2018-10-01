@@ -617,7 +617,7 @@
 // .global sub_813D960
 
 .include "asm/asm37_1.inc"
-// .global sub_81440D8
+// .global sub_81440D8 // static () -> void
 // .global sub_8149644
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
@@ -663,12 +663,12 @@
 // .global unk_86E79CC
 // .global dword_86E7DCC
 // .global dword_86E944C
-// .global dword_86EA94C
-// .global unk_86EB354
+// .global byte_86EA94C
+// .global byte_86EB354
 // .global unk_86EB8B8
 // .global unk_86EE0CC
 // .global dword_86EF4D4
-// .global a8Bdfhjlnprtvxz
+// .global byte_86EF71C
 // .global notAdded_scripts_86EF78C
 // .global byte_86F0300
 // .global dword_86F047C
@@ -719,7 +719,37 @@
 // .global unk_87F4194
 
 .include "data/dat38_84.inc"
-// .global dword_87F8EB0
+// .global unk_87F8EB0
+// .global unk_87F93B4
+// .global byte_87F93D4
+// .global byte_87F93F4
+// .global byte_87F9414
+// .global unk_87F9434
+// .global unk_87F9454
+// .global unk_87F9474
+// .global unk_87F9494
+// .global unk_87F94B4
+// .global unk_87F94D4
+// .global unk_87F94F4
+// .global unk_87F9514
+// .global unk_87F9534
+// .global unk_87F9554
+// .global unk_87F9574
+// .global unk_87F9594
+// .global unk_87F95B4
+// .global unk_87F95D4
+// .global unk_87F95F4
+// .global unk_87F9614
+// .global unk_87F96D4
+// .global unk_87F96F4
+// .global unk_87F9714
+// .global unk_87F9734
+// .global unk_87F9754
+// .global unk_87F9774
+// .global unk_87F9794
+// .global unk_87F97B4
+// .global unk_87F97D4
+// .global unk_87F97F4
 
 
 /* Undeclared Symbols */
@@ -932,12 +962,17 @@
 .equ unk_3001610, 0x3001610
 .equ unk_30016B0, 0x30016B0
 .equ unk_30016F0, 0x30016F0
+.equ unk_3001750, 0x3001750
 .equ dword_3001950, 0x3001950
 .equ word_3001960, 0x3001960
+.equ unk_3001A40, 0x3001A40
+.equ unk_3001A60, 0x3001A60
 .equ unk_3001A80, 0x3001A80
 .equ unk_3001AA0, 0x3001AA0
 .equ unk_3001AD4, 0x3001AD4
 .equ unk_3001AE0, 0x3001AE0
+.equ unk_3001B00, 0x3001B00
+.equ unk_3001B20, 0x3001B20
 .equ dword_3001D70, 0x3001D70
 .equ unk_3002580, 0x3002580
 .equ dword_3002590, 0x3002590

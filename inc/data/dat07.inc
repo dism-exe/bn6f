@@ -12,6 +12,9 @@
 .global off_805E184
 .global off_805E198
 .global off_805E1FC
+.global byte_805E238
+.global byte_805E23D
+.global byte_805E242
 .global off_8060184
 .global unk_806020A
 .global off_8060284

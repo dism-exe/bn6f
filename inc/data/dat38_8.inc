@@ -20,7 +20,7 @@
 // .global start_
 
 .include "data/dat20.inc"
-// .global unk_8080808
+// .global byte_8080808
 
 .include "data/dat38_17.inc"
 // .global unk_8420000

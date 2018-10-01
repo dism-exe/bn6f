@@ -104,7 +104,7 @@
 // .global dword_86F2240
 // .global unk_86F2500
 // .global dword_86F26C0
-// .global dword_86F2900
+// .global unk_86F2900
 
 .include "data/dat38_69.inc"
 // .global unk_872CFB4

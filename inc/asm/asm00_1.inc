@@ -1019,7 +1019,7 @@
 // .global sub_8142248
 // .global sub_8143482
 // .global sub_8144048
-// .global sub_81440D8
+// .global sub_81440D8 // static () -> void
 // .global sub_8144EEC
 // .global SWI_LZ77UnCompReadNormalWrite16bit
 

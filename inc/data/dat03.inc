@@ -15,6 +15,9 @@
 .global off_804D0B4
 .global off_804D0BC
 .global off_804D0E4
+.global byte_804D0FC
+.global byte_804D0FE
+.global byte_804D100
 .global off_804E38C
 .global off_804E450
 .global off_804E478

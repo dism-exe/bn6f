@@ -9,6 +9,7 @@
 .global dword_807ADF8
 .global off_807AE04
 .global off_807AE10
+.global byte_807AE4C
 .global off_807C82C
 .global off_807C94C
 .global off_807C974

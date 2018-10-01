@@ -10217,6 +10217,9 @@ locret_80AA86C:
     pop {r4,r6,r7,pc}
 .endfunc // sub_80AA824
 
+.func
+.thumb_func
+sub_80AA86E:
     push {r4,lr}
     pop {r4,pc}
     .balign 4, 0x00
@@ -10226,6 +10229,8 @@ off_80AA87C:    .word dword_2000B30
 off_80AA880:    .word dword_2000B30
 off_80AA884:    .word iCurrFrame
 off_80AA888:    .word dword_2000B30
+.endfunc // sub_80AA86E
+
 .func
 .thumb_func
 sub_80AA88C:

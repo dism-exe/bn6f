@@ -783,7 +783,7 @@ reqBBS_dead_813E634:
 
 .func
 .thumb_func
-reqBBS_dead_813E660:
+reqBBS_813E660:
     push {r4,r5,lr}
     ldr r3, off_813E688 // =dword_813E68C 
     mov r1, #0
@@ -818,7 +818,7 @@ off_813E6C0:    .word unk_2000FF0
 off_813E6C4:    .word unk_2001400
 off_813E6C8:    .word unk_2000FC0
 off_813E6CC:    .word unk_2000FF0
-.endfunc // reqBBS_dead_813E660
+.endfunc // reqBBS_813E660
 
 .func
 .thumb_func
@@ -2766,6 +2766,9 @@ reqBBS_dead_initMemory_813F9F8:
     pop {r4,pc}
 .endfunc // reqBBS_dead_initMemory_813F9F8
 
+.func
+.thumb_func
+sub_813FA24:
     push {r4,r5,lr}
     ldr r3, off_813FA4C // =dword_813FA50 
     mov r1, #0
@@ -2789,6 +2792,8 @@ loc_813FA2E:
     .balign 4, 0x00
 off_813FA4C:    .word dword_813FA50
 dword_813FA50:    .word 0x1B60
+.endfunc // sub_813FA24
+
 .func
 .thumb_func
 reqBBS_813FA54:

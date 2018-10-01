@@ -1,6 +1,7 @@
 .include "asm/start.inc"
 
 .func
+.arm
 start_:
     b loc_80000D0
     .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B2411
@@ -92,6 +93,7 @@ loc_80000D0:
 .endfunc // start_
 
 .func
+.arm
 // (void *mem, int size) -> void
 start_clearMemory:
     mov r2, #0
@@ -103,6 +105,7 @@ loc_80001C8:
 .endfunc // start_clearMemory
 
 .func
+.arm
 // (void *src, void *dest, int size) -> void
 start_copyMemory:
     // size

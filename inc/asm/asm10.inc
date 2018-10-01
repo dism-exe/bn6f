@@ -6,6 +6,7 @@
 .global off_80665AC
 .global off_80665B4
 .global off_80665BC
+.global byte_80665E4
 .global off_8067754
 .global off_8067914
 .global off_8067944
@@ -63,7 +64,7 @@
 .include "data/dat10.inc"
 // .global dword_8067DF8
 // .global dword_8067E08
-// .global dword_8067E18
+// .global unk_8067E18
 // .global unk_8067E2C
 // .global unk_8067E8D
 // .global dword_8067F24

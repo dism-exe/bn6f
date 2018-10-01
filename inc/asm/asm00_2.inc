@@ -544,7 +544,6 @@
 // .global sub_803F524
 
 .include "asm/chatbox.inc"
-// .global loc_8040000
 // .global unk_8040A04
 
 .include "asm/asm03_2.inc"
@@ -707,7 +706,7 @@
 // .global dword_86EA92C
 // .global byte_86F0300
 // .global byte_86F0374
-// .global dword_86F2900
+// .global unk_86F2900
 // .global unk_86F2D00
 // .global unk_86F2D80
 // .global dword_86F2E00

@@ -4,7 +4,8 @@
 /* Public Symbols */
 .global dword_8067DF8
 .global dword_8067E08
-.global dword_8067E18
+.global unk_8067E18
+.global byte_8067E28
 .global unk_8067E2C
 .global unk_8067E8D
 .global dword_8067F24

@@ -6,9 +6,11 @@
 .global dword_87F0FF4
 .global dword_87F1278
 .global dword_87F14CC
+.global dword_87F1714
 .global dword_87F195C
 .global dword_87F1BA8
 .global unk_87F1E10
+.global unk_87F2094
 
 
 /* External Symbols */

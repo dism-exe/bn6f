@@ -49,7 +49,7 @@
 // .global dword_807FAC4
 // .global unk_8080598
 // .global unk_80805C0
-// .global unk_80808B0
+// .global byte_80808B0
 // .global unk_80808D8
 // .global unk_8080AA0
 
