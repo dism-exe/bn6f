@@ -523,7 +523,7 @@
 // .global dword_86E3B9C
 // .global dword_86E411C
 // .global dword_86E43DC
-// .global unk_86E587C
+// .global byte_86E587C
 // .global unk_86EB8B8
 // .global unk_86EE0CC
 

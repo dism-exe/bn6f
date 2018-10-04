@@ -139,7 +139,7 @@
 // .global dword_87EF5A4
 // .global dword_87EFBA4
 // .global reqBBS_textualShades
-// .global unk_87EFE14
+// .global byte_87EFE14
 
 
 /* Undeclared Symbols */

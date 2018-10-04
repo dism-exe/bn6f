@@ -28,8 +28,8 @@
 // .global off_8052244
 // .global off_8052480
 // .global off_80524C0
-// .global unk_80524E8
-// .global unk_8052510
+// .global byte_80524E8
+// .global byte_8052510
 // .global unk_8052538
 
 .include "data/dat05.inc"

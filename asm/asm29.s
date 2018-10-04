@@ -973,7 +973,7 @@ loc_80A56A2:
     lsl r0, r0, #2
     ldr r4, off_80A570C // =off_80A5714 
     ldr r4, [r4,r0]
-    ldr r1, off_80A5710 // =unk_80A5720 
+    ldr r1, off_80A5710 // =byte_80A5720 
     ldrb r1, [r1,r2]
     strb r1, [r5,#6]
     mov r7, #0
@@ -1029,14 +1029,11 @@ locret_80A5708:
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_80A570C:    .word off_80A5714
-off_80A5710:    .word unk_80A5720
+off_80A5710:    .word byte_80A5720
 off_80A5714:    .word dword_80A5358+0x58
     .word dword_80A5358+0x84
     .word dword_80A5358+0xB0
-unk_80A5720:    .byte 0xB
-    .byte 0xB
-    .byte  8
-    .byte  0
+byte_80A5720:    .byte 0xB, 0xB, 0x8, 0x0
 .endfunc // sub_80A5690
 
 .func
@@ -1044,22 +1041,16 @@ unk_80A5720:    .byte 0xB
 sub_80A5724:
     push {r4,lr}
     ldrb r3, [r6,#5]
-    ldr r2, off_80A5734 // =unk_80A573C 
+    ldr r2, off_80A5734 // =byte_80A573C 
     ldrb r0, [r2,r3]
-    ldr r2, off_80A5738 // =unk_80A5740 
+    ldr r2, off_80A5738 // =byte_80A5740 
     ldrb r1, [r2,r3]
     pop {r4,pc}
     .balign 4, 0x00
-off_80A5734:    .word unk_80A573C
-off_80A5738:    .word unk_80A5740
-unk_80A573C:    .byte 0xC
-    .byte 0x20
-    .byte 0xC
-    .byte 0x18
-unk_80A5740:    .byte 0x20
-    .byte 0xC
-    .byte 0x20
-    .byte 0xC
+off_80A5734:    .word byte_80A573C
+off_80A5738:    .word byte_80A5740
+byte_80A573C:    .byte 0xC, 0x20, 0xC, 0x18
+byte_80A5740:    .byte 0x20, 0xC, 0x20, 0xC
 .endfunc // sub_80A5724
 
 .func
@@ -4382,7 +4373,7 @@ sub_80A796C:
     str r0, [r5,#0x14]
     ldr r0, [r5,#0x24]
     lsr r0, r0, #1
-    ldr r1, off_80A79C0 // =unk_80A79C4 
+    ldr r1, off_80A79C0 // =byte_80A79C4 
     ldrb r0, [r1,r0]
     // <mkdata>
     .hword 0x1 // mov r1, r0
@@ -4407,23 +4398,9 @@ loc_80A79A0:
 off_80A79AC:    .word dword_80A79B0
 dword_80A79B0:    .word 0x3040404, 0x102, 0x0
     .word 0xFF000000
-off_80A79C0:    .word unk_80A79C4
-unk_80A79C4:    .byte  4
-    .byte  6
-    .byte  8
-    .byte 0xA
-    .byte 0xC
-    .byte 0xE
-    .byte 0x10
-    .byte 0x12
-    .byte 0x14
-    .byte 0x16
-    .byte 0x18
-    .byte 0x1A
-    .byte 0x1C
-    .byte 0x1E
-    .byte 0x1F
-    .byte 0x1F
+off_80A79C0:    .word byte_80A79C4
+byte_80A79C4:    .byte 0x4, 0x6, 0x8, 0xA, 0xC, 0xE, 0x10, 0x12, 0x14, 0x16, 0x18
+    .byte 0x1A, 0x1C, 0x1E, 0x1F, 0x1F
 .func
 .thumb_func
 sub_80A79D4:
@@ -5450,7 +5427,7 @@ loc_80A82EC:
     ldrb r1, [r0,#5]
 loc_80A82EE:
     lsl r1, r1, #2
-    ldr r2, off_80A8310 // =unk_80A8314 
+    ldr r2, off_80A8310 // =byte_80A8314 
     ldr r0, [r2,r1]
     ldrb r2, [r5,#4]
     lsl r2, r2, #1
@@ -5465,23 +5442,9 @@ loc_80A82EE:
 loc_80A830C:
     add r0, r4, #0
     pop {r4,pc}
-off_80A8310:    .word unk_80A8314
-unk_80A8314:    .byte 0xBE
-    .byte 0x81
-    .byte 0xA
-    .byte  8
-    .byte 0xCC
-    .byte 0x81
-    .byte 0xA
-    .byte  8
-    .byte 0xDE
-    .byte 0x81
-    .byte 0xA
-    .byte  8
-    .byte 0xF0
-    .byte 0x81
-    .byte 0xA
-    .byte  8
+off_80A8310:    .word byte_80A8314
+byte_80A8314:    .byte 0xBE, 0x81, 0xA, 0x8, 0xCC, 0x81, 0xA, 0x8, 0xDE, 0x81
+    .byte 0xA, 0x8, 0xF0, 0x81, 0xA, 0x8
 .endfunc // sub_80A82DC
 
 .func
@@ -5813,18 +5776,11 @@ sub_80A8580:
 loc_80A85A0:
     mov r4, #4
 loc_80A85A2:
-    ldr r1, off_80A85A8 // =unk_80A85AC 
+    ldr r1, off_80A85A8 // =byte_80A85AC 
     ldr r0, [r1,r4]
     pop {r4,pc}
-off_80A85A8:    .word unk_80A85AC
-unk_80A85AC:    .byte  0
-    .byte 0x40 
-    .byte  2
-    .byte  0
-    .byte  0
-    .byte 0x20
-    .byte  1
-    .byte  0
+off_80A85A8:    .word byte_80A85AC
+byte_80A85AC:    .byte 0x0, 0x40, 0x2, 0x0, 0x0, 0x20, 0x1, 0x0
 .endfunc // sub_80A8580
 
 .func
@@ -6196,7 +6152,7 @@ sub_80A8894:
     strb r0, [r5]
     mov r0, #0x80
     mov r1, #0x1c
-    ldr r2, off_80A88DC // =unk_80A88E0 
+    ldr r2, off_80A88DC // =byte_80A88E0 
     ldrb r3, [r5,#5]
     ldrb r2, [r2,r3]
     bl sprite_load // (int a1, int a2, int a3) ->
@@ -6222,9 +6178,8 @@ sub_80A8894:
     strb r0, [r5,#8]
     bl sub_80A88E2
     pop {r4-r7,pc}
-off_80A88DC:    .word unk_80A88E0
-unk_80A88E0:    .byte 0x67 
-    .byte 0x68 
+off_80A88DC:    .word byte_80A88E0
+byte_80A88E0:    .byte 0x67, 0x68
 .func
 .thumb_func
 sub_80A88E2:
@@ -6267,7 +6222,7 @@ sub_80A8918:
     str r0, [r5,#0x14]
     ldr r0, [r5,#0x24]
     lsr r0, r0, #1
-    ldr r1, off_80A896C // =unk_80A8970 
+    ldr r1, off_80A896C // =byte_80A8970 
     ldrb r0, [r1,r0]
     // <mkdata>
     .hword 0x1 // mov r1, r0
@@ -6292,23 +6247,9 @@ loc_80A894C:
 off_80A8958:    .word dword_80A895C
 dword_80A895C:    .word 0x3040404, 0x102, 0x0
     .word 0xFF000000
-off_80A896C:    .word unk_80A8970
-unk_80A8970:    .byte  4
-    .byte  6
-    .byte  8
-    .byte 0xA
-    .byte 0xC
-    .byte 0xE
-    .byte 0x10
-    .byte 0x12
-    .byte 0x14
-    .byte 0x16
-    .byte 0x18
-    .byte 0x1A
-    .byte 0x1C
-    .byte 0x1E
-    .byte 0x1F
-    .byte 0x1F
+off_80A896C:    .word byte_80A8970
+byte_80A8970:    .byte 0x4, 0x6, 0x8, 0xA, 0xC, 0xE, 0x10, 0x12, 0x14, 0x16, 0x18
+    .byte 0x1A, 0x1C, 0x1E, 0x1F, 0x1F
 .func
 .thumb_func
 sub_80A8980:
@@ -6386,7 +6327,7 @@ sub_80A89FC:
     lsr r0, r0, #5
     mov r1, #7
     and r0, r1
-    ldr r1, off_80A8A44 // =unk_80A8A48 
+    ldr r1, off_80A8A44 // =byte_80A8A48 
     ldrb r0, [r1,r0]
     bl sprite_setAnimation // (u8 a1) -> void
     bl sprite_loadAnimationData // () -> void
@@ -6403,15 +6344,8 @@ sub_80A89FC:
     bl sub_80A8A7C
     bl sub_80A8A50
     pop {r4-r7,pc}
-off_80A8A44:    .word unk_80A8A48
-unk_80A8A48:    .byte  3
-    .byte  2
-    .byte  1
-    .byte  0
-    .byte  7
-    .byte  6
-    .byte  5
-    .byte  4
+off_80A8A44:    .word byte_80A8A48
+byte_80A8A48:    .byte 0x3, 0x2, 0x1, 0x0, 0x7, 0x6, 0x5, 0x4
 .func
 .thumb_func
 sub_80A8A50:
@@ -6696,14 +6630,11 @@ sub_80A8C7C:
     lsr r0, r0, #6
     mov r1, #3
     and r0, r1
-    ldr r1, off_80A8C90 // =unk_80A8C94 
+    ldr r1, off_80A8C90 // =byte_80A8C94 
     ldrb r0, [r1,r0]
     pop {r4-r7,pc}
-off_80A8C90:    .word unk_80A8C94
-unk_80A8C94:    .byte  2
-    .byte  3
-    .byte  0
-    .byte  1
+off_80A8C90:    .word byte_80A8C94
+byte_80A8C94:    .byte 0x2, 0x3, 0x0, 0x1
 .endfunc // sub_80A8C7C
 
 .func
@@ -7849,7 +7780,7 @@ sub_80A94F8:
     str r0, [r5,#0x14]
     ldr r0, [r5,#0x24]
     lsr r0, r0, #1
-    ldr r1, off_80A9554 // =unk_80A9558 
+    ldr r1, off_80A9554 // =byte_80A9558 
     ldrb r0, [r1,r0]
     // <mkdata>
     .hword 0x1 // mov r1, r0
@@ -7877,23 +7808,9 @@ loc_80A9534:
 off_80A9540:    .word dword_80A9544
 dword_80A9544:    .word 0x3040404, 0x102, 0x0
     .word 0xFF000000
-off_80A9554:    .word unk_80A9558
-unk_80A9558:    .byte  4
-    .byte  6
-    .byte  8
-    .byte 0xA
-    .byte 0xC
-    .byte 0xE
-    .byte 0x10
-    .byte 0x12
-    .byte 0x14
-    .byte 0x16
-    .byte 0x18
-    .byte 0x1A
-    .byte 0x1C
-    .byte 0x1E
-    .byte 0x1F
-    .byte 0x1F
+off_80A9554:    .word byte_80A9558
+byte_80A9558:    .byte 0x4, 0x6, 0x8, 0xA, 0xC, 0xE, 0x10, 0x12, 0x14, 0x16, 0x18
+    .byte 0x1A, 0x1C, 0x1E, 0x1F, 0x1F
 .func
 .thumb_func
 sub_80A9568:

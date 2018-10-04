@@ -7,7 +7,7 @@
 
 /* External Symbols */
 .include "data/dat38_17.inc"
-// .global unk_8420000
+// .global byte_8420000
 
 
 .endif // INC_DATA_DAT38_63

@@ -75,7 +75,7 @@ off_804E6FC:    .word off_804E450
 off_804E70C:    .word dword_804E5D4
     .word 0xFFFFFFFF
 dword_804E714:    .word 0xFFFFFFFF
-off_804E718:    .word unk_804E604
+off_804E718:    .word byte_804E604
     .word 0xFFFFFFFF
 .endfunc // sub_804E6D0
 

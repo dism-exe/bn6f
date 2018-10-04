@@ -23,7 +23,7 @@
 // .global byte_8080808
 
 .include "data/dat38_17.inc"
-// .global unk_8420000
+// .global byte_8420000
 
 
 /* Undeclared Symbols */

@@ -83,7 +83,7 @@ off_806FD0C:    .word off_806FD4C
     .word off_806FD4C
     .word off_806FD4C
     .word off_806FD4C
-off_806FD4C:    .word unk_806D820
+off_806FD4C:    .word byte_806D820
     .word 0xFFFFFFFF
 .endfunc // sub_806FCF8
 

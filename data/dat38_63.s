@@ -1,6 +1,6 @@
 .include "data/dat38_63.inc"
 
-off_86DC3F8:    .word unk_8420000
+off_86DC3F8:    .word byte_8420000
     .byte 0x7F 
     .byte 0x5E 
     .byte 0xDF

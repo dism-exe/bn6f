@@ -107,13 +107,13 @@ loc_803FDA8:
     bl loc_8000AC8
     cmp r4, #1
     beq loc_803FDC6
-    ldr r0, off_803FDFC // =unk_86BFE20 
+    ldr r0, off_803FDFC // =byte_86BFE20 
     ldr r1, off_803FE00 // =unk_3001B40 
     mov r2, #0x20 
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     b loc_803FDD0
 loc_803FDC6:
-    ldr r0, off_803FE04 // =unk_86BFE40 
+    ldr r0, off_803FE04 // =byte_86BFE40 
     ldr r1, off_803FE00 // =unk_3001B40 
     mov r2, #0x20 
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
@@ -134,9 +134,9 @@ off_803FDEC:    .word unk_86BFBA0
 dword_803FDF0:    .word 0x600DC80
 off_803FDF4:    .word 0x280
     .word 0x380
-off_803FDFC:    .word unk_86BFE20
+off_803FDFC:    .word byte_86BFE20
 off_803FE00:    .word unk_3001B40
-off_803FE04:    .word unk_86BFE40
+off_803FE04:    .word byte_86BFE40
 .endfunc // chatbox_runScript_803FD9C
 
 .func
@@ -162,13 +162,13 @@ loc_803FE14:
     bl loc_8000AC8
     cmp r4, #1
     beq loc_803FE32
-    ldr r0, off_803FE68 // =unk_86C0900 
+    ldr r0, off_803FE68 // =byte_86C0900 
     ldr r1, off_803FE6C // =unk_3001B40 
     mov r2, #0x20 
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
     b loc_803FE3C
 loc_803FE32:
-    ldr r0, off_803FE70 // =unk_86C0920 
+    ldr r0, off_803FE70 // =byte_86C0920 
     ldr r1, off_803FE6C // =unk_3001B40 
     mov r2, #0x20 
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
@@ -189,9 +189,9 @@ off_803FE58:    .word unk_86C05E0
 dword_803FE5C:    .word 0x600DC80
 off_803FE60:    .word 0x320
     .word 0x380
-off_803FE68:    .word unk_86C0900
+off_803FE68:    .word byte_86C0900
 off_803FE6C:    .word unk_3001B40
-off_803FE70:    .word unk_86C0920
+off_803FE70:    .word byte_86C0920
 .endfunc // chatbox_803FE10
 
 .func
@@ -671,7 +671,7 @@ loc_8040242:
     lsr r7, r7, #2
     lsl r0, r0, #0x10
     orr r0, r1
-    ldr r1, off_804033C // =unk_8040340 
+    ldr r1, off_804033C // =byte_8040340 
     ldrb r1, [r1,r7]
     mov r2, r9
     add r1, r1, r2
@@ -699,7 +699,7 @@ loc_8040242:
     lsr r7, r7, #2
     lsl r0, r0, #0x10
     orr r0, r1
-    ldr r1, off_804033C // =unk_8040340 
+    ldr r1, off_804033C // =byte_8040340 
     ldrb r1, [r1,r7]
     mov r2, r9
     add r1, r1, r2
@@ -727,7 +727,7 @@ loc_8040242:
     lsr r7, r7, #2
     lsl r0, r0, #0x10
     orr r0, r1
-    ldr r1, off_804033C // =unk_8040340 
+    ldr r1, off_804033C // =byte_8040340 
     ldrb r1, [r1,r7]
     mov r2, r9
     add r1, r1, r2
@@ -764,11 +764,8 @@ dword_8040314:    .word 0x80004000, 0x80004000, 0x40004000
 off_8040320:    .word dword_8040324
 dword_8040324:    .word 0x18100800, 0x2820, 0x48403830, 0x5850, 0x6C686460
     .word 0x7470
-off_804033C:    .word unk_8040340
-unk_8040340:    .byte  0
-    .byte 0x10
-    .byte 0x20
-    .byte  0
+off_804033C:    .word byte_8040340
+byte_8040340:    .byte 0x0, 0x10, 0x20, 0x0
 .endfunc // chatbox_804021C
 
 .func
@@ -924,7 +921,7 @@ chatbox_runScript:
     ldr r1, dword_8040470 // =0x600DC80 
     ldr r2, off_8040474 // =0x160 
     bl loc_8000AC8
-    ldr r0, off_804047C // =unk_86BEC80 
+    ldr r0, off_804047C // =byte_86BEC80 
     ldr r1, off_8040480 // =unk_3001B40 
     mov r2, #0x20 
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
@@ -938,7 +935,7 @@ off_804046C:    .word dword_86BEB20
 dword_8040470:    .word 0x600DC80
 off_8040474:    .word 0x160
     .word 0x380
-off_804047C:    .word unk_86BEC80
+off_804047C:    .word byte_86BEC80
 off_8040480:    .word unk_3001B40
 off_8040484:    .word dword_86B7AC0
 off_8040488:    .word unk_3001710
@@ -1065,7 +1062,7 @@ chatbox_reqBBS_80404C0:
     ldr r1, dword_80405AC // =0x600DC80 
     ldr r2, off_80405B0 // =0x160 
     bl loc_8000AC8
-    ldr r0, off_80405B4 // =unk_86BEC80 
+    ldr r0, off_80405B4 // =byte_86BEC80 
     ldr r1, off_80405B8 // =unk_3001B40 
     mov r2, #0x20 
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
@@ -1077,7 +1074,7 @@ chatbox_reqBBS_80404C0:
 off_80405A8:    .word dword_86BEB20
 dword_80405AC:    .word 0x600DC80
 off_80405B0:    .word 0x160
-off_80405B4:    .word unk_86BEC80
+off_80405B4:    .word byte_86BEC80
 off_80405B8:    .word unk_3001B40
     .word dword_86B7AC0
 off_80405C0:    .word unk_3001710
@@ -1216,7 +1213,7 @@ dead_80405F8:
     .word dword_86BEB20
 dword_80406E4:    .word 0x600DC80
     .word 0x160
-    .word unk_86BEC80
+    .word byte_86BEC80
 off_80406F0:    .word unk_3001B40
 off_80406F4:    .word dword_86B7AC0
 off_80406F8:    .word unk_3001710
@@ -1548,7 +1545,7 @@ loc_8040986:
     strb r2, [r5,#0x16]
     ldr r2, dword_80409A0 // =0x40000000 
     orr r0, r2
-    ldr r1, unk_80409B0 // =0xFC 
+    ldr r1, byte_80409B0 // =0xFC 
     mov r2, #0
     lsl r2, r2, #0xa
     orr r1, r2
@@ -1561,8 +1558,7 @@ dword_80409A0:    .word 0x40000000
 off_80409A4:    .word unk_86A48C0
 dword_80409A8:    .word 0x6017F80
 off_80409AC:    .word unk_80409B2
-unk_80409B0:    .byte 0xFC
-    .byte 0xE3
+byte_80409B0:    .byte 0xFC, 0xE3
 unk_80409B2:    .byte  0
     .byte  0
     .word 0x0
@@ -2109,7 +2105,7 @@ chatbox_8040D5C:
 loc_8040D64:
     sub r0, #1
     lsl r0, r0, #2
-    ldr r2, off_8040D94 // =unk_8040D98 
+    ldr r2, off_8040D94 // =byte_8040D98 
     ldr r0, [r2,r0]
     mov r3, #0
 loc_8040D6E:
@@ -2134,43 +2130,10 @@ loc_8040D8A:
     add r0, #1
 locret_8040D92:
     pop {r2,r3,pc}
-off_8040D94:    .word unk_8040D98
-unk_8040D98:    .byte  1
-    .byte  0
-    .byte  0
-    .byte  0
-    .byte 0xA
-    .byte  0
-    .byte  0
-    .byte  0
-    .byte 0x64 
-    .byte  0
-    .byte  0
-    .byte  0
-    .byte 0xE8
-    .byte  3
-    .byte  0
-    .byte  0
-    .byte 0x10
-    .byte 0x27 
-    .byte  0
-    .byte  0
-    .byte 0xA0
-    .byte 0x86
-    .byte  1
-    .byte  0
-    .byte 0x40 
-    .byte 0x42 
-    .byte 0xF
-    .byte  0
-    .byte 0x80
-    .byte 0x96
-    .byte 0x98
-    .byte  0
-    .byte  0
-    .byte 0xE1
-    .byte 0xF5
-    .byte  5
+off_8040D94:    .word byte_8040D98
+byte_8040D98:    .byte 0x1, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0x64, 0x0, 0x0, 0x0, 0xE8, 0x3, 0x0
+    .byte 0x0, 0x10, 0x27, 0x0, 0x0, 0xA0, 0x86, 0x1, 0x0, 0x40, 0x42, 0xF, 0x0, 0x80, 0x96
+    .byte 0x98, 0x0, 0x0, 0xE1, 0xF5, 0x5
 .endfunc // chatbox_8040D5C
 
 .func
@@ -3119,7 +3082,7 @@ off_8041490:    .word chatbox_ED_select_8040944+1
     .word chatbox_80409E0+1
     .word 0x100
     .word off_80414A0
-off_80414A0:    .word unk_8070605
+off_80414A0:    .word byte_8070605
     .word 0xC0B0A09
 .endfunc // chatbox_ED_select
 
@@ -8528,12 +8491,12 @@ off_8044814:    .word byte_8772974
     .word byte_8773068
     .word byte_8773730
     .word byte_877416C
-    .word unk_8774530
+    .word byte_8774530
 off_8044828:    .word byte_8774F48
     .word byte_8775208
     .word byte_877567C
     .word byte_8775B60
-    .word unk_8775E00
+    .word byte_8775E00
 off_804483C:    .word byte_8776A20
     .word byte_8776C50
     .word byte_8777078
@@ -8553,7 +8516,7 @@ off_8044878:    .word dword_8759EF8
     .word dword_875A2C4
     .word dword_875A918
     .word dword_875B064
-    .word unk_875B30C
+    .word byte_875B30C
 off_804488C:    .word dword_87428D4
     .word dword_8742D64
     .word dword_87433BC
@@ -8588,23 +8551,23 @@ off_8044900:    .word off_877E554
     .word off_877E560
     .word dword_877E56C
     .word dword_877E620
-off_8044914:    .word unk_875B4B0
-    .word unk_875B934
-    .word unk_875BCB4
-    .word unk_875BE5C
-    .word unk_875BF80
-off_8044928:    .word unk_8743F6C
-    .word unk_8743F6C
-    .word unk_87444C8
+off_8044914:    .word byte_875B4B0
+    .word byte_875B934
+    .word byte_875BCB4
+    .word byte_875BE5C
+    .word byte_875BF80
+off_8044928:    .word byte_8743F6C
+    .word byte_8743F6C
+    .word byte_87444C8
     .word byte_8744B38
 off_8044938:    .word off_8044948
     .word off_804495C
     .word off_8044970
     .word off_8044984
-off_8044948:    .word unk_877EDD8
-    .word unk_877EDD8
-    .word unk_877EDD8
-    .word unk_877F460
+off_8044948:    .word byte_877EDD8
+    .word byte_877EDD8
+    .word byte_877EDD8
+    .word byte_877F460
     .word dword_877F594
 off_804495C:    .word dword_8780104
     .word dword_8780104
@@ -10850,14 +10813,14 @@ off_8045CEC:    .word byte_86BECA0
     .word byte_84E0554
     .word byte_84E0554
     .word byte_84E0554
-    .word unk_86C0940
-    .word unk_86C0940
-    .word unk_86C0940
-    .word unk_86C0940
-    .word unk_86C0940
-    .word unk_86C0940
-    .word unk_86C0940
-    .word unk_86C0940
+    .word byte_86C0940
+    .word byte_86C0940
+    .word byte_86C0940
+    .word byte_86C0940
+    .word byte_86C0940
+    .word byte_86C0940
+    .word byte_86C0940
+    .word byte_86C0940
 byte_8045DCC:    .byte 0xE2, 0x0, 0x8D, 0x0, 0xCA, 0x0, 0x8D, 0x0
 off_8045DD4:    .word byte_8045DF0
     .word dword_8045E10
@@ -10875,7 +10838,7 @@ off_8045DF8:    .word byte_86F2980
     .word 0x20
 dword_8045E10:    .word 0x40000001
     .word 0x8014
-    .word unk_86F2A00
+    .word byte_86F2A00
     .word 0x6010280
     .word 0x80
     .word byte_86F2960
@@ -10883,7 +10846,7 @@ dword_8045E10:    .word 0x40000001
     .word 0x20
 dword_8045E30:    .word 0x40000001
     .word 0x8018
-    .word unk_86F2A80
+    .word byte_86F2A80
     .word 0x6010300
     .word 0x80
     .word byte_86F2960
@@ -10891,7 +10854,7 @@ dword_8045E30:    .word 0x40000001
     .word 0x20
 dword_8045E50:    .word 0x40000001
     .word 0x801C
-    .word unk_86F2B00
+    .word byte_86F2B00
     .word 0x6010380
     .word 0x80
     .word byte_86F2960
@@ -10899,7 +10862,7 @@ dword_8045E50:    .word 0x40000001
     .word 0x20
 dword_8045E70:    .word 0x40000001
     .word 0x8020
-    .word unk_86F2B80
+    .word byte_86F2B80
     .word 0x6010400
     .word 0x80
     .word byte_86F2960
@@ -10907,7 +10870,7 @@ dword_8045E70:    .word 0x40000001
     .word 0x20
 dword_8045E90:    .word 0x40000001
     .word 0x8024
-    .word unk_86F2C00
+    .word byte_86F2C00
     .word 0x6010480
     .word 0x80
     .word byte_86F2960

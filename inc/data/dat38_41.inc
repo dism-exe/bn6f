@@ -42,7 +42,7 @@
 .global byte_84EFB78
 .global byte_84F0094
 .global byte_84F070C
-.global unk_84F0C30
+.global byte_84F0C30
 .global byte_84F0CC4
 .global byte_84F13D0
 .global byte_84F1B3C
@@ -164,7 +164,7 @@
 .global byte_8579340
 .global byte_857B5E4
 .global byte_857B788
-.global unk_857CC88
+.global byte_857CC88
 
 
 /* External Symbols */

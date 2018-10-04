@@ -13,15 +13,15 @@
 .global off_8062F78
 .global off_8062F90
 .global off_8063008
-.global unk_8063050
+.global byte_8063050
 .global byte_8063056
 .global off_8066020
 .global off_8066048
-.global unk_80662B8
-.global unk_80662E8
-.global unk_8066328
-.global unk_8066368
-.global unk_80663A8
+.global byte_80662B8
+.global byte_80662E8
+.global byte_8066328
+.global byte_8066368
+.global byte_80663A8
 
 
 /* External Symbols */

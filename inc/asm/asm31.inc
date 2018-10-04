@@ -99,7 +99,7 @@
 .global off_80F2730
 .global off_80F2794
 .global off_80F27F8
-.global unk_80F285C
+.global byte_80F285C
 .global dword_80F28F0
 .global dword_80F2A54
 .global dword_80F390C
@@ -117,13 +117,13 @@
 .global dword_80FE7D0
 .global off_81090D0
 .global off_8109150
-.global unk_8109250
-.global unk_81092D0
-.global unk_8109350
-.global unk_81093D0
-.global unk_8109450
-.global unk_81094D0
-.global unk_8109550
+.global byte_8109250
+.global byte_81092D0
+.global byte_8109350
+.global byte_81093D0
+.global byte_8109450
+.global byte_81094D0
+.global byte_8109550
 .global sub_8109630
 .global sub_8109660
 .global sub_81096FA
@@ -138,7 +138,7 @@
 .global dword_810A2EC
 .global dword_810A86C
 .global dword_810AE70
-.global unk_810B7B8
+.global byte_810B7B8
 .global dword_810BEF8
 
 
@@ -551,8 +551,8 @@
 
 .include "data/dat01.inc"
 // .global byte_8020600
-// .global unk_80211A0
-// .global dword_8021300
+// .global byte_80211A0
+// .global byte_8021300
 // .global byte_802136D
 
 .include "asm/asm02.inc"
@@ -602,7 +602,7 @@
 // .global aSa
 
 .include "data/dat28.inc"
-// .global unk_80A0C10
+// .global byte_80A0C10
 
 .include "data/dat31.inc"
 // .global dword_810C35C

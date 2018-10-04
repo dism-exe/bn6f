@@ -16,12 +16,12 @@
 .global byte_805E23D
 .global byte_805E242
 .global off_8060184
-.global unk_806020A
+.global byte_806020A
 .global off_8060284
-.global unk_80602A4
-.global unk_80602CC
-.global unk_80602FC
-.global unk_806032C
+.global byte_80602A4
+.global byte_80602CC
+.global byte_80602FC
+.global byte_806032C
 
 
 /* External Symbols */

@@ -84,11 +84,11 @@ off_80527B4:    .word off_8052480
     .word 0xFFFFFFFF
 off_80527BC:    .word off_80524C0
     .word 0xFFFFFFFF
-off_80527C4:    .word unk_80524E8
+off_80527C4:    .word byte_80524E8
     .word 0xFFFFFFFF
-off_80527CC:    .word unk_80524E8
+off_80527CC:    .word byte_80524E8
     .word 0xFFFFFFFF
-off_80527D4:    .word unk_8052510
+off_80527D4:    .word byte_8052510
     .word 0xFFFFFFFF
 off_80527DC:    .word unk_8052538
     .word 0xFFFFFFFF

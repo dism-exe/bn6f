@@ -1762,7 +1762,7 @@ loc_8142D24:
     pop {r4-r7,pc}
 off_8142D40:    .word off_8142D44
 off_8142D44:    .word dword_8619B50
-    .word unk_8619B90
+    .word byte_8619B90
 .endfunc // sub_8142CC8
 
 .func
@@ -1968,7 +1968,7 @@ sub_81430B6:
     push {r4-r7,lr}
     add r4, r0, #0
     bl sub_8143088
-    ldr r1, off_81430D0 // =unk_81430D4 
+    ldr r1, off_81430D0 // =byte_81430D4 
     lsl r0, r0, #2
     add r1, r1, r0
     ldrh r0, [r1]
@@ -1977,15 +1977,8 @@ sub_81430B6:
     add r1, r1, r4
     pop {r4-r7,pc}
     .byte 0, 0
-off_81430D0:    .word unk_81430D4
-unk_81430D4:    .byte 0x70 
-    .byte  9
-    .byte 0x78 
-    .byte  9
-    .byte 0x80
-    .byte  9
-    .byte 0x88
-    .byte  9
+off_81430D0:    .word byte_81430D4
+byte_81430D4:    .byte 0x70, 0x9, 0x78, 0x9, 0x80, 0x9, 0x88, 0x9
 .endfunc // sub_81430B6
 
 .func
@@ -2574,18 +2567,15 @@ sub_8143B5E:
     ldr r0, off_8143B78 // =dword_8143B7C 
     ldrh r0, [r0,r3]
     add r0, r0, r4
-    ldr r1, off_8143B80 // =unk_8143B84 
+    ldr r1, off_8143B80 // =byte_8143B84 
     ldrh r1, [r1,r3]
     add r1, r1, r4
     pop {r4-r7,pc}
     .balign 4, 0x00
 off_8143B78:    .word dword_8143B7C
 dword_8143B7C:    .word 0xD680D38
-off_8143B80:    .word unk_8143B84
-unk_8143B84:    .byte 0x70 
-    .byte 0x16
-    .byte 0x70 
-    .byte 0x16
+off_8143B80:    .word byte_8143B84
+byte_8143B84:    .byte 0x70, 0x16, 0x70, 0x16
 .endfunc // sub_8143B5E
 
 .func
@@ -7978,7 +7968,7 @@ off_8146470:    .word byte_200FE00
     lsl r0, r0, #0x18
     lsr r0, r0, #0x18
     cmp r0, #2
-    bhi unk_81464A0
+    bhi byte_81464A0
     mov r0, #7
     strh r0, [r1,#0x14] // (word_200FE14 - 0x200fe00)
     mov r0, #0xf3
@@ -7988,20 +7978,8 @@ off_8146470:    .word byte_200FE00
     b unk_81464AE
     .balign 4, 0x00
 off_814649C:    .word byte_200FE00
-unk_81464A0:    .byte  0
-    .byte 0x2A 
-    .byte  2
-    .byte 0xD0
-    .byte  1
-    .byte 0x20
-    .byte 0xC8
-    .byte 0x72 
-    .byte  0
-    .byte 0xE0
-    .byte 0xCB
-    .byte 0x72 
-    .byte  0
-    .byte 0x20
+byte_81464A0:    .byte 0x0, 0x2A, 0x2, 0xD0, 0x1, 0x20, 0xC8, 0x72, 0x0, 0xE0, 0xCB
+    .byte 0x72, 0x0, 0x20
 unk_81464AE:    .byte  2
     .byte 0xBC
     .byte  8
@@ -8073,51 +8051,18 @@ loc_81464F8:
 off_814651C:    .word byte_200FE00
 off_8146520:    .word jpt_8146518
     // jump table for switch statement
-jpt_8146518:    .word unk_8146540
-    .word unk_8146548
-    .word unk_8146552
-    .word unk_8146552
-    .word unk_8146558
-    .word unk_8146558
-    .word unk_814655E
-unk_8146540:    .byte  3
-    .byte 0x20
-    .byte 0xD0
-    .byte 0x71 
-    .byte  9
-    .byte 0x20
-    .byte 0xD
-    .byte 0xE0
-unk_8146548:    .byte  2
-    .byte 0x20
-    .byte 0xD0
-    .byte 0x71 
-    .byte  1
-    .byte 0x20
-    .byte 0x50 
-    .byte 0x83
-    .byte  9
-    .byte 0xE0
-unk_8146552:    .byte  2
-    .byte 0x20
-    .byte 0xD0
-    .byte 0x71 
-    .byte  6
-    .byte 0xE0
-unk_8146558:    .byte 0x28 
-    .byte 0x20
-    .byte 0x50 
-    .byte 0x83
-    .byte  3
-    .byte 0xE0
-unk_814655E:    .byte 0x28 
-    .byte 0x20
-    .byte 0x50 
-    .byte 0x83
-    .byte 0xA
-    .byte 0x20
-    .byte 0x10
-    .byte 0x71 
+jpt_8146518:    .word byte_8146540
+    .word byte_8146548
+    .word byte_8146552
+    .word byte_8146552
+    .word byte_8146558
+    .word byte_8146558
+    .word byte_814655E
+byte_8146540:    .byte 0x3, 0x20, 0xD0, 0x71, 0x9, 0x20, 0xD, 0xE0
+byte_8146548:    .byte 0x2, 0x20, 0xD0, 0x71, 0x1, 0x20, 0x50, 0x83, 0x9, 0xE0
+byte_8146552:    .byte 0x2, 0x20, 0xD0, 0x71, 0x6, 0xE0
+byte_8146558:    .byte 0x28, 0x20, 0x50, 0x83, 0x3, 0xE0
+byte_814655E:    .byte 0x28, 0x20, 0x50, 0x83, 0xA, 0x20, 0x10, 0x71
 def_8146518:    .byte  1
     .byte 0xBC
     .byte  0

@@ -22,7 +22,7 @@ initRefs_80946D4:    .word comp_857CCC8 + 1<<31
     .byte  0
     .byte  0
     .word unk_2026400
-    .word unk_857CC88
+    .word byte_857CC88
     .word unk_3001B00
     .word 0x40
     .byte 0, 0, 0, 0

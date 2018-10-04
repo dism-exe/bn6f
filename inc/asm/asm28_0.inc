@@ -3,14 +3,14 @@
 
 /* Public Symbols */
 .global unk_8098CA2
-.global unk_80990B8
+.global byte_80990B8
 .global dword_80991F4
 .global unk_8099CEC
 .global dword_8099DC0
 .global dword_8099E04
 .global dword_8099EA0
 .global unk_809A8A8
-.global unk_809AA34
+.global byte_809AA34
 .global unk_809AE68
 .global unk_809B5AD
 .global sub_809BA14

@@ -248,7 +248,7 @@ loc_808966E:
     bl sub_8142896
     bl sub_809E2AE
     bl sub_809E2B8
-    ldr r1, off_80896A4 // =unk_80896A8 
+    ldr r1, off_80896A4 // =byte_80896A8 
     ldrb r0, [r1,r0]
     bl sub_809E13C
     bl sub_8089D26
@@ -260,15 +260,8 @@ loc_808966E:
 loc_80896A0:
     mov r0, #1
     pop {r4-r7,pc}
-off_80896A4:    .word unk_80896A8
-unk_80896A8:    .byte 0xFF
-    .byte 0x29 
-    .byte 0xFF
-    .byte 0x2A 
-    .byte 0xFF
-    .byte 0x2B 
-    .byte 0xFF
-    .byte 0x2C 
+off_80896A4:    .word byte_80896A8
+byte_80896A8:    .byte 0xFF, 0x29, 0xFF, 0x2A, 0xFF, 0x2B, 0xFF, 0x2C
 .endfunc // sub_808964C
 
 .func
@@ -639,7 +632,7 @@ sub_808991C:
     bl sub_8142B58
     bl sub_809E2AE
     bl sub_809E2B8
-    ldr r1, off_8089954 // =unk_8089958 
+    ldr r1, off_8089954 // =byte_8089958 
     ldrb r0, [r1,r0]
     bl sub_809E13C
     bl sub_8089CDC
@@ -651,15 +644,8 @@ loc_808994E:
     mov r0, #1
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_8089954:    .word unk_8089958
-unk_8089958:    .byte 0xFF
-    .byte 0x2E 
-    .byte 0xFF
-    .byte 0x2F 
-    .byte 0xFF
-    .byte 0x30 
-    .byte 0xFF
-    .byte 0x31 
+off_8089954:    .word byte_8089958
+byte_8089958:    .byte 0xFF, 0x2E, 0xFF, 0x2F, 0xFF, 0x30, 0xFF, 0x31
 .endfunc // sub_808991C
 
 .func

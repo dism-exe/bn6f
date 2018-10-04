@@ -17,10 +17,10 @@
 .global byte_8059E2E
 .global off_805DD24
 .global off_805DE28
-.global unk_805DE50
-.global unk_805DE78
-.global unk_805DEA8
-.global unk_805DED8
+.global byte_805DE50
+.global byte_805DE78
+.global byte_805DEA8
+.global byte_805DED8
 
 
 /* External Symbols */

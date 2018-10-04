@@ -14,7 +14,7 @@
 // .global sub_80307D8
 
 .include "data/dat38_41.inc"
-// .global unk_857CC88
+// .global byte_857CC88
 
 
 /* Undeclared Symbols */

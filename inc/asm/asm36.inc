@@ -29,7 +29,7 @@
 .global sub_81352A0
 .global sub_8135314
 .global sub_81355D8
-.global unk_813565C
+.global byte_813565C
 .global sub_8136C24
 .global sub_81376B8
 .global sub_81376CC
@@ -120,12 +120,12 @@
 // .global sub_801401E
 
 .include "data/dat01.inc"
-// .global dword_80213AC
-// .global dword_80213AC
-// .global unk_802158C
-// .global unk_80215C8
-// .global unk_8021604
-// .global unk_8021640
+// .global byte_80213AC
+// .global byte_80213AC
+// .global byte_802158C
+// .global byte_80215C8
+// .global byte_8021604
+// .global byte_8021640
 
 .include "asm/asm02.inc"
 // .global getChip_8021DA8 // (int chip_idx) -> ChipData*
@@ -347,7 +347,7 @@
 // .global sub_8149644
 
 .include "data/dat38_42.inc"
-// .global unk_86A5D20
+// .global byte_86A5D20
 // .global dword_86A5D60
 // .global unk_86ACD60
 // .global dword_86B7AE0
@@ -360,7 +360,7 @@
 
 .include "data/dat38_68.inc"
 // .global dword_86E55FC
-// .global unk_86E56FC
+// .global byte_86E56FC
 // .global dword_86F0D7C
 
 .include "data/dat38_70.inc"

@@ -37,7 +37,7 @@
 
 .include "data/dat11.inc"
 // .global off_806D6B0
-// .global unk_806D820
+// .global byte_806D820
 
 .include "data/dat12.inc"
 // .global dword_806DD2C

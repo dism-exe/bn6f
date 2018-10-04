@@ -146,7 +146,7 @@
 // .global sub_8048F88
 
 .include "data/dat13.inc"
-// .global unk_8070605
+// .global byte_8070605
 
 .include "asm/asm28_0.inc"
 // .global sub_809CA84
@@ -205,7 +205,7 @@
 // .global dword_86B7AA0
 // .global dword_86B7AC0
 // .global dword_86BEB20
-// .global unk_86BEC80
+// .global byte_86BEC80
 // .global byte_86BECA0
 // .global byte_86BEE80
 // .global byte_86BF060
@@ -215,16 +215,16 @@
 // .global byte_86BF7E0
 // .global byte_86BF9C0
 // .global unk_86BFBA0
-// .global unk_86BFE20
-// .global unk_86BFE40
+// .global byte_86BFE20
+// .global byte_86BFE40
 // .global byte_86BFE60
 // .global byte_86C0040
 // .global byte_86C0220
 // .global byte_86C0400
 // .global unk_86C05E0
-// .global unk_86C0900
-// .global unk_86C0920
-// .global unk_86C0940
+// .global byte_86C0900
+// .global byte_86C0920
+// .global byte_86C0940
 
 .include "data/dat38_53.inc"
 // .global byte_86CF4AC
@@ -235,11 +235,11 @@
 // .global byte_86EF71C
 // .global byte_86F2960
 // .global byte_86F2980
-// .global unk_86F2A00
-// .global unk_86F2A80
-// .global unk_86F2B00
-// .global unk_86F2B80
-// .global unk_86F2C00
+// .global byte_86F2A00
+// .global byte_86F2A80
+// .global byte_86F2B00
+// .global byte_86F2B80
+// .global byte_86F2C00
 // .global byte_86F2C80
 
 .include "data/dat38_70.inc"
@@ -261,8 +261,8 @@
 // .global dword_8742D64
 // .global dword_87433BC
 // .global dword_87439D8
-// .global unk_8743F6C
-// .global unk_87444C8
+// .global byte_8743F6C
+// .global byte_87444C8
 // .global byte_8744B38
 // .global dword_8745100
 // .global dword_874584C
@@ -335,12 +335,12 @@
 // .global dword_875A2C4
 // .global dword_875A918
 // .global dword_875B064
-// .global unk_875B30C
-// .global unk_875B4B0
-// .global unk_875B934
-// .global unk_875BCB4
-// .global unk_875BE5C
-// .global unk_875BF80
+// .global byte_875B30C
+// .global byte_875B4B0
+// .global byte_875B934
+// .global byte_875BCB4
+// .global byte_875BE5C
+// .global byte_875BF80
 // .global dword_875BFD8
 // .global unk_875C22C
 // .global dword_875C4B8
@@ -512,12 +512,12 @@
 // .global byte_8773068
 // .global byte_8773730
 // .global byte_877416C
-// .global unk_8774530
+// .global byte_8774530
 // .global byte_8774F48
 // .global byte_8775208
 // .global byte_877567C
 // .global byte_8775B60
-// .global unk_8775E00
+// .global byte_8775E00
 // .global byte_8776A20
 // .global byte_8776C50
 // .global byte_8777078
@@ -553,8 +553,8 @@
 // .global off_877E560
 // .global dword_877E56C
 // .global dword_877E620
-// .global unk_877EDD8
-// .global unk_877F460
+// .global byte_877EDD8
+// .global byte_877F460
 // .global dword_877F594
 // .global dword_8780104
 // .global dword_8780724

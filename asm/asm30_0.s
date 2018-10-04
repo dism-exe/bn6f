@@ -30,7 +30,7 @@ off_80AED80:    .word dword_8109AA4
     .word dword_810A2EC
     .word dword_810A86C
     .word dword_810AE70
-    .word unk_810B7B8
+    .word byte_810B7B8
     .word dword_810BEF8
     .word dword_810C388
     .word dword_810C8F8

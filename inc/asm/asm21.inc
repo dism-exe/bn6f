@@ -47,11 +47,11 @@
 // .global dword_807FAC4
 // .global dword_807FAC4
 // .global dword_807FAC4
-// .global unk_8080598
-// .global unk_80805C0
+// .global byte_8080598
+// .global byte_80805C0
 // .global byte_80808B0
-// .global unk_80808D8
-// .global unk_8080AA0
+// .global byte_80808D8
+// .global byte_8080AA0
 
 .include "data/dat21.inc"
 // .global dword_80813F8

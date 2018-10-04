@@ -619,9 +619,9 @@ pt.env(gameFiles={
 'data/compressed/comp_86C33B4.lz77':
 	(0x86C33B4, 0x86C3528), # size=0x174
 'data/compressed/comp_86C3528.lz77':
-	(0x86C3528, 0x86C3C92), # size=0x76A
+	(0x86C3528, 0x86C3C94), # size=0x76C
 'data/dat38_43.s':
-	(0x86C3C92, 0x86C3E94), # size=0x202
+	(0x86C3C94, 0x86C3E94), # size=0x200
 'data/compressed/comp_86C3E94.lz77':
 	(0x86C3E94, 0x86C3FD4), # size=0x140
 'data/dat38_44.s':

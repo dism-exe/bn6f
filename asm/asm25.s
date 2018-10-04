@@ -790,7 +790,7 @@ sub_808FF00:
 loc_808FF10:
     ldrb r1, [r0,#5]
 loc_808FF12:
-    ldr r0, off_808FF28 // =unk_808FF2C 
+    ldr r0, off_808FF28 // =byte_808FF2C 
     ldrb r4, [r0,r1]
     strb r4, [r5,#0xa]
     // entryIdx
@@ -803,11 +803,8 @@ loc_808FF12:
 loc_808FF24:
     add r0, r4, #0
     pop {r4,pc}
-off_808FF28:    .word unk_808FF2C
-unk_808FF2C:    .byte  1
-    .byte  2
-    .byte  2
-    .byte  2
+off_808FF28:    .word byte_808FF2C
+byte_808FF2C:    .byte 0x1, 0x2, 0x2, 0x2
 .endfunc // sub_808FF00
 
 .func
@@ -1116,7 +1113,7 @@ loc_809011E:
     mov r1, #0xf2
     bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
     bne loc_8090138
-    ldr r4, off_8090194 // =unk_808F728 
+    ldr r4, off_8090194 // =byte_808F728 
     b loc_809017C
 loc_8090138:
     // entryIdx
@@ -1134,7 +1131,7 @@ loc_8090138:
     add r0, r1, #0
     strb r0, [r5,#0x1c]
     bl loc_809E2FE
-    ldr r4, off_8090198 // =unk_808F6EC 
+    ldr r4, off_8090198 // =byte_808F6EC 
     b loc_809017C
 loc_809015A:
     mov r0, #0
@@ -1146,7 +1143,7 @@ loc_809015A:
 loc_8090166:
     bl sub_80901EC
     beq loc_8090170
-    ldr r4, off_809018C // =unk_808F748 
+    ldr r4, off_809018C // =byte_808F748 
     b loc_809017C
 loc_8090170:
     ldrb r0, [r5,#0xb]
@@ -1154,17 +1151,17 @@ loc_8090170:
     bne loc_809017C
     mov r0, #0xff
     strb r0, [r5,#0xb]
-    ldr r4, off_8090190 // =unk_808F788 
+    ldr r4, off_8090190 // =byte_808F788 
 loc_809017C:
     add r0, r4, #0
     pop {r4-r7,pc}
 off_8090180:    .word dword_808F668
 off_8090184:    .word dword_808F668+0x14
 off_8090188:    .word dword_808F668+0x28
-off_809018C:    .word unk_808F748
-off_8090190:    .word unk_808F788
-off_8090194:    .word unk_808F728
-off_8090198:    .word unk_808F6EC
+off_809018C:    .word byte_808F748
+off_8090190:    .word byte_808F788
+off_8090194:    .word byte_808F728
+off_8090198:    .word byte_808F6EC
 .endfunc // sub_8090104
 
 .func
@@ -1183,7 +1180,7 @@ loc_80901AC:
     add r0, r4, #0
     bl sub_809022C
     beq loc_80901DC
-    ldr r0, dword_809021C // = 
+    ldr r0, dword_809021C // =byte_8090220 
     add r1, r4, #0
     lsl r1, r1, #1
     ldrh r0, [r0,r1]
@@ -1192,7 +1189,7 @@ loc_80901AC:
     bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     bne loc_80901DC
     mov r6, #1
-    ldr r0, off_8090218 // =unk_8090220 
+    ldr r0, off_8090218 // =byte_8090220 
     add r1, r4, #0
     lsl r1, r1, #1
     ldrh r0, [r0,r1]
@@ -1223,7 +1220,7 @@ sub_80901EC:
     mov r4, #0
     strb r4, [r5,#0xc]
 loc_80901F4:
-    ldr r0, off_8090218 // =unk_8090220 
+    ldr r0, off_8090218 // =byte_8090220 
     add r1, r4, #0
     lsl r1, r1, #1
     ldrh r0, [r0,r1]
@@ -1243,20 +1240,10 @@ loc_8090210:
     tst r0, r0
     pop {r4,r6,pc}
     .balign 4, 0x00
-off_8090218:    .word unk_8090220
+off_8090218:    .word byte_8090220
 dword_809021C:    .word 0x8090226
-unk_8090220:    .byte 0xEC
-    .byte 0xB
-    .byte 0xED
-    .byte 0xB
-    .byte 0xEE
-    .byte 0xB
-    .byte 0xE9
-    .byte 0xB
-    .byte 0xEA
-    .byte 0xB
-    .byte 0xEB
-    .byte 0xB
+byte_8090220:    .byte 0xEC, 0xB, 0xED, 0xB, 0xEE, 0xB, 0xE9, 0xB, 0xEA, 0xB
+    .byte 0xEB, 0xB
 .endfunc // sub_80901EC
 
 .func
@@ -1377,21 +1364,14 @@ loc_80902EC:
     ldrb r1, [r0,#5]
 loc_80902EE:
     lsl r1, r1, #1
-    ldr r0, off_80902FC // =unk_8090300 
+    ldr r0, off_80902FC // =byte_8090300 
     ldrh r0, [r0,r1]
     // <mkdata>
     .hword 0x1c00 // add r0, r0, #0
     bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     pop {r4-r7,pc}
-off_80902FC:    .word unk_8090300
-unk_8090300:    .byte 0xE1
-    .byte 0xB
-    .byte 0xE2
-    .byte 0xB
-    .byte 0xE3
-    .byte 0xB
-    .byte 0xD2
-    .byte 0xF
+off_80902FC:    .word byte_8090300
+byte_8090300:    .byte 0xE1, 0xB, 0xE2, 0xB, 0xE3, 0xB, 0xD2, 0xF
 .endfunc // sub_80902DC
 
 .func

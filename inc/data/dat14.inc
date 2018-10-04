@@ -10,8 +10,8 @@
 
 /* External Symbols */
 .include "asm/asm28_1.inc"
-// .global unk_809F6CC
-// .global unk_809F880
+// .global byte_809F6CC
+// .global byte_809F880
 
 .include "data/dat38_14.inc"
 // .global dword_83F2408

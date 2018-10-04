@@ -4,10 +4,10 @@
 /* Public Symbols */
 .global off_808F5D4
 .global dword_808F668
-.global unk_808F6EC
-.global unk_808F728
-.global unk_808F748
-.global unk_808F788
+.global byte_808F6EC
+.global byte_808F728
+.global byte_808F748
+.global byte_808F788
 
 
 /* External Symbols */

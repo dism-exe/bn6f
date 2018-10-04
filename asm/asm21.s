@@ -279,22 +279,22 @@ off_80812B0:    .word dword_807FAC4+0x6B4
     .word 0xFFFFFFFF
 off_80812B8:    .word dword_807FAC4+0x7E4
     .word 0xFFFFFFFF
-off_80812C0:    .word unk_80805C0
+off_80812C0:    .word byte_80805C0
     .word 0xFFFFFFFF
 off_80812C8:    .word byte_80808B0
     .word 0xFFFFFFFF
-off_80812D0:    .word unk_80808D8
+off_80812D0:    .word byte_80808D8
     .word dword_8069AF0
     .word 0xFFFFFFFF
-off_80812DC:    .word unk_8080598
+off_80812DC:    .word byte_8080598
     .word 0xFFFFFFFF
 off_80812E4:    .word off_806A810
     .word 0xFFFFFFFF
-off_80812EC:    .word unk_8080AA0
+off_80812EC:    .word byte_8080AA0
     .word 0xFFFFFFFF
 off_80812F4:    .word off_807EB18
     .word 0xFFFFFFFF
-off_80812FC:    .word unk_80808D8
+off_80812FC:    .word byte_80808D8
     .word off_8069C80
     .word 0xFFFFFFFF
 .func

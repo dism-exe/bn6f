@@ -12,7 +12,7 @@
 .global off_804E954
 .global off_804E968
 .global off_804E9CC
-.global unk_804EA08
+.global byte_804EA08
 .global byte_804EA0D
 .global byte_804EA12
 .global byte_804EA1C
@@ -20,8 +20,8 @@
 .global off_8052244
 .global off_8052480
 .global off_80524C0
-.global unk_80524E8
-.global unk_8052510
+.global byte_80524E8
+.global byte_8052510
 .global unk_8052538
 .global dword_80525C0
 .global dword_80525DC

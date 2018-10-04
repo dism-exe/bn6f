@@ -2,7 +2,7 @@
 .equ INC_DATA_DAT25, 0
 
 /* Public Symbols */
-.global unk_809083F
+.global byte_809083F
 
 
 /* External Symbols */

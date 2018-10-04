@@ -29,7 +29,7 @@
 // .global dword_8086A54
 // .global dword_8086A54
 // .global dword_8086D5C
-// .global unk_8086D74
+// .global byte_8086D74
 
 .include "data/dat22.inc"
 // .global dword_80871D8

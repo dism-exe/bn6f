@@ -78,7 +78,7 @@ off_806DA10:    .word off_806DA50
     .word off_806DA50
     .word off_806DA50
     .word off_806DA50
-off_806DA50:    .word unk_806D820
+off_806DA50:    .word byte_806D820
     .word 0xFFFFFFFF
 .endfunc // sub_806D9FC
 

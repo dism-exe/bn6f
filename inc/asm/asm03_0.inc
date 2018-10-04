@@ -386,20 +386,20 @@
 // .global sub_801EC44
 
 .include "data/dat01.inc"
-// .global unk_802167C
-// .global unk_80216B8
-// .global unk_80216F4
-// .global unk_8021730
-// .global unk_802176C
-// .global unk_80217A8
-// .global unk_80217E4
-// .global unk_8021820
-// .global unk_802185C
-// .global unk_8021898
-// .global unk_80218D4
-// .global unk_8021910
-// .global unk_802194C
-// .global unk_8021988
+// .global byte_802167C
+// .global byte_80216B8
+// .global byte_80216F4
+// .global byte_8021730
+// .global byte_802176C
+// .global byte_80217A8
+// .global byte_80217E4
+// .global byte_8021820
+// .global byte_802185C
+// .global byte_8021898
+// .global byte_80218D4
+// .global byte_8021910
+// .global byte_802194C
+// .global byte_8021988
 
 .include "asm/asm02.inc"
 // .global getChip_8021DA8 // (int chip_idx) -> ChipData*
@@ -463,7 +463,7 @@
 // .global sub_805DFA2
 
 .include "data/dat07.inc"
-// .global unk_806020A
+// .global byte_806020A
 
 .include "asm/asm08.inc"
 // .global sub_806036C
@@ -633,7 +633,7 @@
 // .global comp_86DD59C
 
 .include "data/dat38_67.inc"
-// .global unk_86DDB24
+// .global byte_86DDB24
 
 .include "data/dat38_68.inc"
 // .global dword_86E1238
@@ -645,21 +645,21 @@
 // .global dword_86E4D9C
 // .global dword_86E55BC
 // .global dword_86E55FC
-// .global unk_86E56FC
+// .global byte_86E56FC
 // .global unk_86E57FC
-// .global unk_86E587C
+// .global byte_86E587C
 // .global dword_86E591C
-// .global unk_86E601C
-// .global unk_86E625C
-// .global unk_86E64B4
-// .global unk_86E670C
-// .global unk_86E6964
-// .global unk_86E6BBC
-// .global unk_86E6E14
-// .global unk_86E706C
-// .global unk_86E72C4
-// .global unk_86E751C
-// .global unk_86E7774
+// .global byte_86E601C
+// .global byte_86E625C
+// .global byte_86E64B4
+// .global byte_86E670C
+// .global byte_86E6964
+// .global byte_86E6BBC
+// .global byte_86E6E14
+// .global byte_86E706C
+// .global byte_86E72C4
+// .global byte_86E751C
+// .global byte_86E7774
 // .global unk_86E79CC
 // .global dword_86E7DCC
 // .global dword_86E944C
@@ -679,14 +679,14 @@
 // .global unk_86F5834
 // .global dword_87225B4
 // .global dword_8722AF4
-// .global unk_8723034
+// .global byte_8723034
 // .global dword_87257D4
 // .global dword_87257F4
 // .global dword_8725814
 // .global dword_8725854
 // .global dword_8725874
-// .global unk_8725894
-// .global unk_872CF94
+// .global byte_8725894
+// .global byte_872CF94
 // .global dword_872F3F4
 // .global dword_8730254
 // .global dword_8731154
@@ -715,41 +715,41 @@
 // .global unk_87F3620
 
 .include "data/dat38_82.inc"
-// .global unk_87F40F4
+// .global byte_87F40F4
 // .global unk_87F4194
 
 .include "data/dat38_84.inc"
-// .global unk_87F8EB0
-// .global unk_87F93B4
+// .global byte_87F8EB0
+// .global byte_87F93B4
 // .global byte_87F93D4
 // .global byte_87F93F4
 // .global byte_87F9414
-// .global unk_87F9434
-// .global unk_87F9454
-// .global unk_87F9474
-// .global unk_87F9494
-// .global unk_87F94B4
-// .global unk_87F94D4
-// .global unk_87F94F4
-// .global unk_87F9514
-// .global unk_87F9534
-// .global unk_87F9554
-// .global unk_87F9574
-// .global unk_87F9594
-// .global unk_87F95B4
-// .global unk_87F95D4
-// .global unk_87F95F4
-// .global unk_87F9614
-// .global unk_87F96D4
-// .global unk_87F96F4
-// .global unk_87F9714
-// .global unk_87F9734
-// .global unk_87F9754
-// .global unk_87F9774
-// .global unk_87F9794
-// .global unk_87F97B4
-// .global unk_87F97D4
-// .global unk_87F97F4
+// .global byte_87F9434
+// .global byte_87F9454
+// .global byte_87F9474
+// .global byte_87F9494
+// .global byte_87F94B4
+// .global byte_87F94D4
+// .global byte_87F94F4
+// .global byte_87F9514
+// .global byte_87F9534
+// .global byte_87F9554
+// .global byte_87F9574
+// .global byte_87F9594
+// .global byte_87F95B4
+// .global byte_87F95D4
+// .global byte_87F95F4
+// .global byte_87F9614
+// .global byte_87F96D4
+// .global byte_87F96F4
+// .global byte_87F9714
+// .global byte_87F9734
+// .global byte_87F9754
+// .global byte_87F9774
+// .global byte_87F9794
+// .global byte_87F97B4
+// .global byte_87F97D4
+// .global byte_87F97F4
 
 
 /* Undeclared Symbols */

@@ -818,7 +818,7 @@ sub_808CF34:
     mov r4, #0
     bl sub_808D084
     lsl r0, r0, #1
-    ldr r1, off_808CF78 // =unk_808CF84 
+    ldr r1, off_808CF78 // =byte_808CF84 
     ldrh r1, [r1,r0]
     add r0, r1, #0
     bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
@@ -836,12 +836,12 @@ sub_808CF50:
     bl sub_808D084
     lsl r0, r0, #1
     add r4, r0, #0
-    ldr r1, off_808CF74 // =unk_808CF7C 
+    ldr r1, off_808CF74 // =byte_808CF7C 
     ldrh r1, [r1,r4]
     add r0, r1, #0
     bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     bne locret_808CF70
-    ldr r1, off_808CF78 // =unk_808CF84 
+    ldr r1, off_808CF78 // =byte_808CF84 
     ldrh r1, [r1,r4]
     // bitfield
     add r0, r1, #0
@@ -849,24 +849,10 @@ sub_808CF50:
 locret_808CF70:
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_808CF74:    .word unk_808CF7C
-off_808CF78:    .word unk_808CF84
-unk_808CF7C:    .byte 0xF8
-    .byte  9
-    .byte 0xFB
-    .byte  9
-    .byte 0xFE
-    .byte  9
-    .byte 0xFD
-    .byte 0xF
-unk_808CF84:    .byte 0xDA
-    .byte  9
-    .byte 0xDB
-    .byte  9
-    .byte 0xDC
-    .byte  9
-    .byte 0xC5
-    .byte 0xF
+off_808CF74:    .word byte_808CF7C
+off_808CF78:    .word byte_808CF84
+byte_808CF7C:    .byte 0xF8, 0x9, 0xFB, 0x9, 0xFE, 0x9, 0xFD, 0xF
+byte_808CF84:    .byte 0xDA, 0x9, 0xDB, 0x9, 0xDC, 0x9, 0xC5, 0xF
 .endfunc // sub_808CF50
 
 .func

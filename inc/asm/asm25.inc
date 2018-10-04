@@ -50,10 +50,10 @@
 // .global dword_808F668
 // .global dword_808F668
 // .global dword_808F668
-// .global unk_808F6EC
-// .global unk_808F728
-// .global unk_808F748
-// .global unk_808F788
+// .global byte_808F6EC
+// .global byte_808F728
+// .global byte_808F748
+// .global byte_808F788
 
 .include "asm/asm28_0.inc"
 // .global sub_809E13C

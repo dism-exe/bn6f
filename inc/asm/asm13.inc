@@ -36,7 +36,7 @@
 // .global chatbox_uncomp_803FD08 // () -> int
 
 .include "data/dat11.inc"
-// .global unk_806D820
+// .global byte_806D820
 
 .include "data/dat12.inc"
 // .global off_806FA98

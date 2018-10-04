@@ -30,7 +30,7 @@
 // .global dword_810A2EC
 // .global dword_810A86C
 // .global dword_810AE70
-// .global unk_810B7B8
+// .global byte_810B7B8
 // .global dword_810BEF8
 
 .include "data/dat31.inc"

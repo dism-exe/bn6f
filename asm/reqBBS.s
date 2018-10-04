@@ -1156,166 +1156,50 @@ loc_813EAEE:
     pop {r0-r7,pc}
 off_813EB08:    .word reqBBS_requestEntries_IDs
 off_813EB0C:    .word off_813EB10
-off_813EB10:    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EB90
-    .word unk_813EBD0
-    .word unk_813EBD0
-    .word unk_813EBD0
-    .word unk_813EBD0
-    .word unk_813EBD0
-    .word unk_813EBD0
-    .word unk_813EBD0
-    .word unk_813EBD0
-    .word unk_813EBD0
-    .word unk_813EBD0
-    .word unk_813EBD0
-    .word unk_813EBD0
-    .word unk_813EBD0
-    .word unk_813EBD0
-    .word unk_813EBD0
-    .word unk_813EBD0
-unk_813EB90:    .byte 0x80
-    .byte  0
-    .byte 0x81
-    .byte  0
-    .byte 0x82
-    .byte  0
-    .byte 0x83
-    .byte  0
-    .byte 0x81
-    .byte  0
-    .byte 0x83
-    .byte  0
-    .byte 0x82
-    .byte  0
-    .byte 0x84
-    .byte  0
-    .byte 0x81
-    .byte  0
-    .byte 0x83
-    .byte  0
-    .byte 0x82
-    .byte  0
-    .byte 0x84
-    .byte  0
-    .byte 0x81
-    .byte  0
-    .byte 0x83
-    .byte  0
-    .byte 0x82
-    .byte  0
-    .byte 0x84
-    .byte  0
-    .byte 0x81
-    .byte  0
-    .byte 0x83
-    .byte  0
-    .byte 0x82
-    .byte  0
-    .byte 0x84
-    .byte  0
-    .byte 0x81
-    .byte  0
-    .byte 0x83
-    .byte  0
-    .byte 0x82
-    .byte  0
-    .byte 0x84
-    .byte  0
-    .byte 0x81
-    .byte  0
-    .byte 0x83
-    .byte  0
-    .byte 0x82
-    .byte  0
-    .byte 0x84
-    .byte  0
-    .byte 0x81
-    .byte  0
-    .byte 0x83
-    .byte  0
-    .byte 0x82
-    .byte  0
-    .byte 0x84
-    .byte  0
-unk_813EBD0:    .byte 0x84
-    .byte  0
-    .byte 0x85
-    .byte  0
-    .byte 0x86
-    .byte  0
-    .byte 0x87
-    .byte  0
-    .byte 0x84
-    .byte  0
-    .byte 0x85
-    .byte  0
-    .byte 0x86
-    .byte  0
-    .byte 0x87
-    .byte  0
-    .byte 0x84
-    .byte  0
-    .byte 0x85
-    .byte  0
-    .byte 0x86
-    .byte  0
-    .byte 0x87
-    .byte  0
-    .byte 0x84
-    .byte  0
-    .byte 0x85
-    .byte  0
-    .byte 0x86
-    .byte  0
-    .byte 0x87
-    .byte  0
-    .byte 0x84
-    .byte  0
-    .byte 0x85
-    .byte  0
-    .byte 0x86
-    .byte  0
-    .byte 0x87
-    .byte  0
-    .byte 0x84
-    .byte  0
-    .byte 0x85
-    .byte  0
-    .byte 0x86
-    .byte  0
-    .byte 0x87
-    .byte  0
-    .byte 0x84
-    .byte  0
-    .byte 0x85
-    .byte  0
-    .byte 0x86
-    .byte  0
-    .byte 0x87
-    .byte  0
-    .byte 0x84
-    .byte  0
-    .byte 0x85
-    .byte  0
-    .byte 0x86
-    .byte  0
-    .byte 0x87
-    .byte  0
+off_813EB10:    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EB90
+    .word byte_813EBD0
+    .word byte_813EBD0
+    .word byte_813EBD0
+    .word byte_813EBD0
+    .word byte_813EBD0
+    .word byte_813EBD0
+    .word byte_813EBD0
+    .word byte_813EBD0
+    .word byte_813EBD0
+    .word byte_813EBD0
+    .word byte_813EBD0
+    .word byte_813EBD0
+    .word byte_813EBD0
+    .word byte_813EBD0
+    .word byte_813EBD0
+    .word byte_813EBD0
+byte_813EB90:    .byte 0x80, 0x0, 0x81, 0x0, 0x82, 0x0, 0x83, 0x0, 0x81, 0x0, 0x83
+    .byte 0x0, 0x82, 0x0, 0x84, 0x0, 0x81, 0x0, 0x83, 0x0, 0x82, 0x0
+    .byte 0x84, 0x0, 0x81, 0x0, 0x83, 0x0, 0x82, 0x0, 0x84, 0x0, 0x81
+    .byte 0x0, 0x83, 0x0, 0x82, 0x0, 0x84, 0x0, 0x81, 0x0, 0x83, 0x0
+    .byte 0x82, 0x0, 0x84, 0x0, 0x81, 0x0, 0x83, 0x0, 0x82, 0x0, 0x84
+    .byte 0x0, 0x81, 0x0, 0x83, 0x0, 0x82, 0x0, 0x84, 0x0
+byte_813EBD0:    .byte 0x84, 0x0, 0x85, 0x0, 0x86, 0x0, 0x87, 0x0, 0x84, 0x0, 0x85
+    .byte 0x0, 0x86, 0x0, 0x87, 0x0, 0x84, 0x0, 0x85, 0x0, 0x86, 0x0
+    .byte 0x87, 0x0, 0x84, 0x0, 0x85, 0x0, 0x86, 0x0, 0x87, 0x0, 0x84
+    .byte 0x0, 0x85, 0x0, 0x86, 0x0, 0x87, 0x0, 0x84, 0x0, 0x85, 0x0
+    .byte 0x86, 0x0, 0x87, 0x0, 0x84, 0x0, 0x85, 0x0, 0x86, 0x0, 0x87
+    .byte 0x0, 0x84, 0x0, 0x85, 0x0, 0x86, 0x0, 0x87, 0x0
 .func
 .thumb_func
 reqBBS_static_813EC10:
@@ -2665,7 +2549,7 @@ reqBBS_copyTextDataToRAM:
     ldr r1, off_813F994 // =unk_2029A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
     // src
-    ldr r0, off_813F998 // =unk_87EFE14 
+    ldr r0, off_813F998 // =byte_87EFE14 
     // dest
     ldr r1, off_813F99C // =unk_2033A00 
     bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
@@ -2673,7 +2557,7 @@ reqBBS_copyTextDataToRAM:
 off_813F98C:    .word off_813F378
 off_813F990:    .word unk_2025A00
 off_813F994:    .word unk_2029A00
-off_813F998:    .word unk_87EFE14
+off_813F998:    .word byte_87EFE14
 off_813F99C:    .word unk_2033A00
 .endfunc // reqBBS_copyTextDataToRAM
 
@@ -3572,7 +3456,7 @@ loc_81401FC:
     // cpyOff
     mov r2, #2
     // tileRefs
-    ldr r3, off_8140240 // =unk_8140244 
+    ldr r3, off_8140240 // =byte_8140244 
     mov r4, #2
     mov r5, #2
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -3585,15 +3469,8 @@ loc_8140228:
 off_8140230:    .word reqBBS_requestEntries_IDs
 off_8140234:    .word dword_8140238
 dword_8140238:    .word 0x8B008A, 0x8D008C
-off_8140240:    .word unk_8140244
-unk_8140244:    .byte 0x8E
-    .byte  0
-    .byte 0x8F
-    .byte  0
-    .byte 0x90
-    .byte  0
-    .byte 0x91
-    .byte  0
+off_8140240:    .word byte_8140244
+byte_8140244:    .byte 0x8E, 0x0, 0x8F, 0x0, 0x90, 0x0, 0x91, 0x0
 .endfunc // reqBBS_renderRequestStatus
 
 .func
@@ -3646,7 +3523,7 @@ loc_8140290:
     // cpyOff
     mov r2, #2
     // tileRefs
-    ldr r3, off_81402C4 // =unk_81402C8 
+    ldr r3, off_81402C4 // =byte_81402C8 
     mov r4, #1
     mov r5, #2
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -3662,11 +3539,8 @@ loc_81402B4:
     pop {r4-r7,pc}
 off_81402BC:    .word reqBBS_requestEntries_IDs
 off_81402C0:    .word dword_813F380
-off_81402C4:    .word unk_81402C8
-unk_81402C8:    .byte 0x88
-    .byte 0x60 
-    .byte 0x89
-    .byte 0x60 
+off_81402C4:    .word byte_81402C8
+byte_81402C8:    .byte 0x88, 0x60, 0x89, 0x60
 .endfunc // reqBBS_renderRankStars
 
 .func
@@ -3691,7 +3565,7 @@ loc_81402DE:
     // cpyOff
     mov r2, #1
     // tileRefs
-    ldr r3, off_8140304 // =unk_8140308 
+    ldr r3, off_8140304 // =byte_8140308 
     mov r4, #1
     mov r5, #2
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -3703,11 +3577,8 @@ loc_81402DE:
 locret_81402FE:
     pop {r4-r7,pc}
 off_8140300:    .word dword_813F380
-off_8140304:    .word unk_8140308
-unk_8140308:    .byte 0x92
-    .byte 0x60 
-    .byte 0x93
-    .byte 0x60 
+off_8140304:    .word byte_8140308
+byte_8140308:    .byte 0x92, 0x60, 0x93, 0x60
 .endfunc // reqBBS_81402CC
 
 .func
@@ -3734,7 +3605,7 @@ loc_8140320:
     // cpyOff
     mov r2, #1
     // tileRefs
-    ldr r3, off_8140350 // =unk_8140354 
+    ldr r3, off_8140350 // =byte_8140354 
     mov r4, #1
     mov r5, #2
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -3749,11 +3620,8 @@ locret_8140340:
 off_8140344:    .word dynaicArr
 dword_8140348:    .word 0xF
 off_814034C:    .word dword_813F380
-off_8140350:    .word unk_8140354
-unk_8140354:    .byte 0x92
-    .byte 0x60 
-    .byte 0x93
-    .byte 0x60 
+off_8140350:    .word byte_8140354
+byte_8140354:    .byte 0x92, 0x60, 0x93, 0x60
 .endfunc // reqBBS_814030C
 
 .func

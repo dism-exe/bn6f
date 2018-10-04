@@ -2,7 +2,7 @@
 .equ INC_DATA_DAT38_82, 0
 
 /* Public Symbols */
-.global unk_87F40F4
+.global byte_87F40F4
 .global unk_87F4194
 
 
@@ -24,7 +24,7 @@
 // .global dword_84C0C24
 
 .include "data/dat38_41.inc"
-// .global unk_84F0C30
+// .global byte_84F0C30
 
 
 /* Undeclared Symbols */

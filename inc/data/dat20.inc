@@ -11,21 +11,21 @@
 .global off_807F21C
 .global byte_807F268
 .global off_807FAC0
-.global unk_8080598
-.global unk_80805C0
-.global unk_8080684
-.global unk_8080685
-.global unk_8080686
-.global unk_8080687
-.global unk_8080689
-.global unk_808068A
-.global unk_808068B
-.global unk_80806B3
+.global byte_8080598
+.global byte_80805C0
+.global byte_8080684
+.global byte_8080685
+.global byte_8080686
+.global byte_8080687
+.global byte_8080689
+.global byte_808068A
+.global byte_808068B
+.global byte_80806B3
 .global byte_8080808
 .global byte_80808B0
-.global unk_80808D8
-.global unk_80809F6
-.global unk_8080AA0
+.global byte_80808D8
+.global byte_80809F6
+.global byte_8080AA0
 
 
 /* External Symbols */

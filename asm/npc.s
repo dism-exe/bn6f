@@ -571,7 +571,7 @@ npc_809E9DA:
     mov r3, #6
     ldrb r3, [r5,r3]
     lsl r3, r3, #1
-    ldr r2, off_809EA30 // =unk_809EA34 
+    ldr r2, off_809EA30 // =byte_809EA34 
     ldrb r0, [r2,r3]
     add r3, #1
     ldrb r1, [r2,r3]
@@ -605,15 +605,8 @@ loc_809EA26:
     str r0, [r5,#0x2c]
     pop {pc}
     .byte 0, 0
-off_809EA30:    .word unk_809EA34
-unk_809EA34:    .byte 0x26 
-    .byte  0
-    .byte 0x2A 
-    .byte  0
-    .byte 0x26 
-    .byte  1
-    .byte 0x2A 
-    .byte  1
+off_809EA30:    .word byte_809EA34
+byte_809EA34:    .byte 0x26, 0x0, 0x2A, 0x0, 0x26, 0x1, 0x2A, 0x1
 .endfunc // npc_809E9DA
 
 .func

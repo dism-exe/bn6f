@@ -45,60 +45,21 @@ off_8062B0C:    .word off_8062728
 off_8062B10:    .word unk_2037800
 off_8062B14:    .word off_8063008
 off_8062B18:    .word off_8062B1C
-off_8062B1C:    .word unk_8062B34
-    .word unk_8062B3E
-    .word unk_8062B4A
-    .word unk_8062B4E
-    .word unk_8062B52
-    .word unk_8062B58
-unk_8062B34:    .byte 0x1C
-    .byte 0x70 
-    .byte 0x1C
-    .byte 0x76 
-    .byte 0x1C
-    .byte 0x77 
-    .byte 0x1C
-    .byte 0x78 
+off_8062B1C:    .word byte_8062B34
+    .word byte_8062B3E
+    .word byte_8062B4A
+    .word byte_8062B4E
+    .word byte_8062B52
+    .word byte_8062B58
+byte_8062B34:    .byte 0x1C, 0x70, 0x1C, 0x76, 0x1C, 0x77, 0x1C, 0x78, 0xFF
     .byte 0xFF
-    .byte 0xFF
-unk_8062B3E:    .byte 0x1C
-    .byte 0x8B
-    .byte 0x1C
-    .byte 0x8C
-    .byte 0x18
-    .byte 0x38 
-    .byte 0x18
-    .byte 0x39 
-    .byte 0x18
-    .byte 0x3A 
-    .byte 0xFF
-    .byte 0xFF
-unk_8062B4A:    .byte 0x1C
-    .byte 0x35 
-    .byte 0xFF
-    .byte 0xFF
-unk_8062B4E:    .byte 0x1C
-    .byte 0x7B 
-    .byte 0xFF
-    .byte 0xFF
-unk_8062B52:    .byte 0x1C
-    .byte 0x65 
-    .byte 0x1C
-    .byte 0x20
-    .byte 0xFF
-    .byte 0xFF
-unk_8062B58:    .byte 0x1C
-    .byte 0x85
-    .byte 0x1C
-    .byte 0x83
-    .byte 0x1C
-    .byte 0x84
-    .byte 0x1C
-    .byte 0x94
-    .byte 0x1C
-    .byte 0x97
-    .byte 0xFF
-    .byte 0xFF
+byte_8062B3E:    .byte 0x1C, 0x8B, 0x1C, 0x8C, 0x18, 0x38, 0x18, 0x39, 0x18
+    .byte 0x3A, 0xFF, 0xFF
+byte_8062B4A:    .byte 0x1C, 0x35, 0xFF, 0xFF
+byte_8062B4E:    .byte 0x1C, 0x7B, 0xFF, 0xFF
+byte_8062B52:    .byte 0x1C, 0x65, 0x1C, 0x20, 0xFF, 0xFF
+byte_8062B58:    .byte 0x1C, 0x85, 0x1C, 0x83, 0x1C, 0x84, 0x1C, 0x94, 0x1C
+    .byte 0x97, 0xFF, 0xFF
 .endfunc // sub_8062AB0
 
 .func
@@ -118,20 +79,20 @@ off_8062B78:    .word off_8062B90
     .word off_8062BAC
     .word off_8062BB8
     .word off_8062BC4
-off_8062B90:    .word unk_8062860
-    .word unk_80628A0
+off_8062B90:    .word byte_8062860
+    .word byte_80628A0
     .word 0xFFFFFFFF
-off_8062B9C:    .word unk_80628E0
+off_8062B9C:    .word byte_80628E0
     .word 0xFFFFFFFF
-off_8062BA4:    .word unk_8062908
+off_8062BA4:    .word byte_8062908
     .word 0xFFFFFFFF
-off_8062BAC:    .word unk_8062958
-    .word unk_80629C0
+off_8062BAC:    .word byte_8062958
+    .word byte_80629C0
     .word 0xFFFFFFFF
-off_8062BB8:    .word unk_80629F0
-    .word unk_8062A30
+off_8062BB8:    .word byte_80629F0
+    .word byte_8062A30
     .word 0xFFFFFFFF
-off_8062BC4:    .word unk_8062A70
+off_8062BC4:    .word byte_8062A70
     .word 0xFFFFFFFF
 .endfunc // sub_8062B64
 

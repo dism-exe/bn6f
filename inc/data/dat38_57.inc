@@ -2,13 +2,13 @@
 .equ INC_DATA_DAT38_57, 0
 
 /* Public Symbols */
-.global unk_86D7578
-.global unk_86D78C0
-.global unk_86D7C24
-.global unk_86D7F74
-.global unk_86D82C4
-.global unk_86D860C
-.global unk_86D894C
+.global byte_86D7578
+.global byte_86D78C0
+.global byte_86D7C24
+.global byte_86D7F74
+.global byte_86D82C4
+.global byte_86D860C
+.global byte_86D894C
 
 
 /* External Symbols */

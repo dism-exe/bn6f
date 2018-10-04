@@ -4265,7 +4265,7 @@ sub_8004DF0:
     mul r1, r2
     bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
     bl sub_8021C68
-    ldr r0, off_80050E8 // =dword_80213AC 
+    ldr r0, off_80050E8 // =byte_80213AC 
     mov r1, #0
     bl sub_8021AB4
     bl sub_81376E8
@@ -4297,7 +4297,7 @@ sub_8004DF0:
     bl reqBBS_8140984
     pop {r4-r7,pc}
 off_80050E4:    .word 0x100
-off_80050E8:    .word dword_80213AC
+off_80050E8:    .word byte_80213AC
 .endfunc // sub_8004DF0
 
 .func
@@ -5155,7 +5155,7 @@ sub_80059B4:
     // byteFlagIdx
     mov r1, #0x38 
     bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-    ldr r0, off_8005A78 // =unk_8098A02 
+    ldr r0, off_8005A78 // =byte_8098A02 
     mov r1, #0
     bl init_s_02011C50_8036E90
     pop {pc}
@@ -5270,7 +5270,7 @@ sub_8005A50:
     mov r0, #0x10
     strb r0, [r5]
     pop {pc}
-off_8005A78:    .word unk_8098A02
+off_8005A78:    .word byte_8098A02
 off_8005A7C:    .word unk_8098A2E
 off_8005A80:    .word dword_8098A78
 off_8005A84:    .word unk_809B5AD

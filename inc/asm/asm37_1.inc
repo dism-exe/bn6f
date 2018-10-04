@@ -275,7 +275,7 @@
 .include "data/dat38_42.inc"
 // .global dword_8619730
 // .global dword_8619B50
-// .global unk_8619B90
+// .global byte_8619B90
 
 
 /* Undeclared Symbols */

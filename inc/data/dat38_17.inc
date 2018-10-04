@@ -6,7 +6,7 @@
 .global byte_8415A90
 .global byte_8419440
 .global byte_841C9C4
-.global unk_8420000
+.global byte_8420000
 .global byte_84201AC
 .global byte_8424C78
 .global byte_842A630

@@ -532,7 +532,7 @@ sub_800C100:
     mul r4, r1
     add r4, #6
     str r4, [sp,#4]
-    ldr r6, off_800C16C // =unk_86E0498 
+    ldr r6, off_800C16C // =byte_86E0498 
     lsl r7, r2, #5
     add r6, r6, r7
     // j
@@ -582,7 +582,7 @@ sub_800C138:
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
     add sp, sp, #0x28
     pop {r4-r7,pc}
-off_800C16C:    .word unk_86E0498
+off_800C16C:    .word byte_86E0498
 off_800C170:    .word byte_800C178
 off_800C174:    .word byte_800C182
 byte_800C178:    .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -643,99 +643,99 @@ off_800C1F8:    .word dword_203CB04
 off_800C1FC:    .word dword_203CB04
 dword_800C200:    .word 0x30A02
     .word unk_30019A0
-    .word unk_86E0918
+    .word byte_86E0918
     .word 0x10
-    .word unk_86E04D8
+    .word byte_86E04D8
     .word 0x10
-    .word unk_86E04F8
+    .word byte_86E04F8
     .word 0x10
-    .word unk_86E0518
+    .word byte_86E0518
     .word 0x10
-    .word unk_86E0538
+    .word byte_86E0538
     .word 0x10
-    .word unk_86E0558
+    .word byte_86E0558
     .word 0x10
-    .word unk_86E0538
+    .word byte_86E0538
     .word 0x10
-    .word unk_86E0518
+    .word byte_86E0518
     .word 0x10
-    .word unk_86E04F8
+    .word byte_86E04F8
     .word 0x10
-    .word unk_86E04D8
+    .word byte_86E04D8
     .word 0x10
 dword_800C258:    .word 0x50A04
     .word unk_3001A20
-    .word unk_86E0998
+    .word byte_86E0998
     .word 0x10
-    .word unk_86E06D8
+    .word byte_86E06D8
     .word 0x10
-    .word unk_86E06F8
+    .word byte_86E06F8
     .word 0x10
-    .word unk_86E0718
+    .word byte_86E0718
     .word 0x10
-    .word unk_86E0738
+    .word byte_86E0738
     .word 0x10
-    .word unk_86E0758
+    .word byte_86E0758
     .word 0x10
-    .word unk_86E0738
+    .word byte_86E0738
     .word 0x10
-    .word unk_86E0718
+    .word byte_86E0718
     .word 0x10
-    .word unk_86E06F8
+    .word byte_86E06F8
     .word 0x10
-    .word unk_86E06D8
+    .word byte_86E06D8
     .word 0x10
 dword_800C2B0:    .word 0x70406
     .word unk_30019C0
-    .word unk_86E0938
+    .word byte_86E0938
     .word 0x8
-    .word unk_86E0578
+    .word byte_86E0578
     .word 0x8
-    .word unk_86E0598
+    .word byte_86E0598
     .word 0x8
-    .word unk_86E05B8
+    .word byte_86E05B8
     .word 0x8
 dword_800C2D8:    .word 0x90408
     .word unk_3001A40
-    .word unk_86E09B8
+    .word byte_86E09B8
     .word 0x8
-    .word unk_86E0778
+    .word byte_86E0778
     .word 0x8
-    .word unk_86E0798
+    .word byte_86E0798
     .word 0x8
-    .word unk_86E07B8
+    .word byte_86E07B8
     .word 0x8
 dword_800C300:    .word 0xB070A
     .word unk_30019E0
-    .word unk_86E0958
+    .word byte_86E0958
     .word 0xA
-    .word unk_86E05D8
+    .word byte_86E05D8
     .word 0xA
-    .word unk_86E05F8
+    .word byte_86E05F8
     .word 0xA
-    .word unk_86E0618
+    .word byte_86E0618
     .word 0xA
-    .word unk_86E0638
+    .word byte_86E0638
     .word 0xA
-    .word unk_86E0658
+    .word byte_86E0658
     .word 0xA
-    .word unk_86E0678
+    .word byte_86E0678
     .word 0xA
 dword_800C340:    .word 0xD070C
     .word unk_3001A60
-    .word unk_86E09D8
+    .word byte_86E09D8
     .word 0xA
-    .word unk_86E07D8
+    .word byte_86E07D8
     .word 0xA
-    .word unk_86E07F8
+    .word byte_86E07F8
     .word 0xA
-    .word unk_86E0818
+    .word byte_86E0818
     .word 0xA
-    .word unk_86E0838
+    .word byte_86E0838
     .word 0xA
-    .word unk_86E0858
+    .word byte_86E0858
     .word 0xA
-    .word unk_86E0878
+    .word byte_86E0878
     .word 0xA
 .endfunc // sub_800C192
 

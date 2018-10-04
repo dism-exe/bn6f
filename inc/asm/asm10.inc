@@ -56,17 +56,17 @@
 .include "data/dat09.inc"
 // .global off_8066020
 // .global off_8066048
-// .global unk_80662B8
-// .global unk_80662E8
-// .global unk_8066328
-// .global unk_8066368
+// .global byte_80662B8
+// .global byte_80662E8
+// .global byte_8066328
+// .global byte_8066368
 
 .include "data/dat10.inc"
 // .global dword_8067DF8
 // .global dword_8067E08
-// .global unk_8067E18
-// .global unk_8067E2C
-// .global unk_8067E8D
+// .global byte_8067E18
+// .global byte_8067E2C
+// .global byte_8067E8D
 // .global dword_8067F24
 // .global unk_8067F4F
 // .global dword_8067F74
@@ -76,20 +76,20 @@
 // .global off_8068734
 
 .include "asm/asm28_1.inc"
-// .global unk_809F6CC
+// .global byte_809F6CC
 
 .include "data/dat38_14.inc"
-// .global unk_83C09C0
-// .global unk_83F0016
-// .global unk_83F2C16
+// .global byte_83C09C0
+// .global byte_83F0016
+// .global byte_83F2C16
 
 .include "data/dat38_42.inc"
 // .global dword_859E6D0
 // .global off_8610B04
-// .global unk_8610C18
+// .global byte_8610C18
 // .global unk_8610D64
 // .global off_86116C8
-// .global unk_861184C
+// .global byte_861184C
 // .global unk_86119C4
 // .global dword_8611B68
 

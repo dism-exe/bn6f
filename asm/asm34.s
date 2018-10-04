@@ -140,7 +140,7 @@ off_812D3E0:    .word unk_2023FC0
     ldr r2, off_812D4F4 // =unk_202E144 
     mov r3, #0xa
     lsl r3, r3, #0xc
-    ldr r4, unk_812D4F8 // =0x0 
+    ldr r4, byte_812D4F8 // =0x0 
     orr r3, r4
     mov r5, #7
     bl sub_8120618
@@ -167,10 +167,7 @@ dword_812D4E8:    .word 0x216
 off_812D4EC:    .word unk_202E10C
 dword_812D4F0:    .word 0x34F
 off_812D4F4:    .word unk_202E144
-unk_812D4F8:    .byte  0
-    .byte  2
-    .byte  0
-    .byte  0
+byte_812D4F8:    .byte 0x0, 0x2, 0x0, 0x0
 .func
 .thumb_func
 sub_812D4FC:

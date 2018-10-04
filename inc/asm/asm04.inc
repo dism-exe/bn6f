@@ -30,7 +30,7 @@
 // .global off_804E478
 // .global off_804E4A0
 // .global dword_804E5D4
-// .global unk_804E604
+// .global byte_804E604
 
 .include "data/dat04.inc"
 // .global dword_804E74C

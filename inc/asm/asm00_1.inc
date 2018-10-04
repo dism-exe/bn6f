@@ -354,7 +354,7 @@
 
 .include "data/dat01.inc"
 // .global dword_802137C
-// .global dword_80213AC
+// .global byte_80213AC
 
 .include "asm/asm02.inc"
 // .global getChip_8021DA8 // (int chip_idx) -> ChipData*
@@ -485,7 +485,7 @@
 // .global sub_808FEA4
 
 .include "data/dat27.inc"
-// .global unk_8098A02
+// .global byte_8098A02
 // .global unk_8098A2E
 // .global dword_8098A78
 // .global dword_8098B1C
