@@ -209,9 +209,9 @@
 .global sub_801986C
 .global sub_8019892
 .global sub_80198CE
-.global unk_80198F4
-.global unk_80199B6
-.global unk_80199F5
+.global byte_80198F4
+.global byte_80199B6
+.global byte_80199F5
 .global off_8019B78
 .global off_8019BE0
 .global dword_8019C34
@@ -415,6 +415,7 @@
 // .global object_checkPanelParameters
 // .global object_getPanelsExceptCurrentFilterred
 // .global sub_800CEA0
+// .global sub_800D012
 // .global sub_800D086
 // .global sub_800D120
 // .global sub_800D15A
@@ -473,16 +474,16 @@
 // .global dword_801FDC0
 
 .include "data/dat01.inc"
-// .global unk_8020354
-// .global unk_80203EA
-// .global dword_8020404
+// .global byte_8020354
+// .global byte_80203EA
+// .global byte_8020404
 // .global dword_80209CC
 // .global off_80209EC
-// .global dword_8020B2C
-// .global dword_8020B8C
+// .global byte_8020B2C
+// .global byte_8020B8C
 // .global dword_8020E54
-// .global unk_8020FE0
-// .global unk_80210DD
+// .global byte_8020FE0
+// .global byte_80210DD
 // .global unk_8021220
 // .global unk_80212BB
 // .global dword_80212D4
@@ -532,7 +533,7 @@
 // .global sub_802EF5C
 // .global dword_802F0A8
 // .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global sub_802FE28
+// .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_802FE48
 // .global sub_802FE6A
 // .global sub_802FE7A

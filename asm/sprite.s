@@ -813,9 +813,8 @@ sub_8002BCC:
     pop {r4-r7,pc}
     .byte 0, 0
 off_8002BF0:    .word byte_200DCA0
-    .word unk_8002BF8
-unk_8002BF8:    .byte  0
-    .byte 0x6, 0x55, 0x4E
+    .word byte_8002BF8
+byte_8002BF8:    .byte 0x0, 0x6, 0x55, 0x4E
 aCompStr8xEnd8x:    .byte 0x43, 0x4F
     .byte 0x4D, 0x50
     .byte 0xA, 0x53

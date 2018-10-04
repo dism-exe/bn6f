@@ -611,7 +611,7 @@ loc_80401A4:
     add r1, r1, r2
     mov r2, #0
     mov r3, #3
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {r0}
     sub r0, #1
     bge loc_80401A4
@@ -685,7 +685,7 @@ loc_8040242:
     add r1, r1, r4
     mov r2, #0
     mov r3, #3
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {r6}
     add r6, #1
     push {r6}
@@ -713,7 +713,7 @@ loc_8040242:
     add r1, r1, r4
     mov r2, #0
     mov r3, #3
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {r6}
     add r6, #1
     push {r6}
@@ -741,7 +741,7 @@ loc_8040242:
     add r1, r1, r4
     mov r2, #0
     mov r3, #3
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {r6}
     add r6, #1
     cmp r6, #6
@@ -1403,7 +1403,7 @@ loc_8040870:
     orr r1, r2
     mov r2, #0
     mov r3, #4
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 locret_8040886:
     pop {r4,r6,pc}
 off_8040888:    .word dword_86A4740
@@ -1554,7 +1554,7 @@ loc_8040986:
     orr r1, r2
     mov r2, #0
     mov r3, #4
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {pc}
     .byte 0, 0
 dword_80409A0:    .word 0x40000000
@@ -1787,7 +1787,7 @@ chatbox_8040A9A:
     orr r1, r2
     mov r2, #0
     mov r3, #1
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     add r0, r4, #0
     mov r4, #0x16
     lsl r4, r4, #0x10
@@ -1798,7 +1798,7 @@ chatbox_8040A9A:
     lsl r6, r6, #0xa
     orr r1, r6
     mov r3, #1
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {r5}
     ldrb r2, [r5,#0x16]
     ldr r3, off_8040B1C // =word_8040B20 
@@ -2085,7 +2085,7 @@ loc_8040CDA:
     ldr r1, [r4,#4]
     mov r2, #0
     mov r3, #4
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {r4,r6}
     tst r6, r6
     beq locret_8040D42

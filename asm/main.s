@@ -27,7 +27,7 @@ main_gameRoutine:
     add r1, #1
     strh r1, [r0]
     bl sub_8000E10
-    ldr r0, off_8000348 // =main_jt_subsystem
+    ldr r0, off_8000348 // =main_jt_subsystem 
     mov r1, r10
     ldr r1, [r1]
     ldrb r1, [r1]
@@ -42,7 +42,7 @@ loc_800032A:
     bl chatbox_onUpdate_803FEB4
     bl cb_call_200A880
     bl PET_onUpdate_8001B94
-    ldr r0, off_8000344 // =loc_3006814+1
+    ldr r0, off_8000344 // =loc_3006814+1 
     mov lr, pc
     bx r0
     bl main_static_8000454
@@ -63,15 +63,15 @@ main_jt_subsystem:    .word Load_ho_802F544+1, cb_80050EC+1, ho_jackIn_80341B6+1
 main_static_awaitFrame_80003A0:
     push {lr}
 loc_80003A2:
-    ldr r0, off_80003CC // =GeneralLCDStatus_STAT_LYC_
+    ldr r0, off_80003CC // =GeneralLCDStatus_STAT_LYC_ 
     mov r2, #1
 loc_80003A6:
     ldrh r1, [r0]
     tst r1, r2
     beq loc_80003A6
-    ldr r0, off_80003C4 // =dword_200A870
+    ldr r0, off_80003C4 // =dword_200A870 
     ldr r2, [r0]
-    ldr r1, off_80003C8 // =dword_2009930
+    ldr r1, off_80003C8 // =dword_2009930 
     ldr r1, [r1]
     cmp r2, r1
     blt loc_80003A2
@@ -90,7 +90,7 @@ off_80003CC:    .word GeneralLCDStatus_STAT_LYC_
 // () -> void
 main_static_await_80003D0:
     push {lr}
-    ldr r0, off_80003E0 // =GeneralLCDStatus_STAT_LYC_
+    ldr r0, off_80003E0 // =GeneralLCDStatus_STAT_LYC_ 
     mov r2, #1
 loc_80003D6:
     ldrh r1, [r0]
@@ -113,12 +113,12 @@ main_static_80003E4:
     mov r7, #0
 loc_80003F2:
     strb r7, [r0,#0x13]
-    ldr r4, off_800044C // =KeyStatus
+    ldr r4, off_800044C // =KeyStatus 
     ldrh r4, [r4]
     mvn r4, r4
     ldrh r5, [r0]
     strh r5, [r0,#6]
-    ldr r3, dword_8000450 // =0x3FF
+    ldr r3, dword_8000450 // =0x3FF 
     strh r4, [r0]
     add r6, r4, #0
     and r6, r5
@@ -220,10 +220,10 @@ loc_80004AA:
     bl CpuSet_toolKit // () -> void
     bl sub_8006C22
     pop {r1}
-    ldr r0, off_8000564 // =0x40
+    ldr r0, off_8000564 // =0x40 
     tst r1, r1
     beq loc_80004C0
-    ldr r0, off_8000568 // =0xC0
+    ldr r0, off_8000568 // =0xC0 
 loc_80004C0:
     bl sub_8001778
     bl main_static_80017EC
@@ -259,7 +259,7 @@ loc_80004C0:
     bl sub_80071B4
     bl sub_804657C // () -> void
     bl sub_80467D8
-    ldr r0, off_800056C // =dword_2009930
+    ldr r0, off_800056C // =dword_2009930 
     mov r1, #1
     strh r1, [r0]
     mov r0, r10
@@ -282,18 +282,18 @@ off_800056C:    .word dword_2009930
 main_static_8000570:
     push {lr}
     bl sub_814E8A0
-    ldr r0, dword_800059C // =0x93040D
+    ldr r0, dword_800059C // =0x93040D 
     bl sub_814EE2C
     mov r0, #8
-    ldr r1, dword_80005A8 // =
+    ldr r1, dword_80005A8 // = 
     bl start_800024C
-    ldr r0, off_80005A0 // =GeneralLCDStatus_STAT_LYC_
+    ldr r0, off_80005A0 // =GeneralLCDStatus_STAT_LYC_ 
     ldrh r1, [r0]
     mov r2, #0xff
     and r1, r2
-    mov r2, #0x20
+    mov r2, #0x20 
     orr r1, r2
-    mov r2, #0x50
+    mov r2, #0x50 
     lsl r2, r2, #8
     orr r1, r2
     strh r1, [r0]

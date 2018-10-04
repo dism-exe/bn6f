@@ -251,7 +251,7 @@
 // .global sub_8005F6C
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
-// .global unk_80065E0
+// .global byte_80065E0
 // .global sub_80068EC
 // .global sub_8006910
 // .global sub_8006C22
@@ -306,7 +306,7 @@
 // .global loc_802F200
 // .global sub_802F238
 // .global sub_802F530
-// .global sub_802FE28
+// .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_802FF2C
 // .global sub_80301B2
 // .global sub_80301D0

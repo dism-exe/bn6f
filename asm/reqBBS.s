@@ -1638,7 +1638,7 @@ loc_813EE18:
     orr r1, r2
     mov r2, #0
     mov r3, #3
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {r0-r7,pc}
 dword_813EE30:    .word 0x40000000
 off_813EE34:    .word unk_201AA04
@@ -4242,7 +4242,7 @@ loc_81406BC:
     orr r1, r2
     mov r2, #0
     mov r3, #3
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {r0-r7,pc}
 dword_81406D4:    .word 0x40000000
 off_81406D8:    .word unk_201AA04

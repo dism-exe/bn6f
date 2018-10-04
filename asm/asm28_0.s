@@ -3242,8 +3242,8 @@ dword_8099E04:    .word 0x2906003F, 0x4B1731FF, 0x8099E2D, 0xC08FF27, 0xD1083E07
     .byte 0xE2
     .byte 0xAD
     .byte 0xE2
-    .byte 0xA0
-    .byte 0xE2
+loc_8099E78:
+    b loc_809A3BC
     .byte 0xA2
     .byte 0xE2
     .byte 0xA4
@@ -3425,6 +3425,7 @@ dword_809A3B4:    .word 0x600D400
 off_809A3B8:    .word dword_86A5D60
 .endfunc // sub_809A360
 
+loc_809A3BC:
     push {r4-r7,lr}
     bl sub_809A334
     mov r0, #0x20 
@@ -3942,12 +3943,14 @@ sub_809A80C:
     mov r4, #9
     mov r5, #5
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-.endfunc // sub_809A80C
-
+    // j
     add r0, r7, #2
+    // i
     mov r1, #2
+    // cpyOff
     mov r2, #0
-    ldr r3, dword_809A854 // = 
+    // tileRefs
+    ldr r3, off_809A854 // =loc_8099E78 
     mov r4, #6
     mov r5, #2
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -3963,11 +3966,13 @@ sub_809A80C:
     pop {r4-r7,pc}
     .byte 0, 0
 off_809A850:    .word loc_86C5790
-dword_809A854:    .word 0x8099E78
+off_809A854:    .word loc_8099E78
 off_809A858:    .word unk_2033404
 off_809A85C:    .word unk_200EF40
 dword_809A860:    .word 0x600D400
 off_809A864:    .word dword_86A5D60
+.endfunc // sub_809A80C
+
 .func
 .thumb_func
 sub_809A868:

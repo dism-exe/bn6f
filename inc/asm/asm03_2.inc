@@ -110,7 +110,7 @@
 .include "asm/asm03_0.inc"
 // .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 // .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
-// .global sub_802FE28
+// .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_802FF4C
 // .global sub_803037C
 // .global loc_8030472
@@ -337,6 +337,12 @@
 // .global byte_84E0554
 
 .include "data/dat38_42.inc"
+// .global byte_869D74C
+// .global unk_869D76C
+// .global byte_869D82C
+// .global byte_869E02C
+// .global byte_869E82C
+// .global byte_869F02C
 // .global unk_86A48C0
 // .global dword_86A4A40
 // .global unk_86A4CC0
@@ -539,14 +545,12 @@
 .equ unk_30016B0, 0x30016B0
 .equ unk_30016D0, 0x30016D0
 .equ unk_3001730, 0x3001730
-.equ unk_3001750, 0x3001750
 .equ word_3001960, 0x3001960
 .equ unk_3001980, 0x3001980
 .equ unk_30019C0, 0x30019C0
 .equ unk_3001A80, 0x3001A80
 .equ unk_3001AC0, 0x3001AC0
 .equ unk_3001AE0, 0x3001AE0
-.equ unk_3001B60, 0x3001B60
 .equ loc_3006B94, 0x3006B94
 .equ loc_3006C38, 0x3006C38
 .equ loc_3006C8E, 0x3006C8E

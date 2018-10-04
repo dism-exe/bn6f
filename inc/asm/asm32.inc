@@ -219,8 +219,8 @@
 // .global sub_8005524
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
-// .global unk_80065E0
-// .global dword_8006660
+// .global byte_80065E0
+// .global byte_8006660
 // .global sub_80077B4
 // .global battle_isPaused
 // .global battle_isTimeStop
@@ -327,7 +327,7 @@
 // .global sub_802EF5C
 // .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 // .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
-// .global sub_802FE28
+// .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 
 .include "asm/asm03_1.inc"
 // .global sub_8033978

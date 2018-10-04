@@ -32,10 +32,13 @@
 .global sub_80CC0B2
 .global sub_80CFBC4
 .global sub_80D1EE8
+.global sub_80D2430
 .global sub_80D464A
+.global sub_80D4FA6
 .global sub_80D6B78
 .global sub_80D8400
 .global sub_80D842E
+.global sub_80D85F0
 .global sub_80D8D5A
 .global sub_80D99EC
 .global sub_80DA9DC
@@ -207,8 +210,8 @@
 // .global sub_800362C
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
-// .global unk_80065E0
-// .global dword_8006660
+// .global byte_80065E0
+// .global byte_8006660
 // .global battle_isPaused
 // .global battle_isTimeStop
 // .global sub_800A152
@@ -460,7 +463,7 @@
 // .global sub_8017688
 // .global sub_8017768
 // .global sub_8017888
-// .global loc_80178B6
+// .global sub_80178B6
 // .global sub_8017CC0
 // .global loc_8017E26
 // .global sub_80182B4
@@ -468,9 +471,12 @@
 // .global sub_8018842
 // .global sub_8019892
 // .global sub_80198CE
-// .global unk_80198F4
-// .global unk_80199B6
-// .global unk_80199F5
+// .global byte_80198F4
+// .global byte_80198F4
+// .global byte_80199B6
+// .global byte_80199B6
+// .global byte_80199F5
+// .global byte_80199F5
 // .global off_8019B78
 // .global off_8019BE0
 // .global dword_8019C34
@@ -544,7 +550,7 @@
 // .global sub_801EB18
 
 .include "data/dat01.inc"
-// .global dword_80205F8
+// .global byte_8020600
 // .global unk_80211A0
 // .global dword_8021300
 // .global byte_802136D

@@ -420,7 +420,7 @@ sub_8033B80:
     ldr r1, dword_8033BB0 // =0xC790 
     mov r2, #1
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     ldrb r0, [r5,#5]
     add r0, #1
     cmp r0, #0x18
@@ -463,7 +463,7 @@ loc_8033C02:
     ldr r1, dword_8033C64 // =0xC79C 
     mov r2, #1
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {pc}
     .byte 0, 0
 off_8033C20:    .word off_8033C24
@@ -512,12 +512,12 @@ loc_8033C8E:
     ldr r1, dword_8033CE8 // =0xC7A0 
     mov r2, #1
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     ldr r0, dword_8033CEC // =0xA017400D 
     ldr r1, dword_8033CE8 // =0xC7A0 
     mov r2, #1
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     ldrb r0, [r5,#7]
     sub r0, #1
     bgt loc_8033CBA
@@ -563,12 +563,12 @@ loc_8033D0C:
     ldr r1, dword_8033D80 // =0xC7A0 
     mov r2, #1
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     ldr r0, dword_8033D84 // =0xA017400D 
     ldr r1, dword_8033D80 // =0xC7A0 
     mov r2, #1
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {pc}
 off_8033D28:    .word off_8033D2C
 off_8033D2C:    .word unk_86C0EA0
@@ -741,7 +741,7 @@ loc_8033E9E:
     add r1, r1, r2
     mov r2, #1
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {r0,r2,r7}
     add r0, #8
     sub r7, #4
@@ -750,12 +750,12 @@ loc_8033E9E:
     ldr r1, dword_8033EE0 // =0xC790 
     mov r2, #1
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     ldr r0, dword_8033EE4 // =0x10288000 
     ldr r1, dword_8033EE0 // =0xC790 
     mov r2, #1
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {r5,pc}
     .byte 0, 0
 off_8033ED0:    .word unk_86C1F20
@@ -838,7 +838,7 @@ sub_8033F80:
     ldr r1, dword_8033FBC // =0xC7AC 
     mov r2, #1
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 locret_8033FA4:
     pop {r4-r7,pc}
     .balign 4, 0x00
@@ -6129,7 +6129,7 @@ loc_80371C2:
     pop {r0-r3}
 loc_80371E8:
     push {r0-r3}
-    ldr r7, off_803725C // =unk_80065E0 
+    ldr r7, off_803725C // =byte_80065E0 
     ldrh r3, [r5,#4]
     ldr r4, [r5,#0x20]
     sub r4, r3, r4
@@ -6139,7 +6139,7 @@ loc_80371E8:
     mov r3, #0x40 
     sub r4, r3, r4
     lsl r4, r4, #1
-    ldr r0, off_803725C // =unk_80065E0 
+    ldr r0, off_803725C // =byte_80065E0 
     ldrsh r4, [r0,r4]
     ldr r0, [r5,#0x14]
     ldr r1, [r5,#8]
@@ -6185,7 +6185,7 @@ loc_8037242:
     add r1, #9
     pop {pc}
     .balign 4, 0x00
-off_803725C:    .word unk_80065E0
+off_803725C:    .word byte_80065E0
 .endfunc // sub_8037196
 
 .func
@@ -15070,7 +15070,7 @@ loc_803B828:
     add r1, r1, r2
     mov r2, #2
     mov r3, #7
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     add r7, #1
     b loc_803B828
 loc_803B86C:
@@ -15156,7 +15156,7 @@ sub_803B8F8:
     add r1, r1, r4
     mov r2, #0
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 .endfunc // sub_803B8F8
 
     pop {r4-r7,pc}
@@ -15215,7 +15215,7 @@ loc_803B9DA:
     add r1, r1, r2
     mov r2, #2
     mov r3, #7
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 .endfunc // sub_803B9C0
 
     lsr r6, r6, #4
@@ -15241,7 +15241,7 @@ sub_803BA00:
     ldr r1, dword_803BA24 // =0x41E 
     mov r2, #2
     mov r3, #7
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {r4-r7,pc}
 dword_803BA20:    .word 0x5000
 dword_803BA24:    .word 0x41E
@@ -15498,7 +15498,7 @@ sub_803BBA4:
     orr r1, r2
     mov r2, #2
     mov r3, #7
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 .endfunc // sub_803BBA4
 
     ldrb r0, [r5,#7]
@@ -15571,7 +15571,7 @@ sub_803BC02:
     add r7, r1, #4
     add r2, r4, #0
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 .endfunc // sub_803BC02
 
     mov r2, #0x10
@@ -15580,7 +15580,7 @@ sub_803BC02:
     add r1, r7, #0
     add r2, r4, #0
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {r2}
     ldrb r0, [r5,#7]
     add r0, r0, r2
@@ -15656,7 +15656,7 @@ loc_803BC8A:
     ldrh r1, [r1,r2]
     mov r2, #0
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 .endfunc // sub_803BC7C
 
     ldr r0, dword_803BCDC // =0x9000 
@@ -15671,7 +15671,7 @@ loc_803BC8A:
     add r1, #2
     mov r2, #0
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     ldrb r0, [r5,#0xa]
     add r0, #1
     cmp r0, #0x18
@@ -16769,7 +16769,7 @@ sub_803C59C:
     ldr r1, dword_803C5F4 // =0xE3F4 
     mov r2, #0
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     ldrb r0, [r5]
     add r0, #1
     strb r0, [r5]

@@ -59,8 +59,8 @@
 // .global sub_80048B2
 // .global sub_80062C8
 // .global engine_isScreeneffectAnimating // () -> zf
-// .global unk_80065E0
-// .global dword_8006660
+// .global byte_80065E0
+// .global byte_8006660
 
 .include "asm/asm00_2.inc"
 // .global sub_800F23C

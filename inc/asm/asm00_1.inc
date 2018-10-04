@@ -103,9 +103,9 @@
 .global engine_isScreeneffectAnimating // () -> zf
 .global loc_80062FC
 .global subsystem_triggerTransition_800630A
-.global unk_80065E0
-.global dword_8006660
-.global unk_80066E0
+.global byte_80065E0
+.global byte_8006660
+.global byte_80066E0
 .global sub_80068E0
 .global sub_80068EC
 .global sub_8006910
@@ -415,7 +415,7 @@
 // .global sub_802F2C8
 // .global sub_802FDB0
 // .global loc_802FDB4
-// .global sub_802FE28
+// .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_802FF2C
 // .global sub_802FF4C
 // .global loc_802FFF4
@@ -717,6 +717,7 @@
 // .global loc_80CF5C8
 // .global loc_80CF7F0
 // .global loc_80CF954
+// .global sub_80CFBC4
 // .global loc_80CFC08
 // .global loc_80CFCF8
 // .global loc_80CFEC4
@@ -738,6 +739,7 @@
 // .global loc_80D1C20
 // .global sub_80D2034
 // .global sub_80D2290
+// .global sub_80D2430
 // .global loc_80D2460
 // .global sub_80D25D4
 // .global loc_80D2A94
@@ -753,6 +755,7 @@
 // .global loc_80D4A28
 // .global loc_80D4B68
 // .global loc_80D4C84
+// .global sub_80D4FA6
 // .global loc_80D5028
 // .global loc_80D5138
 // .global loc_80D535C
@@ -780,6 +783,7 @@
 // .global loc_80D807C
 // .global loc_80D825C
 // .global loc_80D8444
+// .global sub_80D85F0
 // .global loc_80D8620
 // .global loc_80D879C
 // .global loc_80D88E0
@@ -1194,7 +1198,9 @@
 .equ dword_2036828, 0x2036828
 .equ dword_203682C, 0x203682C
 .equ byte_2036830, 0x2036830
+.equ unk_2036860, 0x2036860
 .equ unk_2036870, 0x2036870
+.equ unk_2038160, 0x2038160
 .equ unk_2038170, 0x2038170
 .equ unk_20384F0, 0x20384F0
 .equ dword_2039A10, 0x2039A10

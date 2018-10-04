@@ -423,7 +423,7 @@ loc_813025E:
     add r1, r6, #0
     ldr r2, dword_8130284 // =0x0 
     mov r3, #5
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 .endfunc // sub_8130250
 
     mov r0, #8
@@ -5117,7 +5117,7 @@ loc_81329E4:
     add r1, r1, r2
     mov r2, #2
     mov r3, #7
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     add r7, #1
     b loc_81329E4
 loc_8132A0C:
@@ -5150,7 +5150,7 @@ loc_8132A2C:
     add r1, r1, r2
     mov r2, #2
     mov r3, #7
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 .endfunc // sub_8132A14
 
     lsr r6, r6, #4
@@ -5186,7 +5186,7 @@ loc_8132A5E:
     orr r1, r2
     mov r2, #2
     mov r3, #7
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 .endfunc // sub_8132A50
 
     ldr r0, [sp]
@@ -5212,7 +5212,7 @@ dword_8132A9C:    .word 0xB5F00400
     add r1, r5, #0
     mov r2, #2
     mov r3, #7
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     pop {r4-r7,pc}
     .balign 4, 0x00
 dword_8132ABC:    .word 0x40001000

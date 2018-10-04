@@ -9251,7 +9251,7 @@ loc_81281F2:
     orr r1, r2
     mov r2, #0
     mov r3, #2
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     add r7, #1
     cmp r7, r6
     blt loc_81281F2

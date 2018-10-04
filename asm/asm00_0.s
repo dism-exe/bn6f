@@ -1604,7 +1604,7 @@ loc_800104A:
     mov r3, #0xff
     and r3, r5
     lsr r2, r5, #0x10
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     tst r4, r4
     beq locret_8001078
     mov r7, #0xf
@@ -1774,7 +1774,7 @@ loc_800115C:
     ldr r1, [r7,#4]
     mov r2, #0
     mov r3, #0
-    bl sub_802FE28
+    bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
     add r7, #8
     b loc_800115C
 locret_8001170:
@@ -1823,9 +1823,9 @@ locret_800119E:
 .thumb_func
 sub_80011A0:
     lsl r0, r0, #1
-    ldr r2, off_80011B8 // =dword_8006660 
+    ldr r2, off_80011B8 // =byte_8006660 
     ldrsh r3, [r2,r0]
-    ldr r2, off_80011BC // =unk_80066E0 
+    ldr r2, off_80011BC // =byte_80066E0 
     ldrsh r2, [r2,r0]
     neg r2, r2
     mul r3, r1
@@ -1834,8 +1834,8 @@ sub_80011A0:
     asr r1, r2, #8
     mov pc, lr
     .balign 4, 0x00
-off_80011B8:    .word dword_8006660
-off_80011BC:    .word unk_80066E0
+off_80011B8:    .word byte_8006660
+off_80011BC:    .word byte_80066E0
 .endfunc // sub_80011A0
 
     push {lr}

@@ -111,7 +111,7 @@
 // .global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 // .global loc_802F200
 // .global sub_802F238
-// .global sub_802FE28
+// .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 
 .include "asm/asm03_1.inc"
 // .global sub_8033FC0

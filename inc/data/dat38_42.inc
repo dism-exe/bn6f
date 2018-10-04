@@ -357,6 +357,12 @@
 .global byte_8691154
 .global byte_8694FB4
 .global unk_8699EDC
+.global byte_869D74C
+.global unk_869D76C
+.global byte_869D82C
+.global byte_869E02C
+.global byte_869E82C
+.global byte_869F02C
 .global dword_86A4740
 .global unk_86A48C0
 .global dword_86A4A40

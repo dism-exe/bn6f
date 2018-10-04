@@ -142,8 +142,8 @@
 // .global sub_800355C
 // .global sub_8003566
 // .global sub_8003694
-// .global dword_8006660
-// .global unk_80066E0
+// .global byte_8006660
+// .global byte_80066E0
 
 .include "asm/asm00_2.inc"
 // .global sub_80137E6
@@ -157,7 +157,7 @@
 // .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 // .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global sub_802F1FC // (int a3, int a2) ->
-// .global sub_802FE28
+// .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_8030808
 
 .include "asm/asm03_1.inc"

@@ -118,7 +118,7 @@
 .global sub_802FDB0
 .global loc_802FDB4
 .global objRender_802FE0C
-.global sub_802FE28
+.global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 .global sub_802FE48
 .global sub_802FE6A
 .global sub_802FE7A
@@ -229,8 +229,8 @@
 // .global sub_80062EC
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global loc_80062FC
-// .global unk_80065E0
-// .global dword_8006660
+// .global byte_80065E0
+// .global byte_8006660
 // .global modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
 // .global sub_80070BC
 // .global sub_80076A0

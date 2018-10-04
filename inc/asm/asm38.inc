@@ -17,8 +17,8 @@
 // .global sub_8000C5C
 
 .include "asm/asm00_1.inc"
-// .global unk_80065E0
-// .global dword_8006660
+// .global byte_80065E0
+// .global byte_8006660
 // .global sub_80068E0
 // .global battle_isPaused
 // .global battle_isTimeStop
