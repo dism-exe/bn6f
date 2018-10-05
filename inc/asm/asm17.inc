@@ -51,7 +51,7 @@
 .include "data/dat18.inc"
 // .global off_807C974
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global dword_8618DFC
 
 

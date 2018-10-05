@@ -46,20 +46,20 @@
 .include "asm/asm28_1.inc"
 // .global byte_809F6CC
 
-.include "data/dat38_14.inc"
-// .global byte_83C0510
-// .global byte_83F010F
-// .global byte_83F0208
-// .global byte_83F0408
-// .global byte_83F0708
+.include "data/dat38_33.inc"
+// .global unk_83C0510
+// .global unk_83F010F
+// .global unk_83F0208
+// .global unk_83F0408
+// .global unk_83F0708
 // .global unk_83F0716
 // .global unk_83F1916
-// .global byte_83F2C16
+// .global unk_83F2C16
 
-.include "data/dat38_18.inc"
+.include "data/dat38_37.inc"
 // .global unk_8451508
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global byte_85AB89C
 // .global byte_85AB8BC
 // .global byte_85AB8DC
@@ -107,7 +107,7 @@
 // .global unk_85CD026
 // .global dword_8613028
 
-.include "data/dat38_68.inc"
+.include "data/dat38_85.inc"
 // .global byte_86DF925
 
 

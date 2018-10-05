@@ -3082,7 +3082,7 @@ off_809A340:    .word initRefs_809A344
 initRefs_809A344:    .word dword_86C57EC
     .word unk_3001B20
     .word 0x20
-    .word unk_86C5550
+    .word byte_86C5550
     .word 0x600D000
     .word 0x220
     .word 0x0
@@ -3104,7 +3104,7 @@ sub_809A360:
     // cpyOff
     mov r2, #0
     // tileRefs
-    ldr r3, off_809A3A4 // =loc_86C54D4 
+    ldr r3, off_809A3A4 // =byte_86C54D4 
     mov r4, #9
     mov r5, #5
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -3130,7 +3130,7 @@ sub_809A360:
     bl render_graphicalText_8045F8C
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_809A3A4:    .word loc_86C54D4
+off_809A3A4:    .word byte_86C54D4
 off_809A3A8:    .word dword_8099E04+0x58
 off_809A3AC:    .word scripts_86C580C
 off_809A3B0:    .word unk_200EF40
@@ -3652,7 +3652,7 @@ sub_809A80C:
     // cpyOff
     mov r2, #0
     // tileRefs
-    ldr r3, off_809A850 // =loc_86C5790 
+    ldr r3, off_809A850 // =byte_86C5790 
     mov r4, #9
     mov r5, #5
     bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -3678,7 +3678,7 @@ sub_809A80C:
     bl render_graphicalText_8045F8C
     pop {r4-r7,pc}
     .byte 0, 0
-off_809A850:    .word loc_86C5790
+off_809A850:    .word byte_86C5790
 off_809A854:    .word loc_8099E78
 off_809A858:    .word unk_2033404
 off_809A85C:    .word unk_200EF40

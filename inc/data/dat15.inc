@@ -19,7 +19,7 @@
 .include "asm/asm03_0.inc"
 // .global loc_8030308
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global dword_8617488
 
 

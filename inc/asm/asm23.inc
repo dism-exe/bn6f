@@ -77,7 +77,7 @@
 // .global sub_8142C20
 // .global sub_8142C46
 
-.include "data/dat38_70.inc"
+.include "data/dat38_87.inc"
 // .global dword_87DE44C
 
 

@@ -1027,12 +1027,12 @@
 // .global sub_8144EEC
 // .global SWI_LZ77UnCompReadNormalWrite16bit
 
-.include "data/dat38_68.inc"
+.include "data/dat38_85.inc"
 // .global unk_86DDBA0
 // .global dword_86E08F8
 // .global dword_86E09F8
 
-.include "data/dat38_79.inc"
+.include "data/dat38_96.inc"
 // .global dword_87F2F68
 
 

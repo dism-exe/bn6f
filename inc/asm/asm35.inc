@@ -54,7 +54,7 @@
 // .global sub_813B780
 // .global sub_813B9FC
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global dword_86A5D60
 
 

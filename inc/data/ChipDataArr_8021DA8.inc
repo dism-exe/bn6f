@@ -6,7 +6,7 @@
 
 
 /* External Symbols */
-.include "data/dat38_69.inc"
+.include "data/dat38_86.inc"
 // .global dword_86F5BB4
 // .global byte_86F60F4
 // .global byte_86F6634

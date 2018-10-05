@@ -20,7 +20,7 @@
 
 
 /* External Symbols */
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global dword_860D840
 // .global dword_860DA24
 // .global dword_860DA44

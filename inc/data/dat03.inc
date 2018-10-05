@@ -27,7 +27,7 @@
 
 
 /* External Symbols */
-.include "data/dat38_41.inc"
+.include "data/dat38_59.inc"
 // .global dword_850D034
 
 

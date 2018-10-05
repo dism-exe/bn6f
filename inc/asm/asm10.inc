@@ -78,12 +78,12 @@
 .include "asm/asm28_1.inc"
 // .global byte_809F6CC
 
-.include "data/dat38_14.inc"
-// .global byte_83C09C0
-// .global byte_83F0016
-// .global byte_83F2C16
+.include "data/dat38_33.inc"
+// .global unk_83C09C0
+// .global unk_83F0016
+// .global unk_83F2C16
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global dword_859E6D0
 // .global off_8610B04
 // .global byte_8610C18

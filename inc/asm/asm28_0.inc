@@ -173,16 +173,16 @@
 // .global reqBBS_81407D8
 // .global reqBBS_8140974
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global dword_86A5D60
 
-.include "data/dat38_47.inc"
-// .global loc_86C54D4
-// .global unk_86C5550
-// .global loc_86C5790
+.include "data/dat38_65.inc"
+// .global byte_86C54D4
+// .global byte_86C5550
+// .global byte_86C5790
 // .global dword_86C57EC
 
-.include "data/dat38_48.inc"
+.include "data/dat38_66.inc"
 // .global byte_86C67E4
 
 

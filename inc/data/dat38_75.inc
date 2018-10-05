@@ -2,24 +2,13 @@
 .equ INC_DATA_DAT38_75, 0
 
 /* Public Symbols */
-.global byte_87E6E20
-.global dword_87E74F4
-.global dword_87E7514
-.global dword_87E7534
-.global dword_87E7554
-.global dword_87E7574
-.global dword_87E76B8
-.global dword_87E771C
-.global dword_87E7780
-.global dword_87E77E4
-.global dword_87E7848
-.global dword_87EE1AC
-.global dword_87EE2F0
-.global dword_87EE5B0
-.global dword_87EF5A4
-.global dword_87EFBA4
-.global reqBBS_textualShades
-.global byte_87EFE14
+.global byte_86D7578
+.global byte_86D78C0
+.global byte_86D7C24
+.global byte_86D7F74
+.global byte_86D82C4
+.global byte_86D860C
+.global byte_86D894C
 
 
 /* External Symbols */

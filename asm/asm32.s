@@ -21355,10 +21355,10 @@ dword_811C5E0:    .word 0x0
 off_811C5F4:    .word unk_2018A00
 off_811C5F8:    .word dword_811C5FC
 dword_811C5FC:    .word 0x0
-    .word byte_83BFD0C
-    .word byte_8430534
-    .word byte_83BFD0C
-    .word byte_8430534
+    .word npcSpriteLan
+    .word npcSpriteMegaMan
+    .word npcSpriteLan
+    .word npcSpriteMegaMan
 off_811C610:    .word dword_811C618
 dword_811C614:    .word 0x811C61B
 dword_811C618:    .word 0xE0A00, 0x100
@@ -22870,13 +22870,13 @@ off_811D3B8:    .word off_811D3BC
 off_811D3BC:    .word unk_201AA00
     .word unk_201BA00
 off_811D3C4:    .word off_811D3C8
-off_811D3C8:    .word byte_81D8000
-    .word byte_8296F40
+off_811D3C8:    .word battleSpriteMegaMan
+    .word battleSpriteSpoutMan
     .word byte_829D818
     .word byte_82A5AF0
     .word byte_82B0690
     .word byte_82BA7BC
-    .word byte_849B424
+    .word unk_849B424
 off_811D3E4:    .word byte_811D404
 off_811D3E8:    .word byte_811D40B
 off_811D3EC:    .word dword_811D3FC

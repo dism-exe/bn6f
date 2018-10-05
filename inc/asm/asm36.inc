@@ -346,24 +346,24 @@
 // .global sub_8149568
 // .global sub_8149644
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global byte_86A5D20
 // .global dword_86A5D60
 // .global unk_86ACD60
 // .global dword_86B7AE0
 
-.include "data/dat38_53.inc"
+.include "data/dat38_71.inc"
 // .global byte_86CF4AC
 
-.include "data/dat38_56.inc"
+.include "data/dat38_74.inc"
 // .global unk_86D5708
 
-.include "data/dat38_68.inc"
+.include "data/dat38_85.inc"
 // .global dword_86E55FC
 // .global byte_86E56FC
 // .global dword_86F0D7C
 
-.include "data/dat38_70.inc"
+.include "data/dat38_87.inc"
 // .global byte_873EA50
 
 

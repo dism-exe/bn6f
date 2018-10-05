@@ -676,7 +676,7 @@
 // .global dword_81165BC
 // .global sub_8116878
 
-.include "data/dat38_69.inc"
+.include "data/dat38_86.inc"
 // .global aTuDhr
 
 

@@ -46,7 +46,7 @@
 // .global dword_807EFD4
 // .global dword_807F1E0
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global off_8619174
 
 

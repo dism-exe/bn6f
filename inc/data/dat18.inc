@@ -19,7 +19,7 @@
 .include "asm/asm28_1.inc"
 // .global byte_809F6EC
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global unk_8605FD8
 // .global dword_86190F4
 

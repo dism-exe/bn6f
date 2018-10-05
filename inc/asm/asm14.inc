@@ -57,7 +57,7 @@
 // .global off_807360C
 // .global off_8073F1C
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global off_8617068
 
 

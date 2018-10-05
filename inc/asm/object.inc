@@ -164,7 +164,7 @@
 // .global sub_80E4B34
 // .global sub_80E9BDC
 
-.include "data/dat38_68.inc"
+.include "data/dat38_85.inc"
 // .global byte_86DFA98
 // .global dword_86E0458
 // .global dword_86E0478

@@ -13,8 +13,8 @@
 // .global byte_809F6CC
 // .global byte_809F880
 
-.include "data/dat38_14.inc"
-// .global dword_83F2408
+.include "data/dat38_33.inc"
+// .global unk_83F2608
 
 
 .endif // INC_DATA_DAT14

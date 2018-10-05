@@ -5942,7 +5942,7 @@ off_8049AD4:    .word dword_8049AD8
 dword_8049AD8:    .word comp_87E57BC + 1<<31
     .word 0x6004000
     .word unk_2027A00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x6000020
     .word unk_2027A00
     .word comp_87E6840 + 1<<31
@@ -5951,25 +5951,25 @@ dword_8049AD8:    .word comp_87E57BC + 1<<31
     .word comp_87E674C + 1<<31
     .word 0x0
     .word unk_2028A00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_2029200
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_2029A00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_2029E00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_202A200
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_202A600
     .word dword_87F28DC
     .word unk_30019C0
     .word 0x140
-    .word byte_84E0554
+    .word spriteWhiteDot
     .word unk_3001980
     .word 0x40
     .word unk_86A5180

@@ -66,7 +66,7 @@
 // .global sprite_update
 // .global sprite_chatbox_80026D6
 // .global sprite_load // (int a1, int a2, int a3) ->
-// .global sprite_800275A
+// .global spriteLoadMugshot_800275A // (int a1) -> void
 // .global sub_8002818
 // .global sub_8002874
 // .global sprite_setAnimation // (u8 a1) -> void
@@ -192,13 +192,10 @@
 // .global sub_814227A
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
-.include "data/dat38_40.inc"
-// .global byte_84E0554
-
-.include "data/dat38_41.inc"
+.include "data/dat38_59.inc"
 // .global byte_8521A12
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global dword_86A4740
 // .global unk_86A48C0
 // .global dword_86A4A40
@@ -226,10 +223,10 @@
 // .global byte_86C0920
 // .global byte_86C0940
 
-.include "data/dat38_53.inc"
+.include "data/dat38_71.inc"
 // .global byte_86CF4AC
 
-.include "data/dat38_68.inc"
+.include "data/dat38_85.inc"
 // .global byte_86EA94C
 // .global byte_86EB354
 // .global byte_86EF71C
@@ -242,7 +239,7 @@
 // .global byte_86F2C00
 // .global byte_86F2C80
 
-.include "data/dat38_70.inc"
+.include "data/dat38_87.inc"
 // .global byte_873D9FC
 // .global byte_873EA50
 // .global dword_873F008
@@ -846,7 +843,7 @@
 // .global dword_87A3B08
 // .global dword_87A3B84
 
-.include "data/dat38_79.inc"
+.include "data/dat38_96.inc"
 // .global byte_87F2E38
 // .global dword_87F2ED0
 
@@ -902,5 +899,6 @@
 .equ sub_3006F8C, 0x3006F8C
 .equ loc_3007038, 0x3007038
 .equ sub_30070B4, 0x30070B4
+// .global spriteWhiteDot
 
 .endif // INC_ASM_CHATBOX

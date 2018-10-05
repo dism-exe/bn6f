@@ -200,11 +200,11 @@ off_803FE70:    .word byte_86C0920
 chatbox_runScript_803FE74:
     push {r4,r5,lr}
     bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-    ldr r0, off_803FE9C // =byte_84E0554 
+    ldr r0, off_803FE9C // =spriteWhiteDot 
     ldr r1, dword_803FEA0 // =0x600DC80 
     ldr r2, off_803FEA4 // =0x6F8 
     bl loc_8000AC8
-    ldr r0, off_803FEAC // =byte_84E0554 
+    ldr r0, off_803FEAC // =spriteWhiteDot 
     ldr r1, off_803FEB0 // =unk_3001B40 
     mov r2, #0x20 
     bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
@@ -212,11 +212,11 @@ chatbox_runScript_803FE74:
 off_803FE90:    .word dword_803FE94
 dword_803FE94:    .word 0x83007E
     .word 0x81007F
-off_803FE9C:    .word byte_84E0554
+off_803FE9C:    .word spriteWhiteDot
 dword_803FEA0:    .word 0x600DC80
 off_803FEA4:    .word 0x6F8
     .word 0x380
-off_803FEAC:    .word byte_84E0554
+off_803FEAC:    .word spriteWhiteDot
 off_803FEB0:    .word unk_3001B40
 .endfunc // chatbox_runScript_803FE74
 
@@ -1789,7 +1789,7 @@ chatbox_8040A9A:
     lsl r4, r4, #0x10
     add r0, r0, r4
     orr r0, r6
-    ldr r1, dword_8040B38 // =0xB520E3FE 
+    ldr r1, word_8040B38 // =0xE3FE 
     mov r6, #0
     lsl r6, r6, #0xa
     orr r1, r6
@@ -1817,14 +1817,18 @@ word_8040B20:    .hword 0x0
     .byte 0, 0
     .word 0x1010100, 0x1010101, 0xFF0101
 dword_8040B34:    .word 0xE3FC
-dword_8040B38:    .word 0xB520E3FE
+word_8040B38:    .hword 0xE3FE
 .endfunc // chatbox_8040A9A
 
+.func
+.thumb_func
+sub_8040B3A:
+    push {r5,lr}
     push {r5}
     ldr r2, off_8040B88 // =0x1F8 
     add r5, r5, r2
     push {r0,r1}
-    bl sprite_800275A
+    bl spriteLoadMugshot_800275A // (int a1) -> void
     pop {r0,r1}
     strb r1, [r5,#4]
     mov r1, #3
@@ -1857,6 +1861,8 @@ loc_8040B66:
     pop {r5,pc}
 off_8040B84:    .word 0x3C0
 off_8040B88:    .word 0x1F8
+.endfunc // sub_8040B3A
+
 .func
 .thumb_func
 chatbox_8040B8C:
@@ -4320,9 +4326,11 @@ loc_8041D60:
     strb r7, [r5,r3]
     mov r2, #0xff
     strb r2, [r5,#0xb]
-    bl dword_8040B38+2
-    add r4, #3
-    b loc_8041D9C
+    bl sub_8040B3A
+    .byte  3
+    .byte 0x34 
+    .byte 0x13
+    .byte 0xE0
 loc_8041D74:
     mov r0, #2
     bl chatbox_clearFlags_3e // (int mask) -> void
@@ -10805,14 +10813,14 @@ off_8045CEC:    .word byte_86BECA0
     .word byte_86C0220
     .word byte_86C0040
     .word byte_86BFE60
-    .word byte_84E0554
-    .word byte_84E0554
-    .word byte_84E0554
-    .word byte_84E0554
-    .word byte_84E0554
-    .word byte_84E0554
-    .word byte_84E0554
-    .word byte_84E0554
+    .word spriteWhiteDot
+    .word spriteWhiteDot
+    .word spriteWhiteDot
+    .word spriteWhiteDot
+    .word spriteWhiteDot
+    .word spriteWhiteDot
+    .word spriteWhiteDot
+    .word spriteWhiteDot
     .word byte_86C0940
     .word byte_86C0940
     .word byte_86C0940

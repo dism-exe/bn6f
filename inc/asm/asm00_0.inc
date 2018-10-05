@@ -194,7 +194,7 @@
 .include "data/dat38_0.inc"
 // .global unk_8200810
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global dword_86A5500
 // .global dword_86A5520
 // .global byte_86BEC80

@@ -26,12 +26,12 @@
 
 
 /* External Symbols */
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global dword_86B7AC0
 // .global dword_86B7BA0
 // .global dword_86BA120
 
-.include "data/dat38_68.inc"
+.include "data/dat38_85.inc"
 // .global dword_86E1638
 // .global dword_86E1938
 // .global dword_86E1978
@@ -106,7 +106,7 @@
 // .global dword_86F26C0
 // .global byte_86F2900
 
-.include "data/dat38_69.inc"
+.include "data/dat38_86.inc"
 // .global byte_872CFB4
 // .global byte_872CFD4
 // .global byte_872CFF4

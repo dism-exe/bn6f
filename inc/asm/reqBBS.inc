@@ -114,15 +114,15 @@
 .include "asm/asm37_1.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global dword_86A5D60
 // .global unk_86ACD60
 // .global dword_86B7AE0
 
-.include "data/dat38_70.inc"
+.include "data/dat38_87.inc"
 // .global dword_87DAC90
 
-.include "data/dat38_75.inc"
+.include "data/dat38_92.inc"
 // .global dword_87E74F4
 // .global dword_87E7514
 // .global dword_87E7534

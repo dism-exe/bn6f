@@ -2,9 +2,12 @@
 .equ INC_DATA_DAT38_80, 0
 
 /* Public Symbols */
-.global unk_87F3620
+.global off_86DC3F8
 
 
 /* External Symbols */
+.include "data/dat38_36.inc"
+// .global unk_8420000
+
 
 .endif // INC_DATA_DAT38_80

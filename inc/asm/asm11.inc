@@ -143,41 +143,41 @@
 .include "asm/reqBBS.inc"
 // .global dword_8140BAC
 
-.include "data/dat38_14.inc"
-// .global byte_83C0116
-// .global byte_83C0510
-// .global byte_83C0716
-// .global byte_83C0806
+.include "data/dat38_33.inc"
+// .global unk_83C0116
+// .global unk_83C0510
+// .global unk_83C0716
+// .global unk_83C0806
 // .global unk_83C0A10
 // .global unk_83C1916
 // .global unk_83CC02A
-// .global byte_83D0426
+// .global unk_83D0426
 // .global unk_83D0801
-// .global byte_83DC525
+// .global unk_83DC525
 // .global unk_83DF125
-// .global byte_83F0000
-// .global byte_83F000F
-// .global byte_83F0016
-// .global byte_83F010F
+// .global unk_83F0000
+// .global unk_83F000F
+// .global unk_83F0016
+// .global unk_83F010F
 // .global unk_83F0116
 // .global unk_83F020F
 // .global unk_83F0308
-// .global byte_83F0408
+// .global unk_83F0408
 // .global unk_83F0416
-// .global byte_83F0508
-// .global byte_83F0516
-// .global byte_83F0708
+// .global unk_83F0508
+// .global unk_83F0516
+// .global unk_83F0708
 // .global unk_83F0716
-// .global dword_83F0908
+// .global unk_83F0908
 // .global unk_83F1408
 // .global unk_83F1B16
 // .global unk_83F1D16
-// .global byte_83F2916
-// .global byte_83F2C16
+// .global unk_83F2916
+// .global unk_83F2C16
 // .global unk_83F3F16
 // .global unk_83F8108
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global byte_85B8244
 // .global byte_85B8264
 // .global byte_85B8284
@@ -310,7 +310,7 @@
 // .global dword_8616264
 // .global byte_86163F4
 
-.include "data/dat38_68.inc"
+.include "data/dat38_85.inc"
 // .global byte_86DF925
 // .global byte_86EA925
 

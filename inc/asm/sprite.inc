@@ -7,7 +7,7 @@
 .global sprite_update
 .global sprite_chatbox_80026D6
 .global sprite_load // (int a1, int a2, int a3) ->
-.global sprite_800275A
+.global spriteLoadMugshot_800275A // (int a1) -> void
 .global sub_8002770 // (int a1, int a2) -> void
 .global loc_8002774
 .global sub_80027B4
@@ -58,16 +58,13 @@
 // .global sub_802FE6A
 // .global sub_802FE7A
 
-.include "data/pt_8031CC4.inc"
-// .global pt_8031CC4
-// .global off_8032598
-// .global off_803271C
+.include "data/spritePointers_8031CC4.inc"
+// .global spritePointers_8031CC4
+// .global mugshots_8032598
+// .global guiSprites_803271C
 
 .include "asm/asm37_1.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-
-.include "data/dat38_40.inc"
-// .global byte_84E0554
 
 
 /* Undeclared Symbols */
@@ -87,5 +84,6 @@
 .equ loc_30061E8, 0x30061E8
 .equ sub_3006730, 0x3006730
 .equ sub_3006792, 0x3006792
+// .global spriteWhiteDot
 
 .endif // INC_ASM_SPRITE

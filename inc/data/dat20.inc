@@ -21,7 +21,6 @@
 .global byte_808068A
 .global byte_808068B
 .global byte_80806B3
-.global byte_8080808
 .global byte_80808B0
 .global byte_80808D8
 .global byte_80809F6
@@ -29,7 +28,7 @@
 
 
 /* External Symbols */
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global dword_8616904
 
 

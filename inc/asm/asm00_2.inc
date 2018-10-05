@@ -636,7 +636,7 @@
 .include "asm/asm37_0.inc"
 // .global sub_813BF1C
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global byte_8610881
 // .global unk_8650866
 // .global byte_8660444
@@ -657,7 +657,7 @@
 // .global dword_86BA120
 // .global unk_86BA140
 
-.include "data/dat38_68.inc"
+.include "data/dat38_85.inc"
 // .global dword_86E0AB8
 // .global dword_86E0AF8
 // .global dword_86E0B38
@@ -717,7 +717,7 @@
 // .global dword_86F2E40
 // .global dword_86F2E54
 
-.include "data/dat38_69.inc"
+.include "data/dat38_86.inc"
 // .global byte_8721C58
 // .global dword_872CE94
 // .global byte_872D014

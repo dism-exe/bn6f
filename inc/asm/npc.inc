@@ -80,7 +80,7 @@
 // .global sub_8143DBC
 // .global SWI_Div
 
-.include "data/dat38_70.inc"
+.include "data/dat38_87.inc"
 // .global dword_873D108
 // .global byte_87E30A0
 

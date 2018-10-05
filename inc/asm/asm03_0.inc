@@ -407,7 +407,7 @@
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021D14
 
-.include "data/pt_8031CC4.inc"
+.include "data/spritePointers_8031CC4.inc"
 // .global off_80329A8
 // .global off_80329C4
 // .global off_8032F6C
@@ -621,21 +621,21 @@
 // .global sub_8149644
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global unk_86A48C0
 // .global dword_86A5500
 // .global dword_86B7AE0
 
-.include "data/dat38_52.inc"
+.include "data/dat38_70.inc"
 // .global unk_86C9D6C
 
-.include "data/dat38_66.inc"
+.include "data/dat38_83.inc"
 // .global comp_86DD59C
 
-.include "data/dat38_67.inc"
+.include "data/dat38_84.inc"
 // .global byte_86DDB24
 
-.include "data/dat38_68.inc"
+.include "data/dat38_85.inc"
 // .global dword_86E1238
 // .global dword_86E2E98
 // .global dword_86E3598
@@ -675,7 +675,7 @@
 // .global dword_86F2E60
 // .global dword_86F3868
 
-.include "data/dat38_69.inc"
+.include "data/dat38_86.inc"
 // .global unk_86F5834
 // .global dword_87225B4
 // .global dword_8722AF4
@@ -708,17 +708,17 @@
 // .global dword_8734934
 // .global aTuDhr
 
-.include "data/dat38_70.inc"
+.include "data/dat38_87.inc"
 // .global aF_0
 
-.include "data/dat38_81.inc"
+.include "data/dat38_97.inc"
 // .global unk_87F3620
 
-.include "data/dat38_82.inc"
+.include "data/dat38_98.inc"
 // .global byte_87F40F4
 // .global unk_87F4194
 
-.include "data/dat38_84.inc"
+.include "data/dat38_99.inc"
 // .global byte_87F8EB0
 // .global byte_87F93B4
 // .global byte_87F93D4

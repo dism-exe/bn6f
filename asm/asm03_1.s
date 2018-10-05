@@ -1,8 +1,8 @@
 .include "asm/asm03_1.inc"
 
-off_8033764:    .word byte_84E0554
+off_8033764:    .word spriteWhiteDot
     .word unk_8699EDC
-    .word byte_84E0554
+    .word spriteWhiteDot
 off_8033770:    .word word_80337E8
     .word byte_80337EA
     .word byte_80337EF
@@ -9745,17 +9745,17 @@ off_8039308:    .word unk_3001AE0
     .word 0xFFFF0100
     .word byte_87E672C
     .word 0x1E
-    .word comp_84E0C4C
+    .word compSpriteWhiteDot_84E0C4C
     .word 0x1
-    .word comp_84E0C4C+0x20
+    .word compSpriteWhiteDot_84E0C4C+0x20
     .word 0x1
-    .word comp_84E0C4C+0x40
+    .word compSpriteWhiteDot_84E0C4C+0x40
     .word 0x1
-    .word comp_84E0C4C+0x60
+    .word compSpriteWhiteDot_84E0C4C+0x60
     .word 0x1
-    .word comp_84E0C4C+0x80
+    .word compSpriteWhiteDot_84E0C4C+0x80
     .word 0x1
-    .word comp_84E0C4C+0xA0
+    .word compSpriteWhiteDot_84E0C4C+0xA0
     .word 0x1
     .word 0x0
 dword_8039350:    .word 0xFF, 0xFF, 0xFFFF0310, 0xFFFFFFFF, 0x1E, 0x8D, 0x1
@@ -13699,25 +13699,25 @@ off_803B240:    .word initRefs_803B244
 initRefs_803B244:    .word comp_87E4500 + 1<<31
     .word 0x6004000
     .word unk_2027A00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x6000020
     .word unk_2027A00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_2028200
     .word comp_87E5020 + 1<<31
     .word 0x0
     .word unk_2028A00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_2029200
     .word dword_87E4FE0
     .word unk_30019A0
     .word 0x40
-    .word byte_84E0554
+    .word spriteWhiteDot
     .word word_3001960
     .word 0x40
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x6011000
     .word unk_2027A00
     .word unk_86A4D40
@@ -13732,7 +13732,7 @@ initRefs_803B244:    .word comp_87E4500 + 1<<31
     .word byte_87E5000
     .word unk_30016D0
     .word 0x20
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_2032A00
     .word 0x0
@@ -13760,7 +13760,7 @@ off_803B30C:    .word initRefs_803B310
 initRefs_803B310:    .word comp_87E57BC + 1<<31
     .word 0x6004000
     .word unk_2027A00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x6000020
     .word unk_2027A00
     .word comp_87E6840 + 1<<31
@@ -13769,25 +13769,25 @@ initRefs_803B310:    .word comp_87E57BC + 1<<31
     .word comp_87E674C + 1<<31
     .word 0x0
     .word unk_2028A00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_2029200
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_2029A00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_2029E00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_202A200
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_202A600
     .word dword_87E660C
     .word unk_30019C0
     .word 0x140
-    .word byte_84E0554
+    .word spriteWhiteDot
     .word 0x3001980
     .word 0x40
     .word unk_86A5180
@@ -13881,25 +13881,25 @@ off_803B48C:    .word initRefs_803B490
 initRefs_803B490:    .word comp_87E57BC + 1<<31
     .word 0x6004000
     .word unk_2027A00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x600C000
     .word unk_2027A00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_2028A00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_2029200
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_2029A00
-    .word comp_84E0C4C + 1<<31
+    .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word 0x0
     .word unk_2029E00
     .word dword_87E660C
     .word unk_30019C0
     .word 0x140
-    .word byte_84E0554
+    .word spriteWhiteDot
     .word unk_3001A40
     .word 0x40
     .word unk_86A4D40

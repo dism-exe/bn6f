@@ -82,7 +82,7 @@
 .include "asm/asm38.inc"
 // .global loc_81D6746
 
-.include "data/dat38_84.inc"
+.include "data/dat38_99.inc"
 // .global dword_87FF8A0
 
 

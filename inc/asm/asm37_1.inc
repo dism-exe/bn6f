@@ -272,7 +272,7 @@
 // .global unk_81C068C
 // .global off_81C06C0
 
-.include "data/dat38_42.inc"
+.include "data/dat38_60.inc"
 // .global dword_8619730
 // .global dword_8619B50
 // .global byte_8619B90
