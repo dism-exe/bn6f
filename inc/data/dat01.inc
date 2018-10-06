@@ -6,6 +6,7 @@
 .global byte_80203EA
 .global byte_8020404
 .global byte_8020600
+.global byte_802083F
 .global dword_80209CC
 .global off_80209EC
 .global byte_8020B2C

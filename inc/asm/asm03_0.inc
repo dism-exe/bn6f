@@ -143,6 +143,7 @@
 .global sub_8030580
 .global sub_80307D8
 .global sub_8030808
+.global off_8030908
 .global loc_8030A00
 .global sub_8030A30
 .global sub_8030A60
@@ -971,7 +972,7 @@
 .equ unk_3001AA0, 0x3001AA0
 .equ unk_3001AD4, 0x3001AD4
 .equ unk_3001AE0, 0x3001AE0
-.equ unk_3001B00, 0x3001B00
+.equ byte_3001B00, 0x3001B00
 .equ unk_3001B20, 0x3001B20
 .equ dword_3001D70, 0x3001D70
 .equ unk_3002580, 0x3002580

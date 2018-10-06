@@ -14,6 +14,7 @@
 .global byte_80606EC
 .global byte_80606F0
 .global byte_80606F4
+.global unk_806083F
 .global byte_8060C02
 .global byte_8061416
 .global unk_8061622

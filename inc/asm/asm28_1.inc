@@ -12,10 +12,14 @@
 .global sub_809F68C
 .global off_809F6AC
 .global dword_809F6B0
+.global dword_809F6B8
 .global byte_809F6CC
 .global byte_809F6EC
+.global byte_809F71C
+.global byte_809F7E4
 .global byte_809F880
 .global byte_809F889
+.global byte_809F8A5
 .global byte_809F8B3
 .global byte_809F8CA
 .global sub_809F90C

@@ -3,6 +3,7 @@
 
 /* Public Symbols */
 .global battleSettingsList0
+.global byte_80B083F
 .global BattleSettingsList1
 
 

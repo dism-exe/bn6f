@@ -32,7 +32,7 @@
 // .global byte_8086D74
 
 .include "data/dat22.inc"
-// .global dword_80871D8
+// .global byte_80871D8
 
 .include "asm/reqBBS.inc"
 // .global reqBBS_81409F4

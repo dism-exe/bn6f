@@ -45,13 +45,37 @@ off_80526E4:    .word off_8052244
 off_80526E8:    .word unk_2037800
 off_80526EC:    .word off_8052EE8
 off_80526F0:    .word off_80526F4
-off_80526F4:    .word dword_8052720
-    .word 0x805272A, 0x805272E, 0x8052732, 0x8052736, 0x805273E
-    .word 0x8052744, 0x8052748, 0x8052754, 0x805275C, 0x8052760
-dword_8052720:    .word 0x101C091C, 0x231C191C, 0x91CFFFF, 0x91CFFFF, 0x91CFFFF
-    .word 0x101CFFFF, 0x2318251C, 0x101CFFFF, 0xFFFF251C, 0xFFFF2A1C
-    .word 0x81C241C, 0x231C101C, 0xFFFF1F18, 0x7A1C431C, 0xFFFF1C18
-    .word 0xFFFF1F18, 0xFFFF2418
+off_80526F4:    .word byte_8052720
+    .word byte_805272A
+    .word byte_805272E
+    .word byte_8052732
+    .word byte_8052736
+    .word byte_805273E
+    .word byte_8052744
+    .word off_8052748
+    .word byte_8052754
+    .word byte_805275C
+    .word byte_8052760
+byte_8052720:    .byte 0x1C, 0x9, 0x1C, 0x10, 0x1C, 0x19, 0x1C, 0x23, 0xFF
+    .byte 0xFF
+byte_805272A:    .byte 0x1C, 0x9, 0xFF, 0xFF
+byte_805272E:    .byte 0x1C, 0x9, 0xFF, 0xFF
+byte_8052732:    .byte 0x1C, 0x9, 0xFF, 0xFF
+byte_8052736:    .byte 0x1C, 0x10, 0x1C, 0x25, 0x18, 0x23, 0xFF, 0xFF
+byte_805273E:    .byte 0x1C, 0x10, 0x1C, 0x25, 0xFF, 0xFF
+byte_8052744:    .byte 0x1C, 0x2A, 0xFF, 0xFF
+off_8052748:    .word unk_81C241C
+    .byte 0x1C
+    .byte 0x10
+    .byte 0x1C
+    .byte 0x23 
+    .byte 0x18
+    .byte 0x1F
+    .byte 0xFF
+    .byte 0xFF
+byte_8052754:    .byte 0x1C, 0x43, 0x1C, 0x7A, 0x18, 0x1C, 0xFF, 0xFF
+byte_805275C:    .byte 0x18, 0x1F, 0xFF, 0xFF
+byte_8052760:    .byte 0x18, 0x24, 0xFF, 0xFF
 .endfunc // sub_8052688
 
 .func
@@ -84,11 +108,11 @@ off_80527B4:    .word off_8052480
     .word 0xFFFFFFFF
 off_80527BC:    .word off_80524C0
     .word 0xFFFFFFFF
-off_80527C4:    .word byte_80524E8
+off_80527C4:    .word unk_80524E8
     .word 0xFFFFFFFF
-off_80527CC:    .word byte_80524E8
+off_80527CC:    .word unk_80524E8
     .word 0xFFFFFFFF
-off_80527D4:    .word byte_8052510
+off_80527D4:    .word unk_8052510
     .word 0xFFFFFFFF
 off_80527DC:    .word unk_8052538
     .word 0xFFFFFFFF

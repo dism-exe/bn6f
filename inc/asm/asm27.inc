@@ -25,7 +25,7 @@
 .equ unk_2025404, 0x2025404
 .equ unk_2026400, 0x2026400
 .equ unk_2026404, 0x2026404
-.equ unk_3001B00, 0x3001B00
+.equ byte_3001B00, 0x3001B00
 // .global comp_857CCC8
 // .global comp_857D43C
 // .global comp_857D63C

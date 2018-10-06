@@ -3,6 +3,7 @@
 
 /* Public Symbols */
 .global spritePointers_8031CC4
+.global off_8032108
 .global mugshots_8032598
 .global guiSprites_803271C
 .global off_80329A8
@@ -23,135 +24,135 @@
 // .global off_8033764
 
 .include "data/dat38_30.inc"
-// .global unk_8336320
-// .global unk_8336D54
+// .global sprite_8336320
+// .global sprite_8336D54
 
 .include "data/dat38_31.inc"
-// .global unk_8338F18
-// .global unk_833BE68
-// .global unk_833F3A0
-// .global unk_8342AC4
-// .global unk_8345C50
-// .global unk_8348E80
-// .global unk_83497CC
-// .global unk_834A108
-// .global unk_834A580
-// .global unk_834AE94
-// .global unk_834B2D0
-// .global unk_834B6A4
-// .global unk_834BBF0
-// .global unk_834BEB8
-// .global unk_834C6F0
+// .global sprite_8338F18
+// .global sprite_833BE68
+// .global sprite_833F3A0
+// .global sprite_8342AC4
+// .global sprite_8345C50
+// .global sprite_8348E80
+// .global sprite_83497CC
+// .global sprite_834A108
+// .global sprite_834A580
+// .global sprite_834AE94
+// .global sprite_834B2D0
+// .global sprite_834B6A4
+// .global sprite_834BBF0
+// .global sprite_834BEB8
+// .global sprite_834C6F0
 
 .include "data/dat38_32.inc"
-// .global unk_8350628
-// .global unk_8350888
-// .global unk_8351FA8
-// .global unk_8352360
-// .global unk_83536BC
-// .global unk_83547A4
-// .global unk_8354D0C
-// .global unk_8354EF0
-// .global unk_8355D50
-// .global unk_835613C
-// .global unk_83566F4
-// .global unk_8357308
-// .global unk_8357B10
-// .global unk_8359644
-// .global unk_835AD9C
-// .global unk_835B938
-// .global unk_835C4B0
-// .global unk_835C794
-// .global unk_835CA2C
-// .global unk_835E264
-// .global unk_835F424
-// .global unk_83607D0
-// .global unk_83611FC
-// .global unk_8367848
-// .global unk_8368F54
-// .global unk_836B6A8
-// .global unk_836B818
-// .global unk_836C668
-// .global unk_836E034
-// .global unk_836EA90
-// .global unk_836EDB8
-// .global unk_8370D6C
-// .global unk_8371274
-// .global unk_8371C50
-// .global unk_8372410
-// .global unk_8372F34
-// .global unk_83732AC
-// .global unk_8373AFC
-// .global unk_8373D70
-// .global unk_8376364
-// .global unk_8376A24
-// .global unk_8377834
-// .global unk_8377AF4
-// .global unk_8379D44
-// .global unk_837D8E0
-// .global unk_837EB4C
-// .global unk_837F2E0
-// .global unk_837FD98
-// .global unk_83805D4
-// .global unk_8381340
-// .global unk_83822F0
-// .global unk_8382928
-// .global unk_8383698
-// .global unk_8385354
-// .global unk_8385648
-// .global unk_83864F4
-// .global unk_8387244
-// .global unk_8387E4C
-// .global unk_838849C
-// .global unk_838A9A8
+// .global sprite_8350628
+// .global sprite_8350888
+// .global sprite_8351FA8
+// .global sprite_8352360
+// .global sprite_83536BC
+// .global sprite_83547A4
+// .global sprite_8354D0C
+// .global sprite_8354EF0
+// .global sprite_8355D50
+// .global sprite_835613C
+// .global sprite_83566F4
+// .global sprite_8357308
+// .global sprite_8357B10
+// .global sprite_8359644
+// .global sprite_835AD9C
+// .global sprite_835B938
+// .global sprite_835C4B0
+// .global sprite_835C794
+// .global sprite_835CA2C
+// .global sprite_835E264
+// .global sprite_835F424
+// .global sprite_83607D0
+// .global sprite_83611FC
+// .global sprite_8367848
+// .global sprite_8368F54
+// .global sprite_836B6A8
+// .global sprite_836B818
+// .global sprite_836C668
+// .global sprite_836E034
+// .global sprite_836EA90
+// .global sprite_836EDB8
+// .global sprite_8370D6C
+// .global sprite_8371274
+// .global sprite_8371C50
+// .global sprite_8372410
+// .global sprite_8372F34
+// .global sprite_83732AC
+// .global sprite_8373AFC
+// .global sprite_8373D70
+// .global sprite_8376364
+// .global sprite_8376A24
+// .global sprite_8377834
+// .global sprite_8377AF4
+// .global sprite_8379D44
+// .global sprite_837D8E0
+// .global sprite_837EB4C
+// .global sprite_837F2E0
+// .global sprite_837FD98
+// .global sprite_83805D4
+// .global sprite_8381340
+// .global sprite_83822F0
+// .global sprite_8382928
+// .global sprite_8383698
+// .global sprite_8385354
+// .global sprite_8385648
+// .global sprite_83864F4
+// .global sprite_8387244
+// .global sprite_8387E4C
+// .global sprite_838849C
+// .global sprite_838A9A8
 
 .include "data/dat38_33.inc"
-// .global unk_838B930
-// .global unk_838C3C8
-// .global unk_838C864
-// .global unk_838E194
-// .global unk_838E74C
-// .global unk_838EC00
-// .global unk_83908A4
-// .global unk_8390F44
-// .global unk_8390FC4
-// .global unk_8391E40
-// .global unk_839247C
-// .global unk_83930E0
-// .global unk_8395034
-// .global unk_8395660
-// .global unk_8396650
-// .global unk_83971C0
-// .global unk_8398048
-// .global unk_8399578
-// .global unk_839AAB8
-// .global unk_839B9C0
-// .global unk_839CCDC
-// .global unk_83A000C
-// .global unk_83A0DA8
-// .global unk_83A5E30
-// .global unk_83A67AC
-// .global unk_83A9190
-// .global unk_83AC1A8
-// .global unk_83AC430
-// .global unk_83ACF48
-// .global unk_83AD870
-// .global unk_83AE2B4
-// .global unk_83AF658
-// .global unk_83B00F8
-// .global unk_83B0A90
-// .global unk_83B2494
-// .global unk_83B3BF4
-// .global unk_83B440C
-// .global unk_83B4AE4
-// .global unk_83B5F44
-// .global unk_83B92B4
-// .global unk_83BA940
-// .global unk_83BB440
-// .global unk_83BC3B0
-// .global unk_83BCC70
-// .global unk_83BD228
-// .global unk_83BE6B0
+// .global sprite_838B930
+// .global sprite_838C3C8
+// .global sprite_838C864
+// .global sprite_838E194
+// .global sprite_838E74C
+// .global sprite_838EC00
+// .global sprite_83908A4
+// .global sprite_8390F44
+// .global sprite_8390FC4
+// .global sprite_8391E40
+// .global sprite_839247C
+// .global sprite_83930E0
+// .global sprite_8395034
+// .global sprite_8395660
+// .global sprite_8396650
+// .global byte_83971C0
+// .global byte_8398048
+// .global sprite_8399578
+// .global sprite_839AAB8
+// .global sprite_839B9C0
+// .global sprite_839CCDC
+// .global sprite_83A000C
+// .global sprite_83A0DA8
+// .global sprite_83A5E30
+// .global sprite_83A67AC
+// .global sprite_83A9190
+// .global sprite_83AC1A8
+// .global sprite_83AC430
+// .global sprite_83ACF48
+// .global sprite_83AD870
+// .global sprite_83AE2B4
+// .global sprite_83AF658
+// .global sprite_83B00F8
+// .global sprite_83B0A90
+// .global sprite_83B2494
+// .global sprite_83B3BF4
+// .global sprite_83B440C
+// .global sprite_83B4AE4
+// .global sprite_83B5F44
+// .global sprite_83B92B4
+// .global sprite_83BA940
+// .global sprite_83BB440
+// .global sprite_83BC3B0
+// .global sprite_83BCC70
+// .global sprite_83BD228
+// .global sprite_83BE6B0
 // .global npcSpriteLan
 // .global npcSpriteMayl
 // .global npcSpriteDex
@@ -159,37 +160,37 @@
 // .global npcSpriteChaud
 // .global npcSpriteDad
 // .global npcSpriteMom
-// .global unk_83E0108
-// .global unk_83E1EEC
-// .global unk_83E2B48
-// .global unk_83E55F8
-// .global unk_83E7F4C
-// .global unk_83EB980
-// .global unk_83EEF14
-// .global unk_83F37C4
-// .global unk_83F6824
-// .global unk_83FA130
+// .global sprite_83E0108
+// .global sprite_83E1EEC
+// .global sprite_83E2B48
+// .global sprite_83E55F8
+// .global sprite_83E7F4C
+// .global sprite_83EB980
+// .global sprite_83EEF14
+// .global sprite_83F37C4
+// .global sprite_83F6824
+// .global sprite_83FA130
 
 .include "data/dat38_34.inc"
-// .global unk_83FEC68
-// .global unk_8402FA0
-// .global unk_8406044
-// .global unk_84069EC
-// .global unk_8408360
-// .global unk_8408DB4
+// .global sprite_83FEC68
+// .global sprite_8402FA0
+// .global sprite_8406044
+// .global sprite_84069EC
+// .global sprite_8408360
+// .global sprite_8408DB4
 
 .include "data/dat38_35.inc"
-// .global unk_840B3A4
+// .global sprite_840B3A4
 
 .include "data/dat38_36.inc"
-// .global unk_8411E90
-// .global unk_8415A90
-// .global unk_8419440
-// .global unk_841C9C4
-// .global unk_84201AC
-// .global unk_8424C78
-// .global unk_842A630
-// .global unk_842DAC0
+// .global sprite_8411E90
+// .global sprite_8415A90
+// .global sprite_8419440
+// .global sprite_841C9C4
+// .global sprite_84201AC
+// .global sprite_8424C78
+// .global sprite_842A630
+// .global sprite_842DAC0
 // .global npcSpriteMegaMan
 
 .include "data/dat38_37.inc"
@@ -200,92 +201,92 @@
 // .global npcSpriteGirlNavi
 // .global npcSpriteSpoutMan
 // .global npcSpriteHawkMan
-// .global unk_8468940
+// .global sprite_8468940
 // .global npcSpriteDrillMan
-// .global unk_8477574
-// .global unk_8481548
-// .global unk_848334C
+// .global sprite_8477574
+// .global sprite_8481548
+// .global sprite_848334C
 // .global npcSpriteColonel
-// .global unk_848FCEC
+// .global sprite_848FCEC
 
 .include "data/dat38_38.inc"
-// .global unk_8495B88
-// .global unk_8497CF8
+// .global sprite_8495B88
+// .global sprite_8497CF8
 
 .include "data/dat38_39.inc"
-// .global unk_849B424
-// .global unk_849BA28
-// .global unk_849D164
+// .global sprite_849B424
+// .global sprite_849BA28
+// .global sprite_849D164
 // .global objSpriteSkullBarrier
-// .global unk_849FBC0
+// .global sprite_849FBC0
 
 .include "data/dat38_40.inc"
-// .global unk_84A3048
+// .global sprite_84A3048
 
 .include "data/dat38_41.inc"
-// .global unk_84A53C4
-// .global unk_84A599C
+// .global sprite_84A53C4
+// .global sprite_84A599C
 
 .include "data/dat38_42.inc"
-// .global unk_84A8AC0
+// .global sprite_84A8AC0
 
 .include "data/dat38_43.inc"
-// .global unk_84A97A8
+// .global sprite_84A97A8
 
 .include "data/dat38_44.inc"
-// .global unk_84AB2D0
-// .global unk_84AB680
-// .global unk_84ADD6C
+// .global sprite_84AB2D0
+// .global sprite_84AB680
+// .global sprite_84ADD6C
 
 .include "data/dat38_45.inc"
-// .global unk_84AF710
-// .global unk_84B1BA0
+// .global sprite_84AF710
+// .global sprite_84B1BA0
 
 .include "data/dat38_46.inc"
-// .global unk_84B4838
-// .global unk_84B5238
+// .global sprite_84B4838
+// .global sprite_84B5238
 
 .include "data/dat38_47.inc"
-// .global unk_84B5C18
-// .global unk_84B62AC
+// .global sprite_84B5C18
+// .global sprite_84B62AC
 
 .include "data/dat38_48.inc"
-// .global unk_84B7414
-// .global unk_84B8BB4
-// .global unk_84BA414
-// .global unk_84BA7A8
+// .global sprite_84B7414
+// .global sprite_84B8BB4
+// .global sprite_84BA414
+// .global sprite_84BA7A8
 
 .include "data/dat38_49.inc"
-// .global unk_84BC0C8
+// .global sprite_84BC0C8
 
 .include "data/dat38_50.inc"
-// .global unk_84BC854
+// .global sprite_84BC854
 
 .include "data/dat38_51.inc"
-// .global unk_84BDDD4
+// .global sprite_84BDDD4
 
 .include "data/dat38_52.inc"
-// .global unk_84BF6F8
+// .global sprite_84BF6F8
 
 .include "data/dat38_53.inc"
-// .global unk_84C0298
-// .global unk_84C2D34
+// .global sprite_84C0298
+// .global sprite_84C2D34
 
 .include "data/dat38_54.inc"
-// .global unk_84C5194
-// .global unk_84C832C
+// .global sprite_84C5194
+// .global sprite_84C832C
 
 .include "data/dat38_55.inc"
-// .global unk_84C90B4
+// .global sprite_84C90B4
 
 .include "data/dat38_56.inc"
-// .global unk_84CDF74
+// .global sprite_84CDF74
 
 .include "data/dat38_57.inc"
-// .global unk_84D3DBC
+// .global sprite_84D3DBC
 
 .include "data/dat38_58.inc"
-// .global unk_84DF96C
+// .global sprite_84DF96C
 
 .include "data/dat38_59.inc"
 // .global mugshotLan
@@ -295,66 +296,66 @@
 // .global mugshotChaud
 // .global mugshotDad
 // .global mugshotMom
-// .global byte_84E3E80
-// .global byte_84E44CC
-// .global byte_84E4AAC
-// .global byte_84E4FC8
-// .global byte_84E55C8
-// .global byte_84E5C4C
-// .global byte_84E6244
-// .global byte_84E6804
-// .global byte_84E6EA4
-// .global byte_84E74E0
-// .global byte_84E7B00
-// .global byte_84E8120
-// .global byte_84E8800
-// .global byte_84E8E60
-// .global byte_84E9460
-// .global byte_84E9A18
-// .global byte_84EA01C
-// .global byte_84EA61C
-// .global byte_84EACDC
-// .global byte_84EB328
+// .global sprite_84E3E80
+// .global sprite_84E44CC
+// .global sprite_84E4AAC
+// .global sprite_84E4FC8
+// .global sprite_84E55C8
+// .global sprite_84E5C4C
+// .global sprite_84E6244
+// .global sprite_84E6804
+// .global sprite_84E6EA4
+// .global sprite_84E74E0
+// .global sprite_84E7B00
+// .global sprite_84E8120
+// .global sprite_84E8800
+// .global sprite_84E8E60
+// .global sprite_84E9460
+// .global sprite_84E9A18
+// .global sprite_84EA01C
+// .global sprite_84EA61C
+// .global sprite_84EACDC
+// .global sprite_84EB328
 // .global mugshotMrFamous
 // .global mugshotDrWily
 // .global mugshotShuko
-// .global byte_84ECD24
-// .global byte_84ED4B4
-// .global byte_84EDA70
-// .global byte_84EE048
-// .global byte_84EE7FC
-// .global byte_84EEFDC
-// .global byte_84EF69C
-// .global byte_84EFB78
-// .global byte_84F0094
-// .global byte_84F070C
-// .global byte_84F0CC4
-// .global byte_84F13D0
+// .global sprite_84ECD24
+// .global sprite_84ED4B4
+// .global sprite_84EDA70
+// .global sprite_84EE048
+// .global sprite_84EE7FC
+// .global sprite_84EEFDC
+// .global sprite_84EF69C
+// .global sprite_84EFB78
+// .global sprite_84F0094
+// .global sprite_84F070C
+// .global sprite_84F0CC4
+// .global sprite_84F13D0
 // .global mugshotMegaMan
-// .global byte_84F223C
-// .global byte_84F2908
-// .global byte_84F3100
-// .global byte_84F362C
-// .global byte_84F3B08
-// .global byte_84F4324
-// .global byte_84F4868
-// .global byte_84F4DD4
-// .global byte_84F5340
-// .global byte_84F57A4
-// .global byte_84F5CE0
-// .global byte_84F6354
-// .global byte_84F68C0
-// .global byte_84F6F84
-// .global byte_84F75A8
-// .global byte_84F7C44
-// .global byte_84F81B0
-// .global byte_84F8754
-// .global byte_84F8E10
-// .global byte_84F9534
-// .global byte_84F9978
-// .global byte_84F9E48
-// .global byte_84FA28C
-// .global byte_84FA744
+// .global sprite_84F223C
+// .global sprite_84F2908
+// .global sprite_84F3100
+// .global sprite_84F362C
+// .global sprite_84F3B08
+// .global sprite_84F4324
+// .global sprite_84F4868
+// .global sprite_84F4DD4
+// .global sprite_84F5340
+// .global sprite_84F57A4
+// .global sprite_84F5CE0
+// .global sprite_84F6354
+// .global sprite_84F68C0
+// .global sprite_84F6F84
+// .global sprite_84F75A8
+// .global sprite_84F7C44
+// .global sprite_84F81B0
+// .global sprite_84F8754
+// .global sprite_84F8E10
+// .global sprite_84F9534
+// .global sprite_84F9978
+// .global sprite_84F9E48
+// .global sprite_84FA28C
+// .global sprite_84FA744
 // .global mugshotBlack
 // .global byte_84FAFCC
 // .global byte_84FF308
@@ -599,26 +600,26 @@
 // .global byte_8694FB4
 
 .include "data/dat38_70.inc"
-// .global byte_86CBB7C
-// .global byte_86CC13C
-// .global byte_86CD410
+// .global sprite_86CBB7C
+// .global sprite_86CC13C
+// .global sprite_86CD410
 
 .include "data/dat38_87.inc"
-// .global byte_87DC190
-// .global byte_87DC5F0
+// .global sprite_87DC190
+// .global sprite_87DC5F0
 // .global dword_87DD248
-// .global byte_87DDB7C
-// .global byte_87E069C
-// .global byte_87E0854
-// .global byte_87E0E44
-// .global byte_87E1894
-// .global byte_87E1AD4
-// .global byte_87E1D84
-// .global byte_87E24F4
-// .global byte_87E2860
+// .global sprite_87DDB7C
+// .global sprite_87E069C
+// .global sprite_87E0854
+// .global sprite_87E0E44
+// .global sprite_87E1894
+// .global sprite_87E1AD4
+// .global sprite_87E1D84
+// .global sprite_87E24F4
+// .global sprite_87E2860
 
 .include "data/dat38_92.inc"
-// .global byte_87E6E20
+// .global sprite_87E6E20
 
 
 /* Undeclared Symbols */
@@ -649,8 +650,8 @@
 // .global compVirusBattleSprite_824DC7C
 // .global virusBattleSprite_824EAF4
 // .global compVirusBattleSprite_8252558
-// .global byte_82533F4
-// .global byte_8253F88
+// .global sprite_82533F4
+// .global sprite_8253F88
 // .global comp_8257994
 // .global comp_825859C
 // .global comp_8258FF8
@@ -658,23 +659,23 @@
 // .global comp_825AD90
 // .global comp_825B860
 // .global comp_825BFC4
-// .global byte_825C9AC
+// .global sprite_825C9AC
 // .global comp_825DFB4
-// .global byte_825F2C8
-// .global byte_8260F88
+// .global sprite_825F2C8
+// .global sprite_8260F88
 // .global comp_8262CEC
 // .global comp_8263484
 // .global comp_82647E4
 // .global battleSpriteFlameMan
 // .global battleSpriteElecMan
 // .global battleSpriteSlashMan
-// .global byte_828324C
-// .global byte_828F18C
+// .global sprite_828324C
+// .global sprite_828F18C
 // .global battleSpriteSpoutMan
-// .global byte_829D818
-// .global byte_82A5AF0
-// .global byte_82B0690
-// .global byte_82BA7BC
+// .global sprite_829D818
+// .global sprite_82A5AF0
+// .global sprite_82B0690
+// .global sprite_82BA7BC
 // .global battleSpriteProtoMan
 // .global comp_82CED74
 // .global comp_82D2AC8
@@ -684,69 +685,69 @@
 // .global compBattleSprite_Colonel
 // .global comp_82E4050
 // .global comp_82E8470
-// .global byte_82EFE48
-// .global byte_82F39C0
-// .global byte_82F569C
-// .global byte_82F6ECC
-// .global byte_82F9CCC
+// .global sprite_82EFE48
+// .global sprite_82F39C0
+// .global sprite_82F569C
+// .global sprite_82F6ECC
+// .global sprite_82F9CCC
 // .global comp_82FCA14
-// .global byte_82FE378
-// .global byte_82FE704
-// .global byte_82FF95C
-// .global byte_8300CFC
-// .global byte_8300F70
-// .global byte_8303A34
-// .global byte_830451C
-// .global byte_8304700
-// .global byte_8308700
-// .global byte_830902C
-// .global byte_830A308
-// .global byte_830D494
-// .global byte_830E44C
-// .global byte_830F144
-// .global byte_8311288
-// .global byte_83124E8
-// .global byte_8312FB4
-// .global byte_83138C4
-// .global byte_831530C
-// .global byte_831661C
-// .global byte_8317340
-// .global byte_8318920
-// .global byte_83195F0
-// .global byte_8319B5C
-// .global byte_831C8A4
-// .global byte_831CAF8
-// .global byte_831E67C
-// .global byte_831E8C0
-// .global byte_831EA40
-// .global byte_831FA84
-// .global byte_831FCF0
-// .global byte_832154C
-// .global byte_8322920
-// .global byte_83234D4
-// .global byte_8323728
-// .global byte_83241F4
-// .global byte_83245E8
-// .global byte_83249B0
-// .global byte_8324E14
-// .global byte_8325038
-// .global byte_83255C0
-// .global byte_8325C94
-// .global byte_8325EF4
-// .global byte_83262C0
-// .global byte_8326724
-// .global byte_83279C0
-// .global byte_8329D28
-// .global byte_832C418
-// .global byte_832E9C8
-// .global byte_832F0C8
-// .global byte_832F8C8
-// .global byte_8330A30
-// .global byte_8330FA8
-// .global byte_83317F0
-// .global byte_83322B8
-// .global byte_8332484
-// .global byte_8333350
+// .global sprite_82FE378
+// .global sprite_82FE704
+// .global sprite_82FF95C
+// .global sprite_8300CFC
+// .global sprite_8300F70
+// .global sprite_8303A34
+// .global sprite_830451C
+// .global sprite_8304700
+// .global sprite_8308700
+// .global sprite_830902C
+// .global sprite_830A308
+// .global sprite_830D494
+// .global sprite_830E44C
+// .global sprite_830F144
+// .global sprite_8311288
+// .global sprite_83124E8
+// .global sprite_8312FB4
+// .global sprite_83138C4
+// .global sprite_831530C
+// .global sprite_831661C
+// .global sprite_8317340
+// .global sprite_8318920
+// .global sprite_83195F0
+// .global sprite_8319B5C
+// .global sprite_831C8A4
+// .global sprite_831CAF8
+// .global sprite_831E67C
+// .global sprite_831E8C0
+// .global sprite_831EA40
+// .global sprite_831FA84
+// .global sprite_831FCF0
+// .global sprite_832154C
+// .global sprite_8322920
+// .global sprite_83234D4
+// .global sprite_8323728
+// .global sprite_83241F4
+// .global sprite_83245E8
+// .global sprite_83249B0
+// .global sprite_8324E14
+// .global sprite_8325038
+// .global sprite_83255C0
+// .global sprite_8325C94
+// .global sprite_8325EF4
+// .global sprite_83262C0
+// .global sprite_8326724
+// .global sprite_83279C0
+// .global sprite_8329D28
+// .global sprite_832C418
+// .global sprite_832E9C8
+// .global sprite_832F0C8
+// .global sprite_832F8C8
+// .global sprite_8330A30
+// .global sprite_8330FA8
+// .global sprite_83317F0
+// .global sprite_83322B8
+// .global sprite_8332484
+// .global sprite_8333350
 // .global comp_8333CC8
 // .global comp_8334B0C
 // .global comp_83353F4

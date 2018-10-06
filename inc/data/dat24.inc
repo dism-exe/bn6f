@@ -2,6 +2,8 @@
 .equ INC_DATA_DAT24, 0
 
 /* Public Symbols */
+.global unk_808DC88
+.global unk_808DEF8
 .global off_808F5D4
 .global dword_808F668
 .global byte_808F6EC

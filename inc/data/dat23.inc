@@ -3,6 +3,8 @@
 
 /* Public Symbols */
 .global dword_808A128
+.global byte_808A220
+.global unk_808B6F0
 .global unk_808BB8C
 
 

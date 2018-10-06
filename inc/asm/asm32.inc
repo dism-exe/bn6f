@@ -490,7 +490,7 @@
 // .global npcSpriteMegaMan
 
 .include "data/dat38_39.inc"
-// .global unk_849B424
+// .global sprite_849B424
 
 .include "data/dat38_60.inc"
 // .global dword_86A5D60
@@ -499,8 +499,8 @@
 .include "data/dat38_70.inc"
 // .global PET_Gfx_tileRefs
 // .global unk_86CB360
-// .global byte_86CBB7C
-// .global byte_86CC13C
+// .global sprite_86CBB7C
+// .global sprite_86CC13C
 
 .include "data/dat38_71.inc"
 // .global byte_86CF4AC
@@ -705,10 +705,10 @@
 .equ LCDControl, 0x4000000
 // .global battleSpriteMegaMan
 // .global battleSpriteSpoutMan
-// .global byte_829D818
-// .global byte_82A5AF0
-// .global byte_82B0690
-// .global byte_82BA7BC
+// .global sprite_829D818
+// .global sprite_82A5AF0
+// .global sprite_82B0690
+// .global sprite_82BA7BC
 // .global comp_82FCA14
 
 .endif // INC_ASM_ASM32

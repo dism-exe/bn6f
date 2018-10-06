@@ -271,7 +271,7 @@ unk_8068475:    .byte  8
     .byte  8
 unk_80684CB:    .byte  8
     .word 0x291C0225
-    .word unk_8451508
+    .word byte_8451508
     .byte 0x15
     .byte  3
 unk_80684D6:    .byte  8
@@ -449,7 +449,7 @@ unk_80686E9:    .byte  9
     .word 0x2E00E128
     .word 0x2EC02A06
     .word 0x3C05100F
-    .word unk_83F0408
+    .word byte_83F0408
     .byte  5
     .byte  3
 unk_806870E:    .byte  9
@@ -571,7 +571,7 @@ unk_8068861:    .byte  8
 dword_8068878:    .word 0x17271F08
     .word 0x1381437
     .word 0x10FF70
-    .word unk_83F0716
+    .word byte_83F0716
     .word 0x15171601
     .word 0x16061007
     .word 0x2083C2C
@@ -580,7 +580,7 @@ dword_8068878:    .word 0x17271F08
 dword_806889C:    .word 0x17271F08
     .word 0x1381452
     .word 0x10FF10
-    .word unk_83F1916
+    .word byte_83F1916
     .word 0xE12803
     .word 0xC02A1A16
     .word 0x3F04083C
@@ -592,7 +592,7 @@ dword_806889C:    .word 0x17271F08
 dword_80688CC:    .word 0x17271F08
     .word 0x1381437
     .word 0x10FF40
-    .word unk_83F2C16
+    .word byte_83F2C16
     .word 0x15171604
     .word 0x16071007
     .word 0x5083C2C
@@ -600,7 +600,7 @@ dword_80688CC:    .word 0x17271F08
     .word 0x807150F
     .word 0x10071601
     .word 0x3C04163C
-    .word unk_83F0708
+    .word byte_83F0708
     .word 0xF6CC3608
     .byte  9
     .byte  8
@@ -610,7 +610,7 @@ unk_8068902:    .byte  8
     .word 0xFF100138
     .word 0x1B160010
     .word 0x3C01083F
-    .word unk_83F0208
+    .word byte_83F0208
     .word 0x303
     .word dword_8068938
     .word unk_806894B
@@ -857,7 +857,10 @@ dword_8068C14:    .word 0x25271F09
     .word 0x28080108
     .word 0x52E00E1
     .word 0xE2EC02A
-    .word unk_83C0510
+    .byte 0x10
+    .byte  5
+    .byte 0x3C 
+    .byte  8
     .word 0x3083F02
     .byte  3
 unk_8068C39:    .byte  9
@@ -886,7 +889,7 @@ unk_8068C7F:    .byte  9
     .word 0x2F25271F
     .word 0xFF94141C
     .word 0x8C
-    .word unk_83F010F
+    .word byte_83F010F
     .word 0xE1280807
     .word 0x2A052E00
     .word 0x100E2EC0
@@ -899,7 +902,10 @@ dword_8068CA4:    .word 0x25271F09
     .word 0x28080908
     .word 0x72E00E1
     .word 0x102EC02A
-    .word unk_83C0510
+    .byte 0x10
+    .byte  5
+    .byte 0x3C 
+    .byte  8
     .word 0xB083F0A
     .word 0x3
 off_8068CCC:    .word dword_8068CD8

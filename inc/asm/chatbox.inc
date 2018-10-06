@@ -12,6 +12,8 @@
 .global chatbox_803FE10
 .global chatbox_runScript_803FE74 // (u16 *scriptList, u8 scriptOffIdx) -> void
 .global chatbox_onUpdate_803FEB4
+.global byte_804033B
+.global off_804033C
 .global chatbox_runTrainScript // (u8 scriptOffIdx) -> void
 .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 .global chatbox_reqBBS_80404C0

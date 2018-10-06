@@ -6,17 +6,17 @@
 .global npcSpriteProgman
 .global npcSpriteGreenNavi
 .global npcSpriteEvilNavi
-.global unk_8451508
+.global byte_8451508
 .global npcSpriteGirlNavi
 .global npcSpriteSpoutMan
 .global npcSpriteHawkMan
-.global unk_8468940
+.global sprite_8468940
 .global npcSpriteDrillMan
-.global unk_8477574
-.global unk_8481548
-.global unk_848334C
+.global sprite_8477574
+.global sprite_8481548
+.global sprite_848334C
 .global npcSpriteColonel
-.global unk_848FCEC
+.global sprite_848FCEC
 
 
 /* External Symbols */

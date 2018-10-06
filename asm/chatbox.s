@@ -677,7 +677,7 @@ loc_8040242:
     add r1, r1, r2
     orr r0, r1
     mov r1, r12
-    ldr r2, off_8040320 // =dword_8040324 
+    ldr r2, off_8040320 // =byte_8040324 
     mov r3, #8
     mul r3, r7
     add r3, r3, r6
@@ -705,7 +705,7 @@ loc_8040242:
     add r1, r1, r2
     orr r0, r1
     mov r1, r12
-    ldr r2, off_8040320 // =dword_8040324 
+    ldr r2, off_8040320 // =byte_8040324 
     mov r3, #8
     mul r3, r7
     add r3, r3, r6
@@ -733,7 +733,7 @@ loc_8040242:
     add r1, r1, r2
     orr r0, r1
     mov r1, r12
-    ldr r2, off_8040320 // =dword_8040324 
+    ldr r2, off_8040320 // =byte_8040324 
     mov r3, #8
     mul r3, r7
     add r3, r3, r6
@@ -761,9 +761,11 @@ loc_8040242:
 dword_804030C:    .word 0xE2B8
 off_8040310:    .word dword_8040314
 dword_8040314:    .word 0x80004000, 0x80004000, 0x40004000
-off_8040320:    .word dword_8040324
-dword_8040324:    .word 0x18100800, 0x2820, 0x48403830, 0x5850, 0x6C686460
-    .word 0x7470
+off_8040320:    .word byte_8040324
+byte_8040324:    .byte 0x0, 0x8, 0x10, 0x18, 0x20, 0x28, 0x0, 0x0, 0x30, 0x38, 0x40
+    .byte 0x48, 0x50, 0x58, 0x0, 0x0, 0x60, 0x64, 0x68, 0x6C, 0x70, 0x74
+    .byte 0x0
+byte_804033B:    .byte 0x0
 off_804033C:    .word byte_8040340
 byte_8040340:    .byte 0x0, 0x10, 0x20, 0x0
 .endfunc // chatbox_804021C

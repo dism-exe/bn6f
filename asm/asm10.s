@@ -1821,7 +1821,7 @@ unk_8066F04:    .byte  8
 dword_8067540:    .word 0x17271F08
     .word 0x261437
     .word 0xFF74
-    .word unk_83F2C16
+    .word byte_83F2C16
     .word 0xF6CC3601
     .byte  9
     .byte  8
@@ -1848,12 +1848,12 @@ unk_8067556:    .byte  8
 dword_80675A0:    .word 0x17271F08
     .word 0x261437
     .word 0xFF74
-    .word unk_83F2C16
+    .word byte_83F2C16
     .word 0x16141001
     .word 0x3083F31
-    .word unk_83F2C16
+    .word byte_83F2C16
     .word 0x2A282E07
-    .word unk_83C09C0
+    .word byte_83C09C0
     .byte  8
     .byte  3
 unk_80675C6:    .byte  9
@@ -1879,7 +1879,7 @@ unk_80675F7:    .byte  9
     .word 0x25271F
     .word 0x26141C
     .word 0xFF38
-    .word unk_83F0016
+    .word byte_83F0016
     .word 0xF8800203
     .byte  9
     .byte  8

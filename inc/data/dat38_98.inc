@@ -12,10 +12,10 @@
 // .global unk_81D081E
 
 .include "data/dat38_32.inc"
-// .global unk_8370817
+// .global byte_8370817
 
 .include "data/dat38_45.inc"
-// .global unk_84B080C
+// .global byte_84B080C
 
 
 .endif // INC_DATA_DAT38_98

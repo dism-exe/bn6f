@@ -42,12 +42,12 @@
 // .global off_806FA98
 
 .include "data/dat13.inc"
-// .global dword_8070034
+// .global byte_8070034
 // .global dword_8070074
 // .global dword_80700B4
 // .global dword_80700CC
 // .global dword_80700E4
-// .global dword_80700FC
+// .global byte_80700FC
 // .global dword_8070114
 // .global dword_807012C
 // .global dword_8070144
@@ -56,7 +56,7 @@
 // .global dword_80701B4
 // .global dword_80701CC
 // .global dword_80701E4
-// .global dword_80701FC
+// .global byte_80701FC
 // .global dword_8070214
 
 .include "data/dat38_60.inc"

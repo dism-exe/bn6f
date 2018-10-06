@@ -22872,11 +22872,11 @@ off_811D3BC:    .word unk_201AA00
 off_811D3C4:    .word off_811D3C8
 off_811D3C8:    .word battleSpriteMegaMan
     .word battleSpriteSpoutMan
-    .word byte_829D818
-    .word byte_82A5AF0
-    .word byte_82B0690
-    .word byte_82BA7BC
-    .word unk_849B424
+    .word sprite_829D818
+    .word sprite_82A5AF0
+    .word sprite_82B0690
+    .word sprite_82BA7BC
+    .word sprite_849B424
 off_811D3E4:    .word byte_811D404
 off_811D3E8:    .word byte_811D40B
 off_811D3EC:    .word dword_811D3FC
@@ -25782,10 +25782,10 @@ sub_811EF8C:
     pop {pc}
     .balign 4, 0x00
 off_811EF98:    .word off_811EF9C
-off_811EF9C:    .word byte_86CBB7C
+off_811EF9C:    .word sprite_86CBB7C
     .word 0x6015000
     .word 0x5C0
-    .word byte_86CC13C
+    .word sprite_86CC13C
     .word 0x60155C0
     .word 0x12D4
     .word 0x0

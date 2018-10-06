@@ -8,7 +8,7 @@ off_801ECB4:    .word dword_86B7AC0
     .word 0x600B400
     .word 0x640
     .word dword_86E1C78
-    .word unk_3001B00
+    .word byte_3001B00
     .word 0x20
     .word dword_86BA120
     .word 0x600BA40

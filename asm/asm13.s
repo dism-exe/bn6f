@@ -519,12 +519,12 @@ sub_806FFDA:
     .byte 0, 0
 off_806FFF0:    .word pt_806FFF4
     // <endpool> <endfile>
-pt_806FFF4:    .word dword_8070034
+pt_806FFF4:    .word byte_8070034
     .word dword_8070074
     .word dword_80700B4
     .word dword_80700CC
     .word dword_80700E4
-    .word dword_80700FC
+    .word byte_80700FC
     .word dword_8070114
     .word dword_807012C
     .word dword_8070144
@@ -533,7 +533,7 @@ pt_806FFF4:    .word dword_8070034
     .word dword_80701B4
     .word dword_80701CC
     .word dword_80701E4
-    .word dword_80701FC
+    .word byte_80701FC
     .word dword_8070214
 .endfunc // sub_806FFDA
 

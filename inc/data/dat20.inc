@@ -11,8 +11,17 @@
 .global off_807F21C
 .global byte_807F268
 .global off_807FAC0
+.global byte_807FB98
+.global byte_807FE88
+.global byte_8080115
+.global byte_8080315
+.global byte_8080501
+.global byte_808054A
+.global byte_808054F
+.global byte_808058D
 .global byte_8080598
 .global byte_80805C0
+.global byte_808060A
 .global byte_8080684
 .global byte_8080685
 .global byte_8080686
@@ -21,9 +30,12 @@
 .global byte_808068A
 .global byte_808068B
 .global byte_80806B3
+.global unk_8080715
 .global byte_80808B0
 .global byte_80808D8
 .global byte_80809F6
+.global byte_80809F8
+.global byte_8080A06
 .global byte_8080AA0
 
 

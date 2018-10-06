@@ -118,7 +118,7 @@
 .equ unk_3001AA0, 0x3001AA0
 .equ unk_3001AC0, 0x3001AC0
 .equ unk_3001AE0, 0x3001AE0
-.equ unk_3001B00, 0x3001B00
+.equ byte_3001B00, 0x3001B00
 .equ unk_3001B20, 0x3001B20
 
 .endif // INC_DATA_DAT00

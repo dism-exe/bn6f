@@ -4,12 +4,14 @@
 /* Public Symbols */
 .global unk_86F5834
 .global dword_86F5BB4
+.global byte_86F6002
 .global byte_86F60F4
 .global byte_86F6634
 .global byte_86F6B74
 .global byte_86F70B4
 .global byte_86F75F4
 .global byte_86F7B34
+.global byte_86FFF05
 .global byte_87008F4
 .global byte_8700E34
 .global byte_871A274

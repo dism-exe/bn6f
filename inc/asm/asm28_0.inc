@@ -2,7 +2,9 @@
 .equ INC_ASM_ASM28_0, 0
 
 /* Public Symbols */
+.global byte_8098C78
 .global unk_8098CA2
+.global byte_8098DDC
 .global byte_80990B8
 .global dword_80991F4
 .global unk_8099CEC
@@ -14,6 +16,7 @@
 .global unk_809AE68
 .global unk_809B5AD
 .global sub_809BA14
+.global unk_809BFB0
 .global sub_809C890
 .global sub_809C940
 .global sub_809C968

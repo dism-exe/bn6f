@@ -5209,8 +5209,6 @@ loc_8011508:
     lsr r2, r2, #0x18
     bl sprite_load // (int a1, int a2, int a3) ->
     bl sprite_loadAnimationData // () -> void
-.endfunc // sub_8011504
-
     lsr r0, r6, #0x18
     tst r0, r0
     beq loc_8011528
@@ -5239,6 +5237,8 @@ loc_8011540:
     bl sub_8002F5C
     mov r0, #1
     pop {r6,r7,pc}
+.endfunc // sub_8011504
+
 .func
 .thumb_func
 sub_801155A:
@@ -9289,6 +9289,7 @@ loc_80132F8:
     beq loc_801330C
     mov r0, #1
     tst r0, r1
+loc_8013308:
     bne loc_801330C
     b loc_8013366
 loc_801330C:
@@ -27320,7 +27321,7 @@ loc_801C92A:
     .balign 4, 0x00
 off_801C96C:    .word off_801C970
 off_801C970:    .word dword_86E1C78
-off_801C974:    .word unk_3001B00
+off_801C974:    .word byte_3001B00
 dword_801C978:    .word 0x20
 dword_801C97C:    .word 0xD1A0
 dword_801C980:    .word 0xAAAA
@@ -29990,7 +29991,7 @@ sub_801DF32:
     ldr r0, off_801DF5C // =off_801DF60 
     bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
     ldr r0, off_801DF80 // =dword_86E1C78 
-    ldr r1, off_801DF84 // =unk_3001B00 
+    ldr r1, off_801DF84 // =byte_3001B00 
     ldr r2, dword_801DF88 // =0x20 
     bl loc_8000AC8
     mov r0, #1
@@ -30010,7 +30011,7 @@ off_801DF74:    .word 0x380
     .word 0x0
     .word 0x1500
 off_801DF80:    .word dword_86E1C78
-off_801DF84:    .word unk_3001B00
+off_801DF84:    .word byte_3001B00
 dword_801DF88:    .word 0x20
 .endfunc // sub_801DF32
 

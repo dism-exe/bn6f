@@ -191,6 +191,7 @@
 .global off_85FB848
 .global dword_85FB9EC
 .global dword_85FEF08
+.global unk_860100F
 .global off_8602590
 .global dword_8602734
 .global unk_8605FD8
@@ -332,6 +333,7 @@
 .global dword_8651B2C
 .global dword_8656C0C
 .global dword_865A08C
+.global unk_865AC26
 .global dword_865B77C
 .global byte_8660444
 .global dword_8660604
@@ -362,6 +364,27 @@
 .global byte_869E02C
 .global byte_869E82C
 .global byte_869F02C
+.global byte_86A10B0
+.global byte_86A10D0
+.global byte_86A13F0
+.global byte_86A1480
+.global byte_86A1A60
+.global byte_86A1A80
+.global byte_86A1B20
+.global byte_86A2340
+.global byte_86A23E0
+.global byte_86A2BE0
+.global byte_86A2C00
+.global byte_86A2C80
+.global byte_86A3480
+.global byte_86A34C0
+.global byte_86A34E0
+.global byte_86A3990
+.global byte_86A39B0
+.global byte_86A39D0
+.global byte_86A3E80
+.global byte_86A3EA0
+.global byte_86A3F40
 .global dword_86A4740
 .global unk_86A48C0
 .global dword_86A4A40
@@ -462,7 +485,6 @@
 .equ unk_2000FD0, 0x2000FD0
 .equ unk_2003334, 0x2003334
 .equ unk_200AA98, 0x200AA98
-.equ unk_2021818, 0x2021818
 .equ unk_3002300, 0x3002300
 .equ unk_3005040, 0x3005040
 .equ LCDControl, 0x4000000

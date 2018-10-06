@@ -38,7 +38,6 @@
 // .global dword_86FED98
 // .global dword_86FED98
 // .global dword_86FF598
-// .global dword_86FFD98
 // .global dword_8700000
 // .global byte_87008F4
 // .global byte_8700E34

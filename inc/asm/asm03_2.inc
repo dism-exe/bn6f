@@ -67,16 +67,23 @@
 // .global change_20013F0_800151C // () -> int
 // .global sub_8001532
 // .global sub_80015FC
+// .global sub_8001708
 // .global sub_8001778
 // .global sub_8001788
 // .global sub_80017A0
 // .global sub_80017AA
 // .global sub_80017E0
+// .global sub_8001820
 // .global sub_800183C
 // .global sub_8001850
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
+// .global sub_8001974
+// .global sub_8001B1C
+// .global sub_8001B6C
 // .global sub_8002354
+// .global sub_8002484
+// .global loc_80024D8
 // .global sub_8002694
 
 .include "asm/sprite.inc"
@@ -97,6 +104,10 @@
 // .global sub_8005F84
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
+// .global byte_80065E0
+// .global sub_8006920
+// .global sub_8006990
+// .global sub_8006A5C
 // .global sub_8006F1E
 // .global sub_800A7D0 // () -> (zf, int)
 
@@ -108,7 +119,10 @@
 // .global sub_8021BD8
 
 .include "asm/asm03_0.inc"
+// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 // .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_802FF4C
@@ -117,6 +131,8 @@
 // .global sub_8030AA4
 
 .include "asm/asm03_1.inc"
+// .global s_2011C50_8036F40 // () -> zf
+// .global sub_8036F58
 // .global sub_8039570
 // .global sub_803A104
 // .global sub_803A1B0
@@ -212,8 +228,13 @@
 // .global dword_804D0A0
 // .global off_804D0E4
 
+.include "data/dat20.inc"
+// .global byte_808060A
+// .global byte_8080A06
+
 .include "asm/asm28_0.inc"
 // .global sub_809E122
+// .global sub_809E1AE
 
 .include "asm/asm32.inc"
 // .global sub_8116894
@@ -283,6 +304,7 @@
 // .global loc_811E858
 // .global loc_811E914
 // .global loc_811E9A0
+// .global sub_811EBE0
 // .global sub_811F728
 // .global sub_811F758
 // .global sub_811F7EC
@@ -340,6 +362,27 @@
 // .global byte_869E02C
 // .global byte_869E82C
 // .global byte_869F02C
+// .global byte_86A10B0
+// .global byte_86A10D0
+// .global byte_86A13F0
+// .global byte_86A1480
+// .global byte_86A1A60
+// .global byte_86A1A80
+// .global byte_86A1B20
+// .global byte_86A2340
+// .global byte_86A23E0
+// .global byte_86A2BE0
+// .global byte_86A2C00
+// .global byte_86A2C80
+// .global byte_86A3480
+// .global byte_86A34C0
+// .global byte_86A34E0
+// .global byte_86A3990
+// .global byte_86A39B0
+// .global byte_86A39D0
+// .global byte_86A3E80
+// .global byte_86A3EA0
+// .global byte_86A3F40
 // .global unk_86A48C0
 // .global dword_86A4A40
 // .global unk_86A4CC0
@@ -415,6 +458,17 @@
 
 
 /* Undeclared Symbols */
+.equ unk_2000AC0, 0x2000AC0
+.equ byte_2000ACF, 0x2000ACF
+.equ byte_2000AD1, 0x2000AD1
+.equ byte_2000AD3, 0x2000AD3
+.equ byte_2000AD5, 0x2000AD5
+.equ byte_2000AD6, 0x2000AD6
+.equ byte_2000AD7, 0x2000AD7
+.equ byte_2000AD8, 0x2000AD8
+.equ byte_2000AD9, 0x2000AD9
+.equ word_2000ADA, 0x2000ADA
+.equ word_2000ADC, 0x2000ADC
 .equ word_2001800, 0x2001800
 .equ byte_2001802, 0x2001802
 .equ unk_2001808, 0x2001808
@@ -462,6 +516,9 @@
 .equ word_2011C28, 0x2011C28
 .equ dword_2011C2C, 0x2011C2C
 .equ dword_2011C34, 0x2011C34
+.equ unk_2013960, 0x2013960
+.equ byte_2013965, 0x2013965
+.equ word_2013974, 0x2013974
 .equ decomp_2013A00, 0x2013A00
 .equ unk_2013C00, 0x2013C00
 .equ unk_2013C40, 0x2013C40
@@ -542,12 +599,15 @@
 .equ unk_30016B0, 0x30016B0
 .equ unk_30016D0, 0x30016D0
 .equ unk_3001730, 0x3001730
+.equ unk_3001750, 0x3001750
 .equ word_3001960, 0x3001960
 .equ unk_3001980, 0x3001980
 .equ unk_30019C0, 0x30019C0
 .equ unk_3001A80, 0x3001A80
 .equ unk_3001AC0, 0x3001AC0
 .equ unk_3001AE0, 0x3001AE0
+.equ byte_3001B00, 0x3001B00
+.equ unk_3001B60, 0x3001B60
 .equ loc_3006B94, 0x3006B94
 .equ loc_3006C38, 0x3006C38
 .equ loc_3006C8E, 0x3006C8E

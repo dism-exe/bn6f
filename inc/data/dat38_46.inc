@@ -2,8 +2,8 @@
 .equ INC_DATA_DAT38_46, 0
 
 /* Public Symbols */
-.global unk_84B4838
-.global unk_84B5238
+.global sprite_84B4838
+.global sprite_84B5238
 
 
 /* External Symbols */

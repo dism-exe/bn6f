@@ -123,6 +123,7 @@
 .global sub_80024A2
 .global sub_80024AE
 .global sub_80024C0
+.global loc_80024D8
 .global sub_800260C
 .global renderPalletesAndObjs_8002650
 .global sub_8002668
@@ -192,7 +193,7 @@
 // .global sub_814FA14
 
 .include "data/dat38_0.inc"
-// .global unk_8200810
+// .global byte_8200810
 
 .include "data/dat38_60.inc"
 // .global dword_86A5500

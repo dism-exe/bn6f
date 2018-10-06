@@ -269,15 +269,15 @@ off_8081288:    .word dword_807F604+0x8C
     .word 0xFFFFFFFF
 off_8081290:    .word off_807FAC0
     .word 0xFFFFFFFF
-off_8081298:    .word dword_807FAC4+0xD4
+off_8081298:    .word byte_807FB98
     .word 0xFFFFFFFF
 off_80812A0:    .word dword_807F868+0x98
     .word 0xFFFFFFFF
-off_80812A8:    .word dword_807FAC4+0x3C4
+off_80812A8:    .word byte_807FE88
     .word 0xFFFFFFFF
-off_80812B0:    .word dword_807FAC4+0x6B4
+off_80812B0:    .word byte_8080115+0x63
     .word 0xFFFFFFFF
-off_80812B8:    .word dword_807FAC4+0x7E4
+off_80812B8:    .word byte_8080115+0x193
     .word 0xFFFFFFFF
 off_80812C0:    .word byte_80805C0
     .word 0xFFFFFFFF

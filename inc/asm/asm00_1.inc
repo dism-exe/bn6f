@@ -109,6 +109,9 @@
 .global sub_80068E0
 .global sub_80068EC
 .global sub_8006910
+.global sub_8006920
+.global sub_8006990
+.global sub_8006A5C
 .global CpuSet_toolKit // () -> void
 .global sub_8006C22
 .global sub_8006C6C

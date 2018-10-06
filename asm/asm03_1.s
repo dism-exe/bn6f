@@ -1419,11 +1419,11 @@ byte_8034478:    .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x5, 0x1, 0x0, 0x
 off_80345E4:    .word off_804D0A4
     .word off_804D0AC
     .word off_804E92C
-    .word dword_804E940
+    .word off_804E940
     .word off_8052D88
-    .word dword_8052DB4
+    .word off_8052DB4
     .word off_8059D48
-    .word dword_8059D5C
+    .word off_8059D5C
     .word off_805E15C
     .word off_805E170
     .word off_806063C
@@ -3097,8 +3097,8 @@ dword_8035670:    .word 0x48D0002
     .word 0x4920702
     .word 0x0
     .word off_8035688
-off_8035688:    .word dword_80525C0
-    .word dword_80525DC
+off_8035688:    .word unk_80525C0
+    .word byte_80525DC
     .byte 0xFF
     .byte 0xFF
     .byte 0xFF

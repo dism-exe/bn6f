@@ -37,17 +37,15 @@
 // .global byte_809F8CA
 
 .include "data/dat38_33.inc"
-// .global unk_83C0116
-// .global unk_83C09C0
-// .global unk_83C1A16
-// .global unk_83F0016
-// .global unk_83F0116
-// .global unk_83F0208
-// .global unk_83F0608
-// .global unk_83F0907
-// .global unk_83F0E08
-// .global unk_83F1916
-// .global unk_83F3D16
+// .global byte_83C09C0
+// .global byte_83C1A16
+// .global byte_83F0016
+// .global byte_83F0116
+// .global byte_83F0208
+// .global byte_83F0608
+// .global byte_83F0907
+// .global byte_83F1916
+// .global byte_83F3D16
 
 .include "data/dat38_60.inc"
 // .global unk_863FF05

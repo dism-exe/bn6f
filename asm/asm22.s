@@ -483,14 +483,14 @@ sub_80871C0:
     push {lr}
     ldrb r0, [r5,#0xc]
     lsl r0, r0, #1
-    ldr r1, off_80871D4 // =dword_80871D8 
+    ldr r1, off_80871D4 // =byte_80871D8 
     ldrh r1, [r1,r0]
     add r0, r1, #0
     bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
     pop {pc}
     .hword 0x0
     // <endpool> <endfile>
-off_80871D4:    .word dword_80871D8
+off_80871D4:    .word byte_80871D8
 .endfunc // sub_80871C0
 
 /*For debugging purposes, connect comment at any range!*/

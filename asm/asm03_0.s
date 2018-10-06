@@ -18130,7 +18130,7 @@ off_802F440:    .word unk_3001AA0
     .word byte_87F95B4
     .word 0x7
     .word 0x1
-off_802F490:    .word unk_3001B00
+off_802F490:    .word byte_3001B00
     .word 0x20
     .word 0xFFFF0800
     .word byte_87F96D4
@@ -20127,11 +20127,11 @@ loc_8030554:
     mul r2, r3
     lsl r2, r2, #1
     bl loc_8000AC8
-.endfunc // sub_8030540
-
     pop {r4-r7,pc}
 off_8030578:    .word unk_2034A00
 off_803057C:    .word decomp_2013A00
+.endfunc // sub_8030540
+
 .func
 .thumb_func
 sub_8030580:
@@ -20156,13 +20156,13 @@ sub_8030580:
     bgt loc_80305B2
     sub r2, r2, r0
     push {r0,r1}
-    bl loc_803066E
+    bl sub_803066E
     pop {r0,r1}
     b loc_80305BC
 loc_80305B2:
     sub r2, r0, r2
     push {r0,r1}
-    bl loc_80306C8
+    bl sub_80306C8
     pop {r0,r1}
 loc_80305BC:
     mov r4, #0x6 // (word_200BE76 - 0x200be70)
@@ -20252,6 +20252,9 @@ loc_803062C:
     mov pc, lr
 .endfunc // sub_8030628
 
+.func
+.thumb_func
+sub_8030646:
     mov r2, #2
     mov r7, r10
     ldr r7, [r7,#0x28]
@@ -20262,6 +20265,11 @@ loc_803062C:
     lsl r6, r4, #6
     strh r1, [r7,r6]
     mov pc, lr
+.endfunc // sub_8030646
+
+.func
+.thumb_func
+sub_803065A:
     mov r2, #1
     mov r7, r10
     ldr r7, [r7,#0x28]
@@ -20272,7 +20280,11 @@ loc_803062C:
     lsl r6, r4, #6
     strh r1, [r7,r6]
     mov pc, lr
-loc_803066E:
+.endfunc // sub_803065A
+
+.func
+.thumb_func
+sub_803066E:
     push {lr}
     strh r0, [r5,#4]
     cmp r2, #5
@@ -20320,7 +20332,11 @@ loc_8030682:
     bgt loc_803067E
 locret_80306C6:
     pop {pc}
-loc_80306C8:
+.endfunc // sub_803066E
+
+.func
+.thumb_func
+sub_80306C8:
     push {lr}
     strh r0, [r5,#4]
     cmp r2, #5
@@ -20368,6 +20384,8 @@ loc_80306DC:
     bgt loc_80306D8
 locret_8030720:
     pop {pc}
+.endfunc // sub_80306C8
+
 loc_8030722:
     push {lr}
     strh r1, [r5,#6]
@@ -20633,7 +20651,7 @@ loc_80308FA:
     add sp, sp, #8
     pop {r4-r7,pc}
 off_8030904:    .word sub_804CE90+1
-    .word sub_804E62C+1
+off_8030908:    .word sub_804E62C+1
     .word sub_8052688+1
     .word sub_80595B8+1
     .word sub_805DF08+1
@@ -22214,7 +22232,9 @@ sub_80314CC:
     mov r3, #0x20 
     mov r5, #0x20 
     mov r6, #0
+loc_803150A:
     bl sub_8030F7C
+loc_803150E:
     mov r0, #0
     bl sub_80310B0
     mov r0, r12

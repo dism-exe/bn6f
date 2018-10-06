@@ -39,8 +39,8 @@ virusBattleSprites_8031D24:    .word spriteWhiteDot
     .word compVirusBattleSprite_824DC7C + 1<<31
     .word virusBattleSprite_824EAF4
     .word compVirusBattleSprite_8252558 + 1<<31
-    .word byte_82533F4
-    .word byte_8253F88
+    .word sprite_82533F4
+    .word sprite_8253F88
     .word comp_8257994 + 1<<31
     .word comp_825859C + 1<<31
     .word comp_8258FF8 + 1<<31
@@ -48,10 +48,10 @@ virusBattleSprites_8031D24:    .word spriteWhiteDot
     .word comp_825AD90 + 1<<31
     .word comp_825B860 + 1<<31
     .word comp_825BFC4 + 1<<31
-    .word byte_825C9AC
+    .word sprite_825C9AC
     .word comp_825DFB4 + 1<<31
-    .word byte_825F2C8
-    .word byte_8260F88
+    .word sprite_825F2C8
+    .word sprite_8260F88
     .word comp_8262CEC + 1<<31
     .word comp_8263484 + 1<<31
     .word spriteWhiteDot
@@ -60,13 +60,13 @@ naviBattleSprites_8031DA4:    .word spriteWhiteDot
     .word battleSpriteFlameMan
     .word battleSpriteElecMan
     .word battleSpriteSlashMan
-    .word byte_828324C
-    .word byte_828F18C
+    .word sprite_828324C
+    .word sprite_828F18C
     .word battleSpriteSpoutMan
-    .word byte_829D818
-    .word byte_82A5AF0
-    .word byte_82B0690
-    .word byte_82BA7BC
+    .word sprite_829D818
+    .word sprite_82A5AF0
+    .word sprite_82B0690
+    .word sprite_82BA7BC
     .word battleSpriteProtoMan
     .word comp_82CED74 + 1<<31
     .word comp_82D2AC8 + 1<<31
@@ -79,235 +79,235 @@ naviBattleSprites_8031DA4:    .word spriteWhiteDot
     .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word comp_82E8470 + 1<<31
     .word compSpriteWhiteDot_84E0C4C + 1<<31
-off_8031E00:    .word byte_82EFE48
-    .word byte_82F39C0
-    .word byte_82F569C
-    .word byte_82F6ECC
-    .word byte_82F9CCC
+off_8031E00:    .word sprite_82EFE48
+    .word sprite_82F39C0
+    .word sprite_82F569C
+    .word sprite_82F6ECC
+    .word sprite_82F9CCC
     .word comp_82FCA14 + 1<<31
-    .word byte_82FE378
-    .word byte_82FE704
-    .word byte_82FF95C
-    .word byte_8300CFC
-    .word byte_8300F70
-    .word byte_8303A34
-    .word byte_830451C
-    .word byte_8304700
-    .word byte_8308700
+    .word sprite_82FE378
+    .word sprite_82FE704
+    .word sprite_82FF95C
+    .word sprite_8300CFC
+    .word sprite_8300F70
+    .word sprite_8303A34
+    .word sprite_830451C
+    .word sprite_8304700
+    .word sprite_8308700
     .word compSpriteWhiteDot_84E0C4C + 1<<31
-    .word byte_830902C
-    .word byte_830A308
-    .word byte_830D494
-    .word byte_830E44C
-    .word byte_830F144
-    .word byte_8311288
-    .word byte_83124E8
-    .word byte_8312FB4
-    .word byte_83138C4
-    .word byte_831530C
-    .word byte_831661C
-    .word byte_8317340
-    .word byte_8318920
-    .word byte_83195F0
-    .word byte_8319B5C
-    .word byte_831C8A4
-    .word byte_831CAF8
-    .word byte_831E67C
-    .word byte_831E8C0
-    .word byte_831EA40
-    .word byte_831FA84
-    .word byte_831FCF0
+    .word sprite_830902C
+    .word sprite_830A308
+    .word sprite_830D494
+    .word sprite_830E44C
+    .word sprite_830F144
+    .word sprite_8311288
+    .word sprite_83124E8
+    .word sprite_8312FB4
+    .word sprite_83138C4
+    .word sprite_831530C
+    .word sprite_831661C
+    .word sprite_8317340
+    .word sprite_8318920
+    .word sprite_83195F0
+    .word sprite_8319B5C
+    .word sprite_831C8A4
+    .word sprite_831CAF8
+    .word sprite_831E67C
+    .word sprite_831E8C0
+    .word sprite_831EA40
+    .word sprite_831FA84
+    .word sprite_831FCF0
     .word spriteWhiteDot
-    .word byte_832154C
-    .word byte_8322920
-    .word byte_83234D4
-    .word byte_8323728
-    .word byte_83241F4
-    .word byte_83245E8
-    .word byte_83249B0
-    .word byte_8324E14
-    .word byte_8325038
-    .word byte_83255C0
-    .word byte_8325C94
+    .word sprite_832154C
+    .word sprite_8322920
+    .word sprite_83234D4
+    .word sprite_8323728
+    .word sprite_83241F4
+    .word sprite_83245E8
+    .word sprite_83249B0
+    .word sprite_8324E14
+    .word sprite_8325038
+    .word sprite_83255C0
+    .word sprite_8325C94
     .word spriteWhiteDot
-    .word byte_8325EF4
-    .word byte_83262C0
-    .word byte_8326724
-    .word byte_83279C0
-    .word byte_8329D28
-    .word byte_832C418
-    .word spriteWhiteDot
-    .word spriteWhiteDot
-    .word byte_832E9C8
-    .word byte_832F0C8
-    .word byte_832F8C8
+    .word sprite_8325EF4
+    .word sprite_83262C0
+    .word sprite_8326724
+    .word sprite_83279C0
+    .word sprite_8329D28
+    .word sprite_832C418
     .word spriteWhiteDot
     .word spriteWhiteDot
-    .word byte_8330A30
-    .word byte_8330FA8
+    .word sprite_832E9C8
+    .word sprite_832F0C8
+    .word sprite_832F8C8
     .word spriteWhiteDot
-    .word byte_83317F0
-    .word byte_83322B8
-    .word byte_8332484
     .word spriteWhiteDot
-    .word byte_8333350
+    .word sprite_8330A30
+    .word sprite_8330FA8
+    .word spriteWhiteDot
+    .word sprite_83317F0
+    .word sprite_83322B8
+    .word sprite_8332484
+    .word spriteWhiteDot
+    .word sprite_8333350
     .word comp_8333CC8 + 1<<31
     .word spriteWhiteDot
     .word spriteWhiteDot
     .word comp_8334B0C + 1<<31
     .word comp_83353F4 + 1<<31
-    .word unk_8336320
+    .word sprite_8336320
     .word spriteWhiteDot
-    .word unk_8336D54
+    .word sprite_8336D54
     .word comp_8338170 + 1<<31
-    .word unk_8338F18
-    .word unk_833BE68
-    .word unk_833F3A0
-    .word unk_8342AC4
-    .word unk_8345C50
+    .word sprite_8338F18
+    .word sprite_833BE68
+    .word sprite_833F3A0
+    .word sprite_8342AC4
+    .word sprite_8345C50
     .word spriteWhiteDot
     .word spriteWhiteDot
-    .word unk_8348E80
-    .word unk_83497CC
+    .word sprite_8348E80
+    .word sprite_83497CC
     .word spriteWhiteDot
     .word spriteWhiteDot
-    .word unk_834A108
-    .word unk_834A580
-    .word unk_834AE94
-    .word unk_834B2D0
-    .word unk_834B6A4
-    .word unk_834BBF0
-    .word unk_834BEB8
-    .word unk_834C6F0
+    .word sprite_834A108
+    .word sprite_834A580
+    .word sprite_834AE94
+    .word sprite_834B2D0
+    .word sprite_834B6A4
+    .word sprite_834BBF0
+    .word sprite_834BEB8
+    .word sprite_834C6F0
     .word comp_834FC40 + 1<<31
     .word spriteWhiteDot
     .word compSpriteWhiteDot_84E0C4C + 1<<31
-    .word unk_8350628
+    .word sprite_8350628
     .word compSpriteWhiteDot_84E0C4C + 1<<31
-off_8031FA4:    .word unk_8350888
-    .word unk_8351FA8
-    .word unk_8352360
-    .word unk_83536BC
+off_8031FA4:    .word sprite_8350888
+    .word sprite_8351FA8
+    .word sprite_8352360
+    .word sprite_83536BC
     .word spriteWhiteDot
-    .word unk_83547A4
-    .word unk_8354D0C
-    .word unk_8354EF0
-    .word unk_8355D50
-    .word unk_835613C
-    .word unk_83566F4
-    .word unk_8357308
-    .word unk_8357B10
-    .word unk_8359644
-    .word unk_835AD9C
-    .word unk_835B938
-    .word unk_835C4B0
-    .word unk_835C794
-    .word unk_835CA2C
-    .word unk_835E264
-    .word spriteWhiteDot
-    .word spriteWhiteDot
-    .word unk_835F424
-    .word unk_83607D0
-    .word spriteWhiteDot
-    .word unk_83611FC
-    .word unk_8367848
-    .word unk_8368F54
-    .word unk_836B6A8
-    .word unk_836B818
-    .word spriteWhiteDot
-    .word unk_836C668
-    .word unk_836E034
-    .word unk_836EA90
-    .word unk_836EDB8
-    .word unk_8370D6C
-    .word unk_8371274
-    .word unk_8371C50
-    .word unk_8372410
-    .word unk_8372F34
-    .word unk_83732AC
-    .word unk_8373AFC
-    .word unk_8373D70
-    .word unk_8376364
-    .word unk_8376A24
-    .word unk_8377834
-    .word unk_8377AF4
-    .word unk_8379D44
-    .word unk_837D8E0
-    .word unk_837EB4C
-    .word unk_837F2E0
-    .word spriteWhiteDot
-    .word unk_837FD98
+    .word sprite_83547A4
+    .word sprite_8354D0C
+    .word sprite_8354EF0
+    .word sprite_8355D50
+    .word sprite_835613C
+    .word sprite_83566F4
+    .word sprite_8357308
+    .word sprite_8357B10
+    .word sprite_8359644
+    .word sprite_835AD9C
+    .word sprite_835B938
+    .word sprite_835C4B0
+    .word sprite_835C794
+    .word sprite_835CA2C
+    .word sprite_835E264
     .word spriteWhiteDot
     .word spriteWhiteDot
-    .word unk_83805D4
-    .word unk_8381340
-    .word unk_83822F0
+    .word sprite_835F424
+    .word sprite_83607D0
     .word spriteWhiteDot
-    .word unk_8382928
-    .word unk_8383698
-    .word unk_8385354
+    .word sprite_83611FC
+    .word sprite_8367848
+    .word sprite_8368F54
+    .word sprite_836B6A8
+    .word sprite_836B818
+    .word spriteWhiteDot
+    .word sprite_836C668
+    .word sprite_836E034
+    .word sprite_836EA90
+    .word sprite_836EDB8
+    .word sprite_8370D6C
+    .word sprite_8371274
+    .word sprite_8371C50
+    .word sprite_8372410
+    .word sprite_8372F34
+    .word sprite_83732AC
+    .word sprite_8373AFC
+    .word sprite_8373D70
+    .word sprite_8376364
+    .word sprite_8376A24
+    .word sprite_8377834
+    .word sprite_8377AF4
+    .word sprite_8379D44
+    .word sprite_837D8E0
+    .word sprite_837EB4C
+    .word sprite_837F2E0
+    .word spriteWhiteDot
+    .word sprite_837FD98
     .word spriteWhiteDot
     .word spriteWhiteDot
-    .word unk_8385648
-    .word unk_83864F4
-    .word unk_8387244
-    .word unk_8387E4C
-    .word unk_838849C
-    .word unk_838A9A8
+    .word sprite_83805D4
+    .word sprite_8381340
+    .word sprite_83822F0
+    .word spriteWhiteDot
+    .word sprite_8382928
+    .word sprite_8383698
+    .word sprite_8385354
+    .word spriteWhiteDot
+    .word spriteWhiteDot
+    .word sprite_8385648
+    .word sprite_83864F4
+    .word sprite_8387244
+    .word sprite_8387E4C
+    .word sprite_838849C
+    .word sprite_838A9A8
     .word comp_838B160 + 1<<31
     .word comp_838B438 + 1<<31
-    .word unk_838B930
+    .word sprite_838B930
     .word spriteWhiteDot
-    .word unk_838C3C8
-    .word unk_838C864
-    .word unk_838E194
-    .word unk_838E74C
-    .word unk_838EC00
-    .word unk_83908A4
-    .word unk_8390F44
-    .word unk_8390FC4
-    .word unk_8391E40
-    .word unk_839247C
-    .word unk_83930E0
-    .word unk_8395034
-    .word unk_8395660
-    .word unk_8396650
+    .word sprite_838C3C8
+    .word sprite_838C864
+    .word sprite_838E194
+    .word sprite_838E74C
+    .word sprite_838EC00
+    .word sprite_83908A4
+    .word sprite_8390F44
+    .word sprite_8390FC4
+    .word sprite_8391E40
+    .word sprite_839247C
+    .word sprite_83930E0
+    .word sprite_8395034
+    .word sprite_8395660
+    .word sprite_8396650
     .word spriteWhiteDot
-    .word unk_83971C0
-    .word unk_8398048
+off_8032108:    .word byte_83971C0
+    .word byte_8398048
     .word spriteWhiteDot
-off_8032114:    .word unk_8399578
-    .word unk_839AAB8
-    .word unk_839B9C0
-    .word unk_839CCDC
-    .word unk_83A000C
-    .word unk_83A0DA8
-    .word unk_83A5E30
-    .word unk_83A67AC
-    .word unk_83A9190
-    .word unk_83AC1A8
-    .word unk_83AC430
-    .word unk_83ACF48
-    .word unk_83AD870
-    .word unk_83AE2B4
-    .word unk_83AF658
-    .word unk_83B00F8
+off_8032114:    .word sprite_8399578
+    .word sprite_839AAB8
+    .word sprite_839B9C0
+    .word sprite_839CCDC
+    .word sprite_83A000C
+    .word sprite_83A0DA8
+    .word sprite_83A5E30
+    .word sprite_83A67AC
+    .word sprite_83A9190
+    .word sprite_83AC1A8
+    .word sprite_83AC430
+    .word sprite_83ACF48
+    .word sprite_83AD870
+    .word sprite_83AE2B4
+    .word sprite_83AF658
+    .word sprite_83B00F8
     .word spriteWhiteDot
-    .word unk_83B0A90
-    .word unk_83B2494
-    .word unk_83B3BF4
-    .word unk_83B440C
-    .word unk_83B4AE4
-    .word unk_83B5F44
+    .word sprite_83B0A90
+    .word sprite_83B2494
+    .word sprite_83B3BF4
+    .word sprite_83B440C
+    .word sprite_83B4AE4
+    .word sprite_83B5F44
     .word spriteWhiteDot
-    .word unk_83B92B4
+    .word sprite_83B92B4
     .word spriteWhiteDot
-    .word unk_83BA940
-    .word unk_83BB440
-    .word unk_83BC3B0
-    .word unk_83BCC70
-    .word unk_83BD228
-    .word unk_83BE6B0
+    .word sprite_83BA940
+    .word sprite_83BB440
+    .word sprite_83BC3B0
+    .word sprite_83BCC70
+    .word sprite_83BD228
+    .word sprite_83BE6B0
 npcSprites:    .word npcSpriteLan
     .word npcSpriteMayl
     .word npcSpriteDex
@@ -316,28 +316,28 @@ npcSprites:    .word npcSpriteLan
     .word npcSpriteDad
     .word npcSpriteMom
     .word spriteWhiteDot
-    .word unk_83E0108
-    .word unk_83E1EEC
-    .word unk_83E1EEC
-    .word unk_83E2B48
-    .word unk_83E55F8
-    .word unk_83E7F4C
-    .word unk_83EB980
-    .word unk_83EEF14
-    .word unk_83F37C4
-    .word unk_83F6824
-    .word unk_83FA130
+    .word sprite_83E0108
+    .word sprite_83E1EEC
+    .word sprite_83E1EEC
+    .word sprite_83E2B48
+    .word sprite_83E55F8
+    .word sprite_83E7F4C
+    .word sprite_83EB980
+    .word sprite_83EEF14
+    .word sprite_83F37C4
+    .word sprite_83F6824
+    .word sprite_83FA130
     .word comp_83FDF7C + 1<<31
-    .word unk_83FEC68
+    .word sprite_83FEC68
     .word npcSpriteDad
-    .word unk_8402FA0
-    .word unk_8406044
-    .word unk_84069EC
-    .word unk_8408360
-    .word unk_8408DB4
+    .word sprite_8402FA0
+    .word sprite_8406044
+    .word sprite_84069EC
+    .word sprite_8408360
+    .word sprite_8408DB4
     .word comp_840A4BC + 1<<31
     .word compNpcSpriteMrFamous + 1<<31
-    .word unk_840B3A4
+    .word sprite_840B3A4
     .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word comp_840F4F4 + 1<<31
     .word compSpriteWhiteDot_84E0C4C + 1<<31
@@ -350,16 +350,16 @@ npcSprites:    .word npcSpriteLan
     .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word spriteWhiteDot
     .word spriteWhiteDot
-    .word unk_8411E90
-    .word unk_8415A90
-    .word unk_8419440
-    .word unk_841C9C4
-    .word unk_84201AC
-    .word unk_8424C78
+    .word sprite_8411E90
+    .word sprite_8415A90
+    .word sprite_8419440
+    .word sprite_841C9C4
+    .word sprite_84201AC
+    .word sprite_8424C78
     .word spriteWhiteDot
     .word spriteWhiteDot
-    .word unk_842A630
-    .word unk_842DAC0
+    .word sprite_842A630
+    .word sprite_842DAC0
     .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word spriteWhiteDot
     .word compSpriteWhiteDot_84E0C4C + 1<<31
@@ -384,31 +384,31 @@ npcSprites:    .word npcSpriteLan
     .word spriteWhiteDot
     .word npcSpriteHawkMan
     .word spriteWhiteDot
-    .word unk_8468940
+    .word sprite_8468940
     .word npcSpriteDrillMan
-    .word unk_8477574
+    .word sprite_8477574
     .word spriteWhiteDot
     .word spriteWhiteDot
-    .word unk_8481548
-    .word unk_848334C
+    .word sprite_8481548
+    .word sprite_848334C
     .word npcSpriteColonel
-    .word unk_848FCEC
+    .word sprite_848FCEC
     .word comp_8495434 + 1<<31
-    .word unk_8495B88
+    .word sprite_8495B88
     .word npcSpriteGreenNavi
     .word spriteWhiteDot
-    .word unk_8497CF8
+    .word sprite_8497CF8
     .word comp_8499CF0 + 1<<31
     .word comp_849AAD0 + 1<<31
     .word npcSpriteProgman
     .word npcSpriteProgman
     .word npcSpriteProgman
     .word npcSpriteProgman
-objSprites_8032314:    .word unk_849B424
-    .word unk_849BA28
-    .word unk_849D164
+objSprites_8032314:    .word sprite_849B424
+    .word sprite_849BA28
+    .word sprite_849D164
     .word objSpriteSkullBarrier
-    .word unk_849FBC0
+    .word sprite_849FBC0
     .word spriteWhiteDot
     .word comp_84A03B8 + 1<<31
     .word comp_84A0920 + 1<<31
@@ -419,7 +419,7 @@ objSprites_8032314:    .word unk_849B424
     .word comp_84A225C + 1<<31
     .word spriteWhiteDot
     .word comp_84A24CC + 1<<31
-    .word unk_84A3048
+    .word sprite_84A3048
     .word comp_84A3708 + 1<<31
     .word comp_84A3B44 + 1<<31
     .word comp_84A3E08 + 1<<31
@@ -427,8 +427,8 @@ objSprites_8032314:    .word unk_849B424
     .word comp_84A47F0 + 1<<31
     .word comp_84A4F0C + 1<<31
     .word comp_84A502C + 1<<31
-    .word unk_84A53C4
-    .word unk_84A599C
+    .word sprite_84A53C4
+    .word sprite_84A599C
     .word comp_84A642C + 1<<31
     .word comp_84A6D14 + 1<<31
     .word comp_84A71A0 + 1<<31
@@ -438,60 +438,60 @@ objSprites_8032314:    .word unk_849B424
     .word comp_84A7FA4 + 1<<31
     .word comp_84A8524 + 1<<31
     .word spriteWhiteDot
-    .word unk_84A8AC0
+    .word sprite_84A8AC0
     .word comp_84A8F68 + 1<<31
     .word comp_84A914C + 1<<31
     .word comp_84A96B8 + 1<<31
-    .word unk_84A97A8
+    .word sprite_84A97A8
     .word comp_84AA028 + 1<<31
     .word comp_84AA640 + 1<<31
     .word comp_84AAC80 + 1<<31
     .word comp_84AAE70 + 1<<31
     .word comp_84AAF18 + 1<<31
-    .word unk_84AB2D0
-    .word unk_84AB680
-    .word unk_84ADD6C
+    .word sprite_84AB2D0
+    .word sprite_84AB680
+    .word sprite_84ADD6C
     .word comp_84AE340 + 1<<31
-    .word unk_84AF710
-    .word unk_84B1BA0
+    .word sprite_84AF710
+    .word sprite_84B1BA0
     .word comp_84B42EC + 1<<31
-    .word unk_84B4838
-    .word unk_84B5238
+    .word sprite_84B4838
+    .word sprite_84B5238
     .word comp_84B5734 + 1<<31
-    .word unk_84B5C18
-    .word unk_84B62AC
+    .word sprite_84B5C18
+    .word sprite_84B62AC
     .word comp_84B6744 + 1<<31
-    .word unk_84B7414
-    .word unk_84B8BB4
-    .word unk_84BA414
-    .word unk_84BA7A8
+    .word sprite_84B7414
+    .word sprite_84B8BB4
+    .word sprite_84BA414
+    .word sprite_84BA7A8
     .word comp_84BADF8 + 1<<31
     .word comp_84BB07C + 1<<31
     .word spriteWhiteDot
     .word comp_84BB704 + 1<<31
     .word comp_84BBA74 + 1<<31
-    .word unk_84BC0C8
+    .word sprite_84BC0C8
     .word comp_84BC4D0 + 1<<31
-    .word unk_84BC854
+    .word sprite_84BC854
     .word comp_84BD3FC + 1<<31
     .word comp_84BD83C + 1<<31
-    .word unk_84BDDD4
+    .word sprite_84BDDD4
     .word comp_84BE924 + 1<<31
     .word comp_84BECDC + 1<<31
     .word comp_84BEF4C + 1<<31
     .word comp_84BF174 + 1<<31
-    .word unk_84BF6F8
+    .word sprite_84BF6F8
     .word comp_84C0150 + 1<<31
-    .word unk_84C0298
-    .word unk_84C2D34
+    .word sprite_84C0298
+    .word sprite_84C2D34
     .word spriteWhiteDot
     .word comp_84C3C90 + 1<<31
     .word comp_84C3F54 + 1<<31
     .word comp_84C43AC + 1<<31
-    .word unk_84C5194
-    .word unk_84C832C
+    .word sprite_84C5194
+    .word sprite_84C832C
     .word comp_84C8DEC + 1<<31
-    .word unk_84C90B4
+    .word sprite_84C90B4
     .word comp_84CA1BC + 1<<31
     .word comp_84CA74C + 1<<31
     .word comp_84CA9E8 + 1<<31
@@ -509,7 +509,7 @@ objSprites_8032314:    .word unk_849B424
     .word comp_84CD83C + 1<<31
     .word comp_84CDCE8 + 1<<31
     .word comp_84CDE24 + 1<<31
-    .word unk_84CDF74
+    .word sprite_84CDF74
     .word comp_84CF9D8 + 1<<31
     .word comp_84CFC7C + 1<<31
     .word comp_84D014C + 1<<31
@@ -521,7 +521,7 @@ objSprites_8032314:    .word unk_849B424
     .word comp_84D3998 + 1<<31
     .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word compSpriteWhiteDot_84E0C4C + 1<<31
-    .word unk_84D3DBC
+    .word sprite_84D3DBC
     .word comp_84D4AC4 + 1<<31
     .word comp_84D4CC8 + 1<<31
     .word comp_84D4FF0 + 1<<31
@@ -562,7 +562,7 @@ objSprites_8032314:    .word unk_849B424
     .word comp_84DE728 + 1<<31
     .word comp_84DEFD8 + 1<<31
     .word comp_84DF674 + 1<<31
-    .word unk_84DF96C
+    .word sprite_84DF96C
     .word comp_84E00A0 + 1<<31
     .word spriteWhiteDot
 mugshots_8032598:    .word mugshotLan
@@ -573,98 +573,98 @@ mugshots_8032598:    .word mugshotLan
     .word mugshotDad
     .word mugshotMom
     .word mugshotBlack
-    .word byte_84E3E80
-    .word byte_84E44CC
-    .word byte_84E4AAC
-    .word byte_84E4FC8
-    .word byte_84E55C8
-    .word byte_84E5C4C
-    .word byte_84E6244
-    .word byte_84E6804
-    .word byte_84E6EA4
-    .word byte_84E74E0
-    .word byte_84E7B00
-    .word byte_84E8120
-    .word byte_84E8800
-    .word byte_84E8E60
-    .word byte_84E9460
-    .word byte_84E9A18
-    .word byte_84EA01C
-    .word byte_84EA61C
-    .word byte_84EACDC
-    .word byte_84EB328
+    .word sprite_84E3E80
+    .word sprite_84E44CC
+    .word sprite_84E4AAC
+    .word sprite_84E4FC8
+    .word sprite_84E55C8
+    .word sprite_84E5C4C
+    .word sprite_84E6244
+    .word sprite_84E6804
+    .word sprite_84E6EA4
+    .word sprite_84E74E0
+    .word sprite_84E7B00
+    .word sprite_84E8120
+    .word sprite_84E8800
+    .word sprite_84E8E60
+    .word sprite_84E9460
+    .word sprite_84E9A18
+    .word sprite_84EA01C
+    .word sprite_84EA61C
+    .word sprite_84EACDC
+    .word sprite_84EB328
     .word mugshotMrFamous
     .word mugshotDrWily
     .word mugshotBlack
     .word mugshotShuko
     .word mugshotBlack
-    .word byte_84ECD24
+    .word sprite_84ECD24
     .word mugshotBlack
-    .word byte_84ED4B4
-    .word byte_84EDA70
-    .word byte_84EE048
-    .word mugshotBlack
-    .word mugshotBlack
+    .word sprite_84ED4B4
+    .word sprite_84EDA70
+    .word sprite_84EE048
     .word mugshotBlack
     .word mugshotBlack
-    .word byte_84EE7FC
-    .word byte_84EEFDC
-    .word byte_84EF69C
-    .word byte_84EFB78
-    .word byte_84F0094
-    .word byte_84F070C
     .word mugshotBlack
     .word mugshotBlack
-    .word byte_84F0CC4
-    .word byte_84F13D0
+    .word sprite_84EE7FC
+    .word sprite_84EEFDC
+    .word sprite_84EF69C
+    .word sprite_84EFB78
+    .word sprite_84F0094
+    .word sprite_84F070C
+    .word mugshotBlack
+    .word mugshotBlack
+    .word sprite_84F0CC4
+    .word sprite_84F13D0
     .word mugshotBlack
     .word mugshotBlack
     .word mugshotBlack
     .word mugshotMegaMan
-    .word byte_84F223C
-    .word byte_84F2908
-    .word byte_84F3100
-    .word byte_84F362C
-    .word byte_84F3B08
-    .word byte_84F3B08
-    .word byte_84F4324
-    .word byte_84F4324
-    .word byte_84F4324
-    .word byte_84F4868
-    .word byte_84F4DD4
-    .word byte_84F5340
-    .word byte_84F5340
-    .word byte_84F57A4
-    .word byte_84F57A4
+    .word sprite_84F223C
+    .word sprite_84F2908
+    .word sprite_84F3100
+    .word sprite_84F362C
+    .word sprite_84F3B08
+    .word sprite_84F3B08
+    .word sprite_84F4324
+    .word sprite_84F4324
+    .word sprite_84F4324
+    .word sprite_84F4868
+    .word sprite_84F4DD4
+    .word sprite_84F5340
+    .word sprite_84F5340
+    .word sprite_84F57A4
+    .word sprite_84F57A4
     .word mugshotBlack
-    .word byte_84F5CE0
+    .word sprite_84F5CE0
     .word mugshotBlack
-    .word byte_84F6354
+    .word sprite_84F6354
     .word mugshotBlack
-    .word byte_84F68C0
-    .word byte_84F6F84
-    .word byte_84F75A8
+    .word sprite_84F68C0
+    .word sprite_84F6F84
+    .word sprite_84F75A8
     .word mugshotBlack
     .word mugshotBlack
-    .word byte_84F7C44
-    .word byte_84F81B0
-    .word byte_84F8754
-    .word byte_84F8E10
-    .word byte_84F9534
-    .word byte_84F9978
-    .word byte_84F4324
+    .word sprite_84F7C44
+    .word sprite_84F81B0
+    .word sprite_84F8754
+    .word sprite_84F8E10
+    .word sprite_84F9534
+    .word sprite_84F9978
+    .word sprite_84F4324
     .word mugshotBlack
-    .word byte_84F9E48
-    .word byte_84FA28C
-    .word byte_84FA744
-    .word byte_84F3B08
-    .word byte_84F3B08
-    .word byte_84F3B08
-    .word byte_84F3B08
+    .word sprite_84F9E48
+    .word sprite_84FA28C
+    .word sprite_84FA744
+    .word sprite_84F3B08
+    .word sprite_84F3B08
+    .word sprite_84F3B08
+    .word sprite_84F3B08
     .word mugshotBlack
-guiSprites_803271C:    .word byte_86CBB7C
-    .word byte_86CC13C
-    .word byte_86CD410
+guiSprites_803271C:    .word sprite_86CBB7C
+    .word sprite_86CC13C
+    .word sprite_86CD410
     .word comp_86C6B30 + 1<<31
     .word comp_86C6FD0 + 1<<31
     .word comp_86C73D8 + 1<<31
@@ -687,12 +687,12 @@ guiSprites_803271C:    .word byte_86CBB7C
     .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word comp_86D54F4 + 1<<31
     .word spriteWhiteDot
-    .word unk_849B424
+    .word sprite_849B424
     .word battleSpriteMegaMan
     .word battleSpriteMegaMan
     .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word compSpriteWhiteDot_84E0C4C + 1<<31
-    .word byte_82F6ECC
+    .word sprite_82F6ECC
     .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word compSpriteWhiteDot_84E0C4C + 1<<31
@@ -706,46 +706,46 @@ guiSprites_803271C:    .word byte_86CBB7C
     .word comp_86D9D10 + 1<<31
     .word comp_86DC518 + 1<<31
     .word comp_86DC688 + 1<<31
-    .word unk_83B5F44
+    .word sprite_83B5F44
     .word comp_86D8C80 + 1<<31
     .word spriteWhiteDot
     .word spriteWhiteDot
     .word battleSpriteFlameMan
-    .word byte_87DC190
-    .word byte_87DC5F0
+    .word sprite_87DC190
+    .word sprite_87DC5F0
     .word dword_87DD248
     .word spriteWhiteDot
     .word spriteWhiteDot
-    .word byte_87DDB7C
+    .word sprite_87DDB7C
     .word spriteWhiteDot
     .word spriteWhiteDot
-    .word byte_87E069C
-    .word byte_87E0854
-    .word byte_87E0E44
+off_8032800:    .word sprite_87E069C
+    .word sprite_87E0854
+    .word sprite_87E0E44
     .word spriteWhiteDot
-    .word unk_8379D44
-    .word byte_87E6E20
+    .word sprite_8379D44
+    .word sprite_87E6E20
     .word battleSpriteFlameMan
     .word battleSpriteElecMan
     .word battleSpriteSlashMan
-    .word byte_828324C
-    .word byte_828F18C
+    .word sprite_828324C
+    .word sprite_828F18C
     .word battleSpriteSpoutMan
-    .word byte_829D818
-    .word byte_82A5AF0
-    .word byte_82B0690
-    .word byte_82BA7BC
-    .word unk_83611FC
-    .word unk_836EA90
-    .word unk_838EC00
-    .word byte_82F9CCC
-    .word unk_8338F18
-    .word unk_833BE68
-    .word unk_8342AC4
-    .word byte_8319B5C
-    .word unk_833F3A0
-    .word unk_834C6F0
-    .word byte_8300F70
+    .word sprite_829D818
+    .word sprite_82A5AF0
+    .word sprite_82B0690
+    .word sprite_82BA7BC
+    .word sprite_83611FC
+    .word sprite_836EA90
+    .word sprite_838EC00
+    .word sprite_82F9CCC
+    .word sprite_8338F18
+    .word sprite_833BE68
+    .word sprite_8342AC4
+    .word sprite_8319B5C
+    .word sprite_833F3A0
+    .word sprite_834C6F0
+    .word sprite_8300F70
     .word battleSpriteFlameCross
     .word battleSpriteElecCross
     .word battleSpriteSlashCross
@@ -761,11 +761,11 @@ guiSprites_803271C:    .word byte_86CBB7C
     .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word comp_86DB208 + 1<<31
     .word battleSpriteProtoMan
-    .word byte_87E1D84
-    .word byte_87E24F4
-    .word byte_87E1894
-    .word byte_87E1AD4
-    .word byte_87E2860
+    .word sprite_87E1D84
+    .word sprite_87E24F4
+    .word sprite_87E1894
+    .word sprite_87E1AD4
+    .word sprite_87E2860
     .word comp_86DBB0C + 1<<31
     .word comp_86DB9C4 + 1<<31
     .word compVirusBattleSpriteMetteur + 1<<31
@@ -782,8 +782,8 @@ guiSprites_803271C:    .word byte_86CBB7C
     .word compVirusBattleSprite_824DC7C + 1<<31
     .word virusBattleSprite_824EAF4
     .word compVirusBattleSprite_8252558 + 1<<31
-    .word byte_82533F4
-    .word byte_8253F88
+    .word sprite_82533F4
+    .word sprite_8253F88
     .word comp_8257994 + 1<<31
     .word comp_825859C + 1<<31
     .word comp_8258FF8 + 1<<31
@@ -791,10 +791,10 @@ guiSprites_803271C:    .word byte_86CBB7C
     .word comp_825AD90 + 1<<31
     .word comp_825B860 + 1<<31
     .word comp_825BFC4 + 1<<31
-    .word byte_825C9AC
+    .word sprite_825C9AC
     .word comp_825DFB4 + 1<<31
-    .word byte_825F2C8
-    .word byte_8260F88
+    .word sprite_825F2C8
+    .word sprite_8260F88
     .word comp_8262CEC + 1<<31
     .word comp_8263484 + 1<<31
     .word npcSpriteLan
@@ -804,27 +804,27 @@ guiSprites_803271C:    .word byte_86CBB7C
     .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word compSpriteWhiteDot_84E0C4C + 1<<31
     .word compSpriteWhiteDot_84E0C4C + 1<<31
-    .word unk_839CCDC
+    .word sprite_839CCDC
     .word comp_82FCA14 + 1<<31
-    .word unk_8345C50
-    .word byte_8304700
-    .word byte_830A308
+    .word sprite_8345C50
+    .word sprite_8304700
+    .word sprite_830A308
     .word comp_82E8470 + 1<<31
-    .word byte_828F18C
-    .word unk_8355D50
-    .word unk_838849C
-    .word byte_8318920
-    .word unk_839B9C0
-    .word unk_8351FA8
+    .word sprite_828F18C
+    .word sprite_8355D50
+    .word sprite_838849C
+    .word sprite_8318920
+    .word sprite_839B9C0
+    .word sprite_8351FA8
     .word compVirusBattleSpriteMetteur + 1<<31
-    .word unk_8399578
-    .word unk_83AE2B4
+    .word sprite_8399578
+    .word sprite_83AE2B4
     .word compVirusBattleSprite_824D23C + 1<<31
-    .word byte_8253F88
+    .word sprite_8253F88
     .word comp_825DFB4 + 1<<31
-    .word unk_837D8E0
-    .word unk_838E194
-    .word unk_83A9190
+    .word sprite_837D8E0
+    .word sprite_838E194
+    .word sprite_83A9190
 off_80329A8:    .word off_8032A20
     .word off_8032A38
     .word off_8032A74

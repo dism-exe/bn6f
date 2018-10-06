@@ -2,7 +2,7 @@
 .equ INC_DATA_DAT38_57, 0
 
 /* Public Symbols */
-.global unk_84D3DBC
+.global sprite_84D3DBC
 
 
 /* External Symbols */

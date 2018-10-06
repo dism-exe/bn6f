@@ -248,9 +248,9 @@ virusBattleSprite_824EAF4:
 .incbin "data/sprites/virusBattleSprite_824EAF4.spr"
 compVirusBattleSprite_8252558:
 .incbin "data/sprites/compVirusBattleSprite_8252558.lz77"
-byte_82533F4:
+sprite_82533F4:
 .incbin "data/sprites/byte_82533F4.spr"
-byte_8253F88:
+sprite_8253F88:
 .incbin "data/sprites/byte_8253F88.spr"
 comp_8257994:
 .incbin "data/sprites/comp_8257994.lz77"
@@ -266,13 +266,13 @@ comp_825B860:
 .incbin "data/sprites/comp_825B860.lz77"
 comp_825BFC4:
 .incbin "data/sprites/comp_825BFC4.lz77"
-byte_825C9AC:
+sprite_825C9AC:
 .incbin "data/sprites/byte_825C9AC.spr"
 comp_825DFB4:
 .incbin "data/sprites/comp_825DFB4.lz77"
-byte_825F2C8:
+sprite_825F2C8:
 .incbin "data/sprites/byte_825F2C8.spr"
-byte_8260F88:
+sprite_8260F88:
 .incbin "data/sprites/byte_8260F88.spr"
 comp_8262CEC:
 .incbin "data/sprites/comp_8262CEC.lz77"
@@ -286,19 +286,19 @@ battleSpriteElecMan:
 .incbin "data/sprites/battleSpriteElecMan.spr"
 battleSpriteSlashMan:
 .incbin "data/sprites/battleSpriteSlashMan.spr"
-byte_828324C:
+sprite_828324C:
 .incbin "data/sprites/byte_828324C.spr"
-byte_828F18C:
+sprite_828F18C:
 .incbin "data/sprites/byte_828F18C.spr"
 battleSpriteSpoutMan:
 .incbin "data/sprites/battleSpriteSpoutMan.spr"
-byte_829D818:
+sprite_829D818:
 .incbin "data/sprites/byte_829D818.spr"
-byte_82A5AF0:
+sprite_82A5AF0:
 .incbin "data/sprites/byte_82A5AF0.spr"
-byte_82B0690:
+sprite_82B0690:
 .incbin "data/sprites/byte_82B0690.spr"
-byte_82BA7BC:
+sprite_82BA7BC:
 .incbin "data/sprites/byte_82BA7BC.spr"
 battleSpriteProtoMan:
 .incbin "data/sprites/battleSpriteProtoMan.spr"
@@ -318,131 +318,131 @@ comp_82E4050:
 .incbin "data/compressed/comp_82E4050.lz77"
 comp_82E8470:
 .incbin "data/compressed/comp_82E8470.lz77"
-byte_82EFE48:
+sprite_82EFE48:
 .incbin "data/sprites/byte_82EFE48.spr"
-byte_82F39C0:
+sprite_82F39C0:
 .incbin "data/sprites/byte_82F39C0.spr"
-byte_82F569C:
+sprite_82F569C:
 .incbin "data/sprites/byte_82F569C.spr"
-byte_82F6ECC:
+sprite_82F6ECC:
 .incbin "data/sprites/byte_82F6ECC.spr"
-byte_82F9CCC:
+sprite_82F9CCC:
 .incbin "data/sprites/byte_82F9CCC.spr"
 comp_82FCA14:
 .incbin "data/compressed/comp_82FCA14.lz77"
-byte_82FE378:
+sprite_82FE378:
 .incbin "data/sprites/byte_82FE378.spr"
-byte_82FE704:
+sprite_82FE704:
 .incbin "data/sprites/byte_82FE704.spr"
-byte_82FF95C:
+sprite_82FF95C:
 .incbin "data/sprites/byte_82FF95C.spr"
-byte_8300CFC:
+sprite_8300CFC:
 .incbin "data/sprites/byte_8300CFC.spr"
-byte_8300F70:
+sprite_8300F70:
 .incbin "data/sprites/byte_8300F70.spr"
-byte_8303A34:
+sprite_8303A34:
 .incbin "data/sprites/byte_8303A34.spr"
-byte_830451C:
+sprite_830451C:
 .incbin "data/sprites/byte_830451C.spr"
-byte_8304700:
+sprite_8304700:
 .incbin "data/sprites/byte_8304700.spr"
-byte_8308700:
+sprite_8308700:
 .incbin "data/sprites/byte_8308700.spr"
-byte_830902C:
+sprite_830902C:
 .incbin "data/sprites/byte_830902C.spr"
-byte_830A308:
+sprite_830A308:
 .incbin "data/sprites/byte_830A308.spr"
-byte_830D494:
+sprite_830D494:
 .incbin "data/sprites/byte_830D494.spr"
-byte_830E44C:
+sprite_830E44C:
 .incbin "data/sprites/byte_830E44C.spr"
-byte_830F144:
+sprite_830F144:
 .incbin "data/sprites/byte_830F144.spr"
-byte_8311288:
+sprite_8311288:
 .incbin "data/sprites/byte_8311288.spr"
-byte_83124E8:
+sprite_83124E8:
 .incbin "data/sprites/byte_83124E8.spr"
-byte_8312FB4:
+sprite_8312FB4:
 .incbin "data/sprites/byte_8312FB4.spr"
-byte_83138C4:
+sprite_83138C4:
 .incbin "data/sprites/byte_83138C4.spr"
-byte_831530C:
+sprite_831530C:
 .incbin "data/sprites/byte_831530C.spr"
-byte_831661C:
+sprite_831661C:
 .incbin "data/sprites/byte_831661C.spr"
-byte_8317340:
+sprite_8317340:
 .incbin "data/sprites/byte_8317340.spr"
-byte_8318920:
+sprite_8318920:
 .incbin "data/sprites/byte_8318920.spr"
-byte_83195F0:
+sprite_83195F0:
 .incbin "data/sprites/byte_83195F0.spr"
-byte_8319B5C:
+sprite_8319B5C:
 .incbin "data/sprites/byte_8319B5C.spr"
-byte_831C8A4:
+sprite_831C8A4:
 .incbin "data/sprites/byte_831C8A4.spr"
-byte_831CAF8:
+sprite_831CAF8:
 .incbin "data/sprites/byte_831CAF8.spr"
-byte_831E67C:
+sprite_831E67C:
 .incbin "data/sprites/byte_831E67C.spr"
-byte_831E8C0:
+sprite_831E8C0:
 .incbin "data/sprites/byte_831E8C0.spr"
-byte_831EA40:
+sprite_831EA40:
 .incbin "data/sprites/byte_831EA40.spr"
-byte_831FA84:
+sprite_831FA84:
 .incbin "data/sprites/byte_831FA84.spr"
-byte_831FCF0:
+sprite_831FCF0:
 .incbin "data/sprites/byte_831FCF0.spr"
-byte_832154C:
+sprite_832154C:
 .incbin "data/sprites/byte_832154C.spr"
-byte_8322920:
+sprite_8322920:
 .incbin "data/sprites/byte_8322920.spr"
-byte_83234D4:
+sprite_83234D4:
 .incbin "data/sprites/byte_83234D4.spr"
-byte_8323728:
+sprite_8323728:
 .incbin "data/sprites/byte_8323728.spr"
-byte_83241F4:
+sprite_83241F4:
 .incbin "data/sprites/byte_83241F4.spr"
-byte_83245E8:
+sprite_83245E8:
 .incbin "data/sprites/byte_83245E8.spr"
-byte_83249B0:
+sprite_83249B0:
 .incbin "data/sprites/byte_83249B0.spr"
-byte_8324E14:
+sprite_8324E14:
 .incbin "data/sprites/byte_8324E14.spr"
-byte_8325038:
+sprite_8325038:
 .incbin "data/sprites/byte_8325038.spr"
-byte_83255C0:
+sprite_83255C0:
 .incbin "data/sprites/byte_83255C0.spr"
-byte_8325C94:
+sprite_8325C94:
 .incbin "data/sprites/byte_8325C94.spr"
-byte_8325EF4:
+sprite_8325EF4:
 .incbin "data/sprites/byte_8325EF4.spr"
-byte_83262C0:
+sprite_83262C0:
 .incbin "data/sprites/byte_83262C0.spr"
-byte_8326724:
+sprite_8326724:
 .incbin "data/sprites/byte_8326724.spr"
-byte_83279C0:
+sprite_83279C0:
 .incbin "data/sprites/byte_83279C0.spr"
-byte_8329D28:
+sprite_8329D28:
 .incbin "data/sprites/byte_8329D28.spr"
-byte_832C418:
+sprite_832C418:
 .incbin "data/sprites/byte_832C418.spr"
-byte_832E9C8:
+sprite_832E9C8:
 .incbin "data/sprites/byte_832E9C8.spr"
-byte_832F0C8:
+sprite_832F0C8:
 .incbin "data/sprites/byte_832F0C8.spr"
-byte_832F8C8:
+sprite_832F8C8:
 .incbin "data/sprites/byte_832F8C8.spr"
-byte_8330A30:
+sprite_8330A30:
 .incbin "data/sprites/byte_8330A30.spr"
-byte_8330FA8:
+sprite_8330FA8:
 .incbin "data/sprites/byte_8330FA8.spr"
-byte_83317F0:
+sprite_83317F0:
 .incbin "data/sprites/byte_83317F0.spr"
-byte_83322B8:
+sprite_83322B8:
 .incbin "data/sprites/byte_83322B8.spr"
-byte_8332484:
+sprite_8332484:
 .incbin "data/sprites/byte_8332484.spr"
-byte_8333350:
+sprite_8333350:
 .incbin "data/sprites/byte_8333350.spr"
 comp_8333CC8:
 .incbin "data/compressed/comp_8333CC8.lz77"

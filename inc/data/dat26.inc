@@ -2,6 +2,8 @@
 .equ INC_DATA_DAT26, 0
 
 /* Public Symbols */
+.global byte_8093A64
+.global unk_8093B60
 
 
 /* External Symbols */

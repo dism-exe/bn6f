@@ -48,6 +48,7 @@
 .global off_80E0408
 .global sub_80E05F6
 .global sub_80E06F8
+.global byte_80E083F
 .global sub_80E08C4
 .global sub_80E09EE
 .global sub_80E0D98
@@ -115,6 +116,7 @@
 .global dword_80FD044
 .global dword_80FDCF0
 .global dword_80FE7D0
+.global byte_8100315
 .global off_81090D0
 .global off_8109150
 .global byte_8109250

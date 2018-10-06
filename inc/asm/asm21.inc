@@ -43,10 +43,10 @@
 // .global dword_807F604
 // .global dword_807F868
 // .global off_807FAC0
-// .global dword_807FAC4
-// .global dword_807FAC4
-// .global dword_807FAC4
-// .global dword_807FAC4
+// .global byte_807FB98
+// .global byte_807FE88
+// .global byte_8080115
+// .global byte_8080115
 // .global byte_8080598
 // .global byte_80805C0
 // .global byte_80808B0

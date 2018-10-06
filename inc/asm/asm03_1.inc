@@ -360,7 +360,7 @@
 
 .include "data/dat04.inc"
 // .global off_804E92C
-// .global dword_804E940
+// .global off_804E940
 // .global off_804E954
 // .global off_804E968
 // .global byte_804EA08
@@ -368,15 +368,15 @@
 // .global byte_804EA12
 // .global byte_804EA1C
 // .global byte_804EA1C
-// .global dword_80525C0
-// .global dword_80525DC
+// .global unk_80525C0
+// .global byte_80525DC
 
 .include "asm/asm05.inc"
 // .global sub_80527F0
 
 .include "data/dat05.inc"
 // .global off_8052D88
-// .global dword_8052DB4
+// .global off_8052DB4
 // .global off_8052DE0
 // .global off_8052E0C
 // .global byte_8052F6C
@@ -388,7 +388,7 @@
 
 .include "data/dat06.inc"
 // .global off_8059D48
-// .global dword_8059D5C
+// .global off_8059D5C
 // .global off_8059D70
 // .global off_8059D84
 // .global byte_8059E24

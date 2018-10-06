@@ -2248,7 +2248,7 @@ off_80014B4:    .word dword_80014BC
 off_80014B8:    .word sCamera+0x4C // sCamera.unk_4C
 dword_80014BC:    .word 0x10100808
     .word 0x40402020
-    .word unk_8200810
+    .word byte_8200810
     .word 0x20401020
     .word 0x20081008
     .word 0x40202010
@@ -2877,12 +2877,14 @@ sub_8001974:
     str r1, [r2,#0x4] // (dword_200A884 - 0x200a880)
     mov r0, #4
     bl start_800024C
-.endfunc // sub_8001974
-
     pop {pc}
     .balign 4, 0x00
 off_800198C:    .word locret_8001AB4+1
 dword_8001990:    .word 0x3005CD9
+.endfunc // sub_8001974
+
+.func
+.thumb_func
 cb_call_200A880:
     push {lr}
     ldr r1, off_80019AC // =dword_200A880 
@@ -2890,6 +2892,8 @@ cb_call_200A880:
     mov lr, pc
     bx r0
     pop {pc}
+.endfunc // cb_call_200A880
+
 .func
 .thumb_func
 sub_80019A0:
@@ -4454,6 +4458,7 @@ sub_80024CC:
     push {r4,r5}
     mov r4, #4
     b loc_80024E2
+loc_80024D8:
     push {r4-r7,lr}
     mov r4, r8
     mov r5, r9

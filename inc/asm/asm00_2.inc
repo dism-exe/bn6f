@@ -116,6 +116,7 @@
 .global sub_8012DFC
 .global sub_8012E74
 .global sub_8012EA8
+.global loc_8013308
 .global sub_80133EC
 .global sub_8013422
 .global initStruct_8013438 // (void *struc) -> void
@@ -850,7 +851,7 @@
 .equ unk_3001A80, 0x3001A80
 .equ unk_3001AC0, 0x3001AC0
 .equ unk_3001AE0, 0x3001AE0
-.equ unk_3001B00, 0x3001B00
+.equ byte_3001B00, 0x3001B00
 .equ loc_3007550, 0x3007550
 .equ loc_300777C, 0x300777C
 .equ LCDControl, 0x4000000

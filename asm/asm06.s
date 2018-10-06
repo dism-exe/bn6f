@@ -45,11 +45,18 @@ off_8059614:    .word off_8059294
 off_8059618:    .word unk_2037800
 off_805961C:    .word off_8059DE8
 off_8059620:    .word off_8059624
-off_8059624:    .word dword_8059638
-    .word 0x8059646, 0x805964E, 0x805965A, 0x8059662
-dword_8059638:    .word 0x3E1C3D1C, 0x321C131C, 0x1B182F1C, 0x351CFFFF, 0x461C451C
-    .word 0x351CFFFF, 0x2F1C4D1C, 0x1C182518, 0x351CFFFF, 0x481C401C
-    .word 0xFFFFFFFF
+off_8059624:    .word byte_8059638
+    .word byte_8059646
+    .word byte_805964E
+    .word byte_805965A
+    .word byte_8059662
+byte_8059638:    .byte 0x1C, 0x3D, 0x1C, 0x3E, 0x1C, 0x13, 0x1C, 0x32, 0x1C
+    .byte 0x2F, 0x18, 0x1B, 0xFF, 0xFF
+byte_8059646:    .byte 0x1C, 0x35, 0x1C, 0x45, 0x1C, 0x46, 0xFF, 0xFF
+byte_805964E:    .byte 0x1C, 0x35, 0x1C, 0x4D, 0x1C, 0x2F, 0x18, 0x25, 0x18
+    .byte 0x1C, 0xFF, 0xFF
+byte_805965A:    .byte 0x1C, 0x35, 0x1C, 0x40, 0x1C, 0x48, 0xFF, 0xFF
+byte_8059662:    .byte 0xFF, 0xFF
 .endfunc // sub_80595B8
 
 .func
@@ -69,19 +76,19 @@ off_8059678:    .word off_805968C
     .word off_80596B4
     .word off_80596BC
 off_805968C:    .word off_8059378
-    .word byte_80593B8
-    .word byte_80593F8
-    .word byte_8059438
+    .word unk_80593B8
+    .word unk_80593F8
+    .word unk_8059438
     .word 0xFFFFFFFF
-off_80596A0:    .word byte_8059468
-    .word byte_80594A8
+off_80596A0:    .word unk_8059468
+    .word unk_80594A8
     .word 0xFFFFFFFF
-off_80596AC:    .word byte_80594E8
+off_80596AC:    .word unk_80594E8
     .word 0xFFFFFFFF
-off_80596B4:    .word byte_8059528
+off_80596B4:    .word unk_8059528
     .word 0xFFFFFFFF
-off_80596BC:    .word byte_8059558
-    .word byte_8059588
+off_80596BC:    .word unk_8059558
+    .word unk_8059588
     .word 0xFFFFFFFF
 .endfunc // sub_8059664
 
