@@ -1,3 +1,5 @@
+include $(DEVKITARM)/base_tools
+
 # binary tools used in build
 # (the arm-none-eabi toolchain should be in the path)
 MAKE = make
