@@ -1,4 +1,4 @@
-.include "asm/main.inc"
+//.include "asm/main.inc"
 
 .func
 .thumb_func
@@ -48,13 +48,29 @@ loc_800032A:
     bl main_static_8000454
     b main_gameRoutine
     .balign 4, 0x00
-off_8000344:    .word loc_3006814+1
-off_8000348:    .word main_jt_subsystem
-main_jt_subsystem:    .word Load_ho_802F544+1, cb_80050EC+1, ho_jackIn_80341B6+1, cb_8038AD0+1
-    .word cb_803D1CA+1, cb_803FB3C+1, cb_80395A4+1, cb_803CBA6+1
-    .word cb_803CCD6+1, reqBBS_cb_draw_813E0A4+1, menuControl_cb_openSubmenu+1, cb_8046CF8+1
-    .word cb_8048FD4+1, cb_804A304+1, cb_81382AC+1, 0x0
-    .word 0x0, reqBBS_cb_813F404+1, menuControl_cb_email+1, cb_8049E04+1
+off_8000344: .word loc_3006814+1
+off_8000348: .word main_jt_subsystem
+main_jt_subsystem:
+    .word Load_ho_802F544+1
+	.word cb_80050EC+1
+	.word ho_jackIn_80341B6+1
+	.word cb_8038AD0+1
+    .word cb_803D1CA+1
+	.word cb_803FB3C+1
+	.word cb_80395A4+1
+	.word cb_803CBA6+1
+    .word cb_803CCD6+1
+	.word reqBBS_cb_draw_813E0A4+1
+	.word menuControl_cb_openSubmenu+1
+	.word cb_8046CF8+1
+    .word cb_8048FD4+1
+	.word cb_804A304+1
+	.word cb_81382AC+1
+	.word 0x0
+    .word 0x0
+	.word reqBBS_cb_813F404+1
+	.word menuControl_cb_email+1
+	.word cb_8049E04+1
     .byte 0, 0, 0, 0
 .endfunc // main_
 

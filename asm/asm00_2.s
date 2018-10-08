@@ -21938,7 +21938,7 @@ loc_801A034:
     mov r1, #0x40 
     bl sub_80008C0
     ldr r0, [r5,#0x54]
-    ldr r3, off_801A0CC // =loc_300777C+1 
+    ldr r3, off_801A0CC // =sub_300777C+1 
     mov lr, pc
     bx r3
 .endfunc // sub_801A018
@@ -22031,8 +22031,8 @@ sub_801A0BA:
     ldr r0, [r3,r1]
     mov pc, lr
     .balign 4, 0x00
-off_801A0C8:    .word loc_3007550+1
-off_801A0CC:    .word loc_300777C+1
+off_801A0C8:    .word sub_3007550+1
+off_801A0CC:    .word sub_300777C+1
 off_801A0D0:    .word dword_8019C7C
 .endfunc // sub_801A0BA
 

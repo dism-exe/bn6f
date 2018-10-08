@@ -24746,7 +24746,7 @@ dword_814DBF4:    .word 0x4710A200
 .func
 .thumb_func
 sub_814DC04:
-    ldr r0, off_814DC70 // =loc_3007FF0 
+    ldr r0, off_814DC70 // =unk_3007FF0 
     ldr r0, [r0]
     ldr r2, dword_814DC74 // =0x68736D53 
     ldr r3, [r0]
@@ -24805,7 +24805,7 @@ loc_814DC66:
     ldr r3, off_814DC78 // =loc_3005700+1 
     bx r3
     .hword 0x0
-off_814DC70:    .word loc_3007FF0
+off_814DC70:    .word unk_3007FF0
 dword_814DC74:    .word 0x68736D53
 off_814DC78:    .word loc_3005700+1
 off_814DC7C:    .word VerticalCounter_LY_
@@ -25615,7 +25615,7 @@ loc_814E27C:
     bge loc_814E294
     b loc_814E4BC
 loc_814E294:
-    ldr r0, off_814E4D4 // =loc_3007FF0 
+    ldr r0, off_814E4D4 // =unk_3007FF0 
     ldr r0, [r0]
     mov r8, r0
     add r0, r7, #0
@@ -25935,7 +25935,7 @@ sub_814E4CC:
     bx r3
     .byte 0, 0
 off_814E4D0:    .word unk_81C068C
-off_814E4D4:    .word loc_3007FF0
+off_814E4D4:    .word unk_3007FF0
 dword_814E4D8:    .word 0x68736D53
 .endfunc // sub_814E4CC
 
@@ -25960,7 +25960,7 @@ loc_814E4F0:
     mov r3, #7
     and r0, r3
     beq loc_814E508
-    ldr r3, off_814E524 // =loc_3007FF0 
+    ldr r3, off_814E524 // =unk_3007FF0 
     ldr r3, [r3]
     ldr r3, [r3,#0x2c]
     bl sub_814E4CC
@@ -25983,7 +25983,7 @@ loc_814E51E:
     pop {r4-r6}
     pop {r0}
     bx r0
-off_814E524:    .word loc_3007FF0
+off_814E524:    .word unk_3007FF0
 .endfunc // sub_814E4DC
 
 .func
@@ -26029,7 +26029,7 @@ sub_814E558:
     sub sp, sp, #0x18
     str r1, [sp]
     add r5, r2, #0
-    ldr r1, off_814E750 // =loc_3007FF0 
+    ldr r1, off_814E750 // =unk_3007FF0 
     ldr r1, [r1]
     str r1, [sp,#4]
     ldr r1, off_814E754 // =unk_81C068C 
@@ -26295,7 +26295,7 @@ loc_814E73E:
     pop {r0}
     bx r0
     .byte 0, 0
-off_814E750:    .word loc_3007FF0
+off_814E750:    .word unk_3007FF0
 off_814E754:    .word unk_81C068C
 .endfunc // sub_814E558
 
@@ -26948,7 +26948,7 @@ sub_814EB84:
     strb r2, [r0]
     mov r0, #0x77 
     strb r0, [r3]
-    ldr r0, off_814EC58 // =loc_3007FF0 
+    ldr r0, off_814EC58 // =unk_3007FF0 
     ldr r4, [r0]
     ldr r6, [r4]
     ldr r0, dword_814EC5C // =0x68736D53 
@@ -27024,7 +27024,7 @@ loc_814EC44:
 off_814EC4C:    .word ControlSoundon_off_NR52_
 off_814EC50:    .word ControlStereo_Volume_Enable_NR50_NR51_
 off_814EC54:    .word Channel1Duty_Length_Envelope_NR11_NR12_+1
-off_814EC58:    .word loc_3007FF0
+off_814EC58:    .word unk_3007FF0
 dword_814EC5C:    .word 0x68736D53
 off_814EC60:    .word dword_3005570
 off_814EC64:    .word sub_814FBFC+1
@@ -27134,7 +27134,7 @@ loc_814ECF2:
     add r1, #4
     ldr r0, off_814EDA4 // =ChannelBFIFO_Data0_3 
     str r0, [r1]
-    ldr r0, off_814EDA8 // =loc_3007FF0 
+    ldr r0, off_814EDA8 // =unk_3007FF0 
     str r5, [r0]
     str r3, [sp]
     ldr r2, dword_814EDAC // =0x50003EC 
@@ -27175,7 +27175,7 @@ off_814ED98:    .word SoundPWMControl+1
 off_814ED9C:    .word DMA1SourceAddress
 off_814EDA0:    .word ChannelAFIFO_Data0_3
 off_814EDA4:    .word ChannelBFIFO_Data0_3
-off_814EDA8:    .word loc_3007FF0
+off_814EDA8:    .word unk_3007FF0
 dword_814EDAC:    .word 0x50003EC
 off_814EDB0:    .word sub_814E558+1
 off_814EDB4:    .word nullsub_23+1
@@ -27189,7 +27189,7 @@ sub_814EDC0:
     push {r4,r5,lr}
     add r4, r0, #0
     bl sub_814EF14
-    ldr r0, off_814EE18 // =loc_3007FF0 
+    ldr r0, off_814EE18 // =unk_3007FF0 
     ldr r5, [r0]
     mov r0, #0xf0
     lsl r0, r0, #0xc
@@ -27225,7 +27225,7 @@ sub_814EDC0:
     pop {r4,r5}
     pop {r0}
     bx r0
-off_814EE18:    .word loc_3007FF0
+off_814EE18:    .word unk_3007FF0
 off_814EE1C:    .word dword_81C058C
 dword_814EE20:    .word 0x91D1B
 dword_814EE24:    .word 0x1388
@@ -27237,7 +27237,7 @@ dword_814EE28:    .word 0x2710
 sub_814EE2C:
     push {r4,r5,lr}
     add r5, r0, #0
-    ldr r0, off_814EEB4 // =loc_3007FF0 
+    ldr r0, off_814EEB4 // =unk_3007FF0 
     ldr r4, [r0]
     ldr r1, [r4]
     ldr r0, dword_814EEB8 // =0x68736D53 
@@ -27309,7 +27309,7 @@ loc_814EEAE:
     pop {r4,r5}
     pop {r0}
     bx r0
-off_814EEB4:    .word loc_3007FF0
+off_814EEB4:    .word unk_3007FF0
 dword_814EEB8:    .word 0x68736D53
 off_814EEBC:    .word SoundPWMControl+1
 .endfunc // sub_814EE2C
@@ -27318,7 +27318,7 @@ off_814EEBC:    .word SoundPWMControl+1
 .thumb_func
 sub_814EEC0:
     push {r4-r7,lr}
-    ldr r0, off_814EF0C // =loc_3007FF0 
+    ldr r0, off_814EF0C // =unk_3007FF0 
     ldr r6, [r0]
     ldr r1, [r6]
     ldr r0, dword_814EF10 // =0x68736D53 
@@ -27358,7 +27358,7 @@ loc_814EF06:
     pop {r4-r7}
     pop {r0}
     bx r0
-off_814EF0C:    .word loc_3007FF0
+off_814EF0C:    .word unk_3007FF0
 dword_814EF10:    .word 0x68736D53
 .endfunc // sub_814EEC0
 
@@ -27367,7 +27367,7 @@ dword_814EF10:    .word 0x68736D53
 sub_814EF14:
     push {lr}
     sub sp, sp, #4
-    ldr r0, off_814EF78 // =loc_3007FF0 
+    ldr r0, off_814EF78 // =unk_3007FF0 
     ldr r2, [r0]
     ldr r1, [r2]
     ldr r3, dword_814EF7C // =0x978C92AD 
@@ -27417,7 +27417,7 @@ loc_814EF72:
     add sp, sp, #4
     pop {r0}
     bx r0
-off_814EF78:    .word loc_3007FF0
+off_814EF78:    .word unk_3007FF0
 dword_814EF7C:    .word 0x978C92AD
 off_814EF80:    .word Timer0Control
 dword_814EF84:    .word 0x84400004
@@ -27430,7 +27430,7 @@ dword_814EF90:    .word 0x5000318
 .thumb_func
 sub_814EF94:
     push {r4,lr}
-    ldr r0, off_814EFF0 // =loc_3007FF0 
+    ldr r0, off_814EFF0 // =unk_3007FF0 
     ldr r2, [r0]
     ldr r3, [r2]
     ldr r0, dword_814EFF4 // =0x68736D53 
@@ -27478,7 +27478,7 @@ loc_814EFE8:
     pop {r0}
     bx r0
     .byte 0, 0
-off_814EFF0:    .word loc_3007FF0
+off_814EFF0:    .word unk_3007FF0
 dword_814EFF4:    .word 0x68736D53
 off_814EFF8:    .word DMA1Control
 off_814EFFC:    .word VerticalCounter_LY_
@@ -27491,7 +27491,7 @@ off_814F008:    .word Timer0Control
 .thumb_func
 sub_814F00C:
     push {lr}
-    ldr r0, off_814F070 // =loc_3007FF0 
+    ldr r0, off_814F070 // =unk_3007FF0 
     ldr r2, [r0]
     ldr r0, [r2]
     ldr r1, dword_814F074 // =0x978C92AD 
@@ -27543,7 +27543,7 @@ loc_814F06A:
     pop {r0}
     bx r0
     .byte 0, 0
-off_814F070:    .word loc_3007FF0
+off_814F070:    .word unk_3007FF0
 dword_814F074:    .word 0x978C92AD
 off_814F078:    .word DMA1WordCount
 dword_814F07C:    .word 0x84400004
@@ -27566,7 +27566,7 @@ sub_814F08C:
     bls loc_814F0A0
     mov r4, #0x10
 loc_814F0A0:
-    ldr r0, off_814F0F8 // =loc_3007FF0 
+    ldr r0, off_814F0F8 // =unk_3007FF0 
     ldr r5, [r0]
     ldr r1, [r5]
     ldr r0, dword_814F0FC // =0x68736D53 
@@ -27613,7 +27613,7 @@ loc_814F0F0:
     pop {r0}
     bx r0
     .balign 4, 0x00
-off_814F0F8:    .word loc_3007FF0
+off_814F0F8:    .word unk_3007FF0
 dword_814F0FC:    .word 0x68736D53
 off_814F100:    .word sub_814E260+1
 .endfunc // sub_814F08C
@@ -28209,7 +28209,7 @@ sub_814F508:
     mov r5, r8
     push {r5-r7}
     sub sp, sp, #0x24
-    ldr r0, off_814F528 // =loc_3007FF0 
+    ldr r0, off_814F528 // =unk_3007FF0 
     ldr r0, [r0]
     str r0, [sp,#8]
     ldrb r0, [r0,#0xa]
@@ -28219,7 +28219,7 @@ sub_814F508:
     ldr r1, [sp,#8]
     strb r0, [r1,#0xa]
     b loc_814F532
-off_814F528:    .word loc_3007FF0
+off_814F528:    .word unk_3007FF0
 loc_814F52C:
     mov r0, #0xe
     ldr r3, [sp,#8]

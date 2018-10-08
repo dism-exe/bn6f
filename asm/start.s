@@ -25,7 +25,7 @@ loc_80000D0:
     mov r0, #0x1f
     msr cpsr_cf, r0
     ldr r13, dword_80001F4 // = 
-    ldr r0, off_80001F8 // =loc_3007FFC 
+    ldr r0, off_80001F8 // =unk_3007FFC 
     ldr r1, dword_80001FC // =loc_3005B00 
     str r1, [r0]
     ldr r0, off_8000200 // =GamePakWaitstateControl 
@@ -117,7 +117,7 @@ start_copyMemory:
 dword_80001EC:    .word 0x3007F60
 dword_80001F0:    .word 0x3007FE0
 dword_80001F4:    .word 0x3007E00
-off_80001F8:    .word loc_3007FFC
+off_80001F8:    .word unk_3007FFC
 dword_80001FC:    .word 0x3005B00
 off_8000200:    .word GamePakWaitstateControl
 dword_8000204:    .word 0x45B4
@@ -205,7 +205,7 @@ start_8000288:
     bx r1
     pop {r0}
     bx r0
-dword_8000294:    .word 0x3005E19
+dword_8000294:    .word sub_3005E18+1
 off_8000298:    .word sub_3005E2C+1
 .endfunc // start_8000288
 

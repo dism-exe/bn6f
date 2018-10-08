@@ -1,3 +1,5 @@
+include $(DEVKITARM)/base_tools
+
 # binary tools used in build
 # (the arm-none-eabi toolchain should be in the path)
 MAKE = make
@@ -11,10 +13,10 @@ PY = py
 SRCDIR = asm
 BIN = bin
 CONST = constants
-INC = inc
+INC = include
 
 # project files
-SFILES = $(SRCDIR)/_rom.s
+SFILES = rom.s ewram.s iwram.s
 OFILES = $(addprefix $(OBJ),$(notdir $(SFILES:.s=.o)))
 ROM = bn6f
 
@@ -35,7 +37,7 @@ rom: $(ROM)
 
 $(ROM):
 	$(CC) $(CFLAGS) -c $(SFILES)
-	$(LD) $(LDFLAGS) -o $(ROM).elf -T ld_script.x $(OFILES) $(LIB)
+	$(LD) $(LDFLAGS) -o $(ROM).elf -T ld_script.ld $(OFILES) $(LIB)
 	$(OBJCOPY) -O binary $(ROM).elf $(ROM).gba
 
 checksum:
