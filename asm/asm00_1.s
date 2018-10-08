@@ -1035,16 +1035,17 @@ off_800348C:    .word off_8003144
 
 .func
 .thumb_func
+// args: r0
 sub_8003490:
     push {r4,r7,lr}
     ldr r7, off_80034CC // =off_80034D0 
     lsl r1, r0, #4
-    add r7, r7, r1
+    add r7, r7, r1 // off_80034D0 + r0 * 16
     lsl r1, r0, #2
     ldr r4, off_8003530 // =off_8003144 
     // memBlock
-    ldr r0, [r4,r1]
-    ldrb r1, [r7,#0xc]
+    ldr r0, [r4,r1] // r0 = [off_8003144 + r0 * 4]
+    ldrb r1, [r7,#0xc] // r1 = r7 + r0 * 16 + 0xc
     add r1, #0x1f
     lsr r1, r1, #5
     lsl r1, r1, #2
@@ -1069,13 +1070,39 @@ loc_80034BC:
     pop {r4,r7,pc}
     .balign 4, 0x00
 off_80034CC:    .word off_80034D0
-off_80034D0:    .word byte_2009F40
-    .word byte_2009F40
-    .word 0xC89000C8, 0x1, 0x203A9A0, 0x203A9B0, 0xD8911B00, 0x20
-    .word 0x20057B0, 0x20057B0, 0xD8A20D80, 0x10, 0x203CFD0, 0x203CFE0
-    .word 0xD8931B00, 0x20, 0x2036860, 0x2036870, 0xC8841900, 0x20
-    .word 0x2011EE0, 0x2011EE0, 0x78451A40, 0x38
-off_8003530:    .word off_8003144
+off_80034D0:
+    .word byte_2009F40, byte_2009F40
+    .hword 0xC8
+    .byte 0x90, 0xC8, 0x1
+    .balign 4, 0x00
+   
+    .word unk_203A9A0, sBtlPlayer
+    .hword 0x1B00
+    .byte 0x91, 0xD8, 0x20
+    .balign 4, 0x00
+
+    .word 0x20057B0, 0x20057B0
+    .hword 0x0D80
+    .byte 0xA2, 0xD8, 0x10
+    .balign 4, 0x00
+
+    .word 0x203CFD0, 0x203CFE0
+    .hword 0x1B00
+    .byte 0x93, 0xD8, 0x20
+    .balign 4, 0x00
+
+    .word 0x2036860, 0x2036870
+    .hword 0x1900
+    .byte 0x84, 0xC8, 0x20
+    .balign 4, 0x00
+
+    .word 0x2011EE0, 0x2011EE0
+    .hword 0x1A40
+    .byte 0x45, 0x78, 0x38
+    .balign 4, 0x00
+
+off_8003530:
+    .word off_8003144
 .endfunc // sub_8003490
 
 .func
@@ -7394,7 +7421,8 @@ CpuSet_toolKit:
     bx r0
 off_8006BD4:    .word toolkit
 off_8006BD8:    .word toolkit_table
-toolkit_table:    .word i_joGameSubsysSel
+toolkit_table:
+    .word i_joGameSubsysSel
     .word sJoystick
     .word unk_200AC40
     .word sCamera

@@ -19,3 +19,7 @@ __pycache__/
 
 # intentionally ignore those junk/temp files
 *.ign
+
+# compare.sh
+baserom.txt
+bn6f.txt

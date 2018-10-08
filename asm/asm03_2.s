@@ -167,24 +167,25 @@ off_80460B8:    .word dword_80460BC
 dword_80460BC:    .word 0xE2B8, 0xFF000000, 0xE0B0, 0xFF010300, 0xE0B0, 0xFF010300
     .word 0x8340, 0xFF000300, 0xE340, 0xFF000000, 0xE340, 0xFF000000
     .word 0xE340, 0xFF000000
-off_80460F4:    .word loc_3006C38+1
+off_80460F4:
+    .word sub_3006C38+1
     .word sub_804634C+1
-    .word loc_3006F42+1
+    .word sub_3006F42+1
     .word sub_3006F74+1
     .word sub_8046356+1
-    .word loc_3006C8E+1
+    .word sub_3006C8E+1
     .word 0x0
-    .word loc_3006CA8+1
+    .word sub_3006CA8+1
     .word 0x0
-    .word loc_3006F20+1
-    .word loc_3006F24+1
+    .word sub_3006F20+1
+    .word sub_3006F24+1
     .word 0x0
     .word sub_3006F48+1
     .word sub_80463A0+1
     .word 0x0
     .word 0x0
-    .word loc_3006F5C+1
-    .word loc_3006F70+1
+    .word sub_3006F5C+1
+    .word sub_3006F70+1
     .word 0x0
     .word 0x0
     .word 0x0

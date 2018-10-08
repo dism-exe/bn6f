@@ -423,8 +423,8 @@ locret_81D64AA:
 off_81D64AC:    .word loc_3005FB0
     .word 0x0
     .word 0x0
-    .word loc_3005FC0+1
-    .word loc_3005FFA+1
+    .word sub_3005FC0+1
+    .word sub_3005FFA+1
     .word 0x6E846A8
     .word 0x5AC0EC0
     .word 0x46D0EE4
