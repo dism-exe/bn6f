@@ -26,5 +26,5 @@ Makefile text eol=lf
 # not in the build yet but will be added
 *.png binary diff=hex
 
-structs/.memoAccessScanner export-ignore
+structs/.memAccessScanner export-ignore
 structs/.memo export-ignore
