@@ -299,6 +299,9 @@ ds sub_3007958 // 0x3007958
 	.space 76
 ds sub_30079A4 // 0x30079a4
 
+	.org 0x7e00
+ds iStack // 0x3007e00
+
 	.org 0x7ff0
 // these are hardcoded pointers from nintendo libraries. TODO: rename and maybe move to a constants file?
 // SOUND_INFO_PTR

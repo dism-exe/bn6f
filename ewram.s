@@ -1,6 +1,6 @@
 	.include "include/macros.inc"
 
-    .section ewram
+	.section ewram
 
 ds timer_2000000 // 0x2000000
 	.space 96
@@ -250,7 +250,7 @@ ds byte_200103A // 0x200103a
 	.space 1
 ds byte_200103B // 0x200103b
 	.space 37
-ds dword_2001060 // 0x2001060
+ds eUnusedGameStateBaseOffset // 0x2001060
 	.space 4
 ds dword_2001064 // 0x2001064
 	.space 124
@@ -544,7 +544,7 @@ ds dword_20093A4 // 0x20093a4
 	.space 4
 ds dword_20093A8 // 0x20093a8
 	.space 8
-ds toolkit // 0x20093b0
+ds eToolkit // 0x20093b0
 	.space 160
 ds unk_2009450 // 0x2009450
 	.space 16

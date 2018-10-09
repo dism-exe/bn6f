@@ -7411,17 +7411,17 @@ off_8006BBC:    .word 0x101
 // () -> void
 CpuSet_toolKit:
     push {lr}
-    ldr r0, off_8006BD8 // =toolkit_table 
-    ldr r1, off_8006BD4 // =toolkit 
-    mov r2, #0x3c 
+    ldr r0, .Lp_ToolkitPointers
+    ldr r1, .Lp_eToolkit
+    mov r2, #(ToolkitPointersEnd - ToolkitPointers)
     bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
-    ldr r0, off_8006BD4 // =toolkit 
+    ldr r0, .Lp_eToolkit
     mov r10, r0
     pop {r0}
     bx r0
-off_8006BD4:    .word toolkit
-off_8006BD8:    .word toolkit_table
-toolkit_table:
+.Lp_eToolkit: .word eToolkit
+.Lp_ToolkitPointers: .word ToolkitPointers
+ToolkitPointers:
     .word i_joGameSubsysSel
     .word sJoystick
     .word unk_200AC40
@@ -7437,6 +7437,7 @@ toolkit_table:
     .word unk_20384F0
     .word sSubmenu
     .word byte_200A220
+ToolkitPointersEnd:
 .endfunc // CpuSet_toolKit
 
 .func
@@ -7455,10 +7456,14 @@ sub_8006C22:
     push {r4-r7}
     bl change_20013F0_800151C // () -> int
     // int idx;
+    // anti-cheat stuff? this block up to the copy
+    // seems to do nothing due to the ands which zero
+    // r5 was supposedly an offset to be added to the pointers
+    // in sGameState
     mov r1, #0
     and r0, r1
     add r4, r0, #0
-    ldr r5, off_8006C98 // =dword_2001060 
+    ldr r5, off_8006C98 // =eUnusedGameStateBaseOffset 
     ldr r3, [r5]
     mov r0, #0
     and r3, r0
@@ -7476,19 +7481,19 @@ sub_8006C22:
     // copyWords_80014EC(&sGameState, &sGameState, 0x35BC);
     bx r3
     mov r0, r10
-    mov r1, #0x3c 
+    mov r1, #(ToolkitPointersEnd - ToolkitPointers)
     add r0, r0, r1
     mov r1, #0
     ldr r2, off_8006C94 // =sGameState 
     ldr r3, [r5]
     add r2, r2, r3
-    ldr r3, off_8006CA8 // =dword_8006CAC 
+    ldr r3, off_8006CA8 // =GameStateOffsets 
 copy22Words_8006C5A:
-    ldr r4, [r3,r1]
-    add r4, r4, r2
-    str r4, [r0,r1]
+    ldr r4, [r3,r1] // GameStateOffsets
+    add r4, r4, r2 // sGameState + offset
+    str r4, [r0,r1] // store in eToolkit
     add r1, #4
-    cmp r1, #88
+    cmp r1, #(GameStateOffsetsEnd - GameStateOffsets) + 4
     blt copy22Words_8006C5A
     pop {r4-r7}
     pop {r0}
@@ -7499,7 +7504,7 @@ copy22Words_8006C5A:
 .thumb_func
 sub_8006C6C:
     push {r4-r7,lr}
-    ldr r5, off_8006C98 // =dword_2001060 
+    ldr r5, off_8006C98 // =eUnusedGameStateBaseOffset 
     mov r0, r10
     mov r1, #0x3c 
     add r0, r0, r1
@@ -7509,23 +7514,24 @@ sub_8006C6C:
     mov r4, #0
     and r3, r4
     add r2, r2, r3
-    ldr r3, off_8006CA8 // =dword_8006CAC 
+    ldr r3, off_8006CA8 // =GameStateOffsets 
 loc_8006C84:
     ldr r4, [r3,r1]
     add r4, r4, r2
     str r4, [r0,r1]
     add r1, #4
-    cmp r1, #0x58 
+    cmp r1, #(GameStateOffsetsEnd - GameStateOffsets) + 4
     blt loc_8006C84
     pop {r4-r7,pc}
     .balign 4, 0x00
-off_8006C94:    .word sGameState
-off_8006C98:    .word dword_2001060
-dword_8006C9C:    .word 0x35BC
-off_8006CA0:    .word copyWords_80014EC+1
-    .word toolkit
-off_8006CA8:    .word dword_8006CAC
-dword_8006CAC:    .word 0x0
+off_8006C94: .word sGameState
+off_8006C98: .word eUnusedGameStateBaseOffset
+dword_8006C9C: .word 0x35BC
+off_8006CA0: .word copyWords_80014EC+1
+    .word eToolkit // unused?
+off_8006CA8: .word GameStateOffsets
+GameStateOffsets:
+    .word 0x0
     .word 0x84
     .word 0x108
     .word 0x5F8
@@ -7546,13 +7552,14 @@ dword_8006CAC:    .word 0x0
     .word 0x34A8
     .word 0x34B0
     .word 0x34B8
+GameStateOffsetsEnd:
 .endfunc // sub_8006C6C
 
 .func
 .thumb_func
 sub_8006D00:
     push {r4-r7,lr}
-    ldr r5, off_8006E38 // =dword_2001060 
+    ldr r5, off_8006E38 // =eUnusedGameStateBaseOffset 
     ldr r4, [r5]
     // memBlock
     add r0, r5, #0
@@ -7678,7 +7685,7 @@ sub_8006DEC:
 .thumb_func
 sub_8006DF6:
     push {r4-r7,lr}
-    ldr r7, off_8006E38 // =dword_2001060 
+    ldr r7, off_8006E38 // =eUnusedGameStateBaseOffset 
     ldr r7, [r7,#0x4] // (dword_2001064 - 0x2001060)
     sub r1, #1
 loc_8006DFE:
@@ -7687,7 +7694,7 @@ loc_8006DFE:
     strb r3, [r0,r1]
     sub r1, #1
     bge loc_8006DFE
-    ldr r0, off_8006E38 // =dword_2001060 
+    ldr r0, off_8006E38 // =eUnusedGameStateBaseOffset 
     str r7, [r0,#0x4] // (dword_2001064 - 0x2001060)
     pop {r4-r7,pc}
 .endfunc // sub_8006DF6
@@ -7697,7 +7704,7 @@ loc_8006DFE:
 // (u8 *mem, int size) -> void
 save_memSetFlags_8006E0E:
     push {r4-r7,lr}
-    ldr r7, off_8006E38 // =dword_2001060 
+    ldr r7, off_8006E38 // =eUnusedGameStateBaseOffset 
     ldr r7, [r7,#4]
     sub r1, #1
 memSetFlags_8006E16:
@@ -7707,7 +7714,7 @@ memSetFlags_8006E16:
     sub r1, #1
     // while (a2_size >= 0);
     bge memSetFlags_8006E16
-    ldr r0, off_8006E38 // =dword_2001060 
+    ldr r0, off_8006E38 // =eUnusedGameStateBaseOffset 
     str r7, [r0,#4]
     pop {r4-r7,pc}
 .endfunc // save_memSetFlags_8006E0E
@@ -7716,7 +7723,7 @@ memSetFlags_8006E16:
 .thumb_func
 save_8006E26:
     push {r4-r7,lr}
-    ldr r7, off_8006E38 // =dword_2001060 
+    ldr r7, off_8006E38 // =eUnusedGameStateBaseOffset 
 loc_8006E2A:
     bl change_20013F0_800151C // () -> int
     mvn r0, r0
@@ -7724,7 +7731,7 @@ loc_8006E2A:
     beq loc_8006E2A
     str r0, [r7,#0x4] // (dword_2001064 - 0x2001060)
     pop {r4-r7,pc}
-off_8006E38:    .word dword_2001060
+off_8006E38:    .word eUnusedGameStateBaseOffset
 .endfunc // save_8006E26
 
 .func
