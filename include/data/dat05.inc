@@ -118,7 +118,7 @@
 // .global byte_80E083F
 
 .include "data/dat37.inc"
-// .global unk_81D083F
+// .global byte_81D083F
 
 .include "data/dat38_32.inc"
 // .global byte_835083F

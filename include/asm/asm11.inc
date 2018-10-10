@@ -2,6 +2,11 @@
 .equ INC_ASM_ASM11, 0
 
 /* Public Symbols */
+.global sub_8069038
+.global sub_80690C2
+.global sub_8069140
+.global sub_80691D4
+.global sub_80691FE
 .global off_80692F8
 .global off_8069304
 .global off_8069310
@@ -9,18 +14,33 @@
 .global byte_8069358
 .global dword_8069AF0
 .global off_8069C80
+.global sub_8069FE8
+.global sub_806A070
+.global sub_806A120
+.global sub_806A1B4
+.global sub_806A1DE
 .global off_806A260
 .global off_806A26C
 .global off_806A278
 .global off_806A284
 .global byte_806A2C0
 .global off_806A810
+.global sub_806AA00
+.global sub_806AAAA
+.global sub_806AB94
+.global sub_806ACC0
+.global sub_806AD00
 .global off_806AE08
 .global off_806AE1C
 .global off_806AE30
 .global off_806AE44
 .global byte_806AEA8
 .global off_806C20C
+.global sub_806C23C
+.global sub_806C2E2
+.global sub_806C35C
+.global sub_806C4B0
+.global sub_806C59C
 
 
 /* External Symbols */

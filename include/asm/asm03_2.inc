@@ -26,6 +26,7 @@
 .global sub_80468EC
 .global sub_804691A
 .global sub_8046CC8
+.global cb_8046CF8
 .global sub_8047D84
 .global sub_8048C24
 .global sub_8048C68
@@ -43,10 +44,15 @@
 .global sub_8049DA0
 .global sub_8049DC4
 .global sub_8049DDC
+.global cb_8049E04
 .global sub_804A17A
 .global sub_804A1D0
 .global sub_804A24C
 .global sub_804A2CC
+.global cb_804A304
+.global sub_804CE90
+.global sub_804CF32
+.global sub_804CF84
 
 
 /* External Symbols */
@@ -608,16 +614,16 @@
 // .equ unk_3001AE0, 0x3001AE0
 // .equ byte_3001B00, 0x3001B00
 // .equ unk_3001B60, 0x3001B60
-// .equ loc_3006B94, 0x3006B94
+// .equ sub_3006B94, 0x3006B94
 // .equ sub_3006C38, 0x3006C38
 // .equ sub_3006C8E, 0x3006C8E
-// .equ loc_3006CA8, 0x3006CA8
-// .equ loc_3006F20, 0x3006F20
-// .equ loc_3006F24, 0x3006F24
+// .equ sub_3006CA8, 0x3006CA8
+// .equ dword_3006F20, 0x3006F20
+// .equ sub_3006F24, 0x3006F24
 // .equ sub_3006F42, 0x3006F42
 // .equ sub_3006F48, 0x3006F48
-// .equ loc_3006F5C, 0x3006F5C
-// .equ loc_3006F70, 0x3006F70
+// .equ sub_3006F5C, 0x3006F5C
+// .equ sub_3006F70, 0x3006F70
 // .equ sub_3006F74, 0x3006F74
 // .global spriteWhiteDot
 // .global compSpriteWhiteDot_84E0C4C

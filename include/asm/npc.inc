@@ -2,6 +2,7 @@
 .equ INC_ASM_NPC, 0
 
 /* Public Symbols */
+.global npc_809E570
 
 
 /* External Symbols */

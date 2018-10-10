@@ -2,7 +2,7 @@
 .equ INC_ASM_ASM38, 0
 
 /* Public Symbols */
-.global loc_81D6746
+.global sub_81D6000
 
 
 /* External Symbols */
@@ -85,6 +85,19 @@
 // .equ unk_2034F60, 0x2034F60
 // .equ byte_2039AE0, 0x2039AE0
 // .equ dword_3000E70, 0x3000E70
+// .equ dword_3000E74, 0x3000E74
+// .equ dword_3000E78, 0x3000E78
+// .equ dword_3000E7C, 0x3000E7C
+// .equ dword_3000E80, 0x3000E80
+// .equ dword_3000E84, 0x3000E84
+// .equ dword_3000E88, 0x3000E88
+// .equ dword_3000E8C, 0x3000E8C
+// .equ dword_3000E90, 0x3000E90
+// .equ dword_3000E94, 0x3000E94
+// .equ dword_3000E98, 0x3000E98
+// .equ dword_3000E9C, 0x3000E9C
+// .equ dword_3000EA0, 0x3000EA0
+// .equ dword_3000EA4, 0x3000EA4
 // .equ unk_3001150, 0x3001150
 // .equ unk_3001550, 0x3001550
 // .equ unk_3001750, 0x3001750
@@ -102,16 +115,19 @@
 // .equ dword_3002594, 0x3002594
 // .equ unk_30025B0, 0x30025B0
 // .equ unk_3005CA0, 0x3005CA0
-// .equ loc_3005FB0, 0x3005FB0
-// .equ loc_3005FC0, 0x3005FC0
-// .equ loc_3005FFA, 0x3005FFA
+// .equ unk_3005D10, 0x3005D10
+// .equ byte_3005FB0, 0x3005FB0
+// .equ sub_3005FC0, 0x3005FC0
+// .equ sub_3005FFA, 0x3005FFA
 // .equ loc_3006314, 0x3006314
 // .equ loc_300631C, 0x300631C
 // .equ loc_300638C, 0x300638C
+.equ ControlSoundon_off_NR52_, 0x4000084
 .equ DMA0SourceAddress, 0x40000B0
 .equ DMA0DestinationAddress, 0x40000B4
 .equ DMA0WordCount, 0x40000B8
 .equ InterruptEnableRegister, 0x4000200
+.equ InterruptRequestFlags_IRQAcknowledge, 0x4000202
 .equ InterruptMasterEnableRegister, 0x4000208
 
 .endif // INC_ASM_ASM38

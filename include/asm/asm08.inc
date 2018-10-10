@@ -2,6 +2,9 @@
 .equ INC_ASM_ASM08, 0
 
 /* Public Symbols */
+.global sub_806036C
+.global sub_8060406
+.global sub_806044C
 
 
 /* External Symbols */

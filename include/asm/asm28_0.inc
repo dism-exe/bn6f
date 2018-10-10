@@ -24,17 +24,21 @@
 .global sub_809CA84
 .global unk_809CAD8
 .global sub_809CF2C
+.global loc_809D19C
 .global unk_809D328
 .global sub_809E04C
 .global sub_809E064
 .global setFlag3_2e2_2001C88
 .global updateFlags_809E0B0 // () -> void
+.global loc_809E0FC
+.global loc_809E114
 .global sub_809E122
 .global sub_809E13C
 .global sub_809E14C
 .global sub_809E188
 .global loc_809E1A4
 .global sub_809E1AE
+.global sub_809E1D8
 .global sub_809E1FA
 .global sub_809E218
 .global sub_809E228
@@ -42,6 +46,12 @@
 .global sub_809E23C
 .global sub_809E248
 .global sub_809E254
+.global loc_809E260
+.global loc_809E26A
+.global sub_809E276
+.global sub_809E284
+.global sub_809E292
+.global sub_809E2A0
 .global sub_809E2AE
 .global sub_809E2B8
 .global sub_809E2C2
@@ -60,8 +70,13 @@
 .global sub_809E3B2
 .global sub_809E3C4
 .global sub_809E434
+.global sub_809E442
+.global sub_809E452
 .global sub_809E462
 .global sub_809E496
+.global sub_809E4A0
+.global sub_809E4AE
+.global sub_809E4BC
 .global dword_809E530
 
 

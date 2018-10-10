@@ -2,14 +2,17 @@
 .equ INC_ASM_ASM37_1, 0
 
 /* Public Symbols */
+.global sub_814187C
 .global sub_81418E4
 .global sub_81418F0
+.global sub_81419A0
 .global sub_8142050
 .global sub_8142068
 .global sub_8142080
 .global sub_81420B0
 .global sub_81420C8
 .global sub_81420F0
+.global sub_8142134
 .global sub_814216E
 .global sub_8142184
 .global sub_8142190
@@ -22,6 +25,8 @@
 .global sub_8142204
 .global sub_8142224
 .global sub_814223E
+.global sub_8142248
+.global sub_814227A
 .global sub_81422B4
 .global sub_81426CE
 .global sub_81427A4
@@ -55,6 +60,7 @@
 .global sub_8143294
 .global sub_81433DA
 .global sub_81433E4
+.global sub_8143482
 .global dword_81434E4
 .global dword_81436B4
 .global dword_81436C4
@@ -70,10 +76,13 @@
 .global sub_8143DBC
 .global sub_8143F90
 .global sub_8144010
+.global sub_8144048
 .global sub_81440D8 // static () -> void
 .global sub_8144240
 .global sub_8144250
 .global sub_81445F8
+.global sub_814469C
+.global sub_81446AC
 .global sub_8144CE0
 .global sub_8144D04
 .global sub_8144D18
@@ -138,17 +147,63 @@
 .global SWI_LZ77UnCompReadNormalWrite16bit
 .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 .global SWI_Sqrt
+.global word_814D8CC
 .global sub_814D8F0
 .global sub_814D954
+.global word_814D994
 .global sub_814D9C4
 .global sub_814DA9C
 .global byte_814E02D
+.global sub_814E044
+.global sub_814E064
+.global sub_814E0DC
 .global loc_814E0DE
+.global sub_814E0FC
+.global sub_814E118
+.global sub_814E12C
+.global sub_814E15C
+.global sub_814E168
+.global sub_814E17C
+.global sub_814E190
+.global sub_814E1C0
+.global sub_814E1D4
+.global sub_814E1E8
+.global sub_814E1FC
+.global sub_814E210
+.global sub_814E21C
+.global sub_814E234
+.global sub_814E248
+.global sub_814E4DC
+.global sub_814E758
+.global sub_814E7CC
+.global sub_814E7E0
+.global sub_814E87C
 .global sub_814E8A0
 .global sub_814E918
+.global m4a_SongNumStart
+.global sub_814E9F0
 .global sub_814EA58
+.global sub_814EAF0
+.global sub_814EB1C
+.global sub_814EDC0
 .global sub_814EE2C
 .global sub_814F00C
+.global sub_814F228
+.global sub_814F2F0
+.global sub_814F988
+.global sub_814F9AC
+.global sub_814FA14
+.global sub_814FD74
+.global sub_814FD88
+.global sub_814FDD0
+.global sub_814FDE4
+.global sub_814FDF8
+.global sub_814FE0C
+.global sub_814FE20
+.global sub_814FE34
+.global sub_814FE40
+.global sub_814FE4C
+.global sub_814FE60
 
 
 /* External Symbols */
@@ -246,7 +301,7 @@
 
 .include "data/dat37.inc"
 // .global dword_814FE90
-// .global dword_814FE94
+// .global byte_814FE94
 // .global off_8158278
 // .global off_815827C
 // .global byte_8158280

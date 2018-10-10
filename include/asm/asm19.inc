@@ -2,6 +2,11 @@
 .equ INC_ASM_ASM19, 0
 
 /* Public Symbols */
+.global sub_807CDEC
+.global sub_807CE90
+.global sub_807CF24
+.global sub_807CFCC
+.global sub_807CFFC
 
 
 /* External Symbols */

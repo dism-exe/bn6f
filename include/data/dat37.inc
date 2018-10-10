@@ -3,7 +3,7 @@
 
 /* Public Symbols */
 .global dword_814FE90
-.global dword_814FE94
+.global byte_814FE94
 .global off_8158278
 .global off_815827C
 .global byte_8158280
@@ -32,10 +32,9 @@
 .global unk_81C068C
 .global off_81C06C0
 .global unk_81C241C
-.global unk_81D081E
-.global unk_81D083F
-.global dword_81D4314
-.global loc_81D6000
+.global byte_81D081E
+.global byte_81D083F
+.global byte_81D4314
 
 
 /* External Symbols */
@@ -82,12 +81,6 @@
 // .global sub_814FE4C
 // .global sub_814FE60
 
-.include "asm/asm38.inc"
-// .global loc_81D6746
-
-.include "data/dat38_99.inc"
-// .global dword_87FF8A0
-
 
 /* Undeclared Symbols */
 // .equ timer_2000000, 0x2000000
@@ -99,9 +92,6 @@
 // .equ unk_2010910, 0x2010910
 // .equ unk_201FAF8, 0x201FAF8
 // .equ unk_2020200, 0x2020200
-// .equ dword_3000E70, 0x3000E70
-// .equ dword_3001D60, 0x3001D60
 .equ LCDControl, 0x4000000
-.equ dword_8FFF8A0, 0x8FFF8A0
 
 .endif // INC_DATA_DAT37

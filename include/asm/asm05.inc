@@ -2,6 +2,9 @@
 .equ INC_ASM_ASM05, 0
 
 /* Public Symbols */
+.global sub_8052688
+.global sub_8052764
+.global sub_80527F0
 
 
 /* External Symbols */

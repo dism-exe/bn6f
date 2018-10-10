@@ -24,13 +24,17 @@
 .global sub_81329C8
 .global sub_8132A14
 .global sub_8132A50
+.global sub_8132B88
+.global sub_8133200
 .global sub_81348DC
 .global sub_8134930
 .global sub_81352A0
 .global sub_8135314
 .global sub_81355D8
 .global byte_813565C
+.global sub_81356D4
 .global sub_8136C24
+.global loc_8136DE0
 .global sub_81376B8
 .global sub_81376CC
 .global sub_81376E8
@@ -42,6 +46,7 @@
 .global sub_8137890
 .global loc_81378B4
 .global sub_8138294
+.global cb_81382AC
 
 
 /* External Symbols */

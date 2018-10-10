@@ -12,12 +12,15 @@
 .global sub_80339CC
 .global sub_8033FC0
 .global sub_80341AA
+.global ho_jackIn_80341B6
 .global off_80348FC
 .global off_8034938
 .global sub_8034B4C
 .global sub_8034BB8
 .global sub_8034C36
 .global sub_8034FB8
+.global npc_getMapSpriteScriptOffsets
+.global sub_80351B4
 .global sub_803522E
 .global sub_803532C
 .global sub_803537C
@@ -44,7 +47,9 @@
 .global sub_8037AEC
 .global sub_80385F0
 .global sub_8038A9C
+.global cb_8038AD0
 .global sub_8039570
+.global cb_80395A4
 .global sub_803A104
 .global sub_803A1B0
 .global sub_803A5F4
@@ -55,6 +60,16 @@
 .global sub_803A7EC
 .global sub_803A820
 .global sub_803A8B4
+.global sub_803AA24
+.global loc_803AA40
+.global sub_803AB6C
+.global sub_803AB94
+.global sub_803ABF4
+.global sub_803AD04
+.global loc_803AD20
+.global sub_803AE50
+.global sub_803AE78
+.global sub_803AED8
 .global sub_803AFC2
 .global sub_803B522
 .global sub_803B674
@@ -82,6 +97,7 @@
 .global sub_803C316
 .global sub_803C320
 .global sub_803C330
+.global sub_803C34E
 .global sub_803C3E0
 .global sub_803C440
 .global sub_803C514
@@ -97,7 +113,9 @@
 .global sub_803CB18
 .global sub_803CB78
 .global sub_803CB8C
+.global cb_803CBA6
 .global sub_803CCC0
+.global cb_803CCD6
 .global sub_803CD74
 .global sub_803CD98
 .global sub_803CDF8
@@ -121,6 +139,7 @@
 .global sub_803D148
 .global sub_803D1A8 // () -> void
 .global loc_803D1AC
+.global cb_803D1CA
 .global sub_803DCD8
 .global sub_803DCE8
 .global sub_803DD30
@@ -128,6 +147,7 @@
 .global sub_803DDA4
 .global sub_803DE24
 .global sub_803DE5C
+.global sub_803DE72
 .global sub_803DE88
 .global sub_803DEAC
 .global sub_803DEB4
@@ -172,6 +192,7 @@
 .global sub_803F9E4
 .global sub_803FA42
 .global sub_803FB28
+.global cb_803FB3C
 .global dword_803FCE4
 .global sub_803FCF0
 

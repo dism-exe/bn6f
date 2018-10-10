@@ -81,6 +81,7 @@
 .global sub_802E09A
 .global sub_802E112
 .global sub_802E156
+.global sub_802E1BE
 .global sub_802E1D8
 .global sub_802E240
 .global sub_802E440
@@ -113,6 +114,7 @@
 .global sub_802F238
 .global sub_802F2C8
 .global sub_802F530
+.global Load_ho_802F544
 .global off_802FD70
 .global dword_802FD74
 .global sub_802FDB0
@@ -141,14 +143,18 @@
 .global sub_80304E8
 .global sub_8030540
 .global sub_8030580
+.global sub_8030628
 .global sub_80307D8
 .global sub_8030808
+.global loc_803083E
+.global sub_803086C
 .global off_8030908
 .global loc_8030A00
 .global sub_8030A30
 .global sub_8030A60
 .global sub_8030AA4
 .global sub_8030B6A
+.global loc_803150A
 .global loc_80315CC
 .global sub_8031612
 .global loc_80318B0

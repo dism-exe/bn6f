@@ -40,7 +40,7 @@
 
 /* External Symbols */
 .include "data/dat37.inc"
-// .global dword_81D4314
+// .global byte_81D4314
 
 
 /* Undeclared Symbols */
