@@ -41,7 +41,7 @@ off_807A938: .word off_8079F74
 off_807A93C: .word unk_2037800
 off_807A940: .word off_807A944
 off_807A944: .word dword_807A950
- .word 0x807A95A, 0x807A964
+	.word 0x807A95A, 0x807A964
 dword_807A950: .word 0x201C1F1C, 0x791C2B1C, 0x641CFFFF, 0x951C0E1C, 0xFFFF791C
 	.word 0x7F1C7E1C, 0x1F1C801C, 0x39183818, 0xFFFF3A18
 .endfunc // sub_807A8E0
@@ -55,25 +55,25 @@ sub_807A974:
 	ldr r0, [r0,r1]
 	bl sub_8002354
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_807A984: .word off_807A988
 off_807A988: .word off_807A994
- .word off_807A9A0
- .word off_807A9B8
+	.word off_807A9A0
+	.word off_807A9B8
 off_807A994: .word off_807A080
- .word dword_807A084+0x2EC
- .word 0xFFFFFFFF
+	.word dword_807A084+0x2EC
+	.word 0xFFFFFFFF
 off_807A9A0: .word off_807A080
- .word dword_807A084+0x33C
- .word dword_807A084+0x38C
- .word dword_807A084+0x3DC
- .word dword_807A084+0x42C
- .word 0xFFFFFFFF
+	.word dword_807A084+0x33C
+	.word dword_807A084+0x38C
+	.word dword_807A084+0x3DC
+	.word dword_807A084+0x42C
+	.word 0xFFFFFFFF
 off_807A9B8: .word dword_807A084+0x45C
- .word dword_807A084+0x74C
- .word dword_807A084+0x77C
- .word dword_807A084+0x7CC
- .word 0xFFFFFFFF
+	.word dword_807A084+0x74C
+	.word dword_807A084+0x77C
+	.word dword_807A084+0x7CC
+	.word 0xFFFFFFFF
 .endfunc // sub_807A974
 
 .func
@@ -125,18 +125,18 @@ sub_807A9CC:
 	pop {r4-r7,pc}
 off_807AA30: .word off_807AA34
 off_807AA34: .word locret_8001AB4+1
- .word sub_80019D0+1
- .word 0x3005CD9, 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9
+	.word sub_80019D0+1
+	.word 0x3005CD9, 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9
 	.word 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9, 0x800
 off_807AA64: .word off_807AA68
 off_807AA68: .word off_807AA74
- .word off_807AA74
- .word off_807AA90
+	.word off_807AA74
+	.word off_807AA90
 off_807AA74: .word off_8617068
- .word 0x6008020, 0x8617190, 0x1800, 0x8618AB4, 0x3001960
+	.word 0x6008020, 0x8617190, 0x1800, 0x8618AB4, 0x3001960
 	.word 0x20
 off_807AA90: .word off_8617068
- .word 0x6008020, 0x8617190, 0x1800, 0x8618C58, 0x3001960
+	.word 0x6008020, 0x8617190, 0x1800, 0x8618C58, 0x3001960
 	.word 0x20
 .func
 .thumb_func
@@ -153,8 +153,8 @@ sub_807AAAC:
 	pop {r4-r7,pc}
 off_807AAC0: .word off_807AAC4
 off_807AAC4: .word locret_807AAD0+1
- .word locret_807AAD2+1
- .word locret_807AAD4+1
+	.word locret_807AAD2+1
+	.word locret_807AAD4+1
 .endfunc // sub_807AAAC
 
 locret_807AAD0:
@@ -175,10 +175,10 @@ sub_807AAD6:
 	ldr r0, [r1,r0]
 	bl sub_8003570
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_807AAEC: .word pt_807AAF0
 // <endpool> <endfile>
-pt_807AAF0: .word dword_807AAFC
+pt_807AAF0:  .word dword_807AAFC
 	.word dword_807AC18
 	.word dword_807ACA8
 .endfunc // sub_807AAD6

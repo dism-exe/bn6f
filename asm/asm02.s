@@ -10,7 +10,7 @@ getChip_8021DA8:
 	add r0, r0, r1
 	// return &u8_8021DA8[44*idx]
 	mov pc, lr
- .byte 0, 0
+	.byte 0, 0
 off_8021AB0: .word ChipDataArr_8021DA8
 .endfunc // getChip_8021DA8
 
@@ -49,7 +49,7 @@ split9BitsFromBitfield_8021AE0:
 	ldr r2, word_8021AEC // =0x1FF 
 	and r0, r2
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 word_8021AEC: .hword 0x1FF
 .endfunc // split9BitsFromBitfield_8021AE0
 
@@ -128,7 +128,7 @@ sub_8021B5A:
 loc_8021B6E:
 	strb r1, [r0]
 	mov pc, lr
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8021B74: .word 0x1E20
 .endfunc // sub_8021B5A
 
@@ -276,7 +276,7 @@ loc_8021C48:
 	add sp, sp, #4
 	add r0, r5, #0
 	pop {r4-r7,pc}
- .byte 0, 0
+	.byte 0, 0
 off_8021C60: .word unk_20018EC
 dword_8021C64: .word 0x1FF
 .endfunc // sub_8021C02
@@ -292,7 +292,7 @@ sub_8021C68:
 	ldr r1, dword_8021C78 // =0xF00 
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 dword_8021C78: .word 0xF00
 .endfunc // sub_8021C68
 
@@ -379,7 +379,7 @@ loc_8021CF4:
 	add r0, r4, #0
 	add r1, r5, #0
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8021D04: .word 0x140
 .endfunc // sub_8021CA8
 
@@ -445,7 +445,7 @@ sub_8021D36:
 	mov r2, #8
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8021D6C: .word unk_2000AF0
 off_8021D70: .word unk_2001184
 off_8021D74: .word unk_200119C
@@ -454,7 +454,7 @@ dword_8021D7C: .word 0x200083A
 off_8021D80: .word script_8021D88
 off_8021D84: .word byte_8021D8A
 // <endpool>
-script_8021D88: .byte 0x2, 0x0
+script_8021D88:  .byte 0x2, 0x0
 .endfunc // sub_8021D36
 
 byte_8021D8A: .byte 0x7E, 0x7E, 0x7E, 0x7E, 0xE6, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -463,5 +463,5 @@ off_8021D98: .word 0x2E0
 off_8021D9C: .word 0x170
 off_8021DA0: .word unk_203A0A0
 // <endfile>
-off_8021DA4: .word unk_203A0A0
+off_8021DA4:  .word unk_203A0A0
 /*For debugging purposes, connect comment at any range!*/

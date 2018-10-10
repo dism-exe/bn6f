@@ -212,7 +212,7 @@ loc_809F680:
 	add r0, r7, #0
 	pop {r7}
 	mov pc, lr
- .balign 4, 0x00
+	.balign 4, 0x00
 off_809F688: .word unk_20057B0
 .endfunc // sub_809F66C
 
@@ -428,7 +428,7 @@ sub_809F9C8:
 	ldr r1, off_809F9D8 // =0x480 
 	bl CpuFastSet_8000900 // (int a1, int a2) -> void
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_809F9D8: .word 0x480
 .endfunc // sub_809F9C8
 
@@ -596,7 +596,7 @@ sub_809FADE:
 	mul r0, r1
 	add r0, r0, r2
 	mov pc, lr
- .byte 0, 0
+	.byte 0, 0
 dword_809FAF0: .word 0x1400
 .endfunc // sub_809FADE
 
@@ -775,10 +775,10 @@ sub_809FBF2:
 loc_809FC0A:
 	add r0, r1, #0
 	pop {r2-r7,pc}
- .byte 0, 0
+	.byte 0, 0
 off_809FC10: .word dword_80A3360
 off_809FC14: .word off_80A336C
- .word byte_2000210
+	.word byte_2000210
 .endfunc // sub_809FBF2
 
 .func
@@ -1169,6 +1169,6 @@ off_809FE94: .word dword_80A3360
 off_809FE98: .word off_80A336C
 off_809FE9C: .word byte_2000210
 // <endfile>
-off_809FEA0: .word dword_809FEE4
+off_809FEA0:  .word dword_809FEE4
 	.word dword_809FFE8
 /*For debugging purposes, connect comment at any range!*/

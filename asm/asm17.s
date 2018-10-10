@@ -41,10 +41,10 @@ off_8079374: .word off_80790A4
 off_8079378: .word unk_2037800
 off_807937C: .word off_8079380
 off_8079380: .word dword_8079388
- .word dword_8079390
+	.word dword_8079390
 dword_8079388: .word 0x201C0E1C, 0xFFFF4B1C
 dword_8079390: .word 0x5A180E1C, 0x991C5B18
- .byte 0xFF, 0xFF
+	.byte 0xFF, 0xFF
 .endfunc // sub_807931C
 
 .func
@@ -58,20 +58,20 @@ sub_807939A:
 	pop {pc}
 off_80793A8: .word off_80793AC
 off_80793AC: .word off_80793B4
- .word off_80793CC
+	.word off_80793CC
 off_80793B4: .word off_80790EC
- .word off_807C974
- .word dword_80790F0+0x24
- .word dword_80790F0+0x74
- .word dword_80790F0+0xC4
- .word 0xFFFFFFFF
+	.word off_807C974
+	.word dword_80790F0+0x24
+	.word dword_80790F0+0x74
+	.word dword_80790F0+0xC4
+	.word 0xFFFFFFFF
 off_80793CC: .word off_80790EC
- .word off_807C974
- .word dword_80790F0+0x114
- .word dword_80790F0+0x164
- .word dword_80790F0+0x1B4
- .word dword_80790F0+0x204
- .word 0xFFFFFFFF
+	.word off_807C974
+	.word dword_80790F0+0x114
+	.word dword_80790F0+0x164
+	.word dword_80790F0+0x1B4
+	.word dword_80790F0+0x204
+	.word 0xFFFFFFFF
 .endfunc // sub_807939A
 
 .func
@@ -98,17 +98,17 @@ sub_80793E8:
 	ldr r0, [r0,r1]
 	bl sub_80304E8
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_807941C: .word off_8079420
 off_8079420: .word locret_8001AB4+1
- .word nullsub_36+1
- .word 0x3005CD9, 0x800, 0x8001AB5, 0x80019B3, 0x3005CD9
+	.word nullsub_36+1
+	.word 0x3005CD9, 0x800, 0x8001AB5, 0x80019B3, 0x3005CD9
 	.word 0x800
 off_8079440: .word off_8079444
 off_8079444: .word off_807944C
- .word off_807944C
+	.word off_807944C
 off_807944C: .word dword_8618DFC
- .word 0x6008020, 0x8618E40, 0x1800, 0x8618910, 0x3001960
+	.word 0x6008020, 0x8618E40, 0x1800, 0x8618910, 0x3001960
 	.word 0x20
 .endfunc // sub_80793E8
 
@@ -127,7 +127,7 @@ sub_8079468:
 	pop {r4-r7,pc}
 off_807947C: .word off_8079480
 off_8079480: .word locret_8079488+1
- .word locret_807948A+1
+	.word locret_807948A+1
 .endfunc // sub_8079468
 
 locret_8079488:
@@ -148,7 +148,7 @@ sub_807948C:
 	pop {pc}
 off_80794A0: .word pt_80794A4
 // <endpool> <endfile>
-pt_80794A4: .word dword_80794AC
+pt_80794A4:  .word dword_80794AC
 	.word dword_80794EC
 .endfunc // sub_807948C
 

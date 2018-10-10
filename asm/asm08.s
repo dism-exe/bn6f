@@ -40,16 +40,16 @@ sub_806036C:
 	ldr r0, [r0,r1]
 	str r0, [r5,#0x64]
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_80603C8: .word off_8060184
 off_80603CC: .word unk_2037800
 off_80603D0: .word off_80606BC
 off_80603D4: .word off_80603D8
 off_80603D8: .word dword_80603E8
- .word 0x80603EE, 0x80603FC, 0x80603FE
+	.word 0x80603EE, 0x80603FC, 0x80603FE
 dword_80603E8: .word 0x2118131C, 0x6E1CFFFF, 0x411C581C, 0x911C901C, 0xFFFF4B1C
 	.word 0x651CFFFF, 0x25182418
- .byte 0xFF, 0xFF
+	.byte 0xFF, 0xFF
 .endfunc // sub_806036C
 
 .func
@@ -63,18 +63,18 @@ sub_8060406:
 	pop {pc}
 off_8060414: .word off_8060418
 off_8060418: .word off_8060428
- .word off_8060430
- .word off_806043C
- .word off_8060444
+	.word off_8060430
+	.word off_806043C
+	.word off_8060444
 off_8060428: .word off_8060284
- .word 0xFFFFFFFF
+	.word 0xFFFFFFFF
 off_8060430: .word byte_80602A4
- .word byte_80602CC
- .word 0xFFFFFFFF
+	.word byte_80602CC
+	.word 0xFFFFFFFF
 off_806043C: .word byte_80602FC
- .word 0xFFFFFFFF
+	.word 0xFFFFFFFF
 off_8060444: .word byte_806032C
- .word 0xFFFFFFFF
+	.word 0xFFFFFFFF
 .endfunc // sub_8060406
 
 .func
@@ -91,7 +91,7 @@ sub_806044C:
 	pop {pc}
 off_8060460: .word pt_8060464
 // <endpool> <endfile>
-pt_8060464: .word dword_8060474
+pt_8060464:  .word dword_8060474
 	.word dword_80604A0
 	.word dword_80605E4
 	.word dword_80605E8

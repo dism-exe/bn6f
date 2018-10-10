@@ -10,10 +10,10 @@ npc_809E570:
 	mov lr, pc
 	bx r7
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 jt_809E580: .word npc_809E590+1
- .word npc_809E5E2+1
- .word npc_809EADA+1
+	.word npc_809E5E2+1
+	.word npc_809EADA+1
 off_809E58C: .word jt_809E580
 .endfunc // npc_809E570
 
@@ -151,14 +151,14 @@ loc_809E690:
 	bl sub_809F922
 locret_809E6A0:
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_809E6A4: .word sub_809E6C8+1
 jt_809E6A8: .word npc_809E6DC+1
- .word npc_809E8CC+1
- .word npc_809EA3C+1
- .word sub_809EA74+1
- .word sub_809EA82+1
- .word npc_809EAA0+1
+	.word npc_809E8CC+1
+	.word npc_809EA3C+1
+	.word sub_809EA74+1
+	.word sub_809EA82+1
+	.word npc_809EAA0+1
 off_809E6C0: .word off_809E6A4
 off_809E6C4: .word 0x100
 .endfunc // npc_809E5E2
@@ -188,11 +188,11 @@ npc_809E6DC:
 	bx r7
 	bl npc_809EBF8
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 jt_809E6F0: .word npc_809E704+1
- .word npc_809E7D8+1
- .word npc_809E84E+1
- .word npc_809E878+1
+	.word npc_809E7D8+1
+	.word npc_809E84E+1
+	.word npc_809E878+1
 off_809E700: .word jt_809E6F0
 .endfunc // npc_809E6DC
 
@@ -259,21 +259,21 @@ npc_809E704:
 	bl sub_809F5B0
 	pop {pc}
 unk_809E77E: .byte  0
- .byte  0
- .word 0x80000, 0x0, 0x0
- .word 0x8, 0xFFF80000, 0x0, 0x0
- .word 0xFFF8, 0x1, 0x100, 0xFF, 0x900FF00, 0xD000B00, 0x1000F00
+	.byte  0
+	.word 0x80000, 0x0, 0x0
+	.word 0x8, 0xFFF80000, 0x0, 0x0
+	.word 0xFFF8, 0x1, 0x100, 0xFF, 0x900FF00, 0xD000B00, 0x1000F00
 	.word 0x5000300, 0x700
 dword_809E7C0: .word 0x809E79E
 off_809E7C4: .word unk_809E77E
 dword_809E7C8: .word 0x80000
- .byte 0xAE
- .byte 0xE7
- .byte  9
- .byte  8
- .byte 0xB6
- .byte 0xE7
- .hword 0x809
+	.byte 0xAE
+	.byte 0xE7
+	.byte  9
+	.byte  8
+	.byte 0xB6
+	.byte 0xE7
+	.hword 0x809
 dword_809E7D4: .word 0xFFF
 npc_809E7D8:
 	push {lr}
@@ -401,7 +401,7 @@ loc_809E8BA:
 	pop {pc}
 off_809E8C0: .word dword_809E8C4
 dword_809E8C4: .word 0x2A0026
- .word 0x12A0126
+	.word 0x12A0126
 .endfunc // npc_809E704
 
 .func
@@ -415,13 +415,13 @@ npc_809E8CC:
 	bx r7
 	bl npc_809EBF8
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 jt_809E8E0: .word npc_809E8FC+1
- .word npc_809E916+1
- .word npc_809E944+1
- .word npc_809E95E+1
- .word npc_809E9C0+1
- .word npc_809E9DA+1
+	.word npc_809E916+1
+	.word npc_809E944+1
+	.word npc_809E95E+1
+	.word npc_809E9C0+1
+	.word npc_809E9DA+1
 off_809E8F8: .word jt_809E8E0
 .endfunc // npc_809E8CC
 
@@ -537,7 +537,7 @@ loc_809E9B0:
 	pop {pc}
 off_809E9B4: .word dword_809E9B8
 dword_809E9B8: .word 0x2A0026
- .word 0x12A0126
+	.word 0x12A0126
 .endfunc // npc_809E95E
 
 .func
@@ -604,7 +604,7 @@ loc_809EA26:
 	add r0, r0, r1
 	str r0, [r5,#0x2c]
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 off_809EA30: .word byte_809EA34
 byte_809EA34: .byte 0x26, 0x0, 0x2A, 0x0, 0x26, 0x1, 0x2A, 0x1
 .endfunc // npc_809E9DA
@@ -731,12 +731,12 @@ sub_809EB04:
 	mov lr, pc
 	bx r7
 	pop {pc}
- .balign 4, 0x00
- .word npc_809EB20+1
- .byte 0xBD
- .byte 0xEB
- .byte  9
- .byte  8
+	.balign 4, 0x00
+	.word npc_809EB20+1
+	.byte 0xBD
+	.byte 0xEB
+	.byte  9
+	.byte  8
 dword_809EB1C: .word 0x809EB14
 .endfunc // sub_809EB04
 
@@ -1267,7 +1267,7 @@ loc_809EF2A:
 	str r0, [r5,#0x60]
 	add r6, #2
 	mov pc, lr
- .balign 4, 0x00
+	.balign 4, 0x00
 off_809EF3C: .word dword_809E530
 npc_809EF40:
 	ldrb r0, [r6,#1]
@@ -1388,7 +1388,7 @@ npc_809EFD8:
 	bl sub_8002E52
 	add r6, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_809EFF4: .word 0x180
 off_809EFF8: .word 0x100
 .endfunc // npc_809EFD8
@@ -1513,7 +1513,7 @@ loc_809F0BE:
 	bl sub_8004602
 	bl npc_809F51E
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_809F0DC: .word dword_873D108
 off_809F0E0: .word dword_809F0E4
 dword_809F0E4: .word 0x20000FF, 0xFF030102, 0x7870B500, 0x51E82780, 0x7268200C
@@ -1992,9 +1992,9 @@ sub_809F3C0:
 	add r6, #2
 	pop {pc}
 off_809F3D8: .word unk_202FA04
- .word off_809F3E0
+	.word off_809F3E0
 off_809F3E0: .word off_8044470
- .word off_80444C4
+	.word off_80444C4
 .endfunc // sub_809F3C0
 
 .func
@@ -2047,7 +2047,7 @@ sub_809F418:
 	bl npc_809F51E
 	add r6, #4
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // sub_809F418
 
 .func

@@ -41,7 +41,7 @@ off_806D950: .word off_806D6B0
 off_806D954: .word unk_2037800
 off_806D958: .word off_806D95C
 off_806D95C: .word dword_806D99C
- .word 0x806D9A2, 0x806D9A6, 0x806D9B0, 0x806D9B8, 0x806D9BC
+	.word 0x806D9A2, 0x806D9A6, 0x806D9B0, 0x806D9B8, 0x806D9BC
 	.word 0x806D9C2, 0x806D9CA, 0x806D9D2, 0x806D9D6, 0x806D9DC
 	.word 0x806D9E0, 0x806D9E6, 0x806D9EC, 0x806D9F2, 0x806D9F8
 dword_806D99C: .word 0x121C061C, 0x61CFFFF, 0x1B1CFFFF, 0x61C1C1C, 0xFFFF121C
@@ -60,26 +60,26 @@ sub_806D9FC:
 	ldr r0, [r0,r1]
 	bl sub_8002354
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_806DA0C: .word off_806DA10
 off_806DA10: .word off_806DA50
- .word off_806DA50
- .word off_806DA50
- .word off_806DA50
- .word off_806DA50
- .word off_806DA50
- .word off_806DA50
- .word off_806DA50
- .word off_806DA50
- .word off_806DA50
- .word off_806DA50
- .word off_806DA50
- .word off_806DA50
- .word off_806DA50
- .word off_806DA50
- .word off_806DA50
+	.word off_806DA50
+	.word off_806DA50
+	.word off_806DA50
+	.word off_806DA50
+	.word off_806DA50
+	.word off_806DA50
+	.word off_806DA50
+	.word off_806DA50
+	.word off_806DA50
+	.word off_806DA50
+	.word off_806DA50
+	.word off_806DA50
+	.word off_806DA50
+	.word off_806DA50
+	.word off_806DA50
 off_806DA50: .word byte_806D820
- .word 0xFFFFFFFF
+	.word 0xFFFFFFFF
 .endfunc // sub_806D9FC
 
 .func
@@ -106,11 +106,11 @@ sub_806DA58:
 	ldr r0, [r0,r1]
 	bl sub_80304E8
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_806DA8C: .word off_806DA90
 off_806DA90: .word locret_8001AB4+1
- .word sub_80019D0+1
- .word 0x3005CD9, 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9
+	.word sub_80019D0+1
+	.word 0x3005CD9, 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9
 	.word 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9, 0x800
 	.word 0x8001AB5, 0x80019D1, 0x3005CD9, 0x800, 0x8001AB5
 	.word 0x80019D1, 0x3005CD9, 0x800, 0x8001AB5, 0x80019D1
@@ -125,26 +125,26 @@ off_806DA90: .word locret_8001AB4+1
 	.word 0x3005CD9, 0x800
 off_806DB90: .word off_806DB94
 off_806DB94: .word off_806DBD4
- .word off_806DBF0
- .word off_806DBD4
- .word off_806DBD4
- .word off_806DBD4
- .word off_806DBD4
- .word off_806DBD4
- .word off_806DBD4
- .word off_806DBD4
- .word off_806DBD4
- .word off_806DBF0
- .word off_806DBD4
- .word off_806DBD4
- .word off_806DBD4
- .word off_806DBD4
- .word off_806DBF0
+	.word off_806DBF0
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBF0
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBD4
+	.word off_806DBF0
 off_806DBD4: .word off_8616598
- .word 0x6008020, 0x8616634, 0x1800, 0x8616760, 0x3001960
+	.word 0x6008020, 0x8616634, 0x1800, 0x8616760, 0x3001960
 	.word 0x20
 off_806DBF0: .word off_8616598
- .word 0x6008020, 0x8616634, 0x1800, 0x8616EC4, 0x3001960
+	.word 0x6008020, 0x8616634, 0x1800, 0x8616EC4, 0x3001960
 	.word 0x20
 .endfunc // sub_806DA58
 
@@ -171,21 +171,21 @@ sub_806DC0C:
 	pop {r4-r7,pc}
 off_806DC34: .word off_806DC38
 off_806DC38: .word locret_806DC78+1
- .word sub_806DC7A+1
- .word locret_806DC78+1
- .word locret_806DC78+1
- .word locret_806DC78+1
- .word locret_806DC78+1
- .word locret_806DC78+1
- .word locret_806DC78+1
- .word locret_806DC78+1
- .word locret_806DC78+1
- .word sub_806DC98+1
- .word locret_806DC78+1
- .word locret_806DC78+1
- .word locret_806DC78+1
- .word locret_806DC78+1
- .word sub_806DCB6+1
+	.word sub_806DC7A+1
+	.word locret_806DC78+1
+	.word locret_806DC78+1
+	.word locret_806DC78+1
+	.word locret_806DC78+1
+	.word locret_806DC78+1
+	.word locret_806DC78+1
+	.word locret_806DC78+1
+	.word locret_806DC78+1
+	.word sub_806DC98+1
+	.word locret_806DC78+1
+	.word locret_806DC78+1
+	.word locret_806DC78+1
+	.word locret_806DC78+1
+	.word sub_806DCB6+1
 .endfunc // sub_806DC0C
 
 locret_806DC78:
@@ -267,7 +267,7 @@ sub_806DCD4:
 	pop {pc}
 off_806DCE8: .word pt_806DCEC
 // <endpool> <endfile>
-pt_806DCEC: .word dword_806DD2C
+pt_806DCEC:  .word dword_806DD2C
 	.word dword_806DD44
 	.word dword_806DD84
 	.word dword_806DD9C

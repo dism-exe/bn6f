@@ -27,7 +27,7 @@ sub_812D378:
 	mov r5, #0x11
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r4-r7,pc}
- .byte 0, 0
+	.byte 0, 0
 off_812D3A0: .word unk_201D620
 off_812D3A4: .word unk_201DB20
 .endfunc // sub_812D378
@@ -153,7 +153,7 @@ off_812D3E0: .word unk_2023FC0
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	bl sub_812D5EC
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_812D4C4: .word word_2023FA0
 off_812D4C8: .word unk_202DFA0
 off_812D4CC: .word unk_202E080
@@ -226,7 +226,7 @@ sub_812D54C:
 	bl sub_812D56C
 locret_812D564:
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_812D568: .word dword_812C258+0x10
 .endfunc // sub_812D54C
 
@@ -258,7 +258,7 @@ loc_812D594:
 	ble loc_812D57A
 	add sp, sp, #4
 	pop {r4-r7,pc}
- .byte 0, 0
+	.byte 0, 0
 .endfunc // sub_812D56C
 
 .func
@@ -283,7 +283,7 @@ sub_812D5A0:
 	add r3, r4, #0
 	bl sub_811980C
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_812D5CC: .word word_2023FA0
 .endfunc // sub_812D5A0
 
@@ -302,7 +302,7 @@ sub_812D5D0:
 	bl sub_811980C
 	add r0, r4, #0
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // sub_812D5D0
 
 .func
@@ -369,8 +369,8 @@ loc_812D64C:
 	strb r0, [r5,r2]
 	add sp, sp, #0x1c
 	pop {r4-r7,pc}
- .byte 0, 0
- .word dword_8129178
+	.byte 0, 0
+	.word dword_8129178
 off_812D664: .word dword_8129180
 .endfunc // sub_812D600
 
@@ -444,7 +444,7 @@ loc_812D6F0:
 	bl sound_play // () -> void
 locret_812D6F4:
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .func
 .thumb_func
 sub_812D6F8:
@@ -521,7 +521,7 @@ locret_812D776:
 	bl sub_812D668
 locret_812D788:
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .func
 .thumb_func
 sub_812D78C:
@@ -597,7 +597,7 @@ loc_812D804:
 	pop {r4-r7,pc}
 dword_812D808: .word 0x30069A0
 off_812D80C: .word unk_2023FC0
- .word 0x64
+	.word 0x64
 .endfunc // sub_812D7A4
 
 	push {lr}
@@ -713,7 +713,7 @@ locret_812D8C6:
 	bl sub_812D91C
 	pop {r4-r7,pc}
 off_812D914: .word dword_201E420
- .word dword_812C258+0x20
+	.word dword_812C258+0x20
 .func
 .thumb_func
 sub_812D91C:
@@ -741,10 +741,10 @@ sub_812D934:
 	mov r3, #0xa
 	bl sub_8120228
 	pop {r4,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_812D948: .word off_812D94C
 off_812D94C: .word unk_202DFA0
- .word unk_202DFC0
+	.word unk_202DFC0
 .endfunc // sub_812D934
 
 .func
@@ -787,7 +787,7 @@ loc_812D970:
 	mov r5, #2
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 	push {r4-r7,lr}
 	lsl r0, r0, #2
 	ldr r1, off_812D9D0 // =off_812D9D4 
@@ -817,7 +817,7 @@ loc_812D9B8:
 	pop {r4-r7,pc}
 off_812D9D0: .word off_812D9D4
 off_812D9D4: .word unk_202DFA0
- .word unk_202DFC0
+	.word unk_202DFC0
 off_812D9DC: .word dword_812D9E0
 dword_812D9E0: .word 0xB, 0xB, 0x6, 0xD
 .func
@@ -832,7 +832,7 @@ sub_812D9F0:
 	mov r3, #0x2e 
 	bl sub_812DA08
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // sub_812D9F0
 
 .func

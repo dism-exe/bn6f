@@ -47,7 +47,7 @@ loc_800032A:
 	bx r0
 	bl main_static_8000454
 	b main_gameRoutine
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8000344: .word loc_3006814+1
 off_8000348: .word main_jt_subsystem
 main_jt_subsystem: .word Load_ho_802F544+1, cb_80050EC+1, ho_jackIn_80341B6+1, cb_8038AD0+1
@@ -55,7 +55,7 @@ main_jt_subsystem: .word Load_ho_802F544+1, cb_80050EC+1, ho_jackIn_80341B6+1, c
 	.word cb_803CCD6+1, reqBBS_cb_draw_813E0A4+1, menuControl_cb_openSubmenu+1, cb_8046CF8+1
 	.word cb_8048FD4+1, cb_804A304+1, cb_81382AC+1, 0x0
 	.word 0x0, reqBBS_cb_813F404+1, menuControl_cb_email+1, cb_8049E04+1
- .byte 0, 0, 0, 0
+	.byte 0, 0, 0, 0
 .endfunc // main_
 
 .func
@@ -78,8 +78,8 @@ loc_80003A6:
 	mov r1, #0
 	str r1, [r0]
 	pop {pc}
- .byte 0, 0
- .word dword_2009CC0
+	.byte 0, 0
+	.word dword_2009CC0
 off_80003C4: .word dword_200A870
 off_80003C8: .word dword_2009930
 off_80003CC: .word GeneralLCDStatus_STAT_LYC_
@@ -97,7 +97,7 @@ loc_80003D6:
 	tst r1, r2
 	bne loc_80003D6
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 off_80003E0: .word GeneralLCDStatus_STAT_LYC_
 .endfunc // main_static_await_80003D0
 
@@ -161,7 +161,7 @@ loc_8000438:
 	and r4, r5
 	strh r4, [r0,#2]
 	mov pc, lr
- .balign 4, 0x00
+	.balign 4, 0x00
 off_800044C: .word KeyStatus
 dword_8000450: .word 0x3FF
 .endfunc // main_static_80003E4
@@ -271,7 +271,7 @@ loc_80004C0:
 	bl sub_803D1A8 // () -> void
 	bl sub_803E900
 	pop {r5,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8000564: .word 0x40
 off_8000568: .word 0xC0
 off_800056C: .word dword_2009930
@@ -298,10 +298,10 @@ main_static_8000570:
 	orr r1, r2
 	strh r1, [r0]
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 dword_800059C: .word 0x93040D
 off_80005A0: .word GeneralLCDStatus_STAT_LYC_
- .word dword_3000E70
+	.word dword_3000E70
 dword_80005A8: .word 0x3005D79
 .endfunc // main_static_8000570
 

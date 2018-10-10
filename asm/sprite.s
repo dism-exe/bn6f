@@ -86,7 +86,7 @@ loc_8002716:
 	pop {r1}
 	strb r1, [r5,#3]
 	pop {r4,r5,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8002724: .word spritePointers_8031CC4
 off_8002728: .word spriteWhiteDot
 .endfunc // sprite_load
@@ -160,7 +160,7 @@ loc_800278A:
 	mov r0, #0x80
 	strh r0, [r5,#0x16]
 	pop {r4-r6,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8002798: .word guiSprites_803271C
 .endfunc // sub_8002770
 
@@ -244,7 +244,7 @@ off_8002804: .word byte_20098A8
 dword_8002808: .word 0x32F
 dword_800280C: .word 0x2FF
 dword_8002810: .word 0x2FF
- .word 0x2FF
+	.word 0x2FF
 .endfunc // sub_80027F4
 
 .func
@@ -341,7 +341,7 @@ sprite_handleObjSprites_800289C:
 	mvn r2, r2
 	bl sub_800098C
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_80028B4: .word dword_20093A8
 off_80028B8: .word dword_200A890
 off_80028BC: .word 0x388
@@ -355,7 +355,7 @@ sub_80028C0:
 	ldr r2, dword_80028D0 // = 
 	strb r1, [r2,r0]
 	mov pc, lr
- .balign 4, 0x00
+	.balign 4, 0x00
 off_80028CC: .word dword_200F340
 dword_80028D0: .word 0x200F389
 .endfunc // sub_80028C0
@@ -784,7 +784,7 @@ loc_8002BB2:
 	mov r9, r2
 	mov r12, r3
 	pop {r4-r7,pc}
- .byte 0, 0
+	.byte 0, 0
 off_8002BC0: .word spritePointers_8031CC4
 dword_8002BC4: .word 0x2040000
 off_8002BC8: .word dword_2033000
@@ -812,9 +812,9 @@ sub_8002BCC:
 
 	push {r4-r7,lr}
 	pop {r4-r7,pc}
- .byte 0, 0
+	.byte 0, 0
 off_8002BF0: .word byte_200DCA0
- .word byte_8002BF8
+	.word byte_8002BF8
 byte_8002BF8: .byte 0x0, 0x6, 0x55, 0x4E
 aCompStr8xEnd8x: .byte 0x43, 0x4F
 	.byte 0x4D, 0x50
@@ -832,11 +832,11 @@ aCompStr8xEnd8x: .byte 0x43, 0x4F
 	.byte 0x58, 0x2F
 	.byte 0x25, 0x58
 	.byte 0xA, 0x0
- .word unk_2037800
- .byte  0
- .byte  0
- .byte  4
- .byte  2
+	.word unk_2037800
+	.byte  0
+	.byte  0
+	.byte  4
+	.byte  2
 .func
 .thumb_func
 sprite_setScaleParameters:

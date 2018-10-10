@@ -20,7 +20,7 @@ chatbox_uncomp_803FD08:
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
- .byte 0, 0
+	.byte 0, 0
 off_803FD30: .word unk_202DA00
 off_803FD34: .word unk_2033400
 off_803FD38: .word unk_202FA00
@@ -37,7 +37,7 @@ chatbox_dead_uncomp_803FD3C:
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
- .byte 0, 0
+	.byte 0, 0
 off_803FD50: .word unk_2034A00
 .endfunc // chatbox_dead_uncomp_803FD3C
 
@@ -82,10 +82,10 @@ chatbox_803FD78:
 	mov r2, #8
 	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	pop {r4,r5,pc}
- .byte 0, 0
+	.byte 0, 0
 off_803FD90: .word dword_803FD94
 dword_803FD94: .word 0x83007E
- .word 0x81007F
+	.word 0x81007F
 .endfunc // chatbox_803FD78
 
 .func
@@ -95,7 +95,7 @@ chatbox_runScript_803FD9C:
 	push {r4,r5,lr}
 	mov r4, #0
 	b loc_803FDA8
- .balign 4, 0x00
+	.balign 4, 0x00
 loc_803FDA4:
 	push {r4,r5,lr}
 	mov r4, #1
@@ -133,7 +133,7 @@ dword_803FDE4: .word 0x83007E, 0x81007F
 off_803FDEC: .word unk_86BFBA0
 dword_803FDF0: .word 0x600DC80
 off_803FDF4: .word 0x280
- .word 0x380
+	.word 0x380
 off_803FDFC: .word byte_86BFE20
 off_803FE00: .word unk_3001B40
 off_803FE04: .word byte_86BFE40
@@ -146,7 +146,7 @@ chatbox_runScript_803FE08:
 	push {r4,r5,lr}
 	mov r4, #0
 	b loc_803FE14
- .byte 0, 0
+	.byte 0, 0
 .endfunc // chatbox_runScript_803FE08
 
 .func
@@ -188,7 +188,7 @@ dword_803FE50: .word 0x83007E, 0x81007F
 off_803FE58: .word unk_86C05E0
 dword_803FE5C: .word 0x600DC80
 off_803FE60: .word 0x320
- .word 0x380
+	.word 0x380
 off_803FE68: .word byte_86C0900
 off_803FE6C: .word unk_3001B40
 off_803FE70: .word byte_86C0920
@@ -211,11 +211,11 @@ chatbox_runScript_803FE74:
 	pop {r4,r5,pc}
 off_803FE90: .word dword_803FE94
 dword_803FE94: .word 0x83007E
- .word 0x81007F
+	.word 0x81007F
 off_803FE9C: .word spriteWhiteDot
 dword_803FEA0: .word 0x600DC80
 off_803FEA4: .word 0x6F8
- .word 0x380
+	.word 0x380
 off_803FEAC: .word spriteWhiteDot
 off_803FEB0: .word unk_3001B40
 .endfunc // chatbox_runScript_803FE74
@@ -287,10 +287,10 @@ locret_803FF26:
 off_803FF28: .word 0x338
 off_803FF2C: .word jt_803FF30
 jt_803FF30: .word sub_804005C+1
- .word chatbox_interpreteScriptChar+1
+	.word chatbox_interpreteScriptChar+1
 off_803FF38: .word off_803FF3C
 off_803FF3C: .word 0x1D4
- .word 0x1D6, 0x1D8, 0x1E8, 0x1EC
+	.word 0x1D6, 0x1D8, 0x1E8, 0x1EC
 .endfunc // chatbox_onUpdate_803FEB4
 
 .func
@@ -404,19 +404,19 @@ loc_8040016:
 	bl chatbox_804082C
 	pop {pc}
 off_8040020: .word chatbox_jt_ctrlCmds
- .word dword_8040028
+	.word dword_8040028
 dword_8040028: .word 0x254D0B00, 0x44
 off_8040030: .word 0x100
 off_8040034: .word sub_30070B4+1
 off_8040038: .word sub_3006F8C+1
- .word dword_8040040
+	.word dword_8040040
 dword_8040040: .word 0x254D0B00
- .word 0x2A44
- .word byte_8043CA4
- .word 0x800
- .word 0x138
- .word 0x1F4
- .word 0x1F5
+	.word 0x2A44
+	.word byte_8043CA4
+	.word 0x800
+	.word 0x138
+	.word 0x1F4
+	.word 0x1F5
 .endfunc // chatbox_interpreteScriptChar
 
 .func
@@ -521,17 +521,17 @@ loc_8040112:
 	strb r0, [r5,#0x11]
 	pop {r4-r7,pc}
 off_8040120: .word chatbox_jt_ctrlCmds
- .word dword_8040128
+	.word dword_8040128
 dword_8040128: .word 0x254D0B00, 0x44
 off_8040130: .word 0x100
 off_8040134: .word sub_30070B4+1
 off_8040138: .word sub_3006F8C+1
- .word dword_8040140
+	.word dword_8040140
 dword_8040140: .word 0x254D0B00
- .word 0x2A44
- .word byte_8043CA4
+	.word 0x2A44
+	.word byte_8043CA4
 dword_804014C: .word 0x840
- .word 0x138
+	.word 0x138
 .endfunc // sub_804005C
 
 .func
@@ -626,14 +626,14 @@ loc_80401A4:
 	pop {r1}
 	mov r12, r1
 	pop {r4,r6,r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 dword_80401F8: .word 0xE2B8
 off_80401FC: .word dword_8040200
 dword_8040200: .word 0x80004000, 0x80004000
 dword_8040208: .word 0x40004000
 off_804020C: .word dword_8040210
 dword_8040210: .word 0x3, 0x3
- .word 0x2
+	.word 0x2
 .endfunc // chatbox_804017C
 
 .func
@@ -795,7 +795,7 @@ chatbox_copyTiles_8040344:
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r5}
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_804036C: .word off_8045CEC
 dword_8040370: .word 0x1D2
 .endfunc // chatbox_copyTiles_8040344
@@ -932,11 +932,11 @@ chatbox_runScript:
 	mov r2, #0x20 
 	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {r4-r6,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_804046C: .word dword_86BEB20
 dword_8040470: .word 0x600DC80
 off_8040474: .word 0x160
- .word 0x380
+	.word 0x380
 off_804047C: .word byte_86BEC80
 off_8040480: .word unk_3001B40
 off_8040484: .word dword_86B7AC0
@@ -944,7 +944,7 @@ off_8040488: .word unk_3001710
 off_804048C: .word unk_200B2B0
 off_8040490: .word dword_8040494
 dword_8040494: .word 0x680065
- .word 0x670066
+	.word 0x670066
 mask: .word 0x100
 off_80404A0: .word dword_2009F38
 off_80404A4: .word 0x230
@@ -1078,12 +1078,12 @@ dword_80405AC: .word 0x600DC80
 off_80405B0: .word 0x160
 off_80405B4: .word byte_86BEC80
 off_80405B8: .word unk_3001B40
- .word dword_86B7AC0
+	.word dword_86B7AC0
 off_80405C0: .word unk_3001710
 off_80405C4: .word unk_200B2B0
 off_80405C8: .word dword_80405CC
 dword_80405CC: .word 0x680065
- .word 0x670066
+	.word 0x670066
 off_80405D4: .word 0x100
 off_80405D8: .word dword_2009F38
 off_80405DC: .word 0x230
@@ -1211,18 +1211,18 @@ dead_80405F8:
 	mov r2, #0x20 
 	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {r4-r6,pc}
- .byte 0, 0
- .word dword_86BEB20
+	.byte 0, 0
+	.word dword_86BEB20
 dword_80406E4: .word 0x600DC80
- .word 0x160
- .word byte_86BEC80
+	.word 0x160
+	.word byte_86BEC80
 off_80406F0: .word unk_3001B40
 off_80406F4: .word dword_86B7AC0
 off_80406F8: .word unk_3001710
 off_80406FC: .word unk_200B2B0
 off_8040700: .word dword_8040704
 dword_8040704: .word 0x680065
- .word 0x670066
+	.word 0x670066
 off_804070C: .word 0x100
 off_8040710: .word dword_2009F38
 off_8040714: .word 0x230
@@ -1271,10 +1271,10 @@ loc_8040764:
 	pop {r4-r7,pc}
 off_804076C: .word off_8040770
 off_8040770: .word off_8044470
- .word off_80444C4
- .word off_80444A8
- .word off_804457C
- .word dword_8040784
+	.word off_80444C4
+	.word off_80444A8
+	.word off_804457C
+	.word dword_8040784
 dword_8040784: .word 0x2500360, 0x1300240, 0x100120, 0x0
 .endfunc // chatbox_static_8040730
 
@@ -1304,7 +1304,7 @@ loc_80407AA:
 	pop {r4-r7,pc}
 off_80407BC: .word off_80407C0
 off_80407C0: .word off_804448C
- .word off_8044520
+	.word off_8044520
 .endfunc // chatbox_8040794
 
 .func
@@ -1334,11 +1334,11 @@ loc_80407DE:
 	add r3, r3, r2
 	ldr r0, [r3]
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_80407F8: .word off_80407FC
 off_80407FC: .word off_8044470
- .word off_80444C4
- .word dword_8040808
+	.word off_80444C4
+	.word dword_8040808
 dword_8040808: .word 0x4500460, 0x4300440, 0x4100420, 0x400
 .endfunc // chatbox_map_80407C8
 
@@ -1353,7 +1353,7 @@ chatbox_8040818:
 	mov r0, #0xc8
 	bl chatbox_8045F2C // (int a1) ->
 	pop {r5,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_8040818
 
 .func
@@ -1410,22 +1410,22 @@ dword_804088C: .word 0x6017F00
 dword_8040890: .word 0x40000000
 off_8040894: .word off_8040898
 off_8040898: .word dword_80408A4
- .word dword_80408A4
+	.word dword_80408A4
 dword_80408A0: .word 0xE3F8
 dword_80408A4: .word 0x0
- .word 0x1010000, 0x1010101, 0x2020202, 0xFF0202, 0x0, 0x0, 0x0
- .byte  1
- .byte  1
- .byte  1
- .byte  1
- .byte  1
- .byte  1
- .byte  1
- .byte  1
- .byte  1
- .byte  1
- .byte  1
- .byte 0xFF
+	.word 0x1010000, 0x1010101, 0x2020202, 0xFF0202, 0x0, 0x0, 0x0
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte 0xFF
 .endfunc // chatbox_804082C
 
 .func
@@ -1465,8 +1465,8 @@ chatbox_config_80408D0:
 	orr r0, r1
 	bl chatbox_clearFlags_3e // (int mask) -> void
 	pop {pc}
- .byte  0
- .byte  0
+	.byte  0
+	.byte  0
 off_8040918: .word 0x400
 dword_804091C: .word 0x800
 .endfunc // chatbox_config_80408D0
@@ -1505,7 +1505,7 @@ chatbox_maskFlags_3e:
 	and r0, r1
 	pop {r1}
 	mov pc, lr
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_maskFlags_3e
 
 .func
@@ -1555,19 +1555,19 @@ loc_8040986:
 	mov r3, #4
 	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 dword_80409A0: .word 0x40000000
 off_80409A4: .word unk_86A48C0
 dword_80409A8: .word 0x6017F80
 off_80409AC: .word unk_80409B2
 byte_80409B0: .byte 0xFC, 0xE3
 unk_80409B2: .byte  0
- .byte  0
- .word 0x0
- .word 0x1010101
- .word 0x2020101
- .word 0x2020202
- .word 0xFF
+	.byte  0
+	.word 0x0
+	.word 0x1010101
+	.word 0x2020101
+	.word 0x2020202
+	.word 0xFF
 .endfunc // chatbox_ED_select_8040944
 
 .func
@@ -1579,7 +1579,7 @@ chatbox_80409C8:
 	mov r2, #0x80
 	bl loc_8000AC8
 	pop {pc}
- .hword 0x0
+	.hword 0x0
 off_80409D8: .word dword_86A4A40
 dword_80409DC: .word 0x6017F80
 .endfunc // chatbox_80409C8
@@ -1597,157 +1597,157 @@ chatbox_80409E0:
 	ldr r1, dword_8040A78 // =0x6017F80 
 	mov r2, #0x80
 	bl loc_8000AC8
- .byte 0x29 
- .byte 0x7E 
- .byte 0x28 
- .byte 0x6F 
- .byte 0x40 
- .byte 0x18
- .byte  4
- .byte 0x30 
- .byte 0xE9
- .byte 0x7C 
- .byte 0x80
- .byte 0x23 
- .byte 0xEB
- .byte 0x5C 
+	.byte 0x29 
+	.byte 0x7E 
+	.byte 0x28 
+	.byte 0x6F 
+	.byte 0x40 
+	.byte 0x18
+	.byte  4
+	.byte 0x30 
+	.byte 0xE9
+	.byte 0x7C 
+	.byte 0x80
+	.byte 0x23 
+	.byte 0xEB
+	.byte 0x5C 
 unk_8040A04: .byte  1
- .byte 0x3B 
- .byte 0x99
- .byte 0x42 
- .byte  0
- .byte 0xD1
- .byte  7
- .byte 0x30 
- .byte 0xE9
- .byte 0x7B 
- .byte 0xE
- .byte 0x23 
- .byte 0x59 
- .byte 0x43 
- .byte 0x6A 
- .byte 0x7E 
- .byte 0x89
- .byte 0x18
- .byte  2
- .byte 0x39 
- .byte  0
- .byte  4
- .byte  8
- .byte 0x43 
- .byte  4
- .byte 0x1C
- .byte 0x20
- .byte 0xB4
- .byte 0x13
- .byte 0x4E 
- .byte 0x30 
- .byte 0x43 
- .byte 0x1B
- .byte 0x49 
- .byte  0
- .byte 0x22 
- .byte 0x92
- .byte  2
- .byte 0x11
- .byte 0x43 
- .byte  0
- .byte 0x22 
- .byte  1
- .byte 0x23 
- .byte 0xEF
- .byte 0xF7
- .byte 0xFA
- .byte 0xF9
- .byte 0x20
- .byte 0x1C
- .byte  8
- .byte 0x24 
- .byte 0xE9
- .byte 0x7C 
- .byte 0x80
- .byte 0x23 
- .byte 0xED
- .byte 0x5C 
- .byte  1
- .byte 0x3D 
- .byte 0xA9
- .byte 0x42 
- .byte  0
- .byte 0xD1
- .byte 0x12
- .byte 0x24 
- .byte 0x24 
- .byte  4
- .byte  0
- .byte 0x19
- .byte 0x30 
- .byte 0x43 
- .byte 0x12
- .byte 0x49 
- .byte  0
- .byte 0x26 
- .byte 0xB6
- .byte  2
- .byte 0x31 
- .byte 0x43 
- .byte  1
- .byte 0x23 
- .byte 0xEF
- .byte 0xF7
- .byte 0xE7
- .byte 0xF9
- .byte 0x20
- .byte 0xBC
- .byte 0xAA
- .byte 0x7D 
- .byte  7
- .byte 0x4B 
- .byte  1
- .byte 0x32 
- .byte 0x99
- .byte 0x5C 
- .byte 0xFF
- .byte 0x29 
- .byte  1
- .byte 0xD1
- .byte  1
- .byte 0x22 
- .byte 0x19
- .byte 0x88
- .word 0xBD5075AA
- .byte  0
- .byte 0x80
- .byte  0
- .byte  0
+	.byte 0x3B 
+	.byte 0x99
+	.byte 0x42 
+	.byte  0
+	.byte 0xD1
+	.byte  7
+	.byte 0x30 
+	.byte 0xE9
+	.byte 0x7B 
+	.byte 0xE
+	.byte 0x23 
+	.byte 0x59 
+	.byte 0x43 
+	.byte 0x6A 
+	.byte 0x7E 
+	.byte 0x89
+	.byte 0x18
+	.byte  2
+	.byte 0x39 
+	.byte  0
+	.byte  4
+	.byte  8
+	.byte 0x43 
+	.byte  4
+	.byte 0x1C
+	.byte 0x20
+	.byte 0xB4
+	.byte 0x13
+	.byte 0x4E 
+	.byte 0x30 
+	.byte 0x43 
+	.byte 0x1B
+	.byte 0x49 
+	.byte  0
+	.byte 0x22 
+	.byte 0x92
+	.byte  2
+	.byte 0x11
+	.byte 0x43 
+	.byte  0
+	.byte 0x22 
+	.byte  1
+	.byte 0x23 
+	.byte 0xEF
+	.byte 0xF7
+	.byte 0xFA
+	.byte 0xF9
+	.byte 0x20
+	.byte 0x1C
+	.byte  8
+	.byte 0x24 
+	.byte 0xE9
+	.byte 0x7C 
+	.byte 0x80
+	.byte 0x23 
+	.byte 0xED
+	.byte 0x5C 
+	.byte  1
+	.byte 0x3D 
+	.byte 0xA9
+	.byte 0x42 
+	.byte  0
+	.byte 0xD1
+	.byte 0x12
+	.byte 0x24 
+	.byte 0x24 
+	.byte  4
+	.byte  0
+	.byte 0x19
+	.byte 0x30 
+	.byte 0x43 
+	.byte 0x12
+	.byte 0x49 
+	.byte  0
+	.byte 0x26 
+	.byte 0xB6
+	.byte  2
+	.byte 0x31 
+	.byte 0x43 
+	.byte  1
+	.byte 0x23 
+	.byte 0xEF
+	.byte 0xF7
+	.byte 0xE7
+	.byte 0xF9
+	.byte 0x20
+	.byte 0xBC
+	.byte 0xAA
+	.byte 0x7D 
+	.byte  7
+	.byte 0x4B 
+	.byte  1
+	.byte 0x32 
+	.byte 0x99
+	.byte 0x5C 
+	.byte 0xFF
+	.byte 0x29 
+	.byte  1
+	.byte 0xD1
+	.byte  1
+	.byte 0x22 
+	.byte 0x19
+	.byte 0x88
+	.word 0xBD5075AA
+	.byte  0
+	.byte 0x80
+	.byte  0
+	.byte  0
 off_8040A74: .word dword_86A4A40
 dword_8040A78: .word 0x6017F80
 off_8040A7C: .word unk_8040A80
 unk_8040A80: .byte  0
- .byte  0
- .byte  0
- .byte  0
- .byte  0
- .byte  0
- .byte  0
- .byte  0
- .byte  0
- .byte  1
- .byte  1
- .byte  1
- .byte  1
- .byte  1
- .byte  1
- .byte  1
- .byte  1
- .byte  1
- .byte 0xFF
- .byte  0
- .byte 0xFC
- .byte 0xE3
- .balign 4, 0x00
- .byte 0xFE
- .byte 0xE3
+	.byte  0
+	.byte  0
+	.byte  0
+	.byte  0
+	.byte  0
+	.byte  0
+	.byte  0
+	.byte  0
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte  1
+	.byte 0xFF
+	.byte  0
+	.byte 0xFC
+	.byte 0xE3
+	.balign 4, 0x00
+	.byte 0xFE
+	.byte 0xE3
 .endfunc // chatbox_80409E0
 
 .func
@@ -1809,15 +1809,15 @@ chatbox_8040A9A:
 loc_8040B0A:
 	strb r2, [r5,#0x16]
 	pop {r4,r6,pc}
- .byte 0, 0
+	.byte 0, 0
 dword_8040B10: .word 0x8000
 off_8040B14: .word dword_86A4A40
 dword_8040B18: .word 0x6017F80
 off_8040B1C: .word word_8040B20
 word_8040B20: .hword 0x0
- .word 0
+	.word 0
 	.byte 0, 0
- .word 0x1010100, 0x1010101, 0xFF0101
+	.word 0x1010100, 0x1010101, 0xFF0101
 dword_8040B34: .word 0xE3FC
 word_8040B38: .hword 0xE3FE
 .endfunc // chatbox_8040A9A
@@ -1945,7 +1945,7 @@ loc_8040C0C:
 	bl sub_8002694
 locret_8040C24:
 	pop {r4-r6,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8040C28: .word 0x421
 dword_8040C2C: .word 0x842
 off_8040C30: .word 0x100
@@ -2029,7 +2029,7 @@ loc_8040CBC:
 	ldr r1, off_8040CC8 // =0x1F0 
 	strb r0, [r5,r1]
 	pop {r0,r1,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 dword_8040CC4: .word 0x1F2
 off_8040CC8: .word 0x1F0
 off_8040CCC: .word 0x1F1
@@ -2099,8 +2099,8 @@ locret_8040D42:
 	pop {pc}
 off_8040D44: .word dword_8040D48
 dword_8040D48: .word 0x1D6
- .word 0x1D8
- .word 0x1E8
+	.word 0x1D8
+	.word 0x1E8
 off_8040D54: .word 0x1EC
 off_8040D58: .word off_8045DD4
 .func
@@ -2162,8 +2162,8 @@ loc_8040DC4:
 	cmp r2, #0xd
 	ble loc_8040DC4
 	pop {r0-r5,pc}
- .byte  0
- .byte  0
+	.byte  0
+	.byte  0
 off_8040DD8: .word unk_200BEA0
 .endfunc // chatbox_8040DBC
 
@@ -2190,16 +2190,16 @@ loc_8040DEC:
 	cmp r2, #0xd
 	ble loc_8040DEC
 	pop {r0-r5,pc}
- .hword 0x0
+	.hword 0x0
 off_8040E00: .word unk_200BEA0
- .word 0x420
- .word 0x540
- .word 0x1C05B520
- .word 0xF7FF2140
- .word 0xBD20FF17
- .word 0x1C05B520
- .word 0xFF3EF7FF
- .word 0xBD20
+	.word 0x420
+	.word 0x540
+	.word 0x1C05B520
+	.word 0xF7FF2140
+	.word 0xBD20FF17
+	.word 0x1C05B520
+	.word 0xFF3EF7FF
+	.word 0xBD20
 chatbox_jt_ctrlCmds: .word chatbox_E5_nop+1, chatbox_E6_end+1, chatbox_E7_buttonhalt+1, chatbox_E8_msgbox+1
 	.word chatbox_E9_newline+1, chatbox_EA_flag+1, chatbox_EB_option+1, chatbox_EC_label+1
 	.word chatbox_ED_select+1, chatbox_EE_pause+1, chatbox_EF_checkflag+1, chatbox_F0_jump+1
@@ -2218,7 +2218,7 @@ chatbox_E5_nop:
 	add r4, #1
 	mov r0, #2
 	mov pc, lr
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_E5_nop
 
 .func
@@ -2436,34 +2436,34 @@ loc_8040FBC:
 	add r4, r4, r1
 locret_8040FD0:
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8040FD4: .word off_8040FDC
 off_8040FD8: .word byte_8045DCC
 off_8040FDC: .word chatbox_804103E+1
- .word chatbox_8041090+1
- .word chatbox_80410F8+1
- .word chatbox_804110C+1
- .word chatbox_804103E+1
- .word chatbox_8041090+1
- .word chatbox_80410F8+1
- .word chatbox_804110C+1
- .word chatbox_804103E+1
- .word chatbox_8041090+1
- .word chatbox_80410F8+1
- .word chatbox_804110C+1
- .word chatbox_804103E+1
- .word chatbox_8041090+1
- .word chatbox_80410F8+1
- .word chatbox_804110C+1
- .word chatbox_80410F8+1
- .word chatbox_804110C+1
+	.word chatbox_8041090+1
+	.word chatbox_80410F8+1
+	.word chatbox_804110C+1
+	.word chatbox_804103E+1
+	.word chatbox_8041090+1
+	.word chatbox_80410F8+1
+	.word chatbox_804110C+1
+	.word chatbox_804103E+1
+	.word chatbox_8041090+1
+	.word chatbox_80410F8+1
+	.word chatbox_804110C+1
+	.word chatbox_804103E+1
+	.word chatbox_8041090+1
+	.word chatbox_80410F8+1
+	.word chatbox_804110C+1
+	.word chatbox_80410F8+1
+	.word chatbox_804110C+1
 dword_8041024: .word 0x1D2
 off_8041028: .word dword_804102C
 dword_804102C: .word 0x2020202
 	.word 0x4040404
 	.word 0x2020202
 	.word 0x2020202
- .hword 0x202
+	.hword 0x202
 .endfunc // chatbox_E8_msgbox
 
 .func
@@ -2653,19 +2653,19 @@ chatbox_EA_flag:
 	pop {r5}
 	mov r0, #1
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 off_8041180: .word off_8041184
 off_8041184: .word chatbox_80411B0+1
- .word chatbox_80411BC+1
- .word chatbox_80411C8+1
- .word chatbox_80411E8+1
- .word chatbox_8041200+1
- .word 0x0
- .word chatbox_8041218+1
- .word chatbox_80411D4+1
- .word chatbox_80411E0+1
- .word chatbox_804122C+1
- .word chatbox_8041238+1
+	.word chatbox_80411BC+1
+	.word chatbox_80411C8+1
+	.word chatbox_80411E8+1
+	.word chatbox_8041200+1
+	.word 0x0
+	.word chatbox_8041218+1
+	.word chatbox_80411D4+1
+	.word chatbox_80411E0+1
+	.word chatbox_804122C+1
+	.word chatbox_8041238+1
 .endfunc // chatbox_EA_flag
 
 .func
@@ -2675,7 +2675,7 @@ chatbox_80411B0:
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_80411B0
 
 .func
@@ -2685,7 +2685,7 @@ chatbox_80411BC:
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_80411BC
 
 .func
@@ -2695,7 +2695,7 @@ chatbox_80411C8:
 	bl toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_80411C8
 
 .func
@@ -2705,7 +2705,7 @@ chatbox_80411D4:
 	bl sub_802F238
 	add r4, #4
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 .endfunc // chatbox_80411D4
 
 .func
@@ -2714,7 +2714,7 @@ chatbox_80411E0:
 	push {lr}
 	add r4, #4
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_80411E0
 
 .func
@@ -2763,7 +2763,7 @@ chatbox_8041218:
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r4, #3
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_8041218
 
 .func
@@ -2773,7 +2773,7 @@ chatbox_804122C:
 	bl reqBBS_813E5DC
 	add r4, #4
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_804122C
 
 .func
@@ -2783,7 +2783,7 @@ chatbox_8041238:
 	bl reqBBS_813F9A0
 	add r4, #4
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_8041238
 
 .func
@@ -2857,7 +2857,7 @@ loc_80412AA:
 	add r4, #3
 	mov r0, #1
 	pop {pc}
- .word dword_80412C4
+	.word dword_80412C4
 dword_80412C4: .word 0x303
 .endfunc // chatbox_EC_label
 
@@ -3084,14 +3084,14 @@ off_8041478: .word 0x130
 off_804147C: .word 0x110
 off_8041480: .word dword_8041484
 dword_8041484: .word 0x800040
- .word 0x100020
- .word off_8041490
+	.word 0x100020
+	.word off_8041490
 off_8041490: .word chatbox_ED_select_8040944+1
- .word chatbox_80409E0+1
- .word 0x100
- .word off_80414A0
+	.word chatbox_80409E0+1
+	.word 0x100
+	.word off_80414A0
 off_80414A0: .word byte_8070605
- .word 0xC0B0A09
+	.word 0xC0B0A09
 .endfunc // chatbox_ED_select
 
 .func
@@ -3194,9 +3194,9 @@ loc_8041546:
 	bl chatbox_setflags_3e // (int mask) -> void
 	mov r0, #0
 	pop {pc}
- .word 0x1F2
- .word 0x1F3
- .word 0x1F0
+	.word 0x1F2
+	.word 0x1F3
+	.word 0x1F0
 .endfunc // chatbox_EE_pause
 
 .func
@@ -3291,7 +3291,7 @@ loc_8041688:
 	add r4, #3
 	mov r0, #1
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 off_8041690: .word off_8043C84
 .endfunc // chatbox_8041670
 
@@ -3463,7 +3463,7 @@ loc_8041798:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 off_80417A0: .word off_8043C64
 .endfunc // chatbox_8041774
 
@@ -3483,7 +3483,7 @@ loc_80417B8:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 .endfunc // chatbox_80417A4
 
 .func
@@ -3507,7 +3507,7 @@ loc_80417DC:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_80417C0
 
 .func
@@ -3538,7 +3538,7 @@ loc_8041810:
 	add r4, #7
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_80417E4
 
 .func
@@ -3637,7 +3637,7 @@ loc_80418C4:
 loc_80418C6:
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_8041818
 
 .func
@@ -3731,7 +3731,7 @@ loc_804195C:
 	add r4, #6
 	mov r0, #1
 	pop {r6,r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_8041944
 
 .func
@@ -3781,7 +3781,7 @@ loc_80419A8:
 	add r4, #0xf
 	mov r0, #1
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 off_80419B0: .word off_8043C64
 .endfunc // chatbox_804198C
 
@@ -3937,7 +3937,7 @@ loc_8041AA8:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 off_8041AB0: .word dword_8041AB4
 dword_8041AB4: .word 0x4020100, 0x605
 .endfunc // chatbox_8041A7C
@@ -3959,7 +3959,7 @@ loc_8041AD4:
 	add r4, #7
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_8041ABC
 
 .func
@@ -4075,7 +4075,7 @@ loc_8041B9C:
 	add r4, #3
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_F0_jump
 
 .func
@@ -4104,7 +4104,7 @@ loc_8041BC8:
 	add r4, #3
 	mov r0, #1
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 dword_8041BD0: .word 0x800
 dword_8041BD4: .word 0x1F3
 .endfunc // chatbox_F1_textspeed
@@ -4329,10 +4329,10 @@ loc_8041D60:
 	mov r2, #0xff
 	strb r2, [r5,#0xb]
 	bl sub_8040B3A
- .byte  3
- .byte 0x34 
- .byte 0x13
- .byte 0xE0
+	.byte  3
+	.byte 0x34 
+	.byte 0x13
+	.byte 0xE0
 loc_8041D74:
 	mov r0, #2
 	bl chatbox_clearFlags_3e // (int mask) -> void
@@ -4362,7 +4362,7 @@ loc_8041D9C:
 off_8041DA0: .word byte_8044244
 off_8041DA4: .word byte_8044260
 dword_8041DA8: .word 0x18C6
- .word i_joGameSubsysSel
+	.word i_joGameSubsysSel
 dword_8041DB0: .word 0x1000
 off_8041DB4: .word 0x1F0
 off_8041DB8: .word 0x1F1
@@ -4470,7 +4470,7 @@ loc_8041E5A:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 dword_8041E7C: .word 0xFFFF
 .endfunc // chatbox_8041DF4
 
@@ -4487,12 +4487,12 @@ chatbox_F8_playeranimation:
 	pop {pc}
 off_8041E90: .word off_8041E94
 off_8041E94: .word chatbox_8041EB0+1
- .word chatbox_8041EE8+1
- .word chatbox_8041F10+1
- .word chatbox_8041F1C+1
- .word chatbox_8041F44+1
- .word chatbox_8041EE8+1
- .word chatbox_8041F44+1
+	.word chatbox_8041EE8+1
+	.word chatbox_8041F10+1
+	.word chatbox_8041F1C+1
+	.word chatbox_8041F44+1
+	.word chatbox_8041EE8+1
+	.word chatbox_8041F44+1
 .endfunc // chatbox_F8_playeranimation
 
 .func
@@ -4523,7 +4523,7 @@ loc_8041EC8:
 loc_8041EE2:
 	mov r0, #0
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_8041EB0
 
 .func
@@ -4548,7 +4548,7 @@ loc_8041F04:
 	add r4, #3
 	mov r0, #0
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 .endfunc // chatbox_8041EE8
 
 .func
@@ -4583,7 +4583,7 @@ loc_8041F3C:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_8041F1C
 
 .func
@@ -4732,20 +4732,20 @@ loc_8042014:
 	pop {pc}
 off_8042060: .word off_8042064
 off_8042064: .word byte_873D9FC
- .word byte_86EA94C
- .word byte_86EB354
- .word byte_86EF71C
- .word byte_86CF4AC
- .word byte_873EA50
- .word byte_873EA50
- .word byte_86EA94C
- .word byte_87F2E38
- .word reqBBS_requestNames_textualData
+	.word byte_86EA94C
+	.word byte_86EB354
+	.word byte_86EF71C
+	.word byte_86CF4AC
+	.word byte_873EA50
+	.word byte_873EA50
+	.word byte_86EA94C
+	.word byte_87F2E38
+	.word reqBBS_requestNames_textualData
 off_804208C: .word dword_8042090
 dword_8042090: .word 0x0, 0x0, 0x0, 0x0, 0x0
- .word 0x90
- .word 0x90
- .word 0x0, 0x0, 0x0
+	.word 0x90
+	.word 0x90
+	.word 0x0, 0x0, 0x0
 off_80420B8: .word 0x140
 .endfunc // chatbox_8041FB4
 
@@ -4796,7 +4796,7 @@ chatbox_80420BC:
 	pop {pc}
 off_8042114: .word off_8042118
 off_8042118: .word byte_87F2E38
- .word dword_87F2ED0
+	.word dword_87F2ED0
 off_8042120: .word 0x140
 .endfunc // chatbox_80420BC
 
@@ -4893,7 +4893,7 @@ chatbox_8042184:
 	add r4, r0, #0
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_80421CC: .word unk_200AFA0
 off_80421D0: .word 0x140
 off_80421D4: .word off_8043C8C
@@ -5013,17 +5013,17 @@ chatbox_FD_sound:
 	pop {pc}
 off_80422A0: .word off_80422A4
 off_80422A4: .word chatbox_80422D4+1
- .word chatbox_80422E8+1
- .word chatbox_80422FC+1
- .word chatbox_804230C+1
- .word chatbox_804231C+1
- .word chatbox_8042328+1
- .word chatbox_80422D4+1
- .word chatbox_80422D4+1
- .word chatbox_8042340+1
- .word chatbox_8042350+1
- .word chatbox_8042360+1
- .word chatbox_8042370+1
+	.word chatbox_80422E8+1
+	.word chatbox_80422FC+1
+	.word chatbox_804230C+1
+	.word chatbox_804231C+1
+	.word chatbox_8042328+1
+	.word chatbox_80422D4+1
+	.word chatbox_80422D4+1
+	.word chatbox_8042340+1
+	.word chatbox_8042350+1
+	.word chatbox_8042360+1
+	.word chatbox_8042370+1
 .endfunc // chatbox_FD_sound
 
 .func
@@ -5063,7 +5063,7 @@ chatbox_80422FC:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_80422FC
 
 .func
@@ -5076,7 +5076,7 @@ chatbox_804230C:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_804230C
 
 .func
@@ -5114,7 +5114,7 @@ chatbox_8042340:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 .endfunc // chatbox_8042340
 
 .func
@@ -5127,7 +5127,7 @@ chatbox_8042350:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 .endfunc // chatbox_8042350
 
 .func
@@ -5154,7 +5154,7 @@ chatbox_8042370:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_8042370
 
 .func
@@ -5217,7 +5217,7 @@ chatbox_80423DC:
 	add r4, #3
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_80423DC
 
 .func
@@ -5246,7 +5246,7 @@ chatbox_8042418:
 	add r4, #3
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_8042418
 
 .func
@@ -5309,7 +5309,7 @@ loc_804248C:
 loc_80424B6:
 	mov r0, #0
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_804247C
 
 .func
@@ -5333,7 +5333,7 @@ loc_80424CC:
 loc_80424DA:
 	mov r0, #0
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 .endfunc // chatbox_80424BC
 
 .func
@@ -5379,7 +5379,7 @@ loc_8042520:
 loc_8042526:
 	mov r0, #0
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_80424E0
 
 .func
@@ -5421,7 +5421,7 @@ chatbox_804252C:
 	add r4, #3
 	mov r0, #1
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 .func
 .thumb_func
 chatbox_8042580:
@@ -5441,7 +5441,7 @@ loc_8042590:
 loc_804259A:
 	mov r0, #0
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 .endfunc // chatbox_8042580
 
 .func
@@ -5463,7 +5463,7 @@ loc_80425B0:
 loc_80425BA:
 	mov r0, #0
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 .endfunc // chatbox_80425A0
 
 .func
@@ -5485,7 +5485,7 @@ loc_80425D0:
 loc_80425DA:
 	mov r0, #0
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 .endfunc // chatbox_80425C0
 
 .func
@@ -5497,7 +5497,7 @@ chatbox_80425E0:
 	add r4, #3
 	mov r0, #0
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 .endfunc // chatbox_80425E0
 
 .func
@@ -5519,7 +5519,7 @@ loc_8042600:
 loc_804260A:
 	mov r0, #0
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 .endfunc // chatbox_80425F0
 
 .func
@@ -5535,23 +5535,23 @@ chatbox_FC_interface:
 	pop {pc}
 off_8042620: .word off_8042624
 off_8042624: .word chatbox_8042678+1
- .word 0
+	.word 0
 	.byte 0, 0, 0, 0
- .word chatbox_80426A8+1
- .word chatbox_80426C4+1
- .word chatbox_80426D4+1
- .word chatbox_80426E0+1
- .word 0x0
- .word chatbox_80426F4+1
- .word chatbox_804271C+1
- .word 0, 0, 0, 0
+	.word chatbox_80426A8+1
+	.word chatbox_80426C4+1
+	.word chatbox_80426D4+1
+	.word chatbox_80426E0+1
+	.word 0x0
+	.word chatbox_80426F4+1
+	.word chatbox_804271C+1
+	.word 0, 0, 0, 0
 	.byte 0, 0, 0, 0
- .word chatbox_8042770+1
- .word chatbox_80427B4+1
- .word chatbox_80427E4+1
- .byte 0, 0, 0, 0
- .word chatbox_8042804+1
- .word chatbox_8042820+1
+	.word chatbox_8042770+1
+	.word chatbox_80427B4+1
+	.word chatbox_80427E4+1
+	.byte 0, 0, 0, 0
+	.word chatbox_8042804+1
+	.word chatbox_8042820+1
 .endfunc // chatbox_FC_interface
 
 .func
@@ -5579,7 +5579,7 @@ loc_80426A0:
 	add r4, #5
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_8042678
 
 .func
@@ -5598,7 +5598,7 @@ chatbox_80426A8:
 
 	mov r0, #1
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 off_80426C0: .word jt_8043B00
 .func
 .thumb_func
@@ -5634,7 +5634,7 @@ chatbox_80426E0:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 dword_80426F0: .word 0x1000
 .endfunc // chatbox_80426E0
 
@@ -5696,7 +5696,7 @@ loc_8042750:
 	add r4, #3
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8042758: .word off_804275C
 off_804275C: .word 0x1D4
 dword_8042760: .word 0x1D6
@@ -5757,7 +5757,7 @@ loc_80427CE:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 dword_80427D8: .word 0xD
 dword_80427DC: .word 0xF
 off_80427E0: .word dword_813F380
@@ -5793,7 +5793,7 @@ chatbox_8042804:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8042818: .word dynaicArr
 dword_804281C: .word 0xF
 .endfunc // chatbox_8042804
@@ -5823,16 +5823,16 @@ chatbox_F7_movebox:
 	pop {pc}
 off_8042840: .word off_8042844
 off_8042844: .word byte_804286D
- .word byte_80428B9
- .word byte_80428C1
- .word byte_80428E5
- .word byte_80428ED
- .word byte_80428FD
- .word byte_8042911
- .word byte_804293D
- .word byte_8042991
- .word byte_80429D9
- .byte 0xB
+	.word byte_80428B9
+	.word byte_80428C1
+	.word byte_80428E5
+	.word byte_80428ED
+	.word byte_80428FD
+	.word byte_8042911
+	.word byte_804293D
+	.word byte_8042991
+	.word byte_80429D9
+	.byte 0xB
 byte_804286D: .byte 0x48, 0x23, 0x79, 0x6B, 0x75, 0xDB, 0x0, 0xC0, 0x18
 	.byte 0xA1, 0x78, 0x29, 0x77, 0x2, 0x68, 0xAA, 0x77, 0x89
 	.byte 0x18, 0x2, 0x39, 0xC9, 0x0, 0xA9, 0x76, 0xE1, 0x78
@@ -5855,7 +5855,7 @@ byte_80428FD: .byte 0x78, 0x84, 0x20, 0x29, 0x50, 0xE1, 0x78, 0x88, 0x20
 	.byte 0x0, 0xA1
 byte_8042911: .byte 0x78, 0xB, 0x20, 0x48, 0x43, 0xF0, 0x22
 off_8042918: .word byte_8521A12
- .byte 0x2A, 0x76, 0x12, 0x18, 0xAA, 0x76, 0xE1, 0x78, 0xE
+	.byte 0x2A, 0x76, 0x12, 0x18, 0xAA, 0x76, 0xE1, 0x78, 0xE
 	.byte 0x20, 0x48, 0x43, 0xA0, 0x22, 0x12, 0x1A, 0x52, 0x8
 	.byte 0x6A, 0x76, 0x12, 0x18, 0xEA, 0x76, 0x4, 0x34, 0x1
 	.byte 0x20, 0xF7, 0x46, 0x0, 0x0, 0xC0
@@ -5881,7 +5881,7 @@ byte_80429D9: .byte 0xB5, 0x79, 0x27, 0x33, 0x37, 0xA1, 0x78, 0x1, 0x39
 	.byte 0xB, 0x20, 0x48, 0x43, 0x8, 0x21, 0x2, 0x22, 0x51
 	.byte 0x43, 0x40, 0x18, 0x3A, 0x1C
 off_80429F0: .word byte_8521A12
- .byte 0x90, 0x46, 0x29, 0x7E, 0x28, 0x1C, 0x94, 0x30, 0x53
+	.byte 0x90, 0x46, 0x29, 0x7E, 0x28, 0x1C, 0x94, 0x30, 0x53
 	.byte 0x18, 0x3, 0x70, 0x52, 0x8, 0x52, 0x0, 0x92, 0x0
 	.byte 0xE9, 0x6F, 0x89, 0x18, 0xE9, 0x67, 0x3, 0x34, 0x1
 	.byte 0x20, 0xC0, 0xBD, 0x0, 0x0
@@ -6165,7 +6165,7 @@ loc_8042C0C:
 	add r4, #9
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 dword_8042C14: .word 0xFFFFFFFF
 .endfunc // chatbox_8042B38
 
@@ -6282,7 +6282,7 @@ loc_8042CEC:
 	add r4, #9
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 dword_8042CF4: .word 0xFFFFFFFF
 .endfunc // chatbox_8042C18
 
@@ -6317,10 +6317,10 @@ jt_8042D0C: .word loc_804312C+1
 	.word chatbox_80434E0+1
 	.word chatbox_80438B4+1
 	.word chatbox_80438EC+1
- .word 0x304C78A0
- .word 0x54292100
- .word 0x20013403
- .word 0x46F7
+	.word 0x304C78A0
+	.word 0x54292100
+	.word 0x20013403
+	.word 0x46F7
 .endfunc // chatbox_FE_numberinput
 
 .func
@@ -6499,7 +6499,7 @@ loc_8042EC0:
 	add r4, #5
 	mov r0, #0
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 .func
 .thumb_func
 chatbox_8042EC8:
@@ -6670,7 +6670,7 @@ loc_8042FAE:
 	ldr r0, dword_8042FD4 // =0x687261 
 	str r0, [r5,#0x58]
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 dword_8042FD0: .word 0x67625E6F
 dword_8042FD4: .word 0x687261
 .func
@@ -6686,7 +6686,7 @@ chatbox_F9_storebyte:
 	pop {pc}
 off_8042FE8: .word off_8042FEC
 off_8042FEC: .word chatbox_8042FF4+1
- .word chatbox_8043008+1
+	.word chatbox_8043008+1
 .endfunc // chatbox_F9_storebyte
 
 .func
@@ -6716,7 +6716,7 @@ chatbox_8043008:
 	add r4, #4
 	mov r0, #1
 	mov pc, lr
- .balign 4, 0x00
+	.balign 4, 0x00
 off_804301C: .word off_8043C64
 .endfunc // chatbox_8043008
 
@@ -6733,7 +6733,7 @@ chatbox_FF_copytext:
 	pop {pc}
 off_8043030: .word off_8043034
 off_8043034: .word chatbox_80430A0+1
- .word chatbox_80430A0+1
+	.word chatbox_80430A0+1
 .endfunc // chatbox_FF_copytext
 
 .func
@@ -6774,14 +6774,14 @@ loc_8043050:
 	add r4, r0, #0
 	mov r0, #1
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8043084: .word off_8043088
 off_8043088: .word unk_20018F0
- .word unk_200194C
- .word unk_20019A8
- .word unk_2001A04
- .word unk_2001A60
- .word unk_2001ABC
+	.word unk_200194C
+	.word unk_20019A8
+	.word unk_2001A04
+	.word unk_2001A60
+	.word unk_2001ABC
 .endfunc // dead_804303C
 
 .func
@@ -6862,7 +6862,7 @@ loc_804312C:
 	add r4, #3
 	mov r0, #1
 	mov pc, lr
- .balign 4, 0x00
+	.balign 4, 0x00
 off_804315C: .word 0x1CC
 off_8043160: .word 0x154
 .func
@@ -7038,12 +7038,12 @@ loc_8043276:
 	pop {pc}
 off_80432AC: .word dword_803FCE4
 off_80432B0: .word sub_3007038+1
- .word 0x1CC
+	.word 0x1CC
 off_80432B8: .word 0x154
 off_80432BC: .word word_80432C0
 word_80432C0: .hword 0x40
- .word 0x200080
- .hword 0x10
+	.word 0x200080
+	.hword 0x10
 .func
 .thumb_func
 chatbox_80432C8:
@@ -7313,11 +7313,11 @@ loc_80434BE:
 	pop {pc}
 off_80434C4: .word dword_803FCE4
 off_80434C8: .word sub_3007038+1
- .word 0x1CC
+	.word 0x1CC
 off_80434D0: .word 0x154
 off_80434D4: .word dword_80434D8
 dword_80434D8: .word 0x800040
- .word 0x100020
+	.word 0x100020
 .endfunc // chatbox_804330C
 
 .func
@@ -7548,15 +7548,15 @@ loc_804368C:
 	add r4, #5
 	mov r0, #0
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8043694: .word dword_803FCE4
 off_8043698: .word sub_3007038+1
- .word 0x1CC
+	.word 0x1CC
 off_80436A0: .word 0x154
 off_80436A4: .word word_80436A8
 word_80436A8: .hword 0x40
- .word 0x200080
- .hword 0x10
+	.word 0x200080
+	.hword 0x10
 .func
 .thumb_func
 chatbox_80436B0:
@@ -7813,14 +7813,14 @@ loc_804388C:
 	add r4, #5
 	mov r0, #0
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8043894: .word dword_803FCE4
 dword_8043898: .word 0x3007039
- .word 0x1CC
+	.word 0x1CC
 dword_80438A0: .word 0x154
 off_80438A4: .word dword_80438A8
 dword_80438A8: .word 0x800040
- .word 0x100020
+	.word 0x100020
 dword_80438B0: .word 0x1B9
 .endfunc // chatbox_80436E8
 
@@ -7850,8 +7850,8 @@ chatbox_80438B4:
 	add r4, #3
 	mov r0, #1
 	mov pc, lr
- .byte  0
- .byte  0
+	.byte  0
+	.byte  0
 off_80438E4: .word 0x1CC
 off_80438E8: .word 0x154
 .endfunc // chatbox_80438B4
@@ -7971,8 +7971,8 @@ loc_80439A8:
 	ldr r3, off_8043A38 // =sub_3007038+1 
 	mov lr, pc
 	bx r3
- .hword 0xBCFF
- .word 0x3201300C, 0x58EB4B1C, 0xDBE1429A, 0x28017928, 0x2001D002
+	.hword 0xBCFF
+	.word 0x3201300C, 0x58EB4B1C, 0xDBE1429A, 0x28017928, 0x2001D002
 	.word 0xE0117128, 0x42007C68, 0x2000D003, 0x213D70A8, 0x8CE85468
 	.word 0x42082101, 0x2108D108, 0xD0034208, 0x5A68216C, 0xFDE6F7BC
 	.word 0xBD002000, 0x5A68216E, 0xFDE0F7BC, 0xF7FC2011, 0x2007FF8D
@@ -7980,12 +7980,12 @@ loc_80439A8:
 	.word 0xF0022020, 0x3402FA77, 0xBD002000
 off_8043A34: .word dword_803FCE4
 off_8043A38: .word sub_3007038+1
- .word 0x1CC
+	.word 0x1CC
 off_8043A40: .word 0x154
 off_8043A44: .word word_8043A48
 word_8043A48: .hword 0x40
- .hword 0x80
- .word 0x100020
+	.hword 0x80
+	.word 0x100020
 off_8043A50: .word dword_8043A54
 dword_8043A54: .word 0x5030201, 0x0
 .endfunc // chatbox_80438EC
@@ -8077,26 +8077,26 @@ loc_8043AFA:
 	mov r0, #1
 	pop {pc}
 jt_8043B00: .word sub_8033FC0+1
- .byte 0, 0, 0, 0
- .word sub_8003A64+1
- .word sub_8001154+1
- .word sub_8003914+1
- .word sub_814187C+1
- .word sub_8142134+1
- .word sub_8048F88+1
- .word sub_814227A+1
- .word sub_802D15E+1
- .word sub_802D158+1
- .word reqBBS_813E660+1
- .word loc_809E314+1
- .word sub_813FA24+1
- .word sub_809FE5E+1
- .word sub_80351B4+1
- .word npc_getMapSpriteScriptOffsets+1
- .word sub_8120DF0+1
- .word sub_813C3AC+1
- .word sub_803CEB8+1
- .word sub_80AA86E+1
+	.byte 0, 0, 0, 0
+	.word sub_8003A64+1
+	.word sub_8001154+1
+	.word sub_8003914+1
+	.word sub_814187C+1
+	.word sub_8142134+1
+	.word sub_8048F88+1
+	.word sub_814227A+1
+	.word sub_802D15E+1
+	.word sub_802D158+1
+	.word reqBBS_813E660+1
+	.word loc_809E314+1
+	.word sub_813FA24+1
+	.word sub_809FE5E+1
+	.word sub_80351B4+1
+	.word npc_getMapSpriteScriptOffsets+1
+	.word sub_8120DF0+1
+	.word sub_813C3AC+1
+	.word sub_803CEB8+1
+	.word sub_80AA86E+1
 byte_8043B54: .byte 0xE0, 0xA2, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0, 0x40, 0xA3, 0x0, 0x2
 	.byte 0x20, 0x0, 0x0, 0x0, 0x0, 0xA3, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0
 	.byte 0x60, 0xA3, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0, 0x0, 0xAA, 0x2, 0x2
@@ -8121,21 +8121,21 @@ byte_8043B54: .byte 0xE0, 0xA2, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0, 0x40, 0xA3, 0x0, 
 	.byte 0x4, 0x0, 0x0, 0x0, 0x8A, 0x9A, 0x0, 0x2, 0x4, 0x0, 0x0, 0x0
 	.byte 0x8C, 0x9A, 0x0, 0x2, 0x4, 0x0, 0x0, 0x0
 off_8043C64: .word unk_2011C54
- .word unk_2011C55
- .word unk_2011C56
- .word unk_2011C57
- .word unk_200A293
- .word 0x0
- .word 0x0
- .word sSubmenu+0x20 // sSubmenu.unk_20
+	.word unk_2011C55
+	.word unk_2011C56
+	.word unk_2011C57
+	.word unk_200A293
+	.word 0x0
+	.word 0x0
+	.word sSubmenu+0x20 // sSubmenu.unk_20
 off_8043C84: .word unk_2011A9D
- .word 0x0
+	.word 0x0
 off_8043C8C: .word unk_2009A80
- .word unk_2009A82
- .word unk_2009A84
- .word unk_2009A86
- .word unk_2009A88
- .word unk_2009A8A
+	.word unk_2009A82
+	.word unk_2009A84
+	.word unk_2009A86
+	.word unk_2009A88
+	.word unk_2009A8A
 byte_8043CA4: .byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
 	.byte 0x8, 0x8, 0x6, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
 	.byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x7, 0x7, 0x7, 0x8, 0x6, 0x7, 0x7, 0x6, 0x6, 0x7, 0x6, 0x8
@@ -8225,14 +8225,14 @@ byte_8044064: .byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 
 	.byte 0x8, 0x8, 0x8, 0x8
 byte_8044244: .byte 0x3D
 byte_8044245: .byte 0x3
- .hword 0x95C
- .word 0xF5E0C5D, 0x13F125F, 0x3570240, 0x1460144, 0x1310129
+	.hword 0x95C
+	.word 0xF5E0C5D, 0x13F125F, 0x3570240, 0x1460144, 0x1310129
 	.word 0xFFFF
 byte_8044260: .byte 0xFF
 byte_8044261: .byte 0xFF
- .balign 4, 0x00
+	.balign 4, 0x00
 dword_8044264: .word 0x2D2D2D
- .word 0x535341, 0x4B4F43, 0x4B5546, 0x4B5646, 0x594147, 0x455244
+	.word 0x535341, 0x4B4F43, 0x4B5546, 0x4B5646, 0x594147, 0x455244
 	.word 0x50414A, 0x5A494A, 0x434F4B, 0x4D554B, 0x44534C, 0x544F50
 	.word 0x584553, 0x544954, 0x504F57, 0x363636, 0x4B4B4B, 0x564948
 	.word 0x4D5541, 0x544953, 0x5A5341, 0x4D5543, 0x4B4944, 0x474146
@@ -8240,2429 +8240,2429 @@ dword_8044264: .word 0x2D2D2D
 	.word 0x5A314A, 0x43304B, 0x543050, 0x584535, 0x543154, 0x44354C
 	.word 0x503057, 0x4B3144, 0x4B304B, 0x5A3541, 0x543153, 0x563148
 	.word 0x0
- .word unk_200BEA0
- .word 0x20202020, 0x200C1A0, 0x20202020, 0x200BEB0, 0x20202020
+	.word unk_200BEA0
+	.word 0x20202020, 0x200C1A0, 0x20202020, 0x200BEB0, 0x20202020
 	.word 0x200C1B0, 0x20202020, 0x200BEC0, 0x20202020, 0x200C1C0
 	.word 0x20202020, 0x200BED0, 0x20202020, 0x200C1D0, 0x20202020
 	.word 0x200BEE0, 0x20202020, 0x200C1E0, 0x20202020, 0x200BEF0
 	.word 0x20202020, 0x200C1F0, 0x20202020, 0x0
- .word unk_200C1A0
- .word 0xA0202020
- .word unk_200C1B0
- .word 0xA0202020, 0x200C1C0, 0xA0202020, 0x200C1D0, 0xA0202020
+	.word unk_200C1A0
+	.word 0xA0202020
+	.word unk_200C1B0
+	.word 0xA0202020, 0x200C1C0, 0xA0202020, 0x200C1D0, 0xA0202020
 	.word 0x200C1E0, 0xA0202020, 0x200C1F0, 0x20202020, 0x200C4A0
 	.word 0x20202020
- .word unk_200C7A0
- .word 0x20202020
- .word unk_200C4B0
- .word 0x20202020, 0x200C7B0, 0x20202020, 0x200C4C0, 0x20202020
- .word unk_200C7C0
- .word 0x20202020
- .word unk_200C4D0
- .word 0x20202020, 0x200C7D0, 0x20202020, 0x200C4E0, 0x20202020
- .word unk_200C7E0
- .word 0x20202020
- .word unk_200C4F0
- .word 0x20202020
- .word unk_200C7F0
- .word 0x20202020
- .word 0x0
- .word unk_200C7A0
- .word 0xA0202020, 0x200C7B0, 0xA0202020, 0x200C7C0, 0xA0202020
+	.word unk_200C7A0
+	.word 0x20202020
+	.word unk_200C4B0
+	.word 0x20202020, 0x200C7B0, 0x20202020, 0x200C4C0, 0x20202020
+	.word unk_200C7C0
+	.word 0x20202020
+	.word unk_200C4D0
+	.word 0x20202020, 0x200C7D0, 0x20202020, 0x200C4E0, 0x20202020
+	.word unk_200C7E0
+	.word 0x20202020
+	.word unk_200C4F0
+	.word 0x20202020
+	.word unk_200C7F0
+	.word 0x20202020
+	.word 0x0
+	.word unk_200C7A0
+	.word 0xA0202020, 0x200C7B0, 0xA0202020, 0x200C7C0, 0xA0202020
 	.word 0x200C7D0, 0xA0202020, 0x200C7E0, 0xA0202020, 0x200C7F0
 	.word 0x20202020, 0x200CAA0, 0x20202020, 0x200CAB0, 0x20202020
 	.word 0x200CAC0, 0x20202020, 0x200CAD0, 0x20202020, 0x200CAE0
 	.word 0x20202020, 0x200CAF0, 0x20202020, 0x0
 off_8044470: .word off_80445D8
- .word off_8044620
- .word off_80446BC
- .word off_8044800
- .word off_804489C
- .word off_8044938
- .word off_80449B8
+	.word off_8044620
+	.word off_80446BC
+	.word off_8044800
+	.word off_804489C
+	.word off_8044938
+	.word off_80449B8
 off_804448C: .word off_8044608
- .word off_8044698
- .word off_80447C4
- .word off_8044878
- .word off_8044914
- .word off_8044998
- .word off_8044A48
+	.word off_8044698
+	.word off_80447C4
+	.word off_8044878
+	.word off_8044914
+	.word off_8044998
+	.word off_8044A48
 off_80444A8: .word off_8044610
- .word off_80446AC
- .word off_80447F0
- .word off_804488C
- .word off_8044928
- .word off_80449A8
- .word off_8044A60
+	.word off_80446AC
+	.word off_80447F0
+	.word off_804488C
+	.word off_8044928
+	.word off_80449A8
+	.word off_8044A60
 off_80444C4: .word off_8044A70
- .word off_8044AB8
- .word off_8044B1C
- .word off_8044B80
- .byte 0, 0, 0, 0
- .word off_8044BE4
- .word 0x0, 0x0
- .word off_8044C80
- .word 0x0, 0x0, 0x0
- .word off_8044D2C
- .word off_8044EFC
- .word 0x0, 0x0
- .word off_80450CC
- .word off_8045130
- .word off_8045194
- .word off_80451DC
- .word off_8045224
- .word off_8045288
- .word off_8045308
+	.word off_8044AB8
+	.word off_8044B1C
+	.word off_8044B80
+	.byte 0, 0, 0, 0
+	.word off_8044BE4
+	.word 0x0, 0x0
+	.word off_8044C80
+	.word 0x0, 0x0, 0x0
+	.word off_8044D2C
+	.word off_8044EFC
+	.word 0x0, 0x0
+	.word off_80450CC
+	.word off_8045130
+	.word off_8045194
+	.word off_80451DC
+	.word off_8045224
+	.word off_8045288
+	.word off_8045308
 off_8044520: .word off_8044AA0
- .word off_8044B00
- .word off_8044B64
- .word off_8044BC8
- .word 0x0
- .word off_8044C5C
- .word 0
+	.word off_8044B00
+	.word off_8044B64
+	.word off_8044BC8
+	.word 0x0
+	.word off_8044C5C
+	.word 0
 	.byte 0, 0, 0, 0
- .word off_8044D00
- .word 0, 0
+	.word off_8044D00
+	.word 0, 0
 	.byte 0, 0, 0, 0
- .word off_8044EAC
- .word off_804507C
- .word 0
+	.word off_8044EAC
+	.word off_804507C
+	.word 0
 	.byte 0, 0, 0, 0
- .word off_8045114
- .word off_8045178
- .word off_80451C4
- .word off_804520C
- .word off_804526C
- .word off_80452E8
- .word off_8045350
+	.word off_8045114
+	.word off_8045178
+	.word off_80451C4
+	.word off_804520C
+	.word off_804526C
+	.word off_80452E8
+	.word off_8045350
 off_804457C: .word off_8044AA8
- .word off_8044B0C
- .word off_8044B70
- .word off_8044BD4
- .byte 0, 0, 0, 0
- .word off_8044C70
- .word 0x0, 0x0
- .word off_8044D1C
- .word 0x0, 0x0, 0x0
- .word off_8044EEC
- .word off_80450BC
- .word 0x0, 0x0
- .word off_8045120
- .word off_8045184
- .word off_80451CC
- .word off_8045214
- .word off_8045278
- .word off_80452F8
- .word off_804535C
+	.word off_8044B0C
+	.word off_8044B70
+	.word off_8044BD4
+	.byte 0, 0, 0, 0
+	.word off_8044C70
+	.word 0x0, 0x0
+	.word off_8044D1C
+	.word 0x0, 0x0, 0x0
+	.word off_8044EEC
+	.word off_80450BC
+	.word 0x0, 0x0
+	.word off_8045120
+	.word off_8045184
+	.word off_80451CC
+	.word off_8045214
+	.word off_8045278
+	.word off_80452F8
+	.word off_804535C
 off_80445D8: .word off_80445E0
- .word off_80445F4
+	.word off_80445F4
 off_80445E0: .word dword_8762F98
- .word dword_8762FE4
- .word dword_8762FF0
- .word dword_876381C
- .word dword_8763B24
+	.word dword_8762FE4
+	.word dword_8762FF0
+	.word dword_876381C
+	.word dword_8763B24
 off_80445F4: .word dword_87643A8
- .word dword_87643B4
- .word dword_87643C0
- .word off_87643CC
- .word off_87643D8
+	.word dword_87643B4
+	.word dword_87643C0
+	.word off_87643CC
+	.word off_87643D8
 off_8044608: .word dword_87558D8
- .word off_8755C0C
+	.word off_8755C0C
 off_8044610: .word dword_873F008
- .word dword_873F028
- .word dword_873F048
- .word dword_873F430
+	.word dword_873F028
+	.word dword_873F048
+	.word dword_873F430
 off_8044620: .word off_8044634
- .word off_8044648
- .word off_804465C
- .word off_8044670
- .word off_8044684
+	.word off_8044648
+	.word off_804465C
+	.word off_8044670
+	.word off_8044684
 off_8044634: .word dword_87643E4
- .word dword_8764FAC
- .word unk_87658F0
- .word dword_87666B4
- .word dword_8766BFC
+	.word dword_8764FAC
+	.word unk_87658F0
+	.word dword_87666B4
+	.word dword_8766BFC
 off_8044648: .word dword_87680AC
- .word dword_8768558
- .word dword_8768D28
- .word dword_8768EEC
- .word dword_8769148
+	.word dword_8768558
+	.word dword_8768D28
+	.word dword_8768EEC
+	.word dword_8769148
 off_804465C: .word dword_87691D8
- .word dword_87691E4
- .word dword_8769264
- .word dword_8769270
- .word dword_876927C
+	.word dword_87691E4
+	.word dword_8769264
+	.word dword_8769270
+	.word dword_876927C
 off_8044670: .word dword_87692AC
- .word off_87693BC
- .word off_87693C8
- .word off_87693D4
- .word dword_87693E0
+	.word off_87693BC
+	.word off_87693C8
+	.word off_87693D4
+	.word dword_87693E0
 off_8044684: .word off_87694B4
- .word dword_87694C0
- .word dword_87698B0
- .word dword_8769BA8
- .word dword_8769DE8
+	.word dword_87694C0
+	.word dword_87698B0
+	.word dword_8769BA8
+	.word dword_8769DE8
 off_8044698: .word dword_8755C18
- .word dword_8756124
- .word unk_87565E8
- .word dword_8756AA4
- .word dword_8756C9C
+	.word dword_8756124
+	.word unk_87565E8
+	.word dword_8756AA4
+	.word dword_8756C9C
 off_80446AC: .word dword_873F908
- .word dword_873FD64
- .word dword_874041C
- .word dword_8740974
+	.word dword_873FD64
+	.word dword_874041C
+	.word dword_8740974
 off_80446BC: .word off_80446E8
- .word off_80446FC
- .word off_8044710
- .word off_8044724
- .word off_8044738
- .word off_804474C
- .word off_8044760
- .word off_8044774
- .word off_8044788
- .word off_804479C
- .word off_80447B0
+	.word off_80446FC
+	.word off_8044710
+	.word off_8044724
+	.word off_8044738
+	.word off_804474C
+	.word off_8044760
+	.word off_8044774
+	.word off_8044788
+	.word off_804479C
+	.word off_80447B0
 off_80446E8: .word dword_876A5B4
- .word dword_876B0DC
- .word dword_876B29C
- .word dword_876B5A4
- .word dword_876B7C4
+	.word dword_876B0DC
+	.word dword_876B29C
+	.word dword_876B5A4
+	.word dword_876B7C4
 off_80446FC: .word dword_876B978
- .word dword_876BD54
- .word dword_876BF64
- .word dword_876C0DC
- .word dword_876C2A8
+	.word dword_876BD54
+	.word dword_876BF64
+	.word dword_876C0DC
+	.word dword_876C2A8
 off_8044710: .word dword_876C880
- .word dword_876CA38
- .word dword_876CBE8
- .word dword_876CD18
- .word dword_876CE60
+	.word dword_876CA38
+	.word dword_876CBE8
+	.word dword_876CD18
+	.word dword_876CE60
 off_8044724: .word dword_876D154
- .word dword_876D378
- .word dword_876D48C
- .word dword_876D580
- .word dword_876D618
+	.word dword_876D378
+	.word dword_876D48C
+	.word dword_876D580
+	.word dword_876D618
 off_8044738: .word dword_876D7E0
- .word dword_876DB88
- .word dword_876DE70
- .word dword_876E078
- .word dword_876E144
+	.word dword_876DB88
+	.word dword_876DE70
+	.word dword_876E078
+	.word dword_876E144
 off_804474C: .word dword_876E538
- .word dword_876E698
- .word dword_876E73C
- .word dword_876E874
- .word dword_876E900
+	.word dword_876E698
+	.word dword_876E73C
+	.word dword_876E874
+	.word dword_876E900
 off_8044760: .word dword_876EE64
- .word dword_876F2EC
- .word dword_876F7E4
- .word dword_876FD30
- .word dword_876FE2C
+	.word dword_876F2EC
+	.word dword_876F7E4
+	.word dword_876FD30
+	.word dword_876FE2C
 off_8044774: .word dword_8770084
- .word dword_87707EC
- .word dword_87709CC
- .word dword_8770D20
- .word dword_8770EC0
+	.word dword_87707EC
+	.word dword_87709CC
+	.word dword_8770D20
+	.word dword_8770EC0
 off_8044788: .word dword_877125C
- .word dword_877125C
- .word dword_8771268
- .word dword_877129C
- .word off_87712BC
+	.word dword_877125C
+	.word dword_8771268
+	.word dword_877129C
+	.word off_87712BC
 off_804479C: .word dword_87712C8
- .word dword_87712C8
- .word dword_8771844
- .word dword_8771850
- .word dword_877185C
+	.word dword_87712C8
+	.word dword_8771844
+	.word dword_8771850
+	.word dword_877185C
 off_80447B0: .word dword_8771FAC
- .word dword_8771FAC
- .word dword_8771FB8
- .word dword_8771FC4
- .word dword_8771FD0
+	.word dword_8771FAC
+	.word dword_8771FB8
+	.word dword_8771FC4
+	.word dword_8771FD0
 off_80447C4: .word dword_875752C
- .word dword_8757B7C
- .word dword_8758018
- .word dword_8758410
- .word dword_8758834
- .word dword_8758AF0
- .word dword_8758D98
- .word dword_875906C
- .word dword_8759480
- .word dword_8759870
- .word dword_8759C10
+	.word dword_8757B7C
+	.word dword_8758018
+	.word dword_8758410
+	.word dword_8758834
+	.word dword_8758AF0
+	.word dword_8758D98
+	.word dword_875906C
+	.word dword_8759480
+	.word dword_8759870
+	.word dword_8759C10
 off_80447F0: .word dword_8740E90
- .word dword_87414AC
- .word dword_8741D04
- .word dword_8742318
+	.word dword_87414AC
+	.word dword_8741D04
+	.word dword_8742318
 off_8044800: .word off_8044814
- .word off_8044828
- .word off_804483C
- .word off_8044850
- .word off_8044864
+	.word off_8044828
+	.word off_804483C
+	.word off_8044850
+	.word off_8044864
 off_8044814: .word byte_8772974
- .word byte_8773068
- .word byte_8773730
- .word byte_877416C
- .word byte_8774530
+	.word byte_8773068
+	.word byte_8773730
+	.word byte_877416C
+	.word byte_8774530
 off_8044828: .word byte_8774F48
- .word byte_8775208
- .word byte_877567C
- .word byte_8775B60
- .word byte_8775E00
+	.word byte_8775208
+	.word byte_877567C
+	.word byte_8775B60
+	.word byte_8775E00
 off_804483C: .word byte_8776A20
- .word byte_8776C50
- .word byte_8777078
- .word byte_8777428
- .word byte_877767C
+	.word byte_8776C50
+	.word byte_8777078
+	.word byte_8777428
+	.word byte_877767C
 off_8044850: .word byte_8778400
- .word dword_87786EC
- .word dword_8778810
- .word dword_87789F4
- .word dword_8778B40
+	.word dword_87786EC
+	.word dword_8778810
+	.word dword_87789F4
+	.word dword_8778B40
 off_8044864: .word off_87792A8
- .word off_87792B4
- .word off_87792C0
- .word dword_87792CC
- .word dword_87792DC
+	.word off_87792B4
+	.word off_87792C0
+	.word dword_87792CC
+	.word dword_87792DC
 off_8044878: .word dword_8759EF8
- .word dword_875A2C4
- .word dword_875A918
- .word dword_875B064
- .word byte_875B30C
+	.word dword_875A2C4
+	.word dword_875A918
+	.word dword_875B064
+	.word byte_875B30C
 off_804488C: .word dword_87428D4
- .word dword_8742D64
- .word dword_87433BC
- .word dword_87439D8
+	.word dword_8742D64
+	.word dword_87433BC
+	.word dword_87439D8
 off_804489C: .word off_80448B0
- .word off_80448C4
- .word off_80448D8
- .word off_80448EC
- .word off_8044900
+	.word off_80448C4
+	.word off_80448D8
+	.word off_80448EC
+	.word off_8044900
 off_80448B0: .word dword_8779B1C
- .word dword_8779B1C
- .word dword_8779F28
- .word dword_877A4A8
- .word dword_877A7FC
+	.word dword_8779B1C
+	.word dword_8779F28
+	.word dword_877A4A8
+	.word dword_877A7FC
 off_80448C4: .word dword_877C0FC
- .word dword_877C0FC
- .word dword_877C534
- .word dword_877C7A4
- .word dword_877C94C
+	.word dword_877C0FC
+	.word dword_877C534
+	.word dword_877C7A4
+	.word dword_877C94C
 off_80448D8: .word dword_877CD94
- .word dword_877CD94
- .word dword_877D7D4
- .word unk_877D8CC
- .word dword_877DAB4
+	.word dword_877CD94
+	.word dword_877D7D4
+	.word unk_877D8CC
+	.word dword_877DAB4
 off_80448EC: .word dword_877DF6C
- .word dword_877DF6C
- .word dword_877E03C
- .word dword_877E278
- .word dword_877E3DC
+	.word dword_877DF6C
+	.word dword_877E03C
+	.word dword_877E278
+	.word dword_877E3DC
 off_8044900: .word off_877E554
- .word off_877E554
- .word off_877E560
- .word dword_877E56C
- .word dword_877E620
+	.word off_877E554
+	.word off_877E560
+	.word dword_877E56C
+	.word dword_877E620
 off_8044914: .word byte_875B4B0
- .word byte_875B934
- .word byte_875BCB4
- .word byte_875BE5C
- .word byte_875BF80
+	.word byte_875B934
+	.word byte_875BCB4
+	.word byte_875BE5C
+	.word byte_875BF80
 off_8044928: .word byte_8743F6C
- .word byte_8743F6C
- .word byte_87444C8
- .word byte_8744B38
+	.word byte_8743F6C
+	.word byte_87444C8
+	.word byte_8744B38
 off_8044938: .word off_8044948
- .word off_804495C
- .word off_8044970
- .word off_8044984
+	.word off_804495C
+	.word off_8044970
+	.word off_8044984
 off_8044948: .word byte_877EDD8
- .word byte_877EDD8
- .word byte_877EDD8
- .word byte_877F460
- .word dword_877F594
+	.word byte_877EDD8
+	.word byte_877EDD8
+	.word byte_877F460
+	.word dword_877F594
 off_804495C: .word dword_8780104
- .word dword_8780104
- .word dword_8780104
- .word dword_8780724
- .word dword_87808D0
+	.word dword_8780104
+	.word dword_8780104
+	.word dword_8780724
+	.word dword_87808D0
 off_8044970: .word dword_8781048
- .word dword_8781048
- .word dword_8781048
- .word dword_87813CC
- .word dword_8781564
+	.word dword_8781048
+	.word dword_8781048
+	.word dword_87813CC
+	.word dword_8781564
 off_8044984: .word dword_8781784
- .word dword_8781784
- .word dword_8781784
- .word dword_8781B18
- .word dword_8781CB4
+	.word dword_8781784
+	.word dword_8781784
+	.word dword_8781B18
+	.word dword_8781CB4
 off_8044998: .word dword_875BFD8
- .word unk_875C22C
- .word dword_875C4B8
- .word dword_875C83C
+	.word unk_875C22C
+	.word dword_875C4B8
+	.word dword_875C83C
 off_80449A8: .word dword_8745100
- .word dword_8745100
- .word dword_8745100
- .word dword_874584C
+	.word dword_8745100
+	.word dword_8745100
+	.word dword_874584C
 off_80449B8: .word off_80449D0
- .word off_80449E4
- .word off_80449F8
- .word off_8044A0C
- .word off_8044A20
- .word off_8044A34
+	.word off_80449E4
+	.word off_80449F8
+	.word off_8044A0C
+	.word off_8044A20
+	.word off_8044A34
 off_80449D0: .word dword_8781ED4
- .word dword_8781ED4
- .word dword_8781ED4
- .word dword_8781ED4
- .word dword_8781FE4
+	.word dword_8781ED4
+	.word dword_8781ED4
+	.word dword_8781ED4
+	.word dword_8781FE4
 off_80449E4: .word dword_8782048
- .word dword_8782048
- .word dword_8782048
- .word dword_8782048
- .word dword_878205C
+	.word dword_8782048
+	.word dword_8782048
+	.word dword_8782048
+	.word dword_878205C
 off_80449F8: .word dword_87821B4
- .word dword_87821B4
- .word dword_87821B4
- .word dword_87821B4
- .word off_87822E8
+	.word dword_87821B4
+	.word dword_87821B4
+	.word dword_87821B4
+	.word off_87822E8
 off_8044A0C: .word dword_87822F4
- .word dword_87822F4
- .word dword_87822F4
- .word dword_87822F4
- .word off_8782414
+	.word dword_87822F4
+	.word dword_87822F4
+	.word dword_87822F4
+	.word off_8782414
 off_8044A20: .word dword_8782420
- .word dword_8782420
- .word dword_8782420
- .word dword_8782420
- .word dword_8782564
+	.word dword_8782420
+	.word dword_8782420
+	.word dword_8782420
+	.word dword_8782564
 off_8044A34: .word dword_87825B4
- .word dword_87825B4
- .word dword_87825B4
- .word dword_87825B4
- .word off_87825C0
+	.word dword_87825B4
+	.word dword_87825B4
+	.word dword_87825B4
+	.word off_87825C0
 off_8044A48: .word dword_875CB68
- .word dword_875CE10
- .word dword_875CFC4
- .word dword_875D1FC
- .word dword_875D5E0
- .word off_875D774
+	.word dword_875CE10
+	.word dword_875CFC4
+	.word dword_875D1FC
+	.word dword_875D5E0
+	.word off_875D774
 off_8044A60: .word dword_8745DEC
- .word dword_8745DEC
- .word dword_8745DEC
- .word dword_8745DEC
+	.word dword_8745DEC
+	.word dword_8745DEC
+	.word dword_8745DEC
 off_8044A70: .word off_8044A78
- .word off_8044A8C
+	.word off_8044A8C
 off_8044A78: .word dword_8797310
- .word dword_879748C
- .word dword_8797498
- .word dword_87974A4
- .word dword_87974B0
+	.word dword_879748C
+	.word dword_8797498
+	.word dword_87974A4
+	.word dword_87974B0
 off_8044A8C: .word dword_87979CC
- .word dword_87979F0
- .word dword_87979FC
- .word dword_8797A08
- .word off_8797A14
+	.word dword_87979F0
+	.word dword_87979FC
+	.word dword_8797A08
+	.word off_8797A14
 off_8044AA0: .word dword_875D780
- .word dword_875D800
+	.word dword_875D800
 off_8044AA8: .word dword_87461A0
- .word unk_87462D0
- .word dword_87463F4
- .word dword_87464AC
+	.word unk_87462D0
+	.word dword_87463F4
+	.word dword_87464AC
 off_8044AB8: .word off_8044AC4
- .word off_8044AD8
- .word off_8044AEC
+	.word off_8044AD8
+	.word off_8044AEC
 off_8044AC4: .word dword_8797A20
- .word off_8797E70
- .word dword_8797E7C
- .word dword_8797E88
- .word dword_8797E94
+	.word off_8797E70
+	.word dword_8797E7C
+	.word dword_8797E88
+	.word dword_8797E94
 off_8044AD8: .word dword_87982AC
- .word off_87982B8
- .word dword_87982C4
- .word dword_87982D0
- .word dword_87982DC
+	.word off_87982B8
+	.word dword_87982C4
+	.word dword_87982D0
+	.word dword_87982DC
 off_8044AEC: .word off_8798474
- .word off_8798480
- .word dword_879848C
- .word dword_8798498
- .word dword_87984A4
+	.word off_8798480
+	.word dword_879848C
+	.word dword_8798498
+	.word dword_87984A4
 off_8044B00: .word dword_875D974
- .word dword_875D9C0
- .word dword_875DA0C
+	.word dword_875D9C0
+	.word dword_875DA0C
 off_8044B0C: .word dword_87466F8
- .word dword_87469C4
- .word dword_8746A34
- .word dword_8746AE8
+	.word dword_87469C4
+	.word dword_8746A34
+	.word dword_8746AE8
 off_8044B1C: .word off_8044B28
- .word off_8044B3C
- .word off_8044B50
+	.word off_8044B3C
+	.word off_8044B50
 off_8044B28: .word dword_8798660
- .word dword_8798660
- .word dword_879896C
- .word dword_8798978
- .word dword_8798984
+	.word dword_8798660
+	.word dword_879896C
+	.word dword_8798978
+	.word dword_8798984
 off_8044B3C: .word dword_8798990
- .word dword_8798990
- .word dword_879899C
- .word dword_87989A8
- .word dword_87989B4
+	.word dword_8798990
+	.word dword_879899C
+	.word dword_87989A8
+	.word dword_87989B4
 off_8044B50: .word dword_87989C0
- .word dword_87989C0
- .word dword_87989CC
- .word dword_87989D8
- .word dword_87989E4
+	.word dword_87989C0
+	.word dword_87989CC
+	.word dword_87989D8
+	.word dword_87989E4
 off_8044B64: .word dword_875DA58
- .word dword_875DAB8
- .word dword_875DB18
+	.word dword_875DAB8
+	.word dword_875DB18
 off_8044B70: .word dword_8746D34
- .word dword_8746D34
- .word dword_8746E38
- .word dword_8746EF0
+	.word dword_8746D34
+	.word dword_8746E38
+	.word dword_8746EF0
 off_8044B80: .word off_8044B8C
- .word off_8044BA0
- .word off_8044BB4
+	.word off_8044BA0
+	.word off_8044BB4
 off_8044B8C: .word dword_8798B28
- .word dword_8798B28
- .word dword_8798B28
- .word dword_8798ED8
- .word dword_8798EE4
+	.word dword_8798B28
+	.word dword_8798B28
+	.word dword_8798ED8
+	.word dword_8798EE4
 off_8044BA0: .word off_87994A4
- .word off_87994A4
- .word off_87994A4
- .word dword_87994B0
- .word dword_87994BC
+	.word off_87994A4
+	.word off_87994A4
+	.word dword_87994B0
+	.word dword_87994BC
 off_8044BB4: .word off_879951C
- .word off_879951C
- .word off_879951C
- .word dword_8799528
- .word dword_8799534
+	.word off_879951C
+	.word off_879951C
+	.word dword_8799528
+	.word dword_8799534
 off_8044BC8: .word dword_875DBD8
- .word dword_875DC10
- .word dword_875DC48
+	.word dword_875DC10
+	.word dword_875DC48
 off_8044BD4: .word dword_874713C
- .word dword_874713C
- .word dword_874713C
- .word dword_8747228
+	.word dword_874713C
+	.word dword_874713C
+	.word dword_8747228
 off_8044BE4: .word off_8044BF8
- .word off_8044C0C
- .word off_8044C20
- .word off_8044C34
- .word off_8044C48
+	.word off_8044C0C
+	.word off_8044C20
+	.word off_8044C34
+	.word off_8044C48
 off_8044BF8: .word dword_8799708
- .word dword_8799708
- .word dword_8799708
- .word dword_8799708
- .word dword_8799AD4
+	.word dword_8799708
+	.word dword_8799708
+	.word dword_8799708
+	.word dword_8799AD4
 off_8044C0C: .word dword_8799AE0
- .word dword_8799AE0
- .word dword_8799AE0
- .word dword_8799AE0
- .word dword_8799E5C
+	.word dword_8799AE0
+	.word dword_8799AE0
+	.word dword_8799AE0
+	.word dword_8799E5C
 off_8044C20: .word dword_8799E68
- .word dword_8799E68
- .word dword_8799E68
- .word dword_8799E68
- .word dword_879A228
+	.word dword_8799E68
+	.word dword_8799E68
+	.word dword_8799E68
+	.word dword_879A228
 off_8044C34: .word dword_879A28C
- .word dword_879A28C
- .word dword_879A28C
- .word dword_879A28C
- .word dword_879A63C
+	.word dword_879A28C
+	.word dword_879A28C
+	.word dword_879A28C
+	.word dword_879A63C
 off_8044C48: .word dword_879A648
- .word dword_879A648
- .word dword_879A648
- .word dword_879A648
- .word dword_879A654
+	.word dword_879A648
+	.word dword_879A648
+	.word dword_879A648
+	.word dword_879A654
 off_8044C5C: .word dword_875DC80
- .word dword_875DD4C
- .word dword_875DDF8
- .word dword_875DE80
- .word off_875DF20
+	.word dword_875DD4C
+	.word dword_875DDF8
+	.word dword_875DE80
+	.word off_875DF20
 off_8044C70: .word dword_8747474
- .word dword_8747474
- .word dword_8747474
- .word dword_8747474
+	.word dword_8747474
+	.word dword_8747474
+	.word dword_8747474
 off_8044C80: .word off_8044C9C
- .word off_8044CB0
- .word 0x0
- .word off_8044CC4
- .word 0x0
- .word off_8044CD8
- .word off_8044CEC
+	.word off_8044CB0
+	.word 0x0
+	.word off_8044CC4
+	.word 0x0
+	.word off_8044CD8
+	.word off_8044CEC
 off_8044C9C: .word dword_879A660
- .word dword_879A66C
- .word dword_879A6DC
- .word dword_879A6E8
- .word dword_879A704
+	.word dword_879A66C
+	.word dword_879A6DC
+	.word dword_879A6E8
+	.word dword_879A704
 off_8044CB0: .word dword_879A764
- .word dword_879A770
- .word dword_879A77C
- .word dword_879AAB0
- .word dword_879AACC
+	.word dword_879A770
+	.word dword_879A77C
+	.word dword_879AAB0
+	.word dword_879AACC
 off_8044CC4: .word dword_879AF5C
- .word dword_879AF68
- .word dword_879B28C
- .word dword_879B298
- .word dword_879B2B4
+	.word dword_879AF68
+	.word dword_879B28C
+	.word dword_879B298
+	.word dword_879B2B4
 off_8044CD8: .word dword_879BF6C
- .word dword_879BF6C
- .word dword_879C700
- .word dword_879C70C
- .word dword_879C728
+	.word dword_879BF6C
+	.word dword_879C700
+	.word dword_879C70C
+	.word dword_879C728
 off_8044CEC: .word dword_879D130
- .word dword_879D130
- .word dword_879D130
- .word dword_879D13C
- .word dword_879D158
+	.word dword_879D130
+	.word dword_879D130
+	.word dword_879D13C
+	.word dword_879D158
 off_8044D00: .word dword_875DF2C
- .word dword_875DF38
- .word 0x0
- .word dword_875DF44
- .word 0x0
- .word dword_875DF50
- .word dword_875DF78
+	.word dword_875DF38
+	.word 0x0
+	.word dword_875DF44
+	.word 0x0
+	.word dword_875DF50
+	.word dword_875DF78
 off_8044D1C: .word unk_87477F4
- .word dword_8747D30
- .word dword_8748650
- .word dword_8748F44
+	.word dword_8747D30
+	.word dword_8748650
+	.word dword_8748F44
 off_8044D2C: .word off_8044D6C
- .word off_8044D80
- .word off_8044D94
- .word off_8044DA8
- .word off_8044DBC
- .word off_8044DD0
- .word off_8044DE4
- .word off_8044DF8
- .word off_8044E0C
- .word off_8044E20
- .word off_8044E34
- .word off_8044E48
- .word off_8044E5C
- .word off_8044E70
- .word off_8044E84
- .word off_8044E98
+	.word off_8044D80
+	.word off_8044D94
+	.word off_8044DA8
+	.word off_8044DBC
+	.word off_8044DD0
+	.word off_8044DE4
+	.word off_8044DF8
+	.word off_8044E0C
+	.word off_8044E20
+	.word off_8044E34
+	.word off_8044E48
+	.word off_8044E5C
+	.word off_8044E70
+	.word off_8044E84
+	.word off_8044E98
 off_8044D6C: .word dword_879DA44
- .word dword_879DA50
- .word dword_879DA5C
- .word dword_879DA68
- .word dword_879DA74
+	.word dword_879DA50
+	.word dword_879DA5C
+	.word dword_879DA68
+	.word dword_879DA74
 off_8044D80: .word dword_879E3D0
- .word dword_879E3D0
- .word dword_879E3DC
- .word dword_879E3E8
- .word dword_879E3F4
+	.word dword_879E3D0
+	.word dword_879E3DC
+	.word dword_879E3E8
+	.word dword_879E3F4
 off_8044D94: .word dword_879E4C4
- .word dword_879E574
- .word dword_879E580
- .word dword_879E58C
- .word dword_879E598
+	.word dword_879E574
+	.word dword_879E580
+	.word dword_879E58C
+	.word dword_879E598
 off_8044DA8: .word off_879E62C
- .word dword_879E638
- .word dword_879E644
- .word dword_879E650
- .word dword_879E65C
+	.word dword_879E638
+	.word dword_879E644
+	.word dword_879E650
+	.word dword_879E65C
 off_8044DBC: .word off_879EB78
- .word off_879EB84
- .word dword_879EB90
- .word dword_879EB9C
- .word dword_879EBA8
+	.word off_879EB84
+	.word dword_879EB90
+	.word dword_879EB9C
+	.word dword_879EBA8
 off_8044DD0: .word off_879F194
- .word off_879F194
- .word dword_879F1A0
- .word dword_879F1AC
- .word dword_879F1B8
+	.word off_879F194
+	.word dword_879F1A0
+	.word dword_879F1AC
+	.word dword_879F1B8
 off_8044DE4: .word off_879F5CC
- .word off_879F5D8
- .word dword_879F5E4
- .word dword_879F5F0
- .word dword_879F5FC
+	.word off_879F5D8
+	.word dword_879F5E4
+	.word dword_879F5F0
+	.word dword_879F5FC
 off_8044DF8: .word dword_879F6A0
- .word dword_879F6A0
- .word dword_879F6A0
- .word dword_879F734
- .word dword_879F740
+	.word dword_879F6A0
+	.word dword_879F6A0
+	.word dword_879F734
+	.word dword_879F740
 off_8044E0C: .word dword_879FB18
- .word dword_879FB24
- .word dword_879FD9C
- .word dword_879FDA8
- .word dword_879FDB4
+	.word dword_879FB24
+	.word dword_879FD9C
+	.word dword_879FDA8
+	.word dword_879FDB4
 off_8044E20: .word dword_87A00D8
- .word dword_87A00D8
- .word dword_87A0434
- .word dword_87A0440
- .word dword_87A044C
+	.word dword_87A00D8
+	.word dword_87A0434
+	.word dword_87A0440
+	.word dword_87A044C
 off_8044E34: .word dword_87A04C0
- .word dword_87A04C0
- .word dword_87A04CC
- .word dword_87A04D8
- .word dword_87A04E4
+	.word dword_87A04C0
+	.word dword_87A04CC
+	.word dword_87A04D8
+	.word dword_87A04E4
 off_8044E48: .word dword_87A05E0
- .word dword_87A05E0
- .word dword_87A05E0
- .word dword_87A0698
- .word dword_87A06A4
+	.word dword_87A05E0
+	.word dword_87A05E0
+	.word dword_87A0698
+	.word dword_87A06A4
 off_8044E5C: .word dword_87A0700
- .word dword_87A0700
- .word dword_87A0700
- .word dword_87A07D0
- .word dword_87A07DC
+	.word dword_87A0700
+	.word dword_87A0700
+	.word dword_87A07D0
+	.word dword_87A07DC
 off_8044E70: .word dword_87A0AA8
- .word dword_87A0AA8
- .word dword_87A0AA8
- .word dword_87A0B14
- .word dword_87A0B20
+	.word dword_87A0AA8
+	.word dword_87A0AA8
+	.word dword_87A0B14
+	.word dword_87A0B20
 off_8044E84: .word dword_87A0B88
- .word dword_87A0B88
- .word dword_87A0B88
- .word dword_87A0C18
- .word dword_87A0C24
+	.word dword_87A0B88
+	.word dword_87A0B88
+	.word dword_87A0C18
+	.word dword_87A0C24
 off_8044E98: .word dword_87A0EF4
- .word dword_87A0EF4
- .word dword_87A0EF4
- .word dword_87A0F00
- .word dword_87A0F0C
+	.word dword_87A0EF4
+	.word dword_87A0EF4
+	.word dword_87A0F00
+	.word dword_87A0F0C
 off_8044EAC: .word dword_875DFA4
- .word dword_875DFB0
- .word dword_875DFBC
- .word dword_875DFC8
- .word dword_875DFD4
- .word dword_875DFE0
- .word dword_875DFEC
- .word dword_875DFF8
- .word dword_875E0F4
- .word dword_875E100
- .word off_875E36C
- .word dword_875E378
- .word dword_875E414
- .word dword_875E4AC
- .word dword_875E52C
- .word dword_875E5C4
+	.word dword_875DFB0
+	.word dword_875DFBC
+	.word dword_875DFC8
+	.word dword_875DFD4
+	.word dword_875DFE0
+	.word dword_875DFEC
+	.word dword_875DFF8
+	.word dword_875E0F4
+	.word dword_875E100
+	.word off_875E36C
+	.word dword_875E378
+	.word dword_875E414
+	.word dword_875E4AC
+	.word dword_875E52C
+	.word dword_875E5C4
 off_8044EEC: .word dword_8749514
- .word dword_8749C38
- .word dword_874A638
- .word dword_874B154
+	.word dword_8749C38
+	.word dword_874A638
+	.word dword_874B154
 off_8044EFC: .word off_8044F3C
- .word off_8044F50
- .word off_8044F64
- .word off_8044F78
- .word off_8044F8C
- .word off_8044FA0
- .word off_8044FB4
- .word off_8044FC8
- .word off_8044FDC
- .word off_8044FF0
- .word off_8045004
- .word off_8045018
- .word off_804502C
- .word off_8045040
- .word off_8045054
- .word off_8045068
+	.word off_8044F50
+	.word off_8044F64
+	.word off_8044F78
+	.word off_8044F8C
+	.word off_8044FA0
+	.word off_8044FB4
+	.word off_8044FC8
+	.word off_8044FDC
+	.word off_8044FF0
+	.word off_8045004
+	.word off_8045018
+	.word off_804502C
+	.word off_8045040
+	.word off_8045054
+	.word off_8045068
 off_8044F3C: .word dword_87A0FB8
- .word dword_87A0FB8
- .word dword_87A0FB8
- .word dword_87A0FC4
- .word dword_87A0FD0
+	.word dword_87A0FB8
+	.word dword_87A0FB8
+	.word dword_87A0FC4
+	.word dword_87A0FD0
 off_8044F50: .word dword_87A1078
- .word dword_87A1078
- .word dword_87A1078
- .word dword_87A1084
- .word dword_87A1090
+	.word dword_87A1078
+	.word dword_87A1078
+	.word dword_87A1084
+	.word dword_87A1090
 off_8044F64: .word dword_87A1120
- .word dword_87A1120
- .word dword_87A112C
- .word dword_87A1138
- .word dword_87A1144
+	.word dword_87A1120
+	.word dword_87A112C
+	.word dword_87A1138
+	.word dword_87A1144
 off_8044F78: .word dword_87A1570
- .word dword_87A157C
- .word dword_87A1588
- .word dword_87A1594
- .word dword_87A15A0
+	.word dword_87A157C
+	.word dword_87A1588
+	.word dword_87A1594
+	.word dword_87A15A0
 off_8044F8C: .word dword_87A1CC0
- .word dword_87A1CC0
- .word dword_87A1CCC
- .word dword_87A1CD8
- .word dword_87A1CE4
+	.word dword_87A1CC0
+	.word dword_87A1CCC
+	.word dword_87A1CD8
+	.word dword_87A1CE4
 off_8044FA0: .word dword_87A1EF4
- .word dword_87A1EF4
- .word dword_87A1F00
- .word dword_87A1F0C
- .word dword_87A1F18
+	.word dword_87A1EF4
+	.word dword_87A1F00
+	.word dword_87A1F0C
+	.word dword_87A1F18
 off_8044FB4: .word dword_87A243C
- .word dword_87A243C
- .word dword_87A2448
- .word dword_87A2454
- .word dword_87A2460
+	.word dword_87A243C
+	.word dword_87A2448
+	.word dword_87A2454
+	.word dword_87A2460
 off_8044FC8: .word dword_87A29B4
- .word dword_87A29B4
- .word dword_87A29C0
- .word dword_87A29CC
- .word dword_87A29D8
+	.word dword_87A29B4
+	.word dword_87A29C0
+	.word dword_87A29CC
+	.word dword_87A29D8
 off_8044FDC: .word dword_87A2B20
- .word dword_87A2B2C
- .word dword_87A2B38
- .word dword_87A2B44
- .word dword_87A2B50
+	.word dword_87A2B2C
+	.word dword_87A2B38
+	.word dword_87A2B44
+	.word dword_87A2B50
 off_8044FF0: .word dword_87A2BEC
- .word dword_87A2BEC
- .word dword_87A2BEC
- .word dword_87A2BF8
- .word dword_87A2C04
+	.word dword_87A2BEC
+	.word dword_87A2BEC
+	.word dword_87A2BF8
+	.word dword_87A2C04
 off_8045004: .word off_87A3168
- .word off_87A3168
- .word off_87A3168
- .word off_87A3174
- .word dword_87A3180
+	.word off_87A3168
+	.word off_87A3168
+	.word off_87A3174
+	.word dword_87A3180
 off_8045018: .word dword_87A3624
- .word dword_87A3624
- .word dword_87A3624
- .word dword_87A3630
- .word dword_87A363C
+	.word dword_87A3624
+	.word dword_87A3624
+	.word dword_87A3630
+	.word dword_87A363C
 off_804502C: .word dword_87A36E8
- .word dword_87A36E8
- .word dword_87A36E8
- .word dword_87A36E8
- .word dword_87A36F4
+	.word dword_87A36E8
+	.word dword_87A36E8
+	.word dword_87A36E8
+	.word dword_87A36F4
 off_8045040: .word dword_87A377C
- .word dword_87A3788
- .word dword_87A3794
- .word dword_87A37A0
- .word dword_87A37AC
+	.word dword_87A3788
+	.word dword_87A3794
+	.word dword_87A37A0
+	.word dword_87A37AC
 off_8045054: .word dword_87A39FC
- .word dword_87A39FC
- .word dword_87A39FC
- .word dword_87A3A08
- .word dword_87A3A14
+	.word dword_87A39FC
+	.word dword_87A39FC
+	.word dword_87A3A08
+	.word dword_87A3A14
 off_8045068: .word dword_87A3AFC
- .word dword_87A3AFC
- .word dword_87A3AFC
- .word dword_87A3AFC
- .word dword_87A3B08
+	.word dword_87A3AFC
+	.word dword_87A3AFC
+	.word dword_87A3AFC
+	.word dword_87A3B08
 off_804507C: .word dword_875E5D0
- .word dword_875E5DC
- .word dword_875E5E8
- .word dword_875E5F4
- .word dword_875E600
- .word dword_875E60C
- .word dword_875E618
- .word dword_875E624
- .word dword_875E630
- .word dword_875E63C
- .word dword_875E648
- .word dword_875E654
- .word dword_875E660
- .word dword_875E66C
- .word dword_875E678
- .word dword_875E684
+	.word dword_875E5DC
+	.word dword_875E5E8
+	.word dword_875E5F4
+	.word dword_875E600
+	.word dword_875E60C
+	.word dword_875E618
+	.word dword_875E624
+	.word dword_875E630
+	.word dword_875E63C
+	.word dword_875E648
+	.word dword_875E654
+	.word dword_875E660
+	.word dword_875E66C
+	.word dword_875E678
+	.word dword_875E684
 off_80450BC: .word dword_874B878
- .word dword_874BC34
- .word dword_874C5D0
- .word dword_874D038
+	.word dword_874BC34
+	.word dword_874C5D0
+	.word dword_874D038
 off_80450CC: .word off_80450D8
- .word off_80450EC
- .word off_8045100
+	.word off_80450EC
+	.word off_8045100
 off_80450D8: .word dword_87825CC
- .word dword_8782FEC
- .word dword_8783ED0
- .word dword_878460C
- .word dword_8784908
+	.word dword_8782FEC
+	.word dword_8783ED0
+	.word dword_878460C
+	.word dword_8784908
 off_80450EC: .word dword_87859C0
- .word dword_8785FF4
- .word dword_8786694
- .word dword_8786C04
- .word dword_8786EA0
+	.word dword_8785FF4
+	.word dword_8786694
+	.word dword_8786C04
+	.word dword_8786EA0
 off_8045100: .word dword_87876E4
- .word dword_8787C6C
- .word dword_8788390
- .word dword_8788F78
- .word dword_87892BC
+	.word dword_8787C6C
+	.word dword_8788390
+	.word dword_8788F78
+	.word dword_87892BC
 off_8045114: .word dword_875E690
- .word dword_875E8DC
- .word dword_875EA10
+	.word dword_875E8DC
+	.word dword_875EA10
 off_8045120: .word dword_874D74C
- .word dword_874DCF0
- .word dword_874E6E0
- .word dword_874EFE0
+	.word dword_874DCF0
+	.word dword_874E6E0
+	.word dword_874EFE0
 off_8045130: .word off_804513C
- .word off_8045150
- .word off_8045164
+	.word off_8045150
+	.word off_8045164
 off_804513C: .word dword_8789780
- .word dword_8789A10
- .word dword_878A004
- .word dword_878A4E0
- .word dword_878A898
+	.word dword_8789A10
+	.word dword_878A004
+	.word dword_878A4E0
+	.word dword_878A898
 off_8045150: .word byte_878B46C
- .word byte_878B690
- .word byte_878BC64
- .word byte_878C214
- .word byte_878C5C8
+	.word byte_878B690
+	.word byte_878BC64
+	.word byte_878C214
+	.word byte_878C5C8
 off_8045164: .word dword_878CE18
- .word dword_878D038
- .word dword_878D544
- .word dword_878DAD4
- .word dword_878DE08
+	.word dword_878D038
+	.word dword_878D544
+	.word dword_878DAD4
+	.word dword_878DE08
 off_8045178: .word dword_875F038
- .word dword_875F424
- .word dword_875F838
+	.word dword_875F424
+	.word dword_875F838
 off_8045184: .word dword_874F5C4
- .word unk_874F980
- .word dword_87502B4
- .word dword_8750B80
+	.word unk_874F980
+	.word dword_87502B4
+	.word dword_8750B80
 off_8045194: .word off_804519C
- .word off_80451B0
+	.word off_80451B0
 off_804519C: .word dword_878E728
- .word dword_878E728
- .word dword_878EA40
- .word dword_878F110
- .word dword_878F364
+	.word dword_878E728
+	.word dword_878EA40
+	.word dword_878F110
+	.word dword_878F364
 off_80451B0: .word dword_878FA4C
- .word dword_878FA4C
- .word dword_878FFC8
- .word dword_8790508
- .word dword_879073C
+	.word dword_878FA4C
+	.word dword_878FFC8
+	.word dword_8790508
+	.word dword_879073C
 off_80451C4: .word dword_875FAB8
- .word dword_875FF70
+	.word dword_875FF70
 off_80451CC: .word dword_8751150
- .word dword_8751150
- .word dword_87517E8
- .word dword_8752174
+	.word dword_8751150
+	.word dword_87517E8
+	.word dword_8752174
 off_80451DC: .word off_80451E4
- .word off_80451F8
+	.word off_80451F8
 off_80451E4: .word dword_87913C8
- .word dword_87913C8
- .word dword_87913C8
- .word dword_8791604
- .word dword_87917D4
+	.word dword_87913C8
+	.word dword_87913C8
+	.word dword_8791604
+	.word dword_87917D4
 off_80451F8: .word dword_8791878
- .word dword_8791878
- .word dword_8791878
- .word dword_8791A0C
- .word dword_8791A28
+	.word dword_8791878
+	.word dword_8791878
+	.word dword_8791A0C
+	.word dword_8791A28
 off_804520C: .word dword_87601FC
- .word dword_87605E0
+	.word dword_87605E0
 off_8045214: .word dword_8752818
- .word dword_8752818
- .word dword_8752818
- .word dword_8752FBC
+	.word dword_8752818
+	.word dword_8752818
+	.word dword_8752FBC
 off_8045224: .word off_8045230
- .word off_8045244
- .word off_8045258
+	.word off_8045244
+	.word off_8045258
 off_8045230: .word dword_8791AA8
- .word dword_8791AA8
- .word dword_8791AA8
- .word dword_87921F4
- .word dword_8792478
+	.word dword_8791AA8
+	.word dword_8791AA8
+	.word dword_87921F4
+	.word dword_8792478
 off_8045244: .word dword_8793DCC
- .word dword_8793DCC
- .word dword_8793DCC
- .word dword_8794604
- .word dword_87948B8
+	.word dword_8793DCC
+	.word dword_8793DCC
+	.word dword_8794604
+	.word dword_87948B8
 off_8045258: .word dword_8794EC0
- .word dword_8794EC0
- .word dword_8794EC0
- .word dword_8795234
- .word dword_87956C4
+	.word dword_8794EC0
+	.word dword_8794EC0
+	.word dword_8795234
+	.word dword_87956C4
 off_804526C: .word dword_8760910
- .word dword_8760D38
- .word dword_8761234
+	.word dword_8760D38
+	.word dword_8761234
 off_8045278: .word dword_875358C
- .word dword_875358C
- .word dword_875358C
- .word dword_8753F78
+	.word dword_875358C
+	.word dword_875358C
+	.word dword_8753F78
 off_8045288: .word off_8045298
- .word off_80452AC
- .word off_80452C0
- .word off_80452D4
+	.word off_80452AC
+	.word off_80452C0
+	.word off_80452D4
 off_8045298: .word dword_8795A38
- .word dword_8795A38
- .word dword_8795A44
- .word dword_8795D58
- .word unk_8795E14
+	.word dword_8795A38
+	.word dword_8795A44
+	.word dword_8795D58
+	.word unk_8795E14
 off_80452AC: .word dword_8796494
- .word dword_8796494
- .word dword_87964A0
- .word dword_87964AC
- .word dword_87964C8
+	.word dword_8796494
+	.word dword_87964A0
+	.word dword_87964AC
+	.word dword_87964C8
 off_80452C0: .word dword_8796940
- .word dword_8796940
- .word dword_879694C
- .word dword_87969DC
- .word dword_8796AE4
+	.word dword_8796940
+	.word dword_879694C
+	.word dword_87969DC
+	.word dword_8796AE4
 off_80452D4: .word dword_87A3B84
- .word dword_87A3B84
- .word dword_87A3B84
- .word dword_87A3B84
- .word dword_87A3B84
+	.word dword_87A3B84
+	.word dword_87A3B84
+	.word dword_87A3B84
+	.word dword_87A3B84
 off_80452E8: .word dword_8761698
- .word dword_87618C0
- .word dword_876210C
- .word dword_87A3B84
+	.word dword_87618C0
+	.word dword_876210C
+	.word dword_87A3B84
 off_80452F8: .word dword_8754620
- .word dword_8754620
- .word dword_8754674
- .word dword_87550BC
+	.word dword_8754620
+	.word dword_8754674
+	.word dword_87550BC
 off_8045308: .word off_8045314
- .word off_8045328
- .word off_804533C
+	.word off_8045328
+	.word off_804533C
 off_8045314: .word dword_87A3B84
- .word dword_87A3B84
- .word dword_87A3B84
- .word dword_87A3B84
- .word dword_87A3B84
+	.word dword_87A3B84
+	.word dword_87A3B84
+	.word dword_87A3B84
+	.word dword_87A3B84
 off_8045328: .word dword_8797208
- .word dword_8797208
- .word dword_8797208
- .word dword_8797214
- .word dword_8797220
+	.word dword_8797208
+	.word dword_8797208
+	.word dword_8797214
+	.word dword_8797220
 off_804533C: .word dword_87A3B84
- .word dword_87A3B84
- .word dword_87A3B84
- .word dword_87A3B84
- .word dword_87A3B84
+	.word dword_87A3B84
+	.word dword_87A3B84
+	.word dword_87A3B84
+	.word dword_87A3B84
 off_8045350: .word dword_87A3B84
- .word dword_8762434
- .word dword_87A3B84
+	.word dword_8762434
+	.word dword_87A3B84
 off_804535C: .word dword_87557A8
- .word dword_87557A8
- .word dword_87557A8
- .word dword_8755834
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xB8
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xBA
- .byte 0xF2
- .byte 0xBB
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBD
- .byte 0xF2
- .byte 0xBE
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBE
- .byte 0xF6
- .byte 0xBE
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBE
- .byte 0xF6
- .byte 0xBD
- .byte 0xFE
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBD
- .byte 0xFA
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xB8
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xBA
- .byte 0xF2
- .byte 0xBB
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBD
- .byte 0xF2
- .byte 0xBE
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBE
- .byte 0xF6
- .byte 0xBE
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBE
- .byte 0xF6
- .byte 0xBE
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBE
- .byte 0xF6
- .byte 0xBE
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBE
- .byte 0xF6
- .byte 0xBD
- .byte 0xFE
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBD
- .byte 0xFA
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xC0
- .byte 0xF2
- .byte 0xB8
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xB9
- .byte 0xF2
- .byte 0xBA
- .byte 0xF2
- .byte 0xBB
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBC
- .byte 0xF2
- .byte 0xBD
- .byte 0xF2
- .byte 0xBE
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBE
- .byte 0xF6
- .byte 0xBE
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBE
- .byte 0xF6
- .byte 0xBE
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBE
- .byte 0xF6
- .byte 0xBE
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBE
- .byte 0xF6
- .byte 0xBE
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBE
- .byte 0xF6
- .byte 0xBE
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBF
- .byte 0xF2
- .byte 0xBE
- .byte 0xF6
- .byte 0xBD
- .byte 0xFE
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBC
- .byte 0xFA
- .byte 0xBD
- .byte 0xFA
+	.word dword_87557A8
+	.word dword_87557A8
+	.word dword_8755834
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xB8
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xBA
+	.byte 0xF2
+	.byte 0xBB
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBD
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF6
+	.byte 0xBE
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF6
+	.byte 0xBD
+	.byte 0xFE
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBD
+	.byte 0xFA
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xB8
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xBA
+	.byte 0xF2
+	.byte 0xBB
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBD
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF6
+	.byte 0xBE
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF6
+	.byte 0xBE
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF6
+	.byte 0xBE
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF6
+	.byte 0xBD
+	.byte 0xFE
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBD
+	.byte 0xFA
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xC0
+	.byte 0xF2
+	.byte 0xB8
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xB9
+	.byte 0xF2
+	.byte 0xBA
+	.byte 0xF2
+	.byte 0xBB
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBC
+	.byte 0xF2
+	.byte 0xBD
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF6
+	.byte 0xBE
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF6
+	.byte 0xBE
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF6
+	.byte 0xBE
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF6
+	.byte 0xBE
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF6
+	.byte 0xBE
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBF
+	.byte 0xF2
+	.byte 0xBE
+	.byte 0xF6
+	.byte 0xBD
+	.byte 0xFE
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBC
+	.byte 0xFA
+	.byte 0xBD
+	.byte 0xFA
 byte_804590C: .byte 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0
 	.byte 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2
 	.byte 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0, 0xF2, 0xC0
@@ -10772,128 +10772,128 @@ byte_8045B8C: .byte 0xB8, 0xF2, 0xB9, 0xF2, 0xB9, 0xF2, 0xB9, 0xF2, 0xB9
 	.byte 0xBC, 0xFA, 0xBC, 0xFA, 0xBC, 0xFA, 0xBC, 0xFA, 0xBC
 	.byte 0xFA, 0xBC, 0xFA, 0xBD, 0xFA
 dword_8045CCC: .word 0x30501, 0x0
- .word 0x40605, 0x0
- .word 0x20100, 0x0
- .word 0x90207, 0x0
+	.word 0x40605, 0x0
+	.word 0x20100, 0x0
+	.word 0x90207, 0x0
 off_8045CEC: .word byte_86BECA0
- .word byte_86BEE80
- .word byte_86BF060
- .word byte_86BF240
- .word byte_86BF240
- .word byte_86BF060
- .word byte_86BEE80
- .word byte_86BECA0
- .word byte_86BF420
- .word byte_86BF600
- .word byte_86BF7E0
- .word byte_86BF9C0
- .word byte_86BF9C0
- .word byte_86BF7E0
- .word byte_86BF600
- .word byte_86BF420
- .word byte_86BECA0
- .word byte_86BEE80
- .word byte_86BF060
- .word byte_86BF240
- .word byte_804590C
- .word byte_8045A4C
- .word byte_8045B8C
- .word 0xFF
- .word byte_201F070
- .word byte_201F070
- .word byte_201F070
- .word byte_201F070
- .word byte_201F070
- .word byte_201F070
- .word byte_201F070
- .word byte_201F070
- .word byte_86BFE60
- .word byte_86C0040
- .word byte_86C0220
- .word byte_86C0400
- .word byte_86C0400
- .word byte_86C0220
- .word byte_86C0040
- .word byte_86BFE60
- .word spriteWhiteDot
- .word spriteWhiteDot
- .word spriteWhiteDot
- .word spriteWhiteDot
- .word spriteWhiteDot
- .word spriteWhiteDot
- .word spriteWhiteDot
- .word spriteWhiteDot
- .word byte_86C0940
- .word byte_86C0940
- .word byte_86C0940
- .word byte_86C0940
- .word byte_86C0940
- .word byte_86C0940
- .word byte_86C0940
- .word byte_86C0940
+	.word byte_86BEE80
+	.word byte_86BF060
+	.word byte_86BF240
+	.word byte_86BF240
+	.word byte_86BF060
+	.word byte_86BEE80
+	.word byte_86BECA0
+	.word byte_86BF420
+	.word byte_86BF600
+	.word byte_86BF7E0
+	.word byte_86BF9C0
+	.word byte_86BF9C0
+	.word byte_86BF7E0
+	.word byte_86BF600
+	.word byte_86BF420
+	.word byte_86BECA0
+	.word byte_86BEE80
+	.word byte_86BF060
+	.word byte_86BF240
+	.word byte_804590C
+	.word byte_8045A4C
+	.word byte_8045B8C
+	.word 0xFF
+	.word byte_201F070
+	.word byte_201F070
+	.word byte_201F070
+	.word byte_201F070
+	.word byte_201F070
+	.word byte_201F070
+	.word byte_201F070
+	.word byte_201F070
+	.word byte_86BFE60
+	.word byte_86C0040
+	.word byte_86C0220
+	.word byte_86C0400
+	.word byte_86C0400
+	.word byte_86C0220
+	.word byte_86C0040
+	.word byte_86BFE60
+	.word spriteWhiteDot
+	.word spriteWhiteDot
+	.word spriteWhiteDot
+	.word spriteWhiteDot
+	.word spriteWhiteDot
+	.word spriteWhiteDot
+	.word spriteWhiteDot
+	.word spriteWhiteDot
+	.word byte_86C0940
+	.word byte_86C0940
+	.word byte_86C0940
+	.word byte_86C0940
+	.word byte_86C0940
+	.word byte_86C0940
+	.word byte_86C0940
+	.word byte_86C0940
 byte_8045DCC: .byte 0xE2, 0x0, 0x8D, 0x0, 0xCA, 0x0, 0x8D, 0x0
 off_8045DD4: .word byte_8045DF0
- .word dword_8045E10
- .word dword_8045E30
- .word dword_8045E50
- .word dword_8045E70
- .word dword_8045E90
- .word dword_8045EB0
+	.word dword_8045E10
+	.word dword_8045E30
+	.word dword_8045E50
+	.word dword_8045E70
+	.word dword_8045E90
+	.word dword_8045EB0
 byte_8045DF0: .byte 0x1, 0x0, 0x0, 0x40, 0x10, 0x80, 0x0, 0x0
 off_8045DF8: .word byte_86F2980
- .word 0x6010200
- .word 0x80
- .word byte_86F2960
- .word byte_3001650
- .word 0x20
+	.word 0x6010200
+	.word 0x80
+	.word byte_86F2960
+	.word byte_3001650
+	.word 0x20
 dword_8045E10: .word 0x40000001
- .word 0x8014
- .word byte_86F2A00
- .word 0x6010280
- .word 0x80
- .word byte_86F2960
- .word byte_3001650
- .word 0x20
+	.word 0x8014
+	.word byte_86F2A00
+	.word 0x6010280
+	.word 0x80
+	.word byte_86F2960
+	.word byte_3001650
+	.word 0x20
 dword_8045E30: .word 0x40000001
- .word 0x8018
- .word byte_86F2A80
- .word 0x6010300
- .word 0x80
- .word byte_86F2960
- .word byte_3001650
- .word 0x20
+	.word 0x8018
+	.word byte_86F2A80
+	.word 0x6010300
+	.word 0x80
+	.word byte_86F2960
+	.word byte_3001650
+	.word 0x20
 dword_8045E50: .word 0x40000001
- .word 0x801C
- .word byte_86F2B00
- .word 0x6010380
- .word 0x80
- .word byte_86F2960
- .word byte_3001650
- .word 0x20
+	.word 0x801C
+	.word byte_86F2B00
+	.word 0x6010380
+	.word 0x80
+	.word byte_86F2960
+	.word byte_3001650
+	.word 0x20
 dword_8045E70: .word 0x40000001
- .word 0x8020
- .word byte_86F2B80
- .word 0x6010400
- .word 0x80
- .word byte_86F2960
- .word byte_3001650
- .word 0x20
+	.word 0x8020
+	.word byte_86F2B80
+	.word 0x6010400
+	.word 0x80
+	.word byte_86F2960
+	.word byte_3001650
+	.word 0x20
 dword_8045E90: .word 0x40000001
- .word 0x8024
- .word byte_86F2C00
- .word 0x6010480
- .word 0x80
- .word byte_86F2960
- .word byte_3001650
- .word 0x20
+	.word 0x8024
+	.word byte_86F2C00
+	.word 0x6010480
+	.word 0x80
+	.word byte_86F2960
+	.word byte_3001650
+	.word 0x20
 dword_8045EB0: .word 0x40000001
- .word 0x8028
- .word byte_86F2C80
- .word 0x6010500
- .word 0x80
- .word byte_86F2960
- .word byte_3001650
- .word 0x20
+	.word 0x8028
+	.word byte_86F2C80
+	.word 0x6010500
+	.word 0x80
+	.word byte_86F2960
+	.word byte_3001650
+	.word 0x20
 .endfunc // chatbox_8043A5C
 
 .func
@@ -10963,7 +10963,7 @@ chatbox_8045F1C:
 	str r2, [r1]
 	pop {r1,r2}
 	mov pc, lr
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_8045F1C
 
 .func
@@ -10977,7 +10977,7 @@ chatbox_8045F2C:
 	str r2, [r1]
 	pop {r1,r2}
 	mov pc, lr
- .balign 4, 0x00
+	.balign 4, 0x00
 .endfunc // chatbox_8045F2C
 
 .func
@@ -11002,7 +11002,7 @@ chatbox_8045F4C:
 	and r0, r1
 	pop {r1}
 	mov pc, lr
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8045F5C: .word dword_2009F38
 .endfunc // chatbox_8045F4C
 
@@ -11023,7 +11023,7 @@ chatbox_8045F60:
 	pop {pc}
 off_8045F7C: .word unk_200BEA0
 off_8045F80: .word 0xF00
- .word 0x6015700
+	.word 0x6015700
 off_8045F88: .word dword_200CDA0
 .endfunc // chatbox_8045F60
 

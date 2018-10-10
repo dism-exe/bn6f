@@ -40,16 +40,16 @@ sub_80595B8:
 	ldr r0, [r0,r1]
 	str r0, [r5,#0x64]
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8059614: .word off_8059294
 off_8059618: .word unk_2037800
 off_805961C: .word off_8059DE8
 off_8059620: .word off_8059624
 off_8059624: .word byte_8059638
- .word byte_8059646
- .word byte_805964E
- .word byte_805965A
- .word byte_8059662
+	.word byte_8059646
+	.word byte_805964E
+	.word byte_805965A
+	.word byte_8059662
 byte_8059638: .byte 0x1C, 0x3D, 0x1C, 0x3E, 0x1C, 0x13, 0x1C, 0x32, 0x1C
 	.byte 0x2F, 0x18, 0x1B, 0xFF, 0xFF
 byte_8059646: .byte 0x1C, 0x35, 0x1C, 0x45, 0x1C, 0x46, 0xFF, 0xFF
@@ -68,28 +68,28 @@ sub_8059664:
 	ldr r0, [r0,r1]
 	bl sub_8002354
 	pop {pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_8059674: .word off_8059678
 off_8059678: .word off_805968C
- .word off_80596A0
- .word off_80596AC
- .word off_80596B4
- .word off_80596BC
+	.word off_80596A0
+	.word off_80596AC
+	.word off_80596B4
+	.word off_80596BC
 off_805968C: .word off_8059378
- .word unk_80593B8
- .word unk_80593F8
- .word unk_8059438
- .word 0xFFFFFFFF
+	.word unk_80593B8
+	.word unk_80593F8
+	.word unk_8059438
+	.word 0xFFFFFFFF
 off_80596A0: .word unk_8059468
- .word unk_80594A8
- .word 0xFFFFFFFF
+	.word unk_80594A8
+	.word 0xFFFFFFFF
 off_80596AC: .word unk_80594E8
- .word 0xFFFFFFFF
+	.word 0xFFFFFFFF
 off_80596B4: .word unk_8059528
- .word 0xFFFFFFFF
+	.word 0xFFFFFFFF
 off_80596BC: .word unk_8059558
- .word unk_8059588
- .word 0xFFFFFFFF
+	.word unk_8059588
+	.word 0xFFFFFFFF
 .endfunc // sub_8059664
 
 .func
@@ -106,7 +106,7 @@ sub_80596C8:
 	pop {pc}
 off_80596DC: .word off_80596E0
 // <endpool> <endfile>
-off_80596E0: .word dword_80596F4
+off_80596E0:  .word dword_80596F4
 	.word dword_805975C
 	.word dword_8059A58
 	.word dword_8059C00

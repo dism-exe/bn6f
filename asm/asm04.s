@@ -40,16 +40,16 @@ sub_804E62C:
 	ldr r0, [r0,r1]
 	str r0, [r5,#0x64]
 	pop {r4-r7,pc}
- .balign 4, 0x00
+	.balign 4, 0x00
 off_804E688: .word off_804E38C
 off_804E68C: .word unk_2037800
 off_804E690: .word off_804E9CC
 off_804E694: .word off_804E698
 off_804E698: .word byte_804E6AC
- .word byte_804E6BE
- .word byte_804E6C2
- .word byte_804E6C6
- .word byte_804E6C8
+	.word byte_804E6BE
+	.word byte_804E6C2
+	.word byte_804E6C6
+	.word byte_804E6C8
 byte_804E6AC: .byte 0x1C, 0x11, 0x1C, 0x15, 0x1C, 0x16, 0x1C, 0x51, 0x1C
 	.byte 0x13, 0x18, 0x24, 0x18, 0x25, 0x18, 0x1C, 0xFF, 0xFF
 byte_804E6BE: .byte 0x1C, 0x7, 0xFF, 0xFF
@@ -67,23 +67,23 @@ sub_804E6D0:
 	ldr r0, [r0,r1]
 	bl sub_8002354
 	pop {pc}
- .byte 0, 0
+	.byte 0, 0
 off_804E6E0: .word off_804E6E4
 off_804E6E4: .word dword_804E6F8
- .word off_804E6FC
- .word off_804E70C
- .word dword_804E714
- .word off_804E718
+	.word off_804E6FC
+	.word off_804E70C
+	.word dword_804E714
+	.word off_804E718
 dword_804E6F8: .word 0xFFFFFFFF
 off_804E6FC: .word off_804E450
- .word off_804E478
- .word off_804E4A0
- .word 0xFFFFFFFF
+	.word off_804E478
+	.word off_804E4A0
+	.word 0xFFFFFFFF
 off_804E70C: .word unk_804E5D4
- .word 0xFFFFFFFF
+	.word 0xFFFFFFFF
 dword_804E714: .word 0xFFFFFFFF
 off_804E718: .word dword_804E604
- .word 0xFFFFFFFF
+	.word 0xFFFFFFFF
 .endfunc // sub_804E6D0
 
 .func
@@ -100,12 +100,12 @@ sub_804E720:
 	pop {pc}
 off_804E734: .word off_804E738
 // <endpool>
-off_804E738: .word dword_804E74C
+off_804E738:  .word dword_804E74C
 .endfunc // sub_804E720
 
- .word dword_804E87C
- .word dword_804E8D0
- .word dword_804E8D4
+	.word dword_804E87C
+	.word dword_804E8D0
+	.word dword_804E8D4
 // <endfile>
- .word dword_804E8D8
+ 	.word dword_804E8D8
 /*For debugging purposes, connect comment at any range!*/
