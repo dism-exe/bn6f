@@ -596,7 +596,8 @@ loc_80030F4:
 	mov r1, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-jt_80030FC: .word sub_8003B4C+1
+jt_80030FC:
+	.word sub_8003B4C+1
 	.word object_spawnType1+1
 	.word sub_80045C0+1
 	.word object_spawnType3+1
@@ -608,7 +609,8 @@ off_8003114: .word sub_8003B86+1
 	.word object_freeMemory+1
 	.word object_freeMemory+1
 	.word sub_80048B2+1
-off_800312C: .word byte_2009F40
+off_800312C:
+	.word byte_2009F40
 	.word eBattleObjectPlayer
 	.word unk_20057B0
 	.word unk_203CFE0
@@ -654,7 +656,7 @@ sub_80031AC:
 	str r0, [sp]
 	ldr r7, off_8003214 // =dword_2009380 
 loc_80031BA:
-	ldr r7, [r7,#4]
+	ldr r7, [r7,#4] // linked list
 	ldr r0, off_8003218 // =dword_2009AB0 
 	cmp r7, r0
 	beq loc_8003208
@@ -682,7 +684,7 @@ loc_80031E8:
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #2
-	ldr r1, off_800321C // =dword_8003220 
+	ldr r1, JumptableTable8003220_p
 	ldr r0, [r0,r1]
 	ldrb r1, [r5,#1]
 	lsl r1, r1, #2
@@ -703,53 +705,41 @@ loc_8003208:
 	.balign 4, 0x00
 off_8003214: .word dword_2009380
 off_8003218: .word dword_2009AB0
-off_800321C: .word dword_8003220
-dword_8003220: .word 0x0
+JumptableTable8003220_p:
+	.word JumptableTable8003220
+// a table of jumptable pointers. Index to an entry is derived from the lower 4 bits of the 2nd (zero-indexed) member of the struct in the linked list, starting from dword_2009380. Index to an entry from the read Jumptable pointer is derived from the first member of the struct
+JumptableTable8003220:
+	.word 0x0
 	.word off_8003C9C
 	.word 0x0
 	.word off_8003EC4
 	.word off_80042C8
 off_8003234: .word dword_200AF70
+.endfunc // sub_80031AC
+
+// unused?
 	.word off_800323C
-off_800323C: .word byte_8003250
+off_800323C:
+	.word loc_8003250
 	.word loc_8003258
 	.word loc_8003260
 	.word loc_8003268
 	.word loc_8003270
-byte_8003250: .byte 0x1B, 0x0
-.endfunc // sub_80031AC
-
-.func
-.thumb_func
-sub_8003252:
-	mov r5, #0x50 
-	add r2, #0x30 
-	lsl r0, r7, #1
+loc_8003250:
+	.hword 0x1b
+	.asciz "P%02x"
 loc_8003258:
-	// <mkdata>
-	.hword 0x1b // mov r3, r3
-	mov r5, #0x45 
-	add r2, #0x30 
-	lsl r0, r7, #1
+	.hword 0x1b
+	.asciz "E%02x"
 loc_8003260:
-	// <mkdata>
-	.hword 0x1b // mov r3, r3
-	mov r5, #0x4d 
-	add r2, #0x30 
-	lsl r0, r7, #1
+	.hword 0x1b
+	.asciz "M%02x"
 loc_8003268:
-	// <mkdata>
-	.hword 0x1b // mov r3, r3
-	mov r5, #0x53 
-	add r2, #0x30 
-	lsl r0, r7, #1
+	.hword 0x1b
+	.asciz "S%02x"
 loc_8003270:
-	// <mkdata>
-	.hword 0x1b // mov r3, r3
-	mov r5, #0x46 
-	add r2, #0x30 
-	lsl r0, r7, #1
-.endfunc // sub_8003252
+	.hword 0x1b
+	.asciz "F%02x"
 
 .func
 .thumb_func
@@ -1071,7 +1061,7 @@ loc_80034BC:
 	.balign 4, 0x00
 off_80034CC: .word off_80034D0
 off_80034D0:
-// word 1 is a list of words related to the struct?
+// word 1 is part of a linked list?
 // word 2 is the actual list of structs
 // byte 1 is struct offset part 2?
 
@@ -1083,7 +1073,7 @@ off_80034D0:
 
 // apparently there's hypothetical support for 32 enemies, but unk_203A9A0 only supports 4 pointers
 // maybe for virus battler?
-	.word unk_203A9A0, eBattleObjectPlayer
+	.word unk_203A9A0, eBattleObjects
 	.hword 0x1B00
 	.byte 0x91, 0xD8, 0x20
 	.balign 4, 0x00
@@ -2191,7 +2181,8 @@ loc_8003C7E:
 off_8003C90: .word dword_2009F34
 off_8003C94: .word byte_2009F40
 off_8003C98: .word byte_200A008
-off_8003C9C: .word sub_80B81EC+1
+off_8003C9C:
+	.word sub_80B81EC+1
 	.word sub_80B8210+1
 	.word loc_80B85E0+1
 	.word loc_80B88D0+1
@@ -2366,18 +2357,20 @@ sub_8003E98:
 	ldr r3, off_8003EB8 // =eBattleObjectPlayer 
 loc_8003EA6:
 	add r1, r3, #0
-	add r1, #0x90
+	add r1, #oBattleObjectUnkSpriteData_90
 	mov r2, #0
-	str r2, [r1,#0x24]
-	add r3, #0xd8
+	str r2, [r1, #0x24]
+	add r3, #oBattleObjectSize
 	add r0, #1
-	cmp r0, #0x20 
+	cmp r0, #0x20
 	blt loc_8003EA6
 	mov pc, lr
+	.balign 4, 0
 off_8003EB8: .word eBattleObjectPlayer
 off_8003EBC: .word byte_2036778
 off_8003EC0: .word dword_2039A10
-off_8003EC4: .word loc_80C4E58+1
+off_8003EC4:
+	.word loc_80C4E58+1
 	.word loc_80C50B8+1
 	.word loc_80C51AC+1
 	.word loc_80C52B0+1
@@ -2554,8 +2547,8 @@ off_8003EC4: .word loc_80C4E58+1
 	.word loc_80DB304+1
 .endfunc // sub_8003E98
 
-	push {r0,r4-r6,lr}
-	lsr r5, r1, #0x20
+	push {r0,r4-r6,lr} // <fakeasm>
+	lsr r5, r1, #0x20 // <fakeasmend>
 	.word sub_80DB6A4+1
 	.word loc_80DB8CC+1
 	.word loc_80DB994+1

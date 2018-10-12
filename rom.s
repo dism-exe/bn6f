@@ -2,6 +2,8 @@
 This file specifies how all of the code and data files link together
 to make the ROM. This file is compiled to define the whole ROM region.
 */
+	.include "include/macros.inc"
+
     .text
 
 start:

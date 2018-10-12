@@ -4,6 +4,7 @@ include $(DEVKITARM)/base_tools
 # (the arm-none-eabi toolchain should be in the path)
 MAKE = make
 CC = arm-none-eabi-gcc
+AS = arm-none-eabi-as
 LD = arm-none-eabi-ld
 OBJCOPY = arm-none-eabi-objcopy
 SHA1SUM = sha1sum
@@ -21,29 +22,30 @@ OFILES = $(addprefix $(OBJ),$(notdir $(SFILES:.s=.o)))
 ROM = bn6f
 
 # build flags
-COMPLIANCE_FLAGS = -O0 -g3 -I$(INC)
-WFLAGS =
-ARCH = -march=armv4t -mtune=arm7tdmi -mabi=aapcs -mthumb -mthumb-interwork
+COMPLIANCE_FLAGS = -g -I$(INC)
+WFLAGS = 
+ARCH = -mcpu=arm7tdmi -march=armv4t -mthumb -mthumb-interwork
 CDEBUG =
-CFLAGS = $(ARCH) $(WFLAGS) $(COMPLIANCE_FLAGS) $(CDEBUG)
-ASFLAGS =
+CFLAGS = 
+ASFLAGS = $(ARCH) $(WFLAGS) $(COMPLIANCE_FLAGS)
 LDFLAGS = -g -Map $(ROM).map
 LIB =
 
-all:
+all: cleanobj rom checksum
 
 rom: $(ROM)
 	@# TODO: this tab is needed or ROM is executed weirdly?? oops!
 
-$(ROM):
-	$(CC) $(CFLAGS) -c $(SFILES)
+$(ROM): $(OFILES)
 	$(LD) $(LDFLAGS) -o $(ROM).elf -T ld_script.ld $(OFILES) $(LIB)
 	$(OBJCOPY) -O binary $(ROM).elf $(ROM).gba
+
+%.o: %.s
+	$(AS) $(ASFLAGS) $< -o $@
 
 checksum:
 	$(SHA1SUM) -b $(ROM).gba
 	@echo "0676ecd4d58a976af3346caebb44b9b6489ad099 *Expected"
-
 
 fdiff:
 	$(PY) tools/fdiff.py _$(ROM).gba $(ROM).gba -s2
@@ -53,11 +55,12 @@ tail: $(ROM)
 	$(PY) tools/gen_obj_tail.py $(ROM).elf _$(ROM).gba bin/tail.bin 'tail'
 	@echo "Updated tail.bin!"
 
-clean:
-	rm -f *.preout
+# TODO: integrate scan_includes
+cleanobj:
 	rm -f *.o
-	rm -f *.out
-	rm -f *.d
+	
+clean:
+	rm -f *.o
 	rm -f *.map
 	rm -f *.elf
 
