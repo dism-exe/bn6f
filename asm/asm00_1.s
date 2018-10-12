@@ -610,9 +610,9 @@ off_8003114: .word sub_8003B86+1
 	.word object_freeMemory+1
 	.word sub_80048B2+1
 off_800312C:
-	.word byte_2009F40
+	.word eOWPlayerObject
 	.word eBattleObjectPlayer
-	.word unk_20057B0
+	.word eOverworldNPCObjects
 	.word unk_203CFE0
 	.word unk_2036870
 	.word byte_2011EE0
@@ -1028,14 +1028,14 @@ off_800348C: .word off_8003144
 // args: r0
 sub_8003490:
 	push {r4,r7,lr}
-	ldr r7, off_80034CC // =off_80034D0 
+	ldr r7, StructInitializationTable_p // =StructInitializationTable 
 	lsl r1, r0, #4
-	add r7, r7, r1 // off_80034D0 + r0 * 16
+	add r7, r7, r1 // StructInitializationTable + r0 * 16
 	lsl r1, r0, #2
 	ldr r4, off_8003530 // =off_8003144 
 	// memBlock
 	ldr r0, [r4,r1] // r0 = [off_8003144 + r0 * 4]
-	ldrb r1, [r7,#0xc] // r1 = off_80034D0[r0] + 0xc
+	ldrb r1, [r7,#0xc] // r1 = StructInitializationTable[r0] + 0xc
 	add r1, #0x1f
 	lsr r1, r1, #5
 	lsl r1, r1, #2 // weird conversion to convert number of structs to length of list of indices in words
@@ -1059,44 +1059,50 @@ loc_80034BC:
 	blt loc_80034BC
 	pop {r4,r7,pc}
 	.balign 4, 0x00
-off_80034CC: .word off_80034D0
-off_80034D0:
+StructInitializationTable_p: .word StructInitializationTable
+StructInitializationTable:
 // word 1 is part of a linked list?
 // word 2 is the actual list of structs
 // byte 1 is struct offset part 2?
 
 // OWPlayer struct
-	.word byte_2009F40, byte_2009F40
+	.word eOWPlayerObject, eOWPlayerObject
 	.hword 0xC8
-	.byte 0x90, 0xC8, 0x1
+	nybble 0x9, 0
+	.byte 0xC8, 0x1
 	.balign 4, 0x00
 
 // apparently there's hypothetical support for 32 enemies, but unk_203A9A0 only supports 4 pointers
 // maybe for virus battler?
 	.word unk_203A9A0, eBattleObjects
-	.hword 0x1B00
-	.byte 0x91, 0xD8, 0x20
+	.hword NUM_BATTLE_OBJECTS * oBattleObjectSize
+	nybble 0x9, 1
+	.byte oBattleObjectSize, NUM_BATTLE_OBJECTS
 	.balign 4, 0x00
 
 // NPC structs
-	.word 0x20057B0, 0x20057B0
+	.word eOverworldNPCObjects, eOverworldNPCObjects
 	.hword 0x0D80
-	.byte 0xA2, 0xD8, 0x10
+	nybble 0xa, 2
+	.byte 0xD8, 0x10
 	.balign 4, 0x00
 
 	.word 0x203CFD0, 0x203CFE0
 	.hword 0x1B00
-	.byte 0x93, 0xD8, 0x20
+	nybble 0x9, 3
+	.byte 0xD8, 0x20
 	.balign 4, 0x00
 
 	.word 0x2036860, 0x2036870
 	.hword 0x1900
-	.byte 0x84, 0xC8, 0x20
+	nybble 0x8, 4
+	.byte 0xC8, 0x20
 	.balign 4, 0x00
 
 	.word 0x2011EE0, 0x2011EE0
 	.hword 0x1A40
-	.byte 0x45, 0x78, 0x38
+	nybble 0x4, 5
+	.byte 0x78, 0x38
 	.balign 4, 0x00
 
 off_8003530:
@@ -1546,7 +1552,7 @@ loc_800380A:
 	tst r0, r1
 	beq loc_800385C
 	push {r0-r2}
-	ldr r0, off_800388C // =byte_2009F40 
+	ldr r0, off_800388C // =eOWPlayerObject 
 	ldrh r1, [r4]
 	mov r2, #0x72 // (word_2009FB2 - 0x2009f40)
 	strh r1, [r0,r2]
@@ -1582,7 +1588,7 @@ loc_800387C:
 	pop {r5,pc}
 off_8003884: .word dword_200AC18
 off_8003888: .word unk_20081D0
-off_800388C: .word byte_2009F40
+off_800388C: .word eOWPlayerObject
 dword_8003890: .word 0x200000
 .endfunc // sub_80037F4
 
@@ -1996,7 +2002,7 @@ sub_8003B4C:
 	ldr r2, [r0]
 	mov r1, #0x80
 	lsl r1, r1, #0x18
-	ldr r5, off_8003C94 // =byte_2009F40 
+	ldr r5, off_8003C94 // =eOWPlayerObject 
 	ldr r3, off_8003C98 // =byte_200A008 
 loc_8003B5A:
 	tst r2, r1
@@ -2052,7 +2058,7 @@ sub_8003BA2:
 	mov r6, r12
 	push {r4-r6}
 	sub sp, sp, #8
-	ldr r5, off_8003C94 // =byte_2009F40 
+	ldr r5, off_8003C94 // =eOWPlayerObject 
 	ldr r0, off_8003BF0 // =off_8003B48 
 	ldr r1, off_8003C98 // =byte_200A008 
 	str r0, [sp]
@@ -2101,7 +2107,7 @@ sub_8003BF4:
 	push {r4-r6}
 	mov r0, #1
 	mov r1, #0
-	ldr r5, off_8003C94 // =byte_2009F40 
+	ldr r5, off_8003C94 // =eOWPlayerObject 
 loc_8003C04:
 	ldrb r2, [r5]
 	mov r3, #2
@@ -2167,7 +2173,7 @@ sub_8003C70:
 .endfunc // sub_8003C70
 
 	mov r0, #0
-	ldr r3, off_8003C94 // =byte_2009F40 
+	ldr r3, off_8003C94 // =eOWPlayerObject 
 loc_8003C7E:
 	add r1, r3, #0
 	add r1, #0x90
@@ -2179,7 +2185,7 @@ loc_8003C7E:
 	blt loc_8003C7E
 	mov pc, lr
 off_8003C90: .word dword_2009F34
-off_8003C94: .word byte_2009F40
+off_8003C94: .word eOWPlayerObject
 off_8003C98: .word byte_200A008
 off_8003C9C:
 	.word sub_80B81EC+1
@@ -2933,7 +2939,7 @@ sub_80045C0:
 	ldr r2, [r0]
 	mov r1, #0x80
 	lsl r1, r1, #0x18
-	ldr r5, off_800471C // =unk_20057B0 
+	ldr r5, off_800471C // =eOverworldNPCObjects 
 	ldr r3, off_8004720 // =byte_2006530 
 loc_80045CE:
 	tst r2, r1
@@ -3002,7 +3008,7 @@ npc_800461E:
 	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_800466C
 	sub sp, sp, #8
-	ldr r5, off_800471C // =unk_20057B0 
+	ldr r5, off_800471C // =eOverworldNPCObjects 
 	ldr r0, off_8004678 // =off_80045BC 
 	ldr r1, off_8004720 // =byte_2006530 
 	str r0, [sp]
@@ -3053,7 +3059,7 @@ sub_800467C:
 	push {r4-r6}
 	mov r0, #0x10
 	mov r1, #0
-	ldr r5, off_800471C // =unk_20057B0 
+	ldr r5, off_800471C // =eOverworldNPCObjects 
 loc_800468C:
 	ldrb r2, [r5]
 	mov r3, #2
@@ -3122,7 +3128,7 @@ sub_80046F8:
 .thumb_func
 sub_8004702:
 	mov r0, #0
-	ldr r3, off_800471C // =unk_20057B0 
+	ldr r3, off_800471C // =eOverworldNPCObjects 
 loc_8004706:
 	add r1, r3, #0
 	add r1, #0xa0
@@ -3134,7 +3140,7 @@ loc_8004706:
 	blt loc_8004706
 	mov pc, lr
 off_8004718: .word map_activeNPCs
-off_800471C: .word unk_20057B0
+off_800471C: .word eOverworldNPCObjects
 off_8004720: .word byte_2006530
 off_8004724: .word ho_80A4984+1
 	.word loc_80A4A98+1

@@ -6028,7 +6028,7 @@ sub_809C968:
 	blt loc_809CA26
 	cmp r0, #0x33 
 	bgt loc_809CA26
-	ldr r1, off_809CABC // =byte_2009F40 
+	ldr r1, off_809CABC // =eOWPlayerObject 
 	mov r2, #0x83 // (byte_2009FC3 - 0x2009f40)
 	strb r0, [r1,r2]
 	// entryIdx
@@ -6056,7 +6056,7 @@ loc_809C9CA:
 	ldrb r0, [r3,#0xe]
 	tst r0, r0
 	bne loc_809CA26
-	ldr r0, off_809CAC0 // =byte_2009F40 
+	ldr r0, off_809CAC0 // =eOWPlayerObject 
 	mov r1, #0x83 // (byte_2009FC3 - 0x2009f40)
 	ldrb r0, [r0,r1]
 	mov r7, r10
@@ -6151,7 +6151,7 @@ off_809CA80: .word off_809C0F0
 .thumb_func
 sub_809CA84:
 	push {r4-r7,lr}
-	ldr r0, off_809CAC4 // =byte_2009F40 
+	ldr r0, off_809CAC4 // =eOWPlayerObject 
 	mov r1, #0x83 // (byte_2009FC3 - 0x2009f40)
 	ldrb r0, [r0,r1]
 	mov r7, r10
@@ -6178,9 +6178,9 @@ loc_809CAB2:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_809CAB8: .word off_809C0F0
-off_809CABC: .word byte_2009F40
-off_809CAC0: .word byte_2009F40
-off_809CAC4: .word byte_2009F40
+off_809CABC: .word eOWPlayerObject
+off_809CAC0: .word eOWPlayerObject
+off_809CAC4: .word eOWPlayerObject
 	.word 0x5000016, 0x5010116, 0x5020216, 0xFFFFFFFF
 unk_809CAD8: .byte 0x3F 
 	.byte  0
@@ -8013,7 +8013,7 @@ loc_809E014:
 .thumb_func
 sub_809E01C:
 	push {lr}
-	ldr r7, off_809E044 // =unk_20057B0 
+	ldr r7, off_809E044 // =eOverworldNPCObjects 
 	ldr r2, dword_809E048 // =0xD80 
 	add r2, r2, r7
 loc_809E024:
@@ -8035,7 +8035,7 @@ loc_809E03A:
 	mov r0, #1
 locret_809E042:
 	pop {pc}
-off_809E044: .word unk_20057B0
+off_809E044: .word eOverworldNPCObjects
 dword_809E048: .word 0xD80
 .endfunc // sub_809E01C
 
@@ -8043,14 +8043,14 @@ dword_809E048: .word 0xD80
 .thumb_func
 sub_809E04C:
 	push {r0,r1,lr}
-	ldr r0, off_809E05C // =byte_2009F40 
+	ldr r0, off_809E05C // =eOWPlayerObject 
 	mov r1, #0
 	strb r1, [r0,#0xd] // (byte_2009F4D - 0x2009f40)
 	strb r1, [r0,#0xe] // (byte_2009F4E - 0x2009f40)
 	strb r1, [r0,#0xf] // (byte_2009F4F - 0x2009f40)
 	pop {r0,r1,pc}
 	.balign 4, 0x00
-off_809E05C: .word byte_2009F40
+off_809E05C: .word eOWPlayerObject
 off_809E060: .word byte_2000AA0
 .endfunc // sub_809E04C
 

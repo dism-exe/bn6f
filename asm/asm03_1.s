@@ -7497,7 +7497,7 @@ sub_8037DE0:
 	bl sub_8036094
 	mov r0, #0xd8
 	mul r4, r0
-	ldr r0, off_8037E14 // =unk_20057B0 
+	ldr r0, off_8037E14 // =eOverworldNPCObjects 
 	add r4, r4, r0
 	ldr r0, [r4,#0x24]
 	ldr r1, [r4,#0x28]
@@ -7514,7 +7514,7 @@ sub_8037DE0:
 	pop {pc}
 	.byte  0
 	.byte  0
-off_8037E14: .word unk_20057B0
+off_8037E14: .word eOverworldNPCObjects
 .endfunc // sub_8037DE0
 
 .func
@@ -7639,7 +7639,7 @@ sub_8037EFA:
 	bl sub_8036094
 	mov r1, #0xd8
 	mul r1, r4
-	ldr r4, off_8037FB4 // =unk_20057B0 
+	ldr r4, off_8037FB4 // =eOverworldNPCObjects 
 	add r4, r4, r1
 	ldr r0, [r4,#0x24]
 	ldr r1, [r4,#0x28]
@@ -7725,7 +7725,7 @@ loc_8037FA8:
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-off_8037FB4: .word unk_20057B0
+off_8037FB4: .word eOverworldNPCObjects
 .endfunc // sub_8037F90
 
 .func

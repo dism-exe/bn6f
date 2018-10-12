@@ -5718,7 +5718,7 @@ chatbox_8042770:
 	pop {r3}
 	ldr r3, off_80427AC // =dword_80427B0 
 	ldrb r2, [r3,r2]
-	ldr r5, off_80427A8 // =byte_2009F40 
+	ldr r5, off_80427A8 // =eOWPlayerObject 
 	mov r0, #0x80
 	mov r1, #0x18
 	bl sprite_load // (int a1, int a2, int a3) ->
@@ -5733,7 +5733,7 @@ chatbox_8042770:
 	add r4, #3
 	mov r0, #1
 	pop {pc}
-off_80427A8: .word byte_2009F40
+off_80427A8: .word eOWPlayerObject
 off_80427AC: .word dword_80427B0
 dword_80427B0: .word 0x37
 .func

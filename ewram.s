@@ -392,20 +392,10 @@ ds dynaicArr // 0x2005780
 	.space 15
 ds unk_200578F // 0x200578f
 	.space 33
-ds unk_20057B0 // 0x20057b0
-	.space 36
-ds unk_20057D4 // 0x20057d4
-	.space 4
-ds unk_20057D8 // 0x20057d8
-	.space 4
-ds unk_20057DC // 0x20057dc
-	.space 36
-ds dword_2005800 // 0x2005800
-	.space 16
-ds dword_2005810 // 0x2005810
-	.space 1848
-ds npc_2005F48 // 0x2005f48
-	.space 1512
+.set unk_20057D4, 0x20057d4 // temporary
+.global unk_20057D4
+ds eOverworldNPCObjects // 0x20057b0
+	.space 3456
 ds byte_2006530 // 0x2006530
 	.space 128
 ds reqBBS_numRequestsSent // 0x20065b0
@@ -670,7 +660,7 @@ ds dword_2009F34 // 0x2009f34
 	.space 4
 ds dword_2009F38 // 0x2009f38
 	.space 8
-ds byte_2009F40 // 0x2009f40
+ds eOWPlayerObject // 0x2009f40
 	.space 1
 ds byte_2009F41 // 0x2009f41
 	.space 3

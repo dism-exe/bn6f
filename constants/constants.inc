@@ -1,0 +1,1 @@
+.equ NUM_BATTLE_OBJECTS, 0x20
