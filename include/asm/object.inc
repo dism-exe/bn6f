@@ -3,6 +3,7 @@
 
 /* Public Symbols */
 .global object_timefreezeEnd
+.global sub_800BDB2
 .global sub_800BEDA
 .global sub_800BF16
 .global loc_800BF30
@@ -24,6 +25,7 @@
 .global object_breakPanel_dup2
 .global object_breakPanel_dup3
 .global object_breakPanelLoud
+.global object_panel_setPoison
 .global object_highlightPanel
 .global object_setPanelType
 .global object_setPanelAlliance

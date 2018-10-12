@@ -36,10 +36,12 @@
 .global loc_813D48C
 .global sub_813D5C8
 .global sub_813D5D0
+.global sub_813D5DC
 .global sub_813D60C
 .global sub_813D638
 .global sub_813D648
 .global sub_813D66C
+.global sub_813D750
 .global sub_813D760
 .global sub_813D78C
 .global sub_813D7B8

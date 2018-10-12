@@ -6,14 +6,23 @@
 .global sub_8123300
 .global sub_8123360
 .global sub_8123408
+.global sub_8123434
+.global ho_8123F5C
 .global dword_8124B1C
+.global sub_8124B3C
+.global sub_8126B4C
 .global sub_8127990
 .global sub_81279A8
+.global menuControl_cb_email
 .global sub_81284A4
+.global sub_8128730
+.global loc_8128CBC
 .global dword_8129178
 .global dword_8129180
 .global sub_81291D8
+.global sub_81291E8
 .global sub_8129248
+.global sub_812AC14
 .global sub_812AF3C
 .global sub_812AF78
 .global sub_812AFC8
@@ -297,7 +306,7 @@
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 .include "data/dat37.inc"
-// .global dword_814FE94
+// .global byte_814FE94
 
 .include "data/dat38_60.inc"
 // .global byte_86A5D40

@@ -80,6 +80,7 @@
 .global sub_8004934
 .global sub_8004D48
 .global sub_8004DF0
+.global cb_80050EC // () -> void
 .global sub_8005524
 .global gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
 .global sub_8005C04
@@ -179,6 +180,7 @@
 .global sub_800AE44
 .global sub_800AE54
 .global sub_800AE90
+.global sub_800AF34
 .global sub_800AFBA
 .global sub_800B022 // (int a1) ->
 .global sub_800B3A2
@@ -198,6 +200,13 @@
 .global sub_800B8AC
 .global sub_800B8D8
 .global sub_800B8EE
+.global sub_800B916
+.global sub_800B94C
+.global sub_800B97E
+.global sub_800B9B0
+.global sub_800BA8A
+.global sub_800BBA8
+.global sub_800BC88
 .global sub_800BCC0
 
 
@@ -1299,7 +1308,7 @@
 // .equ dword_3002188, 0x3002188
 // .equ dword_300218C, 0x300218C
 // .equ unk_30025C0, 0x30025C0
-// .equ loc_3006028, 0x3006028
+// .equ sub_3006028, 0x3006028
 // .equ loc_30061E8, 0x30061E8
 // .equ loc_3006440, 0x3006440
 .equ Window0HorizontalDimensions, 0x4000040

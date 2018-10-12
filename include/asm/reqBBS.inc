@@ -3,13 +3,17 @@
 
 /* Public Symbols */
 .global reqBBS_813E07C
+.global reqBBS_cb_draw_813E0A4
 .global reqBBS_813E5DC
 .global reqBBS_813E616
+.global reqBBS_813E660
 .global reqBBS_813EE58
 .global dword_813F380
 .global reqBBS_init_s_2005780
+.global reqBBS_cb_813F404
 .global reqBBS_813F9A0
 .global reqBBS_initMemory_813F9DA
+.global sub_813FA24
 .global reqBBS_81406FC
 .global reqBBS_getTotalPointsIndex // () -> u8
 .global reqBBS_81407D8

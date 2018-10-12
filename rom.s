@@ -2,9 +2,6 @@
 This file specifies how all of the code and data files link together
 to make the ROM. This file is compiled to define the whole ROM region.
 */
-
-// assign section to be set to 0x08000000
-
     .text
 
 start:

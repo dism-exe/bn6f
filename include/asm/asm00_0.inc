@@ -58,6 +58,7 @@
 .global sub_80010C6
 .global sub_80010D4
 .global sub_80010EC
+.global sub_8001154
 .global sub_8001158 // () -> void
 .global sub_8001172
 .global calcAngle_800117C
@@ -105,8 +106,19 @@
 .global sub_8001974
 .global cb_call_200A880
 .global sub_80019A0
+.global nullsub_35
 .global nullsub_36
 .global sub_80019B4
+.global sub_80019D0
+.global sub_80019EC
+.global sub_80019FE
+.global sub_8001A10
+.global sub_8001A22
+.global sub_8001A34
+.global sub_8001A46
+.global sub_8001A58
+.global sub_8001A6A
+.global locret_8001AB4
 .global sub_8001AFC
 .global sub_8001B1C
 .global sub_8001B6C

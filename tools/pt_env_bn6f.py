@@ -15,7 +15,7 @@ pt.env(compareBinPath= '')
 pt.env(dismProjPath= '../SPB_Data/dev/dis/bn6f/')
 # header files generated for *.s files. The file structure is duplicated there
 # (ie. files in data/datXX.s will have headers as inc/data/datXX.inc)
-pt.env(incPath='inc/')
+pt.env(incPath='include/')
 # aliases for file extensions of files to be binary extracted, not disassembled
 pt.env(binAliases=['bin', 'lz77', 'spr'])
 
@@ -204,9 +204,9 @@ pt.env(gameFiles={
 'asm/asm37_1.s':
 	(0x814187C, 0x814FE8D), # size=0xE611
 'data/dat37.s':
-	(0x814FE8D, 0x81D61DA), # size=0x8634D
+	(0x814FE8D, 0x81D6000), # size=0x8634D
 'asm/asm38.s':
-	(0x81D61DA, 0x81D8000), # size=0x1E26
+	(0x81D6000, 0x81D8000), # size=0x1E26
 'data/sprites/battleSpriteMegaMan.spr':
 	(0x81D8000, 0x81DF420), # size=0x7420
 'data/sprites/battleSpriteFlameCross.spr':

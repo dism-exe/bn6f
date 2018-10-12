@@ -2,6 +2,11 @@
 .equ INC_ASM_ASM16, 0
 
 /* Public Symbols */
+.global sub_8077D00
+.global sub_8077D8A
+.global sub_8077DE0
+.global sub_8077E60
+.global sub_8077E84
 
 
 /* External Symbols */

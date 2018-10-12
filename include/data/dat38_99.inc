@@ -33,7 +33,6 @@
 .global byte_87F97B4
 .global byte_87F97D4
 .global byte_87F97F4
-.global dword_87FF8A0
 
 
 /* External Symbols */

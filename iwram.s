@@ -201,7 +201,9 @@ ds loc_3005B00 // 0x3005b00
 ds unk_3005CA0 // 0x3005ca0
 	.space 57
 ds unk_3005CD9 // 0x3005cd9
-	.space 199
+	.space 55
+ds unk_3005D10 // 0x3005d10
+	.space 144
 ds sub_3005DA0 // 0x3005da0
 	.space 52
 ds sub_3005DD4 // 0x3005dd4
@@ -224,13 +226,13 @@ ds sub_3005EBA // 0x3005eba
 	.space 54
 ds sub_3005EF0 // 0x3005ef0
 	.space 192
-ds loc_3005FB0 // 0x3005fb0
+ds byte_3005FB0 // 0x3005fb0
 	.space 16
 ds sub_3005FC0 // 0x3005fc0
 	.space 58
 ds sub_3005FFA // 0x3005ffa
 	.space 46
-ds loc_3006028 // 0x3006028
+ds sub_3006028 // 0x3006028
 	.space 448
 ds loc_30061E8 // 0x30061e8
 	.space 300
@@ -258,7 +260,7 @@ ds sub_30068E8 // 0x30068e8
 	.space 56
 ds sub_3006920 // 0x3006920
 	.space 628
-ds loc_3006B94 // 0x3006b94
+ds sub_3006B94 // 0x3006b94
 	.space 164
 ds sub_3006C38 // 0x3006c38
 	.space 86
@@ -267,7 +269,7 @@ ds sub_3006C8E // 0x3006c8e
 ds sub_3006CA8 // 0x3006ca8
 
 	.org 0x6f20
-ds sub_3006F20 // 0x3006f20
+ds dword_3006F20 // 0x3006f20
 	.space 4
 ds sub_3006F24 // 0x3006f24
 	.space 30

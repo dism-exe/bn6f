@@ -31,6 +31,7 @@
 .global sub_809FAF4
 .global sub_809FC1C
 .global sub_809FC96
+.global sub_809FE5E
 .global off_809FEA0
 
 

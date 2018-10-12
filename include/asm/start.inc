@@ -18,8 +18,8 @@
 // .global CpuSet_toolKit // () -> void
 // .global sub_8006C22
 
-.include "data/dat37.inc"
-// .global loc_81D6000
+.include "asm/asm38.inc"
+// .global sub_81D6000
 
 
 /* Undeclared Symbols */

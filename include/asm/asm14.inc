@@ -2,6 +2,11 @@
 .equ INC_ASM_ASM14, 0
 
 /* Public Symbols */
+.global sub_8071B50
+.global sub_8071BE4
+.global sub_8071C30
+.global sub_8071CC4
+.global sub_8071CEE
 .global off_8071EB0
 .global dword_8071EBC
 .global off_8071EC8
