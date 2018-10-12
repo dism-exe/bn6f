@@ -3004,13 +3004,13 @@ ds unk_203A990 // 0x203a990
 	.space 16
 ds unk_203A9A0 // 0x203a9a0
 	.space 16
-ds sBtlPlayer // 0x203a9b0
+ds eBattleObjectPlayer // 0x203a9b0
 	.space 216
-ds sBtlEnemyA // 0x203aa88
+ds eBattleObject1 // 0x203aa88
 	.space 216
-ds sBtlEnemyB // 0x203ab60
+ds eBattleObject2 // 0x203ab60
 	.space 216
-ds sBtlEnemyC // 0x203ac38
+ds eBattleObject3 // 0x203ac38
 	.space 6248
 ds unk_203C4A0 // 0x203c4a0
 	.space 64

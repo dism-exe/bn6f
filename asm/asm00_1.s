@@ -609,7 +609,7 @@ off_8003114: .word sub_8003B86+1
 	.word object_freeMemory+1
 	.word sub_80048B2+1
 off_800312C: .word byte_2009F40
-	.word sBtlPlayer
+	.word eBattleObjectPlayer
 	.word unk_20057B0
 	.word unk_203CFE0
 	.word unk_2036870
@@ -1083,7 +1083,7 @@ off_80034D0:
 
 // apparently there's hypothetical support for 32 enemies, but unk_203A9A0 only supports 4 pointers
 // maybe for virus battler?
-	.word unk_203A9A0, sBtlPlayer
+	.word unk_203A9A0, eBattleObjectPlayer
 	.hword 0x1B00
 	.byte 0x91, 0xD8, 0x20
 	.balign 4, 0x00
@@ -2363,7 +2363,7 @@ sub_8003E98:
 	bl sub_80028C0
 	pop {pc}
 	mov r0, #0
-	ldr r3, off_8003EB8 // =sBtlPlayer 
+	ldr r3, off_8003EB8 // =eBattleObjectPlayer 
 loc_8003EA6:
 	add r1, r3, #0
 	add r1, #0x90
@@ -2374,7 +2374,7 @@ loc_8003EA6:
 	cmp r0, #0x20 
 	blt loc_8003EA6
 	mov pc, lr
-off_8003EB8: .word sBtlPlayer
+off_8003EB8: .word eBattleObjectPlayer
 off_8003EBC: .word byte_2036778
 off_8003EC0: .word dword_2039A10
 off_8003EC4: .word loc_80C4E58+1
