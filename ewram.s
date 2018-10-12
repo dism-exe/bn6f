@@ -3012,9 +3012,6 @@ ds eBattleObjects // 0x203a9b0
 	.space 6032
 ds eBattleObjectsEnd
 
-.equ oTestOffset, 0x24
-.global oTestOffset
-
 ds unk_203C4A0 // 0x203c4a0
 	.space 64
 ds unk_203C4E0 // 0x203c4e0
