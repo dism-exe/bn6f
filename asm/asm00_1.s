@@ -1035,19 +1035,20 @@ off_800348C: .word off_8003144
 
 .func
 .thumb_func
+// args: r0
 sub_8003490:
 	push {r4,r7,lr}
 	ldr r7, off_80034CC // =off_80034D0 
 	lsl r1, r0, #4
-	add r7, r7, r1
+	add r7, r7, r1 // off_80034D0 + r0 * 16
 	lsl r1, r0, #2
 	ldr r4, off_8003530 // =off_8003144 
 	// memBlock
-	ldr r0, [r4,r1]
-	ldrb r1, [r7,#0xc]
+	ldr r0, [r4,r1] // r0 = [off_8003144 + r0 * 4]
+	ldrb r1, [r7,#0xc] // r1 = off_80034D0[r0] + 0xc
 	add r1, #0x1f
 	lsr r1, r1, #5
-	lsl r1, r1, #2
+	lsl r1, r1, #2 // weird conversion to convert number of structs to length of list of indices in words
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 	// memBlock
 	ldr r0, [r7]
@@ -1069,13 +1070,47 @@ loc_80034BC:
 	pop {r4,r7,pc}
 	.balign 4, 0x00
 off_80034CC: .word off_80034D0
-off_80034D0: .word byte_2009F40
-	.word byte_2009F40
-	.word 0xC89000C8, 0x1, 0x203A9A0, 0x203A9B0, 0xD8911B00, 0x20
-	.word 0x20057B0, 0x20057B0, 0xD8A20D80, 0x10, 0x203CFD0, 0x203CFE0
-	.word 0xD8931B00, 0x20, 0x2036860, 0x2036870, 0xC8841900, 0x20
-	.word 0x2011EE0, 0x2011EE0, 0x78451A40, 0x38
-off_8003530: .word off_8003144
+off_80034D0:
+// word 1 is a list of words related to the struct?
+// word 2 is the actual list of structs
+// byte 1 is struct offset part 2?
+
+// OWPlayer struct
+	.word byte_2009F40, byte_2009F40
+	.hword 0xC8
+	.byte 0x90, 0xC8, 0x1
+	.balign 4, 0x00
+
+// apparently there's hypothetical support for 32 enemies, but unk_203A9A0 only supports 4 pointers
+// maybe for virus battler?
+	.word unk_203A9A0, sBtlPlayer
+	.hword 0x1B00
+	.byte 0x91, 0xD8, 0x20
+	.balign 4, 0x00
+
+// NPC structs
+	.word 0x20057B0, 0x20057B0
+	.hword 0x0D80
+	.byte 0xA2, 0xD8, 0x10
+	.balign 4, 0x00
+
+	.word 0x203CFD0, 0x203CFE0
+	.hword 0x1B00
+	.byte 0x93, 0xD8, 0x20
+	.balign 4, 0x00
+
+	.word 0x2036860, 0x2036870
+	.hword 0x1900
+	.byte 0x84, 0xC8, 0x20
+	.balign 4, 0x00
+
+	.word 0x2011EE0, 0x2011EE0
+	.hword 0x1A40
+	.byte 0x45, 0x78, 0x38
+	.balign 4, 0x00
+
+off_8003530:
+	.word off_8003144
 .endfunc // sub_8003490
 
 .func
@@ -2996,7 +3031,7 @@ loc_8004656:
 	ldr r0, [sp]
 	ldrb r1, [r5,#1]
 	lsl r1, r1, #2
-	ldr r0, [r0,r1]
+	ldr r0, [r0,r1] // jumptable has only one entry
 	mov lr, pc
 	bx r0
 loc_8004662:
@@ -7462,15 +7497,15 @@ sub_8006C22:
 	add r2, r2, r3
 	ldr r3, off_8006CA8 // =GameStateOffsets 
 copy22Words_8006C5A:
-    ldr r4, [r3,r1] // GameStateOffsets
-    add r4, r4, r2 // sGameState + offset
-    str r4, [r0,r1] // store in eToolkit
-    add r1, #4
-    cmp r1, #(GameStateOffsetsEnd - GameStateOffsets) + 4
-    blt copy22Words_8006C5A
-    pop {r4-r7}
-    pop {r0}
-    bx r0
+	ldr r4, [r3,r1] // GameStateOffsets
+	add r4, r4, r2 // sGameState + offset
+	str r4, [r0,r1] // store in eToolkit
+	add r1, #4
+	cmp r1, #(GameStateOffsetsEnd - GameStateOffsets) + 4
+	blt copy22Words_8006C5A
+	pop {r4-r7}
+	pop {r0}
+	bx r0
 .endfunc // sub_8006C22
 
 .func
@@ -7501,7 +7536,7 @@ off_8006C94: .word sGameState
 off_8006C98: .word eUnusedGameStateBaseOffset
 dword_8006C9C: .word 0x35BC
 off_8006CA0: .word copyWords_80014EC+1
-    .word eToolkit // unused?
+	.word eToolkit // unused?
 off_8006CA8: .word GameStateOffsets
 GameStateOffsets:
 	.word 0x0

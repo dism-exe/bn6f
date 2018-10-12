@@ -11,7 +11,9 @@ npc_809E570:
 	bx r7
 	pop {pc}
 	.byte 0, 0
-jt_809E580: .word npc_809E590+1
+jt_809E580:
+// three sprite states? first function is related to loading
+	.word npc_809E590+1
 	.word npc_809E5E2+1
 	.word npc_809EADA+1
 off_809E58C: .word jt_809E580
@@ -725,19 +727,17 @@ off_809EB00: .word off_809EAFC
 .thumb_func
 sub_809EB04:
 	push {lr}
-	ldr r7, dword_809EB1C // = 
+	ldr r7, Jumptable809eb14_p // = 
 	ldrb r0, [r5,#0xa]
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
 	pop {pc}
 	.balign 4, 0x00
+Jumptable809eb14:
 	.word npc_809EB20+1
-	.byte 0xBD
-	.byte 0xEB
-	.byte  9
-	.byte  8
-dword_809EB1C: .word 0x809EB14
+	.word npc_809EBBC+1
+Jumptable809eb14_p: .word Jumptable809eb14
 .endfunc // sub_809EB04
 
 .func
