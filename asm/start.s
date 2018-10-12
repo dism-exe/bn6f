@@ -116,12 +116,12 @@ start_copyMemory:
 	bx lr
 dword_80001EC: .word 0x3007F60
 dword_80001F0: .word 0x3007FE0
-dword_80001F4: .word 0x3007E00
+dword_80001F4: .word iStack
 off_80001F8: .word unk_3007FFC
 dword_80001FC: .word 0x3005B00
 off_8000200: .word GamePakWaitstateControl
 dword_8000204: .word 0x45B4
-mem: .word sub_81D6000
+mem: .word loc_81D6000
 a2: .word loc_3005B00
 size: .word 0x1ED4
 off_8000214: .word CpuSet_toolKit+1

@@ -25,7 +25,7 @@ in the 0x2000000 RAM region
 /*
   Always in r10
 */
-#define toolkit ((Toolkit*)                     0x20093B0)
+#define eToolkit ((Toolkit*)                     0x20093B0)
 #define sCamera ((Camera*)                      0x2009980)
 #define sSubmenu ((MenuControl*)                0x2009A30)
 #define sChatbox ((ChatBoxPropreties*)          0x2009CD0)
