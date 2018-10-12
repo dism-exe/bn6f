@@ -1,4 +1,6 @@
-include $(DEVKITARM)/base_tools
+ifneq ($(DEVKITARM)/base_tools,)
+    include $(DEVKITARM)/base_tools
+endif
 
 # binary tools used in build
 # (the arm-none-eabi toolchain should be in the path)
