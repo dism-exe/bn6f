@@ -330,7 +330,7 @@ ds unk_2001A60 // 0x2001a60
 	.space 92
 ds unk_2001ABC // 0x2001abc
 	.space 196
-ds sGameState // 0x2001b80
+ds eGameState // 0x2001b80
 	.space 132
 ds unk_2001C04 // 0x2001c04
 	.space 132

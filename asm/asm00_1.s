@@ -7466,7 +7466,7 @@ sub_8006C22:
 	// anti-cheat stuff? this block up to the copy
 	// seems to do nothing due to the ands which zero
 	// r5 was supposedly an offset to be added to the pointers
-	// in sGameState
+	// in eGameState
 	mov r1, #0
 	and r0, r1
 	add r4, r0, #0
@@ -7475,29 +7475,29 @@ sub_8006C22:
 	mov r0, #0
 	and r3, r0
 	str r4, [r5]
-	ldr r0, off_8006C94 // =sGameState 
+	ldr r0, off_8006C94 // =eGameState 
 	// src
 	add r0, r0, r3
-	ldr r1, off_8006C94 // =sGameState 
+	ldr r1, off_8006C94 // =eGameState 
 	// dest
 	add r1, r1, r4
 	// size
 	ldr r2, dword_8006C9C // =0x35BC 
 	ldr r3, off_8006CA0 // =copyWords_80014EC+1 
 	mov lr, pc
-	// copyWords_80014EC(&sGameState, &sGameState, 0x35BC);
+	// copyWords_80014EC(&eGameState, &sGameState, 0x35BC);
 	bx r3
 	mov r0, r10
 	mov r1, #(ToolkitPointersEnd - ToolkitPointers)
 	add r0, r0, r1
 	mov r1, #0
-	ldr r2, off_8006C94 // =sGameState 
+	ldr r2, off_8006C94 // =eGameState 
 	ldr r3, [r5]
 	add r2, r2, r3
 	ldr r3, off_8006CA8 // =GameStateOffsets 
 copy22Words_8006C5A:
 	ldr r4, [r3,r1] // GameStateOffsets
-	add r4, r4, r2 // sGameState + offset
+	add r4, r4, r2 // eGameState + offset
 	str r4, [r0,r1] // store in eToolkit
 	add r1, #4
 	cmp r1, #(GameStateOffsetsEnd - GameStateOffsets) + 4
@@ -7516,7 +7516,7 @@ sub_8006C6C:
 	mov r1, #oToolkitGameStatePtr
 	add r0, r0, r1
 	mov r1, #0
-	ldr r2, off_8006C94 // =sGameState 
+	ldr r2, off_8006C94 // =eGameState 
 	ldr r3, [r5]
 	mov r4, #0
 	and r3, r4
@@ -7531,7 +7531,7 @@ loc_8006C84:
 	blt loc_8006C84
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8006C94: .word sGameState
+off_8006C94: .word eGameState
 off_8006C98: .word eUnusedGameStateBaseOffset
 dword_8006C9C: .word 0x35BC
 off_8006CA0: .word copyWords_80014EC+1
