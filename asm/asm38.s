@@ -1,5 +1,6 @@
 .include "asm/asm38.inc"
 
+IWRAMRoutines:
 .func
 .arm
 sub_81D6000:
@@ -3301,7 +3302,11 @@ loc_81D7EC6:
 	bl sub_81D7DE0
 locret_81D7ECE:
 	pop {r4-r6,pc}
+
 dword_81D7ED0: .word 0x708
+IWRAMRoutinesEnd:
+
+// ??? unused code/branch
 	ldrb r3, [r0,#2]
 	tst r3, r3
 	beq locret_81D7EF2

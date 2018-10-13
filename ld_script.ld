@@ -3,6 +3,7 @@ OUTPUT_ARCH(arm)
 
 SECTIONS
 {
+	INCLUDE "constants.ld"
     /* start of ewram */
     . = 0x02000000;
     
@@ -24,10 +25,21 @@ SECTIONS
     }
     
     /* start of ROM */
-
+	
     . = 0x08000000;
     .text :
     {
         rom.o(.text);
     }=0xff
+	
+	iwram_text :
+	{
+		iwram_code.o(.text);
+	}=0xff
+
+	.rodata :
+	ALIGN(4)
+	{
+		data.o(.rodata);
+	}=0xff
 }

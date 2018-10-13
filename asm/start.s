@@ -61,7 +61,7 @@ loc_80000D0:
 	// dest
 	ldr r1, a2 // =loc_3005B00 
 	// size
-	ldr r2, size // =0x1ED4 
+	ldr r2, IWRAMRoutinesSize_p // =0x1ED4 
 	bl start_copyMemory // (void *src, void *dest, int size) -> void
 	ldr r0, off_8000214 // =CpuSet_toolKit+1 
 	mov lr, pc
@@ -121,9 +121,9 @@ off_80001F8: .word unk_3007FFC
 dword_80001FC: .word 0x3005B00
 off_8000200: .word GamePakWaitstateControl
 dword_8000204: .word 0x45B4
-mem: .word sub_81D6000
+mem: .word IWRAMRoutines
 a2: .word loc_3005B00
-size: .word 0x1ED4
+IWRAMRoutinesSize_p: .word IWRAM_ROUTINES_SIZE
 off_8000214: .word CpuSet_toolKit+1
 off_8000218: .word sub_8006C22+1
 off_800021C: .word start_800023C+1
