@@ -64,8 +64,6 @@
 	\struct_entry \label\()End // loc=0xd8
 	.endm
 
-	def_struct_offsets battle_object_struct, oBattleObject
-
 	.macro toolkit_struct, label, struct_entry=label_struct_entry, struct_begin=struct_begin
 	\struct_begin
 	\struct_entry \label\()MainJumptableIndexPtr, 4 // loc=0x0
@@ -106,6 +104,61 @@
 	\struct_entry \label\()Unk2005038_Ptr, 4 // loc=0x8c
 	\struct_entry \label\()UnusedGarbage, 4  // loc=0x90
 	.endm
-	
-	def_struct_offsets toolkit_struct, oToolkit
+
 	// .macro overworld_npc_object_struct, struct_entry=label_struct_entry, struct_begin=struct_begin
+
+	.macro game_state_struct, label, struct_entry=label_struct_entry, struct_begin=struct_begin
+	\struct_begin
+	\struct_entry \label\()SubsystemIndex, 1 // loc=0x0
+	\struct_entry \label\()PETNaviIndex, 1 // loc=0x1
+	\struct_entry \label\()Unk_02, 1 // loc=0x2
+	\struct_entry \label\()Unk_03, 1 // loc=0x3
+	\struct_entry \label\()MapGroup, 1 // loc=0x4
+	\struct_entry \label\()MapNumber, 1 // loc=0x5
+	\struct_entry \label\()GameProgress, 1 // loc=0x6
+	\struct_entry \label\()Unk_07, 1 // loc=0x7
+	// related to L button messages
+	\struct_entry \label\()Unk_08, 1 // loc=0x8
+	\struct_entry \label\()Unk_09, 1 // loc=0x9
+	\struct_entry \label\()Unk_0a, 1 // loc=0xa
+	\struct_entry \label\()Unk_0b, 1 // loc=0xb
+	
+	\struct_entry \label\()LastMapGroup, 1 // loc=0xc
+	\struct_entry \label\()LastMapNumber, 1 // loc=0xd
+	\struct_entry \label\()Unk_0e, 1 // loc=0xe
+	\struct_entry \label\()BGMusicIndicator, 1 // loc=0xf
+	\struct_entry \label\()Unk_10, 1 // loc=0x10
+	\struct_entry \label\()Unk_11, 1 // loc=0x11
+	\struct_entry \label\()Unk_12, 1 // loc=0x12
+	\struct_entry \label\()Unk_13, 1 // loc=0x13
+	\struct_entry \label\()Unk_14, 1 // loc=0x14
+	\struct_entry \label\()Unk_15, 1 // loc=0x15
+	\struct_entry \label\()Unk_16, 1 // loc=0x16
+	\struct_entry \label\()Unk_17, 1 // loc=0x17
+	\struct_entry \label\()OverworldPlayerObjectPtr, 4 // loc=0x18
+	\struct_entry \label\()CurBattleDataPtr, 4 // loc=0x1c
+	\struct_entry \label\()Unk_20, 4 // loc=0x20
+	\struct_entry \label\()PlayerX, 4 // loc=0x24
+	\struct_entry \label\()PlayerY, 4 // loc=0x28
+	\struct_entry \label\()Unk_2c, 4 // loc=0x2c
+	\struct_entry \label\()Unk_30, 4 // loc=0x30
+	\struct_entry \label\()Unk_34, 4 // loc=0x34
+	\struct_entry \label\()Unk_38, 4 // loc=0x38
+	\struct_entry \label\()Unk_3c, 4 // loc=0x3c
+	\struct_entry \label\()Unk_40, 4 // loc=0x40
+	\struct_entry \label\()Unk_44, 4 // loc=0x44
+	// same struct as Unk_34 to Unk_44
+	\struct_entry \label\()Unk_48, 0x14 // loc=0x48
+	\struct_entry \label\()ProtectedZenny, 4 // loc=0x5c
+	\struct_entry \label\()ProtectedBugfrags, 4 // loc=0x60
+	\struct_entry \label\()Unk_64, 4 // loc=0x64
+	\struct_entry \label\()Unk_68, 4 // loc=0x68
+	\struct_entry \label\()Unk_6c, 4 // loc=0x6c
+	\struct_entry \label\()Unk_70, 4 // loc=0x70
+	\struct_entry \label\()Unk_74, 0xc // loc=0x74
+	// size=0x80
+	.endm
+
+	def_struct_offsets battle_object_struct, oBattleObject
+	def_struct_offsets toolkit_struct, oToolkit
+	def_struct_offsets game_state_struct, oGameState

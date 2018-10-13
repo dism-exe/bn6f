@@ -4336,12 +4336,13 @@ off_80050E8: .word byte_80213AC
 
 .func
 .thumb_func
+//.type cb_80050EC, function
 // () -> void
 cb_80050EC:
 	push {r4-r7,lr}
-	ldr r0, off_8005108 // =jt_800510C 
+	ldr r0, GameStateJumptable_p // =jt_800510C
 	mov r5, r10
-	ldr r5, [r5,#0x3c] // Toolkit.gamestate
+	ldr r5, [r5,#oToolkitGameStatePtr] // Toolkit.gamestate
 	ldrb r1, [r5]
 	ldr r0, [r0,r1]
 	mov lr, pc
@@ -4350,11 +4351,23 @@ cb_80050EC:
 	bl rng_800154C // () -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8005108: .word jt_800510C
-jt_800510C: .word sub_8005148+1, sub_8005268+1, sub_80052D8+1, sub_8005360+1
-	.word sub_800536E+1, sub_80053E4+1, sub_8005462+1, sub_800555A+1
-	.word sub_8005642+1, sub_80056B8+1, sub_800572C+1, sub_80057A0+1
-	.word sub_80055CE+1, sub_8005814+1, sub_800585A+1
+GameStateJumptable_p: .word GameStateJumptable
+GameStateJumptable:
+	.word sub_8005148+1
+	.word sub_8005268+1
+	.word sub_80052D8+1
+	.word sub_8005360+1
+	.word sub_800536E+1
+	.word sub_80053E4+1
+	.word sub_8005462+1
+	.word sub_800555A+1
+	.word sub_8005642+1
+	.word sub_80056B8+1
+	.word sub_800572C+1
+	.word sub_80057A0+1
+	.word sub_80055CE+1
+	.word sub_8005814+1
+	.word sub_800585A+1
 .endfunc // cb_80050EC
 
 .func
@@ -4366,8 +4379,6 @@ sub_8005148:
 	pop {pc}
 loc_8005152:
 	bl sub_8005F40
-.endfunc // sub_8005148
-
 	bl sub_8005F6C
 	bl sub_80027C4
 	bl sub_8003566
@@ -4466,6 +4477,8 @@ loc_80051AA:
 	strb r0, [r5]
 	pop {pc}
 off_8005264: .word 0x1740
+.endfunc // sub_8005148
+
 .func
 .thumb_func
 sub_8005268:
@@ -5502,13 +5515,13 @@ dword_8005C00: .word 0x4000
 sub_8005C04:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkitGameStatePtr]
 	mov r0, #0
-	str r0, [r5,#0x20]
-	mov r0, #0x25 
+	str r0, [r5,#oGameStateUnk_20]
+	mov r0, #0x25
 	bl sub_80035A2
 	mov r5, r10
-	ldr r1, [r5,#0x14]
+	ldr r1, [r5,#oToolkitUnk2011bb0_Ptr]
 	ldr r0, [r1,#0x14]
 	mov r2, #0x10
 	ldrb r3, [r1,#0x11]
@@ -5517,15 +5530,15 @@ sub_8005C04:
 	add r0, r0, r3
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldr r5, [r5,#oToolkitGameStatePtr]
+	ldrb r0, [r5,#oGameStateMapGroup]
+	ldrb r1, [r5,#oGameStateMapNumber]
 	bl sub_8001708
 	ldr r0, off_8005CE4 // =0x40 
 	bl sub_8001778
 	mov r5, r10
-	ldr r7, [r5,#0x14]
-	ldr r5, [r5,#0x3c]
+	ldr r7, [r5,#oToolkitUnk2011bb0_Ptr]
+	ldr r5, [r5,#oToolkitGameStatePtr]
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx
@@ -5533,7 +5546,7 @@ sub_8005C04:
 	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8005C80
 	ldrb r1, [r7]
-	ldrb r2, [r5,#4]
+	ldrb r2, [r5,#oGameStateMapGroup]
 	mov r3, #0x80
 	add r4, r1, #0
 	eor r4, r2
@@ -5541,23 +5554,23 @@ sub_8005C04:
 	beq loc_8005C80
 	tst r1, r3
 	bne loc_8005C60
-	mov r6, #0x48 
+	mov r6, #oGameStateUnk_48
 	b loc_8005C62
 loc_8005C60:
-	mov r6, #0x34 
+	mov r6, #oGameStateUnk_34
 loc_8005C62:
-	ldr r0, [r5,#0x18]
+	ldr r0, [r5,#oGameStateOverworldPlayerObjectPtr]
 	ldr r1, [r0,#0x1c]
 	ldr r2, [r0,#0x20]
 	ldr r3, [r0,#0x24]
 	ldrb r4, [r0,#0x10]
 	add r6, r6, r5
 	str r1, [r6]
-	str r2, [r6,#4]
+	str r2, [r6,#4] // TODO: NESTED STRUCT
 	str r3, [r6,#8]
 	str r4, [r6,#0xc]
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldrb r0, [r5,#oGameStateMapGroup]
+	ldrb r1, [r5,#oGameStateMapNumber]
 	lsl r1, r1, #8
 	orr r1, r0
 	str r1, [r6,#0x10]
@@ -5592,24 +5605,24 @@ loc_8005CAE:
 	ldr r4, [r5,#0x54]
 	ldr r6, [r5,#0x58]
 loc_8005CB8:
-	str r1, [r5,#0x24]
-	str r2, [r5,#0x28]
-	str r3, [r5,#0x2c]
-	str r4, [r5,#0x30]
+	str r1, [r5,#oGameStatePlayerX]
+	str r2, [r5,#oGameStatePlayerY]
+	str r3, [r5,#oGameStateUnk_2c]
+	str r4, [r5,#oGameStateUnk_30]
 	lsr r7, r6, #8
 	mov r0, #0xff
 	and r6, r0
 	mov r1, #0
 	strb r1, [r5]
-	ldrb r1, [r5,#5]
-	strb r1, [r5,#0xd]
-	ldrb r1, [r5,#4]
-	ldrb r2, [r5,#0xc]
-	strb r1, [r5,#0xc]
-	strb r6, [r5,#4]
-	strb r7, [r5,#5]
+	ldrb r1, [r5,#oGameStateMapNumber]
+	strb r1, [r5,#oGameStateLastMapNumber]
+	ldrb r1, [r5,#oGameStateMapGroup]
+	ldrb r2, [r5,#oGameStateLastMapGroup]
+	strb r1, [r5,#oGameStateLastMapGroup]
+	strb r6, [r5,#oGameStateMapGroup]
+	strb r7, [r5,#oGameStateMapNumber]
 	mov r7, r10
-	ldr r7, [r7,#0x40]
+	ldr r7, [r7,#oToolkitUnk2001c04_Ptr]
 	mov r0, #0
 	strh r0, [r7,#0x12]
 	strh r0, [r7,#0x14]

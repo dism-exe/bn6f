@@ -7890,8 +7890,6 @@ loc_80BBB3C:
 	ldr r3, [r3,#0x4] // (dword_80BBB90 - 0x80bbb8c)
 	push {r0,r1}
 	bl object_checkPanelParameters
-.endfunc // sub_80BBB38
-
 	tst r0, r0
 	pop {r0,r1}
 	beq loc_80BBB84
@@ -7920,6 +7918,10 @@ off_80BBB88: .word dword_80BBB8C
 dword_80BBB8C: .word 0x10
 dword_80BBB90: .word 0xF800000
 dword_80BBB94: .word 0x40000
+.endfunc // sub_80BBB38
+
+.func
+.thumb_func
 loc_80BBB98:
 	push {lr}
 	ldr r1, off_80BBBAC // =off_80BBBB0 
@@ -7934,6 +7936,8 @@ off_80BBBAC: .word off_80BBBB0
 off_80BBBB0: .word sub_80BBBBC+1
 	.word sub_80BBC04+1
 	.word object_freeMemory+1
+.endfunc
+
 .func
 .thumb_func
 sub_80BBBBC:
@@ -7946,8 +7950,6 @@ sub_80BBBBC:
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-.endfunc // sub_80BBBBC
-
 	bl sub_8002E3C
 	mov r0, #0
 	strb r0, [r5,#0x10]
@@ -7965,6 +7967,8 @@ sub_80BBBBC:
 	mov r0, #4
 	str r0, [r5,#8]
 	pop {pc}
+.endfunc // sub_80BBBBC
+
 .func
 .thumb_func
 sub_80BBC04:
