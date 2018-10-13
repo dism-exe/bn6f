@@ -7418,16 +7418,16 @@ off_8006BBC: .word 0x101
 // () -> void
 CpuSet_toolKit:
 	push {lr}
-	ldr r0, .Lp_ToolkitPointers
-	ldr r1, .Lp_eToolkit
+	ldr r0, .L_ToolkitPointers_p
+	ldr r1, .L_eToolkit_p
 	mov r2, #(ToolkitPointersEnd - ToolkitPointers)
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
-	ldr r0, .Lp_eToolkit
+	ldr r0, .L_eToolkit_p
 	mov r10, r0
 	pop {r0}
 	bx r0
-.Lp_eToolkit: .word eToolkit
-.Lp_ToolkitPointers: .word ToolkitPointers
+.L_eToolkit_p: .word eToolkit
+.L_ToolkitPointers_p: .word ToolkitPointers
 ToolkitPointers:
 	.word i_joGameSubsysSel
 	.word sJoystick
@@ -7513,7 +7513,7 @@ sub_8006C6C:
 	push {r4-r7,lr}
 	ldr r5, off_8006C98 // =eUnusedGameStateBaseOffset 
 	mov r0, r10
-	mov r1, #0x3c 
+	mov r1, #oToolkitGameStatePtr
 	add r0, r0, r1
 	mov r1, #0
 	ldr r2, off_8006C94 // =sGameState 
@@ -7527,7 +7527,7 @@ loc_8006C84:
 	add r4, r4, r2
 	str r4, [r0,r1]
 	add r1, #4
-	cmp r1, #(GameStateOffsetsEnd - GameStateOffsets) + 4
+	cmp r1, #(GameStateOffsetsEnd - GameStateOffsets) + 4 // reads extra garbage
 	blt loc_8006C84
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -7579,7 +7579,7 @@ sub_8006D00:
 	bl change_20013F0_800151C // () -> int
 	str r0, [r5,#0x4] // (dword_2001064 - 0x2001060)
 	mov r6, r10
-	mov r0, #0x78 
+	mov r0, #oToolkitUnk2004a8c_Ptr
 	ldr r6, [r6,r0]
 	ldr r4, off_8006DC4 // =byte_20004E0 
 	ldr r7, off_8006DC8 // =0x200 
@@ -7600,7 +7600,7 @@ loc_8006D28:
 	b loc_8006D24
 loc_8006D40:
 	mov r6, r10
-	mov r0, #0x7c 
+	mov r0, #oToolkitUnk2004c20_Ptr
 	ldr r6, [r6,r0]
 	ldr r4, off_8006DCC // =byte_20008A0 
 	ldr r7, off_8006DD0 // =0x200 
@@ -7621,7 +7621,7 @@ loc_8006D4E:
 	b loc_8006D4A
 loc_8006D66:
 	mov r6, r10
-	mov r0, #0x80
+	mov r0, #oToolkitUnk2004e24_Ptr
 	ldr r6, [r6,r0]
 	ldr r4, off_8006DD4 // =byte_2001600 
 	ldr r7, dword_8006DD8 // =0x4 
@@ -7683,7 +7683,7 @@ off_8006DE8: .word loc_803ED90
 sub_8006DEC:
 	push {r4-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x3c]
+	ldr r4, [r4,#oToolkitGameStatePtr]
 	ldr r0, [r4,#0x74]
 	pop {r4-r7,pc}
 .endfunc // sub_8006DEC
@@ -7747,7 +7747,7 @@ load_8006E3C:
 	push {r1-r7,lr}
 	ldr r5, off_8006E6C // =byte_20004E0 
 	mov r7, r10
-	mov r1, #0x78 
+	mov r1, #oToolkitUnk2004a8c_Ptr
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x6f 
@@ -7784,7 +7784,7 @@ modifyToolkit_unk7C_using_2008A0:
 	push {r1-r7,lr}
 	ldr r5, off_8006EA0 // =byte_20008A0 
 	mov r7, r10
-	mov r1, #0x7c // Toolkit.unk_2004C20
+	mov r1, #oToolkitUnk2004c20_Ptr // Toolkit.unk_2004C20
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x81
@@ -7799,7 +7799,7 @@ sub_8006E84:
 	push {r1-r7,lr}
 	ldr r5, off_8006EA0 // =byte_20008A0 
 	mov r7, r10
-	mov r1, #0x7c 
+	mov r1, #oToolkitUnk2004c20_Ptr 
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x81
@@ -7928,7 +7928,7 @@ loc_8006F50:
 sub_8006F54:
 	push {r0-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x3c] // Toolkit.gamestate
+	ldr r4, [r4,#oToolkitGameStatePtr] // Toolkit.gamestate
 	ldr r0, [r4,#0x5c] // GameState.protected_zennies
 	ldr r1, [r4,#0x74] // GameState.pad_74
 	mov r2, #1
@@ -7941,7 +7941,7 @@ loc_8006F68:
 	ldr r1, [r1]
 	eor r0, r1
 	mov r1, r10
-	mov r2, #0x84
+	mov r2, #oToolkitUnk2005028_Ptr
 	ldr r1, [r1,r2]
 	str r0, [r1]
 	pop {r0-r7,pc}
@@ -7952,7 +7952,7 @@ loc_8006F68:
 sub_8006F78:
 	push {r0-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x3c] // Toolkit.gamestate
+	ldr r4, [r4,#oToolkitGameStatePtr] // Toolkit.gamestate
 	ldr r0, [r4,#0x5c] // GameState.protected_zennies
 	ldr r1, [r4,#0x6c] // GameState.unk_6C
 	mvn r1, r1
@@ -7967,7 +7967,7 @@ loc_8006F90:
 	ldr r1, [r1]
 	eor r0, r1
 	mov r1, r10
-	mov r2, #0x84
+	mov r2, #oToolkitUnk2005028_Ptr
 	ldr r1, [r1,r2]
 	ldr r1, [r1]
 	cmp r0, r1
@@ -7984,7 +7984,7 @@ off_8006FA8: .word dword_2000060
 sub_8006FAC:
 	push {r0-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x3c]
+	ldr r4, [r4,#oToolkitGameStatePtr]
 	ldr r0, [r4,#0x60]
 	ldr r1, [r4,#0x74]
 	mov r2, #2
@@ -7997,7 +7997,7 @@ loc_8006FC0:
 	ldr r1, [r1]
 	eor r0, r1
 	mov r1, r10
-	mov r2, #0x88
+	mov r2, #oToolkitUnk2005030_Ptr
 	ldr r1, [r1,r2]
 	str r0, [r1]
 	pop {r0-r7,pc}
@@ -8008,7 +8008,7 @@ loc_8006FC0:
 sub_8006FD0:
 	push {r0-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x3c]
+	ldr r4, [r4,#oToolkitGameStatePtr]
 	ldr r0, [r4,#0x60]
 	ldr r1, [r4,#0x70]
 	mvn r1, r1
@@ -8023,7 +8023,7 @@ loc_8006FE8:
 	ldr r1, [r1]
 	eor r0, r1
 	mov r1, r10
-	mov r2, #0x88
+	mov r2, #oToolkitUnk2005030_Ptr
 	ldr r1, [r1,r2]
 	ldr r1, [r1]
 	cmp r0, r1
@@ -8035,22 +8035,28 @@ locret_8006FFC:
 off_8007000: .word dword_20018B8
 .endfunc // sub_8006FD0
 
+.func
+.thumb_func
 	push {r1-r7,lr}
 	bl sub_800708C
 	ldr r5, off_8007088 // =unk_2000670 
 	mov r7, r10
-	mov r1, #0x8c
+	mov r1, #oToolkitUnk2005038_Ptr
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x8d
 	eor r1, r2
 	strb r1, [r7,r0]
 	pop {r1-r7,pc}
+.endfunc
+
+.func
+.thumb_func
 	push {r1-r7,lr}
 	bl sub_800708C
 	ldr r5, off_8007088 // =unk_2000670 
 	mov r7, r10
-	mov r1, #0x8c
+	mov r1, #oToolkitUnk2005038_Ptr
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x8d
@@ -8058,12 +8064,14 @@ off_8007000: .word dword_20018B8
 	mvn r1, r1
 	strb r1, [r7,r0]
 	pop {r1-r7,pc}
+.endfunc
+
 .func
 .thumb_func
 sub_8007036:
 	push {r1-r7,lr}
 	mov r6, r10
-	mov r0, #0x8c
+	mov r0, #oToolkitUnk2005038_Ptr
 	ldr r6, [r6,r0]
 	ldr r4, off_8007060 // =unk_2000670 
 	ldr r7, off_8007064 // =0x100 
@@ -8092,7 +8100,7 @@ off_8007064: .word 0x100
 	bl sub_800708C
 	ldr r5, off_8007088 // =unk_2000670 
 	mov r7, r10
-	mov r1, #0x8c
+	mov r1, #oToolkitUnk2005038_Ptr
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x8d

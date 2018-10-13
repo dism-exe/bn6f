@@ -21457,6 +21457,8 @@ sub_80C2110:
 	pop {r4,pc}
 .endfunc // sub_80C2110
 
+.func
+.thumb_func
 loc_80C2138:
 	push {lr}
 	ldr r1, off_80C214C // =off_80C2150 
@@ -21471,6 +21473,8 @@ off_80C214C: .word off_80C2150
 off_80C2150: .word sub_80C215C+1
 	.word sub_80C21AC+1
 	.word object_freeMemory+1
+.endfunc
+
 .func
 .thumb_func
 sub_80C215C:

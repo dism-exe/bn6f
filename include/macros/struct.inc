@@ -1,8 +1,12 @@
-	.macro struct_begin label
+.set __dummy_symbol__, 0
+
+	.macro struct_begin label=__dummy_symbol__
+	.ifndef \label
 	ds \label
+	.endif
 	.endm
 
-	.macro offset_struct_begin label
+	.macro offset_struct_begin label=0
 	.struct 0
 	.endm
 

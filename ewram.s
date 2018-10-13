@@ -534,8 +534,12 @@ ds dword_20093A4 // 0x20093a4
 	.space 4
 ds dword_20093A8 // 0x20093a8
 	.space 8
+
 ds eToolkit // 0x20093b0
-	.space 160
+	toolkit_struct eToolkit
+ds eToolkitEnd // 0x2009444
+
+	.space 12
 ds unk_2009450 // 0x2009450
 	.space 16
 ds unk_2009460 // 0x2009460

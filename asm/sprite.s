@@ -5,7 +5,7 @@
 // () -> void
 sprite_loadAnimationData:
 	push {r4,r5,lr}
-	ldrb r3, [r5,#2] // always 0xa2?
+	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3

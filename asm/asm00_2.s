@@ -17185,8 +17185,6 @@ loc_8016F80:
 	strb r1, [r5,#0x11]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-.endfunc // sub_8016F56
-
 	bl sub_800F334
 	bl sprite_setPallete // (int pallete) -> void
 	bl sub_800E456 // () -> int
@@ -17312,6 +17310,8 @@ off_80170A0: .word dword_80170A4
 dword_80170A4: .word 0x1000000, 0x1000000, 0x0, 0x0
 	.word 0x1, 0x0
 	.word 0x1010001, 0x0
+.endfunc // sub_8016F56
+
 .func
 .thumb_func
 sub_80170C4:
