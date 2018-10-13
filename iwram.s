@@ -196,6 +196,8 @@ ds unk_3005600 // 0x3005600
 	.space 256
 ds loc_3005700 // 0x3005700
 	.space 1024
+
+/*
 ds loc_3005B00 // 0x3005b00
 	.space 416
 ds unk_3005CA0 // 0x3005ca0
@@ -300,14 +302,6 @@ ds sub_30078E0 // 0x30078e0
 ds sub_3007958 // 0x3007958
 	.space 76
 ds sub_30079A4 // 0x30079a4
-
-	.org 0x7e00
-ds iStack // 0x3007e00
-
-	.org 0x7ff0
-// these are hardcoded pointers from nintendo libraries. TODO: rename and maybe move to a constants file?
-// SOUND_INFO_PTR
-ds unk_3007FF0 // 0x3007ff0
-	.org 0x7ffc
-// INTR_VECTOR
-ds unk_3007FFC // 0x3007ffc
+	.space 48
+ds loc_30079d4 // 0x30079d4
+*/

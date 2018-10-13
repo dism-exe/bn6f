@@ -121,7 +121,7 @@ off_80001F8: .word unk_3007FFC
 dword_80001FC: .word 0x3005B00
 off_8000200: .word GamePakWaitstateControl
 dword_8000204: .word 0x45B4
-mem: .word IWRAMRoutines
+mem: .word IWRAMRoutinesROMLocation
 a2: .word loc_3005B00
 IWRAMRoutinesSize_p: .word IWRAM_ROUTINES_SIZE
 off_8000214: .word CpuSet_toolKit+1

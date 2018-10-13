@@ -191,3 +191,5 @@ asm37_1:
 .include "asm/asm37_1.s"
 dat37:
 .include "data/dat37.s"
+
+IWRAMRoutinesROMLocation:

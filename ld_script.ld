@@ -21,22 +21,27 @@ SECTIONS
     ALIGN(4)
     {
         iwram.o(iwram);
-        . = 0x8000;
+		/*iwram_text_start = .;*/
     }
-    
+
+	__text_size__ = __text_end__ - __text_start__;
+	
+	iwram_text : AT(__text_end__ - __text_start__)
+	{
+		iwram_code.o(.text);
+	}
+	
     /* start of ROM */
 	
     . = 0x08000000;
-    .text :
+    .text : AT(0x0)
     {
+		__text_start__ = .;
         rom.o(.text);
+		__text_end__ = .;
     }=0xff
 	
-	iwram_text :
-	{
-		iwram_code.o(.text);
-	}=0xff
-
+	. += SIZEOF(iwram_text);
 	.rodata :
 	ALIGN(4)
 	{
