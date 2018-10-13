@@ -1068,7 +1068,7 @@ StructInitializationTable:
 // OWPlayer struct
 	.word eOWPlayerObject, eOWPlayerObject
 	.hword 0xC8
-	nybble 0x9, 0
+	.byte 0x90 | 0
 	.byte 0xC8, 0x1
 	.balign 4, 0x00
 
@@ -1076,32 +1076,32 @@ StructInitializationTable:
 // maybe for virus battler?
 	.word unk_203A9A0, eBattleObjects
 	.hword NUM_BATTLE_OBJECTS * oBattleObjectSize
-	nybble 0x9, 1
+	.byte 0x90 | 1
 	.byte oBattleObjectSize, NUM_BATTLE_OBJECTS
 	.balign 4, 0x00
 
 // NPC structs
 	.word eOverworldNPCObjects, eOverworldNPCObjects
 	.hword 0x0D80
-	nybble 0xa, 2
+	.byte 0xa0 | 2
 	.byte 0xD8, 0x10
 	.balign 4, 0x00
 
 	.word 0x203CFD0, 0x203CFE0
 	.hword 0x1B00
-	nybble 0x9, 3
+	.byte 0x90 | 3
 	.byte 0xD8, 0x20
 	.balign 4, 0x00
 
 	.word 0x2036860, 0x2036870
 	.hword 0x1900
-	nybble 0x8, 4
+	.byte 0x80 | 4
 	.byte 0xC8, 0x20
 	.balign 4, 0x00
 
 	.word 0x2011EE0, 0x2011EE0
 	.hword 0x1A40
-	nybble 0x4, 5
+	.byte 0x40 | 5
 	.byte 0x78, 0x38
 	.balign 4, 0x00
 
