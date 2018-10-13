@@ -16,7 +16,7 @@ Makefile text eol=lf
 *.sh text eol=lf
 *.sha1 text eol=lf
 *.tpl text eol=lf
-*.x text eol=lf
+*.ld text eol=lf
 
 # Denote all files that are truly binary and should not be modified.
 *.lz77 binary diff=hex
