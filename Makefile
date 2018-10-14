@@ -19,7 +19,7 @@ CONST = constants
 INC = include
 
 # project files
-SFILES = rom.s iwram_code.s data.s ewram.s iwram.s
+SFILES = rom.s data.s ewram.s iwram.s
 
 OFILES = $(addprefix $(OBJ),$(SFILES:.s=.o))
 BUILD_NAME = bn6f

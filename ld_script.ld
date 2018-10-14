@@ -21,7 +21,7 @@ SECTIONS
     iwram (NOLOAD) :
     ALIGN(4)
     {
-        iwram.o(iwram);
+        iwram.o(iwram_data);
     } >iwram_region
 	
     /* start of ROM */
@@ -33,7 +33,7 @@ SECTIONS
 	
 	iwram_text :
 	{
-		iwram_code.o(.text);
+		iwram.o(.text);
 	} >iwram_region AT>rom_region
 	
 	.rodata :
