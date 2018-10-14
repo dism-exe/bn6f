@@ -14,7 +14,7 @@ in the 0x2000000 RAM region
 #define timer_2000000 ((u32*)                   0x2000000)
 #define reqBBS_requestEntries_list ((u8*)       0x2000290)
 #define reqBBS_bxo_2001150 ((u8*)               0x2001150)
-#define sGameState ((GameState*)                0x2001B80)
+#define eGameState ((GameState*)                0x2001B80)
 #define sReqBBS_GUI ((reqBBS_GUI*)              0x2005780)
 /*
   [DEAD] no xrefs. Last @ 2005810
@@ -48,18 +48,18 @@ in the 0x2000000 RAM region
   is likely contained within
 */
 #define s_2034880 (void*)                       0x2034880)
-#define sBtlPlayer ((Battle*)                   0x203A9B0)
+#define eBattleObjectPlayer ((Battle*)                   0x203A9B0)
 /*
   [DEAD] no xrefs. Last @ 203A9B0
 */
-#define sBtlEnemyA ((Battle*)                   0x203AA88)
+#define eBattleObject1 ((Battle*)                   0x203AA88)
 /*
    [DEAD] no xrefs. Last @ 203A9B0
 */
-#define sBtlEnemyB ((Battle*)                   0x203AB60)
+#define eBattleObject2 ((Battle*)                   0x203AB60)
 /*
   [DEAD] no xrefs. Last @ 203A9B0
 */
-#define sBtlEnemyC ((Battle*)                   0x203AC38)
+#define eBattleObject3 ((Battle*)                   0x203AC38)
 
 #endif // EWRAM_H

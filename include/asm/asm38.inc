@@ -3,6 +3,8 @@
 
 /* Public Symbols */
 .global sub_81D6000
+.global IWRAMRoutines
+.global IWRAMRoutinesEnd
 
 
 /* External Symbols */

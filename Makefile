@@ -1,9 +1,12 @@
-include $(DEVKITARM)/base_tools
+ifneq ($(DEVKITARM)/base_tools,)
+    include $(DEVKITARM)/base_tools
+endif
 
 # binary tools used in build
 # (the arm-none-eabi toolchain should be in the path)
 MAKE = make
 CC = arm-none-eabi-gcc
+AS = arm-none-eabi-as
 LD = arm-none-eabi-ld
 OBJCOPY = arm-none-eabi-objcopy
 SHA1SUM = sha1sum
@@ -16,50 +19,52 @@ CONST = constants
 INC = include
 
 # project files
-SFILES = rom.s ewram.s iwram.s
-OFILES = $(addprefix $(OBJ),$(notdir $(SFILES:.s=.o)))
-ROM = bn6f
+SFILES = rom.s data.s ewram.s iwram.s
+
+OFILES = $(addprefix $(OBJ),$(SFILES:.s=.o))
+BUILD_NAME = bn6f
+ROM = $(BUILD_NAME).gba
 
 # build flags
-COMPLIANCE_FLAGS = -O0 -g3 -I$(INC)
-WFLAGS =
-ARCH = -march=armv4t -mtune=arm7tdmi -mabi=aapcs -mthumb -mthumb-interwork
+COMPLIANCE_FLAGS = -g -I$(INC)
+WFLAGS = 
+ARCH = -mcpu=arm7tdmi -march=armv4t -mthumb -mthumb-interwork
 CDEBUG =
-CFLAGS = $(ARCH) $(WFLAGS) $(COMPLIANCE_FLAGS) $(CDEBUG)
-ASFLAGS =
-LDFLAGS = -g -Map $(ROM).map
+CFLAGS = 
+ASFLAGS = $(ARCH) $(WFLAGS) $(COMPLIANCE_FLAGS)
+LDFLAGS = -g -Map $(BUILD_NAME).map
 LIB =
 
-all:
+# TODO: INTEGRATE SCAN INCLUDES
 
-rom: $(ROM)
-	@# TODO: this tab is needed or ROM is executed weirdly?? oops!
+all: $(ROM)
+	@$(SHA1SUM) -c $(BUILD_NAME).sha1
 
-$(ROM):
-	$(CC) $(CFLAGS) -c $(SFILES)
-	$(LD) $(LDFLAGS) -o $(ROM).elf -T ld_script.ld $(OFILES) $(LIB)
-	$(OBJCOPY) -O binary $(ROM).elf $(ROM).gba
+$(ROM): %.elf
+	$(OBJCOPY) -O binary $(BUILD_NAME).elf $(ROM)
+
+%.elf: $(OFILES)
+	$(LD) $(LDFLAGS) -o $(BUILD_NAME).elf -T ld_script.ld $(OFILES) $(LIB)
+
+%.o: %.s
+	$(AS) $(ASFLAGS) $< -o $@
 
 checksum:
-	$(SHA1SUM) -b $(ROM).gba
-	@echo "0676ecd4d58a976af3346caebb44b9b6489ad099 *Expected"
-
+	@$(SHA1SUM) -c $(BUILD_NAME).sha1
 
 fdiff:
-	$(PY) tools/fdiff.py _$(ROM).gba $(ROM).gba -s2
+	$(PY) tools/fdiff.py _$(ROM) $(ROM) -s2
 
 tail: $(ROM)
 	@# Create tail.bin using the tail location in current elf then compile again
-	$(PY) tools/gen_obj_tail.py $(ROM).elf _$(ROM).gba bin/tail.bin 'tail'
+	$(PY) tools/gen_obj_tail.py $(BUILD_NAME).elf _$(ROM) bin/tail.bin 'tail'
 	@echo "Updated tail.bin!"
 
 clean:
-	rm -f *.preout
 	rm -f *.o
-	rm -f *.out
-	rm -f *.d
 	rm -f *.map
 	rm -f *.elf
+	rm -f *.gba
 
 # Rule for how to translate a single c file into an object file.
 %.o : %.c

@@ -8646,7 +8646,7 @@ sub_80A9CA6:
 .thumb_func
 sub_80A9CAE:
 	push {r4-r7,lr}
-	ldr r0, off_80A9CF8 // =byte_2009F40 
+	ldr r0, off_80A9CF8 // =eOWPlayerObject 
 	ldr r0, [r0,#0x24] // (dword_2009F64 - 0x2009f40)
 	ldr r1, [r5,#0x14]
 	ldr r2, off_80A9CFC // =dword_80A9D00 
@@ -8654,7 +8654,7 @@ sub_80A9CAE:
 	add r1, r1, r2
 	cmp r0, r1
 	bne loc_80A9CF4
-	ldr r0, off_80A9CF8 // =byte_2009F40 
+	ldr r0, off_80A9CF8 // =eOWPlayerObject 
 	ldr r1, [r0,#0x20] // (pCoords - 0x2009f40)
 	ldr r0, [r0,#0x1c] // (dword_2009F5C - 0x2009f40)
 	ldr r2, [r5,#0xc]
@@ -8686,7 +8686,7 @@ loc_80A9CF4:
 	mov r0, #0
 locret_80A9CF6:
 	pop {r4-r7,pc}
-off_80A9CF8: .word byte_2009F40
+off_80A9CF8: .word eOWPlayerObject
 off_80A9CFC: .word dword_80A9D00
 dword_80A9D00: .word 0xFFC00000
 dword_80A9D04: .word 0x400000
@@ -9488,7 +9488,7 @@ sub_80AA322:
 	mov r4, #3
 loc_80AA33E:
 	strb r4, [r5]
-	ldr r7, off_80AA360 // =unk_20057B0 
+	ldr r7, off_80AA360 // =eOverworldNPCObjects 
 	ldr r0, [r7,#0x24] // (unk_20057D4 - 0x20057b0)
 	ldr r1, [r7,#0x28] // (unk_20057D8 - 0x20057b0)
 	ldr r2, [r7,#0x2c] // (unk_20057DC - 0x20057b0)
@@ -9503,7 +9503,7 @@ loc_80AA33E:
 .endfunc // sub_80AA322
 
 	pop {r4-r7,pc}
-off_80AA360: .word unk_20057B0
+off_80AA360: .word eOverworldNPCObjects
 off_80AA364: .word dword_808850C+8
 off_80AA368: .word dword_80886B8+0x50
 .func

@@ -199,7 +199,7 @@ sub_809F656:
 sub_809F66C:
 	push {r7}
 	mov r3, #0x10
-	ldr r7, off_809F688 // =unk_20057B0 
+	ldr r7, off_809F688 // =eOverworldNPCObjects 
 loc_809F672:
 	ldrb r1, [r7,#0x10]
 	cmp r1, r0
@@ -213,14 +213,14 @@ loc_809F680:
 	pop {r7}
 	mov pc, lr
 	.balign 4, 0x00
-off_809F688: .word unk_20057B0
+off_809F688: .word eOverworldNPCObjects
 .endfunc // sub_809F66C
 
 .func
 .thumb_func
 sub_809F68C:
 	push {lr}
-	ldr r3, off_809F6A4 // =unk_20057B0 
+	ldr r3, off_809F6A4 // =eOverworldNPCObjects 
 	ldr r2, off_809F6A8 // =0xD80 
 	add r2, r2, r3
 loc_809F694:
@@ -232,7 +232,7 @@ loc_809F694:
 	cmp r3, r2
 	blt loc_809F694
 	pop {pc}
-off_809F6A4: .word unk_20057B0
+off_809F6A4: .word eOverworldNPCObjects
 off_809F6A8: .word 0xD80
 off_809F6AC: .word 0x400
 dword_809F6B0: .word 0x1400

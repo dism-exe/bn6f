@@ -1,32 +1,27 @@
-	.macro struct_begin
-	.set __struct_offset__, 0
+.set __dummy_symbol__, 0
+
+	.macro struct_begin label=__dummy_symbol__
+	.ifndef \label
+	ds \label
+	.endif
 	.endm
 
-	.macro label_struct_entry label, size
+	.macro offset_struct_begin label=0
+	.struct 0
+	.endm
+
+	.macro label_struct_entry label, size=0
 	ds \label
-// suppress warning from size = 0
-	.if \size
+	.if \size // suppress warning from size = 0
 	.space \size
 	.endif
 	.endm
 	
-	.macro offset_struct_entry label, size
-	.set \label, __struct_offset__
-	.global \label
-	.set __struct_offset__, __struct_offset__ + \size
+	.macro offset_struct_entry label, size=0
+\label:
+	.struct \label + \size
 	.endm
-	
+
 	.macro def_struct_offsets macro, label
-	\macro label, offset_struct_entry
-	.endm
-	
-	.macro struct_entry label_name, offset_name, size=0
-	ds \label_name
-// suppress warning from size = 0
-	.if \size
-	.space \size
-	.endif
-	.set \offset_name, __struct_offset__
-	.global \offset_name
-	.set __struct_offset__, __struct_offset__ + \size
+	\macro \label, offset_struct_entry, offset_struct_begin
 	.endm

@@ -1,0 +1,1 @@
+IWRAM_ROUTINES_SIZE = IWRAMRoutinesEnd - IWRAMRoutines;

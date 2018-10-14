@@ -23,3 +23,6 @@ __pycache__/
 # compare.sh
 baserom.txt
 bn6f.txt
+
+# asmdiff.sh
+*.dump

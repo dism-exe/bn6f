@@ -330,8 +330,10 @@ ds unk_2001A60 // 0x2001a60
 	.space 92
 ds unk_2001ABC // 0x2001abc
 	.space 196
-ds sGameState // 0x2001b80
-	.space 132
+ds eGameState // 0x2001b80
+	game_state_struct eGameState
+ds eGameStateEnd
+	.space 4
 ds unk_2001C04 // 0x2001c04
 	.space 132
 ds flags_2001C88 // 0x2001c88
@@ -392,20 +394,10 @@ ds dynaicArr // 0x2005780
 	.space 15
 ds unk_200578F // 0x200578f
 	.space 33
-ds unk_20057B0 // 0x20057b0
-	.space 36
-ds unk_20057D4 // 0x20057d4
-	.space 4
-ds unk_20057D8 // 0x20057d8
-	.space 4
-ds unk_20057DC // 0x20057dc
-	.space 36
-ds dword_2005800 // 0x2005800
-	.space 16
-ds dword_2005810 // 0x2005810
-	.space 1848
-ds npc_2005F48 // 0x2005f48
-	.space 1512
+.set unk_20057D4, 0x20057d4 // temporary
+.global unk_20057D4
+ds eOverworldNPCObjects // 0x20057b0
+	.space 3456
 ds byte_2006530 // 0x2006530
 	.space 128
 ds reqBBS_numRequestsSent // 0x20065b0
@@ -544,8 +536,12 @@ ds dword_20093A4 // 0x20093a4
 	.space 4
 ds dword_20093A8 // 0x20093a8
 	.space 8
+
 ds eToolkit // 0x20093b0
-	.space 160
+	toolkit_struct eToolkit
+ds eToolkitEnd // 0x2009444
+
+	.space 12
 ds unk_2009450 // 0x2009450
 	.space 16
 ds unk_2009460 // 0x2009460
@@ -670,7 +666,7 @@ ds dword_2009F34 // 0x2009f34
 	.space 4
 ds dword_2009F38 // 0x2009f38
 	.space 8
-ds byte_2009F40 // 0x2009f40
+ds eOWPlayerObject // 0x2009f40
 	.space 1
 ds byte_2009F41 // 0x2009f41
 	.space 3
@@ -3004,14 +3000,14 @@ ds unk_203A990 // 0x203a990
 	.space 16
 ds unk_203A9A0 // 0x203a9a0
 	.space 16
-ds sBtlPlayer // 0x203a9b0
-	.space 216
-ds sBtlEnemyA // 0x203aa88
-	.space 216
-ds sBtlEnemyB // 0x203ab60
-	.space 216
-ds sBtlEnemyC // 0x203ac38
-	.space 6248
+ds eBattleObjects // 0x203a9b0
+	battle_object_struct eBattleObjectPlayer // 0x203a9b0
+	battle_object_struct eBattleObject1 // 0x203aa88
+	battle_object_struct eBattleObject2 // 0x203ab60
+	battle_object_struct eBattleObject3 // 0x203ac38
+	.space 6032
+ds eBattleObjectsEnd
+
 ds unk_203C4A0 // 0x203c4a0
 	.space 64
 ds unk_203C4E0 // 0x203c4e0

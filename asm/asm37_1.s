@@ -14075,7 +14075,7 @@ off_81495D8: .word byte_30000F0
 	.byte 0x42 
 	.byte 0x2A 
 	.byte 0xD1
-unk_81495E6: .byte 0x11
+unk_81495E6: .byte 0x11 // <fakedata>
 	.byte 0x78 
 	.byte  0
 	.byte 0x29 
@@ -24804,7 +24804,7 @@ loc_814DC66:
 	ldr r6, m4a_814DC84 // =0x630 
 	ldr r3, off_814DC78 // =loc_3005700+1 
 	bx r3
-	.hword 0x0
+	.balign 4, 0
 off_814DC70: .word unk_3007FF0
 dword_814DC74: .word 0x68736D53
 off_814DC78: .word loc_3005700+1

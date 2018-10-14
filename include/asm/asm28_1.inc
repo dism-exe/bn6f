@@ -80,7 +80,7 @@
 // .equ word_2000216, 0x2000216
 // .equ dword_2000218, 0x2000218
 // .equ dword_2000220, 0x2000220
-// .equ unk_20057B0, 0x20057B0
+// .equ eOverworldNPCObjects, 0x20057B0
 // .equ dword_2005800, 0x2005800
 
 .endif // INC_ASM_ASM28_1

@@ -15593,7 +15593,7 @@ sub_802DFFC:
 	mov r1, #0xe8
 	lsl r1, r1, #2
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-	ldr r0, off_802E20C // =sBtlPlayer 
+	ldr r0, off_802E20C // =eBattleObjectPlayer 
 	ldr r1, off_802E210 // =unk_20362F0 
 	str r0, [r1,#0x44] // (dword_2036334 - 0x20362f0)
 	bl sub_802E544
@@ -15614,7 +15614,7 @@ sub_802E014:
 	// size
 	mov r1, #0x60 
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-	ldr r0, off_802E21C // =sBtlPlayer 
+	ldr r0, off_802E21C // =eBattleObjectPlayer 
 	ldr r1, off_802E220 // =unk_20362F0 
 	str r0, [r1,#0x44] // (dword_2036334 - 0x20362f0)
 	bl sub_802E544
@@ -15847,11 +15847,11 @@ sub_802E1EC:
 	pop {pc}
 	.balign 4, 0x00
 off_802E208: .word unk_2036120
-off_802E20C: .word sBtlPlayer
+off_802E20C: .word eBattleObjectPlayer
 off_802E210: .word unk_20362F0
 off_802E214: .word unk_2036120
 off_802E218: .word unk_20362F0
-off_802E21C: .word sBtlPlayer
+off_802E21C: .word eBattleObjectPlayer
 off_802E220: .word unk_20362F0
 dword_802E224: .word 0x4000
 off_802E228: .word unk_2036120
@@ -17696,7 +17696,7 @@ setFlag_2001C88_bitfield:
 	// - Jacking in or pressing L teleports to middle of map, and then 
 	// player can't move
 	mov r3, r10
-	ldr r3, [r3,#0x44] // Toolkit.flags_2001C88
+	ldr r3, [r3,#oToolkitFlags2001c88_Ptr] // Toolkit.flags_2001C88
 	lsr r1, r0, #3
 	add r3, r3, r1
 	// compute last 3 bits of a0_bitfield
@@ -17725,7 +17725,7 @@ clearFlag_2001C88_bitfield:
 	// LSB 3 bits of a1 are used to determines the flag to clear (7-a1&7)
 	// a1_bitfield >> 3 is used to offset into off_2001C88 to locate the byte to clear a flag at
 	mov r3, r10
-	ldr r3, [r3,#0x44] // Toolkit.flags_2001C88
+	ldr r3, [r3,#oToolkitFlags2001c88_Ptr] // Toolkit.flags_2001C88
 	lsr r1, r0, #3
 	add r3, r3, r1
 	lsl r0, r0, #29
@@ -17751,7 +17751,7 @@ toggleFlag_2001C88_entry:
 // (u16 entryFlagBitfield) -> void
 toggleFlag_2001C88_bitfield:
 	mov r3, r10
-	ldr r3, [r3,#0x44] // Toolkit.flags_2001C88
+	ldr r3, [r3,#oToolkitFlags2001c88_Ptr] // Toolkit.flags_2001C88
 	lsr r1, r0, #3
 	add r3, r3, r1
 	lsl r0, r0, #29
@@ -17775,17 +17775,19 @@ isActiveFlag_2001C88_entry:
 
 .func
 .thumb_func
-// (u16 entryFlagBitfield) -> zf
+// (u16 r0 entryFlagBitfield) -> zf
+// r0 is the flag index
+// bitfield is big endian
 isActiveFlag_2001C88_bitfield:
 	mov r3, r10
 	ldr r3, [r3,#0x44] // Toolkit.flags_2001C88
-	lsr r1, r0, #3
+	lsr r1, r0, #3 // 8 bits = 1 byte, derive the address this way
 	// void *v2 = tk->unk_2001C88 + v1 // r3
 	add r3, r3, r1
 	lsl r0, r0, #29
-	lsr r0, r0, #29
+	lsr r0, r0, #29 // r0 &= 0x7
 	mov r1, #0x80
-	lsr r1, r0
+	lsr r1, r0 // bit 0 = 0x80, bit 1 = 0x40, etc.
 	ldrb r0, [r3]
 	tst r0, r1
 	mov pc, lr

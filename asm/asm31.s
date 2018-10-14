@@ -4,7 +4,7 @@
 .thumb_func
 sub_80B81EC:
 	push {r4,lr}
-	ldr r4, [r5,#0x58]
+	ldr r4, [r5,#oBattleObjectAIPtr]
 	ldr r1, off_80B8200 // =off_80B8204 
 	ldrb r0, [r4]
 	lsl r0, r0, #2
@@ -12,9 +12,10 @@ sub_80B81EC:
 	mov lr, pc
 	bx r1
 	pop {r4,pc}
-	.byte 0, 0
+	.balign 4, 0
 off_80B8200: .word off_80B8204
-off_80B8204: .word loc_8108F50+1
+off_80B8204:
+	.word loc_8108F50+1
 	.word sub_80F2330+1
 	.word sub_80EA460+1
 .endfunc // sub_80B81EC
@@ -24,16 +25,17 @@ off_80B8204: .word loc_8108F50+1
 sub_80B8210:
 	push {lr}
 	ldr r1, dword_80B822C // = 
-	ldrb r0, [r5,#8]
+	ldrb r0, [r5,#oBattleObjectCurState]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
 	pop {pc}
-	.byte 0, 0
-	.word 0x80B8231
+	.balign 4, 0
+unk_80B8220:
+	.word sub_80B8230
 	.word 0x80B829D
 	.word 0x80B843D
-dword_80B822C: .word 0x80B8220
+dword_80B822C: .word unk_80B8220
 .endfunc // sub_80B8210
 
 .func
@@ -80,7 +82,7 @@ dword_80B8294: .word 0x0
 	.byte  0
 	.byte  0
 	.byte  0
-	.byte  0
+	.byte  0 // <fakedata>
 	.byte 0xB5
 	.byte  8
 	.byte 0x49 
@@ -527,7 +529,7 @@ dword_80B8294: .word 0x0
 	.byte 0x3B 
 	.byte 0xFD
 	.byte  0
-	.byte 0xBD
+	.byte 0xBD // <fakedataend>
 .endfunc // sub_80B8230
 
 .func
@@ -7888,8 +7890,6 @@ loc_80BBB3C:
 	ldr r3, [r3,#0x4] // (dword_80BBB90 - 0x80bbb8c)
 	push {r0,r1}
 	bl object_checkPanelParameters
-.endfunc // sub_80BBB38
-
 	tst r0, r0
 	pop {r0,r1}
 	beq loc_80BBB84
@@ -7918,6 +7918,10 @@ off_80BBB88: .word dword_80BBB8C
 dword_80BBB8C: .word 0x10
 dword_80BBB90: .word 0xF800000
 dword_80BBB94: .word 0x40000
+.endfunc // sub_80BBB38
+
+.func
+.thumb_func
 loc_80BBB98:
 	push {lr}
 	ldr r1, off_80BBBAC // =off_80BBBB0 
@@ -7932,6 +7936,8 @@ off_80BBBAC: .word off_80BBBB0
 off_80BBBB0: .word sub_80BBBBC+1
 	.word sub_80BBC04+1
 	.word object_freeMemory+1
+.endfunc
+
 .func
 .thumb_func
 sub_80BBBBC:
@@ -7944,8 +7950,6 @@ sub_80BBBBC:
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-.endfunc // sub_80BBBBC
-
 	bl sub_8002E3C
 	mov r0, #0
 	strb r0, [r5,#0x10]
@@ -7963,6 +7967,8 @@ sub_80BBBBC:
 	mov r0, #4
 	str r0, [r5,#8]
 	pop {pc}
+.endfunc // sub_80BBBBC
+
 .func
 .thumb_func
 sub_80BBC04:
@@ -21455,6 +21461,8 @@ sub_80C2110:
 	pop {r4,pc}
 .endfunc // sub_80C2110
 
+.func
+.thumb_func
 loc_80C2138:
 	push {lr}
 	ldr r1, off_80C214C // =off_80C2150 
@@ -21469,6 +21477,8 @@ off_80C214C: .word off_80C2150
 off_80C2150: .word sub_80C215C+1
 	.word sub_80C21AC+1
 	.word object_freeMemory+1
+.endfunc
+
 .func
 .thumb_func
 sub_80C215C:
@@ -61841,11 +61851,11 @@ locret_80D6F72:
 sub_80D6F74:
 	push {lr}
 	bl sub_801A00E
-	.hword 0xF743
+	.hword 0xF743 // <fakedata>
 	.word 0xF733F8AB, 0x4200F906, 0x2000D119, 0xFB4FF73A, 0xDB144200
 	.word 0x6F126D6A, 0x807DA8, 0x5808490D, 0xD0014210, 0xF868F743
 	.word 0xF878F733, 0x4906D104, 0x58097A68, 0x470846FE, 0xF830F743
-	.word 0xF743E003, 0x2008F85B, 0xBD007228
+	.word 0xF743E003, 0x2008F85B, 0xBD007228 // <fakedataend>
 	.word off_80D6FC8
 off_80D6FC8: .word sub_80D6FDC+1
 	.word sub_80D7008+1

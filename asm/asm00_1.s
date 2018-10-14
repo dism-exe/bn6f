@@ -596,7 +596,8 @@ loc_80030F4:
 	mov r1, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-jt_80030FC: .word sub_8003B4C+1
+jt_80030FC:
+	.word sub_8003B4C+1
 	.word object_spawnType1+1
 	.word sub_80045C0+1
 	.word object_spawnType3+1
@@ -608,9 +609,10 @@ off_8003114: .word sub_8003B86+1
 	.word object_freeMemory+1
 	.word object_freeMemory+1
 	.word sub_80048B2+1
-off_800312C: .word byte_2009F40
-	.word sBtlPlayer
-	.word unk_20057B0
+off_800312C:
+	.word eOWPlayerObject
+	.word eBattleObjectPlayer
+	.word eOverworldNPCObjects
 	.word unk_203CFE0
 	.word unk_2036870
 	.word byte_2011EE0
@@ -654,7 +656,7 @@ sub_80031AC:
 	str r0, [sp]
 	ldr r7, off_8003214 // =dword_2009380 
 loc_80031BA:
-	ldr r7, [r7,#4]
+	ldr r7, [r7,#4] // linked list
 	ldr r0, off_8003218 // =dword_2009AB0 
 	cmp r7, r0
 	beq loc_8003208
@@ -682,7 +684,7 @@ loc_80031E8:
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #2
-	ldr r1, off_800321C // =dword_8003220 
+	ldr r1, JumptableTable8003220_p
 	ldr r0, [r0,r1]
 	ldrb r1, [r5,#1]
 	lsl r1, r1, #2
@@ -703,53 +705,41 @@ loc_8003208:
 	.balign 4, 0x00
 off_8003214: .word dword_2009380
 off_8003218: .word dword_2009AB0
-off_800321C: .word dword_8003220
-dword_8003220: .word 0x0
+JumptableTable8003220_p:
+	.word JumptableTable8003220
+// a table of jumptable pointers. Index to an entry is derived from the lower 4 bits of the 2nd (zero-indexed) member of the struct in the linked list, starting from dword_2009380. Index to an entry from the read Jumptable pointer is derived from the first member of the struct
+JumptableTable8003220:
+	.word 0x0
 	.word off_8003C9C
 	.word 0x0
 	.word off_8003EC4
 	.word off_80042C8
 off_8003234: .word dword_200AF70
+.endfunc // sub_80031AC
+
+// unused?
 	.word off_800323C
-off_800323C: .word byte_8003250
+off_800323C:
+	.word loc_8003250
 	.word loc_8003258
 	.word loc_8003260
 	.word loc_8003268
 	.word loc_8003270
-byte_8003250: .byte 0x1B, 0x0
-.endfunc // sub_80031AC
-
-.func
-.thumb_func
-sub_8003252:
-	mov r5, #0x50 
-	add r2, #0x30 
-	lsl r0, r7, #1
+loc_8003250:
+	.hword 0x1b
+	.asciz "P%02x"
 loc_8003258:
-	// <mkdata>
-	.hword 0x1b // mov r3, r3
-	mov r5, #0x45 
-	add r2, #0x30 
-	lsl r0, r7, #1
+	.hword 0x1b
+	.asciz "E%02x"
 loc_8003260:
-	// <mkdata>
-	.hword 0x1b // mov r3, r3
-	mov r5, #0x4d 
-	add r2, #0x30 
-	lsl r0, r7, #1
+	.hword 0x1b
+	.asciz "M%02x"
 loc_8003268:
-	// <mkdata>
-	.hword 0x1b // mov r3, r3
-	mov r5, #0x53 
-	add r2, #0x30 
-	lsl r0, r7, #1
+	.hword 0x1b
+	.asciz "S%02x"
 loc_8003270:
-	// <mkdata>
-	.hword 0x1b // mov r3, r3
-	mov r5, #0x46 
-	add r2, #0x30 
-	lsl r0, r7, #1
-.endfunc // sub_8003252
+	.hword 0x1b
+	.asciz "F%02x"
 
 .func
 .thumb_func
@@ -1038,14 +1028,14 @@ off_800348C: .word off_8003144
 // args: r0
 sub_8003490:
 	push {r4,r7,lr}
-	ldr r7, off_80034CC // =off_80034D0 
+	ldr r7, StructInitializationTable_p // =StructInitializationTable 
 	lsl r1, r0, #4
-	add r7, r7, r1 // off_80034D0 + r0 * 16
+	add r7, r7, r1 // StructInitializationTable + r0 * 16
 	lsl r1, r0, #2
 	ldr r4, off_8003530 // =off_8003144 
 	// memBlock
 	ldr r0, [r4,r1] // r0 = [off_8003144 + r0 * 4]
-	ldrb r1, [r7,#0xc] // r1 = off_80034D0[r0] + 0xc
+	ldrb r1, [r7,#0xc] // r1 = StructInitializationTable[r0] + 0xc
 	add r1, #0x1f
 	lsr r1, r1, #5
 	lsl r1, r1, #2 // weird conversion to convert number of structs to length of list of indices in words
@@ -1069,44 +1059,50 @@ loc_80034BC:
 	blt loc_80034BC
 	pop {r4,r7,pc}
 	.balign 4, 0x00
-off_80034CC: .word off_80034D0
-off_80034D0:
-// word 1 is a list of words related to the struct?
+StructInitializationTable_p: .word StructInitializationTable
+StructInitializationTable:
+// word 1 is part of a linked list?
 // word 2 is the actual list of structs
 // byte 1 is struct offset part 2?
 
 // OWPlayer struct
-	.word byte_2009F40, byte_2009F40
+	.word eOWPlayerObject, eOWPlayerObject
 	.hword 0xC8
-	.byte 0x90, 0xC8, 0x1
+	.byte 0x90 | 0
+	.byte 0xC8, 0x1
 	.balign 4, 0x00
 
 // apparently there's hypothetical support for 32 enemies, but unk_203A9A0 only supports 4 pointers
 // maybe for virus battler?
-	.word unk_203A9A0, sBtlPlayer
-	.hword 0x1B00
-	.byte 0x91, 0xD8, 0x20
+	.word unk_203A9A0, eBattleObjects
+	.hword NUM_BATTLE_OBJECTS * oBattleObjectSize
+	.byte 0x90 | 1
+	.byte oBattleObjectSize, NUM_BATTLE_OBJECTS
 	.balign 4, 0x00
 
 // NPC structs
-	.word 0x20057B0, 0x20057B0
+	.word eOverworldNPCObjects, eOverworldNPCObjects
 	.hword 0x0D80
-	.byte 0xA2, 0xD8, 0x10
+	.byte 0xa0 | 2
+	.byte 0xD8, 0x10
 	.balign 4, 0x00
 
 	.word 0x203CFD0, 0x203CFE0
 	.hword 0x1B00
-	.byte 0x93, 0xD8, 0x20
+	.byte 0x90 | 3
+	.byte 0xD8, 0x20
 	.balign 4, 0x00
 
 	.word 0x2036860, 0x2036870
 	.hword 0x1900
-	.byte 0x84, 0xC8, 0x20
+	.byte 0x80 | 4
+	.byte 0xC8, 0x20
 	.balign 4, 0x00
 
 	.word 0x2011EE0, 0x2011EE0
 	.hword 0x1A40
-	.byte 0x45, 0x78, 0x38
+	.byte 0x40 | 5
+	.byte 0x78, 0x38
 	.balign 4, 0x00
 
 off_8003530:
@@ -1556,7 +1552,7 @@ loc_800380A:
 	tst r0, r1
 	beq loc_800385C
 	push {r0-r2}
-	ldr r0, off_800388C // =byte_2009F40 
+	ldr r0, off_800388C // =eOWPlayerObject 
 	ldrh r1, [r4]
 	mov r2, #0x72 // (word_2009FB2 - 0x2009f40)
 	strh r1, [r0,r2]
@@ -1592,7 +1588,7 @@ loc_800387C:
 	pop {r5,pc}
 off_8003884: .word dword_200AC18
 off_8003888: .word unk_20081D0
-off_800388C: .word byte_2009F40
+off_800388C: .word eOWPlayerObject
 dword_8003890: .word 0x200000
 .endfunc // sub_80037F4
 
@@ -2006,7 +2002,7 @@ sub_8003B4C:
 	ldr r2, [r0]
 	mov r1, #0x80
 	lsl r1, r1, #0x18
-	ldr r5, off_8003C94 // =byte_2009F40 
+	ldr r5, off_8003C94 // =eOWPlayerObject 
 	ldr r3, off_8003C98 // =byte_200A008 
 loc_8003B5A:
 	tst r2, r1
@@ -2062,7 +2058,7 @@ sub_8003BA2:
 	mov r6, r12
 	push {r4-r6}
 	sub sp, sp, #8
-	ldr r5, off_8003C94 // =byte_2009F40 
+	ldr r5, off_8003C94 // =eOWPlayerObject 
 	ldr r0, off_8003BF0 // =off_8003B48 
 	ldr r1, off_8003C98 // =byte_200A008 
 	str r0, [sp]
@@ -2111,7 +2107,7 @@ sub_8003BF4:
 	push {r4-r6}
 	mov r0, #1
 	mov r1, #0
-	ldr r5, off_8003C94 // =byte_2009F40 
+	ldr r5, off_8003C94 // =eOWPlayerObject 
 loc_8003C04:
 	ldrb r2, [r5]
 	mov r3, #2
@@ -2177,7 +2173,7 @@ sub_8003C70:
 .endfunc // sub_8003C70
 
 	mov r0, #0
-	ldr r3, off_8003C94 // =byte_2009F40 
+	ldr r3, off_8003C94 // =eOWPlayerObject 
 loc_8003C7E:
 	add r1, r3, #0
 	add r1, #0x90
@@ -2189,9 +2185,10 @@ loc_8003C7E:
 	blt loc_8003C7E
 	mov pc, lr
 off_8003C90: .word dword_2009F34
-off_8003C94: .word byte_2009F40
+off_8003C94: .word eOWPlayerObject
 off_8003C98: .word byte_200A008
-off_8003C9C: .word sub_80B81EC+1
+off_8003C9C:
+	.word sub_80B81EC+1
 	.word sub_80B8210+1
 	.word loc_80B85E0+1
 	.word loc_80B88D0+1
@@ -2363,21 +2360,23 @@ sub_8003E98:
 	bl sub_80028C0
 	pop {pc}
 	mov r0, #0
-	ldr r3, off_8003EB8 // =sBtlPlayer 
+	ldr r3, off_8003EB8 // =eBattleObjectPlayer 
 loc_8003EA6:
 	add r1, r3, #0
-	add r1, #0x90
+	add r1, #oBattleObjectUnkSpriteData_90
 	mov r2, #0
-	str r2, [r1,#0x24]
-	add r3, #0xd8
+	str r2, [r1, #0x24]
+	add r3, #oBattleObjectSize
 	add r0, #1
-	cmp r0, #0x20 
+	cmp r0, #0x20
 	blt loc_8003EA6
 	mov pc, lr
-off_8003EB8: .word sBtlPlayer
+	.balign 4, 0
+off_8003EB8: .word eBattleObjectPlayer
 off_8003EBC: .word byte_2036778
 off_8003EC0: .word dword_2039A10
-off_8003EC4: .word loc_80C4E58+1
+off_8003EC4:
+	.word loc_80C4E58+1
 	.word loc_80C50B8+1
 	.word loc_80C51AC+1
 	.word loc_80C52B0+1
@@ -2554,8 +2553,8 @@ off_8003EC4: .word loc_80C4E58+1
 	.word loc_80DB304+1
 .endfunc // sub_8003E98
 
-	push {r0,r4-r6,lr}
-	lsr r5, r1, #0x20
+	push {r0,r4-r6,lr} // <fakeasm>
+	lsr r5, r1, #0x20 // <fakeasmend>
 	.word sub_80DB6A4+1
 	.word loc_80DB8CC+1
 	.word loc_80DB994+1
@@ -2940,7 +2939,7 @@ sub_80045C0:
 	ldr r2, [r0]
 	mov r1, #0x80
 	lsl r1, r1, #0x18
-	ldr r5, off_800471C // =unk_20057B0 
+	ldr r5, off_800471C // =eOverworldNPCObjects 
 	ldr r3, off_8004720 // =byte_2006530 
 loc_80045CE:
 	tst r2, r1
@@ -3009,7 +3008,7 @@ npc_800461E:
 	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_800466C
 	sub sp, sp, #8
-	ldr r5, off_800471C // =unk_20057B0 
+	ldr r5, off_800471C // =eOverworldNPCObjects 
 	ldr r0, off_8004678 // =off_80045BC 
 	ldr r1, off_8004720 // =byte_2006530 
 	str r0, [sp]
@@ -3060,7 +3059,7 @@ sub_800467C:
 	push {r4-r6}
 	mov r0, #0x10
 	mov r1, #0
-	ldr r5, off_800471C // =unk_20057B0 
+	ldr r5, off_800471C // =eOverworldNPCObjects 
 loc_800468C:
 	ldrb r2, [r5]
 	mov r3, #2
@@ -3129,7 +3128,7 @@ sub_80046F8:
 .thumb_func
 sub_8004702:
 	mov r0, #0
-	ldr r3, off_800471C // =unk_20057B0 
+	ldr r3, off_800471C // =eOverworldNPCObjects 
 loc_8004706:
 	add r1, r3, #0
 	add r1, #0xa0
@@ -3141,7 +3140,7 @@ loc_8004706:
 	blt loc_8004706
 	mov pc, lr
 off_8004718: .word map_activeNPCs
-off_800471C: .word unk_20057B0
+off_800471C: .word eOverworldNPCObjects
 off_8004720: .word byte_2006530
 off_8004724: .word ho_80A4984+1
 	.word loc_80A4A98+1
@@ -4337,12 +4336,13 @@ off_80050E8: .word byte_80213AC
 
 .func
 .thumb_func
+//.type cb_80050EC, function
 // () -> void
 cb_80050EC:
 	push {r4-r7,lr}
-	ldr r0, off_8005108 // =jt_800510C 
+	ldr r0, GameStateJumptable_p // =jt_800510C
 	mov r5, r10
-	ldr r5, [r5,#0x3c] // Toolkit.gamestate
+	ldr r5, [r5,#oToolkitGameStatePtr] // Toolkit.gamestate
 	ldrb r1, [r5]
 	ldr r0, [r0,r1]
 	mov lr, pc
@@ -4351,11 +4351,23 @@ cb_80050EC:
 	bl rng_800154C // () -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8005108: .word jt_800510C
-jt_800510C: .word sub_8005148+1, sub_8005268+1, sub_80052D8+1, sub_8005360+1
-	.word sub_800536E+1, sub_80053E4+1, sub_8005462+1, sub_800555A+1
-	.word sub_8005642+1, sub_80056B8+1, sub_800572C+1, sub_80057A0+1
-	.word sub_80055CE+1, sub_8005814+1, sub_800585A+1
+GameStateJumptable_p: .word GameStateJumptable
+GameStateJumptable:
+	.word sub_8005148+1
+	.word sub_8005268+1
+	.word sub_80052D8+1
+	.word sub_8005360+1
+	.word sub_800536E+1
+	.word sub_80053E4+1
+	.word sub_8005462+1
+	.word sub_800555A+1
+	.word sub_8005642+1
+	.word sub_80056B8+1
+	.word sub_800572C+1
+	.word sub_80057A0+1
+	.word sub_80055CE+1
+	.word sub_8005814+1
+	.word sub_800585A+1
 .endfunc // cb_80050EC
 
 .func
@@ -4367,8 +4379,6 @@ sub_8005148:
 	pop {pc}
 loc_8005152:
 	bl sub_8005F40
-.endfunc // sub_8005148
-
 	bl sub_8005F6C
 	bl sub_80027C4
 	bl sub_8003566
@@ -4467,6 +4477,8 @@ loc_80051AA:
 	strb r0, [r5]
 	pop {pc}
 off_8005264: .word 0x1740
+.endfunc // sub_8005148
+
 .func
 .thumb_func
 sub_8005268:
@@ -5503,13 +5515,13 @@ dword_8005C00: .word 0x4000
 sub_8005C04:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkitGameStatePtr]
 	mov r0, #0
-	str r0, [r5,#0x20]
-	mov r0, #0x25 
+	str r0, [r5,#oGameStateUnk_20]
+	mov r0, #0x25
 	bl sub_80035A2
 	mov r5, r10
-	ldr r1, [r5,#0x14]
+	ldr r1, [r5,#oToolkitUnk2011bb0_Ptr]
 	ldr r0, [r1,#0x14]
 	mov r2, #0x10
 	ldrb r3, [r1,#0x11]
@@ -5518,15 +5530,15 @@ sub_8005C04:
 	add r0, r0, r3
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldr r5, [r5,#oToolkitGameStatePtr]
+	ldrb r0, [r5,#oGameStateMapGroup]
+	ldrb r1, [r5,#oGameStateMapNumber]
 	bl sub_8001708
 	ldr r0, off_8005CE4 // =0x40 
 	bl sub_8001778
 	mov r5, r10
-	ldr r7, [r5,#0x14]
-	ldr r5, [r5,#0x3c]
+	ldr r7, [r5,#oToolkitUnk2011bb0_Ptr]
+	ldr r5, [r5,#oToolkitGameStatePtr]
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx
@@ -5534,7 +5546,7 @@ sub_8005C04:
 	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8005C80
 	ldrb r1, [r7]
-	ldrb r2, [r5,#4]
+	ldrb r2, [r5,#oGameStateMapGroup]
 	mov r3, #0x80
 	add r4, r1, #0
 	eor r4, r2
@@ -5542,23 +5554,23 @@ sub_8005C04:
 	beq loc_8005C80
 	tst r1, r3
 	bne loc_8005C60
-	mov r6, #0x48 
+	mov r6, #oGameStateUnk_48
 	b loc_8005C62
 loc_8005C60:
-	mov r6, #0x34 
+	mov r6, #oGameStateUnk_34
 loc_8005C62:
-	ldr r0, [r5,#0x18]
+	ldr r0, [r5,#oGameStateOverworldPlayerObjectPtr]
 	ldr r1, [r0,#0x1c]
 	ldr r2, [r0,#0x20]
 	ldr r3, [r0,#0x24]
 	ldrb r4, [r0,#0x10]
 	add r6, r6, r5
 	str r1, [r6]
-	str r2, [r6,#4]
+	str r2, [r6,#4] // TODO: NESTED STRUCT
 	str r3, [r6,#8]
 	str r4, [r6,#0xc]
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldrb r0, [r5,#oGameStateMapGroup]
+	ldrb r1, [r5,#oGameStateMapNumber]
 	lsl r1, r1, #8
 	orr r1, r0
 	str r1, [r6,#0x10]
@@ -5593,24 +5605,24 @@ loc_8005CAE:
 	ldr r4, [r5,#0x54]
 	ldr r6, [r5,#0x58]
 loc_8005CB8:
-	str r1, [r5,#0x24]
-	str r2, [r5,#0x28]
-	str r3, [r5,#0x2c]
-	str r4, [r5,#0x30]
+	str r1, [r5,#oGameStatePlayerX]
+	str r2, [r5,#oGameStatePlayerY]
+	str r3, [r5,#oGameStateUnk_2c]
+	str r4, [r5,#oGameStateUnk_30]
 	lsr r7, r6, #8
 	mov r0, #0xff
 	and r6, r0
 	mov r1, #0
 	strb r1, [r5]
-	ldrb r1, [r5,#5]
-	strb r1, [r5,#0xd]
-	ldrb r1, [r5,#4]
-	ldrb r2, [r5,#0xc]
-	strb r1, [r5,#0xc]
-	strb r6, [r5,#4]
-	strb r7, [r5,#5]
+	ldrb r1, [r5,#oGameStateMapNumber]
+	strb r1, [r5,#oGameStateLastMapNumber]
+	ldrb r1, [r5,#oGameStateMapGroup]
+	ldrb r2, [r5,#oGameStateLastMapGroup]
+	strb r1, [r5,#oGameStateLastMapGroup]
+	strb r6, [r5,#oGameStateMapGroup]
+	strb r7, [r5,#oGameStateMapNumber]
 	mov r7, r10
-	ldr r7, [r7,#0x40]
+	ldr r7, [r7,#oToolkitUnk2001c04_Ptr]
 	mov r0, #0
 	strh r0, [r7,#0x12]
 	strh r0, [r7,#0x14]
@@ -7419,16 +7431,16 @@ off_8006BBC: .word 0x101
 // () -> void
 CpuSet_toolKit:
 	push {lr}
-	ldr r0, .Lp_ToolkitPointers
-	ldr r1, .Lp_eToolkit
+	ldr r0, .L_ToolkitPointers_p
+	ldr r1, .L_eToolkit_p
 	mov r2, #(ToolkitPointersEnd - ToolkitPointers)
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
-	ldr r0, .Lp_eToolkit
+	ldr r0, .L_eToolkit_p
 	mov r10, r0
 	pop {r0}
 	bx r0
-.Lp_eToolkit: .word eToolkit
-.Lp_ToolkitPointers: .word ToolkitPointers
+.L_eToolkit_p: .word eToolkit
+.L_ToolkitPointers_p: .word ToolkitPointers
 ToolkitPointers:
 	.word i_joGameSubsysSel
 	.word sJoystick
@@ -7467,7 +7479,7 @@ sub_8006C22:
 	// anti-cheat stuff? this block up to the copy
 	// seems to do nothing due to the ands which zero
 	// r5 was supposedly an offset to be added to the pointers
-	// in sGameState
+	// in eGameState
 	mov r1, #0
 	and r0, r1
 	add r4, r0, #0
@@ -7476,29 +7488,29 @@ sub_8006C22:
 	mov r0, #0
 	and r3, r0
 	str r4, [r5]
-	ldr r0, off_8006C94 // =sGameState 
+	ldr r0, off_8006C94 // =eGameState 
 	// src
 	add r0, r0, r3
-	ldr r1, off_8006C94 // =sGameState 
+	ldr r1, off_8006C94 // =eGameState 
 	// dest
 	add r1, r1, r4
 	// size
 	ldr r2, dword_8006C9C // =0x35BC 
 	ldr r3, off_8006CA0 // =copyWords_80014EC+1 
 	mov lr, pc
-	// copyWords_80014EC(&sGameState, &sGameState, 0x35BC);
+	// copyWords_80014EC(&eGameState, &sGameState, 0x35BC);
 	bx r3
 	mov r0, r10
 	mov r1, #(ToolkitPointersEnd - ToolkitPointers)
 	add r0, r0, r1
 	mov r1, #0
-	ldr r2, off_8006C94 // =sGameState 
+	ldr r2, off_8006C94 // =eGameState 
 	ldr r3, [r5]
 	add r2, r2, r3
 	ldr r3, off_8006CA8 // =GameStateOffsets 
 copy22Words_8006C5A:
 	ldr r4, [r3,r1] // GameStateOffsets
-	add r4, r4, r2 // sGameState + offset
+	add r4, r4, r2 // eGameState + offset
 	str r4, [r0,r1] // store in eToolkit
 	add r1, #4
 	cmp r1, #(GameStateOffsetsEnd - GameStateOffsets) + 4
@@ -7514,10 +7526,10 @@ sub_8006C6C:
 	push {r4-r7,lr}
 	ldr r5, off_8006C98 // =eUnusedGameStateBaseOffset 
 	mov r0, r10
-	mov r1, #0x3c 
+	mov r1, #oToolkitGameStatePtr
 	add r0, r0, r1
 	mov r1, #0
-	ldr r2, off_8006C94 // =sGameState 
+	ldr r2, off_8006C94 // =eGameState 
 	ldr r3, [r5]
 	mov r4, #0
 	and r3, r4
@@ -7528,11 +7540,11 @@ loc_8006C84:
 	add r4, r4, r2
 	str r4, [r0,r1]
 	add r1, #4
-	cmp r1, #(GameStateOffsetsEnd - GameStateOffsets) + 4
+	cmp r1, #(GameStateOffsetsEnd - GameStateOffsets) + 4 // reads extra garbage
 	blt loc_8006C84
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8006C94: .word sGameState
+off_8006C94: .word eGameState
 off_8006C98: .word eUnusedGameStateBaseOffset
 dword_8006C9C: .word 0x35BC
 off_8006CA0: .word copyWords_80014EC+1
@@ -7580,7 +7592,7 @@ sub_8006D00:
 	bl change_20013F0_800151C // () -> int
 	str r0, [r5,#0x4] // (dword_2001064 - 0x2001060)
 	mov r6, r10
-	mov r0, #0x78 
+	mov r0, #oToolkitUnk2004a8c_Ptr
 	ldr r6, [r6,r0]
 	ldr r4, off_8006DC4 // =byte_20004E0 
 	ldr r7, off_8006DC8 // =0x200 
@@ -7601,7 +7613,7 @@ loc_8006D28:
 	b loc_8006D24
 loc_8006D40:
 	mov r6, r10
-	mov r0, #0x7c 
+	mov r0, #oToolkitUnk2004c20_Ptr
 	ldr r6, [r6,r0]
 	ldr r4, off_8006DCC // =byte_20008A0 
 	ldr r7, off_8006DD0 // =0x200 
@@ -7622,7 +7634,7 @@ loc_8006D4E:
 	b loc_8006D4A
 loc_8006D66:
 	mov r6, r10
-	mov r0, #0x80
+	mov r0, #oToolkitUnk2004e24_Ptr
 	ldr r6, [r6,r0]
 	ldr r4, off_8006DD4 // =byte_2001600 
 	ldr r7, dword_8006DD8 // =0x4 
@@ -7684,7 +7696,7 @@ off_8006DE8: .word loc_803ED90
 sub_8006DEC:
 	push {r4-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x3c]
+	ldr r4, [r4,#oToolkitGameStatePtr]
 	ldr r0, [r4,#0x74]
 	pop {r4-r7,pc}
 .endfunc // sub_8006DEC
@@ -7748,7 +7760,7 @@ load_8006E3C:
 	push {r1-r7,lr}
 	ldr r5, off_8006E6C // =byte_20004E0 
 	mov r7, r10
-	mov r1, #0x78 
+	mov r1, #oToolkitUnk2004a8c_Ptr
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x6f 
@@ -7785,7 +7797,7 @@ modifyToolkit_unk7C_using_2008A0:
 	push {r1-r7,lr}
 	ldr r5, off_8006EA0 // =byte_20008A0 
 	mov r7, r10
-	mov r1, #0x7c // Toolkit.unk_2004C20
+	mov r1, #oToolkitUnk2004c20_Ptr // Toolkit.unk_2004C20
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x81
@@ -7800,7 +7812,7 @@ sub_8006E84:
 	push {r1-r7,lr}
 	ldr r5, off_8006EA0 // =byte_20008A0 
 	mov r7, r10
-	mov r1, #0x7c 
+	mov r1, #oToolkitUnk2004c20_Ptr 
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x81
@@ -7929,7 +7941,7 @@ loc_8006F50:
 sub_8006F54:
 	push {r0-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x3c] // Toolkit.gamestate
+	ldr r4, [r4,#oToolkitGameStatePtr] // Toolkit.gamestate
 	ldr r0, [r4,#0x5c] // GameState.protected_zennies
 	ldr r1, [r4,#0x74] // GameState.pad_74
 	mov r2, #1
@@ -7942,7 +7954,7 @@ loc_8006F68:
 	ldr r1, [r1]
 	eor r0, r1
 	mov r1, r10
-	mov r2, #0x84
+	mov r2, #oToolkitUnk2005028_Ptr
 	ldr r1, [r1,r2]
 	str r0, [r1]
 	pop {r0-r7,pc}
@@ -7953,7 +7965,7 @@ loc_8006F68:
 sub_8006F78:
 	push {r0-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x3c] // Toolkit.gamestate
+	ldr r4, [r4,#oToolkitGameStatePtr] // Toolkit.gamestate
 	ldr r0, [r4,#0x5c] // GameState.protected_zennies
 	ldr r1, [r4,#0x6c] // GameState.unk_6C
 	mvn r1, r1
@@ -7968,7 +7980,7 @@ loc_8006F90:
 	ldr r1, [r1]
 	eor r0, r1
 	mov r1, r10
-	mov r2, #0x84
+	mov r2, #oToolkitUnk2005028_Ptr
 	ldr r1, [r1,r2]
 	ldr r1, [r1]
 	cmp r0, r1
@@ -7985,7 +7997,7 @@ off_8006FA8: .word dword_2000060
 sub_8006FAC:
 	push {r0-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x3c]
+	ldr r4, [r4,#oToolkitGameStatePtr]
 	ldr r0, [r4,#0x60]
 	ldr r1, [r4,#0x74]
 	mov r2, #2
@@ -7998,7 +8010,7 @@ loc_8006FC0:
 	ldr r1, [r1]
 	eor r0, r1
 	mov r1, r10
-	mov r2, #0x88
+	mov r2, #oToolkitUnk2005030_Ptr
 	ldr r1, [r1,r2]
 	str r0, [r1]
 	pop {r0-r7,pc}
@@ -8009,7 +8021,7 @@ loc_8006FC0:
 sub_8006FD0:
 	push {r0-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x3c]
+	ldr r4, [r4,#oToolkitGameStatePtr]
 	ldr r0, [r4,#0x60]
 	ldr r1, [r4,#0x70]
 	mvn r1, r1
@@ -8024,7 +8036,7 @@ loc_8006FE8:
 	ldr r1, [r1]
 	eor r0, r1
 	mov r1, r10
-	mov r2, #0x88
+	mov r2, #oToolkitUnk2005030_Ptr
 	ldr r1, [r1,r2]
 	ldr r1, [r1]
 	cmp r0, r1
@@ -8036,22 +8048,28 @@ locret_8006FFC:
 off_8007000: .word dword_20018B8
 .endfunc // sub_8006FD0
 
+.func
+.thumb_func
 	push {r1-r7,lr}
 	bl sub_800708C
 	ldr r5, off_8007088 // =unk_2000670 
 	mov r7, r10
-	mov r1, #0x8c
+	mov r1, #oToolkitUnk2005038_Ptr
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x8d
 	eor r1, r2
 	strb r1, [r7,r0]
 	pop {r1-r7,pc}
+.endfunc
+
+.func
+.thumb_func
 	push {r1-r7,lr}
 	bl sub_800708C
 	ldr r5, off_8007088 // =unk_2000670 
 	mov r7, r10
-	mov r1, #0x8c
+	mov r1, #oToolkitUnk2005038_Ptr
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x8d
@@ -8059,12 +8077,14 @@ off_8007000: .word dword_20018B8
 	mvn r1, r1
 	strb r1, [r7,r0]
 	pop {r1-r7,pc}
+.endfunc
+
 .func
 .thumb_func
 sub_8007036:
 	push {r1-r7,lr}
 	mov r6, r10
-	mov r0, #0x8c
+	mov r0, #oToolkitUnk2005038_Ptr
 	ldr r6, [r6,r0]
 	ldr r4, off_8007060 // =unk_2000670 
 	ldr r7, off_8007064 // =0x100 
@@ -8093,7 +8113,7 @@ off_8007064: .word 0x100
 	bl sub_800708C
 	ldr r5, off_8007088 // =unk_2000670 
 	mov r7, r10
-	mov r1, #0x8c
+	mov r1, #oToolkitUnk2005038_Ptr
 	ldr r7, [r7,r1]
 	ldrb r1, [r5,r0]
 	mov r2, #0x8d
