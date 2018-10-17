@@ -1,4 +1,4 @@
-ifneq ($(DEVKITARM)/base_tools,)
+ifeq ($(DEVKITARM)/base_tools,)
     include $(DEVKITARM)/base_tools
 endif
 
