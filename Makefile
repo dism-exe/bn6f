@@ -27,10 +27,10 @@ ROM = $(BUILD_NAME).gba
 
 # build flags
 COMPLIANCE_FLAGS = -g -I$(INC)
-WFLAGS = 
+WFLAGS =
 ARCH = -mcpu=arm7tdmi -march=armv4t -mthumb -mthumb-interwork
 CDEBUG =
-CFLAGS = 
+CFLAGS =
 ASFLAGS = $(ARCH) $(WFLAGS) $(COMPLIANCE_FLAGS)
 LDFLAGS = -g -Map $(BUILD_NAME).map
 LIB =

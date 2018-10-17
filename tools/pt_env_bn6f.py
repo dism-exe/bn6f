@@ -1,11 +1,14 @@
 # execute this file after pt.py in IDA to define the environmental variables
 # for pt there.
 
+# TODO: if using IDA tools, make sure to update all relative paths appropriately
+
 # set up a new environment
 pt.clrenv()
 
 ## ROM Paths
 pt.env(ROMPath= '')
+pt.env(elfPath='dev/dis/bn6f/bn6f.elf')
 
 ## search utils
 pt.env(compareBinPath= '')
