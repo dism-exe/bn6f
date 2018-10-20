@@ -1416,7 +1416,8 @@ byte_8034478: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x5, 0x1, 0x0, 0x0, 
 	.byte 0xFF, 0x0, 0x0, 0x3C, 0x0, 0x85, 0x2, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x84, 0xFE, 0x0, 0x0, 0x54, 0x1, 0x0, 0x0, 0x3C, 0x0, 0x0
 	.byte 0x0, 0xAE, 0x1, 0xFF, 0xFF, 0xFF, 0xFF
-off_80345E4: .word off_804D0A4
+off_80345E4:
+	.word off_804D0A4
 	.word off_804D0AC
 	.word off_804E92C
 	.word off_804E940
@@ -3326,7 +3327,8 @@ off_80357EC: .word byte_80357F0
 byte_80357F0: .byte 0x3C
 	.byte 0x3D, 0x3E, 0x3F
 	.word 0x13121110, 0x17161514, 0x1B1A1918, 0x1F1E1D1C, 0x0
-off_8035808: .word sub_8035920+1
+ScriptCmds8035808:
+	.word sub_8035920+1
 	.word sub_8035924+1
 	.word sub_8035932+1
 	.word sub_8035962+1
@@ -3408,7 +3410,7 @@ sub_8035920:
 sub_8035924:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3422,16 +3424,16 @@ sub_8035932:
 	ldr r0, [r0,#0x3c]
 	ldrb r0, [r0,#6]
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r0, r1
 	blt loc_803595C
 	cmp r0, r4
 	bgt loc_803595C
 	mov r6, #3
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3446,20 +3448,20 @@ loc_803595C:
 sub_8035962:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	beq loc_8035972
 	ldrh r4, [r5,r4]
 	b loc_8035978
 loc_8035972:
 	mov r6, #2
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 loc_8035978:
 	add r0, r4, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_803598C
 	mov r6, #4
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3474,16 +3476,16 @@ loc_803598C:
 sub_8035992:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	mov r6, #2
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	add r2, r1, #0
 	bl loc_802F200 // (int a3, int a2) ->
 	beq loc_80359B8
 	mov r6, #4
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3498,20 +3500,20 @@ loc_80359B8:
 sub_80359BE:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	beq loc_80359CE
 	ldrh r4, [r5,r4]
 	b loc_80359D4
 loc_80359CE:
 	mov r6, #2
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 loc_80359D4:
 	add r0, r4, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_80359E8
 	mov r6, #4
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3526,16 +3528,16 @@ loc_80359E8:
 sub_80359EE:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	mov r6, #2
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	add r2, r1, #0
 	bl loc_802F200 // (int a3, int a2) ->
 	bne loc_8035A14
 	mov r6, #4
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3550,19 +3552,19 @@ loc_8035A14:
 sub_8035A1A:
 	push {lr}
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	mov r6, #6
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r1, r4, #0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #1
 	beq loc_8035A4A
 	cmp r4, #2
 	beq loc_8035A5A
 	mov r6, #0xa
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	ldrb r0, [r0]
 	cmp r0, r4
 	beq loc_8035A6E
@@ -3570,7 +3572,7 @@ sub_8035A1A:
 	b loc_8035A68
 loc_8035A4A:
 	mov r6, #0xa
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	ldrh r0, [r0]
 	cmp r0, r4
 	beq loc_8035A6E
@@ -3578,7 +3580,7 @@ loc_8035A4A:
 	b loc_8035A68
 loc_8035A5A:
 	mov r6, #0xa
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	ldr r0, [r0]
 	cmp r0, r4
 	beq loc_8035A6E
@@ -3598,20 +3600,20 @@ loc_8035A6E:
 sub_8035A74:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	bl sub_803CE28
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	mov r6, #3
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r0, r1
 	blt loc_8035AA4
 	cmp r0, r4
 	bgt loc_8035AA4
 	mov r6, #4
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3626,32 +3628,32 @@ loc_8035AA4:
 sub_8035AAA:
 	push {lr}
 	mov r6, #3
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	bne loc_8035AC4
 	mov r6, #1
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	bl sub_8021BD8
 	b loc_8035AD2
 loc_8035AC4:
 	add r1, r4, #0
 	mov r6, #1
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	bl sub_8021BC0
 loc_8035AD2:
 	mov r6, #4
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	mov r6, #5
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r0, r1
 	blt loc_8035AF4
 	cmp r0, r4
 	bgt loc_8035AF4
 	mov r6, #6
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3666,7 +3668,7 @@ loc_8035AF4:
 sub_8035AFA:
 	push {lr}
 	mov r6, #2
-	bl sub_803609C
+	bl Script_ReadSignedByte803609C
 	mov r3, r10
 	ldr r3, [r3,#0x3c]
 	ldr r3, [r3,#0x18]
@@ -3687,11 +3689,11 @@ sub_8035AFA:
 	add r0, r1, #0
 loc_8035B28:
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r0, r4
 	bne loc_8035B3E
 	mov r6, #3
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3706,7 +3708,7 @@ loc_8035B3E:
 sub_8035B44:
 	push {lr}
 	mov r6, #2
-	bl sub_803609C
+	bl Script_ReadSignedByte803609C
 	mov r3, r10
 	ldr r3, [r3,#0x3c]
 	ldr r3, [r3,#0x18]
@@ -3727,11 +3729,11 @@ sub_8035B44:
 	add r0, r1, #0
 loc_8035B72:
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r0, r4
 	beq loc_8035B88
 	mov r6, #3
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3749,11 +3751,11 @@ sub_8035B8E:
 	ldr r0, [r0,#0x3c]
 	ldrb r0, [r0,#0xe]
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r0, r4
 	bne loc_8035BAC
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3771,11 +3773,11 @@ sub_8035BB2:
 	ldr r0, [r0,#0x3c]
 	ldrb r0, [r0,#0xe]
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r0, r4
 	beq loc_8035BD0
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3795,11 +3797,11 @@ sub_8035BD6:
 	ldr r0, [r0,#0x24]
 	asr r0, r0, #0x10
 	mov r6, #1
-	bl sub_80360B6
+	bl Script_ReadSignedHalfword80360B6
 	cmp r0, r4
 	bne loc_8035BF8
 	mov r6, #3
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3819,11 +3821,11 @@ sub_8035BFE:
 	ldr r0, [r0,#0x24]
 	asr r0, r0, #0x10
 	mov r6, #1
-	bl sub_80360B6
+	bl Script_ReadSignedHalfword80360B6
 	cmp r0, r4
 	beq loc_8035C20
 	mov r6, #3
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3841,11 +3843,11 @@ sub_8035C26:
 	ldr r0, [r0,#0x3c]
 	ldr r0, [r0,#0x44]
 	mov r6, #1
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	cmp r0, r4
 	bne loc_8035C44
 	mov r6, #3
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3863,11 +3865,11 @@ sub_8035C4A:
 	ldr r0, [r0,#0x3c]
 	ldr r0, [r0,#0x44]
 	mov r6, #1
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	cmp r0, r4
 	beq loc_8035C68
 	mov r6, #3
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3882,7 +3884,7 @@ loc_8035C68:
 sub_8035C6E:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	mov r1, r10
 	ldr r1, [r1,#0x3c]
 	ldrh r0, [r1,#4]
@@ -3898,7 +3900,7 @@ loc_8035C88:
 	b loc_8035C9A
 loc_8035C8E:
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3920,19 +3922,19 @@ sub_8035CA0:
 	cmp r0, #2
 	beq loc_8035CCA
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
 loc_8035CBE:
 	mov r6, #5
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
 loc_8035CCA:
 	mov r6, #9
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3944,11 +3946,11 @@ sub_8035CD6:
 	push {lr}
 	bl sub_800B734
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r0, r4
 	bne loc_8035CF2
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3964,11 +3966,11 @@ sub_8035CF8:
 	push {lr}
 	bl sub_800B734
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r0, r4
 	beq loc_8035D14
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -3983,7 +3985,7 @@ loc_8035D14:
 sub_8035D1A:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_8035D2E
 	add r7, #5
@@ -4000,7 +4002,7 @@ loc_8035D2E:
 sub_8035D34:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	bl sub_80024C0
 	bne loc_8035D48
 	add r7, #5
@@ -4017,7 +4019,7 @@ loc_8035D48:
 sub_8035D4E:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	mov r0, #1
 	bl sub_811EBE0
 	bne loc_8035D64
@@ -4035,7 +4037,7 @@ loc_8035D64:
 sub_8035D6A:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	beq loc_8035D7E
 	ldrb r0, [r5,r4]
@@ -4044,10 +4046,10 @@ sub_8035D6A:
 	b loc_8035D8E
 loc_8035D7E:
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	mov r6, #3
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 loc_8035D8E:
 	bl engine_setScreeneffect // (int a1, int a2) -> void
@@ -4063,10 +4065,10 @@ sub_8035D98:
 	mov r1, r10
 	ldr r1, [r1,#0x3c]
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	strb r4, [r1,#0x16]
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	strb r4, [r1,#0x17]
 	add r7, #3
 	mov r0, #1
@@ -4078,14 +4080,14 @@ sub_8035D98:
 sub_8035DB4:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	beq loc_8035DC4
 	ldrh r4, [r5,r4]
 	b loc_8035DCA
 loc_8035DC4:
 	mov r6, #2
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 loc_8035DCA:
 	// bitfield
 	add r0, r4, #0
@@ -4100,14 +4102,14 @@ loc_8035DCA:
 sub_8035DD6:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	beq loc_8035DE6
 	ldrh r4, [r5,r4]
 	b loc_8035DEC
 loc_8035DE6:
 	mov r6, #2
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 loc_8035DEC:
 	add r0, r4, #0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
@@ -4121,10 +4123,10 @@ loc_8035DEC:
 sub_8035DF8:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	mov r6, #2
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	add r2, r1, #0
 	bl setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
@@ -4138,10 +4140,10 @@ sub_8035DF8:
 sub_8035E16:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	mov r6, #2
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	add r2, r1, #0
 	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
@@ -4155,7 +4157,7 @@ sub_8035E16:
 sub_8035E34:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 loc_8035E3C:
 	mov r1, #0
 	ldrsh r0, [r4,r1]
@@ -4177,7 +4179,7 @@ loc_8035E4E:
 sub_8035E54:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 loc_8035E5C:
 	mov r1, #0
 	ldrsh r0, [r4,r1]
@@ -4197,10 +4199,10 @@ loc_8035E6E:
 loc_8035E74:
 	push {lr}
 	mov r6, #5
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	mov lr, pc
 	bx r4
 	add r7, #9
@@ -4211,10 +4213,10 @@ loc_8035E74:
 sub_8035E8E:
 	push {lr}
 	mov r6, #5
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r1, r4, #0
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	bl init_s_02011C50_8036E90
 	add r7, #9
@@ -4227,10 +4229,10 @@ sub_8035E8E:
 sub_8035EAA:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	mov r6, #5
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	strb r4, [r0]
 	add r7, #6
 	mov r0, #1
@@ -4242,10 +4244,10 @@ sub_8035EAA:
 sub_8035EC2:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	mov r6, #5
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	strh r4, [r0]
 	add r7, #7
 	mov r0, #1
@@ -4257,10 +4259,10 @@ sub_8035EC2:
 sub_8035EDA:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	mov r6, #5
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	str r4, [r0]
 	add r7, #9
 	mov r0, #1
@@ -4274,10 +4276,10 @@ sub_8035EF2:
 	mov r0, r10
 	ldr r0, [r0,#0x3c]
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r0, r4
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	strb r4, [r0]
 	add r7, #3
 	mov r0, #1
@@ -4291,10 +4293,10 @@ sub_8035F0E:
 	mov r0, r10
 	ldr r0, [r0,#0x40]
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r0, r4
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	strb r4, [r0]
 	add r7, #3
 	mov r0, #1
@@ -4306,7 +4308,7 @@ sub_8035F0E:
 sub_8035F2A:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	bl sub_8001B1C
 	add r7, #5
@@ -4319,7 +4321,7 @@ sub_8035F2A:
 sub_8035F3E:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	bl sub_8002354
 	add r7, #5
@@ -4347,7 +4349,7 @@ sub_8035F52:
 sub_8035F6A:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	cmp r0, #0xff
 	beq loc_8035F7A
@@ -4375,14 +4377,14 @@ loc_8035F8E:
 sub_8035F98:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	beq loc_8035FA8
 	ldrb r0, [r5,r4]
 	b loc_8035FB0
 loc_8035FA8:
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 loc_8035FB0:
 	bl sub_8033FC0
@@ -4396,11 +4398,11 @@ loc_8035FB0:
 sub_8035FBA:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #1
 	beq loc_8035FD4
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	str r4, [r5,#0x10]
 	add r7, #6
 	mov r0, #1
@@ -4418,11 +4420,11 @@ loc_8035FD4:
 sub_8035FDE:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #1
 	beq loc_8035FFC
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	bl sub_8003570
 	add r7, #6
@@ -4430,7 +4432,7 @@ sub_8035FDE:
 	pop {pc}
 loc_8035FFC:
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	bl sub_80035A2
 	add r7, #3
@@ -4438,7 +4440,7 @@ loc_8035FFC:
 	pop {pc}
 .endfunc // sub_8035FDE
 
-.func
+.func sub_803600E
 .thumb_func
 sub_803600E:
 	push {r4-r7,lr}
@@ -4446,7 +4448,7 @@ sub_803600E:
 	push {r4}
 	add r4, r0, #0
 	add r6, r1, #0
-	ldr r5, off_8036090 // =unk_2011E60 
+	ldr r5, off_8036090 // =eUnkMapScriptState_2011e60 
 	// memBlock
 	add r0, r5, #0
 	// size
@@ -4454,7 +4456,7 @@ sub_803600E:
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 	str r4, [r5,#0x8] // (dword_2011E68 - 0x2011e60)
 	str r6, [r5,#0xc] // (dword_2011E6C - 0x2011e60)
-	ldr r6, off_803608C // =off_8035808 
+	ldr r6, off_803608C // =ScriptCmds8035808 
 	mov r12, r6
 	add r7, r4, #0
 loc_803602C:
@@ -4476,9 +4478,9 @@ sub_8036040:
 	push {r4-r7,lr}
 	mov r4, r12
 	push {r4}
-	ldr r5, off_8036090 // =unk_2011E60 
+	ldr r5, off_8036090 // =eUnkMapScriptState_2011e60 
 	ldr r0, [r5,#0xc] // (dword_2011E6C - 0x2011e60)
-	ldr r6, off_803608C // =off_8035808 
+	ldr r6, off_803608C // =ScriptCmds8035808 
 	mov r12, r6
 	add r7, r0, #0
 loc_8036050:
@@ -4500,11 +4502,11 @@ sub_8036064:
 	push {r4-r7,lr}
 	mov r4, r12
 	push {r4}
-	ldr r5, off_8036090 // =unk_2011E60 
+	ldr r5, off_8036090 // =eUnkMapScriptState_2011e60 
 	ldr r0, [r5,#0x10] // (dword_2011E70 - 0x2011e60)
 	tst r0, r0
 	beq loc_8036086
-	ldr r6, off_803608C // =off_8035808 
+	ldr r6, off_803608C // =ScriptCmds8035808 
 	mov r12, r6
 	add r7, r0, #0
 loc_8036078:
@@ -4519,33 +4521,33 @@ loc_8036086:
 	pop {r4}
 	mov r12, r4
 	pop {r4-r7,pc}
-off_803608C: .word off_8035808
-off_8036090: .word unk_2011E60
+off_803608C: .word ScriptCmds8035808
+off_8036090: .word eUnkMapScriptState_2011e60
 .endfunc // sub_8036064
 
 .func
 .thumb_func
-sub_8036094:
+Script_ReadByte8036094:
 	push {r7,lr}
 	add r7, r7, r6
 	ldrb r4, [r7]
 	pop {r7,pc}
-.endfunc // sub_8036094
+.endfunc // Script_ReadByte8036094
 
 .func
 .thumb_func
-sub_803609C:
+Script_ReadSignedByte803609C:
 	push {r7,lr}
 	add r7, r7, r6
 	ldrb r4, [r7]
 	lsl r4, r4, #0x18
 	asr r4, r4, #0x18
 	pop {r7,pc}
-.endfunc // sub_803609C
+.endfunc // Script_ReadSignedByte803609C
 
 .func
 .thumb_func
-sub_80360A8:
+Script_ReadHalfword80360A8:
 	push {r7,lr}
 	add r7, r7, r6
 	ldrb r4, [r7,#1]
@@ -4553,11 +4555,11 @@ sub_80360A8:
 	lsl r4, r4, #8
 	orr r4, r6
 	pop {r7,pc}
-.endfunc // sub_80360A8
+.endfunc // Script_ReadHalfword80360A8
 
 .func
 .thumb_func
-sub_80360B6:
+Script_ReadSignedHalfword80360B6:
 	push {r7,lr}
 	add r7, r7, r6
 	ldrb r4, [r7,#1]
@@ -4567,12 +4569,12 @@ sub_80360B6:
 	lsl r4, r4, #0x10
 	asr r4, r4, #0x10
 	pop {r7,pc}
-.endfunc // sub_80360B6
+.endfunc // Script_ReadSignedHalfword80360B6
 
 .func
 .thumb_func
 // () -> void .spoils R4, R6
-sub_80360C8:
+Script_ReadWord80360C8:
 	push {r7,lr}
 	add r7, r7, r6
 	ldrb r4, [r7,#3]
@@ -5365,7 +5367,7 @@ dword_8036D8C: .word 0xFFFFFF00
 	.word byte_806AEA8
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-.endfunc // sub_80360C8
+.endfunc // Script_ReadWord80360C8
 
 .func
 .thumb_func
@@ -6500,14 +6502,14 @@ sub_80376F4:
 	add r0, #0
 	bl sub_80385C0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	beq loc_8037716
 	ldrb r4, [r5,r4]
 	b loc_803771C
 loc_8037716:
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 loc_803771C:
 	ldrb r1, [r5,#0x12]
 	add r1, #0xc
@@ -6542,14 +6544,14 @@ sub_8037740:
 	add r0, #4
 	bl sub_80385C0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	beq loc_8037762
 	ldrh r4, [r5,r4]
 	b loc_8037768
 loc_8037762:
 	mov r6, #2
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 loc_8037768:
 	ldrb r1, [r5,#0x12]
 	lsl r1, r1, #1
@@ -6579,7 +6581,7 @@ loc_803778C:
 sub_8037790:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	mov r0, #0x80
 	and r0, r4
 	bl chatbox_8045F3C
@@ -6602,7 +6604,7 @@ loc_80377B2:
 sub_80377B6:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	bl sub_809E434
 	cmp r0, r4
 	bne loc_80377CC
@@ -6663,10 +6665,10 @@ loc_8037804:
 sub_8037808:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	ldrb r0, [r5,r4]
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r0, r4
 	bne loc_8037822
 	add r7, #3
@@ -6682,7 +6684,7 @@ loc_8037822:
 sub_8037826:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	ldr r0, [r5,r4]
 	ldrb r0, [r0]
 	cmp r0, #0x11
@@ -6729,7 +6731,7 @@ loc_8037862:
 sub_8037866:
 	push {lr}
 	mov r6, #1
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_803787C
@@ -6746,7 +6748,7 @@ loc_803787C:
 sub_8037880:
 	push {lr}
 	mov r6, #1
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_8037896
@@ -6798,10 +6800,10 @@ sub_80378BE:
 sub_80378C2:
 	push {lr}
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	str r0, [r5,r4]
 	sub r4, #0x1c
 	lsr r4, r4, #2
@@ -6822,7 +6824,7 @@ sub_80378EE:
 	push {lr}
 	ldr r0, off_8037900 // =dword_8037690 
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	str r0, [r5,r4]
 	add r7, #2
 	mov r0, #1
@@ -6835,7 +6837,7 @@ off_8037900: .word dword_8037690
 sub_8037904:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	str r4, [r5,#0x38]
 	add r7, #5
 	mov r0, #1
@@ -6847,14 +6849,14 @@ sub_8037904:
 sub_8037914:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	ldrb r0, [r5,r4]
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r0, r4
 	bne loc_8037934
 	mov r6, #3
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -6869,12 +6871,12 @@ loc_8037934:
 sub_803793A:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	bl sub_800B6B0
 	cmp r0, r4
 	bne loc_8037956
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -6889,12 +6891,12 @@ loc_8037956:
 sub_803795C:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	bl sub_800B6B0
 	cmp r0, r4
 	beq loc_8037978
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -6909,12 +6911,12 @@ loc_8037978:
 sub_803797E:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	bl getPETNaviSelect // () -> u8
 	cmp r0, r4
 	bne loc_803799A
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -6929,12 +6931,12 @@ loc_803799A:
 sub_80379A0:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	bl getPETNaviSelect // () -> u8
 	cmp r0, r4
 	beq loc_80379BC
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -6949,12 +6951,12 @@ loc_80379BC:
 sub_80379C2:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	bl sub_8000EE4
 	cmp r0, r4
 	bne loc_80379DE
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -6969,12 +6971,12 @@ loc_80379DE:
 sub_80379E4:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	bl sub_8000EE4
 	cmp r0, r4
 	beq loc_8037A00
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -6989,15 +6991,15 @@ loc_8037A00:
 sub_8037A06:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	lsl r0, r4, #2
 	add r0, #0x44 
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	ldr r0, [r5,r0]
 	add r0, r0, r4
 	mov r6, #3
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	strb r4, [r0]
 	add r7, #4
 	mov r0, #1
@@ -7009,10 +7011,10 @@ sub_8037A06:
 sub_8037A2A:
 	push {lr}
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	strb r0, [r5,r4]
 	add r7, #3
 	mov r0, #1
@@ -7024,7 +7026,7 @@ sub_8037A2A:
 sub_8037A42:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	beq loc_8037A5C
 	ldr r0, [r5,#0x30]
@@ -7035,7 +7037,7 @@ sub_8037A42:
 	pop {pc}
 loc_8037A5C:
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	ldr r0, [r5,#0x30]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -7059,10 +7061,10 @@ sub_8037A70:
 sub_8037A7C:
 	push {lr}
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #1
 	beq loc_8037A96
 	bl chatbox_8045F1C
@@ -7083,7 +7085,7 @@ sub_8037AA0:
 	lsl r0, r0, #2
 	add r0, #1
 	add r6, r0, #0
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -7094,7 +7096,7 @@ sub_8037AA0:
 sub_8037AB6:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	cmp r0, #0
 	bge loc_8037AC8
@@ -7150,7 +7152,7 @@ off_8037B04: .word unk_2033400
 sub_8037B08:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	ldr r0, off_8037B20 // =off_8037B24 
 	ldr r0, [r0,r4]
 	mov lr, pc
@@ -7185,18 +7187,18 @@ off_8037B24: .word updateFlags_809E0B0+1
 sub_8037B6C:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	ldr r3, off_8037B98 // =off_8037B9C 
 	ldr r3, [r3,r4]
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	beq loc_8037B86
 	ldrb r4, [r5,r4]
 	b loc_8037B8C
 loc_8037B86:
 	mov r6, #3
-	bl sub_8036094
+	bl Script_ReadByte8036094
 loc_8037B8C:
 	add r0, r4, #0
 	mov lr, pc
@@ -7218,7 +7220,7 @@ off_8037B9C: .word loc_809E260+1
 sub_8037BB4:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #8
 	blt loc_8037BC6
 	ldrb r0, [r5,#0x12]
@@ -7231,31 +7233,31 @@ loc_8037BC6:
 	mov r0, #8
 	bl sub_80385C0
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	beq loc_8037BE2
 	ldrb r4, [r5,r4]
 	b loc_8037BE8
 loc_8037BE2:
 	mov r6, #3
-	bl sub_8036094
+	bl Script_ReadByte8036094
 loc_8037BE8:
 	strb r4, [r5,#0x10]
 loc_8037BEA:
 	mov r6, #4
-	bl sub_80360B6
+	bl Script_ReadSignedHalfword80360B6
 	add r0, r4, #0
 	mov r6, #6
-	bl sub_80360B6
+	bl Script_ReadSignedHalfword80360B6
 	add r1, r4, #0
 	mov r6, #8
-	bl sub_80360B6
+	bl Script_ReadSignedHalfword80360B6
 	add r2, r4, #0
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xc
 	lsl r2, r2, #0xc
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	ldr r3, off_8037C30 // =off_8037C34 
 	ldr r3, [r3,r4]
 	mov lr, pc
@@ -7296,19 +7298,19 @@ sub_8037C44:
 	mov r0, #8
 	bl sub_80385C0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	beq loc_8037C6E
 	ldrb r4, [r5,r4]
 	b loc_8037C74
 loc_8037C6E:
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 loc_8037C74:
 	strb r4, [r5,#0x10]
 loc_8037C76:
 	mov r6, #3
-	bl sub_80360B6
+	bl Script_ReadSignedHalfword80360B6
 	add r0, r4, #0
 	lsl r0, r0, #8
 	add r1, r0, #0
@@ -7344,10 +7346,10 @@ byte_8037CB4: .byte 0x10, 0xF0, 0x10, 0x0, 0x8, 0x8, 0x0, 0x10, 0xF0, 0x10, 0xF0
 sub_8037CC4:
 	push {lr}
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	beq loc_8037CDA
 	ldrb r0, [r5,r4]
@@ -7363,7 +7365,7 @@ loc_8037CDA:
 sub_8037CE4:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	bl sub_809E496
 	add r7, #5
@@ -7376,7 +7378,7 @@ sub_8037CE4:
 sub_8037CF8:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0
 	beq loc_8037D0A
 	cmp r4, #1
@@ -7384,13 +7386,13 @@ sub_8037CF8:
 	b loc_8037D36
 loc_8037D0A:
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	mov r6, #3
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	mov r6, #4
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r2, r4, #0
 	bl loc_809E2C8
 	add r7, #5
@@ -7408,17 +7410,17 @@ loc_8037D36:
 	mov r0, #9
 	bl sub_80385C0
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	strb r4, [r5,#0x11]
 loc_8037D4C:
 	mov r6, #3
-	bl sub_803609C
+	bl Script_ReadSignedByte803609C
 	add r0, r4, #0
 	mov r6, #4
-	bl sub_803609C
+	bl Script_ReadSignedByte803609C
 	add r1, r4, #0
 	mov r6, #5
-	bl sub_803609C
+	bl Script_ReadSignedByte803609C
 	add r2, r4, #0
 	bl sub_809E2DC
 	ldrb r0, [r5,#0x11]
@@ -7440,14 +7442,14 @@ loc_8037D7C:
 sub_8037D80:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0
 	beq loc_8037D90
 	cmp r4, #1
 	beq loc_8037DA2
 loc_8037D90:
 	mov r6, #2
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	bl loc_809E2F6
 	add r7, #4
@@ -7465,18 +7467,18 @@ loc_8037DA2:
 sub_8037DAC:
 	push {lr}
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0xff
 	beq loc_8037DBC
 	ldrb r4, [r5,r4]
 	b loc_8037DC2
 loc_8037DBC:
 	mov r6, #3
-	bl sub_8036094
+	bl Script_ReadByte8036094
 loc_8037DC2:
 	add r0, r4, #0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0
 	beq loc_8037DD6
 	add r4, r0, #0
@@ -7494,7 +7496,7 @@ loc_8037DD6:
 sub_8037DE0:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	mov r0, #0xd8
 	mul r4, r0
 	ldr r0, off_8037E14 // =eOverworldNPCObjects 
@@ -7506,7 +7508,7 @@ sub_8037DE0:
 	ldrb r0, [r4,#0x14]
 	bl sub_809E13C
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	bl sub_809E2AE
 	add r7, #3
@@ -7522,7 +7524,7 @@ off_8037E14: .word eOverworldNPCObjects
 sub_8037E18:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	mov r1, #0xf0
 	and r1, r4
@@ -7552,19 +7554,19 @@ sub_8037E4C:
 	push {r5}
 	add r5, r5, r4
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	mov r6, #3
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r1, r4, #0
 	mov r6, #5
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r2, r4, #0
 	mov r6, #7
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r3, r4, #0
 	mov r6, #9
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	lsl r1, r1, #0x10
 	lsl r2, r2, #0x10
 	lsl r3, r3, #0x10
@@ -7593,13 +7595,13 @@ sub_8037E96:
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	mov r6, #3
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r1, r4, #0
 	mov r6, #5
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r2, r4, #0
 	mov r6, #7
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r3, r4, #0
 	lsl r1, r1, #0x10
 	lsl r2, r2, #0x10
@@ -7612,10 +7614,10 @@ sub_8037E96:
 	add r3, r3, r4
 	add sp, sp, #0xc
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	mov r6, #9
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r6, r5, #0
 	bl sub_80047E0
 	str r5, [r6]
@@ -7636,7 +7638,7 @@ sub_8037EFA:
 	push {r5}
 	add r5, r5, r4
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	mov r1, #0xd8
 	mul r1, r4
 	ldr r4, off_8037FB4 // =eOverworldNPCObjects 
@@ -7649,13 +7651,13 @@ sub_8037EFA:
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	mov r6, #4
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r1, r4, #0
 	mov r6, #6
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r2, r4, #0
 	mov r6, #8
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r3, r4, #0
 	lsl r1, r1, #0x10
 	lsl r2, r2, #0x10
@@ -7668,10 +7670,10 @@ sub_8037EFA:
 	add r3, r3, r4
 	add sp, sp, #0xc
 	mov r6, #3
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	mov r6, #0xa
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r6, r5, #0
 	bl sub_80047E0
 	str r5, [r6]
@@ -7733,7 +7735,7 @@ off_8037FB4: .word eOverworldNPCObjects
 sub_8037FB8:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #1
 	beq loc_8037FE6
 	cmp r4, #2
@@ -7745,7 +7747,7 @@ sub_8037FB8:
 	cmp r4, #5
 	beq loc_803801E
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	bl sub_8003570
 	add r7, #6
@@ -7753,7 +7755,7 @@ sub_8037FB8:
 	pop {pc}
 loc_8037FE6:
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	bl sub_80035A2
 	add r7, #3
@@ -7761,7 +7763,7 @@ loc_8037FE6:
 	pop {pc}
 loc_8037FF8:
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	bl sub_8030A60
 	add r7, #6
@@ -7789,7 +7791,7 @@ loc_803801E:
 sub_8038028:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	mov lr, pc
 	bx r4
 	bne loc_803803C
@@ -7806,7 +7808,7 @@ loc_803803C:
 sub_8038040:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r3, r4, #0
 	mov r0, #0x40 
 	tst r3, r0
@@ -7815,7 +7817,7 @@ sub_8038040:
 	tst r3, r0
 	bne loc_80380A6
 	mov r6, #3
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r2, r4, #0
 	mov r0, #0x80
 	tst r3, r0
@@ -7828,7 +7830,7 @@ loc_8038066:
 	add r0, r2, #0
 	mov r1, #0
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r2, r4, #0
 	bl sub_8005F00
 	add r7, #7
@@ -7838,7 +7840,7 @@ loc_8038082:
 	add r0, r2, #0
 	mov r1, #0
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r2, r4, #0
 	bl sub_8005F14
 	add r7, #7
@@ -7852,7 +7854,7 @@ loc_8038098:
 	pop {pc}
 loc_80380A6:
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	str r4, [r5,#0x34]
 	add r7, #6
 	mov r0, #1
@@ -7864,7 +7866,7 @@ loc_80380A6:
 sub_80380B4:
 	push {lr}
 	mov r6, #1
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	bl sound_play // () -> void
 	add r7, #3
@@ -7877,7 +7879,7 @@ sub_80380B4:
 sub_80380C8:
 	push {lr}
 	mov r6, #1
-	bl sub_80360B6
+	bl Script_ReadSignedHalfword80360B6
 	cmp r4, #0
 	bge loc_80380DE
 	bl sub_8036E44
@@ -7897,13 +7899,13 @@ loc_80380E4:
 sub_80380EA:
 	push {lr}
 	mov r6, #1
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	mov r6, #3
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	mov r6, #4
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r2, r4, #0
 	bl sub_80006A2
 	add r7, #5
@@ -7916,10 +7918,10 @@ sub_80380EA:
 sub_803810E:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	bl sub_800068A
 	mov r1, r10
@@ -7946,13 +7948,13 @@ sub_8038132:
 sub_803813E:
 	push {lr}
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	mov r6, #3
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #1
 	beq loc_8038160
 	bl sub_803CD98
@@ -7970,11 +7972,11 @@ loc_8038164:
 sub_803816A:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0
 	bne loc_803818E
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	str r4, [r5,#0x3c]
 	add r0, r4, #0
 	bl sub_8036F98
@@ -8007,13 +8009,13 @@ sub_80381A0:
 	bl sub_8015C32
 loc_80381B4:
 	mov r6, #1
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	bl getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
 	mov r1, #1
 	bl gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
 	mov r6, #1
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	bl sub_803522E
 	mov r0, #0x2c 
@@ -8044,13 +8046,13 @@ sub_80381E0:
 sub_80381FA:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	mov r6, #5
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r1, r4, #0
 	mov r6, #9
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r2, r4, #0
 	bl sub_8002468
 	add r7, #0xd
@@ -8073,10 +8075,10 @@ sub_803821E:
 sub_803822A:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	bl sub_80302A8
 	add r7, #4
@@ -8089,7 +8091,7 @@ sub_803822A:
 sub_8038246:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	add r7, #2
 	mov r0, #1
@@ -8138,7 +8140,7 @@ sub_803826E:
 sub_803827A:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	bl sub_8003914
 	add r7, #2
@@ -8161,7 +8163,7 @@ sub_803828E:
 sub_803829A:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	bl sub_8003A64
 	add r7, #2
@@ -8184,10 +8186,10 @@ sub_80382AE:
 sub_80382BA:
 	push {lr}
 	mov r6, #1
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	mov r6, #3
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r6, r0, #0
 loc_80382CC:
 	add r0, r6, #0
@@ -8205,7 +8207,7 @@ loc_80382CC:
 sub_80382DE:
 	push {lr}
 	mov r6, #1
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	// idx_2008A0
 	add r0, r4, #0
 	bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
@@ -8230,7 +8232,7 @@ sub_80382FE:
 	push {lr}
 	bl sub_80010C6
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	bl sub_80010BE
 	bl sub_8120DF0
@@ -8246,10 +8248,10 @@ sub_80382FE:
 sub_8038322:
 	push {lr}
 	mov r6, #1
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	mov r6, #3
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r6, r0, #0
 loc_8038334:
 	add r0, r6, #0
@@ -8267,10 +8269,10 @@ loc_8038334:
 sub_8038346:
 	push {lr}
 	mov r6, #1
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r0, r4, #0
 	mov r6, #5
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r1, r4, #0
 	bl sub_80356F8
 	add r7, #9
@@ -8283,10 +8285,10 @@ sub_8038346:
 sub_8038362:
 	push {lr}
 	mov r6, #2
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #1
 	beq loc_803837C
 	bl sub_803CFF8
@@ -8304,10 +8306,10 @@ loc_8038380:
 sub_8038386:
 	push {lr}
 	mov r6, #2
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #1
 	beq loc_80383A0
 	bl sub_803D080
@@ -8325,16 +8327,16 @@ loc_80383A4:
 sub_80383AA:
 	push {lr}
 	mov r6, #2
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	mov r6, #4
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	mov r6, #5
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r2, r4, #0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #1
 	beq loc_80383D4
 	bl sub_8021AEE
@@ -8352,16 +8354,16 @@ loc_80383D8:
 sub_80383DE:
 	push {lr}
 	mov r6, #2
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	mov r6, #4
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r1, r4, #0
 	mov r6, #5
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r2, r4, #0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #1
 	beq loc_8038408
 	bl sub_803D108
@@ -8378,13 +8380,13 @@ loc_803840C:
 .thumb_func
 sub_8038412:
 	push {lr}
-	ldr r3, off_8038438 // =unk_2011E60 
+	ldr r3, off_8038438 // =eUnkMapScriptState_2011e60 
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #1
 	beq loc_803842E
 	mov r6, #2
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	str r4, [r3,#0x10]
 	add r7, #6
 	mov r0, #1
@@ -8395,7 +8397,7 @@ loc_803842E:
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-off_8038438: .word unk_2011E60
+off_8038438: .word eUnkMapScriptState_2011e60
 .endfunc // sub_8038412
 
 .func
@@ -8405,10 +8407,10 @@ sub_803843C:
 	mov r3, r10
 	ldr r2, [r3,#0x3c]
 	mov r6, #2
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r0, r4, #0
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0
 	beq loc_8038456
 	b loc_803845C
@@ -8428,7 +8430,7 @@ loc_8038460:
 sub_8038466:
 	push {lr}
 	mov r6, #1
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	cmp r4, #0
 	beq loc_8038474
 	b loc_803847A
@@ -8448,10 +8450,10 @@ loc_803847E:
 sub_8038484:
 	push {lr}
 	mov r6, #1
-	bl sub_80360A8
+	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	mov r6, #3
-	bl sub_8036094
+	bl Script_ReadByte8036094
 	add r6, r0, #0
 loc_8038496:
 	add r0, r6, #0
@@ -8478,7 +8480,7 @@ sub_80384A8:
 	tst r0, r1
 	beq loc_80384CA
 	mov r6, #4
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -8506,7 +8508,7 @@ sub_80384DC:
 	cmp r0, #4
 	bne loc_80384F2
 	mov r6, #4
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
@@ -8526,13 +8528,13 @@ sub_80384F8:
 	cmp r0, #0x80
 	bge loc_8038510
 	mov r6, #4
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
 loc_8038510:
 	mov r6, #8
-	bl sub_80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
