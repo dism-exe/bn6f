@@ -4470,8 +4470,7 @@ loc_8035FFC:
 	pop {pc}
 .endfunc // sub_8035FDE
 
-.func sub_803600E
-.thumb_func
+	thumb_func_start sub_803600E
 sub_803600E:
 	push {r4-r7,lr}
 	mov r4, r12
@@ -4500,10 +4499,9 @@ loc_803602C:
 	pop {r4}
 	mov r12, r4
 	pop {r4-r7,pc}
-.endfunc // sub_803600E
+	thumb_func_end sub_803600E
 
-.func
-.thumb_func
+	thumb_func_start sub_8036040
 sub_8036040:
 	push {r4-r7,lr}
 	mov r4, r12
@@ -4524,7 +4522,7 @@ loc_8036050:
 	pop {r4}
 	mov r12, r4
 	pop {r4-r7,pc}
-.endfunc // sub_8036040
+	thumb_func_end sub_8036040
 
 .func
 .thumb_func

@@ -261,8 +261,7 @@ loc_801FFD2:
 	pop {r4-r7,pc}
 .endfunc // sub_801FF18
 
-.func
-.thumb_func
+	thumb_func_start sub_801FFD6
 sub_801FFD6:
 	push {r4-r7,lr}
 	sub sp, sp, #8
@@ -371,7 +370,7 @@ loc_8020094:
 loc_80200A0:
 	add sp, sp, #8
 	pop {r4-r7,pc}
-.endfunc // sub_801FFD6
+	thumb_func_end sub_801FFD6
 
 .func
 .thumb_func
