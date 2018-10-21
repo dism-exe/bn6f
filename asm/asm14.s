@@ -3,40 +3,40 @@
 .func
 .thumb_func
 sub_8071B50:
-	push {r4-r7,lr}
-	mov r7, r10
-	ldr r0, off_8071BA8 // =off_8071584 
-	ldr r1, [r7,#0x14]
-	ldrb r2, [r5,#5]
+	push {R4-R7,lr}
+	mov R7, R10
+	ldr R0, off_8071BA8 // =off_8071584 
+	ldr R1, [R7,#0x14]
+	ldrb R2, [R5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
-	ldr r0, [r0]
-	str r0, [r1,#0x14]
+	ldr R0, [R0]
+	str R0, [R1,#0x14]
 	bl sub_8071C30
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldrb R0, [R5,#4]
+	ldrb R1, [R5,#5]
 	bl sub_803037C
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldrb R0, [R5,#4]
+	ldrb R1, [R5,#5]
 	bl sub_8030AA4
-	ldr r0, [r5,#0x24]
-	ldr r1, [r5,#0x28]
-	ldr r2, [r5,#0x2c]
-	ldrb r3, [r5,#4]
-	ldrb r4, [r5,#5]
+	ldr R0, [R5,#0x24]
+	ldr R1, [R5,#0x28]
+	ldr R2, [R5,#0x2C]
+	ldrb R3, [R5,#4]
+	ldrb R4, [R5,#5]
 	bl sub_802FF4C
 	bl loc_8030472
-	ldr r0, off_8071BAC // =unk_2037800 
+	ldr R0, off_8071BAC // =unk_2037800 
 	bl sub_80028D4
-	ldrb r1, [r5,#5]
+	ldrb R1, [R5,#5]
 	lsl r1, r1, #2
-	ldr r0, off_8071BB0 // =off_8071BB4 
-	ldr r0, [r0,r1]
+	ldr R0, off_8071BB0 // =off_8071BB4 
+	ldr R0, [R0,R1]
 	bl sub_8002906
 	bl chatbox_uncomp_803FD08 // () -> int
 	bl sub_8071CEE
 	bl sub_8034FB8
-	pop {r4-r7,pc}
+	pop {R4-R7,pc}
 off_8071BA8: .word off_8071584
 off_8071BAC: .word unk_2037800
 off_8071BB0: .word off_8071BB4
@@ -51,8 +51,8 @@ dword_8071BC0: .word 0xE1C2B1C, 0x821C7C1C, 0xE1CFFFF, 0x821C7C1C, 0x271CFFFF
 sub_8071BE4:
 	push {lr}
 	lsl r1, r1, #2
-	ldr r0, off_8071BF4 // =off_8071BF8 
-	ldr r0, [r0,r1]
+	ldr R0, off_8071BF4 // =off_8071BF8 
+	ldr R0, [R0,R1]
 	bl sub_8002354
 	pop {pc}
 	.balign 4, 0x00
@@ -76,27 +76,27 @@ off_8071C24: .word dword_8071670+0x10
 .func
 .thumb_func
 sub_8071C30:
-	push {r4-r7,lr}
-	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r1, [r5,#5]
+	push {R4-R7,lr}
+	mov R5, R10
+	ldr R5, [R5,#0x3C]
+	ldrb R1, [R5,#5]
 	lsl r1, r1, #4
-	ldr r7, off_8071C64 // =off_8071C68 
+	ldr R7, off_8071C64 // =off_8071C68 
 	add r7, r7, r1
-	ldr r0, [r7]
-	ldr r1, [r7,#4]
-	ldr r2, [r7,#8]
+	ldr R0, [R7]
+	ldr R1, [R7,#4]
+	ldr R2, [R7,#8]
 	bl sub_800195C
 	bl sub_8001780
-	ldr r1, [r7,#0xc]
-	orr r0, r1
+	ldr R1, [R7,#0xC]
+	orr R0, R1
 	bl sub_8001778
-	ldr r0, off_8071C98 // =off_8071C9C 
-	ldrb r1, [r5,#5]
+	ldr R0, off_8071C98 // =off_8071C9C 
+	ldrb R1, [R5,#5]
 	lsl r1, r1, #2
-	ldr r0, [r0,r1]
+	ldr R0, [R0,R1]
 	bl sub_80304E8
-	pop {r4-r7,pc}
+	pop {R4-R7,pc}
 	.balign 4, 0x00
 off_8071C64: .word off_8071C68
 off_8071C68: .word locret_8001AB4+1
@@ -115,16 +115,16 @@ off_8071CA8: .word off_8617068
 .func
 .thumb_func
 sub_8071CC4:
-	push {r4-r7,lr}
-	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r6, [r5,#5]
+	push {R4-R7,lr}
+	mov R5, R10
+	ldr R5, [R5,#0x3C]
+	ldrb R6, [R5,#5]
 	lsl r6, r6, #2
-	ldr r7, off_8071CD8 // =off_8071CDC 
-	ldr r7, [r7,r6]
-	mov lr, pc
+	ldr R7, off_8071CD8 // =off_8071CDC 
+	ldr R7, [R7,R6]
+	mov LR, PC
 	bx r7
-	pop {r4-r7,pc}
+	pop {R4-R7,pc}
 off_8071CD8: .word off_8071CDC
 off_8071CDC: .word locret_8071CE8+1
 	.word locret_8071CEA+1
@@ -132,21 +132,21 @@ off_8071CDC: .word locret_8071CE8+1
 .endfunc // sub_8071CC4
 
 locret_8071CE8:
-	mov pc, lr
+	mov PC, LR
 locret_8071CEA:
-	mov pc, lr
+	mov PC, LR
 locret_8071CEC:
-	mov pc, lr
+	mov PC, LR
 .func
 .thumb_func
 sub_8071CEE:
 	push {lr}
-	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0,#5]
+	mov R0, R10
+	ldr R0, [R0,#0x3C]
+	ldrb R0, [R0,#5]
 	lsl r0, r0, #2
-	ldr r1, off_8071D04 // =off_8071D08 
-	ldr r0, [r1,r0]
+	ldr R1, off_8071D04 // =off_8071D08 
+	ldr R0, [R1,R0]
 	bl sub_8003570
 	pop {pc}
 	.balign 4, 0x00
@@ -357,70 +357,71 @@ dword_80726C0: .word 0x16501821, 0x16F7FF1F, 0x16F8FF1F, 0x126FF03, 0x80726D8
 .func
 .thumb_func
 sub_8072B54:
-	push {r4-r7,lr}
-	mov r5, r10
-	ldr r5, [r5,#0x40]
-	ldr r0, [r5,#0x38]
-	add r0, #1
-	cmp r0, #0xa
+	push {R4-R7,lr}
+	mov R5, R10
+	ldr R5, [R5,#0x40]
+	ldr R0, [R5,#0x38]
+	add R0, #1
+	cmp R0, #0xA
 	blt loc_8072B6C
-	mov r0, #0
-	mov r1, #4
+	mov R0, #0
+	mov R1, #4
 	bl sub_80302C0
-	mov r0, #0
+	mov R0, #0
 loc_8072B6C:
-	str r0, [r5,#0x38]
-	pop {r4-r7,pc}
+	str R0, [R5,#0x38]
+	pop {R4-R7,pc}
 .endfunc // sub_8072B54
 
 .func
 .thumb_func
 sub_8072B70:
-	push {r4-r7,lr}
-	mov r5, r10
-	ldr r5, [r5,#0x40]
+	push {R4-R7,lr}
+	mov R5, R10
+	ldr R5, [R5,#0x40]
 	add r4, r0, #0
 	bl sub_8034C36
 	beq locret_8072BA0
-	ldr r0, [r5,#0x3c]
-	sub r0, #1
+	ldr R0, [R5,#0x3C]
+	sub R0, #1
 	blt loc_8072B88
-	str r0, [r5,#0x3c]
+	str R0, [R5,#0x3C]
 	b locret_8072BA0
 loc_8072B88:
 	lsl r4, r4, #1
 	bl change_20013F0_800151C // () -> int
-	ldr r1, dword_8072BB4 // =0x1FF 
-	and r0, r1
-	ldr r1, off_8072BB8 // =0x258 
+	ldr R1, dword_8072BB4 // =0x1FF 
+	and R0, R1
+	ldr R1, off_8072BB8 // =0x258 
 	add r0, r0, r1
-	str r0, [r5,#0x3c]
-	ldr r0, off_8072BBC // =dword_8072BC0 
-	ldrh r0, [r0,r4]
+	str R0, [R5,#0x3C]
+	ldr R0, off_8072BBC // =dword_8072BC0 
+	ldrh R0, [R0,R4]
 	bl sound_play // () -> void
 locret_8072BA0:
-	pop {r4-r7,pc}
+	pop {R4-R7,pc}
 	.balign 4, 0x00
 .endfunc // sub_8072B70
 
 .func
 .thumb_func
 sub_8072BA4:
-	push {r4-r7,lr}
-	mov r5, r10
-	ldr r5, [r5,#0x40]
-	mov r0, #0x10
-	str r0, [r5,#0x3c]
-	mov r0, #0
-	str r0, [r5,#0x38]
+	push {R4-R7,lr}
+	mov R5, R10
+	ldr R5, [R5,#0x40]
+	mov R0, #0x10
+	str R0, [R5,#0x3C]
+	mov R0, #0
+	str R0, [R5,#0x38]
 	// <endpool>
-	pop {r4-r7,pc}
+	pop {R4-R7,pc}
 .endfunc // sub_8072BA4
 
 dword_8072BB4: .word 0x1FF
 off_8072BB8: .word 0x258
 off_8072BBC: .word dword_8072BC0
 dword_8072BC0: .word 0x1D501D6, 0x193
-// <endfile>
-off_8072BC8:  .word dword_8072C3C
+off_8072BC8:
+	// <endfile>
+	.word dword_8072C3C
 /*For debugging purposes, connect comment at any range!*/

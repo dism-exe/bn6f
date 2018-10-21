@@ -5,7 +5,7 @@
 sub_8088CA0:
 	push {lr}
 	bl sub_8005D88
-	mov r0, #0
+	mov R0, #0
 	pop {pc}
 	.balign 4, 0x00
 	.word 0x40010000, 0x8000002, 0x206003F, 0xFF271EFF, 0x3E07080C
@@ -89,27 +89,27 @@ dword_8089128: .word 0x4B06003F, 0x8089141, 0x747FF2A, 0x3C00043F, 0x30154000
 	.word 0xBDF0, 0x8089268, 0x87DDD4C, 0x6014800, 0x700
 	.word 0x0
 	.word dword_87DE44C
-	.word unk_30016F0
+	.word byte_30016F0
 .endfunc // sub_8088CA0
 
 .func
 .thumb_func
 sub_8089280:
-	push {r4-r7,lr}
-	ldr r0, off_80892A0 // =dword_80892A4 
-	mov r1, r10
-	ldr r1, [r1,#0x24]
-	ldrh r1, [r1]
-	mov r2, #0x1f
-	and r1, r2
-	cmp r1, #8
+	push {R4-R7,lr}
+	ldr R0, off_80892A0 // =dword_80892A4 
+	mov R1, R10
+	ldr R1, [R1,#0x24]
+	ldrh R1, [R1]
+	mov R2, #0x1F
+	and R1, R2
+	cmp R1, #8
 	bge loc_8089294
-	ldr r0, off_80892F0 // =dword_80892F4 
+	ldr R0, off_80892F0 // =dword_80892F4 
 loc_8089294:
 	bl sub_8001158 // () -> void
-	ldr r0, off_8089340 // =dword_8089344 
+	ldr R0, off_8089340 // =dword_8089344 
 	bl sub_8001158 // () -> void
-	pop {r4-r7,pc}
+	pop {R4-R7,pc}
 off_80892A0: .word dword_80892A4
 dword_80892A4: .word 0x80008, 0xD247, 0x740004, 0xD240, 0xE00008, 0xD241
 	.word 0xE4004D, 0xD242, 0x4004D, 0xD246, 0xE00090, 0xD243
@@ -129,16 +129,16 @@ dword_8089344: .word 0x80144078, 0xD258, 0x80344078, 0xD260, 0x80544078
 .func
 .thumb_func
 sub_8089370:
-	push {r4-r7,lr}
-	ldr r1, off_8089388 // =dword_808938C 
+	push {R4-R7,lr}
+	ldr R1, off_8089388 // =dword_808938C 
 	lsl r0, r0, #3
 	add r1, r1, r0
-	ldr r0, [r1]
-	ldr r1, [r1,#4]
-	mov r2, #0
-	mov r3, #1
+	ldr R0, [R1]
+	ldr R1, [R1,#4]
+	mov R2, #0
+	mov R3, #1
 	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
-	pop {r4-r7,pc}
+	pop {R4-R7,pc}
 	.balign 4, 0x00
 off_8089388: .word dword_808938C
 dword_808938C: .word 0x40DC0004, 0xD250, 0x40DC008C, 0xD250, 0x4004008C
@@ -177,16 +177,16 @@ dword_8089494: .word 0xC018C000, 0x80000F8, 0x60FCC000, 0x80000E6, 0x800F4000
 .func
 .thumb_func
 sub_80895A8:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	mov r7, #0x70 
 	add r7, r7, r5
-	ldrb r0, [r5]
-	ldr r1, off_80895BC // =jt_80895C0 
-	ldr r0, [r1,r0]
-	mov lr, pc
+	ldrb R0, [R5]
+	ldr R1, off_80895BC // =jt_80895C0 
+	ldr R0, [R1,R0]
+	mov LR, PC
 	bx r0
-	tst r0, r0
-	pop {r4-r7,pc}
+	tst R0, R0
+	pop {R4-R7,pc}
 off_80895BC: .word jt_80895C0
 jt_80895C0: .word sub_808964C+1
 	.word sub_80896B0+1
@@ -228,17 +228,17 @@ jt_80895C0: .word sub_808964C+1
 .func
 .thumb_func
 sub_808964C:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_814219C
 	bne loc_808966E
-	mov r0, #4
+	mov R0, #4
 	bl sub_809E2AE
 	bl sub_809E2B8
 	bl sub_809E13C
-	mov r0, #0
+	mov R0, #0
 	bl sub_8089CB0
 	mov r0, #0x74 
-	strb r0, [r5]
+	strb R0, [R5]
 	b loc_80896A0
 loc_808966E:
 	bl sub_81428D4
@@ -248,18 +248,18 @@ loc_808966E:
 	bl sub_8142896
 	bl sub_809E2AE
 	bl sub_809E2B8
-	ldr r1, off_80896A4 // =byte_80896A8 
-	ldrb r0, [r1,r0]
+	ldr R1, off_80896A4 // =byte_80896A8 
+	ldrb R0, [R1,R0]
 	bl sub_809E13C
 	bl sub_8089D26
-	mov r0, #0
+	mov R0, #0
 	bl sub_81421C8
 	bl sub_8089CC4
-	mov r0, #4
-	strb r0, [r5]
+	mov R0, #4
+	strb R0, [R5]
 loc_80896A0:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 off_80896A4: .word byte_80896A8
 byte_80896A8: .byte 0xFF, 0x29, 0xFF, 0x2A, 0xFF, 0x2B, 0xFF, 0x2C
 .endfunc // sub_808964C
@@ -267,70 +267,70 @@ byte_80896A8: .byte 0xFF, 0x29, 0xFF, 0x2A, 0xFF, 0x2B, 0xFF, 0x2C
 .func
 .thumb_func
 sub_80896B0:
-	push {r4-r7,lr}
-	ldrb r0, [r5,#0x13]
-	tst r0, r0
+	push {R4-R7,lr}
+	ldrb R0, [R5,#0x13]
+	tst R0, R0
 	bne loc_80896C0
 	bl sub_8089CF8
-	mov r0, #0xc
-	strb r0, [r5]
+	mov R0, #0xC
+	strb R0, [R5]
 loc_80896C0:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_80896B0
 
 .func
 .thumb_func
 sub_80896C4:
-	push {r4-r7,lr}
-	ldrb r0, [r5,#0x13]
-	tst r0, r0
+	push {R4-R7,lr}
+	ldrb R0, [R5,#0x13]
+	tst R0, R0
 	bne loc_80896D0
-	mov r0, #0xc
-	strb r0, [r5]
+	mov R0, #0xC
+	strb R0, [R5]
 loc_80896D0:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_80896C4
 
 .func
 .thumb_func
 sub_80896D4:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_8089704
 	beq loc_8089700
-	cmp r0, #1
+	cmp R0, #1
 	beq loc_80896FA
-	cmp r0, #2
+	cmp R0, #2
 	beq loc_80896F4
 	bl sub_8089CDC
-	mov r0, #1
+	mov R0, #1
 	bl sub_80468EC
-	mov r0, #0x18
-	strb r0, [r5]
+	mov R0, #0x18
+	strb R0, [R5]
 	b loc_8089700
 loc_80896F4:
-	mov r0, #0x10
-	strb r0, [r5]
+	mov R0, #0x10
+	strb R0, [R5]
 	b loc_8089700
 loc_80896FA:
 	bl sub_8089CC4
 	b loc_8089700
 loc_8089700:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_80896D4
 
 .func
 .thumb_func
 sub_8089704:
-	push {r4-r7,lr}
-	mov r7, r10
-	ldr r7, [r7,#4]
-	ldrh r7, [r7,#2]
-	mov r4, #0
-	mov r0, #1
-	tst r0, r7
+	push {R4-R7,lr}
+	mov R7, R10
+	ldr R7, [R7,#4]
+	ldrh R7, [R7,#2]
+	mov R4, #0
+	mov R0, #1
+	tst R0, R7
 	beq loc_8089738
 	bl sub_81421D0
 	bl sub_8142190
@@ -339,7 +339,7 @@ sub_8089704:
 	beq loc_808972E
 	mov r0, #0x67 
 	bl sound_play // () -> void
-	mov r4, #2
+	mov R4, #2
 	b loc_808978C
 loc_808972E:
 	b loc_808978C
@@ -348,283 +348,283 @@ loc_8089730:
 	bl sound_play // () -> void
 	b loc_808978C
 loc_8089738:
-	mov r0, #2
-	tst r0, r7
+	mov R0, #2
+	tst R0, R7
 	beq loc_8089748
 	mov r0, #0x68 
 	bl sound_play // () -> void
-	mov r4, #3
+	mov R4, #3
 	b loc_808978C
 loc_8089748:
-	mov r7, r10
-	ldr r7, [r7,#4]
-	ldrh r7, [r7,#4]
+	mov R7, R10
+	ldr R7, [R7,#4]
+	ldrh R7, [R7,#4]
 	mov r0, #0x40 
-	tst r0, r7
+	tst R0, R7
 	beq loc_808976C
 	mov r0, #0x66 
 	bl sound_play // () -> void
 	bl sub_81421D0
-	sub r0, #1
+	sub R0, #1
 	bge loc_8089764
-	mov r0, #3
+	mov R0, #3
 loc_8089764:
 	bl sub_81421C8
-	mov r4, #1
+	mov R4, #1
 	b loc_808978C
 loc_808976C:
-	mov r0, #0x80
-	tst r0, r7
+	mov R0, #0x80
+	tst R0, R7
 	beq loc_808978C
 	mov r0, #0x66 
 	bl sound_play // () -> void
 	bl sub_81421D0
-	add r0, #1
-	cmp r0, #4
+	add R0, #1
+	cmp R0, #4
 	blt loc_8089784
-	mov r0, #0
+	mov R0, #0
 loc_8089784:
 	bl sub_81421C8
-	mov r4, #1
+	mov R4, #1
 	b loc_808978C
 loc_808978C:
 	add r0, r4, #0
-	tst r0, r0
-	pop {r4-r7,pc}
+	tst R0, R0
+	pop {R4-R7,pc}
 .endfunc // sub_8089704
 
 .func
 .thumb_func
 sub_8089792:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_81421D0
-	add r0, #2
+	add R0, #2
 	bl sub_8089CA4
-	mov r0, #0x14
-	strb r0, [r5]
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #0x14
+	strb R0, [R5]
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089792
 
 .func
 .thumb_func
 sub_80897A6:
-	push {r4-r7,lr}
-	ldrb r0, [r5,#0x13]
-	tst r0, r0
+	push {R4-R7,lr}
+	ldrb R0, [R5,#0x13]
+	tst R0, R0
 	bne loc_80897E4
-	mov r0, #0x80
+	mov R0, #0x80
 	bl chatbox_8045F3C
 	bne loc_80897E4
 	bl chatbox_8045F4C
-	cmp r0, #0
+	cmp R0, #0
 	beq loc_80897C8
 	bl sub_8089D26
-	mov r0, #0xc
-	strb r0, [r5]
+	mov R0, #0xC
+	strb R0, [R5]
 	b loc_80897E4
 loc_80897C8:
 	bl sub_8089D0E
 	bl sub_81421D0
 	bl sub_81421B2
-	mov r0, #1
+	mov R0, #1
 	bl sub_80468EC
-	mov r0, #0xa
+	mov R0, #0xA
 	bl sub_8089CB0
 	mov r0, #0x20 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_80897E4:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_80897A6
 
 .func
 .thumb_func
 sub_80897E8:
-	push {r4-r7,lr}
-	mov r0, #0x80
+	push {R4-R7,lr}
+	mov R0, #0x80
 	bl chatbox_8045F3C
 	bne loc_8089804
 	bl sub_8089CB4
 	beq loc_8089804
-	mov r0, #4
-	mov r1, #0xff
+	mov R0, #4
+	mov R1, #0xFF
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	mov r0, #0x24 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_8089804:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_80897E8
 
 .func
 .thumb_func
 sub_8089808:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_8089822
-	mov r0, #0
-	mov r1, #0x10
+	mov R0, #0
+	mov R1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
-	mov r0, #5
+	mov R0, #5
 	bl sub_8089CB0
 	mov r0, #0x28 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_8089822:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089808
 
 .func
 .thumb_func
 sub_8089826:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_8089CB4
 	beq loc_8089836
 	bl sub_8142BB6
 	mov r0, #0x2c 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_8089836:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089826
 
 .func
 .thumb_func
 sub_808983A:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_8089856
 	bl sub_8089D44
 	bl sub_814216E
-	str r0, [r7,#0xc]
-	mov r0, #0x1e
+	str R0, [R7,#0xC]
+	mov R0, #0x1E
 	bl sub_8089CB0
 	mov r0, #0x30 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_8089856:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_808983A
 
 .func
 .thumb_func
 sub_808985A:
-	push {r4-r7,lr}
-	mov r0, #0
+	push {R4-R7,lr}
+	mov R0, #0
 	bl sub_8142C20
 	add r4, r0, #0
 	bl sub_814216E
-	cmp r0, r4
+	cmp R0, R4
 	bne loc_8089898
 	bl sub_8089CB4
 	beq loc_8089898
 	bl sub_814216E
-	ldr r1, [r7,#0xc]
-	cmp r0, r1
+	ldr R1, [R7,#0xC]
+	cmp R0, R1
 	beq loc_8089882
 	mov r0, #0x34 
-	strb r0, [r5]
+	strb R0, [R5]
 	b loc_8089898
 loc_8089882:
 	bl sub_8142ADA
 	bne loc_8089892
 	bl sub_8089CDC
-	mov r0, #0x18
-	strb r0, [r5]
+	mov R0, #0x18
+	strb R0, [R5]
 	b loc_8089898
 loc_8089892:
 	mov r0, #0x3c 
-	strb r0, [r5]
+	strb R0, [R5]
 	b loc_8089898
 loc_8089898:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_808985A
 
 .func
 .thumb_func
 sub_808989C:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_8089CB4
 	beq loc_80898AE
-	mov r0, #7
+	mov R0, #7
 	bl sub_8089CA4
 	mov r0, #0x38 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_80898AE:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_808989C
 
 .func
 .thumb_func
 sub_80898B2:
-	push {r4-r7,lr}
-	mov r0, #0x80
+	push {R4-R7,lr}
+	mov R0, #0x80
 	bl chatbox_8045F3C
 	bne loc_80898E4
 	bl sub_814216E
 	bne loc_80898CE
-	mov r0, #0x1e
+	mov R0, #0x1E
 	bl sub_8089CB0
 	mov r0, #0x5c 
-	strb r0, [r5]
+	strb R0, [R5]
 	b loc_80898E4
 loc_80898CE:
 	bl sub_8142ADA
 	bne loc_80898DE
 	bl sub_8089CDC
-	mov r0, #0x18
-	strb r0, [r5]
+	mov R0, #0x18
+	strb R0, [R5]
 	b loc_80898E4
 loc_80898DE:
 	mov r0, #0x3c 
-	strb r0, [r5]
+	strb R0, [R5]
 	b loc_80898E4
 loc_80898E4:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_80898B2
 
 .func
 .thumb_func
 sub_80898E8:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_8089CB4
 	beq loc_80898F8
 	bl sub_8142BFA
 	mov r0, #0x40 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_80898F8:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_80898E8
 
 .func
 .thumb_func
 sub_80898FC:
-	push {r4-r7,lr}
-	mov r0, #0x10
+	push {R4-R7,lr}
+	mov R0, #0x10
 	bl sub_8142C20
-	tst r0, r0
+	tst R0, R0
 	beq loc_8089918
-	mov r0, #8
+	mov R0, #8
 	bl sub_8089CA4
-	mov r0, #0x1e
+	mov R0, #0x1E
 	bl sub_8089CB0
 	mov r0, #0x44 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_8089918:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_80898FC
 
 .func
 .thumb_func
 sub_808991C:
-	push {r4-r7,lr}
-	mov r0, #0x80
+	push {R4-R7,lr}
+	mov R0, #0x80
 	bl chatbox_8045F3C
 	bne loc_808994E
 	bl sub_8089CB4
@@ -632,17 +632,17 @@ sub_808991C:
 	bl sub_8142B58
 	bl sub_809E2AE
 	bl sub_809E2B8
-	ldr r1, off_8089954 // =byte_8089958 
-	ldrb r0, [r1,r0]
+	ldr R1, off_8089954 // =byte_8089958 
+	ldrb R0, [R1,R0]
 	bl sub_809E13C
 	bl sub_8089CDC
-	mov r0, #0x1e
+	mov R0, #0x1E
 	bl sub_8089CB0
 	mov r0, #0x48 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_808994E:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 	.balign 4, 0x00
 off_8089954: .word byte_8089958
 byte_8089958: .byte 0xFF, 0x2E, 0xFF, 0x2F, 0xFF, 0x30, 0xFF, 0x31
@@ -651,125 +651,125 @@ byte_8089958: .byte 0xFF, 0x2E, 0xFF, 0x2F, 0xFF, 0x30, 0xFF, 0x31
 .func
 .thumb_func
 sub_8089960:
-	push {r4-r7,lr}
-	ldrb r0, [r5,#0x13]
-	tst r0, r0
+	push {R4-R7,lr}
+	ldrb R0, [R5,#0x13]
+	tst R0, R0
 	bne loc_808997A
 	bl sub_8089CB4
 	beq loc_808997A
-	mov r0, #4
-	mov r1, #0xff
+	mov R0, #4
+	mov R1, #0xFF
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	mov r0, #0x4c 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_808997A:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089960
 
 .func
 .thumb_func
 sub_808997E:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_8089998
-	mov r0, #0
-	mov r1, #0x10
+	mov R0, #0
+	mov R1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
-	mov r0, #5
+	mov R0, #5
 	bl sub_8089CB0
 	mov r0, #0x50 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_8089998:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_808997E
 
 .func
 .thumb_func
 sub_808999C:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_8089CB4
 	beq loc_80899D4
 	bl sub_8142224
-	tst r0, r0
+	tst R0, R0
 	beq loc_80899B2
 	bl sub_8142C46
 	b loc_80899C2
 loc_80899B2:
 	bl sub_814223E
-	mov r0, #0x1e
+	mov R0, #0x1E
 	bl sub_8089CB0
 	mov r0, #0x54 
-	strb r0, [r5]
+	strb R0, [R5]
 	b loc_80899D4
 loc_80899C2:
 	bl getPETNaviSelect // () -> u8
 	bl sub_80010D4
-	tst r0, r0
+	tst R0, R0
 	beq loc_80899B2
-	mov r0, #0x1e
+	mov R0, #0x1E
 	bl sub_8089CB0
 loc_80899D4:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_808999C
 
 .func
 .thumb_func
 sub_80899D8:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_80899EE
 	bl sub_8089CB4
 	beq loc_80899EE
 	bl sub_8142BF4
 	mov r0, #0x58 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_80899EE:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_80899D8
 
 .func
 .thumb_func
 sub_80899F2:
-	push {r4-r7,lr}
-	mov r0, #0
+	push {R4-R7,lr}
+	mov R0, #0
 	bl sub_8142C20
 	add r4, r0, #0
 	bl sub_814216E
-	cmp r0, r4
+	cmp R0, R4
 	bne loc_8089A0C
 	bl sub_8089CDC
-	mov r0, #0x18
-	strb r0, [r5]
+	mov R0, #0x18
+	strb R0, [R5]
 loc_8089A0C:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_80899F2
 
 .func
 .thumb_func
 sub_8089A10:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_8089CB4
 	beq loc_8089A36
 	bl sub_81426CE
-	ldr r1, off_8089A3C // =off_8089A40 
+	ldr R1, off_8089A3C // =off_8089A40 
 	lsl r0, r0, #2
-	ldr r0, [r1,r0]
-	str r0, [r5,#0x3c]
+	ldr R0, [R1,R0]
+	str R0, [R5,#0x3C]
 	bl sub_8036F98
-	mov r0, #1
-	strb r0, [r5,#0x13]
+	mov R0, #1
+	strb R0, [R5,#0x13]
 	mov r0, #0x3c 
 	bl sub_8089CB0
 	mov r0, #0x60 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_8089A36:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 	.balign 4, 0x00
 off_8089A3C: .word off_8089A40
 off_8089A40: .word dword_8089494
@@ -785,317 +785,317 @@ off_8089A40: .word dword_8089494
 .func
 .thumb_func
 sub_8089A60:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_8089CB4
 	beq loc_8089AC6
 	bl sub_81427CE
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1c00 // ADD R0, R0, #0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	bl sub_814219C
-	str r0, [r7,#0x10]
+	str R0, [R7,#0x10]
 	bl sub_81422B4
 	// entryIdx
-	mov r0, #7
+	mov R0, #7
 	// byteFlagIdx
 	mov r1, #0x40 
 	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-	mov r0, #2
+	mov R0, #2
 	mov r1, #0x25 
 	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	mov r1, #0
-	strb r1, [r0,#0x15]
+	mov R0, R10
+	ldr R0, [R0,#0x3C]
+	mov R1, #0
+	strb R1, [R0,#0x15]
 	// entryIdx
-	mov r0, #0
+	mov R0, #0
 	// byteFlagIdx
 	mov r1, #0x28 
 	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8089ABA
 	bl sub_81426CE
-	cmp r0, #6
+	cmp R0, #6
 	bge loc_8089ABA
 	bl sub_8035408
 	mov r0, #0x65 
-	add r0, #0xff
+	add R0, #0xFF
 	bl sound_play // () -> void
 	bl sub_8036E44
 	bl sub_8036E78
 loc_8089ABA:
-	mov r0, #0x1e
+	mov R0, #0x1E
 	bl sub_8089CB0
 	mov r0, #0x64 
-	strb r0, [r5]
+	strb R0, [R5]
 	b loc_8089AC6
 loc_8089AC6:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089A60
 
 .func
 .thumb_func
 sub_8089ACA:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_8089CB4
 	beq loc_8089AE4
-	mov r0, #0xc
+	mov R0, #0xC
 	bl sub_8089CA4
-	mov r0, #0x1e
+	mov R0, #0x1E
 	bl sub_8089CB0
 	mov r0, #0x68 
-	strb r0, [r5]
+	strb R0, [R5]
 	b loc_8089AE4
 loc_8089AE4:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089ACA
 
 .func
 .thumb_func
 sub_8089AE8:
-	push {r4-r7,lr}
-	mov r0, #0x80
+	push {R4-R7,lr}
+	mov R0, #0x80
 	bl chatbox_8045F3C
 	bne loc_8089B2A
 	bl sub_8089CB4
 	beq loc_8089B2A
 	bl sub_8036FAA
-	mov r0, #0
-	strb r0, [r5,#0x13]
-	mov r0, #4
+	mov R0, #0
+	strb R0, [R5,#0x13]
+	mov R0, #4
 	bl sub_809E2AE
 	bl sub_809E2B8
 	bl sub_809E13C
-	ldr r0, [r7,#0x10]
-	tst r0, r0
+	ldr R0, [R7,#0x10]
+	tst R0, R0
 	bne loc_8089B20
-	mov r0, #0
+	mov R0, #0
 	bl sub_8089CB0
 	mov r0, #0x70 
-	strb r0, [r5]
+	strb R0, [R5]
 	b loc_8089B2A
 loc_8089B20:
-	mov r0, #0x1e
+	mov R0, #0x1E
 	bl sub_8089CB0
 	mov r0, #0x6c 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_8089B2A:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089AE8
 
 .func
 .thumb_func
 sub_8089B2E:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_8089CB4
 	beq loc_8089B50
-	mov r0, #2
-	ldr r1, [r7,#0x10]
+	mov R0, #2
+	ldr R1, [R7,#0x10]
 	bl chatbox_8045EDC
-	mov r0, #0x11
+	mov R0, #0x11
 	bl sub_8089CA4
-	mov r0, #0x1e
+	mov R0, #0x1E
 	bl sub_8089CB0
 	mov r0, #0x70 
-	strb r0, [r5]
+	strb R0, [R5]
 	b loc_8089B50
 loc_8089B50:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089B2E
 
 .func
 .thumb_func
 sub_8089B54:
-	push {r4-r7,lr}
-	mov r0, #0x80
+	push {R4-R7,lr}
+	mov R0, #0x80
 	bl chatbox_8045F3C
 	bne loc_8089B7A
 	bl sub_8089CB4
 	beq loc_8089B7A
-	mov r0, #4
+	mov R0, #4
 	bl sub_809E2AE
 	bl sub_809E2B8
 	bl sub_809E13C
 	bl reqBBS_clearFlag_8140A0C
-	mov r0, #0x18
-	strb r0, [r5]
+	mov R0, #0x18
+	strb R0, [R5]
 loc_8089B7A:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089B54
 
 .func
 .thumb_func
 sub_8089B7E:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_8089CB4
 	beq loc_8089B90
-	mov r0, #0
+	mov R0, #0
 	bl sub_8089CA4
 	mov r0, #0x78 
-	strb r0, [r5]
+	strb R0, [R5]
 loc_8089B90:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089B7E
 
 .func
 .thumb_func
 sub_8089B94:
-	push {r4-r7,lr}
-	mov r0, #0x80
+	push {R4-R7,lr}
+	mov R0, #0x80
 	bl chatbox_8045F3C
 	bne loc_8089BA6
-	mov r0, #1
-	strb r0, [r5,#8]
-	mov r0, #0
-	pop {r4-r7,pc}
+	mov R0, #1
+	strb R0, [R5,#8]
+	mov R0, #0
+	pop {R4-R7,pc}
 loc_8089BA6:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089B94
 
 .func
 .thumb_func
 sub_8089BAA:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_8089CB4
 	beq loc_8089BBC
-	mov r0, #0xd
+	mov R0, #0xD
 	bl sub_8089CA4
-	mov r0, #0x80
-	strb r0, [r5]
+	mov R0, #0x80
+	strb R0, [R5]
 loc_8089BBC:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089BAA
 
 .func
 .thumb_func
 sub_8089BC0:
-	push {r4-r7,lr}
-	mov r0, #0x80
+	push {R4-R7,lr}
+	mov R0, #0x80
 	bl chatbox_8045F3C
 	bne loc_8089BE0
 	// entryIdx
-	mov r0, #7
+	mov R0, #7
 	// byteFlagIdx
 	mov r1, #0x45 
 	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-	mov r0, #0
-	strb r0, [r5,#8]
-	mov r0, #0x1e
+	mov R0, #0
+	strb R0, [R5,#8]
+	mov R0, #0x1E
 	bl sub_8089CB0
-	mov r0, #0x1c
-	strb r0, [r5]
+	mov R0, #0x1C
+	strb R0, [R5]
 loc_8089BE0:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089BC0
 
 .func
 .thumb_func
 sub_8089BE4:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_8089CB4
 	beq loc_8089BF6
-	mov r0, #0xe
+	mov R0, #0xE
 	bl sub_8089CA4
-	mov r0, #0x88
-	strb r0, [r5]
+	mov R0, #0x88
+	strb R0, [R5]
 loc_8089BF6:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089BE4
 
 .func
 .thumb_func
 sub_8089BFA:
-	push {r4-r7,lr}
-	mov r0, #0x80
+	push {R4-R7,lr}
+	mov R0, #0x80
 	bl chatbox_8045F3C
 	bne loc_8089C12
-	mov r0, #0
-	strb r0, [r5,#8]
-	mov r0, #0x1e
+	mov R0, #0
+	strb R0, [R5,#8]
+	mov R0, #0x1E
 	bl sub_8089CB0
-	mov r0, #0x1c
-	strb r0, [r5]
+	mov R0, #0x1C
+	strb R0, [R5]
 loc_8089C12:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089BFA
 
 .func
 .thumb_func
 sub_8089C16:
-	push {r4-r7,lr}
-	ldrb r0, [r5,#0x13]
-	tst r0, r0
+	push {R4-R7,lr}
+	ldrb R0, [R5,#0x13]
+	tst R0, R0
 	bne loc_8089C74
-	mov r0, #1
-	strb r0, [r5,#8]
+	mov R0, #1
+	strb R0, [R5,#8]
 	bl getPETNaviSelect // () -> u8
 	bl sub_80010D4
-	tst r0, r0
+	tst R0, R0
 	bne loc_8089C4A
-	strb r0, [r5,#8]
+	strb R0, [R5,#8]
 	bl getPETNaviSelect // () -> u8
-	cmp r0, #0
+	cmp R0, #0
 	bne loc_8089C3E
 	mov r0, #0x3a 
 	bl sub_809E13C
 loc_8089C3E:
-	mov r0, #0x1e
+	mov R0, #0x1E
 	bl sub_8089CB0
-	mov r0, #0x84
-	strb r0, [r5]
+	mov R0, #0x84
+	strb R0, [R5]
 	b loc_8089C74
 loc_8089C4A:
 	bl sub_809E2B8
 	bl sub_809E13C
-	mov r0, #0x1e
+	mov R0, #0x1E
 	bl sub_8089CB0
 	bl sub_814216E
 	beq loc_8089C6A
 	bl sub_814219C
 	bne loc_8089C6A
 	mov r0, #0x7c 
-	strb r0, [r5]
+	strb R0, [R5]
 	b loc_8089C74
 loc_8089C6A:
-	mov r0, #0
+	mov R0, #0
 	bl sub_8089CB0
-	mov r0, #0x1c
-	strb r0, [r5]
+	mov R0, #0x1C
+	strb R0, [R5]
 loc_8089C74:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 .endfunc // sub_8089C16
 
 .func
 .thumb_func
 sub_8089C78:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_8089CB4
 	beq loc_8089C9A
 	bl sub_8036FAA
-	mov r0, #0
-	strb r0, [r5,#0x13]
+	mov R0, #0
+	strb R0, [R5,#0x13]
 	bl sub_81426CE
-	ldr r1, off_8089CA0 // =dword_8089494+64 
-	mov r2, #0x10
-	mul r2, r0
+	ldr R1, off_8089CA0 // =dword_8089494+64 
+	mov R2, #0x10
+	mul R2, R0
 	add r1, r1, r2
-	str r1, [r5,#0x34]
-	mov r0, #0
-	pop {r4-r7,pc}
+	str R1, [R5,#0x34]
+	mov R0, #0
+	pop {R4-R7,pc}
 loc_8089C9A:
-	mov r0, #1
-	pop {r4-r7,pc}
+	mov R0, #1
+	pop {R4-R7,pc}
 	.byte 0, 0
 off_8089CA0: .word dword_8089494+0x40
 .endfunc // sub_8089C78
@@ -1103,126 +1103,126 @@ off_8089CA0: .word dword_8089494+0x40
 .func
 .thumb_func
 sub_8089CA4:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	add r1, r0, #0
-	ldr r0, [r5,#0x30]
+	ldr R0, [R5,#0x30]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-	pop {r4-r7,pc}
+	pop {R4-R7,pc}
 .endfunc // sub_8089CA4
 
 .func
 .thumb_func
 sub_8089CB0:
-	strh r0, [r5,#0x18]
-	mov pc, lr
+	strh R0, [R5,#0x18]
+	mov PC, LR
 .endfunc // sub_8089CB0
 
 .func
 .thumb_func
 sub_8089CB4:
-	ldrh r0, [r5,#0x18]
-	sub r0, #1
+	ldrh R0, [R5,#0x18]
+	sub R0, #1
 	blt loc_8089CC0
-	strh r0, [r5,#0x18]
-	mov r0, #0
-	mov pc, lr
+	strh R0, [R5,#0x18]
+	mov R0, #0
+	mov PC, LR
 loc_8089CC0:
-	mov r0, #1
-	mov pc, lr
+	mov R0, #1
+	mov PC, LR
 .endfunc // sub_8089CB4
 
 .func
 .thumb_func
 sub_8089CC4:
-	push {r4-r7,lr}
+	push {R4-R7,lr}
 	bl sub_81429CA
-	ldr r0, off_8089CD8 // =dword_8089480 
-	str r0, [r5,#0x3c]
+	ldr R0, off_8089CD8 // =dword_8089480 
+	str R0, [R5,#0x3C]
 	bl sub_8036F98
-	mov r0, #1
-	strb r0, [r5,#0x13]
-	pop {r4-r7,pc}
+	mov R0, #1
+	strb R0, [R5,#0x13]
+	pop {R4-R7,pc}
 off_8089CD8: .word dword_8089480
 .endfunc // sub_8089CC4
 
 .func
 .thumb_func
 sub_8089CDC:
-	push {r4-r7,lr}
-	ldr r0, dword_8089CF4 // =dword_8089480 
-	str r0, [r5,#0x3c]
+	push {R4-R7,lr}
+	ldr R0, dword_8089CF4 // =dword_8089480 
+	str R0, [R5,#0x3C]
 	bl sub_8036F98
-	mov r0, #1
-	strb r0, [r5,#0x13]
+	mov R0, #1
+	strb R0, [R5,#0x13]
 	bl sub_8089D0E
 	bl sub_8089D44
-	pop {r4-r7,pc}
+	pop {R4-R7,pc}
 dword_8089CF4: .word 0x808948A
 .endfunc // sub_8089CDC
 
 .func
 .thumb_func
 sub_8089CF8:
-	push {r4-r7,lr}
-	mov r4, #0
+	push {R4-R7,lr}
+	mov R4, #0
 loc_8089CFC:
-	mov r0, #0x12
+	mov R0, #0x12
 	bl sub_8004822
-	str r5, [r7]
-	add r7, #4
-	add r4, #1
-	cmp r4, #3
+	str R5, [R7]
+	add R7, #4
+	add R4, #1
+	cmp R4, #3
 	blt loc_8089CFC
-	pop {r4-r7,pc}
+	pop {R4-R7,pc}
 .endfunc // sub_8089CF8
 
 .func
 .thumb_func
 sub_8089D0E:
-	push {r4-r7,lr}
-	mov r4, #0
+	push {R4-R7,lr}
+	mov R4, #0
 loc_8089D12:
-	ldr r5, [r7]
-	tst r5, r5
+	ldr R5, [R7]
+	tst R5, R5
 	beq loc_8089D1C
 	bl sub_80048B2
 loc_8089D1C:
-	add r7, #4
-	add r4, #1
-	cmp r4, #3
+	add R7, #4
+	add R4, #1
+	cmp R4, #3
 	blt loc_8089D12
-	pop {r4-r7,pc}
+	pop {R4-R7,pc}
 .endfunc // sub_8089D0E
 
 .func
 .thumb_func
 sub_8089D26:
-	push {r4-r7,lr}
-	mov r0, #4
-	mov r1, #1
-	mov r2, #0
+	push {R4-R7,lr}
+	mov R0, #4
+	mov R1, #1
+	mov R2, #0
 	bl sub_80468C6
-	mov r0, #0
+	mov R0, #0
 	bl sub_80468EC
-	mov r0, #3
-	mov r1, #0
-	mov r2, #1
+	mov R0, #3
+	mov R1, #0
+	mov R2, #1
 	bl sub_80468C6
-	pop {r4-r7,pc}
+	pop {R4-R7,pc}
 .endfunc // sub_8089D26
 
 .func
 .thumb_func
 sub_8089D44:
-	push {r4-r7,lr}
-	mov r0, #0
+	push {R4-R7,lr}
+	mov R0, #0
 	bl sub_80468EC
-	mov r0, #3
-	mov r1, #0
-	mov r2, #0
+	mov R0, #3
+	mov R1, #0
+	mov R2, #0
 	bl sub_80468C6
 	// <endpool> <endfile>
-	pop {r4-r7,pc}
+	pop {R4-R7,pc}
 .endfunc // sub_8089D44
 
 /*For debugging purposes, connect comment at any range!*/

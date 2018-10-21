@@ -5,12 +5,12 @@
 .global sub_80B81EC
 .global sub_80B8210
 .global sub_80B84EC
-.global loc_80B85E0
-.global loc_80B88D0
+.global sub_80B85E0
+.global sub_80B88D0
 .global sub_80B8A0A
-.global loc_80B8A18
-.global loc_80B8CD8
-.global loc_80B8EA0
+.global sub_80B8A18
+.global sub_80B8CD8
+.global sub_80B8EA0
 .global sub_80B9014
 .global loc_80B9078
 .global sub_80B921A
@@ -26,14 +26,14 @@
 .global sub_80B9F0E
 .global loc_80B9F44
 .global sub_80BA1B0
-.global loc_80BA364
+.global sub_80BA364
 .global sub_80BA660
 .global loc_80BA708
 .global sub_80BA920
-.global loc_80BAA8C
+.global sub_80BAA8C
 .global sub_80BAE16
-.global loc_80BAF50
-.global loc_80BB2A0
+.global sub_80BAF50
+.global sub_80BB2A0
 .global loc_80BB608
 .global sub_80BB7F6
 .global loc_80BB914
@@ -79,8 +79,8 @@
 .global loc_80C1008
 .global sub_80C10E8
 .global loc_80C11AC
-.global loc_80C1570
-.global loc_80C1A10
+.global sub_80C1570
+.global sub_80C1A10
 .global loc_80C2138
 .global loc_80C26F0
 .global sub_80C2A4C
@@ -124,7 +124,7 @@
 .global loc_80C53C0
 .global loc_80C55B0
 .global sub_80C579E
-.global loc_80C57C0
+.global sub_80C57C0
 .global sub_80C59F6
 .global loc_80C5A34
 .global sub_80C5B76
@@ -231,7 +231,7 @@
 .global sub_80D2034
 .global sub_80D2290
 .global sub_80D2430
-.global loc_80D2460
+.global sub_80D2460
 .global sub_80D25D4
 .global loc_80D2A94
 .global loc_80D2BDC
@@ -305,6 +305,7 @@
 .global loc_80DAE94
 .global loc_80DB0E4
 .global loc_80DB304
+.global sub_80DB570
 .global sub_80DB6A4
 .global loc_80DB8CC
 .global loc_80DB994
@@ -618,7 +619,7 @@
 /* External Symbols */
 .include "asm/start.inc"
 // .global start_
-// .global dword_80001F4
+// .global off_80001F4
 
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
@@ -861,7 +862,7 @@
 // .global sub_80107D4
 // .global sub_8010820
 // .global sub_8010DD0
-// .global loc_8010DF6
+// .global sub_8010DF6
 // .global sub_8011020
 // .global loc_8011044
 // .global sub_8011420
@@ -1172,20 +1173,21 @@
 // .equ unk_2010A08, 0x2010A08
 // .equ unk_2010B08, 0x2010B08
 // .equ unk_202070C, 0x202070C
-// .equ unk_2030204, 0x2030204
+// .equ byte_2030204, 0x2030204
+// .equ byte_2030405, 0x2030405
 // .equ byte_2036740, 0x2036740
 // .equ byte_203C960, 0x203C960
 // .equ byte_203C961, 0x203C961
 // .equ word_203C962, 0x203C962
 // .equ dword_203C964, 0x203C964
-// .equ dword_203C968, 0x203C968
+// .equ byte_203C968, 0x203C968
 // .equ dword_203CFB0, 0x203CFB0
 // .equ dword_203CFB4, 0x203CFB4
 // .equ dword_203CFB8, 0x203CFB8
 // .equ dword_203CFBC, 0x203CFBC
 // .equ dword_203CFC0, 0x203CFC0
-// .equ dword_203CFC4, 0x203CFC4
-// .equ unk_3001750, 0x3001750
+// .equ byte_203CFC4, 0x203CFC4
+// .equ byte_3001750, 0x3001750
 // .equ unk_3001B60, 0x3001B60
 // .equ unk_3003D0C, 0x3003D0C
 .equ LCDControl, 0x4000000

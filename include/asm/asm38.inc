@@ -3,8 +3,6 @@
 
 /* Public Symbols */
 .global sub_81D6000
-.global IWRAMRoutines
-.global IWRAMRoutinesEnd
 
 
 /* External Symbols */
@@ -86,24 +84,24 @@
 // .equ dword_200F350, 0x200F350
 // .equ unk_2034F60, 0x2034F60
 // .equ byte_2039AE0, 0x2039AE0
-// .equ dword_3000E70, 0x3000E70
-// .equ dword_3000E74, 0x3000E74
-// .equ dword_3000E78, 0x3000E78
-// .equ dword_3000E7C, 0x3000E7C
-// .equ dword_3000E80, 0x3000E80
-// .equ dword_3000E84, 0x3000E84
-// .equ dword_3000E88, 0x3000E88
-// .equ dword_3000E8C, 0x3000E8C
-// .equ dword_3000E90, 0x3000E90
-// .equ dword_3000E94, 0x3000E94
-// .equ dword_3000E98, 0x3000E98
-// .equ dword_3000E9C, 0x3000E9C
-// .equ dword_3000EA0, 0x3000EA0
-// .equ dword_3000EA4, 0x3000EA4
-// .equ unk_3001150, 0x3001150
-// .equ unk_3001550, 0x3001550
-// .equ unk_3001750, 0x3001750
-// .equ dword_3001950, 0x3001950
+// .equ off_3000E70, 0x3000E70
+// .equ off_3000E74, 0x3000E74
+// .equ off_3000E78, 0x3000E78
+// .equ off_3000E7C, 0x3000E7C
+// .equ off_3000E80, 0x3000E80
+// .equ off_3000E84, 0x3000E84
+// .equ off_3000E88, 0x3000E88
+// .equ off_3000E8C, 0x3000E8C
+// .equ off_3000E90, 0x3000E90
+// .equ off_3000E94, 0x3000E94
+// .equ off_3000E98, 0x3000E98
+// .equ off_3000E9C, 0x3000E9C
+// .equ off_3000EA0, 0x3000EA0
+// .equ off_3000EA4, 0x3000EA4
+// .equ byte_3001150, 0x3001150
+// .equ byte_3001550, 0x3001550
+// .equ byte_3001750, 0x3001750
+// .equ byte_3001950, 0x3001950
 // .equ dword_3001D60, 0x3001D60
 // .equ dword_3001D70, 0x3001D70
 // .equ word_3001D74, 0x3001D74
@@ -117,6 +115,8 @@
 // .equ dword_3002594, 0x3002594
 // .equ unk_30025B0, 0x30025B0
 // .equ unk_3005CA0, 0x3005CA0
+// .equ unk_3005CD9, 0x3005CD9
+// .equ unk_3005CDB, 0x3005CDB
 // .equ unk_3005D10, 0x3005D10
 // .equ byte_3005FB0, 0x3005FB0
 // .equ sub_3005FC0, 0x3005FC0

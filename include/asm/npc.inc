@@ -87,6 +87,6 @@
 
 
 /* Undeclared Symbols */
-// .equ unk_202FA04, 0x202FA04
+// .equ byte_202FA04, 0x202FA04
 
 .endif // INC_ASM_NPC

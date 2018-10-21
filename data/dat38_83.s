@@ -276,8 +276,9 @@
 	.byte  0
 	.byte  0
 	.byte  0
-// decompressed size: 0xBC4
-comp_86DD59C:  .byte 0x10
+comp_86DD59C:
+	// decompressed size: 0xBC4
+	.byte 0x10
 	.byte 0xC4
 	.byte 0xB
 	.byte  0

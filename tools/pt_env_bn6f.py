@@ -1095,7 +1095,7 @@ pt.env(gameFiles={
 'data/compressed/comp_87F4394.lz77':
 	(0x87F4394, 0x87F8EB0), # size=0x4B1C
 'data/dat38_99.s':
-	(0x87F8EB0, 0x8800000), # size=0x7150
+	(0x87F8EB0, 0x87FE36C), # size=0x54b8
 })
 
 print("Environment set!")

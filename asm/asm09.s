@@ -3,43 +3,43 @@
 .func
 .thumb_func
 sub_8062AB0:
-	push {r4-r7,lr}
-	mov r7, r10
-	ldr r0, off_8062B0C // =off_8062728 
-	ldr r1, [r7,#0x14]
-	ldrb r2, [r5,#5]
+	push {R4-R7,lr}
+	mov R7, R10
+	ldr R0, off_8062B0C // =off_8062728 
+	ldr R1, [R7,#0x14]
+	ldrb R2, [R5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
-	ldr r0, [r0]
-	str r0, [r1,#0x14]
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldr R0, [R0]
+	str R0, [R1,#0x14]
+	ldrb R0, [R5,#4]
+	ldrb R1, [R5,#5]
 	bl sub_803037C
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldrb R0, [R5,#4]
+	ldrb R1, [R5,#5]
 	bl sub_8030AA4
-	ldr r0, [r5,#0x24]
-	ldr r1, [r5,#0x28]
-	ldr r2, [r5,#0x2c]
-	ldrb r3, [r5,#4]
-	ldrb r4, [r5,#5]
+	ldr R0, [R5,#0x24]
+	ldr R1, [R5,#0x28]
+	ldr R2, [R5,#0x2C]
+	ldrb R3, [R5,#4]
+	ldrb R4, [R5,#5]
 	bl sub_802FF4C
 	bl loc_8030472
-	ldr r0, off_8062B10 // =unk_2037800 
+	ldr R0, off_8062B10 // =unk_2037800 
 	bl sub_80028D4
-	ldrb r1, [r5,#5]
+	ldrb R1, [R5,#5]
 	lsl r1, r1, #2
-	ldr r0, off_8062B18 // =off_8062B1C 
-	ldr r0, [r0,r1]
+	ldr R0, off_8062B18 // =off_8062B1C 
+	ldr R0, [R0,R1]
 	bl sub_8002906
 	bl chatbox_uncomp_803FD08 // () -> int
 	bl sub_8062BCC
-	ldr r0, off_8062B14 // =off_8063008 
-	ldrb r1, [r5,#5]
+	ldr R0, off_8062B14 // =off_8063008 
+	ldrb R1, [R5,#5]
 	lsl r1, r1, #2
-	ldr r0, [r0,r1]
-	str r0, [r5,#0x64]
-	pop {r4-r7,pc}
+	ldr R0, [R0,R1]
+	str R0, [R5,#0x64]
+	pop {R4-R7,pc}
 	.balign 4, 0x00
 off_8062B0C: .word off_8062728
 off_8062B10: .word unk_2037800
@@ -67,8 +67,8 @@ byte_8062B58: .byte 0x1C, 0x85, 0x1C, 0x83, 0x1C, 0x84, 0x1C, 0x94, 0x1C
 sub_8062B64:
 	push {lr}
 	lsl r1, r1, #2
-	ldr r0, off_8062B74 // =off_8062B78 
-	ldr r0, [r0,r1]
+	ldr R0, off_8062B74 // =off_8062B78 
+	ldr R0, [R0,R1]
 	bl sub_8002354
 	pop {pc}
 	.balign 4, 0x00
@@ -100,17 +100,18 @@ off_8062BC4: .word byte_8062A70
 .thumb_func
 sub_8062BCC:
 	push {lr}
-	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0,#5]
+	mov R0, R10
+	ldr R0, [R0,#0x3C]
+	ldrb R0, [R0,#5]
 	lsl r0, r0, #2
-	ldr r1, off_8062BE0 // =pt_8062BE4 
-	ldr r0, [r1,r0]
+	ldr R1, off_8062BE0 // =pt_8062BE4 
+	ldr R0, [R1,R0]
 	bl sub_8003570
 	pop {pc}
 off_8062BE0: .word pt_8062BE4
-// <endpool> <endfile>
-pt_8062BE4:  .word dword_8062BFC
+pt_8062BE4:
+	// <endpool> <endfile>
+	.word dword_8062BFC
 	.word dword_8062DA4
 	.word dword_8062DE4
 	.word dword_8062E88

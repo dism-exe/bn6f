@@ -5,7 +5,7 @@
 sub_80924D0:
 	push {lr}
 	bl sub_8005D88
-	mov r0, #0
+	mov R0, #0
 	// <endpool> <endfile>
 	pop {pc}
 .endfunc // sub_80924D0

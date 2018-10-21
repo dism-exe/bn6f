@@ -1,8 +1,9 @@
 .include "data/dat00.inc"
 
-// <endfile>
-off_801ECB4:  .word dword_86B7AC0
-	.word unk_3001710
+off_801ECB4:
+	// <endfile>
+	.word dword_86B7AC0
+	.word byte_3001710
 	.word 0x20
 	.word dword_86E1638
 	.word 0x600B400
@@ -29,7 +30,7 @@ off_801ECB4:  .word dword_86B7AC0
 	.word unk_3001AE0
 	.word 0x20
 	.word byte_872CFD4
-	.word unk_3001690
+	.word byte_3001690
 	.word 0x20
 	.word byte_86E58FC
 	.word unk_3001B20

@@ -82,6 +82,6 @@
 
 
 /* Undeclared Symbols */
-// .equ unk_30016F0, 0x30016F0
+// .equ byte_30016F0, 0x30016F0
 
 .endif // INC_ASM_ASM23
