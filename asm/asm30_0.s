@@ -5,16 +5,16 @@
 sub_80AED50:
 	push {lr}
 	bl sub_80182B4
-	ldrb R1, [R0,#1]
-	ldrb R2, [R0,#2]
-	ldrb R3, [R0]
-	ldr R0, off_80AED70 // =off_80AED74 
+	ldrb r1, [r0,#1]
+	ldrb r2, [r0,#2]
+	ldrb r3, [r0]
+	ldr r0, off_80AED70 // =off_80AED74 
 	lsl r1, r1, #2
-	ldr R0, [R0,R1]
+	ldr r0, [r0,r1]
 	lsl r2, r2, #2
-	ldr R0, [R0,R2]
+	ldr r0, [r0,r2]
 	mov r1, #0x20 
-	mul R3, R1
+	mul r3, r1
 	add r0, r0, r3
 	pop {pc}
 	.byte 0, 0

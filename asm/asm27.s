@@ -3,12 +3,12 @@
 .func
 .thumb_func
 sub_80946C4:
-	push {R4-R7,lr}
+	push {r4-r7,lr}
 	// initRefs
-	ldr R0, off_80946D0 // =initRefs_80946D4 
+	ldr r0, off_80946D0 // =initRefs_80946D4 
 	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
-	mov R0, #0
-	pop {R4-R7,pc}
+	mov r0, #0
+	pop {r4-r7,pc}
 off_80946D0: .word initRefs_80946D4
 initRefs_80946D4: .word comp_857CCC8 + 1<<31
 	.word 0x600C000
@@ -31,73 +31,73 @@ initRefs_80946D4: .word comp_857CCC8 + 1<<31
 .func
 .thumb_func
 sub_8094708:
-	push {R4-R7,lr}
-	ldr R0, off_8094774 // =unk_2025404 
+	push {r4-r7,lr}
+	ldr r0, off_8094774 // =unk_2025404 
 	bl sub_8094738
-	mov R0, #0
-	pop {R4-R7,pc}
+	mov r0, #0
+	pop {r4-r7,pc}
 .endfunc // sub_8094708
 
 .func
 .thumb_func
 sub_8094714:
-	push {R4-R7,lr}
-	ldr R0, off_8094778 // =unk_2026404 
+	push {r4-r7,lr}
+	ldr r0, off_8094778 // =unk_2026404 
 	bl sub_8094738
-	mov R0, #0
-	pop {R4-R7,pc}
+	mov r0, #0
+	pop {r4-r7,pc}
 .endfunc // sub_8094714
 
 .func
 .thumb_func
 sub_8094720:
-	push {R4-R7,lr}
+	push {r4-r7,lr}
 	// memBlock
-	ldr R0, off_8094778 // =unk_2026404 
-	mov R1, #0x10
+	ldr r0, off_8094778 // =unk_2026404 
+	mov r1, #0x10
 	lsl r1, r1, #8
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-	ldr R0, off_8094778 // =unk_2026404 
+	ldr r0, off_8094778 // =unk_2026404 
 	bl sub_8094738
-	mov R0, #0
-	pop {R4-R7,pc}
+	mov r0, #0
+	pop {r4-r7,pc}
 	.balign 4, 0x00
 .endfunc // sub_8094720
 
 .func
 .thumb_func
 sub_8094738:
-	push {R4-R7,lr}
-	ldr R5, off_809477C // =byte_200BE70 
-	ldr R7, [R5,#0xC] // (dword_200BE7C - 0x200BE70)
-	ldr R1, [R7,#8]
+	push {r4-r7,lr}
+	ldr r5, off_809477C // =byte_200BE70 
+	ldr r7, [r5,#0xc] // (dword_200BE7C - 0x200be70)
+	ldr r1, [r7,#8]
 	add r7, r7, r1
-	ldrb R6, [R5]
+	ldrb r6, [r5]
 	lsl r6, r6, #1
 	add r7, #0x42 
 	mov r1, #0x2b 
-	mul R1, R6
+	mul r1, r6
 	add r7, r7, r1
 	add r5, r0, #0
-	mov R4, #0
+	mov r4, #0
 loc_8094752:
 	mov r0, #0x64 
-	mul R0, R4
+	mul r0, r4
 	// src
 	add r0, r0, r5
 	add r1, r4, #0
-	mul R1, R6
+	mul r1, r6
 	// dest
 	add r1, r1, r7
 	// halfwordCount
 	mov r2, #0x64 
 	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-	add R4, #1
+	add r4, #1
 	cmp r4, #0x22 
 	blt loc_8094752
 	bl sub_80307D8
-	mov R0, #0
-	pop {R4-R7,pc}
+	mov r0, #0
+	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8094774: .word unk_2025404
 off_8094778: .word unk_2026404

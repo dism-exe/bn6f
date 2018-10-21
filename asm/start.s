@@ -16,78 +16,78 @@ start_:
 	.word 0x0, 0x5900, 0x0, 0x0, 0x0
 	.word 0x0
 loc_80000D0:
-	mov R0, #0x12
-	msr CPSR_cf, R0
-	ldr R13, off_80001EC // =unk_3007F60
-	mov R0, #0x13
-	msr CPSR_cf, R0
-	ldr R13, off_80001F0 // =unk_3007FE0
-	mov R0, #0x1F
-	msr CPSR_cf, R0
-	ldr R13, off_80001F4 // =iStack
-	ldr R0, off_80001F8 // =unk_3007FFC
-	ldr R1, off_80001FC // =loc_3005B00
-	str R1, [R0]
-	ldr R0, off_8000200 // =GamePakWaitstateControl
-	ldr R1, dword_8000204 // =0x45B4
-	str R1, [R0]
+	mov r0, #0x12
+	msr CPSR_cf, r0
+	ldr r13, off_80001EC // =unk_3007F60 
+	mov r0, #0x13
+	msr CPSR_cf, r0
+	ldr r13, off_80001F0 // =unk_3007FE0 
+	mov r0, #0x1f
+	msr CPSR_cf, r0
+	ldr r13, off_80001F4 // =iStack 
+	ldr r0, off_80001F8 // =unk_3007FFC 
+	ldr r1, off_80001FC // =loc_3005B00 
+	str r1, [r0]
+	ldr r0, off_8000200 // =GamePakWaitstateControl 
+	ldr r1, dword_8000204 // =0x45b4 
+	str r1, [r0]
 	// mem
-	mov R0, #0x3000000 // unk_3000000
+	mov r0, #0x3000000 // unk_3000000
 	// size
-	mov R1, #0x7E00
+	mov r1, #0x7e00
 	bl start_clearMemory // (void *mem, int size) -> void
 	// mem
-	mov R0, #0x2000000 // timer_2000000
+	mov r0, #0x2000000 // timer_2000000
 	// size
-	mov R1, #0x40000
+	mov r1, #0x40000
 	bl start_clearMemory // (void *mem, int size) -> void
 	// mem
-	mov R0, #0x6000000
+	mov r0, #0x6000000
 	// size
-	mov R1, #0x18000
+	mov r1, #0x18000
 	bl start_clearMemory // (void *mem, int size) -> void
 	// mem
-	mov R0, #0x7000000
+	mov r0, #0x7000000
 	// size
-	mov R1, #0x400
+	mov r1, #0x400
 	bl start_clearMemory // (void *mem, int size) -> void
 	// mem
-	mov R0, #0x5000000
+	mov r0, #0x5000000
 	// size
-	mov R1, #0x400
+	mov r1, #0x400
 	bl start_clearMemory // (void *mem, int size) -> void
 	// src
-	ldr R0, mem // =sub_81D6000
+	ldr r0, mem // =IWRAMRoutinesROMLocation 
 	// dest
-	ldr R1, a2 // =loc_3005B00
+	ldr r1, a2 // =loc_3005B00 
 	// size
-	ldr R2, IWRAMRoutinesSize_p // =0x1ED4
+	ldr r2, IWRAMRoutinesSize_p // =0x1ed4 
 	bl start_copyMemory // (void *src, void *dest, int size) -> void
-	ldr R0, off_8000214 // =CpuSet_toolKit+1
-	mov LR, PC
+	ldr r0, off_8000214 // =CpuSet_toolKit+1 
+	mov lr, pc
 	bx r0
-	ldr R0, off_8000218 // =sub_8006C22+1
-	mov LR, PC
+	ldr r0, off_8000218 // =sub_8006C22+1 
+	mov lr, pc
 	bx r0
-	ldr R0, off_800021C // =start_800023C+1
-	mov LR, PC
+	ldr r0, off_800021C // =start_800023C+1 
+	mov lr, pc
 	bx r0
-	ldr R0, off_8000220 // =byte_20081B0
-	mov R1, #0
-	strb R1, [R0]
-	ldr R0, off_8000224 // =dword_2009930
-	mov R1, #1
-	str R1, [R0]
-	ldr R0, off_8000228 // =dword_200A870
-	mov R1, #0
-	str R1, [R0]
-	ldr R0, off_800022C // =GeneralLCDStatus_STAT_LYC_
-	mov R1, #8
-	strh R1, [R0]
-	ldr R0, off_8000230 // =KeyInterruptControl
-	ldr R1, dword_8000234 // =0x83FF
-	strh R1, [R0]
-	ldr R0, off_8000238 // =main_+1
+	ldr r0, off_8000220 // =byte_20081B0 
+	mov r1, #0
+	strb r1, [r0]
+	ldr r0, off_8000224 // =dword_2009930 
+	mov r1, #1
+	str r1, [r0]
+	ldr r0, off_8000228 // =dword_200A870 
+	mov r1, #0
+	str r1, [r0]
+	ldr r0, off_800022C // =GeneralLCDStatus_STAT_LYC_ 
+	mov r1, #8
+	strh r1, [r0]
+	ldr r0, off_8000230 // =KeyInterruptControl 
+	ldr r1, dword_8000234 // =0x83ff 
+	strh r1, [r0]
+	ldr r0, off_8000238 // =main_+1 
 	bx r0
 	b start_
 .endfunc // start_
@@ -96,10 +96,10 @@ loc_80000D0:
 .arm
 // (void *mem, int size) -> void
 start_clearMemory:
-	mov R2, #0
+	mov r2, #0
 loc_80001C8:
 	subs r1, r1, #4
-	str R2, [R0,R1]
+	str r2, [r0,r1]
 	bne loc_80001C8
 	bx lr
 .endfunc // start_clearMemory
@@ -110,8 +110,8 @@ loc_80001C8:
 start_copyMemory:
 	// size
 	subs r2, r2, #4
-	ldr R3, [R0,R2]
-	str R3, [R1,R2]
+	ldr r3, [r0,r2]
+	str r3, [r1,r2]
 	bne start_copyMemory
 	bx lr
 off_80001EC: .word unk_3007F60
@@ -141,8 +141,8 @@ off_8000238: .word main_+1
 // () -> void
 start_800023C:
 	push {lr}
-	ldr R0, off_8000248 // =sub_3005DA0+1
-	mov LR, PC
+	ldr r0, off_8000248 // =sub_3005DA0+1 
+	mov lr, pc
 	bx r0
 	pop {r0}
 	bx r0
@@ -153,8 +153,8 @@ off_8000248: .word sub_3005DA0+1
 .thumb_func
 start_800024C:
 	push {lr}
-	ldr R2, off_8000258 // =sub_3005DD4+1
-	mov LR, PC
+	ldr r2, off_8000258 // =sub_3005DD4+1 
+	mov lr, pc
 	bx r2
 	pop {r0}
 	bx r0
@@ -165,8 +165,8 @@ off_8000258: .word sub_3005DD4+1
 .thumb_func
 start_dead_800025C:
 	push {lr}
-	ldr R1, off_8000274 // =sub_3005DEC+1
-	mov LR, PC
+	ldr r1, off_8000274 // =sub_3005DEC+1 
+	mov lr, pc
 	bx r1
 	pop {r0}
 	bx r0
@@ -176,8 +176,8 @@ start_dead_800025C:
 .thumb_func
 start_dead_8000268:
 	push {lr}
-	ldr R1, off_8000278 // =sub_3005E02+1
-	mov LR, PC
+	ldr r1, off_8000278 // =sub_3005E02+1 
+	mov lr, pc
 	bx r1
 	pop {r0}
 	bx r0
@@ -189,8 +189,8 @@ off_8000278: .word sub_3005E02+1
 .thumb_func
 start_800027C:
 	push {lr}
-	ldr R1, dword_8000294 // =sub_3005E18
-	mov LR, PC
+	ldr r1, dword_8000294 // =sub_3005E18 
+	mov lr, pc
 	bx r1
 	pop {r0}
 	bx r0
@@ -200,8 +200,8 @@ start_800027C:
 .thumb_func
 start_8000288:
 	push {lr}
-	ldr R1, off_8000298 // =sub_3005E2C+1
-	mov LR, PC
+	ldr r1, off_8000298 // =sub_3005E2C+1 
+	mov lr, pc
 	bx r1
 	pop {r0}
 	bx r0
@@ -213,8 +213,8 @@ off_8000298: .word sub_3005E2C+1
 .thumb_func
 start_800029C:
 	push {lr}
-	ldr R1, off_80002B4 // =loc_3005E60+1
-	mov LR, PC
+	ldr r1, off_80002B4 // =loc_3005E60+1 
+	mov lr, pc
 	bx r1
 	pop {r0}
 	bx r0
@@ -224,8 +224,8 @@ start_800029C:
 .thumb_func
 start_80002A8:
 	push {lr}
-	ldr R1, off_80002B8 // =loc_3005E6A+1
-	mov LR, PC
+	ldr r1, off_80002B8 // =loc_3005E6A+1 
+	mov lr, pc
 	bx r1
 	pop {r0}
 	bx r0

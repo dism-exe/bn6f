@@ -2,7 +2,7 @@
 .equ INC_ASM_ASM38, 0
 
 /* Public Symbols */
-.global sub_81D6000
+.global IWRAMRoutinesROMLocation
 
 
 /* External Symbols */
