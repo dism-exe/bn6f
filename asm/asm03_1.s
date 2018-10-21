@@ -3400,6 +3400,8 @@ ScriptCmds8035808:
 	.word sub_80384A8+1
 .func
 .thumb_func
+// 0x00
+// return from script
 sub_8035920:
 	mov r0, #0
 	mov pc, lr
@@ -3407,6 +3409,8 @@ sub_8035920:
 
 .func
 .thumb_func
+// 0x01 destination
+// jump
 sub_8035924:
 	push {lr}
 	mov r6, #1
@@ -3418,26 +3422,28 @@ sub_8035924:
 
 .func
 .thumb_func
+// 0x02 byte1 byte2 destination
+// jump if byte1 < progress byte < byte2
 sub_8035932:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0,#6]
+	ldr r0, [r0,#oToolkitGameStatePtr]
+	ldrb r0, [r0,#oGameStateGameProgress]
 	mov r6, #1
 	bl Script_ReadByte8036094
 	add r1, r4, #0
 	mov r6, #2
 	bl Script_ReadByte8036094
 	cmp r0, r1
-	blt loc_803595C
+	blt .progressByteOutOfRange_803595C
 	cmp r0, r4
-	bgt loc_803595C
+	bgt .progressByteOutOfRange_803595C
 	mov r6, #3
 	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
-loc_803595C:
+.progressByteOutOfRange_803595C:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
@@ -3445,27 +3451,30 @@ loc_803595C:
 
 .func
 .thumb_func
+// 0x03 byte flag destination
+// jump if event flag in mem or immediate is set
 sub_8035962:
 	push {lr}
 	mov r6, #1
 	bl Script_ReadByte8036094
 	cmp r4, #0xff
-	beq loc_8035972
+	beq .immediateEventFlag_8035972
+// event flag from memory
 	ldrh r4, [r5,r4]
-	b loc_8035978
-loc_8035972:
+	b .gotEventFlag_8035978
+.immediateEventFlag_8035972:
 	mov r6, #2
 	bl Script_ReadHalfword80360A8
-loc_8035978:
+.gotEventFlag_8035978:
 	add r0, r4, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
-	beq loc_803598C
+	beq .eventFlagNotSet_803598C
 	mov r6, #4
 	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
-loc_803598C:
+.eventFlagNotSet_803598C:
 	add r7, #8
 	mov r0, #1
 	pop {pc}
@@ -3473,6 +3482,8 @@ loc_803598C:
 
 .func
 .thumb_func
+// 0x04 byte flag destination
+// jump if loc_802F200 return flags is true (related to event flags)
 sub_8035992:
 	push {lr}
 	mov r6, #1
@@ -3497,27 +3508,29 @@ loc_80359B8:
 
 .func
 .thumb_func
+// 0x05 byte flag destination
+// jump if event flag in mem or immediate is clear
 sub_80359BE:
 	push {lr}
 	mov r6, #1
 	bl Script_ReadByte8036094
 	cmp r4, #0xff
-	beq loc_80359CE
+	beq .immediateEventFlag_80359CE
 	ldrh r4, [r5,r4]
-	b loc_80359D4
-loc_80359CE:
+	b .gotEventFlag_80359D4
+.immediateEventFlag_80359CE:
 	mov r6, #2
 	bl Script_ReadHalfword80360A8
-loc_80359D4:
+.gotEventFlag_80359D4:
 	add r0, r4, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
-	bne loc_80359E8
+	bne .eventFlagSet_80359E8
 	mov r6, #4
 	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
-loc_80359E8:
+.eventFlagSet_80359E8:
 	add r7, #8
 	mov r0, #1
 	pop {pc}
@@ -3525,6 +3538,8 @@ loc_80359E8:
 
 .func
 .thumb_func
+// 0x06 byte flag destination
+// jump if loc_802F200 return flags is false (related to event flags)
 sub_80359EE:
 	push {lr}
 	mov r6, #1
@@ -3549,47 +3564,53 @@ loc_8035A14:
 
 .func
 .thumb_func
+// 0x07 0x00 word destination byte
+// 0x07 0x01 word destination hword
+// 0x07 0x02 word destination word
+// jump if [word] == param
+// this command is variable length
 sub_8035A1A:
 	push {lr}
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // word
 	add r0, r4, #0
 	mov r6, #6
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl Script_ReadWord80360C8 // destination
 	add r1, r4, #0
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl Script_ReadByte8036094 // type
 	cmp r4, #1
-	beq loc_8035A4A
+	beq .readHword_8035A4A
 	cmp r4, #2
-	beq loc_8035A5A
+	beq .readWord_8035A5A
+// byte
 	mov r6, #0xa
 	bl Script_ReadByte8036094
 	ldrb r0, [r0]
 	cmp r0, r4
-	beq loc_8035A6E
-	mov r4, #0xb
-	b loc_8035A68
-loc_8035A4A:
+	beq .doScriptJump_8035A6E
+	mov r4, #0xb // end of variable size script command
+	b .addToNextCommand_8035A68
+.readHword_8035A4A:
 	mov r6, #0xa
 	bl Script_ReadHalfword80360A8
 	ldrh r0, [r0]
 	cmp r0, r4
-	beq loc_8035A6E
+	beq .doScriptJump_8035A6E
 	mov r4, #0xc
-	b loc_8035A68
-loc_8035A5A:
+	b .addToNextCommand_8035A68
+.readWord_8035A5A:
 	mov r6, #0xa
 	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	ldr r0, [r0]
 	cmp r0, r4
-	beq loc_8035A6E
+	beq .doScriptJump_8035A6E
 	mov r4, #0xe
-loc_8035A68:
+.addToNextCommand_8035A68:
 	add r7, r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8035A6E:
+.doScriptJump_8035A6E:
 	add r7, r1, #0
 	mov r0, #1
 	pop {pc}
@@ -3597,6 +3618,8 @@ loc_8035A6E:
 
 .func
 .thumb_func
+// 0x08 byte1 byte2 byte3 destination
+// jump if byte2 < sub_803CE28(byte1) < byte3
 sub_8035A74:
 	push {lr}
 	mov r6, #1
@@ -3609,15 +3632,15 @@ sub_8035A74:
 	mov r6, #3
 	bl Script_ReadByte8036094
 	cmp r0, r1
-	blt loc_8035AA4
+	blt .unkByteOutOfRange_8035AA4
 	cmp r0, r4
-	bgt loc_8035AA4
+	bgt .unkByteOutOfRange_8035AA4
 	mov r6, #4
 	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
 	add r7, r4, #0
 	mov r0, #1
 	pop {pc}
-loc_8035AA4:
+.unkByteOutOfRange_8035AA4:
 	add r7, #8
 	mov r0, #1
 	pop {pc}
@@ -3625,6 +3648,13 @@ loc_8035AA4:
 
 .func
 .thumb_func
+// 0x09 hword byte1 byte2 byte3 destination
+// if byte1 == 0xff:
+//     jump if byte2 < sub_8021BD8(hword) < byte3
+// else:
+//     jump if byte2 < sub_8021BC0(byte1, hword) < byte3
+//     sub_8021BC0 calls chip_8021C7C
+// related to chips
 sub_8035AAA:
 	push {lr}
 	mov r6, #3
@@ -16930,7 +16960,7 @@ sub_803CE28:
 	pop {r0}
 	bne loc_803CE3E
 	mov r1, r10
-	ldr r1, [r1,#0x50]
+	ldr r1, [r1,#oToolkitUnk2003134_Ptr]
 	ldrb r0, [r1,r0]
 	tst r0, r0
 	pop {pc}

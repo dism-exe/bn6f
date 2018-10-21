@@ -17,15 +17,12 @@ initRefs_80946D4: .word comp_857CCC8 + 1<<31
 	.word 0x0
 	.word unk_2025400
 	.word comp_857D63C + 1<<31
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
+	.word 0x0
 	.word unk_2026400
 	.word byte_857CC88
 	.word byte_3001B00
 	.word 0x40
-	.byte 0, 0, 0, 0
+	.word 0x0
 .endfunc // sub_80946C4
 
 .func
