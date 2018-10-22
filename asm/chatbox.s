@@ -2747,7 +2747,7 @@ chatbox_80411E8:
 	orr r0, r1
 	ldrb r1, [r4,#4]
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
 	bl setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r4, #5
@@ -2764,7 +2764,7 @@ chatbox_8041200:
 	orr r0, r1
 	ldrb r1, [r4,#4]
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
 	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r4, #5
@@ -3177,7 +3177,7 @@ loc_8041510:
 	lsl r1, r1, #8
 	orr r0, r1
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_80414F0
 	// mask
@@ -3206,7 +3206,7 @@ loc_8041546:
 	lsl r1, r1, #8
 	orr r0, r1
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_80414F0
 	// mask
@@ -3325,7 +3325,7 @@ chatbox_8041694:
 	orr r0, r1
 	ldrb r1, [r4,#4]
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
 	bl loc_802F200 // (int a3, int a2) ->
 	bne loc_80416AE
@@ -3412,7 +3412,7 @@ chatbox_804171C:
 	orr r0, r2
 	mov r2, #0
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_8041732
 	mov r2, #1
@@ -3760,7 +3760,7 @@ chatbox_8041964:
 	push {lr}
 	mov r1, #6
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
 	bl loc_802F200 // (int a3, int a2) ->
 	bne loc_8041976

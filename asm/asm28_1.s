@@ -482,7 +482,7 @@ loc_809FA0C:
 	bl sub_809FACE
 	ldrh r0, [r7,#2]
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	mov r0, r12
 	add r0, #1
@@ -642,7 +642,7 @@ loc_809FB18:
 	bl sub_809FACE
 	ldrh r0, [r7,#2]
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 loc_809FB3E:
 	add r7, #0xc

@@ -4204,14 +4204,14 @@ sub_8002338:
 	cmp r0, #0
 	blt loc_8002348
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	b locret_8002352
 loc_8002348:
 	lsl r0, r0, #1
 	lsr r0, r0, #1
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 locret_8002352:
 	pop {pc}

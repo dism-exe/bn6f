@@ -790,7 +790,7 @@ sub_8089A60:
 	beq loc_8089AC6
 	bl sub_81427CE
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	bl sub_814219C
 	str r0, [r7,#0x10]

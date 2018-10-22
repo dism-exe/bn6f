@@ -557,7 +557,7 @@ loc_81420D4:
 	ldrh r0, [r7]
 	add r0, r0, r4
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_81420E8
 	add r6, #1
@@ -593,7 +593,7 @@ sub_8142102:
 	ldrh r0, [r1]
 	ldrh r1, [r1,#2]
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
 	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	pop {r4-r7,pc}
@@ -898,14 +898,14 @@ sub_81422BE:
 	beq loc_81422F0
 	bl sub_81427CE
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_81422F0
 	ldr r1, off_81422F4 // =dword_81422F8 
 	lsl r4, r4, #1
 	ldrh r0, [r1,r4]
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_81422F0
 	mov r0, #0
@@ -2077,7 +2077,7 @@ loc_81431B4:
 	mov r0, #0
 	bl sub_81430B6
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	mov r2, #8
 	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	mov r0, #0
@@ -2432,7 +2432,7 @@ sub_81434BA:
 	beq loc_81434DC
 	bl sub_81430DC
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_81434DC
 	mov r0, #0
@@ -2671,7 +2671,7 @@ loc_8143C2C:
 	mov r0, #0
 	bl sub_8143B5E
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	mov r2, #0x30 
 	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	mov r0, #0xd
@@ -2722,7 +2722,7 @@ loc_8143CA0:
 	sub r1, #1
 	add r0, r0, r1
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r4, #8
 	b loc_8143CA0
@@ -2753,7 +2753,7 @@ loc_8143CE0:
 	sub r1, #1
 	add r0, r0, r1
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r4, #8
 	b loc_8143CE0
@@ -2780,7 +2780,7 @@ loc_8143D58:
 	add r0, r4, #0
 	bl sub_8143B5E
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_8143D68
 	add r6, #1
@@ -2985,7 +2985,7 @@ loc_8143EEC:
 	add r0, r4, #0
 	bl sub_8143B5E
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_8143F0C
 	ldrh r0, [r7,#2]
@@ -3251,7 +3251,7 @@ sub_81440AE:
 	beq loc_81440D0
 	bl sub_8143C18
 	// <mkdata>
-	.hword 0x1C00 // ADD r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_81440D0
 	mov r0, #0
@@ -24793,7 +24793,7 @@ off_814DC80: .word 0x350
 m4a_814DC84:
 	lsl r0, r6, #0x18
 	// <mkdata>
-	.hword 0x0 // MOV r0, r0
+	.hword 0x0 // mov r0, r0
 loc_814DC88:
 	ldrb r3, [r0,#5]
 	cmp r3, #0

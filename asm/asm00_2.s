@@ -28787,7 +28787,7 @@ off_801D50C: .word loc_801D510
 loc_801D510:
 	lsl r0, r0, #0xc
 	// <mkdata>
-	.hword 0x1 // MOV r1, r0
+	.hword 0x1 // mov r1, r0
 .func
 .thumb_func
 sub_801D514:
@@ -29405,7 +29405,7 @@ sub_801DB54:
 	push {lr}
 	mov r0, #1
 	// <mkdata>
-	.hword 0x0 // MOV r0, r0
+	.hword 0x0 // mov r0, r0
 	bl sub_801BEC2
 	pop {pc}
 .endfunc // sub_801DB54
@@ -29416,7 +29416,7 @@ sub_801DB60:
 	push {lr}
 	mov r0, #1
 	// <mkdata>
-	.hword 0x0 // MOV r0, r0
+	.hword 0x0 // mov r0, r0
 	bl sub_801BEB8
 	pop {pc}
 .endfunc // sub_801DB60
