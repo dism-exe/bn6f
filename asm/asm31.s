@@ -4,7 +4,7 @@
 .thumb_func
 sub_80B81EC:
 	push {r4,lr}
-	ldr r4, [r5,#oBattleObjectAIPtr]
+	ldr r4, [r5,#oBattleObject_AIPtr]
 	ldr r1, off_80B8200 // =off_80B8204 
 	ldrb r0, [r4]
 	lsl r0, r0, #2
@@ -24,7 +24,7 @@ off_80B8204: .word sub_8108F50+1
 sub_80B8210:
 	push {lr}
 	ldr r1, off_80B822C // =off_80B8220 
-	ldrb r0, [r5,#oBattleObjectCurState]
+	ldrb r0, [r5,#oBattleObject_CurState]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1

@@ -225,7 +225,7 @@ off_803FEB0: .word unk_3001B40
 chatbox_onUpdate_803FEB4:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x2c] // Toolkit.chatbox
+	ldr r5, [r5,#0x2c]
 	ldrb r0, [r5]
 	tst r0, r0
 	bne loc_803FEC2
@@ -237,7 +237,7 @@ loc_803FEC2:
 	bl chatbox_8045F3C
 	bne loc_803FEE2
 	mov r7, r10
-	ldr r7, [r7,#0x4] // Toolkit.joystick
+	ldr r7, [r7,#4]
 	ldrh r1, [r7]
 	strh r1, [r5,#0x22] // ChatBoxPropreties.keyState
 	ldrh r1, [r7,#0x2] // Joystick.IQR

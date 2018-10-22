@@ -609,7 +609,7 @@ off_8003114: .word sub_8003B86+1
 	.word object_freeMemory+1
 	.word sub_80048B2+1
 off_800312C: .word eOWPlayerObject
-	.word eBattleObjectPlayerFlags
+	.word eBattleObjectPlayer
 	.word eOverworldNPCObjects
 	.word byte_203CFE0
 	.word unk_2036870
@@ -682,7 +682,7 @@ loc_80031E8:
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #2
-	ldr r1, off_800321C // =dword_8003220 
+	ldr r1, JumptableTable8003220_p // =JumptableTable8003220 
 	ldr r0, [r0,r1]
 	ldrb r1, [r5,#1]
 	lsl r1, r1, #2
@@ -703,8 +703,13 @@ loc_8003208:
 	.balign 4, 0x00
 off_8003214: .word dword_2009380
 off_8003218: .word dword_2009AB0
-off_800321C: .word dword_8003220
-dword_8003220: .word 0x0
+JumptableTable8003220_p: .word JumptableTable8003220
+JumptableTable8003220:
+	// a table of jumptable pointers. Index to an entry is derived from the
+	// lower 4 bits of the 2nd (zero-indexed) member of the struct in the
+	// linked list, starting from dword_2009380. Index to an entry from the
+	// read Jumptable pointer is derived from the first member of the struct
+	.word 0x0
 	.word off_8003C9C
 	.word 0x0
 	.word off_8003EC4
@@ -1014,7 +1019,7 @@ off_800348C: .word off_8003144
 .thumb_func
 sub_8003490:
 	push {r4,r7,lr}
-	ldr r7, off_80034CC // =off_80034D0 
+	ldr r7, StructInitializationTable_p // =StructInitializationTable 
 	lsl r1, r0, #4
 	add r7, r7, r1 // StructInitializationTable + r0 * 16
 	lsl r1, r0, #2
@@ -1024,6 +1029,7 @@ sub_8003490:
 	ldrb r1, [r7,#0xc] // r1 = StructInitializationTable[r0] + 0xc
 	add r1, #0x1f
 	lsr r1, r1, #5
+	// weird conversion to convert number of structs to length of list of indices in words
 	lsl r1, r1, #2
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 	// memBlock
@@ -1045,8 +1051,8 @@ loc_80034BC:
 	blt loc_80034BC
 	pop {r4,r7,pc}
 	.balign 4, 0x00
-off_80034CC: .word off_80034D0
-off_80034D0:
+StructInitializationTable_p: .word StructInitializationTable
+StructInitializationTable:
 	// word 1 is part of a linked list?
 	// word 2 is the actual list of structs
 	// byte 1 is struct offset part 2?
@@ -1056,36 +1062,38 @@ off_80034D0:
 	// OWPlayer struct
 	.word eOWPlayerObject, eOWPlayerObject
 	.hword 0xC8
-	.byte 0x90
+	.byte 0x90 | 0
 	.byte 0xC8, 0x1
-	.byte  0
-	.byte  0
-	.byte  0
+	.balign 4, 0x00
 	// apparently there's hypothetical support for 32 enemies, but unk_203A9A0 only supports 4 pointers
 	// maybe for virus battler?
-	.word unk_203A9A0, eBattleObjectPlayerFlags
-	.hword NUM_BATTLE_OBJECTS * oBattleObjectSize
-	.byte 0x91
+	.word unk_203A9A0, eBattleObjectPlayer
+	.hword NUM_BATTLE_OBJECTS * oBattleObject_Size
+	.byte 0x90 | 1
 	.byte 0xD8, 0x20
-	.byte  0
-	.byte  0
-	.byte  0
+	.balign 4, 0x00
+	// NPC Structs
 	.word eOverworldNPCObjects
 	.word eOverworldNPCObjects
-	.word 0xD8A20D80
-	.word 0x10
-	.word byte_203CFD0
-	.word byte_203CFE0
-	.word 0xD8931B00
-	.word 0x20
-	.word unk_2036860
-	.word unk_2036870
-	.word 0xC8841900
-	.word 0x20
-	.word byte_2011EE0
-	.word byte_2011EE0
-	.word 0x78451A40
-	.word 0x38
+	.hword 0xD80
+	.byte 0xA0 | 2
+	.byte 0xD8, 0x10
+	.balign 4, 0x00
+	.word byte_203CFD0, byte_203CFE0
+	.hword 0x1B00
+	.byte 0x90 | 3
+	.byte 0xD8, 0x20
+	.balign 4, 0x00
+	.word unk_2036860, unk_2036870
+	.hword 0x1900
+	.byte 0x80 | 4
+	.byte 0xC8, 0x20
+	.balign 4, 0x00
+	.word byte_2011EE0, byte_2011EE0
+	.hword 0x1A40
+	.byte 0x40 | 5
+	.byte 0x78, 0x38
+	.balign 4, 0x00
 off_8003530: .word off_8003144
 .endfunc // sub_8003490
 
@@ -2339,18 +2347,18 @@ sub_8003E98:
 	bl sub_80028C0
 	pop {pc}
 	mov r0, #0
-	ldr r3, off_8003EB8 // =eBattleObjectPlayerFlags 
+	ldr r3, off_8003EB8 // =eBattleObjectPlayer 
 loc_8003EA6:
 	add r1, r3, #0
-	add r1, #oBattleObjectUnkSpriteData_90
+	add r1, #oBattleObject_UnkSpriteData_90
 	mov r2, #0
 	str r2, [r1,#0x24]
-	add r3, #oBattleObjectSize
+	add r3, #oBattleObject_Size
 	add r0, #1
 	cmp r0, #0x20 
 	blt loc_8003EA6
 	mov pc, lr
-off_8003EB8: .word eBattleObjectPlayerFlags
+off_8003EB8: .word eBattleObjectPlayer
 off_8003EBC: .word byte_2036778
 off_8003EC0: .word dword_2039A10
 off_8003EC4: .word loc_80C4E58+1
@@ -3006,6 +3014,7 @@ loc_8004656:
 	ldr r0, [sp]
 	ldrb r1, [r5,#1]
 	lsl r1, r1, #2
+	// jumptable has only one entry
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
@@ -4307,7 +4316,7 @@ off_80050E8: .word byte_80213AC
 // () -> void
 cb_80050EC:
 	push {r4-r7,lr}
-	ldr r0, off_8005108 // =GameStateJumptable 
+	ldr r0, GameStateJumptable_p // =GameStateJumptable 
 	mov r5, r10
 	ldr r5, [r5,#0x3c] // Toolkit.gamestate
 	ldrb r1, [r5]
@@ -4318,7 +4327,7 @@ cb_80050EC:
 	bl rng_800154C // () -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8005108: .word GameStateJumptable
+GameStateJumptable_p: .word GameStateJumptable
 GameStateJumptable: .word sub_8005148+1
 	.word sub_8005268+1
 	.word sub_80052D8+1
@@ -5481,13 +5490,13 @@ dword_8005C00: .word 0x4000
 sub_8005C04:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r5,#0x20]
+	str r0, [r5,#oGameState_Unk_20]
 	mov r0, #0x25 
 	bl sub_80035A2
 	mov r5, r10
-	ldr r1, [r5,#0x14]
+	ldr r1, [r5,#oToolkit_Unk2011bb0_Ptr]
 	ldr r0, [r1,#0x14]
 	mov r2, #0x10
 	ldrb r3, [r1,#0x11]
@@ -5496,15 +5505,15 @@ sub_8005C04:
 	add r0, r0, r3
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
+	ldrb r0, [r5,#oGameState_MapGroup]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	bl sub_8001708
 	ldr r0, off_8005CE4 // =0x40 
 	bl sub_8001778
 	mov r5, r10
-	ldr r7, [r5,#0x14]
-	ldr r5, [r5,#0x3c]
+	ldr r7, [r5,#oToolkit_Unk2011bb0_Ptr]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx
@@ -5512,7 +5521,7 @@ sub_8005C04:
 	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8005C80
 	ldrb r1, [r7]
-	ldrb r2, [r5,#4]
+	ldrb r2, [r5,#oGameState_MapGroup]
 	mov r3, #0x80
 	add r4, r1, #0
 	eor r4, r2
@@ -5520,23 +5529,23 @@ sub_8005C04:
 	beq loc_8005C80
 	tst r1, r3
 	bne loc_8005C60
-	mov r6, #0x48 
+	mov r6, #oGameState_Unk_48
 	b loc_8005C62
 loc_8005C60:
-	mov r6, #0x34 
+	mov r6, #oGameState_Unk_34
 loc_8005C62:
-	ldr r0, [r5,#0x18]
+	ldr r0, [r5,#oGameState_OverworldPlayerObjectPtr]
 	ldr r1, [r0,#0x1c]
 	ldr r2, [r0,#0x20]
 	ldr r3, [r0,#0x24]
 	ldrb r4, [r0,#0x10]
 	add r6, r6, r5
 	str r1, [r6]
-	str r2, [r6,#4]
+	str r2, [r6,#4] //  TODO: nested struct
 	str r3, [r6,#8]
 	str r4, [r6,#0xc]
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldrb r0, [r5,#oGameState_MapGroup]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #8
 	orr r1, r0
 	str r1, [r6,#0x10]
@@ -5558,37 +5567,37 @@ loc_8005C80:
 	ldrh r6, [r7]
 	b loc_8005CB8
 loc_8005CA2:
-	ldr r1, [r5,#0x34]
-	ldr r2, [r5,#0x38]
-	ldr r3, [r5,#0x3c]
-	ldr r4, [r5,#0x40]
-	ldr r6, [r5,#0x44]
+	ldr r1, [r5,#oGameState_Unk_34]
+	ldr r2, [r5,#oGameState_Unk_38]
+	ldr r3, [r5,#oGameState_Unk_3c]
+	ldr r4, [r5,#oGameState_Unk_40]
+	ldr r6, [r5,#oGameState_Unk_44]
 	b loc_8005CB8
 loc_8005CAE:
-	ldr r1, [r5,#0x48]
+	ldr r1, [r5,#oGameState_Unk_48]
 	ldr r2, [r5,#0x4c]
 	ldr r3, [r5,#0x50]
 	ldr r4, [r5,#0x54]
 	ldr r6, [r5,#0x58]
 loc_8005CB8:
-	str r1, [r5,#0x24]
-	str r2, [r5,#0x28]
-	str r3, [r5,#0x2c]
-	str r4, [r5,#0x30]
+	str r1, [r5,#oGameState_PlayerX]
+	str r2, [r5,#oGameState_PlayerY]
+	str r3, [r5,#oGameState_Unk_2c]
+	str r4, [r5,#oGameState_Unk_30]
 	lsr r7, r6, #8
 	mov r0, #0xff
 	and r6, r0
 	mov r1, #0
 	strb r1, [r5]
-	ldrb r1, [r5,#5]
-	strb r1, [r5,#0xd]
-	ldrb r1, [r5,#4]
-	ldrb r2, [r5,#0xc]
-	strb r1, [r5,#0xc]
-	strb r6, [r5,#4]
-	strb r7, [r5,#5]
+	ldrb r1, [r5,#oGameState_MapNumber]
+	strb r1, [r5,#oGameState_LastMapNumber]
+	ldrb r1, [r5,#oGameState_MapGroup]
+	ldrb r2, [r5,#oGameState_LastMapGroup]
+	strb r1, [r5,#oGameState_LastMapGroup]
+	strb r6, [r5,#oGameState_MapGroup]
+	strb r7, [r5,#oGameState_MapNumber]
 	mov r7, r10
-	ldr r7, [r7,#0x40]
+	ldr r7, [r7,#oToolkit_Unk2001c04_Ptr]
 	mov r0, #0
 	strh r0, [r7,#0x12]
 	strh r0, [r7,#0x14]
@@ -5921,8 +5930,6 @@ sub_8005F40:
 	bl sub_80017AA
 	bl sub_80017E0
 	bl sub_8001974
-.endfunc // sub_8005F40
-
 	bl sub_8001AFC
 	bl sub_80023A8
 	bl sub_8001820
@@ -5931,6 +5938,8 @@ sub_8005F40:
 	bl sub_8001788
 	bl sub_80017A0
 	pop {r4-r7,pc}
+.endfunc // sub_8005F40
+
 .func
 .thumb_func
 sub_8005F6C:
@@ -7506,6 +7515,7 @@ loc_8006C84:
 	add r4, r4, r2
 	str r4, [r0,r1]
 	add r1, #4
+	// reads extra garbage
 	cmp r1, #0x58 // (GameStateOffsetsEnd - GameStateOffsets + 8)
 	blt loc_8006C84
 	pop {r4-r7,pc}

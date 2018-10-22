@@ -57,7 +57,7 @@ loc_80000D0:
 	mov r1, #0x400
 	bl start_clearMemory // (void *mem, int size) -> void
 	// src
-	ldr r0, mem // =IWRAMRoutinesROMLocation 
+	ldr r0, mem // =sub_81D6000 
 	// dest
 	ldr r1, a2 // =loc_3005B00 
 	// size
@@ -121,7 +121,9 @@ off_80001F8: .word unk_3007FFC
 off_80001FC: .word loc_3005B00
 off_8000200: .word GamePakWaitstateControl
 dword_8000204: .word 0x45B4
-mem: .word IWRAMRoutinesROMLocation
+mem:
+	// TODO: had to do this because this keeps resyncing to sub_81D6000.
+	.word IWRAMRoutinesROMLocation // <force> DCD sub_81D6000
 a2: .word loc_3005B00
 IWRAMRoutinesSize_p: .word 0x1ED4
 off_8000214: .word CpuSet_toolKit+1

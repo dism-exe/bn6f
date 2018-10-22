@@ -19,7 +19,7 @@
 // .global sub_8006C22
 
 .include "asm/asm38.inc"
-// .global IWRAMRoutinesROMLocation
+// .global sub_81D6000
 
 
 /* Undeclared Symbols */

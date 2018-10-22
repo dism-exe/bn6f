@@ -3,7 +3,7 @@
 .func
 .arm
 // TODO: change back to sub_081D6000
-IWRAMRoutinesROMLocation:
+sub_81D6000:
 	mov r3, #0x4000000
 	add r3, r3, #0x200
 	ldr r2, [r3]
@@ -127,7 +127,7 @@ off_81D619C: .word off_3000E70
 	.word unk_3005CD9
 	.word unk_3005CD9
 	.word unk_3005CD9
-.endfunc // IWRAMRoutinesROMLocation
+.endfunc // sub_81D6000
 
 .func
 .thumb_func
