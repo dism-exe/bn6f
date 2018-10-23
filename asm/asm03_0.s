@@ -18301,9 +18301,8 @@ sub_802F624:
 dword_802F638: .word 0x1741
 .endfunc // sub_802F624
 
-.func
-.thumb_func
 // () -> void
+	thumb_local_start
 ho_802F63C:
 	push {lr}
 	ldr r0, off_802F650 // =jt_802F654 
@@ -18313,14 +18312,15 @@ ho_802F63C:
 	bx r0
 	bl sub_802FB10 // () -> void
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 off_802F650: .word jt_802F654
-jt_802F654: .word sub_802F668+1
+jt_802F654:
+	.word sub_802F668+1
 	.word sub_802F6A4+1
 	.word sub_802F6B2+1
 	.word sub_802F704+1
 	.word sub_802F710+1
-.endfunc // ho_802F63C
+	thumb_func_end ho_802F63C
 
 .func
 .thumb_func
@@ -18340,8 +18340,6 @@ sub_802F668:
 	mov r0, #0
 	strb r0, [r5,#6]
 	bl sub_802FD3C
-.endfunc // sub_802F668
-
 	mov r0, #8
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
@@ -18350,6 +18348,8 @@ sub_802F668:
 	pop {pc}
 dword_802F69C: .word 0xA46
 off_802F6A0: .word 0x1340
+.endfunc
+
 .func
 .thumb_func
 sub_802F6A4:
