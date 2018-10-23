@@ -390,7 +390,7 @@ sub_8072B70:
 loc_8072B88:
 	lsl r4, r4, #1
 	bl change_20013F0_800151C // () -> int
-	ldr r1, dword_8072BB4 // =0x1FF 
+	ldr r1, dword_8072BB4 // =0x1ff 
 	and r0, r1
 	ldr r1, off_8072BB8 // =0x258 
 	add r0, r0, r1
@@ -421,6 +421,7 @@ dword_8072BB4: .word 0x1FF
 off_8072BB8: .word 0x258
 off_8072BBC: .word dword_8072BC0
 dword_8072BC0: .word 0x1D501D6, 0x193
-// <endfile>
-off_8072BC8:  .word dword_8072C3C
+off_8072BC8:
+	// <endfile>
+	.word dword_8072C3C
 /*For debugging purposes, connect comment at any range!*/

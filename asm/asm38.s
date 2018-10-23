@@ -1,18 +1,18 @@
 .include "asm/asm38.inc"
 
-IWRAMRoutines:
 .func
 .arm
+// TODO: change back to sub_081D6000
 sub_81D6000:
 	mov r3, #0x4000000
 	add r3, r3, #0x200
 	ldr r2, [r3]
 	ldrh r1, [r3,#0x8] // (InterruptMasterEnableRegister - 0x4000200)
-	mrs r0, spsr
+	mrs r0, SPSR
 	stmfd sp!, {r0-r3,lr}
 	mov r0, #0
 	strh r0, [r3,#0x8] // (InterruptMasterEnableRegister - 0x4000200)
-	and r1, r2, r2,lsr#16
+	and r1, r2, r2,LSR#16
 	ldr r0, off_81D6194 // =dword_3001D60 
 	ldr r0, [r0]
 	tst r0, r0
@@ -80,20 +80,20 @@ loc_81D60C0:
 	bne loc_81D6130
 	mov r12, #0x34 
 	ands r0, r1, #0x2000
-	strneb r0, [r3,#0xfffffe84] // (controlsoundon_off_nr52_ - 0x4000200)
+	strneb r0, [r3,#0xfffffe84] // (ControlSoundon_off_NR52_ - 0x4000200)
 loc_81D612C:
 	bne loc_81D612C
 loc_81D6130:
 	strh r0, [r3,#0x2] // (InterruptRequestFlags_IRQAcknowledge - 0x4000200)
-	ldr r1, dword_81D6198 // =0x20C8 
+	ldr r1, dword_81D6198 // =0x20c8 
 	bic r2, r2, r0
 	and r1, r1, r2
 	strh r1, [r3]
-	mrs r3, cpsr
+	mrs r3, CPSR
 	bic r3, r3, #0xdf
 	orr r3, r3, #0x1f
-	msr cpsr_cf, r3
-	ldr r1, off_81D619C // =dword_3000E70 
+	msr CPSR_cf, r3
+	ldr r1, off_81D619C // =off_3000E70 
 	add r1, r1, r12
 	ldr r0, [r1]
 	stmfd sp!, {lr}
@@ -101,21 +101,32 @@ loc_81D6130:
 	bx r0
 loc_81D616C:
 	ldmfd sp!, {lr}
-	mrs r3, cpsr
+	mrs r3, CPSR
 	bic r3, r3, #0xdf
 	orr r3, r3, #0x92
-	msr cpsr_cf, r3
+	msr CPSR_cf, r3
 	ldmfd sp!, {r0-r3,lr}
 	strh r2, [r3]
 	strh r1, [r3,#8]
-	msr spsr_cf, r0
+	msr SPSR_cf, r0
 	bx lr
 off_81D6194: .word dword_3001D60
 dword_81D6198: .word 0x20C8
-off_81D619C: .word dword_3000E70
-	.word 0x3005CDB, 0x3005CD9, 0x3005CD9, 0x3005CD9, 0x3005CD9
-	.word 0x3005CD9, 0x814469D, 0x81446AD, 0x3005CD9, 0x3005CD9
-	.word 0x3005CD9, 0x3005CD9, 0x3005CD9, 0x3005CD9
+off_81D619C: .word off_3000E70
+	.word unk_3005CDB
+	.word unk_3005CD9
+	.word unk_3005CD9
+	.word unk_3005CD9
+	.word unk_3005CD9
+	.word unk_3005CD9
+	.word sub_814469C+1
+	.word sub_81446AC+1
+	.word unk_3005CD9
+	.word unk_3005CD9
+	.word unk_3005CD9
+	.word unk_3005CD9
+	.word unk_3005CD9
+	.word unk_3005CD9
 .endfunc // sub_81D6000
 
 .func
@@ -244,7 +255,7 @@ sub_81D62A0:
 	strh r0, [r4]
 	mov r0, #0
 	ldr r1, off_81D62CC // =unk_3005CA0 
-	ldr r2, off_81D62E8 // =dword_3000E70 
+	ldr r2, off_81D62E8 // =off_3000E70 
 loc_81D62B2:
 	ldr r3, [r1]
 	str r3, [r2]
@@ -271,12 +282,12 @@ sub_81D62D4:
 	ldrh r4, [r3]
 	mov r2, #0
 	strh r2, [r3]
-	ldr r2, off_81D62E8 // =dword_3000E70 
+	ldr r2, off_81D62E8 // =off_3000E70 
 	str r1, [r2,r0]
 	strh r4, [r3]
 	pop {r4,pc}
 	.balign 4, 0x00
-off_81D62E8: .word dword_3000E70
+off_81D62E8: .word off_3000E70
 .endfunc // sub_81D62D4
 
 .func
@@ -445,9 +456,9 @@ sub_81D63F0:
 	ldr r1, dword_81D641C // = 
 	ldr r2, [r1,r2]
 	mov r9, r2
-	ldr r2, dword_81D6428 // =0x7BDE 
+	ldr r2, dword_81D6428 // =0x7bde 
 	ldr r3, dword_81D642C // =0x8420 
-	ldr r1, dword_81D6430 // =0x3DEF 
+	ldr r1, dword_81D6430 // =0x3def 
 	mov r8, r1
 	sub r6, #2
 loc_81D6408:
@@ -742,7 +753,7 @@ sub_81D6608:
 	ldrh r7, [r5,#6]
 	tst r7, r7
 	beq loc_81D6640
-	ldr r7, off_81D669C // =unk_3001750 
+	ldr r7, off_81D669C // =byte_3001750 
 	mov r2, #0x20 
 loc_81D6628:
 	sub r2, #4
@@ -762,7 +773,7 @@ loc_81D6640:
 	ldr r4, [r7]
 	cmp r4, #0xf
 	bge loc_81D6696
-	ldr r5, off_81D66A4 // =unk_3001550 
+	ldr r5, off_81D66A4 // =byte_3001550 
 	mov r1, #0
 loc_81D664E:
 	cmp r1, r4
@@ -810,9 +821,9 @@ loc_81D6696:
 loc_81D6698:
 	mov r5, r8
 	pop {pc}
-off_81D669C: .word unk_3001750
+off_81D669C: .word byte_3001750
 off_81D66A0: .word dword_200F340
-off_81D66A4: .word unk_3001550
+off_81D66A4: .word byte_3001550
 .endfunc // sub_81D6608
 
 .func
@@ -1689,7 +1700,7 @@ loc_81D6CF8:
 	ldr r2, off_81D6DC4 // =unk_30025B0 
 	ldr r3, off_81D6DC8 // =unk_3002170 
 	ldr r6, off_81D6DCC // =dword_3002590 
-	ldr r7, off_81D6DD0 // =unk_3001150 
+	ldr r7, off_81D6DD0 // =byte_3001150 
 	mov r12, r7
 loc_81D6D26:
 	ldr r1, [r6]
@@ -1770,7 +1781,7 @@ loc_81D6DA0:
 	sub r4, #1
 	cmp r4, #0
 	bgt loc_81D6DA0
-	ldr r0, off_81D6DE4 // =dword_3001950 
+	ldr r0, off_81D6DE4 // =byte_3001950 
 	mov r1, #0
 	str r1, [r0]
 	pop {r0}
@@ -1781,14 +1792,14 @@ off_81D6DC0: .word dword_3001D70
 off_81D6DC4: .word unk_30025B0
 off_81D6DC8: .word unk_3002170
 off_81D6DCC: .word dword_3002590
-off_81D6DD0: .word unk_3001150
+off_81D6DD0: .word byte_3001150
 off_81D6DD4: .word dword_200B1A8
 off_81D6DD8: .word word_200A6F0
 off_81D6DDC: .word off_802FD70
 off_81D6DE0: .word sub_800098C+1
-off_81D6DE4: .word dword_3001950
+off_81D6DE4: .word byte_3001950
 	push {r4-r7,lr}
-	ldr r5, off_81D6E94 // =dword_3001950 
+	ldr r5, off_81D6E94 // =byte_3001950 
 	ldr r6, [r5]
 	cmp r6, #0x80
 	bge locret_81D6E1E
@@ -1807,7 +1818,7 @@ off_81D6DE4: .word dword_3001950
 	ldrb r7, [r4]
 	strb r6, [r4]
 	lsl r6, r6, #3
-	ldr r5, off_81D6E98 // =unk_3001150 
+	ldr r5, off_81D6E98 // =byte_3001150 
 	add r5, r5, r6
 	str r0, [r5]
 	strh r1, [r5,#4]
@@ -1825,14 +1836,14 @@ sub_81D6E20:
 	mov r6, r12
 	push {r4-r6}
 	sub sp, sp, #8
-	ldr r5, off_81D6E94 // =dword_3001950 
+	ldr r5, off_81D6E94 // =byte_3001950 
 	ldr r6, [r5]
 	mov r8, r5
 	add r1, r1, r6
 	cmp r1, #0x80
 	bge loc_81D6E88
 	sub r1, r1, r6
-	ldr r3, off_81D6E98 // =unk_3001150 
+	ldr r3, off_81D6E98 // =byte_3001150 
 	mov r12, r3
 loc_81D6E3E:
 	str r0, [sp]
@@ -1879,8 +1890,8 @@ loc_81D6E88:
 	mov r9, r5
 	mov r12, r6
 	pop {r4-r7,pc}
-off_81D6E94: .word dword_3001950
-off_81D6E98: .word unk_3001150
+off_81D6E94: .word byte_3001950
+off_81D6E98: .word byte_3001150
 off_81D6E9C: .word dword_3002590
 	.word 0x40404, 0x4040004, 0x4644B5F0, 0x4656464D, 0xB4F04667
 	.word 0x4682B089, 0x46914688, 0x45452501, 0x68DC3E, 0x1C451940
@@ -2322,7 +2333,7 @@ loc_81D775C:
 	ldr r4, dword_81D7A10+8 // =0x800000 
 	tst r0, r4
 	beq loc_81D776A
-	ldr r4, dword_81D7A10+12 // =0xC003000 
+	ldr r4, dword_81D7A10+12 // =0xc003000 
 	tst r3, r4
 	bne loc_81D776A
 	pop {r4,r6,r7,pc}
@@ -2402,7 +2413,7 @@ loc_81D77DC:
 	ldr r3, [r7,#0x30]
 	mov r2, #0x10
 	bic r3, r2
-	ldr r1, dword_81D7A10+32 // =0xC005000 
+	ldr r1, dword_81D7A10+32 // =0xc005000 
 	tst r3, r1
 	bne loc_81D7804
 	ldrb r2, [r7,#5]
@@ -2595,7 +2606,7 @@ sub_81D7960:
 	cmp r0, #2
 	bne locret_81D79A0
 	ldr r0, [r7,#0x30]
-	ldr r1, dword_81D7A40 // =0xC000000 
+	ldr r1, dword_81D7A40 // =0xc000000 
 	tst r0, r1
 	beq locret_81D79A0
 	ldr r0, [r6,#0x30]
@@ -2918,7 +2929,7 @@ loc_81D7C08:
 	tst r0, r0
 	beq locret_81D7C74
 	ldr r2, [r4,#0x30]
-	ldr r1, dword_81D7C78 // =0xC000000 
+	ldr r1, dword_81D7C78 // =0xc000000 
 	tst r2, r1
 	bne locret_81D7C74
 	ldrb r0, [r0,#2]
@@ -3302,11 +3313,7 @@ loc_81D7EC6:
 	bl sub_81D7DE0
 locret_81D7ECE:
 	pop {r4-r6,pc}
-
 dword_81D7ED0: .word 0x708
-IWRAMRoutinesEnd:
-
-// ??? unused code/branch
 	ldrb r3, [r0,#2]
 	tst r3, r3
 	beq locret_81D7EF2
@@ -3324,8 +3331,9 @@ loc_81D7EEA:
 	bl loc_81D7E04
 locret_81D7EF2:
 	pop {r4-r6,pc}
-// <endpool> <endfile>
-dword_81D7EF4:  .word 0x708, 0x0, 0x50000000, 0x55044000, 0x5243A200
+dword_81D7EF4:
+	// <endpool> <endfile>
+	.word 0x708, 0x0, 0x50000000, 0x55044000, 0x5243A200
 	.word 0x66700000, 0x67000000, 0x70000000, 0x0, 0x0
 	.word 0x0, 0x0, 0x0, 0xE66, 0xE666
 	.word 0xE6666, 0xE66667, 0xE666670, 0x6666700, 0x6A667000

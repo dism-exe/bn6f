@@ -89,7 +89,7 @@ dword_8089128: .word 0x4B06003F, 0x8089141, 0x747FF2A, 0x3C00043F, 0x30154000
 	.word 0xBDF0, 0x8089268, 0x87DDD4C, 0x6014800, 0x700
 	.word 0x0
 	.word dword_87DE44C
-	.word unk_30016F0
+	.word byte_30016F0
 .endfunc // sub_8088CA0
 
 .func
@@ -790,7 +790,7 @@ sub_8089A60:
 	beq loc_8089AC6
 	bl sub_81427CE
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	bl sub_814219C
 	str r0, [r7,#0x10]

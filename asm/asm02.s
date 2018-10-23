@@ -46,7 +46,7 @@ split9BitsFromBitfield_8021AE0:
 	// splits bitfield into lower and upper 9 bits, and returns those in r0, r1
 	push {lr}
 	lsr r1, r0, #9
-	ldr r2, word_8021AEC // =0x1FF 
+	ldr r2, word_8021AEC // =0x1ff 
 	and r0, r2
 	pop {pc}
 	.balign 4, 0x00
@@ -66,7 +66,7 @@ sub_8021AEE:
 	pop {r4,pc}
 loc_8021B00:
 	push {r0-r2}
-	ldr r1, off_8021B74 // =0x1E20 
+	ldr r1, off_8021B74 // =0x1e20 
 	add r1, r1, r0
 	// bitfield
 	add r0, r1, #0
@@ -98,7 +98,7 @@ sub_8021B2A:
 	pop {pc}
 loc_8021B3C:
 	push {r0-r2}
-	ldr r1, off_8021B74 // =0x1E20 
+	ldr r1, off_8021B74 // =0x1e20 
 	add r1, r1, r0
 	// bitfield
 	add r0, r1, #0
@@ -250,7 +250,7 @@ loc_8021C16:
 	mov r2, #0
 loc_8021C28:
 	ldrh r7, [r3,r2]
-	ldr r6, dword_8021C64 // =0x1FF 
+	ldr r6, dword_8021C64 // =0x1ff 
 	and r6, r7
 	lsr r7, r7, #9
 	cmp r0, r6
@@ -289,7 +289,7 @@ sub_8021C68:
 	// memBlock
 	ldr r0, [r0,#0x4c]
 	// size
-	ldr r1, dword_8021C78 // =0xF00 
+	ldr r1, dword_8021C78 // =0xf00 
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
 	.balign 4, 0x00
@@ -388,7 +388,7 @@ off_8021D04: .word 0x140
 sub_8021D08:
 	push {lr}
 	ldr r0, off_8021D94 // =unk_203A0A0 
-	ldr r1, off_8021D98 // =0x2E0 
+	ldr r1, off_8021D98 // =0x2e0 
 	bl sub_80008C0
 	pop {pc}
 .endfunc // sub_8021D08
@@ -453,8 +453,9 @@ dword_8021D78: .word 0x20007D6
 dword_8021D7C: .word 0x200083A
 off_8021D80: .word script_8021D88
 off_8021D84: .word byte_8021D8A
-// <endpool>
-script_8021D88:  .byte 0x2, 0x0
+script_8021D88:
+	// <endpool>
+	.byte 0x2, 0x0
 .endfunc // sub_8021D36
 
 byte_8021D8A: .byte 0x7E, 0x7E, 0x7E, 0x7E, 0xE6, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -462,6 +463,7 @@ off_8021D94: .word unk_203A0A0
 off_8021D98: .word 0x2E0
 off_8021D9C: .word 0x170
 off_8021DA0: .word unk_203A0A0
-// <endfile>
-off_8021DA4:  .word unk_203A0A0
+off_8021DA4:
+	// <endfile>
+	.word unk_203A0A0
 /*For debugging purposes, connect comment at any range!*/

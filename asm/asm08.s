@@ -90,8 +90,9 @@ sub_806044C:
 	bl sub_8003570
 	pop {pc}
 off_8060460: .word pt_8060464
-// <endpool> <endfile>
-pt_8060464:  .word dword_8060474
+pt_8060464:
+	// <endpool> <endfile>
+	.word dword_8060474
 	.word dword_80604A0
 	.word dword_80605E4
 	.word dword_80605E8

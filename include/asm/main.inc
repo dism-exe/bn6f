@@ -119,7 +119,7 @@
 // .equ dword_2009930, 0x2009930
 // .equ dword_2009CC0, 0x2009CC0
 // .equ dword_200A870, 0x200A870
-// .equ dword_3000E70, 0x3000E70
+// .equ off_3000E70, 0x3000E70
 // .equ loc_3006814, 0x3006814
 .equ GeneralLCDStatus_STAT_LYC_, 0x4000004
 .equ KeyStatus, 0x4000130

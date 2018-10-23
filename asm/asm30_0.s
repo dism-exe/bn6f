@@ -19,8 +19,9 @@ sub_80AED50:
 	pop {pc}
 	.byte 0, 0
 off_80AED70: .word off_80AED74
-// <endpool>
-off_80AED74:  .word off_80AED80
+off_80AED74:
+	// <endpool>
+	.word off_80AED80
 	.word off_80AEE0C
 	.word off_80AEE0C
 .endfunc // sub_80AED50

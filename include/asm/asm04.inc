@@ -36,11 +36,11 @@
 // .global dword_804E604
 
 .include "data/dat04.inc"
-// .global dword_804E74C
-// .global dword_804E87C
-// .global dword_804E8D0
-// .global dword_804E8D4
-// .global dword_804E8D8
+// .global byte_804E74C
+// .global unk_804E87C
+// .global unk_804E8D0
+// .global unk_804E8D4
+// .global unk_804E8D8
 // .global off_804E9CC
 
 

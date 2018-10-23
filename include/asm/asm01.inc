@@ -107,9 +107,9 @@
 // .equ dword_203CBE0, 0x203CBE0
 // .equ dword_203F4A0, 0x203F4A0
 // .equ dword_203F5A0, 0x203F5A0
-// .equ dword_203F7D8, 0x203F7D8
-// .equ dword_203F7D8, 0x203F7D8
-// .equ dword_203F7D8, 0x203F7D8
-// .equ dword_203F7D8, 0x203F7D8
+// .equ byte_203F7D8, 0x203F7D8
+// .equ byte_203F7D8, 0x203F7D8
+// .equ byte_203F7D8, 0x203F7D8
+// .equ byte_203F7D8, 0x203F7D8
 
 .endif // INC_ASM_ASM01

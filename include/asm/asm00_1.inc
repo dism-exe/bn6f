@@ -434,7 +434,7 @@
 // .global sub_80301B2
 // .global sub_80303E8
 // .global sub_8030580
-// .global loc_8030A00
+// .global sub_8030A00
 // .global sub_8030A30
 // .global sub_8031A7A
 
@@ -581,11 +581,11 @@
 .include "asm/asm31.inc"
 // .global sub_80B81EC
 // .global sub_80B8210
-// .global loc_80B85E0
-// .global loc_80B88D0
-// .global loc_80B8A18
-// .global loc_80B8CD8
-// .global loc_80B8EA0
+// .global sub_80B85E0
+// .global sub_80B88D0
+// .global sub_80B8A18
+// .global sub_80B8CD8
+// .global sub_80B8EA0
 // .global loc_80B9078
 // .global loc_80B92B8
 // .global loc_80B94BC
@@ -593,11 +593,11 @@
 // .global loc_80B99C0
 // .global loc_80B9C14
 // .global loc_80B9F44
-// .global loc_80BA364
+// .global sub_80BA364
 // .global loc_80BA708
-// .global loc_80BAA8C
-// .global loc_80BAF50
-// .global loc_80BB2A0
+// .global sub_80BAA8C
+// .global sub_80BAF50
+// .global sub_80BB2A0
 // .global loc_80BB608
 // .global loc_80BB914
 // .global loc_80BBB98
@@ -626,8 +626,8 @@
 // .global loc_80C0E04
 // .global loc_80C0F6C
 // .global loc_80C11AC
-// .global loc_80C1570
-// .global loc_80C1A10
+// .global sub_80C1570
+// .global sub_80C1A10
 // .global loc_80C2138
 // .global loc_80C26F0
 // .global loc_80C2A78
@@ -650,7 +650,7 @@
 // .global loc_80C52B0
 // .global loc_80C53C0
 // .global loc_80C55B0
-// .global loc_80C57C0
+// .global sub_80C57C0
 // .global loc_80C5A34
 // .global loc_80C5BB0
 // .global loc_80C5DDC
@@ -752,7 +752,7 @@
 // .global sub_80D2034
 // .global sub_80D2290
 // .global sub_80D2430
-// .global loc_80D2460
+// .global sub_80D2460
 // .global sub_80D25D4
 // .global loc_80D2A94
 // .global loc_80D2BDC
@@ -821,6 +821,7 @@
 // .global loc_80DAE94
 // .global loc_80DB0E4
 // .global loc_80DB304
+// .global sub_80DB570
 // .global sub_80DB6A4
 // .global loc_80DB8CC
 // .global loc_80DB994
@@ -1075,9 +1076,11 @@
 // .equ unk_20018C0, 0x20018C0
 // .equ eGameState, 0x2001B80
 // .equ eOverworldNPCObjects, 0x20057B0
-// .equ unk_20057D4, 0x20057D4
-// .equ unk_20057D8, 0x20057D8
-// .equ unk_20057DC, 0x20057DC
+// .equ eOverworldNPCObjects, 0x20057B0
+// .equ eOverworldNPCObjects, 0x20057B0
+// .equ eOverworldNPCObjects, 0x20057B0
+// .equ eOverworldNPCObjects, 0x20057B0
+// .equ eOverworldNPCObjects, 0x20057B0
 // .equ byte_2006530, 0x2006530
 // .equ byte_2006848, 0x2006848
 // .equ byte_2006849, 0x2006849
@@ -1145,8 +1148,8 @@
 // .equ word_200A444, 0x200A444
 // .equ word_200A448, 0x200A448
 // .equ word_200A44A, 0x200A44A
-// .equ dword_200A450, 0x200A450
-// .equ dword_200A454, 0x200A454
+// .equ off_200A450, 0x200A450
+// .equ off_200A454, 0x200A454
 // .equ word_200A458, 0x200A458
 // .equ word_200A45C, 0x200A45C
 // .equ i_joGameSubsysSel, 0x200A480
@@ -1221,86 +1224,86 @@
 // .equ dword_203A010, 0x203A010
 // .equ unk_203A9A0, 0x203A9A0
 // .equ eBattleObjectPlayer, 0x203A9B0
-// .equ unk_203C4A0, 0x203C4A0
+// .equ byte_203C4A0, 0x203C4A0
 // .equ byte_203C960, 0x203C960
-// .equ unk_203C980, 0x203C980
-// .equ unk_203C9E4, 0x203C9E4
-// .equ dword_203CA50, 0x203CA50
-// .equ byte_203CA70, 0x203CA70
+// .equ byte_203C980, 0x203C980
+// .equ byte_203C9E4, 0x203C9E4
+// .equ byte_203CA50, 0x203CA50
+// .equ dword_203CA70, 0x203CA70
 // .equ byte_203CA74, 0x203CA74
 // .equ word_203CA7A, 0x203CA7A
-// .equ byte_203CA7C, 0x203CA7C
-// .equ unk_203CB10, 0x203CB10
-// .equ unk_203CB74, 0x203CB74
+// .equ dword_203CA7C, 0x203CA7C
+// .equ byte_203CB10, 0x203CB10
+// .equ byte_203CB74, 0x203CB74
 // .equ dword_203CBE0, 0x203CBE0
 // .equ dword_203CBE4, 0x203CBE4
-// .equ dword_203CBE8, 0x203CBE8
+// .equ byte_203CBE8, 0x203CBE8
 // .equ byte_203CC03, 0x203CC03
 // .equ byte_203CC0D, 0x203CC0D
 // .equ word_203CC2A, 0x203CC2A
-// .equ dword_203CC2C, 0x203CC2C
-// .equ unk_203CC34, 0x203CC34
-// .equ word_203CC50, 0x203CC50
-// .equ word_203CC78, 0x203CC78
-// .equ unk_203CC98, 0x203CC98
+// .equ byte_203CC2C, 0x203CC2C
+// .equ byte_203CC34, 0x203CC34
+// .equ byte_203CC50, 0x203CC50
+// .equ byte_203CC78, 0x203CC78
+// .equ byte_203CC98, 0x203CC98
 // .equ dword_203CCA0, 0x203CCA0
 // .equ dword_203CCA4, 0x203CCA4
 // .equ byte_203CCA8, 0x203CCA8
 // .equ byte_203CCA9, 0x203CCA9
 // .equ byte_203CCAA, 0x203CCAA
 // .equ byte_203CCAB, 0x203CCAB
-// .equ dword_203CCD4, 0x203CCD4
-// .equ unk_203CCE0, 0x203CCE0
-// .equ unk_203CDA8, 0x203CDA8
-// .equ word_203CDB0, 0x203CDB0
+// .equ byte_203CCD4, 0x203CCD4
+// .equ byte_203CCE0, 0x203CCE0
+// .equ byte_203CDA8, 0x203CDA8
+// .equ byte_203CDB0, 0x203CDB0
 // .equ word_203CDE8, 0x203CDE8
-// .equ word_203CDEA, 0x203CDEA
+// .equ byte_203CDEA, 0x203CDEA
 // .equ dword_203CDF0, 0x203CDF0
-// .equ dword_203CDF4, 0x203CDF4
-// .equ unk_203CE00, 0x203CE00
-// .equ unk_203CE64, 0x203CE64
+// .equ byte_203CDF4, 0x203CDF4
+// .equ byte_203CE00, 0x203CE00
+// .equ byte_203CE64, 0x203CE64
 // .equ byte_203CED0, 0x203CED0
 // .equ dword_203CFA0, 0x203CFA0
-// .equ dword_203CFA4, 0x203CFA4
-// .equ unk_203CFD0, 0x203CFD0
-// .equ unk_203CFE0, 0x203CFE0
+// .equ byte_203CFA4, 0x203CFA4
+// .equ byte_203CFD0, 0x203CFD0
+// .equ byte_203CFE0, 0x203CFE0
 // .equ dword_203EAD0, 0x203EAD0
-// .equ unk_203EAE0, 0x203EAE0
-// .equ unk_203EB00, 0x203EB00
-// .equ unk_203EB28, 0x203EB28
+// .equ byte_203EAE0, 0x203EAE0
+// .equ byte_203EB00, 0x203EB00
+// .equ byte_203EB28, 0x203EB28
 // .equ dword_203F4A0, 0x203F4A0
-// .equ dword_203F4A4, 0x203F4A4
-// .equ unk_203F4AC, 0x203F4AC
-// .equ unk_203F4F4, 0x203F4F4
-// .equ unk_203F510, 0x203F510
-// .equ unk_203F538, 0x203F538
-// .equ unk_203F558, 0x203F558
+// .equ byte_203F4A4, 0x203F4A4
+// .equ byte_203F4AC, 0x203F4AC
+// .equ byte_203F4F4, 0x203F4F4
+// .equ byte_203F510, 0x203F510
+// .equ byte_203F538, 0x203F538
+// .equ byte_203F558, 0x203F558
 // .equ dword_203F560, 0x203F560
 // .equ dword_203F564, 0x203F564
 // .equ dword_203F568, 0x203F568
-// .equ unk_203F56C, 0x203F56C
-// .equ dword_203F594, 0x203F594
+// .equ byte_203F56C, 0x203F56C
+// .equ byte_203F594, 0x203F594
 // .equ dword_203F5A0, 0x203F5A0
-// .equ dword_203F5A4, 0x203F5A4
-// .equ unk_203F5AC, 0x203F5AC
-// .equ unk_203F5F4, 0x203F5F4
-// .equ unk_203F610, 0x203F610
-// .equ unk_203F638, 0x203F638
-// .equ unk_203F658, 0x203F658
+// .equ byte_203F5A4, 0x203F5A4
+// .equ byte_203F5AC, 0x203F5AC
+// .equ byte_203F5F4, 0x203F5F4
+// .equ byte_203F610, 0x203F610
+// .equ byte_203F638, 0x203F638
+// .equ byte_203F658, 0x203F658
 // .equ dword_203F660, 0x203F660
-// .equ dword_203F664, 0x203F664
-// .equ unk_203F66C, 0x203F66C
-// .equ dword_203F694, 0x203F694
-// .equ unk_203F6D0, 0x203F6D0
-// .equ dword_203F750, 0x203F750
-// .equ dword_203F7D8, 0x203F7D8
-// .equ dword_203F7D8, 0x203F7D8
+// .equ byte_203F664, 0x203F664
+// .equ byte_203F66C, 0x203F66C
+// .equ byte_203F694, 0x203F694
+// .equ byte_203F6D0, 0x203F6D0
+// .equ byte_203F750, 0x203F750
+// .equ byte_203F7D8, 0x203F7D8
+// .equ byte_203F7D8, 0x203F7D8
 // .equ dword_203F7E0, 0x203F7E0
-// .equ dword_203F7E4, 0x203F7E4
-// .equ dword_3000EA8, 0x3000EA8
-// .equ unk_3001690, 0x3001690
-// .equ unk_3001750, 0x3001750
-// .equ word_3001960, 0x3001960
+// .equ byte_203F7E4, 0x203F7E4
+// .equ byte_3000EA8, 0x3000EA8
+// .equ byte_3001690, 0x3001690
+// .equ byte_3001750, 0x3001750
+// .equ byte_3001960, 0x3001960
 // .equ unk_3001980, 0x3001980
 // .equ unk_3001B60, 0x3001B60
 // .equ dword_3002180, 0x3002180

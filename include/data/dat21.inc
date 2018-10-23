@@ -45,7 +45,7 @@
 
 /* Undeclared Symbols */
 // .equ unk_2010800, 0x2010800
-// .equ unk_3001750, 0x3001750
+// .equ byte_3001750, 0x3001750
 // .equ unk_3001B60, 0x3001B60
 
 .endif // INC_DATA_DAT21

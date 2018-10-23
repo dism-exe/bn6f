@@ -99,13 +99,14 @@ sub_804E720:
 	bl sub_8003570
 	pop {pc}
 off_804E734: .word off_804E738
-// <endpool>
-off_804E738:  .word dword_804E74C
+off_804E738:
+	// <endpool>
+	.word byte_804E74C
 .endfunc // sub_804E720
 
-	.word dword_804E87C
-	.word dword_804E8D0
-	.word dword_804E8D4
-// <endfile>
- 	.word dword_804E8D8
+	.word unk_804E87C
+	.word unk_804E8D0
+	.word unk_804E8D4
+	// <endfile>
+	.word unk_804E8D8
 /*For debugging purposes, connect comment at any range!*/
