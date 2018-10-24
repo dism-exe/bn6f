@@ -62,18 +62,23 @@ sub_8060406:
 	bl sub_8002354
 	pop {pc}
 off_8060414: .word off_8060418
-off_8060418: .word off_8060428
+off_8060418:
+	.word off_8060428
 	.word off_8060430
 	.word off_806043C
 	.word off_8060444
-off_8060428: .word off_8060284
+off_8060428:
+	.word off_8060284
 	.word 0xFFFFFFFF
-off_8060430: .word byte_80602A4
+off_8060430:
+	.word byte_80602A4
 	.word byte_80602CC
 	.word 0xFFFFFFFF
-off_806043C: .word byte_80602FC
+off_806043C:
+	.word byte_80602FC
 	.word 0xFFFFFFFF
-off_8060444: .word byte_806032C
+off_8060444:
+	.word byte_806032C
 	.word 0xFFFFFFFF
 .endfunc // sub_8060406
 

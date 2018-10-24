@@ -1692,14 +1692,11 @@ ds byte_2011E46 // 0x2011e46
 	.space 10
 ds unk_2011E50 // 0x2011e50
 	.space 16
-ds unk_2011E60 // 0x2011e60
-	.space 8
-ds dword_2011E68 // 0x2011e68
-	.space 4
-ds dword_2011E6C // 0x2011e6c
-	.space 4
-ds dword_2011E70 // 0x2011e70
-	.space 48
+// some sort of state for some map script (bytecode)
+ds eUnkMapScriptState_2011e60 // 0x2011e60
+	unk_map_script_state_2011e60_struct eUnkMapScriptState_2011e60
+ds eUnkMapScriptState_2011e60End
+	.space 44
 ds unk_2011EA0 // 0x2011ea0
 	.space 64
 ds byte_2011EE0 // 0x2011ee0

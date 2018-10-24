@@ -189,6 +189,8 @@ reqBBS:
 .include "asm/reqBBS.s"
 asm37_1:
 .include "asm/asm37_1.s"
+LibsFileLabel:
+.include "asm/libs.s"
 dat37:
 .include "data/dat37.s"
 

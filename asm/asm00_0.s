@@ -3149,7 +3149,7 @@ sub_8001B1C:
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
-	ldr r7, off_8001C40 // =byte_20094C0 
+	ldr r7, off_8001C40 // =byte_20094C0
 	ldrb r1, [r0,#9]
 	mov r2, #0x18
 	mul r2, r1
