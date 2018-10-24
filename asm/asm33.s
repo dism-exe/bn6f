@@ -9234,7 +9234,7 @@ sub_8128318:
 	lsr r4, r1, #0x10
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
-	ldr r0, off_8128350 // =aIiijjjjkkkkkjj 
+	ldr r0, off_8128350 // =byte_201C700 
 	ldrb r2, [r5,#0xd]
 	mov r3, #1
 	tst r2, r3
@@ -9249,7 +9249,7 @@ loc_8128344:
 	pop {r4,pc}
 	.balign 4, 0x00
 off_812834C: .word dword_2027590
-off_8128350: .word aIiijjjjkkkkkjj
+off_8128350: .word byte_201C700
 .endfunc // sub_8128318
 
 	mov r1, #1
@@ -12490,7 +12490,7 @@ sub_8129F48:
 	mov r3, #0
 	bl sub_803DCE8
 	bl sub_803EF60
-	bl loc_803EA78
+	bl sub_803EA78
 	ldr r0, dword_8129F80 // =0x42523545 
 	ldr r1, dword_8129F84 // =0x2000 
 	mov r2, #0
@@ -13157,7 +13157,7 @@ sub_812A4AC:
 	strb r0, [r5,#2]
 	strh r0, [r5,#0x28]
 	bl sub_8132398
-	bl loc_803EA78
+	bl sub_803EA78
 	bl sub_803EA50
 	tst r0, r0
 	bne loc_812A4D6
@@ -13329,7 +13329,7 @@ loc_812A610:
 	bl sub_803CB0C
 	b loc_812A602
 loc_812A628:
-	bl loc_803EA78
+	bl sub_803EA78
 	bl sub_803EA50
 	tst r0, r0
 	bne loc_812A648
@@ -13439,7 +13439,7 @@ sub_812A6F8:
 	mov r0, #0x10
 	bl sub_803CB18
 	beq loc_812A74C
-	bl loc_803EA78
+	bl sub_803EA78
 	bl sub_803EA50
 	tst r0, r0
 	bne loc_812A722
@@ -15427,7 +15427,7 @@ sub_812B698:
 	mov r0, #4
 	strb r0, [r1,#0x1] // (byte_203F7D8+1 - 0x203f7d8)
 loc_812B6A8:
-	bl loc_8007800
+	bl sub_8007800
 	tst r0, r0
 	bne locret_812B706
 	strh r1, [r5,#0x22]

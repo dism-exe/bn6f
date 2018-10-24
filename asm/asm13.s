@@ -25,7 +25,7 @@ sub_806FC08:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_806FC64 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -113,7 +113,7 @@ sub_806FD54:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_806FD88: .word off_806FD8C
-off_806FD8C: .word locret_8001AB4+1
+off_806FD8C: .word nullsub_39+1
 	.word sub_80019D0+1
 	.byte 0xD9
 	.byte 0x5C 

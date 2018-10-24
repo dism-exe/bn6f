@@ -144,7 +144,9 @@ sub_801FEE8:
 	mov pc, lr
 .endfunc // sub_801FEE8
 
-loc_801FEEE:
+.func
+.thumb_func
+sub_801FEEE:
 	push {r4-r7,lr}
 	add r7, r0, #0
 	bl sub_803EA60
@@ -160,6 +162,8 @@ off_801FF08: .word sub_801FF18+1
 	.word sub_801FFD6+1
 	.word sub_801FFD6+1
 	.word sub_801FF18+1
+.endfunc // sub_801FEEE
+
 .func
 .thumb_func
 sub_801FF18:

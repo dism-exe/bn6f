@@ -1701,7 +1701,9 @@ ds dword_2011E6C // 0x2011e6c
 ds dword_2011E70 // 0x2011e70
 	.space 48
 ds unk_2011EA0 // 0x2011ea0
-	.space 64
+	.space 4
+ds unk_2011EA4 // 0x2011ea4
+	.space 60
 ds byte_2011EE0 // 0x2011ee0
 	.space 1
 ds byte_2011EE1 // 0x2011ee1
@@ -1950,7 +1952,7 @@ ds unk_201C4F0 // 0x201c4f0
 	.space 16
 ds unk_201C500 // 0x201c500
 	.space 512
-ds aIiijjjjkkkkkjj // 0x201c700
+ds byte_201C700 // 0x201c700
 	.space 768
 ds unk_201CA00 // 0x201ca00
 	.space 32
@@ -2089,7 +2091,9 @@ ds unk_2020000 // 0x2020000
 ds unk_2020198 // 0x2020198
 	.space 104
 ds unk_2020200 // 0x2020200
-	.space 644
+	.space 4
+ds unk_2020204 // 0x2020204
+	.space 640
 ds unk_2020484 // 0x2020484
 	.space 124
 ds unk_2020500 // 0x2020500

@@ -25,7 +25,7 @@ sub_8069038:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_8069094 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -114,15 +114,15 @@ sub_8069140:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8069174: .word off_8069178
-off_8069178: .word locret_8001AB4+1
+off_8069178: .word nullsub_39+1
 	.word sub_80019FE+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019FE+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019FE+1
 	.word unk_3005CD9
 	.word 0x800
@@ -1113,7 +1113,7 @@ sub_8069FE8:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_806A044 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -1214,15 +1214,15 @@ sub_806A120:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_806A154: .word off_806A158
-off_806A158: .word locret_8001AB4+1
+off_806A158: .word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
@@ -1253,17 +1253,29 @@ sub_806A1B4:
 	bx r7
 	pop {r4-r7,pc}
 off_806A1C8: .word off_806A1CC
-off_806A1CC: .word locret_806A1D8+1
-	.word locret_806A1DA+1
-	.word locret_806A1DC+1
+off_806A1CC: .word nullsub_67+1
+	.word nullsub_68+1
+	.word nullsub_69+1
 .endfunc // sub_806A1B4
 
-locret_806A1D8:
+.func
+.thumb_func
+nullsub_67:
 	mov pc, lr
-locret_806A1DA:
+.endfunc // nullsub_67
+
+.func
+.thumb_func
+nullsub_68:
 	mov pc, lr
-locret_806A1DC:
+.endfunc // nullsub_68
+
+.func
+.thumb_func
+nullsub_69:
 	mov pc, lr
+.endfunc // nullsub_69
+
 .func
 .thumb_func
 sub_806A1DE:
@@ -1308,7 +1320,7 @@ dword_806A2C4: .word 0xA2D30011
 	.word 0xE00116F7
 	.word 0x290806A2
 	.word 0x2011EBC
-	.word unk_8050202
+	.word byte_8050202
 	.word 0x16F7FF1F
 	.word 0x16F2FF1F
 	.word 0xF07F4002
@@ -1856,7 +1868,7 @@ sub_806AA00:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_806AA5C // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -1989,23 +2001,23 @@ sub_806AB94:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_806ABC8: .word off_806ABCC
-off_806ABCC: .word locret_8001AB4+1
+off_806ABCC: .word nullsub_39+1
 	.word sub_8001A6A+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019FE+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019FE+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_8001A22+1
 	.word unk_3005CD9
 	.word 0x800
@@ -2210,7 +2222,7 @@ unk_806AEF9: .byte  5
 	.word 0x30806AF
 	.word 0x390E2CFF
 	.word 0x260806AF
-	.word unk_8098CA2
+	.word byte_8098CA2
 	.word 0x3
 	.word 0x6AF3901
 	.word 0x8
@@ -3685,7 +3697,7 @@ sub_806C23C:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_806C298 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -3783,31 +3795,31 @@ sub_806C35C:
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_806C390: .word off_806C394
-off_806C394: .word locret_8001AB4+1
+off_806C394: .word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
-	.word locret_8001AB4+1
+	.word nullsub_39+1
+	.word nullsub_39+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800

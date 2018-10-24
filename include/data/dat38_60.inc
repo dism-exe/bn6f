@@ -367,7 +367,8 @@
 .global byte_86A10B0
 .global byte_86A10D0
 .global byte_86A13F0
-.global byte_86A1480
+.global unk_86A1480
+.global unk_86A1940
 .global byte_86A1A60
 .global byte_86A1A80
 .global byte_86A1B20

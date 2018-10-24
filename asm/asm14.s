@@ -25,7 +25,7 @@ sub_8071B50:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_8071BAC // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -99,7 +99,7 @@ sub_8071C30:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8071C64: .word off_8071C68
-off_8071C68: .word locret_8001AB4+1
+off_8071C68: .word nullsub_39+1
 	.word sub_80019D0+1
 	.word 0x3005CD9, 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9
 	.word 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9, 0x800
@@ -126,17 +126,29 @@ sub_8071CC4:
 	bx r7
 	pop {r4-r7,pc}
 off_8071CD8: .word off_8071CDC
-off_8071CDC: .word locret_8071CE8+1
-	.word locret_8071CEA+1
-	.word locret_8071CEC+1
+off_8071CDC: .word nullsub_71+1
+	.word nullsub_72+1
+	.word nullsub_73+1
 .endfunc // sub_8071CC4
 
-locret_8071CE8:
+.func
+.thumb_func
+nullsub_71:
 	mov pc, lr
-locret_8071CEA:
+.endfunc // nullsub_71
+
+.func
+.thumb_func
+nullsub_72:
 	mov pc, lr
-locret_8071CEC:
+.endfunc // nullsub_72
+
+.func
+.thumb_func
+nullsub_73:
 	mov pc, lr
+.endfunc // nullsub_73
+
 .func
 .thumb_func
 sub_8071CEE:

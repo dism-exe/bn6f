@@ -4,17 +4,17 @@
 /* Public Symbols */
 .global ho_8026554
 .global sub_8026840
-.global loc_8026A28
+.global sub_8026A28
 .global sub_8027D10
 .global sub_802A866
-.global loc_802A87C
+.global sub_802A87C
 .global sub_802B2A0
 .global sub_802B358
 .global sub_802B438
 .global sub_802B4D4
 .global sub_802B51C
 .global sub_802B6EC
-.global loc_802B734
+.global sub_802B734
 .global sub_802BD60
 .global sub_802C34E
 .global sub_802C8FA
@@ -22,7 +22,7 @@
 .global sub_802C9EA
 .global sub_802CA82
 .global sub_802CB38
-.global loc_802CB78
+.global sub_802CB78
 .global off_802CCB4
 .global off_802CD5C
 .global sub_802CDD0
@@ -58,15 +58,15 @@
 .global battleSettings_802D2B2 // () -> BattleSettings*
 .global sub_802D310
 .global sub_802D322
-.global loc_802D4C6
+.global sub_802D4C6
 .global sub_802D638
 .global sub_802D644
 .global sub_802D652
 .global sub_802D65E
 .global sub_802D6A0
 .global sub_802D6C4
-.global loc_802D714
-.global loc_802D926
+.global sub_802D714
+.global sub_802D926
 .global sub_802DCDE
 .global sub_802DCEC
 .global sub_802DD2A
@@ -126,7 +126,7 @@
 .global sub_802FE7A
 .global sub_802FF2C
 .global sub_802FF4C
-.global loc_802FFF4
+.global sub_802FFF4
 .global locret_8030102
 .global sub_80301B2
 .global sub_80301D0
@@ -139,7 +139,7 @@
 .global sub_803037C
 .global sub_80303E8
 .global sub_80303F2
-.global loc_8030472
+.global sub_8030472
 .global sub_80304E8
 .global sub_8030540
 .global sub_8030580
@@ -157,7 +157,7 @@
 .global loc_803150A
 .global loc_80315CC
 .global sub_8031612
-.global loc_80318B0
+.global sub_80318B0
 .global sub_8031A7A
 
 
@@ -320,9 +320,10 @@
 // .global sub_80109A4
 // .global sub_8010DD0
 // .global sub_8011020
-// .global loc_8011268
-// .global loc_8011384
+// .global sub_8011268
+// .global sub_8011384
 // .global sub_8011680
+// .global loc_8011690
 // .global loc_8011694
 // .global sub_80116AE
 // .global sub_8011714
@@ -342,7 +343,7 @@
 // .global init_8013B64 // (int idx, int a2) -> void
 // .global sub_8013D5E
 // .global sub_8013FD0
-// .global loc_8014216
+// .global sub_8014216
 // .global sub_80143A6
 // .global loc_80143B4
 // .global sub_80144C0
@@ -606,6 +607,8 @@
 // .global sub_80E943E
 // .global sub_80E979C
 // .global sub_80EA11C
+// .global sub_80EB04C
+// .global sub_80EB234
 // .global sub_81096FA
 // .global sub_810971A
 
@@ -694,9 +697,9 @@
 // .global dword_8725874
 // .global byte_8725894
 // .global byte_872CF94
-// .global dword_872F3F4
-// .global dword_8730254
-// .global dword_8731154
+// .global byte_872F3F4
+// .global byte_8730254
+// .global byte_8731154
 // .global dword_8731DF4
 // .global dword_8732154
 // .global dword_87324B4

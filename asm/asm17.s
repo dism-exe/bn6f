@@ -25,7 +25,7 @@ sub_807931C:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_8079378 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -100,7 +100,7 @@ sub_80793E8:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_807941C: .word off_8079420
-off_8079420: .word locret_8001AB4+1
+off_8079420: .word nullsub_39+1
 	.word nullsub_36+1
 	.word 0x3005CD9, 0x800, 0x8001AB5, 0x80019B3, 0x3005CD9
 	.word 0x800
@@ -126,14 +126,22 @@ sub_8079468:
 	bx r7
 	pop {r4-r7,pc}
 off_807947C: .word off_8079480
-off_8079480: .word locret_8079488+1
-	.word locret_807948A+1
+off_8079480: .word nullsub_79+1
+	.word nullsub_80+1
 .endfunc // sub_8079468
 
-locret_8079488:
+.func
+.thumb_func
+nullsub_79:
 	mov pc, lr
-locret_807948A:
+.endfunc // nullsub_79
+
+.func
+.thumb_func
+nullsub_80:
 	mov pc, lr
+.endfunc // nullsub_80
+
 .func
 .thumb_func
 sub_807948C:

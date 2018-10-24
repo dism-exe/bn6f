@@ -24,7 +24,7 @@ sub_804E62C:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_804E68C // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -79,7 +79,7 @@ off_804E6FC: .word off_804E450
 	.word off_804E478
 	.word off_804E4A0
 	.word 0xFFFFFFFF
-off_804E70C: .word unk_804E5D4
+off_804E70C: .word byte_804E5D4
 	.word 0xFFFFFFFF
 dword_804E714: .word 0xFFFFFFFF
 off_804E718: .word dword_804E604
@@ -104,9 +104,9 @@ off_804E738:
 	.word byte_804E74C
 .endfunc // sub_804E720
 
-	.word unk_804E87C
-	.word unk_804E8D0
-	.word unk_804E8D4
+	.word byte_804E87C
+	.word byte_804E8D0
+	.word byte_804E8D4
 	// <endfile>
-	.word unk_804E8D8
+	.word byte_804E8D8
 /*For debugging purposes, connect comment at any range!*/

@@ -72,7 +72,7 @@
 // .global sub_80070E6
 // .global sub_800710A
 // .global sub_80071D4
-// .global loc_8007800
+// .global sub_8007800
 // .global getBattleSettingsFromList1 // (int battleSettingsIdx) -> BattleSettings*
 
 .include "asm/asm00_2.inc"
@@ -126,7 +126,7 @@
 // .global sub_803EA50
 // .global sub_803EA60
 // .global sub_803EA70
-// .global loc_803EA78
+// .global sub_803EA78
 // .global sub_803EAE4
 // .global sub_803EBAC
 // .global sub_803EBF4
@@ -404,7 +404,7 @@
 // .equ unk_201C400, 0x201C400
 // .equ unk_201C4B0, 0x201C4B0
 // .equ unk_201C4DC, 0x201C4DC
-// .equ aIiijjjjkkkkkjj, 0x201C700
+// .equ byte_201C700, 0x201C700
 // .equ unk_201CB5C, 0x201CB5C
 // .equ unk_201CC20, 0x201CC20
 // .equ unk_201CF20, 0x201CF20

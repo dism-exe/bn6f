@@ -11,6 +11,7 @@
 .global sub_8033978
 .global sub_80339CC
 .global sub_8033FC0
+.global sub_8033FDC
 .global sub_80341AA
 .global ho_jackIn_80341B6
 .global off_80348FC
@@ -23,6 +24,7 @@
 .global sub_80351B4
 .global sub_803522E
 .global sub_803532C
+.global sub_8035364
 .global sub_803537C
 .global sub_8035408
 .global sub_8035424
@@ -61,12 +63,12 @@
 .global sub_803A820
 .global sub_803A8B4
 .global sub_803AA24
-.global loc_803AA40
+.global sub_803AA40
 .global sub_803AB6C
 .global sub_803AB94
 .global sub_803ABF4
 .global sub_803AD04
-.global loc_803AD20
+.global sub_803AD20
 .global sub_803AE50
 .global sub_803AE78
 .global sub_803AED8
@@ -162,7 +164,7 @@
 .global sub_803EA60
 .global sub_803EA68
 .global sub_803EA70
-.global loc_803EA78
+.global sub_803EA78
 .global sub_803EAE4
 .global sub_803EBAC
 .global sub_803EBB8
@@ -259,7 +261,7 @@
 // .global sub_8003940
 // .global sub_80039CC
 // .global sub_8003A64
-// .global loc_8003A90
+// .global sub_8003A90
 // .global sub_8003B1C
 // .global sub_80047E0
 // .global sub_80048B2
@@ -288,7 +290,7 @@
 // .global sub_8006FAC
 // .global sub_8006FD0
 // .global sub_80071D4
-// .global loc_8007800
+// .global sub_8007800
 // .global getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
 // .global sub_800A7D0 // () -> (zf, int)
 // .global sub_800A908
@@ -335,7 +337,7 @@
 // .global sub_80302A8
 // .global sub_8030A30
 // .global sub_8030A60
-// .global loc_80318B0
+// .global sub_80318B0
 // .global sub_8031A7A
 
 .include "asm/chatbox.inc"
@@ -352,7 +354,7 @@
 .include "asm/asm03_2.inc"
 // .global render_graphicalText_8045F8C
 // .global sub_8045FC6
-// .global loc_8045FD0
+// .global sub_8045FD0
 // .global loc_8045FE4
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
@@ -389,7 +391,7 @@
 // .global byte_804EA12
 // .global byte_804EA1C
 // .global byte_804EA1C
-// .global unk_80525C0
+// .global byte_80525C0
 // .global byte_80525DC
 
 .include "asm/asm05.inc"
@@ -634,7 +636,7 @@
 // .global dword_8099DC0
 // .global dword_8099E04
 // .global dword_8099EA0
-// .global unk_809A8A8
+// .global byte_809A8A8
 // .global byte_809AA34
 // .global unk_809AE68
 // .global sub_809C968
@@ -643,8 +645,8 @@
 // .global sub_809CF2C
 // .global sub_809E064
 // .global updateFlags_809E0B0 // () -> void
-// .global loc_809E0FC
-// .global loc_809E114
+// .global sub_809E0FC
+// .global sub_809E114
 // .global sub_809E122
 // .global sub_809E13C
 // .global sub_809E188
@@ -658,8 +660,8 @@
 // .global sub_809E23C
 // .global sub_809E248
 // .global sub_809E254
-// .global loc_809E260
-// .global loc_809E26A
+// .global sub_809E260
+// .global sub_809E26A
 // .global sub_809E276
 // .global sub_809E284
 // .global sub_809E292

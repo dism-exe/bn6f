@@ -302,11 +302,11 @@
 .global dword_872E894
 .global dword_872E994
 .global dword_872EF14
-.global dword_872F014
+.global byte_872F014
 .global dword_872F114
-.global dword_872F3F4
-.global dword_8730254
-.global dword_8731154
+.global byte_872F3F4
+.global byte_8730254
+.global byte_8731154
 .global dword_8731DF4
 .global dword_8732154
 .global dword_87324B4

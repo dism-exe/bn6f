@@ -24,7 +24,7 @@ sub_80595B8:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_8059618 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -76,19 +76,19 @@ off_8059678: .word off_805968C
 	.word off_80596B4
 	.word off_80596BC
 off_805968C: .word off_8059378
-	.word unk_80593B8
-	.word unk_80593F8
-	.word unk_8059438
+	.word byte_80593B8
+	.word byte_80593F8
+	.word byte_8059438
 	.word 0xFFFFFFFF
-off_80596A0: .word unk_8059468
-	.word unk_80594A8
+off_80596A0: .word byte_8059468
+	.word byte_80594A8
 	.word 0xFFFFFFFF
-off_80596AC: .word unk_80594E8
+off_80596AC: .word byte_80594E8
 	.word 0xFFFFFFFF
-off_80596B4: .word unk_8059528
+off_80596B4: .word byte_8059528
 	.word 0xFFFFFFFF
-off_80596BC: .word unk_8059558
-	.word unk_8059588
+off_80596BC: .word byte_8059558
+	.word byte_8059588
 	.word 0xFFFFFFFF
 .endfunc // sub_8059664
 

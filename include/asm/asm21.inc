@@ -18,7 +18,7 @@
 // .global sub_8001A10
 // .global sub_8001A34
 // .global sub_8001A58
-// .global locret_8001AB4
+// .global nullsub_39
 // .global sub_8002354
 
 .include "asm/asm03_0.inc"

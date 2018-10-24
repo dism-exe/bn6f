@@ -45,6 +45,9 @@ locret_8080DE8:
 	pop {r4-r7,pc}
 .endfunc // sub_8080DA0
 
+.func
+.thumb_func
+sub_8080DEA:
 	push {r4-r7,lr}
 	bl sub_808137C
 	add r4, r0, #0
@@ -72,105 +75,105 @@ locret_8080DE8:
 	pop {r4-r7,pc}
 off_8080E2C: .word off_8081220
 off_8080E30: .word off_8080E34
-off_8080E34: .word locret_8001AB4+1
+off_8080E34: .word nullsub_39+1
 	.word sub_80019B4+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019B4+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
-	.word locret_8001AB4+1
+	.word nullsub_39+1
+	.word nullsub_39+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019B4+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019B4+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019B4+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019EC+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019B4+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019B4+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019B4+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_8001A58+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019B4+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_8001A58+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019B4+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019B4+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word nullsub_35+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019B4+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word nullsub_35+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_8001A10+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019B4+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_8001A34+1
 	.word 0x3005CD9, 0x0
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019B4+1
 	.word 0x3005CD9, 0x0
 off_8080F94: .word off_8080F98
 off_8080F98: .word off_8080FF0
-	.word aSa
+	.word asc_808100C
 	.word 0x0
 	.word off_8081028
-	.word aA
+	.word asc_8081044
 	.word off_8081060
 	.word off_808107C
 	.word off_8081098
 	.word off_80810B4
-	.word aHpa
+	.word asc_80810D0
 	.word off_80810EC
-	.word aHpa_0
-	.word aA_0
-	.word aHpa_1
-	.word aHpa_2
+	.word asc_8081108
+	.word asc_8081124
+	.word asc_8081140
+	.word asc_808115C
 	.word off_8081178
-	.word a6a
+	.word asc_8081194
 	.word off_80811B0
-	.word aDda
-	.word aHpa_3
+	.word asc_80811CC
+	.word byte_80811E8
 	.word off_8081204
-	.word a6a
+	.word asc_8081194
 off_8080FF0: .word off_8614DE0
 	.word 0x6000020, 0x8615028, 0x800, 0x86151BC, 0x3001960
 	.word 0x20
-aSa: .asciz "`Sa "
+asc_808100C: .asciz "`Sa "
 	.hword 0x600
 	.word dword_86154A8
 	.word 0x800, 0x86155E8, 0x3001960, 0x20
 off_8081028: .word off_861578C
 	.word 0x6000020, 0x861595C, 0x800, 0x0, 0x0, 0x0
-aA: .asciz ",`a "
+asc_8081044: .asciz ",`a "
 	.hword 0x600
 	.word dword_8616264
 	.word 0x800, 0x86163F4, 0x3001960, 0x20
@@ -186,47 +189,46 @@ off_8081098: .word off_8616598
 off_80810B4: .word off_8616598
 	.word 0x6000020, 0x8616634, 0x800, 0x8616EC4, 0x3001960
 	.word 0x20
-aHpa: .asciz "hpa "
+asc_80810D0: .asciz "hpa "
 	.hword 0x600
 	.word dword_8617190
 	.word 0x800, 0x86172E4, 0x3001960, 0x20
 off_80810EC: .word off_86116C8
 	.word 0x6000020, 0x861184C, 0x800, 0x86119C4, 0x3001960
 	.word 0x20
-aHpa_0: .asciz "hpa "
+asc_8081108: .asciz "hpa "
 	.hword 0x600
 	.word dword_8617190
 	.word 0x800, 0x86185C8, 0x3001960, 0x20
-aA_0: .asciz "(*a "
+asc_8081124: .asciz "(*a "
 	.hword 0x600
 	.word dword_8612CF0
 	.word 0x800, 0x8612E84, 0x3001960, 0x20
-aHpa_1: .asciz "hpa "
+asc_8081140: .asciz "hpa "
 	.hword 0x600
 	.word dword_8617190
 	.word 0x800, 0x861876C, 0x3001960, 0x20
-aHpa_2: .asciz "hpa "
+asc_808115C: .asciz "hpa "
 	.hword 0x600
 	.word dword_8617190
 	.word 0x800, 0x8618AB4, 0x3001960, 0x20
 off_8081178: .word dword_8618DFC
 	.word 0x6000020, 0x8618E40, 0x800, 0x8618F50, 0x3001960
 	.word 0x20
-a6a: .asciz "6a "
+asc_8081194: .asciz "6a "
 	.hword 0x600
 	.word dword_8613AAC
 	.word 0x800, 0x0, 0x0, 0x0
 off_80811B0: .word dword_8618DFC
 	.word 0x6000020, 0x8618E40, 0x800, 0x8618910, 0x3001960
 	.word 0x20
-aDda: .asciz "DDa "
+asc_80811CC: .asciz "DDa "
 	.hword 0x600
 	.word dword_8614A0C
 	.word 0x800, 0x8614BB8, 0x3001960, 0x20
-aHpa_3: .asciz "hpa "
-	.hword 0x600
-	.word dword_8617190
-	.word 0x800, 0x8618C58, 0x3001960, 0x20
+byte_80811E8: .byte 0x68, 0x70, 0x61, 0x8, 0x20, 0x0, 0x0, 0x6, 0x90, 0x71, 0x61
+	.byte 0x8, 0x0, 0x8, 0x0, 0x0, 0x58, 0x8C, 0x61, 0x8, 0x60, 0x19
+	.byte 0x0, 0x3, 0x20, 0x0, 0x0, 0x0
 off_8081204: .word off_8619174
 	.word 0x6000020
 	.word dword_8619474
@@ -289,6 +291,8 @@ off_80812F4: .word off_807EB18
 off_80812FC: .word byte_80808D8
 	.word off_8069C80
 	.word 0xFFFFFFFF
+.endfunc // sub_8080DEA
+
 .func
 .thumb_func
 sub_8081308:

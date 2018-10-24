@@ -363,6 +363,7 @@ loc_8089748:
 	tst r0, r7
 	beq loc_808976C
 	mov r0, #0x66 
+loc_8089756:
 	bl sound_play // () -> void
 	bl sub_81421D0
 	sub r0, #1

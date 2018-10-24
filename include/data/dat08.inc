@@ -14,10 +14,10 @@
 .global byte_80606EC
 .global byte_80606F0
 .global byte_80606F4
-.global unk_806083F
+.global byte_806083F
 .global byte_8060C02
 .global byte_8061416
-.global unk_8061622
+.global byte_8061622
 .global off_8062728
 .global byte_8062860
 .global byte_80628A0

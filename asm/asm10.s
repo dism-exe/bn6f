@@ -25,7 +25,7 @@ sub_80663D0:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_806642C // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -101,11 +101,11 @@ sub_806649C:
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_80664D0: .word off_80664D4
-off_80664D4: .word locret_8001AB4+1
+off_80664D4: .word nullsub_39+1
 	.word sub_80019FE+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019FE+1
 	.word unk_3005CD9
 	.word 0x800
@@ -1973,7 +1973,8 @@ off_8067754: .word dword_8611B68
 	.byte  0
 	.byte  0
 	.word 0x0
-a01234567232389: .asciz "+"
+	.byte 0x2B 
+	.byte  0
 	.byte 0x2C 
 	.byte  0
 	.byte 0x2D 
@@ -2054,13 +2055,110 @@ a01234567232389: .asciz "+"
 	.byte  0
 	.byte  0
 	.byte  0
-	.byte 0, 0
-	.word 0x20001, 0x4B004A, 0x4C, 0x0
-	.word 0x60007, 0x90008, 0x4E004D, 0x6004F, 0x60007, 0xD000E
-	.word 0x10000F, 0x120011, 0xD0050, 0xD000E, 0x510013, 0x160015
-	.word 0x180017, 0x530052, 0x1B001C, 0x1E001D, 0x20001F, 0x250021
-	.word 0x550054, 0x250022, 0x0
-aV_3: .asciz "V"
+	.byte  0
+	.byte  0
+	.byte  1
+	.byte  0
+	.byte  2
+	.byte  0
+	.byte 0x4A 
+	.byte  0
+	.byte 0x4B 
+	.byte  0
+	.byte 0x4C 
+	.byte  0
+	.byte  0
+	.byte  0
+	.byte  0
+	.byte  0
+	.byte  0
+	.byte  0
+	.byte  7
+	.byte  0
+	.byte  6
+	.byte  0
+	.byte  8
+	.byte  0
+	.byte  9
+	.byte  0
+	.byte 0x4D 
+	.byte  0
+	.byte 0x4E 
+	.byte  0
+	.byte 0x4F 
+	.byte  0
+	.byte  6
+	.byte  0
+	.byte  7
+	.byte  0
+	.byte  6
+	.byte  0
+	.byte 0xE
+	.byte  0
+	.byte 0xD
+	.byte  0
+	.byte 0xF
+	.byte  0
+	.byte 0x10
+	.byte  0
+	.byte 0x11
+	.byte  0
+	.byte 0x12
+	.byte  0
+	.byte 0x50 
+	.byte  0
+	.byte 0xD
+	.byte  0
+	.byte 0xE
+	.byte  0
+	.byte 0xD
+	.byte  0
+	.byte 0x13
+	.byte  0
+	.byte 0x51 
+	.byte  0
+	.byte 0x15
+	.byte  0
+	.byte 0x16
+	.byte  0
+	.byte 0x17
+	.byte  0
+	.byte 0x18
+	.byte  0
+	.byte 0x52 
+	.byte  0
+	.byte 0x53 
+	.byte  0
+	.byte 0x1C
+	.byte  0
+	.byte 0x1B
+	.byte  0
+	.byte 0x1D
+	.byte  0
+	.byte 0x1E
+	.byte  0
+	.byte 0x1F
+	.byte  0
+	.byte 0x20
+	.byte  0
+	.byte 0x21 
+	.byte  0
+	.byte 0x25 
+	.byte  0
+	.byte 0x54 
+	.byte  0
+	.byte 0x55 
+	.byte  0
+	.byte 0x22 
+	.byte  0
+	.byte 0x25 
+	.byte  0
+	.byte  0
+	.byte  0
+	.byte  0
+	.byte  0
+	.byte 0x56 
+	.byte  0
 	.byte 0x57 
 	.byte  0
 	.byte 0x58 
@@ -2072,7 +2170,8 @@ aV_3: .asciz "V"
 	.byte  0
 	.byte  0
 	.word 0x0
-aAbcdef232ghijk: .asciz ","
+	.byte 0x2C 
+	.byte  0
 	.byte 0x2B 
 	.byte  0
 	.byte 0x5B 
@@ -2265,7 +2364,7 @@ sub_8067B5C:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_8067BB8 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -2363,15 +2462,15 @@ sub_8067C88:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8067CBC: .word off_8067CC0
-off_8067CC0: .word locret_8001AB4+1
+off_8067CC0: .word nullsub_39+1
 	.word sub_8001A6A+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_8001A6A+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_8001A6A+1
 	.word unk_3005CD9
 	.word 0x800
@@ -2402,17 +2501,29 @@ sub_8067D1C:
 	bx r7
 	pop {r4-r7,pc}
 off_8067D30: .word off_8067D34
-off_8067D34: .word locret_8067D40+1
-	.word locret_8067D42+1
-	.word locret_8067D44+1
+off_8067D34: .word nullsub_64+1
+	.word nullsub_65+1
+	.word nullsub_66+1
 .endfunc // sub_8067D1C
 
-locret_8067D40:
+.func
+.thumb_func
+nullsub_64:
 	mov pc, lr
-locret_8067D42:
+.endfunc // nullsub_64
+
+.func
+.thumb_func
+nullsub_65:
 	mov pc, lr
-locret_8067D44:
+.endfunc // nullsub_65
+
+.func
+.thumb_func
+nullsub_66:
 	mov pc, lr
+.endfunc // nullsub_66
+
 .func
 .thumb_func
 sub_8067D46:

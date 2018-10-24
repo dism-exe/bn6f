@@ -52,7 +52,7 @@
 // .global sub_80019FE
 // .global sub_8001A22
 // .global sub_8001A6A
-// .global locret_8001AB4
+// .global nullsub_39
 // .global sub_8001B1C
 // .global sub_8002354
 
@@ -75,7 +75,7 @@
 // .global locret_8030102
 // .global loc_8030202
 // .global sub_803037C
-// .global loc_8030472
+// .global sub_8030472
 // .global sub_80304E8
 // .global loc_803083E
 // .global sub_8030AA4
@@ -87,7 +87,7 @@
 // .global chatbox_uncomp_803FD08 // () -> int
 
 .include "data/dat04.inc"
-// .global unk_8050202
+// .global byte_8050202
 
 .include "data/dat09.inc"
 // .global off_8066048
@@ -154,7 +154,7 @@
 // .global unk_8097A48
 
 .include "asm/asm28_0.inc"
-// .global unk_8098CA2
+// .global byte_8098CA2
 // .global unk_8099CEC
 
 .include "asm/asm28_1.inc"

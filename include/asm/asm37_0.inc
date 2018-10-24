@@ -33,7 +33,7 @@
 .global sub_813C334
 .global sub_813C3AC
 .global sub_813D41C
-.global loc_813D48C
+.global sub_813D48C
 .global sub_813D5C8
 .global sub_813D5D0
 .global sub_813D5DC

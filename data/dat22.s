@@ -1885,7 +1885,11 @@ unk_8087874: .byte 0x3F
 	.word 0x0
 	.word 0x3B1C1100, 0x2304900
 	.word 0xD6150BFF
-aZ: .asciz "~Z"
+	.byte 0x7E 
+	.byte  8
+	.byte  8
+	.byte 0x5A 
+	.byte  0
 	.asciz " "
 	.byte 0x4D
 	.word 0xFF0200E3

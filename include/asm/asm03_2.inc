@@ -5,7 +5,7 @@
 .global render_graphicalText_8045F8C
 .global sub_8045FBC
 .global sub_8045FC6
-.global loc_8045FD0
+.global sub_8045FD0
 .global loc_8045FE4
 .global sub_804657C // () -> void
 .global sub_80465A0 // (void *a1) -> void
@@ -133,7 +133,7 @@
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_802FF4C
 // .global sub_803037C
-// .global loc_8030472
+// .global sub_8030472
 // .global sub_8030AA4
 
 .include "asm/asm03_1.inc"
@@ -151,12 +151,12 @@
 // .global sub_803A820
 // .global sub_803A8B4
 // .global sub_803AA24
-// .global loc_803AA40
+// .global sub_803AA40
 // .global sub_803AB6C
 // .global sub_803AB94
 // .global sub_803ABF4
 // .global sub_803AD04
-// .global loc_803AD20
+// .global sub_803AD20
 // .global sub_803AE50
 // .global sub_803AE78
 // .global sub_803AED8
@@ -371,7 +371,8 @@
 // .global byte_86A10B0
 // .global byte_86A10D0
 // .global byte_86A13F0
-// .global byte_86A1480
+// .global unk_86A1480
+// .global unk_86A1940
 // .global byte_86A1A60
 // .global byte_86A1A80
 // .global byte_86A1B20
@@ -508,6 +509,8 @@
 // .equ word_200A2B4, 0x200A2B4
 // .equ word_200A2B6, 0x200A2B6
 // .equ unk_200AC80, 0x200AC80
+// .equ word_200AC84, 0x200AC84
+// .equ word_200AC86, 0x200AC86
 // .equ dword_200ACB0, 0x200ACB0
 // .equ dword_200ACCC, 0x200ACCC
 // .equ dword_200ACD0, 0x200ACD0
@@ -614,6 +617,7 @@
 // .equ unk_3001AE0, 0x3001AE0
 // .equ byte_3001B00, 0x3001B00
 // .equ unk_3001B60, 0x3001B60
+// .equ byte_3006B84, 0x3006B84
 // .equ sub_3006B94, 0x3006B94
 // .equ sub_3006C38, 0x3006C38
 // .equ sub_3006C8E, 0x3006C8E

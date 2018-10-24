@@ -1589,7 +1589,7 @@ dword_80409DC: .word 0x6017F80
 chatbox_80409E0:
 	push {r4,r6,lr}
 	ldrb r0, [r5,#0x16]
-	ldr r1, off_8040A7C // =unk_8040A80 
+	ldr r1, off_8040A7C // =byte_8040A80 
 	ldrb r0, [r1,r0]
 	lsl r0, r0, #7
 	ldr r2, off_8040A74 // =dword_86A4A40 
@@ -1597,157 +1597,77 @@ chatbox_80409E0:
 	ldr r1, dword_8040A78 // =0x6017f80 
 	mov r2, #0x80
 	bl loc_8000AC8
-	.byte 0x29 
-	.byte 0x7E 
-	.byte 0x28 
-	.byte 0x6F 
-	.byte 0x40 
-	.byte 0x18
-	.byte  4
-	.byte 0x30 
-	.byte 0xE9
-	.byte 0x7C 
-	.byte 0x80
-	.byte 0x23 
-	.byte 0xEB
-	.byte 0x5C 
-unk_8040A04: .byte  1
-	.byte 0x3B 
-	.byte 0x99
-	.byte 0x42 
-	.byte  0
-	.byte 0xD1
-	.byte  7
-	.byte 0x30 
-	.byte 0xE9
-	.byte 0x7B 
-	.byte 0xE
-	.byte 0x23 
-	.byte 0x59 
-	.byte 0x43 
-	.byte 0x6A 
-	.byte 0x7E 
-	.byte 0x89
-	.byte 0x18
-	.byte  2
-	.byte 0x39 
-	.byte  0
-	.byte  4
-	.byte  8
-	.byte 0x43 
-	.byte  4
-	.byte 0x1C
-	.byte 0x20
-	.byte 0xB4
-	.byte 0x13
-	.byte 0x4E 
-	.byte 0x30 
-	.byte 0x43 
-	.byte 0x1B
-	.byte 0x49 
-	.byte  0
-	.byte 0x22 
-	.byte 0x92
-	.byte  2
-	.byte 0x11
-	.byte 0x43 
-	.byte  0
-	.byte 0x22 
-	.byte  1
-	.byte 0x23 
-	.byte 0xEF
-	.byte 0xF7
-	.byte 0xFA
-	.byte 0xF9
-	.byte 0x20
-	.byte 0x1C
-	.byte  8
-	.byte 0x24 
-	.byte 0xE9
-	.byte 0x7C 
-	.byte 0x80
-	.byte 0x23 
-	.byte 0xED
-	.byte 0x5C 
-	.byte  1
-	.byte 0x3D 
-	.byte 0xA9
-	.byte 0x42 
-	.byte  0
-	.byte 0xD1
-	.byte 0x12
-	.byte 0x24 
-	.byte 0x24 
-	.byte  4
-	.byte  0
-	.byte 0x19
-	.byte 0x30 
-	.byte 0x43 
-	.byte 0x12
-	.byte 0x49 
-	.byte  0
-	.byte 0x26 
-	.byte 0xB6
-	.byte  2
-	.byte 0x31 
-	.byte 0x43 
-	.byte  1
-	.byte 0x23 
-	.byte 0xEF
-	.byte 0xF7
-	.byte 0xE7
-	.byte 0xF9
-	.byte 0x20
-	.byte 0xBC
-	.byte 0xAA
-	.byte 0x7D 
-	.byte  7
-	.byte 0x4B 
-	.byte  1
-	.byte 0x32 
-	.byte 0x99
-	.byte 0x5C 
-	.byte 0xFF
-	.byte 0x29 
-	.byte  1
-	.byte 0xD1
-	.byte  1
-	.byte 0x22 
-	.byte 0x19
-	.byte 0x88
-	.word 0xBD5075AA
-	.byte  0
-	.byte 0x80
-	.byte  0
-	.byte  0
+	ldrb r1, [r5,#0x18]
+	ldr r0, [r5,#0x70]
+	add r0, r0, r1
+	add r0, #4
+	ldrb r1, [r5,#0x13]
+	mov r3, #0x80
+	ldrb r3, [r5,r3]
+loc_8040A04:
+	sub r3, #1
+	cmp r1, r3
+	bne loc_8040A0C
+	add r0, #7
+loc_8040A0C:
+	ldrb r1, [r5,#0xf]
+	mov r3, #0xe
+	mul r1, r3
+	ldrb r2, [r5,#0x19]
+	add r1, r1, r2
+	sub r1, #2
+	lsl r0, r0, #0x10
+	orr r0, r1
+	add r4, r0, #0
+	push {r5}
+	ldr r6, dword_8040A70 // =0x8000 
+	orr r0, r6
+	ldr r1, byte_8040A94 // =0xfc 
+	mov r2, #0
+	lsl r2, r2, #0xa
+	orr r1, r2
+	mov r2, #0
+	mov r3, #1
+	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
+	add r0, r4, #0
+	mov r4, #8
+	ldrb r1, [r5,#0x13]
+	mov r3, #0x80
+	ldrb r5, [r5,r3]
+	sub r5, #1
+	cmp r1, r5
+	bne loc_8040A46
+	mov r4, #0x12
+loc_8040A46:
+	lsl r4, r4, #0x10
+	add r0, r0, r4
+	orr r0, r6
+	ldr r1, byte_8040A98 // =0xfe 
+	mov r6, #0
+	lsl r6, r6, #0xa
+	orr r1, r6
+	mov r3, #1
+	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
+	pop {r5}
+	ldrb r2, [r5,#0x16]
+	ldr r3, off_8040A7C // =byte_8040A80 
+	add r2, #1
+	ldrb r1, [r3,r2]
+	cmp r1, #0xff
+	bne loc_8040A6C
+	mov r2, #1
+	ldrh r1, [r3]
+loc_8040A6C:
+	strb r2, [r5,#0x16]
+	pop {r4,r6,pc}
+dword_8040A70: .word 0x8000
 off_8040A74: .word dword_86A4A40
 dword_8040A78: .word 0x6017F80
-off_8040A7C: .word unk_8040A80
-unk_8040A80: .byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  1
-	.byte  1
-	.byte  1
-	.byte  1
-	.byte  1
-	.byte  1
-	.byte  1
-	.byte  1
-	.byte  1
-	.byte 0xFF
-	.byte  0
-	.byte 0xFC
-	.byte 0xE3
-	.balign 4, 0x00
-	.byte 0xFE
-	.byte 0xE3
+off_8040A7C: .word byte_8040A80
+byte_8040A80: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1
+	.byte 0x1, 0xFF, 0x0
+byte_8040A94: .byte 0xFC, 0xE3, 0x0, 0x0
+byte_8040A98: .byte 0xFE, 0xE3
 .endfunc // chatbox_80409E0
 
 .func
@@ -2056,8 +1976,6 @@ loc_8040CDA:
 	ldr r1, [r4,#0xc]
 	ldr r2, [r4,#0x10]
 	bl loc_8000AC8
-.endfunc // chatbox_8040CD0
-
 	ldr r0, [r4,#0x14]
 	ldr r1, [r4,#0x18]
 	ldr r2, [r4,#0x1c]
@@ -2103,6 +2021,8 @@ dword_8040D48: .word 0x1D6
 	.word 0x1E8
 off_8040D54: .word 0x1EC
 off_8040D58: .word off_8045DD4
+.endfunc // chatbox_8040CD0
+
 .func
 .thumb_func
 chatbox_8040D5C:
@@ -5423,6 +5343,9 @@ chatbox_804252C:
 	pop {pc}
 .endfunc // chatbox_804252C
 
+.func
+.thumb_func
+sub_8042554:
 	push {lr}
 	mov r0, #0x73 
 	bl sound_play // () -> void
@@ -5442,6 +5365,8 @@ chatbox_804252C:
 	mov r0, #1
 	pop {pc}
 	.byte 0, 0
+.endfunc // sub_8042554
+
 .func
 .thumb_func
 chatbox_8042580:
@@ -5614,12 +5539,12 @@ chatbox_80426A8:
 	mov lr, pc
 	bx r1
 	add r4, #4
-.endfunc // chatbox_80426A8
-
 	mov r0, #1
 	pop {pc}
 	.byte 0, 0
 off_80426C0: .word jt_8043B00
+.endfunc // chatbox_80426A8
+
 .func
 .thumb_func
 chatbox_80426C4:
@@ -5746,8 +5671,6 @@ chatbox_8042770:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sub_8002F90 // () -> void
 	bl sprite_loadAnimationData // () -> void
-.endfunc // chatbox_8042770
-
 	bl sprite_update
 	pop {r4,r5}
 	add r4, #3
@@ -5756,6 +5679,8 @@ chatbox_8042770:
 off_80427A8: .word eOWPlayerObject
 off_80427AC: .word dword_80427B0
 dword_80427B0: .word 0x37
+.endfunc // chatbox_8042770
+
 .func
 .thumb_func
 chatbox_80427B4:
@@ -6318,7 +6243,7 @@ chatbox_FE_numberinput:
 	bx r0
 	pop {pc}
 off_8042D08: .word jt_8042D0C
-jt_8042D0C: .word loc_804312C+1
+jt_8042D0C: .word sub_804312C+1
 	.word chatbox_8043164+1
 	.word chatbox_80432C8+1
 	.word chatbox_804330C+1
@@ -6411,9 +6336,8 @@ loc_8042DBA:
 	add r4, #2
 	mov r0, #0
 	pop {pc}
-.endfunc // chatbox_8042D68
-
 	push {lr}
+	// mask
 	mov r0, #1
 	bl chatbox_setflags_3e // (int mask) -> void
 	bl chatbox_8040DBC
@@ -6431,6 +6355,7 @@ loc_8042E08:
 	strb r0, [r5,#0x13]
 	mov r0, #1
 	strb r0, [r5,#4]
+	// mask
 	mov r0, #0x10
 	bl chatbox_setflags_3e // (int mask) -> void
 	b loc_8042E62
@@ -6520,6 +6445,8 @@ loc_8042EC0:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
+.endfunc // chatbox_8042D68
+
 .func
 .thumb_func
 chatbox_8042EC8:
@@ -6653,6 +6580,9 @@ chatbox_8042F84:
 	pop {pc}
 .endfunc // chatbox_8042F84
 
+.func
+.thumb_func
+sub_8042F88:
 	push {r4-r6,lr}
 	mov r5, r10
 	ldr r5, [r5,#0x2c]
@@ -6684,6 +6614,11 @@ loc_8042FAE:
 	bge loc_8042FAE
 	str r6, [r5,#0x58]
 	pop {r4-r6,pc}
+.endfunc // sub_8042F88
+
+.func
+.thumb_func
+sub_8042FC2:
 	push {lr}
 	ldr r0, dword_8042FD0 // =0x67625e6f 
 	str r0, [r5,#0x54]
@@ -6693,6 +6628,8 @@ loc_8042FAE:
 	.byte 0, 0
 dword_8042FD0: .word 0x67625E6F
 dword_8042FD4: .word 0x687261
+.endfunc // sub_8042FC2
+
 .func
 .thumb_func
 chatbox_F9_storebyte:
@@ -6858,7 +6795,9 @@ off_8043124: .word 0x140
 off_8043128: .word unk_200AFA0
 .endfunc // chatbox_80430A0
 
-loc_804312C:
+.func
+.thumb_func
+sub_804312C:
 	ldrb r0, [r4,#2]
 	add r0, #0x4c 
 	mov r1, #0
@@ -6885,6 +6824,8 @@ loc_804312C:
 	.balign 4, 0x00
 off_804315C: .word 0x1CC
 off_8043160: .word 0x154
+.endfunc // sub_804312C
+
 .func
 .thumb_func
 chatbox_8043164:
@@ -6993,8 +6934,6 @@ loc_804320E:
 	ldr r3, off_80432B0 // =sub_3007038+1 
 	mov lr, pc
 	bx r3
-.endfunc // chatbox_8043164
-
 	pop {r0-r7}
 	add r0, #0xc
 	add r2, #1
@@ -7064,6 +7003,8 @@ off_80432BC: .word word_80432C0
 word_80432C0: .hword 0x40
 	.word 0x200080
 	.hword 0x10
+.endfunc // chatbox_8043164
+
 .func
 .thumb_func
 chatbox_80432C8:
@@ -7457,8 +7398,6 @@ loc_804359C:
 	ldr r3, off_8043698 // =sub_3007038+1 
 	mov lr, pc
 	bx r3
-.endfunc // chatbox_80434E0
-
 	pop {r0-r7}
 	add r0, #0xc
 	sub r2, #1
@@ -7577,6 +7516,8 @@ off_80436A4: .word word_80436A8
 word_80436A8: .hword 0x40
 	.word 0x200080
 	.hword 0x10
+.endfunc // chatbox_80434E0
+
 .func
 .thumb_func
 chatbox_80436B0:
@@ -10965,6 +10906,9 @@ chatbox_8045EFC:
 	pop {r4-r7,pc}
 .endfunc // chatbox_8045EFC
 
+.func
+.thumb_func
+sub_8045F0C:
 	push {r4-r7,lr}
 	mov r4, r10
 	ldr r4, [r4,#0x2c]
@@ -10973,6 +10917,8 @@ chatbox_8045EFC:
 	ldr r2, [r4,#0x54]
 	ldr r3, [r4,#0x58]
 	pop {r4-r7,pc}
+.endfunc // sub_8045F0C
+
 .func
 .thumb_func
 chatbox_8045F1C:

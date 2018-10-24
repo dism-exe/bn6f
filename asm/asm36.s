@@ -3840,7 +3840,7 @@ loc_8132126:
 	mov r0, #0x10
 	bl sub_803CB18
 	beq loc_813214C
-	bl loc_803EA78
+	bl sub_803EA78
 	bl sub_8132398
 	mov r0, #0xc
 	strb r0, [r5,#3]
@@ -4515,7 +4515,7 @@ loc_8132640:
 .thumb_func
 sub_8132648:
 	push {r5,lr}
-	bl loc_803EA78
+	bl sub_803EA78
 	ldr r5, off_8132660 // =sSubmenu 
 	mov r0, #0x10
 	strb r0, [r5,#0x1] // (sSubmenu.jo_01 - 0x2009a30)
@@ -11147,7 +11147,7 @@ off_8135CEC: .word unk_201D180
 	.word 0x0
 off_8135D7C: .word off_8135D80
 off_8135D80: .word unk_201C380
-	.word aIiijjjjkkkkkjj+0x80
+	.word byte_201C700+0x80
 	.word unk_201CB80
 .func
 .thumb_func
@@ -16584,7 +16584,7 @@ sub_8138848:
 	bl npc_800461E
 	bl sub_80048D2
 	bl sub_80037F4
-	bl loc_802FFF4
+	bl sub_802FFF4
 	bl sub_80027B4
 	bl sub_800286C
 	bl sub_8003BF4

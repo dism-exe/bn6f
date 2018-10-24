@@ -20,7 +20,7 @@
 .global chatbox_8040818
 .global chatbox_maskFlags_3e // (int mask) -> void
 // 
-.global unk_8040A04
+.global loc_8040A04
 .global chatbox_8040D5C
 .global off_8043C8C
 .global byte_8043CA4

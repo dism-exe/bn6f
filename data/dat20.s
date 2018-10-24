@@ -169,7 +169,8 @@ dword_807F868: .word 0x20001, 0x40003, 0x60005, 0x80007, 0xA0009, 0xC000B
 	.byte  0
 	.byte  0
 	.byte 0, 0, 0, 0
-a01234567232389_0: .asciz "+"
+	.byte 0x2B 
+	.byte  0
 	.byte 0x2C 
 	.byte  0
 	.byte 0x2D 
@@ -256,7 +257,8 @@ a01234567232389_0: .asciz "+"
 	.word 0x10000F, 0x120011, 0xD0050, 0xD000E, 0x510013, 0x160015
 	.word 0x180017, 0x530052, 0x1B001C, 0x1E001D, 0x20001F, 0x250021
 	.word 0x550054, 0x250022, 0x0
-aV_4: .asciz "V"
+	.byte 0x56 
+	.byte  0
 	.byte 0x57 
 	.byte  0
 	.byte 0x58 
@@ -268,7 +270,8 @@ aV_4: .asciz "V"
 	.byte  0
 	.byte  0
 	.byte 0, 0, 0, 0
-aAbcdef232ghijk_0: .asciz ","
+	.byte 0x2C 
+	.byte  0
 	.byte 0x2B 
 	.byte  0
 	.byte 0x5B 

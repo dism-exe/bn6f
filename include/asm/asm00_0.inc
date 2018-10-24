@@ -118,7 +118,7 @@
 .global sub_8001A46
 .global sub_8001A58
 .global sub_8001A6A
-.global locret_8001AB4
+.global nullsub_39
 .global sub_8001AFC
 .global sub_8001B1C
 .global sub_8001B6C

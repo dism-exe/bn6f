@@ -150,7 +150,7 @@
 // .global clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_802FF4C
-// .global loc_802FFF4
+// .global sub_802FFF4
 // .global sub_80301B2
 // .global sub_80301DC
 // .global sub_80303F2
@@ -183,7 +183,7 @@
 // .global sub_803EA58
 // .global sub_803EA60
 // .global sub_803EA70
-// .global loc_803EA78
+// .global sub_803EA78
 // .global sub_803EAE4
 // .global sub_803EBAC
 // .global sub_803EBB8
@@ -432,7 +432,7 @@
 // .equ word_201C4E2, 0x201C4E2
 // .equ unk_201C4F0, 0x201C4F0
 // .equ unk_201C500, 0x201C500
-// .equ aIiijjjjkkkkkjj, 0x201C700
+// .equ byte_201C700, 0x201C700
 // .equ unk_201CA20, 0x201CA20
 // .equ unk_201CB80, 0x201CB80
 // .equ unk_201CF00, 0x201CF00

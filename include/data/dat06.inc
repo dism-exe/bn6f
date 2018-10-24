@@ -48,7 +48,7 @@
 // .global byte_809F7E4
 
 .include "data/dat38_33.inc"
-// .global byte_83C21DC
+// .global unk_83C21DC
 // .global byte_83F0208
 // .global byte_83F0716
 // .global byte_83F1208

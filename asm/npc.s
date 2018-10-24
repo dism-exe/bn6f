@@ -940,8 +940,8 @@ npc_jt_commands: .word npc_00_terminateScript+1
 	.word npc_809F03C+1
 	.word npc_809F048+1
 	.word npc_809F058+1
-	.word dword_809F0E4+9
-	.word dword_809F0E4+33
+	.word byte_809F0E4+9
+	.word byte_809F0E4+33
 	.word 0x0
 	.word sub_809F114+1
 	.word sub_809F12C+1
@@ -950,13 +950,13 @@ npc_jt_commands: .word npc_00_terminateScript+1
 	.word sub_809F15A+1
 	.word sub_809F16E+1
 	.word sub_809F17C+1
-	.word loc_809F18E+1
+	.word sub_809F18E+1
 	.word sub_809F198+1
 	.word sub_809F1C6+1
 	.word sub_809F1D8+1
 	.word sub_809F218+1
 	.word sub_809F23E+1
-	.word loc_809F26A+1
+	.word sub_809F26A+1
 	.word sub_809F270+1
 	.word sub_809F292+1
 	.word sub_809F2A2+1
@@ -1091,21 +1091,35 @@ npc_809EE12:
 	mov pc, lr
 .endfunc // npc_809EE12
 
+.func
+.thumb_func
 npc_809EE1A:
 	mov r0, #1
 	strb r0, [r5]
 	add r6, #1
 	mov pc, lr
+.endfunc // npc_809EE1A
+
+.func
+.thumb_func
 npc_809EE22:
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#0xc]
 	add r6, #2
 	mov pc, lr
+.endfunc // npc_809EE22
+
+.func
+.thumb_func
 npc_809EE2A:
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#0xd]
 	add r6, #2
 	mov pc, lr
+.endfunc // npc_809EE2A
+
+.func
+.thumb_func
 npc_809EE32:
 	mov r1, #1
 	ldrsb r0, [r6,r1]
@@ -1118,6 +1132,10 @@ npc_809EE32:
 	strb r0, [r5,#0x13]
 	add r6, #4
 	mov pc, lr
+.endfunc // npc_809EE32
+
+.func
+.thumb_func
 npc_809EE48:
 	mov r0, #1
 	mvn r0, r0
@@ -1126,6 +1144,10 @@ npc_809EE48:
 	str r1, [r5,#0x60]
 	add r6, #1
 	mov pc, lr
+.endfunc // npc_809EE48
+
+.func
+.thumb_func
 npc_809EE56:
 	mov r0, #1
 	ldr r1, [r5,#0x60]
@@ -1133,6 +1155,8 @@ npc_809EE56:
 	str r1, [r5,#0x60]
 	add r6, #1
 	mov pc, lr
+.endfunc // npc_809EE56
+
 .func
 .thumb_func
 npc_809EE62:
@@ -1175,6 +1199,8 @@ npc_809EE82:
 	pop {pc}
 .endfunc // npc_809EE82
 
+.func
+.thumb_func
 npc_809EE9C:
 	mov r0, #2
 	mvn r0, r0
@@ -1183,6 +1209,10 @@ npc_809EE9C:
 	str r1, [r5,#0x60]
 	add r6, #1
 	mov pc, lr
+.endfunc // npc_809EE9C
+
+.func
+.thumb_func
 npc_809EEAA:
 	mov r0, #2
 	ldr r1, [r5,#0x60]
@@ -1190,6 +1220,8 @@ npc_809EEAA:
 	str r1, [r5,#0x60]
 	add r6, #1
 	mov pc, lr
+.endfunc // npc_809EEAA
+
 .func
 .thumb_func
 npc_809EEB6:
@@ -1229,18 +1261,24 @@ npc_809EEDA:
 	pop {pc}
 .endfunc // npc_809EEDA
 
+.func
+.thumb_func
 npc_809EEF8:
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#0x14]
 	add r6, #2
 	mov pc, lr
+.endfunc // npc_809EEF8
+
+.func
+.thumb_func
 npc_809EF00:
 	ldrb r0, [r6,#1]
 	strh r0, [r5,#0x3c]
 	mov r1, #0
 	strb r1, [r5,#0x16]
 	str r1, [r5,#0x68]
-	ldr r1, off_809EF3C // =dword_809E530 
+	ldr r1, off_809EF3C // =byte_809E530 
 	mov r3, #0
 loc_809EF0E:
 	ldrb r2, [r1,r3]
@@ -1268,27 +1306,45 @@ loc_809EF2A:
 	add r6, #2
 	mov pc, lr
 	.balign 4, 0x00
-off_809EF3C: .word dword_809E530
+off_809EF3C: .word byte_809E530
+.endfunc // npc_809EF00
+
+.func
+.thumb_func
 npc_809EF40:
 	ldrb r0, [r6,#1]
 	strb r0, [r5,#0x1c]
 	add r6, #2
 	mov pc, lr
+.endfunc // npc_809EF40
+
+.func
+.thumb_func
 npc_809EF48:
 	mov r0, #0
 	str r0, [r5,#0x64]
 	add r6, #1
 	mov pc, lr
+.endfunc // npc_809EF48
+
+.func
+.thumb_func
 npc_809EF50:
 	mov r0, #2
 	str r0, [r5,#0x64]
 	add r6, #1
 	mov pc, lr
+.endfunc // npc_809EF50
+
+.func
+.thumb_func
 npc_809EF58:
 	mov r0, #3
 	str r0, [r5,#0x64]
 	add r6, #1
 	mov pc, lr
+.endfunc // npc_809EF58
+
 .func
 .thumb_func
 npc_809EF60:
@@ -1332,6 +1388,8 @@ npc_809EF82:
 	pop {pc}
 .endfunc // npc_809EF82
 
+.func
+.thumb_func
 npc_809EF9A:
 	mov r0, #4
 	ldr r1, [r5,#0x60]
@@ -1339,6 +1397,10 @@ npc_809EF9A:
 	str r1, [r5,#0x60]
 	add r6, #1
 	mov pc, lr
+.endfunc // npc_809EF9A
+
+.func
+.thumb_func
 npc_809EFA6:
 	mov r0, #4
 	mvn r0, r0
@@ -1347,6 +1409,8 @@ npc_809EFA6:
 	str r1, [r5,#0x60]
 	add r6, #1
 	mov pc, lr
+.endfunc // npc_809EFA6
+
 .func
 .thumb_func
 npc_809EFB4:
@@ -1412,6 +1476,8 @@ npc_809EFFC:
 off_809F018: .word unk_809D328
 .endfunc // npc_809EFFC
 
+.func
+.thumb_func
 npc_809F01C:
 	ldrb r0, [r6,#1]
 	strh r0, [r5,#0x3c]
@@ -1423,6 +1489,10 @@ npc_809F01C:
 	str r0, [r5,#0x60]
 	add r6, #3
 	mov pc, lr
+.endfunc // npc_809F01C
+
+.func
+.thumb_func
 npc_809F030:
 	mov r0, #8
 	ldr r1, [r5,#0x60]
@@ -1430,6 +1500,10 @@ npc_809F030:
 	str r1, [r5,#0x60]
 	add r6, #1
 	mov pc, lr
+.endfunc // npc_809F030
+
+.func
+.thumb_func
 npc_809F03C:
 	mov r0, #0x10
 	ldr r1, [r5,#0x60]
@@ -1437,6 +1511,8 @@ npc_809F03C:
 	str r1, [r5,#0x60]
 	add r6, #1
 	mov pc, lr
+.endfunc // npc_809F03C
+
 .func
 .thumb_func
 npc_809F048:
@@ -1466,7 +1542,7 @@ npc_809F058:
 	bl sub_809FC1C
 	tst r0, r0
 	beq loc_809F0BE
-	ldr r4, off_809F0E0 // =dword_809F0E4 
+	ldr r4, off_809F0E0 // =byte_809F0E4 
 	ldrb r4, [r4,r0]
 	strb r4, [r5,#0x16]
 	mov r4, #0x40 
@@ -1508,17 +1584,18 @@ loc_809F0BE:
 	mov r2, #0xa0
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-.endfunc // npc_809F058
-
 	bl sub_8004602
 	bl npc_809F51E
 	pop {pc}
 	.balign 4, 0x00
 off_809F0DC: .word dword_873D108
-off_809F0E0: .word dword_809F0E4
-dword_809F0E4: .word 0x20000FF, 0xFF030102, 0x7870B500, 0x51E82780, 0x7268200C
-	.word 0x81682000, 0xFA0FF000, 0xBD003602, 0x1C70B500, 0xFAA0F000
-	.word 0xFEE0F763, 0xBD003603
+off_809F0E0: .word byte_809F0E4
+byte_809F0E4: .byte 0xFF, 0x0, 0x0, 0x2, 0x2, 0x1, 0x3, 0xFF, 0x0, 0xB5, 0x70, 0x78
+	.byte 0x80, 0x27, 0xE8, 0x51, 0xC, 0x20, 0x68, 0x72, 0x0, 0x20, 0x68, 0x81
+	.byte 0x0, 0xF0, 0xF, 0xFA, 0x2, 0x36, 0x0, 0xBD, 0x0, 0xB5, 0x70, 0x1C
+	.byte 0x0, 0xF0, 0xA0, 0xFA, 0x63, 0xF7, 0xE0, 0xFE, 0x3, 0x36, 0x0, 0xBD
+.endfunc // npc_809F058
+
 .func
 .thumb_func
 sub_809F114:
@@ -1608,12 +1685,16 @@ sub_809F17C:
 	pop {pc}
 .endfunc // sub_809F17C
 
-loc_809F18E:
+.func
+.thumb_func
+sub_809F18E:
 	mov r0, #0
 	str r0, [r5,#0x5c]
 	strh r0, [r5,#0x22]
 	mov r6, #0
 	mov pc, lr
+.endfunc // sub_809F18E
+
 .func
 .thumb_func
 sub_809F198:
@@ -1739,10 +1820,14 @@ sub_809F23E:
 	pop {pc}
 .endfunc // sub_809F23E
 
-loc_809F26A:
+.func
+.thumb_func
+sub_809F26A:
 	mov r4, #0x8c
 	ldr r6, [r5,r4]
 	mov pc, lr
+.endfunc // sub_809F26A
+
 .func
 .thumb_func
 sub_809F270:
@@ -2109,12 +2194,12 @@ loc_809F498:
 	mov r2, #0xa0
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-.endfunc // sub_809F45A
-
 	bl sub_8004602
 	bl npc_809F51E
 	pop {pc}
 off_809F4B4: .word byte_87E30A0
+.endfunc // sub_809F45A
+
 .func
 .thumb_func
 sub_809F4B8:

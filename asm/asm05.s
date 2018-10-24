@@ -24,7 +24,7 @@ sub_8052688:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_80526E8 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -65,14 +65,7 @@ byte_8052736: .byte 0x1C, 0x10, 0x1C, 0x25, 0x18, 0x23, 0xFF, 0xFF
 byte_805273E: .byte 0x1C, 0x10, 0x1C, 0x25, 0xFF, 0xFF
 byte_8052744: .byte 0x1C, 0x2A, 0xFF, 0xFF
 off_8052748: .word unk_81C241C
-	.byte 0x1C
-	.byte 0x10
-	.byte 0x1C
-	.byte 0x23 
-	.byte 0x18
-	.byte 0x1F
-	.byte 0xFF
-	.byte 0xFF
+	.byte 0x1C, 0x10, 0x1C, 0x23, 0x18, 0x1F, 0xFF, 0xFF
 byte_8052754: .byte 0x1C, 0x43, 0x1C, 0x7A, 0x18, 0x1C, 0xFF, 0xFF
 byte_805275C: .byte 0x18, 0x1F, 0xFF, 0xFF
 byte_8052760: .byte 0x18, 0x24, 0xFF, 0xFF
@@ -108,13 +101,13 @@ off_80527B4: .word off_8052480
 	.word 0xFFFFFFFF
 off_80527BC: .word off_80524C0
 	.word 0xFFFFFFFF
-off_80527C4: .word unk_80524E8
+off_80527C4: .word byte_80524E8
 	.word 0xFFFFFFFF
-off_80527CC: .word unk_80524E8
+off_80527CC: .word byte_80524E8
 	.word 0xFFFFFFFF
-off_80527D4: .word unk_8052510
+off_80527D4: .word byte_8052510
 	.word 0xFFFFFFFF
-off_80527DC: .word unk_8052538
+off_80527DC: .word byte_8052538
 	.word 0xFFFFFFFF
 dword_80527E4: .word 0xFFFFFFFF
 dword_80527E8: .word 0xFFFFFFFF

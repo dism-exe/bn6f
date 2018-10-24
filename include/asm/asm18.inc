@@ -15,7 +15,7 @@
 // .global sub_8001780
 // .global sub_800195C
 // .global sub_80019D0
-// .global locret_8001AB4
+// .global nullsub_39
 // .global sub_8002354
 
 .include "asm/sprite.inc"
@@ -28,7 +28,7 @@
 .include "asm/asm03_0.inc"
 // .global sub_802FF4C
 // .global sub_803037C
-// .global loc_8030472
+// .global sub_8030472
 // .global sub_80304E8
 // .global sub_8030540
 // .global sub_8030AA4

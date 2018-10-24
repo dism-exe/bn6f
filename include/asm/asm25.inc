@@ -86,11 +86,18 @@
 // .global reqBBS_clearFlag_8140A0C
 
 .include "asm/asm37_1.inc"
-// .global dword_81434E4
-// .global dword_81434E4
-// .global dword_81434E4
-// .global dword_81434E4
-// .global dword_81434E4
+// .global unk_81434E4
+// .global unk_814350C
+// .global unk_814352C
+// .global unk_8143564
+// .global unk_814359C
+// .global unk_81435BA
+// .global unk_81435D2
+// .global unk_81435FC
+// .global unk_8143628
+// .global unk_8143646
+// .global unk_814365E
+// .global unk_8143688
 
 
 /* Undeclared Symbols */

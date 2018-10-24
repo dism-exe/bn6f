@@ -60,7 +60,7 @@
 
 .include "asm/asm28_0.inc"
 // .global unk_809D328
-// .global dword_809E530
+// .global byte_809E530
 
 .include "asm/asm28_1.inc"
 // .global sub_809F526

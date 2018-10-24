@@ -24,7 +24,7 @@ sub_8062AB0:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_8062B10 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
