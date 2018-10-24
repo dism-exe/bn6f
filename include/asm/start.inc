@@ -3,7 +3,7 @@
 
 /* Public Symbols */
 .global start_
-.global dword_80001F4
+.global off_80001F4
 .global start_800023C // () -> void
 .global start_800024C
 .global start_800027C
@@ -37,6 +37,9 @@
 // .equ sub_3005E2C, 0x3005E2C
 // .equ loc_3005E60, 0x3005E60
 // .equ loc_3005E6A, 0x3005E6A
+// .equ iStack, 0x3007E00
+// .equ unk_3007F60, 0x3007F60
+// .equ unk_3007FE0, 0x3007FE0
 // .equ unk_3007FFC, 0x3007FFC
 .equ GeneralLCDStatus_STAT_LYC_, 0x4000004
 .equ KeyInterruptControl, 0x4000132

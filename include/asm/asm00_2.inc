@@ -86,7 +86,7 @@
 .global sub_8010CE0
 .global sub_8010D20
 .global sub_8010DD0
-.global loc_8010DF6
+.global sub_8010DF6
 .global off_8010F08
 .global sub_8011020
 .global loc_8011044
@@ -835,20 +835,20 @@
 // .equ unk_203A380, 0x203A380
 // .equ unk_203A980, 0x203A980
 // .equ unk_203A990, 0x203A990
-// .equ unk_203C4E0, 0x203C4E0
+// .equ byte_203C4E0, 0x203C4E0
 // .equ dword_203CA48, 0x203CA48
 // .equ dword_203CA4C, 0x203CA4C
-// .equ unk_203CB10, 0x203CB10
-// .equ unk_203CCE0, 0x203CCE0
+// .equ byte_203CB10, 0x203CB10
+// .equ byte_203CCE0, 0x203CCE0
 // .equ dword_203CDF0, 0x203CDF0
-// .equ unk_203CE00, 0x203CE00
+// .equ byte_203CE00, 0x203CE00
 // .equ byte_203CED0, 0x203CED0
 // .equ byte_203CED1, 0x203CED1
 // .equ byte_203CED3, 0x203CED3
-// .equ byte_203CED4, 0x203CED4
-// .equ dword_203CED8, 0x203CED8
+// .equ dword_203CED4, 0x203CED4
+// .equ byte_203CED8, 0x203CED8
 // .equ dword_203CFA0, 0x203CFA0
-// .equ unk_203EB00, 0x203EB00
+// .equ byte_203EB00, 0x203EB00
 // .equ byte_203EB50, 0x203EB50
 // .equ word_203EB52, 0x203EB52
 // .equ byte_203EB54, 0x203EB54
@@ -856,18 +856,18 @@
 // .equ word_203EB56, 0x203EB56
 // .equ byte_203EB58, 0x203EB58
 // .equ byte_203EB59, 0x203EB59
-// .equ dword_203EB5C, 0x203EB5C
-// .equ dword_203EB60, 0x203EB60
-// .equ unk_203EBA0, 0x203EBA0
-// .equ unk_203EDA0, 0x203EDA0
-// .equ unk_203EFA0, 0x203EFA0
-// .equ dword_203F6A0, 0x203F6A0
+// .equ byte_203EB59, 0x203EB59
+// .equ byte_203EB60, 0x203EB60
+// .equ byte_203EBA0, 0x203EBA0
+// .equ byte_203EDA0, 0x203EDA0
+// .equ byte_203EFA0, 0x203EFA0
+// .equ byte_203F6A0, 0x203F6A0
 // .equ dword_203F7E0, 0x203F7E0
-// .equ unk_3001670, 0x3001670
+// .equ byte_3001670, 0x3001670
 // .equ word_3001684, 0x3001684
-// .equ unk_30016B0, 0x30016B0
-// .equ unk_30016D0, 0x30016D0
-// .equ unk_30016F0, 0x30016F0
+// .equ byte_30016B0, 0x30016B0
+// .equ byte_30016D0, 0x30016D0
+// .equ byte_30016F0, 0x30016F0
 // .equ unk_3001A80, 0x3001A80
 // .equ unk_3001AC0, 0x3001AC0
 // .equ unk_3001AE0, 0x3001AE0

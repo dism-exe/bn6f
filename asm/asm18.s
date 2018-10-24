@@ -177,8 +177,9 @@ sub_807AAD6:
 	pop {pc}
 	.balign 4, 0x00
 off_807AAEC: .word pt_807AAF0
-// <endpool> <endfile>
-pt_807AAF0:  .word dword_807AAFC
+pt_807AAF0:
+	// <endpool> <endfile>
+	.word dword_807AAFC
 	.word dword_807AC18
 	.word dword_807ACA8
 .endfunc // sub_807AAD6

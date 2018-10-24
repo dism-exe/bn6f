@@ -518,8 +518,9 @@ sub_806FFDA:
 	pop {pc}
 	.byte 0, 0
 off_806FFF0: .word pt_806FFF4
-// <endpool> <endfile>
-pt_806FFF4:  .word byte_8070034
+pt_806FFF4:
+	// <endpool> <endfile>
+	.word byte_8070034
 	.word dword_8070074
 	.word dword_80700B4
 	.word dword_80700CC

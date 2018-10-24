@@ -489,8 +489,9 @@ sub_80871C0:
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	pop {pc}
 	.hword 0x0
-// <endpool> <endfile>
-off_80871D4:  .word byte_80871D8
+off_80871D4:
+	// <endpool> <endfile>
+	.word byte_80871D8
 .endfunc // sub_80871C0
 
 /*For debugging purposes, connect comment at any range!*/

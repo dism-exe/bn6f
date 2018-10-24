@@ -196,8 +196,8 @@
 // .equ dword_2036788, 0x2036788
 // .equ unk_20399F0, 0x20399F0
 // .equ unk_2039A00, 0x2039A00
-// .equ dword_203F7D8, 0x203F7D8
-// .equ dword_203F7D8, 0x203F7D8
+// .equ byte_203F7D8, 0x203F7D8
+// .equ byte_203F7D8, 0x203F7D8
 // .equ unk_30019E0, 0x30019E0
 
 .endif // INC_ASM_ASM37_0

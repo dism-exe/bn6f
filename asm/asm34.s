@@ -91,9 +91,9 @@ off_812D3E0: .word unk_2023FC0
 	ldr r2, off_812D4D8 // =unk_202E0B8 
 	mov r3, #9
 	lsl r3, r3, #0xc
-	ldr r4, off_812D4DC // =0x35C 
+	ldr r4, off_812D4DC // =0x35c 
 	orr r3, r4
-	ldr r4, dword_812D4E0 // =0x6006B80 
+	ldr r4, dword_812D4E0 // =0x6006b80 
 	mov r5, #7
 	bl sub_81203E4
 	mov r0, #0xb
@@ -121,23 +121,23 @@ off_812D3E0: .word unk_2023FC0
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_812D4C4 // =word_2023FA0 
-	ldr r2, off_812D4EC // =unk_202E10C 
+	ldr r2, off_812D4EC // =byte_202E10C 
 	mov r3, #8
 	lsl r3, r3, #0xc
-	ldr r4, dword_812D4F0 // =0x34F 
+	ldr r4, dword_812D4F0 // =0x34f 
 	orr r3, r4
 	mov r5, #7
 	bl sub_81204C4
 	mov r0, #0xe
 	mov r1, #4
 	mov r2, #2
-	ldr r3, off_812D4EC // =unk_202E10C 
+	ldr r3, off_812D4EC // =byte_202E10C 
 	mov r4, #2
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_812D4C4 // =word_2023FA0 
-	ldr r2, off_812D4F4 // =unk_202E144 
+	ldr r2, off_812D4F4 // =byte_202E144 
 	mov r3, #0xa
 	lsl r3, r3, #0xc
 	ldr r4, byte_812D4F8 // =0x0 
@@ -147,7 +147,7 @@ off_812D3E0: .word unk_2023FC0
 	mov r0, #0x10
 	mov r1, #4
 	mov r2, #2
-	ldr r3, off_812D4F4 // =unk_202E144 
+	ldr r3, off_812D4F4 // =byte_202E144 
 	mov r4, #2
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -164,9 +164,9 @@ off_812D4DC: .word 0x35C
 dword_812D4E0: .word 0x6006B80
 off_812D4E4: .word unk_202E0F0
 dword_812D4E8: .word 0x216
-off_812D4EC: .word unk_202E10C
+off_812D4EC: .word byte_202E10C
 dword_812D4F0: .word 0x34F
-off_812D4F4: .word unk_202E144
+off_812D4F4: .word byte_202E144
 byte_812D4F8: .byte 0x0, 0x2, 0x0, 0x0
 .func
 .thumb_func
@@ -852,7 +852,7 @@ sub_812DA08:
 	ldr r3, [sp,#8]
 	ldrh r3, [r5,r3]
 	mov r4, #7
-	ldr r6, dword_812DA38 // =0xC24C 
+	ldr r6, dword_812DA38 // =0xc24c 
 	mov r7, #0x64 
 	bl sub_811FA98
 	add sp, sp, #0xc

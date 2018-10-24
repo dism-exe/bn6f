@@ -135,7 +135,7 @@ off_80691B8: .word off_8612A28
 	.word dword_8612CF0
 	.word 0x1800
 	.word dword_8612E84
-	.word word_3001960
+	.word byte_3001960
 	.word 0x20
 .endfunc // sub_8069140
 
@@ -868,7 +868,7 @@ dword_8069AF0: .word 0x3001960
 	.word byte_86142A0
 	.word 0x8
 	.word 0x1
-off_8069C80: .word word_3001960
+off_8069C80: .word byte_3001960
 	.word 0x20
 	.word 0xFFFF0100
 	.word byte_86142C4
@@ -1705,7 +1705,7 @@ off_806A7F0: .word LCDControl
 off_806A800: .word LCDControl
 	.word 0, 0
 	.byte 0, 0, 0, 0
-off_806A810: .word word_3001960
+off_806A810: .word byte_3001960
 dword_806A814: .word 0x20
 	.word 0xFFFF0000
 	.word byte_8614D60
@@ -2020,14 +2020,14 @@ off_806AC34: .word off_86116C8
 	.word byte_861184C
 	.word 0x1800
 	.word unk_86119C4
-	.word word_3001960
+	.word byte_3001960
 	.word 0x20
 off_806AC50: .word off_8612A28
 	.word 0x6008020
 	.word dword_8612CF0
 	.word 0x1800
 	.word dword_8612E84
-	.word word_3001960
+	.word byte_3001960
 	.word 0x20
 off_806AC6C: .word off_8613608
 	.word 0x6008020
@@ -2041,14 +2041,14 @@ off_806AC88: .word off_8610B04
 	.word byte_8610C18
 	.word 0x1800
 	.word unk_8610D64
-	.word word_3001960
+	.word byte_3001960
 	.word 0x20
 off_806ACA4: .word off_8614444
 	.word 0x6008020
 	.word dword_8614A0C
 	.word 0x1800
 	.word unk_8614BB8
-	.word word_3001960
+	.word byte_3001960
 	.word 0x20
 .endfunc // sub_806AB94
 
@@ -3646,7 +3646,7 @@ dword_806C1E0: .word 0x20
 	.word byte_85D2810
 	.word 0x8
 	.word 0x1
-off_806C20C: .word word_3001960
+off_806C20C: .word byte_3001960
 	.word 0x20
 	.word 0xFFFF0200
 	.word byte_8615B04
@@ -3852,7 +3852,7 @@ off_806C494: .word off_861602C
 	.word dword_8616264
 	.word 0x1800
 	.word byte_86163F4
-	.word word_3001960
+	.word byte_3001960
 	.word 0x20
 .endfunc // sub_806C35C
 
@@ -4011,8 +4011,9 @@ sub_806C59C:
 	bl sub_8003570
 	pop {pc}
 off_806C5B0: .word pt_806C5B4
-// <endpool>
-pt_806C5B4:  .word dword_806C5D0
+pt_806C5B4:
+	// <endpool>
+	.word dword_806C5D0
 .endfunc // sub_806C59C
 
 	.word dword_806C638
@@ -4020,6 +4021,6 @@ pt_806C5B4:  .word dword_806C5D0
 	.word dword_806C68C
 	.byte 0, 0, 0, 0
 	.word dword_806C6E0
-// <endfile>
- 	.word dword_806C748
+	// <endfile>
+	.word dword_806C748
 /*For debugging purposes, connect comment at any range!*/

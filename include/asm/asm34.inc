@@ -81,8 +81,8 @@
 // .equ unk_202E080, 0x202E080
 // .equ unk_202E0B8, 0x202E0B8
 // .equ unk_202E0F0, 0x202E0F0
-// .equ unk_202E10C, 0x202E10C
-// .equ unk_202E144, 0x202E144
+// .equ byte_202E10C, 0x202E10C
+// .equ byte_202E144, 0x202E144
 // .equ unk_2037780, 0x2037780
 
 .endif // INC_ASM_ASM34

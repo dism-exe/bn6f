@@ -33,7 +33,7 @@
 
 
 /* Undeclared Symbols */
-// .equ word_3001960, 0x3001960
+// .equ byte_3001960, 0x3001960
 // .equ unk_3001A20, 0x3001A20
 // .equ unk_3001A80, 0x3001A80
 

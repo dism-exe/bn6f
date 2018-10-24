@@ -17,19 +17,19 @@ start_:
 	.word 0x0
 loc_80000D0:
 	mov r0, #0x12
-	msr cpsr_cf, r0
-	ldr r13, dword_80001EC // = 
+	msr CPSR_cf, r0
+	ldr r13, off_80001EC // =unk_3007F60 
 	mov r0, #0x13
-	msr cpsr_cf, r0
-	ldr r13, dword_80001F0 // = 
+	msr CPSR_cf, r0
+	ldr r13, off_80001F0 // =unk_3007FE0 
 	mov r0, #0x1f
-	msr cpsr_cf, r0
-	ldr r13, dword_80001F4 // = 
+	msr CPSR_cf, r0
+	ldr r13, off_80001F4 // =iStack 
 	ldr r0, off_80001F8 // =unk_3007FFC 
-	ldr r1, dword_80001FC // =loc_3005B00 
+	ldr r1, off_80001FC // =loc_3005B00 
 	str r1, [r0]
 	ldr r0, off_8000200 // =GamePakWaitstateControl 
-	ldr r1, dword_8000204 // =0x45B4 
+	ldr r1, dword_8000204 // =0x45b4 
 	str r1, [r0]
 	// mem
 	mov r0, #0x3000000 // unk_3000000
@@ -61,7 +61,7 @@ loc_80000D0:
 	// dest
 	ldr r1, a2 // =loc_3005B00 
 	// size
-	ldr r2, IWRAMRoutinesSize_p // =0x1ED4 
+	ldr r2, IWRAMRoutinesSize_p // =0x1ed4 
 	bl start_copyMemory // (void *src, void *dest, int size) -> void
 	ldr r0, off_8000214 // =CpuSet_toolKit+1 
 	mov lr, pc
@@ -85,7 +85,7 @@ loc_80000D0:
 	mov r1, #8
 	strh r1, [r0]
 	ldr r0, off_8000230 // =KeyInterruptControl 
-	ldr r1, dword_8000234 // =0x83FF 
+	ldr r1, dword_8000234 // =0x83ff 
 	strh r1, [r0]
 	ldr r0, off_8000238 // =main_+1 
 	bx r0
@@ -114,16 +114,18 @@ start_copyMemory:
 	str r3, [r1,r2]
 	bne start_copyMemory
 	bx lr
-dword_80001EC: .word 0x3007F60
-dword_80001F0: .word 0x3007FE0
-dword_80001F4: .word iStack
+off_80001EC: .word unk_3007F60
+off_80001F0: .word unk_3007FE0
+off_80001F4: .word iStack
 off_80001F8: .word unk_3007FFC
-dword_80001FC: .word 0x3005B00
+off_80001FC: .word loc_3005B00
 off_8000200: .word GamePakWaitstateControl
 dword_8000204: .word 0x45B4
-mem: .word IWRAMRoutinesROMLocation
+mem:
+	// TODO: had to do this because this keeps resyncing to sub_81D6000.
+	.word IWRAMRoutinesROMLocation // <force> DCD sub_81D6000
 a2: .word loc_3005B00
-IWRAMRoutinesSize_p: .word IWRAM_ROUTINES_SIZE
+IWRAMRoutinesSize_p: .word 0x1ED4
 off_8000214: .word CpuSet_toolKit+1
 off_8000218: .word sub_8006C22+1
 off_800021C: .word start_800023C+1

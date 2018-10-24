@@ -113,8 +113,8 @@
 
 
 /* Undeclared Symbols */
-// .equ unk_3001690, 0x3001690
-// .equ unk_3001710, 0x3001710
+// .equ byte_3001690, 0x3001690
+// .equ byte_3001710, 0x3001710
 // .equ unk_3001AA0, 0x3001AA0
 // .equ unk_3001AC0, 0x3001AC0
 // .equ unk_3001AE0, 0x3001AE0

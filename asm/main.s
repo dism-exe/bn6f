@@ -50,11 +50,26 @@ loc_800032A:
 	.balign 4, 0x00
 off_8000344: .word loc_3006814+1
 off_8000348: .word main_jt_subsystem
-main_jt_subsystem: .word Load_ho_802F544+1, cb_80050EC+1, ho_jackIn_80341B6+1, cb_8038AD0+1
-	.word cb_803D1CA+1, cb_803FB3C+1, cb_80395A4+1, cb_803CBA6+1
-	.word cb_803CCD6+1, reqBBS_cb_draw_813E0A4+1, menuControl_cb_openSubmenu+1, cb_8046CF8+1
-	.word cb_8048FD4+1, cb_804A304+1, cb_81382AC+1, 0x0
-	.word 0x0, reqBBS_cb_813F404+1, menuControl_cb_email+1, cb_8049E04+1
+main_jt_subsystem: .word Load_ho_802F544+1
+	.word cb_80050EC+1
+	.word ho_jackIn_80341B6+1
+	.word cb_8038AD0+1
+	.word cb_803D1CA+1
+	.word cb_803FB3C+1
+	.word cb_80395A4+1
+	.word cb_803CBA6+1
+	.word cb_803CCD6+1
+	.word reqBBS_cb_draw_813E0A4+1
+	.word menuControl_cb_openSubmenu+1
+	.word cb_8046CF8+1
+	.word cb_8048FD4+1
+	.word cb_804A304+1
+	.word cb_81382AC+1
+	.word 0x0
+	.word 0x0
+	.word reqBBS_cb_813F404+1
+	.word menuControl_cb_email+1
+	.word cb_8049E04+1
 	.byte 0, 0, 0, 0
 .endfunc // main_
 
@@ -118,7 +133,7 @@ loc_80003F2:
 	mvn r4, r4
 	ldrh r5, [r0]
 	strh r5, [r0,#6]
-	ldr r3, dword_8000450 // =0x3FF 
+	ldr r3, dword_8000450 // =0x3ff 
 	strh r4, [r0]
 	add r6, r4, #0
 	and r6, r5
@@ -198,10 +213,18 @@ main_static_8000454:
 	beq loc_80004A0
 	push {r1}
 	bl start_800023C // () -> void
-	bl main_static_80004A4
-	bl clear_200AD04 // () -> void
-	pop {r1}
-	mov r4, #0xa
+	.byte  0
+	.byte 0xF0
+	.byte  6
+	.byte 0xF8
+	.byte 0x3F 
+	.byte 0xF0
+	.byte 0x16
+	.byte 0xF8
+	.byte  2
+	.byte 0xBC
+	.byte 0xA
+	.byte 0x24 
 loc_80004A0:
 	strb r4, [r1]
 locret_80004A2:
@@ -223,7 +246,7 @@ loc_80004AA:
 	ldr r0, off_8000564 // =0x40 
 	tst r1, r1
 	beq loc_80004C0
-	ldr r0, off_8000568 // =0xC0 
+	ldr r0, off_8000568 // =0xc0 
 loc_80004C0:
 	bl sub_8001778
 	bl main_static_80017EC
@@ -282,10 +305,10 @@ off_800056C: .word dword_2009930
 main_static_8000570:
 	push {lr}
 	bl sub_814E8A0
-	ldr r0, dword_800059C // =0x93040D 
+	ldr r0, dword_800059C // =0x93040d 
 	bl sub_814EE2C
 	mov r0, #8
-	ldr r1, dword_80005A8 // = 
+	ldr r1, dword_80005A8 // =unk_3005D79 
 	bl start_800024C
 	ldr r0, off_80005A0 // =GeneralLCDStatus_STAT_LYC_ 
 	ldrh r1, [r0]
@@ -301,7 +324,7 @@ main_static_8000570:
 	.balign 4, 0x00
 dword_800059C: .word 0x93040D
 off_80005A0: .word GeneralLCDStatus_STAT_LYC_
-	.word dword_3000E70
+	.word off_3000E70
 dword_80005A8: .word 0x3005D79
 .endfunc // main_static_8000570
 

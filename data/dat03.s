@@ -3259,7 +3259,7 @@ dword_804E420: .word 0x3000101
 	.word 0xFF880000
 	.byte 0, 0, 0, 0
 dword_804E430: .word 0x5000101, 0x780000, 0x220000, 0x0
-off_804E440: .word unk_3000001
+off_804E440: .word byte_3000001
 	.word 0xFF6A0000, 0xFFF00000, 0x0
 off_804E450: .word unk_3001A60
 	.byte 0x20

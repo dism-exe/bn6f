@@ -1377,7 +1377,7 @@ loc_813C050:
 	blt loc_813C042
 	add r6, #1
 	add r5, #4
-	ldr r0, off_813C068 // =0x14C 
+	ldr r0, off_813C068 // =0x14c 
 	cmp r5, r0
 	blt loc_813C036
 	pop {r4-r7,pc}
@@ -1429,21 +1429,21 @@ loc_813C08C:
 	ldrh r1, [r5,r0]
 	cmp r1, r2
 	beq loc_813C0D4
-	ldr r2, dword_813C148 // =0x51E4 
+	ldr r2, dword_813C148 // =0x51e4 
 	cmp r1, r2
 	beq loc_813C0D4
-	ldr r1, dword_813C13C // =0x522E 
+	ldr r1, dword_813C13C // =0x522e 
 	ldr r2, [sp,#4]
 	tst r2, r2
 	bne loc_813C0DE
-	ldr r1, dword_813C140 // =0x35C3 
+	ldr r1, dword_813C140 // =0x35c3 
 	b loc_813C0DE
 loc_813C0D4:
-	ldr r1, dword_813C134 // =0x6F15 
+	ldr r1, dword_813C134 // =0x6f15 
 	ldr r2, [sp,#4]
 	tst r2, r2
 	bne loc_813C0DE
-	ldr r1, dword_813C138 // =0x5A91 
+	ldr r1, dword_813C138 // =0x5a91 
 loc_813C0DE:
 	push {r0,r1}
 	bl sub_813C4C8
@@ -1501,14 +1501,8 @@ unk_813C14C: .byte 0x1D
 	.byte 0x54 
 	.byte 0x5F, 0x1F, 0x16
 	.byte 0x1A
-a6VDhxFjzDfhjtx: .byte 0x36, 0x3A, 0x56, 0x5E, 0x2C
-	.byte 0x24, 0x28, 0x44, 0x48, 0x58
-	.byte 0x5D, 0x2D, 0x26, 0x2A, 0x46
-	.byte 0x4A, 0x5A, 0x5C, 0x2E, 0x64
-	.byte 0x66, 0x68, 0x6A, 0x74, 0x78
-	.byte 0x2F, 0x6C, 0x6D, 0x6E, 0x6F
-	.byte 0x76, 0x77, 0x0
-	.byte 0, 0
+a6VDhxFjzDfhjtx: .asciz "6:V^,$(DHX]-&*FJZ\\.dfhjtx/lmnovw"
+	.balign 4, 0x00
 off_813C180: .word byte_813C188
 off_813C184: .word byte_813C1A4
 byte_813C188: .byte 0x4, 0x31, 0x7B, 0x6F, 0x7B, 0x3, 0x3B, 0x62, 0x5B, 0x0
@@ -1563,21 +1557,21 @@ loc_813C1FA:
 	ldrh r1, [r5,r0]
 	cmp r1, r2
 	beq loc_813C224
-	ldr r2, dword_813C298 // =0x51E4 
+	ldr r2, dword_813C298 // =0x51e4 
 	cmp r1, r2
 	beq loc_813C224
-	ldr r1, dword_813C28C // =0x41AA 
+	ldr r1, dword_813C28C // =0x41aa 
 	ldr r2, [sp,#4]
 	tst r2, r2
 	bne loc_813C22E
 	ldr r1, dword_813C290 // =0x3968 
 	b loc_813C22E
 loc_813C224:
-	ldr r1, dword_813C284 // =0x6F15 
+	ldr r1, dword_813C284 // =0x6f15 
 	ldr r2, [sp,#4]
 	tst r2, r2
 	bne loc_813C22E
-	ldr r1, dword_813C288 // =0x5A91 
+	ldr r1, dword_813C288 // =0x5a91 
 loc_813C22E:
 	push {r0,r1}
 	bl sub_813C4C8
@@ -1640,13 +1634,7 @@ unk_813C2B0: .byte 0x1D
 	.byte 0x54 
 	.byte 0x5F, 0x1F, 0x16
 	.byte 0x1A
-a6VDhxFjzDfhjtx_0: .byte 0x36, 0x3A, 0x56, 0x5E, 0x2C
-	.byte 0x24, 0x28, 0x44, 0x48, 0x58
-	.byte 0x5D, 0x2D, 0x26, 0x2A, 0x46
-	.byte 0x4A, 0x5A, 0x5C, 0x2E, 0x64
-	.byte 0x66, 0x68, 0x6A, 0x74, 0x78
-	.byte 0x2F, 0x6C, 0x6D, 0x6E, 0x6F
-	.byte 0x76, 0x77, 0x0
+a6VDhxFjzDfhjtx_0: .asciz "6:V^,$(DHX]-&*FJZ\\.dfhjtx/lmnovw"
 	.balign 4, 0x00
 off_813C2E4: .word byte_813C2EC
 off_813C2E8: .word byte_813C308
@@ -1894,12 +1882,7 @@ unk_813C51C: .byte 0x1D
 	.byte 0x54 
 	.byte 0x5F, 0x1F, 0x16
 	.byte 0x1A
-a6VDhxFjzLmnovw: .byte 0x36, 0x3A, 0x56, 0x5E, 0x2C
-	.byte 0x24, 0x28, 0x44, 0x48, 0x58
-	.byte 0x5D, 0x2D, 0x26, 0x2A, 0x46
-	.byte 0x4A, 0x5A, 0x5C, 0x2F, 0x6C
-	.byte 0x6D, 0x6E, 0x6F, 0x76, 0x77
-	.byte 0x0
+a6VDhxFjzLmnovw: .asciz "6:V^,$(DHX]-&*FJZ\\/lmnovw"
 	.byte 0x0
 	.word 0
 	.byte 0, 0, 0, 0
@@ -1912,13 +1895,7 @@ unk_813C550: .byte 0x1D
 	.byte 0x54 
 	.byte 0x5F, 0x1F, 0x16
 	.byte 0x1A
-a6VDhxFjzDfhjtx_1: .byte 0x36, 0x3A, 0x56, 0x5E, 0x2C
-	.byte 0x24, 0x28, 0x44, 0x48, 0x58
-	.byte 0x5D, 0x2D, 0x26, 0x2A, 0x46
-	.byte 0x4A, 0x5A, 0x5C, 0x2E, 0x64
-	.byte 0x66, 0x68, 0x6A, 0x74, 0x78
-	.byte 0x2F, 0x6C, 0x6D, 0x6E, 0x6F
-	.byte 0x76, 0x77, 0x0
+a6VDhxFjzDfhjtx_1: .asciz "6:V^,$(DHX]-&*FJZ\\.dfhjtx/lmnovw"
 	.balign 4, 0x00
 .endfunc // sub_813C4C8
 
@@ -2815,7 +2792,7 @@ navicust_NCP_HPPlus300:
 	mov r0, r10
 	ldr r0, [r0,#0x68]
 	ldrh r1, [r0]
-	ldr r2, off_813CBA0 // =0x12C 
+	ldr r2, off_813CBA0 // =0x12c 
 	add r1, r1, r2
 	strh r1, [r0]
 	pop {pc}
@@ -2843,7 +2820,7 @@ navicust_NCP_HPPlus500:
 	mov r0, r10
 	ldr r0, [r0,#0x68]
 	ldrh r1, [r0]
-	ldr r2, off_813CBC8 // =0x1F4 
+	ldr r2, off_813CBC8 // =0x1f4 
 	add r1, r1, r2
 	strh r1, [r0]
 	pop {pc}
@@ -4439,14 +4416,14 @@ off_813DA08: .word byte_20101B4
 .thumb_func
 sub_813DA0C:
 	push {r4,lr}
-	ldr r4, off_813DB0C // =dword_203F7D8 
+	ldr r4, off_813DB0C // =byte_203F7D8 
 	mov r0, #2
-	strb r0, [r4,#0x1] // (dword_203F7D8+1 - 0x203f7d8)
+	strb r0, [r4,#0x1] // (byte_203F7D8+1 - 0x203f7d8)
 	ldrb r0, [r4]
 	tst r0, r0
 	beq loc_813DA22
 	bl sub_813D9AC
-	strb r0, [r4,#0x1] // (dword_203F7D8+1 - 0x203f7d8)
+	strb r0, [r4,#0x1] // (byte_203F7D8+1 - 0x203f7d8)
 	b locret_813DA36
 loc_813DA22:
 	ldr r0, off_813DB10 // =word_2036780 
@@ -4463,7 +4440,7 @@ locret_813DA36:
 
 	push {lr}
 	ldr r3, off_813DA7C // =sCamera+80 
-	ldrb r3, [r3,#0x6] // (scamera.pad_56 - 0x20099d0)
+	ldrb r3, [r3,#0x6] // (sCamera.pad_56 - 0x20099d0)
 	cmp r3, #1
 	bne locret_813DA4C
 	add r2, r1, #0
@@ -4479,16 +4456,16 @@ locret_813DA4C:
 	push {r4,lr}
 	add r2, r1, #0
 	ldr r3, off_813DA7C // =sCamera+80 
-	ldrb r0, [r3,#0x6] // (scamera.pad_56 - 0x20099d0)
+	ldrb r0, [r3,#0x6] // (sCamera.pad_56 - 0x20099d0)
 	cmp r0, #1
 	bne locret_813DA78
 	strb r1, [r7,#6]
-	ldr r1, [r3,#0x38] // (scamera.unk_88 - 0x20099d0)
+	ldr r1, [r3,#0x38] // (sCamera.unk_88 - 0x20099d0)
 	ldr r4, off_813DA80 // =byte_200BC50 
 	ldrb r4, [r4,#0x1] // (byte_200BC51 - 0x200bc50)
 	tst r4, r4
 	beq loc_813DA72
-	ldr r1, [r3,#0x3c] // (scamera.unk_8c - 0x20099d0)
+	ldr r1, [r3,#0x3c] // (sCamera.unk_8C - 0x20099d0)
 loc_813DA72:
 	mov r2, #0xa
 	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
@@ -4580,7 +4557,7 @@ sub_813DAF4:
 	pop {pc}
 off_813DB04: .word word_2036780
 off_813DB08: .word 0x214
-off_813DB0C: .word dword_203F7D8
+off_813DB0C: .word byte_203F7D8
 off_813DB10: .word word_2036780
 off_813DB14: .word unk_20399F0
 off_813DB18: .word word_2036780
@@ -4606,10 +4583,10 @@ loc_813DB36:
 	mov r5, #0
 loc_813DB3C:
 	ldr r1, off_813DBBC // =sCamera+80 
-	ldr r6, [r1,#0x3c] // (scamera.unk_8c - 0x20099d0)
+	ldr r6, [r1,#0x3c] // (sCamera.unk_8C - 0x20099d0)
 	tst r5, r5
 	bne loc_813DB46
-	ldr r6, [r1,#0x38] // (scamera.unk_88 - 0x20099d0)
+	ldr r6, [r1,#0x38] // (sCamera.unk_88 - 0x20099d0)
 loc_813DB46:
 	ldr r0, [r6]
 	ldr r1, dword_813DBA4 // =0x42523545 
@@ -4625,15 +4602,15 @@ loc_813DB58:
 	cmp r5, #2
 	blt loc_813DB3C
 	ldr r1, off_813DBBC // =sCamera+80 
-	ldr r6, [r1,#0x38] // (scamera.unk_88 - 0x20099d0)
+	ldr r6, [r1,#0x38] // (sCamera.unk_88 - 0x20099d0)
 	str r6, [sp]
-	ldr r6, [r1,#0x3c] // (scamera.unk_8c - 0x20099d0)
+	ldr r6, [r1,#0x3c] // (sCamera.unk_8C - 0x20099d0)
 	ldrb r5, [r4]
 	tst r5, r5
 	beq loc_813DB72
-	ldr r6, [r1,#0x3c] // (scamera.unk_8c - 0x20099d0)
+	ldr r6, [r1,#0x3c] // (sCamera.unk_8C - 0x20099d0)
 	str r6, [sp]
-	ldr r6, [r1,#0x38] // (scamera.unk_88 - 0x20099d0)
+	ldr r6, [r1,#0x38] // (sCamera.unk_88 - 0x20099d0)
 loc_813DB72:
 	ldr r0, [r6]
 	ldr r1, dword_813DBA4 // =0x42523545 
@@ -5058,55 +5035,21 @@ tileRefs_813DBE4: .hword 0x4200
 unk_813DEC4: .byte  0
 	.byte 0x60, 0x0, 0x60
 	.byte  0
-a02468: .byte 0x60, 0x20, 0x60, 0x22, 0x60, 0x24, 0x60, 0x26
-	.byte 0x60, 0x28, 0x60, 0x2A, 0x60, 0x2C, 0x60, 0x2E
-	.byte 0x60, 0x30, 0x60, 0x32, 0x60, 0x34, 0x60, 0x36
-	.byte 0x60, 0x38, 0x60, 0x3A, 0x60, 0x3C, 0x60, 0x0
-aBDFHJL: .byte 0x60, 0x3E
-	.byte 0x60, 0x40
-	.byte 0x60, 0x42
-	.byte 0x60, 0x44
-	.byte 0x60, 0x46
-	.byte 0x60, 0x48
-	.byte 0x60, 0x4A
-	.byte 0x60, 0x4C
-	.byte 0x60, 0x0
-	.byte 0x60, 0x0
-	.byte 0x60, 0x0
-	.byte 0x60, 0x0
-	.byte 0x60, 0x0
-	.byte 0x60, 0x0
-	.byte 0x60, 0x0
-	.byte 0x60, 0x0
-a13579: .byte 0x60, 0x21
-	.byte 0x60, 0x23
-	.byte 0x60, 0x25
-	.byte 0x60, 0x27
-	.byte 0x60, 0x29
-	.byte 0x60, 0x2B
-	.byte 0x60, 0x2D
-	.byte 0x60, 0x2F
-	.byte 0x60, 0x31
-	.byte 0x60, 0x33
-	.byte 0x60, 0x35
-	.byte 0x60, 0x37
-	.byte 0x60, 0x39
-	.byte 0x60, 0x3B
-	.byte 0x60, 0x3D
-	.byte 0x60, 0x0
-aACEGIKM: .byte 0x60, 0x3F
-	.byte 0x60, 0x41
-	.byte 0x60, 0x43
-	.byte 0x60, 0x45
-	.byte 0x60, 0x47
-	.byte 0x60, 0x49
-	.byte 0x60, 0x4B
-	.byte 0x60, 0x4D
-	.byte 0x60, 0x0
-	.byte 0x60, 0x0
-	.byte 0x60, 0x0
-	.byte 0x60, 0x0
-	.byte 0x60, 0x0
+a02468: .asciz "` `\"`$`&`(`*`,`.`0`2`4`6`8`:`<`"
+aBDFHJL: .asciz "`>`@`B`D`F`H`J`L`"
+	.asciz "`"
+	.asciz "`"
+	.asciz "`"
+	.asciz "`"
+	.asciz "`"
+	.asciz "`"
+	.asciz "`"
+a13579: .asciz "`!`#`%`'`)`+`-`/`1`3`5`7`9`;`=`"
+aACEGIKM: .asciz "`?`A`C`E`G`I`K`M`"
+	.asciz "`"
+	.asciz "`"
+	.asciz "`"
+	.asciz "`"
 	.byte 0x60
 tileRefs_813DF44: .hword 0x61E0, 0x61E2, 0x61E4, 0x61E6, 0x61E8, 0x61EA, 0x61EC, 0x61EE
 	.hword 0x61F0, 0x61F2, 0x61F4, 0x61F6, 0x61E1, 0x61E3, 0x61E5, 0x61E7

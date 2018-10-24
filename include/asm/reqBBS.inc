@@ -179,7 +179,7 @@
 // .equ reqBBS_requestInfo_textOffsets, 0x2029A04
 // .equ unk_2033A00, 0x2033A00
 // .equ reqBBS_dialogList, 0x2033A04
-// .equ unk_3001750, 0x3001750
+// .equ byte_3001750, 0x3001750
 // .equ unk_30019C0, 0x30019C0
 // .equ unk_3001B60, 0x3001B60
 

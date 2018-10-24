@@ -57,7 +57,7 @@ loc_809F56C:
 	mov r6, #0x58 
 	add r6, r6, r5
 	ldr r4, dword_809F5A8 // =0x400000 
-	ldr r5, dword_809F5AC // =0xA00000 
+	ldr r5, dword_809F5AC // =0xa00000 
 	bl sub_80037AC
 loc_809F596:
 	pop {r5}
@@ -221,7 +221,7 @@ off_809F688: .word eOverworldNPCObjects
 sub_809F68C:
 	push {lr}
 	ldr r3, off_809F6A4 // =eOverworldNPCObjects 
-	ldr r2, off_809F6A8 // =0xD80 
+	ldr r2, off_809F6A8 // =0xd80 
 	add r2, r2, r3
 loc_809F694:
 	ldr r0, [r3,#0x50]
@@ -482,7 +482,7 @@ loc_809FA0C:
 	bl sub_809FACE
 	ldrh r0, [r7,#2]
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	mov r0, r12
 	add r0, #1
@@ -642,7 +642,7 @@ loc_809FB18:
 	bl sub_809FACE
 	ldrh r0, [r7,#2]
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 loc_809FB3E:
 	add r7, #0xc
@@ -1168,7 +1168,8 @@ off_809FE90: .word off_80A3428
 off_809FE94: .word dword_80A3360
 off_809FE98: .word off_80A336C
 off_809FE9C: .word byte_2000210
-// <endfile>
-off_809FEA0:  .word dword_809FEE4
+off_809FEA0:
+	// <endfile>
+	.word dword_809FEE4
 	.word dword_809FFE8
 /*For debugging purposes, connect comment at any range!*/

@@ -176,8 +176,9 @@ sub_807CFFC:
 	bl sub_8003570
 	pop {pc}
 off_807D010: .word pt_807D014
-// <endpool> <endfile>
-pt_807D014:  .word dword_807D024
+pt_807D014:
+	// <endpool> <endfile>
+	.word dword_807D024
 	.word dword_807D0B4
 	.word dword_807D1A8
 	.word dword_807D210

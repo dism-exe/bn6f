@@ -106,7 +106,7 @@
 
 /* Undeclared Symbols */
 // .equ unk_2037800, 0x2037800
-// .equ word_3001960, 0x3001960
+// .equ byte_3001960, 0x3001960
 // .equ unk_3001980, 0x3001980
 // .equ unk_3001A20, 0x3001A20
 // .equ unk_3001A60, 0x3001A60

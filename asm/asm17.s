@@ -147,8 +147,9 @@ sub_807948C:
 	bl sub_8003570
 	pop {pc}
 off_80794A0: .word pt_80794A4
-// <endpool> <endfile>
-pt_80794A4:  .word dword_80794AC
+pt_80794A4:
+	// <endpool> <endfile>
+	.word dword_80794AC
 	.word dword_80794EC
 .endfunc // sub_807948C
 

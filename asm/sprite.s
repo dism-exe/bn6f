@@ -198,7 +198,7 @@ sub_80027C4:
 	strb r0, [r1,#0x1] // (byte_20098A9 - 0x20098a8)
 	mov r0, #0xc
 	strb r0, [r1]
-	ldr r0, dword_8002808 // =0x32F 
+	ldr r0, dword_8002808 // =0x32f 
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
 .endfunc // sub_80027C4
@@ -211,7 +211,7 @@ sub_80027D4:
 	strb r0, [r1,#0x1] // (byte_20098A9 - 0x20098a8)
 	mov r0, #0xa
 	strb r0, [r1]
-	ldr r0, dword_800280C // =0x2FF 
+	ldr r0, dword_800280C // =0x2ff 
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
 .endfunc // sub_80027D4
@@ -224,7 +224,7 @@ sub_80027E4:
 	strb r0, [r1,#0x1] // (byte_20098A9 - 0x20098a8)
 	mov r0, #8
 	strb r0, [r1]
-	ldr r0, dword_8002810 // =0x2FF 
+	ldr r0, dword_8002810 // =0x2ff 
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
 .endfunc // sub_80027E4
@@ -237,7 +237,7 @@ sub_80027F4:
 	strb r0, [r1,#0x1] // (byte_20098A9 - 0x20098a8)
 	mov r0, #0x10
 	strb r0, [r1]
-	ldr r0, dword_8002810 // =0x2FF 
+	ldr r0, dword_8002810 // =0x2ff 
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
 off_8002804: .word byte_20098A8
@@ -267,7 +267,7 @@ loc_800282A:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x15]
 	lsr r1, r1, #4
-	ldr r3, off_8002868 // =unk_3001550 
+	ldr r3, off_8002868 // =byte_3001550 
 	lsl r1, r1, #5
 	add r3, r3, r1
 	mov r6, #0
@@ -292,7 +292,7 @@ loc_8002840:
 locret_8002862:
 	pop {pc}
 off_8002864: .word sub_3005EF0+1
-off_8002868: .word unk_3001550
+off_8002868: .word byte_3001550
 .endfunc // sub_8002818
 
 .func
@@ -810,33 +810,23 @@ sub_8002BCC:
 	pop {r0-r7,pc}
 .endfunc // sub_8002BCC
 
+.func
+.thumb_func
+sub_8002BEA:
 	push {r4-r7,lr}
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_8002BF0: .word byte_200DCA0
 	.word byte_8002BF8
 byte_8002BF8: .byte 0x0, 0x6, 0x55, 0x4E
-aCompStr8xEnd8x: .byte 0x43, 0x4F
-	.byte 0x4D, 0x50
-	.byte 0xA, 0x53
-	.byte 0x54, 0x52
-	.byte 0x3A, 0x25
-	.byte 0x38, 0x78
-	.byte 0xA, 0x45
-	.byte 0x4E, 0x44
-	.byte 0x3A, 0x25
-	.byte 0x38, 0x78
-	.byte 0xA, 0x53
-	.byte 0x49, 0x5A
-	.byte 0x3A, 0x25
-	.byte 0x58, 0x2F
-	.byte 0x25, 0x58
-	.byte 0xA, 0x0
+aCompStr8xEnd8x: .ascii "COMP\n"
+	.ascii "STR:%8x\n"
+	.ascii "END:%8x\n"
+	.asciz "SIZ:%X/%X\n"
 	.word unk_2037800
-	.byte  0
-	.byte  0
-	.byte  4
-	.byte  2
+	.word 0x2040000
+.endfunc // sub_8002BEA
+
 .func
 .thumb_func
 sprite_setScaleParameters:

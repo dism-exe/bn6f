@@ -149,7 +149,7 @@
 .global loc_803083E
 .global sub_803086C
 .global off_8030908
-.global loc_8030A00
+.global sub_8030A00
 .global sub_8030A30
 .global sub_8030A60
 .global sub_8030AA4
@@ -934,20 +934,20 @@
 // .equ unk_203A0A0, 0x203A0A0
 // .equ unk_203A980, 0x203A980
 // .equ eBattleObjectPlayer, 0x203A9B0
-// .equ unk_203C4A0, 0x203C4A0
-// .equ unk_203C4E0, 0x203C4E0
-// .equ unk_203C6E0, 0x203C6E0
+// .equ byte_203C4A0, 0x203C4A0
+// .equ byte_203C4E0, 0x203C4E0
+// .equ byte_203C6E0, 0x203C6E0
 // .equ dword_203C970, 0x203C970
 // .equ dword_203C970, 0x203C970
 // .equ byte_203C974, 0x203C974
 // .equ dword_203C978, 0x203C978
 // .equ dword_203C97C, 0x203C97C
 // .equ dword_203CA48, 0x203CA48
-// .equ dword_203CA50, 0x203CA50
-// .equ unk_203CA80, 0x203CA80
-// .equ word_203CDB0, 0x203CDB0
+// .equ byte_203CA50, 0x203CA50
+// .equ byte_203CA80, 0x203CA80
+// .equ byte_203CDB0, 0x203CDB0
 // .equ byte_203CED0, 0x203CED0
-// .equ byte_203CED4, 0x203CED4
+// .equ dword_203CED4, 0x203CED4
 // .equ dword_203CFB0, 0x203CFB0
 // .equ dword_203CFB0, 0x203CFB0
 // .equ dword_203CFB4, 0x203CFB4
@@ -955,23 +955,23 @@
 // .equ dword_203CFBC, 0x203CFBC
 // .equ dword_203CFBC, 0x203CFBC
 // .equ dword_203CFC0, 0x203CFC0
-// .equ dword_203CFC4, 0x203CFC4
+// .equ byte_203CFC4, 0x203CFC4
 // .equ dword_203EAD0, 0x203EAD0
-// .equ byte_203EAD4, 0x203EAD4
-// .equ byte_203EAD7, 0x203EAD7
+// .equ dword_203EAD4, 0x203EAD4
+// .equ dword_203EAD4, 0x203EAD4
 // .equ word_203EAD8, 0x203EAD8
 // .equ word_203EADA, 0x203EADA
 // .equ word_203EADC, 0x203EADC
 // .equ word_203EADE, 0x203EADE
-// .equ unk_3001150, 0x3001150
-// .equ unk_3001570, 0x3001570
-// .equ unk_3001590, 0x3001590
-// .equ unk_3001610, 0x3001610
-// .equ unk_30016B0, 0x30016B0
-// .equ unk_30016F0, 0x30016F0
-// .equ unk_3001750, 0x3001750
-// .equ dword_3001950, 0x3001950
-// .equ word_3001960, 0x3001960
+// .equ byte_3001150, 0x3001150
+// .equ byte_3001570, 0x3001570
+// .equ byte_3001590, 0x3001590
+// .equ byte_3001610, 0x3001610
+// .equ byte_30016B0, 0x30016B0
+// .equ byte_30016F0, 0x30016F0
+// .equ byte_3001750, 0x3001750
+// .equ byte_3001950, 0x3001950
+// .equ byte_3001960, 0x3001960
 // .equ unk_3001A40, 0x3001A40
 // .equ unk_3001A60, 0x3001A60
 // .equ unk_3001A80, 0x3001A80

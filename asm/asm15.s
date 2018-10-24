@@ -192,11 +192,12 @@ sub_80755EE:
 	pop {pc}
 	.balign 4, 0x00
 off_8075604: .word off_8075608
-// <endpool>
-off_8075608:  .word dword_8075614
+off_8075608:
+	// <endpool>
+	.word dword_8075614
 .endfunc // sub_80755EE
 
 	.word dword_8075708
-// <endfile>
- 	.word dword_807575C
+	// <endfile>
+	.word dword_807575C
 /*For debugging purposes, connect comment at any range!*/

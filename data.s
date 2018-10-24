@@ -1,5 +1,10 @@
 .include "include/data/data.inc"
 
+// TODO: put at the end of asm38 instead
+.global IWRAMRoutinesEnd
+IWRAMRoutinesEnd:
+
+
 	.section .rodata
 
 .global battleSpriteMegaMan

@@ -39,6 +39,6 @@
 
 
 /* Undeclared Symbols */
-// .equ unk_3000190, 0x3000190
+// .equ byte_3000190, 0x3000190
 
 .endif // INC_DATA_DAT13

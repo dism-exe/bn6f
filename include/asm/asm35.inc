@@ -69,7 +69,7 @@
 // .equ unk_2024FB0, 0x2024FB0
 // .equ unk_2025070, 0x2025070
 // .equ unk_2025A70, 0x2025A70
-// .equ unk_2030000, 0x2030000
+// .equ byte_2030000, 0x2030000
 // .equ unk_2037780, 0x2037780
 
 .endif // INC_ASM_ASM35

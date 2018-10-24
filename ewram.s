@@ -402,21 +402,21 @@ ds byte_2006530 // 0x2006530
 	.space 128
 ds reqBBS_numRequestsSent // 0x20065b0
 	.space 4
-ds word_20065B4 // 0x20065b4
+ds byte_20065B4 // 0x20065b4
 	.space 12
-ds unk_20065C0 // 0x20065c0
+ds byte_20065C0 // 0x20065c0
 	.space 176
-ds unk_2006670 // 0x2006670
+ds byte_2006670 // 0x2006670
 	.space 4
-ds word_2006674 // 0x2006674
+ds byte_2006674 // 0x2006674
 	.space 2
 ds byte_2006676 // 0x2006676
 	.space 154
-ds unk_2006710 // 0x2006710
+ds byte_2006710 // 0x2006710
 	.space 4
-ds dword_2006714 // 0x2006714
+ds byte_2006714 // 0x2006714
 	.space 12
-ds unk_2006720 // 0x2006720
+ds byte_2006720 // 0x2006720
 	.space 32
 ds dword_2006740 // 0x2006740
 	.space 4
@@ -540,8 +540,8 @@ ds dword_20093A8 // 0x20093a8
 ds eToolkit // 0x20093b0
 	toolkit_struct eToolkit
 ds eToolkitEnd // 0x2009444
-
 	.space 12
+
 ds unk_2009450 // 0x2009450
 	.space 16
 ds unk_2009460 // 0x2009460
@@ -784,9 +784,9 @@ ds word_200A448 // 0x200a448
 	.space 2
 ds word_200A44A // 0x200a44a
 	.space 6
-ds dword_200A450 // 0x200a450
+ds off_200A450 // 0x200a450
 	.space 4
-ds dword_200A454 // 0x200a454
+ds off_200A454 // 0x200a454
 	.space 4
 ds word_200A458 // 0x200a458
 	.space 4
@@ -2393,28 +2393,30 @@ ds unk_202E0B8 // 0x202e0b8
 	.space 56
 ds unk_202E0F0 // 0x202e0f0
 	.space 28
-ds unk_202E10C // 0x202e10c
+ds byte_202E10C // 0x202e10c
 	.space 56
-ds unk_202E144 // 0x202e144
+ds byte_202E144 // 0x202e144
 	.space 56
-ds unk_202E17C // 0x202e17c
+ds byte_202E17C // 0x202e17c
 	.space 5120
-ds unk_202F57C // 0x202f57c
+ds byte_202F57C // 0x202f57c
 	.space 644
-ds unk_202F800 // 0x202f800
+ds byte_202F800 // 0x202f800
 	.space 512
-ds unk_202FA00 // 0x202fa00
+ds byte_202FA00 // 0x202fa00
 	.space 4
-ds unk_202FA04 // 0x202fa04
+ds byte_202FA04 // 0x202fa04
 	.space 1532
-ds unk_2030000 // 0x2030000
+ds byte_2030000 // 0x2030000
 	.space 3
-ds unk_2030003 // 0x2030003
+ds byte_2030003 // 0x2030003
 	.space 509
-ds unk_2030200 // 0x2030200
+ds byte_2030200 // 0x2030200
 	.space 4
-ds unk_2030204 // 0x2030204
-	.space 1628
+ds byte_2030204 // 0x2030204
+	.space 513
+ds byte_2030405 // 0x2030405
+	.space 1115
 ds comp_2030860 // 0x2030860
 	.space 416
 ds unk_2030A00 // 0x2030a00
@@ -3005,11 +3007,11 @@ ds eBattleObjects // 0x203a9b0
 	.space 6032
 ds eBattleObjectsEnd
 
-ds unk_203C4A0 // 0x203c4a0
+ds byte_203C4A0 // 0x203c4a0
 	.space 64
-ds unk_203C4E0 // 0x203c4e0
+ds byte_203C4E0 // 0x203c4e0
 	.space 512
-ds unk_203C6E0 // 0x203c6e0
+ds byte_203C6E0 // 0x203c6e0
 	.space 640
 ds byte_203C960 // 0x203c960
 	.space 1
@@ -3019,7 +3021,7 @@ ds word_203C962 // 0x203c962
 	.space 2
 ds dword_203C964 // 0x203c964
 	.space 4
-ds dword_203C968 // 0x203c968
+ds byte_203C968 // 0x203c968
 	.space 8
 ds dword_203C970 // 0x203c970
 	.space 4
@@ -3029,37 +3031,37 @@ ds dword_203C978 // 0x203c978
 	.space 4
 ds dword_203C97C // 0x203c97c
 	.space 4
-ds unk_203C980 // 0x203c980
+ds byte_203C980 // 0x203c980
 	.space 100
-ds unk_203C9E4 // 0x203c9e4
+ds byte_203C9E4 // 0x203c9e4
 	.space 100
 ds dword_203CA48 // 0x203ca48
 	.space 4
 ds dword_203CA4C // 0x203ca4c
 	.space 4
-ds dword_203CA50 // 0x203ca50
+ds byte_203CA50 // 0x203ca50
 	.space 32
-ds byte_203CA70 // 0x203ca70
+ds dword_203CA70 // 0x203ca70
 	.space 4
 ds byte_203CA74 // 0x203ca74
 	.space 6
 ds word_203CA7A // 0x203ca7a
 	.space 2
-ds byte_203CA7C // 0x203ca7c
+ds dword_203CA7C // 0x203ca7c
 	.space 4
-ds unk_203CA80 // 0x203ca80
+ds byte_203CA80 // 0x203ca80
 	.space 132
-ds dword_203CB04 // 0x203cb04
+ds byte_203CB04 // 0x203cb04
 	.space 12
-ds unk_203CB10 // 0x203cb10
+ds byte_203CB10 // 0x203cb10
 	.space 100
-ds unk_203CB74 // 0x203cb74
+ds byte_203CB74 // 0x203cb74
 	.space 108
 ds dword_203CBE0 // 0x203cbe0
 	.space 4
 ds dword_203CBE4 // 0x203cbe4
 	.space 4
-ds dword_203CBE8 // 0x203cbe8
+ds byte_203CBE8 // 0x203cbe8
 	.space 27
 ds byte_203CC03 // 0x203cc03
 	.space 10
@@ -3067,15 +3069,15 @@ ds byte_203CC0D // 0x203cc0d
 	.space 29
 ds word_203CC2A // 0x203cc2a
 	.space 2
-ds dword_203CC2C // 0x203cc2c
+ds byte_203CC2C // 0x203cc2c
 	.space 8
-ds unk_203CC34 // 0x203cc34
+ds byte_203CC34 // 0x203cc34
 	.space 28
-ds word_203CC50 // 0x203cc50
+ds byte_203CC50 // 0x203cc50
 	.space 40
-ds word_203CC78 // 0x203cc78
+ds byte_203CC78 // 0x203cc78
 	.space 32
-ds unk_203CC98 // 0x203cc98
+ds byte_203CC98 // 0x203cc98
 	.space 8
 ds dword_203CCA0 // 0x203cca0
 	.space 4
@@ -3089,25 +3091,25 @@ ds byte_203CCAA // 0x203ccaa
 	.space 1
 ds byte_203CCAB // 0x203ccab
 	.space 41
-ds dword_203CCD4 // 0x203ccd4
+ds byte_203CCD4 // 0x203ccd4
 	.space 12
-ds unk_203CCE0 // 0x203cce0
+ds byte_203CCE0 // 0x203cce0
 	.space 200
-ds unk_203CDA8 // 0x203cda8
+ds byte_203CDA8 // 0x203cda8
 	.space 8
-ds word_203CDB0 // 0x203cdb0
+ds byte_203CDB0 // 0x203cdb0
 	.space 56
 ds word_203CDE8 // 0x203cde8
 	.space 2
-ds word_203CDEA // 0x203cdea
+ds byte_203CDEA // 0x203cdea
 	.space 6
 ds dword_203CDF0 // 0x203cdf0
 	.space 4
-ds dword_203CDF4 // 0x203cdf4
+ds byte_203CDF4 // 0x203cdf4
 	.space 12
-ds unk_203CE00 // 0x203ce00
+ds byte_203CE00 // 0x203ce00
 	.space 100
-ds unk_203CE64 // 0x203ce64
+ds byte_203CE64 // 0x203ce64
 	.space 108
 ds byte_203CED0 // 0x203ced0
 	.space 1
@@ -3115,15 +3117,15 @@ ds byte_203CED1 // 0x203ced1
 	.space 2
 ds byte_203CED3 // 0x203ced3
 	.space 1
-ds byte_203CED4 // 0x203ced4
+ds dword_203CED4 // 0x203ced4
 	.space 4
-ds dword_203CED8 // 0x203ced8
+ds byte_203CED8 // 0x203ced8
 	.space 40
-ds unk_203CF00 // 0x203cf00
+ds byte_203CF00 // 0x203cf00
 	.space 160
 ds dword_203CFA0 // 0x203cfa0
 	.space 4
-ds dword_203CFA4 // 0x203cfa4
+ds byte_203CFA4 // 0x203cfa4
 	.space 12
 ds dword_203CFB0 // 0x203cfb0
 	.space 4
@@ -3135,18 +3137,16 @@ ds dword_203CFBC // 0x203cfbc
 	.space 4
 ds dword_203CFC0 // 0x203cfc0
 	.space 4
-ds dword_203CFC4 // 0x203cfc4
+ds byte_203CFC4 // 0x203cfc4
 	.space 12
-ds unk_203CFD0 // 0x203cfd0
+ds byte_203CFD0 // 0x203cfd0
 	.space 16
-ds unk_203CFE0 // 0x203cfe0
+ds byte_203CFE0 // 0x203cfe0
 	.space 6896
 ds dword_203EAD0 // 0x203ead0
 	.space 4
-ds byte_203EAD4 // 0x203ead4
-	.space 3
-ds byte_203EAD7 // 0x203ead7
-	.space 1
+ds dword_203EAD4 // 0x203ead4
+	.space 4
 ds word_203EAD8 // 0x203ead8
 	.space 2
 ds word_203EADA // 0x203eada
@@ -3155,11 +3155,11 @@ ds word_203EADC // 0x203eadc
 	.space 2
 ds word_203EADE // 0x203eade
 	.space 2
-ds unk_203EAE0 // 0x203eae0
+ds byte_203EAE0 // 0x203eae0
 	.space 32
-ds unk_203EB00 // 0x203eb00
+ds byte_203EB00 // 0x203eb00
 	.space 40
-ds unk_203EB28 // 0x203eb28
+ds byte_203EB28 // 0x203eb28
 	.space 40
 ds byte_203EB50 // 0x203eb50
 	.space 2
@@ -3174,30 +3174,28 @@ ds word_203EB56 // 0x203eb56
 ds byte_203EB58 // 0x203eb58
 	.space 1
 ds byte_203EB59 // 0x203eb59
-	.space 3
-ds dword_203EB5C // 0x203eb5c
-	.space 4
-ds dword_203EB60 // 0x203eb60
+	.space 7
+ds byte_203EB60 // 0x203eb60
 	.space 64
-ds unk_203EBA0 // 0x203eba0
+ds byte_203EBA0 // 0x203eba0
 	.space 512
-ds unk_203EDA0 // 0x203eda0
+ds byte_203EDA0 // 0x203eda0
 	.space 512
-ds unk_203EFA0 // 0x203efa0
+ds byte_203EFA0 // 0x203efa0
 	.space 1280
 ds dword_203F4A0 // 0x203f4a0
 	.space 4
-ds dword_203F4A4 // 0x203f4a4
+ds byte_203F4A4 // 0x203f4a4
 	.space 8
-ds unk_203F4AC // 0x203f4ac
+ds byte_203F4AC // 0x203f4ac
 	.space 72
-ds unk_203F4F4 // 0x203f4f4
+ds byte_203F4F4 // 0x203f4f4
 	.space 28
-ds unk_203F510 // 0x203f510
+ds byte_203F510 // 0x203f510
 	.space 40
-ds unk_203F538 // 0x203f538
+ds byte_203F538 // 0x203f538
 	.space 32
-ds unk_203F558 // 0x203f558
+ds byte_203F558 // 0x203f558
 	.space 8
 ds dword_203F560 // 0x203f560
 	.space 4
@@ -3205,33 +3203,33 @@ ds dword_203F564 // 0x203f564
 	.space 4
 ds dword_203F568 // 0x203f568
 	.space 4
-ds unk_203F56C // 0x203f56c
+ds byte_203F56C // 0x203f56c
 	.space 40
-ds dword_203F594 // 0x203f594
+ds byte_203F594 // 0x203f594
 	.space 12
 ds dword_203F5A0 // 0x203f5a0
 	.space 4
-ds dword_203F5A4 // 0x203f5a4
+ds byte_203F5A4 // 0x203f5a4
 	.space 8
-ds unk_203F5AC // 0x203f5ac
+ds byte_203F5AC // 0x203f5ac
 	.space 72
-ds unk_203F5F4 // 0x203f5f4
+ds byte_203F5F4 // 0x203f5f4
 	.space 28
-ds unk_203F610 // 0x203f610
+ds byte_203F610 // 0x203f610
 	.space 40
-ds unk_203F638 // 0x203f638
+ds byte_203F638 // 0x203f638
 	.space 32
-ds unk_203F658 // 0x203f658
+ds byte_203F658 // 0x203f658
 	.space 8
 ds dword_203F660 // 0x203f660
 	.space 4
-ds dword_203F664 // 0x203f664
+ds byte_203F664 // 0x203f664
 	.space 8
-ds unk_203F66C // 0x203f66c
+ds byte_203F66C // 0x203f66c
 	.space 40
-ds dword_203F694 // 0x203f694
+ds byte_203F694 // 0x203f694
 	.space 12
-ds dword_203F6A0 // 0x203f6a0
+ds byte_203F6A0 // 0x203f6a0
 	.space 16
 ds byte_203F6B0 // 0x203f6b0
 	.space 1
@@ -3241,12 +3239,11 @@ ds byte_203F6B2 // 0x203f6b2
 	.space 1
 ds byte_203F6B3 // 0x203f6b3
 	.space 29
-ds unk_203F6D0 // 0x203f6d0
+ds byte_203F6D0 // 0x203f6d0
 	.space 128
-ds dword_203F750 // 0x203f750
+ds byte_203F750 // 0x203f750
 	.space 136
-ds dword_203F7D8 // 0x203f7d8
+ds byte_203F7D8 // 0x203f7d8
 	.space 8
 ds dword_203F7E0 // 0x203f7e0
 	.space 4
-ds dword_203F7E4 // 0x203f7e4

@@ -30,7 +30,7 @@ sub_812EAC4:
 	bl sub_812ED2C
 	add r5, r0, #0
 	ldr r0, off_812EB68 // =word_2023FA0 
-	ldr r1, off_812EB74 // =0xBC 
+	ldr r1, off_812EB74 // =0xbc 
 	lsl r1, r1, #2
 	bl CpuFastSet_8000900 // (int a1, int a2) -> void
 	ldr r0, off_812EB68 // =word_2023FA0 
@@ -72,7 +72,7 @@ loc_812EB06:
 	str r0, [sp]
 loc_812EB28:
 	add r4, #1
-	ldr r0, off_812EB70 // =0x14C 
+	ldr r0, off_812EB70 // =0x14c 
 	cmp r4, r0
 	blt loc_812EAEA
 	ldr r1, off_812EB68 // =word_2023FA0 
@@ -539,7 +539,7 @@ off_812EEB8: .word dword_812EEBC
 dword_812EEBC: .word 0x3, 0x12, 0xB, 0xB, 0x9
 off_812EED0: .word off_812EED8
 dword_812EED4: .word 0x812EEE1
-off_812EED8: .word unk_2030000
+off_812EED8: .word byte_2030000
 	.word 0x1010202, 0x3000000, 0x1020202, 0x1
 .func
 .thumb_func
@@ -613,7 +613,7 @@ sub_812EF60:
 	add r1, r0, #0
 	ldr r0, off_812EF90 // =unk_2025070 
 	ldr r2, off_812EF94 // =unk_201B200 
-	ldr r3, dword_812EF98 // =0x600B800 
+	ldr r3, dword_812EF98 // =0x600b800 
 	mov r4, #0xa
 	mov r5, #3
 	ldr r6, off_812EF9C // =dword_86A5D60 
@@ -640,7 +640,7 @@ off_812EFA0: .word unk_2025A70
 .thumb_func
 sub_812EFA4:
 	push {r4-r7,lr}
-	ldr r7, dword_812EFCC // =0x21C0 
+	ldr r7, dword_812EFCC // =0x21c0 
 	ldr r6, off_812EFD0 // =unk_2025A70 
 	mov r4, #0
 	mov r1, #0

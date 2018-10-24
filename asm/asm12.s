@@ -266,8 +266,9 @@ sub_806DCD4:
 	bl sub_8003570
 	pop {pc}
 off_806DCE8: .word pt_806DCEC
-// <endpool> <endfile>
-pt_806DCEC:  .word dword_806DD2C
+pt_806DCEC:
+	// <endpool> <endfile>
+	.word dword_806DD2C
 	.word dword_806DD44
 	.word dword_806DD84
 	.word dword_806DD9C

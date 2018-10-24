@@ -89,7 +89,7 @@ dword_808BF48: .word 0x80CFF27, 0x4A086A07, 0x3B015403, 0x4FF0440, 0x4FF0047
 	str r0, [r7,#4]
 	mvn r0, r0
 	str r0, [r7,#0xc]
-	ldr r0, off_808C404 // =0x3C 
+	ldr r0, off_808C404 // =0x3c 
 	str r0, [r7]
 	mov r0, #0xc
 	str r0, [r7,#8]
@@ -333,7 +333,7 @@ sub_808CB0C:
 	cmp r1, #0x85
 	beq loc_808CB3C
 	mov r0, #0x1f
-	ldr r1, dword_808CB98 // =0x13B 
+	ldr r1, dword_808CB98 // =0x13b 
 	bl sound_8000672
 loc_808CB3C:
 	mov r0, #1
@@ -435,7 +435,7 @@ sub_808CBD8:
 	cmp r1, #0x85
 	beq loc_808CC06
 	mov r0, #0x1f
-	ldr r1, dword_808CC0C // =0x13B 
+	ldr r1, dword_808CC0C // =0x13b 
 	bl sound_8000672
 loc_808CC06:
 	mov r0, #0
@@ -673,7 +673,7 @@ loc_808CDDA:
 	lsl r3, r3, #3
 	ldrh r0, [r6,r3]
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_808CE02
 	add r3, r7, #0
@@ -683,7 +683,7 @@ loc_808CDDA:
 	add r3, #2
 	ldrh r1, [r6,r3]
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
 	bl loc_802F200 // (int a3, int a2) ->
 	beq loc_808CE02
@@ -731,7 +731,7 @@ loc_808CE3C:
 	lsl r6, r6, #3
 	ldrh r0, [r4,r6]
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_808CE5A
 	add r6, #2
@@ -739,7 +739,7 @@ loc_808CE3C:
 	add r6, #2
 	ldrh r1, [r4,r6]
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
 	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 loc_808CE5A:
@@ -775,14 +775,14 @@ loc_808CE84:
 	lsl r6, r6, #3
 	ldrh r0, [r4,r6]
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r6, #2
 	ldrh r0, [r4,r6]
 	add r6, #2
 	ldrh r1, [r4,r6]
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
 	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r7, #1
@@ -920,13 +920,13 @@ loc_808CFDA:
 	beq loc_808D01C
 	ldrh r0, [r5,#0x6] // (word_2000B46 - 0x2000b40)
 	add r0, #1
-	ldr r1, dword_808D02C // =0xFFFF 
+	ldr r1, dword_808D02C // =0xffff 
 	cmp r0, r1
 	blt loc_808D00A
 	add r0, r1, #0
 loc_808D00A:
 	strh r0, [r5,#0x6] // (word_2000B46 - 0x2000b40)
-	ldr r0, dword_808D028 // =0x11B 
+	ldr r0, dword_808D028 // =0x11b 
 	bl sound_play // () -> void
 	mov r0, #0x69 
 	bl sound_play // () -> void

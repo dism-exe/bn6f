@@ -11,9 +11,7 @@ npc_809E570:
 	bx r7
 	pop {pc}
 	.byte 0, 0
-jt_809E580:
-// three sprite states? first function is related to loading
-	.word npc_809E590+1
+jt_809E580: .word npc_809E590+1
 	.word npc_809E5E2+1
 	.word npc_809EADA+1
 off_809E58C: .word jt_809E580
@@ -223,7 +221,7 @@ npc_809E704:
 	push {r5}
 	bl SWI_Div
 	pop {r5}
-	ldr r1, dword_809E7D4 // =0xFFF 
+	ldr r1, dword_809E7D4 // =0xfff 
 	add r0, r0, r1
 	lsr r0, r0, #0xc
 	strh r0, [r5,#0x20]
@@ -679,7 +677,7 @@ npc_809EAA0:
 	mov r7, #0x80
 	ldr r0, [r5,r7]
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_809EAD4
 	bl sub_809F516
@@ -727,17 +725,19 @@ off_809EB00: .word off_809EAFC
 .thumb_func
 sub_809EB04:
 	push {lr}
-	ldr r7, Jumptable809eb14_p // = 
+	ldr r7, dword_809EB1C // = 
 	ldrb r0, [r5,#0xa]
 	ldr r7, [r7,r0]
 	mov lr, pc
 	bx r7
 	pop {pc}
 	.balign 4, 0x00
-Jumptable809eb14:
 	.word npc_809EB20+1
-	.word npc_809EBBC+1
-Jumptable809eb14_p: .word Jumptable809eb14
+	.byte 0xBD
+	.byte 0xEB
+	.byte  9
+	.byte  8
+dword_809EB1C: .word 0x809EB14
 .endfunc // sub_809EB04
 
 .func
@@ -1025,7 +1025,7 @@ npc_809EDB2:
 	add r0, r6, #1
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_809EDCC
 	add r0, r6, #3
@@ -1044,7 +1044,7 @@ npc_809EDD0:
 	add r0, r6, #1
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_809EDEA
 	add r0, r6, #3
@@ -1063,7 +1063,7 @@ npc_809EDEE:
 	add r0, r6, #1
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r6, #3
 	pop {pc}
@@ -1076,7 +1076,7 @@ npc_809EE00:
 	add r0, r6, #1
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r6, #3
 	pop {pc}
@@ -1986,12 +1986,12 @@ sub_809F3C0:
 	ldr r1, [r5,#0x60]
 	orr r1, r0
 	str r1, [r5,#0x60]
-	ldr r3, off_809F3D8 // =unk_202FA04 
+	ldr r3, off_809F3D8 // =byte_202FA04 
 	mov r1, #0x94
 	str r3, [r5,r1]
 	add r6, #2
 	pop {pc}
-off_809F3D8: .word unk_202FA04
+off_809F3D8: .word byte_202FA04
 	.word off_809F3E0
 off_809F3E0: .word off_8044470
 	.word off_80444C4
@@ -2078,7 +2078,7 @@ sub_809F45A:
 	add r0, r6, #1
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	// <mkdata>
-	.hword 0x1c00 // add r0, r0, #0
+	.hword 0x1C00 // add r0, r0, #0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_809F498
 	add r0, r6, #1

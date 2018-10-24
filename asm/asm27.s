@@ -98,8 +98,9 @@ loc_8094752:
 	.balign 4, 0x00
 off_8094774: .word unk_2025404
 off_8094778: .word unk_2026404
-// <endpool> <endfile>
-off_809477C:  .word byte_200BE70
+off_809477C:
+	// <endpool> <endfile>
+	.word byte_200BE70
 .endfunc // sub_8094738
 
 /*For debugging purposes, connect comment at any range!*/

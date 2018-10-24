@@ -105,8 +105,9 @@ sub_80596C8:
 	bl sub_8003570
 	pop {pc}
 off_80596DC: .word off_80596E0
-// <endpool> <endfile>
-off_80596E0:  .word dword_80596F4
+off_80596E0:
+	// <endpool> <endfile>
+	.word dword_80596F4
 	.word dword_805975C
 	.word dword_8059A58
 	.word dword_8059C00
