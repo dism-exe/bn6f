@@ -4483,8 +4483,8 @@ sub_803600E:
 	// size
 	mov r1, #0x14
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-	str r4, [r5,#0x8] // (dword_2011E68 - 0x2011e60)
-	str r6, [r5,#0xc] // (dword_2011E6C - 0x2011e60)
+	str r4, [r5,#oUnkMapScriptState_2011e60UnkScriptPtr1_08] // (dword_2011E68 - 0x2011e60)
+	str r6, [r5,#oUnkMapScriptState_2011e60UnkScriptPtr2_0c] // (dword_2011E6C - 0x2011e60)
 	ldr r6, off_803608C // =ScriptCmds8035808 
 	mov r12, r6
 	add r7, r4, #0
@@ -4506,8 +4506,8 @@ sub_8036040:
 	push {r4-r7,lr}
 	mov r4, r12
 	push {r4}
-	ldr r5, off_8036090 // =eUnkMapScriptState_2011e60 
-	ldr r0, [r5,#0xc] // (dword_2011E6C - 0x2011e60)
+	ldr r5, off_8036090 // =eUnkMapScriptState_2011e60
+	ldr r0, [r5,#oUnkMapScriptState_2011e60UnkScriptPtr2_0c] // (dword_2011E6C - 0x2011e60)
 	ldr r6, off_803608C // =ScriptCmds8035808 
 	mov r12, r6
 	add r7, r0, #0
@@ -4531,7 +4531,7 @@ sub_8036064:
 	mov r4, r12
 	push {r4}
 	ldr r5, off_8036090 // =eUnkMapScriptState_2011e60 
-	ldr r0, [r5,#0x10] // (dword_2011E70 - 0x2011e60)
+	ldr r0, [r5,#oUnkMapScriptState_2011e60UnkScriptPtr3_10] // (dword_2011E70 - 0x2011e60)
 	tst r0, r0
 	beq loc_8036086
 	ldr r6, off_803608C // =ScriptCmds8035808 
@@ -8415,13 +8415,13 @@ sub_8038412:
 	beq loc_803842E
 	mov r6, #2
 	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
-	str r4, [r3,#0x10]
+	str r4, [r3,#oUnkMapScriptState_2011e60UnkScriptPtr3_10]
 	add r7, #6
 	mov r0, #1
 	pop {pc}
 loc_803842E:
 	mov r0, #0
-	str r0, [r3,#0x10]
+	str r0, [r3,#oUnkMapScriptState_2011e60UnkScriptPtr3_10]
 	add r7, #2
 	mov r0, #1
 	pop {pc}
