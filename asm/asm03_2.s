@@ -625,7 +625,7 @@ dword_8046464: .word 0x0
 	.word 0x3006DC9
 off_804646C: .word sub_8116894+1
 	.word sub_8116924+1
-	.word loc_8116ADC+1
+	.word sub_8116ADC+1
 	.word sub_8116CE0+1
 	.word sub_8116E10+1
 	.word sub_8117110+1
@@ -662,7 +662,7 @@ off_804646C: .word sub_8116894+1
 	.word loc_811B338+1
 	.word sub_811B3F4+1
 	.word sub_811B4AC+1
-	.word unk_811B9B5
+	.word byte_811B9B5
 	.word 0x0
 	.word sub_811BC44+1
 	.word sub_811BD64+1
@@ -1026,15 +1026,15 @@ off_804679C: .word loc_811DF1C+1
 	.word loc_811E248+1
 	.word loc_811E360+1
 	.word 0x0
-	.word loc_811E418+1
+	.word sub_811E418+1
 	.word 0x0
-	.word loc_811E57C+1
-	.word loc_811E61C+1
-	.word loc_811E6C0+1
-	.word loc_811E7D4+1
-	.word loc_811E858+1
-	.word loc_811E914+1
-	.word loc_811E9A0+1
+	.word sub_811E57C+1
+	.word sub_811E61C+1
+	.word sub_811E6C0+1
+	.word sub_811E7D4+1
+	.word sub_811E858+1
+	.word sub_811E914+1
+	.word sub_811E9A0+1
 .endfunc // sub_80466D8
 
 .func
@@ -1980,8 +1980,6 @@ loc_8046E80:
 sub_8046E84:
 	push {lr}
 	bl sub_8047134
-.endfunc // sub_8046E84
-
 	mov r7, r10
 	ldr r7, [r7,#4]
 	ldrh r0, [r7,#2]
@@ -2015,6 +2013,8 @@ loc_8046EBC:
 loc_8046ECE:
 	mov r0, #0
 	pop {pc}
+.endfunc // sub_8046E84
+
 .func
 .thumb_func
 sub_8046ED2:
@@ -6853,7 +6853,7 @@ sub_804A1D0:
 .thumb_func
 sub_804A1FC:
 	push {r4-r7,lr}
-	ldr r4, off_804A22C // =byte_86CF4AC 
+	ldr r4, off_804A22C // =unk_86CF4AC 
 	lsl r0, r0, #1
 	ldrh r0, [r4,r0]
 	add r4, r4, r0
@@ -6881,7 +6881,7 @@ loc_804A224:
 locret_804A228:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_804A22C: .word byte_86CF4AC
+off_804A22C: .word unk_86CF4AC
 .endfunc // sub_804A1FC
 
 .func
@@ -7024,7 +7024,7 @@ sub_804A360:
 	ldr r0, off_804A3EC // =unk_202A3E0 
 	mov r2, #5
 	mov r3, #4
-	bl loc_8120018
+	bl sub_8120018
 	mov r1, r10
 	ldr r1, [r1,#0x40]
 	mov r0, #5
@@ -7413,7 +7413,7 @@ loc_804A63C:
 	add sp, sp, #4
 	pop {r4-r7,pc}
 off_804A698: .word off_804A69C
-off_804A69C: .word byte_86C9108
+off_804A69C: .word unk_86C9108
 	.word 0x2
 	.word byte_3001960
 	.word 0x20
@@ -7446,7 +7446,7 @@ initRefs_804A6E4: .word comp_86C8054 + 1<<31
 	.word comp_86C9CE4 + 1<<31
 	.word 0x60149C0
 	.word 0x2013A00
-	.word unk_86C9D6C
+	.word byte_86C9D6C
 	.word 0x30016D0
 	.word 0x20
 	.word comp_86C7764 + 1<<31
@@ -8393,7 +8393,7 @@ loc_804AE34:
 loc_804AE3C:
 	ldr r0, off_804AE4C // =unk_202A3E0 
 	ldrh r1, [r5,#0x28]
-	bl loc_8120018
+	bl sub_8120018
 loc_804AE44:
 	add sp, sp, #8
 	pop {r4-r7,pc}

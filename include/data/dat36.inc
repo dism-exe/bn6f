@@ -11,12 +11,34 @@
 .global off_813925C
 .global off_81392A0
 .global off_81393E8
-.global dword_813944C
+.global StructArr_813944C
+.global byte_813B1EC
+.global byte_813B2CD
+.global byte_813B3AE
+.global byte_813B522
 
 
 /* External Symbols */
+.include "data/dat04.inc"
+// .global byte_8051007
+// .global byte_8051009
+// .global byte_805150D
 
-/* Undeclared Symbols */
-// .equ unk_3000000, 0x3000000
+.include "data/dat13.inc"
+// .global byte_807150F
+
+.include "asm/asm28_1.inc"
+// .global byte_809F6CC
+// .global unk_809F878
+
+.include "data/dat38_59.inc"
+// .global byte_8500F1C
+
+.include "data/dat38_60.inc"
+// .global byte_85A100F
+
+.include "data/dat38_85.inc"
+// .global unk_86E101C
+
 
 .endif // INC_DATA_DAT36

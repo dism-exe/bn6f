@@ -74,6 +74,7 @@
 .global object_subtractHP
 .global object_addHP
 .global sub_800E2FC
+.global sub_800E360
 .global sub_800E3BE
 .global sub_800E3DE
 .global object_calculateFinalDamage2

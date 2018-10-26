@@ -62,7 +62,7 @@
 .global byte_83C1A16
 .global byte_83C1B16
 .global byte_83C1C16
-.global unk_83C21DC
+.global byte_83C21DC
 .global byte_83CC02A
 .global npcSpriteMayl
 .global npcSpriteDex

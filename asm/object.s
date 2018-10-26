@@ -1505,7 +1505,8 @@ sub_800C928:
 	ldr r2, off_800C934 // =sub_30078E0+1 
 	mov lr, pc
 	bx r2
-	.word 0xBD00
+	pop {pc}
+	.balign 4, 0x00
 off_800C934: .word sub_30078E0+1
 .endfunc // sub_800C928
 
@@ -1895,7 +1896,7 @@ object_setPanelType:
 	ldr r4, off_800CE54 // =sub_30079A4+1 
 	mov lr, pc
 	bx r4
-	.hword 0xBD70
+	pop {r4-r6,pc}
 .endfunc // object_setPanelType
 
 .func
@@ -2567,6 +2568,11 @@ loc_800D03C:
 	add r0, r6, #0
 	add sp, sp, #8
 	pop {r4-r7,pc}
+.endfunc // sub_800D012
+
+.func
+.thumb_func
+sub_800D048:
 	push {lr}
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
@@ -2586,7 +2592,7 @@ loc_800D066:
 	ldrb r0, [r5,#0x13]
 locret_800D068:
 	pop {pc}
-.endfunc // sub_800D012
+.endfunc // sub_800D048
 
 .func
 .thumb_func

@@ -2449,7 +2449,7 @@ off_8003EC4: .word sub_80C4E58+1
 	.word sub_80C91A0+1
 	.word sub_80C93CC+1
 	.word sub_80C96A0+1
-	.word nullsub_91+1
+	.word nullsub_101+1
 	.word nullsub_94+1
 	.word sub_80C9824+1
 	.word sub_80C9BC4+1
@@ -2766,97 +2766,97 @@ off_80042C8: .word loc_80E0548+1
 	.word sub_80E3AB8+1
 	.word sub_80E3B70+1
 	.word sub_80E3D68+1
-	.word loc_80E3FD0+1
-	.word loc_80E40EC+1
-	.word loc_80E4188+1
+	.word sub_80E3FD0+1
+	.word sub_80E40EC+1
+	.word sub_80E4188+1
 	.word sub_80E4344+1
-	.word loc_80E440C+1
-	.word loc_80E4634+1
-	.word loc_80E46D8+1
-	.word loc_80E47B4+1
-	.word loc_80E4848+1
-	.word loc_80E4910+1
-	.word loc_80E4A1C+1
+	.word sub_80E440C+1
+	.word sub_80E4634+1
+	.word sub_80E46D8+1
+	.word sub_80E47B4+1
+	.word sub_80E4848+1
+	.word sub_80E4910+1
+	.word sub_80E4A1C+1
 	.word loc_80E0548+1
-	.word loc_80E4CB8+1
-	.word loc_80E4DB0+1
-	.word loc_80E50C4+1
-	.word loc_80E5244+1
-	.word loc_80E5470+1
-	.word loc_80E55C0+1
-	.word loc_80E5710+1
-	.word loc_80E5944+1
-	.word loc_80E59E8+1
+	.word sub_80E4CB8+1
+	.word sub_80E4DB0+1
+	.word sub_80E50C4+1
+	.word sub_80E5244+1
+	.word sub_80E5470+1
+	.word sub_80E55C0+1
+	.word sub_80E5710+1
+	.word sub_80E5944+1
+	.word sub_80E59E8+1
 	.word locret_80E5B60+1
 	.word sub_80E5C2C+1
-	.word loc_80E5D44+1
-	.word loc_80E5E00+1
-	.word loc_80E5ECC+1
-	.word loc_80E5F9C+1
+	.word sub_80E5D44+1
+	.word sub_80E5E00+1
+	.word sub_80E5ECC+1
+	.word sub_80E5F9C+1
 	.word sub_80E5FBC+1
-	.word loc_80E6088+1
-	.word loc_80E6254+1
-	.word loc_80E6480+1
-	.word loc_80E655C+1
-	.word loc_80E6758+1
-	.word loc_80E680C+1
-	.word loc_80E689C+1
-	.word loc_80E6A90+1
-	.word loc_80E6BDC+1
-	.word loc_80E6E44+1
-	.word loc_80E6F88+1
-	.word loc_80E702C+1
-	.word loc_80E70C8+1
-	.word loc_80E71C4+1
-	.word loc_80E7260+1
-	.word loc_80E74D4+1
-	.word loc_80E7568+1
-	.word loc_80E7624+1
-	.word loc_80E76F8+1
-	.word loc_80E7788+1
-	.word loc_80E78BC+1
-	.word loc_80E795C+1
-	.word loc_80E7ACC+1
-	.word loc_80E7BFC+1
-	.word loc_80E7CCC+1
-	.word loc_80E7DC4+1
-	.word loc_80E7E9C+1
-	.word loc_80E7F38+1
-	.word loc_80E7FDC+1
-	.word loc_80E807C+1
-	.word loc_80E8138+1
-	.word loc_80E81D8+1
-	.word loc_80E8268+1
-	.word loc_80E83B8+1
-	.word loc_80E857C+1
-	.word loc_80E8688+1
-	.word loc_80E8794+1
-	.word loc_80E88A0+1
-	.word loc_80E8938+1
-	.word loc_80E8A60+1
-	.word loc_80E8B00+1
-	.word loc_80E8DF0+1
-	.word loc_80E8EE0+1
-	.word loc_80E8FE0+1
+	.word sub_80E6088+1
+	.word sub_80E6254+1
+	.word sub_80E6480+1
+	.word sub_80E655C+1
+	.word sub_80E6758+1
+	.word sub_80E680C+1
+	.word sub_80E689C+1
+	.word sub_80E6A90+1
+	.word sub_80E6BDC+1
+	.word sub_80E6E44+1
+	.word sub_80E6F88+1
+	.word sub_80E702C+1
+	.word sub_80E70C8+1
+	.word sub_80E71C4+1
+	.word sub_80E7260+1
+	.word sub_80E74D4+1
+	.word sub_80E7568+1
+	.word sub_80E7624+1
+	.word sub_80E76F8+1
+	.word sub_80E7788+1
+	.word sub_80E78BC+1
+	.word sub_80E795C+1
+	.word sub_80E7ACC+1
+	.word sub_80E7BFC+1
+	.word sub_80E7CCC+1
+	.word sub_80E7DC4+1
+	.word sub_80E7E9C+1
+	.word sub_80E7F38+1
+	.word sub_80E7FDC+1
+	.word sub_80E807C+1
+	.word sub_80E8138+1
+	.word sub_80E81D8+1
+	.word sub_80E8268+1
+	.word sub_80E83B8+1
+	.word sub_80E857C+1
+	.word sub_80E8688+1
+	.word sub_80E8794+1
+	.word sub_80E88A0+1
+	.word sub_80E8938+1
+	.word sub_80E8A60+1
+	.word sub_80E8B00+1
+	.word sub_80E8DF0+1
+	.word sub_80E8EE0+1
+	.word sub_80E8FE0+1
 	.word loc_80E0548+1
 	.word loc_80E0548+1
-	.word loc_80E9120+1
+	.word sub_80E9120+1
 	.word loc_80E0548+1
-	.word loc_80E91E4+1
-	.word loc_80E9310+1
-	.word loc_80E9460+1
-	.word loc_80E0548+1
-	.word loc_80E0548+1
-	.word loc_80E0548+1
-	.word loc_80E9570+1
+	.word sub_80E91E4+1
+	.word sub_80E9310+1
+	.word sub_80E9460+1
 	.word loc_80E0548+1
 	.word loc_80E0548+1
-	.word loc_80E97F0+1
-	.word loc_80E9994+1
-	.word loc_80E9AF0+1
+	.word loc_80E0548+1
+	.word sub_80E9570+1
+	.word loc_80E0548+1
+	.word loc_80E0548+1
+	.word sub_80E97F0+1
+	.word sub_80E9994+1
+	.word sub_80E9AF0+1
 	.word loc_80E9C88+1
 	.word loc_80E9DF0+1
-	.word loc_80EA010+1
+	.word sub_80EA010+1
 	.word loc_80EA14C+1
 	.word loc_80E0548+1
 	.word loc_80EA258+1

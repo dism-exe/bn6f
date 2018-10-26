@@ -20,6 +20,8 @@
 .global byte_8050202
 .global byte_8050302
 .global byte_8051002
+.global byte_8051007
+.global byte_8051009
 .global byte_805150D
 .global off_8052244
 .global off_8052480
@@ -68,7 +70,7 @@
 // .global unk_808DEF8
 
 .include "data/dat25.inc"
-// .global unk_80905BC
+// .global byte_80905BC
 // .global unk_80908CC
 // .global unk_8090AA8
 // .global unk_8091374
@@ -91,10 +93,10 @@
 // .global byte_809F71C
 
 .include "asm/asm31.inc"
-// .global byte_8100315
+// .global loc_8100314
 
 .include "data/dat37.inc"
-// .global unk_817B826
+// .global byte_817B826
 
 .include "data/dat38_31.inc"
 // .global byte_8340901
@@ -105,7 +107,7 @@
 // .global byte_83C0F08
 // .global byte_83C1310
 // .global byte_83C1808
-// .global unk_83C21DC
+// .global byte_83C21DC
 // .global byte_83CC02A
 // .global byte_83F0016
 // .global byte_83F0116

@@ -1,6 +1,6 @@
 .include "data/dat38_78.inc"
 
-	.byte  0
+unk_86DAC40: .byte  0
 	.byte  0
 	.byte 0x2B 
 	.byte 0x67 

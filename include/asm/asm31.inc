@@ -6,7 +6,11 @@
 .global sub_80B8210
 .global sub_80B84EC
 .global sub_80B85E0
+.global sub_80B8786
+.global sub_80B87AC
+.global sub_80B87F0
 .global sub_80B88D0
+.global sub_80B89DC
 .global sub_80B8A0A
 .global sub_80B8A18
 .global sub_80B8CD8
@@ -67,6 +71,9 @@
 .global sub_80BFCD0
 .global sub_80BFDFC
 .global sub_80BFF68
+.global sub_80C0098
+.global sub_80C00C2
+.global sub_80C0136
 .global sub_80C0178
 .global sub_80C0334
 .global sub_80C04AC
@@ -76,9 +83,10 @@
 .global sub_80C0DD8
 .global sub_80C0E04
 .global sub_80C0F6C
-.global loc_80C1008
+.global sub_80C10C8
 .global sub_80C10E8
 .global sub_80C11AC
+.global sub_80C1400
 .global sub_80C1570
 .global sub_80C1A10
 .global sub_80C2138
@@ -97,6 +105,9 @@
 .global sub_80C3EE0
 .global sub_80C4038
 .global sub_80C4072
+.global sub_80C407C
+.global sub_80C4086
+.global sub_80C4090
 .global sub_80C40D8
 .global sub_80C41D8
 .global sub_80C4204
@@ -122,6 +133,7 @@
 .global sub_80C536A
 .global sub_80C53A6
 .global sub_80C53C0
+.global sub_80C5578
 .global sub_80C55B0
 .global sub_80C579E
 .global sub_80C57C0
@@ -160,8 +172,8 @@
 .global sub_80C91A0
 .global sub_80C93CC
 .global sub_80C96A0
-.global nullsub_91
-.global nullsub_92
+.global nullsub_101
+.global nullsub_102
 .global nullsub_94
 .global nullsub_95
 .global sub_80C9824
@@ -179,7 +191,10 @@
 .global sub_80CB284
 .global sub_80CB49C
 .global sub_80CB6F8
+.global sub_80CB8DE
 .global sub_80CB900
+.global sub_80CBAB8
+.global sub_80CBAF2
 .global sub_80CBB44
 .global sub_80CC044
 .global sub_80CC0B2
@@ -223,12 +238,14 @@
 .global sub_80D0D7C
 .global sub_80D0F8C
 .global sub_80D1218
+.global sub_80D1442
 .global sub_80D1514
 .global sub_80D17A4
 .global sub_80D18D8
 .global sub_80D1A08
 .global sub_80D1B48
 .global sub_80D1C20
+.global sub_80D1EB8
 .global sub_80D1EE8
 .global sub_80D2034
 .global sub_80D2290
@@ -255,6 +272,7 @@
 .global sub_80D535C
 .global sub_80D5580
 .global sub_80D5740
+.global sub_80D5890
 .global sub_80D58B4
 .global sub_80D5ABC
 .global sub_80D5C48
@@ -295,6 +313,7 @@
 .global sub_80D984C
 .global sub_80D99EC
 .global sub_80D9A50
+.global sub_80D9CA4
 .global sub_80D9D4C
 .global sub_80DA050
 .global sub_80DA470
@@ -325,6 +344,7 @@
 .global sub_80DCE38
 .global sub_80DCEF4
 .global sub_80DD0AC
+.global sub_80DD25E
 .global sub_80DD34C
 .global sub_80DD764
 .global sub_80DD940
@@ -350,6 +370,7 @@
 .global off_80E0408
 .global loc_80E0548
 .global sub_80E05F6
+.global sub_80E060E
 .global sub_80E0638
 .global sub_80E06F8
 .global sub_80E0710
@@ -406,6 +427,7 @@
 .global sub_80E31D8
 .global sub_80E3242
 .global sub_80E32B8
+.global sub_80E33FA
 .global sub_80E342C
 .global sub_80E349E
 .global sub_80E34C0
@@ -418,145 +440,148 @@
 .global sub_80E3AB8
 .global sub_80E3B50
 .global sub_80E3B70
+.global sub_80E3CF2
 .global sub_80E3D68
-.global loc_80E3FD0
-.global loc_80E40EC
+.global sub_80E3FD0
+.global sub_80E40EC
 .global sub_80E4164
-.global loc_80E4188
+.global sub_80E4188
 .global sub_80E4288
 .global sub_80E4344
-.global loc_80E440C
-.global loc_80E4634
+.global sub_80E440C
+.global sub_80E4634
 .global sub_80E46B6
-.global loc_80E46D8
-.global loc_80E47B4
-.global loc_80E4848
-.global loc_80E4910
+.global sub_80E46D8
+.global sub_80E47B4
+.global sub_80E4848
+.global sub_80E4910
 .global sub_80E49A2
-.global loc_80E4A1C
+.global sub_80E4A1C
 .global sub_80E4B34
-.global loc_80E4CB8
+.global sub_80E4CB8
 .global sub_80E4D8A
 .global sub_80E4DA2
-.global loc_80E4DB0
-.global loc_80E50C4
-.global loc_80E5244
+.global sub_80E4DB0
+.global sub_80E50C4
+.global sub_80E5244
+.global sub_80E532C
 .global sub_80E5368
 .global sub_80E5410
 .global sub_80E544C
-.global loc_80E5470
-.global loc_80E55C0
-.global loc_80E5710
-.global loc_80E5944
+.global sub_80E5470
+.global sub_80E55C0
+.global sub_80E5710
+.global sub_80E5944
 .global sub_80E59C6
-.global loc_80E59E8
+.global sub_80E59E8
 .global locret_80E5B60
 .global sub_80E5B62
+.global sub_80E5B6E
 .global sub_80E5C2C
-.global loc_80E5D44
-.global loc_80E5E00
+.global sub_80E5D44
+.global sub_80E5E00
 .global sub_80E5EA8
-.global loc_80E5ECC
+.global sub_80E5ECC
 .global sub_80E5F78
-.global loc_80E5F9C
+.global sub_80E5F9C
 .global sub_80E5FBC
-.global loc_80E6088
-.global loc_80E6254
-.global loc_80E6480
+.global sub_80E6088
+.global sub_80E6254
+.global sub_80E6480
 .global sub_80E64E8
-.global loc_80E655C
-.global loc_80E6758
+.global sub_80E655C
+.global sub_80E6758
 .global sub_80E67E6
-.global loc_80E680C
-.global loc_80E689C
-.global loc_80E6A90
-.global loc_80E6BDC
-.global loc_80E6E44
-.global loc_80E6F88
+.global sub_80E680C
+.global sub_80E689C
+.global sub_80E6A90
+.global sub_80E6BDC
+.global sub_80E6E44
+.global sub_80E6F88
 .global sub_80E7008
-.global loc_80E702C
+.global sub_80E702C
 .global sub_80E70A6
-.global loc_80E70C8
-.global loc_80E71C4
+.global sub_80E70C8
+.global sub_80E71C4
 .global sub_80E723E
-.global loc_80E7260
+.global sub_80E7260
 .global sub_80E7464
 .global sub_80E7486
-.global loc_80E74D4
+.global sub_80E74D4
 .global sub_80E7546
-.global loc_80E7568
+.global sub_80E7568
 .global sub_80E7600
-.global loc_80E7624
+.global sub_80E7624
 .global sub_80E76D4
-.global loc_80E76F8
-.global loc_80E7788
-.global loc_80E78BC
-.global loc_80E795C
-.global loc_80E7ACC
-.global loc_80E7BFC
+.global sub_80E76F8
+.global sub_80E7788
+.global sub_80E78BC
+.global sub_80E795C
+.global sub_80E7ACC
+.global sub_80E7BFC
 .global sub_80E7CA8
-.global loc_80E7CCC
-.global loc_80E7DC4
-.global loc_80E7E9C
+.global sub_80E7CCC
+.global sub_80E7DC4
+.global sub_80E7E9C
 .global sub_80E7F16
-.global loc_80E7F38
+.global sub_80E7F38
 .global sub_80E7FBA
-.global loc_80E7FDC
+.global sub_80E7FDC
 .global sub_80E8058
-.global loc_80E807C
+.global sub_80E807C
 .global sub_80E8124
-.global loc_80E8138
+.global sub_80E8138
 .global sub_80E81B4
-.global loc_80E81D8
-.global loc_80E8268
-.global loc_80E83B8
-.global loc_80E857C
-.global loc_80E8688
-.global loc_80E8794
-.global loc_80E88A0
-.global loc_80E8938
-.global loc_80E8A60
+.global sub_80E81D8
+.global sub_80E8268
+.global sub_80E83B8
+.global sub_80E857C
+.global sub_80E8688
+.global sub_80E8794
+.global sub_80E88A0
+.global sub_80E8938
+.global sub_80E8A60
 .global sub_80E8ADC
-.global loc_80E8B00
+.global sub_80E8B00
 .global sub_80E8BC0
-.global loc_80E8DF0
-.global loc_80E8EE0
-.global loc_80E8FE0
+.global sub_80E8DF0
+.global sub_80E8EE0
+.global sub_80E8FE0
 .global sub_80E90FE
-.global loc_80E9120
+.global sub_80E9120
 .global sub_80E91B8
-.global loc_80E91E4
+.global sub_80E91E4
 .global sub_80E92EE
-.global loc_80E9310
+.global sub_80E9310
 .global sub_80E943E
-.global loc_80E9460
-.global loc_80E9570
+.global sub_80E9460
+.global sub_80E9570
 .global sub_80E979C
-.global loc_80E97F0
+.global sub_80E97F0
 .global dword_80E98C0
 .global sub_80E996E
-.global loc_80E9994
-.global loc_80E9AF0
+.global sub_80E9994
+.global sub_80E9AF0
 .global sub_80E9BDC
 .global loc_80E9C88
 .global loc_80E9DF0
-.global loc_80EA010
+.global sub_80EA010
 .global sub_80EA11C
 .global loc_80EA14C
 .global loc_80EA258
 .global loc_80EA364
 .global sub_80EA438
 .global off_80EA814
-.global loc_80EA8D8
-.global loc_80EA9A0
-.global loc_80EAA04
-.global loc_80EAA68
-.global loc_80EAACC
-.global loc_80EAB30
-.global loc_80EAB94
-.global loc_80EABF8
-.global off_80EAC60
-.global loc_80EAD9C
+.global off_80EA8D8
+.global off_80EA9A0
+.global off_80EAA04
+.global off_80EAA68
+.global off_80EAACC
+.global off_80EAB30
+.global off_80EAB94
+.global off_80EABF8
+.global JumpTable80EAC60
+.global sub_80EAD9C
 .global sub_80EB04C
 .global sub_80EB234
 .global loc_80EE90C
@@ -570,7 +595,7 @@
 .global off_80F2730
 .global off_80F2794
 .global off_80F27F8
-.global byte_80F285C
+.global off_80F285C
 .global dword_80F28F0
 .global dword_80F2A54
 .global dword_80F390C
@@ -587,18 +612,27 @@
 .global dword_80FDCF0
 .global dword_80FE7D0
 .global sub_80FF668
-.global byte_8100315
+.global byte_80FF7F0
+.global byte_81001E8
+.global loc_8100314
+.global byte_8101268
+.global byte_8101880
+.global byte_8103BB4
+.global byte_81053BC
+.global byte_8106828
+.global byte_8107B50
 .global off_81090D0
 .global off_8109150
-.global byte_8109250
-.global byte_81092D0
-.global byte_8109350
-.global byte_81093D0
-.global byte_8109450
-.global byte_81094D0
-.global byte_8109550
+.global off_8109250
+.global off_81092D0
+.global off_8109350
+.global off_81093D0
+.global off_8109450
+.global off_81094D0
+.global off_8109550
 .global sub_8109630
 .global sub_8109660
+.global sub_81096BA
 .global sub_81096FA
 .global sub_8109708
 .global sub_810971A
@@ -608,20 +642,19 @@
 .global sub_81097DC
 .global sub_8109804
 .global sub_8109952
-.global loc_8109974
-.global dword_8109AA4
-.global dword_8109BFC
-.global dword_810A2EC
-.global dword_810A86C
-.global dword_810AE70
+.global sub_8109974
+.global byte_8109AA4
+.global byte_8109BFC
+.global byte_810A2EC
+.global byte_810A86C
+.global byte_810AE70
 .global byte_810B7B8
-.global dword_810BEF8
+.global byte_810BEF8
 
 
 /* External Symbols */
 .include "asm/start.inc"
 // .global start_
-// .global off_80001F4
 
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
@@ -699,6 +732,9 @@
 // .global sub_800A772
 // .global sub_800A8F8
 // .global battle_networkInvert
+// .global sub_800AA06
+// .global sub_800AA1A
+// .global sub_800AA40
 // .global sub_800AA92
 // .global sub_800AB3A
 // .global sub_800AB46
@@ -912,6 +948,7 @@
 // .global sub_8015B54
 // .global sub_8015BEC
 // .global sub_8015C48
+// .global sub_8015C94
 // .global sub_8015D80
 // .global sub_8015E46
 // .global sub_8016004
@@ -932,6 +969,7 @@
 // .global sub_8016E64
 // .global sub_8016F56
 // .global sub_80170C4
+// .global sub_80171A6
 // .global sub_80172F0
 // .global sub_80173F4
 // .global sub_80174FE
@@ -1061,6 +1099,7 @@
 // .global sub_802EF5C
 // .global sub_802F068
 // .global sub_80302A8
+// .global loc_8030604
 
 .include "asm/chatbox.inc"
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -1072,86 +1111,143 @@
 // .global sub_8046664 // () -> void
 // .global sub_8046670
 
+.include "data/dat07.inc"
+// .global byte_805FF01
+
+.include "data/dat13.inc"
+// .global byte_8070605
+
 .include "data/dat20.inc"
-// .global dword_8080AC4
+// .global byte_8080315
+// .global byte_8080C0C
 
 .include "asm/asm21.inc"
 // .global asc_808100C
 
 .include "data/dat28.inc"
 // .global byte_80A0C10
+// .global byte_80A0C12
 
 .include "data/dat31.inc"
-// .global dword_810C35C
-// .global dword_810C35C
-// .global dword_810C388
-// .global dword_810C388
-// .global dword_810CFE8
-// .global dword_810CFE8
-// .global dword_810D034
-// .global dword_810D034
-// .global dword_810D198
-// .global dword_810D198
+// .global byte_810C35C
+// .global byte_810C364
+// .global off_810C6F0
+// .global byte_810C8CC
+// .global byte_810C8D4
+// .global off_810CD60
+// .global byte_810D008
+// .global byte_810D010
+// .global off_810D0F4
+// .global byte_810D16C
+// .global byte_810D174
+// .global off_810D554
+// .global byte_810D6F8
+// .global byte_810D700
+// .global off_810D910
+// .global sub_810D940
 
 .include "asm/asm32.inc"
-// .global dword_810DD10
-// .global dword_810DD10
+// .global sub_810D98C
+// .global byte_810DD10
+// .global byte_810DD18
+// .global off_810E120
 // .global sub_810E2A6
 // .global sub_810E336
 // .global sub_810E340
-// .global dword_810E3E8
-// .global dword_810E3E8
+// .global sub_810E386
+// .global byte_810E3E8
+// .global byte_810E3F0
+// .global off_810E7B0
+// .global sub_810E81E
 // .global sub_810E854
 // .global dword_810EC80
 // .global dword_810EC80
+// .global off_810F010
+// .global sub_810F040
 // .global sub_810F090
 // .global dword_810F200
 // .global dword_810F200
-// .global dword_810F22C
-// .global dword_810F22C
+// .global off_810F39C
+// .global sub_810F3F8
+// .global byte_810F4E4
+// .global dword_810F4EC
 // .global sub_810FA4C
+// .global off_810FCE0
+// .global sub_81100B0
 // .global sub_81100E2
-// .global dword_811028C
-// .global dword_811028C
+// .global sub_8110254
+// .global byte_8110290
+// .global byte_8110298
+// .global off_81104D4
+// .global sub_8110546
 // .global sub_811060A
-// .global dword_8110610
-// .global dword_8110610
+// .global byte_8110628
+// .global byte_8110630
+// .global off_8110DC0
+// .global sub_8110E76
 // .global dword_8111130
 // .global dword_8111130
+// .global off_8111330
+// .global sub_8111816
 // .global sub_8111846
 // .global dword_811190C
 // .global dword_811190C
+// .global off_8111DC0
 // .global dword_8111FF8
 // .global dword_8111FF8
+// .global off_81121F0
 // .global dword_81126DC
 // .global dword_81126DC
+// .global off_81129A0
 // .global sub_81129EE
-// .global dword_8112B94
-// .global dword_8112B94
-// .global dword_8112F2C
-// .global dword_8112F2C
+// .global byte_8112B94
+// .global byte_8112B94
+// .global off_8113078
+// .global byte_811323C
+// .global byte_8113244
+// .global off_81135CC
+// .global sub_8113626
 // .global dword_8113754
 // .global dword_8113754
-// .global dword_8113DC0
-// .global dword_81143C0
-// .global dword_81143C0
+// .global off_8113D50
+// .global byte_8113DC0
+// .global sub_8114170
+// .global byte_81143C8
+// .global byte_81143D0
+// .global off_8114710
+// .global sub_8114DF2
+// .global sub_8114E30
 // .global sub_8114F52
 // .global sub_8114F6A
 // .global sub_8115098
 // .global dword_81150AC
 // .global dword_81150AC
+// .global off_81154F0
 // .global dword_8115704
 // .global dword_8115704
+// .global off_8115950
+// .global sub_81159B0
 // .global sub_81159DC
 // .global sub_8115BB0
 // .global dword_8115BEC
 // .global dword_8115BEC
+// .global off_8115DE0
+// .global sub_811627A
 // .global sub_81162AA
 // .global dword_81162F8
 // .global dword_81162F8
+// .global off_81163F0
+// .global sub_8116414
+// .global loc_81165A4
 // .global dword_81165BC
 // .global dword_81165BC
+// .global off_81166B0
+// .global sub_81166D4
 // .global sub_8116878
+
+.include "data/dat38_85.inc"
+// .global dword_86E55FC
+// .global byte_86E56FC
 
 .include "data/dat38_86.inc"
 // .global aTuDhr

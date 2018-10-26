@@ -210,6 +210,7 @@
 .global sub_8016EC4
 .global sub_8016F56
 .global sub_80170C4
+.global sub_80171A6
 .global sub_80172F0
 .global sub_80173F4
 .global sub_80174FE
@@ -344,6 +345,8 @@
 /* External Symbols */
 .include "asm/start.inc"
 // .global start_
+// .global dword_8000004
+// .global dword_8000004
 
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
@@ -618,16 +621,16 @@
 // .global sub_80E996E
 // .global sub_80EA438
 // .global off_80EA814
-// .global loc_80EA8D8
-// .global loc_80EA9A0
-// .global loc_80EAA04
-// .global loc_80EAA68
-// .global loc_80EAACC
-// .global loc_80EAB30
-// .global loc_80EAB94
-// .global loc_80EABF8
-// .global off_80EAC60
-// .global loc_80EAD9C
+// .global off_80EA8D8
+// .global off_80EA9A0
+// .global off_80EAA04
+// .global off_80EAA68
+// .global off_80EAACC
+// .global off_80EAB30
+// .global off_80EAB94
+// .global off_80EABF8
+// .global JumpTable80EAC60
+// .global sub_80EAD9C
 // .global sub_80EB04C
 // .global sub_80EB234
 // .global loc_80EE90C
@@ -641,17 +644,17 @@
 // .global off_80F2730
 // .global off_80F2794
 // .global off_80F27F8
-// .global byte_80F285C
+// .global off_80F285C
 // .global sub_80FF668
 // .global off_81090D0
 // .global off_8109150
-// .global byte_8109250
-// .global byte_81092D0
-// .global byte_8109350
-// .global byte_81093D0
-// .global byte_8109450
-// .global byte_81094D0
-// .global byte_8109550
+// .global off_8109250
+// .global off_81092D0
+// .global off_8109350
+// .global off_81093D0
+// .global off_8109450
+// .global off_81094D0
+// .global off_8109550
 // .global sub_81096FA
 
 .include "asm/asm37_0.inc"

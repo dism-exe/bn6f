@@ -28,6 +28,17 @@
 .global off_812291C
 .global off_8122BF8
 .global off_8122EBC
+.global byte_8123199
+.global byte_81231A5
+.global byte_81231B1
+.global unk_81231BD
+.global unk_81231C9
+.global unk_81231D5
+.global unk_81231E1
+.global unk_81231E9
+.global unk_81231F1
+.global unk_81231F9
+.global unk_8123201
 
 
 /* External Symbols */

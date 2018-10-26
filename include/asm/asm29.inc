@@ -220,14 +220,14 @@
 // .global dword_8140D10
 // .global dword_8140D1C
 // .global dword_8140D58
-// .global dword_8140D6C
+// .global byte_8140D6C
 // .global dword_8140E6C
 // .global dword_8140FBC
 // .global dword_814122C
 // .global dword_81414CC
 // .global dword_814154C
 // .global dword_81415F4
-// .global dword_814172C
+// .global byte_814172C
 
 .include "asm/asm37_1.inc"
 // .global sub_81418E4
@@ -263,7 +263,7 @@
 // .global dword_8143724
 // .global dword_814375C
 // .global dword_8143794
-// .global dword_81437CC
+// .global byte_81437CC
 // .global sub_8143B5E
 
 

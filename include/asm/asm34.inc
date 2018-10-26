@@ -2,6 +2,29 @@
 .equ INC_ASM_ASM34, 0
 
 /* Public Symbols */
+.global sub_812D378
+.global sub_812D3A8
+.global sub_812D3E4
+.global sub_812D4FC
+.global sub_812D528
+.global sub_812D5A0
+.global sub_812D5D0
+.global sub_812D690
+.global sub_812D6F8
+.global sub_812D748
+.global sub_812D778
+.global sub_812D78C
+.global sub_812D854
+.global sub_812D880
+.global sub_812D8C8
+.global sub_812D91C
+.global loc_812D922
+.global sub_812D934
+.global sub_812D954
+.global sub_812D99C
+.global sub_812DA3C
+.global sub_812DA4C
+.global sub_812DA60
 
 
 /* External Symbols */
@@ -39,7 +62,7 @@
 // .global sub_811FA98
 // .global sub_811FAF4
 // .global sub_811FE7C
-// .global loc_8120018
+// .global sub_8120018
 // .global sub_8120194
 // .global sub_8120228
 // .global sub_8120390
@@ -56,11 +79,11 @@
 // .global dword_8129180
 
 .include "data/dat33.inc"
-// .global dword_812C258
-// .global dword_812C258
-// .global dword_812C258
-// .global dword_812C258
-// .global dword_812C258
+// .global byte_812C258
+// .global byte_812C268
+// .global byte_812C278
+// .global byte_812C280
+// .global byte_812C288
 
 .include "asm/asm36.inc"
 // .global sub_8132280

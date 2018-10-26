@@ -34,6 +34,7 @@
 .global sub_80356EC
 .global sub_8035738
 .global sub_803578C
+.global sub_80357AE
 .global sub_8036E44
 .global sub_8036E78
 .global init_s_02011C50_8036E90
@@ -153,6 +154,7 @@
 .global sub_803DE88
 .global sub_803DEAC
 .global sub_803DEB4
+.global sub_803E8E4
 .global sub_803E8F8
 .global sub_803E900
 .global sub_803E928
@@ -691,9 +693,6 @@
 .include "asm/asm29.inc"
 // .global sub_80AA5E4
 
-.include "asm/asm31.inc"
-// .global loc_80C1008
-
 .include "asm/asm32.inc"
 // .global sub_811D634
 // .global sub_811D66C
@@ -831,10 +830,10 @@
 // .global dword_86C41B4
 
 .include "data/dat38_63.inc"
-// .global byte_86C4660
+// .global unk_86C4660
 
 .include "data/dat38_70.inc"
-// .global unk_86CB360
+// .global byte_86CB360
 
 .include "data/dat38_87.inc"
 // .global dword_873B9E0
@@ -1011,7 +1010,7 @@
 // .equ unk_2018A04, 0x2018A04
 // .equ unk_201AA00, 0x201AA00
 // .equ unk_201BA00, 0x201BA00
-// .equ unk_201BA10, 0x201BA10
+// .equ byte_201BA10, 0x201BA10
 // .equ unk_201F320, 0x201F320
 // .equ unk_201F5A0, 0x201F5A0
 // .equ unk_2024A00, 0x2024A00

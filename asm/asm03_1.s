@@ -782,7 +782,7 @@ sub_8033EE8:
 loc_8033EFC:
 	bl sub_811F290
 	add r1, r0, #0
-	ldr r0, off_8033F34 // =unk_86CB360 
+	ldr r0, off_8033F34 // =byte_86CB360 
 	ldr r2, off_8033F38 // =unk_2027400 
 	ldr r3, dword_8033F3C // =0x600d000 
 	mov r4, #0xb
@@ -809,7 +809,7 @@ loc_8033EFC:
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 locret_8033F32:
 	pop {r4-r7,pc}
-off_8033F34: .word unk_86CB360
+off_8033F34: .word byte_86CB360
 off_8033F38: .word unk_2027400
 dword_8033F3C: .word 0x600D000
 off_8033F40: .word dword_86B7AE0
@@ -17883,7 +17883,7 @@ off_803DC78: .word word_2036780
 	.word 0x4, 0x200B1B0, 0x201BA00, 0x201BA10, 0x0
 	.word dword_200B1B0
 	.word unk_201BA00
-	.word unk_201BA10
+	.word byte_201BA10
 	.byte 0, 0, 0, 0
 	.word dword_200B1B0
 	.word unk_201F320
@@ -22541,7 +22541,7 @@ loc_803FC2C:
 	sub r4, #1
 	bgt loc_803FC2C
 	ldrh r0, [r3,r6]
-	ldr r1, off_803FC4C // =off_803FC50 
+	ldr r1, off_803FC4C // =byte_803FC50 
 	ldrb r1, [r1,r7]
 	sub r0, r0, r1
 	mov r4, #8
@@ -22551,18 +22551,9 @@ loc_803FC2C:
 locret_803FC48:
 	pop {r4,r6,r7,pc}
 	.balign 4, 0x00
-off_803FC4C: .word off_803FC50
-off_803FC50: .word loc_80C1008
-	.byte 0x10
-	.byte 0xC
-	.byte  8
-	.byte 0x10
-	.byte 0xC
-	.byte  8
-	.byte 0x10
-	.byte 0xC
-	.word 0x80C1008
-	.word 0x10080C10
+off_803FC4C: .word byte_803FC50
+byte_803FC50: .byte 0x8, 0x10, 0xC, 0x8, 0x10, 0xC, 0x8, 0x10, 0xC, 0x8, 0x10
+	.byte 0xC, 0x8, 0x10, 0xC, 0x8, 0x10, 0xC, 0x8, 0x10
 .endfunc // sub_803FC14
 
 .func
@@ -22604,7 +22595,7 @@ off_803FCA0: .word dword_803FCA4
 dword_803FCA4: .word comp_86C41D0 + 1<<31
 	.word 0x6000000
 	.word decomp_2013A00
-	.word byte_86C4660
+	.word unk_86C4660
 	.word byte_3001960
 	.word 0x20
 	.word comp_86C4490 + 1<<31

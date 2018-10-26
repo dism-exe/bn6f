@@ -23,6 +23,7 @@
 .global byte_859B5CC
 .global dword_859E6D0
 .global dword_859E9D0
+.global byte_85A100F
 .global byte_85A2198
 .global byte_85A5590
 .global byte_85A8B04
@@ -452,6 +453,11 @@
 .global unk_86C12A0
 .global byte_86C13A0
 .global unk_86C14A0
+.global unk_86C1520
+.global unk_86C15A0
+.global unk_86C1620
+.global unk_86C16A0
+.global unk_86C1720
 .global byte_86C18A0
 .global byte_86C18E0
 .global byte_86C1920

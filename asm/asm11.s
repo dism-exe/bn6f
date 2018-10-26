@@ -2411,7 +2411,7 @@ unk_806B195: .byte 0x1E
 	.byte  0
 	.byte  0
 unk_806B1AF: .byte 0x2C 
-	.word dword_8140BAC
+	.word byte_8140BAC
 	.word 0x140BF02C
 	.word 0x3D7D2508
 	.word 0x808

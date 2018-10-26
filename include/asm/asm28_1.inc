@@ -16,7 +16,8 @@
 .global byte_809F6CC
 .global byte_809F6EC
 .global byte_809F71C
-.global byte_809F7E4
+.global unk_809F7E4
+.global unk_809F878
 .global byte_809F880
 .global byte_809F889
 .global byte_809F8A5

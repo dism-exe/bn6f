@@ -27,9 +27,6 @@
 
 
 /* External Symbols */
-.include "asm/asm00_2.inc"
-// .global loc_8013308
-
 .include "asm/asm03_0.inc"
 // .global sub_8030808
 

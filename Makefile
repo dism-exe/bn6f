@@ -53,7 +53,7 @@ checksum:
 	@$(SHA1SUM) -c $(BUILD_NAME).sha1
 
 fdiff:
-	$(PY) tools/fdiff.py _$(ROM) $(ROM) -s2
+	$(PY) tools/fdiff.py $(BUILD_NAME).ign $(ROM) -s2
 
 tail: $(ROM)
 	@# Create tail.bin using the tail location in current elf then compile again

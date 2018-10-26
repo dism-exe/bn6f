@@ -226,7 +226,7 @@
 // .global byte_86C0940
 
 .include "data/dat38_71.inc"
-// .global byte_86CF4AC
+// .global unk_86CF4AC
 
 .include "data/dat38_85.inc"
 // .global byte_86EA94C

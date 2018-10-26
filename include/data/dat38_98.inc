@@ -8,7 +8,7 @@
 
 /* External Symbols */
 .include "data/dat37.inc"
-// .global unk_81A081B
+// .global byte_81A081B
 // .global byte_81D081E
 
 .include "data/dat38_32.inc"

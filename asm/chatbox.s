@@ -4675,7 +4675,7 @@ off_8042064: .word byte_873D9FC
 	.word byte_86EA94C
 	.word byte_86EB354
 	.word byte_86EF71C
-	.word byte_86CF4AC
+	.word unk_86CF4AC
 	.word byte_873EA50
 	.word byte_873EA50
 	.word byte_86EA94C
@@ -7907,6 +7907,7 @@ loc_804398E:
 	ldr r0, off_8043A40 // =0x154 
 	add r0, r0, r5
 	mov r2, #0
+loc_8043994:
 	ldrb r1, [r0]
 	cmp r1, #0
 	bne loc_80439A4
@@ -7932,16 +7933,64 @@ loc_80439A8:
 	ldr r3, off_8043A38 // =sub_3007038+1 
 	mov lr, pc
 	bx r3
-	.hword 0xBCFF
-	.word 0x3201300C, 0x58EB4B1C, 0xDBE1429A, 0x28017928, 0x2001D002
-	.word 0xE0117128, 0x42007C68, 0x2000D003, 0x213D70A8, 0x8CE85468
-	.word 0x42082101, 0x2108D108, 0xD0034208, 0x5A68216C, 0xFDE6F7BC
-	.word 0xBD002000, 0x5A68216E, 0xFDE0F7BC, 0xF7FC2011, 0x2007FF8D
-	.word 0xFA8AF002, 0xF0027CE8, 0x2000FA7F, 0x81A87128, 0x67A82004
-	.word 0xF0022020, 0x3402FA77, 0xBD002000
+	pop {r0-r7}
+	add r0, #0xc
+	add r2, #1
+	ldr r3, off_8043A3C // =0x1cc 
+	ldr r3, [r5,r3]
+	cmp r2, r3
+	blt loc_8043994
+	ldrb r0, [r5,#4]
+	cmp r0, #1
+	beq loc_80439DC
+	mov r0, #1
+	strb r0, [r5,#4]
+	b loc_8043A00
+loc_80439DC:
+	ldrb r0, [r5,#0x11]
+	tst r0, r0
+	beq loc_80439EA
+	mov r0, #0
+	strb r0, [r5,#2]
+	mov r1, #0x3d 
+	strb r0, [r5,r1]
+loc_80439EA:
+	ldrh r0, [r5,#0x26]
+	mov r1, #1
+	tst r0, r1
+	bne loc_8043A04
+	mov r1, #8
+	tst r0, r1
+	beq loc_8043A00
+	mov r1, #0x6c 
+	ldrh r0, [r5,r1]
+	bl sound_play // () -> void
+loc_8043A00:
+	mov r0, #0
+	pop {pc}
+loc_8043A04:
+	mov r1, #0x6e 
+	ldrh r0, [r5,r1]
+	bl sound_play // () -> void
+	mov r0, #0x11
+	bl chatbox_clearFlags_3e // (int mask) -> void
+	mov r0, #7
+	bl chatbox_8045F2C // (int a1) ->
+	ldrb r0, [r5,#0x13]
+	bl chatbox_8045F1C
+	mov r0, #0
+	strb r0, [r5,#4]
+	strh r0, [r5,#0xc]
+	mov r0, #4
+	str r0, [r5,#0x78]
+	mov r0, #0x20 
+	bl chatbox_8045F1C
+	add r4, #2
+	mov r0, #0
+	pop {pc}
 off_8043A34: .word dword_803FCE4
 off_8043A38: .word sub_3007038+1
-	.word 0x1CC
+off_8043A3C: .word 0x1CC
 off_8043A40: .word 0x154
 off_8043A44: .word word_8043A48
 word_8043A48: .hword 0x40

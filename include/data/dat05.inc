@@ -75,7 +75,7 @@
 // .global byte_808054A
 // .global byte_808054F
 // .global byte_808058D
-// .global unk_8080715
+// .global byte_8080715
 // .global byte_80809F6
 // .global byte_80809F8
 
@@ -109,7 +109,7 @@
 // .global byte_809F8CA
 
 .include "data/dat28.inc"
-// .global unk_80A2713
+// .global byte_80A2713
 
 .include "data/BattleSettings.inc"
 // .global byte_80B083F
@@ -129,7 +129,7 @@
 // .global byte_83C0A10
 // .global byte_83C1B16
 // .global byte_83C1C16
-// .global unk_83C21DC
+// .global byte_83C21DC
 // .global byte_83F0000
 // .global byte_83F0016
 // .global byte_83F0116

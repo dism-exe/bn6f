@@ -161,7 +161,7 @@
 // .global byte_809F6CC
 
 .include "asm/reqBBS.inc"
-// .global dword_8140BAC
+// .global byte_8140BAC
 
 .include "data/dat38_33.inc"
 // .global byte_83C0716

@@ -366,18 +366,18 @@ loc_808FAC6:
 off_808FADC: .word off_808FAE8
 off_808FAE0: .word off_808FAF8
 off_808FAE4: .word off_808FB08
-off_808FAE8: .word unk_81434E4
-	.word unk_814350C
-	.word unk_814352C
-	.word unk_8143564
-off_808FAF8: .word unk_8143628
-	.word unk_8143646
-	.word unk_814365E
-	.word unk_8143688
-off_808FB08: .word unk_814359C
-	.word unk_81435BA
-	.word unk_81435D2
-	.word unk_81435FC
+off_808FAE8: .word byte_81434E4
+	.word byte_814350C
+	.word byte_814352C
+	.word byte_8143564
+off_808FAF8: .word byte_8143628
+	.word byte_8143646
+	.word byte_814365E
+	.word byte_8143688
+off_808FB08: .word byte_814359C
+	.word byte_81435BA
+	.word byte_81435D2
+	.word byte_81435FC
 .endfunc // sub_808FA8C
 
 .func
@@ -968,10 +968,10 @@ loc_808FFD2:
 	pop {r4,pc}
 	.byte 0, 0
 off_808FFF0: .word off_808FFF4
-off_808FFF4: .word unk_81434E4
-	.word unk_814350C
-	.word unk_814352C
-off_8090000: .word unk_8143564
+off_808FFF4: .word byte_81434E4
+	.word byte_814350C
+	.word byte_814352C
+off_8090000: .word byte_8143564
 .endfunc // sub_808FFC0
 
 .func

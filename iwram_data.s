@@ -58,7 +58,9 @@ ds byte_30015D0 // 0x30015d0
 ds byte_30015F0 // 0x30015f0
 	.space 32
 ds byte_3001610 // 0x3001610
-	.space 64
+	.space 32
+ds byte_3001630 // 0x3001630
+	.space 32
 ds byte_3001650 // 0x3001650
 	.space 32
 ds byte_3001670 // 0x3001670

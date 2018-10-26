@@ -2419,9 +2419,7 @@ a5jCjK: .ascii "5j\n"
 	.asciz "\x09k\n"
 	.word 0x282003B5, 0x69208070, 0x5B79AA79, 0xE8FE50F7, 0xADF75C79
 	.word 0x2BF75BF9
-	.byte 0xFE
-	.hword 0xF75C
-	.word 0x2004FA9F
+	.byte 0xFE, 0x5C, 0xF7, 0x9F, 0xFA, 0x4, 0x20
 aR: .asciz "(r$&"
 	.byte 0xF0, 0xFA, 0xF9
 	bl sub_80A6A62
@@ -3889,7 +3887,7 @@ loc_80A753A:
 	add r0, r1, r2
 	pop {r4,pc}
 off_80A7548: .word off_80A754C
-off_80A754C: .word dword_8140D6C
+off_80A754C: .word byte_8140D6C
 	.word dword_8140E6C
 	.word dword_8140FBC
 	.word dword_814122C
@@ -3920,7 +3918,7 @@ off_80A757C: .word off_80A7580
 off_80A7580: .word dword_81414CC
 	.word dword_814154C
 	.word dword_81415F4
-	.word dword_814172C
+	.word byte_814172C
 .endfunc // sub_80A755C
 
 .func
@@ -5048,8 +5046,6 @@ sub_80A7DB8:
 	ldrb r0, [r7,#3]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-.endfunc // sub_80A7DB8
-
 	bl sub_8002F90 // () -> void
 	bl sub_80A8020
 	ldrh r0, [r7,#4]
@@ -5071,8 +5067,9 @@ sub_80A7DB8:
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_80A7E14
-	.byte 0xF0
-	.byte 0xBD
+	pop {r4-r7,pc}
+.endfunc // sub_80A7DB8
+
 .func
 .thumb_func
 sub_80A7E0C:
@@ -6270,8 +6267,7 @@ sub_80A8814:
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_80A8848
-	.byte 0xF0
-	.byte 0xBD
+	pop {r4-r7,pc}
 .endfunc // sub_80A8814
 
 .func
@@ -7020,7 +7016,7 @@ sub_80A8DF0:
 	mov r0, #0x80
 	bl chatbox_8045F3C
 	bne loc_80A8E18
-	ldr r0, dword_80A8E20 // = 
+	ldr r0, dword_80A8E20 // =unk_808C2F0 
 	bl sub_8036F70
 	bne loc_80A8E0A
 	bl s_2011C50_ptr_1C_isNull // () -> zf
@@ -8041,7 +8037,7 @@ off_80A9594: .word off_80A9598
 off_80A9598: .word dword_8143724
 	.word dword_814375C
 	.word dword_8143794
-	.word dword_81437CC
+	.word byte_81437CC
 .endfunc // sub_80A9570
 
 .func

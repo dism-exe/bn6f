@@ -3030,7 +3030,7 @@ off_8027C84: .word dword_8027CA0
 	.word byte_8027CC8
 dword_8027CA0: .word 0x2E011100, 0x1200800E, 0x80404801, 0x78011300
 	.word 0x15008010
-	.byte  3
+	.byte 0x3
 byte_8027CB5: .byte 0x0, 0x10, 0x1, 0x8C, 0x52, 0x0, 0x8C, 0x6A, 0x0, 0x8C, 0x82
 	.byte 0x80, 0x0, 0x11, 0x3
 byte_8027CC4: .byte 0x3
@@ -4126,8 +4126,7 @@ dword_8028464: .word 0x3FF
 off_8028468: .word unk_2035186
 off_802846C: .word dword_8028470
 dword_8028470: .word 0xC000B000
-	.byte  0
-	.byte 0x90
+	.byte 0x0, 0x90
 .endfunc // sub_80283C8
 
 .func
@@ -9818,7 +9817,7 @@ off_802B08C: .word unk_2035000
 	.word byte_86DDB24
 	.word unk_3001A80
 	.word 0x20
-	.word unk_86C9D6C
+	.word byte_86C9D6C
 	.word byte_30016B0
 	.word 0x20
 	.word comp_86C9BD4 + 1<<31
@@ -20529,6 +20528,7 @@ loc_80305F8:
 loc_8030600:
 	ldr r3, [r5,#0xc]
 	mov r4, #8
+loc_8030604:
 	ldrb r7, [r5]
 	lsl r7, r7, #1
 loc_8030608:

@@ -50,7 +50,7 @@
 // .global off_8052EE8
 
 .include "data/dat37.inc"
-// .global unk_81C241C
+// .global byte_81C241C
 
 
 /* Undeclared Symbols */

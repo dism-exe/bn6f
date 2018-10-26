@@ -143,6 +143,7 @@
 .global sub_80304E8
 .global sub_8030540
 .global sub_8030580
+.global loc_8030604
 .global sub_8030628
 .global sub_80307D8
 .global sub_8030808
@@ -637,7 +638,7 @@
 // .global dword_86B7AE0
 
 .include "data/dat38_70.inc"
-// .global unk_86C9D6C
+// .global byte_86C9D6C
 
 .include "data/dat38_83.inc"
 // .global comp_86DD59C
