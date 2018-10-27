@@ -17882,13 +17882,12 @@ SetEventFlagRange:
 	thumb_func_end SetEventFlagRange
 	thumb_func_end SetEventFlagRangeFromImmediate
 
-.func
-.thumb_func
 // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
-clearFlags_multEntries_2001C88_entry:
+	thumb_func_start ClearEventFlagRangeFromImmediate
+ClearEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
-.endfunc // clearFlags_multEntries_2001C88_entry
+// fallthrough
 
 // (u16 entryFlagBitfield) -> void
 
@@ -17932,6 +17931,7 @@ ClearEventFlagRange:
 	bgt .loop_802F1B4
 	pop {r4,r5,pc}
 	thumb_func_end ClearEventFlagRange
+	thumb_func_end ClearEventFlagRangeFromImmediate
 
 .func
 .thumb_func

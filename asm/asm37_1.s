@@ -2677,11 +2677,11 @@ loc_8143C2C:
 	mov r0, #0xd
 	mov r1, #0x98
 	mov r2, #0xa
-	bl clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0xd
 	mov r1, #0xa2
 	mov r2, #0xa
-	bl clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	bl sub_8143BFC
 	bl sub_8143F68
 	pop {r4-r7,pc}

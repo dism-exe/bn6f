@@ -14791,7 +14791,7 @@ sub_81378D4:
 	mov r0, #0
 	mov r1, #0xbf
 	mov r2, #0x12
-	bl clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 loc_8137906:
 	bl sub_8137BF0
 	strh r0, [r5,#0x1e]
@@ -14982,7 +14982,7 @@ sub_8137A7C:
 	mov r0, #0
 	mov r1, #0xbf
 	mov r2, #0x13
-	bl clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx

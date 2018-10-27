@@ -919,11 +919,11 @@ sub_8033FDC:
 	mov r0, #1
 	mov r1, #0x2a 
 	mov r2, #0xa
-	bl clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #1
 	mov r1, #0x8e
 	mov r2, #9
-	bl clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	b loc_8034064
 loc_803405A:
 	mov r0, #1
@@ -962,11 +962,11 @@ loc_8034064:
 	mov r0, #1
 	mov r1, #0xbc
 	mov r2, #0xc
-	bl clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #1
 	mov r1, #0xc8
 	mov r2, #6
-	bl clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #1
 	mov r1, #0xce
 	mov r2, #6
@@ -989,7 +989,7 @@ loc_8034064:
 	mov r0, #1
 	mov r1, #0xce
 	mov r2, #6
-	bl clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 locret_80340F4:
 	pop {r4-r7,pc}
 .endfunc // sub_8033FDC
