@@ -17760,13 +17760,12 @@ ClearEventFlag:
 	thumb_func_end ClearEventFlag
 	thumb_func_end ClearEventFlagFromImmediate
 
-.func
-.thumb_func
 // (u8 entryIdx, u8 byteFlagIdx) -> void
-toggleFlag_2001C88_entry:
+	thumb_func_start ToggleEventFlagFromImmediate
+ToggleEventFlagFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
-.endfunc // toggleFlag_2001C88_entry
+// fallthrough
 
 // (u16 entryFlagBitfield) -> void
 
@@ -17795,6 +17794,7 @@ ToggleEventFlag:
 	strb r0, [r3]
 	mov pc, lr
 	thumb_func_end ToggleEventFlag
+	thumb_func_end ToggleEventFlagFromImmediate
 
 .func
 .thumb_func

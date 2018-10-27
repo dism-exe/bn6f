@@ -8829,7 +8829,7 @@ sub_809E4BC:
 	push {r4-r7,lr}
 	mov r0, #0x17
 	mov r1, #0x29 
-	bl toggleFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ToggleEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r5, r10
 	ldr r5, [r5,#0x3c]
 	ldr r5, [r5,#0x18]
