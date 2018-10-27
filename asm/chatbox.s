@@ -2702,7 +2702,7 @@ chatbox_80411B0:
 .thumb_func
 chatbox_80411BC:
 	push {lr}
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00

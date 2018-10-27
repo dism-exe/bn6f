@@ -53,7 +53,7 @@
 // .global sub_8013704
 
 .include "asm/asm03_0.inc"
-// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global ClearEventFlag // (u16 entryFlagBitfield) -> void
 // .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 // .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 // .global sub_8031612

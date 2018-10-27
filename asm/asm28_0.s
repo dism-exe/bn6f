@@ -18,7 +18,7 @@ sub_8098BE8:
 	add r0, r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	ldr r0, dword_8098C24 // =0x1da0 
 	ldrb r1, [r5,#6]
 	add r0, r0, r1
@@ -4615,7 +4615,7 @@ sub_809B910:
 	beq loc_809B960
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 loc_809B960:
 	mov r0, #0
 	strb r0, [r5,#9]
@@ -5478,7 +5478,7 @@ unk_809BFB0: .byte 0x3F
 	add r0, r0, r2
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	bl reqBBS_8140974
 	add r2, r0, #0
 	ldr r0, dword_809C0EC // =0x1da0 
@@ -5983,7 +5983,7 @@ sub_809C940:
 	ldr r0, [r0,#0x14]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r4-r7,pc}
 off_809C950: .word unk_2011C50
 .endfunc // sub_809C940

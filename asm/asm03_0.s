@@ -17734,13 +17734,12 @@ clearFlag_2001C88_entry:
 	orr r0, r1
 .endfunc // clearFlag_2001C88_entry
 
-.func
-.thumb_func
 // (u16 entryFlagBitfield) -> void
 
 // Clears a flag at eEventFlags
 // r0 - flag to clear
-clearFlag_2001C88_bitfield:
+	thumb_func_start ClearEventFlag
+ClearEventFlag:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
 	
@@ -17761,7 +17760,7 @@ clearFlag_2001C88_bitfield:
 	bic r0, r1
 	strb r0, [r3]
 	mov pc, lr
-.endfunc // clearFlag_2001C88_bitfield
+	thumb_func_end ClearEventFlag
 
 .func
 .thumb_func
@@ -18125,11 +18124,11 @@ loc_802F29E:
 	ldr r0, [sp]
 	mov r7, r0
 	mov r0, r0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, r7
 	add r0, #0x80
 	mov r0, r0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 loc_802F2BC:
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}

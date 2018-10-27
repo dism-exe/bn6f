@@ -8405,7 +8405,7 @@ sub_8127B94:
 	add r0, r0, r4
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	ldr r0, dword_8127BDC // =0x1da0 
 	add r0, r0, r4
 	// <mkdata>
@@ -16255,7 +16255,7 @@ loc_812BCF0:
 	add r0, r0, r6
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 loc_812BD08:
 	add r6, #1
 	ldr r0, off_812BD30 // =0x200 

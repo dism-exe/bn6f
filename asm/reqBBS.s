@@ -302,7 +302,7 @@ loc_813E2C8:
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_813E2F6
 	mov r0, r8
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	ldrb r0, [r5,#5]
 	add r0, #0
 	strb r0, [r5,#5]
@@ -2121,7 +2121,7 @@ loc_813F678:
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_813F6A6
 	mov r0, r8
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	ldrb r0, [r5,#5]
 	add r0, #0
 	strb r0, [r5,#5]

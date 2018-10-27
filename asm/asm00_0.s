@@ -4214,7 +4214,7 @@ loc_8002348:
 	lsr r0, r0, #1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 locret_8002352:
 	pop {pc}
 .endfunc // sub_8002338
