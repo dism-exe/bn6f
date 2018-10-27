@@ -17831,13 +17831,12 @@ TestEventFlag:
 	thumb_func_end TestEventFlag
 	thumb_func_end TestEventFlagFromImmediate
 
-.func
-.thumb_func
 // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
-setFlags_multEntries_2001C88_entry:
+	thumb_func_start SetEventFlagRangeFromImmediate
+SetEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
-.endfunc // setFlags_multEntries_2001C88_entry
+// fallthrough
 
 // (u16 entryFlagBitfield) -> void
 
@@ -17881,6 +17880,7 @@ SetEventFlagRange:
 	bgt .loop_802f18a
 	pop {r4,r5,pc}
 	thumb_func_end SetEventFlagRange
+	thumb_func_end SetEventFlagRangeFromImmediate
 
 .func
 .thumb_func

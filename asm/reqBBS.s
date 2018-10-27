@@ -4573,11 +4573,11 @@ reqBBS_setFlags_8140A24:
 	mov r0, #0x16
 	mov r1, #0x40 
 	mov r2, #0x40 
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0x16
 	mov r1, #0xc0
 	mov r2, #0x10
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
@@ -4590,11 +4590,11 @@ reqBBS_setFlags_8140A40:
 	mov r0, #0x16
 	mov r1, #0xf3
 	mov r2, #0xd
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0x16
 	mov r1, #0xc0
 	mov r2, #0x10
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00

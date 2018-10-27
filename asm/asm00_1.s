@@ -4049,7 +4049,7 @@ sub_8004DF0:
 	mov r0, #4
 	mov r1, #0xe7
 	mov r2, #2
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #4
 	// byteFlagIdx
@@ -4063,7 +4063,7 @@ sub_8004DF0:
 	mov r0, #0
 	mov r1, #1
 	mov r2, #3
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
@@ -4072,23 +4072,23 @@ sub_8004DF0:
 	mov r0, #0
 	mov r1, #6
 	mov r2, #8
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0
 	mov r1, #0xf
 	mov r2, #2
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #5
 	mov r1, #0xee
 	mov r2, #3
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0
 	mov r1, #0x31 
 	mov r2, #2
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0
 	mov r1, #0x3b 
 	mov r2, #3
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
@@ -4097,11 +4097,11 @@ sub_8004DF0:
 	mov r0, #0
 	mov r1, #0x73 
 	mov r2, #7
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #9
 	mov r1, #0xf6
 	mov r2, #9
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
@@ -4125,7 +4125,7 @@ sub_8004DF0:
 	mov r0, #0xb
 	mov r1, #0xfd
 	mov r2, #3
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
@@ -4139,7 +4139,7 @@ sub_8004DF0:
 	mov r0, #0xc
 	mov r1, #0xd7
 	mov r2, #4
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
@@ -4153,7 +4153,7 @@ sub_8004DF0:
 	mov r0, #0xf
 	mov r1, #0xf9
 	mov r2, #7
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #1
 	// byteFlagIdx
@@ -4162,7 +4162,7 @@ sub_8004DF0:
 	mov r0, #1
 	mov r1, #0x38 
 	mov r2, #2
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #1
 	// byteFlagIdx
@@ -4171,7 +4171,7 @@ sub_8004DF0:
 	mov r0, #1
 	mov r1, #0x64 
 	mov r2, #0x19
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
@@ -4190,7 +4190,7 @@ sub_8004DF0:
 	mov r0, #1
 	mov r1, #0x8e
 	mov r2, #9
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
@@ -4199,7 +4199,7 @@ sub_8004DF0:
 	mov r0, #1
 	mov r1, #0xce
 	mov r2, #6
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #0x10
 	// byteFlagIdx
@@ -4216,7 +4216,7 @@ sub_8004DF0:
 	mov r0, #0
 	mov r1, #0x82
 	mov r2, #2
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx

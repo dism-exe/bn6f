@@ -929,7 +929,7 @@ loc_803405A:
 	mov r0, #1
 	mov r1, #0x8e
 	mov r2, #9
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 loc_8034064:
 	bl sub_80141AC
 	bl sub_8015C32
@@ -970,7 +970,7 @@ loc_8034064:
 	mov r0, #1
 	mov r1, #0xce
 	mov r2, #6
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #0x10
 	// byteFlagIdx
@@ -985,7 +985,7 @@ loc_8034064:
 	mov r0, #1
 	mov r1, #0xc8
 	mov r2, #6
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #1
 	mov r1, #0xce
 	mov r2, #6
