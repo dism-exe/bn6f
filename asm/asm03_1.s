@@ -3483,7 +3483,7 @@ sub_8035962:
 .func
 .thumb_func
 // 0x04 byte flag destination
-// jump if loc_802F200 return flags is true (related to event flags)
+// jump if TestEventFlagRange return flags is true (related to event flags)
 sub_8035992:
 	push {lr}
 	mov r6, #1
@@ -3493,7 +3493,7 @@ sub_8035992:
 	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	add r2, r1, #0
-	bl loc_802F200 // (int a3, int a2) ->
+	bl TestEventFlagRange // (int a3, int a2) ->
 	beq loc_80359B8
 	mov r6, #4
 	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
@@ -3539,7 +3539,7 @@ sub_80359BE:
 .func
 .thumb_func
 // 0x06 byte flag destination
-// jump if loc_802F200 return flags is false (related to event flags)
+// jump if TestEventFlagRange return flags is false (related to event flags)
 sub_80359EE:
 	push {lr}
 	mov r6, #1
@@ -3549,7 +3549,7 @@ sub_80359EE:
 	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	add r2, r1, #0
-	bl loc_802F200 // (int a3, int a2) ->
+	bl TestEventFlagRange // (int a3, int a2) ->
 	bne loc_8035A14
 	mov r6, #4
 	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6

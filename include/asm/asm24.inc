@@ -24,7 +24,7 @@
 // .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global ClearEventFlagRange // (u16 entryFlagBitfield) -> void
-// .global loc_802F200
+// .global TestEventFlagRange
 // .global sub_80302A8
 
 .include "asm/asm03_1.inc"

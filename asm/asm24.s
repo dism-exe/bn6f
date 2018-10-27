@@ -685,7 +685,7 @@ loc_808CDDA:
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
-	bl loc_802F200 // (int a3, int a2) ->
+	bl TestEventFlagRange // (int a3, int a2) ->
 	beq loc_808CE02
 	mov r4, #1
 	b loc_808CE14

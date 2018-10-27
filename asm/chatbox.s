@@ -3327,7 +3327,7 @@ chatbox_8041694:
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
-	bl loc_802F200 // (int a3, int a2) ->
+	bl TestEventFlagRange // (int a3, int a2) ->
 	bne loc_80416AE
 	mov r2, #6
 	b loc_80416B0
@@ -3762,7 +3762,7 @@ chatbox_8041964:
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
-	bl loc_802F200 // (int a3, int a2) ->
+	bl TestEventFlagRange // (int a3, int a2) ->
 	bne loc_8041976
 	mov r2, #3
 	b loc_8041978

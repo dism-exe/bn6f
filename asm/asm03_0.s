@@ -17995,7 +17995,7 @@ sub_802F1FC:
 
 // Tests multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
 // Number of flags to tests is in r2
-loc_802F200:
+TestEventFlagRange:
 	push {r4-r7,lr}
 	mov r7, r2
 	mov r4, r10
