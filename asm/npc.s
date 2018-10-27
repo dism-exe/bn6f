@@ -825,7 +825,7 @@ npc_809EBBC:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x15
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne locret_809EBDA
 	mov r7, r10
 	ldr r7, [r7,#0x3c]

@@ -1387,7 +1387,7 @@ sub_8000EE4:
 	mov r0, #0xe
 	// byteFlagIdx
 	mov r1, #0
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8000EFA
 	add r4, #1
 	mov r0, #0x80
@@ -1437,7 +1437,7 @@ loc_8000F4A:
 	mov r0, #3
 	// byteFlagIdx
 	mov r1, #0x70 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8000F5A
 	add r4, #1
 	mov r0, #2
@@ -1447,7 +1447,7 @@ loc_8000F5A:
 	mov r0, #3
 	// byteFlagIdx
 	mov r1, #0x40 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8000F6C
 	add r4, #1
 	mov r0, #0x10
@@ -1501,7 +1501,7 @@ sub_8000FAC:
 	// flag 3 @ 0x2001C88[0x17<<5 + 0x1] (=2001F69)
 	mov r0, #0x17
 	mov r1, #0xc
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8000FCE
 	ldrb r0, [r5,#4]
 	ldrb r1, [r5,#0xc]

@@ -100,7 +100,7 @@
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global SetEventFlag // (u16 entryFlagBitfield) -> void
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global SetEventFlagRange // (u16 entryFlagBitfield) -> void
 // .global ClearEventFlagRange // (u16 entryFlagBitfield) -> void

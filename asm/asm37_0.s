@@ -1191,14 +1191,14 @@ sub_813BF1C:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x20 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_813BF36
 	b loc_813BF38
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x23 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_813BF38
 loc_813BF36:
 	mov r6, #0
@@ -1734,7 +1734,7 @@ loc_813C3B8:
 	mov r0, #1
 	// byteFlagIdx
 	mov r1, #0x63 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_813C3CC
 	bl loc_8121154
 	b loc_813C3CC
@@ -1748,7 +1748,7 @@ loc_813C3CC:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x1d
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_813C454
 	mov r0, #0
 	mov r1, #0x42 

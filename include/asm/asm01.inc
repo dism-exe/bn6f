@@ -39,7 +39,7 @@
 
 .include "asm/asm03_0.inc"
 // .global get_802D246 // () -> int
-// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 
 .include "asm/asm03_1.inc"
 // .global sub_803C620

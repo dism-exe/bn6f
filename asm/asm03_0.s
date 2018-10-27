@@ -7719,7 +7719,7 @@ loc_8029F88:
 	mov r0, #1
 	// byteFlagIdx
 	mov r1, #0x63 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8029FA4
 	ldrb r0, [r5,#0x10]
 	cmp r0, #0
@@ -7751,7 +7751,7 @@ sub_8029FB4:
 	mov r0, #1
 	// byteFlagIdx
 	mov r1, #0x63 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8029FEC
 	bl sub_802E09A
 	bne loc_8029FEC
@@ -7763,7 +7763,7 @@ sub_8029FB4:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0xe0
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8029FEC
 loc_8029FEA:
 	mov r4, #1
@@ -8013,7 +8013,7 @@ sub_802A220:
 	mov r0, #1
 	// byteFlagIdx
 	mov r1, #0x63 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_802A2A2
 	bl get_802D246 // () -> int
 	ldr r1, dword_802A2A8 // =0x200000 
@@ -14532,7 +14532,7 @@ sub_802D65E:
 	mov r0, #1
 	// byteFlagIdx
 	mov r1, #0xd8
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_802D68A
 	ldr r1, dword_802D69C // =0x196 
 	add r1, r1, r4
@@ -15752,7 +15752,7 @@ sub_802E112:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x22 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_802E154
 loc_802E14E:
 	mov r0, #0x40 
@@ -17796,13 +17796,12 @@ ToggleEventFlag:
 	thumb_func_end ToggleEventFlag
 	thumb_func_end ToggleEventFlagFromImmediate
 
-.func
-.thumb_func
 // (int entryIdx, int byteFlagIdx) -> zf
-isActiveFlag_2001C88_entry:
+	thumb_func_start TestEventFlagFromImmediate
+TestEventFlagFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
-.endfunc // isActiveFlag_2001C88_entry
+// fallthrough
 
 // (u16 entryFlagBitfield) -> zf
 
@@ -17830,6 +17829,7 @@ TestEventFlag:
 	tst r0, r1
 	mov pc, lr
 	thumb_func_end TestEventFlag
+	thumb_func_end TestEventFlagFromImmediate
 
 .func
 .thumb_func

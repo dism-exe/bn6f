@@ -9388,11 +9388,11 @@ sub_804C08C:
 	strb r0, [r5,#0x18]
 	mov r0, #4
 	mov r1, #0xfb
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_804C0EE
 	mov r0, #4
 	mov r1, #0xfe
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_804C0EE
 	bl sub_804C2D0
 loc_804C0EE:
@@ -10820,7 +10820,7 @@ sub_804CDD4:
 	strh r0, [r4]
 	mov r0, #0xb
 	mov r1, #0xf0
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_804CDF0
 	bl sub_804CE3C
 loc_804CDF0:

@@ -811,7 +811,7 @@ sub_8089A60:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x28 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8089ABA
 	bl sub_81426CE
 	cmp r0, #6

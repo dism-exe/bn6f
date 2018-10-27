@@ -1861,7 +1861,7 @@ reqBBS_813F474:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x3a 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_813F4B6
 	ldr r0, off_813F548 // =dynaicArr 
 	ldr r1, dword_813F544 // =0xf 
@@ -2768,7 +2768,7 @@ loc_813FB40:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x3a 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_813FB6E
 	ldr r0, off_813FBB4 // =reqBBS_requestInfo_textOffsets 
 	ldr r1, off_813FDA4 // =dynaicArr 
@@ -4229,7 +4229,7 @@ reqBBS_81407D8:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x3a 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8140814
 	ldr r0, off_81409B4 // =dynaicArr 
 	ldr r1, dword_8140820 // =0xf 
@@ -4414,7 +4414,7 @@ reqBBS_81408F0:
 	// flag 5 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
 	mov r0, #0x17
 	mov r1, #0x3a 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8140962
 	bl reqBBS_81408C8
 	bl reqBBS_8140884
@@ -4422,7 +4422,7 @@ reqBBS_81408F0:
 	bne loc_8140966
 	mov r0, #0x17
 	mov r1, #0x1d
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_814095A
 	bl getPETNaviSelect // () -> u8
 	cmp r0, #0

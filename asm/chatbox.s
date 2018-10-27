@@ -4026,7 +4026,7 @@ loc_8041B1A:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #9
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	pop {r0,r2}
 	bne loc_8041B2E
 	mov r6, #0

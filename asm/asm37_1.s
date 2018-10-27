@@ -339,7 +339,7 @@ sub_8141AD2:
 	mov r0, #7
 	// byteFlagIdx
 	mov r1, #1
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8141B00
 	ldrb r0, [r5,#0x11]
 	tst r0, r0
