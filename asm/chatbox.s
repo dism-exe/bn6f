@@ -2712,7 +2712,7 @@ chatbox_80411BC:
 .thumb_func
 chatbox_80411C8:
 	push {lr}
-	bl toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ToggleEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
