@@ -1,7 +1,6 @@
 .include "asm/asm20.inc"
 
-.func
-.thumb_func
+thumb_func_start sub_807ECD0
 sub_807ECD0:
 	push {r4-r7,lr}
 	mov r7, r10
@@ -47,10 +46,9 @@ byte_807ED40: .byte 0x1C, 0xE, 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x4B, 0x1C
 	.byte 0x1C, 0x20, 0x1C, 0x4B, 0x1C, 0x8E, 0x1C, 0x9B, 0x1C
 	.byte 0x99, 0x18, 0x5B, 0xFF, 0xFF, 0x1C, 0x9C, 0x1C, 0x9A
 	.byte 0x18, 0x34, 0x18, 0x36, 0x1C, 0x99, 0xFF, 0xFF
-.endfunc // sub_807ECD0
+thumb_func_end sub_807ECD0
 
-.func
-.thumb_func
+thumb_func_start sub_807ED6C
 sub_807ED6C:
 	push {lr}
 	lsl r1, r1, #2
@@ -93,10 +91,9 @@ off_807EDBC: .word off_807EB18
 	.word off_807EC58
 	.word off_807ECA8
 	.word 0xFFFFFFFF
-.endfunc // sub_807ED6C
+thumb_func_end sub_807ED6C
 
-.func
-.thumb_func
+thumb_func_start sub_807EDD4
 sub_807EDD4:
 	push {r4-r7,lr}
 	mov r5, r10
@@ -131,10 +128,9 @@ off_807EE40: .word off_807EE4C
 	.word off_807EE4C
 off_807EE4C: .word off_8619174
 	.word 0x6008020, 0x8619474, 0x1800, 0x0, 0x0, 0x0
-.endfunc // sub_807EDD4
+thumb_func_end sub_807EDD4
 
-.func
-.thumb_func
+thumb_func_start sub_807EE68
 sub_807EE68:
 	push {r4-r7,lr}
 	mov r5, r10
@@ -150,28 +146,24 @@ off_807EE7C: .word off_807EE80
 off_807EE80: .word nullsub_88+1
 	.word nullsub_89+1
 	.word nullsub_90+1
-.endfunc // sub_807EE68
+thumb_func_end sub_807EE68
 
-.func
-.thumb_func
+thumb_local_start
 nullsub_88:
 	mov pc, lr
-.endfunc // nullsub_88
+thumb_func_end nullsub_88
 
-.func
-.thumb_func
+thumb_local_start
 nullsub_89:
 	mov pc, lr
-.endfunc // nullsub_89
+thumb_func_end nullsub_89
 
-.func
-.thumb_func
+thumb_local_start
 nullsub_90:
 	mov pc, lr
-.endfunc // nullsub_90
+thumb_func_end nullsub_90
 
-.func
-.thumb_func
+thumb_func_start sub_807EE92
 sub_807EE92:
 	push {lr}
 	mov r0, r10
@@ -189,6 +181,6 @@ pt_807EEAC:
 	.word dword_807EEB8
 	.word dword_807EFD4
 	.word dword_807F1E0
-.endfunc // sub_807EE92
+thumb_func_end sub_807EE92
 
 /*For debugging purposes, connect comment at any range!*/

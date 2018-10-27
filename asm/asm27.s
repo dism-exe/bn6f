@@ -1,7 +1,6 @@
 .include "asm/asm27.inc"
 
-.func
-.thumb_func
+thumb_local_start
 sub_80946C4:
 	push {r4-r7,lr}
 	// initRefs
@@ -26,30 +25,27 @@ initRefs_80946D4: .word comp_857CCC8 + 1<<31
 	.word byte_3001B00
 	.word 0x40
 	.byte 0, 0, 0, 0
-.endfunc // sub_80946C4
+thumb_func_end sub_80946C4
 
-.func
-.thumb_func
+thumb_local_start
 sub_8094708:
 	push {r4-r7,lr}
 	ldr r0, off_8094774 // =unk_2025404 
 	bl sub_8094738
 	mov r0, #0
 	pop {r4-r7,pc}
-.endfunc // sub_8094708
+thumb_func_end sub_8094708
 
-.func
-.thumb_func
+thumb_local_start
 sub_8094714:
 	push {r4-r7,lr}
 	ldr r0, off_8094778 // =unk_2026404 
 	bl sub_8094738
 	mov r0, #0
 	pop {r4-r7,pc}
-.endfunc // sub_8094714
+thumb_func_end sub_8094714
 
-.func
-.thumb_func
+thumb_local_start
 sub_8094720:
 	push {r4-r7,lr}
 	// memBlock
@@ -62,10 +58,9 @@ sub_8094720:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-.endfunc // sub_8094720
+thumb_func_end sub_8094720
 
-.func
-.thumb_func
+thumb_local_start
 sub_8094738:
 	push {r4-r7,lr}
 	ldr r5, off_809477C // =byte_200BE70 
@@ -104,6 +99,6 @@ off_8094778: .word unk_2026404
 off_809477C:
 	// <endpool> <endfile>
 	.word byte_200BE70
-.endfunc // sub_8094738
+thumb_func_end sub_8094738
 
 /*For debugging purposes, connect comment at any range!*/

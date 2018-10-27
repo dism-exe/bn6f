@@ -1,7 +1,6 @@
 .include "asm/object.inc"
 
-.func
-.thumb_func
+thumb_func_start object_timefreezeEnd
 object_timefreezeEnd:
 	push {lr}
 	ldrb r0, [r5,#0xb]
@@ -60,10 +59,9 @@ loc_800BD94:
 	bl object_freeMemory
 locret_800BDB0:
 	pop {pc}
-.endfunc // object_timefreezeEnd
+thumb_func_end object_timefreezeEnd
 
-.func
-.thumb_func
+thumb_func_start sub_800BDB2
 sub_800BDB2:
 	push {lr}
 	ldr r1, off_800BDC0 // =off_800BDC4 
@@ -76,10 +74,9 @@ off_800BDC0: .word off_800BDC4
 off_800BDC4: .word sub_800BDD0+1
 	.word sub_800BE0C+1
 	.word sub_800BE2C+1
-.endfunc // sub_800BDB2
+thumb_func_end sub_800BDB2
 
-.func
-.thumb_func
+thumb_local_start
 sub_800BDD0:
 	push {r4,lr}
 	ldrh r0, [r5,#0x30]
@@ -111,10 +108,9 @@ loc_800BDF4:
 locret_800BE08:
 	pop {r4,pc}
 	.balign 4, 0x00
-.endfunc // sub_800BDD0
+thumb_func_end sub_800BDD0
 
-.func
-.thumb_func
+thumb_local_start
 sub_800BE0C:
 	push {lr}
 	ldrb r0, [r5,#0xb]
@@ -134,10 +130,9 @@ loc_800BE1E:
 	strh r0, [r5,#0xa]
 locret_800BE2A:
 	pop {pc}
-.endfunc // sub_800BE0C
+thumb_func_end sub_800BE0C
 
-.func
-.thumb_func
+thumb_local_start
 sub_800BE2C:
 	push {lr}
 	ldrb r0, [r5,#0xb]
@@ -219,10 +214,9 @@ loc_800BEC8:
 	strh r0, [r5,#0xa]
 locret_800BED8:
 	pop {pc}
-.endfunc // sub_800BE2C
+thumb_func_end sub_800BE2C
 
-.func
-.thumb_func
+thumb_func_start sub_800BEDA
 sub_800BEDA:
 	push {lr}
 	ldrb r0, [r5,#0x16]
@@ -255,10 +249,9 @@ loc_800BEF8:
 loc_800BF12:
 	mov r0, #0
 	pop {pc}
-.endfunc // sub_800BEDA
+thumb_func_end sub_800BEDA
 
-.func
-.thumb_func
+thumb_func_start sub_800BF16
 sub_800BF16:
 	push {r4,lr}
 	push {r0-r2}
@@ -294,20 +287,18 @@ loc_800BF50:
 	mov r1, #1
 	strb r1, [r0,#1]
 	pop {r4,pc}
-.endfunc // sub_800BF16
+thumb_func_end sub_800BF16
 
-.func
-.thumb_func
+thumb_func_start sub_800BF5C
 sub_800BF5C:
 	mov r1, #0x50 
 	mul r0, r1
 	ldr r1, off_800BF80 // =byte_203CF00 
 	add r0, r0, r1
 	mov pc, lr
-.endfunc // sub_800BF5C
+thumb_func_end sub_800BF5C
 
-.func
-.thumb_func
+thumb_func_start sub_800BF66
 sub_800BF66:
 	push {lr}
 	// memBlock
@@ -322,10 +313,9 @@ off_800BF78: .word 0x171
 off_800BF7C: .word 0x100
 off_800BF80: .word byte_203CF00
 off_800BF84: .word byte_203CF00
-.endfunc // sub_800BF66
+thumb_func_end sub_800BF66
 
-.func
-.thumb_func
+thumb_func_start sub_800BF88
 sub_800BF88:
 	push {r4,r6,r7,lr}
 	bl sub_800C4BC
@@ -355,10 +345,9 @@ sub_800BF88:
 	pop {r4,r6,r7,pc}
 	.byte 0, 0
 off_800BFC0: .word byte_2036740
-.endfunc // sub_800BF88
+thumb_func_end sub_800BF88
 
-.func
-.thumb_func
+thumb_func_start sub_800BFC4
 sub_800BFC4:
 	push {r4,r5,r7,lr}
 	bl battle_isPaused
@@ -403,10 +392,9 @@ loc_800C004:
 locret_800C016:
 	pop {r4,r5,r7,pc}
 off_800C018: .word unk_2039C00
-.endfunc // sub_800BFC4
+thumb_func_end sub_800BFC4
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C01C:
 	push {r4-r7,lr}
 	sub sp, sp, #0x28
@@ -473,10 +461,9 @@ byte_800C08C: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 byte_800C0AA: .byte 0xFB, 0x0, 0x5, 0xA, 0xF, 0x14, 0x19, 0x1E, 0x1E, 0x19
 	.byte 0x14, 0xF, 0xA, 0x5
 	.byte 0x0, 0xFB
-.endfunc // sub_800C01C
+thumb_func_end sub_800C01C
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C0BA:
 	push {r4-r7,lr}
 	sub sp, sp, #0x28
@@ -512,10 +499,9 @@ off_800C0F0: .word off_800C0F4
 off_800C0F4: .word dword_86E0458
 	.word dword_86E0478
 off_800C0FC: .word byte_800C0AA
-.endfunc // sub_800C0BA
+thumb_func_end sub_800C0BA
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C100:
 	push {r4-r7,lr}
 	sub sp, sp, #0x28
@@ -548,10 +534,9 @@ sub_800C100:
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	add sp, sp, #0x28
 	pop {r4-r7,pc}
-.endfunc // sub_800C100
+thumb_func_end sub_800C100
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C138:
 	push {r4-r7,lr}
 	sub sp, sp, #0x28
@@ -589,10 +574,9 @@ byte_800C178: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 byte_800C182: .byte 0xFB, 0x0, 0x5, 0xA, 0xF, 0x14, 0x19, 0x1E, 0x1E, 0x19
 	.byte 0x14, 0xF, 0xA, 0x5
 	.byte 0x0, 0xFB
-.endfunc // sub_800C138
+thumb_func_end sub_800C138
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C192:
 	push {r4-r7,lr}
 	ldr r5, off_800C1D8 // =byte_2036740 
@@ -737,10 +721,9 @@ dword_800C340: .word 0xD070C
 	.word 0xA
 	.word byte_86E0878
 	.word 0xA
-.endfunc // sub_800C192
+thumb_func_end sub_800C192
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C380:
 	push {r4-r7,lr}
 	add r4, r0, #0
@@ -879,10 +862,9 @@ loc_800C484:
 	strb r2, [r7,#6]
 locret_800C486:
 	pop {r4-r7,pc}
-.endfunc // sub_800C380
+thumb_func_end sub_800C380
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C488:
 	push {r0,r2,r3,lr}
 	bl sub_802D234
@@ -900,10 +882,9 @@ dword_800C4A4: .word 0x100000
 off_800C4B0: .word 0x1E0
 off_800C4B4: .word 0x708
 off_800C4B8: .word byte_203CB04
-.endfunc // sub_800C488
+thumb_func_end sub_800C488
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C4BC:
 	push {r4-r7,lr}
 	sub sp, sp, #8
@@ -1009,10 +990,9 @@ dword_800C590: .word 0x0, 0x0
 	.word 0x10101, 0x0, 0x0
 dword_800C5B8: .word 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.word 0x1010100, 0x10101, 0x0, 0x0
-.endfunc // sub_800C4BC
+thumb_func_end sub_800C4BC
 
-.func
-.thumb_func
+thumb_func_start sub_800C5E0
 sub_800C5E0:
 	push {r4-r7,lr}
 	bl sub_800C192
@@ -1089,10 +1069,9 @@ loc_800C672:
 	cmp r6, #0x28 
 	blt loc_800C5EA
 	pop {r4-r7,pc}
-.endfunc // sub_800C5E0
+thumb_func_end sub_800C5E0
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C67C:
 	push {r4-r7,lr}
 	sub sp, sp, #0xc
@@ -1140,20 +1119,18 @@ loc_800C6CE:
 	strb r0, [r7]
 	add sp, sp, #0xc
 	pop {r4-r7,pc}
-.endfunc // sub_800C67C
+thumb_func_end sub_800C67C
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C6D6:
 	mov r1, #0xc
 	mul r0, r1
 	ldr r1, off_800C8D4 // =byte_800D730 
 	add r0, r0, r1
 	mov pc, lr
-.endfunc // sub_800C6D6
+thumb_func_end sub_800C6D6
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C6E0:
 	mov r2, #8
 	mul r1, r2
@@ -1163,10 +1140,9 @@ sub_800C6E0:
 	ldr r1, off_800C8D8 // =byte_2039AE0 
 	add r0, r0, r1
 	mov pc, lr
-.endfunc // sub_800C6E0
+thumb_func_end sub_800C6E0
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C6F0:
 	push {r4-r7,lr}
 	sub sp, sp, #8
@@ -1212,10 +1188,9 @@ loc_800C734:
 	ldr r3, [sp,#4]
 	add sp, sp, #8
 	pop {r4-r7,pc}
-.endfunc // sub_800C6F0
+thumb_func_end sub_800C6F0
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C746:
 	push {r4-r7,lr}
 	sub sp, sp, #0x10
@@ -1333,10 +1308,9 @@ loc_800C80E:
 	ble loc_800C7EA
 	add sp, sp, #0x10
 	pop {r4-r7,pc}
-.endfunc // sub_800C746
+thumb_func_end sub_800C746
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C81E:
 	push {r4-r7,lr}
 	add r4, r0, #0
@@ -1360,10 +1334,9 @@ loc_800C842:
 	tst r7, r7
 	bne loc_800C828
 	pop {r4-r7,pc}
-.endfunc // sub_800C81E
+thumb_func_end sub_800C81E
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C84A:
 	push {r4-r6,lr}
 	add r4, r0, #0
@@ -1389,10 +1362,9 @@ loc_800C872:
 	add r0, r6, #0
 	add r1, r3, #0
 	pop {r4-r6,pc}
-.endfunc // sub_800C84A
+thumb_func_end sub_800C84A
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C878:
 	push {r4-r7,lr}
 	lsr r7, r0, #1
@@ -1432,10 +1404,9 @@ loc_800C898:
 	cmp r5, #5
 	blt loc_800C896
 	pop {r4-r7,pc}
-.endfunc // sub_800C878
+thumb_func_end sub_800C878
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C8C2:
 	mov r1, #8
 	mul r1, r0
@@ -1451,18 +1422,16 @@ off_800C8E0: .word unk_2034018
 off_800C8E4: .word byte_203F6B0
 off_800C8E8: .word unk_2034010
 off_800C8EC: .word unk_2034010
-.endfunc // sub_800C8C2
+thumb_func_end sub_800C8C2
 
-.func
-.thumb_func
+thumb_func_start sub_800C8F0
 sub_800C8F0:
 	push {lr}
 	bl sub_800C918
 	pop {pc}
-.endfunc // sub_800C8F0
+thumb_func_end sub_800C8F0
 
-.func
-.thumb_func
+thumb_func_start object_getPanelParameters
 object_getPanelParameters:
 	push {lr}
 	bl sub_800C90A
@@ -1473,10 +1442,9 @@ object_getPanelParameters:
 loc_800C906:
 	mov r0, #0
 	pop {pc}
-.endfunc // object_getPanelParameters
+thumb_func_end object_getPanelParameters
 
-.func
-.thumb_func
+thumb_func_start sub_800C90A
 sub_800C90A:
 	push {lr}
 	ldr r2, off_800C914 // =sub_3007958+1 
@@ -1484,10 +1452,9 @@ sub_800C90A:
 	bx r2
 	pop {pc}
 off_800C914: .word sub_3007958+1
-.endfunc // sub_800C90A
+thumb_func_end sub_800C90A
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C918:
 	push {lr}
 	ldr r0, off_800C924 // =sub_30078C8+1 
@@ -1496,10 +1463,9 @@ sub_800C918:
 	pop {pc}
 	.balign 4, 0x00
 off_800C924: .word sub_30078C8+1
-.endfunc // sub_800C918
+thumb_func_end sub_800C918
 
-.func
-.thumb_func
+thumb_local_start
 sub_800C928:
 	push {lr}
 	ldr r2, off_800C934 // =sub_30078E0+1 
@@ -1508,10 +1474,9 @@ sub_800C928:
 	pop {pc}
 	.balign 4, 0x00
 off_800C934: .word sub_30078E0+1
-.endfunc // sub_800C928
+thumb_func_end sub_800C928
 
-.func
-.thumb_func
+thumb_func_start object_crackPanel
 object_crackPanel:
 	push {lr}
 	bl sub_800C90A
@@ -1557,10 +1522,9 @@ loc_800C988:
 dword_800C98C: .word 0xF880080
 dword_800C990: .word 0x3F5F
 dword_800C994: .word 0x3F0F
-.endfunc // object_crackPanel
+thumb_func_end object_crackPanel
 
-.func
-.thumb_func
+thumb_func_start object_crackPanelDup1
 object_crackPanelDup1:
 	push {lr}
 	bl sub_800C90A
@@ -1606,10 +1570,9 @@ loc_800C9E8:
 dword_800C9EC: .word 0xF880080
 dword_800C9F0: .word 0x3F5F
 dword_800C9F4: .word 0x3F0F
-.endfunc // object_crackPanelDup1
+thumb_func_end object_crackPanelDup1
 
-.func
-.thumb_func
+thumb_func_start object_breakPanel
 object_breakPanel:
 	push {lr}
 	bl sub_800C90A
@@ -1638,10 +1601,9 @@ loc_800CA28:
 	pop {pc}
 dword_800CA2C: .word 0xF880080
 dword_800CA30: .word 0x3F5F
-.endfunc // object_breakPanel
+thumb_func_end object_breakPanel
 
-.func
-.thumb_func
+thumb_func_start object_breakPanel_dup1
 object_breakPanel_dup1:
 	push {lr}
 	bl sub_800C90A
@@ -1683,10 +1645,9 @@ loc_800CA7C:
 dword_800CA80: .word 0xF080080
 dword_800CA84: .word 0x3F5F
 dword_800CA88: .word 0x3F0F
-.endfunc // object_breakPanel_dup1
+thumb_func_end object_breakPanel_dup1
 
-.func
-.thumb_func
+thumb_func_start object_breakPanel_dup2
 object_breakPanel_dup2:
 	push {lr}
 	bl sub_800C90A
@@ -1730,10 +1691,9 @@ loc_800CAD8:
 dword_800CADC: .word 0xF880080
 dword_800CAE0: .word 0x3F5F
 dword_800CAE4: .word 0x3F0F
-.endfunc // object_breakPanel_dup2
+thumb_func_end object_breakPanel_dup2
 
-.func
-.thumb_func
+thumb_func_start object_breakPanel_dup3
 object_breakPanel_dup3:
 	push {lr}
 	bl sub_800C90A
@@ -1777,10 +1737,9 @@ loc_800CB34:
 dword_800CB38: .word 0xF880080
 dword_800CB3C: .word 0x3F5F
 dword_800CB40: .word 0x3F0F
-.endfunc // object_breakPanel_dup3
+thumb_func_end object_breakPanel_dup3
 
-.func
-.thumb_func
+thumb_func_start object_breakPanelLoud
 object_breakPanelLoud:
 	push {lr}
 	bl sub_800C90A
@@ -1824,10 +1783,9 @@ loc_800CB90:
 dword_800CB94: .word 0xF880080
 dword_800CB98: .word 0x3F5F
 dword_800CB9C: .word 0x3F0F
-.endfunc // object_breakPanelLoud
+thumb_func_end object_breakPanelLoud
 
-.func
-.thumb_func
+thumb_func_start object_panel_setPoison
 object_panel_setPoison:
 	push {lr}
 	bl sub_800C90A
@@ -1854,10 +1812,9 @@ loc_800CBCC:
 	pop {pc}
 dword_800CBD0: .word 0x3F5F
 off_800CBD4: .word 0x114
-.endfunc // object_panel_setPoison
+thumb_func_end object_panel_setPoison
 
-.func
-.thumb_func
+thumb_func_start object_highlightPanel
 object_highlightPanel:
 	push {lr}
 	push {r0,r1}
@@ -1869,10 +1826,9 @@ object_highlightPanel:
 	strb r1, [r0,#1]
 locret_800CBEC:
 	pop {pc}
-.endfunc // object_highlightPanel
+thumb_func_end object_highlightPanel
 
-.func
-.thumb_func
+thumb_local_start
 object_highlightPanelBlue:
 	push {lr}
 	push {r0,r1}
@@ -1887,20 +1843,18 @@ object_highlightPanelBlue:
 	strb r1, [r0,#1]
 locret_800CC08:
 	pop {pc}
-.endfunc // object_highlightPanelBlue
+thumb_func_end object_highlightPanelBlue
 
-.func
-.thumb_func
+thumb_func_start object_setPanelType
 object_setPanelType:
 	push {r4-r6,lr}
 	ldr r4, off_800CE54 // =sub_30079A4+1 
 	mov lr, pc
 	bx r4
 	pop {r4-r6,pc}
-.endfunc // object_setPanelType
+thumb_func_end object_setPanelType
 
-.func
-.thumb_func
+thumb_func_start object_setPanelAlliance
 object_setPanelAlliance:
 	push {r4-r6,lr}
 	add r4, r0, #0
@@ -1918,10 +1872,9 @@ object_setPanelAlliance:
 	bl sub_800C928
 locret_800CC34:
 	pop {r4-r6,pc}
-.endfunc // object_setPanelAlliance
+thumb_func_end object_setPanelAlliance
 
-.func
-.thumb_func
+thumb_func_start object_setPanelAllianceTimerLong
 object_setPanelAllianceTimerLong:
 	mov r1, #8
 	mul r1, r0
@@ -1930,10 +1883,9 @@ object_setPanelAllianceTimerLong:
 	ldr r2, off_800CE5C // =0x708 
 	strh r2, [r1,#6]
 	mov pc, lr
-.endfunc // object_setPanelAllianceTimerLong
+thumb_func_end object_setPanelAllianceTimerLong
 
-.func
-.thumb_func
+thumb_func_start object_setPanelAllianceTimerShort
 object_setPanelAllianceTimerShort:
 	mov r1, #8
 	mul r1, r0
@@ -1942,10 +1894,9 @@ object_setPanelAllianceTimerShort:
 	mov r2, #1
 	strh r2, [r1,#6]
 	mov pc, lr
-.endfunc // object_setPanelAllianceTimerShort
+thumb_func_end object_setPanelAllianceTimerShort
 
-.func
-.thumb_func
+thumb_func_start object_setPanelTypeBlink
 object_setPanelTypeBlink:
 	push {lr}
 	push {r2,r3}
@@ -1956,20 +1907,18 @@ object_setPanelTypeBlink:
 	strb r2, [r0,#8]
 	strb r3, [r0,#9]
 	pop {pc}
-.endfunc // object_setPanelTypeBlink
+thumb_func_end object_setPanelTypeBlink
 
-.func
-.thumb_func
+thumb_func_start object_isCurrentPanelValid
 object_isCurrentPanelValid:
 	push {lr}
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl object_isValidPanel
 	pop {pc}
-.endfunc // object_isCurrentPanelValid
+thumb_func_end object_isCurrentPanelValid
 
-.func
-.thumb_func
+thumb_func_start object_isValidPanel
 object_isValidPanel:
 	sub r0, #1
 	cmp r0, #6
@@ -1982,10 +1931,9 @@ object_isValidPanel:
 loc_800CC82:
 	mov r0, #0
 	mov pc, lr
-.endfunc // object_isValidPanel
+thumb_func_end object_isValidPanel
 
-.func
-.thumb_func
+thumb_func_start object_checkPanelParameters
 object_checkPanelParameters:
 	push {r4,r5,lr}
 	add r4, r2, #0
@@ -2003,30 +1951,27 @@ object_checkPanelParameters:
 loc_800CCA2:
 	mov r0, #0
 	pop {r4,r5,pc}
-.endfunc // object_checkPanelParameters
+thumb_func_end object_checkPanelParameters
 
-.func
-.thumb_func
+thumb_func_start object_isCurrentPanelSolid
 object_isCurrentPanelSolid:
 	push {lr}
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl object_isPanelSolid
 	pop {pc}
-.endfunc // object_isCurrentPanelSolid
+thumb_func_end object_isCurrentPanelSolid
 
-.func
-.thumb_func
+thumb_func_start object_isPanelSolid
 object_isPanelSolid:
 	push {lr}
 	bl object_getPanelParameters
 	mov r1, #0x10
 	and r0, r1
 	pop {pc}
-.endfunc // object_isPanelSolid
+thumb_func_end object_isPanelSolid
 
-.func
-.thumb_func
+thumb_func_start object_highlightCurrentCollisionPanels
 object_highlightCurrentCollisionPanels:
 	push {r4,lr}
 	ldr r4, [r5,#0x54]
@@ -2038,10 +1983,9 @@ object_highlightCurrentCollisionPanels:
 	ldrb r2, [r4,#1]
 	bl object_highlightPanelRegion
 	pop {r4,pc}
-.endfunc // object_highlightCurrentCollisionPanels
+thumb_func_end object_highlightCurrentCollisionPanels
 
-.func
-.thumb_func
+thumb_func_start object_highlightPanelRegion
 object_highlightPanelRegion:
 	push {r4,lr}
 	sub sp, sp, #0x14
@@ -2081,10 +2025,9 @@ loc_800CCFA:
 loc_800CD1C:
 	add sp, sp, #0x14
 	pop {r4,pc}
-.endfunc // object_highlightPanelRegion
+thumb_func_end object_highlightPanelRegion
 
-.func
-.thumb_func
+thumb_func_start object_highlightPanelRegionBlue
 object_highlightPanelRegionBlue:
 	push {r4,r6,lr}
 	sub sp, sp, #0x14
@@ -2160,10 +2103,9 @@ loc_800CDA8:
 	pop {r4,r6,pc}
 off_800CDAC: .word off_8019B78
 off_800CDB0: .word dword_8019C34
-.endfunc // object_highlightPanelRegionBlue
+thumb_func_end object_highlightPanelRegionBlue
 
-.func
-.thumb_func
+thumb_local_start
 object_dead_getPanelsTypeAllianceCount:
 	push {lr}
 	sub sp, sp, #0x14
@@ -2206,10 +2148,9 @@ loc_800CDE6:
 	ldr r0, [sp,#0x10]
 	add sp, sp, #0x14
 	pop {pc}
-.endfunc // object_dead_getPanelsTypeAllianceCount
+thumb_func_end object_dead_getPanelsTypeAllianceCount
 
-.func
-.thumb_func
+thumb_local_start
 object_dead_getPanelsTypeCount:
 	push {r4-r7,lr}
 	add r4, r0, #0
@@ -2235,10 +2176,9 @@ loc_800CE20:
 	ble loc_800CE10
 	add r0, r5, #0
 	pop {r4-r7,pc}
-.endfunc // object_dead_getPanelsTypeCount
+thumb_func_end object_dead_getPanelsTypeCount
 
-.func
-.thumb_func
+thumb_func_start object_hidePanel
 object_hidePanel:
 	push {lr}
 	bl sub_800C90A
@@ -2248,10 +2188,9 @@ object_hidePanel:
 	strb r1, [r0]
 locret_800CE40:
 	pop {pc}
-.endfunc // object_hidePanel
+thumb_func_end object_hidePanel
 
-.func
-.thumb_func
+thumb_local_start
 object_showPanel:
 	push {lr}
 	bl sub_800C90A
@@ -2266,10 +2205,9 @@ off_800CE54: .word sub_30079A4+1
 off_800CE58: .word unk_2034010
 off_800CE5C: .word 0x708
 off_800CE60: .word unk_2034010
-.endfunc // object_showPanel
+thumb_func_end object_showPanel
 
-.func
-.thumb_func
+thumb_func_start object_getPanelsExceptCurrentFilterred
 object_getPanelsExceptCurrentFilterred:
 	push {r4,r6,lr}
 	mov r6, #0
@@ -2304,10 +2242,9 @@ loc_800CE94:
 	bne loc_800CE6A
 	add r0, r6, #0
 	pop {r4,r6,pc}
-.endfunc // object_getPanelsExceptCurrentFilterred
+thumb_func_end object_getPanelsExceptCurrentFilterred
 
-.func
-.thumb_func
+thumb_func_start sub_800CEA0
 sub_800CEA0:
 	push {r4,r6,lr}
 	mov r6, #0
@@ -2335,10 +2272,9 @@ loc_800CEC4:
 	bne loc_800CEA6
 	add r0, r6, #0
 	pop {r4,r6,pc}
-.endfunc // sub_800CEA0
+thumb_func_end sub_800CEA0
 
-.func
-.thumb_func
+thumb_local_start
 sub_800CED0:
 	push {r7,lr}
 	sub sp, sp, #0x10
@@ -2374,10 +2310,9 @@ loc_800CF0E:
 	add sp, sp, #0x10
 	add r2, r0, #0
 	pop {r7,pc}
-.endfunc // sub_800CED0
+thumb_func_end sub_800CED0
 
-.func
-.thumb_func
+thumb_func_start sub_800CF14
 sub_800CF14:
 	push {r4,r6,lr}
 	mov r6, #0
@@ -2403,10 +2338,9 @@ loc_800CF38:
 	ble loc_800CF1C
 	add r0, r6, #0
 	pop {r4,r6,pc}
-.endfunc // sub_800CF14
+thumb_func_end sub_800CF14
 
-.func
-.thumb_func
+thumb_func_start sub_800CF42
 sub_800CF42:
 	push {r4,r6,lr}
 	mov r6, #0
@@ -2432,10 +2366,9 @@ loc_800CF66:
 	ble loc_800CF4A
 	add r0, r6, #0
 	pop {r4,r6,pc}
-.endfunc // sub_800CF42
+thumb_func_end sub_800CF42
 
-.func
-.thumb_func
+thumb_func_start sub_800CF70
 sub_800CF70:
 	push {r4,r6,lr}
 	mov r6, #0
@@ -2467,10 +2400,9 @@ loc_800CF9C:
 	ble loc_800CF78
 	add r0, r6, #0
 	pop {r4,r6,pc}
-.endfunc // sub_800CF70
+thumb_func_end sub_800CF70
 
-.func
-.thumb_func
+thumb_func_start sub_800CFA6
 sub_800CFA6:
 	push {r4,r6,lr}
 	mov r6, #0
@@ -2502,10 +2434,9 @@ loc_800CFD2:
 	ble loc_800CFAE
 	add r0, r6, #0
 	pop {r4,r6,pc}
-.endfunc // sub_800CFA6
+thumb_func_end sub_800CFA6
 
-.func
-.thumb_func
+thumb_func_start sub_800CFDC
 sub_800CFDC:
 	push {r4-r7,lr}
 	sub sp, sp, #8
@@ -2535,10 +2466,9 @@ loc_800D006:
 	add r0, r6, #0
 	add sp, sp, #8
 	pop {r4-r7,pc}
-.endfunc // sub_800CFDC
+thumb_func_end sub_800CFDC
 
-.func
-.thumb_func
+thumb_func_start sub_800D012
 sub_800D012:
 	push {r4-r7,lr}
 	sub sp, sp, #8
@@ -2568,10 +2498,9 @@ loc_800D03C:
 	add r0, r6, #0
 	add sp, sp, #8
 	pop {r4-r7,pc}
-.endfunc // sub_800D012
+thumb_func_end sub_800D012
 
-.func
-.thumb_func
+thumb_local_start
 sub_800D048:
 	push {lr}
 	ldrb r0, [r5,#0x16]
@@ -2592,10 +2521,9 @@ loc_800D066:
 	ldrb r0, [r5,#0x13]
 locret_800D068:
 	pop {pc}
-.endfunc // sub_800D048
+thumb_func_end sub_800D048
 
-.func
-.thumb_func
+thumb_func_start sub_800D06A
 sub_800D06A:
 	push {lr}
 	ldrb r0, [r5,#0x16]
@@ -2611,10 +2539,9 @@ loc_800D080:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	pop {pc}
-.endfunc // sub_800D06A
+thumb_func_end sub_800D06A
 
-.func
-.thumb_func
+thumb_func_start sub_800D086
 sub_800D086:
 	push {r4,r5,lr}
 	push {r0-r3}
@@ -2642,10 +2569,9 @@ loc_800D09E:
 	mov r0, #0
 locret_800D0BA:
 	pop {r4,r5,pc}
-.endfunc // sub_800D086
+thumb_func_end sub_800D086
 
-.func
-.thumb_func
+thumb_func_start sub_800D0BC
 sub_800D0BC:
 	push {lr}
 loc_800D0BE:
@@ -2663,10 +2589,9 @@ loc_800D0BE:
 	mov r0, #0
 locret_800D0DA:
 	pop {pc}
-.endfunc // sub_800D0BC
+thumb_func_end sub_800D0BC
 
-.func
-.thumb_func
+thumb_local_start
 sub_800D0DC:
 	push {lr}
 loc_800D0DE:
@@ -2687,10 +2612,9 @@ loc_800D0FC:
 	mov r0, #0
 locret_800D0FE:
 	pop {pc}
-.endfunc // sub_800D0DC
+thumb_func_end sub_800D0DC
 
-.func
-.thumb_func
+thumb_local_start
 sub_800D100:
 	push {lr}
 loc_800D102:
@@ -2708,10 +2632,9 @@ loc_800D102:
 	mov r0, #0
 locret_800D11E:
 	pop {pc}
-.endfunc // sub_800D100
+thumb_func_end sub_800D100
 
-.func
-.thumb_func
+thumb_func_start sub_800D120
 sub_800D120:
 	push {r6,r7,lr}
 	sub sp, sp, #8
@@ -2744,10 +2667,9 @@ loc_800D154:
 	add r1, r7, #0
 	add sp, sp, #8
 	pop {r6,r7,pc}
-.endfunc // sub_800D120
+thumb_func_end sub_800D120
 
-.func
-.thumb_func
+thumb_func_start sub_800D15A
 sub_800D15A:
 	push {r6,r7,lr}
 	sub sp, sp, #8
@@ -2777,10 +2699,9 @@ loc_800D18A:
 	add r1, r7, #0
 	add sp, sp, #8
 	pop {r6,r7,pc}
-.endfunc // sub_800D15A
+thumb_func_end sub_800D15A
 
-.func
-.thumb_func
+thumb_local_start
 sub_800D190:
 	push {r4,lr}
 	sub sp, sp, #0x14
@@ -2837,10 +2758,9 @@ loc_800D1EA:
 loc_800D1EC:
 	add sp, sp, #0x14
 	pop {r4,pc}
-.endfunc // sub_800D190
+thumb_func_end sub_800D190
 
-.func
-.thumb_func
+thumb_local_start
 sub_800D1F0:
 	push {r6,lr}
 	sub sp, sp, #0x20
@@ -2906,10 +2826,9 @@ loc_800D25C:
 	add r0, r6, #0
 	add sp, sp, #0x20
 	pop {r6,pc}
-.endfunc // sub_800D1F0
+thumb_func_end sub_800D1F0
 
-.func
-.thumb_func
+thumb_local_start
 sub_800D270:
 	push {r6,lr}
 	sub sp, sp, #0x20
@@ -2983,10 +2902,9 @@ loc_800D2EC:
 	add r0, r6, #0
 	add sp, sp, #0x20
 	pop {r6,pc}
-.endfunc // sub_800D270
+thumb_func_end sub_800D270
 
-.func
-.thumb_func
+thumb_local_start
 sub_800D300:
 	push {r6,lr}
 	sub sp, sp, #0x20
@@ -3072,10 +2990,9 @@ loc_800D392:
 	add r0, r6, #0
 	add sp, sp, #0x20
 	pop {r6,pc}
-.endfunc // sub_800D300
+thumb_func_end sub_800D300
 
-.func
-.thumb_func
+thumb_local_start
 sub_800D3A6:
 	push {r4,lr}
 	sub sp, sp, #0x38
@@ -3122,10 +3039,9 @@ loc_800D3F8:
 	ldr r0, [sp,#0x2c]
 	add sp, sp, #0x38
 	pop {r4,pc}
-.endfunc // sub_800D3A6
+thumb_func_end sub_800D3A6
 
-.func
-.thumb_func
+thumb_func_start sub_800D3FE
 sub_800D3FE:
 	push {r4,r6,lr}
 	sub sp, sp, #0x1c
@@ -3174,10 +3090,9 @@ loc_800D452:
 	add sp, sp, #0x1c
 	pop {r4,r6,pc}
 off_800D458: .word off_8019B78
-.endfunc // sub_800D3FE
+thumb_func_end sub_800D3FE
 
-.func
-.thumb_func
+thumb_func_start sub_800D45C
 sub_800D45C:
 	push {r4,r6,lr}
 	mov r6, #0
@@ -3220,10 +3135,9 @@ loc_800D498:
 	pop {r4,r6,pc}
 dword_800D4A4: .word 0x1800000
 dword_800D4A8: .word 0x2800000
-.endfunc // sub_800D45C
+thumb_func_end sub_800D45C
 
-.func
-.thumb_func
+thumb_local_start
 sub_800D4AC:
 	push {lr}
 	ldr r0, [r5,#0x58]
@@ -3237,10 +3151,9 @@ loc_800D4BC:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	pop {pc}
-.endfunc // sub_800D4AC
+thumb_func_end sub_800D4AC
 
-.func
-.thumb_func
+thumb_func_start sub_800D4C2
 sub_800D4C2:
 	push {lr}
 	ldrb r0, [r5,#0x16]
@@ -3248,10 +3161,9 @@ sub_800D4C2:
 	ldrb r2, [r5,#0x13]
 	bl sub_800D4D0
 	pop {pc}
-.endfunc // sub_800D4C2
+thumb_func_end sub_800D4C2
 
-.func
-.thumb_func
+thumb_func_start sub_800D4D0
 sub_800D4D0:
 	push {r4,lr}
 	sub sp, sp, #0x14
@@ -3296,10 +3208,9 @@ loc_800D524:
 off_800D528: .word dword_800D52C
 dword_800D52C: .word 0x0
 	.word 0x20, 0x20, 0x0
-.endfunc // sub_800D4D0
+thumb_func_end sub_800D4D0
 
-.func
-.thumb_func
+thumb_local_start
 sub_800D53C:
 	push {lr}
 	sub sp, sp, #0x14
@@ -3341,10 +3252,9 @@ loc_800D586:
 	ldr r0, [sp]
 	add sp, sp, #0x14
 	pop {pc}
-.endfunc // sub_800D53C
+thumb_func_end sub_800D53C
 
-.func
-.thumb_func
+thumb_func_start sub_800D58C
 sub_800D58C:
 	push {r4,r6,r7,lr}
 	bl sub_800D5BA
@@ -3367,10 +3277,9 @@ loc_800D59C:
 loc_800D5B6:
 	add r0, r6, #0
 	pop {r4,r6,r7,pc}
-.endfunc // sub_800D58C
+thumb_func_end sub_800D58C
 
-.func
-.thumb_func
+thumb_local_start
 sub_800D5BA:
 	push {r4,r6,r7,lr}
 	ldrb r6, [r5,#0x12]
@@ -3398,10 +3307,9 @@ loc_800D5E4:
 	add r4, r0, #0
 	b loc_800D5C6
 	pop {r4,r6,r7,pc}
-.endfunc // sub_800D5BA
+thumb_func_end sub_800D5BA
 
-.func
-.thumb_func
+thumb_func_start sub_800D5F0
 sub_800D5F0:
 	push {r4-r7,lr}
 	add r4, r1, #0
@@ -3424,10 +3332,9 @@ loc_800D60E:
 	ble loc_800D5FA
 	add r0, r5, #0
 	pop {r4-r7,pc}
-.endfunc // sub_800D5F0
+thumb_func_end sub_800D5F0
 
-.func
-.thumb_func
+thumb_func_start sub_800D618
 sub_800D618:
 	push {r4,lr}
 	add r4, r2, #0
@@ -3444,10 +3351,9 @@ sub_800D618:
 	mov r0, #1
 locret_800D634:
 	pop {r4,pc}
-.endfunc // sub_800D618
+thumb_func_end sub_800D618
 
-.func
-.thumb_func
+thumb_local_start
 sub_800D636:
 	push {r4,r5,r7,lr}
 	mov r2, #8
@@ -3473,10 +3379,9 @@ sub_800D636:
 loc_800D664:
 	mov r0, #1
 	pop {r4,r5,r7,pc}
-.endfunc // sub_800D636
+thumb_func_end sub_800D636
 
-.func
-.thumb_func
+thumb_func_start sub_800D668
 sub_800D668:
 	push {r4-r7,lr}
 	sub sp, sp, #0xc
@@ -3531,10 +3436,9 @@ loc_800D6C6:
 loc_800D6C8:
 	add sp, sp, #0xc
 	pop {r4-r7,pc}
-.endfunc // sub_800D668
+thumb_func_end sub_800D668
 
-.func
-.thumb_func
+thumb_local_start
 sub_800D6CC:
 	push {r4-r6,lr}
 	mov r2, #8
@@ -3563,10 +3467,9 @@ loc_800D6E0:
 loc_800D6FC:
 	mov r0, #0
 	pop {r4-r6,pc}
-.endfunc // sub_800D6CC
+thumb_func_end sub_800D6CC
 
-.func
-.thumb_func
+thumb_local_start
 sub_800D700:
 	push {r4-r7,lr}
 	mov r4, #0
@@ -3875,20 +3778,18 @@ byte_800D730: .byte 0x22, 0x22, 0x22, 0x0, 0x22, 0x22, 0x22, 0x0, 0x22, 0x22
 	.byte 0x22, 0x55, 0x22, 0x0, 0x22, 0x55, 0x22, 0x0, 0x22, 0x55
 	.byte 0x22, 0x0, 0x22, 0x2, 0x0, 0x0, 0x22, 0x2, 0x0, 0x0
 	.byte 0x22, 0x2, 0x0, 0x0
-.endfunc // sub_800D700
+thumb_func_end sub_800D700
 
-.func
-.thumb_func
+thumb_func_start sub_800E24C
 sub_800E24C:
 	push {lr}
 	ldr r0, [r5,#0x34]
 	ldr r1, [r5,#0x38]
 	bl sub_800E258
 	pop {pc}
-.endfunc // sub_800E24C
+thumb_func_end sub_800E24C
 
-.func
-.thumb_func
+thumb_func_start sub_800E258
 sub_800E258:
 	push {r5,r6,lr}
 	add r6, r1, #0
@@ -3905,10 +3806,9 @@ sub_800E258:
 	add r1, r0, #0
 	pop {r0}
 	pop {r5,r6,pc}
-.endfunc // sub_800E258
+thumb_func_end sub_800E258
 
-.func
-.thumb_func
+thumb_func_start sub_800E276
 // (int a1, int a2) -> (int n1, int n2)
 sub_800E276:
 	mov r2, #0x28 
@@ -3928,10 +3828,9 @@ sub_800E276:
 	mov pc, lr
 dword_800E294: .word 0xFF740000
 dword_800E298: .word 0xFFEC0000
-.endfunc // sub_800E276
+thumb_func_end sub_800E276
 
-.func
-.thumb_func
+thumb_func_start sub_800E29C
 // () -> void
 sub_800E29C:
 	push {lr}
@@ -3941,10 +3840,9 @@ sub_800E29C:
 	str r0, [r5,#0x34]
 	str r1, [r5,#0x38]
 	pop {pc}
-.endfunc // sub_800E29C
+thumb_func_end sub_800E29C
 
-.func
-.thumb_func
+thumb_func_start sub_800E2AC
 sub_800E2AC:
 	push {lr}
 	ldr r0, [r5,#0x34]
@@ -3955,33 +3853,29 @@ sub_800E2AC:
 	strb r0, [r5,#0x12]
 	strb r1, [r5,#0x13]
 	pop {pc}
-.endfunc // sub_800E2AC
+thumb_func_end sub_800E2AC
 
-.func
-.thumb_func
+thumb_func_start sub_800E2C0
 sub_800E2C0:
 	ldrb r0, [r5,#0x16]
-.endfunc // sub_800E2C0
+thumb_func_end sub_800E2C0
 
-.func
-.thumb_func
+thumb_func_start sub_800E2C2
 sub_800E2C2:
 	lsl r0, r0, #1
 	sub r0, #1
 	neg r0, r0
 	mov pc, lr
-.endfunc // sub_800E2C2
+thumb_func_end sub_800E2C2
 
-.func
-.thumb_func
+thumb_func_start object_getFlipDirection_800E2CA
 // () -> int
 object_getFlipDirection_800E2CA:
 	ldrb r0, [r5,#0x16]
 	ldrb r1, [r5,#0x17]
-.endfunc // object_getFlipDirection_800E2CA
+thumb_func_end object_getFlipDirection_800E2CA
 
-.func
-.thumb_func
+thumb_func_start object_getFlipDirection
 // (int a1, int a2) -> int
 object_getFlipDirection:
 	eor r0, r1
@@ -3989,10 +3883,9 @@ object_getFlipDirection:
 	sub r0, #1
 	neg r0, r0
 	mov pc, lr
-.endfunc // object_getFlipDirection
+thumb_func_end object_getFlipDirection
 
-.func
-.thumb_func
+thumb_func_start object_subtractHP
 object_subtractHP:
 	push {r4,lr}
 	ldrh r1, [r5,#0x24]
@@ -4004,10 +3897,9 @@ loc_800E2E2:
 	pop {r4,pc}
 	.balign 4, 0x00
 	.word 0x40000000
-.endfunc // object_subtractHP
+thumb_func_end object_subtractHP
 
-.func
-.thumb_func
+thumb_func_start object_addHP
 object_addHP:
 	ldrh r1, [r5,#0x24]
 	add r1, r1, r0
@@ -4018,10 +3910,9 @@ object_addHP:
 loc_800E2F8:
 	strh r1, [r5,#0x24]
 	mov pc, lr
-.endfunc // object_addHP
+thumb_func_end object_addHP
 
-.func
-.thumb_func
+thumb_func_start sub_800E2FC
 sub_800E2FC:
 	push {r4,r6,r7,lr}
 	add r6, r0, #0
@@ -4068,10 +3959,9 @@ loc_800E330:
 	mov r0, #1
 locret_800E35E:
 	pop {r4,r6,r7,pc}
-.endfunc // sub_800E2FC
+thumb_func_end sub_800E2FC
 
-.func
-.thumb_func
+thumb_func_start sub_800E360
 sub_800E360:
 	push {r4,r6,r7,lr}
 	add r6, r0, #0
@@ -4116,10 +4006,9 @@ loc_800E38E:
 	mov r0, #1
 locret_800E3BC:
 	pop {r4,r6,r7,pc}
-.endfunc // sub_800E360
+thumb_func_end sub_800E360
 
-.func
-.thumb_func
+thumb_func_start sub_800E3BE
 sub_800E3BE:
 	push {r4,lr}
 	ldr r3, [r5,#0x54]
@@ -4138,10 +4027,9 @@ loc_800E3C8:
 	mov r1, #0x8c
 	ldrh r1, [r3,r1]
 	pop {r4,pc}
-.endfunc // sub_800E3BE
+thumb_func_end sub_800E3BE
 
-.func
-.thumb_func
+thumb_func_start sub_800E3DE
 sub_800E3DE:
 	push {r4,r6,lr}
 	ldr r4, [r5,#0x54]
@@ -4176,10 +4064,9 @@ loc_800E404:
 	add r3, #0x80
 	strh r0, [r3]
 	pop {r4,r6,pc}
-.endfunc // sub_800E3DE
+thumb_func_end sub_800E3DE
 
-.func
-.thumb_func
+thumb_func_start object_calculateFinalDamage2
 object_calculateFinalDamage2:
 	push {r4,lr}
 	ldr r4, [r5,#0x54]
@@ -4209,29 +4096,26 @@ loc_800E43E:
 	add r3, #0x80
 	strh r0, [r3]
 	pop {r4,pc}
-.endfunc // object_calculateFinalDamage2
+thumb_func_end object_calculateFinalDamage2
 
-.func
-.thumb_func
+thumb_func_start sub_800E456
 // () -> int
 sub_800E456:
 	ldrb r0, [r5,#0x16]
 	ldrb r1, [r5,#0x17]
 	eor r0, r1
 	mov pc, lr
-.endfunc // sub_800E456
+thumb_func_end sub_800E456
 
-.func
-.thumb_func
+thumb_func_start sub_800E45E
 sub_800E45E:
 	push {lr}
 	mov r0, #1
 	bl sub_800E468
 	pop {pc}
-.endfunc // sub_800E45E
+thumb_func_end sub_800E45E
 
-.func
-.thumb_func
+thumb_func_start sub_800E468
 sub_800E468:
 	push {r4,lr}
 	sub sp, sp, #0x10
@@ -4257,10 +4141,9 @@ loc_800E48E:
 loc_800E494:
 	add sp, sp, #0x10
 	pop {r4,pc}
-.endfunc // sub_800E468
+thumb_func_end sub_800E468
 
-.func
-.thumb_func
+thumb_local_start
 sub_800E498:
 	push {lr}
 	lsl r0, r0, #2
@@ -4291,10 +4174,9 @@ dword_800E4C9: .word 0xFF1C04B5
 off_800E4E4: .word dword_800E4E8
 dword_800E4E8: .word 0x0
 	.word 0x1FF00, 0x10100, 0x100FF, 0x10001, 0x0
-.endfunc // sub_800E498
+thumb_func_end sub_800E498
 
-.func
-.thumb_func
+thumb_local_start
 sub_800E500:
 	push {r4,lr}
 	ldrb r0, [r5,#0x12]
@@ -4353,10 +4235,9 @@ dword_800E58C: .word 0xFF060001
 	.word 0x100FF01
 	.word 0x0
 	.word 0x10006FF, 0x1FF0006, 0x10100, 0x0
-.endfunc // sub_800E500
+thumb_func_end sub_800E500
 
-.func
-.thumb_func
+thumb_func_start sub_800E5AC
 sub_800E5AC:
 	push {r6,r7,lr}
 	add r6, r0, #0
@@ -4384,10 +4265,9 @@ loc_800E5C6:
 loc_800E5DE:
 	mov r0, #0
 	pop {r6,r7,pc}
-.endfunc // sub_800E5AC
+thumb_func_end sub_800E5AC
 
-.func
-.thumb_func
+thumb_func_start object_canMove
 object_canMove:
 	push {r4,lr}
 	bl object_getFlag // () -> int
@@ -4401,10 +4281,9 @@ loc_800E5F4:
 	mov r0, #0
 	pop {r4,pc}
 dword_800E5F8: .word 0x5040
-.endfunc // object_canMove
+thumb_func_end object_canMove
 
-.func
-.thumb_func
+thumb_func_start sub_800E5FC
 sub_800E5FC:
 	push {r4,lr}
 	bl object_getFlag // () -> int
@@ -4419,10 +4298,9 @@ loc_800E60E:
 	pop {r4,pc}
 	.balign 4, 0x00
 off_800E614: .word 0x1040
-.endfunc // sub_800E5FC
+thumb_func_end sub_800E5FC
 
-.func
-.thumb_func
+thumb_func_start sub_800E618
 sub_800E618:
 	push {r6,r7,lr}
 	add r6, r0, #0
@@ -4461,10 +4339,9 @@ off_800E65C: .word byte_800E660
 byte_800E660: .byte 0x10, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xB, 0x30, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x88, 0x7, 0x0, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xB, 0x20, 0x0
 	.byte 0x0, 0x0, 0x80, 0x0, 0x88, 0x7
-.endfunc // sub_800E618
+thumb_func_end sub_800E618
 
-.func
-.thumb_func
+thumb_func_start sub_800E680
 sub_800E680:
 	push {r6,r7,lr}
 	add r6, r0, #0
@@ -4503,10 +4380,9 @@ off_800E6C4: .word byte_800E6C8
 byte_800E6C8: .byte 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x7, 0x10, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x80, 0xB, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x7, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x80, 0xB
-.endfunc // sub_800E680
+thumb_func_end sub_800E680
 
-.func
-.thumb_func
+thumb_func_start sub_800E6E8
 sub_800E6E8:
 	mov r3, #0
 	cmp r0, r1
@@ -4526,10 +4402,9 @@ loc_800E6FA:
 loc_800E704:
 	add r0, r3, #0
 	mov pc, lr
-.endfunc // sub_800E6E8
+thumb_func_end sub_800E6E8
 
-.func
-.thumb_func
+thumb_func_start sub_800E708
 sub_800E708:
 	mov r3, #0
 	cmp r0, r2
@@ -4554,10 +4429,9 @@ loc_800E72A:
 loc_800E72C:
 	add r0, r3, #0
 	mov pc, lr
-.endfunc // sub_800E708
+thumb_func_end sub_800E708
 
-.func
-.thumb_func
+thumb_func_start sub_800E730
 sub_800E730:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #4
@@ -4842,10 +4716,9 @@ dword_800E984: .word 0x30088
 dword_800E988: .word 0x80010800
 dword_800E98C: .word 0x4000
 off_800E990: .word 0x2000
-.endfunc // sub_800E730
+thumb_func_end sub_800E730
 
-.func
-.thumb_func
+thumb_func_start sub_800E994
 sub_800E994:
 	sub r0, r0, r2
 	sub r1, r1, r3
@@ -4890,10 +4763,9 @@ loc_800E9D4:
 loc_800E9D8:
 	mov r0, #5
 	mov pc, lr
-.endfunc // sub_800E994
+thumb_func_end sub_800E994
 
-.func
-.thumb_func
+thumb_func_start object_setCounterTime
 object_setCounterTime:
 	push {lr}
 	ldr r2, [r5,#0x58]
@@ -4911,10 +4783,9 @@ loc_800E9F4:
 	strb r0, [r3,#0xd]
 locret_800E9F8:
 	pop {pc}
-.endfunc // object_setCounterTime
+thumb_func_end object_setCounterTime
 
-.func
-.thumb_func
+thumb_func_start sub_800E9FA
 sub_800E9FA:
 	push {lr}
 	ldr r0, dword_800ECD8 // =0x301fe 
@@ -4924,10 +4795,9 @@ sub_800E9FA:
 	mov r1, #0xe
 	bl sub_80008C0
 	pop {pc}
-.endfunc // sub_800E9FA
+thumb_func_end sub_800E9FA
 
-.func
-.thumb_func
+thumb_func_start sub_800EA0E
 sub_800EA0E:
 	push {lr}
 	ldr r0, dword_800ECD8 // =0x301fe 
@@ -4937,10 +4807,9 @@ sub_800EA0E:
 	mov r1, #0xe
 	bl sub_80008C0
 	pop {pc}
-.endfunc // sub_800EA0E
+thumb_func_end sub_800EA0E
 
-.func
-.thumb_func
+thumb_func_start sub_800EA22
 sub_800EA22:
 	push {lr}
 	ldr r0, dword_800ECDC // =0x300ee 
@@ -4964,10 +4833,9 @@ loc_800EA38:
 	mov r3, #0x80
 	strh r1, [r2,r3]
 	pop {pc}
-.endfunc // sub_800EA22
+thumb_func_end sub_800EA22
 
-.func
-.thumb_func
+thumb_local_start
 sub_800EA4E:
 	push {lr}
 	ldr r0, dword_800ECD8 // =0x301fe 
@@ -5004,10 +4872,9 @@ loc_800EA82:
 	strh r2, [r0,r1]
 locret_800EA8E:
 	pop {pc}
-.endfunc // sub_800EA4E
+thumb_func_end sub_800EA4E
 
-.func
-.thumb_func
+thumb_func_start sub_800EA90
 sub_800EA90:
 	push {r4,lr}
 	ldr r2, [r5,#0x54]
@@ -5032,19 +4899,17 @@ loc_800EA9C:
 	mov r0, #1
 locret_800EAB8:
 	pop {r4,pc}
-.endfunc // sub_800EA90
+thumb_func_end sub_800EA90
 
-.func
-.thumb_func
+thumb_func_start sub_800EABA
 sub_800EABA:
 	push {lr}
 	ldr r0, dword_800ECD8 // =0x301fe 
 	bl sub_801A176
 	pop {pc}
-.endfunc // sub_800EABA
+thumb_func_end sub_800EABA
 
-.func
-.thumb_func
+thumb_func_start sub_800EAC4
 sub_800EAC4:
 	push {lr}
 	ldr r2, [r5,#0x54]
@@ -5057,10 +4922,9 @@ sub_800EAC4:
 	sub r1, r1, r0
 	strh r1, [r2,r3]
 	pop {pc}
-.endfunc // sub_800EAC4
+thumb_func_end sub_800EAC4
 
-.func
-.thumb_func
+thumb_func_start sub_800EADA
 sub_800EADA:
 	push {lr}
 	ldr r0, dword_800ECD8 // =0x301fe 
@@ -5074,17 +4938,15 @@ sub_800EADA:
 	strh r1, [r0,#0x2c]
 	strh r1, [r0,#0x1c]
 	pop {pc}
-.endfunc // sub_800EADA
+thumb_func_end sub_800EADA
 
-.func
-.thumb_func
+thumb_local_start
 sub_800EAF6:
 	push {r4,r6,r7,lr}
 	pop {r4,r6,r7,pc}
-.endfunc // sub_800EAF6
+thumb_func_end sub_800EAF6
 
-.func
-.thumb_func
+thumb_func_start object_setInvulnerableTime
 object_setInvulnerableTime:
 	push {lr}
 	ldr r1, [r5,#0x54]
@@ -5092,10 +4954,9 @@ object_setInvulnerableTime:
 	mov r0, #8
 	bl object_setFlag // (int a1) -> void
 	pop {pc}
-.endfunc // object_setInvulnerableTime
+thumb_func_end object_setInvulnerableTime
 
-.func
-.thumb_func
+thumb_func_start sub_800EB08
 sub_800EB08:
 	push {lr}
 	ldr r1, [r5,#0x54]
@@ -5104,10 +4965,9 @@ sub_800EB08:
 	mov r0, #8
 	bl object_clearFlag // (int bitfield) -> void
 	pop {pc}
-.endfunc // sub_800EB08
+thumb_func_end sub_800EB08
 
-.func
-.thumb_func
+thumb_local_start
 sub_800EB18:
 	push {lr}
 	ldr r1, [r5,#0x54]
@@ -5115,10 +4975,9 @@ sub_800EB18:
 	ldr r0, dword_800ECE0 // =0x4000 
 	bl object_setFlag // (int a1) -> void
 	pop {pc}
-.endfunc // sub_800EB18
+thumb_func_end sub_800EB18
 
-.func
-.thumb_func
+thumb_func_start sub_800EB26
 sub_800EB26:
 	push {lr}
 	ldr r3, [r5,#0x54]
@@ -5140,10 +4999,9 @@ loc_800EB3C:
 	bl sub_801A176
 locret_800EB4C:
 	pop {pc}
-.endfunc // sub_800EB26
+thumb_func_end sub_800EB26
 
-.func
-.thumb_func
+thumb_local_start
 sub_800EB4E:
 	push {r4,lr}
 	ldr r4, [r5,#0x54]
@@ -5159,10 +5017,9 @@ sub_800EB4E:
 	bl sub_801A176
 locret_800EB6A:
 	pop {r4,pc}
-.endfunc // sub_800EB4E
+thumb_func_end sub_800EB4E
 
-.func
-.thumb_func
+thumb_func_start sub_800EB6C
 sub_800EB6C:
 	push {r4,r5,lr}
 	mov r4, r10
@@ -5188,10 +5045,9 @@ loc_800EB8C:
 loc_800EB9A:
 	mov r0, #1
 	pop {r4,r5,pc}
-.endfunc // sub_800EB6C
+thumb_func_end sub_800EB6C
 
-.func
-.thumb_func
+thumb_func_start object_spawnHiteffect
 object_spawnHiteffect:
 	push {r4,r6,lr}
 	bl battle_isPaused
@@ -5216,10 +5072,9 @@ object_spawnHiteffect:
 locret_800EBCE:
 	pop {r4,r6,pc}
 dword_800EBD0: .word 0x20000
-.endfunc // object_spawnHiteffect
+thumb_func_end object_spawnHiteffect
 
-.func
-.thumb_func
+thumb_func_start object_getEnemyByNameRange
 object_getEnemyByNameRange:
 	push {r4-r7,lr}
 	mov r4, #0x10
@@ -5249,10 +5104,9 @@ loc_800EBFC:
 	blt loc_800EBE6
 	add r0, r5, #0
 	pop {r4-r7,pc}
-.endfunc // object_getEnemyByNameRange
+thumb_func_end object_getEnemyByNameRange
 
-.func
-.thumb_func
+thumb_local_start
 sub_800EC08:
 	push {r4-r7,lr}
 	mov r4, #0x10
@@ -5282,20 +5136,18 @@ loc_800EC30:
 	blt loc_800EC1A
 	add r0, r5, #0
 	pop {r4-r7,pc}
-.endfunc // sub_800EC08
+thumb_func_end sub_800EC08
 
-.func
-.thumb_func
+thumb_func_start sub_800EC3C
 sub_800EC3C:
 	push {r5,lr}
 	add r5, r0, #0
 	ldr r0, dword_800ECE8 // =0x8000 
 	bl sub_801A16C
 	pop {r5,pc}
-.endfunc // sub_800EC3C
+thumb_func_end sub_800EC3C
 
-.func
-.thumb_func
+thumb_func_start sub_800EC48
 sub_800EC48:
 	ldrb r2, [r5,#0x16]
 	lsl r2, r2, #3
@@ -5304,10 +5156,9 @@ sub_800EC48:
 	add r3, #4
 	ldr r3, [r3]
 	mov pc, lr
-.endfunc // sub_800EC48
+thumb_func_end sub_800EC48
 
-.func
-.thumb_func
+thumb_func_start sub_800EC56
 sub_800EC56:
 	ldr r2, off_800ECEC // =dword_86F047C 
 	cmp r0, #0xff
@@ -5318,10 +5169,9 @@ loc_800EC5E:
 	and r1, r0
 	add r0, r2, #0
 	mov pc, lr
-.endfunc // sub_800EC56
+thumb_func_end sub_800EC56
 
-.func
-.thumb_func
+thumb_local_start
 sub_800EC66:
 	push {lr}
 	mov r0, r10
@@ -5337,10 +5187,9 @@ sub_800EC66:
 	mov r0, #0
 locret_800EC7E:
 	pop {pc}
-.endfunc // sub_800EC66
+thumb_func_end sub_800EC66
 
-.func
-.thumb_func
+thumb_func_start sub_800EC80
 sub_800EC80:
 	push {r4,r5,r7,lr}
 	push {r0}
@@ -5398,10 +5247,9 @@ off_800ECF0: .word dword_86F0D7C
 	.word 0x0
 	.word 0x0
 	.word 0x0
-.endfunc // sub_800EC80
+thumb_func_end sub_800EC80
 
-.func
-.thumb_func
+thumb_func_start sub_800ED00
 sub_800ED00:
 	ldr r0, off_800ED20 // =unk_2034080 
 	ldr r1, dword_800ED24 // =0x80000000 
@@ -5423,10 +5271,9 @@ loc_800ED0A:
 off_800ED20: .word unk_2034080
 dword_800ED24: .word 0x80000000
 off_800ED28: .word byte_203F6A0
-.endfunc // sub_800ED00
+thumb_func_end sub_800ED00
 
-.func
-.thumb_func
+thumb_func_start object_createAIData
 object_createAIData:
 	push {r4,r5,lr}
 	// memBlock
@@ -5474,6 +5321,6 @@ loc_800ED52:
 	.balign 4, 0x00
 off_800ED78: .word unk_2034080
 off_800ED7C: .word byte_203F6A0
-.endfunc // object_createAIData
+thumb_func_end object_createAIData
 
 /*For debugging purposes, connect comment at any range!*/

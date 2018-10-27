@@ -1,7 +1,6 @@
 .include "asm/asm21.inc"
 
-.func
-.thumb_func
+thumb_func_start sub_8080D90
 sub_8080D90:
 	push {lr}
 	ldr r0, off_8080D9C // =dword_2009690 
@@ -9,10 +8,9 @@ sub_8080D90:
 	bl clearBackwards_80008B4 // (void *mem, int size) -> void
 	pop {pc}
 off_8080D9C: .word dword_2009690
-.endfunc // sub_8080D90
+thumb_func_end sub_8080D90
 
-.func
-.thumb_func
+thumb_func_start sub_8080DA0
 sub_8080DA0:
 	push {r4-r7,lr}
 	bl sub_8081308
@@ -43,10 +41,9 @@ sub_8080DA0:
 	bl sub_8035424
 locret_8080DE8:
 	pop {r4-r7,pc}
-.endfunc // sub_8080DA0
+thumb_func_end sub_8080DA0
 
-.func
-.thumb_func
+thumb_local_start
 sub_8080DEA:
 	push {r4-r7,lr}
 	bl sub_808137C
@@ -291,10 +288,9 @@ off_80812F4: .word off_807EB18
 off_80812FC: .word byte_80808D8
 	.word off_8069C80
 	.word 0xFFFFFFFF
-.endfunc // sub_8080DEA
+thumb_func_end sub_8080DEA
 
-.func
-.thumb_func
+thumb_local_start
 sub_8081308:
 	push {r4-r7,lr}
 	mov r0, r10
@@ -349,10 +345,9 @@ off_8081364: .word word_8081368
 word_8081368: .hword 0x83
 word_808136A: .hword 0xBE1
 	.word 0xBE20183, 0xBE30283, 0xFD20285, 0x0
-.endfunc // sub_8081308
+thumb_func_end sub_8081308
 
-.func
-.thumb_func
+thumb_local_start
 sub_808137C:
 	push {r4-r7,lr}
 	cmp r1, #0x80
@@ -395,6 +390,6 @@ pt_808139C:
 	.word dword_8081448
 	.word dword_808144C
 	.word dword_8081450
-.endfunc // sub_808137C
+thumb_func_end sub_808137C
 
 /*For debugging purposes, connect comment at any range!*/

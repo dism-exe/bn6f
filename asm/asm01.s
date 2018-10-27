@@ -1,7 +1,6 @@
 .include "asm/asm01.inc"
 
-.func
-.thumb_func
+thumb_func_start sub_801FE00
 sub_801FE00:
 	push {lr}
 	ldr r3, off_80200B4 // =byte_203F7D8 
@@ -19,10 +18,9 @@ sub_801FE00:
 	ldr r1, off_80200C8 // =0x100 
 	bl CpuFastSet_8000900 // (int a1, int a2) -> void
 	pop {pc}
-.endfunc // sub_801FE00
+thumb_func_end sub_801FE00
 
-.func
-.thumb_func
+thumb_func_start sub_801FE24
 sub_801FE24:
 	push {r4,lr}
 	bl get_802D246 // () -> int
@@ -51,27 +49,24 @@ loc_801FE56:
 	strb r0, [r3]
 locret_801FE5C:
 	pop {r4,pc}
-.endfunc // sub_801FE24
+thumb_func_end sub_801FE24
 
-.func
-.thumb_func
+thumb_func_start sub_801FE5E
 sub_801FE5E:
 	ldr r3, off_80200D0 // =byte_203F7D8 
 	ldrb r0, [r3]
 	mov pc, lr
-.endfunc // sub_801FE5E
+thumb_func_end sub_801FE5E
 
-.func
-.thumb_func
+thumb_func_start sub_801FE64
 sub_801FE64:
 	ldr r1, off_80200D4 // =byte_203F7D8 
 	mov r0, #0
 	strb r0, [r1]
 	mov pc, lr
-.endfunc // sub_801FE64
+thumb_func_end sub_801FE64
 
-.func
-.thumb_func
+thumb_func_start sub_801FE6C
 sub_801FE6C:
 	push {r4,r6,lr}
 	ldr r4, off_80200D8 // =byte_203F7D8 
@@ -134,18 +129,16 @@ loc_801FED2:
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 locret_801FEE6:
 	pop {r4,r6,pc}
-.endfunc // sub_801FE6C
+thumb_func_end sub_801FE6C
 
-.func
-.thumb_func
+thumb_func_start sub_801FEE8
 sub_801FEE8:
 	ldr r0, off_80200EC // =byte_203F7D8 
 	ldrb r0, [r0,#0x1] // (byte_203F7D8+1 - 0x203f7d8)
 	mov pc, lr
-.endfunc // sub_801FEE8
+thumb_func_end sub_801FEE8
 
-.func
-.thumb_func
+thumb_func_start sub_801FEEE
 sub_801FEEE:
 	push {r4-r7,lr}
 	add r7, r0, #0
@@ -162,10 +155,9 @@ off_801FF08: .word sub_801FF18+1
 	.word sub_801FFD6+1
 	.word sub_801FFD6+1
 	.word sub_801FF18+1
-.endfunc // sub_801FEEE
+thumb_func_end sub_801FEEE
 
-.func
-.thumb_func
+thumb_local_start
 sub_801FF18:
 	push {r4-r7,lr}
 	sub sp, sp, #4
@@ -263,10 +255,9 @@ loc_801FFC6:
 loc_801FFD2:
 	add sp, sp, #4
 	pop {r4-r7,pc}
-.endfunc // sub_801FF18
+thumb_func_end sub_801FF18
 
-.func
-.thumb_func
+thumb_local_start
 sub_801FFD6:
 	push {r4-r7,lr}
 	sub sp, sp, #8
@@ -375,10 +366,9 @@ loc_8020094:
 loc_80200A0:
 	add sp, sp, #8
 	pop {r4-r7,pc}
-.endfunc // sub_801FFD6
+thumb_func_end sub_801FFD6
 
-.func
-.thumb_func
+thumb_func_start sub_80200A4
 sub_80200A4:
 	ldr r3, off_8020130 // =byte_203F7D8 
 	strb r0, [r3,#0x3] // (byte_203F7D8+3 - 0x203f7d8)
@@ -420,10 +410,9 @@ off_8020124: .word unk_20362F0
 off_8020128: .word word_2036780
 off_802012C: .word dword_203CBE0
 off_8020130: .word byte_203F7D8
-.endfunc // sub_80200A4
+thumb_func_end sub_80200A4
 
-.func
-.thumb_func
+thumb_func_start sub_8020134
 sub_8020134:
 	push {lr}
 	// memBlock
@@ -432,10 +421,9 @@ sub_8020134:
 	mov r1, #4
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
-.endfunc // sub_8020134
+thumb_func_end sub_8020134
 
-.func
-.thumb_func
+thumb_func_start sub_8020140
 sub_8020140:
 	push {r7,lr}
 	bl sub_813D60C
@@ -449,16 +437,15 @@ sub_8020140:
 	strb r0, [r7,#0x1] // (byte_2038161 - 0x2038160)
 locret_802015C:
 	pop {r7,pc}
-.endfunc // sub_8020140
+thumb_func_end sub_8020140
 
-.func
-.thumb_func
+thumb_func_start sub_802015E
 sub_802015E:
 	ldr r0, off_802016C // =unk_2038160 
 	ldrb r0, [r0,#0x1] // (byte_2038161 - 0x2038160)
 	// <endpool>
 	mov pc, lr
-.endfunc // sub_802015E
+thumb_func_end sub_802015E
 
 off_8020164: .word unk_2038160
 off_8020168: .word unk_2038160

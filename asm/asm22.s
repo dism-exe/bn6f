@@ -1,7 +1,6 @@
 .include "asm/asm22.inc"
 
-.func
-.thumb_func
+thumb_local_start
 sub_8086F18:
 	push {r4-r7,lr}
 	ldr r5, off_8086FA0 // =dword_8086A54+708 
@@ -38,10 +37,9 @@ loc_8086F36:
 	.byte  0
 off_8086F54: .word byte_8086F58
 byte_8086F58: .byte 0x1, 0x1, 0x3, 0x2
-.endfunc // sub_8086F18
+thumb_func_end sub_8086F18
 
-.func
-.thumb_func
+thumb_local_start
 sub_8086F5C:
 	push {r4-r7,lr}
 	ldr r5, off_8086FA0 // =dword_8086A54+708 
@@ -130,10 +128,9 @@ off_8086FA0: .word dword_8086A54+0x2C4
 	.byte 0xE3
 	.byte  5
 	.hword 0xFC0
-.endfunc // sub_8086F5C
+thumb_func_end sub_8086F5C
 
-.func
-.thumb_func
+thumb_local_start
 sub_8086FD8:
 	push {r4-r7,lr}
 	ldrb r0, [r5,#1]
@@ -475,10 +472,9 @@ off_8087114: .word dword_8086260+0x208
 	.byte 0xBD
 	.byte  0
 	.byte  0
-.endfunc // sub_8086FD8
+thumb_func_end sub_8086FD8
 
-.func
-.thumb_func
+thumb_local_start
 sub_80871C0:
 	push {lr}
 	ldrb r0, [r5,#0xc]
@@ -492,6 +488,6 @@ sub_80871C0:
 off_80871D4:
 	// <endpool> <endfile>
 	.word byte_80871D8
-.endfunc // sub_80871C0
+thumb_func_end sub_80871C0
 
 /*For debugging purposes, connect comment at any range!*/

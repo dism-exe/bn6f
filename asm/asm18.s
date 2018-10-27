@@ -1,7 +1,6 @@
 .include "asm/asm18.inc"
 
-.func
-.thumb_func
+thumb_func_start sub_807A8E0
 sub_807A8E0:
 	push {r4-r7,lr}
 	mov r7, r10
@@ -44,10 +43,9 @@ off_807A944: .word dword_807A950
 	.word 0x807A95A, 0x807A964
 dword_807A950: .word 0x201C1F1C, 0x791C2B1C, 0x641CFFFF, 0x951C0E1C, 0xFFFF791C
 	.word 0x7F1C7E1C, 0x1F1C801C, 0x39183818, 0xFFFF3A18
-.endfunc // sub_807A8E0
+thumb_func_end sub_807A8E0
 
-.func
-.thumb_func
+thumb_func_start sub_807A974
 sub_807A974:
 	push {lr}
 	lsl r1, r1, #2
@@ -74,10 +72,9 @@ off_807A9B8: .word dword_807A084+0x45C
 	.word dword_807A084+0x77C
 	.word dword_807A084+0x7CC
 	.word 0xFFFFFFFF
-.endfunc // sub_807A974
+thumb_func_end sub_807A974
 
-.func
-.thumb_func
+thumb_func_start sub_807A9CC
 sub_807A9CC:
 	push {r4-r7,lr}
 	mov r5, r10
@@ -100,10 +97,9 @@ sub_807A9CC:
 	ldr r0, [r0,r1]
 	bl sub_80304E8
 	pop {r4-r7,pc}
-.endfunc // sub_807A9CC
+thumb_func_end sub_807A9CC
 
-.func
-.thumb_func
+thumb_local_start
 sub_807A9FE:
 	push {r4-r7,lr}
 	mov r5, r10
@@ -141,10 +137,9 @@ off_807AA74: .word off_8617068
 off_807AA90: .word off_8617068
 	.word 0x6008020, 0x8617190, 0x1800, 0x8618C58, 0x3001960
 	.word 0x20
-.endfunc // sub_807A9FE
+thumb_func_end sub_807A9FE
 
-.func
-.thumb_func
+thumb_func_start sub_807AAAC
 sub_807AAAC:
 	push {r4-r7,lr}
 	mov r5, r10
@@ -160,28 +155,24 @@ off_807AAC0: .word off_807AAC4
 off_807AAC4: .word nullsub_81+1
 	.word nullsub_82+1
 	.word nullsub_83+1
-.endfunc // sub_807AAAC
+thumb_func_end sub_807AAAC
 
-.func
-.thumb_func
+thumb_local_start
 nullsub_81:
 	mov pc, lr
-.endfunc // nullsub_81
+thumb_func_end nullsub_81
 
-.func
-.thumb_func
+thumb_local_start
 nullsub_82:
 	mov pc, lr
-.endfunc // nullsub_82
+thumb_func_end nullsub_82
 
-.func
-.thumb_func
+thumb_local_start
 nullsub_83:
 	mov pc, lr
-.endfunc // nullsub_83
+thumb_func_end nullsub_83
 
-.func
-.thumb_func
+thumb_func_start sub_807AAD6
 sub_807AAD6:
 	push {lr}
 	mov r0, r10
@@ -199,6 +190,6 @@ pt_807AAF0:
 	.word dword_807AAFC
 	.word dword_807AC18
 	.word dword_807ACA8
-.endfunc // sub_807AAD6
+thumb_func_end sub_807AAD6
 
 /*For debugging purposes, connect comment at any range!*/

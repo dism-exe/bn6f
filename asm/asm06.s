@@ -1,7 +1,6 @@
 .include "asm/asm06.inc"
 
-.func
-.thumb_func
+thumb_func_start sub_80595B8
 sub_80595B8:
 	push {r4-r7,lr}
 	mov r7, r10
@@ -57,10 +56,9 @@ byte_805964E: .byte 0x1C, 0x35, 0x1C, 0x4D, 0x1C, 0x2F, 0x18, 0x25, 0x18
 	.byte 0x1C, 0xFF, 0xFF
 byte_805965A: .byte 0x1C, 0x35, 0x1C, 0x40, 0x1C, 0x48, 0xFF, 0xFF
 byte_8059662: .byte 0xFF, 0xFF
-.endfunc // sub_80595B8
+thumb_func_end sub_80595B8
 
-.func
-.thumb_func
+thumb_func_start sub_8059664
 sub_8059664:
 	push {lr}
 	lsl r1, r1, #2
@@ -90,10 +88,9 @@ off_80596B4: .word byte_8059528
 off_80596BC: .word byte_8059558
 	.word byte_8059588
 	.word 0xFFFFFFFF
-.endfunc // sub_8059664
+thumb_func_end sub_8059664
 
-.func
-.thumb_func
+thumb_func_start sub_80596C8
 sub_80596C8:
 	push {lr}
 	mov r0, r10
@@ -112,6 +109,6 @@ off_80596E0:
 	.word dword_8059A58
 	.word dword_8059C00
 	.word dword_8059D30
-.endfunc // sub_80596C8
+thumb_func_end sub_80596C8
 
 /*For debugging purposes, connect comment at any range!*/

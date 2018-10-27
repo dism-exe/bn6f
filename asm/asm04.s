@@ -1,7 +1,6 @@
 .include "asm/asm04.inc"
 
-.func
-.thumb_func
+thumb_func_start sub_804E62C
 sub_804E62C:
 	push {r4-r7,lr}
 	mov r7, r10
@@ -56,10 +55,9 @@ byte_804E6BE: .byte 0x1C, 0x7, 0xFF, 0xFF
 byte_804E6C2: .byte 0x1C, 0x14, 0xFF, 0xFF
 byte_804E6C6: .byte 0xFF, 0xFF
 byte_804E6C8: .byte 0x1C, 0x96, 0x1C, 0x9D, 0x18, 0x1C, 0xFF, 0xFF
-.endfunc // sub_804E62C
+thumb_func_end sub_804E62C
 
-.func
-.thumb_func
+thumb_func_start sub_804E6D0
 sub_804E6D0:
 	push {lr}
 	lsl r1, r1, #2
@@ -84,10 +82,9 @@ off_804E70C: .word byte_804E5D4
 dword_804E714: .word 0xFFFFFFFF
 off_804E718: .word dword_804E604
 	.word 0xFFFFFFFF
-.endfunc // sub_804E6D0
+thumb_func_end sub_804E6D0
 
-.func
-.thumb_func
+thumb_func_start sub_804E720
 sub_804E720:
 	push {lr}
 	mov r0, r10
@@ -102,7 +99,7 @@ off_804E734: .word off_804E738
 off_804E738:
 	// <endpool>
 	.word byte_804E74C
-.endfunc // sub_804E720
+thumb_func_end sub_804E720
 
 	.word byte_804E87C
 	.word byte_804E8D0

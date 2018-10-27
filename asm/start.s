@@ -1,7 +1,6 @@
 .include "asm/start.inc"
 
-.func
-.arm
+arm_func_start start_
 start_:
 	b loc_80000D0
 dword_8000004: .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B2411
@@ -90,10 +89,9 @@ loc_80000D0:
 	ldr r0, off_8000238 // =main_+1
 	bx r0
 	b start_
-.endfunc // start_
+arm_func_end start_
 
-.func
-.arm
+arm_func_start start_clearMemory
 // (void *mem, int size) -> void
 start_clearMemory:
 	mov r2, #0
@@ -102,10 +100,9 @@ loc_80001C8:
 	str r2, [r0,r1]
 	bne loc_80001C8
 	bx lr
-.endfunc // start_clearMemory
+arm_func_end start_clearMemory
 
-.func
-.arm
+arm_func_start start_copyMemory
 // (void *src, void *dest, int size) -> void
 start_copyMemory:
 	// size
@@ -136,10 +133,9 @@ off_800022C: .word GeneralLCDStatus_STAT_LYC_
 off_8000230: .word KeyInterruptControl
 dword_8000234: .word 0x83FF
 off_8000238: .word main_+1
-.endfunc // start_copyMemory
+arm_func_end start_copyMemory
 
-.func
-.thumb_func
+thumb_func_start start_800023C
 // () -> void
 start_800023C:
 	push {lr}
@@ -149,10 +145,9 @@ start_800023C:
 	pop {r0}
 	bx r0
 off_8000248: .word sub_3005DA0+1
-.endfunc // start_800023C
+thumb_func_end start_800023C
 
-.func
-.thumb_func
+thumb_func_start start_800024C
 start_800024C:
 	push {lr}
 	ldr r2, off_8000258 // =sub_3005DD4+1
@@ -161,10 +156,9 @@ start_800024C:
 	pop {r0}
 	bx r0
 off_8000258: .word sub_3005DD4+1
-.endfunc // start_800024C
+thumb_func_end start_800024C
 
-.func
-.thumb_func
+thumb_local_start
 start_dead_800025C:
 	push {lr}
 	ldr r1, off_8000274 // =sub_3005DEC+1
@@ -172,10 +166,9 @@ start_dead_800025C:
 	bx r1
 	pop {r0}
 	bx r0
-.endfunc // start_dead_800025C
+thumb_func_end start_dead_800025C
 
-.func
-.thumb_func
+thumb_local_start
 start_dead_8000268:
 	push {lr}
 	ldr r1, off_8000278 // =sub_3005E02+1
@@ -185,10 +178,9 @@ start_dead_8000268:
 	bx r0
 off_8000274: .word sub_3005DEC+1
 off_8000278: .word sub_3005E02+1
-.endfunc // start_dead_8000268
+thumb_func_end start_dead_8000268
 
-.func
-.thumb_func
+thumb_func_start start_800027C
 start_800027C:
 	push {lr}
 	ldr r1, dword_8000294 // =sub_3005E18
@@ -196,10 +188,9 @@ start_800027C:
 	bx r1
 	pop {r0}
 	bx r0
-.endfunc // start_800027C
+thumb_func_end start_800027C
 
-.func
-.thumb_func
+thumb_func_start start_8000288
 start_8000288:
 	push {lr}
 	ldr r1, off_8000298 // =sub_3005E2C+1
@@ -209,10 +200,9 @@ start_8000288:
 	bx r0
 dword_8000294: .word 0x3005E19
 off_8000298: .word sub_3005E2C+1
-.endfunc // start_8000288
+thumb_func_end start_8000288
 
-.func
-.thumb_func
+thumb_local_start
 start_800029C:
 	push {lr}
 	ldr r1, off_80002B4 // =loc_3005E60+1
@@ -220,10 +210,9 @@ start_800029C:
 	bx r1
 	pop {r0}
 	bx r0
-.endfunc // start_800029C
+thumb_func_end start_800029C
 
-.func
-.thumb_func
+thumb_local_start
 start_80002A8:
 	push {lr}
 	ldr r1, off_80002B8 // =loc_3005E6A+1
@@ -233,6 +222,6 @@ start_80002A8:
 	bx r0
 off_80002B4: .word loc_3005E60+1
 off_80002B8: .word loc_3005E6A+1
-.endfunc // start_80002A8
+thumb_func_end start_80002A8
 
 /*For debugging purposes, connect comment at any range!*/

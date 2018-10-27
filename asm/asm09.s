@@ -1,7 +1,6 @@
 .include "asm/asm09.inc"
 
-.func
-.thumb_func
+thumb_func_start sub_8062AB0
 sub_8062AB0:
 	push {r4-r7,lr}
 	mov r7, r10
@@ -60,10 +59,9 @@ byte_8062B4E: .byte 0x1C, 0x7B, 0xFF, 0xFF
 byte_8062B52: .byte 0x1C, 0x65, 0x1C, 0x20, 0xFF, 0xFF
 byte_8062B58: .byte 0x1C, 0x85, 0x1C, 0x83, 0x1C, 0x84, 0x1C, 0x94, 0x1C
 	.byte 0x97, 0xFF, 0xFF
-.endfunc // sub_8062AB0
+thumb_func_end sub_8062AB0
 
-.func
-.thumb_func
+thumb_func_start sub_8062B64
 sub_8062B64:
 	push {lr}
 	lsl r1, r1, #2
@@ -94,10 +92,9 @@ off_8062BB8: .word byte_80629F0
 	.word 0xFFFFFFFF
 off_8062BC4: .word byte_8062A70
 	.word 0xFFFFFFFF
-.endfunc // sub_8062B64
+thumb_func_end sub_8062B64
 
-.func
-.thumb_func
+thumb_func_start sub_8062BCC
 sub_8062BCC:
 	push {lr}
 	mov r0, r10
@@ -117,6 +114,6 @@ pt_8062BE4:
 	.word dword_8062E88
 	.word dword_8062EB4
 	.word dword_8062F1C
-.endfunc // sub_8062BCC
+thumb_func_end sub_8062BCC
 
 /*For debugging purposes, connect comment at any range!*/
