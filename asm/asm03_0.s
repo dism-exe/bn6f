@@ -17943,13 +17943,12 @@ togglelFlags_multEntries_2001C88_entry:
 	orr r0, r1
 .endfunc // togglelFlags_multEntries_2001C88_entry
 
-.func
-.thumb_func
 // (u16 entryFlagBitfield) -> void
 
 // Toggles multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
 // Number of flags to toggle is in r2
-togglelFlags_multEntries_2001C88_bitfield:
+	thumb_func_start ToggleEventFlagRange
+ToggleEventFlagRange:
 	push {r4,r5,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
@@ -17985,7 +17984,7 @@ togglelFlags_multEntries_2001C88_bitfield:
 	sub r2, #1 // loop counter
 	bgt .loop_802F1DE
 	pop {r4,r5,pc}
-.endfunc // togglelFlags_multEntries_2001C88_bitfield
+	thumb_func_end ToggleEventFlagRange
 
 .func
 .thumb_func
