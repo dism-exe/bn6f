@@ -30085,8 +30085,8 @@ off_811ECFC: .word byte_86C9D8C
 	.word 0x20
 thumb_func_end sub_811EC68
 
-thumb_func_start ho_811ED1C
 // () -> void
+thumb_func_start ho_811ED1C
 ho_811ED1C:
 	push {r5,lr}
 	ldr r5, off_811ED54 // =byte_200DF20 
@@ -30109,8 +30109,8 @@ jt_811ED3C: .word sub_811ED58+1
 off_811ED54: .word byte_200DF20
 thumb_func_end ho_811ED1C
 
-thumb_local_start
 // () -> void
+thumb_local_start
 sub_811ED58:
 	push {lr}
 	mov r1, #0x10
@@ -30352,9 +30352,9 @@ off_811EF68: .word byte_811EAD4
 off_811EF6C: .word dword_811EAEC
 thumb_func_end sub_811EF28
 
-thumb_local_start
 // () -> void
 // [disable] PET: (The PET graphics on top is gone)
+thumb_local_start
 copyTiles_PET_811EF70:
 	push {r4,r5,r7,lr}
 	mov r7, r5
@@ -30803,8 +30803,8 @@ byte_811F4F8: .byte 0x75, 0x76, 0x77, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 thumb_func_end sub_811F290
 
-thumb_local_start
 // () -> void
+thumb_local_start
 sub_811F508:
 	push {r4,lr}
 	mov r0, #0x10
@@ -30837,8 +30837,8 @@ byte_811F544: .byte 0x0, 0x0, 0x0, 0x40
 off_811F548: .word byte_811EBDA
 thumb_func_end sub_811F508
 
-thumb_local_start
 // () -> void
+thumb_local_start
 copyTiles_onNaviSelect_811F54C:
 	push {r4-r7,lr}
 	sub sp, sp, #8
@@ -31138,8 +31138,8 @@ off_811F76C: .word 0x40
 off_811F770: .word byte_200DF20
 thumb_func_end sub_811F758
 
-thumb_func_start menuControl_cb_openSubmenu
 // () -> void
+thumb_func_start menuControl_cb_openSubmenu
 menuControl_cb_openSubmenu:
 	push {r4-r7,lr}
 	mov r5, r10
@@ -32213,8 +32213,8 @@ loc_811FFB6:
 dword_811FFBC: .word 0x3E7
 thumb_func_end sub_811FF80
 
-thumb_func_start sub_811FFC0
 // () -> void
+thumb_func_start sub_811FFC0
 sub_811FFC0:
 	push {r4-r7,lr}
 	// idx

@@ -312,8 +312,8 @@ sub_8002F7E:
 	mov pc, lr
 thumb_func_end sub_8002F7E
 
-thumb_func_start sub_8002F90
 // () -> void
+thumb_func_start sub_8002F90
 sub_8002F90:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
@@ -2917,10 +2917,10 @@ sub_8004602:
 	pop {pc}
 thumb_func_end sub_8004602
 
-thumb_func_start npc_800461E
 // [break] continuously called
 // [disable] - NPCs are no longer loaded, if they were already loaded, they are not interactable. Some are exceptions, like Central Robo Dog.
 // - Scenes don't seem to load, either
+thumb_func_start npc_800461E
 npc_800461E:
 	push {r4-r7,lr}
 	mov r4, r8
@@ -4265,8 +4265,8 @@ off_80050E4: .word 0x100
 off_80050E8: .word byte_80213AC
 thumb_func_end sub_8004DF0
 
-thumb_func_start cb_80050EC
 // () -> void
+thumb_func_start cb_80050EC
 cb_80050EC:
 	push {r4-r7,lr}
 	ldr r0, GameStateJumptable_p // =GameStateJumptable 
@@ -4596,8 +4596,8 @@ sub_8005460:
 	lsl r0, r0, #1
 thumb_func_end sub_8005460
 
-thumb_local_start
 // () -> void
+thumb_local_start
 sub_8005462:
 	push {r7,lr}
 	ldr r7, off_8005520 // =byte_200DF20 
@@ -5382,8 +5382,8 @@ locret_8005BC6:
 	pop {r5,pc}
 thumb_func_end sub_8005B6E
 
-thumb_func_start gameState_8005BC8
 // (BattleSettings *bt, bool a2) -> void
+thumb_func_start gameState_8005BC8
 gameState_8005BC8:
 	push {r4-r7,lr}
 	mov r7, r1
@@ -6328,8 +6328,8 @@ off_8006040: .word unk_3001B60
 	.byte 0x10
 thumb_func_end sub_8005F84
 
-thumb_func_start engine_setScreeneffect
 // (int a1, int a2) -> void
+thumb_func_start engine_setScreeneffect
 engine_setScreeneffect:
 	mov r3, #0
 	b loc_8006276
@@ -6418,8 +6418,8 @@ sub_80062EC:
 	pop {pc}
 thumb_func_end sub_80062EC
 
-thumb_func_start engine_isScreeneffectAnimating
 // () -> zf
+thumb_func_start engine_isScreeneffectAnimating
 engine_isScreeneffectAnimating:
 	mov r3, #0
 	b loc_80062FE
@@ -7285,8 +7285,8 @@ dword_8006BB8: .word 0xFFFFFF00
 off_8006BBC: .word 0x101
 thumb_func_end sub_8006B94
 
-thumb_func_start CpuSet_toolKit
 // () -> void
+thumb_func_start CpuSet_toolKit
 CpuSet_toolKit:
 	push {lr}
 	ldr r0, .Lp_ToolkitPointers // =ToolkitPointers 
@@ -7571,8 +7571,8 @@ loc_8006DFE:
 	pop {r4-r7,pc}
 thumb_func_end sub_8006DF6
 
-thumb_func_start save_memSetFlags_8006E0E
 // (u8 *mem, int size) -> void
+thumb_func_start save_memSetFlags_8006E0E
 save_memSetFlags_8006E0E:
 	push {r4-r7,lr}
 	ldr r7, off_8006E38 // =eUnusedGameStateBaseOffset 
@@ -7638,8 +7638,8 @@ locret_8006E68:
 off_8006E6C: .word byte_20004E0
 thumb_func_end sub_8006E50
 
-thumb_func_start modifyToolkit_unk7C_using_2008A0
 // (int idx_2008A0) -> void
+thumb_func_start modifyToolkit_unk7C_using_2008A0
 modifyToolkit_unk7C_using_2008A0:
 	push {r1-r7,lr}
 	ldr r5, off_8006EA0 // =byte_20008A0 
@@ -7714,8 +7714,8 @@ loc_8006EE4:
 	pop {r1-r7,pc}
 thumb_func_end sub_8006EA4
 
-thumb_local_start
 // (int idx_8021DA8, int a2) -> bool
+thumb_local_start
 sub_8006EE8:
 	push {r1-r7,lr}
 	mov r7, r0
@@ -15130,8 +15130,8 @@ sub_800A714:
 	mov pc, lr
 thumb_func_end sub_800A714
 
-thumb_func_start getBattleSettingsFromList0
 // (int battleSettingsIdx) -> BattleSettings*
+thumb_func_start getBattleSettingsFromList0
 getBattleSettingsFromList0:
 	mov r1, #0x10
 	mul r1, r0
@@ -15140,8 +15140,8 @@ getBattleSettingsFromList0:
 	mov pc, lr
 thumb_func_end getBattleSettingsFromList0
 
-thumb_func_start getBattleSettingsFromList1
 // (int battleSettingsIdx) -> BattleSettings*
+thumb_func_start getBattleSettingsFromList1
 getBattleSettingsFromList1:
 	mov r1, #0x10
 	mul r1, r0
@@ -15150,8 +15150,8 @@ getBattleSettingsFromList1:
 	mov pc, lr
 thumb_func_end getBattleSettingsFromList1
 
-thumb_func_start isSameSubsystem_800A732
 // () -> zf
+thumb_func_start isSameSubsystem_800A732
 isSameSubsystem_800A732:
 	push {r4,lr}
 	mov r4, #1
@@ -15252,8 +15252,8 @@ loc_800A7C4:
 	.byte 0, 0
 thumb_func_end sub_800A7A6
 
-thumb_func_start sub_800A7D0
 // () -> (zf, int)
+thumb_func_start sub_800A7D0
 sub_800A7D0:
 	mov r0, #0
 	ldr r1, off_800A948 // =dword_20093A4 
@@ -16480,8 +16480,8 @@ loc_800B01E:
 	pop {r1-r7,pc}
 thumb_func_end sub_800AFBA
 
-thumb_func_start sub_800B022
 // (int a1) ->
+thumb_func_start sub_800B022
 sub_800B022:
 	push {r1-r7,lr}
 	mov r4, r0

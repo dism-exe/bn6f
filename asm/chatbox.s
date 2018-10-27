@@ -1,7 +1,7 @@
 .include "asm/chatbox.inc"
 
-thumb_func_start chatbox_uncomp_803FD08
 // () -> int
+thumb_func_start chatbox_uncomp_803FD08
 chatbox_uncomp_803FD08:
 	push {r4-r7,lr}
 	mov r0, #0
@@ -51,8 +51,8 @@ chatbox_uncomp_803FD54:
 off_803FD64: .word unk_2033400
 thumb_func_end chatbox_uncomp_803FD54
 
-thumb_func_start chatbox_runScript_202da04
 // (u8 scriptID) -> void
+thumb_func_start chatbox_runScript_202da04
 chatbox_runScript_202da04:
 	push {r4,r5,lr}
 	mov r1, r0
@@ -62,8 +62,8 @@ chatbox_runScript_202da04:
 off_803FD74: .word unk_202DA04
 thumb_func_end chatbox_runScript_202da04
 
-thumb_func_start chatbox_803FD78
 // (u16 *scriptArr, u8 scriptID) -> void
+thumb_func_start chatbox_803FD78
 chatbox_803FD78:
 	push {r4,r5,lr}
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -83,8 +83,8 @@ dword_803FD94: .word 0x83007E
 	.word 0x81007F
 thumb_func_end chatbox_803FD78
 
-thumb_func_start chatbox_runScript_803FD9C
 // (u16 *scriptArr, u8 scriptID) -> void
+thumb_func_start chatbox_runScript_803FD9C
 chatbox_runScript_803FD9C:
 	push {r4,r5,lr}
 	mov r4, #0
@@ -133,8 +133,8 @@ off_803FE00: .word unk_3001B40
 off_803FE04: .word byte_86BFE40
 thumb_func_end chatbox_runScript_803FD9C
 
-thumb_func_start chatbox_runScript_803FE08
 // (u16 *scriptArr, u8 scriptID) -> void
+thumb_func_start chatbox_runScript_803FE08
 chatbox_runScript_803FE08:
 	push {r4,r5,lr}
 	mov r4, #0
@@ -186,8 +186,8 @@ off_803FE6C: .word unk_3001B40
 off_803FE70: .word byte_86C0920
 thumb_func_end chatbox_803FE10
 
-thumb_func_start chatbox_runScript_803FE74
 // (u16 *scriptList, u8 scriptOffIdx) -> void
+thumb_func_start chatbox_runScript_803FE74
 chatbox_runScript_803FE74:
 	push {r4,r5,lr}
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -283,8 +283,8 @@ off_803FF3C: .word 0x1D4
 	.word 0x1D6, 0x1D8, 0x1E8, 0x1EC
 thumb_func_end chatbox_onUpdate_803FEB4
 
-thumb_local_start
 // () ->
+thumb_local_start
 chatbox_interpreteScriptChar:
 	push {lr}
 	mov r0, #1
@@ -784,8 +784,8 @@ off_804036C: .word off_8045CEC
 dword_8040370: .word 0x1D2
 thumb_func_end chatbox_copyTiles_8040344
 
-thumb_func_start chatbox_runTrainScript
 // (u8 scriptOffIdx) -> void
+thumb_func_start chatbox_runTrainScript
 chatbox_runTrainScript:
 	push {r4,r5,lr}
 	mov r1, r0
@@ -795,8 +795,8 @@ chatbox_runTrainScript:
 off_8040380: .word unk_2034A04
 thumb_func_end chatbox_runTrainScript
 
-thumb_func_start chatbox_runScript
 // (void *scripts, u8 scriptOffIdx) -> void
+thumb_func_start chatbox_runScript
 chatbox_runScript:
 	push {r4-r6,lr}
 	mov r5, r10
@@ -1403,8 +1403,8 @@ dword_80408A4: .word 0x0
 	.byte 0xFF
 thumb_func_end chatbox_804082C
 
-thumb_local_start
 // (int notUsed, u8 scriptID) -> void
+thumb_local_start
 chatbox_config_80408D0:
 	push {lr}
 	strb r1, [r5,#0x1] // ChatBoxPropreties.scriptID
@@ -1445,8 +1445,8 @@ off_8040918: .word 0x400
 dword_804091C: .word 0x800
 thumb_func_end chatbox_config_80408D0
 
-thumb_local_start
 // (int mask) -> void
+thumb_local_start
 chatbox_setflags_3e:
 	push {r1}
 	ldrh r1, [r5,#0x3e] // ChatBoxPropreties.flags_3E
@@ -1456,8 +1456,8 @@ chatbox_setflags_3e:
 	mov pc, lr
 thumb_func_end chatbox_setflags_3e
 
-thumb_local_start
 // (int mask) -> void
+thumb_local_start
 chatbox_clearFlags_3e:
 	push {r1}
 	ldrh r1, [r5,#0x3e] // ChatBoxPropreties.flags_3E
@@ -1467,9 +1467,9 @@ chatbox_clearFlags_3e:
 	mov pc, lr
 thumb_func_end chatbox_clearFlags_3e
 
-thumb_func_start chatbox_maskFlags_3e
 // (int mask) -> void
 // 
+thumb_func_start chatbox_maskFlags_3e
 chatbox_maskFlags_3e:
 	push {r1}
 	ldrh r1, [r5,#0x3e] // ChatBoxPropreties.flags_3E
@@ -2047,8 +2047,8 @@ loc_8040DC4:
 off_8040DD8: .word unk_200BEA0
 thumb_func_end chatbox_8040DBC
 
-thumb_local_start
 // (int v3) ->
+thumb_local_start
 chatbox_8040DDC:
 	push {r0-r5,lr}
 	mov r4, r0
@@ -2108,10 +2108,10 @@ chatbox_jt_ctrlCmds: .word chatbox_E5_nop+1
 	.word chatbox_FF_copytext+1
 thumb_func_end chatbox_8040DDC
 
-thumb_local_start
 // () -> int
 // Description: do nothing (but make the script go on)
 // Parameters: 0
+thumb_local_start
 chatbox_E5_nop:
 	add r4, #1
 	mov r0, #2
@@ -2119,10 +2119,10 @@ chatbox_E5_nop:
 	.balign 4, 0x00
 thumb_func_end chatbox_E5_nop
 
-thumb_local_start
 // () -> int
 // Description: ends the current script and closes message box
 // Parameters: 0
+thumb_local_start
 chatbox_E6_end:
 	push {lr}
 	ldrb r0, [r5,#0x5] // ChatBoxPropreties.unk_05
@@ -2171,7 +2171,6 @@ dword_8040EEC: .word 0x100
 dword_8040EF0: .word 0x140
 thumb_func_end chatbox_E6_end
 
-thumb_local_start
 // () -> int
 // E7 = buttonhalt
 // Description: display an arrow at the lower right of the message box and stop processing until a button is pressed
@@ -2179,6 +2178,7 @@ thumb_local_start
 // Parameter 1 = mode
 // E7 00 = wait for A button or B button
 // E7 01 = wait for any button
+thumb_local_start
 chatbox_E7_buttonhalt:
 	push {lr}
 	// mask
@@ -2247,7 +2247,6 @@ dword_8040F68: .word 0x3FF
 dword_8040F6C: .word 0x400
 thumb_func_end chatbox_E7_buttonhalt
 
-thumb_local_start
 // () -> int
 // E8 = msgbox
 // Parameters: 1/3
@@ -2274,6 +2273,7 @@ thumb_local_start
 // E8 10 = open special msgbox 3
 // E8 11 = special msgbox close 3
 // 
+thumb_local_start
 chatbox_E8_msgbox:
 	push {lr}
 	ldr r0, off_8040FD4 // =off_8040FDC 
@@ -4044,8 +4044,8 @@ loc_8041C80:
 	pop {pc}
 thumb_func_end chatbox_F3_control
 
-thumb_local_start
 // () ->
+thumb_local_start
 chatbox_F4_unk:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -5416,9 +5416,9 @@ chatbox_80426C4:
 	pop {pc}
 thumb_func_end chatbox_80426C4
 
-thumb_local_start
 // () -> int
 // .global r4
+thumb_local_start
 chatbox_80426D4:
 	push {lr}
 	bl sub_813C030 // () -> void
@@ -10795,8 +10795,8 @@ chatbox_8045F1C:
 	.balign 4, 0x00
 thumb_func_end chatbox_8045F1C
 
-thumb_func_start chatbox_8045F2C
 // (int a1) ->
+thumb_func_start chatbox_8045F2C
 chatbox_8045F2C:
 	push {r1,r2}
 	ldr r1, off_8045F48 // =dword_2009F38 

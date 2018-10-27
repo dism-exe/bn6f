@@ -3555,8 +3555,8 @@ loc_81440D0:
 off_81440D4: .word byte_2001010
 thumb_func_end sub_81440AE
 
-thumb_func_start sub_81440D8
 // static () -> void
+thumb_func_start sub_81440D8
 sub_81440D8:
 	push {r4,r5,lr}
 	sub sp, sp, #8
@@ -22068,8 +22068,8 @@ off_814D8A4: .word dword_2010CCC
 	.word 0xE12FFF12, 0xE12FFF11, 0xE12FFF10
 thumb_func_end sub_814CE64
 
-thumb_func_start SWI_CpuFastSet
 // (u32 *src, u32 *dest, int mode) -> void
+thumb_func_start SWI_CpuFastSet
 SWI_CpuFastSet:
 	//   r0    Source address        (must be aligned by 4)
 	//   r1    Destination address   (must be aligned by 4)
@@ -22081,8 +22081,8 @@ SWI_CpuFastSet:
 	bx lr
 thumb_func_end SWI_CpuFastSet
 
-thumb_func_start SWI_CpuSet
 // (void *src, void *dest, int mode) -> void
+thumb_func_start SWI_CpuSet
 SWI_CpuSet:
 	//   r0    Source address        (must be aligned by 4 for 32bit, by 2 for 16bit)
 	//   r1    Destination address   (must be aligned by 4 for 32bit, by 2 for 16bit)
@@ -22130,8 +22130,8 @@ SWI_LZ77UnCompReadNormalWrite16bit:
 	bx lr
 thumb_func_end SWI_LZ77UnCompReadNormalWrite16bit
 
-thumb_func_start SWI_LZ77UnCompReadNormalWrite8bit
 // (void *src, void *dest) -> void
+thumb_func_start SWI_LZ77UnCompReadNormalWrite8bit
 SWI_LZ77UnCompReadNormalWrite8bit:
 	//   r0  Source address, pointing to data as such:
 	//        Data header (32bit)

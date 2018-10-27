@@ -1,7 +1,7 @@
 .include "asm/asm02.inc"
 
-thumb_func_start getChip_8021DA8
 // (int chip_idx) -> ChipData*
+thumb_func_start getChip_8021DA8
 getChip_8021DA8:
 	ldr r1, off_8021AB0 // =ChipDataArr_8021DA8 
 	mov r2, #44
@@ -37,8 +37,8 @@ loc_8021ACC:
 	pop {r4,r6,r7,pc}
 thumb_func_end sub_8021AB4
 
-thumb_func_start split9BitsFromBitfield_8021AE0
 // (int bitfield) -> (int, int)
+thumb_func_start split9BitsFromBitfield_8021AE0
 split9BitsFromBitfield_8021AE0:
 	// splits bitfield into lower and upper 9 bits, and returns those in r0, r1
 	push {lr}
@@ -126,10 +126,10 @@ loc_8021B6E:
 off_8021B74: .word 0x1E20
 thumb_func_end sub_8021B5A
 
-thumb_func_start sub_8021B78
 // (int idx, int searchItem, int off) -> void*
 // [break (E7FE)]
 //   When getting an item; like from mayl, or when loading shops
+thumb_func_start sub_8021B78
 sub_8021B78:
 	push {lr}
 	push {r0-r2}
@@ -146,8 +146,8 @@ loc_8021B84:
 	pop {pc}
 thumb_func_end sub_8021B78
 
-thumb_func_start sub_8021B92
 // (int idx, int searchItem, int off) -> void*
+thumb_func_start sub_8021B92
 sub_8021B92:
 	push {r4,lr}
 	push {r2}
@@ -284,8 +284,8 @@ sub_8021C68:
 dword_8021C78: .word 0xF00
 thumb_func_end sub_8021C68
 
-thumb_func_start chip_8021C7C
 // (int chip_idx, int searchItem, int off) -> void*
+thumb_func_start chip_8021C7C
 chip_8021C7C:
 	push {r4,r7,lr}
 	mov r2, r0

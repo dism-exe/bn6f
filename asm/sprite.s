@@ -1,7 +1,7 @@
 .include "asm/sprite.inc"
 
-thumb_func_start sprite_loadAnimationData
 // () -> void
+thumb_func_start sprite_loadAnimationData
 sprite_loadAnimationData:
 	push {r4,r5,lr}
 	ldrb r3, [r5,#2]
@@ -47,8 +47,8 @@ sprite_chatbox_80026D6:
 off_80026E0: .word sub_3006792+1
 thumb_func_end sprite_chatbox_80026D6
 
-thumb_func_start sprite_load
 // (int a1, int a2, int a3) ->
+thumb_func_start sprite_load
 sprite_load:
 	push {r4,r5,lr}
 	ldrb r3, [r5]
@@ -86,8 +86,8 @@ off_8002724: .word spritePointers_8031CC4
 off_8002728: .word spriteWhiteDot
 thumb_func_end sprite_load
 
-thumb_local_start
 // (void *a1) -> void
+thumb_local_start
 sprite_initialize:
 	add r0, #4
 	str r0, [r5,#0x18]
@@ -114,8 +114,8 @@ sprite_initialize:
 	mov pc, lr
 thumb_func_end sprite_initialize
 
-thumb_func_start spriteLoadMugshot_800275A
 // (int a1) -> void
+thumb_func_start spriteLoadMugshot_800275A
 spriteLoadMugshot_800275A:
 	push {lr}
 	lsl r0, r0, #2
@@ -128,8 +128,8 @@ spriteLoadMugshot_800275A:
 off_800276C: .word mugshots_8032598
 thumb_func_end spriteLoadMugshot_800275A
 
-thumb_func_start sub_8002770
 // (int a1, int a2) -> void
+thumb_func_start sub_8002770
 sub_8002770:
 	mov r2, #0x80
 	b loc_8002776
@@ -1025,8 +1025,8 @@ locret_8002D7E:
 	pop {r5,pc}
 thumb_func_end sprite_makeUnscalable
 
-thumb_func_start sprite_setPallete
 // (int pallete) -> void
+thumb_func_start sprite_setPallete
 sprite_setPallete:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
@@ -1056,8 +1056,8 @@ sprite_setAnimationAlt:
 	mov pc, lr
 thumb_func_end sprite_setAnimationAlt
 
-thumb_func_start sprite_setAnimation
 // (u8 a1) -> void
+thumb_func_start sprite_setAnimation
 sprite_setAnimation:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4

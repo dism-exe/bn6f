@@ -17,16 +17,16 @@ sub_80005C4:
 	pop {pc}
 thumb_func_end sub_80005C4
 
-thumb_func_start sound_play
 // () -> void
+thumb_func_start sound_play
 sound_play:
 	push {r1-r7,lr}
 	bl m4a_800061E // () -> void
 	pop {r1-r7,pc}
 thumb_func_end sound_play
 
-thumb_func_start sound_bgmusic_play
 // (int a1) -> void
+thumb_func_start sound_bgmusic_play
 sound_bgmusic_play:
 	push {r1-r7,lr}
 	mov r7, r10
@@ -75,8 +75,8 @@ loc_8000616:
 	pop {r1-r7,pc}
 thumb_func_end sub_800060A
 
-thumb_local_start
 // () -> void
+thumb_local_start
 m4a_800061E:
 	push {lr}
 	mov r1, r10
@@ -239,8 +239,8 @@ off_8000704: .word unk_2010690
 	.word unk_2010890
 thumb_func_end sub_80006A2
 
-thumb_func_start musicGameState_8000784
 // () -> void
+thumb_func_start musicGameState_8000784
 musicGameState_8000784:
 	push {r7,lr}
 	mov r1, r10
@@ -324,8 +324,8 @@ locret_8000800:
 off_8000804: .word loc_80007E8+1
 thumb_func_end sub_80007BE
 
-thumb_local_start
 // () -> void
+thumb_local_start
 sound_8000808:
 	push {r4-r7,lr}
 	ldr r5, memBlock // =dword_200A490 
@@ -404,8 +404,8 @@ off_80008AC: .word m4a_SongNumStart+1
 off_80008B0: .word loc_800084E+1
 thumb_func_end sub_8000822
 
-thumb_func_start clearBackwards_80008B4
 // (void *mem, int size) -> void
+thumb_func_start clearBackwards_80008B4
 clearBackwards_80008B4:
 	push {r0-r2,lr}
 	mov r2, #0
@@ -434,8 +434,8 @@ sub_80008C0:
 dword_80008DC: .word 0x1000000
 thumb_func_end sub_80008C0
 
-thumb_func_start CpuSet_ZeroFillWord
 // (void *memBlock, int size) -> void
+thumb_func_start CpuSet_ZeroFillWord
 CpuSet_ZeroFillWord:
 	push {r0-r3,lr}
 	ldr r2, dword_80008FC // =0x5000000 
@@ -453,8 +453,8 @@ CpuSet_ZeroFillWord:
 dword_80008FC: .word 0x5000000
 thumb_func_end CpuSet_ZeroFillWord
 
-thumb_func_start CpuFastSet_8000900
 // (int a1, int a2) -> void
+thumb_func_start CpuFastSet_8000900
 CpuFastSet_8000900:
 	push {r0-r3,lr}
 	ldr r2, dword_800091C // =0x1000000 
@@ -472,8 +472,8 @@ CpuFastSet_8000900:
 dword_800091C: .word 0x1000000
 thumb_func_end CpuFastSet_8000900
 
-thumb_func_start copyBytes
 // (u8 *src, u8 *dest, int byteCount) -> void
+thumb_func_start copyBytes
 copyBytes:
 	sub r2, #1
 	ldrb r3, [r0,r2]
@@ -482,8 +482,8 @@ copyBytes:
 	mov pc, lr
 thumb_func_end copyBytes
 
-thumb_func_start CpuSet_copyHalfwords
 // (u16 *src, u16 *dest, int halfwordCount) -> void
+thumb_func_start CpuSet_copyHalfwords
 CpuSet_copyHalfwords:
 	push {r0-r3,lr}
 	ldr r3, dword_8000938 // =0x0 
@@ -494,8 +494,8 @@ CpuSet_copyHalfwords:
 dword_8000938: .word 0x0
 thumb_func_end CpuSet_copyHalfwords
 
-thumb_func_start CpuSet_copyWords
 // (u32 *src, u32 *dest, int size) -> void
+thumb_func_start CpuSet_copyWords
 CpuSet_copyWords:
 	push {r0-r3,lr}
 	ldr r3, dword_800094C // =LCDControl 
@@ -508,8 +508,8 @@ CpuSet_copyWords:
 dword_800094C: .word 0x4000000
 thumb_func_end CpuSet_copyWords
 
-thumb_func_start CpuFastSet_byteCount
 // (u32 *src, u32 *dest, int byteCount) -> void
+thumb_func_start CpuFastSet_byteCount
 CpuFastSet_byteCount:
 	push {r0-r3,lr}
 	ldr r3, dword_8000960 // =0x0 
@@ -521,8 +521,8 @@ CpuFastSet_byteCount:
 dword_8000960: .word 0x0
 thumb_func_end CpuFastSet_byteCount
 
-thumb_func_start initMemblockToByte
 // (u8 *mem, int byteCount, u8 byte) -> void
+thumb_func_start initMemblockToByte
 initMemblockToByte:
 	// byteCount
 	sub r1, #1
@@ -778,7 +778,6 @@ locret_8000B2E:
 	pop {r4-r7,pc}
 thumb_func_end sub_8000B18
 
-thumb_func_start decompAndCopyData_8000B30
 // (u32 *initRefs) -> void
 // This processes an array and performs different actions based on 
 // the type of u32 element in it.
@@ -789,6 +788,7 @@ thumb_func_start decompAndCopyData_8000B30
 //   .word src | 1<<32
 //   .word
 //   .word dest
+thumb_func_start decompAndCopyData_8000B30
 decompAndCopyData_8000B30:
 	push {r4-r7,lr}
 	mov r7, r0
@@ -852,9 +852,9 @@ ret_reachedTerminator_8000B8C:
 	pop {r4-r7,pc}
 thumb_func_end decompAndCopyData_8000B30
 
-thumb_func_start decomp_initGfx_8000B8E
 // (u32 *dataRefs) -> void
 // [break] open PET
+thumb_func_start decomp_initGfx_8000B8E
 decomp_initGfx_8000B8E:
 	push {r4-r7,lr}
 	mov r7, r0
@@ -1579,8 +1579,8 @@ locret_8001078:
 	pop {r4-r7,pc}
 thumb_func_end sub_8001040
 
-thumb_func_start updatePlayerGameState_800107A
 // () -> void
+thumb_func_start updatePlayerGameState_800107A
 updatePlayerGameState_800107A:
 	mov r3, r10
 	ldr r3, [r3,#0x3c] // Toolkit.gamestate
@@ -1622,8 +1622,8 @@ sub_80010A4:
 	pop {r4-r7,pc}
 thumb_func_end sub_80010A4
 
-thumb_func_start getPETNaviSelect
 // () -> u8
+thumb_func_start getPETNaviSelect
 getPETNaviSelect:
 	mov r3, r10
 	ldr r3, [r3,#0x3c] // Toolkit.gamestate
@@ -1722,8 +1722,8 @@ sub_8001154:
 	pop {r4-r7,pc}
 thumb_func_end sub_8001154
 
-thumb_func_start sub_8001158
 // () -> void
+thumb_func_start sub_8001158
 sub_8001158:
 	push {r4-r7,lr}
 	mov r7, r0
@@ -2242,8 +2242,8 @@ sub_80014D4:
 	.balign 4, 0x00
 thumb_func_end sub_80014D4
 
-thumb_func_start copyWords_80014EC
 // (void *src, void *dest, int size) -> void
+thumb_func_start copyWords_80014EC
 copyWords_80014EC:
 	push {r0-r7,lr}
 	cmp r0, r1
@@ -2272,8 +2272,8 @@ reverseCopyWords_8001506:
 	pop {r0-r7,pc}
 thumb_func_end copyWords_80014EC
 
-thumb_func_start sub_8001514
 // () -> void
+thumb_func_start sub_8001514
 sub_8001514:
 	ldr r0, rng_8001594 // =0xa338244f 
 	ldr r1, off_8001598 // =dword_20013F0 
@@ -2281,8 +2281,8 @@ sub_8001514:
 	mov pc, lr
 thumb_func_end sub_8001514
 
-thumb_func_start change_20013F0_800151C
 // () -> int
+thumb_func_start change_20013F0_800151C
 change_20013F0_800151C:
 	push {r7,lr}
 	ldr r7, off_800159C // =dword_20013F0 
@@ -2314,8 +2314,8 @@ sub_8001532:
 	pop {r7,pc}
 thumb_func_end sub_8001532
 
-thumb_func_start rng_800154C
 // () -> void
+thumb_func_start rng_800154C
 rng_800154C:
 	push {r7,lr}
 	ldr r7, off_80015A8 // =rngSeed_2001120 
@@ -2696,8 +2696,8 @@ loc_80018A6:
 	pop {r4-r7,pc}
 thumb_func_end sub_8001890
 
-thumb_func_start copyTiles
 // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+thumb_func_start copyTiles
 copyTiles:
 	push {r6,r7,lr}
 	ldr r7, off_80018CC // =copyTiles_iram+1 

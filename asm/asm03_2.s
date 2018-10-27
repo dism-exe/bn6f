@@ -668,8 +668,8 @@ off_804646C: .word sub_8116894+1
 	.word 0x0, 0x0
 thumb_func_end sub_8046450
 
-thumb_func_start sub_804657C
 // () -> void
+thumb_func_start sub_804657C
 sub_804657C:
 	push {r4-r7,lr}
 	// memBlock
@@ -692,8 +692,8 @@ loc_804658A:
 off_804659C: .word 0x528
 thumb_func_end sub_804657C
 
-thumb_func_start sub_80465A0
 // (void *a1) -> void
+thumb_func_start sub_80465A0
 sub_80465A0:
 	push {r4-r7,lr}
 loc_80465A2:
@@ -747,8 +747,8 @@ loc_80465E2:
 off_80465F4: .word off_804646C
 thumb_func_end sub_80465BC
 
-thumb_func_start sub_80465F8
 // () -> void
+thumb_func_start sub_80465F8
 sub_80465F8:
 	mov r0, #0
 	b loc_80465FC
@@ -807,8 +807,8 @@ loc_8046652:
 	pop {r4-r7,pc}
 thumb_func_end sub_80465F8
 
-thumb_func_start sub_8046664
 // () -> void
+thumb_func_start sub_8046664
 sub_8046664:
 	push {r4-r7,lr}
 	bl sub_80466AA // () -> void
@@ -855,8 +855,8 @@ sub_8046696:
 	pop {r4-r7,pc}
 thumb_func_end sub_8046696
 
-thumb_local_start
 // () -> void
+thumb_local_start
 sub_80466AA:
 	push {r4-r7,lr}
 	ldr r5, off_80466D4 // =byte_2008450 

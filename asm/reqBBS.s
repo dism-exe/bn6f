@@ -56,8 +56,8 @@ reqBBS_jtDraw_813E0CC: .word reqBBS_static_draw_813E0F8+1
 	.word reqBBS_draw_813E3F4+1
 thumb_func_end reqBBS_cb_draw_813E0A4
 
-thumb_local_start
 // () -> int
+thumb_local_start
 reqBBS_static_draw_813E0F8:
 	push {lr}
 	mov r0, #0
@@ -121,8 +121,8 @@ dword_813E180: .word 0x5E40
 	.word 0x17A0
 thumb_func_end reqBBS_static_draw_813E0F8
 
-thumb_local_start
 // () -> int
+thumb_local_start
 reqBBS_draw_813E188:
 	push {lr}
 	ldr r0, dword_813E1C4 // =0x1f40 
@@ -651,8 +651,8 @@ dword_813E598: .word 0x20002
 dword_813E59C: .word 0xC000
 thumb_func_end reqBBS_813E534
 
-thumb_local_start
 // () -> void
+thumb_local_start
 reqBBS_uncomp_813E5A0:
 	push {r5,lr}
 	ldrb r0, [r5,#4]
@@ -4108,8 +4108,8 @@ dword_8140790: .word 0x3FFFFFFF
 off_8140794: .word byte_2008450
 thumb_func_end reqBBS_81406FC
 
-thumb_func_start reqBBS_getTotalPointsIndex
 // () -> u8
+thumb_func_start reqBBS_getTotalPointsIndex
 reqBBS_getTotalPointsIndex:
 	push {r4-r7,lr}
 	ldr r0, off_81409A4 // =dynaicArr 
@@ -4420,8 +4420,8 @@ off_81409C8: .word dynaicArr
 off_81409CC: .word dynaicArr
 thumb_func_end reqBBS_8140984
 
-thumb_func_start reqBBS_81409D0
 // (int a1) -> int
+thumb_func_start reqBBS_81409D0
 reqBBS_81409D0:
 	push {r6,lr}
 	mov r6, r0

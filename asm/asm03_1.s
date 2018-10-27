@@ -1105,8 +1105,8 @@ sub_80341F8:
 off_8034214: .word 0x40
 thumb_func_end sub_80341F8
 
-thumb_local_start
 // () -> void
+thumb_local_start
 ho_8034218:
 	push {lr}
 	ldr r0, off_803422C // =jt_8034230 
@@ -1144,8 +1144,8 @@ sub_803423C:
 	pop {pc}
 thumb_func_end sub_803423C
 
-thumb_local_start
 // () -> void
+thumb_local_start
 sub_8034268:
 	push {lr}
 	mov r0, #9
@@ -1239,9 +1239,9 @@ sub_80342EC:
 	pop {pc}
 thumb_func_end sub_80342EC
 
-thumb_local_start
 // () -> void
 // [break] jack-in
+thumb_local_start
 decompJackInAnimationGfx_8034314:
 	push {r4-r7,lr}
 	// initRefs
@@ -1278,8 +1278,8 @@ dword_8034370: .word 0x39, 0x10139, 0x20239, 0x30339, 0x40439, 0x50539
 	.word 0xC0C39, 0xD0D39, 0xE0E39, 0xFFFFFFFF
 thumb_func_end decompJackInAnimationGfx_8034314
 
-thumb_local_start
 // () -> void
+thumb_local_start
 sub_80343B0:
 	push {r4-r7,lr}
 	ldr r7, off_80343FC // =off_8034400 
@@ -4448,8 +4448,8 @@ sub_80360B6:
 	pop {r7,pc}
 thumb_func_end sub_80360B6
 
-thumb_local_start
 // () -> void .spoils R4, R6
+thumb_local_start
 sub_80360C8:
 	push {r7,lr}
 	add r7, r7, r6
@@ -5385,8 +5385,8 @@ locret_8036F34:
 	mov pc, lr
 thumb_func_end sub_8036F24
 
-thumb_func_start s_2011C50_ptr_1C_isNull
 // () -> zf
+thumb_func_start s_2011C50_ptr_1C_isNull
 s_2011C50_ptr_1C_isNull:
 	mov r0, r10
 	ldr r0, [r0,#0x10] // Toolkit.s_2011C50
@@ -5395,8 +5395,8 @@ s_2011C50_ptr_1C_isNull:
 	mov pc, lr
 thumb_func_end s_2011C50_ptr_1C_isNull
 
-thumb_func_start s_2011C50_8036F40
 // () -> zf
+thumb_func_start s_2011C50_8036F40
 s_2011C50_8036F40:
 	mov r0, r10
 	ldr r0, [r0,#0x10] // Toolkit.s_2011C50
@@ -6912,8 +6912,8 @@ loc_8037AC8:
 	pop {pc}
 thumb_func_end sub_8037AB6
 
-thumb_local_start
 // (void *a1) -> void*
+thumb_local_start
 uncomp_8037AD0:
 	push {lr}
 	cmp r0, #0
@@ -8284,8 +8284,8 @@ loc_8038510:
 	pop {pc}
 thumb_func_end sub_80384F8
 
-thumb_local_start
 // () -> void
+thumb_local_start
 ho_803851C:
 	push {r4-r7,lr}
 	mov r4, r8
@@ -9170,8 +9170,8 @@ locret_8038F2A:
 off_8038F2C: .word 0x40
 thumb_func_end sub_8038F0C
 
-thumb_local_start
 // () -> void
+thumb_local_start
 decomp_initGfx_8038F30:
 	push {lr}
 	// initRefs
@@ -16972,8 +16972,8 @@ locret_803D1A6:
 	pop {r4-r7,pc}
 thumb_func_end sub_803D180
 
-thumb_func_start sub_803D1A8
 // () -> void
+thumb_func_start sub_803D1A8
 sub_803D1A8:
 	mov r0, #1
 	b loc_803D1AE
@@ -20689,8 +20689,8 @@ off_803F4C0: .word unk_200BC70
 off_803F4C4: .word byte_200AC20
 thumb_func_end sub_803F460
 
-thumb_func_start clear_200AD04
 // () -> void
+thumb_func_start clear_200AD04
 clear_200AD04:
 	push {lr}
 	ldr r0, off_803F55C // =byte_200AD04 

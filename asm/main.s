@@ -98,8 +98,8 @@ off_80003C8: .word dword_2009930
 off_80003CC: .word GeneralLCDStatus_STAT_LYC_
 thumb_func_end main_static_awaitFrame_80003A0
 
-thumb_local_start
 // () -> void
+thumb_local_start
 main_static_await_80003D0:
 	push {lr}
 	ldr r0, off_80003E0 // =GeneralLCDStatus_STAT_LYC_ 

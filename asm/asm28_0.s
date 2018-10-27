@@ -7873,8 +7873,8 @@ setFlag3_2e2_2001C88:
 	pop {pc}
 thumb_func_end setFlag3_2e2_2001C88
 
-thumb_local_start
 // () -> void
+thumb_local_start
 clearFlag3_2e2_2001C88:
 	push {lr}
 	// clear flag 3 @ 0x2001c88[0x2e2] (=2001f6a)
@@ -7884,8 +7884,8 @@ clearFlag3_2e2_2001C88:
 	pop {pc}
 thumb_func_end clearFlag3_2e2_2001C88
 
-thumb_func_start updateFlags_809E0B0
 // () -> void
+thumb_func_start updateFlags_809E0B0
 updateFlags_809E0B0:
 	// [break] pressing L, jacking in, and talking to objects but not NPCs
 	ldr r3, off_809E138 // =byte_200ACE0 

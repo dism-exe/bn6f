@@ -9436,8 +9436,8 @@ sub_8013422:
 off_8013434: .word byte_203CE00
 thumb_func_end sub_8013422
 
-thumb_func_start initStruct_8013438
 // (void *struc) -> void
+thumb_func_start initStruct_8013438
 initStruct_8013438:
 	push {r4,lr}
 	mov r4, r0
@@ -9753,8 +9753,8 @@ loc_8013678:
 	pop {r4,pc}
 thumb_func_end sub_80135E8
 
-thumb_func_start sub_8013682
 // (int idx) -> void*
+thumb_func_start sub_8013682
 sub_8013682:
 	mov r1, #0x64 
 	mul r0, r1
@@ -9960,8 +9960,8 @@ sub_8013790:
 	pop {r6,pc}
 thumb_func_end sub_8013790
 
-thumb_func_start navicust_801379E
 // (int a1, int a2, int a3) -> void
+thumb_func_start navicust_801379E
 navicust_801379E:
 	push {lr}
 	push {r1,r2}
@@ -9976,8 +9976,8 @@ navicust_801379E:
 	pop {pc}
 thumb_func_end navicust_801379E
 
-thumb_func_start sub_80137B6
 // (int a1, int a2) -> u8
+thumb_func_start sub_80137B6
 sub_80137B6:
 	push {lr}
 	push {r1}
@@ -10483,8 +10483,8 @@ loc_8013B4A:
 	pop {r4,pc}
 thumb_func_end sub_8013B20
 
-thumb_func_start init_8013B4E
 // (bool a1, int a2) -> void
+thumb_func_start init_8013B4E
 init_8013B4E:
 	push {r4,r6,r7,lr}
 	cmp r0, #0
@@ -10500,8 +10500,8 @@ loc_8013B56:
 	b loc_8013B6E
 thumb_func_end init_8013B4E
 
-thumb_func_start init_8013B64
 // (int idx, int a2) -> void
+thumb_func_start init_8013B64
 init_8013B64:
 	push {r4,r6,r7,lr}
 	mov r4, r1
@@ -11121,8 +11121,8 @@ locret_8014016:
 	pop {pc}
 thumb_func_end sub_8013FF8
 
-thumb_func_start navicust_8014018
 // (int idx_8014034) -> bool
+thumb_func_start navicust_8014018
 navicust_8014018:
 	ldr r1, off_8014030 // =byte_8014034 
 	ldrb r0, [r1,r0]
@@ -20074,8 +20074,8 @@ sub_801A066:
 	pop {r4,pc}
 thumb_func_end sub_801A066
 
-thumb_func_start sub_801A074
 // () -> void
+thumb_func_start sub_801A074
 sub_801A074:
 	ldr r0, [r5,#0x54]
 	mov r1, #0
@@ -20207,8 +20207,8 @@ sub_801A146:
 	mov pc, lr
 thumb_func_end sub_801A146
 
-thumb_func_start object_setFlag
 // (int a1) -> void
+thumb_func_start object_setFlag
 object_setFlag:
 	ldr r1, [r5,#0x54]
 	ldr r2, [r1,#0x3c]
@@ -20217,8 +20217,8 @@ object_setFlag:
 	mov pc, lr
 thumb_func_end object_setFlag
 
-thumb_func_start object_clearFlag
 // (int bitfield) -> void
+thumb_func_start object_clearFlag
 object_clearFlag:
 	ldr r1, [r5,#0x54]
 	ldr r2, [r1,#0x3c]
@@ -20227,8 +20227,8 @@ object_clearFlag:
 	mov pc, lr
 thumb_func_end object_clearFlag
 
-thumb_func_start object_getFlag
 // () -> int
+thumb_func_start object_getFlag
 object_getFlag:
 	ldr r1, [r5,#0x54]
 	ldr r0, [r1,#0x3c]
@@ -26078,8 +26078,8 @@ off_801CF28: .word sub_801CF3C+1
 	.word sub_801D048+1
 thumb_func_end sub_801CF0E
 
-thumb_local_start
 // () -> void
+thumb_local_start
 sub_801CF3C:
 	// :param r7:
 	push {r4-r7,lr}

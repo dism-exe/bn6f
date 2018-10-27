@@ -3808,8 +3808,8 @@ sub_800E258:
 	pop {r5,r6,pc}
 thumb_func_end sub_800E258
 
-thumb_func_start sub_800E276
 // (int a1, int a2) -> (int n1, int n2)
+thumb_func_start sub_800E276
 sub_800E276:
 	mov r2, #0x28 
 	lsl r0, r0, #0x18
@@ -3830,8 +3830,8 @@ dword_800E294: .word 0xFF740000
 dword_800E298: .word 0xFFEC0000
 thumb_func_end sub_800E276
 
-thumb_func_start sub_800E29C
 // () -> void
+thumb_func_start sub_800E29C
 sub_800E29C:
 	push {lr}
 	ldrb r0, [r5,#0x12]
@@ -3868,15 +3868,15 @@ sub_800E2C2:
 	mov pc, lr
 thumb_func_end sub_800E2C2
 
-thumb_func_start object_getFlipDirection_800E2CA
 // () -> int
+thumb_func_start object_getFlipDirection_800E2CA
 object_getFlipDirection_800E2CA:
 	ldrb r0, [r5,#0x16]
 	ldrb r1, [r5,#0x17]
 thumb_func_end object_getFlipDirection_800E2CA
 
-thumb_func_start object_getFlipDirection
 // (int a1, int a2) -> int
+thumb_func_start object_getFlipDirection
 object_getFlipDirection:
 	eor r0, r1
 	lsl r0, r0, #1
@@ -4098,8 +4098,8 @@ loc_800E43E:
 	pop {r4,pc}
 thumb_func_end object_calculateFinalDamage2
 
-thumb_func_start sub_800E456
 // () -> int
+thumb_func_start sub_800E456
 sub_800E456:
 	ldrb r0, [r5,#0x16]
 	ldrb r1, [r5,#0x17]

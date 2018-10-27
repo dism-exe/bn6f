@@ -3004,8 +3004,8 @@ off_8027D2C: .word byte_86EA94C
 off_8027D30: .word byte_86EB354
 thumb_func_end sub_8027D10
 
-thumb_local_start
 // (int chipID) -> void*
+thumb_local_start
 chip_getScript_8027D34:
 	mov r1, r0
 	lsl r1, r1, #0x17
@@ -3116,8 +3116,8 @@ off_8027E14: .word 0x400
 dword_8027E18: .word 0x20000
 thumb_func_end sub_8027D78
 
-thumb_local_start
 // (int a1) -> void*
+thumb_local_start
 getLocOfActiveChips_8027E1C:
 	mov r1, #0xc
 	mul r0, r1
@@ -5214,8 +5214,8 @@ loc_8028EC2:
 	pop {r4,r6,r7,pc}
 thumb_func_end sub_8028E4C
 
-thumb_local_start
 // () -> void
+thumb_local_start
 updateCustomScreen_WhenUnselectingChip_8028EC8:
 	push {r4,r6,r7,lr}
 	mov r0, #0
@@ -7593,8 +7593,8 @@ loc_8029FEC:
 dword_8029FF0: .word 0x200000
 thumb_func_end sub_8029FB4
 
-thumb_local_start
 // (int a1) -> bool
+thumb_local_start
 chipIDIs13f_8029FF4:
 	push {r1-r7,lr}
 	mov r3, #0
@@ -8241,8 +8241,8 @@ loc_802A54A:
 	pop {r1-r7,pc}
 thumb_func_end sub_802A53C
 
-thumb_local_start
 // (int a1) -> int
+thumb_local_start
 getChipID_802A54E:
 	push {r1-r7,lr}
 	mov r4, r0
@@ -13640,8 +13640,8 @@ sub_802D242:
 	mov pc, lr
 thumb_func_end sub_802D242
 
-thumb_func_start get_802D246
 // () -> int
+thumb_func_start get_802D246
 get_802D246:
 	push {lr}
 	mov r0, r10
@@ -13651,8 +13651,8 @@ get_802D246:
 	pop {pc}
 thumb_func_end get_802D246
 
-thumb_func_start sub_802D254
 // () -> int
+thumb_func_start sub_802D254
 sub_802D254:
 	ldr r0, [r0,#8]
 	mov pc, lr
@@ -13690,15 +13690,15 @@ sub_802D278:
 	mov pc, lr
 thumb_func_end sub_802D278
 
-thumb_func_start getBattleSettings_200AF60
 // () -> BattleSettings*
+thumb_func_start getBattleSettings_200AF60
 getBattleSettings_200AF60:
 	ldr r0, off_802D2E4 // =BattleSettings_200AF60 
 	mov pc, lr
 thumb_func_end getBattleSettings_200AF60
 
-thumb_func_start copyBattleSettingsTo_200AF60
 // (BattleSettings *src) -> void
+thumb_func_start copyBattleSettingsTo_200AF60
 copyBattleSettingsTo_200AF60:
 	push {lr}
 	ldr r1, off_802D2E8 // =BattleSettings_200AF60 
@@ -13707,8 +13707,8 @@ copyBattleSettingsTo_200AF60:
 	pop {pc}
 thumb_func_end copyBattleSettingsTo_200AF60
 
-thumb_func_start battleSettings_setFlags_unkSettings
 // (int mask) -> void
+thumb_func_start battleSettings_setFlags_unkSettings
 battleSettings_setFlags_unkSettings:
 	ldr r1, off_802D2EC // =BattleSettings_200AF60 
 	ldr r2, [r1,#0x8] // BattleSettings.UnknownOptionalSettings
@@ -13717,8 +13717,8 @@ battleSettings_setFlags_unkSettings:
 	mov pc, lr
 thumb_func_end battleSettings_setFlags_unkSettings
 
-thumb_local_start
 // (int mask) -> void
+thumb_local_start
 battlteSettings_clearFlags_UnkSettings:
 	ldr r1, off_802D2F0 // =BattleSettings_200AF60 
 	ldr r2, [r1,#0x8] // BattleSettings.UnknownOptionalSettings
@@ -13727,32 +13727,32 @@ battlteSettings_clearFlags_UnkSettings:
 	mov pc, lr
 thumb_func_end battlteSettings_clearFlags_UnkSettings
 
-thumb_local_start
 // () -> u32
+thumb_local_start
 battleSettings_getUnkOptSettings:
 	ldr r1, off_802D2F4 // =BattleSettings_200AF60 
 	ldr r0, [r1,#0x8] // BattleSettings.UnknownOptionalSettings
 	mov pc, lr
 thumb_func_end battleSettings_getUnkOptSettings
 
-thumb_local_start
 // (u32 unkOptSettings) -> void
+thumb_local_start
 battleSettings_setUnkOptSettings:
 	ldr r1, off_802D2F8 // =BattleSettings_200AF60 
 	str r0, [r1,#0x8] // BattleSettings.UnknownOptionalSettings
 	mov pc, lr
 thumb_func_end battleSettings_setUnkOptSettings
 
-thumb_func_start battleSettings_setBackground
 // (u8 background) -> void
+thumb_func_start battleSettings_setBackground
 battleSettings_setBackground:
 	ldr r1, off_802D2FC // =BattleSettings_200AF60 
 	strb r0, [r1,#0x4] // BattleSettings.background
 	mov pc, lr
 thumb_func_end battleSettings_setBackground
 
-thumb_func_start battleSettings_802D2B2
 // () -> BattleSettings*
+thumb_func_start battleSettings_802D2B2
 battleSettings_802D2B2:
 	push {r4,r6,r7,lr}
 	bl battleSettings_getUnkOptSettings // () -> u32
@@ -17381,8 +17381,8 @@ off_802F108: .word 0x2C8
 dword_802F10C: .word 0x16
 thumb_func_end sub_802F0F4
 
-thumb_func_start setFlag_2001C88_entry
 // (u8 entryIdx, u8 byteFlagIdx) -> void
+thumb_func_start setFlag_2001C88_entry
 setFlag_2001C88_entry:
 	// Each entry is 32 bytes, which are indexed by a1
 	// a2 addresses the 32 bytes, but also the flag to set in those bytes
@@ -17390,8 +17390,8 @@ setFlag_2001C88_entry:
 	orr r0, r1
 thumb_func_end setFlag_2001C88_entry
 
-thumb_func_start setFlag_2001C88_bitfield
 // (u16 entryFlagBitfield) -> void
+thumb_func_start setFlag_2001C88_bitfield
 setFlag_2001C88_bitfield:
 	// LSB 3 bits of a1 are used to determines the flag to set (7-a1&7)
 	// a1_bitfield >> 3 is used to offset into off_2001C88 to locate the byte to set a flag at
@@ -17413,15 +17413,15 @@ setFlag_2001C88_bitfield:
 	mov pc, lr
 thumb_func_end setFlag_2001C88_bitfield
 
-thumb_func_start clearFlag_2001C88_entry
 // (u8 entryIdx, u8 byteFlagIdx) -> void
+thumb_func_start clearFlag_2001C88_entry
 clearFlag_2001C88_entry:
 	lsl r0, r0, #8
 	orr r0, r1
 thumb_func_end clearFlag_2001C88_entry
 
-thumb_func_start clearFlag_2001C88_bitfield
 // (u16 entryFlagBitfield) -> void
+thumb_func_start clearFlag_2001C88_bitfield
 clearFlag_2001C88_bitfield:
 	// LSB 3 bits of a1 are used to determines the flag to clear (7-a1&7)
 	// a1_bitfield >> 3 is used to offset into off_2001C88 to locate the byte to clear a flag at
@@ -17439,15 +17439,15 @@ clearFlag_2001C88_bitfield:
 	mov pc, lr
 thumb_func_end clearFlag_2001C88_bitfield
 
-thumb_func_start toggleFlag_2001C88_entry
 // (u8 entryIdx, u8 byteFlagIdx) -> void
+thumb_func_start toggleFlag_2001C88_entry
 toggleFlag_2001C88_entry:
 	lsl r0, r0, #8
 	orr r0, r1
 thumb_func_end toggleFlag_2001C88_entry
 
-thumb_func_start toggleFlag_2001C88_bitfield
 // (u16 entryFlagBitfield) -> void
+thumb_func_start toggleFlag_2001C88_bitfield
 toggleFlag_2001C88_bitfield:
 	mov r3, r10
 	ldr r3, [r3,#0x44] // Toolkit.flags_2001C88
@@ -17463,16 +17463,16 @@ toggleFlag_2001C88_bitfield:
 	mov pc, lr
 thumb_func_end toggleFlag_2001C88_bitfield
 
-thumb_func_start isActiveFlag_2001C88_entry
 // (int entryIdx, int byteFlagIdx) -> zf
+thumb_func_start isActiveFlag_2001C88_entry
 isActiveFlag_2001C88_entry:
 	lsl r0, r0, #8
 	// int v1 = (a1 << 8) | a2 or a1; // r0
 	orr r0, r1
 thumb_func_end isActiveFlag_2001C88_entry
 
-thumb_func_start isActiveFlag_2001C88_bitfield
 // (u16 entryFlagBitfield) -> zf
+thumb_func_start isActiveFlag_2001C88_bitfield
 isActiveFlag_2001C88_bitfield:
 	mov r3, r10
 	ldr r3, [r3,#0x44] // Toolkit.flags_2001C88
@@ -17488,15 +17488,15 @@ isActiveFlag_2001C88_bitfield:
 	mov pc, lr
 thumb_func_end isActiveFlag_2001C88_bitfield
 
-thumb_func_start setFlags_multEntries_2001C88_entry
 // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+thumb_func_start setFlags_multEntries_2001C88_entry
 setFlags_multEntries_2001C88_entry:
 	lsl r0, r0, #8
 	orr r0, r1
 thumb_func_end setFlags_multEntries_2001C88_entry
 
-thumb_func_start setFlags_multEntries_2001C88_bitfield
 // (u16 entryFlagBitfield) -> void
+thumb_func_start setFlags_multEntries_2001C88_bitfield
 setFlags_multEntries_2001C88_bitfield:
 	push {r4,r5,lr}
 	mov r4, r10
@@ -17520,15 +17520,15 @@ loc_802F18A:
 	pop {r4,r5,pc}
 thumb_func_end setFlags_multEntries_2001C88_bitfield
 
-thumb_func_start clearFlags_multEntries_2001C88_entry
 // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+thumb_func_start clearFlags_multEntries_2001C88_entry
 clearFlags_multEntries_2001C88_entry:
 	lsl r0, r0, #8
 	orr r0, r1
 thumb_func_end clearFlags_multEntries_2001C88_entry
 
-thumb_func_start clearFlags_multEntries_2001C88_bitfield
 // (u16 entryFlagBitfield) -> void
+thumb_func_start clearFlags_multEntries_2001C88_bitfield
 clearFlags_multEntries_2001C88_bitfield:
 	push {r4,r5,lr}
 	mov r4, r10
@@ -17552,15 +17552,15 @@ loc_802F1B4:
 	pop {r4,r5,pc}
 thumb_func_end clearFlags_multEntries_2001C88_bitfield
 
-thumb_local_start
 // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+thumb_local_start
 togglelFlags_multEntries_2001C88_entry:
 	lsl r0, r0, #8
 	orr r0, r1
 thumb_func_end togglelFlags_multEntries_2001C88_entry
 
-thumb_local_start
 // (u16 entryFlagBitfield) -> void
+thumb_local_start
 togglelFlags_multEntries_2001C88_bitfield:
 	push {r4,r5,lr}
 	mov r4, r10
@@ -17584,8 +17584,8 @@ loc_802F1DE:
 	pop {r4,r5,pc}
 thumb_func_end togglelFlags_multEntries_2001C88_bitfield
 
-thumb_func_start sub_802F1FC
 // (int a3, int a2) ->
+thumb_func_start sub_802F1FC
 sub_802F1FC:
 	lsl r0, r0, #8
 	orr r0, r1
@@ -17984,8 +17984,8 @@ sub_802F624:
 dword_802F638: .word 0x1741
 thumb_func_end sub_802F624
 
-thumb_local_start
 // () -> void
+thumb_local_start
 ho_802F63C:
 	push {lr}
 	ldr r0, off_802F650 // =jt_802F654 
@@ -18438,8 +18438,8 @@ dword_802FAEC: .word 0x80584070, 0x404B, 0x80784070, 0x4053, 0x40980070
 	.word 0x405B, 0xA88070, 0x405F, 0x0
 thumb_func_end sub_802FA44
 
-thumb_local_start
 // () -> void
+thumb_local_start
 sub_802FB10:
 	push {r4-r7,lr}
 	ldr r0, off_802FB1C // =dword_802FB20 
@@ -18754,8 +18754,8 @@ dword_802FE20: .word 0x7000000
 off_802FE24: .word 0x400
 thumb_func_end objRender_802FE0C
 
-thumb_func_start sub_802FE28
 // (u32 a1, u16 a2, int notUsed, int a4) -> void
+thumb_func_start sub_802FE28
 sub_802FE28:
 	push {r4,lr}
 	ldr r4, off_802FE34 // =sub_30068E8+1 

@@ -1,7 +1,7 @@
 .include "asm/asm38.inc"
 
-arm_func_start sub_81D6000
 // TODO: change back to sub_081D6000
+arm_func_start sub_81D6000
 sub_81D6000:
 	mov r3, #0x4000000
 	add r3, r3, #0x200

@@ -1303,8 +1303,8 @@ sub_813C020:
 	.byte 0, 0
 thumb_func_end sub_813C020
 
-thumb_func_start sub_813C030
 // () -> void
+thumb_func_start sub_813C030
 sub_813C030:
 	push {r4-r7,lr}
 	mov r5, #0x94
@@ -3130,8 +3130,8 @@ sub_813CE90:
 	.byte 0, 0
 thumb_func_end sub_813CE90
 
-thumb_local_start
 // () -> void
+thumb_local_start
 sub_813CEA0:
 	push {r4-r7,lr}
 	sub sp, sp, #4

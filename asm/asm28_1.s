@@ -161,8 +161,8 @@ locret_809F646:
 dword_809F648: .word 0x50000
 thumb_func_end sub_809F638
 
-thumb_func_start getBitfieldFromArr_809F64C
 // (u8 bitfield_arr[2]) -> u16
+thumb_func_start getBitfieldFromArr_809F64C
 getBitfieldFromArr_809F64C:
 	ldrb r1, [r0]
 	ldrb r0, [r0,#1]
@@ -171,8 +171,8 @@ getBitfieldFromArr_809F64C:
 	mov pc, lr
 thumb_func_end getBitfieldFromArr_809F64C
 
-thumb_func_start sub_809F656
 // (void* a1) -> int
+thumb_func_start sub_809F656
 sub_809F656:
 	ldrb r1, [r0]
 	ldrb r2, [r0,#1]
