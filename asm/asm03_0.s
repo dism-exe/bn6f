@@ -17933,13 +17933,12 @@ ClearEventFlagRange:
 	thumb_func_end ClearEventFlagRange
 	thumb_func_end ClearEventFlagRangeFromImmediate
 
-.func
-.thumb_func
+	thumb_func_start ToggleEventFlagRangeFromImmediate
 // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
-togglelFlags_multEntries_2001C88_entry:
+ToggleEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
-.endfunc // togglelFlags_multEntries_2001C88_entry
+// fallthrough
 
 // (u16 entryFlagBitfield) -> void
 
@@ -17983,16 +17982,18 @@ ToggleEventFlagRange:
 	bgt .loop_802F1DE
 	pop {r4,r5,pc}
 	thumb_func_end ToggleEventFlagRange
+	thumb_func_end ToggleEventFlagRangeFromImmediate
 
-.func
-.thumb_func
 // (int a3, int a2) ->
-sub_802F1FC:
+	thumb_func_start TestEventFlagRangeFromImmediate
+TestEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
+// fallthrough
 
 // Tests multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
 // Number of flags to tests is in r2
+	thumb_func_start TestEventFlagRange
 TestEventFlagRange:
 	push {r4-r7,lr}
 	mov r7, r2
@@ -18039,10 +18040,11 @@ TestEventFlagRange:
 	cmp r6, r7
 	bne loc_802F232
 	mov r0, #1
-loc_802F232: .align 1, 0
+loc_802F232:
 	tst r0, r0 // unnecessary since mov sets condition flags already
 	pop {r4-r7,pc}
-.endfunc // sub_802F1FC
+	thumb_func_end TestEventFlagRange
+	thumb_func_end TestEventFlagRangeFromImmediate
 
 // file boundary?
 	.balign 4, 0x00

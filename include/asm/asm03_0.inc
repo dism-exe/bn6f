@@ -109,7 +109,7 @@
 .global SetEventFlagRange // (u16 entryFlagBitfield) -> void
 .global ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 .global ClearEventFlagRange // (u16 entryFlagBitfield) -> void
-.global sub_802F1FC // (int a3, int a2) ->
+.global TestEventFlagRangeFromImmediate // (int a3, int a2) ->
 .global TestEventFlagRange
 .global sub_802F238
 .global sub_802F2C8

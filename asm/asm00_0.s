@@ -1457,7 +1457,7 @@ loc_8000F6C:
 	mov r0, #3
 	mov r1, #0xbd
 	mov r2, #5
-	bl sub_802F1FC // (int a3, int a2) ->
+	bl TestEventFlagRangeFromImmediate // (int a3, int a2) ->
 	beq loc_8000F80
 	add r4, #1
 	mov r0, #0x20 
