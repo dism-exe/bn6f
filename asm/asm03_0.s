@@ -6446,7 +6446,7 @@ sub_802963C:
 	add r0, r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r0-r3,pc}
 .endfunc // sub_802963C
 
@@ -16333,7 +16333,7 @@ loc_802E5CE:
 	add r0, r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	bl sub_80070BC
 loc_802E5F2:
 	mov r0, #1
@@ -16392,7 +16392,7 @@ sub_802E62A:
 	add r0, r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	bl sub_80070BC
 loc_802E65A:
 	ldr r0, [sp]
@@ -17697,13 +17697,12 @@ setFlag_2001C88_entry:
 .endfunc // setFlag_2001C88_entry
 // fallthrough
 
-.func
-.thumb_func
 // (u16 entryFlagBitfield) -> void
 
 // Sets a flag at eEventFlags
 // r0 - flag to set
-setFlag_2001C88_bitfield:
+	thumb_func_start SetEventFlag
+SetEventFlag:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_EventFlagsPtr]
 
@@ -17724,7 +17723,7 @@ setFlag_2001C88_bitfield:
 	orr r0, r1
 	strb r0, [r3]
 	mov pc, lr
-.endfunc // setFlag_2001C88_bitfield
+	thumb_func_end SetEventFlag
 
 .func
 .thumb_func
@@ -18062,11 +18061,11 @@ sub_802F238:
 	push {r4,r6,r7,lr}
 	mov r7, r0
 	mov r0, r0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, r7
 	add r0, #0x80
 	mov r0, r0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	ldr r1, off_802F2C4 // =0x1ca0 
 	sub r7, r7, r1
 	ldr r2, off_802F2DC // =byte_2006530 

@@ -2723,7 +2723,7 @@ loc_8143CA0:
 	add r0, r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #8
 	b loc_8143CA0
 loc_8143CC4:

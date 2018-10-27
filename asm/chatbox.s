@@ -2692,7 +2692,7 @@ off_8041184: .word chatbox_80411B0+1
 .thumb_func
 chatbox_80411B0:
 	push {lr}
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
@@ -2780,7 +2780,7 @@ chatbox_8041218:
 	add r0, #0x4c 
 	// bitfield
 	ldr r0, [r5,r0]
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #3
 	pop {pc}
 	.balign 4, 0x00

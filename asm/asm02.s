@@ -70,7 +70,7 @@ loc_8021B00:
 	add r1, r1, r0
 	// bitfield
 	add r0, r1, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r0-r2}
 	push {r2}
 	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
@@ -102,7 +102,7 @@ loc_8021B3C:
 	add r1, r1, r0
 	// bitfield
 	add r0, r1, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r0-r2}
 	push {r2}
 	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*

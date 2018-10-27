@@ -2174,7 +2174,7 @@ sub_8047066:
 	ldr r2, dword_8047098 // =0x2420 
 	add r2, r2, r0
 	add r0, r2, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r7, #0xff
 	strb r7, [r5,#0xd]
 	ldrb r0, [r5,#1]

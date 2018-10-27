@@ -3563,7 +3563,7 @@ loc_813D44A:
 	bne loc_813D466
 	// bitfield
 	add r0, r4, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #1
 	ldrb r1, [r7]
 	ldrh r2, [r7,#2]

@@ -75,14 +75,14 @@ sub_80A4A08:
 	beq loc_80A4A1E
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 loc_80A4A1E:
 	ldrh r0, [r7,#0xe]
 	tst r0, r0
 	beq loc_80A4A2A
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 loc_80A4A2A:
 	ldrh r3, [r7,#0xa]
 	tst r3, r3
@@ -490,11 +490,11 @@ loc_80A524E:
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	ldrh r0, [r7,#4]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #0x10
 	strb r0, [r5,#8]
 	bl sub_80A5350
@@ -525,7 +525,7 @@ sub_80A5268:
 	ldrh r0, [r7,#4]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #0
 	str r0, [r5,#0x24]
 	mov r0, #0xc
@@ -541,7 +541,7 @@ loc_80A52B0:
 	ldrh r0, [r7,#4]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	ldrb r1, [r7,#8]
 	ldrb r0, [r7,#9]
 	cmp r0, r1
@@ -549,7 +549,7 @@ loc_80A52B0:
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #0x10
 	strb r0, [r5,#8]
 	b loc_80A52DA
@@ -575,7 +575,7 @@ sub_80A52E4:
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #0x10
 	strb r0, [r5,#8]
 loc_80A52FC:
@@ -595,7 +595,7 @@ sub_80A5304:
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #0x10
 	strb r0, [r5,#8]
 	b loc_80A5346
@@ -2012,7 +2012,7 @@ sub_80A5E8C:
 	ldr r0, [r1,r0]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r4,pc}
 	.byte 0, 0
 .endfunc // sub_80A5E8C
@@ -4715,7 +4715,7 @@ sub_80A7BC0:
 	bl sub_81420F0
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #8
 	strb r0, [r5,#8]
 	mov r0, #0x73 
@@ -5131,14 +5131,14 @@ sub_80A7F26:
 	bl sub_81427A4
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	bl sub_8142184
 	ldr r0, dword_80A7F54 // =0x1650 
 	ldrb r1, [r5,#4]
 	add r0, r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	bl sub_80048B2
 	pop {r4-r7,pc}
 dword_80A7F54: .word 0x1650
@@ -5473,7 +5473,7 @@ loc_80A8340:
 	bne loc_80A8362
 	// bitfield
 	add r0, r6, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	b locret_80A8368
 loc_80A8362:
 	add r0, r6, #0
@@ -6270,7 +6270,7 @@ sub_80A8988:
 	bl sub_81430B6
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	b locret_80A89D6
 loc_80A89B4:
 	bl sub_8002E52
@@ -6283,7 +6283,7 @@ loc_80A89B4:
 	bl sub_81430B6
 	// bitfield
 	add r0, r1, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #1
 	bl sub_81433E4
 locret_80A89D6:
@@ -7909,7 +7909,7 @@ sub_80A9614:
 	ldrh r0, [r1,r0]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r4,pc}
 	.balign 4, 0x00
 .endfunc // sub_80A9614
@@ -8520,7 +8520,7 @@ loc_80A9BBE:
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	ldrh r0, [r7,#4]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
@@ -8584,7 +8584,7 @@ loc_80A9C40:
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	ldrh r0, [r7,#4]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0

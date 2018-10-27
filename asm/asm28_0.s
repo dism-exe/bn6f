@@ -24,7 +24,7 @@ sub_8098BE8:
 	add r0, r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 loc_8098C16:
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -5487,7 +5487,7 @@ unk_809BFB0: .byte 0x3F
 	add r0, r0, r2
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 loc_809C0DE:
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -5994,7 +5994,7 @@ off_809C950: .word unk_2011C50
 	ldr r0, [r0,r1]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00

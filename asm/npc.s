@@ -1064,7 +1064,7 @@ npc_809EDEE:
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	add r6, #3
 	pop {pc}
 .endfunc // npc_809EDEE

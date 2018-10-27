@@ -1195,7 +1195,7 @@ loc_80901AC:
 	ldrh r0, [r0,r1]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	ldrb r0, [r5,#0xb]
 	sub r0, #1
 	strb r0, [r5,#0xb]

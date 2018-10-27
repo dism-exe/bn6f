@@ -2553,7 +2553,7 @@ loc_80351CC:
 	ldrh r0, [r4,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 loc_80351E2:
 	add r4, #4
 	b loc_80351CC
@@ -2641,7 +2641,7 @@ loc_8035234:
 	ldrh r1, [r4,#2]
 	// bitfield
 	add r0, r1, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 loc_8035246:
 	add r4, #4
 	b loc_8035234
@@ -4121,7 +4121,7 @@ loc_8035DC4:
 loc_8035DCA:
 	// bitfield
 	add r0, r4, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	add r7, #4
 	mov r0, #1
 	pop {pc}
@@ -4195,7 +4195,7 @@ loc_8035E3C:
 	blt loc_8035E4E
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #2
 	b loc_8035E3C
 loc_8035E4E:
@@ -6225,7 +6225,7 @@ sub_80373CC:
 	bl sub_8037460
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r1,r5}
 	mov r0, #1
 	add r1, #3
