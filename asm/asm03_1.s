@@ -4159,7 +4159,7 @@ sub_8035DF8:
 	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	add r2, r1, #0
-	bl setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlagRange // (u16 entryFlagBitfield) -> void
 	add r7, #4
 	mov r0, #1
 	pop {pc}
@@ -4176,7 +4176,7 @@ sub_8035E16:
 	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
 	add r2, r1, #0
-	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlagRange // (u16 entryFlagBitfield) -> void
 	add r7, #4
 	mov r0, #1
 	pop {pc}

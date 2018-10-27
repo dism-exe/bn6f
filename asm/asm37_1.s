@@ -595,7 +595,7 @@ sub_8142102:
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
-	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlagRange // (u16 entryFlagBitfield) -> void
 	pop {r4-r7,pc}
 off_814211C: .word dword_8142120
 dword_8142120: .word 0x50710, 0x50720, 0x50730, 0x0
@@ -2079,12 +2079,12 @@ loc_81431B4:
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
 	mov r2, #8
-	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlagRange // (u16 entryFlagBitfield) -> void
 	mov r0, #0
 	bl sub_81430B6
 	add r0, r1, #0
 	mov r2, #8
-	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlagRange // (u16 entryFlagBitfield) -> void
 	pop {r4-r7,pc}
 off_81431F4: .word 0xA0
 .func
@@ -2673,7 +2673,7 @@ loc_8143C2C:
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
 	mov r2, #0x30 
-	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlagRange // (u16 entryFlagBitfield) -> void
 	mov r0, #0xd
 	mov r1, #0x98
 	mov r2, #0xa

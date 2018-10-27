@@ -1701,12 +1701,12 @@ loc_813C366:
 	beq loc_813C386
 	add r0, r2, #0
 	mov r2, #4
-	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlagRange // (u16 entryFlagBitfield) -> void
 	b loc_813C38E
 loc_813C386:
 	add r0, r2, #0
 	mov r2, #4
-	bl setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlagRange // (u16 entryFlagBitfield) -> void
 loc_813C38E:
 	mov r0, #0x8b
 	bl sound_play // () -> void

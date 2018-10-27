@@ -106,9 +106,9 @@
 .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 .global setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
-.global setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+.global SetEventFlagRange // (u16 entryFlagBitfield) -> void
 .global clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
-.global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+.global ClearEventFlagRange // (u16 entryFlagBitfield) -> void
 .global sub_802F1FC // (int a3, int a2) ->
 .global loc_802F200
 .global sub_802F238
