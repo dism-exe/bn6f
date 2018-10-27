@@ -17641,7 +17641,7 @@ dword_802F0A8:
 sub_802F0C4:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Flags2001c88_Ptr]
+	ldr r0, [r0,#oToolkit_EventFlagsPtr]
 	ldr r1, off_802F0D4 // =0x4ec 
 	bl sub_80008C0
 	pop {pc}
@@ -17655,7 +17655,7 @@ sub_802F0D8:
 	push {lr}
 	ldr r0, dword_802F0EC // =0x2de 
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Flags2001c88_Ptr]
+	ldr r1, [r1,#oToolkit_EventFlagsPtr]
 	add r0, r0, r1
 	ldr r1, dword_802F0F0 // =0x2 
 	bl sub_80008C0
@@ -17671,7 +17671,7 @@ sub_802F0F4:
 	push {lr}
 	ldr r0, off_802F108 // =0x2c8 
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Flags2001c88_Ptr]
+	ldr r1, [r1,#oToolkit_EventFlagsPtr]
 	add r0, r0, r1
 	ldr r1, dword_802F10C // =0x16 
 	bl sub_80008C0
@@ -17701,11 +17701,11 @@ setFlag_2001C88_entry:
 .thumb_func
 // (u16 entryFlagBitfield) -> void
 
-// Sets a flag at flags_2001C88
+// Sets a flag at eEventFlags
 // r0 - flag to set
 setFlag_2001C88_bitfield:
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Flags2001c88_Ptr]
+	ldr r3, [r3,#oToolkit_EventFlagsPtr]
 
 	// get byte offset of flag in memory
 	lsr r1, r0, #3
@@ -17739,11 +17739,11 @@ clearFlag_2001C88_entry:
 .thumb_func
 // (u16 entryFlagBitfield) -> void
 
-// Clears a flag at flags_2001C88
+// Clears a flag at eEventFlags
 // r0 - flag to clear
 clearFlag_2001C88_bitfield:
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Flags2001c88_Ptr] // Toolkit.flags_2001C88
+	ldr r3, [r3,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
 	
 	// get byte offset of flag in memory
 	lsr r1, r0, #3
@@ -17776,11 +17776,11 @@ toggleFlag_2001C88_entry:
 .thumb_func
 // (u16 entryFlagBitfield) -> void
 
-// Toggle a flag at flags_2001C88
+// Toggle a flag at eEventFlags
 // r0 - flag to toggle
 toggleFlag_2001C88_bitfield:
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Flags2001c88_Ptr] // Toolkit.flags_2001C88
+	ldr r3, [r3,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
 
 	// get byte offset of flag in memory
 	lsr r1, r0, #3
@@ -17813,11 +17813,11 @@ isActiveFlag_2001C88_entry:
 .thumb_func
 // (u16 entryFlagBitfield) -> zf
 
-// Test a flag at flags_2001C88
+// Test a flag at eEventFlags
 // r0 - flag to test
 isActiveFlag_2001C88_bitfield:
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Flags2001c88_Ptr] // Toolkit.flags_2001C88
+	ldr r3, [r3,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
 
 	// get byte offset of flag in memory
 	lsr r1, r0, #3
@@ -17854,11 +17854,11 @@ setFlags_multEntries_2001C88_entry:
 setFlags_multEntries_2001C88_bitfield:
 	push {r4,r5,lr}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Flags2001c88_Ptr] // Toolkit.flags_2001C88
+	ldr r4, [r4,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
 	mov r5, r0
 
 // r2 = number of event flags left to set
-// r4 = flags_2001C88
+// r4 = eEventFlags
 // r5 = current event flag
 .loop_802f18a:
 	// load invariants
@@ -17906,11 +17906,11 @@ clearFlags_multEntries_2001C88_entry:
 clearFlags_multEntries_2001C88_bitfield:
 	push {r4,r5,lr}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Flags2001c88_Ptr] // Toolkit.flags_2001C88
+	ldr r4, [r4,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
 	mov r5, r0
 
 // r2 = number of event flags left to clear
-// r4 = flags_2001C88
+// r4 = eEventFlags
 // r5 = current event flag
 .loop_802F1B4:
 	// load invariants
@@ -17958,11 +17958,11 @@ togglelFlags_multEntries_2001C88_entry:
 togglelFlags_multEntries_2001C88_bitfield:
 	push {r4,r5,lr}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Flags2001c88_Ptr] // Toolkit.flags_2001C88
+	ldr r4, [r4,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
 	mov r5, r0
 
 // r2 = number of event flags left to toggle
-// r4 = flags_2001C88
+// r4 = eEventFlags
 // r5 = current event flag
 .loop_802F1DE:
 	// load invariants
@@ -18006,12 +18006,12 @@ loc_802F200:
 	push {r4-r7,lr}
 	mov r7, r2
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Flags2001c88_Ptr]
+	ldr r4, [r4,#oToolkit_EventFlagsPtr]
 	mov r5, r0
 	mov r6, #0
 
 // r2 = number of event flags left to test
-// r4 = flags_2001C88
+// r4 = eEventFlags
 // r5 = current event flag
 // r6 = number of event flags set
 // r7 = range of event flags to test

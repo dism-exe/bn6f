@@ -336,7 +336,7 @@ ds eGameStateEnd
 	.space 4
 ds unk_2001C04 // 0x2001c04
 	.space 132
-ds flags_2001C88 // 0x2001c88
+ds eEventFlags // 0x2001c88
 	.space 1264
 ds unk_2002178 // 0x2002178
 	.space 164

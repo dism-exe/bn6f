@@ -17,7 +17,7 @@
 	\struct_entry \label\()_Unk200a220_Ptr, 4 // loc=0x38
 	\struct_entry \label\()_GameStatePtr, 4 // loc=0x3c
 	\struct_entry \label\()_Unk2001c04_Ptr, 4 // loc=0x40
-	\struct_entry \label\()_Flags2001c88_Ptr, 4 // loc=0x44
+	\struct_entry \label\()_EventFlagsPtr, 4 // loc=0x44
 	\struct_entry \label\()_S_Chip_2002178_Ptr, 4 // loc=0x48
 	\struct_entry \label\()_Unk2002230_Ptr, 4 // loc=0x4c
 	\struct_entry \label\()_Unk2003134_Ptr, 4 // loc=0x50
