@@ -17770,12 +17770,11 @@ toggleFlag_2001C88_entry:
 	orr r0, r1
 .endfunc // toggleFlag_2001C88_entry
 
-.func
-.thumb_func
 // (u16 entryFlagBitfield) -> void
 
 // Toggle a flag at eEventFlags
 // r0 - flag to toggle
+	thumb_func_start ToggleEventFlag
 ToggleEventFlag:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
@@ -17797,7 +17796,7 @@ ToggleEventFlag:
 	eor r0, r1
 	strb r0, [r3]
 	mov pc, lr
-.endfunc // ToggleEventFlag
+	thumb_func_end ToggleEventFlag
 
 .func
 .thumb_func
