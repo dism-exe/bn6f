@@ -8,3 +8,10 @@ It builds the following rom:
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
 To contribute, see [CONTRIBUTE.md](CONTRIBUTE.md).
+
+
+
+## See also
+* Discord: [**pret**][Discord]
+
+[Discord]: https://discord.gg/vdTW48Q
