@@ -384,11 +384,16 @@ sub_81D636A:
 off_81D6374: .word InterruptMasterEnableRegister
 off_81D6378: .word sub_814469C+1
 off_81D637C: .word sub_81446AC+1
+.endfunc // sub_81D636A
+
+// copyTiles_iram
+	thumb_local_start
+sub_81D6380:
 	.word 0x9000B081
 	.word 0x6AB64656
 	.word 0x18B602D2
 	.word 0x186D1824
-.endfunc // sub_81D636A
+	thumb_func_end sub_81D6380
 
 .func
 .thumb_func

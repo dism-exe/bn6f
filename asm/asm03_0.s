@@ -17628,8 +17628,12 @@ loc_802F096:
 	bl sub_800FFEE
 	pop {pc}
 off_802F0A4: .word timer_2000000
-dword_802F0A8: .word 0x3E803E8, 0x44C044C, 0x51404B0, 0x3E80384, 0x3E804B0
-	.word 0x514044C, 0x384
+// event flags, pooled here for some reason
+dword_802F0A8:
+	.hword 0x3E8, 0x3E8, 0x44C, 0x44C
+	.hword 0x4B0, 0x514, 0x384, 0x3E8
+	.hword 0x4B0, 0x3E8, 0x44C, 0x514
+	.hword 0x384, 0x0
 .endfunc // sub_802F084
 
 .func
@@ -17637,12 +17641,12 @@ dword_802F0A8: .word 0x3E803E8, 0x44C044C, 0x51404B0, 0x3E80384, 0x3E804B0
 sub_802F0C4:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x44]
+	ldr r0, [r0,#oToolkit_Flags2001c88_Ptr]
 	ldr r1, off_802F0D4 // =0x4ec 
 	bl sub_80008C0
 	pop {pc}
 	.balign 4, 0x00
-off_802F0D4: .word 0x4EC
+off_802F0D4: .word 630 * 2
 .endfunc // sub_802F0C4
 
 .func
@@ -17651,7 +17655,7 @@ sub_802F0D8:
 	push {lr}
 	ldr r0, dword_802F0EC // =0x2de 
 	mov r1, r10
-	ldr r1, [r1,#0x44]
+	ldr r1, [r1,#oToolkit_Flags2001c88_Ptr]
 	add r0, r0, r1
 	ldr r1, dword_802F0F0 // =0x2 
 	bl sub_80008C0
@@ -17667,7 +17671,7 @@ sub_802F0F4:
 	push {lr}
 	ldr r0, off_802F108 // =0x2c8 
 	mov r1, r10
-	ldr r1, [r1,#0x44]
+	ldr r1, [r1,#oToolkit_Flags2001c88_Ptr]
 	add r0, r0, r1
 	ldr r1, dword_802F10C // =0x16 
 	bl sub_80008C0
@@ -17677,34 +17681,45 @@ off_802F108: .word 0x2C8
 dword_802F10C: .word 0x16
 .endfunc // sub_802F0F4
 
+// The following event flag related functions have an additional way to enter the function
+// where it interprets the event flag as two 8 bit registers
+// This takes less space as it only requires 4 bytes to load two 8bit immediates into two registers
+// than to load a halfword from memory into a single register
+// it would also require aligning to a word boundary which may take additional space
+
 .func
 .thumb_func
 // (u8 entryIdx, u8 byteFlagIdx) -> void
 setFlag_2001C88_entry:
-	// Each entry is 32 bytes, which are indexed by a1
-	// a2 addresses the 32 bytes, but also the flag to set in those bytes
+// merge r0 and r1 into a halfword
 	lsl r0, r0, #8
 	orr r0, r1
 .endfunc // setFlag_2001C88_entry
+// fallthrough
 
 .func
 .thumb_func
 // (u16 entryFlagBitfield) -> void
+
+// Sets a flag at flags_2001C88
+// r0 - flag to set
 setFlag_2001C88_bitfield:
-	// LSB 3 bits of a1 are used to determines the flag to set (7-a1&7)
-	// a1_bitfield >> 3 is used to offset into off_2001C88 to locate the byte to set a flag at
-	// [disable] - Talking to evil navis doesn't trigger a battle.
-	// - Jacking in or pressing L teleports to middle of map, and then 
-	// player can't move
 	mov r3, r10
-	ldr r3, [r3,#0x44] // Toolkit.flags_2001C88
+	ldr r3, [r3,#oToolkit_Flags2001c88_Ptr]
+
+	// get byte offset of flag in memory
 	lsr r1, r0, #3
-	add r3, r3, r1
-	// compute last 3 bits of a0_bitfield
+	add r3, r3, r1 // r3 = r3 + (flag >> 3)
+
+	// get bit number of flag in memory
 	lsl r0, r0, #29
-	lsr r0, r0, #29
+	lsr r0, r0, #29 // r0 &= 0x7. gets bit offset of flag
+
+	// translate that bit number into a bitmask
 	mov r1, #0x80
-	lsr r1, r0
+	lsr r1, r0 // r1 = 0x80 >> r0
+
+	// set the flag
 	ldrb r0, [r3]
 	orr r0, r1
 	strb r0, [r3]
@@ -17714,6 +17729,7 @@ setFlag_2001C88_bitfield:
 .func
 .thumb_func
 // (u8 entryIdx, u8 byteFlagIdx) -> void
+
 clearFlag_2001C88_entry:
 	lsl r0, r0, #8
 	orr r0, r1
@@ -17722,17 +17738,26 @@ clearFlag_2001C88_entry:
 .func
 .thumb_func
 // (u16 entryFlagBitfield) -> void
+
+// Clears a flag at flags_2001C88
+// r0 - flag to clear
 clearFlag_2001C88_bitfield:
-	// LSB 3 bits of a1 are used to determines the flag to clear (7-a1&7)
-	// a1_bitfield >> 3 is used to offset into off_2001C88 to locate the byte to clear a flag at
 	mov r3, r10
-	ldr r3, [r3,#0x44] // Toolkit.flags_2001C88
+	ldr r3, [r3,#oToolkit_Flags2001c88_Ptr] // Toolkit.flags_2001C88
+	
+	// get byte offset of flag in memory
 	lsr r1, r0, #3
-	add r3, r3, r1
+	add r3, r3, r1 // r3 = r3 + (flag >> 3)
+
+	// get bit number of flag in memory
 	lsl r0, r0, #29
-	lsr r0, r0, #29
+	lsr r0, r0, #29 // r0 &= 0x7. gets bit offset of flag
+
+	// translate that bit number into a bitmask
 	mov r1, #0x80
-	lsr r1, r0
+	lsr r1, r0 // r1 = 0x80 >> r0
+
+	// clear the flag
 	ldrb r0, [r3]
 	bic r0, r1
 	strb r0, [r3]
@@ -17750,15 +17775,26 @@ toggleFlag_2001C88_entry:
 .func
 .thumb_func
 // (u16 entryFlagBitfield) -> void
+
+// Toggle a flag at flags_2001C88
+// r0 - flag to toggle
 toggleFlag_2001C88_bitfield:
 	mov r3, r10
-	ldr r3, [r3,#0x44] // Toolkit.flags_2001C88
+	ldr r3, [r3,#oToolkit_Flags2001c88_Ptr] // Toolkit.flags_2001C88
+
+	// get byte offset of flag in memory
 	lsr r1, r0, #3
-	add r3, r3, r1
+	add r3, r3, r1 // r3 = r3 + (flag >> 3)
+
+	// get bit number of flag in memory
 	lsl r0, r0, #29
 	lsr r0, r0, #29
+
+	// translate that bit number into a bitmask
 	mov r1, #0x80
-	lsr r1, r0
+	lsr r1, r0 // r1 = 0x80 >> r0
+
+	// toggle the flag
 	ldrb r0, [r3]
 	eor r0, r1
 	strb r0, [r3]
@@ -17770,23 +17806,32 @@ toggleFlag_2001C88_bitfield:
 // (int entryIdx, int byteFlagIdx) -> zf
 isActiveFlag_2001C88_entry:
 	lsl r0, r0, #8
-	// int v1 = (a1 << 8) | a2 or a1; // r0
 	orr r0, r1
 .endfunc // isActiveFlag_2001C88_entry
 
 .func
 .thumb_func
 // (u16 entryFlagBitfield) -> zf
+
+// Test a flag at flags_2001C88
+// r0 - flag to test
 isActiveFlag_2001C88_bitfield:
 	mov r3, r10
-	ldr r3, [r3,#0x44] // Toolkit.flags_2001C88
+	ldr r3, [r3,#oToolkit_Flags2001c88_Ptr] // Toolkit.flags_2001C88
+
+	// get byte offset of flag in memory
 	lsr r1, r0, #3
-	// void *v2 = tk->unk_2001C88 + v1 // r3
-	add r3, r3, r1
+	add r3, r3, r1 // r3 = r3 + (flag >> 3)
+
+	// get bit number of flag in memory
 	lsl r0, r0, #29
 	lsr r0, r0, #29
+
+	// translate that bit number into a bitmask
 	mov r1, #0x80
-	lsr r1, r0
+	lsr r1, r0 // r1 = 0x80 >> r0
+
+	// test the flag
 	ldrb r0, [r3]
 	tst r0, r1
 	mov pc, lr
@@ -17803,26 +17848,44 @@ setFlags_multEntries_2001C88_entry:
 .func
 .thumb_func
 // (u16 entryFlagBitfield) -> void
+
+// Set multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
+// Number of flags to set is in r2
 setFlags_multEntries_2001C88_bitfield:
 	push {r4,r5,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x44] // Toolkit.flags_2001C88
-	add r5, r0, #0
-loc_802F18A:
-	add r3, r4, #0
-	add r0, r5, #0
+	ldr r4, [r4,#oToolkit_Flags2001c88_Ptr] // Toolkit.flags_2001C88
+	mov r5, r0
+
+// r2 = number of event flags left to set
+// r4 = flags_2001C88
+// r5 = current event flag
+.loop_802f18a:
+	// load invariants
+	mov r3, r4
+	mov r0, r5
+
+	// get byte offset of flag in memory
 	lsr r1, r0, #3
-	add r3, r3, r1
+	add r3, r3, r1 // r3 = r3 + (flag >> 3)
+
+	// get bit number of flag in memory
 	lsl r0, r0, #29
 	lsr r0, r0, #29
+
+	// translate that bit number into a bitmask
 	mov r1, #0x80
 	lsr r1, r0
+
+	// set the flag
 	ldrb r0, [r3]
 	orr r0, r1
 	strb r0, [r3]
-	add r5, #1
-	sub r2, #1
-	bgt loc_802F18A
+
+	// loop check
+	add r5, #1 // current event flag + 1
+	sub r2, #1 // loop counter
+	bgt .loop_802f18a
 	pop {r4,r5,pc}
 .endfunc // setFlags_multEntries_2001C88_bitfield
 
@@ -17837,26 +17900,44 @@ clearFlags_multEntries_2001C88_entry:
 .func
 .thumb_func
 // (u16 entryFlagBitfield) -> void
+
+// Clears multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
+// Number of flags to clear is in r2
 clearFlags_multEntries_2001C88_bitfield:
 	push {r4,r5,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x44] // Toolkit.flags_2001C88
-	add r5, r0, #0
-loc_802F1B4:
-	add r3, r4, #0
-	add r0, r5, #0
+	ldr r4, [r4,#oToolkit_Flags2001c88_Ptr] // Toolkit.flags_2001C88
+	mov r5, r0
+
+// r2 = number of event flags left to clear
+// r4 = flags_2001C88
+// r5 = current event flag
+.loop_802F1B4:
+	// load invariants
+	mov r3, r4
+	mov r0, r5
+
+	// get byte offset of flag in memory
 	lsr r1, r0, #3
-	add r3, r3, r1
+	add r3, r3, r1 // r3 = r3 + (flag >> 3)
+
+	// get bit number of flag in memory
 	lsl r0, r0, #29
 	lsr r0, r0, #29
+
+	// translate that bit number into a bitmask
 	mov r1, #0x80
 	lsr r1, r0
+
+	// clear the flag
 	ldrb r0, [r3]
 	bic r0, r1
 	strb r0, [r3]
-	add r5, #1
-	sub r2, #1
-	bgt loc_802F1B4
+
+	// loop check
+	add r5, #1 // current event flag + 1
+	sub r2, #1 // loop counter
+	bgt .loop_802F1B4
 	pop {r4,r5,pc}
 .endfunc // clearFlags_multEntries_2001C88_bitfield
 
@@ -17871,26 +17952,44 @@ togglelFlags_multEntries_2001C88_entry:
 .func
 .thumb_func
 // (u16 entryFlagBitfield) -> void
+
+// Toggles multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
+// Number of flags to toggle is in r2
 togglelFlags_multEntries_2001C88_bitfield:
 	push {r4,r5,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x44] // Toolkit.flags_2001C88
-	add r5, r0, #0
-loc_802F1DE:
-	add r3, r4, #0
-	add r0, r5, #0
+	ldr r4, [r4,#oToolkit_Flags2001c88_Ptr] // Toolkit.flags_2001C88
+	mov r5, r0
+
+// r2 = number of event flags left to toggle
+// r4 = flags_2001C88
+// r5 = current event flag
+.loop_802F1DE:
+	// load invariants
+	mov r3, r4
+	mov r0, r5
+
+	// get byte offset of flag in memory
 	lsr r1, r0, #3
-	add r3, r3, r1
+	add r3, r3, r1 // r3 = r3 + (flag >> 3)
+
+	// get bit number of flag in memory
 	lsl r0, r0, #29
 	lsr r0, r0, #29
+
+	// translate that bit number into a bitmask
 	mov r1, #0x80
 	lsr r1, r0
+
+	// toggle the flag
 	ldrb r0, [r3]
 	eor r0, r1
 	strb r0, [r3]
-	add r5, #1
-	sub r2, #1
-	bgt loc_802F1DE
+
+	// loop check
+	add r5, #1 // current event flag + 1
+	sub r2, #1 // loop counter
+	bgt .loop_802F1DE
 	pop {r4,r5,pc}
 .endfunc // togglelFlags_multEntries_2001C88_bitfield
 
@@ -17900,52 +17999,73 @@ loc_802F1DE:
 sub_802F1FC:
 	lsl r0, r0, #8
 	orr r0, r1
+
+// Tests multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
+// Number of flags to tests is in r2
 loc_802F200:
 	push {r4-r7,lr}
-	add r7, r2, #0
+	mov r7, r2
 	mov r4, r10
-	ldr r4, [r4,#0x44]
-	add r5, r0, #0
+	ldr r4, [r4,#oToolkit_Flags2001c88_Ptr]
+	mov r5, r0
 	mov r6, #0
-loc_802F20C:
-	add r3, r4, #0
-	add r0, r5, #0
+
+// r2 = number of event flags left to test
+// r4 = flags_2001C88
+// r5 = current event flag
+// r6 = number of event flags set
+// r7 = range of event flags to test
+.loop_802f20c:
+	// load invariants
+	mov r3, r4
+	mov r0, r5
+
+	// get byte offset of flag in memory
 	lsr r1, r0, #3
-	add r3, r3, r1
-	lsl r0, r0, #0x1d
-	lsr r0, r0, #0x1d
+	add r3, r3, r1 // r3 = r3 + (flag >> 3)
+
+	// get bit number of flag in memory
+	lsl r0, r0, #29
+	lsr r0, r0, #29
+
+	// translate that bit number into a bitmask
 	mov r1, #0x80
 	lsr r1, r0
+
+	// test the flag and increment counter if set
 	ldrb r0, [r3]
 	tst r0, r1
-	beq loc_802F224
+	beq .flagNotSet_802f224
 	add r6, #1
-loc_802F224:
-	add r5, #1
-	sub r2, #1
-	bgt loc_802F20C
+.flagNotSet_802f224:
+	// loop check
+	add r5, #1 // current event flag + 1
+	sub r2, #1 // loop counter
+	bgt .loop_802f20c
+
+// return zero if not all flags were set
 	mov r0, #0
 	cmp r6, r7
 	bne loc_802F232
 	mov r0, #1
-loc_802F232:
-	tst r0, r0
+loc_802F232: .align 1, 0
+	tst r0, r0 // unnecessary since mov sets condition flags already
 	pop {r4-r7,pc}
-	.balign 4, 0x00
 .endfunc // sub_802F1FC
+
+// file boundary?
+	.balign 4, 0x00
 
 .func
 .thumb_func
 sub_802F238:
 	push {r4,r6,r7,lr}
-	add r7, r0, #0
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r7, r0
+	mov r0, r0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-	add r0, r7, #0
+	mov r0, r7
 	add r0, #0x80
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	ldr r1, off_802F2C4 // =0x1ca0 
 	sub r7, r7, r1
@@ -18004,14 +18124,12 @@ loc_802F29E:
 	sub r0, #1
 	str r0, [r6]
 	ldr r0, [sp]
-	add r7, r0, #0
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r7, r0
+	mov r0, r0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-	add r0, r7, #0
+	mov r0, r7
 	add r0, #0x80
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 loc_802F2BC:
 	add sp, sp, #4

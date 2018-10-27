@@ -433,6 +433,8 @@ loc_80008B8:
 
 .func
 .thumb_func
+// r0 = destination
+// r1 = length in bytes (converted to halfword length in function)
 sub_80008C0:
 	push {r0-r3,lr}
 	ldr r2, dword_80008DC // =0x1000000 
@@ -447,7 +449,7 @@ sub_80008C0:
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0x00
-dword_80008DC: .word 0x1000000
+dword_80008DC: .word 0x1000000 // CpuSet FILL
 .endfunc // sub_80008C0
 
 .func
