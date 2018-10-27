@@ -1915,10 +1915,10 @@ dword_8142E0C: .word 0x45D03C50, 0x49C04A90, 0x8142E24, 0x8142E7C, 0x8142E48
 	bl init_s_02011C50_8036E90
 	mov r0, #9
 	mov r1, #0x62 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #9
 	mov r1, #0x63 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -2733,7 +2733,7 @@ loc_8143CC4:
 	bl reqBBS_clearFlag_8140A0C
 	mov r0, #1
 	mov r1, #0xbb
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_8143B30
 	ldr r4, off_8143D08 // =off_8143D0C 
 	lsl r0, r0, #2

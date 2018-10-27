@@ -261,10 +261,10 @@ dword_808C684: .word 0x5EFE30, 0x30003, 0x46FDCA, 0x10001, 0x108FE2A, 0x70007
 	bl sub_808CC84
 	mov r0, #9
 	mov r1, #0xd8
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #9
 	mov r1, #0xd9
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	bl sub_8001172
 	mov r0, #9
@@ -275,7 +275,7 @@ dword_808C684: .word 0x5EFE30, 0x30003, 0x46FDCA, 0x10001, 0x108FE2A, 0x70007
 loc_808CAA2:
 	mov r0, #9
 	mov r1, #0xd3
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_8142C94
 	bl sub_808CBA0
 	bl sub_808CF34
@@ -365,7 +365,7 @@ loc_808CB6A:
 loc_808CB76:
 	mov r0, #0xb
 	mov r1, #0xf1
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_808CFB8
 	cmp r0, #1
 	bne loc_808CB8A
@@ -1116,7 +1116,7 @@ loc_808D152:
 	blt loc_808D126
 	mov r0, #9
 	mov r1, #0xd6
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_808D16C: .word dword_808C684+0x3C0

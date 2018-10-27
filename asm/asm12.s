@@ -158,7 +158,7 @@ sub_806DC0C:
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	mov r1, #0x8f
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {r0,r1}
 	mov r5, r10
 	ldr r5, [r5,#0x3c]
@@ -202,7 +202,7 @@ sub_806DC7A:
 loc_806DC86:
 	mov r0, #0
 	mov r1, #0x8e
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
@@ -223,7 +223,7 @@ sub_806DC98:
 loc_806DCA4:
 	mov r0, #0
 	mov r1, #0x8e
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
@@ -244,7 +244,7 @@ sub_806DCB6:
 loc_806DCC2:
 	mov r0, #0
 	mov r1, #0x8e
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx

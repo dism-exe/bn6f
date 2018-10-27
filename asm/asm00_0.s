@@ -1523,7 +1523,7 @@ loc_8000FCE:
 loc_8000FDC:
 	mov r0, #0x17
 	mov r1, #0xc
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {r4-r7,pc}
 .endfunc // sub_8000FAC
 

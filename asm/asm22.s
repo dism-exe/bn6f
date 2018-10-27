@@ -172,7 +172,7 @@ loc_8087004:
 	strb r0, [r5,#1]
 	mov r0, #5
 	mov r1, #0xf3
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #5
 	// byteFlagIdx
@@ -192,7 +192,7 @@ loc_808702C:
 	strb r0, [r5,#7]
 	mov r0, #5
 	mov r1, #0xf4
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_80870F8 // =dword_8086A54+716 
 	b loc_80870F2
 loc_8087048:

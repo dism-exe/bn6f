@@ -1883,7 +1883,7 @@ reqBBS_813F474:
 	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #0x17
 	mov r1, #0x3a 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_813F548 // =dynaicArr 
 	ldr r1, dword_813F544 // =0xf 
 	mov r3, #0
@@ -4556,7 +4556,7 @@ reqBBS_clearFlag_8140A0C:
 	// flag 7 @ 0x2001C88[0x17<<5 + 0x0] (=2001F68)
 	mov r0, #0x17
 	mov r1, #0
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r5, r10
 	ldr r5, [r5,#0x40] // Toolkit.unk_2001C04
 	mov r3, #0x14

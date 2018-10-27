@@ -3528,7 +3528,7 @@ sub_8125254:
 	bl chatbox_8045F2C // (int a1) ->
 	mov r0, #0x17
 	mov r1, #0x11
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #1
 	b locret_812527C
 loc_8125276:
@@ -7071,7 +7071,7 @@ loc_8127006:
 	bl sub_8046664 // () -> void
 	mov r0, #0x17
 	mov r1, #0x13
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r1, #1
 	ldr r2, [r5,#0xc]
 	tst r2, r1
@@ -13817,7 +13817,7 @@ loc_812A9DA:
 	bne loc_812AA14
 	mov r0, #0x17
 	mov r1, #0x22 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_803F674
 	cmp r1, #2
 	bne loc_812AA04
@@ -15405,10 +15405,10 @@ loc_812B652:
 	bl sub_8006C22
 	mov r0, #0x17
 	mov r1, #0x2d 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0x17
 	mov r1, #0x2f 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl getBattleSettings_200AF60 // () -> BattleSettings*
 	bl sub_80071D4
 locret_812B696:
@@ -15462,7 +15462,7 @@ loc_812B6D8:
 	bl sub_8036E78
 	mov r0, #0x17
 	mov r1, #0x22 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_803F798
 locret_812B706:
 	pop {pc}

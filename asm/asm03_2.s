@@ -9338,7 +9338,7 @@ sub_804C074:
 	push {r4-r7,lr}
 	mov r0, #4
 	mov r1, #0xfe
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r4, r10
 	ldr r1, [r4,#8]
 	ldrh r0, [r1]

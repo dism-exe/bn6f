@@ -1813,7 +1813,7 @@ sub_813C458:
 	bl sub_813C678
 	mov r0, #0x17
 	mov r1, #0xd
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_813C684
 	bl sub_813CBCC
 	add r0, r4, #0
@@ -2833,7 +2833,7 @@ sub_813CBCC:
 	push {r4-r7,lr}
 	mov r0, #0x17
 	mov r1, #0x20 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_813C490
 	cmp r0, #1
 	bne loc_813CBE4

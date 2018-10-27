@@ -14349,10 +14349,10 @@ sub_81375D8:
 	strb r0, [r5,#3]
 	mov r0, #0
 	mov r1, #0xee
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	mov r1, #0xef
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {pc}
 .endfunc // sub_81375D8
 
@@ -14991,7 +14991,7 @@ sub_8137A7C:
 	beq loc_8137ABA
 	mov r0, #0x17
 	mov r1, #0x10
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #1
 	b locret_8137ACA
 loc_8137ABA:

@@ -802,7 +802,7 @@ sub_8089A60:
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #2
 	mov r1, #0x25 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, r10
 	ldr r0, [r0,#0x3c]
 	mov r1, #0
