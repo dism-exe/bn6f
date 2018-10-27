@@ -17687,14 +17687,12 @@ dword_802F10C: .word 0x16
 // than to load a halfword from memory into a single register
 // it would also require aligning to a word boundary which may take additional space
 
-.func
-.thumb_func
 // (u8 entryIdx, u8 byteFlagIdx) -> void
+	thumb_func_start SetEventFlagFromImmediate
 SetEventFlagFromImmediate:
 // merge r0 and r1 into a halfword
 	lsl r0, r0, #8
 	orr r0, r1
-.endfunc // SetEventFlagFromImmediate
 // fallthrough
 
 // (u16 entryFlagBitfield) -> void
@@ -17724,6 +17722,7 @@ SetEventFlag:
 	strb r0, [r3]
 	mov pc, lr
 	thumb_func_end SetEventFlag
+	thumb_func_end SetEventFlagFromImmediate
 
 .func
 .thumb_func
