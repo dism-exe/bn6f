@@ -799,7 +799,7 @@ sub_8089A60:
 	mov r0, #7
 	// byteFlagIdx
 	mov r1, #0x40 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #2
 	mov r1, #0x25 
 	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -984,7 +984,7 @@ sub_8089BC0:
 	mov r0, #7
 	// byteFlagIdx
 	mov r1, #0x45 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	strb r0, [r5,#8]
 	mov r0, #0x1e

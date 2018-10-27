@@ -2860,7 +2860,7 @@ loc_813CBE6:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x20 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 loc_813CC0C:
 	add r6, #1
 	cmp r6, #0x10

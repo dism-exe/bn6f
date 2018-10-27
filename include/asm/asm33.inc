@@ -94,7 +94,7 @@
 // .global copyBattleSettingsTo_200AF60 // (BattleSettings *src) -> void
 // .global battleSettings_setFlags_unkSettings // (int mask) -> void
 // .global battleSettings_setBackground // (u8 background) -> void
-// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global SetEventFlag // (u16 entryFlagBitfield) -> void
 // .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global ClearEventFlag // (u16 entryFlagBitfield) -> void

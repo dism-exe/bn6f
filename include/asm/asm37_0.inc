@@ -97,7 +97,7 @@
 // .global sub_802D064
 // .global sub_802D158
 // .global sub_802D15E
-// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global SetEventFlag // (u16 entryFlagBitfield) -> void
 // .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf

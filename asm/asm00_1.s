@@ -3956,7 +3956,7 @@ sub_8004D48:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x91
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 loc_8004DDA:
 	bl sub_8048C98
 	pop {r4-r7,pc}
@@ -4040,12 +4040,12 @@ sub_8004DF0:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x1d
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #4
 	// byteFlagIdx
 	mov r1, #1
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #4
 	mov r1, #0xe7
 	mov r2, #2
@@ -4054,12 +4054,12 @@ sub_8004DF0:
 	mov r0, #4
 	// byteFlagIdx
 	mov r1, #0x6d 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #4
 	// byteFlagIdx
 	mov r1, #0x83
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	mov r1, #1
 	mov r2, #3
@@ -4068,7 +4068,7 @@ sub_8004DF0:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #4
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	mov r1, #6
 	mov r2, #8
@@ -4093,7 +4093,7 @@ sub_8004DF0:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x72 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	mov r1, #0x73 
 	mov r2, #7
@@ -4106,22 +4106,22 @@ sub_8004DF0:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x87
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x89
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #8
 	// byteFlagIdx
 	mov r1, #0x7d 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0xa
 	// byteFlagIdx
 	mov r1, #0x99
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0xb
 	mov r1, #0xfd
 	mov r2, #3
@@ -4130,12 +4130,12 @@ sub_8004DF0:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x70 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x8a
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0xc
 	mov r1, #0xd7
 	mov r2, #4
@@ -4144,12 +4144,12 @@ sub_8004DF0:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x8c
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0xc
 	// byteFlagIdx
 	mov r1, #0xe6
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0xf
 	mov r1, #0xf9
 	mov r2, #7
@@ -4158,7 +4158,7 @@ sub_8004DF0:
 	mov r0, #1
 	// byteFlagIdx
 	mov r1, #0x36 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #1
 	mov r1, #0x38 
 	mov r2, #2
@@ -4167,7 +4167,7 @@ sub_8004DF0:
 	mov r0, #1
 	// byteFlagIdx
 	mov r1, #0x3a 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #1
 	mov r1, #0x64 
 	mov r2, #0x19
@@ -4176,17 +4176,17 @@ sub_8004DF0:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x7b 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x7f
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x81
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #1
 	mov r1, #0x8e
 	mov r2, #9
@@ -4195,7 +4195,7 @@ sub_8004DF0:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x86
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #1
 	mov r1, #0xce
 	mov r2, #6
@@ -4204,12 +4204,12 @@ sub_8004DF0:
 	mov r0, #0x10
 	// byteFlagIdx
 	mov r1, #1
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #6
 	// byteFlagIdx
 	mov r1, #0x8e
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #6
 	mov r1, #0x8f
 	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -4221,23 +4221,23 @@ sub_8004DF0:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x85
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_80355A8
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x38 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x39 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x11
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	bl sub_80AA004
 	mov r0, #0
@@ -5123,12 +5123,12 @@ sub_800596C:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #3
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x38 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0xc
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
@@ -5146,12 +5146,12 @@ sub_8005990:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #3
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x38 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #4
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
@@ -5172,7 +5172,7 @@ sub_80059B4:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x38 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_8005A78 // =byte_8098A02 
 	mov r1, #0
 	bl init_s_02011C50_8036E90
@@ -5187,12 +5187,12 @@ sub_80059D0:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #3
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x38 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_8005A80 // =dword_8098A78 
 	mov r1, #0
 	bl init_s_02011C50_8036E90
@@ -5233,7 +5233,7 @@ sub_8005A0C:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x38 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_8005A88 // =dword_8098B1C 
 	mov r1, #0
 	bl init_s_02011C50_8036E90
@@ -5248,12 +5248,12 @@ sub_8005A28:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #3
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x38 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0xc
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
@@ -5273,12 +5273,12 @@ sub_8005A50:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #3
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x38 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0xc
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
@@ -9139,10 +9139,10 @@ loc_8007898:
 	bne locret_8007936
 	mov r0, #0x17
 	mov r1, #0x33 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0x17
 	mov r1, #0x35 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	b locret_8007936
 loc_80078C6:
 	cmp r4, #2

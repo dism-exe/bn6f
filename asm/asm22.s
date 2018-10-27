@@ -177,7 +177,7 @@ loc_8087004:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf2
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_80870F8 // =dword_8086A54+716 
 	b loc_80870F2
 loc_808702C:
@@ -236,7 +236,7 @@ loc_8087068:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xe1
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_8087108 // =dword_8086260+244 
 	b loc_80870F2
 loc_8087092:
@@ -252,7 +252,7 @@ loc_8087092:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xe2
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_808710C // =dword_8086260+328 
 	b loc_80870F2
 loc_80870AC:
@@ -266,7 +266,7 @@ loc_80870AC:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xe3
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_8087110 // =dword_8086260+412 
 	b loc_80870F2
 loc_80870C2:
@@ -280,7 +280,7 @@ loc_80870C2:
 	mov r0, #0xf
 	// byteFlagIdx
 	mov r1, #0xc0
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_8087114 // =dword_8086260+520 
 	b loc_80870F2
 loc_80870D8:

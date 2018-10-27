@@ -26,7 +26,7 @@
 // .global sub_8003570
 
 .include "asm/asm03_0.inc"
-// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global sub_802FF4C
 // .global sub_803037C

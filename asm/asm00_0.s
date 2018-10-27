@@ -1479,11 +1479,11 @@ sub_8000F86:
 	// flag 7 @ 0x2001C88[0xE<<5 + 0x0] (=2001E48)
 	mov r0, #0xe
 	mov r1, #0
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// flag 6 @ 0x2001C88[0x10<<5 + 0x0] (=2001E88)
 	mov r0, #0x10
 	mov r1, #1
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, r10
 	ldr r0, [r0,#0x40]
 	str r4, [r0,#0x18]

@@ -17,7 +17,7 @@ sub_814187C:
 	mov r0, #7
 	// byteFlagIdx
 	mov r1, #0
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 .endfunc // sub_814187C
@@ -613,7 +613,7 @@ sub_8142134:
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 	mov r0, #7
 	mov r1, #0x40 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 .endfunc // sub_8142134
@@ -2693,7 +2693,7 @@ loc_8143C2C:
 	bl sub_8030A60
 	mov r0, #0x17
 	mov r1, #0x21 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {r4-r7,pc}
 off_8143C7C: .word off_8143C80
 off_8143C80: .word dword_8072BCC+0x44
@@ -2702,7 +2702,7 @@ off_8143C80: .word dword_8072BCC+0x44
 	bl reqBBS_setFlag_e17b0f7_8140A00
 	mov r0, #1
 	mov r1, #0xbb
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_8143B30
 	ldr r4, off_8143D08 // =off_8143D0C 
 	lsl r0, r0, #2

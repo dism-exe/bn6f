@@ -9401,7 +9401,7 @@ loc_804C0EE:
 	strb r0, [r5,#0x10]
 	mov r0, #4
 	mov r1, #0xfe
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_804C11C
 	pop {r4-r7,pc}
 off_804C104: .word byte_869D76C

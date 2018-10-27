@@ -295,7 +295,7 @@ off_808CAD0: .word 0x100
 	bl sub_8142C94
 	mov r0, #9
 	mov r1, #0xd6
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_808CBA0
 	mov r0, #9
 	mov r1, #0xd8
@@ -303,7 +303,7 @@ off_808CAD0: .word 0x100
 	beq loc_808CB06
 	mov r0, #9
 	mov r1, #0xd7
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_808CBD8
 	bl reqBBS_setFlag_e17b0f7_8140A00
 	mov r0, #3
@@ -462,7 +462,7 @@ sub_808CC10:
 	mov r0, #9
 	// byteFlagIdx
 	mov r1, #0xd8
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r4, #1
 loc_808CC2E:
 	tst r4, r4
@@ -643,7 +643,7 @@ sub_808CD24:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xf1
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 locret_808CD62:
 	pop {r4-r7,pc}
 off_808CD64: .word off_808CD68

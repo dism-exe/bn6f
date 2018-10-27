@@ -4430,11 +4430,11 @@ reqBBS_81408F0:
 	// flag 5 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
 	mov r0, #0x17
 	mov r1, #0x3a 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// flag 3 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
 	mov r0, #0x17
 	mov r1, #0x3c 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl reqBBS_81408C8
 	bl reqBBS_81408A0
 	bl reqBBS_81408DC
@@ -4545,7 +4545,7 @@ reqBBS_setFlag_e17b0f7_8140A00:
 	// flag 7 @ 0x2001C88[0x17<<5 + 0x0] (=2001F68)
 	mov r0, #0x17
 	mov r1, #0
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {pc}
 .endfunc // reqBBS_setFlag_e17b0f7_8140A00
 

@@ -13235,10 +13235,10 @@ sub_8136C24:
 	push {r4-r7,lr}
 	mov r0, #0
 	mov r1, #0xf4
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	mov r1, #0xf2
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_8136EC0 // =byte_2009390 
 	mov r1, #0x10
 	bl clearBackwards_80008B4 // (void *mem, int size) -> void
@@ -14396,7 +14396,7 @@ loc_8137632:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0xef
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 loc_813763E:
 	strb r4, [r5,#3]
 	add r0, r7, #0

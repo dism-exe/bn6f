@@ -8760,12 +8760,12 @@ sub_802A8A4:
 	mov r0, #1
 	// byteFlagIdx
 	mov r1, #0x97
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #1
 	// byteFlagIdx
 	mov r1, #0xad
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl decomp_802B060
 	ldr r0, off_802A918 // =unk_2035000 
 	ldr r1, dword_802A91C // =0x9070 
@@ -17690,11 +17690,11 @@ dword_802F10C: .word 0x16
 .func
 .thumb_func
 // (u8 entryIdx, u8 byteFlagIdx) -> void
-setFlag_2001C88_entry:
+SetEventFlagFromImmediate:
 // merge r0 and r1 into a halfword
 	lsl r0, r0, #8
 	orr r0, r1
-.endfunc // setFlag_2001C88_entry
+.endfunc // SetEventFlagFromImmediate
 // fallthrough
 
 // (u16 entryFlagBitfield) -> void
@@ -18587,7 +18587,7 @@ loc_802F776:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #4
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	b locret_802F7E0
 loc_802F79A:
 	ldrb r0, [r5,#2]
@@ -18598,7 +18598,7 @@ loc_802F79A:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #4
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_81440D8 // static () -> void
 	bl sub_8149644
 	b locret_802F7E0
@@ -18617,7 +18617,7 @@ loc_802F7B6:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #4
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 loc_802F7DC:
 	bl sub_81440D8 // static () -> void
 locret_802F7E0:
