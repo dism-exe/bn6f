@@ -291,7 +291,7 @@ loc_813E2C8:
 	add r0, r0, r2
 	mov r8, r0
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_813E2F6
 	mov r0, r8
@@ -511,7 +511,7 @@ reqBBS_draw_813E450:
 	bne loc_813E48A
 	mov r0, #1
 loc_813E48A:
-	add r1, r0, #0
+	mov r1, r0
 	ldr r0, off_813E4A4 // =reqBBS_dialogList 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	bl reqBBS_drawHeaderText
@@ -687,18 +687,18 @@ thumb_func_end reqBBS_uncomp_813E5A0
 thumb_func_start reqBBS_813E5DC
 reqBBS_813E5DC:
 	push {r3,r7,lr}
-	add r7, r0, #0
+	mov r7, r0
 	mov r1, #2
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-	add r0, r7, #0
+	mov r0, r7
 	ldr r3, off_813E6A4 // =0x17a0 
 	sub r0, r0, r3
 	ldr r3, off_813E6A8 // =0x19a0 
 	add r0, r0, r3
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	ldr r1, off_813E6A4 // =0x17a0 
 	sub r7, r7, r1
@@ -743,7 +743,7 @@ thumb_func_end reqBBS_813E616
 thumb_local_start
 reqBBS_dead_813E634:
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	lsl r0, r0, #6
 	ldr r1, off_813E6C4 // =unk_2001400 
 	// mem
@@ -930,7 +930,7 @@ loc_813E870:
 	push {r0,r1}
 	add r0, r0, r1
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	pop {r0,r1}
 	beq loc_813E880
@@ -949,7 +949,7 @@ thumb_func_end reqBBS_813E834
 thumb_local_start
 reqBBS_813E890:
 	push {r4-r7,lr}
-	add r7, r5, #0
+	mov r7, r5
 	// j
 	mov r0, #5
 	// i
@@ -991,7 +991,7 @@ reqBBS_813E8CC:
 	ldr r7, [r5,#0x28]
 	ldr r7, [r7]
 	add r5, r0, r1
-	add r0, r7, #0
+	mov r0, r7
 	mov r1, #0
 	ldr r2, off_813E900 // =decomp_2013A00 
 	ldr r3, dword_813E904 // =0x6004000 
@@ -1042,7 +1042,7 @@ loc_813E934:
 	add r0, r2, r7
 	push {r3}
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	pop {r3}
 	beq loc_813E968
@@ -1115,7 +1115,7 @@ loc_813EAA6:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_813EAD6
 	push {r4-r7}
@@ -1413,17 +1413,17 @@ reqBBS_813ED60:
 	ldr r1, [r5,#0x28]
 	ldr r1, [r1,#0xc]
 	add r3, r3, r1
-	add r0, r3, #0
+	mov r0, r3
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq locret_813ED90
-	add r0, r7, #0
+	mov r0, r7
 	mov r1, #7
 	sub r2, r0, r1
 	bge loc_813ED88
 	mov r2, #0
 	b loc_813ED8A
 loc_813ED88:
-	add r0, r1, #0
+	mov r0, r1
 loc_813ED8A:
 	strh r0, [r5,#0x20] // reqBBS_GUI.cursorPos
 	strh r2, [r5,#0x24] // reqBBS_GUI.pagePos
@@ -1850,7 +1850,7 @@ reqBBS_813F474:
 	ldr r3, off_813F54C // =reqBBS_textualPointers 
 	ldr r3, [r3,#0x18] // (dword_813F364 - 0x813f34c)
 	add r2, r2, r3
-	add r0, r2, #0
+	mov r0, r2
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_813F4B6
 	ldr r0, off_813F548 // =dynaicArr 
@@ -1860,7 +1860,7 @@ reqBBS_813F474:
 	ldr r3, [r3,#0x14] // (dword_813F354+0xc - 0x813f34c)
 	add r2, r2, r3
 	// bitfield
-	add r0, r2, #0
+	mov r0, r2
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	mov r0, #0x17
 	mov r1, #0x3a 
@@ -2094,7 +2094,7 @@ loc_813F678:
 	add r0, r0, r2
 	mov r8, r0
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_813F6A6
 	mov r0, r8
@@ -2317,7 +2317,7 @@ reqBBS_813F80C:
 	bne loc_813F846
 	mov r0, #1
 loc_813F846:
-	add r1, r0, #0
+	mov r1, r0
 	ldr r0, off_813F860 // =reqBBS_dialogList 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	bl reqBBS_renderSelectedEntry_HeaderText
@@ -2494,18 +2494,18 @@ thumb_func_end reqBBS_copyTextDataToRAM
 thumb_func_start reqBBS_813F9A0
 reqBBS_813F9A0:
 	push {r3,r7,lr}
-	add r7, r0, #0
+	mov r7, r0
 	mov r1, #2
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-	add r0, r7, #0
+	mov r0, r7
 	ldr r3, off_813FD74 // =0x1b60 
 	sub r0, r0, r3
 	ldr r3, off_813FD78 // =0x1ba0 
 	add r0, r0, r3
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	ldr r1, off_813FD74 // =0x1b60 
 	sub r7, r7, r1
@@ -2550,7 +2550,7 @@ thumb_func_end reqBBS_initMemory_813F9DA
 thumb_local_start
 reqBBS_dead_initMemory_813F9F8:
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	lsl r0, r0, #7
 	ldr r1, off_813FD90 // =reqBBS_requestEntriesList 
 	// mem
@@ -2902,7 +2902,7 @@ loc_813FCA8:
 	bl reqBBS_81408F0
 	tst r0, r0
 	beq loc_813FCBE
-	add r1, r0, #0
+	mov r1, r0
 	ldr r0, off_813FD0C // =reqBBS_dialogList 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0x44 
@@ -3084,7 +3084,7 @@ loc_813FE90:
 	push {r0,r1}
 	add r0, r0, r1
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	pop {r0,r1}
 	beq loc_813FEA0
@@ -3103,7 +3103,7 @@ thumb_func_end reqBBS_813FE54
 thumb_local_start
 reqBBS_813FEB0:
 	push {r4-r7,lr}
-	add r7, r5, #0
+	mov r7, r5
 	// j
 	mov r0, #5
 	// i
@@ -3141,7 +3141,7 @@ reqBBS_renderRequestNames:
 	ldr r7, [r5,#0x28]
 	ldr r7, [r7]
 	add r5, r0, r1
-	add r0, r7, #0
+	mov r0, r7
 	mov r1, #0
 	ldr r2, off_813FF20 // =decomp_2013A00 
 	ldr r3, dword_813FF24 // =0x6004000 
@@ -3227,7 +3227,7 @@ loc_814005E:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_814008E
 	push {r4-r7}
@@ -3333,7 +3333,7 @@ loc_81401CE:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_81401FC
 	push {r4-r7}
@@ -3360,7 +3360,7 @@ loc_81401FC:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_8140228
 	push {r4-r7}
@@ -3403,7 +3403,7 @@ loc_8140252:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_81402B4
 	push {r4-r7}
@@ -3907,17 +3907,17 @@ reqBBS_8140604:
 	ldr r1, [r5,#0x28]
 	ldr r1, [r1,#0xc]
 	add r3, r3, r1
-	add r0, r3, #0
+	mov r0, r3
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq locret_8140634
-	add r0, r7, #0
+	mov r0, r7
 	mov r1, #7
 	sub r2, r0, r1
 	bge loc_814062C
 	mov r2, #0
 	b loc_814062E
 loc_814062C:
-	add r0, r1, #0
+	mov r0, r1
 loc_814062E:
 	strh r0, [r5,#0x20]
 	strh r2, [r5,#0x24]
@@ -4200,7 +4200,7 @@ thumb_func_end reqBBS_81407D8
 	ldr r1, [r1,#0x10] // (dword_813F354+8 - 0x813f34c)
 	add r0, r0, r1
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_8140844
 	mov r0, #1
@@ -4217,7 +4217,7 @@ reqBBS_814084C:
 	ldr r1, [r1,#0x18] // (dword_813F364 - 0x813f34c)
 	add r0, r0, r1
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_8140860
 	mov r0, #1
@@ -4236,7 +4236,7 @@ reqBBS_8140868:
 	ldr r1, [r1,#0x14] // (dword_813F354+0xc - 0x813f34c)
 	add r0, r0, r1
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_814087C
 	mov r0, #1
@@ -4274,7 +4274,7 @@ reqBBS_81408A0:
 	ldr r1, [r1,#0x10] // (dword_813F354+8 - 0x813f34c)
 	add r0, r0, r1
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	pop {r4-r7,pc}
 off_81408B0: .word reqBBS_textualPointers
@@ -4287,7 +4287,7 @@ reqBBS_81408B4:
 	ldr r1, [r1,#24]
 	add r0, r0, r1
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	pop {r4-r7,pc}
 off_81408C4: .word reqBBS_textualPointers
@@ -4424,13 +4424,13 @@ thumb_func_start reqBBS_81409D0
 // (int a1) -> int
 reqBBS_81409D0:
 	push {r6,lr}
-	add r6, r0, #0
+	mov r6, r0
 	bl change_20013F0_800151C // () -> int
 	mov r1, #0xff
 	and r0, r1
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
-	add r0, r1, #0
+	mov r0, r1
 	pop {r6,pc}
 thumb_func_end reqBBS_81409D0
 

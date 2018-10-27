@@ -14,7 +14,7 @@ thumb_func_start sub_8080DA0
 sub_8080DA0:
 	push {r4-r7,lr}
 	bl sub_8081308
-	add r4, r0, #0
+	mov r4, r0
 	lsl r1, r4, #4
 	ldr r7, off_8080E30 // =off_8080E34 
 	add r7, r7, r1
@@ -47,7 +47,7 @@ thumb_local_start
 sub_8080DEA:
 	push {r4-r7,lr}
 	bl sub_808137C
-	add r4, r0, #0
+	mov r4, r0
 	lsl r1, r4, #4
 	ldr r7, off_8080E30 // =off_8080E34 
 	add r7, r7, r1
@@ -326,7 +326,7 @@ loc_808133C:
 	bne loc_8081358
 	push {r0}
 	ldrh r2, [r3,#2]
-	add r0, r2, #0
+	mov r0, r2
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	pop {r0}
 	bne locret_808135C

@@ -73,14 +73,14 @@ sub_8094738:
 	mov r1, #0x2b 
 	mul r1, r6
 	add r7, r7, r1
-	add r5, r0, #0
+	mov r5, r0
 	mov r4, #0
 loc_8094752:
 	mov r0, #0x64 
 	mul r0, r4
 	// src
 	add r0, r0, r5
-	add r1, r4, #0
+	mov r1, r4
 	mul r1, r6
 	// dest
 	add r1, r1, r7

@@ -84,7 +84,7 @@ loc_809E60A:
 	ldrh r1, [r5,#0x3e]
 	cmp r0, r1
 	beq loc_809E648
-	add r2, r0, #0
+	mov r2, r0
 	mov r0, #0x80
 	ldr r1, [r5,#0x78]
 	bl sprite_load // (int a1, int a2, int a3) ->
@@ -136,7 +136,7 @@ loc_809E66E:
 	ldr r0, [r5,#0x64]
 	tst r0, r0
 	bne loc_809E690
-	add r0, r5, #0
+	mov r0, r5
 	add r0, #0x24 
 	bl sub_8035694
 loc_809E690:
@@ -441,7 +441,7 @@ npc_809E916:
 	mov r0, #0x24 
 	add r0, r0, r5
 	bl sub_8031612
-	add r2, r0, #0
+	mov r2, r0
 	lsl r2, r2, #0x10
 	ldr r0, [r5,#0x48]
 	ldr r1, [r5,#0x44]
@@ -484,7 +484,7 @@ npc_809E95E:
 	mov r0, #0x24 
 	add r0, r0, r5
 	bl sub_8031612
-	add r2, r0, #0
+	mov r2, r0
 	lsl r2, r2, #0x10
 	push {r2}
 	mov r3, #6
@@ -552,7 +552,7 @@ npc_809E9DA:
 	mov r0, #0x24 
 	add r0, r0, r5
 	bl sub_8031612
-	add r2, r0, #0
+	mov r2, r0
 	lsl r2, r2, #0x10
 	push {r2}
 	mov r3, #6
@@ -660,7 +660,7 @@ npc_809EAA0:
 	mov r7, #0x80
 	ldr r0, [r5,r7]
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_809EAD4
 	bl sub_809F516
@@ -770,7 +770,7 @@ loc_809EB76:
 	bne loc_809EB98
 	push {r0,r1,r3-r7}
 	bl getPETNaviSelect // () -> u8
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1,r3-r7}
 	cmp r2, #0
 	beq loc_809EB98
@@ -972,7 +972,7 @@ npc_809ED88:
 	push {lr}
 	add r0, r6, #1
 	bl sub_809F656 // (void* a1) -> int
-	add r6, r0, #0
+	mov r6, r0
 	pop {pc}
 thumb_func_end npc_809ED88
 
@@ -997,12 +997,12 @@ npc_809EDB2:
 	add r0, r6, #1
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_809EDCC
 	add r0, r6, #3
 	bl sub_809F656 // (void* a1) -> int
-	add r6, r0, #0
+	mov r6, r0
 	pop {pc}
 loc_809EDCC:
 	add r6, #7
@@ -1015,12 +1015,12 @@ npc_809EDD0:
 	add r0, r6, #1
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_809EDEA
 	add r0, r6, #3
 	bl sub_809F656 // (void* a1) -> int
-	add r6, r0, #0
+	mov r6, r0
 	pop {pc}
 loc_809EDEA:
 	add r6, #7
@@ -1033,7 +1033,7 @@ npc_809EDEE:
 	add r0, r6, #1
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r6, #3
 	pop {pc}
@@ -1045,7 +1045,7 @@ npc_809EE00:
 	add r0, r6, #1
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r6, #3
 	pop {pc}
@@ -1656,7 +1656,7 @@ sub_809F1C6:
 	str r0, [r5,r4]
 	add r0, r6, #1
 	bl sub_809F656 // (void* a1) -> int
-	add r6, r0, #0
+	mov r6, r0
 	pop {pc}
 thumb_func_end sub_809F1C6
 
@@ -1713,7 +1713,7 @@ sub_809F218:
 	strb r2, [r5,r4]
 	add r0, r6, #4
 	bl sub_809F656 // (void* a1) -> int
-	add r6, r0, #0
+	mov r6, r0
 	pop {pc}
 thumb_func_end sub_809F218
 
@@ -1763,7 +1763,7 @@ sub_809F270:
 	bgt loc_809F28E
 	add r0, r6, #3
 	bl sub_809F656 // (void* a1) -> int
-	add r6, r0, #0
+	mov r6, r0
 	b locret_809F290
 loc_809F28E:
 	add r6, #7
@@ -1795,7 +1795,7 @@ sub_809F2A2:
 	bne loc_809F2BC
 	add r0, r6, #3
 	bl sub_809F656 // (void* a1) -> int
-	add r6, r0, #0
+	mov r6, r0
 	pop {pc}
 loc_809F2BC:
 	add r6, #7
@@ -1814,7 +1814,7 @@ sub_809F2C0:
 	beq loc_809F2DA
 	add r0, r6, #3
 	bl sub_809F656 // (void* a1) -> int
-	add r6, r0, #0
+	mov r6, r0
 	pop {pc}
 loc_809F2DA:
 	add r6, #7
@@ -1943,7 +1943,7 @@ sub_809F392:
 	push {lr}
 	add r0, r6, #2
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
-	add r1, r0, #0
+	mov r1, r0
 	ldrb r0, [r6,#1]
 	bl sub_80302A8
 	add r6, #4
@@ -1961,9 +1961,9 @@ sub_809F3A6:
 	pop {pc}
 loc_809F3B4:
 	add r6, #2
-	add r0, r6, #0
+	mov r0, r6
 	bl sub_809F656 // (void* a1) -> int
-	add r6, r0, #0
+	mov r6, r0
 	pop {pc}
 thumb_func_end sub_809F3A6
 
@@ -1992,7 +1992,7 @@ sub_809F3E8:
 	push {lr}
 	add r0, r6, #5
 	bl sub_809F656 // (void* a1) -> int
-	add r6, r0, #0
+	mov r6, r0
 	b locret_809F3F4
 locret_809F3F4:
 	pop {pc}
@@ -2063,7 +2063,7 @@ sub_809F45A:
 	add r0, r6, #1
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_809F498
 	add r0, r6, #1
@@ -2075,7 +2075,7 @@ sub_809F45A:
 	ldr r3, off_809F4B4 // =byte_87E30A0 
 	mov r2, #0x94
 	str r3, [r5,r2]
-	add r0, r1, #0
+	mov r0, r1
 	bl sub_8143DBC
 	str r0, [r5,#0x24]
 	str r1, [r5,#0x28]
@@ -2136,7 +2136,7 @@ npc_809F4EE:
 	beq loc_809F502
 	add r0, r6, #1
 	bl sub_809F656 // (void* a1) -> int
-	add r6, r0, #0
+	mov r6, r0
 	pop {pc}
 loc_809F502:
 	add r6, #5

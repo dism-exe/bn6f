@@ -339,7 +339,7 @@ sub_80B845C:
 	sub sp, sp, #8
 	mov r7, sp
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
 	ldr r3, off_80B8490 // =byte_80B8494 
@@ -369,7 +369,7 @@ sub_80B84A4:
 	sub sp, sp, #8
 	mov r7, sp
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
@@ -406,7 +406,7 @@ sub_80B84EC:
 	push {r0-r2,r5}
 	mov r0, #1
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B8510
 	strb r1, [r0,#0x12]
@@ -445,12 +445,12 @@ sub_80B8512:
 	mov r7, #3
 	bl sub_80C53A6
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	add r0, r0, r2
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	ldrb r4, [r5,#0x16]
 	lsl r4, r4, #8
@@ -490,8 +490,8 @@ sub_80B8564:
 	bl sub_80C53A6
 	pop {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0xc
 	lsl r3, r3, #0x10
 	ldrb r4, [r5,#0x16]
@@ -721,7 +721,7 @@ sub_80B8786:
 	push {r2,r5}
 	mov r0, #2
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r2,r5}
 	beq locret_80B87A4
 	str r5, [r0,#0x4c]
@@ -745,7 +745,7 @@ thumb_func_end sub_80B87A6
 thumb_func_start sub_80B87AC
 sub_80B87AC:
 	push {r5,lr}
-	add r5, r0, #0
+	mov r5, r0
 	beq locret_80B87EE
 	ldrb r0, [r5,#9]
 	cmp r0, #4
@@ -834,7 +834,7 @@ sub_80B881E:
 	bl sub_801BCA6
 	mov r4, #1
 loc_80B8840:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 thumb_func_end sub_80B881E
 
@@ -881,8 +881,8 @@ sub_80B8870:
 	bl sub_80C536A
 	pop {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x34 
 	bl sub_80E05F6
@@ -948,7 +948,7 @@ thumb_local_start
 sub_80B8932:
 	push {r4,r6,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r6, r0, #0
+	mov r6, r0
 	ldr r4, [r5,#0x4c]
 	mov r0, #0x34 
 	add r0, r0, r4
@@ -962,7 +962,7 @@ sub_80B8932:
 	ldrh r0, [r5,#0x3e]
 	add r0, #0x1f
 	strh r0, [r5,#0x3e]
-	add r0, r4, #0
+	mov r0, r4
 	mov r1, #1
 	bl sub_80030BA
 	lsl r0, r0, #0x10
@@ -1026,7 +1026,7 @@ sub_80B89DC:
 	push {r3,r5}
 	mov r0, #3
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r3,r5}
 	beq locret_80B8A08
 	str r3, [r0,#0x60]
@@ -1097,8 +1097,8 @@ sub_80B8A3C:
 loc_80B8A66:
 	ldrh r0, [r4,#0x28]
 	bl sub_800F26C
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 loc_80B8A70:
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
@@ -1255,7 +1255,7 @@ sub_80B8BA0:
 	push {r0-r2,r5}
 	mov r0, #4
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B8BD0
 	strb r1, [r0,#0x12]
@@ -1467,7 +1467,7 @@ sub_80B8E30:
 	push {r0,r5-r7}
 	mov r0, #5
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r5-r7}
 	beq loc_80B8E54
 	str r5, [r0,#0x4c]
@@ -1744,7 +1744,7 @@ sub_80B9014:
 	push {r0-r2,r5}
 	mov r0, #6
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B9038
 	strb r1, [r0,#0x12]
@@ -2030,7 +2030,7 @@ sub_80B921A:
 	push {r0-r2,r5}
 	mov r0, #7
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B923E
 	strb r1, [r0,#0x12]
@@ -2051,7 +2051,7 @@ thumb_local_start
 sub_80B9240:
 	push {r4,r6,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x12]
 	add r0, r0, r4
 	ldrb r1, [r5,#0x13]
@@ -2325,7 +2325,7 @@ sub_80B9432:
 	push {r0-r2,r5}
 	mov r0, #8
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B9456
 	strb r1, [r0,#0x12]
@@ -2360,7 +2360,7 @@ sub_80B9458:
 	ldrb r6, [r5,#0x16]
 	add r7, sp, #4
 	bl sub_800D3FE
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80B94A2
 	sub r6, #1
@@ -2680,7 +2680,7 @@ sub_80B96C2:
 	mov r0, #0x5a 
 	strh r0, [r5,#0x20]
 	bl sub_80B9776
-	add r3, r0, #0
+	mov r3, r0
 	lsl r3, r3, #0x10
 	ldrh r4, [r5,#0x20]
 	lsl r4, r4, #8
@@ -2750,7 +2750,7 @@ sub_80B9750:
 	push {r0-r2,r5}
 	mov r0, #9
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B9774
 	strb r1, [r0,#0x12]
@@ -2772,11 +2772,11 @@ sub_80B9776:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x18
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r6, r0, #0
+	mov r6, r0
 	mov r4, #1
 loc_80B9782:
 	ldrb r0, [r5,#0x12]
-	add r1, r4, #0
+	mov r1, r4
 	mul r1, r6
 	add r0, r0, r1
 	ldrb r2, [r5,#0x16]
@@ -3009,8 +3009,8 @@ loc_80B991A:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -3059,7 +3059,7 @@ sub_80B999A:
 	push {r0-r2,r5}
 	mov r0, #0xa
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B99BE
 	strb r1, [r0,#0x12]
@@ -3317,7 +3317,7 @@ sub_80B9B6E:
 	push {r0-r2,r5}
 	mov r0, #0xb
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B9B92
 	strb r1, [r0,#0x12]
@@ -3340,7 +3340,7 @@ sub_80B9B94:
 	mov r4, #1
 loc_80B9B98:
 	ldrb r0, [r5,#0x16]
-	add r1, r4, #0
+	mov r1, r4
 	ldrb r2, [r5,#0x16]
 	lsl r2, r2, #3
 	ldr r3, off_80B9BEC // =dword_80B9BF0 
@@ -3768,7 +3768,7 @@ sub_80B9F0E:
 	push {r0-r2,r5}
 	mov r0, #0xc
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80B9F32
 	strb r1, [r0,#0x12]
@@ -4137,7 +4137,7 @@ sub_80BA1B0:
 	push {r0-r2,r5}
 	mov r0, #0xd
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BA1D4
 	strb r1, [r0,#0x12]
@@ -4167,7 +4167,7 @@ sub_80BA1D6:
 	beq loc_80BA1EC
 	mov r4, #1
 loc_80BA1EC:
-	add r0, r4, #0
+	mov r0, r4
 	ldrb r1, [r5,#0x12]
 	cmp r0, r1
 	beq loc_80BA21C
@@ -4189,7 +4189,7 @@ loc_80BA1EC:
 	bgt loc_80BA21C
 	b loc_80BA1EC
 loc_80BA218:
-	add r0, r4, #0
+	mov r0, r4
 	b loc_80BA21E
 loc_80BA21C:
 	mov r0, #0
@@ -4204,11 +4204,11 @@ thumb_func_end sub_80BA1D6
 thumb_local_start
 sub_80BA238:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	mov r6, #1
 loc_80BA23E:
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	ldrb r2, [r5,#0x16]
 	lsl r2, r2, #3
 	ldr r3, off_80BA280 // =dword_80BA284 
@@ -4331,8 +4331,8 @@ sub_80BA31C:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -4762,7 +4762,7 @@ sub_80BA660:
 	push {r0-r2,r5}
 	mov r0, #0xe
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BA684
 	strb r1, [r0,#0x12]
@@ -4814,10 +4814,10 @@ sub_80BA6B6:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r6, r0, #0
-	add r7, r1, #0
+	mov r6, r0
+	mov r7, r1
 	bl sub_8001532
-	add r2, r0, #0
+	mov r2, r0
 	mov r1, #0x1f
 	and r0, r1
 	lsl r0, r0, #0x10
@@ -4826,10 +4826,10 @@ sub_80BA6B6:
 	neg r0, r0
 loc_80BA6D6:
 	add r1, r6, r0
-	add r2, r7, #0
+	mov r2, r7
 	push {r1,r2}
 	bl sub_8001532
-	add r2, r0, #0
+	mov r2, r0
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #0x10
@@ -5149,7 +5149,7 @@ sub_80BA920:
 	push {r0-r2,r5}
 	mov r0, #0xf
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BA944
 	strb r1, [r0,#0x12]
@@ -5222,7 +5222,7 @@ loc_80BA9AC:
 	add r0, r0, r4
 	ldr r1, off_80BA9F4 // =dword_80BA9F8 
 	ldrb r0, [r1,r0]
-	add r1, r6, #0
+	mov r1, r6
 	push {r0,r1}
 	ldrb r2, [r5,#0x16]
 	bl sub_800D618
@@ -5250,7 +5250,7 @@ loc_80BA9E4:
 	add r4, #1
 	cmp r4, #3
 	ble loc_80BA9AA
-	add r0, r7, #0
+	mov r0, r7
 	pop {r4,r6,r7,pc}
 off_80BA9F4: .word dword_80BA9F8
 dword_80BA9F8: .word 0x2030405, 0x5040302
@@ -5271,7 +5271,7 @@ loc_80BAA10:
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1d
 	mov r2, #0
-	add r4, r7, #0
+	mov r4, r7
 	mov r3, #1
 	lsl r3, r3, #8
 	orr r4, r3
@@ -5307,7 +5307,7 @@ loc_80BAA52:
 	add r0, r0, r4
 	ldr r1, off_80BAA80 // =off_80BAA84 
 	ldrb r0, [r1,r0]
-	add r1, r6, #0
+	mov r1, r6
 	push {r0,r1}
 	ldrb r2, [r5,#0x16]
 	bl sub_800D618
@@ -5823,7 +5823,7 @@ sub_80BAE16:
 	push {r0-r2,r5}
 	mov r0, #0x10
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BAE3A
 	strb r1, [r0,#0x12]
@@ -5914,7 +5914,7 @@ thumb_func_end sub_80BAE7A
 thumb_local_start
 sub_80BAEC0:
 	push {r4,r6,r7,lr}
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	mov r1, #3
 	mul r0, r1
@@ -5958,8 +5958,8 @@ sub_80BAF06:
 loc_80BAF0A:
 	mov r6, #1
 loc_80BAF0C:
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	push {r0,r1}
 	bl object_isPanelSolid
 	tst r0, r0
@@ -5971,8 +5971,8 @@ loc_80BAF0C:
 	pop {r0,r1}
 	push {r4,r6}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #8
 	mov r4, #2
 	mov r6, #5
@@ -6030,8 +6030,8 @@ sub_80BAF74:
 loc_80BAF9E:
 	ldrh r0, [r4,#0x28]
 	bl sub_800F26C
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 loc_80BAFA8:
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
@@ -6106,7 +6106,7 @@ thumb_local_start
 sub_80BB048:
 	push {r4,r6,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x16]
 	ldr r1, off_80BB090 // =byte_80BB094 
 	ldrb r6, [r1,r0]
@@ -6235,7 +6235,7 @@ sub_80BB13E:
 	push {r0-r2,r5}
 	mov r0, #0x13
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BB16E
 	strb r1, [r0,#0x12]
@@ -6262,7 +6262,7 @@ thumb_local_start
 ho_80BB170:
 	push {r4,r6,r7,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r6, r0, #0
+	mov r6, r0
 	ldr r1, off_80BB188 // =jt_80BB18C 
 	ldrb r0, [r5,#0xb]
 	ldr r1, [r1,r0]
@@ -6351,7 +6351,7 @@ thumb_local_start
 sub_80BB1FE:
 	push {r4,r6,r7,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r7, r0, #0
+	mov r7, r0
 	ldr r0, [r5,#0x74]
 	ldr r1, [r5,#0x78]
 	mov r2, #1
@@ -6385,13 +6385,13 @@ thumb_local_start
 sub_80BB23E:
 	push {r4,r6,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r6, r0, #0
+	mov r6, r0
 	mov r4, #0x48 
 	ldr r0, [r5,#0x74]
 	ldr r1, [r5,#0x78]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	bl sub_80BB278
 	ldr r0, dword_80BB290 // =0x280000 
@@ -6465,8 +6465,8 @@ sub_80BB2C4:
 loc_80BB2EE:
 	ldrh r0, [r4,#0x28]
 	bl sub_800F26C
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 loc_80BB2F8:
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
@@ -6541,7 +6541,7 @@ thumb_local_start
 sub_80BB398:
 	push {r4,r6,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	mov r1, #2
 	str r1, [r5,#0x78]
 	ldrb r0, [r5,#0x16]
@@ -6549,7 +6549,7 @@ sub_80BB398:
 	ldrb r6, [r1,r0]
 	str r6, [r5,#0x6c]
 loc_80BB3AC:
-	add r0, r6, #0
+	mov r0, r6
 	ldrb r1, [r5,#0x16]
 	bl sub_800D5F0
 	cmp r0, #0
@@ -6681,7 +6681,7 @@ sub_80BB49C:
 	push {r0-r2,r5}
 	mov r0, #0x14
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BB4CC
 	strb r1, [r0,#0x12]
@@ -6708,7 +6708,7 @@ thumb_local_start
 sub_80BB4CE:
 	push {r4,r6,r7,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r6, r0, #0
+	mov r6, r0
 	ldr r1, off_80BB4EC // =off_80BB4F0 
 	ldrb r0, [r5,#0xb]
 	ldr r1, [r1,r0]
@@ -6767,7 +6767,7 @@ thumb_local_start
 sub_80BB52E:
 	push {r4,r6,r7,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r7, r0, #0
+	mov r7, r0
 	mov r0, #4
 	ldr r1, [r5,#0x7c]
 	cmp r1, #0
@@ -6800,8 +6800,8 @@ loc_80BB546:
 	bl object_breakPanel_dup2
 	pop {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0
 	bl sub_80E05F6
@@ -6820,13 +6820,13 @@ thumb_func_end sub_80BB52E
 thumb_local_start
 sub_80BB59A:
 	push {r4,r6,r7,lr}
-	add r4, r0, #0
-	add r7, r1, #0
+	mov r4, r0
+	mov r7, r1
 	ldr r0, [r5,#0x74]
 	ldr r1, [r5,#0x78]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	bl sub_80BB5DC
 	ldrb r0, [r5,#0xb]
@@ -7140,7 +7140,7 @@ sub_80BB7F6:
 	push {r0-r2,r5}
 	mov r0, #0x15
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BB81A
 	strb r1, [r0,#0x12]
@@ -7518,7 +7518,7 @@ sub_80BBAC6:
 	push {r0-r2,r5}
 	mov r0, #0x16
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BBAEA
 	strb r1, [r0,#0x12]
@@ -7618,7 +7618,7 @@ loc_80BBB3C:
 	cmp r4, #4
 	ble loc_80BBB3C
 loc_80BBB84:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,r6,r7,pc}
 off_80BBB88: .word dword_80BBB8C
 dword_80BBB8C: .word 0x10
@@ -7931,7 +7931,7 @@ sub_80BBDE8:
 	push {r0-r2,r5}
 	mov r0, #0x17
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BBE0C
 	strb r1, [r0,#0x12]
@@ -8011,7 +8011,7 @@ sub_80BBE58:
 	ldr r3, [r1,#4]
 	add r7, sp, #8
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80BBE9C
 	ldrb r0, [r5,#0x16]
@@ -8022,12 +8022,12 @@ sub_80BBE58:
 	ldr r3, [r1,#4]
 	add r7, sp, #8
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80BBECE
 loc_80BBE9C:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -8323,7 +8323,7 @@ sub_80BC0DA:
 	push {r0-r2,r5}
 	mov r0, #0x18
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BC0FE
 	strb r1, [r0,#0x12]
@@ -8353,13 +8353,13 @@ loc_80BC10E:
 	ldr r0, [r7,r4]
 	tst r0, r0
 	beq loc_80BC134
-	add r1, r6, #0
+	mov r1, r6
 	lsl r1, r1, #2
 	mov r2, #0x60 
 	add r1, r1, r2
 	ldrh r2, [r0,#0x28]
 	push {r0-r2}
-	add r0, r2, #0
+	mov r0, r2
 	bl sub_800F486
 	tst r0, r0
 	pop {r0-r2}
@@ -8371,7 +8371,7 @@ loc_80BC134:
 	add r4, #4
 	cmp r4, #0x1c
 	ble loc_80BC10E
-	add r0, r6, #0
+	mov r0, r6
 	pop {r4,r6,r7,pc}
 thumb_func_end sub_80BC100
 
@@ -8608,7 +8608,7 @@ sub_80BC30E:
 	push {r4,r6,r7,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
 	neg r0, r0
-	add r3, r0, #0
+	mov r3, r0
 	ldr r0, [r5,#0x40]
 	mul r0, r3
 	ldr r1, [r5,#0x74]
@@ -8624,12 +8624,12 @@ sub_80BC30E:
 	ldr r0, [r5,#0x40]
 	ldr r1, [r5,#0x44]
 	sub r0, r0, r1
-	add r1, r0, #0
+	mov r1, r0
 	mul r1, r3
 	ldr r2, dword_80BC4E0 // =0x10000 
 	cmp r1, r2
 	bge loc_80BC344
-	add r0, r2, #0
+	mov r0, r2
 	mul r0, r3
 loc_80BC344:
 	str r0, [r5,#0x40]
@@ -8677,7 +8677,7 @@ sub_80BC38A:
 	push {r2,r4,r5}
 	mov r0, #0x19
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r2,r4,r5}
 	beq locret_80BC3AC
 	str r5, [r0,#0x4c]
@@ -8706,7 +8706,7 @@ thumb_func_end sub_80BC3AE
 thumb_local_start
 sub_80BC3B8:
 	push {r5,lr}
-	add r5, r0, #0
+	mov r5, r0
 	beq locret_80BC41E
 	ldrb r0, [r5,#9]
 	cmp r0, #4
@@ -8793,7 +8793,7 @@ loc_80BC446:
 	bl sub_801BC64
 	mov r4, #1
 loc_80BC464:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 thumb_func_end sub_80BC434
 
@@ -8816,7 +8816,7 @@ sub_80BC468:
 	sub r0, r1, r0
 	lsr r0, r0, #0x10
 	mov r1, #0
-	add r5, r3, #0
+	mov r5, r3
 	bl sub_801DCCC
 locret_80BC492:
 	pop {r4-r7,pc}
@@ -8859,7 +8859,7 @@ sub_80BC4B4:
 	lsl r0, r0, #0x10
 	mov r1, #0x3c 
 	svc 6
-	add r2, r0, #0
+	mov r2, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	mul r0, r2
 	pop {r4-r7,pc}
@@ -9009,7 +9009,7 @@ sub_80BC610:
 	push {r0-r2,r5}
 	mov r0, #0x1a
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BC636
 	strb r1, [r0,#0x12]
@@ -9102,7 +9102,7 @@ sub_80BC670:
 	str r0, [r5,#0x64]
 	bl sub_800E29C // () -> void
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r2, r0, #0
+	mov r2, r0
 	ldr r0, [r5,#0x64]
 	mov r1, #0x62 
 	ldrh r1, [r5,r1]
@@ -9198,7 +9198,7 @@ loc_80BC7C4:
 	strh r1, [r5,#0x20]
 	bl sub_800E29C // () -> void
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r3, r0, #0
+	mov r3, r0
 	mov r0, #0x68 
 	ldr r0, [r5,r0]
 	ldr r1, [r5,#0x64]
@@ -9235,8 +9235,8 @@ loc_80BC81C:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #3
@@ -9256,7 +9256,7 @@ sub_80BC844:
 	push {r0,r1,r3,r5}
 	mov r0, #0x1b
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BC86E
 	strb r1, [r0,#0x12]
@@ -9427,12 +9427,12 @@ thumb_func_start sub_80BC998
 sub_80BC998:
 	push {lr}
 	push {r0-r2,r5}
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r0, #0x1c
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	tst r0, r0
 	beq locret_80BC9BC
@@ -9478,7 +9478,7 @@ sub_80BC9D2:
 	bl sub_801BC64
 	mov r4, #1
 loc_80BC9F4:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4-r7,pc}
 thumb_func_end sub_80BC9D2
 
@@ -9623,7 +9623,7 @@ sub_80BCB12:
 	push {r1,r2,r5}
 	mov r0, #0x1d
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80BCB32
 	str r5, [r0,#0x4c]
@@ -9649,7 +9649,7 @@ sub_80BCB34:
 	bl sub_801BC64
 	mov r4, #1
 loc_80BCB4A:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.byte 0, 0
 thumb_func_end sub_80BCB34
@@ -9693,8 +9693,8 @@ sub_80BCB74:
 loc_80BCB9E:
 	ldrh r0, [r4,#0x28]
 	bl sub_800F26C
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 loc_80BCBA8:
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
@@ -9855,7 +9855,7 @@ sub_80BCCDC:
 	push {r0-r2,r5}
 	mov r0, #0x1e
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BCD0C
 	strb r1, [r0,#0x12]
@@ -9940,8 +9940,8 @@ loc_80BCD5E:
 loc_80BCD86:
 	ldrh r0, [r5,#0x28]
 	bl sub_800F26C
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 loc_80BCD90:
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
@@ -9956,7 +9956,7 @@ loc_80BCD90:
 	orr r0, r1
 	strb r0, [r5]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r7, r0, #0
+	mov r7, r0
 	ldr r3, [r5,#0x4c]
 	mov r0, #0x34 
 	add r0, r0, r3
@@ -10547,7 +10547,7 @@ sub_80BD20A:
 	push {r0-r2,r5}
 	mov r0, #0x1f
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BD23E
 	strb r1, [r0,#0x12]
@@ -10582,7 +10582,7 @@ sub_80BD24C:
 	mov r7, #1
 loc_80BD250:
 	push {r7}
-	add r1, r7, #0
+	mov r1, r7
 	bl sub_80BD278
 	ldr r4, dword_80BD274 // =0x405ff00 
 	add r4, r4, r2
@@ -10606,7 +10606,7 @@ sub_80BD278:
 	sub sp, sp, #8
 	str r1, [sp,#4]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
 	str r0, [sp]
@@ -10655,7 +10655,7 @@ sub_80BD2D8:
 	sub sp, sp, #0x28
 	mov r6, #0
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x12]
 	add r0, r0, r4
 	str r0, [sp,#0x20]
@@ -10694,7 +10694,7 @@ loc_80BD318:
 	b loc_80BD2EA
 loc_80BD32A:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r7, sp, #4
 	ldrb r0, [r7,r1]
@@ -10702,8 +10702,8 @@ loc_80BD32A:
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1d
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	push {r1-r3}
 	bl sub_800E456 // () -> int
@@ -10784,7 +10784,7 @@ loc_80BD3CC:
 	mov r0, #0xff
 	strb r0, [r5,#0x11]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r3, [r5,#0x4c]
 	mov r0, #0x34 
 	add r0, r0, r3
@@ -11059,7 +11059,7 @@ loc_80BD614:
 	ble loc_80BD5C0
 	push {r0,r1}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	add r0, r0, r2
 	sub r2, r0, #1
@@ -11189,8 +11189,8 @@ loc_80BD6E6:
 	add r4, #0x27 
 	pop {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -11467,8 +11467,8 @@ sub_80BD8BC:
 	pop {r0,r1}
 	push {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	ldrb r4, [r5,#0x16]
 	lsl r4, r4, #8
@@ -11478,8 +11478,8 @@ sub_80BD8BC:
 	pop {r0,r1}
 	push {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	ldrb r4, [r5,#0x16]
 	lsl r4, r4, #8
@@ -11555,7 +11555,7 @@ sub_80BD9A2:
 	push {r0-r2,r5}
 	mov r0, #0x20 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BD9D2
 	strb r1, [r0,#0x12]
@@ -11666,7 +11666,7 @@ sub_80BDA7C:
 	cmp r0, #5
 	bne loc_80BDAAC
 	bl sub_800E456 // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #8
 	add r4, #0xb
 	lsl r4, r4, #8
@@ -11683,7 +11683,7 @@ sub_80BDA7C:
 	bl sub_80E33FA
 loc_80BDAAC:
 	bl sub_800E456 // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #8
 	ldr r0, [sp]
 	add r4, r4, r0
@@ -11880,8 +11880,8 @@ loc_80BDC00:
 loc_80BDC26:
 	ldrh r0, [r5,#0x28]
 	bl sub_800F26C
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 loc_80BDC30:
 	b loc_80BDC3E
 loc_80BDC32:
@@ -11904,7 +11904,7 @@ loc_80BDC3E:
 	cmp r0, #0
 	bne loc_80BDC76
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r3, [r5,#0x4c]
 	mov r0, #0x34 
 	add r0, r0, r3
@@ -12363,7 +12363,7 @@ sub_80BDFA6:
 	strb r1, [r0]
 	strb r2, [r0,#1]
 	bl sub_80EBB78
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #8
 	add r4, #1
 	lsl r4, r4, #8
@@ -12422,8 +12422,8 @@ loc_80BE032:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -12845,8 +12845,8 @@ loc_80BE348:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -12927,7 +12927,7 @@ sub_80BE3E8:
 	push {r0-r2,r5}
 	mov r0, #0x21 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BE418
 	strb r1, [r0,#0x12]
@@ -13168,8 +13168,8 @@ sub_80BE5CC:
 	mov r1, #0x69 
 	ldrb r1, [r5,r1]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	ldr r0, [r5,#0x4c]
 	mov r4, #0x70 
@@ -13287,12 +13287,12 @@ sub_80BE6D8:
 	push {lr}
 	push {r0,r1}
 	push {r2-r6}
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r0, #0x22 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r2-r6}
 	tst r0, r0
 	beq loc_80BE730
@@ -13310,12 +13310,12 @@ sub_80BE6D8:
 	strb r2, [r0,r1]
 	mov r1, #0x64 
 	strh r3, [r0,r1]
-	add r2, r4, #0
+	mov r2, r4
 	lsl r2, r2, #0x1c
 	lsr r2, r2, #0x1c
 	mov r1, #0x62 
 	strb r2, [r0,r1]
-	add r2, r4, #0
+	mov r2, r4
 	lsl r2, r2, #0x18
 	lsr r2, r2, #0x1c
 	mov r1, #0x74 
@@ -13362,7 +13362,7 @@ sub_80BE73E:
 	bl sub_801BC64
 	mov r4, #1
 loc_80BE766:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4-r7,pc}
 thumb_func_end sub_80BE73E
 
@@ -13554,7 +13554,7 @@ loc_80BE8BE:
 	mov r3, #0
 	ldr r6, [r5,#0x2c]
 	bl sub_80BF160
-	add r4, r0, #0
+	mov r4, r0
 	pop {r7}
 	ldrb r0, [r7,#3]
 	bl sub_80BF192
@@ -13643,7 +13643,7 @@ loc_80BE98A:
 	mov r3, #0
 	ldr r6, [r5,#0x2c]
 	bl sub_80BF160
-	add r4, r0, #0
+	mov r4, r0
 	pop {r7}
 	ldrh r0, [r5,#0x12]
 	strh r0, [r4,#0x14]
@@ -13792,12 +13792,12 @@ loc_80BEAF4:
 	ldrh r0, [r5,#0x20]
 	push {r0,r1}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r0, #0
-	add r3, r1, #0
+	mov r2, r0
+	mov r3, r1
 	pop {r0,r1}
 	bl sub_80E58D2
 	str r0, [r5,#0x34]
@@ -13936,12 +13936,12 @@ loc_80BEBF8:
 	add r1, r1, r0
 	push {r0,r1}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r0, #0
-	add r3, r1, #0
+	mov r2, r0
+	mov r3, r1
 	pop {r0,r1}
 	bl sub_80E58D2
 	str r0, [r5,#0x34]
@@ -14138,8 +14138,8 @@ loc_80BED3A:
 loc_80BED7C:
 	pop {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -14390,8 +14390,8 @@ sub_80BEF48:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -14560,7 +14560,7 @@ loc_80BF08E:
 	push {r4}
 	bl sub_80C53A6
 	pop {r4}
-	add r0, r4, #0
+	mov r0, r4
 	mov r1, #2
 	mov r3, #0
 	mov r4, #1
@@ -14658,7 +14658,7 @@ sub_80BF160:
 	push {r0-r2,r5}
 	mov r0, #0x23 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BF190
 	strb r1, [r0,#0x12]
@@ -14703,7 +14703,7 @@ sub_80BF192:
 	ldr r3, [sp,#0x14]
 	add r7, sp, #0
 	bl sub_800CEA0
-	add r6, r0, #0
+	mov r6, r0
 	beq loc_80BF21E
 	mov r4, #0
 	mov r7, #0
@@ -14744,10 +14744,10 @@ loc_80BF202:
 	add r4, #1
 	cmp r4, r6
 	blt loc_80BF1C4
-	add r0, r7, #0
+	mov r0, r7
 	beq loc_80BF21E
 	bl sub_8001532
-	add r1, r7, #0
+	mov r1, r7
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -15017,7 +15017,7 @@ loc_80BF418:
 	beq loc_80BF420
 	mov r2, #4
 loc_80BF420:
-	add r0, r2, #0
+	mov r0, r2
 	bl sprite_setPallete // (int pallete) -> void
 	pop {pc}
 thumb_func_end sub_80BF402
@@ -15188,7 +15188,7 @@ loc_80BF538:
 	beq loc_80BF540
 	mov r2, #0
 loc_80BF540:
-	add r0, r2, #0
+	mov r0, r2
 	bl sprite_setPallete // (int pallete) -> void
 	pop {pc}
 thumb_func_end sub_80BF522
@@ -15392,7 +15392,7 @@ sub_80BF6AE:
 	push {r0-r2,r5}
 	mov r0, #0x24 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BF6DE
 	strb r1, [r0,#0x12]
@@ -15467,7 +15467,7 @@ loc_80BF730:
 	mov r0, #0xff
 	strb r0, [r5,#0x11]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r3, [r5,#0x4c]
 	mov r0, #0x34 
 	add r0, r0, r3
@@ -16064,8 +16064,8 @@ loc_80BFB98:
 	bl sub_80C53A6
 	pop {r0,r1,r7}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	push {r1,r2}
 	mov r4, #4
 	lsl r4, r4, #8
@@ -16222,7 +16222,7 @@ sub_80BFCD0:
 	push {r0-r2,r5}
 	mov r0, #0x25 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BFD00
 	strb r1, [r0,#0x12]
@@ -16315,7 +16315,7 @@ sub_80BFD90:
 	sub sp, sp, #4
 	str r0, [sp]
 	bl sub_800E456 // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #0x18
 	ldr r0, dword_80BFDE8 // =0x141308 
 	add r4, r4, r0
@@ -16332,7 +16332,7 @@ sub_80BFD90:
 	mov r7, #0xf
 	bl sub_80E33FA
 	bl sub_800E456 // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #0x18
 	ldr r0, dword_80BFDF4 // =0x1308 
 	add r4, r4, r0
@@ -16485,7 +16485,7 @@ sub_80BFF00:
 	push {r0-r2,r5}
 	mov r0, #0x26 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80BFF26
 	strb r1, [r0,#0x12]
@@ -16529,7 +16529,7 @@ sub_80BFF3E:
 	push {r5,lr}
 	tst r0, r0
 	beq locret_80BFF54
-	add r5, r0, #0
+	mov r5, r0
 	ldrb r0, [r5,#0x16]
 	ldrb r1, [r5,#0x17]
 	eor r0, r1
@@ -16545,7 +16545,7 @@ sub_80BFF56:
 	push {r5,lr}
 	tst r0, r0
 	beq locret_80BFF66
-	add r5, r0, #0
+	mov r5, r0
 	bl sub_800E456 // () -> int
 	bl sub_8002F5C
 locret_80BFF66:
@@ -16706,7 +16706,7 @@ sub_80C0098:
 	push {r2,r5}
 	mov r0, #0x27 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r2,r5}
 	beq locret_80C00B6
 	str r5, [r0,#0x4c]
@@ -16733,7 +16733,7 @@ thumb_func_end sub_80C00B8
 thumb_func_start sub_80C00C2
 sub_80C00C2:
 	push {r5,lr}
-	add r5, r0, #0
+	mov r5, r0
 	tst r0, r0
 	beq locret_80C00CC
 	strb r1, [r5,#0x10]
@@ -16779,7 +16779,7 @@ sub_80C00EA:
 	bl sub_801BC64
 	mov r4, #1
 loc_80C0112:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 thumb_func_end sub_80C00EA
 
@@ -16806,7 +16806,7 @@ thumb_func_end sub_80C0116
 thumb_func_start sub_80C0136
 sub_80C0136:
 	push {r5,lr}
-	add r5, r0, #0
+	mov r5, r0
 	tst r0, r0
 	beq locret_80C0142
 	mov r0, #1
@@ -16986,7 +16986,7 @@ sub_80C02A6:
 	push {r5}
 	mov r0, #0x28 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C02BC
 	str r5, [r0,#0x4c]
@@ -17057,7 +17057,7 @@ sub_80C02F8:
 	bl sub_801BC64
 	mov r4, #1
 loc_80C031A:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 thumb_func_end sub_80C02F8
 
@@ -17228,7 +17228,7 @@ sub_80C0448:
 	push {r5}
 	mov r0, #0x29 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C0478
 	str r5, [r0,#0x4c]
@@ -17505,7 +17505,7 @@ sub_80C063C:
 	push {r5}
 	mov r0, #0x2a 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C0652
 	str r5, [r0,#0x4c]
@@ -17697,7 +17697,7 @@ sub_80C0790:
 	push {r5}
 	mov r0, #0x2b 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C07AE
 	str r5, [r0,#0x4c]
@@ -18362,7 +18362,7 @@ sub_80C0C48:
 	bne loc_80C0C70
 	ldrh r0, [r5,#0x2c]
 	bl sub_80E199A
-	add r6, r0, #0
+	mov r6, r0
 	ldrb r0, [r5,#0xc]
 	ldrb r1, [r5,#0xd]
 	push {r5}
@@ -18417,7 +18417,7 @@ sub_80C0C9A:
 	add r7, sp, #0
 	bl object_getPanelsExceptCurrentFilterred
 	str r0, [sp,#0x14]
-	add r6, r0, #0
+	mov r6, r0
 	beq loc_80C0D86
 	mov r3, #0
 	str r3, [sp,#0x30]
@@ -18582,7 +18582,7 @@ sub_80C0DD8:
 	push {r0,r1,r3,r5}
 	mov r0, #0x2c 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C0DFE
 	strb r1, [r0,#0x12]
@@ -18652,7 +18652,7 @@ sub_80C0E24:
 	add r0, r0, r5
 	stmia r0!, {r1-r3}
 	push {r5}
-	add r5, r4, #0
+	mov r5, r4
 	bl sub_801002C
 	pop {r5}
 	bl sprite_setPallete // (int pallete) -> void
@@ -18715,12 +18715,12 @@ sub_80C0EE2:
 	ldr r0, [r5,#0x60]
 	cmp r0, #2
 	bne loc_80C0F02
-	add r0, r4, #0
+	mov r0, r4
 	mov r1, #0
 	bl sub_80E1352
 	b loc_80C0F08
 loc_80C0F02:
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_80E146C
 loc_80C0F08:
 	mov r0, #4
@@ -18747,11 +18747,11 @@ loc_80C0F10:
 	ldr r0, [r5,#0x60]
 	cmp r0, #2
 	bne loc_80C0F42
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_80E13DC
 	b loc_80C0F48
 loc_80C0F42:
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_80E14AC
 loc_80C0F48:
 	mov r0, #8
@@ -18767,7 +18767,7 @@ sub_80C0F52:
 	push {r0,r1,r5}
 	mov r0, #0x2d 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80C0F6A
 	str r1, [r0,#0x4c]
@@ -18949,7 +18949,7 @@ sub_80C10C8:
 	push {r2,r5}
 	mov r0, #0x2e 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r2,r5}
 	beq locret_80C10E6
 	str r5, [r0,#0x4c]
@@ -18976,7 +18976,7 @@ thumb_func_end sub_80C10E8
 thumb_local_start
 sub_80C10F2:
 	push {r5,lr}
-	add r5, r0, #0
+	mov r5, r0
 	tst r0, r0
 	beq locret_80C10FC
 	strb r1, [r5,#0x10]
@@ -19054,7 +19054,7 @@ loc_80C1160:
 	bl sub_801BC64
 	mov r4, #1
 loc_80C117E:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 thumb_func_end sub_80C114E
 
@@ -19374,7 +19374,7 @@ sub_80C1400:
 	push {r2,r3,r5}
 	mov r0, #0x2f 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r2,r3,r5}
 	tst r0, r0
 	beq locret_80C145E
@@ -19447,7 +19447,7 @@ sub_80C1466:
 	bl sub_801BC64
 	mov r4, #1
 loc_80C148E:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 thumb_func_end sub_80C1466
 
@@ -19519,7 +19519,7 @@ sub_80C14EC:
 	bne loc_80C1510
 	mov r4, #1
 loc_80C1510:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 thumb_func_end sub_80C14EC
 
@@ -19924,7 +19924,7 @@ sub_80C17F4:
 	push {r0-r2,r5}
 	mov r0, #0x32 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C181E
 	strb r1, [r0,#0x12]
@@ -19947,18 +19947,18 @@ thumb_func_end sub_80C17F4
 thumb_local_start
 sub_80C1820:
 	push {r4-r7,lr}
-	add r4, r2, #0
+	mov r4, r2
 	push {r0,r1}
 	ldrb r0, [r5,#0x16]
 	ldrb r1, [r5,#0x17]
 	eor r0, r1
 	lsl r0, r0, #8
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	push {r2}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	pop {r0}
 	ldr r6, off_80C1850 // =dword_80C1854 
@@ -19985,8 +19985,8 @@ sub_80C185C:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	pop {r0}
 	ldr r4, dword_80C1888 // =0x60216 
@@ -20039,7 +20039,7 @@ loc_80C18D0:
 	cmp r1, #4
 	blt loc_80C18C6
 	lsr r2, r2, #2
-	add r0, r2, #0
+	mov r0, r2
 	tst r0, r0
 	beq loc_80C19A0
 	add r7, sp, #0x10
@@ -20080,7 +20080,7 @@ loc_80C1922:
 	tst r0, r0
 	bne loc_80C18E4
 	lsr r4, r4, #2
-	add r0, r4, #0
+	mov r0, r4
 	tst r0, r0
 	beq loc_80C19F8
 	mov r3, #0
@@ -20120,7 +20120,7 @@ loc_80C1970:
 	sub r0, #1
 	bne loc_80C1936
 	lsr r3, r3, #2
-	add r0, r3, #0
+	mov r0, r3
 	tst r0, r0
 	beq loc_80C19F8
 	cmp r0, #1
@@ -20157,7 +20157,7 @@ loc_80C19B0:
 	ldrb r1, [r4,#0x13]
 	cmp r0, r1
 	bgt loc_80C19C2
-	add r4, r3, #0
+	mov r4, r3
 loc_80C19C2:
 	b loc_80C19C6
 loc_80C19C4:
@@ -20167,7 +20167,7 @@ loc_80C19C6:
 	add r1, #4
 	sub r0, #1
 	bne loc_80C19B0
-	add r5, r4, #0
+	mov r5, r4
 	ldrh r0, [r5,#0x28]
 	bl sub_800F26C
 	cmp r0, #8
@@ -20795,7 +20795,7 @@ sub_80C1EAC:
 	push {r0-r2,r5}
 	mov r0, #0x33 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C1ECC
 	strb r3, [r0,#0xe]
@@ -20845,7 +20845,7 @@ sub_80C1EF4:
 loc_80C1F0C:
 	mov r6, #0
 loc_80C1F0E:
-	add r0, r6, #0
+	mov r0, r6
 	mov r1, #3
 	mul r1, r0
 	ldr r7, [sp]
@@ -20859,7 +20859,7 @@ loc_80C1F0E:
 	mul r2, r3
 	mov r0, #2
 	ldrsb r3, [r7,r0]
-	add r7, r1, #0
+	mov r7, r1
 	mov r0, #0x6c 
 	add r0, r0, r5
 	ldrb r0, [r0,r4]
@@ -20914,7 +20914,7 @@ loc_80C1F82:
 loc_80C1F8C:
 	strb r4, [r5,#4]
 loc_80C1F8E:
-	add r2, r7, #0
+	mov r2, r7
 	add sp, sp, #0xc
 	pop {r4,r6,r7,pc}
 byte_80C1F94: .byte 0x0, 0xFF, 0x0, 0x1, 0x1, 0x0, 0x0, 0xFF, 0xFF, 0x1, 0x1, 0xFF, 0x0
@@ -20995,8 +20995,8 @@ sub_80C2082:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -21061,8 +21061,8 @@ sub_80C2110:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -21542,7 +21542,7 @@ sub_80C24D2:
 	push {r0-r2,r5}
 	mov r0, #0x34 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C24F2
 	strb r3, [r0,#0xe]
@@ -21591,7 +21591,7 @@ sub_80C2518:
 loc_80C2530:
 	mov r6, #0
 loc_80C2532:
-	add r0, r6, #0
+	mov r0, r6
 	mov r1, #3
 	mul r1, r0
 	ldr r7, [sp]
@@ -21605,7 +21605,7 @@ loc_80C2532:
 	mul r2, r3
 	mov r0, #2
 	ldrsb r3, [r7,r0]
-	add r7, r1, #0
+	mov r7, r1
 	mov r0, #0x6c 
 	add r0, r0, r5
 	ldrb r0, [r0,r4]
@@ -21660,7 +21660,7 @@ loc_80C25A6:
 loc_80C25B0:
 	strb r4, [r5,#4]
 loc_80C25B2:
-	add r2, r7, #0
+	mov r2, r7
 	add sp, sp, #0xc
 	pop {r4,r6,r7,pc}
 	.byte 0x0, 0xFE, 0x0, 0x1, 0x2, 0x0, 0xFF, 0x0, 0x0, 0xFF, 0x0, 0x1, 0x1, 0x0
@@ -21678,7 +21678,7 @@ thumb_func_end sub_80C2518
 thumb_local_start
 sub_80C2600:
 	push {r4,r6,r7,lr}
-	add r7, r0, #0
+	mov r7, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	ldr r1, off_80C2660 // =dword_80C2664 
 	ldrb r1, [r1,r7]
@@ -21686,13 +21686,13 @@ sub_80C2600:
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
-	add r3, r7, #0
+	mov r3, r7
 	lsl r3, r3, #2
 	ldr r2, off_80C2668 // =dword_80C266C 
 	ldr r3, [r2,r3]
 	ldrb r2, [r5,#0xe]
 	orr r2, r3
-	add r3, r7, #0
+	mov r3, r7
 	lsl r3, r3, #2
 	ldr r4, off_80C263C // =dword_80C2640 
 	ldr r4, [r4,r3]
@@ -21741,7 +21741,7 @@ thumb_func_end sub_80C2678
 thumb_local_start
 sub_80C26A0:
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_800E456 // () -> int
 	lsl r0, r0, #8
 	add r4, r4, r0
@@ -21750,8 +21750,8 @@ sub_80C26A0:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -21768,8 +21768,8 @@ sub_80C26C8:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x59 
 	bl sub_80E05F6
@@ -22032,7 +22032,7 @@ loc_80C28DE:
 	ble loc_80C2890
 	push {r0,r1}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	add r0, r0, r2
 	sub r2, r0, #1
@@ -22149,8 +22149,8 @@ loc_80C299C:
 	bl sub_80C53A6
 	pop {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	ldr r4, [r5,#0x6c]
@@ -22231,7 +22231,7 @@ sub_80C2A4C:
 	push {r0-r2,r5}
 	mov r0, #0x3c 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C2A70
 	strb r1, [r0,#0x12]
@@ -22517,7 +22517,7 @@ loc_80C2C86:
 	ble loc_80C2C28
 	push {r0,r1}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	add r0, r0, r2
 	push {r0,r1}
@@ -22553,8 +22553,8 @@ loc_80C2CCA:
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x28 
 	bl sub_80E05F6
@@ -22714,8 +22714,8 @@ loc_80C2DCA:
 	pop {r7}
 	pop {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	ldr r4, [r7,#0xc]
@@ -22827,7 +22827,7 @@ thumb_func_end sub_80C2EB0
 thumb_local_start
 sub_80C2EC4:
 	push {r4,r6,lr}
-	add r6, r0, #0
+	mov r6, r0
 	lsl r0, r0, #0x1f
 	lsr r0, r0, #0x1f
 	ldrb r1, [r5,#0x16]
@@ -22836,7 +22836,7 @@ sub_80C2EC4:
 	eor r0, r2
 	strb r0, [r7,#0xc]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	add r2, r6, r6
 	ldr r3, off_80C2F1C // =dword_80C2F20 
 	add r3, r3, r2
@@ -22941,7 +22941,7 @@ sub_80C2F96:
 	push {r0-r2,r5}
 	mov r0, #0x3d 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C2FBA
 	strb r1, [r0,#0x12]
@@ -22967,8 +22967,8 @@ sub_80C2FBC:
 	ldrb r1, [r7,#0x19]
 loc_80C2FC6:
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	ldrb r0, [r5,#0x16]
 	ldrb r4, [r5,#0x17]
@@ -23030,8 +23030,8 @@ sub_80C3024:
 loc_80C304E:
 	ldrh r0, [r4,#0x28]
 	bl sub_800F26C
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 loc_80C3058:
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
@@ -23248,7 +23248,7 @@ sub_80C31F0:
 	push {r0-r2,r5}
 	mov r0, #0x45 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C3214
 	strb r1, [r0,#0x12]
@@ -23506,7 +23506,7 @@ sub_80C33CA:
 	mov r1, #1
 	eor r0, r1
 	bl sub_80103BC
-	add r5, r0, #0
+	mov r5, r0
 	beq loc_80C33F4
 	bl sub_800FC7C
 	pop {r5}
@@ -23577,7 +23577,7 @@ sub_80C3460:
 	ldrb r0, [r5,#0x16]
 	push {r0}
 	bl sub_80103BC
-	add r7, r0, #0
+	mov r7, r0
 	pop {r4}
 	beq loc_80C348A
 	ldrb r0, [r7,#0x12]
@@ -23616,7 +23616,7 @@ sub_80C34B8:
 	push {r5}
 	mov r0, #0x4b 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C34DA
 	ldrb r1, [r5,#0x16]
@@ -23785,7 +23785,7 @@ sub_80C35CE:
 	mov r1, #1
 	eor r0, r1
 	bl sub_80103BC
-	add r5, r0, #0
+	mov r5, r0
 	beq loc_80C3616
 	bl sub_800FC7C
 loc_80C3616:
@@ -23887,11 +23887,11 @@ sub_80C36AE:
 	eor r0, r1
 	push {r0}
 	bl sub_800E2C2
-	add r6, r0, #0
+	mov r6, r0
 	pop {r0}
 	push {r6}
 	bl sub_80103BC
-	add r7, r0, #0
+	mov r7, r0
 	pop {r6}
 	mov r4, #0x34 
 	add r4, r4, r7
@@ -23938,7 +23938,7 @@ sub_80C3710:
 	push {r5}
 	mov r0, #0x4c 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C3732
 	ldrb r1, [r5,#0x16]
@@ -24243,7 +24243,7 @@ sub_80C3946:
 	push {r5}
 	mov r0, #0x4d 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C3968
 	ldrb r1, [r5,#0x16]
@@ -24502,7 +24502,7 @@ sub_80C3B30:
 	push {r0-r2,r5}
 	mov r0, #0x4f 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C3B52
 	strb r1, [r0,#0x12]
@@ -24583,7 +24583,7 @@ loc_80C3BCC:
 loc_80C3BD6:
 	push {r0-r3,r6,r7}
 	bl object_getPanelParameters
-	add r4, r0, #0
+	mov r4, r0
 	pop {r0-r3,r6,r7}
 	tst r4, r3
 	bne loc_80C3C0A
@@ -24613,10 +24613,10 @@ loc_80C3C0A:
 	add r4, #1
 	b loc_80C3BCC
 loc_80C3C14:
-	add r0, r6, #0
+	mov r0, r6
 	beq loc_80C3C28
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	ldrb r0, [r7,r1]
 	lsr r1, r0, #4
@@ -24651,7 +24651,7 @@ loc_80C3C48:
 loc_80C3C50:
 	bl object_getFlipDirection_800E2CA // () -> int
 	add r4, r4, r0
-	add r0, r4, #0
+	mov r0, r4
 	ldr r3, off_80C3C8C // =dword_80C3C90 
 	bl sub_800EC48
 	add r7, sp, #0
@@ -24961,7 +24961,7 @@ sub_80C3E98:
 	push {r0-r2,r5}
 	mov r0, #0x50 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C3EBA
 	strb r1, [r0,#0x12]
@@ -25166,7 +25166,7 @@ sub_80C4038:
 	push {r0-r3,r5}
 	mov r0, #0x54 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r5}
 	beq locret_80C4070
 	str r1, [r0,#0x6c]
@@ -25382,7 +25382,7 @@ sub_80C41D8:
 	push {r5}
 	mov r0, #0x55 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C4202
 	ldr r1, [r5,#0x34]
@@ -25636,7 +25636,7 @@ sub_80C44A8:
 	push {r5}
 	mov r0, #0x56 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C44C6
 	str r5, [r0,#0x4c]
@@ -25667,7 +25667,7 @@ sub_80C44D2:
 	beq locret_80C44E2
 	mov r1, #0xff
 	strb r1, [r0,#0x11]
-	add r5, r0, #0
+	mov r5, r0
 	bl sub_801BCD0
 locret_80C44E2:
 	pop {r5,pc}
@@ -25680,7 +25680,7 @@ sub_80C44E4:
 	beq locret_80C44F8
 	mov r1, #1
 	strb r1, [r0,#0xb]
-	add r5, r0, #0
+	mov r5, r0
 	ldrb r0, [r5]
 	mov r1, #2
 	orr r0, r1
@@ -25696,7 +25696,7 @@ sub_80C44FA:
 	beq locret_80C450E
 	mov r1, #1
 	strb r1, [r0,#0xb]
-	add r5, r0, #0
+	mov r5, r0
 	ldrb r0, [r5]
 	mov r1, #2
 	bic r0, r1
@@ -25904,7 +25904,7 @@ sub_80C468C:
 	push {r2,r3,r5}
 	mov r0, #0x57 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r2,r3,r5}
 	beq locret_80C46AE
 	str r5, [r0,#0x4c]
@@ -25964,14 +25964,14 @@ loc_80C46DC:
 	ldr r1, [r5,#0x68]
 	cmp r1, #0
 	beq locret_80C46F2
-	add r4, r0, #0
+	mov r4, r0
 	mov r1, #0xe
 	bl sub_8013774
 	cmp r0, #0xff
 	bne loc_80C46F0
 	mov r4, #0xc
 loc_80C46F0:
-	add r0, r4, #0
+	mov r0, r4
 locret_80C46F2:
 	pop {r4,pc}
 dword_80C46F4: .word 0x10000
@@ -26087,7 +26087,7 @@ sub_80C47EC:
 	push {r5}
 	mov r0, #0x58 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C481A
 	ldr r1, [r5,#0x34]
@@ -26158,8 +26158,8 @@ sub_80C4848:
 loc_80C4872:
 	ldrh r0, [r4,#0x28]
 	bl sub_800F26C
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 loc_80C487C:
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
@@ -26183,7 +26183,7 @@ loc_80C487C:
 	add r0, #1
 	strh r0, [r5,#0x3e]
 	push {r5}
-	add r5, r4, #0
+	mov r5, r4
 	bl sub_801002C
 	pop {r5}
 	bl sprite_setPallete // (int pallete) -> void
@@ -26480,7 +26480,7 @@ sub_80C4AEC:
 	push {r0,r5}
 	mov r0, #0x5d 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r5}
 	beq locret_80C4B14
 	str r1, [r0,#0x60]
@@ -26491,7 +26491,7 @@ sub_80C4AEC:
 	push {r0}
 	ldrb r0, [r5,#0x16]
 	bl sub_80103BC
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	str r1, [r0,#0x4c]
 locret_80C4B14:
@@ -26537,7 +26537,7 @@ sub_80C4B48:
 	bl sub_80C4C52
 	strb r1, [r5,#0x10]
 	strb r1, [r5,#0x11]
-	add r0, r1, #0
+	mov r0, r1
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
@@ -26625,7 +26625,7 @@ sub_80C4C12:
 	push {r5}
 	mov r0, #0x5e 
 	bl object_spawnType1
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C4C38
 	ldrh r1, [r5,#0x16]
@@ -26675,7 +26675,7 @@ sub_80C4C52:
 	bl sub_800F29C
 	cmp r1, #0x23 
 	blt locret_80C4C76
-	add r0, r1, #0
+	mov r0, r1
 	mov r1, #0xc
 	cmp r0, #0x23 
 	beq locret_80C4C76
@@ -26920,7 +26920,7 @@ sub_80C4FFE:
 	push {r0-r2,r5,r6}
 	mov r0, #0
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5,r6}
 	beq locret_80C5012
 	bl sub_801155A
@@ -27100,7 +27100,7 @@ sub_80C5176:
 	push {r0-r2,r5}
 	mov r0, #1
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C518A
 	bl sub_801155A
@@ -27234,7 +27234,7 @@ sub_80C529A:
 	push {r0-r2,r5}
 	mov r0, #2
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C52AE
 	bl sub_801155A
@@ -27270,7 +27270,7 @@ sub_80C52D0:
 	str r0, [r5,#0x34]
 	str r1, [r5,#0x38]
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	bne loc_80C52F6
 loc_80C52F0:
@@ -27339,7 +27339,7 @@ sub_80C536A:
 	push {r0-r2,r5}
 	mov r0, #3
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C53A4
 	strb r1, [r0,#0x12]
@@ -27349,7 +27349,7 @@ sub_80C536A:
 	ldrh r1, [r5,#0x16]
 	strh r1, [r0,#0x16]
 	mov r2, #0xff
-	add r1, r2, #0
+	mov r1, r2
 	and r1, r7
 	str r1, [r0,#0x60]
 	lsr r1, r7, #8
@@ -27491,7 +27491,7 @@ loc_80C548E:
 	add r1, r1, r0
 	str r1, [r5,#0x3c]
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	beq loc_80C54CA
 	mov r1, #0xa
@@ -27596,7 +27596,7 @@ sub_80C5578:
 	push {r0-r2,r5}
 	mov r0, #4
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C558E
 	str r7, [r0,#0x60]
@@ -27749,8 +27749,8 @@ sub_80C56B4:
 	ldrb r0, [r5,#6]
 	ldrb r1, [r5,#7]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	ldrb r4, [r5,#5]
 	mov r0, #0x34 
@@ -27866,7 +27866,7 @@ sub_80C579E:
 	push {r5}
 	mov r0, #5
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C57BA
 	ldrh r1, [r5,#0x16]
@@ -28028,8 +28028,8 @@ sub_80C58E0:
 	ldrb r0, [r5,#6]
 	ldrb r1, [r5,#7]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	ldr r3, dword_80C5A28 // =0xb0000 
 	mov r0, #0x34 
 	add r0, r0, r5
@@ -28166,7 +28166,7 @@ sub_80C59F6:
 	push {r5}
 	mov r0, #6
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C5A10
 	ldrh r1, [r5,#0x16]
@@ -28239,7 +28239,7 @@ sub_80C5A58:
 	str r0, [r5,#0x38]
 	str r1, [r5,#0x3c]
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	bne loc_80C5AB2
 loc_80C5AAC:
@@ -28354,7 +28354,7 @@ sub_80C5B76:
 	push {r0-r2,r5}
 	mov r0, #7
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C5B8E
 	strb r1, [r0,#0x12]
@@ -28616,7 +28616,7 @@ sub_80C5DBC:
 	push {r5}
 	mov r0, #8
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C5DD8
 	mov r1, #0
@@ -28654,7 +28654,7 @@ sub_80C5E00:
 	ldrb r0, [r5,#5]
 	strh r0, [r5,#0x20]
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	bne loc_80C5E18
 	bl object_freeMemory
 	pop {r7,pc}
@@ -28801,7 +28801,7 @@ sub_80C5F2C:
 	push {r0-r2,r5}
 	mov r0, #9
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C5F48
 	strb r1, [r0,#0x12]
@@ -28921,7 +28921,7 @@ sub_80C6018:
 	push {r0-r2,r5}
 	mov r0, #0xa
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C6036
 	strb r1, [r0,#0x12]
@@ -29093,7 +29093,7 @@ loc_80C61D6:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r0, #0
+	mov r2, r0
 	ldr r1, [r5,#0x34]
 	ldr r0, [r5,#0x40]
 	add r0, r0, r1
@@ -29145,7 +29145,7 @@ sub_80C6248:
 	push {r5}
 	mov r0, #0xb
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C6262
 	str r6, [r0,#0x2c]
@@ -29276,7 +29276,7 @@ sub_80C6330:
 	push {r0-r2,r5}
 	mov r0, #0xe
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C6356
 	strb r1, [r0,#0x12]
@@ -29300,7 +29300,7 @@ sub_80C6358:
 	mov r6, #0
 loc_80C635C:
 	ldr r3, off_80C6398 // =dword_80C639C 
-	add r2, r6, #0
+	mov r2, r6
 	lsl r2, r2, #1
 	add r3, r3, r2
 	mov r0, #0
@@ -29545,7 +29545,7 @@ sub_80C6548:
 	push {r0-r2,r5}
 	mov r0, #0xf
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C6564
 	strb r1, [r0,#0x12]
@@ -29882,7 +29882,7 @@ sub_80C67D8:
 	push {r0-r2,r5}
 	mov r0, #0x10
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C67EC
 	bl sub_801155A
@@ -29992,7 +29992,7 @@ sub_80C68B0:
 	push {r0-r2,r5}
 	mov r0, #0x11
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C68CE
 	strb r1, [r0,#0x12]
@@ -30077,7 +30077,7 @@ sub_80C69AC:
 	lsl r1, r1, #8
 	tst r0, r1
 	bne loc_80C69D8
-	add r0, r1, #0
+	mov r0, r1
 	bl object_setFlag // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#9]
@@ -30225,7 +30225,7 @@ sub_80C6ADA:
 	push {r0-r2,r5}
 	mov r0, #0x12
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C6AEE
 	bl sub_801155A
@@ -30303,7 +30303,7 @@ sub_80C6B64:
 	bl sub_80C6CFC
 	bl sub_800E29C // () -> void
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	beq loc_80C6C0A
 	mov r1, #4
@@ -30315,7 +30315,7 @@ sub_80C6B64:
 	mov r2, #5
 loc_80C6BE8:
 	mov r3, #3
-	add r0, r7, #0
+	mov r0, r7
 	bl sub_8019FB4
 	mov r1, #1
 	strb r1, [r7,#1]
@@ -30447,7 +30447,7 @@ sub_80C6CE4:
 	push {r0-r2,r5}
 	mov r0, #0x16
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C6CFA
 	mov r3, #0
@@ -30494,7 +30494,7 @@ sub_80C6D1E:
 	beq locret_80C6DAE
 	cmp r2, #3
 	bgt locret_80C6DAE
-	add r1, r2, #0
+	mov r1, r2
 	b locret_80C6DAE
 loc_80C6D42:
 	bl object_getFlipDirection_800E2CA // () -> int
@@ -30702,7 +30702,7 @@ sub_80C6EE0:
 	push {r0-r2,r5}
 	mov r0, #0x17
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C6F06
 	strb r1, [r0,#0x12]
@@ -30723,7 +30723,7 @@ thumb_func_end sub_80C6EE0
 thumb_local_start
 sub_80C6F08:
 	push {r4,r6,r7,lr}
-	add r7, r0, #0
+	mov r7, r0
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #2
 	ldr r1, off_80C6F44 // =dword_80C6F48 
@@ -30765,7 +30765,7 @@ sub_80C6F50:
 	mov r6, #0
 loc_80C6F5A:
 	ldr r0, [sp,#4]
-	add r1, r6, #0
+	mov r1, r6
 	sub r1, #1
 	ldrb r2, [r5,#0x13]
 	add r1, r1, r2
@@ -30873,11 +30873,11 @@ thumb_func_end sub_80C6FC8
 thumb_local_start
 sub_80C7030:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	mov r6, #0
 loc_80C7036:
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	sub r1, #1
 	ldrb r2, [r5,#0x13]
 	add r1, r1, r2
@@ -30992,7 +30992,7 @@ sub_80C7114:
 	push {r0-r2,r5}
 	mov r0, #0x18
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C7130
 	strb r1, [r0,#0x12]
@@ -31293,7 +31293,7 @@ sub_80C7382:
 	push {r0-r2,r5}
 	mov r0, #0x19
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C73BC
 	strb r1, [r0,#0x12]
@@ -31301,9 +31301,9 @@ sub_80C7382:
 	strb r1, [r0,#0x14]
 	strb r2, [r0,#0x15]
 	push {r0-r3,r5}
-	add r5, r0, #0
-	add r0, r1, #0
-	add r1, r2, #0
+	mov r5, r0
+	mov r0, r1
+	mov r1, r2
 	bl sub_801BB1C
 	pop {r0-r3,r5}
 	strb r3, [r0,#0xe]
@@ -31327,7 +31327,7 @@ sub_80C73BE:
 loc_80C73C2:
 	push {r4}
 	ldrb r0, [r5,#0x12]
-	add r1, r4, #0
+	mov r1, r4
 	ldrb r2, [r5,#0xe]
 	mov r3, #0
 	ldr r4, dword_80C73F0 // =0x405ff01 
@@ -31528,7 +31528,7 @@ sub_80C7544:
 	push {r0-r2,r5}
 	mov r0, #0x1a
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C7570
 	strb r3, [r0,#0xe]
@@ -31555,7 +31555,7 @@ sub_80C7572:
 	mov r0, #0
 	mov r3, #0
 loc_80C7578:
-	add r1, r3, #0
+	mov r1, r3
 	lsl r1, r1, #2
 	add r1, #0x64 
 	ldr r1, [r5,r1]
@@ -31600,11 +31600,11 @@ loc_80C75BC:
 	ldr r3, [r0,#4]
 	add r7, sp, #8
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80C75F0
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -31680,7 +31680,7 @@ loc_80C7654:
 	tst r6, r6
 	beq loc_80C768C
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -31778,7 +31778,7 @@ loc_80C773A:
 	beq loc_80C775C
 loc_80C7744:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0x10
 	ldrb r0, [r0,r1]
@@ -31830,7 +31830,7 @@ loc_80C778E:
 	tst r6, r6
 	beq loc_80C77E0
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -31839,7 +31839,7 @@ loc_80C778E:
 	lsr r0, r0, #0x1d
 	mov r3, #0
 loc_80C77C0:
-	add r2, r3, #0
+	mov r2, r3
 	lsl r2, r2, #2
 	add r2, #0x64 
 	ldr r2, [r5,r2]
@@ -31944,7 +31944,7 @@ loc_80C788E:
 	beq loc_80C78CC
 loc_80C7898:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0x10
 	ldrb r0, [r0,r1]
@@ -31953,7 +31953,7 @@ loc_80C7898:
 	lsr r0, r0, #0x1d
 	mov r3, #1
 loc_80C78AC:
-	add r2, r3, #0
+	mov r2, r3
 	lsl r2, r2, #2
 	add r2, #0x64 
 	ldr r2, [r5,r2]
@@ -31982,7 +31982,7 @@ sub_80C78DC:
 	push {lr}
 	mov r3, #0
 loc_80C78E0:
-	add r1, r3, #0
+	mov r1, r3
 	lsl r1, r1, #2
 	add r1, #0x64 
 	ldr r1, [r5,r1]
@@ -32002,7 +32002,7 @@ sub_80C78F8:
 	push {lr}
 	mov r3, #0
 loc_80C78FC:
-	add r1, r3, #0
+	mov r1, r3
 	lsl r1, r1, #2
 	add r1, #0x64 
 	ldr r1, [r5,r1]
@@ -32027,7 +32027,7 @@ sub_80C791E:
 	push {lr}
 	mov r3, #0
 loc_80C7922:
-	add r1, r3, #0
+	mov r1, r3
 	lsl r1, r1, #2
 	add r1, #0x64 
 	ldr r1, [r5,r1]
@@ -32224,7 +32224,7 @@ sub_80C7A6C:
 	push {r0-r2,r5}
 	mov r0, #0x1b
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C7A92
 	strb r3, [r0,#0xe]
@@ -32268,12 +32268,12 @@ loc_80C7AA6:
 	ldr r3, [r1,#4]
 	add r7, sp, #0
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80C7B48
 	add r0, sp, #0
-	add r1, r6, #0
-	add r2, r6, #0
+	mov r1, r6
+	mov r2, r6
 	bl sub_8000C72
 	mov r7, #0
 loc_80C7AD8:
@@ -32309,11 +32309,11 @@ loc_80C7B04:
 	ldr r3, [r1,#4]
 	add r7, sp, #0
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80C7B48
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -32586,7 +32586,7 @@ sub_80C7D50:
 	push {r0-r2,r5}
 	mov r0, #0x1c
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C7D74
 	strb r1, [r0,#0x12]
@@ -32804,7 +32804,7 @@ sub_80C7F20:
 	push {r0-r2,r5}
 	mov r0, #0x1d
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C7F3E
 	strb r1, [r0,#0x12]
@@ -32966,7 +32966,7 @@ sub_80C8070:
 	push {r0-r2,r5}
 	mov r0, #0x1e
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C8096
 	strb r1, [r0,#0x12]
@@ -33121,7 +33121,7 @@ sub_80C81A6:
 	push {r0-r2,r5}
 	mov r0, #0x1f
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C81CA
 	strb r1, [r0,#0x12]
@@ -33257,7 +33257,7 @@ sub_80C82A8:
 	push {r0-r2,r5}
 	mov r0, #0x20 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C82CE
 	strb r1, [r0,#0x12]
@@ -33312,7 +33312,7 @@ thumb_local_start
 sub_80C8310:
 	push {r4,r6,lr}
 	mov r4, #1
-	add r6, r0, #0
+	mov r6, r0
 loc_80C8316:
 	bl object_getFlipDirection_800E2CA // () -> int
 	mul r0, r4
@@ -33330,7 +33330,7 @@ thumb_local_start
 sub_80C832E:
 	push {r4,r6,lr}
 	mov r4, #1
-	add r6, r0, #0
+	mov r6, r0
 loc_80C8334:
 	bl object_getFlipDirection_800E2CA // () -> int
 	mul r0, r4
@@ -33343,7 +33343,7 @@ loc_80C8334:
 	pop {r0,r1}
 	beq locret_80C8366
 	push {r7}
-	add r2, r4, #0
+	mov r2, r4
 	sub r2, #1
 	lsl r2, r2, #2
 	mov r7, #0x60 
@@ -33363,7 +33363,7 @@ sub_80C8368:
 	push {r4,lr}
 	mov r4, #0
 loc_80C836C:
-	add r0, r4, #0
+	mov r0, r4
 	lsl r0, r0, #2
 	mov r1, #0x60 
 	add r0, r0, r1
@@ -33425,7 +33425,7 @@ sub_80C83B8:
 	mul r3, r0
 	str r2, [r5,#0x40]
 	str r3, [r5,#0x44]
-	add r1, r0, #0
+	mov r1, r0
 	ldrb r0, [r5,#5]
 	lsl r0, r0, #2
 	ldr r2, off_80C8484 // =dword_80C8488 
@@ -33552,7 +33552,7 @@ sub_80C8514:
 	push {r0-r2,r5}
 	mov r0, #0x21 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C8538
 	strb r1, [r0,#0x12]
@@ -33763,7 +33763,7 @@ sub_80C86B0:
 	push {r0-r2,r5}
 	mov r0, #0x22 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C86D4
 	strb r1, [r0,#0x12]
@@ -33935,7 +33935,7 @@ sub_80C8806:
 	push {r0-r2,r5}
 	mov r0, #0x23 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C882A
 	strb r1, [r0,#0x12]
@@ -34033,8 +34033,8 @@ sub_80C88C8:
 	ldrb r0, [r5,#6]
 	ldrb r1, [r5,#7]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	ldrb r4, [r5,#5]
 	mov r0, #0x34 
@@ -34143,7 +34143,7 @@ sub_80C89AC:
 	push {r5}
 	mov r0, #0x24 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C89C6
 	ldrh r1, [r5,#0x16]
@@ -34234,7 +34234,7 @@ thumb_local_start
 sub_80C8A7A:
 	push {r7,lr}
 	bl sub_80C89AC
-	add r7, r0, #0
+	mov r7, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	mov r1, #3
 	mul r1, r0
@@ -34383,7 +34383,7 @@ loc_80C8B96:
 	beq loc_80C8BDE
 	strb r0, [r5,#0x12]
 	bl object_getPanelParameters
-	add r4, r0, #0
+	mov r4, r0
 	mov r1, #0x10
 	tst r0, r1
 	beq loc_80C8C2C
@@ -34458,7 +34458,7 @@ sub_80C8C4C:
 	push {r0-r2,r5}
 	mov r0, #0x25 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C8C70
 	strb r1, [r0,#0x12]
@@ -34672,7 +34672,7 @@ sub_80C8DE0:
 	push {r0-r2,r5}
 	mov r0, #0x26 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C8E04
 	strb r1, [r0,#0x12]
@@ -34846,8 +34846,8 @@ sub_80C8F14:
 	mov r3, #0x18
 	lsl r3, r3, #0x10
 	mul r3, r1
-	add r0, r3, #0
-	add r1, r2, #0
+	mov r0, r3
+	mov r1, r2
 	svc 6
 	strh r0, [r5,#0x20]
 	b locret_80C8F5E
@@ -34890,7 +34890,7 @@ sub_80C8F74:
 	push {r0-r2,r5}
 	mov r0, #0x27 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C8F9E
 	strb r1, [r0,#0x12]
@@ -35088,7 +35088,7 @@ sub_80C90DC:
 	ldmia r0!, {r1-r3}
 	add r1, r1, r6
 	add r3, r3, r7
-	add r0, r5, #0
+	mov r0, r5
 	add r0, #0x34 
 	stmia r0!, {r1-r3}
 	ldrh r0, [r5,#0x20]
@@ -35116,7 +35116,7 @@ sub_80C913C:
 	ldrb r1, [r5,#0x13]
 	push {r0,r1}
 	bl object_getPanelParameters
-	add r3, r0, #0
+	mov r3, r0
 	pop {r0,r1}
 	ldr r2, dword_80C917C // =0x600000 
 	tst r3, r2
@@ -35153,7 +35153,7 @@ sub_80C9184:
 	push {r0,r1,r5}
 	mov r0, #0x28 
 	bl sub_8003374
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80C919E
 	strb r1, [r0,#0x12]
@@ -35321,7 +35321,7 @@ sub_80C92CC:
 	push {r0-r2,r5}
 	mov r0, #0x29 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C92F2
 	strb r1, [r0,#0x12]
@@ -35354,7 +35354,7 @@ sub_80C92F4:
 	add r4, r4, r1
 	mov r6, #0
 loc_80C930C:
-	add r2, r6, #0
+	mov r2, r6
 	lsl r2, r2, #1
 	add r2, r2, r4
 	mov r3, #0
@@ -35408,7 +35408,7 @@ sub_80C9360:
 	add r4, r4, r1
 	mov r6, #0
 loc_80C9376:
-	add r2, r6, #0
+	mov r2, r6
 	lsl r2, r2, #1
 	add r2, r2, r4
 	mov r3, #0
@@ -35507,7 +35507,7 @@ loc_80C9434:
 	bl sub_8002F5C
 	bl sub_800E29C // () -> void
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	bne loc_80C9462
 	bl object_freeMemory
@@ -35631,7 +35631,7 @@ sub_80C954C:
 	push {r0-r2,r5}
 	mov r0, #0x2a 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C956A
 	strb r1, [r0,#0x12]
@@ -35742,8 +35742,8 @@ loc_80C960E:
 	bne loc_80C961A
 	bl sub_80C9620
 loc_80C961A:
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	pop {r4,r6,r7,pc}
 thumb_func_end sub_80C95EC
 
@@ -35754,8 +35754,8 @@ sub_80C9620:
 loc_80C9624:
 	mov r7, #3
 loc_80C9626:
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	bl object_getPanelParameters
 	tst r0, r4
 	bne locret_80C963E
@@ -35776,8 +35776,8 @@ sub_80C9640:
 loc_80C9644:
 	mov r7, #3
 loc_80C9646:
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	bl object_getPanelParameters
 	tst r0, r4
 	bne locret_80C965A
@@ -35978,7 +35978,7 @@ sub_80C97E0:
 	push {r5}
 	mov r0, #0x2b 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80C9802
 	str r5, [r0,#0x4c]
@@ -36365,7 +36365,7 @@ loc_80C9AD6:
 	add r0, r0, r2
 	add r1, r1, r3
 	bl sub_800C90A
-	add r4, r0, #0
+	mov r4, r0
 	pop {r0-r3}
 	beq loc_80C9AFA
 	push {r0-r3}
@@ -36380,7 +36380,7 @@ loc_80C9AFA:
 	add r0, r0, r2
 	add r1, r1, r3
 	bl sub_800C90A
-	add r4, r0, #0
+	mov r4, r0
 	pop {r0-r3}
 	beq loc_80C9B24
 	push {r0-r3}
@@ -36415,18 +36415,18 @@ sub_80C9B36:
 	mul r2, r6
 	mul r3, r6
 	push {r3}
-	add r0, r2, #0
-	add r1, r7, #0
+	mov r0, r2
+	mov r1, r7
 	svc 6
 	pop {r3}
 	push {r0}
-	add r0, r3, #0
-	add r1, r7, #0
+	mov r0, r3
+	mov r1, r7
 	svc 6
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
-	add r2, r0, #0
-	add r3, r1, #0
+	mov r2, r0
+	mov r3, r1
 	pop {r0,r1}
 	add r0, r0, r2
 	add r1, r1, r3
@@ -36447,7 +36447,7 @@ sub_80C9B64:
 	cmp r0, #3
 	bne locret_80C9B94
 	bl sub_800E456 // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #0x18
 	ldr r0, off_80C9BA0 // =0x610 
 	add r4, r4, r0
@@ -36471,7 +36471,7 @@ sub_80C9BA4:
 	push {r0-r2,r5}
 	mov r0, #0x2e 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C9BC0
 	strb r1, [r0,#0x12]
@@ -36530,7 +36530,7 @@ sub_80C9BE8:
 	bl sub_8002F5C
 	bl sub_800E29C // () -> void
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	beq loc_80C9C56
 	mov r1, #4
@@ -36606,7 +36606,7 @@ sub_80C9CDA:
 	push {r0-r2,r5}
 	mov r0, #0x2f 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C9CF0
 	mov r3, #0
@@ -36658,7 +36658,7 @@ sub_80C9D24:
 	strh r0, [r5,#0x20]
 	bl sub_800E29C // () -> void
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	bne loc_80C9D70
 loc_80C9D6A:
@@ -36823,7 +36823,7 @@ sub_80C9EA6:
 	push {r0-r2,r5}
 	mov r0, #0x30 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80C9ECC
 	strb r1, [r0,#0x12]
@@ -36844,7 +36844,7 @@ thumb_func_end sub_80C9EA6
 thumb_local_start
 sub_80C9ECE:
 	push {r7,lr}
-	add r7, r2, #0
+	mov r7, r2
 	mov r0, r10
 	ldr r0, [r0,#0x18]
 	add r0, #0xa0
@@ -36878,7 +36878,7 @@ sub_80C9EE6:
 	pop {r0}
 	ldrb r1, [r0,#0x13]
 	ldrb r0, [r0,#0x12]
-	add r2, r7, #0
+	mov r2, r7
 	mov r3, #0
 	bl sub_80C9EA6
 locret_80C9F16:
@@ -36889,7 +36889,7 @@ thumb_local_start
 sub_80C9F18:
 	push {r4,r6,r7,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	ldr r3, off_80C9F60 // =off_80C9F64 
@@ -36961,7 +36961,7 @@ sub_80C9F98:
 	bl object_setPanelType
 	ldrh r0, [r5,#0x2c]
 	ldr r1, dword_80CA268 // =0xf800 
-	add r2, r1, #0
+	mov r2, r1
 	and r2, r0
 	bic r0, r1
 	lsl r0, r0, #1
@@ -37098,7 +37098,7 @@ sub_80CA0E2:
 	push {r0-r2,r5}
 	mov r0, #0x31 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CA102
 	strb r3, [r0,#0xe]
@@ -37332,7 +37332,7 @@ loc_80CA310:
 	mul r0, r1
 	ldr r1, off_80CA39C // =dword_80CA26C 
 	add r1, r1, r0
-	add r2, r1, #0
+	mov r2, r1
 	ldr r0, [r1,#4]
 	str r0, [r5,#0x40]
 	ldrb r0, [r5,#5]
@@ -37357,7 +37357,7 @@ loc_80CA342:
 	bl sub_8002F5C
 	bl sub_800E29C // () -> void
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	bne loc_80CA36A
 	bl object_freeMemory
@@ -37537,7 +37537,7 @@ sub_80CA4D8:
 	push {r0-r2,r5}
 	mov r0, #0x32 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CA4F4
 	strb r1, [r0,#0x12]
@@ -37710,7 +37710,7 @@ loc_80CA63C:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r0, #0
+	mov r2, r0
 	ldr r1, [r5,#0x34]
 	ldr r0, [r5,#0x40]
 	add r0, r0, r1
@@ -37748,7 +37748,7 @@ sub_80CA686:
 	push {r0-r2,r5}
 	mov r0, #0x33 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CA69A
 	bl sub_801155A
@@ -38070,7 +38070,7 @@ sub_80CA90E:
 	push {r0-r2,r5}
 	mov r0, #0x34 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CA922
 	bl sub_801155A
@@ -38204,8 +38204,8 @@ sub_80CAA2C:
 	ldrb r0, [r5,#6]
 	ldrb r1, [r5,#7]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x32 
 	mov r0, #0x34 
@@ -38324,7 +38324,7 @@ sub_80CAB28:
 	push {r5}
 	mov r0, #0x35 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80CAB42
 	ldrb r1, [r5,#0x16]
@@ -38495,7 +38495,7 @@ sub_80CAC58:
 	push {r0-r2,r5}
 	mov r0, #0x36 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CAC80
 	str r1, [r0,#0x60]
@@ -38532,19 +38532,19 @@ sub_80CAC82:
 	ldr r3, [r3,#4]
 	add r7, sp, #4
 	bl sub_800D012
-	add r7, r0, #0
+	mov r7, r0
 	tst r7, r7
 	beq loc_80CACC0
 	bl sub_8001532
-	add r1, r7, #0
+	mov r1, r7
 	svc 6
 	add r0, sp, #4
 	ldrb r0, [r0,r1]
 	lsr r1, r0, #4
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1d
-	add r4, r0, #0
-	add r6, r1, #0
+	mov r4, r0
+	mov r6, r1
 loc_80CACC0:
 	ldr r0, [sp]
 	ldrb r2, [r5,#0x16]
@@ -38555,7 +38555,7 @@ loc_80CACC0:
 	ldr r3, [r3,#4]
 	add r7, sp, #4
 	bl sub_800CFA6
-	add r7, r0, #0
+	mov r7, r0
 	tst r7, r7
 	bne loc_80CACE0
 	mov r2, #0
@@ -38563,18 +38563,18 @@ loc_80CACC0:
 	b loc_80CACF6
 loc_80CACE0:
 	bl sub_8001532
-	add r1, r7, #0
+	mov r1, r7
 	svc 6
 	add r0, sp, #4
 	ldrb r0, [r0,r1]
 	lsr r1, r0, #4
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1d
-	add r2, r0, #0
-	add r3, r1, #0
+	mov r2, r0
+	mov r3, r1
 loc_80CACF6:
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	add sp, sp, #0x1c
 	pop {r4,r6,r7,pc}
 	.byte 0, 0
@@ -38797,7 +38797,7 @@ sub_80CAEC8:
 	push {r0-r2,r5}
 	mov r0, #0x37 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CAEEC
 	strb r1, [r0,#0x12]
@@ -38914,8 +38914,8 @@ sub_80CAFC8:
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	ldr r4, [r5,#0x60]
 	mov r0, #0x34 
@@ -39002,7 +39002,7 @@ sub_80CB080:
 	push {r0-r2,r5}
 	mov r0, #0x38 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CB0AC
 	strb r1, [r0,#0x14]
@@ -39187,7 +39187,7 @@ sub_80CB1E2:
 	push {r0-r2,r5}
 	mov r0, #0x39 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CB206
 	strb r1, [r0,#0x12]
@@ -39207,8 +39207,8 @@ thumb_func_end sub_80CB1E2
 thumb_local_start
 sub_80CB208:
 	push {r4,r6,r7,lr}
-	add r4, r0, #0
-	add r6, r1, #0
+	mov r4, r0
+	mov r6, r1
 	bl sub_800E2C0
 	mul r0, r4
 	ldrb r1, [r5,#0x12]
@@ -39239,7 +39239,7 @@ thumb_func_end sub_80CB208
 thumb_local_start
 sub_80CB248:
 	push {r4,r6,lr}
-	add r6, r0, #0
+	mov r6, r0
 	bl sub_800E2C0
 	mul r0, r6
 	ldrb r1, [r5,#0x12]
@@ -39257,8 +39257,8 @@ sub_80CB248:
 	orr r4, r0
 	pop {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	bl sub_80E05F6
 locret_80CB280:
@@ -39450,7 +39450,7 @@ sub_80CB410:
 	push {r0-r2,r5}
 	mov r0, #0x3a 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CB432
 	strb r1, [r0,#0x12]
@@ -39476,7 +39476,7 @@ sub_80CB434:
 	ldrb r0, [r5,#0x12]
 	mov r1, #2
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r6, r0, #0
+	mov r6, r0
 	ldrb r0, [r5,#5]
 	mov r1, #2
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
@@ -39583,7 +39583,7 @@ sub_80CB4D4:
 	strb r1, [r5,#0x12]
 	bl sub_800E29C // () -> void
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	bne loc_80CB52E
 	bl object_freeMemory
 	pop {r7,pc}
@@ -39744,7 +39744,7 @@ sub_80CB686:
 	push {r0-r2,r5}
 	mov r0, #0x3b 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CB6AE
 	strb r1, [r0,#0x12]
@@ -39823,7 +39823,7 @@ sub_80CB71C:
 	push {r7,lr}
 	bl sub_800E29C // () -> void
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	bne loc_80CB730
 	bl object_freeMemory
 	pop {r7,pc}
@@ -39938,8 +39938,8 @@ loc_80CB7CE:
 	add r4, #0x60 
 	push {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	bl sub_80E05F6
 	pop {r0,r1}
@@ -40012,8 +40012,8 @@ sub_80CB898:
 	cmp r1, #3
 	bgt loc_80CB8CA
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #6
 	lsl r3, r3, #0x10
 	mov r4, #0
@@ -40039,7 +40039,7 @@ sub_80CB8DE:
 	push {r0-r2,r5}
 	mov r0, #0x3c 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CB8FA
 	strb r1, [r0,#0x12]
@@ -40277,7 +40277,7 @@ sub_80CBAB8:
 	mov r0, #0x3d 
 	mov r3, #0
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r5}
 	beq locret_80CBAF0
 	str r3, [r0,#0x60]
@@ -40412,7 +40412,7 @@ loc_80CBBBC:
 	strh r0, [r5,#0x24]
 	strh r0, [r5,#0x26]
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	bne loc_80CBBD0
 	bl object_freeMemory
@@ -40621,7 +40621,7 @@ sub_80CBD32:
 	push {r4}
 	bl sub_80C536A
 	pop {r4}
-	add r0, r4, #0
+	mov r0, r4
 	mov r1, #2
 	mov r3, #0
 	mov r4, #1
@@ -40716,7 +40716,7 @@ sub_80CBE4A:
 	push {r0-r2,r5}
 	mov r0, #0x3e 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CBE80
 	strb r1, [r0,#0x12]
@@ -40745,7 +40745,7 @@ thumb_func_end sub_80CBE4A
 thumb_local_start
 sub_80CBE82:
 	push {r4,r6,lr}
-	add r4, r1, #0
+	mov r4, r1
 	ldr r2, [r4,#0x4c]
 	sub r2, #0x60 
 	cmp r2, r5
@@ -40755,7 +40755,7 @@ sub_80CBE82:
 	bne loc_80CBF00
 	push {r0}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0}
 	ldr r3, [r4,#0x34]
 	asr r1, r0, #0x10
@@ -40765,7 +40765,7 @@ sub_80CBE82:
 	asr r3, r3, #0x1f
 	cmp r2, r3
 	bne loc_80CBEB2
-	add r1, r0, #0
+	mov r1, r0
 	b loc_80CBF00
 loc_80CBEB2:
 	push {r0}
@@ -40779,7 +40779,7 @@ loc_80CBEB2:
 	beq loc_80CBF00
 	push {r1}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r6, r0, #0
+	mov r6, r0
 	ldrb r0, [r4,#0x12]
 	ldrb r1, [r4,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
@@ -40812,7 +40812,7 @@ thumb_func_end sub_80CBE82
 thumb_local_start
 sub_80CBF04:
 	push {r4,lr}
-	add r4, r1, #0
+	mov r4, r1
 	ldr r2, [r4,#0x4c]
 	sub r2, #0x60 
 	cmp r2, r5
@@ -40822,7 +40822,7 @@ sub_80CBF04:
 	bne loc_80CBF4E
 	push {r0}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0}
 	ldr r3, [r4,#0x34]
 	asr r1, r0, #0x10
@@ -40832,7 +40832,7 @@ sub_80CBF04:
 	asr r3, r3, #0x1f
 	cmp r2, r3
 	bne loc_80CBF34
-	add r1, r0, #0
+	mov r1, r0
 	b loc_80CBF4E
 loc_80CBF34:
 	push {r0}
@@ -40866,7 +40866,7 @@ sub_80CBF54:
 	mov r1, #0
 	str r1, [r0,#0x4c]
 	str r1, [r2,#0x60]
-	add r5, r0, #0
+	mov r5, r0
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
@@ -40915,13 +40915,13 @@ sub_80CBFAE:
 	mov r1, #0x1e
 	bl sub_80302A8
 	b loc_80CC002
-	add r4, r0, #0
+	mov r4, r0
 	mov r7, sp
 	bl object_getPanelsExceptCurrentFilterred
 	cmp r0, #0
 	beq loc_80CC002
 	sub r6, r0, #1
-	add r1, r0, #0
+	mov r1, r0
 	mov r2, #8
 	mov r0, sp
 	bl sub_8000C72
@@ -40934,8 +40934,8 @@ loc_80CBFE6:
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1d
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x22 
 	bl sub_80E05F6
@@ -41036,7 +41036,7 @@ sub_80CC0B2:
 	push {r0-r2,r5}
 	mov r0, #0x3f 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CC0C6
 	bl sub_801155A
@@ -41532,7 +41532,7 @@ sub_80CC486:
 	push {r0,r1,r5}
 	mov r0, #0x40 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80CC4B8
 	strb r1, [r0,#0x12]
@@ -41548,7 +41548,7 @@ sub_80CC486:
 	orr r2, r1
 	strb r2, [r0]
 	push {r5}
-	add r5, r0, #0
+	mov r5, r0
 	bl sub_80CC110
 	pop {r5}
 locret_80CC4B8:
@@ -41651,7 +41651,7 @@ sub_80CC584:
 	push {r0,r1,r5}
 	mov r0, #0x41 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80CC5A6
 	strb r1, [r0,#0x12]
@@ -41659,7 +41659,7 @@ sub_80CC584:
 	ldrb r3, [r5,#0x16]
 	strb r3, [r0,#0x16]
 	push {r5}
-	add r5, r0, #0
+	mov r5, r0
 	bl sub_80CC4EC
 	pop {r5}
 locret_80CC5A6:
@@ -41722,7 +41722,7 @@ loc_80CC5FA:
 	mov r0, #0x50 
 	lsl r0, r0, #0x10
 	svc 6
-	add r1, r0, #0
+	mov r1, r0
 	bpl loc_80CC624
 	neg r1, r1
 loc_80CC624:
@@ -41861,7 +41861,7 @@ sub_80CC73C:
 	push {r0-r2,r5}
 	mov r0, #0x42 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CC750
 	bl sub_801155A
@@ -42048,7 +42048,7 @@ sub_80CC8BA:
 	mov r0, #0xb3
 	bl sound_play // () -> void
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r2, off_80CC904 // =byte_80CC908 
 	ldrb r3, [r5,#4]
 	lsl r3, r3, #2
@@ -42082,7 +42082,7 @@ sub_80CC918:
 	push {r0-r2,r5}
 	mov r0, #0x43 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CC93E
 	strb r1, [r0,#0x12]
@@ -42124,7 +42124,7 @@ sub_80CC964:
 	mov r0, #0
 	str r0, [r5,#0x3c]
 	bl sub_8019892
-	add r4, r0, #0
+	mov r4, r0
 	tst r0, r0
 	bne loc_80CC97E
 	bl object_freeMemory
@@ -42196,7 +42196,7 @@ sub_80CC9FC:
 	push {r0-r2,r5}
 	mov r0, #0x44 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CCA3C
 	strb r1, [r0,#0x12]
@@ -42204,7 +42204,7 @@ sub_80CC9FC:
 	strb r3, [r0,#0xe]
 	str r6, [r0,#0x2c]
 	mov r2, #0xff
-	add r1, r2, #0
+	mov r1, r2
 	and r1, r7
 	str r1, [r0,#0x60]
 	lsr r1, r7, #8
@@ -42467,7 +42467,7 @@ sub_80CCC26:
 	push {r0,r1,r5}
 	mov r0, #0x45 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80CCC46
 	strb r1, [r0,#0x12]
@@ -42629,7 +42629,7 @@ sub_80CCD4A:
 	push {r0-r2,r5}
 	mov r0, #0x46 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CCD6E
 	strb r1, [r0,#0x12]
@@ -42927,7 +42927,7 @@ sub_80CCFAC:
 	push {r0-r2,r5}
 	mov r0, #0x47 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CCFD2
 	strb r1, [r0,#0x12]
@@ -43088,7 +43088,7 @@ sub_80CD114:
 	push {lr}
 	mov r0, #0xad
 	bl sound_play // () -> void
-	add r0, r5, #0
+	mov r0, r5
 	ldrb r1, [r5,#0x16]
 	mov r2, #0
 	bl sub_80E541A
@@ -43228,7 +43228,7 @@ loc_80CD1FC:
 loc_80CD20E:
 	bl sub_802EF5C
 	bl sub_800F656
-	add r0, r5, #0
+	mov r0, r5
 	bl sub_80E544C
 	bl sub_801A074 // () -> void
 	ldrb r0, [r5,#0x14]
@@ -43247,9 +43247,9 @@ thumb_func_end sub_80CD1BE
 thumb_local_start
 sub_80CD236:
 	push {r4,r6,r7,lr}
-	add r6, r1, #0
+	mov r6, r1
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r1, r6, #0
+	mov r1, r6
 	neg r6, r0
 	ldrb r0, [r5,#0x16]
 	ldrb r2, [r5,#0x17]
@@ -43281,7 +43281,7 @@ sub_80CD26C:
 	push {r4,r6,r7,lr}
 	push {r1}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r6, r0, #0
+	mov r6, r0
 	pop {r1}
 	ldrb r0, [r5,#0x16]
 	lsl r3, r0, #3
@@ -43313,7 +43313,7 @@ sub_80CD2B4:
 	push {r0-r2,r5}
 	mov r0, #0x48 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CD2DE
 	str r6, [r0,#0x2c]
@@ -43536,7 +43536,7 @@ sub_80CD488:
 	push {r0-r2,r5}
 	mov r0, #0x49 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CD4AA
 	strb r1, [r0,#0x12]
@@ -43565,8 +43565,8 @@ sub_80CD4AC:
 	add r6, #1
 	mov r7, #1
 loc_80CD4C0:
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	push {r6,r7}
 	ldrb r2, [r5,#0x16]
 	ldrb r4, [r5,#0x17]
@@ -43629,13 +43629,13 @@ sub_80CD50C:
 	strb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
 	push {r0,r1}
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x34 
 	push {r7}
 	ldmia r7!, {r2,r3}
 	sub r2, r0, r2
 	sub r0, r1, r3
-	add r1, r2, #0
+	mov r1, r2
 	push {r5}
 	bl calcAngle_800117C
 	pop {r5}
@@ -43691,7 +43691,7 @@ loc_80CD5CE:
 	ldrb r1, [r5,#7]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
 	mov r2, #0
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x34 
 	stmia r7!, {r0-r2}
 	bl sub_802EF5C
@@ -43746,13 +43746,13 @@ sub_80CD654:
 	sub r0, #1
 	strh r0, [r5,#0x20]
 	beq loc_80CD688
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x40 
 	ldmia r7!, {r3,r4,r6}
 	ldr r0, dword_80CD6F8 // =0xffffd800 
 	add r6, r6, r0
 	str r6, [r5,#0x48]
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x34 
 	ldmia r7!, {r0-r2}
 	add r0, r0, r3
@@ -43760,7 +43760,7 @@ sub_80CD654:
 	add r2, r2, r6
 	cmp r2, #0
 	ble loc_80CD688
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x34 
 	stmia r7!, {r0-r2}
 	pop {pc}
@@ -43774,7 +43774,7 @@ loc_80CD688:
 	strb r1, [r7,#0xb]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
 	mov r2, #0
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x34 
 	stmia r7!, {r0-r2}
 	bl object_isCurrentPanelSolid
@@ -43954,7 +43954,7 @@ sub_80CD7D0:
 	push {r4}
 	bl sub_80C536A
 	pop {r4}
-	add r0, r4, #0
+	mov r0, r4
 	mov r1, #2
 	mov r3, #0
 	mov r4, #1
@@ -43979,7 +43979,7 @@ sub_80CD830:
 	push {r0,r5}
 	mov r0, #0x4a 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r5}
 	beq locret_80CD856
 	str r1, [r0,#0x64]
@@ -44002,7 +44002,7 @@ sub_80CD858:
 	push {r0,r1,r3,r5,r6}
 	mov r0, #0x4a 
 	bl object_spawnType3
-	add r4, r5, #0
+	mov r4, r5
 	pop {r0,r1,r3,r5,r6}
 	beq locret_80CD884
 	strh r6, [r4,#0x2c]
@@ -44493,7 +44493,7 @@ sub_80CDC7C:
 	push {r0-r3,r5}
 	mov r0, #0x4b 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r5}
 	beq locret_80CDCBA
 	strb r1, [r0,#0x12]
@@ -44553,7 +44553,7 @@ sub_80CDCBC:
 	push {r4}
 	bl sub_80C536A
 	pop {r4}
-	add r0, r4, #0
+	mov r0, r4
 	mov r1, #2
 	mov r3, #0
 	mov r4, #1
@@ -44811,13 +44811,13 @@ sub_80CDF18:
 	add r4, r4, r0
 	ldr r2, [r4]
 	ldr r3, [r4,#4]
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x60 
 	bl object_getPanelsExceptCurrentFilterred
-	add r1, r0, #0
+	mov r1, r0
 	beq loc_80CDF46
 	str r1, [r5,#0x74]
-	add r0, r7, #0
+	mov r0, r7
 	mov r2, #0x14
 	bl sub_8000C72
 	ldrb r0, [r7]
@@ -44840,7 +44840,7 @@ sub_80CDF60:
 	push {r0,r5}
 	mov r0, #0x4c 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r5}
 	beq locret_80CDF82
 	strb r1, [r0,#0x16]
@@ -44979,7 +44979,7 @@ sub_80CE05E:
 	ldr r7, [r5,#0x30]
 	ldr r5, [r5,#0x4c]
 	bl sub_80E360E
-	add r2, r0, #0
+	mov r2, r0
 	mov r1, #1
 	ldrb r0, [r5,#0x16]
 	bl sub_800BF16
@@ -45010,7 +45010,7 @@ sub_80CE0A4:
 	ldr r3, [r1,#4]
 	add r7, sp, #0
 	bl sub_800CEA0
-	add r6, r0, #0
+	mov r6, r0
 	beq loc_80CE0D2
 	add r7, sp, #0
 loc_80CE0C0:
@@ -45037,7 +45037,7 @@ sub_80CE0EC:
 	push {r0,r2,r5}
 	mov r0, #0x4d 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80CE112
 	str r1, [r0,#0x4c]
@@ -45166,7 +45166,7 @@ sub_80CE1D6:
 	bne loc_80CE1EA
 	ldrh r0, [r1,#0x26]
 loc_80CE1EA:
-	add r5, r1, #0
+	mov r5, r1
 	bl object_addHP
 	pop {r5}
 	mov r0, #0x8a
@@ -45205,7 +45205,7 @@ sub_80CE224:
 	push {r0,r1,r5}
 	mov r0, #0x4e 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80CE248
 	strb r1, [r0,#0x12]
@@ -45410,7 +45410,7 @@ loc_80CE3D6:
 	ldrb r2, [r2,r0]
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
-	add r3, r6, #0
+	mov r3, r6
 	ldrh r4, [r5,#0x16]
 	mov r7, #0
 	bl sub_80CE468
@@ -45419,7 +45419,7 @@ loc_80CE3D6:
 	ldrb r2, [r5,#4]
 	ldr r3, off_80CE40C // =byte_80CE41E 
 	ldrb r2, [r3,r2]
-	add r3, r6, #0
+	mov r3, r6
 	bl sub_80CE424
 	ldrb r0, [r5,#4]
 	add r0, r0, r0
@@ -45440,9 +45440,9 @@ thumb_func_end sub_80CE3C4
 thumb_local_start
 sub_80CE424:
 	push {r4-r7,lr}
-	add r5, r2, #0
-	add r6, r0, #0
-	add r7, r1, #0
+	mov r5, r2
+	mov r6, r0
+	mov r7, r1
 	ldr r4, off_80CE524 // =off_8019B78 
 	lsl r3, r3, #2
 	ldr r4, [r4,r3]
@@ -45455,7 +45455,7 @@ loc_80CE432:
 	beq locret_80CE44C
 	add r0, r0, r6
 	add r1, r1, r7
-	add r2, r5, #0
+	mov r2, r5
 	bl object_setPanelType
 	add r4, #2
 	b loc_80CE432
@@ -45469,7 +45469,7 @@ sub_80CE44E:
 	push {r5}
 	mov r0, #0x4f 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80CE466
 	ldrh r1, [r5,#0x16]
@@ -45487,9 +45487,9 @@ sub_80CE468:
 	push {r6}
 	mov r8, r7
 	push {r0-r3}
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_800E2C2
-	add r6, r0, #0
+	mov r6, r0
 	pop {r0-r3}
 	lsl r3, r3, #0x19
 	bcs loc_80CE4DC
@@ -45524,9 +45524,9 @@ loc_80CE48A:
 	push {r2}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
 	pop {r2}
-	add r4, r2, #0
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r4, r2
+	mov r2, r1
+	mov r1, r0
 	mov r3, r8
 	bl sub_80E05F6
 	pop {r0-r3}
@@ -45541,7 +45541,7 @@ loc_80CE4D6:
 	pop {r4,r6,r7,pc}
 loc_80CE4DC:
 	lsr r3, r3, #0x16
-	add r4, r2, #0
+	mov r4, r2
 	mov r1, #3
 	ldr r7, off_80CE52C // =dword_8019C34 
 	add r7, r7, r3
@@ -45557,8 +45557,8 @@ loc_80CE4EC:
 	beq loc_80CE50A
 	push {r0-r3}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	bl sub_80E05F6
 	pop {r0-r3}
@@ -45793,7 +45793,7 @@ sub_80CE6E6:
 	push {r0-r2,r5}
 	mov r0, #0x50 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CE702
 	strb r1, [r0,#0x12]
@@ -45922,7 +45922,7 @@ sub_80CE7EE:
 	push {r0-r2,r5}
 	mov r0, #0x51 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CE80E
 	str r3, [r0,#0x60]
@@ -46297,7 +46297,7 @@ sub_80CEAA2:
 	push {r0-r2,r5}
 	mov r0, #0x52 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CEAC0
 	bl sub_801155A
@@ -46313,16 +46313,16 @@ thumb_func_end sub_80CEAA2
 thumb_local_start
 sub_80CEAC2:
 	push {r2,r4-r7,lr}
-	add r6, r0, #0
-	add r4, r1, #0
-	add r7, r2, #0
+	mov r6, r0
+	mov r4, r1
+	mov r7, r2
 	cmp r5, r6
 	bne loc_80CEAD0
 	mov r4, #1
 loc_80CEAD0:
 	tst r0, r0
 	beq loc_80CEAEA
-	add r5, r0, #0
+	mov r5, r0
 	bl sub_800E29C // () -> void
 	str r4, [r5,#0x68]
 	str r7, [r5,#0x6c]
@@ -46333,7 +46333,7 @@ loc_80CEAD0:
 	mov r2, #0
 	strh r2, [r5,#0xa]
 loc_80CEAEA:
-	add r1, r4, #0
+	mov r1, r4
 	pop {r2,r4-r7,pc}
 thumb_func_end sub_80CEAC2
 
@@ -46634,7 +46634,7 @@ sub_80CED58:
 	push {r0-r2,r5}
 	mov r0, #0x53 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CED76
 	strb r1, [r0,#0x12]
@@ -46667,7 +46667,7 @@ loc_80CED94:
 	mov r4, #0
 	mov r6, #0
 loc_80CED98:
-	add r2, r4, #0
+	mov r2, r4
 	lsl r2, r2, #1
 	ldr r3, off_80CEE18 // =dword_80CEE1C 
 	add r2, r2, r3
@@ -46704,7 +46704,7 @@ loc_80CEDAE:
 	beq loc_80CEDE0
 	mov r4, #4
 loc_80CEDE0:
-	add r0, r4, #0
+	mov r0, r4
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	add r7, sp, #0xc
@@ -46722,7 +46722,7 @@ loc_80CEDE0:
 	b loc_80CEDE0
 loc_80CEE02:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -47013,7 +47013,7 @@ sub_80CF058:
 	push {r0-r2,r5}
 	mov r0, #0x54 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CF07E
 	strb r1, [r0,#0x12]
@@ -47307,8 +47307,8 @@ sub_80CF2B4:
 	tst r0, r0
 	beq loc_80CF2E0
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #1
 	bl sub_80E1D7A
@@ -47359,10 +47359,10 @@ sub_80CF332:
 	ldr r2, [r4]
 	ldr r3, [r4,#4]
 	bl object_getPanelsExceptCurrentFilterred
-	add r4, r0, #0
+	mov r4, r0
 	beq loc_80CF35C
 	bl sub_8001532
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
 	ldrb r0, [r7,r1]
 	lsr r1, r0, #4
@@ -47382,7 +47382,7 @@ sub_80CF374:
 	push {r0,r1,r5}
 	mov r0, #0x55 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80CF3A0
 	strb r1, [r0,#0x12]
@@ -47639,7 +47639,7 @@ sub_80CF594:
 	push {r0-r2,r5}
 	mov r0, #0x56 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CF5B0
 	strb r1, [r0,#0x12]
@@ -47819,12 +47819,12 @@ sub_80CF700:
 	mov r1, #4
 	strb r1, [r5,#0xa]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r2, off_80CF758 // =dword_80CF75C 
 	ldrb r3, [r5,#4]
 	lsl r3, r3, #2
 	ldr r0, [r2,r3]
-	add r1, r0, #0
+	mov r1, r0
 	mul r0, r4
 	str r0, [r5,#0x40]
 	mov r0, #0x28 
@@ -47872,7 +47872,7 @@ sub_80CF778:
 	push {r0-r2,r5}
 	mov r0, #0x57 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CF7A2
 	strb r1, [r0,#0x12]
@@ -47899,7 +47899,7 @@ sub_80CF7A4:
 	add r0, sp, #0
 	mov r1, #0x10
 	bl sub_801A4DC
-	add r4, r0, #0
+	mov r4, r0
 	tst r0, r0
 	beq loc_80CF7E0
 	mov r3, #0
@@ -48078,7 +48078,7 @@ sub_80CF91E:
 	push {r0-r2,r5}
 	mov r0, #0x58 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CF932
 	bl sub_801155A
@@ -48390,7 +48390,7 @@ sub_80CFBC4:
 	push {r0-r2,r5}
 	mov r0, #0x59 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CFBF4
 	strb r1, [r0,#0x12]
@@ -48406,7 +48406,7 @@ loc_80CFBE6:
 	ldrb r2, [r0]
 	orr r2, r1
 	strb r2, [r0]
-	add r1, r3, #0
+	mov r1, r3
 	ldrb r2, [r0,#5]
 	bl sub_800F614
 locret_80CFBF4:
@@ -48533,7 +48533,7 @@ sub_80CFCD6:
 	push {r5}
 	mov r0, #0x5a 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80CFCF4
 	str r7, [r0,#0x60]
@@ -48686,7 +48686,7 @@ sub_80CFDF2:
 	push {r0-r2,r5}
 	mov r0, #0x5b 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80CFE06
 	bl sub_801155A
@@ -48994,7 +48994,7 @@ sub_80D006E:
 	push {r0-r2,r5}
 	mov r0, #0x5c 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D008A
 	strb r1, [r0,#0x12]
@@ -49178,7 +49178,7 @@ sub_80D01C8:
 	push {r0-r2,r5}
 	mov r0, #0x5d 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq loc_80D01FA
 	strb r1, [r0,#0x12]
@@ -49237,7 +49237,7 @@ thumb_func_end sub_80D020E
 thumb_local_start
 sub_80D0230:
 	push {r4,r6,lr}
-	add r6, r0, #0
+	mov r6, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	mov r1, #0x14
 	lsl r1, r1, #0x10
@@ -49407,7 +49407,7 @@ sub_80D036C:
 	push {r0-r2,r5}
 	mov r0, #0x5e 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D0390
 	strb r1, [r0,#0x12]
@@ -49579,7 +49579,7 @@ sub_80D04DA:
 	push {r0-r2,r5}
 	mov r0, #0x5f 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D04FE
 	strb r1, [r0,#0x12]
@@ -49703,7 +49703,7 @@ sub_80D05C4:
 	push {r0-r2,r5}
 	mov r0, #0x60 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D05EA
 	strb r1, [r0,#0x12]
@@ -49824,7 +49824,7 @@ loc_80D06B6:
 	add r0, r0, r1
 	str r0, [r5,#0x3c]
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	bne loc_80D06D4
 loc_80D06CE:
@@ -49938,7 +49938,7 @@ sub_80D07A0:
 	push {r0-r2,r5}
 	mov r0, #0x61 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D07BE
 	strb r1, [r0,#0x12]
@@ -50181,7 +50181,7 @@ sub_80D0996:
 	push {r0-r2,r5}
 	mov r0, #0x62 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D09BC
 	strb r1, [r0,#0x12]
@@ -50212,7 +50212,7 @@ loc_80D09CC:
 	mov r6, #0
 loc_80D09CE:
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x12]
 	add r0, r0, r4
 	ldrb r1, [r5,#0x13]
@@ -50248,7 +50248,7 @@ loc_80D0A08:
 	ldr r2, off_80D0A50 // =dword_80D0A54 
 	ldr r1, [r2,r1]
 	svc 6
-	add r1, r0, #0
+	mov r1, r0
 	mov r0, #0x18
 	lsl r0, r0, #0x10
 	mul r0, r7
@@ -50516,7 +50516,7 @@ sub_80D0C24:
 	push {r0-r2,r5}
 	mov r0, #0x63 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq loc_80D0C58
 	strb r1, [r0,#0x12]
@@ -50652,10 +50652,10 @@ sub_80D0D28:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r6, r0, #0
-	add r7, r1, #0
+	mov r6, r0
+	mov r7, r1
 	bl sub_8001532
-	add r2, r0, #0
+	mov r2, r0
 	mov r1, #0x1f
 	and r0, r1
 	lsl r0, r0, #0x10
@@ -50664,10 +50664,10 @@ sub_80D0D28:
 	neg r0, r0
 loc_80D0D48:
 	add r1, r6, r0
-	add r2, r7, #0
+	mov r2, r7
 	push {r1,r2}
 	bl sub_8001532
-	add r2, r0, #0
+	mov r2, r0
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #0x10
@@ -50893,7 +50893,7 @@ sub_80D0F0C:
 	push {r0-r2,r5}
 	mov r0, #0x64 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D0F30
 	strb r1, [r0,#0x12]
@@ -50915,7 +50915,7 @@ sub_80D0F32:
 	push {r4,r6,r7,lr}
 	mov r6, #0
 loc_80D0F36:
-	add r0, r6, #0
+	mov r0, r6
 	lsl r0, r0, #1
 	ldr r1, off_80D0F70 // =byte_80D0F74 
 	add r1, r1, r0
@@ -51203,7 +51203,7 @@ sub_80D1182:
 	push {r0-r2,r5}
 	mov r0, #0x65 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D11B2
 	strb r1, [r0,#0x12]
@@ -51218,7 +51218,7 @@ sub_80D1182:
 	orr r2, r1
 	strb r2, [r0]
 	push {r5}
-	add r5, r0, #0
+	mov r5, r0
 	bl sub_80D0FB0
 	pop {r5}
 locret_80D11B2:
@@ -51550,7 +51550,7 @@ sub_80D1442:
 	push {r0-r2,r5}
 	mov r0, #0x66 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D1468
 	strb r3, [r0,#0xe]
@@ -51586,7 +51586,7 @@ loc_80D1478:
 	ldrb r1, [r5,#4]
 	cmp r1, #0
 	beq locret_80D149C
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	sub r1, #1
@@ -51610,8 +51610,8 @@ sub_80D149E:
 	strb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r0, #0x34 
 	add r0, r0, r5
@@ -51792,10 +51792,10 @@ loc_80D162A:
 	ldr r6, [r5,#0x60]
 	lsr r6, r6, #1
 	bcs loc_80D163C
-	add r4, r0, #0
+	mov r4, r0
 	b loc_80D163E
 loc_80D163C:
-	add r4, r1, #0
+	mov r4, r1
 loc_80D163E:
 	ldr r0, [r5,#0x40]
 	ldr r1, [r5,#0x34]
@@ -51808,18 +51808,18 @@ loc_80D163E:
 	ldr r6, [r5,#0x60]
 	lsr r6, r6, #1
 	bcs loc_80D165A
-	add r6, r1, #0
-	add r3, r0, #0
+	mov r6, r1
+	mov r3, r0
 	b loc_80D165E
 loc_80D165A:
-	add r6, r3, #0
-	add r3, r2, #0
+	mov r6, r3
+	mov r3, r2
 loc_80D165E:
 	cmp r4, r6
 	beq loc_80D1678
-	add r0, r3, #0
-	add r1, r6, #0
-	add r2, r4, #0
+	mov r0, r3
+	mov r1, r6
+	mov r2, r4
 	bl sub_800E708
 	cmp r0, #0
 	beq loc_80D1678
@@ -51848,8 +51848,8 @@ loc_80D169C:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	lsl r3, r3, #0x10
 	ldrb r0, [r5,#0x16]
@@ -51877,7 +51877,7 @@ sub_80D16D6:
 	push {r0-r2,r5}
 	mov r0, #0x67 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D16FE
 	strb r1, [r0,#0x12]
@@ -51912,7 +51912,7 @@ sub_80D1700:
 	mov r4, #1
 	strb r4, [r5,#5]
 loc_80D171C:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 off_80D1720: .word off_80D1724
 off_80D1724: .word LCDControl
@@ -52102,7 +52102,7 @@ sub_80D18AE:
 	push {r0-r2,r5}
 	mov r0, #0x68 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D18D4
 	strb r1, [r0,#0x12]
@@ -52248,7 +52248,7 @@ sub_80D19D4:
 	push {r0-r2,r5}
 	mov r0, #0x69 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D19FE
 	str r1, [r0,#0x60]
@@ -52396,8 +52396,8 @@ sub_80D1AD2:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	bl sub_80E05F6
 	ldrb r0, [r5,#0x12]
@@ -52425,7 +52425,7 @@ sub_80D1B22:
 	push {r0-r2,r5}
 	mov r0, #0x6a 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D1B46
 	strb r1, [r0,#0x12]
@@ -52532,7 +52532,7 @@ sub_80D1BF4:
 	push {r0,r1,r5}
 	mov r0, #0x6b 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80D1C10
 	str r1, [r0,#0x4c]
@@ -52867,7 +52867,7 @@ sub_80D1EB8:
 	mov r0, #0x6c 
 	mov r3, #0
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r5}
 	beq locret_80D1EE6
 	strb r1, [r0,#0x12]
@@ -53040,7 +53040,7 @@ thumb_local_start
 sub_80D1FD8:
 	push {r4,lr}
 	bl sub_800E2C0
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, [r5,#0x40]
 	cmp r1, #0
 	bne loc_80D1FF8
@@ -53246,10 +53246,10 @@ loc_80D218E:
 	ldr r6, [r5,#0x68]
 	tst r6, r6
 	beq loc_80D21A0
-	add r4, r0, #0
+	mov r4, r0
 	b loc_80D21A2
 loc_80D21A0:
-	add r4, r1, #0
+	mov r4, r1
 loc_80D21A2:
 	ldr r0, [r5,#0x40]
 	ldr r1, [r5,#0x34]
@@ -53262,18 +53262,18 @@ loc_80D21A2:
 	ldr r6, [r5,#0x68]
 	tst r6, r6
 	beq loc_80D21BE
-	add r6, r1, #0
-	add r3, r0, #0
+	mov r6, r1
+	mov r3, r0
 	b loc_80D21C2
 loc_80D21BE:
-	add r6, r3, #0
-	add r3, r2, #0
+	mov r6, r3
+	mov r3, r2
 loc_80D21C2:
 	cmp r4, r6
 	beq loc_80D21D8
-	add r0, r3, #0
-	add r1, r6, #0
-	add r2, r4, #0
+	mov r0, r3
+	mov r1, r6
+	mov r2, r4
 	bl sub_800E708
 	cmp r0, #0
 	beq loc_80D21D8
@@ -53300,7 +53300,7 @@ sub_80D21F8:
 	push {r0-r2,r5}
 	mov r0, #0x6d 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D2220
 	strb r1, [r0,#0x12]
@@ -53323,7 +53323,7 @@ thumb_local_start
 sub_80D2222:
 	push {r4,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r0, [r5,#0x68]
 	tst r0, r0
 	beq loc_80D2260
@@ -53570,7 +53570,7 @@ sub_80D2430:
 	push {r0-r2,r5}
 	mov r0, #0x6e 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D2454
 	strb r1, [r0,#0x12]
@@ -53744,7 +53744,7 @@ sub_80D2580:
 	push {r0-r2,r5}
 	mov r0, #0x6f 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D2594
 	bl sub_801155A
@@ -54090,7 +54090,7 @@ sub_80D282C:
 	mov r0, #1
 	str r0, [r5,#0x68]
 	bl sub_80D2A14
-	add r6, r0, #0
+	mov r6, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
@@ -54157,7 +54157,7 @@ loc_80D28B6:
 	strh r0, [r5,#0x20]
 	bgt locret_80D2902
 	bl sub_80D2A14
-	add r6, r0, #0
+	mov r6, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
@@ -54170,7 +54170,7 @@ loc_80D28B6:
 	orr r4, r3
 	mov r7, #0x6c 
 	add r7, r7, r5
-	add r3, r5, #0
+	mov r3, r5
 	add r3, #0x70 
 	ldrh r2, [r5,#0x22]
 	lsl r2, r2, #2
@@ -54242,7 +54242,7 @@ loc_80D2956:
 	tst r0, r0
 	beq locret_80D2984
 	bl sub_80D2A14
-	add r6, r0, #0
+	mov r6, r0
 	ldrb r0, [r5,#6]
 	ldrb r1, [r5,#7]
 	mov r2, #0x10
@@ -54266,7 +54266,7 @@ sub_80D2986:
 	push {r0-r2,r5}
 	mov r0, #0x70 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D29B0
 	strb r1, [r0,#0x12]
@@ -54524,7 +54524,7 @@ sub_80D2B8E:
 	push {r2,r5}
 	mov r0, #0x71 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r2,r5}
 	beq locret_80D2BB0
 	strb r2, [r0,#0xe]
@@ -54768,7 +54768,7 @@ sub_80D2D40:
 	ldr r0, [r1,#4]
 	str r0, [sp,#0x34]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, [sp]
 	add r1, r1, r0
 	str r1, [sp,#0x28]
@@ -54898,7 +54898,7 @@ sub_80D2E38:
 	mov r1, #1
 	eor r0, r1
 	bl sub_80103BC
-	add r6, r0, #0
+	mov r6, r0
 	ldr r0, [r6,#0x34]
 	ldr r1, [r6,#0x38]
 	bl sub_800E258
@@ -54945,7 +54945,7 @@ sub_80D2E94:
 	push {r0-r2,r5}
 	mov r0, #0x72 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D2EBA
 	strb r1, [r0,#0x12]
@@ -55205,9 +55205,9 @@ sub_80D3058:
 loc_80D307A:
 	ldr r1, [r5,#0x64]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r0, #0
-	add r0, r1, #0
-	add r1, r2, #0
+	mov r2, r0
+	mov r0, r1
+	mov r1, r2
 	ldr r2, [sp]
 	sub r1, r1, r2
 	ldr r2, [sp,#4]
@@ -55229,7 +55229,7 @@ sub_80D30A4:
 	push {r0-r3,r5}
 	mov r0, #0x73 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r5}
 	beq locret_80D30C4
 	strb r1, [r0,#0x12]
@@ -55523,7 +55523,7 @@ sub_80D32FE:
 	push {r0-r2,r5}
 	mov r0, #0x74 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D3324
 	strb r1, [r0,#0x12]
@@ -55561,7 +55561,7 @@ thumb_local_start
 sub_80D3342:
 	push {r4,r6,r7,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r0, [r5,#0x4c]
 	ldrb r0, [r0,#0x12]
 	add r0, r0, r4
@@ -55589,9 +55589,9 @@ sub_80D3374:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #4
 	mov r7, sp
-	add r6, r0, #0
+	mov r6, r0
 loc_80D337C:
-	add r0, r6, #0
+	mov r0, r6
 	ldr r3, off_80D33F0 // =off_80D33F4 
 	bl sub_81096FA
 	bl sub_800CFDC
@@ -55644,7 +55644,7 @@ loc_80D33D6:
 	add r7, #1
 	b loc_80D33A6
 loc_80D33DA:
-	add r0, r6, #0
+	mov r0, r6
 	lsr r1, r0, #4
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1d
@@ -55734,7 +55734,7 @@ thumb_local_start
 sub_80D3474:
 	push {r4,lr}
 	bl sub_800E2C0
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, [r5,#0x40]
 	cmp r1, #0
 	beq locret_80D3494
@@ -56087,7 +56087,7 @@ sub_80D3742:
 	push {r0-r2,r5}
 	mov r0, #0x75 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D376E
 	str r6, [r0,#0x2c]
@@ -56113,7 +56113,7 @@ sub_80D3770:
 	sub sp, sp, #0x10
 	mov r7, sp
 	bl sub_80D37F4
-	add r6, r0, #0
+	mov r6, r0
 	cmp r6, #0
 	bne loc_80D3790
 	ldrb r0, [r5,#0x16]
@@ -56170,7 +56170,7 @@ thumb_local_start
 sub_80D37F4:
 	push {r4,r6,r7,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	mov r6, #0
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
@@ -56189,7 +56189,7 @@ loc_80D3806:
 	cmp r0, #6
 	ble loc_80D3806
 loc_80D3820:
-	add r0, r6, #0
+	mov r0, r6
 	pop {r4,r6,r7,pc}
 	.word 0, 0
 	.byte 0, 0, 0, 0
@@ -56356,7 +56356,7 @@ sub_80D398E:
 	push {r0-r2,r5}
 	mov r0, #0x76 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D39AE
 	strb r3, [r0,#0xe]
@@ -56568,10 +56568,10 @@ loc_80D3B5E:
 	ldrb r6, [r5,#6]
 	lsr r6, r6, #1
 	bcc loc_80D3B70
-	add r4, r0, #0
+	mov r4, r0
 	b loc_80D3B72
 loc_80D3B70:
-	add r4, r1, #0
+	mov r4, r1
 loc_80D3B72:
 	ldr r0, [r5,#0x40]
 	ldr r1, [r5,#0x34]
@@ -56584,18 +56584,18 @@ loc_80D3B72:
 	ldrb r6, [r5,#6]
 	lsr r6, r6, #1
 	bcc loc_80D3B8E
-	add r6, r1, #0
-	add r3, r0, #0
+	mov r6, r1
+	mov r3, r0
 	b loc_80D3B92
 loc_80D3B8E:
-	add r6, r3, #0
-	add r3, r2, #0
+	mov r6, r3
+	mov r3, r2
 loc_80D3B92:
 	cmp r4, r6
 	beq loc_80D3BAE
-	add r0, r3, #0
-	add r1, r6, #0
-	add r2, r4, #0
+	mov r0, r3
+	mov r1, r6
+	mov r2, r4
 	bl sub_800E708
 	cmp r0, #0
 	beq loc_80D3BAE
@@ -56903,7 +56903,7 @@ sub_80D3DC4:
 	push {r0-r2,r5}
 	mov r0, #0x77 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq loc_80D3DF6
 	strb r1, [r0,#0x12]
@@ -57098,11 +57098,11 @@ sub_80D3F42:
 	ldrb r6, [r5,#0x16]
 	add r7, sp, #0
 	bl sub_800D3FE
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80D3F76
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -57216,7 +57216,7 @@ sub_80D4030:
 	push {r4,r6,r7,lr}
 	mov r7, #0
 loc_80D4034:
-	add r2, r7, #0
+	mov r2, r7
 	lsl r2, r2, #1
 	ldr r3, off_80D406C // =dword_80D4070 
 	add r2, r2, r3
@@ -57699,7 +57699,7 @@ sub_80D4408:
 	push {r0-r2,r5}
 	mov r0, #0x78 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D4434
 	str r6, [r0,#0x2c]
@@ -58009,7 +58009,7 @@ sub_80D464A:
 	push {r0-r2,r5}
 	mov r0, #0x79 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D4672
 	strb r1, [r0,#0x12]
@@ -58178,8 +58178,8 @@ sub_80D47C0:
 	ldrb r0, [r5,#6]
 	ldrb r1, [r5,#7]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x3c 
 	mov r0, #0x34 
@@ -58371,7 +58371,7 @@ loc_80D493C:
 	mov r7, #0x75 
 	add r7, #0xff
 	bl sub_80E61D2
-	add r2, r0, #0
+	mov r2, r0
 	mov r1, #1
 	ldrb r0, [r5,#0x16]
 	bl sub_800BF16
@@ -58430,7 +58430,7 @@ sub_80D49CC:
 	push {r0-r2,r5}
 	mov r0, #0x7a 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D49F4
 	str r6, [r0,#0x2c]
@@ -58614,7 +58614,7 @@ sub_80D4B44:
 	push {r0-r2,r5}
 	mov r0, #0x7b 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D4B58
 	bl sub_801155A
@@ -58648,7 +58648,7 @@ sub_80D4B88:
 	bl sub_80D4C3A
 	bl sub_800E29C // () -> void
 	bl sub_8019892
-	add r4, r0, #0
+	mov r4, r0
 	tst r0, r0
 	bne loc_80D4BA2
 	bl object_freeMemory
@@ -58709,7 +58709,7 @@ sub_80D4C0A:
 	push {r0-r2,r5}
 	mov r0, #0x7c 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D4C32
 	str r1, [r0,#0x60]
@@ -58779,7 +58779,7 @@ sub_80D4C6C:
 	beq loc_80D4C80
 	mov r3, #1
 loc_80D4C80:
-	add r0, r3, #0
+	mov r0, r3
 	pop {pc}
 thumb_func_end sub_80D4C6C
 
@@ -58973,7 +58973,7 @@ sub_80D4DF0:
 	mov r7, #0x76 
 	add r7, #0xff
 	bl sub_80E6878
-	add r2, r0, #0
+	mov r2, r0
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
 	bl sub_800BF16
@@ -59168,7 +59168,7 @@ sub_80D4FA6:
 	push {r0-r2,r5}
 	mov r0, #0x7d 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D4FF4
 	strb r1, [r0,#0x12]
@@ -59336,7 +59336,7 @@ sub_80D50FC:
 	push {r0-r2,r5}
 	mov r0, #0x7e 
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D5126
 	strb r1, [r0,#0x12]
@@ -59560,7 +59560,7 @@ sub_80D52C4:
 	push {r0-r2,r5}
 	mov r0, #0x7f
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq loc_80D52F6
 	strb r1, [r0,#0x12]
@@ -59846,7 +59846,7 @@ sub_80D54F0:
 	push {r0-r2,r5}
 	mov r0, #0x80
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D5514
 	strb r1, [r0,#0x12]
@@ -59962,7 +59962,7 @@ sub_80D55F8:
 	strh r0, [r5,#0x20]
 	ble loc_80D562E
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r7, r0, #0
+	mov r7, r0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	push {r0,r1}
@@ -60034,7 +60034,7 @@ thumb_func_end sub_80D5634
 thumb_local_start
 sub_80D5684:
 	push {r0,r4,r6,r7,lr}
-	add r7, r0, #0
+	mov r7, r0
 	ldrb r0, [r7,#2]
 	cmp r0, #0
 	beq locret_80D56B8
@@ -60079,7 +60079,7 @@ sub_80D5718:
 	push {r0-r2,r5}
 	mov r0, #0x81
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D5736
 	strb r1, [r0,#0x12]
@@ -60238,7 +60238,7 @@ sub_80D584E:
 	cmp r0, r1
 	bne locret_80D5872
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x12]
 	mov r7, #0x64 
 	add r7, r7, r5
@@ -60277,7 +60277,7 @@ sub_80D5890:
 	push {r0-r2,r5}
 	mov r0, #0x82
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D58B0
 	strb r1, [r0,#0x12]
@@ -60453,7 +60453,7 @@ sub_80D59E2:
 	push {r0-r2,r5}
 	mov r0, #0x83
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D5A08
 	strb r1, [r0,#0x12]
@@ -60477,8 +60477,8 @@ sub_80D5A0A:
 	ldrb r0, [r5,#5]
 	ldrb r1, [r5,#6]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r6, r0, #0
-	add r7, r1, #0
+	mov r6, r0
+	mov r7, r1
 	ldrb r0, [r5,#4]
 	lsl r0, r0, #2
 	ldr r1, off_80D5A88 // =dword_80D5A8C 
@@ -60501,7 +60501,7 @@ loc_80D5A32:
 	bge loc_80D5A40
 	neg r0, r0
 loc_80D5A40:
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
 	strh r0, [r5,#0x20]
 	mov r2, #1
@@ -60537,7 +60537,7 @@ loc_80D5A70:
 	bge loc_80D5A7E
 	neg r0, r0
 loc_80D5A7E:
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
 	strh r0, [r5,#0x20]
 locret_80D5A84:
@@ -60714,7 +60714,7 @@ sub_80D5C00:
 	push {r0-r2,r5}
 	mov r0, #0x84
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D5C24
 	strb r1, [r0,#0x12]
@@ -60836,9 +60836,9 @@ thumb_func_end sub_80D5CC8
 thumb_local_start
 sub_80D5CDC:
 	push {r4,r6,r7,lr}
-	add r6, r0, #0
+	mov r6, r0
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	lsl r0, r6, #1
 	ldr r3, off_80D5D20 // =byte_80D5D24 
 	add r3, r3, r0
@@ -60878,7 +60878,7 @@ sub_80D5D34:
 	push {r0-r2,r5}
 	mov r0, #0x85
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D5D48
 	bl sub_801155A
@@ -60976,8 +60976,8 @@ sub_80D5DF4:
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x2d 
 	mov r0, #0x34 
@@ -61065,7 +61065,7 @@ sub_80D5EB0:
 	push {r0-r2,r5}
 	mov r0, #0x86
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D5EDC
 	strb r1, [r0,#0x14]
@@ -61423,7 +61423,7 @@ sub_80D61A8:
 	push {r0-r2,r5}
 	mov r0, #0x87
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D61D0
 	strb r1, [r0,#0x12]
@@ -61445,14 +61445,14 @@ thumb_func_end sub_80D61A8
 thumb_local_start
 sub_80D61D2:
 	push {r4,lr}
-	add r4, r1, #0
+	mov r4, r1
 	ldrb r2, [r5,#0x12]
 	sub r2, r2, r0
 	cmp r2, #0
 	blt loc_80D61E0
 	neg r1, r1
 loc_80D61E0:
-	add r0, r1, #0
+	mov r0, r1
 	cmp r2, #0
 	bge loc_80D61E8
 	neg r2, r2
@@ -61461,10 +61461,10 @@ loc_80D61E8:
 	lsl r3, r3, #0x10
 	mul r3, r2
 	push {r0}
-	add r0, r3, #0
-	add r1, r4, #0
+	mov r0, r3
+	mov r1, r4
 	svc 6
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {r4,pc}
 thumb_func_end sub_80D61D2
@@ -61695,7 +61695,7 @@ sub_80D63FC:
 	push {r0-r2,r5}
 	mov r0, #0x88
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D6422
 	strb r1, [r0,#0x12]
@@ -61716,14 +61716,14 @@ thumb_func_end sub_80D63FC
 thumb_local_start
 sub_80D6424:
 	push {r4,lr}
-	add r4, r1, #0
+	mov r4, r1
 	ldrb r2, [r5,#0x12]
 	sub r2, r2, r0
 	cmp r2, #0
 	blt loc_80D6432
 	neg r1, r1
 loc_80D6432:
-	add r0, r1, #0
+	mov r0, r1
 	cmp r2, #0
 	bge loc_80D643A
 	neg r2, r2
@@ -61732,10 +61732,10 @@ loc_80D643A:
 	lsl r3, r3, #0x10
 	mul r3, r2
 	push {r0}
-	add r0, r3, #0
-	add r1, r4, #0
+	mov r0, r3
+	mov r1, r4
 	svc 6
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {r4,pc}
 thumb_func_end sub_80D6424
@@ -61751,8 +61751,8 @@ sub_80D644E:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	ldr r3, [r5,#0x3c]
 	mov r4, #0
 	bl sub_80E05F6
@@ -61761,7 +61761,7 @@ sub_80D644E:
 	bne locret_80D64CA
 	mov r6, #0
 loc_80D6478:
-	add r2, r6, #0
+	mov r2, r6
 	lsl r2, r2, #1
 	ldr r3, off_80D64CC // =dword_80D64D0 
 	add r3, r3, r2
@@ -61790,8 +61790,8 @@ loc_80D6478:
 	bl sub_80C536A
 	pop {r0,r1,r6}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	ldr r3, [r5,#0x3c]
 	mov r4, #0
 	bl sub_80E05F6
@@ -62154,7 +62154,7 @@ sub_80D67A6:
 	push {r0-r2,r5}
 	mov r0, #0x89
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D67D0
 	strb r1, [r0,#0x12]
@@ -62314,7 +62314,7 @@ sub_80D68E0:
 	push {r0-r2,r5}
 	mov r0, #0x8a
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D690A
 	strb r1, [r0,#0x12]
@@ -62377,7 +62377,7 @@ sub_80D6952:
 	beq loc_80D6976
 	bl sub_800E29C // () -> void
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	bne loc_80D697C
 loc_80D6976:
@@ -62440,7 +62440,7 @@ sub_80D69E2:
 	push {r0-r2,r5}
 	mov r0, #0x8b
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D6A00
 	strb r1, [r0,#0x12]
@@ -62535,7 +62535,7 @@ sub_80D6A44:
 	add r2, r2, r1
 	str r2, [r5,#0x3c]
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	bne loc_80D6AC0
 	bl object_freeMemory
@@ -62630,7 +62630,7 @@ sub_80D6B78:
 	push {r0-r2,r5}
 	mov r0, #0x8c
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D6B9A
 	strb r1, [r0,#0x12]
@@ -62853,7 +62853,7 @@ sub_80D6D18:
 	push {r0-r2,r5}
 	mov r0, #0x8d
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D6D3C
 	strb r1, [r0,#0x12]
@@ -63054,7 +63054,7 @@ sub_80D6EB0:
 	push {r0-r2,r5}
 	mov r0, #0x8e
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D6ED4
 	strb r1, [r0,#0x12]
@@ -63247,7 +63247,7 @@ sub_80D703A:
 	push {r0-r2,r5}
 	mov r0, #0x8f
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D7060
 	strb r1, [r0,#0x12]
@@ -63450,7 +63450,7 @@ sub_80D71D6:
 	push {r0-r2,r5}
 	mov r0, #0x90
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D71FC
 	strb r1, [r0,#0x12]
@@ -63475,7 +63475,7 @@ sub_80D71FE:
 	lsl r0, r0, #2
 	ldr r1, off_80D7244 // =dword_80D7248 
 	ldr r1, [r1,r0]
-	add r6, r1, #0
+	mov r6, r1
 	ldr r0, [r5,#0x64]
 	lsl r0, r0, #2
 	ldr r2, off_80D7258 // =dword_80D725C 
@@ -63494,7 +63494,7 @@ sub_80D71FE:
 	mul r1, r6
 	push {r0,r1}
 	bl sub_800E2C0
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	mul r0, r2
 	str r0, [r5,#0x40]
@@ -63690,7 +63690,7 @@ sub_80D73D6:
 	push {r0-r2,r5}
 	mov r0, #0x91
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D73FA
 	strb r1, [r0,#0x12]
@@ -63941,7 +63941,7 @@ sub_80D75D4:
 	push {r0-r2,r5}
 	mov r0, #0x92
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D75E8
 	bl sub_801155A
@@ -64000,13 +64000,13 @@ sub_80D761C:
 	strb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
 	push {r0,r1}
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x34 
 	push {r7}
 	ldmia r7!, {r2,r3}
 	sub r2, r0, r2
 	sub r0, r1, r3
-	add r1, r2, #0
+	mov r1, r2
 	push {r5}
 	bl calcAngle_800117C
 	pop {r5}
@@ -64084,7 +64084,7 @@ loc_80D7718:
 	ldrb r1, [r5,#7]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
 	mov r2, #0
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x34 
 	stmia r7!, {r0-r2}
 	bl sub_802EF5C
@@ -64157,13 +64157,13 @@ sub_80D77D4:
 	sub r0, #1
 	strh r0, [r5,#0x20]
 	beq loc_80D7802
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x40 
 	ldmia r7!, {r3,r4,r6}
 	ldr r0, dword_80D7874 // =0xffffd800 
 	add r6, r6, r0
 	str r6, [r5,#0x48]
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x34 
 	ldmia r7!, {r0-r2}
 	add r0, r0, r3
@@ -64171,7 +64171,7 @@ sub_80D77D4:
 	add r2, r2, r6
 	cmp r2, #0
 	ble loc_80D7802
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x34 
 	stmia r7!, {r0-r2}
 	pop {pc}
@@ -64185,7 +64185,7 @@ loc_80D7802:
 	strb r1, [r7,#0xb]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
 	mov r2, #0
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x34 
 	stmia r7!, {r0-r2}
 	bl object_isCurrentPanelSolid
@@ -64504,7 +64504,7 @@ sub_80D7A78:
 	push {r0,r5}
 	mov r0, #0x93
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r5}
 	beq locret_80D7A94
 	str r6, [r0,#0x2c]
@@ -64523,7 +64523,7 @@ sub_80D7A96:
 	bl object_getFlipDirection_800E2CA // () -> int
 	mov r1, #3
 	mul r0, r1
-	add r7, r0, #0
+	mov r7, r0
 	pop {r0-r3}
 	push {r4}
 	ldrh r4, [r5,#0x12]
@@ -64690,10 +64690,10 @@ loc_80D7BFC:
 	ldrb r6, [r5,#5]
 	tst r6, r6
 	bne loc_80D7C0E
-	add r4, r0, #0
+	mov r4, r0
 	b loc_80D7C10
 loc_80D7C0E:
-	add r4, r1, #0
+	mov r4, r1
 loc_80D7C10:
 	ldr r0, [r5,#0x40]
 	ldr r1, [r5,#0x34]
@@ -64706,18 +64706,18 @@ loc_80D7C10:
 	ldrb r6, [r5,#5]
 	tst r6, r6
 	bne loc_80D7C2C
-	add r6, r1, #0
-	add r3, r0, #0
+	mov r6, r1
+	mov r3, r0
 	b loc_80D7C30
 loc_80D7C2C:
-	add r6, r3, #0
-	add r3, r2, #0
+	mov r6, r3
+	mov r3, r2
 loc_80D7C30:
 	cmp r4, r6
 	beq loc_80D7C4E
-	add r0, r3, #0
-	add r1, r6, #0
-	add r2, r4, #0
+	mov r0, r3
+	mov r1, r6
+	mov r2, r4
 	bl sub_800E708
 	cmp r0, #0
 	beq loc_80D7C4E
@@ -64759,7 +64759,7 @@ sub_80D7C7E:
 	push {r0-r2,r5}
 	mov r0, #0x94
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq loc_80D7CA8
 	strb r1, [r0,#0x12]
@@ -64829,7 +64829,7 @@ loc_80D7CE0:
 	beq loc_80D7D00
 	mov r6, #6
 loc_80D7D00:
-	add r0, r6, #0
+	mov r0, r6
 	ldrb r3, [r5,#0x16]
 	lsl r3, r3, #2
 	ldr r2, off_80D7D40 // =off_80D7D44 
@@ -64945,7 +64945,7 @@ sub_80D7DC0:
 	bne loc_80D7DDA
 	mov r4, #1
 loc_80D7DDA:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.byte 0, 0
 dword_80D7DE0: .word 0x24000
@@ -65077,7 +65077,7 @@ sub_80D7ED4:
 	push {r0-r2,r5}
 	mov r0, #0x95
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D7EF4
 	strb r1, [r0,#0x12]
@@ -65096,11 +65096,11 @@ thumb_local_start
 sub_80D7EF6:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #8
-	add r7, r2, #0
+	mov r7, r2
 	str r0, [sp]
 	str r1, [sp,#4]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	mov r6, #3
 loc_80D7F08:
 	ldr r0, [sp]
@@ -65302,7 +65302,7 @@ loc_80D81BA:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r0, #0
+	mov r2, r0
 	ldr r1, [r5,#0x34]
 	ldr r0, [r5,#0x40]
 	add r0, r0, r1
@@ -65356,7 +65356,7 @@ sub_80D8222:
 	push {r0-r2,r5}
 	mov r0, #0x96
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D8240
 	strb r1, [r0,#0x12]
@@ -65611,7 +65611,7 @@ sub_80D8400:
 	push {r0-r2,r5}
 	mov r0, #0x97
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	pop {r4}
 	beq locret_80D842C
@@ -65634,7 +65634,7 @@ thumb_func_end sub_80D8400
 thumb_func_start sub_80D842E
 sub_80D842E:
 	push {r5,lr}
-	add r5, r0, #0
+	mov r5, r0
 	ldrb r0, [r5,#9]
 	cmp r0, #8
 	beq locret_80D8440
@@ -65854,7 +65854,7 @@ sub_80D85F0:
 	push {r0-r2,r5}
 	mov r0, #0x98
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D8614
 	strb r1, [r0,#0x12]
@@ -66062,7 +66062,7 @@ sub_80D876E:
 	push {r0-r2,r5}
 	mov r0, #0x99
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D8798
 	strb r1, [r0,#0x12]
@@ -66231,7 +66231,7 @@ sub_80D88B8:
 	push {r0-r2,r5}
 	mov r0, #0x9a
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D88DC
 	strb r1, [r0,#0x12]
@@ -66403,7 +66403,7 @@ loc_80D8A54:
 	ldr r0, [r5,#0x40]
 	ldr r1, [r5,#0x34]
 	add r0, r0, r1
-	add r4, r0, #0
+	mov r4, r0
 	ldr r2, [r5,#0x60]
 	bl sub_800E6E8
 	tst r0, r0
@@ -66427,10 +66427,10 @@ loc_80D8A7E:
 	strh r0, [r5,#0xa]
 	pop {r4,r6,r7,pc}
 loc_80D8A90:
-	add r0, r4, #0
+	mov r0, r4
 	ldr r1, [r5,#0x38]
 	bl sub_800E24C
-	add r6, r0, #0
+	mov r6, r0
 	bl sub_80D8C10
 	tst r0, r0
 	beq loc_80D8AAA
@@ -66574,7 +66574,7 @@ sub_80D8B96:
 	push {r0-r2,r5}
 	mov r0, #0x9b
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D8BBA
 	bl sub_801155A
@@ -66797,7 +66797,7 @@ sub_80D8D5A:
 	push {r1-r5}
 	mov r0, #0x9c
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r5}
 	beq locret_80D8D7C
 	strb r1, [r0,#0x12]
@@ -66822,7 +66822,7 @@ sub_80D8D7E:
 	str r0, [sp,#4]
 	ldr r7, [r5,#0x54]
 	bl sub_800E3BE
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800C90A
@@ -66832,7 +66832,7 @@ sub_80D8D7E:
 	add r4, #1
 	lsr r4, r4, #1
 loc_80D8DA2:
-	add r0, r4, #0
+	mov r0, r4
 	str r0, [sp]
 	ldr r1, [sp,#8]
 	tst r1, r1
@@ -66997,7 +66997,7 @@ sub_80D8EE4:
 	mov r0, #1
 	strb r0, [r5,#0x10]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r1, r0, #0
+	mov r1, r0
 	ldrb r0, [r5,#0x12]
 	mov r4, #5
 	mov r3, #0x60 
@@ -67078,7 +67078,7 @@ sub_80D8F66:
 	ldrb r2, [r5,#0xe]
 	push {r7}
 	ldr r6, [r5,#0x2c]
-	add r7, r3, #0
+	mov r7, r3
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80D69E2
@@ -67105,7 +67105,7 @@ sub_80D8F98:
 	push {r0-r2,r5}
 	mov r0, #0x9d
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D8FB6
 	strb r1, [r0,#0x12]
@@ -67296,7 +67296,7 @@ sub_80D9130:
 	push {r0-r2,r5}
 	mov r0, #0x9e
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D914C
 	strb r1, [r0,#0x12]
@@ -67446,7 +67446,7 @@ sub_80D924E:
 	push {r0-r2,r5}
 	mov r0, #0x9f
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	pop {r4}
 	beq locret_80D9282
@@ -67475,7 +67475,7 @@ sub_80D9284:
 	push {r5,lr}
 	cmp r0, #0
 	beq locret_80D9296
-	add r5, r0, #0
+	mov r5, r0
 	mov r1, #0
 	ldr r0, [r5,#0x60]
 	str r1, [r0]
@@ -67765,7 +67765,7 @@ sub_80D94F2:
 	push {r0-r2,r5}
 	mov r0, #0xa0
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	pop {r4}
 	beq locret_80D9530
@@ -67786,7 +67786,7 @@ sub_80D94F2:
 	strb r2, [r0]
 	push {r0}
 	bl battle_isPaused
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	str r1, [r0,#0x68]
 locret_80D9530:
@@ -67798,7 +67798,7 @@ sub_80D9532:
 	push {r5,lr}
 	cmp r0, #0
 	beq locret_80D9544
-	add r5, r0, #0
+	mov r5, r0
 	mov r1, #0
 	ldr r0, [r5,#0x60]
 	str r1, [r0]
@@ -67832,7 +67832,7 @@ sub_80D956C:
 	bl sub_80D9682
 	bl sub_800E29C // () -> void
 	bl sub_8019892
-	add r4, r0, #0
+	mov r4, r0
 	tst r0, r0
 	bne loc_80D9586
 	bl object_freeMemory
@@ -67943,7 +67943,7 @@ sub_80D964E:
 	push {r0-r2,r5}
 	mov r0, #0xa2
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D967A
 	str r1, [r0,#0x60]
@@ -67993,7 +67993,7 @@ sub_80D9690:
 	beq loc_80D96A0
 	mov r3, #1
 loc_80D96A0:
-	add r0, r3, #0
+	mov r0, r3
 	pop {pc}
 thumb_func_end sub_80D9690
 
@@ -68055,7 +68055,7 @@ sub_80D96C8:
 	mul r3, r0
 	sub r2, r2, r3
 	str r2, [r5,#0x34]
-	add r0, r1, #0
+	mov r0, r1
 	ldrh r1, [r5,#0x20]
 	svc 6
 	str r0, [r5,#0x40]
@@ -68192,7 +68192,7 @@ sub_80D981C:
 	push {r5}
 	mov r0, #0xa1
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80D9836
 	ldrh r1, [r5,#0x16]
@@ -68253,7 +68253,7 @@ sub_80D9870:
 	str r0, [r5,#0x40]
 	bl sub_800E29C // () -> void
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	bne loc_80D98BE
 	bl object_freeMemory
 	pop {r7,pc}
@@ -68409,7 +68409,7 @@ sub_80D99EC:
 	push {r0-r2,r5}
 	mov r0, #0xa3
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80D9A12
 	strb r1, [r0,#0x12]
@@ -68547,8 +68547,8 @@ sub_80D9B2C:
 	ldrb r0, [r5,#6]
 	ldrb r1, [r5,#7]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x28 
 	mov r0, #0x34 
@@ -68720,7 +68720,7 @@ sub_80D9CA4:
 	push {r5}
 	mov r0, #0xa4
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80D9CC0
 	ldrh r1, [r5,#0x16]
@@ -68756,7 +68756,7 @@ thumb_local_start
 sub_80D9CE4:
 	push {r4,r6,r7,lr}
 	lsl r7, r0, #8
-	add r6, r1, #0
+	mov r6, r1
 	mov r1, #1
 	cmp r0, #0x10
 	blt loc_80D9CF6
@@ -68837,13 +68837,13 @@ sub_80D9D6C:
 	strb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
 	push {r0,r1}
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x34 
 	push {r7}
 	ldmia r7!, {r2,r3}
 	sub r2, r0, r2
 	sub r0, r1, r3
-	add r1, r2, #0
+	mov r1, r2
 	push {r5}
 	bl calcAngle_800117C
 	pop {r5}
@@ -68947,13 +68947,13 @@ sub_80D9E94:
 	sub r0, #1
 	strh r0, [r5,#0x20]
 	ble loc_80D9EC2
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x40 
 	ldmia r7!, {r3,r4,r6}
 	ldr r0, dword_80D9F28 // =0xffffd800 
 	add r6, r6, r0
 	str r6, [r5,#0x48]
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x34 
 	ldmia r7!, {r0-r2}
 	add r0, r0, r3
@@ -68961,7 +68961,7 @@ sub_80D9E94:
 	add r2, r2, r6
 	cmp r2, #0
 	ble loc_80D9EC2
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x34 
 	stmia r7!, {r0-r2}
 	pop {r4,r6,r7,pc}
@@ -68976,7 +68976,7 @@ loc_80D9EC2:
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
 	mov r2, #0xa
 	lsl r2, r2, #0x10
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x34 
 	stmia r7!, {r0-r2}
 	bl object_isCurrentPanelSolid
@@ -69074,7 +69074,7 @@ sub_80D9F90:
 	push {r5}
 	mov r0, #0xa5
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80D9FA6
 	str r6, [r0,#0x2c]
@@ -69146,7 +69146,7 @@ loc_80DA008:
 	mov r4, #4
 loc_80DA012:
 	bl sub_8001532
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
 	add r0, sp, #0
 	ldrb r1, [r0,r1]
@@ -69448,7 +69448,7 @@ sub_80DA290:
 	ldrb r0, [r1,r0]
 	strb r0, [r5,#0x10]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r0, off_80DA464 // =byte_80DA3E8 
 	ldrb r1, [r5,#6]
 	ldrsb r6, [r0,r1]
@@ -69579,7 +69579,7 @@ sub_80DA390:
 	push {r0-r2,r5}
 	mov r0, #0xa6
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DA3BE
 	str r6, [r0,#0x2c]
@@ -69617,7 +69617,7 @@ loc_80DA3D2:
 loc_80DA3D6:
 	push {r0,r1}
 	ldrb r2, [r5,#0xe]
-	add r3, r7, #0
+	mov r3, r7
 	ldrb r4, [r5,#6]
 	ldr r6, [r5,#0x2c]
 	bl sub_80D94F2
@@ -69658,7 +69658,7 @@ loc_80DA416:
 	bgt loc_80DA420
 	mov r4, #1
 loc_80DA420:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 thumb_func_end sub_80DA3EC
 
@@ -69876,7 +69876,7 @@ sub_80DA5D2:
 	push {r0-r2,r5}
 	mov r0, #0xa7
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DA5F8
 	strb r1, [r0,#0x12]
@@ -70033,7 +70033,7 @@ sub_80DA710:
 	push {r0-r2,r5}
 	mov r0, #0xa8
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DA734
 	strb r1, [r0,#0x12]
@@ -70080,7 +70080,7 @@ loc_80DA764:
 	mov r1, #0x28 
 	lsl r1, r1, #0x10
 	mul r0, r1
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
 	strh r0, [r5,#0x20]
 	mov r2, #1
@@ -70130,7 +70130,7 @@ loc_80DA7BE:
 	mov r1, #0x18
 	lsl r1, r1, #0x10
 	mul r0, r1
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
 	strh r0, [r5,#0x20]
 	ldr r0, [r5,#0x3c]
@@ -70391,7 +70391,7 @@ sub_80DA9DC:
 	mov r0, #0xa9
 	mov r3, #0
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DA9FC
 	strb r1, [r0,#0x12]
@@ -70620,7 +70620,7 @@ sub_80DAB9C:
 	push {r0-r2,r5}
 	mov r0, #0xaa
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DABC2
 	bl sub_801155A
@@ -70745,15 +70745,15 @@ loc_80DAC8A:
 	tst r6, r6
 	bne loc_80DAC9A
 	add r4, sp, #0x1c
-	add r6, r7, #0
+	mov r6, r7
 	bne loc_80DAC9A
 	mov r0, #0
 	b loc_80DACAC
 loc_80DAC9A:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
-	add r0, r4, #0
+	mov r0, r4
 	ldrb r0, [r0,r1]
 	lsr r1, r0, #4
 	lsl r0, r0, #0x1d
@@ -70947,7 +70947,7 @@ sub_80DAE48:
 	push {r0-r2,r5}
 	mov r0, #0xab
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DAE6E
 	strb r1, [r0,#0x12]
@@ -70969,7 +70969,7 @@ thumb_local_start
 sub_80DAE70:
 	push {r4,lr}
 	ldr r1, dword_80DAE90 // =0xa0000 
-	add r0, r1, #0
+	mov r0, r1
 	ldrb r2, [r5,#5]
 	tst r2, r2
 	bne loc_80DAE7E
@@ -71184,7 +71184,7 @@ sub_80DB014:
 	push {r0-r2,r5}
 	mov r0, #0xac
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DB03C
 	strb r1, [r0,#0x12]
@@ -71206,7 +71206,7 @@ thumb_func_end sub_80DB014
 thumb_local_start
 sub_80DB03E:
 	push {r5,lr}
-	add r5, r0, #0
+	mov r5, r0
 	bl sub_80DB0D0
 	mov r0, #8
 	strb r0, [r5,#8]
@@ -71447,7 +71447,7 @@ loc_80DB1F4:
 	beq locret_80DB250
 	ldrb r0, [r5,#0x16]
 	bl sub_8010018
-	add r7, r0, #0
+	mov r7, r0
 	ldrb r0, [r7]
 	ldr r1, [r5,#0x60]
 	str r0, [r5,#0x60]
@@ -71543,7 +71543,7 @@ sub_80DB2C6:
 	push {r0-r2,r5}
 	mov r0, #0xad
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DB2EC
 	mov r3, #0
@@ -71753,7 +71753,7 @@ sub_80DB474:
 	push {r0-r2,r5}
 	mov r0, #0xae
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DB488
 	bl sub_801155A
@@ -71764,9 +71764,9 @@ thumb_func_end sub_80DB474
 thumb_local_start
 sub_80DB48A:
 	push {r4-r7,lr}
-	add r5, r2, #0
-	add r6, r0, #0
-	add r7, r1, #0
+	mov r5, r2
+	mov r6, r0
+	mov r7, r1
 	ldr r4, off_80DB560 // =off_8019B78 
 	lsl r3, r3, #2
 	ldr r4, [r4,r3]
@@ -71779,7 +71779,7 @@ loc_80DB498:
 	beq locret_80DB4B2
 	add r0, r0, r6
 	add r1, r1, r7
-	add r2, r5, #0
+	mov r2, r5
 	bl object_crackPanelDup1
 	add r4, #2
 	b loc_80DB498
@@ -71845,8 +71845,8 @@ loc_80DB50C:
 	ldrb r1, [r5,#0x13]
 	add r1, r1, r2
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0
 	bl sub_80E05F6
@@ -71889,7 +71889,7 @@ thumb_local_start
 sub_80DB590:
 	push {r7,lr}
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	bne loc_80DB5A2
 	bl object_freeMemory
@@ -71994,7 +71994,7 @@ sub_80DB666:
 	push {r2,r5}
 	mov r0, #0xaf
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r3,r5}
 	beq locret_80DB682
 	strb r3, [r0,#0xe]
@@ -72134,7 +72134,7 @@ loc_80DB774:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r0, #0
+	mov r2, r0
 	ldr r0, [r5,#0x40]
 	ldr r1, [r5,#0x34]
 	add r0, r0, r1
@@ -72206,7 +72206,7 @@ sub_80DB800:
 	push {r0-r2,r5}
 	mov r0, #0xb0
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DB826
 	strb r1, [r0,#0x12]
@@ -72253,7 +72253,7 @@ loc_80DB84C:
 	bge loc_80DB85C
 	neg r0, r0
 loc_80DB85C:
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
 	strh r0, [r5,#0x20]
 locret_80DB862:
@@ -72275,7 +72275,7 @@ sub_80DB864:
 	beq loc_80DB87E
 	mov r4, #1
 loc_80DB87E:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80DB884: .word dword_80DB888
@@ -72341,7 +72341,7 @@ sub_80DB8EC:
 	str r0, [r5,#0x34]
 	str r1, [r5,#0x38]
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	bne loc_80DB912
 loc_80DB90C:
@@ -72398,7 +72398,7 @@ sub_80DB970:
 	push {r0-r2,r5}
 	mov r0, #0xb1
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DB98C
 	strb r1, [r0,#0x12]
@@ -72589,7 +72589,7 @@ sub_80DBB0C:
 	push {r0-r2,r5}
 	mov r0, #0xb2
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DBB38
 	str r1, [r0,#0x34]
@@ -72780,7 +72780,7 @@ sub_80DBC90:
 	push {r0-r2,r5}
 	mov r0, #0xb3
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DBCB8
 	strb r1, [r0,#0x12]
@@ -72820,7 +72820,7 @@ loc_80DBCD0:
 	bge loc_80DBCE0
 	neg r0, r0
 loc_80DBCE0:
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
 	strh r0, [r5,#0x20]
 	pop {r4,pc}
@@ -72937,8 +72937,8 @@ sub_80DBDBC:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r0, #3
 	bl sub_801BDDE
@@ -73022,7 +73022,7 @@ sub_80DBE82:
 	push {r0-r2,r5}
 	mov r0, #0xb4
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DBEA0
 	strb r1, [r0,#0x12]
@@ -73304,7 +73304,7 @@ sub_80DC0C0:
 	push {r0-r2,r5}
 	mov r0, #0xb5
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DC0E4
 	strb r1, [r0,#0x12]
@@ -73486,7 +73486,7 @@ sub_80DC22C:
 	push {r0-r2,r5}
 	mov r0, #0xb6
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DC250
 	strb r1, [r0,#0x12]
@@ -73657,7 +73657,7 @@ sub_80DC38A:
 	push {r5}
 	mov r0, #0xb7
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80DC3B0
 	str r5, [r0,#0x4c]
@@ -73682,7 +73682,7 @@ sub_80DC3B2:
 	add r0, sp, #0
 	mov r1, #0x10
 	bl sub_801A4DC
-	add r4, r0, #0
+	mov r4, r0
 	tst r0, r0
 	beq loc_80DC3F4
 	mov r3, #0
@@ -73818,7 +73818,7 @@ sub_80DC4B8:
 	push {r0-r2,r5}
 	mov r0, #0xb8
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DC4DC
 	strb r1, [r0,#0x12]
@@ -73948,7 +73948,7 @@ sub_80DC5B4:
 	push {r0-r2,r5}
 	mov r0, #0xb9
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DC5D8
 	strb r1, [r0,#0x12]
@@ -74080,7 +74080,7 @@ sub_80DC6BC:
 	push {r0-r2,r5}
 	mov r0, #0xba
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DC6D0
 	bl sub_801155A
@@ -74092,7 +74092,7 @@ thumb_local_start
 sub_80DC6D2:
 	push {r4,r6,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r6, off_80DC708 // =byte_80DC6FC 
 loc_80DC6DC:
 	mov r0, #0
@@ -74444,7 +74444,7 @@ sub_80DC986:
 	push {r0-r2,r5}
 	mov r0, #0xbb
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DC99A
 	bl sub_801155A
@@ -74462,7 +74462,7 @@ sub_80DC99C:
 	str r4, [sp,#0xc]
 	str r6, [sp,#0x10]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
 	ldrb r3, [r5,#0x16]
@@ -74496,8 +74496,8 @@ thumb_func_end sub_80DC9EC
 thumb_local_start
 sub_80DC9F0:
 	push {r5-r7,lr}
-	add r6, r0, #0
-	add r7, r1, #0
+	mov r6, r0
+	mov r7, r1
 	bl object_getPanelParameters
 	ldrb r1, [r5,#0x16]
 	lsl r1, r1, #2
@@ -74505,13 +74505,13 @@ sub_80DC9F0:
 	ldr r1, [r2,r1]
 	tst r0, r1
 	beq loc_80DCA26
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	ldrb r2, [r5,#0x16]
 	mov r3, #1
 	eor r2, r3
 	bl sub_800AE54
-	add r5, r0, #0
+	mov r5, r0
 	beq loc_80DCA26
 	bl object_getFlag // () -> int
 	mov r1, #6
@@ -74594,14 +74594,14 @@ loc_80DCAAA:
 	ldrb r7, [r5,#0x13]
 	mov r4, #0
 loc_80DCAB4:
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
 	push {r0,r1}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
-	add r3, r4, #0
+	mov r3, r4
 	add sp, sp, #0x14
 	pop {r4,r6,r7,pc}
 thumb_func_end sub_80DCA38
@@ -74615,18 +74615,18 @@ sub_80DCACC:
 	mul r2, r6
 	mul r3, r6
 	push {r3}
-	add r0, r2, #0
-	add r1, r7, #0
+	mov r0, r2
+	mov r1, r7
 	svc 6
 	pop {r3}
 	push {r0}
-	add r0, r3, #0
-	add r1, r7, #0
+	mov r0, r3
+	mov r1, r7
 	svc 6
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
-	add r2, r0, #0
-	add r3, r1, #0
+	mov r2, r0
+	mov r3, r1
 	pop {r0,r1}
 	add r0, r0, r2
 	add r1, r1, r3
@@ -74809,7 +74809,7 @@ sub_80DCC70:
 	push {r0-r2,r5}
 	mov r0, #0xbc
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DCC94
 	strb r1, [r0,#0x12]
@@ -74990,7 +74990,7 @@ sub_80DCDD4:
 	push {r0-r2,r5}
 	mov r0, #0xbd
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DCDF8
 	strb r1, [r0,#0x12]
@@ -75029,8 +75029,8 @@ sub_80DCE18:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x34 
 	bl sub_80E05F6
@@ -75116,7 +75116,7 @@ sub_80DCEC6:
 	push {r0-r2,r5}
 	mov r0, #0xbe
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DCEE8
 	strb r1, [r0,#0x12]
@@ -75290,7 +75290,7 @@ sub_80DD03A:
 	push {r0-r2,r5}
 	mov r0, #0xbf
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DD060
 	strb r1, [r0,#0x12]
@@ -75548,19 +75548,19 @@ thumb_func_start sub_80DD25E
 sub_80DD25E:
 	push {lr}
 	push {r3-r5}
-	add r3, r2, #0
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r3, r2
+	mov r2, r1
+	mov r1, r0
 	mov r0, #0xc0
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r3-r5}
 	tst r0, r0
 	beq locret_80DD2B4
 	mov r3, #3
 	strb r3, [r0,#0xe]
 	mov r1, #0x64 
-	add r3, r4, #0
+	mov r3, r4
 	lsl r3, r3, #0x18
 	lsr r3, r3, #0x18
 	strb r3, [r0,r1]
@@ -75573,14 +75573,14 @@ sub_80DD25E:
 	orr r2, r1
 	strb r2, [r0]
 	push {r0}
-	add r5, r0, #0
+	mov r5, r0
 	bl sub_800E2AC
 	mov r0, #0x64 
 	ldrb r0, [r5,r0]
 	lsl r0, r0, #2
 	ldr r1, off_80DD344 // =byte_8113DC0 
 	ldr r0, [r1,r0]
-	add r3, r0, #0
+	mov r3, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	mul r0, r3
 	str r0, [r5,#0x40]
@@ -75595,7 +75595,7 @@ sub_80DD2B6:
 	push {r5,lr}
 	cmp r0, #0
 	beq locret_80DD2DE
-	add r5, r0, #0
+	mov r5, r0
 	ldrb r0, [r5,#9]
 	cmp r0, #8
 	beq locret_80DD2DE
@@ -75754,7 +75754,7 @@ loc_80DD3B2:
 	bl sub_800E456 // () -> int
 	bl sub_8002F5C
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	bne loc_80DD3F4
 	bl object_freeMemory
 	pop {r7,pc}
@@ -75886,7 +75886,7 @@ sub_80DD4E8:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r0, #0
+	mov r2, r0
 	ldr r0, [r5,#0x40]
 	ldr r1, [r5,#0x34]
 	sub r1, r1, r0
@@ -75967,7 +75967,7 @@ sub_80DD594:
 	push {r0-r2,r5}
 	mov r0, #0xc1
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DD5B2
 	strb r1, [r0,#0x12]
@@ -76398,7 +76398,7 @@ sub_80DD91A:
 	push {r0-r2,r5}
 	mov r0, #0xc2
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DD92E
 	bl sub_801155A
@@ -76553,7 +76553,7 @@ sub_80DDA5A:
 	push {r0-r2,r5}
 	mov r0, #0xc3
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DDA80
 	strb r1, [r0,#0x12]
@@ -76618,7 +76618,7 @@ sub_80DDAA8:
 	strb r1, [r5,#0x12]
 	bl sub_800E29C // () -> void
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	bne loc_80DDAFC
 	bl object_freeMemory
 	pop {r7,pc}
@@ -76711,7 +76711,7 @@ sub_80DDBAC:
 	push {r0-r2,r5}
 	mov r0, #0xc4
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DDBC8
 	strb r1, [r0,#0x12]
@@ -76972,7 +76972,7 @@ sub_80DDDCC:
 	push {r0-r2,r5}
 	mov r0, #0xc5
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DDDE8
 	strb r1, [r0,#0x12]
@@ -77215,7 +77215,7 @@ sub_80DDFB6:
 	push {r0-r2,r5}
 	mov r0, #0xc6
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DDFDC
 	strb r1, [r0,#0x12]
@@ -77289,8 +77289,8 @@ sub_80DE024:
 	ldrb r0, [r5,#6]
 	ldrb r1, [r5,#7]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x14
 	mov r0, #0x34 
@@ -77342,14 +77342,14 @@ loc_80DE098:
 	push {r5}
 	ldrb r0, [r5,#0x16]
 	bl sub_80103BC
-	add r5, r0, #0
+	mov r5, r0
 	mov r0, #0x96
 	lsl r0, r0, #1
 	bl object_addHP
 	mov r0, #0x8a
 	bl sound_play // () -> void
 	mov r0, #5
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_801A7CC
 	ldr r6, [r5,#0x58]
 	ldr r0, [r6,#0x60]
@@ -77389,7 +77389,7 @@ sub_80DE112:
 	push {r5}
 	mov r0, #0xc7
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80DE134
 	ldrb r1, [r5,#0x16]
@@ -77640,7 +77640,7 @@ sub_80DE2F0:
 	push {r0-r3,r5}
 	mov r0, #0xc8
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r5}
 	beq locret_80DE30C
 	strb r1, [r0,#0x12]
@@ -77661,18 +77661,18 @@ sub_80DE30E:
 	lsl r2, r1, #2
 	ldr r0, [r0,r2]
 	str r0, [r5,#0x44]
-	add r2, r0, #0
+	mov r2, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	mul r0, r2
 	str r0, [r5,#0x40]
-	add r1, r2, #0
+	mov r1, r2
 	ldr r0, dword_80DE34C // =0x280000 
 	svc 6
 	mov r1, #0x63 
 	strb r0, [r5,r1]
 	cmp r0, #0
 	beq loc_80DE33C
-	add r1, r0, #0
+	mov r1, r0
 	mov r0, #0x80
 	svc 6
 	mov r1, #0x64 
@@ -77815,7 +77815,7 @@ sub_80DE430:
 	sub r0, #0x24 
 	strh r0, [r5,#0x3e]
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	bne loc_80DE482
 	bl object_freeMemory
@@ -77944,8 +77944,8 @@ sub_80DE594:
 	ldrb r3, [r5,r1]
 	cmp r2, r3
 	beq loc_80DE5D8
-	add r0, r2, #0
-	add r1, r3, #0
+	mov r0, r2
+	mov r1, r3
 	bl sub_810FA4C
 	mov r1, #0x64 
 	ldrb r1, [r5,r1]
@@ -78037,7 +78037,7 @@ sub_80DE660:
 	push {r0-r2,r5}
 	mov r0, #0xc9
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DE67C
 	strb r1, [r0,#0x12]
@@ -78064,18 +78064,18 @@ sub_80DE67E:
 	lsl r2, r1, #2
 	ldr r0, [r0,r2]
 	str r0, [r5,#0x44]
-	add r2, r0, #0
+	mov r2, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	mul r0, r2
 	str r0, [r5,#0x40]
-	add r1, r2, #0
+	mov r1, r2
 	ldr r0, dword_80DE6CC // =0x280000 
 	svc 6
 	mov r1, #0x65 
 	strb r0, [r5,r1]
 	cmp r0, #0
 	beq loc_80DE6B8
-	add r1, r0, #0
+	mov r1, r0
 	mov r0, #0x80
 	svc 6
 	mov r1, #0x66 
@@ -78428,7 +78428,7 @@ sub_80DE960:
 	push {r0-r2,r5}
 	mov r0, #0xca
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DE982
 	bl sub_801155A
@@ -78464,7 +78464,7 @@ sub_80DE984:
 	str r0, [r5,#0x34]
 	str r1, [r5,#0x38]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r3, r0, #0
+	mov r3, r0
 	ldrh r0, [r5,#0x20]
 	ldr r1, off_80DE9D8 // =off_80DE9DC 
 	ldrb r2, [r5,#5]
@@ -78583,7 +78583,7 @@ sub_80DEAA8:
 	bl sprite_setPallete // (int pallete) -> void
 	bl sub_800E29C // () -> void
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	tst r0, r0
 	bne loc_80DEAEE
 	bl object_freeMemory
@@ -78649,7 +78649,7 @@ sub_80DEB70:
 	push {r4-r7,lr}
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
-	add r2, r5, #0
+	mov r2, r5
 	push {r5}
 	ldr r5, [r5,#0x4c]
 	bl sub_80BC998
@@ -78724,7 +78724,7 @@ loc_80DEBE8:
 	bne loc_80DEC2E
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
-	add r2, r5, #0
+	mov r2, r5
 	push {r5}
 	ldr r5, [r5,#0x4c]
 	bl sub_80BC998
@@ -78793,7 +78793,7 @@ sub_80DEC84:
 	push {r0-r3,r5}
 	mov r0, #0xcb
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r5}
 	beq locret_80DECBA
 	str r5, [r0,#0x4c]
@@ -78855,8 +78855,8 @@ sub_80DECBC:
 	mov r2, #0x61 
 	ldrb r1, [r5,r2]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r0, #0x34 
 	add r0, r0, r5
@@ -78922,7 +78922,7 @@ sub_80DED80:
 	push {r4-r7,lr}
 	mov r0, #0x62 
 	ldrb r0, [r5,r0]
-	add r7, r0, #0
+	mov r7, r0
 	mov r0, #0
 loc_80DED8A:
 	push {r0}
@@ -78935,14 +78935,14 @@ loc_80DED8A:
 	mul r3, r7
 	add r3, r3, r0
 	ldrb r2, [r2,r3]
-	add r0, r4, #0
-	add r1, r4, #0
+	mov r0, r4
+	mov r1, r4
 	lsl r0, r0, #0x1c
 	lsr r0, r0, #0x14
 	lsl r1, r1, #0x18
 	lsr r1, r1, #0x1c
 	lsl r1, r1, #0x10
-	add r4, r7, #0
+	mov r4, r7
 	orr r4, r0
 	orr r4, r1
 	ldrb r0, [r5,#0x12]
@@ -79173,7 +79173,7 @@ sub_80DEFD6:
 	push {r0-r2,r5}
 	mov r0, #0xcc
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DF014
 	str r5, [r0,#0x4c]
@@ -79228,8 +79228,8 @@ sub_80DF016:
 	mov r2, #0x61 
 	ldrb r1, [r5,r2]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r0, #0x34 
 	add r0, r0, r5
@@ -79354,7 +79354,7 @@ locret_80DF15E:
 	push {r0-r2,r5}
 	mov r0, #0xcd
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DF184
 	strb r1, [r0,#0x12]
@@ -79490,7 +79490,7 @@ sub_80DF262:
 	push {r0-r2,r5}
 	mov r0, #0xce
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DF286
 	strb r1, [r0,#0x12]
@@ -79526,7 +79526,7 @@ thumb_func_end sub_80DF288
 thumb_local_start
 sub_80DF2A0:
 	push {r0,r4,r6,r7,lr}
-	add r7, r0, #0
+	mov r7, r0
 	ldrb r0, [r7,#1]
 	tst r0, r0
 	beq locret_80DF2C6
@@ -79792,7 +79792,7 @@ sub_80DF4D4:
 	push {r0-r2,r5}
 	mov r0, #0xcf
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DF4F8
 	strb r1, [r0,#0x12]
@@ -79917,8 +79917,8 @@ sub_80DF5C0:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0xa
 	mov r0, #0x34 
@@ -80012,8 +80012,8 @@ sub_80DF66A:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x18
 	lsl r3, r3, #0x10
 	mov r4, #0xc
@@ -80140,8 +80140,8 @@ sub_80DF742:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	ldr r6, dword_80DF908 // =0x180000 
 	add r2, r2, r6
@@ -80242,7 +80242,7 @@ sub_80DF848:
 	push {r0-r2,r5}
 	mov r0, #0xd0
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DF874
 	strb r1, [r0,#0x12]
@@ -80255,7 +80255,7 @@ sub_80DF848:
 	orr r2, r1
 	strb r2, [r0]
 	push {r0,r5}
-	add r5, r0, #0
+	mov r5, r0
 	bl sub_80DF520
 	pop {r0,r5}
 locret_80DF874:
@@ -80560,7 +80560,7 @@ sub_80DFAD6:
 	mov r2, #0
 	mov r3, #0
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	tst r0, r0
 	beq locret_80DFB1E
@@ -80679,7 +80679,7 @@ sub_80DFB80:
 	add r0, r0, r2
 	cmp r0, r3
 	ble loc_80DFBB0
-	add r0, r3, #0
+	mov r0, r3
 loc_80DFBB0:
 	mov r2, #0x60 
 	strh r0, [r1,r2]
@@ -80892,7 +80892,7 @@ sub_80DFD74:
 	mov r2, #0
 	mov r3, #0
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	tst r0, r0
 	beq locret_80DFD9E
@@ -81029,7 +81029,7 @@ sub_80DFE64:
 	ldrb r0, [r5,#5]
 	strh r0, [r5,#0x20]
 	bl sub_8019892
-	add r7, r0, #0
+	mov r7, r0
 	bne loc_80DFE7C
 	bl object_freeMemory
 	pop {r7,pc}
@@ -81165,7 +81165,7 @@ sub_80DFF84:
 	push {r0-r2,r5}
 	mov r0, #0xd3
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80DFFA0
 	strb r1, [r0,#0x12]
@@ -81531,7 +81531,7 @@ sub_80E0248:
 	push {r0-r2,r5}
 	mov r0, #0xd4
 	bl object_spawnType3
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E025C
 	bl sub_801155A
@@ -81549,7 +81549,7 @@ sub_80E025E:
 	str r4, [sp,#0xc]
 	str r6, [sp,#0x10]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
 	ldrb r3, [r5,#0x16]
@@ -81576,8 +81576,8 @@ thumb_func_end sub_80E025E
 thumb_local_start
 sub_80E02AC:
 	push {r5-r7,lr}
-	add r6, r0, #0
-	add r7, r1, #0
+	mov r6, r0
+	mov r7, r1
 	bl object_getPanelParameters
 	ldrb r1, [r5,#0x16]
 	lsl r1, r1, #2
@@ -81585,13 +81585,13 @@ sub_80E02AC:
 	ldr r1, [r2,r1]
 	tst r0, r1
 	beq loc_80E02E2
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	ldrb r2, [r5,#0x16]
 	mov r3, #1
 	eor r2, r3
 	bl sub_800AE54
-	add r5, r0, #0
+	mov r5, r0
 	beq loc_80E02E2
 	bl object_getFlag // () -> int
 	mov r1, #6
@@ -81615,12 +81615,12 @@ sub_80E02F4:
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
-	add r6, r0, #0
-	add r7, r1, #0
+	mov r6, r0
+	mov r7, r1
 	bl sub_80E02AC
 	tst r0, r0
 	bne loc_80E0332
-	add r0, r6, #0
+	mov r0, r6
 	sub r1, r7, #1
 	bl sub_80E02AC
 	tst r0, r0
@@ -81630,7 +81630,7 @@ sub_80E02F4:
 	sub r7, #1
 	b loc_80E0332
 loc_80E0322:
-	add r0, r6, #0
+	mov r0, r6
 	add r1, r7, #1
 	bl sub_80E02AC
 	tst r0, r0
@@ -81638,14 +81638,14 @@ loc_80E0322:
 	add r7, #1
 	mov r4, #1
 loc_80E0332:
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
 	push {r0,r1}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
-	add r3, r4, #0
+	mov r3, r4
 	pop {r4,r6,r7,pc}
 thumb_func_end sub_80E02F4
 
@@ -81658,18 +81658,18 @@ sub_80E0348:
 	mul r2, r6
 	mul r3, r6
 	push {r3}
-	add r0, r2, #0
-	add r1, r7, #0
+	mov r0, r2
+	mov r1, r7
 	svc 6
 	pop {r3}
 	push {r0}
-	add r0, r3, #0
-	add r1, r7, #0
+	mov r0, r3
+	mov r1, r7
 	svc 6
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
-	add r2, r0, #0
-	add r3, r1, #0
+	mov r2, r0
+	mov r3, r1
 	pop {r0,r1}
 	add r0, r0, r2
 	add r1, r1, r3
@@ -81796,7 +81796,7 @@ sub_80E05F6:
 	push {r5,lr}
 	mov r0, #0
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5,pc}
 thumb_func_end sub_80E05F6
 
@@ -81954,7 +81954,7 @@ sub_80E06F8:
 	mov r1, #4
 	orr r0, r1
 	strb r0, [r5]
-	add r0, r5, #0
+	mov r0, r5
 	pop {r4,r5,pc}
 off_80E070C: .word 0x400
 thumb_func_end sub_80E06F8
@@ -82068,7 +82068,7 @@ sub_80E07E0:
 	push {r0-r2,r5}
 	mov r0, #3
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E0800
 	strb r1, [r0,#0x12]
@@ -82161,7 +82161,7 @@ sub_80E08C4:
 	push {r5}
 	mov r0, #4
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E08DA
 	str r5, [r0,#0x4c]
@@ -82305,7 +82305,7 @@ sub_80E09EE:
 	push {r5}
 	mov r0, #6
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E0A08
 	ldrh r1, [r5,#0x16]
@@ -82486,7 +82486,7 @@ loc_80E0BF6:
 	ldrb r0, [r4,#0x16]
 	ldrb r1, [r4,#0x17]
 	bl object_getFlipDirection // (int a1, int a2) -> int
-	add r6, r0, #0
+	mov r6, r0
 	ldrh r0, [r4,#0x28]
 	bl sub_800F26C
 	ldr r2, [r5,#0x60]
@@ -82712,7 +82712,7 @@ sub_80E0D98:
 	push {r5}
 	mov r0, #7
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E0DBE
 	ldrh r1, [r5,#0x16]
@@ -82914,7 +82914,7 @@ sub_80E0F02:
 	push {r5}
 	mov r0, #8
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E0F20
 	str r5, [r0,#0x4c]
@@ -83134,7 +83134,7 @@ sub_80E1084:
 	push {r0,r5}
 	mov r0, #9
 	bl object_spawnType4
-	add r2, r5, #0
+	mov r2, r5
 	pop {r0,r5}
 	beq loc_80E109E
 	strb r0, [r2,#0xc]
@@ -83143,7 +83143,7 @@ sub_80E1084:
 	str r1, [r2,#0x44]
 	str r7, [r2,#0x48]
 loc_80E109E:
-	add r0, r7, #0
+	mov r0, r7
 	pop {r5,pc}
 	.balign 4, 0x00
 thumb_func_end sub_80E1084
@@ -83308,7 +83308,7 @@ sub_80E11E0:
 	push {r5,r7}
 	mov r0, #0xa
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5,r7}
 	beq locret_80E11FA
 	str r7, [r0,#0x60]
@@ -83370,7 +83370,7 @@ sub_80E121C:
 	add r0, r0, r5
 	stmia r0!, {r1-r3}
 	push {r5}
-	add r5, r4, #0
+	mov r5, r4
 	bl sub_801002C
 	pop {r5}
 	bl sprite_setPallete // (int pallete) -> void
@@ -83419,12 +83419,12 @@ sub_80E12BA:
 	bl sub_800F29C
 	cmp r0, #2
 	bne loc_80E12DE
-	add r0, r4, #0
+	mov r0, r4
 	mov r1, #0
 	bl sub_80E1352
 	b loc_80E12E4
 loc_80E12DE:
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_80E146C
 loc_80E12E4:
 	mov r0, #4
@@ -83451,11 +83451,11 @@ loc_80E12E8:
 	bl sub_800F29C
 	cmp r0, #2
 	bne loc_80E1322
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_80E13DC
 	b loc_80E1328
 loc_80E1322:
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_80E14AC
 loc_80E1328:
 	mov r0, #8
@@ -83473,7 +83473,7 @@ sub_80E1332:
 	push {r0,r1,r5}
 	mov r0, #0xc
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80E1350
 	str r1, [r0,#0x4c]
@@ -83487,15 +83487,15 @@ thumb_func_end sub_80E1332
 thumb_local_start
 sub_80E1352:
 	push {r4,r6,r7,lr}
-	add r7, r0, #0
-	add r6, r1, #0
+	mov r7, r0
+	mov r6, r1
 	ldr r4, [r7,#0x54]
 	ldrb r2, [r7]
 	mov r3, #2
 	bic r2, r3
 	strb r2, [r7]
 	push {r5}
-	add r5, r7, #0
+	mov r5, r7
 	ldr r0, dword_80E1518 // =0x100000 
 	bl sub_8010312
 	pop {r5}
@@ -83505,7 +83505,7 @@ sub_80E1352:
 	ldr r1, [r2,#0x60]
 	tst r1, r1
 	beq loc_80E1380
-	add r0, r1, #0
+	mov r0, r1
 	bl sub_80E0DCA
 loc_80E1380:
 	lsr r6, r6, #1
@@ -83560,17 +83560,17 @@ thumb_func_end sub_80E1352
 thumb_local_start
 sub_80E13DC:
 	push {r4,r7,lr}
-	add r7, r0, #0
+	mov r7, r0
 	ldr r4, [r7,#0x54]
 	push {r5}
-	add r5, r0, #0
+	mov r5, r0
 	bl object_getFlag // () -> int
 	mov r1, #4
 	tst r0, r1
 	pop {r5}
 	bne loc_80E140A
 	push {r5}
-	add r5, r7, #0
+	mov r5, r7
 	ldrb r0, [r5,#0x16]
 	bl sub_800EB6C
 	tst r0, r0
@@ -83582,7 +83582,7 @@ sub_80E13DC:
 	strb r2, [r7]
 loc_80E140A:
 	push {r5}
-	add r5, r7, #0
+	mov r5, r7
 	ldr r0, dword_80E1518 // =0x100000 
 	bl sub_801031C
 	pop {r5}
@@ -83590,7 +83590,7 @@ loc_80E140A:
 	ldr r1, [r2,#0x60]
 	tst r1, r1
 	beq loc_80E1424
-	add r0, r1, #0
+	mov r0, r1
 	bl sub_80E0DD0
 loc_80E1424:
 	ldr r1, [r4,#0x48]
@@ -83644,7 +83644,7 @@ sub_80E146C:
 	ldr r1, [r2,#0x60]
 	tst r1, r1
 	beq loc_80E1486
-	add r0, r1, #0
+	mov r0, r1
 	bl sub_80E0DCA
 loc_80E1486:
 	ldr r1, [r4,#0x48]
@@ -83681,7 +83681,7 @@ sub_80E14AC:
 	ldr r1, [r2,#0x60]
 	tst r1, r1
 	beq loc_80E14C6
-	add r0, r1, #0
+	mov r0, r1
 	bl sub_80E0DD0
 loc_80E14C6:
 	ldr r1, [r4,#0x48]
@@ -83806,7 +83806,7 @@ loc_80E159A:
 	cmp r0, #0
 	bne loc_80E15F4
 	bl sub_80E1670
-	add r4, r0, #0
+	mov r4, r0
 	ldrh r0, [r4,#0x28]
 	ldr r1, dword_80E17DC // =0x173 
 	cmp r0, r1
@@ -83871,7 +83871,7 @@ sub_80E1620:
 	push {r5}
 	mov r0, #0xf
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E1642
 	str r5, [r0,#0x4c]
@@ -83933,30 +83933,30 @@ sub_80E1670:
 	ldrb r3, [r5,#0x16]
 	mov r0, #1
 	eor r3, r0
-	add r0, r4, #0
+	mov r0, r4
 	mov r1, #0
 	ldr r2, dword_80E17E4 // =0x1c3 
 	bl object_getEnemyByNameRange
-	add r6, r0, #0
+	mov r6, r0
 	lsl r3, r0, #2
 	add r3, r3, r4
 	mov r0, #0
 	str r0, [r3]
 	mov r0, #0
 	ldr r1, [r5,#0x4c]
-	add r2, r4, #0
+	mov r2, r4
 	bl sub_80E16CC
 	cmp r0, #0
 	bne loc_80E16BA
 	mov r0, #1
 	ldr r1, [r5,#0x4c]
-	add r2, r4, #0
+	mov r2, r4
 	bl sub_80E16CC
 	cmp r0, #0
 	bne loc_80E16BA
 	mov r0, #2
 	ldr r1, [r5,#0x4c]
-	add r2, r4, #0
+	mov r2, r4
 	bl sub_80E16CC
 	cmp r0, #0
 	bne loc_80E16BA
@@ -83971,8 +83971,8 @@ thumb_func_end sub_80E1670
 thumb_local_start
 sub_80E16CC:
 	push {r4,r6,r7,lr}
-	add r6, r1, #0
-	add r7, r2, #0
+	mov r6, r1
+	mov r7, r2
 	cmp r0, #2
 	bne loc_80E16DE
 	ldrb r4, [r6,#0x12]
@@ -84023,7 +84023,7 @@ loc_80E1708:
 	bl sub_80E1730
 	b loc_80E172A
 loc_80E1728:
-	add r0, r3, #0
+	mov r0, r3
 loc_80E172A:
 	add r7, #4
 	b loc_80E1708
@@ -84034,8 +84034,8 @@ thumb_func_end sub_80E1704
 thumb_local_start
 sub_80E1730:
 	push {r4,r7,lr}
-	add r4, r0, #0
-	add r7, r3, #0
+	mov r4, r0
+	mov r7, r3
 	ldrb r0, [r6,#0x13]
 	ldrb r1, [r4,#0x13]
 	ldrb r2, [r7,#0x13]
@@ -84043,28 +84043,28 @@ sub_80E1730:
 	beq loc_80E1748
 	cmp r0, r2
 	bne loc_80E174C
-	add r4, r7, #0
+	mov r4, r7
 	b loc_80E1758
 loc_80E1748:
 	cmp r0, r2
 	bne loc_80E1758
 loc_80E174C:
-	add r0, r7, #0
-	add r1, r4, #0
-	add r2, r6, #0
+	mov r0, r7
+	mov r1, r4
+	mov r2, r6
 	bl sub_80E175C
-	add r4, r0, #0
+	mov r4, r0
 loc_80E1758:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,r7,pc}
 thumb_func_end sub_80E1730
 
 thumb_local_start
 sub_80E175C:
 	push {r4,r6,r7,lr}
-	add r4, r2, #0
-	add r6, r0, #0
-	add r7, r1, #0
+	mov r4, r2
+	mov r6, r0
+	mov r7, r1
 	ldrb r0, [r4,#0x12]
 	ldrb r2, [r7,#0x12]
 	sub r3, r2, r0
@@ -84095,16 +84095,16 @@ loc_80E1792:
 	bgt loc_80E17A4
 	b loc_80E17A8
 loc_80E1798:
-	add r0, r6, #0
-	add r1, r7, #0
-	add r2, r4, #0
+	mov r0, r6
+	mov r1, r7
+	mov r2, r4
 	bl sub_80E17AC
 	b locret_80E17AA
 loc_80E17A4:
-	add r0, r6, #0
+	mov r0, r6
 	b locret_80E17AA
 loc_80E17A8:
-	add r0, r7, #0
+	mov r0, r7
 locret_80E17AA:
 	pop {r4,r6,r7,pc}
 thumb_func_end sub_80E175C
@@ -84112,9 +84112,9 @@ thumb_func_end sub_80E175C
 thumb_local_start
 sub_80E17AC:
 	push {r4,r6,r7,lr}
-	add r4, r2, #0
-	add r6, r0, #0
-	add r7, r1, #0
+	mov r4, r2
+	mov r6, r0
+	mov r7, r1
 	ldrb r1, [r6,#0x13]
 	ldrb r2, [r7,#0x13]
 	ldrb r0, [r4,#0x13]
@@ -84134,10 +84134,10 @@ loc_80E17C6:
 	cmp r0, r1
 	blt loc_80E17D8
 loc_80E17D4:
-	add r0, r6, #0
+	mov r0, r6
 	b locret_80E17DA
 loc_80E17D8:
-	add r0, r7, #0
+	mov r0, r7
 locret_80E17DA:
 	pop {r4,r6,r7,pc}
 dword_80E17DC: .word 0x173
@@ -84345,7 +84345,7 @@ loc_80E1944:
 	push {r0-r2,r5}
 	mov r0, #0x10
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E1998
 	strb r1, [r0,#0x12]
@@ -84370,9 +84370,9 @@ loc_80E1968:
 	bl sub_802CEA6
 	pop {r0,r1}
 	push {r0,r1}
-	add r0, r6, #0
+	mov r0, r6
 	bl sub_80E199A
-	add r6, r0, #0
+	mov r6, r0
 	pop {r0,r1}
 	mov r2, #0x1e
 	lsl r2, r2, #0x10
@@ -84510,7 +84510,7 @@ sub_80E1A6A:
 	push {r5}
 	mov r0, #0x11
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E1A84
 	str r5, [r0,#0x4c]
@@ -84612,7 +84612,7 @@ sub_80E1B1E:
 	push {r0,r1,r5}
 	mov r0, #0x12
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80E1B3A
 	strb r1, [r0,#0x12]
@@ -84849,7 +84849,7 @@ sub_80E1CD6:
 	push {r5}
 	mov r0, #0x13
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E1CEC
 	str r5, [r0,#0x4c]
@@ -84936,7 +84936,7 @@ sub_80E1D7A:
 	push {r5,lr}
 	mov r0, #0x14
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5,pc}
 	.balign 4, 0x00
 thumb_func_end sub_80E1D7A
@@ -85028,7 +85028,7 @@ sub_80E1E20:
 	push {r0,r1,r5}
 	mov r0, #0x15
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80E1E3C
 	strb r1, [r0,#0x12]
@@ -85085,15 +85085,15 @@ sub_80E1E70:
 loc_80E1E84:
 	mov r6, #6
 loc_80E1E86:
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	bl sub_800C90A
 	ldrb r1, [r0,#2]
 	tst r1, r1
 	beq loc_80E1EA0
 	ldrb r3, [r0,#3]
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	ldrb r2, [r5,#4]
 	bl object_setPanelTypeBlink
 loc_80E1EA0:
@@ -85107,8 +85107,8 @@ loc_80E1EAA:
 loc_80E1EAC:
 	mov r6, #6
 loc_80E1EAE:
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	ldrb r2, [r5,#4]
 	bl object_setPanelType
 	sub r6, #1
@@ -85135,8 +85135,8 @@ sub_80E1EC6:
 loc_80E1EDA:
 	mov r6, #6
 loc_80E1EDC:
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	bl sub_800C90A
 	ldrb r3, [r0,#3]
 	ldrb r2, [r5,#0x16]
@@ -85145,8 +85145,8 @@ loc_80E1EDC:
 	ldrb r1, [r0,#2]
 	tst r1, r1
 	beq loc_80E1EFC
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	ldrb r2, [r5,#4]
 	bl object_setPanelTypeBlink
 loc_80E1EFC:
@@ -85160,15 +85160,15 @@ loc_80E1F06:
 loc_80E1F08:
 	mov r6, #6
 loc_80E1F0A:
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	bl sub_800C90A
 	ldrb r1, [r0,#3]
 	ldrb r2, [r5,#0x16]
 	eor r1, r2
 	beq loc_80E1F24
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	mov r2, #3
 	bl object_setPanelType
 loc_80E1F24:
@@ -85206,15 +85206,15 @@ loc_80E1F54:
 	cmp r0, r6
 loc_80E1F56:
 	ble loc_80E1F72
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	bl sub_800C90A
 	ldrb r1, [r0,#2]
 	tst r1, r1
 	beq loc_80E1F72
 	ldrb r3, [r0,#3]
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	ldrb r2, [r5,#4]
 	bl object_setPanelTypeBlink
 loc_80E1F72:
@@ -85238,14 +85238,14 @@ loc_80E1F8C:
 	cmp r0, r6
 loc_80E1F8E:
 	ble loc_80E1FA8
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	bl sub_800C90A
 	ldrb r1, [r0,#2]
 	tst r1, r1
 	beq loc_80E1FA8
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	ldrb r2, [r5,#4]
 	bl object_setPanelType
 loc_80E1FA8:
@@ -85271,14 +85271,14 @@ sub_80E1FB6:
 	bcs locret_80E2058
 	mov r6, #6
 loc_80E1FCA:
-	add r0, r6, #0
+	mov r0, r6
 	mov r1, #2
 	bl sub_800C90A
 	ldrb r1, [r0,#2]
 	tst r1, r1
 	beq loc_80E1FE4
 	ldrb r3, [r0,#3]
-	add r0, r6, #0
+	mov r0, r6
 	mov r1, #2
 	ldrb r2, [r5,#4]
 	bl object_setPanelTypeBlink
@@ -85308,13 +85308,13 @@ loc_80E2006:
 loc_80E2010:
 	mov r6, #6
 loc_80E2012:
-	add r0, r6, #0
+	mov r0, r6
 	mov r1, #2
 	bl sub_800C90A
 	ldrb r1, [r0,#2]
 	tst r1, r1
 	beq loc_80E202A
-	add r0, r6, #0
+	mov r0, r6
 	mov r1, #2
 	ldrb r2, [r5,#4]
 	bl object_setPanelType
@@ -85354,7 +85354,7 @@ byte_80E2061: .byte 0x1
 	push {r0,r1,r5}
 	mov r0, #0x16
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	strb r1, [r0,#0x12]
 	strb r2, [r0,#0x13]
@@ -85394,10 +85394,10 @@ sub_80E20B0:
 	bl sub_8001532
 	mov r1, #0xf
 	svc 6
-	add r4, r1, #0
+	mov r4, r1
 	bl object_getFlipDirection_800E2CA // () -> int
 	neg r0, r0
-	add r3, r0, #0
+	mov r3, r0
 	ldr r1, dword_80E21C8 // =0x140000 
 	mul r0, r1
 	ldr r1, [r5,#0x34]
@@ -85511,7 +85511,7 @@ sub_80E21AC:
 	push {r0,r1,r5}
 	mov r0, #0x19
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80E21C6
 	strb r1, [r0,#0x12]
@@ -85593,7 +85593,7 @@ sub_80E2244:
 	push {r5}
 	mov r0, #0x1a
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E225A
 	str r5, [r0,#0x4c]
@@ -85748,7 +85748,7 @@ sub_80E2388:
 	push {r5}
 	mov r0, #0x1b
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E239C
 	ldrh r1, [r5,#0x16]
@@ -85896,7 +85896,7 @@ sub_80E24B8:
 	push {r0-r2,r5}
 	mov r0, #0x1c
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E24D8
 	strb r1, [r0,#0x12]
@@ -85987,7 +85987,7 @@ sub_80E2566:
 	push {r0-r2,r5}
 	mov r0, #0x1d
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E2586
 	strb r1, [r0,#0x12]
@@ -86085,8 +86085,8 @@ sub_80E2628:
 	pop {r0,r1}
 	beq locret_80E2684
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	ldrb r4, [r5,#4]
 	cmp r4, #2
@@ -86147,10 +86147,10 @@ loc_80E26C0:
 	sub r1, #1
 	bne loc_80E26AA
 	str r6, [r5,#0x64]
-	add r1, r6, #0
+	mov r1, r6
 	beq locret_80E26D6
-	add r2, r1, #0
-	add r0, r7, #0
+	mov r2, r1
+	mov r0, r7
 	bl sub_8000C72
 locret_80E26D6:
 	pop {r4,r6,r7,pc}
@@ -86181,10 +86181,10 @@ loc_80E26FE:
 	sub r0, #1
 	bne loc_80E26EA
 	str r6, [r5,#0x64]
-	add r1, r6, #0
+	mov r1, r6
 	beq locret_80E2710
-	add r2, r1, #0
-	add r0, r7, #0
+	mov r2, r1
+	mov r0, r7
 	bl sub_8000C72
 locret_80E2710:
 	pop {r4,r6,r7,pc}
@@ -86196,7 +86196,7 @@ sub_80E2712:
 	push {r3,r5}
 	mov r0, #0x1e
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r3,r5}
 	beq locret_80E2728
 	ldrb r1, [r5,#0x16]
@@ -86541,7 +86541,7 @@ sub_80E2ACA:
 	push {r0,r1,r3,r5}
 	mov r0, #0x1f
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E2AE4
 	strb r1, [r0,#0x12]
@@ -86621,7 +86621,7 @@ sub_80E2B5A:
 	push {r0-r2,r5}
 	mov r0, #0x20 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E2B7A
 	strb r1, [r0,#0x12]
@@ -86694,7 +86694,7 @@ sub_80E2BE0:
 	str r0, [r5,#0x68]
 	ldr r0, dword_80E2C04 // =0x30201 
 	str r0, [r5,#0x64]
-	add r0, r5, #0
+	mov r0, r5
 	add r0, #0x64 
 	mov r1, #3
 	mov r2, #4
@@ -86777,7 +86777,7 @@ sub_80E2C80:
 	push {r0-r2,r5}
 	mov r0, #0x21 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E2CA0
 	strb r1, [r0,#0x12]
@@ -86921,7 +86921,7 @@ sub_80E2D76:
 	push {r0-r2,r5}
 	mov r0, #0x22 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E2D96
 	strb r1, [r0,#0x12]
@@ -86944,8 +86944,8 @@ sub_80E2D98:
 loc_80E2D9E:
 	mov r7, #1
 loc_80E2DA0:
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	ldrb r2, [r5,#0x16]
 	bl sub_800D618
 thumb_func_end sub_80E2D98
@@ -86954,17 +86954,17 @@ thumb_local_start
 sub_80E2DAA:
 	tst r0, r0
 	beq loc_80E2DCE
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	push {r4}
 	mov r4, #0x3b 
 	bl sub_80E05F6
 	pop {r4}
-	add r0, r6, #0
+	mov r0, r6
 	bl object_setPanelAllianceTimerShort
 	add r4, #1
 loc_80E2DCE:
@@ -86975,7 +86975,7 @@ loc_80E2DCE:
 	cmp r6, #6
 	ble loc_80E2D9E
 	str r4, [r5,#0x60]
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,r6,r7,pc}
 thumb_func_end sub_80E2DAA
 
@@ -87015,7 +87015,7 @@ loc_80E2E12:
 	bne loc_80E2DF4
 	sub r0, #1
 	bne loc_80E2DF2
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,r6,r7,pc}
 	.byte 0, 0
 off_80E2E20: .word dword_80E2E24
@@ -87150,7 +87150,7 @@ sub_80E2F24:
 	push {r0-r2,r5}
 	mov r0, #0x23 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E2F44
 	strb r1, [r0,#0x12]
@@ -87189,7 +87189,7 @@ sub_80E2F74:
 	mov r0, #0x60 
 	add r0, r0, r5
 	ldrb r1, [r5,#5]
-	add r2, r1, #0
+	mov r2, r1
 	bl sub_8000C72
 	mov r0, #4
 	strb r0, [r5,#8]
@@ -87217,8 +87217,8 @@ sub_80E2F8C:
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1d
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	ldr r3, [r5,#0x3c]
 	ldrb r4, [r5,#4]
 	lsl r4, r4, #1
@@ -87254,17 +87254,17 @@ sub_80E2FE8:
 	push {r0,r1,r5}
 	mov r0, #0x24 
 	bl object_spawnType4
-	add r7, r5, #0
+	mov r7, r5
 	pop {r0,r1,r5}
 	beq locret_80E3032
 	strh r1, [r7,#0x22]
-	add r4, r0, #0
+	mov r4, r0
 	lsl r0, r0, #0x19
 	bcc loc_80E301C
 	mov r1, #0
 	strh r1, [r7,#0x12]
 	push {r5,r7}
-	add r5, r7, #0
+	mov r5, r7
 	lsr r0, r0, #0x16
 	ldr r6, off_80E3034 // =dword_8019C34 
 	add r6, r6, r0
@@ -87302,7 +87302,7 @@ sub_80E3038:
 	ldr r0, off_80E3094 // =off_8019B78 
 	lsl r4, r4, #2
 	ldr r4, [r0,r4]
-	add r0, r6, #0
+	mov r0, r6
 	bl sub_800E2C2
 	str r0, [sp,#0x10]
 	mov r6, #0
@@ -87336,7 +87336,7 @@ loc_80E3088:
 	add r4, #2
 	b loc_80E3054
 loc_80E308C:
-	add r0, r6, #0
+	mov r0, r6
 	add sp, sp, #0x1c
 	pop {r4,r6,pc}
 	.balign 4, 0x00
@@ -87423,7 +87423,7 @@ sub_80E3128:
 	push {r0-r2,r5}
 	mov r0, #0x25 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E3148
 	strb r1, [r0,#0x12]
@@ -87509,7 +87509,7 @@ sub_80E31C0:
 	push {r5}
 	mov r0, #0x26 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E31D6
 	str r5, [r0,#0x4c]
@@ -87582,7 +87582,7 @@ sub_80E3242:
 	push {r0-r2,r5}
 	mov r0, #0x27 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E3262
 	strb r1, [r0,#0x12]
@@ -87601,7 +87601,7 @@ thumb_local_start
 sub_80E3264:
 	push {r4,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	ldr r3, off_80E327C // =off_80E3280 
@@ -87663,8 +87663,8 @@ sub_80E32D8:
 	ldrh r0, [r0,#0x28]
 	strh r0, [r5,#0x28]
 	bl sub_800F26C
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
 	ldrh r0, [r5,#0x28]
@@ -87799,7 +87799,7 @@ sub_80E33FA:
 	push {r5-r7}
 	mov r0, #0x28 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5-r7}
 	beq locret_80E341C
 	str r5, [r0,#0x4c]
@@ -87901,7 +87901,7 @@ sub_80E349E:
 	push {r0-r2,r5}
 	mov r0, #0x29 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E34BE
 	strb r1, [r0,#0x12]
@@ -87960,7 +87960,7 @@ sub_80E3504:
 	ldrb r0, [r5,#0x16]
 	bl sub_802CEA6
 	bl sub_80E3560
-	add r4, r0, #0
+	mov r4, r0
 	ldr r0, [r5,#0x4c]
 	ldrh r1, [r5,#0x30]
 	ldr r2, [r5,#0x2c]
@@ -87987,7 +87987,7 @@ sub_80E353E:
 	push {r0-r2,r5}
 	mov r0, #0x2a 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E355E
 	strb r1, [r0,#0x12]
@@ -88103,7 +88103,7 @@ sub_80E360E:
 	push {r0-r2,r5}
 	mov r0, #0x2b 
 	bl sub_80033E4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E362A
 	strb r3, [r0,#0xe]
@@ -88157,7 +88157,7 @@ loc_80E3662:
 	str r0, [sp,#0x28]
 	cmp r0, #6
 	ble loc_80E3640
-	add r0, r6, #0
+	mov r0, r6
 	beq loc_80E36CA
 	ldrb r0, [r5,#0xe]
 	add r0, r0, r0
@@ -88265,8 +88265,8 @@ sub_80E376C:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #1
 	push {r1-r4}
@@ -88307,7 +88307,7 @@ sub_80E37D2:
 	push {r0-r2,r5}
 	mov r0, #0x2c 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E37F2
 	strb r1, [r0,#0x12]
@@ -88549,7 +88549,7 @@ sub_80E3976:
 	push {r0,r1,r5}
 	mov r0, #0x2d 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80E399C
 	strb r1, [r0,#0x12]
@@ -88698,7 +88698,7 @@ sub_80E3A92:
 	push {r0,r1,r5}
 	mov r0, #0x2e 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80E3AB4
 	strb r1, [r0,#0x12]
@@ -88756,7 +88756,7 @@ sub_80E3AFC:
 	bne loc_80E3B2E
 	push {r5}
 	ldrb r4, [r5,#4]
-	add r0, r4, #0
+	mov r0, r4
 	ldr r5, [r5,#0x4c]
 	bl sub_801A7CC
 	ldr r6, [r5,#0x58]
@@ -88796,7 +88796,7 @@ sub_80E3B50:
 	push {r0-r2,r5}
 	mov r0, #0x2f 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E3B6C
 	strb r3, [r0,#0xe]
@@ -89005,7 +89005,7 @@ sub_80E3CF2:
 	push {r0-r2,r5}
 	mov r0, #0x30 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E3D18
 	strb r1, [r0,#0x12]
@@ -89374,10 +89374,10 @@ thumb_func_end sub_80E3FA2
 thumb_local_start
 sub_80E3FB4:
 	push {r5,r6,lr}
-	add r6, r5, #0
+	mov r6, r5
 	mov r0, #0x31 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	str r6, [r0,#0x4c]
 	pop {r5,r6,pc}
 thumb_func_end sub_80E3FB4
@@ -89510,7 +89510,7 @@ sub_80E40C2:
 	push {r5}
 	mov r0, #0x32 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E40E8
 	ldr r1, [r5,#0x34]
@@ -89598,7 +89598,7 @@ sub_80E4164:
 	push {r0-r2,r5}
 	mov r0, #0x33 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E4184
 	strb r1, [r0,#0x12]
@@ -89762,7 +89762,7 @@ sub_80E4288:
 	push {r0-r2,r5}
 	mov r0, #0x34 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E42A8
 	strb r1, [r0,#0x12]
@@ -89785,8 +89785,8 @@ sub_80E42AA:
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	mov r6, #0
-	add r0, r1, #0
-	add r1, r2, #0
+	mov r0, r1
+	mov r1, r2
 	bl object_getFlipDirection_800E2CA // () -> int
 	neg r0, r0
 	str r0, [sp,#0xc]
@@ -89817,14 +89817,14 @@ loc_80E42EE:
 	mov r7, #0
 loc_80E42F2:
 	ldr r0, [sp,#0x10]
-	add r1, r4, #0
+	mov r1, r4
 	bl sub_800C90A
 	ldrb r0, [r0,#3]
 	ldr r1, [sp,#4]
 	cmp r0, r1
 	beq loc_80E4312
 	ldr r0, [sp,#0x10]
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #4
 	orr r0, r1
 	ldr r1, [sp]
@@ -89846,7 +89846,7 @@ loc_80E4312:
 	bhi loc_80E432C
 	b loc_80E42EE
 loc_80E432C:
-	add r0, r6, #0
+	mov r0, r6
 	add sp, sp, #0x18
 	pop {r4,r6,r7,pc}
 	.balign 4, 0x00
@@ -89958,7 +89958,7 @@ sub_80E43F6:
 	push {r5}
 	mov r0, #0x35 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E440A
 	ldrb r1, [r5,#0x16]
@@ -90106,7 +90106,7 @@ sub_80E4510:
 	push {r0-r2,r5}
 	mov r0, #0x36 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E4530
 	strb r1, [r0,#0x12]
@@ -90142,13 +90142,13 @@ loc_80E454A:
 	bl sub_80E4566
 	cmp r0, r4
 	blt loc_80E455A
-	add r4, r0, #0
+	mov r4, r0
 loc_80E455A:
 	add r7, #4
 	add r6, #1
 	cmp r6, #4
 	blt loc_80E454A
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,r6,r7,pc}
 thumb_func_end sub_80E4532
 
@@ -90221,7 +90221,7 @@ loc_80E45D4:
 	bne loc_80E45B0
 	sub r0, #1
 	bne loc_80E45AE
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,r6,r7,pc}
 off_80E45E0: .word dword_80E45E8
 dword_80E45E4: .word 0x1A050601
@@ -90336,7 +90336,7 @@ sub_80E46B6:
 	push {r0-r2,r5}
 	mov r0, #0x37 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E46D6
 	strb r1, [r0,#0x12]
@@ -90460,7 +90460,7 @@ sub_80E47A4:
 	push {r5}
 	mov r0, #0x38 
 	bl object_spawnType4
-	add r7, r5, #0
+	mov r7, r5
 	pop {r5}
 	pop {pc}
 thumb_func_end sub_80E47A4
@@ -90531,7 +90531,7 @@ sub_80E4824:
 	push {r0-r2,r5}
 	mov r0, #0x39 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E4844
 	strb r1, [r0,#0x12]
@@ -90640,7 +90640,7 @@ sub_80E48F8:
 	push {r5}
 	mov r0, #0x3a 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E490C
 	ldrh r1, [r5,#0x16]
@@ -90730,7 +90730,7 @@ sub_80E49A2:
 	push {r0-r2,r5}
 	mov r0, #0x3b 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E49C2
 	strb r1, [r0,#0x12]
@@ -90748,7 +90748,7 @@ thumb_func_end sub_80E49A2
 thumb_local_start
 sub_80E49C4:
 	push {r5,lr}
-	add r5, r0, #0
+	mov r5, r0
 	mov r1, #0x31 
 	mov r2, #0
 	bl sub_8013754
@@ -90927,7 +90927,7 @@ sub_80E4B34:
 	push {r5}
 	mov r0, #0x3c 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E4B56
 	ldrh r1, [r5,#0x16]
@@ -91090,7 +91090,7 @@ loc_80E4C4E:
 	bge loc_80E4C62
 	b loc_80E4C64
 loc_80E4C62:
-	add r3, r6, #0
+	mov r3, r6
 loc_80E4C64:
 	add r7, #4
 	add r4, #1
@@ -91112,7 +91112,7 @@ sub_80E4C78:
 	mov r1, #1
 	eor r0, r1
 	bl sub_80103BC
-	add r6, r0, #0
+	mov r6, r0
 	ldrh r0, [r6,#0x24]
 	tst r0, r0
 	beq loc_80E4C92
@@ -91131,7 +91131,7 @@ sub_80E4C96:
 	push {r2,r5}
 	mov r0, #0x6e 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r2,r5}
 	beq locret_80E4CB4
 	strb r2, [r0,#0xe]
@@ -91255,7 +91255,7 @@ sub_80E4D8A:
 	push {r5}
 	mov r0, #0x3e 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E4DA0
 	ldrb r1, [r5,#0x16]
@@ -91532,7 +91532,7 @@ sub_80E4FCA:
 	push {r0-r2,r5}
 	mov r0, #0x3f 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E4FE6
 	strb r1, [r0,#0x12]
@@ -91629,8 +91629,8 @@ sub_80E5068:
 	bl sub_80C536A
 	pop {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x34 
 	bl sub_80E05F6
@@ -91731,7 +91731,7 @@ sub_80E5150:
 	push {r2,r5}
 	mov r0, #0x40 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r2,r5}
 	beq locret_80E5172
 	str r5, [r0,#0x4c]
@@ -91752,14 +91752,14 @@ sub_80E5174:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x10
 	mov r7, sp
-	add r0, r7, #0
+	mov r0, r7
 	ldrb r3, [r5,#0x16]
 	mov r1, #1
 	eor r3, r1
 	mov r1, #0
 	mov r2, #0xae
 	bl object_getEnemyByNameRange
-	add r4, r0, #0
+	mov r4, r0
 	lsl r0, r0, #2
 	add r0, r0, r7
 	ldrb r3, [r5,#0x16]
@@ -91785,7 +91785,7 @@ sub_80E5174:
 	ldr r0, [r7,r0]
 	b loc_80E51C2
 loc_80E51C0:
-	add r0, r1, #0
+	mov r0, r1
 loc_80E51C2:
 	str r0, [r7,#8]
 	b loc_80E51CC
@@ -91811,7 +91811,7 @@ loc_80E51D2:
 	mov r7, #2
 loc_80E51E8:
 	add r6, r4, #1
-	add r3, r7, #0
+	mov r3, r7
 loc_80E51EC:
 	ldrb r0, [r4]
 	ldrb r1, [r6]
@@ -91855,9 +91855,9 @@ loc_80E5230:
 	cmp r0, r1
 	ble locret_80E523A
 loc_80E5234:
-	add r2, r1, #0
-	add r1, r0, #0
-	add r0, r2, #0
+	mov r2, r1
+	mov r1, r0
+	mov r0, r2
 locret_80E523A:
 	pop {r3,pc}
 off_80E523C: .word 0x100
@@ -91992,7 +91992,7 @@ sub_80E5314:
 	ldrb r0, [r5,#6]
 	tst r0, r0
 	bne loc_80E5322
-	add r0, r5, #0
+	mov r0, r5
 	bl sub_80E544C
 loc_80E5322:
 	mov r0, #0
@@ -92016,7 +92016,7 @@ loc_80E5340:
 	push {r5}
 	mov r0, #0x41 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E5366
 	ldrb r1, [r5,#0x16]
@@ -92040,7 +92040,7 @@ sub_80E5368:
 	push {r5}
 	mov r0, #0x41 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E5384
 	ldrb r1, [r0,#5]
@@ -92081,7 +92081,7 @@ sub_80E5386:
 	ldrb r1, [r5,#0x17]
 	eor r0, r1
 	bl object_getFlipDirection // (int a1, int a2) -> int
-	add r6, r0, #0
+	mov r6, r0
 	pop {r0,r1,r4}
 	push {r0,r1}
 	bl object_getPanelParameters
@@ -92095,7 +92095,7 @@ loc_80E53D0:
 	bcs loc_80E53EE
 	push {r0,r1,r4,r6}
 	bl object_getPanelParameters
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1,r4,r6}
 	tst r2, r4
 	bne loc_80E53EE
@@ -92138,7 +92138,7 @@ sub_80E541A:
 	tst r3, r3
 	beq loc_80E5436
 	push {r0,r2}
-	add r0, r3, #0
+	mov r0, r3
 	bl sub_80E5410
 	pop {r0,r2}
 loc_80E5436:
@@ -92339,7 +92339,7 @@ sub_80E558A:
 	push {r0-r2,r5}
 	mov r0, #0x42 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E55B0
 	strb r1, [r0,#0x12]
@@ -92436,7 +92436,7 @@ loc_80E564E:
 	mov r1, #0x34 
 	add r0, r0, r1
 	bl sub_800362C
-	add r2, r1, #0
+	mov r2, r1
 	mov r0, #0x34 
 	mov r1, #0
 	bl sub_8046670
@@ -92508,7 +92508,7 @@ sub_80E56D0:
 	push {r0-r2,r5}
 	mov r0, #0x43 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq loc_80E56FC
 	strb r1, [r0,#0x12]
@@ -92562,7 +92562,7 @@ sub_80E5734:
 	push {r4,r7,lr}
 	ldr r7, [r5,#0x4c]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r7,#0x12]
 	mov r1, #2
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
@@ -92682,7 +92682,7 @@ loc_80E5820:
 	add r0, r0, r1
 	str r0, [r5,#0x74]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #0x78 
 	ldr r1, [r5,#0x74]
 	lsr r1, r1, #0x10
@@ -92753,7 +92753,7 @@ sub_80E58A8:
 	push {r5}
 	mov r0, #0x44 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E58D0
 	ldrh r1, [r5,#0x16]
@@ -92776,9 +92776,9 @@ thumb_func_end sub_80E58A8
 thumb_local_start
 sub_80E58D2:
 	push {r4-r7,lr}
-	add r7, r4, #0
-	add r4, r2, #0
-	add r5, r3, #0
+	mov r7, r4
+	mov r4, r2
+	mov r5, r3
 	ldr r2, off_80E5934 // =byte_8006660 
 	add r3, r1, r1
 	ldrsh r6, [r2,r3]
@@ -92905,7 +92905,7 @@ sub_80E59C6:
 	push {r0-r2,r5}
 	mov r0, #0x45 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E59E6
 	strb r1, [r0,#0x12]
@@ -92993,7 +92993,7 @@ sub_80E5A64:
 	push {r5}
 	mov r0, #0x46 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E5A88
 	ldrh r1, [r5,#0x16]
@@ -93041,10 +93041,10 @@ loc_80E5AB8:
 	add r2, #1
 	cmp r2, #4
 	blt loc_80E5AA4
-	add r0, r4, #0
+	mov r0, r4
 	beq loc_80E5AD2
 	bl sub_8001532
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
 	add r0, sp, #0
 	lsl r1, r1, #2
@@ -93105,7 +93105,7 @@ loc_80E5B26:
 	tst r6, r6
 	beq loc_80E5AF2
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -93136,14 +93136,14 @@ sub_80E5B62:
 	push {r5,lr}
 	mov r0, #0x47 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5,pc}
 thumb_func_end sub_80E5B62
 
 thumb_func_start sub_80E5B6E
 sub_80E5B6E:
 	push {r5,lr}
-	add r5, r0, #0
+	mov r5, r0
 	bne locret_80E5B78
 	bl object_freeMemory
 locret_80E5B78:
@@ -93152,7 +93152,7 @@ thumb_func_end sub_80E5B6E
 
 thumb_local_start
 sub_80E5B7A:
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#5]
 	mov r1, #0xc
 	mul r0, r1
@@ -93360,7 +93360,7 @@ loc_80E5CE6:
 	add r0, #1
 	strh r0, [r5,#0x22]
 	bl sub_800E2C0
-	add r6, r0, #0
+	mov r6, r0
 	ldr r4, [r5,#0x4c]
 	mov r0, #0x34 
 	add r0, r0, r4
@@ -93385,7 +93385,7 @@ sub_80E5D12:
 	push {r5}
 	mov r0, #0x48 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E5D3C
 	str r5, [r0,#0x4c]
@@ -93491,7 +93491,7 @@ sub_80E5DDC:
 	push {r5}
 	mov r0, #0x49 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E5DFE
 	ldr r1, [r5,#0x34]
@@ -93592,7 +93592,7 @@ sub_80E5EA8:
 	push {r0-r2,r5}
 	mov r0, #0x4a 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E5EC8
 	strb r1, [r0,#0x12]
@@ -93697,7 +93697,7 @@ sub_80E5F78:
 	push {r0-r2,r5}
 	mov r0, #0x4b 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E5F98
 	strb r1, [r0,#0x12]
@@ -93986,7 +93986,7 @@ sub_80E61D2:
 	push {r0-r2,r5}
 	mov r0, #0x4e 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E61F2
 	strb r1, [r0,#0x12]
@@ -94033,7 +94033,7 @@ sub_80E621C:
 	pop {r0,r1}
 	ldrb r2, [r5,#0x16]
 	bl sub_80E7486
-	add r5, r0, #0
+	mov r5, r0
 	beq locret_80E624C
 	mov r4, #0x24 
 	lsl r4, r4, #8
@@ -94142,7 +94142,7 @@ sub_80E62F4:
 	push {r0-r2,r5}
 	mov r0, #0x4f 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E6314
 	strb r1, [r0,#0x12]
@@ -94410,7 +94410,7 @@ sub_80E64E8:
 	push {r0-r2,r5}
 	mov r0, #0x50 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E6508
 	strb r1, [r0,#0x12]
@@ -94438,7 +94438,7 @@ loc_80E6516:
 	mov r2, #1
 	eor r0, r2
 	ldrb r1, [r5,#0x17]
-	add r2, r6, #0
+	mov r2, r6
 	bl sub_800D4D0
 	tst r0, r0
 	beq loc_80E654E
@@ -94627,9 +94627,9 @@ sub_80E667C:
 	sub r0, r0, r2
 	ldr r2, [r5,#0x38]
 	sub r1, r1, r2
-	add r2, r1, #0
-	add r1, r0, #0
-	add r0, r2, #0
+	mov r2, r1
+	mov r1, r0
+	mov r0, r2
 	bl calcAngle_800117C
 	ldr r1, [r5,#0x40]
 	bl sub_80011A0
@@ -94705,7 +94705,7 @@ sub_80E6720:
 	push {r0-r2,r5}
 	mov r0, #0x51 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E674A
 	strb r1, [r0,#0x12]
@@ -94808,7 +94808,7 @@ sub_80E67E6:
 	push {r0-r2,r5}
 	mov r0, #0x52 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E6806
 	strb r1, [r0,#0x12]
@@ -94889,7 +94889,7 @@ sub_80E6878:
 	push {r0-r2,r5}
 	mov r0, #0x53 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E6898
 	strb r1, [r0,#0x12]
@@ -95022,7 +95022,7 @@ sub_80E696C:
 	push {r0-r2,r5}
 	mov r0, #0x54 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E698C
 	str r1, [r0,#0x64]
@@ -95054,7 +95054,7 @@ sub_80E698E:
 loc_80E69A6:
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #2
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r1, r1, r0
 	ldr r0, off_80E6A5C // =dword_80E6A60 
@@ -95071,7 +95071,7 @@ loc_80E69A6:
 	lsl r1, r1, #4
 	orr r0, r1
 	add r1, sp, #8
-	add r2, r6, #0
+	mov r2, r6
 	lsl r2, r2, #1
 	add r1, r1, r2
 	strb r0, [r1]
@@ -95084,14 +95084,14 @@ loc_80E69DA:
 	mov r7, #1
 loc_80E69E2:
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #1
 	ldrb r1, [r5,#0x16]
 	tst r1, r1
 	beq loc_80E69F2
 	mov r0, #6
 loc_80E69F2:
-	add r1, r7, #0
+	mov r1, r7
 	ldr r3, [sp,#4]
 	ldr r2, dword_80E6A8C // =0xf880080 
 	sub r3, r3, r2
@@ -95109,7 +95109,7 @@ loc_80E69F2:
 	lsl r1, r1, #4
 	orr r0, r1
 	add r1, sp, #8
-	add r2, r6, #0
+	mov r2, r6
 	lsl r2, r2, #1
 	add r1, r1, r2
 	strb r0, [r1]
@@ -95127,7 +95127,7 @@ loc_80E6A2E:
 	tst r6, r6
 	beq loc_80E6A56
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	lsl r1, r1, #1
@@ -95157,7 +95157,7 @@ sub_80E6A7C:
 	ldr r0, [r5,#0x68]
 	tst r0, r0
 	beq locret_80E6A8A
-	add r5, r0, #0
+	mov r5, r0
 	bl sub_801BBF4
 locret_80E6A8A:
 	pop {r5,pc}
@@ -95228,8 +95228,8 @@ sub_80E6AF0:
 	ldrb r0, [r1,#0x12]
 	ldrb r1, [r1,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x20 
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -95306,7 +95306,7 @@ sub_80E6B88:
 	push {r0-r2,r5}
 	mov r0, #0x55 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E6BA4
 	str r5, [r0,#0x4c]
@@ -95324,7 +95324,7 @@ sub_80E6BA6:
 	push {lr}
 	mov r3, #0
 loc_80E6BAA:
-	add r0, r3, #0
+	mov r0, r3
 	lsl r0, r0, #1
 	ldr r1, off_80E6BD0 // =dword_80E6BD4 
 	add r1, r1, r0
@@ -95441,7 +95441,7 @@ sub_80E6C8C:
 	push {r0-r2,r5}
 	mov r0, #0x56 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E6CA8
 	str r5, [r0,#0x4c]
@@ -95473,8 +95473,8 @@ sub_80E6CAA:
 loc_80E6CC6:
 	mov r4, #1
 loc_80E6CC8:
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	mov r2, #0x10
 	mov r3, #0x40 
 	push {r0,r1}
@@ -95524,7 +95524,7 @@ sub_80E6DFC:
 	push {r4,r6,lr}
 	mov r4, #0
 loc_80E6E00:
-	add r3, r4, #0
+	mov r3, r4
 	lsl r3, r3, #1
 	ldr r6, off_80E6E30 // =dword_80E6E34 
 	add r6, r6, r3
@@ -95533,8 +95533,8 @@ loc_80E6E00:
 	cmp r2, r3
 	bne loc_80E6E26
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #8
 	mov r4, #2
 	lsl r6, r6, #0x10
@@ -95673,7 +95673,7 @@ sub_80E6F10:
 	push {r0-r2,r5}
 	mov r0, #0x57 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E6F30
 	strb r1, [r0,#0x12]
@@ -95815,7 +95815,7 @@ sub_80E7008:
 	push {r0-r2,r5}
 	mov r0, #0x58 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E7028
 	strb r1, [r0,#0x12]
@@ -95902,7 +95902,7 @@ sub_80E70A6:
 	push {r0-r2,r5}
 	mov r0, #0x59 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E70C6
 	strb r1, [r0,#0x12]
@@ -96037,7 +96037,7 @@ sub_80E71A0:
 	push {r5}
 	mov r0, #0x5a 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E71B6
 	str r5, [r0,#0x4c]
@@ -96129,7 +96129,7 @@ sub_80E723E:
 	push {r0-r2,r5}
 	mov r0, #0x5b 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E725E
 	strb r1, [r0,#0x12]
@@ -96208,8 +96208,8 @@ sub_80E72C8:
 	ldrb r1, [r5,#0x13]
 	push {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x50 
 	bl sub_80E7774
@@ -96220,7 +96220,7 @@ sub_80E72C8:
 	push {r0,r1}
 	ldrb r2, [r5,#0x16]
 	bl sub_80E7486
-	add r4, r0, #0
+	mov r4, r0
 	pop {r0,r1}
 	beq loc_80E73C4
 	ldrh r0, [r4,#0x28]
@@ -96366,7 +96366,7 @@ sub_80E7464:
 	push {r0-r2,r5}
 	mov r0, #0x5c 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E7484
 	strb r1, [r0,#0x12]
@@ -96488,7 +96488,7 @@ sub_80E7546:
 	push {r0-r2,r5}
 	mov r0, #0x5d 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E7566
 	strb r1, [r0,#0x12]
@@ -96587,7 +96587,7 @@ sub_80E7600:
 	push {r0-r2,r5}
 	mov r0, #0x5e 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E7620
 	strb r1, [r0,#0x12]
@@ -96692,7 +96692,7 @@ sub_80E76D4:
 	push {r0-r2,r5}
 	mov r0, #0x5f 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E76F4
 	strb r1, [r0,#0x12]
@@ -96777,7 +96777,7 @@ sub_80E7774:
 	push {r5}
 	mov r0, #0x60 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E7784
 locret_80E7784:
@@ -96915,7 +96915,7 @@ sub_80E7896:
 	push {r5}
 	mov r0, #0x61 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E78AC
 	str r5, [r0,#0x4c]
@@ -97008,7 +97008,7 @@ sub_80E7942:
 	push {r0,r1,r5}
 	mov r0, #0x62 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r2,r5}
 	beq locret_80E795A
 	strb r1, [r0,#0x12]
@@ -97170,7 +97170,7 @@ sub_80E7A88:
 	push {r5}
 	mov r0, #0x63 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E7A9E
 	str r5, [r0,#0x4c]
@@ -97340,7 +97340,7 @@ sub_80E7BD8:
 	push {r5}
 	mov r0, #0x64 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E7BEE
 	str r5, [r0,#0x4c]
@@ -97450,7 +97450,7 @@ sub_80E7CA8:
 	push {r0-r2,r5}
 	mov r0, #0x65 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E7CC8
 	strb r1, [r0,#0x12]
@@ -97570,7 +97570,7 @@ sub_80E7D84:
 	push {r2,r3,r5}
 	mov r0, #0x66 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r2,r3,r5}
 	beq locret_80E7DA2
 	str r5, [r0,#0x4c]
@@ -97587,7 +97587,7 @@ thumb_func_end sub_80E7D84
 thumb_local_start
 sub_80E7DA4:
 	push {r5,lr}
-	add r5, r0, #0
+	mov r5, r0
 	ldr r0, [r5,#0x60]
 	bl sub_80BC644
 	ldr r0, [r5,#0x64]
@@ -97673,7 +97673,7 @@ sub_80E7E42:
 	push {r0-r2,r5}
 	mov r0, #0x67 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E7E62
 	strb r1, [r0,#0x12]
@@ -97782,7 +97782,7 @@ sub_80E7F16:
 	push {r0-r2,r5}
 	mov r0, #0x68 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E7F36
 	strb r1, [r0,#0x12]
@@ -97871,7 +97871,7 @@ sub_80E7FBA:
 	push {r0-r2,r5}
 	mov r0, #0x69 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E7FDA
 	strb r1, [r0,#0x12]
@@ -97958,7 +97958,7 @@ sub_80E8058:
 	push {r0-r2,r5}
 	mov r0, #0x6a 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E8078
 	strb r1, [r0,#0x12]
@@ -98064,7 +98064,7 @@ sub_80E8124:
 	push {r5}
 	mov r0, #0x6b 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E8136
 	str r5, [r0,#0x4c]
@@ -98144,7 +98144,7 @@ sub_80E81B4:
 	push {r0-r2,r5}
 	mov r0, #0x6c 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E81D4
 	strb r1, [r0,#0x12]
@@ -98224,7 +98224,7 @@ sub_80E8244:
 	push {r0-r2,r5}
 	mov r0, #0x6d 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E8264
 	strb r1, [r0,#0x12]
@@ -98377,7 +98377,7 @@ loc_80E834E:
 	bge loc_80E8362
 	b loc_80E8364
 loc_80E8362:
-	add r3, r6, #0
+	mov r3, r6
 loc_80E8364:
 	add r7, #4
 	add r4, #1
@@ -98399,7 +98399,7 @@ sub_80E8378:
 	mov r1, #1
 	eor r0, r1
 	bl sub_80103BC
-	add r6, r0, #0
+	mov r6, r0
 	ldrh r0, [r6,#0x24]
 	tst r0, r0
 	beq loc_80E8392
@@ -98418,7 +98418,7 @@ sub_80E8396:
 	push {r2,r5}
 	mov r0, #0x6e 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r2,r5}
 	beq locret_80E83B4
 	strb r2, [r0,#0xe]
@@ -98527,7 +98527,7 @@ sub_80E8464:
 	push {r0-r2,r5}
 	mov r0, #0x6f 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E8484
 	strb r1, [r0,#0x12]
@@ -98549,10 +98549,10 @@ sub_80E8486:
 	lsl r4, r2, #2
 	ldr r7, off_80E84C4 // =dword_80E84C8 
 	ldr r7, [r7,r4]
-	add r0, r2, #0
-	add r1, r3, #0
+	mov r0, r2
+	mov r1, r3
 	bl object_getFlipDirection // (int a1, int a2) -> int
-	add r4, r0, #0
+	mov r4, r0
 	pop {r0,r1}
 	add r0, r0, r4
 	mov r6, #0
@@ -98570,7 +98570,7 @@ loc_80E84A0:
 	add r0, r0, r4
 	b loc_80E84A0
 loc_80E84BC:
-	add r0, r6, #0
+	mov r0, r6
 	pop {r4,r6,r7,pc}
 loc_80E84C0:
 	mov r0, #0xff
@@ -98582,7 +98582,7 @@ thumb_func_end sub_80E8486
 thumb_local_start
 sub_80E84D0:
 	push {r4,r6,r7,lr}
-	add r7, r0, #0
+	mov r7, r0
 	mov r6, #0
 	mov r0, #0
 	str r0, [r7]
@@ -98662,7 +98662,7 @@ loc_80E856E:
 	mov r0, #0xff
 	strb r0, [r7,#7]
 loc_80E8572:
-	add r0, r6, #0
+	mov r0, r6
 	pop {r4,r6,r7,pc}
 	.balign 4, 0x00
 dword_80E8578: .word 0xF880080
@@ -98743,7 +98743,7 @@ sub_80E85FA:
 	push {r0-r2,r5}
 	mov r0, #0x70 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E8610
 	bl sub_801155A
@@ -98755,7 +98755,7 @@ thumb_func_end sub_80E85FA
 thumb_local_start
 sub_80E8612:
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	beq locret_80E862C
 	mov r1, #2
 	ldr r0, [r4,#0x64]
@@ -98928,7 +98928,7 @@ sub_80E8770:
 	push {r5}
 	mov r0, #0x71 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E8786
 	str r5, [r0,#0x4c]
@@ -99059,7 +99059,7 @@ sub_80E887C:
 	push {r5}
 	mov r0, #0x72 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E8892
 	str r5, [r0,#0x4c]
@@ -99150,7 +99150,7 @@ sub_80E8912:
 	push {r2,r5}
 	mov r0, #0x73 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r2,r5}
 	beq locret_80E8930
 	str r5, [r0,#0x4c]
@@ -99286,7 +99286,7 @@ sub_80E8A2A:
 	push {r5}
 	mov r0, #0x74 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E8A44
 	str r5, [r0,#0x4c]
@@ -99393,7 +99393,7 @@ sub_80E8ADC:
 	push {r0-r2,r5}
 	mov r0, #0x75 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E8AFC
 	strb r1, [r0,#0x12]
@@ -99525,7 +99525,7 @@ sub_80E8BC0:
 	push {r0-r2,r5}
 	mov r0, #0x76 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E8BE0
 	strb r1, [r0,#0x12]
@@ -99543,7 +99543,7 @@ thumb_func_end sub_80E8BC0
 thumb_local_start
 sub_80E8BE2:
 	push {r4,r6,r7,lr}
-	add r4, r2, #0
+	mov r4, r2
 	ldrh r3, [r5,#0x32]
 	ldr r6, [r5,#0x2c]
 	add r6, r6, r3
@@ -99604,9 +99604,9 @@ sub_80E8C44:
 	cmp r0, #0
 	beq loc_80E8C7A
 loc_80E8C68:
-	add r6, r0, #0
+	mov r6, r0
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	ldrb r0, [r7,r1]
 	lsr r1, r0, #4
@@ -99634,7 +99634,7 @@ sub_80E8C84:
 	bl sub_800CEA0
 	cmp r0, #0
 	beq loc_80E8CBE
-	add r6, r0, #0
+	mov r6, r0
 	add r3, sp, #0
 	mov r4, #0x64 
 	add r4, r4, r5
@@ -99701,7 +99701,7 @@ sub_80E8CFA:
 	bl sub_800CEA0
 	cmp r0, #0
 	beq loc_80E8D3A
-	add r6, r0, #0
+	mov r6, r0
 	add r3, sp, #0
 	mov r4, #0x64 
 	add r4, r4, r5
@@ -99750,7 +99750,7 @@ loc_80E8D9C:
 loc_80E8D9E:
 	push {r0-r3,r6,r7}
 	bl object_getPanelParameters
-	add r4, r0, #0
+	mov r4, r0
 	pop {r0-r3,r6,r7}
 	tst r4, r3
 	bne loc_80E8DCE
@@ -99776,10 +99776,10 @@ loc_80E8DCE:
 	bne loc_80E8D9E
 	sub r1, #1
 	bne loc_80E8D9C
-	add r0, r6, #0
+	mov r0, r6
 	beq loc_80E8DEA
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	ldrb r0, [r7,r1]
 	lsr r1, r0, #4
@@ -99897,7 +99897,7 @@ sub_80E8EA0:
 	push {r0-r3,r5}
 	mov r0, #0x77 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r5}
 	beq locret_80E8EDE
 	str r5, [r0,#0x4c]
@@ -99917,12 +99917,12 @@ loc_80E8EC2:
 	bne loc_80E8EC2
 	ldrh r1, [r5,#0x16]
 	strh r1, [r0,#0x16]
-	add r6, r5, #0
-	add r5, r0, #0
+	mov r6, r5
+	mov r5, r0
 	mov r0, #4
 	bl battle_setFlags
-	add r0, r5, #0
-	add r5, r6, #0
+	mov r0, r5
+	mov r5, r6
 locret_80E8EDE:
 	pop {r4,r6,pc}
 thumb_func_end sub_80E8EA0
@@ -100016,7 +100016,7 @@ sub_80E8F78:
 	push {r2,r3,r5}
 	mov r0, #0x78 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r2,r3,r5}
 	beq locret_80E8F96
 	str r5, [r0,#0x4c]
@@ -100033,7 +100033,7 @@ thumb_func_end sub_80E8F78
 thumb_local_start
 sub_80E8F98:
 	push {r5,lr}
-	add r5, r0, #0
+	mov r5, r0
 	ldr r0, [r5,#0x60]
 	bl sub_80BFF34
 	ldr r0, [r5,#0x64]
@@ -100046,7 +100046,7 @@ thumb_func_end sub_80E8F98
 thumb_local_start
 sub_80E8FB0:
 	push {r5,lr}
-	add r5, r0, #0
+	mov r5, r0
 	ldr r0, [r5,#0x60]
 	bl sub_80BFF3E
 	ldr r0, [r5,#0x64]
@@ -100059,7 +100059,7 @@ thumb_func_end sub_80E8FB0
 thumb_local_start
 sub_80E8FC8:
 	push {r5,lr}
-	add r5, r0, #0
+	mov r5, r0
 	ldr r0, [r5,#0x60]
 	bl sub_80BFF56
 	ldr r0, [r5,#0x64]
@@ -100236,7 +100236,7 @@ sub_80E90FE:
 	push {r0-r2,r5}
 	mov r0, #0x79 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E911E
 	strb r1, [r0,#0x12]
@@ -100302,7 +100302,7 @@ sub_80E9164:
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
-	add r2, r5, #0
+	mov r2, r5
 	mov r3, #0x64 
 	add r7, r2, r3
 	ldrb r2, [r5,#0xe]
@@ -100335,7 +100335,7 @@ sub_80E91B8:
 	push {r0-r2,r5}
 	mov r0, #0x7c 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E91DE
 	strb r1, [r0,#0x12]
@@ -100501,7 +100501,7 @@ sub_80E92EE:
 	push {r0-r2,r5}
 	mov r0, #0x7e 
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E930E
 	strb r1, [r0,#0x12]
@@ -100691,7 +100691,7 @@ sub_80E943E:
 	push {r0-r2,r5}
 	mov r0, #0x7f
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E945E
 	strb r1, [r0,#0x12]
@@ -100787,7 +100787,7 @@ sub_80E94DC:
 	push {r0-r2,r5}
 	mov r0, #0x80
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E94F6
 	strb r3, [r0,#0xe]
@@ -100812,7 +100812,7 @@ loc_80E9500:
 	mul r0, r6
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
-	add r1, r4, #0
+	mov r1, r4
 	cmp r0, #1
 	blt loc_80E9552
 	cmp r0, #6
@@ -100848,7 +100848,7 @@ loc_80E954E:
 	add r6, #1
 	b loc_80E94FE
 loc_80E9552:
-	add r0, r7, #0
+	mov r0, r7
 	pop {r4,r6,r7,pc}
 	.balign 4, 0x00
 off_80E9558: .word byte_80E955C
@@ -101139,7 +101139,7 @@ sub_80E979C:
 	push {r0-r2,r5}
 	mov r0, #0x84
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E97BC
 	strb r1, [r0,#0x12]
@@ -101358,7 +101358,7 @@ sub_80E996E:
 	push {r0,r5}
 	mov r0, #0x87
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1,r5}
 	beq locret_80E998C
 	str r1, [r0,#0x68]
@@ -101453,7 +101453,7 @@ sub_80E9A1C:
 	push {r0-r2,r5}
 	mov r0, #0x88
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E9A36
 	strb r3, [r0,#0xe]
@@ -101475,7 +101475,7 @@ sub_80E9A38:
 	str r0, [sp,#0xc]
 	add r0, sp, #0xc
 	mov r1, #3
-	add r2, r1, #0
+	mov r2, r1
 	bl sub_8000C72
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #3
@@ -101488,16 +101488,16 @@ sub_80E9A38:
 	mov r4, #1
 loc_80E9A60:
 	ldr r0, [sp]
-	add r1, r4, #0
+	mov r1, r4
 	ldr r2, [sp,#4]
 	ldr r3, [sp,#8]
 	add r7, sp, #0x10
 	bl sub_800CF42
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80E9A8E
 	ldr r0, [sp]
-	add r1, r4, #0
+	mov r1, r4
 	ldr r2, [sp,#4]
 	ldr r3, [sp,#8]
 	push {r0,r1}
@@ -101510,7 +101510,7 @@ loc_80E9A60:
 	b loc_80E9ABE
 loc_80E9A8E:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0x10
 	ldrb r0, [r0,r1]
@@ -101663,7 +101663,7 @@ sub_80E9BDC:
 	push {r5}
 	mov r0, #0x89
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80E9BFE
 	ldrh r1, [r5,#0x16]
@@ -101796,7 +101796,7 @@ sub_80E9D0C:
 	push {r0-r2,r5}
 	mov r0, #0x8a
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E9D28
 	strb r3, [r0,#0xe]
@@ -101843,8 +101843,8 @@ loc_80E9D60:
 loc_80E9D64:
 	mov r6, #1
 loc_80E9D66:
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	ldrb r2, [r5,#0x14]
 	ldrb r3, [r5,#0x15]
 	cmp r0, r2
@@ -101874,7 +101874,7 @@ loc_80E9D90:
 	tst r7, r7
 	beq loc_80E9DD4
 	bl sub_8001532
-	add r1, r7, #0
+	mov r1, r7
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -102050,7 +102050,7 @@ sub_80E9EFA:
 	push {r0-r2,r5}
 	mov r0, #0x8b
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80E9F1A
 	str r1, [r0,#0x60]
@@ -102154,10 +102154,10 @@ sub_80E9FBC:
 	ldrb r0, [r5,#4]
 	ldrb r1, [r5,#5]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r6, r0, #0
-	add r7, r1, #0
+	mov r6, r0
+	mov r7, r1
 	bl sub_8001532
-	add r2, r0, #0
+	mov r2, r0
 	mov r1, #0x1f
 	and r0, r1
 	lsl r0, r0, #0x10
@@ -102166,10 +102166,10 @@ sub_80E9FBC:
 	neg r0, r0
 loc_80E9FDC:
 	add r1, r6, r0
-	add r2, r7, #0
+	mov r2, r7
 	push {r1,r2}
 	bl sub_8001532
-	add r2, r0, #0
+	mov r2, r0
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #0x10
@@ -102355,7 +102355,7 @@ sub_80EA11C:
 	push {r0-r2,r5}
 	mov r0, #0x8c
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r1-r3,r5}
 	beq locret_80EA14A
 	strb r1, [r0,#0x12]
@@ -102486,7 +102486,7 @@ thumb_func_end sub_80EA1BC
 	push {r5}
 	mov r0, #0x8d
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80EA24E
 	ldrh r1, [r5,#0x16]
@@ -102633,7 +102633,7 @@ thumb_func_end sub_80EA31E
 	push {r5}
 	mov r0, #0x8f
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80EA35E
 	ldrb r1, [r5,#0x16]
@@ -102713,8 +102713,8 @@ sub_80EA3A4:
 	mov r1, #3
 loc_80EA3E6:
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x68 
 	bl sub_80E05F6
@@ -102744,7 +102744,7 @@ sub_80EA438:
 	push {r5}
 	mov r0, #0x90
 	bl object_spawnType4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r5}
 	beq locret_80EA45E
 	str r5, [r0,#0x4c]
@@ -103302,7 +103302,7 @@ thumb_func_end sub_80EAD9C
 thumb_local_start
 sub_80EADDC:
 	push {r6,lr}
-	add r6, r3, #0
+	mov r6, r3
 	mov r0, #1
 	lsl r0, r0, #0x16
 	bl object_clearFlag // (int bitfield) -> void
@@ -103336,7 +103336,7 @@ thumb_func_end sub_80EADDC
 thumb_local_start
 sub_80EAE28:
 	push {r4,r6,lr}
-	add r6, r3, #0
+	mov r6, r3
 	ldrb r0, [r6,#1]
 	cmp r0, #0
 	bne loc_80EAE4C
@@ -103383,9 +103383,9 @@ loc_80EAE78:
 	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#0x17]
 loc_80EAE90:
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_80E164A
-	add r2, r4, #0
+	mov r2, r4
 	bl ho_8026554
 	tst r0, r0
 	bne loc_80EAEA4
@@ -103563,7 +103563,7 @@ loc_80EAFDE:
 	bl sub_80E33FA
 	cmp r0, #0
 	beq locret_80EB01A
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x16]
 	mov r1, #0x2c 
 	bl sub_80136CC
@@ -103571,12 +103571,12 @@ loc_80EAFDE:
 	blt loc_80EB012
 	cmp r0, #0x18
 	bgt loc_80EB012
-	add r0, r4, #0
+	mov r0, r4
 	mov r1, #1
 	bl sub_80E341E
 	b locret_80EB01A
 loc_80EB012:
-	add r0, r4, #0
+	mov r0, r4
 	mov r1, #2
 	bl sub_80E341E
 locret_80EB01A:
@@ -103638,7 +103638,7 @@ sub_80EB088:
 loc_80EB0AA:
 	cmp r1, #1
 	bne loc_80EB0BA
-	add r2, r0, #0
+	mov r2, r0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800F998
@@ -104068,7 +104068,7 @@ sub_80EB402:
 loc_80EB40E:
 	cmp r1, #1
 	bne loc_80EB41E
-	add r2, r0, #0
+	mov r2, r0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800F998
@@ -104139,8 +104139,8 @@ loc_80EB472:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0xc
 	lsl r3, r3, #0x10
 	mov r4, #6
@@ -104217,7 +104217,7 @@ loc_80EB528:
 	bl sub_800FA54
 	cmp r0, #0
 	beq locret_80EB560
-	add r6, r0, #0
+	mov r6, r0
 	bl sub_800F964
 	tst r0, r0
 	beq locret_80EB560
@@ -104227,11 +104227,11 @@ loc_80EB528:
 	str r0, [r1,#0x68]
 	bl sub_8011714
 	bl sub_8010332
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_80103A8
-	add r2, r0, #0
-	add r0, r6, #0
-	add r1, r4, #0
+	mov r2, r0
+	mov r0, r6
+	mov r1, r4
 	bl sub_80116AE
 locret_80EB560:
 	pop {r4,r6,pc}
@@ -104532,7 +104532,7 @@ loc_80EB7D6:
 	beq loc_80EB82C
 	push {r0,r1,r4,r7}
 	bl sub_800E456 // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #8
 	mov r0, #0
 	bl sub_800F2AA
@@ -104614,7 +104614,7 @@ loc_80EB88E:
 	bl sound_play // () -> void
 	push {r7}
 	bl sub_80EBB78
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #0x10
 	bl sub_80EBAE8
 	add r4, r4, r0
@@ -104651,7 +104651,7 @@ loc_80EB8DC:
 	beq loc_80EB93E
 	push {r7}
 	bl sub_800E456 // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #8
 	mov r0, #5
 	bl sub_800F2AA
@@ -104667,7 +104667,7 @@ loc_80EB8DC:
 	pop {r7}
 	push {r7}
 	bl sub_800E456 // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #8
 	bl sub_80EBAE8
 	add r4, r4, r0
@@ -104741,8 +104741,8 @@ loc_80EB992:
 loc_80EB9AE:
 	pop {r0,r1,r3}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -104810,7 +104810,7 @@ sub_80EBAE8:
 	bne loc_80EBB02
 	cmp r1, #0xd
 	bge loc_80EBB30
-	add r7, r1, #0
+	mov r7, r1
 	b loc_80EBB30
 loc_80EBB02:
 	cmp r0, #2
@@ -104821,7 +104821,7 @@ loc_80EBB02:
 	bne loc_80EBB10
 	mov r1, #0xe
 loc_80EBB10:
-	add r7, r1, #0
+	mov r7, r1
 	b loc_80EBB30
 loc_80EBB14:
 	mov r1, #0x2c 
@@ -104839,7 +104839,7 @@ loc_80EBB14:
 loc_80EBB2E:
 	mov r7, #0xd
 loc_80EBB30:
-	add r0, r7, #0
+	mov r0, r7
 	pop {r4,r7,pc}
 thumb_func_end sub_80EBAE8
 
@@ -104865,7 +104865,7 @@ loc_80EBB50:
 	cmp r1, #0
 	bne loc_80EBB58
 loc_80EBB58:
-	add r0, r7, #0
+	mov r0, r7
 	pop {r4,r7,pc}
 	.byte 0, 0, 0, 0
 off_80EBB60: .word byte_80EBB64
@@ -104890,7 +104890,7 @@ sub_80EBB78:
 	mov r7, #0xc
 	b loc_80EBB94
 loc_80EBB94:
-	add r0, r7, #0
+	mov r0, r7
 	pop {r4,r7,pc}
 thumb_func_end sub_80EBB78
 
@@ -105002,7 +105002,7 @@ loc_80EBC66:
 	blt loc_80EBCDC
 	push {r7}
 	bl sub_800E456 // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #8
 	mov r0, #0
 	add r4, r4, r0
@@ -105032,7 +105032,7 @@ loc_80EBC66:
 	pop {r7}
 	push {r7}
 	bl sub_800E456 // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #8
 	mov r0, #8
 	bl sub_800F2AA
@@ -105166,7 +105166,7 @@ loc_80EBD9C:
 	blt loc_80EBDE2
 	mov r1, #1
 loc_80EBDE2:
-	add r2, r0, #0
+	mov r2, r0
 	ldrb r0, [r5,#0x16]
 	bl sub_800BF16
 loc_80EBDEA:
@@ -105296,7 +105296,7 @@ loc_80EBED6:
 	bl sub_800FA54
 	cmp r0, #0
 	beq locret_80EBF0E
-	add r6, r0, #0
+	mov r6, r0
 	bl sub_800F964
 	tst r0, r0
 	beq locret_80EBF0E
@@ -105306,11 +105306,11 @@ loc_80EBED6:
 	str r0, [r1,#0x68]
 	bl sub_8011714
 	bl sub_8010332
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_80103A8
-	add r2, r0, #0
-	add r0, r6, #0
-	add r1, r4, #0
+	mov r2, r0
+	mov r0, r6
+	mov r1, r4
 	bl sub_80116AE
 locret_80EBF0E:
 	pop {r4,pc}
@@ -105792,8 +105792,8 @@ sub_80EC2EA:
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x1e
 	lsl r3, r3, #0x10
 	mov r4, #0x13
@@ -105857,7 +105857,7 @@ sub_80EC350:
 	blt loc_80EC38A
 	mov r1, #1
 loc_80EC38A:
-	add r2, r0, #0
+	mov r2, r0
 	ldrb r0, [r5,#0x16]
 	bl sub_800BF16
 loc_80EC392:
@@ -106037,7 +106037,7 @@ loc_80EC510:
 	bl sub_800FA54
 	cmp r0, #0
 	beq locret_80EC554
-	add r6, r0, #0
+	mov r6, r0
 	bl sub_800F964
 	cmp r0, #0
 	beq locret_80EC554
@@ -106048,11 +106048,11 @@ loc_80EC510:
 	bl sub_80B8E58
 	bl sub_8011714
 	bl sub_8010332
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_80103A8
-	add r2, r0, #0
-	add r0, r6, #0
-	add r1, r4, #0
+	mov r2, r0
+	mov r0, r6
+	mov r1, r4
 	bl sub_80116AE
 	b locret_80EC554
 locret_80EC554:
@@ -106257,17 +106257,17 @@ loc_80EC6D6:
 	bl sub_800FA54
 	cmp r0, #0
 	beq locret_80EC706
-	add r6, r0, #0
+	mov r6, r0
 	bl sub_800F964
 	cmp r0, #0
 	beq locret_80EC706
 	bl sub_80EC792
 	bl sub_8010332
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_80103A8
-	add r2, r0, #0
-	add r0, r6, #0
-	add r1, r4, #0
+	mov r2, r0
+	mov r0, r6
+	mov r1, r4
 	bl sub_80116AE
 locret_80EC706:
 	pop {r4,r6,pc}
@@ -106280,9 +106280,9 @@ loc_80EC710:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #4
 	str r7, [sp]
-	add r4, r0, #0
-	add r6, r1, #0
-	add r7, r3, #0
+	mov r4, r0
+	mov r6, r1
+	mov r7, r3
 	mov r1, #0x2c 
 	bl sub_8013774
 	sub r0, #0xb
@@ -106295,9 +106295,9 @@ loc_80EC710:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
-	add r3, r7, #0
+	mov r2, r1
+	mov r1, r0
+	mov r3, r7
 	push {r1-r3}
 	bl sub_80C6248
 	add r4, #2
@@ -107057,7 +107057,7 @@ sub_80ECD44:
 	add r1, r1, r0
 	str r1, [r7,#8]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r6, r0, #0
+	mov r6, r0
 	mov r3, #0
 	ldr r4, [r7,#0xc]
 	ldrb r0, [r5,#0x12]
@@ -107166,7 +107166,7 @@ sub_80ECE18:
 	add r1, r1, r0
 	str r1, [r7,#8]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	mov r6, #0x14
@@ -107180,7 +107180,7 @@ loc_80ECE34:
 	cmp r0, #0
 	pop {r0,r1}
 	beq loc_80ECE52
-	add r2, r6, #0
+	mov r2, r6
 	bl sub_80ECF00
 	b loc_80ECE34
 loc_80ECE52:
@@ -107273,8 +107273,8 @@ sub_80ECF00:
 	lsl r4, r2, #8
 	add r4, #2
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r0, #1
 	lsl r0, r0, #0x10
 	sub r2, r2, r0
@@ -107370,8 +107370,8 @@ loc_80ECFA8:
 	ldrb r0, [r7,#0x16]
 	ldrb r1, [r7,#0x17]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x2f 
 	bl sub_80E05F6
@@ -107435,7 +107435,7 @@ thumb_local_start
 sub_80ED040:
 	push {r4,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x12]
 loc_80ED04A:
 	add r0, r0, r4
@@ -108020,7 +108020,7 @@ loc_80ED4E2:
 	push {r0-r2}
 	ldrb r0, [r5,#0x16]
 	bl sub_800FE52
-	add r7, r0, #0
+	mov r7, r0
 	pop {r0-r2}
 	mov r3, #0
 	bl sub_80CA104
@@ -108032,7 +108032,7 @@ loc_80ED4FA:
 	ldrb r0, [r5,#0x16]
 	mov r1, #3
 	bl sub_800AB3A
-	add r7, r0, #0
+	mov r7, r0
 	pop {r0-r2}
 	mov r3, #0
 	bl sub_80CA19E
@@ -108389,7 +108389,7 @@ sub_80ED7A2:
 	bne loc_80ED7C0
 	mov r1, #2
 	bl sub_8013774
-	add r2, r0, #0
+	mov r2, r0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800FAF6
@@ -108413,7 +108413,7 @@ loc_80ED7D6:
 	bl sub_800FA54
 	cmp r0, #0
 	beq locret_80ED80E
-	add r6, r0, #0
+	mov r6, r0
 	bl sub_800F964
 	tst r0, r0
 	beq locret_80ED80E
@@ -108423,11 +108423,11 @@ loc_80ED7D6:
 	str r0, [r1,#0x68]
 	bl sub_8011714
 	bl sub_8010332
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_80103A8
-	add r2, r0, #0
-	add r0, r6, #0
-	add r1, r4, #0
+	mov r2, r0
+	mov r0, r6
+	mov r1, r4
 	bl sub_80116AE
 locret_80ED80E:
 	pop {r4,pc}
@@ -108599,7 +108599,7 @@ sub_80ED94E:
 	ldr r6, off_80EDCB8 // =off_8019B78 
 	ldr r6, [r6,#0x68] // (off_8019BE0 - 0x8019b78)
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
@@ -108944,13 +108944,13 @@ loc_80EDBF6:
 	pop {r0,r1}
 	push {r0,r7}
 	sub r1, #1
-	add r6, r1, #0
-	add r7, r0, #0
+	mov r6, r1
+	mov r7, r0
 	mov r4, #0
 loc_80EDC1E:
 	push {r0,r1}
 	bl sub_800C90A
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	beq loc_80EDC2C
 	ldrb r3, [r2,#2]
@@ -108965,12 +108965,12 @@ loc_80EDC2C:
 	bne loc_80EDC5C
 	bl object_getFlipDirection_800E2CA // () -> int
 	add r0, r0, r4
-	add r1, r6, #0
+	mov r1, r6
 	mov r4, #0
 loc_80EDC46:
 	push {r0,r1}
 	bl sub_800C90A
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	beq loc_80EDC54
 	ldrb r3, [r2,#2]
@@ -109080,7 +109080,7 @@ loc_80EDCFE:
 	ldrb r2, [r7,#2]
 	ldr r3, [sp]
 	push {r7}
-	add r7, r3, #0
+	mov r7, r3
 	mov r3, #0
 	mov lr, pc
 	bx r7
@@ -109450,7 +109450,7 @@ sub_80EDFEA:
 	ldr r6, off_80EE03C // =off_8019B78 
 	ldr r6, [r6,#0x68] // (off_8019BE0 - 0x8019b78)
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
@@ -109704,8 +109704,8 @@ loc_80EE1D8:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -109919,7 +109919,7 @@ sub_80EE370:
 	beq loc_80EE3D2
 	push {r0,r1,r4,r7}
 	bl sub_800E456 // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #8
 	mov r0, #0
 	bl sub_800F2AA
@@ -110007,7 +110007,7 @@ loc_80EE43E:
 loc_80EE452:
 	push {r7}
 	bl sub_80EBB78
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #0x10
 	bl sub_80EBAE8
 	add r4, r4, r0
@@ -110813,7 +110813,7 @@ sub_80EEA78:
 	bl sound_play // () -> void
 	push {r7}
 	bl sub_80EBB34
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_80EBAE8
 	lsl r0, r0, #8
 	add r4, r4, r0
@@ -110928,7 +110928,7 @@ sub_80EEB68:
 	bl sound_play // () -> void
 	push {r7}
 	bl sub_80EBB34
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_80EBAE8
 	lsl r0, r0, #8
 	add r4, r4, r0
@@ -111006,7 +111006,7 @@ sub_80EEC08:
 	cmp r0, #0
 	beq loc_80EEC6C
 	ldr r6, [r0,#0x54]
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r7,#3]
 	cmp r0, #1
 	beq loc_80EEC20
@@ -111037,8 +111037,8 @@ loc_80EEC34:
 	bl sub_80C536A
 	pop {r0,r1,r7}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	ldrb r4, [r7,#3]
@@ -111126,8 +111126,8 @@ sub_80EECCC:
 	add r4, #0x33 
 	pop {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -111389,8 +111389,8 @@ sub_80EEF02:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x52 
@@ -111481,7 +111481,7 @@ sub_80EEFBC:
 	mov r2, #2
 	b loc_80EEFD0
 loc_80EEFCC:
-	add r1, r2, #0
+	mov r1, r2
 	mov r2, #0xb
 loc_80EEFD0:
 	bl ho_8026554
@@ -111692,8 +111692,8 @@ loc_80EF164:
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x13
@@ -112024,7 +112024,7 @@ sub_80EF3F4:
 	cmp r0, #6
 	beq loc_80EF45E
 	push {r0,r7}
-	add r4, r0, #0
+	mov r4, r0
 	add r6, sp, #8
 	add r7, sp, #8
 loc_80EF428:
@@ -112051,7 +112051,7 @@ loc_80EF444:
 	beq loc_80EF45E
 	sub r1, r6, r1
 	sub r1, r0, r1
-	add r0, r6, #0
+	mov r0, r6
 	mov r2, #0xa
 	bl sub_8000C72
 loc_80EF45E:
@@ -112223,8 +112223,8 @@ loc_80EF596:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -112350,7 +112350,7 @@ loc_80EF712:
 	svc 6
 	cmp r1, #5
 	beq loc_80EF774
-	add r0, r1, #0
+	mov r0, r1
 	b loc_80EF782
 loc_80EF722:
 	ldrh r1, [r7,#0x12]
@@ -112367,14 +112367,14 @@ loc_80EF722:
 	push {r0}
 	mov r1, #0x29 
 	bl sub_8013774
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	cmp r1, #0xb
 	beq locret_80EF772
 	push {r0}
 	mov r1, #0x2c 
 	bl sub_8013774
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	cmp r1, #3
 	beq locret_80EF772
@@ -112382,7 +112382,7 @@ loc_80EF722:
 	beq locret_80EF772
 	b loc_80EF774
 loc_80EF75E:
-	add r1, r0, #0
+	mov r1, r0
 	mov r0, #0x14
 	ldr r2, [r7,#0x28]
 	lsr r3, r0, #2
@@ -112409,7 +112409,7 @@ loc_80EF782:
 loc_80EF788:
 	strh r0, [r7,#0x14]
 	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r1, [r4,#0xc]
 	strb r1, [r7,#3]
 	ldr r1, [r4,#0x10]
@@ -112516,7 +112516,7 @@ loc_80EF892:
 	svc 6
 	cmp r1, #3
 	beq loc_80EF8F4
-	add r0, r1, #0
+	mov r0, r1
 	b loc_80EF902
 loc_80EF8A2:
 	ldrh r1, [r7,#0x12]
@@ -112533,14 +112533,14 @@ loc_80EF8A2:
 	push {r0}
 	mov r1, #0x29 
 	bl sub_8013774
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	cmp r1, #0xb
 	beq locret_80EF8F2
 	push {r0}
 	mov r1, #0x2c 
 	bl sub_8013774
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	cmp r1, #3
 	beq locret_80EF8F2
@@ -112548,7 +112548,7 @@ loc_80EF8A2:
 	beq locret_80EF8F2
 	b loc_80EF8F4
 loc_80EF8DE:
-	add r1, r0, #0
+	mov r1, r0
 	mov r0, #0xc
 	ldr r2, [r7,#0x28]
 	lsr r3, r0, #2
@@ -112575,7 +112575,7 @@ loc_80EF902:
 loc_80EF908:
 	strh r0, [r7,#0x14]
 	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r1, [r4,#0xc]
 	strb r1, [r7,#3]
 	ldr r1, [r4,#0x10]
@@ -112658,7 +112658,7 @@ sub_80EF9A2:
 	bl sound_play // () -> void
 	push {r7}
 	bl sub_80EBB34
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_80EBAE8
 	lsl r0, r0, #8
 	add r4, r4, r0
@@ -112908,8 +112908,8 @@ sub_80EFBA0:
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x13
@@ -112934,7 +112934,7 @@ loc_80EFBBE:
 	bl sub_800EB08
 	bl sub_80142C2
 	bl sub_80107C0
-	add r0, r3, #0
+	mov r0, r3
 	bl sub_8019F86
 	mov r0, #1
 	bl sub_801A07C
@@ -113053,7 +113053,7 @@ sub_80EFCD8:
 	bne loc_80EFD48
 	mov r1, #0x2c 
 	bl sub_8013774
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #0x17
 	cmp r4, #0x16
 	bne loc_80EFCF0
@@ -113129,7 +113129,7 @@ thumb_func_end sub_80EFD5E
 thumb_local_start
 sub_80EFD74:
 	push {r7,lr}
-	add r7, r2, #0
+	mov r7, r2
 	mov r0, r10
 	ldr r0, [r0,#0x18]
 	add r0, #0xa0
@@ -113366,7 +113366,7 @@ loc_80EFF50:
 	bl sound_play // () -> void
 	push {r7}
 	bl sub_80EBB34
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_80EBAE8
 	lsl r0, r0, #8
 	add r4, r4, r0
@@ -113420,8 +113420,8 @@ loc_80EFFAC:
 	add r4, r4, r0
 	pop {r0,r1,r3}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -113769,7 +113769,7 @@ sub_80F02A2:
 	beq loc_80F02B8
 	mov r4, #0
 loc_80F02B8:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 dword_80F02BC: .word 0x8000
 off_80F02C0: .word unk_2010000
@@ -114017,11 +114017,11 @@ loc_80F0526:
 	beq loc_80F0552
 	push {r0}
 	bl sub_8010332
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	push {r0,r1}
 	bl sub_80103A8
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	bl sub_80116AE
 	pop {r4,r6,r7,pc}
@@ -114039,32 +114039,32 @@ loc_80F0564:
 	beq loc_80F0578
 	push {r0}
 	bl sub_8010332
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	bl sub_80116D8
 loc_80F0578:
 	mov r0, #0
 	pop {r4,r6,r7,pc}
 loc_80F057C:
-	add r7, r0, #0
+	mov r7, r0
 	bl sub_80106C0
 	tst r0, r0
 	beq loc_80F058C
 	bl sub_8011714
 	b loc_80F05F2
 loc_80F058C:
-	add r0, r7, #0
+	mov r0, r7
 	bl sub_8010740
 	tst r0, r0
 	beq loc_80F059C
 	bl sub_8011714
 	b loc_80F05F2
 loc_80F059C:
-	add r0, r7, #0
+	mov r0, r7
 	lsl r0, r0, #0x11
 	lsr r0, r0, #0x11
 	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #0x10
 	bl sub_801031C
 	mov r0, #0x40 
@@ -114146,7 +114146,7 @@ loc_80F0632:
 loc_80F0640:
 	ldrb r0, [r5,#0x16]
 	bl sub_8010018
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r1, [r4]
 	lsl r1, r1, #1
 	add r1, #2
@@ -114345,8 +114345,8 @@ sub_80F0798:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r4, #0x14
 	mov r0, #0x34 
@@ -114502,7 +114502,7 @@ loc_80F08EE:
 	mul r0, r1
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
-	add r1, r4, #0
+	mov r1, r4
 	sub r1, #1
 	ldrb r2, [r5,#0x13]
 	add r1, r1, r2
@@ -114651,8 +114651,8 @@ sub_80F09DC:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #8
@@ -114668,14 +114668,14 @@ loc_80F0A3E:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, [r5,#0x40]
 	ldr r0, [r5,#0x34]
 	add r0, r0, r1
 	str r0, [r5,#0x34]
 	cmp r4, r1
 	beq loc_80F0A66
-	add r2, r4, #0
+	mov r2, r4
 	bl sub_800E708
 	tst r0, r0
 	beq loc_80F0A66
@@ -114797,7 +114797,7 @@ thumb_local_start
 sub_80F0B32:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x18
-	add r6, r7, #0
+	mov r6, r7
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #2
 	ldr r1, off_80F0B74 // =off_80F0B78 
@@ -114805,10 +114805,10 @@ sub_80F0B32:
 	mov r3, #0
 	add r7, sp, #0
 	bl object_getPanelsExceptCurrentFilterred
-	add r4, r0, #0
+	mov r4, r0
 	tst r4, r4
 	beq loc_80F0B70
-	add r7, r6, #0
+	mov r7, r6
 	sub r4, #1
 loc_80F0B52:
 	add r0, sp, #0
@@ -114866,8 +114866,8 @@ sub_80F0BA4:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -114881,21 +114881,21 @@ sub_80F0BD2:
 	ldrb r4, [r5,#0x12]
 	add r4, r4, r0
 	ldrb r6, [r5,#0x13]
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	bl object_getPanelParameters
 	ldr r1, dword_80F0C30 // =0x3800000 
 	tst r0, r1
 	bne loc_80F0C1C
 	bl object_getFlipDirection_800E2CA // () -> int
 	add r0, r0, r4
-	add r1, r6, #0
+	mov r1, r6
 	bl object_getPanelParameters
 	ldr r1, dword_80F0C34 // =0x10000 
 	tst r0, r1
 	beq loc_80F0C1C
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	ldrb r2, [r5,#0x16]
 	lsl r2, r2, #2
 	ldr r3, off_80F0C20 // =off_80F0C24 
@@ -115089,10 +115089,10 @@ sub_80F0D64:
 	ldrb r6, [r7,#0xc]
 	lsr r6, r6, #1
 	bcc loc_80F0D78
-	add r4, r0, #0
+	mov r4, r0
 	b loc_80F0D7A
 loc_80F0D78:
-	add r4, r1, #0
+	mov r4, r1
 loc_80F0D7A:
 	ldr r0, [r5,#0x40]
 	ldr r1, [r5,#0x34]
@@ -115103,7 +115103,7 @@ loc_80F0D7A:
 	add r2, r2, r3
 	str r2, [r5,#0x38]
 	push {r0-r3}
-	add r1, r2, #0
+	mov r1, r2
 	bl sub_800E258
 	ldr r3, off_80F0DE0 // =dword_80F0DE4 
 	ldr r2, [r3]
@@ -115115,18 +115115,18 @@ loc_80F0D7A:
 	ldrb r6, [r7,#0xc]
 	lsr r6, r6, #1
 	bcc loc_80F0DAE
-	add r6, r1, #0
-	add r3, r0, #0
+	mov r6, r1
+	mov r3, r0
 	b loc_80F0DB2
 loc_80F0DAE:
-	add r6, r3, #0
-	add r3, r2, #0
+	mov r6, r3
+	mov r3, r2
 loc_80F0DB2:
 	cmp r4, r6
 	beq loc_80F0DD0
-	add r0, r3, #0
-	add r1, r6, #0
-	add r2, r4, #0
+	mov r0, r3
+	mov r1, r6
+	mov r2, r4
 	bl sub_800E708
 	cmp r0, #0
 	beq loc_80F0DD0
@@ -115587,8 +115587,8 @@ sub_80F111C:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x18
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -115694,7 +115694,7 @@ loc_80F1216:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r6, r0, #0
+	mov r6, r0
 	ldrb r4, [r5,#0x12]
 	ldr r0, [r5,#0x40]
 	ldr r1, [r5,#0x34]
@@ -115702,7 +115702,7 @@ loc_80F1216:
 	str r0, [r5,#0x34]
 	cmp r6, r1
 	beq loc_80F1242
-	add r2, r6, #0
+	mov r2, r6
 	bl sub_800E708
 	tst r0, r0
 	beq loc_80F1242
@@ -115795,7 +115795,7 @@ sub_80F12AC:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -115920,7 +115920,7 @@ thumb_local_start
 sub_80F13B4:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x20
-	add r4, r7, #0
+	mov r4, r7
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #3
 	ldr r1, off_80F1430 // =off_80F1434 
@@ -115929,7 +115929,7 @@ sub_80F13B4:
 	ldr r3, [r1,#4]
 	add r7, sp, #0
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #3
 	ldr r1, off_80F1444 // =dword_80F1448 
@@ -115939,13 +115939,13 @@ sub_80F13B4:
 	add r7, sp, #0
 	add r7, r7, r6
 	bl object_getPanelsExceptCurrentFilterred
-	add r7, r0, #0
+	mov r7, r0
 	tst r7, r7
 	beq loc_80F13F4
 	add r0, sp, #0
 	add r0, r0, r6
-	add r1, r7, #0
-	add r2, r1, #0
+	mov r1, r7
+	mov r2, r1
 	bl sub_8000C72
 loc_80F13F4:
 	add r6, r6, r7
@@ -115954,7 +115954,7 @@ loc_80F13F8:
 	ldrb r0, [r5,#0x16]
 	ldr r1, off_80F1458 // =dword_80F145C 
 	ldrb r0, [r1,r0]
-	add r1, r3, #0
+	mov r1, r3
 	lsl r1, r1, #4
 	orr r0, r1
 	add r1, sp, #0
@@ -115963,7 +115963,7 @@ loc_80F13F8:
 	add r3, #1
 	cmp r3, #3
 	ble loc_80F13F8
-	add r7, r4, #0
+	mov r7, r4
 	mov r4, #0
 loc_80F1414:
 	add r0, sp, #0
@@ -116005,7 +116005,7 @@ thumb_func_end sub_80F1460
 thumb_local_start
 sub_80F146E:
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	mul r0, r4
 	str r0, [r5,#0x40]
@@ -116024,7 +116024,7 @@ loc_80F148E:
 	mov r2, #0x28 
 	lsl r2, r2, #0x10
 	mul r0, r2
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
 	strh r0, [r7,#0x10]
 	pop {r4,pc}
@@ -116050,7 +116050,7 @@ thumb_func_end sub_80F149C
 thumb_local_start
 sub_80F14BC:
 	push {r4,r6,r7,lr}
-	add r6, r0, #0
+	mov r6, r0
 	ldrb r4, [r7,#0xc]
 	cmp r4, #2
 	bge locret_80F14FE
@@ -116067,10 +116067,10 @@ sub_80F14BC:
 	mov r3, #0xff
 	lsl r3, r3, #0x18
 	orr r4, r3
-	add r3, r6, #0
+	mov r3, r6
 	ldr r6, [r7,#8]
 	push {r7}
-	add r7, r3, #0
+	mov r7, r3
 	bl sub_80DB014
 	pop {r7}
 	mov r1, #0x30 
@@ -116543,8 +116543,8 @@ loc_80F183A:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -116839,8 +116839,8 @@ sub_80F1A60:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x20 
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -116926,8 +116926,8 @@ loc_80F1B2A:
 	mul r0, r1
 	cmp r0, #0
 	bge loc_80F1B5C
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	bl object_getPanelParameters
 	ldrb r2, [r5,#0x16]
 	lsl r2, r2, #2
@@ -116936,8 +116936,8 @@ loc_80F1B2A:
 	tst r0, r2
 	beq loc_80F1B5C
 	push {r6}
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	ldrb r2, [r7,#2]
 	ldr r6, [r7,#8]
 	bl sub_80D05C4
@@ -117332,7 +117332,7 @@ thumb_func_end sub_80F1E08
 thumb_local_start
 sub_80F1E50:
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	mul r0, r4
 	str r0, [r5,#0x40]
@@ -117351,7 +117351,7 @@ loc_80F1E70:
 	mov r2, #0x28 
 	lsl r2, r2, #0x10
 	mul r0, r2
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
 	strh r0, [r7,#0x10]
 	pop {r4,pc}
@@ -117381,15 +117381,15 @@ sub_80F1E98:
 	add r0, r0, r1
 	ldr r2, [r0]
 	ldr r3, [r0,#4]
-	add r6, r7, #0
+	mov r6, r7
 	add r7, sp, #0
 	bl object_getPanelsExceptCurrentFilterred
-	add r7, r6, #0
-	add r6, r0, #0
+	mov r7, r6
+	mov r6, r0
 	tst r6, r6
 	beq loc_80F1EE6
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -117645,7 +117645,7 @@ sub_80F20A0:
 	push {r4,r6,r7,lr}
 	mov r4, #1
 loc_80F20A4:
-	add r0, r4, #0
+	mov r0, r4
 	ldrb r1, [r5,#0x13]
 	ldrb r2, [r5,#0x16]
 	lsl r2, r2, #3
@@ -118623,7 +118623,7 @@ loc_80F2C92:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -118638,14 +118638,14 @@ sub_80F2CC2:
 	push {r4,lr}
 	ldr r0, off_80F2CDC // =byte_80F2CE0 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F2ED0 // =0xa000 
 	tst r0, r1
 	beq loc_80F2CD8
 	add r4, #0x3c 
 loc_80F2CD8:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 off_80F2CDC: .word byte_80F2CE0
 byte_80F2CE0: .byte 0x28, 0x1E, 0x18, 0x14
@@ -118656,14 +118656,14 @@ sub_80F2CE4:
 	push {r4,lr}
 	ldr r0, off_80F2D00 // =byte_80F2D04 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F2ED0 // =0xa000 
 	tst r0, r1
 	beq loc_80F2CFA
 	add r4, #0x3c 
 loc_80F2CFA:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.byte 0, 0
 off_80F2D00: .word byte_80F2D04
@@ -118675,14 +118675,14 @@ sub_80F2D08:
 	push {r4,lr}
 	ldr r0, off_80F2D24 // =byte_80F2D28 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F2ED0 // =0xa000 
 	tst r0, r1
 	beq loc_80F2D1E
 	add r4, #0x3c 
 loc_80F2D1E:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80F2D24: .word byte_80F2D28
@@ -118694,14 +118694,14 @@ sub_80F2D2C:
 	push {r4,lr}
 	ldr r0, off_80F2D48 // =byte_80F2D4C 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F2ED0 // =0xa000 
 	tst r0, r1
 	beq loc_80F2D42
 	add r4, #0x3c 
 loc_80F2D42:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80F2D48: .word byte_80F2D4C
@@ -118771,11 +118771,11 @@ loc_80F2DBC:
 	sub r6, r3, #0
 	sub r6, r3, #0
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #0
 	mov r3, #0
 loc_80F2DC8:
-	add r2, r3, #0
+	mov r2, r3
 	lsl r2, r2, #2
 	ldr r1, [r4,r2]
 	tst r1, r1
@@ -118789,14 +118789,14 @@ locret_80F2DDA:
 thumb_local_start
 sub_80F2DDC:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F2E0C // =dword_80F2E18 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F2E30 // =dword_80F2E3C 
 	mov r2, #8
 	mul r0, r2
@@ -118830,14 +118830,14 @@ thumb_func_end sub_80F2DDC
 thumb_local_start
 sub_80F2E54:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F2E7C // =dword_80F2E88 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F2EA0 // =dword_80F2EAC 
 	mov r2, #8
 	mul r0, r2
@@ -119337,7 +119337,7 @@ loc_80F325A:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r7,#8]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -119508,7 +119508,7 @@ sub_80F3396:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -119924,7 +119924,7 @@ sub_80F36A2:
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl sub_800CFA6
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80F36DC
 	ldr r0, [sp]
@@ -119933,12 +119933,12 @@ sub_80F36A2:
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl sub_800D012
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80F36F0
 loc_80F36DC:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -119971,8 +119971,8 @@ sub_80F3704:
 	add r1, r1, r0
 	ldrb r4, [r1]
 	ldrb r6, [r1,#1]
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	push {r0,r1}
@@ -119980,8 +119980,8 @@ sub_80F3704:
 	tst r0, r0
 	pop {r0,r1}
 	bne loc_80F3776
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	sub r1, #1
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
@@ -119990,8 +119990,8 @@ sub_80F3704:
 	tst r0, r0
 	pop {r0,r1}
 	bne loc_80F3776
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	add r1, #1
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
@@ -120001,9 +120001,9 @@ sub_80F3704:
 	pop {r0,r1}
 	bne loc_80F3776
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r1, r4, #0
+	mov r1, r4
 	add r0, r0, r1
-	add r1, r6, #0
+	mov r1, r6
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	push {r0,r1}
@@ -120036,11 +120036,11 @@ sub_80F3784:
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl sub_800D012
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80F37D0
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -120076,7 +120076,7 @@ sub_80F37D8:
 	str r6, [sp,#8]
 	mov r7, #0
 loc_80F37E4:
-	add r0, r7, #0
+	mov r0, r7
 	lsl r0, r0, #1
 	ldr r1, off_80F3820 // =byte_80F3824 
 	add r1, r1, r0
@@ -120151,7 +120151,7 @@ loc_80F383E:
 	add r3, r3, r6
 	ldr r6, [sp,#0xc]
 	push {r7}
-	add r7, r3, #0
+	mov r7, r3
 	bl sub_80C8C4C
 	pop {r7}
 loc_80F3880:
@@ -120167,11 +120167,11 @@ thumb_func_end sub_80F382C
 thumb_local_start
 sub_80F388E:
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #0
 	mov r3, #0
 loc_80F3896:
-	add r2, r3, #0
+	mov r2, r3
 	lsl r2, r2, #2
 	ldr r1, [r4,r2]
 	tst r1, r1
@@ -120379,10 +120379,10 @@ thumb_local_start
 sub_80F3B24:
 	push {r4,r6,r7,lr}
 	bl sub_800FE36
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #0
 	bl sub_80F3CA4
-	add r6, r0, #0
+	mov r6, r0
 	mov r2, #3
 	mov r0, #0x60 
 	add r0, r0, r5
@@ -120407,7 +120407,7 @@ thumb_func_end sub_80F3B24
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -120430,14 +120430,14 @@ sub_80F3B8C:
 	push {r4,lr}
 	ldr r0, off_80F3BA8 // =byte_80F3BAC 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F3D20 // =0xa000 
 	tst r0, r1
 	beq loc_80F3BA2
 	add r4, #0x3c 
 loc_80F3BA2:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80F3BA8: .word byte_80F3BAC
@@ -120449,14 +120449,14 @@ sub_80F3BB0:
 	push {r4,lr}
 	ldr r0, off_80F3BCC // =byte_80F3BD0 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F3D20 // =0xa000 
 	tst r0, r1
 	beq loc_80F3BC6
 	add r4, #0x3c 
 loc_80F3BC6:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80F3BCC: .word byte_80F3BD0
@@ -120468,14 +120468,14 @@ sub_80F3BD4:
 	push {r4,lr}
 	ldr r0, off_80F3BF0 // =byte_80F3BF4 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F3D20 // =0xa000 
 	tst r0, r1
 	beq loc_80F3BEA
 	add r4, #0x3c 
 loc_80F3BEA:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.byte 0, 0
 off_80F3BF0: .word byte_80F3BF4
@@ -120487,14 +120487,14 @@ sub_80F3BF8:
 	push {r4,lr}
 	ldr r0, off_80F3C14 // =byte_80F3C18 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F3D20 // =0xa000 
 	tst r0, r1
 	beq loc_80F3C0E
 	add r4, #0x3c 
 loc_80F3C0E:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80F3C14: .word byte_80F3C18
@@ -120517,14 +120517,14 @@ thumb_func_end sub_80F3C1C
 thumb_local_start
 sub_80F3C2C:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F3C5C // =dword_80F3C68 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F3C80 // =dword_80F3C8C 
 	mov r2, #8
 	mul r0, r2
@@ -120561,14 +120561,14 @@ thumb_func_end sub_80F3C2C
 thumb_local_start
 sub_80F3CA4:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F3CCC // =dword_80F3CD8 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F3CF0 // =dword_80F3CFC 
 	mov r2, #8
 	mul r0, r2
@@ -120966,8 +120966,8 @@ sub_80F4008:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #8
@@ -121449,8 +121449,8 @@ sub_80F43DC:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #8
@@ -121493,12 +121493,12 @@ sub_80F441C:
 	mov r0, #6
 	bl object_setCounterTime
 	bl sub_800E2C0
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r1, [r7,#3]
 	lsl r1, r1, #2
 	ldr r2, off_80F44CC // =dword_80F44D0 
 	ldr r1, [r2,r1]
-	add r6, r1, #0
+	mov r6, r1
 	mul r1, r0
 	str r1, [r5,#0x40]
 	ldr r2, [r7,#0x2c]
@@ -121518,7 +121518,7 @@ sub_80F441C:
 	mov r0, #0x28 
 	lsl r0, r0, #0x10
 	mul r0, r1
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	strh r0, [r7,#0x10]
 	mov r0, #0x10
@@ -121678,7 +121678,7 @@ sub_80F45B8:
 	mov r7, #0
 loc_80F45C8:
 	ldr r2, off_80F464C // =byte_80F4650 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -121724,7 +121724,7 @@ loc_80F460E:
 	b loc_80F4648
 loc_80F4620:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -121734,7 +121734,7 @@ loc_80F4620:
 	b loc_80F4648
 loc_80F4634:
 	bl sub_8001532
-	add r1, r7, #0
+	mov r1, r7
 	svc 6
 	add r0, sp, #0x10
 	ldrb r0, [r0,r1]
@@ -121759,7 +121759,7 @@ sub_80F4658:
 	bl sub_8001532
 	mov r1, #3
 	and r0, r1
-	add r4, r0, #0
+	mov r4, r0
 	mov r3, #3
 	ldrh r1, [r5,#0x26]
 	lsr r1, r1, #2
@@ -121784,7 +121784,7 @@ loc_80F4688:
 	tst r0, r0
 	pop {r0,r1}
 	beq loc_80F469E
-	add r0, r1, #0
+	mov r0, r1
 	b loc_80F46A0
 loc_80F469E:
 	mov r0, #0
@@ -121814,10 +121814,10 @@ loc_80F46B8:
 	lsl r3, r3, #0x10
 loc_80F46C4:
 	push {r0,r1}
-	add r0, r3, #0
-	add r1, r2, #0
+	mov r0, r3
+	mov r1, r2
 	svc 6
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
 thumb_func_end sub_80F46A4
@@ -121861,7 +121861,7 @@ loc_80F470A:
 	tst r6, r6
 	beq loc_80F4722
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -121909,7 +121909,7 @@ loc_80F475A:
 	tst r6, r6
 	beq loc_80F4772
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -121936,8 +121936,8 @@ sub_80F4778:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -122067,7 +122067,7 @@ sub_80F4964:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -122094,14 +122094,14 @@ loc_80F49AE:
 	ldr r0, off_80F49C8 // =byte_80F49CC 
 	add r0, r0, r1
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F4C10 // =0xa000 
 	tst r0, r1
 	beq loc_80F49C4
 	add r4, #0x1e
 loc_80F49C4:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 off_80F49C8: .word byte_80F49CC
 byte_80F49CC: .byte 0x24, 0x1E, 0x18, 0x18, 0x6, 0x3, 0x1, 0x1
@@ -122112,14 +122112,14 @@ sub_80F49D4:
 	push {r4,lr}
 	ldr r0, off_80F49F0 // =byte_80F49F4 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F4C10 // =0xa000 
 	tst r0, r1
 	beq loc_80F49EA
 	add r4, #0x1e
 loc_80F49EA:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.byte 0, 0
 off_80F49F0: .word byte_80F49F4
@@ -122131,12 +122131,12 @@ sub_80F49F8:
 	push {r4,lr}
 	ldr r0, off_80F4A10 // =byte_80F4A14 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	ldr r0, off_80F4A10 // =byte_80F4A14 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
-	add r0, r4, #0
+	mov r1, r0
+	mov r0, r4
 	pop {r4,pc}
 off_80F4A10: .word byte_80F4A14
 byte_80F4A14: .byte 0x1E, 0x18, 0x18, 0x14, 0xA, 0xA, 0xA, 0xA
@@ -122158,14 +122158,14 @@ sub_80F4A30:
 	push {r4,lr}
 	ldr r0, off_80F4A4C // =byte_80F4A50 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F4C10 // =0xa000 
 	tst r0, r1
 	beq loc_80F4A46
 	add r4, #0x1e
 loc_80F4A46:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80F4A4C: .word byte_80F4A50
@@ -122177,14 +122177,14 @@ sub_80F4A54:
 	push {r4,lr}
 	ldr r0, off_80F4A70 // =byte_80F4A74 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F4C10 // =0xa000 
 	tst r0, r1
 	beq loc_80F4A6A
 	add r4, #0x1e
 loc_80F4A6A:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.byte 0, 0
 off_80F4A70: .word byte_80F4A74
@@ -122215,7 +122215,7 @@ loc_80F4A92:
 	ble loc_80F4A92
 	add r0, sp, #0
 	mov r1, #8
-	add r2, r1, #0
+	mov r2, r1
 	bl sub_8000C72
 	add r3, sp, #0
 	ldrb r0, [r3]
@@ -122320,14 +122320,14 @@ thumb_func_end sub_80F4B34
 thumb_local_start
 sub_80F4B74:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F4BC8 // =dword_80F4BD4 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F4BEC // =dword_80F4BF8 
 	mov r2, #8
 	mul r0, r2
@@ -122343,14 +122343,14 @@ sub_80F4B74:
 thumb_func_end sub_80F4B74
 
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F4BC8 // =dword_80F4BD4 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F4BEC // =dword_80F4BF8 
 	mov r2, #8
 	mul r0, r2
@@ -122689,8 +122689,8 @@ sub_80F4E44:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -122792,8 +122792,8 @@ sub_80F4F14:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -123004,7 +123004,7 @@ loc_80F50F8:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r7,#8]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -123045,10 +123045,10 @@ sub_80F5168:
 	ldrb r6, [r7,#0xd]
 	lsr r6, r6, #1
 	bcs loc_80F517C
-	add r4, r0, #0
+	mov r4, r0
 	b loc_80F517E
 loc_80F517C:
-	add r4, r1, #0
+	mov r4, r1
 loc_80F517E:
 	ldr r0, [r5,#0x40]
 	ldr r1, [r5,#0x34]
@@ -123059,7 +123059,7 @@ loc_80F517E:
 	add r2, r2, r3
 	str r2, [r5,#0x38]
 	push {r0-r3}
-	add r1, r2, #0
+	mov r1, r2
 	bl sub_800E258
 	ldr r3, off_80F51FC // =dword_80F5200 
 	ldr r2, [r3]
@@ -123071,18 +123071,18 @@ loc_80F517E:
 	ldrb r6, [r7,#0xd]
 	lsr r6, r6, #1
 	bcs loc_80F51B2
-	add r6, r1, #0
-	add r3, r0, #0
+	mov r6, r1
+	mov r3, r0
 	b loc_80F51B6
 loc_80F51B2:
-	add r6, r3, #0
-	add r3, r2, #0
+	mov r6, r3
+	mov r3, r2
 loc_80F51B6:
 	cmp r4, r6
 	beq loc_80F51D4
-	add r0, r3, #0
-	add r1, r6, #0
-	add r2, r4, #0
+	mov r0, r3
+	mov r1, r6
+	mov r2, r4
 	bl sub_800E708
 	cmp r0, #0
 	beq loc_80F51D4
@@ -123131,7 +123131,7 @@ sub_80F5208:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -123378,7 +123378,7 @@ sub_80F53EA:
 	mov r4, #0
 loc_80F53F4:
 	ldr r2, off_80F5478 // =byte_80F547C 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -123397,11 +123397,11 @@ loc_80F53F4:
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	mov r4, #0
 loc_80F5424:
 	ldr r2, off_80F5478 // =byte_80F547C 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -123422,12 +123422,12 @@ loc_80F5424:
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80F546E
 loc_80F545A:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -123460,7 +123460,7 @@ sub_80F5484:
 	neg r0, r0
 	pop {r1,r2}
 	add r0, r0, r1
-	add r1, r2, #0
+	mov r1, r2
 	str r0, [sp]
 	str r1, [sp,#4]
 	mov r6, #0
@@ -123508,7 +123508,7 @@ loc_80F54F8:
 	tst r6, r6
 	beq loc_80F5510
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0x10
 	ldrb r0, [r0,r1]
@@ -123538,7 +123538,7 @@ sub_80F5518:
 	mov r4, #1
 	mov r6, #0
 loc_80F552E:
-	add r1, r4, #0
+	mov r1, r4
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	push {r0,r1}
@@ -123546,13 +123546,13 @@ loc_80F552E:
 	tst r0, r0
 	pop {r0,r1}
 	beq loc_80F554E
-	add r7, r0, #0
+	mov r7, r0
 	lsl r1, r1, #4
 	orr r0, r1
 	add r1, sp, #8
 	strb r0, [r1,r6]
 	add r6, #1
-	add r0, r7, #0
+	mov r0, r7
 loc_80F554E:
 	add r4, #2
 	cmp r4, #3
@@ -123567,7 +123567,7 @@ loc_80F554E:
 	mov r4, #1
 	mov r6, #0
 loc_80F5566:
-	add r1, r4, #0
+	mov r1, r4
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	push {r0,r1}
@@ -123575,13 +123575,13 @@ loc_80F5566:
 	tst r0, r0
 	pop {r0,r1}
 	beq loc_80F5586
-	add r7, r0, #0
+	mov r7, r0
 	lsl r1, r1, #4
 	orr r0, r1
 	add r1, sp, #8
 	strb r0, [r1,r6]
 	add r6, #1
-	add r0, r7, #0
+	mov r0, r7
 loc_80F5586:
 	add r4, #2
 	cmp r4, #3
@@ -123590,7 +123590,7 @@ loc_80F5586:
 	beq loc_80F55A4
 loc_80F5590:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -124027,10 +124027,10 @@ thumb_local_start
 sub_80F59FE:
 	push {r4,r6,lr}
 	bl sub_800FE36
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #1
 	bl sub_80F5B02
-	add r6, r0, #0
+	mov r6, r0
 	mov r2, #0
 	bl sub_80E9A1C
 	pop {r4,r6,pc}
@@ -124053,7 +124053,7 @@ sub_80F5A1A:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -124078,14 +124078,14 @@ sub_80F5A58:
 	ldr r1, off_80F5A80 // =byte_80F5A84 
 	add r0, r0, r1
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F5B78 // =0xa000 
 	tst r0, r1
 	beq loc_80F5A7A
 	add r4, #0x1e
 loc_80F5A7A:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.byte 0, 0
 off_80F5A80: .word byte_80F5A84
@@ -124132,14 +124132,14 @@ thumb_func_end sub_80F5AA0
 thumb_local_start
 sub_80F5AD4:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F5B28 // =dword_80F5B34 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F5B4C // =dword_80F5B58 
 	mov r2, #8
 	mul r0, r2
@@ -124157,14 +124157,14 @@ thumb_func_end sub_80F5AD4
 thumb_local_start
 sub_80F5B02:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F5B28 // =dword_80F5B34 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F5B4C // =dword_80F5B58 
 	mov r2, #8
 	mul r0, r2
@@ -124907,7 +124907,7 @@ sub_80F60C4:
 	tst r0, r1
 	bne loc_80F612C
 	bl sub_800D58C
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_800E2C0
 	neg r0, r0
 	add r0, r0, r4
@@ -124923,7 +124923,7 @@ loc_80F60F4:
 	ldr r0, [sp,#4]
 	cmp r4, r0
 	beq loc_80F6114
-	add r0, r4, #0
+	mov r0, r4
 	ldrb r1, [r5,#0x13]
 	ldr r2, [sp,#8]
 	ldr r3, [sp,#0xc]
@@ -124943,7 +124943,7 @@ loc_80F6114:
 	ldr r3, [sp,#0xc]
 	add r7, sp, #0x10
 	bl sub_800CF14
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80F613C
 loc_80F612C:
@@ -124951,12 +124951,12 @@ loc_80F612C:
 	ldr r3, [sp,#0xc]
 	add r7, sp, #0x10
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80F6150
 loc_80F613C:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0x10
 	ldrb r0, [r0,r1]
@@ -124981,7 +124981,7 @@ sub_80F6154:
 	tst r0, r1
 	pop {r0}
 	bne loc_80F6190
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	neg r0, r0
 	mov r1, #2
@@ -125003,11 +125003,11 @@ loc_80F6190:
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80F61B2
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -125032,8 +125032,8 @@ sub_80F61B6:
 	mov r6, #6
 loc_80F61C8:
 	bl sub_800E2C0
-	add r4, r0, #0
-	add r0, r6, #0
+	mov r4, r0
+	mov r0, r6
 	mov r1, #2
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
@@ -125051,7 +125051,7 @@ sub_80F61E4:
 	push {lr}
 	push {r0,r2,r3}
 	bl sub_800E2C0
-	add r1, r0, #0
+	mov r1, r0
 	neg r1, r1
 	pop {r0,r2,r3}
 	add r0, r0, r1
@@ -125069,7 +125069,7 @@ thumb_func_end sub_80F61E4
 thumb_local_start
 sub_80F6206:
 	push {r6,lr}
-	add r6, r0, #0
+	mov r6, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	neg r0, r0
 	mov r1, #2
@@ -125122,8 +125122,8 @@ sub_80F6254:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x18
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -125132,7 +125132,7 @@ thumb_func_end sub_80F6254
 
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x18
-	add r6, r7, #0
+	mov r6, r7
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #3
 	ldr r1, off_80F62D8 // =dword_80F62DC 
@@ -125141,14 +125141,14 @@ thumb_func_end sub_80F6254
 	ldr r3, [r0,#4]
 	add r7, sp, #0
 	bl object_getPanelsExceptCurrentFilterred
-	add r4, r0, #0
+	mov r4, r0
 	tst r4, r4
 	beq loc_80F62D4
 	add r0, sp, #0
-	add r1, r4, #0
-	add r2, r4, #0
+	mov r1, r4
+	mov r2, r4
 	bl sub_8000C72
-	add r7, r6, #0
+	mov r7, r6
 	mov r6, #0
 loc_80F62AC:
 	add r0, sp, #0
@@ -125170,7 +125170,7 @@ loc_80F62AC:
 	cmp r6, r0
 	blt loc_80F62AC
 loc_80F62D2:
-	add r0, r6, #0
+	mov r0, r6
 loc_80F62D4:
 	add sp, sp, #0x18
 	pop {r4,r6,r7,pc}
@@ -125398,7 +125398,7 @@ sub_80F6560:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -125498,14 +125498,14 @@ thumb_func_end sub_80F661E
 thumb_local_start
 sub_80F663C:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F6690 // =dword_80F669C 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F66B4 // =dword_80F66C0 
 	mov r2, #8
 	mul r0, r2
@@ -125521,14 +125521,14 @@ sub_80F663C:
 thumb_func_end sub_80F663C
 
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F6690 // =dword_80F669C 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F66B4 // =dword_80F66C0 
 	mov r2, #8
 	mul r0, r2
@@ -125892,7 +125892,7 @@ sub_80F6994:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r7,#8]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -126264,7 +126264,7 @@ loc_80F6CBC:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r6, r0, #0
+	mov r6, r0
 	ldr r0, [r5,#0x40]
 	ldr r1, [r5,#0x34]
 	add r0, r0, r1
@@ -126276,7 +126276,7 @@ loc_80F6CBC:
 	beq loc_80F6D6C
 	cmp r6, r1
 	beq loc_80F6D10
-	add r2, r6, #0
+	mov r2, r6
 	bl sub_800E708
 	cmp r0, #0
 	beq loc_80F6D10
@@ -126471,7 +126471,7 @@ sub_80F6E76:
 	bl sub_801A04C
 	bl sub_80F7154
 	ldr r0, [r7,#8]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -126506,7 +126506,7 @@ loc_80F6ED0:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r6, r0, #0
+	mov r6, r0
 	ldr r0, [r5,#0x40]
 	ldr r1, [r5,#0x34]
 	add r0, r0, r1
@@ -126609,7 +126609,7 @@ loc_80F6F92:
 	lsl r0, r0, #0x16
 	bl object_clearFlag // (int bitfield) -> void
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -126624,7 +126624,7 @@ thumb_func_end sub_80F6F7C
 thumb_local_start
 sub_80F6FD0:
 	push {lr}
-	add r2, r0, #0
+	mov r2, r0
 	mov r0, #0
 	ldrb r1, [r5,#0x16]
 	tst r1, r1
@@ -126709,12 +126709,12 @@ loc_80F7060:
 	ldr r3, [sp,#4]
 	add r7, sp, #0xc
 	bl sub_800CFDC
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80F7084
 loc_80F7070:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -126729,7 +126729,7 @@ loc_80F7088:
 	push {r0,r1}
 	bl object_getFlipDirection_800E2CA // () -> int
 	neg r0, r0
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	add r0, r0, r2
 loc_80F7096:
@@ -126755,7 +126755,7 @@ sub_80F70A0:
 loc_80F70B6:
 	push {r0,r1}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r2, r0, #0
+	mov r2, r0
 	neg r2, r2
 	mov r3, #3
 	mul r2, r3
@@ -126770,14 +126770,14 @@ thumb_func_end sub_80F70A0
 thumb_local_start
 sub_80F70E0:
 	push {r4,lr}
-	add r4, r1, #0
+	mov r4, r1
 	ldrb r2, [r5,#0x12]
 	sub r2, r2, r0
 	cmp r2, #0
 	blt loc_80F70EE
 	neg r1, r1
 loc_80F70EE:
-	add r0, r1, #0
+	mov r0, r1
 	cmp r2, #0
 	bge loc_80F70F6
 	neg r2, r2
@@ -126786,10 +126786,10 @@ loc_80F70F6:
 	lsl r3, r3, #0x10
 	mul r3, r2
 	push {r0}
-	add r0, r3, #0
-	add r1, r4, #0
+	mov r0, r3
+	mov r1, r4
 	svc 6
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {r4,pc}
 thumb_func_end sub_80F70E0
@@ -126798,7 +126798,7 @@ thumb_local_start
 sub_80F710A:
 	push {r4,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r7,#3]
 	lsl r0, r0, #2
 	ldr r1, off_80F712C // =dword_80F7130 
@@ -126809,8 +126809,8 @@ sub_80F710A:
 	lsl r2, r2, #0x10
 	mul r0, r2
 	svc 6
-	add r1, r0, #0
-	add r0, r4, #0
+	mov r1, r0
+	mov r0, r4
 	pop {r4,pc}
 off_80F712C: .word dword_80F7130
 dword_80F7130: .word 0x30000, 0x38000, 0x40000, 0x48000
@@ -126927,7 +126927,7 @@ sub_80F71E0:
 	strb r0, [r7,#0xd]
 	mov r4, #1
 loc_80F7216:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80F721C: .word dword_80F7220
@@ -126974,7 +126974,7 @@ loc_80F7278:
 	mov r6, #0
 loc_80F727C:
 	ldr r2, off_80F737C // =byte_80F7380 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -127011,7 +127011,7 @@ loc_80F72BA:
 	mov r4, #0
 loc_80F72C4:
 	ldr r2, off_80F737C // =byte_80F7380 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -127026,7 +127026,7 @@ loc_80F72C4:
 	add r4, #1
 	cmp r4, #9
 	blt loc_80F72C4
-	add r4, r7, #0
+	mov r4, r7
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #3
 	ldr r1, off_80F73A8 // =dword_80F73AC 
@@ -127039,12 +127039,12 @@ loc_80F72C4:
 	ldr r0, [sp,#0x10]
 	add r7, r7, r0
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
-	add r7, r4, #0
+	mov r6, r0
+	mov r7, r4
 	mov r4, #0
 loc_80F7308:
 	ldr r2, off_80F737C // =byte_80F7380 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -127066,7 +127066,7 @@ loc_80F7308:
 	ldr r1, [sp,#0xc]
 	add r0, r0, r1
 	ldr r1, [sp,#0x10]
-	add r2, r1, #0
+	mov r2, r1
 	bl sub_8000C72
 loc_80F733E:
 	cmp r6, #1
@@ -127076,8 +127076,8 @@ loc_80F733E:
 	add r0, r0, r1
 	ldr r1, [sp,#0x10]
 	add r0, r0, r1
-	add r1, r6, #0
-	add r2, r6, #0
+	mov r1, r6
+	mov r2, r6
 	bl sub_8000C72
 loc_80F7354:
 	mov r4, #0
@@ -127166,7 +127166,7 @@ sub_80F73FA:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -127200,14 +127200,14 @@ loc_80F7432:
 loc_80F7452:
 	push {r0,r1}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r2, r0, #0
+	mov r2, r0
 	neg r2, r2
 	mov r3, #3
 	mul r2, r3
 	pop {r0,r1}
 	add r0, r0, r2
-	add r2, r4, #0
-	add r3, r6, #0
+	mov r2, r4
+	mov r3, r6
 	bl sub_80F74A8
 	add r4, #1
 	cmp r4, #2
@@ -127222,7 +127222,7 @@ thumb_func_end sub_80F742E
 thumb_local_start
 sub_80F74A8:
 	push {r4,r6,lr}
-	add r6, r2, #0
+	mov r6, r2
 	lsl r6, r6, #8
 	ldrb r4, [r7,#3]
 	orr r4, r6
@@ -127402,7 +127402,7 @@ sub_80F76F4:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -127432,14 +127432,14 @@ sub_80F7744:
 	push {r4,lr}
 	ldr r0, off_80F7760 // =byte_80F7764 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F79E0 // =0xa000 
 	tst r0, r1
 	beq loc_80F775A
 	add r4, #0x3c 
 loc_80F775A:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.byte 0, 0
 off_80F7760: .word byte_80F7764
@@ -127451,14 +127451,14 @@ sub_80F7768:
 	push {r4,lr}
 	ldr r0, off_80F7784 // =byte_80F7788 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F79E0 // =0xa000 
 	tst r0, r1
 	beq loc_80F777E
 	add r4, #0x3c 
 loc_80F777E:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80F7784: .word byte_80F7788
@@ -127474,7 +127474,7 @@ sub_80F778C:
 	ldr r0, off_80F77A4 // =byte_80F77A8 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {pc}
 off_80F77A4: .word byte_80F77A8
@@ -127486,14 +127486,14 @@ sub_80F77B0:
 	push {r4,lr}
 	ldr r0, off_80F77CC // =byte_80F77D0 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F79E0 // =0xa000 
 	tst r0, r1
 	beq loc_80F77C6
 	add r4, #0x3c 
 loc_80F77C6:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80F77CC: .word byte_80F77D0
@@ -127518,7 +127518,7 @@ sub_80F77E8:
 loc_80F77EC:
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #2
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r0, r0, r1
 	ldr r1, off_80F7824 // =byte_80F7828 
@@ -127644,14 +127644,14 @@ thumb_func_end sub_80F78C4
 thumb_local_start
 sub_80F78FA:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F7928 // =dword_80F7934 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F794C // =dword_80F7958 
 	mov r2, #8
 	mul r0, r2
@@ -127684,14 +127684,14 @@ thumb_func_end sub_80F78FA
 thumb_local_start
 sub_80F7970:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F7998 // =dword_80F79A4 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F79BC // =dword_80F79C8 
 	mov r2, #8
 	mul r0, r2
@@ -128237,7 +128237,7 @@ sub_80F7DBA:
 	ldrb r0, [r1,r0]
 	strh r0, [r7,#0x10]
 	push {r4,r6}
-	add r3, r0, #0
+	mov r3, r0
 	lsl r3, r3, #8
 	ldrb r4, [r7,#3]
 	orr r4, r3
@@ -128637,7 +128637,7 @@ thumb_func_end sub_80F8094
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl sub_800CFA6
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80F80F2
 	ldr r0, [sp]
@@ -128646,12 +128646,12 @@ thumb_func_end sub_80F8094
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl sub_800D012
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80F8106
 loc_80F80F2:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -128682,7 +128682,7 @@ sub_80F811A:
 	mov r7, #0
 loc_80F812A:
 	ldrb r2, [r5,#0x12]
-	add r2, r4, #0
+	mov r2, r4
 	lsl r2, r2, #1
 	ldr r3, off_80F81B4 // =byte_80F81B8 
 	add r3, r3, r2
@@ -128728,7 +128728,7 @@ loc_80F8172:
 	b loc_80F81AA
 loc_80F8182:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -128738,7 +128738,7 @@ loc_80F8182:
 	b loc_80F81AE
 loc_80F8196:
 	bl sub_8001532
-	add r1, r7, #0
+	mov r1, r7
 	svc 6
 	add r0, sp, #0x10
 	ldrb r0, [r0,r1]
@@ -128815,12 +128815,12 @@ loc_80F8226:
 	ldr r3, [sp,#0xc]
 	add r7, sp, #0x10
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80F824E
 loc_80F823A:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0x10
 	ldrb r0, [r0,r1]
@@ -128859,11 +128859,11 @@ sub_80F8256:
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl sub_800CFDC
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80F829E
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -128891,11 +128891,11 @@ sub_80F82B0:
 	ldrh r3, [r5,#0x16]
 	bl object_highlightPanelRegion
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	mov r6, #1
 loc_80F82C6:
 	ldrb r0, [r5,#0x12]
-	add r1, r6, #0
+	mov r1, r6
 	mul r1, r4
 	add r0, r0, r1
 	ldrb r1, [r7,#0x16]
@@ -128928,7 +128928,7 @@ sub_80F82E2:
 	beq loc_80F8302
 	mov r2, #1
 loc_80F8302:
-	add r0, r2, #0
+	mov r0, r2
 	pop {pc}
 	.balign 4, 0x00
 byte_80F8308: .byte 0x8, 0x7, 0x1, 0x1, 0x7, 0x0, 0x0, 0x1
@@ -129090,12 +129090,12 @@ thumb_local_start
 sub_80F8540:
 	push {r4,r6,r7,lr}
 	bl sub_800FE36
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
 	eor r0, r1
 	bl sub_80103BC
-	add r6, r0, #0
+	mov r6, r0
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #1
 	ldr r1, off_80F8574 // =loc_80F8578 
@@ -129131,7 +129131,7 @@ loc_80F8578:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -129144,14 +129144,14 @@ sub_80F85B2:
 	push {r4,lr}
 	ldr r0, off_80F85CC // =byte_80F85D0 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F8708 // =0xa000 
 	tst r0, r1
 	beq loc_80F85C8
 	add r4, #0x3c 
 loc_80F85C8:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 off_80F85CC: .word byte_80F85D0
 byte_80F85D0: .byte 0x28, 0x1E, 0x14, 0xA
@@ -129200,8 +129200,8 @@ sub_80F8610:
 	ldrb r4, [r0,#0x12]
 	ldrb r6, [r0,#0x13]
 	ldrb r0, [r5,#0x16]
-	add r1, r6, #0
-	add r2, r0, #0
+	mov r1, r6
+	mov r2, r0
 	lsl r2, r2, #3
 	ldr r3, off_80F8648 // =dword_80F864C 
 	add r3, r3, r2
@@ -129228,14 +129228,14 @@ thumb_func_end sub_80F8610
 thumb_local_start
 sub_80F865C:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F86B0 // =dword_80F86BC 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F86D4 // =dword_80F86E0 
 	mov r2, #8
 	mul r0, r2
@@ -129251,14 +129251,14 @@ sub_80F865C:
 thumb_func_end sub_80F865C
 
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F86B0 // =dword_80F86BC 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F86D4 // =dword_80F86E0 
 	mov r2, #8
 	mul r0, r2
@@ -129806,8 +129806,8 @@ loc_80F8AD4:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -130080,19 +130080,19 @@ sub_80F8CF8:
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl sub_800CFA6
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80F8D22
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80F8D36
 loc_80F8D22:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -130125,7 +130125,7 @@ loc_80F8D4E:
 	mul r0, r2
 	cmp r0, #2
 	blt loc_80F8D7A
-	add r0, r4, #0
+	mov r0, r4
 	mov r1, #2
 	ldr r2, [sp,#4]
 	ldr r3, [sp,#8]
@@ -130146,7 +130146,7 @@ loc_80F8D7A:
 	tst r6, r6
 	beq loc_80F8D98
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -130182,12 +130182,12 @@ sub_80F8DA8:
 	beq loc_80F8DC4
 	mov r4, #1
 loc_80F8DC4:
-	add r0, r4, #0
+	mov r0, r4
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	add r7, sp, #0xc
 	bl sub_800CFDC
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80F8DE4
 	ldr r0, [sp,#8]
@@ -130199,7 +130199,7 @@ loc_80F8DC4:
 	b loc_80F8DC4
 loc_80F8DE4:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -130227,19 +130227,19 @@ sub_80F8DFE:
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl sub_800D012
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80F8E2C
 	ldr r2, [sp,#4]
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80F8E40
 loc_80F8E2C:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -130308,7 +130308,7 @@ sub_80F8E90:
 	strb r0, [r2,#7]
 	mov r1, #1
 loc_80F8EA6:
-	add r0, r1, #0
+	mov r0, r1
 	pop {pc}
 thumb_func_end sub_80F8E90
 
@@ -130456,7 +130456,7 @@ sub_80F9088:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -130490,14 +130490,14 @@ loc_80F90DE:
 	ldr r0, off_80F90F8 // =byte_80F90FC 
 	add r0, r0, r4
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80F92C0 // =0xa000 
 	tst r0, r1
 	beq loc_80F90F4
 	add r4, #0x1e
 loc_80F90F4:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 off_80F90F8: .word byte_80F90FC
 byte_80F90FC: .byte 0x30, 0x24, 0x18, 0x18, 0x1, 0x1, 0x1, 0x1
@@ -130599,7 +130599,7 @@ sub_80F91A2:
 	and r0, r1
 loc_80F91B8:
 	str r0, [r5,#0x60]
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_800FE36
 	cmp r0, #0
 	beq loc_80F91C6
@@ -130650,14 +130650,14 @@ thumb_func_end sub_80F91F6
 thumb_local_start
 sub_80F9222:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F9278 // =dword_80F9284 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F929C // =dword_80F92A8 
 	mov r2, #8
 	mul r0, r2
@@ -130673,14 +130673,14 @@ sub_80F9222:
 thumb_func_end sub_80F9222
 
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80F9278 // =dword_80F9284 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80F929C // =dword_80F92A8 
 	mov r2, #8
 	mul r0, r2
@@ -131169,8 +131169,8 @@ loc_80F9650:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x20 
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -131346,7 +131346,7 @@ sub_80F97C0:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r7,#8]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -131368,7 +131368,7 @@ sub_80F97C0:
 	add r2, r2, r1
 	ldr r1, [r2]
 	ldr r2, [r2,#4]
-	add r3, r1, #0
+	mov r3, r1
 	mul r1, r0
 	str r1, [r5,#0x40]
 	ldrb r0, [r7,#0xc]
@@ -131382,7 +131382,7 @@ sub_80F97C0:
 	ldr r2, off_80F98AC // =dword_80F98B0 
 	ldrb r1, [r2,r1]
 	mul r0, r1
-	add r1, r3, #0
+	mov r1, r3
 	svc 6
 	strh r0, [r7,#0x10]
 	b locret_80F987C
@@ -131467,7 +131467,7 @@ sub_80F98C0:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -131509,19 +131509,19 @@ sub_80F993A:
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl sub_800CFA6
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80F9964
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80F9978
 loc_80F9964:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -131554,7 +131554,7 @@ thumb_local_start
 sub_80F9992:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x18
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #1
 	ldrb r1, [r5,#0x16]
 	tst r1, r1
@@ -131564,11 +131564,11 @@ loc_80F99A2:
 	ldrb r1, [r4,#0x13]
 	add r7, sp, #0
 	bl sub_800CF14
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80F99C4
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -131639,7 +131639,7 @@ sub_80F9A18:
 	ldr r1, off_80F9A90 // =dword_80F9A94 
 	add r6, r6, r1
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	neg r4, r4
 	bl sub_80F9AE8
 	mul r0, r4
@@ -131703,14 +131703,14 @@ sub_80F9AE8:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x18
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r6, r0, #0
+	mov r6, r0
 	mov r4, #1
 	ldrb r0, [r5,#0x16]
 	tst r0, r0
 	beq loc_80F9AFC
 	mov r4, #6
 loc_80F9AFC:
-	add r0, r4, #0
+	mov r0, r4
 	ldrb r2, [r5,#0x16]
 	lsl r2, r2, #3
 	ldr r3, off_80F9B38 // =dword_80F9B3C 
@@ -131766,7 +131766,7 @@ sub_80F9B4C:
 loc_80F9B68:
 	mov r4, #0
 loc_80F9B6A:
-	add r1, r4, #0
+	mov r1, r4
 	mov r2, #3
 	mul r1, r2
 	ldr r2, off_80F9BB4 // =dword_80F9BB8 
@@ -131791,7 +131791,7 @@ loc_80F9B90:
 	cmp r4, #6
 	ble loc_80F9B6A
 loc_80F9B96:
-	add r3, r6, #0
+	mov r3, r6
 	lsl r3, r3, #1
 	ldr r0, off_80F9BD0 // =byte_80F9BD4 
 	add r3, r3, r0
@@ -131803,7 +131803,7 @@ loc_80F9B96:
 	mov r2, #7
 	sub r0, r2, r0
 loc_80F9BAC:
-	add r2, r6, #0
+	mov r2, r6
 	add sp, sp, #8
 	pop {r4,r6,pc}
 	.balign 4, 0x00
@@ -131822,7 +131822,7 @@ thumb_func_end sub_80F9B4C
 thumb_local_start
 sub_80F9BDC:
 	push {r4,lr}
-	add r3, r0, #0
+	mov r3, r0
 	lsl r0, r0, #1
 	ldr r1, off_80F9C08 // =dword_80F9C0C 
 	add r1, r1, r0
@@ -131988,7 +131988,7 @@ loc_80F9DF4:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -132003,14 +132003,14 @@ sub_80F9E34:
 	push {r4,lr}
 	ldr r0, off_80F9E50 // =byte_80F9E54 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FA0A0 // =0xa000 
 	tst r0, r1
 	beq loc_80F9E4A
 	add r4, #0x3c 
 loc_80F9E4A:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.byte 0, 0
 off_80F9E50: .word byte_80F9E54
@@ -132033,14 +132033,14 @@ sub_80F9E6C:
 	push {r4,lr}
 	ldr r0, off_80F9E88 // =byte_80F9E8C 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FA0A0 // =0xa000 
 	tst r0, r1
 	beq loc_80F9E82
 	add r4, #0x3c 
 loc_80F9E82:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80F9E88: .word byte_80F9E8C
@@ -132063,14 +132063,14 @@ sub_80F9EA4:
 	push {r4,lr}
 	ldr r0, off_80F9EC0 // =byte_80F9EC4 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FA0A0 // =0xa000 
 	tst r0, r1
 	beq loc_80F9EBA
 	add r4, #0x3c 
 loc_80F9EBA:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.byte 0, 0
 off_80F9EC0: .word byte_80F9EC4
@@ -132097,7 +132097,7 @@ sub_80F9EDC:
 	ldr r0, off_80F9EF4 // =byte_80F9EF8 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {pc}
 off_80F9EF4: .word byte_80F9EF8
@@ -132109,14 +132109,14 @@ sub_80F9F00:
 	push {r4,lr}
 	ldr r0, off_80F9F1C // =byte_80F9F20 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FA0A0 // =0xa000 
 	tst r0, r1
 	beq loc_80F9F16
 	add r4, #0x3c 
 loc_80F9F16:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80F9F1C: .word byte_80F9F20
@@ -132220,14 +132220,14 @@ thumb_func_end sub_80F9FA6
 thumb_local_start
 sub_80F9FEC:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80FA040 // =dword_80FA050 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80FA070 // =dword_80FA080 
 	mov r2, #8
 	mul r0, r2
@@ -132245,14 +132245,14 @@ thumb_func_end sub_80F9FEC
 thumb_local_start
 sub_80FA01A:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80FA040 // =dword_80FA050 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80FA070 // =dword_80FA080 
 	mov r2, #8
 	mul r0, r2
@@ -132539,7 +132539,7 @@ sub_80FA284:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r7,#8]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -132673,7 +132673,7 @@ sub_80FA37C:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -132885,7 +132885,7 @@ sub_80FA540:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r7,#8]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -133020,7 +133020,7 @@ sub_80FA644:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -133240,7 +133240,7 @@ sub_80FA81E:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r7,#8]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -133419,7 +133419,7 @@ sub_80FA968:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -133480,7 +133480,7 @@ sub_80FAA04:
 	mov r7, #0
 loc_80FAA16:
 	ldr r2, off_80FAA98 // =byte_80FAA9C 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -133525,7 +133525,7 @@ loc_80FAA5A:
 	b loc_80FAA94
 loc_80FAA6C:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0x10
 	ldrb r0, [r0,r1]
@@ -133535,7 +133535,7 @@ loc_80FAA6C:
 	b loc_80FAA94
 loc_80FAA80:
 	bl sub_8001532
-	add r1, r7, #0
+	mov r1, r7
 	svc 6
 	add r0, sp, #0x18
 	ldrb r0, [r0,r1]
@@ -133709,7 +133709,7 @@ thumb_func_end sub_80FABEC
 	blt loc_80FAC26
 	mov r3, #1
 loc_80FAC26:
-	add r0, r3, #0
+	mov r0, r3
 	pop {pc}
 	.balign 4, 0x00
 off_80FAC2C: .word byte_80FAC30
@@ -133732,12 +133732,12 @@ sub_80FAC34:
 	ldrb r6, [r5,#0x16]
 	add r7, sp, #4
 	bl sub_800D3FE
-	add r4, r0, #0
+	mov r4, r0
 	tst r4, r4
 	beq loc_80FAC86
 	add r0, sp, #4
-	add r1, r4, #0
-	add r2, r4, #0
+	mov r1, r4
+	mov r2, r4
 	bl sub_8000C72
 	ldr r7, [sp]
 	mov r6, #1
@@ -133907,7 +133907,7 @@ sub_80FAE60:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -133929,14 +133929,14 @@ sub_80FAEA0:
 	push {r4,lr}
 	ldr r0, off_80FAEBC // =byte_80FAEC0 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FB100 // =0xa000 
 	tst r0, r1
 	beq loc_80FAEB6
 	add r4, #0x3c 
 loc_80FAEB6:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80FAEBC: .word byte_80FAEC0
@@ -133952,7 +133952,7 @@ sub_80FAEC4:
 	ldr r0, off_80FAEDC // =byte_80FAEE0 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {pc}
 off_80FAEDC: .word byte_80FAEE0
@@ -133964,14 +133964,14 @@ sub_80FAEE8:
 	push {r4,lr}
 	ldr r0, off_80FAF04 // =byte_80FAF08 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FB100 // =0xa000 
 	tst r0, r1
 	beq loc_80FAEFE
 	add r4, #0x3c 
 loc_80FAEFE:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80FAF04: .word byte_80FAF08
@@ -133983,14 +133983,14 @@ sub_80FAF0C:
 	push {r4,lr}
 	ldr r0, off_80FAF28 // =byte_80FAF2C 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FB100 // =0xa000 
 	tst r0, r1
 	beq loc_80FAF22
 	add r4, #0x3c 
 loc_80FAF22:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80FAF28: .word byte_80FAF2C
@@ -134017,13 +134017,13 @@ sub_80FAF44:
 	ldr r0, off_80FAF6C // =byte_80FAF70 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	push {r0,r1}
 	ldr r0, off_80FAF6C // =byte_80FAF70 
 	add r0, #8
 	bl sub_800FE28
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
 	.balign 4, 0x00
@@ -134037,14 +134037,14 @@ sub_80FAF7C:
 	push {r4,lr}
 	ldr r0, off_80FAF98 // =byte_80FAF9C 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FB100 // =0xa000 
 	tst r0, r1
 	beq loc_80FAF92
 	add r4, #0x3c 
 loc_80FAF92:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80FAF98: .word byte_80FAF9C
@@ -134147,14 +134147,14 @@ thumb_func_end sub_80FB028
 thumb_local_start
 sub_80FB062:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80FB0B8 // =dword_80FB0C4 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80FB0DC // =dword_80FB0E8 
 	mov r2, #8
 	mul r0, r2
@@ -134170,14 +134170,14 @@ sub_80FB062:
 thumb_func_end sub_80FB062
 
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80FB0B8 // =dword_80FB0C4 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80FB0DC // =dword_80FB0E8 
 	mov r2, #8
 	mul r0, r2
@@ -134867,19 +134867,19 @@ sub_80FB724:
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl sub_800CFA6
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80FB74E
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80FB762
 loc_80FB74E:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -134961,11 +134961,11 @@ loc_80FB7E6:
 	ldr r3, [sp,#4]
 	add r7, sp, #0xc
 	bl sub_800CF14
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80FB80C
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -135459,7 +135459,7 @@ sub_80FBCA2:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -135643,7 +135643,7 @@ loc_80FBE0C:
 	mul r0, r1
 	ldr r1, off_80FBE3C // =byte_80FBE40 
 	add r0, r0, r1
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r1, r1, r0
 	ldrb r0, [r1]
@@ -135825,14 +135825,14 @@ thumb_func_end sub_80FBF54
 thumb_local_start
 sub_80FBF92:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80FBFE8 // =dword_80FBFFC 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80FC024 // =dword_80FC038 
 	mov r2, #8
 	mul r0, r2
@@ -135848,14 +135848,14 @@ sub_80FBF92:
 thumb_func_end sub_80FBF92
 
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80FBFE8 // =dword_80FBFFC 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80FC024 // =dword_80FC038 
 	mov r2, #8
 	mul r0, r2
@@ -136191,8 +136191,8 @@ loc_80FC2A6:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -136530,8 +136530,8 @@ loc_80FC558:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -136776,8 +136776,8 @@ loc_80FC73C:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -137034,8 +137034,8 @@ loc_80FC93E:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	bl sub_80E05F6
 	b locret_80FC9A0
@@ -137051,8 +137051,8 @@ loc_80FC97A:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	bl sub_80E05F6
 locret_80FC9A0:
@@ -137114,8 +137114,8 @@ sub_80FC9F8:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -137187,7 +137187,7 @@ loc_80FCA7A:
 	mov r3, #1
 	bl sub_801A082
 	ldr r0, [r7,#8]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -137418,7 +137418,7 @@ sub_80FCC4C:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -137469,7 +137469,7 @@ sub_80FCCBC:
 	mov r4, #0
 	mov r6, #0
 loc_80FCCD8:
-	add r0, r4, #0
+	mov r0, r4
 	lsl r0, r0, #1
 	ldr r1, off_80FCD60 // =byte_80FCD64 
 	add r1, r1, r0
@@ -137513,7 +137513,7 @@ loc_80FCD1E:
 	ldrb r6, [r5,#0x16]
 	add r7, sp, #0xc
 	bl sub_800D3FE
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80FCD42
 	ldr r0, [sp]
@@ -137524,7 +137524,7 @@ loc_80FCD1E:
 	b loc_80FCD56
 loc_80FCD42:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -137557,11 +137557,11 @@ sub_80FCD92:
 	ldrb r0, [r0,#0x13]
 	add r7, sp, #0
 	bl sub_800D012
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80FCDB6
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -137576,7 +137576,7 @@ thumb_func_end sub_80FCD92
 thumb_local_start
 sub_80FCDBA:
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	push {r2,r3}
 	bl object_getFlipDirection_800E2CA // () -> int
 	neg r0, r0
@@ -137597,8 +137597,8 @@ thumb_func_end sub_80FCDBA
 thumb_local_start
 sub_80FCDDE:
 	push {r4,r6,lr}
-	add r4, r2, #0
-	add r6, r3, #0
+	mov r4, r2
+	mov r6, r3
 	ldrb r0, [r5,#0x16]
 	mov r1, #2
 	ldrb r2, [r5,#0x16]
@@ -137611,8 +137611,8 @@ sub_80FCDDE:
 	tst r0, r0
 	beq locret_80FCE28
 	push {r0,r1}
-	add r2, r4, #0
-	add r3, r6, #0
+	mov r2, r4
+	mov r3, r6
 	bl object_checkPanelParameters
 	tst r0, r0
 	pop {r0,r1}
@@ -137662,7 +137662,7 @@ sub_80FCE5C:
 	ldrb r1, [r2,#0x12]
 	ldrb r2, [r2,#0x13]
 	add r0, r0, r1
-	add r1, r2, #0
+	mov r1, r2
 	push {r0,r1}
 	bl object_isValidPanel
 	tst r0, r0
@@ -137700,7 +137700,7 @@ loc_80FCEA6:
 	mov r1, #0x28 
 	lsl r1, r1, #0x10
 	mul r0, r1
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
 	strh r0, [r7,#0x10]
 	mov r2, #1
@@ -137745,7 +137745,7 @@ loc_80FCEF6:
 	mov r1, #0x18
 	lsl r1, r1, #0x10
 	mul r0, r1
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
 	strh r0, [r7,#0x10]
 locret_80FCF02:
@@ -137818,7 +137818,7 @@ thumb_local_start
 sub_80FCF90:
 	push {r4,r7,lr}
 	ldr r4, dword_80FD008 // =0xb11 
-	add r7, r0, #0
+	mov r7, r0
 	bl sub_80B8E30
 	pop {r4,r7,pc}
 thumb_func_end sub_80FCF90
@@ -137838,7 +137838,7 @@ thumb_local_start
 sub_80FCFA8:
 	push {r4,r6,r7,lr}
 	bl sub_800E456 // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	lsl r4, r4, #8
 	ldrb r0, [r5,#0x10]
 	add r4, r4, r0
@@ -138054,7 +138054,7 @@ thumb_func_end sub_80FD240
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -138067,14 +138067,14 @@ sub_80FD27A:
 	push {r4,lr}
 	ldr r0, off_80FD294 // =byte_80FD298 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FD4C4 // =0xa000 
 	tst r0, r1
 	beq loc_80FD290
 	add r4, #0x3c 
 loc_80FD290:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 off_80FD294: .word byte_80FD298
 byte_80FD298: .byte 0x3C, 0x18, 0x12, 0xC
@@ -138085,14 +138085,14 @@ sub_80FD29C:
 	push {r4,lr}
 	ldr r0, off_80FD2B8 // =byte_80FD2BC 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FD4C4 // =0xa000 
 	tst r0, r1
 	beq loc_80FD2B2
 	add r4, #0x3c 
 loc_80FD2B2:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80FD2B8: .word byte_80FD2BC
@@ -138104,14 +138104,14 @@ sub_80FD2C0:
 	push {r4,lr}
 	ldr r0, off_80FD2DC // =byte_80FD2E0 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FD4C4 // =0xa000 
 	tst r0, r1
 	beq loc_80FD2D6
 	add r4, #0x3c 
 loc_80FD2D6:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80FD2DC: .word byte_80FD2E0
@@ -138134,14 +138134,14 @@ sub_80FD2F8:
 	push {r4,lr}
 	ldr r0, off_80FD314 // =byte_80FD318 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FD4C4 // =0xa000 
 	tst r0, r1
 	beq loc_80FD30E
 	add r4, #0x3c 
 loc_80FD30E:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80FD314: .word byte_80FD318
@@ -138216,8 +138216,8 @@ sub_80FD376:
 loc_80FD394:
 	ldr r0, off_80FD3C4 // =byte_80FD3C8 
 	bl sub_800FE28
-	add r1, r0, #0
-	add r0, r4, #0
+	mov r1, r0
+	mov r0, r4
 	pop {r4,pc}
 off_80FD3A0: .word dword_80FD3A4
 dword_80FD3A4: .word 0x0
@@ -138230,14 +138230,14 @@ thumb_func_end sub_80FD376
 thumb_local_start
 sub_80FD3CC:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80FD3FC // =a2z 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80FD420 // =dword_80FD42C 
 	mov r2, #8
 	mul r0, r2
@@ -138274,14 +138274,14 @@ thumb_func_end sub_80FD3CC
 thumb_local_start
 sub_80FD444:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80FD46C // =dword_80FD478 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80FD490 // =dword_80FD49C 
 	mov r2, #8
 	mul r0, r2
@@ -138790,7 +138790,7 @@ sub_80FD852:
 	mov r0, #9
 	strb r0, [r5,#0x10]
 	ldrb r1, [r7,#3]
-	add r4, r1, #0
+	mov r4, r1
 	ldr r0, off_80FD8A8 // =dword_80FD8AC 
 	ldrb r0, [r0,r1]
 	lsl r0, r0, #8
@@ -139072,7 +139072,7 @@ sub_80FDA62:
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl sub_800CFA6
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80FDA9C
 	ldr r0, [sp]
@@ -139081,12 +139081,12 @@ sub_80FDA62:
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl sub_800D012
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80FDAB0
 loc_80FDA9C:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -139185,7 +139185,7 @@ loc_80FDB32:
 	beq loc_80FDB68
 loc_80FDB54:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -139229,14 +139229,14 @@ sub_80FDB84:
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl object_getPanelsExceptCurrentFilterred
-	add r7, r0, #0
+	mov r7, r0
 	bne loc_80FDBB4
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	b loc_80FDBC8
 loc_80FDBB4:
 	bl sub_8001532
-	add r1, r7, #0
+	mov r1, r7
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -139264,12 +139264,12 @@ sub_80FDBCC:
 	beq loc_80FDBE6
 	mov r4, #6
 loc_80FDBE6:
-	add r0, r4, #0
+	mov r0, r4
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl sub_800CFDC
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80FDC02
 	ldrb r0, [r5,#0x12]
@@ -139279,7 +139279,7 @@ loc_80FDBE6:
 	b loc_80FDC16
 loc_80FDC02:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -139314,7 +139314,7 @@ loc_80FDC34:
 	beq loc_80FDC3E
 	mov r0, #0
 loc_80FDC3E:
-	add r1, r6, #0
+	mov r1, r6
 	ldrb r2, [r7,#2]
 	ldrb r3, [r7,#0xc]
 	lsl r3, r3, #8
@@ -139335,7 +139335,7 @@ loc_80FDC5C:
 	beq loc_80FDC66
 	mov r1, #0
 loc_80FDC66:
-	add r0, r6, #0
+	mov r0, r6
 	ldrb r2, [r7,#2]
 	ldrb r3, [r7,#0xc]
 	lsl r3, r3, #8
@@ -139361,7 +139361,7 @@ thumb_local_start
 sub_80FDCA4:
 	push {r4,r6,lr}
 	mov r4, #1
-	add r6, r0, #0
+	mov r6, r0
 loc_80FDCAA:
 	bl object_getFlipDirection_800E2CA // () -> int
 	mul r0, r4
@@ -139507,10 +139507,10 @@ thumb_local_start
 sub_80FDEC4:
 	push {r4,r6,lr}
 	bl sub_800FE36
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #2
 	bl sub_80FE05C
-	add r6, r0, #0
+	mov r6, r0
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
 	eor r0, r1
@@ -139592,14 +139592,14 @@ sub_80FDF60:
 	push {r4,lr}
 	ldr r0, off_80FDF7C // =byte_80FDF80 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FE0D0 // =0xa000 
 	tst r0, r1
 	beq loc_80FDF76
 	add r4, #0x3c 
 loc_80FDF76:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80FDF7C: .word byte_80FDF80
@@ -139633,14 +139633,14 @@ sub_80FDFAC:
 	push {r4,lr}
 	ldr r0, off_80FDFC8 // =byte_80FDFCC 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FE0D0 // =0xa000 
 	tst r0, r1
 	beq loc_80FDFC2
 	add r4, #0x3c 
 loc_80FDFC2:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80FDFC8: .word byte_80FDFCC
@@ -139661,14 +139661,14 @@ thumb_func_end sub_80FDFD0
 thumb_local_start
 sub_80FDFE4:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80FE014 // =dword_80FE020 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80FE038 // =dword_80FE044 
 	mov r2, #8
 	mul r0, r2
@@ -139702,14 +139702,14 @@ thumb_func_end sub_80FDFE4
 thumb_local_start
 sub_80FE05C:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80FE084 // =dword_80FE090 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80FE0A8 // =dword_80FE0B4 
 	mov r2, #8
 	mul r0, r2
@@ -140279,7 +140279,7 @@ sub_80FE4D0:
 	str r0, [sp]
 	str r2, [sp,#0xc]
 	str r3, [sp,#0x10]
-	add r0, r6, #0
+	mov r0, r6
 	lsr r1, r0, #4
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1d
@@ -140290,7 +140290,7 @@ sub_80FE4D0:
 	mov r7, #0
 loc_80FE4EC:
 	ldr r2, off_80FE590 // =byte_80FE594 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -140352,7 +140352,7 @@ loc_80FE53E:
 	b loc_80FE58C
 loc_80FE564:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0x14
 	ldrb r0, [r0,r1]
@@ -140362,7 +140362,7 @@ loc_80FE564:
 	b loc_80FE58C
 loc_80FE578:
 	bl sub_8001532
-	add r1, r7, #0
+	mov r1, r7
 	svc 6
 	add r0, sp, #0x18
 	ldrb r0, [r0,r1]
@@ -140422,10 +140422,10 @@ loc_80FE5D4:
 	lsl r3, r3, #0x10
 loc_80FE5E0:
 	push {r0,r1}
-	add r0, r3, #0
-	add r1, r2, #0
+	mov r0, r3
+	mov r1, r2
 	svc 6
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
 thumb_func_end sub_80FE5C0
@@ -140457,8 +140457,8 @@ sub_80FE5EE:
 	cmp r1, r3
 	beq loc_80FE632
 loc_80FE61E:
-	add r0, r2, #0
-	add r1, r3, #0
+	mov r0, r2
+	mov r1, r3
 	ldr r2, [sp,#0x10]
 	ldr r3, [sp,#0x14]
 	push {r0,r1}
@@ -140470,7 +140470,7 @@ loc_80FE632:
 	mov r4, #0
 	mov r6, #0
 loc_80FE636:
-	add r0, r4, #0
+	mov r0, r4
 	lsl r0, r0, #1
 	ldr r1, off_80FE6A8 // =dword_80FE6AC 
 	add r1, r1, r0
@@ -140512,12 +140512,12 @@ loc_80FE674:
 	ldr r3, [sp,#0x14]
 	add r7, sp, #0x18
 	bl sub_800CF70
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80FE6A4
 loc_80FE690:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0x18
 	ldrb r0, [r0,r1]
@@ -140544,7 +140544,7 @@ sub_80FE6C8:
 	mov r4, #1
 loc_80FE6D2:
 	ldrb r0, [r5,#0x16]
-	add r1, r4, #0
+	mov r1, r4
 	ldrb r2, [r5,#0x16]
 	lsl r2, r2, #3
 	ldr r3, off_80FE77C // =dword_80FE780 
@@ -140595,7 +140595,7 @@ sub_80FE72C:
 	mov r4, #1
 loc_80FE730:
 	ldrb r0, [r5,#0x16]
-	add r1, r4, #0
+	mov r1, r4
 	ldrb r2, [r5,#0x16]
 	lsl r2, r2, #3
 	ldr r3, off_80FE77C // =dword_80FE780 
@@ -140762,7 +140762,7 @@ loc_80FE95A:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -140777,7 +140777,7 @@ sub_80FE98A:
 	push {r4,lr}
 	ldr r0, off_80FE9A4 // =byte_80FE9A8 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	ldr r0, off_80FE9A4 // =byte_80FE9A8 
 	add r0, #4
 	bl sub_800FE28
@@ -140794,7 +140794,7 @@ sub_80FE9B0:
 	push {r4,lr}
 	ldr r0, off_80FE9D8 // =dword_80FE9DC 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	ldr r0, off_80FE9D8 // =dword_80FE9DC 
 	add r0, #4
 	bl sub_800FE28
@@ -140807,7 +140807,7 @@ sub_80FE9B0:
 	beq loc_80FE9D4
 	add r4, #0x3c 
 loc_80FE9D4:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 off_80FE9D8: .word dword_80FE9DC
 dword_80FE9DC: .word 0xE0E0E0E, 0x0
@@ -140822,7 +140822,7 @@ sub_80FE9E4:
 	ldr r0, off_80FE9FC // =byte_80FEA00 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {pc}
 off_80FE9FC: .word byte_80FEA00
@@ -140834,7 +140834,7 @@ sub_80FEA08:
 	push {r4,lr}
 	ldr r0, off_80FEA30 // =dword_80FEA34 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	ldr r0, off_80FEA30 // =dword_80FEA34 
 	add r0, #4
 	bl sub_800FE28
@@ -140847,7 +140847,7 @@ sub_80FEA08:
 	beq loc_80FEA2C
 	add r4, #0x3c 
 loc_80FEA2C:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 off_80FEA30: .word dword_80FEA34
 dword_80FEA34: .word 0xE0E0E0E, 0x0
@@ -140862,13 +140862,13 @@ sub_80FEA3C:
 	ldr r0, off_80FEA64 // =byte_80FEA68 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	push {r0,r1}
 	ldr r0, off_80FEA64 // =byte_80FEA68 
 	add r0, #8
 	bl sub_800FE28
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
 	.balign 4, 0x00
@@ -140882,7 +140882,7 @@ sub_80FEA74:
 	push {r4,lr}
 	ldr r0, off_80FEA9C // =byte_80FEAA0 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	ldr r0, off_80FEA9C // =byte_80FEAA0 
 	add r0, #4
 	bl sub_800FE28
@@ -140895,7 +140895,7 @@ sub_80FEA74:
 	beq loc_80FEA98
 	add r4, #0x3c 
 loc_80FEA98:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 off_80FEA9C: .word byte_80FEAA0
 byte_80FEAA0: .byte 0x16, 0x10, 0xA, 0x8, 0x10, 0x10, 0x10, 0x10
@@ -140934,7 +140934,7 @@ sub_80FEAD8:
 	ldr r0, off_80FEAF0 // =loc_80FEAF4 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {pc}
 off_80FEAF0: .word loc_80FEAF4
@@ -141053,14 +141053,14 @@ thumb_func_end sub_80FEB9E
 thumb_local_start
 sub_80FEBE4:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80FEC38 // =dword_80FEC44 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80FEC5C // =dword_80FEC68 
 	mov r2, #8
 	mul r0, r2
@@ -141076,14 +141076,14 @@ sub_80FEBE4:
 thumb_func_end sub_80FEBE4
 
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80FEC38 // =dword_80FEC44 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80FEC5C // =dword_80FEC68 
 	mov r2, #8
 	mul r0, r2
@@ -141196,8 +141196,8 @@ sub_80FED28:
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r0, #0x34 
 	add r0, r0, r5
@@ -141383,8 +141383,8 @@ sub_80FEEB8:
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r0, #0x34 
 	add r0, r0, r5
@@ -141669,8 +141669,8 @@ sub_80FF0DC:
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	mov r0, #0x34 
 	add r0, r0, r5
@@ -142011,7 +142011,7 @@ sub_80FF378:
 	ldr r6, [r7,#8]
 	ldr r7, dword_80FF3C0 // =0x183 
 	bl sub_80E9EFA
-	add r2, r0, #0
+	mov r2, r0
 	mov r1, #1
 	ldrb r0, [r5,#0x16]
 	bl sub_800BF16
@@ -142254,7 +142254,7 @@ sub_80FF528:
 	mov r4, #0
 loc_80FF534:
 	ldr r2, off_80FF600 // =byte_80FF604 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -142273,11 +142273,11 @@ loc_80FF534:
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	mov r4, #0
 loc_80FF564:
 	ldr r2, off_80FF600 // =byte_80FF604 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -142298,12 +142298,12 @@ loc_80FF564:
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 loc_80FF596:
 	mov r4, #4
 loc_80FF598:
 	ldr r2, off_80FF600 // =byte_80FF604 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -142326,19 +142326,19 @@ loc_80FF598:
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl sub_800CFA6
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80FF5E2
 	ldr r2, [sp,#4]
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80FF5F6
 loc_80FF5E2:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -142380,7 +142380,7 @@ sub_80FF614:
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl sub_800CF14
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_80FF64A
 	ldrb r0, [r5,#0x16]
@@ -142390,12 +142390,12 @@ sub_80FF614:
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl sub_800CFDC
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_80FF65C
 loc_80FF64A:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -142480,8 +142480,8 @@ sub_80FF6E0:
 	bl sub_80103BC
 	ldrb r6, [r0,#0x13]
 	ldrb r0, [r5,#0x16]
-	add r1, r6, #0
-	add r2, r0, #0
+	mov r1, r6
+	mov r2, r0
 	lsl r2, r2, #3
 	ldr r3, off_80FF77C // =dword_80FF780 
 	add r3, r3, r2
@@ -142503,20 +142503,20 @@ sub_80FF6E0:
 	bgt locret_80FF778
 loc_80FF71E:
 	ldrb r0, [r5,#0x16]
-	add r1, r6, #0
-	add r2, r0, #0
+	mov r1, r6
+	mov r2, r0
 	lsl r2, r2, #3
 	ldr r3, off_80FF790 // =dword_80FF794 
 	add r3, r3, r2
 	ldr r2, [r3]
 	ldr r3, [r3,#4]
 	bl sub_800D086
-	add r4, r0, #0
-	add r6, r1, #0
+	mov r4, r0
+	mov r6, r1
 	tst r0, r0
 	beq locret_80FF778
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	add r1, #1
 	ldrb r2, [r5,#0x16]
 	lsl r2, r2, #3
@@ -142529,8 +142529,8 @@ loc_80FF71E:
 	tst r0, r0
 	pop {r0,r1}
 	bne locret_80FF778
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	sub r1, #1
 	ldrb r2, [r5,#0x16]
 	lsl r2, r2, #3
@@ -142782,7 +142782,7 @@ sub_80FFA22:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -142797,14 +142797,14 @@ sub_80FFA54:
 	push {r4,lr}
 	ldr r0, off_80FFA70 // =dword_80FFA74 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FFB84 // =0xa000 
 	tst r0, r1
 	beq loc_80FFA6A
 	add r4, #0x3c 
 loc_80FFA6A:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.byte 0, 0
 off_80FFA70: .word dword_80FFA74
@@ -142833,21 +142833,21 @@ off_80FFA98: .word loc_80FFA9C
 thumb_func_end sub_80FFA8C
 
 loc_80FFA9C:
-	add r6, r3, #0
+	mov r6, r3
 	asr r2, r3, #0x10
 thumb_local_start
 sub_80FFAA0:
 	push {r4,lr}
 	ldr r0, off_80FFABC // =dword_80FFAC0 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_80FFB84 // =0xa000 
 	tst r0, r1
 	beq loc_80FFAB6
 	add r4, #0x3c 
 loc_80FFAB6:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80FFABC: .word dword_80FFAC0
@@ -142890,14 +142890,14 @@ thumb_func_end sub_80FFAEC
 thumb_local_start
 sub_80FFAF8:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80FFB4C // =dword_80FFB54 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80FFB64 // =dword_80FFB6C 
 	mov r2, #8
 	mul r0, r2
@@ -142915,14 +142915,14 @@ thumb_func_end sub_80FFAF8
 thumb_local_start
 sub_80FFB26:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_80FFB4C // =dword_80FFB54 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_80FFB64 // =dword_80FFB6C 
 	mov r2, #8
 	mul r0, r2
@@ -143526,7 +143526,7 @@ sub_80FFFBC:
 	ldrb r1, [r5,#0x13]
 	bl sub_801BB1C
 	bl sub_800D58C
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	neg r0, r0
 	add r0, r0, r4
@@ -143540,13 +143540,13 @@ loc_80FFFF0:
 	ldr r0, [sp,#8]
 	cmp r0, r4
 	beq loc_8100016
-	add r0, r4, #0
+	mov r0, r4
 	ldr r1, [sp]
 	ldr r2, [sp,#0xc]
 	ldr r3, [sp,#0x10]
 	add r7, sp, #0x14
 	bl sub_800CF14
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_8100048
 	ldr r0, [sp,#4]
@@ -143562,7 +143562,7 @@ loc_8100016:
 	beq loc_8100020
 	mov r4, #6
 loc_8100020:
-	add r0, r4, #0
+	mov r0, r4
 	ldr r1, [sp]
 	ldr r2, [sp,#0xc]
 	ldr r3, [sp,#0x10]
@@ -143577,12 +143577,12 @@ loc_8100020:
 	ldr r3, [sp,#0x10]
 	add r7, sp, #0x14
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_810005C
 loc_8100048:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0x14
 	ldrb r0, [r0,r1]
@@ -143662,7 +143662,7 @@ thumb_local_start
 sub_81000E0:
 	push {r4,lr}
 	bl sub_800D58C
-	add r4, r0, #0
+	mov r4, r0
 	tst r4, r4
 	beq locret_81000F4
 	bl sub_800E2C0
@@ -143689,7 +143689,7 @@ sub_8100106:
 	mov r6, #1
 loc_810010A:
 	ldrb r0, [r7,#0x16]
-	add r1, r6, #0
+	mov r1, r6
 	ldr r3, off_8100138 // =dword_810013C 
 	ldr r2, [r3]
 	ldr r3, [r3,#0x4] // (dword_8100140 - 0x810013c)
@@ -143728,13 +143728,13 @@ sub_8100144:
 	str r0, [sp]
 	str r1, [sp,#4]
 	bl sub_800D58C
-	add r4, r0, #0
+	mov r4, r0
 	tst r4, r4
 	beq loc_81001A4
 	bl sub_800E2C0
 	neg r0, r0
 	add r4, r4, r0
-	add r0, r4, #0
+	mov r0, r4
 	ldr r1, [r7,#0x2c]
 	ldrb r1, [r1,#0x13]
 	ldr r2, [sp]
@@ -143744,16 +143744,16 @@ sub_8100144:
 	tst r0, r0
 	pop {r0,r1}
 	bne loc_81001A4
-	add r0, r4, #0
+	mov r0, r4
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl sub_800CFDC
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_81001A4
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -143941,7 +143941,7 @@ sub_81003AC:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -143961,14 +143961,14 @@ sub_81003EA:
 	push {r4,lr}
 	ldr r0, off_8100404 // =byte_8100408 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_810074C // =0xa000 
 	tst r0, r1
 	beq loc_8100400
 	add r4, #0x3c 
 loc_8100400:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 off_8100404: .word byte_8100408
 byte_8100408: .byte 0x1E, 0x18, 0x12, 0xC
@@ -143990,14 +143990,14 @@ sub_8100420:
 	push {r4,lr}
 	ldr r0, off_810043C // =byte_8100440 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_810074C // =0xa000 
 	tst r0, r1
 	beq loc_8100436
 	add r4, #0x3c 
 loc_8100436:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_810043C: .word byte_8100440
@@ -144040,14 +144040,14 @@ sub_8100480:
 	push {r4,lr}
 	ldr r0, off_810049C // =byte_81004A0 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_810074C // =0xa000 
 	tst r0, r1
 	beq loc_8100496
 	add r4, #0x3c 
 loc_8100496:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_810049C: .word byte_81004A0
@@ -144063,7 +144063,7 @@ sub_81004A4:
 	ldr r0, off_81004BC // =byte_81004C0 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {pc}
 off_81004BC: .word byte_81004C0
@@ -144075,14 +144075,14 @@ sub_81004C8:
 	push {r4,lr}
 	ldr r0, off_81004E4 // =byte_81004E8 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_810074C // =0xa000 
 	tst r0, r1
 	beq loc_81004DE
 	add r4, #0x3c 
 loc_81004DE:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_81004E4: .word byte_81004E8
@@ -144105,14 +144105,14 @@ sub_8100500:
 	push {r4,lr}
 	ldr r0, off_810051C // =byte_8100520 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_810074C // =0xa000 
 	tst r0, r1
 	beq loc_8100516
 	add r4, #0x3c 
 loc_8100516:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_810051C: .word byte_8100520
@@ -144135,14 +144135,14 @@ sub_8100538:
 	push {r4,lr}
 	ldr r0, off_8100554 // =loc_8100558 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_810074C // =0xa000 
 	tst r0, r1
 	beq loc_810054E
 	add r4, #0x3c 
 loc_810054E:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_8100554: .word loc_8100558
@@ -144294,14 +144294,14 @@ thumb_func_end sub_810064C
 thumb_local_start
 sub_810067E:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_81006D4 // =dword_81006E8 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_8100710 // =dword_8100724 
 	mov r2, #8
 	mul r0, r2
@@ -144317,14 +144317,14 @@ sub_810067E:
 thumb_func_end sub_810067E
 
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_81006D4 // =dword_81006E8 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_8100710 // =dword_8100724 
 	mov r2, #8
 	mul r0, r2
@@ -145499,11 +145499,11 @@ sub_8100F5C:
 	ldrb r0, [r5,#0x13]
 	add r7, sp, #0
 	bl sub_800CFA6
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_8100F82
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -145532,7 +145532,7 @@ sub_8100F8A:
 	neg r0, r0
 	pop {r1,r2}
 	add r0, r0, r1
-	add r1, r2, #0
+	mov r1, r2
 	str r0, [sp]
 	str r1, [sp,#4]
 	mov r6, #0
@@ -145580,7 +145580,7 @@ loc_8100FFE:
 	tst r6, r6
 	beq loc_8101016
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0x10
 	ldrb r0, [r0,r1]
@@ -145620,11 +145620,11 @@ loc_8101044:
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl sub_800CFDC
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_8101068
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -145709,8 +145709,8 @@ sub_81010DA:
 	mov r6, #6
 loc_81010E6:
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
-	add r0, r6, #0
+	mov r4, r0
+	mov r0, r6
 	ldrb r1, [r5,#0x13]
 	ldrb r2, [r5,#0x16]
 	lsl r2, r2, #3
@@ -145741,7 +145741,7 @@ sub_810112C:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #8
 	str r0, [sp]
-	add r4, r7, #0
+	mov r4, r7
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_801BB1C
@@ -145757,12 +145757,12 @@ loc_8101146:
 	ldr r3, [r3,#0x4] // (dword_810118C - 0x8101188)
 	add r7, sp, #4
 	bl sub_800CF14
-	add r7, r4, #0
-	add r6, r0, #0
+	mov r7, r4
+	mov r6, r0
 	tst r6, r6
 	beq loc_8101178
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #4
 	ldrb r0, [r0,r1]
@@ -145870,8 +145870,8 @@ sub_8101218:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x20 
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -145979,7 +145979,7 @@ loc_81013C4:
 	strb r0, [r6,#5]
 loc_81013CA:
 	bl sub_8101584
-	add r4, r0, #0
+	mov r4, r0
 	tst r4, r4
 	bne loc_81013F6
 	ldrb r0, [r6,#4]
@@ -146027,7 +146027,7 @@ loc_8101420:
 	strb r1, [r6]
 	b locret_8101448
 loc_810142A:
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_810161A
 	bl sub_800FE36
 	cmp r0, #1
@@ -146206,7 +146206,7 @@ sub_810154C:
 	ldr r0, off_8101564 // =byte_8101568 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {pc}
 off_8101564: .word byte_8101568
@@ -146240,7 +146240,7 @@ sub_8101584:
 	str r2, [sp,#4]
 	mov r4, #0
 loc_810159C:
-	add r1, r4, #0
+	mov r1, r4
 	mov r2, #3
 	mul r1, r2
 	ldr r2, off_81015D0 // =loc_81015D4 
@@ -146266,7 +146266,7 @@ loc_81015C2:
 	ble loc_810159C
 	mov r6, #0
 loc_81015CA:
-	add r0, r6, #0
+	mov r0, r6
 	add sp, sp, #8
 	pop {r4,r6,pc}
 off_81015D0: .word loc_81015D4
@@ -146463,7 +146463,7 @@ sub_810173C:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -146476,14 +146476,14 @@ thumb_func_end sub_810173C
 thumb_local_start
 sub_810176E:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_81017C4 // =dword_81017D8 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_8101800 // =dword_8101814 
 	mov r2, #8
 	mul r0, r2
@@ -146501,14 +146501,14 @@ thumb_func_end sub_810176E
 thumb_local_start
 sub_810179C:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_81017C4 // =dword_81017D8 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_8101800 // =dword_8101814 
 	mov r2, #8
 	mul r0, r2
@@ -146972,7 +146972,7 @@ sub_8101CC0:
 	mov r1, #1
 	eor r0, r1
 	bl sub_80103F8
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	beq loc_8101D00
 	push {r0-r2}
@@ -147608,9 +147608,9 @@ sub_810222C:
 	str r0, [sp,#8]
 	ldrb r0, [r2,#0x13]
 	str r0, [sp,#0xc]
-	add r6, r3, #0
+	mov r6, r3
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 loc_8102244:
 	mov r0, #0
 	ldrsb r0, [r6,r0]
@@ -148227,7 +148227,7 @@ loc_8102692:
 	lsr r0, r0, #2
 	bcc loc_81026E0
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
@@ -148306,8 +148306,8 @@ loc_810271E:
 	bl sub_80C536A
 	pop {r0,r1,r7}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	push {r1,r2}
 	bl sub_800E456 // () -> int
 	mov r4, #4
@@ -148413,7 +148413,7 @@ sub_81027F4:
 	tst r0, r0
 	bne loc_8102838
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r6, r0, #0
+	mov r6, r0
 	mov r3, #0
 	ldr r4, [r7,#0xc]
 	ldrb r0, [r5,#0x12]
@@ -148728,7 +148728,7 @@ sub_8102A1C:
 	ldr r4, dword_8102C24 // =0x193 
 loc_8102A3A:
 	bl sub_80B8E70
-	add r0, r4, #0
+	mov r0, r4
 	bl sound_play // () -> void
 	mov r0, #0
 	strh r0, [r7,#0x10]
@@ -148867,7 +148867,7 @@ thumb_local_start
 sub_8102B34:
 	push {r4,r6,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r6, off_8102C28 // =byte_8102B68 
 	ldrb r0, [r7,#3]
 	cmp r0, #0
@@ -148994,12 +148994,12 @@ sub_8102C38:
 	ldr r3, [r1,#4]
 	add r7, sp, #0
 	bl object_getPanelsExceptCurrentFilterred
-	add r7, r0, #0
+	mov r7, r0
 	beq loc_8102C6E
 	bl sub_8102CC4
 loc_8102C5A:
 	bl sub_8001532
-	add r1, r7, #0
+	mov r1, r7
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -149017,7 +149017,7 @@ loc_8102C6E:
 	ldr r3, [r1,#4]
 	add r7, sp, #0
 	bl object_getPanelsExceptCurrentFilterred
-	add r7, r0, #0
+	mov r7, r0
 	bne loc_8102C5A
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
@@ -149206,10 +149206,10 @@ loc_8102DDC:
 	add r1, sp, #0x28
 	add r2, sp, #0x40
 	bl sub_8102CF8
-	add r4, r0, #0
+	mov r4, r0
 	beq loc_8102E1C
-	add r1, r0, #0
-	add r2, r0, #0
+	mov r1, r0
+	mov r2, r0
 	add r0, sp, #0x40
 	bl sub_8000C72
 	add r0, sp, #0x40
@@ -149219,30 +149219,30 @@ loc_8102DDC:
 	sub r2, r2, r6
 	cmp r2, r4
 	ble loc_8102E14
-	add r2, r4, #0
+	mov r2, r4
 loc_8102E14:
-	add r4, r2, #0
+	mov r4, r2
 	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	add r6, r6, r4
 loc_8102E1C:
-	add r0, r6, #0
+	mov r0, r6
 	beq loc_8102E48
 	add r0, sp, #0x28
-	add r1, r6, #0
+	mov r1, r6
 	ldr r2, [sp,#0x24]
 	tst r2, r2
 	beq loc_8102E2E
 	add r0, #1
 	sub r1, #1
 loc_8102E2E:
-	add r2, r1, #0
+	mov r2, r1
 	bl sub_8000C72
 	add r0, sp, #0x28
 	ldr r1, [sp,#8]
 	ldr r2, [sp,#0xc]
 	cmp r2, r6
 	ble loc_8102E40
-	add r2, r6, #0
+	mov r2, r6
 loc_8102E40:
 	str r2, [sp,#0xc]
 	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
@@ -149268,14 +149268,14 @@ loc_8102E62:
 	bne loc_8102E62
 	mov r3, #0
 loc_8102E70:
-	add r0, r3, #0
+	mov r0, r3
 	mov pc, lr
 thumb_func_end sub_8102E5C
 
 thumb_local_start
 sub_8102E74:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #0xb9
 	bl sound_play // () -> void
 loc_8102E7E:
@@ -149300,8 +149300,8 @@ loc_8102E7E:
 	add r4, #0x54 
 	pop {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	bl sub_80E05F6
 	pop {r4}
@@ -149314,7 +149314,7 @@ thumb_func_end sub_8102E74
 thumb_local_start
 sub_8102EC0:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_800A704
 	lsr r0, r0, #3
 	bcc locret_8102EE0
@@ -149395,7 +149395,7 @@ sub_8102F5C:
 	add r0, #1
 	push {r0,r1}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #3
 	ldr r1, off_8102F94 // =dword_8102F84 
@@ -149452,7 +149452,7 @@ thumb_func_end sub_8102F98
 thumb_local_start
 sub_8102FF4:
 	push {r7,lr}
-	add r7, r0, #0
+	mov r7, r0
 	ldrb r0, [r5,#0x16]
 	mov r2, #5
 	mul r0, r2
@@ -149488,7 +149488,7 @@ sub_8103038:
 	neg r4, r0
 	add r4, #6
 loc_810304A:
-	add r0, r4, #0
+	mov r0, r4
 	mov r1, #2
 	bl object_isValidPanel
 	tst r0, r0
@@ -149496,7 +149496,7 @@ loc_810304A:
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
 	eor r1, r0
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_800D5F0
 	tst r0, r0
 	bne loc_810306A
@@ -149509,7 +149509,7 @@ loc_810306A:
 	add r0, r0, r1
 	ldr r2, [r0]
 	ldr r3, [r0,#4]
-	add r0, r4, #0
+	mov r0, r4
 	mov r1, #2
 	push {r0,r1}
 	bl object_checkPanelParameters
@@ -150381,7 +150381,7 @@ loc_810370C:
 	bl sub_8103B20
 	strb r0, [r7,#0xe]
 	strb r1, [r7,#0xf]
-	add r4, r1, #0
+	mov r4, r1
 	lsl r4, r4, #8
 	orr r4, r0
 	push {r7}
@@ -150394,7 +150394,7 @@ loc_810370C:
 	ldr r6, [r7,#8]
 	ldr r7, off_8103750 // =0x181 
 	bl sub_80E56D0
-	add r2, r0, #0
+	mov r2, r0
 	mov r1, #1
 	ldrb r0, [r5,#0x16]
 	bl sub_800BF16
@@ -150522,7 +150522,7 @@ sub_8103808:
 	mov r4, #0
 loc_8103812:
 	ldr r2, off_8103898 // =byte_810389C 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -150541,11 +150541,11 @@ loc_8103812:
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	mov r4, #0
 loc_8103842:
 	ldr r2, off_8103898 // =byte_810389C 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -150566,12 +150566,12 @@ loc_8103842:
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_810388C
 loc_8103878:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -150613,13 +150613,13 @@ sub_81038A4:
 	beq loc_81038C2
 	mov r4, #1
 loc_81038C2:
-	add r0, r4, #0
+	mov r0, r4
 	ldr r1, [sp]
 	ldr r2, [sp,#8]
 	ldr r3, [sp,#0xc]
 	add r7, sp, #0x10
 	bl sub_800CF14
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	bne loc_81038E4
 	ldr r0, [sp,#4]
@@ -150631,7 +150631,7 @@ loc_81038C2:
 	b loc_81038F8
 loc_81038E4:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0x10
 	ldrb r0, [r0,r1]
@@ -150650,7 +150650,7 @@ thumb_local_start
 sub_81038FE:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x18
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #1
 	ldrb r1, [r5,#0x16]
 	tst r1, r1
@@ -150660,11 +150660,11 @@ loc_810390E:
 	ldrb r1, [r4,#0x13]
 	add r7, sp, #0
 	bl sub_800CF14
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_8103930
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -150692,7 +150692,7 @@ sub_8103936:
 	mov r1, #2
 	mul r0, r1
 	add r0, r0, r4
-	add r1, r6, #0
+	mov r1, r6
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	push {r0,r1}
@@ -150710,7 +150710,7 @@ thumb_local_start
 sub_8103966:
 	push {r4,r6,r7,lr}
 	sub r0, #1
-	add r6, r0, #0
+	mov r6, r0
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #1
 	ldr r1, off_8103A00 // =byte_8103A04 
@@ -150735,7 +150735,7 @@ thumb_local_start
 sub_81039A4:
 	push {r4,r6,lr}
 	sub r0, #1
-	add r6, r0, #0
+	mov r6, r0
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #1
 	ldr r1, off_8103A00 // =byte_8103A04 
@@ -150743,8 +150743,8 @@ sub_81039A4:
 	ldrb r0, [r1]
 	ldrb r1, [r1,#1]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0
 	ldrb r4, [r5,#0x16]
 	lsl r4, r4, #8
@@ -150761,7 +150761,7 @@ thumb_local_start
 sub_81039D8:
 	push {lr}
 	sub r0, #1
-	add r6, r0, #0
+	mov r6, r0
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #1
 	ldr r1, off_8103A00 // =byte_8103A04 
@@ -150812,7 +150812,7 @@ loc_8103A32:
 	ldr r1, off_8103AFC // =dword_8103B00 
 	add r1, r1, r0
 	ldrb r0, [r1,r4]
-	add r1, r6, #0
+	mov r1, r6
 	ldr r2, [sp,#8]
 	cmp r1, r2
 	bne loc_8103A60
@@ -150841,8 +150841,8 @@ loc_8103A60:
 	tst r7, r7
 	beq loc_8103A7E
 	add r0, sp, #0xc
-	add r1, r7, #0
-	add r2, r7, #0
+	mov r1, r7
+	mov r2, r7
 	bl sub_8000C72
 loc_8103A7E:
 	mov r4, #0
@@ -150853,7 +150853,7 @@ loc_8103A82:
 	ldr r1, off_8103AFC // =dword_8103B00 
 	add r1, r1, r0
 	ldrb r0, [r1,r4]
-	add r1, r6, #0
+	mov r1, r6
 	ldr r2, [sp,#8]
 	cmp r1, r2
 	beq loc_8103AB0
@@ -150885,13 +150885,13 @@ loc_8103AB0:
 	add r0, sp, #0xc
 	add r0, r0, r2
 	// <mkdata>
-	.hword 0x1C09 // add r1, r1, #0
-	add r2, r1, #0
+	.hword 0x1C09 // mov r1, r1
+	mov r2, r1
 	bl sub_8000C72
 loc_8103AD2:
 	add r0, sp, #0xc
 	mov r4, #0
-	add r6, r7, #0
+	mov r6, r7
 	ldr r7, [sp]
 loc_8103ADA:
 	cmp r4, r6
@@ -150932,7 +150932,7 @@ thumb_func_end sub_8103B10
 thumb_local_start
 sub_8103B20:
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #1
 	ldrb r1, [r4,#0x13]
 	ldrb r2, [r5,#0x16]
@@ -151133,13 +151133,13 @@ loc_8103D76:
 	ldr r1, off_8103DA4 // =dword_8103DA8 
 	add r1, r1, r0
 	ldrb r6, [r1,r4]
-	add r0, r6, #0
+	mov r0, r6
 	mov r1, #1
 	bl sub_801BB1C
-	add r0, r6, #0
+	mov r0, r6
 	mov r1, #2
 	bl sub_801BB1C
-	add r0, r6, #0
+	mov r0, r6
 	mov r1, #3
 	bl sub_801BB1C
 	add r4, #1
@@ -151176,7 +151176,7 @@ loc_8103DB4:
 	mov r0, #0
 	str r0, [r5,#0x3c]
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -151229,19 +151229,19 @@ sub_8103E2A:
 	ldr r0, off_8103E60 // =byte_8103E64 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	push {r0,r1}
 	ldr r0, off_8103E60 // =byte_8103E64 
 	add r0, #8
 	bl sub_800FE28
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	push {r0-r2}
 	ldr r0, off_8103E60 // =byte_8103E64 
 	add r0, #0xc
 	bl sub_800FE28
-	add r3, r0, #0
+	mov r3, r0
 	pop {r0-r2}
 	pop {pc}
 	.byte 0, 0
@@ -151259,13 +151259,13 @@ sub_8103E74:
 	ldr r0, off_8103E9C // =byte_8103EA0 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	push {r0,r1}
 	ldr r0, off_8103E9C // =byte_8103EA0 
 	add r0, #8
 	bl sub_800FE28
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
 	.balign 4, 0x00
@@ -151283,13 +151283,13 @@ sub_8103EAC:
 	ldr r0, off_8103ED4 // =byte_8103ED8 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	push {r0,r1}
 	ldr r0, off_8103ED4 // =byte_8103ED8 
 	add r0, #8
 	bl sub_800FE28
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
 	.balign 4, 0x00
@@ -151318,13 +151318,13 @@ sub_8103EF8:
 	ldr r0, off_8103F20 // =byte_8103F24 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	push {r0,r1}
 	ldr r0, off_8103F20 // =byte_8103F24 
 	add r0, #8
 	bl sub_800FE28
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
 	.byte 0, 0
@@ -151342,7 +151342,7 @@ sub_8103F30:
 	ldr r0, off_8103F48 // =loc_8103F4C 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {pc}
 off_8103F48: .word loc_8103F4C
@@ -151499,14 +151499,14 @@ thumb_func_end sub_8104050
 thumb_local_start
 sub_810407E:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_81040D4 // =dword_81040F0 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_8104128 // =dword_8104144 
 	mov r2, #8
 	mul r0, r2
@@ -151524,14 +151524,14 @@ thumb_func_end sub_810407E
 thumb_local_start
 sub_81040AC:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_81040D4 // =dword_81040F0 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_8104128 // =dword_8104144 
 	mov r2, #8
 	mul r0, r2
@@ -152548,7 +152548,7 @@ sub_81048AA:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r7,#0x30]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -152757,7 +152757,7 @@ sub_8104A30:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -153094,7 +153094,7 @@ sub_8104CC6:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r7,#8]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -153233,7 +153233,7 @@ sub_8104DC8:
 	mov r3, #3
 	bl sub_801A082
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -153338,12 +153338,12 @@ loc_8104EA4:
 	ldr r3, [sp,#4]
 	add r7, sp, #8
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_8104EEA
 loc_8104ED8:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -153401,12 +153401,12 @@ loc_8104F32:
 	ldr r3, [sp,#0xc]
 	add r7, sp, #0x10
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_8104F5E
 loc_8104F4C:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0x10
 	ldrb r0, [r0,r1]
@@ -153466,11 +153466,11 @@ loc_8104F90:
 	ldrb r6, [r5,#0x16]
 	add r7, sp, #0xc
 	bl sub_800D3FE
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_8104FDE
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -153500,12 +153500,12 @@ loc_8104FDE:
 	ldrb r6, [r5,#0x16]
 	add r7, sp, #0xc
 	bl sub_800D3FE
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_8105038
 	add r0, sp, #0xc
-	add r1, r6, #0
-	add r2, r6, #0
+	mov r1, r6
+	mov r2, r6
 	bl sub_8000C72
 	mov r4, #0
 loc_8105018:
@@ -153552,7 +153552,7 @@ sub_810506A:
 	mov r0, #0x68 // (off_8019BE0 - 0x8019b78)
 	ldr r6, [r6,r0]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r1, [r5,#0x12]
 	mov r2, #2
 	mul r0, r2
@@ -153712,11 +153712,11 @@ sub_8105174:
 	ldr r3, [r1,#4]
 	add r7, sp, #0
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_81051B4
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -153772,7 +153772,7 @@ sub_81051EC:
 	pop {r0}
 	push {r0}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0}
 	ldrb r4, [r7,#3]
 	lsl r1, r0, #8
@@ -153800,7 +153800,7 @@ thumb_func_end sub_81051EC
 thumb_local_start
 sub_8105254:
 	push {r4,r6,lr}
-	add r6, r0, #0
+	mov r6, r0
 	bl sub_800E456 // () -> int
 	lsl r4, r0, #8
 	mov r0, #0x4c 
@@ -153816,8 +153816,8 @@ sub_8105254:
 	ldrb r0, [r1]
 	ldrb r1, [r1,#1]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -153844,9 +153844,9 @@ sub_8105294:
 	bge loc_81052B2
 	neg r0, r0
 loc_81052B2:
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
-	add r6, r0, #0
+	mov r6, r0
 	pop {r0,r1}
 	cmp r0, r1
 	bgt loc_81052C0
@@ -153860,17 +153860,17 @@ loc_81052C0:
 	bge loc_81052CE
 	neg r0, r0
 loc_81052CE:
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	cmp r0, r1
 	bgt loc_81052DC
 	neg r2, r2
 loc_81052DC:
-	add r1, r2, #0
-	add r0, r4, #0
-	add r2, r6, #0
+	mov r1, r2
+	mov r0, r4
+	mov r2, r6
 	add sp, sp, #8
 	pop {r4,r6,pc}
 	.balign 4, 0x00
@@ -154099,19 +154099,19 @@ loc_8105578:
 	ldr r1, off_81055BC // =dword_81055C0 
 	add r1, r1, r0
 	ldrb r6, [r1,r4]
-	add r0, r6, #0
+	mov r0, r6
 	mov r1, #1
 	push {r0,r1}
 	bl sub_801BB1C
 	pop {r0,r1}
 	bl object_hidePanel
-	add r0, r6, #0
+	mov r0, r6
 	mov r1, #2
 	push {r0,r1}
 	bl sub_801BB1C
 	pop {r0,r1}
 	bl object_hidePanel
-	add r0, r6, #0
+	mov r0, r6
 	mov r1, #3
 	push {r0,r1}
 	bl sub_801BB1C
@@ -154216,19 +154216,19 @@ sub_810565C:
 	ldr r0, off_8105690 // =byte_8105694 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	push {r0,r1}
 	ldr r0, off_8105690 // =byte_8105694 
 	add r0, #8
 	bl sub_800FE28
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	push {r0-r2}
 	ldr r0, off_8105690 // =byte_8105694 
 	add r0, #0xc
 	bl sub_800FE28
-	add r3, r0, #0
+	mov r3, r0
 	pop {r0-r2}
 	pop {pc}
 off_8105690: .word byte_8105694
@@ -154245,13 +154245,13 @@ sub_81056A4:
 	ldr r0, off_81056CC // =byte_81056D0 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	push {r0,r1}
 	ldr r0, off_81056CC // =byte_81056D0 
 	add r0, #8
 	bl sub_800FE28
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
 	.balign 4, 0x00
@@ -154269,13 +154269,13 @@ sub_81056DC:
 	ldr r0, off_8105704 // =byte_8105708 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	push {r0,r1}
 	ldr r0, off_8105704 // =byte_8105708 
 	add r0, #8
 	bl sub_800FE28
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
 	.balign 4, 0x00
@@ -154293,13 +154293,13 @@ sub_8105714:
 	ldr r0, off_810573C // =byte_8105740 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	push {r0,r1}
 	ldr r0, off_810573C // =byte_8105740 
 	add r0, #8
 	bl sub_800FE28
-	add r2, r0, #0
+	mov r2, r0
 	pop {r0,r1}
 	pop {pc}
 	.balign 4, 0x00
@@ -154317,7 +154317,7 @@ sub_810574C:
 	ldr r0, off_8105764 // =loc_8105768 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {pc}
 off_8105764: .word loc_8105768
@@ -154471,14 +154471,14 @@ thumb_func_end sub_810585C
 thumb_local_start
 sub_810588E:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_81058E4 // =dword_81058F8 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_8105920 // =dword_8105934 
 	mov r2, #8
 	mul r0, r2
@@ -154494,14 +154494,14 @@ sub_810588E:
 thumb_func_end sub_810588E
 
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_81058E4 // =dword_81058F8 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_8105920 // =dword_8105934 
 	mov r2, #8
 	mul r0, r2
@@ -156010,7 +156010,7 @@ loc_8106424:
 	tst r6, r6
 	beq loc_810645A
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -156038,8 +156038,8 @@ sub_8106460:
 	beq loc_8106474
 	mov r4, #4
 loc_8106474:
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
 	push {r0,r1}
@@ -156128,8 +156128,8 @@ sub_81064F4:
 	cmp r1, r3
 	beq loc_8106526
 loc_810650A:
-	add r0, r2, #0
-	add r1, r3, #0
+	mov r0, r2
+	mov r1, r3
 	ldrb r2, [r5,#0x16]
 	lsl r2, r2, #3
 	ldr r3, off_8106568 // =dword_810656C 
@@ -156151,18 +156151,18 @@ loc_8106526:
 	add r3, r3, r2
 	ldr r2, [r3]
 	ldr r3, [r3,#4]
-	add r6, r7, #0
+	mov r6, r7
 	add r7, sp, #0
 	bl object_getPanelsExceptCurrentFilterred
-	add r7, r6, #0
-	add r6, r0, #0
+	mov r7, r6
+	mov r6, r0
 	ldrb r0, [r7,#0x16]
 	ldrb r1, [r7,#0x17]
 	bl sub_801BB46
 	tst r6, r6
 	beq loc_8106564
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -156237,13 +156237,13 @@ loc_81065E0:
 	add r3, r3, r2
 	ldr r2, [r3]
 	ldr r3, [r3,#4]
-	add r1, r7, #0
+	mov r1, r7
 	add r7, sp, #0
 	add r7, r7, r6
 	push {r1}
 	bl sub_800CFDC
 	pop {r1}
-	add r7, r1, #0
+	mov r7, r1
 	add r6, r6, r0
 	add r4, #1
 	cmp r4, #1
@@ -156252,8 +156252,8 @@ loc_81065E0:
 	tst r6, r6
 	beq loc_810663E
 	add r0, sp, #0
-	add r1, r6, #0
-	add r2, r6, #0
+	mov r1, r6
+	mov r2, r6
 	bl sub_8000C72
 	mov r4, #0
 loc_8106620:
@@ -156347,7 +156347,7 @@ loc_81066C4:
 	mul r0, r1
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
-	add r1, r6, #0
+	mov r1, r6
 	ldrb r4, [r7,#0xc]
 	ldrb r3, [r7,#0xd]
 	mul r4, r3
@@ -156389,7 +156389,7 @@ thumb_func_end sub_81066EA
 thumb_local_start
 sub_8106718:
 	push {r4,r6,lr}
-	add r6, r0, #0
+	mov r6, r0
 	bl sub_8001532
 	mov r4, #1
 	and r4, r0
@@ -156436,7 +156436,7 @@ sub_8106774:
 	push {lr}
 	push {r0}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r3, r0, #0
+	mov r3, r0
 	pop {r0}
 	tst r0, r0
 	beq loc_8106786
@@ -156687,7 +156687,7 @@ sub_8106A22:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -156711,7 +156711,7 @@ sub_8106A60:
 	eor r0, r1
 	bl sub_80103BC
 	push {r5}
-	add r5, r0, #0
+	mov r5, r0
 	bl object_getFlag // () -> int
 	pop {r5}
 	ldr r1, dword_8106DD0 // =0x800 
@@ -156719,7 +156719,7 @@ sub_8106A60:
 	beq loc_8106A80
 	mov r4, #1
 loc_8106A80:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 thumb_func_end sub_8106A60
 
@@ -156728,14 +156728,14 @@ sub_8106A84:
 	push {r4,lr}
 	ldr r0, off_8106AA0 // =byte_8106AA4 
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_8106DD4 // =0xa000 
 	tst r0, r1
 	beq loc_8106A9A
 	add r4, #0x10
 loc_8106A9A:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.byte 0, 0
 off_8106AA0: .word byte_8106AA4
@@ -156815,7 +156815,7 @@ sub_8106B20:
 	ldr r0, off_8106B38 // =byte_8106B3C 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {pc}
 off_8106B38: .word byte_8106B3C
@@ -156842,7 +156842,7 @@ sub_8106B58:
 	ldr r0, off_8106B70 // =byte_8106B74 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {pc}
 off_8106B70: .word byte_8106B74
@@ -157026,14 +157026,14 @@ thumb_func_end sub_8106CAC
 thumb_local_start
 sub_8106CEA:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_8106D40 // =dword_8106D58 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_8106D88 // =dword_8106DA0 
 	mov r2, #8
 	mul r0, r2
@@ -157051,14 +157051,14 @@ thumb_func_end sub_8106CEA
 thumb_local_start
 sub_8106D18:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_8106D40 // =dword_8106D58 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_8106D88 // =dword_8106DA0 
 	mov r2, #8
 	mul r0, r2
@@ -158583,7 +158583,7 @@ loc_81078D6:
 	ldrb r0, [r5,#0x12]
 	cmp r0, r4
 	beq loc_81078EE
-	add r0, r4, #0
+	mov r0, r4
 	ldr r1, [sp,#4]
 	ldr r2, [sp,#8]
 	ldr r3, [sp,#0xc]
@@ -158598,7 +158598,7 @@ loc_81078EE:
 	tst r6, r6
 	beq loc_810790C
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0x10
 	ldrb r0, [r0,r1]
@@ -158618,7 +158618,7 @@ thumb_local_start
 sub_8107914:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x20
-	add r4, r0, #0
+	mov r4, r0
 	str r2, [sp]
 	str r3, [sp,#4]
 	bl object_getFlipDirection_800E2CA // () -> int
@@ -158644,11 +158644,11 @@ sub_8107914:
 	ldrb r6, [r5,#0x16]
 	add r7, sp, #8
 	bl sub_800D3FE
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_810796C
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -158663,7 +158663,7 @@ thumb_func_end sub_8107914
 thumb_local_start
 sub_8107970:
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	push {r2,r3}
 	bl object_getFlipDirection_800E2CA // () -> int
 	neg r0, r0
@@ -158684,8 +158684,8 @@ thumb_func_end sub_8107970
 thumb_local_start
 sub_8107994:
 	push {r4,r6,lr}
-	add r4, r2, #0
-	add r6, r3, #0
+	mov r4, r2
+	mov r6, r3
 	ldrb r0, [r5,#0x16]
 	mov r1, #2
 	ldrb r2, [r5,#0x16]
@@ -158698,8 +158698,8 @@ sub_8107994:
 	tst r0, r0
 	beq locret_81079C4
 	push {r0,r1}
-	add r2, r4, #0
-	add r3, r6, #0
+	mov r2, r4
+	mov r3, r6
 	bl object_checkPanelParameters
 	tst r0, r0
 	pop {r0,r1}
@@ -158765,8 +158765,8 @@ sub_8107A30:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -158799,7 +158799,7 @@ sub_8107A88:
 	push {r4,r6,lr}
 	mov r6, #0
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, [r7,#0x2c]
 	ldrb r0, [r1,#0x12]
 	ldrb r1, [r1,#0x13]
@@ -158816,7 +158816,7 @@ sub_8107A88:
 loc_8107AAC:
 	mov r6, #1
 loc_8107AAE:
-	add r0, r6, #0
+	mov r0, r6
 	pop {r4,r6,pc}
 thumb_func_end sub_8107A88
 
@@ -158827,7 +158827,7 @@ sub_8107AB2:
 	mov r0, #0x68 // (off_8019BE0 - 0x8019b78)
 	ldr r6, [r6,r0]
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
@@ -159234,7 +159234,7 @@ loc_8107E74:
 	mov r0, #1
 	bl sub_801A07C
 	ldr r0, [r5,#0x2c]
-	add r1, r0, #0
+	mov r1, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	ldr r2, [r5,#0x54]
@@ -159263,14 +159263,14 @@ loc_8107EC0:
 	ldr r0, off_8107EDC // =byte_8107EE0 
 	add r0, r0, r2
 	bl sub_800FE28
-	add r4, r0, #0
+	mov r4, r0
 	bl object_getFlag // () -> int
 	ldr r1, dword_8108208 // =0xa000 
 	tst r0, r1
 	beq loc_8107ED6
 	add r4, #0x10
 loc_8107ED6:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
 off_8107EDC: .word byte_8107EE0
@@ -159319,7 +159319,7 @@ sub_8107F24:
 	ldr r0, off_8107F3C // =byte_8107F40 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {pc}
 off_8107F3C: .word byte_8107F40
@@ -159346,7 +159346,7 @@ sub_8107F5C:
 	ldr r0, off_8107F74 // =byte_8107F78 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {pc}
 off_8107F74: .word byte_8107F78
@@ -159373,7 +159373,7 @@ sub_8107F94:
 	ldr r0, off_8107FAC // =off_8107FB0 
 	add r0, #4
 	bl sub_800FE28
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0}
 	pop {pc}
 off_8107FAC: .word off_8107FB0
@@ -159561,14 +159561,14 @@ thumb_func_end sub_81080E6
 thumb_local_start
 sub_8108124:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_8108178 // =dword_8108190 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_81081C0 // =dword_81081D8 
 	mov r2, #8
 	mul r0, r2
@@ -159586,14 +159586,14 @@ thumb_func_end sub_8108124
 thumb_local_start
 sub_8108152:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, off_8108178 // =dword_8108190 
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
 	bl sub_800FE12
-	add r6, r0, #0
-	add r0, r4, #0
+	mov r6, r0
+	mov r0, r4
 	ldr r1, off_81081C0 // =dword_81081D8 
 	mov r2, #8
 	mul r0, r2
@@ -161004,7 +161004,7 @@ sub_8108C10:
 	mov r4, #0
 loc_8108C1C:
 	ldr r2, off_8108CA4 // =byte_8108CA8 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -161025,11 +161025,11 @@ loc_8108C1C:
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl sub_800CFA6
-	add r6, r0, #0
+	mov r6, r0
 	mov r4, #0
 loc_8108C50:
 	ldr r2, off_8108CA4 // =byte_8108CA8 
-	add r1, r4, #0
+	mov r1, r4
 	lsl r1, r1, #1
 	add r2, r2, r1
 	mov r1, #0
@@ -161050,12 +161050,12 @@ loc_8108C50:
 	ldr r3, [sp,#8]
 	add r7, sp, #0xc
 	bl object_getPanelsExceptCurrentFilterred
-	add r6, r0, #0
+	mov r6, r0
 	tst r6, r6
 	beq loc_8108C9A
 loc_8108C86:
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
 	ldrb r0, [r0,r1]
@@ -161081,7 +161081,7 @@ thumb_func_end sub_8108C10
 thumb_local_start
 sub_8108CBA:
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	push {r2,r3}
 	bl object_getFlipDirection_800E2CA // () -> int
 	neg r0, r0
@@ -161102,9 +161102,9 @@ thumb_func_end sub_8108CBA
 thumb_local_start
 sub_8108CDE:
 	push {r4,r6,lr}
-	add r4, r2, #0
+	mov r4, r2
 	// <mkdata>
-	.hword 0x1C1E // add r6, r3, #0
+	.hword 0x1C1E // mov r6, r3
 	ldrb r0, [r5,#0x16]
 	mov r1, #2
 	ldrb r2, [r5,#0x16]
@@ -161117,8 +161117,8 @@ sub_8108CDE:
 	tst r0, r0
 	beq locret_8108D0E
 	push {r0,r1}
-	add r2, r4, #0
-	add r3, r6, #0
+	mov r2, r4
+	mov r3, r6
 	bl object_checkPanelParameters
 	tst r0, r0
 	pop {r0,r1}
@@ -161165,18 +161165,18 @@ sub_8108D24:
 	add r3, r3, r2
 	ldr r2, [r3]
 	ldr r3, [r3,#4]
-	add r6, r7, #0
+	mov r6, r7
 	add r7, sp, #8
 	bl sub_800D012
-	add r7, r6, #0
-	add r6, r0, #0
+	mov r7, r6
+	mov r6, r0
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
 	bl sub_801BB46
 	tst r6, r6
 	beq loc_8108D94
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -161195,18 +161195,18 @@ loc_8108D94:
 	add r3, r3, r2
 	ldr r2, [r3]
 	ldr r3, [r3,#4]
-	add r6, r7, #0
+	mov r6, r7
 	add r7, sp, #8
 	bl sub_800CFA6
-	add r7, r6, #0
-	add r6, r0, #0
+	mov r7, r6
+	mov r6, r0
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
 	bl sub_801BB46
 	tst r6, r6
 	beq loc_8108DD6
 	bl sub_8001532
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
 	add r0, sp, #8
 	ldrb r0, [r0,r1]
@@ -161300,8 +161300,8 @@ sub_8108E64:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -161334,7 +161334,7 @@ sub_8108EBC:
 	push {r4,r6,lr}
 	mov r6, #0
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r1, [r7,#0x2c]
 	ldrb r0, [r1,#0x12]
 	ldrb r1, [r1,#0x13]
@@ -161351,7 +161351,7 @@ sub_8108EBC:
 loc_8108EE0:
 	mov r6, #1
 loc_8108EE2:
-	add r0, r6, #0
+	mov r0, r6
 	pop {r4,r6,pc}
 thumb_func_end sub_8108EBC
 
@@ -161369,9 +161369,9 @@ sub_8108EE6:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
-	add r3, r4, #0
+	mov r2, r1
+	mov r1, r0
+	mov r3, r4
 	mov r4, #4
 	mov r6, #0
 	lsl r6, r6, #8
@@ -161765,9 +161765,9 @@ sub_81095D0:
 	push {r4,r6,r7,lr}
 	ldr r6, [r5,#0x58]
 	ldrb r0, [r6,#0x16]
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r1, [r6,#0x17]
-	add r7, r1, #0
+	mov r7, r1
 	cmp r0, r1
 	beq locret_8109628
 	strb r0, [r6,#0x17]
@@ -161795,7 +161795,7 @@ sub_81095D0:
 	ldr r2, [r5,#0x54]
 	strh r1, [r2,#0x2e]
 	ldrh r1, [r0]
-	add r3, r1, #0
+	mov r3, r1
 	lsl r1, r1, #0x14
 	lsr r1, r1, #0x14
 	strh r1, [r5,#0x24]
@@ -161819,8 +161819,8 @@ sub_8109630:
 	sub sp, sp, #0x10
 	mov r7, sp
 	mov r4, #0
-	add r6, r0, #0
-	add r0, r7, #0
+	mov r6, r0
+	mov r0, r7
 	ldrb r3, [r5,#0x16]
 	bl object_getEnemyByNameRange
 	cmp r0, #0
@@ -161838,7 +161838,7 @@ loc_8109654:
 	sub r0, #1
 	bne loc_8109648
 loc_810965A:
-	add r0, r4, #0
+	mov r0, r4
 	add sp, sp, #0x10
 	pop {r4,r6,r7,pc}
 thumb_func_end sub_8109630
@@ -161846,8 +161846,8 @@ thumb_func_end sub_8109630
 thumb_func_start sub_8109660
 sub_8109660:
 	push {r4-r7,lr}
-	add r6, r0, #0
-	add r7, r1, #0
+	mov r6, r0
+	mov r7, r1
 	ldr r4, off_81096A0 // =off_8019B78 
 	lsl r2, r2, #2
 	ldr r4, [r4,r2]
@@ -161904,7 +161904,7 @@ sub_81096BA:
 thumb_func_end sub_81096BA
 
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#9]
 	cmp r0, #2
 	beq locret_81096F8
@@ -161946,7 +161946,7 @@ thumb_func_end sub_81096FA
 thumb_func_start sub_8109708
 sub_8109708:
 	push {r4,r6,lr}
-	add r4, r2, #0
+	mov r4, r2
 	ldrb r6, [r5,#0x16]
 	ldr r3, off_8109780 // =off_8109784 
 	bl sub_81096FA
@@ -161964,9 +161964,9 @@ sub_810971A:
 	bl sub_800D012
 	cmp r0, #0
 	beq loc_8109742
-	add r7, r0, #0
+	mov r7, r0
 	bl sub_8001532
-	add r1, r7, #0
+	mov r1, r7
 	svc 6
 	mov r0, sp
 	ldrb r0, [r0,r1]
@@ -161982,11 +161982,11 @@ thumb_local_start
 sub_8109746:
 	push {r4,r6,r7,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r6, [r5,#0x12]
 	add r6, r6, r4
 loc_8109752:
-	add r0, r6, #0
+	mov r0, r6
 	ldrb r1, [r5,#0x13]
 	ldr r3, off_8109780 // =off_8109784 
 	bl sub_81096FA
@@ -162001,7 +162001,7 @@ loc_810976C:
 	mov r0, #0
 	b locret_8109774
 loc_8109770:
-	add r0, r6, #0
+	mov r0, r6
 	ldrb r1, [r5,#0x13]
 locret_8109774:
 	pop {r4,r6,r7,pc}
@@ -162349,8 +162349,8 @@ sub_81099DA:
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	ldrb r4, [r7,#0xd]
@@ -163127,7 +163127,7 @@ sub_810A126:
 	push {r4,lr}
 	sub sp, sp, #4
 	str r4, [sp]
-	add r0, r5, #0
+	mov r0, r5
 	bl sub_800ED90
 	tst r3, r3
 	beq loc_810A184
@@ -163135,7 +163135,7 @@ sub_810A126:
 	lsr r4, r4, #0x17
 	cmp r4, #0x9f
 	bne loc_810A162
-	add r0, r5, #0
+	mov r0, r5
 	ldrh r1, [r0,#0x24]
 	ldrh r2, [r0,#0x26]
 	lsr r2, r2, #2
@@ -163145,7 +163145,7 @@ sub_810A126:
 	cmp r0, #0
 	beq loc_810A184
 loc_810A152:
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_80126E4
 	bl sub_8011680
 	bl sub_800F322
@@ -163155,7 +163155,7 @@ loc_810A162:
 	ldr r1, off_810A1B0 // =0x12c 
 	cmp r0, r1
 	blt loc_810A184
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_80126E4
 	bl sub_8011680
 	bl sub_800F322
@@ -163197,7 +163197,7 @@ sub_810A1B4:
 	sub sp, sp, #0x10
 	mov r7, sp
 	mov r6, #0
-	add r0, r7, #0
+	mov r0, r7
 	mov r1, #0
 	ldr r2, dword_810A200 // =0x7fffffff 
 	ldrb r3, [r5,#0x16]
@@ -163223,14 +163223,14 @@ loc_810A1D0:
 	pop {r0,r1,r3}
 	beq loc_810A1F4
 loc_810A1F0:
-	add r3, r1, #0
-	add r6, r4, #0
+	mov r3, r1
+	mov r6, r4
 loc_810A1F4:
 	add r7, #4
 	sub r0, #1
 	bne loc_810A1D0
 loc_810A1FA:
-	add r0, r6, #0
+	mov r0, r6
 	add sp, sp, #0x10
 	pop {r4,r6,r7,pc}
 dword_810A200: .word 0x7FFFFFFF
@@ -163273,15 +163273,15 @@ loc_810A238:
 	sub r1, #1
 loc_810A23A:
 	ldrb r0, [r5,#0x12]
-	add r4, r0, #0
-	add r6, r1, #0
+	mov r4, r0
+	mov r6, r1
 	ldr r3, off_810A28C // =dword_810A290 
 	bl sub_81096FA
 	bl object_checkPanelParameters
 	cmp r0, #0
 	beq locret_810A252
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 locret_810A252:
 	pop {r4,r6,pc}
 thumb_func_end sub_810A21A
@@ -163305,13 +163305,13 @@ loc_810A262:
 	ldrb r0, [r5,#0x12]
 	ldr r3, off_810A28C // =dword_810A290 
 	bl sub_81096FA
-	add r6, r0, #0
-	add r7, r1, #0
+	mov r6, r0
+	mov r7, r1
 	bl object_checkPanelParameters
 	cmp r0, #0
 	beq loc_810A262
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 locret_810A288:
 	pop {r4,r6,r7,pc}
 	.balign 4, 0x00
@@ -163769,7 +163769,7 @@ thumb_local_start
 sub_810A6F4:
 	push {r4,r6,lr}
 	mov r6, #0
-	add r0, r5, #0
+	mov r0, r5
 	bl sub_800ED90
 	tst r3, r3
 	beq loc_810A720
@@ -163779,13 +163779,13 @@ sub_810A6F4:
 	ldr r1, off_810A830 // =0x12c 
 	cmp r0, r1
 	blt loc_810A720
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_80126E4
 	bl sub_8011680
 	bl sub_800F322
 	mov r6, #1
 loc_810A720:
-	add r0, r6, #0
+	mov r0, r6
 	pop {r4,r6,pc}
 thumb_func_end sub_810A6F4
 
@@ -163793,12 +163793,12 @@ thumb_local_start
 sub_810A724:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x18
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_801BB1C
 	bl sub_810A7E0
-	add r6, r0, #0
+	mov r6, r0
 	add r7, sp, #0
 	mov r1, #1
 	mov r3, #0
@@ -163814,19 +163814,19 @@ loc_810A73E:
 	cmp r0, #0
 	pop {r0,r1,r3}
 	beq loc_810A766
-	add r2, r1, #0
+	mov r2, r1
 	lsl r1, r1, #4
 	orr r0, r1
 	strb r0, [r7]
 	add r7, #1
 	add r3, #1
-	add r1, r2, #0
+	mov r1, r2
 loc_810A766:
 	lsr r6, r6, #1
 	add r1, #1
 	cmp r1, #3
 	ble loc_810A73E
-	add r0, r3, #0
+	mov r0, r3
 	bne loc_810A7A0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r4,#0x13]
@@ -163848,9 +163848,9 @@ loc_810A766:
 	ldrb r1, [r5,#0x13]
 	b loc_810A7B4
 loc_810A7A0:
-	add r7, r0, #0
+	mov r7, r0
 	bl sub_8001532
-	add r1, r7, #0
+	mov r1, r7
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -163876,7 +163876,7 @@ sub_810A7E0:
 	sub sp, sp, #0x10
 	mov r7, sp
 	mov r4, #7
-	add r0, r7, #0
+	mov r0, r7
 	ldrb r3, [r5,#0x16]
 	mov r1, #7
 	mov r2, #0xc
@@ -163899,7 +163899,7 @@ loc_810A804:
 	sub r0, #1
 	bne loc_810A7F8
 loc_810A812:
-	add r0, r4, #0
+	mov r0, r4
 	add sp, sp, #0x10
 	pop {r4,r6,r7,pc}
 off_810A818: .word sub_810A724+1
@@ -163967,7 +163967,7 @@ sub_810A94C:
 	ldrh r1, [r7,#0xa]
 	lsl r1, r1, #0x10
 	orr r0, r1
-	add r1, r0, #0
+	mov r1, r0
 	ldr r0, [r5,#0x64]
 	ldrb r2, [r5,#0x12]
 	ldrb r3, [r5,#0x13]
@@ -164206,7 +164206,7 @@ sub_810AB8C:
 	ldrh r1, [r7,#0xa]
 	lsl r1, r1, #0x10
 	orr r0, r1
-	add r6, r0, #0
+	mov r6, r0
 	mov r2, #0
 	ldrb r4, [r4,#0x16]
 	bl sub_80BC38A
@@ -164377,17 +164377,17 @@ sub_810AD18:
 	push {r4-r7,lr}
 	sub sp, sp, #0x20
 	add r7, sp, #0
-	add r0, r7, #0
+	mov r0, r7
 	mov r1, #1
 	mov r2, #0xae
 	ldrb r3, [r5,#0x16]
 	bl object_getEnemyByNameRange
 	tst r0, r0
 	beq loc_810AD84
-	add r6, r0, #0
+	mov r6, r0
 	mov r0, #0
 	str r0, [r7,#0x1c]
-	add r3, r7, #0
+	mov r3, r7
 loc_810AD36:
 	push {r3,r6}
 	ldr r1, [r3]
@@ -164417,9 +164417,9 @@ loc_810AD62:
 	ldr r0, [r7,#0x1c]
 	cmp r0, #0
 	beq loc_810AD84
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_8001532
-	add r1, r4, #0
+	mov r1, r4
 	svc 6
 	add r0, sp, #0x10
 	ldrb r0, [r0,r1]
@@ -164462,9 +164462,9 @@ sub_810ADAC:
 	bl sub_80103F8
 	tst r0, r0
 	beq locret_810AE06
-	add r7, r0, #0
+	mov r7, r0
 	push {r5}
-	add r5, r7, #0
+	mov r5, r7
 	bl object_getFlipDirection_800E2CA // () -> int
 	mov r1, #3
 	mul r0, r1
@@ -164480,7 +164480,7 @@ sub_810ADAC:
 	tst r0, r0
 	bne locret_810AE06
 	push {r5}
-	add r5, r7, #0
+	mov r5, r7
 	bl object_getFlipDirection_800E2CA // () -> int
 	mov r1, #3
 	mul r0, r1
@@ -164651,8 +164651,8 @@ loc_810AFF8:
 	ldrb r1, [r5,#0x13]
 	push {r0,r1}
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	bl sub_80E05F6
@@ -164893,8 +164893,8 @@ sub_810B198:
 	ldrb r0, [r7,#0x16]
 	ldrb r1, [r7,#0x17]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
@@ -164958,8 +164958,8 @@ sub_810B244:
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
@@ -165188,7 +165188,7 @@ sub_810B436:
 	cmp r0, #0
 	bne loc_810B47A
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r6, r0, #0
+	mov r6, r0
 	ldrb r0, [r5,#0x16]
 	ldrb r1, [r5,#0x13]
 	ldr r3, off_810B760 // =dword_810B6E0 
@@ -165316,7 +165316,7 @@ thumb_local_start
 sub_810B54C:
 	push {r4,r6,lr}
 	mov r6, #0
-	add r0, r5, #0
+	mov r0, r5
 	bl sub_800ED90
 	tst r3, r3
 	beq loc_810B580
@@ -165329,13 +165329,13 @@ sub_810B54C:
 	bl sub_810B584
 	cmp r0, #3
 	blt loc_810B580
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_80126E4
 	bl sub_8011680
 	bl sub_800F322
 	mov r6, #1
 loc_810B580:
-	add r0, r6, #0
+	mov r0, r6
 	pop {r4,r6,pc}
 thumb_func_end sub_810B54C
 
@@ -165375,7 +165375,7 @@ loc_810B5AC:
 	mov r0, #2
 	orr r4, r0
 loc_810B5BA:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4,pc}
 thumb_func_end sub_810B598
 
@@ -165458,7 +165458,7 @@ thumb_local_start
 sub_810B65E:
 	push {r4,r7,lr}
 	sub sp, sp, #0x18
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_801BB1C
@@ -165477,9 +165477,9 @@ sub_810B65E:
 	tst r0, r0
 	beq loc_810B6A4
 loc_810B690:
-	add r7, r0, #0
+	mov r7, r0
 	bl sub_8001532
-	add r1, r7, #0
+	mov r1, r7
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
@@ -165789,7 +165789,7 @@ sub_810BA58:
 	ldrh r1, [r7,#0xa]
 	lsl r1, r1, #0x10
 	orr r0, r1
-	add r6, r0, #0
+	mov r6, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
@@ -166149,7 +166149,7 @@ sub_810BD40:
 	bne loc_810BD5A
 	mov r4, #0
 loc_810BD5A:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4-r7,pc}
 thumb_func_end sub_810BD40
 
@@ -166651,7 +166651,7 @@ thumb_local_start
 sub_810C282:
 	push {r4,r6,lr}
 	mov r6, #0
-	add r0, r5, #0
+	mov r0, r5
 	bl sub_800ED90
 	tst r3, r3
 	beq loc_810C2AE
@@ -166661,13 +166661,13 @@ sub_810C282:
 	ldr r1, off_810C34C // =0x12c 
 	cmp r0, r1
 	blt loc_810C2AE
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_80126E4
 	bl sub_8011680
 	bl sub_800F322
 	mov r6, #1
 loc_810C2AE:
-	add r0, r6, #0
+	mov r0, r6
 	pop {r4,r6,pc}
 thumb_func_end sub_810C282
 
@@ -166675,7 +166675,7 @@ thumb_local_start
 sub_810C2B2:
 	push {r4,r7,lr}
 	sub sp, sp, #0x18
-	add r4, r0, #0
+	mov r4, r0
 	ldrb r0, [r4,#0x13]
 	ldr r3, off_810C350 // =dword_810C310 
 	bl sub_81096FA
@@ -166689,7 +166689,7 @@ sub_810C2B2:
 	bl sub_81096FA
 	add r7, sp, #0
 	bl sub_800D012
-	add r6, r0, #0
+	mov r6, r0
 	add r7, r7, r0
 	ldrb r0, [r4,#0x13]
 	add r0, #1
@@ -166702,9 +166702,9 @@ sub_810C2B2:
 	bl sub_8015C48
 	b loc_810C30C
 loc_810C2F8:
-	add r7, r0, #0
+	mov r7, r0
 	bl sub_8001532
-	add r1, r7, #0
+	mov r1, r7
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]

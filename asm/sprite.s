@@ -137,15 +137,15 @@ loc_8002774:
 	mov r2, #0
 loc_8002776:
 	push {r4-r6,lr}
-	add r6, r2, #0
-	add r4, r1, #0
+	mov r6, r2
+	mov r4, r1
 	add r5, #0x20 
 	lsl r0, r0, #2
 	ldr r1, off_8002798 // =guiSprites_803271C 
 	ldr r0, [r0,r1]
 	cmp r0, #0
 	bge loc_800278A
-	add r0, r4, #0
+	mov r0, r4
 loc_800278A:
 	bl sprite_initialize // (void *a1) -> void
 	strb r6, [r5,#3]
@@ -270,7 +270,7 @@ loc_8002840:
 	lsr r2, r7, #0xf
 	lsl r2, r2, #2
 	mov r6, #0x20 
-	add r7, r3, #0
+	mov r7, r3
 	ldr r1, off_8002864 // =sub_3005EF0+1 
 	mov lr, pc
 	bx r1
@@ -347,13 +347,13 @@ sub_80028D4:
 	ldr r5, off_8002BF0 // =byte_200DCA0 
 	push {r0}
 	// memBlock
-	add r0, r5, #0
+	mov r0, r5
 	// size
 	mov r1, #0x50 
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 	pop {r0}
 	str r0, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
-	add r0, r5, #0
+	mov r0, r5
 	add r0, #4
 	mov r1, #0x18
 	mov r2, #0x80
@@ -361,7 +361,7 @@ sub_80028D4:
 	mvn r2, r2
 	lsr r2, r2, #0x10
 	bl sub_800096C
-	add r0, r5, #0
+	mov r0, r5
 	// mem
 	add r0, #0x1c
 	// byteCount
@@ -382,7 +382,7 @@ sub_8002906:
 	ldr r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
 	ldr r4, off_8002BC0 // =spritePointers_8031CC4 
 	ldr r6, dword_8002BC4 // =0x2040000 
-	add r7, r0, #0
+	mov r7, r0
 loc_8002918:
 	ldrb r0, [r7]
 	cmp r0, #0xff
@@ -478,7 +478,7 @@ sub_80029A8:
 	ldr r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
 	ldr r4, off_8002BC0 // =spritePointers_8031CC4 
 	ldr r6, off_8002BC8 // =dword_2033000 
-	add r7, r0, #0
+	mov r7, r0
 loc_80029BC:
 	ldrb r0, [r7]
 	mov r2, #0xf0
@@ -497,7 +497,7 @@ loc_80029BC:
 	lsl r0, r0, #8
 	orr r0, r1
 	pop {r1}
-	add r3, r5, #0
+	mov r3, r5
 	add r3, #4
 	mov r9, r1
 	mov r2, #0
@@ -697,7 +697,7 @@ sprite_decompress:
 	ldr r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
 	ldr r4, off_8002BC0 // =spritePointers_8031CC4 
 	ldr r6, off_8002BC8 // =dword_2033000 
-	add r3, r5, #0
+	mov r3, r5
 	add r3, #4
 	mov r9, r1
 	mov r2, #0
@@ -1014,7 +1014,7 @@ loc_8002D60:
 	bic r0, r1
 	strb r0, [r5,#0x11]
 	ldrb r0, [r5,#0x13]
-	add r2, r0, #0
+	mov r2, r0
 	mov r1, #0x3e 
 	and r0, r1
 	lsr r0, r0, #1

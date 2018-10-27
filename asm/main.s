@@ -131,7 +131,7 @@ loc_80003F2:
 	strh r5, [r0,#6]
 	ldr r3, dword_8000450 // =0x3ff 
 	strh r4, [r0]
-	add r6, r4, #0
+	mov r6, r4
 	and r6, r5
 	mov r1, #8
 	mov r3, #0

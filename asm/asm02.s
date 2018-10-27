@@ -65,19 +65,19 @@ loc_8021B00:
 	ldr r1, off_8021B74 // =0x1e20 
 	add r1, r1, r0
 	// bitfield
-	add r0, r1, #0
+	mov r0, r1
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	pop {r0-r2}
 	push {r2}
 	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
-	add r4, r3, #0
+	mov r4, r3
 	pop {r2}
 	bl sub_8021B5A
 	push {r3}
-	add r1, r4, #0
+	mov r1, r4
 	bl sub_81376B8
 	pop {r3}
-	add r0, r3, #0
+	mov r0, r3
 	pop {r4,pc}
 thumb_func_end sub_8021AEE
 
@@ -96,14 +96,14 @@ loc_8021B3C:
 	ldr r1, off_8021B74 // =0x1e20 
 	add r1, r1, r0
 	// bitfield
-	add r0, r1, #0
+	mov r0, r1
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	pop {r0-r2}
 	push {r2}
 	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
 	pop {r2}
 	bl sub_8021B5A
-	add r0, r3, #0
+	mov r0, r3
 	pop {pc}
 thumb_func_end sub_8021B2A
 
@@ -152,7 +152,7 @@ sub_8021B92:
 	push {r4,lr}
 	push {r2}
 	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
-	add r4, r3, #0
+	mov r4, r3
 	pop {r2}
 	mov r3, #1
 	ldrb r1, [r0]
@@ -168,10 +168,10 @@ loc_8021BB0:
 	tst r1, r1
 	bne loc_8021BBC
 	push {r3}
-	add r1, r4, #0
+	mov r1, r4
 	pop {r3}
 loc_8021BBC:
-	add r0, r3, #0
+	mov r0, r3
 	pop {r4,pc}
 thumb_func_end sub_8021B92
 
@@ -247,8 +247,8 @@ loc_8021C28:
 	cmp r1, r7
 	bne loc_8021C48
 	push {r0,r1}
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	bl sub_8006EA4
 	pop {r0,r1}
 	bne loc_8021C48
@@ -263,7 +263,7 @@ loc_8021C48:
 	str r2, [sp]
 	bne loc_8021C16
 	add sp, sp, #4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_8021C60: .word unk_20018EC
@@ -288,7 +288,7 @@ thumb_func_start chip_8021C7C
 // (int chip_idx, int searchItem, int off) -> void*
 chip_8021C7C:
 	push {r4,r7,lr}
-	add r2, r0, #0
+	mov r2, r0
 	push {r1,r2}
 	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
 	pop {r1,r2}
@@ -323,12 +323,12 @@ sub_8021CA8:
 	mov r2, #0
 loc_8021CB0:
 	// idx
-	add r0, r2, #0
+	mov r0, r2
 	push {r2}
 	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
 	pop {r2}
 	push {r0,r2}
-	add r0, r2, #0
+	mov r0, r2
 	bl sub_8006E84
 	pop {r0,r2}
 	bne loc_8021CF4
@@ -362,8 +362,8 @@ loc_8021CF4:
 	ldr r1, off_8021D04 // =0x140 
 	cmp r2, r1
 	blt loc_8021CB0
-	add r0, r4, #0
-	add r1, r5, #0
+	mov r0, r4
+	mov r1, r5
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8021D04: .word 0x140

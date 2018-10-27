@@ -26,7 +26,7 @@ sub_812EAC4:
 	add r0, #4
 	str r0, [sp]
 	bl sub_812ED2C
-	add r5, r0, #0
+	mov r5, r0
 	ldr r0, off_812EB68 // =word_2023FA0 
 	ldr r1, off_812EB74 // =0xbc 
 	lsl r1, r1, #2
@@ -38,13 +38,13 @@ sub_812EAC4:
 	strh r1, [r0,#0x2] // (word_2023FA2 - 0x2023fa0)
 	mov r4, #0x91
 loc_812EAEA:
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_803CE28
-	add r7, r0, #0
+	mov r7, r0
 	beq loc_812EB28
 	mov r6, #0
 loc_812EAF6:
-	add r0, r6, #0
+	mov r0, r6
 	bl sub_813B9FC
 	ldrh r1, [r0]
 	add r1, #0x90
@@ -57,7 +57,7 @@ loc_812EB06:
 	blt loc_812EAF6
 	tst r7, r7
 	beq loc_812EB28
-	add r0, r4, #0
+	mov r0, r4
 	sub r0, #0x90
 	bl sub_813B780
 	ldrb r1, [r0,#3]
@@ -95,7 +95,7 @@ loc_812EB54:
 	ldrh r1, [r5,#0x20]
 	cmp r1, r0
 	blt loc_812EB5C
-	add r1, r0, #0
+	mov r1, r0
 loc_812EB5C:
 	strh r1, [r5,#0x20]
 	mov r0, #0
@@ -138,11 +138,11 @@ sub_812EB92:
 	ldr r4, off_812EBB4 // =byte_812DABC+8 
 loc_812EB9A:
 	push {r1,r2}
-	add r0, r1, #0
+	mov r0, r1
 	bl sub_80466C4
 	pop {r1,r2}
 	bne locret_812EBAC
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_812EBD8
 locret_812EBAC:
 	pop {r4-r7,pc}
@@ -156,7 +156,7 @@ sub_812EBB8:
 	push {r4-r7,lr}
 	mov r1, #1
 	push {r1}
-	add r0, r1, #0
+	mov r0, r1
 	bl sub_80466C4
 	pop {r1}
 	bne locret_812EBD0
@@ -174,12 +174,12 @@ sub_812EBD8:
 	push {r4-r7,lr}
 	sub sp, sp, #4
 	str r2, [sp]
-	add r6, r1, #0
+	mov r6, r1
 	bl sub_80465A0 // (void *a1) -> void
-	add r0, r6, #0
+	mov r0, r6
 	bl sub_80466C4
 	beq loc_812EBFE
-	add r5, r1, #0
+	mov r5, r1
 	ldr r0, [sp]
 	cmp r0, #0x44 
 	beq loc_812EBF8
@@ -199,7 +199,7 @@ thumb_func_start sub_812EC04
 sub_812EC04:
 	push {r4-r7,lr}
 	bl sub_812ED2C
-	add r5, r0, #0
+	mov r5, r0
 	ldr r0, off_812EC28 // =word_2023FA0 
 	ldrh r4, [r5,#0x20]
 	ldrh r1, [r5,#0x24]
@@ -209,7 +209,7 @@ sub_812EC04:
 	add r0, r0, r1
 	ldrh r0, [r0]
 	mov r2, #9
-	add r3, r4, #0
+	mov r3, r4
 	mov r1, #0
 	bl sub_811BC00
 	pop {r4-r7,pc}
@@ -219,15 +219,15 @@ thumb_func_end sub_812EC04
 thumb_func_start sub_812EC2C
 sub_812EC2C:
 	push {r4-r7,lr}
-	add r6, r2, #0
+	mov r6, r2
 	lsl r0, r0, #0x11
 	lsr r0, r0, #0x11
-	add r4, r0, #0
-	add r2, r1, #0
+	mov r4, r0
+	mov r2, r1
 	mov r3, #0
-	add r1, r6, #0
+	mov r1, r6
 	bl sub_811BC00
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4-r7,pc}
 thumb_func_end sub_812EC2C
 
@@ -252,7 +252,7 @@ loc_812EC62:
 	mul r2, r3
 	add r1, r1, r2
 	orr r0, r1
-	add r1, r7, #0
+	mov r1, r7
 	ldr r2, [sp,#8]
 	ldrb r2, [r5,r2]
 	str r2, [sp,#0x14]
@@ -286,7 +286,7 @@ thumb_func_start sub_812ECAC
 sub_812ECAC:
 	push {r4-r7,lr}
 	bl sub_812ED2C
-	add r7, r0, #0
+	mov r7, r0
 	ldrh r0, [r7,#0x20]
 	strh r0, [r7,#0x22]
 	ldrh r0, [r7,#0x24]
@@ -296,7 +296,7 @@ sub_812ECAC:
 	beq loc_812ECFA
 	mov r4, #0
 	push {r5,r7}
-	add r5, r7, #0
+	mov r5, r7
 	mov r0, r10
 	ldr r0, [r0,#4]
 	ldrh r0, [r0,#4]
@@ -307,13 +307,13 @@ sub_812ECAC:
 	pop {r5,r7}
 	tst r0, r0
 	beq loc_812ECE4
-	add r4, r1, #0
+	mov r4, r1
 	bl sub_812EF20
 loc_812ECE4:
 	ldrb r0, [r7,#0xc]
 	cmp r0, #0xc
 	beq loc_812ECF2
-	add r1, r4, #0
+	mov r1, r4
 	bl sub_812EEEC
 	strb r0, [r7,#0xc]
 loc_812ECF2:
@@ -361,7 +361,7 @@ thumb_func_start sub_812ED34
 sub_812ED34:
 	push {lr}
 	bl sub_812ED2C
-	add r1, r0, #0
+	mov r1, r0
 	ldrh r0, [r1,#0x24]
 	ldrh r2, [r1,#0x20]
 	add r0, r0, r2
@@ -403,7 +403,7 @@ loc_812ED6A:
 	bne loc_812ED8A
 	mov r1, #0x30 
 loc_812ED8A:
-	add r0, r1, #0
+	mov r0, r1
 	bl sub_8132280
 locret_812ED90:
 	pop {pc}
@@ -413,7 +413,7 @@ thumb_func_end sub_812ED58
 thumb_func_start sub_812ED94
 sub_812ED94:
 	push {r4-r7,lr}
-	add r7, r5, #0
+	mov r7, r5
 	bl sub_800183C
 	bl sub_8046664 // () -> void
 	mov r0, #0
@@ -423,7 +423,7 @@ sub_812ED94:
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-	add r5, r7, #0
+	mov r5, r7
 	bl sub_812EB92
 	ldrh r0, [r5,#0x2a]
 	mov r1, #0
@@ -463,7 +463,7 @@ thumb_func_start sub_812EDFC
 sub_812EDFC:
 	push {r4,lr}
 	lsl r1, r1, #2
-	add r4, r0, #0
+	mov r4, r0
 	sub r4, #0x90
 	lsr r4, r4, #2
 	ldr r2, off_812EE14 // =off_812EE18 
@@ -484,7 +484,7 @@ sub_812EE20:
 	ldr r1, off_812EEAC // =off_812EEB0 
 	ldr r3, [r1,r0]
 	mov r4, #4
-	add r7, r4, #0
+	mov r7, r4
 	mov r0, #8
 	ldrh r2, [r5,#0x30]
 	ldr r1, off_812EED0 // =off_812EED8 
@@ -498,7 +498,7 @@ loc_812EE38:
 	ldr r3, [r1,r0]
 	ldr r1, off_812EEB8 // =dword_812EEBC 
 	ldr r4, [r1,r0]
-	add r7, r4, #0
+	mov r7, r4
 	ldrh r2, [r5,#0x30]
 	ldr r1, off_812EED4 // =byte_812EEE1 
 	ldrb r2, [r1,r2]
@@ -508,8 +508,8 @@ loc_812EE4E:
 	add r0, #8
 	ldr r6, [r1,r0]
 	push {r3}
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	mov r2, #2
 	mov r3, #0
 	mov r4, #8
@@ -518,8 +518,8 @@ loc_812EE4E:
 thumb_func_end sub_812EE20
 
 	pop {r3}
-	add r0, r7, #0
-	add r1, r6, #0
+	mov r0, r7
+	mov r1, r6
 	mov r2, #2
 	mov r4, #8
 	mov r5, #2
@@ -541,13 +541,13 @@ sub_812EE78:
 	add r7, r4, r1
 	b loc_812EE94
 loc_812EE92:
-	add r7, r4, #0
+	mov r7, r4
 loc_812EE94:
 	ldr r1, off_812EEB8 // =dword_812EEBC 
 	add r0, #8
 	ldr r6, [r1,r0]
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	mov r2, #2
 	mov r3, #0
 	mov r4, #8
@@ -570,7 +570,7 @@ thumb_local_start
 sub_812EEEC:
 	push {r4-r7,lr}
 	bl sub_812ED2C
-	add r7, r0, #0
+	mov r7, r0
 	tst r1, r1
 	bne loc_812EF0A
 	mov r4, #0
@@ -594,7 +594,7 @@ loc_812EF0E:
 	bgt loc_812EF1A
 	mov r4, #4
 loc_812EF1A:
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4-r7,pc}
 	.byte 0, 0
 thumb_func_end sub_812EEEC
@@ -603,22 +603,22 @@ thumb_func_start sub_812EF20
 sub_812EF20:
 	push {r4-r7,lr}
 	bl sub_812ED2C
-	add r7, r0, #0
+	mov r7, r0
 	ldrh r0, [r7,#0x20]
 	ldrh r1, [r7,#0x24]
 	add r0, r0, r1
 	lsl r0, r0, #2
 	ldr r1, off_812EF8C // =word_2023FA0 
 	ldrh r1, [r1,r0]
-	add r4, r1, #0
+	mov r4, r1
 	sub r1, #0x90
 	lsr r1, r1, #2
-	add r0, r1, #0
+	mov r0, r1
 	mov r2, #0x90
 	bl sub_812EF60
 thumb_func_end sub_812EF20
 
-	add r0, r4, #0
+	mov r0, r4
 	mov r1, #9
 	mov r2, #0
 	bl sub_812EC2C
@@ -632,7 +632,7 @@ thumb_func_end sub_812EF20
 thumb_local_start
 sub_812EF60:
 	push {r4-r7,lr}
-	add r1, r0, #0
+	mov r1, r0
 	ldr r0, off_812EF90 // =unk_2025070 
 	ldr r2, off_812EF94 // =byte_201B200 
 	ldr r3, dword_812EF98 // =0x600b800 

@@ -87,8 +87,8 @@ sub_810C4B4:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	ldrb r4, [r5,#0x16]
 	ldrb r3, [r5,#0x17]
 	eor r4, r3
@@ -508,7 +508,7 @@ thumb_local_start
 sub_810C820:
 	push {r4,r6,lr}
 	mov r6, #0
-	add r0, r5, #0
+	mov r0, r5
 	bl sub_800ED90
 	tst r3, r3
 	beq loc_810C84C
@@ -518,13 +518,13 @@ sub_810C820:
 	ldr r1, off_810C8C8 // =0x12c 
 	cmp r0, r1
 	blt loc_810C84C
-	add r0, r4, #0
+	mov r0, r4
 	bl sub_80126E4
 	bl sub_8011680
 	bl sub_800F322
 	mov r6, #1
 loc_810C84C:
-	add r0, r6, #0
+	mov r0, r6
 	pop {r4,r6,pc}
 thumb_func_end sub_810C820
 
@@ -714,8 +714,8 @@ sub_810CA8E:
 	ldrb r0, [r7,#0x16]
 	ldrb r1, [r7,#0x17]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
@@ -853,8 +853,8 @@ loc_810CB94:
 	beq loc_810CBB6
 loc_810CBA4:
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
@@ -965,8 +965,8 @@ loc_810CC6C:
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
@@ -1015,8 +1015,8 @@ sub_810CCDC:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
@@ -1049,7 +1049,7 @@ sub_810CD38:
 	push {r4,r6,r7,lr}
 	ldr r4, dword_810CD58 // =0x4050101 
 	ldr r6, [r7,#8]
-	add r7, r0, #0
+	mov r7, r0
 	bl object_getFlipDirection_800E2CA // () -> int
 	ldrb r1, [r5,#0x12]
 	add r0, r0, r1
@@ -1151,11 +1151,11 @@ sub_810CEAE:
 	tst r0, r1
 	bne loc_810CF08
 	bl object_getFlipDirection_800E2CA // () -> int
-	add r4, r0, #0
+	mov r4, r0
 	ldr r2, [sp]
 	ldrb r1, [r2,#0x12]
 	sub r1, r1, r4
-	add r0, r1, #0
+	mov r0, r1
 	ldrb r1, [r2,#0x13]
 	ldrb r1, [r5,#0x13]
 	ldrb r2, [r5,#0x12]
@@ -1399,8 +1399,8 @@ sub_810D2E4:
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
 	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r2, r1
+	mov r1, r0
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
@@ -1629,12 +1629,12 @@ thumb_func_end sub_810D476
 thumb_local_start
 sub_810D498:
 	push {r4,r6,lr}
-	add r4, r0, #0
+	mov r4, r0
 	mov r1, #1
 	mov r2, #0x36 
 	ldrb r3, [r5,#0x16]
 	bl object_getEnemyByNameRange
-	add r6, r0, #0
+	mov r6, r0
 	lsl r0, r0, #2
 	add r0, r0, r4
 	mov r1, #0x3d 

@@ -25,7 +25,7 @@ loc_8086F36:
 	mov r1, #0
 	mov r2, #0
 	mov r3, #0
-	add r4, r6, #0
+	mov r4, r6
 	bl sub_80047E0
 	pop {r5}
 	add r6, #1
@@ -64,7 +64,7 @@ loc_8086F7A:
 	mov r1, #0
 	mov r2, #0
 	mov r3, #0
-	add r4, r6, #0
+	mov r4, r6
 	bl sub_80047E0
 	pop {r5}
 	add r6, #1
@@ -205,11 +205,11 @@ loc_808704C:
 	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8087062
 loc_808705C:
-	add r1, r4, #0
+	mov r1, r4
 	ldr r0, off_8087100 // =dword_8086D5C 
 	b loc_80870F2
 loc_8087062:
-	add r1, r4, #0
+	mov r1, r4
 	ldr r0, off_8087104 // =byte_8086D74 
 	b loc_80870F2
 loc_8087068:
@@ -481,7 +481,7 @@ sub_80871C0:
 	lsl r0, r0, #1
 	ldr r1, off_80871D4 // =byte_80871D8 
 	ldrh r1, [r1,r0]
-	add r0, r1, #0
+	mov r0, r1
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	pop {pc}
 	.hword 0x0

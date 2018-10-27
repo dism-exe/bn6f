@@ -43,7 +43,7 @@ sub_812D3A8:
 	bl sub_811FE7C
 	add r0, #1
 	strh r0, [r7,#0x28]
-	add r1, r0, #0
+	mov r1, r0
 	ldr r0, off_812D3E0 // =unk_2023FC0 
 	mov r2, #5
 	mov r3, #4
@@ -63,7 +63,7 @@ thumb_func_start sub_812D3E4
 sub_812D3E4:
 	push {r4-r7,lr}
 	bl sub_812D6F8
-	add r7, r0, #0
+	mov r7, r0
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_812D4C4 // =word_2023FA0 
 	ldr r2, off_812D4C8 // =unk_202DFA0 
@@ -179,7 +179,7 @@ thumb_func_start sub_812D4FC
 sub_812D4FC:
 	push {r4-r7,lr}
 	bl sub_812D6F8
-	add r5, r0, #0
+	mov r5, r0
 	mov r0, #2
 	mov r1, #0x20 
 	mov r2, #0x2a 
@@ -209,7 +209,7 @@ sub_812D52E:
 loc_812D532:
 	mov r1, #0
 	push {r1,r2}
-	add r0, r1, #0
+	mov r0, r1
 	bl sub_80466C4
 	pop {r1,r2}
 	bne locret_812D546
@@ -225,7 +225,7 @@ sub_812D54C:
 	push {r4-r7,lr}
 	mov r1, #3
 	push {r1}
-	add r0, r1, #0
+	mov r0, r1
 	bl sub_80466C4
 	pop {r1}
 	bne locret_812D564
@@ -243,18 +243,18 @@ sub_812D56C:
 	push {r4-r7,lr}
 	sub sp, sp, #4
 	str r2, [sp]
-	add r6, r1, #0
+	mov r6, r1
 	add r4, r6, #2
 	bl sub_80465A0 // (void *a1) -> void
 loc_812D57A:
-	add r0, r6, #0
+	mov r0, r6
 	bl sub_80466C4
 	beq loc_812D594
 	tst r6, r6
 	bne loc_812D588
-	add r7, r1, #0
+	mov r7, r1
 loc_812D588:
-	add r5, r1, #0
+	mov r5, r1
 	ldr r0, [sp]
 	mov r1, #0x58 
 	bl sub_800307C
@@ -272,7 +272,7 @@ thumb_func_start sub_812D5A0
 sub_812D5A0:
 	push {r4-r7,lr}
 	bl sub_812D6F8
-	add r5, r0, #0
+	mov r5, r0
 	ldr r0, off_812D5CC // =word_2023FA0 
 	ldrh r4, [r5,#0x2a]
 	ldrh r1, [r5,#0x2e]
@@ -286,7 +286,7 @@ sub_812D5A0:
 	mov r1, #0x7f
 	and r1, r2
 	mov r2, #0
-	add r3, r4, #0
+	mov r3, r4
 	bl sub_811980C
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -296,16 +296,16 @@ thumb_func_end sub_812D5A0
 thumb_func_start sub_812D5D0
 sub_812D5D0:
 	push {r4-r7,lr}
-	add r3, r2, #0
-	add r2, r1, #0
-	add r1, r0, #0
+	mov r3, r2
+	mov r2, r1
+	mov r1, r0
 	lsl r0, r0, #0x17
 	lsr r0, r0, #0x17
-	add r4, r0, #0
+	mov r4, r0
 	lsl r1, r1, #0x11
 	lsr r1, r1, #0x1a
 	bl sub_811980C
-	add r0, r4, #0
+	mov r0, r4
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 thumb_func_end sub_812D5D0
@@ -314,7 +314,7 @@ thumb_local_start
 sub_812D5EC:
 	push {r4-r7,lr}
 	bl sub_812D6F8
-	add r7, r0, #0
+	mov r7, r0
 	mov r0, #0xc6
 	mov r1, #0x58 
 	mov r2, #0
@@ -345,7 +345,7 @@ loc_812D61E:
 	mul r2, r3
 	add r1, r1, r2
 	orr r0, r1
-	add r1, r7, #0
+	mov r1, r7
 	ldr r2, [sp,#8]
 	ldrb r2, [r5,r2]
 	str r2, [sp,#0x14]
@@ -381,7 +381,7 @@ thumb_local_start
 sub_812D668:
 	push {r4-r7,lr}
 	bl sub_812D6F8
-	add r5, r0, #0
+	mov r5, r0
 	mov r0, #0xa4
 	mov r1, #0x20 
 	mov r2, #0x34 
@@ -400,7 +400,7 @@ thumb_func_start sub_812D690
 sub_812D690:
 	push {r4-r7,lr}
 	bl sub_812D6F8
-	add r7, r0, #0
+	mov r7, r0
 	ldrh r0, [r7,#0x28]
 	tst r0, r0
 	beq loc_812D6C4
@@ -412,7 +412,7 @@ sub_812D690:
 	bl sub_812D700
 	bne locret_812D6F4
 	push {r5,r7}
-	add r5, r7, #0
+	mov r5, r7
 	mov r0, r10
 	ldr r0, [r0,#4]
 	ldrh r0, [r0,#4]
@@ -462,7 +462,7 @@ thumb_local_start
 sub_812D700:
 	push {r7,lr}
 	bl sub_812D6F8
-	add r7, r0, #0
+	mov r7, r0
 	mov r0, #8
 	bl sub_811F7EC
 	bne loc_812D71E
@@ -501,7 +501,7 @@ thumb_func_start sub_812D748
 sub_812D748:
 	push {r7,lr}
 	bl sub_812D6F8
-	add r7, r0, #0
+	mov r7, r0
 	bl sub_812D700
 	bne locret_812D776
 	bl sub_812D7A4
@@ -558,7 +558,7 @@ sub_812D7A4:
 	sub sp, sp, #4
 	str r5, [sp]
 	bl sub_812D6F8
-	add r5, r0, #0
+	mov r5, r0
 	mov r0, #1
 	bl sub_811F7EC
 	bne loc_812D7BA
@@ -643,7 +643,7 @@ thumb_func_start sub_812D854
 sub_812D854:
 	push {lr}
 	bl sub_812D6F8
-	add r1, r0, #0
+	mov r1, r0
 	ldrh r0, [r1,#0x2e]
 	ldrh r2, [r1,#0x2a]
 	add r0, r0, r2
@@ -691,7 +691,7 @@ loc_812D892:
 	bne loc_812D8B6
 	mov r1, #0x30 
 loc_812D8B6:
-	add r0, r1, #0
+	mov r0, r1
 	bl sub_8132280
 loc_812D8BC:
 	ldrb r0, [r5,#0x16]
@@ -705,7 +705,7 @@ thumb_func_end sub_812D880
 thumb_func_start sub_812D8C8
 sub_812D8C8:
 	push {r4-r7,lr}
-	add r7, r5, #0
+	mov r7, r5
 	bl sub_800183C
 	bl sub_8046664 // () -> void
 	mov r0, #0
@@ -715,7 +715,7 @@ sub_812D8C8:
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-	add r5, r7, #0
+	mov r5, r7
 	bl sub_812D52E
 	ldrh r0, [r5,#0x2a]
 	mov r1, #0
@@ -756,7 +756,7 @@ thumb_func_start sub_812D934
 sub_812D934:
 	push {r4,lr}
 	lsl r1, r1, #2
-	add r4, r0, #0
+	mov r4, r0
 	ldr r2, off_812D948 // =off_812D94C 
 	ldr r2, [r2,r1]
 	mov r3, #0xa
@@ -784,14 +784,14 @@ sub_812D954:
 	add r7, r4, r1
 	b loc_812D970
 loc_812D96E:
-	add r7, r4, #0
+	mov r7, r4
 loc_812D970:
 	ldr r1, off_812D9DC // =dword_812D9E0 
 	add r0, #8
 	ldr r6, [r1,r0]
 	push {r3}
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	mov r2, #2
 	mov r3, #0
 	mov r4, #8
@@ -800,8 +800,8 @@ loc_812D970:
 thumb_func_end sub_812D954
 
 	pop {r3}
-	add r0, r7, #0
-	add r1, r6, #0
+	mov r0, r7
+	mov r1, r6
 	mov r2, #2
 	mov r4, #8
 	mov r5, #2
@@ -824,13 +824,13 @@ sub_812D99C:
 	add r7, r4, r1
 	b loc_812D9B8
 loc_812D9B6:
-	add r7, r4, #0
+	mov r7, r4
 loc_812D9B8:
 	ldr r1, off_812D9DC // =dword_812D9E0 
 	add r0, #8
 	ldr r6, [r1,r0]
-	add r0, r4, #0
-	add r1, r6, #0
+	mov r0, r4
+	mov r1, r6
 	mov r2, #2
 	mov r3, #0
 	mov r4, #8
@@ -848,7 +848,7 @@ thumb_local_start
 sub_812D9F0:
 	push {r4-r7,lr}
 	bl sub_812D6F8
-	add r5, r0, #0
+	mov r5, r0
 	ldr r0, dword_812DA30 // =0x92 
 	mov r1, #0x1c
 	mov r2, #0x28 

@@ -381,7 +381,7 @@ sub_8072B70:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#0x40]
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_8034C36
 	beq locret_8072BA0
 	ldr r0, [r5,#0x3c]

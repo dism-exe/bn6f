@@ -141,11 +141,11 @@ thumb_func_end sub_801FEE8
 thumb_func_start sub_801FEEE
 sub_801FEEE:
 	push {r4-r7,lr}
-	add r7, r0, #0
+	mov r7, r0
 	bl sub_803EA60
 	ldr r1, off_801FF04 // =off_801FF08 
 	ldr r2, [r1,r0]
-	add r0, r7, #0
+	mov r0, r7
 	mov lr, pc
 	bx r2
 	pop {r4-r7,pc}

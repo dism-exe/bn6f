@@ -468,9 +468,9 @@ sub_808964C:
 	b loc_80896A0
 loc_808966E:
 	bl sub_81428D4
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_8142990
-	add r1, r4, #0
+	mov r1, r4
 	bl sub_8142896
 	bl sub_809E2AE
 	bl sub_809E2B8
@@ -611,7 +611,7 @@ loc_8089784:
 	mov r4, #1
 	b loc_808978C
 loc_808978C:
-	add r0, r4, #0
+	mov r0, r4
 	tst r0, r0
 	pop {r4-r7,pc}
 thumb_func_end sub_8089704
@@ -729,7 +729,7 @@ sub_808985A:
 	push {r4-r7,lr}
 	mov r0, #0
 	bl sub_8142C20
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_814216E
 	cmp r0, r4
 	bne loc_8089898
@@ -943,7 +943,7 @@ sub_80899F2:
 	push {r4-r7,lr}
 	mov r0, #0
 	bl sub_8142C20
-	add r4, r0, #0
+	mov r4, r0
 	bl sub_814216E
 	cmp r0, r4
 	bne loc_8089A0C
@@ -994,7 +994,7 @@ sub_8089A60:
 	beq loc_8089AC6
 	bl sub_81427CE
 	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	.hword 0x1C00 // mov r0, r0
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	bl sub_814219C
 	str r0, [r7,#0x10]
@@ -1295,7 +1295,7 @@ thumb_func_end sub_8089C78
 thumb_local_start
 sub_8089CA4:
 	push {r4-r7,lr}
-	add r1, r0, #0
+	mov r1, r0
 	ldr r0, [r5,#0x30]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	pop {r4-r7,pc}
