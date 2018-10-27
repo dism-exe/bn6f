@@ -15,7 +15,7 @@
 // .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 
 .include "asm/asm03_1.inc"
 // .global init_s_02011C50_8036E90

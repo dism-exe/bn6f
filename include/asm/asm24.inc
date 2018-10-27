@@ -22,7 +22,7 @@
 // .global SetEventFlag // (u16 entryFlagBitfield) -> void
 // .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 // .global loc_802F200
 // .global sub_80302A8

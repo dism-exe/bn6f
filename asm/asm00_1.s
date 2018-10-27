@@ -5082,7 +5082,7 @@ loc_80058D0:
 	ldr r1, off_8005940 // =0x16f0 
 	add r1, r1, r4
 	add r0, r1, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne locret_800593C
 	mov r2, r10
 	ldr r2, [r2,#0x14]
@@ -8126,7 +8126,7 @@ sub_80070BC:
 	mov r7, #0
 loc_80070C6:
 	add r0, r4, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80070DC
 	mov r0, r10
 	mov r1, #0x80
@@ -8175,7 +8175,7 @@ sub_800710A:
 	mov r7, #0
 loc_8007112:
 	add r0, r4, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8007122
 	add r0, r7, #0
 	bl sub_80070E6
@@ -8190,7 +8190,7 @@ loc_8007122:
 	mov r7, #0
 loc_8007130:
 	add r0, r4, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8007140
 	add r0, r7, #0
 	bl sub_80070E6
@@ -8205,7 +8205,7 @@ loc_8007140:
 	mov r7, #0
 loc_800714E:
 	add r0, r4, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_800715E
 	add r0, r7, #0
 	bl sub_8006E84

@@ -678,7 +678,7 @@ npc_809EAA0:
 	ldr r0, [r5,r7]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_809EAD4
 	bl sub_809F516
 	mov r0, #1
@@ -1026,7 +1026,7 @@ npc_809EDB2:
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_809EDCC
 	add r0, r6, #3
 	bl sub_809F656 // (void* a1) -> int
@@ -1045,7 +1045,7 @@ npc_809EDD0:
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_809EDEA
 	add r0, r6, #3
 	bl sub_809F656 // (void* a1) -> int
@@ -2079,7 +2079,7 @@ sub_809F45A:
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_809F498
 	add r0, r6, #1
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16

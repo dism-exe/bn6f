@@ -7622,7 +7622,7 @@ loc_8029ECE:
 	ldr r0, [r1,r0]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8029EEE
 	ldr r3, off_8029F6C // =dword_20349A0 
 	ldr r3, [r3]
@@ -7653,7 +7653,7 @@ loc_8029EFE:
 	ldr r0, [r1,r0]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8029F3C
 	ldr r3, off_8029F6C // =dword_20349A0 
 	ldr r3, [r3]
@@ -9996,7 +9996,7 @@ loc_802B2B2:
 	ldr r0, [r0,r1]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_802B2CE
 	ldr r1, dword_802B354 // =0x197 
 	ldr r0, off_802B2DC // =dword_802B2E0 
@@ -14537,7 +14537,7 @@ sub_802D65E:
 	ldr r1, dword_802D69C // =0x196 
 	add r1, r1, r4
 	add r0, r1, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne locret_802D68A
 	cmp r4, #0xd
 	beq locret_802D68A
@@ -17806,13 +17806,12 @@ isActiveFlag_2001C88_entry:
 	orr r0, r1
 .endfunc // isActiveFlag_2001C88_entry
 
-.func
-.thumb_func
 // (u16 entryFlagBitfield) -> zf
 
 // Test a flag at eEventFlags
 // r0 - flag to test
-isActiveFlag_2001C88_bitfield:
+	thumb_func_start TestEventFlag
+TestEventFlag:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
 
@@ -17832,7 +17831,7 @@ isActiveFlag_2001C88_bitfield:
 	ldrb r0, [r3]
 	tst r0, r1
 	mov pc, lr
-.endfunc // isActiveFlag_2001C88_bitfield
+	thumb_func_end TestEventFlag
 
 .func
 .thumb_func
@@ -21124,7 +21123,7 @@ loc_8030BB0:
 	add r0, r0, r6
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r0-r2}
 	bne loc_8030C0A
 loc_8030BEE:
@@ -23158,7 +23157,7 @@ loc_8031ABC:
 	add r0, r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r0-r2}
 	bne loc_8031AFC
 	mov r0, #0

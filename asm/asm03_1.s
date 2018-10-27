@@ -1910,7 +1910,7 @@ loc_8034CF6:
 	add r0, r0, r2
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8034D44
 	mov r7, r10
 	ldr r7, [r7,#0x3c]
@@ -2166,7 +2166,7 @@ loc_8034F22:
 	add r0, r0, r4
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne locret_8034F56
 	cmp r6, #0x80
 	bge loc_8034F3E
@@ -2212,7 +2212,7 @@ sub_8034F68:
 	ldr r1, off_8034FAC // =0x16f0 
 	add r1, r1, r4
 	add r0, r1, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq locret_8034FA8
 	mov r0, #4
 	mul r0, r4
@@ -2548,7 +2548,7 @@ loc_80351CC:
 	beq locret_80351E6
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80351E2
 	ldrh r0, [r4,#2]
 	// <mkdata>
@@ -2719,11 +2719,11 @@ loc_80352A6:
 	bne loc_80352CE
 	ldrh r7, [r4,#2]
 	add r0, r7, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80352CE
 	ldrh r7, [r4,#4]
 	add r0, r7, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_80352CE
 	ldr r0, off_8035328 // =byte_80990B8 
 	ldr r1, [r5]
@@ -2824,7 +2824,7 @@ loc_803538E:
 	ldrh r0, [r4,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80353AC
 	// entryIdx
 	mov r0, #0
@@ -3467,7 +3467,7 @@ sub_8035962:
 	bl Script_ReadHalfword80360A8
 .gotEventFlag_8035978:
 	add r0, r4, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq .eventFlagNotSet_803598C
 	mov r6, #4
 	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
@@ -3523,7 +3523,7 @@ sub_80359BE:
 	bl Script_ReadHalfword80360A8
 .gotEventFlag_80359D4:
 	add r0, r4, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne .eventFlagSet_80359E8
 	mov r6, #4
 	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
@@ -6761,7 +6761,7 @@ sub_8037866:
 	mov r6, #1
 	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_803787C
 	add r7, #3
 	mov r0, #1
@@ -6778,7 +6778,7 @@ sub_8037880:
 	mov r6, #1
 	bl Script_ReadHalfword80360A8
 	add r0, r4, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8037896
 	add r7, #3
 	mov r0, #1

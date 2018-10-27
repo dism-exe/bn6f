@@ -233,7 +233,7 @@
 // .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global ClearEventFlag // (u16 entryFlagBitfield) -> void
 // .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 // .global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 // .global sub_80302A8

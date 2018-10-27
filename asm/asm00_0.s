@@ -1535,7 +1535,7 @@ sub_8000FE6:
 	add r4, r1, #0
 loc_8000FEC:
 	add r0, r6, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8000FFA
 	add r0, r6, #0
 	bl reqBBS_813E5DC
@@ -1566,7 +1566,7 @@ sub_8001014:
 	add r4, r1, #0
 loc_800101A:
 	add r0, r6, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8001028
 	add r0, r6, #0
 	bl reqBBS_813F9A0

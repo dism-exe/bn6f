@@ -675,7 +675,7 @@ sub_809FB4C:
 loc_809FB64:
 	push {r6,r7}
 	add r0, r5, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r6,r7}
 	beq loc_809FBE6
 	mov r4, #0

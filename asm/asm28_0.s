@@ -6083,7 +6083,7 @@ loc_809C9CA:
 	ldr r0, [r4,#0x10]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_809CA26
 	mov r0, #0x2c 
 	bl sub_803CE28
@@ -6140,7 +6140,7 @@ sub_809CA40:
 	ldr r0, [r4,#0x10]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_809CA7A
 	mov r0, #1
 	pop {r4-r7,pc}

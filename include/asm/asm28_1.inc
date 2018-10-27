@@ -55,7 +55,7 @@
 .include "asm/asm03_0.inc"
 // .global ClearEventFlag // (u16 entryFlagBitfield) -> void
 // .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global sub_8031612
 
 .include "asm/chatbox.inc"

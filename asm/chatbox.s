@@ -3178,7 +3178,7 @@ loc_8041510:
 	orr r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_80414F0
 	// mask
 	mov r0, #1
@@ -3207,7 +3207,7 @@ loc_8041546:
 	orr r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80414F0
 	// mask
 	mov r0, #1
@@ -3413,7 +3413,7 @@ chatbox_804171C:
 	mov r2, #0
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8041732
 	mov r2, #1
 loc_8041732:

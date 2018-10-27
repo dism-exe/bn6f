@@ -486,7 +486,7 @@ sub_80871C0:
 	ldr r1, off_80871D4 // =byte_80871D8 
 	ldrh r1, [r1,r0]
 	add r0, r1, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {pc}
 	.hword 0x0
 off_80871D4:

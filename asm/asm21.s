@@ -327,7 +327,7 @@ loc_808133C:
 	push {r0}
 	ldrh r2, [r3,#2]
 	add r0, r2, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r0}
 	bne locret_808135C
 	mov r0, #0x15

@@ -299,7 +299,7 @@ loc_813E2C8:
 	mov r8, r0
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_813E2F6
 	mov r0, r8
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
@@ -926,7 +926,7 @@ loc_813E870:
 	add r0, r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r0,r1}
 	beq loc_813E880
 	add r7, #1
@@ -1041,7 +1041,7 @@ loc_813E934:
 	push {r3}
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r3}
 	beq loc_813E968
 	push {r4-r7}
@@ -1115,7 +1115,7 @@ loc_813EAA6:
 	add r0, r2, r3
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_813EAD6
 	push {r4-r7}
 	// j
@@ -1423,7 +1423,7 @@ reqBBS_813ED60:
 	ldr r1, [r1,#0xc]
 	add r3, r3, r1
 	add r0, r3, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq locret_813ED90
 	add r0, r7, #0
 	mov r1, #7
@@ -1870,7 +1870,7 @@ reqBBS_813F474:
 	ldr r3, [r3,#0x18] // (dword_813F364 - 0x813f34c)
 	add r2, r2, r3
 	add r0, r2, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_813F4B6
 	ldr r0, off_813F548 // =dynaicArr 
 	ldr r1, dword_813F544 // =0xf 
@@ -2118,7 +2118,7 @@ loc_813F678:
 	mov r8, r0
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_813F6A6
 	mov r0, r8
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
@@ -3121,7 +3121,7 @@ loc_813FE90:
 	add r0, r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r0,r1}
 	beq loc_813FEA0
 	add r7, #1
@@ -3271,7 +3271,7 @@ loc_814005E:
 	add r0, r2, r3
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_814008E
 	push {r4-r7}
 	// j
@@ -3378,7 +3378,7 @@ loc_81401CE:
 	add r0, r2, r3
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_81401FC
 	push {r4-r7}
 	// j
@@ -3405,7 +3405,7 @@ loc_81401FC:
 	add r0, r2, r3
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8140228
 	push {r4-r7}
 	// j
@@ -3449,7 +3449,7 @@ loc_8140252:
 	add r0, r2, r3
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_81402B4
 	push {r4-r7}
 	mov r0, #0x16
@@ -3970,7 +3970,7 @@ reqBBS_8140604:
 	ldr r1, [r1,#0xc]
 	add r3, r3, r1
 	add r0, r3, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq locret_8140634
 	add r0, r7, #0
 	mov r1, #7
@@ -4270,7 +4270,7 @@ dword_8140828: .word 0x4B23190A, 0x0
 	add r0, r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8140844
 	mov r0, #1
 	b locret_8140846
@@ -4288,7 +4288,7 @@ reqBBS_814084C:
 	add r0, r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8140860
 	mov r0, #1
 	b locret_8140862
@@ -4308,7 +4308,7 @@ reqBBS_8140868:
 	add r0, r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_814087C
 	mov r0, #1
 	b locret_814087E
