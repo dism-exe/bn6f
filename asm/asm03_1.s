@@ -20417,7 +20417,7 @@ sub_803EF60:
 	push {lr}
 	bl sub_803EF7C
 	ldr r1, off_803EF70 // =0x100 
-	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {pc}
 	.byte 0, 0
 off_803EF70: .word 0x100

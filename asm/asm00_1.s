@@ -3468,7 +3468,7 @@ off_80049DC: .word byte_20138A8
 	push {lr}
 	ldr r0, off_8004D2C // =byte_2006848 
 	ldr r1, off_80049F4 // =0x400 
-	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	ldr r0, off_8004D28 // =dword_2006C48 
 	ldr r1, off_8004D2C // =byte_2006848 
 	str r1, [r0]
@@ -8345,7 +8345,7 @@ loc_8007236:
 	add r0, r0, r1
 	mov r1, #0x18
 	lsl r1, r1, #8
-	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	mov r0, #0
 	ldr r1, off_800730C // =sCamera+76 
 	strb r0, [r1]

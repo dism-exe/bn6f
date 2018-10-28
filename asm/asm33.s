@@ -9301,7 +9301,7 @@ sub_81283A0:
 	ldr r0, off_8128474 // =dword_2027590 
 	add r4, r0, #0
 	ldr r1, dword_8128478 // =0x1000 
-	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	bl sub_81284B4
 	ldrb r2, [r5,#0xd]
 	mov r3, #1
@@ -15767,7 +15767,7 @@ loc_812B964:
 	bl sub_8132280
 	ldr r0, off_812BAF4 // =unk_2033C00 
 	ldr r1, dword_812BAF8 // =0x800 
-	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	b loc_812B976
 loc_812B972:
 	bl sub_812C24C
@@ -16520,7 +16520,7 @@ sub_812BF88:
 	beq locret_812BFA8
 	ldr r0, off_812BFE4 // =unk_2037780 
 	ldr r1, off_812BFE8 // =0x80 
-	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	bl chatbox_8040818
 	// entryIdx
 	mov r0, #0x17
@@ -16592,7 +16592,7 @@ sub_812C010:
 	beq locret_812C030
 	ldr r0, off_812C06C // =unk_2037780 
 	ldr r1, off_812C070 // =0x80 
-	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	bl chatbox_8040818
 	// entryIdx
 	mov r0, #0x17

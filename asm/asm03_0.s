@@ -10204,7 +10204,7 @@ sub_802B4D4:
 	add r4, r7, r1
 	add r0, r2, #0
 	ldr r1, off_802B518 // =0xc80 
-	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	mov r5, #5
 loc_802B4EE:
 	mov r6, #0
@@ -19178,7 +19178,7 @@ loc_802FDCE:
 	bgt loc_802FDCE
 	ldr r0, off_802FE04 // =byte_3001150 
 	ldr r1, off_802FDFC // =0x400 
-	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	ldr r0, off_802FE00 // =byte_3001950 
 	mov r1, #0
 	str r1, [r0]
@@ -19377,7 +19377,7 @@ sub_802FF2C:
 	str r1, [r0]
 	ldr r0, off_802FF48 // =word_200A6F0 
 	ldr r1, off_802FF40 // =0x180 
-	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {pc}
 	.byte 0, 0
 off_802FF40: .word 0x180

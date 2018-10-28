@@ -218,7 +218,7 @@ sub_8046154:
 	add r1, r4, #0
 	bl CpuFastSet_80009AC
 	add r0, r7, #0
-	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	add r0, r6, #0
 	mov r3, #1
 loc_804618E:
@@ -7959,7 +7959,7 @@ loc_804AB98:
 loc_804ABC0:
 	add r0, r7, #0
 	mov r1, #0x20 
-	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	ldrh r0, [r5,#0x1e]
 	bl sub_804ACC8
 	strb r0, [r5,#0x17]
@@ -8095,7 +8095,7 @@ sub_804ACC8:
 	add r5, r5, r7
 	ldr r0, off_804AD54 // =unk_20343E0 
 	ldr r1, off_804AD58 // =0x78 
-	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	ldr r6, off_804AD54 // =unk_20343E0 
 loc_804ACE4:
 	mov r4, #0
@@ -8273,7 +8273,7 @@ sub_804ADE0:
 loc_804ADF8:
 	add r0, r4, #0
 	mov r1, #0x20 
-	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 .endfunc // sub_804ADE0
