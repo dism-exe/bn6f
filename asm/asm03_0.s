@@ -9987,7 +9987,7 @@ sub_802B2A0:
 	lsl r1, r1, #1
 	// byte
 	mov r2, #0xff
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	mov r6, #0
 	mov r4, #0
 loc_802B2B2:
@@ -18141,7 +18141,7 @@ sub_802F2C8:
 	mov r1, #0x80
 	// byte
 	mov r2, #0x80
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	ldr r0, off_802F2E0 // =dword_2001140 
 	mov r1, #0
 	str r1, [r0]

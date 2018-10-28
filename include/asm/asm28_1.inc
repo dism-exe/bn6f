@@ -38,7 +38,7 @@
 /* External Symbols */
 .include "asm/asm00_0.inc"
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
-// .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+// .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global sub_8000E3A
 // .global getPETNaviSelect // () -> u8
 

@@ -1120,7 +1120,7 @@ sub_813BEA8:
 	mov r1, #0x31 
 	// byte
 	mov r2, #0xff
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	mov r6, #0
 	mov r5, #0
 loc_813BEBA:

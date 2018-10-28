@@ -388,7 +388,7 @@ sub_80028D4:
 	mov r1, #0x30 
 	// byte
 	mov r2, #0xff
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	pop {r5,pc}
 .endfunc // sub_80028D4
 

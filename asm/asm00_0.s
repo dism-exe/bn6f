@@ -569,16 +569,18 @@ CopyByEightWords:
 .CopyFastCpuSetMask_8000960: .word 0x0
 	thumb_func_end CopyByEightWords
 
-.func
-.thumb_func
 // (u8 *mem, int byteCount, u8 byte) -> void
-initMemblockToByte:
+	thumb_func_start ByteFill
+// Fill r0 with r2.
+// Size is in r1, in bytes.
+// Does a backwards fill for speed
+ByteFill:
 	// byteCount
 	sub r1, #1
 	strb r2, [r0,r1]
-	bne initMemblockToByte
+	bne ByteFill
 	mov pc, lr
-.endfunc // initMemblockToByte
+	thumb_func_end ByteFill
 
 .func
 .thumb_func

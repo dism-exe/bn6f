@@ -15751,7 +15751,7 @@ sub_800A964:
 	mov r1, #0xc
 	// byte
 	mov r2, #0xff
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	pop {r4,pc}
 .endfunc // sub_800A964
 

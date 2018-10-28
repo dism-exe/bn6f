@@ -211,7 +211,7 @@
 // .global sound_play // () -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
-// .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+// .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global loc_8000AC8
 // .global sub_8000E3A
 // .global getPETNaviSelect // () -> u8
