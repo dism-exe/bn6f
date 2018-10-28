@@ -334,7 +334,7 @@ off_8130190: .word unk_201F820
 	add r5, r0, #0
 	ldr r0, off_81301D0 // =word_2023FA0 
 	ldr r1, dword_81301D8 // =0x10 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	ldr r4, off_81301D0 // =word_2023FA0 
 	mov r1, #0x26 
 	strh r1, [r4]
@@ -2532,13 +2532,13 @@ sub_81312FC:
 	ldrb r4, [r7,#0xc]
 	add r0, r7, #0
 	mov r1, #0x80
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	strb r4, [r7,#0xc]
 	b loc_8131350
 loc_8131348:
 	add r0, r7, #0
 	mov r1, #0x80
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 loc_8131350:
 	bl sub_8131400
 	bl sub_8131440
@@ -4113,7 +4113,7 @@ sub_8132398:
 	push {lr}
 	ldr r0, off_81323A8 // =unk_2033800 
 	ldr r1, off_81323AC // =0x200 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	mov r0, #1
 	strb r1, [r5,#0xf]
 	pop {pc}
@@ -9207,7 +9207,7 @@ loc_8134D28:
 loc_8134D50:
 	add r0, r7, #0
 	mov r1, #0x20 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	ldrh r0, [r5,#0x1e]
 	bl sub_8134EA8
 	strb r0, [r5,#0x17]
@@ -9371,7 +9371,7 @@ sub_8134EA8:
 	add r5, r5, r7
 	ldr r0, off_8134F34 // =unk_20343E0 
 	ldr r1, off_8134F38 // =0x78 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	ldr r6, off_8134F34 // =unk_20343E0 
 loc_8134EC4:
 	mov r4, #0
@@ -9932,7 +9932,7 @@ sub_813527C:
 loc_8135294:
 	add r0, r4, #0
 	mov r1, #0x20 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	pop {r4-r7,pc}
 	.byte 0, 0
 .endfunc // sub_813527C
@@ -16508,7 +16508,7 @@ sub_8138768:
 	push {lr}
 	ldr r0, dword_81387D4 // =0x6006000 
 	mov r1, #0x20 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	mov r0, r10
 	ldr r0, [r0,#0x28]
 	mov r1, #3

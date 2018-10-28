@@ -46,7 +46,7 @@
 // .global sub_80006A2
 // .global musicGameState_8000784 // () -> void
 // .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-// .global CpuFastSet_8000900 // (int a1, int a2) -> void
+// .global CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void

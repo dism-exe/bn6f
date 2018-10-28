@@ -12324,7 +12324,7 @@ sub_8117A14:
 	add r0, r6, #0
 	mov r1, #0x20 
 	lsl r1, r1, #4
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	// idx
 	ldrh r0, [r4,#2]
 	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
@@ -12421,7 +12421,7 @@ sub_8117AB4:
 	add r0, r6, #0
 	mov r1, #0x10
 	lsl r1, r1, #4
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	ldrh r0, [r4,#2]
 	bl sub_813B780
 	add r7, r0, #0
@@ -15502,7 +15502,7 @@ loc_8119454:
 	push {r0,r1}
 	add r0, r1, #0
 	ldr r1, dword_8119664 // =0x800 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	pop {r0,r1}
 	mov r2, #0xe0
 	add r4, r2, #0
@@ -15583,7 +15583,7 @@ loc_8119478:
 	add r0, r0, r1
 	ldr r1, off_8119684 // =0xc0 
 	add r1, #0x40 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	b loc_811955C
 loc_8119520:
 	ldr r1, off_8119678 // =0x3e8 
@@ -15658,7 +15658,7 @@ sub_8119594:
 	push {r0}
 	add r0, r1, #0
 	add r1, r2, #0
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	pop {r0}
 	mov r1, #0xaa
 	lsl r2, r1, #8
@@ -15705,7 +15705,7 @@ sub_81195E4:
 	push {r0,r1}
 	add r0, r1, #0
 	ldr r1, dword_8119694 // =0xa00 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	pop {r0,r1}
 	ldr r1, off_8119628 // =off_8119128 
 	ldrb r2, [r5,#5]
@@ -15718,7 +15718,7 @@ sub_81195E4:
 	push {r0,r1}
 	add r0, r1, #0
 	ldr r1, dword_8119698 // =0x780 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	pop {r0,r1}
 	pop {pc}
 off_8119620: .word dword_8119624
@@ -16898,7 +16898,7 @@ sub_8119F88:
 	push {r0,r1}
 	add r0, r1, #0
 	ldr r1, dword_811A098 // =0xa00 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	pop {r0,r1}
 	ldr r1, off_8119FCC // =off_8119FD0 
 	ldrb r2, [r5,#5]
@@ -16911,7 +16911,7 @@ sub_8119F88:
 	push {r0,r1}
 	add r0, r1, #0
 	ldr r1, dword_811A09C // =0x780 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	pop {r0,r1}
 	pop {pc}
 off_8119FC4: .word dword_8119FC8
@@ -27243,7 +27243,7 @@ loc_811FCD0:
 	bl sub_811FE34
 	ldr r0, [sp,#0x14]
 	mov r1, #0x78 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 loc_811FCDE:
 	ldrh r0, [r7]
 	bl split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
@@ -27434,7 +27434,7 @@ loc_811FE2A:
 sub_811FE34:
 	push {lr}
 	ldr r1, off_811FE40 // =0x3c0 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	pop {pc}
 	.byte 0, 0
 off_811FE40: .word 0x3C0
@@ -27603,7 +27603,7 @@ byte_811FF60: .byte 0x0, 0x1, 0x2, 0x3, 0x8, 0x4, 0x6, 0x7, 0x5, 0x9, 0xA, 0x0
 sub_811FF6C:
 	push {lr}
 	ldr r1, dword_811FF78 // =0xa000 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	pop {pc}
 	.balign 4, 0x00
 dword_811FF78: .word 0xA000

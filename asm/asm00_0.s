@@ -475,7 +475,7 @@ dword_80008FC: .word 0x5000000
 .func
 .thumb_func
 // (int a1, int a2) -> void
-CpuFastSet_8000900:
+CpuFastSet_ZeroFillWord:
 	push {r0-r3,lr}
 	ldr r2, dword_800091C // =0x1000000 
 	lsr r1, r1, #2
@@ -490,7 +490,7 @@ CpuFastSet_8000900:
 	pop {r0-r3,pc}
 	.balign 4, 0x00
 dword_800091C: .word 0x1000000
-.endfunc // CpuFastSet_8000900
+.endfunc // CpuFastSet_ZeroFillWord
 
 .func
 .thumb_func
@@ -2413,7 +2413,7 @@ sub_80015B4:
 	push {lr}
 	ldr r0, dword_80015C8 // =0x600e000 
 	ldr r1, dword_80015CC // =0x2000 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	bl sub_800183C
 	bl sub_8001850
 	pop {pc}
@@ -2589,16 +2589,16 @@ sub_80017AA:
 	push {lr}
 	ldr r0, dword_80017D0 // =0x6000000 
 	mov r1, #0x40 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	ldr r0, dword_80017D4 // =0x6004000 
 	mov r1, #0x40 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	ldr r0, dword_80017D8 // =0x6008000 
 	mov r1, #0x40 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	ldr r0, dword_80017DC // =0x600c000 
 	mov r1, #0x20 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	pop {pc}
 	.byte 0, 0
 dword_80017D0: .word 0x6000000
@@ -2679,7 +2679,7 @@ sub_800183C:
 	mov r0, r10
 	ldr r0, [r0,#0x28]
 	ldr r1, dword_800184C // =0x2000 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	pop {pc}
 	.balign 4, 0x00
 dword_800184C: .word 0x2000
@@ -4612,10 +4612,10 @@ sub_800260C:
 	push {r4,lr}
 	ldr r0, dword_800263C // =0x7000000 
 	ldr r1, off_8002640 // =0x400 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	ldr r0, dword_8002644 // =0x6010000 
 	ldr r1, dword_8002648 // =0x8000 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	bl sub_8002668
 	bl sub_8003534
 	bl sub_800355C

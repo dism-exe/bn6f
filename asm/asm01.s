@@ -14,10 +14,10 @@ sub_801FE00:
 	strb r0, [r3,#0x4] // (byte_2036784 - 0x2036780)
 	ldr r0, off_80200BC // =dword_203F4A0 
 	ldr r1, off_80200C0 // =0x200 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	ldr r0, off_80200C4 // =dword_203CBE0 
 	ldr r1, off_80200C8 // =0x100 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	pop {pc}
 .endfunc // sub_801FE00
 

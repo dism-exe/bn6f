@@ -426,7 +426,7 @@ sub_809F9C8:
 	mov r0, r10
 	ldr r0, [r0,#0x70]
 	ldr r1, off_809F9D8 // =0x480 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_809F9D8: .word 0x480

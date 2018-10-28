@@ -11037,9 +11037,9 @@ chatbox_8045F60:
 	str r0, [r5,#0x7c]
 	ldr r0, off_8045F7C // =unk_200BEA0 
 	ldr r1, off_8045F80 // =0xf00 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	ldr r0, off_8045F88 // =dword_200CDA0 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 	pop {pc}
 off_8045F7C: .word unk_200BEA0
 off_8045F80: .word 0xF00
