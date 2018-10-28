@@ -12505,7 +12505,7 @@ sub_813677C:
 	push {lr}
 	ldr r0, off_8136798 // =unk_2022B70 
 	mov r1, #8
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	pop {pc}
 off_8136798: .word unk_2022B70
 off_813679C: .word unk_2000090
@@ -13241,7 +13241,7 @@ sub_8136C24:
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_8136EC0 // =byte_2009390 
 	mov r1, #0x10
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	ldr r0, off_8136EC4 // =off_8136EC8 
 	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 	bl sub_811F6C0
@@ -14677,7 +14677,7 @@ sub_8137808:
 	ldr r0, off_8137880 // =unk_20018EC 
 	add r4, r0, #0
 	mov r1, #4
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	mov r0, #0
 	bl sub_813781C
 	pop {r4,pc}

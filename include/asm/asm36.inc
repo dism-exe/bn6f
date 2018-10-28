@@ -54,7 +54,7 @@
 // .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
 // .global sub_800068A
-// .global clearBackwards_80008B4 // (void *mem, int size) -> void
+// .global ZeroFillByte // (void *mem, int size) -> void
 // .global CpuSet_ZeroFillHalfword
 // .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuFastSet_ZeroFillWord // (int a1, int a2) -> void

@@ -8337,7 +8337,7 @@ loc_8007236:
 	strb r0, [r5,#0x1b]
 	ldr r0, off_8007308 // =dword_2036820 
 	mov r1, #0x10
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	mov r0, r10
 	ldr r0, [r0,#0x28]
 	mov r1, #8

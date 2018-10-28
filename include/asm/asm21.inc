@@ -8,7 +8,7 @@
 
 /* External Symbols */
 .include "asm/asm00_0.inc"
-// .global clearBackwards_80008B4 // (void *mem, int size) -> void
+// .global ZeroFillByte // (void *mem, int size) -> void
 // .global sub_8001778
 // .global sub_8001780
 // .global sub_800195C

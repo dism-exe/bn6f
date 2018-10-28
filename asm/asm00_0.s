@@ -421,7 +421,7 @@ off_80008B0: .word loc_800084E+1
 .func
 .thumb_func
 // (void *mem, int size) -> void
-clearBackwards_80008B4:
+ZeroFillByte:
 	push {r0-r2,lr}
 	mov r2, #0
 loc_80008B8:
@@ -429,7 +429,7 @@ loc_80008B8:
 	strb r2, [r0,r1]
 	bne loc_80008B8
 	pop {r0-r2,pc}
-.endfunc // clearBackwards_80008B4
+.endfunc // ZeroFillByte
 
 .func
 .thumb_func
@@ -4623,7 +4623,7 @@ sub_800260C:
 	bl sprite_handleObjSprites_800289C
 	ldr r0, off_800264C // =unk_200F388 
 	mov r1, #7
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	pop {r4,pc}
 dword_800263C: .word 0x7000000
 off_8002640: .word 0x400

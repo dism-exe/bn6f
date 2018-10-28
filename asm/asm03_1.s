@@ -15273,13 +15273,13 @@ sub_803C26A:
 	add r0, r0, r5
 	mov r1, #4
 	lsl r1, r1, #2
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	mov r0, #0x54 
 	lsl r0, r0, #2
 	add r0, r0, r5
 	mov r1, #4
 	lsl r1, r1, #2
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	pop {r4-r7,pc}
 .endfunc // sub_803C26A
 
@@ -17792,10 +17792,10 @@ sub_803DCE8:
 	strh r1, [r7,#0x16] // (sCamera.unk_66 - 0x20099d0)
 	ldr r0, [r7,#0x38] // (sCamera.unk_88 - 0x20099d0)
 	ldr r1, [r7,#0x24] // (sCamera.unk_74 - 0x20099d0)
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	ldr r0, [r7,#0x3c] // (sCamera.unk_8C - 0x20099d0)
 	ldr r1, [r7,#0x24] // (sCamera.unk_74 - 0x20099d0)
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	pop {r4-r7,pc}
 .endfunc // sub_803DCE8
 
@@ -19493,7 +19493,7 @@ sub_803E900:
 	ldr r0, off_803E960 // =byte_200B1A0 
 	add r4, r0, #0
 	mov r1, #8
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	mov r0, #0xb4
 	strb r0, [r4,#0x3] // (byte_200B1A3 - 0x200b1a0)
 	pop {r4,pc}
@@ -19507,7 +19507,7 @@ sub_803E914:
 	ldr r0, off_803E960 // =byte_200B1A0 
 	add r4, r0, #0
 	mov r1, #8
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	mov r0, #1
 	strb r0, [r4,#0x3] // (byte_200B1A3 - 0x200b1a0)
 	pop {r4,pc}
@@ -19926,7 +19926,7 @@ sub_803EBB8:
 	mov r1, #2
 	add r0, r0, r1
 	mov r1, #0x20 
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	pop {pc}
 .endfunc // sub_803EBB8
 
@@ -21234,7 +21234,7 @@ clear_200AD04:
 	push {lr}
 	ldr r0, off_803F55C // =byte_200AD04 
 	mov r1, #4
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	pop {pc}
 .endfunc // clear_200AD04
 

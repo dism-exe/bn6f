@@ -1935,7 +1935,7 @@ off_81D6E9C: .word dword_3002590
 	.word 0x471846FE, 0xBD004648
 	.word 0x3006B18
 	.word loc_8000AC8+1
-	.word clearBackwards_80008B4+1
+	.word ZeroFillByte+1
 	.word 0x3006B84
 .endfunc // sub_81D6E20
 

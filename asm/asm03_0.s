@@ -11997,7 +11997,7 @@ sub_802C34E:
 	ldr r0, off_802C3F4 // =dword_20364C0 
 	add r7, r0, #0
 	mov r1, #0x20 
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	ldrb r0, [r4]
 	strb r0, [r7,#0x4] // (dword_20364C4 - 0x20364c0)
 	ldrb r0, [r4,#1]
@@ -16251,7 +16251,7 @@ sub_802E544:
 	ldr r0, off_802E554 // =unk_20000A0 
 	mov r1, #0x71 
 	add r1, #0xff
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	pop {pc}
 	.balign 4, 0x00
 off_802E554: .word unk_20000A0
@@ -16721,7 +16721,7 @@ loc_802E892:
 	ldr r0, off_802E950 // =unk_2000370 
 	mov r1, #0x71 
 	add r1, #0xff
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByte // (void *mem, int size) -> void
 	pop {pc}
 	push {r6,r7,lr}
 	ldr r2, off_802E954 // =0x170 
