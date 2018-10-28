@@ -623,7 +623,7 @@
 
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global sub_80008C0
+// .global CpuSet_ZeroFillHalfword
 // .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global loc_8000AC8

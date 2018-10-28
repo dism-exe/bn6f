@@ -17,7 +17,7 @@
 .global sub_80007B2
 .global sub_80007BE
 .global clearBackwards_80008B4 // (void *mem, int size) -> void
-.global sub_80008C0
+.global CpuSet_ZeroFillHalfword
 .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 .global CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void

@@ -229,7 +229,7 @@
 
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global sub_80008C0
+// .global CpuSet_ZeroFillHalfword
 // .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuFastSet_ZeroFillWord // (int a1, int a2) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void

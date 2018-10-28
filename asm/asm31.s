@@ -24718,7 +24718,7 @@ loc_80C3AA8:
 	mov r0, #0x60 
 	add r0, r0, r5
 	mov r1, #0x12
-	bl sub_80008C0
+	bl CpuSet_ZeroFillHalfword
 	mov r0, #4
 	strh r0, [r5,#0xa]
 locret_80C3AC8:
@@ -97644,7 +97644,7 @@ sub_80E8C84:
 	mov r0, #0x64 
 	add r0, r0, r5
 	mov r1, #0x28 
-	bl sub_80008C0
+	bl CpuSet_ZeroFillHalfword
 	ldr r3, off_80E8D68 // =dword_80E8D6C 
 	bl sub_800EC48
 	add r7, sp, #0
@@ -97713,7 +97713,7 @@ sub_80E8CFA:
 	mov r0, #0x64 
 	add r0, r0, r5
 	mov r1, #0x28 
-	bl sub_80008C0
+	bl CpuSet_ZeroFillHalfword
 	ldr r3, off_80E8D54 // =dword_80E8D58 
 	bl sub_800EC48
 	add r7, sp, #0

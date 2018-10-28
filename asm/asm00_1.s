@@ -16059,7 +16059,7 @@ sub_800AB22:
 	push {lr}
 	ldr r0, off_800AC00 // =word_2000FA0 
 	mov r1, #0x1a
-	bl sub_80008C0
+	bl CpuSet_ZeroFillHalfword
 	pop {pc}
 .endfunc // sub_800AB22
 

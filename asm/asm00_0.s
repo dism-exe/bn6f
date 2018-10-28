@@ -435,7 +435,7 @@ loc_80008B8:
 .thumb_func
 // r0 = destination
 // r1 = length in bytes (converted to halfword length in function)
-sub_80008C0:
+CpuSet_ZeroFillHalfword:
 	push {r0-r3,lr}
 	ldr r2, dword_80008DC // =0x1000000 
 	lsr r1, r1, #1
@@ -450,7 +450,7 @@ sub_80008C0:
 	pop {r0-r3,pc}
 	.balign 4, 0x00
 dword_80008DC: .word 0x1000000 // CpuSet FILL
-.endfunc // sub_80008C0
+.endfunc // CpuSet_ZeroFillHalfword
 
 .func
 .thumb_func
@@ -2613,7 +2613,7 @@ sub_80017E0:
 	push {lr}
 	ldr r0, off_8001800 // =byte_3001960 
 	mov r1, #2
-	bl sub_80008C0
+	bl CpuSet_ZeroFillHalfword
 	pop {pc}
 .endfunc // sub_80017E0
 
@@ -2623,10 +2623,10 @@ main_static_80017EC:
 	push {lr}
 	ldr r0, off_8001800 // =byte_3001960 
 	mov r1, #2
-	bl sub_80008C0
+	bl CpuSet_ZeroFillHalfword
 	ldr r0, dword_8001804 // =0x5000000 
 	mov r1, #2
-	bl sub_80008C0
+	bl CpuSet_ZeroFillHalfword
 	pop {pc}
 off_8001800: .word byte_3001960
 dword_8001804: .word 0x5000000

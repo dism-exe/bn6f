@@ -1021,7 +1021,7 @@ reqBBS_dead_813E910:
 	push {r4-r7,lr}
 	ldr r0, off_813E97C // =unk_2018A04 
 	mov r1, #0x40 
-	bl sub_80008C0
+	bl CpuSet_ZeroFillHalfword
 	mov r6, r10
 	ldr r6, [r6,#0x24]
 	ldrh r6, [r6]

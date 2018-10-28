@@ -28291,7 +28291,7 @@ sub_8120458:
 	str r5, [sp,#0xc]
 	add r0, r2, #0
 	mov r1, #0xe
-	bl sub_80008C0
+	bl CpuSet_ZeroFillHalfword
 	mov r5, #0x20 
 	ldr r0, [sp]
 	mul r0, r5
@@ -29424,7 +29424,7 @@ sub_8120C94:
 	push {r0-r3}
 	lsl r1, r1, #1
 	mul r1, r2
-	bl sub_80008C0
+	bl CpuSet_ZeroFillHalfword
 	pop {r0-r3}
 	lsl r4, r1, #1
 	add r6, r2, #0
@@ -29898,7 +29898,7 @@ sub_8121144:
 	push {r4-r7,lr}
 	ldr r0, off_8121150 // =word_200DCF0 
 	mov r1, #0x18
-	bl sub_80008C0
+	bl CpuSet_ZeroFillHalfword
 	pop {r4-r7,pc}
 off_8121150: .word word_200DCF0
 .endfunc // sub_8121144

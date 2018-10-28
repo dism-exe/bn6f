@@ -389,7 +389,7 @@ sub_8021D08:
 	push {lr}
 	ldr r0, off_8021D94 // =unk_203A0A0 
 	ldr r1, off_8021D98 // =0x2e0 
-	bl sub_80008C0
+	bl CpuSet_ZeroFillHalfword
 	pop {pc}
 .endfunc // sub_8021D08
 
@@ -427,7 +427,7 @@ sub_8021D36:
 	push {lr}
 	ldr r0, off_8021D6C // =unk_2000AF0 
 	mov r1, #0x40 
-	bl sub_80008C0
+	bl CpuSet_ZeroFillHalfword
 	ldr r0, off_8021D80 // =script_8021D88 
 	ldr r1, off_8021D70 // =unk_2001184 
 	mov r2, #8

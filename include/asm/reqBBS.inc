@@ -52,7 +52,7 @@
 /* External Symbols */
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global sub_80008C0
+// .global CpuSet_ZeroFillHalfword
 // .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 // .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global loc_8000AC8
