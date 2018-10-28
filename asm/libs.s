@@ -21450,11 +21450,18 @@ loc_814DBEA:
 	bl nullsub_1
 	mov r0, #0
 	pop {pc}
-dword_814DBF4: .word 0x4710A200
-	.word 0xE0832190
-	.word 0xE2830000
-	.word 0xE12FFF1E
 .endfunc // sub_814DB34
+
+	thumb_func_start umul3232H32
+umul3232H32:
+	adr r2, __umul3232H32
+	bx r2
+	.arm
+__umul3232H32:
+	umull r2, r3, r0, r1
+	add r0, r3, #0
+	bx lr
+	thumb_func_end umul3232H32
 
 .func
 .thumb_func
@@ -23161,11 +23168,11 @@ loc_814E808:
 	ldr r4, [r1,#4]
 	sub r0, r0, r5
 	add r1, r7, #0
-	bl dword_814DBF4
+	bl umul3232H32
 	add r1, r0, #0
 	add r1, r5, r1
 	add r0, r4, #0
-	bl dword_814DBF4
+	bl umul3232H32
 	pop {r4-r7}
 	pop {r1}
 	bx r1

@@ -13,7 +13,7 @@
 	.align 1, 0
 	.global \name
 	.thumb_func
-	// .type \name, function
+	.type \name, function
 	.endm
 
 	.macro thumb_local_start
