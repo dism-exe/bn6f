@@ -16131,7 +16131,7 @@ sub_802E45E:
 	add r0, #6
 	mov r1, #0x3c 
 	ldr r2, dword_802E48C // =0xffff 
-	bl sub_800096C
+	bl HalfwordFill
 	ldrh r0, [r4]
 	strh r0, [r5]
 	ldrh r0, [r4,#2]
@@ -16494,7 +16494,7 @@ sub_802E6EC:
 	add r0, sp, #0
 	mov r1, #0x3c 
 	ldr r2, dword_802E948 // =0xffff 
-	bl sub_800096C
+	bl HalfwordFill
 	add r6, sp, #0
 	ldr r2, dword_802E948 // =0xffff 
 	mov r3, #0

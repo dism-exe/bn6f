@@ -15143,7 +15143,7 @@ sub_803C168:
 	mov r2, #0xe5
 	lsl r3, r2, #8
 	orr r2, r3
-	bl sub_800096C
+	bl HalfwordFill
 	pop {r0-r2}
 	push {r0-r2}
 	mov r0, #0xe6
@@ -15442,7 +15442,7 @@ sub_803C352:
 	mov r3, #0xe5
 	lsl r3, r3, #8
 	orr r2, r3
-	bl sub_800096C
+	bl HalfwordFill
 	add r0, r5, #0
 	add r0, #8
 	mov r1, #0xe6
@@ -15454,7 +15454,7 @@ sub_803C352:
 	mov r3, #0xe5
 	lsl r3, r3, #8
 	orr r2, r3
-	bl sub_800096C
+	bl HalfwordFill
 	add r0, r5, #0
 	add r0, #0x28 
 	mov r1, #0xe6

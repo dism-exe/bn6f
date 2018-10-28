@@ -380,7 +380,7 @@ sub_80028D4:
 	lsl r2, r2, #0x18
 	mvn r2, r2
 	lsr r2, r2, #0x10
-	bl sub_800096C
+	bl HalfwordFill
 	add r0, r5, #0
 	// mem
 	add r0, #0x1c

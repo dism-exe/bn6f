@@ -434,13 +434,13 @@ loc_80008B8:
 	pop {r0-r2,pc}
 	thumb_func_end ZeroFillByByte
 
-// Fills r0 with zero, using halfwords.
+// Fill r0 with zero, using halfwords.
 // Size is in r1, in bytes.
 // Source, destination, and size must be halfword compatible 
 	thumb_func_start ZeroFillByHalfword
 ZeroFillByHalfword:
 	push {r0-r3,lr}
-	ldr r2, .FillHalfwordCpuSetMask_80008DC // =0x1000000 
+	ldr r2, .HalfwordFillCpuSetMask_80008DC // =0x1000000 
 	lsr r1, r1, #1
 	orr r2, r1
 	add r1, r0, #0
@@ -452,18 +452,18 @@ ZeroFillByHalfword:
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0
-.FillHalfwordCpuSetMask_80008DC: .word 0x1000000
+.HalfwordFillCpuSetMask_80008DC: .word 0x1000000
 	thumb_func_end ZeroFillByHalfword
 
 // (void *memBlock, int size) -> void
 
-// Fills r0 with zero, using words.
+// Fill r0 with zero, using words.
 // Size is in r1, in bytes.
 // Source, destination, and size must be word compatible 
 	thumb_func_start ZeroFillByWord
 ZeroFillByWord:
 	push {r0-r3,lr}
-	ldr r2, .FillWordCpuSetMask_80008FC // =0x5000000 
+	ldr r2, .WordFillCpuSetMask_80008FC // =0x5000000 
 	lsr r1, r1, #2
 	orr r2, r1
 	add r1, r0, #0
@@ -475,12 +475,12 @@ ZeroFillByWord:
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0
-.FillWordCpuSetMask_80008FC: .word 0x5000000
+.WordFillCpuSetMask_80008FC: .word 0x5000000
 	thumb_func_end ZeroFillByWord
 
 // (int a1, int a2) -> void
 	thumb_func_start ZeroFillByEightWords
-// Fills r0 with zero, in blocks of eight words.
+// Fill r0 with zero, in blocks of eight words.
 // Size is in r1, in bytes.
 // CpuFastSet will round up the amount of bytes copied to a multiple of eight words
 // even though the size specified is converted to a word count
@@ -571,7 +571,7 @@ CopyByEightWords:
 
 // (u8 *mem, int byteCount, u8 byte) -> void
 	thumb_func_start ByteFill
-// Fill r0 with r2.
+// Fill r0 with r2, in bytes.
 // Size is in r1, in bytes.
 // Does a backwards fill for speed
 ByteFill:
@@ -582,12 +582,14 @@ ByteFill:
 	mov pc, lr
 	thumb_func_end ByteFill
 
-.func
-.thumb_func
-sub_800096C:
+	thumb_func_start HalfwordFill
+// Fill r0 with r2, in halfwords.
+// Size is in r1, in bytes.
+// Source, destination, and size must be halfword compatible 
+HalfwordFill:
 	push {r0-r3,lr}
 	add r3, r2, #0
-	ldr r2, dword_8000988 // =0x1000000 
+	ldr r2, .HalfwordFillCpuSetMask_8000988 // =0x1000000 
 	lsr r1, r1, #1
 	orr r2, r1
 	add r1, r0, #0
@@ -597,9 +599,9 @@ sub_800096C:
 	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
 	add sp, sp, #4
 	pop {r0-r3,pc}
-	.balign 4, 0x00
-dword_8000988: .word 0x1000000
-.endfunc // sub_800096C
+	.balign 4, 0
+.HalfwordFillCpuSetMask_8000988: .word 0x1000000
+	thumb_func_end HalfwordFill
 
 .func
 .thumb_func

@@ -9133,7 +9133,7 @@ sub_8128260:
 	ldr r2, off_8128278 // =dword_8127978+18 
 	ldrb r2, [r2]
 	lsl r2, r2, #8
-	bl sub_800096C
+	bl HalfwordFill
 	pop {pc}
 	.balign 4, 0x00
 off_8128274: .word unk_2026870
@@ -9952,7 +9952,7 @@ sub_8128AB0:
 	add r7, r0, #0
 	ldr r1, off_8128B28 // =0x170 
 	ldr r2, dword_8128B30 // =0x7200 
-	bl sub_800096C
+	bl HalfwordFill
 	ldrh r0, [r5,#0x1e]
 	tst r0, r0
 	beq loc_8128B1E

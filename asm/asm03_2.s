@@ -6139,7 +6139,7 @@ sub_8049CF8:
 	mov r3, #0xe5
 	lsl r3, r3, #8
 	orr r2, r3
-	bl sub_800096C
+	bl HalfwordFill
 	add r0, r5, #0
 	add r0, #8
 	mov r1, #0xe6
@@ -6151,7 +6151,7 @@ sub_8049CF8:
 	mov r3, #0xe5
 	lsl r3, r3, #8
 	orr r2, r3
-	bl sub_800096C
+	bl HalfwordFill
 	add r0, r5, #0
 	add r0, #0x28 
 	mov r1, #0xe6
@@ -6723,7 +6723,7 @@ sub_804A17A:
 	mov r3, #0xe5
 	lsl r3, r3, #8
 	orr r2, r3
-	bl sub_800096C
+	bl HalfwordFill
 	mov r0, #0
 	add r1, r5, #0
 	add r1, #0
@@ -6739,7 +6739,7 @@ sub_804A17A:
 	mov r3, #0xe5
 	lsl r3, r3, #8
 	orr r2, r3
-	bl sub_800096C
+	bl HalfwordFill
 	mov r0, #1
 	add r1, r5, #0
 	add r1, #0x20 
@@ -6764,7 +6764,7 @@ sub_804A1D0:
 	mov r3, #0xe5
 	lsl r3, r3, #8
 	orr r2, r3
-	bl sub_800096C
+	bl HalfwordFill
 	add r0, r7, #0
 	add r1, r5, #0
 	add r1, #0x40 
