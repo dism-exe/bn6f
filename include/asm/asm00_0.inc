@@ -27,7 +27,7 @@
 .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 .global HalfwordFill
 .global WordFill
-.global CpuFastSet_80009AC
+.global FillByEightWords
 .global sub_8000A3C
 .global objRender_8000A44
 .global loc_8000AC4

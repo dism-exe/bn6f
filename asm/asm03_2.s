@@ -216,7 +216,7 @@ sub_8046154:
 	mul r4, r5
 	ldr r2, [r1,#0x38]
 	add r1, r4, #0
-	bl CpuFastSet_80009AC
+	bl FillByEightWords
 	add r0, r7, #0
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	add r0, r6, #0

@@ -482,7 +482,7 @@ ZeroFillByWord:
 	thumb_func_start ZeroFillByEightWords
 // Fill r0 with zero, in blocks of eight words.
 // Size is in r1, in bytes.
-// CpuFastSet will round up the amount of bytes copied to a multiple of eight words
+// CpuFastSet will round up the amount of bytes filled to a multiple of eight words
 // even though the size specified is converted to a word count
 // Source and destination must be word compatible
 // Size must be a multiple of eight words
@@ -571,7 +571,7 @@ CopyByEightWords:
 
 // (u8 *mem, int byteCount, u8 byte) -> void
 	thumb_func_start ByteFill
-// Fill r0 with r2, in bytes.
+// Fill r0 with r2, where r2 is treated as a byte.
 // Size is in r1, in bytes.
 // Does a backwards fill for speed
 ByteFill:
@@ -583,7 +583,7 @@ ByteFill:
 	thumb_func_end ByteFill
 
 	thumb_func_start HalfwordFill
-// Fill r0 with r2, in halfwords.
+// Fill r0 with r2, where r2 is treated as a halfword.
 // Size is in r1, in bytes.
 // Source, destination, and size must be halfword compatible 
 HalfwordFill:
@@ -604,9 +604,9 @@ HalfwordFill:
 	thumb_func_end HalfwordFill
 
 	thumb_func_start WordFill
-// Fill r0 with r2, in words.
+// Fill r0 with r2, where r2 is treated as a word.
 // Size is in r1, in bytes.
-// Source, destination, and size must be word compatible 
+// Source, destination, and size must be word compatible
 WordFill:
 	push {r0-r3,lr}
 	add r3, r2, #0
@@ -624,12 +624,17 @@ WordFill:
 .WordFillCpuSetMask_80009A8: .word 0x5000000
 	thumb_func_end WordFill
 
-.func
-.thumb_func
-CpuFastSet_80009AC:
+// Fill r0 with r2, where r2 is treated as a word.
+// Size is in r1, in bytes.
+// CpuFastSet will round up the amount of bytes filled to a multiple of eight words
+// even though the size specified is converted to a word count
+// Source and destination must be word compatible
+// Size must be a multiple of eight words
+	thumb_func_start FillByEightWords
+FillByEightWords:
 	push {r0-r3,lr}
 	add r3, r2, #0
-	ldr r2, dword_80009C8 // =0x1000000 
+	ldr r2, .FillCpuFastSetMask_80009C8 // =0x1000000 
 	lsr r1, r1, #2
 	orr r2, r1
 	add r1, r0, #0
@@ -639,9 +644,9 @@ CpuFastSet_80009AC:
 	bl SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
 	add sp, sp, #4
 	pop {r0-r3,pc}
-	.balign 4, 0x00
-dword_80009C8: .word 0x1000000
-.endfunc // CpuFastSet_80009AC
+	.balign 4, 0
+.FillCpuFastSetMask_80009C8: .word 0x1000000
+	thumb_func_end FillByEightWords
 
 .func
 .thumb_func
@@ -2464,7 +2469,7 @@ render_80015D0:
 	ldr r0, [r0,#0x28]
 	ldr r1, dword_80015F4 // =0x800 
 	ldr r2, dword_80015F8 // =0x2ff02ff 
-	bl CpuFastSet_80009AC
+	bl FillByEightWords
 	pop {pc}
 dword_80015EC: .word 0x600E000
 dword_80015F0: .word 0x2000
