@@ -164,7 +164,7 @@ loc_8123344:
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	b loc_812335A
 loc_812334A:
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	b loc_812335A
 loc_8123350:
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
@@ -5480,7 +5480,7 @@ sub_81261FC:
 	ldr r0, off_8126254 // =dword_812489C+180 
 	// halfwordCount
 	mov r2, #0x54 
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	pop {r5,r7}
 	ldr r4, dword_8126258 // =0xa202 
 	mov r6, #0

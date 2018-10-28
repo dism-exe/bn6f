@@ -4468,7 +4468,7 @@ locret_813DA4C:
 	ldr r1, [r3,#0x3c] // (sCamera.unk_8C - 0x20099d0)
 loc_813DA72:
 	mov r2, #0xa
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 locret_813DA78:
 	pop {r4,pc}
 	.balign 4, 0x00

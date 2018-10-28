@@ -15875,7 +15875,7 @@ sub_802E240:
 	ldr r1, off_802E280 // =unk_2008170 
 	// halfwordCount
 	mov r2, #0x3c 
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	pop {pc}
 .endfunc // sub_802E240
 
@@ -16144,7 +16144,7 @@ sub_802E45E:
 	add r1, r5, #6
 	// halfwordCount
 	mov r2, #0x36 
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	pop {r4,r5,pc}
 	.balign 4, 0x00
 dword_802E48C: .word 0xFFFF

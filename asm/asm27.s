@@ -88,7 +88,7 @@ loc_8094752:
 	add r1, r1, r7
 	// halfwordCount
 	mov r2, #0x64 
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	add r4, #1
 	cmp r4, #0x22 
 	blt loc_8094752

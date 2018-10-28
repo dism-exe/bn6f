@@ -487,7 +487,7 @@ ZeroFillByWord:
 // Source and destination must be word compatible
 ZeroFillByEightWords:
 	push {r0-r3,lr}
-	ldr r2, dword_800091C // =0x1000000 
+	ldr r2, .FillCpuFastSetMask_800091C // =0x1000000 
 	lsr r1, r1, #2
 	orr r2, r1
 	add r1, r0, #0
@@ -499,7 +499,7 @@ ZeroFillByEightWords:
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0
-dword_800091C: .word 0x1000000
+.FillCpuFastSetMask_800091C: .word 0x1000000
 	thumb_func_end ZeroFillByEightWords
 
 // (u8 *src, u8 *dest, int byteCount) -> void
@@ -514,18 +514,20 @@ CopyBytes:
 	mov pc, lr
 	thumb_func_end CopyBytes
 
-.func
-.thumb_func
 // (u16 *src, u16 *dest, int halfwordCount) -> void
-CpuSet_copyHalfwords:
+
+// Copy r2 bytes from r0 to r1, in units of halfwords.
+// Source, destination, and size must be halfword compatible.
+	thumb_func_start CopyHalfwords
+CopyHalfwords:
 	push {r0-r3,lr}
-	ldr r3, dword_8000938 // =0x0 
+	ldr r3, .HalfwordCopyCpuSetMask_8000938 // =0x0 
 	lsr r2, r2, #1
 	orr r2, r3
 	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
 	pop {r0-r3,pc}
-dword_8000938: .word 0x0
-.endfunc // CpuSet_copyHalfwords
+.HalfwordCopyCpuSetMask_8000938: .word 0x0
+	thumb_func_end CopyHalfwords
 
 .func
 .thumb_func
@@ -752,7 +754,7 @@ loc_8000A96:
 	.balign 4, 0x00
 off_8000AA4: .word off_8000AA8
 off_8000AA8: .word CopyBytes+1
-	.word CpuSet_copyHalfwords+1
+	.word CopyHalfwords+1
 	.word CpuSet_copyWords+1
 	.word CpuFastSet_byteCount+1
 .endfunc // objRender_8000A44
@@ -883,7 +885,7 @@ bit0_set_8000B72:
 bit1_set_8000B78:
 	// if bit 0 or bit 1 are set. Since bit 0 was checked already, 
 	// this is for bit 1
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	b continue_advance3Elements_8000B88
 bits5to0_set_8000B7E:
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
@@ -2530,7 +2532,7 @@ render_800172C:
 	ldr r1, off_8001770 // =Window0HorizontalDimensions 
 	// halfwordCount
 	mov r2, #0xc
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	ldr r5, [r7,#0x20]
 	ldr r1, off_8001774 // =ColorSpecialEffectsSelection 
 	ldr r2, [r5]

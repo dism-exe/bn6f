@@ -14851,7 +14851,7 @@ loc_800A35C:
 	push {r0}
 	ldr r1, off_800A3E0 // =byte_203CDB0 
 	mov r2, #0x3c 
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	pop {r0}
 	tst r7, r7
 	bne loc_800A370
@@ -15260,7 +15260,7 @@ loc_800A664:
 	ldr r1, [sp]
 	// halfwordCount
 	mov r2, #0x3c 
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	add sp, sp, #0xc
 	pop {r4-r7,pc}
 .endfunc // sub_800A570

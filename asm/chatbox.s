@@ -80,7 +80,7 @@ chatbox_803FD78:
 	add r1, #0x68 // ChatBoxPropreties.unk_68
 	// halfwordCount
 	mov r2, #8
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	pop {r4,r5,pc}
 	.byte 0, 0
 off_803FD90: .word dword_803FD94
@@ -126,7 +126,7 @@ loc_803FDD0:
 	add r1, #0x68 
 	// halfwordCount
 	mov r2, #8
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	pop {r4,r5,pc}
 off_803FDE0: .word dword_803FDE4
 dword_803FDE4: .word 0x83007E, 0x81007F
@@ -181,7 +181,7 @@ loc_803FE3C:
 	add r1, #0x68 
 	// halfwordCount
 	mov r2, #8
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	pop {r4,r5,pc}
 off_803FE4C: .word dword_803FE50
 dword_803FE50: .word 0x83007E, 0x81007F
@@ -867,7 +867,7 @@ chatbox_runScript:
 	add r1, #0x68 
 	// halfwordCount
 	mov r2, #8
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	mov r1, #0xc
 	strb r1, [r5,#0x1d] // ChatBoxPropreties.unk_1D
 	mov r2, #0x1e
@@ -1008,7 +1008,7 @@ chatbox_reqBBS_80404C0:
 	add r1, #0x68 
 	// halfwordCount
 	mov r2, #8
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	mov r1, #0xc
 	strb r1, [r5,#0x1d] // ChatBoxPropreties.unk_1D
 	mov r2, #0x1e
@@ -1147,7 +1147,7 @@ dead_80405F8:
 	add r1, #0x68 
 	// halfwordCount
 	mov r2, #8
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	mov r1, #0xc
 	strb r1, [r5,#0x1d]
 	mov r2, #0x1e
