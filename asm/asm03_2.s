@@ -4078,7 +4078,7 @@ loc_8048C7C:
 	beq loc_8048C90
 	push {r0-r3}
 	mov r2, #8
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0-r3}
 loc_8048C90:
 	add r0, #8
@@ -4185,7 +4185,7 @@ loc_8048D30:
 	add r0, r6, #0
 	add r1, r7, #0
 	mov r2, #8
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0,r1,r6,r7}
 	b loc_8048D4E
 loc_8048D46:
@@ -6102,13 +6102,13 @@ sub_8049CBC:
 	add r1, r5, #0
 	add r1, #0x30 
 	mov r2, #0x20 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	mov r0, #0x28 
 	add r0, r0, r7
 	add r1, r5, #0
 	add r1, #0x90
 	mov r2, #0x20 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	mov r0, #0x10
 	mov r1, #0x30 
 	bl sub_803C132
@@ -6186,13 +6186,13 @@ sub_8049D4A:
 	ldr r1, off_8049D94 // =word_2001800 
 	add r1, #8
 	mov r2, #0x20 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	ldr r0, off_8049D6C // =byte_200A290 
 	add r0, #0xd0
 	ldr r1, off_8049D94 // =word_2001800 
 	add r1, #0x28 
 	mov r2, #0x20 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8049D6C: .word byte_200A290
@@ -6694,7 +6694,7 @@ sub_804A14C:
 	add r1, r5, #0
 	add r1, #0x30 
 	mov r2, #0x20 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	mov r0, #0x10
 	mov r1, #0x30 
 	bl sub_803C132
@@ -6822,7 +6822,7 @@ sub_804A230:
 	ldr r2, off_804A260 // =unk_2001850 
 	add r1, r1, r2
 	mov r2, #0x20 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_804A248: .word byte_200A290

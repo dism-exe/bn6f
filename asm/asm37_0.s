@@ -77,7 +77,7 @@ sub_813B7EC:
 	add r0, r7, #0
 	add r1, r4, #0
 	mov r2, #0x31 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {pc}
 	.balign 4, 0x00
 .endfunc // sub_813B7EC

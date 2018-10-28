@@ -502,16 +502,17 @@ ZeroFillByEightWords:
 dword_800091C: .word 0x1000000
 	thumb_func_end ZeroFillByEightWords
 
-.func
-.thumb_func
 // (u8 *src, u8 *dest, int byteCount) -> void
-copyBytes:
+
+// Copy r2 bytes from r0 to r1, in units of bytes.
+	thumb_func_start CopyBytes
+CopyBytes:
 	sub r2, #1
 	ldrb r3, [r0,r2]
 	strb r3, [r1,r2]
-	bne copyBytes
+	bne CopyBytes
 	mov pc, lr
-.endfunc // copyBytes
+	thumb_func_end CopyBytes
 
 .func
 .thumb_func
@@ -750,7 +751,7 @@ loc_8000A96:
 	pop {pc}
 	.balign 4, 0x00
 off_8000AA4: .word off_8000AA8
-off_8000AA8: .word copyBytes+1
+off_8000AA8: .word CopyBytes+1
 	.word CpuSet_copyHalfwords+1
 	.word CpuSet_copyWords+1
 	.word CpuFastSet_byteCount+1
@@ -877,7 +878,7 @@ switch_8000B5E:
 	bne bits5to0_set_8000B7E
 	b default_8000B84
 bit0_set_8000B72:
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	b continue_advance3Elements_8000B88
 bit1_set_8000B78:
 	// if bit 0 or bit 1 are set. Since bit 0 was checked already, 

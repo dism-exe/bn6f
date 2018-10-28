@@ -9090,7 +9090,7 @@ sub_80AA004:
 	add r0, r0, r1
 	ldr r1, off_80AA054 // =unk_2001130 
 	mov r2, #0x10
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 off_80AA018: .word dword_80AA01C
@@ -9210,7 +9210,7 @@ sub_80AA104:
 	add r0, r0, r1
 	ldr r1, off_80AA13C // =unk_20018B0 
 	mov r2, #8
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 off_80AA118: .word dword_80AA11C

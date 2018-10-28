@@ -161,7 +161,7 @@ loc_812331A:
 	bne loc_8123350
 	b loc_8123356
 loc_8123344:
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	b loc_812335A
 loc_812334A:
 	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void

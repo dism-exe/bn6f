@@ -14319,13 +14319,13 @@ sub_803BA28:
 	add r1, r5, #0
 	add r1, #0x30 
 	mov r2, #0x20 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	mov r0, #0x28 
 	add r0, r0, r7
 	add r1, r5, #0
 	add r1, #0x90
 	mov r2, #0x20 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	mov r0, #0x10
 	mov r1, #0x30 
 	bl sub_803C132
@@ -14372,7 +14372,7 @@ sub_803BA84:
 	str r3, [sp,#4]
 	add r0, r0, r5
 	add r1, r1, r5
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	ldr r7, [sp]
 	add r7, r7, r5
 	mov r4, #0
@@ -15064,7 +15064,7 @@ sub_803C0F6:
 	add r4, r1, #0
 	add r0, r0, r5
 	add r1, r1, r5
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	add r3, r5, r4
 	mov r4, #0
 loc_803C106:
@@ -15314,19 +15314,19 @@ sub_803C2AA:
 	add r7, r3, #0
 	ldr r1, off_803C2DC // =unk_200A400 
 	mov r2, #0x20 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	add r0, r4, #0
 	ldr r1, off_803C2E0 // =unk_200A420 
 	mov r2, #0x20 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	add r0, r6, #0
 	ldr r1, off_803C2E4 // =unk_200A3A0 
 	mov r2, #0x10
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	add r0, r7, #0
 	ldr r1, off_803C2E8 // =unk_200A3B0 
 	mov r2, #0x10
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_803C2DC: .word unk_200A400
@@ -15535,13 +15535,13 @@ sub_803C3E8:
 	ldr r1, off_803C430 // =word_2006770 
 	add r1, #8
 	mov r2, #0x20 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	ldr r0, off_803C408 // =byte_200A290 
 	add r0, #0xd0
 	ldr r1, off_803C430 // =word_2006770 
 	add r1, #0x28 
 	mov r2, #0x20 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r4-r7,pc}
 off_803C408: .word byte_200A290
 .endfunc // sub_803C3E8
@@ -21815,7 +21815,7 @@ sub_803F8B2:
 	ldr r1, [r1,#0x40]
 	add r1, #0x6c 
 	mov r2, #0x14
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {pc}
 .endfunc // sub_803F8B2
 
@@ -21876,7 +21876,7 @@ off_803F914: .word exe6_timestamp
 	ldr r0, off_803F9E0 // =exe6_timestamp 
 	ldr r1, off_803F9CC // =byte_2006720 
 	mov r2, #0x14
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	ldr r0, off_803F9D4 // =byte_2006710 
 	ldr r1, off_803F9DC // =0x28 
 	mov r2, #0
@@ -21975,7 +21975,7 @@ sub_803F9E4:
 	ldr r0, off_803FAB0 // =exe6_timestamp 
 	ldr r1, off_803FA9C // =unk_2006750 
 	mov r2, #0x14
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	ldr r0, off_803FAA4 // =dword_2006740 
 	ldr r1, off_803FAAC // =0x78 
 	mov r2, #0

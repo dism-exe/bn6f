@@ -17069,7 +17069,7 @@ loc_800B25A:
 	mov r1, #0xcc
 	add r1, r1, r4
 	mov r2, #0x28 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	bl sub_8010D20
 	mov r1, #0xf4 // (byte_203CCD4 - 0x203cbe0)
 	str r0, [r4,r1]

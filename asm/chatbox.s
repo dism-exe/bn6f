@@ -4728,7 +4728,7 @@ loc_8042014:
 	add r1, r1, r2
 	push {r1}
 	mov r2, #0x40 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
 	add r7, r5, #0
 	add r7, #0x64 
@@ -4792,7 +4792,7 @@ chatbox_80420BC:
 	add r1, r1, r2
 	push {r1}
 	mov r2, #0x40 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
 	add r7, r5, #0
 	add r7, #0x64 
@@ -4937,7 +4937,7 @@ chatbox_80421D8:
 	add r1, r1, r2
 	push {r1}
 	mov r2, #3
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
 	mov r2, #0xe5
 	strb r2, [r0,#3]
@@ -6781,7 +6781,7 @@ loc_8043050:
 	add r1, r1, r2
 	push {r1}
 	mov r2, #0x40 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
 	add r7, r5, #0
 	add r7, #0x64 
@@ -6829,7 +6829,7 @@ loc_80430B4:
 	add r1, r1, r2
 	push {r1}
 	mov r2, #0x40 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
 	add r7, r5, #0
 	add r7, #0x64 
