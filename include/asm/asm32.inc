@@ -234,7 +234,7 @@
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
-// .global sub_800098C
+// .global WordFill
 // .global loc_8000AC4
 // .global loc_8000AC8
 // .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void

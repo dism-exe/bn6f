@@ -339,7 +339,7 @@ sprite_handleObjSprites_800289C:
 	ldr r1, off_80028BC // =0x388 
 	mov r2, #0
 	mvn r2, r2
-	bl sub_800098C
+	bl WordFill
 	pop {pc}
 	.balign 4, 0x00
 off_80028B4: .word dword_20093A8

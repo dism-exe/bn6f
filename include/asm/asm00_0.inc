@@ -26,7 +26,7 @@
 .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 .global HalfwordFill
-.global sub_800098C
+.global WordFill
 .global CpuFastSet_80009AC
 .global sub_8000A3C
 .global objRender_8000A44

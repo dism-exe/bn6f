@@ -4536,7 +4536,7 @@ sub_800531C:
 	ldr r1, off_800535C // =0x2180 
 	mov r2, #0
 	mvn r2, r2
-	bl sub_800098C
+	bl WordFill
 	pop {pc}
 off_8005358: .word byte_2011800
 off_800535C: .word 0x2180
@@ -16042,14 +16042,14 @@ sub_800AAFC:
 	add r0, r0, r2
 	mov r2, #0
 	mvn r2, r2
-	bl sub_800098C
+	bl WordFill
 	mov r1, #0x28 
 	mul r4, r1
 	ldr r0, off_800ABFC // =unk_2000260 
 	add r0, r0, r4
 	mov r2, #0
 	mvn r2, r2
-	bl sub_800098C
+	bl WordFill
 	pop {r4,pc}
 .endfunc // sub_800AAFC
 

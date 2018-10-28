@@ -1774,7 +1774,7 @@ loc_81D6D7A:
 	mvn r2, r2
 	ldr r5, off_81D6DDC // =off_802FD70 
 	mov r4, #4
-	ldr r7, off_81D6DE0 // =sub_800098C+1 
+	ldr r7, off_81D6DE0 // =WordFill+1 
 	mov r12, r7
 loc_81D6DA0:
 	ldr r0, [r5]
@@ -1801,7 +1801,7 @@ off_81D6DD0: .word byte_3001150
 off_81D6DD4: .word dword_200B1A8
 off_81D6DD8: .word word_200A6F0
 off_81D6DDC: .word off_802FD70
-off_81D6DE0: .word sub_800098C+1
+off_81D6DE0: .word WordFill+1
 off_81D6DE4: .word byte_3001950
 	push {r4-r7,lr}
 	ldr r5, off_81D6E94 // =byte_3001950 

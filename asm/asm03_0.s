@@ -19171,7 +19171,7 @@ loc_802FDB6:
 loc_802FDCE:
 	ldr r0, [r3]
 	ldr r1, [r3,#4]
-	bl sub_800098C
+	bl WordFill
 	add r3, #8
 	sub r4, #1
 	cmp r4, #0

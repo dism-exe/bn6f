@@ -225,7 +225,7 @@
 // .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
-// .global sub_800098C
+// .global WordFill
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000D12
 // .global sub_8000D84

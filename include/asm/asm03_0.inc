@@ -180,7 +180,7 @@
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global HalfwordFill
-// .global sub_800098C
+// .global WordFill
 // .global loc_8000AC4
 // .global loc_8000AC8
 // .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void

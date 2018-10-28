@@ -603,12 +603,14 @@ HalfwordFill:
 .HalfwordFillCpuSetMask_8000988: .word 0x1000000
 	thumb_func_end HalfwordFill
 
-.func
-.thumb_func
-sub_800098C:
+	thumb_func_start WordFill
+// Fill r0 with r2, in words.
+// Size is in r1, in bytes.
+// Source, destination, and size must be word compatible 
+WordFill:
 	push {r0-r3,lr}
 	add r3, r2, #0
-	ldr r2, dword_80009A8 // =0x5000000 
+	ldr r2, .WordFillCpuSetMask_80009A8 // =0x5000000 
 	lsr r1, r1, #2
 	orr r2, r1
 	add r1, r0, #0
@@ -618,9 +620,9 @@ sub_800098C:
 	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
 	add sp, sp, #4
 	pop {r0-r3,pc}
-	.balign 4, 0x00
-dword_80009A8: .word 0x5000000
-.endfunc // sub_800098C
+	.balign 4, 0
+.WordFillCpuSetMask_80009A8: .word 0x5000000
+	thumb_func_end WordFill
 
 .func
 .thumb_func

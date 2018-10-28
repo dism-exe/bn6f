@@ -27870,7 +27870,7 @@ loc_812014E:
 	add r0, r2, #0
 	mov r1, #0x20 
 	mov r2, #0
-	bl sub_800098C
+	bl WordFill
 	pop {r2,r3}
 	add r2, #0x10
 	add r3, #0x10
@@ -27926,7 +27926,7 @@ loc_81201B6:
 	add r0, r2, #0
 	mov r1, #0x20 
 	mov r2, #0
-	bl sub_800098C
+	bl WordFill
 	pop {r2,r3}
 	add r2, #0x10
 	add r3, #0x10

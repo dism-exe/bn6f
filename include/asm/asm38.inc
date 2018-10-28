@@ -11,7 +11,7 @@
 // .global sub_80005C4
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global sub_800098C
+// .global WordFill
 // .global loc_8000AC8
 // .global sub_8000C00
 // .global sub_8000C5C
