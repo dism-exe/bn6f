@@ -11418,7 +11418,7 @@ loc_8014216:
 	bl sub_8010018
 	add r0, #0x26 
 	mov r1, #0xc
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	bl get_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
@@ -11816,7 +11816,7 @@ loc_80144CE:
 	bl sub_8010018
 	add r0, #0x26 
 	mov r1, #0xc
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	mov r0, #0x20 
 	bl sub_801031C
 	bl get_802D246 // () -> int
@@ -21951,7 +21951,7 @@ loc_801A034:
 	mov r0, #0x68 
 	add r0, r0, r4
 	mov r1, #0x40 
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	ldr r0, [r5,#0x54]
 	ldr r3, off_801A0CC // =sub_300777C+1 
 	mov lr, pc
@@ -22935,7 +22935,7 @@ sub_801A67E:
 	mov r0, #0x80
 	add r0, r0, r4
 	mov r1, #0x14
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	ldr r0, dword_801A7C0 // =0x106 
 	bl sub_801A176
 	pop {r4,pc}
@@ -22946,7 +22946,7 @@ sub_801A6A6:
 	ldr r0, [r5,#0x54]
 	add r0, #0x80
 	mov r1, #0x14
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	pop {r4,pc}
 .endfunc // sub_801A6A6
 

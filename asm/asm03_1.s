@@ -18009,13 +18009,13 @@ sub_803DE88:
 	ldr r0, off_803DF9C // =sCamera+80 
 	add r6, r0, #0
 	mov r1, #0x58 
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	ldr r0, off_803DFA0 // =byte_200DD10 
 	mov r1, #0x10
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	ldr r0, off_803DFA4 // =unk_2009480 
 	mov r1, #0x40 
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	str r4, [r6,#0x58] // (dword_2009A28 - 0x20099d0)
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -19758,7 +19758,7 @@ sub_803EA98:
 	bl sub_803EFCC
 	ldr r0, off_803EAB8 // =byte_200F360 
 	mov r1, #0x20 
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	ldr r0, off_803EAB0 // =dword_200F444 
 	ldr r1, dword_803EAB4 // =0xa6c0 
 	str r1, [r0]
@@ -21559,7 +21559,7 @@ sub_803F6B0:
 	add r4, r0, #0
 	ldr r0, off_803F73C // =byte_200F360 
 	mov r1, #0x20 
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	bl start_8000288
 	mov r0, #0
 	bl sub_803DE88
@@ -21593,7 +21593,7 @@ sub_803F6F4:
 	add r4, r0, #0
 	ldr r0, off_803F73C // =byte_200F360 
 	mov r1, #0x20 
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	mov r0, #0
 	bl sub_803DE88
 	mov r0, #0x10

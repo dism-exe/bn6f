@@ -4847,7 +4847,7 @@ sub_800E9FA:
 	ldr r0, [r5,#0x54]
 	add r0, #0x80
 	mov r1, #0xe
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	pop {pc}
 .endfunc // sub_800E9FA
 
@@ -4860,7 +4860,7 @@ sub_800EA0E:
 	ldr r0, [r5,#0x54]
 	add r0, #0x80
 	mov r1, #0xe
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	pop {pc}
 .endfunc // sub_800EA0E
 
@@ -4993,7 +4993,7 @@ sub_800EADA:
 	ldr r0, [r5,#0x54]
 	add r0, #0x80
 	mov r1, #0xe
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	ldr r0, [r5,#0x54]
 	mov r1, #0
 	strh r1, [r0,#0x2c]

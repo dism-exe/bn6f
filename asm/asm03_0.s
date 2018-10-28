@@ -17643,7 +17643,7 @@ sub_802F0C4:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_EventFlagsPtr]
 	ldr r1, off_802F0D4 // =0x4ec 
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	pop {pc}
 	.balign 4, 0x00
 off_802F0D4: .word 630 * 2
@@ -17658,7 +17658,7 @@ sub_802F0D8:
 	ldr r1, [r1,#oToolkit_EventFlagsPtr]
 	add r0, r0, r1
 	ldr r1, dword_802F0F0 // =0x2 
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	pop {pc}
 	.balign 4, 0x00
 dword_802F0EC: .word 0x2DE
@@ -17674,7 +17674,7 @@ sub_802F0F4:
 	ldr r1, [r1,#oToolkit_EventFlagsPtr]
 	add r0, r0, r1
 	ldr r1, dword_802F10C // =0x16 
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	pop {pc}
 	.balign 4, 0x00
 off_802F108: .word 0x2C8

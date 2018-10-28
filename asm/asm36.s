@@ -963,7 +963,7 @@ sub_813068C:
 	bne loc_81306AC
 	add r0, r7, #0
 	mov r1, #0x60 
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	b loc_81306E4
 loc_81306AC:
 	sub r0, #1
@@ -15153,7 +15153,7 @@ sub_8137D20:
 	add r7, r5, #0
 	ldr r0, off_8137D48 // =byte_2017A00 
 	mov r1, #0xe0
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	ldrh r0, [r7,#0x24]
 	ldr r1, off_8137D4C // =unk_201CF00 
 	ldr r2, off_8137D48 // =byte_2017A00 
@@ -15235,7 +15235,7 @@ sub_8137DB4:
 	add r7, r5, #0
 	ldr r0, off_8137DDC // =unk_2017AE0 
 	mov r1, #0xe0
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	ldrh r0, [r7,#0x24]
 	ldr r1, off_8137DE0 // =unk_201CF00 
 	ldr r2, off_8137DDC // =unk_2017AE0 
@@ -15320,7 +15320,7 @@ sub_8137E4C:
 	add r7, r5, #0
 	ldr r0, off_8137E74 // =unk_2017BA4 
 	mov r1, #0xe0
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	ldrh r0, [r7,#0x24]
 	ldr r1, off_8137E78 // =unk_201CF00 
 	ldr r2, off_8137E74 // =unk_2017BA4 
@@ -15476,7 +15476,7 @@ sub_8137F5C:
 	add r7, r5, #0
 	ldr r0, off_8137F84 // =unk_2017C68 
 	mov r1, #0x54 
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	ldrh r0, [r7,#0x24]
 	ldr r1, off_8137F88 // =unk_201CF00 
 	ldr r2, off_8137F84 // =unk_2017C68 

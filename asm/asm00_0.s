@@ -433,13 +433,12 @@ loc_80008B8:
 	pop {r0-r2,pc}
 	thumb_func_end ZeroFillByte
 
-.func
-.thumb_func
 // r0 = destination
 // r1 = length in bytes (converted to halfword length in function)
-CpuSet_ZeroFillHalfword:
+	thumb_func_start ZeroFillHalfword
+ZeroFillHalfword:
 	push {r0-r3,lr}
-	ldr r2, dword_80008DC // =0x1000000 
+	ldr r2, .CpuSetFillMask_80008DC // =0x1000000 
 	lsr r1, r1, #1
 	orr r2, r1
 	add r1, r0, #0
@@ -450,9 +449,9 @@ CpuSet_ZeroFillHalfword:
 	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
 	add sp, sp, #4
 	pop {r0-r3,pc}
-	.balign 4, 0x00
-dword_80008DC: .word 0x1000000 // CpuSet FILL
-.endfunc // CpuSet_ZeroFillHalfword
+	.balign 4, 0
+.CpuSetFillMask_80008DC: .word 0x1000000
+	thumb_func_end ZeroFillHalfword
 
 .func
 .thumb_func
@@ -2615,7 +2614,7 @@ sub_80017E0:
 	push {lr}
 	ldr r0, off_8001800 // =byte_3001960 
 	mov r1, #2
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	pop {pc}
 .endfunc // sub_80017E0
 
@@ -2625,10 +2624,10 @@ main_static_80017EC:
 	push {lr}
 	ldr r0, off_8001800 // =byte_3001960 
 	mov r1, #2
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	ldr r0, dword_8001804 // =0x5000000 
 	mov r1, #2
-	bl CpuSet_ZeroFillHalfword
+	bl ZeroFillHalfword
 	pop {pc}
 off_8001800: .word byte_3001960
 dword_8001804: .word 0x5000000
