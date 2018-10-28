@@ -4561,7 +4561,7 @@ loc_813268A:
 	mov r0, #1
 	// byteFlagIdx
 	mov r1, #0x63 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_81326A0
 	mov r6, #0
 loc_81326A0:
@@ -12154,7 +12154,7 @@ sub_81364E8:
 	ldr r1, dword_8136528 // =0x2660 
 	add r1, r1, r0
 	add r0, r1, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_81364FC
 	mov r4, #1
 loc_81364FC:
@@ -13235,10 +13235,10 @@ sub_8136C24:
 	push {r4-r7,lr}
 	mov r0, #0
 	mov r1, #0xf4
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	mov r1, #0xf2
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_8136EC0 // =byte_2009390 
 	mov r1, #0x10
 	bl clearBackwards_80008B4 // (void *mem, int size) -> void
@@ -13382,7 +13382,7 @@ sub_8136F0C:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0xee
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_8136F3C
 	mov r0, #0x48 
 	mov r1, #0x40 
@@ -13410,7 +13410,7 @@ sub_8136F40:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0xee
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_8136F70
 	mov r0, #0x7a 
 	mov r1, #0x30 
@@ -13438,7 +13438,7 @@ sub_8136F74:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0xee
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_8136FA2
 	mov r0, #0x48 
 	mov r1, #0x61 
@@ -13717,7 +13717,7 @@ sub_8137170:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0xee
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_813719E
 	mov r0, #0x40 
 	mov r1, #0x40 
@@ -13931,7 +13931,7 @@ sub_81372F4:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0xee
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_8137332
 	ldrb r0, [r5,#5]
 	mov r1, #0x14
@@ -13965,7 +13965,7 @@ sub_8137334:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0xee
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_8137366
 	mov r0, #0x48 
 	mov r1, #0x52 
@@ -14276,7 +14276,7 @@ sub_813756C:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0xee
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_813759A
 	mov r0, #0x3c 
 	mov r1, #0x20 
@@ -14349,10 +14349,10 @@ sub_81375D8:
 	strb r0, [r5,#3]
 	mov r0, #0
 	mov r1, #0xee
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	mov r1, #0xef
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {pc}
 .endfunc // sub_81375D8
 
@@ -14396,7 +14396,7 @@ loc_8137632:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0xef
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 loc_813763E:
 	strb r4, [r5,#3]
 	add r0, r7, #0
@@ -14588,7 +14588,7 @@ loc_8137774:
 	mov r0, #1
 	// byteFlagIdx
 	mov r1, #0x63 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8137786
 	bl getPETNaviSelect // () -> u8
 	cmp r0, #0
@@ -14791,7 +14791,7 @@ sub_81378D4:
 	mov r0, #0
 	mov r1, #0xbf
 	mov r2, #0x12
-	bl clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 loc_8137906:
 	bl sub_8137BF0
 	strh r0, [r5,#0x1e]
@@ -14871,7 +14871,7 @@ sub_81379A0:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x10
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_81379D0
 	mov r0, #1
 	bl sub_811F7EC
@@ -14982,16 +14982,16 @@ sub_8137A7C:
 	mov r0, #0
 	mov r1, #0xbf
 	mov r2, #0x13
-	bl clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x10
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8137ABA
 	mov r0, #0x17
 	mov r1, #0x10
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #1
 	b locret_8137ACA
 loc_8137ABA:
@@ -15099,13 +15099,13 @@ loc_8137C00:
 	ldr r0, [r1,r6]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8137C18
 	ldr r1, off_8137C98 // =dword_8137C9C 
 	ldr r0, [r1,r6]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8137C38
 loc_8137C18:
 	add r2, r7, #0
@@ -15831,7 +15831,7 @@ sub_8138210:
 	beq loc_8138232
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8138232
 	ldr r7, [sp]
 loc_8138232:

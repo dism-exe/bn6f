@@ -153,7 +153,7 @@ loc_8086FF4:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf1
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8087004
 	mov r0, #1
 	strb r0, [r5,#9]
@@ -163,7 +163,7 @@ loc_8087004:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf3
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_808702C
 	mov r0, #1
 	strb r0, [r5,#5]
@@ -172,12 +172,12 @@ loc_8087004:
 	strb r0, [r5,#1]
 	mov r0, #5
 	mov r1, #0xf3
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf2
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_80870F8 // =dword_8086A54+716 
 	b loc_80870F2
 loc_808702C:
@@ -185,14 +185,14 @@ loc_808702C:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf4
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_80870F6
 	mov r0, #2
 	strb r0, [r5,#5]
 	strb r0, [r5,#7]
 	mov r0, #5
 	mov r1, #0xf4
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_80870F8 // =dword_8086A54+716 
 	b loc_80870F2
 loc_8087048:
@@ -205,7 +205,7 @@ loc_808704C:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf2
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8087062
 loc_808705C:
 	add r1, r4, #0
@@ -230,13 +230,13 @@ loc_8087068:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xe1
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80870D8
 	// entryIdx
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xe1
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_8087108 // =dword_8086260+244 
 	b loc_80870F2
 loc_8087092:
@@ -246,13 +246,13 @@ loc_8087092:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xe2
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80870D8
 	// entryIdx
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xe2
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_808710C // =dword_8086260+328 
 	b loc_80870F2
 loc_80870AC:
@@ -260,13 +260,13 @@ loc_80870AC:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xe3
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80870D8
 	// entryIdx
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xe3
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_8087110 // =dword_8086260+412 
 	b loc_80870F2
 loc_80870C2:
@@ -274,13 +274,13 @@ loc_80870C2:
 	mov r0, #0xf
 	// byteFlagIdx
 	mov r1, #0xc0
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80870D8
 	// entryIdx
 	mov r0, #0xf
 	// byteFlagIdx
 	mov r1, #0xc0
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_8087114 // =dword_8086260+520 
 	b loc_80870F2
 loc_80870D8:
@@ -486,7 +486,7 @@ sub_80871C0:
 	ldr r1, off_80871D4 // =byte_80871D8 
 	ldrh r1, [r1,r0]
 	add r0, r1, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {pc}
 	.hword 0x0
 off_80871D4:

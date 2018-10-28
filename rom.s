@@ -6,6 +6,8 @@ to make the ROM. This file is compiled to define the whole ROM region.
 	.include "constants/constants.inc"
 
     .text
+	
+	.syntax divided
 
 start:
 .include "asm/start.s"

@@ -553,7 +553,7 @@
 // .global sub_802E830
 // .global sub_802EF5C
 // .global dword_802F0A8
-// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_802FE48
 // .global sub_802FE6A

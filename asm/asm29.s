@@ -75,20 +75,20 @@ sub_80A4A08:
 	beq loc_80A4A1E
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 loc_80A4A1E:
 	ldrh r0, [r7,#0xe]
 	tst r0, r0
 	beq loc_80A4A2A
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 loc_80A4A2A:
 	ldrh r3, [r7,#0xa]
 	tst r3, r3
 	beq loc_80A4A38
 	add r0, r3, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80A4A74
 loc_80A4A38:
 	mov r0, #1
@@ -100,21 +100,21 @@ loc_80A4A38:
 	beq loc_80A4A4C
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 loc_80A4A4C:
 	ldrh r0, [r7,#0xe]
 	tst r0, r0
 	beq loc_80A4A58
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 loc_80A4A58:
 	ldrb r4, [r7,#9]
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x1c
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80A4A66
 	ldrb r4, [r7,#8]
 loc_80A4A66:
@@ -455,7 +455,7 @@ sub_80A51F8:
 	ldrh r0, [r7]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80A524E
 	mov r0, #3
 	strb r0, [r5]
@@ -477,11 +477,11 @@ sub_80A51F8:
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	ldrh r0, [r7,#4]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_80A5268
@@ -490,11 +490,11 @@ loc_80A524E:
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	ldrh r0, [r7,#4]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #0x10
 	strb r0, [r5,#8]
 	bl sub_80A5350
@@ -508,7 +508,7 @@ sub_80A5268:
 	ldrh r0, [r7]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_80A52DA
 	bl sub_80062C8
 	lsr r0, r0, #2
@@ -525,7 +525,7 @@ sub_80A5268:
 	ldrh r0, [r7,#4]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #0
 	str r0, [r5,#0x24]
 	mov r0, #0xc
@@ -541,7 +541,7 @@ loc_80A52B0:
 	ldrh r0, [r7,#4]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	ldrb r1, [r7,#8]
 	ldrb r0, [r7,#9]
 	cmp r0, r1
@@ -549,7 +549,7 @@ loc_80A52B0:
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #0x10
 	strb r0, [r5,#8]
 	b loc_80A52DA
@@ -575,7 +575,7 @@ sub_80A52E4:
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #0x10
 	strb r0, [r5,#8]
 loc_80A52FC:
@@ -595,7 +595,7 @@ sub_80A5304:
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #0x10
 	strb r0, [r5,#8]
 	b loc_80A5346
@@ -832,13 +832,13 @@ sub_80A5588:
 	mov r0, #4
 	// byteFlagIdx
 	mov r1, #0xea
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80A55C6
 	// entryIdx
 	mov r0, #4
 	// byteFlagIdx
 	mov r1, #0xeb
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80A55C6
 	ldrb r0, [r6,#8]
 	cmp r0, #2
@@ -915,7 +915,7 @@ loc_80A5632:
 	mov r0, #4
 	// byteFlagIdx
 	mov r1, #0xeb
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80A5642
 	ldrb r0, [r6,#8]
 	cmp r0, #2
@@ -1069,7 +1069,7 @@ sub_80A5744:
 	mov r0, #4
 	// byteFlagIdx
 	mov r1, #0xea
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 locret_80A5760:
 	pop {r4,pc}
 	.balign 4, 0x00
@@ -1146,7 +1146,7 @@ sub_80A57D0:
 	ldrb r0, [r5,#7]
 	mov r0, #5
 	mov r1, #0xf2
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80A581E
 	bl sub_80A5A1C
 loc_80A581E:
@@ -1425,7 +1425,7 @@ loc_80A59D6:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x16
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80A59FA
 	add r1, r4, #0
 	ldr r0, off_80A5A04 // =dword_80A5A0C 
@@ -1556,7 +1556,7 @@ sub_80A5AF8:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf2
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80A5B64
 	bl sub_80A5FD0
 loc_80A5B64:
@@ -1597,12 +1597,12 @@ loc_80A5B82:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #7
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x28 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	add r7, #1
 	strb r7, [r5,#9]
 loc_80A5BB0:
@@ -1618,10 +1618,10 @@ loc_80A5BB0:
 	strb r7, [r5,#9]
 	mov r0, #0x17
 	mov r1, #7
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0x17
 	mov r1, #0x28 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	b loc_80A5C62
 loc_80A5BDA:
 	mov r7, #0
@@ -1645,13 +1645,13 @@ loc_80A5BDA:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf2
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80A5C18
 	// entryIdx
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf3
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_80A5E8C
 	bl reqBBS_setFlag_e17b0f7_8140A00
 	b loc_80A5C62
@@ -1660,15 +1660,15 @@ loc_80A5C18:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf4
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	b loc_80A5C62
 loc_80A5C22:
 	mov r0, #0x17
 	mov r1, #7
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0x17
 	mov r1, #0x28 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	cmp r4, #1
 	bne loc_80A5C48
 	mov r0, #1
@@ -2012,7 +2012,7 @@ sub_80A5E8C:
 	ldr r0, [r1,r0]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r4,pc}
 	.byte 0, 0
 .endfunc // sub_80A5E8C
@@ -2027,7 +2027,7 @@ sub_80A5EA0:
 	ldr r0, [r1,r0]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r4,pc}
 	.balign 4, 0x00
 off_80A5EB4: .word dword_80A5EB8
@@ -2042,7 +2042,7 @@ sub_80A5EC8:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf1
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne locret_80A5F46
 	bl sub_80A5F84
 	cmp r0, #0
@@ -2060,7 +2060,7 @@ loc_80A5EE2:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xe0
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_80A5F68
 	mov r0, #3
 	strb r0, [r5]
@@ -2076,7 +2076,7 @@ loc_80A5F12:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xe0
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne locret_80A5F46
 	ldrb r0, [r5,#5]
 	str r0, [r5,#0x34]
@@ -2147,7 +2147,7 @@ loc_80A5F8E:
 	ldrh r2, [r1,r0]
 	mov r4, #1
 	add r0, r2, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80A5FAA
 	mov r0, #1
 	strb r0, [r5]
@@ -2991,7 +2991,7 @@ sub_80A6EBC:
 	str r0, [r5,#0x38]
 	mov r0, #5
 	mov r1, #0xe5
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80A6F20
 	bl sub_80A7208
 loc_80A6F20:
@@ -3247,7 +3247,7 @@ sub_80A70FC:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf1
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne locret_80A715C
 	bl sub_809E1AE
 	cmp r2, #0
@@ -3288,7 +3288,7 @@ loc_80A7150:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf1
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #1
 	str r0, [r5,#0x34]
 locret_80A715C:
@@ -3504,7 +3504,7 @@ sub_80A72D8:
 	str r0, [r5,#0x34]
 	mov r0, #5
 	mov r1, #0xe5
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80A7342
 	bl sub_80A76E8
 loc_80A7342:
@@ -3513,7 +3513,7 @@ loc_80A7342:
 	bl sub_80A7354
 	mov r0, #5
 	mov r1, #0xff
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {r4-r7,pc}
 .func
 .thumb_func
@@ -3894,7 +3894,7 @@ sub_80A75DC:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf1
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne locret_80A763C
 	bl sub_809E1AE
 	cmp r2, #0
@@ -3935,7 +3935,7 @@ loc_80A7630:
 	mov r0, #5
 	// byteFlagIdx
 	mov r1, #0xf1
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #1
 	str r0, [r5,#0x24]
 locret_80A763C:
@@ -4087,7 +4087,7 @@ loc_80A774C:
 	bne locret_80A775A
 	mov r0, #5
 	mov r1, #0xe5
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 locret_80A775A:
 	pop {r4-r7,pc}
 .func
@@ -4715,7 +4715,7 @@ sub_80A7BC0:
 	bl sub_81420F0
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #8
 	strb r0, [r5,#8]
 	mov r0, #0x73 
@@ -4731,7 +4731,7 @@ sub_80A7BC0:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x31 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_8142080
 	add r1, r0, #0
 	ldr r0, off_80A7C54 // =dword_8089D64+116 
@@ -4871,7 +4871,7 @@ sub_80A7CFE:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x31 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r4, [r7,#0x24]
 	ldr r0, [r5,#0x14]
 	cmp r0, r4
@@ -5131,14 +5131,14 @@ sub_80A7F26:
 	bl sub_81427A4
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	bl sub_8142184
 	ldr r0, dword_80A7F54 // =0x1650 
 	ldrb r1, [r5,#4]
 	add r0, r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	bl sub_80048B2
 	pop {r4-r7,pc}
 dword_80A7F54: .word 0x1650
@@ -5426,7 +5426,7 @@ loc_80A82EE:
 	ldrh r3, [r0,r2]
 	mov r4, #0
 	add r0, r3, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80A830C
 	mov r4, #1
 	mov r0, #3
@@ -5447,7 +5447,7 @@ sub_80A8324:
 	mov r0, #9
 	// byteFlagIdx
 	mov r1, #0xd6
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_80A8368
 	mov r0, r10
 	ldr r0, [r0,#0x3c]
@@ -5469,15 +5469,15 @@ loc_80A8340:
 	ldr r0, [r2,r4]
 	ldrh r6, [r0,r6]
 	add r0, r7, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_80A8362
 	// bitfield
 	add r0, r6, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	b locret_80A8368
 loc_80A8362:
 	add r0, r6, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 locret_80A8368:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -5539,10 +5539,10 @@ sub_80A83B8:
 	bl sub_8002E14
 	mov r0, #9
 	mov r1, #0xff
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #9
 	mov r1, #0xd7
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80A8418
 	ldrh r0, [r6,#0x16]
 	ldrh r1, [r6,#0x18]
@@ -5556,7 +5556,7 @@ sub_80A83B8:
 	strb r0, [r5,#9]
 	mov r0, #9
 	mov r1, #0xd7
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 loc_80A8418:
 	mov r0, #4
 	strb r0, [r5,#8]
@@ -5571,7 +5571,7 @@ sub_80A8424:
 	mov r0, #9
 	// byteFlagIdx
 	mov r1, #0xff
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80A843A
 	mov r0, #8
 	strb r0, [r5,#8]
@@ -5590,7 +5590,7 @@ loc_80A843A:
 	mov r0, #9
 	// byteFlagIdx
 	mov r1, #0xd4
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80A8478
 	mov r0, #1
 	bl sub_811EBE0
@@ -5627,13 +5627,13 @@ sub_80A8484:
 	bl sub_8001172
 	mov r0, #9
 	mov r1, #0xd8
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #9
 	mov r1, #0xff
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #9
 	mov r1, #0xd9
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl reqBBS_clearFlag_8140A0C
 	bl sub_80048B2
 locret_80A84BC:
@@ -5836,7 +5836,7 @@ sub_80A860C:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x17
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne locret_80A8640
 	bl sub_809E1AE
 	add r2, r0, #0
@@ -5852,7 +5852,7 @@ sub_80A860C:
 	mov r0, #9
 	// byteFlagIdx
 	mov r1, #0xd9
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #8
 	strb r0, [r5,#8]
 	mov r0, #0x50 
@@ -6117,7 +6117,7 @@ sub_80A8860:
 	push {lr}
 	mov r0, #5
 	mov r1, #0xe0
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_80048B2
 	pop {pc}
 .endfunc // sub_80A8860
@@ -6270,7 +6270,7 @@ sub_80A8988:
 	bl sub_81430B6
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	b locret_80A89D6
 loc_80A89B4:
 	bl sub_8002E52
@@ -6283,7 +6283,7 @@ loc_80A89B4:
 	bl sub_81430B6
 	// bitfield
 	add r0, r1, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #1
 	bl sub_81433E4
 locret_80A89D6:
@@ -6890,7 +6890,7 @@ sub_80A8E9C:
 	bl sub_80A90B0
 	mov r0, #0xb
 	mov r1, #0xfb
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80A8EEA
 	bl sub_80A91D4
 	beq loc_80A8EE4
@@ -6924,7 +6924,7 @@ sub_80A8F08:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xef
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80A8F1E
 	mov r0, #8
 	strb r0, [r5,#8]
@@ -7015,7 +7015,7 @@ loc_80A8FC6:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xef
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80A8FD8
 	mov r0, #4
 	strb r0, [r5,#8]
@@ -7312,7 +7312,7 @@ sub_80A91A4:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xe4
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_80A91D0
 	bl sub_809E1AE
 	add r2, r0, #0
@@ -7328,7 +7328,7 @@ sub_80A91A4:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xe6
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 locret_80A91D0:
 	pop {r4,pc}
 	.balign 4, 0x00
@@ -7344,7 +7344,7 @@ sub_80A91D4:
 	ldrh r0, [r0,r1]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {pc}
 	.balign 4, 0x00
 off_80A91E8: .word dword_80A91EC
@@ -7359,7 +7359,7 @@ sub_80A91F4:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xe6
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80A9208
 	mov r0, #1
 	bl sub_8002E14
@@ -7515,7 +7515,7 @@ sub_80A931C:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xe6
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80A933E
 	mov r0, #3
 	bl sub_8002E14
@@ -7530,7 +7530,7 @@ loc_80A933E:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xe4
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80A9352
 	mov r0, #0xc
 	strb r0, [r5,#8]
@@ -7590,7 +7590,7 @@ loc_80A93A4:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xe7
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 loc_80A93B4:
 	ldr r0, [r5,#0x24]
 	add r0, #1
@@ -7720,12 +7720,12 @@ sub_80A9458:
 loc_80A94AC:
 	mov r0, #0xb
 	mov r1, #0xfc
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	str r0, [r5,#0x24]
 	mov r0, #0xb
 	mov r1, #0xfb
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80A94D2
 	bl sub_80A9628
 	beq loc_80A94D2
@@ -7746,7 +7746,7 @@ sub_80A94DC:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xfc
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80A94EC
 	bl sub_80A95A8
 loc_80A94EC:
@@ -7787,7 +7787,7 @@ sub_80A94F8:
 loc_80A9528:
 	mov r0, #0xb
 	mov r1, #0xfc
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_80A9568
 loc_80A9534:
 	ldr r0, [r5,#0x24]
@@ -7862,7 +7862,7 @@ sub_80A95A8:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xfc
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldrb r0, [r5,#4]
 	strb r0, [r6,#4]
 	bl sub_80A9614
@@ -7909,7 +7909,7 @@ sub_80A9614:
 	ldrh r0, [r1,r0]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r4,pc}
 	.balign 4, 0x00
 .endfunc // sub_80A9614
@@ -7925,7 +7925,7 @@ sub_80A9628:
 	ldrh r0, [r1,r0]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80A963E
 	mov r4, #1
 loc_80A963E:
@@ -8017,13 +8017,13 @@ sub_80A96FC:
 	bl sub_80048B2
 	mov r0, #0xb
 	mov r1, #0xe8
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0x17
 	mov r1, #7
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0x17
 	mov r1, #0x39 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {pc}
 .endfunc // sub_80A96FC
 
@@ -8036,13 +8036,13 @@ sub_80A971C:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xe5
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80A9744
 	// entryIdx
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xe8
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80A9744
 	ldrb r0, [r6,#6]
 	mov r1, #0x19
@@ -8106,7 +8106,7 @@ sub_80A979C:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xe8
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne locret_80A97F0
 	ldrb r0, [r6,#6]
 	cmp r0, #5
@@ -8125,7 +8125,7 @@ loc_80A97BC:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xe4
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_80A97F0
 	bl sub_809E1AE
 	add r2, r0, #0
@@ -8141,7 +8141,7 @@ loc_80A97BC:
 	mov r0, #0xb
 	// byteFlagIdx
 	mov r1, #0xe8
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0xd7
 	bl sound_play // () -> void
 locret_80A97F0:
@@ -8507,24 +8507,24 @@ sub_80A9B9C:
 	ldrh r0, [r7]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_80A9BBE
 	mov r0, #1
 	strb r0, [r5]
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	b loc_80A9BCE
 loc_80A9BBE:
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	ldrh r0, [r7,#4]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 loc_80A9BCE:
 	mov r0, #0x80
 	ldrb r1, [r7,#6]
@@ -8569,14 +8569,14 @@ sub_80A9C26:
 	ldrh r0, [r7]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_80A9C40
 	mov r0, #1
 	strb r0, [r5]
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	b loc_80A9C54
 loc_80A9C40:
 	mov r0, #3
@@ -8584,16 +8584,16 @@ loc_80A9C40:
 	ldrh r0, [r7,#2]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	ldrh r0, [r7,#4]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 loc_80A9C54:
 	ldrh r0, [r7]
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80A9CA0
 	bl sub_80A9CAE
 	tst r0, r0
@@ -9060,14 +9060,14 @@ loc_80A9FD8:
 	mov r0, #0x16
 	// byteFlagIdx
 	mov r1, #0x40 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, [r5,#0x14]
 	lsr r0, r0, #0x10
 	cmp r0, #0x20 
 	beq loc_80A9FF6
 	mov r0, #0x16
 	mov r1, #0x40 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 loc_80A9FF6:
 	bl sprite_update
 .endfunc // sub_80A9FB8
@@ -9180,14 +9180,14 @@ loc_80AA0D8:
 	mov r0, #0x16
 	// byteFlagIdx
 	mov r1, #0x40 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, [r5,#0x14]
 	lsr r0, r0, #0x10
 	cmp r0, #0x20 
 	beq loc_80AA0F6
 	mov r0, #0x16
 	mov r1, #0x40 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 loc_80AA0F6:
 	bl sprite_update
 .endfunc // sub_80AA0B8
@@ -9273,7 +9273,7 @@ sub_80AA194:
 	bl sub_8143B5E
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80AA1C2
 	mov r0, #1
 	bl sprite_setAnimation // (u8 a1) -> void
@@ -9530,7 +9530,7 @@ sub_80AA394:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x29 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_80AA3A8
 	mov r4, #2
 loc_80AA3A8:
@@ -9786,7 +9786,7 @@ sub_80AA5F4:
 	mov r0, #6
 	// byteFlagIdx
 	mov r1, #0x7f
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80AA608
 	ldr r3, off_80AA698 // =off_8020178 
 	b loc_80AA626
@@ -9795,7 +9795,7 @@ loc_80AA608:
 	mov r0, #6
 	// byteFlagIdx
 	mov r1, #0x80
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80AA616
 	ldr r3, off_80AA69C // =off_8020180 
 	b loc_80AA626
@@ -9804,7 +9804,7 @@ loc_80AA616:
 	mov r0, #6
 	// byteFlagIdx
 	mov r1, #0x81
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80AA624
 	ldr r3, off_80AA6A0 // =off_8020188 
 	b loc_80AA626
@@ -9926,7 +9926,7 @@ sub_80AA6EC:
 	mov r0, #1
 	// byteFlagIdx
 	mov r1, #0xd8
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80AA746
 	mov r4, #0
 	mov r5, #0
@@ -9989,7 +9989,7 @@ locret_80AA762:
 	mov r4, #0
 	mov r0, #2
 	mov r1, #0x12
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80AA774
 	mov r4, #1
 loc_80AA774:
@@ -9999,7 +9999,7 @@ loc_80AA774:
 	mov r4, #0
 	mov r0, #2
 	mov r1, #0x13
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80AA788
 	mov r4, #1
 loc_80AA788:
@@ -10009,7 +10009,7 @@ loc_80AA788:
 	mov r4, #0
 	mov r0, #2
 	mov r1, #0x14
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80AA7A8
 	bl sub_8001532
 	mov r1, #0xff
@@ -10024,7 +10024,7 @@ loc_80AA7A8:
 	mov r4, #0
 	mov r0, #2
 	mov r1, #0x15
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80AA7BC
 	mov r4, #1
 loc_80AA7BC:
@@ -10034,7 +10034,7 @@ loc_80AA7BC:
 	mov r4, #0
 	mov r0, #2
 	mov r1, #0x16
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80AA7D0
 	mov r4, #1
 loc_80AA7D0:
@@ -10044,7 +10044,7 @@ loc_80AA7D0:
 	mov r4, #0
 	mov r0, #2
 	mov r1, #0x17
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80AA7E4
 	mov r4, #1
 loc_80AA7E4:
@@ -10054,7 +10054,7 @@ loc_80AA7E4:
 	mov r4, #0
 	mov r0, #2
 	mov r1, #0x18
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80AA7F8
 	mov r4, #1
 loc_80AA7F8:
@@ -10064,7 +10064,7 @@ loc_80AA7F8:
 	mov r4, #0
 	mov r0, #2
 	mov r1, #0x19
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80AA80C
 	mov r4, #1
 loc_80AA80C:
@@ -10074,7 +10074,7 @@ loc_80AA80C:
 	mov r4, #0
 	mov r0, #2
 	mov r1, #0x22 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80AA820
 	mov r4, #1
 loc_80AA820:

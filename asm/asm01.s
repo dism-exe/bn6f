@@ -85,7 +85,7 @@ sub_801FE6C:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x2d 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_801FEB6
 	strb r6, [r4,#0x1] // (byte_203F7D8+1 - 0x203f7d8)
 	ldrb r0, [r4,#0x1] // (byte_203F7D8+1 - 0x203f7d8)

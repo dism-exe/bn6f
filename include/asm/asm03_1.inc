@@ -314,17 +314,17 @@
 // .global sub_802D070
 // .global sub_802D150
 // .global get_802D246 // () -> int
-// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
-// .global setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
-// .global setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
-// .global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global loc_802F200
+// .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global SetEventFlag // (u16 entryFlagBitfield) -> void
+// .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global ClearEventFlag // (u16 entryFlagBitfield) -> void
+// .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
+// .global SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+// .global SetEventFlagRange // (u16 entryFlagBitfield) -> void
+// .global ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+// .global ClearEventFlagRange // (u16 entryFlagBitfield) -> void
+// .global TestEventFlagRange
 // .global sub_802F238
 // .global sub_802F530
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void

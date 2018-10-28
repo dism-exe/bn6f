@@ -143,11 +143,11 @@
 .include "asm/asm03_0.inc"
 // .global sub_802F0D8
 // .global sub_802F0F4
-// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
-// .global clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+// .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
+// .global ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_802FF4C
 // .global loc_802FFF4

@@ -81,7 +81,7 @@ typedef struct{
 					 when chats are inactive
 
 	*/
-	u8 *flags_2001C88;                // loc=0x44
+	u8 *eEventFlags;                // loc=0x44
 	/*
 	Involved w/ chip data. When changed, and modifying folder,
 	It says you have damaged chip data and freezes...

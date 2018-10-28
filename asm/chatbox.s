@@ -2692,7 +2692,7 @@ off_8041184: .word chatbox_80411B0+1
 .thumb_func
 chatbox_80411B0:
 	push {lr}
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
@@ -2702,7 +2702,7 @@ chatbox_80411B0:
 .thumb_func
 chatbox_80411BC:
 	push {lr}
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
@@ -2712,7 +2712,7 @@ chatbox_80411BC:
 .thumb_func
 chatbox_80411C8:
 	push {lr}
-	bl toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ToggleEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
@@ -2749,7 +2749,7 @@ chatbox_80411E8:
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
-	bl setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlagRange // (u16 entryFlagBitfield) -> void
 	add r4, #5
 	pop {pc}
 .endfunc // chatbox_80411E8
@@ -2766,7 +2766,7 @@ chatbox_8041200:
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
-	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlagRange // (u16 entryFlagBitfield) -> void
 	add r4, #5
 	pop {pc}
 .endfunc // chatbox_8041200
@@ -2780,7 +2780,7 @@ chatbox_8041218:
 	add r0, #0x4c 
 	// bitfield
 	ldr r0, [r5,r0]
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #3
 	pop {pc}
 	.balign 4, 0x00
@@ -3178,7 +3178,7 @@ loc_8041510:
 	orr r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_80414F0
 	// mask
 	mov r0, #1
@@ -3207,7 +3207,7 @@ loc_8041546:
 	orr r0, r1
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80414F0
 	// mask
 	mov r0, #1
@@ -3327,7 +3327,7 @@ chatbox_8041694:
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
-	bl loc_802F200 // (int a3, int a2) ->
+	bl TestEventFlagRange // (int a3, int a2) ->
 	bne loc_80416AE
 	mov r2, #6
 	b loc_80416B0
@@ -3413,7 +3413,7 @@ chatbox_804171C:
 	mov r2, #0
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8041732
 	mov r2, #1
 loc_8041732:
@@ -3762,7 +3762,7 @@ chatbox_8041964:
 	// <mkdata>
 	.hword 0x1C00 // add r0, r0, #0
 	add r2, r1, #0
-	bl loc_802F200 // (int a3, int a2) ->
+	bl TestEventFlagRange // (int a3, int a2) ->
 	bne loc_8041976
 	mov r2, #3
 	b loc_8041978
@@ -4026,7 +4026,7 @@ loc_8041B1A:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #9
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	pop {r0,r2}
 	bne loc_8041B2E
 	mov r6, #0
