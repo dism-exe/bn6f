@@ -418,9 +418,11 @@ off_80008AC: .word m4a_SongNumStart+1
 off_80008B0: .word loc_800084E+1
 .endfunc // sub_8000822
 
-.func
-.thumb_func
 // (void *mem, int size) -> void
+
+// Fill r1 bytes of zero starting at r0
+// Does a backwards fill for speed
+	thumb_func_start ZeroFillByte
 ZeroFillByte:
 	push {r0-r2,lr}
 	mov r2, #0
@@ -429,7 +431,7 @@ loc_80008B8:
 	strb r2, [r0,r1]
 	bne loc_80008B8
 	pop {r0-r2,pc}
-.endfunc // ZeroFillByte
+	thumb_func_end ZeroFillByte
 
 .func
 .thumb_func
