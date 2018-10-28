@@ -17366,8 +17366,7 @@ loc_800B71A:
 	blt loc_800B72C
 	ldr r1, off_800B868 // =0x300 
 	add r0, r0, r1
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 loc_800B72C:
 	add r7, #2

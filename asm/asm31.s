@@ -93125,8 +93125,7 @@ thumb_func_end sub_80E5AD6
 
 thumb_local_start
 sub_80E5B5E:
-	// <mkdata>
-	.hword 0x1 // mov r1, r0
+	lsl r1, r0, #0
 locret_80E5B60:
 	mov pc, lr
 thumb_func_end sub_80E5B5E
@@ -142363,8 +142362,7 @@ byte_80FF60D: .byte 0x0
 	.hword 0xFF00
 thumb_func_end sub_80FF528
 
-	// <mkdata>
-	.hword 0x1 // mov r1, r0
+	lsl r1, r0, #0
 	lsl r0, r0, #4
 thumb_local_start
 sub_80FF614:
@@ -146280,8 +146278,7 @@ loc_81015D4:
 	lsl r3, r0, #0x10
 	lsl r1, r0, #0xc
 	lsl r4, r0, #0xc
-	// <mkdata>
-	.hword 0x3 // mov r3, r0
+	lsl r3, r0, #0
 thumb_local_start
 sub_81015E4:
 	push {r4,lr}
@@ -150593,8 +150590,7 @@ byte_810389D: .byte 0x0
 	.hword 0xFF00
 thumb_func_end sub_8103808
 
-	// <mkdata>
-	.hword 0x1 // mov r1, r0
+	lsl r1, r0, #0
 	lsl r0, r0, #4
 thumb_local_start
 sub_81038A4:
@@ -150884,8 +150880,7 @@ loc_8103AB0:
 	beq loc_8103AD2
 	add r0, sp, #0xc
 	add r0, r0, r2
-	// <mkdata>
-	.hword 0x1C09 // mov r1, r1
+	mov r1, r1
 	mov r2, r1
 	bl sub_8000C72
 loc_8103AD2:
@@ -161103,8 +161098,7 @@ thumb_local_start
 sub_8108CDE:
 	push {r4,r6,lr}
 	mov r4, r2
-	// <mkdata>
-	.hword 0x1C1E // mov r6, r3
+	mov r6, r3
 	ldrb r0, [r5,#0x16]
 	mov r1, #2
 	ldrb r2, [r5,#0x16]

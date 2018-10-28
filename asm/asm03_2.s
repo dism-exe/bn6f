@@ -4327,8 +4327,7 @@ loc_8048E46:
 	ldr r1, dword_8048F58 // =0x1e20 
 	add r0, r0, r1
 	push {r3}
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	pop {r3}
 	bne loc_8048E8A
@@ -4337,8 +4336,7 @@ loc_8048E46:
 	ldr r1, dword_8048F5C // =0x2020 
 	add r0, r0, r1
 	push {r3}
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	pop {r3}
 	bne loc_8048E8A
@@ -4346,8 +4344,7 @@ loc_8048E46:
 	ldr r1, dword_8048F60 // =0x2220 
 	add r0, r0, r1
 	push {r3}
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	pop {r3}
 	bne loc_8048E8A
@@ -8839,8 +8836,7 @@ loc_804BDD6:
 	push {r0,r3}
 	ldr r1, dword_804BE84 // =0x1e20 
 	add r0, r0, r1
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	pop {r0,r3}
 	beq loc_804BE06
@@ -8896,8 +8892,7 @@ loc_804BE3C:
 	push {r0,r3,r6,r7}
 	ldr r1, dword_804BE84 // =0x1e20 
 	add r0, r0, r1
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	pop {r0,r3,r6,r7}
 	bne loc_804BE6C

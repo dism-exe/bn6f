@@ -27367,8 +27367,7 @@ thumb_local_start
 sub_801DB54:
 	push {lr}
 	mov r0, #1
-	// <mkdata>
-	.hword 0x0 // mov r0, r0
+	lsl r0, r0, #0
 	bl sub_801BEC2
 	pop {pc}
 thumb_func_end sub_801DB54
@@ -27377,8 +27376,7 @@ thumb_local_start
 sub_801DB60:
 	push {lr}
 	mov r0, #1
-	// <mkdata>
-	.hword 0x0 // mov r0, r0
+	lsl r0, r0, #0
 	bl sub_801BEB8
 	pop {pc}
 thumb_func_end sub_801DB60

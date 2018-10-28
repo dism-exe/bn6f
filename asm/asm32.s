@@ -14914,16 +14914,13 @@ thumb_func_end sub_8116510
 
 loc_8116594:
 	lsl r0, r0, #4
-	// <mkdata>
-	.hword 0x2 // mov r2, r0
+	lsl r2, r0, #0
 	lsl r1, r0, #8
 	lsl r0, r0, #4
-	// <mkdata>
-	.hword 0x2 // mov r2, r0
+	lsl r2, r0, #0
 	lsl r1, r0, #8
 	lsl r0, r0, #4
-	// <mkdata>
-	.hword 0x2 // mov r2, r0
+	lsl r2, r0, #0
 loc_81165A4:
 	mov r0, #0x60 
 	ldrh r0, [r5,r0]
@@ -17729,8 +17726,7 @@ thumb_func_end sub_8117D4C
 
 loc_8117DC4:
 	lsl r2, r0, #0xc
-	// <mkdata>
-	.hword 0x4 // mov r4, r0
+	lsl r4, r0, #0
 thumb_local_start
 sub_8117DC8:
 	push {lr}
@@ -33376,20 +33372,17 @@ loc_8120802:
 loc_8120808:
 	ldrh r0, [r4]
 	add r0, r0, r7
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_812082C
 	ldrh r0, [r4,#2]
 	add r0, r0, r7
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_812082C
 	ldrh r0, [r4,#4]
 	add r0, r0, r7
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_812086E
 loc_812082C:
@@ -33931,20 +33924,17 @@ thumb_func_end sub_8120BE4
 	mov r7, #1
 	ldrh r0, [r4]
 	add r0, r0, r5
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_8120C84
 	ldrh r0, [r4,#0x2] // (word_8120C8E - 0x8120c8c)
 	add r0, r0, r5
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_8120C84
 	ldrh r0, [r4,#0x4] // (word_8120C90 - 0x8120c8c)
 	add r0, r0, r5
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_8120C84
 	mov r7, #0
@@ -34407,8 +34397,7 @@ sub_8121108:
 	mov r6, #0x18
 loc_812110E:
 	ldr r0, [r4,r6]
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_812111E
 	sub r6, #4

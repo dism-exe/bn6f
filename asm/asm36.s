@@ -14696,14 +14696,12 @@ sub_8137BF0:
 loc_8137C00:
 	ldr r1, off_8137C48 // =dword_8137C4C 
 	ldr r0, [r1,r6]
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_8137C18
 	ldr r1, off_8137C98 // =dword_8137C9C 
 	ldr r0, [r1,r6]
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_8137C38
 loc_8137C18:
@@ -15403,8 +15401,7 @@ sub_8138210:
 	ldr r0, [r1,r0]
 	tst r0, r0
 	beq loc_8138232
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_8138232
 	ldr r7, [sp]

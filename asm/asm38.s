@@ -3172,8 +3172,7 @@ locret_81D7ECE:
 	pop {r4-r6,pc}
 loc_81D7ED0:
 	lsl r0, r1, #0x1c
-	// <mkdata>
-	.hword 0x0 // mov r0, r0
+	lsl r0, r0, #0
 	ldrb r3, [r0,#2]
 	tst r3, r3
 	beq locret_81D7EF2

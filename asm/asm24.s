@@ -681,8 +681,7 @@ loc_808CDDA:
 	mov r3, r7
 	lsl r3, r3, #3
 	ldrh r0, [r6,r3]
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_808CE02
 	mov r3, r7
@@ -691,8 +690,7 @@ loc_808CDDA:
 	ldrh r0, [r6,r3]
 	add r3, #2
 	ldrh r1, [r6,r3]
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	mov r2, r1
 	bl loc_802F200 // (int a3, int a2) ->
 	beq loc_808CE02
@@ -738,16 +736,14 @@ loc_808CE3C:
 	mov r6, r7
 	lsl r6, r6, #3
 	ldrh r0, [r4,r6]
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	beq loc_808CE5A
 	add r6, #2
 	ldrh r0, [r4,r6]
 	add r6, #2
 	ldrh r1, [r4,r6]
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	mov r2, r1
 	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 loc_808CE5A:
@@ -781,15 +777,13 @@ loc_808CE84:
 	mov r6, r7
 	lsl r6, r6, #3
 	ldrh r0, [r4,r6]
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r6, #2
 	ldrh r0, [r4,r6]
 	add r6, #2
 	ldrh r1, [r4,r6]
-	// <mkdata>
-	.hword 0x1C00 // mov r0, r0
+	mov r0, r0
 	mov r2, r1
 	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r7, #1
