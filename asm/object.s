@@ -623,7 +623,7 @@ loc_800C1B6:
 	ldr r0, [r2]
 	ldr r1, [r6,#4]
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 loc_800C1CC:
 	add r7, #4
 	b loc_800C198

@@ -2745,7 +2745,7 @@ sub_804754C:
 	lsl r2, r2, #4
 	add r1, r1, r2
 	ldr r2, dword_804757C // =0x800 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r0, [r5,#0x24]
 	mov r1, #0x10
 	ldr r2, off_8047580 // =unk_2015E00 
@@ -7952,7 +7952,7 @@ loc_804AB98:
 	mov r2, #1
 	strh r2, [r3,#0x14]
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldrh r0, [r5,#0x28]
 	add r0, #1
 	strh r0, [r5,#0x28]
@@ -8012,7 +8012,7 @@ loc_804AC1E:
 	ldr r1, off_804ACB4 // =word_202A020 
 	add r1, r1, r4
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldrh r0, [r5,#0x1e]
 	bl sub_804ACC8
 	strb r0, [r5,#0x17]
@@ -8045,7 +8045,7 @@ loc_804AC60:
 	add r0, r7, #0
 	add r1, r1, r4
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldrh r0, [r5,#0x1e]
 	bl sub_804ACC8
 	strb r0, [r5,#0x17]
@@ -8266,7 +8266,7 @@ sub_804ADE0:
 	beq loc_804ADF8
 	mov r3, #0x20 
 	mul r2, r3
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	mov r1, #0x20 
 	mul r1, r6
 	add r4, r4, r1

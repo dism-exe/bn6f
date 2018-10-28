@@ -23,7 +23,7 @@
 .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 .global CopyWords // (u32 *src, u32 *dest, int size) -> void
-.global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+.global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 .global sub_800096C
 .global sub_800098C

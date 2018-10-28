@@ -170,7 +170,7 @@ loc_8123350:
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	b loc_812335A
 loc_8123356:
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 loc_812335A:
 	add sp, sp, #0xc
 	pop {r7,pc}
@@ -16201,7 +16201,7 @@ loc_812BC70:
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r2, #0x40 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	mov r7, #0x12
 	mov r6, #0
 loc_812BCA8:

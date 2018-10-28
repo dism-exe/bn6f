@@ -214,7 +214,7 @@
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
-// .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+// .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global sub_800096C
 // .global loc_8000AC4
 // .global loc_8000AC8

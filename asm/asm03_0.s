@@ -554,7 +554,7 @@ loc_8026898:
 loc_80268A0:
 	ldr r1, off_80269C8 // =unk_2035000 
 	ldr r2, off_80269A8 // =0x258 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	mov r2, #0x9b
 	ldr r6, off_80269AC // =byte_8027B2C 
 loc_80268AC:
@@ -2605,7 +2605,7 @@ loc_802786A:
 loc_8027876:
 	ldr r1, off_8027B24 // =unk_2035000 
 	ldr r2, off_8027900 // =0x258 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	push {r4-r6}
 	mov r2, #0xe1
 	ldr r6, off_8027904 // =byte_8027B4A 
@@ -2805,7 +2805,7 @@ sub_80279FC:
 	ldr r0, off_8027A48 // =byte_86E64B4 
 	ldr r1, off_8027B24 // =unk_2035000 
 	ldr r2, off_8027A4C // =0x258 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	push {r4-r6}
 	mov r2, #0x9b
 	ldr r6, off_8027A50 // =byte_8027B2C 
@@ -12021,7 +12021,7 @@ sub_802C34E:
 	ldr r1, off_802C440 // =unk_2034B30 
 	mov r2, #0x36 
 	lsl r2, r2, #4
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldrb r0, [r7,#0x4] // (dword_20364C4 - 0x20364c0)
 	ldr r7, off_802C3F8 // =off_802C3FC 
 	mov r1, #0xc
@@ -19200,7 +19200,7 @@ objRender_802FE0C:
 	ldr r0, off_802FE1C // =dword_3001D70 
 	ldr r1, dword_802FE20 // =0x7000000 
 	ldr r2, off_802FE24 // =0x400 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {pc}
 	.balign 4, 0x00
 off_802FE1C: .word dword_3001D70
@@ -20121,7 +20121,7 @@ loc_8030472:
 	lsl r2, r2, #5
 	add r0, #4
 	ldr r1, off_80304E0 // =byte_3001960 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	mov r0, #0
 	ldr r7, [r5,#0x14] // (dword_200BE84 - 0x200be70)
 	add r6, r7, #0
@@ -20137,7 +20137,7 @@ loc_8030492:
 	add r1, r1, r2
 	ldr r2, [r7]
 	lsl r2, r2, #2
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	add r7, #0xc
 	pop {r0,r6}
 	add r0, #1
@@ -20189,7 +20189,7 @@ loc_80304FC:
 	ldr r1, [r5,#4]
 	ldr r2, [r7]
 	lsl r2, r2, #2
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r0, [r5,#8]
 	// dest
 	ldr r1, src // =unk_2034A00 
@@ -20206,7 +20206,7 @@ loc_80304FC:
 	ldrb r3, [r3,#1]
 	mul r2, r3
 	lsl r2, r2, #1
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 locret_803053A:
 	pop {r4-r7,pc}
 src: .word unk_2034A00

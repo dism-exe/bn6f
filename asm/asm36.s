@@ -9002,7 +9002,7 @@ loc_8134B74:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	add r0, r4, #0
 	add r0, #0x20 
 	add r1, r4, #0
@@ -9035,7 +9035,7 @@ loc_8134BE8:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x14
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	b loc_8134CD6
 loc_8134C00:
 	ldrh r0, [r6,#0x1c]
@@ -9045,7 +9045,7 @@ loc_8134C00:
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r0, [r4,#0x14]
 	lsr r1, r0, #0x10
 	sub r1, #1
@@ -9087,15 +9087,15 @@ loc_8134C58:
 	ldr r1, off_8134EA4 // =unk_2035C6C 
 	add r0, r6, #0
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r0, off_8134EA4 // =unk_2035C6C 
 	add r1, r4, #0
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r0, [r4,#0x14]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -9114,11 +9114,11 @@ loc_8134C8E:
 	ldr r1, off_8134EA4 // =unk_2035C6C 
 	add r0, r6, #0
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	add r0, r4, #0
 	add r1, r6, #0
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldrh r0, [r5,#0x28]
 	add r0, #1
 	strh r0, [r5,#0x28]
@@ -9130,7 +9130,7 @@ loc_8134C8E:
 	add r4, r1, #0
 	ldr r0, off_8134EA4 // =unk_2035C6C 
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r0, [r4,#0x14]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -9200,7 +9200,7 @@ loc_8134D28:
 	mov r2, #1
 	strh r2, [r3,#0x14]
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldrh r0, [r5,#0x28]
 	add r0, #1
 	strh r0, [r5,#0x28]
@@ -9270,7 +9270,7 @@ loc_8134DC8:
 	ldr r1, off_8134E98 // =word_202A020 
 	add r1, r1, r4
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldrh r0, [r5,#0x1e]
 	bl sub_8134EA8
 	strb r0, [r5,#0x17]
@@ -9303,7 +9303,7 @@ loc_8134E10:
 	add r0, r7, #0
 	add r1, r1, r4
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldrh r0, [r5,#0x1e]
 	bl sub_8134EA8
 	strb r0, [r5,#0x17]
@@ -9328,15 +9328,15 @@ loc_8134E58:
 	ldr r1, off_8134EA4 // =unk_2035C6C 
 	add r0, r4, #0
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r0, off_8134EA4 // =unk_2035C6C 
 	add r1, r6, #0
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	mov r0, #0x81
 	bl sound_play // () -> void
 	bl sub_8134F78
@@ -9925,7 +9925,7 @@ sub_813527C:
 	beq loc_8135294
 	mov r3, #0x20 
 	mul r2, r3
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	mov r1, #0x20 
 	mul r1, r6
 	add r4, r4, r1
@@ -10131,7 +10131,7 @@ sub_8135404:
 	add r0, r0, r1
 	ldr r1, off_81354F8 // =unk_203768C 
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r4, [r5,#0x5c]
 	ldr r6, [r5,#0x60]
 	cmp r4, r6
@@ -10147,7 +10147,7 @@ loc_8135426:
 	ldr r2, off_81354F4 // =word_202A020 
 	add r0, r0, r2
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	add r6, #1
 	cmp r4, r6
 	bgt loc_8135426
@@ -10157,7 +10157,7 @@ loc_8135426:
 	add r1, r1, r0
 	ldr r0, off_81354F8 // =unk_203768C 
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldrh r0, [r5,#0x1c]
 	ldr r1, dword_81354FC // =0xffff 
 	cmp r0, r1
@@ -10193,7 +10193,7 @@ loc_813547C:
 	ldr r2, off_81354F4 // =word_202A020 
 	add r0, r0, r2
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	sub r6, #1
 	b loc_813547C
 loc_813549C:
@@ -10203,7 +10203,7 @@ loc_813549C:
 	add r1, r1, r0
 	ldr r0, off_81354F8 // =unk_203768C 
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldrh r0, [r5,#0x1c]
 	ldr r1, dword_81354FC // =0xffff 
 	cmp r0, r1
@@ -11078,7 +11078,7 @@ loc_8135BB4:
 	ldr r0, off_8135C20 // =unk_201CF80 
 	ldr r1, off_8135C1C // =unk_30019E0 
 	ldr r2, off_8135C24 // =0x100 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	// j
 	mov r0, #0
 	// i
