@@ -217,9 +217,9 @@
 // .global sub_800065A
 // .global sound_8000672
 // .global musicGameState_8000784 // () -> void
-// .global ZeroFillByte // (void *mem, int size) -> void
-// .global ZeroFillHalfword
-// .global ZeroFillWord // (void *memBlock, int size) -> void
+// .global ZeroFillByByte // (void *mem, int size) -> void
+// .global ZeroFillByHalfword
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void

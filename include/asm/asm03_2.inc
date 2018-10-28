@@ -58,7 +58,7 @@
 /* External Symbols */
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global ZeroFillWord // (void *memBlock, int size) -> void
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void

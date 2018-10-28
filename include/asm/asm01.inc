@@ -30,7 +30,7 @@
 
 /* External Symbols */
 .include "asm/asm00_0.inc"
-// .global ZeroFillWord // (void *memBlock, int size) -> void
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 

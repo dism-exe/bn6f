@@ -22,8 +22,8 @@
 
 /* External Symbols */
 .include "asm/asm00_0.inc"
-// .global ZeroFillHalfword
-// .global ZeroFillWord // (void *memBlock, int size) -> void
+// .global ZeroFillByHalfword
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 
 .include "asm/asm00_1.inc"

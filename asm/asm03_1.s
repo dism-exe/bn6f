@@ -119,7 +119,7 @@ sub_8033948:
 	add r0, r5, #0
 	// size
 	mov r1, #0x10
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r7, r10
 	ldr r7, [r7,#0x3c]
 	ldrb r0, [r7,#4]
@@ -1086,7 +1086,7 @@ sub_80341AA:
 	ldr r0, off_80341F4 // =byte_2011A40 
 	// size
 	mov r1, #0xc
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 .endfunc // sub_80341AA
 
@@ -1685,7 +1685,7 @@ sub_8034B4C:
 	ldr r0, off_8034BB4 // =unk_2011EA0 
 	// size
 	mov r1, #0x40 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_8036E44
 	bl sub_8035028
 	bl npc_80350A8
@@ -3165,7 +3165,7 @@ sub_80356EC:
 	ldr r0, off_8035784 // =dword_2000DC0 
 	// size
 	ldr r1, off_8035788 // =0x100 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4-r7,pc}
 .endfunc // sub_80356EC
 
@@ -4482,7 +4482,7 @@ sub_803600E:
 	add r0, r5, #0
 	// size
 	mov r1, #0x14
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	str r4, [r5,#oUnkMapScriptState_2011e60UnkScriptPtr1_08] // (dword_2011E68 - 0x2011e60)
 	str r6, [r5,#oUnkMapScriptState_2011e60UnkScriptPtr2_0c] // (dword_2011E6C - 0x2011e60)
 	ldr r6, off_803608C // =ScriptCmds8035808 
@@ -5461,7 +5461,7 @@ init_s_02011C50_8036E90:
 	push {r0,r1}
 	add r0, r5, #0
 	mov r1, #0x90
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0,r1}
 	str r0, [r5,#0x1c] // s_02011C50.ptr_1C
 	str r0, [r5,#0x40] // s_02011C50.unk_40
@@ -8697,7 +8697,7 @@ sub_80385F0:
 	add r0, r5, #0
 	// size
 	mov r1, #0x10
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r1, r10
 	ldr r1, [r1]
 	mov r0, #0xc
@@ -8910,7 +8910,7 @@ sub_8038A9C:
 	ldr r0, off_8038B00 // =byte_2011E40 
 	// size
 	mov r1, #0x10
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, r10
 	ldr r0, [r0]
 	mov r1, #0xc
@@ -9852,7 +9852,7 @@ loc_803957E:
 	add r0, r5, #0
 	// size
 	ldr r1, off_80395A0 // =0x1b0 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r1, r10
 	ldr r1, [r1]
 	mov r0, #0x18
@@ -15273,13 +15273,13 @@ sub_803C26A:
 	add r0, r0, r5
 	mov r1, #4
 	lsl r1, r1, #2
-	bl ZeroFillByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	mov r0, #0x54 
 	lsl r0, r0, #2
 	add r0, r0, r5
 	mov r1, #4
 	lsl r1, r1, #2
-	bl ZeroFillByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {r4-r7,pc}
 .endfunc // sub_803C26A
 
@@ -15434,7 +15434,7 @@ sub_803C352:
 	add r0, r5, #0
 	// size
 	mov r1, #0x48 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	add r0, r5, #0
 	add r0, #8
 	mov r1, #0x20 
@@ -16332,7 +16332,7 @@ sub_803C9DC:
 	add r0, r4, #0
 	// size
 	mov r1, #0x10
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #1
 	strb r0, [r4]
 	ldr r1, off_803CA0C // =byte_200AF80 
@@ -16401,7 +16401,7 @@ sub_803CA64:
 	add r0, r4, #0
 	// size
 	mov r1, #0x10
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #1
 	strb r0, [r4]
 	ldr r1, off_803CAB0 // =byte_200AF80 
@@ -16595,7 +16595,7 @@ sub_803CB8C:
 	add r0, r5, #0
 	// size
 	mov r1, #8
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	str r4, [r5,#0x4] // (dword_200897C - 0x2008978)
 	mov r1, r10
 	ldr r1, [r1]
@@ -16749,7 +16749,7 @@ sub_803CCC0:
 	add r0, r5, #0
 	// size
 	mov r1, #8
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r1, r10
 	ldr r1, [r1]
 	mov r0, #0x20 
@@ -16849,7 +16849,7 @@ sub_803CD74:
 	ldr r0, [r0,#0x50]
 	// size
 	ldr r1, off_803CD94 // =0x190 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0x75 
 	mov r1, #4
 	bl sub_803CDF8
@@ -17479,7 +17479,7 @@ loc_803D1AE:
 	ldr r0, off_803D1F8 // =byte_2011800 
 	// size
 	mov r1, #8
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0}
 	ldr r1, off_803D1F8 // =byte_2011800 
 	strb r0, [r1,#0x5] // (byte_2011805 - 0x2011800)
@@ -17792,10 +17792,10 @@ sub_803DCE8:
 	strh r1, [r7,#0x16] // (sCamera.unk_66 - 0x20099d0)
 	ldr r0, [r7,#0x38] // (sCamera.unk_88 - 0x20099d0)
 	ldr r1, [r7,#0x24] // (sCamera.unk_74 - 0x20099d0)
-	bl ZeroFillByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	ldr r0, [r7,#0x3c] // (sCamera.unk_8C - 0x20099d0)
 	ldr r1, [r7,#0x24] // (sCamera.unk_74 - 0x20099d0)
-	bl ZeroFillByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {r4-r7,pc}
 .endfunc // sub_803DCE8
 
@@ -18009,13 +18009,13 @@ sub_803DE88:
 	ldr r0, off_803DF9C // =sCamera+80 
 	add r6, r0, #0
 	mov r1, #0x58 
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	ldr r0, off_803DFA0 // =byte_200DD10 
 	mov r1, #0x10
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	ldr r0, off_803DFA4 // =unk_2009480 
 	mov r1, #0x40 
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	str r4, [r6,#0x58] // (dword_2009A28 - 0x20099d0)
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -19493,7 +19493,7 @@ sub_803E900:
 	ldr r0, off_803E960 // =byte_200B1A0 
 	add r4, r0, #0
 	mov r1, #8
-	bl ZeroFillByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	mov r0, #0xb4
 	strb r0, [r4,#0x3] // (byte_200B1A3 - 0x200b1a0)
 	pop {r4,pc}
@@ -19507,7 +19507,7 @@ sub_803E914:
 	ldr r0, off_803E960 // =byte_200B1A0 
 	add r4, r0, #0
 	mov r1, #8
-	bl ZeroFillByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	mov r0, #1
 	strb r0, [r4,#0x3] // (byte_200B1A3 - 0x200b1a0)
 	pop {r4,pc}
@@ -19758,7 +19758,7 @@ sub_803EA98:
 	bl sub_803EFCC
 	ldr r0, off_803EAB8 // =byte_200F360 
 	mov r1, #0x20 
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	ldr r0, off_803EAB0 // =dword_200F444 
 	ldr r1, dword_803EAB4 // =0xa6c0 
 	str r1, [r0]
@@ -19914,7 +19914,7 @@ sub_803EBAC:
 	ldr r0, off_803EBF8 // =byte_200BC30 
 	// size
 	mov r1, #0x20 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 .endfunc // sub_803EBAC
 
@@ -19926,7 +19926,7 @@ sub_803EBB8:
 	mov r1, #2
 	add r0, r0, r1
 	mov r1, #0x20 
-	bl ZeroFillByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {pc}
 .endfunc // sub_803EBB8
 
@@ -19940,7 +19940,7 @@ sub_803EBC8:
 	ldr r0, off_803EBF8 // =byte_200BC30 
 	// size
 	mov r1, #0x20 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_803EF60
 	pop {pc}
 	.byte 0, 0
@@ -20454,7 +20454,7 @@ off_803EF8C: .word sCamera+0x50 // sCamera.unk_50
 	push {lr}
 	ldr r0, off_803EF9C // =unk_200F380 
 	mov r1, #4
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_803EF9C: .word unk_200F380
 .func
@@ -20492,22 +20492,22 @@ sub_803EFCC:
 	ldr r0, off_803F268 // =byte_200AC20 
 	// size
 	mov r1, #0x20 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	// memBlock
 	ldr r0, off_803F260 // =unk_2009AC0 
 	// size
 	mov r1, #0x40 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	// memBlock
 	ldr r0, off_803F264 // =unk_200BC70 
 	// size
 	ldr r1, off_803EFF8 // =0x200 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	// memBlock
 	ldr r0, off_803F258 // =unk_200A010 
 	// size
 	ldr r1, off_803EFF8 // =0x200 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 	.word 0x1500, 0x1500
 off_803EFF8: .word 0x200
@@ -21234,7 +21234,7 @@ clear_200AD04:
 	push {lr}
 	ldr r0, off_803F55C // =byte_200AD04 
 	mov r1, #4
-	bl ZeroFillByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {pc}
 .endfunc // clear_200AD04
 
@@ -21559,7 +21559,7 @@ sub_803F6B0:
 	add r4, r0, #0
 	ldr r0, off_803F73C // =byte_200F360 
 	mov r1, #0x20 
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	bl start_8000288
 	mov r0, #0
 	bl sub_803DE88
@@ -21593,7 +21593,7 @@ sub_803F6F4:
 	add r4, r0, #0
 	ldr r0, off_803F73C // =byte_200F360 
 	mov r1, #0x20 
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	mov r0, #0
 	bl sub_803DE88
 	mov r0, #0x10
@@ -22155,7 +22155,7 @@ sub_803FB28:
 	ldr r0, off_803FB60 // =byte_200F348 
 	// size
 	mov r1, #8
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, r10
 	ldr r0, [r0]
 	mov r1, #0x14
@@ -22380,7 +22380,7 @@ sub_803FCF0:
 	ldr r0, [r0,#0x2c]
 	// size
 	ldr r1, off_803FD04 // =0x230 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0xc8
 	bl chatbox_8045F2C // (int a1) ->
 	pop {pc}

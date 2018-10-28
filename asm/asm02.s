@@ -290,7 +290,7 @@ sub_8021C68:
 	ldr r0, [r0,#0x4c]
 	// size
 	ldr r1, dword_8021C78 // =0xf00 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 	.balign 4, 0x00
 dword_8021C78: .word 0xF00
@@ -389,7 +389,7 @@ sub_8021D08:
 	push {lr}
 	ldr r0, off_8021D94 // =unk_203A0A0 
 	ldr r1, off_8021D98 // =0x2e0 
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	pop {pc}
 .endfunc // sub_8021D08
 
@@ -427,7 +427,7 @@ sub_8021D36:
 	push {lr}
 	ldr r0, off_8021D6C // =unk_2000AF0 
 	mov r1, #0x40 
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	ldr r0, off_8021D80 // =script_8021D88 
 	ldr r1, off_8021D70 // =unk_2001184 
 	mov r2, #8

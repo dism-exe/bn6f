@@ -24138,7 +24138,7 @@ sub_811E0BA:
 	add r7, r0, #0
 	mov r1, #0xa
 	lsl r1, r1, #5
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldr r1, off_811E164 // =byte_2001010 
 	ldrb r4, [r1,#0x10] // (dword_2001020 - 0x2001010)
 	cmp r4, #0
@@ -24965,7 +24965,7 @@ sub_811E744:
 	ldr r0, off_811E798 // =unk_2027000 
 	mov r1, #0x34 
 	lsl r1, r1, #4
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_8144010
 	add r6, r0, #0
 	ldr r7, off_811E798 // =unk_2027000 
@@ -25374,7 +25374,7 @@ sub_811EC00:
 	add r4, r0, #0
 	// size
 	mov r1, #0x18
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 	.byte 0, 0
 .endfunc // sub_811EC00
@@ -25388,13 +25388,13 @@ sub_811EC10:
 	ldr r0, [r0,#0x34]
 	// size
 	mov r1, #0x80
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	// memBlock
 	ldr r0, off_811EC4C // =byte_200DF20 
 	add r4, r0, #0
 	// size
 	mov r1, #0x18
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #1
 	bl sub_811EBE8
 	ldr r0, dword_811EC44 // =0xffffffe0 
@@ -26467,7 +26467,7 @@ sub_811F6C0:
 	add r4, r0, #0
 	// size
 	mov r1, #0x80
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldr r5, off_811F704 // =byte_200DF20 
 	ldrb r0, [r5,#0x4] // (byte_200DF24 - 0x200df20)
 	lsl r0, r0, #2
@@ -26489,7 +26489,7 @@ sub_811F6E0:
 	add r4, r0, #0
 	// size
 	mov r1, #0x80
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldr r5, off_811F704 // =byte_200DF20 
 	mov r0, #0x10
 	strb r0, [r4]
@@ -28229,7 +28229,7 @@ sub_81203E4:
 	add r0, r2, #0
 	// size
 	mov r1, #0x38 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r5, #0x20 
 	ldr r0, [sp]
 	mul r0, r5
@@ -28291,7 +28291,7 @@ sub_8120458:
 	str r5, [sp,#0xc]
 	add r0, r2, #0
 	mov r1, #0xe
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	mov r5, #0x20 
 	ldr r0, [sp]
 	mul r0, r5
@@ -29424,7 +29424,7 @@ sub_8120C94:
 	push {r0-r3}
 	lsl r1, r1, #1
 	mul r1, r2
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	pop {r0-r3}
 	lsl r4, r1, #1
 	add r6, r2, #0
@@ -29898,7 +29898,7 @@ sub_8121144:
 	push {r4-r7,lr}
 	ldr r0, off_8121150 // =word_200DCF0 
 	mov r1, #0x18
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	pop {r4-r7,pc}
 off_8121150: .word word_200DCF0
 .endfunc // sub_8121144

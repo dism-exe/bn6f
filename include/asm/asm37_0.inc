@@ -73,8 +73,8 @@
 
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global ZeroFillByte // (void *mem, int size) -> void
-// .global ZeroFillWord // (void *memBlock, int size) -> void
+// .global ZeroFillByByte // (void *mem, int size) -> void
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void

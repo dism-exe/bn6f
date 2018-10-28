@@ -829,7 +829,7 @@ chatbox_runScript:
 	ldr r0, [r0,#0x2c] // ChatBoxPropreties.pScriptCursor
 	// size
 	ldr r1, off_80404A4 // =0x230 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0-r3}
 	str r2, [r5,#0x4c] // ChatBoxPropreties.unk_4C
 	str r3, [r5,#0x50] // ChatBoxPropreties.unk_50
@@ -973,7 +973,7 @@ chatbox_reqBBS_80404C0:
 	ldr r0, [r0,#0x2c]
 	// size
 	ldr r1, off_80405DC // =0x230 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0-r3}
 	str r2, [r5,#0x4c] // ChatBoxPropreties.unk_4C
 	str r3, [r5,#0x50] // ChatBoxPropreties.unk_50
@@ -1112,7 +1112,7 @@ dead_80405F8:
 	ldr r0, [r0,#0x2c]
 	// size
 	ldr r1, off_8040714 // =0x230 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0-r3}
 	str r2, [r5,#0x4c]
 	str r3, [r5,#0x50]
@@ -2155,7 +2155,7 @@ chatbox_8040DBC:
 	mov r2, #0
 loc_8040DC4:
 	push {r0-r2}
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0-r2}
 	add r0, #0x60 
 	add r2, #1
@@ -2183,7 +2183,7 @@ chatbox_8040DDC:
 	mov r2, #0
 loc_8040DEC:
 	push {r0-r2}
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0-r2}
 	add r0, #0x60 
 	add r2, #1

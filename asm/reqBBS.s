@@ -9,7 +9,7 @@ reqBBS_813E07C:
 	ldr r0, off_813E0A0 // =reqBBS_bxo_2001150 
 	// size
 	mov r1, #0x2c 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0}
 	ldr r5, off_813E0A0 // =reqBBS_bxo_2001150 
 	strb r0, [r5,#0x4] // (byte_2001154 - 0x2001150)
@@ -748,12 +748,12 @@ reqBBS_813E616:
 	ldr r0, off_813E6BC // =unk_2000FC0 
 	// size
 	mov r1, #0x20 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	// memBlock
 	ldr r0, off_813E6C0 // =unk_2000FF0 
 	// size
 	mov r1, #0x20 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 .endfunc // reqBBS_813E616
 
@@ -777,14 +777,14 @@ reqBBS_dead_813E634:
 	add r0, r0, r1
 	// size
 	mov r1, #4
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	lsl r0, r4, #2
 	ldr r1, off_813E6CC // =unk_2000FF0 
 	// memBlock
 	add r0, r0, r1
 	// size
 	mov r1, #4
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4,pc}
 .endfunc // reqBBS_dead_813E634
 
@@ -1021,7 +1021,7 @@ reqBBS_dead_813E910:
 	push {r4-r7,lr}
 	ldr r0, off_813E97C // =unk_2018A04 
 	mov r1, #0x40 
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	mov r6, r10
 	ldr r6, [r6,#0x24]
 	ldrh r6, [r6]
@@ -1790,7 +1790,7 @@ reqBBS_init_s_2005780:
 	push {r1-r3}
 	// size
 	mov r1, #0x2c 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r1-r3}
 	ldr r0, off_813F400 // =dynaicArr 
 	mov r4, #0xd // reqBBS_GUI.numPoints
@@ -2571,12 +2571,12 @@ reqBBS_initMemory_813F9DA:
 	ldr r0, off_813FD88 // =reqBBS_numRequestsSent 
 	// size
 	mov r1, #4
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	// memBlock
 	ldr r0, off_813FD8C // =unk_2000770 
 	// size
 	mov r1, #4
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 .endfunc // reqBBS_initMemory_813F9DA
 
@@ -2600,14 +2600,14 @@ reqBBS_dead_initMemory_813F9F8:
 	add r0, r0, r1
 	// size
 	mov r1, #4
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	lsl r0, r4, #2
 	ldr r1, off_813FD98 // =unk_2000770 
 	// memBlock
 	add r0, r0, r1
 	// size
 	mov r1, #4
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4,pc}
 .endfunc // reqBBS_dead_initMemory_813F9F8
 

@@ -6,7 +6,7 @@ sub_8080D90:
 	push {lr}
 	ldr r0, off_8080D9C // =dword_2009690 
 	mov r1, #8
-	bl ZeroFillByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {pc}
 off_8080D9C: .word dword_2009690
 .endfunc // sub_8080D90

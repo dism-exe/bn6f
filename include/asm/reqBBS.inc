@@ -52,8 +52,8 @@
 /* External Symbols */
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global ZeroFillHalfword
-// .global ZeroFillWord // (void *memBlock, int size) -> void
+// .global ZeroFillByHalfword
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global loc_8000AC8
 // .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void

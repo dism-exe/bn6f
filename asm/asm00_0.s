@@ -287,7 +287,7 @@ sub_80007B2:
 	ldr r0, memBlock // =dword_200A490 
 	// size
 	ldr r1, numWords // =0x20c 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 .endfunc // sub_80007B2
 
@@ -423,8 +423,8 @@ off_80008B0: .word loc_800084E+1
 // Fill r0 with zero.
 // Size is in r1, in bytes.
 // Does a backwards fill for speed
-	thumb_func_start ZeroFillByte
-ZeroFillByte:
+	thumb_func_start ZeroFillByByte
+ZeroFillByByte:
 	push {r0-r2,lr}
 	mov r2, #0
 loc_80008B8:
@@ -432,13 +432,13 @@ loc_80008B8:
 	strb r2, [r0,r1]
 	bne loc_80008B8
 	pop {r0-r2,pc}
-	thumb_func_end ZeroFillByte
+	thumb_func_end ZeroFillByByte
 
 // Fills r0 with zero, using halfwords.
 // Size is in r1, in bytes.
 // Source, destination, and size must be halfword compatible 
-	thumb_func_start ZeroFillHalfword
-ZeroFillHalfword:
+	thumb_func_start ZeroFillByHalfword
+ZeroFillByHalfword:
 	push {r0-r3,lr}
 	ldr r2, .FillHalfwordCpuSetMask_80008DC // =0x1000000 
 	lsr r1, r1, #1
@@ -453,15 +453,15 @@ ZeroFillHalfword:
 	pop {r0-r3,pc}
 	.balign 4, 0
 .FillHalfwordCpuSetMask_80008DC: .word 0x1000000
-	thumb_func_end ZeroFillHalfword
+	thumb_func_end ZeroFillByHalfword
 
 // (void *memBlock, int size) -> void
 
 // Fills r0 with zero, using words.
 // Size is in r1, in bytes.
 // Source, destination, and size must be word compatible 
-	thumb_func_start ZeroFillWord
-ZeroFillWord:
+	thumb_func_start ZeroFillByWord
+ZeroFillByWord:
 	push {r0-r3,lr}
 	ldr r2, .FillWordCpuSetMask_80008FC // =0x5000000 
 	lsr r1, r1, #2
@@ -476,7 +476,7 @@ ZeroFillWord:
 	pop {r0-r3,pc}
 	.balign 4, 0
 .FillWordCpuSetMask_80008FC: .word 0x5000000
-	thumb_func_end ZeroFillWord
+	thumb_func_end ZeroFillByWord
 
 // (int a1, int a2) -> void
 	thumb_func_start ZeroFillByEightWords
@@ -2623,7 +2623,7 @@ sub_80017E0:
 	push {lr}
 	ldr r0, off_8001800 // =byte_3001960 
 	mov r1, #2
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	pop {pc}
 .endfunc // sub_80017E0
 
@@ -2633,10 +2633,10 @@ main_static_80017EC:
 	push {lr}
 	ldr r0, off_8001800 // =byte_3001960 
 	mov r1, #2
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	ldr r0, dword_8001804 // =0x5000000 
 	mov r1, #2
-	bl ZeroFillHalfword
+	bl ZeroFillByHalfword
 	pop {pc}
 off_8001800: .word byte_3001960
 dword_8001804: .word 0x5000000
@@ -2665,7 +2665,7 @@ sub_8001820:
 	ldr r0, [r2,#0x20]
 	// size
 	mov r1, #8
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 .endfunc // sub_8001820
 
@@ -2678,7 +2678,7 @@ sub_800182E:
 	ldr r0, [r2,#0x1c]
 	// size
 	mov r1, #0xc
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 .endfunc // sub_800182E
 
@@ -3141,7 +3141,7 @@ sub_8001AFC:
 	ldr r0, off_8001C40 // =byte_20094C0 
 	// size
 	ldr r1, off_8001B08 // =0x1b0 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_8001B08: .word 0x1B0
 .endfunc // sub_8001AFC
@@ -4253,7 +4253,7 @@ sub_8002368:
 	ldr r0, off_8002464 // =byte_20097A0 
 	// size
 	ldr r1, off_8002374 // =0x108 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_8002374: .word 0x108
 .endfunc // sub_8002368
@@ -4301,7 +4301,7 @@ sub_80023A8:
 	ldr r0, off_8002464 // =byte_20097A0 
 	// size
 	ldr r1, off_80023B4 // =0xd8 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_80023B4: .word 0xD8
 .endfunc // sub_80023A8
@@ -4392,7 +4392,7 @@ sub_8002468:
 	add r0, r5, #0
 	// size
 	mov r1, #0x50 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0-r2}
 	str r0, [r5,#0x4] // (dword_200A6A4 - 0x200a6a0)
 	str r1, [r5,#0x8] // (dword_200A6A8 - 0x200a6a0)
@@ -4420,7 +4420,7 @@ loc_8002498:
 	add r0, r5, #0
 	// size
 	mov r1, #0x50 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4-r7,pc}
 .endfunc // sub_8002484
 
@@ -4432,7 +4432,7 @@ sub_80024A2:
 	ldr r0, off_80024C8 // =byte_200A6A0 
 	// size
 	mov r1, #0x50 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4-r7,pc}
 .endfunc // sub_80024A2
 
@@ -4633,7 +4633,7 @@ sub_800260C:
 	bl sprite_handleObjSprites_800289C
 	ldr r0, off_800264C // =unk_200F388 
 	mov r1, #7
-	bl ZeroFillByte // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {r4,pc}
 dword_800263C: .word 0x7000000
 off_8002640: .word 0x400

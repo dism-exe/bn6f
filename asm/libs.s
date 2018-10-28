@@ -5231,12 +5231,12 @@ loc_814685C:
 	add r0, r6, #0
 	// size
 	mov r1, #0x10
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	// memBlock
 	add r0, r5, #0
 	// size
 	mov r1, #8
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	add r6, #0x10
 	add r5, #8
 	add r0, r4, #1
@@ -6098,7 +6098,7 @@ loc_8146DFC:
 	add r9, r0
 	// memBlock
 	ldr r0, [r6,#0xc]
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	add r0, r6, #0
 	mov r1, r9
 	bl sub_8146E48

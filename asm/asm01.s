@@ -425,7 +425,7 @@ sub_8020134:
 	ldr r0, off_8020164 // =unk_2038160 
 	// size
 	mov r1, #4
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 .endfunc // sub_8020134
 

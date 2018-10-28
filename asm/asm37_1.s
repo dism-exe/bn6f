@@ -10,7 +10,7 @@ sub_814187C:
 	add r0, #8
 	// size
 	mov r1, #0x10
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0x50 
 	strb r0, [r5,#0x10] // (dword_2001020 - 0x2001010)
 	// entryIdx
@@ -610,7 +610,7 @@ sub_8142134:
 	add r0, r5, #0
 	add r0, #8
 	mov r1, #0x40 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #7
 	mov r1, #0x40 
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -1305,7 +1305,7 @@ sub_81429CA:
 	add r6, r0, #0
 	// size
 	mov r1, #0x10
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_8142990
 	add r4, r0, #0
 	bl sub_81421D0
@@ -2073,7 +2073,7 @@ loc_81431B4:
 	bl sub_814339C
 	add r0, r5, #0
 	ldr r1, off_81431F4 // =0xa0 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0
 	bl sub_81430B6
 	// <mkdata>
@@ -2270,7 +2270,7 @@ sub_814339C:
 	add r0, #8
 	// size
 	mov r1, #0x40 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #5
 	bl sub_81433D2
 	bl sub_8143406
@@ -3022,7 +3022,7 @@ sub_8143F20:
 	add r0, #8
 	// size
 	mov r1, #0x40 
-	bl ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 .endfunc // sub_8143F20
