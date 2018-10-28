@@ -11,7 +11,7 @@
 /* External Symbols */
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+// .global ZeroFillWord // (void *memBlock, int size) -> void
 // .global sub_8001172
 // .global sub_800118A
 

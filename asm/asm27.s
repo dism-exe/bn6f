@@ -53,7 +53,7 @@ sub_8094720:
 	ldr r0, off_8094778 // =unk_2026404 
 	mov r1, #0x10
 	lsl r1, r1, #8
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	ldr r0, off_8094778 // =unk_2026404 
 	bl sub_8094738
 	mov r0, #0

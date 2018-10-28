@@ -287,7 +287,7 @@ sub_80007B2:
 	ldr r0, memBlock // =dword_200A490 
 	// size
 	ldr r1, numWords // =0x20c 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
 .endfunc // sub_80007B2
 
@@ -420,7 +420,8 @@ off_80008B0: .word loc_800084E+1
 
 // (void *mem, int size) -> void
 
-// Fill r1 bytes of zero starting at r0
+// Fill r0 with zero.
+// Size is in r1, in bytes.
 // Does a backwards fill for speed
 	thumb_func_start ZeroFillByte
 ZeroFillByte:
@@ -433,12 +434,13 @@ loc_80008B8:
 	pop {r0-r2,pc}
 	thumb_func_end ZeroFillByte
 
-// r0 = destination
-// r1 = length in bytes (converted to halfword length in function)
+// Fills r0 with zero, using halfwords.
+// Size is in r1, in bytes.
+// Destination and size must be halfword compatible 
 	thumb_func_start ZeroFillHalfword
 ZeroFillHalfword:
 	push {r0-r3,lr}
-	ldr r2, .CpuSetFillMask_80008DC // =0x1000000 
+	ldr r2, .FillHalfwordCpuSetMask_80008DC // =0x1000000 
 	lsr r1, r1, #1
 	orr r2, r1
 	add r1, r0, #0
@@ -450,15 +452,18 @@ ZeroFillHalfword:
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0
-.CpuSetFillMask_80008DC: .word 0x1000000
+.FillHalfwordCpuSetMask_80008DC: .word 0x1000000
 	thumb_func_end ZeroFillHalfword
 
-.func
-.thumb_func
 // (void *memBlock, int size) -> void
-CpuSet_ZeroFillWord:
+
+// Fills r0 with zero, using words.
+// Size is in r1, in bytes.
+// Destination and size must be word compatible 
+	thumb_func_start ZeroFillWord
+ZeroFillWord:
 	push {r0-r3,lr}
-	ldr r2, dword_80008FC // =0x5000000 
+	ldr r2, .FillWordCpuSetMask_80008FC // =0x5000000 
 	lsr r1, r1, #2
 	orr r2, r1
 	add r1, r0, #0
@@ -470,8 +475,8 @@ CpuSet_ZeroFillWord:
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0x00
-dword_80008FC: .word 0x5000000
-.endfunc // CpuSet_ZeroFillWord
+.FillWordCpuSetMask_80008FC: .word 0x5000000
+	thumb_func_end ZeroFillWord
 
 .func
 .thumb_func
@@ -2656,7 +2661,7 @@ sub_8001820:
 	ldr r0, [r2,#0x20]
 	// size
 	mov r1, #8
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
 .endfunc // sub_8001820
 
@@ -2669,7 +2674,7 @@ sub_800182E:
 	ldr r0, [r2,#0x1c]
 	// size
 	mov r1, #0xc
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
 .endfunc // sub_800182E
 
@@ -3132,7 +3137,7 @@ sub_8001AFC:
 	ldr r0, off_8001C40 // =byte_20094C0 
 	// size
 	ldr r1, off_8001B08 // =0x1b0 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_8001B08: .word 0x1B0
 .endfunc // sub_8001AFC
@@ -4244,7 +4249,7 @@ sub_8002368:
 	ldr r0, off_8002464 // =byte_20097A0 
 	// size
 	ldr r1, off_8002374 // =0x108 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_8002374: .word 0x108
 .endfunc // sub_8002368
@@ -4292,7 +4297,7 @@ sub_80023A8:
 	ldr r0, off_8002464 // =byte_20097A0 
 	// size
 	ldr r1, off_80023B4 // =0xd8 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_80023B4: .word 0xD8
 .endfunc // sub_80023A8
@@ -4383,7 +4388,7 @@ sub_8002468:
 	add r0, r5, #0
 	// size
 	mov r1, #0x50 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {r0-r2}
 	str r0, [r5,#0x4] // (dword_200A6A4 - 0x200a6a0)
 	str r1, [r5,#0x8] // (dword_200A6A8 - 0x200a6a0)
@@ -4411,7 +4416,7 @@ loc_8002498:
 	add r0, r5, #0
 	// size
 	mov r1, #0x50 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {r4-r7,pc}
 .endfunc // sub_8002484
 
@@ -4423,7 +4428,7 @@ sub_80024A2:
 	ldr r0, off_80024C8 // =byte_200A6A0 
 	// size
 	mov r1, #0x50 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {r4-r7,pc}
 .endfunc // sub_80024A2
 

@@ -370,7 +370,7 @@ sub_80028D4:
 	add r0, r5, #0
 	// size
 	mov r1, #0x50 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {r0}
 	str r0, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
 	add r0, r5, #0

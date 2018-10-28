@@ -148052,7 +148052,7 @@ sub_8102CF8:
 	add r0, sp, #0x28
 	// size
 	mov r1, #0x30 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	bl object_getFlipDirection_800E2CA // () -> int
 	ldr r2, [sp]
 	ldrb r2, [r2,#0x12]

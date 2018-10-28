@@ -115,7 +115,7 @@
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global ZeroFillHalfword
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+// .global ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 // .global sub_8000E30
 // .global sub_8001532

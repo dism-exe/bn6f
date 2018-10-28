@@ -44,7 +44,7 @@
 
 /* External Symbols */
 .include "asm/asm00_0.inc"
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+// .global ZeroFillWord // (void *memBlock, int size) -> void
 // .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global sub_800096C
 // .global sub_800098C

@@ -653,7 +653,7 @@ sub_8123790:
 	add r0, r5, #0
 	// size
 	mov r1, #0x80
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 locret_81237B4:
 	pop {pc}
 	.balign 4, 0x00
@@ -4334,7 +4334,7 @@ sub_81258F8:
 	ldr r0, off_8125984 // =unk_201DC20 
 	// size
 	ldr r1, off_8125988 // =0x320 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	mov r4, #1
 	mov r5, #0
 	ldr r7, off_8125984 // =unk_201DC20 
@@ -4418,7 +4418,7 @@ sub_8125994:
 	ldr r0, off_8125A60 // =dword_201E420 
 	// size
 	ldr r1, off_8125A64 // =0x578 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	mov r4, #1
 	mov r5, #0
 	mov r6, #0
@@ -4537,7 +4537,7 @@ sub_8125A6C:
 	ldr r0, off_8125B30 // =dword_201EC20 
 	// size
 	ldr r1, off_8125B34 // =0x578 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	mov r4, #1
 	mov r5, #0
 	mov r6, #0
@@ -4652,7 +4652,7 @@ sub_8125B3C:
 	ldr r0, off_8125BFC // =dword_201F420 
 	// size
 	ldr r1, off_8125C00 // =0x578 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	mov r4, #1
 	mov r5, #0
 	mov r6, #0
@@ -4765,7 +4765,7 @@ sub_8125C08:
 	ldr r0, off_8125CE4 // =dword_201FC20 
 	// size
 	ldr r1, off_8125CE8 // =0x578 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	mov r4, #0
 	mov r5, #0
 	mov r6, #0
@@ -7092,7 +7092,7 @@ loc_8127042:
 	ldr r0, [r0,#0x34]
 	// size
 	mov r1, #0x80
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	strb r4, [r5]
 	b locret_812705E
 loc_812705A:
@@ -9735,7 +9735,7 @@ sub_81288BC:
 	add r0, r5, #0
 	// size
 	mov r1, #0x80
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	mov r0, #0x30 
 	strb r0, [r5]
 	bl chatbox_8040818
@@ -9884,7 +9884,7 @@ dword_8128A34: .word 0x201BFDE
 	push {lr}
 	ldr r0, dword_8128AA0 // =0x6004020 
 	mov r1, #0x20 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
 .func
 .thumb_func
@@ -13095,7 +13095,7 @@ sub_812A424:
 	ldr r0, off_812A48C // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	mov r0, #0
 	strb r0, [r5,#0x1c]
 	strb r0, [r5,#0x1e]
@@ -13400,7 +13400,7 @@ sub_812A694:
 	ldr r0, off_812A6F0 // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	mov r0, #0
 	strb r0, [r5,#0x1c]
 	strb r0, [r5,#0x1e]
@@ -14441,7 +14441,7 @@ loc_812AE96:
 	ldr r0, off_812AEC0 // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 	// a1
 	ldr r0, off_812AEC4 // =dword_812913C+20 
@@ -14789,7 +14789,7 @@ sub_812B1DC:
 	ldr r0, off_812B258 // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	ldrh r2, [r4,#2]
 	ldrb r1, [r4,#1]
 	ldrb r0, [r4]
@@ -15203,7 +15203,7 @@ sub_812B4AC:
 	strb r0, [r5,#0x1e] // (sSubmenu.unk_1E - 0x2009a30)
 	ldr r0, off_812B4FC // =unk_20251A0 
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 	ldr r0, off_812B500 // =dword_812913C+20 
 	bl sub_80465A0 // (void *a1) -> void
@@ -15494,7 +15494,7 @@ loc_812B71A:
 	ldr r0, off_812B750 // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 .endfunc // sub_812B708
 
@@ -16555,7 +16555,7 @@ sub_812BFAC:
 	ldr r0, off_812BFEC // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 	// a1
 	ldr r0, off_812BFF0 // =dword_812913C+20 
@@ -16627,7 +16627,7 @@ sub_812C034:
 	ldr r0, off_812C074 // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 	// a1
 	ldr r0, off_812C078 // =dword_812913C+20 
@@ -16672,7 +16672,7 @@ sub_812C094:
 	ldr r0, off_812C0C4 // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 	// a1
 	ldr r0, off_812C0C8 // =dword_812913C+20 

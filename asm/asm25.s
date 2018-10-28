@@ -625,7 +625,7 @@ dword_808FDBC: .word 0x2011B30
 	ldr r0, off_808FEA0 // =off_808FDB8 
 	ldr r0, [r0]
 	mov r1, #0x60 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	bl sub_808FE64
 	mov r0, #0xff
 	strb r0, [r5,#0x4] // (byte_2000314 - 0x2000310)
@@ -673,7 +673,7 @@ sub_808FE34:
 	ldr r0, off_808FEA0 // =off_808FDB8 
 	ldr r0, [r0]
 	mov r1, #0x60 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 loc_808FE4E:
 	mov r0, #0xff
 	str r0, [r5,#0x20] // (dword_2000330 - 0x2000310)
@@ -694,7 +694,7 @@ sub_808FE64:
 	ldr r0, [r0,#0x4] // (dword_808FDBC - 0x808fdb8)
 	// size
 	mov r1, #0x80
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	mov r0, #0
 	pop {pc}
 .endfunc // sub_808FE64

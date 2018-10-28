@@ -290,7 +290,7 @@ sub_8021C68:
 	ldr r0, [r0,#0x4c]
 	// size
 	ldr r1, dword_8021C78 // =0xf00 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
 	.balign 4, 0x00
 dword_8021C78: .word 0xF00

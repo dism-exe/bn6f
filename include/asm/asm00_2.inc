@@ -349,7 +349,7 @@
 // .global sound_play // () -> void
 // .global musicGameState_8000784 // () -> void
 // .global ZeroFillHalfword
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+// .global ZeroFillWord // (void *memBlock, int size) -> void
 // .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 // .global loc_8000AC4
 // .global loc_8000AC8

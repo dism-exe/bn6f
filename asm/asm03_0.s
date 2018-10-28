@@ -519,7 +519,7 @@ sub_8026840:
 	ldr r0, off_80269CC // =dword_20349A0 
 	// size
 	mov r1, #0x14
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	bl sub_802A210
 loc_8026858:
 	bl sub_801DF92
@@ -577,7 +577,7 @@ loc_80268AC:
 	ldr r0, off_8026BF0 // =dword_20364C0 
 	// size
 	mov r1, #0x70 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	ldr r5, off_8026BF0 // =dword_20364C0 
 	mov r0, r10
 	ldr r0, [r0,#0x18]
@@ -3221,7 +3221,7 @@ sub_8027E2C:
 	add r4, r0, #0
 	// size
 	mov r1, #0x90
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	bl sub_802A40C
 	bl sub_8027E90
 	mov r0, r10
@@ -5694,7 +5694,7 @@ sub_8029110:
 	ldr r0, off_80293D4 // =dword_2033000 
 	// size
 	mov r1, #0x48 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	ldr r4, off_80293D4 // =dword_2033000 
 	ldr r6, off_80293CC // =byte_20366C0 
 	mov r3, #6
@@ -8729,7 +8729,7 @@ sub_802A866:
 	bl sub_802B298
 	// size
 	mov r1, #0x40 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	bl sub_802B298
 	mov r1, #1
 	strb r1, [r0,#7]
@@ -10581,7 +10581,7 @@ loc_802B6F6:
 	ldr r0, off_802BA44 // =word_2036660 
 	// size
 	mov r1, #0x20 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	mov r7, #0
 	cmp r6, #0
 	beq loc_802B708
@@ -13386,7 +13386,7 @@ sub_802CE54:
 	ldr r0, off_802D020 // =unk_2036720 
 	// size
 	mov r1, #0x20 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
 .endfunc // sub_802CE54
 
@@ -13683,7 +13683,7 @@ sub_802D070:
 	push {r0}
 	// size
 	mov r1, #0x20 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {r3}
 	mov r0, #0
 	strb r0, [r3,#0x10]
@@ -14495,7 +14495,7 @@ sub_802D638:
 	ldr r0, off_802D68C // =unk_2000070 
 	// size
 	mov r1, #0x20 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
 .endfunc // sub_802D638
 
@@ -15566,7 +15566,7 @@ sub_802DFC8:
 	mov r1, #0xe8
 	// size
 	add r1, r1, r1
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	bl sub_800A8F8
 	beq locret_802DFFA
 	mov r0, #1
@@ -15593,7 +15593,7 @@ sub_802DFFC:
 	ldr r0, off_802E208 // =unk_2036120 
 	mov r1, #0xe8
 	lsl r1, r1, #2
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	ldr r0, off_802E20C // =eBattleObjectPlayer 
 	ldr r1, off_802E210 // =unk_20362F0 
 	str r0, [r1,#0x44] // (dword_2036334 - 0x20362f0)
@@ -15609,12 +15609,12 @@ sub_802E014:
 	ldr r0, off_802E214 // =unk_2036120 
 	// size
 	mov r1, #0x60 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	// memBlock
 	ldr r0, off_802E218 // =unk_20362F0 
 	// size
 	mov r1, #0x60 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	ldr r0, off_802E21C // =eBattleObjectPlayer 
 	ldr r1, off_802E220 // =unk_20362F0 
 	str r0, [r1,#0x44] // (dword_2036334 - 0x20362f0)
@@ -18292,7 +18292,7 @@ sub_802F530:
 	ldr r0, off_802F570 // =sStartScr 
 	// size
 	mov r1, #0x20 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	mov r1, r10
 	ldr r1, [r1]
 	mov r0, #0
@@ -19405,7 +19405,7 @@ sub_802FF4C:
 	ldr r0, [r0,#0xc]
 	// size
 	mov r1, #0x4c 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillWord // (void *memBlock, int size) -> void
 	pop {r0,r1,r5}
 	strb r0, [r5,#3]
 	str r1, [r5,#0x14]
