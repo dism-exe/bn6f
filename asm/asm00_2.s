@@ -12230,20 +12230,20 @@ sub_80147E4:
 	mov r1, #8
 	add r1, r1, r5
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	add r0, r6, #0
 	ldr r1, off_8014824 // =unk_203A980 
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	add r0, r7, #0
 	mov r1, #0x18
 	add r1, r1, r5
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	add r0, r7, #0
 	ldr r1, off_8014828 // =unk_203A990 
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, #0
 	str r0, [r5]
 	mov r0, #1

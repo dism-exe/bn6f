@@ -77,7 +77,7 @@
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+// .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010BE

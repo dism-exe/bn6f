@@ -4142,7 +4142,7 @@ sub_81323B0:
 	add r1, r1, r0
 	add r0, r7, #0
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 loc_81323D8:
 	add r7, #0x10
 	ldrb r1, [r7]
@@ -4160,7 +4160,7 @@ loc_81323D8:
 	add r1, r1, r0
 	add r0, r7, #0
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r4, off_813242C // =unk_2033800 
 	ldrb r3, [r5,#0xf]
 	mov r0, #0x20 
@@ -12305,7 +12305,7 @@ sub_813660C:
 	ldr r0, off_8136638 // =unk_201CF80 
 	ldr r1, off_813663C // =unk_30019E0 
 	ldr r2, off_8136640 // =0x100 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, #1
 	b loc_8136632
 loc_8136620:
@@ -12315,7 +12315,7 @@ loc_8136620:
 	add r0, r0, r1
 	ldr r1, off_813663C // =unk_30019E0 
 	ldr r2, off_8136640 // =0x100 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, #0
 loc_8136632:
 	bl sub_8136644
@@ -13258,7 +13258,7 @@ sub_8136C24:
 	ldr r0, off_8136DD8 // =byte_86A5D20 
 	ldr r1, off_8136DDC // =unk_30019A0 
 	mov r2, #0x20 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
 	.balign 4, 0x00
 off_8136DD8: .word byte_86A5D20
@@ -14631,7 +14631,7 @@ sub_8137790:
 	ldr r3, [r3,#0x48]
 	add r1, r1, r3
 	mov r2, #0x3c 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	add r0, r4, #0
 	mov r1, #1
 	bl sub_8021AB4

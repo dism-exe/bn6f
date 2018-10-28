@@ -10904,7 +10904,7 @@ loc_80AADB6:
 	ldr r0, [r0,#0x4c]
 	ldr r1, off_80AAE7C // =dword_2033000 
 	ldr r2, off_80AAE80 // =0xf00 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, r10
 	ldr r0, [r0,#0x40]
 	ldrb r0, [r0,#5]

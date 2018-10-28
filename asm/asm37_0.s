@@ -503,12 +503,12 @@ sub_813BA64:
 	ldr r0, [r0,#0x58]
 	ldr r1, off_813BA9C // =unk_201BA00 
 	mov r2, #0x40 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, r10
 	ldr r0, [r0,#0x5c]
 	ldr r1, off_813BAA0 // =unk_201BA40 
 	ldr r2, off_813BAA4 // =0x188 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
 .endfunc // sub_813BA64
 
@@ -520,12 +520,12 @@ sub_813BA80:
 	ldr r1, [r1,#0x58]
 	ldr r0, off_813BA9C // =unk_201BA00 
 	mov r2, #0x40 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r1, r10
 	ldr r1, [r1,#0x5c]
 	ldr r0, off_813BAA0 // =unk_201BA40 
 	ldr r2, off_813BAA4 // =0x188 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
 off_813BA9C: .word unk_201BA00
 off_813BAA0: .word unk_201BA40
@@ -540,12 +540,12 @@ sub_813BAA8:
 	ldr r0, [r0,#0x58]
 	ldr r1, off_813BAE0 // =unk_201BC40 
 	mov r2, #0x40 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, r10
 	ldr r0, [r0,#0x5c]
 	ldr r1, off_813BAE4 // =unk_201BC80 
 	ldr r2, off_813BAE8 // =0x188 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
 .endfunc // sub_813BAA8
 
@@ -557,12 +557,12 @@ sub_813BAC4:
 	ldr r1, [r1,#0x58]
 	ldr r0, off_813BAE0 // =unk_201BC40 
 	mov r2, #0x40 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r1, r10
 	ldr r1, [r1,#0x5c]
 	ldr r0, off_813BAE4 // =unk_201BC80 
 	ldr r2, off_813BAE8 // =0x188 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
 off_813BAE0: .word unk_201BC40
 off_813BAE4: .word unk_201BC80
@@ -4429,11 +4429,11 @@ loc_813DA22:
 	ldr r0, off_813DB10 // =word_2036780 
 	ldr r1, off_813DB14 // =unk_20399F0 
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r0, off_813DB18 // =word_2036780 
 	ldr r1, off_813DB1C // =unk_2039A00 
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 locret_813DA36:
 	pop {r4,pc}
 .endfunc // sub_813DA0C
@@ -4446,12 +4446,12 @@ locret_813DA36:
 	add r2, r1, #0
 	add r1, r0, #0
 	ldr r0, [r3,#0x34]
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 locret_813DA4C:
 	pop {pc}
 	.byte 0, 0
 	push {lr}
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
 	push {r4,lr}
 	add r2, r1, #0

@@ -127,11 +127,11 @@ loc_801FED2:
 	ldr r0, off_80200DC // =word_2036780 
 	ldr r1, off_80200E0 // =unk_20399F0 
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r0, off_80200E4 // =word_2036780 
 	ldr r1, off_80200E8 // =unk_2039A00 
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 locret_801FEE6:
 	pop {r4,r6,pc}
 .endfunc // sub_801FE6C

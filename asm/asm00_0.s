@@ -517,6 +517,7 @@ CopyBytes:
 // (u16 *src, u16 *dest, int halfwordCount) -> void
 
 // Copy r2 bytes from r0 to r1, in units of halfwords.
+// Note that size is specified in bytes, which is then converted to halfword count in function
 // Source, destination, and size must be halfword compatible.
 	thumb_func_start CopyHalfwords
 CopyHalfwords:
@@ -529,20 +530,22 @@ CopyHalfwords:
 .HalfwordCopyCpuSetMask_8000938: .word 0x0
 	thumb_func_end CopyHalfwords
 
-.func
-.thumb_func
 // (u32 *src, u32 *dest, int size) -> void
-CpuSet_copyWords:
+
+// Copy r2 bytes from r0 to r1, in units of words.
+// Note r2 represents byte count, which is then converted to word count in function
+// Source, destination, and size must be word compatible.
+	thumb_func_start CopyWords
+CopyWords:
 	push {r0-r3,lr}
-	ldr r3, dword_800094C // =LCDControl 
-	// byteCount -> wordCount
+	ldr r3, .WordCopyCpuSetMask_800094C
 	lsr r2, r2, #2
 	orr r2, r3
 	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
 	pop {r0-r3,pc}
 	.balign 4, 0x00
-dword_800094C: .word 0x4000000
-.endfunc // CpuSet_copyWords
+.WordCopyCpuSetMask_800094C: .word 0x4000000
+	thumb_func_end CopyWords
 
 .func
 .thumb_func
@@ -755,7 +758,7 @@ loc_8000A96:
 off_8000AA4: .word off_8000AA8
 off_8000AA8: .word CopyBytes+1
 	.word CopyHalfwords+1
-	.word CpuSet_copyWords+1
+	.word CopyWords+1
 	.word CpuFastSet_byteCount+1
 .endfunc // objRender_8000A44
 
@@ -888,7 +891,7 @@ bit1_set_8000B78:
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	b continue_advance3Elements_8000B88
 bits5to0_set_8000B7E:
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	b continue_advance3Elements_8000B88
 default_8000B84:
 	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
@@ -2525,7 +2528,7 @@ render_800172C:
 	add r0, #4
 	ldr r1, off_800176C // =BG0Control 
 	mov r2, #0x38 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	// src
 	ldr r0, [r7,#0x1c]
 	// dest

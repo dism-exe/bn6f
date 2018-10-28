@@ -3767,7 +3767,7 @@ sub_8047CEC:
 	ldr r0, off_8047D74 // =unk_80469F0 
 	ldr r1, off_8047D6C // =byte_202F800 
 	ldr r2, off_8047D70 // =0x168 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
 .endfunc // sub_8047CEC
 
@@ -6024,7 +6024,7 @@ loc_8049BC4:
 	lsl r2, r4, #2
 	ldr r1, [r1,r2]
 	mov r2, #0x20 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r3, off_8049C64 // =dword_8049C68 
 	ldrb r3, [r3,r4]
 	lsl r3, r3, #0xc
@@ -10404,7 +10404,7 @@ sub_804CA90:
 	add r0, r7, #0
 	mov r1, sp
 	mov r2, #0x28 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r7, sp
 	bl sub_809E1AE
 	str r0, [r7,#0x18]

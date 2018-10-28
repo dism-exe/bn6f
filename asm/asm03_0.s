@@ -8826,7 +8826,7 @@ sub_802A934:
 	add r1, #0xd0
 	lsl r2, r2, #2
 	beq loc_802A966
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r0, dword_802A96C // =0x820080 
 	bl sub_801DA48
 	ldr r0, dword_802A96C // =0x820080 
@@ -14007,7 +14007,7 @@ copyBattleSettingsTo_200AF60:
 	push {lr}
 	ldr r1, off_802D2E8 // =BattleSettings_200AF60 
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
 .endfunc // copyBattleSettingsTo_200AF60
 
@@ -14709,7 +14709,7 @@ sub_802D7A0:
 	ldr r1, off_802D8EC // =unk_2034A60 
 	add r1, r1, r2
 	mov r2, #0x64 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 loc_802D7E8:
 	ldr r4, [r5,#0x58]
 	ldrb r0, [r5,#0x16]
@@ -14730,7 +14730,7 @@ loc_802D7E8:
 	ldr r0, off_802D8EC // =unk_2034A60 
 	add r0, r0, r2
 	mov r2, #0x64 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	b loc_802D822
 loc_802D81A:
 	add r1, r0, #0
@@ -14921,7 +14921,7 @@ sub_802D9B0:
 	ldr r0, off_802DCB8 // =unk_2034A60 
 	add r0, r0, r2
 	mov r2, #0x64 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r4, [r5,#0x58]
 	ldrb r0, [r5,#0x16]
 	mov r1, #0x29 
@@ -15121,7 +15121,7 @@ sub_802DB80:
 	ldr r0, off_802DCC4 // =unk_2034A60 
 	add r0, r0, r2
 	mov r2, #0x64 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r4, [r5,#0x58]
 	ldrb r0, [r5,#0x16]
 	mov r1, #0x29 
@@ -19163,7 +19163,7 @@ loc_802FDB6:
 	add r4, r0, #0
 	ldr r1, off_802FE08 // =dword_3002590 
 	mov r2, #0x20 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r2, #0
 	mvn r2, r2
 	add r3, r4, #0
@@ -20148,7 +20148,7 @@ loc_8030492:
 	ldr r1, off_803057C // =decomp_2013A00 
 	mov r2, #0xc
 	push {r0,r1}
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {r0,r1}
 	add r0, #0xc
 	add r1, #0xc

@@ -4986,7 +4986,7 @@ chatbox_804222C:
 	add r1, r1, r2
 	pop {r2}
 	push {r1}
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {r0}
 	add r7, r5, #0
 	add r7, #0x64 
