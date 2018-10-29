@@ -19,7 +19,7 @@ sub_8021AB4:
 	mov r2, #0x3c 
 	mul r1, r2
 	mov r3, r10
-	ldr r3, [r3,#0x48]
+	ldr r3, [r3,#oToolkit_S_Chip_2002178_Ptr]
 	add r1, r1, r3
 	mov r2, #0x3c 
 	push {r1}
@@ -198,7 +198,7 @@ sub_8021BD8:
 	pop {r0}
 	bne loc_8021BFE
 	mov r7, r10
-	ldr r7, [r7,#0x4c]
+	ldr r7, [r7,#oToolkit_Unk2002230_Ptr]
 	mov r1, #0xc
 	mul r1, r0
 	add r7, r7, r1
@@ -221,7 +221,7 @@ sub_8021C02:
 	sub sp, sp, #4
 	push {r0,r1}
 	mov r2, r10
-	ldr r2, [r2,#0x40]
+	ldr r2, [r2,#oToolkit_Unk2001c04_Ptr]
 	pop {r0,r1}
 	ldrb r2, [r2,#5]
 	str r2, [sp]
@@ -229,7 +229,7 @@ sub_8021C02:
 	mov r5, #0
 loc_8021C16:
 	mov r7, r10
-	ldr r7, [r7,#0x48]
+	ldr r7, [r7,#oToolkit_S_Chip_2002178_Ptr]
 	ldr r6, off_8021C60 // =unk_20018EC 
 	ldrb r3, [r6,r4]
 	lsr r2, r3, #4
@@ -275,7 +275,7 @@ sub_8021C68:
 	push {lr}
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#0x4c]
+	ldr r0, [r0,#oToolkit_Unk2002230_Ptr]
 	// size
 	ldr r1, dword_8021C78 // =0xf00 
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
@@ -306,7 +306,7 @@ loc_8021C8C:
 	mov r3, #0
 loc_8021C9A:
 	mov r7, r10
-	ldr r7, [r7,#0x4c] // Toolkit.unk_2002230
+	ldr r7, [r7,#oToolkit_Unk2002230_Ptr]
 	mov r1, #12
 	mul r1, r2
 	add r7, r7, r1
@@ -342,7 +342,7 @@ loc_8021CC8:
 	tst r7, r1
 	bne loc_8021CEE
 	mov r7, r10
-	ldr r7, [r7,#0x4c]
+	ldr r7, [r7,#oToolkit_Unk2002230_Ptr]
 	mov r1, #0xc
 	mul r1, r2
 	add r7, r7, r1

@@ -294,13 +294,13 @@ thumb_local_start
 sub_8081308:
 	push {r4-r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldr r1, [r0,#0x3c]
 	ldrb r0, [r1,#4]
 	cmp r0, #0xff
 	bne locret_808135C
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r1, [r0,#4]
 	ldrb r0, [r0,#5]
 	cmp r1, #0x80
@@ -315,7 +315,7 @@ sub_8081308:
 	cmp r0, #0x10
 	bne locret_808135C
 	mov r1, r10
-	ldr r1, [r1,#0x3c]
+	ldr r1, [r1,#oToolkit_GameStatePtr]
 	ldrh r1, [r1,#4]
 	ldr r3, off_8081364 // =word_8081368 
 loc_808133C:

@@ -185,7 +185,7 @@ thumb_local_start
 sub_808C644:
 	push {r4,r5,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x3c]
+	ldr r4, [r4,#oToolkit_GameStatePtr]
 	ldrb r3, [r4,#4]
 	cmp r3, #0x85
 	bne loc_808C654
@@ -342,7 +342,7 @@ sub_808CB0C:
 	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_808CB96
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r1, [r0,#4]
 	cmp r1, #0x85
 	beq loc_808CB3C
@@ -401,7 +401,7 @@ sub_808CBA0:
 	mov r6, #0
 	mov r7, #7
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r1, [r0,#4]
 	cmp r1, #0x85
 	bne loc_808CBB4
@@ -442,7 +442,7 @@ sub_808CBD8:
 	mov r0, #3
 	bl sub_8001172
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r1, [r0,#4]
 	cmp r1, #0x85
 	beq loc_808CC06
@@ -865,7 +865,7 @@ sub_808CF8C:
 	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_808CFAC
 	mov r1, r10
-	ldr r1, [r1,#0x2c]
+	ldr r1, [r1,#oToolkit_ChatboxPtr]
 	mov r2, #0x4c 
 	ldrh r0, [r5,#6]
 	str r0, [r1,r2]
@@ -988,7 +988,7 @@ thumb_local_start
 sub_808D084:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r1, [r0,#4]
 	cmp r1, #0x85
 	bne loc_808D094

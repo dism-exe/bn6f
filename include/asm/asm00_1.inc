@@ -82,7 +82,7 @@
 .global sub_8004DF0
 .global cb_80050EC // () -> void
 .global sub_8005524
-.global gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
+.global gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 .global sub_8005C04
 .global subsystem_launchBBS
 .global subsystem_launchReqBBS

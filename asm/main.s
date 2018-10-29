@@ -21,14 +21,14 @@ main_gameRoutine:
 	bl render_80015D0
 	bl main_static_80003E4
 	mov r0, r10
-	ldr r0, [r0,#0x24] // Toolkit.currFrame
+	ldr r0, [r0,#oToolkit_CurFramePtr]
 	ldrh r1, [r0]
 	add r1, #1
 	strh r1, [r0]
 	bl sub_8000E10
 	ldr r0, off_8000348 // =main_jt_subsystem 
 	mov r1, r10
-	ldr r1, [r1]
+	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	ldrb r1, [r1]
 	ldr r0, [r0,r1]
 	mov lr, pc
@@ -116,7 +116,7 @@ thumb_func_end main_static_await_80003D0
 thumb_local_start
 main_static_80003E4:
 	mov r7, r10
-	ldr r0, [r7,#4]
+	ldr r0, [r7,#oToolkit_JoypadPtr]
 	ldrb r7, [r0,#0x13]
 	add r7, #1
 	cmp r7, #4
@@ -185,14 +185,14 @@ main_static_8000454:
 	bl sub_813D60C
 	bne locret_80004A2
 	mov r7, r10
-	ldr r0, [r7]
+	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]
 	ldrb r0, [r0]
 	cmp r0, #0x10
 	beq locret_80004A2
-	ldr r0, [r7,#4]
+	ldr r0, [r7,#oToolkit_JoypadPtr]
 	ldrh r2, [r0,#2]
 	ldrh r0, [r0]
-	ldr r1, [r7]
+	ldr r1, [r7,#oToolkit_MainJumptableIndexPtr]
 	add r1, #4
 	ldrb r4, [r1]
 	sub r4, #1
@@ -273,7 +273,7 @@ loc_80004C0:
 	strh r1, [r0]
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0]
+	ldr r0, [r0,#oToolkit_MainJumptableIndexPtr]
 	// size
 	mov r1, #8
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void

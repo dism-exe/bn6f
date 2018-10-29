@@ -30,7 +30,7 @@ thumb_func_start sound_bgmusic_play
 sound_bgmusic_play:
 	push {r1-r7,lr}
 	mov r7, r10
-	ldr r7, [r7,#0x3c] // Toolkit.gamestate
+	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r1, [r7,#0xf]
 	cmp r0, r1
 	beq locret_80005F0
@@ -49,7 +49,7 @@ thumb_func_start sub_80005F2
 sub_80005F2:
 	push {r1-r7,lr}
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
 	strb r0, [r7,#0xf]
 	cmp r0, #0x63 
 	bne loc_8000604
@@ -166,7 +166,7 @@ sub_80006A2:
 	cmp r0, #0x25 
 	bgt loc_80006B0
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
 	strb r0, [r7,#0xf]
 	b loc_80006B0
 loc_80006B0:
@@ -354,7 +354,7 @@ sub_8000822:
 	mov r2, #0
 	strb r2, [r3]
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r1, [r7,#0xf]
 	cmp r0, r1
 	beq locret_800085A
@@ -1209,7 +1209,7 @@ thumb_func_end sub_8000DE0
 thumb_func_start sub_8000E10
 sub_8000E10:
 	mov r3, r10
-	ldr r3, [r3,#0x40]
+	ldr r3, [r3,#oToolkit_Unk2001c04_Ptr]
 	ldr r0, [r3,#0x18]
 	add r0, #1
 	ldr r1, dword_8000E24 // =0x14988f0 
@@ -1225,7 +1225,7 @@ thumb_func_end sub_8000E10
 thumb_func_start sub_8000E28
 sub_8000E28:
 	mov r3, r10
-	ldr r3, [r3,#0x40]
+	ldr r3, [r3,#oToolkit_Unk2001c04_Ptr]
 	ldr r0, [r3,#0x18]
 	mov pc, lr
 thumb_func_end sub_8000E28
@@ -1248,7 +1248,7 @@ sub_8000E3A:
 	bl change_20013F0_800151C // () -> int
 	lsr r4, r0, #0x1e
 	mov r0, r10
-	ldr r0, [r0,#0x24]
+	ldr r0, [r0,#oToolkit_CurFramePtr]
 	ldrh r0, [r0]
 	mov r1, #3
 	and r0, r1
@@ -1451,7 +1451,7 @@ sub_8000F86:
 	mov r1, #1
 	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, r10
-	ldr r0, [r0,#0x40]
+	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
 	str r4, [r0,#0x18]
 	bl sub_803F79E
 locret_8000FAA:
@@ -1462,7 +1462,7 @@ thumb_func_start sub_8000FAC
 sub_8000FAC:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c] // Toolkit.gamestate
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	// flag 3 @ 0x2001C88[0x17<<5 + 0x1] (=2001F69)
 	mov r0, #0x17
 	mov r1, #0xc
@@ -1481,7 +1481,7 @@ loc_8000FCE:
 	mov r0, #0
 	str r0, [r5,#0x1c]
 	mov r6, r10
-	ldr r6, [r6,#0x40]
+	ldr r6, [r6,#oToolkit_Unk2001c04_Ptr]
 	str r0, [r6,#0x1c]
 	str r0, [r6,#0x2c]
 	str r0, [r6,#0x28]
@@ -1555,7 +1555,7 @@ loc_8001048:
 	push {r4-r7,lr}
 loc_800104A:
 	mov r6, r10
-	ldr r6, [r6,#0x24]
+	ldr r6, [r6,#oToolkit_CurFramePtr]
 	ldrh r6, [r6]
 	lsl r0, r0, #0x10
 	orr r0, r1
@@ -1583,7 +1583,7 @@ thumb_func_end sub_8001040
 thumb_func_start updatePlayerGameState_800107A
 updatePlayerGameState_800107A:
 	mov r3, r10
-	ldr r3, [r3,#0x3c] // Toolkit.gamestate
+	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r1, [r3,#0x18] // GameState.player
 	ldr r0, [r1,#0x1c] // NPC.scriptArrayOffset
 	str r0, [r3,#0x24] // GameState.player_x
@@ -1626,7 +1626,7 @@ thumb_func_end sub_80010A4
 thumb_func_start getPETNaviSelect
 getPETNaviSelect:
 	mov r3, r10
-	ldr r3, [r3,#0x3c] // Toolkit.gamestate
+	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldrb r0, [r3,#0x1] // GameState.PET_naviSelect
 	mov pc, lr
 thumb_func_end getPETNaviSelect
@@ -1634,7 +1634,7 @@ thumb_func_end getPETNaviSelect
 thumb_func_start sub_80010BE
 sub_80010BE:
 	mov r3, r10
-	ldr r3, [r3,#0x3c]
+	ldr r3, [r3,#oToolkit_GameStatePtr]
 	strb r0, [r3,#1]
 	mov pc, lr
 thumb_func_end sub_80010BE
@@ -1644,7 +1644,7 @@ sub_80010C6:
 	push {lr}
 	bl getPETNaviSelect // () -> u8
 	mov r3, r10
-	ldr r3, [r3,#0x40]
+	ldr r3, [r3,#oToolkit_Unk2001c04_Ptr]
 	strb r0, [r3,#7]
 	pop {pc}
 thumb_func_end sub_80010C6
@@ -1744,7 +1744,7 @@ thumb_func_end sub_8001158
 thumb_func_start sub_8001172
 sub_8001172:
 	mov r3, r10
-	ldr r3, [r3,#0x3c]
+	ldr r3, [r3,#oToolkit_GameStatePtr]
 	strb r0, [r3,#9]
 	mov pc, lr
 	.balign 4, 0x00
@@ -2045,7 +2045,7 @@ thumb_func_end sub_8001330
 thumb_func_start sub_8001382
 sub_8001382:
 	mov r1, r10
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oToolkit_S2034880_Ptr]
 	ldr r2, [r1,#0x5c]
 	orr r2, r0
 	str r2, [r1,#0x5c]
@@ -2055,7 +2055,7 @@ thumb_func_end sub_8001382
 thumb_local_start
 sub_800138E:
 	mov r1, r10
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oToolkit_S2034880_Ptr]
 	ldr r2, [r1,#0x5c]
 	bic r2, r0
 	str r2, [r1,#0x5c]
@@ -2065,7 +2065,7 @@ thumb_func_end sub_800138E
 thumb_func_start sub_800139A
 sub_800139A:
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldr r0, [r0,#0x5c]
 	mov pc, lr
 thumb_func_end sub_800139A
@@ -2073,7 +2073,7 @@ thumb_func_end sub_800139A
 thumb_func_start sub_80013A2
 sub_80013A2:
 	mov r1, r10
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oToolkit_S2034880_Ptr]
 	str r0, [r1,#0x5c]
 	mov pc, lr
 thumb_func_end sub_80013A2
@@ -2388,12 +2388,12 @@ thumb_func_start render_80015D0
 render_80015D0:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x28]
+	ldr r0, [r0,#oToolkit_GFX30025c0_Ptr]
 	ldr r1, dword_80015EC // =0x600e000 
 	ldr r2, dword_80015F0 // =0x2000 
 	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
 	mov r0, r10
-	ldr r0, [r0,#0x28]
+	ldr r0, [r0,#oToolkit_GFX30025c0_Ptr]
 	ldr r1, dword_80015F4 // =0x800 
 	ldr r2, dword_80015F8 // =0x2ff02ff 
 	bl CpuFastSet_80009AC
@@ -2410,7 +2410,7 @@ sub_80015FC:
 	lsl r0, r0, #3
 	add r1, r1, r0
 	mov r3, r10
-	ldr r2, [r3,#8]
+	ldr r2, [r3,#oToolkit_RenderInfoPtr]
 	add r2, #4
 	ldr r0, [r1]
 	str r0, [r2]
@@ -2463,7 +2463,7 @@ thumb_func_start render_800172C
 render_800172C:
 	push {r4-r7,lr}
 	mov r7, r10
-	ldr r5, [r7,#8]
+	ldr r5, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, off_8001768 // =MosaicSize 
 	ldrh r2, [r5,#2]
 	strh r2, [r1]
@@ -2473,19 +2473,19 @@ render_800172C:
 	mov r2, #0x38 
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 	// src
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	// dest
 	ldr r1, off_8001770 // =Window0HorizontalDimensions 
 	// halfwordCount
 	mov r2, #0xc
 	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-	ldr r5, [r7,#0x20]
+	ldr r5, [r7,#oToolkit_Unk2009740_Ptr]
 	ldr r1, off_8001774 // =ColorSpecialEffectsSelection 
 	ldr r2, [r5]
 	str r2, [r1]
 	ldrh r2, [r5,#4]
 	strh r2, [r1,#0x4] // (Brightness_Fade_In_Out_Coefficient - 0x4000050)
-	ldr r5, [r7,#8]
+	ldr r5, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, off_8001764 // =LCDControl 
 	ldrh r2, [r5]
 	strh r2, [r1]
@@ -2500,7 +2500,7 @@ thumb_func_end render_800172C
 thumb_func_start sub_8001778
 sub_8001778:
 	mov r1, r10
-	ldr r1, [r1,#8]
+	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	strh r0, [r1]
 	mov pc, lr
 thumb_func_end sub_8001778
@@ -2508,7 +2508,7 @@ thumb_func_end sub_8001778
 thumb_func_start sub_8001780
 sub_8001780:
 	mov r1, r10
-	ldr r1, [r1,#8]
+	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	ldrh r0, [r1]
 	mov pc, lr
 thumb_func_end sub_8001780
@@ -2516,7 +2516,7 @@ thumb_func_end sub_8001780
 thumb_func_start sub_8001788
 sub_8001788:
 	mov r0, r10
-	ldr r0, [r0,#8]
+	ldr r0, [r0,#oToolkit_RenderInfoPtr]
 	mov r1, #0
 	strh r1, [r0,#0xc]
 	strh r1, [r0,#0xe]
@@ -2532,7 +2532,7 @@ thumb_func_end sub_8001788
 thumb_func_start sub_80017A0
 sub_80017A0:
 	mov r0, r10
-	ldr r0, [r0,#8]
+	ldr r0, [r0,#oToolkit_RenderInfoPtr]
 	mov r1, #0
 	strh r1, [r0,#2]
 	mov pc, lr
@@ -2602,7 +2602,7 @@ sub_8001820:
 	push {lr}
 	mov r2, r10
 	// memBlock
-	ldr r0, [r2,#0x20]
+	ldr r0, [r2,#oToolkit_Unk2009740_Ptr]
 	// size
 	mov r1, #8
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
@@ -2614,7 +2614,7 @@ sub_800182E:
 	push {lr}
 	mov r2, r10
 	// memBlock
-	ldr r0, [r2,#0x1c]
+	ldr r0, [r2,#oToolkit_Unk200f3a0_Ptr]
 	// size
 	mov r1, #0xc
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
@@ -2625,7 +2625,7 @@ thumb_func_start sub_800183C
 sub_800183C:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x28]
+	ldr r0, [r0,#oToolkit_GFX30025c0_Ptr]
 	ldr r1, dword_800184C // =0x2000 
 	bl CpuFastSet_8000900 // (int a1, int a2) -> void
 	pop {pc}
@@ -2660,7 +2660,7 @@ sub_800187C:
 	add r0, r0, r1
 	add r0, r0, r2
 	mov r1, r10
-	ldr r1, [r1,#0x28]
+	ldr r1, [r1,#oToolkit_GFX30025c0_Ptr]
 	add r1, r1, r0
 	strh r3, [r1]
 	mov pc, lr
@@ -2670,7 +2670,7 @@ thumb_func_start sub_8001890
 sub_8001890:
 	push {r4-r7,lr}
 	mov r6, r10
-	ldr r6, [r6,#0x28]
+	ldr r6, [r6,#oToolkit_GFX30025c0_Ptr]
 	lsl r2, r2, #0xb
 	add r6, r6, r2
 	lsl r0, r0, #1
@@ -2722,7 +2722,7 @@ thumb_func_start sub_80018E0
 sub_80018E0:
 	push {r6,r7,lr}
 	mov r6, r10
-	ldr r6, [r6,#0x28]
+	ldr r6, [r6,#oToolkit_GFX30025c0_Ptr]
 	lsl r2, r2, #0xb
 	add r6, r6, r2
 	lsl r1, r1, #6
@@ -2743,7 +2743,7 @@ loc_80018F2:
 	pop {r6,r7,pc}
 	push {r6,r7,lr}
 	mov r6, r10
-	ldr r6, [r6,#0x28]
+	ldr r6, [r6,#oToolkit_GFX30025c0_Ptr]
 	lsl r2, r2, #0xb
 	add r6, r6, r2
 	lsl r0, r0, #1
@@ -2867,7 +2867,7 @@ sub_80019B4:
 	str r3, [r1,#0x4] // (dword_2009694 - 0x2009690)
 	lsr r3, r3, #4
 	mov r1, r10
-	ldr r1, [r1,#8]
+	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	strh r2, [r1,#0x10]
 	strh r3, [r1,#0x12]
 	mov pc, lr
@@ -2885,7 +2885,7 @@ sub_80019D0:
 	str r3, [r1,#0x4] // (dword_2009694 - 0x2009690)
 	lsr r3, r3, #4
 	mov r1, r10
-	ldr r1, [r1,#8]
+	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	strh r2, [r1,#0x18]
 	strh r3, [r1,#0x1a]
 	mov pc, lr
@@ -2899,7 +2899,7 @@ sub_80019EC:
 	str r3, [r1]
 	lsr r3, r3, #4
 	mov r1, r10
-	ldr r1, [r1,#8]
+	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	strh r3, [r1,#0x12]
 	mov pc, lr
 thumb_func_end sub_80019EC
@@ -2912,7 +2912,7 @@ sub_80019FE:
 	str r3, [r1]
 	lsr r3, r3, #4
 	mov r1, r10
-	ldr r1, [r1,#8]
+	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	strh r3, [r1,#0x1a]
 	mov pc, lr
 thumb_func_end sub_80019FE
@@ -2925,7 +2925,7 @@ sub_8001A10:
 	str r2, [r1]
 	lsr r2, r2, #4
 	mov r1, r10
-	ldr r1, [r1,#8]
+	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	strh r2, [r1,#0x12]
 	mov pc, lr
 thumb_func_end sub_8001A10
@@ -2938,7 +2938,7 @@ sub_8001A22:
 	str r2, [r1]
 	lsr r2, r2, #4
 	mov r1, r10
-	ldr r1, [r1,#8]
+	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	strh r2, [r1,#0x1a]
 	mov pc, lr
 thumb_func_end sub_8001A22
@@ -2951,7 +2951,7 @@ sub_8001A34:
 	str r2, [r1]
 	lsr r2, r2, #4
 	mov r1, r10
-	ldr r1, [r1,#8]
+	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	strh r2, [r1,#0x10]
 	mov pc, lr
 thumb_func_end sub_8001A34
@@ -2964,7 +2964,7 @@ sub_8001A46:
 	str r2, [r1]
 	lsr r2, r2, #4
 	mov r1, r10
-	ldr r1, [r1,#8]
+	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	strh r2, [r1,#0x18]
 	mov pc, lr
 thumb_func_end sub_8001A46
@@ -2977,7 +2977,7 @@ sub_8001A58:
 	str r2, [r1]
 	lsr r2, r2, #4
 	mov r1, r10
-	ldr r1, [r1,#8]
+	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	strh r2, [r1,#0x10]
 	mov pc, lr
 thumb_func_end sub_8001A58
@@ -2990,7 +2990,7 @@ sub_8001A6A:
 	str r2, [r1]
 	lsr r2, r2, #4
 	mov r1, r10
-	ldr r1, [r1,#8]
+	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	strh r2, [r1,#0x18]
 	mov pc, lr
 thumb_func_end sub_8001A6A
@@ -3017,7 +3017,7 @@ loc_8001A9E:
 	str r2, [r1]
 	asr r2, r2, #0x10
 	mov r1, r10
-	ldr r1, [r1,#8]
+	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	ldrh r3, [r1,#0x12]
 	sub r3, r3, r2
 	strh r3, [r1,#0x12]
@@ -4446,7 +4446,7 @@ loc_80024FE:
 	lsr r2, r2, #1
 	sub r1, r1, r2
 	mov r2, r10
-	ldr r2, [r2,#8]
+	ldr r2, [r2,#oToolkit_RenderInfoPtr]
 	mov r3, r8
 	ldrb r3, [r3]
 	strh r0, [r2,r3]
@@ -4467,7 +4467,7 @@ loc_80024FE:
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r0,r1}
 	mov r5, r10
-	ldr r5, [r5,#0x1c]
+	ldr r5, [r5,#oToolkit_Unk200f3a0_Ptr]
 	cmp r0, r7
 	bge loc_800254E
 	mov r2, #0

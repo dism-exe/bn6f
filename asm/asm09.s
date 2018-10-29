@@ -5,7 +5,7 @@ sub_8062AB0:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_8062B0C // =off_8062728 
-	ldr r1, [r7,#0x14]
+	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -98,7 +98,7 @@ thumb_func_start sub_8062BCC
 sub_8062BCC:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#5]
 	lsl r0, r0, #2
 	ldr r1, off_8062BE0 // =pt_8062BE4 

@@ -399,7 +399,7 @@ sub_800C01C:
 	push {r4-r7,lr}
 	sub sp, sp, #0x28
 	mov r6, r10
-	ldr r6, [r6,#0x18]
+	ldr r6, [r6,#oToolkit_S2034880_Ptr]
 	ldrb r4, [r6,#0xd]
 	cmp r4, #0
 	beq loc_800C038
@@ -468,7 +468,7 @@ sub_800C0BA:
 	push {r4-r7,lr}
 	sub sp, sp, #0x28
 	mov r6, r10
-	ldr r6, [r6,#0x18]
+	ldr r6, [r6,#oToolkit_S2034880_Ptr]
 	ldrb r4, [r6,#0xd]
 	lsl r4, r4, #3
 	ldr r6, off_800C0FC // =byte_800C0AA 
@@ -506,7 +506,7 @@ sub_800C100:
 	push {r4-r7,lr}
 	sub sp, sp, #0x28
 	mov r6, r10
-	ldr r6, [r6,#0x18]
+	ldr r6, [r6,#oToolkit_S2034880_Ptr]
 	ldrb r4, [r6,#0xd]
 	eor r2, r4
 	lsl r4, r4, #3
@@ -541,7 +541,7 @@ sub_800C138:
 	push {r4-r7,lr}
 	sub sp, sp, #0x28
 	mov r6, r10
-	ldr r6, [r6,#0x18]
+	ldr r6, [r6,#oToolkit_S2034880_Ptr]
 	ldrb r4, [r6,#0xd]
 	eor r2, r4
 	lsl r4, r4, #3
@@ -5023,7 +5023,7 @@ thumb_func_start sub_800EB6C
 sub_800EB6C:
 	push {r4,r5,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x18]
+	ldr r4, [r4,#oToolkit_S2034880_Ptr]
 	push {r0}
 	bl battle_networkInvert
 	tst r0, r0
@@ -5081,7 +5081,7 @@ object_getEnemyByNameRange:
 	mul r3, r4
 	add r3, #0x80
 	mov r4, r10
-	ldr r4, [r4,#0x18]
+	ldr r4, [r4,#oToolkit_S2034880_Ptr]
 	add r4, r4, r3
 	mov r3, #0
 	mov r5, #0
@@ -5113,7 +5113,7 @@ sub_800EC08:
 	mul r3, r4
 	add r3, #0xd0
 	mov r4, r10
-	ldr r4, [r4,#0x18]
+	ldr r4, [r4,#oToolkit_S2034880_Ptr]
 	add r4, r4, r3
 	mov r3, #0
 	mov r5, #0
@@ -5175,7 +5175,7 @@ thumb_local_start
 sub_800EC66:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	add r0, #0x94
 	ldr r1, [r0]
 	tst r1, r1

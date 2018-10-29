@@ -5,7 +5,7 @@ sub_807A8E0:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_807A938 // =off_8079F74 
-	ldr r1, [r7,#0x14]
+	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -78,7 +78,7 @@ thumb_func_start sub_807A9CC
 sub_807A9CC:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldrb r1, [r5,#5]
 	lsl r1, r1, #4
 	ldr r7, off_807AA30 // =off_807AA34 
@@ -103,7 +103,7 @@ thumb_local_start
 sub_807A9FE:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldrb r1, [r5,#5]
 	lsl r1, r1, #4
 	ldr r7, off_807AA30 // =off_807AA34 
@@ -143,7 +143,7 @@ thumb_func_start sub_807AAAC
 sub_807AAAC:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldrb r6, [r5,#5]
 	lsl r6, r6, #2
 	ldr r7, off_807AAC0 // =off_807AAC4 
@@ -176,7 +176,7 @@ thumb_func_start sub_807AAD6
 sub_807AAD6:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#5]
 	lsl r0, r0, #2
 	ldr r1, off_807AAEC // =pt_807AAF0 

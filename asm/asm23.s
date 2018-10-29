@@ -96,7 +96,7 @@ sub_8089280:
 	push {r4-r7,lr}
 	ldr r0, off_80892A0 // =dword_80892A4 
 	mov r1, r10
-	ldr r1, [r1,#0x24]
+	ldr r1, [r1,#oToolkit_CurFramePtr]
 	ldrh r1, [r1]
 	mov r2, #0x1f
 	and r1, r2
@@ -548,7 +548,7 @@ thumb_local_start
 sub_8089704:
 	push {r4-r7,lr}
 	mov r7, r10
-	ldr r7, [r7,#4]
+	ldr r7, [r7,#oToolkit_JoypadPtr]
 	ldrh r7, [r7,#2]
 	mov r4, #0
 	mov r0, #1
@@ -579,7 +579,7 @@ loc_8089738:
 	b loc_808978C
 loc_8089748:
 	mov r7, r10
-	ldr r7, [r7,#4]
+	ldr r7, [r7,#oToolkit_JoypadPtr]
 	ldrh r7, [r7,#4]
 	mov r0, #0x40 
 	tst r0, r7
@@ -1007,7 +1007,7 @@ sub_8089A60:
 	mov r1, #0x25 
 	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	mov r1, #0
 	strb r1, [r0,#0x15]
 	// entryIdx

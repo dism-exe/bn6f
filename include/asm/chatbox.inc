@@ -78,7 +78,7 @@
 // .global sub_8002F90 // () -> void
 // .global sub_8003914
 // .global sub_8003A64
-// .global gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
+// .global gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 // .global subsystem_launchBBS
 // .global subsystem_launchReqBBS
 // .global subsystem_launchShop

@@ -872,7 +872,7 @@ sprite_setMosaicScalingParameters:
 	strb r1, [r3,#0x11]
 	pop {r7}
 	mov r3, r10
-	ldr r3, [r3,#0x20]
+	ldr r3, [r3,#oToolkit_Unk2009740_Ptr]
 	ldrb r1, [r3]
 	mov r2, #0xc0
 	bic r1, r2
@@ -930,7 +930,7 @@ sprite_getMosaicScalingParameters:
 	mov r2, #0xc
 	and r2, r1
 	mov r3, r10
-	ldr r3, [r3,#0x20]
+	ldr r3, [r3,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r3,#2]
 	mov pc, lr
 thumb_func_end sprite_getMosaicScalingParameters

@@ -70,7 +70,7 @@ chatbox_803FD78:
 	// src
 	ldr r0, off_803FD90 // =dword_803FD94 
 	mov r1, r10
-	ldr r1, [r1,#0x2c] // Toolkit.chatbox
+	ldr r1, [r1,#oToolkit_ChatboxPtr]
 	// dest
 	add r1, #0x68 // ChatBoxPropreties.unk_68
 	// halfwordCount
@@ -115,7 +115,7 @@ loc_803FDD0:
 	// src
 	ldr r0, off_803FDE0 // =dword_803FDE4 
 	mov r1, r10
-	ldr r1, [r1,#0x2c] // Toolkit.chatbox
+	ldr r1, [r1,#oToolkit_ChatboxPtr]
 	// dest
 	add r1, #0x68 
 	// halfwordCount
@@ -168,7 +168,7 @@ loc_803FE3C:
 	// src
 	ldr r0, off_803FE4C // =dword_803FE50 
 	mov r1, r10
-	ldr r1, [r1,#0x2c]
+	ldr r1, [r1,#oToolkit_ChatboxPtr]
 	// dest
 	add r1, #0x68 
 	// halfwordCount
@@ -215,7 +215,7 @@ thumb_func_start chatbox_onUpdate_803FEB4
 chatbox_onUpdate_803FEB4:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x2c]
+	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	ldrb r0, [r5]
 	tst r0, r0
 	bne loc_803FEC2
@@ -227,7 +227,7 @@ loc_803FEC2:
 	bl chatbox_8045F3C
 	bne loc_803FEE2
 	mov r7, r10
-	ldr r7, [r7,#4]
+	ldr r7, [r7,#oToolkit_JoypadPtr]
 	ldrh r1, [r7]
 	strh r1, [r5,#0x22] // ChatBoxPropreties.keyState
 	ldrh r1, [r7,#0x2] // Joystick.IQR
@@ -800,7 +800,7 @@ thumb_func_start chatbox_runScript
 chatbox_runScript:
 	push {r4-r6,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x2c] // Toolkit.chatbox
+	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	ldr r2, [r5,#0x4c] // ChatBoxPropreties.unk_4C
 	ldr r3, [r5,#0x50] // ChatBoxPropreties.unk_50
 	ldr r4, [r5,#0x54] // ChatBoxPropreties.unk_54
@@ -808,7 +808,7 @@ chatbox_runScript:
 	push {r0-r3}
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#0x2c] // ChatBoxPropreties.pScriptCursor
+	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	// size
 	ldr r1, off_80404A4 // =0x230 
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
@@ -943,7 +943,7 @@ chatbox_reqBBS_80404C0:
 	push {r4-r6,lr}
 	push {r2}
 	mov r5, r10
-	ldr r5, [r5,#0x2c] // Toolkit.chatbox
+	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	ldr r2, [r5,#0x4c] // ChatBoxPropreties.unk_4C
 	ldr r3, [r5,#0x50] // ChatBoxPropreties.unk_50
 	ldr r4, [r5,#0x54] // ChatBoxPropreties.unk_54
@@ -951,7 +951,7 @@ chatbox_reqBBS_80404C0:
 	push {r0-r3}
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#0x2c]
+	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	// size
 	ldr r1, off_80405DC // =0x230 
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
@@ -1081,7 +1081,7 @@ dead_80405F8:
 	push {r4-r6,lr}
 	push {r2-r4}
 	mov r5, r10
-	ldr r5, [r5,#0x2c]
+	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	ldr r2, [r5,#0x4c]
 	ldr r3, [r5,#0x50]
 	ldr r4, [r5,#0x54]
@@ -1089,7 +1089,7 @@ dead_80405F8:
 	push {r0-r3}
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#0x2c]
+	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	// size
 	ldr r1, off_8040714 // =0x230 
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
@@ -1219,11 +1219,11 @@ chatbox_static_8040730:
 	push {r4-r7,lr}
 	mov r4, r0
 	mov r2, r10
-	ldr r2, [r2,#0x3c] // Toolkit.gamestate
+	ldr r2, [r2,#oToolkit_GameStatePtr]
 	ldrb r0, [r2,#4]
 	ldrb r1, [r2,#5]
 	mov r2, r10
-	ldr r2, [r2,#0x3c] // Toolkit.gamestate
+	ldr r2, [r2,#oToolkit_GameStatePtr]
 	ldrb r2, [r2,#8]
 	mov r6, #0
 	cmp r0, #0x80
@@ -1261,7 +1261,7 @@ thumb_local_start
 chatbox_8040794:
 	push {r4-r7,lr}
 	mov r2, r10
-	ldr r2, [r2,#0x3c]
+	ldr r2, [r2,#oToolkit_GameStatePtr]
 	ldrb r0, [r2,#4]
 	ldrb r1, [r2,#5]
 	ldrb r2, [r2,#6]
@@ -1289,7 +1289,7 @@ thumb_local_start
 chatbox_map_80407C8:
 	push {r4-r7,lr}
 	mov r2, r10
-	ldr r2, [r2,#0x3c] // Toolkit.gamestate
+	ldr r2, [r2,#oToolkit_GameStatePtr]
 	ldrb r0, [r2,#0x4] // GameState.MapSelect
 	ldrb r1, [r2,#0x5] // GameState.MapSubOffset
 	mov r2, #4
@@ -1323,7 +1323,7 @@ thumb_func_start chatbox_8040818
 chatbox_8040818:
 	push {r5,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x2c]
+	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	mov r0, #0
 	strb r0, [r5]
 	mov r0, #0xc8
@@ -3041,7 +3041,7 @@ loc_804152A:
 	ldrb r0, [r4,#2]
 	ldrb r1, [r4,#3]
 	mov r2, r10
-	ldr r2, [r2,#0x10]
+	ldr r2, [r2,#oToolkit_S2011c50_Ptr]
 	add r2, #8
 	add r2, r2, r0
 	ldrb r0, [r2]
@@ -3199,7 +3199,7 @@ chatbox_80416C4:
 	ldrb r1, [r4,#2]
 	ldrb r2, [r4,#3]
 	mov r3, r10
-	ldr r3, [r3,#0x3c]
+	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldrb r3, [r3,#5]
 	mov r0, #5
 	cmp r3, r1
@@ -3226,7 +3226,7 @@ chatbox_80416F0:
 	ldrb r1, [r4,#2]
 	ldrb r2, [r4,#3]
 	mov r3, r10
-	ldr r3, [r3,#0x3c]
+	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldrb r3, [r3,#4]
 	mov r0, #5
 	cmp r3, r1
@@ -3279,7 +3279,7 @@ chatbox_8041748:
 	ldrb r1, [r4,#2]
 	ldrb r2, [r4,#3]
 	mov r3, r10
-	ldr r3, [r3,#0x3c]
+	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldrb r3, [r3,#6]
 	mov r0, #5
 	cmp r3, r1
@@ -3829,7 +3829,7 @@ loc_8041AFA:
 	b loc_8041B00
 loc_8041B00:
 	mov r0, r10
-	ldr r0, [r0,#0x24]
+	ldr r0, [r0,#oToolkit_CurFramePtr]
 	ldrh r0, [r0]
 	mov r6, #3
 	and r6, r0
@@ -4167,10 +4167,8 @@ loc_8041D60:
 	mov r2, #0xff
 	strb r2, [r5,#0xb]
 	bl sub_8040B3A
-	.byte  3
-	.byte 0x34 
-	.byte 0x13
-	.byte 0xE0
+	add r4, #3
+	b loc_8041D9C
 loc_8041D74:
 	mov r0, #2
 	bl chatbox_clearFlags_3e // (int mask) -> void
@@ -4367,7 +4365,7 @@ chatbox_8041EE8:
 	mov r0, #1
 	bl chatbox_setflags_3e // (int mask) -> void
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldr r7, [r7,#0x18]
 	mov r1, r5
 	add r1, #0x3c 
@@ -4401,7 +4399,7 @@ chatbox_8041F1C:
 	bl chatbox_setflags_3e // (int mask) -> void
 	push {r5}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldr r5, [r0,#0x18]
 	bl sub_8002DEA
 	pop {r5}
@@ -4429,7 +4427,7 @@ chatbox_8041F44:
 	cmp r0, #7
 	bgt loc_8041F5E
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldr r7, [r7,#0x18]
 	strb r0, [r7,#0x10]
 loc_8041F5E:
@@ -4911,7 +4909,7 @@ chatbox_8042328:
 	ldrb r1, [r4,#3]
 	bl sub_800068A
 	mov r1, r10
-	ldr r1, [r1,#0x3c]
+	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #0x63 
 	strb r0, [r1,#0xf]
 	add r4, #4
@@ -5071,7 +5069,7 @@ loc_804245C:
 	mov r2, #0x1f
 	bl sub_80AA5F4
 	mov r1, #1
-	bl gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
+	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 	mov r0, #0x2c 
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
@@ -5102,7 +5100,7 @@ loc_804248C:
 	mov r7, r0
 	bl getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
 	mov r1, #1
-	bl gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
+	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 	mov r0, r7
 	bl sub_803522E
 	mov r0, #0x2c 
@@ -5505,7 +5503,7 @@ chatbox_8042770:
 	push {r4,r5}
 	push {r3}
 	mov r3, r10
-	ldr r3, [r3,#0x3c]
+	ldr r3, [r3,#oToolkit_GameStatePtr]
 	strb r2, [r3,#1]
 	pop {r3}
 	ldr r3, off_80427AC // =dword_80427B0 
@@ -6415,7 +6413,7 @@ thumb_local_start
 sub_8042F88:
 	push {r4-r6,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x2c]
+	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	mov r2, #0x1c
 	mov r3, #0xf
 	mov r4, #0
@@ -6478,7 +6476,7 @@ thumb_local_start
 chatbox_8042FF4:
 	push {lr}
 	mov r2, r10
-	ldr r2, [r2,#0x10]
+	ldr r2, [r2,#oToolkit_S2011c50_Ptr]
 	add r2, #8
 	ldrb r0, [r4,#2]
 	ldrb r1, [r4,#3]
@@ -6708,7 +6706,7 @@ loc_80431CA:
 	add r0, #0x4c 
 	ldrb r3, [r5,r0]
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #0x80
 	tst r0, r1
@@ -6930,7 +6928,7 @@ loc_8043372:
 	add r2, #0x4c 
 	ldrb r3, [r5,r2]
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #0x80
 	tst r0, r1
@@ -7169,7 +7167,7 @@ loc_804354A:
 	add r2, #0x4c 
 	ldrb r3, [r5,r2]
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #0x80
 	tst r0, r1
@@ -7439,7 +7437,7 @@ loc_804373E:
 	ldrh r3, [r5,r1]
 	mov r2, r1
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #0x80
 	tst r0, r1
@@ -7691,7 +7689,7 @@ loc_804393C:
 	add r0, #0x4c 
 	ldrb r3, [r5,r0]
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #0x80
 	tst r0, r1
@@ -10732,7 +10730,7 @@ thumb_func_start chatbox_8045EDC
 chatbox_8045EDC:
 	push {r2-r7,lr}
 	mov r2, r10
-	ldr r2, [r2,#0x2c]
+	ldr r2, [r2,#oToolkit_ChatboxPtr]
 	mov r3, #0x4c 
 	lsl r0, r0, #2
 	add r3, r3, r0
@@ -10744,7 +10742,7 @@ thumb_func_start chatbox_8045EEC
 chatbox_8045EEC:
 	push {r1-r7,lr}
 	mov r1, r10
-	ldr r1, [r1,#0x2c]
+	ldr r1, [r1,#oToolkit_ChatboxPtr]
 	mov r2, #0x4c 
 	lsl r0, r0, #2
 	add r2, r2, r0
@@ -10756,7 +10754,7 @@ thumb_func_start chatbox_8045EFC
 chatbox_8045EFC:
 	push {r4-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x2c]
+	ldr r4, [r4,#oToolkit_ChatboxPtr]
 	str r0, [r4,#0x4c]
 	str r1, [r4,#0x50]
 	str r2, [r4,#0x54]
@@ -10768,7 +10766,7 @@ thumb_local_start
 sub_8045F0C:
 	push {r4-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x2c]
+	ldr r4, [r4,#oToolkit_ChatboxPtr]
 	ldr r0, [r4,#0x4c]
 	ldr r1, [r4,#0x50]
 	ldr r2, [r4,#0x54]

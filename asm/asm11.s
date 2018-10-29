@@ -5,7 +5,7 @@ sub_8069038:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_8069090 // =off_8068CCC 
-	ldr r1, [r7,#0x14]
+	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -90,7 +90,7 @@ thumb_func_start sub_8069140
 sub_8069140:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldrb r1, [r5,#5]
 	lsl r1, r1, #4
 	ldr r7, off_8069174 // =off_8069178 
@@ -140,7 +140,7 @@ thumb_func_start sub_80691D4
 sub_80691D4:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldrb r6, [r5,#5]
 	lsl r6, r6, #2
 	ldr r7, off_80691E8 // =off_80691EC 
@@ -173,7 +173,7 @@ thumb_func_start sub_80691FE
 sub_80691FE:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#5]
 	lsl r0, r0, #2
 	ldr r1, off_8069214 // =off_8069218 
@@ -1085,7 +1085,7 @@ sub_8069FE8:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_806A040 // =off_80698DC 
-	ldr r1, [r7,#0x14]
+	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -1182,7 +1182,7 @@ thumb_func_start sub_806A120
 sub_806A120:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldrb r1, [r5,#5]
 	lsl r1, r1, #4
 	ldr r7, off_806A154 // =off_806A158 
@@ -1232,7 +1232,7 @@ thumb_func_start sub_806A1B4
 sub_806A1B4:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldrb r6, [r5,#5]
 	lsl r6, r6, #2
 	ldr r7, off_806A1C8 // =off_806A1CC 
@@ -1265,7 +1265,7 @@ thumb_func_start sub_806A1DE
 sub_806A1DE:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#5]
 	lsl r0, r0, #2
 	ldr r1, off_806A1F4 // =off_806A1F8 
@@ -1832,7 +1832,7 @@ sub_806AA00:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_806AA58 // =off_806A7AC 
-	ldr r1, [r7,#0x14]
+	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -1961,7 +1961,7 @@ thumb_func_start sub_806AB94
 sub_806AB94:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldrb r1, [r5,#5]
 	lsl r1, r1, #4
 	ldr r7, off_806ABC8 // =off_806ABCC 
@@ -2049,7 +2049,7 @@ thumb_func_start sub_806ACC0
 sub_806ACC0:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldrb r6, [r5,#5]
 	lsl r6, r6, #2
 	ldr r7, off_806ACD4 // =off_806ACD8 
@@ -2099,7 +2099,7 @@ thumb_func_start sub_806AD00
 sub_806AD00:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#5]
 	lsl r0, r0, #2
 	ldr r1, off_806AD14 // =off_806AD18 
@@ -3651,7 +3651,7 @@ sub_806C23C:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_806C294 // =off_806BFF8 
-	ldr r1, [r7,#0x14]
+	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -3745,7 +3745,7 @@ thumb_func_start sub_806C35C
 sub_806C35C:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldrb r1, [r5,#5]
 	lsl r1, r1, #4
 	ldr r7, off_806C390 // =off_806C394 
@@ -3851,7 +3851,7 @@ sub_806C4B0:
 	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {r0,r1}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldrb r6, [r5,#5]
 	lsl r6, r6, #2
 	ldr r7, off_806C4D8 // =off_806C4DC 
@@ -3916,7 +3916,7 @@ sub_806C532:
 	cmp r1, #2
 	bne loc_806C548
 	mov r1, r10
-	ldr r1, [r1,#0x3c]
+	ldr r1, [r1,#oToolkit_GameStatePtr]
 	ldr r0, [r1,#0x3c]
 	cmp r0, #0
 	bne loc_806C548
@@ -3979,7 +3979,7 @@ thumb_func_start sub_806C59C
 sub_806C59C:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#5]
 	lsl r0, r0, #2
 	ldr r1, off_806C5B0 // =pt_806C5B4 

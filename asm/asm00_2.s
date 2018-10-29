@@ -1195,7 +1195,7 @@ sub_800F614:
 	mov r3, #0xc
 	mul r3, r1
 	mov r1, r10
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oToolkit_S2034880_Ptr]
 	add r1, r1, r3
 	lsl r3, r2, #3
 	add r1, r1, r3
@@ -1233,7 +1233,7 @@ thumb_func_end sub_800F614
 thumb_func_start sub_800F656
 sub_800F656:
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	add r0, #0xa0
 	mov r1, #0
 loc_800F65E:
@@ -1428,7 +1428,7 @@ thumb_local_start
 sub_800F7D4:
 	mov r0, #1
 	mov r1, r10
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oToolkit_S2034880_Ptr]
 	add r1, #0xa0
 	mov r2, #0
 loc_800F7DE:
@@ -1461,7 +1461,7 @@ thumb_local_start
 sub_800F806:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	add r0, #0xa0
 	mov r1, #0
 loc_800F810:
@@ -1799,7 +1799,7 @@ thumb_func_start sub_800FAE0
 sub_800FAE0:
 	push {r4,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x18]
+	ldr r4, [r4,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r4,#0xd]
 	bl sub_80103BC
 	tst r0, r0
@@ -2126,7 +2126,7 @@ thumb_local_start
 sub_800FD64:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r0,#0xd]
 	mov r1, #0x29 
 	bl sub_80136CC
@@ -2159,7 +2159,7 @@ thumb_func_start sub_800FDC0
 sub_800FDC0:
 	push {r4-r6,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x18]
+	ldr r4, [r4,#oToolkit_S2034880_Ptr]
 	add r4, #0x80
 	mov r6, #0
 loc_800FDCA:
@@ -2887,7 +2887,7 @@ thumb_func_end sub_80102AC
 thumb_func_start sub_8010300
 sub_8010300:
 	mov r2, r10
-	ldr r2, [r2,#0x18]
+	ldr r2, [r2,#oToolkit_S2034880_Ptr]
 	lsl r1, r1, #2
 	add r1, #0x80
 	ldr r1, [r2,r1]
@@ -2999,7 +2999,7 @@ thumb_func_start sub_80103BC
 sub_80103BC:
 	push {r4-r6,lr}
 	mov r6, r10
-	ldr r6, [r6,#0x18]
+	ldr r6, [r6,#oToolkit_S2034880_Ptr]
 	mov r1, #0x10
 	mul r0, r1
 	add r0, #0xd0
@@ -3042,7 +3042,7 @@ sub_80103F8:
 	ldrb r1, [r5,#0x13]
 	str r1, [sp,#4]
 	mov r6, r10
-	ldr r6, [r6,#0x18]
+	ldr r6, [r6,#oToolkit_S2034880_Ptr]
 	mov r1, #0x10
 	mul r0, r1
 	add r0, #0xd0
@@ -3189,7 +3189,7 @@ sub_801050C:
 	mul r0, r1
 	add r0, #0xa0
 	mov r7, r10
-	ldr r7, [r7,#0x18]
+	ldr r7, [r7,#oToolkit_S2034880_Ptr]
 	add r7, r7, r0
 	mov r6, #0
 loc_801051E:
@@ -3853,7 +3853,7 @@ sub_8010A90:
 	tst r0, r1
 	bne loc_8010ACE
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	add r0, #0x90
 	neg r1, r4
 	add r1, r1, r1
@@ -4034,7 +4034,7 @@ sub_8010C06:
 	mov r0, #0
 	mov r1, #0
 	mov r2, r10
-	ldr r2, [r2,#0x18]
+	ldr r2, [r2,#oToolkit_S2034880_Ptr]
 	add r2, #0x90
 loc_8010C1E:
 	ldr r3, [r2]
@@ -8907,7 +8907,7 @@ loc_8013008:
 	cmp r0, r1
 	bge loc_801303C
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r0,#0xd]
 	ldrb r1, [r5,#0x16]
 	cmp r0, r1
@@ -9842,7 +9842,7 @@ loc_80136F6:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#0x74]
+	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
 	add r3, r3, r0
 	strb r2, [r3,r1]
 	mov pc, lr
@@ -9857,7 +9857,7 @@ loc_801370A:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#0x74]
+	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
 	add r3, r3, r0
 	ldrb r0, [r3,r1]
 	mov pc, lr
@@ -9872,7 +9872,7 @@ loc_801371E:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#0x74]
+	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
 	add r3, r3, r0
 	ldrb r0, [r3,r1]
 	mov pc, lr
@@ -9887,7 +9887,7 @@ loc_8013732:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#0x74]
+	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
 	add r3, r3, r0
 	strh r2, [r3,r1]
 	mov pc, lr
@@ -9902,7 +9902,7 @@ loc_8013746:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#0x74]
+	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
 	add r3, r3, r0
 	ldrh r0, [r3,r1]
 	mov pc, lr
@@ -9970,7 +9970,7 @@ navicust_801379E:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#0x74] // Toolkit.unk_20047CC
+	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
 	add r3, r3, r0
 	strb r2, [r3,r1]
 	pop {pc}
@@ -9986,7 +9986,7 @@ sub_80137B6:
 	mov r3, #100
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#0x74] // Toolkit.unk_20047CC
+	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
 	add r3, r3, r0
 	ldrb r0, [r3,r1]
 	pop {pc}
@@ -10001,7 +10001,7 @@ sub_80137CE:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#0x74]
+	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
 	add r3, r3, r0
 	ldrsb r0, [r3,r1]
 	pop {pc}
@@ -10016,7 +10016,7 @@ sub_80137E6:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#0x74]
+	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
 	add r3, r3, r0
 	strh r2, [r3,r1]
 	pop {pc}
@@ -10031,7 +10031,7 @@ sub_80137FE:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#0x74]
+	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
 	add r3, r3, r0
 	ldrh r0, [r3,r1]
 	pop {pc}
@@ -10493,7 +10493,7 @@ init_8013B4E:
 loc_8013B56:
 	mov r4, r1
 	mov r7, r10
-	ldr r7, [r7,#0x74] // Toolkit.unk_20047CC
+	ldr r7, [r7,#oToolkit_Unk20047cc_Ptr]
 	mov r2, #0x64 
 	mul r0, r2
 	add r7, r7, r0
@@ -11136,7 +11136,7 @@ sub_801401E:
 	mov r1, #0x64 
 	mul r0, r1
 	mov r1, r10
-	ldr r1, [r1,#0x74]
+	ldr r1, [r1,#oToolkit_Unk20047cc_Ptr]
 	add r0, r0, r1
 	pop {pc}
 off_8014030: .word byte_8014034
@@ -11888,7 +11888,7 @@ thumb_local_start
 sub_80145C2:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r0,#7]
 	cmp r0, #1
 	beq locret_80145D2
@@ -11958,7 +11958,7 @@ thumb_local_start
 sub_801462A:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r0,#7]
 	cmp r0, #1
 	beq loc_801463A
@@ -12070,7 +12070,7 @@ thumb_local_start
 sub_801472A:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r0,#7]
 	cmp r0, #1
 	beq locret_801473A
@@ -12126,7 +12126,7 @@ thumb_local_start
 sub_8014776:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r0,#7]
 	cmp r0, #1
 	beq loc_8014786
@@ -15338,7 +15338,7 @@ sub_801632C:
 	push {r4-r7,lr}
 	mov r1, r0
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	lsl r1, r1, #2
 	ldr r2, off_8016368 // =byte_801636C 
 	ldr r1, [r2,r1]
@@ -15409,7 +15409,7 @@ sub_80163B4:
 	tst r0, r0
 	bne loc_80163E2
 	mov r1, r10
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oToolkit_S2034880_Ptr]
 	ldrb r1, [r1,#0xd]
 	ldrb r0, [r5,#0x16]
 	eor r0, r1
@@ -15502,7 +15502,7 @@ sub_8016460:
 	cmp r0, #6
 	beq loc_801647E
 	mov r1, r10
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oToolkit_S2034880_Ptr]
 	ldrb r1, [r1,#0xd]
 	ldrb r0, [r5,#0x16]
 	eor r0, r1
@@ -15648,7 +15648,7 @@ sub_801657E:
 	cmp r0, #6
 	beq loc_8016594
 	mov r1, r10
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oToolkit_S2034880_Ptr]
 	ldrb r1, [r1,#0xd]
 	ldrb r0, [r5,#0x16]
 	eor r0, r1
@@ -16140,7 +16140,7 @@ loc_8016944:
 	strb r0, [r5]
 loc_8016964:
 	mov r1, r10
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r1,#0xd]
 	ldrb r1, [r5,#0x16]
 	eor r0, r1
@@ -16194,7 +16194,7 @@ sub_80169BE:
 	strb r0, [r5]
 loc_80169CE:
 	mov r1, r10
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r1,#0xd]
 	ldrb r1, [r5,#0x16]
 	eor r0, r1
@@ -16521,7 +16521,7 @@ sub_8016CA4:
 	tst r0, r0
 	bne locret_8016CDE
 	mov r1, r10
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oToolkit_S2034880_Ptr]
 	ldrb r1, [r1,#0xd]
 	ldrb r0, [r5,#0x16]
 	eor r1, r0
@@ -19031,7 +19031,7 @@ sub_80181F6:
 	strb r0, [r5]
 loc_8018206:
 	mov r1, r10
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r1,#0xd]
 	ldrb r1, [r5,#0x16]
 	eor r0, r1
@@ -19650,7 +19650,7 @@ sub_801986C:
 	mov r5, #1
 	lsl r5, r5, #0x1f
 	mov r4, r10
-	ldr r4, [r4,#0x30]
+	ldr r4, [r4,#oToolkit_Unk20384f0_Ptr]
 loc_801987C:
 	// memBlock
 	mov r0, r4
@@ -19670,7 +19670,7 @@ sub_8019892:
 	push {r4,lr}
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#0x30]
+	ldr r0, [r0,#oToolkit_Unk20384f0_Ptr]
 	ldr r3, off_80198E4 // =dword_2035310 
 	ldr r2, [r3]
 	mov r1, #1
@@ -20305,7 +20305,7 @@ loc_801A1CE:
 	cmp r0, #4
 	bne locret_801A1FA
 	mov r2, r10
-	ldr r2, [r2,#0x18]
+	ldr r2, [r2,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r2,#0xe]
 	ldrh r1, [r5,#0x24]
 	cmp r1, #9
@@ -24201,7 +24201,7 @@ loc_801C08C:
 	push {r6}
 	mov r5, r3
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r0,#0xd]
 	bl sub_800E2C2
 	push {r0}
@@ -24405,7 +24405,7 @@ loc_801C22C:
 	push {r3}
 	mov r0, #0
 	mov r1, r10
-	ldr r1, [r1,#0xc]
+	ldr r1, [r1,#oToolkit_CameraPtr]
 	ldr r1, [r1,#0x34]
 	asr r1, r1, #0x10
 	neg r1, r1
@@ -24566,7 +24566,7 @@ thumb_local_start
 sub_801C368:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r0,#0xd]
 	bl sub_802D1B4
 	ldr r1, dword_801C444 // =0x600c980 
@@ -24577,7 +24577,7 @@ sub_801C368:
 	mov r2, #0
 	bl sub_801C3EE
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r0,#0xd]
 	bl sub_802D1BE
 	ldr r1, dword_801C448 // =0x600ca40 
@@ -24898,7 +24898,7 @@ thumb_local_start
 sub_801C5F4:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0]
+	ldr r0, [r0,#oToolkit_MainJumptableIndexPtr]
 	ldrb r1, [r0]
 	cmp r1, #0x50 
 	beq locret_801C63E
@@ -25178,7 +25178,7 @@ sub_801C840:
 	bne loc_801C85A
 	mov r0, #0x80
 	mov r7, r10
-	ldr r7, [r7,#0x18]
+	ldr r7, [r7,#oToolkit_S2034880_Ptr]
 	add r7, r7, r0
 	ldr r7, [r7]
 	tst r7, r7
@@ -25554,7 +25554,7 @@ sub_801CADC:
 	cmp r0, #0xff
 	bne loc_801CAF0
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r0,#0xd]
 	mov r1, #0x29 
 	bl sub_80136CC
@@ -26713,7 +26713,7 @@ sub_801D47A:
 	ldr r1, dword_801D504 // =0x6017900 
 	bl loc_8000AC8
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r0,#0xd]
 	bl sub_802E070
 	ldrh r1, [r0,#0x3e]
@@ -26838,7 +26838,7 @@ thumb_local_start
 sub_801D590:
 	push {r4,r6,r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldrb r0, [r0,#0xd]
 	bl sub_802E070
 	ldrh r1, [r0,#0x36]
@@ -27015,7 +27015,7 @@ sub_801D71A:
 	push {r4,r7,lr}
 	mov r0, #0x90
 	mov r7, r10
-	ldr r7, [r7,#0x18]
+	ldr r7, [r7,#oToolkit_S2034880_Ptr]
 	add r7, r7, r0
 	ldr r7, [r7]
 	tst r7, r7
@@ -27251,7 +27251,7 @@ thumb_func_start sub_801DA24
 sub_801DA24:
 	push {lr}
 	mov r1, r10
-	ldr r1, [r1,#8]
+	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	ldr r0, dword_801DA44 // =0x1f09 
 	strh r0, [r1,#0xa]
 	// dataList
@@ -28467,7 +28467,7 @@ loc_801E2D8:
 	mov r0, #2
 	strb r0, [r6,#0xc] // (byte_203528C - 0x2035280)
 	mov r1, r10
-	ldr r1, [r1,#0x38]
+	ldr r1, [r1,#oToolkit_Unk200a220_Ptr]
 	ldr r0, [sp]
 	str r0, [r1,#8]
 	mov r1, #0xf

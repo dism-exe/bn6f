@@ -78,7 +78,7 @@ sub_808F8AC:
 	mov r0, #3
 	bl loc_809E314
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#0x18]
 	mov r0, #0x80
 	mov r1, #0x1c
@@ -177,7 +177,7 @@ sub_808F990:
 	bl sub_809E304
 	bl sub_809E312
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#0x18]
 	mov r0, #0x80
 	mov r1, #0x18
@@ -312,7 +312,7 @@ loc_808FA90:
 	ldr r5, off_808FB48 // =off_808F5D4 
 	ldr r5, [r5]
 	mov r4, r10
-	ldr r4, [r4,#0x3c]
+	ldr r4, [r4,#oToolkit_GameStatePtr]
 	ldrb r3, [r4,#4]
 	cmp r3, #0x85
 	bne loc_808FAA2
@@ -485,7 +485,7 @@ sub_808FBEC:
 	mov r0, #0
 	bl sub_80301B2
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r1, [r0,#4]
 	cmp r1, #0x85
 	bne loc_808FC06
@@ -595,7 +595,7 @@ thumb_local_start
 sub_808FD64:
 	push {r4,r5,lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r1, [r0,#4]
 	cmp r1, #0x85
 	bne loc_808FD74
@@ -742,7 +742,7 @@ thumb_func_start sub_808FEA4
 sub_808FEA4:
 	push {r4-r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r1, [r0,#4]
 	ldrb r2, [r0,#5]
 	cmp r1, #0x83
@@ -793,7 +793,7 @@ thumb_local_start
 sub_808FF00:
 	push {r4,lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r1, [r0,#4]
 	cmp r1, #0x85
 	bne loc_808FF10
@@ -911,7 +911,7 @@ thumb_local_start
 sub_808FFC0:
 	push {r4,lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r1, [r0,#4]
 	cmp r1, #0x85
 	bne loc_808FFD0
@@ -1013,7 +1013,7 @@ sub_809005C:
 	cmp r0, #0xfa
 	bge loc_8090082
 	mov r1, r10
-	ldr r1, [r1,#4]
+	ldr r1, [r1,#oToolkit_JoypadPtr]
 	ldrh r1, [r1]
 	mov r0, #1
 	and r0, r1
@@ -1347,7 +1347,7 @@ thumb_local_start
 sub_80902DC:
 	push {r4-r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r1, [r0,#4]
 	cmp r1, #0x85
 	bne loc_80902EC
@@ -1371,7 +1371,7 @@ sub_8090308:
 	push {r4,lr}
 	bl sub_809E1AE
 	mov r4, r10
-	ldr r4, [r4,#0x3c]
+	ldr r4, [r4,#oToolkit_GameStatePtr]
 	ldr r4, [r4,#0x18]
 	ldr r2, [r4,#0x28]
 	ldr r3, [r4,#0x2c]
