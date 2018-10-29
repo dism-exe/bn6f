@@ -1,6 +1,6 @@
 .include "asm/asm15.inc"
 
-thumb_func_start sub_807544C
+	thumb_func_start sub_807544C
 sub_807544C:
 	push {r4-r7,lr}
 	mov r7, r10
@@ -46,9 +46,9 @@ dword_80754BC: .word 0x491C3E1C, 0x4B1C4A1C, 0xFFFF0E1C
 dword_80754C8: .word 0x491C0E1C, 0x4B1C4A1C, 0x491CFFFF, 0x4B1C4A1C, 0xE1C381C
 	.word 0x251C951C
 	.byte 0xFF, 0xFF
-thumb_func_end sub_807544C
+	thumb_func_end sub_807544C
 
-thumb_func_start sub_80754E2
+	thumb_func_start sub_80754E2
 sub_80754E2:
 	push {lr}
 	lsl r1, r1, #2
@@ -72,9 +72,9 @@ off_8075520: .word dword_8074FCC+0x400
 	.word dword_8074FCC+0x430
 	.word dword_8074FCC+0x90
 	.word 0xFFFFFFFF
-thumb_func_end sub_80754E2
+	thumb_func_end sub_80754E2
 
-thumb_func_start sub_8075530
+	thumb_func_start sub_8075530
 sub_8075530:
 	push {r4-r7,lr}
 	mov r5, r10
@@ -148,9 +148,9 @@ off_807559C: .word off_80755A8
 off_80755A8: .word off_8617068
 	.word 0x6008020, 0x8617190, 0x1800, 0x86185C8, 0x3001960
 	.word 0x20
-thumb_func_end sub_8075530
+	thumb_func_end sub_8075530
 
-thumb_func_start sub_80755C4
+	thumb_func_start sub_80755C4
 sub_80755C4:
 	push {r4-r7,lr}
 	mov r5, r10
@@ -166,24 +166,24 @@ off_80755D8: .word off_80755DC
 off_80755DC: .word nullsub_74+1
 	.word nullsub_75+1
 	.word nullsub_76+1
-thumb_func_end sub_80755C4
+	thumb_func_end sub_80755C4
 
-thumb_local_start
+	thumb_local_start
 nullsub_74:
 	mov pc, lr
-thumb_func_end nullsub_74
+	thumb_func_end nullsub_74
 
-thumb_local_start
+	thumb_local_start
 nullsub_75:
 	mov pc, lr
-thumb_func_end nullsub_75
+	thumb_func_end nullsub_75
 
-thumb_local_start
+	thumb_local_start
 nullsub_76:
 	mov pc, lr
-thumb_func_end nullsub_76
+	thumb_func_end nullsub_76
 
-thumb_func_start sub_80755EE
+	thumb_func_start sub_80755EE
 sub_80755EE:
 	push {lr}
 	mov r0, r10
@@ -199,7 +199,7 @@ off_8075604: .word off_8075608
 off_8075608:
 	// <endpool>
 	.word dword_8075614
-thumb_func_end sub_80755EE
+	thumb_func_end sub_80755EE
 
 	.word dword_8075708
 	// <endfile>

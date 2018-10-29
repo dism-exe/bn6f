@@ -1,6 +1,6 @@
 .include "asm/main.inc"
 
-thumb_func_start main_
+	thumb_func_start main_
 main_:
 	bl main_static_80004A4
 	bl sub_8001514 // () -> void
@@ -70,9 +70,9 @@ main_jt_subsystem: .word Load_ho_802F544+1
 	.word menuControl_cb_email+1
 	.word cb_8049E04+1
 	.byte 0, 0, 0, 0
-thumb_func_end main_
+	thumb_func_end main_
 
-thumb_local_start
+	thumb_local_start
 main_static_awaitFrame_80003A0:
 	push {lr}
 loc_80003A2:
@@ -96,10 +96,10 @@ loc_80003A6:
 off_80003C4: .word dword_200A870
 off_80003C8: .word dword_2009930
 off_80003CC: .word GeneralLCDStatus_STAT_LYC_
-thumb_func_end main_static_awaitFrame_80003A0
+	thumb_func_end main_static_awaitFrame_80003A0
 
 // () -> void
-thumb_local_start
+	thumb_local_start
 main_static_await_80003D0:
 	push {lr}
 	ldr r0, off_80003E0 // =GeneralLCDStatus_STAT_LYC_ 
@@ -111,9 +111,9 @@ loc_80003D6:
 	pop {pc}
 	.byte 0, 0
 off_80003E0: .word GeneralLCDStatus_STAT_LYC_
-thumb_func_end main_static_await_80003D0
+	thumb_func_end main_static_await_80003D0
 
-thumb_local_start
+	thumb_local_start
 main_static_80003E4:
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_JoypadPtr]
@@ -175,9 +175,9 @@ loc_8000438:
 	.balign 4, 0x00
 off_800044C: .word KeyStatus
 dword_8000450: .word 0x3FF
-thumb_func_end main_static_80003E4
+	thumb_func_end main_static_80003E4
 
-thumb_local_start
+	thumb_local_start
 main_static_8000454:
 	push {r4-r7,lr}
 	bl engine_isScreeneffectAnimating // () -> zf
@@ -216,9 +216,9 @@ loc_80004A0:
 	strb r4, [r1]
 locret_80004A2:
 	pop {r4-r7,pc}
-thumb_func_end main_static_8000454
+	thumb_func_end main_static_8000454
 
-thumb_local_start
+	thumb_local_start
 main_static_80004A4:
 	mov r0, #1
 	b loc_80004AA
@@ -284,9 +284,9 @@ loc_80004C0:
 off_8000564: .word 0x40
 off_8000568: .word 0xC0
 off_800056C: .word dword_2009930
-thumb_func_end main_static_80004A4
+	thumb_func_end main_static_80004A4
 
-thumb_local_start
+	thumb_local_start
 main_static_8000570:
 	push {lr}
 	bl sub_814E8A0
@@ -311,6 +311,6 @@ dword_800059C: .word 0x93040D
 off_80005A0: .word GeneralLCDStatus_STAT_LYC_
 	.word off_3000E70
 dword_80005A8: .word 0x3005D79
-thumb_func_end main_static_8000570
+	thumb_func_end main_static_8000570
 
 /*For debugging purposes, connect comment at any range!*/

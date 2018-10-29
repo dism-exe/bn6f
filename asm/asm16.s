@@ -1,6 +1,6 @@
 .include "asm/asm16.inc"
 
-thumb_func_start sub_8077D00
+	thumb_func_start sub_8077D00
 sub_8077D00:
 	push {r4-r7,lr}
 	mov r7, r10
@@ -44,9 +44,9 @@ off_8077D64: .word dword_8077D6C
 dword_8077D6C: .word 0x671C661C, 0x6A1C681C, 0xFFFF1F1C
 dword_8077D78: .word 0x531C2B1C, 0x661C1F1C, 0x681C671C, 0x1C186A1C
 	.byte 0xFF, 0xFF
-thumb_func_end sub_8077D00
+	thumb_func_end sub_8077D00
 
-thumb_func_start sub_8077D8A
+	thumb_func_start sub_8077D8A
 sub_8077D8A:
 	push {lr}
 	lsl r1, r1, #2
@@ -72,9 +72,9 @@ off_8077DC4: .word off_8077720
 	.word dword_8077724+0x54C
 	.word dword_8077724+0x59C
 	.word 0xFFFFFFFF
-thumb_func_end sub_8077D8A
+	thumb_func_end sub_8077D8A
 
-thumb_func_start sub_8077DE0
+	thumb_func_start sub_8077DE0
 sub_8077DE0:
 	push {r4-r7,lr}
 	mov r5, r10
@@ -109,9 +109,9 @@ off_8077E3C: .word off_8077E44
 off_8077E44: .word off_8617068
 	.word 0x6008020, 0x8617190, 0x1800, 0x861876C, 0x3001960
 	.word 0x20
-thumb_func_end sub_8077DE0
+	thumb_func_end sub_8077DE0
 
-thumb_func_start sub_8077E60
+	thumb_func_start sub_8077E60
 sub_8077E60:
 	push {r4-r7,lr}
 	mov r5, r10
@@ -126,19 +126,19 @@ sub_8077E60:
 off_8077E74: .word off_8077E78
 off_8077E78: .word nullsub_77+1
 	.word nullsub_78+1
-thumb_func_end sub_8077E60
+	thumb_func_end sub_8077E60
 
-thumb_local_start
+	thumb_local_start
 nullsub_77:
 	mov pc, lr
-thumb_func_end nullsub_77
+	thumb_func_end nullsub_77
 
-thumb_local_start
+	thumb_local_start
 nullsub_78:
 	mov pc, lr
-thumb_func_end nullsub_78
+	thumb_func_end nullsub_78
 
-thumb_func_start sub_8077E84
+	thumb_func_start sub_8077E84
 sub_8077E84:
 	push {lr}
 	mov r0, r10
@@ -154,6 +154,6 @@ pt_8077E9C:
 	// <endpool> <endfile>
 	.word dword_8077EA4
 	.word dword_8077EF8
-thumb_func_end sub_8077E84
+	thumb_func_end sub_8077E84
 
 /*For debugging purposes, connect comment at any range!*/

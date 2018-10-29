@@ -1,6 +1,6 @@
 .include "asm/asm37_0.inc"
 
-thumb_func_start sub_813B768
+	thumb_func_start sub_813B768
 sub_813B768:
 	push {lr}
 	mov r0, r10
@@ -13,9 +13,9 @@ sub_813B768:
 	bl clearBackwards_80008B4 // (void *mem, int size) -> void
 	pop {pc}
 	.byte 0, 0
-thumb_func_end sub_813B768
+	thumb_func_end sub_813B768
 
-thumb_func_start sub_813B780
+	thumb_func_start sub_813B780
 sub_813B780:
 	ldr r1, off_813B78C // =StructArr_813944C 
 	mov r2, #0x10
@@ -24,9 +24,9 @@ sub_813B780:
 	mov pc, lr
 	.balign 4, 0x00
 off_813B78C: .word StructArr_813944C
-thumb_func_end sub_813B780
+	thumb_func_end sub_813B780
 
-thumb_local_start
+	thumb_local_start
 sub_813B790:
 	push {lr}
 	ldr r1, off_813B79C // =byte_20096D8 
@@ -34,7 +34,7 @@ sub_813B790:
 	bl loc_813B7A0
 	pop {pc}
 off_813B79C: .word byte_20096D8
-thumb_func_end sub_813B790
+	thumb_func_end sub_813B790
 
 loc_813B7A0:
 	push {r4,r6,r7,lr}
@@ -67,7 +67,7 @@ off_813B7D4: .word sub_813B7EC+1
 	.word sub_813B830+1
 off_813B7E4: .word unk_2009F00
 dword_813B7E8: .word 0x2660
-thumb_local_start
+	thumb_local_start
 sub_813B7EC:
 	push {lr}
 	mov r0, r7
@@ -76,9 +76,9 @@ sub_813B7EC:
 	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813B7EC
+	thumb_func_end sub_813B7EC
 
-thumb_local_start
+	thumb_local_start
 sub_813B7FC:
 	push {r5,r6,lr}
 	mov r5, #6
@@ -96,9 +96,9 @@ loc_813B802:
 	bge loc_813B800
 	pop {r5,r6,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813B7FC
+	thumb_func_end sub_813B7FC
 
-thumb_local_start
+	thumb_local_start
 sub_813B818:
 	push {r5,r6,lr}
 	mov r5, #0x2a 
@@ -114,9 +114,9 @@ loc_813B81E:
 	sub r5, #7
 	bge loc_813B81C
 	pop {r5,r6,pc}
-thumb_func_end sub_813B818
+	thumb_func_end sub_813B818
 
-thumb_local_start
+	thumb_local_start
 sub_813B830:
 	push {r5,r6,lr}
 	mov r5, #0
@@ -134,9 +134,9 @@ loc_813B836:
 	blt loc_813B834
 	pop {r5,r6,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813B830
+	thumb_func_end sub_813B830
 
-thumb_func_start sub_813B84C
+	thumb_func_start sub_813B84C
 sub_813B84C:
 	push {r4-r7,lr}
 	sub sp, sp, #0x14
@@ -263,26 +263,26 @@ loc_813B908:
 	add sp, sp, #0x14
 	pop {r4-r7,pc}
 	.byte 0, 0
-thumb_func_end sub_813B84C
+	thumb_func_end sub_813B84C
 
-thumb_func_start sub_813B920
+	thumb_func_start sub_813B920
 sub_813B920:
 	ldr r1, off_813B930 // =byte_20096D8 
 	strb r0, [r1]
 	mov pc, lr
 	.balign 4, 0x00
-thumb_func_end sub_813B920
+	thumb_func_end sub_813B920
 
-thumb_func_start sub_813B928
+	thumb_func_start sub_813B928
 sub_813B928:
 	ldr r1, off_813B930 // =byte_20096D8 
 	ldrb r0, [r1]
 	mov pc, lr
 	.byte 0, 0
 off_813B930: .word byte_20096D8
-thumb_func_end sub_813B928
+	thumb_func_end sub_813B928
 
-thumb_func_start sub_813B934
+	thumb_func_start sub_813B934
 sub_813B934:
 	push {lr}
 	mov r0, r10
@@ -299,9 +299,9 @@ sub_813B934:
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_813B94C: .word 0x188
-thumb_func_end sub_813B934
+	thumb_func_end sub_813B934
 
-thumb_func_start sub_813B950
+	thumb_func_start sub_813B950
 sub_813B950:
 	push {r4-r7,lr}
 	sub sp, sp, #0x10
@@ -356,9 +356,9 @@ loc_813B9A0:
 	add sp, sp, #0x10
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813B950
+	thumb_func_end sub_813B950
 
-thumb_func_start sub_813B9B4
+	thumb_func_start sub_813B9B4
 sub_813B9B4:
 	mov r3, r10
 	ldr r3, [r3,#0x58]
@@ -368,9 +368,9 @@ sub_813B9B4:
 	ldrb r0, [r3,r0]
 	tst r0, r0
 	mov pc, lr
-thumb_func_end sub_813B9B4
+	thumb_func_end sub_813B9B4
 
-thumb_func_start sub_813B9C4
+	thumb_func_start sub_813B9C4
 sub_813B9C4:
 	push {lr}
 	mov r3, r10
@@ -388,9 +388,9 @@ loc_813B9D8:
 	cmp r1, #0x31 
 	blt loc_813B9CE
 	pop {pc}
-thumb_func_end sub_813B9C4
+	thumb_func_end sub_813B9C4
 
-thumb_func_start sub_813B9E0
+	thumb_func_start sub_813B9E0
 sub_813B9E0:
 	push {lr}
 	ldr r1, off_813B9EC // =off_813B9F0 
@@ -402,9 +402,9 @@ off_813B9EC: .word off_813B9F0
 off_813B9F0: .word byte_813B1EC
 	.word byte_813B2CD
 	.word byte_813B3AE
-thumb_func_end sub_813B9E0
+	thumb_func_end sub_813B9E0
 
-thumb_func_start sub_813B9FC
+	thumb_func_start sub_813B9FC
 sub_813B9FC:
 	mov r1, r10
 	ldr r1, [r1,#0x5c]
@@ -412,9 +412,9 @@ sub_813B9FC:
 	mul r0, r2
 	add r0, r0, r1
 	mov pc, lr
-thumb_func_end sub_813B9FC
+	thumb_func_end sub_813B9FC
 
-thumb_func_start sub_813BA08
+	thumb_func_start sub_813BA08
 sub_813BA08:
 	push {r4-r7,lr}
 	sub sp, sp, #0x14
@@ -451,9 +451,9 @@ loc_813BA42:
 	add sp, sp, #0x14
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813BA08
+	thumb_func_end sub_813BA08
 
-thumb_func_start sub_813BA48
+	thumb_func_start sub_813BA48
 sub_813BA48:
 	push {lr}
 	mov r3, r10
@@ -469,9 +469,9 @@ sub_813BA48:
 	strb r0, [r3,#6]
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813BA48
+	thumb_func_end sub_813BA48
 
-thumb_func_start sub_813BA64
+	thumb_func_start sub_813BA64
 sub_813BA64:
 	push {lr}
 	mov r0, r10
@@ -485,9 +485,9 @@ sub_813BA64:
 	ldr r2, off_813BAA4 // =0x188 
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
-thumb_func_end sub_813BA64
+	thumb_func_end sub_813BA64
 
-thumb_func_start sub_813BA80
+	thumb_func_start sub_813BA80
 sub_813BA80:
 	push {lr}
 	mov r1, r10
@@ -504,9 +504,9 @@ sub_813BA80:
 off_813BA9C: .word unk_201BA00
 off_813BAA0: .word byte_201BA40
 off_813BAA4: .word 0x188
-thumb_func_end sub_813BA80
+	thumb_func_end sub_813BA80
 
-thumb_func_start sub_813BAA8
+	thumb_func_start sub_813BAA8
 sub_813BAA8:
 	push {lr}
 	mov r0, r10
@@ -520,9 +520,9 @@ sub_813BAA8:
 	ldr r2, off_813BAE8 // =0x188 
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
-thumb_func_end sub_813BAA8
+	thumb_func_end sub_813BAA8
 
-thumb_func_start sub_813BAC4
+	thumb_func_start sub_813BAC4
 sub_813BAC4:
 	push {lr}
 	mov r1, r10
@@ -539,9 +539,9 @@ sub_813BAC4:
 off_813BAE0: .word byte_201BC40
 off_813BAE4: .word byte_201BC80
 off_813BAE8: .word 0x188
-thumb_func_end sub_813BAC4
+	thumb_func_end sub_813BAC4
 
-thumb_func_start sub_813BAEC
+	thumb_func_start sub_813BAEC
 sub_813BAEC:
 	push {lr}
 	push {r0-r3}
@@ -552,9 +552,9 @@ sub_813BAEC:
 loc_813BAFC:
 	tst r0, r0
 	pop {pc}
-thumb_func_end sub_813BAEC
+	thumb_func_end sub_813BAEC
 
-thumb_local_start
+	thumb_local_start
 sub_813BB00:
 	push {r4-r7,lr}
 	sub sp, sp, #0x14
@@ -612,9 +612,9 @@ loc_813BB60:
 	tst r0, r0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813BB00
+	thumb_func_end sub_813BB00
 
-thumb_func_start sub_813BB68
+	thumb_func_start sub_813BB68
 sub_813BB68:
 	push {r4-r7,lr}
 	sub sp, sp, #0x14
@@ -674,9 +674,9 @@ loc_813BBCE:
 	add sp, sp, #0x14
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813BB68
+	thumb_func_end sub_813BB68
 
-thumb_func_start sub_813BBD4
+	thumb_func_start sub_813BBD4
 sub_813BBD4:
 	push {r4-r7,lr}
 	mov r0, r10
@@ -704,9 +704,9 @@ sub_813BBD4:
 	bl sub_813C584
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813BBD4
+	thumb_func_end sub_813BBD4
 
-thumb_local_start
+	thumb_local_start
 sub_813BC1C:
 	push {r4-r7,lr}
 	sub sp, sp, #0x24
@@ -773,9 +773,9 @@ loc_813BC8E:
 	bge loc_813BC36
 	add sp, sp, #0x24
 	pop {r4-r7,pc}
-thumb_func_end sub_813BC1C
+	thumb_func_end sub_813BC1C
 
-thumb_local_start
+	thumb_local_start
 sub_813BC98:
 	push {r4-r7,lr}
 	sub sp, sp, #0x20
@@ -837,30 +837,30 @@ loc_813BD02:
 	blt loc_813BCBC
 	add sp, sp, #0x20
 	pop {r4-r7,pc}
-thumb_func_end sub_813BC98
+	thumb_func_end sub_813BC98
 
-thumb_local_start
+	thumb_local_start
 sub_813BD0C:
 	ldr r7, off_813BD18 // =unk_2006CF8 
 	mov pc, lr
-thumb_func_end sub_813BD0C
+	thumb_func_end sub_813BD0C
 
-thumb_local_start
+	thumb_local_start
 sub_813BD10:
 	ldr r7, off_813BD1C // =unk_2006C88 
 	mov pc, lr
-thumb_func_end sub_813BD10
+	thumb_func_end sub_813BD10
 
-thumb_local_start
+	thumb_local_start
 sub_813BD14:
 	ldr r7, off_813BD20 // =unk_2006CC0 
 	mov pc, lr
 off_813BD18: .word unk_2006CF8
 off_813BD1C: .word unk_2006C88
 off_813BD20: .word unk_2006CC0
-thumb_func_end sub_813BD14
+	thumb_func_end sub_813BD14
 
-thumb_local_start
+	thumb_local_start
 sub_813BD24:
 	push {r4-r7,lr}
 	mov r0, r8
@@ -911,9 +911,9 @@ loc_813BD82:
 	mov r8, r0
 	pop {r4-r7,pc}
 	.byte 0, 0
-thumb_func_end sub_813BD24
+	thumb_func_end sub_813BD24
 
-thumb_local_start
+	thumb_local_start
 sub_813BD90:
 	push {r4-r7,lr}
 	sub sp, sp, #0x20
@@ -1003,9 +1003,9 @@ loc_813BE1E:
 	add sp, sp, #0x20
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813BD90
+	thumb_func_end sub_813BD90
 
-thumb_local_start
+	thumb_local_start
 sub_813BE38:
 	push {r4-r7,lr}
 	sub sp, sp, #4
@@ -1047,9 +1047,9 @@ loc_813BE7C:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_813BE88: .word byte_2006C50
-thumb_func_end sub_813BE38
+	thumb_func_end sub_813BE38
 
-thumb_local_start
+	thumb_local_start
 sub_813BE8C:
 	push {r4-r7,lr}
 	mov r6, #0
@@ -1066,9 +1066,9 @@ loc_813BE9E:
 	blt loc_813BE90
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813BE8C
+	thumb_func_end sub_813BE8C
 
-thumb_local_start
+	thumb_local_start
 sub_813BEA8:
 	push {r4-r7,lr}
 	// mem
@@ -1124,9 +1124,9 @@ loc_813BEFE:
 locret_813BF06:
 	pop {r4-r7,pc}
 off_813BF08: .word unk_2006D30
-thumb_func_end sub_813BEA8
+	thumb_func_end sub_813BEA8
 
-thumb_local_start
+	thumb_local_start
 sub_813BF0C:
 	mov r1, r10
 	ldr r1, [r1,#0x60]
@@ -1137,9 +1137,9 @@ sub_813BF0C:
 locret_813BF18:
 	mov pc, lr
 	.balign 4, 0x00
-thumb_func_end sub_813BF0C
+	thumb_func_end sub_813BF0C
 
-thumb_func_start sub_813BF1C
+	thumb_func_start sub_813BF1C
 sub_813BF1C:
 	push {r4-r7,lr}
 	mov r6, #1
@@ -1163,7 +1163,7 @@ loc_813BF38:
 	tst r0, r0
 	pop {r4-r7,pc}
 	.byte 0, 0
-thumb_func_end sub_813BF1C
+	thumb_func_end sub_813BF1C
 
 	mov r3, r10
 	ldr r3, [r3,#0x60]
@@ -1181,7 +1181,7 @@ thumb_func_end sub_813BF1C
 	strb r2, [r1,r0]
 	mov pc, lr
 	.byte 0, 0
-thumb_func_start sub_813BF60
+	thumb_func_start sub_813BF60
 sub_813BF60:
 	push {r4-r7,lr}
 	sub sp, sp, #8
@@ -1230,9 +1230,9 @@ loc_813BFA6:
 	add sp, sp, #8
 	mov r0, #0
 	pop {r4-r7,pc}
-thumb_func_end sub_813BF60
+	thumb_func_end sub_813BF60
 
-thumb_func_start sub_813BFB8
+	thumb_func_start sub_813BFB8
 sub_813BFB8:
 	push {r4-r7,lr}
 	sub sp, sp, #8
@@ -1290,9 +1290,9 @@ loc_813C00C:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.byte 0, 0
-thumb_func_end sub_813BFB8
+	thumb_func_end sub_813BFB8
 
-thumb_local_start
+	thumb_local_start
 sub_813C020:
 	push {lr}
 	mov r0, r10
@@ -1301,10 +1301,10 @@ sub_813C020:
 	bl clearBackwards_80008B4 // (void *mem, int size) -> void
 	pop {pc}
 	.byte 0, 0
-thumb_func_end sub_813C020
+	thumb_func_end sub_813C020
 
 // () -> void
-thumb_func_start sub_813C030
+	thumb_func_start sub_813C030
 sub_813C030:
 	push {r4-r7,lr}
 	mov r5, #0x94
@@ -1336,9 +1336,9 @@ loc_813C050:
 	.balign 4, 0x00
 off_813C064: .word StructArr_813944C
 off_813C068: .word 0x14C
-thumb_func_end sub_813C030
+	thumb_func_end sub_813C030
 
-thumb_func_start sub_813C06C
+	thumb_func_start sub_813C06C
 sub_813C06C:
 	push {r4-r7,lr}
 	sub sp, sp, #0xc
@@ -1455,9 +1455,9 @@ byte_813C188: .byte 0x4, 0x31, 0x7B, 0x6F, 0x7B, 0x3, 0x3B, 0x62, 0x5B, 0x0
 byte_813C1A4: .byte 0x4, 0x31, 0xF7, 0x5E, 0xF7, 0x2, 0xB7, 0x51, 0x17, 0x0
 	.byte 0x81, 0x5D, 0x80, 0x2, 0xA9, 0x45, 0x7B, 0x6F, 0x7B, 0x3
 	.byte 0x3B, 0x62, 0x5B, 0x0, 0x5, 0x6E, 0x2, 0x3
-thumb_func_end sub_813C06C
+	thumb_func_end sub_813C06C
 
-thumb_func_start sub_813C1C0
+	thumb_func_start sub_813C1C0
 sub_813C1C0:
 	push {r4-r7,lr}
 	sub sp, sp, #8
@@ -1582,9 +1582,9 @@ byte_813C308: .byte 0x42, 0x41, 0xF7, 0x5E, 0xF7, 0x2, 0xB7, 0x51, 0x17
 	.byte 0x0, 0x81, 0x5D, 0x80, 0x2, 0xE4, 0x51, 0x7B, 0x6F
 	.byte 0x7B, 0x3, 0x3B, 0x62, 0x5B, 0x0, 0x5, 0x6E, 0x2
 	.byte 0x3
-thumb_func_end sub_813C1C0
+	thumb_func_end sub_813C1C0
 
-thumb_func_start sub_813C324
+	thumb_func_start sub_813C324
 sub_813C324:
 	push {lr}
 	ldr r0, off_813C330 // =unk_2000090 
@@ -1592,9 +1592,9 @@ sub_813C324:
 	bl clearBackwards_80008B4 // (void *mem, int size) -> void
 	pop {pc}
 off_813C330: .word unk_2000090
-thumb_func_end sub_813C324
+	thumb_func_end sub_813C324
 
-thumb_func_start sub_813C334
+	thumb_func_start sub_813C334
 sub_813C334:
 	push {r4-r7,lr}
 	mov r6, r1
@@ -1652,9 +1652,9 @@ off_813C39C: .word dword_813C3A4
 dword_813C3A0: .word 0x2660
 dword_813C3A4: .word 0x1000200
 	.word 0x20001
-thumb_func_end sub_813C334
+	thumb_func_end sub_813C334
 
-thumb_func_start sub_813C3AC
+	thumb_func_start sub_813C3AC
 sub_813C3AC:
 	push {r4-r7,lr}
 	bl getPETNaviSelect // () -> u8
@@ -1731,9 +1731,9 @@ loc_813C42E:
 locret_813C454:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813C3AC
+	thumb_func_end sub_813C3AC
 
-thumb_local_start
+	thumb_local_start
 sub_813C458:
 	push {r4,lr}
 	bl sub_813BBD4
@@ -1753,9 +1753,9 @@ sub_813C458:
 	bl sub_803CE44
 	pop {r4,pc}
 	.byte 0, 0
-thumb_func_end sub_813C458
+	thumb_func_end sub_813C458
 
-thumb_local_start
+	thumb_local_start
 sub_813C490:
 	push {r4,lr}
 	mov r4, #0
@@ -1769,9 +1769,9 @@ loc_813C4A2:
 	mov r0, r4
 	pop {r4,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813C490
+	thumb_func_end sub_813C490
 
-thumb_local_start
+	thumb_local_start
 sub_813C4A8:
 	push {lr}
 	mov r0, #0x71 
@@ -1784,9 +1784,9 @@ off_813C4B8: .word pt_813C4BC
 pt_813C4BC: .word dword_813B48C+3
 	.word dword_813B4B0+16
 	.word dword_813B4D4+29
-thumb_func_end sub_813C4A8
+	thumb_func_end sub_813C4A8
 
-thumb_local_start
+	thumb_local_start
 sub_813C4C8:
 	push {lr}
 	mov r0, #0x71 
@@ -1814,9 +1814,9 @@ byte_813C550: .byte 0x1D, 0x3F, 0x3E, 0x3D, 0x3C, 0x4D, 0x4C, 0x1E, 0x14
 	.byte 0x5D, 0x2D, 0x26, 0x2A, 0x46, 0x4A, 0x5A, 0x5C, 0x2E
 	.byte 0x64, 0x66, 0x68, 0x6A, 0x74, 0x78, 0x2F, 0x6C, 0x6D
 	.byte 0x6E, 0x6F, 0x76, 0x77, 0x0, 0x0, 0x0
-thumb_func_end sub_813C4C8
+	thumb_func_end sub_813C4C8
 
-thumb_local_start
+	thumb_local_start
 sub_813C584:
 	push {r4-r7,lr}
 	sub sp, sp, #4
@@ -1900,9 +1900,9 @@ loc_813C61E:
 	add sp, sp, #4
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813C584
+	thumb_func_end sub_813C584
 
-thumb_local_start
+	thumb_local_start
 sub_813C624:
 	push {r0,r2,lr}
 	mov r0, #7
@@ -1921,9 +1921,9 @@ dword_813C640: .word 0xFFFFFFFF, 0xFFFFFFFF
 	.word 0xFFFF, 0xFF000000, 0xFF, 0xFFFF0000, 0x0
 	.word 0xFFFF00, 0x0
 	.word 0xFFFFFFFF, 0xFFFFFFFF
-thumb_func_end sub_813C624
+	thumb_func_end sub_813C624
 
-thumb_local_start
+	thumb_local_start
 sub_813C678:
 	push {lr}
 	mov r0, #0
@@ -1931,9 +1931,9 @@ sub_813C678:
 	ldr r1, [r1,#0x68]
 	strh r0, [r1]
 	pop {pc}
-thumb_func_end sub_813C678
+	thumb_func_end sub_813C678
 
-thumb_local_start
+	thumb_local_start
 sub_813C684:
 	push {r4-r7,lr}
 	sub sp, sp, #4
@@ -2078,15 +2078,15 @@ navicust_jt_NCPs: .word sub_813C808+1
 	.word navicust_NCP_HPPlus300+1
 	.word navicust_NCP_HPPlus400+1
 	.word navicust_NCP_HPPlus500+1
-thumb_func_end sub_813C684
+	thumb_func_end sub_813C684
 
-thumb_local_start
+	thumb_local_start
 sub_813C808:
 	push {lr}
 	pop {pc}
-thumb_func_end sub_813C808
+	thumb_func_end sub_813C808
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_SuperArmor:
 	push {lr}
 	mov r0, #0
@@ -2096,9 +2096,9 @@ navicust_NCP_SuperArmor:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end navicust_NCP_SuperArmor
+	thumb_func_end navicust_NCP_SuperArmor
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_Custom1:
 	push {lr}
 	mov r0, #0
@@ -2113,9 +2113,9 @@ loc_813C82E:
 	mov r1, #0xa
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
-thumb_func_end navicust_NCP_Custom1
+	thumb_func_end navicust_NCP_Custom1
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_Custom2:
 	push {lr}
 	mov r0, #0
@@ -2130,9 +2130,9 @@ loc_813C84A:
 	mov r1, #0xa
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
-thumb_func_end navicust_NCP_Custom2
+	thumb_func_end navicust_NCP_Custom2
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_MegFldr1:
 	push {lr}
 	mov r0, #0
@@ -2147,9 +2147,9 @@ loc_813C866:
 	mov r1, #0xb
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
-thumb_func_end navicust_NCP_MegFldr1
+	thumb_func_end navicust_NCP_MegFldr1
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_MegFldr2:
 	push {lr}
 	mov r0, #0
@@ -2164,9 +2164,9 @@ loc_813C882:
 	mov r1, #0xb
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
-thumb_func_end navicust_NCP_MegFldr2
+	thumb_func_end navicust_NCP_MegFldr2
 
-thumb_local_start
+	thumb_local_start
 navicust_GigFldr1:
 	push {lr}
 	mov r0, #0
@@ -2181,9 +2181,9 @@ loc_813C89E:
 	mov r1, #0xc
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
-thumb_func_end navicust_GigFldr1
+	thumb_func_end navicust_GigFldr1
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_FstBarr:
 	push {lr}
 	mov r0, #0
@@ -2192,9 +2192,9 @@ navicust_NCP_FstBarr:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end navicust_NCP_FstBarr
+	thumb_func_end navicust_NCP_FstBarr
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_Shield:
 	push {lr}
 	mov r0, #0
@@ -2203,9 +2203,9 @@ navicust_NCP_Shield:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end navicust_NCP_Shield
+	thumb_func_end navicust_NCP_Shield
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_Reflect:
 	push {lr}
 	mov r0, #0
@@ -2214,9 +2214,9 @@ navicust_NCP_Reflect:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end navicust_NCP_Reflect
+	thumb_func_end navicust_NCP_Reflect
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_AntiDmg:
 	push {lr}
 	mov r0, #0
@@ -2225,9 +2225,9 @@ navicust_NCP_AntiDmg:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end navicust_NCP_AntiDmg
+	thumb_func_end navicust_NCP_AntiDmg
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_FlotShoe:
 	push {lr}
 	mov r0, #0
@@ -2236,9 +2236,9 @@ navicust_NCP_FlotShoe:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end navicust_NCP_FlotShoe
+	thumb_func_end navicust_NCP_FlotShoe
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_AirShoes:
 	push {lr}
 	mov r0, #0
@@ -2247,9 +2247,9 @@ navicust_NCP_AirShoes:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end navicust_NCP_AirShoes
+	thumb_func_end navicust_NCP_AirShoes
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_UnderSht:
 	push {lr}
 	mov r0, #0
@@ -2258,9 +2258,9 @@ navicust_NCP_UnderSht:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end navicust_NCP_UnderSht
+	thumb_func_end navicust_NCP_UnderSht
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_ChpShufl:
 	push {lr}
 	mov r0, #0
@@ -2269,9 +2269,9 @@ navicust_NCP_ChpShufl:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end navicust_NCP_ChpShufl
+	thumb_func_end navicust_NCP_ChpShufl
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_NumbrOpn:
 	push {lr}
 	mov r0, #0
@@ -2280,9 +2280,9 @@ navicust_NCP_NumbrOpn:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end navicust_NCP_NumbrOpn
+	thumb_func_end navicust_NCP_NumbrOpn
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_SneakRun:
 	push {lr}
 	mov r0, #0
@@ -2291,9 +2291,9 @@ navicust_NCP_SneakRun:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end navicust_NCP_SneakRun
+	thumb_func_end navicust_NCP_SneakRun
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_OilBody:
 	push {lr}
 	mov r0, #0
@@ -2303,9 +2303,9 @@ navicust_NCP_OilBody:
 	pop {pc}
 	.balign 4, 0x00
 dword_813C958: .word 0x2
-thumb_func_end navicust_NCP_OilBody
+	thumb_func_end navicust_NCP_OilBody
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_Fish:
 	push {lr}
 	mov r0, #0
@@ -2315,9 +2315,9 @@ navicust_NCP_Fish:
 	pop {pc}
 	.balign 4, 0x00
 dword_813C96C: .word 0x4
-thumb_func_end navicust_NCP_Fish
+	thumb_func_end navicust_NCP_Fish
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_Battery:
 	push {lr}
 	mov r0, #0
@@ -2327,9 +2327,9 @@ navicust_NCP_Battery:
 	pop {pc}
 	.byte 0, 0
 dword_813C980: .word 0x8
-thumb_func_end navicust_NCP_Battery
+	thumb_func_end navicust_NCP_Battery
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_Jungle:
 	push {lr}
 	mov r0, #0
@@ -2339,9 +2339,9 @@ navicust_NCP_Jungle:
 	pop {pc}
 	.balign 4, 0x00
 dword_813C994: .word 0x10
-thumb_func_end navicust_NCP_Jungle
+	thumb_func_end navicust_NCP_Jungle
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_Collect:
 	push {lr}
 	mov r0, #0
@@ -2353,9 +2353,9 @@ navicust_NCP_Collect:
 	mov r1, #0x26 
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
-thumb_func_end navicust_NCP_Collect
+	thumb_func_end navicust_NCP_Collect
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_Millions:
 	push {lr}
 	mov r0, #0
@@ -2364,9 +2364,9 @@ navicust_NCP_Millions:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
-thumb_func_end navicust_NCP_Millions
+	thumb_func_end navicust_NCP_Millions
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_Humor:
 	push {lr}
 	mov r0, #0
@@ -2375,9 +2375,9 @@ navicust_NCP_Humor:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
-thumb_func_end navicust_NCP_Humor
+	thumb_func_end navicust_NCP_Humor
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_Poem:
 	push {lr}
 	mov r0, #0
@@ -2386,9 +2386,9 @@ navicust_NCP_Poem:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
-thumb_func_end navicust_NCP_Poem
+	thumb_func_end navicust_NCP_Poem
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_SlipRunr:
 	push {lr}
 	mov r0, #0
@@ -2397,9 +2397,9 @@ navicust_NCP_SlipRunr:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
-thumb_func_end navicust_NCP_SlipRunr
+	thumb_func_end navicust_NCP_SlipRunr
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_AutoHeal:
 	push {lr}
 	mov r0, #0
@@ -2408,9 +2408,9 @@ navicust_NCP_AutoHeal:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
-thumb_func_end navicust_NCP_AutoHeal
+	thumb_func_end navicust_NCP_AutoHeal
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_BustPack:
 	push {lr}
 	mov r0, #0
@@ -2447,9 +2447,9 @@ loc_813CA42:
 	mov r1, #3
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
-thumb_func_end navicust_NCP_BustPack
+	thumb_func_end navicust_NCP_BustPack
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_BodyPack:
 	push {lr}
 	bl navicust_NCP_SuperArmor
@@ -2457,25 +2457,25 @@ navicust_NCP_BodyPack:
 	bl navicust_NCP_AirShoes
 	bl navicust_NCP_UnderSht
 	pop {pc}
-thumb_func_end navicust_NCP_BodyPack
+	thumb_func_end navicust_NCP_BodyPack
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_FldrPak1:
 	push {lr}
 	bl navicust_NCP_MegFldr1
 	bl navicust_NCP_Custom1
 	pop {pc}
-thumb_func_end navicust_NCP_FldrPak1
+	thumb_func_end navicust_NCP_FldrPak1
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_FldrPak2:
 	push {lr}
 	bl navicust_NCP_MegFldr2
 	bl navicust_NCP_Custom2
 	pop {pc}
-thumb_func_end navicust_NCP_FldrPak2
+	thumb_func_end navicust_NCP_FldrPak2
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_BugStop:
 	push {lr}
 	mov r0, #0
@@ -2484,9 +2484,9 @@ navicust_NCP_BugStop:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end navicust_NCP_BugStop
+	thumb_func_end navicust_NCP_BugStop
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_Rush:
 	push {lr}
 	mov r0, #0
@@ -2500,9 +2500,9 @@ navicust_NCP_Rush:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end navicust_NCP_Rush
+	thumb_func_end navicust_NCP_Rush
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_Beat:
 	push {lr}
 	mov r0, #0
@@ -2516,9 +2516,9 @@ navicust_NCP_Beat:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
-thumb_func_end navicust_NCP_Beat
+	thumb_func_end navicust_NCP_Beat
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_Tango:
 	push {lr}
 	mov r0, #0
@@ -2532,9 +2532,9 @@ navicust_NCP_Tango:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end navicust_NCP_Tango
+	thumb_func_end navicust_NCP_Tango
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_AttackPlus1:
 	push {lr}
 	mov r0, #0
@@ -2549,9 +2549,9 @@ loc_813CAEE:
 	mov r1, #1
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
-thumb_func_end navicust_NCP_AttackPlus1
+	thumb_func_end navicust_NCP_AttackPlus1
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_SpeedPlus1:
 	push {lr}
 	mov r0, #0
@@ -2566,9 +2566,9 @@ loc_813CB0A:
 	mov r1, #2
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
-thumb_func_end navicust_NCP_SpeedPlus1
+	thumb_func_end navicust_NCP_SpeedPlus1
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_ChargePlus1:
 	push {lr}
 	mov r0, #0
@@ -2583,9 +2583,9 @@ loc_813CB26:
 	mov r1, #3
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
-thumb_func_end navicust_NCP_ChargePlus1
+	thumb_func_end navicust_NCP_ChargePlus1
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_AttckMAX:
 	push {lr}
 	mov r0, #0
@@ -2594,9 +2594,9 @@ navicust_NCP_AttckMAX:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
-thumb_func_end navicust_NCP_AttckMAX
+	thumb_func_end navicust_NCP_AttckMAX
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_SpeedMAX:
 	push {lr}
 	mov r0, #0
@@ -2605,9 +2605,9 @@ navicust_NCP_SpeedMAX:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
-thumb_func_end navicust_NCP_SpeedMAX
+	thumb_func_end navicust_NCP_SpeedMAX
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_ChargMAX:
 	push {lr}
 	mov r0, #0
@@ -2616,9 +2616,9 @@ navicust_NCP_ChargMAX:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
-thumb_func_end navicust_NCP_ChargMAX
+	thumb_func_end navicust_NCP_ChargMAX
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_HPPlus50:
 	push {lr}
 	mov r0, r10
@@ -2628,9 +2628,9 @@ navicust_NCP_HPPlus50:
 	strh r1, [r0]
 	pop {pc}
 	.byte 0, 0
-thumb_func_end navicust_NCP_HPPlus50
+	thumb_func_end navicust_NCP_HPPlus50
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_HPPlus100:
 	push {lr}
 	mov r0, r10
@@ -2640,9 +2640,9 @@ navicust_NCP_HPPlus100:
 	strh r1, [r0]
 	pop {pc}
 	.byte 0, 0
-thumb_func_end navicust_NCP_HPPlus100
+	thumb_func_end navicust_NCP_HPPlus100
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_HPPlus200:
 	push {lr}
 	mov r0, r10
@@ -2652,9 +2652,9 @@ navicust_NCP_HPPlus200:
 	strh r1, [r0]
 	pop {pc}
 	.byte 0, 0
-thumb_func_end navicust_NCP_HPPlus200
+	thumb_func_end navicust_NCP_HPPlus200
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_HPPlus300:
 	push {lr}
 	mov r0, r10
@@ -2665,9 +2665,9 @@ navicust_NCP_HPPlus300:
 	strh r1, [r0]
 	pop {pc}
 off_813CBA0: .word 0x12C
-thumb_func_end navicust_NCP_HPPlus300
+	thumb_func_end navicust_NCP_HPPlus300
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_HPPlus400:
 	push {lr}
 	mov r0, r10
@@ -2678,9 +2678,9 @@ navicust_NCP_HPPlus400:
 	strh r1, [r0]
 	pop {pc}
 off_813CBB4: .word 0x190
-thumb_func_end navicust_NCP_HPPlus400
+	thumb_func_end navicust_NCP_HPPlus400
 
-thumb_local_start
+	thumb_local_start
 navicust_NCP_HPPlus500:
 	push {lr}
 	mov r0, r10
@@ -2691,9 +2691,9 @@ navicust_NCP_HPPlus500:
 	strh r1, [r0]
 	pop {pc}
 off_813CBC8: .word 0x1F4
-thumb_func_end navicust_NCP_HPPlus500
+	thumb_func_end navicust_NCP_HPPlus500
 
-thumb_local_start
+	thumb_local_start
 sub_813CBCC:
 	push {r4-r7,lr}
 	mov r0, #0x17
@@ -2782,15 +2782,15 @@ dword_813CC18: .word 0x0, 0x0, 0x0, 0x0
 	.word sub_813CE90+1
 	.word sub_813CE90+1
 	.word sub_813CE90+1
-thumb_func_end sub_813CBCC
+	thumb_func_end sub_813CBCC
 
-thumb_local_start
+	thumb_local_start
 sub_813CCE8:
 	push {lr}
 	pop {pc}
-thumb_func_end sub_813CCE8
+	thumb_func_end sub_813CCE8
 
-thumb_local_start
+	thumb_local_start
 sub_813CCEC:
 	push {lr}
 	mov r0, #0
@@ -2799,15 +2799,15 @@ sub_813CCEC:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813CCEC
+	thumb_func_end sub_813CCEC
 
-thumb_local_start
+	thumb_local_start
 sub_813CCFC:
 	push {lr}
 	pop {pc}
-thumb_func_end sub_813CCFC
+	thumb_func_end sub_813CCFC
 
-thumb_local_start
+	thumb_local_start
 sub_813CD00:
 	push {lr}
 	mov r0, #0
@@ -2816,42 +2816,42 @@ sub_813CD00:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
-thumb_func_end sub_813CD00
+	thumb_func_end sub_813CD00
 
-thumb_local_start
+	thumb_local_start
 sub_813CD10:
 	push {lr}
 	pop {pc}
-thumb_func_end sub_813CD10
+	thumb_func_end sub_813CD10
 
-thumb_local_start
+	thumb_local_start
 sub_813CD14:
 	push {lr}
 	bl sub_813CD3E
 	mov r2, #2
 	bl sub_813CD4C
 	pop {pc}
-thumb_func_end sub_813CD14
+	thumb_func_end sub_813CD14
 
-thumb_local_start
+	thumb_local_start
 sub_813CD22:
 	push {lr}
 	bl sub_813CD3E
 	mov r2, #3
 	bl sub_813CD4C
 	pop {pc}
-thumb_func_end sub_813CD22
+	thumb_func_end sub_813CD22
 
-thumb_local_start
+	thumb_local_start
 sub_813CD30:
 	push {lr}
 	bl sub_813CD3E
 	mov r2, #4
 	bl sub_813CD4C
 	pop {pc}
-thumb_func_end sub_813CD30
+	thumb_func_end sub_813CD30
 
-thumb_local_start
+	thumb_local_start
 sub_813CD3E:
 	push {lr}
 	mov r0, #0
@@ -2859,48 +2859,48 @@ sub_813CD3E:
 	mov r2, #3
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
-thumb_func_end sub_813CD3E
+	thumb_func_end sub_813CD3E
 
-thumb_local_start
+	thumb_local_start
 sub_813CD4C:
 	push {lr}
 	mov r0, #0
 	mov r1, #0x13
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
-thumb_func_end sub_813CD4C
+	thumb_func_end sub_813CD4C
 
-thumb_local_start
+	thumb_local_start
 sub_813CD58:
 	push {lr}
 	pop {pc}
-thumb_func_end sub_813CD58
+	thumb_func_end sub_813CD58
 
-thumb_local_start
+	thumb_local_start
 sub_813CD5C:
 	push {lr}
 	mov r2, #4
 	bl sub_813CD7A
 	pop {pc}
-thumb_func_end sub_813CD5C
+	thumb_func_end sub_813CD5C
 
-thumb_local_start
+	thumb_local_start
 sub_813CD66:
 	push {lr}
 	mov r2, #3
 	bl sub_813CD7A
 	pop {pc}
-thumb_func_end sub_813CD66
+	thumb_func_end sub_813CD66
 
-thumb_local_start
+	thumb_local_start
 sub_813CD70:
 	push {lr}
 	mov r2, #2
 	bl sub_813CD7A
 	pop {pc}
-thumb_func_end sub_813CD70
+	thumb_func_end sub_813CD70
 
-thumb_local_start
+	thumb_local_start
 sub_813CD7A:
 	push {lr}
 	mov r0, #0
@@ -2908,15 +2908,15 @@ sub_813CD7A:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813CD7A
+	thumb_func_end sub_813CD7A
 
-thumb_local_start
+	thumb_local_start
 sub_813CD88:
 	push {lr}
 	pop {pc}
-thumb_func_end sub_813CD88
+	thumb_func_end sub_813CD88
 
-thumb_local_start
+	thumb_local_start
 sub_813CD8C:
 	push {lr}
 	mov r0, #0
@@ -2925,15 +2925,15 @@ sub_813CD8C:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813CD8C
+	thumb_func_end sub_813CD8C
 
-thumb_local_start
+	thumb_local_start
 sub_813CD9C:
 	push {lr}
 	pop {pc}
-thumb_func_end sub_813CD9C
+	thumb_func_end sub_813CD9C
 
-thumb_local_start
+	thumb_local_start
 sub_813CDA0:
 	push {lr}
 	mov r0, #0
@@ -2942,42 +2942,42 @@ sub_813CDA0:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
-thumb_func_end sub_813CDA0
+	thumb_func_end sub_813CDA0
 
-thumb_local_start
+	thumb_local_start
 sub_813CDB0:
 	push {lr}
 	pop {pc}
-thumb_func_end sub_813CDB0
+	thumb_func_end sub_813CDB0
 
-thumb_local_start
+	thumb_local_start
 sub_813CDB4:
 	push {r4-r7,lr}
 	mov r4, #6
 	mov r6, #1
 	bl sub_813CDD8
 	pop {r4-r7,pc}
-thumb_func_end sub_813CDB4
+	thumb_func_end sub_813CDB4
 
-thumb_local_start
+	thumb_local_start
 sub_813CDC0:
 	push {r4-r7,lr}
 	mov r4, #0xa
 	mov r6, #2
 	bl sub_813CDD8
 	pop {r4-r7,pc}
-thumb_func_end sub_813CDC0
+	thumb_func_end sub_813CDC0
 
-thumb_local_start
+	thumb_local_start
 sub_813CDCC:
 	push {r4-r7,lr}
 	mov r4, #0xd
 	mov r6, #3
 	bl sub_813CDD8
 	pop {r4-r7,pc}
-thumb_func_end sub_813CDCC
+	thumb_func_end sub_813CDCC
 
-thumb_local_start
+	thumb_local_start
 sub_813CDD8:
 	push {r4-r7,lr}
 	mov r0, #0
@@ -2989,15 +2989,15 @@ sub_813CDD8:
 	mov r2, r6
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {r4-r7,pc}
-thumb_func_end sub_813CDD8
+	thumb_func_end sub_813CDD8
 
-thumb_local_start
+	thumb_local_start
 sub_813CDF0:
 	push {lr}
 	pop {pc}
-thumb_func_end sub_813CDF0
+	thumb_func_end sub_813CDF0
 
-thumb_local_start
+	thumb_local_start
 sub_813CDF4:
 	push {lr}
 	mov r0, #0
@@ -3006,39 +3006,39 @@ sub_813CDF4:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813CDF4
+	thumb_func_end sub_813CDF4
 
-thumb_local_start
+	thumb_local_start
 sub_813CE04:
 	push {lr}
 	pop {pc}
-thumb_func_end sub_813CE04
+	thumb_func_end sub_813CE04
 
-thumb_local_start
+	thumb_local_start
 sub_813CE08:
 	push {r4-r7,lr}
 	mov r4, #1
 	bl sub_813CE26
 	pop {r4-r7,pc}
-thumb_func_end sub_813CE08
+	thumb_func_end sub_813CE08
 
-thumb_local_start
+	thumb_local_start
 sub_813CE12:
 	push {r4-r7,lr}
 	mov r4, #2
 	bl sub_813CE26
 	pop {r4-r7,pc}
-thumb_func_end sub_813CE12
+	thumb_func_end sub_813CE12
 
-thumb_local_start
+	thumb_local_start
 sub_813CE1C:
 	push {r4-r7,lr}
 	mov r4, #3
 	bl sub_813CE26
 	pop {r4-r7,pc}
-thumb_func_end sub_813CE1C
+	thumb_func_end sub_813CE1C
 
-thumb_local_start
+	thumb_local_start
 sub_813CE26:
 	push {lr}
 	mov r0, #0
@@ -3054,39 +3054,39 @@ sub_813CE26:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813CE26
+	thumb_func_end sub_813CE26
 
-thumb_local_start
+	thumb_local_start
 sub_813CE48:
 	push {lr}
 	pop {pc}
-thumb_func_end sub_813CE48
+	thumb_func_end sub_813CE48
 
-thumb_local_start
+	thumb_local_start
 sub_813CE4C:
 	push {lr}
 	mov r2, #3
 	bl sub_813CE6A
 	pop {pc}
-thumb_func_end sub_813CE4C
+	thumb_func_end sub_813CE4C
 
-thumb_local_start
+	thumb_local_start
 sub_813CE56:
 	push {lr}
 	mov r2, #2
 	bl sub_813CE6A
 	pop {pc}
-thumb_func_end sub_813CE56
+	thumb_func_end sub_813CE56
 
-thumb_local_start
+	thumb_local_start
 sub_813CE60:
 	push {lr}
 	mov r2, #1
 	bl sub_813CE6A
 	pop {pc}
-thumb_func_end sub_813CE60
+	thumb_func_end sub_813CE60
 
-thumb_local_start
+	thumb_local_start
 sub_813CE6A:
 	push {lr}
 	mov r0, #0
@@ -3094,15 +3094,15 @@ sub_813CE6A:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813CE6A
+	thumb_func_end sub_813CE6A
 
-thumb_local_start
+	thumb_local_start
 sub_813CE78:
 	push {lr}
 	pop {pc}
-thumb_func_end sub_813CE78
+	thumb_func_end sub_813CE78
 
-thumb_local_start
+	thumb_local_start
 sub_813CE7C:
 	push {lr}
 	mov r0, #0
@@ -3111,15 +3111,15 @@ sub_813CE7C:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813CE7C
+	thumb_func_end sub_813CE7C
 
-thumb_local_start
+	thumb_local_start
 sub_813CE8C:
 	push {lr}
 	pop {pc}
-thumb_func_end sub_813CE8C
+	thumb_func_end sub_813CE8C
 
-thumb_local_start
+	thumb_local_start
 sub_813CE90:
 	push {lr}
 	mov r0, #0
@@ -3128,10 +3128,10 @@ sub_813CE90:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.byte 0, 0
-thumb_func_end sub_813CE90
+	thumb_func_end sub_813CE90
 
 // () -> void
-thumb_local_start
+	thumb_local_start
 sub_813CEA0:
 	push {r4-r7,lr}
 	sub sp, sp, #4
@@ -3172,9 +3172,9 @@ loc_813CEF2:
 	add sp, sp, #4
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813CEA0
+	thumb_func_end sub_813CEA0
 
-thumb_local_start
+	thumb_local_start
 sub_813CEF8:
 	push {r4,lr}
 	mov r4, r0
@@ -3186,18 +3186,18 @@ sub_813CEF8:
 	mov r2, r4
 	bl sub_813CD4C
 	pop {r4,pc}
-thumb_func_end sub_813CEF8
+	thumb_func_end sub_813CEF8
 
-thumb_local_start
+	thumb_local_start
 sub_813CF10:
 	push {r4,r6,lr}
 	mov r4, r0
 	mov r6, r1
 	bl sub_813CDD8
 	pop {r4,r6,pc}
-thumb_func_end sub_813CF10
+	thumb_func_end sub_813CF10
 
-thumb_local_start
+	thumb_local_start
 sub_813CF1C:
 	push {lr}
 	mov r2, r0
@@ -3206,9 +3206,9 @@ sub_813CF1C:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813CF1C
+	thumb_func_end sub_813CF1C
 
-thumb_local_start
+	thumb_local_start
 sub_813CF2C:
 	push {lr}
 	mov r2, r0
@@ -3217,9 +3217,9 @@ sub_813CF2C:
 	bl sub_80137E6
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813CF2C
+	thumb_func_end sub_813CF2C
 
-thumb_local_start
+	thumb_local_start
 sub_813CF3C:
 	push {lr}
 	mov r0, #0
@@ -3228,9 +3228,9 @@ sub_813CF3C:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813CF3C
+	thumb_func_end sub_813CF3C
 
-thumb_local_start
+	thumb_local_start
 sub_813CF4C:
 	push {r4,lr}
 	mov r4, r0
@@ -3247,9 +3247,9 @@ sub_813CF4C:
 loc_813CF66:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {r4,pc}
-thumb_func_end sub_813CF4C
+	thumb_func_end sub_813CF4C
 
-thumb_local_start
+	thumb_local_start
 sub_813CF6C:
 	push {r4,lr}
 	mov r4, r0
@@ -3266,9 +3266,9 @@ sub_813CF6C:
 loc_813CF86:
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 	pop {r4,pc}
-thumb_func_end sub_813CF6C
+	thumb_func_end sub_813CF6C
 
-thumb_local_start
+	thumb_local_start
 sub_813CF8C:
 	push {lr}
 	mov r2, r0
@@ -3340,9 +3340,9 @@ dword_813D014: .word 0x84FF02, 0x3E3E614F, 0x90E94561, 0x84FF02, 0x86864F45
 	.word 0xFFFFFF10, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF
 byte_813D410: .byte 0x3E, 0x45, 0xCC, 0x86, 0x90, 0x18, 0x4F, 0x9, 0x61
 	.byte 0xE9, 0x0, 0x0
-thumb_func_end sub_813CF8C
+	thumb_func_end sub_813CF8C
 
-thumb_func_start sub_813D41C
+	thumb_func_start sub_813D41C
 sub_813D41C:
 	push {r5-r7,lr}
 	ldr r7, off_813D480 // =byte_813CF9C 
@@ -3402,9 +3402,9 @@ loc_813D472:
 off_813D480: .word byte_813CF9C
 off_813D484: .word byte_813D410
 dword_813D488: .word 0x2620
-thumb_func_end sub_813D41C
+	thumb_func_end sub_813D41C
 
-thumb_func_start sub_813D48C
+	thumb_func_start sub_813D48C
 sub_813D48C:
 	push {r4-r7,lr}
 	push {r0}
@@ -3452,9 +3452,9 @@ off_813D4F4: .word dword_813D4FC
 off_813D4F8: .word dword_813D500
 dword_813D4FC: .word 0x321E140A
 dword_813D500: .word 0x0, 0x0, 0x0, 0x0
-thumb_func_end sub_813D48C
+	thumb_func_end sub_813D48C
 
-thumb_local_start
+	thumb_local_start
 sub_813D510:
 	push {r4-r7,lr}
 	bl change_20013F0_800151C // () -> int
@@ -3503,9 +3503,9 @@ loc_813D554:
 loc_813D564:
 	pop {r0-r2,r4}
 	pop {r4-r7,pc}
-thumb_func_end sub_813D510
+	thumb_func_end sub_813D510
 
-thumb_local_start
+	thumb_local_start
 sub_813D568:
 	push {r4-r7,lr}
 	bl change_20013F0_800151C // () -> int
@@ -3533,9 +3533,9 @@ loc_813D590:
 	ldrh r2, [r5,#2]
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813D568
+	thumb_func_end sub_813D568
 
-thumb_local_start
+	thumb_local_start
 sub_813D598:
 	push {r4-r7,lr}
 	bl change_20013F0_800151C // () -> int
@@ -3563,35 +3563,35 @@ loc_813D5C0:
 	ldrh r2, [r5,#2]
 	ldrb r3, [r5,#1]
 	pop {r4-r7,pc}
-thumb_func_end sub_813D598
+	thumb_func_end sub_813D598
 
-thumb_func_start sub_813D5C8
+	thumb_func_start sub_813D5C8
 sub_813D5C8:
 	ldr r1, off_813D5D8 // =byte_200BC50 
 	strb r0, [r1,#0x6] // (byte_200BC56 - 0x200bc50)
 	mov pc, lr
 	.byte 0, 0
-thumb_func_end sub_813D5C8
+	thumb_func_end sub_813D5C8
 
-thumb_func_start sub_813D5D0
+	thumb_func_start sub_813D5D0
 sub_813D5D0:
 	ldr r1, off_813D5D8 // =byte_200BC50 
 	ldrb r0, [r1,#0x6] // (byte_200BC56 - 0x200bc50)
 	mov pc, lr
 	.balign 4, 0x00
 off_813D5D8: .word byte_200BC50
-thumb_func_end sub_813D5D0
+	thumb_func_end sub_813D5D0
 
-thumb_func_start sub_813D5DC
+	thumb_func_start sub_813D5DC
 sub_813D5DC:
 	push {lr}
 	bl sub_814692C
 	pop {pc}
-thumb_func_end sub_813D5DC
+	thumb_func_end sub_813D5DC
 
 	push {r4,lr}
 	pop {r4,pc}
-thumb_local_start
+	thumb_local_start
 sub_813D5E8:
 	ldr r1, off_813D608 // =byte_200AF80 
 	ldrb r2, [r1,#0x5] // (byte_200AF85 - 0x200af80)
@@ -3599,7 +3599,7 @@ sub_813D5E8:
 	strb r2, [r1,#0x5] // (byte_200AF85 - 0x200af80)
 	mov pc, lr
 	.balign 4, 0x00
-thumb_func_end sub_813D5E8
+	thumb_func_end sub_813D5E8
 
 	ldr r1, off_813D608 // =byte_200AF80 
 	ldrb r2, [r1,#0x5] // (byte_200AF85 - 0x200af80)
@@ -3612,7 +3612,7 @@ thumb_func_end sub_813D5E8
 	tst r2, r0
 	mov pc, lr
 off_813D608: .word byte_200AF80
-thumb_func_start sub_813D60C
+	thumb_func_start sub_813D60C
 sub_813D60C:
 	push {lr}
 	ldr r1, off_813D618 // =byte_200BC50 
@@ -3621,7 +3621,7 @@ sub_813D60C:
 	pop {pc}
 	.balign 4, 0x00
 off_813D618: .word byte_200BC50
-thumb_func_end sub_813D60C
+	thumb_func_end sub_813D60C
 
 	push {lr}
 	ldr r1, off_813D628 // =byte_200BC50 
@@ -3630,16 +3630,16 @@ thumb_func_end sub_813D60C
 	pop {pc}
 	.balign 4, 0x00
 off_813D628: .word byte_200BC50
-thumb_local_start
+	thumb_local_start
 sub_813D62C:
 	push {lr}
 	ldr r1, off_813D634 // =byte_200BC50 
 	strb r0, [r1,#0x5] // (byte_200BC55 - 0x200bc50)
 	pop {pc}
 off_813D634: .word byte_200BC50
-thumb_func_end sub_813D62C
+	thumb_func_end sub_813D62C
 
-thumb_func_start sub_813D638
+	thumb_func_start sub_813D638
 sub_813D638:
 	push {lr}
 	ldr r0, off_813D644 // =byte_2009470 
@@ -3648,9 +3648,9 @@ sub_813D638:
 	pop {pc}
 	.balign 4, 0x00
 off_813D644: .word byte_2009470
-thumb_func_end sub_813D638
+	thumb_func_end sub_813D638
 
-thumb_func_start sub_813D648
+	thumb_func_start sub_813D648
 sub_813D648:
 	push {lr}
 	bl sub_8149718
@@ -3658,7 +3658,7 @@ sub_813D648:
 	cmp r0, r1
 	pop {pc}
 dword_813D654: .word 0x8001
-thumb_func_end sub_813D648
+	thumb_func_end sub_813D648
 
 	push {r4,lr}
 	bl sub_8146E78
@@ -3666,7 +3666,7 @@ thumb_func_end sub_813D648
 	.word byte_200AF80
 	.word unk_200FFF0
 	.word unk_2009480
-thumb_func_start sub_813D66C
+	thumb_func_start sub_813D66C
 sub_813D66C:
 	push {r4,lr}
 	bl sub_8147B3C
@@ -3674,7 +3674,7 @@ sub_813D66C:
 	.word byte_200AF80
 	.word unk_200FFF0
 	.word unk_2009480
-thumb_func_end sub_813D66C
+	thumb_func_end sub_813D66C
 
 	push {lr}
 	ldr r0, off_813D68C // =byte_200AF80 
@@ -3712,7 +3712,7 @@ off_813D6C4: .word sub_813D6DC+1
 	.word 0x0
 	.word sub_813D714+1
 	.word 0x0
-thumb_local_start
+	thumb_local_start
 sub_813D6DC:
 	push {r4,lr}
 	mov r0, #0
@@ -3725,9 +3725,9 @@ sub_813D6DC:
 	orr r1, r4
 	pop {r4,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813D6DC
+	thumb_func_end sub_813D6DC
 
-thumb_local_start
+	thumb_local_start
 sub_813D6F4:
 	push {lr}
 	mov r0, #0
@@ -3745,9 +3745,9 @@ loc_813D700:
 	orr r1, r3
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813D6F4
+	thumb_func_end sub_813D6F4
 
-thumb_local_start
+	thumb_local_start
 sub_813D714:
 	push {lr}
 	mov r0, #0
@@ -3758,7 +3758,7 @@ sub_813D714:
 	orr r1, r2
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813D714
+	thumb_func_end sub_813D714
 
 	push {lr}
 	mov r0, #0
@@ -3778,7 +3778,7 @@ thumb_func_end sub_813D714
 	mov r0, #0x80
 	and r0, r1
 	pop {pc}
-thumb_func_start sub_813D750
+	thumb_func_start sub_813D750
 sub_813D750:
 	push {lr}
 	ldr r0, off_813D75C // =byte_200BC50 
@@ -3787,9 +3787,9 @@ sub_813D750:
 	pop {pc}
 	.balign 4, 0x00
 off_813D75C: .word byte_200BC50
-thumb_func_end sub_813D750
+	thumb_func_end sub_813D750
 
-thumb_func_start sub_813D760
+	thumb_func_start sub_813D760
 sub_813D760:
 	push {lr}
 	ldr r0, off_813D76C // =byte_200BC50 
@@ -3798,7 +3798,7 @@ sub_813D760:
 	pop {pc}
 	.balign 4, 0x00
 off_813D76C: .word byte_200BC50
-thumb_func_end sub_813D760
+	thumb_func_end sub_813D760
 
 	push {r4,lr}
 	mov r0, #1
@@ -3814,7 +3814,7 @@ loc_813D782:
 	pop {r4,pc}
 	.balign 4, 0x00
 off_813D788: .word byte_200AF80
-thumb_func_start sub_813D78C
+	thumb_func_start sub_813D78C
 sub_813D78C:
 	push {lr}
 	ldr r2, off_813D79C // =dword_813D7A0 
@@ -3827,9 +3827,9 @@ sub_813D78C:
 off_813D79C: .word dword_813D7A0
 dword_813D7A0: .word 0x0
 	.word 0x1, 0x4, 0x10, 0x40, 0x100
-thumb_func_end sub_813D78C
+	thumb_func_end sub_813D78C
 
-thumb_func_start sub_813D7B8
+	thumb_func_start sub_813D7B8
 sub_813D7B8:
 	push {r5,r7,lr}
 	mov r7, r0
@@ -3860,9 +3860,9 @@ off_813D7E8: .word sub_813D804+1
 	.word sub_813D88C+1
 	.word sub_813D8AC+1
 off_813D800: .word byte_200AF80
-thumb_func_end sub_813D7B8
+	thumb_func_end sub_813D7B8
 
-thumb_local_start
+	thumb_local_start
 sub_813D804:
 	push {r4,lr}
 	ldr r0, [r7,#4]
@@ -3891,9 +3891,9 @@ loc_813D822:
 	bne loc_813D822
 	pop {r4,pc}
 	.balign 4, 0x00
-thumb_func_end sub_813D804
+	thumb_func_end sub_813D804
 
-thumb_local_start
+	thumb_local_start
 sub_813D838:
 	push {lr}
 	ldr r0, dword_813D844 // =0x2 
@@ -3902,9 +3902,9 @@ sub_813D838:
 	str r1, [r5,#0x1c]
 	pop {pc}
 dword_813D844: .word 0x2
-thumb_func_end sub_813D838
+	thumb_func_end sub_813D838
 
-thumb_local_start
+	thumb_local_start
 sub_813D848:
 	push {r4,lr}
 	ldr r0, dword_813D878 // =0x8 
@@ -3932,9 +3932,9 @@ loc_813D864:
 	bne loc_813D864
 	pop {r4,pc}
 dword_813D878: .word 0x8
-thumb_func_end sub_813D848
+	thumb_func_end sub_813D848
 
-thumb_local_start
+	thumb_local_start
 sub_813D87C:
 	push {lr}
 	ldr r0, dword_813D888 // =0x20 
@@ -3943,9 +3943,9 @@ sub_813D87C:
 	str r1, [r5,#0x1c]
 	pop {pc}
 dword_813D888: .word 0x20
-thumb_func_end sub_813D87C
+	thumb_func_end sub_813D87C
 
-thumb_local_start
+	thumb_local_start
 sub_813D88C:
 	push {lr}
 	ldr r0, off_813D8A8 // =0x80 
@@ -3962,9 +3962,9 @@ sub_813D88C:
 	str r0, [r5,#0x18]
 	pop {pc}
 off_813D8A8: .word 0x80
-thumb_func_end sub_813D88C
+	thumb_func_end sub_813D88C
 
-thumb_local_start
+	thumb_local_start
 sub_813D8AC:
 	push {lr}
 	ldr r0, off_813D8C0 // =0x200 
@@ -3977,25 +3977,25 @@ sub_813D8AC:
 	strb r0, [r5,#0xb]
 	pop {pc}
 off_813D8C0: .word 0x200
-thumb_func_end sub_813D8AC
+	thumb_func_end sub_813D8AC
 
-thumb_func_start sub_813D8C4
+	thumb_func_start sub_813D8C4
 sub_813D8C4:
 	ldr r0, off_813D8CC // =sCamera+80 
 	mov r1, #4
 	str r1, [r0,#0x58] // (dword_2009A28 - 0x20099d0)
 	mov pc, lr
 off_813D8CC: .word sCamera+0x50 // sCamera.unk_50
-thumb_func_end sub_813D8C4
+	thumb_func_end sub_813D8C4
 
-thumb_func_start sub_813D8D0
+	thumb_func_start sub_813D8D0
 sub_813D8D0:
 	push {lr}
 	mov r0, #0x10
 	bl sub_803CB00
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end sub_813D8D0
+	thumb_func_end sub_813D8D0
 
 	push {lr}
 	bl change_20013F0_800151C // () -> int
@@ -4021,27 +4021,27 @@ loc_813D8F6:
 	pop {pc}
 	.balign 4, 0x00
 off_813D908: .word unk_2010150
-thumb_func_start sub_813D90C
+	thumb_func_start sub_813D90C
 sub_813D90C:
 	ldr r1, off_813D974 // =byte_200BC50 
 	strb r0, [r1,#0x7] // (byte_200BC57 - 0x200bc50)
 	mov pc, lr
 	.balign 4, 0x00
-thumb_func_end sub_813D90C
+	thumb_func_end sub_813D90C
 
 	ldr r1, off_813D974 // =byte_200BC50 
 	strb r0, [r1,#0x1] // (byte_200BC51 - 0x200bc50)
 	mov pc, lr
 	.balign 4, 0x00
-thumb_func_start sub_813D91C
+	thumb_func_start sub_813D91C
 sub_813D91C:
 	ldr r1, off_813D974 // =byte_200BC50 
 	ldrb r0, [r1,#0x1] // (byte_200BC51 - 0x200bc50)
 	mov pc, lr
 	.balign 4, 0x00
-thumb_func_end sub_813D91C
+	thumb_func_end sub_813D91C
 
-thumb_func_start sub_813D924
+	thumb_func_start sub_813D924
 sub_813D924:
 	ldr r0, off_813DB08 // =0x214 
 	ldr r1, off_813D974 // =byte_200BC50 
@@ -4052,9 +4052,9 @@ sub_813D924:
 locret_813D930:
 	mov pc, lr
 	.balign 4, 0x00
-thumb_func_end sub_813D924
+	thumb_func_end sub_813D924
 
-thumb_func_start sub_813D934
+	thumb_func_start sub_813D934
 sub_813D934:
 	push {lr}
 	ldr r1, off_813D974 // =byte_200BC50 
@@ -4069,9 +4069,9 @@ sub_813D934:
 	strh r0, [r1,#0xa] // (word_200BC5A - 0x200bc50)
 locret_813D94A:
 	pop {pc}
-thumb_func_end sub_813D934
+	thumb_func_end sub_813D934
 
-thumb_func_start sub_813D94C
+	thumb_func_start sub_813D94C
 sub_813D94C:
 	push {lr}
 	mov r2, #0
@@ -4084,9 +4084,9 @@ loc_813D95A:
 	mov r0, r2
 	pop {pc}
 	.byte 0, 0
-thumb_func_end sub_813D94C
+	thumb_func_end sub_813D94C
 
-thumb_func_start sub_813D960
+	thumb_func_start sub_813D960
 sub_813D960:
 	push {r4,r7,lr}
 	ldr r7, off_813D974 // =byte_200BC50 
@@ -4100,9 +4100,9 @@ sub_813D960:
 	pop {r4,r7,pc}
 	.balign 4, 0x00
 off_813D974: .word byte_200BC50
-thumb_func_end sub_813D960
+	thumb_func_end sub_813D960
 
-thumb_func_start sub_813D978
+	thumb_func_start sub_813D978
 sub_813D978:
 	push {lr}
 	ldr r0, off_813D988 // =byte_200BC50 
@@ -4112,9 +4112,9 @@ sub_813D978:
 	bl sub_813D934
 	pop {pc}
 off_813D988: .word byte_200BC50
-thumb_func_end sub_813D978
+	thumb_func_end sub_813D978
 
-thumb_func_start sub_813D98C
+	thumb_func_start sub_813D98C
 sub_813D98C:
 	push {lr}
 	bl sub_813D978
@@ -4124,18 +4124,18 @@ sub_813D98C:
 	pop {pc}
 	.balign 4, 0x00
 off_813D99C: .word byte_200BC30
-thumb_func_end sub_813D98C
+	thumb_func_end sub_813D98C
 
-thumb_func_start sub_813D9A0
+	thumb_func_start sub_813D9A0
 sub_813D9A0:
 	push {lr}
 	ldr r1, off_813D9A8 // =byte_200BC50 
 	strh r0, [r1,#0x8] // (word_200BC58 - 0x200bc50)
 	pop {pc}
 off_813D9A8: .word byte_200BC50
-thumb_func_end sub_813D9A0
+	thumb_func_end sub_813D9A0
 
-thumb_local_start
+	thumb_local_start
 sub_813D9AC:
 	push {r4,lr}
 	ldr r0, off_813D9CC // =byte_200BC50 
@@ -4156,25 +4156,25 @@ off_813D9CC: .word byte_200BC50
 off_813D9D0: .word off_813D9D4
 off_813D9D4: .word sub_813D9DC+1
 	.word sub_813D9E8+1
-thumb_func_end sub_813D9AC
+	thumb_func_end sub_813D9AC
 
-thumb_local_start
+	thumb_local_start
 sub_813D9DC:
 	push {lr}
 	bl sub_8148884
 	bl sub_813DAF4
 	pop {pc}
-thumb_func_end sub_813D9DC
+	thumb_func_end sub_813D9DC
 
-thumb_local_start
+	thumb_local_start
 sub_813D9E8:
 	push {lr}
 	bl sub_8148FC0
 	bl sub_813DAF4
 	pop {pc}
-thumb_func_end sub_813D9E8
+	thumb_func_end sub_813D9E8
 
-thumb_local_start
+	thumb_local_start
 sub_813D9F4:
 	push {lr}
 	mov r4, #2
@@ -4188,9 +4188,9 @@ loc_813DA02:
 	pop {pc}
 	.balign 4, 0x00
 off_813DA08: .word byte_20101B4
-thumb_func_end sub_813D9F4
+	thumb_func_end sub_813D9F4
 
-thumb_local_start
+	thumb_local_start
 sub_813DA0C:
 	push {r4,lr}
 	ldr r4, off_813DB0C // =byte_203F7D8 
@@ -4213,7 +4213,7 @@ loc_813DA22:
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 locret_813DA36:
 	pop {r4,pc}
-thumb_func_end sub_813DA0C
+	thumb_func_end sub_813DA0C
 
 	push {lr}
 	ldr r3, off_813DA7C // =sCamera+80 
@@ -4251,7 +4251,7 @@ locret_813DA78:
 	.balign 4, 0x00
 off_813DA7C: .word sCamera+0x50 // sCamera.unk_50
 off_813DA80: .word byte_200BC50
-thumb_func_start sub_813DA84
+	thumb_func_start sub_813DA84
 sub_813DA84:
 	push {lr}
 	// memBlock
@@ -4261,9 +4261,9 @@ sub_813DA84:
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_813DA90: .word byte_2010290
-thumb_func_end sub_813DA84
+	thumb_func_end sub_813DA84
 
-thumb_func_start sub_813DA94
+	thumb_func_start sub_813DA94
 sub_813DA94:
 	push {r4,r5,lr}
 	mov r4, #1
@@ -4284,9 +4284,9 @@ off_813DAB0: .word byte_200BC50
 off_813DAB4: .word off_813DAB8
 off_813DAB8: .word sub_813DAC0+1
 	.word sub_813DADC+1
-thumb_func_end sub_813DA94
+	thumb_func_end sub_813DA94
 
-thumb_local_start
+	thumb_local_start
 sub_813DAC0:
 	push {lr}
 	bl start_800027C
@@ -4300,9 +4300,9 @@ loc_813DAD4:
 	mov r0, #0
 	bl sub_813D62C
 	pop {pc}
-thumb_func_end sub_813DAC0
+	thumb_func_end sub_813DAC0
 
-thumb_local_start
+	thumb_local_start
 sub_813DADC:
 	push {r4,r6,lr}
 	mov r4, #1
@@ -4315,9 +4315,9 @@ loc_813DAEA:
 	mov r0, r4
 	bl sub_813D62C
 	pop {r4,r6,pc}
-thumb_func_end sub_813DADC
+	thumb_func_end sub_813DADC
 
-thumb_local_start
+	thumb_local_start
 sub_813DAF4:
 	push {lr}
 	mov r0, r10
@@ -4334,11 +4334,11 @@ off_813DB10: .word word_2036780
 off_813DB14: .word unk_20399F0
 off_813DB18: .word word_2036780
 off_813DB1C: .word unk_2039A00
-thumb_func_end sub_813DAF4
+	thumb_func_end sub_813DAF4
 
 	push {lr}
 	pop {pc}
-thumb_func_start sub_813DB24
+	thumb_func_start sub_813DB24
 sub_813DB24:
 	push {r4-r7,lr}
 	sub sp, sp, #8
@@ -4542,6 +4542,6 @@ off_813E04C: .word byte_87E78A8
 	.word byte_87ED240
 	.word byte_87ECF34
 	.word byte_87ED240
-thumb_func_end sub_813DB24
+	thumb_func_end sub_813DB24
 
 /*For debugging purposes, connect comment at any range!*/

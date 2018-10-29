@@ -1,7 +1,7 @@
 .include "asm/sprite.inc"
 
 // () -> void
-thumb_func_start sprite_loadAnimationData
+	thumb_func_start sprite_loadAnimationData
 sprite_loadAnimationData:
 	push {r4,r5,lr}
 	ldrb r3, [r5,#2]
@@ -12,9 +12,9 @@ sprite_loadAnimationData:
 	mov lr, pc
 	bx r4
 	pop {r4,r5,pc}
-thumb_func_end sprite_loadAnimationData
+	thumb_func_end sprite_loadAnimationData
 
-thumb_func_start sprite_80026B6
+	thumb_func_start sprite_80026B6
 sprite_80026B6:
 	push {r4,lr}
 	ldr r4, off_80026C0 // =sub_3006730+1 
@@ -22,9 +22,9 @@ sprite_80026B6:
 	bx r4
 	pop {r4,pc}
 off_80026C0: .word sub_3006730+1
-thumb_func_end sprite_80026B6
+	thumb_func_end sprite_80026B6
 
-thumb_func_start sprite_update
+	thumb_func_start sprite_update
 sprite_update:
 	push {r4,r5,lr}
 	ldrb r3, [r5,#2]
@@ -35,9 +35,9 @@ sprite_update:
 	mov lr, pc
 	bx r4
 	pop {r4,r5,pc}
-thumb_func_end sprite_update
+	thumb_func_end sprite_update
 
-thumb_func_start sprite_chatbox_80026D6
+	thumb_func_start sprite_chatbox_80026D6
 sprite_chatbox_80026D6:
 	push {r4,lr}
 	ldr r4, off_80026E0 // =sub_3006792+1 
@@ -45,10 +45,10 @@ sprite_chatbox_80026D6:
 	bx r4
 	pop {r4,pc}
 off_80026E0: .word sub_3006792+1
-thumb_func_end sprite_chatbox_80026D6
+	thumb_func_end sprite_chatbox_80026D6
 
 // (int a1, int a2, int a3) ->
-thumb_func_start sprite_load
+	thumb_func_start sprite_load
 sprite_load:
 	push {r4,r5,lr}
 	ldrb r3, [r5]
@@ -84,10 +84,10 @@ loc_8002716:
 	.balign 4, 0x00
 off_8002724: .word spritePointers_8031CC4
 off_8002728: .word spriteWhiteDot
-thumb_func_end sprite_load
+	thumb_func_end sprite_load
 
 // (void *a1) -> void
-thumb_local_start
+	thumb_local_start
 sprite_initialize:
 	add r0, #4
 	str r0, [r5,#0x18]
@@ -112,10 +112,10 @@ sprite_initialize:
 	mov r0, #8
 	strh r0, [r5,#0x16]
 	mov pc, lr
-thumb_func_end sprite_initialize
+	thumb_func_end sprite_initialize
 
 // (int a1) -> void
-thumb_func_start spriteLoadMugshot_800275A
+	thumb_func_start spriteLoadMugshot_800275A
 spriteLoadMugshot_800275A:
 	push {lr}
 	lsl r0, r0, #2
@@ -126,10 +126,10 @@ spriteLoadMugshot_800275A:
 	strh r0, [r5,#0x16]
 	pop {pc}
 off_800276C: .word mugshots_8032598
-thumb_func_end spriteLoadMugshot_800275A
+	thumb_func_end spriteLoadMugshot_800275A
 
 // (int a1, int a2) -> void
-thumb_func_start sub_8002770
+	thumb_func_start sub_8002770
 sub_8002770:
 	mov r2, #0x80
 	b loc_8002776
@@ -154,9 +154,9 @@ loc_800278A:
 	pop {r4-r6,pc}
 	.balign 4, 0x00
 off_8002798: .word guiSprites_803271C
-thumb_func_end sub_8002770
+	thumb_func_end sub_8002770
 
-thumb_local_start
+	thumb_local_start
 sub_800279C:
 	push {r5,lr}
 	add r5, #0x20 
@@ -168,9 +168,9 @@ sub_800279C:
 	strh r0, [r5,#0x16]
 	pop {r5,pc}
 off_80027B0: .word mugshots_8032598
-thumb_func_end sub_800279C
+	thumb_func_end sub_800279C
 
-thumb_func_start sub_80027B4
+	thumb_func_start sub_80027B4
 sub_80027B4:
 	ldr r0, off_80027BC // =dword_200F350 
 	ldr r1, dword_80027C0 // =0x1 
@@ -178,9 +178,9 @@ sub_80027B4:
 	mov pc, lr
 off_80027BC: .word dword_200F350
 dword_80027C0: .word 0x1
-thumb_func_end sub_80027B4
+	thumb_func_end sub_80027B4
 
-thumb_func_start sub_80027C4
+	thumb_func_start sub_80027C4
 sub_80027C4:
 	ldr r1, off_8002804 // =byte_20098A8 
 	mov r0, #0
@@ -190,9 +190,9 @@ sub_80027C4:
 	ldr r0, dword_8002808 // =0x32f 
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
-thumb_func_end sub_80027C4
+	thumb_func_end sub_80027C4
 
-thumb_func_start sub_80027D4
+	thumb_func_start sub_80027D4
 sub_80027D4:
 	ldr r1, off_8002804 // =byte_20098A8 
 	mov r0, #4
@@ -202,9 +202,9 @@ sub_80027D4:
 	ldr r0, dword_800280C // =0x2ff 
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
-thumb_func_end sub_80027D4
+	thumb_func_end sub_80027D4
 
-thumb_func_start sub_80027E4
+	thumb_func_start sub_80027E4
 sub_80027E4:
 	ldr r1, off_8002804 // =byte_20098A8 
 	mov r0, #4
@@ -214,9 +214,9 @@ sub_80027E4:
 	ldr r0, dword_8002810 // =0x2ff 
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
-thumb_func_end sub_80027E4
+	thumb_func_end sub_80027E4
 
-thumb_func_start sub_80027F4
+	thumb_func_start sub_80027F4
 sub_80027F4:
 	ldr r1, off_8002804 // =byte_20098A8 
 	mov r0, #0
@@ -231,9 +231,9 @@ dword_8002808: .word 0x32F
 dword_800280C: .word 0x2FF
 dword_8002810: .word 0x2FF
 	.word 0x2FF
-thumb_func_end sub_80027F4
+	thumb_func_end sub_80027F4
 
-thumb_func_start sub_8002818
+	thumb_func_start sub_8002818
 sub_8002818:
 	push {lr}
 	ldr r0, [r5,#0x34]
@@ -278,17 +278,17 @@ locret_8002862:
 	pop {pc}
 off_8002864: .word sub_3005EF0+1
 off_8002868: .word byte_3001550
-thumb_func_end sub_8002818
+	thumb_func_end sub_8002818
 
-thumb_func_start sub_800286C
+	thumb_func_start sub_800286C
 sub_800286C:
 	ldr r0, off_80028CC // =dword_200F340 
 	mov r1, #0
 	str r1, [r0]
 	mov pc, lr
-thumb_func_end sub_800286C
+	thumb_func_end sub_800286C
 
-thumb_func_start sub_8002874
+	thumb_func_start sub_8002874
 sub_8002874:
 	push {r5,lr}
 	ldr r2, [r5,#0x24]
@@ -309,9 +309,9 @@ sub_8002874:
 locret_8002896:
 	pop {r5,pc}
 dword_8002898: .word 0x6010000
-thumb_func_end sub_8002874
+	thumb_func_end sub_8002874
 
-thumb_func_start sprite_handleObjSprites_800289C
+	thumb_func_start sprite_handleObjSprites_800289C
 sprite_handleObjSprites_800289C:
 	push {lr}
 	ldr r1, off_80028B4 // =dword_20093A8 
@@ -327,9 +327,9 @@ sprite_handleObjSprites_800289C:
 off_80028B4: .word dword_20093A8
 off_80028B8: .word dword_200A890
 off_80028BC: .word 0x388
-thumb_func_end sprite_handleObjSprites_800289C
+	thumb_func_end sprite_handleObjSprites_800289C
 
-thumb_func_start sub_80028C0
+	thumb_func_start sub_80028C0
 sub_80028C0:
 	ldr r1, off_80028CC // =dword_200F340 
 	ldr r1, [r1]
@@ -339,9 +339,9 @@ sub_80028C0:
 	.balign 4, 0x00
 off_80028CC: .word dword_200F340
 dword_80028D0: .word 0x200F389
-thumb_func_end sub_80028C0
+	thumb_func_end sub_80028C0
 
-thumb_func_start sub_80028D4
+	thumb_func_start sub_80028D4
 sub_80028D4:
 	push {r5,lr}
 	ldr r5, off_8002BF0 // =byte_200DCA0 
@@ -370,9 +370,9 @@ sub_80028D4:
 	mov r2, #0xff
 	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
 	pop {r5,pc}
-thumb_func_end sub_80028D4
+	thumb_func_end sub_80028D4
 
-thumb_func_start sub_8002906
+	thumb_func_start sub_8002906
 sub_8002906:
 	push {r4-r7,lr}
 	mov r1, r8
@@ -442,9 +442,9 @@ loc_800297C:
 	mov r8, r1
 	mov r9, r2
 	pop {r4-r7,pc}
-thumb_func_end sub_8002906
+	thumb_func_end sub_8002906
 
-thumb_local_start
+	thumb_local_start
 sub_8002986:
 	push {r5,lr}
 	ldr r5, off_8002BF0 // =byte_200DCA0 
@@ -465,9 +465,9 @@ loc_800299E:
 	blt loc_800298C
 	mov r0, #0
 	pop {r5,pc}
-thumb_func_end sub_8002986
+	thumb_func_end sub_8002986
 
-thumb_func_start sub_80029A8
+	thumb_func_start sub_80029A8
 sub_80029A8:
 	push {r4-r7,lr}
 	mov r1, r8
@@ -568,9 +568,9 @@ loc_8002A58:
 	mov r9, r2
 	mov r12, r3
 	pop {r4-r7,pc}
-thumb_func_end sub_80029A8
+	thumb_func_end sub_80029A8
 
-thumb_func_start sub_8002A64
+	thumb_func_start sub_8002A64
 sub_8002A64:
 	push {r4-r7,lr}
 	lsl r0, r0, #8
@@ -635,9 +635,9 @@ loc_8002AD2:
 	mov r9, r2
 	mov r12, r3
 	pop {r4-r7,pc}
-thumb_func_end sub_8002A64
+	thumb_func_end sub_8002A64
 
-thumb_func_start sub_8002ADE
+	thumb_func_start sub_8002ADE
 sub_8002ADE:
 	push {r4-r7,lr}
 	ldr r5, off_8002BF0 // =byte_200DCA0 
@@ -681,9 +681,9 @@ sub_8002ADE:
 	str r0, [r5,r7]
 locret_8002B2E:
 	pop {r4-r7,pc}
-thumb_func_end sub_8002ADE
+	thumb_func_end sub_8002ADE
 
-thumb_func_start sprite_decompress
+	thumb_func_start sprite_decompress
 sprite_decompress:
 	push {r4-r7,lr}
 	lsl r0, r0, #8
@@ -762,9 +762,9 @@ loc_8002BB2:
 off_8002BC0: .word spritePointers_8031CC4
 dword_8002BC4: .word 0x2040000
 off_8002BC8: .word dword_2033000
-thumb_func_end sprite_decompress
+	thumb_func_end sprite_decompress
 
-thumb_local_start
+	thumb_local_start
 sub_8002BCC:
 	push {r0-r7,lr}
 	ldrb r3, [r5]
@@ -781,9 +781,9 @@ sub_8002BCC:
 	mvn r0, r0
 	str r0, [r5,r7]
 	pop {r0-r7,pc}
-thumb_func_end sub_8002BCC
+	thumb_func_end sub_8002BCC
 
-thumb_local_start
+	thumb_local_start
 sub_8002BEA:
 	push {r4-r7,lr}
 	pop {r4-r7,pc}
@@ -797,9 +797,9 @@ aCompStr8xEnd8x: .ascii "COMP\n"
 	.asciz "SIZ:%X/%X\n"
 	.word unk_2037800
 	.word 0x2040000
-thumb_func_end sub_8002BEA
+	thumb_func_end sub_8002BEA
 
-thumb_func_start sprite_setScaleParameters
+	thumb_func_start sprite_setScaleParameters
 sprite_setScaleParameters:
 	push {r5,lr}
 	push {r0-r2}
@@ -825,9 +825,9 @@ loc_8002C36:
 loc_8002C4E:
 	pop {r0-r2}
 	pop {r5,pc}
-thumb_func_end sprite_setScaleParameters
+	thumb_func_end sprite_setScaleParameters
 
-thumb_func_start sub_8002C52
+	thumb_func_start sub_8002C52
 sub_8002C52:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
@@ -840,9 +840,9 @@ sub_8002C52:
 	orr r1, r0
 	strb r1, [r3,#0x11]
 	mov pc, lr
-thumb_func_end sub_8002C52
+	thumb_func_end sub_8002C52
 
-thumb_func_start sub_8002C68
+	thumb_func_start sub_8002C68
 sub_8002C68:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
@@ -853,9 +853,9 @@ sub_8002C68:
 	bic r1, r0
 	strb r1, [r3,#0x11]
 	mov pc, lr
-thumb_func_end sub_8002C68
+	thumb_func_end sub_8002C68
 
-thumb_func_start sub_8002C7A
+	thumb_func_start sub_8002C7A
 sub_8002C7A:
 	mov r2, #4
 	b sprite_setMosaicScalingParameters
@@ -888,9 +888,9 @@ sprite_setMosaicScalingParameters:
 	mov r0, #0x3f 
 	strb r0, [r3,#1]
 	mov pc, lr
-thumb_func_end sub_8002C7A
+	thumb_func_end sub_8002C7A
 
-thumb_local_start
+	thumb_local_start
 sub_8002CB6:
 	mov r0, #0xc
 	b loc_8002CBA
@@ -905,9 +905,9 @@ loc_8002CBA:
 	orr r1, r2
 	strb r1, [r3,#0x11]
 	mov pc, lr
-thumb_func_end sub_8002CB6
+	thumb_func_end sub_8002CB6
 
-thumb_func_start sub_8002CCE
+	thumb_func_start sub_8002CCE
 sub_8002CCE:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
@@ -918,9 +918,9 @@ sub_8002CCE:
 	bic r1, r0
 	strb r1, [r3,#0x11]
 	mov pc, lr
-thumb_func_end sub_8002CCE
+	thumb_func_end sub_8002CCE
 
-thumb_func_start sprite_getMosaicScalingParameters
+	thumb_func_start sprite_getMosaicScalingParameters
 sprite_getMosaicScalingParameters:
 	ldrb r3, [r0,#2]
 	lsr r3, r3, #4
@@ -933,9 +933,9 @@ sprite_getMosaicScalingParameters:
 	ldr r3, [r3,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r3,#2]
 	mov pc, lr
-thumb_func_end sprite_getMosaicScalingParameters
+	thumb_func_end sprite_getMosaicScalingParameters
 
-thumb_local_start
+	thumb_local_start
 sub_8002CF6:
 	ldrb r3, [r0,#2]
 	lsr r3, r3, #4
@@ -945,9 +945,9 @@ sub_8002CF6:
 	mov r0, #4
 	and r0, r1
 	mov pc, lr
-thumb_func_end sub_8002CF6
+	thumb_func_end sub_8002CF6
 
-thumb_local_start
+	thumb_local_start
 sub_8002D06:
 	push {r5,lr}
 	ldr r3, dword_8002D10 // =loc_30061E8 
@@ -955,9 +955,9 @@ sub_8002D06:
 	bx r3
 	pop {r5,pc}
 dword_8002D10: .word 0x30061E9
-thumb_func_end sub_8002D06
+	thumb_func_end sub_8002D06
 
-thumb_func_start sprite_makeScalable
+	thumb_func_start sprite_makeScalable
 sprite_makeScalable:
 	push {r5,lr}
 	ldrb r3, [r5,#2]
@@ -965,9 +965,9 @@ sprite_makeScalable:
 	lsl r3, r3, #4
 	add r5, r5, r3
 	b loc_8002D22
-thumb_func_end sprite_makeScalable
+	thumb_func_end sprite_makeScalable
 
-thumb_local_start
+	thumb_local_start
 sub_8002D20:
 	push {r5,lr}
 loc_8002D22:
@@ -995,9 +995,9 @@ loc_8002D22:
 loc_8002D4E:
 	mov r0, #0
 	pop {r5,pc}
-thumb_func_end sub_8002D20
+	thumb_func_end sub_8002D20
 
-thumb_func_start sprite_makeUnscalable
+	thumb_func_start sprite_makeUnscalable
 sprite_makeUnscalable:
 	push {r5,lr}
 	ldrb r3, [r5,#2]
@@ -1023,10 +1023,10 @@ loc_8002D60:
 	bl sub_802FE6A
 locret_8002D7E:
 	pop {r5,pc}
-thumb_func_end sprite_makeUnscalable
+	thumb_func_end sprite_makeUnscalable
 
 // (int pallete) -> void
-thumb_func_start sprite_setPallete
+	thumb_func_start sprite_setPallete
 sprite_setPallete:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
@@ -1034,9 +1034,9 @@ sprite_setPallete:
 	add r3, r3, r5
 	strb r0, [r3,#4]
 	mov pc, lr
-thumb_func_end sprite_setPallete
+	thumb_func_end sprite_setPallete
 
-thumb_func_start sprite_getPallete
+	thumb_func_start sprite_getPallete
 sprite_getPallete:
 	ldrb r3, [r0,#2]
 	lsr r3, r3, #4
@@ -1044,9 +1044,9 @@ sprite_getPallete:
 	add r3, r3, r0
 	ldrb r0, [r3,#4]
 	mov pc, lr
-thumb_func_end sprite_getPallete
+	thumb_func_end sprite_getPallete
 
-thumb_local_start
+	thumb_local_start
 sprite_setAnimationAlt:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
@@ -1054,10 +1054,10 @@ sprite_setAnimationAlt:
 	add r3, r3, r5
 	strb r0, [r3]
 	mov pc, lr
-thumb_func_end sprite_setAnimationAlt
+	thumb_func_end sprite_setAnimationAlt
 
 // (u8 a1) -> void
-thumb_func_start sprite_setAnimation
+	thumb_func_start sprite_setAnimation
 sprite_setAnimation:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
@@ -1065,9 +1065,9 @@ sprite_setAnimation:
 	add r3, r3, r5
 	strb r0, [r3]
 	mov pc, lr
-thumb_func_end sprite_setAnimation
+	thumb_func_end sprite_setAnimation
 
-thumb_func_start sprite_forceWhitePallete
+	thumb_func_start sprite_forceWhitePallete
 sprite_forceWhitePallete:
 	mov r1, #0xf0
 	b loc_8002DB4
@@ -1082,6 +1082,6 @@ loc_8002DB4:
 	orr r0, r1
 	strb r0, [r3,#0x15]
 	mov pc, lr
-thumb_func_end sprite_forceWhitePallete
+	thumb_func_end sprite_forceWhitePallete
 
 /*For debugging purposes, connect comment at any range!*/

@@ -1,6 +1,6 @@
 .include "asm/asm13.inc"
 
-thumb_func_start sub_806FC08
+	thumb_func_start sub_806FC08
 sub_806FC08:
 	push {r4-r7,lr}
 	mov r7, r10
@@ -53,9 +53,9 @@ dword_806FCB8: .word 0x121C061C, 0x61CFFFF, 0x61CFFFF, 0xFFFF121C, 0x121C061C
 	.word 0xFFFF1B1C, 0x121C061C, 0x61CFFFF, 0x61CFFFF, 0xFFFF5518
 	.word 0xFFFF061C, 0xFFFF061C, 0xFFFF061C, 0xFFFF061C, 0xFFFF061C
 	.word 0xFFFF061C
-thumb_func_end sub_806FC08
+	thumb_func_end sub_806FC08
 
-thumb_func_start sub_806FCF8
+	thumb_func_start sub_806FCF8
 sub_806FCF8:
 	push {lr}
 	lsl r1, r1, #2
@@ -83,9 +83,9 @@ off_806FD0C: .word off_806FD4C
 	.word off_806FD4C
 off_806FD4C: .word byte_806D820
 	.word 0xFFFFFFFF
-thumb_func_end sub_806FCF8
+	thumb_func_end sub_806FCF8
 
-thumb_func_start sub_806FD54
+	thumb_func_start sub_806FD54
 sub_806FD54:
 	push {r4-r7,lr}
 	mov r5, r10
@@ -383,9 +383,9 @@ off_806FED0: .word off_8616598
 off_806FEEC: .word off_8616598
 	.word 0x6008020, 0x8616634, 0x1800, 0x8616EC4, 0x3001960
 	.word 0x20
-thumb_func_end sub_806FD54
+	thumb_func_end sub_806FD54
 
-thumb_func_start sub_806FF08
+	thumb_func_start sub_806FF08
 sub_806FF08:
 	push {r4-r7,lr}
 	push {r0,r1}
@@ -424,14 +424,14 @@ jt_806FF34: .word sub_806FF76+1
 	.word nullsub_27+1
 	.word nullsub_27+1
 	.word nullsub_27+1
-thumb_func_end sub_806FF08
+	thumb_func_end sub_806FF08
 
-thumb_local_start
+	thumb_local_start
 nullsub_27:
 	mov pc, lr
-thumb_func_end nullsub_27
+	thumb_func_end nullsub_27
 
-thumb_local_start
+	thumb_local_start
 sub_806FF76:
 	push {lr}
 	cmp r0, #2
@@ -449,9 +449,9 @@ loc_806FF82:
 	mov r1, #0x8f
 	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {pc}
-thumb_func_end sub_806FF76
+	thumb_func_end sub_806FF76
 
-thumb_local_start
+	thumb_local_start
 sub_806FF94:
 	push {lr}
 	cmp r0, #3
@@ -474,9 +474,9 @@ loc_806FFAA:
 	mov r1, #0x8f
 	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {pc}
-thumb_func_end sub_806FF94
+	thumb_func_end sub_806FF94
 
-thumb_local_start
+	thumb_local_start
 sub_806FFBC:
 	push {lr}
 	cmp r0, #3
@@ -494,9 +494,9 @@ loc_806FFC8:
 	mov r1, #0x8f
 	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {pc}
-thumb_func_end sub_806FFBC
+	thumb_func_end sub_806FFBC
 
-thumb_func_start sub_806FFDA
+	thumb_func_start sub_806FFDA
 sub_806FFDA:
 	push {lr}
 	mov r0, r10
@@ -527,6 +527,6 @@ pt_806FFF4:
 	.word dword_80701E4
 	.word byte_80701FC
 	.word dword_8070214
-thumb_func_end sub_806FFDA
+	thumb_func_end sub_806FFDA
 
 /*For debugging purposes, connect comment at any range!*/

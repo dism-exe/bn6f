@@ -1,7 +1,7 @@
 .include "asm/chatbox.inc"
 
 // () -> int
-thumb_func_start chatbox_uncomp_803FD08
+	thumb_func_start chatbox_uncomp_803FD08
 chatbox_uncomp_803FD08:
 	push {r4-r7,lr}
 	mov r0, #0
@@ -23,9 +23,9 @@ chatbox_uncomp_803FD08:
 off_803FD30: .word unk_202DA00
 off_803FD34: .word unk_2033400
 off_803FD38: .word byte_202FA00
-thumb_func_end chatbox_uncomp_803FD08
+	thumb_func_end chatbox_uncomp_803FD08
 
-thumb_func_start chatbox_dead_uncomp_803FD3C
+	thumb_func_start chatbox_dead_uncomp_803FD3C
 chatbox_dead_uncomp_803FD3C:
 	push {r4-r7,lr}
 	mov r0, #1
@@ -37,9 +37,9 @@ chatbox_dead_uncomp_803FD3C:
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_803FD50: .word unk_2034A00
-thumb_func_end chatbox_dead_uncomp_803FD3C
+	thumb_func_end chatbox_dead_uncomp_803FD3C
 
-thumb_local_start
+	thumb_local_start
 chatbox_uncomp_803FD54:
 	push {r4-r7,lr}
 	bl chatbox_8040794
@@ -49,10 +49,10 @@ chatbox_uncomp_803FD54:
 	mov r0, #0
 	pop {r4-r7,pc}
 off_803FD64: .word unk_2033400
-thumb_func_end chatbox_uncomp_803FD54
+	thumb_func_end chatbox_uncomp_803FD54
 
 // (u8 scriptID) -> void
-thumb_func_start chatbox_runScript_202da04
+	thumb_func_start chatbox_runScript_202da04
 chatbox_runScript_202da04:
 	push {r4,r5,lr}
 	mov r1, r0
@@ -60,10 +60,10 @@ chatbox_runScript_202da04:
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	pop {r4,r5,pc}
 off_803FD74: .word unk_202DA04
-thumb_func_end chatbox_runScript_202da04
+	thumb_func_end chatbox_runScript_202da04
 
 // (u16 *scriptArr, u8 scriptID) -> void
-thumb_func_start chatbox_803FD78
+	thumb_func_start chatbox_803FD78
 chatbox_803FD78:
 	push {r4,r5,lr}
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -81,10 +81,10 @@ chatbox_803FD78:
 off_803FD90: .word dword_803FD94
 dword_803FD94: .word 0x83007E
 	.word 0x81007F
-thumb_func_end chatbox_803FD78
+	thumb_func_end chatbox_803FD78
 
 // (u16 *scriptArr, u8 scriptID) -> void
-thumb_func_start chatbox_runScript_803FD9C
+	thumb_func_start chatbox_runScript_803FD9C
 chatbox_runScript_803FD9C:
 	push {r4,r5,lr}
 	mov r4, #0
@@ -131,18 +131,18 @@ off_803FDF4: .word 0x280
 off_803FDFC: .word byte_86BFE20
 off_803FE00: .word unk_3001B40
 off_803FE04: .word byte_86BFE40
-thumb_func_end chatbox_runScript_803FD9C
+	thumb_func_end chatbox_runScript_803FD9C
 
 // (u16 *scriptArr, u8 scriptID) -> void
-thumb_func_start chatbox_runScript_803FE08
+	thumb_func_start chatbox_runScript_803FE08
 chatbox_runScript_803FE08:
 	push {r4,r5,lr}
 	mov r4, #0
 	b loc_803FE14
 	.byte 0, 0
-thumb_func_end chatbox_runScript_803FE08
+	thumb_func_end chatbox_runScript_803FE08
 
-thumb_func_start chatbox_803FE10
+	thumb_func_start chatbox_803FE10
 chatbox_803FE10:
 	push {r4,r5,lr}
 	mov r4, #1
@@ -184,10 +184,10 @@ off_803FE60: .word 0x320
 off_803FE68: .word byte_86C0900
 off_803FE6C: .word unk_3001B40
 off_803FE70: .word byte_86C0920
-thumb_func_end chatbox_803FE10
+	thumb_func_end chatbox_803FE10
 
 // (u16 *scriptList, u8 scriptOffIdx) -> void
-thumb_func_start chatbox_runScript_803FE74
+	thumb_func_start chatbox_runScript_803FE74
 chatbox_runScript_803FE74:
 	push {r4,r5,lr}
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -209,9 +209,9 @@ off_803FEA4: .word 0x6F8
 	.word 0x380
 off_803FEAC: .word spriteWhiteDot
 off_803FEB0: .word unk_3001B40
-thumb_func_end chatbox_runScript_803FE74
+	thumb_func_end chatbox_runScript_803FE74
 
-thumb_func_start chatbox_onUpdate_803FEB4
+	thumb_func_start chatbox_onUpdate_803FEB4
 chatbox_onUpdate_803FEB4:
 	push {r4-r7,lr}
 	mov r5, r10
@@ -281,10 +281,10 @@ jt_803FF30: .word sub_804005C+1
 off_803FF38: .word off_803FF3C
 off_803FF3C: .word 0x1D4
 	.word 0x1D6, 0x1D8, 0x1E8, 0x1EC
-thumb_func_end chatbox_onUpdate_803FEB4
+	thumb_func_end chatbox_onUpdate_803FEB4
 
 // () ->
-thumb_local_start
+	thumb_local_start
 chatbox_interpreteScriptChar:
 	push {lr}
 	mov r0, #1
@@ -406,9 +406,9 @@ dword_8040040: .word 0x254D0B00
 	.word 0x138
 	.word 0x1F4
 	.word 0x1F5
-thumb_func_end chatbox_interpreteScriptChar
+	thumb_func_end chatbox_interpreteScriptChar
 
-thumb_local_start
+	thumb_local_start
 sub_804005C:
 	push {r4-r7,lr}
 	mov r0, #0
@@ -520,9 +520,9 @@ dword_8040140: .word 0x254D0B00
 	.word byte_8043CA4
 dword_804014C: .word 0x840
 	.word 0x138
-thumb_func_end sub_804005C
+	thumb_func_end sub_804005C
 
-thumb_local_start
+	thumb_local_start
 chatbox_8040154:
 	push {lr}
 	mov r2, #2
@@ -546,9 +546,9 @@ locret_8040174:
 	mov r0, #1
 	strb r0, [r5,#0x11]
 	pop {pc}
-thumb_func_end chatbox_8040154
+	thumb_func_end chatbox_8040154
 
-thumb_local_start
+	thumb_local_start
 chatbox_804017C:
 	push {r4,r6,r7,lr}
 	mov r1, r12
@@ -620,9 +620,9 @@ dword_8040208: .word 0x40004000
 off_804020C: .word dword_8040210
 dword_8040210: .word 0x3, 0x3
 	.word 0x2
-thumb_func_end chatbox_804017C
+	thumb_func_end chatbox_804017C
 
-thumb_local_start
+	thumb_local_start
 chatbox_804021C:
 	push {r4,r6,r7,lr}
 	mov r1, r12
@@ -753,9 +753,9 @@ byte_8040324: .byte 0x0, 0x8, 0x10, 0x18, 0x20, 0x28, 0x0, 0x0, 0x30, 0x38, 0x40
 byte_804033B: .byte 0x0
 off_804033C: .word byte_8040340
 byte_8040340: .byte 0x0, 0x10, 0x20, 0x0
-thumb_func_end chatbox_804021C
+	thumb_func_end chatbox_804021C
 
-thumb_local_start
+	thumb_local_start
 chatbox_copyTiles_8040344:
 	push {lr}
 	ldr r3, off_804036C // =off_8045CEC 
@@ -782,10 +782,10 @@ chatbox_copyTiles_8040344:
 	.balign 4, 0x00
 off_804036C: .word off_8045CEC
 dword_8040370: .word 0x1D2
-thumb_func_end chatbox_copyTiles_8040344
+	thumb_func_end chatbox_copyTiles_8040344
 
 // (u8 scriptOffIdx) -> void
-thumb_func_start chatbox_runTrainScript
+	thumb_func_start chatbox_runTrainScript
 chatbox_runTrainScript:
 	push {r4,r5,lr}
 	mov r1, r0
@@ -793,10 +793,10 @@ chatbox_runTrainScript:
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	pop {r4,r5,pc}
 off_8040380: .word unk_2034A04
-thumb_func_end chatbox_runTrainScript
+	thumb_func_end chatbox_runTrainScript
 
 // (void *scripts, u8 scriptOffIdx) -> void
-thumb_func_start chatbox_runScript
+	thumb_func_start chatbox_runScript
 chatbox_runScript:
 	push {r4-r6,lr}
 	mov r5, r10
@@ -936,9 +936,9 @@ dword_80404B0: .word 0x1F3
 off_80404B4: .word 0x1F1
 off_80404B8: .word 0x1F4
 off_80404BC: .word 0x1F5
-thumb_func_end chatbox_runScript
+	thumb_func_end chatbox_runScript
 
-thumb_func_start chatbox_reqBBS_80404C0
+	thumb_func_start chatbox_reqBBS_80404C0
 chatbox_reqBBS_80404C0:
 	push {r4-r6,lr}
 	push {r2}
@@ -1074,9 +1074,9 @@ dword_80405E8: .word 0x1F3
 off_80405EC: .word 0x1F1
 off_80405F0: .word 0x1F4
 off_80405F4: .word 0x1F5
-thumb_func_end chatbox_reqBBS_80404C0
+	thumb_func_end chatbox_reqBBS_80404C0
 
-thumb_local_start
+	thumb_local_start
 dead_80405F8:
 	push {r4-r6,lr}
 	push {r2-r4}
@@ -1212,9 +1212,9 @@ dword_8040720: .word 0x1F3
 off_8040724: .word 0x1F1
 off_8040728: .word 0x1F4
 off_804072C: .word 0x1F5
-thumb_func_end dead_80405F8
+	thumb_func_end dead_80405F8
 
-thumb_local_start
+	thumb_local_start
 chatbox_static_8040730:
 	push {r4-r7,lr}
 	mov r4, r0
@@ -1255,9 +1255,9 @@ off_8040770: .word off_8044470
 	.word off_804457C
 	.word dword_8040784
 dword_8040784: .word 0x2500360, 0x1300240, 0x100120, 0x0
-thumb_func_end chatbox_static_8040730
+	thumb_func_end chatbox_static_8040730
 
-thumb_local_start
+	thumb_local_start
 chatbox_8040794:
 	push {r4-r7,lr}
 	mov r2, r10
@@ -1283,9 +1283,9 @@ loc_80407AA:
 off_80407BC: .word off_80407C0
 off_80407C0: .word off_804448C
 	.word off_8044520
-thumb_func_end chatbox_8040794
+	thumb_func_end chatbox_8040794
 
-thumb_local_start
+	thumb_local_start
 chatbox_map_80407C8:
 	push {r4-r7,lr}
 	mov r2, r10
@@ -1317,9 +1317,9 @@ off_80407FC: .word off_8044470
 	.word off_80444C4
 	.word dword_8040808
 dword_8040808: .word 0x4500460, 0x4300440, 0x4100420, 0x400
-thumb_func_end chatbox_map_80407C8
+	thumb_func_end chatbox_map_80407C8
 
-thumb_func_start chatbox_8040818
+	thumb_func_start chatbox_8040818
 chatbox_8040818:
 	push {r5,lr}
 	mov r5, r10
@@ -1330,9 +1330,9 @@ chatbox_8040818:
 	bl chatbox_8045F2C // (int a1) ->
 	pop {r5,pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_8040818
+	thumb_func_end chatbox_8040818
 
-thumb_local_start
+	thumb_local_start
 chatbox_804082C:
 	push {r4,r6,lr}
 	mov r0, #0x20 
@@ -1401,10 +1401,10 @@ dword_80408A4: .word 0x0
 	.byte  1
 	.byte  1
 	.byte 0xFF
-thumb_func_end chatbox_804082C
+	thumb_func_end chatbox_804082C
 
 // (int notUsed, u8 scriptID) -> void
-thumb_local_start
+	thumb_local_start
 chatbox_config_80408D0:
 	push {lr}
 	strb r1, [r5,#0x1] // ChatBoxPropreties.scriptID
@@ -1443,10 +1443,10 @@ chatbox_config_80408D0:
 	.byte  0
 off_8040918: .word 0x400
 dword_804091C: .word 0x800
-thumb_func_end chatbox_config_80408D0
+	thumb_func_end chatbox_config_80408D0
 
 // (int mask) -> void
-thumb_local_start
+	thumb_local_start
 chatbox_setflags_3e:
 	push {r1}
 	ldrh r1, [r5,#0x3e] // ChatBoxPropreties.flags_3E
@@ -1454,10 +1454,10 @@ chatbox_setflags_3e:
 	strh r1, [r5,#0x3e] // ChatBoxPropreties.flags_3E
 	pop {r1}
 	mov pc, lr
-thumb_func_end chatbox_setflags_3e
+	thumb_func_end chatbox_setflags_3e
 
 // (int mask) -> void
-thumb_local_start
+	thumb_local_start
 chatbox_clearFlags_3e:
 	push {r1}
 	ldrh r1, [r5,#0x3e] // ChatBoxPropreties.flags_3E
@@ -1465,11 +1465,11 @@ chatbox_clearFlags_3e:
 	strh r1, [r5,#0x3e] // ChatBoxPropreties.flags_3E
 	pop {r1}
 	mov pc, lr
-thumb_func_end chatbox_clearFlags_3e
+	thumb_func_end chatbox_clearFlags_3e
 
 // (int mask) -> void
 // 
-thumb_func_start chatbox_maskFlags_3e
+	thumb_func_start chatbox_maskFlags_3e
 chatbox_maskFlags_3e:
 	push {r1}
 	ldrh r1, [r5,#0x3e] // ChatBoxPropreties.flags_3E
@@ -1477,9 +1477,9 @@ chatbox_maskFlags_3e:
 	pop {r1}
 	mov pc, lr
 	.balign 4, 0x00
-thumb_func_end chatbox_maskFlags_3e
+	thumb_func_end chatbox_maskFlags_3e
 
-thumb_local_start
+	thumb_local_start
 chatbox_ED_select_8040944:
 	push {lr}
 	ldrb r0, [r5,#0x16] // ChatBoxPropreties.unk_16
@@ -1538,9 +1538,9 @@ unk_80409B2: .byte  0
 	.word 0x2020101
 	.word 0x2020202
 	.word 0xFF
-thumb_func_end chatbox_ED_select_8040944
+	thumb_func_end chatbox_ED_select_8040944
 
-thumb_local_start
+	thumb_local_start
 chatbox_80409C8:
 	push {lr}
 	ldr r0, off_80409D8 // =dword_86A4A40 
@@ -1551,9 +1551,9 @@ chatbox_80409C8:
 	.hword 0x0
 off_80409D8: .word dword_86A4A40
 dword_80409DC: .word 0x6017F80
-thumb_func_end chatbox_80409C8
+	thumb_func_end chatbox_80409C8
 
-thumb_local_start
+	thumb_local_start
 chatbox_80409E0:
 	push {r4,r6,lr}
 	ldrb r0, [r5,#0x16]
@@ -1636,9 +1636,9 @@ byte_8040A80: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x1, 0x1, 
 	.byte 0x1, 0xFF, 0x0
 byte_8040A94: .byte 0xFC, 0xE3, 0x0, 0x0
 byte_8040A98: .byte 0xFE, 0xE3
-thumb_func_end chatbox_80409E0
+	thumb_func_end chatbox_80409E0
 
-thumb_local_start
+	thumb_local_start
 chatbox_8040A9A:
 	push {r4,r6,lr}
 	ldrb r0, [r5,#0x16]
@@ -1707,9 +1707,9 @@ word_8040B20: .hword 0x0
 	.word 0x1010100, 0x1010101, 0xFF0101
 dword_8040B34: .word 0xE3FC
 word_8040B38: .hword 0xE3FE
-thumb_func_end chatbox_8040A9A
+	thumb_func_end chatbox_8040A9A
 
-thumb_local_start
+	thumb_local_start
 sub_8040B3A:
 	push {r5,lr}
 	push {r5}
@@ -1749,9 +1749,9 @@ loc_8040B66:
 	pop {r5,pc}
 off_8040B84: .word 0x3C0
 off_8040B88: .word 0x1F8
-thumb_func_end sub_8040B3A
+	thumb_func_end sub_8040B3A
 
-thumb_local_start
+	thumb_local_start
 chatbox_8040B8C:
 	push {r4-r6,lr}
 	mov r0, #2
@@ -1838,9 +1838,9 @@ off_8040C34: .word 0x1F8
 dword_8040C38: .word 0x1F2
 off_8040C3C: .word 0x1F0
 dword_8040C40: .word 0x1F3
-thumb_func_end chatbox_8040B8C
+	thumb_func_end chatbox_8040B8C
 
-thumb_local_start
+	thumb_local_start
 chatbox_8040C44:
 	push {r0,r1,r4,r5,lr}
 	mov r0, #0x10
@@ -1887,9 +1887,9 @@ locret_8040C8E:
 dword_8040C90: .word 0x1F2
 off_8040C94: .word 0x1F1
 off_8040C98: .word 0x1F0
-thumb_func_end chatbox_8040C44
+	thumb_func_end chatbox_8040C44
 
-thumb_local_start
+	thumb_local_start
 chatbox_8040C9C:
 	push {r0,r1,lr}
 	mov r0, #0
@@ -1916,9 +1916,9 @@ loc_8040CBC:
 dword_8040CC4: .word 0x1F2
 off_8040CC8: .word 0x1F0
 off_8040CCC: .word 0x1F1
-thumb_func_end chatbox_8040C9C
+	thumb_func_end chatbox_8040C9C
 
-thumb_local_start
+	thumb_local_start
 chatbox_8040CD0:
 	push {lr}
 	ldr r7, off_8040D44 // =dword_8040D48 
@@ -1983,9 +1983,9 @@ dword_8040D48: .word 0x1D6
 	.word 0x1E8
 off_8040D54: .word 0x1EC
 off_8040D58: .word off_8045DD4
-thumb_func_end chatbox_8040CD0
+	thumb_func_end chatbox_8040CD0
 
-thumb_func_start chatbox_8040D5C
+	thumb_func_start chatbox_8040D5C
 chatbox_8040D5C:
 	push {r2,r3,lr}
 	cmp r0, #1
@@ -2023,9 +2023,9 @@ off_8040D94: .word byte_8040D98
 byte_8040D98: .byte 0x1, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0x64, 0x0, 0x0, 0x0, 0xE8, 0x3, 0x0
 	.byte 0x0, 0x10, 0x27, 0x0, 0x0, 0xA0, 0x86, 0x1, 0x0, 0x40, 0x42, 0xF, 0x0, 0x80, 0x96
 	.byte 0x98, 0x0, 0x0, 0xE1, 0xF5, 0x5
-thumb_func_end chatbox_8040D5C
+	thumb_func_end chatbox_8040D5C
 
-thumb_local_start
+	thumb_local_start
 chatbox_8040DBC:
 	push {r0-r5,lr}
 	// memBlock
@@ -2045,10 +2045,10 @@ loc_8040DC4:
 	.byte  0
 	.byte  0
 off_8040DD8: .word unk_200BEA0
-thumb_func_end chatbox_8040DBC
+	thumb_func_end chatbox_8040DBC
 
 // (int v3) ->
-thumb_local_start
+	thumb_local_start
 chatbox_8040DDC:
 	push {r0-r5,lr}
 	mov r4, r0
@@ -2106,23 +2106,23 @@ chatbox_jt_ctrlCmds: .word chatbox_E5_nop+1
 	.word chatbox_FD_sound+1
 	.word chatbox_FE_numberinput+1
 	.word chatbox_FF_copytext+1
-thumb_func_end chatbox_8040DDC
+	thumb_func_end chatbox_8040DDC
 
 // () -> int
 // Description: do nothing (but make the script go on)
 // Parameters: 0
-thumb_local_start
+	thumb_local_start
 chatbox_E5_nop:
 	add r4, #1
 	mov r0, #2
 	mov pc, lr
 	.balign 4, 0x00
-thumb_func_end chatbox_E5_nop
+	thumb_func_end chatbox_E5_nop
 
 // () -> int
 // Description: ends the current script and closes message box
 // Parameters: 0
-thumb_local_start
+	thumb_local_start
 chatbox_E6_end:
 	push {lr}
 	ldrb r0, [r5,#0x5] // ChatBoxPropreties.unk_05
@@ -2169,7 +2169,7 @@ loc_8040EDC:
 	pop {pc}
 dword_8040EEC: .word 0x100
 dword_8040EF0: .word 0x140
-thumb_func_end chatbox_E6_end
+	thumb_func_end chatbox_E6_end
 
 // () -> int
 // E7 = buttonhalt
@@ -2178,7 +2178,7 @@ thumb_func_end chatbox_E6_end
 // Parameter 1 = mode
 // E7 00 = wait for A button or B button
 // E7 01 = wait for any button
-thumb_local_start
+	thumb_local_start
 chatbox_E7_buttonhalt:
 	push {lr}
 	// mask
@@ -2245,7 +2245,7 @@ loc_8040F64:
 	pop {pc}
 dword_8040F68: .word 0x3FF
 dword_8040F6C: .word 0x400
-thumb_func_end chatbox_E7_buttonhalt
+	thumb_func_end chatbox_E7_buttonhalt
 
 // () -> int
 // E8 = msgbox
@@ -2273,7 +2273,7 @@ thumb_func_end chatbox_E7_buttonhalt
 // E8 10 = open special msgbox 3
 // E8 11 = special msgbox close 3
 // 
-thumb_local_start
+	thumb_local_start
 chatbox_E8_msgbox:
 	push {lr}
 	ldr r0, off_8040FD4 // =off_8040FDC 
@@ -2359,9 +2359,9 @@ dword_804102C: .word 0x2020202
 	.word 0x2020202
 	.word 0x2020202
 	.hword 0x202
-thumb_func_end chatbox_E8_msgbox
+	thumb_func_end chatbox_E8_msgbox
 
-thumb_local_start
+	thumb_local_start
 chatbox_804103E:
 	push {lr}
 	// mask
@@ -2405,9 +2405,9 @@ loc_804107A:
 	mov r0, #1
 	pop {pc}
 off_804108C: .word 0x100
-thumb_func_end chatbox_804103E
+	thumb_func_end chatbox_804103E
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041090:
 	push {lr}
 	ldr r0, off_80410F4 // =0x100 
@@ -2463,9 +2463,9 @@ loc_80410F0:
 	mov r0, #0
 	pop {pc}
 off_80410F4: .word 0x100
-thumb_func_end chatbox_8041090
+	thumb_func_end chatbox_8041090
 
-thumb_local_start
+	thumb_local_start
 chatbox_80410F8:
 	push {lr}
 	ldr r0, off_8041108 // =0x101 
@@ -2475,9 +2475,9 @@ chatbox_80410F8:
 	mov r0, #1
 	pop {pc}
 off_8041108: .word 0x101
-thumb_func_end chatbox_80410F8
+	thumb_func_end chatbox_80410F8
 
-thumb_local_start
+	thumb_local_start
 chatbox_804110C:
 	push {lr}
 	// mask
@@ -2496,9 +2496,9 @@ chatbox_804110C:
 	mov r0, #1
 	pop {pc}
 off_8041130: .word 0x100
-thumb_func_end chatbox_804110C
+	thumb_func_end chatbox_804110C
 
-thumb_local_start
+	thumb_local_start
 chatbox_E9_newline:
 	push {lr}
 	ldrb r2, [r5,#0xf]
@@ -2523,9 +2523,9 @@ loc_8041156:
 	mov r0, #0
 	pop {pc}
 off_804115C: .word dword_803FCE4
-thumb_func_end chatbox_E9_newline
+	thumb_func_end chatbox_E9_newline
 
-thumb_local_start
+	thumb_local_start
 chatbox_EA_flag:
 	push {lr}
 	ldr r2, off_8041180 // =off_8041184 
@@ -2555,53 +2555,53 @@ off_8041184: .word chatbox_80411B0+1
 	.word chatbox_80411E0+1
 	.word chatbox_804122C+1
 	.word chatbox_8041238+1
-thumb_func_end chatbox_EA_flag
+	thumb_func_end chatbox_EA_flag
 
-thumb_local_start
+	thumb_local_start
 chatbox_80411B0:
 	push {lr}
 	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_80411B0
+	thumb_func_end chatbox_80411B0
 
-thumb_local_start
+	thumb_local_start
 chatbox_80411BC:
 	push {lr}
 	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_80411BC
+	thumb_func_end chatbox_80411BC
 
-thumb_local_start
+	thumb_local_start
 chatbox_80411C8:
 	push {lr}
 	bl toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_80411C8
+	thumb_func_end chatbox_80411C8
 
-thumb_local_start
+	thumb_local_start
 chatbox_80411D4:
 	push {lr}
 	bl sub_802F238
 	add r4, #4
 	pop {pc}
 	.byte 0, 0
-thumb_func_end chatbox_80411D4
+	thumb_func_end chatbox_80411D4
 
-thumb_local_start
+	thumb_local_start
 chatbox_80411E0:
 	push {lr}
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_80411E0
+	thumb_func_end chatbox_80411E0
 
-thumb_local_start
+	thumb_local_start
 chatbox_80411E8:
 	push {lr}
 	ldrb r1, [r4,#2]
@@ -2614,9 +2614,9 @@ chatbox_80411E8:
 	bl setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r4, #5
 	pop {pc}
-thumb_func_end chatbox_80411E8
+	thumb_func_end chatbox_80411E8
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041200:
 	push {lr}
 	ldrb r1, [r4,#2]
@@ -2629,9 +2629,9 @@ chatbox_8041200:
 	bl clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 	add r4, #5
 	pop {pc}
-thumb_func_end chatbox_8041200
+	thumb_func_end chatbox_8041200
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041218:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -2643,27 +2643,27 @@ chatbox_8041218:
 	add r4, #3
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_8041218
+	thumb_func_end chatbox_8041218
 
-thumb_local_start
+	thumb_local_start
 chatbox_804122C:
 	push {lr}
 	bl reqBBS_813E5DC
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_804122C
+	thumb_func_end chatbox_804122C
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041238:
 	push {lr}
 	bl reqBBS_813F9A0
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_8041238
+	thumb_func_end chatbox_8041238
 
-thumb_local_start
+	thumb_local_start
 chatbox_EB_option:
 	push {lr}
 	// mask
@@ -2699,9 +2699,9 @@ chatbox_EB_option:
 	mov r0, #1
 	add r4, #4
 	pop {pc}
-thumb_func_end chatbox_EB_option
+	thumb_func_end chatbox_EB_option
 
-thumb_local_start
+	thumb_local_start
 chatbox_EC_label:
 	push {lr}
 	ldrb r2, [r4,#1]
@@ -2734,9 +2734,9 @@ loc_80412AA:
 	pop {pc}
 	.word dword_80412C4
 dword_80412C4: .word 0x303
-thumb_func_end chatbox_EC_label
+	thumb_func_end chatbox_EC_label
 
-thumb_local_start
+	thumb_local_start
 chatbox_ED_select:
 	push {r3,lr}
 	// mask
@@ -2966,9 +2966,9 @@ off_8041490: .word chatbox_ED_select_8040944+1
 	.word off_80414A0
 off_80414A0: .word byte_8070605
 	.word 0xC0B0A09
-thumb_func_end chatbox_ED_select
+	thumb_func_end chatbox_ED_select
 
-thumb_local_start
+	thumb_local_start
 chatbox_EE_pause:
 	push {lr}
 	ldrb r1, [r4,#1]
@@ -3068,9 +3068,9 @@ loc_8041546:
 	.word 0x1F2
 	.word 0x1F3
 	.word 0x1F0
-thumb_func_end chatbox_EE_pause
+	thumb_func_end chatbox_EE_pause
 
-thumb_local_start
+	thumb_local_start
 chatbox_EF_checkflag:
 	push {lr}
 	ldr r0, off_804157C // =jt_ctrl_8041580 
@@ -3141,9 +3141,9 @@ jt_ctrl_8041580: .word chatbox_804171C+1
 	.word chatbox_8041A7C+1
 	.word 0x0
 	.word chatbox_8041ABC+1
-thumb_func_end chatbox_EF_checkflag
+	thumb_func_end chatbox_EF_checkflag
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041670:
 	push {lr}
 	ldr r0, off_8041690 // =off_8043C84 
@@ -3162,9 +3162,9 @@ loc_8041688:
 	pop {pc}
 	.byte 0, 0
 off_8041690: .word off_8043C84
-thumb_func_end chatbox_8041670
+	thumb_func_end chatbox_8041670
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041694:
 	push {lr}
 	ldrb r1, [r4,#2]
@@ -3191,9 +3191,9 @@ loc_80416BE:
 	add r4, #7
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_8041694
+	thumb_func_end chatbox_8041694
 
-thumb_local_start
+	thumb_local_start
 chatbox_80416C4:
 	push {lr}
 	ldrb r1, [r4,#2]
@@ -3218,9 +3218,9 @@ loc_80416EA:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_80416C4
+	thumb_func_end chatbox_80416C4
 
-thumb_local_start
+	thumb_local_start
 chatbox_80416F0:
 	push {lr}
 	ldrb r1, [r4,#2]
@@ -3245,9 +3245,9 @@ loc_8041716:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_80416F0
+	thumb_func_end chatbox_80416F0
 
-thumb_local_start
+	thumb_local_start
 chatbox_804171C:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -3271,9 +3271,9 @@ loc_8041742:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_804171C
+	thumb_func_end chatbox_804171C
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041748:
 	push {lr}
 	ldrb r1, [r4,#2]
@@ -3298,9 +3298,9 @@ loc_804176E:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_8041748
+	thumb_func_end chatbox_8041748
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041774:
 	push {lr}
 	ldr r0, off_80417A0 // =off_8043C64 
@@ -3326,9 +3326,9 @@ loc_8041798:
 	pop {pc}
 	.byte 0, 0
 off_80417A0: .word off_8043C64
-thumb_func_end chatbox_8041774
+	thumb_func_end chatbox_8041774
 
-thumb_local_start
+	thumb_local_start
 chatbox_80417A4:
 	push {lr}
 	mov r0, #2
@@ -3344,9 +3344,9 @@ loc_80417B8:
 	mov r0, #1
 	pop {pc}
 	.byte 0, 0
-thumb_func_end chatbox_80417A4
+	thumb_func_end chatbox_80417A4
 
-thumb_local_start
+	thumb_local_start
 chatbox_80417C0:
 	push {lr}
 	bl sub_803F524
@@ -3367,9 +3367,9 @@ loc_80417DC:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_80417C0
+	thumb_func_end chatbox_80417C0
 
-thumb_local_start
+	thumb_local_start
 chatbox_80417E4:
 	push {lr}
 	push {r4,r5}
@@ -3397,9 +3397,9 @@ loc_8041810:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_80417E4
+	thumb_func_end chatbox_80417E4
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041818:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -3495,9 +3495,9 @@ loc_80418C6:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_8041818
+	thumb_func_end chatbox_8041818
 
-thumb_local_start
+	thumb_local_start
 chatbox_80418CC:
 	push {r6,lr}
 	ldrb r6, [r4,#3]
@@ -3529,9 +3529,9 @@ loc_80418FE:
 	add r4, #6
 	mov r0, #1
 	pop {r6,pc}
-thumb_func_end chatbox_80418CC
+	thumb_func_end chatbox_80418CC
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041904:
 	push {r6,r7,lr}
 	mov r7, #0
@@ -3567,9 +3567,9 @@ loc_804193E:
 	add r4, #6
 	mov r0, #1
 	pop {r6,r7,pc}
-thumb_func_end chatbox_8041904
+	thumb_func_end chatbox_8041904
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041944:
 	push {r6,r7,lr}
 	bl sub_800B6B0
@@ -3586,9 +3586,9 @@ loc_804195C:
 	mov r0, #1
 	pop {r6,r7,pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_8041944
+	thumb_func_end chatbox_8041944
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041964:
 	push {lr}
 	mov r1, #6
@@ -3611,9 +3611,9 @@ loc_8041986:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_8041964
+	thumb_func_end chatbox_8041964
 
-thumb_local_start
+	thumb_local_start
 chatbox_804198C:
 	push {lr}
 	ldr r0, off_80419B0 // =off_8043C64 
@@ -3634,9 +3634,9 @@ loc_80419A8:
 	pop {pc}
 	.byte 0, 0
 off_80419B0: .word off_8043C64
-thumb_func_end chatbox_804198C
+	thumb_func_end chatbox_804198C
 
-thumb_local_start
+	thumb_local_start
 chatbox_80419B4:
 	push {lr}
 	bl getPETNaviSelect // () -> u8
@@ -3651,9 +3651,9 @@ loc_80419CA:
 	add r4, #0xe
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_80419B4
+	thumb_func_end chatbox_80419B4
 
-thumb_local_start
+	thumb_local_start
 chatbox_80419D0:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -3675,9 +3675,9 @@ loc_80419F2:
 	add r4, #5
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_80419D0
+	thumb_func_end chatbox_80419D0
 
-thumb_local_start
+	thumb_local_start
 chatbox_80419F8:
 	push {lr}
 	bl getPETNaviSelect // () -> u8
@@ -3702,9 +3702,9 @@ loc_8041A22:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_80419F8
+	thumb_func_end chatbox_80419F8
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041A28:
 	push {lr}
 	mov r0, #6
@@ -3725,9 +3725,9 @@ loc_8041A46:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_8041A28
+	thumb_func_end chatbox_8041A28
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041A4C:
 	push {lr}
 	ldrb r1, [r4,#2]
@@ -3753,9 +3753,9 @@ loc_8041A76:
 	add r4, #7
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_8041A4C
+	thumb_func_end chatbox_8041A4C
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041A7C:
 	push {lr}
 	ldrb r1, [r4,#1]
@@ -3785,9 +3785,9 @@ loc_8041AA8:
 	.byte 0, 0
 off_8041AB0: .word dword_8041AB4
 dword_8041AB4: .word 0x4020100, 0x605
-thumb_func_end chatbox_8041A7C
+	thumb_func_end chatbox_8041A7C
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041ABC:
 	push {lr}
 	bl reqBBS_getTotalPointsIndex // () -> u8
@@ -3804,9 +3804,9 @@ loc_8041AD4:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_8041ABC
+	thumb_func_end chatbox_8041ABC
 
-thumb_local_start
+	thumb_local_start
 chatbox_F0_jump:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -3919,9 +3919,9 @@ loc_8041B9C:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_F0_jump
+	thumb_func_end chatbox_F0_jump
 
-thumb_local_start
+	thumb_local_start
 chatbox_F1_textspeed:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -3949,9 +3949,9 @@ loc_8041BC8:
 	.byte 0, 0
 dword_8041BD0: .word 0x800
 dword_8041BD4: .word 0x1F3
-thumb_func_end chatbox_F1_textspeed
+	thumb_func_end chatbox_F1_textspeed
 
-thumb_local_start
+	thumb_local_start
 chatbox_F2_clearmsgbox:
 	push {lr}
 	ldr r0, off_8041C50 // =0x200 
@@ -4006,9 +4006,9 @@ off_8041C44: .word off_8041C48
 off_8041C48: .word 0x1D4
 dword_8041C4C: .word 0x1D6
 off_8041C50: .word 0x200
-thumb_func_end chatbox_F2_clearmsgbox
+	thumb_func_end chatbox_F2_clearmsgbox
 
-thumb_local_start
+	thumb_local_start
 chatbox_F3_control:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -4035,10 +4035,10 @@ loc_8041C78:
 loc_8041C80:
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_F3_control
+	thumb_func_end chatbox_F3_control
 
 // () ->
-thumb_local_start
+	thumb_local_start
 chatbox_F4_unk:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -4094,9 +4094,9 @@ loc_8041CD8:
 	mov r0, #1
 	pop {pc}
 dword_8041CF0: .word 0x72
-thumb_func_end chatbox_F4_unk
+	thumb_func_end chatbox_F4_unk
 
-thumb_local_start
+	thumb_local_start
 chatbox_F5_mugshot:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -4202,9 +4202,9 @@ dword_8041DA8: .word 0x18C6
 dword_8041DB0: .word 0x1000
 off_8041DB4: .word 0x1F0
 off_8041DB8: .word 0x1F1
-thumb_func_end chatbox_F5_mugshot
+	thumb_func_end chatbox_F5_mugshot
 
-thumb_local_start
+	thumb_local_start
 chatbox_F6_textcolor:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -4232,9 +4232,9 @@ loc_8041DE6:
 	pop {pc}
 off_8041DEC: .word dword_86B7AA0
 off_8041DF0: .word byte_3001710
-thumb_func_end chatbox_F6_textcolor
+	thumb_func_end chatbox_F6_textcolor
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041DF4:
 	sub r0, #16
 	cmp r0, #0
@@ -4306,9 +4306,9 @@ loc_8041E5A:
 	pop {pc}
 	.balign 4, 0x00
 dword_8041E7C: .word 0xFFFF
-thumb_func_end chatbox_8041DF4
+	thumb_func_end chatbox_8041DF4
 
-thumb_local_start
+	thumb_local_start
 chatbox_F8_playeranimation:
 	push {lr}
 	ldr r0, off_8041E90 // =off_8041E94 
@@ -4326,9 +4326,9 @@ off_8041E94: .word chatbox_8041EB0+1
 	.word chatbox_8041F44+1
 	.word chatbox_8041EE8+1
 	.word chatbox_8041F44+1
-thumb_func_end chatbox_F8_playeranimation
+	thumb_func_end chatbox_F8_playeranimation
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041EB0:
 	push {lr}
 	// mask
@@ -4356,9 +4356,9 @@ loc_8041EE2:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_8041EB0
+	thumb_func_end chatbox_8041EB0
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041EE8:
 	push {lr}
 	// mask
@@ -4380,18 +4380,18 @@ loc_8041F04:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-thumb_func_end chatbox_8041EE8
+	thumb_func_end chatbox_8041EE8
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041F10:
 	push {lr}
 	bl sub_809E122
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_8041F10
+	thumb_func_end chatbox_8041F10
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041F1C:
 	push {lr}
 	// mask
@@ -4413,9 +4413,9 @@ loc_8041F3C:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_8041F1C
+	thumb_func_end chatbox_8041F1C
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041F44:
 	push {lr}
 	// mask
@@ -4435,9 +4435,9 @@ loc_8041F5E:
 	add r4, #2
 	mov r0, #0
 	pop {pc}
-thumb_func_end chatbox_8041F44
+	thumb_func_end chatbox_8041F44
 
-thumb_local_start
+	thumb_local_start
 chatbox_FA_print:
 	push {lr}
 	ldr r0, off_8041F78 // =jt_FA_print_8041F7C 
@@ -4462,9 +4462,9 @@ jt_FA_print_8041F7C: .word chatbox_8041FB4+1
 	.word chatbox_80421D8+1
 	.word chatbox_804222C+1
 	.word chatbox_804228C+1
-thumb_func_end chatbox_FA_print
+	thumb_func_end chatbox_FA_print
 
-thumb_local_start
+	thumb_local_start
 chatbox_8041FB4:
 	push {lr}
 	ldrb r0, [r5,#5]
@@ -4573,9 +4573,9 @@ dword_8042090: .word 0x0, 0x0, 0x0, 0x0, 0x0
 	.word 0x90
 	.word 0x0, 0x0, 0x0
 off_80420B8: .word 0x140
-thumb_func_end chatbox_8041FB4
+	thumb_func_end chatbox_8041FB4
 
-thumb_local_start
+	thumb_local_start
 chatbox_80420BC:
 	push {lr}
 	ldrb r0, [r5,#5]
@@ -4623,15 +4623,15 @@ off_8042114: .word off_8042118
 off_8042118: .word byte_87F2E38
 	.word dword_87F2ED0
 off_8042120: .word 0x140
-thumb_func_end chatbox_80420BC
+	thumb_func_end chatbox_80420BC
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042124:
 	push {lr}
 	pop {pc}
-thumb_func_end chatbox_8042124
+	thumb_func_end chatbox_8042124
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042128:
 	push {lr}
 	ldrb r0, [r5,#5]
@@ -4677,9 +4677,9 @@ loc_8042148:
 	pop {pc}
 off_804217C: .word unk_200AFA0
 off_8042180: .word 0x140
-thumb_func_end chatbox_8042128
+	thumb_func_end chatbox_8042128
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042184:
 	push {lr}
 	ldrb r0, [r5,#5]
@@ -4719,9 +4719,9 @@ chatbox_8042184:
 off_80421CC: .word unk_200AFA0
 off_80421D0: .word 0x140
 off_80421D4: .word off_8043C8C
-thumb_func_end chatbox_8042184
+	thumb_func_end chatbox_8042184
 
-thumb_local_start
+	thumb_local_start
 chatbox_80421D8:
 	push {r7,lr}
 	ldrb r0, [r5,#5]
@@ -4763,9 +4763,9 @@ chatbox_80421D8:
 	mov r0, #1
 	pop {r7,pc}
 off_8042228: .word 0x140
-thumb_func_end chatbox_80421D8
+	thumb_func_end chatbox_80421D8
 
-thumb_local_start
+	thumb_local_start
 chatbox_804222C:
 	push {r7,lr}
 	ldrb r0, [r5,#5]
@@ -4811,15 +4811,15 @@ chatbox_804222C:
 off_8042280: .word 0x140
 off_8042284: .word unk_200AFA0
 off_8042288: .word byte_8043B54
-thumb_func_end chatbox_804222C
+	thumb_func_end chatbox_804222C
 
-thumb_local_start
+	thumb_local_start
 chatbox_804228C:
 	push {r7,lr}
 	pop {r7,pc}
-thumb_func_end chatbox_804228C
+	thumb_func_end chatbox_804228C
 
-thumb_local_start
+	thumb_local_start
 chatbox_FD_sound:
 	push {lr}
 	ldr r0, off_80422A0 // =off_80422A4 
@@ -4842,9 +4842,9 @@ off_80422A4: .word chatbox_80422D4+1
 	.word chatbox_8042350+1
 	.word chatbox_8042360+1
 	.word chatbox_8042370+1
-thumb_func_end chatbox_FD_sound
+	thumb_func_end chatbox_FD_sound
 
-thumb_local_start
+	thumb_local_start
 chatbox_80422D4:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -4855,9 +4855,9 @@ chatbox_80422D4:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_80422D4
+	thumb_func_end chatbox_80422D4
 
-thumb_local_start
+	thumb_local_start
 chatbox_80422E8:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -4868,9 +4868,9 @@ chatbox_80422E8:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_80422E8
+	thumb_func_end chatbox_80422E8
 
-thumb_local_start
+	thumb_local_start
 chatbox_80422FC:
 	push {lr}
 	mov r0, #0x40 
@@ -4879,9 +4879,9 @@ chatbox_80422FC:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_80422FC
+	thumb_func_end chatbox_80422FC
 
-thumb_local_start
+	thumb_local_start
 chatbox_804230C:
 	push {lr}
 	// mask
@@ -4891,18 +4891,18 @@ chatbox_804230C:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_804230C
+	thumb_func_end chatbox_804230C
 
-thumb_local_start
+	thumb_local_start
 chatbox_804231C:
 	push {lr}
 	bl musicGameState_8000784 // () -> void
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_804231C
+	thumb_func_end chatbox_804231C
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042328:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -4915,9 +4915,9 @@ chatbox_8042328:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_8042328
+	thumb_func_end chatbox_8042328
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042340:
 	push {lr}
 	mov r0, #0x80
@@ -4926,9 +4926,9 @@ chatbox_8042340:
 	mov r0, #1
 	pop {pc}
 	.byte 0, 0
-thumb_func_end chatbox_8042340
+	thumb_func_end chatbox_8042340
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042350:
 	push {lr}
 	// mask
@@ -4938,9 +4938,9 @@ chatbox_8042350:
 	mov r0, #1
 	pop {pc}
 	.byte 0, 0
-thumb_func_end chatbox_8042350
+	thumb_func_end chatbox_8042350
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042360:
 	push {lr}
 	bl sub_8036E44
@@ -4948,9 +4948,9 @@ chatbox_8042360:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_8042360
+	thumb_func_end chatbox_8042360
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042370:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -4963,9 +4963,9 @@ chatbox_8042370:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_8042370
+	thumb_func_end chatbox_8042370
 
-thumb_local_start
+	thumb_local_start
 chatbox_FB_special:
 	push {lr}
 	ldr r0, off_8042398 // =jt_804239C 
@@ -4992,9 +4992,9 @@ jt_804239C: .word chatbox_80423DC+1
 	.word chatbox_80425E0+1
 	.word chatbox_80425C0+1
 	.word chatbox_80425F0+1
-thumb_func_end chatbox_FB_special
+	thumb_func_end chatbox_FB_special
 
-thumb_local_start
+	thumb_local_start
 chatbox_80423DC:
 	push {lr}
 	mov r0, #0x73 
@@ -5024,9 +5024,9 @@ chatbox_80423DC:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_80423DC
+	thumb_func_end chatbox_80423DC
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042418:
 	push {lr}
 	mov r0, #0x73 
@@ -5052,9 +5052,9 @@ chatbox_8042418:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_8042418
+	thumb_func_end chatbox_8042418
 
-thumb_local_start
+	thumb_local_start
 chatbox_804244C:
 	push {lr}
 	// mask
@@ -5079,9 +5079,9 @@ loc_804245C:
 loc_8042478:
 	mov r0, #0
 	pop {pc}
-thumb_func_end chatbox_804244C
+	thumb_func_end chatbox_804244C
 
-thumb_local_start
+	thumb_local_start
 chatbox_804247C:
 	push {lr}
 	// mask
@@ -5113,9 +5113,9 @@ loc_80424B6:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_804247C
+	thumb_func_end chatbox_804247C
 
-thumb_local_start
+	thumb_local_start
 chatbox_80424BC:
 	push {lr}
 	// mask
@@ -5136,9 +5136,9 @@ loc_80424DA:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-thumb_func_end chatbox_80424BC
+	thumb_func_end chatbox_80424BC
 
-thumb_local_start
+	thumb_local_start
 chatbox_80424E0:
 	push {lr}
 	ldrb r0, [r5,#4]
@@ -5181,9 +5181,9 @@ loc_8042526:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_80424E0
+	thumb_func_end chatbox_80424E0
 
-thumb_local_start
+	thumb_local_start
 chatbox_804252C:
 	push {lr}
 	mov r0, #0x8a
@@ -5201,9 +5201,9 @@ chatbox_804252C:
 	add r4, #4
 	mov r0, #0
 	pop {pc}
-thumb_func_end chatbox_804252C
+	thumb_func_end chatbox_804252C
 
-thumb_local_start
+	thumb_local_start
 sub_8042554:
 	push {lr}
 	mov r0, #0x73 
@@ -5224,9 +5224,9 @@ sub_8042554:
 	mov r0, #1
 	pop {pc}
 	.byte 0, 0
-thumb_func_end sub_8042554
+	thumb_func_end sub_8042554
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042580:
 	push {lr}
 	// mask
@@ -5245,9 +5245,9 @@ loc_804259A:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-thumb_func_end chatbox_8042580
+	thumb_func_end chatbox_8042580
 
-thumb_local_start
+	thumb_local_start
 chatbox_80425A0:
 	push {lr}
 	// mask
@@ -5266,9 +5266,9 @@ loc_80425BA:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-thumb_func_end chatbox_80425A0
+	thumb_func_end chatbox_80425A0
 
-thumb_local_start
+	thumb_local_start
 chatbox_80425C0:
 	push {lr}
 	// mask
@@ -5287,9 +5287,9 @@ loc_80425DA:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-thumb_func_end chatbox_80425C0
+	thumb_func_end chatbox_80425C0
 
-thumb_local_start
+	thumb_local_start
 chatbox_80425E0:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -5298,9 +5298,9 @@ chatbox_80425E0:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-thumb_func_end chatbox_80425E0
+	thumb_func_end chatbox_80425E0
 
-thumb_local_start
+	thumb_local_start
 chatbox_80425F0:
 	push {lr}
 	// mask
@@ -5319,9 +5319,9 @@ loc_804260A:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-thumb_func_end chatbox_80425F0
+	thumb_func_end chatbox_80425F0
 
-thumb_local_start
+	thumb_local_start
 chatbox_FC_interface:
 	push {lr}
 	ldr r0, off_8042620 // =off_8042624 
@@ -5350,9 +5350,9 @@ off_8042624: .word chatbox_8042678+1
 	.byte 0, 0, 0, 0
 	.word chatbox_8042804+1
 	.word chatbox_8042820+1
-thumb_func_end chatbox_FC_interface
+	thumb_func_end chatbox_FC_interface
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042678:
 	push {lr}
 	push {r4}
@@ -5377,9 +5377,9 @@ loc_80426A0:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_8042678
+	thumb_func_end chatbox_8042678
 
-thumb_local_start
+	thumb_local_start
 chatbox_80426A8:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -5394,9 +5394,9 @@ chatbox_80426A8:
 	pop {pc}
 	.byte 0, 0
 off_80426C0: .word jt_8043B00
-thumb_func_end chatbox_80426A8
+	thumb_func_end chatbox_80426A8
 
-thumb_local_start
+	thumb_local_start
 chatbox_80426C4:
 	push {lr}
 	mov r0, #0xc
@@ -5405,20 +5405,20 @@ chatbox_80426C4:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_80426C4
+	thumb_func_end chatbox_80426C4
 
 // () -> int
 // .global r4
-thumb_local_start
+	thumb_local_start
 chatbox_80426D4:
 	push {lr}
 	bl sub_813C030 // () -> void
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_80426D4
+	thumb_func_end chatbox_80426D4
 
-thumb_local_start
+	thumb_local_start
 chatbox_80426E0:
 	push {lr}
 	// mask
@@ -5429,9 +5429,9 @@ chatbox_80426E0:
 	pop {pc}
 	.byte 0, 0
 dword_80426F0: .word 0x1000
-thumb_func_end chatbox_80426E0
+	thumb_func_end chatbox_80426E0
 
-thumb_local_start
+	thumb_local_start
 chatbox_80426F4:
 	push {lr}
 	mov r2, #0
@@ -5453,9 +5453,9 @@ loc_8042716:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_80426F4
+	thumb_func_end chatbox_80426F4
 
-thumb_local_start
+	thumb_local_start
 chatbox_804271C:
 	push {lr}
 	mov r0, #1
@@ -5494,9 +5494,9 @@ dword_8042760: .word 0x1D6
 off_8042764: .word 0x1D8
 off_8042768: .word 0x1E8
 off_804276C: .word 0x1EC
-thumb_func_end chatbox_804271C
+	thumb_func_end chatbox_804271C
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042770:
 	push {lr}
 	ldrb r2, [r4,#2]
@@ -5524,9 +5524,9 @@ chatbox_8042770:
 off_80427A8: .word eOWPlayerObject
 off_80427AC: .word dword_80427B0
 dword_80427B0: .word 0x37
-thumb_func_end chatbox_8042770
+	thumb_func_end chatbox_8042770
 
-thumb_local_start
+	thumb_local_start
 chatbox_80427B4:
 	push {lr}
 	ldr r0, off_8042A94 // =dynaicArr 
@@ -5550,9 +5550,9 @@ loc_80427CE:
 dword_80427D8: .word 0xD
 dword_80427DC: .word 0xF
 off_80427E0: .word dword_813F380
-thumb_func_end chatbox_80427B4
+	thumb_func_end chatbox_80427B4
 
-thumb_local_start
+	thumb_local_start
 chatbox_80427E4:
 	push {lr}
 	ldr r0, off_8042A98 // =dynaicArr 
@@ -5568,9 +5568,9 @@ chatbox_80427E4:
 	pop {pc}
 dword_80427FC: .word 0xF
 off_8042800: .word dword_813F380
-thumb_func_end chatbox_80427E4
+	thumb_func_end chatbox_80427E4
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042804:
 	push {lr}
 	ldr r0, off_8042818 // =dynaicArr 
@@ -5583,9 +5583,9 @@ chatbox_8042804:
 	.balign 4, 0x00
 off_8042818: .word dynaicArr
 dword_804281C: .word 0xF
-thumb_func_end chatbox_8042804
+	thumb_func_end chatbox_8042804
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042820:
 	push {lr}
 	bl sub_809CA84
@@ -5594,9 +5594,9 @@ chatbox_8042820:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_8042820
+	thumb_func_end chatbox_8042820
 
-thumb_local_start
+	thumb_local_start
 chatbox_F7_movebox:
 	push {lr}
 	ldr r0, off_8042840 // =off_8042844 
@@ -5670,9 +5670,9 @@ off_80429F0: .word byte_8521A12
 	.byte 0x18, 0x3, 0x70, 0x52, 0x8, 0x52, 0x0, 0x92, 0x0
 	.byte 0xE9, 0x6F, 0x89, 0x18, 0xE9, 0x67, 0x3, 0x34, 0x1
 	.byte 0x20, 0xC0, 0xBD, 0x0, 0x0
-thumb_func_end chatbox_F7_movebox
+	thumb_func_end chatbox_F7_movebox
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042A14:
 	push {r4,r5,lr}
 	push {r1,r2}
@@ -5748,9 +5748,9 @@ loc_8042A86:
 	pop {r4,r5,pc}
 off_8042A94: .word dynaicArr
 off_8042A98: .word dynaicArr
-thumb_func_end chatbox_8042A14
+	thumb_func_end chatbox_8042A14
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042A9C:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -5833,9 +5833,9 @@ loc_8042B32:
 	add r4, #7
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_8042A9C
+	thumb_func_end chatbox_8042A9C
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042B38:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -5949,9 +5949,9 @@ loc_8042C0C:
 	pop {pc}
 	.balign 4, 0x00
 dword_8042C14: .word 0xFFFFFFFF
-thumb_func_end chatbox_8042B38
+	thumb_func_end chatbox_8042B38
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042C18:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -6065,9 +6065,9 @@ loc_8042CEC:
 	pop {pc}
 	.balign 4, 0x00
 dword_8042CF4: .word 0xFFFFFFFF
-thumb_func_end chatbox_8042C18
+	thumb_func_end chatbox_8042C18
 
-thumb_local_start
+	thumb_local_start
 chatbox_FE_numberinput:
 	push {lr}
 	ldr r0, off_8042D08 // =jt_8042D0C 
@@ -6101,9 +6101,9 @@ jt_8042D0C: .word sub_804312C+1
 	.word 0x54292100
 	.word 0x20013403
 	.word 0x46F7
-thumb_func_end chatbox_FE_numberinput
+	thumb_func_end chatbox_FE_numberinput
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042D68:
 	push {lr}
 	// mask
@@ -6279,9 +6279,9 @@ loc_8042EC0:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-thumb_func_end chatbox_8042D68
+	thumb_func_end chatbox_8042D68
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042EC8:
 	push {r1-r7,lr}
 	mov r4, #0
@@ -6300,9 +6300,9 @@ chatbox_8042EC8:
 	mov r0, #1
 locret_8042EE6:
 	pop {r1-r7,pc}
-thumb_func_end chatbox_8042EC8
+	thumb_func_end chatbox_8042EC8
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042EE8:
 	push {r1-r7,lr}
 	lsl r0, r0, #3
@@ -6326,9 +6326,9 @@ loc_8042F08:
 locret_8042F0A:
 	pop {r1-r7,pc}
 off_8042F0C: .word dword_8045CCC
-thumb_func_end chatbox_8042EE8
+	thumb_func_end chatbox_8042EE8
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042F10:
 	push {r2,lr}
 	ldr r0, [r5,#0x4c]
@@ -6349,9 +6349,9 @@ loc_8042F2C:
 locret_8042F2E:
 	pop {r2,pc}
 off_8042F30: .word dword_8044264
-thumb_func_end chatbox_8042F10
+	thumb_func_end chatbox_8042F10
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042F34:
 	push {r2}
 	mov r1, r0
@@ -6401,15 +6401,15 @@ loc_8042F70:
 loc_8042F80:
 	pop {r2}
 	mov pc, lr
-thumb_func_end chatbox_8042F34
+	thumb_func_end chatbox_8042F34
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042F84:
 	push {lr}
 	pop {pc}
-thumb_func_end chatbox_8042F84
+	thumb_func_end chatbox_8042F84
 
-thumb_local_start
+	thumb_local_start
 sub_8042F88:
 	push {r4-r6,lr}
 	mov r5, r10
@@ -6442,9 +6442,9 @@ loc_8042FAE:
 	bge loc_8042FAE
 	str r6, [r5,#0x58]
 	pop {r4-r6,pc}
-thumb_func_end sub_8042F88
+	thumb_func_end sub_8042F88
 
-thumb_local_start
+	thumb_local_start
 sub_8042FC2:
 	push {lr}
 	ldr r0, dword_8042FD0 // =0x67625e6f 
@@ -6455,9 +6455,9 @@ sub_8042FC2:
 	.byte 0, 0
 dword_8042FD0: .word 0x67625E6F
 dword_8042FD4: .word 0x687261
-thumb_func_end sub_8042FC2
+	thumb_func_end sub_8042FC2
 
-thumb_local_start
+	thumb_local_start
 chatbox_F9_storebyte:
 	push {lr}
 	ldr r0, off_8042FE8 // =off_8042FEC 
@@ -6470,9 +6470,9 @@ chatbox_F9_storebyte:
 off_8042FE8: .word off_8042FEC
 off_8042FEC: .word chatbox_8042FF4+1
 	.word chatbox_8043008+1
-thumb_func_end chatbox_F9_storebyte
+	thumb_func_end chatbox_F9_storebyte
 
-thumb_local_start
+	thumb_local_start
 chatbox_8042FF4:
 	push {lr}
 	mov r2, r10
@@ -6484,9 +6484,9 @@ chatbox_8042FF4:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
-thumb_func_end chatbox_8042FF4
+	thumb_func_end chatbox_8042FF4
 
-thumb_local_start
+	thumb_local_start
 chatbox_8043008:
 	ldr r0, off_804301C // =off_8043C64 
 	ldrb r1, [r4,#2]
@@ -6499,9 +6499,9 @@ chatbox_8043008:
 	mov pc, lr
 	.balign 4, 0x00
 off_804301C: .word off_8043C64
-thumb_func_end chatbox_8043008
+	thumb_func_end chatbox_8043008
 
-thumb_local_start
+	thumb_local_start
 chatbox_FF_copytext:
 	push {lr}
 	ldr r0, off_8043030 // =off_8043034 
@@ -6514,9 +6514,9 @@ chatbox_FF_copytext:
 off_8043030: .word off_8043034
 off_8043034: .word chatbox_80430A0+1
 	.word chatbox_80430A0+1
-thumb_func_end chatbox_FF_copytext
+	thumb_func_end chatbox_FF_copytext
 
-thumb_local_start
+	thumb_local_start
 dead_804303C:
 	push {lr}
 	ldrb r0, [r5,#0x5] // ChatBoxPropreties.unk_05
@@ -6561,9 +6561,9 @@ off_8043088: .word unk_20018F0
 	.word unk_2001A04
 	.word unk_2001A60
 	.word unk_2001ABC
-thumb_func_end dead_804303C
+	thumb_func_end dead_804303C
 
-thumb_local_start
+	thumb_local_start
 chatbox_80430A0:
 	push {lr}
 	ldrb r0, [r5,#5]
@@ -6614,9 +6614,9 @@ dword_80430FC: .word 0x2001186, 0x200119E, 0x20007D6, 0x200083A, 0x20018F4
 	.word 0x2001950, 0x20019AC, 0x2001A08, 0x2001A64, 0x2001AC0
 off_8043124: .word 0x140
 off_8043128: .word unk_200AFA0
-thumb_func_end chatbox_80430A0
+	thumb_func_end chatbox_80430A0
 
-thumb_local_start
+	thumb_local_start
 sub_804312C:
 	ldrb r0, [r4,#2]
 	add r0, #0x4c 
@@ -6644,9 +6644,9 @@ sub_804312C:
 	.balign 4, 0x00
 off_804315C: .word 0x1CC
 off_8043160: .word 0x154
-thumb_func_end sub_804312C
+	thumb_func_end sub_804312C
 
-thumb_local_start
+	thumb_local_start
 chatbox_8043164:
 	push {lr}
 	// mask
@@ -6822,9 +6822,9 @@ off_80432BC: .word word_80432C0
 word_80432C0: .hword 0x40
 	.word 0x200080
 	.hword 0x10
-thumb_func_end chatbox_8043164
+	thumb_func_end chatbox_8043164
 
-thumb_local_start
+	thumb_local_start
 chatbox_80432C8:
 	ldrb r0, [r4,#2]
 	add r0, #0x4c 
@@ -6859,9 +6859,9 @@ loc_80432DC:
 	mov pc, lr
 off_8043304: .word 0x1CC
 off_8043308: .word 0x154
-thumb_func_end chatbox_80432C8
+	thumb_func_end chatbox_80432C8
 
-thumb_local_start
+	thumb_local_start
 chatbox_804330C:
 	push {lr}
 	// mask
@@ -7096,9 +7096,9 @@ off_80434D0: .word 0x154
 off_80434D4: .word dword_80434D8
 dword_80434D8: .word 0x800040
 	.word 0x100020
-thumb_func_end chatbox_804330C
+	thumb_func_end chatbox_804330C
 
-thumb_local_start
+	thumb_local_start
 chatbox_80434E0:
 	push {lr}
 	// mask
@@ -7332,9 +7332,9 @@ off_80436A4: .word word_80436A8
 word_80436A8: .hword 0x40
 	.word 0x200080
 	.hword 0x10
-thumb_func_end chatbox_80434E0
+	thumb_func_end chatbox_80434E0
 
-thumb_local_start
+	thumb_local_start
 chatbox_80436B0:
 	ldrb r0, [r4,#2]
 	lsl r0, r0, #1
@@ -7362,9 +7362,9 @@ chatbox_80436B0:
 	mov pc, lr
 off_80436E0: .word 0x1CC
 off_80436E4: .word 0x154
-thumb_func_end chatbox_80436B0
+	thumb_func_end chatbox_80436B0
 
-thumb_local_start
+	thumb_local_start
 chatbox_80436E8:
 	push {lr}
 	// mask
@@ -7597,9 +7597,9 @@ off_80438A4: .word dword_80438A8
 dword_80438A8: .word 0x800040
 	.word 0x100020
 dword_80438B0: .word 0x1B9
-thumb_func_end chatbox_80436E8
+	thumb_func_end chatbox_80436E8
 
-thumb_local_start
+	thumb_local_start
 chatbox_80438B4:
 	ldrb r0, [r4,#2]
 	add r0, #0x4c 
@@ -7628,9 +7628,9 @@ chatbox_80438B4:
 	.byte  0
 off_80438E4: .word 0x1CC
 off_80438E8: .word 0x154
-thumb_func_end chatbox_80438B4
+	thumb_func_end chatbox_80438B4
 
-thumb_local_start
+	thumb_local_start
 chatbox_80438EC:
 	push {lr}
 	// mask
@@ -7810,9 +7810,9 @@ word_8043A48: .hword 0x40
 	.word 0x100020
 off_8043A50: .word dword_8043A54
 dword_8043A54: .word 0x5030201, 0x0
-thumb_func_end chatbox_80438EC
+	thumb_func_end chatbox_80438EC
 
-thumb_local_start
+	thumb_local_start
 chatbox_8043A5C:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -10715,18 +10715,18 @@ dword_8045EB0: .word 0x40000001
 	.word byte_86F2960
 	.word byte_3001650
 	.word 0x20
-thumb_func_end chatbox_8043A5C
+	thumb_func_end chatbox_8043A5C
 
-thumb_func_start chatbox_8045ED0
+	thumb_func_start chatbox_8045ED0
 chatbox_8045ED0:
 	push {r1,lr}
 	ldr r1, off_8045ED8 // =byte_8043CA4 
 	ldrb r0, [r1,r0]
 	pop {r1,pc}
 off_8045ED8: .word byte_8043CA4
-thumb_func_end chatbox_8045ED0
+	thumb_func_end chatbox_8045ED0
 
-thumb_func_start chatbox_8045EDC
+	thumb_func_start chatbox_8045EDC
 chatbox_8045EDC:
 	push {r2-r7,lr}
 	mov r2, r10
@@ -10736,9 +10736,9 @@ chatbox_8045EDC:
 	add r3, r3, r0
 	str r1, [r2,r3]
 	pop {r2-r7,pc}
-thumb_func_end chatbox_8045EDC
+	thumb_func_end chatbox_8045EDC
 
-thumb_func_start chatbox_8045EEC
+	thumb_func_start chatbox_8045EEC
 chatbox_8045EEC:
 	push {r1-r7,lr}
 	mov r1, r10
@@ -10748,9 +10748,9 @@ chatbox_8045EEC:
 	add r2, r2, r0
 	ldr r0, [r1,r2]
 	pop {r1-r7,pc}
-thumb_func_end chatbox_8045EEC
+	thumb_func_end chatbox_8045EEC
 
-thumb_func_start chatbox_8045EFC
+	thumb_func_start chatbox_8045EFC
 chatbox_8045EFC:
 	push {r4-r7,lr}
 	mov r4, r10
@@ -10760,9 +10760,9 @@ chatbox_8045EFC:
 	str r2, [r4,#0x54]
 	str r3, [r4,#0x58]
 	pop {r4-r7,pc}
-thumb_func_end chatbox_8045EFC
+	thumb_func_end chatbox_8045EFC
 
-thumb_local_start
+	thumb_local_start
 sub_8045F0C:
 	push {r4-r7,lr}
 	mov r4, r10
@@ -10772,9 +10772,9 @@ sub_8045F0C:
 	ldr r2, [r4,#0x54]
 	ldr r3, [r4,#0x58]
 	pop {r4-r7,pc}
-thumb_func_end sub_8045F0C
+	thumb_func_end sub_8045F0C
 
-thumb_func_start chatbox_8045F1C
+	thumb_func_start chatbox_8045F1C
 chatbox_8045F1C:
 	push {r1,r2}
 	ldr r1, off_8045F48 // =dword_2009F38 
@@ -10784,10 +10784,10 @@ chatbox_8045F1C:
 	pop {r1,r2}
 	mov pc, lr
 	.balign 4, 0x00
-thumb_func_end chatbox_8045F1C
+	thumb_func_end chatbox_8045F1C
 
 // (int a1) ->
-thumb_func_start chatbox_8045F2C
+	thumb_func_start chatbox_8045F2C
 chatbox_8045F2C:
 	push {r1,r2}
 	ldr r1, off_8045F48 // =dword_2009F38 
@@ -10797,9 +10797,9 @@ chatbox_8045F2C:
 	pop {r1,r2}
 	mov pc, lr
 	.balign 4, 0x00
-thumb_func_end chatbox_8045F2C
+	thumb_func_end chatbox_8045F2C
 
-thumb_func_start chatbox_8045F3C
+	thumb_func_start chatbox_8045F3C
 chatbox_8045F3C:
 	push {r1}
 	ldr r1, off_8045F48 // =dword_2009F38 
@@ -10808,9 +10808,9 @@ chatbox_8045F3C:
 	pop {r1}
 	mov pc, lr
 off_8045F48: .word dword_2009F38
-thumb_func_end chatbox_8045F3C
+	thumb_func_end chatbox_8045F3C
 
-thumb_func_start chatbox_8045F4C
+	thumb_func_start chatbox_8045F4C
 chatbox_8045F4C:
 	push {r1}
 	ldr r1, off_8045F5C // =dword_2009F38 
@@ -10821,9 +10821,9 @@ chatbox_8045F4C:
 	mov pc, lr
 	.balign 4, 0x00
 off_8045F5C: .word dword_2009F38
-thumb_func_end chatbox_8045F4C
+	thumb_func_end chatbox_8045F4C
 
-thumb_local_start
+	thumb_local_start
 chatbox_8045F60:
 	push {lr}
 	mov r0, #0
@@ -10841,6 +10841,6 @@ off_8045F7C: .word unk_200BEA0
 off_8045F80: .word 0xF00
 	.word 0x6015700
 off_8045F88: .word dword_200CDA0
-thumb_func_end chatbox_8045F60
+	thumb_func_end chatbox_8045F60
 
 /*For debugging purposes, connect comment at any range!*/

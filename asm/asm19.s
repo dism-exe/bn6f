@@ -1,6 +1,6 @@
 .include "asm/asm19.inc"
 
-thumb_func_start sub_807CDEC
+	thumb_func_start sub_807CDEC
 sub_807CDEC:
 	push {r4-r7,lr}
 	mov r7, r10
@@ -46,9 +46,9 @@ off_807CE50: .word dword_807CE60
 dword_807CE60: .word 0x721C711C, 0xFFFF5A18
 dword_807CE68: .word 0x1F1C0E1C, 0x721C201C, 0x9B1C4B1C, 0x9C1C931C, 0xFFFF5B18
 dword_807CE7C: .word 0x811C5F1C, 0x3818951C, 0x3A183918, 0x721CFFFF, 0xFFFF861C
-thumb_func_end sub_807CDEC
+	thumb_func_end sub_807CDEC
 
-thumb_func_start sub_807CE90
+	thumb_func_start sub_807CE90
 sub_807CE90:
 	push {lr}
 	lsl r1, r1, #2
@@ -90,9 +90,9 @@ off_807CF10: .word off_807C94C
 	.word dword_807C978+0x3D4
 	.word dword_807C978+0x424
 	.word 0xFFFFFFFF
-thumb_func_end sub_807CE90
+	thumb_func_end sub_807CE90
 
-thumb_func_start sub_807CF24
+	thumb_func_start sub_807CF24
 sub_807CF24:
 	push {r4-r7,lr}
 	mov r5, r10
@@ -130,9 +130,9 @@ off_807CFA0: .word off_807CFB0
 off_807CFB0: .word dword_8618DFC
 	.word 0x6008020, 0x8618E40, 0x1800, 0x8618F50, 0x3001960
 	.word 0x20
-thumb_func_end sub_807CF24
+	thumb_func_end sub_807CF24
 
-thumb_func_start sub_807CFCC
+	thumb_func_start sub_807CFCC
 sub_807CFCC:
 	push {r4-r7,lr}
 	mov r5, r10
@@ -149,29 +149,29 @@ off_807CFE4: .word nullsub_84+1
 	.word nullsub_85+1
 	.word nullsub_86+1
 	.word nullsub_87+1
-thumb_func_end sub_807CFCC
+	thumb_func_end sub_807CFCC
 
-thumb_local_start
+	thumb_local_start
 nullsub_84:
 	mov pc, lr
-thumb_func_end nullsub_84
+	thumb_func_end nullsub_84
 
-thumb_local_start
+	thumb_local_start
 nullsub_85:
 	mov pc, lr
-thumb_func_end nullsub_85
+	thumb_func_end nullsub_85
 
-thumb_local_start
+	thumb_local_start
 nullsub_86:
 	mov pc, lr
-thumb_func_end nullsub_86
+	thumb_func_end nullsub_86
 
-thumb_local_start
+	thumb_local_start
 nullsub_87:
 	mov pc, lr
-thumb_func_end nullsub_87
+	thumb_func_end nullsub_87
 
-thumb_func_start sub_807CFFC
+	thumb_func_start sub_807CFFC
 sub_807CFFC:
 	push {lr}
 	mov r0, r10
@@ -189,6 +189,6 @@ pt_807D014:
 	.word dword_807D0B4
 	.word dword_807D1A8
 	.word dword_807D210
-thumb_func_end sub_807CFFC
+	thumb_func_end sub_807CFFC
 
 /*For debugging purposes, connect comment at any range!*/
