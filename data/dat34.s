@@ -111,20 +111,15 @@ loc_812DB94:
 	ldr r0, dword_812DCFC // =0xfedc 
 	strh r0, [r5,#0x2a]
 	bl sub_812E9AC
-	.byte  1
-	.byte 0xF0
-	.byte 0x18
-	.byte 0xF8
-	.byte  1
-	.byte 0xE0
+	bl sub_812EC04
+	b loc_812DBDA
 loc_812DBD6:
 	bl sub_812ED58
 loc_812DBDA:
 	b locret_812DBDC
 locret_812DBDC:
 	pop {r4-r7,pc}
-	.byte  0
-	.byte  0
+	.balign 4, 0x00
 	thumb_func_end sub_812DB44
 
 	thumb_local_start
@@ -621,7 +616,7 @@ sub_812DFAC:
 	mov r0, #0x13
 	strb r0, [r5,#0x10]
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#2]
 	mov r1, #7
 	mov r2, #1
@@ -740,7 +735,7 @@ sub_812E08C:
 	b loc_812E0FC
 loc_812E0AC:
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#2]
 	mov r1, #2
 	mov r2, #1
@@ -1891,7 +1886,7 @@ sub_812E9AC:
 	bl sub_8046664 // () -> void
 	bl chatbox_8040818
 	mov r0, r10
-	ldr r0, [r0,#8]
+	ldr r0, [r0,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_812EA3C // =0xbf40 
 	strh r1, [r0]
 	mov r1, #0
@@ -1902,7 +1897,7 @@ sub_812E9AC:
 	strh r1, [r0,#0x18]
 	strh r1, [r0,#0x1a]
 	mov r0, r10
-	ldr r0, [r0,#0x1c]
+	ldr r0, [r0,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x2f 
 	strb r1, [r0,#8]
 	mov r1, #0x3f 

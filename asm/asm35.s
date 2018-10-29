@@ -298,7 +298,7 @@ sub_812ECAC:
 	push {r5,r7}
 	mov r5, r7
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #6
 	mov r2, #0
@@ -433,8 +433,6 @@ sub_812ED94:
 	bl sub_812EDFC
 	mov r0, #0
 	bl loc_812EE38
-	thumb_func_end sub_812ED94
-
 	bl sub_812EBB8
 	mov r0, #0x90
 	mov r1, #1
@@ -443,6 +441,8 @@ sub_812ED94:
 	bl sub_812EDE4
 	pop {r4-r7,pc}
 off_812EDE0: .word unk_201E920
+	thumb_func_end sub_812ED94
+
 	thumb_func_start sub_812EDE4
 sub_812EDE4:
 	push {lr}

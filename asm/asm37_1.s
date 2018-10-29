@@ -121,10 +121,10 @@ sub_8141914:
 	str r2, [r5,#0x24] // (dword_2001034 - 0x2001010)
 	strb r3, [r5,#0x1b] // (dword_2001028+3 - 0x2001010)
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
-	ldrb r0, [r7,#4]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
+	ldrb r0, [r7,#oGameState_MapGroup]
 	strb r0, [r5,#0x18] // (dword_2001028 - 0x2001010)
-	ldrb r0, [r7,#5]
+	ldrb r0, [r7,#oGameState_MapNumber]
 	strb r0, [r5,#0x19] // (dword_2001028+1 - 0x2001010)
 	mov r0, #0
 	strb r0, [r5,#0x1a] // (dword_2001028+2 - 0x2001010)
@@ -181,8 +181,8 @@ loc_81419CC:
 	bl chatbox_8045F3C
 	bne loc_8141A0C
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r0, [r0,#oGameState_SubsystemIndex]
 	cmp r0, #4
 	bne loc_8141A0C
 	bl sub_8141AD2
@@ -293,8 +293,8 @@ sub_8141AA8:
 	bl sub_811EBE0
 	bne loc_8141ACE
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
-	ldrh r7, [r7,#4]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
+	ldrh r7, [r7,#oGameState_MapGroup]
 	mov r6, #0
 	ldr r4, off_8141B04 // =dword_8141B08 
 loc_8141ABC:
@@ -326,8 +326,8 @@ sub_8141AD2:
 	tst r0, r0
 	bne loc_8141B00
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
-	ldrh r7, [r7,#4]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
+	ldrh r7, [r7,#oGameState_MapGroup]
 	mov r6, #0
 	ldr r4, off_8141B04 // =dword_8141B08 
 loc_8141AEE:
@@ -526,8 +526,8 @@ sub_8142072:
 sub_8142080:
 	push {r4-r7,lr}
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
-	ldrh r7, [r7,#4]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
+	ldrh r7, [r7,#oGameState_MapGroup]
 	mov r6, #0
 	ldr r4, off_81420A4 // =dword_81420A8 
 loc_814208C:
@@ -1007,8 +1007,8 @@ nullsub_37:
 sub_81426CE:
 	push {r4-r7,lr}
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
-	ldrh r7, [r7,#4]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
+	ldrh r7, [r7,#oGameState_MapGroup]
 	mov r6, #0
 	ldr r4, off_81426F4 // =byte_81426F8 
 loc_81426DA:
@@ -1859,8 +1859,8 @@ locret_8142DE4:
 sub_8142DE6:
 	push {lr}
 	mov r1, r10
-	ldr r1, [r1,#0x3c]
-	ldrb r2, [r1,#4]
+	ldr r1, [r1,#oToolkit_GameStatePtr]
+	ldrb r2, [r1,#oGameState_MapGroup]
 	cmp r2, #0x85
 	bne loc_8142DF6
 	mov r1, #3
@@ -1907,11 +1907,11 @@ sub_8142ECC:
 	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
 	bne loc_8142FBA
 	mov r1, r10
-	ldr r1, [r1,#0x3c]
-	ldrb r2, [r1,#4]
-	ldrb r3, [r1,#0xc]
-	ldrb r0, [r1,#5]
-	ldrb r1, [r1,#0xd]
+	ldr r1, [r1,#oToolkit_GameStatePtr]
+	ldrb r2, [r1,#oGameState_MapGroup]
+	ldrb r3, [r1,#oGameState_LastMapGroup]
+	ldrb r0, [r1,#oGameState_MapNumber]
+	ldrb r1, [r1,#oGameState_LastMapNumber]
 	lsl r0, r0, #2
 	lsl r1, r1, #2
 	push {r0-r3}
@@ -2038,8 +2038,8 @@ sub_8142FC8:
 	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8143010
 	mov r3, r10
-	ldr r3, [r3,#0x3c]
-	ldrb r0, [r3,#0x11]
+	ldr r3, [r3,#oToolkit_GameStatePtr]
+	ldrb r0, [r3,#oGameState_Unk_11]
 	tst r0, r0
 	beq loc_8143048
 	bl sub_81433DA
@@ -2107,8 +2107,8 @@ off_8143084: .word byte_2000D20
 sub_8143088:
 	push {r4-r7,lr}
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
-	ldrh r7, [r7,#4]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
+	ldrh r7, [r7,#oGameState_MapGroup]
 	mov r6, #0
 	ldr r4, off_81430AC // =dword_81430B0 
 loc_8143094:
@@ -2353,8 +2353,8 @@ loc_814329A:
 	tst r0, r0
 	beq loc_81432CE
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldr r0, [r0,#oGameState_OverworldPlayerObjectPtr]
 	ldr r2, [r0,#0x20]
 	ldr r3, [r0,#0x1c]
 	ldr r0, [r5,#0xc]
@@ -2455,8 +2455,8 @@ loc_8143324:
 	lsl r1, r1, #5
 	lsl r2, r2, #5
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldr r0, [r0,#oGameState_OverworldPlayerObjectPtr]
 	ldr r3, [r0,#0x1c]
 	sub r1, r3, r1
 	str r1, [r5,#8]
@@ -2835,8 +2835,8 @@ byte_8143B1C: .byte 0x78, 0x2C, 0x9, 0x8
 sub_8143B30:
 	push {r4-r7,lr}
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
-	ldrh r7, [r7,#4]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
+	ldrh r7, [r7,#oGameState_MapGroup]
 	mov r6, #0
 	ldr r4, off_8143B54 // =dword_8143B58 
 loc_8143B3C:
@@ -3507,8 +3507,8 @@ loc_8144092:
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_81440A6
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r0, [r0,#oGameState_SubsystemIndex]
 	cmp r0, #4
 	bne loc_81440A6
 	bl sub_8143F7C

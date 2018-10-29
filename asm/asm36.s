@@ -61,7 +61,7 @@ sub_8130084:
 	bl sub_8046664 // () -> void
 	bl chatbox_8040818
 	mov r0, r10
-	ldr r0, [r0,#8]
+	ldr r0, [r0,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_8130100 // =0x1f40 
 	strh r1, [r0]
 	mov r1, #0
@@ -152,7 +152,7 @@ sub_8130194:
 	strh r1, [r4,#0x2] // (word_2023FA2 - 0x2023fa0)
 	add r4, #4
 	mov r1, r10
-	ldr r1, [r1,#0x40]
+	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
 	ldrb r0, [r1,#5]
 	mov r2, #0
 	ldr r1, off_81301D4 // =unk_20018EC 
@@ -180,7 +180,7 @@ sub_81301DC:
 	ldr r0, off_8130204 // =byte_812F044 
 	bl sub_80465A0 // (void *a1) -> void
 	mov r0, r10
-	ldr r0, [r0,#0x40]
+	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
 	ldrb r4, [r0,#5]
 	mov r6, #0
 loc_81301EC:
@@ -394,7 +394,7 @@ sub_8130370:
 	tst r0, r0
 	beq loc_81303A2
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	ldrb r1, [r5,#0xc]
 	sub r1, #1
@@ -407,9 +407,9 @@ sub_8130370:
 	bne loc_81303C4
 loc_81303A2:
 	mov r1, r10
-	ldr r1, [r1,#0x40]
+	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	ldrb r1, [r1,#5]
 	add r1, #1
@@ -796,7 +796,7 @@ loc_81306AC:
 	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
 	mov r4, r10
-	ldr r4, [r4,#0x48]
+	ldr r4, [r4,#oToolkit_S_Chip_2002178_Ptr]
 	mov r2, #0x3c 
 	mul r0, r2
 	add r4, r4, r0
@@ -2215,7 +2215,7 @@ loc_8131258:
 	b loc_8131292
 loc_813126C:
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #3
 	mov r2, #1
@@ -2305,7 +2305,7 @@ sub_81312FC:
 	bl sub_8046664 // () -> void
 	bl chatbox_8040818
 	mov r0, r10
-	ldr r0, [r0,#8]
+	ldr r0, [r0,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_8131388 // =0x1f40 
 	strh r1, [r0]
 	mov r1, #0
@@ -3566,7 +3566,7 @@ sub_8131FC4:
 	mov r0, #0
 	bl sub_8048F9C
 	mov r1, r10
-	ldr r1, [r1]
+	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	mov r0, #0x28 
 	strb r0, [r1]
 locret_8132010:
@@ -3673,7 +3673,7 @@ loc_81320CE:
 	b locret_8132100
 loc_81320DE:
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#2]
 	mov r1, r4
 	mov r2, #1
@@ -4937,7 +4937,7 @@ sub_8132BA8:
 	mov r0, #0x10
 	bl sub_80015FC
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_8132C2C // =0x1f40 
 	strh r1, [r0]
 	mov r1, #0
@@ -5345,9 +5345,9 @@ off_8132F74: .word dword_86B7AE0
 sub_8132F78:
 	push {r4-r7,lr}
 	mov r6, r10
-	ldr r6, [r6,#0x40]
+	ldr r6, [r6,#oToolkit_Unk2001c04_Ptr]
 	mov r5, r10
-	ldr r5, [r5,#0x38]
+	ldr r5, [r5,#oToolkit_Unk200a220_Ptr]
 	ldr r0, [r6,#0x18]
 	bl sub_8000D84
 	lsr r0, r0, #0x10
@@ -5380,7 +5380,7 @@ sub_8132F78:
 sub_8132FB8:
 	push {r4-r7,lr}
 	mov r2, r10
-	ldr r2, [r2,#0x38]
+	ldr r2, [r2,#oToolkit_Unk200a220_Ptr]
 	ldrh r0, [r1,r0]
 	str r0, [r2,#8]
 	pop {r4-r7,pc}
@@ -5390,7 +5390,7 @@ sub_8132FB8:
 sub_8132FC4:
 	push {r4-r7,lr}
 	mov r2, r10
-	ldr r2, [r2,#0x38]
+	ldr r2, [r2,#oToolkit_Unk200a220_Ptr]
 	ldr r0, [r1,r0]
 	str r0, [r2,#8]
 	pop {r4-r7,pc}
@@ -5586,7 +5586,7 @@ sub_8133228:
 	mov r0, #0x10
 	bl sub_80015FC
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_8133364 // =0x1f40 
 	strh r1, [r0]
 	mov r1, #0
@@ -5940,7 +5940,7 @@ sub_8133564:
 	bl chatbox_8045F3C
 	bne locret_81335B6
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #7
 	mov r2, #0
@@ -6127,7 +6127,7 @@ sub_81336C4:
 	bl chatbox_8045F3C
 	bne locret_8133738
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #7
 	mov r2, #0
@@ -6308,7 +6308,7 @@ loc_8133830:
 	bl sub_8133C58
 	bne loc_8133864
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #7
 	mov r2, #0
@@ -6354,7 +6354,7 @@ sub_813388C:
 	tst r0, r0
 	beq loc_81338BA
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #7
 	mov r2, #0
@@ -6434,7 +6434,7 @@ sub_8133944:
 	bl sub_81347A4
 	bne loc_8133964
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #7
 	mov r2, #1
@@ -6717,7 +6717,7 @@ loc_8133BD4:
 	strb r0, [r5,#2]
 	ldrb r1, [r5,#0x1e]
 	mov r0, r10
-	ldr r0, [r0,#0x2c]
+	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	str r1, [r0,#0x4c]
 	mov r0, #2
 	bl sub_8134190
@@ -7022,7 +7022,7 @@ sub_8133E3C:
 	push {r4-r7,lr}
 	mov r7, #2
 	mov r4, r10
-	ldr r4, [r4,#4]
+	ldr r4, [r4,#oToolkit_JoypadPtr]
 	ldrh r4, [r4,#4]
 	ldrb r6, [r5,r0]
 	lsr r6, r6, #2
@@ -8190,7 +8190,7 @@ loc_81347F8:
 	bl sound_play // () -> void
 	ldrb r7, [r5,#0xd]
 	mov r0, r10
-	ldr r0, [r0,#0x40]
+	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
 	ldrh r2, [r5,#0x34]
 	mov r1, #0
 	mov r4, #1
@@ -9158,7 +9158,7 @@ off_8134F74: .word unk_202A3E0
 sub_8134F78:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x40]
+	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
 	mov r1, #0xff
 	strb r1, [r0]
 	strb r1, [r0,#2]
@@ -9511,12 +9511,12 @@ loc_8135202:
 	ldr r0, off_8135238 // =dword_813523C 
 	ldrb r0, [r0,r3]
 	mov r4, r10
-	ldr r4, [r4,#0x2c]
+	ldr r4, [r4,#oToolkit_ChatboxPtr]
 	str r1, [r4,#0x4c]
 	b loc_8135224
 loc_813520E:
 	mov r4, r10
-	ldr r4, [r4,#0x2c]
+	ldr r4, [r4,#oToolkit_ChatboxPtr]
 	str r1, [r4,#0x4c]
 	cmp r2, #5
 	bne loc_813521C
@@ -10113,7 +10113,7 @@ sub_81356F4:
 	mov r0, #0x10
 	bl sub_80015FC
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_81357BC // =0xdf40 
 	strh r1, [r0]
 	mov r1, #0
@@ -10125,7 +10125,7 @@ sub_81356F4:
 	strh r1, [r0,#0x1a]
 	bl sub_8001820
 	mov r0, r10
-	ldr r0, [r0,#0x1c]
+	ldr r0, [r0,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x2f 
 	strb r1, [r0,#9]
 	mov r1, #0x3f 
@@ -10255,7 +10255,7 @@ loc_8135850:
 	b loc_81358EE
 loc_8135862:
 	mov r2, r10
-	ldr r2, [r2,#4]
+	ldr r2, [r2,#oToolkit_JoypadPtr]
 	ldrh r0, [r2]
 	mov r1, #0x10
 	tst r0, r1
@@ -10279,7 +10279,7 @@ loc_8135888:
 	b loc_81358EE
 loc_8135896:
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#2]
 	mov r1, #0x20 
 	tst r0, r1
@@ -10297,7 +10297,7 @@ loc_8135896:
 	b loc_81358EE
 loc_81358C2:
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #4
 	mov r2, #0
@@ -10447,8 +10447,8 @@ loc_81359C2:
 	bl sub_81365F0
 	beq loc_81359EE
 	mov r2, r10
-	ldr r2, [r2,#0x3c]
-	ldrb r0, [r2,#4]
+	ldr r2, [r2,#oToolkit_GameStatePtr]
+	ldrb r0, [r2,#oGameState_MapGroup]
 	cmp r0, #0x80
 	blt loc_81359EE
 	mov r0, #0x83
@@ -10659,7 +10659,7 @@ sub_8135B54:
 	ldrb r4, [r5]
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#0x34]
+	ldr r0, [r0,#oToolkit_SubmenuPtr]
 	// size
 	mov r1, #0x80
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
@@ -11159,7 +11159,7 @@ byte_8135FC4: .byte 0x4, 0x1, 0x4, 0x1, 0x4, 0x1, 0x4, 0x2, 0x5, 0x1, 0x5, 0x1, 
 sub_8135FDC:
 	push {r4-r7,lr}
 	mov r3, r10
-	ldr r3, [r3,#4]
+	ldr r3, [r3,#oToolkit_JoypadPtr]
 	ldrh r4, [r3,#2]
 	ldrb r0, [r5,#0xf]
 	lsl r0, r0, #1
@@ -11193,7 +11193,7 @@ loc_813601A:
 	b locret_81360A6
 loc_8136026:
 	mov r3, r10
-	ldr r3, [r3,#4]
+	ldr r3, [r3,#oToolkit_JoypadPtr]
 	ldrh r4, [r3,#4]
 	mov r1, #0xc0
 	tst r4, r1
@@ -11330,7 +11330,7 @@ off_8136128: .word dword_8135628+0x2C
 sub_813612C:
 	push {r4-r7,lr}
 	mov r3, r10
-	ldr r3, [r3,#4]
+	ldr r3, [r3,#oToolkit_JoypadPtr]
 	ldrh r4, [r3,#2]
 	mov r1, #1
 	tst r4, r1
@@ -11375,7 +11375,7 @@ loc_8136176:
 	b loc_81361FA
 loc_8136192:
 	mov r3, r10
-	ldr r3, [r3,#4]
+	ldr r3, [r3,#oToolkit_JoypadPtr]
 	ldrh r4, [r3,#4]
 	mov r1, #0xc0
 	tst r4, r1
@@ -11845,7 +11845,7 @@ dword_8136528: .word 0x2660
 sub_813652C:
 	push {r4,lr}
 	mov r3, r10
-	ldr r3, [r3,#4]
+	ldr r3, [r3,#oToolkit_JoypadPtr]
 	ldrh r4, [r3,#2]
 	mov r1, #2
 	tst r4, r1
@@ -12255,7 +12255,7 @@ sub_813686C:
 	ldr r0, off_81368C0 // =dword_8136828 
 	bl sub_80465A0 // (void *a1) -> void
 	mov r0, r10
-	ldr r0, [r0,#0x1c]
+	ldr r0, [r0,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x27 
 	strb r1, [r0,#9]
 	mov r1, #0x37 
@@ -12263,7 +12263,7 @@ sub_813686C:
 	mov r1, #0x3f 
 	strb r1, [r0,#0xb]
 	mov r0, r10
-	ldr r0, [r0,#8]
+	ldr r0, [r0,#oToolkit_RenderInfoPtr]
 	ldrb r1, [r5,#0xf]
 	lsl r1, r1, #2
 	ldr r2, off_81368C4 // =dword_81368C8 
@@ -12272,7 +12272,7 @@ sub_813686C:
 	mov r1, #0
 	strh r1, [r0,#0x1a]
 	mov r0, r10
-	ldr r0, [r0,#0x20]
+	ldr r0, [r0,#oToolkit_Unk2009740_Ptr]
 	mov r1, #0x48 
 	strb r1, [r0]
 	mov r1, #0xc
@@ -12432,7 +12432,7 @@ off_8136A08: .word dword_8136828+0x14
 sub_8136A0C:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x20]
+	ldr r0, [r0,#oToolkit_Unk2009740_Ptr]
 	ldrb r1, [r5,#0x12]
 	lsr r2, r1, #2
 	strb r2, [r0,#2]
@@ -12444,19 +12444,19 @@ sub_8136A0C:
 	mov r0, #0
 	strb r0, [r5,#0x12]
 	mov r0, r10
-	ldr r0, [r0,#0x20]
+	ldr r0, [r0,#oToolkit_Unk2009740_Ptr]
 	mov r1, #0
 	strb r1, [r0]
 	strb r1, [r0,#2]
 	strb r1, [r0,#3]
 	strb r1, [r0,#1]
 	mov r0, r10
-	ldr r0, [r0,#8]
+	ldr r0, [r0,#oToolkit_RenderInfoPtr]
 	mov r1, #0
 	strh r1, [r0,#0x18]
 	strh r1, [r0,#0x1a]
 	mov r0, r10
-	ldr r0, [r0,#0x1c]
+	ldr r0, [r0,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x2f 
 	strb r1, [r0,#9]
 	mov r1, #0x3f 
@@ -12544,7 +12544,7 @@ dword_8136AE4: .word 0x20
 sub_8136AE8:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #3
 	tst r0, r1
@@ -12567,12 +12567,12 @@ loc_8136AFE:
 sub_8136B10:
 	push {r4-r7,lr}
 	mov r2, r10
-	ldr r2, [r2,#8]
+	ldr r2, [r2,#oToolkit_RenderInfoPtr]
 	ldrh r1, [r2,#0x18]
 	sub r1, r1, r0
 	strh r1, [r2,#0x18]
 	mov r0, r10
-	ldr r0, [r0,#0x24]
+	ldr r0, [r0,#oToolkit_CurFramePtr]
 	ldrh r0, [r0]
 	mov r1, #8
 	and r0, r1
@@ -12599,7 +12599,7 @@ loc_8136B34:
 sub_8136B48:
 	push {r4-r7,lr}
 	mov r2, r10
-	ldr r2, [r2,#8]
+	ldr r2, [r2,#oToolkit_RenderInfoPtr]
 	ldrh r1, [r2,#0x18]
 	sub r1, r1, r0
 	strh r1, [r2,#0x18]
@@ -14015,7 +14015,7 @@ byte_813765C: .byte 0x1, 0x0, 0x2, 0x0, 0x4, 0x0, 0x8, 0x0, 0x20, 0x0, 0x10, 0x0
 sub_8137670:
 	push {lr}
 	mov r2, r10
-	ldr r2, [r2,#4]
+	ldr r2, [r2,#oToolkit_JoypadPtr]
 	ldrh r1, [r5,#8]
 	and r1, r0
 	strh r1, [r2]
@@ -14033,7 +14033,7 @@ sub_8137670:
 sub_813768C:
 	push {lr}
 	mov r2, r10
-	ldr r2, [r2,#4]
+	ldr r2, [r2,#oToolkit_JoypadPtr]
 	ldrh r1, [r2]
 	orr r1, r0
 	strh r1, [r2]
@@ -14092,7 +14092,7 @@ sub_81376CC:
 	thumb_func_start sub_81376E8
 sub_81376E8:
 	mov r1, r10
-	ldr r1, [r1,#0x4c]
+	ldr r1, [r1,#oToolkit_Unk2002230_Ptr]
 	mov r0, #0
 	ldr r2, off_8137714 // =0x140 
 loc_81376F0:
@@ -14138,7 +14138,7 @@ sub_8137718:
 	bne loc_813773E
 	mov r6, #0
 	mov r1, r10
-	ldr r1, [r1,#0x40]
+	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
 	ldrb r1, [r1,#5]
 loc_813773E:
 	str r1, [sp]
@@ -14159,7 +14159,7 @@ loc_8137762:
 	tst r6, r6
 	bne loc_8137774
 	mov r0, r10
-	ldr r0, [r0,#0x40]
+	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
 	ldrb r1, [r0,#5]
 	add r1, #1
 	cmp r1, #3
@@ -14204,12 +14204,12 @@ sub_8137790:
 	mov r2, #0x3c 
 	mul r0, r2
 	mov r3, r10
-	ldr r3, [r3,#0x48]
+	ldr r3, [r3,#oToolkit_S_Chip_2002178_Ptr]
 	add r0, r0, r3
 	mov r1, #2
 	mul r1, r2
 	mov r3, r10
-	ldr r3, [r3,#0x48]
+	ldr r3, [r3,#oToolkit_S_Chip_2002178_Ptr]
 	add r1, r1, r3
 	mov r2, #0x3c 
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
@@ -14276,7 +14276,7 @@ sub_813781C:
 	bne loc_813785E
 	push {r1}
 	mov r7, r10
-	ldr r7, [r7,#0x48]
+	ldr r7, [r7,#oToolkit_S_Chip_2002178_Ptr]
 	mov r2, #0x3c 
 	mov r0, r1
 	mul r0, r2
@@ -14294,7 +14294,7 @@ loc_8137842:
 	b loc_813785E
 loc_8137858:
 	mov r1, r10
-	ldr r1, [r1,#0x40]
+	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
 	ldrb r1, [r1,#5]
 loc_813785E:
 	ldr r3, off_8137880 // =unk_20018EC 
@@ -14325,7 +14325,7 @@ sub_8137890:
 	mov r2, #0x3c 
 	mul r0, r2
 	mov r3, r10
-	ldr r3, [r3,#0x48]
+	ldr r3, [r3,#oToolkit_S_Chip_2002178_Ptr]
 	add r0, r0, r3
 	pop {pc}
 	.byte 0, 0
@@ -14476,7 +14476,7 @@ loc_81379D0:
 	b locret_8137A1A
 loc_81379F0:
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	ldrb r1, [r5,#0x1e]
 	cmp r1, #7
@@ -14567,7 +14567,7 @@ sub_8137A7C:
 loc_8137ABA:
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#0x34]
+	ldr r0, [r0,#oToolkit_SubmenuPtr]
 	// size
 	mov r1, #0x80
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
@@ -15337,7 +15337,7 @@ loc_8138196:
 	cmp r0, r1
 	bgt loc_81381F6
 	mov r4, r10
-	ldr r4, [r4,#0x2c]
+	ldr r4, [r4,#oToolkit_ChatboxPtr]
 	lsr r0, r0, #0x10
 	mov r1, #0xf
 	and r1, r0
@@ -15424,7 +15424,7 @@ sub_8138294:
 	mov r1, #0x24 
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 	mov r1, r10
-	ldr r1, [r1]
+	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	mov r0, #0x38 
 	strb r0, [r1]
 	pop {pc}
@@ -15531,7 +15531,7 @@ sub_813838C:
 	strh r0, [r5,#4]
 	bgt locret_81383B6
 	mov r1, r10
-	ldr r0, [r1,#8]
+	ldr r0, [r1,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_81383B8 // =0x1240 
 	strh r1, [r0]
 	ldr r1, dword_81383BC // =0x1d00 
@@ -15741,7 +15741,7 @@ sub_8138528:
 sub_813853C:
 	push {lr}
 	mov r2, r10
-	ldr r2, [r2,#0x38]
+	ldr r2, [r2,#oToolkit_Unk200a220_Ptr]
 	ldrb r0, [r5,#0xa]
 	str r0, [r2,#8]
 	ldrb r0, [r5,#0xb]
@@ -15754,7 +15754,7 @@ sub_813853C:
 sub_8138550:
 	push {lr}
 	mov r2, r10
-	ldr r2, [r2,#0x38]
+	ldr r2, [r2,#oToolkit_Unk200a220_Ptr]
 	ldrh r0, [r5,#0xe]
 	str r0, [r2,#8]
 	bl sub_8138478
@@ -15765,7 +15765,7 @@ sub_8138550:
 sub_8138560:
 	push {lr}
 	mov r2, r10
-	ldr r2, [r2,#0x38]
+	ldr r2, [r2,#oToolkit_Unk200a220_Ptr]
 	ldrh r0, [r5,#0x10]
 	str r0, [r2,#8]
 	bl sub_8138478
@@ -15776,7 +15776,7 @@ sub_8138560:
 sub_8138570:
 	push {lr}
 	mov r2, r10
-	ldr r2, [r2,#0x38]
+	ldr r2, [r2,#oToolkit_Unk200a220_Ptr]
 	ldrh r0, [r5,#0x12]
 	str r0, [r2,#8]
 	bl sub_8138478
@@ -15844,7 +15844,7 @@ loc_81385CA:
 	add r1, #1
 	strb r1, [r5,#0xc]
 	mov r2, r10
-	ldr r2, [r2,#8]
+	ldr r2, [r2,#oToolkit_RenderInfoPtr]
 	strh r1, [r2,#0x12]
 loc_81385DC:
 	ldrb r2, [r5,#8]
@@ -15997,7 +15997,7 @@ sub_8138700:
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq locret_813872E
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#2]
 	tst r0, r0
 	beq locret_813872E
@@ -16044,7 +16044,7 @@ off_8138754: .word unk_2011CE0
 	thumb_local_start
 sub_8138758:
 	mov r1, r10
-	ldr r0, [r1,#8]
+	ldr r0, [r1,#oToolkit_RenderInfoPtr]
 	ldr r1, off_8138764 // =0x40 
 	strh r1, [r0]
 	mov pc, lr
@@ -16059,7 +16059,7 @@ sub_8138768:
 	mov r1, #0x20 
 	bl CpuFastSet_8000900 // (int a1, int a2) -> void
 	mov r0, r10
-	ldr r0, [r0,#0x28]
+	ldr r0, [r0,#oToolkit_GFX30025c0_Ptr]
 	mov r1, #3
 	lsl r1, r1, #8
 	mov r2, #8
@@ -16088,9 +16088,9 @@ dword_81387D4: .word 0x6006000
 sub_81387D8:
 	push {lr}
 	mov r1, r10
-	ldr r1, [r1,#0x3c]
+	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r1,#0x20]
+	str r0, [r1,#oGameState_Unk_20]
 	bl sub_800260C
 	bl sub_8005F40
 	bl sub_8005F6C

@@ -49,7 +49,7 @@ sub_812D3A8:
 	mov r3, #4
 	bl sub_8120018
 	mov r1, r10
-	ldr r1, [r1,#0x40]
+	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
 	mov r0, #5
 	strb r0, [r1,#2]
 	mov r0, #4
@@ -414,7 +414,7 @@ sub_812D690:
 	push {r5,r7}
 	mov r5, r7
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #7
 	mov r2, #0
@@ -507,7 +507,7 @@ sub_812D748:
 	bl sub_812D7A4
 	bne loc_812D76E
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #7
 	mov r2, #1
@@ -567,7 +567,7 @@ loc_812D7BA:
 	mov r0, #0x81
 	bl sound_play // () -> void
 	mov r0, r10
-	ldr r0, [r0,#0x40]
+	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
 	ldrh r2, [r5,#0x34]
 	mov r1, #2
 	mov r4, #3

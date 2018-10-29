@@ -97,7 +97,7 @@ loc_813E14C:
 	mov r0, #5
 	strb r0, [r5,#8]
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813E17C // =0x5f40 
 	strh r1, [r0]
 	b loc_813E174
@@ -108,7 +108,7 @@ loc_813E15E:
 	strb r0, [r5,#8]
 	bl reqBBS_drawHeaderText
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813E180 // =0x5e40 
 	strh r1, [r0]
 	b loc_813E174
@@ -128,7 +128,7 @@ reqBBS_draw_813E188:
 	ldr r0, dword_813E1C4 // =0x1f40 
 	bl sub_8001778
 	mov r7, r10
-	ldr r7, [r7,#0x20] // Toolkit.unk_2009740
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0
 	ble loc_813E1A2
@@ -158,7 +158,7 @@ dword_813E1C4: .word 0x1F40
 reqBBS_draw_813E1C8:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813E220 // =0x1f40 
 	strh r1, [r0]
 	bl reqBBS_813E534
@@ -170,7 +170,7 @@ reqBBS_draw_813E1C8:
 	str r0, [r1]
 	bl sub_809E122
 	mov r0, r10
-	ldr r0, [r0,#0x1c] // Toolkit.unk_200F3A0
+	ldr r0, [r0,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0
 	strb r1, [r0,#9]
 	strb r1, [r0,#0xa]
@@ -185,7 +185,7 @@ reqBBS_draw_813E1C8:
 	strb r1, [r0,#2]
 	strb r1, [r0,#6]
 	mov r0, r10
-	ldr r0, [r0,#0x20]
+	ldr r0, [r0,#oToolkit_Unk2009740_Ptr]
 	mov r1, #0
 	strb r1, [r0]
 	mov r1, #0
@@ -204,18 +204,18 @@ dword_813E220: .word 0x1F40
 reqBBS_draw_813E224:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813E4A8 // =0x5f40 
 	strh r1, [r0]
 	mov r7, r10
-	ldr r7, [r7,#0x20] // Toolkit.unk_2009740
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	add r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	sub r1, #8
 	strb r1, [r0,#7]
@@ -227,7 +227,7 @@ reqBBS_draw_813E224:
 	strb r0, [r5,#8]
 	bgt loc_813E282
 	mov r0, r10
-	ldr r0, [r0,#0x2c]
+	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	mov r1, #4
 	str r1, [r0,#0x4c]
 	ldrh r1, [r5,#0x24] // reqBBS_GUI.pagePos
@@ -265,7 +265,7 @@ off_813E2A8: .word reqBBS_requestEntries_IDs
 reqBBS_draw_813E2AC:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20] // Toolkit.unk_2009740
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813E2C8
@@ -274,7 +274,7 @@ reqBBS_draw_813E2AC:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c] // Toolkit.unk_200F3A0
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813E2C8:
@@ -304,13 +304,13 @@ loc_813E2F6:
 	mov r0, #0x14
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r0, #6
 	strb r0, [r5,#8]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #4
@@ -335,18 +335,18 @@ off_813E338: .word reqBBS_requestEntries_IDs
 reqBBS_draw_813E33C:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20] // Toolkit.unk_2009740
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	sub r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	add r1, #8
 	strb r1, [r0,#7]
@@ -360,7 +360,7 @@ reqBBS_draw_813E33C:
 	mov r0, #4
 	strb r0, [r5]
 	bl reqBBS_813E890
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x3f 
 	strb r1, [r0,#9]
 	mov r1, #0x3f 
@@ -384,7 +384,7 @@ loc_813E38E:
 reqBBS_draw_813E398:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -400,7 +400,7 @@ reqBBS_draw_813E398:
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_813E3EA
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #0
@@ -409,7 +409,7 @@ reqBBS_draw_813E398:
 	mov r0, #0xc
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c] // Toolkit.unk_200F3A0
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -433,7 +433,7 @@ loc_813E3EA:
 reqBBS_draw_813E3F4:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#0x1c] // Toolkit.unk_200F3A0
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -449,7 +449,7 @@ reqBBS_draw_813E3F4:
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_813E446
 	mov r7, r10
-	ldr r7, [r7,#0x20] // Toolkit.unk_2009740
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #0
@@ -458,7 +458,7 @@ reqBBS_draw_813E3F4:
 	mov r0, #0x1c
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -482,18 +482,18 @@ loc_813E446:
 reqBBS_draw_813E450:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813E4A8 // =0x5f40 
 	strh r1, [r0]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	add r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	sub r1, #8
 	strb r1, [r0,#7]
@@ -529,7 +529,7 @@ dword_813E4A8: .word 0x5F40
 reqBBS_draw_813E4AC:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813E4C8
@@ -538,7 +538,7 @@ reqBBS_draw_813E4AC:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813E4C8:
@@ -549,7 +549,7 @@ loc_813E4C8:
 	mov r0, #0x24 
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1f
 	strb r1, [r0,#9]
 	mov r0, #5
@@ -567,7 +567,7 @@ loc_813E4EC:
 reqBBS_draw_813E4F4:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	add r1, #8
 	strb r1, [r0,#7]
@@ -613,7 +613,7 @@ reqBBS_813E534:
 	cmp r0, #0x18
 	beq loc_813E57A
 	mov r0, r10
-	ldr r0, [r0,#0x1c]
+	ldr r0, [r0,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r0, [r0,#7]
 	cmp r0, #0x50 
 	beq loc_813E566
@@ -1021,7 +1021,7 @@ reqBBS_dead_813E910:
 	mov r1, #0x40 
 	bl sub_80008C0
 	mov r6, r10
-	ldr r6, [r6,#0x24]
+	ldr r6, [r6,#oToolkit_CurFramePtr]
 	ldrh r6, [r6]
 	mov r7, #0x1f
 	and r6, r7
@@ -1043,7 +1043,7 @@ loc_813E934:
 	beq loc_813E968
 	push {r4-r7}
 	mov r1, r10
-	ldr r3, [r1,#0x24]
+	ldr r3, [r1,#oToolkit_CurFramePtr]
 	ldrh r3, [r3]
 	mov r7, #0x1f
 	and r3, r7
@@ -1096,7 +1096,7 @@ reqBBS_static_813EA94:
 	push {r0-r7,lr}
 	ldrh r7, [r5,#0x24] // reqBBS_GUI.pagePos
 	mov r6, r10
-	ldr r6, [r6,#0x24] // Toolkit.currFrame
+	ldr r6, [r6,#oToolkit_CurFramePtr]
 	ldrh r6, [r6]
 	mov r4, #0x1f
 	and r4, r6
@@ -1207,7 +1207,7 @@ reqBBS_static_813EC10:
 	push {r4-r7,lr}
 	mov r8, r0
 	mov r7, r10
-	ldr r7, [r7,#4]
+	ldr r7, [r7,#oToolkit_JoypadPtr]
 	ldrh r0, [r7,#2]
 	mov r1, #2
 	tst r1, r0
@@ -1259,7 +1259,7 @@ reqBBS_static_813EC6C:
 	mov r0, #0x18
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -1380,7 +1380,7 @@ reqBBS_813ED40:
 	mov r1, #6
 	lsl r1, r1, #6
 	mov r2, r10
-	ldr r2, [r2,#0x28]
+	ldr r2, [r2,#oToolkit_GFX30025c0_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
 	bl loc_8000AC8
@@ -1435,7 +1435,7 @@ reqBBS_813ED98:
 	ldrh r6, [r5,#0x20] // reqBBS_GUI.cursorPos
 	ldrh r4, [r5,#0x24] // reqBBS_GUI.pagePos
 	mov r3, r10
-	ldr r3, [r3,#4]
+	ldr r3, [r3,#oToolkit_JoypadPtr]
 	ldrh r0, [r3,#4]
 	mov r1, #0x40 
 	tst r1, r0
@@ -1933,7 +1933,7 @@ reqBBS_813F550:
 	ldr r0, dword_813F58C // =0x1f40 
 	bl sub_8001778
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0
 	ble loc_813F56A
@@ -1963,7 +1963,7 @@ dword_813F58C: .word 0x1F40
 reqBBS_813F590:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813F5E8 // =0x1f40 
 	strh r1, [r0]
 	bl reqBBS_813F8F0
@@ -2009,18 +2009,18 @@ dword_813F5E8: .word 0x1F40
 reqBBS_813F5EC:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813F864 // =0x5f40 
 	strh r1, [r0]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	add r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	sub r1, #8
 	strb r1, [r0,#7]
@@ -2032,7 +2032,7 @@ reqBBS_813F5EC:
 	strb r0, [r5,#8]
 	bgt loc_813F648
 	mov r0, r10
-	ldr r0, [r0,#0x2c]
+	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	mov r1, #4
 	str r1, [r0,#0x4c]
 	ldrh r1, [r5,#0x24]
@@ -2062,7 +2062,7 @@ off_813F658: .word reqBBS_requestEntries_IDs
 reqBBS_813F65C:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813F678
@@ -2071,7 +2071,7 @@ reqBBS_813F65C:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813F678:
@@ -2135,18 +2135,18 @@ off_813F6F4: .word reqBBS_dialogList
 reqBBS_813F6F8:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	sub r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	add r1, #8
 	strb r1, [r0,#7]
@@ -2160,7 +2160,7 @@ reqBBS_813F6F8:
 	mov r0, #4
 	strb r0, [r5]
 	bl reqBBS_813FEB0
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x3f 
 	strb r1, [r0,#9]
 	mov r1, #0x3f 
@@ -2184,7 +2184,7 @@ loc_813F74A:
 reqBBS_813F754:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -2200,7 +2200,7 @@ reqBBS_813F754:
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_813F7A6
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #0
@@ -2209,7 +2209,7 @@ reqBBS_813F754:
 	mov r0, #0xc
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -2233,7 +2233,7 @@ loc_813F7A6:
 reqBBS_813F7B0:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -2249,7 +2249,7 @@ reqBBS_813F7B0:
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_813F802
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #0
@@ -2258,7 +2258,7 @@ reqBBS_813F7B0:
 	mov r0, #0x1c
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -2282,18 +2282,18 @@ loc_813F802:
 reqBBS_813F80C:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813F864 // =0x5f40 
 	strh r1, [r0]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	add r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	sub r1, #8
 	strb r1, [r0,#7]
@@ -2329,7 +2329,7 @@ dword_813F864: .word 0x5F40
 reqBBS_813F868:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813F884
@@ -2338,7 +2338,7 @@ reqBBS_813F868:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813F884:
@@ -2349,7 +2349,7 @@ loc_813F884:
 	mov r0, #0x24 
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1f
 	strb r1, [r0,#9]
 	mov r0, #5
@@ -2367,7 +2367,7 @@ loc_813F8A8:
 reqBBS_813F8B0:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	add r1, #8
 	strb r1, [r0,#7]
@@ -2599,7 +2599,7 @@ dword_813FA50: .word 0x1B60
 reqBBS_813FA54:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -2615,7 +2615,7 @@ reqBBS_813FA54:
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_813FAA6
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #0
@@ -2624,7 +2624,7 @@ reqBBS_813FA54:
 	mov r0, #0x30 
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -2648,18 +2648,18 @@ loc_813FAA6:
 reqBBS_813FAB0:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813FB14 // =0x5f40 
 	strh r1, [r0]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	add r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	sub r1, #8
 	strb r1, [r0,#7]
@@ -2701,7 +2701,7 @@ off_813FB20: .word 0x50
 reqBBS_813FB24:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813FB40
@@ -2710,7 +2710,7 @@ reqBBS_813FB24:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813FB40:
@@ -2740,13 +2740,13 @@ loc_813FB6E:
 	mov r0, #0x3c 
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r0, #6
 	strb r0, [r5,#8]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #4
@@ -2774,7 +2774,7 @@ dword_813FBBC: .word 0xF
 reqBBS_813FBC0:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813FBDC
@@ -2783,7 +2783,7 @@ reqBBS_813FBC0:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813FBDC:
@@ -2795,13 +2795,13 @@ loc_813FBDC:
 	mov r0, #0x3c 
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r0, #6
 	strb r0, [r5,#8]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #4
@@ -2828,18 +2828,18 @@ loc_813FC1E:
 reqBBS_813FC30:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	sub r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	add r1, #8
 	strb r1, [r0,#7]
@@ -2853,7 +2853,7 @@ reqBBS_813FC30:
 	mov r0, #4
 	strb r0, [r5]
 	bl reqBBS_813FEB0
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x3f 
 	strb r1, [r0,#9]
 	mov r1, #0x3f 
@@ -2877,7 +2877,7 @@ loc_813FC82:
 reqBBS_813FC8C:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813FCA8
@@ -2886,7 +2886,7 @@ reqBBS_813FC8C:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813FCA8:
@@ -2908,13 +2908,13 @@ loc_813FCBE:
 	mov r0, #0x14
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r0, #6
 	strb r0, [r5,#8]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #4
@@ -2941,7 +2941,7 @@ off_813FD0C: .word reqBBS_dialogList
 reqBBS_813FD14:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813FD30
@@ -2950,7 +2950,7 @@ reqBBS_813FD14:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813FD30:
@@ -2962,13 +2962,13 @@ loc_813FD30:
 	mov r0, #0x14
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r0, #6
 	strb r0, [r5,#8]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #4
@@ -3203,7 +3203,7 @@ reqBBS_anim_814004C:
 	push {r0-r7,lr}
 	ldrh r7, [r5,#0x24]
 	mov r6, r10
-	ldr r6, [r6,#0x24]
+	ldr r6, [r6,#oToolkit_CurFramePtr]
 	ldrh r6, [r6]
 	mov r4, #0x1f
 	and r4, r6
@@ -3529,7 +3529,7 @@ reqBBS_8140358:
 	push {r4-r7,lr}
 	mov r8, r0
 	mov r7, r10
-	ldr r7, [r7,#4]
+	ldr r7, [r7,#oToolkit_JoypadPtr]
 	ldrh r0, [r7,#2]
 	mov r1, #2
 	tst r1, r0
@@ -3587,7 +3587,7 @@ reqBBS_81403C0:
 	mov r0, #0x18
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -3630,7 +3630,7 @@ reqBBS_8140414:
 	mov r0, #0x2c 
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -3813,7 +3813,7 @@ reqBBS_8140588:
 	mov r1, #6
 	lsl r1, r1, #6
 	mov r2, r10
-	ldr r2, [r2,#0x28]
+	ldr r2, [r2,#oToolkit_GFX30025c0_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
 	bl loc_8000AC8
@@ -3829,7 +3829,7 @@ reqBBS_81405A4:
 	mov r1, #6
 	lsl r1, r1, #6
 	mov r2, r10
-	ldr r2, [r2,#0x28]
+	ldr r2, [r2,#oToolkit_GFX30025c0_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
 	bl loc_8000AC8
@@ -4419,8 +4419,8 @@ reqBBS_81409D0:
 reqBBS_81409E4:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c] // Toolkit.gamestate
-	ldr r0, [r0,#0x18] // GameState.player
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldr r0, [r0,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #0x1c // NPC.scriptArrayOffset
 	bl sub_8031A7A
 	pop {pc}
@@ -4430,8 +4430,8 @@ reqBBS_81409E4:
 reqBBS_81409F4:
 	push {lr}
 	mov r1, r10
-	ldr r1, [r1,#0x3c] // Toolkit.gamestate
-	ldrb r0, [r1,#0xe] // GameState.unk_0E
+	ldr r1, [r1,#oToolkit_GameStatePtr]
+	ldrb r0, [r1,#oGameState_Unk_0e]
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end reqBBS_81409F4
@@ -4455,7 +4455,7 @@ reqBBS_clearFlag_8140A0C:
 	mov r1, #0
 	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r5, r10
-	ldr r5, [r5,#0x40] // Toolkit.unk_2001C04
+	ldr r5, [r5,#oToolkit_Unk2001c04_Ptr]
 	mov r3, #0x14
 	ldrh r0, [r5,r3]
 	mov r3, #0x12

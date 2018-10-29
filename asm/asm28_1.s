@@ -480,8 +480,8 @@ sub_809F942:
 	ldr r7, off_809F9C4 // =byte_2000210 
 	ldrb r6, [r7]
 	mov r4, r10
-	ldr r4, [r4,#0x3c]
-	ldr r4, [r4,#0x18]
+	ldr r4, [r4,#oToolkit_GameStatePtr]
+	ldr r4, [r4,#oGameState_OverworldPlayerObjectPtr]
 	add r7, #0x10
 loc_809F95A:
 	sub r6, #1
@@ -550,7 +550,7 @@ off_809F9C4: .word byte_2000210
 sub_809F9C8:
 	push {r4-r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#0x70]
+	ldr r0, [r0,#oToolkit_Unk2004348_Ptr]
 	ldr r1, off_809F9D8 // =0x480 
 	bl CpuFastSet_8000900 // (int a1, int a2) -> void
 	pop {r4-r7,pc}
@@ -710,7 +710,7 @@ sub_809FACE:
 	thumb_local_start
 sub_809FADE:
 	mov r2, r10
-	ldr r2, [r2,#0x70]
+	ldr r2, [r2,#oToolkit_Unk2004348_Ptr]
 	ldr r1, dword_809FAF0 // =0x1400 
 	sub r0, r0, r1
 	mov r1, #2
@@ -902,9 +902,9 @@ sub_809FC1C:
 	push {r4-r7,lr}
 	mov r6, r0
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
-	ldrb r0, [r7,#4]
-	ldrb r1, [r7,#5]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
+	ldrb r0, [r7,#oGameState_MapGroup]
+	ldrb r1, [r7,#oGameState_MapNumber]
 	cmp r0, #0x80
 	bge loc_809FC2E
 	b loc_809FC34
@@ -981,9 +981,9 @@ sub_809FC96:
 	mov r5, #0
 loc_809FCB0:
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
-	ldrb r0, [r7,#4]
-	ldrb r1, [r7,#5]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
+	ldrb r0, [r7,#oGameState_MapGroup]
+	ldrb r1, [r7,#oGameState_MapNumber]
 	cmp r0, #0x80
 	bge loc_809FCBE
 	b loc_809FCC4

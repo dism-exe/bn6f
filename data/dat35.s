@@ -652,7 +652,7 @@ sub_812F530:
 	mov r0, #0x13
 	strb r0, [r5,#0x10]
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#2]
 	mov r1, #7
 	mov r2, #1
@@ -781,7 +781,7 @@ sub_812F628:
 	b loc_812F698
 loc_812F648:
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#2]
 	mov r1, #2
 	mov r2, #1
@@ -1573,7 +1573,7 @@ sub_812FC50:
 	strb r2, [r3,r0]
 	mov r4, r0
 	mov r7, r10
-	ldr r7, [r7,#0x48]
+	ldr r7, [r7,#oToolkit_S_Chip_2002178_Ptr]
 	mov r2, #0x3c 
 	mul r0, r2
 	add r7, r7, r0
@@ -1616,7 +1616,7 @@ loc_812FCB8:
 	b loc_812FCEC
 loc_812FCCC:
 	mov r0, r10
-	ldr r0, [r0,#0x40]
+	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
 	ldrb r1, [r0,#5]
 	mov r4, r1
 	mov r2, #0x26 
@@ -1626,7 +1626,7 @@ loc_812FCCC:
 	strb r1, [r0,#5]
 	mov r0, r4
 	mov r7, r10
-	ldr r7, [r7,#0x48]
+	ldr r7, [r7,#oToolkit_S_Chip_2002178_Ptr]
 	mov r2, #0x3c 
 	mul r0, r2
 	add r7, r7, r0

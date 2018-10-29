@@ -4,11 +4,11 @@
 sub_813B768:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x68]
+	ldr r0, [r0,#oToolkit_Unk2004334_Ptr]
 	mov r1, #0
 	strh r1, [r0]
 	mov r0, r10
-	ldr r0, [r0,#0x60]
+	ldr r0, [r0,#oToolkit_Unk200431c_Ptr]
 	mov r1, #0x10
 	bl clearBackwards_80008B4 // (void *mem, int size) -> void
 	pop {pc}
@@ -287,13 +287,13 @@ sub_813B934:
 	push {lr}
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#0x5c]
+	ldr r0, [r0,#oToolkit_Unk2004190_Ptr]
 	// size
 	ldr r1, off_813B94C // =0x188 
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#0x58]
+	ldr r0, [r0,#oToolkit_Unk200414c_Ptr]
 	// size
 	mov r1, #0x40 
 	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
@@ -321,7 +321,7 @@ sub_813B950:
 	mul r3, r2
 	add r3, r3, r1
 	mov r6, r10
-	ldr r6, [r6,#0x58]
+	ldr r6, [r6,#oToolkit_Unk200414c_Ptr]
 	add r6, r6, r3
 	mov r5, #0
 loc_813B97C:
@@ -361,7 +361,7 @@ loc_813B9A0:
 	thumb_func_start sub_813B9B4
 sub_813B9B4:
 	mov r3, r10
-	ldr r3, [r3,#0x58]
+	ldr r3, [r3,#oToolkit_Unk200414c_Ptr]
 	mov r2, #7
 	mul r1, r2
 	add r0, r0, r1
@@ -374,7 +374,7 @@ sub_813B9B4:
 sub_813B9C4:
 	push {lr}
 	mov r3, r10
-	ldr r3, [r3,#0x58]
+	ldr r3, [r3,#oToolkit_Unk200414c_Ptr]
 	mov r1, #0
 	add r0, #1
 loc_813B9CE:
@@ -407,7 +407,7 @@ off_813B9F0: .word byte_813B1EC
 	thumb_func_start sub_813B9FC
 sub_813B9FC:
 	mov r1, r10
-	ldr r1, [r1,#0x5c]
+	ldr r1, [r1,#oToolkit_Unk2004190_Ptr]
 	mov r2, #8
 	mul r0, r2
 	add r0, r0, r1
@@ -424,7 +424,7 @@ sub_813BA08:
 	str r3, [sp,#0xc]
 	str r4, [sp,#0x10]
 	mov r7, r10
-	ldr r7, [r7,#0x5c]
+	ldr r7, [r7,#oToolkit_Unk2004190_Ptr]
 	mov r1, #0
 loc_813BA1C:
 	ldrh r0, [r7]
@@ -457,7 +457,7 @@ loc_813BA42:
 sub_813BA48:
 	push {lr}
 	mov r3, r10
-	ldr r3, [r3,#0x5c]
+	ldr r3, [r3,#oToolkit_Unk2004190_Ptr]
 	mov r1, #8
 	mul r0, r1
 	add r3, r3, r0
@@ -475,12 +475,12 @@ sub_813BA48:
 sub_813BA64:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x58]
+	ldr r0, [r0,#oToolkit_Unk200414c_Ptr]
 	ldr r1, off_813BA9C // =unk_201BA00 
 	mov r2, #0x40 
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, r10
-	ldr r0, [r0,#0x5c]
+	ldr r0, [r0,#oToolkit_Unk2004190_Ptr]
 	ldr r1, off_813BAA0 // =byte_201BA40 
 	ldr r2, off_813BAA4 // =0x188 
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
@@ -491,12 +491,12 @@ sub_813BA64:
 sub_813BA80:
 	push {lr}
 	mov r1, r10
-	ldr r1, [r1,#0x58]
+	ldr r1, [r1,#oToolkit_Unk200414c_Ptr]
 	ldr r0, off_813BA9C // =unk_201BA00 
 	mov r2, #0x40 
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r1, r10
-	ldr r1, [r1,#0x5c]
+	ldr r1, [r1,#oToolkit_Unk2004190_Ptr]
 	ldr r0, off_813BAA0 // =byte_201BA40 
 	ldr r2, off_813BAA4 // =0x188 
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
@@ -510,12 +510,12 @@ off_813BAA4: .word 0x188
 sub_813BAA8:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x58]
+	ldr r0, [r0,#oToolkit_Unk200414c_Ptr]
 	ldr r1, off_813BAE0 // =byte_201BC40 
 	mov r2, #0x40 
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, r10
-	ldr r0, [r0,#0x5c]
+	ldr r0, [r0,#oToolkit_Unk2004190_Ptr]
 	ldr r1, off_813BAE4 // =byte_201BC80 
 	ldr r2, off_813BAE8 // =0x188 
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
@@ -526,12 +526,12 @@ sub_813BAA8:
 sub_813BAC4:
 	push {lr}
 	mov r1, r10
-	ldr r1, [r1,#0x58]
+	ldr r1, [r1,#oToolkit_Unk200414c_Ptr]
 	ldr r0, off_813BAE0 // =byte_201BC40 
 	mov r2, #0x40 
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r1, r10
-	ldr r1, [r1,#0x5c]
+	ldr r1, [r1,#oToolkit_Unk2004190_Ptr]
 	ldr r0, off_813BAE4 // =byte_201BC80 
 	ldr r2, off_813BAE8 // =0x188 
 	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
@@ -633,7 +633,7 @@ sub_813BB68:
 	mul r3, r2
 	add r3, r3, r1
 	mov r6, r10
-	ldr r6, [r6,#0x58]
+	ldr r6, [r6,#oToolkit_Unk200414c_Ptr]
 	add r6, r6, r3
 	mov r5, #0
 loc_813BB92:
@@ -680,7 +680,7 @@ loc_813BBCE:
 sub_813BBD4:
 	push {r4-r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#0x60]
+	ldr r0, [r0,#oToolkit_Unk200431c_Ptr]
 	mov r7, r0
 	mov r1, #0x10
 	bl clearBackwards_80008B4 // (void *mem, int size) -> void
@@ -938,7 +938,7 @@ sub_813BD90:
 	mul r3, r2
 	add r3, r3, r1
 	mov r6, r10
-	ldr r6, [r6,#0x58]
+	ldr r6, [r6,#oToolkit_Unk200414c_Ptr]
 	add r6, r6, r3
 	mov r5, #0
 loc_813BDC6:
@@ -1034,7 +1034,7 @@ loc_813BE4A:
 	cmp r0, r4
 	bne loc_813BE7C
 	mov r0, r10
-	ldr r0, [r0,#0x60]
+	ldr r0, [r0,#oToolkit_Unk200431c_Ptr]
 	ldrb r1, [r7,#4]
 	ldrb r2, [r0,r1]
 	add r2, #1
@@ -1106,7 +1106,7 @@ loc_813BEE2:
 	cmp r6, #0x31 
 	blt loc_813BEBA
 	mov r0, r10
-	ldr r0, [r0,#0x60]
+	ldr r0, [r0,#oToolkit_Unk200431c_Ptr]
 	cmp r5, #4
 	ble locret_813BF06
 	cmp r5, #5
@@ -1129,7 +1129,7 @@ off_813BF08: .word unk_2006D30
 	thumb_local_start
 sub_813BF0C:
 	mov r1, r10
-	ldr r1, [r1,#0x60]
+	ldr r1, [r1,#oToolkit_Unk200431c_Ptr]
 	ldrb r0, [r1,r0]
 	cmp r0, #3
 	ble locret_813BF18
@@ -1296,7 +1296,7 @@ loc_813C00C:
 sub_813C020:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x60]
+	ldr r0, [r0,#oToolkit_Unk200431c_Ptr]
 	mov r1, #0x10
 	bl clearBackwards_80008B4 // (void *mem, int size) -> void
 	pop {pc}
@@ -1353,7 +1353,7 @@ sub_813C06C:
 	bl sub_813B9B4
 	str r0, [sp,#8]
 	mov r6, r10
-	ldr r6, [r6,#0x58]
+	ldr r6, [r6,#oToolkit_Unk200414c_Ptr]
 	mov r4, #0
 loc_813C08C:
 	ldrb r0, [r6,r4]
@@ -1470,7 +1470,7 @@ sub_813C1C0:
 	add r1, r1, r0
 	str r1, [sp]
 	mov r6, r10
-	ldr r6, [r6,#0x58]
+	ldr r6, [r6,#oToolkit_Unk200414c_Ptr]
 	mov r4, #0
 loc_813C1DA:
 	ldrb r0, [r6,r4]
@@ -1600,7 +1600,7 @@ sub_813C334:
 	mov r6, r1
 	mov r7, r0
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#2]
 	tst r0, r0
 	beq loc_813C394
@@ -1673,8 +1673,8 @@ loc_813C3B8:
 	b loc_813C3CC
 loc_813C3CC:
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r0, [r0,#oGameState_MapGroup]
 	cmp r0, #0x80
 	bge loc_813C40E
 	// entryIdx
@@ -1928,7 +1928,7 @@ sub_813C678:
 	push {lr}
 	mov r0, #0
 	mov r1, r10
-	ldr r1, [r1,#0x68]
+	ldr r1, [r1,#oToolkit_Unk2004334_Ptr]
 	strh r0, [r1]
 	pop {pc}
 	thumb_func_end sub_813C678
@@ -2622,7 +2622,7 @@ navicust_NCP_ChargMAX:
 navicust_NCP_HPPlus50:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x68]
+	ldr r0, [r0,#oToolkit_Unk2004334_Ptr]
 	ldrh r1, [r0]
 	add r1, #0x32 
 	strh r1, [r0]
@@ -2634,7 +2634,7 @@ navicust_NCP_HPPlus50:
 navicust_NCP_HPPlus100:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x68]
+	ldr r0, [r0,#oToolkit_Unk2004334_Ptr]
 	ldrh r1, [r0]
 	add r1, #0x64 
 	strh r1, [r0]
@@ -2646,7 +2646,7 @@ navicust_NCP_HPPlus100:
 navicust_NCP_HPPlus200:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x68]
+	ldr r0, [r0,#oToolkit_Unk2004334_Ptr]
 	ldrh r1, [r0]
 	add r1, #0xc8
 	strh r1, [r0]
@@ -2658,7 +2658,7 @@ navicust_NCP_HPPlus200:
 navicust_NCP_HPPlus300:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x68]
+	ldr r0, [r0,#oToolkit_Unk2004334_Ptr]
 	ldrh r1, [r0]
 	ldr r2, off_813CBA0 // =0x12c 
 	add r1, r1, r2
@@ -2671,7 +2671,7 @@ off_813CBA0: .word 0x12C
 navicust_NCP_HPPlus400:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x68]
+	ldr r0, [r0,#oToolkit_Unk2004334_Ptr]
 	ldrh r1, [r0]
 	ldr r2, off_813CBB4 // =0x190 
 	add r1, r1, r2
@@ -2684,7 +2684,7 @@ off_813CBB4: .word 0x190
 navicust_NCP_HPPlus500:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x68]
+	ldr r0, [r0,#oToolkit_Unk2004334_Ptr]
 	ldrh r1, [r0]
 	ldr r2, off_813CBC8 // =0x1f4 
 	add r1, r1, r2
@@ -3154,7 +3154,7 @@ sub_813CEA0:
 	mov r2, #0x3c 
 	mul r1, r2
 	mov r2, r10
-	ldr r2, [r2,#0x48] // Toolkit.sChip_2002178
+	ldr r2, [r2,#oToolkit_S_Chip_2002178_Ptr]
 	add r1, r1, r2
 	lsl r0, r0, #1
 	add r0, r0, r1
@@ -4321,7 +4321,7 @@ loc_813DAEA:
 sub_813DAF4:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r1, [r0]
 	ldr r0, off_813DB04 // =word_2036780 
 	strh r1, [r0]

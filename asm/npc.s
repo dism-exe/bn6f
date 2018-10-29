@@ -194,7 +194,7 @@ off_809E700: .word jt_809E6F0
 	thumb_local_start
 npc_809E704:
 	push {lr}
-	ldr r7, off_809E7C4 // =unk_809E77E 
+	ldr r7, off_809E7C4 // =byte_809E77E 
 	ldrb r0, [r5,#0xe]
 	lsl r0, r0, #2
 	add r7, r7, r0
@@ -210,7 +210,7 @@ npc_809E704:
 	lsl r1, r1, #0x10
 	add r0, r0, r1
 	str r0, [r5,#0x74]
-	ldr r0, dword_809E7C8 // =0x80000 
+	ldr r0, byte_809E7C8 // =0x0 
 	ldrb r1, [r5,#4]
 	push {r5}
 	bl SWI_Div
@@ -219,7 +219,7 @@ npc_809E704:
 	add r0, r0, r1
 	lsr r0, r0, #0xc
 	strh r0, [r5,#0x20]
-	ldr r7, dword_809E7C0 // = 
+	ldr r7, off_809E7C0 // =byte_809E79E 
 	ldrb r0, [r5,#0xe]
 	add r0, r0, r0
 	add r7, r7, r0
@@ -252,23 +252,18 @@ npc_809E704:
 	str r0, [r5,#0x38]
 	bl sub_809F5B0
 	pop {pc}
-unk_809E77E: .byte  0
-	.byte  0
-	.word 0x80000, 0x0, 0x0
-	.word 0x8, 0xFFF80000, 0x0, 0x0
-	.word 0xFFF8, 0x1, 0x100, 0xFF, 0x900FF00, 0xD000B00, 0x1000F00
-	.word 0x5000300, 0x700
-dword_809E7C0: .word 0x809E79E
-off_809E7C4: .word unk_809E77E
-dword_809E7C8: .word 0x80000
-	.byte 0xAE
-	.byte 0xE7
-	.byte  9
-	.byte  8
-	.byte 0xB6
-	.byte 0xE7
-	.hword 0x809
+byte_809E77E: .byte 0x0, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x8, 0x0, 0x0
+	.byte 0x0, 0x0, 0x0, 0xF8, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xF8, 0xFF
+byte_809E79E: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0, 0x0, 0xFF
+	.byte 0x0, 0x9, 0x0, 0xB, 0x0, 0xD, 0x0, 0xF, 0x0, 0x1, 0x0, 0x3, 0x0, 0x5, 0x0, 0x7
+	.byte 0x0, 0x0
+off_809E7C0: .word byte_809E79E
+off_809E7C4: .word byte_809E77E
+byte_809E7C8: .byte 0x0, 0x0, 0x8, 0x0, 0xAE, 0xE7, 0x9, 0x8, 0xB6, 0xE7, 0x9, 0x8
 dword_809E7D4: .word 0xFFF
+	thumb_func_end npc_809E704
+
+	thumb_local_start
 npc_809E7D8:
 	push {lr}
 	ldr r0, [r5,#0x60]
@@ -328,6 +323,8 @@ loc_809E842:
 loc_809E848:
 	bl sub_809F5B0
 	pop {pc}
+	thumb_func_end npc_809E7D8
+
 npc_809E84E:
 	push {lr}
 	ldrb r0, [r5,#4]
@@ -396,8 +393,6 @@ loc_809E8BA:
 off_809E8C0: .word dword_809E8C4
 dword_809E8C4: .word 0x2A0026
 	.word 0x12A0126
-	thumb_func_end npc_809E704
-
 	thumb_local_start
 npc_809E8CC:
 	push {lr}
@@ -640,7 +635,7 @@ sub_809EA74:
 sub_809EA82:
 	push {r4,r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x10]
+	ldr r4, [r4,#oToolkit_S2011c50_Ptr]
 	mov r7, #0x80
 	ldr r0, [r5,r7]
 	mov r7, #0x84
@@ -728,8 +723,8 @@ npc_809EB20:
 	tst r0, r1
 	bne loc_809EB54
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
-	ldr r7, [r7,#0x18]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
+	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
 	ldr r0, [r7,#0x20]
 	ldr r2, [r5,#0x28]
 	sub r0, r0, r2
@@ -754,7 +749,7 @@ loc_809EB54:
 	tst r2, r1
 	beq loc_809EB76
 	mov r7, r10
-	ldr r7, [r7,#0x2c]
+	ldr r7, [r7,#oToolkit_ChatboxPtr]
 	mov r1, #0x90
 	ldr r0, [r5,r1]
 	str r0, [r7,#0x4c]
@@ -806,8 +801,8 @@ npc_809EBBC:
 	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 	bne locret_809EBDA
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
-	ldrb r0, [r7,#0x10]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
+	ldrb r0, [r7,#oGameState_Unk_10]
 	tst r0, r0
 	bne locret_809EBDA
 	mov r0, #0
@@ -1748,8 +1743,8 @@ sub_809F26A:
 sub_809F270:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0,#6]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r0, [r0,#oGameState_GameProgress]
 	ldrb r1, [r6,#1]
 	cmp r0, r1
 	blt loc_809F28E
@@ -1770,7 +1765,7 @@ locret_809F290:
 sub_809F292:
 	push {lr}
 	mov r4, r10
-	ldr r4, [r4,#0x10]
+	ldr r4, [r4,#oToolkit_S2011c50_Ptr]
 	ldrb r0, [r6,#1]
 	ldrb r1, [r6,#2]
 	strb r1, [r4,r0]
@@ -1782,7 +1777,7 @@ sub_809F292:
 sub_809F2A2:
 	push {lr}
 	mov r4, r10
-	ldr r4, [r4,#0x10]
+	ldr r4, [r4,#oToolkit_S2011c50_Ptr]
 	ldrb r0, [r6,#1]
 	ldrb r1, [r6,#2]
 	ldrb r0, [r4,r0]
@@ -1801,7 +1796,7 @@ loc_809F2BC:
 sub_809F2C0:
 	push {lr}
 	mov r4, r10
-	ldr r4, [r4,#0x10]
+	ldr r4, [r4,#oToolkit_S2011c50_Ptr]
 	ldrb r0, [r6,#1]
 	ldrb r1, [r6,#2]
 	ldrb r0, [r4,r0]
@@ -1895,7 +1890,7 @@ sub_809F338:
 sub_809F354:
 	push {lr}
 	mov r7, r10
-	ldr r4, [r7,#0x1c]
+	ldr r4, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldr r7, off_809F4B4 // =byte_87E30A0 
 	bl sub_8002C68
 	ldrb r0, [r6,#1]

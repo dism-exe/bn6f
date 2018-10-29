@@ -638,7 +638,7 @@ sub_812C7B4:
 	mov r0, #0x13
 	strb r0, [r5,#0x10]
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#2]
 	mov r1, #7
 	mov r2, #1
@@ -749,7 +749,7 @@ sub_812C884:
 	b loc_812C8F4
 loc_812C8A4:
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#2]
 	mov r1, #2
 	mov r2, #1
@@ -2016,7 +2016,7 @@ sub_812D298:
 	bl sub_8046664 // () -> void
 	bl chatbox_8040818
 	mov r0, r10
-	ldr r0, [r0,#8]
+	ldr r0, [r0,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_812D308 // =0x1f40 
 	strh r1, [r0]
 	mov r1, #0
