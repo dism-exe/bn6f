@@ -19275,7 +19275,7 @@ sub_80301BC:
 	strb r0, [r2,#3]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oGameState_OverworldPlayerObjectPtr]
 	add r1, #0x1c
 	str r1, [r2,#0x14]
 	mov pc, lr
@@ -20457,10 +20457,10 @@ sub_8030A60:
 	push {r4-r6,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
-	ldr r1, [r4,#0x20] // GameState.unk_20
+	ldr r1, [r4,#oGameState_Unk_20]
 	cmp r0, r1
 	beq locret_8030A8A
-	str r0, [r4,#0x20] // GameState.unk_20
+	str r0, [r4,#oGameState_Unk_20]
 	push {r0}
 	mov r0, #4
 	bl sub_80035A2

@@ -1747,8 +1747,8 @@ sub_8046CC8:
 	str r0, [r5,#0x24] // (dword_2011C34 - 0x2011c10)
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	ldrh r0, [r1,#4]
-	strh r0, [r1,#0xc]
+	ldrh r0, [r1,#oGameState_MapGroup]
+	strh r0, [r1,#oGameState_LastMapGroup]
 	pop {r4-r7,pc}
 off_8046CF0: .word unk_8046B98
 off_8046CF4: .word reqBBS_requestInfo_textOffsets
@@ -6748,8 +6748,8 @@ sub_804A2CC:
 	str r0, [r5,#0x30] // (dword_200ACB0 - 0x200ac80)
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	ldrh r0, [r1,#4]
-	strh r0, [r1,#0xc]
+	ldrh r0, [r1,#oGameState_MapGroup]
+	strh r0, [r1,#oGameState_LastMapGroup]
 	bl sub_8046664 // () -> void
 	pop {r5,pc}
 thumb_func_end sub_804A2CC
@@ -6957,7 +6957,7 @@ loc_804A4AA:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	mov r1, #0xc
-	strb r1, [r0,#0x16]
+	strb r1, [r0,#oGameState_Unk_16]
 	mov r0, #1
 	pop {r4-r7,pc}
 loc_804A4CC:
@@ -9131,8 +9131,8 @@ thumb_local_start
 sub_804BFF0:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldrb r1, [r3,#4]
-	ldrb r2, [r3,#5]
+	ldrb r1, [r3,#oGameState_MapGroup]
+	ldrb r2, [r3,#oGameState_MapNumber]
 	lsl r1, r1, #8
 	orr r1, r2
 	ldr r2, off_804C018 // =off_804C01C 
@@ -10241,8 +10241,8 @@ sub_804CAE0:
 	bl sub_8001820
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	ldrb r0, [r1,#4]
-	ldrb r1, [r1,#5]
+	ldrb r0, [r1,#oGameState_MapGroup]
+	ldrb r1, [r1,#oGameState_MapNumber]
 	bl sub_8001708
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
@@ -10780,7 +10780,7 @@ sub_804CF84:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r0, [r0,#5]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	lsl r0, r0, #2
 	ldr r1, off_804CF98 // =off_804CF9C 
 	ldr r0, [r1,r0]

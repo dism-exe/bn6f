@@ -31,10 +31,10 @@ sound_bgmusic_play:
 	push {r1-r7,lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r1, [r7,#0xf]
+	ldrb r1, [r7,#oGameState_BGMusicIndicator]
 	cmp r0, r1
 	beq locret_80005F0
-	strb r0, [r7,#0xf]
+	strb r0, [r7,#oGameState_BGMusicIndicator]
 	cmp r0, #0x63 
 	bne loc_80005EC
 	bl sub_8000630
@@ -50,7 +50,7 @@ sub_80005F2:
 	push {r1-r7,lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	strb r0, [r7,#0xf]
+	strb r0, [r7,#oGameState_BGMusicIndicator]
 	cmp r0, #0x63 
 	bne loc_8000604
 	bl sub_8000630
@@ -167,7 +167,7 @@ sub_80006A2:
 	bgt loc_80006B0
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	strb r0, [r7,#0xf]
+	strb r0, [r7,#oGameState_BGMusicIndicator]
 	b loc_80006B0
 loc_80006B0:
 	mov r4, r12
@@ -355,10 +355,10 @@ sub_8000822:
 	strb r2, [r3]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r1, [r7,#0xf]
+	ldrb r1, [r7,#oGameState_BGMusicIndicator]
 	cmp r0, r1
 	beq locret_800085A
-	strb r0, [r7,#0xf]
+	strb r0, [r7,#oGameState_BGMusicIndicator]
 	cmp r0, #0x63 
 	bne loc_8000844
 	ldr r3, off_80008A8 // =sub_814EA58+1 
@@ -1468,18 +1468,18 @@ sub_8000FAC:
 	mov r1, #0xc
 	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8000FCE
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#0xc]
+	ldrb r0, [r5,#oGameState_MapGroup]
+	ldrb r1, [r5,#oGameState_LastMapGroup]
 	cmp r0, r1
 	bne loc_8000FCE
-	ldrb r0, [r5,#5]
-	ldrb r1, [r5,#0xd]
+	ldrb r0, [r5,#oGameState_MapNumber]
+	ldrb r1, [r5,#oGameState_LastMapNumber]
 	cmp r0, r1
 	bne loc_8000FCE
 	b loc_8000FDC
 loc_8000FCE:
 	mov r0, #0
-	str r0, [r5,#0x1c]
+	str r0, [r5,#oGameState_CurBattleDataPtr]
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_Unk2001c04_Ptr]
 	str r0, [r6,#0x1c]
@@ -1584,15 +1584,15 @@ thumb_func_start updatePlayerGameState_800107A
 updatePlayerGameState_800107A:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r1, [r3,#0x18] // GameState.player
+	ldr r1, [r3,#oGameState_OverworldPlayerObjectPtr]
 	ldr r0, [r1,#0x1c] // NPC.scriptArrayOffset
-	str r0, [r3,#0x24] // GameState.player_x
+	str r0, [r3,#oGameState_PlayerX]
 	ldr r0, [r1,#0x20] // NPC.animationTimer
-	str r0, [r3,#0x28] // GameState.player_y
+	str r0, [r3,#oGameState_PlayerY]
 	ldr r0, [r1,#0x24]
-	str r0, [r3,#0x2c]
+	str r0, [r3,#oGameState_Unk_2c]
 	ldrb r0, [r1,#0x10]
-	str r0, [r3,#0x30]
+	str r0, [r3,#oGameState_Unk_30]
 	mov pc, lr
 thumb_func_end updatePlayerGameState_800107A
 
@@ -1627,7 +1627,7 @@ thumb_func_start getPETNaviSelect
 getPETNaviSelect:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldrb r0, [r3,#0x1] // GameState.PET_naviSelect
+	ldrb r0, [r3,#oGameState_PETNaviIndex]
 	mov pc, lr
 thumb_func_end getPETNaviSelect
 
@@ -1635,7 +1635,7 @@ thumb_func_start sub_80010BE
 sub_80010BE:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	strb r0, [r3,#1]
+	strb r0, [r3,#oGameState_PETNaviIndex]
 	mov pc, lr
 thumb_func_end sub_80010BE
 
@@ -1745,7 +1745,7 @@ thumb_func_start sub_8001172
 sub_8001172:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	strb r0, [r3,#9]
+	strb r0, [r3,#oGameState_Unk_09]
 	mov pc, lr
 	.balign 4, 0x00
 thumb_func_end sub_8001172

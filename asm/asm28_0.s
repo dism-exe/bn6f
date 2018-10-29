@@ -184,7 +184,7 @@ map_8099218:
 	bne loc_8099282
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r0, [r0,#0x4] // GameState.MapSelect
+	ldrb r0, [r0,#oGameState_MapGroup]
 	cmp r0, #0x80
 	bge loc_809924A
 	// entryIdx
@@ -231,7 +231,7 @@ loc_8099282:
 	bl chatbox_dead_uncomp_803FD3C
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r0, [r0,#0x15] // GameState.scriptOffIdx_LMsg_15
+	ldrb r0, [r0,#oGameState_Unk_15]
 	bl chatbox_runTrainScript // (u8 scriptOffIdx) -> void
 loc_8099290:
 	mov r0, #0
@@ -2170,7 +2170,7 @@ sub_8099DAC:
 	mov r0, #1
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oGameState_OverworldPlayerObjectPtr]
 	add r1, #0x1c
 	bl sub_80301B2
 	mov r0, #0
@@ -2596,8 +2596,8 @@ loc_809A5A6:
 loc_809A5B8:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldrh r0, [r3,#4]
-	strh r0, [r3,#0xc]
+	ldrh r0, [r3,#oGameState_MapGroup]
+	strh r0, [r3,#oGameState_LastMapGroup]
 	bl sub_803F798
 	bl sub_803F9E4
 	mov r0, #1
@@ -5182,9 +5182,9 @@ sub_809BFE8:
 	ldrb r1, [r0,#0x12]
 	cmp r1, #0xff
 	beq loc_809C012
-	strb r1, [r2,#0x16]
+	strb r1, [r2,#oGameState_Unk_16]
 	mov r1, #0x10
-	strb r1, [r2,#0x17]
+	strb r1, [r2,#oGameState_Unk_17]
 loc_809C012:
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -5209,7 +5209,7 @@ sub_809C01C:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	mov r0, #0x80
-	strb r0, [r3,#6]
+	strb r0, [r3,#oGameState_GameProgress]
 loc_809C042:
 	ldr r7, [r5,#0x34]
 	ldrh r0, [r7,#0x18]
@@ -5805,14 +5805,14 @@ sub_809C968:
 	bne loc_809C9B6
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r6, [r7,#4]
+	ldrb r6, [r7,#oGameState_MapGroup]
 	cmp r6, #0x80
 	blt loc_809CA26
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	bne loc_809CA26
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r0, [r7,#0xe]
+	ldrb r0, [r7,#oGameState_Unk_0e]
 	tst r0, r0
 	beq loc_809CA26
 	cmp r0, #0x30 
@@ -5844,7 +5844,7 @@ loc_809C9B6:
 loc_809C9CA:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldrb r0, [r3,#0xe]
+	ldrb r0, [r3,#oGameState_Unk_0e]
 	tst r0, r0
 	bne loc_809CA26
 	ldr r0, off_809CAC0 // =eOWPlayerObject 
@@ -5852,8 +5852,8 @@ loc_809C9CA:
 	ldrb r0, [r0,r1]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r6, [r7,#4]
-	ldrb r4, [r7,#5]
+	ldrb r6, [r7,#oGameState_MapGroup]
+	ldrb r4, [r7,#oGameState_MapNumber]
 	sub r6, #0x90
 	lsl r6, r6, #2
 	lsl r4, r4, #2
@@ -5907,8 +5907,8 @@ sub_809CA40:
 	bgt loc_809CA7A
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r6, [r7,#4]
-	ldrb r4, [r7,#5]
+	ldrb r6, [r7,#oGameState_MapGroup]
+	ldrb r4, [r7,#oGameState_MapNumber]
 	sub r6, #0x90
 	lsl r6, r6, #2
 	lsl r4, r4, #2
@@ -5943,8 +5943,8 @@ sub_809CA84:
 	ldrb r0, [r0,r1]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r6, [r7,#4]
-	ldrb r4, [r7,#5]
+	ldrb r6, [r7,#oGameState_MapGroup]
+	ldrb r4, [r7,#oGameState_MapNumber]
 	sub r6, #0x90
 	lsl r6, r6, #2
 	lsl r4, r4, #2
@@ -6120,7 +6120,7 @@ sub_809D19C:
 	beq loc_809D1D2
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r0, [r7,#4]
+	ldrb r0, [r7,#oGameState_MapGroup]
 	mov r1, #0x80
 	cmp r0, r1
 	blt loc_809D1D2
@@ -6144,7 +6144,7 @@ loc_809D1EE:
 	ldr r7, off_809D268 // =byte_2000AA0 
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_GameStatePtr]
-	ldrb r0, [r6,#4]
+	ldrb r0, [r6,#oGameState_MapGroup]
 	cmp r0, #0x80
 	blt loc_809D222
 	bl sprite_makeScalable
@@ -6186,7 +6186,7 @@ loc_809D238:
 	beq loc_809D252
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r0, [r0,#0x10]
+	ldrb r0, [r0,#oGameState_Unk_10]
 	tst r0, r0
 	beq locret_809D256
 loc_809D252:
@@ -6212,7 +6212,7 @@ sub_809D270:
 	mov r6, #0x18
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r0, [r7,#4]
+	ldrb r0, [r7,#oGameState_MapGroup]
 	mov r3, #0x80
 	cmp r0, r3
 	bge loc_809D29E
@@ -6249,7 +6249,7 @@ loc_809D2B2:
 	bl sub_8002F90 // () -> void
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	str r5, [r0,#0x18]
+	str r5, [r0,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #4
 	strb r0, [r5,#8]
 	mov r0, #0x48 
@@ -6284,7 +6284,7 @@ loc_809D2B2:
 	strh r0, [r5,#0x18]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	strb r0, [r7,#0x10]
+	strb r0, [r7,#oGameState_Unk_10]
 	ldr r0, [r5,#0x1c]
 	ldr r1, [r5,#0x20]
 	ldr r2, [r5,#0x24]
@@ -6310,7 +6310,7 @@ sub_809D348:
 	mov r0, #0
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	strb r0, [r7,#0x11]
+	strb r0, [r7,#oGameState_Unk_11]
 	strb r0, [r5,#0x13]
 	strb r0, [r5,#0x13]
 	ldrb r1, [r5,#0xe]
@@ -6513,7 +6513,7 @@ sub_809D560:
 	ldr r7, off_809D714 // =byte_2000AA0 
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_GameStatePtr]
-	ldrb r0, [r6,#4]
+	ldrb r0, [r6,#oGameState_MapGroup]
 	cmp r0, #0x80
 	blt loc_809D572
 	ldrb r1, [r7,#0x3] // (byte_2000AA3 - 0x2000aa0)
@@ -6692,7 +6692,7 @@ sub_809D6BC:
 	ldr r7, off_809D714 // =byte_2000AA0 
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_GameStatePtr]
-	ldrb r0, [r6,#4]
+	ldrb r0, [r6,#oGameState_MapGroup]
 	cmp r0, #0x80
 	blt loc_809D6CE
 	ldrb r1, [r7,#0x3] // (byte_2000AA3 - 0x2000aa0)
@@ -6797,7 +6797,7 @@ loc_809D778:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	mov r0, #0
-	strb r0, [r7,#0x10]
+	strb r0, [r7,#oGameState_Unk_10]
 	mov r0, #0
 	strb r0, [r5,#7]
 	mov r0, #0x10
@@ -6844,7 +6844,7 @@ loc_809D7E2:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	mov r0, #0
-	strb r0, [r7,#0x10]
+	strb r0, [r7,#oGameState_Unk_10]
 	mov r0, #0
 	strb r0, [r5,#7]
 	mov r0, #0
@@ -7171,10 +7171,10 @@ sub_809D9E0:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	mov r2, #1
-	strb r2, [r7,#0x11]
+	strb r2, [r7,#oGameState_Unk_11]
 	pop {r0,r1,r7}
 loc_809DA62:
-	ldrh r1, [r7]
+	ldrh r1, [r7,#oGameState_SubsystemIndex]
 	mov r2, #0xf0
 	and r2, r1
 	beq loc_809DA82
@@ -7351,7 +7351,7 @@ loc_809DB82:
 loc_809DB92:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r0, [r7,#0x11]
+	ldrb r0, [r7,#oGameState_Unk_11]
 	tst r0, r0
 	beq loc_809DBAC
 	ldrb r0, [r5,#0x10]
@@ -7551,7 +7551,7 @@ sub_809DE60:
 	ldr r7, off_809E060 // =byte_2000AA0 
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_GameStatePtr]
-	ldrb r0, [r6,#4]
+	ldrb r0, [r6,#oGameState_MapGroup]
 	cmp r0, #0x80
 	blt loc_809DE72
 	ldrb r1, [r7,#0x3] // (byte_2000AA3 - 0x2000aa0)
@@ -7641,17 +7641,17 @@ sub_809DF00:
 	mov r0, #1
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	strb r0, [r7,#0x10]
+	strb r0, [r7,#oGameState_Unk_10]
 	mov r0, #1
 	pop {pc}
 loc_809DF16:
 	ldrb r0, [r5,#0xf]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	strb r0, [r7,#0xe]
+	strb r0, [r7,#oGameState_Unk_0e]
 	tst r0, r0
 	beq loc_809DF24
-	strb r0, [r7,#3]
+	strb r0, [r7,#oGameState_Unk_03]
 loc_809DF24:
 	mov r0, #0
 	pop {pc}
@@ -7828,14 +7828,14 @@ sub_809E064:
 	beq locret_809E088
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_GameStatePtr]
-	str r5, [r6,#0x18]
-	ldr r1, [r6,#0x24]
+	str r5, [r6,#oGameState_OverworldPlayerObjectPtr]
+	ldr r1, [r6,#oGameState_PlayerX]
 	str r1, [r5,#0x1c]
-	ldr r1, [r6,#0x28]
+	ldr r1, [r6,#oGameState_PlayerY]
 	str r1, [r5,#0x20]
-	ldr r1, [r6,#0x2c]
+	ldr r1, [r6,#oGameState_Unk_2c]
 	str r1, [r5,#0x24]
-	ldr r1, [r6,#0x30]
+	ldr r1, [r6,#oGameState_Unk_30]
 	strb r1, [r5,#0x10]
 locret_809E088:
 	pop {r4,r6,r7,pc}
@@ -7846,7 +7846,7 @@ sub_809E08A:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r5, [r5,#0x18]
+	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sub_8003B86
 	pop {r4-r7,pc}
 thumb_func_end sub_809E08A
@@ -7902,7 +7902,7 @@ sub_809E0C8:
 	ldr r3, off_809E138 // =byte_200ACE0 
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	ldr r1, [r1,#0x18]
+	ldr r1, [r1,#oGameState_OverworldPlayerObjectPtr]
 	ldr r0, [r1,#0x1c]
 	str r0, [r3,#0x8] // (dword_200ACE8 - 0x200ace0)
 	ldr r0, [r1,#0x20]
@@ -7919,7 +7919,7 @@ sub_809E0C8:
 	bne locret_809E0FA
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
-	ldr r2, [r2,#0x18]
+	ldr r2, [r2,#oGameState_OverworldPlayerObjectPtr]
 	ldrb r0, [r2,#0x10]
 	mov r1, #7
 	and r0, r1
@@ -8009,7 +8009,7 @@ sub_809E168:
 	mvn r0, r0
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r3, [r3,#0x18]
+	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	strb r0, [r3,#0x15]
 	mov r0, #0x17
 	mov r1, #0x19
@@ -8024,7 +8024,7 @@ sub_809E188:
 	push {r7}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r3, [r3,#0x18]
+	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	ldr r7, [r3,#0x1c]
 	str r7, [r3,#0x28]
 	ldr r7, [r3,#0x20]
@@ -8047,7 +8047,7 @@ thumb_func_start sub_809E1AE
 sub_809E1AE:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r3, [r3,#0x18]
+	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	ldr r0, [r3,#0x1c]
 	ldr r1, [r3,#0x20]
 	ldr r2, [r3,#0x24]
@@ -8058,7 +8058,7 @@ thumb_local_start
 sub_809E1BC:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r3, [r3,#0x18]
+	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	ldr r1, [r3,#0x1c]
 	ldr r2, [r3,#0x20]
 	ldr r3, [r3,#0x24]
@@ -8069,7 +8069,7 @@ thumb_local_start
 sub_809E1CA:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r3, [r3,#0x18]
+	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	ldr r0, [r3,#0x20]
 	ldr r1, [r3,#0x1c]
 	ldr r2, [r3,#0x24]
@@ -8081,7 +8081,7 @@ sub_809E1D8:
 	push {r7}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldr r7, [r7,#0x18]
+	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
 	ldr r3, [r7,#0x1c]
 	str r3, [r7,#0x28]
 	add r3, r3, r0
@@ -8138,7 +8138,7 @@ thumb_func_start sub_809E230
 sub_809E230:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r3, [r3,#0x18]
+	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #1
 	strb r0, [r3,#0x17]
 	mov pc, lr
@@ -8148,7 +8148,7 @@ thumb_func_start sub_809E23C
 sub_809E23C:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r3, [r3,#0x18]
+	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #0
 	strb r0, [r3,#0x17]
 	mov pc, lr
@@ -8158,7 +8158,7 @@ thumb_func_start sub_809E248
 sub_809E248:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r3, [r3,#0x18]
+	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #1
 	strb r0, [r3,#0xc]
 	mov pc, lr
@@ -8168,7 +8168,7 @@ thumb_func_start sub_809E254
 sub_809E254:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r3, [r3,#0x18]
+	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #0
 	strb r0, [r3,#0xc]
 	mov pc, lr
@@ -8178,7 +8178,7 @@ thumb_func_start sub_809E260
 sub_809E260:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r3, [r3,#0x18]
+	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	strb r0, [r3,#0x16]
 	mov pc, lr
 thumb_func_end sub_809E260
@@ -8187,7 +8187,7 @@ thumb_func_start sub_809E26A
 sub_809E26A:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r3, [r3,#0x18]
+	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #0
 	strb r0, [r3,#0x16]
 	mov pc, lr
@@ -8198,7 +8198,7 @@ sub_809E276:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r5, [r5,#0x18]
+	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sub_8002F90 // () -> void
 	pop {r5,pc}
 thumb_func_end sub_809E276
@@ -8208,7 +8208,7 @@ sub_809E284:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r5, [r5,#0x18]
+	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sub_8002E3C
 	pop {r5,pc}
 thumb_func_end sub_809E284
@@ -8218,7 +8218,7 @@ sub_809E292:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r5, [r5,#0x18]
+	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sub_8002E52
 	pop {r5,pc}
 thumb_func_end sub_809E292
@@ -8228,7 +8228,7 @@ sub_809E2A0:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r5, [r5,#0x18]
+	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sprite_setPallete // (int pallete) -> void
 	pop {r5,pc}
 thumb_func_end sub_809E2A0
@@ -8237,7 +8237,7 @@ thumb_func_start sub_809E2AE
 sub_809E2AE:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r3, [r3,#0x18]
+	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	strb r0, [r3,#0x10]
 	mov pc, lr
 thumb_func_end sub_809E2AE
@@ -8246,7 +8246,7 @@ thumb_func_start sub_809E2B8
 sub_809E2B8:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldr r0, [r0,#0x18]
+	ldr r0, [r0,#oGameState_OverworldPlayerObjectPtr]
 	ldrb r0, [r0,#0x10]
 	mov pc, lr
 thumb_func_end sub_809E2B8
@@ -8341,7 +8341,7 @@ sub_809E31A:
 	strb r0, [r3,#0x4] // (byte_2000AA4 - 0x2000aa0)
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r5, [r5,#0x18]
+	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #0x80
 	mov r1, #0x18
 	mov r2, #0x48 
@@ -8371,7 +8371,7 @@ sub_809E35E:
 	strb r0, [r3,#0x4] // (byte_2000AA4 - 0x2000aa0)
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r5, [r5,#0x18]
+	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #0x80
 	mov r1, #0x1c
 	mov r2, #0x54 
@@ -8443,11 +8443,11 @@ sub_809E3D6:
 	beq locret_809E42C
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r0, [r0,#4]
+	ldrb r0, [r0,#oGameState_MapGroup]
 	cmp r0, #0x80
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldr r7, [r7,#0x18]
+	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
 	ldr r0, [r4,#0xc] // (dword_2000AAC - 0x2000aa0)
 	ldr r1, [r7,#0x1c]
 	cmp r0, r1
@@ -8493,7 +8493,7 @@ sub_809E434:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r5, [r5,#0x18]
+	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sub_8002DEA
 	pop {r5,pc}
 thumb_func_end sub_809E434
@@ -8502,7 +8502,7 @@ thumb_func_start sub_809E442
 sub_809E442:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r3, [r3,#0x18]
+	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	ldrb r0, [r3]
 	mov r1, #2
 	orr r0, r1
@@ -8514,7 +8514,7 @@ thumb_func_start sub_809E452
 sub_809E452:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldr r3, [r3,#0x18]
+	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	ldrb r0, [r3]
 	mov r1, #2
 	bic r0, r1
@@ -8527,7 +8527,7 @@ sub_809E462:
 	push {lr}
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	ldrb r0, [r1,#0x10]
+	ldrb r0, [r1,#oGameState_Unk_10]
 	tst r0, r0
 	pop {pc}
 thumb_func_end sub_809E462
@@ -8537,7 +8537,7 @@ sub_809E46E:
 	push {r7,lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldr r0, [r7,#0x18]
+	ldr r0, [r7,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #0x1c
 	bl sub_8031A7A
 	cmp r0, #0x48 
@@ -8545,7 +8545,7 @@ sub_809E46E:
 	cmp r0, #0x4f 
 	bgt locret_809E494
 	sub r0, #0x48 
-	ldr r7, [r7,#0x18]
+	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
 	mov r2, #0x64 
 	strh r0, [r7,r2]
 	// entryIdx
@@ -8570,7 +8570,7 @@ sub_809E4A0:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r5, [r5,#0x18]
+	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sub_8002C7A
 	pop {r5,pc}
 thumb_func_end sub_809E4A0
@@ -8580,7 +8580,7 @@ sub_809E4AE:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r5, [r5,#0x18]
+	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sub_8002CCE
 	pop {r5,pc}
 thumb_func_end sub_809E4AE
@@ -8593,7 +8593,7 @@ sub_809E4BC:
 	bl toggleFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r5, [r5,#0x18]
+	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	mov r4, #0x37 
 	// entryIdx
 	mov r0, #0x17
@@ -8613,10 +8613,14 @@ loc_809E4DA:
 	bl sub_8002F90 // () -> void
 	bl sprite_update
 	pop {r4-r7,pc}
+thumb_func_end sub_809E4BC
+
+thumb_local_start
+sub_809E4F8:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r5, [r5,#0x18]
+	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #0x80
 	mov r1, #0x18
 	mov r2, #0
@@ -8628,14 +8632,14 @@ loc_809E4DA:
 	bl sprite_update
 	pop {r4-r7,pc}
 	.byte 0, 0
-thumb_func_end sub_809E4BC
+thumb_func_end sub_809E4F8
 
 thumb_local_start
 sub_809E520:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r0, [r0,#1]
+	ldrb r0, [r0,#oGameState_PETNaviIndex]
 	cmp r0, #6
 	ble locret_809E52E
 	sub r0, #5

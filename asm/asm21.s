@@ -301,8 +301,8 @@ sub_8081308:
 	bne locret_808135C
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r1, [r0,#4]
-	ldrb r0, [r0,#5]
+	ldrb r1, [r0,#oGameState_MapGroup]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	cmp r1, #0x80
 	blt loc_808135E
 	ldr r2, off_8081398 // =pt_808139C 
@@ -316,7 +316,7 @@ sub_8081308:
 	bne locret_808135C
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	ldrh r1, [r1,#4]
+	ldrh r1, [r1,#oGameState_MapGroup]
 	ldr r3, off_8081364 // =word_8081368 
 loc_808133C:
 	ldrh r2, [r3]

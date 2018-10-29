@@ -8,7 +8,7 @@ sub_8086F18:
 	mov r6, #0
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r1, [r0,#4]
+	ldrb r1, [r0,#oGameState_MapGroup]
 	cmp r1, #0x81
 	beq loc_8086F2E
 	mov r0, #3
@@ -47,7 +47,7 @@ sub_8086F5C:
 	mov r6, #0
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r1, [r0,#4]
+	ldrb r1, [r0,#oGameState_MapGroup]
 	cmp r1, #0x81
 	beq loc_8086F72
 	mov r0, #3
@@ -217,10 +217,10 @@ loc_8087068:
 	strb r0, [r5,#1]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r1, [r0,#4]
+	ldrb r1, [r0,#oGameState_MapGroup]
 	cmp r1, #0x85
 	beq loc_80870C2
-	ldrb r0, [r0,#5]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	cmp r0, #0
 	bne loc_8087092
 	// entryIdx
@@ -283,7 +283,7 @@ loc_80870C2:
 loc_80870D8:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	ldrb r1, [r1,#4]
+	ldrb r1, [r1,#oGameState_MapGroup]
 	cmp r1, #0x81
 	bne loc_80870E8
 	mov r0, #0x23 

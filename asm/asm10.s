@@ -78,7 +78,7 @@ sub_806649C:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldrb r1, [r5,#5]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #4
 	ldr r7, off_80664D0 // =off_80664D4 
 	add r7, r7, r1
@@ -91,7 +91,7 @@ sub_806649C:
 	orr r0, r1
 	bl sub_8001778
 	ldr r0, off_80664F4 // =off_80664F8 
-	ldrb r1, [r5,#5]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 	bl sub_80304E8
@@ -123,7 +123,7 @@ sub_806651C:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldrb r6, [r5,#5]
+	ldrb r6, [r5,#oGameState_MapNumber]
 	lsl r6, r6, #2
 	ldr r7, off_8066530 // =off_8066534 
 	ldr r7, [r7,r6]
@@ -150,7 +150,7 @@ sub_8066540:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r0, [r0,#5]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	lsl r0, r0, #2
 	ldr r1, off_8066554 // =off_8066558 
 	ldr r0, [r1,r0]
@@ -1161,7 +1161,7 @@ sub_8067C88:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldrb r1, [r5,#5]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #4
 	ldr r7, off_8067CBC // =off_8067CC0 
 	add r7, r7, r1
@@ -1174,7 +1174,7 @@ sub_8067C88:
 	orr r0, r1
 	bl sub_8001778
 	ldr r0, off_8067CF0 // =off_8067CF4 
-	ldrb r1, [r5,#5]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 	bl sub_80304E8
@@ -1211,7 +1211,7 @@ sub_8067D1C:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldrb r6, [r5,#5]
+	ldrb r6, [r5,#oGameState_MapNumber]
 	lsl r6, r6, #2
 	ldr r7, off_8067D30 // =off_8067D34 
 	ldr r7, [r7,r6]
@@ -1244,7 +1244,7 @@ sub_8067D46:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r0, [r0,#5]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	lsl r0, r0, #2
 	ldr r1, off_8067D5C // =pt_8067D60 
 	ldr r0, [r1,r0]

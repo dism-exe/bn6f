@@ -186,7 +186,7 @@ sub_808C644:
 	push {r4,r5,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
-	ldrb r3, [r4,#4]
+	ldrb r3, [r4,#oGameState_MapGroup]
 	cmp r3, #0x85
 	bne loc_808C654
 	mov r4, #3
@@ -343,7 +343,7 @@ sub_808CB0C:
 	beq locret_808CB96
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r1, [r0,#4]
+	ldrb r1, [r0,#oGameState_MapGroup]
 	cmp r1, #0x85
 	beq loc_808CB3C
 	mov r0, #0x1f
@@ -402,13 +402,13 @@ sub_808CBA0:
 	mov r7, #7
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r1, [r0,#4]
+	ldrb r1, [r0,#oGameState_MapGroup]
 	cmp r1, #0x85
 	bne loc_808CBB4
 	mov r7, #0xc
 	b loc_808CBBC
 loc_808CBB4:
-	ldrb r0, [r0,#5]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	cmp r0, #0
 	beq loc_808CBBC
 	mov r7, #9
@@ -443,7 +443,7 @@ sub_808CBD8:
 	bl sub_8001172
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r1, [r0,#4]
+	ldrb r1, [r0,#oGameState_MapGroup]
 	cmp r1, #0x85
 	beq loc_808CC06
 	mov r0, #0x1f
@@ -989,7 +989,7 @@ sub_808D084:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r1, [r0,#4]
+	ldrb r1, [r0,#oGameState_MapGroup]
 	cmp r1, #0x85
 	bne loc_808D094
 	mov r0, #3

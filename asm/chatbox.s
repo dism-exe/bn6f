@@ -1220,11 +1220,11 @@ chatbox_static_8040730:
 	mov r4, r0
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
-	ldrb r0, [r2,#4]
-	ldrb r1, [r2,#5]
+	ldrb r0, [r2,#oGameState_MapGroup]
+	ldrb r1, [r2,#oGameState_MapNumber]
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
-	ldrb r2, [r2,#8]
+	ldrb r2, [r2,#oGameState_Unk_08]
 	mov r6, #0
 	cmp r0, #0x80
 	bmi loc_804074C
@@ -1262,9 +1262,9 @@ chatbox_8040794:
 	push {r4-r7,lr}
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
-	ldrb r0, [r2,#4]
-	ldrb r1, [r2,#5]
-	ldrb r2, [r2,#6]
+	ldrb r0, [r2,#oGameState_MapGroup]
+	ldrb r1, [r2,#oGameState_MapNumber]
+	ldrb r2, [r2,#oGameState_GameProgress]
 	mov r6, #0
 	cmp r0, #0x80
 	bmi loc_80407AA
@@ -1290,8 +1290,8 @@ chatbox_map_80407C8:
 	push {r4-r7,lr}
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_GameStatePtr]
-	ldrb r0, [r2,#0x4] // GameState.MapSelect
-	ldrb r1, [r2,#0x5] // GameState.MapSubOffset
+	ldrb r0, [r2,#oGameState_MapGroup]
+	ldrb r1, [r2,#oGameState_MapNumber]
 	mov r2, #4
 	mov r6, #0
 	cmp r0, #0x80
@@ -3200,7 +3200,7 @@ chatbox_80416C4:
 	ldrb r2, [r4,#3]
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldrb r3, [r3,#5]
+	ldrb r3, [r3,#oGameState_MapNumber]
 	mov r0, #5
 	cmp r3, r1
 	blt loc_80416DC
@@ -3227,7 +3227,7 @@ chatbox_80416F0:
 	ldrb r2, [r4,#3]
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldrb r3, [r3,#4]
+	ldrb r3, [r3,#oGameState_MapGroup]
 	mov r0, #5
 	cmp r3, r1
 	blt loc_8041708
@@ -3280,7 +3280,7 @@ chatbox_8041748:
 	ldrb r2, [r4,#3]
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	ldrb r3, [r3,#6]
+	ldrb r3, [r3,#oGameState_GameProgress]
 	mov r0, #5
 	cmp r3, r1
 	blt loc_8041760
@@ -4366,7 +4366,7 @@ chatbox_8041EE8:
 	bl chatbox_setflags_3e // (int mask) -> void
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldr r7, [r7,#0x18]
+	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
 	mov r1, r5
 	add r1, #0x3c 
 	ldrb r2, [r7,#0x14]
@@ -4400,7 +4400,7 @@ chatbox_8041F1C:
 	push {r5}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldr r5, [r0,#0x18]
+	ldr r5, [r0,#oGameState_OverworldPlayerObjectPtr]
 	bl sub_8002DEA
 	pop {r5}
 	mov r1, #0x80
@@ -4428,7 +4428,7 @@ chatbox_8041F44:
 	bgt loc_8041F5E
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldr r7, [r7,#0x18]
+	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
 	strb r0, [r7,#0x10]
 loc_8041F5E:
 	bl sub_809E14C
@@ -4911,7 +4911,7 @@ chatbox_8042328:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #0x63 
-	strb r0, [r1,#0xf]
+	strb r0, [r1,#oGameState_BGMusicIndicator]
 	add r4, #4
 	mov r0, #1
 	pop {pc}
@@ -5504,7 +5504,7 @@ chatbox_8042770:
 	push {r3}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
-	strb r2, [r3,#1]
+	strb r2, [r3,#oGameState_PETNaviIndex]
 	pop {r3}
 	ldr r3, off_80427AC // =dword_80427B0 
 	ldrb r2, [r3,r2]

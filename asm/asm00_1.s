@@ -631,7 +631,7 @@ loc_80031BA:
 	ldrb r4, [r5]
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_GameStatePtr]
-	ldrb r0, [r6,#0xa]
+	ldrb r0, [r6,#oGameState_Unk_0a]
 	tst r0, r0
 	beq loc_80031DC
 	mov r0, #4
@@ -2005,7 +2005,7 @@ loc_8003BB8:
 	beq loc_8003BDC
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r1, [r7,#0xa]
+	ldrb r1, [r7,#oGameState_Unk_0a]
 	tst r1, r1
 	beq loc_8003BD0
 	mov r1, #4
@@ -2946,7 +2946,7 @@ loc_800463E:
 	beq loc_8004662
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r1, [r7,#0xa]
+	ldrb r1, [r7,#oGameState_Unk_0a]
 	tst r1, r1
 	beq loc_8004656
 	mov r1, #4
@@ -3283,7 +3283,7 @@ loc_80048F2:
 	beq loc_8004916
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r1, [r7,#0xa]
+	ldrb r1, [r7,#oGameState_Unk_0a]
 	tst r1, r1
 	beq loc_800490A
 	mov r1, #4
@@ -3854,22 +3854,22 @@ sub_8004D48:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	strb r0, [r5]
+	strb r0, [r5,#oGameState_SubsystemIndex]
 	mov r0, #8
-	strb r0, [r5,#0x16]
+	strb r0, [r5,#oGameState_Unk_16]
 	mov r0, #0x10
-	strb r0, [r5,#0x17]
+	strb r0, [r5,#oGameState_Unk_17]
 	mov r0, #0
-	strb r0, [r5,#0xe]
-	strb r0, [r5,#3]
-	strb r0, [r5,#0x15]
-	strb r0, [r5,#0xa]
-	str r0, [r5,#0x74]
+	strb r0, [r5,#oGameState_Unk_0e]
+	strb r0, [r5,#oGameState_Unk_03]
+	strb r0, [r5,#oGameState_Unk_15]
+	strb r0, [r5,#oGameState_Unk_0a]
+	str r0, [r5,#oGameState_Unk_74]
 	mov r0, #0x63 
-	strb r0, [r5,#0xf]
+	strb r0, [r5,#oGameState_BGMusicIndicator]
 	mov r0, #0
-	strb r0, [r5,#0x11]
-	strb r0, [r5,#0x10]
+	strb r0, [r5,#oGameState_Unk_11]
+	strb r0, [r5,#oGameState_Unk_10]
 	ldr r1, off_8004DE4 // =byte_200F410 
 	strb r0, [r1]
 	ldr r1, off_8004DE0 // =byte_200ACE0 
@@ -3927,16 +3927,16 @@ sub_8004DF0:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r5,#0x20] // GameState.unk_20
+	str r0, [r5,#oGameState_Unk_20]
 	mvn r0, r0
-	strh r0, [r5,#0xc] // GameState.unk_0C
+	strh r0, [r5,#oGameState_LastMapGroup]
 	mov r0, #0
-	str r0, [r5,#0x5c] // GameState.protected_zennies
-	str r0, [r5,#0x60] // GameState.protected_bugFrags
-	str r0, [r5,#0x74] // GameState.pad_74
+	str r0, [r5,#oGameState_ProtectedZenny]
+	str r0, [r5,#oGameState_ProtectedBugfrags]
+	str r0, [r5,#oGameState_Unk_74]
 	mvn r0, r0
-	str r0, [r5,#0x6c] // GameState.unk_6C
-	str r0, [r5,#0x70] // GameState.unk_70
+	str r0, [r5,#oGameState_Unk_6c]
+	str r0, [r5,#oGameState_Unk_70]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
 	mov r0, #0
@@ -3947,7 +3947,7 @@ sub_8004DF0:
 	strh r0, [r1,#0x12]
 	strh r0, [r1,#0x14]
 	str r0, [r1,#0x1c]
-	str r0, [r5,#0x1c]
+	str r0, [r5,#oGameState_CurBattleDataPtr]
 	strh r0, [r1,#8]
 	strh r0, [r1,#0xa]
 	strh r0, [r1,#0xc]
@@ -3955,22 +3955,22 @@ sub_8004DF0:
 	str r0, [r1]
 	str r0, [r1,#0x30]
 	mov r0, #0
-	strb r0, [r5,#2]
+	strb r0, [r5,#oGameState_Unk_02]
 	str r0, [r1,#0x24]
 	str r0, [r1,#0x28]
 	mov r0, #0x63 
 	strb r0, [r1,#4]
 	mov r0, #0
-	strb r0, [r5,#1]
+	strb r0, [r5,#oGameState_PETNaviIndex]
 	mov r0, #0
 	strh r0, [r1,#0x16]
 	mov r0, #0xff
-	strb r0, [r5,#0x12]
+	strb r0, [r5,#oGameState_Unk_12]
 	bl sub_802F0C4
 	bl sub_8006D00
 	bl sub_803CD74
 	mov r0, #0
-	strb r0, [r5,#0x13]
+	strb r0, [r5,#oGameState_Unk_13]
 	str r0, [r5,#0x78]
 	bl sub_802F2C8
 	bl sub_81284A4
@@ -4199,26 +4199,26 @@ sub_8004DF0:
 	bl sub_802D638
 	bl sub_80356EC
 	ldr r0, off_80050E4 // =0x100 
-	strh r0, [r5,#4]
-	str r0, [r5,#0x44]
+	strh r0, [r5,#oGameState_MapGroup]
+	str r0, [r5,#oGameState_Unk_44]
 	str r0, [r5,#0x58]
 	mov r0, #0
-	strb r0, [r5,#6]
-	strb r0, [r5,#7]
-	strb r0, [r5,#8]
+	strb r0, [r5,#oGameState_GameProgress]
+	strb r0, [r5,#oGameState_Unk_07]
+	strb r0, [r5,#oGameState_Unk_08]
 	mov r0, #0
-	str r0, [r5,#0x24]
-	str r0, [r5,#0x34]
-	str r0, [r5,#0x48]
-	str r0, [r5,#0x28]
-	str r0, [r5,#0x38]
+	str r0, [r5,#oGameState_PlayerX]
+	str r0, [r5,#oGameState_Unk_34]
+	str r0, [r5,#oGameState_Unk_48]
+	str r0, [r5,#oGameState_PlayerY]
+	str r0, [r5,#oGameState_Unk_38]
 	str r0, [r5,#0x4c]
-	str r0, [r5,#0x2c]
-	str r0, [r5,#0x3c]
+	str r0, [r5,#oGameState_Unk_2c]
+	str r0, [r5,#oGameState_Unk_3c]
 	str r0, [r5,#0x50]
 	mov r0, #4
-	str r0, [r5,#0x30]
-	str r0, [r5,#0x40]
+	str r0, [r5,#oGameState_Unk_30]
+	str r0, [r5,#oGameState_Unk_40]
 	str r0, [r5,#0x54]
 	bl sub_803532C
 	bl sub_8021D36
@@ -4272,7 +4272,7 @@ cb_80050EC:
 	ldr r0, GameStateJumptable_p // =GameStateJumptable 
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldrb r1, [r5]
+	ldrb r1, [r5,#oGameState_SubsystemIndex]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
@@ -4338,10 +4338,10 @@ loc_80051AA:
 	mov r0, #0
 	bl sub_8001172
 	mov r0, #0
-	strb r0, [r5,#0x15]
-	strb r0, [r5,#0xe]
-	strb r0, [r5,#3]
-	str r0, [r5,#0x68]
+	strb r0, [r5,#oGameState_Unk_15]
+	strb r0, [r5,#oGameState_Unk_0e]
+	strb r0, [r5,#oGameState_Unk_03]
+	str r0, [r5,#oGameState_Unk_68]
 	mov r0, #0x17
 	mov r1, #0x19
 	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -4369,16 +4369,16 @@ loc_80051AA:
 	bl sub_8033948
 	ldr r0, off_8005264 // =0x1740 
 	bl sub_8001778
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldrb r0, [r5,#oGameState_MapGroup]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	bl sub_8030A30
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldrb r0, [r5,#oGameState_MapGroup]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	bl sub_8001708
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldrb r0, [r5,#oGameState_MapGroup]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	bl sub_8034B4C
-	ldrb r0, [r5,#4]
+	ldrb r0, [r5,#oGameState_MapGroup]
 	bl sub_8030A00
 	mov r0, #0x17
 	mov r1, #0x3d 
@@ -4389,19 +4389,19 @@ loc_80051AA:
 	mov r0, #0x17
 	mov r1, #0x3f 
 	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-	ldrb r0, [r5,#0x16]
-	ldrb r1, [r5,#0x17]
+	ldrb r0, [r5,#oGameState_Unk_16]
+	ldrb r1, [r5,#oGameState_Unk_17]
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	mov r0, #8
-	strb r0, [r5,#0x16]
+	strb r0, [r5,#oGameState_Unk_16]
 	mov r0, #0x10
-	strb r0, [r5,#0x17]
+	strb r0, [r5,#oGameState_Unk_17]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk2011bb0_Ptr]
 	mov r1, #0
 	strb r1, [r0,#0x10]
 	mov r0, #4
-	strb r0, [r5]
+	strb r0, [r5,#oGameState_SubsystemIndex]
 	pop {pc}
 off_8005264: .word 0x1740
 thumb_func_end sub_8005148
@@ -4478,8 +4478,8 @@ sub_800531C:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0xc
-	strb r0, [r5]
-	ldr r0, [r5,#0x1c]
+	strb r0, [r5,#oGameState_SubsystemIndex]
+	ldr r0, [r5,#oGameState_CurBattleDataPtr]
 	bl sub_80071D4
 	ldr r0, off_8005358 // =byte_2011800 
 	ldr r1, off_800535C // =0x2180 
@@ -4997,7 +4997,7 @@ sub_80058D0:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oGameState_SubsystemIndex]
 	cmp r0, #4
 	bne locret_800593C
 	bl sub_809E462
@@ -5011,7 +5011,7 @@ sub_80058D0:
 	beq locret_800593C
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	bne locret_800593C
-	ldr r0, [r5,#0x18]
+	ldr r0, [r5,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #0x1c
 	bl sub_8031A7A
 	mov r4, r1
@@ -5233,7 +5233,7 @@ sub_8005A8C:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oGameState_SubsystemIndex]
 	cmp r0, #4
 	bne locret_8005AF2
 	// entryIdx
@@ -5284,7 +5284,7 @@ sub_8005AF4:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oGameState_SubsystemIndex]
 	cmp r0, #4
 	bne locret_8005B68
 	// entryIdx
@@ -5330,7 +5330,7 @@ sub_8005AF4:
 	bl sub_8003AB2
 loc_8005B64:
 	mov r0, #0x18
-	strb r0, [r5]
+	strb r0, [r5,#oGameState_SubsystemIndex]
 locret_8005B68:
 	pop {r5,pc}
 thumb_func_end sub_8005AF4
@@ -5345,7 +5345,7 @@ thumb_local_start
 sub_8005B6E:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oGameState_SubsystemIndex]
 	cmp r0, #4
 	bne locret_8005BC6
 	mov r0, #0x17
@@ -5516,7 +5516,7 @@ loc_8005CB8:
 	mov r0, #0xff
 	and r6, r0
 	mov r1, #0
-	strb r1, [r5]
+	strb r1, [r5,#oGameState_SubsystemIndex]
 	ldrb r1, [r5,#oGameState_MapNumber]
 	strb r1, [r5,#oGameState_LastMapNumber]
 	ldrb r1, [r5,#oGameState_MapGroup]
@@ -5539,14 +5539,14 @@ subsystem_launchBBS:
 	bl reqBBS_813E07C
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldrh r0, [r5,#4]
-	strh r0, [r5,#0xc]
+	ldrh r0, [r5,#oGameState_MapGroup]
+	strh r0, [r5,#oGameState_LastMapGroup]
 	bl updatePlayerGameState_800107A // () -> void
 	mov r0, #0xc
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	mov r0, #0x1c
-	strb r0, [r5]
+	strb r0, [r5,#oGameState_SubsystemIndex]
 	pop {r4-r7,pc}
 thumb_func_end subsystem_launchBBS
 
@@ -5556,14 +5556,14 @@ subsystem_launchReqBBS:
 	bl reqBBS_init_s_2005780
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldrh r0, [r5,#4]
-	strh r0, [r5,#0xc]
+	ldrh r0, [r5,#oGameState_MapGroup]
+	strh r0, [r5,#oGameState_LastMapGroup]
 	bl updatePlayerGameState_800107A // () -> void
 	mov r0, #0xc
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	mov r0, #0x30 
-	strb r0, [r5]
+	strb r0, [r5,#oGameState_SubsystemIndex]
 	pop {r4-r7,pc}
 thumb_func_end subsystem_launchReqBBS
 
@@ -5573,14 +5573,14 @@ subsystem_launchShop:
 	bl sub_8046CC8
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldrh r0, [r5,#4]
-	strh r0, [r5,#0xc]
+	ldrh r0, [r5,#oGameState_MapGroup]
+	strh r0, [r5,#oGameState_LastMapGroup]
 	bl updatePlayerGameState_800107A // () -> void
 	mov r0, #0xc
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	mov r1, #0x20 
-	strb r1, [r5]
+	strb r1, [r5,#oGameState_SubsystemIndex]
 	pop {r4-r7,pc}
 thumb_func_end subsystem_launchShop
 
@@ -5600,17 +5600,17 @@ loc_8005D5C:
 	bl sub_804A2CC
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r1, [r5,#0x18]
+	ldr r1, [r5,#oGameState_OverworldPlayerObjectPtr]
 	ldr r0, [r1,#0x1c]
-	str r0, [r5,#0x24]
+	str r0, [r5,#oGameState_PlayerX]
 	ldr r0, [r1,#0x20]
-	str r0, [r5,#0x28]
+	str r0, [r5,#oGameState_PlayerY]
 	ldr r0, [r1,#0x24]
-	str r0, [r5,#0x2c]
+	str r0, [r5,#oGameState_Unk_2c]
 	ldrb r0, [r1,#0x10]
-	str r0, [r5,#0x30]
+	str r0, [r5,#oGameState_Unk_30]
 	mov r1, #0x24 
-	strb r1, [r5]
+	strb r1, [r5,#oGameState_SubsystemIndex]
 	mov r0, #0xc
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
@@ -5624,7 +5624,7 @@ sub_8005D88:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r5,#0x20]
+	str r0, [r5,#oGameState_Unk_20]
 	mov r0, #0x25 
 	bl sub_80035A2
 	bl sub_8005F40
@@ -5645,7 +5645,7 @@ sub_8005DBE:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r5,#0x20]
+	str r0, [r5,#oGameState_Unk_20]
 	mov r0, #0x25 
 	bl sub_80035A2
 	bl sub_8005F40
@@ -5665,7 +5665,7 @@ dead_8005DF0:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r5,#0x20]
+	str r0, [r5,#oGameState_Unk_20]
 	mov r0, #0x25 
 	bl sub_80035A2
 	bl sub_8005F40
@@ -5685,7 +5685,7 @@ dead_8005E22:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r5,#0x20]
+	str r0, [r5,#oGameState_Unk_20]
 	mov r0, #0x25 
 	bl sub_80035A2
 	bl sub_8005F40
@@ -5705,7 +5705,7 @@ dead_8005E54:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0
-	str r0, [r5,#0x20]
+	str r0, [r5,#oGameState_Unk_20]
 	mov r0, #0x25 
 	bl sub_80035A2
 	bl sub_8005F40
@@ -5724,14 +5724,14 @@ sub_8005E86:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldrh r0, [r5,#4]
-	strh r0, [r5,#0xc]
+	ldrh r0, [r5,#oGameState_MapGroup]
+	strh r0, [r5,#oGameState_LastMapGroup]
 	bl updatePlayerGameState_800107A // () -> void
 	mov r0, #0xc
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	mov r0, #0x28 
-	strb r0, [r5]
+	strb r0, [r5,#oGameState_SubsystemIndex]
 	pop {r4-r7,pc}
 thumb_func_end sub_8005E86
 
@@ -5740,14 +5740,14 @@ sub_8005EA2:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldrh r0, [r5,#4]
-	strh r0, [r5,#0xc]
+	ldrh r0, [r5,#oGameState_MapGroup]
+	strh r0, [r5,#oGameState_LastMapGroup]
 	bl updatePlayerGameState_800107A // () -> void
 	mov r0, #0xc
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	mov r1, #0x2c 
-	strb r1, [r5]
+	strb r1, [r5,#oGameState_SubsystemIndex]
 	pop {r4-r7,pc}
 	.byte 0, 0
 thumb_func_end sub_8005EA2
@@ -5758,17 +5758,17 @@ subsystem_launchMail:
 	bl sub_8127990
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r1, [r5,#0x18]
+	ldr r1, [r5,#oGameState_OverworldPlayerObjectPtr]
 	ldr r0, [r1,#0x1c]
-	str r0, [r5,#0x24]
+	str r0, [r5,#oGameState_PlayerX]
 	ldr r0, [r1,#0x20]
-	str r0, [r5,#0x28]
+	str r0, [r5,#oGameState_PlayerY]
 	ldr r0, [r1,#0x24]
-	str r0, [r5,#0x2c]
+	str r0, [r5,#oGameState_Unk_2c]
 	ldrb r0, [r1,#0x10]
-	str r0, [r5,#0x30]
+	str r0, [r5,#oGameState_Unk_30]
 	mov r1, #0x34 
-	strb r1, [r5]
+	strb r1, [r5,#oGameState_SubsystemIndex]
 	mov r0, #0xc
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
@@ -5797,7 +5797,7 @@ sub_8005F00:
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
 	mov r0, #0x10
-	strb r0, [r4]
+	strb r0, [r4,#oGameState_SubsystemIndex]
 	bl sub_8035738
 	pop {r4-r7,pc}
 thumb_func_end sub_8005F00
@@ -5809,7 +5809,7 @@ sub_8005F14:
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
 	mov r0, #0x14
-	strb r0, [r4]
+	strb r0, [r4,#oGameState_SubsystemIndex]
 	bl sub_8035738
 	pop {r4-r7,pc}
 thumb_func_end sub_8005F14
@@ -7550,7 +7550,7 @@ sub_8006DEC:
 	push {r4-r7,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
-	ldr r0, [r4,#0x74]
+	ldr r0, [r4,#oGameState_Unk_74]
 	pop {r4-r7,pc}
 thumb_func_end sub_8006DEC
 
@@ -7784,13 +7784,13 @@ sub_8006F54:
 	push {r0-r7,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
-	ldr r0, [r4,#0x5c] // GameState.protected_zennies
-	ldr r1, [r4,#0x74] // GameState.pad_74
+	ldr r0, [r4,#oGameState_ProtectedZenny]
+	ldr r1, [r4,#oGameState_Unk_74]
 	mov r2, #1
 	tst r1, r2
 	bne loc_8006F68
 	mvn r1, r0
-	str r1, [r4,#0x6c] // GameState.unk_6C
+	str r1, [r4,#oGameState_Unk_6c]
 loc_8006F68:
 	ldr r1, off_8006FA8 // =dword_2000060 
 	ldr r1, [r1]
@@ -7807,15 +7807,15 @@ sub_8006F78:
 	push {r0-r7,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
-	ldr r0, [r4,#0x5c] // GameState.protected_zennies
-	ldr r1, [r4,#0x6c] // GameState.unk_6C
+	ldr r0, [r4,#oGameState_ProtectedZenny]
+	ldr r1, [r4,#oGameState_Unk_6c]
 	mvn r1, r1
 	cmp r0, r1
 	beq loc_8006F90
-	ldr r1, [r4,#0x74] // GameState.pad_74
+	ldr r1, [r4,#oGameState_Unk_74]
 	mov r2, #1
 	orr r1, r2
-	str r1, [r4,#0x74] // GameState.pad_74
+	str r1, [r4,#oGameState_Unk_74]
 loc_8006F90:
 	ldr r1, off_8006FA8 // =dword_2000060 
 	ldr r1, [r1]
@@ -7838,13 +7838,13 @@ sub_8006FAC:
 	push {r0-r7,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
-	ldr r0, [r4,#0x60]
-	ldr r1, [r4,#0x74]
+	ldr r0, [r4,#oGameState_ProtectedBugfrags]
+	ldr r1, [r4,#oGameState_Unk_74]
 	mov r2, #2
 	tst r1, r2
 	bne loc_8006FC0
 	mvn r1, r0
-	str r1, [r4,#0x70]
+	str r1, [r4,#oGameState_Unk_70]
 loc_8006FC0:
 	ldr r1, off_8007000 // =dword_20018B8 
 	ldr r1, [r1]
@@ -7861,15 +7861,15 @@ sub_8006FD0:
 	push {r0-r7,lr}
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
-	ldr r0, [r4,#0x60]
-	ldr r1, [r4,#0x70]
+	ldr r0, [r4,#oGameState_ProtectedBugfrags]
+	ldr r1, [r4,#oGameState_Unk_70]
 	mvn r1, r1
 	cmp r0, r1
 	beq loc_8006FE8
-	ldr r1, [r4,#0x74]
+	ldr r1, [r4,#oGameState_Unk_74]
 	mov r2, #2
 	orr r1, r2
-	str r1, [r4,#0x74]
+	str r1, [r4,#oGameState_Unk_74]
 loc_8006FE8:
 	ldr r1, off_8007000 // =dword_20018B8 
 	ldr r1, [r1]
@@ -9263,7 +9263,7 @@ loc_8007A9A:
 	bl sub_800AEE8
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r0, [r7,#0xa]
+	ldrb r0, [r7,#oGameState_Unk_0a]
 	tst r0, r0
 	bne loc_8007AF4
 	bl battle_isTimeStop
@@ -9660,7 +9660,7 @@ loc_8007E34:
 	bl sub_802CA82
 loc_8007E38:
 	mov r0, #0
-	strb r0, [r7,#0xa]
+	strb r0, [r7,#oGameState_Unk_0a]
 	bl sub_8002368
 	mov r0, #0x40 
 	bl sub_8001778
@@ -10136,7 +10136,7 @@ loc_8008232:
 	strb r0, [r5,#4]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #0
 	bl sub_800B6C2
 locret_8008258:
@@ -10201,7 +10201,7 @@ loc_80082B4:
 	strb r0, [r5,#4]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #1
 	bl sub_800B6C2
 locret_80082DA:
@@ -10258,7 +10258,7 @@ loc_8008338:
 	mov r0, #3
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 	strb r0, [r5,#4]
 locret_8008348:
 	pop {pc}
@@ -10805,7 +10805,7 @@ loc_800874A:
 	strb r0, [r5,#4]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #0
 	bl sub_800B6C2
 locret_8008762:
@@ -10864,7 +10864,7 @@ loc_80087B0:
 	strb r0, [r5,#4]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #1
 	bl sub_800B6C2
 locret_80087D6:
@@ -10920,7 +10920,7 @@ loc_8008834:
 	strb r0, [r5,#4]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 locret_800883E:
 	pop {pc}
 thumb_func_end sub_80087D8
@@ -11030,7 +11030,7 @@ loc_80088E6:
 	strb r0, [r5,#4]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #1
 	bl sub_800B6C2
 locret_80088FE:
@@ -11338,7 +11338,7 @@ loc_8008B62:
 	strb r0, [r5,#4]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #0
 	bl sub_800B6C2
 locret_8008B7A:
@@ -11397,7 +11397,7 @@ loc_8008BC8:
 	strb r0, [r5,#4]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #1
 	bl sub_800B6C2
 locret_8008BEE:
@@ -11453,7 +11453,7 @@ loc_8008C4C:
 	strb r0, [r5,#4]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 locret_8008C56:
 	pop {pc}
 thumb_func_end sub_8008BF0
@@ -11563,7 +11563,7 @@ loc_8008CFE:
 	strb r0, [r5,#4]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #1
 	bl sub_800B6C2
 locret_8008D16:
@@ -11867,7 +11867,7 @@ loc_8008F62:
 	strb r0, [r5,#4]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #0
 	bl sub_800B6C2
 locret_8008F7A:
@@ -11926,7 +11926,7 @@ loc_8008FC8:
 	strb r0, [r5,#4]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #1
 	bl sub_800B6C2
 locret_8008FEE:
@@ -11982,7 +11982,7 @@ loc_800904C:
 	strb r0, [r5,#4]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 locret_8009056:
 	pop {pc}
 thumb_func_end sub_8008FF0
@@ -12092,7 +12092,7 @@ loc_80090FE:
 	strb r0, [r5,#4]
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	strb r0, [r1,#0x14]
+	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #1
 	bl sub_800B6C2
 locret_8009116:
@@ -14114,7 +14114,7 @@ sub_800A028:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #1
-	strb r0, [r1,#0xa]
+	strb r0, [r1,#oGameState_Unk_0a]
 	mov pc, lr
 thumb_func_end sub_800A028
 
@@ -14123,7 +14123,7 @@ sub_800A032:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #0
-	strb r0, [r1,#0xa]
+	strb r0, [r1,#oGameState_Unk_0a]
 	mov pc, lr
 thumb_func_end sub_800A032
 
@@ -14131,7 +14131,7 @@ thumb_func_start battle_isPaused
 battle_isPaused:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	ldrb r0, [r1,#0xa]
+	ldrb r0, [r1,#oGameState_Unk_0a]
 	tst r0, r0
 	mov pc, lr
 thumb_func_end battle_isPaused

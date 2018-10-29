@@ -1009,7 +1009,7 @@ sub_8089A60:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	mov r1, #0
-	strb r1, [r0,#0x15]
+	strb r1, [r0,#oGameState_Unk_15]
 	// entryIdx
 	mov r0, #0
 	// byteFlagIdx

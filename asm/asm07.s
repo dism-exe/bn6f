@@ -85,7 +85,7 @@ sub_805DFF0:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
-	ldrb r0, [r0,#5]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	lsl r0, r0, #2
 	ldr r1, off_805E004 // =pt_805E008 
 	ldr r0, [r1,r0]
