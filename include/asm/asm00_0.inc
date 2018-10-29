@@ -16,18 +16,18 @@
 .global musicGameState_8000784 // () -> void
 .global sub_80007B2
 .global sub_80007BE
-.global clearBackwards_80008B4 // (void *mem, int size) -> void
-.global sub_80008C0
-.global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-.global CpuFastSet_8000900 // (int a1, int a2) -> void
-.global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-.global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-.global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
-.global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
-.global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
-.global sub_800096C
-.global sub_800098C
-.global CpuFastSet_80009AC
+.global ZeroFillByByte // (void *mem, int size) -> void
+.global ZeroFillByHalfword
+.global ZeroFillByWord // (void *memBlock, int size) -> void
+.global ZeroFillByEightWords // (int a1, int a2) -> void
+.global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+.global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+.global CopyWords // (u32 *src, u32 *dest, int size) -> void
+.global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+.global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
+.global HalfwordFill
+.global WordFill
+.global FillByEightWords
 .global sub_8000A3C
 .global objRender_8000A44
 .global loc_8000AC4

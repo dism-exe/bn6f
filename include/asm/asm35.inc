@@ -7,7 +7,7 @@
 /* External Symbols */
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global CpuFastSet_8000900 // (int a1, int a2) -> void
+// .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global sub_800183C
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0

@@ -83,8 +83,8 @@
 /* External Symbols */
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
+// .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001172

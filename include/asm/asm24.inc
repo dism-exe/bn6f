@@ -9,7 +9,7 @@
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global sound_8000672
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global sub_8001172
 // .global change_20013F0_800151C // () -> int
 

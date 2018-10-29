@@ -161,16 +161,16 @@ loc_812331A:
 	bne loc_8123350
 	b loc_8123356
 loc_8123344:
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	b loc_812335A
 loc_812334A:
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	b loc_812335A
 loc_8123350:
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	b loc_812335A
 loc_8123356:
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 loc_812335A:
 	add sp, sp, #0xc
 	pop {r7,pc}
@@ -225,7 +225,7 @@ sub_8123408:
 	ldr r1, off_8123430 // =sSubmenu 
 	add r4, r1, #0
 	mov r2, #0x80
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, #0
 	strb r0, [r4]
 	mov r0, #0x10
@@ -646,14 +646,14 @@ sub_8123790:
 	add r0, r5, #0
 	ldr r1, off_81237B8 // =unk_2037780 
 	mov r2, #0x80
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldrb r0, [r5,#0xc]
 	bl sub_8049DDC
 	// memBlock
 	add r0, r5, #0
 	// size
 	mov r1, #0x80
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 locret_81237B4:
 	pop {pc}
 	.balign 4, 0x00
@@ -1996,7 +1996,7 @@ sub_8124384:
 	ldr r0, off_81243AC // =unk_201C400 
 	add r4, r0, #0
 	mov r1, #0x10
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	mov r7, #0x80
 	mov r3, #0
 loc_8124394:
@@ -4334,7 +4334,7 @@ sub_81258F8:
 	ldr r0, off_8125984 // =unk_201DC20 
 	// size
 	ldr r1, off_8125988 // =0x320 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r4, #1
 	mov r5, #0
 	ldr r7, off_8125984 // =unk_201DC20 
@@ -4418,7 +4418,7 @@ sub_8125994:
 	ldr r0, off_8125A60 // =dword_201E420 
 	// size
 	ldr r1, off_8125A64 // =0x578 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r4, #1
 	mov r5, #0
 	mov r6, #0
@@ -4537,7 +4537,7 @@ sub_8125A6C:
 	ldr r0, off_8125B30 // =dword_201EC20 
 	// size
 	ldr r1, off_8125B34 // =0x578 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r4, #1
 	mov r5, #0
 	mov r6, #0
@@ -4652,7 +4652,7 @@ sub_8125B3C:
 	ldr r0, off_8125BFC // =dword_201F420 
 	// size
 	ldr r1, off_8125C00 // =0x578 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r4, #1
 	mov r5, #0
 	mov r6, #0
@@ -4765,7 +4765,7 @@ sub_8125C08:
 	ldr r0, off_8125CE4 // =dword_201FC20 
 	// size
 	ldr r1, off_8125CE8 // =0x578 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r4, #0
 	mov r5, #0
 	mov r6, #0
@@ -5480,7 +5480,7 @@ sub_81261FC:
 	ldr r0, off_8126254 // =dword_812489C+180 
 	// halfwordCount
 	mov r2, #0x54 
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	pop {r5,r7}
 	ldr r4, dword_8126258 // =0xa202 
 	mov r6, #0
@@ -5794,7 +5794,7 @@ sub_8126430:
 	add r0, r3, #0
 	add r1, r2, #0
 	mov r2, #0x38 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {r0-r2}
 	lsl r0, r0, #2
 	add r5, r0, r1
@@ -5823,7 +5823,7 @@ loc_8126464:
 	ldr r0, [r0,#0x20]
 	add r1, r6, #0
 	mov r2, #0x80
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {r2}
 loc_8126476:
 	add r5, #4
@@ -7092,7 +7092,7 @@ loc_8127042:
 	ldr r0, [r0,#0x34]
 	// size
 	mov r1, #0x80
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	strb r4, [r5]
 	b locret_812705E
 loc_812705A:
@@ -7773,10 +7773,10 @@ sub_8127638:
 	ldr r0, off_8127708 // =byte_201D74C 
 	add r6, r0, #0
 	mov r1, #0x28 
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	ldr r0, off_8127714 // =unk_2024394 
 	mov r1, #0x28 
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	mov r4, #0
 loc_812764E:
 	add r0, r4, #0
@@ -8935,7 +8935,7 @@ sub_81280DC:
 	str r3, [sp]
 	ldr r0, off_812816C // =unk_2026700 
 	ldr r1, off_8128184 // =0x170 
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	ldr r1, [sp,#8]
 	tst r1, r1
 	beq loc_8128168
@@ -9133,7 +9133,7 @@ sub_8128260:
 	ldr r2, off_8128278 // =dword_8127978+18 
 	ldrb r2, [r2]
 	lsl r2, r2, #8
-	bl sub_800096C
+	bl HalfwordFill
 	pop {pc}
 	.balign 4, 0x00
 off_8128274: .word unk_2026870
@@ -9301,7 +9301,7 @@ sub_81283A0:
 	ldr r0, off_8128474 // =dword_2027590 
 	add r4, r0, #0
 	ldr r1, dword_8128478 // =0x1000 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	bl sub_81284B4
 	ldrb r2, [r5,#0xd]
 	mov r3, #1
@@ -9730,12 +9730,12 @@ sub_81288BC:
 	add r0, r5, #0
 	ldr r1, off_81288E0 // =unk_2037780 
 	mov r2, #0x80
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	// memBlock
 	add r0, r5, #0
 	// size
 	mov r1, #0x80
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0x30 
 	strb r0, [r5]
 	bl chatbox_8040818
@@ -9825,7 +9825,7 @@ sub_81289C4:
 	push {r4-r7,lr}
 	ldr r0, off_8128A24 // =word_201BF00 
 	ldr r1, dword_8128A28 // =0xde 
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	mov r6, #0
 	mov r4, #0
 loc_81289D2:
@@ -9884,7 +9884,7 @@ dword_8128A34: .word 0x201BFDE
 	push {lr}
 	ldr r0, dword_8128AA0 // =0x6004020 
 	mov r1, #0x20 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 .func
 .thumb_func
@@ -9952,7 +9952,7 @@ sub_8128AB0:
 	add r7, r0, #0
 	ldr r1, off_8128B28 // =0x170 
 	ldr r2, dword_8128B30 // =0x7200 
-	bl sub_800096C
+	bl HalfwordFill
 	ldrh r0, [r5,#0x1e]
 	tst r0, r0
 	beq loc_8128B1E
@@ -10457,7 +10457,7 @@ sub_8128ED4:
 	ldr r0, off_8128F00 // =unk_2037780 
 	add r1, r5, #0
 	mov r2, #0x80
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, #0x14
 	strb r0, [r5]
 	mov r0, #0
@@ -13095,7 +13095,7 @@ sub_812A424:
 	ldr r0, off_812A48C // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0
 	strb r0, [r5,#0x1c]
 	strb r0, [r5,#0x1e]
@@ -13400,7 +13400,7 @@ sub_812A694:
 	ldr r0, off_812A6F0 // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0
 	strb r0, [r5,#0x1c]
 	strb r0, [r5,#0x1e]
@@ -14441,7 +14441,7 @@ loc_812AE96:
 	ldr r0, off_812AEC0 // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 	// a1
 	ldr r0, off_812AEC4 // =dword_812913C+20 
@@ -14789,7 +14789,7 @@ sub_812B1DC:
 	ldr r0, off_812B258 // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldrh r2, [r4,#2]
 	ldrb r1, [r4,#1]
 	ldrb r0, [r4]
@@ -15203,7 +15203,7 @@ sub_812B4AC:
 	strb r0, [r5,#0x1e] // (sSubmenu.unk_1E - 0x2009a30)
 	ldr r0, off_812B4FC // =unk_20251A0 
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 	ldr r0, off_812B500 // =dword_812913C+20 
 	bl sub_80465A0 // (void *a1) -> void
@@ -15494,7 +15494,7 @@ loc_812B71A:
 	ldr r0, off_812B750 // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 .endfunc // sub_812B708
 
@@ -15767,7 +15767,7 @@ loc_812B964:
 	bl sub_8132280
 	ldr r0, off_812BAF4 // =unk_2033C00 
 	ldr r1, dword_812BAF8 // =0x800 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	b loc_812B976
 loc_812B972:
 	bl sub_812C24C
@@ -15826,7 +15826,7 @@ loc_812B9BC:
 	add r2, #8
 	str r2, [r5,#0x3c]
 	mov r2, #8
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	bl sub_812C160
 	ldr r0, [r5,#0x34]
 	ldr r1, [r5,#0x3c]
@@ -16201,7 +16201,7 @@ loc_812BC70:
 	add r0, r6, #0
 	add r1, r4, #0
 	mov r2, #0x40 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	mov r7, #0x12
 	mov r6, #0
 loc_812BCA8:
@@ -16520,7 +16520,7 @@ sub_812BF88:
 	beq locret_812BFA8
 	ldr r0, off_812BFE4 // =unk_2037780 
 	ldr r1, off_812BFE8 // =0x80 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	bl chatbox_8040818
 	// entryIdx
 	mov r0, #0x17
@@ -16555,7 +16555,7 @@ sub_812BFAC:
 	ldr r0, off_812BFEC // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 	// a1
 	ldr r0, off_812BFF0 // =dword_812913C+20 
@@ -16592,7 +16592,7 @@ sub_812C010:
 	beq locret_812C030
 	ldr r0, off_812C06C // =unk_2037780 
 	ldr r1, off_812C070 // =0x80 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	bl chatbox_8040818
 	// entryIdx
 	mov r0, #0x17
@@ -16627,7 +16627,7 @@ sub_812C034:
 	ldr r0, off_812C074 // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 	// a1
 	ldr r0, off_812C078 // =dword_812913C+20 
@@ -16672,7 +16672,7 @@ sub_812C094:
 	ldr r0, off_812C0C4 // =unk_20251A0 
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 	// a1
 	ldr r0, off_812C0C8 // =dword_812913C+20 
@@ -16763,7 +16763,7 @@ sub_812C140:
 	ldr r2, [r5,#0x40]
 	add r0, r0, r2
 	mov r2, #8
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
 .endfunc // sub_812C140
 
@@ -16807,7 +16807,7 @@ sub_812C194:
 	add r1, #0x10
 	mov r2, #0xf0
 	and r1, r2
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {r4-r7,pc}
 loc_812C1AE:
 	add r0, r7, #0
@@ -16815,7 +16815,7 @@ loc_812C1AE:
 	add r1, #0x10
 	mov r2, #0xf0
 	and r1, r2
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	mov r0, #0x1e
 	mov r1, #0x20 
 	lsl r0, r0, #8
@@ -16874,7 +16874,7 @@ sub_812C21C:
 	ldr r0, off_812C248 // =unk_20018C0 
 	add r1, r7, #0
 	ldr r2, off_812C244 // =0x28 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r4, #0
 	mov r1, #0
 loc_812C22E:

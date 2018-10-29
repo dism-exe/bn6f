@@ -58,8 +58,8 @@
 /* External Symbols */
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001172
 // .global calcAngle_800117C

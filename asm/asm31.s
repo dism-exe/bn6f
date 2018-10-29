@@ -24718,7 +24718,7 @@ loc_80C3AA8:
 	mov r0, #0x60 
 	add r0, r0, r5
 	mov r1, #0x12
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	mov r0, #4
 	strh r0, [r5,#0xa]
 locret_80C3AC8:
@@ -97644,7 +97644,7 @@ sub_80E8C84:
 	mov r0, #0x64 
 	add r0, r0, r5
 	mov r1, #0x28 
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	ldr r3, off_80E8D68 // =dword_80E8D6C 
 	bl sub_800EC48
 	add r7, sp, #0
@@ -97713,7 +97713,7 @@ sub_80E8CFA:
 	mov r0, #0x64 
 	add r0, r0, r5
 	mov r1, #0x28 
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	ldr r3, off_80E8D54 // =dword_80E8D58 
 	bl sub_800EC48
 	add r7, sp, #0
@@ -148052,7 +148052,7 @@ sub_8102CF8:
 	add r0, sp, #0x28
 	// size
 	mov r1, #0x30 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl object_getFlipDirection_800E2CA // () -> int
 	ldr r2, [sp]
 	ldrb r2, [r2,#0x12]
@@ -148179,7 +148179,7 @@ loc_8102DDC:
 	add r2, r4, #0
 loc_8102E14:
 	add r4, r2, #0
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	add r6, r6, r4
 loc_8102E1C:
 	add r0, r6, #0
@@ -148202,7 +148202,7 @@ loc_8102E2E:
 	add r2, r6, #0
 loc_8102E40:
 	str r2, [sp,#0xc]
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	ldr r0, [sp,#0xc]
 loc_8102E48:
 	add sp, sp, #0x5c

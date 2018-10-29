@@ -255,7 +255,7 @@ dword_808C684: .word 0x5EFE30, 0x30003, 0x46FDCA, 0x10001, 0x108FE2A, 0x70007
 	ldr r0, [r0]
 	add r5, r0, #0
 	mov r1, #0x98
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0x20 
 	strb r0, [r5,#0x3] // (byte_2000B43 - 0x2000b40)
 	bl sub_808CC84

@@ -1774,7 +1774,7 @@ loc_81D6D7A:
 	mvn r2, r2
 	ldr r5, off_81D6DDC // =off_802FD70 
 	mov r4, #4
-	ldr r7, off_81D6DE0 // =sub_800098C+1 
+	ldr r7, off_81D6DE0 // =WordFill+1 
 	mov r12, r7
 loc_81D6DA0:
 	ldr r0, [r5]
@@ -1801,7 +1801,7 @@ off_81D6DD0: .word byte_3001150
 off_81D6DD4: .word dword_200B1A8
 off_81D6DD8: .word word_200A6F0
 off_81D6DDC: .word off_802FD70
-off_81D6DE0: .word sub_800098C+1
+off_81D6DE0: .word WordFill+1
 off_81D6DE4: .word byte_3001950
 	push {r4-r7,lr}
 	ldr r5, off_81D6E94 // =byte_3001950 
@@ -1935,7 +1935,7 @@ off_81D6E9C: .word dword_3002590
 	.word 0x471846FE, 0xBD004648
 	.word 0x3006B18
 	.word loc_8000AC8+1
-	.word clearBackwards_80008B4+1
+	.word ZeroFillByByte+1
 	.word 0x3006B84
 .endfunc // sub_81D6E20
 
@@ -2168,7 +2168,7 @@ dword_81D72B4: .word 0x3006DB8
 	.word 0xBC41BC08, 0x37341C1F, 0x31016839, 0x629E6039, 0x62D83003
 	.word 0xBDFE1C30
 	.word 0x8043B54
-	.word copyBytes+1
+	.word CopyBytes+1
 	.word 0x200DD20
 	push {r3,r7,lr}
 	push {r0}
@@ -2237,7 +2237,7 @@ dword_81D738C: .word 0x3006E90
 	.word 0x2001186, 0x200119E, 0x20007D6, 0x200083A, 0x20018F4
 	.word 0x2001950, 0x20019AC, 0x2001A08, 0x2001A64, 0x2001AC0
 	.word 0x200AFA0
-	.word copyBytes+1
+	.word CopyBytes+1
 	.word 0x200A220
 	add r0, #4
 	mov pc, lr

@@ -9,9 +9,9 @@
 .include "asm/asm00_0.inc"
 // .global sub_80005AC
 // .global sub_80005C4
-// .global clearBackwards_80008B4 // (void *mem, int size) -> void
-// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global sub_800098C
+// .global ZeroFillByByte // (void *mem, int size) -> void
+// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global WordFill
 // .global loc_8000AC8
 // .global sub_8000C00
 // .global sub_8000C5C

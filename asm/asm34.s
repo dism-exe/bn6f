@@ -35,7 +35,7 @@ off_812D3A4: .word unk_201DB20
 	push {lr}
 	ldr r0, off_812D3DC // =word_2023FA0 
 	mov r1, #0x20 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	bl sub_8120A88
 	ldr r0, off_812D3E0 // =unk_2023FC0 
 	mov r1, #1

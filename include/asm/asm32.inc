@@ -229,12 +229,12 @@
 
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global sub_80008C0
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-// .global CpuFastSet_8000900 // (int a1, int a2) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
-// .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
-// .global sub_800098C
+// .global ZeroFillByHalfword
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
+// .global ZeroFillByEightWords // (int a1, int a2) -> void
+// .global CopyWords // (u32 *src, u32 *dest, int size) -> void
+// .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+// .global WordFill
 // .global loc_8000AC4
 // .global loc_8000AC8
 // .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void

@@ -3410,7 +3410,7 @@ loc_809AB5A:
 	add r0, #0x4c 
 	mov r1, sp
 	mov r2, #8
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, sp
 	bl sub_813D41C
 	str r4, [r5,#0x78]
@@ -6473,7 +6473,7 @@ loc_809D2B2:
 	add r0, r0, r5
 	// size
 	mov r1, #0x20 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #1
 	strb r0, [r5,#0x17]
 	strb r0, [r5,#0xc]

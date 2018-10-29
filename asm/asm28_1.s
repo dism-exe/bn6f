@@ -426,7 +426,7 @@ sub_809F9C8:
 	mov r0, r10
 	ldr r0, [r0,#0x70]
 	ldr r1, off_809F9D8 // =0x480 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_809F9D8: .word 0x480
@@ -461,7 +461,7 @@ loc_809F9F4:
 	mov r1, #0x10
 	// byte
 	mov r2, #0xff
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 loc_809FA0C:
 	ldrb r0, [r7]
 	cmp r0, #0
@@ -1018,7 +1018,7 @@ loc_809FD96:
 	mov r1, #0x10
 	// byte
 	mov r2, #0xff
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	pop {r0-r2}
 	bl sub_809FA68
 	strb r1, [r6,#0x2] // (byte_2000212 - 0x2000210)
@@ -1057,7 +1057,7 @@ sub_809FDE0:
 	mov r1, #0x10
 	// byte
 	mov r2, #0x20 
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	mov r0, sp
 	ldrh r1, [r6,#0x6] // (word_2000216 - 0x2000210)
 	bl sub_8000E3A
