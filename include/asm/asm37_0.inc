@@ -76,7 +76,7 @@
 // .global sound_play // () -> void
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
-// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
@@ -99,7 +99,7 @@
 // .global sub_802D158
 // .global sub_802D15E
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global SetEventFlag // (u16 entryFlagBitfield) -> void
+// .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf

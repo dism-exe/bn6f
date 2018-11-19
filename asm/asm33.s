@@ -8301,7 +8301,7 @@ sub_8127B94:
 	ldr r0, dword_8127BDC // =0x1da0 
 	add r0, r0, r4
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	bl sub_8128008
 	bl sub_81281C0
 	mov r4, #4
@@ -16185,10 +16185,10 @@ loc_812BDEE:
 	push {r3}
 	// bitfield
 	mov r0, r1
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	// bitfield
 	mov r0, r2
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	pop {r3}
 	mov r7, #1
 loc_812BE18:

@@ -21,7 +21,7 @@ sub_8098BE8:
 	ldrb r1, [r5,#6]
 	add r0, r0, r1
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 loc_8098C16:
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -5266,7 +5266,7 @@ sub_809C09C:
 	add r0, r0, r1
 	add r0, r0, r2
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 loc_809C0DE:
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -5784,7 +5784,7 @@ sub_809C954:
 	mov r1, #0x10
 	ldr r0, [r0,r1]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00

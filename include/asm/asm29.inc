@@ -58,7 +58,7 @@
 /* External Symbols */
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001172
@@ -139,7 +139,7 @@
 // .global sub_802D266
 // .global sub_802D652
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global SetEventFlag // (u16 entryFlagBitfield) -> void
+// .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global ClearEventFlag // (u16 entryFlagBitfield) -> void
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf

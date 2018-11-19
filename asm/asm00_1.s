@@ -4584,7 +4584,7 @@ sub_80053E4:
 	bl sub_813C3AC
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	ldr r0, hword_8005460 // =0x40
+	ldr r0, word_8005460 // =0x40
 	bl sub_8001778
 locret_800545C:
 	pop {pc}
@@ -6341,34 +6341,34 @@ loc_8006276:
 	mov r0, r3
 	bl sub_8006330
 	pop {r0,r1}
-	strb r0, [r5,#0x1] // (byte_200A441 - 0x200a440)
+	strb r0, [r5,#1]
 	ldr r2, off_80062C4 // =off_8006040 
 	lsl r0, r0, #2
 	add r2, r2, r0
 	ldr r0, [r2]
-	str r0, [r5,#0x10] // (off_200A450 - 0x200a440)
+	str r0, [r5,#0x10]
 	ldr r0, [r2,#4]
-	str r0, [r5,#0x14] // (off_200A454 - 0x200a440)
+	str r0, [r5,#0x14]
 	ldrb r0, [r2,#0xc]
-	strh r0, [r5,#0x18] // (word_200A458 - 0x200a440)
+	strh r0, [r5,#0x18]
 	ldrb r0, [r2,#0xd]
-	strh r0, [r5,#0x1c] // (word_200A45C - 0x200a440)
+	strh r0, [r5,#0x1c]
 	ldrb r0, [r2,#0xe]
-	strh r0, [r5,#0x8] // (word_200A448 - 0x200a440)
+	strh r0, [r5,#8]
 	ldrb r0, [r2,#0xf]
 	lsl r0, r0, #4
-	strh r0, [r5,#0xa] // (word_200A44A - 0x200a440)
+	strh r0, [r5,#0xa]
 	mov r0, #1
 	strb r0, [r5]
 	mov r0, #1
-	strb r0, [r5,#0x3] // (byte_200A443 - 0x200a440)
+	strb r0, [r5,#3]
 	mov r0, #0
-	strb r0, [r5,#0x2] // (byte_200A442 - 0x200a440)
+	strb r0, [r5,#2]
 	cmp r1, #0xff
 	bne loc_80062BE
 	add r1, #1
 loc_80062BE:
-	strh r1, [r5,#0x4] // (word_200A444 - 0x200a440)
+	strh r1, [r5,#4]
 locret_80062C0:
 	pop {r5,pc}
 	.balign 4, 0x00
@@ -6378,8 +6378,8 @@ off_80062C4: .word off_8006040
 	thumb_func_start sub_80062C8
 sub_80062C8:
 	ldr r0, off_80063BC // =byte_200A440 
-	ldrb r1, [r0,#0x3] // (byte_200A443 - 0x200a440)
-	ldrb r0, [r0,#0x1] // (byte_200A441 - 0x200a440)
+	ldrb r1, [r0,#3]
+	ldrb r0, [r0,#1]
 	mov pc, lr
 	thumb_func_end sub_80062C8
 
@@ -17368,7 +17368,7 @@ loc_800B71A:
 	ldr r1, off_800B868 // =0x300 
 	add r0, r0, r1
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 loc_800B72C:
 	add r7, #2
 	sub r6, #1

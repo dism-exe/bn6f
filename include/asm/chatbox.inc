@@ -47,7 +47,7 @@
 // .global musicGameState_8000784 // () -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
-// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
@@ -104,9 +104,9 @@
 .include "asm/asm03_0.inc"
 // .global sub_802D158
 // .global sub_802D15E
-// .global SetEventFlag // (u16 entryFlagBitfield) -> void
+// .global SetEventFlag
 // .global ClearEventFlag // (u16 entryFlagBitfield) -> void
-// .global ToggleEventFlag // (u16 entryFlagBitfield) -> void
+// .global toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global SetEventFlagRange // (u16 entryFlagBitfield) -> void

@@ -640,7 +640,7 @@ sub_808CD24:
 	bne locret_808CD62
 	// bitfield
 	mov r0, r4
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	// entryIdx
 	mov r0, #0xb
 	// byteFlagIdx
@@ -778,7 +778,7 @@ loc_808CE84:
 	lsl r6, r6, #3
 	ldrh r0, [r4,r6]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	add r6, #2
 	ldrh r0, [r4,r6]
 	add r6, #2
@@ -844,7 +844,7 @@ sub_808CF50:
 	ldrh r1, [r1,r4]
 	// bitfield
 	mov r0, r1
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 locret_808CF70:
 	pop {r4-r7,pc}
 	.balign 4, 0x00

@@ -35,7 +35,7 @@
 // .global ChipDataArr_8021DA8
 
 .include "asm/asm03_0.inc"
-// .global SetEventFlag // (u16 entryFlagBitfield) -> void
+// .global SetEventFlag
 
 .include "asm/asm36.inc"
 // .global sub_81376B8

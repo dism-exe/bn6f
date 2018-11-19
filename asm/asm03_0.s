@@ -6295,7 +6295,7 @@ sub_802963C:
 	ldr r1, off_8029680 // =0x1f60 
 	add r0, r0, r1
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	pop {r0-r3,pc}
 	thumb_func_end sub_802963C
 
@@ -10400,7 +10400,7 @@ sub_802B76C:
 	push {r5,lr}
 	ldr r5, off_802BA44 // =word_2036660 
 	ldr r1, off_802B780 // =off_802B784 
-	ldrb r0, [r5,#0x1] // (word_2036660+1 - 0x2036660)
+	ldrb r0, [r5,#1]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
@@ -16045,7 +16045,7 @@ loc_802E5CE:
 	ldr r1, [sp,#4]
 	add r0, r0, r1
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	bl sub_80070BC
 loc_802E5F2:
 	mov r0, #1
@@ -16103,7 +16103,7 @@ sub_802E62A:
 	ldr r1, [sp,#4]
 	add r0, r0, r1
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	bl sub_80070BC
 loc_802E65A:
 	ldr r0, [sp]
@@ -17752,11 +17752,11 @@ sub_802F238:
 	push {r4,r6,r7,lr}
 	mov r7, r0
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, r7
 	add r0, #0x80
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	ldr r1, off_802F2C4 // =0x1ca0 
 	sub r7, r7, r1
 	ldr r2, off_802F2DC // =byte_2006530 
@@ -18115,7 +18115,7 @@ ho_802F63C:
 	bx r0
 	bl sub_802FB10 // () -> void
 	pop {pc}
-	.balign 4, 0
+	.balign 4, 0x00
 off_802F650: .word jt_802F654
 jt_802F654:
 	.word sub_802F668+1

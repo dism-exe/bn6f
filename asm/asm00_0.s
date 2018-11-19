@@ -465,13 +465,13 @@ ZeroFillByWord:
 	thumb_func_end ZeroFillByWord
 
 // (int a1, int a2) -> void
-	thumb_func_start ZeroFillByEightWords
 // Fill r0 with zero, in blocks of eight words.
 // Size is in r1, in bytes.
 // CpuFastSet will round up the amount of bytes filled to a multiple of eight words
 // even though the size specified is converted to a word count
 // Source and destination must be word compatible
 // Size must be a multiple of eight words
+	thumb_func_start ZeroFillByEightWords
 ZeroFillByEightWords:
 	push {r0-r3,lr}
 	ldr r2, .FillCpuFastSetMask_800091C // =0x1000000
@@ -546,7 +546,7 @@ CopyWords:
 	thumb_func_start CopyByEightWords
 CopyByEightWords:
 	push {r0-r3,lr}
-	ldr r3, .CopyFastCpuSetMask_8000960
+	ldr r3, .CopyFastCpuSetMask_8000960 // =0x0
 	lsr r2, r2, #2
 	orr r2, r3
 	bl SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
@@ -556,10 +556,10 @@ CopyByEightWords:
 	thumb_func_end CopyByEightWords
 
 // (u8 *mem, int byteCount, u8 byte) -> void
-	thumb_func_start ByteFill
 // Fill r0 with r2, where r2 is treated as a byte.
 // Size is in r1, in bytes.
 // Does a backwards fill for speed
+	thumb_func_start ByteFill
 ByteFill:
 	// byteCount
 	sub r1, #1
@@ -568,10 +568,10 @@ ByteFill:
 	mov pc, lr
 	thumb_func_end ByteFill
 
-	thumb_func_start HalfwordFill
 // Fill r0 with r2, where r2 is treated as a halfword.
 // Size is in r1, in bytes.
 // Source, destination, and size must be halfword compatible
+	thumb_func_start HalfwordFill
 HalfwordFill:
 	push {r0-r3,lr}
 	mov r3, r2
@@ -589,10 +589,10 @@ HalfwordFill:
 .HalfwordFillCpuSetMask_8000988: .word 0x1000000
 	thumb_func_end HalfwordFill
 
-	thumb_func_start WordFill
 // Fill r0 with r2, where r2 is treated as a word.
 // Size is in r1, in bytes.
 // Source, destination, and size must be word compatible
+	thumb_func_start WordFill
 WordFill:
 	push {r0-r3,lr}
 	mov r3, r2
@@ -4204,7 +4204,7 @@ sub_8002338:
 	cmp r0, #0
 	blt loc_8002348
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	b locret_8002352
 loc_8002348:
 	lsl r0, r0, #1

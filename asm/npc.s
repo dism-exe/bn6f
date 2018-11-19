@@ -1025,7 +1025,7 @@ npc_809EDEE:
 	add r0, r6, #1
 	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	add r6, #3
 	pop {pc}
 	thumb_func_end npc_809EDEE

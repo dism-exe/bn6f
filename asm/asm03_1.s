@@ -2484,7 +2484,7 @@ loc_80351CC:
 	beq loc_80351E2
 	ldrh r0, [r4,#2]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 loc_80351E2:
 	add r4, #4
 	b loc_80351CC
@@ -2571,7 +2571,7 @@ loc_8035234:
 	ldrh r1, [r4,#2]
 	// bitfield
 	mov r0, r1
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 loc_8035246:
 	add r4, #4
 	b loc_8035234
@@ -4017,7 +4017,7 @@ loc_8035DC4:
 loc_8035DCA:
 	// bitfield
 	mov r0, r4
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	add r7, #4
 	mov r0, #1
 	pop {pc}
@@ -4086,7 +4086,7 @@ loc_8035E3C:
 	cmp r0, #0
 	blt loc_8035E4E
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	add r4, #2
 	b loc_8035E3C
 loc_8035E4E:
@@ -6064,7 +6064,7 @@ sub_80373CC:
 	mov r0, #1
 	bl sub_8037460
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	pop {r1,r5}
 	mov r0, #1
 	add r1, #3

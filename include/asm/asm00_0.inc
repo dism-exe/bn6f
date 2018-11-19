@@ -164,7 +164,7 @@
 
 .include "asm/asm03_0.inc"
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global SetEventFlag // (u16 entryFlagBitfield) -> void
+// .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global ClearEventFlag // (u16 entryFlagBitfield) -> void
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf

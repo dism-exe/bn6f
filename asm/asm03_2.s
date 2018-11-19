@@ -2185,7 +2185,7 @@ sub_8047066:
 	add r2, r2, r0
 	// bitfield
 	mov r0, r2
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r7, #0xff
 	strb r7, [r5,#0xd]
 	ldrb r0, [r5,#1]

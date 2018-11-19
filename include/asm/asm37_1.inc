@@ -243,7 +243,7 @@
 .include "asm/asm03_0.inc"
 // .global sub_802D064
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global SetEventFlag // (u16 entryFlagBitfield) -> void
+// .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global ClearEventFlag // (u16 entryFlagBitfield) -> void
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
@@ -600,7 +600,7 @@
 // .equ dword_30055FC, 0x30055FC
 // .equ unk_3005600, 0x3005600
 // .equ loc_3005700, 0x3005700
-// .equ unk_3007FF0, 0x3007FF0
+// .equ dword_3007FF0, 0x3007FF0
 .equ VerticalCounter_LY_, 0x4000006
 .equ Channel1Sweepregister_NR10_, 0x4000060
 .equ Channel1Sweepregister_NR10_, 0x4000060

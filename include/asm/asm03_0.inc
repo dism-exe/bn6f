@@ -98,11 +98,11 @@
 .global sub_802F0D8
 .global sub_802F0F4
 .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-.global SetEventFlag // (u16 entryFlagBitfield) -> void
+.global SetEventFlag
 .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 .global ClearEventFlag // (u16 entryFlagBitfield) -> void
-.global ToggleEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-.global ToggleEventFlag // (u16 entryFlagBitfield) -> void
+.global toggleFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+.global toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 .global SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void

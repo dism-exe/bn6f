@@ -689,14 +689,14 @@ reqBBS_813E5DC:
 	mov r7, r0
 	mov r1, #2
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, r7
 	ldr r3, off_813E6A4 // =0x17a0 
 	sub r0, r0, r3
 	ldr r3, off_813E6A8 // =0x19a0 
 	add r0, r0, r3
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	ldr r1, off_813E6A4 // =0x17a0 
 	sub r7, r7, r1
 	lsr r3, r7, #6
@@ -1855,7 +1855,7 @@ reqBBS_813F474:
 	add r2, r2, r3
 	// bitfield
 	mov r0, r2
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, #0x17
 	mov r1, #0x3a 
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -2490,14 +2490,14 @@ reqBBS_813F9A0:
 	mov r7, r0
 	mov r1, #2
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, r7
 	ldr r3, off_813FD74 // =0x1b60 
 	sub r0, r0, r3
 	ldr r3, off_813FD78 // =0x1ba0 
 	add r0, r0, r3
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	ldr r1, off_813FD74 // =0x1b60 
 	sub r7, r7, r1
 	lsr r3, r7, #6
@@ -4257,7 +4257,7 @@ reqBBS_81408A0:
 	ldr r1, [r1,#0x10] // (dword_813F354+8 - 0x813f34c)
 	add r0, r0, r1
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	pop {r4-r7,pc}
 off_81408B0: .word reqBBS_textualPointers
 	thumb_func_end reqBBS_81408A0
@@ -4269,7 +4269,7 @@ reqBBS_81408B4:
 	ldr r1, [r1,#24]
 	add r0, r0, r1
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	pop {r4-r7,pc}
 off_81408C4: .word reqBBS_textualPointers
 	thumb_func_end reqBBS_81408B4

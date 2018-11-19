@@ -1,6 +1,5 @@
 .include "asm/asm38.inc"
 
-// TODO: change back to sub_081D6000
 	arm_func_start sub_81D6000
 sub_81D6000:
 	mov r3, #0x4000000
@@ -371,15 +370,14 @@ off_81D6378: .word sub_814469C+1
 off_81D637C: .word sub_81446AC+1
 	thumb_func_end sub_81D636A
 
-// copyTiles_iram
-	thumb_local_start
-sub_81D6380:
-	.word 0x9000B081
-	.word 0x6AB64656
-	.word 0x18B602D2
-	.word 0x186D1824
-	thumb_func_end sub_81D6380
-
+	sub sp, sp, #4
+	str r0, [sp]
+	mov r6, r10
+	ldr r6, [r6,#0x28]
+	lsl r2, r2, #0xb
+	add r6, r6, r2
+	add r4, r4, r0
+	add r5, r5, r1
 	thumb_local_start
 sub_81D6390:
 	mov r2, #0x1f

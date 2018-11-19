@@ -21,7 +21,7 @@ INC = include
 # project files
 SFILES = rom.s data.s ewram.s iwram.s
 
-OFILES = $(addprefix $(OBJ),$(SFILES:.s=.o))
+OFILES = $(addprefix $(OBJ),$F(SFILES:.s=.o))
 BUILD_NAME = bn6f
 ROM = $(BUILD_NAME).gba
 

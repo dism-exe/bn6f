@@ -420,7 +420,7 @@
 // .global sub_802F0D8
 // .global sub_802F0F4
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global SetEventFlag // (u16 entryFlagBitfield) -> void
+// .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
@@ -1153,6 +1153,16 @@
 // .equ off_200A454, 0x200A454
 // .equ word_200A458, 0x200A458
 // .equ word_200A45C, 0x200A45C
+// .equ byte_200A461, 0x200A461
+// .equ byte_200A462, 0x200A462
+// .equ byte_200A463, 0x200A463
+// .equ word_200A464, 0x200A464
+// .equ word_200A468, 0x200A468
+// .equ word_200A46A, 0x200A46A
+// .equ dword_200A470, 0x200A470
+// .equ dword_200A474, 0x200A474
+// .equ word_200A478, 0x200A478
+// .equ word_200A47C, 0x200A47C
 // .equ i_joGameSubsysSel, 0x200A480
 // .equ dword_200AC18, 0x200AC18
 // .equ unk_200AC40, 0x200AC40

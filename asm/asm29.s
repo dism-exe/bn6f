@@ -71,13 +71,13 @@ sub_80A4A08:
 	tst r0, r0
 	beq loc_80A4A1E
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 loc_80A4A1E:
 	ldrh r0, [r7,#0xe]
 	tst r0, r0
 	beq loc_80A4A2A
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 loc_80A4A2A:
 	ldrh r3, [r7,#0xa]
 	tst r3, r3
@@ -480,10 +480,10 @@ sub_80A51F8:
 loc_80A524E:
 	ldrh r0, [r7,#2]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	ldrh r0, [r7,#4]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, #0x10
 	strb r0, [r5,#8]
 	bl sub_80A5350
@@ -511,7 +511,7 @@ sub_80A5268:
 	bl sprite_loadAnimationData // () -> void
 	ldrh r0, [r7,#4]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, #0
 	str r0, [r5,#0x24]
 	mov r0, #0xc
@@ -526,14 +526,14 @@ loc_80A52A4:
 loc_80A52B0:
 	ldrh r0, [r7,#4]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	ldrb r1, [r7,#8]
 	ldrb r0, [r7,#9]
 	cmp r0, r1
 	bne loc_80A52CE
 	ldrh r0, [r7,#2]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, #0x10
 	strb r0, [r5,#8]
 	b loc_80A52DA
@@ -557,7 +557,7 @@ sub_80A52E4:
 	beq loc_80A52FC
 	ldrh r0, [r7,#2]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, #0x10
 	strb r0, [r5,#8]
 loc_80A52FC:
@@ -575,7 +575,7 @@ sub_80A5304:
 	beq loc_80A531E
 	ldrh r0, [r7,#2]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, #0x10
 	strb r0, [r5,#8]
 	b loc_80A5346
@@ -1962,7 +1962,7 @@ sub_80A5E8C:
 	ldr r1, off_80A5EB4 // =dword_80A5EB8 
 	ldr r0, [r1,r0]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	pop {r4,pc}
 	.byte 0, 0
 	thumb_func_end sub_80A5E8C
@@ -4665,7 +4665,7 @@ sub_80A7BC0:
 	ldrb r0, [r5,#4]
 	bl sub_81420F0
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, #8
 	strb r0, [r5,#8]
 	mov r0, #0x73 
@@ -5072,13 +5072,13 @@ sub_80A7F26:
 	ldrb r0, [r5,#4]
 	bl sub_81427A4
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	bl sub_8142184
 	ldr r0, dword_80A7F54 // =0x1650 
 	ldrb r1, [r5,#4]
 	add r0, r0, r1
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	bl sub_80048B2
 	pop {r4-r7,pc}
 dword_80A7F54: .word 0x1650
@@ -5432,7 +5432,7 @@ loc_80A8340:
 	bne loc_80A8362
 	// bitfield
 	mov r0, r6
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	b locret_80A8368
 loc_80A8362:
 	mov r0, r6
@@ -6218,7 +6218,7 @@ sub_80A8988:
 	ldrb r0, [r5,#4]
 	bl sub_81430B6
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	b locret_80A89D6
 loc_80A89B4:
 	bl sub_8002E52
@@ -6231,7 +6231,7 @@ loc_80A89B4:
 	bl sub_81430B6
 	// bitfield
 	mov r0, r1
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, #1
 	bl sub_81433E4
 locret_80A89D6:
@@ -7813,7 +7813,7 @@ sub_80A9614:
 	ldr r1, off_80A9644 // =dword_80A9648 
 	ldrh r0, [r1,r0]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	pop {r4,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_80A9614
@@ -8414,7 +8414,7 @@ sub_80A9B9C:
 loc_80A9BBE:
 	ldrh r0, [r7,#2]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	ldrh r0, [r7,#4]
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
@@ -8473,7 +8473,7 @@ loc_80A9C40:
 	strb r0, [r5]
 	ldrh r0, [r7,#2]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	ldrh r0, [r7,#4]
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void

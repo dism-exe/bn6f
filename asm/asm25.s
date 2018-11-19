@@ -1192,7 +1192,7 @@ loc_80901AC:
 	lsl r1, r1, #1
 	ldrh r0, [r0,r1]
 	mov r0, r0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	ldrb r0, [r5,#0xb]
 	sub r0, #1
 	strb r0, [r5,#0xb]
