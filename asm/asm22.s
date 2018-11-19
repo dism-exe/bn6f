@@ -1,15 +1,14 @@
 .include "asm/asm22.inc"
 
-.func
-.thumb_func
+	thumb_local_start
 sub_8086F18:
 	push {r4-r7,lr}
 	ldr r5, off_8086FA0 // =dword_8086A54+708 
 	ldr r5, [r5]
 	mov r6, #0
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r1, [r0,#4]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r1, [r0,#oGameState_MapGroup]
 	cmp r1, #0x81
 	beq loc_8086F2E
 	mov r0, #3
@@ -26,7 +25,7 @@ loc_8086F36:
 	mov r1, #0
 	mov r2, #0
 	mov r3, #0
-	add r4, r6, #0
+	mov r4, r6
 	bl sub_80047E0
 	pop {r5}
 	add r6, #1
@@ -38,18 +37,17 @@ loc_8086F36:
 	.byte  0
 off_8086F54: .word byte_8086F58
 byte_8086F58: .byte 0x1, 0x1, 0x3, 0x2
-.endfunc // sub_8086F18
+	thumb_func_end sub_8086F18
 
-.func
-.thumb_func
+	thumb_local_start
 sub_8086F5C:
 	push {r4-r7,lr}
 	ldr r5, off_8086FA0 // =dword_8086A54+708 
 	ldr r5, [r5]
 	mov r6, #0
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r1, [r0,#4]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r1, [r0,#oGameState_MapGroup]
 	cmp r1, #0x81
 	beq loc_8086F72
 	mov r0, #3
@@ -66,7 +64,7 @@ loc_8086F7A:
 	mov r1, #0
 	mov r2, #0
 	mov r3, #0
-	add r4, r6, #0
+	mov r4, r6
 	bl sub_80047E0
 	pop {r5}
 	add r6, #1
@@ -130,10 +128,9 @@ off_8086FA0: .word dword_8086A54+0x2C4
 	.byte 0xE3
 	.byte  5
 	.hword 0xFC0
-.endfunc // sub_8086F5C
+	thumb_func_end sub_8086F5C
 
-.func
-.thumb_func
+	thumb_local_start
 sub_8086FD8:
 	push {r4-r7,lr}
 	ldrb r0, [r5,#1]
@@ -208,22 +205,22 @@ loc_808704C:
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8087062
 loc_808705C:
-	add r1, r4, #0
+	mov r1, r4
 	ldr r0, off_8087100 // =dword_8086D5C 
 	b loc_80870F2
 loc_8087062:
-	add r1, r4, #0
+	mov r1, r4
 	ldr r0, off_8087104 // =byte_8086D74 
 	b loc_80870F2
 loc_8087068:
 	mov r0, #0
 	strb r0, [r5,#1]
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r1, [r0,#4]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r1, [r0,#oGameState_MapGroup]
 	cmp r1, #0x85
 	beq loc_80870C2
-	ldrb r0, [r0,#5]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	cmp r0, #0
 	bne loc_8087092
 	// entryIdx
@@ -285,8 +282,8 @@ loc_80870C2:
 	b loc_80870F2
 loc_80870D8:
 	mov r1, r10
-	ldr r1, [r1,#0x3c]
-	ldrb r1, [r1,#4]
+	ldr r1, [r1,#oToolkit_GameStatePtr]
+	ldrb r1, [r1,#oGameState_MapGroup]
 	cmp r1, #0x81
 	bne loc_80870E8
 	mov r0, #0x23 
@@ -475,23 +472,22 @@ off_8087114: .word dword_8086260+0x208
 	.byte 0xBD
 	.byte  0
 	.byte  0
-.endfunc // sub_8086FD8
+	thumb_func_end sub_8086FD8
 
-.func
-.thumb_func
+	thumb_local_start
 sub_80871C0:
 	push {lr}
 	ldrb r0, [r5,#0xc]
 	lsl r0, r0, #1
 	ldr r1, off_80871D4 // =byte_80871D8 
 	ldrh r1, [r1,r0]
-	add r0, r1, #0
+	mov r0, r1
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {pc}
 	.hword 0x0
 off_80871D4:
 	// <endpool> <endfile>
 	.word byte_80871D8
-.endfunc // sub_80871C0
+	thumb_func_end sub_80871C0
 
 /*For debugging purposes, connect comment at any range!*/

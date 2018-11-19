@@ -479,7 +479,7 @@
 .equ loc_30078BC, 0x30078bc
 .equ loc_30078C0, 0x30078c0
 .equ loc_30078C4, 0x30078c4
-.equ loc_30078C8, 0x30078c8
+.equ sub_30078C8, 0x30078c8
 .equ loc_30078CC, 0x30078cc
 .equ loc_30078CE, 0x30078ce
 .equ sub_30078E0, 0x30078e0

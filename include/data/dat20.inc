@@ -30,13 +30,14 @@
 .global byte_808068A
 .global byte_808068B
 .global byte_80806B3
-.global unk_8080715
+.global byte_8080715
 .global byte_80808B0
 .global byte_80808D8
 .global byte_80809F6
 .global byte_80809F8
 .global byte_8080A06
 .global byte_8080AA0
+.global byte_8080C0C
 
 
 /* External Symbols */

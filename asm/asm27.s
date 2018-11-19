@@ -1,7 +1,6 @@
 .include "asm/asm27.inc"
 
-.func
-.thumb_func
+	thumb_local_start
 sub_80946C4:
 	push {r4-r7,lr}
 	// initRefs
@@ -23,30 +22,27 @@ initRefs_80946D4: .word comp_857CCC8 + 1<<31
 	.word byte_3001B00
 	.word 0x40
 	.word 0x0
-.endfunc // sub_80946C4
+	thumb_func_end sub_80946C4
 
-.func
-.thumb_func
+	thumb_local_start
 sub_8094708:
 	push {r4-r7,lr}
 	ldr r0, off_8094774 // =unk_2025404 
 	bl sub_8094738
 	mov r0, #0
 	pop {r4-r7,pc}
-.endfunc // sub_8094708
+	thumb_func_end sub_8094708
 
-.func
-.thumb_func
+	thumb_local_start
 sub_8094714:
 	push {r4-r7,lr}
 	ldr r0, off_8094778 // =unk_2026404 
 	bl sub_8094738
 	mov r0, #0
 	pop {r4-r7,pc}
-.endfunc // sub_8094714
+	thumb_func_end sub_8094714
 
-.func
-.thumb_func
+	thumb_local_start
 sub_8094720:
 	push {r4-r7,lr}
 	// memBlock
@@ -59,10 +55,9 @@ sub_8094720:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-.endfunc // sub_8094720
+	thumb_func_end sub_8094720
 
-.func
-.thumb_func
+	thumb_local_start
 sub_8094738:
 	push {r4-r7,lr}
 	ldr r5, off_809477C // =byte_200BE70 
@@ -75,14 +70,14 @@ sub_8094738:
 	mov r1, #0x2b 
 	mul r1, r6
 	add r7, r7, r1
-	add r5, r0, #0
+	mov r5, r0
 	mov r4, #0
 loc_8094752:
 	mov r0, #0x64 
 	mul r0, r4
 	// src
 	add r0, r0, r5
-	add r1, r4, #0
+	mov r1, r4
 	mul r1, r6
 	// dest
 	add r1, r1, r7
@@ -101,6 +96,6 @@ off_8094778: .word unk_2026404
 off_809477C:
 	// <endpool> <endfile>
 	.word byte_200BE70
-.endfunc // sub_8094738
+	thumb_func_end sub_8094738
 
 /*For debugging purposes, connect comment at any range!*/

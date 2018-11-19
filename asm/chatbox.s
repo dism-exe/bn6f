@@ -1,8 +1,7 @@
 .include "asm/chatbox.inc"
 
-.func
-.thumb_func
 // () -> int
+	thumb_func_start chatbox_uncomp_803FD08
 chatbox_uncomp_803FD08:
 	push {r4-r7,lr}
 	mov r0, #0
@@ -24,10 +23,9 @@ chatbox_uncomp_803FD08:
 off_803FD30: .word unk_202DA00
 off_803FD34: .word unk_2033400
 off_803FD38: .word byte_202FA00
-.endfunc // chatbox_uncomp_803FD08
+	thumb_func_end chatbox_uncomp_803FD08
 
-.func
-.thumb_func
+	thumb_func_start chatbox_dead_uncomp_803FD3C
 chatbox_dead_uncomp_803FD3C:
 	push {r4-r7,lr}
 	mov r0, #1
@@ -39,10 +37,9 @@ chatbox_dead_uncomp_803FD3C:
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_803FD50: .word unk_2034A00
-.endfunc // chatbox_dead_uncomp_803FD3C
+	thumb_func_end chatbox_dead_uncomp_803FD3C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_uncomp_803FD54:
 	push {r4-r7,lr}
 	bl chatbox_8040794
@@ -52,30 +49,28 @@ chatbox_uncomp_803FD54:
 	mov r0, #0
 	pop {r4-r7,pc}
 off_803FD64: .word unk_2033400
-.endfunc // chatbox_uncomp_803FD54
+	thumb_func_end chatbox_uncomp_803FD54
 
-.func
-.thumb_func
 // (u8 scriptID) -> void
+	thumb_func_start chatbox_runScript_202da04
 chatbox_runScript_202da04:
 	push {r4,r5,lr}
-	add r1, r0, #0
+	mov r1, r0
 	ldr r0, off_803FD74 // =unk_202DA04 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	pop {r4,r5,pc}
 off_803FD74: .word unk_202DA04
-.endfunc // chatbox_runScript_202da04
+	thumb_func_end chatbox_runScript_202da04
 
-.func
-.thumb_func
 // (u16 *scriptArr, u8 scriptID) -> void
+	thumb_func_start chatbox_803FD78
 chatbox_803FD78:
 	push {r4,r5,lr}
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	// src
 	ldr r0, off_803FD90 // =dword_803FD94 
 	mov r1, r10
-	ldr r1, [r1,#0x2c] // Toolkit.chatbox
+	ldr r1, [r1,#oToolkit_ChatboxPtr]
 	// dest
 	add r1, #0x68 // ChatBoxPropreties.unk_68
 	// halfwordCount
@@ -86,11 +81,10 @@ chatbox_803FD78:
 off_803FD90: .word dword_803FD94
 dword_803FD94: .word 0x83007E
 	.word 0x81007F
-.endfunc // chatbox_803FD78
+	thumb_func_end chatbox_803FD78
 
-.func
-.thumb_func
 // (u16 *scriptArr, u8 scriptID) -> void
+	thumb_func_start chatbox_runScript_803FD9C
 chatbox_runScript_803FD9C:
 	push {r4,r5,lr}
 	mov r4, #0
@@ -121,7 +115,7 @@ loc_803FDD0:
 	// src
 	ldr r0, off_803FDE0 // =dword_803FDE4 
 	mov r1, r10
-	ldr r1, [r1,#0x2c] // Toolkit.chatbox
+	ldr r1, [r1,#oToolkit_ChatboxPtr]
 	// dest
 	add r1, #0x68 
 	// halfwordCount
@@ -137,20 +131,18 @@ off_803FDF4: .word 0x280
 off_803FDFC: .word byte_86BFE20
 off_803FE00: .word unk_3001B40
 off_803FE04: .word byte_86BFE40
-.endfunc // chatbox_runScript_803FD9C
+	thumb_func_end chatbox_runScript_803FD9C
 
-.func
-.thumb_func
 // (u16 *scriptArr, u8 scriptID) -> void
+	thumb_func_start chatbox_runScript_803FE08
 chatbox_runScript_803FE08:
 	push {r4,r5,lr}
 	mov r4, #0
 	b loc_803FE14
 	.byte 0, 0
-.endfunc // chatbox_runScript_803FE08
+	thumb_func_end chatbox_runScript_803FE08
 
-.func
-.thumb_func
+	thumb_func_start chatbox_803FE10
 chatbox_803FE10:
 	push {r4,r5,lr}
 	mov r4, #1
@@ -176,7 +168,7 @@ loc_803FE3C:
 	// src
 	ldr r0, off_803FE4C // =dword_803FE50 
 	mov r1, r10
-	ldr r1, [r1,#0x2c]
+	ldr r1, [r1,#oToolkit_ChatboxPtr]
 	// dest
 	add r1, #0x68 
 	// halfwordCount
@@ -192,11 +184,10 @@ off_803FE60: .word 0x320
 off_803FE68: .word byte_86C0900
 off_803FE6C: .word unk_3001B40
 off_803FE70: .word byte_86C0920
-.endfunc // chatbox_803FE10
+	thumb_func_end chatbox_803FE10
 
-.func
-.thumb_func
 // (u16 *scriptList, u8 scriptOffIdx) -> void
+	thumb_func_start chatbox_runScript_803FE74
 chatbox_runScript_803FE74:
 	push {r4,r5,lr}
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -218,14 +209,13 @@ off_803FEA4: .word 0x6F8
 	.word 0x380
 off_803FEAC: .word spriteWhiteDot
 off_803FEB0: .word unk_3001B40
-.endfunc // chatbox_runScript_803FE74
+	thumb_func_end chatbox_runScript_803FE74
 
-.func
-.thumb_func
+	thumb_func_start chatbox_onUpdate_803FEB4
 chatbox_onUpdate_803FEB4:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x2c]
+	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	ldrb r0, [r5]
 	tst r0, r0
 	bne loc_803FEC2
@@ -237,7 +227,7 @@ loc_803FEC2:
 	bl chatbox_8045F3C
 	bne loc_803FEE2
 	mov r7, r10
-	ldr r7, [r7,#4]
+	ldr r7, [r7,#oToolkit_JoypadPtr]
 	ldrh r1, [r7]
 	strh r1, [r5,#0x22] // ChatBoxPropreties.keyState
 	ldrh r1, [r7,#0x2] // Joystick.IQR
@@ -291,11 +281,10 @@ jt_803FF30: .word sub_804005C+1
 off_803FF38: .word off_803FF3C
 off_803FF3C: .word 0x1D4
 	.word 0x1D6, 0x1D8, 0x1E8, 0x1EC
-.endfunc // chatbox_onUpdate_803FEB4
+	thumb_func_end chatbox_onUpdate_803FEB4
 
-.func
-.thumb_func
 // () ->
+	thumb_local_start
 chatbox_interpreteScriptChar:
 	push {lr}
 	mov r0, #1
@@ -417,10 +406,9 @@ dword_8040040: .word 0x254D0B00
 	.word 0x138
 	.word 0x1F4
 	.word 0x1F5
-.endfunc // chatbox_interpreteScriptChar
+	thumb_func_end chatbox_interpreteScriptChar
 
-.func
-.thumb_func
+	thumb_local_start
 sub_804005C:
 	push {r4-r7,lr}
 	mov r0, #0
@@ -532,10 +520,9 @@ dword_8040140: .word 0x254D0B00
 	.word byte_8043CA4
 dword_804014C: .word 0x840
 	.word 0x138
-.endfunc // sub_804005C
+	thumb_func_end sub_804005C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8040154:
 	push {lr}
 	mov r2, #2
@@ -559,10 +546,9 @@ locret_8040174:
 	mov r0, #1
 	strb r0, [r5,#0x11]
 	pop {pc}
-.endfunc // chatbox_8040154
+	thumb_func_end chatbox_8040154
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804017C:
 	push {r4,r6,r7,lr}
 	mov r1, r12
@@ -587,7 +573,7 @@ loc_80401A2:
 	mov r0, #5
 loc_80401A4:
 	push {r0}
-	add r3, r0, #0
+	mov r3, r0
 	mov r1, #0x20 
 	mul r1, r3
 	mov r2, r10
@@ -600,7 +586,7 @@ loc_80401A4:
 	mov r1, r8
 	add r1, r1, r2
 	orr r0, r1
-	add r6, r4, #0
+	mov r6, r4
 	ldr r6, [r6,r7]
 	mov r1, r12
 	mov r2, #6
@@ -634,10 +620,9 @@ dword_8040208: .word 0x40004000
 off_804020C: .word dword_8040210
 dword_8040210: .word 0x3, 0x3
 	.word 0x2
-.endfunc // chatbox_804017C
+	thumb_func_end chatbox_804017C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804021C:
 	push {r4,r6,r7,lr}
 	mov r1, r12
@@ -768,10 +753,9 @@ byte_8040324: .byte 0x0, 0x8, 0x10, 0x18, 0x20, 0x28, 0x0, 0x0, 0x30, 0x38, 0x40
 byte_804033B: .byte 0x0
 off_804033C: .word byte_8040340
 byte_8040340: .byte 0x0, 0x10, 0x20, 0x0
-.endfunc // chatbox_804021C
+	thumb_func_end chatbox_804021C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_copyTiles_8040344:
 	push {lr}
 	ldr r3, off_804036C // =off_8045CEC 
@@ -798,27 +782,25 @@ chatbox_copyTiles_8040344:
 	.balign 4, 0x00
 off_804036C: .word off_8045CEC
 dword_8040370: .word 0x1D2
-.endfunc // chatbox_copyTiles_8040344
+	thumb_func_end chatbox_copyTiles_8040344
 
-.func
-.thumb_func
 // (u8 scriptOffIdx) -> void
+	thumb_func_start chatbox_runTrainScript
 chatbox_runTrainScript:
 	push {r4,r5,lr}
-	add r1, r0, #0
+	mov r1, r0
 	ldr r0, off_8040380 // =unk_2034A04 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	pop {r4,r5,pc}
 off_8040380: .word unk_2034A04
-.endfunc // chatbox_runTrainScript
+	thumb_func_end chatbox_runTrainScript
 
-.func
-.thumb_func
 // (void *scripts, u8 scriptOffIdx) -> void
+	thumb_func_start chatbox_runScript
 chatbox_runScript:
 	push {r4-r6,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x2c] // Toolkit.chatbox
+	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	ldr r2, [r5,#0x4c] // ChatBoxPropreties.unk_4C
 	ldr r3, [r5,#0x50] // ChatBoxPropreties.unk_50
 	ldr r4, [r5,#0x54] // ChatBoxPropreties.unk_54
@@ -826,7 +808,7 @@ chatbox_runScript:
 	push {r0-r3}
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#0x2c] // ChatBoxPropreties.pScriptCursor
+	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	// size
 	ldr r1, off_80404A4 // =0x230 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -862,7 +844,7 @@ chatbox_runScript:
 	str r0, [r5,#0x78] // ChatBoxPropreties.unk_78
 	// src
 	ldr r0, off_8040490 // =dword_8040494 
-	add r1, r5, #0
+	mov r1, r5
 	// dest
 	add r1, #0x68 
 	// halfwordCount
@@ -913,7 +895,7 @@ chatbox_runScript:
 	ldr r0, mask // =0x100 
 	bl chatbox_setflags_3e // (int mask) -> void
 	ldrb r0, [r5,#0x18]
-	add r1, r5, #0
+	mov r1, r5
 	add r1, #0x94
 	strb r0, [r1]
 	mov r0, #0xd
@@ -954,15 +936,14 @@ dword_80404B0: .word 0x1F3
 off_80404B4: .word 0x1F1
 off_80404B8: .word 0x1F4
 off_80404BC: .word 0x1F5
-.endfunc // chatbox_runScript
+	thumb_func_end chatbox_runScript
 
-.func
-.thumb_func
+	thumb_func_start chatbox_reqBBS_80404C0
 chatbox_reqBBS_80404C0:
 	push {r4-r6,lr}
 	push {r2}
 	mov r5, r10
-	ldr r5, [r5,#0x2c] // Toolkit.chatbox
+	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	ldr r2, [r5,#0x4c] // ChatBoxPropreties.unk_4C
 	ldr r3, [r5,#0x50] // ChatBoxPropreties.unk_50
 	ldr r4, [r5,#0x54] // ChatBoxPropreties.unk_54
@@ -970,7 +951,7 @@ chatbox_reqBBS_80404C0:
 	push {r0-r3}
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#0x2c]
+	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	// size
 	ldr r1, off_80405DC // =0x230 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -1003,7 +984,7 @@ chatbox_reqBBS_80404C0:
 	str r0, [r5,#0x78] // ChatBoxPropreties.unk_78
 	// src
 	ldr r0, off_80405C8 // =dword_80405CC 
-	add r1, r5, #0
+	mov r1, r5
 	// dest
 	add r1, #0x68 
 	// halfwordCount
@@ -1054,7 +1035,7 @@ chatbox_reqBBS_80404C0:
 	ldr r0, off_80405D4 // =0x100 
 	bl chatbox_setflags_3e // (int mask) -> void
 	ldrb r0, [r5,#0x18] // ChatBoxPropreties.textCoord
-	add r1, r5, #0
+	mov r1, r5
 	add r1, #0x94
 	strb r0, [r1]
 	mov r0, #0xd
@@ -1093,15 +1074,14 @@ dword_80405E8: .word 0x1F3
 off_80405EC: .word 0x1F1
 off_80405F0: .word 0x1F4
 off_80405F4: .word 0x1F5
-.endfunc // chatbox_reqBBS_80404C0
+	thumb_func_end chatbox_reqBBS_80404C0
 
-.func
-.thumb_func
+	thumb_local_start
 dead_80405F8:
 	push {r4-r6,lr}
 	push {r2-r4}
 	mov r5, r10
-	ldr r5, [r5,#0x2c]
+	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	ldr r2, [r5,#0x4c]
 	ldr r3, [r5,#0x50]
 	ldr r4, [r5,#0x54]
@@ -1109,7 +1089,7 @@ dead_80405F8:
 	push {r0-r3}
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#0x2c]
+	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	// size
 	ldr r1, off_8040714 // =0x230 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -1142,7 +1122,7 @@ dead_80405F8:
 	str r0, [r5,#0x78]
 	// src
 	ldr r0, off_8040700 // =dword_8040704 
-	add r1, r5, #0
+	mov r1, r5
 	// dest
 	add r1, #0x68 
 	// halfwordCount
@@ -1193,7 +1173,7 @@ dead_80405F8:
 	ldr r0, off_804070C // =0x100 
 	bl chatbox_setflags_3e // (int mask) -> void
 	ldrb r0, [r5,#0x18]
-	add r1, r5, #0
+	mov r1, r5
 	add r1, #0x94
 	strb r0, [r1]
 	mov r0, #0xd
@@ -1232,20 +1212,19 @@ dword_8040720: .word 0x1F3
 off_8040724: .word 0x1F1
 off_8040728: .word 0x1F4
 off_804072C: .word 0x1F5
-.endfunc // dead_80405F8
+	thumb_func_end dead_80405F8
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_static_8040730:
 	push {r4-r7,lr}
-	add r4, r0, #0
+	mov r4, r0
 	mov r2, r10
-	ldr r2, [r2,#0x3c] // Toolkit.gamestate
-	ldrb r0, [r2,#4]
-	ldrb r1, [r2,#5]
+	ldr r2, [r2,#oToolkit_GameStatePtr]
+	ldrb r0, [r2,#oGameState_MapGroup]
+	ldrb r1, [r2,#oGameState_MapNumber]
 	mov r2, r10
-	ldr r2, [r2,#0x3c] // Toolkit.gamestate
-	ldrb r2, [r2,#8]
+	ldr r2, [r2,#oToolkit_GameStatePtr]
+	ldrb r2, [r2,#oGameState_Unk_08]
 	mov r6, #0
 	cmp r0, #0x80
 	bmi loc_804074C
@@ -1276,17 +1255,16 @@ off_8040770: .word off_8044470
 	.word off_804457C
 	.word dword_8040784
 dword_8040784: .word 0x2500360, 0x1300240, 0x100120, 0x0
-.endfunc // chatbox_static_8040730
+	thumb_func_end chatbox_static_8040730
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8040794:
 	push {r4-r7,lr}
 	mov r2, r10
-	ldr r2, [r2,#0x3c]
-	ldrb r0, [r2,#4]
-	ldrb r1, [r2,#5]
-	ldrb r2, [r2,#6]
+	ldr r2, [r2,#oToolkit_GameStatePtr]
+	ldrb r0, [r2,#oGameState_MapGroup]
+	ldrb r1, [r2,#oGameState_MapNumber]
+	ldrb r2, [r2,#oGameState_GameProgress]
 	mov r6, #0
 	cmp r0, #0x80
 	bmi loc_80407AA
@@ -1305,16 +1283,15 @@ loc_80407AA:
 off_80407BC: .word off_80407C0
 off_80407C0: .word off_804448C
 	.word off_8044520
-.endfunc // chatbox_8040794
+	thumb_func_end chatbox_8040794
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_map_80407C8:
 	push {r4-r7,lr}
 	mov r2, r10
-	ldr r2, [r2,#0x3c] // Toolkit.gamestate
-	ldrb r0, [r2,#0x4] // GameState.MapSelect
-	ldrb r1, [r2,#0x5] // GameState.MapSubOffset
+	ldr r2, [r2,#oToolkit_GameStatePtr]
+	ldrb r0, [r2,#oGameState_MapGroup]
+	ldrb r1, [r2,#oGameState_MapNumber]
 	mov r2, #4
 	mov r6, #0
 	cmp r0, #0x80
@@ -1340,24 +1317,22 @@ off_80407FC: .word off_8044470
 	.word off_80444C4
 	.word dword_8040808
 dword_8040808: .word 0x4500460, 0x4300440, 0x4100420, 0x400
-.endfunc // chatbox_map_80407C8
+	thumb_func_end chatbox_map_80407C8
 
-.func
-.thumb_func
+	thumb_func_start chatbox_8040818
 chatbox_8040818:
 	push {r5,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x2c]
+	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	mov r0, #0
 	strb r0, [r5]
 	mov r0, #0xc8
 	bl chatbox_8045F2C // (int a1) ->
 	pop {r5,pc}
 	.balign 4, 0x00
-.endfunc // chatbox_8040818
+	thumb_func_end chatbox_8040818
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804082C:
 	push {r4,r6,lr}
 	mov r0, #0x20 
@@ -1426,11 +1401,10 @@ dword_80408A4: .word 0x0
 	.byte  1
 	.byte  1
 	.byte 0xFF
-.endfunc // chatbox_804082C
+	thumb_func_end chatbox_804082C
 
-.func
-.thumb_func
 // (int notUsed, u8 scriptID) -> void
+	thumb_local_start
 chatbox_config_80408D0:
 	push {lr}
 	strb r1, [r5,#0x1] // ChatBoxPropreties.scriptID
@@ -1440,7 +1414,7 @@ chatbox_config_80408D0:
 	add r0, r0, r1
 	str r0, [r5,#0x2c] // ChatBoxPropreties.pScriptCursor
 	str r0, [r5,#0x34] // ChatBoxPropreties.pCurrScript
-	add r4, r0, #0
+	mov r4, r0
 	mov r1, #0
 	strb r1, [r5,#0x4] // ChatBoxPropreties.chatPageState
 	str r1, [r5,#0x64] // ChatBoxPropreties.unk_64
@@ -1456,7 +1430,7 @@ chatbox_config_80408D0:
 	str r1, [r5,#0x74] // ChatBoxPropreties.unk_74
 	ldrb r1, [r5,#0x8] // ChatBoxPropreties.typingSpeed
 	ldrb r0, [r5,#0x18] // ChatBoxPropreties.textCoord
-	add r1, r5, #0
+	mov r1, r5
 	add r1, #0x94 // ChatBoxPropreties.unk_94
 	strb r0, [r1]
 	bl chatbox_8045F60
@@ -1469,11 +1443,10 @@ chatbox_config_80408D0:
 	.byte  0
 off_8040918: .word 0x400
 dword_804091C: .word 0x800
-.endfunc // chatbox_config_80408D0
+	thumb_func_end chatbox_config_80408D0
 
-.func
-.thumb_func
 // (int mask) -> void
+	thumb_local_start
 chatbox_setflags_3e:
 	push {r1}
 	ldrh r1, [r5,#0x3e] // ChatBoxPropreties.flags_3E
@@ -1481,11 +1454,10 @@ chatbox_setflags_3e:
 	strh r1, [r5,#0x3e] // ChatBoxPropreties.flags_3E
 	pop {r1}
 	mov pc, lr
-.endfunc // chatbox_setflags_3e
+	thumb_func_end chatbox_setflags_3e
 
-.func
-.thumb_func
 // (int mask) -> void
+	thumb_local_start
 chatbox_clearFlags_3e:
 	push {r1}
 	ldrh r1, [r5,#0x3e] // ChatBoxPropreties.flags_3E
@@ -1493,12 +1465,11 @@ chatbox_clearFlags_3e:
 	strh r1, [r5,#0x3e] // ChatBoxPropreties.flags_3E
 	pop {r1}
 	mov pc, lr
-.endfunc // chatbox_clearFlags_3e
+	thumb_func_end chatbox_clearFlags_3e
 
-.func
-.thumb_func
 // (int mask) -> void
 // 
+	thumb_func_start chatbox_maskFlags_3e
 chatbox_maskFlags_3e:
 	push {r1}
 	ldrh r1, [r5,#0x3e] // ChatBoxPropreties.flags_3E
@@ -1506,10 +1477,9 @@ chatbox_maskFlags_3e:
 	pop {r1}
 	mov pc, lr
 	.balign 4, 0x00
-.endfunc // chatbox_maskFlags_3e
+	thumb_func_end chatbox_maskFlags_3e
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_ED_select_8040944:
 	push {lr}
 	ldrb r0, [r5,#0x16] // ChatBoxPropreties.unk_16
@@ -1521,7 +1491,7 @@ chatbox_ED_select_8040944:
 	ldr r1, dword_80409A8 // =0x6017f80 
 	mov r2, #0x80
 	bl loc_8000AC8
-	add r2, r5, #0
+	mov r2, r5
 	add r2, #0x94
 	ldrb r1, [r2]
 	ldr r0, [r5,#0x70] // ChatBoxPropreties.unk_70
@@ -1568,10 +1538,9 @@ unk_80409B2: .byte  0
 	.word 0x2020101
 	.word 0x2020202
 	.word 0xFF
-.endfunc // chatbox_ED_select_8040944
+	thumb_func_end chatbox_ED_select_8040944
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80409C8:
 	push {lr}
 	ldr r0, off_80409D8 // =dword_86A4A40 
@@ -1582,14 +1551,13 @@ chatbox_80409C8:
 	.hword 0x0
 off_80409D8: .word dword_86A4A40
 dword_80409DC: .word 0x6017F80
-.endfunc // chatbox_80409C8
+	thumb_func_end chatbox_80409C8
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80409E0:
 	push {r4,r6,lr}
 	ldrb r0, [r5,#0x16]
-	ldr r1, off_8040A7C // =unk_8040A80 
+	ldr r1, off_8040A7C // =byte_8040A80
 	ldrb r0, [r1,r0]
 	lsl r0, r0, #7
 	ldr r2, off_8040A74 // =dword_86A4A40 
@@ -1597,161 +1565,80 @@ chatbox_80409E0:
 	ldr r1, dword_8040A78 // =0x6017f80 
 	mov r2, #0x80
 	bl loc_8000AC8
-	.byte 0x29 
-	.byte 0x7E 
-	.byte 0x28 
-	.byte 0x6F 
-	.byte 0x40 
-	.byte 0x18
-	.byte  4
-	.byte 0x30 
-	.byte 0xE9
-	.byte 0x7C 
-	.byte 0x80
-	.byte 0x23 
-	.byte 0xEB
-	.byte 0x5C 
-unk_8040A04: .byte  1
-	.byte 0x3B 
-	.byte 0x99
-	.byte 0x42 
-	.byte  0
-	.byte 0xD1
-	.byte  7
-	.byte 0x30 
-	.byte 0xE9
-	.byte 0x7B 
-	.byte 0xE
-	.byte 0x23 
-	.byte 0x59 
-	.byte 0x43 
-	.byte 0x6A 
-	.byte 0x7E 
-	.byte 0x89
-	.byte 0x18
-	.byte  2
-	.byte 0x39 
-	.byte  0
-	.byte  4
-	.byte  8
-	.byte 0x43 
-	.byte  4
-	.byte 0x1C
-	.byte 0x20
-	.byte 0xB4
-	.byte 0x13
-	.byte 0x4E 
-	.byte 0x30 
-	.byte 0x43 
-	.byte 0x1B
-	.byte 0x49 
-	.byte  0
-	.byte 0x22 
-	.byte 0x92
-	.byte  2
-	.byte 0x11
-	.byte 0x43 
-	.byte  0
-	.byte 0x22 
-	.byte  1
-	.byte 0x23 
-	.byte 0xEF
-	.byte 0xF7
-	.byte 0xFA
-	.byte 0xF9
-	.byte 0x20
-	.byte 0x1C
-	.byte  8
-	.byte 0x24 
-	.byte 0xE9
-	.byte 0x7C 
-	.byte 0x80
-	.byte 0x23 
-	.byte 0xED
-	.byte 0x5C 
-	.byte  1
-	.byte 0x3D 
-	.byte 0xA9
-	.byte 0x42 
-	.byte  0
-	.byte 0xD1
-	.byte 0x12
-	.byte 0x24 
-	.byte 0x24 
-	.byte  4
-	.byte  0
-	.byte 0x19
-	.byte 0x30 
-	.byte 0x43 
-	.byte 0x12
-	.byte 0x49 
-	.byte  0
-	.byte 0x26 
-	.byte 0xB6
-	.byte  2
-	.byte 0x31 
-	.byte 0x43 
-	.byte  1
-	.byte 0x23 
-	.byte 0xEF
-	.byte 0xF7
-	.byte 0xE7
-	.byte 0xF9
-	.byte 0x20
-	.byte 0xBC
-	.byte 0xAA
-	.byte 0x7D 
-	.byte  7
-	.byte 0x4B 
-	.byte  1
-	.byte 0x32 
-	.byte 0x99
-	.byte 0x5C 
-	.byte 0xFF
-	.byte 0x29 
-	.byte  1
-	.byte 0xD1
-	.byte  1
-	.byte 0x22 
-	.byte 0x19
-	.byte 0x88
-	.word 0xBD5075AA
-	.byte  0
-	.byte 0x80
-	.byte  0
-	.byte  0
+	ldrb r1, [r5,#0x18]
+	ldr r0, [r5,#0x70]
+	add r0, r0, r1
+	add r0, #4
+	ldrb r1, [r5,#0x13]
+	mov r3, #0x80
+	ldrb r3, [r5,r3]
+loc_8040A04:
+	sub r3, #1
+	cmp r1, r3
+	bne loc_8040A0C
+	add r0, #7
+loc_8040A0C:
+	ldrb r1, [r5,#0xf]
+	mov r3, #0xe
+	mul r1, r3
+	ldrb r2, [r5,#0x19]
+	add r1, r1, r2
+	sub r1, #2
+	lsl r0, r0, #0x10
+	orr r0, r1
+	mov r4, r0
+	push {r5}
+	ldr r6, dword_8040A70 // =0x8000
+	orr r0, r6
+	ldr r1, byte_8040A94 // =0xfc
+	mov r2, #0
+	lsl r2, r2, #0xa
+	orr r1, r2
+	mov r2, #0
+	mov r3, #1
+	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
+	mov r0, r4
+	mov r4, #8
+	ldrb r1, [r5,#0x13]
+	mov r3, #0x80
+	ldrb r5, [r5,r3]
+	sub r5, #1
+	cmp r1, r5
+	bne loc_8040A46
+	mov r4, #0x12
+loc_8040A46:
+	lsl r4, r4, #0x10
+	add r0, r0, r4
+	orr r0, r6
+	ldr r1, byte_8040A98 // =0xfe
+	mov r6, #0
+	lsl r6, r6, #0xa
+	orr r1, r6
+	mov r3, #1
+	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
+	pop {r5}
+	ldrb r2, [r5,#0x16]
+	ldr r3, off_8040A7C // =byte_8040A80
+	add r2, #1
+	ldrb r1, [r3,r2]
+	cmp r1, #0xff
+	bne loc_8040A6C
+	mov r2, #1
+	ldrh r1, [r3]
+loc_8040A6C:
+	strb r2, [r5,#0x16]
+	pop {r4,r6,pc}
+dword_8040A70: .word 0x8000
 off_8040A74: .word dword_86A4A40
 dword_8040A78: .word 0x6017F80
-off_8040A7C: .word unk_8040A80
-unk_8040A80: .byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  1
-	.byte  1
-	.byte  1
-	.byte  1
-	.byte  1
-	.byte  1
-	.byte  1
-	.byte  1
-	.byte  1
-	.byte 0xFF
-	.byte  0
-	.byte 0xFC
-	.byte 0xE3
-	.balign 4, 0x00
-	.byte 0xFE
-	.byte 0xE3
-.endfunc // chatbox_80409E0
+off_8040A7C: .word byte_8040A80
+byte_8040A80: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1
+	.byte 0x1, 0xFF, 0x0
+byte_8040A94: .byte 0xFC, 0xE3, 0x0, 0x0
+byte_8040A98: .byte 0xFE, 0xE3
+	thumb_func_end chatbox_80409E0
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8040A9A:
 	push {r4,r6,lr}
 	ldrb r0, [r5,#0x16]
@@ -1775,7 +1662,7 @@ chatbox_8040A9A:
 	sub r1, #2
 	lsl r0, r0, #0x10
 	orr r0, r1
-	add r4, r0, #0
+	mov r4, r0
 	push {r5}
 	ldr r6, dword_8040B10 // =0x8000 
 	orr r0, r6
@@ -1786,7 +1673,7 @@ chatbox_8040A9A:
 	mov r2, #0
 	mov r3, #1
 	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
-	add r0, r4, #0
+	mov r0, r4
 	mov r4, #0x16
 	lsl r4, r4, #0x10
 	add r0, r0, r4
@@ -1820,10 +1707,9 @@ word_8040B20: .hword 0x0
 	.word 0x1010100, 0x1010101, 0xFF0101
 dword_8040B34: .word 0xE3FC
 word_8040B38: .hword 0xE3FE
-.endfunc // chatbox_8040A9A
+	thumb_func_end chatbox_8040A9A
 
-.func
-.thumb_func
+	thumb_local_start
 sub_8040B3A:
 	push {r5,lr}
 	push {r5}
@@ -1863,10 +1749,9 @@ loc_8040B66:
 	pop {r5,pc}
 off_8040B84: .word 0x3C0
 off_8040B88: .word 0x1F8
-.endfunc // sub_8040B3A
+	thumb_func_end sub_8040B3A
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8040B8C:
 	push {r4-r6,lr}
 	mov r0, #2
@@ -1889,7 +1774,7 @@ loc_8040BA4:
 	ldr r1, off_8040C28 // =0x421 
 	ldr r0, [r5,#0x40]
 	sub r0, r0, r1
-	add r4, r0, #0
+	mov r4, r0
 	cmp r0, #0
 	bge loc_8040BC2
 	mov r4, #0
@@ -1905,7 +1790,7 @@ loc_8040BC4:
 	ldr r1, dword_8040C2C // =0x842 
 	ldr r0, [r5,#0x40]
 	add r0, r0, r1
-	add r4, r0, #0
+	mov r4, r0
 	mov r1, #0x1f
 	and r0, r1
 	cmp r0, #6
@@ -1915,7 +1800,7 @@ loc_8040BC4:
 loc_8040BE2:
 	str r4, [r5,#0x40]
 loc_8040BE4:
-	add r7, r5, #0
+	mov r7, r5
 	ldrb r3, [r5,#7]
 	push {r5}
 	push {r3}
@@ -1953,10 +1838,9 @@ off_8040C34: .word 0x1F8
 dword_8040C38: .word 0x1F2
 off_8040C3C: .word 0x1F0
 dword_8040C40: .word 0x1F3
-.endfunc // chatbox_8040B8C
+	thumb_func_end chatbox_8040B8C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8040C44:
 	push {r0,r1,r4,r5,lr}
 	mov r0, #0x10
@@ -2003,10 +1887,9 @@ locret_8040C8E:
 dword_8040C90: .word 0x1F2
 off_8040C94: .word 0x1F1
 off_8040C98: .word 0x1F0
-.endfunc // chatbox_8040C44
+	thumb_func_end chatbox_8040C44
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8040C9C:
 	push {r0,r1,lr}
 	mov r0, #0
@@ -2033,10 +1916,9 @@ loc_8040CBC:
 dword_8040CC4: .word 0x1F2
 off_8040CC8: .word 0x1F0
 off_8040CCC: .word 0x1F1
-.endfunc // chatbox_8040C9C
+	thumb_func_end chatbox_8040C9C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8040CD0:
 	push {lr}
 	ldr r7, off_8040D44 // =dword_8040D48 
@@ -2056,8 +1938,6 @@ loc_8040CDA:
 	ldr r1, [r4,#0xc]
 	ldr r2, [r4,#0x10]
 	bl loc_8000AC8
-.endfunc // chatbox_8040CD0
-
 	ldr r0, [r4,#0x14]
 	ldr r1, [r4,#0x18]
 	ldr r2, [r4,#0x1c]
@@ -2077,7 +1957,7 @@ loc_8040CDA:
 	mul r2, r6
 	add r1, r1, r2
 	ldr r1, [r5,r1]
-	add r2, r5, #0
+	mov r2, r5
 	add r2, #0x94
 	ldrb r2, [r2]
 	add r1, r1, r2
@@ -2085,7 +1965,7 @@ loc_8040CDA:
 	orr r2, r0
 	lsl r1, r1, #0x10
 	orr r2, r1
-	add r0, r2, #0
+	mov r0, r2
 	ldr r1, [r4,#4]
 	mov r2, #0
 	mov r3, #4
@@ -2103,8 +1983,9 @@ dword_8040D48: .word 0x1D6
 	.word 0x1E8
 off_8040D54: .word 0x1EC
 off_8040D58: .word off_8045DD4
-.func
-.thumb_func
+	thumb_func_end chatbox_8040CD0
+
+	thumb_func_start chatbox_8040D5C
 chatbox_8040D5C:
 	push {r2,r3,lr}
 	cmp r0, #1
@@ -2125,7 +2006,7 @@ loc_8040D6E:
 	sub r1, r1, r0
 	neg r1, r1
 	sub r3, #1
-	add r0, r3, #0
+	mov r0, r3
 	mov r3, #0xf
 	tst r7, r3
 	beq loc_8040D8A
@@ -2142,10 +2023,9 @@ off_8040D94: .word byte_8040D98
 byte_8040D98: .byte 0x1, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0x64, 0x0, 0x0, 0x0, 0xE8, 0x3, 0x0
 	.byte 0x0, 0x10, 0x27, 0x0, 0x0, 0xA0, 0x86, 0x1, 0x0, 0x40, 0x42, 0xF, 0x0, 0x80, 0x96
 	.byte 0x98, 0x0, 0x0, 0xE1, 0xF5, 0x5
-.endfunc // chatbox_8040D5C
+	thumb_func_end chatbox_8040D5C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8040DBC:
 	push {r0-r5,lr}
 	// memBlock
@@ -2165,21 +2045,20 @@ loc_8040DC4:
 	.byte  0
 	.byte  0
 off_8040DD8: .word unk_200BEA0
-.endfunc // chatbox_8040DBC
+	thumb_func_end chatbox_8040DBC
 
-.func
-.thumb_func
 // (int v3) ->
+	thumb_local_start
 chatbox_8040DDC:
 	push {r0-r5,lr}
-	add r4, r0, #0
+	mov r4, r0
 	mov r1, #0x10
 	mul r4, r1
 	lsr r4, r4, #1
 	// memBlock
 	ldr r0, off_8040E00 // =unk_200BEA0 
 	// size
-	add r1, r4, #0
+	mov r1, r4
 	mov r2, #0
 loc_8040DEC:
 	push {r0-r2}
@@ -2227,25 +2106,23 @@ chatbox_jt_ctrlCmds: .word chatbox_E5_nop+1
 	.word chatbox_FD_sound+1
 	.word chatbox_FE_numberinput+1
 	.word chatbox_FF_copytext+1
-.endfunc // chatbox_8040DDC
+	thumb_func_end chatbox_8040DDC
 
-.func
-.thumb_func
 // () -> int
 // Description: do nothing (but make the script go on)
 // Parameters: 0
+	thumb_local_start
 chatbox_E5_nop:
 	add r4, #1
 	mov r0, #2
 	mov pc, lr
 	.balign 4, 0x00
-.endfunc // chatbox_E5_nop
+	thumb_func_end chatbox_E5_nop
 
-.func
-.thumb_func
 // () -> int
 // Description: ends the current script and closes message box
 // Parameters: 0
+	thumb_local_start
 chatbox_E6_end:
 	push {lr}
 	ldrb r0, [r5,#0x5] // ChatBoxPropreties.unk_05
@@ -2292,10 +2169,8 @@ loc_8040EDC:
 	pop {pc}
 dword_8040EEC: .word 0x100
 dword_8040EF0: .word 0x140
-.endfunc // chatbox_E6_end
+	thumb_func_end chatbox_E6_end
 
-.func
-.thumb_func
 // () -> int
 // E7 = buttonhalt
 // Description: display an arrow at the lower right of the message box and stop processing until a button is pressed
@@ -2303,6 +2178,7 @@ dword_8040EF0: .word 0x140
 // Parameter 1 = mode
 // E7 00 = wait for A button or B button
 // E7 01 = wait for any button
+	thumb_local_start
 chatbox_E7_buttonhalt:
 	push {lr}
 	// mask
@@ -2369,10 +2245,8 @@ loc_8040F64:
 	pop {pc}
 dword_8040F68: .word 0x3FF
 dword_8040F6C: .word 0x400
-.endfunc // chatbox_E7_buttonhalt
+	thumb_func_end chatbox_E7_buttonhalt
 
-.func
-.thumb_func
 // () -> int
 // E8 = msgbox
 // Parameters: 1/3
@@ -2399,6 +2273,7 @@ dword_8040F6C: .word 0x400
 // E8 10 = open special msgbox 3
 // E8 11 = special msgbox close 3
 // 
+	thumb_local_start
 chatbox_E8_msgbox:
 	push {lr}
 	ldr r0, off_8040FD4 // =off_8040FDC 
@@ -2484,10 +2359,9 @@ dword_804102C: .word 0x2020202
 	.word 0x2020202
 	.word 0x2020202
 	.hword 0x202
-.endfunc // chatbox_E8_msgbox
+	thumb_func_end chatbox_E8_msgbox
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804103E:
 	push {lr}
 	// mask
@@ -2531,10 +2405,9 @@ loc_804107A:
 	mov r0, #1
 	pop {pc}
 off_804108C: .word 0x100
-.endfunc // chatbox_804103E
+	thumb_func_end chatbox_804103E
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041090:
 	push {lr}
 	ldr r0, off_80410F4 // =0x100 
@@ -2590,10 +2463,9 @@ loc_80410F0:
 	mov r0, #0
 	pop {pc}
 off_80410F4: .word 0x100
-.endfunc // chatbox_8041090
+	thumb_func_end chatbox_8041090
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80410F8:
 	push {lr}
 	ldr r0, off_8041108 // =0x101 
@@ -2603,10 +2475,9 @@ chatbox_80410F8:
 	mov r0, #1
 	pop {pc}
 off_8041108: .word 0x101
-.endfunc // chatbox_80410F8
+	thumb_func_end chatbox_80410F8
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804110C:
 	push {lr}
 	// mask
@@ -2625,10 +2496,9 @@ chatbox_804110C:
 	mov r0, #1
 	pop {pc}
 off_8041130: .word 0x100
-.endfunc // chatbox_804110C
+	thumb_func_end chatbox_804110C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_E9_newline:
 	push {lr}
 	ldrb r2, [r5,#0xf]
@@ -2653,10 +2523,9 @@ loc_8041156:
 	mov r0, #0
 	pop {pc}
 off_804115C: .word dword_803FCE4
-.endfunc // chatbox_E9_newline
+	thumb_func_end chatbox_E9_newline
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_EA_flag:
 	push {lr}
 	ldr r2, off_8041180 // =off_8041184 
@@ -2686,59 +2555,53 @@ off_8041184: .word chatbox_80411B0+1
 	.word chatbox_80411E0+1
 	.word chatbox_804122C+1
 	.word chatbox_8041238+1
-.endfunc // chatbox_EA_flag
+	thumb_func_end chatbox_EA_flag
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80411B0:
 	push {lr}
 	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_80411B0
+	thumb_func_end chatbox_80411B0
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80411BC:
 	push {lr}
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_80411BC
+	thumb_func_end chatbox_80411BC
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80411C8:
 	push {lr}
 	bl ToggleEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_80411C8
+	thumb_func_end chatbox_80411C8
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80411D4:
 	push {lr}
 	bl sub_802F238
 	add r4, #4
 	pop {pc}
 	.byte 0, 0
-.endfunc // chatbox_80411D4
+	thumb_func_end chatbox_80411D4
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80411E0:
 	push {lr}
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_80411E0
+	thumb_func_end chatbox_80411E0
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80411E8:
 	push {lr}
 	ldrb r1, [r4,#2]
@@ -2746,16 +2609,14 @@ chatbox_80411E8:
 	lsl r0, r0, #8
 	orr r0, r1
 	ldrb r1, [r4,#4]
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
-	add r2, r1, #0
+	mov r0, r0
+	mov r2, r1
 	bl SetEventFlagRange // (u16 entryFlagBitfield) -> void
 	add r4, #5
 	pop {pc}
-.endfunc // chatbox_80411E8
+	thumb_func_end chatbox_80411E8
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041200:
 	push {lr}
 	ldrb r1, [r4,#2]
@@ -2763,16 +2624,14 @@ chatbox_8041200:
 	lsl r0, r0, #8
 	orr r0, r1
 	ldrb r1, [r4,#4]
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
-	add r2, r1, #0
+	mov r0, r0
+	mov r2, r1
 	bl ClearEventFlagRange // (u16 entryFlagBitfield) -> void
 	add r4, #5
 	pop {pc}
-.endfunc // chatbox_8041200
+	thumb_func_end chatbox_8041200
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041218:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -2784,30 +2643,27 @@ chatbox_8041218:
 	add r4, #3
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_8041218
+	thumb_func_end chatbox_8041218
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804122C:
 	push {lr}
 	bl reqBBS_813E5DC
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_804122C
+	thumb_func_end chatbox_804122C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041238:
 	push {lr}
 	bl reqBBS_813F9A0
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_8041238
+	thumb_func_end chatbox_8041238
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_EB_option:
 	push {lr}
 	// mask
@@ -2843,10 +2699,9 @@ chatbox_EB_option:
 	mov r0, #1
 	add r4, #4
 	pop {pc}
-.endfunc // chatbox_EB_option
+	thumb_func_end chatbox_EB_option
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_EC_label:
 	push {lr}
 	ldrb r2, [r4,#1]
@@ -2879,10 +2734,9 @@ loc_80412AA:
 	pop {pc}
 	.word dword_80412C4
 dword_80412C4: .word 0x303
-.endfunc // chatbox_EC_label
+	thumb_func_end chatbox_EC_label
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_ED_select:
 	push {r3,lr}
 	// mask
@@ -3032,7 +2886,7 @@ loc_80413C0:
 	str r4, [r5,#0x34] // ChatBoxPropreties.pCurrScript
 	b loc_80413EE
 loc_80413E8:
-	add r1, r0, #0
+	mov r1, r0
 	bl chatbox_config_80408D0 // (int notUsed, u8 scriptID) -> void
 loc_80413EE:
 	mov r0, #0
@@ -3112,10 +2966,9 @@ off_8041490: .word chatbox_ED_select_8040944+1
 	.word off_80414A0
 off_80414A0: .word byte_8070605
 	.word 0xC0B0A09
-.endfunc // chatbox_ED_select
+	thumb_func_end chatbox_ED_select
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_EE_pause:
 	push {lr}
 	ldrb r1, [r4,#1]
@@ -3176,8 +3029,7 @@ loc_8041510:
 	ldrb r1, [r4,#3]
 	lsl r1, r1, #8
 	orr r0, r1
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_80414F0
 	// mask
@@ -3189,7 +3041,7 @@ loc_804152A:
 	ldrb r0, [r4,#2]
 	ldrb r1, [r4,#3]
 	mov r2, r10
-	ldr r2, [r2,#0x10]
+	ldr r2, [r2,#oToolkit_S2011c50_Ptr]
 	add r2, #8
 	add r2, r2, r0
 	ldrb r0, [r2]
@@ -3205,8 +3057,7 @@ loc_8041546:
 	ldrb r1, [r4,#3]
 	lsl r1, r1, #8
 	orr r0, r1
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_80414F0
 	// mask
@@ -3217,10 +3068,9 @@ loc_8041546:
 	.word 0x1F2
 	.word 0x1F3
 	.word 0x1F0
-.endfunc // chatbox_EE_pause
+	thumb_func_end chatbox_EE_pause
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_EF_checkflag:
 	push {lr}
 	ldr r0, off_804157C // =jt_ctrl_8041580 
@@ -3291,10 +3141,9 @@ jt_ctrl_8041580: .word chatbox_804171C+1
 	.word chatbox_8041A7C+1
 	.word 0x0
 	.word chatbox_8041ABC+1
-.endfunc // chatbox_EF_checkflag
+	thumb_func_end chatbox_EF_checkflag
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041670:
 	push {lr}
 	ldr r0, off_8041690 // =off_8043C84 
@@ -3313,10 +3162,9 @@ loc_8041688:
 	pop {pc}
 	.byte 0, 0
 off_8041690: .word off_8043C84
-.endfunc // chatbox_8041670
+	thumb_func_end chatbox_8041670
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041694:
 	push {lr}
 	ldrb r1, [r4,#2]
@@ -3324,9 +3172,8 @@ chatbox_8041694:
 	lsl r0, r0, #8
 	orr r0, r1
 	ldrb r1, [r4,#4]
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
-	add r2, r1, #0
+	mov r0, r0
+	mov r2, r1
 	bl TestEventFlagRange // (int a3, int a2) ->
 	bne loc_80416AE
 	mov r2, #6
@@ -3344,17 +3191,16 @@ loc_80416BE:
 	add r4, #7
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_8041694
+	thumb_func_end chatbox_8041694
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80416C4:
 	push {lr}
 	ldrb r1, [r4,#2]
 	ldrb r2, [r4,#3]
 	mov r3, r10
-	ldr r3, [r3,#0x3c]
-	ldrb r3, [r3,#5]
+	ldr r3, [r3,#oToolkit_GameStatePtr]
+	ldrb r3, [r3,#oGameState_MapNumber]
 	mov r0, #5
 	cmp r3, r1
 	blt loc_80416DC
@@ -3372,17 +3218,16 @@ loc_80416EA:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_80416C4
+	thumb_func_end chatbox_80416C4
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80416F0:
 	push {lr}
 	ldrb r1, [r4,#2]
 	ldrb r2, [r4,#3]
 	mov r3, r10
-	ldr r3, [r3,#0x3c]
-	ldrb r3, [r3,#4]
+	ldr r3, [r3,#oToolkit_GameStatePtr]
+	ldrb r3, [r3,#oGameState_MapGroup]
 	mov r0, #5
 	cmp r3, r1
 	blt loc_8041708
@@ -3400,10 +3245,9 @@ loc_8041716:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_80416F0
+	thumb_func_end chatbox_80416F0
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804171C:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -3411,8 +3255,7 @@ chatbox_804171C:
 	lsl r2, r2, #8
 	orr r0, r2
 	mov r2, #0
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8041732
 	mov r2, #1
@@ -3428,17 +3271,16 @@ loc_8041742:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_804171C
+	thumb_func_end chatbox_804171C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041748:
 	push {lr}
 	ldrb r1, [r4,#2]
 	ldrb r2, [r4,#3]
 	mov r3, r10
-	ldr r3, [r3,#0x3c]
-	ldrb r3, [r3,#6]
+	ldr r3, [r3,#oToolkit_GameStatePtr]
+	ldrb r3, [r3,#oGameState_GameProgress]
 	mov r0, #5
 	cmp r3, r1
 	blt loc_8041760
@@ -3456,10 +3298,9 @@ loc_804176E:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_8041748
+	thumb_func_end chatbox_8041748
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041774:
 	push {lr}
 	ldr r0, off_80417A0 // =off_8043C64 
@@ -3485,10 +3326,9 @@ loc_8041798:
 	pop {pc}
 	.byte 0, 0
 off_80417A0: .word off_8043C64
-.endfunc // chatbox_8041774
+	thumb_func_end chatbox_8041774
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80417A4:
 	push {lr}
 	mov r0, #2
@@ -3504,10 +3344,9 @@ loc_80417B8:
 	mov r0, #1
 	pop {pc}
 	.byte 0, 0
-.endfunc // chatbox_80417A4
+	thumb_func_end chatbox_80417A4
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80417C0:
 	push {lr}
 	bl sub_803F524
@@ -3528,10 +3367,9 @@ loc_80417DC:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_80417C0
+	thumb_func_end chatbox_80417C0
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80417E4:
 	push {lr}
 	push {r4,r5}
@@ -3559,10 +3397,9 @@ loc_8041810:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_80417E4
+	thumb_func_end chatbox_80417E4
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041818:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -3606,7 +3443,7 @@ loc_804184C:
 	orr r0, r1
 	ldrb r1, [r4,#4]
 	bl sub_8021C02
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0,r4,r5}
 	sub r0, r0, r1
 	ldrb r1, [r4,#5]
@@ -3658,10 +3495,9 @@ loc_80418C6:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_8041818
+	thumb_func_end chatbox_8041818
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80418CC:
 	push {r6,lr}
 	ldrb r6, [r4,#3]
@@ -3693,10 +3529,9 @@ loc_80418FE:
 	add r4, #6
 	mov r0, #1
 	pop {r6,pc}
-.endfunc // chatbox_80418CC
+	thumb_func_end chatbox_80418CC
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041904:
 	push {r6,r7,lr}
 	mov r7, #0
@@ -3732,14 +3567,13 @@ loc_804193E:
 	add r4, #6
 	mov r0, #1
 	pop {r6,r7,pc}
-.endfunc // chatbox_8041904
+	thumb_func_end chatbox_8041904
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041944:
 	push {r6,r7,lr}
 	bl sub_800B6B0
-	add r2, r0, #0
+	mov r2, r0
 	add r2, #1
 	ldrb r1, [r4,r2]
 	cmp r1, #0xff
@@ -3752,16 +3586,14 @@ loc_804195C:
 	mov r0, #1
 	pop {r6,r7,pc}
 	.balign 4, 0x00
-.endfunc // chatbox_8041944
+	thumb_func_end chatbox_8041944
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041964:
 	push {lr}
 	mov r1, #6
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
-	add r2, r1, #0
+	mov r0, r0
+	mov r2, r1
 	bl TestEventFlagRange // (int a3, int a2) ->
 	bne loc_8041976
 	mov r2, #3
@@ -3779,10 +3611,9 @@ loc_8041986:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_8041964
+	thumb_func_end chatbox_8041964
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804198C:
 	push {lr}
 	ldr r0, off_80419B0 // =off_8043C64 
@@ -3803,10 +3634,9 @@ loc_80419A8:
 	pop {pc}
 	.byte 0, 0
 off_80419B0: .word off_8043C64
-.endfunc // chatbox_804198C
+	thumb_func_end chatbox_804198C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80419B4:
 	push {lr}
 	bl getPETNaviSelect // () -> u8
@@ -3821,10 +3651,9 @@ loc_80419CA:
 	add r4, #0xe
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_80419B4
+	thumb_func_end chatbox_80419B4
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80419D0:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -3846,10 +3675,9 @@ loc_80419F2:
 	add r4, #5
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_80419D0
+	thumb_func_end chatbox_80419D0
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80419F8:
 	push {lr}
 	bl getPETNaviSelect // () -> u8
@@ -3874,10 +3702,9 @@ loc_8041A22:
 	add r4, #6
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_80419F8
+	thumb_func_end chatbox_80419F8
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041A28:
 	push {lr}
 	mov r0, #6
@@ -3898,10 +3725,9 @@ loc_8041A46:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_8041A28
+	thumb_func_end chatbox_8041A28
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041A4C:
 	push {lr}
 	ldrb r1, [r4,#2]
@@ -3927,10 +3753,9 @@ loc_8041A76:
 	add r4, #7
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_8041A4C
+	thumb_func_end chatbox_8041A4C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041A7C:
 	push {lr}
 	ldrb r1, [r4,#1]
@@ -3960,10 +3785,9 @@ loc_8041AA8:
 	.byte 0, 0
 off_8041AB0: .word dword_8041AB4
 dword_8041AB4: .word 0x4020100, 0x605
-.endfunc // chatbox_8041A7C
+	thumb_func_end chatbox_8041A7C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041ABC:
 	push {lr}
 	bl reqBBS_getTotalPointsIndex // () -> u8
@@ -3980,10 +3804,9 @@ loc_8041AD4:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_8041ABC
+	thumb_func_end chatbox_8041ABC
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_F0_jump:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -4006,7 +3829,7 @@ loc_8041AFA:
 	b loc_8041B00
 loc_8041B00:
 	mov r0, r10
-	ldr r0, [r0,#0x24]
+	ldr r0, [r0,#oToolkit_CurFramePtr]
 	ldrh r0, [r0]
 	mov r6, #3
 	and r6, r0
@@ -4096,10 +3919,9 @@ loc_8041B9C:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_F0_jump
+	thumb_func_end chatbox_F0_jump
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_F1_textspeed:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -4127,10 +3949,9 @@ loc_8041BC8:
 	.byte 0, 0
 dword_8041BD0: .word 0x800
 dword_8041BD4: .word 0x1F3
-.endfunc // chatbox_F1_textspeed
+	thumb_func_end chatbox_F1_textspeed
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_F2_clearmsgbox:
 	push {lr}
 	ldr r0, off_8041C50 // =0x200 
@@ -4167,7 +3988,7 @@ loc_8041BF2:
 	str r0, [r5,#0x74]
 	ldrb r0, [r5,#8]
 	ldrb r0, [r5,#0x18]
-	add r1, r5, #0
+	mov r1, r5
 	add r1, #0x94
 	strb r0, [r1]
 	bl chatbox_8045F60
@@ -4185,10 +4006,9 @@ off_8041C44: .word off_8041C48
 off_8041C48: .word 0x1D4
 dword_8041C4C: .word 0x1D6
 off_8041C50: .word 0x200
-.endfunc // chatbox_F2_clearmsgbox
+	thumb_func_end chatbox_F2_clearmsgbox
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_F3_control:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -4215,11 +4035,10 @@ loc_8041C78:
 loc_8041C80:
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_F3_control
+	thumb_func_end chatbox_F3_control
 
-.func
-.thumb_func
 // () ->
+	thumb_local_start
 chatbox_F4_unk:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -4275,10 +4094,9 @@ loc_8041CD8:
 	mov r0, #1
 	pop {pc}
 dword_8041CF0: .word 0x72
-.endfunc // chatbox_F4_unk
+	thumb_func_end chatbox_F4_unk
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_F5_mugshot:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -4349,10 +4167,8 @@ loc_8041D60:
 	mov r2, #0xff
 	strb r2, [r5,#0xb]
 	bl sub_8040B3A
-	.byte  3
-	.byte 0x34 
-	.byte 0x13
-	.byte 0xE0
+	add r4, #3
+	b loc_8041D9C
 loc_8041D74:
 	mov r0, #2
 	bl chatbox_clearFlags_3e // (int mask) -> void
@@ -4386,10 +4202,9 @@ dword_8041DA8: .word 0x18C6
 dword_8041DB0: .word 0x1000
 off_8041DB4: .word 0x1F0
 off_8041DB8: .word 0x1F1
-.endfunc // chatbox_F5_mugshot
+	thumb_func_end chatbox_F5_mugshot
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_F6_textcolor:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -4417,10 +4232,9 @@ loc_8041DE6:
 	pop {pc}
 off_8041DEC: .word dword_86B7AA0
 off_8041DF0: .word byte_3001710
-.endfunc // chatbox_F6_textcolor
+	thumb_func_end chatbox_F6_textcolor
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041DF4:
 	sub r0, #16
 	cmp r0, #0
@@ -4492,10 +4306,9 @@ loc_8041E5A:
 	pop {pc}
 	.balign 4, 0x00
 dword_8041E7C: .word 0xFFFF
-.endfunc // chatbox_8041DF4
+	thumb_func_end chatbox_8041DF4
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_F8_playeranimation:
 	push {lr}
 	ldr r0, off_8041E90 // =off_8041E94 
@@ -4513,10 +4326,9 @@ off_8041E94: .word chatbox_8041EB0+1
 	.word chatbox_8041F44+1
 	.word chatbox_8041EE8+1
 	.word chatbox_8041F44+1
-.endfunc // chatbox_F8_playeranimation
+	thumb_func_end chatbox_F8_playeranimation
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041EB0:
 	push {lr}
 	// mask
@@ -4544,19 +4356,18 @@ loc_8041EE2:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_8041EB0
+	thumb_func_end chatbox_8041EB0
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041EE8:
 	push {lr}
 	// mask
 	mov r0, #1
 	bl chatbox_setflags_3e // (int mask) -> void
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
-	ldr r7, [r7,#0x18]
-	add r1, r5, #0
+	ldr r7, [r7,#oToolkit_GameStatePtr]
+	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
+	mov r1, r5
 	add r1, #0x3c 
 	ldrb r2, [r7,#0x14]
 	strb r2, [r1]
@@ -4569,20 +4380,18 @@ loc_8041F04:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-.endfunc // chatbox_8041EE8
+	thumb_func_end chatbox_8041EE8
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041F10:
 	push {lr}
 	bl sub_809E122
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_8041F10
+	thumb_func_end chatbox_8041F10
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041F1C:
 	push {lr}
 	// mask
@@ -4590,8 +4399,8 @@ chatbox_8041F1C:
 	bl chatbox_setflags_3e // (int mask) -> void
 	push {r5}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldr r5, [r0,#0x18]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldr r5, [r0,#oGameState_OverworldPlayerObjectPtr]
 	bl sub_8002DEA
 	pop {r5}
 	mov r1, #0x80
@@ -4604,33 +4413,31 @@ loc_8041F3C:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_8041F1C
+	thumb_func_end chatbox_8041F1C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041F44:
 	push {lr}
 	// mask
 	mov r0, #1
 	bl chatbox_setflags_3e // (int mask) -> void
-	add r1, r5, #0
+	mov r1, r5
 	add r1, #0x3c 
 	ldrb r0, [r1]
 	cmp r0, #7
 	bgt loc_8041F5E
 	mov r7, r10
-	ldr r7, [r7,#0x3c]
-	ldr r7, [r7,#0x18]
+	ldr r7, [r7,#oToolkit_GameStatePtr]
+	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
 	strb r0, [r7,#0x10]
 loc_8041F5E:
 	bl sub_809E14C
 	add r4, #2
 	mov r0, #0
 	pop {pc}
-.endfunc // chatbox_8041F44
+	thumb_func_end chatbox_8041F44
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_FA_print:
 	push {lr}
 	ldr r0, off_8041F78 // =jt_FA_print_8041F7C 
@@ -4655,10 +4462,9 @@ jt_FA_print_8041F7C: .word chatbox_8041FB4+1
 	.word chatbox_80421D8+1
 	.word chatbox_804222C+1
 	.word chatbox_804228C+1
-.endfunc // chatbox_FA_print
+	thumb_func_end chatbox_FA_print
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8041FB4:
 	push {lr}
 	ldrb r0, [r5,#5]
@@ -4699,7 +4505,7 @@ loc_8041FE0:
 	and r1, r3
 loc_8041FFA:
 	mov r3, #0xf
-	add r7, r2, #0
+	mov r7, r2
 	and r7, r3
 	ldr r3, off_804208C // =dword_8042090 
 	lsl r6, r7, #2
@@ -4720,7 +4526,7 @@ loc_8042014:
 	lsl r1, r1, #1
 	ldrh r1, [r0,r1]
 	add r0, r0, r1
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x64 
 	ldrh r2, [r7]
 	lsl r2, r2, #6
@@ -4730,7 +4536,7 @@ loc_8042014:
 	mov r2, #0x40 
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x64 
 	ldrh r1, [r7]
 	add r1, #1
@@ -4747,7 +4553,7 @@ loc_8042014:
 	add r1, r1, r0
 	str r4, [r5,r1]
 	pop {r0}
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #1
 	pop {pc}
 off_8042060: .word off_8042064
@@ -4755,7 +4561,7 @@ off_8042064: .word byte_873D9FC
 	.word byte_86EA94C
 	.word byte_86EB354
 	.word byte_86EF71C
-	.word byte_86CF4AC
+	.word unk_86CF4AC
 	.word byte_873EA50
 	.word byte_873EA50
 	.word byte_86EA94C
@@ -4767,24 +4573,23 @@ dword_8042090: .word 0x0, 0x0, 0x0, 0x0, 0x0
 	.word 0x90
 	.word 0x0, 0x0, 0x0
 off_80420B8: .word 0x140
-.endfunc // chatbox_8041FB4
+	thumb_func_end chatbox_8041FB4
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80420BC:
 	push {lr}
 	ldrb r0, [r5,#5]
 	add r0, #1
 	strb r0, [r5,#5]
 	bl getPETNaviSelect // () -> u8
-	add r1, r0, #0
+	mov r1, r0
 	ldr r0, off_8042114 // =off_8042118 
 	ldrb r2, [r4,#2]
 	ldr r0, [r0,r2]
 	lsl r1, r1, #1
 	ldrh r1, [r0,r1]
 	add r0, r0, r1
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x64 
 	ldrh r2, [r7]
 	lsl r2, r2, #6
@@ -4794,7 +4599,7 @@ chatbox_80420BC:
 	mov r2, #0x40 
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x64 
 	ldrh r1, [r7]
 	add r1, #1
@@ -4811,24 +4616,22 @@ chatbox_80420BC:
 	add r1, r1, r0
 	str r4, [r5,r1]
 	pop {r0}
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #1
 	pop {pc}
 off_8042114: .word off_8042118
 off_8042118: .word byte_87F2E38
 	.word dword_87F2ED0
 off_8042120: .word 0x140
-.endfunc // chatbox_80420BC
+	thumb_func_end chatbox_80420BC
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042124:
 	push {lr}
 	pop {pc}
-.endfunc // chatbox_8042124
+	thumb_func_end chatbox_8042124
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042128:
 	push {lr}
 	ldrb r0, [r5,#5]
@@ -4869,15 +4672,14 @@ loc_8042148:
 	add r1, r1, r0
 	str r4, [r5,r1]
 	pop {r0}
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #1
 	pop {pc}
 off_804217C: .word unk_200AFA0
 off_8042180: .word 0x140
-.endfunc // chatbox_8042128
+	thumb_func_end chatbox_8042128
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042184:
 	push {lr}
 	ldrb r0, [r5,#5]
@@ -4910,17 +4712,16 @@ chatbox_8042184:
 	add r1, r1, r0
 	str r4, [r5,r1]
 	pop {r0}
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
 off_80421CC: .word unk_200AFA0
 off_80421D0: .word 0x140
 off_80421D4: .word off_8043C8C
-.endfunc // chatbox_8042184
+	thumb_func_end chatbox_8042184
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80421D8:
 	push {r7,lr}
 	ldrb r0, [r5,#5]
@@ -4929,7 +4730,7 @@ chatbox_80421D8:
 	ldrb r3, [r4,#2]
 	add r3, #0x4c 
 	ldr r0, [r5,r3]
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x64 
 	ldrh r2, [r7]
 	lsl r2, r2, #6
@@ -4941,7 +4742,7 @@ chatbox_80421D8:
 	pop {r0}
 	mov r2, #0xe5
 	strb r2, [r0,#3]
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x64 
 	ldrh r1, [r7]
 	add r1, #1
@@ -4958,14 +4759,13 @@ chatbox_80421D8:
 	add r1, r1, r0
 	str r4, [r5,r1]
 	pop {r0}
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #1
 	pop {r7,pc}
 off_8042228: .word 0x140
-.endfunc // chatbox_80421D8
+	thumb_func_end chatbox_80421D8
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804222C:
 	push {r7,lr}
 	ldrb r0, [r5,#5]
@@ -4978,7 +4778,7 @@ chatbox_804222C:
 	ldr r2, [r0,#4]
 	push {r2}
 	ldr r0, [r0]
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x64 
 	ldrh r2, [r7]
 	lsl r2, r2, #6
@@ -4988,7 +4788,7 @@ chatbox_804222C:
 	push {r1}
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {r0}
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x64 
 	ldrh r1, [r7]
 	add r1, #1
@@ -5005,23 +4805,21 @@ chatbox_804222C:
 	add r1, r1, r0
 	str r4, [r5,r1]
 	pop {r0}
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #1
 	pop {r7,pc}
 off_8042280: .word 0x140
 off_8042284: .word unk_200AFA0
 off_8042288: .word byte_8043B54
-.endfunc // chatbox_804222C
+	thumb_func_end chatbox_804222C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804228C:
 	push {r7,lr}
 	pop {r7,pc}
-.endfunc // chatbox_804228C
+	thumb_func_end chatbox_804228C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_FD_sound:
 	push {lr}
 	ldr r0, off_80422A0 // =off_80422A4 
@@ -5044,10 +4842,9 @@ off_80422A4: .word chatbox_80422D4+1
 	.word chatbox_8042350+1
 	.word chatbox_8042360+1
 	.word chatbox_8042370+1
-.endfunc // chatbox_FD_sound
+	thumb_func_end chatbox_FD_sound
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80422D4:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -5058,10 +4855,9 @@ chatbox_80422D4:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_80422D4
+	thumb_func_end chatbox_80422D4
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80422E8:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -5072,10 +4868,9 @@ chatbox_80422E8:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_80422E8
+	thumb_func_end chatbox_80422E8
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80422FC:
 	push {lr}
 	mov r0, #0x40 
@@ -5084,10 +4879,9 @@ chatbox_80422FC:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_80422FC
+	thumb_func_end chatbox_80422FC
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804230C:
 	push {lr}
 	// mask
@@ -5097,36 +4891,33 @@ chatbox_804230C:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_804230C
+	thumb_func_end chatbox_804230C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804231C:
 	push {lr}
 	bl musicGameState_8000784 // () -> void
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_804231C
+	thumb_func_end chatbox_804231C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042328:
 	push {lr}
 	ldrb r0, [r4,#2]
 	ldrb r1, [r4,#3]
 	bl sub_800068A
 	mov r1, r10
-	ldr r1, [r1,#0x3c]
+	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #0x63 
-	strb r0, [r1,#0xf]
+	strb r0, [r1,#oGameState_BGMusicIndicator]
 	add r4, #4
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_8042328
+	thumb_func_end chatbox_8042328
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042340:
 	push {lr}
 	mov r0, #0x80
@@ -5135,10 +4926,9 @@ chatbox_8042340:
 	mov r0, #1
 	pop {pc}
 	.byte 0, 0
-.endfunc // chatbox_8042340
+	thumb_func_end chatbox_8042340
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042350:
 	push {lr}
 	// mask
@@ -5148,10 +4938,9 @@ chatbox_8042350:
 	mov r0, #1
 	pop {pc}
 	.byte 0, 0
-.endfunc // chatbox_8042350
+	thumb_func_end chatbox_8042350
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042360:
 	push {lr}
 	bl sub_8036E44
@@ -5159,10 +4948,9 @@ chatbox_8042360:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_8042360
+	thumb_func_end chatbox_8042360
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042370:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -5175,10 +4963,9 @@ chatbox_8042370:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_8042370
+	thumb_func_end chatbox_8042370
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_FB_special:
 	push {lr}
 	ldr r0, off_8042398 // =jt_804239C 
@@ -5205,10 +4992,9 @@ jt_804239C: .word chatbox_80423DC+1
 	.word chatbox_80425E0+1
 	.word chatbox_80425C0+1
 	.word chatbox_80425F0+1
-.endfunc // chatbox_FB_special
+	thumb_func_end chatbox_FB_special
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80423DC:
 	push {lr}
 	mov r0, #0x73 
@@ -5227,7 +5013,7 @@ chatbox_80423DC:
 	ldrb r1, [r0,#3]
 	lsl r1, r1, #0x18
 	orr r2, r1
-	add r0, r2, #0
+	mov r0, r2
 	str r0, [r5,#0x4c]
 	bl sub_803CFF8
 	ldrb r0, [r4,#2]
@@ -5238,10 +5024,9 @@ chatbox_80423DC:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_80423DC
+	thumb_func_end chatbox_80423DC
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042418:
 	push {lr}
 	mov r0, #0x73 
@@ -5267,10 +5052,9 @@ chatbox_8042418:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_8042418
+	thumb_func_end chatbox_8042418
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804244C:
 	push {lr}
 	// mask
@@ -5285,7 +5069,7 @@ loc_804245C:
 	mov r2, #0x1f
 	bl sub_80AA5F4
 	mov r1, #1
-	bl gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
+	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 	mov r0, #0x2c 
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
@@ -5295,10 +5079,9 @@ loc_804245C:
 loc_8042478:
 	mov r0, #0
 	pop {pc}
-.endfunc // chatbox_804244C
+	thumb_func_end chatbox_804244C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804247C:
 	push {lr}
 	// mask
@@ -5314,11 +5097,11 @@ loc_804248C:
 	ldrb r1, [r4,#3]
 	lsl r1, r1, #8
 	orr r0, r1
-	add r7, r0, #0
+	mov r7, r0
 	bl getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
 	mov r1, #1
-	bl gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
-	add r0, r7, #0
+	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
+	mov r0, r7
 	bl sub_803522E
 	mov r0, #0x2c 
 	mov r1, #0x10
@@ -5330,10 +5113,9 @@ loc_80424B6:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_804247C
+	thumb_func_end chatbox_804247C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80424BC:
 	push {lr}
 	// mask
@@ -5354,10 +5136,9 @@ loc_80424DA:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-.endfunc // chatbox_80424BC
+	thumb_func_end chatbox_80424BC
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80424E0:
 	push {lr}
 	ldrb r0, [r5,#4]
@@ -5400,10 +5181,9 @@ loc_8042526:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_80424E0
+	thumb_func_end chatbox_80424E0
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804252C:
 	push {lr}
 	mov r0, #0x8a
@@ -5413,16 +5193,18 @@ chatbox_804252C:
 	lsl r0, r0, #8
 	orr r7, r0
 	bl getPETNaviSelect // () -> u8
-	add r6, r0, #0
+	mov r6, r0
 	bl sub_80010D4
 	add r1, r0, r7
-	add r0, r6, #0
+	mov r0, r6
 	bl sub_80010EC
 	add r4, #4
 	mov r0, #0
 	pop {pc}
-.endfunc // chatbox_804252C
+	thumb_func_end chatbox_804252C
 
+	thumb_local_start
+sub_8042554:
 	push {lr}
 	mov r0, #0x73 
 	bl sound_play // () -> void
@@ -5442,8 +5224,9 @@ chatbox_804252C:
 	mov r0, #1
 	pop {pc}
 	.byte 0, 0
-.func
-.thumb_func
+	thumb_func_end sub_8042554
+
+	thumb_local_start
 chatbox_8042580:
 	push {lr}
 	// mask
@@ -5462,10 +5245,9 @@ loc_804259A:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-.endfunc // chatbox_8042580
+	thumb_func_end chatbox_8042580
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80425A0:
 	push {lr}
 	// mask
@@ -5484,10 +5266,9 @@ loc_80425BA:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-.endfunc // chatbox_80425A0
+	thumb_func_end chatbox_80425A0
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80425C0:
 	push {lr}
 	// mask
@@ -5506,10 +5287,9 @@ loc_80425DA:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-.endfunc // chatbox_80425C0
+	thumb_func_end chatbox_80425C0
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80425E0:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -5518,10 +5298,9 @@ chatbox_80425E0:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-.endfunc // chatbox_80425E0
+	thumb_func_end chatbox_80425E0
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80425F0:
 	push {lr}
 	// mask
@@ -5540,10 +5319,9 @@ loc_804260A:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-.endfunc // chatbox_80425F0
+	thumb_func_end chatbox_80425F0
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_FC_interface:
 	push {lr}
 	ldr r0, off_8042620 // =off_8042624 
@@ -5572,10 +5350,9 @@ off_8042624: .word chatbox_8042678+1
 	.byte 0, 0, 0, 0
 	.word chatbox_8042804+1
 	.word chatbox_8042820+1
-.endfunc // chatbox_FC_interface
+	thumb_func_end chatbox_FC_interface
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042678:
 	push {lr}
 	push {r4}
@@ -5600,10 +5377,9 @@ loc_80426A0:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // chatbox_8042678
+	thumb_func_end chatbox_8042678
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80426A8:
 	push {lr}
 	ldrb r0, [r4,#2]
@@ -5614,14 +5390,13 @@ chatbox_80426A8:
 	mov lr, pc
 	bx r1
 	add r4, #4
-.endfunc // chatbox_80426A8
-
 	mov r0, #1
 	pop {pc}
 	.byte 0, 0
 off_80426C0: .word jt_8043B00
-.func
-.thumb_func
+	thumb_func_end chatbox_80426A8
+
+	thumb_local_start
 chatbox_80426C4:
 	push {lr}
 	mov r0, #0xc
@@ -5630,22 +5405,20 @@ chatbox_80426C4:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_80426C4
+	thumb_func_end chatbox_80426C4
 
-.func
-.thumb_func
 // () -> int
 // .global r4
+	thumb_local_start
 chatbox_80426D4:
 	push {lr}
 	bl sub_813C030 // () -> void
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_80426D4
+	thumb_func_end chatbox_80426D4
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80426E0:
 	push {lr}
 	// mask
@@ -5656,10 +5429,9 @@ chatbox_80426E0:
 	pop {pc}
 	.byte 0, 0
 dword_80426F0: .word 0x1000
-.endfunc // chatbox_80426E0
+	thumb_func_end chatbox_80426E0
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80426F4:
 	push {lr}
 	mov r2, #0
@@ -5681,10 +5453,9 @@ loc_8042716:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_80426F4
+	thumb_func_end chatbox_80426F4
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804271C:
 	push {lr}
 	mov r0, #1
@@ -5723,18 +5494,17 @@ dword_8042760: .word 0x1D6
 off_8042764: .word 0x1D8
 off_8042768: .word 0x1E8
 off_804276C: .word 0x1EC
-.endfunc // chatbox_804271C
+	thumb_func_end chatbox_804271C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042770:
 	push {lr}
 	ldrb r2, [r4,#2]
 	push {r4,r5}
 	push {r3}
 	mov r3, r10
-	ldr r3, [r3,#0x3c]
-	strb r2, [r3,#1]
+	ldr r3, [r3,#oToolkit_GameStatePtr]
+	strb r2, [r3,#oGameState_PETNaviIndex]
 	pop {r3}
 	ldr r3, off_80427AC // =dword_80427B0 
 	ldrb r2, [r3,r2]
@@ -5746,8 +5516,6 @@ chatbox_8042770:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sub_8002F90 // () -> void
 	bl sprite_loadAnimationData // () -> void
-.endfunc // chatbox_8042770
-
 	bl sprite_update
 	pop {r4,r5}
 	add r4, #3
@@ -5756,8 +5524,9 @@ chatbox_8042770:
 off_80427A8: .word eOWPlayerObject
 off_80427AC: .word dword_80427B0
 dword_80427B0: .word 0x37
-.func
-.thumb_func
+	thumb_func_end chatbox_8042770
+
+	thumb_local_start
 chatbox_80427B4:
 	push {lr}
 	ldr r0, off_8042A94 // =dynaicArr 
@@ -5781,10 +5550,9 @@ loc_80427CE:
 dword_80427D8: .word 0xD
 dword_80427DC: .word 0xF
 off_80427E0: .word dword_813F380
-.endfunc // chatbox_80427B4
+	thumb_func_end chatbox_80427B4
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80427E4:
 	push {lr}
 	ldr r0, off_8042A98 // =dynaicArr 
@@ -5800,10 +5568,9 @@ chatbox_80427E4:
 	pop {pc}
 dword_80427FC: .word 0xF
 off_8042800: .word dword_813F380
-.endfunc // chatbox_80427E4
+	thumb_func_end chatbox_80427E4
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042804:
 	push {lr}
 	ldr r0, off_8042818 // =dynaicArr 
@@ -5816,10 +5583,9 @@ chatbox_8042804:
 	.balign 4, 0x00
 off_8042818: .word dynaicArr
 dword_804281C: .word 0xF
-.endfunc // chatbox_8042804
+	thumb_func_end chatbox_8042804
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042820:
 	push {lr}
 	bl sub_809CA84
@@ -5828,10 +5594,9 @@ chatbox_8042820:
 	add r4, #2
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_8042820
+	thumb_func_end chatbox_8042820
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_F7_movebox:
 	push {lr}
 	ldr r0, off_8042840 // =off_8042844 
@@ -5905,10 +5670,9 @@ off_80429F0: .word byte_8521A12
 	.byte 0x18, 0x3, 0x70, 0x52, 0x8, 0x52, 0x0, 0x92, 0x0
 	.byte 0xE9, 0x6F, 0x89, 0x18, 0xE9, 0x67, 0x3, 0x34, 0x1
 	.byte 0x20, 0xC0, 0xBD, 0x0, 0x0
-.endfunc // chatbox_F7_movebox
+	thumb_func_end chatbox_F7_movebox
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042A14:
 	push {r4,r5,lr}
 	push {r1,r2}
@@ -5928,7 +5692,7 @@ loc_8042A30:
 	and r3, r1
 	cmp r3, #0
 	bne loc_8042A3A
-	add r3, r0, #0
+	mov r3, r0
 loc_8042A3A:
 	sub r3, r3, r0
 	mov r4, #0x80
@@ -5984,10 +5748,9 @@ loc_8042A86:
 	pop {r4,r5,pc}
 off_8042A94: .word dynaicArr
 off_8042A98: .word dynaicArr
-.endfunc // chatbox_8042A14
+	thumb_func_end chatbox_8042A14
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042A9C:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -6070,10 +5833,9 @@ loc_8042B32:
 	add r4, #7
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_8042A9C
+	thumb_func_end chatbox_8042A9C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042B38:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -6163,7 +5925,7 @@ loc_8042BD0:
 	orr r0, r3
 	push {r0,r2,r3}
 	bl sub_803D06C
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0,r2,r3}
 	mov r2, #0
 	cmp r1, r0
@@ -6187,10 +5949,9 @@ loc_8042C0C:
 	pop {pc}
 	.balign 4, 0x00
 dword_8042C14: .word 0xFFFFFFFF
-.endfunc // chatbox_8042B38
+	thumb_func_end chatbox_8042B38
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042C18:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -6280,7 +6041,7 @@ loc_8042CB0:
 	orr r0, r3
 	push {r0,r2,r3}
 	bl sub_803D0F4
-	add r1, r0, #0
+	mov r1, r0
 	pop {r0,r2,r3}
 	mov r2, #0
 	cmp r1, r0
@@ -6304,10 +6065,9 @@ loc_8042CEC:
 	pop {pc}
 	.balign 4, 0x00
 dword_8042CF4: .word 0xFFFFFFFF
-.endfunc // chatbox_8042C18
+	thumb_func_end chatbox_8042C18
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_FE_numberinput:
 	push {lr}
 	ldr r0, off_8042D08 // =jt_8042D0C 
@@ -6318,7 +6078,7 @@ chatbox_FE_numberinput:
 	bx r0
 	pop {pc}
 off_8042D08: .word jt_8042D0C
-jt_8042D0C: .word loc_804312C+1
+jt_8042D0C: .word sub_804312C+1
 	.word chatbox_8043164+1
 	.word chatbox_80432C8+1
 	.word chatbox_804330C+1
@@ -6341,10 +6101,9 @@ jt_8042D0C: .word loc_804312C+1
 	.word 0x54292100
 	.word 0x20013403
 	.word 0x46F7
-.endfunc // chatbox_FE_numberinput
+	thumb_func_end chatbox_FE_numberinput
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042D68:
 	push {lr}
 	// mask
@@ -6411,9 +6170,8 @@ loc_8042DBA:
 	add r4, #2
 	mov r0, #0
 	pop {pc}
-.endfunc // chatbox_8042D68
-
 	push {lr}
+	// mask
 	mov r0, #1
 	bl chatbox_setflags_3e // (int mask) -> void
 	bl chatbox_8040DBC
@@ -6431,6 +6189,7 @@ loc_8042E08:
 	strb r0, [r5,#0x13]
 	mov r0, #1
 	strb r0, [r5,#4]
+	// mask
 	mov r0, #0x10
 	bl chatbox_setflags_3e // (int mask) -> void
 	b loc_8042E62
@@ -6520,8 +6279,9 @@ loc_8042EC0:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-.func
-.thumb_func
+	thumb_func_end chatbox_8042D68
+
+	thumb_local_start
 chatbox_8042EC8:
 	push {r1-r7,lr}
 	mov r4, #0
@@ -6540,10 +6300,9 @@ chatbox_8042EC8:
 	mov r0, #1
 locret_8042EE6:
 	pop {r1-r7,pc}
-.endfunc // chatbox_8042EC8
+	thumb_func_end chatbox_8042EC8
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042EE8:
 	push {r1-r7,lr}
 	lsl r0, r0, #3
@@ -6567,15 +6326,14 @@ loc_8042F08:
 locret_8042F0A:
 	pop {r1-r7,pc}
 off_8042F0C: .word dword_8045CCC
-.endfunc // chatbox_8042EE8
+	thumb_func_end chatbox_8042EE8
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042F10:
 	push {r2,lr}
 	ldr r0, [r5,#0x4c]
 	bl chatbox_8042F34
-	add r3, r0, #0
+	mov r3, r0
 	mov r0, #1
 	ldr r2, off_8042F30 // =dword_8044264 
 loc_8042F1E:
@@ -6591,13 +6349,12 @@ loc_8042F2C:
 locret_8042F2E:
 	pop {r2,pc}
 off_8042F30: .word dword_8044264
-.endfunc // chatbox_8042F10
+	thumb_func_end chatbox_8042F10
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042F34:
 	push {r2}
-	add r1, r0, #0
+	mov r1, r0
 	mov r3, #0xff
 	mov r2, #0
 loc_8042F3C:
@@ -6639,29 +6396,30 @@ loc_8042F70:
 	add r2, #8
 	mov r3, #0xff
 	lsl r3, r2
-	add r1, r0, #0
+	mov r1, r0
 	b loc_8042F3C
 loc_8042F80:
 	pop {r2}
 	mov pc, lr
-.endfunc // chatbox_8042F34
+	thumb_func_end chatbox_8042F34
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042F84:
 	push {lr}
 	pop {pc}
-.endfunc // chatbox_8042F84
+	thumb_func_end chatbox_8042F84
 
+	thumb_local_start
+sub_8042F88:
 	push {r4-r6,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x2c]
+	ldr r5, [r5,#oToolkit_ChatboxPtr]
 	mov r2, #0x1c
 	mov r3, #0xf
 	mov r4, #0
 	mov r6, #0
 loc_8042F96:
-	add r1, r0, #0
+	mov r1, r0
 	lsr r1, r2
 	and r1, r3
 	lsl r1, r4
@@ -6674,7 +6432,7 @@ loc_8042F96:
 	mov r4, #0
 	mov r6, #0
 loc_8042FAE:
-	add r1, r0, #0
+	mov r1, r0
 	lsr r1, r2
 	and r1, r3
 	lsl r1, r4
@@ -6684,6 +6442,10 @@ loc_8042FAE:
 	bge loc_8042FAE
 	str r6, [r5,#0x58]
 	pop {r4-r6,pc}
+	thumb_func_end sub_8042F88
+
+	thumb_local_start
+sub_8042FC2:
 	push {lr}
 	ldr r0, dword_8042FD0 // =0x67625e6f 
 	str r0, [r5,#0x54]
@@ -6693,8 +6455,9 @@ loc_8042FAE:
 	.byte 0, 0
 dword_8042FD0: .word 0x67625E6F
 dword_8042FD4: .word 0x687261
-.func
-.thumb_func
+	thumb_func_end sub_8042FC2
+
+	thumb_local_start
 chatbox_F9_storebyte:
 	push {lr}
 	ldr r0, off_8042FE8 // =off_8042FEC 
@@ -6707,14 +6470,13 @@ chatbox_F9_storebyte:
 off_8042FE8: .word off_8042FEC
 off_8042FEC: .word chatbox_8042FF4+1
 	.word chatbox_8043008+1
-.endfunc // chatbox_F9_storebyte
+	thumb_func_end chatbox_F9_storebyte
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8042FF4:
 	push {lr}
 	mov r2, r10
-	ldr r2, [r2,#0x10]
+	ldr r2, [r2,#oToolkit_S2011c50_Ptr]
 	add r2, #8
 	ldrb r0, [r4,#2]
 	ldrb r1, [r4,#3]
@@ -6722,10 +6484,9 @@ chatbox_8042FF4:
 	add r4, #4
 	mov r0, #1
 	pop {pc}
-.endfunc // chatbox_8042FF4
+	thumb_func_end chatbox_8042FF4
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8043008:
 	ldr r0, off_804301C // =off_8043C64 
 	ldrb r1, [r4,#2]
@@ -6738,10 +6499,9 @@ chatbox_8043008:
 	mov pc, lr
 	.balign 4, 0x00
 off_804301C: .word off_8043C64
-.endfunc // chatbox_8043008
+	thumb_func_end chatbox_8043008
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_FF_copytext:
 	push {lr}
 	ldr r0, off_8043030 // =off_8043034 
@@ -6754,10 +6514,9 @@ chatbox_FF_copytext:
 off_8043030: .word off_8043034
 off_8043034: .word chatbox_80430A0+1
 	.word chatbox_80430A0+1
-.endfunc // chatbox_FF_copytext
+	thumb_func_end chatbox_FF_copytext
 
-.func
-.thumb_func
+	thumb_local_start
 dead_804303C:
 	push {lr}
 	ldrb r0, [r5,#0x5] // ChatBoxPropreties.unk_05
@@ -6773,7 +6532,7 @@ loc_8043050:
 	mov r1, #0
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x64 
 	ldrh r2, [r7]
 	lsl r2, r2, #6
@@ -6783,7 +6542,7 @@ loc_8043050:
 	mov r2, #0x40 
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x64 
 	ldrh r1, [r7]
 	add r1, #1
@@ -6791,7 +6550,7 @@ loc_8043050:
 	str r0, [r5,#0x2c] // ChatBoxPropreties.pScriptCursor
 	add r4, #3
 	str r4, [r5,#0x44] // ChatBoxPropreties.unk_44
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
@@ -6802,10 +6561,9 @@ off_8043088: .word unk_20018F0
 	.word unk_2001A04
 	.word unk_2001A60
 	.word unk_2001ABC
-.endfunc // dead_804303C
+	thumb_func_end dead_804303C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80430A0:
 	push {lr}
 	ldrb r0, [r5,#5]
@@ -6821,7 +6579,7 @@ loc_80430B4:
 	mov r1, #0
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x64 
 	ldrh r2, [r7]
 	lsl r2, r2, #6
@@ -6831,7 +6589,7 @@ loc_80430B4:
 	mov r2, #0x40 
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
-	add r7, r5, #0
+	mov r7, r5
 	add r7, #0x64 
 	ldrh r1, [r7]
 	add r1, #1
@@ -6848,7 +6606,7 @@ loc_80430B4:
 	add r1, r1, r0
 	str r4, [r5,r1]
 	pop {r0}
-	add r4, r0, #0
+	mov r4, r0
 	mov r0, #1
 	pop {pc}
 off_80430F8: .word dword_80430FC
@@ -6856,9 +6614,10 @@ dword_80430FC: .word 0x2001186, 0x200119E, 0x20007D6, 0x200083A, 0x20018F4
 	.word 0x2001950, 0x20019AC, 0x2001A08, 0x2001A64, 0x2001AC0
 off_8043124: .word 0x140
 off_8043128: .word unk_200AFA0
-.endfunc // chatbox_80430A0
+	thumb_func_end chatbox_80430A0
 
-loc_804312C:
+	thumb_local_start
+sub_804312C:
 	ldrb r0, [r4,#2]
 	add r0, #0x4c 
 	mov r1, #0
@@ -6885,8 +6644,9 @@ loc_804312C:
 	.balign 4, 0x00
 off_804315C: .word 0x1CC
 off_8043160: .word 0x154
-.func
-.thumb_func
+	thumb_func_end sub_804312C
+
+	thumb_local_start
 chatbox_8043164:
 	push {lr}
 	// mask
@@ -6946,7 +6706,7 @@ loc_80431CA:
 	add r0, #0x4c 
 	ldrb r3, [r5,r0]
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #0x80
 	tst r0, r1
@@ -6993,8 +6753,6 @@ loc_804320E:
 	ldr r3, off_80432B0 // =sub_3007038+1 
 	mov lr, pc
 	bx r3
-.endfunc // chatbox_8043164
-
 	pop {r0-r7}
 	add r0, #0xc
 	add r2, #1
@@ -7064,8 +6822,9 @@ off_80432BC: .word word_80432C0
 word_80432C0: .hword 0x40
 	.word 0x200080
 	.hword 0x10
-.func
-.thumb_func
+	thumb_func_end chatbox_8043164
+
+	thumb_local_start
 chatbox_80432C8:
 	ldrb r0, [r4,#2]
 	add r0, #0x4c 
@@ -7100,10 +6859,9 @@ loc_80432DC:
 	mov pc, lr
 off_8043304: .word 0x1CC
 off_8043308: .word 0x154
-.endfunc // chatbox_80432C8
+	thumb_func_end chatbox_80432C8
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_804330C:
 	push {lr}
 	// mask
@@ -7170,7 +6928,7 @@ loc_8043372:
 	add r2, #0x4c 
 	ldrb r3, [r5,r2]
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #0x80
 	tst r0, r1
@@ -7338,10 +7096,9 @@ off_80434D0: .word 0x154
 off_80434D4: .word dword_80434D8
 dword_80434D8: .word 0x800040
 	.word 0x100020
-.endfunc // chatbox_804330C
+	thumb_func_end chatbox_804330C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80434E0:
 	push {lr}
 	// mask
@@ -7410,7 +7167,7 @@ loc_804354A:
 	add r2, #0x4c 
 	ldrb r3, [r5,r2]
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #0x80
 	tst r0, r1
@@ -7457,8 +7214,6 @@ loc_804359C:
 	ldr r3, off_8043698 // =sub_3007038+1 
 	mov lr, pc
 	bx r3
-.endfunc // chatbox_80434E0
-
 	pop {r0-r7}
 	add r0, #0xc
 	sub r2, #1
@@ -7577,8 +7332,9 @@ off_80436A4: .word word_80436A8
 word_80436A8: .hword 0x40
 	.word 0x200080
 	.hword 0x10
-.func
-.thumb_func
+	thumb_func_end chatbox_80434E0
+
+	thumb_local_start
 chatbox_80436B0:
 	ldrb r0, [r4,#2]
 	lsl r0, r0, #1
@@ -7606,10 +7362,9 @@ chatbox_80436B0:
 	mov pc, lr
 off_80436E0: .word 0x1CC
 off_80436E4: .word 0x154
-.endfunc // chatbox_80436B0
+	thumb_func_end chatbox_80436B0
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80436E8:
 	push {lr}
 	// mask
@@ -7649,7 +7404,7 @@ loc_8043720:
 	and r0, r1
 	ldrb r1, [r5,#0x13]
 	strb r0, [r5,#0x13]
-	add r7, r0, #0
+	mov r7, r0
 	cmp r0, r1
 	beq loc_804373E
 	mov r2, #0x6c 
@@ -7680,9 +7435,9 @@ loc_804373E:
 	lsl r1, r1, #1
 	add r1, #0x4c 
 	ldrh r3, [r5,r1]
-	add r2, r1, #0
+	mov r2, r1
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #0x80
 	tst r0, r1
@@ -7842,10 +7597,9 @@ off_80438A4: .word dword_80438A8
 dword_80438A8: .word 0x800040
 	.word 0x100020
 dword_80438B0: .word 0x1B9
-.endfunc // chatbox_80436E8
+	thumb_func_end chatbox_80436E8
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80438B4:
 	ldrb r0, [r4,#2]
 	add r0, #0x4c 
@@ -7874,10 +7628,9 @@ chatbox_80438B4:
 	.byte  0
 off_80438E4: .word 0x1CC
 off_80438E8: .word 0x154
-.endfunc // chatbox_80438B4
+	thumb_func_end chatbox_80438B4
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_80438EC:
 	push {lr}
 	// mask
@@ -7936,7 +7689,7 @@ loc_804393C:
 	add r0, #0x4c 
 	ldrb r3, [r5,r0]
 	mov r0, r10
-	ldr r0, [r0,#4]
+	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
 	mov r1, #0x80
 	tst r0, r1
@@ -7966,6 +7719,7 @@ loc_804398E:
 	ldr r0, off_8043A40 // =0x154 
 	add r0, r0, r5
 	mov r2, #0
+loc_8043994:
 	ldrb r1, [r0]
 	cmp r1, #0
 	bne loc_80439A4
@@ -7991,16 +7745,64 @@ loc_80439A8:
 	ldr r3, off_8043A38 // =sub_3007038+1 
 	mov lr, pc
 	bx r3
-	.hword 0xBCFF
-	.word 0x3201300C, 0x58EB4B1C, 0xDBE1429A, 0x28017928, 0x2001D002
-	.word 0xE0117128, 0x42007C68, 0x2000D003, 0x213D70A8, 0x8CE85468
-	.word 0x42082101, 0x2108D108, 0xD0034208, 0x5A68216C, 0xFDE6F7BC
-	.word 0xBD002000, 0x5A68216E, 0xFDE0F7BC, 0xF7FC2011, 0x2007FF8D
-	.word 0xFA8AF002, 0xF0027CE8, 0x2000FA7F, 0x81A87128, 0x67A82004
-	.word 0xF0022020, 0x3402FA77, 0xBD002000
+	pop {r0-r7}
+	add r0, #0xc
+	add r2, #1
+	ldr r3, off_8043A3C // =0x1cc
+	ldr r3, [r5,r3]
+	cmp r2, r3
+	blt loc_8043994
+	ldrb r0, [r5,#4]
+	cmp r0, #1
+	beq loc_80439DC
+	mov r0, #1
+	strb r0, [r5,#4]
+	b loc_8043A00
+loc_80439DC:
+	ldrb r0, [r5,#0x11]
+	tst r0, r0
+	beq loc_80439EA
+	mov r0, #0
+	strb r0, [r5,#2]
+	mov r1, #0x3d
+	strb r0, [r5,r1]
+loc_80439EA:
+	ldrh r0, [r5,#0x26]
+	mov r1, #1
+	tst r0, r1
+	bne loc_8043A04
+	mov r1, #8
+	tst r0, r1
+	beq loc_8043A00
+	mov r1, #0x6c
+	ldrh r0, [r5,r1]
+	bl sound_play // () -> void
+loc_8043A00:
+	mov r0, #0
+	pop {pc}
+loc_8043A04:
+	mov r1, #0x6e
+	ldrh r0, [r5,r1]
+	bl sound_play // () -> void
+	mov r0, #0x11
+	bl chatbox_clearFlags_3e // (int mask) -> void
+	mov r0, #7
+	bl chatbox_8045F2C // (int a1) ->
+	ldrb r0, [r5,#0x13]
+	bl chatbox_8045F1C
+	mov r0, #0
+	strb r0, [r5,#4]
+	strh r0, [r5,#0xc]
+	mov r0, #4
+	str r0, [r5,#0x78]
+	mov r0, #0x20
+	bl chatbox_8045F1C
+	add r4, #2
+	mov r0, #0
+	pop {pc}
 off_8043A34: .word dword_803FCE4
 off_8043A38: .word sub_3007038+1
-	.word 0x1CC
+off_8043A3C: .word 0x1CC
 off_8043A40: .word 0x154
 off_8043A44: .word word_8043A48
 word_8043A48: .hword 0x40
@@ -8008,10 +7810,9 @@ word_8043A48: .hword 0x40
 	.word 0x100020
 off_8043A50: .word dword_8043A54
 dword_8043A54: .word 0x5030201, 0x0
-.endfunc // chatbox_80438EC
+	thumb_func_end chatbox_80438EC
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8043A5C:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -10914,67 +10715,66 @@ dword_8045EB0: .word 0x40000001
 	.word byte_86F2960
 	.word byte_3001650
 	.word 0x20
-.endfunc // chatbox_8043A5C
+	thumb_func_end chatbox_8043A5C
 
-.func
-.thumb_func
+	thumb_func_start chatbox_8045ED0
 chatbox_8045ED0:
 	push {r1,lr}
 	ldr r1, off_8045ED8 // =byte_8043CA4 
 	ldrb r0, [r1,r0]
 	pop {r1,pc}
 off_8045ED8: .word byte_8043CA4
-.endfunc // chatbox_8045ED0
+	thumb_func_end chatbox_8045ED0
 
-.func
-.thumb_func
+	thumb_func_start chatbox_8045EDC
 chatbox_8045EDC:
 	push {r2-r7,lr}
 	mov r2, r10
-	ldr r2, [r2,#0x2c]
+	ldr r2, [r2,#oToolkit_ChatboxPtr]
 	mov r3, #0x4c 
 	lsl r0, r0, #2
 	add r3, r3, r0
 	str r1, [r2,r3]
 	pop {r2-r7,pc}
-.endfunc // chatbox_8045EDC
+	thumb_func_end chatbox_8045EDC
 
-.func
-.thumb_func
+	thumb_func_start chatbox_8045EEC
 chatbox_8045EEC:
 	push {r1-r7,lr}
 	mov r1, r10
-	ldr r1, [r1,#0x2c]
+	ldr r1, [r1,#oToolkit_ChatboxPtr]
 	mov r2, #0x4c 
 	lsl r0, r0, #2
 	add r2, r2, r0
 	ldr r0, [r1,r2]
 	pop {r1-r7,pc}
-.endfunc // chatbox_8045EEC
+	thumb_func_end chatbox_8045EEC
 
-.func
-.thumb_func
+	thumb_func_start chatbox_8045EFC
 chatbox_8045EFC:
 	push {r4-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x2c]
+	ldr r4, [r4,#oToolkit_ChatboxPtr]
 	str r0, [r4,#0x4c]
 	str r1, [r4,#0x50]
 	str r2, [r4,#0x54]
 	str r3, [r4,#0x58]
 	pop {r4-r7,pc}
-.endfunc // chatbox_8045EFC
+	thumb_func_end chatbox_8045EFC
 
+	thumb_local_start
+sub_8045F0C:
 	push {r4-r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#0x2c]
+	ldr r4, [r4,#oToolkit_ChatboxPtr]
 	ldr r0, [r4,#0x4c]
 	ldr r1, [r4,#0x50]
 	ldr r2, [r4,#0x54]
 	ldr r3, [r4,#0x58]
 	pop {r4-r7,pc}
-.func
-.thumb_func
+	thumb_func_end sub_8045F0C
+
+	thumb_func_start chatbox_8045F1C
 chatbox_8045F1C:
 	push {r1,r2}
 	ldr r1, off_8045F48 // =dword_2009F38 
@@ -10984,11 +10784,10 @@ chatbox_8045F1C:
 	pop {r1,r2}
 	mov pc, lr
 	.balign 4, 0x00
-.endfunc // chatbox_8045F1C
+	thumb_func_end chatbox_8045F1C
 
-.func
-.thumb_func
 // (int a1) ->
+	thumb_func_start chatbox_8045F2C
 chatbox_8045F2C:
 	push {r1,r2}
 	ldr r1, off_8045F48 // =dword_2009F38 
@@ -10998,10 +10797,9 @@ chatbox_8045F2C:
 	pop {r1,r2}
 	mov pc, lr
 	.balign 4, 0x00
-.endfunc // chatbox_8045F2C
+	thumb_func_end chatbox_8045F2C
 
-.func
-.thumb_func
+	thumb_func_start chatbox_8045F3C
 chatbox_8045F3C:
 	push {r1}
 	ldr r1, off_8045F48 // =dword_2009F38 
@@ -11010,10 +10808,9 @@ chatbox_8045F3C:
 	pop {r1}
 	mov pc, lr
 off_8045F48: .word dword_2009F38
-.endfunc // chatbox_8045F3C
+	thumb_func_end chatbox_8045F3C
 
-.func
-.thumb_func
+	thumb_func_start chatbox_8045F4C
 chatbox_8045F4C:
 	push {r1}
 	ldr r1, off_8045F5C // =dword_2009F38 
@@ -11024,10 +10821,9 @@ chatbox_8045F4C:
 	mov pc, lr
 	.balign 4, 0x00
 off_8045F5C: .word dword_2009F38
-.endfunc // chatbox_8045F4C
+	thumb_func_end chatbox_8045F4C
 
-.func
-.thumb_func
+	thumb_local_start
 chatbox_8045F60:
 	push {lr}
 	mov r0, #0
@@ -11045,6 +10841,6 @@ off_8045F7C: .word unk_200BEA0
 off_8045F80: .word 0xF00
 	.word 0x6015700
 off_8045F88: .word dword_200CDA0
-.endfunc // chatbox_8045F60
+	thumb_func_end chatbox_8045F60
 
 /*For debugging purposes, connect comment at any range!*/

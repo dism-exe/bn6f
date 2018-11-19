@@ -1,7 +1,6 @@
 .include "asm/main.inc"
 
-.func
-.thumb_func
+	thumb_func_start main_
 main_:
 	bl main_static_80004A4
 	bl sub_8001514 // () -> void
@@ -22,14 +21,14 @@ main_gameRoutine:
 	bl render_80015D0
 	bl main_static_80003E4
 	mov r0, r10
-	ldr r0, [r0,#0x24] // Toolkit.currFrame
+	ldr r0, [r0,#oToolkit_CurFramePtr]
 	ldrh r1, [r0]
 	add r1, #1
 	strh r1, [r0]
 	bl sub_8000E10
 	ldr r0, off_8000348 // =main_jt_subsystem 
 	mov r1, r10
-	ldr r1, [r1]
+	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	ldrb r1, [r1]
 	ldr r0, [r0,r1]
 	mov lr, pc
@@ -71,10 +70,9 @@ main_jt_subsystem: .word Load_ho_802F544+1
 	.word menuControl_cb_email+1
 	.word cb_8049E04+1
 	.byte 0, 0, 0, 0
-.endfunc // main_
+	thumb_func_end main_
 
-.func
-.thumb_func
+	thumb_local_start
 main_static_awaitFrame_80003A0:
 	push {lr}
 loc_80003A2:
@@ -98,11 +96,10 @@ loc_80003A6:
 off_80003C4: .word dword_200A870
 off_80003C8: .word dword_2009930
 off_80003CC: .word GeneralLCDStatus_STAT_LYC_
-.endfunc // main_static_awaitFrame_80003A0
+	thumb_func_end main_static_awaitFrame_80003A0
 
-.func
-.thumb_func
 // () -> void
+	thumb_local_start
 main_static_await_80003D0:
 	push {lr}
 	ldr r0, off_80003E0 // =GeneralLCDStatus_STAT_LYC_ 
@@ -114,13 +111,12 @@ loc_80003D6:
 	pop {pc}
 	.byte 0, 0
 off_80003E0: .word GeneralLCDStatus_STAT_LYC_
-.endfunc // main_static_await_80003D0
+	thumb_func_end main_static_await_80003D0
 
-.func
-.thumb_func
+	thumb_local_start
 main_static_80003E4:
 	mov r7, r10
-	ldr r0, [r7,#4]
+	ldr r0, [r7,#oToolkit_JoypadPtr]
 	ldrb r7, [r0,#0x13]
 	add r7, #1
 	cmp r7, #4
@@ -135,7 +131,7 @@ loc_80003F2:
 	strh r5, [r0,#6]
 	ldr r3, dword_8000450 // =0x3ff 
 	strh r4, [r0]
-	add r6, r4, #0
+	mov r6, r4
 	and r6, r5
 	mov r1, #8
 	mov r3, #0
@@ -179,10 +175,9 @@ loc_8000438:
 	.balign 4, 0x00
 off_800044C: .word KeyStatus
 dword_8000450: .word 0x3FF
-.endfunc // main_static_80003E4
+	thumb_func_end main_static_80003E4
 
-.func
-.thumb_func
+	thumb_local_start
 main_static_8000454:
 	push {r4-r7,lr}
 	bl engine_isScreeneffectAnimating // () -> zf
@@ -190,14 +185,14 @@ main_static_8000454:
 	bl sub_813D60C
 	bne locret_80004A2
 	mov r7, r10
-	ldr r0, [r7]
+	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]
 	ldrb r0, [r0]
 	cmp r0, #0x10
 	beq locret_80004A2
-	ldr r0, [r7,#4]
+	ldr r0, [r7,#oToolkit_JoypadPtr]
 	ldrh r2, [r0,#2]
 	ldrh r0, [r0]
-	ldr r1, [r7]
+	ldr r1, [r7,#oToolkit_MainJumptableIndexPtr]
 	add r1, #4
 	ldrb r4, [r1]
 	sub r4, #1
@@ -213,26 +208,17 @@ main_static_8000454:
 	beq loc_80004A0
 	push {r1}
 	bl start_800023C // () -> void
-	.byte  0
-	.byte 0xF0
-	.byte  6
-	.byte 0xF8
-	.byte 0x3F 
-	.byte 0xF0
-	.byte 0x16
-	.byte 0xF8
-	.byte  2
-	.byte 0xBC
-	.byte 0xA
-	.byte 0x24 
+	bl main_static_80004A4
+	bl clear_200AD04 // () -> void
+	pop {r1}
+	mov r4, #0xa
 loc_80004A0:
 	strb r4, [r1]
 locret_80004A2:
 	pop {r4-r7,pc}
-.endfunc // main_static_8000454
+	thumb_func_end main_static_8000454
 
-.func
-.thumb_func
+	thumb_local_start
 main_static_80004A4:
 	mov r0, #1
 	b loc_80004AA
@@ -287,7 +273,7 @@ loc_80004C0:
 	strh r1, [r0]
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0]
+	ldr r0, [r0,#oToolkit_MainJumptableIndexPtr]
 	// size
 	mov r1, #8
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -298,10 +284,9 @@ loc_80004C0:
 off_8000564: .word 0x40
 off_8000568: .word 0xC0
 off_800056C: .word dword_2009930
-.endfunc // main_static_80004A4
+	thumb_func_end main_static_80004A4
 
-.func
-.thumb_func
+	thumb_local_start
 main_static_8000570:
 	push {lr}
 	bl sub_814E8A0
@@ -326,6 +311,6 @@ dword_800059C: .word 0x93040D
 off_80005A0: .word GeneralLCDStatus_STAT_LYC_
 	.word off_3000E70
 dword_80005A8: .word 0x3005D79
-.endfunc // main_static_8000570
+	thumb_func_end main_static_8000570
 
 /*For debugging purposes, connect comment at any range!*/

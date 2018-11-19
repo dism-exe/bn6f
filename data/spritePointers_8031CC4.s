@@ -713,7 +713,7 @@ guiSprites_803271C: .word sprite_86CBB7C
 	.word battleSpriteFlameMan
 	.word sprite_87DC190
 	.word sprite_87DC5F0
-	.word dword_87DD248
+	.word byte_87DD248
 	.word spriteWhiteDot
 	.word spriteWhiteDot
 	.word sprite_87DDB7C

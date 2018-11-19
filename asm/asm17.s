@@ -1,12 +1,11 @@
 .include "asm/asm17.inc"
 
-.func
-.thumb_func
+	thumb_func_start sub_807931C
 sub_807931C:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_8079374 // =off_80790A4 
-	ldr r1, [r7,#0x14]
+	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -25,7 +24,7 @@ sub_807931C:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_8079378 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -45,10 +44,9 @@ off_8079380: .word dword_8079388
 dword_8079388: .word 0x201C0E1C, 0xFFFF4B1C
 dword_8079390: .word 0x5A180E1C, 0x991C5B18
 	.byte 0xFF, 0xFF
-.endfunc // sub_807931C
+	thumb_func_end sub_807931C
 
-.func
-.thumb_func
+	thumb_func_start sub_807939A
 sub_807939A:
 	push {lr}
 	lsl r1, r1, #2
@@ -72,15 +70,14 @@ off_80793CC: .word off_80790EC
 	.word dword_80790F0+0x1B4
 	.word dword_80790F0+0x204
 	.word 0xFFFFFFFF
-.endfunc // sub_807939A
+	thumb_func_end sub_807939A
 
-.func
-.thumb_func
+	thumb_func_start sub_80793E8
 sub_80793E8:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r1, [r5,#5]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #4
 	ldr r7, off_807941C // =off_8079420 
 	add r7, r7, r1
@@ -93,14 +90,14 @@ sub_80793E8:
 	orr r0, r1
 	bl sub_8001778
 	ldr r0, off_8079440 // =off_8079444 
-	ldrb r1, [r5,#5]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 	bl sub_80304E8
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_807941C: .word off_8079420
-off_8079420: .word locret_8001AB4+1
+off_8079420: .word nullsub_39+1
 	.word nullsub_36+1
 	.word 0x3005CD9, 0x800, 0x8001AB5, 0x80019B3, 0x3005CD9
 	.word 0x800
@@ -110,15 +107,14 @@ off_8079444: .word off_807944C
 off_807944C: .word dword_8618DFC
 	.word 0x6008020, 0x8618E40, 0x1800, 0x8618910, 0x3001960
 	.word 0x20
-.endfunc // sub_80793E8
+	thumb_func_end sub_80793E8
 
-.func
-.thumb_func
+	thumb_func_start sub_8079468
 sub_8079468:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r6, [r5,#5]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
+	ldrb r6, [r5,#oGameState_MapNumber]
 	lsl r6, r6, #2
 	ldr r7, off_807947C // =off_8079480 
 	ldr r7, [r7,r6]
@@ -126,21 +122,26 @@ sub_8079468:
 	bx r7
 	pop {r4-r7,pc}
 off_807947C: .word off_8079480
-off_8079480: .word locret_8079488+1
-	.word locret_807948A+1
-.endfunc // sub_8079468
+off_8079480: .word nullsub_79+1
+	.word nullsub_80+1
+	thumb_func_end sub_8079468
 
-locret_8079488:
+	thumb_local_start
+nullsub_79:
 	mov pc, lr
-locret_807948A:
+	thumb_func_end nullsub_79
+
+	thumb_local_start
+nullsub_80:
 	mov pc, lr
-.func
-.thumb_func
+	thumb_func_end nullsub_80
+
+	thumb_func_start sub_807948C
 sub_807948C:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0,#5]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	lsl r0, r0, #2
 	ldr r1, off_80794A0 // =pt_80794A4 
 	ldr r0, [r1,r0]
@@ -151,6 +152,6 @@ pt_80794A4:
 	// <endpool> <endfile>
 	.word dword_80794AC
 	.word dword_80794EC
-.endfunc // sub_807948C
+	thumb_func_end sub_807948C
 
 /*For debugging purposes, connect comment at any range!*/

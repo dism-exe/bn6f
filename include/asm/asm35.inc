@@ -2,6 +2,24 @@
 .equ INC_ASM_ASM35, 0
 
 /* Public Symbols */
+.global sub_812EAAC
+.global sub_812EAC4
+.global sub_812EB78
+.global sub_812EB88
+.global sub_812EC04
+.global sub_812EC2C
+.global sub_812ECAC
+.global sub_812ED2C
+.global sub_812ED34
+.global sub_812ED58
+.global sub_812ED94
+.global sub_812EDE4
+.global loc_812EDEA
+.global sub_812EDFC
+.global loc_812EE38
+.global sub_812EE78
+.global sub_812EF20
+.global sub_812EFD4
 
 
 /* External Symbols */
@@ -40,12 +58,12 @@
 // .global dword_8129180
 
 .include "data/dat34.inc"
-// .global dword_812DA94
-// .global dword_812DA94
-// .global dword_812DA94
-// .global dword_812DA94
-// .global dword_812DA94
-// .global dword_812DA94
+// .global byte_812DA94
+// .global byte_812DABC
+// .global byte_812DABC
+// .global byte_812DABC
+// .global byte_812DABC
+// .global byte_812DABC
 
 .include "asm/asm36.inc"
 // .global sub_8132280
@@ -59,7 +77,7 @@
 
 
 /* Undeclared Symbols */
-// .equ unk_201B200, 0x201B200
+// .equ byte_201B200, 0x201B200
 // .equ unk_201E920, 0x201E920
 // .equ unk_201EE20, 0x201EE20
 // .equ word_2023FA0, 0x2023FA0

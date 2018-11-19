@@ -20,7 +20,7 @@
 .global chatbox_8040818
 .global chatbox_maskFlags_3e // (int mask) -> void
 // 
-.global unk_8040A04
+.global loc_8040A04
 .global chatbox_8040D5C
 .global off_8043C8C
 .global byte_8043CA4
@@ -78,7 +78,7 @@
 // .global sub_8002F90 // () -> void
 // .global sub_8003914
 // .global sub_8003A64
-// .global gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
+// .global gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 // .global subsystem_launchBBS
 // .global subsystem_launchReqBBS
 // .global subsystem_launchShop
@@ -226,7 +226,7 @@
 // .global byte_86C0940
 
 .include "data/dat38_71.inc"
-// .global byte_86CF4AC
+// .global unk_86CF4AC
 
 .include "data/dat38_85.inc"
 // .global byte_86EA94C

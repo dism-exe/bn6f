@@ -21,7 +21,7 @@
 .include "asm/asm03_0.inc"
 // .global sub_802FF4C
 // .global sub_803037C
-// .global loc_8030472
+// .global sub_8030472
 // .global sub_8030AA4
 
 .include "asm/chatbox.inc"
@@ -32,15 +32,15 @@
 // .global off_804E450
 // .global off_804E478
 // .global off_804E4A0
-// .global unk_804E5D4
+// .global byte_804E5D4
 // .global dword_804E604
 
 .include "data/dat04.inc"
 // .global byte_804E74C
-// .global unk_804E87C
-// .global unk_804E8D0
-// .global unk_804E8D4
-// .global unk_804E8D8
+// .global byte_804E87C
+// .global byte_804E8D0
+// .global byte_804E8D4
+// .global byte_804E8D8
 // .global off_804E9CC
 
 

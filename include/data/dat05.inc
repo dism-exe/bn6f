@@ -23,15 +23,15 @@
 .global byte_8052F82
 .global off_8059294
 .global off_8059378
-.global unk_80593B8
-.global unk_80593F8
-.global unk_8059438
-.global unk_8059468
-.global unk_80594A8
-.global unk_80594E8
-.global unk_8059528
-.global unk_8059558
-.global unk_8059588
+.global byte_80593B8
+.global byte_80593F8
+.global byte_8059438
+.global byte_8059468
+.global byte_80594A8
+.global byte_80594E8
+.global byte_8059528
+.global byte_8059558
+.global byte_8059588
 
 
 /* External Symbols */
@@ -54,12 +54,12 @@
 
 .include "data/dat04.inc"
 // .global byte_8050102
-// .global unk_8051002
-// .global unk_805150D
-// .global unk_8052560
+// .global byte_8051002
+// .global byte_805150D
+// .global byte_8052560
 
 .include "data/dat08.inc"
-// .global unk_806083F
+// .global byte_806083F
 
 .include "data/dat13.inc"
 // .global byte_8070102
@@ -75,7 +75,7 @@
 // .global byte_808054A
 // .global byte_808054F
 // .global byte_808058D
-// .global unk_8080715
+// .global byte_8080715
 // .global byte_80809F6
 // .global byte_80809F8
 
@@ -98,7 +98,7 @@
 .include "asm/asm28_0.inc"
 // .global byte_80990B8
 // .global unk_8099CEC
-// .global unk_809BFB0
+// .global byte_809BFB0
 
 .include "asm/asm28_1.inc"
 // .global dword_809F6B8
@@ -109,7 +109,7 @@
 // .global byte_809F8CA
 
 .include "data/dat28.inc"
-// .global unk_80A2713
+// .global byte_80A2713
 
 .include "data/BattleSettings.inc"
 // .global byte_80B083F
@@ -233,7 +233,6 @@
 
 /* Undeclared Symbols */
 // .equ unk_3001A80, 0x3001A80
-// .global sprite_82F9CCC
 .equ byte_8310133, 0x8310133
 
 .endif // INC_DATA_DAT05

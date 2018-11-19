@@ -185,7 +185,7 @@ unk_87F4194: .byte  0
 	.byte  8
 	.byte 0x1C
 	.byte 0xC
-	.word unk_81A081B
+	.word byte_81A081B
 	.byte 0x19
 	.byte  8
 	.byte 0x18

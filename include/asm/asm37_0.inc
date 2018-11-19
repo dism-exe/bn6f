@@ -33,7 +33,7 @@
 .global sub_813C334
 .global sub_813C3AC
 .global sub_813D41C
-.global loc_813D48C
+.global sub_813D48C
 .global sub_813D5C8
 .global sub_813D5D0
 .global sub_813D5DC
@@ -60,11 +60,12 @@
 .global sub_813DA94
 .global sub_813DB24
 .global byte_813DBC0
-.global unk_813DBDC
+.global byte_813DBDC
 .global tileRefs_813DBE4
-.global unk_813DEC4
+.global byte_813DEC4
 .global tileRefs_813DF44
 .global off_813DF74
+.global off_813E04C
 
 
 /* External Symbols */
@@ -120,11 +121,14 @@
 // .global sub_8136C24
 
 .include "data/dat36.inc"
-// .global dword_813944C
-// .global dword_813B1C4
+// .global StructArr_813944C
+// .global byte_813B1EC
+// .global byte_813B2CD
+// .global byte_813B3AE
 // .global dword_813B48C
 // .global dword_813B4B0
 // .global dword_813B4D4
+// .global byte_813B522
 
 .include "asm/asm37_1.inc"
 // .global sub_81465BC
@@ -135,6 +139,18 @@
 // .global sub_8148884
 // .global sub_8148FC0
 // .global sub_8149718
+
+.include "data/dat38_92.inc"
+// .global byte_87E78A8
+// .global byte_87E7B30
+// .global byte_87E9320
+// .global byte_87E9578
+// .global byte_87EA788
+// .global byte_87EA9F4
+// .global byte_87EBAB8
+// .global byte_87EBDDC
+// .global byte_87ECF34
+// .global byte_87ED240
 
 
 /* Undeclared Symbols */
@@ -162,10 +178,6 @@
 // .equ byte_200AF83, 0x200AF83
 // .equ byte_200AF85, 0x200AF85
 // .equ dword_200B1B0, 0x200B1B0
-// .equ word_200B1B4, 0x200B1B4
-// .equ word_200B1B6, 0x200B1B6
-// .equ word_200B1B8, 0x200B1B8
-// .equ word_200B1BA, 0x200B1BA
 // .equ byte_200BC30, 0x200BC30
 // .equ byte_200BC3E, 0x200BC3E
 // .equ byte_200BC50, 0x200BC50
@@ -187,9 +199,9 @@
 // .equ byte_20101B4, 0x20101B4
 // .equ byte_2010290, 0x2010290
 // .equ unk_201BA00, 0x201BA00
-// .equ unk_201BA40, 0x201BA40
-// .equ unk_201BC40, 0x201BC40
-// .equ unk_201BC80, 0x201BC80
+// .equ byte_201BA40, 0x201BA40
+// .equ byte_201BC40, 0x201BC40
+// .equ byte_201BC80, 0x201BC80
 // .equ reqBBS_requestNames_textualData, 0x2025A04
 // .equ reqBBS_requestInfo_textOffsets, 0x2029A04
 // .equ word_2036780, 0x2036780

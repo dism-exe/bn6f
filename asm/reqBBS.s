@@ -1,7 +1,6 @@
 .include "asm/reqBBS.inc"
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_813E07C
 reqBBS_813E07C:
 	push {r4-r7,lr}
 	push {r0}
@@ -22,10 +21,9 @@ reqBBS_813E07C:
 	.balign 4, 0x00
 off_813E09C: .word off_813DF74
 off_813E0A0: .word reqBBS_bxo_2001150
-.endfunc // reqBBS_813E07C
+	thumb_func_end reqBBS_813E07C
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_cb_draw_813E0A4
 reqBBS_cb_draw_813E0A4:
 	push {r4-r7,lr}
 	mov r1, r8
@@ -56,11 +54,10 @@ reqBBS_jtDraw_813E0CC: .word reqBBS_static_draw_813E0F8+1
 	.word reqBBS_draw_813E4AC+1
 	.word reqBBS_draw_813E4F4+1
 	.word reqBBS_draw_813E3F4+1
-.endfunc // reqBBS_cb_draw_813E0A4
+	thumb_func_end reqBBS_cb_draw_813E0A4
 
-.func
-.thumb_func
 // () -> int
+	thumb_local_start
 reqBBS_static_draw_813E0F8:
 	push {lr}
 	mov r0, #0
@@ -86,7 +83,7 @@ reqBBS_static_draw_813E0F8:
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	// a1
-	ldr r0, off_813E178 // =unk_813DBDC 
+	ldr r0, off_813E178 // =byte_813DBDC
 	bl sub_80465A0 // (void *a1) -> void
 	ldrh r0, [r5,#0x1e] // reqBBS_GUI.totalNewRequests
 	cmp r0, #0
@@ -100,7 +97,7 @@ loc_813E14C:
 	mov r0, #5
 	strb r0, [r5,#8]
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813E17C // =0x5f40 
 	strh r1, [r0]
 	b loc_813E174
@@ -111,28 +108,27 @@ loc_813E15E:
 	strb r0, [r5,#8]
 	bl reqBBS_drawHeaderText
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813E180 // =0x5e40 
 	strh r1, [r0]
 	b loc_813E174
 loc_813E174:
 	mov r0, #0
 	pop {pc}
-off_813E178: .word unk_813DBDC
+off_813E178: .word byte_813DBDC
 dword_813E17C: .word 0x5F40
 dword_813E180: .word 0x5E40
 	.word 0x17A0
-.endfunc // reqBBS_static_draw_813E0F8
+	thumb_func_end reqBBS_static_draw_813E0F8
 
-.func
-.thumb_func
 // () -> int
+	thumb_local_start
 reqBBS_draw_813E188:
 	push {lr}
 	ldr r0, dword_813E1C4 // =0x1f40 
 	bl sub_8001778
 	mov r7, r10
-	ldr r7, [r7,#0x20] // Toolkit.unk_2009740
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0
 	ble loc_813E1A2
@@ -156,14 +152,13 @@ loc_813E1B6:
 	pop {pc}
 	.balign 4, 0x00
 dword_813E1C4: .word 0x1F40
-.endfunc // reqBBS_draw_813E188
+	thumb_func_end reqBBS_draw_813E188
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_draw_813E1C8:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813E220 // =0x1f40 
 	strh r1, [r0]
 	bl reqBBS_813E534
@@ -175,7 +170,7 @@ reqBBS_draw_813E1C8:
 	str r0, [r1]
 	bl sub_809E122
 	mov r0, r10
-	ldr r0, [r0,#0x1c] // Toolkit.unk_200F3A0
+	ldr r0, [r0,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0
 	strb r1, [r0,#9]
 	strb r1, [r0,#0xa]
@@ -190,7 +185,7 @@ reqBBS_draw_813E1C8:
 	strb r1, [r0,#2]
 	strb r1, [r0,#6]
 	mov r0, r10
-	ldr r0, [r0,#0x20]
+	ldr r0, [r0,#oToolkit_Unk2009740_Ptr]
 	mov r1, #0
 	strb r1, [r0]
 	mov r1, #0
@@ -203,25 +198,24 @@ loc_813E21C:
 	mov r0, #0
 	pop {pc}
 dword_813E220: .word 0x1F40
-.endfunc // reqBBS_draw_813E1C8
+	thumb_func_end reqBBS_draw_813E1C8
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_draw_813E224:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813E4A8 // =0x5f40 
 	strh r1, [r0]
 	mov r7, r10
-	ldr r7, [r7,#0x20] // Toolkit.unk_2009740
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	add r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	sub r1, #8
 	strb r1, [r0,#7]
@@ -233,7 +227,7 @@ reqBBS_draw_813E224:
 	strb r0, [r5,#8]
 	bgt loc_813E282
 	mov r0, r10
-	ldr r0, [r0,#0x2c]
+	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	mov r1, #4
 	str r1, [r0,#0x4c]
 	ldrh r1, [r5,#0x24] // reqBBS_GUI.pagePos
@@ -263,16 +257,15 @@ off_813E294: .word dword_87E76B8
 	.word dword_87E771C
 	.word dword_87E7780
 	.word dword_87E77E4
-	.word dword_87E7848
+	.word unk_87E7848
 off_813E2A8: .word reqBBS_requestEntries_IDs
-.endfunc // reqBBS_draw_813E224
+	thumb_func_end reqBBS_draw_813E224
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_draw_813E2AC:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20] // Toolkit.unk_2009740
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813E2C8
@@ -281,7 +274,7 @@ reqBBS_draw_813E2AC:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c] // Toolkit.unk_200F3A0
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813E2C8:
@@ -297,8 +290,7 @@ loc_813E2C8:
 	ldrb r0, [r0,r1]
 	add r0, r0, r2
 	mov r8, r0
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_813E2F6
 	mov r0, r8
@@ -312,13 +304,13 @@ loc_813E2F6:
 	mov r0, #0x14
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r0, #6
 	strb r0, [r5,#8]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #4
@@ -337,25 +329,24 @@ loc_813E32C:
 	mov r0, #0
 	pop {pc}
 off_813E338: .word reqBBS_requestEntries_IDs
-.endfunc // reqBBS_draw_813E2AC
+	thumb_func_end reqBBS_draw_813E2AC
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_draw_813E33C:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20] // Toolkit.unk_2009740
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	sub r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	add r1, #8
 	strb r1, [r0,#7]
@@ -369,7 +360,7 @@ reqBBS_draw_813E33C:
 	mov r0, #4
 	strb r0, [r5]
 	bl reqBBS_813E890
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x3f 
 	strb r1, [r0,#9]
 	mov r1, #0x3f 
@@ -387,14 +378,13 @@ loc_813E38E:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // reqBBS_draw_813E33C
+	thumb_func_end reqBBS_draw_813E33C
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_draw_813E398:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -410,7 +400,7 @@ reqBBS_draw_813E398:
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_813E3EA
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #0
@@ -419,7 +409,7 @@ reqBBS_draw_813E398:
 	mov r0, #0xc
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c] // Toolkit.unk_200F3A0
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -437,14 +427,13 @@ loc_813E3EA:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // reqBBS_draw_813E398
+	thumb_func_end reqBBS_draw_813E398
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_draw_813E3F4:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#0x1c] // Toolkit.unk_200F3A0
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -460,7 +449,7 @@ reqBBS_draw_813E3F4:
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_813E446
 	mov r7, r10
-	ldr r7, [r7,#0x20] // Toolkit.unk_2009740
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #0
@@ -469,7 +458,7 @@ reqBBS_draw_813E3F4:
 	mov r0, #0x1c
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -487,25 +476,24 @@ loc_813E446:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-.endfunc // reqBBS_draw_813E3F4
+	thumb_func_end reqBBS_draw_813E3F4
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_draw_813E450:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813E4A8 // =0x5f40 
 	strh r1, [r0]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	add r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	sub r1, #8
 	strb r1, [r0,#7]
@@ -522,7 +510,7 @@ reqBBS_draw_813E450:
 	bne loc_813E48A
 	mov r0, #1
 loc_813E48A:
-	add r1, r0, #0
+	mov r1, r0
 	ldr r0, off_813E4A4 // =reqBBS_dialogList 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	bl reqBBS_drawHeaderText
@@ -530,19 +518,18 @@ loc_813E48A:
 	strb r0, [r5]
 loc_813E49A:
 	bl reqBBS_813E534
-.endfunc // reqBBS_draw_813E450
+	thumb_func_end reqBBS_draw_813E450
 
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
 off_813E4A4: .word reqBBS_dialogList
 dword_813E4A8: .word 0x5F40
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_draw_813E4AC:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813E4C8
@@ -551,7 +538,7 @@ reqBBS_draw_813E4AC:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813E4C8:
@@ -562,7 +549,7 @@ loc_813E4C8:
 	mov r0, #0x24 
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1f
 	strb r1, [r0,#9]
 	mov r0, #5
@@ -572,16 +559,15 @@ loc_813E4C8:
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 loc_813E4EC:
 	bl reqBBS_813E534
-.endfunc // reqBBS_draw_813E4AC
+	thumb_func_end reqBBS_draw_813E4AC
 
 	mov r0, #0
 	pop {pc}
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_draw_813E4F4:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	add r1, #8
 	strb r1, [r0,#7]
@@ -607,13 +593,12 @@ loc_813E522:
 	bl reqBBS_813E890
 loc_813E52A:
 	bl reqBBS_813E534
-.endfunc // reqBBS_draw_813E4F4
+	thumb_func_end reqBBS_draw_813E4F4
 
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813E534:
 	push {r5,lr}
 	bl sub_80465BC
@@ -628,7 +613,7 @@ reqBBS_813E534:
 	cmp r0, #0x18
 	beq loc_813E57A
 	mov r0, r10
-	ldr r0, [r0,#0x1c]
+	ldr r0, [r0,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r0, [r0,#7]
 	cmp r0, #0x50 
 	beq loc_813E566
@@ -663,16 +648,15 @@ loc_813E57A:
 	pop {r5,pc}
 dword_813E598: .word 0x20002
 dword_813E59C: .word 0xC000
-.endfunc // reqBBS_813E534
+	thumb_func_end reqBBS_813E534
 
-.func
-.thumb_func
 // () -> void
+	thumb_local_start
 reqBBS_uncomp_813E5A0:
 	push {r5,lr}
 	ldrb r0, [r5,#4]
 	lsl r0, r0, #3
-	ldr r3, off_813E5C8 // =dword_813DF7C+208 
+	ldr r3, off_813E5C8 // =off_813E04C
 	add r3, r3, r0
 	push {r3}
 	// src
@@ -692,29 +676,26 @@ reqBBS_uncomp_813E5A0:
 	ldr r1, off_813E5D8 // =unk_2033A00 
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	pop {r5,pc}
-off_813E5C8: .word dword_813DF7C+0xD0
+off_813E5C8: .word off_813E04C
 off_813E5CC: .word unk_2025A00
 off_813E5D0: .word unk_2029A00
 off_813E5D4: .word dword_87EE1AC
 off_813E5D8: .word unk_2033A00
-.endfunc // reqBBS_uncomp_813E5A0
+	thumb_func_end reqBBS_uncomp_813E5A0
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_813E5DC
 reqBBS_813E5DC:
 	push {r3,r7,lr}
-	add r7, r0, #0
+	mov r7, r0
 	mov r1, #2
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl SetEventFlag // (u16 entryFlagBitfield) -> void
-	add r0, r7, #0
+	mov r0, r7
 	ldr r3, off_813E6A4 // =0x17a0 
 	sub r0, r0, r3
 	ldr r3, off_813E6A8 // =0x19a0 
 	add r0, r0, r3
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	ldr r1, off_813E6A4 // =0x17a0 
 	sub r7, r7, r1
@@ -731,10 +712,9 @@ reqBBS_813E5DC:
 	add r0, #1
 	str r0, [r1,r3]
 	pop {r3,r7,pc}
-.endfunc // reqBBS_813E5DC
+	thumb_func_end reqBBS_813E5DC
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_813E616
 reqBBS_813E616:
 	push {lr}
 	// mem
@@ -755,13 +735,12 @@ reqBBS_813E616:
 	mov r1, #0x20 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
-.endfunc // reqBBS_813E616
+	thumb_func_end reqBBS_813E616
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_dead_813E634:
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	lsl r0, r0, #6
 	ldr r1, off_813E6C4 // =unk_2001400 
 	// mem
@@ -786,10 +765,9 @@ reqBBS_dead_813E634:
 	mov r1, #4
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4,pc}
-.endfunc // reqBBS_dead_813E634
+	thumb_func_end reqBBS_dead_813E634
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_813E660
 reqBBS_813E660:
 	push {r4,r5,lr}
 	ldr r3, off_813E688 // =dword_813E68C 
@@ -825,10 +803,9 @@ off_813E6C0: .word unk_2000FF0
 off_813E6C4: .word unk_2001400
 off_813E6C8: .word unk_2000FC0
 off_813E6CC: .word unk_2000FF0
-.endfunc // reqBBS_813E660
+	thumb_func_end reqBBS_813E660
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_static_813E6D0:
 	push {r5,lr}
 	bl sub_80017AA
@@ -851,9 +828,17 @@ dword_813E6FC: .word 0x887E7368, 0x6000200, 0x2017A00, 0x887E72A0, 0x0
 	.word unk_2018200
 	.word 0x887E723C, 0x0
 	.word unk_2018A00
-	.word dword_87EF5A4
-	.word 0x6001000, 0x280, 0x886C9D38, 0x6010000, 0x2019200
-	.word 0x86C9D6C, 0x30016D0, 0x20, 0x886C9BD4, 0x0
+	.word unk_87EF5A4
+	.word 0x6001000
+	.word 0x280
+	.word 0x886C9D38
+	.word 0x6010000
+	.word unk_2019200
+	.word byte_86C9D6C
+	.word byte_30016D0
+	.word 0x20
+	.word 0x886C9BD4
+	.word 0x0
 	.word unk_201AA00
 	.word 0x0
 off_813E754: .word off_813E758
@@ -864,28 +849,45 @@ off_813E758: .word off_813E76C
 	.word off_813E80C
 off_813E76C: .word dword_87E74F4
 	.word unk_30019C0
-	.word 0x20, 0x87E76B8, 0x30019E0, 0x60, 0x87EF824, 0x3001960
-	.word 0x60, 0x0
+	.word 0x20
+	.word dword_87E76B8
+	.word unk_30019E0
+	.word 0x60
+	.word byte_87EF824
+	.word byte_3001960
+	.word 0x60
+	.word 0x0
 off_813E794: .word dword_87E7514
 	.word unk_30019C0
-	.word 0x20, 0x87E771C, 0x30019E0, 0x60, 0x87EF824, 0x3001960
-	.word 0x60, 0x0
+	.byte 0x20, 0x0, 0x0, 0x0
+	.word dword_87E771C
+	.byte 0xE0, 0x19, 0x0, 0x3, 0x60, 0x0, 0x0, 0x0
+	.word byte_87EF824
+	.byte 0x60, 0x19, 0x0, 0x3, 0x60, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 off_813E7BC: .word dword_87E7534
 	.word unk_30019C0
-	.word 0x20, 0x87E7780, 0x30019E0, 0x60, 0x87EF824, 0x3001960
-	.word 0x60, 0x0
+	.byte 0x20, 0x0, 0x0, 0x0
+	.word dword_87E7780
+	.byte 0xE0, 0x19, 0x0, 0x3, 0x60, 0x0, 0x0, 0x0
+	.word byte_87EF824
+	.byte 0x60, 0x19, 0x0, 0x3, 0x60, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 off_813E7E4: .word dword_87E7554
 	.word unk_30019C0
-	.word 0x20, 0x87E77E4, 0x30019E0, 0x60, 0x87EF824, 0x3001960
-	.word 0x60, 0x0
+	.byte 0x20, 0x0, 0x0, 0x0
+	.word dword_87E77E4
+	.byte 0xE0, 0x19, 0x0, 0x3, 0x60, 0x0, 0x0, 0x0
+	.word byte_87EF824
+	.byte 0x60, 0x19, 0x0, 0x3, 0x60, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 off_813E80C: .word dword_87E7574
 	.word unk_30019C0
-	.word 0x20, 0x87E7848, 0x30019E0, 0x60, 0x87EF824, 0x3001960
-	.word 0x60, 0x0
-.endfunc // reqBBS_static_813E6D0
+	.byte 0x20, 0x0, 0x0, 0x0
+	.word unk_87E7848
+	.byte 0xE0, 0x19, 0x0, 0x3, 0x60, 0x0, 0x0, 0x0
+	.word byte_87EF824
+	.byte 0x60, 0x19, 0x0, 0x3, 0x60, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	thumb_func_end reqBBS_static_813E6D0
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813E834:
 	push {r4-r7,lr}
 	// mem
@@ -924,8 +926,7 @@ loc_813E862:
 loc_813E870:
 	push {r0,r1}
 	add r0, r0, r1
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r0,r1}
 	beq loc_813E880
@@ -939,13 +940,12 @@ loc_813E886:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_813E88C: .word reqBBS_requestEntries_IDs
-.endfunc // reqBBS_813E834
+	thumb_func_end reqBBS_813E834
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813E890:
 	push {r4-r7,lr}
-	add r7, r5, #0
+	mov r7, r5
 	// j
 	mov r0, #5
 	// i
@@ -978,17 +978,16 @@ reqBBS_813E890:
 	bl sub_80018D0
 	pop {r4-r7,pc}
 off_813E8C8: .word tileRefs_813DBE4
-.endfunc // reqBBS_813E890
+	thumb_func_end reqBBS_813E890
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813E8CC:
 	push {r4-r7,lr}
 	ldr r1, off_813E90C // =reqBBS_requestEntries_IDs 
 	ldr r7, [r5,#0x28]
 	ldr r7, [r7]
 	add r5, r0, r1
-	add r0, r7, #0
+	mov r0, r7
 	mov r1, #0
 	ldr r2, off_813E900 // =decomp_2013A00 
 	ldr r3, dword_813E904 // =0x6004000 
@@ -1013,17 +1012,16 @@ off_813E900: .word decomp_2013A00
 dword_813E904: .word 0x6004000
 off_813E908: .word dword_86A5D60
 off_813E90C: .word reqBBS_requestEntries_IDs
-.endfunc // reqBBS_813E8CC
+	thumb_func_end reqBBS_813E8CC
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_dead_813E910:
 	push {r4-r7,lr}
 	ldr r0, off_813E97C // =unk_2018A04 
 	mov r1, #0x40 
 	bl ZeroFillByHalfword
 	mov r6, r10
-	ldr r6, [r6,#0x24]
+	ldr r6, [r6,#oToolkit_CurFramePtr]
 	ldrh r6, [r6]
 	mov r7, #0x1f
 	and r6, r7
@@ -1039,14 +1037,13 @@ loc_813E934:
 	ldrb r2, [r4,r6]
 	add r0, r2, r7
 	push {r3}
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r3}
 	beq loc_813E968
 	push {r4-r7}
 	mov r1, r10
-	ldr r3, [r1,#0x24]
+	ldr r3, [r1,#oToolkit_CurFramePtr]
 	ldrh r3, [r3]
 	mov r7, #0x1f
 	and r3, r7
@@ -1092,15 +1089,14 @@ dword_813EA10: .word 0x52335232, 0x52335232, 0x52335232, 0x52335232, 0x52335232
 	.word 0x52375236, 0x52375236, 0x52375236, 0x52375236, 0x52375236
 	.word 0x52375236, 0x52375236
 off_813EA90: .word reqBBS_requestEntries_IDs
-.endfunc // reqBBS_dead_813E910
+	thumb_func_end reqBBS_dead_813E910
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_static_813EA94:
 	push {r0-r7,lr}
 	ldrh r7, [r5,#0x24] // reqBBS_GUI.pagePos
 	mov r6, r10
-	ldr r6, [r6,#0x24] // Toolkit.currFrame
+	ldr r6, [r6,#oToolkit_CurFramePtr]
 	ldrh r6, [r6]
 	mov r4, #0x1f
 	and r4, r6
@@ -1113,8 +1109,7 @@ loc_813EAA6:
 	add r1, r7, r6
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_813EAD6
 	push {r4-r7}
@@ -1145,7 +1140,7 @@ loc_813EAD6:
 	mov r4, #2
 	mov r5, #2
 	bl sub_80018D0
-.endfunc // reqBBS_static_813EA94
+	thumb_func_end reqBBS_static_813EA94
 
 	pop {r4-r7}
 loc_813EAEE:
@@ -1207,13 +1202,12 @@ byte_813EBD0: .byte 0x84, 0x0, 0x85, 0x0, 0x86, 0x0, 0x87, 0x0, 0x84, 0x0, 0x85
 	.byte 0x0, 0x85, 0x0, 0x86, 0x0, 0x87, 0x0, 0x84, 0x0, 0x85, 0x0
 	.byte 0x86, 0x0, 0x87, 0x0, 0x84, 0x0, 0x85, 0x0, 0x86, 0x0, 0x87
 	.byte 0x0, 0x84, 0x0, 0x85, 0x0, 0x86, 0x0, 0x87, 0x0
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_static_813EC10:
 	push {r4-r7,lr}
 	mov r8, r0
 	mov r7, r10
-	ldr r7, [r7,#4]
+	ldr r7, [r7,#oToolkit_JoypadPtr]
 	ldrh r0, [r7,#2]
 	mov r1, #2
 	tst r1, r0
@@ -1243,10 +1237,9 @@ locret_813EC4C:
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_813EC50: .word 0x3C0
-.endfunc // reqBBS_static_813EC10
+	thumb_func_end reqBBS_static_813EC10
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_static_813EC54:
 	push {lr}
 	mov r0, #0xc
@@ -1258,16 +1251,15 @@ reqBBS_static_813EC54:
 	bl sound_play // () -> void
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // reqBBS_static_813EC54
+	thumb_func_end reqBBS_static_813EC54
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_static_813EC6C:
 	push {lr}
 	mov r0, #0x18
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -1292,7 +1284,7 @@ reqBBS_static_813EC6C:
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl sub_80018D0
-.endfunc // reqBBS_static_813EC6C
+	thumb_func_end reqBBS_static_813EC6C
 
 	pop {r5}
 	bl reqBBS_drawHeaderText
@@ -1304,8 +1296,7 @@ reqBBS_static_813EC6C:
 	strb r0, [r7,#4]
 	strb r0, [r7,#6]
 	pop {pc}
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_draw_chatbox:
 	push {r4-r7,lr}
 	// tileRefs
@@ -1321,10 +1312,9 @@ reqBBS_draw_chatbox:
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r4-r7,pc}
 off_813ECD4: .word unk_2018A04
-.endfunc // reqBBS_draw_chatbox
+	thumb_func_end reqBBS_draw_chatbox
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_dead_813ECD8:
 	push {r4-r7,lr}
 	ldr r3, off_813ECF0 // =unk_2018A04 
@@ -1338,10 +1328,9 @@ reqBBS_dead_813ECD8:
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_813ECF0: .word unk_2018A04
-.endfunc // reqBBS_dead_813ECD8
+	thumb_func_end reqBBS_dead_813ECD8
 
-.func
-.thumb_func
+	thumb_local_start
 dead_813ECF4:
 	push {r4-r7,lr}
 	// j
@@ -1357,10 +1346,9 @@ dead_813ECF4:
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r4-r7,pc}
 off_813ED08: .word unk_2018A04
-.endfunc // dead_813ECF4
+	thumb_func_end dead_813ECF4
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_drawHeaderText:
 	push {r4-r7,lr}
 	ldrh r0, [r5,#0x24] // reqBBS_GUI.pagePos
@@ -1370,7 +1358,7 @@ reqBBS_drawHeaderText:
 	ldrb r1, [r1,r0]
 	ldr r0, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
 	ldr r0, [r0]
-	ldr r2, off_813ED34 // =unk_201B200 
+	ldr r2, off_813ED34 // =byte_201B200
 	ldr r3, dword_813ED38 // =0x6008400 
 	mov r4, #0x17
 	mov r5, #1
@@ -1380,37 +1368,34 @@ reqBBS_drawHeaderText:
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_813ED30: .word reqBBS_requestEntries_IDs
-off_813ED34: .word unk_201B200
+off_813ED34: .word byte_201B200
 dword_813ED38: .word 0x6008400
 off_813ED3C: .word dword_86A5D60
-.endfunc // reqBBS_drawHeaderText
+	thumb_func_end reqBBS_drawHeaderText
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813ED40:
 	push {r4-r7,lr}
-	ldr r0, off_813ED58 // =unk_813DEC4 
+	ldr r0, off_813ED58 // =byte_813DEC4
 	mov r1, #6
 	lsl r1, r1, #6
 	mov r2, r10
-	ldr r2, [r2,#0x28]
+	ldr r2, [r2,#oToolkit_GFX30025c0_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
 	bl loc_8000AC8
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_813ED58: .word unk_813DEC4
-.endfunc // reqBBS_813ED40
+off_813ED58: .word byte_813DEC4
+	thumb_func_end reqBBS_813ED40
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813ED5C:
 	push {r4-r7,lr}
 	pop {r4-r7,pc}
-.endfunc // reqBBS_813ED5C
+	thumb_func_end reqBBS_813ED5C
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813ED60:
 	push {r0,r4-r7,lr}
 	ldrh r6, [r5,#0x1e]
@@ -1422,17 +1407,17 @@ reqBBS_813ED60:
 	ldr r1, [r5,#0x28]
 	ldr r1, [r1,#0xc]
 	add r3, r3, r1
-	add r0, r3, #0
+	mov r0, r3
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq locret_813ED90
-	add r0, r7, #0
+	mov r0, r7
 	mov r1, #7
 	sub r2, r0, r1
 	bge loc_813ED88
 	mov r2, #0
 	b loc_813ED8A
 loc_813ED88:
-	add r0, r1, #0
+	mov r0, r1
 loc_813ED8A:
 	strh r0, [r5,#0x20] // reqBBS_GUI.cursorPos
 	strh r2, [r5,#0x24] // reqBBS_GUI.pagePos
@@ -1441,17 +1426,16 @@ locret_813ED90:
 	pop {r0,r4-r7,pc}
 	.balign 4, 0x00
 off_813ED94: .word reqBBS_requestEntries_IDs
-.endfunc // reqBBS_813ED60
+	thumb_func_end reqBBS_813ED60
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813ED98:
 	push {r0-r7,lr}
 	ldrh r7, [r5,#0x1e] // reqBBS_GUI.totalNewRequests
 	ldrh r6, [r5,#0x20] // reqBBS_GUI.cursorPos
 	ldrh r4, [r5,#0x24] // reqBBS_GUI.pagePos
 	mov r3, r10
-	ldr r3, [r3,#4]
+	ldr r3, [r3,#oToolkit_JoypadPtr]
 	ldrh r0, [r3,#4]
 	mov r1, #0x40 
 	tst r1, r0
@@ -1489,10 +1473,9 @@ loc_813EDD8:
 	strh r4, [r5,#0x24]
 locret_813EDE2:
 	pop {r0-r7,pc}
-.endfunc // reqBBS_813ED98
+	thumb_func_end reqBBS_813ED98
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813EDE4:
 	push {r0-r7,lr}
 	ldrb r0, [r5,#9]
@@ -1538,10 +1521,9 @@ off_813EE3C: .word dword_813EE40+2
 dword_813EE40: .word 0xC3FC
 	.byte 0, 0, 0, 0
 	.word 0x1010101, 0x2020101, 0x2020202, 0xFF
-.endfunc // reqBBS_813EDE4
+	thumb_func_end reqBBS_813EDE4
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_813EE58
 reqBBS_813EE58:
 	push {r5,lr}
 	ldr r0, dword_813EEEC // =0x3fffffff 
@@ -1628,34 +1610,32 @@ loc_813EECE:
 	pop {r5,pc}
 dword_813EEEC: .word 0x3FFFFFFF
 off_813EEF0: .word byte_2008450
-.endfunc // reqBBS_813EE58
+	thumb_func_end reqBBS_813EE58
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813EEF4:
 	push {r4-r7,lr}
 	ldr r0, off_813EF10 // =reqBBS_dialogList 
 	ldr r1, off_813EF20 // =dword_813EF24 
 	ldrb r2, [r5,#4]
 	ldrb r1, [r1,r2]
-	ldr r2, off_813EF14 // =unk_201CA00 
+	ldr r2, off_813EF14 // =byte_201CA00
 	ldr r3, dword_813EF18 // =0x6003c00 
 	mov r4, #0xc
 	mov r5, #1
 	ldr r6, off_813EF1C // =dword_86B7AE0 
 	mov r7, #0
 	bl render_graphicalText_8045F8C
-.endfunc // reqBBS_813EEF4
+	thumb_func_end reqBBS_813EEF4
 
 	pop {r4-r7,pc}
 off_813EF10: .word reqBBS_dialogList
-off_813EF14: .word unk_201CA00
+off_813EF14: .word byte_201CA00
 dword_813EF18: .word 0x6003C00
 off_813EF1C: .word dword_86B7AE0
 off_813EF20: .word dword_813EF24
 dword_813EF24: .word 0x9080706, 0xA
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_drawRequestBBS:
 	push {r4-r7,lr}
 	// j
@@ -1719,9 +1699,7 @@ tileRefs_813EF4C: .hword 0x4200, 0x4202, 0x4204, 0x4206, 0x4208, 0x420A, 0x420C,
 	.hword 0x53EC, 0x53C1, 0x53C3, 0x53C5, 0x53C7, 0x53C9, 0x53CB, 0x53CD
 	.hword 0x53CF, 0x53D1, 0x53D3, 0x53D5, 0x53D7, 0x53D9, 0x53DB, 0x53DD
 	.hword 0x53DF, 0x53E1, 0x53E3, 0x53E5, 0x53E7, 0x53E9, 0x53EB, 0x53ED
-unk_813F22C: .byte  0
-	.byte 0x60, 0x0, 0x60
-	.byte  0
+byte_813F22C: .byte 0x0, 0x60, 0x0, 0x60, 0x0
 a02468BDFHJL: .asciz "` `\"`$`&`(`*`,`.`0`2`4`6`8`:`<`>`@`B`D`F`H`J`L`"
 	.asciz "`"
 	.asciz "`"
@@ -1772,10 +1750,9 @@ dword_813F380: .word 0x1000000, 0x1010000, 0x1000000, 0x1000002, 0x1010102
 	.word 0x3030302, 0x2020103, 0x1000101, 0x20202, 0x0
 	.word 0x0, 0x0, 0x0, 0x0, 0x0
 	.word 0x0
-.endfunc // reqBBS_drawRequestBBS
+	thumb_func_end reqBBS_drawRequestBBS
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_init_s_2005780
 reqBBS_init_s_2005780:
 	push {r4-r7,lr}
 	push {r0}
@@ -1810,10 +1787,9 @@ reqBBS_init_s_2005780:
 	pop {r4-r7,pc}
 off_813F3FC: .word reqBBS_textualPointers
 off_813F400: .word dynaicArr
-.endfunc // reqBBS_init_s_2005780
+	thumb_func_end reqBBS_init_s_2005780
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_cb_813F404
 reqBBS_cb_813F404:
 	push {r4-r7,lr}
 	mov r1, r8
@@ -1851,10 +1827,9 @@ jt_813F42C: .word reqBBS_813F474+1
 	.word reqBBS_813FC30+1
 	.word reqBBS_813FC8C+1
 	.word reqBBS_813FD14+1
-.endfunc // reqBBS_cb_813F404
+	thumb_func_end reqBBS_cb_813F404
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813F474:
 	push {lr}
 	// entryIdx
@@ -1869,7 +1844,7 @@ reqBBS_813F474:
 	ldr r3, off_813F54C // =reqBBS_textualPointers 
 	ldr r3, [r3,#0x18] // (dword_813F364 - 0x813f34c)
 	add r2, r2, r3
-	add r0, r2, #0
+	mov r0, r2
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_813F4B6
 	ldr r0, off_813F548 // =dynaicArr 
@@ -1879,7 +1854,7 @@ reqBBS_813F474:
 	ldr r3, [r3,#0x14] // (dword_813F354+0xc - 0x813f34c)
 	add r2, r2, r3
 	// bitfield
-	add r0, r2, #0
+	mov r0, r2
 	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	mov r0, #0x17
 	mov r1, #0x3a 
@@ -1899,7 +1874,7 @@ loc_813F4B6:
 	bl reqBBS_813FDA8
 	bl reqBBS_813FE54
 	bl reqBBS_813FEB0
-.endfunc // reqBBS_813F474
+	thumb_func_end reqBBS_813F474
 
 	bl reqBBS_copyTextDataToRAM
 	ldrh r0, [r5,#0x24]
@@ -1952,14 +1927,13 @@ dword_813F53C: .word 0x5E40
 dword_813F544: .word 0xF
 off_813F548: .word dynaicArr
 off_813F54C: .word reqBBS_textualPointers
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813F550:
 	push {lr}
 	ldr r0, dword_813F58C // =0x1f40 
 	bl sub_8001778
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0
 	ble loc_813F56A
@@ -1978,23 +1952,22 @@ loc_813F56A:
 	bl reqBBS_8140358
 loc_813F57E:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813F550
+	thumb_func_end reqBBS_813F550
 
 	bl reqBBS_animateCursor
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
 dword_813F58C: .word 0x1F40
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813F590:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813F5E8 // =0x1f40 
 	strh r1, [r0]
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813F590
+	thumb_func_end reqBBS_813F590
 
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_813F5E4
@@ -2032,23 +2005,22 @@ loc_813F5E4:
 	mov r0, #0
 	pop {pc}
 dword_813F5E8: .word 0x1F40
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813F5EC:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813F864 // =0x5f40 
 	strh r1, [r0]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	add r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	sub r1, #8
 	strb r1, [r0,#7]
@@ -2060,7 +2032,7 @@ reqBBS_813F5EC:
 	strb r0, [r5,#8]
 	bgt loc_813F648
 	mov r0, r10
-	ldr r0, [r0,#0x2c]
+	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	mov r1, #4
 	str r1, [r0,#0x4c]
 	ldrh r1, [r5,#0x24]
@@ -2079,19 +2051,18 @@ reqBBS_813F5EC:
 	strb r0, [r5]
 loc_813F648:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813F5EC
+	thumb_func_end reqBBS_813F5EC
 
 	mov r0, #0
 	pop {pc}
 	.word 0x800
 off_813F654: .word reqBBS_textualShades
 off_813F658: .word reqBBS_requestEntries_IDs
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813F65C:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813F678
@@ -2100,7 +2071,7 @@ reqBBS_813F65C:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813F678:
@@ -2116,8 +2087,7 @@ loc_813F678:
 	ldrb r0, [r0,r1]
 	add r0, r0, r2
 	mov r8, r0
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_813F6A6
 	mov r0, r8
@@ -2147,7 +2117,7 @@ loc_813F6C2:
 	strb r0, [r5]
 loc_813F6CE:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813F65C
+	thumb_func_end reqBBS_813F65C
 
 	bl reqBBS_8140588
 	bl reqBBS_81402CC
@@ -2161,23 +2131,22 @@ loc_813F6CE:
 off_813F6EC: .word reqBBS_requestEntries_IDs
 off_813F6F0: .word reqBBS_textualShades
 off_813F6F4: .word reqBBS_dialogList
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813F6F8:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	sub r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	add r1, #8
 	strb r1, [r0,#7]
@@ -2191,7 +2160,7 @@ reqBBS_813F6F8:
 	mov r0, #4
 	strb r0, [r5]
 	bl reqBBS_813FEB0
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x3f 
 	strb r1, [r0,#9]
 	mov r1, #0x3f 
@@ -2206,17 +2175,16 @@ reqBBS_813F6F8:
 	strb r1, [r0,#6]
 loc_813F74A:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813F6F8
+	thumb_func_end reqBBS_813F6F8
 
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813F754:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -2232,7 +2200,7 @@ reqBBS_813F754:
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_813F7A6
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #0
@@ -2241,7 +2209,7 @@ reqBBS_813F754:
 	mov r0, #0xc
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -2256,17 +2224,16 @@ reqBBS_813F754:
 	strb r1, [r0,#6]
 loc_813F7A6:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813F754
+	thumb_func_end reqBBS_813F754
 
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813F7B0:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -2282,7 +2249,7 @@ reqBBS_813F7B0:
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_813F802
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #0
@@ -2291,7 +2258,7 @@ reqBBS_813F7B0:
 	mov r0, #0x1c
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -2306,28 +2273,27 @@ reqBBS_813F7B0:
 	strb r1, [r0,#6]
 loc_813F802:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813F7B0
+	thumb_func_end reqBBS_813F7B0
 
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813F80C:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813F864 // =0x5f40 
 	strh r1, [r0]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	add r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	sub r1, #8
 	strb r1, [r0,#7]
@@ -2344,7 +2310,7 @@ reqBBS_813F80C:
 	bne loc_813F846
 	mov r0, #1
 loc_813F846:
-	add r1, r0, #0
+	mov r1, r0
 	ldr r0, off_813F860 // =reqBBS_dialogList 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	bl reqBBS_renderSelectedEntry_HeaderText
@@ -2352,19 +2318,18 @@ loc_813F846:
 	strb r0, [r5]
 loc_813F856:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813F80C
+	thumb_func_end reqBBS_813F80C
 
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
 off_813F860: .word reqBBS_dialogList
 dword_813F864: .word 0x5F40
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813F868:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813F884
@@ -2373,7 +2338,7 @@ reqBBS_813F868:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813F884:
@@ -2384,7 +2349,7 @@ loc_813F884:
 	mov r0, #0x24 
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1f
 	strb r1, [r0,#9]
 	mov r0, #5
@@ -2394,16 +2359,15 @@ loc_813F884:
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 loc_813F8A8:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813F868
+	thumb_func_end reqBBS_813F868
 
 	mov r0, #0
 	pop {pc}
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813F8B0:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	add r1, #8
 	strb r1, [r0,#7]
@@ -2429,20 +2393,19 @@ loc_813F8DE:
 	bl reqBBS_813FEB0
 loc_813F8E6:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813F8B0
+	thumb_func_end reqBBS_813F8B0
 
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813F8F0:
 	push {r5,lr}
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
 	ldrh r0, [r5,#0x24]
 	bl reqBBS_renderRequestNames
-.endfunc // reqBBS_813F8F0
+	thumb_func_end reqBBS_813F8F0
 
 	bl reqBBS_81405E8
 	ldrh r0, [r5,#0x1e]
@@ -2489,8 +2452,7 @@ loc_813F936:
 	pop {r5,pc}
 dword_813F95C: .word 0x20002
 dword_813F960: .word 0xC000
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_copyTextDataToRAM:
 	push {r5,lr}
 	ldrb r0, [r5,#4]
@@ -2520,24 +2482,21 @@ off_813F990: .word unk_2025A00
 off_813F994: .word unk_2029A00
 off_813F998: .word byte_87EFE14
 off_813F99C: .word unk_2033A00
-.endfunc // reqBBS_copyTextDataToRAM
+	thumb_func_end reqBBS_copyTextDataToRAM
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_813F9A0
 reqBBS_813F9A0:
 	push {r3,r7,lr}
-	add r7, r0, #0
+	mov r7, r0
 	mov r1, #2
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl SetEventFlag // (u16 entryFlagBitfield) -> void
-	add r0, r7, #0
+	mov r0, r7
 	ldr r3, off_813FD74 // =0x1b60 
 	sub r0, r0, r3
 	ldr r3, off_813FD78 // =0x1ba0 
 	add r0, r0, r3
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	ldr r1, off_813FD74 // =0x1b60 
 	sub r7, r7, r1
@@ -2554,10 +2513,9 @@ reqBBS_813F9A0:
 	add r0, #1
 	str r0, [r1,r3]
 	pop {r3,r7,pc}
-.endfunc // reqBBS_813F9A0
+	thumb_func_end reqBBS_813F9A0
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_initMemory_813F9DA
 reqBBS_initMemory_813F9DA:
 	push {lr}
 	// mem
@@ -2578,13 +2536,12 @@ reqBBS_initMemory_813F9DA:
 	mov r1, #4
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
-.endfunc // reqBBS_initMemory_813F9DA
+	thumb_func_end reqBBS_initMemory_813F9DA
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_dead_initMemory_813F9F8:
 	push {r4,lr}
-	add r4, r0, #0
+	mov r4, r0
 	lsl r0, r0, #7
 	ldr r1, off_813FD90 // =reqBBS_requestEntriesList 
 	// mem
@@ -2609,10 +2566,9 @@ reqBBS_dead_initMemory_813F9F8:
 	mov r1, #4
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4,pc}
-.endfunc // reqBBS_dead_initMemory_813F9F8
+	thumb_func_end reqBBS_dead_initMemory_813F9F8
 
-.func
-.thumb_func
+	thumb_func_start sub_813FA24
 sub_813FA24:
 	push {r4,r5,lr}
 	ldr r3, off_813FA4C // =dword_813FA50 
@@ -2637,14 +2593,13 @@ loc_813FA2E:
 	.balign 4, 0x00
 off_813FA4C: .word dword_813FA50
 dword_813FA50: .word 0x1B60
-.endfunc // sub_813FA24
+	thumb_func_end sub_813FA24
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813FA54:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -2660,7 +2615,7 @@ reqBBS_813FA54:
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_813FAA6
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #0
@@ -2669,7 +2624,7 @@ reqBBS_813FA54:
 	mov r0, #0x30 
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1a
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -2684,28 +2639,27 @@ reqBBS_813FA54:
 	strb r1, [r0,#6]
 loc_813FAA6:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813FA54
+	thumb_func_end reqBBS_813FA54
 
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813FAB0:
 	push {lr}
 	mov r7, r10
-	ldr r0, [r7,#8]
+	ldr r0, [r7,#oToolkit_RenderInfoPtr]
 	ldr r1, dword_813FB14 // =0x5f40 
 	strh r1, [r0]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	add r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	sub r1, #8
 	strb r1, [r0,#7]
@@ -2732,7 +2686,7 @@ reqBBS_813FAB0:
 	strb r0, [r5]
 loc_813FB02:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813FAB0
+	thumb_func_end reqBBS_813FAB0
 
 	mov r0, #0
 	pop {pc}
@@ -2743,12 +2697,11 @@ dword_813FB14: .word 0x5F40
 off_813FB18: .word reqBBS_dialogList
 dword_813FB1C: .word 0xF
 off_813FB20: .word 0x50
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813FB24:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813FB40
@@ -2757,7 +2710,7 @@ reqBBS_813FB24:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813FB40:
@@ -2787,13 +2740,13 @@ loc_813FB6E:
 	mov r0, #0x3c 
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r0, #6
 	strb r0, [r5,#8]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #4
@@ -2808,7 +2761,7 @@ loc_813FB98:
 	pop {pc}
 loc_813FBA4:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813FB24
+	thumb_func_end reqBBS_813FB24
 
 	bl reqBBS_813FEB0
 	mov r0, #0
@@ -2817,12 +2770,11 @@ loc_813FBA4:
 off_813FBB4: .word reqBBS_requestInfo_textOffsets
 off_813FBB8: .word reqBBS_textualShades
 dword_813FBBC: .word 0xF
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813FBC0:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813FBDC
@@ -2831,7 +2783,7 @@ reqBBS_813FBC0:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813FBDC:
@@ -2843,13 +2795,13 @@ loc_813FBDC:
 	mov r0, #0x3c 
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r0, #6
 	strb r0, [r5,#8]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #4
@@ -2865,30 +2817,29 @@ loc_813FC0E:
 	pop {pc}
 loc_813FC1E:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813FBC0
+	thumb_func_end reqBBS_813FBC0
 
 	bl reqBBS_813FEB0
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
 	.word reqBBS_requestEntries_IDs
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813FC30:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	sub r0, #8
 	strb r0, [r7,#6]
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	ldrb r1, [r0,#7]
 	add r1, #8
 	strb r1, [r0,#7]
@@ -2902,7 +2853,7 @@ reqBBS_813FC30:
 	mov r0, #4
 	strb r0, [r5]
 	bl reqBBS_813FEB0
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x3f 
 	strb r1, [r0,#9]
 	mov r1, #0x3f 
@@ -2917,17 +2868,16 @@ reqBBS_813FC30:
 	strb r1, [r0,#6]
 loc_813FC82:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813FC30
+	thumb_func_end reqBBS_813FC30
 
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813FC8C:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813FCA8
@@ -2936,14 +2886,14 @@ reqBBS_813FC8C:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813FCA8:
 	bl reqBBS_81408F0
 	tst r0, r0
 	beq loc_813FCBE
-	add r1, r0, #0
+	mov r1, r0
 	ldr r0, off_813FD0C // =reqBBS_dialogList 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0x44 
@@ -2958,13 +2908,13 @@ loc_813FCBE:
 	mov r0, #0x14
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r0, #6
 	strb r0, [r5,#8]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #4
@@ -2980,19 +2930,18 @@ loc_813FCF0:
 	pop {pc}
 loc_813FD00:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813FC8C
+	thumb_func_end reqBBS_813FC8C
 
 	bl reqBBS_813FEB0
 	mov r0, #0
 	pop {pc}
 off_813FD0C: .word reqBBS_dialogList
 	.word reqBBS_requestEntries_IDs
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813FD14:
 	push {lr}
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	ldrb r0, [r7,#6]
 	cmp r0, #0x40 
 	bge loc_813FD30
@@ -3001,7 +2950,7 @@ reqBBS_813FD14:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 loc_813FD30:
@@ -3013,13 +2962,13 @@ loc_813FD30:
 	mov r0, #0x14
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r0, #6
 	strb r0, [r5,#8]
 	mov r7, r10
-	ldr r7, [r7,#0x20]
+	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
 	mov r0, #0xf7
 	strb r0, [r7]
 	mov r0, #4
@@ -3032,7 +2981,7 @@ loc_813FD30:
 	pop {pc}
 loc_813FD6C:
 	bl reqBBS_813F8F0
-.endfunc // reqBBS_813FD14
+	thumb_func_end reqBBS_813FD14
 
 	mov r0, #0
 	pop {pc}
@@ -3049,8 +2998,7 @@ off_813FD98: .word unk_2000770
 off_813FD9C: .word sChatbox
 off_813FDA0: .word dynaicArr
 off_813FDA4: .word dynaicArr
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813FDA8:
 	push {r5,lr}
 	bl sub_80017AA
@@ -3070,17 +3018,24 @@ dword_813FDCC: .word 0x887EF884, 0x6000200, 0x2017A00, 0x887EFC28, 0x0
 	.word unk_2018A00
 	.word 0x887EFD78, 0x0
 	.word unk_201BA00
-	.word dword_87EFBA4
+	.word byte_87EFBA4
 	.word unk_30019C0
-	.word 0x20, 0x87EFBC8, 0x30019E0, 0x60, 0x87EF5A4, 0x6001000
-	.word 0x280, 0x87EF824, 0x3001960, 0x60, 0x886C9D38, 0x6010000
-	.word 0x2019200, 0x86C9D6C, 0x30016D0, 0x20, 0x886C9BD4, 0x0
+	.byte 0x20, 0x0, 0x0, 0x0
+	.word reqBBS_textualShades
+	.byte 0xE0, 0x19, 0x0, 0x3, 0x60, 0x0, 0x0, 0x0
+	.word unk_87EF5A4
+	.byte 0x0, 0x10, 0x0, 0x6, 0x80, 0x2, 0x0, 0x0
+	.word byte_87EF824
+	.byte 0x60, 0x19, 0x0, 0x3, 0x60, 0x0, 0x0, 0x0, 0x38, 0x9D, 0x6C
+	.byte 0x88, 0x0, 0x0, 0x1, 0x6, 0x0, 0x92, 0x1, 0x2
+	.word byte_86C9D6C
+	.byte 0xD0, 0x16, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0, 0xD4, 0x9B, 0x6C
+	.byte 0x88, 0x0, 0x0, 0x0, 0x0
 	.word unk_201AA00
 	.word 0x0
-.endfunc // reqBBS_813FDA8
+	thumb_func_end reqBBS_813FDA8
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813FE54:
 	push {r4-r7,lr}
 	// mem
@@ -3119,8 +3074,7 @@ loc_813FE82:
 loc_813FE90:
 	push {r0,r1}
 	add r0, r0, r1
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r0,r1}
 	beq loc_813FEA0
@@ -3134,13 +3088,12 @@ loc_813FEA6:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_813FEAC: .word reqBBS_requestEntries_IDs
-.endfunc // reqBBS_813FE54
+	thumb_func_end reqBBS_813FE54
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_813FEB0:
 	push {r4-r7,lr}
-	add r7, r5, #0
+	mov r7, r5
 	// j
 	mov r0, #5
 	// i
@@ -3152,7 +3105,7 @@ reqBBS_813FEB0:
 	mov r4, #0x17
 	mov r5, #0x10
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-.endfunc // reqBBS_813FEB0
+	thumb_func_end reqBBS_813FEB0
 
 	ldr r3, [r7,#0x28]
 	ldr r3, [r3,#0x28]
@@ -3171,15 +3124,14 @@ reqBBS_813FEB0:
 	bl sub_80018D0
 	pop {r4-r7,pc}
 off_813FEE8: .word tileRefs_813EF4C
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_renderRequestNames:
 	push {r4-r7,lr}
 	ldr r1, off_813FF2C // =reqBBS_requestEntries_IDs 
 	ldr r7, [r5,#0x28]
 	ldr r7, [r7]
 	add r5, r0, r1
-	add r0, r7, #0
+	mov r0, r7
 	mov r1, #0
 	ldr r2, off_813FF20 // =decomp_2013A00 
 	ldr r3, dword_813FF24 // =0x6004000 
@@ -3204,18 +3156,14 @@ off_813FF20: .word decomp_2013A00
 dword_813FF24: .word 0x6004000
 off_813FF28: .word dword_86A5D60
 off_813FF2C: .word reqBBS_requestEntries_IDs
-.endfunc // reqBBS_renderRequestNames
+	thumb_func_end reqBBS_renderRequestNames
 
-.func
-.thumb_func
+	thumb_local_start
 sub_813FF30:
 	push {r4-r7,lr}
 	pop {r4-r7,pc}
 	.word unk_2018A04
-	.byte 0x30 
-	.byte 0x52, 0x31, 0x52
-	.byte 0x32 
-	.byte 0x52, 0x33, 0x52
+	.byte 0x30, 0x52, 0x31, 0x52, 0x32, 0x52, 0x33, 0x52
 	.word byte_813FF48
 	.word byte_813FFC8
 byte_813FF48: .byte 0x30, 0x52, 0x31, 0x52, 0x30, 0x52, 0x31, 0x52, 0x30
@@ -3248,15 +3196,14 @@ byte_813FFC8: .byte 0x32, 0x52, 0x33, 0x52, 0x32, 0x52, 0x33, 0x52, 0x32
 	.byte 0x36, 0x52, 0x37, 0x52, 0x36, 0x52, 0x37, 0x52, 0x36
 	.byte 0x52, 0x37, 0x52, 0x36, 0x52, 0x37, 0x52, 0x36, 0x52
 	.byte 0x37, 0x52, 0x0, 0x3A, 0x2, 0x2
-.endfunc // sub_813FF30
+	thumb_func_end sub_813FF30
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_anim_814004C:
 	push {r0-r7,lr}
 	ldrh r7, [r5,#0x24]
 	mov r6, r10
-	ldr r6, [r6,#0x24]
+	ldr r6, [r6,#oToolkit_CurFramePtr]
 	ldrh r6, [r6]
 	mov r4, #0x1f
 	and r4, r6
@@ -3269,8 +3216,7 @@ loc_814005E:
 	add r1, r7, r6
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_814008E
 	push {r4-r7}
@@ -3361,10 +3307,9 @@ dword_8140188: .word 0x850084, 0x870086, 0x850084, 0x870086, 0x850084
 	.word 0x870086, 0x850084, 0x870086, 0x850084, 0x870086
 	.word 0x850084, 0x870086, 0x850084, 0x870086, 0x850084
 	.word 0x870086
-.endfunc // reqBBS_anim_814004C
+	thumb_func_end reqBBS_anim_814004C
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_renderRequestStatus:
 	push {r4-r7,lr}
 	ldrh r7, [r5,#0x24] // reqBBS_GUI.pagePos
@@ -3376,8 +3321,7 @@ loc_81401CE:
 	add r1, r7, r6
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_81401FC
 	push {r4-r7}
@@ -3403,8 +3347,7 @@ loc_81401FC:
 	add r1, r7, r6
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8140228
 	push {r4-r7}
@@ -3432,10 +3375,9 @@ off_8140234: .word dword_8140238
 dword_8140238: .word 0x8B008A, 0x8D008C
 off_8140240: .word byte_8140244
 byte_8140244: .byte 0x8E, 0x0, 0x8F, 0x0, 0x90, 0x0, 0x91, 0x0
-.endfunc // reqBBS_renderRequestStatus
+	thumb_func_end reqBBS_renderRequestStatus
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_renderRankStars:
 	push {r4-r7,lr}
 	ldrh r7, [r5,#0x24] // reqBBS_GUI.pagePos
@@ -3447,8 +3389,7 @@ loc_8140252:
 	add r1, r7, r6
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_81402B4
 	push {r4-r7}
@@ -3502,10 +3443,9 @@ off_81402BC: .word reqBBS_requestEntries_IDs
 off_81402C0: .word dword_813F380
 off_81402C4: .word byte_81402C8
 byte_81402C8: .byte 0x88, 0x60, 0x89, 0x60
-.endfunc // reqBBS_renderRankStars
+	thumb_func_end reqBBS_renderRankStars
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_81402CC:
 	push {r4-r7,lr}
 	bl reqBBS_81408C8
@@ -3540,10 +3480,9 @@ locret_81402FE:
 off_8140300: .word dword_813F380
 off_8140304: .word byte_8140308
 byte_8140308: .byte 0x92, 0x60, 0x93, 0x60
-.endfunc // reqBBS_81402CC
+	thumb_func_end reqBBS_81402CC
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_814030C:
 	push {r4-r7,lr}
 	ldr r0, off_8140344 // =dynaicArr 
@@ -3583,15 +3522,14 @@ dword_8140348: .word 0xF
 off_814034C: .word dword_813F380
 off_8140350: .word byte_8140354
 byte_8140354: .byte 0x92, 0x60, 0x93, 0x60
-.endfunc // reqBBS_814030C
+	thumb_func_end reqBBS_814030C
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_8140358:
 	push {r4-r7,lr}
 	mov r8, r0
 	mov r7, r10
-	ldr r7, [r7,#4]
+	ldr r7, [r7,#oToolkit_JoypadPtr]
 	ldrh r0, [r7,#2]
 	mov r1, #2
 	tst r1, r0
@@ -3627,10 +3565,9 @@ locret_81403A0:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_81403A4: .word 0x3C0
-.endfunc // reqBBS_8140358
+	thumb_func_end reqBBS_8140358
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_81403A8:
 	push {lr}
 	mov r0, #0xc
@@ -3642,16 +3579,15 @@ reqBBS_81403A8:
 	bl sound_play // () -> void
 	pop {pc}
 	.byte 0, 0
-.endfunc // reqBBS_81403A8
+	thumb_func_end reqBBS_81403A8
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_81403C0:
 	push {lr}
 	mov r0, #0x18
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -3676,7 +3612,7 @@ reqBBS_81403C0:
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl sub_80018D0
-.endfunc // reqBBS_81403C0
+	thumb_func_end reqBBS_81403C0
 
 	pop {r5}
 	bl reqBBS_renderSelectedEntry_HeaderText
@@ -3688,14 +3624,13 @@ reqBBS_81403C0:
 	strb r0, [r7,#4]
 	strb r0, [r7,#6]
 	pop {pc}
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_8140414:
 	push {lr}
 	mov r0, #0x2c 
 	strb r0, [r5]
 	mov r7, r10
-	ldr r0, [r7,#0x1c]
+	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x1b
 	strb r1, [r0,#9]
 	mov r1, #0x36 
@@ -3720,7 +3655,7 @@ reqBBS_8140414:
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl sub_80018D0
-.endfunc // reqBBS_8140414
+	thumb_func_end reqBBS_8140414
 
 	pop {r5}
 	bl reqBBS_changeChatboxHeader
@@ -3751,8 +3686,7 @@ dword_814048C: .word 0xE
 off_8140490: .word dword_8140494
 dword_8140494: .word 0x4B23190A, 0x4B
 off_814049C: .word 0x54
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_drawChatbox_dup1:
 	push {r4-r7,lr}
 	// tileRefs
@@ -3768,10 +3702,9 @@ reqBBS_drawChatbox_dup1:
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r4-r7,pc}
 off_81404B4: .word unk_2018A04
-.endfunc // reqBBS_drawChatbox_dup1
+	thumb_func_end reqBBS_drawChatbox_dup1
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_drawSelectChatbox:
 	push {r4-r7,lr}
 	// tileRefs
@@ -3785,7 +3718,7 @@ reqBBS_drawSelectChatbox:
 	mov r4, #0x14
 	mov r5, #0xa
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-.endfunc // reqBBS_drawSelectChatbox
+	thumb_func_end reqBBS_drawSelectChatbox
 
 	pop {r4-r7,pc}
 off_81404CC: .word unk_201BA04
@@ -3800,8 +3733,7 @@ off_81404CC: .word unk_201BA04
 	pop {r4-r7,pc}
 	push {r4-r7,lr}
 	pop {r4-r7,pc}
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_renderSelectedEntry_HeaderText:
 	push {r4-r7,lr}
 	ldrh r0, [r5,#0x24] // reqBBS_GUI.pagePos
@@ -3811,7 +3743,7 @@ reqBBS_renderSelectedEntry_HeaderText:
 	ldrb r1, [r1,r0]
 	ldr r0, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
 	ldr r0, [r0]
-	ldr r2, off_8140510 // =unk_201B200 
+	ldr r2, off_8140510 // =byte_201B200
 	ldr r3, dword_8140514 // =0x6008400 
 	mov r4, #0x17
 	mov r5, #1
@@ -3821,13 +3753,12 @@ reqBBS_renderSelectedEntry_HeaderText:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_814050C: .word reqBBS_requestEntries_IDs
-off_8140510: .word unk_201B200
+off_8140510: .word byte_201B200
 dword_8140514: .word 0x6008400
 off_8140518: .word dword_86A5D60
-.endfunc // reqBBS_renderSelectedEntry_HeaderText
+	thumb_func_end reqBBS_renderSelectedEntry_HeaderText
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_setChatboxHeaderBasedOn_0F:
 	push {r4-r7,lr}
 	ldr r0, off_8140550 // =dynaicArr 
@@ -3835,7 +3766,7 @@ reqBBS_setChatboxHeaderBasedOn_0F:
 	ldrb r1, [r0,r1]
 	ldr r0, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
 	ldr r0, [r0]
-	ldr r2, off_8140540 // =unk_201B200 
+	ldr r2, off_8140540 // =byte_201B200
 	ldr r3, dword_8140544 // =0x6008400 
 	mov r4, #0x17
 	mov r5, #1
@@ -3845,22 +3776,21 @@ reqBBS_setChatboxHeaderBasedOn_0F:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	.word reqBBS_requestEntries_IDs
-off_8140540: .word unk_201B200
+off_8140540: .word byte_201B200
 dword_8140544: .word 0x6008400
 off_8140548: .word dword_86A5D60
 dword_814054C: .word 0xF
 off_8140550: .word dynaicArr
-.endfunc // reqBBS_setChatboxHeaderBasedOn_0F
+	thumb_func_end reqBBS_setChatboxHeaderBasedOn_0F
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_changeChatboxHeader:
 	push {r4-r7,lr}
 	bl reqBBS_getTotalPointsIndex // () -> u8
 	mov r1, #8
 	add r1, r1, r0
 	ldr r0, off_8140574 // =reqBBS_dialogList 
-	ldr r2, off_8140578 // =unk_201B200 
+	ldr r2, off_8140578 // =byte_201B200
 	ldr r3, dword_814057C // =0x6008400 
 	mov r4, #0xc
 	mov r5, #1
@@ -3870,68 +3800,64 @@ reqBBS_changeChatboxHeader:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8140574: .word reqBBS_dialogList
-off_8140578: .word unk_201B200
+off_8140578: .word byte_201B200
 dword_814057C: .word 0x6008400
 off_8140580: .word unk_86ACD60
 off_8140584: .word unk_201C200
-.endfunc // reqBBS_changeChatboxHeader
+	thumb_func_end reqBBS_changeChatboxHeader
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_8140588:
 	push {r4-r7,lr}
-	ldr r0, off_81405A0 // =unk_813F22C 
+	ldr r0, off_81405A0 // =byte_813F22C
 	mov r1, #6
 	lsl r1, r1, #6
 	mov r2, r10
-	ldr r2, [r2,#0x28]
+	ldr r2, [r2,#oToolkit_GFX30025c0_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
 	bl loc_8000AC8
-.endfunc // reqBBS_8140588
+	thumb_func_end reqBBS_8140588
 
 	pop {r4-r7,pc}
 	.byte 0, 0
-off_81405A0: .word unk_813F22C
-.func
-.thumb_func
+off_81405A0: .word byte_813F22C
+	thumb_local_start
 reqBBS_81405A4:
 	push {r4-r7,lr}
 	ldr r0, off_81405BC // =asc_813F2AB+1 
 	mov r1, #6
 	lsl r1, r1, #6
 	mov r2, r10
-	ldr r2, [r2,#0x28]
+	ldr r2, [r2,#oToolkit_GFX30025c0_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
 	bl loc_8000AC8
-.endfunc // reqBBS_81405A4
+	thumb_func_end reqBBS_81405A4
 
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_81405BC: .word asc_813F2AB+1
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_81405C0:
 	push {r4-r7,lr}
 	ldr r0, off_81405D8 // =reqBBS_dialogList 
 	mov r1, #0x12
-	ldr r2, off_81405DC // =unk_201CA00 
+	ldr r2, off_81405DC // =byte_201CA00
 	ldr r3, dword_81405E0 // =0x6003c00 
 	mov r4, #8
 	mov r5, #1
 	ldr r6, off_81405E4 // =dword_86B7AE0 
 	mov r7, #0
 	bl render_graphicalText_8045F8C
-.endfunc // reqBBS_81405C0
+	thumb_func_end reqBBS_81405C0
 
 	pop {r4-r7,pc}
 off_81405D8: .word reqBBS_dialogList
-off_81405DC: .word unk_201CA00
+off_81405DC: .word byte_201CA00
 dword_81405E0: .word 0x6003C00
 off_81405E4: .word dword_86B7AE0
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_81405E8:
 	push {r4-r7,lr}
 	// j
@@ -3945,19 +3871,17 @@ reqBBS_81405E8:
 	mov r4, #8
 	mov r5, #2
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-.endfunc // reqBBS_81405E8
+	thumb_func_end reqBBS_81405E8
 
 	pop {r4-r7,pc}
 off_81405FC: .word dword_813F32C
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_8140600:
 	push {r4-r7,lr}
 	pop {r4-r7,pc}
-.endfunc // reqBBS_8140600
+	thumb_func_end reqBBS_8140600
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_8140604:
 	push {r0,r4-r7,lr}
 	ldrh r6, [r5,#0x1e]
@@ -3969,17 +3893,17 @@ reqBBS_8140604:
 	ldr r1, [r5,#0x28]
 	ldr r1, [r1,#0xc]
 	add r3, r3, r1
-	add r0, r3, #0
+	mov r0, r3
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq locret_8140634
-	add r0, r7, #0
+	mov r0, r7
 	mov r1, #7
 	sub r2, r0, r1
 	bge loc_814062C
 	mov r2, #0
 	b loc_814062E
 loc_814062C:
-	add r0, r1, #0
+	mov r0, r1
 loc_814062E:
 	strh r0, [r5,#0x20]
 	strh r2, [r5,#0x24]
@@ -3988,7 +3912,7 @@ locret_8140634:
 	pop {r0,r4-r7,pc}
 	.balign 4, 0x00
 off_8140638: .word reqBBS_requestEntries_IDs
-.endfunc // reqBBS_8140604
+	thumb_func_end reqBBS_8140604
 
 	push {r0-r7,lr}
 	ldrh r7, [r5,#0x1e]
@@ -4033,8 +3957,7 @@ loc_814067C:
 	strh r4, [r5,#0x24]
 locret_8140686:
 	pop {r0-r7,pc}
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_animateCursor:
 	push {r0-r7,lr}
 	ldrb r0, [r5,#0x9] // reqBBS_GUI.animationTimer1
@@ -4080,10 +4003,9 @@ off_81406E0: .word dword_81406E4+2
 dword_81406E4: .word 0xC3FC
 	.word 0x0
 	.word 0x1010101, 0x2020101, 0x2020202, 0xFF
-.endfunc // reqBBS_animateCursor
+	thumb_func_end reqBBS_animateCursor
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_81406FC
 reqBBS_81406FC:
 	push {r5,lr}
 	ldr r0, dword_8140790 // =0x3fffffff 
@@ -4170,11 +4092,10 @@ loc_8140772:
 	pop {r5,pc}
 dword_8140790: .word 0x3FFFFFFF
 off_8140794: .word byte_2008450
-.endfunc // reqBBS_81406FC
+	thumb_func_end reqBBS_81406FC
 
-.func
-.thumb_func
 // () -> u8
+	thumb_func_start reqBBS_getTotalPointsIndex
 reqBBS_getTotalPointsIndex:
 	push {r4-r7,lr}
 	ldr r0, off_81409A4 // =dynaicArr 
@@ -4183,10 +4104,9 @@ reqBBS_getTotalPointsIndex:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 dword_81407A4: .word 0xE
-.endfunc // reqBBS_getTotalPointsIndex
+	thumb_func_end reqBBS_getTotalPointsIndex
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_81407A8:
 	push {r4-r7,lr}
 	ldr r1, off_81409A8 // =dynaicArr 
@@ -4195,10 +4115,9 @@ reqBBS_81407A8:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 dword_81407B4: .word 0xE
-.endfunc // reqBBS_81407A8
+	thumb_func_end reqBBS_81407A8
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_81407B8:
 	push {r4-r7,lr}
 	ldr r0, off_81409AC // =dynaicArr 
@@ -4207,10 +4126,9 @@ reqBBS_81407B8:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 dword_81407C4: .word 0xD
-.endfunc // reqBBS_81407B8
+	thumb_func_end reqBBS_81407B8
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_81407C8:
 	push {r4-r7,lr}
 	ldr r1, off_81409B0 // =dynaicArr 
@@ -4219,10 +4137,9 @@ reqBBS_81407C8:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 dword_81407D4: .word 0xD
-.endfunc // reqBBS_81407C8
+	thumb_func_end reqBBS_81407C8
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_81407D8
 reqBBS_81407D8:
 	push {r4-r7,lr}
 	// entryIdx
@@ -4262,14 +4179,13 @@ dword_814081C: .word 0xE
 dword_8140820: .word 0xF
 off_8140824: .word dword_8140828
 dword_8140828: .word 0x4B23190A, 0x0
-.endfunc // reqBBS_81407D8
+	thumb_func_end reqBBS_81407D8
 
 	push {r4-r7,lr}
 	ldr r1, off_8140848 // =reqBBS_textualPointers 
 	ldr r1, [r1,#0x10] // (dword_813F354+8 - 0x813f34c)
 	add r0, r0, r1
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8140844
 	mov r0, #1
@@ -4279,15 +4195,13 @@ loc_8140844:
 locret_8140846:
 	pop {r4-r7,pc}
 off_8140848: .word reqBBS_textualPointers
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_814084C:
 	push {r4-r7,lr}
 	ldr r1, off_8140864 // =reqBBS_textualPointers 
 	ldr r1, [r1,#0x18] // (dword_813F364 - 0x813f34c)
 	add r0, r0, r1
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8140860
 	mov r0, #1
@@ -4297,17 +4211,15 @@ loc_8140860:
 locret_8140862:
 	pop {r4-r7,pc}
 off_8140864: .word reqBBS_textualPointers
-.endfunc // reqBBS_814084C
+	thumb_func_end reqBBS_814084C
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_8140868:
 	push {r4-r7,lr}
 	ldr r1, off_8140880 // =reqBBS_textualPointers 
 	ldr r1, [r1,#0x14] // (dword_813F354+0xc - 0x813f34c)
 	add r0, r0, r1
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_814087C
 	mov r0, #1
@@ -4317,10 +4229,9 @@ loc_814087C:
 locret_814087E:
 	pop {r4-r7,pc}
 off_8140880: .word reqBBS_textualPointers
-.endfunc // reqBBS_8140868
+	thumb_func_end reqBBS_8140868
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_8140884:
 	push {r4-r7,lr}
 	push {r0}
@@ -4337,38 +4248,33 @@ loc_814089A:
 locret_814089C:
 	pop {r4-r7,pc}
 	.byte 0, 0
-.endfunc // reqBBS_8140884
+	thumb_func_end reqBBS_8140884
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_81408A0:
 	push {r4-r7,lr}
 	ldr r1, off_81408B0 // =reqBBS_textualPointers 
 	ldr r1, [r1,#0x10] // (dword_813F354+8 - 0x813f34c)
 	add r0, r0, r1
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r4-r7,pc}
 off_81408B0: .word reqBBS_textualPointers
-.endfunc // reqBBS_81408A0
+	thumb_func_end reqBBS_81408A0
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_81408B4
 reqBBS_81408B4:
 	push {r4-r7,lr}
 	ldr r1, off_81408C4 // =reqBBS_textualPointers 
 	ldr r1, [r1,#24]
 	add r0, r0, r1
-	// <mkdata>
-	.hword 0x1C00 // add r0, r0, #0
+	mov r0, r0
 	bl SetEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r4-r7,pc}
 off_81408C4: .word reqBBS_textualPointers
-.endfunc // reqBBS_81408B4
+	thumb_func_end reqBBS_81408B4
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_81408C8:
 	push {r4-r7,lr}
 	ldrh r0, [r5,#0x24]
@@ -4379,10 +4285,9 @@ reqBBS_81408C8:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_81408D8: .word reqBBS_requestEntries_IDs
-.endfunc // reqBBS_81408C8
+	thumb_func_end reqBBS_81408C8
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_81408DC:
 	push {r4-r7,lr}
 	bl reqBBS_81408C8
@@ -4392,10 +4297,9 @@ reqBBS_81408DC:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 dword_81408EC: .word 0xF
-.endfunc // reqBBS_81408DC
+	thumb_func_end reqBBS_81408DC
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_81408F0:
 	push {r4-r7,lr}
 	mov r0, #0x80
@@ -4456,10 +4360,9 @@ locret_814096C:
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_8140970: .word 0x110
-.endfunc // reqBBS_81408F0
+	thumb_func_end reqBBS_81408F0
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_8140974
 reqBBS_8140974:
 	push {r4-r7,lr}
 	ldr r0, off_81409C8 // =dynaicArr 
@@ -4468,10 +4371,9 @@ reqBBS_8140974:
 	pop {r4-r7,pc}
 	.byte 0, 0
 dword_8140980: .word 0xF
-.endfunc // reqBBS_8140974
+	thumb_func_end reqBBS_8140974
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_8140984
 reqBBS_8140984:
 	push {r4-r7,lr}
 	ldr r0, off_81409CC // =dynaicArr 
@@ -4497,48 +4399,44 @@ off_81409C0: .word dword_813F380
 off_81409C4: .word dynaicArr
 off_81409C8: .word dynaicArr
 off_81409CC: .word dynaicArr
-.endfunc // reqBBS_8140984
+	thumb_func_end reqBBS_8140984
 
-.func
-.thumb_func
 // (int a1) -> int
+	thumb_func_start reqBBS_81409D0
 reqBBS_81409D0:
 	push {r6,lr}
-	add r6, r0, #0
+	mov r6, r0
 	bl change_20013F0_800151C // () -> int
 	mov r1, #0xff
 	and r0, r1
-	add r1, r6, #0
+	mov r1, r6
 	svc 6
-	add r0, r1, #0
+	mov r0, r1
 	pop {r6,pc}
-.endfunc // reqBBS_81409D0
+	thumb_func_end reqBBS_81409D0
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_81409E4
 reqBBS_81409E4:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c] // Toolkit.gamestate
-	ldr r0, [r0,#0x18] // GameState.player
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldr r0, [r0,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #0x1c // NPC.scriptArrayOffset
 	bl sub_8031A7A
 	pop {pc}
-.endfunc // reqBBS_81409E4
+	thumb_func_end reqBBS_81409E4
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_81409F4
 reqBBS_81409F4:
 	push {lr}
 	mov r1, r10
-	ldr r1, [r1,#0x3c] // Toolkit.gamestate
-	ldrb r0, [r1,#0xe] // GameState.unk_0E
+	ldr r1, [r1,#oToolkit_GameStatePtr]
+	ldrb r0, [r1,#oGameState_Unk_0e]
 	pop {pc}
 	.byte 0, 0
-.endfunc // reqBBS_81409F4
+	thumb_func_end reqBBS_81409F4
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_setFlag_e17b0f7_8140A00
 reqBBS_setFlag_e17b0f7_8140A00:
 	// entry 17, byte 0, flag 7
 	push {lr}
@@ -4547,10 +4445,9 @@ reqBBS_setFlag_e17b0f7_8140A00:
 	mov r1, #0
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {pc}
-.endfunc // reqBBS_setFlag_e17b0f7_8140A00
+	thumb_func_end reqBBS_setFlag_e17b0f7_8140A00
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_clearFlag_8140A0C
 reqBBS_clearFlag_8140A0C:
 	push {r4,r5,lr}
 	// flag 7 @ 0x2001C88[0x17<<5 + 0x0] (=2001F68)
@@ -4558,16 +4455,15 @@ reqBBS_clearFlag_8140A0C:
 	mov r1, #0
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r5, r10
-	ldr r5, [r5,#0x40] // Toolkit.unk_2001C04
+	ldr r5, [r5,#oToolkit_Unk2001c04_Ptr]
 	mov r3, #0x14
 	ldrh r0, [r5,r3]
 	mov r3, #0x12
 	strh r0, [r5,r3]
 	pop {r4,r5,pc}
-.endfunc // reqBBS_clearFlag_8140A0C
+	thumb_func_end reqBBS_clearFlag_8140A0C
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_setFlags_8140A24:
 	push {lr}
 	mov r0, #0x16
@@ -4581,10 +4477,9 @@ reqBBS_setFlags_8140A24:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-.endfunc // reqBBS_setFlags_8140A24
+	thumb_func_end reqBBS_setFlags_8140A24
 
-.func
-.thumb_func
+	thumb_local_start
 reqBBS_setFlags_8140A40:
 	push {lr}
 	mov r0, #0x16
@@ -4598,10 +4493,9 @@ reqBBS_setFlags_8140A40:
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
-.endfunc // reqBBS_setFlags_8140A40
+	thumb_func_end reqBBS_setFlags_8140A40
 
-.func
-.thumb_func
+	thumb_func_start reqBBS_runDialog_8140A70
 reqBBS_runDialog_8140A70:
 	push {lr}
 	ldr r2, off_8140A6C // =off_8140A70 
@@ -4637,14 +4531,24 @@ off_8140A70: .word dword_87DAC90
 	.word 0xFF0D0E0C, 0x80000010, 0x1, 0x0, 0x0
 	.word byte_3001750
 	.word 0xFF0C0F0C, 0x80000010, 0x1, 0x0
-dword_8140BAC: .word 0x4, 0x3001B60, 0xFF0D0E0C, 0x80000880, 0xA, 0x800010C0
-	.word 0x1E, 0x80001900, 0x1E, 0x80002140, 0x1E, 0x80001940
-	.word 0x1E, 0x80001100, 0x1E, 0x2, 0x8140BC0, 0x4
-	.word 0x3001750, 0xFF0C0F0C, 0x80000880, 0xA, 0x2, 0x8140BC0
-	.word 0x4, 0x3001B60, 0xFF0D0E0C, 0x80001900, 0xA, 0x800010C0
-	.word 0xA, 0x80000880, 0xA, 0x80000040, 0xA, 0x80000000
-	.word 0x1, 0x0
-	.word 0x4, 0x3001750, 0xFF0C0F0C, 0x80001900, 0xA, 0x2, 0x8140C20
+byte_8140BAC: .byte 0x4, 0x0, 0x0, 0x0, 0x60, 0x1B, 0x0, 0x3, 0xC, 0xE, 0xD, 0xFF
+	.byte 0x80, 0x8, 0x0, 0x80, 0xA, 0x0, 0x0, 0x0
+byte_8140BC0: .byte 0xC0, 0x10, 0x0, 0x80, 0x1E, 0x0, 0x0, 0x0, 0x0, 0x19, 0x0, 0x80
+	.byte 0x1E, 0x0, 0x0, 0x0, 0x40, 0x21, 0x0, 0x80, 0x1E, 0x0, 0x0, 0x0
+	.byte 0x40, 0x19, 0x0, 0x80, 0x1E, 0x0, 0x0, 0x0, 0x0, 0x11, 0x0, 0x80
+	.byte 0x1E, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0
+	.word byte_8140BC0
+	.byte 0x4, 0x0, 0x0, 0x0, 0x50, 0x17, 0x0, 0x3, 0xC, 0xF, 0xC, 0xFF
+	.byte 0x80, 0x8, 0x0, 0x80, 0xA, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0
+	.word byte_8140BC0
+	.byte 0x4, 0x0, 0x0, 0x0, 0x60, 0x1B, 0x0, 0x3, 0xC, 0xE, 0xD, 0xFF
+	.byte 0x0, 0x19, 0x0, 0x80, 0xA, 0x0, 0x0, 0x0
+byte_8140C20: .byte 0xC0, 0x10, 0x0, 0x80, 0xA, 0x0, 0x0, 0x0, 0x80, 0x8, 0x0, 0x80
+	.byte 0xA, 0x0, 0x0, 0x0, 0x40, 0x0, 0x0, 0x80, 0xA, 0x0, 0x0, 0x0
+	.byte 0x0, 0x0, 0x0, 0x80, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.byte 0x4, 0x0, 0x0, 0x0, 0x50, 0x17, 0x0, 0x3, 0xC, 0xF, 0xC, 0xFF
+	.byte 0x0, 0x19, 0x0, 0x80, 0xA, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0
+	.word byte_8140C20
 dword_8140C60: .word 0x15000, 0x18000
 dword_8140C68: .word 0xFFC000EA, 0xFFC0002E, 0xFF48002E, 0xFF4800EA, 0xFF00FF
 dword_8140C7C: .word 0x0, 0x0, 0x0, 0x0
@@ -4664,19 +4568,32 @@ dword_8140D1C: .word 0xFE26FFDC, 0xFE66FFDC, 0xFE66007C, 0xFEC4007C, 0xFEC4FF9C
 	.word 0xFF26FF9C, 0xFF26001A, 0xFF26FF9C, 0xFEC4FF9C, 0xFEC4007C
 	.word 0xFE66007C, 0xFE66FFDC, 0xFE26FFDC, 0xFE260078, 0xFF00FF
 dword_8140D58: .word 0xFFA6001A, 0xFFA6FF9A, 0x24FF9A, 0x24001A, 0xFF00FF
-dword_8140D6C: .word 0x400FFFF, 0xFFFFFFFF, 0x500FFFF, 0xFFFF0203, 0x6000101
-	.word 0xFFFFFFFF, 0x800FFFF, 0xFFFFFFFF, 0xF00FFFF, 0x20503
-	.word 0xA000401, 0x1020603, 0xB000501, 0x2020703, 0xD000601
-	.word 0xFFFF0803, 0xFFFF0701, 0x3020903, 0xE000801, 0xFFFFFFFF
-	.word 0x1000FFFF, 0x5020B03, 0x14000A01, 0x602FFFF, 0xFFFFFFFF
-	.word 0xFFFF0D03, 0x15000C01, 0x7020E03, 0x16000D01, 0x902FFFF
-	.word 0xFFFFFFFF, 0x4021003, 0x11000F01, 0xA02FFFF, 0x1800FFFF
-	.word 0x10021203, 0xFFFF1101, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFF1403
-	.word 0x19001301, 0xB021503, 0x1A001401, 0xD021603, 0x1B001501
-	.word 0xE02FFFF, 0xFFFFFFFF, 0xF02FFFF, 0x1C00FFFF, 0x11021903
-	.word 0x1D001801, 0x1402FFFF, 0x1E00FFFF, 0x15021B03, 0x1F001A01
-	.word 0x1602FFFF, 0xFFFFFFFF, 0x18021D03, 0xFFFF1C01, 0x1902FFFF
-	.word 0xFFFFFFFF, 0x1A021F03, 0xFFFF1E01, 0x1B02FFFF
+byte_8140D6C: .byte 0xFF, 0xFF, 0x0, 0x4, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+	.byte 0x0, 0x5, 0x3, 0x2, 0xFF, 0xFF, 0x1, 0x1, 0x0, 0x6
+	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x0, 0x8, 0xFF, 0xFF
+	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x0, 0xF, 0x3, 0x5, 0x2, 0x0
+	.byte 0x1, 0x4, 0x0, 0xA, 0x3, 0x6, 0x2, 0x1, 0x1, 0x5
+	.byte 0x0, 0xB, 0x3, 0x7, 0x2, 0x2, 0x1, 0x6, 0x0, 0xD
+	.byte 0x3, 0x8, 0xFF, 0xFF, 0x1, 0x7, 0xFF, 0xFF, 0x3, 0x9
+	.byte 0x2, 0x3, 0x1, 0x8, 0x0, 0xE, 0xFF, 0xFF, 0xFF, 0xFF
+	.byte 0xFF, 0xFF, 0x0, 0x10, 0x3, 0xB, 0x2, 0x5, 0x1, 0xA
+	.byte 0x0, 0x14, 0xFF, 0xFF, 0x2, 0x6, 0xFF, 0xFF, 0xFF, 0xFF
+	.byte 0x3, 0xD, 0xFF, 0xFF, 0x1, 0xC, 0x0, 0x15, 0x3, 0xE
+	.byte 0x2, 0x7, 0x1, 0xD, 0x0, 0x16, 0xFF, 0xFF, 0x2, 0x9
+	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x3, 0x10, 0x2, 0x4, 0x1, 0xF
+	.byte 0x0, 0x11, 0xFF, 0xFF, 0x2, 0xA, 0xFF, 0xFF, 0x0, 0x18
+	.byte 0x3, 0x12, 0x2, 0x10, 0x1, 0x11, 0xFF, 0xFF, 0xFF, 0xFF
+	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x3, 0x14, 0xFF, 0xFF
+	.byte 0x1, 0x13, 0x0, 0x19, 0x3, 0x15, 0x2, 0xB, 0x1, 0x14
+	.byte 0x0, 0x1A, 0x3, 0x16, 0x2, 0xD, 0x1, 0x15, 0x0, 0x1B
+	.byte 0xFF, 0xFF, 0x2, 0xE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+	.byte 0x2, 0xF, 0xFF, 0xFF, 0x0, 0x1C, 0x3, 0x19, 0x2, 0x11
+	.byte 0x1, 0x18, 0x0, 0x1D, 0xFF, 0xFF, 0x2, 0x14, 0xFF, 0xFF
+	.byte 0x0, 0x1E, 0x3, 0x1B, 0x2, 0x15, 0x1, 0x1A, 0x0, 0x1F
+	.byte 0xFF, 0xFF, 0x2, 0x16, 0xFF, 0xFF, 0xFF, 0xFF, 0x3, 0x1D
+	.byte 0x2, 0x18, 0x1, 0x1C, 0xFF, 0xFF, 0xFF, 0xFF, 0x2, 0x19
+	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x3, 0x1F, 0x2, 0x1A, 0x1, 0x1E
+	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0x2, 0x1B
 dword_8140E6C: .word 0x200FFFF, 0xFFFFFFFF, 0xA00FFFF, 0xFFFF0203, 0xFFFF0101
 	.word 0x20303, 0xE000201, 0xFFFFFFFF, 0x1000FFFF, 0xFFFF0503
 	.word 0x12000401, 0xFFFFFFFF, 0xFFFF0501, 0xFFFFFFFF, 0xC00FFFF
@@ -4792,25 +4709,40 @@ dword_81415F4: .word 0xFFEEFE94, 0x1AEFED2, 0x14EFED2, 0x10EFED2, 0xCEFED2
 	.word 0xFEB20074, 0x18E004C, 0x14E0074, 0xEC0074, 0x8E0074
 	.word 0x4C0074, 0xE0074, 0x8E00B2, 0x4C00B2, 0xE00B2
 	.word 0xFF5C00B2, 0xFEEC00B2, 0xFEB200B2
-dword_814172C: .word 0x104FE3C, 0xA6FE3C, 0x64FE3C, 0xFFE6FE3C, 0xFFE6FE5A
-	.word 0xFFA4FE5A, 0x104FE7A, 0xE6FE7A, 0xA6FE7A, 0x64FE7A
-	.word 0xFFA4FE9C, 0xFF66FE9C, 0xFF66FEBA, 0xFF44FEBA, 0x64FEBA
-	.word 0xFFE6FEBA, 0x64FED8, 0xFFE6FEFA, 0xFF84FEFA, 0x24FEFC
-	.word 0x0
-	.word 0x1A6FF1A, 0x164FF1A, 0xE6FF1A, 0xA4FF1A, 0x64FF1A
-	.word 0x64FF3C, 0x24FF3C, 0x1A6FF5C, 0x184FF5C, 0x164FF5C
-	.word 0x126FF5C, 0xE6FF5C, 0xA4FF5C, 0x64FF5C, 0x24FF5C
-	.word 0xFFE4FF5C, 0xFF84FF5C, 0xFF44FF5C, 0x126FF7E, 0xE6FF7E
-	.word 0xA4FF9A, 0x64FF9A, 0x24FF9A, 0xFFE4FF9A, 0xFFA6FF9A
-	.word 0x0, 0x0, 0x0, 0x0
-	.word 0x1A6FF9A, 0x0
-	.word 0x184FF9A, 0x164FF9A, 0x1C2FFBA, 0x1A6FFBA, 0x164FFBA
-	.word 0x126FFBA, 0x64FFDA, 0x24FFDA, 0x0, 0x0
-	.word 0x1A6FFDC, 0x164FFDC, 0xE6FFFA, 0xA4FFFA, 0x64FFFA
-	.word 0x24001A, 0xFFA6001A, 0x0, 0x0, 0x0
-	.word 0x0, 0x0, 0x0
-	.word 0x126001A, 0xE6001A, 0xE6003C, 0xA4003C, 0x64003C
-	.word 0x0, 0x0, 0x0, 0x0
-.endfunc // reqBBS_runDialog_8140A70
+byte_814172C: .byte 0x3C, 0xFE, 0x4, 0x1, 0x3C, 0xFE, 0xA6, 0x0, 0x3C, 0xFE
+	.byte 0x64, 0x0, 0x3C, 0xFE, 0xE6, 0xFF, 0x5A, 0xFE, 0xE6, 0xFF
+	.byte 0x5A, 0xFE, 0xA4, 0xFF, 0x7A, 0xFE, 0x4, 0x1, 0x7A, 0xFE
+	.byte 0xE6, 0x0, 0x7A, 0xFE, 0xA6, 0x0, 0x7A, 0xFE, 0x64, 0x0
+	.byte 0x9C, 0xFE, 0xA4, 0xFF, 0x9C, 0xFE, 0x66, 0xFF, 0xBA, 0xFE
+	.byte 0x66, 0xFF, 0xBA, 0xFE, 0x44, 0xFF, 0xBA, 0xFE, 0x64, 0x0
+	.byte 0xBA, 0xFE, 0xE6, 0xFF, 0xD8, 0xFE, 0x64, 0x0, 0xFA, 0xFE
+	.byte 0xE6, 0xFF, 0xFA, 0xFE, 0x84, 0xFF, 0xFC, 0xFE, 0x24, 0x0
+	.byte 0x0, 0x0, 0x0, 0x0, 0x1A, 0xFF, 0xA6, 0x1, 0x1A, 0xFF
+	.byte 0x64, 0x1, 0x1A, 0xFF, 0xE6, 0x0, 0x1A, 0xFF, 0xA4, 0x0
+	.byte 0x1A, 0xFF, 0x64, 0x0, 0x3C, 0xFF, 0x64, 0x0, 0x3C, 0xFF
+	.byte 0x24, 0x0, 0x5C, 0xFF, 0xA6, 0x1, 0x5C, 0xFF, 0x84, 0x1
+	.byte 0x5C, 0xFF, 0x64, 0x1, 0x5C, 0xFF, 0x26, 0x1, 0x5C, 0xFF
+	.byte 0xE6, 0x0, 0x5C, 0xFF, 0xA4, 0x0, 0x5C, 0xFF, 0x64, 0x0
+	.byte 0x5C, 0xFF, 0x24, 0x0, 0x5C, 0xFF, 0xE4, 0xFF, 0x5C, 0xFF
+	.byte 0x84, 0xFF, 0x5C, 0xFF, 0x44, 0xFF, 0x7E, 0xFF, 0x26, 0x1
+	.byte 0x7E, 0xFF, 0xE6, 0x0, 0x9A, 0xFF, 0xA4, 0x0, 0x9A, 0xFF
+	.byte 0x64, 0x0, 0x9A, 0xFF, 0x24, 0x0, 0x9A, 0xFF, 0xE4, 0xFF
+	.byte 0x9A, 0xFF, 0xA6, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.byte 0x9A, 0xFF, 0xA6, 0x1, 0x0, 0x0, 0x0, 0x0, 0x9A, 0xFF
+	.byte 0x84, 0x1, 0x9A, 0xFF, 0x64, 0x1, 0xBA, 0xFF, 0xC2, 0x1
+	.byte 0xBA, 0xFF, 0xA6, 0x1, 0xBA, 0xFF, 0x64, 0x1, 0xBA, 0xFF
+	.byte 0x26, 0x1, 0xDA, 0xFF, 0x64, 0x0, 0xDA, 0xFF, 0x24, 0x0
+	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xDC, 0xFF
+	.byte 0xA6, 0x1, 0xDC, 0xFF, 0x64, 0x1, 0xFA, 0xFF, 0xE6, 0x0
+	.byte 0xFA, 0xFF, 0xA4, 0x0, 0xFA, 0xFF, 0x64, 0x0, 0x1A, 0x0
+	.byte 0x24, 0x0, 0x1A, 0x0, 0xA6, 0xFF, 0x0, 0x0, 0x0, 0x0
+	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.byte 0x1A, 0x0, 0x26, 0x1, 0x1A, 0x0, 0xE6, 0x0, 0x3C, 0x0
+	.byte 0xE6, 0x0, 0x3C, 0x0, 0xA4, 0x0, 0x3C, 0x0, 0x64, 0x0
+	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	thumb_func_end reqBBS_runDialog_8140A70
 
 /*For debugging purposes, connect comment at any range!*/

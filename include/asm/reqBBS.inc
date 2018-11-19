@@ -26,7 +26,7 @@
 .global reqBBS_setFlag_e17b0f7_8140A00
 .global reqBBS_clearFlag_8140A0C
 .global reqBBS_runDialog_8140A70
-.global dword_8140BAC
+.global byte_8140BAC
 .global dword_8140C60
 .global dword_8140C68
 .global dword_8140C7C
@@ -39,14 +39,14 @@
 .global dword_8140D10
 .global dword_8140D1C
 .global dword_8140D58
-.global dword_8140D6C
+.global byte_8140D6C
 .global dword_8140E6C
 .global dword_8140FBC
 .global dword_814122C
 .global dword_81414CC
 .global dword_814154C
 .global dword_81415F4
-.global dword_814172C
+.global byte_814172C
 
 
 /* External Symbols */
@@ -108,12 +108,12 @@
 // .global sub_811FA98
 
 .include "asm/asm37_0.inc"
-// .global unk_813DBDC
+// .global byte_813DBDC
 // .global tileRefs_813DBE4
-// .global unk_813DEC4
+// .global byte_813DEC4
 // .global tileRefs_813DF44
 // .global off_813DF74
-// .global dword_813DF7C
+// .global off_813E04C
 
 .include "asm/asm37_1.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
@@ -122,6 +122,9 @@
 // .global dword_86A5D60
 // .global unk_86ACD60
 // .global dword_86B7AE0
+
+.include "data/dat38_70.inc"
+// .global byte_86C9D6C
 
 .include "data/dat38_87.inc"
 // .global dword_87DAC90
@@ -136,12 +139,13 @@
 // .global dword_87E771C
 // .global dword_87E7780
 // .global dword_87E77E4
-// .global dword_87E7848
+// .global unk_87E7848
 // .global dword_87EE1AC
 // .global dword_87EE2F0
 // .global dword_87EE5B0
-// .global dword_87EF5A4
-// .global dword_87EFBA4
+// .global unk_87EF5A4
+// .global byte_87EF824
+// .global byte_87EFBA4
 // .global reqBBS_textualShades
 // .global byte_87EFE14
 
@@ -165,13 +169,14 @@
 // .equ reqBBS_tile_data, 0x2018204
 // .equ unk_2018A00, 0x2018A00
 // .equ unk_2018A04, 0x2018A04
+// .equ unk_2019200, 0x2019200
 // .equ unk_201AA00, 0x201AA00
 // .equ unk_201AA04, 0x201AA04
-// .equ unk_201B200, 0x201B200
+// .equ byte_201B200, 0x201B200
 // .equ unk_201BA00, 0x201BA00
 // .equ unk_201BA04, 0x201BA04
 // .equ unk_201C200, 0x201C200
-// .equ unk_201CA00, 0x201CA00
+// .equ byte_201CA00, 0x201CA00
 // .equ reqBBS_requestEntries_IDs, 0x2023A00
 // .equ unk_2025A00, 0x2025A00
 // .equ reqBBS_requestNames_textualData, 0x2025A04
@@ -179,8 +184,11 @@
 // .equ reqBBS_requestInfo_textOffsets, 0x2029A04
 // .equ unk_2033A00, 0x2033A00
 // .equ reqBBS_dialogList, 0x2033A04
+// .equ byte_30016D0, 0x30016D0
 // .equ byte_3001750, 0x3001750
+// .equ byte_3001960, 0x3001960
 // .equ unk_30019C0, 0x30019C0
+// .equ unk_30019E0, 0x30019E0
 // .equ unk_3001B60, 0x3001B60
 
 .endif // INC_ASM_REQBBS

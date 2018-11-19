@@ -21,7 +21,7 @@
 .include "asm/asm03_0.inc"
 // .global sub_802FF4C
 // .global sub_803037C
-// .global loc_8030472
+// .global sub_8030472
 // .global sub_8030AA4
 
 .include "asm/chatbox.inc"

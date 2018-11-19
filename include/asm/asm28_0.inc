@@ -3,7 +3,7 @@
 
 /* Public Symbols */
 .global byte_8098C78
-.global unk_8098CA2
+.global byte_8098CA2
 .global byte_8098DDC
 .global byte_80990B8
 .global dword_80991F4
@@ -11,12 +11,12 @@
 .global dword_8099DC0
 .global dword_8099E04
 .global dword_8099EA0
-.global unk_809A8A8
+.global byte_809A8A8
 .global byte_809AA34
 .global unk_809AE68
 .global unk_809B5AD
 .global sub_809BA14
-.global unk_809BFB0
+.global byte_809BFB0
 .global sub_809C890
 .global sub_809C940
 .global sub_809C968
@@ -24,14 +24,14 @@
 .global sub_809CA84
 .global unk_809CAD8
 .global sub_809CF2C
-.global loc_809D19C
+.global sub_809D19C
 .global unk_809D328
 .global sub_809E04C
 .global sub_809E064
 .global setFlag3_2e2_2001C88
 .global updateFlags_809E0B0 // () -> void
-.global loc_809E0FC
-.global loc_809E114
+.global sub_809E0FC
+.global sub_809E114
 .global sub_809E122
 .global sub_809E13C
 .global sub_809E14C
@@ -46,8 +46,8 @@
 .global sub_809E23C
 .global sub_809E248
 .global sub_809E254
-.global loc_809E260
-.global loc_809E26A
+.global sub_809E260
+.global sub_809E26A
 .global sub_809E276
 .global sub_809E284
 .global sub_809E292
@@ -77,7 +77,7 @@
 .global sub_809E4A0
 .global sub_809E4AE
 .global sub_809E4BC
-.global dword_809E530
+.global byte_809E530
 
 
 /* External Symbols */
@@ -87,6 +87,8 @@
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
+// .global sub_80010BE
+// .global sub_80010C6
 // .global sub_8001172
 // .global sub_8001850
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -148,7 +150,9 @@
 .include "asm/asm03_1.inc"
 // .global sub_8033978
 // .global sub_8033FC0
+// .global sub_8033FDC
 // .global sub_8034C36
+// .global sub_8035364
 // .global sub_8035694
 // .global init_s_02011C50_8036E90
 // .global s_2011C50_ptr_1C_isNull // () -> zf
@@ -182,10 +186,11 @@
 // .global sub_811980C
 // .global sub_8119854
 // .global sub_811EBE0
+// .global sub_8120DF0
 
 .include "asm/asm37_0.inc"
 // .global sub_813D41C
-// .global loc_813D48C
+// .global sub_813D48C
 
 .include "asm/reqBBS.inc"
 // .global reqBBS_81407D8
@@ -243,6 +248,7 @@
 // .equ unk_2011C50, 0x2011C50
 // .equ dword_2011CC0, 0x2011CC0
 // .equ unk_2020000, 0x2020000
+// .equ unk_2020204, 0x2020204
 // .equ unk_202DA04, 0x202DA04
 // .equ byte_202FA04, 0x202FA04
 // .equ unk_2033404, 0x2033404

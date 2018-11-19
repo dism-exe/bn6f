@@ -15,6 +15,7 @@
 .global byte_805E238
 .global byte_805E23D
 .global byte_805E242
+.global byte_805FF01
 .global off_8060184
 .global byte_806020A
 .global off_8060284
