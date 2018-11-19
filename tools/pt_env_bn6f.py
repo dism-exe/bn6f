@@ -205,7 +205,9 @@ pt.env(gameFiles={
 'asm/reqBBS.s':
 	(0x813E07C, 0x814187C), # size=0x3800
 'asm/asm37_1.s':
-	(0x814187C, 0x814FE8D), # size=0xE611
+	(0x814187C, 0x81440D8), # size=0xE611
+'asm/libs.s':
+	(0x81440D8, 0x814FE8D),
 'data/dat37.s':
 	(0x814FE8D, 0x81D6000), # size=0x8634D
 'asm/asm38.s':

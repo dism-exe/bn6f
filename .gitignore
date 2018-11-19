@@ -17,12 +17,16 @@
 # python generated files/folders
 __pycache__/
 
+# clion settings
+.idea/
+
 # intentionally ignore those junk/temp files
 *.ign
 
-# compare.sh
+# compare.sh and other misc dumps
 baserom.txt
 bn6f.txt
+*.txt
 
 # asmdiff.sh
 *.dump

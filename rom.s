@@ -6,6 +6,8 @@ to make the ROM. This file is compiled to define the whole ROM region.
 	.include "constants/constants.inc"
 
     .text
+	
+	.syntax divided
 
 start:
 .include "asm/start.s"
@@ -189,6 +191,8 @@ reqBBS:
 .include "asm/reqBBS.s"
 asm37_1:
 .include "asm/asm37_1.s"
+LibsFileLabel:
+.include "asm/libs.s"
 dat37:
 .include "data/dat37.s"
 
