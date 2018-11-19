@@ -1,12 +1,11 @@
 .include "asm/asm11.inc"
 
-.func
-.thumb_func
+	thumb_func_start sub_8069038
 sub_8069038:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_8069090 // =off_8068CCC 
-	ldr r1, [r7,#0x14]
+	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -25,7 +24,7 @@ sub_8069038:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_8069094 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -47,10 +46,9 @@ dword_80690A8: .word 0x631C561C, 0xFFFF521C
 dword_80690B0: .word 0x631C561C, 0xFFFF521C
 dword_80690B8: .word 0x631C561C, 0x5518521C
 	.byte 0xFF, 0xFF
-.endfunc // sub_8069038
+	thumb_func_end sub_8069038
 
-.func
-.thumb_func
+	thumb_func_start sub_80690C2
 sub_80690C2:
 	push {lr}
 	lsl r1, r1, #2
@@ -86,15 +84,14 @@ off_8069120: .word off_8068D18
 	.word off_8068F30
 	.word dword_8068FA0
 	.word 0xFFFFFFFF
-.endfunc // sub_80690C2
+	thumb_func_end sub_80690C2
 
-.func
-.thumb_func
+	thumb_func_start sub_8069140
 sub_8069140:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r1, [r5,#5]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #4
 	ldr r7, off_8069174 // =off_8069178 
 	add r7, r7, r1
@@ -107,22 +104,22 @@ sub_8069140:
 	orr r0, r1
 	bl sub_8001778
 	ldr r0, off_80691A8 // =off_80691AC 
-	ldrb r1, [r5,#5]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 	bl sub_80304E8
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8069174: .word off_8069178
-off_8069178: .word locret_8001AB4+1
+off_8069178: .word nullsub_39+1
 	.word sub_80019FE+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019FE+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019FE+1
 	.word unk_3005CD9
 	.word 0x800
@@ -137,15 +134,14 @@ off_80691B8: .word off_8612A28
 	.word dword_8612E84
 	.word byte_3001960
 	.word 0x20
-.endfunc // sub_8069140
+	thumb_func_end sub_8069140
 
-.func
-.thumb_func
+	thumb_func_start sub_80691D4
 sub_80691D4:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r6, [r5,#5]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
+	ldrb r6, [r5,#oGameState_MapNumber]
 	lsl r6, r6, #2
 	ldr r7, off_80691E8 // =off_80691EC 
 	ldr r7, [r7,r6]
@@ -156,33 +152,29 @@ off_80691E8: .word off_80691EC
 off_80691EC: .word nullsub_31+1
 	.word nullsub_32+1
 	.word nullsub_33+1
-.endfunc // sub_80691D4
+	thumb_func_end sub_80691D4
 
-.func
-.thumb_func
+	thumb_local_start
 nullsub_31:
 	mov pc, lr
-.endfunc // nullsub_31
+	thumb_func_end nullsub_31
 
-.func
-.thumb_func
+	thumb_local_start
 nullsub_32:
 	mov pc, lr
-.endfunc // nullsub_32
+	thumb_func_end nullsub_32
 
-.func
-.thumb_func
+	thumb_local_start
 nullsub_33:
 	mov pc, lr
-.endfunc // nullsub_33
+	thumb_func_end nullsub_33
 
-.func
-.thumb_func
+	thumb_func_start sub_80691FE
 sub_80691FE:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0,#5]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	lsl r0, r0, #2
 	ldr r1, off_8069214 // =off_8069218 
 	ldr r0, [r1,r0]
@@ -1086,15 +1078,14 @@ off_8069FC0: .word unk_30019E0
 	.word byte_85B8308
 	.word 0xA
 	.word 0x1
-.endfunc // sub_80691FE
+	thumb_func_end sub_80691FE
 
-.func
-.thumb_func
+	thumb_func_start sub_8069FE8
 sub_8069FE8:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_806A040 // =off_80698DC 
-	ldr r1, [r7,#0x14]
+	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -1113,7 +1104,7 @@ sub_8069FE8:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_806A044 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -1134,10 +1125,9 @@ off_806A04C: .word dword_806A058
 dword_806A058: .word 0x6C1C6B1C, 0xFFFF201C
 dword_806A060: .word 0x6C1C6B1C, 0xFFFF201C
 dword_806A068: .word 0x6C1C6B1C, 0xFFFF201C
-.endfunc // sub_8069FE8
+	thumb_func_end sub_8069FE8
 
-.func
-.thumb_func
+	thumb_func_start sub_806A070
 sub_806A070:
 	push {lr}
 	lsl r1, r1, #2
@@ -1186,15 +1176,14 @@ off_806A0F0: .word off_8069928
 	.word off_8069F80
 	.word off_8069FA0
 	.word 0xFFFFFFFF
-.endfunc // sub_806A070
+	thumb_func_end sub_806A070
 
-.func
-.thumb_func
+	thumb_func_start sub_806A120
 sub_806A120:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r1, [r5,#5]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #4
 	ldr r7, off_806A154 // =off_806A158 
 	add r7, r7, r1
@@ -1207,22 +1196,22 @@ sub_806A120:
 	orr r0, r1
 	bl sub_8001778
 	ldr r0, off_806A188 // =off_806A18C 
-	ldrb r1, [r5,#5]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 	bl sub_80304E8
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_806A154: .word off_806A158
-off_806A158: .word locret_8001AB4+1
+off_806A158: .word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
@@ -1237,15 +1226,14 @@ off_806A198: .word off_8613608
 	.word 0x0
 	.word 0x0
 	.word 0x0
-.endfunc // sub_806A120
+	thumb_func_end sub_806A120
 
-.func
-.thumb_func
+	thumb_func_start sub_806A1B4
 sub_806A1B4:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r6, [r5,#5]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
+	ldrb r6, [r5,#oGameState_MapNumber]
 	lsl r6, r6, #2
 	ldr r7, off_806A1C8 // =off_806A1CC 
 	ldr r7, [r7,r6]
@@ -1253,24 +1241,32 @@ sub_806A1B4:
 	bx r7
 	pop {r4-r7,pc}
 off_806A1C8: .word off_806A1CC
-off_806A1CC: .word locret_806A1D8+1
-	.word locret_806A1DA+1
-	.word locret_806A1DC+1
-.endfunc // sub_806A1B4
+off_806A1CC: .word nullsub_67+1
+	.word nullsub_68+1
+	.word nullsub_69+1
+	thumb_func_end sub_806A1B4
 
-locret_806A1D8:
+	thumb_local_start
+nullsub_67:
 	mov pc, lr
-locret_806A1DA:
+	thumb_func_end nullsub_67
+
+	thumb_local_start
+nullsub_68:
 	mov pc, lr
-locret_806A1DC:
+	thumb_func_end nullsub_68
+
+	thumb_local_start
+nullsub_69:
 	mov pc, lr
-.func
-.thumb_func
+	thumb_func_end nullsub_69
+
+	thumb_func_start sub_806A1DE
 sub_806A1DE:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0,#5]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	lsl r0, r0, #2
 	ldr r1, off_806A1F4 // =off_806A1F8 
 	ldr r0, [r1,r0]
@@ -1308,7 +1304,7 @@ dword_806A2C4: .word 0xA2D30011
 	.word 0xE00116F7
 	.word 0x290806A2
 	.word 0x2011EBC
-	.word unk_8050202
+	.word byte_8050202
 	.word 0x16F7FF1F
 	.word 0x16F2FF1F
 	.word 0xF07F4002
@@ -1829,15 +1825,14 @@ dword_806A9C0: .word 0x3001AE0
 	.word byte_85D0834
 	.word 0xC
 	.word 0x1
-.endfunc // sub_806A1DE
+	thumb_func_end sub_806A1DE
 
-.func
-.thumb_func
+	thumb_func_start sub_806AA00
 sub_806AA00:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_806AA58 // =off_806A7AC 
-	ldr r1, [r7,#0x14]
+	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -1856,7 +1851,7 @@ sub_806AA00:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_806AA5C // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -1895,10 +1890,9 @@ unk_806AA9E: .byte 0x1C
 	.word 0x941C841C
 	.word 0x8D1C971C
 	.byte 0xFF, 0xFF
-.endfunc // sub_806AA00
+	thumb_func_end sub_806AA00
 
-.func
-.thumb_func
+	thumb_func_start sub_806AAAA
 sub_806AAAA:
 	push {lr}
 	lsl r1, r1, #2
@@ -1961,15 +1955,14 @@ off_806AB70: .word off_806A810
 	.word off_806A980
 	.word dword_806A9C0
 	.word 0xFFFFFFFF
-.endfunc // sub_806AAAA
+	thumb_func_end sub_806AAAA
 
-.func
-.thumb_func
+	thumb_func_start sub_806AB94
 sub_806AB94:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r1, [r5,#5]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #4
 	ldr r7, off_806ABC8 // =off_806ABCC 
 	add r7, r7, r1
@@ -1982,30 +1975,30 @@ sub_806AB94:
 	orr r0, r1
 	bl sub_8001778
 	ldr r0, off_806AC1C // =off_806AC20 
-	ldrb r1, [r5,#5]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 	bl sub_80304E8
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_806ABC8: .word off_806ABCC
-off_806ABCC: .word locret_8001AB4+1
+off_806ABCC: .word nullsub_39+1
 	.word sub_8001A6A+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019FE+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019FE+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_8001A22+1
 	.word unk_3005CD9
 	.word 0x800
@@ -2050,15 +2043,14 @@ off_806ACA4: .word off_8614444
 	.word unk_8614BB8
 	.word byte_3001960
 	.word 0x20
-.endfunc // sub_806AB94
+	thumb_func_end sub_806AB94
 
-.func
-.thumb_func
+	thumb_func_start sub_806ACC0
 sub_806ACC0:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r6, [r5,#5]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
+	ldrb r6, [r5,#oGameState_MapNumber]
 	lsl r6, r6, #2
 	ldr r7, off_806ACD4 // =off_806ACD8 
 	ldr r7, [r7,r6]
@@ -2071,50 +2063,44 @@ off_806ACD8: .word sub_806ACEC+1
 	.word sub_806ACF4+1
 	.word sub_806ACF8+1
 	.word sub_806ACFC+1
-.endfunc // sub_806ACC0
+	thumb_func_end sub_806ACC0
 
-.func
-.thumb_func
+	thumb_local_start
 sub_806ACEC:
 	push {lr}
 	pop {pc}
-.endfunc // sub_806ACEC
+	thumb_func_end sub_806ACEC
 
-.func
-.thumb_func
+	thumb_local_start
 sub_806ACF0:
 	push {lr}
 	pop {pc}
-.endfunc // sub_806ACF0
+	thumb_func_end sub_806ACF0
 
-.func
-.thumb_func
+	thumb_local_start
 sub_806ACF4:
 	push {lr}
 	pop {pc}
-.endfunc // sub_806ACF4
+	thumb_func_end sub_806ACF4
 
-.func
-.thumb_func
+	thumb_local_start
 sub_806ACF8:
 	push {lr}
 	pop {pc}
-.endfunc // sub_806ACF8
+	thumb_func_end sub_806ACF8
 
-.func
-.thumb_func
+	thumb_local_start
 sub_806ACFC:
 	push {lr}
 	pop {pc}
-.endfunc // sub_806ACFC
+	thumb_func_end sub_806ACFC
 
-.func
-.thumb_func
+	thumb_func_start sub_806AD00
 sub_806AD00:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0,#5]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	lsl r0, r0, #2
 	ldr r1, off_806AD14 // =off_806AD18 
 	ldr r0, [r1,r0]
@@ -2210,7 +2196,7 @@ unk_806AEF9: .byte  5
 	.word 0x30806AF
 	.word 0x390E2CFF
 	.word 0x260806AF
-	.word unk_8098CA2
+	.word byte_8098CA2
 	.word 0x3
 	.word 0x6AF3901
 	.word 0x8
@@ -2399,7 +2385,7 @@ unk_806B195: .byte 0x1E
 	.byte  0
 	.byte  0
 unk_806B1AF: .byte 0x2C 
-	.word dword_8140BAC
+	.word byte_8140BAC
 	.word 0x140BF02C
 	.word 0x3D7D2508
 	.word 0x808
@@ -3658,15 +3644,14 @@ off_806C20C: .word byte_3001960
 	.word byte_8615B64
 	.word 0xC
 	.word 0x1
-.endfunc // sub_806AD00
+	thumb_func_end sub_806AD00
 
-.func
-.thumb_func
+	thumb_func_start sub_806C23C
 sub_806C23C:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_806C294 // =off_806BFF8 
-	ldr r1, [r7,#0x14]
+	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -3685,7 +3670,7 @@ sub_806C23C:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_806C298 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -3717,10 +3702,9 @@ unk_806C2DC: .byte 0x1C
 	.byte 0x1C
 	.byte 0x88
 	.byte 0xFF, 0xFF
-.endfunc // sub_806C23C
+	thumb_func_end sub_806C23C
 
-.func
-.thumb_func
+	thumb_func_start sub_806C2E2
 sub_806C2E2:
 	push {lr}
 	lsl r1, r1, #2
@@ -3755,15 +3739,14 @@ off_806C344: .word off_806C194
 off_806C350: .word off_806C194
 	.word off_806C1DC
 	.word 0xFFFFFFFF
-.endfunc // sub_806C2E2
+	thumb_func_end sub_806C2E2
 
-.func
-.thumb_func
+	thumb_func_start sub_806C35C
 sub_806C35C:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r1, [r5,#5]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #4
 	ldr r7, off_806C390 // =off_806C394 
 	add r7, r7, r1
@@ -3776,38 +3759,38 @@ sub_806C35C:
 	orr r0, r1
 	bl sub_8001778
 	ldr r0, off_806C404 // =off_806C408 
-	ldrb r1, [r5,#5]
+	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 	bl sub_80304E8
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_806C390: .word off_806C394
-off_806C394: .word locret_8001AB4+1
+off_806C394: .word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
-	.word locret_8001AB4+1
+	.word nullsub_39+1
+	.word nullsub_39+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
-	.word locret_8001AB4+1
+	.word nullsub_39+1
 	.word sub_80019D0+1
 	.word unk_3005CD9
 	.word 0x800
@@ -3854,10 +3837,9 @@ off_806C494: .word off_861602C
 	.word byte_86163F4
 	.word byte_3001960
 	.word 0x20
-.endfunc // sub_806C35C
+	thumb_func_end sub_806C35C
 
-.func
-.thumb_func
+	thumb_func_start sub_806C4B0
 sub_806C4B0:
 	push {r4-r7,lr}
 	push {r0,r1}
@@ -3869,8 +3851,8 @@ sub_806C4B0:
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {r0,r1}
 	mov r5, r10
-	ldr r5, [r5,#0x3c]
-	ldrb r6, [r5,#5]
+	ldr r5, [r5,#oToolkit_GameStatePtr]
+	ldrb r6, [r5,#oGameState_MapNumber]
 	lsl r6, r6, #2
 	ldr r7, off_806C4D8 // =off_806C4DC 
 	ldr r7, [r7,r6]
@@ -3885,10 +3867,9 @@ off_806C4DC: .word sub_806C4F8+1
 	.byte 0, 0, 0, 0
 	.word sub_806C55A+1
 	.word sub_806C578+1
-.endfunc // sub_806C4B0
+	thumb_func_end sub_806C4B0
 
-.func
-.thumb_func
+	thumb_local_start
 sub_806C4F8:
 	push {lr}
 	cmp r0, #1
@@ -3905,10 +3886,9 @@ loc_806C504:
 	mov r1, #0xf1
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {pc}
-.endfunc // sub_806C4F8
+	thumb_func_end sub_806C4F8
 
-.func
-.thumb_func
+	thumb_local_start
 sub_806C514:
 	push {lr}
 	cmp r0, #0
@@ -3926,10 +3906,9 @@ loc_806C520:
 	mov r1, #0x8f
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {pc}
-.endfunc // sub_806C514
+	thumb_func_end sub_806C514
 
-.func
-.thumb_func
+	thumb_local_start
 sub_806C532:
 	push {lr}
 	cmp r0, #3
@@ -3937,8 +3916,8 @@ sub_806C532:
 	cmp r1, #2
 	bne loc_806C548
 	mov r1, r10
-	ldr r1, [r1,#0x3c]
-	ldr r0, [r1,#0x3c]
+	ldr r1, [r1,#oToolkit_GameStatePtr]
+	ldr r0, [r1,#oGameState_Unk_3c]
 	cmp r0, #0
 	bne loc_806C548
 	pop {pc}
@@ -3952,10 +3931,9 @@ loc_806C548:
 	mov r1, #0x8f
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {pc}
-.endfunc // sub_806C532
+	thumb_func_end sub_806C532
 
-.func
-.thumb_func
+	thumb_local_start
 sub_806C55A:
 	push {lr}
 	cmp r0, #4
@@ -3973,10 +3951,9 @@ loc_806C566:
 	mov r1, #0x8f
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {pc}
-.endfunc // sub_806C55A
+	thumb_func_end sub_806C55A
 
-.func
-.thumb_func
+	thumb_local_start
 sub_806C578:
 	push {lr}
 	cmp r0, #5
@@ -3996,15 +3973,14 @@ loc_806C584:
 	pop {pc}
 	.balign 4, 0x00
 off_806C598: .word off_806C1C4
-.endfunc // sub_806C578
+	thumb_func_end sub_806C578
 
-.func
-.thumb_func
+	thumb_func_start sub_806C59C
 sub_806C59C:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0,#5]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	lsl r0, r0, #2
 	ldr r1, off_806C5B0 // =pt_806C5B4 
 	ldr r0, [r1,r0]
@@ -4014,7 +3990,7 @@ off_806C5B0: .word pt_806C5B4
 pt_806C5B4:
 	// <endpool>
 	.word dword_806C5D0
-.endfunc // sub_806C59C
+	thumb_func_end sub_806C59C
 
 	.word dword_806C638
 	.byte 0, 0, 0, 0

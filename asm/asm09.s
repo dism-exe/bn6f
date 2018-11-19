@@ -1,12 +1,11 @@
 .include "asm/asm09.inc"
 
-.func
-.thumb_func
+	thumb_func_start sub_8062AB0
 sub_8062AB0:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_8062B0C // =off_8062728 
-	ldr r1, [r7,#0x14]
+	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -24,7 +23,7 @@ sub_8062AB0:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_8062B10 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -60,10 +59,9 @@ byte_8062B4E: .byte 0x1C, 0x7B, 0xFF, 0xFF
 byte_8062B52: .byte 0x1C, 0x65, 0x1C, 0x20, 0xFF, 0xFF
 byte_8062B58: .byte 0x1C, 0x85, 0x1C, 0x83, 0x1C, 0x84, 0x1C, 0x94, 0x1C
 	.byte 0x97, 0xFF, 0xFF
-.endfunc // sub_8062AB0
+	thumb_func_end sub_8062AB0
 
-.func
-.thumb_func
+	thumb_func_start sub_8062B64
 sub_8062B64:
 	push {lr}
 	lsl r1, r1, #2
@@ -94,15 +92,14 @@ off_8062BB8: .word byte_80629F0
 	.word 0xFFFFFFFF
 off_8062BC4: .word byte_8062A70
 	.word 0xFFFFFFFF
-.endfunc // sub_8062B64
+	thumb_func_end sub_8062B64
 
-.func
-.thumb_func
+	thumb_func_start sub_8062BCC
 sub_8062BCC:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0,#5]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	lsl r0, r0, #2
 	ldr r1, off_8062BE0 // =pt_8062BE4 
 	ldr r0, [r1,r0]
@@ -117,6 +114,6 @@ pt_8062BE4:
 	.word dword_8062E88
 	.word dword_8062EB4
 	.word dword_8062F1C
-.endfunc // sub_8062BCC
+	thumb_func_end sub_8062BCC
 
 /*For debugging purposes, connect comment at any range!*/

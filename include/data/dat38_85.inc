@@ -66,6 +66,7 @@
 .global dword_86E0F78
 .global dword_86E0FB8
 .global dword_86E0FF8
+.global unk_86E101C
 .global dword_86E1038
 .global dword_86E1078
 .global dword_86E10B8

@@ -1,8 +1,7 @@
 .include "asm/asm02.inc"
 
-.func
-.thumb_func
 // (int chip_idx) -> ChipData*
+	thumb_func_start getChip_8021DA8
 getChip_8021DA8:
 	ldr r1, off_8021AB0 // =ChipDataArr_8021DA8 
 	mov r2, #44
@@ -12,16 +11,15 @@ getChip_8021DA8:
 	mov pc, lr
 	.byte 0, 0
 off_8021AB0: .word ChipDataArr_8021DA8
-.endfunc // getChip_8021DA8
+	thumb_func_end getChip_8021DA8
 
-.func
-.thumb_func
+	thumb_func_start sub_8021AB4
 sub_8021AB4:
 	push {r4,r6,r7,lr}
 	mov r2, #0x3c 
 	mul r1, r2
 	mov r3, r10
-	ldr r3, [r3,#0x48]
+	ldr r3, [r3,#oToolkit_S_Chip_2002178_Ptr]
 	add r1, r1, r3
 	mov r2, #0x3c 
 	push {r1}
@@ -37,11 +35,10 @@ loc_8021ACC:
 	cmp r6, #0x3c 
 	blt loc_8021ACC
 	pop {r4,r6,r7,pc}
-.endfunc // sub_8021AB4
+	thumb_func_end sub_8021AB4
 
-.func
-.thumb_func
 // (int bitfield) -> (int, int)
+	thumb_func_start split9BitsFromBitfield_8021AE0
 split9BitsFromBitfield_8021AE0:
 	// splits bitfield into lower and upper 9 bits, and returns those in r0, r1
 	push {lr}
@@ -51,10 +48,9 @@ split9BitsFromBitfield_8021AE0:
 	pop {pc}
 	.balign 4, 0x00
 word_8021AEC: .hword 0x1FF
-.endfunc // split9BitsFromBitfield_8021AE0
+	thumb_func_end split9BitsFromBitfield_8021AE0
 
-.func
-.thumb_func
+	thumb_func_start sub_8021AEE
 sub_8021AEE:
 	push {r4,lr}
 	push {r0-r2}
@@ -69,24 +65,23 @@ loc_8021B00:
 	ldr r1, off_8021B74 // =0x1e20 
 	add r1, r1, r0
 	// bitfield
-	add r0, r1, #0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	mov r0, r1
+	bl SetEventFlag
 	pop {r0-r2}
 	push {r2}
 	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
-	add r4, r3, #0
+	mov r4, r3
 	pop {r2}
 	bl sub_8021B5A
 	push {r3}
-	add r1, r4, #0
+	mov r1, r4
 	bl sub_81376B8
 	pop {r3}
-	add r0, r3, #0
+	mov r0, r3
 	pop {r4,pc}
-.endfunc // sub_8021AEE
+	thumb_func_end sub_8021AEE
 
-.func
-.thumb_func
+	thumb_func_start sub_8021B2A
 sub_8021B2A:
 	push {lr}
 	push {r0-r2}
@@ -101,19 +96,18 @@ loc_8021B3C:
 	ldr r1, off_8021B74 // =0x1e20 
 	add r1, r1, r0
 	// bitfield
-	add r0, r1, #0
-	bl SetEventFlag // (u16 entryFlagBitfield) -> void
+	mov r0, r1
+	bl SetEventFlag
 	pop {r0-r2}
 	push {r2}
 	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
 	pop {r2}
 	bl sub_8021B5A
-	add r0, r3, #0
+	mov r0, r3
 	pop {pc}
-.endfunc // sub_8021B2A
+	thumb_func_end sub_8021B2A
 
-.func
-.thumb_func
+	thumb_local_start
 sub_8021B5A:
 	mov r3, #1
 	ldrb r1, [r0]
@@ -130,13 +124,12 @@ loc_8021B6E:
 	mov pc, lr
 	.balign 4, 0x00
 off_8021B74: .word 0x1E20
-.endfunc // sub_8021B5A
+	thumb_func_end sub_8021B5A
 
-.func
-.thumb_func
 // (int idx, int searchItem, int off) -> void*
 // [break (E7FE)]
 //   When getting an item; like from mayl, or when loading shops
+	thumb_func_start sub_8021B78
 sub_8021B78:
 	push {lr}
 	push {r0-r2}
@@ -151,16 +144,15 @@ loc_8021B84:
 	strb r2, [r0]
 	// return itemRef
 	pop {pc}
-.endfunc // sub_8021B78
+	thumb_func_end sub_8021B78
 
-.func
-.thumb_func
 // (int idx, int searchItem, int off) -> void*
+	thumb_func_start sub_8021B92
 sub_8021B92:
 	push {r4,lr}
 	push {r2}
 	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
-	add r4, r3, #0
+	mov r4, r3
 	pop {r2}
 	mov r3, #1
 	ldrb r1, [r0]
@@ -176,15 +168,14 @@ loc_8021BB0:
 	tst r1, r1
 	bne loc_8021BBC
 	push {r3}
-	add r1, r4, #0
+	mov r1, r4
 	pop {r3}
 loc_8021BBC:
-	add r0, r3, #0
+	mov r0, r3
 	pop {r4,pc}
-.endfunc // sub_8021B92
+	thumb_func_end sub_8021B92
 
-.func
-.thumb_func
+	thumb_func_start sub_8021BC0
 sub_8021BC0:
 	push {r4,lr}
 	push {r0,r1}
@@ -197,10 +188,9 @@ sub_8021BC0:
 loc_8021BD4:
 	mov r0, #0
 	pop {r4,pc}
-.endfunc // sub_8021BC0
+	thumb_func_end sub_8021BC0
 
-.func
-.thumb_func
+	thumb_func_start sub_8021BD8
 sub_8021BD8:
 	push {r7,lr}
 	push {r0}
@@ -208,7 +198,7 @@ sub_8021BD8:
 	pop {r0}
 	bne loc_8021BFE
 	mov r7, r10
-	ldr r7, [r7,#0x4c]
+	ldr r7, [r7,#oToolkit_Unk2002230_Ptr]
 	mov r1, #0xc
 	mul r1, r0
 	add r7, r7, r1
@@ -223,16 +213,15 @@ sub_8021BD8:
 loc_8021BFE:
 	mov r0, #0
 	pop {r7,pc}
-.endfunc // sub_8021BD8
+	thumb_func_end sub_8021BD8
 
-.func
-.thumb_func
+	thumb_func_start sub_8021C02
 sub_8021C02:
 	push {r4-r7,lr}
 	sub sp, sp, #4
 	push {r0,r1}
 	mov r2, r10
-	ldr r2, [r2,#0x40]
+	ldr r2, [r2,#oToolkit_Unk2001c04_Ptr]
 	pop {r0,r1}
 	ldrb r2, [r2,#5]
 	str r2, [sp]
@@ -240,7 +229,7 @@ sub_8021C02:
 	mov r5, #0
 loc_8021C16:
 	mov r7, r10
-	ldr r7, [r7,#0x48]
+	ldr r7, [r7,#oToolkit_S_Chip_2002178_Ptr]
 	ldr r6, off_8021C60 // =unk_20018EC 
 	ldrb r3, [r6,r4]
 	lsr r2, r3, #4
@@ -258,8 +247,8 @@ loc_8021C28:
 	cmp r1, r7
 	bne loc_8021C48
 	push {r0,r1}
-	add r0, r6, #0
-	add r1, r7, #0
+	mov r0, r6
+	mov r1, r7
 	bl sub_8006EA4
 	pop {r0,r1}
 	bne loc_8021C48
@@ -274,34 +263,32 @@ loc_8021C48:
 	str r2, [sp]
 	bne loc_8021C16
 	add sp, sp, #4
-	add r0, r5, #0
+	mov r0, r5
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_8021C60: .word unk_20018EC
 dword_8021C64: .word 0x1FF
-.endfunc // sub_8021C02
+	thumb_func_end sub_8021C02
 
-.func
-.thumb_func
+	thumb_func_start sub_8021C68
 sub_8021C68:
 	push {lr}
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#0x4c]
+	ldr r0, [r0,#oToolkit_Unk2002230_Ptr]
 	// size
 	ldr r1, dword_8021C78 // =0xf00 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 	.balign 4, 0x00
 dword_8021C78: .word 0xF00
-.endfunc // sub_8021C68
+	thumb_func_end sub_8021C68
 
-.func
-.thumb_func
 // (int chip_idx, int searchItem, int off) -> void*
+	thumb_func_start chip_8021C7C
 chip_8021C7C:
 	push {r4,r7,lr}
-	add r2, r0, #0
+	mov r2, r0
 	push {r1,r2}
 	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
 	pop {r1,r2}
@@ -319,17 +306,16 @@ loc_8021C8C:
 	mov r3, #0
 loc_8021C9A:
 	mov r7, r10
-	ldr r7, [r7,#0x4c] // Toolkit.unk_2002230
+	ldr r7, [r7,#oToolkit_Unk2002230_Ptr]
 	mov r1, #12
 	mul r1, r2
 	add r7, r7, r1
 	add r0, r7, r3
 	// return Toolkit.unk_4C + (12*r2_off) + r3_itemIdx
 	pop {r4,r7,pc}
-.endfunc // chip_8021C7C
+	thumb_func_end chip_8021C7C
 
-.func
-.thumb_func
+	thumb_func_start sub_8021CA8
 sub_8021CA8:
 	push {r4-r7,lr}
 	mov r4, #0
@@ -337,12 +323,12 @@ sub_8021CA8:
 	mov r2, #0
 loc_8021CB0:
 	// idx
-	add r0, r2, #0
+	mov r0, r2
 	push {r2}
 	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
 	pop {r2}
 	push {r0,r2}
-	add r0, r2, #0
+	mov r0, r2
 	bl sub_8006E84
 	pop {r0,r2}
 	bne loc_8021CF4
@@ -356,7 +342,7 @@ loc_8021CC8:
 	tst r7, r1
 	bne loc_8021CEE
 	mov r7, r10
-	ldr r7, [r7,#0x4c]
+	ldr r7, [r7,#oToolkit_Unk2002230_Ptr]
 	mov r1, #0xc
 	mul r1, r2
 	add r7, r7, r1
@@ -376,25 +362,23 @@ loc_8021CF4:
 	ldr r1, off_8021D04 // =0x140 
 	cmp r2, r1
 	blt loc_8021CB0
-	add r0, r4, #0
-	add r1, r5, #0
+	mov r0, r4
+	mov r1, r5
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8021D04: .word 0x140
-.endfunc // sub_8021CA8
+	thumb_func_end sub_8021CA8
 
-.func
-.thumb_func
+	thumb_func_start sub_8021D08
 sub_8021D08:
 	push {lr}
 	ldr r0, off_8021D94 // =unk_203A0A0 
 	ldr r1, off_8021D98 // =0x2e0 
 	bl ZeroFillByHalfword
 	pop {pc}
-.endfunc // sub_8021D08
+	thumb_func_end sub_8021D08
 
-.func
-.thumb_func
+	thumb_func_start sub_8021D14
 sub_8021D14:
 	push {lr}
 	ldr r2, off_8021D9C // =0x170 
@@ -408,10 +392,9 @@ sub_8021D14:
 	strb r2, [r0,r1]
 locret_8021D28:
 	pop {pc}
-.endfunc // sub_8021D14
+	thumb_func_end sub_8021D14
 
-.func
-.thumb_func
+	thumb_local_start
 sub_8021D2A:
 	ldr r2, off_8021D9C // =0x170 
 	mul r2, r0
@@ -419,10 +402,9 @@ sub_8021D2A:
 	add r0, r0, r2
 	ldrb r0, [r0,r1]
 	mov pc, lr
-.endfunc // sub_8021D2A
+	thumb_func_end sub_8021D2A
 
-.func
-.thumb_func
+	thumb_func_start sub_8021D36
 sub_8021D36:
 	push {lr}
 	ldr r0, off_8021D6C // =unk_2000AF0 
@@ -456,7 +438,7 @@ off_8021D84: .word byte_8021D8A
 script_8021D88:
 	// <endpool>
 	.byte 0x2, 0x0
-.endfunc // sub_8021D36
+	thumb_func_end sub_8021D36
 
 byte_8021D8A: .byte 0x7E, 0x7E, 0x7E, 0x7E, 0xE6, 0x0, 0x0, 0x0, 0x0, 0x0
 off_8021D94: .word unk_203A0A0

@@ -1,7 +1,6 @@
 .include "asm/asm30_0.inc"
 
-.func
-.thumb_func
+	thumb_func_start sub_80AED50
 sub_80AED50:
 	push {lr}
 	bl sub_80182B4
@@ -24,43 +23,43 @@ off_80AED74:
 	.word off_80AED80
 	.word off_80AEE0C
 	.word off_80AEE0C
-.endfunc // sub_80AED50
+	thumb_func_end sub_80AED50
 
-off_80AED80: .word dword_8109AA4
-	.word dword_8109BFC
-	.word dword_810A2EC
-	.word dword_810A86C
-	.word dword_810AE70
+off_80AED80: .word byte_8109AA4
+	.word byte_8109BFC
+	.word byte_810A2EC
+	.word byte_810A86C
+	.word byte_810AE70
 	.word byte_810B7B8
-	.word dword_810BEF8
-	.word dword_810C388
-	.word dword_810C8F8
+	.word byte_810BEF8
+	.word byte_810C388
+	.word byte_810C8F8
 	.word dword_810D034
-	.word dword_810D198
-	.word dword_810D724
+	.word byte_810D198
+	.word byte_810D724
 	.word dword_810DD3C
-	.word dword_810E414
+	.word byte_810E414
 	.word dword_810ECAC
-	.word dword_810F22C
-	.word dword_810F510
-	.word dword_81102BC
-	.word unk_8110654
-	.word dword_811115C
+	.word byte_810F22C
+	.word byte_810F510
+	.word byte_81102BC
+	.word byte_8110654
+	.word byte_811115C
 	.word dword_8111938
-	.word dword_8112024
-	.word dword_8112708
-	.word dword_8112BC0
+	.word byte_8112024
+	.word byte_8112708
+	.word byte_8112BC0
 	.word dword_8113268
-	.word dword_8113780
-	.word dword_81143F4
+	.word byte_8113780
+	.word byte_81143F4
 	.word dword_81150D8
-	.word dword_8115730
-	.word dword_8115C18
-	.word dword_8109AA4
-	.word dword_8109AA4
-	.word dword_8109AA4
-	.word dword_8109AA4
-	.word dword_8109AA4
+	.word byte_8115730
+	.word byte_8115C18
+	.word byte_8109AA4
+	.word byte_8109AA4
+	.word byte_8109AA4
+	.word byte_8109AA4
+	.word byte_8109AA4
 off_80AEE0C: .word dword_80F28F0
 	.word dword_80F2A54
 	.word dword_80F390C
@@ -76,8 +75,14 @@ off_80AEE0C: .word dword_80F28F0
 	.word dword_80FD044
 	.word dword_80FDCF0
 	.word dword_80FE7D0
-	.word 0x80FF7F0, 0x81001E8, 0x80F28F0, 0x8101268, 0x8101880
-	.word 0x8103BB4, 0x81053BC
+	.word byte_80FF7F0
+	.word byte_81001E8
 	.word dword_80F28F0
-	.word 0x8106828, 0x8107B50
+	.word byte_8101268
+	.word byte_8101880
+	.word byte_8103BB4
+	.word byte_81053BC
+	.word dword_80F28F0
+	.word byte_8106828
+	.word byte_8107B50
 /*For debugging purposes, connect comment at any range!*/

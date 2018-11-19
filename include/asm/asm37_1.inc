@@ -61,7 +61,18 @@
 .global sub_81433DA
 .global sub_81433E4
 .global sub_8143482
-.global dword_81434E4
+.global byte_81434E4
+.global byte_814350C
+.global byte_814352C
+.global byte_8143564
+.global byte_814359C
+.global byte_81435BA
+.global byte_81435D2
+.global byte_81435FC
+.global byte_8143628
+.global byte_8143646
+.global byte_814365E
+.global byte_8143688
 .global dword_81436B4
 .global dword_81436C4
 .global dword_81436E4
@@ -69,7 +80,7 @@
 .global dword_8143724
 .global dword_814375C
 .global dword_8143794
-.global dword_81437CC
+.global byte_81437CC
 .global sub_8143B5E
 .global sub_8143B88
 .global sub_8143D4C
@@ -223,13 +234,16 @@
 
 .include "asm/asm00_1.inc"
 // .global sub_8003A64
+// .global sub_80047E0
 // .global sub_8004822
 // .global engine_isScreeneffectAnimating // () -> zf
+// .global byte_80065E0
+// .global byte_8006660
 
 .include "asm/asm03_0.inc"
 // .global sub_802D064
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global SetEventFlag // (u16 entryFlagBitfield) -> void
+// .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global ClearEventFlag // (u16 entryFlagBitfield) -> void
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
@@ -241,6 +255,8 @@
 // .global sub_8030A60
 
 .include "asm/asm03_1.inc"
+// .global sub_8034C36
+// .global sub_80357AE
 // .global init_s_02011C50_8036E90
 // .global s_2011C50_ptr_1C_isNull // () -> zf
 // .global sub_803C514
@@ -265,12 +281,27 @@
 // .global dword_8072BCC
 // .global dword_8073610
 
+.include "asm/asm23.inc"
+// .global dword_8089128
+// .global unk_80893CC
+// .global unk_8089448
+// .global dword_8089554
+
 .include "data/dat23.inc"
+// .global dword_8089DF4
 // .global dword_808A128
 
 .include "asm/asm24.inc"
 // .global dword_808BF48
 // .global dword_808BF48
+// .global unk_808C2F0
+
+.include "data/dat26.inc"
+// .global unk_8092A98
+// .global unk_8092DE8
+// .global unk_809326C
+// .global unk_8093358
+// .global unk_80933B8
 
 .include "asm/asm28_0.inc"
 // .global sub_809E1AE
@@ -311,7 +342,7 @@
 // .global byte_81C03D8
 // .global aNintendosio32i
 // .global off_81C0418
-// .global unk_81C04A8
+// .global byte_81C04A8
 // .global byte_81C055A
 // .global byte_81C055B
 // .global dword_81C055C
@@ -324,7 +355,7 @@
 // .global byte_81C0640
 // .global byte_81C067B
 // .global dword_81C067C
-// .global unk_81C068C
+// .global byte_81C068C
 // .global off_81C06C0
 
 .include "data/dat38_60.inc"
@@ -351,6 +382,7 @@
 // .equ unk_2000BE0, 0x2000BE0
 // .equ byte_2000D20, 0x2000D20
 // .equ byte_2000D21, 0x2000D21
+// .equ word_2000D24, 0x2000D24
 // .equ dword_2000D28, 0x2000D28
 // .equ dword_2000D2C, 0x2000D2C
 // .equ byte_2001010, 0x2001010
@@ -568,7 +600,7 @@
 // .equ dword_30055FC, 0x30055FC
 // .equ unk_3005600, 0x3005600
 // .equ loc_3005700, 0x3005700
-// .equ unk_3007FF0, 0x3007FF0
+// .equ dword_3007FF0, 0x3007FF0
 .equ VerticalCounter_LY_, 0x4000006
 .equ Channel1Sweepregister_NR10_, 0x4000060
 .equ Channel1Sweepregister_NR10_, 0x4000060

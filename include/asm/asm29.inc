@@ -3,47 +3,47 @@
 
 /* Public Symbols */
 .global ho_80A4984
-.global loc_80A4A98
-.global loc_80A4BDC
-.global loc_80A51C4
-.global loc_80A5428
-.global loc_80A54F0
-.global loc_80A57AC
-.global loc_80A5AD4
+.global sub_80A4A98
+.global sub_80A4BDC
+.global sub_80A51C4
+.global sub_80A5428
+.global sub_80A54F0
+.global sub_80A57AC
+.global sub_80A5AD4
 .global sub_80A6A16
-.global loc_80A6E98
-.global loc_80A72B4
-.global loc_80A77A8
-.global loc_80A781C
-.global loc_80A78B8
-.global loc_80A7C84
-.global loc_80A7D90
-.global loc_80A8208
-.global loc_80A8394
-.global loc_80A8654
-.global loc_80A8728
-.global loc_80A87F0
-.global loc_80A8870
-.global loc_80A89DC
-.global loc_80A8AB4
-.global loc_80A8E74
-.global loc_80A92B8
-.global loc_80A9430
-.global loc_80A9658
-.global loc_80A9824
-.global loc_80A98D4
-.global loc_80A9A0C
-.global loc_80A9B70
-.global loc_80A9D10
-.global loc_80A9ECC
-.global loc_80A9F58
+.global sub_80A6E98
+.global sub_80A72B4
+.global sub_80A77A8
+.global sub_80A781C
+.global sub_80A78B8
+.global sub_80A7C84
+.global sub_80A7D90
+.global sub_80A8208
+.global sub_80A8394
+.global sub_80A8654
+.global sub_80A8728
+.global sub_80A87F0
+.global sub_80A8870
+.global sub_80A89DC
+.global sub_80A8AB4
+.global sub_80A8E74
+.global sub_80A92B8
+.global sub_80A9430
+.global sub_80A9658
+.global sub_80A9824
+.global sub_80A98D4
+.global sub_80A9A0C
+.global sub_80A9B70
+.global sub_80A9D10
+.global sub_80A9ECC
+.global sub_80A9F58
 .global sub_80AA004
-.global loc_80AA058
+.global sub_80AA058
 .global sub_80AA104
-.global loc_80AA140
-.global loc_80AA1E0
-.global loc_80AA2D8
-.global loc_80AA374
+.global sub_80AA140
+.global sub_80AA1E0
+.global sub_80AA2D8
+.global sub_80AA374
 .global sub_80AA4C0
 .global sub_80AA5E4
 .global sub_80AA5F4
@@ -58,7 +58,7 @@
 /* External Symbols */
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001172
@@ -139,7 +139,7 @@
 // .global sub_802D266
 // .global sub_802D652
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global SetEventFlag // (u16 entryFlagBitfield) -> void
+// .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global ClearEventFlag // (u16 entryFlagBitfield) -> void
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
@@ -220,14 +220,14 @@
 // .global dword_8140D10
 // .global dword_8140D1C
 // .global dword_8140D58
-// .global dword_8140D6C
+// .global byte_8140D6C
 // .global dword_8140E6C
 // .global dword_8140FBC
 // .global dword_814122C
 // .global dword_81414CC
 // .global dword_814154C
 // .global dword_81415F4
-// .global dword_814172C
+// .global byte_814172C
 
 .include "asm/asm37_1.inc"
 // .global sub_81418E4
@@ -263,7 +263,7 @@
 // .global dword_8143724
 // .global dword_814375C
 // .global dword_8143794
-// .global dword_81437CC
+// .global byte_81437CC
 // .global sub_8143B5E
 
 

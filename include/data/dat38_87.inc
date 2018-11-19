@@ -613,7 +613,7 @@
 .global dword_87DAC90
 .global sprite_87DC190
 .global sprite_87DC5F0
-.global dword_87DD248
+.global byte_87DD248
 .global sprite_87DDB7C
 .global dword_87DE44C
 .global sprite_87E069C

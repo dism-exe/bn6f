@@ -3,7 +3,6 @@
 
 /* Public Symbols */
 .global start_
-.global off_80001F4
 .global start_800023C // () -> void
 .global start_800024C
 .global start_800027C

@@ -1,6 +1,6 @@
 .include "data/dat38_72.inc"
 
-	.byte 0x10
+unk_86CF994: .byte 0x10
 	.byte 0xB1
 	.byte  1
 	.byte  0
@@ -356,7 +356,7 @@
 	.byte 0x80
 	.byte 0x10
 	.byte 0x22 
-	.byte 0x10
+unk_86CFAF8: .byte 0x10
 	.byte 0xBB
 	.byte  1
 	.byte  0

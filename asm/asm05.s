@@ -1,12 +1,11 @@
 .include "asm/asm05.inc"
 
-.func
-.thumb_func
+	thumb_func_start sub_8052688
 sub_8052688:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_80526E4 // =off_8052244 
-	ldr r1, [r7,#0x14]
+	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -24,7 +23,7 @@ sub_8052688:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_80526E8 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -64,22 +63,14 @@ byte_8052732: .byte 0x1C, 0x9, 0xFF, 0xFF
 byte_8052736: .byte 0x1C, 0x10, 0x1C, 0x25, 0x18, 0x23, 0xFF, 0xFF
 byte_805273E: .byte 0x1C, 0x10, 0x1C, 0x25, 0xFF, 0xFF
 byte_8052744: .byte 0x1C, 0x2A, 0xFF, 0xFF
-off_8052748: .word unk_81C241C
-	.byte 0x1C
-	.byte 0x10
-	.byte 0x1C
-	.byte 0x23 
-	.byte 0x18
-	.byte 0x1F
-	.byte 0xFF
-	.byte 0xFF
+off_8052748: .word byte_81C241C
+	.byte 0x1C, 0x10, 0x1C, 0x23, 0x18, 0x1F, 0xFF, 0xFF
 byte_8052754: .byte 0x1C, 0x43, 0x1C, 0x7A, 0x18, 0x1C, 0xFF, 0xFF
 byte_805275C: .byte 0x18, 0x1F, 0xFF, 0xFF
 byte_8052760: .byte 0x18, 0x24, 0xFF, 0xFF
-.endfunc // sub_8052688
+	thumb_func_end sub_8052688
 
-.func
-.thumb_func
+	thumb_func_start sub_8052764
 sub_8052764:
 	push {lr}
 	lsl r1, r1, #2
@@ -108,26 +99,25 @@ off_80527B4: .word off_8052480
 	.word 0xFFFFFFFF
 off_80527BC: .word off_80524C0
 	.word 0xFFFFFFFF
-off_80527C4: .word unk_80524E8
+off_80527C4: .word byte_80524E8
 	.word 0xFFFFFFFF
-off_80527CC: .word unk_80524E8
+off_80527CC: .word byte_80524E8
 	.word 0xFFFFFFFF
-off_80527D4: .word unk_8052510
+off_80527D4: .word byte_8052510
 	.word 0xFFFFFFFF
-off_80527DC: .word unk_8052538
+off_80527DC: .word byte_8052538
 	.word 0xFFFFFFFF
 dword_80527E4: .word 0xFFFFFFFF
 dword_80527E8: .word 0xFFFFFFFF
 dword_80527EC: .word 0xFFFFFFFF
-.endfunc // sub_8052764
+	thumb_func_end sub_8052764
 
-.func
-.thumb_func
+	thumb_func_start sub_80527F0
 sub_80527F0:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0,#5]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	lsl r0, r0, #2
 	ldr r1, off_8052804 // =off_8052808 
 	ldr r0, [r1,r0]
@@ -146,6 +136,6 @@ off_8052808: .word dword_8052834
 	.word dword_8052D80
 	// <endpool> <endfile>
 	.word dword_8052D84
-.endfunc // sub_80527F0
+	thumb_func_end sub_80527F0
 
 /*For debugging purposes, connect comment at any range!*/

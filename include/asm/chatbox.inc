@@ -20,7 +20,7 @@
 .global chatbox_8040818
 .global chatbox_maskFlags_3e // (int mask) -> void
 // 
-.global unk_8040A04
+.global loc_8040A04
 .global chatbox_8040D5C
 .global off_8043C8C
 .global byte_8043CA4
@@ -47,7 +47,7 @@
 // .global musicGameState_8000784 // () -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
-// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
@@ -78,7 +78,7 @@
 // .global sub_8002F90 // () -> void
 // .global sub_8003914
 // .global sub_8003A64
-// .global gameState_8005BC8 // (BattleSettings *bt, bool a2) -> void
+// .global gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 // .global subsystem_launchBBS
 // .global subsystem_launchReqBBS
 // .global subsystem_launchShop
@@ -104,9 +104,9 @@
 .include "asm/asm03_0.inc"
 // .global sub_802D158
 // .global sub_802D15E
-// .global SetEventFlag // (u16 entryFlagBitfield) -> void
+// .global SetEventFlag
 // .global ClearEventFlag // (u16 entryFlagBitfield) -> void
-// .global ToggleEventFlag // (u16 entryFlagBitfield) -> void
+// .global toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global SetEventFlagRange // (u16 entryFlagBitfield) -> void
@@ -226,7 +226,7 @@
 // .global byte_86C0940
 
 .include "data/dat38_71.inc"
-// .global byte_86CF4AC
+// .global unk_86CF4AC
 
 .include "data/dat38_85.inc"
 // .global byte_86EA94C

@@ -6,7 +6,8 @@
 .global dword_809FFE8
 .global byte_80A0C0E
 .global byte_80A0C10
-.global unk_80A2713
+.global byte_80A0C12
+.global byte_80A2713
 .global dword_80A3360
 .global off_80A336C
 .global off_80A3370

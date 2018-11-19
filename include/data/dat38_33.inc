@@ -63,6 +63,7 @@
 .global byte_83C1B16
 .global byte_83C1C16
 .global byte_83C21DC
+.global byte_83CC02A
 .global npcSpriteMayl
 .global npcSpriteDex
 .global byte_83D0426

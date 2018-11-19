@@ -31,7 +31,7 @@
 
 .include "asm/asm03_0.inc"
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global SetEventFlag // (u16 entryFlagBitfield) -> void
+// .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
@@ -86,11 +86,18 @@
 // .global reqBBS_clearFlag_8140A0C
 
 .include "asm/asm37_1.inc"
-// .global dword_81434E4
-// .global dword_81434E4
-// .global dword_81434E4
-// .global dword_81434E4
-// .global dword_81434E4
+// .global byte_81434E4
+// .global byte_814350C
+// .global byte_814352C
+// .global byte_8143564
+// .global byte_814359C
+// .global byte_81435BA
+// .global byte_81435D2
+// .global byte_81435FC
+// .global byte_8143628
+// .global byte_8143646
+// .global byte_814365E
+// .global byte_8143688
 
 
 /* Undeclared Symbols */

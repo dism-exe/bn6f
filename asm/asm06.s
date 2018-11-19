@@ -1,12 +1,11 @@
 .include "asm/asm06.inc"
 
-.func
-.thumb_func
+	thumb_func_start sub_80595B8
 sub_80595B8:
 	push {r4-r7,lr}
 	mov r7, r10
 	ldr r0, off_8059614 // =off_8059294 
-	ldr r1, [r7,#0x14]
+	ldr r1, [r7,#oToolkit_Unk2011bb0_Ptr]
 	ldrb r2, [r5,#5]
 	lsl r4, r2, #2
 	add r0, r0, r4
@@ -24,7 +23,7 @@ sub_80595B8:
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
 	bl sub_802FF4C
-	bl loc_8030472
+	bl sub_8030472
 	ldr r0, off_8059618 // =unk_2037800 
 	bl sub_80028D4
 	ldrb r1, [r5,#5]
@@ -57,10 +56,9 @@ byte_805964E: .byte 0x1C, 0x35, 0x1C, 0x4D, 0x1C, 0x2F, 0x18, 0x25, 0x18
 	.byte 0x1C, 0xFF, 0xFF
 byte_805965A: .byte 0x1C, 0x35, 0x1C, 0x40, 0x1C, 0x48, 0xFF, 0xFF
 byte_8059662: .byte 0xFF, 0xFF
-.endfunc // sub_80595B8
+	thumb_func_end sub_80595B8
 
-.func
-.thumb_func
+	thumb_func_start sub_8059664
 sub_8059664:
 	push {lr}
 	lsl r1, r1, #2
@@ -76,29 +74,28 @@ off_8059678: .word off_805968C
 	.word off_80596B4
 	.word off_80596BC
 off_805968C: .word off_8059378
-	.word unk_80593B8
-	.word unk_80593F8
-	.word unk_8059438
+	.word byte_80593B8
+	.word byte_80593F8
+	.word byte_8059438
 	.word 0xFFFFFFFF
-off_80596A0: .word unk_8059468
-	.word unk_80594A8
+off_80596A0: .word byte_8059468
+	.word byte_80594A8
 	.word 0xFFFFFFFF
-off_80596AC: .word unk_80594E8
+off_80596AC: .word byte_80594E8
 	.word 0xFFFFFFFF
-off_80596B4: .word unk_8059528
+off_80596B4: .word byte_8059528
 	.word 0xFFFFFFFF
-off_80596BC: .word unk_8059558
-	.word unk_8059588
+off_80596BC: .word byte_8059558
+	.word byte_8059588
 	.word 0xFFFFFFFF
-.endfunc // sub_8059664
+	thumb_func_end sub_8059664
 
-.func
-.thumb_func
+	thumb_func_start sub_80596C8
 sub_80596C8:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#0x3c]
-	ldrb r0, [r0,#5]
+	ldr r0, [r0,#oToolkit_GameStatePtr]
+	ldrb r0, [r0,#oGameState_MapNumber]
 	lsl r0, r0, #2
 	ldr r1, off_80596DC // =off_80596E0 
 	ldr r0, [r1,r0]
@@ -112,6 +109,6 @@ off_80596E0:
 	.word dword_8059A58
 	.word dword_8059C00
 	.word dword_8059D30
-.endfunc // sub_80596C8
+	thumb_func_end sub_80596C8
 
 /*For debugging purposes, connect comment at any range!*/
