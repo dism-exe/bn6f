@@ -4589,7 +4589,7 @@ sub_80053E4:
 locret_800545C:
 	pop {pc}
 	.balign 4, 0
-hword_8005460: .hword 0x40
+word_8005460: .hword 0x40
 	thumb_func_end sub_80053E4
 
 // () -> void
