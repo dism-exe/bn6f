@@ -73,7 +73,7 @@ sub_8130084:
 	strh r1, [r0,#0x1a]
 	mov r0, r7
 	mov r1, #0x80
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	bl sub_8130194
 	bl sub_8130108
 	bl sub_813017C

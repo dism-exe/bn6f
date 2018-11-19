@@ -4589,14 +4589,8 @@ sub_80053E4:
 locret_800545C:
 	pop {pc}
 	.balign 4, 0
-hword_8005460:
-	.hword 0x40
+hword_8005460: .hword 0x40
 	thumb_func_end sub_80053E4
-
-	thumb_local_start
-sub_8005460:
-	lsl r0, r0, #1
-	thumb_func_end sub_8005460
 
 // () -> void
 	thumb_local_start
@@ -4670,7 +4664,7 @@ loc_80054EA:
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 locret_800551C:
 	pop {r7,pc}
-	.byte 0, 0
+	.balign 4, 0x00
 off_8005520: .word byte_200DF20
 	thumb_func_end sub_8005462
 
@@ -16783,7 +16777,7 @@ loc_800B25A:
 	mov r2, #0xcb // (byte_203CCAB - 0x203cbe0)
 	strb r1, [r4,r2]
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Flags2001c88_Ptr]
+	ldr r0, [r0,#oToolkit_EventFlagsPtr]
 	ldr r1, off_800B440 // =0x3c4 
 	add r0, r0, r1
 	mov r1, #0xcc

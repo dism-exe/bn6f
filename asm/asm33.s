@@ -15964,7 +15964,7 @@ loc_812BC4A:
 	lsl r0, r0, #8
 	orr r0, r1
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Flags2001c88_Ptr]
+	ldr r4, [r4,#oToolkit_EventFlagsPtr]
 	lsr r1, r0, #3
 	add r4, r4, r1
 	mov r0, #0x22 
@@ -15972,7 +15972,7 @@ loc_812BC4A:
 	lsl r0, r0, #8
 	orr r0, r1
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_Flags2001c88_Ptr]
+	ldr r6, [r6,#oToolkit_EventFlagsPtr]
 	lsr r1, r0, #3
 	add r6, r6, r1
 	mov r0, r4
@@ -15998,7 +15998,7 @@ loc_812BC70:
 	lsl r0, r0, #8
 	orr r0, r1
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Flags2001c88_Ptr]
+	ldr r4, [r4,#oToolkit_EventFlagsPtr]
 	lsr r1, r0, #3
 	add r4, r4, r1
 	mov r0, r6
@@ -16604,7 +16604,7 @@ loc_812C1AE:
 	lsl r0, r0, #8
 	orr r0, r1
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Flags2001c88_Ptr]
+	ldr r3, [r3,#oToolkit_EventFlagsPtr]
 	lsr r1, r0, #3
 	add r3, r3, r1
 	mov r0, #0x20 
@@ -16612,7 +16612,7 @@ loc_812C1AE:
 	lsl r0, r0, #8
 	orr r0, r1
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Flags2001c88_Ptr]
+	ldr r4, [r4,#oToolkit_EventFlagsPtr]
 	lsr r1, r0, #3
 	add r4, r4, r1
 	sub sp, sp, #0xc
@@ -16622,7 +16622,7 @@ loc_812C1AE:
 	lsl r0, r0, #8
 	orr r0, r1
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Flags2001c88_Ptr]
+	ldr r4, [r4,#oToolkit_EventFlagsPtr]
 	lsr r1, r0, #3
 	add r4, r4, r1
 	str r4, [sp,#4]

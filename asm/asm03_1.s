@@ -4437,7 +4437,7 @@ Script_ReadByte8036094:
 	add r7, r7, r6
 	ldrb r4, [r7]
 	pop {r7,pc}
-	thumb_func_end sub_8036094
+	thumb_func_end Script_ReadByte8036094
 
 	thumb_local_start
 Script_ReadSignedByte803609C:
@@ -4447,7 +4447,7 @@ Script_ReadSignedByte803609C:
 	lsl r4, r4, #0x18
 	asr r4, r4, #0x18
 	pop {r7,pc}
-	thumb_func_end sub_803609C
+	thumb_func_end Script_ReadSignedByte803609C
 
 	thumb_local_start
 Script_ReadHalfword80360A8:
@@ -4458,7 +4458,7 @@ Script_ReadHalfword80360A8:
 	lsl r4, r4, #8
 	orr r4, r6
 	pop {r7,pc}
-	thumb_func_end sub_80360A8
+	thumb_func_end Script_ReadHalfword80360A8
 
 	thumb_local_start
 Script_ReadSignedHalfword80360B6:
@@ -4471,11 +4471,11 @@ Script_ReadSignedHalfword80360B6:
 	lsl r4, r4, #0x10
 	asr r4, r4, #0x10
 	pop {r7,pc}
-	thumb_func_end sub_80360B6
+	thumb_func_end Script_ReadSignedHalfword80360B6
 
 // () -> void .spoils R4, R6
 	thumb_local_start
-sub_80360C8:
+Script_ReadWord80360C8:
 	push {r7,lr}
 	add r7, r7, r6
 	ldrb r4, [r7,#3]
@@ -5268,7 +5268,7 @@ dword_8036D8C: .word 0xFFFFFF00
 	.word byte_806AEA8
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-	thumb_func_end sub_80360C8
+	thumb_func_end Script_ReadWord80360C8
 
 	thumb_func_start sub_8036E44
 sub_8036E44:

@@ -1521,7 +1521,7 @@ loc_812CEBC:
 	strb r0, [r5,#0x1e]
 	ldr r0, off_812CEE4 // =unk_20251A0 
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 	// a1
 	ldr r0, off_812CEE8 // =dword_812913C+20 
@@ -2028,7 +2028,7 @@ sub_812D298:
 	strh r1, [r0,#0x1a]
 	mov r0, r7
 	mov r1, #0x80
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	bl sub_812D3A8
 	bl sub_812D310
 	bl sub_812D378

@@ -1597,13 +1597,13 @@ loc_812FC9A:
 	add r0, r0, r6
 	mov r1, r7
 	mov r2, #0x3c 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, #2
 	bl sub_804A24C
 	mov r1, r0
 	mov r0, r6
 	mov r2, #0x20 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r6, #0
 loc_812FCB8:
 	ldrh r0, [r7,r6]
@@ -1746,7 +1746,7 @@ loc_812FDD8:
 	strb r0, [r5,#0x1e]
 	ldr r0, off_812FE04 // =unk_20251A0 
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 	// a1
 	ldr r0, off_812FE08 // =dword_812913C+20 
