@@ -74,12 +74,12 @@
 
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global clearBackwards_80008B4 // (void *mem, int size) -> void
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+// .global ZeroFillByByte // (void *mem, int size) -> void
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
-// .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+// .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+// .global CopyWords // (u32 *src, u32 *dest, int size) -> void
+// .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010BE
 // .global change_20013F0_800151C // () -> int
@@ -98,13 +98,13 @@
 // .global sub_802D064
 // .global sub_802D158
 // .global sub_802D15E
-// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
-// .global setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global SetEventFlag
+// .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
+// .global SetEventFlagRange // (u16 entryFlagBitfield) -> void
+// .global ClearEventFlagRange // (u16 entryFlagBitfield) -> void
 
 .include "asm/asm03_1.inc"
 // .global sub_803CB00

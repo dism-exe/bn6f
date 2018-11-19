@@ -69,8 +69,8 @@
 // .global loc_8011508
 
 .include "asm/asm03_0.inc"
-// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global sub_802FF4C
 // .global locret_8030102
 // .global loc_8030202

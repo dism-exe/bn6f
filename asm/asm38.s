@@ -1,6 +1,5 @@
 .include "asm/asm38.inc"
 
-// TODO: change back to sub_081D6000
 	arm_func_start sub_81D6000
 sub_81D6000:
 	mov r3, #0x4000000
@@ -369,12 +368,16 @@ sub_81D636A:
 off_81D6374: .word InterruptMasterEnableRegister
 off_81D6378: .word sub_814469C+1
 off_81D637C: .word sub_81446AC+1
-	.word 0x9000B081
-	.word 0x6AB64656
-	.word 0x18B602D2
-	.word 0x186D1824
 	thumb_func_end sub_81D636A
 
+	sub sp, sp, #4
+	str r0, [sp]
+	mov r6, r10
+	ldr r6, [r6,#0x28]
+	lsl r2, r2, #0xb
+	add r6, r6, r2
+	add r4, r4, r0
+	add r5, r5, r1
 	thumb_local_start
 sub_81D6390:
 	mov r2, #0x1f
@@ -1690,7 +1693,7 @@ loc_81D6D7A:
 	mvn r2, r2
 	ldr r5, off_81D6DDC // =off_802FD70 
 	mov r4, #4
-	ldr r7, off_81D6DE0 // =sub_800098C+1 
+	ldr r7, off_81D6DE0 // =WordFill+1 
 	mov r12, r7
 loc_81D6DA0:
 	ldr r0, [r5]
@@ -1717,7 +1720,7 @@ off_81D6DD0: .word byte_3001150
 off_81D6DD4: .word dword_200B1A8
 off_81D6DD8: .word word_200A6F0
 off_81D6DDC: .word off_802FD70
-off_81D6DE0: .word sub_800098C+1
+off_81D6DE0: .word WordFill+1
 off_81D6DE4: .word byte_3001950
 	push {r4-r7,lr}
 	ldr r5, off_81D6E94 // =byte_3001950 
@@ -1850,7 +1853,7 @@ off_81D6E9C: .word dword_3002590
 	.word 0x471846FE, 0xBD004648
 	.word 0x3006B18
 	.word loc_8000AC8+1
-	.word clearBackwards_80008B4+1
+	.word ZeroFillByByte+1
 	.word 0x3006B84
 	thumb_func_end sub_81D6E20
 

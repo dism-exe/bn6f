@@ -44,10 +44,10 @@
 
 /* External Symbols */
 .include "asm/asm00_0.inc"
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-// .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
-// .global sub_800096C
-// .global sub_800098C
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
+// .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
+// .global HalfwordFill
+// .global WordFill
 // .global loc_8000AC8
 
 .include "asm/asm00_2.inc"

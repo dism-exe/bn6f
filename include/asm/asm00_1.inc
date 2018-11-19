@@ -218,15 +218,15 @@
 // .global sub_800065A
 // .global sound_8000672
 // .global musicGameState_8000784 // () -> void
-// .global clearBackwards_80008B4 // (void *mem, int size) -> void
-// .global sub_80008C0
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-// .global CpuFastSet_8000900 // (int a1, int a2) -> void
+// .global ZeroFillByByte // (void *mem, int size) -> void
+// .global ZeroFillByHalfword
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
+// .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
-// .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
-// .global sub_800098C
+// .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+// .global CopyWords // (u32 *src, u32 *dest, int size) -> void
+// .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
+// .global WordFill
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000D12
 // .global sub_8000D84
@@ -419,12 +419,12 @@
 // .global sub_802F0C4
 // .global sub_802F0D8
 // .global sub_802F0F4
-// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
-// .global setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+// .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global SetEventFlag
+// .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
+// .global SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 // .global sub_802F2C8
 // .global sub_802FDB0
 // .global loc_802FDB4
@@ -1153,6 +1153,16 @@
 // .equ off_200A454, 0x200A454
 // .equ word_200A458, 0x200A458
 // .equ word_200A45C, 0x200A45C
+// .equ byte_200A461, 0x200A461
+// .equ byte_200A462, 0x200A462
+// .equ byte_200A463, 0x200A463
+// .equ word_200A464, 0x200A464
+// .equ word_200A468, 0x200A468
+// .equ word_200A46A, 0x200A46A
+// .equ dword_200A470, 0x200A470
+// .equ dword_200A474, 0x200A474
+// .equ word_200A478, 0x200A478
+// .equ word_200A47C, 0x200A47C
 // .equ i_joGameSubsysSel, 0x200A480
 // .equ dword_200AC18, 0x200AC18
 // .equ unk_200AC40, 0x200AC40

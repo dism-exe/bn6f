@@ -8,7 +8,7 @@ reqBBS_813E07C:
 	ldr r0, off_813E0A0 // =reqBBS_bxo_2001150 
 	// size
 	mov r1, #0x2c 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0}
 	ldr r5, off_813E0A0 // =reqBBS_bxo_2001150 
 	strb r0, [r5,#0x4] // (byte_2001154 - 0x2001150)
@@ -291,10 +291,10 @@ loc_813E2C8:
 	add r0, r0, r2
 	mov r8, r0
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_813E2F6
 	mov r0, r8
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	ldrb r0, [r5,#5]
 	add r0, #0
 	strb r0, [r5,#5]
@@ -689,14 +689,14 @@ reqBBS_813E5DC:
 	mov r7, r0
 	mov r1, #2
 	mov r0, r0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, r7
 	ldr r3, off_813E6A4 // =0x17a0 
 	sub r0, r0, r3
 	ldr r3, off_813E6A8 // =0x19a0 
 	add r0, r0, r3
 	mov r0, r0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	ldr r1, off_813E6A4 // =0x17a0 
 	sub r7, r7, r1
 	lsr r3, r7, #6
@@ -723,17 +723,17 @@ reqBBS_813E616:
 	ldr r1, byteCount // =0x200 
 	// byte
 	mov r2, #0x40 
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	// memBlock
 	ldr r0, off_813E6BC // =unk_2000FC0 
 	// size
 	mov r1, #0x20 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	// memBlock
 	ldr r0, off_813E6C0 // =unk_2000FF0 
 	// size
 	mov r1, #0x20 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 	thumb_func_end reqBBS_813E616
 
@@ -749,21 +749,21 @@ reqBBS_dead_813E634:
 	mov r1, #0x40 
 	// byte
 	mov r2, #0x40 
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	lsl r0, r4, #2
 	ldr r1, off_813E6C8 // =unk_2000FC0 
 	// memBlock
 	add r0, r0, r1
 	// size
 	mov r1, #4
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	lsl r0, r4, #2
 	ldr r1, off_813E6CC // =unk_2000FF0 
 	// memBlock
 	add r0, r0, r1
 	// size
 	mov r1, #4
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4,pc}
 	thumb_func_end reqBBS_dead_813E634
 
@@ -896,7 +896,7 @@ reqBBS_813E834:
 	mov r1, #0x30 
 	// byte
 	mov r2, #0x2f 
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	ldr r6, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
 	ldr r0, [r6,#0x10]
 	ldr r0, [r0]
@@ -927,7 +927,7 @@ loc_813E870:
 	push {r0,r1}
 	add r0, r0, r1
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r0,r1}
 	beq loc_813E880
 	add r7, #1
@@ -1019,7 +1019,7 @@ reqBBS_dead_813E910:
 	push {r4-r7,lr}
 	ldr r0, off_813E97C // =unk_2018A04 
 	mov r1, #0x40 
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_CurFramePtr]
 	ldrh r6, [r6]
@@ -1038,7 +1038,7 @@ loc_813E934:
 	add r0, r2, r7
 	push {r3}
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r3}
 	beq loc_813E968
 	push {r4-r7}
@@ -1110,7 +1110,7 @@ loc_813EAA6:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_813EAD6
 	push {r4-r7}
 	// j
@@ -1408,7 +1408,7 @@ reqBBS_813ED60:
 	ldr r1, [r1,#0xc]
 	add r3, r3, r1
 	mov r0, r3
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq locret_813ED90
 	mov r0, r7
 	mov r1, #7
@@ -1767,7 +1767,7 @@ reqBBS_init_s_2005780:
 	push {r1-r3}
 	// size
 	mov r1, #0x2c 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r1-r3}
 	ldr r0, off_813F400 // =dynaicArr 
 	mov r4, #0xd // reqBBS_GUI.numPoints
@@ -1836,7 +1836,7 @@ reqBBS_813F474:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x3a 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_813F4B6
 	ldr r0, off_813F548 // =dynaicArr 
 	ldr r1, dword_813F544 // =0xf 
@@ -1845,7 +1845,7 @@ reqBBS_813F474:
 	ldr r3, [r3,#0x18] // (dword_813F364 - 0x813f34c)
 	add r2, r2, r3
 	mov r0, r2
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_813F4B6
 	ldr r0, off_813F548 // =dynaicArr 
 	ldr r1, dword_813F544 // =0xf 
@@ -1855,10 +1855,10 @@ reqBBS_813F474:
 	add r2, r2, r3
 	// bitfield
 	mov r0, r2
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, #0x17
 	mov r1, #0x3a 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldr r0, off_813F548 // =dynaicArr 
 	ldr r1, dword_813F544 // =0xf 
 	mov r3, #0
@@ -2088,10 +2088,10 @@ loc_813F678:
 	add r0, r0, r2
 	mov r8, r0
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_813F6A6
 	mov r0, r8
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	ldrb r0, [r5,#5]
 	add r0, #0
 	strb r0, [r5,#5]
@@ -2490,14 +2490,14 @@ reqBBS_813F9A0:
 	mov r7, r0
 	mov r1, #2
 	mov r0, r0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r0, r7
 	ldr r3, off_813FD74 // =0x1b60 
 	sub r0, r0, r3
 	ldr r3, off_813FD78 // =0x1ba0 
 	add r0, r0, r3
 	mov r0, r0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	ldr r1, off_813FD74 // =0x1b60 
 	sub r7, r7, r1
 	lsr r3, r7, #6
@@ -2524,17 +2524,17 @@ reqBBS_initMemory_813F9DA:
 	mov r1, #0x80
 	// byte
 	mov r2, #0x80
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	// memBlock
 	ldr r0, off_813FD88 // =reqBBS_numRequestsSent 
 	// size
 	mov r1, #4
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	// memBlock
 	ldr r0, off_813FD8C // =unk_2000770 
 	// size
 	mov r1, #4
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 	thumb_func_end reqBBS_initMemory_813F9DA
 
@@ -2550,21 +2550,21 @@ reqBBS_dead_initMemory_813F9F8:
 	mov r1, #0x80
 	// byte
 	mov r2, #0x80
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	lsl r0, r4, #2
 	ldr r1, off_813FD94 // =reqBBS_numRequestsSent 
 	// memBlock
 	add r0, r0, r1
 	// size
 	mov r1, #4
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	lsl r0, r4, #2
 	ldr r1, off_813FD98 // =unk_2000770 
 	// memBlock
 	add r0, r0, r1
 	// size
 	mov r1, #4
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4,pc}
 	thumb_func_end reqBBS_dead_initMemory_813F9F8
 
@@ -2721,7 +2721,7 @@ loc_813FB40:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x3a 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_813FB6E
 	ldr r0, off_813FBB4 // =reqBBS_requestInfo_textOffsets 
 	ldr r1, off_813FDA4 // =dynaicArr 
@@ -3044,7 +3044,7 @@ reqBBS_813FE54:
 	mov r1, #0x30 
 	// byte
 	mov r2, #0x2f 
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	ldr r6, [r5,#0x28]
 	ldr r0, [r6,#0x1c]
 	ldr r0, [r0]
@@ -3075,7 +3075,7 @@ loc_813FE90:
 	push {r0,r1}
 	add r0, r0, r1
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r0,r1}
 	beq loc_813FEA0
 	add r7, #1
@@ -3217,7 +3217,7 @@ loc_814005E:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_814008E
 	push {r4-r7}
 	// j
@@ -3322,7 +3322,7 @@ loc_81401CE:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_81401FC
 	push {r4-r7}
 	// j
@@ -3348,7 +3348,7 @@ loc_81401FC:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8140228
 	push {r4-r7}
 	// j
@@ -3390,7 +3390,7 @@ loc_8140252:
 	ldrb r2, [r2,r1]
 	add r0, r2, r3
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_81402B4
 	push {r4-r7}
 	mov r0, #0x16
@@ -3894,7 +3894,7 @@ reqBBS_8140604:
 	ldr r1, [r1,#0xc]
 	add r3, r3, r1
 	mov r0, r3
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq locret_8140634
 	mov r0, r7
 	mov r1, #7
@@ -4146,7 +4146,7 @@ reqBBS_81407D8:
 	mov r0, #0x17
 	// byteFlagIdx
 	mov r1, #0x3a 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8140814
 	ldr r0, off_81409B4 // =dynaicArr 
 	ldr r1, dword_8140820 // =0xf 
@@ -4186,7 +4186,7 @@ dword_8140828: .word 0x4B23190A, 0x0
 	ldr r1, [r1,#0x10] // (dword_813F354+8 - 0x813f34c)
 	add r0, r0, r1
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8140844
 	mov r0, #1
 	b locret_8140846
@@ -4202,7 +4202,7 @@ reqBBS_814084C:
 	ldr r1, [r1,#0x18] // (dword_813F364 - 0x813f34c)
 	add r0, r0, r1
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8140860
 	mov r0, #1
 	b locret_8140862
@@ -4220,7 +4220,7 @@ reqBBS_8140868:
 	ldr r1, [r1,#0x14] // (dword_813F354+0xc - 0x813f34c)
 	add r0, r0, r1
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_814087C
 	mov r0, #1
 	b locret_814087E
@@ -4257,7 +4257,7 @@ reqBBS_81408A0:
 	ldr r1, [r1,#0x10] // (dword_813F354+8 - 0x813f34c)
 	add r0, r0, r1
 	mov r0, r0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	pop {r4-r7,pc}
 off_81408B0: .word reqBBS_textualPointers
 	thumb_func_end reqBBS_81408A0
@@ -4269,7 +4269,7 @@ reqBBS_81408B4:
 	ldr r1, [r1,#24]
 	add r0, r0, r1
 	mov r0, r0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	pop {r4-r7,pc}
 off_81408C4: .word reqBBS_textualPointers
 	thumb_func_end reqBBS_81408B4
@@ -4318,7 +4318,7 @@ reqBBS_81408F0:
 	// flag 5 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
 	mov r0, #0x17
 	mov r1, #0x3a 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8140962
 	bl reqBBS_81408C8
 	bl reqBBS_8140884
@@ -4326,7 +4326,7 @@ reqBBS_81408F0:
 	bne loc_8140966
 	mov r0, #0x17
 	mov r1, #0x1d
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_814095A
 	bl getPETNaviSelect // () -> u8
 	cmp r0, #0
@@ -4334,11 +4334,11 @@ reqBBS_81408F0:
 	// flag 5 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
 	mov r0, #0x17
 	mov r1, #0x3a 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// flag 3 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
 	mov r0, #0x17
 	mov r1, #0x3c 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl reqBBS_81408C8
 	bl reqBBS_81408A0
 	bl reqBBS_81408DC
@@ -4443,7 +4443,7 @@ reqBBS_setFlag_e17b0f7_8140A00:
 	// flag 7 @ 0x2001C88[0x17<<5 + 0x0] (=2001F68)
 	mov r0, #0x17
 	mov r1, #0
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {pc}
 	thumb_func_end reqBBS_setFlag_e17b0f7_8140A00
 
@@ -4453,7 +4453,7 @@ reqBBS_clearFlag_8140A0C:
 	// flag 7 @ 0x2001C88[0x17<<5 + 0x0] (=2001F68)
 	mov r0, #0x17
 	mov r1, #0
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_Unk2001c04_Ptr]
 	mov r3, #0x14
@@ -4469,11 +4469,11 @@ reqBBS_setFlags_8140A24:
 	mov r0, #0x16
 	mov r1, #0x40 
 	mov r2, #0x40 
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0x16
 	mov r1, #0xc0
 	mov r2, #0x10
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
@@ -4485,11 +4485,11 @@ reqBBS_setFlags_8140A40:
 	mov r0, #0x16
 	mov r1, #0xf3
 	mov r2, #0xd
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0x16
 	mov r1, #0xc0
 	mov r2, #0x10
-	bl setFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+	bl SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00

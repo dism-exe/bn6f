@@ -13,8 +13,8 @@
 /* External Symbols */
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-// .global CpuFastSet_8000900 // (int a1, int a2) -> void
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
+// .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global sub_80015FC
 // .global sub_80017AA

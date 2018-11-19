@@ -59,7 +59,7 @@
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+// .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001172
 // .global calcAngle_800117C
@@ -138,12 +138,12 @@
 .include "asm/asm03_0.inc"
 // .global sub_802D266
 // .global sub_802D652
-// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global SetEventFlag
+// .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global ClearEventFlag // (u16 entryFlagBitfield) -> void
+// .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global sub_80302A8
 // .global sub_8031612
 // .global sub_8031A7A

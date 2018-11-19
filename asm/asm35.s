@@ -30,7 +30,7 @@ sub_812EAC4:
 	ldr r0, off_812EB68 // =word_2023FA0 
 	ldr r1, off_812EB74 // =0xbc 
 	lsl r1, r1, #2
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	ldr r0, off_812EB68 // =word_2023FA0 
 	mov r1, #0x90
 	strh r1, [r0]

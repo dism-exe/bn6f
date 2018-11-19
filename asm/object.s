@@ -305,7 +305,7 @@ sub_800BF66:
 	ldr r0, off_800BF84 // =byte_203CF00 
 	// size
 	mov r1, #0xa0
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 	.balign 4, 0x00
 dword_800BF74: .word 0x10000
@@ -607,7 +607,7 @@ loc_800C1B6:
 	ldr r0, [r2]
 	ldr r1, [r6,#4]
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 loc_800C1CC:
 	add r7, #4
 	b loc_800C198
@@ -895,7 +895,7 @@ sub_800C4BC:
 	bl sub_800C8C2
 	// size
 	mov r1, #0x40 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0
 	bl sub_800C8C2
 	mov r7, r0
@@ -920,7 +920,7 @@ loc_800C4F0:
 	ldr r0, off_800C584 // =byte_2039AE0 
 	// size
 	ldr r1, off_800C588 // =0x500 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r5, #0
 loc_800C504:
 	mov r4, #0
@@ -4793,7 +4793,7 @@ sub_800E9FA:
 	ldr r0, [r5,#0x54]
 	add r0, #0x80
 	mov r1, #0xe
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	pop {pc}
 	thumb_func_end sub_800E9FA
 
@@ -4805,7 +4805,7 @@ sub_800EA0E:
 	ldr r0, [r5,#0x54]
 	add r0, #0x80
 	mov r1, #0xe
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	pop {pc}
 	thumb_func_end sub_800EA0E
 
@@ -4932,7 +4932,7 @@ sub_800EADA:
 	ldr r0, [r5,#0x54]
 	add r0, #0x80
 	mov r1, #0xe
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	ldr r0, [r5,#0x54]
 	mov r1, #0
 	strh r1, [r0,#0x2c]
@@ -5303,19 +5303,19 @@ loc_800ED52:
 	mov r4, r0
 	// size
 	mov r1, #0x7c 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0x80
 	// memBlock
 	add r0, r0, r4
 	// size
 	mov r1, #0x20 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0xa0
 	// memBlock
 	add r0, r0, r4
 	// size
 	mov r1, #0x50 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, r4
 	pop {r4,r5,pc}
 	.balign 4, 0x00

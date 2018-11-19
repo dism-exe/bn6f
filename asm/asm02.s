@@ -23,7 +23,7 @@ sub_8021AB4:
 	add r1, r1, r3
 	mov r2, #0x3c 
 	push {r1}
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {r7}
 	mov r6, #0
 loc_8021ACC:
@@ -66,7 +66,7 @@ loc_8021B00:
 	add r1, r1, r0
 	// bitfield
 	mov r0, r1
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	pop {r0-r2}
 	push {r2}
 	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
@@ -97,7 +97,7 @@ loc_8021B3C:
 	add r1, r1, r0
 	// bitfield
 	mov r0, r1
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	pop {r0-r2}
 	push {r2}
 	bl chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
@@ -278,7 +278,7 @@ sub_8021C68:
 	ldr r0, [r0,#oToolkit_Unk2002230_Ptr]
 	// size
 	ldr r1, dword_8021C78 // =0xf00 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 	.balign 4, 0x00
 dword_8021C78: .word 0xF00
@@ -374,7 +374,7 @@ sub_8021D08:
 	push {lr}
 	ldr r0, off_8021D94 // =unk_203A0A0 
 	ldr r1, off_8021D98 // =0x2e0 
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	pop {pc}
 	thumb_func_end sub_8021D08
 
@@ -409,23 +409,23 @@ sub_8021D36:
 	push {lr}
 	ldr r0, off_8021D6C // =unk_2000AF0 
 	mov r1, #0x40 
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	ldr r0, off_8021D80 // =script_8021D88 
 	ldr r1, off_8021D70 // =unk_2001184 
 	mov r2, #8
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r0, off_8021D80 // =script_8021D88 
 	ldr r1, off_8021D74 // =unk_200119C 
 	mov r2, #8
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r0, off_8021D84 // =byte_8021D8A 
 	ldr r1, dword_8021D78 // =unk_20007D6 
 	mov r2, #8
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r0, off_8021D84 // =byte_8021D8A 
 	ldr r1, dword_8021D7C // =unk_200083A 
 	mov r2, #8
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
 	.balign 4, 0x00
 off_8021D6C: .word unk_2000AF0

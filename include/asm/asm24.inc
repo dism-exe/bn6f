@@ -10,7 +10,7 @@
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global sound_8000672
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global sub_8001172
 // .global change_20013F0_800151C // () -> int
 
@@ -19,13 +19,13 @@
 // .global sub_8005D88
 
 .include "asm/asm03_0.inc"
-// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
-// .global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global loc_802F200
+// .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global SetEventFlag
+// .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
+// .global ClearEventFlagRange // (u16 entryFlagBitfield) -> void
+// .global TestEventFlagRange
 // .global sub_80302A8
 
 .include "asm/asm03_1.inc"

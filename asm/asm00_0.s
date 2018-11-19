@@ -276,7 +276,7 @@ sub_80007B2:
 	ldr r0, memBlock // =dword_200A490 
 	// size
 	ldr r1, numWords // =0x20c 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 	thumb_func_end sub_80007B2
 
@@ -405,8 +405,11 @@ off_80008B0: .word loc_800084E+1
 	thumb_func_end sub_8000822
 
 // (void *mem, int size) -> void
-	thumb_func_start clearBackwards_80008B4
-clearBackwards_80008B4:
+// Fill r0 with zero.
+// Size is in r1, in bytes.
+// Does a backwards fill for speed
+	thumb_func_start ZeroFillByByte
+ZeroFillByByte:
 	push {r0-r2,lr}
 	mov r2, #0
 loc_80008B8:
@@ -414,10 +417,13 @@ loc_80008B8:
 	strb r2, [r0,r1]
 	bne loc_80008B8
 	pop {r0-r2,pc}
-	thumb_func_end clearBackwards_80008B4
+	thumb_func_end ZeroFillByByte
 
-	thumb_func_start sub_80008C0
-sub_80008C0:
+// Fill r0 with zero, using halfwords.
+// Size is in r1, in bytes.
+// Source, destination, and size must be halfword compatible 
+	thumb_func_start ZeroFillByHalfword
+ZeroFillByHalfword:
 	push {r0-r3,lr}
 	ldr r2, dword_80008DC // =0x1000000 
 	lsr r1, r1, #1
@@ -432,13 +438,13 @@ sub_80008C0:
 	pop {r0-r3,pc}
 	.balign 4, 0x00
 dword_80008DC: .word 0x1000000
-	thumb_func_end sub_80008C0
+	thumb_func_end ZeroFillByHalfword
 
 // (void *memBlock, int size) -> void
-	thumb_func_start CpuSet_ZeroFillWord
-CpuSet_ZeroFillWord:
+	thumb_func_start ZeroFillByWord
+ZeroFillByWord:
 	push {r0-r3,lr}
-	ldr r2, dword_80008FC // =0x5000000 
+	ldr r2, .WordFillCpuSetMask_80008FC // =0x5000000 
 	lsr r1, r1, #2
 	orr r2, r1
 	mov r1, r0
@@ -450,14 +456,20 @@ CpuSet_ZeroFillWord:
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0x00
-dword_80008FC: .word 0x5000000
-	thumb_func_end CpuSet_ZeroFillWord
+.WordFillCpuSetMask_80008FC: .word 0x5000000
+	thumb_func_end ZeroFillByWord
 
 // (int a1, int a2) -> void
-	thumb_func_start CpuFastSet_8000900
-CpuFastSet_8000900:
+// Fill r0 with zero, in blocks of eight words.
+// Size is in r1, in bytes.
+// CpuFastSet will round up the amount of bytes filled to a multiple of eight words
+// even though the size specified is converted to a word count
+// Source and destination must be word compatible
+// Size must be a multiple of eight words
+	thumb_func_start ZeroFillByEightWords
+ZeroFillByEightWords:
 	push {r0-r3,lr}
-	ldr r2, dword_800091C // =0x1000000 
+	ldr r2, .FillCpuFastSetMask_800091C // =0x1000000 
 	lsr r1, r1, #2
 	orr r2, r1
 	mov r1, r0
@@ -469,10 +481,11 @@ CpuFastSet_8000900:
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0x00
-dword_800091C: .word 0x1000000
-	thumb_func_end CpuFastSet_8000900
+.FillCpuFastSetMask_800091C: .word 0x1000000
+	thumb_func_end ZeroFillByEightWords
 
 // (u8 *src, u8 *dest, int byteCount) -> void
+// Copy r2 bytes from r0 to r1, in units of bytes.
 	thumb_func_start copyBytes
 copyBytes:
 	sub r2, #1
@@ -483,8 +496,11 @@ copyBytes:
 	thumb_func_end copyBytes
 
 // (u16 *src, u16 *dest, int halfwordCount) -> void
-	thumb_func_start CpuSet_copyHalfwords
-CpuSet_copyHalfwords:
+// Copy r2 bytes from r0 to r1, in units of halfwords.
+// Note that size is specified in bytes, which is then converted to halfword count in function
+// Source, destination, and size must be halfword compatible.
+	thumb_func_start CopyHalfwords
+CopyHalfwords:
 	push {r0-r3,lr}
 	ldr r3, dword_8000938 // =0x0 
 	lsr r2, r2, #1
@@ -492,50 +508,65 @@ CpuSet_copyHalfwords:
 	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
 	pop {r0-r3,pc}
 dword_8000938: .word 0x0
-	thumb_func_end CpuSet_copyHalfwords
+	thumb_func_end CopyHalfwords
 
 // (u32 *src, u32 *dest, int size) -> void
-	thumb_func_start CpuSet_copyWords
-CpuSet_copyWords:
+// Copy r2 bytes from r0 to r1, in units of words.
+// Note r2 represents byte count, which is then converted to word count in function
+// Source, destination, and size must be word compatible.
+	thumb_func_start CopyWords
+CopyWords:
 	push {r0-r3,lr}
-	ldr r3, dword_800094C // =LCDControl 
+	ldr r3, .WordCopyCpuSetMask_800094C // =LCDControl 
 	// byteCount -> wordCount
 	lsr r2, r2, #2
 	orr r2, r3
 	bl SWI_CpuSet // (void *src, void *dest, int mode) -> void
 	pop {r0-r3,pc}
 	.balign 4, 0x00
-dword_800094C: .word 0x4000000
-	thumb_func_end CpuSet_copyWords
+.WordCopyCpuSetMask_800094C: .word 0x4000000
+	thumb_func_end CopyWords
 
 // (u32 *src, u32 *dest, int byteCount) -> void
-	thumb_func_start CpuFastSet_byteCount
-CpuFastSet_byteCount:
+// Copy r2 bytes from r0 to r1, in units of eight words, rounded up.
+// Note r2 represents byte count, which is then converted to word count in function
+// However, CpuFastSet will copy in chunks of eight words (0x20), therefore rounding
+// up the word count to a multiple of eight words.
+// Source and destination must be word compatible.
+// Size must be a multiple of eight words
+	thumb_func_start CopyByEightWords
+CopyByEightWords:
 	push {r0-r3,lr}
-	ldr r3, dword_8000960 // =0x0 
+	ldr r3, .CopyFastCpuSetMask_8000960 // =0x0 
 	lsr r2, r2, #2
 	orr r2, r3
 	bl SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
 	pop {r0-r3,pc}
 	.byte 0, 0
-dword_8000960: .word 0x0
-	thumb_func_end CpuFastSet_byteCount
+.CopyFastCpuSetMask_8000960: .word 0x0
+	thumb_func_end CopyByEightWords
 
 // (u8 *mem, int byteCount, u8 byte) -> void
-	thumb_func_start initMemblockToByte
-initMemblockToByte:
+// Fill r0 with r2, where r2 is treated as a byte.
+// Size is in r1, in bytes.
+// Does a backwards fill for speed
+	thumb_func_start ByteFill
+ByteFill:
 	// byteCount
 	sub r1, #1
 	strb r2, [r0,r1]
-	bne initMemblockToByte
+	bne ByteFill
 	mov pc, lr
-	thumb_func_end initMemblockToByte
+	thumb_func_end ByteFill
 
-	thumb_func_start sub_800096C
-sub_800096C:
+// Fill r0 with r2, where r2 is treated as a halfword.
+// Size is in r1, in bytes.
+// Source, destination, and size must be halfword compatible 
+	thumb_func_start HalfwordFill
+HalfwordFill:
 	push {r0-r3,lr}
 	mov r3, r2
-	ldr r2, dword_8000988 // =0x1000000 
+	ldr r2, .HalfwordFillCpuSetMask_8000988 // =0x1000000 
 	lsr r1, r1, #1
 	orr r2, r1
 	mov r1, r0
@@ -546,14 +577,17 @@ sub_800096C:
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0x00
-dword_8000988: .word 0x1000000
-	thumb_func_end sub_800096C
+.HalfwordFillCpuSetMask_8000988: .word 0x1000000
+	thumb_func_end HalfwordFill
 
-	thumb_func_start sub_800098C
-sub_800098C:
+// Fill r0 with r2, where r2 is treated as a word.
+// Size is in r1, in bytes.
+// Source, destination, and size must be word compatible
+	thumb_func_start WordFill
+WordFill:
 	push {r0-r3,lr}
 	mov r3, r2
-	ldr r2, dword_80009A8 // =0x5000000 
+	ldr r2, .WordFillCpuSetMask_80009A8 // =0x5000000 
 	lsr r1, r1, #2
 	orr r2, r1
 	mov r1, r0
@@ -564,14 +598,20 @@ sub_800098C:
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0x00
-dword_80009A8: .word 0x5000000
-	thumb_func_end sub_800098C
+.WordFillCpuSetMask_80009A8: .word 0x5000000
+	thumb_func_end WordFill
 
-	thumb_func_start CpuFastSet_80009AC
-CpuFastSet_80009AC:
+// Fill r0 with r2, where r2 is treated as a word.
+// Size is in r1, in bytes.
+// CpuFastSet will round up the amount of bytes filled to a multiple of eight words
+// even though the size specified is converted to a word count
+// Source and destination must be word compatible
+// Size must be a multiple of eight words
+	thumb_func_start FillByEightWords
+FillByEightWords:
 	push {r0-r3,lr}
 	mov r3, r2
-	ldr r2, dword_80009C8 // =0x1000000 
+	ldr r2, .FillCpuFastSetMask_80009C8 // =0x1000000 
 	lsr r1, r1, #2
 	orr r2, r1
 	mov r1, r0
@@ -582,8 +622,8 @@ CpuFastSet_80009AC:
 	add sp, sp, #4
 	pop {r0-r3,pc}
 	.balign 4, 0x00
-dword_80009C8: .word 0x1000000
-	thumb_func_end CpuFastSet_80009AC
+.FillCpuFastSetMask_80009C8: .word 0x1000000
+	thumb_func_end FillByEightWords
 
 	thumb_local_start
 sub_80009CC:
@@ -709,9 +749,9 @@ loc_8000A96:
 	.balign 4, 0x00
 off_8000AA4: .word off_8000AA8
 off_8000AA8: .word copyBytes+1
-	.word CpuSet_copyHalfwords+1
-	.word CpuSet_copyWords+1
-	.word CpuFastSet_byteCount+1
+	.word CopyHalfwords+1
+	.word CopyWords+1
+	.word CopyByEightWords+1
 	thumb_func_end objRender_8000A44
 
 	thumb_local_start
@@ -838,13 +878,13 @@ bit0_set_8000B72:
 bit1_set_8000B78:
 	// if bit 0 or bit 1 are set. Since bit 0 was checked already, 
 	// this is for bit 1
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	b continue_advance3Elements_8000B88
 bits5to0_set_8000B7E:
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	b continue_advance3Elements_8000B88
 default_8000B84:
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 continue_advance3Elements_8000B88:
 	add r7, #0xc
 	b loop_processArr_8000B34
@@ -1354,7 +1394,7 @@ sub_8000EE4:
 	mov r0, #0xe
 	// byteFlagIdx
 	mov r1, #0
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8000EFA
 	add r4, #1
 	mov r0, #0x80
@@ -1404,7 +1444,7 @@ loc_8000F4A:
 	mov r0, #3
 	// byteFlagIdx
 	mov r1, #0x70 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8000F5A
 	add r4, #1
 	mov r0, #2
@@ -1414,7 +1454,7 @@ loc_8000F5A:
 	mov r0, #3
 	// byteFlagIdx
 	mov r1, #0x40 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8000F6C
 	add r4, #1
 	mov r0, #0x10
@@ -1424,7 +1464,7 @@ loc_8000F6C:
 	mov r0, #3
 	mov r1, #0xbd
 	mov r2, #5
-	bl sub_802F1FC // (int a3, int a2) ->
+	bl TestEventFlagRangeFromImmediate // (int a3, int a2) ->
 	beq loc_8000F80
 	add r4, #1
 	mov r0, #0x20 
@@ -1445,11 +1485,11 @@ sub_8000F86:
 	// flag 7 @ 0x2001C88[0xE<<5 + 0x0] (=2001E48)
 	mov r0, #0xe
 	mov r1, #0
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	// flag 6 @ 0x2001C88[0x10<<5 + 0x0] (=2001E88)
 	mov r0, #0x10
 	mov r1, #1
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
 	str r4, [r0,#0x18]
@@ -1466,7 +1506,7 @@ sub_8000FAC:
 	// flag 3 @ 0x2001C88[0x17<<5 + 0x1] (=2001F69)
 	mov r0, #0x17
 	mov r1, #0xc
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8000FCE
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_LastMapGroup]
@@ -1488,7 +1528,7 @@ loc_8000FCE:
 loc_8000FDC:
 	mov r0, #0x17
 	mov r1, #0xc
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	pop {r4-r7,pc}
 	thumb_func_end sub_8000FAC
 
@@ -1499,7 +1539,7 @@ sub_8000FE6:
 	mov r4, r1
 loc_8000FEC:
 	mov r0, r6
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8000FFA
 	mov r0, r6
 	bl reqBBS_813E5DC
@@ -1528,7 +1568,7 @@ sub_8001014:
 	mov r4, r1
 loc_800101A:
 	mov r0, r6
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8001028
 	mov r0, r6
 	bl reqBBS_813F9A0
@@ -2376,7 +2416,7 @@ sub_80015B4:
 	push {lr}
 	ldr r0, dword_80015C8 // =0x600e000 
 	ldr r1, dword_80015CC // =0x2000 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	bl sub_800183C
 	bl sub_8001850
 	pop {pc}
@@ -2391,12 +2431,12 @@ render_80015D0:
 	ldr r0, [r0,#oToolkit_GFX30025c0_Ptr]
 	ldr r1, dword_80015EC // =0x600e000 
 	ldr r2, dword_80015F0 // =0x2000 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GFX30025c0_Ptr]
 	ldr r1, dword_80015F4 // =0x800 
 	ldr r2, dword_80015F8 // =0x2ff02ff 
-	bl CpuFastSet_80009AC
+	bl FillByEightWords
 	pop {pc}
 dword_80015EC: .word 0x600E000
 dword_80015F0: .word 0x2000
@@ -2471,14 +2511,14 @@ render_800172C:
 	add r0, #4
 	ldr r1, off_800176C // =BG0Control 
 	mov r2, #0x38 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	// src
 	ldr r0, [r7,#oToolkit_Unk200f3a0_Ptr]
 	// dest
 	ldr r1, off_8001770 // =Window0HorizontalDimensions 
 	// halfwordCount
 	mov r2, #0xc
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	ldr r5, [r7,#oToolkit_Unk2009740_Ptr]
 	ldr r1, off_8001774 // =ColorSpecialEffectsSelection 
 	ldr r2, [r5]
@@ -2543,16 +2583,16 @@ sub_80017AA:
 	push {lr}
 	ldr r0, dword_80017D0 // =0x6000000 
 	mov r1, #0x40 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	ldr r0, dword_80017D4 // =0x6004000 
 	mov r1, #0x40 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	ldr r0, dword_80017D8 // =0x6008000 
 	mov r1, #0x40 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	ldr r0, dword_80017DC // =0x600c000 
 	mov r1, #0x20 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {pc}
 	.byte 0, 0
 dword_80017D0: .word 0x6000000
@@ -2566,7 +2606,7 @@ sub_80017E0:
 	push {lr}
 	ldr r0, off_8001800 // =byte_3001960 
 	mov r1, #2
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	pop {pc}
 	thumb_func_end sub_80017E0
 
@@ -2575,10 +2615,10 @@ main_static_80017EC:
 	push {lr}
 	ldr r0, off_8001800 // =byte_3001960 
 	mov r1, #2
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	ldr r0, dword_8001804 // =0x5000000 
 	mov r1, #2
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	pop {pc}
 off_8001800: .word byte_3001960
 dword_8001804: .word 0x5000000
@@ -2591,7 +2631,7 @@ renderPalletes_8001808:
 	ldr r1, dword_800181C // =0x5000000 
 	mov r2, #0x20 
 	lsl r2, r2, #4
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {pc}
 off_8001818: .word unk_3001B60
 dword_800181C: .word 0x5000000
@@ -2605,7 +2645,7 @@ sub_8001820:
 	ldr r0, [r2,#oToolkit_Unk2009740_Ptr]
 	// size
 	mov r1, #8
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 	thumb_func_end sub_8001820
 
@@ -2617,7 +2657,7 @@ sub_800182E:
 	ldr r0, [r2,#oToolkit_Unk200f3a0_Ptr]
 	// size
 	mov r1, #0xc
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 	thumb_func_end sub_800182E
 
@@ -2627,7 +2667,7 @@ sub_800183C:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GFX30025c0_Ptr]
 	ldr r1, dword_800184C // =0x2000 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {pc}
 	.balign 4, 0x00
 dword_800184C: .word 0x2000
@@ -2639,11 +2679,11 @@ sub_8001850:
 	ldr r0, off_8001868 // =dword_86A5520 
 	ldr r1, dword_800186C // =0x600d400 
 	ldr r2, dword_8001870 // =0x800 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r0, off_8001874 // =byte_86BEC80 
 	ldr r1, off_8001878 // =unk_3001B40 
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {pc}
 off_8001868: .word dword_86A5520
 dword_800186C: .word 0x600D400
@@ -3057,7 +3097,7 @@ sub_8001AFC:
 	ldr r0, off_8001C40 // =byte_20094C0 
 	// size
 	ldr r1, off_8001B08 // =0x1b0 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_8001B08: .word 0x1B0
 	thumb_func_end sub_8001AFC
@@ -4155,13 +4195,13 @@ sub_8002338:
 	cmp r0, #0
 	blt loc_8002348
 	mov r0, r0
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	b locret_8002352
 loc_8002348:
 	lsl r0, r0, #1
 	lsr r0, r0, #1
 	mov r0, r0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 locret_8002352:
 	pop {pc}
 	thumb_func_end sub_8002338
@@ -4188,7 +4228,7 @@ sub_8002368:
 	ldr r0, off_8002464 // =byte_20097A0 
 	// size
 	ldr r1, off_8002374 // =0x108 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_8002374: .word 0x108
 	thumb_func_end sub_8002368
@@ -4233,7 +4273,7 @@ sub_80023A8:
 	ldr r0, off_8002464 // =byte_20097A0 
 	// size
 	ldr r1, off_80023B4 // =0xd8 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_80023B4: .word 0xD8
 	thumb_func_end sub_80023A8
@@ -4274,12 +4314,12 @@ getPalleteAndTransition_80023E0:
 	ldr r1, off_8002440 // =unk_3001B60 
 	mov r2, #0x20 
 	lsl r2, r2, #4
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r0, off_8002444 // =byte_3001550 
 	ldr r1, off_8002448 // =byte_3001750 
 	mov r2, #0x20 
 	lsl r2, r2, #4
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r5, off_8002464 // =byte_20097A0 
 loc_80023FC:
 	ldrb r0, [r5]
@@ -4334,7 +4374,7 @@ sub_8002468:
 	mov r0, r5
 	// size
 	mov r1, #0x50 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0-r2}
 	str r0, [r5,#0x4] // (dword_200A6A4 - 0x200a6a0)
 	str r1, [r5,#0x8] // (dword_200A6A8 - 0x200a6a0)
@@ -4361,7 +4401,7 @@ loc_8002498:
 	mov r0, r5
 	// size
 	mov r1, #0x50 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4-r7,pc}
 	thumb_func_end sub_8002484
 
@@ -4372,7 +4412,7 @@ sub_80024A2:
 	ldr r0, off_80024C8 // =byte_200A6A0 
 	// size
 	mov r1, #0x50 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r4-r7,pc}
 	thumb_func_end sub_80024A2
 
@@ -4558,10 +4598,10 @@ sub_800260C:
 	push {r4,lr}
 	ldr r0, dword_800263C // =0x7000000 
 	ldr r1, off_8002640 // =0x400 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	ldr r0, dword_8002644 // =0x6010000 
 	ldr r1, dword_8002648 // =0x8000 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	bl sub_8002668
 	bl sub_8003534
 	bl sub_800355C
@@ -4569,7 +4609,7 @@ sub_800260C:
 	bl sprite_handleObjSprites_800289C
 	ldr r0, off_800264C // =unk_200F388 
 	mov r1, #7
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {r4,pc}
 dword_800263C: .word 0x7000000
 off_8002640: .word 0x400
@@ -4585,7 +4625,7 @@ renderPalletesAndObjs_8002650:
 	ldr r1, dword_8002664 // =0x5000200 
 	mov r2, #0x20 
 	lsl r2, r2, #4
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {pc}
 off_8002660: .word byte_3001750
 dword_8002664: .word 0x5000200
@@ -4597,7 +4637,7 @@ sub_8002668:
 	ldr r0, off_800268C // =dword_86A5500 
 	ldr r1, off_8002690 // =byte_3001710 
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	b loc_8002678
 loc_8002676:
 	push {lr}
@@ -4605,7 +4645,7 @@ loc_8002678:
 	ldr r0, off_8002684 // =dword_80025CC 
 	ldr r1, off_8002688 // =byte_3001730 
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {pc}
 off_8002684: .word dword_80025CC
 off_8002688: .word byte_3001730

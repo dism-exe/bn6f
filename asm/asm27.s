@@ -52,7 +52,7 @@ sub_8094720:
 	ldr r0, off_8094778 // =unk_2026404 
 	mov r1, #0x10
 	lsl r1, r1, #8
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldr r0, off_8094778 // =unk_2026404 
 	bl sub_8094738
 	mov r0, #0
@@ -86,7 +86,7 @@ loc_8094752:
 	add r1, r1, r7
 	// halfwordCount
 	mov r2, #0x64 
-	bl CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	add r4, #1
 	cmp r4, #0x22 
 	blt loc_8094752

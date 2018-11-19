@@ -40,14 +40,14 @@
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global musicGameState_8000784 // () -> void
-// .global clearBackwards_80008B4 // (void *mem, int size) -> void
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-// .global CpuFastSet_8000900 // (int a1, int a2) -> void
+// .global ZeroFillByByte // (void *mem, int size) -> void
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
+// .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
-// .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
-// .global sub_800096C
+// .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+// .global CopyWords // (u32 *src, u32 *dest, int size) -> void
+// .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+// .global HalfwordFill
 // .global loc_8000AC8
 // .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global sub_8000C00
@@ -97,12 +97,12 @@
 // .global copyBattleSettingsTo_200AF60 // (BattleSettings *src) -> void
 // .global battleSettings_setFlags_unkSettings // (int mask) -> void
 // .global battleSettings_setBackground // (u8 background) -> void
-// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global SetEventFlag
+// .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global ClearEventFlag // (u16 entryFlagBitfield) -> void
+// .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 
 .include "asm/asm03_1.inc"

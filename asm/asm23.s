@@ -994,7 +994,7 @@ sub_8089A60:
 	beq loc_8089AC6
 	bl sub_81427CE
 	mov r0, r0
-	bl clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	bl sub_814219C
 	str r0, [r7,#0x10]
 	bl sub_81422B4
@@ -1002,10 +1002,10 @@ sub_8089A60:
 	mov r0, #7
 	// byteFlagIdx
 	mov r1, #0x40 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #2
 	mov r1, #0x25 
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	mov r1, #0
@@ -1014,7 +1014,7 @@ sub_8089A60:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0x28 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8089ABA
 	bl sub_81426CE
 	cmp r0, #6
@@ -1179,7 +1179,7 @@ sub_8089BC0:
 	mov r0, #7
 	// byteFlagIdx
 	mov r1, #0x45 
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	strb r0, [r5,#8]
 	mov r0, #0x1e

@@ -45,12 +45,12 @@
 // .global sub_800068A
 // .global sub_80006A2
 // .global musicGameState_8000784 // () -> void
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-// .global CpuFastSet_8000900 // (int a1, int a2) -> void
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
+// .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global CpuSet_copyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
-// .global CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+// .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+// .global CopyWords // (u32 *src, u32 *dest, int size) -> void
+// .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global loc_8000AC8
 // .global sub_8000C00
 // .global sub_8000C5C
@@ -104,14 +104,14 @@
 .include "asm/asm03_0.inc"
 // .global sub_802D158
 // .global sub_802D15E
-// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global SetEventFlag
+// .global ClearEventFlag // (u16 entryFlagBitfield) -> void
 // .global toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
-// .global setFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global loc_802F200
+// .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
+// .global SetEventFlagRange // (u16 entryFlagBitfield) -> void
+// .global ClearEventFlagRange // (u16 entryFlagBitfield) -> void
+// .global TestEventFlagRange
 // .global sub_802F238
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 

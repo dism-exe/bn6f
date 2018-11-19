@@ -5,7 +5,7 @@ sub_8080D90:
 	push {lr}
 	ldr r0, off_8080D9C // =dword_2009690 
 	mov r1, #8
-	bl clearBackwards_80008B4 // (void *mem, int size) -> void
+	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {pc}
 off_8080D9C: .word dword_2009690
 	thumb_func_end sub_8080D90
@@ -327,7 +327,7 @@ loc_808133C:
 	push {r0}
 	ldrh r2, [r3,#2]
 	mov r0, r2
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r0}
 	bne locret_808135C
 	mov r0, #0x15

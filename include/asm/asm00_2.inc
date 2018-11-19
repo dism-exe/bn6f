@@ -351,9 +351,9 @@
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global musicGameState_8000784 // () -> void
-// .global sub_80008C0
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+// .global ZeroFillByHalfword
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
+// .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global loc_8000AC4
 // .global loc_8000AC8
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
@@ -556,7 +556,7 @@
 // .global sub_802E830
 // .global sub_802EF5C
 // .global dword_802F0A8
-// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+// .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_802FE48
 // .global sub_802FE6A

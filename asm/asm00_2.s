@@ -2766,7 +2766,7 @@ sub_80101F8:
 	mov r0, #1
 	// byteFlagIdx
 	mov r1, #0x63 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8010216
 	bl sub_803F524
 	beq loc_8010216
@@ -8017,7 +8017,7 @@ sub_801299C:
 	push {lr}
 	// size
 	mov r1, #0x10
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 	thumb_func_end sub_801299C
 
@@ -9445,7 +9445,7 @@ initStruct_8013438:
 	mov r0, r4
 	// size
 	mov r1, #0x64 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #1
 	mov r1, #0x20 
 	strb r0, [r4,r1]
@@ -9524,7 +9524,7 @@ sub_80134C8:
 	mov r0, r4
 	// size
 	mov r1, #0x64 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #1
 	mov r1, #0x20 
 	strb r0, [r4,r1]
@@ -9598,7 +9598,7 @@ sub_8013554:
 	mov r0, r4
 	// size
 	mov r1, #0x64 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0x46 
 	strb r0, [r4,#4]
 	mov r0, #0xff
@@ -9678,7 +9678,7 @@ sub_80135E8:
 	mov r0, r4
 	// size
 	mov r1, #0x64 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0x4c 
 	strb r0, [r4,#4]
 	mov r0, #0x4b 
@@ -11372,7 +11372,7 @@ sub_8014216:
 	bl sub_8010018
 	add r0, #0x26 
 	mov r1, #0xc
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	bl get_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
@@ -11771,7 +11771,7 @@ loc_80144CE:
 	bl sub_8010018
 	add r0, #0x26 
 	mov r1, #0xc
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	mov r0, #0x20 
 	bl sub_801031C
 	bl get_802D246 // () -> int
@@ -12187,20 +12187,20 @@ sub_80147E4:
 	mov r1, #8
 	add r1, r1, r5
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, r6
 	ldr r1, off_8014824 // =unk_203A980 
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, r7
 	mov r1, #0x18
 	add r1, r1, r5
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, r7
 	ldr r1, off_8014828 // =unk_203A990 
 	mov r2, #0x10
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, #0
 	str r0, [r5]
 	mov r0, #1
@@ -19656,7 +19656,7 @@ loc_801987C:
 	mov r0, r4
 	// size
 	mov r1, #0xa8
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	str r5, [r4,#0x44]
 	add r4, #0xa8
 	lsr r5, r5, #1
@@ -19689,13 +19689,13 @@ loc_80198AE:
 	mov r4, r0
 	// size
 	mov r1, #0x44 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #0x48 
 	// memBlock
 	add r0, r0, r4
 	// size
 	mov r1, #0x60 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, r4
 	mov r1, #1
 	strb r1, [r0]
@@ -19958,7 +19958,7 @@ sub_8019FA4:
 	ldr r0, off_8019FB0 // =unk_2034F60 
 	// size
 	mov r1, #0xa0
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_8019FB0: .word unk_2034F60
 	thumb_func_end sub_8019FA4
@@ -20039,7 +20039,7 @@ loc_801A034:
 	mov r0, #0x68 
 	add r0, r0, r4
 	mov r1, #0x40 
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	ldr r0, [r5,#0x54]
 	ldr r3, off_801A0CC // =sub_300777C+1 
 	mov lr, pc
@@ -20985,7 +20985,7 @@ sub_801A686:
 	mov r0, #0x80
 	add r0, r0, r4
 	mov r1, #0x14
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	ldr r0, dword_801A7C0 // =0x106 
 	bl sub_801A176
 	pop {r4,pc}
@@ -20997,7 +20997,7 @@ sub_801A6A6:
 	ldr r0, [r5,#0x54]
 	add r0, #0x80
 	mov r1, #0x14
-	bl sub_80008C0
+	bl ZeroFillByHalfword
 	pop {r4,pc}
 	thumb_func_end sub_801A6A6
 
@@ -23912,7 +23912,7 @@ sub_801BE70:
 	ldr r0, off_801BFE8 // =byte_2035280 
 	// size
 	mov r1, #0x60 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r2, #0x20 
 	ldr r1, off_801BFE8 // =byte_2035280 
 	strh r2, [r1,#0x22] // (word_20352A2 - 0x2035280)
@@ -23923,12 +23923,12 @@ sub_801BE70:
 	ldr r0, off_801BEA8 // =dword_20352E0 
 	// size
 	mov r1, #0x30 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	// memBlock
 	ldr r0, off_801BEAC // =byte_203EB50 
 	// size
 	mov r1, #0x50 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldr r0, off_801BEB0 // =dword_203CA48 
 	mov r1, #0
 	str r1, [r0]
@@ -27157,7 +27157,7 @@ sub_801D814:
 	mov r0, #1
 	// byteFlagIdx
 	mov r1, #0x63 
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_801D84A
 	bl sub_802E09A
 	bne loc_801D84A
@@ -27169,7 +27169,7 @@ sub_801D814:
 	mov r0, #0
 	// byteFlagIdx
 	mov r1, #0xe0
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_801D84A
 loc_801D848:
 	mov r4, #1

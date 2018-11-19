@@ -8,7 +8,7 @@
 
 /* External Symbols */
 .include "asm/asm00_0.inc"
-// .global clearBackwards_80008B4 // (void *mem, int size) -> void
+// .global ZeroFillByByte // (void *mem, int size) -> void
 // .global sub_8001778
 // .global sub_8001780
 // .global sub_800195C
@@ -23,7 +23,7 @@
 
 .include "asm/asm03_0.inc"
 // .global sub_802D234
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global sub_80304E8
 
 .include "asm/asm03_1.inc"

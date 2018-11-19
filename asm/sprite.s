@@ -321,7 +321,7 @@ sprite_handleObjSprites_800289C:
 	ldr r1, off_80028BC // =0x388 
 	mov r2, #0
 	mvn r2, r2
-	bl sub_800098C
+	bl WordFill
 	pop {pc}
 	.balign 4, 0x00
 off_80028B4: .word dword_20093A8
@@ -350,7 +350,7 @@ sub_80028D4:
 	mov r0, r5
 	// size
 	mov r1, #0x50 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0}
 	str r0, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
 	mov r0, r5
@@ -360,7 +360,7 @@ sub_80028D4:
 	lsl r2, r2, #0x18
 	mvn r2, r2
 	lsr r2, r2, #0x10
-	bl sub_800096C
+	bl HalfwordFill
 	mov r0, r5
 	// mem
 	add r0, #0x1c
@@ -368,7 +368,7 @@ sub_80028D4:
 	mov r1, #0x30 
 	// byte
 	mov r2, #0xff
-	bl initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	pop {r5,pc}
 	thumb_func_end sub_80028D4
 

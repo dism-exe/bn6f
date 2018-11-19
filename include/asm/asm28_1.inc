@@ -38,8 +38,8 @@
 
 /* External Symbols */
 .include "asm/asm00_0.inc"
-// .global CpuFastSet_8000900 // (int a1, int a2) -> void
-// .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+// .global ZeroFillByEightWords // (int a1, int a2) -> void
+// .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global sub_8000E3A
 // .global getPETNaviSelect // () -> u8
 
@@ -54,9 +54,9 @@
 // .global sub_8013704
 
 .include "asm/asm03_0.inc"
-// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+// .global ClearEventFlag // (u16 entryFlagBitfield) -> void
+// .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global sub_8031612
 
 .include "asm/chatbox.inc"

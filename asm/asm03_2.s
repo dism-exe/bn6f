@@ -219,9 +219,9 @@ sub_8046154:
 	mul r4, r5
 	ldr r2, [r1,#0x38]
 	mov r1, r4
-	bl CpuFastSet_80009AC
+	bl FillByEightWords
 	mov r0, r7
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	mov r0, r6
 	mov r3, #1
 loc_804618E:
@@ -676,7 +676,7 @@ sub_804657C:
 	ldr r0, off_80466D4 // =byte_2008450 
 	// size
 	ldr r1, off_804659C // =0x528 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldr r5, off_80466D4 // =byte_2008450 
 	mov r7, #0
 loc_804658A:
@@ -1021,7 +1021,7 @@ sub_80467D8:
 	ldr r0, off_8046928 // =byte_2011860 
 	// size
 	ldr r1, off_80467F8 // =0x1b8 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldr r5, off_8046928 // =byte_2011860 
 	mov r7, #0
 loc_80467E6:
@@ -1736,7 +1736,7 @@ sub_8046CC8:
 	ldr r0, off_8046D48 // =byte_2011C10 
 	// size
 	mov r1, #0x34 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	strb r4, [r5,#0x4] // (byte_2011C14 - 0x2011c10)
 	ldr r2, off_8046CF0 // =unk_8046B98 
 	mov r0, #0x10
@@ -2185,7 +2185,7 @@ sub_8047066:
 	add r2, r2, r0
 	// bitfield
 	mov r0, r2
-	bl setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl SetEventFlag
 	mov r7, #0xff
 	strb r7, [r5,#0xd]
 	ldrb r0, [r5,#1]
@@ -2561,7 +2561,7 @@ loc_80473B8:
 	mov r1, #0x40 
 	// size
 	add r1, #0x40 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldr r0, off_8047474 // =byte_2011C10 
 	mov r1, #0
 	strh r1, [r0,#0x12] // (word_2011C22 - 0x2011c10)
@@ -2622,7 +2622,7 @@ loc_8047422:
 	mov r1, #0x40 
 	// size
 	add r1, #0x40 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldr r0, off_8047474 // =byte_2011C10 
 	mov r1, #0
 	strh r1, [r0,#0x12] // (word_2011C22 - 0x2011c10)
@@ -2745,7 +2745,7 @@ sub_804754C:
 	lsl r2, r2, #4
 	add r1, r1, r2
 	ldr r2, dword_804757C // =0x800 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r0, [r5,#0x24]
 	mov r1, #0x10
 	ldr r2, off_8047580 // =unk_2015E00 
@@ -2908,14 +2908,14 @@ loc_8047698:
 	ldr r2, dword_8047704 // =0x1e20 
 	add r1, r1, r2
 	mov r0, r1
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r1-r3}
 	bne loc_80476C4
 	push {r1-r3}
 	ldr r2, dword_80477FC // =0x2420 
 	add r1, r1, r2
 	mov r0, r1
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r1-r3}
 	bne loc_80476C4
 	mov r3, #0x1b
@@ -3037,7 +3037,7 @@ loc_80477B4:
 	ldr r2, dword_80477FC // =0x2420 
 	add r3, r3, r2
 	mov r0, r3
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r0,r1}
 	bne loc_80477D2
 	mov r1, #0x10
@@ -3467,7 +3467,7 @@ loc_8047AF8:
 	ldr r2, dword_8047B80 // =0x1e20 
 	add r2, r2, r4
 	mov r0, r2
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_8047B1C
 loc_8047B10:
 	tst r6, r6
@@ -3480,7 +3480,7 @@ loc_8047B1C:
 	ldr r2, dword_8047B84 // =0x2420 
 	add r2, r2, r4
 	mov r0, r2
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8047B10
 	mov r7, #0x18
 	mov r0, #0x1b
@@ -3537,7 +3537,7 @@ sub_8047B88:
 	mov r1, #0x40 
 	// size
 	add r1, #0x40 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldr r7, [r5,#0x1c]
 	ldr r0, [r7]
 	cmp r0, #2
@@ -3746,7 +3746,7 @@ sub_8047CEC:
 	ldr r0, off_8047D74 // =unk_80469F0 
 	ldr r1, off_8047D6C // =byte_202F800 
 	ldr r2, off_8047D70 // =0x168 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
 	thumb_func_end sub_8047CEC
 
@@ -4040,7 +4040,7 @@ sub_8048C68:
 	ldr r0, [r0,#oToolkit_Unk20032c8_Ptr]
 	// size
 	ldr r1, dword_8048CC8 // =0xe80 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldr r0, off_8048CC4 // =byte_8047DA0 
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_Unk20032c8_Ptr]
@@ -4309,14 +4309,14 @@ loc_8048E24:
 	mov r1, r4
 	add r2, r0, r1
 	mov r8, r2
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	// memBlock
 	mov r0, r6
 	// size
 	mov r1, r4
 	add r2, r0, r1
 	mov r9, r2
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 loc_8048E46:
 	ldrb r0, [r7]
 	tst r0, r0
@@ -4328,7 +4328,7 @@ loc_8048E46:
 	add r0, r0, r1
 	push {r3}
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r3}
 	bne loc_8048E8A
 	mov r3, #0
@@ -4337,7 +4337,7 @@ loc_8048E46:
 	add r0, r0, r1
 	push {r3}
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r3}
 	bne loc_8048E8A
 	ldrh r0, [r7,#2]
@@ -4345,7 +4345,7 @@ loc_8048E46:
 	add r0, r0, r1
 	push {r3}
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r3}
 	bne loc_8048E8A
 	mov r4, r5
@@ -4513,7 +4513,7 @@ sub_8048F9C:
 	mov r0, r5
 	// size
 	ldr r1, off_8048FC0 // =0x1b0 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	mov r0, #0x30 
@@ -5939,7 +5939,7 @@ loc_8049BC4:
 	lsl r2, r4, #2
 	ldr r1, [r1,r2]
 	mov r2, #0x20 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r3, off_8049C64 // =dword_8049C68 
 	ldrb r3, [r3,r4]
 	lsl r3, r3, #0xc
@@ -6044,7 +6044,7 @@ sub_8049CF8:
 	mov r0, r5
 	// size
 	mov r1, #0x48 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, r5
 	add r0, #8
 	mov r1, #0x20 
@@ -6052,7 +6052,7 @@ sub_8049CF8:
 	mov r3, #0xe5
 	lsl r3, r3, #8
 	orr r2, r3
-	bl sub_800096C
+	bl HalfwordFill
 	mov r0, r5
 	add r0, #8
 	mov r1, #0xe6
@@ -6064,7 +6064,7 @@ sub_8049CF8:
 	mov r3, #0xe5
 	lsl r3, r3, #8
 	orr r2, r3
-	bl sub_800096C
+	bl HalfwordFill
 	mov r0, r5
 	add r0, #0x28 
 	mov r1, #0xe6
@@ -6186,7 +6186,7 @@ sub_8049DDC:
 	mov r0, r5
 	// size
 	ldr r1, off_8049E00 // =0x1b0 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	mov r0, #0x4c 
@@ -6603,7 +6603,7 @@ sub_804A17A:
 	mov r0, r5
 	// size
 	mov r1, #0x60 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, r5
 	add r0, #0
 	mov r1, #0x20 
@@ -6611,7 +6611,7 @@ sub_804A17A:
 	mov r3, #0xe5
 	lsl r3, r3, #8
 	orr r2, r3
-	bl sub_800096C
+	bl HalfwordFill
 	mov r0, #0
 	mov r1, r5
 	add r1, #0
@@ -6627,7 +6627,7 @@ sub_804A17A:
 	mov r3, #0xe5
 	lsl r3, r3, #8
 	orr r2, r3
-	bl sub_800096C
+	bl HalfwordFill
 	mov r0, #1
 	mov r1, r5
 	add r1, #0x20 
@@ -6651,7 +6651,7 @@ sub_804A1D0:
 	mov r3, #0xe5
 	lsl r3, r3, #8
 	orr r2, r3
-	bl sub_800096C
+	bl HalfwordFill
 	mov r0, r7
 	mov r1, r5
 	add r1, #0x40 
@@ -6761,13 +6761,13 @@ sub_804A2E8:
 	ldr r0, off_804A300 // =unk_200AC80 
 	// size
 	mov r1, #0x58 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, r10
 	// memBlock
 	ldr r0, [r0,#oToolkit_SubmenuPtr]
 	// size
 	mov r1, #0x80
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r5,pc}
 	.byte 0, 0
 off_804A300: .word unk_200AC80
@@ -6821,7 +6821,7 @@ sub_804A360:
 	ldr r0, off_804A3F0 // =word_202A020 
 	// size
 	ldr r1, off_804A3F4 // =0x3c0 
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_8120A88
 	ldr r0, off_804A3EC // =unk_202A3E0 
 	mov r1, #1
@@ -7818,14 +7818,14 @@ loc_804AB98:
 	mov r2, #1
 	strh r2, [r3,#0x14]
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldrh r0, [r5,#0x28]
 	add r0, #1
 	strh r0, [r5,#0x28]
 loc_804ABC0:
 	mov r0, r7
 	mov r1, #0x20 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	ldrh r0, [r5,#0x1e]
 	bl sub_804ACC8
 	strb r0, [r5,#0x17]
@@ -7878,7 +7878,7 @@ loc_804AC1E:
 	ldr r1, off_804ACB4 // =word_202A020 
 	add r1, r1, r4
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldrh r0, [r5,#0x1e]
 	bl sub_804ACC8
 	strb r0, [r5,#0x17]
@@ -7911,7 +7911,7 @@ loc_804AC60:
 	mov r0, r7
 	add r1, r1, r4
 	mov r2, #0x20 
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldrh r0, [r5,#0x1e]
 	bl sub_804ACC8
 	strb r0, [r5,#0x17]
@@ -7960,7 +7960,7 @@ sub_804ACC8:
 	add r5, r5, r7
 	ldr r0, off_804AD54 // =unk_20343E0 
 	ldr r1, off_804AD58 // =0x78 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	ldr r6, off_804AD54 // =unk_20343E0 
 loc_804ACE4:
 	mov r4, #0
@@ -8126,14 +8126,14 @@ sub_804ADE0:
 	beq loc_804ADF8
 	mov r3, #0x20 
 	mul r2, r3
-	bl CpuFastSet_byteCount // (u32 *src, u32 *dest, int byteCount) -> void
+	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	mov r1, #0x20 
 	mul r1, r6
 	add r4, r4, r1
 loc_804ADF8:
 	mov r0, r4
 	mov r1, #0x20 
-	bl CpuFastSet_8000900 // (int a1, int a2) -> void
+	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_804ADE0
@@ -8825,7 +8825,7 @@ sub_804BDB4:
 	ldr r0, off_804BEE4 // =dword_2035800 
 	mov r1, #0x10
 	lsl r1, r1, #8
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r6, r9
 	ldr r7, off_804BEE4 // =dword_2035800 
 	mov r3, #0
@@ -8837,7 +8837,7 @@ loc_804BDD6:
 	ldr r1, dword_804BE84 // =0x1e20 
 	add r0, r0, r1
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r0,r3}
 	beq loc_804BE06
 	strh r0, [r7]
@@ -8882,7 +8882,7 @@ sub_804BE1C:
 	ldr r0, off_804BEE4 // =dword_2035800 
 	mov r1, #0x10
 	lsl r1, r1, #8
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r6, r9
 	ldr r7, off_804BEE4 // =dword_2035800 
 loc_804BE3C:
@@ -8893,7 +8893,7 @@ loc_804BE3C:
 	ldr r1, dword_804BE84 // =0x1e20 
 	add r0, r0, r1
 	mov r0, r0
-	bl isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
+	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r0,r3,r6,r7}
 	bne loc_804BE6C
 	strh r0, [r7]
@@ -8944,7 +8944,7 @@ loc_804BE9C:
 	ldr r0, off_804BEE8 // =dword_2034800 
 	mov r1, #0x10
 	lsl r1, r1, #8
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldr r0, [r5,#0x48]
 	mov r2, #0
 	ldr r6, off_804BEE4 // =dword_2035800 
@@ -9085,7 +9085,7 @@ sub_804BF94:
 	ldr r0, off_804BFEC // =dword_2035800 
 	mov r1, #0x10
 	lsl r1, r1, #8
-	bl CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
+	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r6, r8
 	ldr r7, off_804BFEC // =dword_2035800 
 loc_804BFAA:
@@ -9182,7 +9182,7 @@ sub_804C074:
 	push {r4-r7,lr}
 	mov r0, #4
 	mov r1, #0xfe
-	bl clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r4, r10
 	ldr r1, [r4,#oToolkit_RenderInfoPtr]
 	ldrh r0, [r1]
@@ -9231,11 +9231,11 @@ sub_804C08C:
 	strb r0, [r5,#0x18]
 	mov r0, #4
 	mov r1, #0xfb
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_804C0EE
 	mov r0, #4
 	mov r1, #0xfe
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_804C0EE
 	bl sub_804C2D0
 loc_804C0EE:
@@ -9244,7 +9244,7 @@ loc_804C0EE:
 	strb r0, [r5,#0x10]
 	mov r0, #4
 	mov r1, #0xfe
-	bl setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_804C11C
 	pop {r4-r7,pc}
 off_804C104: .word byte_869D76C
@@ -10212,7 +10212,7 @@ sub_804CA90:
 	mov r0, r7
 	mov r1, sp
 	mov r2, #0x28 
-	bl CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
+	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r7, sp
 	bl sub_809E1AE
 	str r0, [r7,#0x18]
@@ -10610,7 +10610,7 @@ sub_804CDD4:
 	strh r0, [r4]
 	mov r0, #0xb
 	mov r1, #0xf0
-	bl isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_804CDF0
 	bl sub_804CE3C
 loc_804CDF0:

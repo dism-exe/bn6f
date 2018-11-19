@@ -220,9 +220,9 @@
 /* External Symbols */
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global CpuSet_ZeroFillWord // (void *memBlock, int size) -> void
-// .global CpuSet_copyWords // (u32 *src, u32 *dest, int size) -> void
-// .global initMemblockToByte // (u8 *mem, int byteCount, u8 byte) -> void
+// .global ZeroFillByWord // (void *memBlock, int size) -> void
+// .global CopyWords // (u32 *src, u32 *dest, int size) -> void
+// .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global loc_8000AC8
 // .global sub_8000E3A
 // .global getPETNaviSelect // () -> u8
@@ -242,14 +242,14 @@
 
 .include "asm/asm03_0.inc"
 // .global sub_802D064
-// .global setFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global setFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global clearFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global clearFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
-// .global isActiveFlag_2001C88_entry // (int entryIdx, int byteFlagIdx) -> zf
-// .global isActiveFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> zf
-// .global clearFlags_multEntries_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
-// .global clearFlags_multEntries_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global SetEventFlag
+// .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global ClearEventFlag // (u16 entryFlagBitfield) -> void
+// .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+// .global TestEventFlag // (u16 entryFlagBitfield) -> zf
+// .global ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+// .global ClearEventFlagRange // (u16 entryFlagBitfield) -> void
 // .global sub_80302A8
 // .global sub_80307D8
 // .global sub_8030A60
@@ -600,7 +600,7 @@
 // .equ dword_30055FC, 0x30055FC
 // .equ unk_3005600, 0x3005600
 // .equ loc_3005700, 0x3005700
-// .equ unk_3007FF0, 0x3007FF0
+// .equ dword_3007FF0, 0x3007FF0
 .equ VerticalCounter_LY_, 0x4000006
 .equ Channel1Sweepregister_NR10_, 0x4000060
 .equ Channel1Sweepregister_NR10_, 0x4000060
