@@ -1,4 +1,4 @@
-ifeq ($(DEVKITARM)/base_tools,)
+ifneq ($(DEVKITARM)/base_tools,)
     include $(DEVKITARM)/base_tools
 endif
 
@@ -21,7 +21,7 @@ INC = include
 # project files
 SFILES = rom.s data.s ewram.s iwram.s
 
-OFILES = $(addprefix $(OBJ),$F(SFILES:.s=.o))
+OFILES = $(addprefix $(OBJ),$(SFILES:.s=.o))
 BUILD_NAME = bn6f
 ROM = $(BUILD_NAME).gba
 
