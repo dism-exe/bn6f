@@ -119,9 +119,9 @@
 // .global byte_86A3715
 // .global byte_86ACF02
 // .global byte_86AF60A
-// .global unk_86AFE15
-// .global unk_86B4901
-// .global unk_86B5115
+// .global byte_86AFE15
+// .global byte_86B4901
+// .global byte_86B5115
 // .global byte_86B7D4B
 
 .include "data/dat38_87.inc"

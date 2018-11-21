@@ -1,5 +1,5 @@
 
-	.section iwram_data
+	.data
 
 ds unk_3000000 // 0x3000000
 	.space 1

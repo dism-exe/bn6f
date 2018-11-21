@@ -121,19 +121,19 @@ sub_807CF24:
 off_807CF58: .word off_807CF5C
 off_807CF5C: .word nullsub_39+1
 	.word nullsub_36+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word nullsub_36+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word nullsub_36+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word nullsub_36+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 off_807CF9C: .word off_807CFA0
 off_807CFA0: .word off_807CFB0

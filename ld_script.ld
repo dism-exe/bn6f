@@ -15,13 +15,13 @@ SECTIONS
     ewram (NOLOAD) :
     ALIGN(4)
     {
-        ewram.o(ewram);
+        ewram.o(.data);
     } >ewram_region
     
     iwram (NOLOAD) :
     ALIGN(4)
     {
-        iwram.o(iwram_data);
+        iwram.o(.data);
     } >iwram_region
 	
     /* start of ROM */

@@ -2739,22 +2739,22 @@ loc_80018A6:
 	thumb_func_start copyTiles
 copyTiles:
 	push {r6,r7,lr}
-	ldr r7, off_80018CC // =copyTiles_iram+1 
+	ldr r7, off_80018CC // =loc_3005E80 
 	mov lr, pc
 	bx r7
 	pop {r6,r7,pc}
-off_80018CC: .word copyTiles_iram+1
+off_80018CC: .word 0x3005E81
 	thumb_func_end copyTiles
 
 	thumb_func_start sub_80018D0
 sub_80018D0:
 	push {r6,r7,lr}
-	ldr r7, off_80018DC // =sub_3005EBA+1 
+	ldr r7, off_80018DC // =loc_3005EBA 
 	mov lr, pc
 	bx r7
 	pop {r6,r7,pc}
 	.balign 4, 0x00
-off_80018DC: .word sub_3005EBA+1
+off_80018DC: .word 0x3005EBB
 	thumb_func_end sub_80018D0
 
 	thumb_func_start sub_80018E0
@@ -4659,12 +4659,12 @@ off_8002690: .word byte_3001710
 	thumb_func_start sub_8002694
 sub_8002694:
 	push {lr}
-	ldr r2, off_80026A0 // =loc_3006440+1 
+	ldr r2, off_80026A0 // =loc_3006440 
 	mov lr, pc
 	bx r2
 	pop {pc}
 	.byte 0, 0
-off_80026A0: .word loc_3006440+1
+off_80026A0: .word 0x3006441
 	thumb_func_end sub_8002694
 
 /*For debugging purposes, connect comment at any range!*/

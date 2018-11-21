@@ -329,7 +329,7 @@ loc_803FF9E:
 	cmp r1, #0xe4
 	beq loc_803FFB4
 	ldr r6, [r5,#0x7c] // ChatBoxPropreties.unk_7C
-	ldr r3, off_8040038 // =sub_3006F8C+1 
+	ldr r3, off_8040038 // =byte_3006F54 
 	mov lr, pc
 	bx r3
 	add r4, #1
@@ -341,7 +341,7 @@ loc_803FFB4:
 	add r1, #0xe4
 	mov r0, #0
 	ldr r6, [r5,#0x7c] // ChatBoxPropreties.unk_7C
-	ldr r3, off_8040038 // =sub_3006F8C+1 
+	ldr r3, off_8040038 // =byte_3006F54 
 	mov lr, pc
 	bx r3
 	add r4, #2
@@ -381,7 +381,7 @@ loc_803FFF8:
 	beq loc_8040008
 	ldrb r0, [r5,#2]
 loc_8040008:
-	ldr r1, off_8040034 // =sub_30070B4+1 
+	ldr r1, off_8040034 // =byte_3006F54 
 	mov lr, pc
 	bx r1
 	ldrb r0, [r5,#0xf]
@@ -396,8 +396,8 @@ off_8040020: .word chatbox_jt_ctrlCmds
 	.word dword_8040028
 dword_8040028: .word 0x254D0B00, 0x44
 off_8040030: .word 0x100
-off_8040034: .word sub_30070B4+1
-off_8040038: .word sub_3006F8C+1
+off_8040034: .word 0x30070B5
+off_8040038: .word 0x3006F8D
 	.word dword_8040040
 dword_8040040: .word 0x254D0B00
 	.word 0x2A44
@@ -441,7 +441,7 @@ loc_8040088:
 	beq loc_80400A4
 	mov r0, #0
 	ldr r6, [r5,#0x7c]
-	ldr r3, off_8040138 // =sub_3006F8C+1 
+	ldr r3, off_8040138 // =byte_3006F54 
 	mov lr, pc
 	bx r3
 	bl chatbox_8040C9C
@@ -452,7 +452,7 @@ loc_80400A4:
 	add r1, #0xe4
 	mov r0, #0
 	ldr r6, [r5,#0x7c]
-	ldr r3, off_8040138 // =sub_3006F8C+1 
+	ldr r3, off_8040138 // =byte_3006F54 
 	mov lr, pc
 	bx r3
 	bl chatbox_8040C9C
@@ -490,7 +490,7 @@ loc_80400E2:
 	bne loc_8040112
 loc_80400F8:
 	ldrb r0, [r5,#2]
-	ldr r1, off_8040134 // =sub_30070B4+1 
+	ldr r1, off_8040134 // =byte_3006F54 
 	mov lr, pc
 	bx r1
 	ldrb r0, [r5,#0xf]
@@ -512,8 +512,8 @@ off_8040120: .word chatbox_jt_ctrlCmds
 	.word dword_8040128
 dword_8040128: .word 0x254D0B00, 0x44
 off_8040130: .word 0x100
-off_8040134: .word sub_30070B4+1
-off_8040138: .word sub_3006F8C+1
+off_8040134: .word 0x30070B5
+off_8040138: .word 0x3006F8D
 	.word dword_8040140
 dword_8040140: .word 0x254D0B00
 	.word 0x2A44
@@ -1469,7 +1469,7 @@ chatbox_clearFlags_3e:
 
 // (int mask) -> void
 // 
-	thumb_func_start chatbox_maskFlags_3e
+	thumb_local_start
 chatbox_maskFlags_3e:
 	push {r1}
 	ldrh r1, [r5,#0x3e] // ChatBoxPropreties.flags_3E
@@ -4558,13 +4558,13 @@ loc_8042014:
 	pop {pc}
 off_8042060: .word off_8042064
 off_8042064: .word byte_873D9FC
-	.word byte_86EA94C
-	.word byte_86EB354
+	.word dword_86EA94C
+	.word dword_86EB354
 	.word byte_86EF71C
-	.word unk_86CF4AC
+	.word dword_86CF4AC
 	.word byte_873EA50
 	.word byte_873EA50
-	.word byte_86EA94C
+	.word dword_86EA94C
 	.word byte_87F2E38
 	.word reqBBS_requestNames_textualData
 off_804208C: .word dword_8042090
@@ -6750,7 +6750,7 @@ loc_804320E:
 	ldr r0, [r0,r3]
 	add r6, r6, r0
 	mov r0, #1
-	ldr r3, off_80432B0 // =sub_3007038+1 
+	ldr r3, off_80432B0 // =byte_3006F54 
 	mov lr, pc
 	bx r3
 	pop {r0-r7}
@@ -6815,7 +6815,7 @@ loc_8043276:
 	mov r0, #0
 	pop {pc}
 off_80432AC: .word dword_803FCE4
-off_80432B0: .word sub_3007038+1
+off_80432B0: .word 0x3007039
 	.word 0x1CC
 off_80432B8: .word 0x154
 off_80432BC: .word word_80432C0
@@ -6972,7 +6972,7 @@ loc_80433C4:
 	ldr r0, [r0,r3]
 	add r6, r6, r0
 	mov r0, #1
-	ldr r3, off_80434C8 // =sub_3007038+1 
+	ldr r3, off_80434C8 // =byte_3006F54 
 	mov lr, pc
 	bx r3
 	pop {r0-r7}
@@ -7090,7 +7090,7 @@ loc_80434BE:
 	mov r0, #0
 	pop {pc}
 off_80434C4: .word dword_803FCE4
-off_80434C8: .word sub_3007038+1
+off_80434C8: .word 0x3007039
 	.word 0x1CC
 off_80434D0: .word 0x154
 off_80434D4: .word dword_80434D8
@@ -7211,7 +7211,7 @@ loc_804359C:
 	ldr r0, [r0,r3]
 	add r6, r6, r0
 	mov r0, #1
-	ldr r3, off_8043698 // =sub_3007038+1 
+	ldr r3, off_8043698 // =byte_3006F54 
 	mov lr, pc
 	bx r3
 	pop {r0-r7}
@@ -7325,7 +7325,7 @@ loc_804368C:
 	pop {pc}
 	.balign 4, 0x00
 off_8043694: .word dword_803FCE4
-off_8043698: .word sub_3007038+1
+off_8043698: .word 0x3007039
 	.word 0x1CC
 off_80436A0: .word 0x154
 off_80436A4: .word word_80436A8
@@ -7483,7 +7483,7 @@ loc_80437A8:
 	ldr r0, [r0,r3]
 	add r6, r6, r0
 	mov r0, #1
-	ldr r3, dword_8043898 // =sub_3007038 
+	ldr r3, dword_8043898 // =byte_3006F54 
 	mov lr, pc
 	bx r3
 	pop {r0-r7}
@@ -7742,7 +7742,7 @@ loc_80439A8:
 	ldr r0, [r0,r3]
 	add r6, r6, r0
 	mov r0, #1
-	ldr r3, off_8043A38 // =sub_3007038+1 
+	ldr r3, off_8043A38 // =byte_3006F54 
 	mov lr, pc
 	bx r3
 	pop {r0-r7}
@@ -7801,7 +7801,7 @@ loc_8043A04:
 	mov r0, #0
 	pop {pc}
 off_8043A34: .word dword_803FCE4
-off_8043A38: .word sub_3007038+1
+off_8043A38: .word 0x3007039
 off_8043A3C: .word 0x1CC
 off_8043A40: .word 0x154
 off_8043A44: .word word_8043A48
@@ -8200,7 +8200,7 @@ off_8044620: .word off_8044634
 	.word off_8044684
 off_8044634: .word dword_87643E4
 	.word dword_8764FAC
-	.word unk_87658F0
+	.word byte_87658F0
 	.word dword_87666B4
 	.word dword_8766BFC
 off_8044648: .word dword_87680AC
@@ -8225,7 +8225,7 @@ off_8044684: .word off_87694B4
 	.word dword_8769DE8
 off_8044698: .word dword_8755C18
 	.word dword_8756124
-	.word unk_87565E8
+	.word byte_87565E8
 	.word dword_8756AA4
 	.word dword_8756C9C
 off_80446AC: .word dword_873F908
@@ -8370,7 +8370,7 @@ off_80448C4: .word dword_877C0FC
 off_80448D8: .word dword_877CD94
 	.word dword_877CD94
 	.word dword_877D7D4
-	.word unk_877D8CC
+	.word byte_877D8CC
 	.word dword_877DAB4
 off_80448EC: .word dword_877DF6C
 	.word dword_877DF6C
@@ -8416,7 +8416,7 @@ off_8044984: .word dword_8781784
 	.word dword_8781B18
 	.word dword_8781CB4
 off_8044998: .word dword_875BFD8
-	.word unk_875C22C
+	.word byte_875C22C
 	.word dword_875C4B8
 	.word dword_875C83C
 off_80449A8: .word dword_8745100
@@ -8484,7 +8484,7 @@ off_8044A8C: .word dword_87979CC
 off_8044AA0: .word dword_875D780
 	.word dword_875D800
 off_8044AA8: .word dword_87461A0
-	.word unk_87462D0
+	.word byte_87462D0
 	.word dword_87463F4
 	.word dword_87464AC
 off_8044AB8: .word off_8044AC4
@@ -8640,7 +8640,7 @@ off_8044D00: .word dword_875DF2C
 	.word 0x0
 	.word dword_875DF50
 	.word dword_875DF78
-off_8044D1C: .word unk_87477F4
+off_8044D1C: .word byte_87477F4
 	.word dword_8747D30
 	.word dword_8748650
 	.word dword_8748F44
@@ -8923,7 +8923,7 @@ off_8045178: .word dword_875F038
 	.word dword_875F424
 	.word dword_875F838
 off_8045184: .word dword_874F5C4
-	.word unk_874F980
+	.word dword_874F980
 	.word dword_87502B4
 	.word dword_8750B80
 off_8045194: .word off_804519C
@@ -8995,7 +8995,7 @@ off_8045298: .word dword_8795A38
 	.word dword_8795A38
 	.word dword_8795A44
 	.word dword_8795D58
-	.word unk_8795E14
+	.word byte_8795E14
 off_80452AC: .word dword_8796494
 	.word dword_8796494
 	.word dword_87964A0

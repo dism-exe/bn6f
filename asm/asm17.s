@@ -99,11 +99,11 @@ sub_80793E8:
 off_807941C: .word off_8079420
 off_8079420: .word nullsub_39+1
 	.word nullsub_36+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word nullsub_36+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 off_8079440: .word off_8079444
 off_8079444: .word off_807944C

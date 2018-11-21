@@ -113,6 +113,13 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global loc_3005E80
+// .global loc_30078C8
+// .global sub_30078E0
+// .global sub_3007958
+// .global sub_30079A4
+
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global ZeroFillByHalfword
@@ -260,10 +267,10 @@
 // .equ unk_3001A20, 0x3001A20
 // .equ unk_3001A40, 0x3001A40
 // .equ unk_3001A60, 0x3001A60
-// .equ copyTiles_iram, 0x3005E80
-// .equ sub_30078C8, 0x30078C8
-// .equ sub_30078E0, 0x30078E0
-// .equ sub_3007958, 0x3007958
-// .equ sub_30079A4, 0x30079A4
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
 
 .endif // INC_ASM_OBJECT

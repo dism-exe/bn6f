@@ -110,15 +110,15 @@ sub_807EDD4:
 off_807EE08: .word off_807EE0C
 off_807EE0C: .word nullsub_39+1
 	.word sub_8001A46+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_8001A46+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_8001A46+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 off_807EE3C: .word off_807EE40
 off_807EE40: .word off_807EE4C

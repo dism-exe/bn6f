@@ -320,11 +320,11 @@
 // .global byte_86C1F80
 
 .include "data/dat38_67.inc"
-// .global unk_86C9108
-// .global unk_86C9128
+// .global dword_86C9108
+// .global dword_86C9128
 
 .include "data/dat38_69.inc"
-// .global unk_86C9AF4
+// .global dword_86C9AF4
 // .global dword_86C9B14
 // .global dword_86C9B34
 // .global dword_86C9B54
@@ -336,13 +336,13 @@
 // .global dword_86CDBE4
 
 .include "data/dat38_72.inc"
-// .global unk_86CF994
-// .global unk_86CFAF8
+// .global dword_86CF994
+// .global dword_86CFAF8
 
 .include "data/dat38_74.inc"
 // .global comp_86D6618
-// .global unk_86D6754
-// .global unk_86D6954
+// .global dword_86D6754
+// .global dword_86D6954
 
 .include "data/dat38_75.inc"
 // .global byte_86D7578
@@ -354,9 +354,9 @@
 // .global byte_86D894C
 
 .include "data/dat38_77.inc"
-// .global unk_86D9A00
-// .global unk_86D9AC4
-// .global unk_86D9B84
+// .global dword_86D9A00
+// .global dword_86D9AC4
+// .global dword_86D9B84
 
 .include "data/dat38_83.inc"
 // .global comp_86DD59C
@@ -365,8 +365,8 @@
 // .global byte_86DDB24
 
 .include "data/dat38_85.inc"
-// .global byte_86EA94C
-// .global byte_86EB354
+// .global dword_86EA94C
+// .global dword_86EB354
 
 .include "data/dat38_86.inc"
 // .global byte_872CF94

@@ -446,13 +446,13 @@ loc_800C066:
 	mov r3, r6
 	mov r4, #5
 	mov r5, #3
-	ldr r6, off_800C080 // =copyTiles_iram+1 
+	ldr r6, off_800C080 // =loc_3005E80 
 	mov lr, pc
 	bx r6
 	add sp, sp, #0x28
 	pop {r4-r7,pc}
 off_800C07C: .word byte_86DFA98
-off_800C080: .word copyTiles_iram+1
+off_800C080: .word 0x3005E81
 off_800C084: .word byte_800C08C
 off_800C088: .word byte_800C0AA
 byte_800C08C: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -1444,33 +1444,33 @@ loc_800C906:
 	thumb_func_start sub_800C90A
 sub_800C90A:
 	push {lr}
-	ldr r2, off_800C914 // =sub_3007958+1 
+	ldr r2, off_800C914 // =sub_3007958 
 	mov lr, pc
 	bx r2
 	pop {pc}
-off_800C914: .word sub_3007958+1
+off_800C914: .word 0x3007959
 	thumb_func_end sub_800C90A
 
 	thumb_local_start
 sub_800C918:
 	push {lr}
-	ldr r0, off_800C924 // =sub_30078C8+1 
+	ldr r0, off_800C924 // =loc_30078C8 
 	mov lr, pc
 	bx r0
 	pop {pc}
 	.balign 4, 0x00
-off_800C924: .word sub_30078C8+1
+off_800C924: .word 0x30078C9
 	thumb_func_end sub_800C918
 
 	thumb_local_start
 sub_800C928:
 	push {lr}
-	ldr r2, off_800C934 // =sub_30078E0+1 
+	ldr r2, off_800C934 // =sub_30078E0 
 	mov lr, pc
 	bx r2
 	pop {pc}
 	.balign 4, 0x00
-off_800C934: .word sub_30078E0+1
+off_800C934: .word 0x30078E1
 	thumb_func_end sub_800C928
 
 	thumb_func_start object_crackPanel
@@ -1845,7 +1845,7 @@ locret_800CC08:
 	thumb_func_start object_setPanelType
 object_setPanelType:
 	push {r4-r6,lr}
-	ldr r4, off_800CE54 // =sub_30079A4+1 
+	ldr r4, off_800CE54 // =sub_30079A4 
 	mov lr, pc
 	bx r4
 	pop {r4-r6,pc}
@@ -2198,7 +2198,7 @@ object_showPanel:
 locret_800CE50:
 	pop {pc}
 	.balign 4, 0x00
-off_800CE54: .word sub_30079A4+1
+off_800CE54: .word 0x30079A5
 off_800CE58: .word unk_2034010
 off_800CE5C: .word 0x708
 off_800CE60: .word unk_2034010

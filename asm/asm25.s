@@ -1381,7 +1381,7 @@ off_80902FC: .word byte_8090300
 byte_8090300: .byte 0xE1, 0xB, 0xE2, 0xB, 0xE3, 0xB, 0xD2, 0xF
 	thumb_func_end sub_80902DC
 
-	thumb_func_start sub_8090308
+	thumb_local_start
 sub_8090308:
 	push {r4,lr}
 	bl sub_809E1AE

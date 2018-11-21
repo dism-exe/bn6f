@@ -1,51 +1,6 @@
 .include "data/dat38_79.inc"
 
-	.byte 0x10
-	.byte 0x24 
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte 0x24 
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte 0xDE
-	.byte 0x7B 
-	.byte 0xC
-	.byte 0x75 
-	.byte 0x5E 
-	.byte 0xA5
-	.byte 0x35 
-	.byte 0x10
-	.byte  9
-	.byte 0xF0
-	.byte  1
-	.byte  0
-	.byte  0
-	.byte 0x10
-	.byte 0x24 
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte 0x24 
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte 0xB4
-	.byte 0x7F 
-	.byte 0xC
-	.byte 0x75 
-	.byte 0x5E 
-	.byte 0xA5
-	.byte 0x35 
-	.byte 0x10
-	.byte  9
-	.byte 0xF0
-	.byte  1
-	.byte  0
-	.byte  0
+	.word 0x2410, 0x240000, 0xDE000000, 0x5E750C7B, 0x91035A5
+	.word 0x1F0, 0x2410, 0x240000, 0xB4000000, 0x5E750C7F
+	.word 0x91035A5, 0x1F0
 /*For debugging purposes, connect comment at any range!*/

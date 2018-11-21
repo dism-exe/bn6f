@@ -10,15 +10,22 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global sub_3005B00
+// .global sub_3005DA0
+// .global sub_3005DD4
+// .global sub_3005DEC
+// .global sub_3005E02
+// .global sub_3005E2C
+// .global sub_3005E60
+// .global sub_3005E6A
+
 .include "asm/main.inc"
 // .global main_
 
 .include "asm/asm00_1.inc"
 // .global CpuSet_toolKit // () -> void
 // .global sub_8006C22
-
-.include "asm/asm38.inc"
-// .global sub_81D6000
 
 
 /* Undeclared Symbols */
@@ -27,21 +34,21 @@
 // .equ dword_2009930, 0x2009930
 // .equ dword_200A870, 0x200A870
 // .equ unk_3000000, 0x3000000
-// .equ loc_3005B00, 0x3005B00
-// .equ sub_3005DA0, 0x3005DA0
-// .equ sub_3005DD4, 0x3005DD4
-// .equ sub_3005DEC, 0x3005DEC
-// .equ sub_3005E02, 0x3005E02
-// .equ sub_3005E18, 0x3005E18
-// .equ sub_3005E2C, 0x3005E2C
-// .equ loc_3005E60, 0x3005E60
-// .equ loc_3005E6A, 0x3005E6A
 // .equ iStack, 0x3007E00
-// .equ unk_3007F60, 0x3007F60
-// .equ unk_3007FE0, 0x3007FE0
+// .equ byte_3007F60, 0x3007F60
+// .equ byte_3007FE0, 0x3007FE0
 // .equ unk_3007FFC, 0x3007FFC
 .equ GeneralLCDStatus_STAT_LYC_, 0x4000004
 .equ KeyInterruptControl, 0x4000132
 .equ GamePakWaitstateControl, 0x4000204
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
 
 .endif // INC_ASM_START

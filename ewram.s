@@ -1,6 +1,6 @@
 	.include "include/macros.inc"
 
-	.section ewram
+	.data
 
 ds timer_2000000 // 0x2000000
 	.space 96

@@ -8,16 +8,13 @@
 .global byte_8087874
 .global byte_8088268
 .global byte_8088514
-.global unk_8088708
+.global byte_8088708
 
 
 /* External Symbols */
 .include "data/dat21.inc"
 // .global off_8086D18
 // .global off_8086D1C
-
-.include "asm/asm25.inc"
-// .global sub_8090308
 
 .include "asm/reqBBS.inc"
 // .global reqBBS_setFlag_e17b0f7_8140A00

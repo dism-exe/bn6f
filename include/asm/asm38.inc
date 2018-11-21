@@ -2,7 +2,30 @@
 .equ INC_ASM_ASM38, 0
 
 /* Public Symbols */
-.global sub_81D6000
+.global sub_3005B00
+.global sub_3005DA0
+.global sub_3005DD4
+.global sub_3005DEC
+.global sub_3005E02
+.global sub_3005E2C
+.global sub_3005E60
+.global sub_3005E6A
+.global loc_3005E80
+.global loc_3005EBA
+.global sub_3005EF0
+.global sub_3006028
+.global sub_30061E8
+.global loc_3006440
+.global sub_3006730
+.global loc_3006792
+.global loc_3006794
+.global loc_3006814
+.global loc_30068E8
+.global sub_3006920
+.global loc_30078C8
+.global sub_30078E0
+.global sub_3007958
+.global sub_30079A4
 
 
 /* External Symbols */
@@ -114,16 +137,6 @@
 // .equ dword_3002590, 0x3002590
 // .equ dword_3002594, 0x3002594
 // .equ unk_30025B0, 0x30025B0
-// .equ unk_3005CA0, 0x3005CA0
-// .equ unk_3005CD9, 0x3005CD9
-// .equ unk_3005CDB, 0x3005CDB
-// .equ unk_3005D10, 0x3005D10
-// .equ byte_3005FB0, 0x3005FB0
-// .equ sub_3005FC0, 0x3005FC0
-// .equ sub_3005FFA, 0x3005FFA
-// .equ loc_3006314, 0x3006314
-// .equ loc_300631C, 0x300631C
-// .equ loc_300638C, 0x300638C
 .equ ControlSoundon_off_NR52_, 0x4000084
 .equ DMA0SourceAddress, 0x40000B0
 .equ DMA0DestinationAddress, 0x40000B4

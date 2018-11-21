@@ -209,7 +209,8 @@ pt.env(gameFiles={
 'data/dat37.s':
 	(0x814FE8D, 0x81D6000), # size=0x8634D
 'asm/asm38.s':
-	(0x81D6000, 0x81D8000), # size=0x1E26
+	(0x3005B00, 0x3007B00), # size=0x2000
+	# (0x81D6000, 0x81D8000), # size=0x2000
 'data/sprites/battleSpriteMegaMan.spr':
 	(0x81D8000, 0x81DF420), # size=0x7420
 'data/sprites/battleSpriteFlameCross.spr':

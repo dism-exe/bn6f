@@ -33,13 +33,13 @@
 // .global byte_809F878
 
 .include "data/dat38_59.inc"
-// .global unk_850100F
+// .global byte_850100F
 
 .include "data/dat38_60.inc"
 // .global byte_85A100F
 
 .include "data/dat38_85.inc"
-// .global unk_86E101C
+// .global dword_86E101C
 
 
 .endif // INC_DATA_DAT36

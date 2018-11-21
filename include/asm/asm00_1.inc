@@ -212,6 +212,11 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global sub_3006028
+// .global sub_30061E8
+// .global loc_3006440
+
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
@@ -1044,7 +1049,7 @@
 // .global SWI_LZ77UnCompReadNormalWrite16bit
 
 .include "data/dat38_85.inc"
-// .global unk_86DDBA0
+// .global dword_86DDBA0
 // .global dword_86E08F8
 // .global dword_86E09F8
 
@@ -1325,10 +1330,10 @@
 // .equ dword_3002188, 0x3002188
 // .equ dword_300218C, 0x300218C
 // .equ unk_30025C0, 0x30025C0
-// .equ sub_3006028, 0x3006028
-// .equ loc_30061E8, 0x30061E8
-// .equ loc_3006440, 0x3006440
 .equ Window0HorizontalDimensions, 0x4000040
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
 // .global scripts_fullSynchro_86F3F5C
 // .global scripts_dad_cybeastTut_86F4498
 // .global scripts_shuko_crossTut_86F53CC

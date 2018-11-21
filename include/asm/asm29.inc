@@ -163,7 +163,7 @@
 
 .include "data/dat22.inc"
 // .global byte_8088514
-// .global unk_8088708
+// .global byte_8088708
 
 .include "data/dat23.inc"
 // .global unk_8089DD8

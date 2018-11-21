@@ -835,7 +835,7 @@
 // .global dword_86C41B4
 
 .include "data/dat38_63.inc"
-// .global unk_86C4660
+// .global dword_86C4660
 
 .include "data/dat38_70.inc"
 // .global byte_86CB360
@@ -849,7 +849,7 @@
 // .global byte_87E5000
 
 .include "data/dat38_89.inc"
-// .global unk_87E54B0
+// .global dword_87E54B0
 
 .include "data/dat38_90.inc"
 // .global dword_87E660C
@@ -861,7 +861,7 @@
 // .global byte_87E6BDC
 
 .include "data/dat38_96.inc"
-// .global aLlllllllllllll
+// .global byte_87F2654
 // .global dword_87F2808
 // .global dword_87F2A1C
 

@@ -13075,7 +13075,7 @@ initRefs_803B404: .word comp_87E50D4 + 1<<31
 	.word comp_87E56A0 + 1<<31
 	.word 0x600D600
 	.word unk_2027A00
-	.word unk_87E54B0
+	.word dword_87E54B0
 	.word unk_3001980
 	.word 0xA0
 	.word byte_86A4D40
@@ -13686,7 +13686,7 @@ off_803BB68: .word byte_87E36F8
 off_803BB6C: .word dword_87F2A1C
 off_803BB70: .word off_803BB74
 off_803BB74: .word dword_87F2808
-	.word aLlllllllllllll
+	.word byte_87F2654
 	thumb_func_end sub_803BB2C
 
 	thumb_func_start sub_803BB7C
@@ -21341,7 +21341,7 @@ off_803FCA0: .word dword_803FCA4
 dword_803FCA4: .word comp_86C41D0 + 1<<31
 	.word 0x6000000
 	.word decomp_2013A00
-	.word unk_86C4660
+	.word dword_86C4660
 	.word byte_3001960
 	.word 0x20
 	.word comp_86C4490 + 1<<31

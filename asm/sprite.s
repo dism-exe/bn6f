@@ -8,7 +8,7 @@ sprite_loadAnimationData:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
-	ldr r4, off_80026C0 // =sub_3006730+1 
+	ldr r4, off_80026C0 // =sub_3006730 
 	mov lr, pc
 	bx r4
 	pop {r4,r5,pc}
@@ -17,11 +17,11 @@ sprite_loadAnimationData:
 	thumb_func_start sprite_80026B6
 sprite_80026B6:
 	push {r4,lr}
-	ldr r4, off_80026C0 // =sub_3006730+1 
+	ldr r4, off_80026C0 // =sub_3006730 
 	mov lr, pc
 	bx r4
 	pop {r4,pc}
-off_80026C0: .word sub_3006730+1
+off_80026C0: .word 0x3006731
 	thumb_func_end sprite_80026B6
 
 	thumb_func_start sprite_update
@@ -31,7 +31,7 @@ sprite_update:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
-	ldr r4, off_80026E0 // =sub_3006792+1 
+	ldr r4, off_80026E0 // =loc_3006792 
 	mov lr, pc
 	bx r4
 	pop {r4,r5,pc}
@@ -40,11 +40,11 @@ sprite_update:
 	thumb_func_start sprite_chatbox_80026D6
 sprite_chatbox_80026D6:
 	push {r4,lr}
-	ldr r4, off_80026E0 // =sub_3006792+1 
+	ldr r4, off_80026E0 // =loc_3006792 
 	mov lr, pc
 	bx r4
 	pop {r4,pc}
-off_80026E0: .word sub_3006792+1
+off_80026E0: .word 0x3006793
 	thumb_func_end sprite_chatbox_80026D6
 
 // (int a1, int a2, int a3) ->
@@ -270,12 +270,12 @@ loc_8002840:
 	lsl r2, r2, #2
 	mov r6, #0x20 
 	mov r7, r3
-	ldr r1, off_8002864 // =sub_3005EF0+1 
+	ldr r1, off_8002864 // =sub_3005EF0 
 	mov lr, pc
 	bx r1
 locret_8002862:
 	pop {pc}
-off_8002864: .word sub_3005EF0+1
+off_8002864: .word 0x3005EF1
 off_8002868: .word byte_3001550
 	thumb_func_end sub_8002818
 

@@ -100,11 +100,11 @@ sub_806649C:
 off_80664D0: .word off_80664D4
 off_80664D4: .word nullsub_39+1
 	.word sub_80019FE+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019FE+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 off_80664F4: .word off_80664F8
 off_80664F8: .word off_8066500
@@ -1038,15 +1038,15 @@ sub_8067C88:
 off_8067CBC: .word off_8067CC0
 off_8067CC0: .word nullsub_39+1
 	.word sub_8001A6A+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_8001A6A+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_8001A6A+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 off_8067CF0: .word off_8067CF4
 off_8067CF4: .word off_8067D00

@@ -41,13 +41,13 @@ loc_800032A:
 	bl chatbox_onUpdate_803FEB4
 	bl cb_call_200A880
 	bl PET_onUpdate_8001B94
-	ldr r0, off_8000344 // =loc_3006814+1 
+	ldr r0, off_8000344 // =loc_3006814 
 	mov lr, pc
 	bx r0
 	bl main_static_8000454
 	b main_gameRoutine
 	.balign 4, 0x00
-off_8000344: .word loc_3006814+1
+off_8000344: .word 0x3006815
 off_8000348: .word main_jt_subsystem
 main_jt_subsystem: .word Load_ho_802F544+1
 	.word cb_80050EC+1

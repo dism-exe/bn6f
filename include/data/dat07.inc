@@ -49,7 +49,7 @@
 // .global byte_861FF05
 
 .include "data/dat38_85.inc"
-// .global unk_86DFF03
+// .global byte_86DFF03
 
 .include "data/dat38_87.inc"
 // .global dword_878FA4C

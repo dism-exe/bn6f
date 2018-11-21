@@ -2,8 +2,8 @@
 .equ INC_DATA_DAT38_96, 0
 
 /* Public Symbols */
-.global unk_87F25B4
-.global aLlllllllllllll
+.global dword_87F25B4
+.global byte_87F2654
 .global dword_87F2808
 .global dword_87F28DC
 .global dword_87F2A1C

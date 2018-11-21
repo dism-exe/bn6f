@@ -56,8 +56,8 @@
 // .global byte_8605F38
 // .global byte_8605F58
 // .global byte_8605F78
-// .global byte_8605F98
-// .global byte_8605FB8
+// .global dword_8605F98
+// .global dword_8605FB8
 // .global byte_8605FD8
 // .global byte_860D228
 // .global byte_860D248

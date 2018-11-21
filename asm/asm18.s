@@ -130,15 +130,15 @@ sub_807A9FE:
 off_807AA30: .word off_807AA34
 off_807AA34: .word nullsub_39+1
 	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 off_807AA64: .word off_807AA68
 off_807AA68: .word off_807AA74

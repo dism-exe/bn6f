@@ -18,8 +18,6 @@
 .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 .global chatbox_reqBBS_80404C0
 .global chatbox_8040818
-.global chatbox_maskFlags_3e // (int mask) -> void
-// 
 .global loc_8040A04
 .global chatbox_8040D5C
 .global off_8043C8C
@@ -39,6 +37,11 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global byte_3006F54
+// .global byte_3006F54
+// .global byte_3006F54
+
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
@@ -228,11 +231,11 @@
 // .global byte_86C0940
 
 .include "data/dat38_71.inc"
-// .global unk_86CF4AC
+// .global dword_86CF4AC
 
 .include "data/dat38_85.inc"
-// .global byte_86EA94C
-// .global byte_86EB354
+// .global dword_86EA94C
+// .global dword_86EB354
 // .global byte_86EF71C
 // .global byte_86F2960
 // .global byte_86F2980
@@ -269,7 +272,7 @@
 // .global dword_874584C
 // .global dword_8745DEC
 // .global dword_87461A0
-// .global unk_87462D0
+// .global byte_87462D0
 // .global dword_87463F4
 // .global dword_87464AC
 // .global dword_87466F8
@@ -282,7 +285,7 @@
 // .global dword_874713C
 // .global dword_8747228
 // .global dword_8747474
-// .global unk_87477F4
+// .global byte_87477F4
 // .global dword_8747D30
 // .global dword_8748650
 // .global dword_8748F44
@@ -299,7 +302,7 @@
 // .global dword_874E6E0
 // .global dword_874EFE0
 // .global dword_874F5C4
-// .global unk_874F980
+// .global dword_874F980
 // .global dword_87502B4
 // .global dword_8750B80
 // .global dword_8751150
@@ -318,7 +321,7 @@
 // .global off_8755C0C
 // .global dword_8755C18
 // .global dword_8756124
-// .global unk_87565E8
+// .global byte_87565E8
 // .global dword_8756AA4
 // .global dword_8756C9C
 // .global dword_875752C
@@ -343,7 +346,7 @@
 // .global byte_875BE5C
 // .global byte_875BF80
 // .global dword_875BFD8
-// .global unk_875C22C
+// .global byte_875C22C
 // .global dword_875C4B8
 // .global dword_875C83C
 // .global dword_875CB68
@@ -434,7 +437,7 @@
 // .global off_87643D8
 // .global dword_87643E4
 // .global dword_8764FAC
-// .global unk_87658F0
+// .global byte_87658F0
 // .global dword_87666B4
 // .global dword_8766BFC
 // .global dword_87680AC
@@ -544,7 +547,7 @@
 // .global dword_877C94C
 // .global dword_877CD94
 // .global dword_877D7D4
-// .global unk_877D8CC
+// .global byte_877D8CC
 // .global dword_877DAB4
 // .global dword_877DF6C
 // .global dword_877E03C
@@ -634,7 +637,7 @@
 // .global dword_8795A38
 // .global dword_8795A44
 // .global dword_8795D58
-// .global unk_8795E14
+// .global byte_8795E14
 // .global dword_8796494
 // .global dword_87964A0
 // .global dword_87964AC
@@ -900,9 +903,9 @@
 // .equ byte_3001650, 0x3001650
 // .equ byte_3001710, 0x3001710
 // .equ unk_3001B40, 0x3001B40
-// .equ sub_3006F8C, 0x3006F8C
-// .equ sub_3007038, 0x3007038
-// .equ sub_30070B4, 0x30070B4
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
 // .global spriteWhiteDot
 
 .endif // INC_ASM_CHATBOX

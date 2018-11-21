@@ -113,15 +113,15 @@ sub_8069140:
 off_8069174: .word off_8069178
 off_8069178: .word nullsub_39+1
 	.word sub_80019FE+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019FE+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019FE+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 off_80691A8: .word off_80691AC
 off_80691AC: .word off_80691B8
@@ -220,7 +220,7 @@ dword_806935C: .word 0x93700016
 	.word 0x808CA
 	.word 0x1000000
 	.word byte_8069379
-	.word unk_8CA6925
+	.word byte_8CA6925
 	.word 0x8
 	.byte 0x0
 byte_8069379: .byte 0x0
@@ -232,7 +232,7 @@ byte_806937A: .byte 0x2, 0x30, 0x3F, 0x86, 0x93, 0x6, 0x8, 0x1, 0xC5, 0x93, 0x6
 	.word byte_80693C5
 	.word 0x9DAFF03
 	.word byte_80693C5
-	.word unk_8CB0D25
+	.word byte_8CB0D25
 	.word 0x8
 	.byte 0x0
 byte_80693C5: .byte 0x0, 0x0, 0x0
@@ -241,7 +241,7 @@ dword_80693C8: .word 0x93DC0016
 	.word 0x808CA
 	.word 0x1000000
 	.word byte_80693E5
-	.word unk_8CA6925
+	.word byte_8CA6925
 	.word 0x8
 	.byte 0x0
 byte_80693E5: .byte 0x0
@@ -253,7 +253,7 @@ dword_8069404: .word 0x94180016
 	.word 0x808CA
 	.word 0x1000000
 	.word byte_8069421
-	.word unk_8CA6925
+	.word byte_8CA6925
 	.word 0x8
 	.byte 0x0
 byte_8069421: .byte 0x2, 0x30, 0x3F
@@ -527,7 +527,7 @@ dword_80698E8: .word 0x7000183, 0xFEA60000, 0x13E0000, 0x0
 dword_80698F8: .word 0x3000083, 0xFFCC0000, 0xFF000000, 0x0
 	.word 0x1000283, 0xFE900000, 0xA0000, 0x0
 dword_8069918: .word 0x5000183, 0x1D80000, 0xA0000, 0x0
-off_8069928: .word byte_8613DDC
+off_8069928: .word dword_8613DDC
 dword_806992C: .word 0x6008040
 	.word 0xC090004
 	.word dword_8069AB8
@@ -1084,15 +1084,15 @@ sub_806A120:
 off_806A154: .word off_806A158
 off_806A158: .word nullsub_39+1
 	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 off_806A188: .word off_806A18C
 off_806A18C: .word off_806A198
@@ -1775,23 +1775,23 @@ sub_806AB94:
 off_806ABC8: .word off_806ABCC
 off_806ABCC: .word nullsub_39+1
 	.word sub_8001A6A+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019FE+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019FE+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_8001A22+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 off_806AC1C: .word off_806AC20
 off_806AC20: .word off_806AC34
@@ -1978,7 +1978,7 @@ dword_806AF3C: .word 0xAF500016
 	.word 0x808CA
 	.word 0x1000000
 	.word byte_806AF59
-	.word unk_8CA6925
+	.word byte_8CA6925
 	.word 0x8
 	.byte 0x0
 byte_806AF59: .byte 0x2, 0x60, 0x6F
@@ -3107,31 +3107,31 @@ sub_806C35C:
 off_806C390: .word off_806C394
 off_806C394: .word nullsub_39+1
 	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word nullsub_39+1
-	.word unk_3005CD9
-	.word 0x800
-	.word nullsub_39+1
-	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
+	.word 0x800
+	.word nullsub_39+1
+	.word sub_80019D0+1
+	.word 0x3005CD9
 	.word 0x800
 off_806C404: .word off_806C408
 off_806C408: .word off_806C424

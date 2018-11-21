@@ -169,6 +169,7 @@
 .global dword_85D375C
 .global off_85D430C
 .global dword_85D44B0
+.global dword_85D4D84
 .global dword_85D4E48
 .global off_85D895C
 .global dword_85D8B00
@@ -332,8 +333,8 @@
 .global byte_8605F38
 .global byte_8605F58
 .global byte_8605F78
-.global byte_8605F98
-.global byte_8605FB8
+.global dword_8605F98
+.global dword_8605FB8
 .global byte_8605FD8
 .global dword_8606438
 .global dword_8609770
@@ -400,7 +401,7 @@
 .global dword_8613028
 .global off_8613608
 .global dword_8613AAC
-.global byte_8613DDC
+.global dword_8613DDC
 .global byte_8614140
 .global byte_8614160
 .global byte_8614180
@@ -469,6 +470,7 @@
 .global byte_8618F50
 .global dword_86190F4
 .global off_8619174
+.global byte_8619184
 .global dword_8619474
 .global byte_8619630
 .global byte_8619650
@@ -519,6 +521,7 @@
 .global dword_8638E70
 .global dword_863951C
 .global dword_863B234
+.global byte_863BF84
 .global dword_863D1A4
 .global dword_863F830
 .global byte_863FF05
@@ -606,9 +609,9 @@
 .global byte_86ACD60
 .global byte_86ACF02
 .global byte_86AF60A
-.global unk_86AFE15
-.global unk_86B4901
-.global unk_86B5115
+.global byte_86AFE15
+.global byte_86B4901
+.global byte_86B5115
 .global dword_86B7AA0
 .global dword_86B7AC0
 .global dword_86B7AE0

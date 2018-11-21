@@ -144,6 +144,11 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global loc_3005E80
+// .global loc_3005EBA
+// .global loc_3006440
+
 .include "asm/start.inc"
 // .global start_800024C
 
@@ -296,9 +301,6 @@
 // .equ byte_3001960, 0x3001960
 // .equ unk_3001B40, 0x3001B40
 // .equ unk_3001B60, 0x3001B60
-// .equ copyTiles_iram, 0x3005E80
-// .equ sub_3005EBA, 0x3005EBA
-// .equ loc_3006440, 0x3006440
 .equ LCDControl, 0x4000000
 .equ VerticalCounter_LY_, 0x4000006
 .equ BG0Control, 0x4000008
@@ -314,5 +316,8 @@
 .equ DMA2WordCount, 0x40000D0
 .equ DMA3SourceAddress, 0x40000D4
 .equ DMA3WordCount, 0x40000DC
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
 
 .endif // INC_ASM_ASM00_0

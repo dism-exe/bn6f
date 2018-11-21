@@ -3,7 +3,7 @@
 
 /* Public Symbols */
 .global byte_87F40F4
-.global unk_87F4194
+.global dword_87F4194
 
 
 /* External Symbols */

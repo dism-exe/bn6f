@@ -101,11 +101,11 @@ sub_8077DE0:
 off_8077E14: .word off_8077E18
 off_8077E18: .word nullsub_39+1
 	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019D0+1
-	.word unk_3005CD9
+	.word 0x3005CD9
 	.word 0x800
 off_8077E38: .word off_8077E3C
 off_8077E3C: .word off_8077E44

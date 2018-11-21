@@ -343,6 +343,10 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global byte_300754C
+// .global byte_3007778
+
 .include "asm/start.inc"
 // .global start_
 // .global dword_8000004
@@ -726,7 +730,7 @@
 // .global dword_86E9A0C
 // .global dword_86E9A2C
 // .global dword_86E9F2C
-// .global byte_86EA42C
+// .global dword_86EA42C
 // .global dword_86EA92C
 // .global byte_86F0300
 // .global byte_86F0374
@@ -877,10 +881,10 @@
 // .equ unk_3001AC0, 0x3001AC0
 // .equ unk_3001AE0, 0x3001AE0
 // .equ byte_3001B00, 0x3001B00
-// .equ sub_3007550, 0x3007550
-// .equ sub_300777C, 0x300777C
 .equ LCDControl, 0x4000000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
 .equ unk_8870888, 0x8870888
-.equ unk_8880887, 0x8880887
+.equ loc_8880886, 0x8880886
 
 .endif // INC_ASM_ASM00_2

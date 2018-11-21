@@ -815,7 +815,7 @@ off_81238E4: .word comp_86CE724
 	.word comp_86CE724
 	.word comp_86CE77C
 off_8123918: .word off_812391C
-off_812391C: .word unk_86C9108
+off_812391C: .word dword_86C9108
 	.word 0x2
 	.word byte_3001960
 	.word 0x20
@@ -2083,27 +2083,27 @@ loc_81243CC:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_812440C: .word off_8124410
-off_8124410: .word unk_86CF994
-	.word unk_86CFAF8
-	.word unk_86CFAF8
-	.word unk_86CFAF8
-	.word unk_86CFAF8
-	.word unk_86CFAF8
-	.word unk_86CFAF8
-	.word unk_86CFAF8
-	.word unk_86CFAF8
-	.word unk_86CFAF8
-	.word unk_86CFAF8
-	.word unk_86CF994
-	.word unk_86CFAF8
+off_8124410: .word dword_86CF994
+	.word dword_86CFAF8
+	.word dword_86CFAF8
+	.word dword_86CFAF8
+	.word dword_86CFAF8
+	.word dword_86CFAF8
+	.word dword_86CFAF8
+	.word dword_86CFAF8
+	.word dword_86CFAF8
+	.word dword_86CFAF8
+	.word dword_86CFAF8
+	.word dword_86CF994
+	.word dword_86CFAF8
 off_8124444: .word unk_201C100
 off_8124448: .word decomp_2013A00
 off_812444C: .word off_8124450
-off_8124450: .word unk_86C9108
+off_8124450: .word dword_86C9108
 	.word 0x2
 	.word byte_3001960
 	.word 0x20
-	.word unk_86C9AF4
+	.word dword_86C9AF4
 	.word 0x2
 	.word unk_3001AC0
 	.word 0x20
@@ -3647,7 +3647,7 @@ sub_81252C0:
 	pop {r4-r7,pc}
 	.word 0xFFFFFFFF
 off_812530C: .word off_8125310
-off_8125310: .word unk_86C9108
+off_8125310: .word dword_86C9108
 	.word 0x2
 	.word byte_3001960
 	.word 0x20
@@ -5731,8 +5731,8 @@ loc_81263A0:
 	mov r8, r7
 	pop {r4-r7,pc}
 off_81263B4: .word off_81263B8
-off_81263B8: .word byte_86EA94C
-	.word byte_86EB354
+off_81263B8: .word dword_86EA94C
+	.word dword_86EB354
 off_81263C0: .word off_81263C4
 off_81263C4: .word unk_201CC20
 	.word unk_201CC20
@@ -7233,7 +7233,7 @@ off_8127120: .word byte_86D7578
 off_8127154: .word byte_201BF20
 off_8127158: .word decomp_2013A00
 off_812715C: .word off_8127160
-off_8127160: .word unk_86C9108
+off_8127160: .word dword_86C9108
 	.word 0x2
 	.word byte_3001960
 	.word 0x20
@@ -8600,7 +8600,7 @@ off_8127D74: .word off_8127D78
 off_8127D78: .word 0x886C9668
 	.word unk_3001A20
 	.word 0x2013A00
-	.word unk_86C9108
+	.word dword_86C9108
 	.word byte_3001960
 	.word 0x20
 	.word 0x0
@@ -8608,12 +8608,12 @@ off_8127D94: .word byte_8127D98
 byte_8127D98: .byte 0x94, 0x96, 0x6C, 0x88
 	.word 0x3001A20
 	.word 0x2013A00
-	.word unk_86C9128
+	.word dword_86C9128
 	.word byte_3001960
 	.word 0x20
 	.word 0x0
 off_8127DB4: .word off_8127DB8
-off_8127DB8: .word unk_86C9AF4
+off_8127DB8: .word dword_86C9AF4
 	.word 0x2
 	.word unk_3001A40
 	.word 0x20
@@ -9841,7 +9841,7 @@ loc_8128918:
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r4-r7,pc}
 off_812894C: .word off_8128950
-off_8128950: .word unk_86C9108
+off_8128950: .word dword_86C9108
 	.word 0x2
 	.word byte_3001960
 	.word 0x20
@@ -10508,13 +10508,13 @@ byte_8128F38: .byte 0x9C, 0xD5, 0x6D, 0x88, 0x20, 0x80, 0x0, 0x6
 	.word comp_86D6618 + 1<<31
 	.word 0x6000020
 	.word decomp_2013A00
-	.word unk_86D6754
+	.word dword_86D6754
 	.word 0x3001960
 	.word 0x20
 	.word comp_86DDAD0 + 1<<31
 	.word 0x201BA00
 	.word 0x2013A00
-	.word unk_86D6954
+	.word dword_86D6954
 	.word 0x6008C00
 	.word 0x20
 	.word comp_86DD9B4 + 1<<31
@@ -14602,7 +14602,7 @@ off_812AFE4: .word comp_86DA1B8
 off_812B018: .word byte_201BA20
 off_812B01C: .word decomp_2013A00
 off_812B020: .word off_812B024
-off_812B024: .word unk_86C9108
+off_812B024: .word dword_86C9108
 	.word 0x2
 	.word byte_3001960
 	.word 0x20
@@ -14622,7 +14622,7 @@ off_812B024: .word unk_86C9108
 	.word 0x2
 	.word unk_3001AE0
 	.word 0x20
-	.word unk_86C9AF4
+	.word dword_86C9AF4
 	.word 0x2
 	.word unk_30019A0
 	.word 0x20
@@ -15189,9 +15189,9 @@ sub_812B530:
 	pop {pc}
 	.balign 4, 0x00
 off_812B558: .word off_812B55C
-off_812B55C: .word unk_86D9B84
-	.word unk_86D9A00
-	.word unk_86D9AC4
+off_812B55C: .word dword_86D9B84
+	.word dword_86D9A00
+	.word dword_86D9AC4
 off_812B568: .word decomp_2013A00
 byte_812B56C: .byte 0x0, 0x47, 0x1, 0x6
 off_812B570: .word 0x100

@@ -9614,7 +9614,7 @@ sub_80AA322:
 	ldr r0, off_80AA364 // =byte_8088514 
 	bl sub_8036F70
 	bne loc_80AA33E
-	ldr r0, off_80AA368 // =unk_8088708 
+	ldr r0, off_80AA368 // =byte_8088708 
 	bl sub_8036F70
 	bne loc_80AA33E
 	mov r4, #3
@@ -9635,7 +9635,7 @@ loc_80AA33E:
 	pop {r4-r7,pc}
 off_80AA360: .word eOverworldNPCObjects
 off_80AA364: .word byte_8088514
-off_80AA368: .word unk_8088708
+off_80AA368: .word byte_8088708
 	thumb_func_end sub_80AA322
 
 	thumb_local_start

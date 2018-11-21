@@ -69,6 +69,5 @@
 
 /* Undeclared Symbols */
 // .equ unk_2037800, 0x2037800
-// .equ unk_3005CD9, 0x3005CD9
 
 .endif // INC_ASM_ASM19

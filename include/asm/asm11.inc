@@ -276,7 +276,7 @@
 // .global dword_8612E84
 // .global off_8613608
 // .global dword_8613AAC
-// .global byte_8613DDC
+// .global dword_8613DDC
 // .global byte_8614140
 // .global byte_8614160
 // .global byte_8614180
@@ -346,10 +346,9 @@
 // .equ unk_3001AA0, 0x3001AA0
 // .equ unk_3001AC0, 0x3001AC0
 // .equ unk_3001AE0, 0x3001AE0
-// .equ unk_3005CD9, 0x3005CD9
 .equ LCDControl, 0x4000000
-.equ unk_8CA6925, 0x8CA6925
-.equ unk_8CB0D25, 0x8CB0D25
+.equ byte_8CA6925, 0x8CA6925
+.equ byte_8CB0D25, 0x8CB0D25
 .equ debug_8FE3525, 0x8FE3525
 
 .endif // INC_ASM_ASM11

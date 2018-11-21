@@ -52,7 +52,7 @@
 // .global dword_8610F08
 // .global dword_8611B68
 // .global dword_8613028
-// .global byte_8613DDC
+// .global dword_8613DDC
 // .global dword_8616904
 // .global dword_8617488
 // .global dword_86190F4

@@ -152,11 +152,11 @@
 // .global dword_87E771C
 // .global dword_87E7780
 // .global dword_87E77E4
-// .global unk_87E7848
+// .global dword_87E7848
 // .global dword_87EE1AC
 // .global dword_87EE2F0
 // .global dword_87EE5B0
-// .global unk_87EF5A4
+// .global dword_87EF5A4
 // .global byte_87EF824
 // .global byte_87EFBA4
 // .global reqBBS_textualShades

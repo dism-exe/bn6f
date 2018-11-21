@@ -19014,18 +19014,14 @@ loc_814DBEA:
 	pop {pc}
 	thumb_func_end sub_814DB34
 
-/*
 	thumb_local_start
 sub_814DBF4:
-	adr r2, 0x814dbf8
-	bx r2
-	thumb_func_end dword_814DBF4
-*/
+    .word 0x4710A200
+	// adr r2, 0x814dbf8
+	// bx r2
+	thumb_func_end sub_814DBF4
 
-dword_814DBF4: .word 0x4710A200
-
-
-// TODO: this isn't its own function, it's part of dword_814DBF4
+// TODO: this isn't its own function, it's part of sub_814DBF4
 	arm_func_start sub_814DBF8
 sub_814DBF8:
 	umull r2, r3, r0, r1
@@ -20695,11 +20691,11 @@ loc_814E808:
 	ldr r4, [r1,#4]
 	sub r0, r0, r5
 	mov r1, r7
-	bl dword_814DBF4
+	bl sub_814DBF4
 	mov r1, r0
 	add r1, r5, r1
 	mov r0, r4
-	bl dword_814DBF4
+	bl sub_814DBF4
 	pop {r4-r7}
 	pop {r1}
 	bx r1

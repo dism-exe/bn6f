@@ -221,7 +221,7 @@
 // .global byte_860100F
 
 .include "data/dat38_73.inc"
-// .global unk_86D0508
+// .global dword_86D0508
 
 .include "data/dat38_86.inc"
 // .global byte_86F6002

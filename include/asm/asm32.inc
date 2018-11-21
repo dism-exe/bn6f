@@ -295,6 +295,9 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global byte_3006B18
+
 .include "asm/start.inc"
 // .global start_
 
@@ -717,10 +720,10 @@
 // .global byte_86C1EA0
 
 .include "data/dat38_67.inc"
-// .global unk_86C9108
+// .global dword_86C9108
 
 .include "data/dat38_69.inc"
-// .global unk_86C9AF4
+// .global dword_86C9AF4
 // .global dword_86C9B14
 // .global dword_86C9B34
 // .global dword_86C9B54
@@ -730,7 +733,7 @@
 // .global byte_86C9D8C
 // .global byte_86C9DAC
 // .global byte_86C9DCC
-// .global unk_86CA10C
+// .global dword_86CA10C
 // .global PET_Gfx_tileRefs
 // .global TileRefs_86CB21C
 // .global TileRefs_86CB240
@@ -744,14 +747,14 @@
 // .global byte_86CB360
 // .global sprite_86CBB7C
 // .global sprite_86CC13C
-// .global unk_86CD7C4
-// .global unk_86CD924
+// .global dword_86CD7C4
+// .global dword_86CD924
 
 .include "data/dat38_71.inc"
-// .global unk_86CF4AC
+// .global dword_86CF4AC
 
 .include "data/dat38_78.inc"
-// .global unk_86DAC40
+// .global dword_86DAC40
 
 .include "data/dat38_80.inc"
 // .global off_86DC3F8
@@ -762,10 +765,10 @@
 // .global dword_86E411C
 // .global dword_86E43DC
 // .global byte_86E587C
-// .global byte_86EA94C
-// .global byte_86EB354
-// .global unk_86EB8B8
-// .global unk_86EE0CC
+// .global dword_86EA94C
+// .global dword_86EB354
+// .global byte_86EB8B8
+// .global dword_86EE0CC
 
 .include "data/dat38_86.inc"
 // .global byte_872CF94
@@ -958,8 +961,8 @@
 // .equ unk_3001B40, 0x3001B40
 // .equ word_3001B56, 0x3001B56
 // .equ word_3001B58, 0x3001B58
-// .equ sub_3006B94, 0x3006B94
 .equ LCDControl, 0x4000000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
 // .global battleSpriteMegaMan
 // .global virusBattleSprite_8244164
 // .global virusBattleSprite_8246A24

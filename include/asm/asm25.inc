@@ -6,7 +6,6 @@
 .global sub_808FE74
 .global sub_808FEA4
 .global off_8090000
-.global sub_8090308
 
 
 /* External Symbols */
