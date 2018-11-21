@@ -25,8 +25,35 @@
 
 
 /* External Symbols */
+.include "data/dat04.inc"
+// .global byte_805150D
+
+.include "data/dat08.inc"
+// .global byte_8062938
+
+.include "data/dat13.inc"
+// .global byte_807150F
+
+.include "asm/asm28_1.inc"
+// .global byte_809F6CC
+// .global sub_809F904
+
+.include "data/dat28.inc"
+// .global byte_80A083F
+
+.include "asm/asm29.inc"
+// .global sub_80AA104
+
+.include "data/dat38_33.inc"
+// .global byte_83C21DC
+// .global byte_83F0116
+// .global byte_83F0408
+// .global byte_83F0516
+// .global byte_83F0716
+
 .include "data/dat38_60.inc"
 // .global dword_8610F08
+// .global byte_862623B
 
 
 .endif // INC_DATA_DAT09

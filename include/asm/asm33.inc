@@ -8,7 +8,7 @@
 .global sub_8123408
 .global sub_8123434
 .global ho_8123F5C
-.global dword_8124B1C
+.global byte_8124B1C
 .global sub_8124B3C
 .global sub_8126B4C
 .global sub_8127990
@@ -17,8 +17,9 @@
 .global sub_81284A4
 .global sub_8128730
 .global loc_8128CBC
-.global dword_8129178
-.global dword_8129180
+.global byte_8129150
+.global byte_8129178
+.global byte_8129180
 .global sub_81291D8
 .global sub_81291E8
 .global sub_8129248
@@ -43,7 +44,7 @@
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
-// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
@@ -232,7 +233,7 @@
 // .global sub_8120CC8
 // .global sub_8120D10
 // .global sub_8121198
-// .global dword_81211B4
+// .global byte_81211B4
 // .global pt_8121200
 
 .include "data/dat33.inc"
@@ -268,7 +269,7 @@
 // .global sub_8135314
 // .global byte_813565C
 // .global sub_8137884
-// .global loc_81378B4
+// .global sub_81378B4
 
 .include "asm/asm37_0.inc"
 // .global sub_813B9FC
@@ -281,7 +282,7 @@
 // .global sub_813D960
 // .global sub_813D978
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_81440D8 // static () -> void
 // .global sub_8144240
 // .global sub_8146588

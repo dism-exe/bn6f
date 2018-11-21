@@ -2,12 +2,16 @@
 .equ INC_DATA_DAT23, 0
 
 /* Public Symbols */
-.global dword_8089DF4
-.global dword_808A128
+.global unk_8089DD8
+.global byte_8089DF4
+.global unk_8089E44
+.global unk_8089FD8
+.global byte_808A128
 .global byte_808A220
-.global unk_808AC74
-.global unk_808B6F0
-.global unk_808BB8C
+.global byte_808A6C8
+.global byte_808AC74
+.global byte_808B6F0
+.global byte_808BB8C
 
 
 /* External Symbols */

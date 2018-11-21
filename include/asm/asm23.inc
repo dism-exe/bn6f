@@ -2,15 +2,17 @@
 .equ INC_ASM_ASM23, 0
 
 /* Public Symbols */
-.global dword_8089128
-.global unk_80893CC
-.global unk_8089448
-.global dword_8089554
+.global byte_8089128
+.global byte_80893CC
+.global byte_8089448
+.global byte_8089554
 
 
 /* External Symbols */
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
+// .global CopyWords // (u32 *src, u32 *dest, int size) -> void
+// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010D4
 // .global sub_8001158 // () -> void
@@ -29,8 +31,14 @@
 // .global ClearEventFlag // (u16 entryFlagBitfield) -> void
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
+// .global sub_80301B2
+// .global sub_80301BC
+// .global sub_80301D0
+// .global sub_80301DC
+// .global sub_80303FC
 
 .include "asm/asm03_1.inc"
+// .global sub_8033FC0
 // .global sub_8035408
 // .global sub_8036E44
 // .global sub_8036E78
@@ -86,5 +94,6 @@
 
 /* Undeclared Symbols */
 // .equ byte_30016F0, 0x30016F0
+.equ GeneralLCDStatus_STAT_LYC_, 0x4000004
 
 .endif // INC_ASM_ASM23

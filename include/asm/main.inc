@@ -109,7 +109,7 @@
 // .global reqBBS_cb_draw_813E0A4
 // .global reqBBS_cb_813F404
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_8144240
 // .global sub_814E8A0
 // .global sub_814EE2C

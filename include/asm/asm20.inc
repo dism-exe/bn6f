@@ -43,19 +43,22 @@
 // .global off_807EB18
 // .global dword_807EB68
 // .global dword_807EBB8
+// .global dword_807EC08
 // .global off_807EC58
 // .global off_807ECA8
 
 .include "data/dat20.inc"
-// .global dword_807EEB8
-// .global dword_807EFD4
-// .global dword_807F1E0
+// .global unk_807EEB8
+// .global byte_807EFD4
+// .global byte_807F1E0
 
 .include "data/dat38_60.inc"
 // .global off_8619174
+// .global dword_8619474
 
 
 /* Undeclared Symbols */
 // .equ unk_2037800, 0x2037800
+// .equ unk_3005CD9, 0x3005CD9
 
 .endif // INC_ASM_ASM20

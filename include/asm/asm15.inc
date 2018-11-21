@@ -40,13 +40,13 @@
 
 .include "data/dat14.inc"
 // .global off_8074F30
-// .global dword_8074FCC
-// .global dword_8074FCC
-// .global dword_8074FCC
-// .global dword_8074FCC
-// .global dword_8074FCC
-// .global dword_8074FCC
-// .global dword_8074FCC
+// .global byte_8074FCC
+// .global byte_8075004
+// .global off_807505C
+// .global byte_8075304
+// .global byte_8075374
+// .global byte_80753C4
+// .global byte_80753F4
 
 .include "data/dat15.inc"
 // .global dword_8075614

@@ -20,7 +20,7 @@
 .global ZeroFillByHalfword
 .global ZeroFillByWord // (void *memBlock, int size) -> void
 .global ZeroFillByEightWords // (int a1, int a2) -> void
-.global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+.global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
@@ -186,7 +186,7 @@
 // .global reqBBS_813E5DC
 // .global reqBBS_813F9A0
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
 // .global SWI_CpuSet // (void *src, void *dest, int mode) -> void
 // .global SWI_Div

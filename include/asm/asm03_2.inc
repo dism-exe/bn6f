@@ -49,7 +49,11 @@
 .global sub_804A1D0
 .global sub_804A24C
 .global sub_804A2CC
+.global sub_804A2E8
 .global cb_804A304
+.global sub_804BD00
+.global sub_804C058
+.global sub_804C074
 .global sub_804CE90
 .global sub_804CF32
 .global sub_804CF84
@@ -60,7 +64,7 @@
 // .global sound_play // () -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
-// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global HalfwordFill
@@ -236,7 +240,6 @@
 
 .include "data/dat20.inc"
 // .global byte_808060A
-// .global byte_8080A06
 
 .include "asm/asm28_0.inc"
 // .global sub_809E122
@@ -349,7 +352,7 @@
 // .global sub_813D750
 // .global sub_813D978
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_814656C
 // .global sub_8146588
 // .global sub_81465BC
@@ -371,8 +374,8 @@
 // .global byte_86A10B0
 // .global byte_86A10D0
 // .global byte_86A13F0
-// .global unk_86A1480
-// .global unk_86A1940
+// .global byte_86A1480
+// .global byte_86A1940
 // .global byte_86A1A60
 // .global byte_86A1A80
 // .global byte_86A1B20
@@ -390,11 +393,11 @@
 // .global byte_86A3E80
 // .global byte_86A3EA0
 // .global byte_86A3F40
-// .global unk_86A48C0
+// .global byte_86A48C0
 // .global dword_86A4A40
-// .global unk_86A4CC0
-// .global unk_86A4D40
-// .global unk_86A5180
+// .global byte_86A4CC0
+// .global byte_86A4D40
+// .global byte_86A5180
 // .global dword_86A5500
 // .global dword_86A5D60
 // .global dword_86B7AE0
@@ -404,14 +407,14 @@
 // .global byte_86C0BE0
 // .global byte_86C0C20
 // .global byte_86C0C60
-// .global unk_86C14A0
+// .global byte_86C14A0
 // .global byte_86C18E0
 // .global byte_86C1920
 // .global byte_86C1960
 // .global byte_86C19A0
 // .global byte_86C19E0
 // .global byte_86C1A60
-// .global unk_86C1B20
+// .global byte_86C1B20
 
 .include "data/dat38_67.inc"
 // .global unk_86C9108

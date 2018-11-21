@@ -9,7 +9,7 @@
 .global loc_800BF30
 .global sub_800BF5C
 .global sub_800BF66
-.global dword_800BF74
+.global byte_800BF74
 .global off_800BF78
 .global off_800BF7C
 .global sub_800BF88
@@ -140,7 +140,7 @@
 // .global sub_8014150
 // .global sub_80182B4
 // .global off_8019B78
-// .global dword_8019C34
+// .global byte_8019C34
 // .global object_setFlag // (int a1) -> void
 // .global object_clearFlag // (int bitfield) -> void
 // .global object_getFlag // () -> int

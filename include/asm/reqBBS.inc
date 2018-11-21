@@ -8,7 +8,7 @@
 .global reqBBS_813E616
 .global reqBBS_813E660
 .global reqBBS_813EE58
-.global dword_813F380
+.global byte_813F380
 .global reqBBS_init_s_2005780
 .global reqBBS_cb_813F404
 .global reqBBS_813F9A0
@@ -26,26 +26,39 @@
 .global reqBBS_setFlag_e17b0f7_8140A00
 .global reqBBS_clearFlag_8140A0C
 .global reqBBS_runDialog_8140A70
+.global byte_8140A74
+.global byte_8140A8C
+.global byte_8140AA4
+.global byte_8140ABC
+.global byte_8140AD4
+.global byte_8140AEC
+.global byte_8140B1C
+.global byte_8140B34
+.global byte_8140B4C
+.global byte_8140B64
+.global byte_8140B7C
+.global byte_8140B94
 .global byte_8140BAC
-.global dword_8140C60
-.global dword_8140C68
-.global dword_8140C7C
-.global dword_8140C90
-.global dword_8140CA4
-.global dword_8140CB8
-.global dword_8140CCC
-.global dword_8140CE0
-.global dword_8140CF4
-.global dword_8140D10
-.global dword_8140D1C
-.global dword_8140D58
+.global byte_8140BF0
+.global byte_8140C60
+.global byte_8140C68
+.global byte_8140C7C
+.global byte_8140C90
+.global byte_8140CA4
+.global byte_8140CB8
+.global byte_8140CCC
+.global byte_8140CE0
+.global byte_8140CF4
+.global byte_8140D10
+.global byte_8140D1C
+.global byte_8140D58
 .global byte_8140D6C
-.global dword_8140E6C
-.global dword_8140FBC
-.global dword_814122C
-.global dword_81414CC
-.global dword_814154C
-.global dword_81415F4
+.global byte_8140E6C
+.global byte_8140FBC
+.global byte_814122C
+.global byte_81414CC
+.global byte_814154C
+.global byte_81415F4
 .global byte_814172C
 
 
@@ -115,12 +128,12 @@
 // .global off_813DF74
 // .global off_813E04C
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 .include "data/dat38_60.inc"
 // .global dword_86A5D60
-// .global unk_86ACD60
+// .global byte_86ACD60
 // .global dword_86B7AE0
 
 .include "data/dat38_70.inc"
@@ -159,7 +172,7 @@
 // .equ byte_2001154, 0x2001154
 // .equ dword_2001178, 0x2001178
 // .equ unk_2001400, 0x2001400
-// .equ dynaicArr, 0x2005780
+// .equ dynamicArr, 0x2005780
 // .equ unk_200578F, 0x200578F
 // .equ reqBBS_numRequestsSent, 0x20065B0
 // .equ byte_2008450, 0x2008450

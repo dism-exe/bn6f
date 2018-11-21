@@ -3,21 +3,21 @@
 
 /* Public Symbols */
 .global byte_8094BD0
-.global unk_8094CC8
-.global unk_8095434
-.global unk_8095CD8
-.global unk_8097A48
+.global byte_8094CC8
+.global byte_8095434
+.global byte_8095CD8
+.global byte_8097A48
 .global byte_8098358
-.global unk_8098384
-.global dword_80984C8
-.global dword_8098824
-.global dword_80988E4
-.global dword_809895C
+.global byte_8098384
+.global byte_80984C8
+.global byte_8098824
+.global byte_80988E4
+.global byte_809895C
 .global byte_80989C1
 .global byte_8098A02
-.global unk_8098A2E
-.global dword_8098A78
-.global dword_8098B1C
+.global byte_8098A2E
+.global byte_8098A78
+.global byte_8098B1C
 .global byte_8098BB8
 
 

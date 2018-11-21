@@ -60,17 +60,17 @@ off_80754F0: .word off_80754F4
 off_80754F4: .word off_8075500
 	.word off_8075510
 	.word off_8075520
-off_8075500: .word dword_8074FCC+0x10
-	.word dword_8074FCC+0x40
-	.word dword_8074FCC+0x90
+off_8075500: .word byte_8074FCC+0x10
+	.word byte_8075004+8
+	.word off_807505C
 	.word 0xFFFFFFFF
-off_8075510: .word dword_8074FCC+0x380
-	.word dword_8074FCC+0x3B0
-	.word dword_8074FCC+0x90
+off_8075510: .word byte_8075304+0x48
+	.word byte_8075374+8
+	.word off_807505C
 	.word 0xFFFFFFFF
-off_8075520: .word dword_8074FCC+0x400
-	.word dword_8074FCC+0x430
-	.word dword_8074FCC+0x90
+off_8075520: .word byte_80753C4+8
+	.word byte_80753F4+8
+	.word off_807505C
 	.word 0xFFFFFFFF
 	thumb_func_end sub_80754E2
 
@@ -101,46 +101,10 @@ sub_8075530:
 off_8075564: .word off_8075568
 off_8075568: .word nullsub_39+1
 	.word sub_80019D0+1
-	.byte 0xD9
-	.byte 0x5C 
-	.byte  0
-	.byte  3
-	.byte  0
-	.byte  8
-	.byte  0
-	.byte  0
-	.byte 0xB5
-	.byte 0x1A
-	.byte  0
-	.byte  8
-	.byte 0xD1
-	.byte 0x19
-	.byte  0
-	.byte  8
-	.byte 0xD9
-	.byte 0x5C 
-	.byte  0
-	.byte  3
-	.byte  0
-	.byte  8
-	.byte  0
-	.byte  0
-	.byte 0xB5
-	.byte 0x1A
-	.byte  0
-	.byte  8
-	.byte 0xD1
-	.byte 0x19
-	.byte  0
-	.byte  8
-	.byte 0xD9
-	.byte 0x5C 
-	.byte  0
-	.byte  3
-	.byte  0
-	.byte  8
-	.byte  0
-	.byte  0
+	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0, 0xB5, 0x1A, 0x0, 0x8, 0xD1
+	.byte 0x19, 0x0, 0x8, 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0, 0xB5, 0x1A
+	.byte 0x0, 0x8, 0xD1, 0x19, 0x0, 0x8, 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0
+	.byte 0x0
 off_8075598: .word off_807559C
 off_807559C: .word off_80755A8
 	.word off_80755A8

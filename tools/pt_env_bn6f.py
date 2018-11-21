@@ -46,10 +46,8 @@ pt.env(gameFiles={
 	(0x8020354, 0x8021AA4), # size=0x1750
 'asm/asm02.s':
 	(0x8021AA4, 0x8021DA8), # size=0x304
-'data/ChipDataArr_8021DA8.s':
-	(0x8021DA8, 0x8024110), # size=0x2368
-'data/dat02.s':
-	(0x8024110, 0x8026450), # size=0x2340
+'data/ChipDataArr.s':
+	(0x8021DA8, 0x8026450), # size=0x46a8
 'asm/asm03_0.s':
 	(0x8026450, 0x8031CC4), # size=0xB874
 'data/spritePointers_8031CC4.s':

@@ -10,7 +10,7 @@
 // .global sub_80005AC
 // .global sub_80005C4
 // .global ZeroFillByByte // (void *mem, int size) -> void
-// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global WordFill
 // .global loc_8000AC8
 // .global sub_8000C00
@@ -31,7 +31,7 @@
 
 .include "asm/asm00_2.inc"
 // .global off_8019B78
-// .global dword_8019C34
+// .global byte_8019C34
 // .global sub_801A29A
 
 .include "asm/asm03_0.inc"
@@ -50,7 +50,7 @@
 .include "asm/asm37_0.inc"
 // .global sub_813D5DC
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_814469C
 // .global sub_81446AC
 // .global sub_814DA9C

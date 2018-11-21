@@ -2,7 +2,8 @@
 .equ INC_DATA_DAT36, 0
 
 /* Public Symbols */
-.global dword_8138944
+.global unk_8138944
+.global byte_8138B90
 .global off_8138C04
 .global off_8138DBC
 .global off_8138F10
@@ -29,10 +30,10 @@
 
 .include "asm/asm28_1.inc"
 // .global byte_809F6CC
-// .global unk_809F878
+// .global byte_809F878
 
 .include "data/dat38_59.inc"
-// .global byte_8500F1C
+// .global unk_850100F
 
 .include "data/dat38_60.inc"
 // .global byte_85A100F

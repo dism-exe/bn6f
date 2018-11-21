@@ -24,9 +24,6 @@
 .include "data/dat13.inc"
 // .global byte_807083F
 
-.include "data/dat20.inc"
-// .global byte_80809F6
-
 .include "data/dat21.inc"
 // .global byte_8083F04
 
@@ -48,7 +45,7 @@
 // .global byte_83F3D16
 
 .include "data/dat38_60.inc"
-// .global unk_863FF05
+// .global byte_863FF05
 
 
 .endif // INC_DATA_DAT11

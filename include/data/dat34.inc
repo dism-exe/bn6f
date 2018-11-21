@@ -3,7 +3,11 @@
 
 /* Public Symbols */
 .global byte_812DA94
-.global byte_812DABC
+.global unk_812DABC
+.global unk_812DAC4
+.global unk_812DACC
+.global unk_812DAD4
+.global unk_812DADC
 .global sub_812DAE4
 
 
@@ -61,8 +65,8 @@
 // .global sub_8120CC8
 
 .include "asm/asm33.inc"
-// .global dword_812913C
-// .global dword_8129180
+// .global byte_8129150
+// .global byte_8129180
 // .global sub_8129248
 // .global sub_812AC14
 // .global sub_812AF3C
@@ -108,7 +112,7 @@
 .include "asm/asm37_0.inc"
 // .global sub_813B780
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_8149568
 // .global sub_8149644
 

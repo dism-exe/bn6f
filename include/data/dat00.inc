@@ -5,12 +5,12 @@
 .global off_801ECB4
 .global word_801ED6C
 .global word_801EDB4
-.global dword_801EDFC
+.global byte_801EDFC
 .global word_801EE14
 .global word_801EE58
-.global dword_801EE78
-.global dword_801EE98
-.global dword_801EF10
+.global byte_801EE78
+.global byte_801EE98
+.global byte_801EF10
 .global off_801EF30
 .global off_801EF4C
 .global off_801EF68
@@ -22,7 +22,7 @@
 .global byte_801F556
 .global off_801FD64
 .global off_801FD90
-.global dword_801FDC0
+.global byte_801FDC0
 
 
 /* External Symbols */

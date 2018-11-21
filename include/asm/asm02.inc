@@ -31,7 +31,7 @@
 // .global sub_8006E84
 // .global sub_8006EA4
 
-.include "data/ChipDataArr_8021DA8.inc"
+.include "data/ChipDataArr.inc"
 // .global ChipDataArr_8021DA8
 
 .include "asm/asm03_0.inc"

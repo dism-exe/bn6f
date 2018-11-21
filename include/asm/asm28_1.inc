@@ -11,18 +11,20 @@
 .global sub_809F656 // (void* a1) -> int
 .global sub_809F68C
 .global off_809F6AC
-.global dword_809F6B0
-.global dword_809F6B8
+.global byte_809F6B0
+.global byte_809F6B8
 .global byte_809F6CC
 .global byte_809F6EC
 .global byte_809F71C
-.global unk_809F7E4
-.global unk_809F878
+.global byte_809F79C
+.global byte_809F7E4
+.global byte_809F878
 .global byte_809F880
 .global byte_809F889
 .global byte_809F8A5
 .global byte_809F8B3
 .global byte_809F8CA
+.global sub_809F904
 .global sub_809F90C
 .global sub_809F922
 .global sub_809F942
@@ -63,13 +65,13 @@
 // .global chatbox_8045EFC
 
 .include "data/dat28.inc"
-// .global dword_809FEE4
-// .global dword_809FFE8
-// .global dword_80A3360
+// .global byte_809FEE4
+// .global byte_809FFE8
+// .global byte_80A3360
 // .global off_80A336C
 // .global off_80A3370
 // .global off_80A3428
-// .global dword_80A3430
+// .global byte_80A3430
 
 
 /* Undeclared Symbols */

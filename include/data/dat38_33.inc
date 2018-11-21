@@ -52,6 +52,7 @@
 .global byte_83C0710
 .global byte_83C0716
 .global byte_83C0806
+.global byte_83C0809
 .global byte_83C081D
 .global byte_83C09C0
 .global byte_83C0A10
@@ -105,15 +106,18 @@
 .global byte_83F081D
 .global byte_83F0907
 .global byte_83F0908
+.global byte_83F09C0
 .global byte_83F0A08
 .global byte_83F0A10
 .global byte_83F0B08
 .global byte_83F0C08
 .global byte_83F0D08
+.global byte_83F0F08
 .global byte_83F1208
 .global byte_83F1308
 .global byte_83F1408
 .global byte_83F1508
+.global byte_83F1516
 .global byte_83F1608
 .global byte_83F1916
 .global byte_83F1A08

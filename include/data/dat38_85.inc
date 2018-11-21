@@ -5,6 +5,7 @@
 .global unk_86DDBA0
 .global byte_86DF925
 .global byte_86DFA98
+.global unk_86DFF03
 .global dword_86E0458
 .global dword_86E0478
 .global byte_86E0498

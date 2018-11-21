@@ -42,20 +42,20 @@
 // .global off_807C82C
 // .global off_807C94C
 // .global off_807C974
-// .global dword_807C978
-// .global dword_807C978
-// .global dword_807C978
-// .global dword_807C978
-// .global dword_807C978
-// .global dword_807C978
-// .global dword_807C978
-// .global dword_807C978
-// .global dword_807C978
-// .global dword_807C978
-// .global dword_807C978
-// .global dword_807C978
-// .global dword_807C978
-// .global dword_807C978
+// .global byte_807CA04
+// .global byte_807CA54
+// .global byte_807CAA4
+// .global byte_807CACC
+// .global byte_807CB1C
+// .global byte_807CB6C
+// .global byte_807CBBC
+// .global byte_807CC0C
+// .global byte_807CC34
+// .global byte_807CC5C
+// .global byte_807CCAC
+// .global byte_807CCFC
+// .global byte_807CD4C
+// .global byte_807CD9C
 
 .include "data/dat19.inc"
 // .global dword_807D024
@@ -69,5 +69,6 @@
 
 /* Undeclared Symbols */
 // .equ unk_2037800, 0x2037800
+// .equ unk_3005CD9, 0x3005CD9
 
 .endif // INC_ASM_ASM19

@@ -129,7 +129,7 @@ loc_80003F2:
 	mvn r4, r4
 	ldrh r5, [r0]
 	strh r5, [r0,#6]
-	ldr r3, dword_8000450 // =0x3ff 
+	ldr r3, byte_8000450 // =0xff 
 	strh r4, [r0]
 	mov r6, r4
 	and r6, r5
@@ -174,7 +174,7 @@ loc_8000438:
 	mov pc, lr
 	.balign 4, 0x00
 off_800044C: .word KeyStatus
-dword_8000450: .word 0x3FF
+byte_8000450: .byte 0xFF, 0x3, 0x0, 0x0
 	thumb_func_end main_static_80003E4
 
 	thumb_local_start
@@ -290,10 +290,10 @@ off_800056C: .word dword_2009930
 main_static_8000570:
 	push {lr}
 	bl sub_814E8A0
-	ldr r0, dword_800059C // =0x93040d 
+	ldr r0, byte_800059C // =0xd 
 	bl sub_814EE2C
 	mov r0, #8
-	ldr r1, dword_80005A8 // =unk_3005D79 
+	ldr r1, byte_80005A8 // =0x79 
 	bl start_800024C
 	ldr r0, off_80005A0 // =GeneralLCDStatus_STAT_LYC_ 
 	ldrh r1, [r0]
@@ -307,10 +307,10 @@ main_static_8000570:
 	strh r1, [r0]
 	pop {pc}
 	.balign 4, 0x00
-dword_800059C: .word 0x93040D
+byte_800059C: .byte 0xD, 0x4, 0x93, 0x0
 off_80005A0: .word GeneralLCDStatus_STAT_LYC_
 	.word off_3000E70
-dword_80005A8: .word 0x3005D79
+byte_80005A8: .byte 0x79, 0x5D, 0x0, 0x3
 	thumb_func_end main_static_8000570
 
 /*For debugging purposes, connect comment at any range!*/

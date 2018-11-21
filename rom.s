@@ -31,10 +31,8 @@ dat01:
 .include "data/dat01.s"
 asm02:
 .include "asm/asm02.s"
-ChipDataArr_8021DA8:
-.include "data/ChipDataArr_8021DA8.s"
-dat02:
-.include "data/dat02.s"
+ChipDataArr:
+.include "data/ChipDataArr.s"
 asm03_0:
 .include "asm/asm03_0.s"
 spritePointers_8031CC4:

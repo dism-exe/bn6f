@@ -2,7 +2,7 @@
 .equ INC_DATA_DAT37, 0
 
 /* Public Symbols */
-.global dword_814FE90
+.global byte_814FE90
 .global byte_814FE94
 .global off_8158278
 .global off_815827C
@@ -10,8 +10,14 @@
 .global word_8158282
 .global sound_MusicTable
 .global byte_817B826
+.global byte_819DD01
+.global byte_819ED15
 .global byte_81A081B
-.global dword_81C03AC
+.global byte_81AA901
+.global byte_81AB915
+.global byte_81B8101
+.global off_81B9114
+.global byte_81C03AC
 .global byte_81C03D8
 .global aFuMboot
 .global aNintendosio32i
@@ -19,29 +25,30 @@
 .global byte_81C04A8
 .global byte_81C055A
 .global byte_81C055B
-.global dword_81C055C
-.global dword_81C058C
+.global byte_81C055C
+.global byte_81C058C
 .global byte_81C05A4
 .global byte_81C05A5
 .global byte_81C0626
 .global byte_81C0627
-.global dword_81C0628
+.global byte_81C0628
 .global byte_81C0640
 .global byte_81C067B
-.global dword_81C067C
+.global byte_81C067C
 .global byte_81C068C
 .global off_81C06C0
-.global byte_81C241C
+.global off_81C241C
+.global byte_81C7000
 .global byte_81D081E
 .global byte_81D083F
 .global byte_81D4314
 
 
 /* External Symbols */
-.include "asm/asm37_1.inc"
-// .global word_814D8CC
+.include "asm/libs.inc"
+// .global sub_814D8CC
 // .global sub_814D8F0
-// .global word_814D994
+// .global sub_814D994
 // .global sub_814D9C4
 // .global byte_814E02D
 // .global sub_814E044
@@ -89,7 +96,6 @@
 // .equ unk_2006EF8, 0x2006EF8
 // .equ unk_2010000, 0x2010000
 // .equ unk_2010690, 0x2010690
-// .equ unk_2010910, 0x2010910
 // .equ unk_201FAF8, 0x201FAF8
 // .equ unk_2020200, 0x2020200
 .equ LCDControl, 0x4000000

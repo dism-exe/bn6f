@@ -222,7 +222,7 @@
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
-// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
@@ -276,7 +276,7 @@
 .include "asm/object.inc"
 // .global sub_800BF5C
 // .global sub_800BF66
-// .global dword_800BF74
+// .global byte_800BF74
 // .global off_800BF78
 // .global off_800BF7C
 // .global sub_800BF88
@@ -366,7 +366,7 @@
 // .global sub_802015E
 
 .include "data/dat01.inc"
-// .global dword_802137C
+// .global byte_802137C
 // .global byte_80213AC
 
 .include "asm/asm02.inc"
@@ -377,8 +377,8 @@
 // .global sub_8021D08
 // .global sub_8021D36
 
-.include "data/dat02.inc"
-// .global dword_802412C
+.include "data/ChipDataArr.inc"
+// .global byte_802412C
 
 .include "asm/asm03_0.inc"
 // .global sub_8026840
@@ -499,12 +499,12 @@
 
 .include "data/dat27.inc"
 // .global byte_8098A02
-// .global unk_8098A2E
-// .global dword_8098A78
-// .global dword_8098B1C
+// .global byte_8098A2E
+// .global byte_8098A78
+// .global byte_8098B1C
 
 .include "asm/asm28_0.inc"
-// .global unk_809B5AD
+// .global byte_809B5AD
 // .global sub_809D19C
 // .global sub_809E04C
 // .global setFlag3_2e2_2001C88
@@ -1037,6 +1037,8 @@
 // .global sub_8142248
 // .global sub_8143482
 // .global sub_8144048
+
+.include "asm/libs.inc"
 // .global sub_81440D8 // static () -> void
 // .global sub_8144EEC
 // .global SWI_LZ77UnCompReadNormalWrite16bit
@@ -1179,7 +1181,7 @@
 // .equ unk_200F3B8, 0x200F3B8
 // .equ byte_200F410, 0x200F410
 // .equ byte_2011800, 0x2011800
-// .equ unk_2011BB0, 0x2011BB0
+// .equ byte_2011BB0, 0x2011BB0
 // .equ unk_2011C50, 0x2011C50
 // .equ unk_2011E50, 0x2011E50
 // .equ byte_2011EE0, 0x2011EE0

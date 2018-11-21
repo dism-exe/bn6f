@@ -63,7 +63,7 @@
 // .global mugshots_8032598
 // .global guiSprites_803271C
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 

@@ -8568,7 +8568,7 @@ sub_802A8A4:
 	bl sub_802B2A0
 	strh r0, [r5,#0x1e]
 	mov r0, #0
-	ldr r1, off_802A90C // =dword_8129180 
+	ldr r1, off_802A90C // =byte_8129180 
 	bl sub_8120CC8
 	strb r0, [r5,#0xc]
 	strb r1, [r5,#0xd]
@@ -8590,7 +8590,7 @@ sub_802A8A4:
 	bl sub_801DACC
 	pop {pc}
 	.balign 4, 0x00
-off_802A90C: .word dword_8129180
+off_802A90C: .word byte_8129180
 dword_802A910: .word 0x20000
 off_802A914: .word unk_2031000
 off_802A918: .word unk_2035000
@@ -9693,7 +9693,7 @@ loc_802B22A:
 	lsr r1, r1, #4
 	sub r1, #1
 	bne loc_802B258
-	ldr r1, off_802B26C // =dword_8129180 
+	ldr r1, off_802B26C // =byte_8129180 
 	bl sub_8120CC8
 	ldr r2, [sp,#8]
 	strb r0, [r5,r2]
@@ -9708,7 +9708,7 @@ loc_802B258:
 	add sp, sp, #0x1c
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_802B26C: .word dword_8129180
+off_802B26C: .word byte_8129180
 	thumb_func_end sub_802B20C
 
 	thumb_local_start
@@ -17437,15 +17437,15 @@ ClearEventFlag:
 	thumb_func_end ClearEventFlag
 
 // (u8 entryIdx, u8 byteFlagIdx) -> void
-	thumb_func_start toggleFlag_2001C88_entry
-toggleFlag_2001C88_entry:
+	thumb_func_start ToggleEventFlagFromImmediate
+ToggleEventFlagFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
-	thumb_func_end toggleFlag_2001C88_entry
+	thumb_func_end ToggleEventFlagFromImmediate
 
 // (u16 entryFlagBitfield) -> void
-	thumb_func_start toggleFlag_2001C88_bitfield
-toggleFlag_2001C88_bitfield:
+	thumb_func_start ToggleEventFlag
+ToggleEventFlag:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_Flags2001c88_Ptr]
 	lsr r1, r0, #3
@@ -17458,7 +17458,7 @@ toggleFlag_2001C88_bitfield:
 	eor r0, r1
 	strb r0, [r3]
 	mov pc, lr
-	thumb_func_end toggleFlag_2001C88_bitfield
+	thumb_func_end ToggleEventFlag
 
 // (int entryIdx, int byteFlagIdx) -> zf
 	thumb_func_start TestEventFlagFromImmediate
@@ -18619,7 +18619,7 @@ initRefs_802FCD8: .word comp_87F36A0 + 1<<31
 	.word unk_87F4194
 	.word byte_3001960
 	.word 0x1C0
-	.word unk_86A48C0
+	.word byte_86A48C0
 	.word 0x6012800
 	.word 0x180
 	.word dword_86A5500
@@ -19270,7 +19270,7 @@ sub_80301B2:
 	mov pc, lr
 	thumb_func_end sub_80301B2
 
-	thumb_local_start
+	thumb_func_start sub_80301BC
 sub_80301BC:
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_CameraPtr]
@@ -19449,7 +19449,6 @@ sub_80302F8:
 	mov r4, #0xff
 	and r1, r4
 	strh r1, [r3,#0x10]
-loc_8030308:
 	strh r1, [r3,#0x14]
 	strh r1, [r3,#0x18]
 	and r2, r4
@@ -19600,7 +19599,7 @@ sub_80303F2:
 	mov pc, lr
 	thumb_func_end sub_80303F2
 
-	thumb_local_start
+	thumb_func_start sub_80303FC
 sub_80303FC:
 	push {r4-r7,lr}
 	mov r4, r8

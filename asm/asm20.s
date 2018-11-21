@@ -40,12 +40,14 @@ off_807ED28: .word off_807EA6C
 off_807ED2C: .word unk_2037800
 off_807ED30: .word off_807ED34
 off_807ED34: .word byte_807ED40
-	.word 0x807ED4E, 0x807ED60
+	.word byte_807ED4E
+	.word byte_807ED60
 byte_807ED40: .byte 0x1C, 0xE, 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x4B, 0x1C
-	.byte 0x86, 0x1C, 0x8F, 0xFF, 0xFF, 0x1C, 0xE, 0x1C, 0x1F
-	.byte 0x1C, 0x20, 0x1C, 0x4B, 0x1C, 0x8E, 0x1C, 0x9B, 0x1C
-	.byte 0x99, 0x18, 0x5B, 0xFF, 0xFF, 0x1C, 0x9C, 0x1C, 0x9A
-	.byte 0x18, 0x34, 0x18, 0x36, 0x1C, 0x99, 0xFF, 0xFF
+	.byte 0x86, 0x1C, 0x8F, 0xFF, 0xFF
+byte_807ED4E: .byte 0x1C, 0xE, 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x4B, 0x1C
+	.byte 0x8E, 0x1C, 0x9B, 0x1C, 0x99, 0x18, 0x5B, 0xFF, 0xFF
+byte_807ED60: .byte 0x1C, 0x9C, 0x1C, 0x9A, 0x18, 0x34, 0x18, 0x36, 0x1C
+	.byte 0x99, 0xFF, 0xFF
 	thumb_func_end sub_807ECD0
 
 	thumb_func_start sub_807ED6C
@@ -64,22 +66,10 @@ off_807ED80: .word off_807ED8C
 off_807ED8C: .word off_807EB18
 	.word dword_807EB68
 	.word dword_807EBB8
-	.byte  8
-	.byte 0xEC
-	.byte  7
-	.byte  8
-	.byte 0x58 
-	.byte 0xEC
-	.byte  7
-	.byte  8
-	.byte 0xA8
-	.byte 0xEC
-	.byte  7
-	.byte  8
-	.byte 0xFF
-	.byte 0xFF
-	.byte 0xFF
-	.byte 0xFF
+	.word dword_807EC08
+	.word off_807EC58
+	.word off_807ECA8
+	.byte 0xFF, 0xFF, 0xFF, 0xFF
 off_807EDA8: .word off_807EB18
 	.word dword_807EB68
 	.word dword_807EBB8
@@ -120,14 +110,27 @@ sub_807EDD4:
 off_807EE08: .word off_807EE0C
 off_807EE0C: .word nullsub_39+1
 	.word sub_8001A46+1
-	.word 0x3005CD9, 0x800, 0x8001AB5, 0x8001A47, 0x3005CD9
-	.word 0x800, 0x8001AB5, 0x8001A47, 0x3005CD9, 0x800
+	.word unk_3005CD9
+	.word 0x800
+	.word nullsub_39+1
+	.word sub_8001A46+1
+	.word unk_3005CD9
+	.word 0x800
+	.word nullsub_39+1
+	.word sub_8001A46+1
+	.word unk_3005CD9
+	.word 0x800
 off_807EE3C: .word off_807EE40
 off_807EE40: .word off_807EE4C
 	.word off_807EE4C
 	.word off_807EE4C
 off_807EE4C: .word off_8619174
-	.word 0x6008020, 0x8619474, 0x1800, 0x0, 0x0, 0x0
+	.word 0x6008020
+	.word dword_8619474
+	.word 0x1800
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	thumb_func_end sub_807EDD4
 
 	thumb_func_start sub_807EE68
@@ -178,9 +181,9 @@ sub_807EE92:
 off_807EEA8: .word pt_807EEAC
 pt_807EEAC:
 	// <endpool> <endfile>
-	.word dword_807EEB8
-	.word dword_807EFD4
-	.word dword_807F1E0
+	.word unk_807EEB8
+	.word byte_807EFD4
+	.word byte_807F1E0
 	thumb_func_end sub_807EE92
 
 /*For debugging purposes, connect comment at any range!*/

@@ -95,7 +95,7 @@ loc_803FDA4:
 	mov r4, #1
 loc_803FDA8:
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-	ldr r0, off_803FDEC // =unk_86BFBA0 
+	ldr r0, off_803FDEC // =byte_86BFBA0 
 	ldr r1, dword_803FDF0 // =0x600dc80 
 	ldr r2, off_803FDF4 // =0x280 
 	bl loc_8000AC8
@@ -124,7 +124,7 @@ loc_803FDD0:
 	pop {r4,r5,pc}
 off_803FDE0: .word dword_803FDE4
 dword_803FDE4: .word 0x83007E, 0x81007F
-off_803FDEC: .word unk_86BFBA0
+off_803FDEC: .word byte_86BFBA0
 dword_803FDF0: .word 0x600DC80
 off_803FDF4: .word 0x280
 	.word 0x380
@@ -148,7 +148,7 @@ chatbox_803FE10:
 	mov r4, #1
 loc_803FE14:
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-	ldr r0, off_803FE58 // =unk_86C05E0 
+	ldr r0, off_803FE58 // =byte_86C05E0 
 	ldr r1, dword_803FE5C // =0x600dc80 
 	ldr r2, off_803FE60 // =0x320 
 	bl loc_8000AC8
@@ -177,7 +177,7 @@ loc_803FE3C:
 	pop {r4,r5,pc}
 off_803FE4C: .word dword_803FE50
 dword_803FE50: .word 0x83007E, 0x81007F
-off_803FE58: .word unk_86C05E0
+off_803FE58: .word byte_86C05E0
 dword_803FE5C: .word 0x600DC80
 off_803FE60: .word 0x320
 	.word 0x380
@@ -1486,7 +1486,7 @@ chatbox_ED_select_8040944:
 	ldr r1, off_80409AC // =unk_80409B2 
 	ldrb r0, [r1,r0]
 	lsl r0, r0, #7
-	ldr r2, off_80409A4 // =unk_86A48C0 
+	ldr r2, off_80409A4 // =byte_86A48C0 
 	add r0, r0, r2
 	ldr r1, dword_80409A8 // =0x6017f80 
 	mov r2, #0x80
@@ -1527,7 +1527,7 @@ loc_8040986:
 	pop {pc}
 	.byte 0, 0
 dword_80409A0: .word 0x40000000
-off_80409A4: .word unk_86A48C0
+off_80409A4: .word byte_86A48C0
 dword_80409A8: .word 0x6017F80
 off_80409AC: .word unk_80409B2
 byte_80409B0: .byte 0xFC, 0xE3
@@ -2578,7 +2578,7 @@ chatbox_80411BC:
 	thumb_local_start
 chatbox_80411C8:
 	push {lr}
-	bl toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+	bl ToggleEventFlag // (u16 entryFlagBitfield) -> void
 	add r4, #4
 	pop {pc}
 	.balign 4, 0x00
@@ -4534,7 +4534,7 @@ loc_8042014:
 	add r1, r1, r2
 	push {r1}
 	mov r2, #0x40 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
 	mov r7, r5
 	add r7, #0x64 
@@ -4597,7 +4597,7 @@ chatbox_80420BC:
 	add r1, r1, r2
 	push {r1}
 	mov r2, #0x40 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
 	mov r7, r5
 	add r7, #0x64 
@@ -4738,7 +4738,7 @@ chatbox_80421D8:
 	add r1, r1, r2
 	push {r1}
 	mov r2, #3
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
 	mov r2, #0xe5
 	strb r2, [r0,#3]
@@ -5529,9 +5529,9 @@ dword_80427B0: .word 0x37
 	thumb_local_start
 chatbox_80427B4:
 	push {lr}
-	ldr r0, off_8042A94 // =dynaicArr 
+	ldr r0, off_8042A94 // =dynamicArr 
 	ldr r1, dword_80427DC // =0xf 
-	ldr r2, off_80427E0 // =dword_813F380 
+	ldr r2, off_80427E0 // =byte_813F380 
 	ldrb r1, [r0,r1]
 	ldrb r1, [r2,r1]
 	add r1, #1
@@ -5549,15 +5549,15 @@ loc_80427CE:
 	.balign 4, 0x00
 dword_80427D8: .word 0xD
 dword_80427DC: .word 0xF
-off_80427E0: .word dword_813F380
+off_80427E0: .word byte_813F380
 	thumb_func_end chatbox_80427B4
 
 	thumb_local_start
 chatbox_80427E4:
 	push {lr}
-	ldr r0, off_8042A98 // =dynaicArr 
+	ldr r0, off_8042A98 // =dynamicArr 
 	ldr r1, dword_80427FC // =0xf 
-	ldr r2, off_8042800 // =dword_813F380 
+	ldr r2, off_8042800 // =byte_813F380 
 	ldrb r1, [r0,r1]
 	ldrb r1, [r2,r1]
 	add r1, #1
@@ -5567,13 +5567,13 @@ chatbox_80427E4:
 	mov r0, #1
 	pop {pc}
 dword_80427FC: .word 0xF
-off_8042800: .word dword_813F380
+off_8042800: .word byte_813F380
 	thumb_func_end chatbox_80427E4
 
 	thumb_local_start
 chatbox_8042804:
 	push {lr}
-	ldr r0, off_8042818 // =dynaicArr 
+	ldr r0, off_8042818 // =dynamicArr 
 	ldr r1, dword_804281C // =0xf 
 	ldrb r0, [r0,r1]
 	bl reqBBS_81408B4
@@ -5581,7 +5581,7 @@ chatbox_8042804:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-off_8042818: .word dynaicArr
+off_8042818: .word dynamicArr
 dword_804281C: .word 0xF
 	thumb_func_end chatbox_8042804
 
@@ -5746,8 +5746,8 @@ loc_8042A86:
 	mov r7, #0
 	strb r7, [r2,#2]
 	pop {r4,r5,pc}
-off_8042A94: .word dynaicArr
-off_8042A98: .word dynaicArr
+off_8042A94: .word dynamicArr
+off_8042A98: .word dynamicArr
 	thumb_func_end chatbox_8042A14
 
 	thumb_local_start
@@ -6540,7 +6540,7 @@ loc_8043050:
 	add r1, r1, r2
 	push {r1}
 	mov r2, #0x40 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
 	mov r7, r5
 	add r7, #0x64 
@@ -6587,7 +6587,7 @@ loc_80430B4:
 	add r1, r1, r2
 	push {r1}
 	mov r2, #0x40 
-	bl copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	pop {r0}
 	mov r7, r5
 	add r7, #0x64 
@@ -7949,7 +7949,7 @@ off_8043C64: .word unk_2011C54
 	.word 0x0
 	.word 0x0
 	.word sSubmenu+0x20 // sSubmenu.unk_20
-off_8043C84: .word unk_2011A9D
+off_8043C84: .word byte_2011A9D
 	.word 0x0
 off_8043C8C: .word unk_2009A80
 	.word unk_2009A82

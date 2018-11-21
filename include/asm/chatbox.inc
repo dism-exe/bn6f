@@ -47,7 +47,7 @@
 // .global musicGameState_8000784 // () -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
-// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
@@ -106,7 +106,7 @@
 // .global sub_802D15E
 // .global SetEventFlag
 // .global ClearEventFlag // (u16 entryFlagBitfield) -> void
-// .global toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+// .global ToggleEventFlag // (u16 entryFlagBitfield) -> void
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global SetEventFlagRange // (u16 entryFlagBitfield) -> void
@@ -182,7 +182,7 @@
 .include "asm/reqBBS.inc"
 // .global reqBBS_813E5DC
 // .global reqBBS_813E660
-// .global dword_813F380
+// .global byte_813F380
 // .global reqBBS_813F9A0
 // .global sub_813FA24
 // .global reqBBS_getTotalPointsIndex // () -> u8
@@ -192,6 +192,8 @@
 // .global sub_814187C
 // .global sub_8142134
 // .global sub_814227A
+
+.include "asm/libs.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 .include "data/dat38_59.inc"
@@ -199,7 +201,7 @@
 
 .include "data/dat38_60.inc"
 // .global dword_86A4740
-// .global unk_86A48C0
+// .global byte_86A48C0
 // .global dword_86A4A40
 // .global dword_86B7AA0
 // .global dword_86B7AC0
@@ -213,14 +215,14 @@
 // .global byte_86BF600
 // .global byte_86BF7E0
 // .global byte_86BF9C0
-// .global unk_86BFBA0
+// .global byte_86BFBA0
 // .global byte_86BFE20
 // .global byte_86BFE40
 // .global byte_86BFE60
 // .global byte_86C0040
 // .global byte_86C0220
 // .global byte_86C0400
-// .global unk_86C05E0
+// .global byte_86C05E0
 // .global byte_86C0900
 // .global byte_86C0920
 // .global byte_86C0940
@@ -857,7 +859,7 @@
 // .equ unk_2001A04, 0x2001A04
 // .equ unk_2001A60, 0x2001A60
 // .equ unk_2001ABC, 0x2001ABC
-// .equ dynaicArr, 0x2005780
+// .equ dynamicArr, 0x2005780
 // .equ sSubmenu, 0x2009A30
 // .equ unk_2009A80, 0x2009A80
 // .equ unk_2009A82, 0x2009A82
@@ -882,7 +884,7 @@
 // .equ unk_200C7E0, 0x200C7E0
 // .equ unk_200C7F0, 0x200C7F0
 // .equ dword_200CDA0, 0x200CDA0
-// .equ unk_2011A9D, 0x2011A9D
+// .equ byte_2011A9D, 0x2011A9D
 // .equ unk_2011C54, 0x2011C54
 // .equ unk_2011C55, 0x2011C55
 // .equ unk_2011C56, 0x2011C56

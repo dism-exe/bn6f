@@ -33,14 +33,11 @@
 .include "data/dat04.inc"
 // .global byte_805150D
 
-.include "data/dat20.inc"
-// .global byte_80809F6
-
 .include "data/dat21.inc"
 // .global byte_8083F07
 
 .include "data/dat25.inc"
-// .global unk_80911A0
+// .global byte_80911A0
 
 .include "asm/asm28_1.inc"
 // .global byte_809F6CC

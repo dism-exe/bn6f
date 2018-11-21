@@ -394,7 +394,7 @@ ds unk_2005030 // 0x2005030
 	.space 8
 ds unk_2005038 // 0x2005038
 	.space 1864
-ds dynaicArr // 0x2005780
+ds dynamicArr // 0x2005780
 	.space 15
 ds unk_200578F // 0x200578f
 	.space 33
@@ -409,7 +409,17 @@ ds reqBBS_numRequestsSent // 0x20065b0
 ds byte_20065B4 // 0x20065b4
 	.space 12
 ds byte_20065C0 // 0x20065c0
-	.space 176
+    .space 32
+ds byte_20065E0 // 0x20065E0
+    .space 1
+ds byte_20065E1 // 0x20065E1
+    .space 2
+ds byte_20065E3 // 0x20065E3
+    .space 2
+ds byte_20065E5 // 0x20065E5
+    .space 2
+ds byte_20065E7 // 0x20065E7
+    .space 137
 ds byte_2006670 // 0x2006670
 	.space 4
 ds byte_2006674 // 0x2006674
@@ -1618,11 +1628,11 @@ ds byte_2011A9A // 0x2011a9a
 	.space 1
 ds byte_2011A9B // 0x2011a9b
 	.space 2
-ds unk_2011A9D // 0x2011a9d
+ds byte_2011A9D // 0x2011a9d
 	.space 147
-ds unk_2011B30 // 0x2011b30
+ds byte_2011B30 // 0x2011b30
 	.space 128
-ds unk_2011BB0 // 0x2011bb0
+ds byte_2011BB0 // 0x2011bb0
 	.space 32
 ds dword_2011BD0 // 0x2011bd0
 	.space 4

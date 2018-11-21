@@ -101,8 +101,8 @@
 .global SetEventFlag
 .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 .global ClearEventFlag // (u16 entryFlagBitfield) -> void
-.global toggleFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
-.global toggleFlag_2001C88_bitfield // (u16 entryFlagBitfield) -> void
+.global ToggleEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+.global ToggleEventFlag // (u16 entryFlagBitfield) -> void
 .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 .global SetEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
@@ -129,16 +129,17 @@
 .global sub_802FFF4
 .global locret_8030102
 .global sub_80301B2
+.global sub_80301BC
 .global sub_80301D0
 .global sub_80301DC
 .global loc_8030202
 .global sub_80302A8
 .global sub_80302B6
 .global sub_80302C0
-.global loc_8030308
 .global sub_803037C
 .global sub_80303E8
 .global sub_80303F2
+.global sub_80303FC
 .global sub_8030472
 .global sub_80304E8
 .global sub_8030540
@@ -621,19 +622,19 @@
 // .global sub_8120CC8
 
 .include "asm/asm33.inc"
-// .global dword_8129180
+// .global byte_8129180
 
 .include "asm/asm37_0.inc"
 // .global sub_813D90C
 // .global sub_813D960
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_81440D8 // static () -> void
 // .global sub_8149644
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 .include "data/dat38_60.inc"
-// .global unk_86A48C0
+// .global byte_86A48C0
 // .global dword_86A5500
 // .global dword_86B7AE0
 

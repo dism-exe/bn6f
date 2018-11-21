@@ -64,6 +64,9 @@
 
 .include "data/dat38_60.inc"
 // .global off_8616598
+// .global byte_8616634
+// .global byte_8616760
+// .global byte_8616EC4
 
 
 /* Undeclared Symbols */

@@ -6,6 +6,7 @@
 .global sub_808FE74
 .global sub_808FEA4
 .global off_8090000
+.global sub_8090308
 
 
 /* External Symbols */
@@ -50,9 +51,9 @@
 
 .include "data/dat24.inc"
 // .global off_808F5D4
-// .global dword_808F668
-// .global dword_808F668
-// .global dword_808F668
+// .global byte_808F668
+// .global byte_808F67C
+// .global byte_808F690
 // .global byte_808F6EC
 // .global byte_808F728
 // .global byte_808F748

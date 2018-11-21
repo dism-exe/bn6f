@@ -854,7 +854,7 @@ off_80329C4: .word off_8032BE8
 off_8032A20: .word byte_84FAFCC
 	.word byte_84FF308
 	.word byte_84FF4AC
-	.word byte_8500F1C
+	.word unk_8500F1C
 	.word byte_8503098
 	.word byte_850323C
 off_8032A38: .word byte_8503C90

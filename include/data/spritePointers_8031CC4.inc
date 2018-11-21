@@ -360,7 +360,7 @@
 // .global byte_84FAFCC
 // .global byte_84FF308
 // .global byte_84FF4AC
-// .global byte_8500F1C
+// .global unk_8500F1C
 // .global byte_8503098
 // .global byte_850323C
 // .global byte_8503C90

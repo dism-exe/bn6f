@@ -19,7 +19,7 @@
 .global dword_806DF44
 .global dword_806DF70
 .global off_806DFB0
-.global dword_806DFF0
+.global off_806DFF0
 .global off_806E030
 .global off_806E070
 .global byte_806E1B0
@@ -27,5 +27,13 @@
 
 
 /* External Symbols */
+.include "asm/asm28_0.inc"
+// .global byte_8098CA2
+// .global byte_80990B8
+// .global byte_8099CEC
+
+.include "data/dat38_33.inc"
+// .global byte_83F0716
+
 
 .endif // INC_DATA_DAT12

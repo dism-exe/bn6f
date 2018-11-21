@@ -558,7 +558,7 @@
 .global sub_80E9570
 .global sub_80E979C
 .global sub_80E97F0
-.global dword_80E98C0
+.global byte_80E98C0
 .global sub_80E996E
 .global sub_80E9994
 .global sub_80E9AF0
@@ -596,21 +596,21 @@
 .global off_80F2794
 .global off_80F27F8
 .global off_80F285C
-.global dword_80F28F0
-.global dword_80F2A54
-.global dword_80F390C
-.global dword_80F47D4
-.global dword_80F5838
-.global dword_80F6394
-.global dword_80F757C
-.global dword_80F8334
-.global dword_80F8EEC
-.global dword_80F9C80
-.global dword_80FACDC
-.global dword_80FB8E0
-.global dword_80FD044
-.global dword_80FDCF0
-.global dword_80FE7D0
+.global byte_80F28F0
+.global byte_80F2A54
+.global byte_80F390C
+.global byte_80F47D4
+.global byte_80F5838
+.global byte_80F6394
+.global byte_80F757C
+.global byte_80F8334
+.global byte_80F8EEC
+.global byte_80F9C80
+.global byte_80FACDC
+.global byte_80FB8E0
+.global byte_80FD044
+.global byte_80FDCF0
+.global byte_80FE7D0
 .global sub_80FF668
 .global byte_80FF7F0
 .global byte_81001E8
@@ -660,7 +660,7 @@
 // .global sound_play // () -> void
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
-// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global loc_8000AC8
 // .global sub_8000C72
 // .global sub_8000DE0
@@ -993,7 +993,7 @@
 // .global byte_80199F5
 // .global off_8019B78
 // .global off_8019BE0
-// .global dword_8019C34
+// .global byte_8019C34
 // .global sub_8019F86
 // .global sub_8019F8C
 // .global sub_8019FB4
@@ -1118,18 +1118,18 @@
 // .global byte_8070605
 
 .include "data/dat20.inc"
-// .global byte_8080315
+// .global byte_8080404
 // .global byte_8080C0C
 
 .include "asm/asm21.inc"
-// .global asc_808100C
+// .global byte_8081010
 
 .include "data/dat28.inc"
 // .global byte_80A0C10
 // .global byte_80A0C12
 
 .include "data/dat31.inc"
-// .global byte_810C35C
+// .global unk_810C35C
 // .global byte_810C364
 // .global off_810C6F0
 // .global byte_810C8CC
@@ -1160,17 +1160,17 @@
 // .global off_810E7B0
 // .global sub_810E81E
 // .global sub_810E854
-// .global dword_810EC80
-// .global dword_810EC80
+// .global byte_810EC80
+// .global byte_810EC88
 // .global off_810F010
 // .global sub_810F040
 // .global sub_810F090
-// .global dword_810F200
-// .global dword_810F200
+// .global byte_810F200
+// .global byte_810F208
 // .global off_810F39C
 // .global sub_810F3F8
 // .global byte_810F4E4
-// .global dword_810F4EC
+// .global byte_810F4EC
 // .global sub_810FA4C
 // .global off_810FCE0
 // .global sub_81100B0
@@ -1185,30 +1185,30 @@
 // .global byte_8110630
 // .global off_8110DC0
 // .global sub_8110E76
-// .global dword_8111130
-// .global dword_8111130
+// .global byte_8111130
+// .global byte_8111138
 // .global off_8111330
 // .global sub_8111816
 // .global sub_8111846
-// .global dword_811190C
-// .global dword_811190C
+// .global byte_811190C
+// .global byte_8111914
 // .global off_8111DC0
-// .global dword_8111FF8
-// .global dword_8111FF8
+// .global byte_8111FF8
+// .global byte_8112000
 // .global off_81121F0
-// .global dword_81126DC
-// .global dword_81126DC
+// .global byte_81126DC
+// .global byte_81126E4
 // .global off_81129A0
 // .global sub_81129EE
 // .global byte_8112B94
-// .global byte_8112B94
+// .global byte_8112B9C
 // .global off_8113078
 // .global byte_811323C
 // .global byte_8113244
 // .global off_81135CC
 // .global sub_8113626
-// .global dword_8113754
-// .global dword_8113754
+// .global byte_8113754
+// .global byte_811375C
 // .global off_8113D50
 // .global byte_8113DC0
 // .global sub_8114170
@@ -1220,27 +1220,27 @@
 // .global sub_8114F52
 // .global sub_8114F6A
 // .global sub_8115098
-// .global dword_81150AC
-// .global dword_81150AC
+// .global byte_81150AC
+// .global byte_81150B4
 // .global off_81154F0
-// .global dword_8115704
-// .global dword_8115704
+// .global byte_8115704
+// .global byte_811570C
 // .global off_8115950
 // .global sub_81159B0
 // .global sub_81159DC
 // .global sub_8115BB0
-// .global dword_8115BEC
-// .global dword_8115BEC
+// .global byte_8115BEC
+// .global byte_8115BF4
 // .global off_8115DE0
 // .global sub_811627A
 // .global sub_81162AA
-// .global dword_81162F8
-// .global dword_81162F8
+// .global byte_81162F8
+// .global byte_8116300
 // .global off_81163F0
 // .global sub_8116414
 // .global loc_81165A4
-// .global dword_81165BC
-// .global dword_81165BC
+// .global byte_81165BC
+// .global byte_81165C4
 // .global off_81166B0
 // .global sub_81166D4
 // .global sub_8116878

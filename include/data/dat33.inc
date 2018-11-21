@@ -66,8 +66,8 @@
 // .global sub_8120CC8
 
 .include "asm/asm33.inc"
-// .global dword_812913C
-// .global dword_8129180
+// .global byte_8129150
+// .global byte_8129180
 // .global sub_8129248
 // .global sub_812AC14
 // .global sub_812AF3C
@@ -110,7 +110,7 @@
 // .global sub_81325CC
 // .global sub_8132614
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_8149568
 // .global sub_8149644
 

@@ -59,6 +59,7 @@
 .global byte_813565C
 .global sub_81356D4
 .global sub_8136C24
+.global sub_8136D8C
 .global loc_8136DE0
 .global sub_81376B8
 .global sub_81376CC
@@ -69,7 +70,7 @@
 .global sub_8137808
 .global sub_8137884
 .global sub_8137890
-.global loc_81378B4
+.global sub_81378B4
 .global sub_8138294
 .global cb_81382AC
 
@@ -83,7 +84,7 @@
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
-// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global loc_8000AC8
@@ -151,7 +152,7 @@
 
 .include "data/dat01.inc"
 // .global byte_80213AC
-// .global byte_80213AC
+// .global byte_80213E8
 // .global byte_802158C
 // .global byte_80215C8
 // .global byte_8021604
@@ -303,9 +304,9 @@
 
 .include "asm/asm33.inc"
 // .global sub_8123300
-// .global dword_812913C
-// .global dword_8129178
-// .global dword_8129180
+// .global byte_8129150
+// .global byte_8129178
+// .global byte_8129180
 // .global sub_8129248
 // .global sub_812AC14
 // .global sub_812AF3C
@@ -315,16 +316,16 @@
 // .global sub_812B530
 
 .include "data/dat35.inc"
-// .global byte_812F044
-// .global byte_812F044
-// .global byte_812F044
+// .global dword_812F044
+// .global unk_812F04C
+// .global unk_812F054
 // .global byte_812F05C
 // .global byte_812F064
 // .global byte_812F06C
 
 .include "data/dat36.inc"
-// .global dword_8138944
-// .global dword_8138944
+// .global unk_8138944
+// .global byte_8138B90
 // .global off_8138C04
 // .global off_8138DBC
 // .global off_8138F10
@@ -365,7 +366,7 @@
 // .global sub_813D90C
 // .global sub_813D978
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_81440D8 // static () -> void
 // .global sub_81469A0
 // .global sub_81469DC
@@ -382,7 +383,7 @@
 // .global dword_86A5500
 // .global byte_86A5D20
 // .global dword_86A5D60
-// .global unk_86ACD60
+// .global byte_86ACD60
 // .global dword_86B7AA0
 // .global dword_86B7AE0
 

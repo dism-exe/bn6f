@@ -7,13 +7,15 @@
 .global byte_8067E18
 .global byte_8067E28
 .global byte_8067E2C
+.global byte_8067E8C
 .global byte_8067E8D
 .global dword_8067F24
-.global unk_8067F4F
+.global byte_8067F4F
 .global dword_8067F74
-.global unk_8067FDF
+.global byte_8067FDF
 .global off_8068044
 .global off_8068400
+.global off_80684F8
 .global off_8068734
 .global off_8068CCC
 .global off_8068D18
@@ -31,17 +33,17 @@
 // .global loc_801083E
 
 .include "data/dat20.inc"
-// .global byte_8080684
-// .global byte_8080685
-// .global byte_8080686
-// .global byte_8080687
+// .global off_8080684
+// .global off_8080684
+// .global off_8080684
+// .global off_8080684
 // .global byte_8080689
 // .global byte_808068A
 // .global byte_808068B
 
 .include "data/dat21.inc"
 // .global byte_8083C05
-// .global unk_80865AC
+// .global byte_80865AC
 
 .include "asm/asm28_1.inc"
 // .global byte_809F6CC
@@ -103,11 +105,12 @@
 // .global byte_85ABDD4
 // .global byte_85ABDF4
 // .global byte_85ABE14
-// .global unk_85CD026
+// .global byte_85CD026
 // .global dword_8613028
 
 .include "data/dat38_85.inc"
 // .global byte_86DF925
+// .global byte_86EA925
 
 
 /* Undeclared Symbols */

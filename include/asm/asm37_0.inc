@@ -4,7 +4,7 @@
 /* Public Symbols */
 .global sub_813B768
 .global sub_813B780
-.global loc_813B7A0
+.global sub_813B7A0
 .global sub_813B84C
 .global sub_813B920
 .global sub_813B928
@@ -76,7 +76,7 @@
 // .global sound_play // () -> void
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
-// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
@@ -125,16 +125,15 @@
 // .global byte_813B1EC
 // .global byte_813B2CD
 // .global byte_813B3AE
-// .global dword_813B48C
-// .global dword_813B4B0
-// .global dword_813B4D4
+// .global byte_813B3AE
+// .global byte_813B3AE
+// .global byte_813B3AE
 // .global byte_813B522
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_81465BC
 // .global sub_814692C
 // .global sub_8146B70
-// .global sub_8146E78
 // .global sub_8147B3C
 // .global sub_8148884
 // .global sub_8148FC0

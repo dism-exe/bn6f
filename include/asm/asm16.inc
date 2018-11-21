@@ -41,27 +41,31 @@
 .include "data/dat15.inc"
 // .global off_8077618
 // .global off_8077720
-// .global dword_8077724
-// .global dword_8077724
-// .global dword_8077724
-// .global dword_8077724
-// .global dword_8077724
-// .global dword_8077724
-// .global dword_8077724
-// .global dword_8077724
-// .global dword_8077724
-// .global dword_8077724
-// .global dword_8077724
+// .global byte_80779C8
+// .global byte_8077A58
+// .global byte_8077AA8
+// .global byte_8077AF8
+// .global byte_8077B28
+// .global byte_8077B68
+// .global byte_8077BB8
+// .global byte_8077BE8
+// .global byte_8077C18
+// .global byte_8077C68
+// .global byte_8077CB8
 
 .include "data/dat16.inc"
-// .global dword_8077EA4
-// .global dword_8077EF8
+// .global unk_8077EA4
+// .global byte_8077EF8
 
 .include "data/dat38_60.inc"
 // .global off_8617068
+// .global dword_8617190
+// .global dword_861876C
 
 
 /* Undeclared Symbols */
 // .equ unk_2037800, 0x2037800
+// .equ byte_3001960, 0x3001960
+// .equ unk_3005CD9, 0x3005CD9
 
 .endif // INC_ASM_ASM16

@@ -5,7 +5,9 @@
 .global sub_812EFE4
 .global sub_812F000
 .global sub_812F014
-.global byte_812F044
+.global dword_812F044
+.global unk_812F04C
+.global unk_812F054
 .global byte_812F05C
 .global byte_812F064
 .global byte_812F06C
@@ -67,8 +69,8 @@
 // .global sub_8120DAC
 
 .include "asm/asm33.inc"
-// .global dword_812913C
-// .global dword_8129178
+// .global byte_8129150
+// .global byte_8129178
 // .global sub_8129248
 // .global sub_812AC14
 // .global sub_812AFC8
@@ -111,7 +113,7 @@
 // .global sub_8132614
 // .global sub_81377EC
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_81440D8 // static () -> void
 // .global sub_8149568
 // .global sub_8149644

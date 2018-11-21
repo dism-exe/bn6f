@@ -239,7 +239,7 @@ loc_8021C16:
 	mov r2, #0
 loc_8021C28:
 	ldrh r7, [r3,r2]
-	ldr r6, dword_8021C64 // =0x1ff 
+	ldr r6, byte_8021C64 // =0xff 
 	and r6, r7
 	lsr r7, r7, #9
 	cmp r0, r6
@@ -267,7 +267,7 @@ loc_8021C48:
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_8021C60: .word unk_20018EC
-dword_8021C64: .word 0x1FF
+byte_8021C64: .byte 0xFF, 0x1, 0x0, 0x0
 	thumb_func_end sub_8021C02
 
 	thumb_func_start sub_8021C68
@@ -277,11 +277,11 @@ sub_8021C68:
 	// memBlock
 	ldr r0, [r0,#oToolkit_Unk2002230_Ptr]
 	// size
-	ldr r1, dword_8021C78 // =0xf00 
+	ldr r1, byte_8021C78 // =0x0 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 	.balign 4, 0x00
-dword_8021C78: .word 0xF00
+byte_8021C78: .byte 0x0, 0xF, 0x0, 0x0
 	thumb_func_end sub_8021C68
 
 // (int chip_idx, int searchItem, int off) -> void*
@@ -419,11 +419,11 @@ sub_8021D36:
 	mov r2, #8
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r0, off_8021D84 // =byte_8021D8A 
-	ldr r1, dword_8021D78 // =unk_20007D6 
+	ldr r1, byte_8021D78 // =0xd6 
 	mov r2, #8
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r0, off_8021D84 // =byte_8021D8A 
-	ldr r1, dword_8021D7C // =unk_200083A 
+	ldr r1, byte_8021D7C // =0x3a 
 	mov r2, #8
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
@@ -431,8 +431,8 @@ sub_8021D36:
 off_8021D6C: .word unk_2000AF0
 off_8021D70: .word unk_2001184
 off_8021D74: .word unk_200119C
-dword_8021D78: .word 0x20007D6
-dword_8021D7C: .word 0x200083A
+byte_8021D78: .byte 0xD6, 0x7, 0x0, 0x2
+byte_8021D7C: .byte 0x3A, 0x8, 0x0, 0x2
 off_8021D80: .word script_8021D88
 off_8021D84: .word byte_8021D8A
 script_8021D88:

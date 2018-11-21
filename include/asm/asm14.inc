@@ -8,7 +8,7 @@
 .global sub_8071CC4
 .global sub_8071CEE
 .global off_8071EB0
-.global dword_8071EBC
+.global off_8071EBC
 .global off_8071EC8
 .global off_8071ED4
 .global byte_8071F10
@@ -50,12 +50,13 @@
 
 .include "data/dat13.inc"
 // .global off_8071584
-// .global dword_8071670
-// .global dword_8071670
-// .global dword_8071670
-// .global dword_8071670
-// .global dword_8071670
-// .global dword_8071670
+// .global off_8071680
+// .global byte_8071970
+// .global byte_80719C0
+// .global byte_8071A10
+// .global byte_8071A60
+// .global byte_8071AB0
+// .global byte_8071AF8
 
 .include "data/dat14.inc"
 // .global dword_8072C3C
@@ -64,6 +65,8 @@
 
 .include "data/dat38_60.inc"
 // .global off_8617068
+// .global dword_8617190
+// .global byte_86172E4
 
 
 /* Undeclared Symbols */

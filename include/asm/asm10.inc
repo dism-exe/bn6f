@@ -12,6 +12,8 @@
 .global off_80665B4
 .global off_80665BC
 .global byte_80665E4
+.global off_8067230
+.global off_8067524
 .global off_8067754
 .global off_8067914
 .global off_8067944
@@ -78,9 +80,9 @@
 // .global byte_8067E2C
 // .global byte_8067E8D
 // .global dword_8067F24
-// .global unk_8067F4F
+// .global byte_8067F4F
 // .global dword_8067F74
-// .global unk_8067FDF
+// .global byte_8067FDF
 // .global off_8068044
 // .global off_8068400
 // .global off_8068734
@@ -97,10 +99,10 @@
 // .global dword_859E6D0
 // .global off_8610B04
 // .global byte_8610C18
-// .global unk_8610D64
+// .global byte_8610D64
 // .global off_86116C8
 // .global byte_861184C
-// .global unk_86119C4
+// .global byte_86119C4
 // .global dword_8611B68
 
 

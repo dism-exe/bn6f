@@ -58,19 +58,19 @@ off_8077D98: .word off_8077D9C
 off_8077D9C: .word off_8077DA4
 	.word off_8077DC4
 off_8077DA4: .word off_8077720
-	.word dword_8077724+0x2EC
-	.word dword_8077724+0x33C
-	.word dword_8077724+0x38C
-	.word dword_8077724+0x3DC
-	.word dword_8077724+0x40C
-	.word dword_8077724+0x44C
+	.word byte_80779C8+0x48
+	.word byte_8077A58+8
+	.word byte_8077AA8+8
+	.word byte_8077AF8+8
+	.word byte_8077B28+8
+	.word byte_8077B68+8
 	.word 0xFFFFFFFF
 off_8077DC4: .word off_8077720
-	.word dword_8077724+0x49C
-	.word dword_8077724+0x4CC
-	.word dword_8077724+0x4FC
-	.word dword_8077724+0x54C
-	.word dword_8077724+0x59C
+	.word byte_8077BB8+8
+	.word byte_8077BE8+8
+	.word byte_8077C18+8
+	.word byte_8077C68+8
+	.word byte_8077CB8+8
 	.word 0xFFFFFFFF
 	thumb_func_end sub_8077D8A
 
@@ -101,13 +101,21 @@ sub_8077DE0:
 off_8077E14: .word off_8077E18
 off_8077E18: .word nullsub_39+1
 	.word sub_80019D0+1
-	.word 0x3005CD9, 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9
+	.word unk_3005CD9
+	.word 0x800
+	.word nullsub_39+1
+	.word sub_80019D0+1
+	.word unk_3005CD9
 	.word 0x800
 off_8077E38: .word off_8077E3C
 off_8077E3C: .word off_8077E44
 	.word off_8077E44
 off_8077E44: .word off_8617068
-	.word 0x6008020, 0x8617190, 0x1800, 0x861876C, 0x3001960
+	.word 0x6008020
+	.word dword_8617190
+	.word 0x1800
+	.word dword_861876C
+	.word byte_3001960
 	.word 0x20
 	thumb_func_end sub_8077DE0
 
@@ -152,8 +160,8 @@ sub_8077E84:
 off_8077E98: .word pt_8077E9C
 pt_8077E9C:
 	// <endpool> <endfile>
-	.word dword_8077EA4
-	.word dword_8077EF8
+	.word unk_8077EA4
+	.word byte_8077EF8
 	thumb_func_end sub_8077E84
 
 /*For debugging purposes, connect comment at any range!*/

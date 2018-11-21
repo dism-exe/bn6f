@@ -512,5 +512,5 @@
 .equ unk_3007F60, 0x3007f60
 .equ unk_3007F78, 0x3007f78
 .equ unk_3007FE0, 0x3007fe0
-.equ unk_3007FF0, 0x3007ff0
+.equ dword_3007FF0, 0x3007ff0
 .equ unk_3007FFC, 0x3007ffc
