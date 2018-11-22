@@ -108,12 +108,12 @@ sub_8062BCC:
 off_8062BE0: .word pt_8062BE4
 pt_8062BE4:
 	// <endpool> <endfile>
-	.word dword_8062BFC
-	.word dword_8062DA4
-	.word dword_8062DE4
-	.word dword_8062E88
-	.word dword_8062EB4
-	.word dword_8062F1C
+	.word unk_8062BFC
+	.word byte_8062DA4
+	.word byte_8062DE4
+	.word byte_8062E88
+	.word byte_8062EB4
+	.word byte_8062F1C
 	thumb_func_end sub_8062BCC
 
 /*For debugging purposes, connect comment at any range!*/

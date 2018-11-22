@@ -1250,7 +1250,7 @@
 // .global byte_86E56FC
 
 .include "data/dat38_86.inc"
-// .global aTuDhr
+// .global byte_8736D74
 
 
 /* Undeclared Symbols */

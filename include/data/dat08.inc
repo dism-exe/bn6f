@@ -2,10 +2,10 @@
 .equ INC_DATA_DAT08, 0
 
 /* Public Symbols */
-.global dword_8060474
-.global dword_80604A0
-.global dword_80605E4
-.global dword_80605E8
+.global unk_8060474
+.global byte_80604A0
+.global byte_80605E4
+.global byte_80605E8
 .global off_806063C
 .global off_806064C
 .global off_806065C

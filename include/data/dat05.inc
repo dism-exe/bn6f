@@ -2,17 +2,17 @@
 .equ INC_DATA_DAT05, 0
 
 /* Public Symbols */
-.global dword_8052834
-.global dword_80529B4
-.global dword_8052A6C
-.global dword_8052B24
-.global dword_8052BDC
-.global dword_8052BE0
-.global dword_8052BE4
-.global dword_8052C10
-.global dword_8052D54
-.global dword_8052D80
-.global dword_8052D84
+.global unk_8052834
+.global byte_80529B4
+.global byte_8052A6C
+.global byte_8052B24
+.global byte_8052BDC
+.global byte_8052BE0
+.global byte_8052BE4
+.global byte_8052C10
+.global byte_8052D54
+.global byte_8052D80
+.global byte_8052D84
 .global off_8052D88
 .global off_8052DB4
 .global off_8052DE0

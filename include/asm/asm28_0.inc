@@ -173,7 +173,7 @@
 // .global sub_803F4EC
 // .global loc_803F512
 // .global sub_803F560
-// .global byte_803F62A
+// .global sub_803F644
 // .global sub_803F6B0
 // .global sub_803F740
 // .global sub_803F798

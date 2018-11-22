@@ -1580,7 +1580,7 @@ sub_8123F7C:
 	bl sub_8120C94
 	bl sub_8124870
 	// a1
-	ldr r0, a1 // =byte_8123F40 
+	ldr r0, off_8124074 // =byte_8123F40 
 	bl sub_80465A0 // (void *a1) -> void
 	mov r0, #0
 	ldr r1, off_8124078 // =byte_8123F3C 
@@ -1599,7 +1599,7 @@ off_8124064: .word unk_201ECAC
 byte_8124068: .byte 0x30, 0x62, 0x30, 0x0
 off_812406C: .word unk_201ECCC
 byte_8124070: .byte 0x40, 0x62, 0x30, 0x0
-a1: .word byte_8123F40
+off_8124074: .word byte_8123F40
 off_8124078: .word byte_8123F3C
 	thumb_func_end sub_8123F7C
 

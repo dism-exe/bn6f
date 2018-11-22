@@ -705,7 +705,6 @@
 // .equ unk_2000FD0, 0x2000FD0
 // .equ unk_2003334, 0x2003334
 // .equ unk_200AA98, 0x200AA98
-// .equ unk_3002300, 0x3002300
 // .equ unk_3005040, 0x3005040
 .equ LCDControl, 0x4000000
 

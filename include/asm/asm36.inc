@@ -49,6 +49,7 @@
 .global sub_81329C8
 .global sub_8132A14
 .global sub_8132A50
+.global sub_8132A9E
 .global sub_8132B88
 .global sub_8133200
 .global sub_81348DC
@@ -316,9 +317,9 @@
 // .global sub_812B530
 
 .include "data/dat35.inc"
-// .global dword_812F044
-// .global unk_812F04C
-// .global unk_812F054
+// .global byte_812F044
+// .global byte_812F04C
+// .global byte_812F054
 // .global byte_812F05C
 // .global byte_812F064
 // .global byte_812F06C

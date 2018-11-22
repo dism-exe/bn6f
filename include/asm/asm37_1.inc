@@ -171,8 +171,8 @@
 // .global byte_808A128
 
 .include "asm/asm24.inc"
-// .global unk_808C004
-// .global unk_808C0F4
+// .global byte_808C004
+// .global byte_808C0F4
 // .global byte_808C2F0
 
 .include "data/dat26.inc"

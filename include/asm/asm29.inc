@@ -166,9 +166,9 @@
 // .global byte_8088708
 
 .include "data/dat23.inc"
-// .global unk_8089DD8
-// .global unk_8089E44
-// .global unk_8089FD8
+// .global byte_8089DD8
+// .global byte_8089E44
+// .global byte_8089FD8
 
 .include "asm/asm24.inc"
 // .global byte_808C74C
@@ -190,7 +190,7 @@
 // .global byte_80A3A44
 
 .include "data/dat29.inc"
-// .global dword_80AAEA8
+// .global unk_80AAEA8
 
 .include "asm/asm30_0.inc"
 // .global sub_80AED50

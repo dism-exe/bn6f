@@ -115,7 +115,7 @@
 /* External Symbols */
 .include "asm/asm38.inc"
 // .global loc_3005E80
-// .global loc_30078C8
+// .global sub_30078C8
 // .global sub_30078E0
 // .global sub_3007958
 // .global sub_30079A4

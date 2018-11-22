@@ -2,10 +2,10 @@
 .equ INC_DATA_DAT23, 0
 
 /* Public Symbols */
-.global unk_8089DD8
+.global byte_8089DD8
 .global byte_8089DF4
-.global unk_8089E44
-.global unk_8089FD8
+.global byte_8089E44
+.global byte_8089FD8
 .global byte_808A128
 .global byte_808A220
 .global byte_808A6C8

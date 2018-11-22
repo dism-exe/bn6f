@@ -2,8 +2,8 @@
 .equ INC_ASM_ASM24, 0
 
 /* Public Symbols */
-.global unk_808C004
-.global unk_808C0F4
+.global byte_808C004
+.global byte_808C0F4
 .global byte_808C248
 .global byte_808C2F0
 .global byte_808C74C

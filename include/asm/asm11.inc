@@ -12,7 +12,7 @@
 .global off_8069310
 .global off_806931C
 .global byte_8069358
-.global dword_8069AF0
+.global byte_8069AF0
 .global off_8069C80
 .global sub_8069FE8
 .global sub_806A070
@@ -112,20 +112,20 @@
 .include "data/dat10.inc"
 // .global off_8068CCC
 // .global off_8068D18
-// .global dword_8068E48
+// .global byte_8068E48
 // .global off_8068E88
 // .global off_8068ED0
 // .global off_8068EF0
 // .global off_8068F30
-// .global dword_8068FA0
+// .global byte_8068FA0
 // .global off_8069010
 
 .include "data/dat11.inc"
-// .global dword_806C5D0
-// .global dword_806C638
-// .global dword_806C68C
-// .global dword_806C6E0
-// .global dword_806C748
+// .global unk_806C5D0
+// .global byte_806C638
+// .global byte_806C68C
+// .global byte_806C6E0
+// .global byte_806C748
 
 .include "data/dat20.inc"
 // .global byte_80806B3

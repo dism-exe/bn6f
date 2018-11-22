@@ -91,7 +91,7 @@ loc_8086FB4:
 	ldrb r0, [r0,#5]
 loc_8086FB6:
 	lsl r0, r0, #1
-	ldr r1, off_8086FCC // =dword_8086FD0 
+	ldr r1, off_8086FCC // =byte_8086FD0 
 	ldrh r0, [r1,r0]
 	mov r4, #0
 	mov r0, r0
@@ -101,9 +101,8 @@ loc_8086FB6:
 loc_8086FC8:
 	mov r0, r4
 	pop {r4,pc}
-off_8086FCC: .word dword_8086FD0
-dword_8086FD0: .word 0x5E205E1
-	.word 0xFC005E3
+off_8086FCC: .word byte_8086FD0
+byte_8086FD0: .byte 0xE1, 0x5, 0xE2, 0x5, 0xE3, 0x5, 0xC0, 0xF
 	thumb_func_end sub_8086FA4
 
 	thumb_local_start

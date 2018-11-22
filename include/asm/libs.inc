@@ -171,7 +171,7 @@
 // .global sound_MusicTable
 // .global byte_81C03AC
 // .global byte_81C03D8
-// .global aNintendosio32i
+// .global LibInfoText_aNintendosio32i
 // .global off_81C0418
 // .global byte_81C04A8
 // .global byte_81C055A
@@ -376,7 +376,7 @@
 // .equ dword_30055FC, 0x30055FC
 // .equ unk_3005600, 0x3005600
 // .equ loc_3005700, 0x3005700
-// .equ dword_3007FF0, 0x3007FF0
+// .equ byte_3007FF0, 0x3007FF0
 .equ VerticalCounter_LY_, 0x4000006
 .equ Channel1Sweepregister_NR10_, 0x4000060
 .equ Channel1Sweepregister_NR10_, 0x4000060

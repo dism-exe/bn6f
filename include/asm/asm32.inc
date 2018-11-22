@@ -642,7 +642,7 @@
 // .global sub_81329C8
 // .global sub_8132A14
 // .global sub_8132A50
-// .global byte_8132A9C
+// .global sub_8132A9E
 // .global sub_8132B88
 // .global sub_8133200
 // .global sub_81355D8

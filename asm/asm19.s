@@ -39,12 +39,14 @@ sub_807CDEC:
 off_807CE44: .word off_807C82C
 off_807CE48: .word unk_2037800
 off_807CE4C: .word off_807CE50
-off_807CE50: .word dword_807CE60
-	.word dword_807CE68
+off_807CE50: .word byte_807CE60
+	.word byte_807CE68
 	.word byte_807CE7C
 	.word byte_807CE8A
-dword_807CE60: .word 0x721C711C, 0xFFFF5A18
-dword_807CE68: .word 0x1F1C0E1C, 0x721C201C, 0x9B1C4B1C, 0x9C1C931C, 0xFFFF5B18
+byte_807CE60: .byte 0x1C, 0x71, 0x1C, 0x72, 0x18, 0x5A, 0xFF, 0xFF
+byte_807CE68: .byte 0x1C, 0xE, 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x72, 0x1C
+	.byte 0x4B, 0x1C, 0x9B, 0x1C, 0x93, 0x1C, 0x9C, 0x18, 0x5B
+	.byte 0xFF, 0xFF
 byte_807CE7C: .byte 0x1C, 0x5F, 0x1C, 0x81, 0x1C, 0x95, 0x18, 0x38, 0x18
 	.byte 0x39, 0x18, 0x3A, 0xFF, 0xFF
 byte_807CE8A: .byte 0x1C, 0x72, 0x1C, 0x86, 0xFF, 0xFF
@@ -211,10 +213,10 @@ sub_807CFFC:
 off_807D010: .word pt_807D014
 pt_807D014:
 	// <endpool> <endfile>
-	.word dword_807D024
-	.word dword_807D0B4
-	.word dword_807D1A8
-	.word dword_807D210
+	.word unk_807D024
+	.word byte_807D0B4
+	.word byte_807D1A8
+	.word byte_807D210
 	thumb_func_end sub_807CFFC
 
 /*For debugging purposes, connect comment at any range!*/

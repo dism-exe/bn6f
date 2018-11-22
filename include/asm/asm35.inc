@@ -58,12 +58,12 @@
 // .global byte_8129180
 
 .include "data/dat34.inc"
-// .global byte_812DA94
-// .global unk_812DABC
-// .global unk_812DAC4
-// .global unk_812DACC
-// .global unk_812DAD4
-// .global unk_812DADC
+// .global unk_812DA94
+// .global byte_812DABC
+// .global byte_812DAC4
+// .global byte_812DACC
+// .global byte_812DAD4
+// .global byte_812DADC
 
 .include "asm/asm36.inc"
 // .global sub_8132280

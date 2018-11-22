@@ -64,20 +64,20 @@ off_807ED80: .word off_807ED8C
 	.word off_807EDA8
 	.word off_807EDBC
 off_807ED8C: .word off_807EB18
-	.word dword_807EB68
-	.word dword_807EBB8
-	.word dword_807EC08
+	.word byte_807EB68
+	.word byte_807EBB8
+	.word byte_807EC08
 	.word off_807EC58
 	.word off_807ECA8
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
 off_807EDA8: .word off_807EB18
-	.word dword_807EB68
-	.word dword_807EBB8
+	.word byte_807EB68
+	.word byte_807EBB8
 	.word off_807ECA8
 	.word 0xFFFFFFFF
 off_807EDBC: .word off_807EB18
-	.word dword_807EB68
-	.word dword_807EBB8
+	.word byte_807EB68
+	.word byte_807EBB8
 	.word off_807EC58
 	.word off_807ECA8
 	.word 0xFFFFFFFF

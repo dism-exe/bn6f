@@ -2,7 +2,7 @@
 .equ INC_DATA_DAT29, 0
 
 /* Public Symbols */
-.global dword_80AAEA8
+.global unk_80AAEA8
 
 
 /* External Symbols */

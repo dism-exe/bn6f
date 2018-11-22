@@ -649,7 +649,7 @@ loc_809A01C:
 	thumb_local_start
 sub_809A02C:
 	push {r4-r7,lr}
-	bl byte_809A2AC+0x30
+	bl sub_809A2DC
 	mov r0, #0x20 
 	str r0, [r5,#0x74]
 	mov r0, #0
@@ -946,13 +946,22 @@ byte_809A284: .byte 0x53, 0x46, 0xDB, 0x6B, 0x19, 0x79, 0x5A, 0x79, 0x9
 	.word byte_809A2AC
 byte_809A2AC: .byte 0x4, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x5, 0x0, 0x0, 0x6, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x6, 0x0, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x6, 0x0, 0x0, 0x0, 0x0, 0x91
-	.byte 0x0, 0x0, 0x32, 0x0, 0x0, 0x0, 0x1, 0x93, 0x0, 0x0, 0xC, 0x0, 0x0, 0x0, 0xF0, 0xB5, 0x2
-	.byte 0x48, 0x66, 0xF7, 0x26, 0xFC, 0xF0, 0xBD, 0x0, 0x0
-	.word byte_809A2EC
+	.byte 0x0, 0x0, 0x32, 0x0, 0x0, 0x0, 0x1, 0x93, 0x0, 0x0, 0xC, 0x0, 0x0, 0x0
+	thumb_func_end sub_809A260
+
+	thumb_local_start
+sub_809A2DC:
+	push {r4-r7,lr}
+	// initRefs
+	ldr r0, off_809A2E8 // =byte_809A2EC 
+	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	pop {r4-r7,pc}
+	.balign 4, 0x00
+off_809A2E8: .word byte_809A2EC
 byte_809A2EC: .byte 0x30, 0x55, 0x6C, 0x8, 0x20, 0x1B, 0x0, 0x3, 0x20, 0x0, 0x0
 	.byte 0x0, 0xB4, 0x52, 0x6C, 0x8, 0x0, 0xD0, 0x0, 0x6, 0x20, 0x2
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	thumb_func_end sub_809A260
+	thumb_func_end sub_809A2DC
 
 	thumb_local_start
 sub_809A308:
@@ -3911,7 +3920,7 @@ sub_809CB68:
 	bl sub_8033FC0
 	bl sub_8003984
 	bl sub_8003AD4
-	ldr r0, byte_809CE84+44 // =0x4 
+	ldr r0, byte_809CEAC+4 // =0x4 
 	mov r1, #0x1e
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0
@@ -3929,7 +3938,7 @@ sub_809CB88:
 	ldr r0, byte_809CBFC // =0x0 
 	bl chatbox_8045F3C
 	beq loc_809CBAA
-	ldr r0, byte_809CE84+44 // =0x4 
+	ldr r0, byte_809CEAC+4 // =0x4 
 	mov r1, #0x20 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #2
@@ -3951,7 +3960,7 @@ loc_809CBAA:
 	str r0, [r5,#0x70]
 	b loc_809CBE8
 loc_809CBCC:
-	ldr r0, byte_809CE84+44 // =0x4 
+	ldr r0, byte_809CEAC+4 // =0x4 
 	mov r1, #0x1f
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #1
@@ -3965,7 +3974,7 @@ loc_809CBDC:
 	beq loc_809CBE8
 	b loc_809CBCC
 loc_809CBE8:
-	ldr r0, byte_809CE84+44 // =0x4 
+	ldr r0, byte_809CEAC+4 // =0x4 
 	mov r1, #0x20 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0
@@ -4015,7 +4024,7 @@ loc_809CC3E:
 	strb r4, [r5,#8]
 	tst r4, r4
 	beq loc_809CC52
-	ldr r0, byte_809CE84+44 // =0x4 
+	ldr r0, byte_809CEAC+4 // =0x4 
 	mov r1, #0x22 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 loc_809CC52:
@@ -4070,7 +4079,7 @@ loc_809CC7E:
 	bl sub_80010BE
 	mov r0, #0x8d
 	bl sound_play // () -> void
-	ldr r0, byte_809CE84+44 // =0x4 
+	ldr r0, byte_809CEAC+4 // =0x4 
 	mov r1, #0x23 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	b loc_809CCE4
@@ -4087,7 +4096,7 @@ loc_809CCC0:
 	mov r0, #0x68 
 	bl sound_play // () -> void
 	bl sub_80010C6
-	ldr r0, byte_809CE84+44 // =0x4 
+	ldr r0, byte_809CEAC+4 // =0x4 
 	mov r1, #0x20 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 loc_809CCE4:
@@ -4112,7 +4121,7 @@ byte_809CD18: .byte 0x0, 0x0, 0x0, 0x0, 0x6, 0x0, 0x0, 0x0, 0x7, 0x0, 0x0, 0x0, 
 	thumb_local_start
 sub_809CD34:
 	push {r4-r7,lr}
-	ldr r0, byte_809CE84+44 // =0x4 
+	ldr r0, byte_809CEAC+4 // =0x4 
 	mov r1, #0x21 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0
@@ -4171,7 +4180,7 @@ loc_809CD9E:
 	mov r0, #1
 	mov r1, #0x63 
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-	ldr r0, byte_809CE84+44 // =0x4 
+	ldr r0, byte_809CEAC+4 // =0x4 
 	mov r1, #0x31 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0
@@ -4187,7 +4196,7 @@ off_809CDC0: .word byte_200AD04
 	thumb_local_start
 sub_809CDC4:
 	push {r4-r7,lr}
-	ldr r0, byte_809CE84+44 // =0x4 
+	ldr r0, byte_809CEAC+4 // =0x4 
 	mov r1, #0x1f
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0
@@ -4219,7 +4228,7 @@ loc_809CDE8:
 	mov r0, #0x33 
 loc_809CE02:
 	mov r1, r0
-	ldr r0, byte_809CE84+44 // =0x4 
+	ldr r0, byte_809CEAC+4 // =0x4 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0
 	b locret_809CE10
@@ -4239,7 +4248,7 @@ sub_809CE14:
 	mov r12, r7
 	tst r0, r0
 	bne loc_809CE38
-	bl byte_803F62A+0x1A
+	bl sub_803F644
 	beq loc_809CE38
 	mov r0, #4
 	bl sub_803F740
@@ -4266,7 +4275,7 @@ sub_809CE40:
 	mov r5, #0
 loc_809CE50:
 	ldr r1, [r6,r5]
-	ldr r0, byte_809CE84+40 // =0xff 
+	ldr r0, byte_809CEAC // =0xff 
 	cmp r1, r0
 	beq loc_809CE64
 	mov r0, r4
@@ -4278,7 +4287,7 @@ loc_809CE64:
 	mov r5, #0
 loc_809CE66:
 	ldr r1, [r6,r5]
-	ldr r0, byte_809CE84+40 // =0xff 
+	ldr r0, byte_809CEAC // =0xff 
 	cmp r1, r0
 	beq loc_809CE7A
 	ldr r2, [r7,r5]
@@ -4294,7 +4303,8 @@ off_809CE80: .word byte_809CE84
 byte_809CE84: .byte 0x2D, 0x0, 0x0, 0x0, 0x2E, 0x0, 0x0, 0x0, 0x2F, 0x0, 0x0, 0x0, 0x30
 	.byte 0x0, 0x0, 0x0, 0x56, 0x0, 0x0, 0x0, 0x57, 0x0, 0x0, 0x0, 0x58, 0x0
 	.byte 0x0, 0x0, 0x59, 0x0, 0x0, 0x0, 0x5A, 0x0, 0x0, 0x0, 0x5B, 0x0, 0x0
-	.byte 0x0, 0xFF, 0xFF, 0xFF, 0xFF, 0x4, 0x34, 0x3, 0x2
+	.byte 0x0
+byte_809CEAC: .byte 0xFF, 0xFF, 0xFF, 0xFF, 0x4, 0x34, 0x3, 0x2
 byte_809CEB4: .byte 0x3F, 0x0, 0x6, 0x2, 0xFF, 0x10, 0x47, 0x0, 0xFF, 0x4, 0x40
 	.byte 0x4, 0xFF, 0x4, 0x3E, 0xE0, 0xB9, 0x73, 0x8, 0x2, 0xFF, 0x10
 	.byte 0x3A, 0x4, 0x4, 0x80, 0x2, 0xFF, 0x10, 0x7B, 0x0, 0x0, 0x0

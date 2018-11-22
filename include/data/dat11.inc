@@ -2,11 +2,11 @@
 .equ INC_DATA_DAT11, 0
 
 /* Public Symbols */
-.global dword_806C5D0
-.global dword_806C638
-.global dword_806C68C
-.global dword_806C6E0
-.global dword_806C748
+.global unk_806C5D0
+.global byte_806C638
+.global byte_806C68C
+.global byte_806C6E0
+.global byte_806C748
 .global off_806C7B0
 .global off_806C7CC
 .global off_806C7E8

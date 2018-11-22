@@ -698,7 +698,7 @@
 .global dword_87343D4
 .global dword_87343F4
 .global dword_8734934
-.global aTuDhr
+.global byte_8736D74
 
 
 /* External Symbols */

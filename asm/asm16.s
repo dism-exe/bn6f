@@ -39,11 +39,12 @@ sub_8077D00:
 off_8077D58: .word off_8077618
 off_8077D5C: .word unk_2037800
 off_8077D60: .word off_8077D64
-off_8077D64: .word dword_8077D6C
-	.word dword_8077D78
-dword_8077D6C: .word 0x671C661C, 0x6A1C681C, 0xFFFF1F1C
-dword_8077D78: .word 0x531C2B1C, 0x661C1F1C, 0x681C671C, 0x1C186A1C
-	.byte 0xFF, 0xFF
+off_8077D64: .word byte_8077D6C
+	.word byte_8077D78
+byte_8077D6C: .byte 0x1C, 0x66, 0x1C, 0x67, 0x1C, 0x68, 0x1C, 0x6A, 0x1C
+	.byte 0x1F, 0xFF, 0xFF
+byte_8077D78: .byte 0x1C, 0x2B, 0x1C, 0x53, 0x1C, 0x1F, 0x1C, 0x66, 0x1C
+	.byte 0x67, 0x1C, 0x68, 0x1C, 0x6A, 0x18, 0x1C, 0xFF, 0xFF
 	thumb_func_end sub_8077D00
 
 	thumb_func_start sub_8077D8A
@@ -58,19 +59,19 @@ off_8077D98: .word off_8077D9C
 off_8077D9C: .word off_8077DA4
 	.word off_8077DC4
 off_8077DA4: .word off_8077720
-	.word byte_80779C8+0x48
-	.word byte_8077A58+8
-	.word byte_8077AA8+8
-	.word byte_8077AF8+8
-	.word byte_8077B28+8
-	.word byte_8077B68+8
+	.word byte_8077A10
+	.word byte_8077A60
+	.word byte_8077AB0
+	.word byte_8077B00
+	.word byte_8077B30
+	.word byte_8077B70
 	.word 0xFFFFFFFF
 off_8077DC4: .word off_8077720
-	.word byte_8077BB8+8
-	.word byte_8077BE8+8
-	.word byte_8077C18+8
-	.word byte_8077C68+8
-	.word byte_8077CB8+8
+	.word byte_8077BC0
+	.word byte_8077BF0
+	.word byte_8077C20
+	.word byte_8077C70
+	.word byte_8077CC0
 	.word 0xFFFFFFFF
 	thumb_func_end sub_8077D8A
 

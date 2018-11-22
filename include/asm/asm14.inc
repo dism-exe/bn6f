@@ -56,10 +56,10 @@
 // .global byte_8071A10
 // .global byte_8071A60
 // .global byte_8071AB0
-// .global byte_8071AF8
+// .global byte_8071B00
 
 .include "data/dat14.inc"
-// .global dword_8072C3C
+// .global byte_8072C3C
 // .global off_807360C
 // .global off_8073F1C
 

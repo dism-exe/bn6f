@@ -74,14 +74,14 @@
 // .global byte_8066368
 
 .include "data/dat10.inc"
-// .global dword_8067DF8
-// .global dword_8067E08
+// .global unk_8067DF8
+// .global byte_8067E08
 // .global byte_8067E18
 // .global byte_8067E2C
 // .global byte_8067E8D
-// .global dword_8067F24
+// .global byte_8067F24
 // .global byte_8067F4F
-// .global dword_8067F74
+// .global byte_8067F74
 // .global byte_8067FDF
 // .global off_8068044
 // .global off_8068400

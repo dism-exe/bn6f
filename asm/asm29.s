@@ -4925,7 +4925,7 @@ sub_80A7BC0:
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_8142080
 	mov r1, r0
-	ldr r0, off_80A7C54 // =unk_8089DD8 
+	ldr r0, off_80A7C54 // =byte_8089DD8 
 	bl init_s_02011C50_8036E90
 locret_80A7C3C:
 	pop {r4-r7,pc}
@@ -4935,7 +4935,7 @@ byte_80A7C44: .byte 0x0, 0x0, 0x8, 0x0
 byte_80A7C48: .byte 0x0, 0x0, 0x8, 0x0
 byte_80A7C4C: .byte 0x0, 0x0, 0x10, 0x0
 byte_80A7C50: .byte 0x0, 0x0, 0x10, 0x0
-off_80A7C54: .word unk_8089DD8
+off_80A7C54: .word byte_8089DD8
 	thumb_func_end sub_80A7BC0
 
 	thumb_local_start
@@ -5065,7 +5065,7 @@ sub_80A7CFE:
 	ldr r0, [r5,#0x14]
 	cmp r0, r4
 	bne loc_80A7D60
-	ldr r0, off_80A7D88 // =unk_8089E44 
+	ldr r0, off_80A7D88 // =byte_8089E44 
 	mov r1, r5
 	bl init_s_02011C50_8036E90
 	b locret_80A7D70
@@ -5073,7 +5073,7 @@ loc_80A7D60:
 	bl sub_81420B0
 	cmp r0, r4
 	bne locret_80A7D70
-	ldr r0, off_80A7D8C // =unk_8089FD8 
+	ldr r0, off_80A7D8C // =byte_8089FD8 
 	mov r1, r5
 	bl init_s_02011C50_8036E90
 locret_80A7D70:
@@ -5084,8 +5084,8 @@ byte_80A7D78: .byte 0x0, 0x0, 0xE, 0x0
 byte_80A7D7C: .byte 0x0, 0x0, 0xE, 0x0
 byte_80A7D80: .byte 0x0, 0x0, 0x1C, 0x0
 byte_80A7D84: .byte 0x0, 0x0, 0x1C, 0x0
-off_80A7D88: .word unk_8089E44
-off_80A7D8C: .word unk_8089FD8
+off_80A7D88: .word byte_8089E44
+off_80A7D8C: .word byte_8089FD8
 	thumb_func_end sub_80A7CFE
 
 	thumb_func_start sub_80A7D90
@@ -11156,7 +11156,7 @@ off_80AAE94: .word unk_2036750
 
 	thumb_local_start
 sub_80AAE98:
-	ldr r2, off_80AAEA4 // =dword_80AAEA8 
+	ldr r2, off_80AAEA4 // =unk_80AAEA8 
 	mov r1, #0x28 
 	mul r0, r1
 	add r0, r0, r2
@@ -11164,7 +11164,7 @@ sub_80AAE98:
 	.balign 4, 0x00
 off_80AAEA4:
 	// <endpool> <endfile>
-	.word dword_80AAEA8
+	.word unk_80AAEA8
 	thumb_func_end sub_80AAE98
 
 /*For debugging purposes, connect comment at any range!*/

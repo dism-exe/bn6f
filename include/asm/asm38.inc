@@ -22,7 +22,7 @@
 .global loc_3006814
 .global loc_30068E8
 .global sub_3006920
-.global loc_30078C8
+.global sub_30078C8
 .global sub_30078E0
 .global sub_3007958
 .global sub_30079A4
@@ -59,7 +59,7 @@
 
 .include "asm/asm03_0.inc"
 // .global off_802FD70
-// .global dword_802FD74
+// .global byte_802FD74
 // .global sub_8031612
 
 .include "asm/asm03_1.inc"

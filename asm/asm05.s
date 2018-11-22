@@ -88,9 +88,9 @@ off_8052778: .word off_80527A4
 	.word off_80527CC
 	.word off_80527D4
 	.word off_80527DC
-	.word dword_80527E4
-	.word dword_80527E8
-	.word dword_80527EC
+	.word byte_80527E4
+	.word byte_80527E8
+	.word byte_80527EC
 off_80527A4: .word off_8052480
 	.word 0xFFFFFFFF
 off_80527AC: .word off_80524C0
@@ -107,9 +107,9 @@ off_80527D4: .word byte_8052510
 	.word 0xFFFFFFFF
 off_80527DC: .word byte_8052538
 	.word 0xFFFFFFFF
-dword_80527E4: .word 0xFFFFFFFF
-dword_80527E8: .word 0xFFFFFFFF
-dword_80527EC: .word 0xFFFFFFFF
+byte_80527E4: .byte 0xFF, 0xFF, 0xFF, 0xFF
+byte_80527E8: .byte 0xFF, 0xFF, 0xFF, 0xFF
+byte_80527EC: .byte 0xFF, 0xFF, 0xFF, 0xFF
 	thumb_func_end sub_8052764
 
 	thumb_func_start sub_80527F0
@@ -124,18 +124,18 @@ sub_80527F0:
 	bl sub_8003570
 	pop {pc}
 off_8052804: .word off_8052808
-off_8052808: .word dword_8052834
-	.word dword_80529B4
-	.word dword_8052A6C
-	.word dword_8052B24
-	.word dword_8052BDC
-	.word dword_8052BE0
-	.word dword_8052BE4
-	.word dword_8052C10
-	.word dword_8052D54
-	.word dword_8052D80
+off_8052808: .word unk_8052834
+	.word byte_80529B4
+	.word byte_8052A6C
+	.word byte_8052B24
+	.word byte_8052BDC
+	.word byte_8052BE0
+	.word byte_8052BE4
+	.word byte_8052C10
+	.word byte_8052D54
+	.word byte_8052D80
 	// <endpool> <endfile>
-	.word dword_8052D84
+	.word byte_8052D84
 	thumb_func_end sub_80527F0
 
 /*For debugging purposes, connect comment at any range!*/

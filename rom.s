@@ -197,3 +197,5 @@ dat37:
 .global IWRAMRoutines
 IWRAMRoutines:
 IWRAMRoutinesROMLocation:
+.global IWRAMRoutinesROMLocation
+

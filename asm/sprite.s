@@ -790,7 +790,7 @@ sub_8002BEA:
 off_8002BF0: .word byte_200DCA0
 	.word byte_8002BF8
 byte_8002BF8: .byte 0x0, 0x6, 0x55, 0x4E
-aCompStr8xEnd8x: .ascii "COMP\n"
+DebugStrSprite_8002BFC: .ascii "COMP\n"
 	.ascii "STR:%8x\n"
 	.ascii "END:%8x\n"
 	.asciz "SIZ:%X/%X\n"

@@ -39,11 +39,11 @@ sub_807931C:
 off_8079374: .word off_80790A4
 off_8079378: .word unk_2037800
 off_807937C: .word off_8079380
-off_8079380: .word dword_8079388
-	.word dword_8079390
-dword_8079388: .word 0x201C0E1C, 0xFFFF4B1C
-dword_8079390: .word 0x5A180E1C, 0x991C5B18
-	.byte 0xFF, 0xFF
+off_8079380: .word byte_8079388
+	.word byte_8079390
+byte_8079388: .byte 0x1C, 0xE, 0x1C, 0x20, 0x1C, 0x4B, 0xFF, 0xFF
+byte_8079390: .byte 0x1C, 0xE, 0x18, 0x5A, 0x18, 0x5B, 0x1C, 0x99, 0xFF
+	.byte 0xFF
 	thumb_func_end sub_807931C
 
 	thumb_func_start sub_807939A

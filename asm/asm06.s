@@ -104,11 +104,11 @@ sub_80596C8:
 off_80596DC: .word off_80596E0
 off_80596E0:
 	// <endpool> <endfile>
-	.word dword_80596F4
-	.word dword_805975C
-	.word dword_8059A58
-	.word dword_8059C00
-	.word dword_8059D30
+	.word unk_80596F4
+	.word byte_805975C
+	.word byte_8059A58
+	.word byte_8059C00
+	.word byte_8059D30
 	thumb_func_end sub_80596C8
 
 /*For debugging purposes, connect comment at any range!*/

@@ -3,12 +3,18 @@
 
 /* Public Symbols */
 .global off_8072C10
-.global dword_8072C3C
+.global byte_8072C3C
 .global off_807360C
 .global off_8073650
 .global off_8073F1C
 .global off_8074F30
+.global byte_8074FDC
+.global byte_807500C
 .global off_807505C
+.global byte_807534C
+.global byte_807537C
+.global byte_80753CC
+.global byte_80753FC
 
 
 /* External Symbols */

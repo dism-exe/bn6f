@@ -1454,7 +1454,7 @@ off_800C914: .word 0x3007959
 	thumb_local_start
 sub_800C918:
 	push {lr}
-	ldr r0, off_800C924 // =loc_30078C8 
+	ldr r0, off_800C924 // =sub_30078C8 
 	mov lr, pc
 	bx r0
 	pop {pc}

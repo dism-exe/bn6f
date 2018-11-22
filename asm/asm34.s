@@ -213,11 +213,11 @@ loc_812D532:
 	bl sub_80466C4
 	pop {r1,r2}
 	bne locret_812D546
-	ldr r0, off_812D548 // =byte_812C258 
+	ldr r0, off_812D548 // =unk_812C258 
 	bl sub_812D56C
 locret_812D546:
 	pop {r4-r7,pc}
-off_812D548: .word byte_812C258
+off_812D548: .word unk_812C258
 	thumb_func_end sub_812D52E
 
 	thumb_local_start

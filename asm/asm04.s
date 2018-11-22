@@ -67,20 +67,20 @@ sub_804E6D0:
 	pop {pc}
 	.byte 0, 0
 off_804E6E0: .word off_804E6E4
-off_804E6E4: .word dword_804E6F8
+off_804E6E4: .word byte_804E6F8
 	.word off_804E6FC
 	.word off_804E70C
-	.word dword_804E714
+	.word byte_804E714
 	.word off_804E718
-dword_804E6F8: .word 0xFFFFFFFF
+byte_804E6F8: .byte 0xFF, 0xFF, 0xFF, 0xFF
 off_804E6FC: .word off_804E450
 	.word off_804E478
 	.word off_804E4A0
 	.word 0xFFFFFFFF
 off_804E70C: .word byte_804E5D4
 	.word 0xFFFFFFFF
-dword_804E714: .word 0xFFFFFFFF
-off_804E718: .word dword_804E604
+byte_804E714: .byte 0xFF, 0xFF, 0xFF, 0xFF
+off_804E718: .word byte_804E604
 	.word 0xFFFFFFFF
 	thumb_func_end sub_804E6D0
 
@@ -98,7 +98,7 @@ sub_804E720:
 off_804E734: .word off_804E738
 off_804E738:
 	// <endpool>
-	.word byte_804E74C
+	.word unk_804E74C
 	thumb_func_end sub_804E720
 
 	.word byte_804E87C

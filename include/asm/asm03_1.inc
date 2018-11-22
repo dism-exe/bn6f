@@ -191,6 +191,7 @@
 .global sub_803F530
 .global sub_803F560
 .global sub_803F618
+.global sub_803F644
 .global sub_803F674
 .global sub_803F6B0
 .global sub_803F740
@@ -201,7 +202,7 @@
 .global sub_803FA42
 .global sub_803FB28
 .global cb_803FB3C
-.global dword_803FCE4
+.global byte_803FCE4
 .global sub_803FCF0
 
 
@@ -894,6 +895,9 @@
 // .equ unk_2009460, 0x2009460
 // .equ unk_2009480, 0x2009480
 // .equ byte_2009790, 0x2009790
+// .equ byte_2009940, 0x2009940
+// .equ byte_2009940, 0x2009940
+// .equ byte_2009940, 0x2009940
 // .equ byte_2009940, 0x2009940
 // .equ sCamera, 0x2009980
 // .equ sCamera, 0x2009980

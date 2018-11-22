@@ -2,12 +2,12 @@
 .equ INC_DATA_DAT34, 0
 
 /* Public Symbols */
-.global byte_812DA94
-.global unk_812DABC
-.global unk_812DAC4
-.global unk_812DACC
-.global unk_812DAD4
-.global unk_812DADC
+.global unk_812DA94
+.global byte_812DABC
+.global byte_812DAC4
+.global byte_812DACC
+.global byte_812DAD4
+.global byte_812DADC
 .global sub_812DAE4
 
 

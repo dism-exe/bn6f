@@ -58,10 +58,10 @@
 // .global byte_807CD9C
 
 .include "data/dat19.inc"
-// .global dword_807D024
-// .global dword_807D0B4
-// .global dword_807D1A8
-// .global dword_807D210
+// .global unk_807D024
+// .global byte_807D0B4
+// .global byte_807D1A8
+// .global byte_807D210
 
 .include "data/dat38_60.inc"
 // .global dword_8618DFC

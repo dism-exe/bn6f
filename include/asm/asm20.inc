@@ -41,9 +41,9 @@
 .include "data/dat19.inc"
 // .global off_807EA6C
 // .global off_807EB18
-// .global dword_807EB68
-// .global dword_807EBB8
-// .global dword_807EC08
+// .global byte_807EB68
+// .global byte_807EBB8
+// .global byte_807EC08
 // .global off_807EC58
 // .global off_807ECA8
 

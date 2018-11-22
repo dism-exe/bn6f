@@ -232,14 +232,14 @@
 // .global chatbox_8045F4C
 
 .include "data/dat03.inc"
-// .global dword_804CFBC
-// .global dword_804CFD4
-// .global dword_804D08C
-// .global dword_804D090
-// .global dword_804D094
-// .global dword_804D098
-// .global dword_804D09C
-// .global dword_804D0A0
+// .global unk_804CFBC
+// .global byte_804CFD4
+// .global byte_804D08C
+// .global byte_804D090
+// .global byte_804D094
+// .global byte_804D098
+// .global byte_804D09C
+// .global byte_804D0A0
 // .global off_804D0E4
 
 .include "data/dat20.inc"

@@ -79,7 +79,7 @@
 // .global byte_8129180
 
 .include "data/dat33.inc"
-// .global byte_812C258
+// .global unk_812C258
 // .global byte_812C268
 // .global byte_812C278
 // .global byte_812C280

@@ -37,7 +37,7 @@
 // .equ iStack, 0x3007E00
 // .equ byte_3007F60, 0x3007F60
 // .equ byte_3007FE0, 0x3007FE0
-// .equ unk_3007FFC, 0x3007FFC
+// .equ byte_3007FFC, 0x3007FFC
 .equ GeneralLCDStatus_STAT_LYC_, 0x4000004
 .equ KeyInterruptControl, 0x4000132
 .equ GamePakWaitstateControl, 0x4000204

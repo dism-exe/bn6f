@@ -3,7 +3,7 @@
 	arm_func_start start_
 start_:
 	b loc_80000D0
-dword_8000004: .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B2411
+GameHeader: .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B2411
 	.word 0x217F81C0, 0x19BE52A3, 0x20CE0993, 0x4A4A4610, 0xEC3127F8
 	.word 0x33E8C758, 0xBFCEE382, 0x94DFF485, 0xC1094BCE, 0xC08A5694
 	.word 0xFCA77213, 0x734D849F, 0x619ACAA3, 0x27A39758, 0x769803FC
@@ -17,18 +17,18 @@ dword_8000004: .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B2411
 loc_80000D0:
 	mov r0, #0x12
 	msr CPSR_cf, r0
-	ldr r13, off_80001EC // =byte_3007F60
+	ldr r13, off_80001EC // =byte_3007F60 
 	mov r0, #0x13
 	msr CPSR_cf, r0
-	ldr r13, off_80001F0 // =byte_3007FE0
+	ldr r13, off_80001F0 // =byte_3007FE0 
 	mov r0, #0x1f
 	msr CPSR_cf, r0
 	ldr r13, off_80001F4 // =iStack 
-	ldr r0, off_80001F8 // =unk_3007FFC 
+	ldr r0, off_80001F8 // =byte_3007FFC 
 	ldr r1, off_80001FC // =sub_3005B00 
 	str r1, [r0]
 	ldr r0, off_8000200 // =GamePakWaitstateControl 
-	ldr r1, dword_8000204 // =0x45b4 
+	ldr r1, byte_8000204 // =0xb4 
 	str r1, [r0]
 	// mem
 	mov r0, #0x3000000 // unk_3000000
@@ -58,7 +58,7 @@ loc_80000D0:
 	// src
 	ldr r0, mem // =IWRAMRoutinesROMLocation 
 	// dest
-	ldr r1, a2 // =sub_3005B00 
+	ldr r1, off_800020C // =sub_3005B00 
 	// size
 	ldr r2, IWRAMRoutinesSize_p // =0x1ed4 
 	bl start_copyMemory // (void *src, void *dest, int size) -> void
@@ -84,7 +84,7 @@ loc_80000D0:
 	mov r1, #8
 	strh r1, [r0]
 	ldr r0, off_8000230 // =KeyInterruptControl 
-	ldr r1, dword_8000234 // =0x83ff 
+	ldr r1, byte_8000234 // =0xff 
 	strh r1, [r0]
 	ldr r0, off_8000238 // =main_+1 
 	bx r0
@@ -114,14 +114,12 @@ start_copyMemory:
 off_80001EC: .word byte_3007F60
 off_80001F0: .word byte_3007FE0
 off_80001F4: .word iStack
-off_80001F8: .word unk_3007FFC
+off_80001F8: .word byte_3007FFC
 off_80001FC: .word 0x3005B00
 off_8000200: .word GamePakWaitstateControl
-dword_8000204: .word 0x45B4
-mem:
-	// TODO: had to do this because this keeps resyncing to sub_81D6000.
-	.word IWRAMRoutinesROMLocation // <force> DCD IWRAMRoutinesROMLocation
-a2: .word 0x3005B00
+byte_8000204: .byte 0xB4, 0x45, 0x0, 0x0
+mem: .word 0x81D6000
+off_800020C: .word 0x3005B00
 IWRAMRoutinesSize_p: .word 0x1ED4
 off_8000214: .word CpuSet_toolKit+1
 off_8000218: .word sub_8006C22+1
@@ -131,7 +129,7 @@ off_8000224: .word dword_2009930
 off_8000228: .word dword_200A870
 off_800022C: .word GeneralLCDStatus_STAT_LYC_
 off_8000230: .word KeyInterruptControl
-dword_8000234: .word 0x83FF
+byte_8000234: .byte 0xFF, 0x83, 0x0, 0x0
 off_8000238: .word main_+1
 	arm_func_end start_copyMemory
 
@@ -183,7 +181,7 @@ off_8000278: .word 0x3005E03
 	thumb_func_start start_800027C
 start_800027C:
 	push {lr}
-	ldr r1, dword_8000294 // =sub_3005E18 
+	ldr r1, byte_8000294 // =0x19 
 	mov lr, pc
 	bx r1
 	pop {r0}
@@ -198,7 +196,7 @@ start_8000288:
 	bx r1
 	pop {r0}
 	bx r0
-dword_8000294: .word 0x3005E19
+byte_8000294: .byte 0x19, 0x5E, 0x0, 0x3
 off_8000298: .word 0x3005E2D
 	thumb_func_end start_8000288
 

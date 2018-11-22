@@ -93,7 +93,7 @@
 .global sub_802E830
 .global sub_802EF5C
 .global sub_802F068
-.global dword_802F0A8
+.global byte_802F0A8
 .global sub_802F0C4
 .global sub_802F0D8
 .global sub_802F0F4
@@ -116,7 +116,7 @@
 .global sub_802F530
 .global Load_ho_802F544
 .global off_802FD70
-.global dword_802FD74
+.global byte_802FD74
 .global sub_802FDB0
 .global loc_802FDB4
 .global objRender_802FE0C
@@ -722,10 +722,10 @@
 // .global dword_87343D4
 // .global dword_87343F4
 // .global dword_8734934
-// .global aTuDhr
+// .global byte_8736D74
 
 .include "data/dat38_87.inc"
-// .global aF_0
+// .global byte_873811C
 
 .include "data/dat38_97.inc"
 // .global dword_87F3620

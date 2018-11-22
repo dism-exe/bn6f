@@ -144,7 +144,7 @@
 // .global sub_803D138
 // .global sub_803F524
 // .global sub_803F798
-// .global dword_803FCE4
+// .global byte_803FCE4
 
 .include "asm/asm03_2.inc"
 // .global sub_8048C24

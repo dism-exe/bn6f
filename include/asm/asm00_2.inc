@@ -349,8 +349,8 @@
 
 .include "asm/start.inc"
 // .global start_
-// .global dword_8000004
-// .global dword_8000004
+// .global GameHeader
+// .global GameHeader
 
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
@@ -558,7 +558,7 @@
 // .global sub_802E4B8
 // .global sub_802E830
 // .global sub_802EF5C
-// .global dword_802F0A8
+// .global byte_802F0A8
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_802FE48

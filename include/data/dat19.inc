@@ -2,10 +2,10 @@
 .equ INC_DATA_DAT19, 0
 
 /* Public Symbols */
-.global dword_807D024
-.global dword_807D0B4
-.global dword_807D1A8
-.global dword_807D210
+.global unk_807D024
+.global byte_807D0B4
+.global byte_807D1A8
+.global byte_807D210
 .global off_807D2F0
 .global off_807D300
 .global off_807D310
@@ -13,9 +13,9 @@
 .global byte_807D370
 .global off_807EA6C
 .global off_807EB18
-.global dword_807EB68
-.global dword_807EBB8
-.global dword_807EC08
+.global byte_807EB68
+.global byte_807EBB8
+.global byte_807EC08
 .global off_807EC58
 .global off_807ECA8
 

@@ -326,22 +326,22 @@ sub_806DCD4:
 off_806DCE8: .word pt_806DCEC
 pt_806DCEC:
 	// <endpool> <endfile>
-	.word dword_806DD2C
-	.word dword_806DD44
-	.word dword_806DD84
-	.word dword_806DD9C
-	.word dword_806DDB4
-	.word dword_806DDCC
-	.word dword_806DDE4
-	.word dword_806DDFC
-	.word dword_806DE3C
-	.word dword_806DE54
-	.word dword_806DE80
-	.word dword_806DEC0
-	.word dword_806DEEC
-	.word dword_806DF18
-	.word dword_806DF44
-	.word dword_806DF70
+	.word unk_806DD2C
+	.word byte_806DD44
+	.word byte_806DD84
+	.word byte_806DD9C
+	.word byte_806DDB4
+	.word byte_806DDCC
+	.word byte_806DDE4
+	.word byte_806DDFC
+	.word byte_806DE3C
+	.word byte_806DE54
+	.word byte_806DE80
+	.word byte_806DEC0
+	.word byte_806DEEC
+	.word byte_806DF18
+	.word byte_806DF44
+	.word byte_806DF70
 	thumb_func_end sub_806DCD4
 
 /*For debugging purposes, connect comment at any range!*/

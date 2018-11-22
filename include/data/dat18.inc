@@ -31,7 +31,7 @@
 
 /* External Symbols */
 .include "data/dat13.inc"
-// .global unk_8071402
+// .global byte_8071402
 
 .include "asm/asm28_0.inc"
 // .global byte_80990DC

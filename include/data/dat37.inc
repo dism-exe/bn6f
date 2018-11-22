@@ -19,8 +19,8 @@
 .global off_81B9114
 .global byte_81C03AC
 .global byte_81C03D8
-.global aFuMboot
-.global aNintendosio32i
+.global LibInfoText_FU_MBOOT
+.global LibInfoText_aNintendosio32i
 .global off_81C0418
 .global byte_81C04A8
 .global byte_81C055A
@@ -41,7 +41,7 @@
 .global byte_81C7000
 .global byte_81D081E
 .global byte_81D083F
-.global byte_81D4314
+.global unk_81D4314
 
 
 /* External Symbols */
