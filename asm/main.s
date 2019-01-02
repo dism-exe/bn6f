@@ -41,13 +41,13 @@ loc_800032A:
 	bl chatbox_onUpdate_803FEB4
 	bl cb_call_200A880
 	bl PET_onUpdate_8001B94
-	ldr r0, off_8000344 // =loc_3006814 
+	ldr r0, off_8000344 // =sub_3006814+1 
 	mov lr, pc
 	bx r0
 	bl main_static_8000454
 	b main_gameRoutine
 	.balign 4, 0x00
-off_8000344: .word 0x3006815
+off_8000344: .word sub_3006814+1
 off_8000348: .word main_jt_subsystem
 main_jt_subsystem: .word Load_ho_802F544+1
 	.word cb_80050EC+1
@@ -69,7 +69,7 @@ main_jt_subsystem: .word Load_ho_802F544+1
 	.word reqBBS_cb_813F404+1
 	.word menuControl_cb_email+1
 	.word cb_8049E04+1
-	.byte 0, 0, 0, 0
+	.word 0x0
 	thumb_func_end main_
 
 	thumb_local_start
@@ -129,7 +129,7 @@ loc_80003F2:
 	mvn r4, r4
 	ldrh r5, [r0]
 	strh r5, [r0,#6]
-	ldr r3, byte_8000450 // =0xff 
+	ldr r3, dword_8000450 // =0x3ff 
 	strh r4, [r0]
 	mov r6, r4
 	and r6, r5
@@ -174,7 +174,7 @@ loc_8000438:
 	mov pc, lr
 	.balign 4, 0x00
 off_800044C: .word KeyStatus
-byte_8000450: .byte 0xFF, 0x3, 0x0, 0x0
+dword_8000450: .word 0x3FF
 	thumb_func_end main_static_80003E4
 
 	thumb_local_start
@@ -290,10 +290,10 @@ off_800056C: .word dword_2009930
 main_static_8000570:
 	push {lr}
 	bl sub_814E8A0
-	ldr r0, byte_800059C // =0xd 
+	ldr r0, dword_800059C // =0x93040d 
 	bl sub_814EE2C
 	mov r0, #8
-	ldr r1, byte_80005A8 // =0x79 
+	ldr r1, off_80005A8 // =sub_3005D78+1 
 	bl start_800024C
 	ldr r0, off_80005A0 // =GeneralLCDStatus_STAT_LYC_ 
 	ldrh r1, [r0]
@@ -307,10 +307,10 @@ main_static_8000570:
 	strh r1, [r0]
 	pop {pc}
 	.balign 4, 0x00
-byte_800059C: .byte 0xD, 0x4, 0x93, 0x0
+dword_800059C: .word 0x93040D
 off_80005A0: .word GeneralLCDStatus_STAT_LYC_
 	.word off_3000E70
-byte_80005A8: .byte 0x79, 0x5D, 0x0, 0x3
+off_80005A8: .word sub_3005D78+1
 	thumb_func_end main_static_8000570
 
 /*For debugging purposes, connect comment at any range!*/

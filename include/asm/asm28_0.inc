@@ -2,7 +2,7 @@
 .equ INC_ASM_ASM28_0, 0
 
 /* Public Symbols */
-.global byte_8098C78
+.global dword_8098C78
 .global byte_8098CA2
 .global byte_8098DDC
 .global byte_80990B8
@@ -134,7 +134,7 @@
 // .global sub_80137B6 // (int a1, int a2) -> u8
 
 .include "asm/asm02.inc"
-// .global sub_8021AEE
+// .global dword_8021AEC
 
 .include "asm/asm03_0.inc"
 // .global sub_802D15E

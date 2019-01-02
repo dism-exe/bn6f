@@ -2,7 +2,7 @@
 .equ INC_DATA_DAT19, 0
 
 /* Public Symbols */
-.global unk_807D024
+.global byte_807D024
 .global byte_807D0B4
 .global byte_807D1A8
 .global byte_807D210

@@ -69,7 +69,7 @@ off_807ED8C: .word off_807EB18
 	.word byte_807EC08
 	.word off_807EC58
 	.word off_807ECA8
-	.byte 0xFF, 0xFF, 0xFF, 0xFF
+	.word 0xFFFFFFFF
 off_807EDA8: .word off_807EB18
 	.word byte_807EB68
 	.word byte_807EBB8
@@ -110,15 +110,15 @@ sub_807EDD4:
 off_807EE08: .word off_807EE0C
 off_807EE0C: .word nullsub_39+1
 	.word sub_8001A46+1
-	.word 0x3005CD9
+	.word nullsub_38+1
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_8001A46+1
-	.word 0x3005CD9
+	.word nullsub_38+1
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_8001A46+1
-	.word 0x3005CD9
+	.word nullsub_38+1
 	.word 0x800
 off_807EE3C: .word off_807EE40
 off_807EE40: .word off_807EE4C
@@ -181,7 +181,7 @@ sub_807EE92:
 off_807EEA8: .word pt_807EEAC
 pt_807EEAC:
 	// <endpool> <endfile>
-	.word unk_807EEB8
+	.word byte_807EEB8
 	.word byte_807EFD4
 	.word byte_807F1E0
 	thumb_func_end sub_807EE92

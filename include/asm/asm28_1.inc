@@ -11,7 +11,7 @@
 .global sub_809F656 // (void* a1) -> int
 .global sub_809F68C
 .global off_809F6AC
-.global byte_809F6B0
+.global dword_809F6B0
 .global byte_809F6B8
 .global byte_809F6CC
 .global byte_809F6EC
@@ -65,8 +65,8 @@
 // .global chatbox_8045EFC
 
 .include "data/dat28.inc"
-// .global byte_809FEE4
-// .global byte_809FFE8
+// .global dword_809FEE4
+// .global dword_809FFE8
 // .global byte_80A3360
 // .global off_80A336C
 // .global off_80A3370

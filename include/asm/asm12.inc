@@ -45,7 +45,7 @@
 // .global byte_806D820
 
 .include "data/dat12.inc"
-// .global unk_806DD2C
+// .global byte_806DD2C
 // .global byte_806DD44
 // .global byte_806DD84
 // .global byte_806DD9C

@@ -28,16 +28,16 @@
 .global reqBBS_runDialog_8140A70
 .global byte_8140A74
 .global byte_8140A8C
-.global byte_8140AA4
-.global byte_8140ABC
-.global byte_8140AD4
-.global byte_8140AEC
-.global byte_8140B1C
-.global byte_8140B34
-.global byte_8140B4C
-.global byte_8140B64
-.global byte_8140B7C
-.global byte_8140B94
+.global dword_8140AA4
+.global dword_8140ABC
+.global dword_8140AD4
+.global dword_8140AEC
+.global dword_8140B1C
+.global dword_8140B34
+.global dword_8140B4C
+.global dword_8140B64
+.global dword_8140B7C
+.global dword_8140B94
 .global byte_8140BAC
 .global byte_8140BF0
 .global byte_8140C60
@@ -173,7 +173,11 @@
 // .equ dword_2001178, 0x2001178
 // .equ unk_2001400, 0x2001400
 // .equ dynamicArr, 0x2005780
-// .equ unk_200578F, 0x200578F
+// .equ byte_2005784, 0x2005784
+// .equ byte_200578D, 0x200578D
+// .equ byte_200578E, 0x200578E
+// .equ byte_200578F, 0x200578F
+// .equ dword_20057A8, 0x20057A8
 // .equ reqBBS_numRequestsSent, 0x20065B0
 // .equ byte_2008450, 0x2008450
 // .equ sChatbox, 0x2009CD0

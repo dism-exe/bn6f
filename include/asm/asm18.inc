@@ -10,6 +10,9 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global nullsub_38
+
 .include "asm/asm00_0.inc"
 // .global sub_8001778
 // .global sub_8001780
@@ -53,7 +56,7 @@
 // .global byte_807A850
 
 .include "data/dat18.inc"
-// .global unk_807AAFC
+// .global byte_807AAFC
 // .global byte_807AC18
 // .global byte_807ACA8
 

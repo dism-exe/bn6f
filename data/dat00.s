@@ -121,54 +121,54 @@ off_801EF68: .word dword_86F2240
 	.word unk_3001AA0
 	.word 0x20
 	.word 0x0
-pt_801EF84: .word byte_801F040
-	.word byte_801F08C
-	.word byte_801F0D8
-	.word byte_801F12C
-	.word byte_801F180
-	.word byte_801F1C4
-	.word byte_801F1FC
-	.word byte_801F234
-	.word byte_801F260
-	.word byte_801F2A0
-	.word byte_801F2D8
-	.word byte_801F32C
+pt_801EF84: .word dword_801F040
+	.word dword_801F08C
+	.word dword_801F0D8
+	.word dword_801F12C
+	.word dword_801F180
+	.word dword_801F1C4
+	.word dword_801F1FC
+	.word dword_801F234
+	.word dword_801F260
+	.word dword_801F2A0
+	.word dword_801F2D8
+	.word dword_801F32C
 	.word word_801F374
-	.word byte_801F3CC
-	.word byte_801F404
-	.word byte_801F44C
-	.word byte_801F4A4
-	.word byte_801F4E0
-	.word byte_801F514
-	.word byte_801F550
+	.word dword_801F3CC
+	.word dword_801F404
+	.word dword_801F44C
+	.word dword_801F4A4
+	.word dword_801F4E0
+	.word dword_801F514
+	.word dword_801F550
 pt_801EFD4: .word word_801F554
-	.word byte_801F558
-	.word byte_801F590
-	.word byte_801F5E4
-	.word byte_801F638
-	.word byte_801F690
-	.word byte_801F6E4
-	.word byte_801F738
-	.word byte_801F788
-	.word byte_801F7D8
-	.word byte_801F82C
-	.word byte_801F87C
-	.word byte_801F8D4
-	.word byte_801F924
-	.word byte_801F978
-	.word byte_801F9CC
-	.word byte_801FA1C
-	.word byte_801FA64
-	.word byte_801FAAC
-	.word byte_801FAF8
-	.word byte_801FB44
-	.word byte_801FB94
-	.word byte_801FBE0
-	.word byte_801FC34
-	.word byte_801FC80
-	.word byte_801FCD0
-	.word byte_801FD18
-byte_801F040: .byte 0x34, 0x40, 0x0, 0x0
+	.word dword_801F558
+	.word dword_801F590
+	.word dword_801F5E4
+	.word dword_801F638
+	.word dword_801F690
+	.word dword_801F6E4
+	.word dword_801F738
+	.word dword_801F788
+	.word dword_801F7D8
+	.word dword_801F82C
+	.word dword_801F87C
+	.word dword_801F8D4
+	.word dword_801F924
+	.word dword_801F978
+	.word dword_801F9CC
+	.word dword_801FA1C
+	.word dword_801FA64
+	.word dword_801FAAC
+	.word dword_801FAF8
+	.word dword_801FB44
+	.word dword_801FB94
+	.word dword_801FBE0
+	.word dword_801FC34
+	.word dword_801FC80
+	.word dword_801FCD0
+	.word dword_801FD18
+dword_801F040: .word 0x4034
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1380
@@ -187,7 +187,7 @@ byte_801F040: .byte 0x34, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F08C: .byte 0x34, 0x40, 0x0, 0x0
+dword_801F08C: .word 0x4034
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1440
@@ -206,7 +206,7 @@ byte_801F08C: .byte 0x34, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F0D8: .byte 0x2C, 0x40, 0x0, 0x0
+dword_801F0D8: .word 0x402C
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word byte_86F1640
@@ -227,7 +227,7 @@ byte_801F0D8: .byte 0x2C, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F12C: .byte 0x30, 0x40, 0x1, 0x0
+dword_801F12C: .word 0x14030
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1800
@@ -248,7 +248,7 @@ byte_801F12C: .byte 0x30, 0x40, 0x1, 0x0
 	.word dword_86F1A80
 	.word byte_801FDC0
 	.word 0x4068
-byte_801F180: .byte 0x3C, 0x40, 0x0, 0x0
+dword_801F180: .word 0x403C
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word byte_86F1480
@@ -265,7 +265,7 @@ byte_801F180: .byte 0x3C, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F1C4: .byte 0x48, 0x40, 0x0, 0x0
+dword_801F1C4: .word 0x4048
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1940
@@ -279,7 +279,7 @@ byte_801F1C4: .byte 0x48, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F1FC: .byte 0x48, 0x40, 0x0, 0x0
+dword_801F1FC: .word 0x4048
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1940
@@ -293,7 +293,7 @@ byte_801F1FC: .byte 0x48, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F234: .byte 0x54, 0x40, 0x0, 0x0
+dword_801F234: .word 0x4054
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1400
@@ -304,7 +304,7 @@ byte_801F234: .byte 0x54, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F260: .byte 0x44, 0x40, 0x1, 0x0
+dword_801F260: .word 0x14044
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1380
@@ -320,7 +320,7 @@ byte_801F260: .byte 0x44, 0x40, 0x1, 0x0
 	.word dword_86F1A80
 	.word byte_801FDC0
 	.word 0x408C
-byte_801F2A0: .byte 0xC, 0x18, 0x2, 0x0
+dword_801F2A0: .word 0x2180C
 	.word dword_86F1AC0
 	.word byte_86F1B00
 	.word byte_86F1B40
@@ -334,7 +334,7 @@ byte_801F2A0: .byte 0xC, 0x18, 0x2, 0x0
 	.word dword_86F1D40
 	.word dword_86F1D80
 	.word byte_801FDC0
-byte_801F2D8: .byte 0x28, 0x10, 0x4, 0x0
+dword_801F2D8: .word 0x41028
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word byte_86F1500
@@ -355,7 +355,7 @@ byte_801F2D8: .byte 0x28, 0x10, 0x4, 0x0
 	.word dword_86F1440
 	.word dword_86F19C0
 	.word dword_86F1A80
-byte_801F32C: .byte 0x38, 0x40, 0x0, 0x0
+dword_801F32C: .word 0x4038
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word byte_86F1480
@@ -396,7 +396,7 @@ byte_801F376: .byte 0x1, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word 0x4070
-byte_801F3CC: .byte 0x84, 0x18, 0x2, 0x0
+dword_801F3CC: .word 0x21884
 	.word dword_86F1AC0
 	.word byte_86F1B00
 	.word byte_86F1B40
@@ -410,7 +410,7 @@ byte_801F3CC: .byte 0x84, 0x18, 0x2, 0x0
 	.word dword_86F1D40
 	.word dword_86F1D80
 	.word byte_801FDC0
-byte_801F404: .byte 0x38, 0x40, 0x0, 0x0
+dword_801F404: .word 0x4038
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word byte_86F1640
@@ -428,7 +428,7 @@ byte_801F404: .byte 0x38, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F44C: .byte 0x2C, 0x40, 0x1, 0x0
+dword_801F44C: .word 0x1402C
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1780
@@ -450,7 +450,7 @@ byte_801F44C: .byte 0x2C, 0x40, 0x1, 0x0
 	.word dword_86F1A80
 	.word byte_801FDC0
 	.word 0x406C
-byte_801F4A4: .byte 0x44, 0x40, 0x0, 0x0
+dword_801F4A4: .word 0x4044
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word byte_86F1640
@@ -465,7 +465,7 @@ byte_801F4A4: .byte 0x44, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F4E0: .byte 0x4C, 0x40, 0x0, 0x0
+dword_801F4E0: .word 0x404C
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word byte_86F1480
@@ -478,7 +478,7 @@ byte_801F4E0: .byte 0x4C, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F514: .byte 0x44, 0x40, 0x0, 0x0
+dword_801F514: .word 0x4044
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1700
@@ -493,10 +493,10 @@ byte_801F514: .byte 0x44, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F550: .byte 0x0, 0x20, 0x3, 0x0
+dword_801F550: .word 0x32000
 word_801F554: .hword 0x2078
 byte_801F556: .byte 0x3, 0x0
-byte_801F558: .byte 0x48, 0x40, 0x0, 0x0
+dword_801F558: .word 0x4048
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1800
@@ -510,7 +510,7 @@ byte_801F558: .byte 0x48, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F590: .byte 0x2C, 0x40, 0x0, 0x0
+dword_801F590: .word 0x402C
 	.word dword_86F1A40
 	.word dword_86F1600
 	.word byte_86F1540
@@ -531,7 +531,7 @@ byte_801F590: .byte 0x2C, 0x40, 0x0, 0x0
 	.word dword_86F1A00
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F5E4: .byte 0x28, 0x40, 0x0, 0x0
+dword_801F5E4: .word 0x4028
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1600
@@ -552,7 +552,7 @@ byte_801F5E4: .byte 0x28, 0x40, 0x0, 0x0
 	.word dword_86F1A00
 	.word dword_86F19C0
 	.word dword_86F1A80
-byte_801F638: .byte 0x28, 0x40, 0x1, 0x0
+dword_801F638: .word 0x14028
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F19C0
@@ -574,7 +574,7 @@ byte_801F638: .byte 0x28, 0x40, 0x1, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word 0x4038
-byte_801F690: .byte 0x2C, 0x40, 0x0, 0x0
+dword_801F690: .word 0x402C
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word byte_86F1500
@@ -595,7 +595,7 @@ byte_801F690: .byte 0x2C, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F6E4: .byte 0x2C, 0x40, 0x0, 0x0
+dword_801F6E4: .word 0x402C
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1440
@@ -616,7 +616,7 @@ byte_801F6E4: .byte 0x2C, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F738: .byte 0x30, 0x40, 0x0, 0x0
+dword_801F738: .word 0x4030
 	.word dword_86F1A40
 	.word dword_86F17C0
 	.word dword_86F1600
@@ -636,7 +636,7 @@ byte_801F738: .byte 0x30, 0x40, 0x0, 0x0
 	.word dword_86F1400
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F788: .byte 0x30, 0x40, 0x0, 0x0
+dword_801F788: .word 0x4030
 	.word dword_86F1A40
 	.word dword_86F1440
 	.word dword_86F1780
@@ -656,7 +656,7 @@ byte_801F788: .byte 0x30, 0x40, 0x0, 0x0
 	.word dword_86F1400
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F7D8: .byte 0x2C, 0x40, 0x0, 0x0
+dword_801F7D8: .word 0x402C
 	.word dword_86F1A40
 	.word byte_86F13C0
 	.word byte_86F1500
@@ -677,7 +677,7 @@ byte_801F7D8: .byte 0x2C, 0x40, 0x0, 0x0
 	.word dword_86F1400
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F82C: .byte 0x30, 0x40, 0x0, 0x0
+dword_801F82C: .word 0x4030
 	.word dword_86F1A40
 	.word dword_86F17C0
 	.word dword_86F1700
@@ -697,7 +697,7 @@ byte_801F82C: .byte 0x30, 0x40, 0x0, 0x0
 	.word dword_86F1400
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F87C: .byte 0x2C, 0x40, 0x0, 0x0
+dword_801F87C: .word 0x402C
 	.word dword_86F1A40
 	.word dword_86F1800
 	.word byte_86F16C0
@@ -719,7 +719,7 @@ byte_801F87C: .byte 0x2C, 0x40, 0x0, 0x0
 	.word dword_86F1400
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F8D4: .byte 0x30, 0x40, 0x0, 0x0
+dword_801F8D4: .word 0x4030
 	.word dword_86F1A40
 	.word dword_86F1800
 	.word dword_86F1440
@@ -739,7 +739,7 @@ byte_801F8D4: .byte 0x30, 0x40, 0x0, 0x0
 	.word dword_86F1400
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F924: .byte 0x2C, 0x40, 0x0, 0x0
+dword_801F924: .word 0x402C
 	.word dword_86F1A40
 	.word byte_86F14C0
 	.word dword_86F1780
@@ -760,7 +760,7 @@ byte_801F924: .byte 0x2C, 0x40, 0x0, 0x0
 	.word dword_86F1400
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F978: .byte 0x2C, 0x40, 0x0, 0x0
+dword_801F978: .word 0x402C
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1400
@@ -781,7 +781,7 @@ byte_801F978: .byte 0x2C, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801F9CC: .byte 0x30, 0x40, 0x0, 0x0
+dword_801F9CC: .word 0x4030
 	.word dword_86F1A40
 	.word dword_86F1700
 	.word dword_86F1780
@@ -801,7 +801,7 @@ byte_801F9CC: .byte 0x30, 0x40, 0x0, 0x0
 	.word dword_86F1400
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801FA1C: .byte 0x38, 0x40, 0x0, 0x0
+dword_801FA1C: .word 0x4038
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word byte_86F1500
@@ -819,7 +819,7 @@ byte_801FA1C: .byte 0x38, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801FA64: .byte 0x38, 0x40, 0x0, 0x0
+dword_801FA64: .word 0x4038
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1440
@@ -837,7 +837,7 @@ byte_801FA64: .byte 0x38, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801FAAC: .byte 0x34, 0x40, 0x0, 0x0
+dword_801FAAC: .word 0x4034
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F17C0
@@ -856,7 +856,7 @@ byte_801FAAC: .byte 0x34, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801FAF8: .byte 0x34, 0x40, 0x0, 0x0
+dword_801FAF8: .word 0x4034
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1440
@@ -875,7 +875,7 @@ byte_801FAF8: .byte 0x34, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801FB44: .byte 0x30, 0x40, 0x0, 0x0
+dword_801FB44: .word 0x4030
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word byte_86F13C0
@@ -895,7 +895,7 @@ byte_801FB44: .byte 0x30, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801FB94: .byte 0x34, 0x40, 0x0, 0x0
+dword_801FB94: .word 0x4034
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F17C0
@@ -914,7 +914,7 @@ byte_801FB94: .byte 0x34, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801FBE0: .byte 0x28, 0x40, 0x0, 0x0
+dword_801FBE0: .word 0x4028
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1800
@@ -935,7 +935,7 @@ byte_801FBE0: .byte 0x28, 0x40, 0x0, 0x0
 	.word dword_86F1A00
 	.word dword_86F19C0
 	.word dword_86F1A80
-byte_801FC34: .byte 0x34, 0x40, 0x0, 0x0
+dword_801FC34: .word 0x4034
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1800
@@ -954,7 +954,7 @@ byte_801FC34: .byte 0x34, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801FC80: .byte 0x30, 0x40, 0x0, 0x0
+dword_801FC80: .word 0x4030
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word byte_86F14C0
@@ -974,7 +974,7 @@ byte_801FC80: .byte 0x30, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801FCD0: .byte 0x38, 0x40, 0x0, 0x0
+dword_801FCD0: .word 0x4038
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1400
@@ -992,7 +992,7 @@ byte_801FCD0: .byte 0x38, 0x40, 0x0, 0x0
 	.word dword_86F19C0
 	.word dword_86F1A80
 	.word byte_801FDC0
-byte_801FD18: .byte 0x34, 0x40, 0x0, 0x0
+dword_801FD18: .word 0x4034
 	.word dword_86F1A40
 	.word dword_86F19C0
 	.word dword_86F1700

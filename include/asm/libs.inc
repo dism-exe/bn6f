@@ -98,6 +98,7 @@
 .global sub_814E21C
 .global sub_814E234
 .global sub_814E248
+.global sub_814E260
 .global sub_814E4DC
 .global sub_814E758
 .global sub_814E7CC
@@ -118,6 +119,8 @@
 .global sub_814F988
 .global sub_814F9AC
 .global sub_814FA14
+.global sub_814FBFC
+.global sub_814FD54
 .global sub_814FD74
 .global sub_814FD88
 .global sub_814FDD0
@@ -162,8 +165,8 @@
 // .global sub_813D98C
 
 .include "data/dat37.inc"
-// .global byte_814FE90
-// .global byte_814FE94
+// .global dword_814FE90
+// .global dword_814FE94
 // .global off_8158278
 // .global off_815827C
 // .global byte_8158280
@@ -340,9 +343,9 @@
 // .equ unk_2010440, 0x2010440
 // .equ byte_201047C, 0x201047C
 // .equ byte_2010480, 0x2010480
-// .equ unk_2010690, 0x2010690
+// .equ byte_2010690, 0x2010690
 // .equ byte_2010B90, 0x2010B90
-// .equ dword_2010CA0, 0x2010CA0
+// .equ off_2010CA0, 0x2010CA0
 // .equ dword_2010CAC, 0x2010CAC
 // .equ dword_2010CB0, 0x2010CB0
 // .equ dword_2010CC0, 0x2010CC0
@@ -360,22 +363,23 @@
 // .equ byte_30000F0, 0x30000F0
 // .equ byte_30000FA, 0x30000FA
 // .equ off_3000E8C, 0x3000E8C
-// .equ unk_30045C0, 0x30045C0
-// .equ dword_3005570, 0x3005570
-// .equ dword_3005574, 0x3005574
-// .equ dword_3005590, 0x3005590
-// .equ dword_30055B4, 0x30055B4
-// .equ dword_30055BC, 0x30055BC
-// .equ dword_30055E0, 0x30055E0
-// .equ dword_30055E4, 0x30055E4
-// .equ dword_30055E8, 0x30055E8
-// .equ dword_30055EC, 0x30055EC
-// .equ dword_30055F0, 0x30055F0
-// .equ dword_30055F4, 0x30055F4
-// .equ dword_30055F8, 0x30055F8
-// .equ dword_30055FC, 0x30055FC
-// .equ unk_3005600, 0x3005600
-// .equ loc_3005700, 0x3005700
+// .equ byte_30045C0, 0x30045C0
+// .equ off_3005570, 0x3005570
+// .equ off_3005574, 0x3005574
+// .equ off_3005590, 0x3005590
+// .equ off_30055B4, 0x30055B4
+// .equ off_30055BC, 0x30055BC
+// .equ off_30055E0, 0x30055E0
+// .equ off_30055E4, 0x30055E4
+// .equ off_30055E8, 0x30055E8
+// .equ off_30055EC, 0x30055EC
+// .equ off_30055F0, 0x30055F0
+// .equ off_30055F4, 0x30055F4
+// .equ off_30055F8, 0x30055F8
+// .equ off_30055FC, 0x30055FC
+// .equ byte_3005600, 0x3005600
+// .equ byte_3005700, 0x3005700
+// .equ byte_3005700, 0x3005700
 // .equ byte_3007FF0, 0x3007FF0
 .equ VerticalCounter_LY_, 0x4000006
 .equ Channel1Sweepregister_NR10_, 0x4000060

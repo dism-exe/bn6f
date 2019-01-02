@@ -210,12 +210,12 @@ npc_809E704:
 	lsl r1, r1, #0x10
 	add r0, r0, r1
 	str r0, [r5,#0x74]
-	ldr r0, byte_809E7C8 // =0x0 
+	ldr r0, dword_809E7C8 // =0x80000 
 	ldrb r1, [r5,#4]
 	push {r5}
 	bl SWI_Div
 	pop {r5}
-	ldr r1, byte_809E7D4 // =0xff 
+	ldr r1, dword_809E7D4 // =0xfff 
 	add r0, r0, r1
 	lsr r0, r0, #0xc
 	strh r0, [r5,#0x20]
@@ -259,10 +259,10 @@ byte_809E7AE: .byte 0x0, 0x9, 0x0, 0xB, 0x0, 0xD, 0x0, 0xF
 byte_809E7B6: .byte 0x0, 0x1, 0x0, 0x3, 0x0, 0x5, 0x0, 0x7, 0x0, 0x0
 off_809E7C0: .word byte_809E79E
 off_809E7C4: .word byte_809E77E
-byte_809E7C8: .byte 0x0, 0x0, 0x8, 0x0
+dword_809E7C8: .word 0x80000
 	.word byte_809E7AE
 	.word byte_809E7B6
-byte_809E7D4: .byte 0xFF, 0xF, 0x0, 0x0
+dword_809E7D4: .word 0xFFF
 	thumb_func_end npc_809E704
 
 	thumb_local_start
@@ -748,7 +748,7 @@ loc_809EB54:
 	ldr r1, off_809EBB4 // =0x400 
 	tst r2, r1
 	beq loc_809EBA4
-	ldr r1, byte_809EBB8 // =0x0 
+	ldr r1, dword_809EBB8 // =0x800 
 	tst r2, r1
 	beq loc_809EB76
 	mov r7, r10
@@ -791,7 +791,7 @@ loc_809EBAA:
 	bl npc_809EBBC
 	pop {pc}
 off_809EBB4: .word 0x400
-byte_809EBB8: .byte 0x0, 0x8, 0x0, 0x0
+dword_809EBB8: .word 0x800
 	thumb_func_end npc_809EB20
 
 	thumb_local_start
@@ -1363,7 +1363,7 @@ npc_809EFB4:
 	thumb_local_start
 npc_809EFC6:
 	push {lr}
-	ldr r0, byte_809EFF4 // =0x80 
+	ldr r0, dword_809EFF4 // =0x180 
 	ldr r1, [r5,#0x60]
 	orr r1, r0
 	str r1, [r5,#0x60]
@@ -1380,15 +1380,15 @@ npc_809EFD8:
 	orr r1, r0
 	str r1, [r5,#0x60]
 	ldr r0, [r5,#0x60]
-	ldr r1, byte_809EFF8 // =0x0 
+	ldr r1, dword_809EFF8 // =0x100 
 	bic r0, r1
 	str r0, [r5,#0x60]
 	bl sub_8002E52
 	add r6, #1
 	pop {pc}
 	.balign 4, 0x00
-byte_809EFF4: .byte 0x80, 0x1, 0x0, 0x0
-byte_809EFF8: .byte 0x0, 0x1, 0x0, 0x0
+dword_809EFF4: .word 0x180
+dword_809EFF8: .word 0x100
 	thumb_func_end npc_809EFD8
 
 	thumb_local_start
@@ -2095,7 +2095,7 @@ sub_809F45A:
 	str r1, [r5,#0x28]
 	str r2, [r5,#0x2c]
 	add r6, #3
-	ldr r0, byte_809F6B0 // =0x0 
+	ldr r0, dword_809F6B0 // =0x1400 
 	ldr r1, [r5,#0x60]
 	orr r1, r0
 	str r1, [r5,#0x60]

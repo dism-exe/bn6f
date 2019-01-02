@@ -16,10 +16,10 @@
 .global menuControl_cb_email
 .global sub_81284A4
 .global sub_8128730
-.global loc_8128CBC
+.global sub_8128CBC
 .global byte_8129150
 .global byte_8129178
-.global byte_8129180
+.global dword_8129180
 .global sub_81291D8
 .global sub_81291E8
 .global sub_8129248
@@ -310,7 +310,7 @@
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 .include "data/dat37.inc"
-// .global byte_814FE94
+// .global dword_814FE94
 
 .include "data/dat38_60.inc"
 // .global byte_86A5D40

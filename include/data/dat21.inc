@@ -2,20 +2,20 @@
 .equ INC_DATA_DAT21, 0
 
 /* Public Symbols */
-.global unk_80813F8
-.global byte_80813FC
-.global byte_8081400
-.global byte_8081404
+.global byte_80813F8
+.global dword_80813FC
+.global dword_8081400
+.global dword_8081404
 .global byte_8081408
 .global byte_8081410
 .global byte_8081418
 .global byte_8081428
-.global byte_8081438
-.global byte_808143C
-.global byte_8081440
-.global byte_8081444
-.global byte_8081448
-.global byte_808144C
+.global dword_8081438
+.global dword_808143C
+.global dword_8081440
+.global dword_8081444
+.global dword_8081448
+.global dword_808144C
 .global byte_8081450
 .global byte_8081C84
 .global byte_8083C01
@@ -87,16 +87,16 @@
 // .global reqBBS_clearFlag_8140A0C
 // .global byte_8140A74
 // .global byte_8140A8C
-// .global byte_8140AA4
-// .global byte_8140ABC
-// .global byte_8140AD4
-// .global byte_8140AEC
-// .global byte_8140B1C
-// .global byte_8140B34
-// .global byte_8140B4C
-// .global byte_8140B64
-// .global byte_8140B7C
-// .global byte_8140B94
+// .global dword_8140AA4
+// .global dword_8140ABC
+// .global dword_8140AD4
+// .global dword_8140AEC
+// .global dword_8140B1C
+// .global dword_8140B34
+// .global dword_8140B4C
+// .global dword_8140B64
+// .global dword_8140B7C
+// .global dword_8140B94
 // .global byte_8140BAC
 // .global byte_8140BF0
 
@@ -108,7 +108,7 @@
 // .global byte_81B8101
 // .global off_81B9114
 // .global byte_81C7000
-// .global unk_81D4314
+// .global dword_81D4314
 
 .include "data/dat38_60.inc"
 // .global byte_864F420
@@ -129,7 +129,7 @@
 
 
 /* Undeclared Symbols */
-// .equ unk_2010800, 0x2010800
+// .equ byte_2010800, 0x2010800
 // .equ unk_2011A90, 0x2011A90
 // .equ byte_2011A93, 0x2011A93
 // .equ byte_2011A94, 0x2011A94

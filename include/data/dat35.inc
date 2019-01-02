@@ -27,7 +27,7 @@
 
 .include "asm/asm02.inc"
 // .global split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
-// .global sub_8021AEE
+// .global dword_8021AEC
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 
 .include "asm/asm03_1.inc"

@@ -8,7 +8,7 @@ sprite_loadAnimationData:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
-	ldr r4, off_80026C0 // =sub_3006730 
+	ldr r4, off_80026C0 // =sub_3006730+1 
 	mov lr, pc
 	bx r4
 	pop {r4,r5,pc}
@@ -17,11 +17,11 @@ sprite_loadAnimationData:
 	thumb_func_start sprite_80026B6
 sprite_80026B6:
 	push {r4,lr}
-	ldr r4, off_80026C0 // =sub_3006730 
+	ldr r4, off_80026C0 // =sub_3006730+1 
 	mov lr, pc
 	bx r4
 	pop {r4,pc}
-off_80026C0: .word 0x3006731
+off_80026C0: .word sub_3006730+1
 	thumb_func_end sprite_80026B6
 
 	thumb_func_start sprite_update
@@ -31,7 +31,7 @@ sprite_update:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
-	ldr r4, off_80026E0 // =loc_3006792 
+	ldr r4, off_80026E0 // =sub_3006792+1 
 	mov lr, pc
 	bx r4
 	pop {r4,r5,pc}
@@ -40,11 +40,11 @@ sprite_update:
 	thumb_func_start sprite_chatbox_80026D6
 sprite_chatbox_80026D6:
 	push {r4,lr}
-	ldr r4, off_80026E0 // =loc_3006792 
+	ldr r4, off_80026E0 // =sub_3006792+1 
 	mov lr, pc
 	bx r4
 	pop {r4,pc}
-off_80026E0: .word 0x3006793
+off_80026E0: .word sub_3006792+1
 	thumb_func_end sprite_chatbox_80026D6
 
 // (int a1, int a2, int a3) ->
@@ -173,11 +173,11 @@ off_80027B0: .word mugshots_8032598
 	thumb_func_start sub_80027B4
 sub_80027B4:
 	ldr r0, off_80027BC // =dword_200F350 
-	ldr r1, byte_80027C0 // =0x1 
+	ldr r1, dword_80027C0 // =0x1 
 	str r1, [r0]
 	mov pc, lr
 off_80027BC: .word dword_200F350
-byte_80027C0: .byte 0x1, 0x0, 0x0, 0x0
+dword_80027C0: .word 0x1
 	thumb_func_end sub_80027B4
 
 	thumb_func_start sub_80027C4
@@ -187,7 +187,7 @@ sub_80027C4:
 	strb r0, [r1,#0x1] // (byte_20098A9 - 0x20098a8)
 	mov r0, #0xc
 	strb r0, [r1]
-	ldr r0, byte_8002808 // =0x2f 
+	ldr r0, dword_8002808 // =0x32f 
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
 	thumb_func_end sub_80027C4
@@ -199,7 +199,7 @@ sub_80027D4:
 	strb r0, [r1,#0x1] // (byte_20098A9 - 0x20098a8)
 	mov r0, #0xa
 	strb r0, [r1]
-	ldr r0, byte_800280C // =0xff 
+	ldr r0, dword_800280C // =0x2ff 
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
 	thumb_func_end sub_80027D4
@@ -227,8 +227,8 @@ sub_80027F4:
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
 off_8002804: .word byte_20098A8
-byte_8002808: .byte 0x2F, 0x3, 0x0, 0x0
-byte_800280C: .byte 0xFF, 0x2, 0x0, 0x0
+dword_8002808: .word 0x32F
+dword_800280C: .word 0x2FF
 byte_8002810: .byte 0xFF, 0x2, 0x0, 0x0, 0xFF, 0x2, 0x0, 0x0
 	thumb_func_end sub_80027F4
 
@@ -270,12 +270,12 @@ loc_8002840:
 	lsl r2, r2, #2
 	mov r6, #0x20 
 	mov r7, r3
-	ldr r1, off_8002864 // =sub_3005EF0 
+	ldr r1, off_8002864 // =sub_3005EF0+1 
 	mov lr, pc
 	bx r1
 locret_8002862:
 	pop {pc}
-off_8002864: .word 0x3005EF1
+off_8002864: .word sub_3005EF0+1
 off_8002868: .word byte_3001550
 	thumb_func_end sub_8002818
 
@@ -300,14 +300,14 @@ sub_8002874:
 	str r0, [r5,#0x24]
 	ldr r2, [r0]
 	add r0, #4
-	ldr r1, byte_8002898 // =0x0 
+	ldr r1, dword_8002898 // =0x6010000 
 	ldrh r3, [r5,#8]
 	lsl r3, r3, #5
 	add r1, r1, r3
 	bl loc_8000AC8
 locret_8002896:
 	pop {r5,pc}
-byte_8002898: .byte 0x0, 0x0, 0x1, 0x6
+dword_8002898: .word 0x6010000
 	thumb_func_end sub_8002874
 
 	thumb_func_start sprite_handleObjSprites_800289C
@@ -332,12 +332,12 @@ off_80028BC: .word 0x388
 sub_80028C0:
 	ldr r1, off_80028CC // =dword_200F340 
 	ldr r1, [r1]
-	ldr r2, byte_80028D0 // =0x89 
+	ldr r2, off_80028D0 // =unk_200F389 
 	strb r1, [r2,r0]
 	mov pc, lr
 	.balign 4, 0x00
 off_80028CC: .word dword_200F340
-byte_80028D0: .byte 0x89, 0xF3, 0x0, 0x2
+off_80028D0: .word unk_200F389
 	thumb_func_end sub_80028C0
 
 	thumb_func_start sub_80028D4
@@ -380,7 +380,7 @@ sub_8002906:
 	ldr r5, off_8002BF0 // =byte_200DCA0 
 	ldr r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
 	ldr r4, off_8002BC0 // =spritePointers_8031CC4 
-	ldr r6, byte_8002BC4 // =0x0 
+	ldr r6, dword_8002BC4 // =0x2040000 
 	mov r7, r0
 loc_8002918:
 	ldrb r0, [r7]
@@ -759,7 +759,7 @@ loc_8002BB2:
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_8002BC0: .word spritePointers_8031CC4
-byte_8002BC4: .byte 0x0, 0x0, 0x4, 0x2
+dword_8002BC4: .word 0x2040000
 off_8002BC8: .word dword_2033000
 	thumb_func_end sprite_decompress
 
@@ -788,8 +788,8 @@ sub_8002BEA:
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_8002BF0: .word byte_200DCA0
-	.word byte_8002BF8
-byte_8002BF8: .byte 0x0, 0x6, 0x55, 0x4E
+	.word dword_8002BF8
+dword_8002BF8: .word 0x4E550600
 DebugStrSprite_8002BFC: .ascii "COMP\n"
 	.ascii "STR:%8x\n"
 	.ascii "END:%8x\n"
@@ -949,11 +949,11 @@ sub_8002CF6:
 	thumb_local_start
 sub_8002D06:
 	push {r5,lr}
-	ldr r3, byte_8002D10 // =0xe9 
+	ldr r3, off_8002D10 // =sub_30061E8+1 
 	mov lr, pc
 	bx r3
 	pop {r5,pc}
-byte_8002D10: .byte 0xE9, 0x61, 0x0, 0x3
+off_8002D10: .word sub_30061E8+1
 	thumb_func_end sub_8002D06
 
 	thumb_func_start sprite_makeScalable

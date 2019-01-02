@@ -45,12 +45,12 @@ off_805DF68: .word unk_2037800
 off_805DF6C: .word off_805E1FC
 off_805DF70: .word off_805DF74
 off_805DF74: .word byte_805DF88
-	.word byte_805DF90
+	.word dword_805DF90
 	.word byte_805DF94
 	.word byte_805DF9A
 	.word byte_805DFA0
 byte_805DF88: .byte 0x1C, 0x13, 0x18, 0x23, 0x1C, 0x9F, 0xFF, 0xFF
-byte_805DF90: .byte 0x1C, 0x59, 0xFF, 0xFF
+dword_805DF90: .word 0xFFFF591C
 byte_805DF94: .byte 0x1C, 0x5A, 0x1C, 0x60, 0xFF, 0xFF
 byte_805DF9A: .byte 0x1C, 0x5D, 0x1C, 0x62, 0xFF, 0xFF
 byte_805DFA0: .byte 0xFF, 0xFF
@@ -96,11 +96,11 @@ sub_805DFF0:
 off_805E004: .word pt_805E008
 pt_805E008:
 	// <endpool> <endfile>
-	.word unk_805E01C
+	.word byte_805E01C
 	.word byte_805E084
 	.word byte_805E09C
 	.word byte_805E118
-	.word byte_805E158
+	.word dword_805E158
 	thumb_func_end sub_805DFF0
 
 /*For debugging purposes, connect comment at any range!*/

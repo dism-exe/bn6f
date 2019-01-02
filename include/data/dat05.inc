@@ -2,17 +2,17 @@
 .equ INC_DATA_DAT05, 0
 
 /* Public Symbols */
-.global unk_8052834
+.global byte_8052834
 .global byte_80529B4
 .global byte_8052A6C
 .global byte_8052B24
-.global byte_8052BDC
-.global byte_8052BE0
+.global dword_8052BDC
+.global dword_8052BE0
 .global byte_8052BE4
 .global byte_8052C10
 .global byte_8052D54
-.global byte_8052D80
-.global byte_8052D84
+.global dword_8052D80
+.global dword_8052D84
 .global off_8052D88
 .global off_8052DB4
 .global off_8052DE0
@@ -77,7 +77,7 @@
 // .global byte_808054F
 // .global byte_808058D
 // .global byte_8080715
-// .global byte_80809F8
+// .global dword_80809F8
 
 .include "data/dat21.inc"
 // .global byte_8083C01
@@ -155,7 +155,7 @@
 // .global byte_83F1608
 // .global byte_83F1916
 // .global byte_83F1A08
-// .global byte_83F1B03
+// .global dword_83F1B03
 // .global byte_83F1B07
 // .global byte_83F1B16
 // .global byte_83F1C16

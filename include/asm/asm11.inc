@@ -11,7 +11,7 @@
 .global off_8069304
 .global off_8069310
 .global off_806931C
-.global byte_8069358
+.global dword_8069358
 .global byte_8069AF0
 .global off_8069C80
 .global sub_8069FE8
@@ -23,7 +23,7 @@
 .global off_806A26C
 .global off_806A278
 .global off_806A284
-.global byte_806A2C0
+.global dword_806A2C0
 .global off_806A810
 .global sub_806AA00
 .global sub_806AAAA
@@ -44,6 +44,9 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global nullsub_38
+
 .include "asm/asm00_0.inc"
 // .global sub_8001778
 // .global sub_8001780
@@ -121,7 +124,7 @@
 // .global off_8069010
 
 .include "data/dat11.inc"
-// .global unk_806C5D0
+// .global byte_806C5D0
 // .global byte_806C638
 // .global byte_806C68C
 // .global byte_806C6E0

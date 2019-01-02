@@ -18,12 +18,18 @@
 .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 .global chatbox_reqBBS_80404C0
 .global chatbox_8040818
+.global chatbox_maskFlags_3e // (int mask) -> void
+// 
 .global loc_8040A04
 .global chatbox_8040D5C
+.global byte_8043B54
 .global off_8043C8C
 .global byte_8043CA4
 .global byte_8043E84
 .global byte_8044064
+.global off_8044314
+.global off_8044378
+.global off_804440C
 .global off_8044470
 .global off_80444C4
 .global chatbox_8045ED0
@@ -38,9 +44,9 @@
 
 /* External Symbols */
 .include "asm/asm38.inc"
-// .global byte_3006F54
-// .global byte_3006F54
-// .global byte_3006F54
+// .global sub_3006F8C
+// .global sub_3007038
+// .global sub_30070B4
 
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
@@ -97,7 +103,7 @@
 // .global sub_80137FE
 
 .include "asm/asm02.inc"
-// .global sub_8021AEE
+// .global dword_8021AEC
 // .global sub_8021B78 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021BC0
@@ -856,12 +862,12 @@
 
 
 /* Undeclared Symbols */
-// .equ unk_20018F0, 0x20018F0
-// .equ unk_200194C, 0x200194C
-// .equ unk_20019A8, 0x20019A8
-// .equ unk_2001A04, 0x2001A04
-// .equ unk_2001A60, 0x2001A60
-// .equ unk_2001ABC, 0x2001ABC
+// .equ dword_20018F0, 0x20018F0
+// .equ dword_200194C, 0x200194C
+// .equ dword_20019A8, 0x20019A8
+// .equ dword_2001A04, 0x2001A04
+// .equ dword_2001A60, 0x2001A60
+// .equ dword_2001ABC, 0x2001ABC
 // .equ dynamicArr, 0x2005780
 // .equ sSubmenu, 0x2009A30
 // .equ unk_2009A80, 0x2009A80
@@ -882,10 +888,10 @@
 // .equ unk_200C4B0, 0x200C4B0
 // .equ unk_200C4D0, 0x200C4D0
 // .equ unk_200C4F0, 0x200C4F0
-// .equ unk_200C7A0, 0x200C7A0
-// .equ unk_200C7C0, 0x200C7C0
-// .equ unk_200C7E0, 0x200C7E0
-// .equ unk_200C7F0, 0x200C7F0
+// .equ byte_200C7A0, 0x200C7A0
+// .equ byte_200C7C0, 0x200C7C0
+// .equ byte_200C7E0, 0x200C7E0
+// .equ byte_200C7F0, 0x200C7F0
 // .equ dword_200CDA0, 0x200CDA0
 // .equ byte_2011A9D, 0x2011A9D
 // .equ unk_2011C54, 0x2011C54

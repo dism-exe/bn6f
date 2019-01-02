@@ -344,13 +344,11 @@
 
 /* External Symbols */
 .include "asm/asm38.inc"
-// .global byte_300754C
-// .global byte_3007778
+// .global sub_3007550
+// .global sub_300777C
 
 .include "asm/start.inc"
 // .global start_
-// .global GameHeader
-// .global GameHeader
 
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
@@ -501,7 +499,7 @@
 // .global byte_801FDC0
 
 .include "data/dat01.inc"
-// .global unk_8020354
+// .global byte_8020354
 // .global byte_80203EA
 // .global byte_8020404
 // .global byte_80209CC
@@ -636,9 +634,9 @@
 // .global sub_80EAD9C
 // .global sub_80EB04C
 // .global sub_80EB234
-// .global loc_80EE90C
-// .global loc_80EEA3C
-// .global loc_80EED56
+// .global sub_80EE90C
+// .global sub_80EEA3C
+// .global sub_80EED56
 // .global off_80F24D8
 // .global off_80F253C
 // .global off_80F2604
@@ -884,7 +882,7 @@
 .equ LCDControl, 0x4000000
 .equ IWRAMRoutinesROMLocation, 0x81D6000
 .equ IWRAMRoutinesROMLocation, 0x81D6000
-.equ unk_8870888, 0x8870888
+.equ loc_8870888, 0x8870888
 .equ loc_8880886, 0x8880886
 
 .endif // INC_ASM_ASM00_2

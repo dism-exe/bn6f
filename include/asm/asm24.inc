@@ -61,6 +61,7 @@
 
 
 /* Undeclared Symbols */
+// .equ unk_2000B40, 0x2000B40
 // .equ byte_2000B43, 0x2000B43
 // .equ byte_2000B44, 0x2000B44
 // .equ byte_2000B45, 0x2000B45

@@ -488,11 +488,11 @@ sub_8026840:
 	bl sub_802A210
 loc_8026858:
 	bl sub_801DF92
-	ldr r0, byte_8026994 // =0x72 
+	ldr r0, dword_8026994 // =0x30172 
 	bl sub_801DACC
 	ldr r0, off_8026998 // =0x400 
 	bl sub_801DACC
-	ldr r0, byte_802699C // =0x30 
+	ldr r0, dword_802699C // =0x20130 
 	bl sub_801BED6
 	mov r4, #0
 	ldr r5, off_8026BF0 // =dword_20364C0 
@@ -523,7 +523,7 @@ loc_80268A0:
 	mov r2, #0x9b
 	ldr r6, off_80269AC // =byte_8027B2C 
 loc_80268AC:
-	ldr r0, byte_80269B0 // =0xff 
+	ldr r0, dword_80269B0 // =0xfff 
 	and r0, r2
 	ldrb r2, [r6,#4]
 	lsl r2, r2, #0xc
@@ -609,7 +609,7 @@ loc_802694C:
 	bl sub_8028250
 	mov r1, #4
 loc_802696E:
-	ldr r0, byte_80269B4 // =0xff 
+	ldr r0, dword_80269B4 // =0x1ff 
 	push {r1}
 	bl sub_80281D4
 	ldr r0, [sp]
@@ -623,15 +623,15 @@ loc_802696E:
 	bl sub_8015940
 	bl sub_802A0EC
 	pop {r4-r7,pc}
-byte_8026994: .byte 0x72, 0x1, 0x3, 0x0
+dword_8026994: .word 0x30172
 off_8026998: .word 0x400
-byte_802699C: .byte 0x30, 0x1, 0x2, 0x0
+dword_802699C: .word 0x20130
 off_80269A0: .word byte_86E625C
 off_80269A4: .word byte_86E64B4
 off_80269A8: .word 0x258
 off_80269AC: .word byte_8027B2C
-byte_80269B0: .byte 0xFF, 0xF, 0x0, 0x0
-byte_80269B4: .byte 0xFF, 0x1, 0x0, 0x0
+dword_80269B0: .word 0xFFF
+dword_80269B4: .word 0x1FF
 off_80269B8: .word byte_80269BC
 byte_80269BC: .byte 0xFF, 0xFF, 0x0, 0x1, 0x2, 0x3, 0xFF, 0xFF, 0x6, 0xFF, 0xFF
 	.byte 0xFF
@@ -844,7 +844,7 @@ loc_8026B5A:
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_CameraPtr]
 	ldr r1, [r2,#0x34]
-	ldr r3, byte_8026CC8 // =0x0 
+	ldr r3, dword_8026CC8 // =0x18000 
 	sub r1, r1, r3
 	str r1, [r2,#0x34]
 loc_8026B8C:
@@ -953,7 +953,7 @@ loc_8026C28:
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_CameraPtr]
 	ldr r1, [r2,#0x34]
-	ldr r3, byte_8026CC8 // =0x0 
+	ldr r3, dword_8026CC8 // =0x18000 
 	add r1, r1, r3
 	str r1, [r2,#0x34]
 loc_8026C5C:
@@ -982,7 +982,7 @@ byte_8026C88: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 off_8026CC4: .word 0x2000
-byte_8026CC8: .byte 0x0, 0x80, 0x1, 0x0
+dword_8026CC8: .word 0x18000
 	thumb_func_end sub_8026BF4
 
 	thumb_local_start
@@ -1129,7 +1129,7 @@ sub_8026DC4:
 	mov r0, #0
 	bl sub_801E474
 loc_8026DEC:
-	ldr r0, byte_8026E44 // =0x23 
+	ldr r0, dword_8026E44 // =0x56789123 
 	bl sub_800B46C
 	tst r0, r0
 	beq locret_8026E40
@@ -1168,7 +1168,7 @@ loc_8026E3C:
 locret_8026E40:
 	pop {pc}
 	.balign 4, 0x00
-byte_8026E44: .byte 0x23, 0x91, 0x78, 0x56
+dword_8026E44: .word 0x56789123
 off_8026E48: .word 0x1000
 	thumb_func_end sub_8026DC4
 
@@ -1218,7 +1218,7 @@ sub_8026E98:
 	push {r4,lr}
 	mov r4, #0
 	bl get_802D246 // () -> int
-	ldr r1, byte_8027040 // =0x0 
+	ldr r1, dword_8027040 // =0x200000 
 	tst r0, r1
 	beq loc_8026EA8
 	mov r4, #4
@@ -1377,7 +1377,7 @@ sub_8026FC0:
 	push {r4,lr}
 	mov r4, #0
 	bl get_802D246 // () -> int
-	ldr r1, byte_8027040 // =0x0 
+	ldr r1, dword_8027040 // =0x200000 
 	tst r0, r1
 	beq loc_8026FD0
 	mov r4, #4
@@ -1423,7 +1423,7 @@ off_802702C: .word off_8027BD0
 off_8027030: .word byte_8027034
 byte_8027034: .byte 0xD, 0xE, 0xC, 0x23, 0x23, 0x23, 0x6, 0x0
 off_802703C: .word dword_20349A0
-byte_8027040: .byte 0x0, 0x0, 0x20, 0x0
+dword_8027040: .word 0x200000
 	thumb_func_end sub_8026FC0
 
 	thumb_local_start
@@ -1468,7 +1468,7 @@ loc_8027096:
 	mul r0, r1
 	ldr r1, off_80270CC // =byte_8725894 
 	add r0, r0, r1
-	ldr r1, byte_80270C0 // =0xc0 
+	ldr r1, dword_80270C0 // =0x60172c0 
 	mov r2, #0x80
 	bl loc_8000AC8
 	ldrb r0, [r5,#8]
@@ -1483,7 +1483,7 @@ loc_8027096:
 	mov r0, #4
 	strh r0, [r5,#2]
 	pop {r4,pc}
-byte_80270C0: .byte 0xC0, 0x72, 0x1, 0x6
+dword_80270C0: .word 0x60172C0
 off_80270C4: .word byte_872CF94
 off_80270C8: .word byte_30016F0
 off_80270CC: .word byte_8725894
@@ -1829,7 +1829,7 @@ loc_8027336:
 	lsl r0, r0, #2
 	ldr r2, off_8027384 // =byte_8027388 
 	ldr r2, [r2,r0]
-	ldr r3, byte_8027390 // =0x7a 
+	ldr r3, dword_8027390 // =0xb37a 
 	ldrb r0, [r4]
 	ldrb r1, [r4,#1]
 	mov r4, #1
@@ -1864,7 +1864,7 @@ locret_8027382:
 	pop {pc}
 off_8027384: .word byte_8027388
 byte_8027388: .byte 0x0, 0x0, 0x0, 0x40, 0x0, 0x0, 0x0, 0x60
-byte_8027390: .byte 0x7A, 0xB3, 0x0, 0x0
+dword_8027390: .word 0xB37A
 	thumb_func_end sub_8027332
 
 	thumb_local_start
@@ -1966,7 +1966,7 @@ sub_8027434:
 	mov r1, #0x5f 
 	strb r0, [r5,r1]
 loc_8027444:
-	ldr r1, byte_8027508 // =0xff 
+	ldr r1, dword_8027508 // =0xffff 
 	mov r2, #0x60 
 	add r2, r2, r5
 	strh r1, [r2,r0]
@@ -2009,7 +2009,7 @@ sub_8027458:
 loc_802748E:
 	ldr r2, [r0,#8]
 	ldrh r0, [r2]
-	ldr r3, byte_8027508 // =0xff 
+	ldr r3, dword_8027508 // =0xffff 
 	strh r3, [r2]
 	mov r1, #0x5f 
 	ldrb r1, [r5,r1]
@@ -2023,7 +2023,7 @@ loc_802748E:
 	ldrb r1, [r5,#8]
 	sub r1, #1
 	strb r1, [r5,#8]
-	ldr r0, byte_8027504 // =0xff 
+	ldr r0, dword_8027504 // =0x1ff 
 	bl sub_80281D4
 	ldrb r0, [r5,#8]
 	mov r1, #0
@@ -2061,8 +2061,8 @@ loc_80274F0:
 locret_8027500:
 	pop {r4,r6,pc}
 	.balign 4, 0x00
-byte_8027504: .byte 0xFF, 0x1, 0x0, 0x0
-byte_8027508: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_8027504: .word 0x1FF
+dword_8027508: .word 0xFFFF
 	thumb_func_end sub_8027458
 
 	thumb_local_start
@@ -2540,7 +2540,7 @@ loc_8027876:
 	mov r2, #0xe1
 	ldr r6, off_8027904 // =byte_8027B4A 
 loc_8027884:
-	ldr r0, byte_8027908 // =0xff 
+	ldr r0, dword_8027908 // =0xfff 
 	and r0, r2
 	ldrb r2, [r6,#4]
 	lsl r2, r2, #0xc
@@ -2598,7 +2598,7 @@ off_80278E0: .word byte_86E670C
 	.word byte_86E7774
 off_8027900: .word 0x258
 off_8027904: .word byte_8027B4A
-byte_8027908: .byte 0xFF, 0xF, 0x0, 0x0
+dword_8027908: .word 0xFFF
 	thumb_func_end sub_8027834
 
 	thumb_local_start
@@ -2655,7 +2655,7 @@ loc_802796A:
 	cmp r4, r1
 	bne loc_802798A
 	mov r2, #0
-	ldr r1, byte_80279C4 // =0x55 
+	ldr r1, dword_80279C4 // =0x55 
 	add r1, r1, r4
 	ldrb r0, [r5,r1]
 	cmp r0, #0
@@ -2696,7 +2696,7 @@ loc_802799E:
 	str r0, [r5,#0x40]
 	pop {r7,pc}
 off_80279C0: .word 0x50
-byte_80279C4: .byte 0x55, 0x0, 0x0, 0x0
+dword_80279C4: .word 0x55
 	thumb_func_end sub_802794A
 
 	thumb_local_start
@@ -2736,7 +2736,7 @@ sub_80279FC:
 	mov r2, #0x9b
 	ldr r6, off_8027A50 // =byte_8027B2C 
 loc_8027A0E:
-	ldr r0, byte_8027A54 // =0xff 
+	ldr r0, dword_8027A54 // =0xfff 
 	and r0, r2
 	ldrb r2, [r6,#4]
 	lsl r2, r2, #0xc
@@ -2770,7 +2770,7 @@ loc_8027A0E:
 off_8027A48: .word byte_86E64B4
 off_8027A4C: .word 0x258
 off_8027A50: .word byte_8027B2C
-byte_8027A54: .byte 0xFF, 0xF, 0x0, 0x0
+dword_8027A54: .word 0xFFF
 	thumb_func_end sub_80279FC
 
 	thumb_local_start
@@ -2909,8 +2909,8 @@ off_8027BEC: .word byte_8027C08
 	.word byte_8027C50
 	.word byte_8027C64
 	.word byte_8027C70
-	.word byte_8027C7C
-	.word byte_8027C80
+	.word dword_8027C7C
+	.word dword_8027C80
 byte_8027C08: .byte 0x0, 0x0, 0x1, 0x78, 0x4E, 0x80, 0x0, 0x2, 0x1, 0x40, 0x80, 0x80
 	.byte 0x0, 0x3, 0x1, 0x4A, 0x30, 0x80, 0x0, 0x4, 0x1, 0x42, 0x56, 0x80
 	.byte 0x0, 0x5, 0x1, 0x8E, 0x58, 0x1, 0xB6, 0x88, 0x81, 0x0, 0x6, 0x1
@@ -2921,15 +2921,15 @@ byte_8027C50: .byte 0x0, 0x0, 0x1, 0xA2, 0x20, 0x80, 0x0, 0x3, 0x2, 0xFF, 0x1, 0
 	.byte 0x20, 0x80, 0x0, 0x4, 0x3, 0x0, 0x0, 0x0
 byte_8027C64: .byte 0x0, 0x0, 0x1, 0x6A, 0x7D, 0x81, 0x0, 0x1, 0x3, 0x0, 0x0, 0x0
 byte_8027C70: .byte 0x0, 0x5, 0x1, 0xA2, 0x20, 0x80, 0x0, 0xA, 0x3, 0x0, 0x0, 0x0
-byte_8027C7C: .byte 0x0, 0x19, 0x3, 0x0
-byte_8027C80: .byte 0x0, 0x1, 0x3, 0x0
+dword_8027C7C: .word 0x31900
+dword_8027C80: .word 0x30100
 off_8027C84: .word byte_8027CA0
 	.word byte_8027CB5
 	.word byte_8027CC4
 	.word byte_8027CC5
 	.word byte_8027CC6
 	.word byte_8027CC7
-	.word byte_8027CC8
+	.word dword_8027CC8
 byte_8027CA0: .byte 0x0, 0x11, 0x1, 0x2E, 0xE, 0x80, 0x0, 0x12, 0x1, 0x48, 0x40
 	.byte 0x80, 0x0, 0x13, 0x1, 0x78, 0x10, 0x80, 0x0, 0x15, 0x3
 byte_8027CB5: .byte 0x0, 0x10, 0x1, 0x8C, 0x52, 0x0, 0x8C, 0x6A, 0x0, 0x8C, 0x82
@@ -2938,7 +2938,7 @@ byte_8027CC4: .byte 0x3
 byte_8027CC5: .byte 0x3
 byte_8027CC6: .byte 0x3
 byte_8027CC7: .byte 0x3
-byte_8027CC8: .byte 0x3, 0x0, 0x0, 0x0
+dword_8027CC8: .word 0x3
 	thumb_func_end sub_8027ADE
 
 	thumb_local_start
@@ -3028,7 +3028,7 @@ off_8027D54: .word dword_86EE0CC
 sub_8027D58:
 	push {r4,lr}
 	ldr r2, off_8027F0C // =byte_203CDB0 
-	ldr r1, byte_8027D74 // =0xff 
+	ldr r1, dword_8027D74 // =0xffff 
 	mov r3, #0x1e
 loc_8027D60:
 	ldrh r4, [r2]
@@ -3042,7 +3042,7 @@ loc_8027D6C:
 	sub r0, r0, r3
 	pop {r4,pc}
 	.balign 4, 0x00
-byte_8027D74: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_8027D74: .word 0xFFFF
 	thumb_func_end sub_8027D58
 
 	thumb_local_start
@@ -3088,9 +3088,9 @@ loc_8027DD4:
 	bl sub_800A8F8
 	cmp r0, #0
 	beq loc_8027DEA
-	ldr r0, byte_8027E18 // =0x0 
+	ldr r0, dword_8027E18 // =0x20000 
 	bl sub_801DA48
-	ldr r0, byte_8027E18 // =0x0 
+	ldr r0, dword_8027E18 // =0x20000 
 	bl sub_801BECC
 	b locret_8027E10
 loc_8027DEA:
@@ -3112,7 +3112,7 @@ locret_8027E10:
 	pop {pc}
 	.balign 4, 0x00
 off_8027E14: .word 0x400
-byte_8027E18: .byte 0x0, 0x0, 0x2, 0x0
+dword_8027E18: .word 0x20000
 	thumb_func_end sub_8027D78
 
 // (int a1) -> void*
@@ -3177,7 +3177,7 @@ sub_8027E90:
 	push {r6,lr}
 	mov r3, #0xc
 	mov r2, r4
-	ldr r1, off_8027EE4 // =byte_802A7CC 
+	ldr r1, off_8027EE4 // =dword_802A7CC 
 loc_8027E98:
 	ldr r0, [r1]
 	str r0, [r2]
@@ -3217,7 +3217,7 @@ loc_8027ED6:
 locret_8027EE0:
 	pop {r6,pc}
 	.balign 4, 0x00
-off_8027EE4: .word byte_802A7CC
+off_8027EE4: .word dword_802A7CC
 	thumb_func_end sub_8027E90
 
 	thumb_local_start
@@ -3562,11 +3562,11 @@ sub_802812C:
 	push {r4,lr}
 	mov r4, r0
 	bl sub_8028164
-	ldr r1, byte_8028158 // =0xe0 
+	ldr r1, dword_8028158 // =0x60170e0 
 	mov r2, #0x40 
 	bl loc_8000AC8
 	add r0, r0, r2
-	ldr r1, byte_802815C // =0x60 
+	ldr r1, dword_802815C // =0x6017160 
 	bl loc_8000AC8
 	mov r0, r4
 	bl sub_8028172
@@ -3575,8 +3575,8 @@ sub_802812C:
 	bl loc_8000AC8
 	pop {r4,pc}
 off_8028154: .word off_802A744
-byte_8028158: .byte 0xE0, 0x70, 0x1, 0x6
-byte_802815C: .byte 0x60, 0x71, 0x1, 0x6
+dword_8028158: .word 0x60170E0
+dword_802815C: .word 0x6017160
 off_8028160: .word byte_30016B0
 	thumb_func_end sub_802812C
 
@@ -3612,7 +3612,7 @@ byte_802819C: .byte 0x0, 0x1, 0x2, 0x3, 0x4, 0x5, 0x1, 0x2, 0x3, 0x4, 0x5, 0x6
 	thumb_local_start
 sub_80281A8:
 	push {r1,r2,lr}
-	ldr r2, byte_80283AC // =0xff 
+	ldr r2, dword_80283AC // =0x1ff 
 	and r0, r2
 	cmp r0, r2
 	bne loc_80281B6
@@ -3641,7 +3641,7 @@ sub_80281D4:
 	push {r1,r2,lr}
 	mov r2, #0x80
 	mul r2, r1
-	ldr r1, byte_80281FC // =0xa0 
+	ldr r1, dword_80281FC // =0x600a4a0 
 	add r1, r1, r2
 	bl sub_80281C4
 	pop {r1,r2,pc}
@@ -3652,7 +3652,7 @@ sub_80281E4:
 	push {r1-r3,lr}
 	mov r2, #0x80
 	mul r1, r2
-	ldr r3, byte_80281FC // =0xa0 
+	ldr r3, dword_80281FC // =0x600a4a0 
 	add r1, r1, r3
 	mul r0, r2
 	ldr r3, off_8028200 // =byte_8725894 
@@ -3660,7 +3660,7 @@ sub_80281E4:
 	bl loc_8000AC8
 	pop {r1-r3,pc}
 	.balign 4, 0x00
-byte_80281FC: .byte 0xA0, 0xA4, 0x0, 0x6
+dword_80281FC: .word 0x600A4A0
 off_8028200: .word byte_8725894
 	thumb_func_end sub_80281E4
 
@@ -3701,13 +3701,13 @@ sub_8028238:
 	push {lr}
 	mov r1, #0xc0
 	mul r0, r1
-	ldr r1, byte_802824C // =0x20 
+	ldr r1, dword_802824C // =0x6009c20 
 	add r1, r1, r0
-	ldr r0, byte_80283AC // =0xff 
+	ldr r0, dword_80283AC // =0x1ff 
 	bl sub_80281C4
 	pop {pc}
 	.balign 4, 0x00
-byte_802824C: .byte 0x20, 0x9C, 0x0, 0x6
+dword_802824C: .word 0x6009C20
 	thumb_func_end sub_8028238
 
 	thumb_local_start
@@ -3718,7 +3718,7 @@ sub_8028250:
 	bl getLocOfActiveChips_8027E1C // (int a1) -> void*
 	mov r4, r0
 	mov r7, #0xc
-	ldr r1, byte_8028358 // =0x20 
+	ldr r1, dword_8028358 // =0x6009c20 
 loc_8028260:
 	ldrb r0, [r4]
 	lsl r0, r0, #2
@@ -3746,7 +3746,7 @@ sub_8028284:
 	ldrb r0, [r4,#7]
 	cmp r0, #2
 	bne loc_8028290
-	ldr r0, byte_80283AC // =0xff 
+	ldr r0, dword_80283AC // =0x1ff 
 	b loc_8028298
 loc_8028290:
 	ldr r0, [r4,#8]
@@ -3812,7 +3812,7 @@ sub_80282E8:
 	ldrb r0, [r4,#7]
 	cmp r0, #2
 	bne loc_80282F4
-	ldr r0, byte_80283AC // =0xff 
+	ldr r0, dword_80283AC // =0x1ff 
 	b loc_80282FC
 loc_80282F4:
 	ldr r0, [r4,#8]
@@ -3831,7 +3831,7 @@ loc_80282FC:
 	thumb_local_start
 sub_8028310:
 	push {lr}
-	ldr r0, byte_80283AC // =0xff 
+	ldr r0, dword_80283AC // =0x1ff 
 	bl sub_80281C4
 	mov r0, #0x1d
 	bl sub_8028204
@@ -3871,7 +3871,7 @@ sub_8028340:
 	add r1, #0xc0
 	pop {pc}
 	.balign 4, 0x00
-byte_8028358: .byte 0x20, 0x9C, 0x0, 0x6
+dword_8028358: .word 0x6009C20
 off_802835C: .word dword_86E441C
 off_8028360: .word dword_86E4D9C
 off_8028364: .word 0x180
@@ -3892,7 +3892,7 @@ off_8028370: .word sub_8028284+1
 off_80283A0: .word byte_86E79CC
 off_80283A4: .word 0x100
 off_80283A8: .word 0x300
-byte_80283AC: .byte 0xFF, 0x1, 0x0, 0x0
+dword_80283AC: .word 0x1FF
 	thumb_func_end sub_8028340
 
 	thumb_local_start
@@ -3950,7 +3950,7 @@ loc_8028400:
 	ldr r4, [r4,r0]
 	ldr r1, off_802846C // =byte_8028470 
 	ldrh r2, [r1,r2]
-	ldr r1, byte_8028464 // =0xff 
+	ldr r1, dword_8028464 // =0x3ff 
 	ldrh r0, [r4]
 	and r0, r1
 	orr r0, r2
@@ -3982,7 +3982,7 @@ off_802843C: .word unk_2035188
 	.word unk_2035198
 	.byte 0xE2, 0x51, 0x3, 0x2, 0xE6, 0x51, 0x3, 0x2, 0xEA, 0x51, 0x3
 	.byte 0x2, 0xEE, 0x51, 0x3, 0x2, 0xF2, 0x51, 0x3, 0x2
-byte_8028464: .byte 0xFF, 0x3, 0x0, 0x0
+dword_8028464: .word 0x3FF
 off_8028468: .word unk_2035186
 off_802846C: .word byte_8028470
 byte_8028470: .byte 0x0, 0xB0, 0x0, 0xC0, 0x0, 0x90
@@ -4053,7 +4053,7 @@ sub_80284E2:
 	push {r0-r7}
 	bl sub_8027D10
 	ldr r2, off_8028674 // =byte_203C4E0 
-	ldr r3, byte_8028678 // =0x60 
+	ldr r3, dword_8028678 // =0x6009360 
 	mov r4, #8
 	mov r5, #1
 	ldr r6, off_802867C // =dword_86B7AE0 
@@ -4061,7 +4061,7 @@ sub_80284E2:
 	bl render_graphicalText_8045F8C
 	pop {r0-r7}
 	ldr r0, [sp]
-	ldr r1, byte_8028688 // =0xff 
+	ldr r1, dword_8028688 // =0x1ff 
 	and r0, r1
 	push {r0}
 	mov r1, r10
@@ -4075,8 +4075,8 @@ sub_80284E2:
 	ldr r0, [r0,#0x24]
 	cmp r0, #0
 	beq loc_8028536
-	ldr r1, byte_802865C // =0x60 
-	ldr r2, off_8028660 // =0x540 
+	ldr r1, dword_802865C // =0x6009560 
+	ldr r2, dword_8028660 // =0x540 
 	bl loc_8000AC8
 	ldr r0, [sp,#4]
 	ldr r0, [r0,#0x28]
@@ -4113,7 +4113,7 @@ loc_8028564:
 	mul r0, r1
 	ldr r1, off_8028640 // =dword_86E2E98 
 	add r0, r0, r1
-	ldr r1, byte_8028644 // =0xa0 
+	ldr r1, dword_8028644 // =0x6009aa0 
 	mov r2, #0x40 
 	bl loc_8000AC8
 	ldr r0, [sp,#4]
@@ -4127,7 +4127,7 @@ loc_8028564:
 	mul r0, r2
 	ldr r1, off_8028648 // =dword_86E3598 
 	add r0, r0, r1
-	ldr r1, byte_802864C // =0xe0 
+	ldr r1, dword_802864C // =0x6009ae0 
 	bl loc_8000AC8
 	pop {r0}
 	mov r2, #0xc
@@ -4159,13 +4159,13 @@ loc_80285C6:
 	sub r3, r3, r0
 	beq loc_80285D4
 	ldr r0, off_8028668 // =byte_802A6C0 
-	ldr r1, byte_8028654 // =0x60 
+	ldr r1, dword_8028654 // =0x6009b60 
 	bl sub_802868C
 loc_80285D4:
 	ldr r3, [sp,#8]
 	cmp r3, #0
 	beq loc_80285FA
-	ldr r1, byte_8028658 // =0xe0 
+	ldr r1, dword_8028658 // =0x6009be0 
 loc_80285DC:
 	mov r0, #0xf
 	and r0, r4
@@ -4192,22 +4192,22 @@ sub_80285FE:
 	push {r0-r7}
 	bl sub_8027D10
 	ldr r2, off_8028674 // =byte_203C4E0 
-	ldr r3, byte_8028678 // =0x60 
+	ldr r3, dword_8028678 // =0x6009360 
 	mov r4, #8
 	mov r5, #1
 	ldr r6, off_802867C // =dword_86B7AE0 
 	mov r7, #8
 	bl render_graphicalText_8045F8C
 	pop {r0-r7}
-	ldr r1, byte_8028688 // =0xff 
+	ldr r1, dword_8028688 // =0x1ff 
 	and r0, r1
 	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
 	mov r4, r0
 	ldr r0, [r0,#0x24]
 	cmp r0, #0
 	beq loc_802863A
-	ldr r1, byte_802865C // =0x60 
-	ldr r2, off_8028660 // =0x540 
+	ldr r1, dword_802865C // =0x6009560 
+	ldr r2, dword_8028660 // =0x540 
 	bl loc_8000AC8
 	ldr r0, [r4,#0x28]
 	ldr r1, off_8028664 // =unk_3001AA0 
@@ -4217,24 +4217,24 @@ loc_802863A:
 	bl sub_802869E
 	pop {r4,pc}
 off_8028640: .word dword_86E2E98
-byte_8028644: .byte 0xA0, 0x9A, 0x0, 0x6
+dword_8028644: .word 0x6009AA0
 off_8028648: .word dword_86E3598
-byte_802864C: .byte 0xE0, 0x9A, 0x0, 0x6
+dword_802864C: .word 0x6009AE0
 off_8028650: .word dword_86E411C
-byte_8028654: .byte 0x60, 0x9B, 0x0, 0x6
-byte_8028658: .byte 0xE0, 0x9B, 0x0, 0x6
-byte_802865C: .byte 0x60, 0x95, 0x0, 0x6
-off_8028660: .word 0x540
+dword_8028654: .word 0x6009B60
+dword_8028658: .word 0x6009BE0
+dword_802865C: .word 0x6009560
+dword_8028660: .word 0x540
 off_8028664: .word unk_3001AA0
 off_8028668: .word byte_802A6C0
 	.word byte_802A680
 	.word byte_203C4E0
 off_8028674: .word byte_203C4E0
-byte_8028678: .byte 0x60, 0x93, 0x0, 0x6
+dword_8028678: .word 0x6009360
 off_802867C: .word dword_86B7AE0
 off_8028680: .word dword_86E3B18
 off_8028684: .word unk_3001AD4
-byte_8028688: .byte 0xFF, 0x1, 0x0, 0x0
+dword_8028688: .word 0x1FF
 	thumb_func_end sub_80285FE
 
 	thumb_local_start
@@ -4253,22 +4253,22 @@ loc_8028692:
 	thumb_local_start
 sub_802869E:
 	push {lr}
-	ldr r1, byte_80286C0 // =0xa0 
+	ldr r1, dword_80286C0 // =0x6009aa0 
 	ldr r0, off_80286D0 // =byte_802A6C0 
 	mov r3, #1
 	bl sub_802868C
-	ldr r1, byte_80286C4 // =0xe0 
+	ldr r1, dword_80286C4 // =0x6009ae0 
 	ldr r0, off_80286CC // =byte_802A680 
 	mov r3, #2
 	bl sub_802868C
-	ldr r1, byte_80286C8 // =0x60 
+	ldr r1, dword_80286C8 // =0x6009b60 
 	ldr r0, off_80286D0 // =byte_802A6C0 
 	mov r3, #3
 	bl sub_802868C
 	pop {pc}
-byte_80286C0: .byte 0xA0, 0x9A, 0x0, 0x6
-byte_80286C4: .byte 0xE0, 0x9A, 0x0, 0x6
-byte_80286C8: .byte 0x60, 0x9B, 0x0, 0x6
+dword_80286C0: .word 0x6009AA0
+dword_80286C4: .word 0x6009AE0
+dword_80286C8: .word 0x6009B60
 off_80286CC: .word byte_802A680
 off_80286D0: .word byte_802A6C0
 	thumb_func_end sub_802869E
@@ -4285,8 +4285,8 @@ sub_80286D4:
 loc_80286E4:
 	push {r1}
 	ldr r0, [r0,r1]
-	ldr r1, byte_80287F0 // =0x60 
-	ldr r2, off_80287F4 // =0x540 
+	ldr r1, dword_80287F0 // =0x6009560 
+	ldr r2, dword_80287F4 // =0x540 
 	bl loc_8000AC8
 	pop {r1}
 	ldr r0, off_8028710 // =off_8028714 
@@ -4309,8 +4309,8 @@ sub_802871C:
 	push {lr}
 	bl sub_80287D2
 	ldr r0, off_802874C // =byte_8723034 
-	ldr r1, byte_80287F0 // =0x60 
-	ldr r2, off_80287F4 // =0x540 
+	ldr r1, dword_80287F0 // =0x6009560 
+	ldr r2, dword_80287F4 // =0x540 
 	bl loc_8000AC8
 	mov r0, #0xb
 	bl getLocOfActiveChips_8027E1C // (int a1) -> void*
@@ -4334,8 +4334,8 @@ sub_8028754:
 	push {lr}
 	bl sub_80287D2
 	ldr r0, off_8028774 // =dword_87225B4 
-	ldr r1, byte_80287F0 // =0x60 
-	ldr r2, off_80287F4 // =0x540 
+	ldr r1, dword_80287F0 // =0x6009560 
+	ldr r2, dword_80287F4 // =0x540 
 	bl loc_8000AC8
 	ldr r0, off_8028778 // =dword_87257D4 
 	ldr r1, off_80287FC // =unk_3001AA0 
@@ -4352,8 +4352,8 @@ sub_802877C:
 	push {lr}
 	bl sub_80287D2
 	ldr r0, off_802879C // =dword_8733E74 
-	ldr r1, byte_80287F0 // =0x60 
-	ldr r2, off_80287F4 // =0x540 
+	ldr r1, dword_80287F0 // =0x6009560 
+	ldr r2, dword_80287F4 // =0x540 
 	bl loc_8000AC8
 	ldr r0, off_80287A0 // =dword_87343D4 
 	ldr r1, off_80287FC // =unk_3001AA0 
@@ -4377,8 +4377,8 @@ loc_80287AE:
 	push {r0}
 	bl sub_80287D2
 	ldr r0, off_80287EC // =dword_8722AF4 
-	ldr r1, byte_80287F0 // =0x60 
-	ldr r2, off_80287F4 // =0x540 
+	ldr r1, dword_80287F0 // =0x6009560 
+	ldr r2, dword_80287F4 // =0x540 
 	bl loc_8000AC8
 	ldr r0, off_80287F8 // =dword_8725854 
 	ldr r1, off_80287FC // =unk_3001AA0 
@@ -4392,7 +4392,7 @@ loc_80287AE:
 	thumb_local_start
 sub_80287D2:
 	push {lr}
-	ldr r1, byte_8028808 // =0x60 
+	ldr r1, dword_8028808 // =0x6009360 
 	ldr r0, off_802880C // =byte_802A6C0 
 	mov r3, #8
 	bl sub_802868C
@@ -4403,13 +4403,13 @@ sub_80287D2:
 	pop {pc}
 	.balign 4, 0x00
 off_80287EC: .word dword_8722AF4
-byte_80287F0: .byte 0x60, 0x95, 0x0, 0x6
-off_80287F4: .word 0x540
+dword_80287F0: .word 0x6009560
+dword_80287F4: .word 0x540
 off_80287F8: .word dword_8725854
 off_80287FC: .word unk_3001AA0
 	.word 0x6009AA0
 	.word byte_802A6C0
-byte_8028808: .byte 0x60, 0x93, 0x0, 0x6
+dword_8028808: .word 0x6009360
 off_802880C: .word byte_802A6C0
 	.word dword_86E411C
 	.word 0x6009BE0
@@ -4439,7 +4439,7 @@ sub_8028820:
 	mov r4, r0
 	mov r2, #1
 	mov r3, #0
-	ldr r1, byte_8028864 // =0x64 
+	ldr r1, dword_8028864 // =0xb764 
 	add r1, r1, r5
 	lsl r5, r5, #4
 	add r5, r5, r6
@@ -4452,7 +4452,7 @@ loc_8028854:
 	bpl loc_8028854
 	pop {r4-r6,pc}
 	.balign 4, 0x00
-byte_8028864: .byte 0x64, 0xB7, 0x0, 0x0
+dword_8028864: .word 0xB764
 off_8028868: .word jt_802886C
 jt_802886C: .word sub_8028894+1
 	.word sub_80288D0+1
@@ -4565,23 +4565,23 @@ sub_802899C:
 	and r3, r5
 	lsl r3, r3, #6
 	ldr r0, off_80289D8 // =dword_86E1238 
-	ldr r1, byte_80289DC // =0xc0 
-	ldr r2, off_80289E0 // =0x200 
+	ldr r1, dword_80289DC // =0x6016cc0 
+	ldr r2, dword_80289E0 // =0x200 
 	add r0, r0, r3
 	bl loc_8000AC8
 loc_80289C2:
-	ldr r0, byte_80289D0 // =0x64 
-	ldr r1, byte_80289D4 // =0x66 
+	ldr r0, dword_80289D0 // =0x80020064 
+	ldr r1, dword_80289D4 // =0xb766 
 	mov r2, #1
 	mov r3, #0
 	bl sub_8009FF8
 locret_80289CE:
 	pop {r4-r6,pc}
-byte_80289D0: .byte 0x64, 0x0, 0x2, 0x80
-byte_80289D4: .byte 0x66, 0xB7, 0x0, 0x0
+dword_80289D0: .word 0x80020064
+dword_80289D4: .word 0xB766
 off_80289D8: .word dword_86E1238
-byte_80289DC: .byte 0xC0, 0x6C, 0x1, 0x6
-off_80289E0: .word 0x200
+dword_80289DC: .word 0x6016CC0
+dword_80289E0: .word 0x200
 	thumb_func_end sub_802899C
 
 	thumb_local_start
@@ -4604,7 +4604,7 @@ sub_80289E4:
 	mov r4, r0
 	mov r2, #1
 	mov r3, #0
-	ldr r1, byte_8028A28 // =0x92 
+	ldr r1, dword_8028A28 // =0xe792 
 	add r1, r1, r5
 	add r1, r1, r5
 	ldr r5, off_8028A2C // =byte_8028A30 
@@ -4621,7 +4621,7 @@ loc_8028A1C:
 	cmp r6, #0x48 
 	blt loc_8028A12
 	pop {r4-r6,pc}
-byte_8028A28: .byte 0x92, 0xE7, 0x0, 0x0
+dword_8028A28: .word 0xE792
 off_8028A2C: .word byte_8028A30
 byte_8028A30: .byte 0x2, 0x0, 0x3, 0x0, 0x2, 0x0, 0x43, 0x10, 0xC, 0x0, 0x43, 0x30, 0xC
 	.byte 0x0, 0x3, 0x20, 0x2, 0x0, 0xB, 0x0, 0x2, 0x0, 0x13, 0x0, 0x2, 0x0
@@ -4676,7 +4676,7 @@ loc_8028ABA:
 	cmp r0, #0
 	bne locret_8028B66
 	mov r0, r4
-	ldr r1, byte_8028B70 // =0x55 
+	ldr r1, dword_8028B70 // =0x55 
 	add r1, r1, r0
 	ldrb r0, [r5,r1]
 	cmp r0, #1
@@ -4755,7 +4755,7 @@ locret_8028B66:
 	pop {r4,pc}
 off_8028B68: .word dword_86EF4D4
 off_8028B6C: .word 0x50
-byte_8028B70: .byte 0x55, 0x0, 0x0, 0x0
+dword_8028B70: .word 0x55
 	thumb_func_end sub_8028A78
 
 	thumb_local_start
@@ -5438,7 +5438,7 @@ sub_8029032:
 	b locret_8029104
 loc_8029048:
 	ldrb r0, [r5,#0x1b]
-	ldr r1, byte_802910C // =0x55 
+	ldr r1, dword_802910C // =0x55 
 	add r1, r1, r0
 	mov r0, #0
 	strb r0, [r5,r1]
@@ -5461,7 +5461,7 @@ loc_8029066:
 	ldrb r1, [r5,#8]
 	sub r1, #1
 	strb r1, [r5,#8]
-	ldr r0, byte_8029108 // =0xff 
+	ldr r0, dword_8029108 // =0x1ff 
 	bl sub_80281D4
 	ldrb r0, [r5,#8]
 	mov r1, #0
@@ -5492,7 +5492,7 @@ loc_80290C2:
 	ldrb r1, [r5,#8]
 	sub r1, #1
 	strb r1, [r5,#8]
-	ldr r0, byte_8029108 // =0xff 
+	ldr r0, dword_8029108 // =0x1ff 
 	bl sub_80281D4
 	ldrb r0, [r5,#8]
 	mov r1, #0
@@ -5521,8 +5521,8 @@ loc_80290F6:
 locret_8029104:
 	pop {r4,pc}
 	.balign 4, 0x00
-byte_8029108: .byte 0xFF, 0x1, 0x0, 0x0
-byte_802910C: .byte 0x55, 0x0, 0x0, 0x0
+dword_8029108: .word 0x1FF
+dword_802910C: .word 0x55
 	thumb_func_end sub_8029032
 
 	thumb_local_start
@@ -5586,7 +5586,7 @@ loc_802915E:
 	add r0, #1
 	mov r1, #1
 	lsl r1, r0
-	ldr r0, off_80293F4 // =dword_20349A0 
+	ldr r0, dword_80293F4 // =dword_20349A0 
 	ldrh r2, [r0,#0xc] // (word_20349AC - 0x20349a0)
 	orr r2, r1
 	strh r2, [r0,#0xc] // (word_20349AC - 0x20349a0)
@@ -5846,15 +5846,15 @@ sub_8029344:
 	bl sub_802A564
 	cmp r0, #1
 	bne loc_802935A
-	ldr r4, byte_80293E4 // =0x18 
+	ldr r4, dword_80293E4 // =0x18 
 	b loc_8029368
 loc_802935A:
 	cmp r1, #0
 	bne loc_8029362
-	ldr r4, byte_80293E0 // =0xc 
+	ldr r4, dword_80293E0 // =0xc 
 	b loc_8029368
 loc_8029362:
-	ldr r4, byte_80293EC // =0x12 
+	ldr r4, dword_80293EC // =0x12 
 	sub r1, #6
 	add r4, r4, r1
 loc_8029368:
@@ -5863,7 +5863,7 @@ loc_8029368:
 	mov r2, r6
 	bl sub_8015952
 	mov r0, #1
-	ldr r1, off_80293F4 // =dword_20349A0 
+	ldr r1, dword_80293F4 // =dword_20349A0 
 	strb r0, [r1,#0x10] // (byte_20349B0 - 0x20349a0)
 	pop {r0-r4,r6,pc}
 	thumb_func_end sub_8029344
@@ -5871,11 +5871,11 @@ loc_8029368:
 	thumb_local_start
 sub_802937A:
 	push {r0-r4,lr}
-	ldr r4, byte_80293E8 // =0x6 
+	ldr r4, dword_80293E8 // =0x6 
 	bl sub_802A564
 	cmp r1, #0xb
 	blt loc_8029388
-	ldr r4, byte_80293EC // =0x12 
+	ldr r4, dword_80293EC // =0x12 
 loc_8029388:
 	mov r0, #1
 	bl sub_802A11C
@@ -5885,12 +5885,12 @@ loc_8029388:
 	mov r1, #0
 	bl sub_8015952
 	ldrb r0, [r5,#0x1a]
-	ldr r1, byte_80293E8 // =0x6 
+	ldr r1, dword_80293E8 // =0x6 
 	add r0, r0, r1
 	sub r0, #1
 	mov r3, #1
 	lsl r3, r0
-	ldr r2, off_80293F4 // =dword_20349A0 
+	ldr r2, dword_80293F4 // =dword_20349A0 
 	ldr r1, [r2]
 	orr r1, r3
 	str r1, [r2]
@@ -5902,7 +5902,7 @@ sub_80293B0:
 	push {r0-r4,lr}
 	ldrh r0, [r5,#0x3a]
 	sub r0, #1
-	ldr r1, byte_80293F0 // =0xd 
+	ldr r1, dword_80293F0 // =0xd 
 	add r0, r0, r1
 	mov r1, #0
 	mov r2, #3
@@ -5917,12 +5917,12 @@ off_80293D0: .word byte_20366FE
 off_80293D4: .word dword_2033000
 off_80293D8: .word 0x190
 	.word byte_20349C0
-byte_80293E0: .byte 0xC, 0x0, 0x0, 0x0
-byte_80293E4: .byte 0x18, 0x0, 0x0, 0x0
-byte_80293E8: .byte 0x6, 0x0, 0x0, 0x0
-byte_80293EC: .byte 0x12, 0x0, 0x0, 0x0
-byte_80293F0: .byte 0xD, 0x0, 0x0, 0x0
-off_80293F4: .word dword_20349A0
+dword_80293E0: .word 0xC
+dword_80293E4: .word 0x18
+dword_80293E8: .word 0x6
+dword_80293EC: .word 0x12
+dword_80293F0: .word 0xD
+dword_80293F4: .word 0x20349A0
 	thumb_func_end sub_80293B0
 
 	thumb_local_start
@@ -6645,16 +6645,16 @@ off_80298D4: .word byte_203CDB0
 	thumb_local_start
 sub_80298D8:
 	push {lr}
-	ldr r0, byte_80298EC // =0x0 
+	ldr r0, dword_80298EC // =0x40600000 
 	ldr r1, [r5,#0x44]
 	add r0, r0, r1
-	ldr r1, byte_80298F0 // =0x96 
+	ldr r1, dword_80298F0 // =0xd796 
 	mov r2, #1
 	mov r3, #0
 	bl sub_8009FF8
 	pop {pc}
-byte_80298EC: .byte 0x0, 0x0, 0x60, 0x40
-byte_80298F0: .byte 0x96, 0xD7, 0x0, 0x0
+dword_80298EC: .word 0x40600000
+dword_80298F0: .word 0xD796
 	thumb_func_end sub_80298D8
 
 	thumb_local_start
@@ -7173,10 +7173,10 @@ loc_8029C18:
 loc_8029C22:
 	mov r0, #0x57 
 	sub r0, r0, r1
-	ldr r1, byte_8029CA4 // =0xff 
+	ldr r1, dword_8029CA4 // =0x1ff 
 	and r0, r1
 	lsl r0, r0, #0x10
-	ldr r1, byte_8029C9C // =0xfc 
+	ldr r1, dword_8029C9C // =0x800001fc 
 	add r0, r0, r1
 	ldrb r1, [r5,#0xf]
 	cmp r1, #2
@@ -7209,7 +7209,7 @@ loc_8029C62:
 	ldrb r1, [r5,#0xe]
 	lsl r1, r1, #0x19
 	orr r0, r1
-	ldr r1, byte_8029CA0 // =0x82 
+	ldr r1, dword_8029CA0 // =0xb782 
 	mov r2, #1
 	mov r3, #0
 	bl sub_8009FF8
@@ -7235,9 +7235,9 @@ loc_8029C82:
 	bl sub_802FE7A
 locret_8029C9A:
 	pop {pc}
-byte_8029C9C: .byte 0xFC, 0x1, 0x0, 0x80
-byte_8029CA0: .byte 0x82, 0xB7, 0x0, 0x0
-byte_8029CA4: .byte 0xFF, 0x1, 0x0, 0x0
+dword_8029C9C: .word 0x800001FC
+dword_8029CA0: .word 0xB782
+dword_8029CA4: .word 0x1FF
 off_8029CA8: .word byte_8029CAC
 byte_8029CAC: .byte 0x0, 0x40, 0x20, 0x3C, 0x40, 0x3A, 0x60, 0x38, 0x80
 	.byte 0x37, 0xA0, 0x36, 0xB0, 0x36, 0xC0, 0x36, 0xD0, 0x37
@@ -7358,7 +7358,7 @@ loc_8029DA2:
 	ldr r1, off_8029DDC // =0x240 
 	mov r2, r6
 	mul r1, r2
-	ldr r2, byte_8029DE0 // =0x20 
+	ldr r2, dword_8029DE0 // =0x600a720 
 	add r1, r1, r2
 	ldr r2, off_8029DDC // =0x240 
 	bl loc_8000AC8
@@ -7377,7 +7377,7 @@ loc_8029DA2:
 	pop {r4-r7,pc}
 off_8029DD8: .word dword_86E7DCC
 off_8029DDC: .word 0x240
-byte_8029DE0: .byte 0x20, 0xA7, 0x0, 0x6
+dword_8029DE0: .word 0x600A720
 off_8029DE4: .word byte_8029DF8
 	.word byte_8029E1C
 	.word byte_8029E40
@@ -7472,14 +7472,14 @@ loc_8029EFE:
 	mov r0, #0
 	mov r1, #0x17
 	bl sub_80137B6 // (int a1, int a2) -> u8
-	ldr r1, byte_8029F68 // =0x6 
+	ldr r1, dword_8029F68 // =0x6 
 	add r1, r1, r4
 	cmp r0, r1
 	beq loc_8029F3C
 	ldr r2, off_8029F60 // =0x50 
 	add r2, r2, r6
 	strb r4, [r5,r2]
-	ldr r2, byte_8029F64 // =0x55 
+	ldr r2, dword_8029F64 // =0x55 
 	add r2, r2, r6
 	mov r3, #0
 	strb r3, [r5,r2]
@@ -7495,8 +7495,8 @@ off_8029F48: .word byte_8029F4C
 byte_8029F4C: .byte 0xE7, 0x0, 0x0, 0x0, 0xE8, 0x0, 0x0, 0x0, 0xE9, 0x0, 0x0, 0x0, 0xEA
 	.byte 0x0, 0x0, 0x0, 0xEB, 0x0, 0x0, 0x0
 off_8029F60: .word 0x50
-byte_8029F64: .byte 0x55, 0x0, 0x0, 0x0
-byte_8029F68: .byte 0x6, 0x0, 0x0, 0x0
+dword_8029F64: .word 0x55
+dword_8029F68: .word 0x6
 off_8029F6C: .word dword_20349A0
 	thumb_func_end sub_8029EF8
 
@@ -7515,7 +7515,7 @@ sub_8029F70:
 	bne loc_8029FAC
 loc_8029F88:
 	bl get_802D246 // () -> int
-	ldr r1, byte_8029FB0 // =0x0 
+	ldr r1, dword_8029FB0 // =0x200000 
 	tst r0, r1
 	bne loc_8029FAC
 	// entryIdx
@@ -7536,7 +7536,7 @@ loc_8029FAA:
 loc_8029FAC:
 	mov r0, r4
 	pop {r4,pc}
-byte_8029FB0: .byte 0x0, 0x0, 0x20, 0x0
+dword_8029FB0: .word 0x200000
 	thumb_func_end sub_8029F70
 
 	thumb_local_start
@@ -7558,7 +7558,7 @@ sub_8029FB4:
 	bl sub_802E09A
 	bne loc_8029FEC
 	bl get_802D246 // () -> int
-	ldr r1, byte_8029FF0 // =0x0 
+	ldr r1, dword_8029FF0 // =0x200000 
 	tst r0, r1
 	bne loc_8029FEC
 	// entryIdx
@@ -7572,7 +7572,7 @@ loc_8029FEA:
 loc_8029FEC:
 	mov r0, r4
 	pop {r4,pc}
-byte_8029FF0: .byte 0x0, 0x0, 0x20, 0x0
+dword_8029FF0: .word 0x200000
 	thumb_func_end sub_8029FB4
 
 // (int a1) -> bool
@@ -7580,11 +7580,11 @@ byte_8029FF0: .byte 0x0, 0x0, 0x20, 0x0
 chipIDIs13f_8029FF4:
 	push {r1-r7,lr}
 	mov r3, #0
-	ldr r1, off_802A028 // =byte_802A02C 
+	ldr r1, off_802A028 // =dword_802A02C 
 	ldr r2, [r1]
 	cmp r0, r2
 	beq loc_802A006
-	ldr r2, [r1,#0x4] // (byte_802A030 - 0x802a02c)
+	ldr r2, [r1,#0x4] // (dword_802A030 - 0x802a02c)
 	cmp r0, r2
 	bne loc_802A008
 loc_802A006:
@@ -7600,11 +7600,11 @@ sub_802A00C:
 	mov r3, #0
 	lsl r0, r0, #0x17
 	lsr r0, r0, #0x17
-	ldr r1, off_802A028 // =byte_802A02C 
+	ldr r1, off_802A028 // =dword_802A02C 
 	ldr r2, [r1]
 	cmp r0, r2
 	beq loc_802A022
-	ldr r2, [r1,#0x4] // (byte_802A030 - 0x802a02c)
+	ldr r2, [r1,#0x4] // (dword_802A030 - 0x802a02c)
 	cmp r0, r2
 	bne loc_802A024
 loc_802A022:
@@ -7612,24 +7612,24 @@ loc_802A022:
 loc_802A024:
 	mov r0, r3
 	pop {r1-r7,pc}
-off_802A028: .word byte_802A02C
-byte_802A02C: .byte 0x3F, 0x1, 0x0, 0x0
-byte_802A030: .byte 0x3F, 0x1, 0x0, 0x0
+off_802A028: .word dword_802A02C
+dword_802A02C: .word 0x13F
+dword_802A030: .word 0x13F
 	thumb_func_end sub_802A00C
 
 	thumb_local_start
 sub_802A034:
 	push {r1-r7,lr}
-	ldr r0, byte_802A03C // =0x3f 
+	ldr r0, dword_802A03C // =0x13f 
 	pop {r1-r7,pc}
 	.balign 4, 0x00
-byte_802A03C: .byte 0x3F, 0x1, 0x0, 0x0
+dword_802A03C: .word 0x13F
 	thumb_func_end sub_802A034
 
 	thumb_local_start
 sub_802A040:
 	push {r4,r6,r7,lr}
-	ldr r1, byte_802A084 // =0xc 
+	ldr r1, dword_802A084 // =0xc 
 	add r6, r0, r1
 	tst r0, r0
 	bne loc_802A072
@@ -7651,7 +7651,7 @@ loc_802A068:
 	pop {r5}
 	cmp r1, #0
 	beq loc_802A072
-	ldr r2, byte_802A0E4 // =0xc 
+	ldr r2, dword_802A0E4 // =0xc 
 	add r6, r1, r2
 loc_802A072:
 	push {r5}
@@ -7662,13 +7662,13 @@ loc_802A072:
 	strb r0, [r5,r2]
 	pop {r5}
 	pop {r4,r6,r7,pc}
-byte_802A084: .byte 0xC, 0x0, 0x0, 0x0
+dword_802A084: .word 0xC
 	thumb_func_end sub_802A040
 
 	thumb_local_start
 sub_802A088:
 	push {r4,r6,r7,lr}
-	ldr r1, byte_802A0E0 // =0x6 
+	ldr r1, dword_802A0E0 // =0x6 
 	add r6, r0, r1
 	push {r5}
 	ldr r5, off_802A114 // =byte_2035280 
@@ -7688,7 +7688,7 @@ loc_802A0AC:
 	pop {r5}
 	cmp r1, #0xb
 	blt loc_802A0B6
-	ldr r2, byte_802A0E4 // =0xc 
+	ldr r2, dword_802A0E4 // =0xc 
 	add r6, r6, r2
 loc_802A0B6:
 	push {r5}
@@ -7705,7 +7705,7 @@ loc_802A0B6:
 sub_802A0C8:
 	push {lr}
 	sub r0, #1
-	ldr r1, byte_802A0E8 // =0xd 
+	ldr r1, dword_802A0E8 // =0xd 
 	add r0, r0, r1
 	push {r5}
 	ldr r5, off_802A114 // =byte_2035280 
@@ -7714,9 +7714,9 @@ sub_802A0C8:
 	strb r0, [r5,r2]
 	pop {r5}
 	pop {pc}
-byte_802A0E0: .byte 0x6, 0x0, 0x0, 0x0
-byte_802A0E4: .byte 0xC, 0x0, 0x0, 0x0
-byte_802A0E8: .byte 0xD, 0x0, 0x0, 0x0
+dword_802A0E0: .word 0x6
+dword_802A0E4: .word 0xC
+dword_802A0E8: .word 0xD
 	thumb_func_end sub_802A0C8
 
 	thumb_local_start
@@ -7738,14 +7738,14 @@ sub_802A0F8:
 	ldrb r1, [r0,r2]
 	tst r1, r1
 	beq loc_802A10C
-	ldr r0, byte_802A118 // =0x0 
+	ldr r0, dword_802A118 // =0x4000 
 	bl sub_801DACC
 loc_802A10C:
 	bl sub_802A0EC
 	pop {pc}
 	.balign 4, 0x00
 off_802A114: .word byte_2035280
-byte_802A118: .byte 0x0, 0x40, 0x0, 0x0
+dword_802A118: .word 0x4000
 	thumb_func_end sub_802A0F8
 
 	thumb_local_start
@@ -7814,7 +7814,7 @@ sub_802A220:
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_802A2A2
 	bl get_802D246 // () -> int
-	ldr r1, byte_802A2A8 // =0x0 
+	ldr r1, dword_802A2A8 // =0x200000 
 	tst r0, r1
 	bne loc_802A2A2
 	bl sub_802D234
@@ -7874,7 +7874,7 @@ loc_802A2A2:
 	mov r0, r4
 	pop {r4,r6,r7,pc}
 	.balign 4, 0x00
-byte_802A2A8: .byte 0x0, 0x0, 0x20, 0x0
+dword_802A2A8: .word 0x200000
 off_802A2AC: .word dword_20349A0
 	thumb_func_end sub_802A220
 
@@ -7932,12 +7932,12 @@ sub_802A30C:
 	ldrb r4, [r5,#0x13]
 	ldr r2, off_802A3E8 // =byte_802A3F4 
 	ldrh r2, [r2,r4]
-	ldr r1, byte_802A3F0 // =0xff 
+	ldr r1, dword_802A3F0 // =0xffff 
 	mov r0, #0x1f
 	bl sub_8000642
 	ldr r2, off_802A3EC // =byte_802A400 
 	ldrh r2, [r2,r4]
-	ldr r1, byte_802A3F0 // =0xff 
+	ldr r1, dword_802A3F0 // =0xffff 
 	mov r0, #0x16
 	bl sub_8000642
 	add r4, #2
@@ -7978,12 +7978,12 @@ sub_802A362:
 	ldrb r4, [r5,#0x13]
 	ldr r2, off_802A3EC // =byte_802A400 
 	ldrh r2, [r2,r4]
-	ldr r1, byte_802A3F0 // =0xff 
+	ldr r1, dword_802A3F0 // =0xffff 
 	mov r0, #0x1f
 	bl sub_8000642
 	ldr r2, off_802A3E8 // =byte_802A3F4 
 	ldrh r2, [r2,r4]
-	ldr r1, byte_802A3F0 // =0xff 
+	ldr r1, dword_802A3F0 // =0xffff 
 	mov r0, #0x16
 	bl sub_8000642
 	add r4, #2
@@ -8033,19 +8033,19 @@ loc_802A3C8:
 sub_802A3CC:
 	push {lr}
 	mov r0, #0x1f
-	ldr r1, byte_802A3F0 // =0xff 
+	ldr r1, dword_802A3F0 // =0xffff 
 	mov r2, #0x80
 	add r2, #0x80
 	bl sub_8000642
 	mov r0, #0x16
-	ldr r1, byte_802A3F0 // =0xff 
+	ldr r1, dword_802A3F0 // =0xffff 
 	mov r2, #0x80
 	add r2, #0x80
 	bl sub_8000642
 	pop {pc}
 off_802A3E8: .word byte_802A3F4
 off_802A3EC: .word byte_802A400
-byte_802A3F0: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_802A3F0: .word 0xFFFF
 byte_802A3F4: .byte 0x0, 0x1, 0xE0, 0x0, 0xC0, 0x0, 0xA0, 0x0, 0x80, 0x0, 0x80, 0x0
 byte_802A400: .byte 0x80, 0x0, 0x80, 0x0, 0xA0, 0x0, 0xC0, 0x0, 0xE0, 0x0, 0x0, 0x1
 	thumb_func_end sub_802A3CC
@@ -8226,7 +8226,7 @@ sub_802A53C:
 	mov r0, r4
 	pop {r1-r7,pc}
 loc_802A54A:
-	ldr r0, byte_802A560 // =0x85 
+	ldr r0, dword_802A560 // =0x3785 
 	pop {r1-r7,pc}
 	thumb_func_end sub_802A53C
 
@@ -8240,9 +8240,9 @@ getChipID_802A54E:
 	mov r0, r4
 	pop {r1-r7,pc}
 loc_802A55C:
-	ldr r0, byte_802A560 // =0x85 
+	ldr r0, dword_802A560 // =0x3785 
 	pop {r1-r7,pc}
-byte_802A560: .byte 0x85, 0x37, 0x0, 0x0
+dword_802A560: .word 0x3785
 	thumb_func_end getChipID_802A54E
 
 	thumb_local_start
@@ -8461,7 +8461,7 @@ off_802A744: .word dword_86E55BC
 	.word 0x6017220
 	.word 0x20
 	.word 0x0
-byte_802A7CC: .byte 0xA, 0x5, 0xA, 0x1
+dword_802A7CC: .word 0x10A050A
 	.word 0x200060A
 	.word 0x301070A
 	.word 0x402080A
@@ -8488,7 +8488,7 @@ byte_802A840: .byte 0x6C, 0xB3, 0x68, 0xB3, 0x64, 0xB3, 0xFF, 0xFF
 byte_802A848: .byte 0x73, 0xB3, 0x73, 0xB3, 0x73, 0xB3, 0x73, 0xB3, 0x73
 	.byte 0xB3, 0x73, 0xB3, 0x72, 0xB3, 0x72, 0xB3, 0x72, 0xB3
 	.byte 0x72, 0xB3, 0x72, 0xB3, 0x72, 0xB3, 0x0, 0x0
-byte_802A862: .byte 0x74, 0xB3, 0x0, 0x0
+dword_802A862: .word 0xB374
 	thumb_func_end sub_802A646
 
 	thumb_func_start sub_802A866
@@ -8538,18 +8538,18 @@ sub_802A8A4:
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl decomp_802B060
 	ldr r0, off_802A918 // =unk_2035000 
-	ldr r1, byte_802A91C // =0x70 
-	ldr r2, byte_802A920 // =0x0 
+	ldr r1, dword_802A91C // =0x9070 
+	ldr r2, dword_802A920 // =0x6008e00 
 	bl sub_802B4D4
 	ldr r0, off_802A918 // =unk_2035000 
-	ldr r1, byte_802A924 // =0xd4 
-	ldr r2, byte_802A928 // =0x80 
+	ldr r1, dword_802A924 // =0x90d4 
+	ldr r2, dword_802A928 // =0x6009a80 
 	bl sub_802B51C
 	ldr r0, off_802A914 // =unk_2031000 
 	bl sub_802B2A0
 	strh r0, [r5,#0x1e]
 	mov r0, #0
-	ldr r1, off_802A90C // =byte_8129180 
+	ldr r1, off_802A90C // =dword_8129180 
 	bl sub_8120CC8
 	strb r0, [r5,#0xc]
 	strb r1, [r5,#0xd]
@@ -8567,18 +8567,18 @@ sub_802A8A4:
 	bl sub_802B438
 	mov r0, #4
 	str r0, [r5]
-	ldr r0, byte_802A910 // =0x0 
+	ldr r0, dword_802A910 // =0x20000 
 	bl sub_801DACC
 	pop {pc}
 	.balign 4, 0x00
-off_802A90C: .word byte_8129180
-byte_802A910: .byte 0x0, 0x0, 0x2, 0x0
+off_802A90C: .word dword_8129180
+dword_802A910: .word 0x20000
 off_802A914: .word unk_2031000
 off_802A918: .word unk_2035000
-byte_802A91C: .byte 0x70, 0x90, 0x0, 0x0
-byte_802A920: .byte 0x0, 0x8E, 0x0, 0x6
-byte_802A924: .byte 0xD4, 0x90, 0x0, 0x0
-byte_802A928: .byte 0x80, 0x9A, 0x0, 0x6
+dword_802A91C: .word 0x9070
+dword_802A920: .word 0x6008E00
+dword_802A924: .word 0x90D4
+dword_802A928: .word 0x6009A80
 off_802A92C: .word decomp_2032000
 off_802A930: .word unk_2030E60
 	thumb_func_end sub_802A8A4
@@ -8596,11 +8596,11 @@ sub_802A934:
 	lsl r2, r2, #2
 	beq loc_802A966
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
-	ldr r0, byte_802A96C // =0x80 
+	ldr r0, dword_802A96C // =0x820080 
 	bl sub_801DA48
-	ldr r0, byte_802A96C // =0x80 
+	ldr r0, dword_802A96C // =0x820080 
 	bl sub_801BECC
-	ldr r0, byte_802A970 // =0x4 
+	ldr r0, dword_802A970 // =0x4 
 	bl sub_801DACC
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
@@ -8610,8 +8610,8 @@ loc_802A966:
 	mov r0, #1
 	strb r0, [r5,#4]
 	pop {pc}
-byte_802A96C: .byte 0x80, 0x0, 0x82, 0x0
-byte_802A970: .byte 0x4, 0x0, 0x0, 0x0
+dword_802A96C: .word 0x820080
+dword_802A970: .word 0x4
 	thumb_func_end sub_802A934
 
 	thumb_local_start
@@ -8770,7 +8770,7 @@ loc_802AA9A:
 	lsl r0, r0, #1
 	ldr r1, off_802ABB4 // =unk_2031000 
 	ldrh r0, [r1,r0]
-	ldr r1, byte_802ABBC // =0xff 
+	ldr r1, dword_802ABBC // =0xffff 
 	cmp r0, r1
 	beq loc_802AB98
 	bl sub_802B5DC
@@ -8840,7 +8840,7 @@ loc_802AB36:
 	ldr r7, off_802ABB4 // =unk_2031000 
 	lsl r4, r0, #1
 	ldrh r6, [r7,r4]
-	ldr r2, byte_802ABBC // =0xff 
+	ldr r2, dword_802ABBC // =0xffff 
 	cmp r6, r2
 	beq loc_802AB64
 	ldr r7, off_802ABC0 // =byte_802B5FC 
@@ -8896,7 +8896,7 @@ loc_802ABAE:
 	pop {r4-r7,pc}
 off_802ABB4: .word unk_2031000
 off_802ABB8: .word decomp_2032000
-byte_802ABBC: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_802ABBC: .word 0xFFFF
 off_802ABC0: .word byte_802B5FC
 off_802ABC4: .word 0x100
 off_802ABC8: .word 0x200
@@ -9046,10 +9046,10 @@ loc_802ACCE:
 	ldrb r0, [r5,#8]
 	ldrb r1, [r5,#9]
 	bl object_getPanelParameters
-	ldr r1, byte_802AD6C // =0x0 
+	ldr r1, dword_802AD6C // =0xf800000 
 	tst r0, r1
 	bne loc_802ACEA
-	ldr r1, byte_802AD70 // =0x10 
+	ldr r1, dword_802AD70 // =0x10 
 	and r0, r1
 	cmp r0, r1
 	beq loc_802ACF2
@@ -9100,7 +9100,7 @@ loc_802AD34:
 	mov r0, #0
 	strh r0, [r5,#2]
 loc_802AD48:
-	ldr r0, byte_802AD80 // =0x0 
+	ldr r0, dword_802AD80 // =0x2a0000 
 	push {r0}
 	mov r0, sp
 	ldrb r1, [r5,#8]
@@ -9117,12 +9117,12 @@ loc_802AD48:
 	bl sub_802AF0E
 	pop {pc}
 	.balign 4, 0x00
-byte_802AD6C: .byte 0x0, 0x0, 0x80, 0xF
-byte_802AD70: .byte 0x10, 0x0, 0x0, 0x0
+dword_802AD6C: .word 0xF800000
+dword_802AD70: .word 0x10
 off_802AD74: .word unk_2031000
 off_802AD78: .word byte_8736D74
-	.byte 0, 0, 0, 0
-byte_802AD80: .byte 0x0, 0x0, 0x2A, 0x0
+	.word 0x0
+dword_802AD80: .word 0x2A0000
 	thumb_func_end sub_802AC6E
 
 	thumb_local_start
@@ -9354,10 +9354,10 @@ sub_802AF0E:
 sub_802AF28:
 	push {r5,lr}
 	mov r5, r0
-	ldr r0, byte_802AF34 // =0x0 
+	ldr r0, dword_802AF34 // =0x80000 
 	bl sub_801A16C
 	pop {r5,pc}
-byte_802AF34: .byte 0x0, 0x0, 0x8, 0x0
+dword_802AF34: .word 0x80000
 	thumb_func_end sub_802AF28
 
 	thumb_local_start
@@ -9547,13 +9547,13 @@ off_802B08C: .word unk_2035000
 sub_802B0EC:
 	push {r4-r7,lr}
 	mov r7, #4
-	ldr r6, off_802B118 // =byte_802B11C 
+	ldr r6, off_802B118 // =dword_802B11C 
 loc_802B0F2:
 	ldr r0, [r6]
 	lsl r0, r0, #0x10
 	ldr r1, [r6,#4]
 	orr r0, r1
-	ldr r1, byte_802B114 // =0x2 
+	ldr r1, dword_802B114 // =0x10002 
 	ldrb r2, [r5,#0xf]
 	ldr r3, off_802B110 // =byte_802A848 
 	ldr r4, [r6,#8]
@@ -9564,10 +9564,10 @@ loc_802B0F2:
 	strb r0, [r5,#0xf]
 	pop {r4-r7,pc}
 off_802B110: .word byte_802A848
-byte_802B114: .byte 0x2, 0x0, 0x1, 0x0
-off_802B118: .word byte_802B11C
-byte_802B11C: .byte 0x56, 0x0, 0x0, 0x0
-byte_802B120: .byte 0x79, 0x0, 0x0, 0x0
+dword_802B114: .word 0x10002
+off_802B118: .word dword_802B11C
+dword_802B11C: .word 0x56
+dword_802B120: .word 0x79
 byte_802B124: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x6A, 0x0, 0x0, 0x0, 0x79, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x0, 0x56, 0x0, 0x0, 0x0, 0x8A, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x6A, 0x0, 0x0, 0x0, 0x8A
@@ -9589,16 +9589,16 @@ sub_802B15C:
 	sub r5, r2, r0
 	lsl r5, r5, #4
 	mov r7, #4
-	ldr r6, off_802B1A0 // =byte_802B1A4 
+	ldr r6, off_802B1A0 // =dword_802B1A4 
 loc_802B178:
 	ldr r0, [r6]
 	lsl r0, r0, #0x10
 	ldr r1, [r6,#4]
 	add r1, r1, r5
 	orr r0, r1
-	ldr r1, byte_802B19C // =0x2 
+	ldr r1, dword_802B19C // =0x10002 
 	mov r2, #0
-	ldr r3, off_802B198 // =byte_802A862 
+	ldr r3, off_802B198 // =dword_802A862 
 	ldr r4, [r6,#8]
 	bl sub_811FAF4
 	add r6, #0x10
@@ -9607,11 +9607,11 @@ loc_802B178:
 locret_802B194:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_802B198: .word byte_802A862
-byte_802B19C: .byte 0x2, 0x0, 0x1, 0x0
-off_802B1A0: .word byte_802B1A4
-byte_802B1A4: .byte 0xC, 0x0, 0x0, 0x0
-byte_802B1A8: .byte 0xF, 0x0, 0x0, 0x0
+off_802B198: .word dword_802A862
+dword_802B19C: .word 0x10002
+off_802B1A0: .word dword_802B1A4
+dword_802B1A4: .word 0xC
+dword_802B1A8: .word 0xF
 byte_802B1AC: .byte 0x0, 0x40, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x4E, 0x0, 0x0, 0x0, 0xF, 0x0, 0x0
 	.byte 0x0, 0x0, 0x40, 0x0, 0x10, 0x0, 0x0, 0x0, 0x0, 0xC, 0x0, 0x0, 0x0, 0x1B, 0x0
 	.byte 0x0, 0x0, 0x0, 0x40, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x4E, 0x0, 0x0, 0x0, 0x1B
@@ -9629,14 +9629,14 @@ sub_802B1E4:
 	mov r2, #0x20 
 	mov r3, #0xc
 	ldr r4, off_802B200 // =byte_802A840 
-	ldr r6, byte_802B208 // =0x0 
-	ldr r7, byte_802B204 // =0x2 
+	ldr r6, dword_802B208 // =0x40000000 
+	ldr r7, dword_802B204 // =0x10002 
 	bl sub_802B20C
 locret_802B1FE:
 	pop {r4-r7,pc}
 off_802B200: .word byte_802A840
-byte_802B204: .byte 0x2, 0x0, 0x1, 0x0
-byte_802B208: .byte 0x0, 0x0, 0x0, 0x40
+dword_802B204: .word 0x10002
+dword_802B208: .word 0x40000000
 	thumb_func_end sub_802B1E4
 
 	thumb_local_start
@@ -9675,7 +9675,7 @@ loc_802B22A:
 	lsr r1, r1, #4
 	sub r1, #1
 	bne loc_802B258
-	ldr r1, off_802B26C // =byte_8129180 
+	ldr r1, off_802B26C // =dword_8129180 
 	bl sub_8120CC8
 	ldr r2, [sp,#8]
 	strb r0, [r5,r2]
@@ -9690,27 +9690,27 @@ loc_802B258:
 	add sp, sp, #0x1c
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_802B26C: .word byte_8129180
+off_802B26C: .word dword_8129180
 	thumb_func_end sub_802B20C
 
 	thumb_local_start
 sub_802B270:
 	push {r4-r7,lr}
-	ldr r0, byte_802B28C // =0x62 
+	ldr r0, dword_802B28C // =0x62 
 	mov r1, #0xc
 	lsl r0, r0, #0x10
 	orr r0, r1
-	ldr r1, byte_802B290 // =0x2 
+	ldr r1, dword_802B290 // =0x10002 
 	ldrh r2, [r5,#0x1e]
 	ldrh r3, [r5,#0x24]
 	mov r4, #7
-	ldr r6, byte_802B294 // =0x70 
+	ldr r6, dword_802B294 // =0xb370 
 	mov r7, #0x48 
 	bl sub_811FA98
 	pop {r4-r7,pc}
-byte_802B28C: .byte 0x62, 0x0, 0x0, 0x0
-byte_802B290: .byte 0x2, 0x0, 0x1, 0x0
-byte_802B294: .byte 0x70, 0xB3, 0x0, 0x0
+dword_802B28C: .word 0x62
+dword_802B290: .word 0x10002
+dword_802B294: .word 0xB370
 	thumb_func_end sub_802B270
 
 	thumb_local_start
@@ -9724,7 +9724,7 @@ off_802B29C: .word dword_20364C0
 sub_802B2A0:
 	push {r4-r7,lr}
 	mov r7, r0
-	ldr r1, byte_802B350 // =0x1b 
+	ldr r1, dword_802B350 // =0x1b 
 	lsl r1, r1, #1
 	// byte
 	mov r2, #0xff
@@ -9738,7 +9738,7 @@ loc_802B2B2:
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_802B2CE
-	ldr r1, byte_802B354 // =0x97 
+	ldr r1, dword_802B354 // =0x197 
 	ldr r0, off_802B2DC // =byte_802B2E0 
 	lsl r2, r4, #2
 	ldr r0, [r0,r2]
@@ -9748,7 +9748,7 @@ loc_802B2B2:
 loc_802B2CE:
 	add r6, #2
 	add r4, #1
-	ldr r0, byte_802B350 // =0x1b 
+	ldr r0, dword_802B350 // =0x1b 
 	cmp r4, r0
 	blt loc_802B2B2
 	lsr r0, r6, #1
@@ -9763,8 +9763,8 @@ byte_802B2E0: .byte 0x97, 0x1, 0x0, 0x0, 0x98, 0x1, 0x0, 0x0, 0x99, 0x1, 0x0, 0x
 	.byte 0x0, 0x0, 0xAD, 0x1, 0x0, 0x0, 0xAE, 0x1, 0x0, 0x0, 0xAF, 0x1, 0x0
 	.byte 0x0, 0xB0, 0x1, 0x0, 0x0, 0xB1, 0x1, 0x0, 0x0, 0xB2, 0x1, 0x0, 0x0
 	.byte 0xB3, 0x1, 0x0, 0x0, 0xB4, 0x1, 0x0, 0x0
-byte_802B350: .byte 0x1B, 0x0, 0x0, 0x0
-byte_802B354: .byte 0x97, 0x1, 0x0, 0x0
+dword_802B350: .word 0x1B
+dword_802B354: .word 0x197
 	thumb_func_end sub_802B2A0
 
 	thumb_func_start sub_802B358
@@ -9794,7 +9794,7 @@ loc_802B37E:
 loc_802B380:
 	lsl r6, r6, #1
 	ldrh r0, [r4,r6]
-	ldr r1, byte_802B3E0 // =0xff 
+	ldr r1, dword_802B3E0 // =0xffff 
 	cmp r0, r1
 	bne loc_802B392
 	mov r1, #0x29 
@@ -9824,7 +9824,7 @@ loc_802B3AC:
 	ldr r2, [sp,#4]
 	push {r4-r7}
 	add r2, r2, r6
-	ldr r3, byte_802B3E8 // =0x0 
+	ldr r3, dword_802B3E8 // =0x6008e00 
 	add r3, r3, r6
 	mov r4, #0xa
 	mov r5, #1
@@ -9840,9 +9840,9 @@ loc_802B3AC:
 	pop {r4-r7,pc}
 off_802B3D8: .word byte_802B5FC
 off_802B3DC: .word byte_8736D74
-byte_802B3E0: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_802B3E0: .word 0xFFFF
 off_802B3E4: .word dword_86B7AE0
-byte_802B3E8: .byte 0x0, 0x8E, 0x0, 0x6
+dword_802B3E8: .word 0x6008E00
 	.word decomp_2032000
 off_802B3F0: .word dword_86F047C
 off_802B3F4: .word byte_802B3F8
@@ -9870,7 +9870,7 @@ loc_802B448:
 	add r1, r1, r0
 	lsl r1, r1, #1
 	ldrh r0, [r4,r1]
-	ldr r1, byte_802B4D0 // =0xff 
+	ldr r1, dword_802B4D0 // =0xffff 
 	cmp r0, r1
 	bne loc_802B45E
 	mov r0, #0
@@ -9911,7 +9911,7 @@ loc_802B496:
 	mul r0, r2
 	ldr r1, [sp,#0x10]
 	add r0, r0, r1
-	ldr r1, byte_802B4CC // =0x80 
+	ldr r1, dword_802B4CC // =0x6009a80 
 	ldr r3, [sp]
 	mov r2, #0x20 
 	mul r3, r2
@@ -9932,8 +9932,8 @@ loc_802B496:
 	add sp, sp, #0x18
 	pop {r4-r7,pc}
 off_802B4C8: .word byte_802B5FC
-byte_802B4CC: .byte 0x80, 0x9A, 0x0, 0x6
-byte_802B4D0: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_802B4CC: .word 0x6009A80
+dword_802B4D0: .word 0xFFFF
 	thumb_func_end sub_802B438
 
 	thumb_func_start sub_802B4D4
@@ -10207,7 +10207,7 @@ sub_802B76C:
 	push {r5,lr}
 	ldr r5, off_802BA44 // =word_2036660 
 	ldr r1, off_802B780 // =off_802B784 
-	ldrb r0, [r5,#1]
+	ldrb r0, [r5,#0x1] // (word_2036660+1 - 0x2036660)
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
@@ -10305,7 +10305,7 @@ sub_802B80C:
 	bl sub_8027D10
 	ldr r2, off_802B990 // =0x48 
 	mul r2, r3
-	ldr r3, byte_802B9A4 // =0x60 
+	ldr r3, dword_802B9A4 // =0x6009560 
 	add r3, r3, r2
 	ldr r2, off_802B9A0 // =byte_203C4E0 
 	mov r4, #9
@@ -10324,7 +10324,7 @@ sub_802B80C:
 	ldr r0, off_802B9AC // =byte_86F0300 
 	ldr r2, off_802B990 // =0x48 
 	mul r2, r3
-	ldr r3, byte_802B9B4 // =0x60 
+	ldr r3, dword_802B9B4 // =0x6009760 
 	add r3, r3, r2
 	ldr r2, off_802B9B0 // =byte_203C6E0 
 	mov r4, #1
@@ -10345,10 +10345,10 @@ loc_802B86A:
 	bge loc_802B888
 	mov r0, #0x91
 	bl sound_play // () -> void
-	ldr r0, byte_802B998 // =0xab 
+	ldr r0, dword_802B998 // =0xa0ab 
 	b loc_802B88A
 loc_802B888:
-	ldr r0, byte_802B994 // =0xab 
+	ldr r0, dword_802B994 // =0xd0ab 
 loc_802B88A:
 	mov r2, #0x12
 	lsr r3, r3, #3
@@ -10443,7 +10443,7 @@ sub_802B920:
 	bge loc_802B96E
 	cmp r0, #0x10
 	bne locret_802B98C
-	ldr r0, byte_802B998 // =0xab 
+	ldr r0, dword_802B998 // =0xa0ab 
 	mov r2, #0x12
 	ldrb r1, [r5,#6]
 	mul r2, r1
@@ -10456,7 +10456,7 @@ sub_802B920:
 	ldrb r3, [r5,#6]
 	lsl r3, r3, #3
 	mul r2, r3
-	ldr r3, byte_802B9A4 // =0x60 
+	ldr r3, dword_802B9A4 // =0x6009560 
 	add r3, r3, r2
 	ldr r2, off_802B9A0 // =byte_203C4E0 
 	mov r4, #9
@@ -10485,15 +10485,15 @@ locret_802B98C:
 	pop {pc}
 	.byte 0, 0
 off_802B990: .word 0x48
-byte_802B994: .byte 0xAB, 0xD0, 0x0, 0x0
-byte_802B998: .byte 0xAB, 0xA0, 0x0, 0x0
+dword_802B994: .word 0xD0AB
+dword_802B998: .word 0xA0AB
 off_802B99C: .word 0x160
 off_802B9A0: .word byte_203C4E0
-byte_802B9A4: .byte 0x60, 0x95, 0x0, 0x6
+dword_802B9A4: .word 0x6009560
 off_802B9A8: .word dword_86B7AE0
 off_802B9AC: .word byte_86F0300
 off_802B9B0: .word byte_203C6E0
-byte_802B9B4: .byte 0x60, 0x97, 0x0, 0x6
+dword_802B9B4: .word 0x6009760
 	thumb_func_end sub_802B920
 
 	thumb_local_start
@@ -11002,7 +11002,7 @@ loc_802BF72:
 	mov r2, #0x2a 
 	bl sub_8000C72
 	ldrh r0, [r5,#0x10]
-	ldr r1, byte_802C040 // =0xff 
+	ldr r1, dword_802C040 // =0xffff 
 	cmp r0, r1
 	beq loc_802BFC0
 	bl sub_802C54C
@@ -11057,7 +11057,7 @@ loc_802BFE0:
 loc_802BFE4:
 	push {r5}
 	push {r1}
-	ldr r1, byte_802C00C // =0x0 
+	ldr r1, dword_802C00C // =0x600bd00 
 	mov r2, #0x2a 
 	lsl r2, r2, #6
 	bl loc_8000AC8
@@ -11073,7 +11073,7 @@ loc_802BFE4:
 	strb r0, [r5,#3]
 	pop {pc}
 	.balign 4, 0x00
-byte_802C00C: .byte 0x0, 0xBD, 0x0, 0x6
+dword_802C00C: .word 0x600BD00
 off_802C010: .word unk_3001AE0
 off_802C014: .word dword_8732E54
 off_802C018: .word dword_8733394
@@ -11086,7 +11086,7 @@ off_802C030: .word dword_8733E74
 off_802C034: .word dword_87343B4
 off_802C038: .word dword_8734934
 off_802C03C: .word dword_87343F4
-byte_802C040: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_802C040: .word 0xFFFF
 	thumb_func_end sub_802BF6C
 
 	thumb_local_start
@@ -11147,7 +11147,7 @@ sub_802C0A4:
 	strb r0, [r5,#0xb]
 	bne locret_802C160
 	ldrh r0, [r5,#0x10]
-	ldr r1, byte_802C164 // =0xff 
+	ldr r1, dword_802C164 // =0xffff 
 	cmp r0, r1
 	beq loc_802C15C
 	bl sub_802C54C
@@ -11163,12 +11163,12 @@ sub_802C0A4:
 	beq loc_802C106
 	push {r0-r2,r4,r6,r7}
 	mov r4, r1
-	ldr r1, byte_802C16C // =0x36 
+	ldr r1, dword_802C16C // =0x136 
 	cmp r0, r1
 	bgt loc_802C0E2
 	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
 	ldr r1, [r0]
-	ldr r2, byte_802C168 // =0xff 
+	ldr r2, dword_802C168 // =0xffffffff 
 	cmp r1, r2
 	bne loc_802C0E6
 loc_802C0E2:
@@ -11237,9 +11237,9 @@ loc_802C15C:
 locret_802C160:
 	pop {pc}
 	.balign 4, 0x00
-byte_802C164: .byte 0xFF, 0xFF, 0x0, 0x0
-byte_802C168: .byte 0xFF, 0xFF, 0xFF, 0xFF
-byte_802C16C: .byte 0x36, 0x1, 0x0, 0x0
+dword_802C164: .word 0xFFFF
+dword_802C168: .word 0xFFFFFFFF
+dword_802C16C: .word 0x136
 	thumb_func_end sub_802C0A4
 
 	thumb_local_start
@@ -11564,12 +11564,12 @@ sub_802C34E:
 	bl loc_8000AC8
 	ldr r7, off_802C444 // =off_802C448 
 	ldr r0, [r7]
-	ldr r1, [r7,#0x4] // (byte_802C44C - 0x802c448)
+	ldr r1, [r7,#0x4] // (dword_802C44C - 0x802c448)
 	ldr r2, [r7,#0x8] // (off_802C450 - 0x802c448)
 	bl loc_8000AC8
 	bl getPETNaviSelect // () -> u8
 	bl sub_8028164
-	ldr r1, byte_802C458 // =0x0 
+	ldr r1, dword_802C458 // =0x6014000 
 	mov r2, #0x80
 	bl loc_8000AC8
 	bl getPETNaviSelect // () -> u8
@@ -11600,10 +11600,10 @@ off_802C434: .word dword_8731DF4
 off_802C440: .word unk_2034B30
 off_802C444: .word off_802C448
 off_802C448: .word dword_8732874
-byte_802C44C: .byte 0x0, 0x94, 0x0, 0x6
+dword_802C44C: .word 0x6009400
 off_802C450: .word 0x5E0
 	.word 0xFFFF
-byte_802C458: .byte 0x0, 0x40, 0x1, 0x6
+dword_802C458: .word 0x6014000
 off_802C45C: .word byte_30016B0
 	thumb_func_end sub_802C34E
 
@@ -11699,7 +11699,7 @@ sub_802C4E8:
 	mov r6, sp
 	push {r1}
 	bl sub_8000D84
-	ldr r1, byte_802C548 // =0x99 
+	ldr r1, dword_802C548 // =0x95999 
 	cmp r0, r1
 	ble loc_802C4FC
 	mov r0, r1
@@ -11737,12 +11737,12 @@ loc_802C50A:
 byte_802C538: .byte 0x14, 0x13, 0x11, 0x10, 0xE, 0x0, 0x0, 0x0
 off_802C540: .word byte_802C538
 off_802C544: .word 0xA0
-byte_802C548: .byte 0x99, 0x59, 0x9, 0x0
+dword_802C548: .word 0x95999
 	thumb_func_end sub_802C4E8
 
 	thumb_local_start
 sub_802C54C:
-	ldr r1, byte_802C584 // =0xff 
+	ldr r1, dword_802C584 // =0xffff 
 	cmp r0, r1
 	beq loc_802C580
 	lsr r1, r0, #0xe
@@ -11775,12 +11775,12 @@ loc_802C580:
 	mov r0, #0xff
 locret_802C582:
 	mov pc, lr
-byte_802C584: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_802C584: .word 0xFFFF
 	thumb_func_end sub_802C54C
 
 	thumb_local_start
 sub_802C588:
-	ldr r1, byte_802C598 // =0xe8 
+	ldr r1, dword_802C598 // =0xc1e8 
 	mov r2, #0x2a 
 loc_802C58C:
 	strh r1, [r0]
@@ -11789,12 +11789,12 @@ loc_802C58C:
 	sub r2, #1
 	bne loc_802C58C
 	mov pc, lr
-byte_802C598: .byte 0xE8, 0xC1, 0x0, 0x0
+dword_802C598: .word 0xC1E8
 	thumb_func_end sub_802C588
 
 	thumb_local_start
 sub_802C59C:
-	ldr r1, byte_802C5AC // =0xc6 
+	ldr r1, dword_802C5AC // =0x90c6 
 	mov r2, #0x2a 
 loc_802C5A0:
 	strh r1, [r0]
@@ -11803,7 +11803,7 @@ loc_802C5A0:
 	bne loc_802C5A0
 	mov pc, lr
 	.balign 4, 0x00
-byte_802C5AC: .byte 0xC6, 0x90, 0x0, 0x0
+dword_802C5AC: .word 0x90C6
 	thumb_func_end sub_802C59C
 
 	thumb_local_start
@@ -11818,7 +11818,7 @@ sub_802C5B0:
 	ldr r0, off_802C6AC // =byte_8736D74 
 	mov r1, #5
 	ldr r2, off_802C6A8 // =unk_2035320 
-	ldr r3, byte_802C6B4 // =0x80 
+	ldr r3, dword_802C6B4 // =0x600ba80 
 	mov r4, #0xa
 	mov r5, #1
 	ldr r6, off_802C6B0 // =dword_86B7AE0 
@@ -11856,7 +11856,7 @@ loc_802C5F4:
 	ldr r0, off_802C6AC // =byte_8736D74 
 	mov r1, #6
 	ldr r2, off_802C6BC // =unk_20354E0 
-	ldr r3, byte_802C6B8 // =0x40 
+	ldr r3, dword_802C6B8 // =0x600bc40 
 	mov r4, #3
 	mov r5, #1
 	ldr r6, off_802C6B0 // =dword_86B7AE0 
@@ -11866,7 +11866,7 @@ loc_802C61C:
 	ldr r0, [sp,#4]
 	mov r1, #1
 	ldr r2, off_802C6A8 // =unk_2035320 
-	ldr r3, byte_802C6B4 // =0x80 
+	ldr r3, dword_802C6B4 // =0x600ba80 
 	mov r4, #0xa
 	sub r4, r4, r0
 	mov r5, #1
@@ -11905,7 +11905,7 @@ loc_802C654:
 	ldr r0, off_802C6AC // =byte_8736D74 
 	mov r1, #6
 	ldr r2, off_802C6BC // =unk_20354E0 
-	ldr r3, byte_802C6B8 // =0x40 
+	ldr r3, dword_802C6B8 // =0x600bc40 
 	mov r4, #3
 	mov r5, #1
 	ldr r6, off_802C6B0 // =dword_86B7AE0 
@@ -11915,7 +11915,7 @@ loc_802C67C:
 	ldr r0, [sp,#4]
 	add r1, r0, #6
 	ldr r2, off_802C6A8 // =unk_2035320 
-	ldr r3, byte_802C6B4 // =0x80 
+	ldr r3, dword_802C6B4 // =0x600ba80 
 	mov r4, #0xa
 	sub r4, r4, r0
 	mov r5, #1
@@ -11935,8 +11935,8 @@ loc_802C67C:
 off_802C6A8: .word unk_2035320
 off_802C6AC: .word byte_8736D74
 off_802C6B0: .word dword_86B7AE0
-byte_802C6B4: .byte 0x80, 0xBA, 0x0, 0x6
-byte_802C6B8: .byte 0x40, 0xBC, 0x0, 0x6
+dword_802C6B4: .word 0x600BA80
+dword_802C6B8: .word 0x600BC40
 off_802C6BC: .word unk_20354E0
 off_802C6C0: .word byte_802C6C4
 byte_802C6C4: .byte 0xD4, 0x91, 0xD6, 0x91, 0xD8, 0x91, 0xDA, 0x91, 0xDC
@@ -11955,7 +11955,7 @@ sub_802C6EC:
 	mov r0, #0xb
 loc_802C6F6:
 	str r0, [sp,#0x14]
-	ldr r0, byte_802C758 // =0xa0 
+	ldr r0, dword_802C758 // =0x90a0 
 	add r0, #0x14
 	mov r3, #5
 	add r2, sp, #0
@@ -11968,7 +11968,7 @@ loc_802C700:
 	bgt loc_802C700
 	mov r4, #8
 	add r4, sp
-	ldr r6, byte_802C758 // =0xa0 
+	ldr r6, dword_802C758 // =0x90a0 
 	ldr r0, [sp,#0x14]
 	cmp r0, #0xb
 	blt loc_802C724
@@ -12003,7 +12003,7 @@ loc_802C72E:
 	add sp, sp, #0x1c
 	pop {r4-r6,pc}
 	.balign 4, 0x00
-byte_802C758: .byte 0xA0, 0x90, 0x0, 0x0
+dword_802C758: .word 0x90A0
 	thumb_func_end sub_802C6EC
 
 	thumb_local_start
@@ -12019,7 +12019,7 @@ sub_802C75C:
 	ldr r2, off_802C7C0 // =off_802C7C4 
 	ldr r0, [r2,r0]
 	ldr r2, off_802C7CC // =unk_2035320 
-	ldr r3, byte_802C7D0 // =0x80 
+	ldr r3, dword_802C7D0 // =0x600ba80 
 	mov r4, #8
 	mov r5, #1
 	ldr r6, off_802C7D4 // =dword_86B7AE0 
@@ -12033,7 +12033,7 @@ sub_802C75C:
 	bl sub_802C4B6
 	pop {r0,r1,r6}
 	push {r0,r1,r6}
-	ldr r2, byte_802C7E0 // =0xe4 
+	ldr r2, dword_802C7E0 // =0x91e4 
 	strh r2, [r6]
 	add r2, #1
 	strh r2, [r6,#2]
@@ -12046,7 +12046,7 @@ sub_802C75C:
 	pop {r0,r1,r6}
 	ldr r0, off_802C7D8 // =byte_86EF71C 
 	ldr r2, off_802C7E4 // =unk_2035520 
-	ldr r3, byte_802C7DC // =0x80 
+	ldr r3, dword_802C7DC // =0x600bc80 
 	mov r4, #1
 	mov r5, #1
 	ldr r6, off_802C7D4 // =dword_86B7AE0 
@@ -12058,11 +12058,11 @@ off_802C7C0: .word off_802C7C4
 off_802C7C4: .word dword_86EA94C
 	.word dword_86EB354
 off_802C7CC: .word unk_2035320
-byte_802C7D0: .byte 0x80, 0xBA, 0x0, 0x6
+dword_802C7D0: .word 0x600BA80
 off_802C7D4: .word dword_86B7AE0
 off_802C7D8: .word byte_86EF71C
-byte_802C7DC: .byte 0x80, 0xBC, 0x0, 0x6
-byte_802C7E0: .byte 0xE4, 0x91, 0x0, 0x0
+dword_802C7DC: .word 0x600BC80
+dword_802C7E0: .word 0x91E4
 off_802C7E4: .word unk_2035520
 off_802C7E8: .word byte_802C7EC
 byte_802C7EC: .byte 0xD4, 0x91, 0xD6, 0x91, 0xD8, 0x91, 0xDA, 0x91, 0xDC
@@ -12328,7 +12328,7 @@ loc_802CA08:
 	ldr r0, [r6,#8]
 	str r0, [r7,#8]
 	ldrh r0, [r6,#8]
-	ldr r1, byte_802CB24 // =0xff 
+	ldr r1, dword_802CB24 // =0xffff 
 	cmp r0, r1
 	bne locret_802CA1C
 	ldrb r0, [r7,#1]
@@ -12381,15 +12381,15 @@ sub_802CA5C:
 	ldrsb r0, [r5,r0]
 	lsl r0, r0, #3
 	add r0, #0xd
-	ldr r1, byte_802CB28 // =0xff 
+	ldr r1, dword_802CB28 // =0x1ff 
 	and r0, r1
 	lsl r0, r0, #0x10
 	add r0, #0x15
-	ldr r1, byte_802CB2C // =0xff 
+	ldr r1, dword_802CB2C // =0xffff00ff 
 	and r0, r1
-	ldr r1, byte_802CB30 // =0x0 
+	ldr r1, dword_802CB30 // =0x40000000 
 	add r0, r0, r1
-	ldr r1, byte_802CB34 // =0x0 
+	ldr r1, dword_802CB34 // =0xb200 
 	mov r2, #0
 	mov r3, #0
 	bl sub_8009FF8
@@ -12436,7 +12436,7 @@ sub_802CAA6:
 	pop {pc}
 loc_802CACE:
 	pop {r0-r2}
-	bl sub_8021AEE
+	bl dword_8021AEC+2
 	pop {pc}
 loc_802CAD6:
 	pop {r0-r2}
@@ -12469,11 +12469,11 @@ off_802CB14: .word unk_203526C
 off_802CB18: .word unk_2035260
 off_802CB1C: .word unk_2035260
 off_802CB20: .word unk_203526C
-byte_802CB24: .byte 0xFF, 0xFF, 0x0, 0x0
-byte_802CB28: .byte 0xFF, 0x1, 0x0, 0x0
-byte_802CB2C: .byte 0xFF, 0x0, 0xFF, 0xFF
-byte_802CB30: .byte 0x0, 0x0, 0x0, 0x40
-byte_802CB34: .byte 0x0, 0xB2, 0x0, 0x0
+dword_802CB24: .word 0xFFFF
+dword_802CB28: .word 0x1FF
+dword_802CB2C: .word 0xFFFF00FF
+dword_802CB30: .word 0x40000000
+dword_802CB34: .word 0xB200
 	thumb_func_end sub_802CAA6
 
 	thumb_func_start sub_802CB38
@@ -12616,11 +12616,11 @@ sub_802CC1A:
 	mov r4, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
-	ldr r1, byte_802CC4C // =0xe 
+	ldr r1, dword_802CC4C // =0x270e 
 	svc 6
 	strh r1, [r5,#0xc]
 	lsr r0, r4, #0x10
-	ldr r1, byte_802CC4C // =0xe 
+	ldr r1, dword_802CC4C // =0x270e 
 	svc 6
 	strh r1, [r5,#0xe]
 	b loc_802CC42
@@ -12632,7 +12632,7 @@ loc_802CC42:
 	ldrh r1, [r5,#0xe]
 	bl sub_801E914
 	pop {pc}
-byte_802CC4C: .byte 0xE, 0x27, 0x0, 0x0
+dword_802CC4C: .word 0x270E
 	thumb_func_end sub_802CC1A
 
 	thumb_local_start
@@ -12974,7 +12974,7 @@ sub_802CEF4:
 	push {r4,r6,r7,lr}
 	ldr r4, [r5,#0x54]
 	bl sub_801032C
-	ldr r1, byte_802D038 // =0x0 
+	ldr r1, dword_802D038 // =0x200000 
 	tst r0, r1
 	beq loc_802CF30
 	mov r1, #0x84
@@ -13006,7 +13006,7 @@ loc_802CF30:
 	mov r7, r0
 	cmp r0, #0xbb
 	beq loc_802CF56
-	ldr r1, byte_802D03C // =0x57 
+	ldr r1, dword_802D03C // =0x157 
 	cmp r0, r1
 	beq loc_802CF56
 	push {r0}
@@ -13019,11 +13019,11 @@ loc_802CF30:
 	mov r6, #1
 loc_802CF56:
 	bl sub_800FFFE
-	ldr r1, byte_802D044 // =0x0 
+	ldr r1, dword_802D044 // =0x8200 
 	tst r0, r1
 	bne loc_802CFB8
 	ldr r0, [r4,#0x70]
-	ldr r1, byte_802D048 // =0x0 
+	ldr r1, dword_802D048 // =0xff800000 
 	tst r0, r1
 	beq locret_802CFF6
 	mov r0, #0x82
@@ -13046,7 +13046,7 @@ loc_802CF88:
 	ldr r0, off_802D04C // =0x200 
 	cmp r7, #0xbb
 	beq loc_802CF90
-	ldr r0, byte_802D050 // =0x0 
+	ldr r0, dword_802D050 // =0x8000 
 loc_802CF90:
 	bl sub_800FFE4
 	b loc_802CFB8
@@ -13061,7 +13061,7 @@ loc_802CF96:
 	ldr r1, off_802D058 // =0x2000 
 	tst r0, r1
 	beq locret_802CFF6
-	ldr r1, byte_802D05C // =0x0 
+	ldr r1, dword_802D05C // =0x20000 
 	tst r0, r1
 	bne locret_802CFF6
 	ldr r0, off_802D054 // =0x400 
@@ -13094,7 +13094,7 @@ loc_802CFB8:
 	ldr r0, [r4,#0x70]
 	bic r0, r1
 	str r0, [r4,#0x70]
-	ldr r1, byte_802D060 // =0xbe 
+	ldr r1, dword_802D060 // =0x301be 
 	ldr r0, [r4,#0x40]
 	bic r0, r1
 	str r0, [r4,#0x40]
@@ -13128,17 +13128,17 @@ off_802D028: .word unk_2036720
 off_802D02C: .word unk_2036720
 off_802D030: .word unk_2036720
 off_802D034: .word unk_2036720
-byte_802D038: .byte 0x0, 0x0, 0x20, 0x0
-byte_802D03C: .byte 0x57, 0x1, 0x0, 0x0
+dword_802D038: .word 0x200000
+dword_802D03C: .word 0x157
 off_802D040: .word 0x800
-byte_802D044: .byte 0x0, 0x82, 0x0, 0x0
-byte_802D048: .byte 0x0, 0x0, 0x80, 0xFF
+dword_802D044: .word 0x8200
+dword_802D048: .word 0xFF800000
 off_802D04C: .word 0x200
-byte_802D050: .byte 0x0, 0x80, 0x0, 0x0
+dword_802D050: .word 0x8000
 off_802D054: .word 0x400
 off_802D058: .word 0x2000
-byte_802D05C: .byte 0x0, 0x0, 0x2, 0x0
-byte_802D060: .byte 0xBE, 0x1, 0x3, 0x0
+dword_802D05C: .word 0x20000
+dword_802D060: .word 0x301BE
 	thumb_func_end sub_802CFF8
 
 	thumb_func_start sub_802D064
@@ -13227,8 +13227,8 @@ sub_802D0C8:
 	bl sub_800A7E2
 	mov r3, #1
 	eor r3, r0
-	ldr r1, byte_802D218 // =0x7f 
-	ldr r2, byte_802D218 // =0x7f 
+	ldr r1, dword_802D218 // =0x17f 
+	ldr r2, dword_802D218 // =0x17f 
 	add r0, sp, #0
 	bl object_getEnemyByNameRange
 	tst r0, r0
@@ -13307,7 +13307,7 @@ sub_802D164:
 	ldr r1, off_802D228 // =dword_2006740 
 	ldr r2, [r1]
 	add r2, r2, r0
-	ldr r3, byte_802D22C // =0x3f 
+	ldr r3, dword_802D22C // =0xf423f 
 	cmp r2, r3
 	ble loc_802D172
 	mov r2, r3
@@ -13418,12 +13418,12 @@ loc_802D208:
 locret_802D212:
 	pop {pc}
 off_802D214: .word byte_203C4A0
-byte_802D218: .byte 0x7F, 0x1, 0x0, 0x0
+dword_802D218: .word 0x17F
 off_802D21C: .word dword_2006740
 off_802D220: .word dword_2006740
 off_802D224: .word dword_2006740
 off_802D228: .word dword_2006740
-byte_802D22C: .byte 0x3F, 0x42, 0xF, 0x0
+dword_802D22C: .word 0xF423F
 off_802D230: .word dword_2006740
 	thumb_func_end sub_802D1EC
 
@@ -13648,13 +13648,13 @@ sub_802D358:
 	bne loc_802D3A0
 loc_802D37A:
 	bl sub_8010004
-	ldr r3, byte_802D628 // =0xff 
+	ldr r3, dword_802D628 // =0xffff 
 	cmp r0, r3
 	beq loc_802D3A0
 	mov r0, #4
 	bl sub_800FFE4
 	bl sub_800FB54
-	ldr r3, byte_802D628 // =0xff 
+	ldr r3, dword_802D628 // =0xffff 
 	cmp r0, r3
 	beq loc_802D3A0
 	mov r0, #0
@@ -13874,7 +13874,7 @@ loc_802D524:
 	orr r1, r0
 	strh r1, [r7,#0xa]
 	ldrh r0, [r7,#0x14]
-	ldr r1, byte_802D634 // =0x53 
+	ldr r1, dword_802D634 // =0x153 
 	cmp r0, r1
 	bne loc_802D55A
 	// idx
@@ -13968,10 +13968,10 @@ byte_802D5E4: .byte 0x1, 0x0, 0x36, 0x0, 0x48, 0x0, 0x1, 0x0, 0x37, 0x0, 0x48, 0
 	.byte 0x0, 0x4F, 0x0, 0xE, 0x0, 0x34, 0x0, 0x54, 0x0, 0xE, 0x0, 0x32, 0x0
 	.byte 0x53, 0x1, 0x16, 0x0, 0x1A, 0x0, 0x21, 0x0, 0x2A, 0x0, 0x8, 0x0, 0x53
 	.byte 0x1, 0x0, 0x0
-byte_802D628: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_802D628: .word 0xFFFF
 off_802D62C: .word byte_802D410
 off_802D630: .word byte_802D420
-byte_802D634: .byte 0x53, 0x1, 0x0, 0x0
+dword_802D634: .word 0x153
 	thumb_func_end sub_802D5A8
 
 	thumb_func_start sub_802D638
@@ -14021,7 +14021,7 @@ sub_802D65E:
 	mov r1, #0xd8
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq locret_802D68A
-	ldr r1, byte_802D69C // =0x96 
+	ldr r1, dword_802D69C // =0x196 
 	add r1, r1, r4
 	mov r0, r1
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
@@ -14040,7 +14040,7 @@ off_802D68C: .word unk_2000070
 off_802D690: .word unk_2000070
 off_802D694: .word unk_2000070
 off_802D698: .word unk_2000070
-byte_802D69C: .byte 0x96, 0x1, 0x0, 0x0
+dword_802D69C: .word 0x196
 	thumb_func_end sub_802D65E
 
 	thumb_func_start sub_802D6A0
@@ -14138,9 +14138,9 @@ sub_802D738:
 	bl sub_800F46C
 	strb r0, [r5,#0x17]
 	bl sub_800F2C6
-	ldr r0, byte_802D798 // =0x41 
+	ldr r0, dword_802D798 // =0x1c41 
 	bl object_clearFlag // (int bitfield) -> void
-	ldr r1, byte_802D79C // =0x10 
+	ldr r1, dword_802D79C // =0x10 
 	bl sub_801A176
 	mov r0, #4
 	bl sub_800F2B6
@@ -14163,8 +14163,8 @@ loc_802D78A:
 	strh r0, [r7]
 locret_802D796:
 	pop {pc}
-byte_802D798: .byte 0x41, 0x1C, 0x0, 0x0
-byte_802D79C: .byte 0x10, 0x0, 0x0, 0x0
+dword_802D798: .word 0x1C41
+dword_802D79C: .word 0x10
 	thumb_func_end sub_802D738
 
 	thumb_local_start
@@ -14316,11 +14316,11 @@ loc_802D900:
 	bge locret_802D924
 	mov r0, #0
 	bl sub_801E0D0
-	ldr r0, byte_802DCA8 // =0x0 
+	ldr r0, dword_802DCA8 // =0x4000 
 	bl sub_8010312
 	ldr r0, off_802DCAC // =0x1800 
 	bl sub_801031C
-	ldr r0, byte_802DCB0 // =0x0 
+	ldr r0, dword_802DCB0 // =0x8600 
 	bl sub_800FFEE
 	bl sub_8011714
 locret_802D924:
@@ -14366,7 +14366,7 @@ sub_802D950:
 	bl sub_800F46C
 	strb r0, [r5,#0x17]
 	bl sub_800F2C6
-	ldr r0, byte_802DCB4 // =0x41 
+	ldr r0, dword_802DCB4 // =0x1c41 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r1, #0x10
 	bl sub_801A176
@@ -14483,9 +14483,9 @@ loc_802DA88:
 	bge locret_802DAA6
 	mov r0, #0
 	bl sub_801E0D0
-	ldr r0, byte_802DCBC // =0x0 
+	ldr r0, dword_802DCBC // =0x6800 
 	bl sub_801031C
-	ldr r0, byte_802DCC0 // =0x0 
+	ldr r0, dword_802DCC0 // =0x4008600 
 	bl sub_800FFEE
 	bl sub_8011714
 locret_802DAA6:
@@ -14534,7 +14534,7 @@ sub_802DACC:
 	ldrb r1, [r5,#0x15]
 	bl sub_801BB1C
 	bl sub_801A074 // () -> void
-	ldr r0, byte_802DCB4 // =0x41 
+	ldr r0, dword_802DCB4 // =0x1c41 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r1, #0x10
 	bl sub_801A176
@@ -14697,9 +14697,9 @@ loc_802DC7C:
 	bgt locret_802DCA0
 	mov r0, #0
 	bl sub_801E0D0
-	ldr r0, byte_802DCBC // =0x0 
+	ldr r0, dword_802DCBC // =0x6800 
 	bl sub_801031C
-	ldr r0, byte_802DCC8 // =0x0 
+	ldr r0, dword_802DCC8 // =0xc008600 
 	bl sub_800FFEE
 	mov r0, #4
 	bl battle_clearFlags
@@ -14708,15 +14708,15 @@ locret_802DCA0:
 	pop {pc}
 	.balign 4, 0x00
 off_802DCA4: .word start_
-byte_802DCA8: .byte 0x0, 0x40, 0x0, 0x0
+dword_802DCA8: .word 0x4000
 off_802DCAC: .word 0x1800
-byte_802DCB0: .byte 0x0, 0x86, 0x0, 0x0
-byte_802DCB4: .byte 0x41, 0x1C, 0x0, 0x0
+dword_802DCB0: .word 0x8600
+dword_802DCB4: .word 0x1C41
 off_802DCB8: .word unk_2034A60
-byte_802DCBC: .byte 0x0, 0x68, 0x0, 0x0
-byte_802DCC0: .byte 0x0, 0x86, 0x0, 0x4
+dword_802DCBC: .word 0x6800
+dword_802DCC0: .word 0x4008600
 off_802DCC4: .word unk_2034A60
-byte_802DCC8: .byte 0x0, 0x86, 0x0, 0xC
+dword_802DCC8: .word 0xC008600
 	thumb_func_end sub_802DC66
 
 	thumb_local_start
@@ -14799,7 +14799,7 @@ sub_802DD2A:
 	cmp r0, #0
 	beq loc_802DD46
 	bl sub_801032C
-	ldr r1, byte_802DE54 // =0x0 
+	ldr r1, dword_802DE54 // =0x4000 
 	tst r0, r1
 	beq loc_802DD46
 	ldr r1, off_802DE58 // =0x2000 
@@ -14873,7 +14873,7 @@ off_802DE44: .word byte_203CED0
 off_802DE48: .word LCDControl
 off_802DE4C: .word 0x1000
 off_802DE50: .word start_
-byte_802DE54: .byte 0x0, 0x40, 0x0, 0x0
+dword_802DE54: .word 0x4000
 off_802DE58: .word 0x2000
 	thumb_func_end sub_802DD70
 
@@ -14927,7 +14927,7 @@ loc_802DEA0:
 	thumb_local_start
 sub_802DEAE:
 	push {r4,lr}
-	ldr r4, byte_802DED0 // =0xff 
+	ldr r4, dword_802DED0 // =0xffff 
 	ldr r1, [r5,#0x58]
 	ldrb r1, [r1,#0x19]
 	tst r1, r1
@@ -14942,7 +14942,7 @@ sub_802DEAE:
 loc_802DECC:
 	mov r0, r4
 	pop {r4,pc}
-byte_802DED0: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_802DED0: .word 0xFFFF
 off_802DED4: .word 0x1000
 	thumb_func_end sub_802DEAE
 
@@ -14957,7 +14957,7 @@ sub_802DED8:
 	ldrh r2, [r0,#0x1a]
 	ldrh r1, [r0,#0xe]
 	ldrh r0, [r0,#2]
-	ldr r3, byte_802DF30 // =0xff 
+	ldr r3, dword_802DF30 // =0xffff 
 	cmp r0, r3
 	beq locret_802DF2E
 	push {r0}
@@ -14989,7 +14989,7 @@ loc_802DF14:
 	pop {r0-r2}
 locret_802DF2E:
 	pop {r4,r6,r7,pc}
-byte_802DF30: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_802DF30: .word 0xFFFF
 	thumb_func_end sub_802DED8
 
 	thumb_local_start
@@ -15139,7 +15139,7 @@ sub_802E032:
 	mov r2, r0
 	ldrh r0, [r2,#0x28]
 	add r0, r0, r1
-	ldr r1, byte_802E224 // =0x0 
+	ldr r1, dword_802E224 // =0x4000 
 	cmp r0, r1
 	ble loc_802E04A
 	mov r0, r1
@@ -15270,7 +15270,7 @@ sub_802E112:
 	cmp r0, #6
 	beq locret_802E154
 	bl get_802D246 // () -> int
-	ldr r1, byte_802E22C // =0x0 
+	ldr r1, dword_802E22C // =0x200000 
 	tst r0, r1
 	bne locret_802E154
 	bl sub_803F524
@@ -15369,7 +15369,7 @@ sub_802E1EC:
 	strb r1, [r0,r2]
 	mov r2, #0x41 
 	strb r1, [r0,r2]
-	ldr r0, byte_802E23C // =0x0 
+	ldr r0, dword_802E23C // =0x1f00000 
 	bl sub_800FFEE
 	pop {pc}
 	.balign 4, 0x00
@@ -15380,13 +15380,13 @@ off_802E214: .word unk_2036120
 off_802E218: .word unk_20362F0
 off_802E21C: .word eBattleObjectPlayer
 off_802E220: .word unk_20362F0
-byte_802E224: .byte 0x0, 0x40, 0x0, 0x0
+dword_802E224: .word 0x4000
 off_802E228: .word unk_2036120
-byte_802E22C: .byte 0x0, 0x0, 0x20, 0x0
+dword_802E22C: .word 0x200000
 off_802E230: .word 0x139
 off_802E234: .word 0x1E0
 off_802E238: .word 0x168
-byte_802E23C: .byte 0x0, 0x0, 0xF0, 0x1
+dword_802E23C: .word 0x1F00000
 	thumb_func_end sub_802E1EC
 
 	thumb_func_start sub_802E240
@@ -15460,7 +15460,7 @@ loc_802E2D8:
 	mov r0, r6
 	bl sub_802E558
 	str r1, [sp]
-	ldr r1, byte_802E428 // =0xff 
+	ldr r1, dword_802E428 // =0x1ff 
 	and r0, r1
 	strh r0, [r7,#0x24]
 	bl battle_isPaused
@@ -15618,7 +15618,7 @@ off_802E418: .word 0x1500
 	.word byte_802E43A
 	.word 0x4
 	.word 0x8
-byte_802E428: .byte 0xFF, 0x1, 0x0, 0x0
+dword_802E428: .word 0x1FF
 	.word unk_200F3C4
 byte_802E430: .byte 0x0, 0x15, 0x0, 0x2A, 0x0, 0x40, 0xFF, 0xFF, 0xFF, 0xFF
 byte_802E43A: .byte 0x1, 0x1, 0x1, 0x0, 0x0, 0x0
@@ -15656,7 +15656,7 @@ sub_802E45E:
 	mov r5, r0
 	add r0, #6
 	mov r1, #0x3c 
-	ldr r2, byte_802E48C // =0xff 
+	ldr r2, dword_802E48C // =0xffff 
 	bl HalfwordFill
 	ldrh r0, [r4]
 	strh r0, [r5]
@@ -15673,7 +15673,7 @@ sub_802E45E:
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	pop {r4,r5,pc}
 	.balign 4, 0x00
-byte_802E48C: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_802E48C: .word 0xFFFF
 	thumb_func_end sub_802E45E
 
 	thumb_local_start
@@ -15694,10 +15694,10 @@ sub_802E4A0:
 	mov r0, #0
 	strb r0, [r1,#0x1e]
 	bl sub_8012EA8
-	ldr r0, byte_802E4B4 // =0x0 
+	ldr r0, dword_802E4B4 // =0x40000 
 	bl sub_800FFEE
 	pop {r6,pc}
-byte_802E4B4: .byte 0x0, 0x0, 0x4, 0x0
+dword_802E4B4: .word 0x40000
 	thumb_func_end sub_802E4A0
 
 	thumb_func_start sub_802E4B8
@@ -15723,7 +15723,7 @@ loc_802E4DA:
 	mov r0, #1
 	pop {r7,pc}
 	.byte 0, 0
-	.byte 0x0, 0xA0, 0x0, 0x0
+	.word 0xA000
 	thumb_func_end sub_802E4B8
 
 	thumb_func_start sub_802E4E4
@@ -15744,7 +15744,7 @@ sub_802E4E4:
 	bl sub_802E1EC
 loc_802E508:
 	bl sub_800FFFE
-	ldr r1, byte_802E538 // =0x0 
+	ldr r1, dword_802E538 // =0x20000000 
 	tst r0, r1
 	beq locret_802E530
 	mov r0, r1
@@ -15755,16 +15755,16 @@ loc_802E508:
 	bl sub_802E1EC
 	ldr r0, off_802E53C // =0x1e0 
 	strh r0, [r7,#0x30]
-	ldr r0, byte_802E540 // =0xff 
+	ldr r0, dword_802E540 // =0xffff 
 	bl object_setInvulnerableTime
 	bl sub_802D310
 locret_802E530:
 	pop {r7,pc}
 	.byte 0x0, 0x0
 off_802E534: .word timer_2000000
-byte_802E538: .byte 0x0, 0x0, 0x0, 0x20
+dword_802E538: .word 0x20000000
 off_802E53C: .word 0x1E0
-byte_802E540: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_802E540: .word 0xFFFF
 	thumb_func_end sub_802E4E4
 
 	thumb_local_start
@@ -15785,7 +15785,7 @@ sub_802E558:
 	mov r6, r0
 	bl sub_802E070
 	ldrh r0, [r7,#0x2c]
-	ldr r1, byte_802E584 // =0xff 
+	ldr r1, dword_802E584 // =0xffff 
 	cmp r0, r1
 	beq loc_802E574
 	bl sub_802E1B4
@@ -15803,7 +15803,7 @@ loc_802E57C:
 	pop {r4,r6,r7,pc}
 	mov r0, #0
 	pop {r4,r6,r7,pc}
-byte_802E584: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_802E584: .word 0xFFFF
 	thumb_func_end sub_802E558
 
 	thumb_local_start
@@ -15919,7 +15919,7 @@ loc_802E65A:
 	ldr r0, [sp]
 	bl sub_80103BC
 	mov r5, r0
-	ldr r0, byte_802E944 // =0x0 
+	ldr r0, dword_802E944 // =0x10000 
 	bl sub_800FFE4
 	mov r0, #1
 	add sp, sp, #0xc
@@ -15935,7 +15935,7 @@ sub_802E674:
 	tst r1, r1
 	beq locret_802E696
 	bl sub_802E490
-	ldr r2, byte_802E698 // =0xff 
+	ldr r2, dword_802E698 // =0xffff 
 	sub r7, #1
 	add r7, r7, r7
 	add r7, #0
@@ -15947,7 +15947,7 @@ sub_802E674:
 	bl sub_8000EB6
 locret_802E696:
 	pop {r7,pc}
-byte_802E698: .byte 0xFF, 0xFF, 0x0, 0x0
+dword_802E698: .word 0xFFFF
 	thumb_func_end sub_802E674
 
 	thumb_local_start
@@ -16000,10 +16000,10 @@ sub_802E6EC:
 	mov r7, r0
 	add r0, sp, #0
 	mov r1, #0x3c 
-	ldr r2, byte_802E948 // =0xff 
+	ldr r2, dword_802E948 // =0xffff 
 	bl HalfwordFill
 	add r6, sp, #0
-	ldr r2, byte_802E948 // =0xff 
+	ldr r2, dword_802E948 // =0xffff 
 	mov r3, #0
 	ldrh r0, [r7]
 	cmp r0, r2
@@ -16046,7 +16046,7 @@ loc_802E73C:
 	bl sub_8000CDA
 	pop {r3}
 	add r6, sp, #0
-	ldr r2, byte_802E948 // =0xff 
+	ldr r2, dword_802E948 // =0xffff 
 	ldrh r0, [r7]
 	cmp r0, r2
 	beq loc_802E760
@@ -16106,9 +16106,9 @@ sub_802E790:
 	bl battle_networkInvert
 	tst r0, r0
 	bne loc_802E7C8
-	ldr r0, byte_802E94C // =0x0 
+	ldr r0, dword_802E94C // =0x80000 
 	bl sub_801BED6
-	ldr r0, byte_802E94C // =0x0 
+	ldr r0, dword_802E94C // =0x80000 
 	bl sub_801BEC2
 loc_802E7C8:
 	mov r0, r6
@@ -16148,9 +16148,9 @@ loc_802E80C:
 	bl battle_networkInvert
 	tst r0, r0
 	bne loc_802E822
-	ldr r0, byte_802E94C // =0x0 
+	ldr r0, dword_802E94C // =0x80000 
 	bl sub_801BECC
-	ldr r0, byte_802E94C // =0x0 
+	ldr r0, dword_802E94C // =0x80000 
 	bl sub_801BEB8
 loc_802E822:
 	mov r0, #0
@@ -16209,7 +16209,7 @@ sub_802E860:
 	thumb_local_start
 sub_802E86C:
 	push {r4,r5,lr}
-	ldr r5, byte_802E948 // =0xff 
+	ldr r5, dword_802E948 // =0xffff 
 	mov r4, r0
 	bl sub_802E440
 	cmp r0, r5
@@ -16246,7 +16246,7 @@ sub_802E8A4:
 	mul r2, r0
 	ldr r0, off_802E958 // =unk_203A0A0 
 	add r0, r0, r2
-	ldr r6, byte_802E948 // =0xff 
+	ldr r6, dword_802E948 // =0xffff 
 	mov r7, #0
 	mov r2, #0
 loc_802E8B4:
@@ -16280,7 +16280,7 @@ sub_802E8DE:
 	mov r4, #0
 	mov r5, #0
 	bl sub_802E490
-	ldr r2, byte_802E948 // =0xff 
+	ldr r2, dword_802E948 // =0xffff 
 loc_802E8EA:
 	ldrh r1, [r0]
 	cmp r1, r2
@@ -16329,9 +16329,9 @@ loc_802E932:
 off_802E938: .word off_802E93C
 off_802E93C: .word LCDControl
 	.word start_
-byte_802E944: .byte 0x0, 0x0, 0x1, 0x0
-byte_802E948: .byte 0xFF, 0xFF, 0x0, 0x0
-byte_802E94C: .byte 0x0, 0x0, 0x8, 0x0
+dword_802E944: .word 0x10000
+dword_802E948: .word 0xFFFF
+dword_802E94C: .word 0x80000
 off_802E950: .word unk_2000370
 off_802E954: .word 0x170
 off_802E958: .word unk_203A0A0
@@ -17148,16 +17148,16 @@ off_802F0D4: .word 0x4EC
 	thumb_func_start sub_802F0D8
 sub_802F0D8:
 	push {lr}
-	ldr r0, byte_802F0EC // =0xde 
+	ldr r0, dword_802F0EC // =0x2de 
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_Flags2001c88_Ptr]
 	add r0, r0, r1
-	ldr r1, byte_802F0F0 // =0x2 
+	ldr r1, dword_802F0F0 // =0x2 
 	bl ZeroFillByHalfword
 	pop {pc}
 	.balign 4, 0x00
-byte_802F0EC: .byte 0xDE, 0x2, 0x0, 0x0
-byte_802F0F0: .byte 0x2, 0x0, 0x0, 0x0
+dword_802F0EC: .word 0x2DE
+dword_802F0F0: .word 0x2
 	thumb_func_end sub_802F0D8
 
 	thumb_func_start sub_802F0F4
@@ -17167,12 +17167,12 @@ sub_802F0F4:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_Flags2001c88_Ptr]
 	add r0, r0, r1
-	ldr r1, byte_802F10C // =0x16 
+	ldr r1, dword_802F10C // =0x16 
 	bl ZeroFillByHalfword
 	pop {pc}
 	.balign 4, 0x00
 off_802F108: .word 0x2C8
-byte_802F10C: .byte 0x16, 0x0, 0x0, 0x0
+dword_802F10C: .word 0x16
 	thumb_func_end sub_802F0F4
 
 // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -17523,7 +17523,7 @@ byte_802F2F8: .byte 0x84, 0x10, 0x0, 0x80, 0x1, 0x0, 0x0, 0x0, 0xC6, 0x18, 0x0, 
 	.byte 0x4A, 0x29, 0x0, 0x80, 0x1, 0x0, 0x0, 0x0, 0x8C, 0x31, 0x0, 0x80
 	.byte 0x1, 0x0, 0x0, 0x0, 0xCE, 0x39, 0x0, 0x80, 0x1, 0x0, 0x0, 0x0
 	.byte 0x10, 0x42, 0x0, 0x80, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-byte_802F334: .byte 0x4, 0x0, 0x0, 0x0
+dword_802F334: .word 0x4
 	.word byte_3001750
 	.word 0xFF01010C
 	.word 0x80000842
@@ -17766,7 +17766,7 @@ off_802F620: .word sub_802F624+1
 	thumb_local_start
 sub_802F624:
 	push {lr}
-	ldr r0, byte_802F638 // =0x41 
+	ldr r0, dword_802F638 // =0x1741 
 	bl sub_8001778
 	mov r0, #8
 	strb r0, [r5]
@@ -17774,7 +17774,7 @@ sub_802F624:
 	strb r0, [r5,#1]
 	pop {pc}
 	.balign 4, 0x00
-byte_802F638: .byte 0x41, 0x17, 0x0, 0x0
+dword_802F638: .word 0x1741
 	thumb_func_end sub_802F624
 
 // () -> void
@@ -17803,7 +17803,7 @@ sub_802F668:
 	mov r0, #0
 	strb r0, [r5,#0xe]
 	strb r0, [r5,#0xf]
-	ldr r0, byte_802F69C // =0x46 
+	ldr r0, dword_802F69C // =0xa46 
 	strh r0, [r5,#4]
 	mov r0, #1
 	bl sub_80005F2
@@ -17820,7 +17820,7 @@ sub_802F668:
 	mov r0, #4
 	strb r0, [r5,#1]
 	pop {pc}
-byte_802F69C: .byte 0x46, 0xA, 0x0, 0x0
+dword_802F69C: .word 0xA46
 off_802F6A0: .word 0x1340
 	thumb_func_end sub_802F668
 
@@ -17861,7 +17861,7 @@ loc_802F6C8:
 	b locret_802F6FA
 loc_802F6E0:
 	ldrh r0, [r5,#4]
-	ldr r1, byte_802F700 // =0xa 
+	ldr r1, dword_802F700 // =0xa0a 
 	cmp r0, r1
 	bge locret_802F6FA
 	bl sub_803E928
@@ -17872,7 +17872,7 @@ loc_802F6E0:
 locret_802F6FA:
 	pop {r4,pc}
 off_802F6FC: .word 0x12C
-byte_802F700: .byte 0xA, 0xA, 0x0, 0x0
+dword_802F700: .word 0xA0A
 	thumb_func_end sub_802F6B2
 
 	thumb_local_start
@@ -17998,13 +17998,13 @@ sub_802F7E8:
 	bl sound_play // () -> void
 	ldr r0, off_802F814 // =byte_802F2E4 
 	bl sub_8001B1C
-	ldr r0, off_802F818 // =byte_802F334 
+	ldr r0, off_802F818 // =dword_802F334 
 	bl sub_8001B1C
 locret_802F810:
 	pop {pc}
 	.balign 4, 0x00
 off_802F814: .word byte_802F2E4
-off_802F818: .word byte_802F334
+off_802F818: .word dword_802F334
 	thumb_func_end sub_802F7E8
 
 	thumb_local_start
@@ -18480,7 +18480,7 @@ locret_802FD68:
 	.balign 4, 0x00
 	.word byte_200B1A0
 off_802FD70: .word unk_30025B0
-byte_802FD74: .byte 0x8, 0x0, 0x0, 0x0
+dword_802FD74: .word 0x8
 	.word unk_3002580
 	.byte 0x4, 0x0, 0x0, 0x0, 0xB0, 0xE, 0x0, 0x3, 0xA0, 0x2, 0x0, 0x0, 0x70, 0x21
 	.byte 0x0, 0x3, 0x4, 0x0, 0x0, 0x0
@@ -18536,13 +18536,13 @@ off_802FE08: .word dword_3002590
 objRender_802FE0C:
 	push {lr}
 	ldr r0, off_802FE1C // =dword_3001D70 
-	ldr r1, byte_802FE20 // =0x0 
+	ldr r1, dword_802FE20 // =0x7000000 
 	ldr r2, off_802FE24 // =0x400 
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {pc}
 	.balign 4, 0x00
 off_802FE1C: .word dword_3001D70
-byte_802FE20: .byte 0x0, 0x0, 0x0, 0x7
+dword_802FE20: .word 0x7000000
 off_802FE24: .word 0x400
 	thumb_func_end objRender_802FE0C
 
@@ -18550,23 +18550,23 @@ off_802FE24: .word 0x400
 	thumb_func_start sub_802FE28
 sub_802FE28:
 	push {r4,lr}
-	ldr r4, off_802FE34 // =loc_30068E8 
+	ldr r4, off_802FE34 // =sub_30068E8+1 
 	mov lr, pc
 	bx r4
 	pop {r4,pc}
 	.balign 4, 0x00
-off_802FE34: .word 0x30068E9
+off_802FE34: .word sub_30068E8+1
 	thumb_func_end sub_802FE28
 
 	thumb_local_start
 sub_802FE38:
 	push {r4,lr}
-	ldr r4, off_802FE44 // =sub_3006920 
+	ldr r4, off_802FE44 // =sub_3006920+1 
 	mov lr, pc
 	bx r4
 	pop {r4,pc}
 	.balign 4, 0x00
-off_802FE44: .word 0x3006921
+off_802FE44: .word sub_3006920+1
 	thumb_func_end sub_802FE38
 
 	thumb_func_start sub_802FE48
@@ -19194,7 +19194,7 @@ sub_80302A8:
 	strh r0, [r2,#0xe]
 	strh r1, [r2,#0xc]
 	mov pc, lr
-	.byte 0x0, 0x20, 0x0, 0x21
+	.word 0x21002000
 	thumb_func_end sub_80302A8
 
 	thumb_func_start sub_80302B6
@@ -19492,7 +19492,7 @@ loc_8030492:
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	ldr r0, off_803057C // =decomp_2013A00 
 	ldr r1, [r7,#8]
-	ldr r2, byte_80304E4 // =0x0 
+	ldr r2, dword_80304E4 // =0x6000000 
 	add r1, r1, r2
 	ldr r2, [r7]
 	lsl r2, r2, #2
@@ -19523,7 +19523,7 @@ loc_8030492:
 	mov r12, r3
 	pop {r4-r7,pc}
 off_80304E0: .word byte_3001960
-byte_80304E4: .byte 0x0, 0x0, 0x0, 0x6
+dword_80304E4: .word 0x6000000
 	thumb_func_end sub_8030472
 
 	thumb_func_start sub_80304E8
@@ -20471,7 +20471,7 @@ loc_8030BB0:
 	push {r0-r2}
 	mov r4, #0x7f
 	and r6, r4
-	ldr r0, byte_8030CA8 // =0x40 
+	ldr r0, dword_8030CA8 // =0x1640 
 	add r0, r0, r6
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
@@ -20480,7 +20480,7 @@ loc_8030BB0:
 loc_8030BEE:
 	ldrb r6, [r7,#3]
 	lsl r6, r6, #2
-	ldr r4, off_8030C3C // =byte_8030C40 
+	ldr r4, off_8030C3C // =dword_8030C40 
 	add r4, r4, r6
 	ldr r4, [r4]
 	mov lr, pc
@@ -20519,8 +20519,8 @@ loc_8030C1A:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8030C38: .word dword_200F3D0
-off_8030C3C: .word byte_8030C40
-byte_8030C40: .byte 0x0, 0x0, 0x0, 0x0
+off_8030C3C: .word dword_8030C40
+dword_8030C40: .word 0x0
 	.word sub_8031388+1
 	.word sub_80313B0+1
 	.word sub_80313D4+1
@@ -20540,7 +20540,7 @@ byte_8030C40: .byte 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0
-byte_8030CA8: .byte 0x40, 0x16, 0x0, 0x0
+dword_8030CA8: .word 0x1640
 	thumb_func_end sub_8030B6A
 
 	thumb_local_start
@@ -21889,7 +21889,7 @@ loc_8031662:
 	cmp r6, #0xff
 	beq loc_8031678
 	lsl r6, r6, #2
-	ldr r4, off_803168C // =byte_8031690 
+	ldr r4, off_803168C // =dword_8031690 
 	add r4, r4, r6
 	ldr r4, [r4]
 	mov lr, pc
@@ -21906,8 +21906,8 @@ loc_803167C:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8031688: .word dword_200F3D0
-off_803168C: .word byte_8031690
-byte_8031690: .byte 0x0, 0x0, 0x0, 0x0
+off_803168C: .word dword_8031690
+dword_8031690: .word 0x0
 	.word sub_803178A+1
 	.word sub_80317A6+1
 	.word sub_80317C2+1
@@ -22217,7 +22217,7 @@ loc_80318F2:
 	str r7, [r5,#0x14] // (dword_2013954 - 0x2013940)
 	ldrb r6, [r7,#3]
 	lsl r6, r6, #2
-	ldr r4, off_8031914 // =byte_8031918 
+	ldr r4, off_8031914 // =dword_8031918 
 	add r4, r4, r6
 	ldr r4, [r4]
 	mov lr, pc
@@ -22232,8 +22232,8 @@ loc_8031906:
 	mov r12, r3
 	pop {r4-r7,pc}
 off_8031910: .word dword_200F3D0
-off_8031914: .word byte_8031918
-byte_8031918: .byte 0x0, 0x0, 0x0, 0x0
+off_8031914: .word dword_8031918
+dword_8031918: .word 0x0
 	.word sub_803199E+1
 	.word sub_80319B6+1
 	.word sub_80319CE+1
@@ -22454,7 +22454,7 @@ loc_8031ABC:
 	cmp r0, #0xe
 	bgt loc_8031AFC
 	push {r0-r2}
-	ldr r1, byte_8031B78 // =0xef 
+	ldr r1, dword_8031B78 // =0x16ef 
 	add r0, r0, r1
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
@@ -22495,7 +22495,7 @@ jt_8031B10: .word 0x0
 	.word sub_8031C7C+1
 	.word sub_8031C94+1
 	.word sub_8031CAC+1
-byte_8031B78: .byte 0xEF, 0x16, 0x0, 0x0
+dword_8031B78: .word 0x16EF
 	thumb_func_end sub_8031A7A
 
 	thumb_local_start

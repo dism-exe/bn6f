@@ -41,7 +41,7 @@
 // .global byte_8059588
 
 .include "data/dat06.inc"
-// .global unk_80596F4
+// .global byte_80596F4
 // .global byte_805975C
 // .global byte_8059A58
 // .global byte_8059C00

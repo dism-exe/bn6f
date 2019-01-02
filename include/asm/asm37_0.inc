@@ -115,7 +115,7 @@
 // .global sub_803DD30
 
 .include "asm/asm32.inc"
-// .global loc_8121154
+// .global sub_8121154
 
 .include "asm/asm36.inc"
 // .global sub_8136C24
@@ -191,7 +191,7 @@
 // .equ word_200BC5A, 0x200BC5A
 // .equ byte_200DD10, 0x200DD10
 // .equ byte_200DD11, 0x200DD11
-// .equ dword_200DD14, 0x200DD14
+// .equ byte_200DD14, 0x200DD14
 // .equ byte_200F360, 0x200F360
 // .equ unk_200FFF0, 0x200FFF0
 // .equ unk_2010150, 0x2010150

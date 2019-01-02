@@ -11,11 +11,12 @@
 
 /* External Symbols */
 .include "asm/asm38.inc"
-// .global sub_3005B00
+// .global dword_3005B00
 // .global sub_3005DA0
 // .global sub_3005DD4
 // .global sub_3005DEC
 // .global sub_3005E02
+// .global sub_3005E18
 // .global sub_3005E2C
 // .global sub_3005E60
 // .global sub_3005E6A

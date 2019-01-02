@@ -2,14 +2,14 @@
 .equ INC_DATA_DAT20, 0
 
 /* Public Symbols */
-.global unk_807EEB8
+.global byte_807EEB8
 .global byte_807EFD4
 .global byte_807F1E0
-.global byte_807F1F8
-.global byte_807F204
-.global byte_807F210
+.global dword_807F1F8
+.global dword_807F204
+.global dword_807F210
 .global off_807F21C
-.global byte_807F268
+.global dword_807F268
 .global off_807F690
 .global off_807F900
 .global off_807FAC0
@@ -36,7 +36,7 @@
 .global byte_8080715
 .global off_80808B0
 .global off_80808D8
-.global byte_80809F8
+.global dword_80809F8
 .global off_8080AA0
 .global byte_8080C0C
 

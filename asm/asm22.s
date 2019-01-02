@@ -16,7 +16,7 @@ sub_8086F18:
 loc_8086F2E:
 	ldrb r0, [r0,#5]
 loc_8086F30:
-	ldr r1, off_8086F54 // =byte_8086F58 
+	ldr r1, off_8086F54 // =dword_8086F58 
 	ldrb r7, [r1,r0]
 	strb r7, [r5,#0xa] // (byte_2011A9A - 0x2011a90)
 loc_8086F36:
@@ -34,8 +34,8 @@ loc_8086F36:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
-off_8086F54: .word byte_8086F58
-byte_8086F58: .byte 0x1, 0x1, 0x3, 0x2
+off_8086F54: .word dword_8086F58
+dword_8086F58: .word 0x2030101
 	thumb_func_end sub_8086F18
 
 	thumb_func_start sub_8086F5C
@@ -54,7 +54,7 @@ sub_8086F5C:
 loc_8086F72:
 	ldrb r0, [r0,#5]
 loc_8086F74:
-	ldr r1, off_8086F98 // =byte_8086F9C 
+	ldr r1, off_8086F98 // =dword_8086F9C 
 	ldrb r7, [r1,r0]
 	strb r7, [r5,#0xb] // (byte_2011A9B - 0x2011a90)
 loc_8086F7A:
@@ -72,8 +72,8 @@ loc_8086F7A:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
-off_8086F98: .word byte_8086F9C
-byte_8086F9C: .byte 0x2, 0x2, 0x2, 0x3
+off_8086F98: .word dword_8086F9C
+dword_8086F9C: .word 0x3020202
 off_8086FA0: .word off_8086D18
 	thumb_func_end sub_8086F5C
 
@@ -279,7 +279,7 @@ off_8087108: .word byte_8086340+0x14
 off_808710C: .word byte_8086340+0x68
 off_8087110: .word byte_8086340+0xBC
 off_8087114: .word byte_8086460+8
-	.byte 0x3B, 0x1, 0x0, 0x0
+	.word 0x13B
 	thumb_func_end sub_8086FD8
 
 	thumb_local_start
@@ -386,7 +386,7 @@ sub_80871C0:
 	push {lr}
 	ldrb r0, [r5,#0xc]
 	lsl r0, r0, #1
-	ldr r1, off_80871D4 // =unk_80871D8 
+	ldr r1, off_80871D4 // =byte_80871D8 
 	ldrh r1, [r1,r0]
 	mov r0, r1
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
@@ -394,7 +394,7 @@ sub_80871C0:
 	.hword 0x0
 off_80871D4:
 	// <endpool> <endfile>
-	.word unk_80871D8
+	.word byte_80871D8
 	thumb_func_end sub_80871C0
 
 /*For debugging purposes, connect comment at any range!*/

@@ -2,14 +2,15 @@
 .equ INC_DATA_DAT37, 0
 
 /* Public Symbols */
-.global byte_814FE90
-.global byte_814FE94
+.global dword_814FE90
+.global dword_814FE94
 .global off_8158278
 .global off_815827C
 .global byte_8158280
 .global word_8158282
 .global sound_MusicTable
 .global byte_817B826
+.global dword_818EB20
 .global byte_819DD01
 .global byte_819ED15
 .global byte_81A081B
@@ -41,7 +42,7 @@
 .global byte_81C7000
 .global byte_81D081E
 .global byte_81D083F
-.global unk_81D4314
+.global dword_81D4314
 
 
 /* External Symbols */
@@ -88,6 +89,9 @@
 // .global sub_814FE4C
 // .global sub_814FE60
 
+.include "data/dat38_36.inc"
+// .global byte_8420000
+
 
 /* Undeclared Symbols */
 // .equ timer_2000000, 0x2000000
@@ -95,7 +99,7 @@
 // .equ unk_2006E08, 0x2006E08
 // .equ unk_2006EF8, 0x2006EF8
 // .equ unk_2010000, 0x2010000
-// .equ unk_2010690, 0x2010690
+// .equ byte_2010690, 0x2010690
 // .equ unk_201FAF8, 0x201FAF8
 // .equ unk_2020200, 0x2020200
 .equ LCDControl, 0x4000000

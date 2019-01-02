@@ -4,7 +4,7 @@
 /* Public Symbols */
 .global sub_8080D90
 .global sub_8080DA0
-.global byte_8081010
+.global dword_8081010
 
 
 /* External Symbols */
@@ -55,20 +55,20 @@
 // .global off_8080AA0
 
 .include "data/dat21.inc"
-// .global unk_80813F8
-// .global byte_80813FC
-// .global byte_8081400
-// .global byte_8081404
+// .global byte_80813F8
+// .global dword_80813FC
+// .global dword_8081400
+// .global dword_8081404
 // .global byte_8081408
 // .global byte_8081410
 // .global byte_8081418
 // .global byte_8081428
-// .global byte_8081438
-// .global byte_808143C
-// .global byte_8081440
-// .global byte_8081444
-// .global byte_8081448
-// .global byte_808144C
+// .global dword_8081438
+// .global dword_808143C
+// .global dword_8081440
+// .global dword_8081444
+// .global dword_8081448
+// .global dword_808144C
 // .global byte_8081450
 
 .include "data/dat38_60.inc"

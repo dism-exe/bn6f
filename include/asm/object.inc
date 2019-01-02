@@ -9,7 +9,7 @@
 .global loc_800BF30
 .global sub_800BF5C
 .global sub_800BF66
-.global byte_800BF74
+.global dword_800BF74
 .global off_800BF78
 .global off_800BF7C
 .global sub_800BF88
@@ -114,7 +114,7 @@
 
 /* External Symbols */
 .include "asm/asm38.inc"
-// .global loc_3005E80
+// .global dword_3005E80
 // .global sub_30078C8
 // .global sub_30078E0
 // .global sub_3007958

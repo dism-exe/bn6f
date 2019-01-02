@@ -202,7 +202,7 @@ sub_808F9C4:
 	bl sub_809E1AE
 	mov r6, r0
 	mov r7, r1
-	ldr r2, byte_808FA34 // =0x0 
+	ldr r2, dword_808FA34 // =0x10000 
 	mov r0, r6
 	ldrh r1, [r5,#0x12] // (word_2000322 - 0x2000310)
 	lsl r1, r1, #0x10
@@ -253,7 +253,7 @@ loc_808FA22:
 	mov r0, r4
 	tst r0, r0
 	pop {r4-r7,pc}
-byte_808FA34: .byte 0x0, 0x0, 0x1, 0x0
+dword_808FA34: .word 0x10000
 	thumb_func_end sub_808F9C4
 
 	thumb_local_start
@@ -425,7 +425,7 @@ sub_808FB68:
 	bl sub_809E230
 	bl reqBBS_clearFlag_8140A0C
 	bl sub_809E3B2
-	ldr r0, byte_808FB9C // =0xae 
+	ldr r0, dword_808FB9C // =0x1ae 
 	bl sound_play // () -> void
 	mov r0, #0
 	pop {pc}
@@ -433,7 +433,7 @@ loc_808FB94:
 	bl sub_809E188
 	mov r0, #1
 	pop {pc}
-byte_808FB9C: .byte 0xAE, 0x1, 0x0, 0x0
+dword_808FB9C: .word 0x1AE
 	thumb_func_end sub_808FB68
 
 	thumb_local_start
@@ -640,7 +640,7 @@ word_808FDB2: .hword 0xFD8A
 word_808FDB4: .hword 0x1C2
 word_808FDB6: .hword 0x30C
 off_808FDB8: .word unk_2000310
-byte_808FDBC: .byte 0x30, 0x1B, 0x1, 0x2
+dword_808FDBC: .word 0x2011B30
 	thumb_func_end sub_808FD64
 
 	thumb_local_start
@@ -721,7 +721,7 @@ sub_808FE64:
 	push {lr}
 	ldr r0, off_808FEA0 // =off_808FDB8 
 	// memBlock
-	ldr r0, [r0,#0x4] // (byte_808FDBC - 0x808fdb8)
+	ldr r0, [r0,#0x4] // (dword_808FDBC - 0x808fdb8)
 	// size
 	mov r1, #0x80
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -816,7 +816,7 @@ sub_808FF00:
 loc_808FF10:
 	ldrb r1, [r0,#oGameState_MapNumber]
 loc_808FF12:
-	ldr r0, off_808FF28 // =byte_808FF2C 
+	ldr r0, off_808FF28 // =dword_808FF2C 
 	ldrb r4, [r0,r1]
 	strb r4, [r5,#0xa]
 	// entryIdx
@@ -830,8 +830,8 @@ loc_808FF24:
 	mov r0, r4
 locret_808FF26:
 	pop {r4,pc}
-off_808FF28: .word byte_808FF2C
-byte_808FF2C: .byte 0x1, 0x2, 0x2, 0x2
+off_808FF28: .word dword_808FF2C
+dword_808FF2C: .word 0x2020201
 	thumb_func_end sub_808FF00
 
 	thumb_local_start
@@ -1263,7 +1263,7 @@ sub_809022C:
 	push {r1}
 	mov r8, r0
 	ldr r6, off_80902D8 // =off_808FDB8 
-	ldr r6, [r6,#0x4] // (byte_808FDBC - 0x808fdb8)
+	ldr r6, [r6,#0x4] // (dword_808FDBC - 0x808fdb8)
 	mov r7, #0
 	mov r0, #0
 	strb r0, [r5,#9]

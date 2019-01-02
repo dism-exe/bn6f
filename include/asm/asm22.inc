@@ -38,7 +38,7 @@
 // .global byte_8086D74
 
 .include "data/dat22.inc"
-// .global unk_80871D8
+// .global byte_80871D8
 
 .include "asm/asm28_0.inc"
 // .global sub_809E1AE

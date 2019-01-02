@@ -5,7 +5,6 @@
 .global getChip_8021DA8 // (int chip_idx) -> ChipData*
 .global sub_8021AB4
 .global split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
-.global sub_8021AEE
 .global sub_8021B2A
 .global sub_8021B78 // (int idx, int searchItem, int off) -> void*
 .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
@@ -42,6 +41,8 @@
 
 
 /* Undeclared Symbols */
+// .equ byte_20007D6, 0x20007D6
+// .equ byte_200083A, 0x200083A
 // .equ unk_2000AF0, 0x2000AF0
 // .equ unk_2001184, 0x2001184
 // .equ unk_200119C, 0x200119C

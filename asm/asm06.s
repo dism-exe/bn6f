@@ -104,7 +104,7 @@ sub_80596C8:
 off_80596DC: .word off_80596E0
 off_80596E0:
 	// <endpool> <endfile>
-	.word unk_80596F4
+	.word byte_80596F4
 	.word byte_805975C
 	.word byte_8059A58
 	.word byte_8059C00

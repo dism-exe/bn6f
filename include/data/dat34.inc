@@ -2,7 +2,7 @@
 .equ INC_DATA_DAT34, 0
 
 /* Public Symbols */
-.global unk_812DA94
+.global byte_812DA94
 .global byte_812DABC
 .global byte_812DAC4
 .global byte_812DACC
@@ -66,7 +66,7 @@
 
 .include "asm/asm33.inc"
 // .global byte_8129150
-// .global byte_8129180
+// .global dword_8129180
 // .global sub_8129248
 // .global sub_812AC14
 // .global sub_812AF3C

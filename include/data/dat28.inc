@@ -2,8 +2,8 @@
 .equ INC_DATA_DAT28, 0
 
 /* Public Symbols */
-.global byte_809FEE4
-.global byte_809FFE8
+.global dword_809FEE4
+.global dword_809FFE8
 .global byte_80A083F
 .global byte_80A0840
 .global byte_80A0C0E
@@ -50,8 +50,8 @@
 // .equ unk_300361C, 0x300361C
 // .equ unk_300371C, 0x300371C
 // .equ unk_300381C, 0x300381C
-// .equ unk_300431C, 0x300431C
-// .equ unk_300451C, 0x300451C
-// .equ unk_300511C, 0x300511C
+// .equ byte_300431C, 0x300431C
+// .equ byte_300451C, 0x300451C
+// .equ byte_300511C, 0x300511C
 
 .endif // INC_DATA_DAT28

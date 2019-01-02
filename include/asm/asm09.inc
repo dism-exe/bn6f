@@ -40,7 +40,7 @@
 // .global byte_8062A70
 
 .include "data/dat09.inc"
-// .global unk_8062BFC
+// .global byte_8062BFC
 // .global byte_8062DA4
 // .global byte_8062DE4
 // .global byte_8062E88

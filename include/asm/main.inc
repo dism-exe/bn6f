@@ -7,7 +7,8 @@
 
 /* External Symbols */
 .include "asm/asm38.inc"
-// .global loc_3006814
+// .global sub_3005D78
+// .global sub_3006814
 
 .include "asm/start.inc"
 // .global start_800023C // () -> void

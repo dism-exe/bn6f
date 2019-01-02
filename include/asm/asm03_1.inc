@@ -314,7 +314,7 @@
 // .global sub_8015C32
 
 .include "asm/asm02.inc"
-// .global sub_8021AEE
+// .global dword_8021AEC
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021BC0
 // .global sub_8021BD8
@@ -383,7 +383,7 @@
 // .global off_804D0BC
 // .global byte_804D0FC
 // .global byte_804D0FE
-// .global byte_804D100
+// .global dword_804D100
 
 .include "asm/asm04.inc"
 // .global sub_804E720
@@ -445,8 +445,8 @@
 // .global off_806064C
 // .global off_806065C
 // .global off_806066C
-// .global byte_80606EC
-// .global byte_80606F0
+// .global dword_80606EC
+// .global dword_80606F0
 // .global byte_80606F4
 // .global byte_80606F4
 
@@ -469,7 +469,7 @@
 // .global off_80665AC
 // .global off_80665B4
 // .global off_80665BC
-// .global byte_80665E4
+// .global dword_80665E4
 // .global sub_8067C88
 // .global sub_8067D1C
 // .global sub_8067D46
@@ -479,7 +479,7 @@
 // .global pt_8067DEC
 
 .include "data/dat10.inc"
-// .global byte_8067E28
+// .global dword_8067E28
 
 .include "asm/asm11.inc"
 // .global sub_8069140
@@ -489,7 +489,7 @@
 // .global off_8069304
 // .global off_8069310
 // .global off_806931C
-// .global byte_8069358
+// .global dword_8069358
 // .global sub_806A120
 // .global sub_806A1B4
 // .global sub_806A1DE
@@ -497,7 +497,7 @@
 // .global off_806A26C
 // .global off_806A278
 // .global off_806A284
-// .global byte_806A2C0
+// .global dword_806A2C0
 // .global sub_806AB94
 // .global sub_806ACC0
 // .global sub_806AD00
@@ -575,7 +575,7 @@
 // .global off_807810C
 // .global off_8078114
 // .global off_807811C
-// .global byte_8078144
+// .global dword_8078144
 
 .include "asm/asm17.inc"
 // .global sub_80793E8
@@ -620,11 +620,11 @@
 // .global sub_807EE92
 
 .include "data/dat20.inc"
-// .global byte_807F1F8
-// .global byte_807F204
-// .global byte_807F210
+// .global dword_807F1F8
+// .global dword_807F204
+// .global dword_807F210
 // .global off_807F21C
-// .global byte_807F268
+// .global dword_807F268
 
 .include "data/dat27.inc"
 // .global byte_8098358

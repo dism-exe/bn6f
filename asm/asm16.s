@@ -102,11 +102,11 @@ sub_8077DE0:
 off_8077E14: .word off_8077E18
 off_8077E18: .word nullsub_39+1
 	.word sub_80019D0+1
-	.word 0x3005CD9
+	.word nullsub_38+1
 	.word 0x800
 	.word nullsub_39+1
 	.word sub_80019D0+1
-	.word 0x3005CD9
+	.word nullsub_38+1
 	.word 0x800
 off_8077E38: .word off_8077E3C
 off_8077E3C: .word off_8077E44
@@ -161,7 +161,7 @@ sub_8077E84:
 off_8077E98: .word pt_8077E9C
 pt_8077E9C:
 	// <endpool> <endfile>
-	.word unk_8077EA4
+	.word byte_8077EA4
 	.word byte_8077EF8
 	thumb_func_end sub_8077E84
 

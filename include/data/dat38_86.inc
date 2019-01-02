@@ -162,7 +162,7 @@
 .global byte_8723734
 .global byte_8723754
 .global byte_8723774
-.global byte_8723794
+.global dword_8723794
 .global byte_87237B4
 .global byte_87237D4
 .global byte_87237F4

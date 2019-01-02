@@ -2,7 +2,7 @@
 .equ INC_DATA_DAT15, 0
 
 /* Public Symbols */
-.global unk_8075614
+.global byte_8075614
 .global byte_8075708
 .global byte_807575C
 .global off_80758A0

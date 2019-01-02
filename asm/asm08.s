@@ -93,9 +93,9 @@ sub_806044C:
 off_8060460: .word pt_8060464
 pt_8060464:
 	// <endpool> <endfile>
-	.word unk_8060474
+	.word byte_8060474
 	.word byte_80604A0
-	.word byte_80605E4
+	.word dword_80605E4
 	.word byte_80605E8
 	thumb_func_end sub_806044C
 

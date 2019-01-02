@@ -169,9 +169,9 @@ off_8080FF0: .word off_8614DE0
 	.word byte_3001960
 	.word 0x20
 off_808100C: .word off_8615360
-byte_8081010: .byte 0x20, 0x0, 0x0, 0x6
+dword_8081010: .word 0x6000020
 	.word dword_86154A8
-	.byte 0x0, 0x8, 0x0, 0x0
+	.word 0x800
 	.word dword_86155E8
 	.byte 0x60, 0x19, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0
 off_8081028: .word off_861578C
@@ -182,7 +182,7 @@ off_8081028: .word off_861578C
 	.word 0x0
 	.word 0x0
 off_8081044: .word off_861602C
-	.byte 0x20, 0x0, 0x0, 0x6
+	.word 0x6000020
 	.word dword_8616264
 	.word 0x800
 	.word byte_86163F4
@@ -217,7 +217,7 @@ off_80810B4: .word off_8616598
 	.word byte_3001960
 	.word 0x20
 off_80810D0: .word off_8617068
-	.byte 0x20, 0x0, 0x0, 0x6
+	.word 0x6000020
 	.word dword_8617190
 	.word 0x800
 	.word byte_86172E4
@@ -231,28 +231,28 @@ off_80810EC: .word off_86116C8
 	.word byte_3001960
 	.word 0x20
 off_8081108: .word off_8617068
-	.byte 0x20, 0x0, 0x0, 0x6
+	.word 0x6000020
 	.word dword_8617190
 	.word 0x800
 	.word byte_86185C8
 	.word byte_3001960
 	.word 0x20
 off_8081124: .word off_8612A28
-	.byte 0x20, 0x0, 0x0, 0x6
+	.word 0x6000020
 	.word dword_8612CF0
 	.word 0x800
 	.word dword_8612E84
 	.word byte_3001960
 	.word 0x20
 off_8081140: .word off_8617068
-	.byte 0x20, 0x0, 0x0, 0x6
+	.word 0x6000020
 	.word dword_8617190
 	.word 0x800
 	.word dword_861876C
 	.word byte_3001960
 	.word 0x20
 off_808115C: .word off_8617068
-	.byte 0x20, 0x0, 0x0, 0x6
+	.word 0x6000020
 	.word dword_8617190
 	.word 0x800
 	.word dword_8618AB4
@@ -266,7 +266,7 @@ off_8081178: .word dword_8618DFC
 	.word byte_3001960
 	.word 0x20
 off_8081194: .word off_8613608
-	.byte 0x20, 0x0, 0x0, 0x6
+	.word 0x6000020
 	.word dword_8613AAC
 	.byte 0x0, 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 off_80811B0: .word dword_8618DFC
@@ -277,28 +277,28 @@ off_80811B0: .word dword_8618DFC
 	.word byte_3001960
 	.word 0x20
 off_80811CC: .word off_8614444
-	.byte 0x20, 0x0, 0x0, 0x6
+	.word 0x6000020
 	.word dword_8614A0C
 	.word 0x800
 	.word byte_8614BB8
 	.word byte_3001960
 	.word 0x20
 off_80811E8: .word off_8617068
-	.byte 0x20, 0x0, 0x0, 0x6
+	.word 0x6000020
 	.word dword_8617190
-	.byte 0x0, 0x8, 0x0, 0x0
+	.word 0x800
 	.word dword_8618C58
 	.byte 0x60, 0x19, 0x0, 0x3, 0x20, 0x0, 0x0, 0x0
 off_8081204: .word off_8619174
 	.word 0x6000020
 	.word dword_8619474
 	.byte 0x0, 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-off_8081220: .word byte_8081278
-	.word byte_8081278
+off_8081220: .word dword_8081278
+	.word dword_8081278
 	.word 0x0
 	.word off_808127C
-	.word byte_8081284
-	.word byte_8081284
+	.word dword_8081284
+	.word dword_8081284
 	.word off_8081288
 	.word off_8081290
 	.word off_8081290
@@ -315,10 +315,10 @@ off_8081220: .word byte_8081278
 	.word off_80812EC
 	.word off_80812F4
 	.word off_80812FC
-byte_8081278: .byte 0xFF, 0xFF, 0xFF, 0xFF
+dword_8081278: .word 0xFFFFFFFF
 off_808127C: .word off_806C20C
 	.word 0xFFFFFFFF
-byte_8081284: .byte 0xFF, 0xFF, 0xFF, 0xFF
+dword_8081284: .word 0xFFFFFFFF
 off_8081288: .word off_807F690
 	.word 0xFFFFFFFF
 off_8081290: .word off_807FAC0
@@ -431,10 +431,10 @@ loc_8081392:
 off_8081398: .word pt_808139C
 pt_808139C:
 	// <endpool> <endfile>
-	.word unk_80813F8
-	.word byte_80813FC
-	.word byte_8081400
-	.word byte_8081404
+	.word byte_80813F8
+	.word dword_80813FC
+	.word dword_8081400
+	.word dword_8081404
 	.word 0x0
 	.word byte_8081408
 	.word 0x0
@@ -447,12 +447,12 @@ pt_808139C:
 	.word byte_8081428
 	.word 0x0
 	.word 0x0
-	.word byte_8081438
-	.word byte_808143C
-	.word byte_8081440
-	.word byte_8081444
-	.word byte_8081448
-	.word byte_808144C
+	.word dword_8081438
+	.word dword_808143C
+	.word dword_8081440
+	.word dword_8081444
+	.word dword_8081448
+	.word dword_808144C
 	.word byte_8081450
 	thumb_func_end sub_808137C
 

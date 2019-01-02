@@ -121,7 +121,7 @@
 .global byte_83F1608
 .global byte_83F1916
 .global byte_83F1A08
-.global byte_83F1B03
+.global dword_83F1B03
 .global byte_83F1B07
 .global byte_83F1B16
 .global byte_83F1C16

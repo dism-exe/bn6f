@@ -190,7 +190,7 @@
 // .global byte_80A3A44
 
 .include "data/dat29.inc"
-// .global unk_80AAEA8
+// .global byte_80AAEA8
 
 .include "asm/asm30_0.inc"
 // .global sub_80AED50

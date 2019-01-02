@@ -161,7 +161,7 @@
 // .global off_8073650
 
 .include "asm/asm23.inc"
-// .global byte_8089128
+// .global dword_8089128
 // .global byte_80893CC
 // .global byte_8089448
 // .global byte_8089554
@@ -213,8 +213,8 @@
 // .equ dword_2000790, 0x2000790
 // .equ dword_2000790, 0x2000790
 // .equ dword_2000790, 0x2000790
-// .equ dword_2000798, 0x2000798
-// .equ dword_20007A8, 0x20007A8
+// .equ byte_2000798, 0x2000798
+// .equ byte_20007A8, 0x20007A8
 // .equ unk_2000B40, 0x2000B40
 // .equ byte_2000B48, 0x2000B48
 // .equ byte_2000B49, 0x2000B49

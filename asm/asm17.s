@@ -99,11 +99,11 @@ sub_80793E8:
 off_807941C: .word off_8079420
 off_8079420: .word nullsub_39+1
 	.word nullsub_36+1
-	.word 0x3005CD9
+	.word nullsub_38+1
 	.word 0x800
 	.word nullsub_39+1
 	.word nullsub_36+1
-	.word 0x3005CD9
+	.word nullsub_38+1
 	.word 0x800
 off_8079440: .word off_8079444
 off_8079444: .word off_807944C
@@ -158,7 +158,7 @@ sub_807948C:
 off_80794A0: .word pt_80794A4
 pt_80794A4:
 	// <endpool> <endfile>
-	.word unk_80794AC
+	.word byte_80794AC
 	.word byte_80794EC
 	thumb_func_end sub_807948C
 

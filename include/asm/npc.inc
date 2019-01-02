@@ -72,7 +72,7 @@
 // .global getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
 // .global sub_809F656 // (void* a1) -> int
 // .global off_809F6AC
-// .global byte_809F6B0
+// .global dword_809F6B0
 // .global sub_809F922
 // .global sub_809FC1C
 // .global sub_809FC96

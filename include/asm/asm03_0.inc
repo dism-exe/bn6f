@@ -116,7 +116,7 @@
 .global sub_802F530
 .global Load_ho_802F544
 .global off_802FD70
-.global byte_802FD74
+.global dword_802FD74
 .global sub_802FDB0
 .global loc_802FDB4
 .global objRender_802FE0C
@@ -165,7 +165,7 @@
 
 /* External Symbols */
 .include "asm/asm38.inc"
-// .global loc_30068E8
+// .global sub_30068E8
 // .global sub_3006920
 
 .include "asm/start.inc"
@@ -417,7 +417,7 @@
 
 .include "asm/asm02.inc"
 // .global getChip_8021DA8 // (int chip_idx) -> ChipData*
-// .global sub_8021AEE
+// .global dword_8021AEC
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021D14
 
@@ -626,7 +626,7 @@
 // .global sub_8120CC8
 
 .include "asm/asm33.inc"
-// .global byte_8129180
+// .global dword_8129180
 
 .include "asm/asm37_0.inc"
 // .global sub_813D90C

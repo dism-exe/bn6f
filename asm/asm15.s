@@ -164,7 +164,7 @@ sub_80755EE:
 off_8075604: .word off_8075608
 off_8075608:
 	// <endpool>
-	.word unk_8075614
+	.word byte_8075614
 	thumb_func_end sub_80755EE
 
 	.word byte_8075708

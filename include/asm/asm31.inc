@@ -79,7 +79,6 @@
 .global sub_80C04AC
 .global sub_80C065C
 .global sub_80C07BC
-.global loc_80C0B0E
 .global sub_80C0DD8
 .global sub_80C0E04
 .global sub_80C0F6C
@@ -563,13 +562,13 @@
 .global sub_80E9994
 .global sub_80E9AF0
 .global sub_80E9BDC
-.global loc_80E9C88
-.global loc_80E9DF0
+.global sub_80E9C88
+.global sub_80E9DF0
 .global sub_80EA010
 .global sub_80EA11C
-.global loc_80EA14C
-.global loc_80EA258
-.global loc_80EA364
+.global sub_80EA14C
+.global sub_80EA258
+.global sub_80EA364
 .global sub_80EA438
 .global off_80EA814
 .global off_80EA8D8
@@ -584,9 +583,9 @@
 .global sub_80EAD9C
 .global sub_80EB04C
 .global sub_80EB234
-.global loc_80EE90C
-.global loc_80EEA3C
-.global loc_80EED56
+.global sub_80EE90C
+.global sub_80EEA3C
+.global sub_80EED56
 .global off_80F24D8
 .global off_80F253C
 .global off_80F2604
@@ -638,7 +637,7 @@
 .global sub_810971A
 .global sub_81097B4
 .global sub_81097BA
-.global loc_81097D6
+.global sub_81097D6
 .global sub_81097DC
 .global sub_8109804
 .global sub_8109952
@@ -1122,14 +1121,14 @@
 // .global byte_8080C0C
 
 .include "asm/asm21.inc"
-// .global byte_8081010
+// .global dword_8081010
 
 .include "data/dat28.inc"
 // .global byte_80A0C10
 // .global byte_80A0C12
 
 .include "data/dat31.inc"
-// .global unk_810C35C
+// .global byte_810C35C
 // .global byte_810C364
 // .global off_810C6F0
 // .global byte_810C8CC
@@ -1264,13 +1263,13 @@
 // .equ unk_2010208, 0x2010208
 // .equ unk_2010308, 0x2010308
 // .equ byte_2010408, 0x2010408
-// .equ unk_2010508, 0x2010508
-// .equ unk_2010608, 0x2010608
-// .equ unk_2010708, 0x2010708
-// .equ unk_2010808, 0x2010808
-// .equ unk_2010908, 0x2010908
-// .equ unk_2010A08, 0x2010A08
-// .equ unk_2010B08, 0x2010B08
+// .equ off_2010508, 0x2010508
+// .equ off_2010608, 0x2010608
+// .equ off_2010708, 0x2010708
+// .equ off_2010808, 0x2010808
+// .equ off_2010908, 0x2010908
+// .equ off_2010A08, 0x2010A08
+// .equ off_2010B08, 0x2010B08
 // .equ unk_202070C, 0x202070C
 // .equ byte_2030204, 0x2030204
 // .equ byte_2030405, 0x2030405
@@ -1288,7 +1287,7 @@
 // .equ byte_203CFC4, 0x203CFC4
 // .equ byte_3001750, 0x3001750
 // .equ unk_3001B60, 0x3001B60
-// .equ unk_3003D0C, 0x3003D0C
+// .equ byte_3003D0C, 0x3003D0C
 .equ LCDControl, 0x4000000
 .equ BG2Rotation_ScalingParameterA_dx_, 0x4000020
 

@@ -169,7 +169,7 @@
 .global dword_85D375C
 .global off_85D430C
 .global dword_85D44B0
-.global dword_85D4D84
+.global byte_85D4D84
 .global dword_85D4E48
 .global off_85D895C
 .global dword_85D8B00
@@ -546,6 +546,7 @@
 .global dword_8664F04
 .global dword_8665548
 .global dword_8667820
+.global byte_866A5D6
 .global dword_866B038
 .global byte_866D090
 .global byte_8671A74
@@ -705,7 +706,7 @@
 // .equ unk_2000FD0, 0x2000FD0
 // .equ unk_2003334, 0x2003334
 // .equ unk_200AA98, 0x200AA98
-// .equ unk_3005040, 0x3005040
+// .equ byte_3005040, 0x3005040
 .equ LCDControl, 0x4000000
 
 .endif // INC_DATA_DAT38_60

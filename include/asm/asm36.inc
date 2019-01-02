@@ -49,7 +49,6 @@
 .global sub_81329C8
 .global sub_8132A14
 .global sub_8132A50
-.global sub_8132A9E
 .global sub_8132B88
 .global sub_8133200
 .global sub_81348DC
@@ -61,7 +60,7 @@
 .global sub_81356D4
 .global sub_8136C24
 .global sub_8136D8C
-.global loc_8136DE0
+.global sub_8136DE0
 .global sub_81376B8
 .global sub_81376CC
 .global sub_81376E8
@@ -77,6 +76,9 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global byte_30069A0
+
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
@@ -307,7 +309,7 @@
 // .global sub_8123300
 // .global byte_8129150
 // .global byte_8129178
-// .global byte_8129180
+// .global dword_8129180
 // .global sub_8129248
 // .global sub_812AC14
 // .global sub_812AF3C
@@ -325,7 +327,7 @@
 // .global byte_812F06C
 
 .include "data/dat36.inc"
-// .global unk_8138944
+// .global byte_8138944
 // .global byte_8138B90
 // .global off_8138C04
 // .global off_8138DBC

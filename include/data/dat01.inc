@@ -2,7 +2,7 @@
 .equ INC_DATA_DAT01, 0
 
 /* Public Symbols */
-.global unk_8020354
+.global byte_8020354
 .global byte_80203EA
 .global byte_8020404
 .global byte_8020600
@@ -27,7 +27,7 @@
 .global byte_802136B
 .global byte_802136C
 .global byte_802136D
-.global byte_802137C
+.global dword_802137C
 .global byte_80213AC
 .global byte_80213E8
 .global byte_802158C

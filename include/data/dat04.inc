@@ -2,10 +2,10 @@
 .equ INC_DATA_DAT04, 0
 
 /* Public Symbols */
-.global unk_804E74C
+.global byte_804E74C
 .global byte_804E87C
-.global byte_804E8D0
-.global byte_804E8D4
+.global dword_804E8D0
+.global dword_804E8D4
 .global byte_804E8D8
 .global off_804E92C
 .global off_804E940
@@ -82,7 +82,7 @@
 // .global byte_8098BB8
 
 .include "asm/asm28_0.inc"
-// .global byte_8098C78
+// .global dword_8098C78
 // .global byte_8098DDC
 // .global byte_8099CEC
 

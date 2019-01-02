@@ -2,13 +2,13 @@
 .equ INC_DATA_DAT16, 0
 
 /* Public Symbols */
-.global unk_8077EA4
+.global byte_8077EA4
 .global byte_8077EF8
 .global off_8078104
 .global off_807810C
 .global off_8078114
 .global off_807811C
-.global byte_8078144
+.global dword_8078144
 .global off_80790A4
 .global off_80790EC
 .global byte_8079114

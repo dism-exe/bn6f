@@ -215,7 +215,7 @@
 .include "asm/asm38.inc"
 // .global sub_3006028
 // .global sub_30061E8
-// .global loc_3006440
+// .global sub_3006440
 
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
@@ -281,7 +281,7 @@
 .include "asm/object.inc"
 // .global sub_800BF5C
 // .global sub_800BF66
-// .global byte_800BF74
+// .global dword_800BF74
 // .global off_800BF78
 // .global off_800BF7C
 // .global sub_800BF88
@@ -371,7 +371,7 @@
 // .global sub_802015E
 
 .include "data/dat01.inc"
-// .global byte_802137C
+// .global dword_802137C
 // .global byte_80213AC
 
 .include "asm/asm02.inc"
@@ -383,7 +383,7 @@
 // .global sub_8021D36
 
 .include "data/ChipDataArr.inc"
-// .global byte_802412C
+// .global dword_802412C
 
 .include "asm/asm03_0.inc"
 // .global sub_8026840
@@ -628,7 +628,6 @@
 // .global sub_80C04AC
 // .global sub_80C065C
 // .global sub_80C07BC
-// .global loc_80C0B0E
 // .global sub_80C0E04
 // .global sub_80C0F6C
 // .global sub_80C11AC
@@ -991,12 +990,12 @@
 // .global sub_80E97F0
 // .global sub_80E9994
 // .global sub_80E9AF0
-// .global loc_80E9C88
-// .global loc_80E9DF0
+// .global sub_80E9C88
+// .global sub_80E9DF0
 // .global sub_80EA010
-// .global loc_80EA14C
-// .global loc_80EA258
-// .global loc_80EA364
+// .global sub_80EA14C
+// .global sub_80EA258
+// .global sub_80EA364
 
 .include "asm/asm32.inc"
 // .global sub_811EBE0
@@ -1066,7 +1065,7 @@
 // .equ byte_2000781, 0x2000781
 // .equ byte_2000782, 0x2000782
 // .equ byte_2000783, 0x2000783
-// .equ dword_2000784, 0x2000784
+// .equ byte_2000784, 0x2000784
 // .equ byte_20008A0, 0x20008A0
 // .equ dword_2000B30, 0x2000B30
 // .equ word_2000FA0, 0x2000FA0
@@ -1160,6 +1159,7 @@
 // .equ off_200A454, 0x200A454
 // .equ word_200A458, 0x200A458
 // .equ word_200A45C, 0x200A45C
+// .equ byte_200A460, 0x200A460
 // .equ byte_200A461, 0x200A461
 // .equ byte_200A462, 0x200A462
 // .equ byte_200A463, 0x200A463

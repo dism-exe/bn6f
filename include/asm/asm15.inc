@@ -49,7 +49,7 @@
 // .global byte_80753FC
 
 .include "data/dat15.inc"
-// .global unk_8075614
+// .global byte_8075614
 // .global byte_8075708
 // .global byte_807575C
 

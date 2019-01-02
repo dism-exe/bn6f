@@ -123,19 +123,19 @@ sub_807CF24:
 off_807CF58: .word off_807CF5C
 off_807CF5C: .word nullsub_39+1
 	.word nullsub_36+1
-	.word 0x3005CD9
+	.word nullsub_38+1
 	.word 0x800
 	.word nullsub_39+1
 	.word nullsub_36+1
-	.word 0x3005CD9
+	.word nullsub_38+1
 	.word 0x800
 	.word nullsub_39+1
 	.word nullsub_36+1
-	.word 0x3005CD9
+	.word nullsub_38+1
 	.word 0x800
 	.word nullsub_39+1
 	.word nullsub_36+1
-	.word 0x3005CD9
+	.word nullsub_38+1
 	.word 0x800
 off_807CF9C: .word off_807CFA0
 off_807CFA0: .word off_807CFB0
@@ -143,7 +143,7 @@ off_807CFA0: .word off_807CFB0
 	.word off_807CFB0
 	.word off_807CFB0
 off_807CFB0: .word dword_8618DFC
-	.byte 0x20, 0x80, 0x0, 0x6
+	.word 0x6008020
 	thumb_func_end sub_807CF24
 
 	thumb_local_start
@@ -213,7 +213,7 @@ sub_807CFFC:
 off_807D010: .word pt_807D014
 pt_807D014:
 	// <endpool> <endfile>
-	.word unk_807D024
+	.word byte_807D024
 	.word byte_807D0B4
 	.word byte_807D1A8
 	.word byte_807D210

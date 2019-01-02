@@ -47,7 +47,7 @@
 // .global off_806FA98
 
 .include "data/dat13.inc"
-// .global unk_8070034
+// .global byte_8070034
 // .global byte_8070074
 // .global byte_80700B4
 // .global byte_80700CC
