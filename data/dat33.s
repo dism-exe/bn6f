@@ -1,7 +1,8 @@
 .include "data/dat33.inc"
 
-byte_812C258: .byte 0x16, 0x0, 0x0, 0x3, 0x16, 0x1, 0x1, 0x3, 0x16, 0x2, 0x2, 0x3, 0xFF
-	.byte 0xFF, 0xFF, 0xFF
+byte_812C258: .byte 0x16
+	.byte 0x0, 0x0, 0x3, 0x16, 0x1, 0x1, 0x3, 0x16, 0x2, 0x2, 0x3, 0xFF, 0xFF
+	.byte 0xFF, 0xFF
 byte_812C268: .byte 0x16, 0x3, 0x0, 0x4, 0x16, 0x4, 0x1, 0x4, 0x16, 0x5, 0x2, 0x4, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 byte_812C278: .byte 0x1D, 0x6, 0x0, 0x0, 0xFF, 0xFF, 0xFF, 0xFF
@@ -70,7 +71,7 @@ loc_812C340:
 	mov r1, #0
 	strh r1, [r5,#0x26]
 	strh r1, [r0,#8]
-	ldr r1, dword_812C4DC // =0xfedc 
+	ldr r1, byte_812C4DC // =0xdc 
 	strh r1, [r0,#0xa]
 loc_812C34E:
 	mov r1, #8
@@ -98,7 +99,7 @@ loc_812C370:
 	cmp r1, r2
 	bne loc_812C3B6
 	ldrh r1, [r4,#0xa]
-	ldr r2, dword_812C4DC // =0xfedc 
+	ldr r2, byte_812C4DC // =0xdc 
 	cmp r1, r2
 	bne loc_812C3B6
 	lsr r3, r3, #1
@@ -113,7 +114,7 @@ loc_812C370:
 	strb r0, [r5,#2]
 	mov r0, #0
 	strb r0, [r5,#0x14]
-	ldr r0, dword_812C4DC // =0xfedc 
+	ldr r0, byte_812C4DC // =0xdc 
 	strh r0, [r5,#0x2a]
 	bl sub_812D298
 	bl sub_812D5A0
@@ -232,7 +233,7 @@ loc_812C480:
 	add r4, #0x10
 loc_812C48E:
 	ldrh r1, [r4,#0xa]
-	ldr r2, dword_812C4DC // =0xfedc 
+	ldr r2, byte_812C4DC // =0xdc 
 	cmp r1, r2
 	beq loc_812C4C2
 	mov r0, #8
@@ -265,8 +266,7 @@ loc_812C4CA:
 	bl sub_812D4FC
 	pop {r4-r7,pc}
 dword_812C4D8: .word 0xFFFFFFFF
-dword_812C4DC: .word 0xFEDC
-	.word 0xFEDB
+byte_812C4DC: .byte 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE, 0x0, 0x0
 dword_812C4E4: .word 0xB560
 	thumb_func_end sub_812C3BC
 
@@ -1409,7 +1409,7 @@ loc_812CDC4:
 	lsl r1, r1, #0x11
 	lsr r1, r1, #0x1a
 	mov r2, #1
-	bl sub_8021AEE
+	bl dword_8021AEC+2
 loc_812CDDA:
 	bl sub_8120AB8
 	bl sub_803F798
@@ -1524,12 +1524,12 @@ loc_812CEBC:
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	bl sub_812AFC8
 	// a1
-	ldr r0, off_812CEE8 // =dword_812913C+20 
+	ldr r0, off_812CEE8 // =byte_8129150 
 	bl sub_80465A0 // (void *a1) -> void
 locret_812CEE2:
 	pop {pc}
 off_812CEE4: .word unk_20251A0
-off_812CEE8: .word dword_812913C+0x14
+off_812CEE8: .word byte_8129150
 	thumb_func_end sub_812CEA4
 
 	thumb_local_start
@@ -1575,7 +1575,7 @@ loc_812CF2A:
 	bl sub_803EF74
 	bl sub_81323B0
 	mov r4, r0
-	ldr r1, dword_812CFC8 // =0xffffffff 
+	ldr r1, byte_812CFC8 // =0xff 
 	cmp r0, r1
 	beq loc_812CFAC
 	mov r7, #0x10
@@ -1644,8 +1644,8 @@ loc_812CFBC:
 	bl sub_812D4FC
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-dword_812CFC8: .word 0xFFFFFFFF
-	.byte 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE, 0x0, 0x0
+byte_812CFC8: .byte 0xFF, 0xFF, 0xFF, 0xFF, 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE
+	.byte 0x0, 0x0
 	thumb_func_end sub_812CEF0
 
 	thumb_local_start
@@ -1839,7 +1839,7 @@ loc_812D10C:
 	mov r1, #0
 	strh r1, [r5,#0x26]
 	strh r1, [r0,#8]
-	ldr r1, dword_812D1FC // =0xfedc 
+	ldr r1, byte_812D1FC // =0xdc 
 	strh r1, [r5,#0x2a]
 	strh r1, [r0,#0xa]
 	b loc_812D160
@@ -1928,8 +1928,7 @@ locret_812D1F4:
 	pop {pc}
 	.byte 0x0, 0x0
 dword_812D1F8: .word 0xFFFFFFFF
-dword_812D1FC: .word 0xFEDC
-	.byte 0xDB, 0xFE, 0x0, 0x0
+byte_812D1FC: .byte 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE, 0x0, 0x0
 	thumb_func_end sub_812D164
 
 	thumb_local_start

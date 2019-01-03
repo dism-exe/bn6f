@@ -1,37 +1,6 @@
 .include "data/dat38_69.inc"
 
-unk_86C9AF4: .byte  0
-	.byte  0
-	.byte 0xFE
-	.byte 0x7B 
-	.byte  8
-	.byte 0x21 
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
-	.byte  0
+dword_86C9AF4: .word 0x7BFE0000, 0x2108, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 dword_86C9B14: .word 0x5FEE0000, 0x2108, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 dword_86C9B34: .word 0x7F540000, 0x2108, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 dword_86C9B54: .word 0x7BFE0000, 0x398A, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0

@@ -40,12 +40,12 @@
 // .global byte_8062A70
 
 .include "data/dat09.inc"
-// .global dword_8062BFC
-// .global dword_8062DA4
-// .global dword_8062DE4
-// .global dword_8062E88
-// .global dword_8062EB4
-// .global dword_8062F1C
+// .global byte_8062BFC
+// .global byte_8062DA4
+// .global byte_8062DE4
+// .global byte_8062E88
+// .global byte_8062EB4
+// .global byte_8062F1C
 // .global off_8063008
 
 

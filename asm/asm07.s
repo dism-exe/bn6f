@@ -44,14 +44,16 @@ off_805DF64: .word off_805DD24
 off_805DF68: .word unk_2037800
 off_805DF6C: .word off_805E1FC
 off_805DF70: .word off_805DF74
-off_805DF74: .word dword_805DF88
+off_805DF74: .word byte_805DF88
 	.word dword_805DF90
-	.word dword_805DF94
-	.word 0x805DF9A, 0x805DFA0
-dword_805DF88: .word 0x2318131C, 0xFFFF9F1C
+	.word byte_805DF94
+	.word byte_805DF9A
+	.word byte_805DFA0
+byte_805DF88: .byte 0x1C, 0x13, 0x18, 0x23, 0x1C, 0x9F, 0xFF, 0xFF
 dword_805DF90: .word 0xFFFF591C
-dword_805DF94: .word 0x601C5A1C, 0x5D1CFFFF, 0xFFFF621C
-	.byte 0xFF, 0xFF
+byte_805DF94: .byte 0x1C, 0x5A, 0x1C, 0x60, 0xFF, 0xFF
+byte_805DF9A: .byte 0x1C, 0x5D, 0x1C, 0x62, 0xFF, 0xFF
+byte_805DFA0: .byte 0xFF, 0xFF
 	thumb_func_end sub_805DF08
 
 	thumb_func_start sub_805DFA2
@@ -94,10 +96,10 @@ sub_805DFF0:
 off_805E004: .word pt_805E008
 pt_805E008:
 	// <endpool> <endfile>
-	.word dword_805E01C
-	.word dword_805E084
-	.word dword_805E09C
-	.word dword_805E118
+	.word byte_805E01C
+	.word byte_805E084
+	.word byte_805E09C
+	.word byte_805E118
 	.word dword_805E158
 	thumb_func_end sub_805DFF0
 

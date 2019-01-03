@@ -2,11 +2,11 @@
 .equ INC_DATA_DAT11, 0
 
 /* Public Symbols */
-.global dword_806C5D0
-.global dword_806C638
-.global dword_806C68C
-.global dword_806C6E0
-.global dword_806C748
+.global byte_806C5D0
+.global byte_806C638
+.global byte_806C68C
+.global byte_806C6E0
+.global byte_806C748
 .global off_806C7B0
 .global off_806C7CC
 .global off_806C7E8
@@ -23,9 +23,6 @@
 
 .include "data/dat13.inc"
 // .global byte_807083F
-
-.include "data/dat20.inc"
-// .global byte_80809F6
 
 .include "data/dat21.inc"
 // .global byte_8083F04
@@ -48,7 +45,7 @@
 // .global byte_83F3D16
 
 .include "data/dat38_60.inc"
-// .global unk_863FF05
+// .global byte_863FF05
 
 
 .endif // INC_DATA_DAT11

@@ -45,29 +45,29 @@ off_80526E8: .word unk_2037800
 off_80526EC: .word off_8052EE8
 off_80526F0: .word off_80526F4
 off_80526F4: .word byte_8052720
-	.word byte_805272A
-	.word byte_805272E
-	.word byte_8052732
+	.word dword_805272A
+	.word dword_805272E
+	.word dword_8052732
 	.word byte_8052736
 	.word byte_805273E
-	.word byte_8052744
+	.word dword_8052744
 	.word off_8052748
 	.word byte_8052754
-	.word byte_805275C
-	.word byte_8052760
+	.word dword_805275C
+	.word dword_8052760
 byte_8052720: .byte 0x1C, 0x9, 0x1C, 0x10, 0x1C, 0x19, 0x1C, 0x23, 0xFF
 	.byte 0xFF
-byte_805272A: .byte 0x1C, 0x9, 0xFF, 0xFF
-byte_805272E: .byte 0x1C, 0x9, 0xFF, 0xFF
-byte_8052732: .byte 0x1C, 0x9, 0xFF, 0xFF
+dword_805272A: .word 0xFFFF091C
+dword_805272E: .word 0xFFFF091C
+dword_8052732: .word 0xFFFF091C
 byte_8052736: .byte 0x1C, 0x10, 0x1C, 0x25, 0x18, 0x23, 0xFF, 0xFF
 byte_805273E: .byte 0x1C, 0x10, 0x1C, 0x25, 0xFF, 0xFF
-byte_8052744: .byte 0x1C, 0x2A, 0xFF, 0xFF
-off_8052748: .word byte_81C241C
+dword_8052744: .word 0xFFFF2A1C
+off_8052748: .word off_81C241C
 	.byte 0x1C, 0x10, 0x1C, 0x23, 0x18, 0x1F, 0xFF, 0xFF
 byte_8052754: .byte 0x1C, 0x43, 0x1C, 0x7A, 0x18, 0x1C, 0xFF, 0xFF
-byte_805275C: .byte 0x18, 0x1F, 0xFF, 0xFF
-byte_8052760: .byte 0x18, 0x24, 0xFF, 0xFF
+dword_805275C: .word 0xFFFF1F18
+dword_8052760: .word 0xFFFF2418
 	thumb_func_end sub_8052688
 
 	thumb_func_start sub_8052764
@@ -124,15 +124,15 @@ sub_80527F0:
 	bl sub_8003570
 	pop {pc}
 off_8052804: .word off_8052808
-off_8052808: .word dword_8052834
-	.word dword_80529B4
-	.word dword_8052A6C
-	.word dword_8052B24
+off_8052808: .word byte_8052834
+	.word byte_80529B4
+	.word byte_8052A6C
+	.word byte_8052B24
 	.word dword_8052BDC
 	.word dword_8052BE0
-	.word dword_8052BE4
-	.word dword_8052C10
-	.word dword_8052D54
+	.word byte_8052BE4
+	.word byte_8052C10
+	.word byte_8052D54
 	.word dword_8052D80
 	// <endpool> <endfile>
 	.word dword_8052D84

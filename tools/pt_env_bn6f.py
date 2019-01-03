@@ -46,10 +46,8 @@ pt.env(gameFiles={
 	(0x8020354, 0x8021AA4), # size=0x1750
 'asm/asm02.s':
 	(0x8021AA4, 0x8021DA8), # size=0x304
-'data/ChipDataArr_8021DA8.s':
-	(0x8021DA8, 0x8024110), # size=0x2368
-'data/dat02.s':
-	(0x8024110, 0x8026450), # size=0x2340
+'data/ChipDataArr.s':
+	(0x8021DA8, 0x8026450), # size=0x46a8
 'asm/asm03_0.s':
 	(0x8026450, 0x8031CC4), # size=0xB874
 'data/spritePointers_8031CC4.s':
@@ -211,7 +209,8 @@ pt.env(gameFiles={
 'data/dat37.s':
 	(0x814FE8D, 0x81D6000), # size=0x8634D
 'asm/asm38.s':
-	(0x81D6000, 0x81D8000), # size=0x1E26
+	(0x3005B00, 0x3007B00), # size=0x2000
+	# (0x81D6000, 0x81D8000), # size=0x2000
 'data/sprites/battleSpriteMegaMan.spr':
 	(0x81D8000, 0x81DF420), # size=0x7420
 'data/sprites/battleSpriteFlameCross.spr':

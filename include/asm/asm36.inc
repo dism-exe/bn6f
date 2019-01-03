@@ -59,7 +59,8 @@
 .global byte_813565C
 .global sub_81356D4
 .global sub_8136C24
-.global loc_8136DE0
+.global sub_8136D8C
+.global sub_8136DE0
 .global sub_81376B8
 .global sub_81376CC
 .global sub_81376E8
@@ -69,12 +70,15 @@
 .global sub_8137808
 .global sub_8137884
 .global sub_8137890
-.global loc_81378B4
+.global sub_81378B4
 .global sub_8138294
 .global cb_81382AC
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global byte_30069A0
+
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
@@ -83,7 +87,7 @@
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
-// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global loc_8000AC8
@@ -151,7 +155,7 @@
 
 .include "data/dat01.inc"
 // .global byte_80213AC
-// .global byte_80213AC
+// .global byte_80213E8
 // .global byte_802158C
 // .global byte_80215C8
 // .global byte_8021604
@@ -303,8 +307,8 @@
 
 .include "asm/asm33.inc"
 // .global sub_8123300
-// .global dword_812913C
-// .global dword_8129178
+// .global byte_8129150
+// .global byte_8129178
 // .global dword_8129180
 // .global sub_8129248
 // .global sub_812AC14
@@ -316,15 +320,15 @@
 
 .include "data/dat35.inc"
 // .global byte_812F044
-// .global byte_812F044
-// .global byte_812F044
+// .global byte_812F04C
+// .global byte_812F054
 // .global byte_812F05C
 // .global byte_812F064
 // .global byte_812F06C
 
 .include "data/dat36.inc"
-// .global dword_8138944
-// .global dword_8138944
+// .global byte_8138944
+// .global byte_8138B90
 // .global off_8138C04
 // .global off_8138DBC
 // .global off_8138F10
@@ -365,7 +369,7 @@
 // .global sub_813D90C
 // .global sub_813D978
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_81440D8 // static () -> void
 // .global sub_81469A0
 // .global sub_81469DC
@@ -382,15 +386,15 @@
 // .global dword_86A5500
 // .global byte_86A5D20
 // .global dword_86A5D60
-// .global unk_86ACD60
+// .global byte_86ACD60
 // .global dword_86B7AA0
 // .global dword_86B7AE0
 
 .include "data/dat38_63.inc"
-// .global unk_86C4B38
+// .global dword_86C4B38
 
 .include "data/dat38_67.inc"
-// .global unk_86C9108
+// .global dword_86C9108
 
 .include "data/dat38_69.inc"
 // .global dword_86C9B54
@@ -398,21 +402,21 @@
 
 .include "data/dat38_70.inc"
 // .global byte_86C9D6C
-// .global unk_86CDBC4
+// .global dword_86CDBC4
 
 .include "data/dat38_71.inc"
-// .global unk_86CEE84
-// .global unk_86CF1A8
-// .global unk_86CF4AC
-// .global unk_86CF618
-// .global unk_86CF730
+// .global dword_86CEE84
+// .global dword_86CF1A8
+// .global dword_86CF4AC
+// .global dword_86CF618
+// .global dword_86CF730
 
 .include "data/dat38_74.inc"
-// .global unk_86D5708
+// .global dword_86D5708
 
 .include "data/dat38_76.inc"
-// .global unk_86D8FA4
-// .global unk_86D9068
+// .global dword_86D8FA4
+// .global dword_86D9068
 
 .include "data/dat38_85.inc"
 // .global dword_86E55FC

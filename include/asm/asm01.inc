@@ -75,7 +75,7 @@
 // .global sub_813D60C
 // .global sub_813D66C
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_8144D04
 
 

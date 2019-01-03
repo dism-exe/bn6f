@@ -4,6 +4,10 @@
 /* Public Symbols */
 .global byte_812DA94
 .global byte_812DABC
+.global byte_812DAC4
+.global byte_812DACC
+.global byte_812DAD4
+.global byte_812DADC
 .global sub_812DAE4
 
 
@@ -61,7 +65,7 @@
 // .global sub_8120CC8
 
 .include "asm/asm33.inc"
-// .global dword_812913C
+// .global byte_8129150
 // .global dword_8129180
 // .global sub_8129248
 // .global sub_812AC14
@@ -108,7 +112,7 @@
 .include "asm/asm37_0.inc"
 // .global sub_813B780
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_8149568
 // .global sub_8149644
 

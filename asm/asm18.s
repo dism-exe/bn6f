@@ -39,10 +39,15 @@ sub_807A8E0:
 off_807A938: .word off_8079F74
 off_807A93C: .word unk_2037800
 off_807A940: .word off_807A944
-off_807A944: .word dword_807A950
-	.word 0x807A95A, 0x807A964
-dword_807A950: .word 0x201C1F1C, 0x791C2B1C, 0x641CFFFF, 0x951C0E1C, 0xFFFF791C
-	.word 0x7F1C7E1C, 0x1F1C801C, 0x39183818, 0xFFFF3A18
+off_807A944: .word byte_807A950
+	.word byte_807A95A
+	.word byte_807A964
+byte_807A950: .byte 0x1C, 0x1F, 0x1C, 0x20, 0x1C, 0x2B, 0x1C, 0x79, 0xFF
+	.byte 0xFF
+byte_807A95A: .byte 0x1C, 0x64, 0x1C, 0xE, 0x1C, 0x95, 0x1C, 0x79, 0xFF
+	.byte 0xFF
+byte_807A964: .byte 0x1C, 0x7E, 0x1C, 0x7F, 0x1C, 0x80, 0x1C, 0x1F, 0x18
+	.byte 0x38, 0x18, 0x39, 0x18, 0x3A, 0xFF, 0xFF
 	thumb_func_end sub_807A8E0
 
 	thumb_func_start sub_807A974
@@ -59,18 +64,18 @@ off_807A988: .word off_807A994
 	.word off_807A9A0
 	.word off_807A9B8
 off_807A994: .word off_807A080
-	.word dword_807A084+0x2EC
+	.word byte_807A370
 	.word 0xFFFFFFFF
 off_807A9A0: .word off_807A080
-	.word dword_807A084+0x33C
-	.word dword_807A084+0x38C
-	.word dword_807A084+0x3DC
-	.word dword_807A084+0x42C
+	.word byte_807A3C0
+	.word byte_807A410
+	.word byte_807A460
+	.word byte_807A4B0
 	.word 0xFFFFFFFF
-off_807A9B8: .word dword_807A084+0x45C
-	.word dword_807A084+0x74C
-	.word dword_807A084+0x77C
-	.word dword_807A084+0x7CC
+off_807A9B8: .word off_807A4E0
+	.word byte_807A7D0
+	.word byte_807A800
+	.word byte_807A850
 	.word 0xFFFFFFFF
 	thumb_func_end sub_807A974
 
@@ -125,17 +130,33 @@ sub_807A9FE:
 off_807AA30: .word off_807AA34
 off_807AA34: .word nullsub_39+1
 	.word sub_80019D0+1
-	.word 0x3005CD9, 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9
-	.word 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9, 0x800
+	.word nullsub_38+1
+	.word 0x800
+	.word nullsub_39+1
+	.word sub_80019D0+1
+	.word nullsub_38+1
+	.word 0x800
+	.word nullsub_39+1
+	.word sub_80019D0+1
+	.word nullsub_38+1
+	.word 0x800
 off_807AA64: .word off_807AA68
 off_807AA68: .word off_807AA74
 	.word off_807AA74
 	.word off_807AA90
 off_807AA74: .word off_8617068
-	.word 0x6008020, 0x8617190, 0x1800, 0x8618AB4, 0x3001960
+	.word 0x6008020
+	.word dword_8617190
+	.word 0x1800
+	.word dword_8618AB4
+	.word byte_3001960
 	.word 0x20
 off_807AA90: .word off_8617068
-	.word 0x6008020, 0x8617190, 0x1800, 0x8618C58, 0x3001960
+	.word 0x6008020
+	.word dword_8617190
+	.word 0x1800
+	.word dword_8618C58
+	.word byte_3001960
 	.word 0x20
 	thumb_func_end sub_807A9FE
 
@@ -187,9 +208,9 @@ sub_807AAD6:
 off_807AAEC: .word pt_807AAF0
 pt_807AAF0:
 	// <endpool> <endfile>
-	.word dword_807AAFC
-	.word dword_807AC18
-	.word dword_807ACA8
+	.word byte_807AAFC
+	.word byte_807AC18
+	.word byte_807ACA8
 	thumb_func_end sub_807AAD6
 
 /*For debugging purposes, connect comment at any range!*/

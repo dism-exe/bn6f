@@ -2,8 +2,8 @@
 .equ INC_DATA_DAT03, 0
 
 /* Public Symbols */
-.global dword_804CFBC
-.global dword_804CFD4
+.global byte_804CFBC
+.global byte_804CFD4
 .global dword_804D08C
 .global dword_804D090
 .global dword_804D094
@@ -17,13 +17,13 @@
 .global off_804D0E4
 .global byte_804D0FC
 .global byte_804D0FE
-.global byte_804D100
+.global dword_804D100
 .global off_804E38C
 .global off_804E450
 .global off_804E478
 .global off_804E4A0
 .global byte_804E5D4
-.global dword_804E604
+.global byte_804E604
 
 
 /* External Symbols */
@@ -33,14 +33,11 @@
 .include "data/dat04.inc"
 // .global byte_805150D
 
-.include "data/dat20.inc"
-// .global byte_80809F6
-
 .include "data/dat21.inc"
 // .global byte_8083F07
 
 .include "data/dat25.inc"
-// .global unk_80911A0
+// .global byte_80911A0
 
 .include "asm/asm28_1.inc"
 // .global byte_809F6CC

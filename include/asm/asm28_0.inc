@@ -2,19 +2,20 @@
 .equ INC_ASM_ASM28_0, 0
 
 /* Public Symbols */
-.global byte_8098C78
+.global dword_8098C78
 .global byte_8098CA2
 .global byte_8098DDC
 .global byte_80990B8
-.global dword_80991F4
-.global unk_8099CEC
-.global dword_8099DC0
-.global dword_8099E04
-.global dword_8099EA0
+.global byte_80990DC
+.global byte_80991F4
+.global byte_8099CEC
+.global byte_8099DC0
+.global byte_8099E04
+.global byte_8099EA0
 .global byte_809A8A8
 .global byte_809AA34
-.global unk_809AE68
-.global unk_809B5AD
+.global byte_809AE68
+.global byte_809B5AD
 .global sub_809BA14
 .global byte_809BFB0
 .global sub_809C890
@@ -22,10 +23,10 @@
 .global sub_809C968
 .global sub_809CA40
 .global sub_809CA84
-.global unk_809CAD8
+.global byte_809CAD8
 .global sub_809CF2C
 .global sub_809D19C
-.global unk_809D328
+.global byte_809D328
 .global sub_809E04C
 .global sub_809E064
 .global setFlag3_2e2_2001C88
@@ -38,6 +39,7 @@
 .global sub_809E188
 .global loc_809E1A4
 .global sub_809E1AE
+.global sub_809E1BC
 .global sub_809E1D8
 .global sub_809E1FA
 .global sub_809E218
@@ -107,6 +109,7 @@
 
 .include "asm/asm00_1.inc"
 // .global sub_8002DEA
+// .global sub_8002E04
 // .global sub_8002E14
 // .global sub_8002E3C
 // .global sub_8002E52
@@ -122,14 +125,16 @@
 // .global sub_8003AEA
 // .global sub_8003B4C
 // .global sub_8003B86
+// .global sub_80047E0
 // .global engine_isScreeneffectAnimating // () -> zf
 
 .include "asm/asm00_2.inc"
 // .global sub_8013704
+// .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6 // (int a1, int a2) -> u8
 
 .include "asm/asm02.inc"
-// .global sub_8021AEE
+// .global dword_8021AEC
 
 .include "asm/asm03_0.inc"
 // .global sub_802D15E
@@ -137,7 +142,7 @@
 // .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global ClearEventFlag // (u16 entryFlagBitfield) -> void
-// .global toggleFlag_2001C88_entry // (u8 entryIdx, u8 byteFlagIdx) -> void
+// .global ToggleEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global sub_802F238
@@ -156,11 +161,21 @@
 // .global sub_8035694
 // .global init_s_02011C50_8036E90
 // .global s_2011C50_ptr_1C_isNull // () -> zf
+// .global sub_8036F98
 // .global sub_8037AEC
 // .global sub_803CD98
 // .global sub_803CE28
 // .global sub_803D080
+// .global sub_803D0C8
+// .global sub_803D0F4
 // .global sub_803D108
+// .global clear_200AD04 // () -> void
+// .global sub_803F4EC
+// .global loc_803F512
+// .global sub_803F560
+// .global sub_803F644
+// .global sub_803F6B0
+// .global sub_803F740
 // .global sub_803F798
 // .global sub_803F9E4
 
@@ -178,6 +193,8 @@
 // .global sub_80465BC
 // .global sub_80465F8 // () -> void
 // .global sub_8046664 // () -> void
+// .global sub_804A2E8
+// .global sub_804BD00
 
 .include "asm/asm25.inc"
 // .global off_8090000
@@ -186,15 +203,23 @@
 // .global sub_811980C
 // .global sub_8119854
 // .global sub_811EBE0
+// .global sub_8120D10
 // .global sub_8120DF0
 
+.include "asm/asm36.inc"
+// .global sub_8136D8C
+
 .include "asm/asm37_0.inc"
+// .global sub_813C3AC
 // .global sub_813D41C
 // .global sub_813D48C
 
 .include "asm/reqBBS.inc"
 // .global reqBBS_81407D8
 // .global reqBBS_8140974
+
+.include "asm/libs.inc"
+// .global sub_81440D8 // static () -> void
 
 .include "data/dat38_60.inc"
 // .global dword_86A5D60
@@ -223,16 +248,24 @@
 // .equ dword_2000AB0, 0x2000AB0
 // .equ dword_2000AB4, 0x2000AB4
 // .equ dword_2000AB8, 0x2000AB8
-// .equ dynaicArr, 0x2005780
+// .equ dynamicArr, 0x2005780
 // .equ eOverworldNPCObjects, 0x20057B0
 // .equ eOverworldNPCObjects, 0x20057B0
 // .equ eOverworldNPCObjects, 0x20057B0
+// .equ byte_20065E0, 0x20065E0
+// .equ byte_20065E1, 0x20065E1
+// .equ byte_20065E3, 0x20065E3
+// .equ byte_20065E5, 0x20065E5
+// .equ byte_20065E7, 0x20065E7
 // .equ eOWPlayerObject, 0x2009F40
 // .equ byte_2009F4D, 0x2009F4D
 // .equ byte_2009F4E, 0x2009F4E
 // .equ byte_2009F4F, 0x2009F4F
 // .equ byte_2009FC3, 0x2009FC3
 // .equ unk_200AC80, 0x200AC80
+// .equ word_200AC84, 0x200AC84
+// .equ word_200AC86, 0x200AC86
+// .equ dword_200ACB0, 0x200ACB0
 // .equ byte_200ACE0, 0x200ACE0
 // .equ byte_200ACE1, 0x200ACE1
 // .equ byte_200ACE2, 0x200ACE2
@@ -244,6 +277,8 @@
 // .equ dword_200ACF8, 0x200ACF8
 // .equ byte_200ACFC, 0x200ACFC
 // .equ dword_200AD00, 0x200AD00
+// .equ byte_200AD04, 0x200AD04
+// .equ word_200AD06, 0x200AD06
 // .equ unk_200EF40, 0x200EF40
 // .equ unk_2011C50, 0x2011C50
 // .equ dword_2011CC0, 0x2011CC0

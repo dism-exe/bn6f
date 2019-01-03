@@ -2,6 +2,10 @@
 .equ INC_ASM_ASM22, 0
 
 /* Public Symbols */
+.global sub_8086F18
+.global sub_8086F5C
+.global sub_8086FA4
+.global sub_8087150
 
 
 /* External Symbols */
@@ -21,24 +25,30 @@
 // .global init_s_02011C50_8036E90
 
 .include "data/dat21.inc"
-// .global dword_8086260
-// .global dword_8086260
-// .global dword_8086260
-// .global dword_8086260
-// .global dword_8086A54
-// .global dword_8086A54
-// .global dword_8086A54
-// .global dword_8086D5C
+// .global byte_8086340
+// .global byte_8086340
+// .global byte_8086340
+// .global byte_8086460
+// .global byte_8086678
+// .global byte_80868C8
+// .global off_8086D18
+// .global off_8086D1C
+// .global byte_8086D2C
+// .global byte_8086D5C
 // .global byte_8086D74
 
 .include "data/dat22.inc"
 // .global byte_80871D8
+
+.include "asm/asm28_0.inc"
+// .global sub_809E1AE
 
 .include "asm/reqBBS.inc"
 // .global reqBBS_81409F4
 
 
 /* Undeclared Symbols */
+// .equ unk_2011A90, 0x2011A90
 // .equ byte_2011A9A, 0x2011A9A
 // .equ byte_2011A9B, 0x2011A9B
 

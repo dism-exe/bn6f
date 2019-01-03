@@ -26,7 +26,7 @@
 // .global engine_isScreeneffectAnimating // () -> zf
 
 .include "asm/asm02.inc"
-// .global sub_8021AEE
+// .global dword_8021AEC
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 
 .include "asm/asm03_1.inc"
@@ -66,7 +66,7 @@
 // .global sub_8120CC8
 
 .include "asm/asm33.inc"
-// .global dword_812913C
+// .global byte_8129150
 // .global dword_8129180
 // .global sub_8129248
 // .global sub_812AC14
@@ -110,7 +110,7 @@
 // .global sub_81325CC
 // .global sub_8132614
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_8149568
 // .global sub_8149644
 

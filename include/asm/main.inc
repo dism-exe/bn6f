@@ -6,6 +6,10 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global sub_3005D78
+// .global sub_3006814
+
 .include "asm/start.inc"
 // .global start_800023C // () -> void
 // .global start_800024C
@@ -109,7 +113,7 @@
 // .global reqBBS_cb_draw_813E0A4
 // .global reqBBS_cb_813F404
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_8144240
 // .global sub_814E8A0
 // .global sub_814EE2C
@@ -120,8 +124,8 @@
 // .equ dword_2009CC0, 0x2009CC0
 // .equ dword_200A870, 0x200A870
 // .equ off_3000E70, 0x3000E70
-// .equ loc_3006814, 0x3006814
 .equ GeneralLCDStatus_STAT_LYC_, 0x4000004
 .equ KeyStatus, 0x4000130
+.equ IWRAMRoutinesROMLocation, 0x81D6000
 
 .endif // INC_ASM_MAIN

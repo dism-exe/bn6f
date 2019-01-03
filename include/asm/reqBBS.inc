@@ -8,7 +8,7 @@
 .global reqBBS_813E616
 .global reqBBS_813E660
 .global reqBBS_813EE58
-.global dword_813F380
+.global byte_813F380
 .global reqBBS_init_s_2005780
 .global reqBBS_cb_813F404
 .global reqBBS_813F9A0
@@ -26,26 +26,39 @@
 .global reqBBS_setFlag_e17b0f7_8140A00
 .global reqBBS_clearFlag_8140A0C
 .global reqBBS_runDialog_8140A70
+.global byte_8140A74
+.global byte_8140A8C
+.global dword_8140AA4
+.global dword_8140ABC
+.global dword_8140AD4
+.global dword_8140AEC
+.global dword_8140B1C
+.global dword_8140B34
+.global dword_8140B4C
+.global dword_8140B64
+.global dword_8140B7C
+.global dword_8140B94
 .global byte_8140BAC
-.global dword_8140C60
-.global dword_8140C68
-.global dword_8140C7C
-.global dword_8140C90
-.global dword_8140CA4
-.global dword_8140CB8
-.global dword_8140CCC
-.global dword_8140CE0
-.global dword_8140CF4
-.global dword_8140D10
-.global dword_8140D1C
-.global dword_8140D58
+.global byte_8140BF0
+.global byte_8140C60
+.global byte_8140C68
+.global byte_8140C7C
+.global byte_8140C90
+.global byte_8140CA4
+.global byte_8140CB8
+.global byte_8140CCC
+.global byte_8140CE0
+.global byte_8140CF4
+.global byte_8140D10
+.global byte_8140D1C
+.global byte_8140D58
 .global byte_8140D6C
-.global dword_8140E6C
-.global dword_8140FBC
-.global dword_814122C
-.global dword_81414CC
-.global dword_814154C
-.global dword_81415F4
+.global byte_8140E6C
+.global byte_8140FBC
+.global byte_814122C
+.global byte_81414CC
+.global byte_814154C
+.global byte_81415F4
 .global byte_814172C
 
 
@@ -115,12 +128,12 @@
 // .global off_813DF74
 // .global off_813E04C
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 .include "data/dat38_60.inc"
 // .global dword_86A5D60
-// .global unk_86ACD60
+// .global byte_86ACD60
 // .global dword_86B7AE0
 
 .include "data/dat38_70.inc"
@@ -139,11 +152,11 @@
 // .global dword_87E771C
 // .global dword_87E7780
 // .global dword_87E77E4
-// .global unk_87E7848
+// .global dword_87E7848
 // .global dword_87EE1AC
 // .global dword_87EE2F0
 // .global dword_87EE5B0
-// .global unk_87EF5A4
+// .global dword_87EF5A4
 // .global byte_87EF824
 // .global byte_87EFBA4
 // .global reqBBS_textualShades
@@ -159,8 +172,12 @@
 // .equ byte_2001154, 0x2001154
 // .equ dword_2001178, 0x2001178
 // .equ unk_2001400, 0x2001400
-// .equ dynaicArr, 0x2005780
-// .equ unk_200578F, 0x200578F
+// .equ dynamicArr, 0x2005780
+// .equ byte_2005784, 0x2005784
+// .equ byte_200578D, 0x200578D
+// .equ byte_200578E, 0x200578E
+// .equ byte_200578F, 0x200578F
+// .equ dword_20057A8, 0x20057A8
 // .equ reqBBS_numRequestsSent, 0x20065B0
 // .equ byte_2008450, 0x2008450
 // .equ sChatbox, 0x2009CD0

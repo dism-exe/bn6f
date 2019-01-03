@@ -1,5 +1,5 @@
 
-	.section iwram_data
+	.data
 
 ds unk_3000000 // 0x3000000
 	.space 1
@@ -181,19 +181,19 @@ ds unk_300371C // 0x300371c
 	.space 256
 ds unk_300381C // 0x300381c
 	.space 1264
-ds unk_3003D0C // 0x3003d0c
+ds byte_3003D0C // 0x3003d0c
 	.space 1552
-ds unk_300431C // 0x300431c
+ds byte_300431C // 0x300431c
 	.space 512
-ds unk_300451C // 0x300451c
+ds byte_300451C // 0x300451c
 	.space 164
-ds unk_30045C0 // 0x30045c0
+ds byte_30045C0 // 0x30045c0
 	.space 2688
-ds unk_3005040 // 0x3005040
+ds byte_3005040 // 0x3005040
 	.space 156
 ds unk_30050DC // 0x30050dc
 	.space 64
-ds unk_300511C // 0x300511c
+ds byte_300511C // 0x300511c
 	.space 264
 ds unk_3005224 // 0x3005224
 	.space 76
@@ -243,15 +243,11 @@ ds unk_300553E // 0x300553e
 	.space 34
 ds unk_3005560 // 0x3005560
 	.space 16
-ds dword_3005570 // 0x3005570
+ds off_3005570 // 0x3005570
 	.space 4
-ds dword_3005574 // 0x3005574
-	.space 6
-ds unk_300557A // 0x300557a
-	.space 4
-ds unk_300557E // 0x300557e
-	.space 18
-ds dword_3005590 // 0x3005590
+ds off_3005574 // 0x3005574
+	.space 28
+ds off_3005590 // 0x3005590
 	.space 36
 ds dword_30055B4 // 0x30055b4
 	.space 8
@@ -269,11 +265,11 @@ ds dword_30055F0 // 0x30055f0
 	.space 4
 ds dword_30055F4 // 0x30055f4
 	.space 4
-ds dword_30055F8 // 0x30055f8
+ds off_30055F8 // 0x30055f8
 	.space 4
-ds dword_30055FC // 0x30055fc
+ds off_30055FC // 0x30055fc
 	.space 4
-ds unk_3005600 // 0x3005600
+ds byte_3005600 // 0x3005600
 	.space 40
 ds unk_3005628 // 0x3005628
 	.space 12
@@ -285,5 +281,5 @@ ds unk_3005668 // 0x3005668
 	.space 112
 ds unk_30056D8 // 0x30056d8
 	.space 40
-ds loc_3005700 // 0x3005700
+ds byte_3005700 // 0x3005700
 	.space 1024

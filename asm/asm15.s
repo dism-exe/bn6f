@@ -39,13 +39,14 @@ sub_807544C:
 off_80754A4: .word off_8074F30
 off_80754A8: .word unk_2037800
 off_80754AC: .word off_80754B0
-off_80754B0: .word dword_80754BC
-	.word dword_80754C8
+off_80754B0: .word byte_80754BC
+	.word byte_80754C8
 	.word 0x80754D2
-dword_80754BC: .word 0x491C3E1C, 0x4B1C4A1C, 0xFFFF0E1C
-dword_80754C8: .word 0x491C0E1C, 0x4B1C4A1C, 0x491CFFFF, 0x4B1C4A1C, 0xE1C381C
-	.word 0x251C951C
-	.byte 0xFF, 0xFF
+byte_80754BC: .byte 0x1C, 0x3E, 0x1C, 0x49, 0x1C, 0x4A, 0x1C, 0x4B, 0x1C
+	.byte 0xE, 0xFF, 0xFF
+byte_80754C8: .byte 0x1C, 0xE, 0x1C, 0x49, 0x1C, 0x4A, 0x1C, 0x4B, 0xFF
+	.byte 0xFF, 0x1C, 0x49, 0x1C, 0x4A, 0x1C, 0x4B, 0x1C, 0x38
+	.byte 0x1C, 0xE, 0x1C, 0x95, 0x1C, 0x25, 0xFF, 0xFF
 	thumb_func_end sub_807544C
 
 	thumb_func_start sub_80754E2
@@ -60,17 +61,17 @@ off_80754F0: .word off_80754F4
 off_80754F4: .word off_8075500
 	.word off_8075510
 	.word off_8075520
-off_8075500: .word dword_8074FCC+0x10
-	.word dword_8074FCC+0x40
-	.word dword_8074FCC+0x90
+off_8075500: .word byte_8074FDC
+	.word byte_807500C
+	.word off_807505C
 	.word 0xFFFFFFFF
-off_8075510: .word dword_8074FCC+0x380
-	.word dword_8074FCC+0x3B0
-	.word dword_8074FCC+0x90
+off_8075510: .word byte_807534C
+	.word byte_807537C
+	.word off_807505C
 	.word 0xFFFFFFFF
-off_8075520: .word dword_8074FCC+0x400
-	.word dword_8074FCC+0x430
-	.word dword_8074FCC+0x90
+off_8075520: .word byte_80753CC
+	.word byte_80753FC
+	.word off_807505C
 	.word 0xFFFFFFFF
 	thumb_func_end sub_80754E2
 
@@ -101,53 +102,18 @@ sub_8075530:
 off_8075564: .word off_8075568
 off_8075568: .word nullsub_39+1
 	.word sub_80019D0+1
-	.byte 0xD9
-	.byte 0x5C 
-	.byte  0
-	.byte  3
-	.byte  0
-	.byte  8
-	.byte  0
-	.byte  0
-	.byte 0xB5
-	.byte 0x1A
-	.byte  0
-	.byte  8
-	.byte 0xD1
-	.byte 0x19
-	.byte  0
-	.byte  8
-	.byte 0xD9
-	.byte 0x5C 
-	.byte  0
-	.byte  3
-	.byte  0
-	.byte  8
-	.byte  0
-	.byte  0
-	.byte 0xB5
-	.byte 0x1A
-	.byte  0
-	.byte  8
-	.byte 0xD1
-	.byte 0x19
-	.byte  0
-	.byte  8
-	.byte 0xD9
-	.byte 0x5C 
-	.byte  0
-	.byte  3
-	.byte  0
-	.byte  8
-	.byte  0
-	.byte  0
+	.byte 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0, 0xB5, 0x1A, 0x0, 0x8, 0xD1
+	.byte 0x19, 0x0, 0x8, 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0, 0x0, 0xB5, 0x1A
+	.byte 0x0, 0x8, 0xD1, 0x19, 0x0, 0x8, 0xD9, 0x5C, 0x0, 0x3, 0x0, 0x8, 0x0
+	.byte 0x0
 off_8075598: .word off_807559C
 off_807559C: .word off_80755A8
 	.word off_80755A8
 	.word off_80755A8
 off_80755A8: .word off_8617068
-	.word 0x6008020, 0x8617190, 0x1800, 0x86185C8, 0x3001960
-	.word 0x20
+	.byte 0x20, 0x80, 0x0, 0x6, 0x90, 0x71, 0x61, 0x8, 0x0, 0x18, 0x0
+	.byte 0x0, 0xC8, 0x85, 0x61, 0x8, 0x60, 0x19, 0x0, 0x3, 0x20, 0x0
+	.byte 0x0, 0x0
 	thumb_func_end sub_8075530
 
 	thumb_func_start sub_80755C4
@@ -198,10 +164,10 @@ sub_80755EE:
 off_8075604: .word off_8075608
 off_8075608:
 	// <endpool>
-	.word dword_8075614
+	.word byte_8075614
 	thumb_func_end sub_80755EE
 
-	.word dword_8075708
+	.word byte_8075708
 	// <endfile>
-	.word dword_807575C
+	.word byte_807575C
 /*For debugging purposes, connect comment at any range!*/

@@ -5,12 +5,12 @@
 .global off_801ECB4
 .global word_801ED6C
 .global word_801EDB4
-.global dword_801EDFC
+.global byte_801EDFC
 .global word_801EE14
 .global word_801EE58
-.global dword_801EE78
-.global dword_801EE98
-.global dword_801EF10
+.global byte_801EE78
+.global byte_801EE98
+.global byte_801EF10
 .global off_801EF30
 .global off_801EF4C
 .global off_801EF68
@@ -22,7 +22,7 @@
 .global byte_801F556
 .global off_801FD64
 .global off_801FD90
-.global dword_801FDC0
+.global byte_801FDC0
 
 
 /* External Symbols */
@@ -45,35 +45,35 @@
 // .global dword_86E1B78
 // .global dword_86E1BF8
 // .global dword_86E1C78
-// .global unk_86E1D38
+// .global dword_86E1D38
 // .global byte_86E2E18
 // .global byte_86E58FC
-// .global unk_86E609C
-// .global unk_86E79CC
+// .global dword_86E609C
+// .global byte_86E79CC
 // .global dword_86E7DCC
 // .global dword_86F1340
 // .global dword_86F1380
 // .global byte_86F13C0
-// .global unk_86F1400
+// .global dword_86F1400
 // .global dword_86F1440
 // .global byte_86F1480
 // .global byte_86F14C0
 // .global byte_86F1500
 // .global byte_86F1540
 // .global byte_86F1580
-// .global unk_86F15C0
+// .global dword_86F15C0
 // .global dword_86F1600
 // .global byte_86F1640
 // .global byte_86F1680
 // .global byte_86F16C0
-// .global unk_86F1700
+// .global dword_86F1700
 // .global dword_86F1780
 // .global dword_86F17C0
 // .global dword_86F1800
-// .global unk_86F1840
+// .global dword_86F1840
 // .global byte_86F18C0
 // .global byte_86F1900
-// .global unk_86F1940
+// .global dword_86F1940
 // .global dword_86F19C0
 // .global dword_86F1A00
 // .global dword_86F1A40
@@ -88,8 +88,8 @@
 // .global byte_86F1C80
 // .global byte_86F1CC0
 // .global byte_86F1D00
-// .global unk_86F1D40
-// .global unk_86F1D80
+// .global dword_86F1D40
+// .global dword_86F1D80
 // .global dword_86F1DC0
 // .global dword_86F1E00
 // .global dword_86F1E40
@@ -102,7 +102,7 @@
 // .global dword_86F2000
 // .global dword_86F2040
 // .global dword_86F2240
-// .global unk_86F2500
+// .global dword_86F2500
 // .global dword_86F26C0
 // .global byte_86F2900
 

@@ -167,7 +167,7 @@ loc_808F954:
 loc_808F98A:
 	mov r0, #1
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0x00
 	thumb_func_end sub_808F900
 
 	thumb_local_start
@@ -274,7 +274,7 @@ sub_808FA38:
 	cmp r0, #0
 	beq locret_808FA6E
 	mov r4, r0
-	ldr r0, off_808FA70 // =dword_808FA74 
+	ldr r0, off_808FA70 // =byte_808FA74 
 	ldrb r0, [r0,r4]
 	mov r4, r0
 	ldrb r1, [r5,#0x11] // (byte_2000321 - 0x2000310)
@@ -284,8 +284,8 @@ sub_808FA38:
 	strb r4, [r5,#0x11] // (byte_2000321 - 0x2000310)
 locret_808FA6E:
 	pop {r4,r5,pc}
-off_808FA70: .word dword_808FA74
-dword_808FA74: .word 0xF090B0B, 0xD
+off_808FA70: .word byte_808FA74
+byte_808FA74: .byte 0xB, 0xB, 0x9, 0xF, 0xD, 0x0, 0x0, 0x0
 	thumb_func_end sub_808FA38
 
 	thumb_local_start
@@ -450,7 +450,7 @@ sub_808FBA0:
 	bl sub_80047E0
 	pop {r5}
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0x00
 	thumb_func_end sub_808FBA0
 
 	thumb_local_start
@@ -495,7 +495,7 @@ loc_808FC06:
 	ldrb r1, [r0,#oGameState_MapNumber]
 loc_808FC08:
 	lsl r1, r1, #2
-	ldr r2, off_808FC20 // =dword_808FC24 
+	ldr r2, off_808FC20 // =byte_808FC24 
 	ldrh r0, [r2,r1]
 	lsl r0, r0, #0x10
 	add r1, #2
@@ -505,17 +505,30 @@ loc_808FC08:
 	bl sub_80301DC
 	mov r0, #0
 	pop {r5,pc}
-off_808FC20: .word dword_808FC24
-dword_808FC24: .word 0xFF56FFCA, 0xE0182, 0xE01C2, 0xFE70FFA4, 0x4D2AB520
-	.word 0x7B2B682D, 0x4803005B, 0x1C005AC0, 0xFA66F79F, 0xBD202000
-	.word 0x808FC50, 0xBEA0BE9, 0xBEB, 0x4D21B520, 0x7B2B682D
-	.word 0x4803005B, 0x1C005AC0, 0xFA62F79F, 0xBD202000, 0x808FC74
-	.word 0xBED0BEC, 0xBEE, 0x4D18B520, 0x4650682D, 0x79016BC0
-	.word 0xD1012985, 0xE0002103, 0x497941, 0x5A404803, 0xF79F1C00
-	.word 0x2000FA49, 0xBD20, 0x808FCA8, 0xBFE0BFD, 0xFFE0BFF
-	.word 0x4650B5F0, 0x79016BC0, 0xD1012985, 0xE0002103, 0x497941
-	.word 0x5A404803, 0xF79F1C00, 0x2000FA23, 0xBDF0, 0x808FCD8
-	.word 0xBE20BE1, 0xFD20BE3
+off_808FC20: .word byte_808FC24
+byte_808FC24: .byte 0xCA, 0xFF, 0x56, 0xFF, 0x82, 0x1, 0xE, 0x0, 0xC2, 0x1, 0xE
+	.byte 0x0, 0xA4, 0xFF, 0x70, 0xFE, 0x20, 0xB5, 0x2A, 0x4D, 0x2D, 0x68
+	.byte 0x2B, 0x7B, 0x5B, 0x0, 0x3, 0x48, 0xC0, 0x5A, 0x0, 0x1C, 0x9F
+	.byte 0xF7, 0x66, 0xFA, 0x0, 0x20, 0x20, 0xBD
+	.word byte_808FC50
+byte_808FC50: .byte 0xE9, 0xB, 0xEA, 0xB, 0xEB, 0xB, 0x0, 0x0, 0x20, 0xB5
+	.byte 0x21, 0x4D, 0x2D, 0x68, 0x2B, 0x7B, 0x5B, 0x0, 0x3, 0x48
+	.byte 0xC0, 0x5A, 0x0, 0x1C, 0x9F, 0xF7, 0x62, 0xFA, 0x0, 0x20
+	.byte 0x20, 0xBD
+	.word byte_808FC74
+byte_808FC74: .byte 0xEC, 0xB, 0xED, 0xB, 0xEE, 0xB, 0x0, 0x0, 0x20, 0xB5
+	.byte 0x18, 0x4D, 0x2D, 0x68, 0x50, 0x46, 0xC0, 0x6B, 0x1, 0x79
+	.byte 0x85, 0x29, 0x1, 0xD1, 0x3, 0x21, 0x0, 0xE0, 0x41, 0x79
+	.byte 0x49, 0x0, 0x3, 0x48, 0x40, 0x5A, 0x0, 0x1C, 0x9F, 0xF7
+	.byte 0x49, 0xFA, 0x0, 0x20, 0x20, 0xBD, 0x0, 0x0
+	.word byte_808FCA8
+byte_808FCA8: .byte 0xFD, 0xB, 0xFE, 0xB, 0xFF, 0xB, 0xFE, 0xF, 0xF0, 0xB5
+	.byte 0x50, 0x46, 0xC0, 0x6B, 0x1, 0x79, 0x85, 0x29, 0x1, 0xD1
+	.byte 0x3, 0x21, 0x0, 0xE0, 0x41, 0x79, 0x49, 0x0, 0x3, 0x48
+	.byte 0x40, 0x5A, 0x0, 0x1C, 0x9F, 0xF7, 0x23, 0xFA, 0x0, 0x20
+	.byte 0xF0, 0xBD, 0x0, 0x0
+	.word byte_808FCD8
+byte_808FCD8: .byte 0xE1, 0xB, 0xE2, 0xB, 0xE3, 0xB, 0xD2, 0xF
 off_808FCE0: .word off_808F5D4
 	thumb_func_end sub_808FBEC
 
@@ -605,7 +618,7 @@ loc_808FD74:
 	ldrb r1, [r0,#oGameState_MapNumber]
 loc_808FD76:
 	lsl r1, r1, #3
-	ldr r4, off_808FD94 // =dword_808FD98 
+	ldr r4, off_808FD94 // =byte_808FD98 
 	add r4, r4, r1
 	ldrh r0, [r4]
 	lsl r0, r0, #0x10
@@ -618,9 +631,10 @@ loc_808FD76:
 	bl sub_809E3C4
 	mov r0, #0
 	pop {r4,r5,pc}
-off_808FD94: .word dword_808FD98
-dword_808FD98: .word 0xFE70FD80, 0x2800186, 0xFE70FD26, 0x26C0258, 0xFDD0FD94
-	.word 0x29402BC
+off_808FD94: .word byte_808FD98
+byte_808FD98: .byte 0x80, 0xFD, 0x70, 0xFE, 0x86, 0x1, 0x80, 0x2, 0x26, 0xFD
+	.byte 0x70, 0xFE, 0x58, 0x2, 0x6C, 0x2, 0x94, 0xFD, 0xD0, 0xFD
+	.byte 0xBC, 0x2, 0x94, 0x2
 word_808FDB0: .hword 0xFDB2
 word_808FDB2: .hword 0xFD8A
 word_808FDB4: .hword 0x1C2
@@ -734,7 +748,7 @@ loc_808FE90:
 	bl init_s_02011C50_8036E90
 locret_808FE9C:
 	pop {r4-r7,pc}
-	.byte 0, 0
+	.balign 4, 0x00
 off_808FEA0: .word off_808FDB8
 	thumb_func_end sub_808FE74
 
@@ -802,7 +816,7 @@ sub_808FF00:
 loc_808FF10:
 	ldrb r1, [r0,#oGameState_MapNumber]
 loc_808FF12:
-	ldr r0, off_808FF28 // =byte_808FF2C 
+	ldr r0, off_808FF28 // =dword_808FF2C 
 	ldrb r4, [r0,r1]
 	strb r4, [r5,#0xa]
 	// entryIdx
@@ -814,9 +828,10 @@ loc_808FF12:
 	strb r4, [r5,#0xb]
 loc_808FF24:
 	mov r0, r4
+locret_808FF26:
 	pop {r4,pc}
-off_808FF28: .word byte_808FF2C
-byte_808FF2C: .byte 0x1, 0x2, 0x2, 0x2
+off_808FF28: .word dword_808FF2C
+dword_808FF2C: .word 0x2020201
 	thumb_func_end sub_808FF00
 
 	thumb_local_start
@@ -1095,12 +1110,12 @@ sub_8090104:
 	mov r6, #0
 	bl sub_8090004
 	beq loc_8090114
-	ldr r4, off_8090180 // =dword_808F668 
+	ldr r4, off_8090180 // =byte_808F668 
 	b loc_809017C
 loc_8090114:
 	bl sub_8090020
 	beq loc_809011E
-	ldr r4, off_8090184 // =dword_808F668+20 
+	ldr r4, off_8090184 // =byte_808F67C 
 	b loc_809017C
 loc_809011E:
 	bl sub_80902DC
@@ -1138,7 +1153,7 @@ loc_809015A:
 	strb r0, [r5,#0xe]
 	mov r0, #3
 	strb r0, [r5,#0x16]
-	ldr r4, off_8090188 // =dword_808F668+40 
+	ldr r4, off_8090188 // =byte_808F690 
 	b loc_809017C
 loc_8090166:
 	bl sub_80901EC
@@ -1155,9 +1170,9 @@ loc_8090170:
 loc_809017C:
 	mov r0, r4
 	pop {r4-r7,pc}
-off_8090180: .word dword_808F668
-off_8090184: .word dword_808F668+0x14
-off_8090188: .word dword_808F668+0x28
+off_8090180: .word byte_808F668
+off_8090184: .word byte_808F67C
+off_8090188: .word byte_808F690
 off_809018C: .word byte_808F748
 off_8090190: .word byte_808F788
 off_8090194: .word byte_808F728
@@ -1179,7 +1194,7 @@ loc_80901AC:
 	mov r0, r4
 	bl sub_809022C
 	beq loc_80901DC
-	ldr r0, dword_809021C // =byte_8090220 
+	ldr r0, off_809021C // =byte_8090226 
 	mov r1, r4
 	lsl r1, r1, #1
 	ldrh r0, [r0,r1]
@@ -1236,9 +1251,9 @@ loc_8090210:
 	pop {r4,r6,pc}
 	.balign 4, 0x00
 off_8090218: .word byte_8090220
-dword_809021C: .word 0x8090226
-byte_8090220: .byte 0xEC, 0xB, 0xED, 0xB, 0xEE, 0xB, 0xE9, 0xB, 0xEA, 0xB
-	.byte 0xEB, 0xB
+off_809021C: .word byte_8090226
+byte_8090220: .byte 0xEC, 0xB, 0xED, 0xB, 0xEE, 0xB
+byte_8090226: .byte 0xE9, 0xB, 0xEA, 0xB, 0xEB, 0xB
 	thumb_func_end sub_80901EC
 
 	thumb_local_start

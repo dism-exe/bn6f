@@ -58,7 +58,7 @@
 /* External Symbols */
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001172
@@ -126,9 +126,9 @@
 // .global off_80202F8
 
 .include "data/dat01.inc"
-// .global dword_8020B9C
-// .global dword_8020C5C
-// .global dword_8020CE4
+// .global byte_8020B9C
+// .global byte_8020C5C
+// .global byte_8020CE4
 
 .include "asm/asm02.inc"
 // .global getChip_8021DA8 // (int chip_idx) -> ChipData*
@@ -162,16 +162,16 @@
 // .global chatbox_8045F4C
 
 .include "data/dat22.inc"
-// .global dword_808850C
-// .global dword_80886B8
+// .global byte_8088514
+// .global byte_8088708
 
 .include "data/dat23.inc"
-// .global dword_8089D64
-// .global dword_8089DF4
-// .global dword_8089DF4
+// .global byte_8089DD8
+// .global byte_8089E44
+// .global byte_8089FD8
 
 .include "asm/asm24.inc"
-// .global dword_808C684
+// .global byte_808C74C
 
 .include "asm/asm28_0.inc"
 // .global sub_809BA14
@@ -187,10 +187,10 @@
 // .global sub_809E462
 
 .include "data/dat28.inc"
-// .global dword_80A3A44
+// .global byte_80A3A44
 
 .include "data/dat29.inc"
-// .global dword_80AAEA8
+// .global byte_80AAEA8
 
 .include "asm/asm30_0.inc"
 // .global sub_80AED50
@@ -208,25 +208,25 @@
 // .global reqBBS_setFlag_e17b0f7_8140A00
 // .global reqBBS_clearFlag_8140A0C
 // .global reqBBS_runDialog_8140A70
-// .global dword_8140C60
-// .global dword_8140C68
-// .global dword_8140C7C
-// .global dword_8140C90
-// .global dword_8140CA4
-// .global dword_8140CB8
-// .global dword_8140CCC
-// .global dword_8140CE0
-// .global dword_8140CF4
-// .global dword_8140D10
-// .global dword_8140D1C
-// .global dword_8140D58
+// .global byte_8140C60
+// .global byte_8140C68
+// .global byte_8140C7C
+// .global byte_8140C90
+// .global byte_8140CA4
+// .global byte_8140CB8
+// .global byte_8140CCC
+// .global byte_8140CE0
+// .global byte_8140CF4
+// .global byte_8140D10
+// .global byte_8140D1C
+// .global byte_8140D58
 // .global byte_8140D6C
-// .global dword_8140E6C
-// .global dword_8140FBC
-// .global dword_814122C
-// .global dword_81414CC
-// .global dword_814154C
-// .global dword_81415F4
+// .global byte_8140E6C
+// .global byte_8140FBC
+// .global byte_814122C
+// .global byte_81414CC
+// .global byte_814154C
+// .global byte_81415F4
 // .global byte_814172C
 
 .include "asm/asm37_1.inc"
@@ -256,13 +256,13 @@
 // .global sub_8143204
 // .global sub_8143220
 // .global sub_81433E4
-// .global dword_81436B4
-// .global dword_81436C4
-// .global dword_81436E4
-// .global dword_8143704
-// .global dword_8143724
-// .global dword_814375C
-// .global dword_8143794
+// .global byte_81436B4
+// .global byte_81436C4
+// .global byte_81436E4
+// .global byte_8143704
+// .global byte_8143724
+// .global byte_814375C
+// .global byte_8143794
 // .global byte_81437CC
 // .global sub_8143B5E
 
@@ -294,7 +294,7 @@
 // .equ dword_200A6AC, 0x200A6AC
 // .equ unk_2010000, 0x2010000
 // .equ unk_2011A90, 0x2011A90
-// .equ unk_2011B30, 0x2011B30
+// .equ byte_2011B30, 0x2011B30
 // .equ unk_2011C50, 0x2011C50
 // .equ byte_2011C58, 0x2011C58
 // .equ dword_2011EEC, 0x2011EEC

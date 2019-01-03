@@ -144,6 +144,11 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global dword_3005E80
+// .global sub_3005EBA
+// .global sub_3006440
+
 .include "asm/start.inc"
 // .global start_800024C
 
@@ -186,7 +191,7 @@
 // .global reqBBS_813E5DC
 // .global reqBBS_813F9A0
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
 // .global SWI_CpuSet // (void *src, void *dest, int mode) -> void
 // .global SWI_Div
@@ -258,37 +263,37 @@
 // .equ unk_200F390, 0x200F390
 // .equ unk_2010490, 0x2010490
 // .equ unk_20104D0, 0x20104D0
-// .equ unk_2010510, 0x2010510
-// .equ unk_2010550, 0x2010550
-// .equ unk_2010590, 0x2010590
-// .equ unk_20105D0, 0x20105D0
-// .equ unk_2010610, 0x2010610
-// .equ unk_2010650, 0x2010650
-// .equ unk_2010690, 0x2010690
-// .equ unk_20106D0, 0x20106D0
-// .equ unk_2010710, 0x2010710
-// .equ unk_2010750, 0x2010750
-// .equ unk_2010790, 0x2010790
-// .equ unk_20107D0, 0x20107D0
-// .equ unk_2010810, 0x2010810
-// .equ unk_2010850, 0x2010850
-// .equ unk_2010890, 0x2010890
-// .equ unk_20108D0, 0x20108D0
-// .equ unk_2010910, 0x2010910
-// .equ unk_2010950, 0x2010950
-// .equ unk_2010990, 0x2010990
-// .equ unk_20109D0, 0x20109D0
-// .equ unk_2010A10, 0x2010A10
-// .equ unk_2010A50, 0x2010A50
-// .equ unk_2010A90, 0x2010A90
-// .equ unk_2010AD0, 0x2010AD0
-// .equ unk_2010B10, 0x2010B10
-// .equ unk_2010B50, 0x2010B50
+// .equ byte_2010510, 0x2010510
+// .equ byte_2010550, 0x2010550
+// .equ byte_2010590, 0x2010590
+// .equ byte_20105D0, 0x20105D0
+// .equ byte_2010610, 0x2010610
+// .equ byte_2010650, 0x2010650
+// .equ byte_2010690, 0x2010690
+// .equ byte_20106D0, 0x20106D0
+// .equ byte_2010710, 0x2010710
+// .equ byte_2010750, 0x2010750
+// .equ byte_2010790, 0x2010790
+// .equ byte_20107D0, 0x20107D0
+// .equ byte_2010810, 0x2010810
+// .equ byte_2010850, 0x2010850
+// .equ off_2010890, 0x2010890
+// .equ byte_20108D0, 0x20108D0
+// .equ byte_2010910, 0x2010910
+// .equ byte_2010950, 0x2010950
+// .equ byte_2010990, 0x2010990
+// .equ byte_20109D0, 0x20109D0
+// .equ byte_2010A10, 0x2010A10
+// .equ byte_2010A50, 0x2010A50
+// .equ byte_2010A90, 0x2010A90
+// .equ byte_2010AD0, 0x2010AD0
+// .equ byte_2010B10, 0x2010B10
+// .equ byte_2010B50, 0x2010B50
 // .equ byte_2010B90, 0x2010B90
-// .equ unk_2010BA0, 0x2010BA0
-// .equ unk_2010BE0, 0x2010BE0
-// .equ unk_2010C20, 0x2010C20
-// .equ unk_2010C60, 0x2010C60
+// .equ byte_2010BA0, 0x2010BA0
+// .equ byte_2010BE0, 0x2010BE0
+// .equ byte_2010C20, 0x2010C20
+// .equ byte_2010C60, 0x2010C60
 // .equ byte_3001550, 0x3001550
 // .equ byte_3001710, 0x3001710
 // .equ byte_3001730, 0x3001730
@@ -296,9 +301,6 @@
 // .equ byte_3001960, 0x3001960
 // .equ unk_3001B40, 0x3001B40
 // .equ unk_3001B60, 0x3001B60
-// .equ copyTiles_iram, 0x3005E80
-// .equ sub_3005EBA, 0x3005EBA
-// .equ loc_3006440, 0x3006440
 .equ LCDControl, 0x4000000
 .equ VerticalCounter_LY_, 0x4000006
 .equ BG0Control, 0x4000008
@@ -314,5 +316,8 @@
 .equ DMA2WordCount, 0x40000D0
 .equ DMA3SourceAddress, 0x40000D4
 .equ DMA3WordCount, 0x40000DC
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
 
 .endif // INC_ASM_ASM00_0

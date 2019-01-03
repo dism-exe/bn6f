@@ -2,12 +2,13 @@
 .equ INC_DATA_DAT25, 0
 
 /* Public Symbols */
+.global byte_8090508
 .global byte_80905BC
 .global byte_809083F
-.global unk_80908CC
-.global unk_8090AA8
-.global unk_80911A0
-.global unk_8091374
+.global byte_80908CC
+.global byte_8090AA8
+.global byte_80911A0
+.global byte_8091374
 
 
 /* External Symbols */

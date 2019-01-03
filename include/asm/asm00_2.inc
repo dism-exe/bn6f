@@ -232,7 +232,7 @@
 .global byte_80199F5
 .global off_8019B78
 .global off_8019BE0
-.global dword_8019C34
+.global byte_8019C34
 .global sub_8019F86
 .global sub_8019F8C
 .global sub_8019FB4
@@ -343,10 +343,12 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global sub_3007550
+// .global sub_300777C
+
 .include "asm/start.inc"
 // .global start_
-// .global dword_8000004
-// .global dword_8000004
 
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
@@ -440,7 +442,6 @@
 // .global object_getPanelsExceptCurrentFilterred
 // .global sub_800CEA0
 // .global sub_800D012
-// .global sub_800D086
 // .global sub_800D120
 // .global sub_800D15A
 // .global sub_800E258
@@ -478,12 +479,12 @@
 // .global off_801ECB4
 // .global word_801ED6C
 // .global word_801EDB4
-// .global dword_801EDFC
+// .global byte_801EDFC
 // .global word_801EE14
 // .global word_801EE58
-// .global dword_801EE78
-// .global dword_801EE98
-// .global dword_801EF10
+// .global byte_801EE78
+// .global byte_801EE98
+// .global byte_801EF10
 // .global off_801EF30
 // .global off_801EF4C
 // .global off_801EF68
@@ -495,22 +496,22 @@
 // .global byte_801F556
 // .global off_801FD64
 // .global off_801FD90
-// .global dword_801FDC0
+// .global byte_801FDC0
 
 .include "data/dat01.inc"
 // .global byte_8020354
 // .global byte_80203EA
 // .global byte_8020404
-// .global dword_80209CC
+// .global byte_80209CC
 // .global off_80209EC
 // .global byte_8020B2C
 // .global byte_8020B8C
-// .global dword_8020E54
+// .global byte_8020E54
 // .global byte_8020FE0
 // .global byte_80210DD
 // .global byte_8021220
 // .global byte_80212BB
-// .global dword_80212D4
+// .global byte_80212D4
 // .global byte_8021300
 // .global byte_8021369
 // .global byte_802136A
@@ -555,7 +556,7 @@
 // .global sub_802E4B8
 // .global sub_802E830
 // .global sub_802EF5C
-// .global dword_802F0A8
+// .global byte_802F0A8
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_802FE48
@@ -617,7 +618,7 @@
 // .global sub_80E544C
 // .global sub_80E8124
 // .global sub_80E90FE
-// .global dword_80E98C0
+// .global byte_80E98C0
 // .global sub_80E996E
 // .global sub_80EA438
 // .global off_80EA814
@@ -633,9 +634,9 @@
 // .global sub_80EAD9C
 // .global sub_80EB04C
 // .global sub_80EB234
-// .global loc_80EE90C
-// .global loc_80EEA3C
-// .global loc_80EED56
+// .global sub_80EE90C
+// .global sub_80EEA3C
+// .global sub_80EED56
 // .global off_80F24D8
 // .global off_80F253C
 // .global off_80F2604
@@ -662,7 +663,7 @@
 
 .include "data/dat38_60.inc"
 // .global byte_8610881
-// .global unk_8650866
+// .global byte_8650866
 // .global byte_8660444
 // .global dword_86A5D60
 // .global dword_86B7AE0
@@ -679,7 +680,7 @@
 // .global dword_86B7D60
 // .global dword_86BA0A0
 // .global dword_86BA120
-// .global unk_86BA140
+// .global byte_86BA140
 
 .include "data/dat38_85.inc"
 // .global dword_86E0AB8
@@ -727,7 +728,7 @@
 // .global dword_86E9A0C
 // .global dword_86E9A2C
 // .global dword_86E9F2C
-// .global byte_86EA42C
+// .global dword_86EA42C
 // .global dword_86EA92C
 // .global byte_86F0300
 // .global byte_86F0374
@@ -745,15 +746,15 @@
 // .global byte_8721C58
 // .global dword_872CE94
 // .global byte_872D014
-// .global unk_872D094
+// .global byte_872D094
 // .global dword_872D694
 // .global dword_872D814
 // .global dword_872D914
 // .global dword_872D994
 // .global dword_872DB14
-// .global unk_872DC94
+// .global byte_872DC94
 // .global dword_872DE14
-// .global unk_872DF94
+// .global byte_872DF94
 // .global dword_872E094
 // .global dword_872E194
 // .global dword_872E294
@@ -878,10 +879,10 @@
 // .equ unk_3001AC0, 0x3001AC0
 // .equ unk_3001AE0, 0x3001AE0
 // .equ byte_3001B00, 0x3001B00
-// .equ sub_3007550, 0x3007550
-// .equ sub_300777C, 0x300777C
 .equ LCDControl, 0x4000000
-.equ unk_8870888, 0x8870888
-.equ unk_8880887, 0x8880887
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ loc_8870888, 0x8870888
+.equ loc_8880886, 0x8880886
 
 .endif // INC_ASM_ASM00_2

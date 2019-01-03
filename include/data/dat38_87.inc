@@ -2,7 +2,7 @@
 .equ INC_DATA_DAT38_87, 0
 
 /* Public Symbols */
-.global aF_0
+.global byte_873811C
 .global dword_873B9E0
 .global dword_873D108
 .global byte_873D9FC
@@ -32,7 +32,7 @@
 .global dword_874584C
 .global dword_8745DEC
 .global dword_87461A0
-.global unk_87462D0
+.global byte_87462D0
 .global dword_87463F4
 .global dword_87464AC
 .global dword_87466F8
@@ -45,7 +45,7 @@
 .global dword_874713C
 .global dword_8747228
 .global dword_8747474
-.global unk_87477F4
+.global byte_87477F4
 .global dword_8747D30
 .global dword_8748650
 .global dword_8748F44
@@ -62,7 +62,7 @@
 .global dword_874E6E0
 .global dword_874EFE0
 .global dword_874F5C4
-.global unk_874F980
+.global dword_874F980
 .global dword_87502B4
 .global dword_8750B80
 .global dword_8751150
@@ -81,7 +81,7 @@
 .global off_8755C0C
 .global dword_8755C18
 .global dword_8756124
-.global unk_87565E8
+.global byte_87565E8
 .global dword_8756AA4
 .global dword_8756C9C
 .global dword_875752C
@@ -106,7 +106,7 @@
 .global byte_875BE5C
 .global byte_875BF80
 .global dword_875BFD8
-.global unk_875C22C
+.global byte_875C22C
 .global dword_875C4B8
 .global dword_875C83C
 .global dword_875CB68
@@ -198,7 +198,7 @@
 .global off_87643D8
 .global dword_87643E4
 .global dword_8764FAC
-.global unk_87658F0
+.global byte_87658F0
 .global dword_87666B4
 .global dword_8766BFC
 .global dword_87680AC
@@ -308,7 +308,7 @@
 .global dword_877C94C
 .global dword_877CD94
 .global dword_877D7D4
-.global unk_877D8CC
+.global byte_877D8CC
 .global dword_877DAB4
 .global dword_877DF6C
 .global dword_877E03C
@@ -398,7 +398,7 @@
 .global dword_8795A38
 .global dword_8795A44
 .global dword_8795D58
-.global unk_8795E14
+.global byte_8795E14
 .global dword_8796494
 .global dword_87964A0
 .global dword_87964AC
