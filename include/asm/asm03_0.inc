@@ -93,7 +93,7 @@
 .global sub_802E830
 .global sub_802EF5C
 .global sub_802F068
-.global byte_802F0A8
+.global dword_802F0A8
 .global sub_802F0C4
 .global sub_802F0D8
 .global sub_802F0F4

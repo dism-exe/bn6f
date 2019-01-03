@@ -82,7 +82,7 @@
 // .global byte_8098BB8
 
 .include "asm/asm28_0.inc"
-// .global dword_8098C78
+// .global byte_8098C78
 // .global byte_8098DDC
 // .global byte_8099CEC
 

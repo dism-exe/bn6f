@@ -2,7 +2,7 @@
 .equ INC_ASM_ASM28_0, 0
 
 /* Public Symbols */
-.global dword_8098C78
+.global byte_8098C78
 .global byte_8098CA2
 .global byte_8098DDC
 .global byte_80990B8

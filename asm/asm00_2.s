@@ -10571,7 +10571,7 @@ sub_8013BDA:
 	mov r1, #0x29 
 	strb r4, [r7,r1]
 	add r0, r4, r4
-	ldr r1, off_8013CBC // =byte_802F0A8
+	ldr r1, off_8013CBC // =dword_802F0A8
 	ldrh r0, [r0,r1]
 	mov r1, #0x40 
 	strh r0, [r7,r1]
@@ -10658,7 +10658,7 @@ off_8013CAC: .word timer_2000000
 dword_8013CB0: .word 0x100000
 off_8013CB4: .word byte_80210DD
 off_8013CB8: .word byte_80210DD
-off_8013CBC: .word byte_802F0A8
+off_8013CBC: .word dword_802F0A8
 dword_8013CC0: .word 0x20000
 	thumb_func_end nullsub_28
 
