@@ -48,24 +48,27 @@
 
 .include "data/dat13.inc"
 // .global byte_8070034
-// .global dword_8070074
-// .global dword_80700B4
-// .global dword_80700CC
-// .global dword_80700E4
+// .global byte_8070074
+// .global byte_80700B4
+// .global byte_80700CC
+// .global byte_80700E4
 // .global byte_80700FC
-// .global dword_8070114
-// .global dword_807012C
-// .global dword_8070144
-// .global dword_8070184
-// .global dword_807019C
-// .global dword_80701B4
-// .global dword_80701CC
-// .global dword_80701E4
+// .global byte_8070114
+// .global byte_807012C
+// .global byte_8070144
+// .global byte_8070184
+// .global byte_807019C
+// .global byte_80701B4
+// .global byte_80701CC
+// .global byte_80701E4
 // .global byte_80701FC
-// .global dword_8070214
+// .global byte_8070214
 
 .include "data/dat38_60.inc"
 // .global off_8616598
+// .global byte_8616634
+// .global byte_8616760
+// .global byte_8616EC4
 
 
 /* Undeclared Symbols */

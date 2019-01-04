@@ -40,18 +40,18 @@
 
 .include "data/dat14.inc"
 // .global off_8074F30
-// .global dword_8074FCC
-// .global dword_8074FCC
-// .global dword_8074FCC
-// .global dword_8074FCC
-// .global dword_8074FCC
-// .global dword_8074FCC
-// .global dword_8074FCC
+// .global byte_8074FDC
+// .global byte_807500C
+// .global off_807505C
+// .global byte_807534C
+// .global byte_807537C
+// .global byte_80753CC
+// .global byte_80753FC
 
 .include "data/dat15.inc"
-// .global dword_8075614
-// .global dword_8075708
-// .global dword_807575C
+// .global byte_8075614
+// .global byte_8075708
+// .global byte_807575C
 
 .include "data/dat38_60.inc"
 // .global off_8617068

@@ -12,7 +12,7 @@
 .global off_810CD60
 .global byte_810D008
 .global byte_810D010
-.global dword_810D034
+.global byte_810D034
 .global off_810D0F4
 .global byte_810D16C
 .global byte_810D174

@@ -39,11 +39,12 @@ sub_8077D00:
 off_8077D58: .word off_8077618
 off_8077D5C: .word unk_2037800
 off_8077D60: .word off_8077D64
-off_8077D64: .word dword_8077D6C
-	.word dword_8077D78
-dword_8077D6C: .word 0x671C661C, 0x6A1C681C, 0xFFFF1F1C
-dword_8077D78: .word 0x531C2B1C, 0x661C1F1C, 0x681C671C, 0x1C186A1C
-	.byte 0xFF, 0xFF
+off_8077D64: .word byte_8077D6C
+	.word byte_8077D78
+byte_8077D6C: .byte 0x1C, 0x66, 0x1C, 0x67, 0x1C, 0x68, 0x1C, 0x6A, 0x1C
+	.byte 0x1F, 0xFF, 0xFF
+byte_8077D78: .byte 0x1C, 0x2B, 0x1C, 0x53, 0x1C, 0x1F, 0x1C, 0x66, 0x1C
+	.byte 0x67, 0x1C, 0x68, 0x1C, 0x6A, 0x18, 0x1C, 0xFF, 0xFF
 	thumb_func_end sub_8077D00
 
 	thumb_func_start sub_8077D8A
@@ -58,19 +59,19 @@ off_8077D98: .word off_8077D9C
 off_8077D9C: .word off_8077DA4
 	.word off_8077DC4
 off_8077DA4: .word off_8077720
-	.word dword_8077724+0x2EC
-	.word dword_8077724+0x33C
-	.word dword_8077724+0x38C
-	.word dword_8077724+0x3DC
-	.word dword_8077724+0x40C
-	.word dword_8077724+0x44C
+	.word byte_8077A10
+	.word byte_8077A60
+	.word byte_8077AB0
+	.word byte_8077B00
+	.word byte_8077B30
+	.word byte_8077B70
 	.word 0xFFFFFFFF
 off_8077DC4: .word off_8077720
-	.word dword_8077724+0x49C
-	.word dword_8077724+0x4CC
-	.word dword_8077724+0x4FC
-	.word dword_8077724+0x54C
-	.word dword_8077724+0x59C
+	.word byte_8077BC0
+	.word byte_8077BF0
+	.word byte_8077C20
+	.word byte_8077C70
+	.word byte_8077CC0
 	.word 0xFFFFFFFF
 	thumb_func_end sub_8077D8A
 
@@ -101,13 +102,21 @@ sub_8077DE0:
 off_8077E14: .word off_8077E18
 off_8077E18: .word nullsub_39+1
 	.word sub_80019D0+1
-	.word 0x3005CD9, 0x800, 0x8001AB5, 0x80019D1, 0x3005CD9
+	.word nullsub_38+1
+	.word 0x800
+	.word nullsub_39+1
+	.word sub_80019D0+1
+	.word nullsub_38+1
 	.word 0x800
 off_8077E38: .word off_8077E3C
 off_8077E3C: .word off_8077E44
 	.word off_8077E44
 off_8077E44: .word off_8617068
-	.word 0x6008020, 0x8617190, 0x1800, 0x861876C, 0x3001960
+	.word 0x6008020
+	.word dword_8617190
+	.word 0x1800
+	.word dword_861876C
+	.word byte_3001960
 	.word 0x20
 	thumb_func_end sub_8077DE0
 
@@ -152,8 +161,8 @@ sub_8077E84:
 off_8077E98: .word pt_8077E9C
 pt_8077E9C:
 	// <endpool> <endfile>
-	.word dword_8077EA4
-	.word dword_8077EF8
+	.word byte_8077EA4
+	.word byte_8077EF8
 	thumb_func_end sub_8077E84
 
 /*For debugging purposes, connect comment at any range!*/

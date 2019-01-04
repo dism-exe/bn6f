@@ -79,7 +79,6 @@
 .global sub_80C04AC
 .global sub_80C065C
 .global sub_80C07BC
-.global loc_80C0B0E
 .global sub_80C0DD8
 .global sub_80C0E04
 .global sub_80C0F6C
@@ -558,18 +557,18 @@
 .global sub_80E9570
 .global sub_80E979C
 .global sub_80E97F0
-.global dword_80E98C0
+.global byte_80E98C0
 .global sub_80E996E
 .global sub_80E9994
 .global sub_80E9AF0
 .global sub_80E9BDC
-.global loc_80E9C88
-.global loc_80E9DF0
+.global sub_80E9C88
+.global sub_80E9DF0
 .global sub_80EA010
 .global sub_80EA11C
-.global loc_80EA14C
-.global loc_80EA258
-.global loc_80EA364
+.global sub_80EA14C
+.global sub_80EA258
+.global sub_80EA364
 .global sub_80EA438
 .global off_80EA814
 .global off_80EA8D8
@@ -584,9 +583,9 @@
 .global sub_80EAD9C
 .global sub_80EB04C
 .global sub_80EB234
-.global loc_80EE90C
-.global loc_80EEA3C
-.global loc_80EED56
+.global sub_80EE90C
+.global sub_80EEA3C
+.global sub_80EED56
 .global off_80F24D8
 .global off_80F253C
 .global off_80F2604
@@ -596,21 +595,21 @@
 .global off_80F2794
 .global off_80F27F8
 .global off_80F285C
-.global dword_80F28F0
-.global dword_80F2A54
-.global dword_80F390C
-.global dword_80F47D4
-.global dword_80F5838
-.global dword_80F6394
-.global dword_80F757C
-.global dword_80F8334
-.global dword_80F8EEC
-.global dword_80F9C80
-.global dword_80FACDC
-.global dword_80FB8E0
-.global dword_80FD044
-.global dword_80FDCF0
-.global dword_80FE7D0
+.global byte_80F28F0
+.global byte_80F2A54
+.global byte_80F390C
+.global byte_80F47D4
+.global byte_80F5838
+.global byte_80F6394
+.global byte_80F757C
+.global byte_80F8334
+.global byte_80F8EEC
+.global byte_80F9C80
+.global byte_80FACDC
+.global byte_80FB8E0
+.global byte_80FD044
+.global byte_80FDCF0
+.global byte_80FE7D0
 .global sub_80FF668
 .global byte_80FF7F0
 .global byte_81001E8
@@ -638,7 +637,7 @@
 .global sub_810971A
 .global sub_81097B4
 .global sub_81097BA
-.global loc_81097D6
+.global sub_81097D6
 .global sub_81097DC
 .global sub_8109804
 .global sub_8109952
@@ -660,7 +659,7 @@
 // .global sound_play // () -> void
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
-// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global loc_8000AC8
 // .global sub_8000C72
 // .global sub_8000DE0
@@ -993,7 +992,7 @@
 // .global byte_80199F5
 // .global off_8019B78
 // .global off_8019BE0
-// .global dword_8019C34
+// .global byte_8019C34
 // .global sub_8019F86
 // .global sub_8019F8C
 // .global sub_8019FB4
@@ -1118,11 +1117,11 @@
 // .global byte_8070605
 
 .include "data/dat20.inc"
-// .global byte_8080315
+// .global byte_8080404
 // .global byte_8080C0C
 
 .include "asm/asm21.inc"
-// .global asc_808100C
+// .global dword_8081010
 
 .include "data/dat28.inc"
 // .global byte_80A0C10
@@ -1160,17 +1159,17 @@
 // .global off_810E7B0
 // .global sub_810E81E
 // .global sub_810E854
-// .global dword_810EC80
-// .global dword_810EC80
+// .global byte_810EC80
+// .global byte_810EC88
 // .global off_810F010
 // .global sub_810F040
 // .global sub_810F090
-// .global dword_810F200
-// .global dword_810F200
+// .global byte_810F200
+// .global byte_810F208
 // .global off_810F39C
 // .global sub_810F3F8
 // .global byte_810F4E4
-// .global dword_810F4EC
+// .global byte_810F4EC
 // .global sub_810FA4C
 // .global off_810FCE0
 // .global sub_81100B0
@@ -1185,30 +1184,30 @@
 // .global byte_8110630
 // .global off_8110DC0
 // .global sub_8110E76
-// .global dword_8111130
-// .global dword_8111130
+// .global byte_8111130
+// .global byte_8111138
 // .global off_8111330
 // .global sub_8111816
 // .global sub_8111846
-// .global dword_811190C
-// .global dword_811190C
+// .global byte_811190C
+// .global byte_8111914
 // .global off_8111DC0
-// .global dword_8111FF8
-// .global dword_8111FF8
+// .global byte_8111FF8
+// .global byte_8112000
 // .global off_81121F0
-// .global dword_81126DC
-// .global dword_81126DC
+// .global byte_81126DC
+// .global byte_81126E4
 // .global off_81129A0
 // .global sub_81129EE
 // .global byte_8112B94
-// .global byte_8112B94
+// .global byte_8112B9C
 // .global off_8113078
 // .global byte_811323C
 // .global byte_8113244
 // .global off_81135CC
 // .global sub_8113626
-// .global dword_8113754
-// .global dword_8113754
+// .global byte_8113754
+// .global byte_811375C
 // .global off_8113D50
 // .global byte_8113DC0
 // .global sub_8114170
@@ -1220,27 +1219,27 @@
 // .global sub_8114F52
 // .global sub_8114F6A
 // .global sub_8115098
-// .global dword_81150AC
-// .global dword_81150AC
+// .global byte_81150AC
+// .global byte_81150B4
 // .global off_81154F0
-// .global dword_8115704
-// .global dword_8115704
+// .global byte_8115704
+// .global byte_811570C
 // .global off_8115950
 // .global sub_81159B0
 // .global sub_81159DC
 // .global sub_8115BB0
-// .global dword_8115BEC
-// .global dword_8115BEC
+// .global byte_8115BEC
+// .global byte_8115BF4
 // .global off_8115DE0
 // .global sub_811627A
 // .global sub_81162AA
-// .global dword_81162F8
-// .global dword_81162F8
+// .global byte_81162F8
+// .global byte_8116300
 // .global off_81163F0
 // .global sub_8116414
 // .global loc_81165A4
-// .global dword_81165BC
-// .global dword_81165BC
+// .global byte_81165BC
+// .global byte_81165C4
 // .global off_81166B0
 // .global sub_81166D4
 // .global sub_8116878
@@ -1250,7 +1249,7 @@
 // .global byte_86E56FC
 
 .include "data/dat38_86.inc"
-// .global aTuDhr
+// .global byte_8736D74
 
 
 /* Undeclared Symbols */
@@ -1264,13 +1263,13 @@
 // .equ unk_2010208, 0x2010208
 // .equ unk_2010308, 0x2010308
 // .equ byte_2010408, 0x2010408
-// .equ unk_2010508, 0x2010508
-// .equ unk_2010608, 0x2010608
-// .equ unk_2010708, 0x2010708
-// .equ unk_2010808, 0x2010808
-// .equ unk_2010908, 0x2010908
-// .equ unk_2010A08, 0x2010A08
-// .equ unk_2010B08, 0x2010B08
+// .equ off_2010508, 0x2010508
+// .equ off_2010608, 0x2010608
+// .equ off_2010708, 0x2010708
+// .equ off_2010808, 0x2010808
+// .equ off_2010908, 0x2010908
+// .equ off_2010A08, 0x2010A08
+// .equ off_2010B08, 0x2010B08
 // .equ unk_202070C, 0x202070C
 // .equ byte_2030204, 0x2030204
 // .equ byte_2030405, 0x2030405
@@ -1288,7 +1287,7 @@
 // .equ byte_203CFC4, 0x203CFC4
 // .equ byte_3001750, 0x3001750
 // .equ unk_3001B60, 0x3001B60
-// .equ unk_3003D0C, 0x3003D0C
+// .equ byte_3003D0C, 0x3003D0C
 .equ LCDControl, 0x4000000
 .equ BG2Rotation_ScalingParameterA_dx_, 0x4000020
 

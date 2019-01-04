@@ -8,7 +8,7 @@
 .global sub_8123408
 .global sub_8123434
 .global ho_8123F5C
-.global dword_8124B1C
+.global byte_8124B1C
 .global sub_8124B3C
 .global sub_8126B4C
 .global sub_8127990
@@ -16,8 +16,9 @@
 .global menuControl_cb_email
 .global sub_81284A4
 .global sub_8128730
-.global loc_8128CBC
-.global dword_8129178
+.global sub_8128CBC
+.global byte_8129150
+.global byte_8129178
 .global dword_8129180
 .global sub_81291D8
 .global sub_81291E8
@@ -43,7 +44,7 @@
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
-// .global copyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+// .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
@@ -232,7 +233,7 @@
 // .global sub_8120CC8
 // .global sub_8120D10
 // .global sub_8121198
-// .global dword_81211B4
+// .global byte_81211B4
 // .global pt_8121200
 
 .include "data/dat33.inc"
@@ -268,7 +269,7 @@
 // .global sub_8135314
 // .global byte_813565C
 // .global sub_8137884
-// .global loc_81378B4
+// .global sub_81378B4
 
 .include "asm/asm37_0.inc"
 // .global sub_813B9FC
@@ -281,7 +282,7 @@
 // .global sub_813D960
 // .global sub_813D978
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_81440D8 // static () -> void
 // .global sub_8144240
 // .global sub_8146588
@@ -309,7 +310,7 @@
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 .include "data/dat37.inc"
-// .global byte_814FE94
+// .global dword_814FE94
 
 .include "data/dat38_60.inc"
 // .global byte_86A5D40
@@ -319,11 +320,11 @@
 // .global byte_86C1F80
 
 .include "data/dat38_67.inc"
-// .global unk_86C9108
-// .global unk_86C9128
+// .global dword_86C9108
+// .global dword_86C9128
 
 .include "data/dat38_69.inc"
-// .global unk_86C9AF4
+// .global dword_86C9AF4
 // .global dword_86C9B14
 // .global dword_86C9B34
 // .global dword_86C9B54
@@ -335,13 +336,13 @@
 // .global dword_86CDBE4
 
 .include "data/dat38_72.inc"
-// .global unk_86CF994
-// .global unk_86CFAF8
+// .global dword_86CF994
+// .global dword_86CFAF8
 
 .include "data/dat38_74.inc"
 // .global comp_86D6618
-// .global unk_86D6754
-// .global unk_86D6954
+// .global dword_86D6754
+// .global dword_86D6954
 
 .include "data/dat38_75.inc"
 // .global byte_86D7578
@@ -353,9 +354,9 @@
 // .global byte_86D894C
 
 .include "data/dat38_77.inc"
-// .global unk_86D9A00
-// .global unk_86D9AC4
-// .global unk_86D9B84
+// .global dword_86D9A00
+// .global dword_86D9AC4
+// .global dword_86D9B84
 
 .include "data/dat38_83.inc"
 // .global comp_86DD59C
@@ -364,8 +365,8 @@
 // .global byte_86DDB24
 
 .include "data/dat38_85.inc"
-// .global byte_86EA94C
-// .global byte_86EB354
+// .global dword_86EA94C
+// .global dword_86EB354
 
 .include "data/dat38_86.inc"
 // .global byte_872CF94

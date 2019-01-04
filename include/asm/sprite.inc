@@ -43,6 +43,12 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global sub_3005EF0
+// .global sub_30061E8
+// .global sub_3006730
+// .global sub_3006792
+
 .include "asm/asm00_0.inc"
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
@@ -63,7 +69,7 @@
 // .global mugshots_8032598
 // .global guiSprites_803271C
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
 
@@ -77,13 +83,14 @@
 // .equ dword_200DCEC, 0x200DCEC
 // .equ dword_200F340, 0x200F340
 // .equ dword_200F350, 0x200F350
+// .equ unk_200F389, 0x200F389
 // .equ dword_2033000, 0x2033000
 // .equ unk_2037800, 0x2037800
 // .equ byte_3001550, 0x3001550
-// .equ sub_3005EF0, 0x3005EF0
-// .equ loc_30061E8, 0x30061E8
-// .equ sub_3006730, 0x3006730
-// .equ sub_3006792, 0x3006792
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
 // .global spriteWhiteDot
 
 .endif // INC_ASM_SPRITE

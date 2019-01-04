@@ -43,16 +43,13 @@ split9BitsFromBitfield_8021AE0:
 	// splits bitfield into lower and upper 9 bits, and returns those in r0, r1
 	push {lr}
 	lsr r1, r0, #9
-	ldr r2, word_8021AEC // =0x1ff 
+	ldr r2, dword_8021AEC // =0xb51001ff 
 	and r0, r2
 	pop {pc}
 	.balign 4, 0x00
-word_8021AEC: .hword 0x1FF
+dword_8021AEC: .word 0xB51001FF
 	thumb_func_end split9BitsFromBitfield_8021AE0
 
-	thumb_func_start sub_8021AEE
-sub_8021AEE:
-	push {r4,lr}
 	push {r0-r2}
 	bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
 	pop {r0-r2}
@@ -79,8 +76,6 @@ loc_8021B00:
 	pop {r3}
 	mov r0, r3
 	pop {r4,pc}
-	thumb_func_end sub_8021AEE
-
 	thumb_func_start sub_8021B2A
 sub_8021B2A:
 	push {lr}
@@ -419,11 +414,11 @@ sub_8021D36:
 	mov r2, #8
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r0, off_8021D84 // =byte_8021D8A 
-	ldr r1, dword_8021D78 // =unk_20007D6 
+	ldr r1, off_8021D78 // =byte_20007D6 
 	mov r2, #8
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	ldr r0, off_8021D84 // =byte_8021D8A 
-	ldr r1, dword_8021D7C // =unk_200083A 
+	ldr r1, off_8021D7C // =byte_200083A 
 	mov r2, #8
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
@@ -431,8 +426,8 @@ sub_8021D36:
 off_8021D6C: .word unk_2000AF0
 off_8021D70: .word unk_2001184
 off_8021D74: .word unk_200119C
-dword_8021D78: .word 0x20007D6
-dword_8021D7C: .word 0x200083A
+off_8021D78: .word byte_20007D6
+off_8021D7C: .word byte_200083A
 off_8021D80: .word script_8021D88
 off_8021D84: .word byte_8021D8A
 script_8021D88:

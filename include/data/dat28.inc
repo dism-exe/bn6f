@@ -4,16 +4,18 @@
 /* Public Symbols */
 .global dword_809FEE4
 .global dword_809FFE8
+.global byte_80A083F
+.global byte_80A0840
 .global byte_80A0C0E
 .global byte_80A0C10
 .global byte_80A0C12
 .global byte_80A2713
-.global dword_80A3360
+.global byte_80A3360
 .global off_80A336C
 .global off_80A3370
 .global off_80A3428
-.global dword_80A3430
-.global dword_80A3A44
+.global byte_80A3430
+.global byte_80A3A44
 
 
 /* External Symbols */
@@ -48,8 +50,8 @@
 // .equ unk_300361C, 0x300361C
 // .equ unk_300371C, 0x300371C
 // .equ unk_300381C, 0x300381C
-// .equ unk_300431C, 0x300431C
-// .equ unk_300451C, 0x300451C
-// .equ unk_300511C, 0x300511C
+// .equ byte_300431C, 0x300431C
+// .equ byte_300451C, 0x300451C
+// .equ byte_300511C, 0x300511C
 
 .endif // INC_DATA_DAT28

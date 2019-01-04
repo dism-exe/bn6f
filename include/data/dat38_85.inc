@@ -2,9 +2,10 @@
 .equ INC_DATA_DAT38_85, 0
 
 /* Public Symbols */
-.global unk_86DDBA0
+.global dword_86DDBA0
 .global byte_86DF925
 .global byte_86DFA98
+.global byte_86DFF03
 .global dword_86E0458
 .global dword_86E0478
 .global byte_86E0498
@@ -66,7 +67,7 @@
 .global dword_86E0F78
 .global dword_86E0FB8
 .global dword_86E0FF8
-.global unk_86E101C
+.global dword_86E101C
 .global dword_86E1038
 .global dword_86E1078
 .global dword_86E10B8
@@ -90,7 +91,7 @@
 .global dword_86E1BF8
 .global dword_86E1C78
 .global byte_86E1CD8
-.global unk_86E1D38
+.global dword_86E1D38
 .global byte_86E2E18
 .global dword_86E2E98
 .global dword_86E3598
@@ -105,12 +106,12 @@
 .global dword_86E55BC
 .global dword_86E55FC
 .global byte_86E56FC
-.global unk_86E57FC
+.global dword_86E57FC
 .global byte_86E587C
 .global byte_86E58FC
 .global dword_86E591C
 .global byte_86E601C
-.global unk_86E609C
+.global dword_86E609C
 .global dword_86E611C
 .global byte_86E625C
 .global byte_86E64B4
@@ -122,7 +123,7 @@
 .global byte_86E72C4
 .global byte_86E751C
 .global byte_86E7774
-.global unk_86E79CC
+.global byte_86E79CC
 .global dword_86E7DCC
 .global dword_86E944C
 .global dword_86E958C
@@ -135,13 +136,13 @@
 .global dword_86E9A0C
 .global dword_86E9A2C
 .global dword_86E9F2C
-.global byte_86EA42C
+.global dword_86EA42C
 .global byte_86EA925
 .global dword_86EA92C
-.global byte_86EA94C
-.global byte_86EB354
-.global unk_86EB8B8
-.global unk_86EE0CC
+.global dword_86EA94C
+.global dword_86EB354
+.global byte_86EB8B8
+.global dword_86EE0CC
 .global dword_86EF4D4
 .global byte_86EF71C
 .global notAdded_scripts_86EF78C
@@ -152,26 +153,26 @@
 .global dword_86F1340
 .global dword_86F1380
 .global byte_86F13C0
-.global unk_86F1400
+.global dword_86F1400
 .global dword_86F1440
 .global byte_86F1480
 .global byte_86F14C0
 .global byte_86F1500
 .global byte_86F1540
 .global byte_86F1580
-.global unk_86F15C0
+.global dword_86F15C0
 .global dword_86F1600
 .global byte_86F1640
 .global byte_86F1680
 .global byte_86F16C0
-.global unk_86F1700
+.global dword_86F1700
 .global dword_86F1780
 .global dword_86F17C0
 .global dword_86F1800
-.global unk_86F1840
+.global dword_86F1840
 .global byte_86F18C0
 .global byte_86F1900
-.global unk_86F1940
+.global dword_86F1940
 .global dword_86F19C0
 .global dword_86F1A00
 .global dword_86F1A40
@@ -186,8 +187,8 @@
 .global byte_86F1C80
 .global byte_86F1CC0
 .global byte_86F1D00
-.global unk_86F1D40
-.global unk_86F1D80
+.global dword_86F1D40
+.global dword_86F1D80
 .global dword_86F1DC0
 .global dword_86F1E00
 .global dword_86F1E40
@@ -200,7 +201,7 @@
 .global dword_86F2000
 .global dword_86F2040
 .global dword_86F2240
-.global unk_86F2500
+.global dword_86F2500
 .global dword_86F26C0
 .global byte_86F2900
 .global byte_86F2960

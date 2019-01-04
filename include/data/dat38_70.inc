@@ -6,7 +6,7 @@
 .global byte_86C9D8C
 .global byte_86C9DAC
 .global byte_86C9DCC
-.global unk_86CA10C
+.global dword_86CA10C
 .global PET_Gfx_tileRefs
 .global TileRefs_86CB21C
 .global TileRefs_86CB240
@@ -21,9 +21,9 @@
 .global sprite_86CBB7C
 .global sprite_86CC13C
 .global sprite_86CD410
-.global unk_86CD7C4
-.global unk_86CD924
-.global unk_86CDBC4
+.global dword_86CD7C4
+.global dword_86CD924
+.global dword_86CDBC4
 .global dword_86CDBE4
 
 

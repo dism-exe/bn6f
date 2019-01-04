@@ -36,10 +36,10 @@
 // .global byte_805DED8
 
 .include "data/dat07.inc"
-// .global dword_805E01C
-// .global dword_805E084
-// .global dword_805E09C
-// .global dword_805E118
+// .global byte_805E01C
+// .global byte_805E084
+// .global byte_805E09C
+// .global byte_805E118
 // .global dword_805E158
 // .global off_805E1FC
 

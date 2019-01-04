@@ -28,6 +28,9 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global byte_30069A0
+
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
@@ -75,7 +78,7 @@
 // .global sub_8120CC8
 
 .include "asm/asm33.inc"
-// .global dword_8129178
+// .global byte_8129178
 // .global dword_8129180
 
 .include "data/dat33.inc"
@@ -88,7 +91,7 @@
 .include "asm/asm36.inc"
 // .global sub_8132280
 
-.include "asm/asm37_1.inc"
+.include "asm/libs.inc"
 // .global sub_81440D8 // static () -> void
 
 

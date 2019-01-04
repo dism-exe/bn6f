@@ -212,6 +212,11 @@
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global sub_3006028
+// .global sub_30061E8
+// .global sub_3006440
+
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global sound_bgmusic_play // (int a1) -> void
@@ -377,7 +382,7 @@
 // .global sub_8021D08
 // .global sub_8021D36
 
-.include "data/dat02.inc"
+.include "data/ChipDataArr.inc"
 // .global dword_802412C
 
 .include "asm/asm03_0.inc"
@@ -499,12 +504,12 @@
 
 .include "data/dat27.inc"
 // .global byte_8098A02
-// .global unk_8098A2E
-// .global dword_8098A78
-// .global dword_8098B1C
+// .global byte_8098A2E
+// .global byte_8098A78
+// .global byte_8098B1C
 
 .include "asm/asm28_0.inc"
-// .global unk_809B5AD
+// .global byte_809B5AD
 // .global sub_809D19C
 // .global sub_809E04C
 // .global setFlag3_2e2_2001C88
@@ -623,7 +628,6 @@
 // .global sub_80C04AC
 // .global sub_80C065C
 // .global sub_80C07BC
-// .global loc_80C0B0E
 // .global sub_80C0E04
 // .global sub_80C0F6C
 // .global sub_80C11AC
@@ -986,12 +990,12 @@
 // .global sub_80E97F0
 // .global sub_80E9994
 // .global sub_80E9AF0
-// .global loc_80E9C88
-// .global loc_80E9DF0
+// .global sub_80E9C88
+// .global sub_80E9DF0
 // .global sub_80EA010
-// .global loc_80EA14C
-// .global loc_80EA258
-// .global loc_80EA364
+// .global sub_80EA14C
+// .global sub_80EA258
+// .global sub_80EA364
 
 .include "asm/asm32.inc"
 // .global sub_811EBE0
@@ -1037,12 +1041,14 @@
 // .global sub_8142248
 // .global sub_8143482
 // .global sub_8144048
+
+.include "asm/libs.inc"
 // .global sub_81440D8 // static () -> void
 // .global sub_8144EEC
 // .global SWI_LZ77UnCompReadNormalWrite16bit
 
 .include "data/dat38_85.inc"
-// .global unk_86DDBA0
+// .global dword_86DDBA0
 // .global dword_86E08F8
 // .global dword_86E09F8
 
@@ -1059,7 +1065,7 @@
 // .equ byte_2000781, 0x2000781
 // .equ byte_2000782, 0x2000782
 // .equ byte_2000783, 0x2000783
-// .equ dword_2000784, 0x2000784
+// .equ byte_2000784, 0x2000784
 // .equ byte_20008A0, 0x20008A0
 // .equ dword_2000B30, 0x2000B30
 // .equ word_2000FA0, 0x2000FA0
@@ -1153,6 +1159,7 @@
 // .equ off_200A454, 0x200A454
 // .equ word_200A458, 0x200A458
 // .equ word_200A45C, 0x200A45C
+// .equ byte_200A460, 0x200A460
 // .equ byte_200A461, 0x200A461
 // .equ byte_200A462, 0x200A462
 // .equ byte_200A463, 0x200A463
@@ -1179,7 +1186,7 @@
 // .equ unk_200F3B8, 0x200F3B8
 // .equ byte_200F410, 0x200F410
 // .equ byte_2011800, 0x2011800
-// .equ unk_2011BB0, 0x2011BB0
+// .equ byte_2011BB0, 0x2011BB0
 // .equ unk_2011C50, 0x2011C50
 // .equ unk_2011E50, 0x2011E50
 // .equ byte_2011EE0, 0x2011EE0
@@ -1323,10 +1330,10 @@
 // .equ dword_3002188, 0x3002188
 // .equ dword_300218C, 0x300218C
 // .equ unk_30025C0, 0x30025C0
-// .equ sub_3006028, 0x3006028
-// .equ loc_30061E8, 0x30061E8
-// .equ loc_3006440, 0x3006440
 .equ Window0HorizontalDimensions, 0x4000040
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
 // .global scripts_fullSynchro_86F3F5C
 // .global scripts_dad_cybeastTut_86F4498
 // .global scripts_shuko_crossTut_86F53CC

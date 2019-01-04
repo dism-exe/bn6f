@@ -2,10 +2,10 @@
 .equ INC_DATA_DAT07, 0
 
 /* Public Symbols */
-.global dword_805E01C
-.global dword_805E084
-.global dword_805E09C
-.global dword_805E118
+.global byte_805E01C
+.global byte_805E084
+.global byte_805E09C
+.global byte_805E118
 .global dword_805E158
 .global off_805E15C
 .global off_805E170
@@ -26,8 +26,33 @@
 
 
 /* External Symbols */
+.include "data/dat04.inc"
+// .global byte_8050102
+
+.include "data/dat23.inc"
+// .global byte_808A6C8
+
+.include "asm/asm24.inc"
+// .global byte_808C248
+
+.include "asm/asm28_0.inc"
+// .global byte_80990DC
+// .global byte_8099CEC
+
 .include "asm/asm31.inc"
 // .global off_80E0408
+
+.include "data/dat38_59.inc"
+// .global byte_856E826
+
+.include "data/dat38_60.inc"
+// .global byte_861FF05
+
+.include "data/dat38_85.inc"
+// .global byte_86DFF03
+
+.include "data/dat38_87.inc"
+// .global dword_878FA4C
 
 
 /* Undeclared Symbols */

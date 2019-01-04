@@ -8,7 +8,7 @@
 .global sub_810DCCE
 .global byte_810DD10
 .global byte_810DD18
-.global dword_810DD3C
+.global byte_810DD3C
 .global off_810E120
 .global sub_810E2A6
 .global sub_810E336
@@ -20,17 +20,19 @@
 .global off_810E7B0
 .global sub_810E81E
 .global sub_810E854
-.global dword_810EC80
-.global dword_810ECAC
+.global byte_810EC80
+.global byte_810EC88
+.global byte_810ECAC
 .global off_810F010
 .global sub_810F040
 .global sub_810F090
-.global dword_810F200
+.global byte_810F200
+.global byte_810F208
 .global byte_810F22C
 .global off_810F39C
 .global sub_810F3F8
 .global byte_810F4E4
-.global dword_810F4EC
+.global byte_810F4EC
 .global byte_810F510
 .global sub_810FA4C
 .global off_810FCE0
@@ -48,30 +50,36 @@
 .global byte_8110654
 .global off_8110DC0
 .global sub_8110E76
-.global dword_8111130
+.global byte_8111130
+.global byte_8111138
 .global byte_811115C
 .global off_8111330
 .global sub_8111816
 .global sub_8111846
-.global dword_811190C
-.global dword_8111938
+.global byte_811190C
+.global byte_8111914
+.global byte_8111938
 .global off_8111DC0
-.global dword_8111FF8
+.global byte_8111FF8
+.global byte_8112000
 .global byte_8112024
 .global off_81121F0
-.global dword_81126DC
+.global byte_81126DC
+.global byte_81126E4
 .global byte_8112708
 .global off_81129A0
 .global sub_81129EE
 .global byte_8112B94
+.global byte_8112B9C
 .global byte_8112BC0
 .global off_8113078
 .global byte_811323C
 .global byte_8113244
-.global dword_8113268
+.global byte_8113268
 .global off_81135CC
 .global sub_8113626
-.global dword_8113754
+.global byte_8113754
+.global byte_811375C
 .global byte_8113780
 .global off_8113D50
 .global byte_8113DC0
@@ -85,25 +93,30 @@
 .global sub_8114F52
 .global sub_8114F6A
 .global sub_8115098
-.global dword_81150AC
-.global dword_81150D8
+.global byte_81150AC
+.global byte_81150B4
+.global byte_81150D8
 .global off_81154F0
-.global dword_8115704
+.global byte_8115704
+.global byte_811570C
 .global byte_8115730
 .global off_8115950
 .global sub_81159B0
 .global sub_81159DC
 .global sub_8115BB0
-.global dword_8115BEC
+.global byte_8115BEC
+.global byte_8115BF4
 .global byte_8115C18
 .global off_8115DE0
 .global sub_811627A
 .global sub_81162AA
-.global dword_81162F8
+.global byte_81162F8
+.global byte_8116300
 .global off_81163F0
 .global sub_8116414
 .global loc_81165A4
-.global dword_81165BC
+.global byte_81165BC
+.global byte_81165C4
 .global off_81166B0
 .global sub_81166D4
 .global sub_8116878
@@ -123,17 +136,17 @@
 .global sub_81175D0
 .global sub_8117690
 .global sub_8117780
-.global loc_81178D8
+.global sub_81178D8
 .global sub_81179AE
 .global sub_8117BC8
 .global sub_8117D10
 .global sub_8117D2C
 .global sub_8117EC8
-.global loc_8118344
-.global loc_81187E8
-.global loc_8118BA4
-.global loc_8118D60
-.global loc_8118E84
+.global sub_8118344
+.global sub_81187E8
+.global sub_8118BA4
+.global sub_8118D60
+.global sub_8118E84
 .global sub_8118F24
 .global sub_81190F8
 .global sub_8119118
@@ -141,7 +154,7 @@
 .global sub_811980C
 .global sub_811983C
 .global sub_8119854
-.global loc_811997C
+.global sub_811997C
 .global sub_8119ACC
 .global sub_8119BE8
 .global sub_8119C74
@@ -169,7 +182,7 @@
 .global sub_811B010
 .global sub_811B1EC
 .global sub_811B314
-.global loc_811B338
+.global sub_811B338
 .global sub_811B3F4
 .global sub_811B46C
 .global sub_811B48C
@@ -198,12 +211,12 @@
 .global sub_811DC34
 .global sub_811DC88
 .global sub_811DF0C
-.global loc_811DF1C
-.global loc_811E024
+.global sub_811DF1C
+.global sub_811E024
 .global sub_811E0BA
-.global loc_811E168
-.global loc_811E248
-.global loc_811E360
+.global sub_811E168
+.global sub_811E248
+.global sub_811E360
 .global sub_811E418
 .global sub_811E57C
 .global sub_811E61C
@@ -275,13 +288,16 @@
 .global sub_8120DAC
 .global sub_8120DF0
 .global sub_8121144
-.global loc_8121154
+.global sub_8121154
 .global sub_8121198
-.global dword_81211B4
+.global byte_81211B4
 .global pt_8121200
 
 
 /* External Symbols */
+.include "asm/asm38.inc"
+// .global sub_3006B94
+
 .include "asm/start.inc"
 // .global start_
 
@@ -455,7 +471,7 @@
 .include "asm/asm02.inc"
 // .global getChip_8021DA8 // (int chip_idx) -> ChipData*
 // .global split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
-// .global sub_8021AEE
+// .global dword_8021AEC
 // .global sub_8021B2A
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021BC0
@@ -562,28 +578,28 @@
 // .global sub_810971A
 // .global sub_81097B4
 // .global sub_81097BA
-// .global loc_81097D6
+// .global sub_81097D6
 // .global sub_81097DC
 // .global sub_8109804
 // .global sub_8109952
 // .global sub_8109974
 
 .include "data/dat32.inc"
-// .global dword_8121270
-// .global dword_812127C
-// .global dword_8121288
-// .global dword_812129C
-// .global dword_81212B0
-// .global dword_81212CC
-// .global dword_81212E8
-// .global dword_812130C
-// .global dword_8121330
-// .global dword_8121354
-// .global dword_8121388
-// .global dword_81213BC
-// .global dword_81213F0
-// .global dword_8121424
-// .global dword_8121458
+// .global byte_8121270
+// .global byte_812127C
+// .global byte_8121288
+// .global byte_812129C
+// .global byte_81212B0
+// .global byte_81212CC
+// .global byte_81212E8
+// .global byte_812130C
+// .global byte_8121330
+// .global byte_8121354
+// .global byte_8121388
+// .global byte_81213BC
+// .global byte_81213F0
+// .global byte_8121424
+// .global byte_8121458
 // .global off_812148C
 // .global off_8121748
 // .global off_8121A2C
@@ -598,26 +614,26 @@
 // .global byte_8123199
 // .global byte_81231A5
 // .global byte_81231B1
-// .global unk_81231BD
-// .global unk_81231C9
-// .global unk_81231D5
-// .global unk_81231E1
-// .global unk_81231E9
-// .global unk_81231F1
-// .global unk_81231F9
-// .global unk_8123201
+// .global byte_81231BD
+// .global byte_81231C9
+// .global byte_81231D5
+// .global byte_81231E1
+// .global byte_81231E9
+// .global byte_81231F1
+// .global byte_81231F9
+// .global byte_8123201
 
 .include "asm/asm33.inc"
 // .global sub_8123208
 // .global sub_8123360
 // .global sub_8123434
 // .global ho_8123F5C
-// .global dword_8124B1C
+// .global byte_8124B1C
 // .global sub_8124B3C
 // .global sub_8126B4C
 // .global menuControl_cb_email
 // .global sub_8128730
-// .global loc_8128CBC
+// .global sub_8128CBC
 // .global sub_81291E8
 // .global sub_8129248
 
@@ -631,17 +647,17 @@
 // .global sub_8133200
 // .global sub_81355D8
 // .global sub_81356D4
-// .global loc_8136DE0
+// .global sub_8136DE0
 // .global sub_81376CC
 // .global sub_8137718
 // .global sub_81377EC
 // .global sub_8137884
 // .global sub_8137890
-// .global loc_81378B4
+// .global sub_81378B4
 
 .include "asm/asm37_0.inc"
 // .global sub_813B780
-// .global loc_813B7A0
+// .global sub_813B7A0
 // .global sub_813B9B4
 // .global sub_813B9FC
 
@@ -658,6 +674,8 @@
 // .global sub_8143D4C
 // .global sub_8143F90
 // .global sub_8144010
+
+.include "asm/libs.inc"
 // .global sub_8144D30
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
@@ -682,30 +700,30 @@
 // .global byte_86C0BE0
 // .global byte_86C0C20
 // .global byte_86C0C60
-// .global unk_86C14A0
-// .global unk_86C1520
-// .global unk_86C15A0
-// .global unk_86C1620
-// .global unk_86C16A0
-// .global unk_86C1720
+// .global byte_86C14A0
+// .global byte_86C1520
+// .global byte_86C15A0
+// .global byte_86C1620
+// .global byte_86C16A0
+// .global byte_86C1720
 // .global byte_86C18E0
 // .global byte_86C1920
 // .global byte_86C1960
 // .global byte_86C19A0
 // .global byte_86C19E0
 // .global byte_86C1A60
-// .global unk_86C1BA0
-// .global unk_86C1C20
-// .global unk_86C1CA0
-// .global unk_86C1D20
-// .global unk_86C1DA0
+// .global byte_86C1BA0
+// .global byte_86C1C20
+// .global byte_86C1CA0
+// .global byte_86C1D20
+// .global byte_86C1DA0
 // .global byte_86C1EA0
 
 .include "data/dat38_67.inc"
-// .global unk_86C9108
+// .global dword_86C9108
 
 .include "data/dat38_69.inc"
-// .global unk_86C9AF4
+// .global dword_86C9AF4
 // .global dword_86C9B14
 // .global dword_86C9B34
 // .global dword_86C9B54
@@ -715,7 +733,7 @@
 // .global byte_86C9D8C
 // .global byte_86C9DAC
 // .global byte_86C9DCC
-// .global unk_86CA10C
+// .global dword_86CA10C
 // .global PET_Gfx_tileRefs
 // .global TileRefs_86CB21C
 // .global TileRefs_86CB240
@@ -729,14 +747,14 @@
 // .global byte_86CB360
 // .global sprite_86CBB7C
 // .global sprite_86CC13C
-// .global unk_86CD7C4
-// .global unk_86CD924
+// .global dword_86CD7C4
+// .global dword_86CD924
 
 .include "data/dat38_71.inc"
-// .global unk_86CF4AC
+// .global dword_86CF4AC
 
 .include "data/dat38_78.inc"
-// .global unk_86DAC40
+// .global dword_86DAC40
 
 .include "data/dat38_80.inc"
 // .global off_86DC3F8
@@ -747,10 +765,10 @@
 // .global dword_86E411C
 // .global dword_86E43DC
 // .global byte_86E587C
-// .global byte_86EA94C
-// .global byte_86EB354
-// .global unk_86EB8B8
-// .global unk_86EE0CC
+// .global dword_86EA94C
+// .global dword_86EB354
+// .global byte_86EB8B8
+// .global dword_86EE0CC
 
 .include "data/dat38_86.inc"
 // .global byte_872CF94
@@ -770,7 +788,7 @@
 // .equ unk_2001186, 0x2001186
 // .equ unk_200119E, 0x200119E
 // .equ unk_20018EC, 0x20018EC
-// .equ dynaicArr, 0x2005780
+// .equ dynamicArr, 0x2005780
 // .equ byte_20065C0, 0x20065C0
 // .equ unk_20096E0, 0x20096E0
 // .equ sSubmenu, 0x2009A30
@@ -790,11 +808,11 @@
 // .equ unk_200BEA0, 0x200BEA0
 // .equ unk_200C0E0, 0x200C0E0
 // .equ unk_200C2A0, 0x200C2A0
-// .equ unk_200C620, 0x200C620
-// .equ unk_200C920, 0x200C920
-// .equ unk_200CC20, 0x200CC20
-// .equ unk_200CF20, 0x200CF20
-// .equ unk_200D220, 0x200D220
+// .equ byte_200C620, 0x200C620
+// .equ byte_200C920, 0x200C920
+// .equ byte_200CC20, 0x200CC20
+// .equ byte_200CF20, 0x200CF20
+// .equ byte_200D220, 0x200D220
 // .equ word_200DCF0, 0x200DCF0
 // .equ byte_200DF20, 0x200DF20
 // .equ byte_200DF21, 0x200DF21
@@ -943,8 +961,8 @@
 // .equ unk_3001B40, 0x3001B40
 // .equ word_3001B56, 0x3001B56
 // .equ word_3001B58, 0x3001B58
-// .equ sub_3006B94, 0x3006B94
 .equ LCDControl, 0x4000000
+.equ IWRAMRoutinesROMLocation, 0x81D6000
 // .global battleSpriteMegaMan
 // .global virusBattleSprite_8244164
 // .global virusBattleSprite_8246A24
