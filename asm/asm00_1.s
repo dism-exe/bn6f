@@ -6968,16 +6968,16 @@ off_8006BBC: .word 0x101
 	thumb_func_start CpuSet_toolKit
 CpuSet_toolKit:
 	push {lr}
-	ldr r0, .Lp_ToolkitPointers // =ToolkitPointers 
-	ldr r1, off_8006BD4 // =eToolkit 
-	mov r2, #0x3c // (ToolkitPointersEnd+4 - ToolkitPointers)
+	ldr r0, .ToolkitPointers_p // =ToolkitPointers 
+	ldr r1, .eToolkit_p // =eToolkit 
+	mov r2, #(ToolkitPointersEnd - ToolkitPointers) // (ToolkitPointersEnd+4 - ToolkitPointers)
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
-	ldr r0, off_8006BD4 // =eToolkit 
+	ldr r0, .eToolkit_p // =eToolkit 
 	mov r10, r0
 	pop {r0}
 	bx r0
-off_8006BD4: .word eToolkit
-.Lp_ToolkitPointers: .word ToolkitPointers
+.eToolkit_p: .word eToolkit
+.ToolkitPointers_p: .word ToolkitPointers
 ToolkitPointers: .word i_joGameSubsysSel
 	.word sJoystick
 	.word unk_200AC40
@@ -6992,7 +6992,8 @@ ToolkitPointers: .word i_joGameSubsysSel
 	.word sChatbox
 	.word unk_20384F0
 	.word sSubmenu
-ToolkitPointersEnd: .word byte_200A220
+	.word byte_200A220
+ToolkitPointersEnd:
 	thumb_func_end CpuSet_toolKit
 
 	thumb_local_start

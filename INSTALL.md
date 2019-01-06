@@ -1,14 +1,59 @@
-Install DevkitARM and make the bin folder containing arm-none-eabi binaries available in the path.
+## Installation
 
-# Building
+Run the following commands (first, see [this](#macos) if you are on **macOS** or [this](#old-windows) if you are on **old Windows**):
+
+	git clone https://github.com/pret/bn6f
+	git clone https://github.com/luckytyphlosion/agbcc -b new_layout_with_libs
+
+	cd agbcc
+	make
+	make install prefix=../bn6f
+
+	cd ../bn6f
+
+To build **bn6f.gba**:
+
+	make -j$(nproc)
+
+## macOS
+
+Run `xcode-select --install` in Terminal, then proceed by executing the commands.
+
+
+## Old Windows
+
+*For Windows 8.1 and earlier*
+
+Download and run the [Cygwin](https://www.cygwin.com/install.html) setup, leaving the default settings intact. At "Select Packages", set the view to "Full" and choose to install the following:
+
+- `make`
+- `git`
+- `gcc-core`
+- `gcc-g++`
+- `libpng-devel`
+
+Additionally, there are extra optional tools which require installing the following packages, although they are not necessary to build:
+
+- `python-3`
+
+In the Cygwin command prompt, enter the commands.
+
+If the command for building bn6f.gba does not work, run `nproc` and use that value instead of `$(nproc)` for `make`.
+
+
+## Windows 10
+
+Install the [Windows Subsystem for Linux](https://docs.microsoft.com/windows/wsl/install-win10), and run the commands.
+
+## Building
 Use the following make rules to build the ROM:
-- **make rom**: Builds the output ROM `bn6f.gba` by compiling rom.s, which includes all disassembled asm files, and data files.
-- **make checksum**: displays the sha1 checksum of both `bin/bn6f.bin` and `bn6f.gba`. They must always be identical for `bn6f.gba` to be considered valid
+- **make**: Builds the output ROM `bn6f.gba` by compiling rom.s, which includes all disassembled asm files, and data files.
+- **make compare**: validates that the checksum of `bn6f.gba` is correct.
 - **make clean**: removes intermediate build files
 - **make tail**: In case the tail label changes locations in `_rom.s`, Run this to recompute `tail.bin`. the tail label is the very last label in `_rom.s`, so it only has content if the rom has not been completely disassembled.
 - **make fdiff**: Runs a python script to quickly report back all content differences detected in the ROM.
 
-# Setting up and syncing IDA with the project
+## Setting up and syncing IDA with the project
 This is not necessary for contribution, but could prove very useful. In order to sync this project with IDA, The PseudoTerminal tool chain is needed: https://github.com/LanHikari22/GBA-IDA-Pseudo-Terminal. In the tools folder, there is an environment script, a game loader idc script, and an IDB fix script.
 - Initialize the IDA database for bn6f as a binary.
 - Choose ARM little endian as the processor type.
