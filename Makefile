@@ -1,14 +1,8 @@
-ifneq ($(DEVKITARM),)
-    include $(DEVKITARM)/base_tools
-endif
-
 # binary tools used in build
-# (the arm-none-eabi toolchain should be in the path)
 MAKE = make
-CC = arm-none-eabi-gcc
-AS = arm-none-eabi-as
-LD = arm-none-eabi-ld
-OBJCOPY = arm-none-eabi-objcopy
+AS = tools/binutils/bin/arm-none-eabi-as
+LD = tools/binutils/bin/arm-none-eabi-ld
+OBJCOPY = tools/binutils/bin/arm-none-eabi-objcopy
 SHA1SUM = sha1sum
 PY = py
 
@@ -31,7 +25,7 @@ WFLAGS =
 ARCH = -mcpu=arm7tdmi -march=armv4t -mthumb -mthumb-interwork
 CDEBUG =
 CFLAGS =
-ASFLAGS = $(ARCH) $(WFLAGS) $(COMPLIANCE_FLAGS)
+ASFLAGS = $(ARCH) $(WFLAGS) $(COMPLIANCE_FLAGS) --agbasm
 LDFLAGS = -Map $(BUILD_NAME).map
 LIB =
 
@@ -65,20 +59,3 @@ clean:
 	rm -f *.map
 	rm -f *.elf
 	rm -f *.gba
-
-# Rule for how to translate a single c file into an object file.
-%.o : %.c
-	echo compiling $<
-	echo $(CC) $(CFLAGS) -c $<
-	$(CC) $(CFLAGS) -E $< > $<.preout
-	$(CC) $(CFLAGS) -S $<
-	$(CC) $(CFLAGS) -c $<
-	echo done compiling $<
-
-# Rule for how to generate the dependencies for the given files.
-# -M gcc option generates dependencies.
-%.d : %.c
-	@set -e; rm -f $@; \
-	$(CC) $(COMPLIANCE_FLAGS ) -M $< > $@.$$$$; \
-	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
-	rm -f $@.$$$$

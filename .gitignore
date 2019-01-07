@@ -30,3 +30,8 @@ bn6f.txt
 
 # asmdiff.sh
 *.dump
+
+# tools
+*.exe
+tools/agbcc/
+tools/binutils/
