@@ -2,7 +2,7 @@
 
 Run the following commands (first, see [this](#macos) if you are on **macOS** or [this](#old-windows) if you are on **old Windows**):
 
-	git clone https://github.com/pret/bn6f
+	git clone https://github.com/dism-exe/bn6f
 	git clone https://github.com/luckytyphlosion/agbcc -b new_layout_with_libs
 
 	cd agbcc
