@@ -1,4 +1,4 @@
-.include "asm/asm10.inc"
+	.include "asm/asm10.inc"
 
 	thumb_func_start sub_80663D0
 sub_80663D0:

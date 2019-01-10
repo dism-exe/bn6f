@@ -1,4 +1,4 @@
-.include "asm/asm35.inc"
+	.include "asm/asm35.inc"
 
 	thumb_func_start sub_812EAAC
 sub_812EAAC:

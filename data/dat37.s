@@ -1,4 +1,4 @@
-.include "data/dat37.inc"
+	.include "data/dat37.inc"
 
 	.byte 0x0
 	.byte 0x0, 0x0

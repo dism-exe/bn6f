@@ -1,69 +1,69 @@
-.ifndef INC_ASM_REQBBS
-.equ INC_ASM_REQBBS, 0
+	.ifndef INC_ASM_REQBBS
+	.equ INC_ASM_REQBBS, 0
 
 /* Public Symbols */
-.global reqBBS_813E07C
-.global reqBBS_cb_draw_813E0A4
-.global reqBBS_813E5DC
-.global reqBBS_813E616
-.global reqBBS_813E660
-.global reqBBS_813EE58
-.global byte_813F380
-.global reqBBS_init_s_2005780
-.global reqBBS_cb_813F404
-.global reqBBS_813F9A0
-.global reqBBS_initMemory_813F9DA
-.global sub_813FA24
-.global reqBBS_81406FC
-.global reqBBS_getTotalPointsIndex // () -> u8
-.global reqBBS_81407D8
-.global reqBBS_81408B4
-.global reqBBS_8140974
-.global reqBBS_8140984
-.global reqBBS_81409D0 // (int a1) -> int
-.global reqBBS_81409E4
-.global reqBBS_81409F4
-.global reqBBS_setFlag_e17b0f7_8140A00
-.global reqBBS_clearFlag_8140A0C
-.global reqBBS_runDialog_8140A70
-.global byte_8140A74
-.global byte_8140A8C
-.global dword_8140AA4
-.global dword_8140ABC
-.global dword_8140AD4
-.global dword_8140AEC
-.global dword_8140B1C
-.global dword_8140B34
-.global dword_8140B4C
-.global dword_8140B64
-.global dword_8140B7C
-.global dword_8140B94
-.global byte_8140BAC
-.global byte_8140BF0
-.global byte_8140C60
-.global byte_8140C68
-.global byte_8140C7C
-.global byte_8140C90
-.global byte_8140CA4
-.global byte_8140CB8
-.global byte_8140CCC
-.global byte_8140CE0
-.global byte_8140CF4
-.global byte_8140D10
-.global byte_8140D1C
-.global byte_8140D58
-.global byte_8140D6C
-.global byte_8140E6C
-.global byte_8140FBC
-.global byte_814122C
-.global byte_81414CC
-.global byte_814154C
-.global byte_81415F4
-.global byte_814172C
+	.global reqBBS_813E07C
+	.global reqBBS_cb_draw_813E0A4
+	.global reqBBS_813E5DC
+	.global reqBBS_813E616
+	.global reqBBS_813E660
+	.global reqBBS_813EE58
+	.global byte_813F380
+	.global reqBBS_init_s_2005780
+	.global reqBBS_cb_813F404
+	.global reqBBS_813F9A0
+	.global reqBBS_initMemory_813F9DA
+	.global sub_813FA24
+	.global reqBBS_81406FC
+	.global reqBBS_getTotalPointsIndex // () -> u8
+	.global reqBBS_81407D8
+	.global reqBBS_81408B4
+	.global reqBBS_8140974
+	.global reqBBS_8140984
+	.global reqBBS_81409D0 // (int a1) -> int
+	.global reqBBS_81409E4
+	.global reqBBS_81409F4
+	.global reqBBS_setFlag_e17b0f7_8140A00
+	.global reqBBS_clearFlag_8140A0C
+	.global reqBBS_runDialog_8140A70
+	.global byte_8140A74
+	.global byte_8140A8C
+	.global dword_8140AA4
+	.global dword_8140ABC
+	.global dword_8140AD4
+	.global dword_8140AEC
+	.global dword_8140B1C
+	.global dword_8140B34
+	.global dword_8140B4C
+	.global dword_8140B64
+	.global dword_8140B7C
+	.global dword_8140B94
+	.global byte_8140BAC
+	.global byte_8140BF0
+	.global byte_8140C60
+	.global byte_8140C68
+	.global byte_8140C7C
+	.global byte_8140C90
+	.global byte_8140CA4
+	.global byte_8140CB8
+	.global byte_8140CCC
+	.global byte_8140CE0
+	.global byte_8140CF4
+	.global byte_8140D10
+	.global byte_8140D1C
+	.global byte_8140D58
+	.global byte_8140D6C
+	.global byte_8140E6C
+	.global byte_8140FBC
+	.global byte_814122C
+	.global byte_81414CC
+	.global byte_814154C
+	.global byte_81415F4
+	.global byte_814172C
 
 
 /* External Symbols */
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
@@ -82,13 +82,13 @@
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
 
-.include "asm/asm00_1.inc"
+	.include "asm/asm00_1.inc"
 // .global sub_8002FA6
 // .global sub_8005F84
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -99,13 +99,13 @@
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_8031A7A
 
-.include "asm/chatbox.inc"
+	.include "asm/chatbox.inc"
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_reqBBS_80404C0
 // .global chatbox_8040818
 // .global chatbox_8045F3C
 
-.include "asm/asm03_2.inc"
+	.include "asm/asm03_2.inc"
 // .global render_graphicalText_8045F8C
 // .global sub_8045FC6
 // .global sub_80465A0 // (void *a1) -> void
@@ -113,14 +113,14 @@
 // .global sub_80465F8 // () -> void
 // .global sub_8046664 // () -> void
 
-.include "asm/asm28_0.inc"
+	.include "asm/asm28_0.inc"
 // .global sub_809E122
 
-.include "asm/asm32.inc"
+	.include "asm/asm32.inc"
 // .global sub_811F7F8
 // .global sub_811FA98
 
-.include "asm/asm37_0.inc"
+	.include "asm/asm37_0.inc"
 // .global byte_813DBDC
 // .global tileRefs_813DBE4
 // .global byte_813DEC4
@@ -128,21 +128,21 @@
 // .global off_813DF74
 // .global off_813E04C
 
-.include "asm/libs.inc"
+	.include "asm/libs.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
-.include "data/dat38_60.inc"
+	.include "data/dat38_60.inc"
 // .global dword_86A5D60
 // .global byte_86ACD60
 // .global dword_86B7AE0
 
-.include "data/dat38_70.inc"
+	.include "data/dat38_70.inc"
 // .global byte_86C9D6C
 
-.include "data/dat38_87.inc"
+	.include "data/dat38_87.inc"
 // .global dword_87DAC90
 
-.include "data/dat38_92.inc"
+	.include "data/dat38_92.inc"
 // .global dword_87E74F4
 // .global dword_87E7514
 // .global dword_87E7534
@@ -208,4 +208,4 @@
 // .equ unk_30019E0, 0x30019E0
 // .equ unk_3001B60, 0x3001B60
 
-.endif // INC_ASM_REQBBS
+	.endif // INC_ASM_REQBBS

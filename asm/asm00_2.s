@@ -1,4 +1,4 @@
-.include "asm/asm00_2.inc"
+	.include "asm/asm00_2.inc"
 
 	thumb_func_start sub_800ED80
 sub_800ED80:

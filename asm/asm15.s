@@ -1,4 +1,4 @@
-.include "asm/asm15.inc"
+	.include "asm/asm15.inc"
 
 	thumb_func_start sub_807544C
 sub_807544C:

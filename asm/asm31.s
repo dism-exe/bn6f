@@ -1,4 +1,4 @@
-.include "asm/asm31.inc"
+	.include "asm/asm31.inc"
 
 	thumb_func_start sub_80B81EC
 sub_80B81EC:

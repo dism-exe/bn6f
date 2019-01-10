@@ -1,161 +1,161 @@
-.ifndef INC_ASM_ASM00_0
-.equ INC_ASM_ASM00_0, 0
+	.ifndef INC_ASM_ASM00_0
+	.equ INC_ASM_ASM00_0, 0
 
 /* Public Symbols */
-.global sub_80005AC
-.global sub_80005C4
-.global sound_play // () -> void
-.global sound_bgmusic_play // (int a1) -> void
-.global sub_80005F2
-.global sub_800060A
-.global sub_8000642
-.global sub_800065A
-.global sound_8000672
-.global sub_800068A
-.global sub_80006A2
-.global musicGameState_8000784 // () -> void
-.global sub_80007B2
-.global sub_80007BE
-.global ZeroFillByByte // (void *mem, int size) -> void
-.global ZeroFillByHalfword
-.global ZeroFillByWord // (void *memBlock, int size) -> void
-.global ZeroFillByEightWords // (int a1, int a2) -> void
-.global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-.global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-.global CopyWords // (u32 *src, u32 *dest, int size) -> void
-.global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
-.global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
-.global HalfwordFill
-.global WordFill
-.global FillByEightWords
-.global sub_8000A3C
-.global objRender_8000A44
-.global loc_8000AC4
-.global loc_8000AC8
-.global loc_8000ACA
-.global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
-.global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
-.global sub_8000C00
-.global sub_8000C5C
-.global sub_8000C72
-.global sub_8000CDA
-.global sub_8000D12
-.global sub_8000D84
-.global sub_8000DE0
-.global sub_8000E10
-.global sub_8000E28
-.global sub_8000E30
-.global sub_8000E3A
-.global sub_8000EB6
-.global sub_8000EE4
-.global sub_8000F86
-.global sub_8000FAC
-.global sub_8001040
-.global loc_8001048
-.global updatePlayerGameState_800107A // () -> void
-.global getPETNaviSelect // () -> u8
-.global sub_80010BE
-.global sub_80010C6
-.global sub_80010D4
-.global sub_80010EC
-.global sub_8001154
-.global sub_8001158 // () -> void
-.global sub_8001172
-.global calcAngle_800117C
-.global sub_800118A
-.global sub_80011A0
-.global sub_80011D6
-.global sub_800120E
-.global sub_8001330
-.global sub_8001382
-.global sub_800139A
-.global sub_80013A2
-.global loc_8001440
-.global sub_80014D4
-.global copyWords_80014EC // (void *src, void *dest, int size) -> void
-.global sub_8001514 // () -> void
-.global change_20013F0_800151C // () -> int
-.global sub_8001532
-.global rng_800154C // () -> void
-.global rng_8001562
-.global sub_80015B4
-.global render_80015D0
-.global sub_80015FC
-.global sub_8001708
-.global render_800172C
-.global sub_8001778
-.global sub_8001780
-.global sub_8001788
-.global sub_80017A0
-.global sub_80017AA
-.global sub_80017E0
-.global main_static_80017EC
-.global off_8001800
-.global renderPalletes_8001808
-.global sub_8001820
-.global sub_800182E
-.global sub_800183C
-.global sub_8001850
-.global sub_800187C
-.global sub_8001890
-.global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-.global sub_80018D0
-.global sub_80018E0
-.global sub_8001930
-.global sub_800195C
-.global sub_8001974
-.global cb_call_200A880
-.global sub_80019A0
-.global nullsub_35
-.global nullsub_36
-.global sub_80019B4
-.global sub_80019D0
-.global sub_80019EC
-.global sub_80019FE
-.global sub_8001A10
-.global sub_8001A22
-.global sub_8001A34
-.global sub_8001A46
-.global sub_8001A58
-.global sub_8001A6A
-.global nullsub_39
-.global sub_8001AFC
-.global sub_8001B1C
-.global sub_8001B6C
-.global sub_8001B84
-.global PET_onUpdate_8001B94
-.global sub_8002354
-.global sub_8002368
-.global sub_8002378
-.global sub_800239A
-.global sub_80023A8
-.global getPalleteAndTransition_80023E0
-.global sub_8002468
-.global sub_8002484
-.global sub_80024A2
-.global sub_80024AE
-.global sub_80024C0
-.global loc_80024D8
-.global sub_800260C
-.global renderPalletesAndObjs_8002650
-.global sub_8002668
-.global loc_8002676
-.global sub_8002694
+	.global sub_80005AC
+	.global sub_80005C4
+	.global sound_play // () -> void
+	.global sound_bgmusic_play // (int a1) -> void
+	.global sub_80005F2
+	.global sub_800060A
+	.global sub_8000642
+	.global sub_800065A
+	.global sound_8000672
+	.global sub_800068A
+	.global sub_80006A2
+	.global musicGameState_8000784 // () -> void
+	.global sub_80007B2
+	.global sub_80007BE
+	.global ZeroFillByByte // (void *mem, int size) -> void
+	.global ZeroFillByHalfword
+	.global ZeroFillByWord // (void *memBlock, int size) -> void
+	.global ZeroFillByEightWords // (int a1, int a2) -> void
+	.global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
+	.global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
+	.global CopyWords // (u32 *src, u32 *dest, int size) -> void
+	.global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
+	.global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
+	.global HalfwordFill
+	.global WordFill
+	.global FillByEightWords
+	.global sub_8000A3C
+	.global objRender_8000A44
+	.global loc_8000AC4
+	.global loc_8000AC8
+	.global loc_8000ACA
+	.global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	.global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+	.global sub_8000C00
+	.global sub_8000C5C
+	.global sub_8000C72
+	.global sub_8000CDA
+	.global sub_8000D12
+	.global sub_8000D84
+	.global sub_8000DE0
+	.global sub_8000E10
+	.global sub_8000E28
+	.global sub_8000E30
+	.global sub_8000E3A
+	.global sub_8000EB6
+	.global sub_8000EE4
+	.global sub_8000F86
+	.global sub_8000FAC
+	.global sub_8001040
+	.global loc_8001048
+	.global updatePlayerGameState_800107A // () -> void
+	.global getPETNaviSelect // () -> u8
+	.global sub_80010BE
+	.global sub_80010C6
+	.global sub_80010D4
+	.global sub_80010EC
+	.global sub_8001154
+	.global sub_8001158 // () -> void
+	.global sub_8001172
+	.global calcAngle_800117C
+	.global sub_800118A
+	.global sub_80011A0
+	.global sub_80011D6
+	.global sub_800120E
+	.global sub_8001330
+	.global sub_8001382
+	.global sub_800139A
+	.global sub_80013A2
+	.global loc_8001440
+	.global sub_80014D4
+	.global copyWords_80014EC // (void *src, void *dest, int size) -> void
+	.global sub_8001514 // () -> void
+	.global change_20013F0_800151C // () -> int
+	.global sub_8001532
+	.global rng_800154C // () -> void
+	.global rng_8001562
+	.global sub_80015B4
+	.global render_80015D0
+	.global sub_80015FC
+	.global sub_8001708
+	.global render_800172C
+	.global sub_8001778
+	.global sub_8001780
+	.global sub_8001788
+	.global sub_80017A0
+	.global sub_80017AA
+	.global sub_80017E0
+	.global main_static_80017EC
+	.global off_8001800
+	.global renderPalletes_8001808
+	.global sub_8001820
+	.global sub_800182E
+	.global sub_800183C
+	.global sub_8001850
+	.global sub_800187C
+	.global sub_8001890
+	.global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	.global sub_80018D0
+	.global sub_80018E0
+	.global sub_8001930
+	.global sub_800195C
+	.global sub_8001974
+	.global cb_call_200A880
+	.global sub_80019A0
+	.global nullsub_35
+	.global nullsub_36
+	.global sub_80019B4
+	.global sub_80019D0
+	.global sub_80019EC
+	.global sub_80019FE
+	.global sub_8001A10
+	.global sub_8001A22
+	.global sub_8001A34
+	.global sub_8001A46
+	.global sub_8001A58
+	.global sub_8001A6A
+	.global nullsub_39
+	.global sub_8001AFC
+	.global sub_8001B1C
+	.global sub_8001B6C
+	.global sub_8001B84
+	.global PET_onUpdate_8001B94
+	.global sub_8002354
+	.global sub_8002368
+	.global sub_8002378
+	.global sub_800239A
+	.global sub_80023A8
+	.global getPalleteAndTransition_80023E0
+	.global sub_8002468
+	.global sub_8002484
+	.global sub_80024A2
+	.global sub_80024AE
+	.global sub_80024C0
+	.global loc_80024D8
+	.global sub_800260C
+	.global renderPalletesAndObjs_8002650
+	.global sub_8002668
+	.global loc_8002676
+	.global sub_8002694
 
 
 /* External Symbols */
-.include "asm/asm38.inc"
+	.include "asm/asm38.inc"
 // .global dword_3005E80
 // .global sub_3005EBA
 // .global sub_3006440
 
-.include "asm/start.inc"
+	.include "asm/start.inc"
 // .global start_800024C
 
-.include "asm/sprite.inc"
+	.include "asm/sprite.inc"
 // .global sprite_handleObjSprites_800289C
 
-.include "asm/asm00_1.inc"
+	.include "asm/asm00_1.inc"
 // .global sub_8003534
 // .global sub_800355C
 // .global sub_8003566
@@ -163,11 +163,11 @@
 // .global byte_8006660
 // .global byte_80066E0
 
-.include "asm/asm00_2.inc"
+	.include "asm/asm00_2.inc"
 // .global sub_80137E6
 // .global sub_80137FE
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -178,20 +178,20 @@
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 // .global sub_8030808
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global off_803385C
 // .global off_8033878
 // .global sub_803F79E
 // .global sub_803F838
 
-.include "asm/asm32.inc"
+	.include "asm/asm32.inc"
 // .global sub_81207F8
 
-.include "asm/reqBBS.inc"
+	.include "asm/reqBBS.inc"
 // .global reqBBS_813E5DC
 // .global reqBBS_813F9A0
 
-.include "asm/libs.inc"
+	.include "asm/libs.inc"
 // .global SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
 // .global SWI_CpuSet // (void *src, void *dest, int mode) -> void
 // .global SWI_Div
@@ -209,10 +209,10 @@
 // .global sub_814F9AC
 // .global sub_814FA14
 
-.include "data/dat38_0.inc"
+	.include "data/dat38_0.inc"
 // .global byte_8200810
 
-.include "data/dat38_60.inc"
+	.include "data/dat38_60.inc"
 // .global dword_86A5500
 // .global dword_86A5520
 // .global byte_86BEC80
@@ -301,23 +301,23 @@
 // .equ byte_3001960, 0x3001960
 // .equ unk_3001B40, 0x3001B40
 // .equ unk_3001B60, 0x3001B60
-.equ LCDControl, 0x4000000
-.equ VerticalCounter_LY_, 0x4000006
-.equ BG0Control, 0x4000008
-.equ Window0HorizontalDimensions, 0x4000040
-.equ MosaicSize, 0x400004C
-.equ ColorSpecialEffectsSelection, 0x4000050
-.equ Brightness_Fade_In_Out_Coefficient, 0x4000054
-.equ DMA0SourceAddress, 0x40000B0
-.equ DMA0WordCount, 0x40000B8
-.equ DMA1SourceAddress, 0x40000BC
-.equ DMA1WordCount, 0x40000C4
-.equ DMA2SourceAddress, 0x40000C8
-.equ DMA2WordCount, 0x40000D0
-.equ DMA3SourceAddress, 0x40000D4
-.equ DMA3WordCount, 0x40000DC
-.equ IWRAMRoutinesROMLocation, 0x81D6000
-.equ IWRAMRoutinesROMLocation, 0x81D6000
-.equ IWRAMRoutinesROMLocation, 0x81D6000
+	.equ LCDControl, 0x4000000
+	.equ VerticalCounter_LY_, 0x4000006
+	.equ BG0Control, 0x4000008
+	.equ Window0HorizontalDimensions, 0x4000040
+	.equ MosaicSize, 0x400004C
+	.equ ColorSpecialEffectsSelection, 0x4000050
+	.equ Brightness_Fade_In_Out_Coefficient, 0x4000054
+	.equ DMA0SourceAddress, 0x40000B0
+	.equ DMA0WordCount, 0x40000B8
+	.equ DMA1SourceAddress, 0x40000BC
+	.equ DMA1WordCount, 0x40000C4
+	.equ DMA2SourceAddress, 0x40000C8
+	.equ DMA2WordCount, 0x40000D0
+	.equ DMA3SourceAddress, 0x40000D4
+	.equ DMA3WordCount, 0x40000DC
+	.equ IWRAMRoutinesROMLocation, 0x81D6000
+	.equ IWRAMRoutinesROMLocation, 0x81D6000
+	.equ IWRAMRoutinesROMLocation, 0x81D6000
 
-.endif // INC_ASM_ASM00_0
+	.endif // INC_ASM_ASM00_0

@@ -1,33 +1,33 @@
-.ifndef INC_DATA_DAT19
-.equ INC_DATA_DAT19, 0
+	.ifndef INC_DATA_DAT19
+	.equ INC_DATA_DAT19, 0
 
 /* Public Symbols */
-.global byte_807D024
-.global byte_807D0B4
-.global byte_807D1A8
-.global byte_807D210
-.global off_807D2F0
-.global off_807D300
-.global off_807D310
-.global off_807D320
-.global byte_807D370
-.global off_807EA6C
-.global off_807EB18
-.global byte_807EB68
-.global byte_807EBB8
-.global byte_807EC08
-.global off_807EC58
-.global off_807ECA8
+	.global byte_807D024
+	.global byte_807D0B4
+	.global byte_807D1A8
+	.global byte_807D210
+	.global off_807D2F0
+	.global off_807D300
+	.global off_807D310
+	.global off_807D320
+	.global byte_807D370
+	.global off_807EA6C
+	.global off_807EB18
+	.global byte_807EB68
+	.global byte_807EBB8
+	.global byte_807EC08
+	.global off_807EC58
+	.global off_807ECA8
 
 
 /* External Symbols */
-.include "data/dat13.inc"
+	.include "data/dat13.inc"
 // .global byte_807150F
 
-.include "asm/asm28_1.inc"
+	.include "asm/asm28_1.inc"
 // .global byte_809F6CC
 
-.include "data/dat38_33.inc"
+	.include "data/dat38_33.inc"
 // .global byte_83F0016
 // .global byte_83F0316
 // .global byte_83F0408
@@ -40,7 +40,7 @@
 // .global byte_83F2C16
 // .global byte_83F2D16
 
-.include "data/dat38_60.inc"
+	.include "data/dat38_60.inc"
 // .global dword_860D820
 // .global byte_860D840
 // .global byte_860D860
@@ -79,4 +79,4 @@
 // .equ unk_3001A20, 0x3001A20
 // .equ unk_3001A80, 0x3001A80
 
-.endif // INC_DATA_DAT19
+	.endif // INC_DATA_DAT19

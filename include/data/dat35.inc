@@ -1,36 +1,36 @@
-.ifndef INC_DATA_DAT35
-.equ INC_DATA_DAT35, 0
+	.ifndef INC_DATA_DAT35
+	.equ INC_DATA_DAT35, 0
 
 /* Public Symbols */
-.global sub_812EFE4
-.global sub_812F000
-.global sub_812F014
-.global byte_812F044
-.global byte_812F04C
-.global byte_812F054
-.global byte_812F05C
-.global byte_812F064
-.global byte_812F06C
-.global sub_812F094
+	.global sub_812EFE4
+	.global sub_812F000
+	.global sub_812F014
+	.global byte_812F044
+	.global byte_812F04C
+	.global byte_812F054
+	.global byte_812F05C
+	.global byte_812F064
+	.global byte_812F06C
+	.global sub_812F094
 
 
 /* External Symbols */
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 
-.include "asm/asm00_1.inc"
+	.include "asm/asm00_1.inc"
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global sub_80062C8
 // .global engine_isScreeneffectAnimating // () -> zf
 
-.include "asm/asm02.inc"
+	.include "asm/asm02.inc"
 // .global split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
 // .global dword_8021AEC
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global sub_803C59C
 // .global sub_803C754
 // .global sub_803DD60
@@ -45,11 +45,11 @@
 // .global sub_803EF74
 // .global sub_803F798
 
-.include "asm/chatbox.inc"
+	.include "asm/chatbox.inc"
 // .global chatbox_8040818
 // .global chatbox_8045F3C
 
-.include "asm/asm03_2.inc"
+	.include "asm/asm03_2.inc"
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
 // .global sub_80465F8 // () -> void
@@ -58,7 +58,7 @@
 // .global sub_80466C4
 // .global sub_804A24C
 
-.include "asm/asm32.inc"
+	.include "asm/asm32.inc"
 // .global sub_811A914
 // .global sub_811A940
 // .global sub_811A968
@@ -68,7 +68,7 @@
 // .global sub_811FA22
 // .global sub_8120DAC
 
-.include "asm/asm33.inc"
+	.include "asm/asm33.inc"
 // .global byte_8129150
 // .global byte_8129178
 // .global sub_8129248
@@ -76,10 +76,10 @@
 // .global sub_812AFC8
 // .global sub_812B530
 
-.include "asm/asm35.inc"
+	.include "asm/asm35.inc"
 // .global sub_812EFD4
 
-.include "asm/asm36.inc"
+	.include "asm/asm36.inc"
 // .global sub_813005C
 // .global sub_8130084
 // .global sub_813017C
@@ -113,7 +113,7 @@
 // .global sub_8132614
 // .global sub_81377EC
 
-.include "asm/libs.inc"
+	.include "asm/libs.inc"
 // .global sub_81440D8 // static () -> void
 // .global sub_8149568
 // .global sub_8149644
@@ -125,4 +125,4 @@
 // .equ unk_20270EC, 0x20270EC
 // .equ unk_202714C, 0x202714C
 
-.endif // INC_DATA_DAT35
+	.endif // INC_DATA_DAT35

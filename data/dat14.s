@@ -1,4 +1,4 @@
-.include "data/dat14.inc"
+	.include "data/dat14.inc"
 
 off_8072BCC: .word byte_8072DB9
 	.word byte_8072EB9

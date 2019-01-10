@@ -1,4 +1,4 @@
-.include "asm/asm03_2.inc"
+	.include "asm/asm03_2.inc"
 
 	thumb_func_start render_graphicalText_8045F8C
 render_graphicalText_8045F8C:

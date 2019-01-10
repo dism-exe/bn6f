@@ -1,27 +1,27 @@
-.ifndef INC_ASM_ASM25
-.equ INC_ASM_ASM25, 0
+	.ifndef INC_ASM_ASM25
+	.equ INC_ASM_ASM25, 0
 
 /* Public Symbols */
-.global sub_808FE34
-.global sub_808FE74
-.global sub_808FEA4
-.global off_8090000
+	.global sub_808FE34
+	.global sub_808FE74
+	.global sub_808FEA4
+	.global off_8090000
 
 
 /* External Symbols */
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global sub_8001172
 // .global sub_800118A
 
-.include "asm/sprite.inc"
+	.include "asm/sprite.inc"
 // .global sprite_loadAnimationData // () -> void
 // .global sprite_update
 // .global sprite_load // (int a1, int a2, int a3) ->
 // .global sprite_setAnimation // (u8 a1) -> void
 
-.include "asm/asm00_1.inc"
+	.include "asm/asm00_1.inc"
 // .global sub_8002F90 // () -> void
 // .global sub_8003914
 // .global sub_8003940
@@ -29,7 +29,7 @@
 // .global sub_80047E0
 // .global engine_isScreeneffectAnimating // () -> zf
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -39,16 +39,16 @@
 // .global sub_80301B2
 // .global sub_80301DC
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global init_s_02011C50_8036E90
 
-.include "asm/asm03_2.inc"
+	.include "asm/asm03_2.inc"
 // .global sub_8046818
 // .global sub_8046854
 // .global sub_80468BA
 // .global sub_80468C6
 
-.include "data/dat24.inc"
+	.include "data/dat24.inc"
 // .global off_808F5D4
 // .global byte_808F668
 // .global byte_808F67C
@@ -58,7 +58,7 @@
 // .global byte_808F748
 // .global byte_808F788
 
-.include "asm/asm28_0.inc"
+	.include "asm/asm28_0.inc"
 // .global sub_809E13C
 // .global sub_809E188
 // .global sub_809E1AE
@@ -77,15 +77,15 @@
 // .global sub_809E3B2
 // .global sub_809E3C4
 
-.include "asm/asm32.inc"
+	.include "asm/asm32.inc"
 // .global sub_811EBE0
 
-.include "asm/reqBBS.inc"
+	.include "asm/reqBBS.inc"
 // .global reqBBS_81409E4
 // .global reqBBS_setFlag_e17b0f7_8140A00
 // .global reqBBS_clearFlag_8140A0C
 
-.include "asm/asm37_1.inc"
+	.include "asm/asm37_1.inc"
 // .global byte_81434E4
 // .global byte_814350C
 // .global byte_814352C
@@ -119,4 +119,4 @@
 // .equ byte_200032C, 0x200032C
 // .equ dword_2000330, 0x2000330
 
-.endif // INC_ASM_ASM25
+	.endif // INC_ASM_ASM25

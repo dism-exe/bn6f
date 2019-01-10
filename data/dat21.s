@@ -1,4 +1,4 @@
-.include "data/dat21.inc"
+	.include "data/dat21.inc"
 
 byte_80813F8: .byte 0x6
 	.byte 0x6, 0x7, 0x7

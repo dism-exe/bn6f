@@ -1,15 +1,15 @@
-.ifndef INC_ASM_ASM30_0
-.equ INC_ASM_ASM30_0, 0
+	.ifndef INC_ASM_ASM30_0
+	.equ INC_ASM_ASM30_0, 0
 
 /* Public Symbols */
-.global sub_80AED50
+	.global sub_80AED50
 
 
 /* External Symbols */
-.include "asm/asm00_2.inc"
+	.include "asm/asm00_2.inc"
 // .global sub_80182B4
 
-.include "asm/asm31.inc"
+	.include "asm/asm31.inc"
 // .global byte_80F28F0
 // .global byte_80F2A54
 // .global byte_80F390C
@@ -41,14 +41,14 @@
 // .global byte_810B7B8
 // .global byte_810BEF8
 
-.include "data/dat31.inc"
+	.include "data/dat31.inc"
 // .global byte_810C388
 // .global byte_810C8F8
 // .global byte_810D034
 // .global byte_810D198
 // .global byte_810D724
 
-.include "asm/asm32.inc"
+	.include "asm/asm32.inc"
 // .global byte_810DD3C
 // .global byte_810E414
 // .global byte_810ECAC
@@ -69,4 +69,4 @@
 // .global byte_8115C18
 
 
-.endif // INC_ASM_ASM30_0
+	.endif // INC_ASM_ASM30_0

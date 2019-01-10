@@ -1,4 +1,4 @@
-.include "asm/asm22.inc"
+	.include "asm/asm22.inc"
 
 	thumb_func_start sub_8086F18
 sub_8086F18:

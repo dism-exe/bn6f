@@ -26,6 +26,7 @@ ARCH = -mcpu=arm7tdmi -march=armv4t -mthumb -mthumb-interwork
 CDEBUG =
 CFLAGS =
 ASFLAGS = $(ARCH) $(WFLAGS) $(COMPLIANCE_FLAGS) --agbasm
+ASDEBUGFLAGS = --agbasm-debug $(@:.o=.dump)
 LDFLAGS = -Map $(BUILD_NAME).map
 LIB =
 

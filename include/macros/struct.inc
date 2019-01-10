@@ -1,4 +1,4 @@
-.set __dummy_symbol__, 0
+	.set __dummy_symbol__, 0
 
 	.macro struct_begin label=__dummy_symbol__
 	.ifndef \label
@@ -11,7 +11,7 @@
 	.endm
 
 	.macro label_struct_entry label, size=0
-	ds \label
+\label::
 	.if \size // suppress warning from size = 0
 	.space \size
 	.endif

@@ -1,4 +1,4 @@
-.include "asm/asm29.inc"
+	.include "asm/asm29.inc"
 
 	thumb_func_start ho_80A4984
 ho_80A4984:

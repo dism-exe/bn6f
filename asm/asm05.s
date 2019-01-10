@@ -1,4 +1,4 @@
-.include "asm/asm05.inc"
+	.include "asm/asm05.inc"
 
 	thumb_func_start sub_8052688
 sub_8052688:

@@ -1,4 +1,4 @@
-.include "asm/sprite.inc"
+	.include "asm/sprite.inc"
 
 // () -> void
 	thumb_func_start sprite_loadAnimationData

@@ -1,4 +1,4 @@
-.include "asm/asm38.inc"
+	.include "asm/asm38.inc"
 
 dword_3005B00: .word 0xE3A03301, 0xE2833C02, 0xE5932000, 0xE1D310B8, 0xE14F0000
 	.word 0xE92D400F, 0xE3A00000, 0xE1C300B8, 0xE0021822, 0xE59F0168

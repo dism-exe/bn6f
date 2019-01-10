@@ -1,4 +1,4 @@
-.include "asm/object.inc"
+	.include "asm/object.inc"
 
 	thumb_func_start object_timefreezeEnd
 object_timefreezeEnd:

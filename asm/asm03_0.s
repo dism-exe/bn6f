@@ -1,4 +1,4 @@
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 
 	thumb_local_start
 sub_8026450:

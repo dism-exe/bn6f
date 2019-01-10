@@ -1,4 +1,4 @@
-.include "asm/chatbox.inc"
+	.include "asm/chatbox.inc"
 
 // () -> int
 	thumb_func_start chatbox_uncomp_803FD08

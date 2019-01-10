@@ -1,47 +1,47 @@
-.ifndef INC_ASM_ASM01
-.equ INC_ASM_ASM01, 0
+	.ifndef INC_ASM_ASM01
+	.equ INC_ASM_ASM01, 0
 
 /* Public Symbols */
-.global sub_801FE00
-.global sub_801FE24
-.global sub_801FE5E
-.global sub_801FE64
-.global sub_801FE6C
-.global sub_801FEE8
-.global sub_801FEEE
-.global sub_80200A4
-.global sub_8020134
-.global sub_8020140
-.global sub_802015E
-.global off_8020170
-.global off_8020174
-.global off_8020178
-.global off_802017C
-.global off_8020180
-.global off_8020184
-.global off_8020188
-.global off_802018C
-.global off_8020190
-.global off_80201E4
-.global pt_8020240
-.global pt_802029C
-.global off_80202F8
+	.global sub_801FE00
+	.global sub_801FE24
+	.global sub_801FE5E
+	.global sub_801FE64
+	.global sub_801FE6C
+	.global sub_801FEE8
+	.global sub_801FEEE
+	.global sub_80200A4
+	.global sub_8020134
+	.global sub_8020140
+	.global sub_802015E
+	.global off_8020170
+	.global off_8020174
+	.global off_8020178
+	.global off_802017C
+	.global off_8020180
+	.global off_8020184
+	.global off_8020188
+	.global off_802018C
+	.global off_8020190
+	.global off_80201E4
+	.global pt_8020240
+	.global pt_802029C
+	.global off_80202F8
 
 
 /* External Symbols */
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 
-.include "asm/asm00_1.inc"
+	.include "asm/asm00_1.inc"
 // .global sub_800A0D6
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global get_802D246 // () -> int
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global sub_803C620
 // .global sub_803DCE8
 // .global sub_803DE88
@@ -51,7 +51,7 @@
 // .global sub_803F524
 // .global sub_803F740
 
-.include "data/dat30.inc"
+	.include "data/dat30.inc"
 // .global off_80B1B7C
 // .global off_80B1ED8
 // .global off_80B23C8
@@ -71,11 +71,11 @@
 // .global off_80B71D4
 // .global off_80B79C0
 
-.include "asm/asm37_0.inc"
+	.include "asm/asm37_0.inc"
 // .global sub_813D60C
 // .global sub_813D66C
 
-.include "asm/libs.inc"
+	.include "asm/libs.inc"
 // .global sub_8144D04
 
 
@@ -112,4 +112,4 @@
 // .equ byte_203F7D8, 0x203F7D8
 // .equ byte_203F7D8, 0x203F7D8
 
-.endif // INC_ASM_ASM01
+	.endif // INC_ASM_ASM01

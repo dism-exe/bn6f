@@ -1,19 +1,19 @@
-.ifndef INC_ASM_ASM19
-.equ INC_ASM_ASM19, 0
+	.ifndef INC_ASM_ASM19
+	.equ INC_ASM_ASM19, 0
 
 /* Public Symbols */
-.global sub_807CDEC
-.global sub_807CE90
-.global sub_807CF24
-.global sub_807CFCC
-.global sub_807CFFC
+	.global sub_807CDEC
+	.global sub_807CE90
+	.global sub_807CF24
+	.global sub_807CFCC
+	.global sub_807CFFC
 
 
 /* External Symbols */
-.include "asm/asm38.inc"
+	.include "asm/asm38.inc"
 // .global nullsub_38
 
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global sub_8001778
 // .global sub_8001780
 // .global sub_800195C
@@ -21,27 +21,27 @@
 // .global nullsub_39
 // .global sub_8002354
 
-.include "asm/sprite.inc"
+	.include "asm/sprite.inc"
 // .global sub_80028D4
 // .global sub_8002906
 
-.include "asm/asm00_1.inc"
+	.include "asm/asm00_1.inc"
 // .global sub_8003570
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global sub_802FF4C
 // .global sub_803037C
 // .global sub_8030472
 // .global sub_80304E8
 // .global sub_8030AA4
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global sub_8034FB8
 
-.include "asm/chatbox.inc"
+	.include "asm/chatbox.inc"
 // .global chatbox_uncomp_803FD08 // () -> int
 
-.include "data/dat18.inc"
+	.include "data/dat18.inc"
 // .global off_807C82C
 // .global off_807C94C
 // .global off_807C974
@@ -60,17 +60,17 @@
 // .global byte_807CD4C
 // .global byte_807CD9C
 
-.include "data/dat19.inc"
+	.include "data/dat19.inc"
 // .global byte_807D024
 // .global byte_807D0B4
 // .global byte_807D1A8
 // .global byte_807D210
 
-.include "data/dat38_60.inc"
+	.include "data/dat38_60.inc"
 // .global dword_8618DFC
 
 
 /* Undeclared Symbols */
 // .equ unk_2037800, 0x2037800
 
-.endif // INC_ASM_ASM19
+	.endif // INC_ASM_ASM19

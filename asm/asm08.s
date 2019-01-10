@@ -1,4 +1,4 @@
-.include "asm/asm08.inc"
+	.include "asm/asm08.inc"
 
 	thumb_func_start sub_806036C
 sub_806036C:

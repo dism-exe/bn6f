@@ -1,148 +1,148 @@
-.ifndef INC_ASM_LIBS
-.equ INC_ASM_LIBS, 0
+	.ifndef INC_ASM_LIBS
+	.equ INC_ASM_LIBS, 0
 
 /* Public Symbols */
-.global sub_81440D8 // static () -> void
-.global sub_8144240
-.global sub_8144250
-.global sub_81445F8
-.global sub_814469C
-.global sub_81446AC
-.global sub_8144CE0
-.global sub_8144D04
-.global sub_8144D18
-.global sub_8144D24
-.global sub_8144D30
-.global sub_8144EEC
-.global sub_814656C
-.global sub_8146588
-.global sub_81465BC
-.global sub_814665C
-.global sub_81466E4
-.global sub_8146714
-.global sub_8146724
-.global sub_8146728
-.global sub_8146738
-.global sub_814673C
-.global sub_81467A0
-.global sub_8146808
-.global sub_8146888
-.global sub_81468BC
-.global sub_81468C8
-.global sub_81468E0
-.global sub_81468F4
-.global sub_814690C
-.global sub_8146918
-.global sub_814692C
-.global sub_8146938
-.global sub_814695C
-.global sub_81469A0
-.global sub_81469BC
-.global sub_81469DC
-.global sub_81469E8
-.global sub_8146B70
-.global sub_8146BB8
-.global sub_8146BF4
-.global sub_8146C20
-.global sub_8146CFC
-.global sub_8146D20
-.global sub_8146D40
-.global sub_8146D98
-.global sub_8146E5C
-.global sub_8146E60
-.global sub_8146E78
-.global sub_8147350
-.global sub_81475D4
-.global sub_8147B24
-.global sub_8147B3C
-.global sub_8147F98
-.global sub_8148214
-.global sub_8148224
-.global sub_8148540
-.global sub_8148884
-.global sub_8148D24
-.global sub_8148FC0
-.global sub_8149568
-.global sub_8149644
-.global sub_8149718
-.global sub_814A828
-.global SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
-.global SWI_CpuSet // (void *src, void *dest, int mode) -> void
-.global SWI_Div
-.global SWI_LZ77UnCompReadNormalWrite16bit
-.global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-.global SWI_Sqrt
-.global sub_814D8CC
-.global sub_814D8F0
-.global sub_814D954
-.global sub_814D994
-.global sub_814D9C4
-.global sub_814DA9C
-.global byte_814E02D
-.global sub_814E044
-.global sub_814E064
-.global sub_814E0DC
-.global loc_814E0DE
-.global sub_814E0FC
-.global sub_814E118
-.global sub_814E12C
-.global sub_814E15C
-.global sub_814E168
-.global sub_814E17C
-.global sub_814E190
-.global sub_814E1C0
-.global sub_814E1D4
-.global sub_814E1E8
-.global sub_814E1FC
-.global sub_814E210
-.global sub_814E21C
-.global sub_814E234
-.global sub_814E248
-.global sub_814E260
-.global sub_814E4DC
-.global sub_814E758
-.global sub_814E7CC
-.global sub_814E7E0
-.global sub_814E87C
-.global sub_814E8A0
-.global sub_814E918
-.global m4a_SongNumStart
-.global sub_814E9F0
-.global sub_814EA58
-.global sub_814EAF0
-.global sub_814EB1C
-.global sub_814EDC0
-.global sub_814EE2C
-.global sub_814F00C
-.global sub_814F228
-.global sub_814F2F0
-.global sub_814F988
-.global sub_814F9AC
-.global sub_814FA14
-.global sub_814FBFC
-.global sub_814FD54
-.global sub_814FD74
-.global sub_814FD88
-.global sub_814FDD0
-.global sub_814FDE4
-.global sub_814FDF8
-.global sub_814FE0C
-.global sub_814FE20
-.global sub_814FE34
-.global sub_814FE40
-.global sub_814FE4C
-.global sub_814FE60
+	.global sub_81440D8 // static () -> void
+	.global sub_8144240
+	.global sub_8144250
+	.global sub_81445F8
+	.global sub_814469C
+	.global sub_81446AC
+	.global sub_8144CE0
+	.global sub_8144D04
+	.global sub_8144D18
+	.global sub_8144D24
+	.global sub_8144D30
+	.global sub_8144EEC
+	.global sub_814656C
+	.global sub_8146588
+	.global sub_81465BC
+	.global sub_814665C
+	.global sub_81466E4
+	.global sub_8146714
+	.global sub_8146724
+	.global sub_8146728
+	.global sub_8146738
+	.global sub_814673C
+	.global sub_81467A0
+	.global sub_8146808
+	.global sub_8146888
+	.global sub_81468BC
+	.global sub_81468C8
+	.global sub_81468E0
+	.global sub_81468F4
+	.global sub_814690C
+	.global sub_8146918
+	.global sub_814692C
+	.global sub_8146938
+	.global sub_814695C
+	.global sub_81469A0
+	.global sub_81469BC
+	.global sub_81469DC
+	.global sub_81469E8
+	.global sub_8146B70
+	.global sub_8146BB8
+	.global sub_8146BF4
+	.global sub_8146C20
+	.global sub_8146CFC
+	.global sub_8146D20
+	.global sub_8146D40
+	.global sub_8146D98
+	.global sub_8146E5C
+	.global sub_8146E60
+	.global sub_8146E78
+	.global sub_8147350
+	.global sub_81475D4
+	.global sub_8147B24
+	.global sub_8147B3C
+	.global sub_8147F98
+	.global sub_8148214
+	.global sub_8148224
+	.global sub_8148540
+	.global sub_8148884
+	.global sub_8148D24
+	.global sub_8148FC0
+	.global sub_8149568
+	.global sub_8149644
+	.global sub_8149718
+	.global sub_814A828
+	.global SWI_CpuFastSet // (u32 *src, u32 *dest, int mode) -> void
+	.global SWI_CpuSet // (void *src, void *dest, int mode) -> void
+	.global SWI_Div
+	.global SWI_LZ77UnCompReadNormalWrite16bit
+	.global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
+	.global SWI_Sqrt
+	.global sub_814D8CC
+	.global sub_814D8F0
+	.global sub_814D954
+	.global sub_814D994
+	.global sub_814D9C4
+	.global sub_814DA9C
+	.global byte_814E02D
+	.global sub_814E044
+	.global sub_814E064
+	.global sub_814E0DC
+	.global loc_814E0DE
+	.global sub_814E0FC
+	.global sub_814E118
+	.global sub_814E12C
+	.global sub_814E15C
+	.global sub_814E168
+	.global sub_814E17C
+	.global sub_814E190
+	.global sub_814E1C0
+	.global sub_814E1D4
+	.global sub_814E1E8
+	.global sub_814E1FC
+	.global sub_814E210
+	.global sub_814E21C
+	.global sub_814E234
+	.global sub_814E248
+	.global sub_814E260
+	.global sub_814E4DC
+	.global sub_814E758
+	.global sub_814E7CC
+	.global sub_814E7E0
+	.global sub_814E87C
+	.global sub_814E8A0
+	.global sub_814E918
+	.global m4a_SongNumStart
+	.global sub_814E9F0
+	.global sub_814EA58
+	.global sub_814EAF0
+	.global sub_814EB1C
+	.global sub_814EDC0
+	.global sub_814EE2C
+	.global sub_814F00C
+	.global sub_814F228
+	.global sub_814F2F0
+	.global sub_814F988
+	.global sub_814F9AC
+	.global sub_814FA14
+	.global sub_814FBFC
+	.global sub_814FD54
+	.global sub_814FD74
+	.global sub_814FD88
+	.global sub_814FDD0
+	.global sub_814FDE4
+	.global sub_814FDF8
+	.global sub_814FE0C
+	.global sub_814FE20
+	.global sub_814FE34
+	.global sub_814FE40
+	.global sub_814FE4C
+	.global sub_814FE60
 
 
 /* External Symbols */
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global sub_802D064
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global sub_803C514
 // .global sub_803DE88
 // .global sub_803ECFC
@@ -151,7 +151,7 @@
 // .global sub_803F334
 // .global sub_803F618
 
-.include "asm/asm37_0.inc"
+	.include "asm/asm37_0.inc"
 // .global sub_813D760
 // .global sub_813D78C
 // .global sub_813D7B8
@@ -164,7 +164,7 @@
 // .global sub_813D978
 // .global sub_813D98C
 
-.include "data/dat37.inc"
+	.include "data/dat37.inc"
 // .global dword_814FE90
 // .global dword_814FE94
 // .global off_8158278
@@ -381,58 +381,58 @@
 // .equ byte_3005700, 0x3005700
 // .equ byte_3005700, 0x3005700
 // .equ byte_3007FF0, 0x3007FF0
-.equ VerticalCounter_LY_, 0x4000006
-.equ Channel1Sweepregister_NR10_, 0x4000060
-.equ Channel1Sweepregister_NR10_, 0x4000060
-.equ Channel1Duty_Length_Envelope_NR11_NR12_, 0x4000062
-.equ Channel1Frequency_Control_NR13_NR14_, 0x4000064
-.equ Channel1Frequency_Control_NR13_NR14_, 0x4000064
-.equ Channel2Duty_Length_Envelope_NR21_NR22_, 0x4000068
-.equ Channel2Frequency_Control_NR23_NR24_, 0x400006C
-.equ Channel2Frequency_Control_NR23_NR24_, 0x400006C
-.equ Channel3Stop_WaveRAMselect_NR30_, 0x4000070
-.equ Channel3Stop_WaveRAMselect_NR30_, 0x4000070
-.equ Channel3Length_Volume_NR31_NR32_, 0x4000072
-.equ Channel3Frequency_Control_NR33_NR34_, 0x4000074
-.equ Channel4Length_Envelope_NR41_NR42_, 0x4000078
-.equ Channel4Frequency_Control_NR43_NR44_, 0x400007C
-.equ Channel4Frequency_Control_NR43_NR44_, 0x400007C
-.equ ControlStereo_Volume_Enable_NR50_NR51_, 0x4000080
-.equ ControlStereo_Volume_Enable_NR50_NR51_, 0x4000080
-.equ ControlMixing_DMAControl, 0x4000082
-.equ ControlSoundon_off_NR52_, 0x4000084
-.equ SoundPWMControl, 0x4000088
-.equ Channel3WavePatternRAM_2banks___, 0x4000090
-.equ dword_4000094, 0x4000094
-.equ dword_4000098, 0x4000098
-.equ dword_400009C, 0x400009C
-.equ ChannelAFIFO_Data0_3, 0x40000A0
-.equ ChannelBFIFO_Data0_3, 0x40000A4
-.equ DMA1SourceAddress, 0x40000BC
-.equ DMA1DestinationAddress, 0x40000C0
-.equ DMA1WordCount, 0x40000C4
-.equ DMA1Control, 0x40000C6
-.equ DMA2SourceAddress, 0x40000C8
-.equ DMA2DestinationAddress, 0x40000CC
-.equ DMA2WordCount, 0x40000D0
-.equ DMA2Control, 0x40000D2
-.equ DMA3SourceAddress, 0x40000D4
-.equ DMA3DestinationAddress, 0x40000D8
-.equ DMA3WordCount, 0x40000DC
-.equ Timer0Counter_Reload, 0x4000100
-.equ Timer0Control, 0x4000102
-.equ Timer2Counter_Reload, 0x4000108
-.equ Timer2Control, 0x400010A
-.equ Timer3Counter_Reload, 0x400010C
-.equ Timer3Control, 0x400010E
-.equ SIOData0_Parent__Multi_PlayerMode_, 0x4000120
-.equ SIOData2_2ndChild__Multi_PlayerMode_, 0x4000124
-.equ SIOControlRegister, 0x4000128
-.equ SIOData_Normal_8bitandUARTMode_, 0x400012A
-.equ SIOModeSelect_GeneralPurposeData, 0x4000134
-.equ InterruptEnableRegister, 0x4000200
-.equ InterruptRequestFlags_IRQAcknowledge, 0x4000202
-.equ GamePakWaitstateControl, 0x4000204
-.equ InterruptMasterEnableRegister, 0x4000208
+	.equ VerticalCounter_LY_, 0x4000006
+	.equ Channel1Sweepregister_NR10_, 0x4000060
+	.equ Channel1Sweepregister_NR10_, 0x4000060
+	.equ Channel1Duty_Length_Envelope_NR11_NR12_, 0x4000062
+	.equ Channel1Frequency_Control_NR13_NR14_, 0x4000064
+	.equ Channel1Frequency_Control_NR13_NR14_, 0x4000064
+	.equ Channel2Duty_Length_Envelope_NR21_NR22_, 0x4000068
+	.equ Channel2Frequency_Control_NR23_NR24_, 0x400006C
+	.equ Channel2Frequency_Control_NR23_NR24_, 0x400006C
+	.equ Channel3Stop_WaveRAMselect_NR30_, 0x4000070
+	.equ Channel3Stop_WaveRAMselect_NR30_, 0x4000070
+	.equ Channel3Length_Volume_NR31_NR32_, 0x4000072
+	.equ Channel3Frequency_Control_NR33_NR34_, 0x4000074
+	.equ Channel4Length_Envelope_NR41_NR42_, 0x4000078
+	.equ Channel4Frequency_Control_NR43_NR44_, 0x400007C
+	.equ Channel4Frequency_Control_NR43_NR44_, 0x400007C
+	.equ ControlStereo_Volume_Enable_NR50_NR51_, 0x4000080
+	.equ ControlStereo_Volume_Enable_NR50_NR51_, 0x4000080
+	.equ ControlMixing_DMAControl, 0x4000082
+	.equ ControlSoundon_off_NR52_, 0x4000084
+	.equ SoundPWMControl, 0x4000088
+	.equ Channel3WavePatternRAM_2banks___, 0x4000090
+	.equ dword_4000094, 0x4000094
+	.equ dword_4000098, 0x4000098
+	.equ dword_400009C, 0x400009C
+	.equ ChannelAFIFO_Data0_3, 0x40000A0
+	.equ ChannelBFIFO_Data0_3, 0x40000A4
+	.equ DMA1SourceAddress, 0x40000BC
+	.equ DMA1DestinationAddress, 0x40000C0
+	.equ DMA1WordCount, 0x40000C4
+	.equ DMA1Control, 0x40000C6
+	.equ DMA2SourceAddress, 0x40000C8
+	.equ DMA2DestinationAddress, 0x40000CC
+	.equ DMA2WordCount, 0x40000D0
+	.equ DMA2Control, 0x40000D2
+	.equ DMA3SourceAddress, 0x40000D4
+	.equ DMA3DestinationAddress, 0x40000D8
+	.equ DMA3WordCount, 0x40000DC
+	.equ Timer0Counter_Reload, 0x4000100
+	.equ Timer0Control, 0x4000102
+	.equ Timer2Counter_Reload, 0x4000108
+	.equ Timer2Control, 0x400010A
+	.equ Timer3Counter_Reload, 0x400010C
+	.equ Timer3Control, 0x400010E
+	.equ SIOData0_Parent__Multi_PlayerMode_, 0x4000120
+	.equ SIOData2_2ndChild__Multi_PlayerMode_, 0x4000124
+	.equ SIOControlRegister, 0x4000128
+	.equ SIOData_Normal_8bitandUARTMode_, 0x400012A
+	.equ SIOModeSelect_GeneralPurposeData, 0x4000134
+	.equ InterruptEnableRegister, 0x4000200
+	.equ InterruptRequestFlags_IRQAcknowledge, 0x4000202
+	.equ GamePakWaitstateControl, 0x4000204
+	.equ InterruptMasterEnableRegister, 0x4000208
 
-.endif // INC_ASM_LIBS
+	.endif // INC_ASM_LIBS

@@ -1,4 +1,4 @@
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 
 	thumb_func_start sub_80005AC
 sub_80005AC:

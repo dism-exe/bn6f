@@ -1,4 +1,4 @@
-.include "asm/asm32.inc"
+	.include "asm/asm32.inc"
 
 	thumb_func_start sub_810D970
 sub_810D970:

@@ -1,44 +1,44 @@
-.ifndef INC_ASM_ASM33
-.equ INC_ASM_ASM33, 0
+	.ifndef INC_ASM_ASM33
+	.equ INC_ASM_ASM33, 0
 
 /* Public Symbols */
-.global sub_8123208
-.global sub_8123300
-.global sub_8123360
-.global sub_8123408
-.global sub_8123434
-.global ho_8123F5C
-.global byte_8124B1C
-.global sub_8124B3C
-.global sub_8126B4C
-.global sub_8127990
-.global sub_81279A8
-.global menuControl_cb_email
-.global sub_81284A4
-.global sub_8128730
-.global sub_8128CBC
-.global byte_8129150
-.global byte_8129178
-.global dword_8129180
-.global sub_81291D8
-.global sub_81291E8
-.global sub_8129248
-.global sub_812AC14
-.global sub_812AF3C
-.global sub_812AF78
-.global sub_812AF84
-.global sub_812AF98
-.global sub_812AFA4
-.global sub_812AFC8
-.global sub_812B530
+	.global sub_8123208
+	.global sub_8123300
+	.global sub_8123360
+	.global sub_8123408
+	.global sub_8123434
+	.global ho_8123F5C
+	.global byte_8124B1C
+	.global sub_8124B3C
+	.global sub_8126B4C
+	.global sub_8127990
+	.global sub_81279A8
+	.global menuControl_cb_email
+	.global sub_81284A4
+	.global sub_8128730
+	.global sub_8128CBC
+	.global byte_8129150
+	.global byte_8129178
+	.global dword_8129180
+	.global sub_81291D8
+	.global sub_81291E8
+	.global sub_8129248
+	.global sub_812AC14
+	.global sub_812AF3C
+	.global sub_812AF78
+	.global sub_812AF84
+	.global sub_812AF98
+	.global sub_812AFA4
+	.global sub_812AFC8
+	.global sub_812B530
 
 
 /* External Symbols */
-.include "asm/start.inc"
+	.include "asm/start.inc"
 // .global start_800027C
 // .global start_8000288
 
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global musicGameState_8000784 // () -> void
 // .global ZeroFillByByte // (void *mem, int size) -> void
@@ -62,7 +62,7 @@
 // .global sub_80018D0
 // .global sub_80024A2
 
-.include "asm/asm00_1.inc"
+	.include "asm/asm00_1.inc"
 // .global sub_80035A2
 // .global sub_8003962
 // .global sub_8003AB2
@@ -79,16 +79,16 @@
 // .global sub_8007800
 // .global getBattleSettingsFromList1 // (int battleSettingsIdx) -> BattleSettings*
 
-.include "asm/asm00_2.inc"
+	.include "asm/asm00_2.inc"
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6 // (int a1, int a2) -> u8
 // .global sub_80137E6
 // .global sub_80137FE
 
-.include "asm/asm02.inc"
+	.include "asm/asm02.inc"
 // .global getChip_8021DA8 // (int chip_idx) -> ChipData*
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global sub_802B2A0
 // .global sub_802B358
 // .global sub_802B438
@@ -106,7 +106,7 @@
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global sub_8036E78
 // .global sub_803C28A
 // .global sub_803C59C
@@ -142,7 +142,7 @@
 // .global sub_803F674
 // .global sub_803F798
 
-.include "asm/chatbox.inc"
+	.include "asm/chatbox.inc"
 // .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
 // .global loc_803FDA4
@@ -154,7 +154,7 @@
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C
 
-.include "asm/asm03_2.inc"
+	.include "asm/asm03_2.inc"
 // .global render_graphicalText_8045F8C
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
@@ -173,10 +173,10 @@
 // .global sub_8049DC4
 // .global sub_8049DDC
 
-.include "asm/asm28_1.inc"
+	.include "asm/asm28_1.inc"
 // .global sub_809F9BE
 
-.include "asm/asm32.inc"
+	.include "asm/asm32.inc"
 // .global sub_8116FDC
 // .global sub_8117084
 // .global sub_81171F4
@@ -236,16 +236,16 @@
 // .global byte_81211B4
 // .global pt_8121200
 
-.include "data/dat33.inc"
+	.include "data/dat33.inc"
 // .global sub_812C2C0
 
-.include "data/dat34.inc"
+	.include "data/dat34.inc"
 // .global sub_812DAE4
 
-.include "data/dat35.inc"
+	.include "data/dat35.inc"
 // .global sub_812F094
 
-.include "asm/asm36.inc"
+	.include "asm/asm36.inc"
 // .global byte_8130905
 // .global sub_8132280
 // .global sub_8132290
@@ -271,7 +271,7 @@
 // .global sub_8137884
 // .global sub_81378B4
 
-.include "asm/asm37_0.inc"
+	.include "asm/asm37_0.inc"
 // .global sub_813B9FC
 // .global sub_813C3AC
 // .global sub_813D5D0
@@ -282,7 +282,7 @@
 // .global sub_813D960
 // .global sub_813D978
 
-.include "asm/libs.inc"
+	.include "asm/libs.inc"
 // .global sub_81440D8 // static () -> void
 // .global sub_8144240
 // .global sub_8146588
@@ -309,21 +309,21 @@
 // .global sub_8149644
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 
-.include "data/dat37.inc"
+	.include "data/dat37.inc"
 // .global dword_814FE94
 
-.include "data/dat38_60.inc"
+	.include "data/dat38_60.inc"
 // .global byte_86A5D40
 // .global dword_86A5D60
 // .global dword_86B7AE0
 // .global byte_86C1F20
 // .global byte_86C1F80
 
-.include "data/dat38_67.inc"
+	.include "data/dat38_67.inc"
 // .global dword_86C9108
 // .global dword_86C9128
 
-.include "data/dat38_69.inc"
+	.include "data/dat38_69.inc"
 // .global dword_86C9AF4
 // .global dword_86C9B14
 // .global dword_86C9B34
@@ -331,20 +331,20 @@
 // .global dword_86C9B94
 // .global dword_86C9BB4
 
-.include "data/dat38_70.inc"
+	.include "data/dat38_70.inc"
 // .global byte_86C9D6C
 // .global dword_86CDBE4
 
-.include "data/dat38_72.inc"
+	.include "data/dat38_72.inc"
 // .global dword_86CF994
 // .global dword_86CFAF8
 
-.include "data/dat38_74.inc"
+	.include "data/dat38_74.inc"
 // .global comp_86D6618
 // .global dword_86D6754
 // .global dword_86D6954
 
-.include "data/dat38_75.inc"
+	.include "data/dat38_75.inc"
 // .global byte_86D7578
 // .global byte_86D78C0
 // .global byte_86D7C24
@@ -353,25 +353,25 @@
 // .global byte_86D860C
 // .global byte_86D894C
 
-.include "data/dat38_77.inc"
+	.include "data/dat38_77.inc"
 // .global dword_86D9A00
 // .global dword_86D9AC4
 // .global dword_86D9B84
 
-.include "data/dat38_83.inc"
+	.include "data/dat38_83.inc"
 // .global comp_86DD59C
 
-.include "data/dat38_84.inc"
+	.include "data/dat38_84.inc"
 // .global byte_86DDB24
 
-.include "data/dat38_85.inc"
+	.include "data/dat38_85.inc"
 // .global dword_86EA94C
 // .global dword_86EB354
 
-.include "data/dat38_86.inc"
+	.include "data/dat38_86.inc"
 // .global byte_872CF94
 
-.include "data/dat38_87.inc"
+	.include "data/dat38_87.inc"
 // .global byte_873D9FC
 // .global byte_873EA50
 
@@ -581,4 +581,4 @@
 // .global comp_86DD9B4
 // .global comp_86DDAD0
 
-.endif // INC_ASM_ASM33
+	.endif // INC_ASM_ASM33

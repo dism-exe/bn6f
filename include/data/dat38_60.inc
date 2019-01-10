@@ -1,703 +1,703 @@
-.ifndef INC_DATA_DAT38_60
-.equ INC_DATA_DAT38_60, 0
+	.ifndef INC_DATA_DAT38_60
+	.equ INC_DATA_DAT38_60, 0
 
 /* Public Symbols */
-.global byte_857D8D0
-.global byte_8580D64
-.global dword_8580F08
-.global byte_8582308
-.global byte_8585ED0
-.global byte_8586074
-.global byte_85878F4
-.global byte_858AAE0
-.global byte_858AC84
-.global byte_858CDA4
-.global byte_858E380
-.global byte_858E524
-.global dword_858F110
-.global off_8592304
-.global dword_85924A8
-.global dword_8594D80
-.global dword_8598328
-.global byte_859B428
-.global byte_859B5CC
-.global dword_859E6D0
-.global dword_859E9D0
-.global byte_85A100F
-.global byte_85A2198
-.global byte_85A5590
-.global byte_85A8B04
-.global byte_85A8CA8
-.global byte_85AB89C
-.global byte_85AB8BC
-.global byte_85AB8DC
-.global byte_85AB900
-.global byte_85AB920
-.global byte_85AB940
-.global byte_85AB960
-.global byte_85AB984
-.global byte_85AB9A4
-.global byte_85AB9C4
-.global byte_85AB9E4
-.global byte_85ABA04
-.global byte_85ABA24
-.global byte_85ABA44
-.global byte_85ABA68
-.global byte_85ABA88
-.global byte_85ABAAC
-.global byte_85ABACC
-.global byte_85ABAEC
-.global byte_85ABB0C
-.global byte_85ABB30
-.global byte_85ABB50
-.global byte_85ABB70
-.global byte_85ABB90
-.global byte_85ABBB0
-.global byte_85ABBD0
-.global byte_85ABBF0
-.global byte_85ABC10
-.global byte_85ABC30
-.global byte_85ABC50
-.global byte_85ABC70
-.global byte_85ABC90
-.global byte_85ABCB4
-.global byte_85ABCD4
-.global byte_85ABCF4
-.global byte_85ABD14
-.global byte_85ABD34
-.global byte_85ABD54
-.global byte_85ABD74
-.global byte_85ABD94
-.global byte_85ABDB4
-.global byte_85ABDD4
-.global byte_85ABDF4
-.global byte_85ABE14
-.global byte_85ABE34
-.global dword_85AEFA8
-.global dword_85B22DC
-.global off_85B5D28
-.global dword_85B5ECC
-.global byte_85B8244
-.global byte_85B8264
-.global byte_85B8284
-.global byte_85B82A4
-.global byte_85B82C8
-.global byte_85B82E8
-.global byte_85B8308
-.global byte_85B832C
-.global byte_85B834C
-.global byte_85B836C
-.global byte_85B838C
-.global byte_85B83B0
-.global byte_85B83D0
-.global byte_85B83F0
-.global byte_85B8410
-.global byte_85B8434
-.global byte_85B8454
-.global byte_85B8474
-.global byte_85B8494
-.global byte_85B84B8
-.global byte_85B84D8
-.global byte_85B84F8
-.global byte_85B8518
-.global byte_85B853C
-.global byte_85B855C
-.global byte_85B857C
-.global byte_85B859C
-.global byte_85B85C0
-.global byte_85B85E0
-.global byte_85B8600
-.global byte_85B8620
-.global byte_85B8644
-.global byte_85B8664
-.global byte_85B8688
-.global byte_85B86A8
-.global dword_85B86C8
-.global dword_85BB3D0
-.global byte_85BE350
-.global dword_85C18E0
-.global byte_85C4750
-.global dword_85C7AA0
-.global dword_85CB0A8
-.global byte_85CD026
-.global off_85CD6B4
-.global dword_85CD858
-.global byte_85D053C
-.global byte_85D055C
-.global byte_85D057C
-.global byte_85D059C
-.global byte_85D05C0
-.global byte_85D05E0
-.global byte_85D0600
-.global byte_85D0624
-.global byte_85D0644
-.global byte_85D0664
-.global byte_85D0688
-.global byte_85D06A8
-.global byte_85D06C8
-.global byte_85D06E8
-.global byte_85D070C
-.global byte_85D072C
-.global byte_85D074C
-.global byte_85D076C
-.global byte_85D0790
-.global byte_85D07B0
-.global byte_85D07D0
-.global byte_85D07F0
-.global byte_85D0814
-.global byte_85D0834
-.global byte_85D0854
-.global byte_85D0874
-.global off_85D0894
-.global off_85D183C
-.global dword_85D19E0
-.global byte_85D270C
-.global byte_85D272C
-.global byte_85D274C
-.global byte_85D276C
-.global byte_85D278C
-.global byte_85D27B0
-.global byte_85D27D0
-.global byte_85D27F0
-.global byte_85D2810
-.global off_85D2850
-.global off_85D29F4
-.global off_85D2B98
-.global off_85D2D3C
-.global off_85D2EE0
-.global off_85D35B8
-.global dword_85D375C
-.global off_85D430C
-.global dword_85D44B0
-.global byte_85D4D84
-.global dword_85D4E48
-.global off_85D895C
-.global dword_85D8B00
-.global byte_85DAF78
-.global dword_85DAF98
-.global dword_85DAFB8
-.global dword_85DAFD8
-.global dword_85DAFF8
-.global byte_85DB01C
-.global byte_85DB03C
-.global byte_85DB05C
-.global byte_85DB07C
-.global byte_85DB09C
-.global byte_85DB0C0
-.global byte_85DB0E0
-.global byte_85DB100
-.global byte_85DB120
-.global byte_85DB140
-.global dword_85DB160
-.global byte_85DDAD4
-.global byte_85DDAF4
-.global byte_85DDB14
-.global byte_85DDB34
-.global byte_85DDB54
-.global off_85DDB74
-.global dword_85DDD18
-.global byte_85E0530
-.global byte_85E0550
-.global byte_85E0570
-.global byte_85E0590
-.global byte_85E05B0
-.global byte_85E05D0
-.global byte_85E05F0
-.global byte_85E0610
-.global byte_85E0630
-.global byte_85E0650
-.global off_85E0670
-.global dword_85E0814
-.global byte_85E2E6C
-.global byte_85E2E8C
-.global byte_85E2EAC
-.global byte_85E2ECC
-.global byte_85E2EF0
-.global dword_85E2F10
-.global dword_85E2F30
-.global dword_85E2F50
-.global dword_85E2F70
-.global dword_85E2F90
-.global byte_85E511C
-.global byte_85E513C
-.global byte_85E515C
-.global byte_85E517C
-.global dword_85E519C
-.global off_85E79D0
-.global dword_85E7B74
-.global byte_85EAA3C
-.global byte_85EAA5C
-.global byte_85EAA7C
-.global byte_85EAA9C
-.global byte_85EAAC0
-.global dword_85EAAE0
-.global dword_85EAB00
-.global dword_85EAB20
-.global dword_85EAB40
-.global byte_85EAB64
-.global byte_85EAB84
-.global byte_85EABA4
-.global byte_85EABC4
-.global byte_85EABE4
-.global byte_85EAC08
-.global byte_85EAC28
-.global byte_85EAC48
-.global byte_85EAC68
-.global byte_85EAC88
-.global byte_85EACAC
-.global byte_85EACCC
-.global byte_85EACEC
-.global byte_85EAD0C
-.global off_85EAD2C
-.global dword_85EAED0
-.global byte_85EE224
-.global byte_85EE244
-.global byte_85EE264
-.global byte_85EE284
-.global off_85EE2A4
-.global dword_85EE448
-.global byte_85F1678
-.global byte_85F1698
-.global byte_85F16B8
-.global byte_85F16D8
-.global byte_85F16F8
-.global byte_85F187C
-.global byte_85F189C
-.global byte_85F18BC
-.global byte_85F18DC
-.global byte_85F18FC
-.global byte_85F1A80
-.global byte_85F1AA0
-.global byte_85F1AC0
-.global byte_85F1AE0
-.global byte_85F1B00
-.global dword_85F1B20
-.global byte_85F4D24
-.global byte_85F4D44
-.global byte_85F4D64
-.global off_85F4D84
-.global dword_85F4F28
-.global byte_85F7BB8
-.global byte_85F7BD8
-.global byte_85F7BF8
-.global byte_85F7C18
-.global byte_85F7C38
-.global dword_85F7C58
-.global byte_85FB5DC
-.global byte_85FB5FC
-.global byte_85FB61C
-.global byte_85FB63C
-.global byte_85FB65C
-.global byte_85FB680
-.global byte_85FB6A0
-.global byte_85FB6C0
-.global byte_85FB6E0
-.global byte_85FB700
-.global byte_85FB724
-.global dword_85FB744
-.global dword_85FB764
-.global dword_85FB784
-.global dword_85FB7A4
-.global byte_85FB7C8
-.global byte_85FB7E8
-.global byte_85FB808
-.global byte_85FB828
-.global off_85FB848
-.global dword_85FB9EC
-.global byte_85FEDE4
-.global byte_85FEE04
-.global byte_85FEE24
-.global byte_85FEE44
-.global byte_85FEE68
-.global byte_85FEE88
-.global byte_85FEEA8
-.global byte_85FEEC8
-.global byte_85FEEE8
-.global dword_85FEF08
-.global byte_860100F
-.global off_8602590
-.global dword_8602734
-.global byte_8605ACC
-.global byte_8605AEC
-.global byte_8605B0C
-.global byte_8605B2C
-.global byte_8605B4C
-.global byte_8605CD0
-.global byte_8605CF0
-.global byte_8605D10
-.global byte_8605D30
-.global byte_8605D50
-.global byte_8605ED4
-.global byte_8605EF4
-.global byte_8605F14
-.global byte_8605F38
-.global byte_8605F58
-.global byte_8605F78
-.global dword_8605F98
-.global dword_8605FB8
-.global byte_8605FD8
-.global dword_8606438
-.global dword_8609770
-.global byte_860D228
-.global byte_860D248
-.global byte_860D268
-.global byte_860D288
-.global byte_860D2A8
-.global byte_860D42C
-.global byte_860D44C
-.global byte_860D46C
-.global byte_860D490
-.global dword_860D4B0
-.global dword_860D4D0
-.global dword_860D4F0
-.global dword_860D510
-.global byte_860D534
-.global dword_860D554
-.global dword_860D574
-.global dword_860D594
-.global dword_860D5B4
-.global byte_860D5D8
-.global dword_860D5F8
-.global dword_860D618
-.global dword_860D638
-.global dword_860D658
-.global off_860D678
-.global dword_860D820
-.global byte_860D840
-.global byte_860D860
-.global byte_860D880
-.global byte_860D8A0
-.global dword_860DA24
-.global byte_860DA44
-.global byte_860DA64
-.global byte_860DA84
-.global byte_860DAA4
-.global byte_860DC28
-.global byte_860DC48
-.global byte_860DC68
-.global dword_860DC8C
-.global dword_860DCAC
-.global dword_860DCCC
-.global dword_860DCEC
-.global dword_860DD0C
-.global byte_860DD30
-.global dword_860DD50
-.global dword_860DD70
-.global dword_860DD90
-.global dword_860DDB0
-.global dword_860DDD0
-.global byte_8610881
-.global off_8610B04
-.global byte_8610C18
-.global byte_8610D64
-.global dword_8610F08
-.global off_86116C8
-.global byte_861184C
-.global byte_86119C4
-.global dword_8611B68
-.global off_8612A28
-.global dword_8612CF0
-.global dword_8612E84
-.global dword_8613028
-.global off_8613608
-.global dword_8613AAC
-.global dword_8613DDC
-.global byte_8614140
-.global byte_8614160
-.global byte_8614180
-.global byte_86141A0
-.global byte_86141C0
-.global byte_86141E0
-.global byte_8614200
-.global byte_8614220
-.global byte_8614240
-.global byte_8614260
-.global byte_8614280
-.global byte_86142A0
-.global byte_86142C4
-.global byte_86142E4
-.global byte_8614304
-.global byte_8614324
-.global byte_8614344
-.global byte_8614364
-.global byte_8614384
-.global byte_86143A4
-.global byte_86143C4
-.global byte_86143E4
-.global byte_8614404
-.global byte_8614424
-.global off_8614444
-.global dword_8614A0C
-.global byte_8614BB8
-.global byte_8614D60
-.global byte_8614D80
-.global byte_8614DA0
-.global byte_8614DC0
-.global off_8614DE0
-.global dword_8615028
-.global dword_86151BC
-.global off_8615360
-.global dword_86154A8
-.global dword_86155E8
-.global off_861578C
-.global dword_861595C
-.global byte_8615B04
-.global byte_8615B24
-.global byte_8615B44
-.global byte_8615B64
-.global off_8615BA4
-.global byte_8615D14
-.global byte_8615E88
-.global off_861602C
-.global dword_8616264
-.global byte_86163F4
-.global off_8616598
-.global byte_8616634
-.global byte_8616760
-.global dword_8616904
-.global byte_8616EC4
-.global off_8617068
-.global dword_8617190
-.global byte_86172E4
-.global dword_8617488
-.global byte_86185C8
-.global dword_861876C
-.global dword_8618910
-.global dword_8618AB4
-.global dword_8618C58
-.global dword_8618DFC
-.global byte_8618E40
-.global byte_8618F50
-.global dword_86190F4
-.global off_8619174
-.global byte_8619184
-.global dword_8619474
-.global byte_8619630
-.global byte_8619650
-.global byte_8619670
-.global byte_8619690
-.global byte_86196B0
-.global byte_86196D0
-.global byte_86196F0
-.global byte_8619710
-.global dword_8619730
-.global dword_8619B50
-.global byte_8619B90
-.global byte_8619BD0
-.global byte_861AD84
-.global byte_861B31C
-.global byte_861B338
-.global byte_861C770
-.global byte_861CC50
-.global byte_861CEE8
-.global byte_861D05C
-.global byte_861D4D8
-.global dword_861E06C
-.global dword_861E6D4
-.global dword_861F710
-.global byte_861FF05
-.global dword_8620350
-.global dword_8620A9C
-.global dword_8620E58
-.global byte_8622CFC
-.global byte_86246F0
-.global byte_8625B10
-.global byte_862623B
-.global byte_8627DF8
-.global byte_8628968
-.global byte_862AB08
-.global dword_862B6E0
-.global dword_862C160
-.global dword_862C978
-.global dword_862D0A0
-.global dword_862E15C
-.global dword_863168C
-.global dword_8632288
-.global dword_8633084
-.global dword_8634E64
-.global dword_8635EB4
-.global dword_8636A7C
-.global dword_86376B4
-.global dword_8638E70
-.global dword_863951C
-.global dword_863B234
-.global byte_863BF84
-.global dword_863D1A4
-.global dword_863F830
-.global byte_863FF05
-.global dword_8642B34
-.global dword_86460FC
-.global dword_86475CC
-.global dword_8648BA8
-.global dword_864A484
-.global dword_864D860
-.global byte_864F420
-.global byte_8650866
-.global dword_8651B2C
-.global dword_8656C0C
-.global dword_865A08C
-.global byte_865AC26
-.global dword_865B77C
-.global byte_8660444
-.global dword_8660604
-.global byte_866296C
-.global byte_866446C
-.global dword_8664988
-.global dword_8664F04
-.global dword_8665548
-.global dword_8667820
-.global byte_866A5D6
-.global dword_866B038
-.global byte_866D090
-.global byte_8671A74
-.global byte_8673418
-.global byte_8675094
-.global byte_8678F4C
-.global byte_867D85C
-.global byte_867E715
-.global byte_8680690
-.global byte_868316C
-.global byte_8687DCC
-.global byte_8689000
-.global byte_868B000
-.global byte_868CB78
-.global byte_868D000
-.global byte_868EBA0
-.global byte_8691154
-.global byte_8694FB4
-.global byte_8699EDC
-.global byte_869D74C
-.global byte_869D76C
-.global byte_869D82C
-.global byte_869E02C
-.global byte_869E82C
-.global byte_869F02C
-.global byte_86A10B0
-.global byte_86A10D0
-.global byte_86A13F0
-.global byte_86A1480
-.global byte_86A1940
-.global byte_86A1A60
-.global byte_86A1A80
-.global byte_86A1B20
-.global byte_86A2340
-.global byte_86A23E0
-.global byte_86A2BE0
-.global byte_86A2C00
-.global byte_86A2C80
-.global byte_86A3480
-.global byte_86A34C0
-.global byte_86A34E0
-.global byte_86A3715
-.global byte_86A3990
-.global byte_86A39B0
-.global byte_86A39D0
-.global byte_86A3E80
-.global byte_86A3EA0
-.global byte_86A3F40
-.global dword_86A4740
-.global byte_86A48C0
-.global dword_86A4A40
-.global byte_86A4CC0
-.global byte_86A4D40
-.global byte_86A5180
-.global dword_86A5300
-.global dword_86A5500
-.global dword_86A5520
-.global byte_86A5D20
-.global byte_86A5D40
-.global dword_86A5D60
-.global byte_86ACD60
-.global byte_86ACF02
-.global byte_86AF60A
-.global byte_86AFE15
-.global byte_86B4901
-.global byte_86B5115
-.global dword_86B7AA0
-.global dword_86B7AC0
-.global dword_86B7AE0
-.global dword_86B7B20
-.global dword_86B7B60
-.global dword_86B7BA0
-.global byte_86B7BC0
-.global dword_86B7BE0
-.global dword_86B7C20
-.global dword_86B7C60
-.global dword_86B7CA0
-.global dword_86B7CE0
-.global dword_86B7D20
-.global byte_86B7D4B
-.global dword_86B7D60
-.global dword_86BA0A0
-.global dword_86BA120
-.global byte_86BA140
-.global dword_86BEAE0
-.global dword_86BEB20
-.global byte_86BEC80
-.global byte_86BECA0
-.global byte_86BEE80
-.global byte_86BF060
-.global byte_86BF240
-.global byte_86BF420
-.global byte_86BF600
-.global byte_86BF7E0
-.global byte_86BF9C0
-.global byte_86BFBA0
-.global byte_86BFE20
-.global byte_86BFE40
-.global byte_86BFE60
-.global byte_86C0040
-.global byte_86C0220
-.global byte_86C0400
-.global byte_86C05E0
-.global byte_86C0900
-.global byte_86C0920
-.global byte_86C0940
-.global byte_86C0B20
-.global byte_86C0B60
-.global byte_86C0BA0
-.global byte_86C0BE0
-.global byte_86C0C20
-.global byte_86C0C60
-.global dword_86C0D20
-.global byte_86C0EA0
-.global byte_86C0FA0
-.global byte_86C10A0
-.global byte_86C11A0
-.global byte_86C12A0
-.global byte_86C13A0
-.global byte_86C14A0
-.global byte_86C1520
-.global byte_86C15A0
-.global byte_86C1620
-.global byte_86C16A0
-.global byte_86C1720
-.global byte_86C18A0
-.global byte_86C18E0
-.global byte_86C1920
-.global byte_86C1960
-.global byte_86C19A0
-.global byte_86C19E0
-.global byte_86C1A20
-.global byte_86C1A60
-.global byte_86C1AA0
-.global byte_86C1B20
-.global byte_86C1BA0
-.global byte_86C1C20
-.global byte_86C1CA0
-.global byte_86C1D20
-.global byte_86C1DA0
-.global byte_86C1E20
-.global byte_86C1EA0
-.global byte_86C1F20
-.global byte_86C1F80
-.global byte_86C22C0
-.global byte_86C22E0
-.global byte_86C2300
-.global byte_86C2320
-.global byte_86C2340
-.global byte_86C2360
-.global byte_86C2380
+	.global byte_857D8D0
+	.global byte_8580D64
+	.global dword_8580F08
+	.global byte_8582308
+	.global byte_8585ED0
+	.global byte_8586074
+	.global byte_85878F4
+	.global byte_858AAE0
+	.global byte_858AC84
+	.global byte_858CDA4
+	.global byte_858E380
+	.global byte_858E524
+	.global dword_858F110
+	.global off_8592304
+	.global dword_85924A8
+	.global dword_8594D80
+	.global dword_8598328
+	.global byte_859B428
+	.global byte_859B5CC
+	.global dword_859E6D0
+	.global dword_859E9D0
+	.global byte_85A100F
+	.global byte_85A2198
+	.global byte_85A5590
+	.global byte_85A8B04
+	.global byte_85A8CA8
+	.global byte_85AB89C
+	.global byte_85AB8BC
+	.global byte_85AB8DC
+	.global byte_85AB900
+	.global byte_85AB920
+	.global byte_85AB940
+	.global byte_85AB960
+	.global byte_85AB984
+	.global byte_85AB9A4
+	.global byte_85AB9C4
+	.global byte_85AB9E4
+	.global byte_85ABA04
+	.global byte_85ABA24
+	.global byte_85ABA44
+	.global byte_85ABA68
+	.global byte_85ABA88
+	.global byte_85ABAAC
+	.global byte_85ABACC
+	.global byte_85ABAEC
+	.global byte_85ABB0C
+	.global byte_85ABB30
+	.global byte_85ABB50
+	.global byte_85ABB70
+	.global byte_85ABB90
+	.global byte_85ABBB0
+	.global byte_85ABBD0
+	.global byte_85ABBF0
+	.global byte_85ABC10
+	.global byte_85ABC30
+	.global byte_85ABC50
+	.global byte_85ABC70
+	.global byte_85ABC90
+	.global byte_85ABCB4
+	.global byte_85ABCD4
+	.global byte_85ABCF4
+	.global byte_85ABD14
+	.global byte_85ABD34
+	.global byte_85ABD54
+	.global byte_85ABD74
+	.global byte_85ABD94
+	.global byte_85ABDB4
+	.global byte_85ABDD4
+	.global byte_85ABDF4
+	.global byte_85ABE14
+	.global byte_85ABE34
+	.global dword_85AEFA8
+	.global dword_85B22DC
+	.global off_85B5D28
+	.global dword_85B5ECC
+	.global byte_85B8244
+	.global byte_85B8264
+	.global byte_85B8284
+	.global byte_85B82A4
+	.global byte_85B82C8
+	.global byte_85B82E8
+	.global byte_85B8308
+	.global byte_85B832C
+	.global byte_85B834C
+	.global byte_85B836C
+	.global byte_85B838C
+	.global byte_85B83B0
+	.global byte_85B83D0
+	.global byte_85B83F0
+	.global byte_85B8410
+	.global byte_85B8434
+	.global byte_85B8454
+	.global byte_85B8474
+	.global byte_85B8494
+	.global byte_85B84B8
+	.global byte_85B84D8
+	.global byte_85B84F8
+	.global byte_85B8518
+	.global byte_85B853C
+	.global byte_85B855C
+	.global byte_85B857C
+	.global byte_85B859C
+	.global byte_85B85C0
+	.global byte_85B85E0
+	.global byte_85B8600
+	.global byte_85B8620
+	.global byte_85B8644
+	.global byte_85B8664
+	.global byte_85B8688
+	.global byte_85B86A8
+	.global dword_85B86C8
+	.global dword_85BB3D0
+	.global byte_85BE350
+	.global dword_85C18E0
+	.global byte_85C4750
+	.global dword_85C7AA0
+	.global dword_85CB0A8
+	.global byte_85CD026
+	.global off_85CD6B4
+	.global dword_85CD858
+	.global byte_85D053C
+	.global byte_85D055C
+	.global byte_85D057C
+	.global byte_85D059C
+	.global byte_85D05C0
+	.global byte_85D05E0
+	.global byte_85D0600
+	.global byte_85D0624
+	.global byte_85D0644
+	.global byte_85D0664
+	.global byte_85D0688
+	.global byte_85D06A8
+	.global byte_85D06C8
+	.global byte_85D06E8
+	.global byte_85D070C
+	.global byte_85D072C
+	.global byte_85D074C
+	.global byte_85D076C
+	.global byte_85D0790
+	.global byte_85D07B0
+	.global byte_85D07D0
+	.global byte_85D07F0
+	.global byte_85D0814
+	.global byte_85D0834
+	.global byte_85D0854
+	.global byte_85D0874
+	.global off_85D0894
+	.global off_85D183C
+	.global dword_85D19E0
+	.global byte_85D270C
+	.global byte_85D272C
+	.global byte_85D274C
+	.global byte_85D276C
+	.global byte_85D278C
+	.global byte_85D27B0
+	.global byte_85D27D0
+	.global byte_85D27F0
+	.global byte_85D2810
+	.global off_85D2850
+	.global off_85D29F4
+	.global off_85D2B98
+	.global off_85D2D3C
+	.global off_85D2EE0
+	.global off_85D35B8
+	.global dword_85D375C
+	.global off_85D430C
+	.global dword_85D44B0
+	.global byte_85D4D84
+	.global dword_85D4E48
+	.global off_85D895C
+	.global dword_85D8B00
+	.global byte_85DAF78
+	.global dword_85DAF98
+	.global dword_85DAFB8
+	.global dword_85DAFD8
+	.global dword_85DAFF8
+	.global byte_85DB01C
+	.global byte_85DB03C
+	.global byte_85DB05C
+	.global byte_85DB07C
+	.global byte_85DB09C
+	.global byte_85DB0C0
+	.global byte_85DB0E0
+	.global byte_85DB100
+	.global byte_85DB120
+	.global byte_85DB140
+	.global dword_85DB160
+	.global byte_85DDAD4
+	.global byte_85DDAF4
+	.global byte_85DDB14
+	.global byte_85DDB34
+	.global byte_85DDB54
+	.global off_85DDB74
+	.global dword_85DDD18
+	.global byte_85E0530
+	.global byte_85E0550
+	.global byte_85E0570
+	.global byte_85E0590
+	.global byte_85E05B0
+	.global byte_85E05D0
+	.global byte_85E05F0
+	.global byte_85E0610
+	.global byte_85E0630
+	.global byte_85E0650
+	.global off_85E0670
+	.global dword_85E0814
+	.global byte_85E2E6C
+	.global byte_85E2E8C
+	.global byte_85E2EAC
+	.global byte_85E2ECC
+	.global byte_85E2EF0
+	.global dword_85E2F10
+	.global dword_85E2F30
+	.global dword_85E2F50
+	.global dword_85E2F70
+	.global dword_85E2F90
+	.global byte_85E511C
+	.global byte_85E513C
+	.global byte_85E515C
+	.global byte_85E517C
+	.global dword_85E519C
+	.global off_85E79D0
+	.global dword_85E7B74
+	.global byte_85EAA3C
+	.global byte_85EAA5C
+	.global byte_85EAA7C
+	.global byte_85EAA9C
+	.global byte_85EAAC0
+	.global dword_85EAAE0
+	.global dword_85EAB00
+	.global dword_85EAB20
+	.global dword_85EAB40
+	.global byte_85EAB64
+	.global byte_85EAB84
+	.global byte_85EABA4
+	.global byte_85EABC4
+	.global byte_85EABE4
+	.global byte_85EAC08
+	.global byte_85EAC28
+	.global byte_85EAC48
+	.global byte_85EAC68
+	.global byte_85EAC88
+	.global byte_85EACAC
+	.global byte_85EACCC
+	.global byte_85EACEC
+	.global byte_85EAD0C
+	.global off_85EAD2C
+	.global dword_85EAED0
+	.global byte_85EE224
+	.global byte_85EE244
+	.global byte_85EE264
+	.global byte_85EE284
+	.global off_85EE2A4
+	.global dword_85EE448
+	.global byte_85F1678
+	.global byte_85F1698
+	.global byte_85F16B8
+	.global byte_85F16D8
+	.global byte_85F16F8
+	.global byte_85F187C
+	.global byte_85F189C
+	.global byte_85F18BC
+	.global byte_85F18DC
+	.global byte_85F18FC
+	.global byte_85F1A80
+	.global byte_85F1AA0
+	.global byte_85F1AC0
+	.global byte_85F1AE0
+	.global byte_85F1B00
+	.global dword_85F1B20
+	.global byte_85F4D24
+	.global byte_85F4D44
+	.global byte_85F4D64
+	.global off_85F4D84
+	.global dword_85F4F28
+	.global byte_85F7BB8
+	.global byte_85F7BD8
+	.global byte_85F7BF8
+	.global byte_85F7C18
+	.global byte_85F7C38
+	.global dword_85F7C58
+	.global byte_85FB5DC
+	.global byte_85FB5FC
+	.global byte_85FB61C
+	.global byte_85FB63C
+	.global byte_85FB65C
+	.global byte_85FB680
+	.global byte_85FB6A0
+	.global byte_85FB6C0
+	.global byte_85FB6E0
+	.global byte_85FB700
+	.global byte_85FB724
+	.global dword_85FB744
+	.global dword_85FB764
+	.global dword_85FB784
+	.global dword_85FB7A4
+	.global byte_85FB7C8
+	.global byte_85FB7E8
+	.global byte_85FB808
+	.global byte_85FB828
+	.global off_85FB848
+	.global dword_85FB9EC
+	.global byte_85FEDE4
+	.global byte_85FEE04
+	.global byte_85FEE24
+	.global byte_85FEE44
+	.global byte_85FEE68
+	.global byte_85FEE88
+	.global byte_85FEEA8
+	.global byte_85FEEC8
+	.global byte_85FEEE8
+	.global dword_85FEF08
+	.global byte_860100F
+	.global off_8602590
+	.global dword_8602734
+	.global byte_8605ACC
+	.global byte_8605AEC
+	.global byte_8605B0C
+	.global byte_8605B2C
+	.global byte_8605B4C
+	.global byte_8605CD0
+	.global byte_8605CF0
+	.global byte_8605D10
+	.global byte_8605D30
+	.global byte_8605D50
+	.global byte_8605ED4
+	.global byte_8605EF4
+	.global byte_8605F14
+	.global byte_8605F38
+	.global byte_8605F58
+	.global byte_8605F78
+	.global dword_8605F98
+	.global dword_8605FB8
+	.global byte_8605FD8
+	.global dword_8606438
+	.global dword_8609770
+	.global byte_860D228
+	.global byte_860D248
+	.global byte_860D268
+	.global byte_860D288
+	.global byte_860D2A8
+	.global byte_860D42C
+	.global byte_860D44C
+	.global byte_860D46C
+	.global byte_860D490
+	.global dword_860D4B0
+	.global dword_860D4D0
+	.global dword_860D4F0
+	.global dword_860D510
+	.global byte_860D534
+	.global dword_860D554
+	.global dword_860D574
+	.global dword_860D594
+	.global dword_860D5B4
+	.global byte_860D5D8
+	.global dword_860D5F8
+	.global dword_860D618
+	.global dword_860D638
+	.global dword_860D658
+	.global off_860D678
+	.global dword_860D820
+	.global byte_860D840
+	.global byte_860D860
+	.global byte_860D880
+	.global byte_860D8A0
+	.global dword_860DA24
+	.global byte_860DA44
+	.global byte_860DA64
+	.global byte_860DA84
+	.global byte_860DAA4
+	.global byte_860DC28
+	.global byte_860DC48
+	.global byte_860DC68
+	.global dword_860DC8C
+	.global dword_860DCAC
+	.global dword_860DCCC
+	.global dword_860DCEC
+	.global dword_860DD0C
+	.global byte_860DD30
+	.global dword_860DD50
+	.global dword_860DD70
+	.global dword_860DD90
+	.global dword_860DDB0
+	.global dword_860DDD0
+	.global byte_8610881
+	.global off_8610B04
+	.global byte_8610C18
+	.global byte_8610D64
+	.global dword_8610F08
+	.global off_86116C8
+	.global byte_861184C
+	.global byte_86119C4
+	.global dword_8611B68
+	.global off_8612A28
+	.global dword_8612CF0
+	.global dword_8612E84
+	.global dword_8613028
+	.global off_8613608
+	.global dword_8613AAC
+	.global dword_8613DDC
+	.global byte_8614140
+	.global byte_8614160
+	.global byte_8614180
+	.global byte_86141A0
+	.global byte_86141C0
+	.global byte_86141E0
+	.global byte_8614200
+	.global byte_8614220
+	.global byte_8614240
+	.global byte_8614260
+	.global byte_8614280
+	.global byte_86142A0
+	.global byte_86142C4
+	.global byte_86142E4
+	.global byte_8614304
+	.global byte_8614324
+	.global byte_8614344
+	.global byte_8614364
+	.global byte_8614384
+	.global byte_86143A4
+	.global byte_86143C4
+	.global byte_86143E4
+	.global byte_8614404
+	.global byte_8614424
+	.global off_8614444
+	.global dword_8614A0C
+	.global byte_8614BB8
+	.global byte_8614D60
+	.global byte_8614D80
+	.global byte_8614DA0
+	.global byte_8614DC0
+	.global off_8614DE0
+	.global dword_8615028
+	.global dword_86151BC
+	.global off_8615360
+	.global dword_86154A8
+	.global dword_86155E8
+	.global off_861578C
+	.global dword_861595C
+	.global byte_8615B04
+	.global byte_8615B24
+	.global byte_8615B44
+	.global byte_8615B64
+	.global off_8615BA4
+	.global byte_8615D14
+	.global byte_8615E88
+	.global off_861602C
+	.global dword_8616264
+	.global byte_86163F4
+	.global off_8616598
+	.global byte_8616634
+	.global byte_8616760
+	.global dword_8616904
+	.global byte_8616EC4
+	.global off_8617068
+	.global dword_8617190
+	.global byte_86172E4
+	.global dword_8617488
+	.global byte_86185C8
+	.global dword_861876C
+	.global dword_8618910
+	.global dword_8618AB4
+	.global dword_8618C58
+	.global dword_8618DFC
+	.global byte_8618E40
+	.global byte_8618F50
+	.global dword_86190F4
+	.global off_8619174
+	.global byte_8619184
+	.global dword_8619474
+	.global byte_8619630
+	.global byte_8619650
+	.global byte_8619670
+	.global byte_8619690
+	.global byte_86196B0
+	.global byte_86196D0
+	.global byte_86196F0
+	.global byte_8619710
+	.global dword_8619730
+	.global dword_8619B50
+	.global byte_8619B90
+	.global byte_8619BD0
+	.global byte_861AD84
+	.global byte_861B31C
+	.global byte_861B338
+	.global byte_861C770
+	.global byte_861CC50
+	.global byte_861CEE8
+	.global byte_861D05C
+	.global byte_861D4D8
+	.global dword_861E06C
+	.global dword_861E6D4
+	.global dword_861F710
+	.global byte_861FF05
+	.global dword_8620350
+	.global dword_8620A9C
+	.global dword_8620E58
+	.global byte_8622CFC
+	.global byte_86246F0
+	.global byte_8625B10
+	.global byte_862623B
+	.global byte_8627DF8
+	.global byte_8628968
+	.global byte_862AB08
+	.global dword_862B6E0
+	.global dword_862C160
+	.global dword_862C978
+	.global dword_862D0A0
+	.global dword_862E15C
+	.global dword_863168C
+	.global dword_8632288
+	.global dword_8633084
+	.global dword_8634E64
+	.global dword_8635EB4
+	.global dword_8636A7C
+	.global dword_86376B4
+	.global dword_8638E70
+	.global dword_863951C
+	.global dword_863B234
+	.global byte_863BF84
+	.global dword_863D1A4
+	.global dword_863F830
+	.global byte_863FF05
+	.global dword_8642B34
+	.global dword_86460FC
+	.global dword_86475CC
+	.global dword_8648BA8
+	.global dword_864A484
+	.global dword_864D860
+	.global byte_864F420
+	.global byte_8650866
+	.global dword_8651B2C
+	.global dword_8656C0C
+	.global dword_865A08C
+	.global byte_865AC26
+	.global dword_865B77C
+	.global byte_8660444
+	.global dword_8660604
+	.global byte_866296C
+	.global byte_866446C
+	.global dword_8664988
+	.global dword_8664F04
+	.global dword_8665548
+	.global dword_8667820
+	.global byte_866A5D6
+	.global dword_866B038
+	.global byte_866D090
+	.global byte_8671A74
+	.global byte_8673418
+	.global byte_8675094
+	.global byte_8678F4C
+	.global byte_867D85C
+	.global byte_867E715
+	.global byte_8680690
+	.global byte_868316C
+	.global byte_8687DCC
+	.global byte_8689000
+	.global byte_868B000
+	.global byte_868CB78
+	.global byte_868D000
+	.global byte_868EBA0
+	.global byte_8691154
+	.global byte_8694FB4
+	.global byte_8699EDC
+	.global byte_869D74C
+	.global byte_869D76C
+	.global byte_869D82C
+	.global byte_869E02C
+	.global byte_869E82C
+	.global byte_869F02C
+	.global byte_86A10B0
+	.global byte_86A10D0
+	.global byte_86A13F0
+	.global byte_86A1480
+	.global byte_86A1940
+	.global byte_86A1A60
+	.global byte_86A1A80
+	.global byte_86A1B20
+	.global byte_86A2340
+	.global byte_86A23E0
+	.global byte_86A2BE0
+	.global byte_86A2C00
+	.global byte_86A2C80
+	.global byte_86A3480
+	.global byte_86A34C0
+	.global byte_86A34E0
+	.global byte_86A3715
+	.global byte_86A3990
+	.global byte_86A39B0
+	.global byte_86A39D0
+	.global byte_86A3E80
+	.global byte_86A3EA0
+	.global byte_86A3F40
+	.global dword_86A4740
+	.global byte_86A48C0
+	.global dword_86A4A40
+	.global byte_86A4CC0
+	.global byte_86A4D40
+	.global byte_86A5180
+	.global dword_86A5300
+	.global dword_86A5500
+	.global dword_86A5520
+	.global byte_86A5D20
+	.global byte_86A5D40
+	.global dword_86A5D60
+	.global byte_86ACD60
+	.global byte_86ACF02
+	.global byte_86AF60A
+	.global byte_86AFE15
+	.global byte_86B4901
+	.global byte_86B5115
+	.global dword_86B7AA0
+	.global dword_86B7AC0
+	.global dword_86B7AE0
+	.global dword_86B7B20
+	.global dword_86B7B60
+	.global dword_86B7BA0
+	.global byte_86B7BC0
+	.global dword_86B7BE0
+	.global dword_86B7C20
+	.global dword_86B7C60
+	.global dword_86B7CA0
+	.global dword_86B7CE0
+	.global dword_86B7D20
+	.global byte_86B7D4B
+	.global dword_86B7D60
+	.global dword_86BA0A0
+	.global dword_86BA120
+	.global byte_86BA140
+	.global dword_86BEAE0
+	.global dword_86BEB20
+	.global byte_86BEC80
+	.global byte_86BECA0
+	.global byte_86BEE80
+	.global byte_86BF060
+	.global byte_86BF240
+	.global byte_86BF420
+	.global byte_86BF600
+	.global byte_86BF7E0
+	.global byte_86BF9C0
+	.global byte_86BFBA0
+	.global byte_86BFE20
+	.global byte_86BFE40
+	.global byte_86BFE60
+	.global byte_86C0040
+	.global byte_86C0220
+	.global byte_86C0400
+	.global byte_86C05E0
+	.global byte_86C0900
+	.global byte_86C0920
+	.global byte_86C0940
+	.global byte_86C0B20
+	.global byte_86C0B60
+	.global byte_86C0BA0
+	.global byte_86C0BE0
+	.global byte_86C0C20
+	.global byte_86C0C60
+	.global dword_86C0D20
+	.global byte_86C0EA0
+	.global byte_86C0FA0
+	.global byte_86C10A0
+	.global byte_86C11A0
+	.global byte_86C12A0
+	.global byte_86C13A0
+	.global byte_86C14A0
+	.global byte_86C1520
+	.global byte_86C15A0
+	.global byte_86C1620
+	.global byte_86C16A0
+	.global byte_86C1720
+	.global byte_86C18A0
+	.global byte_86C18E0
+	.global byte_86C1920
+	.global byte_86C1960
+	.global byte_86C19A0
+	.global byte_86C19E0
+	.global byte_86C1A20
+	.global byte_86C1A60
+	.global byte_86C1AA0
+	.global byte_86C1B20
+	.global byte_86C1BA0
+	.global byte_86C1C20
+	.global byte_86C1CA0
+	.global byte_86C1D20
+	.global byte_86C1DA0
+	.global byte_86C1E20
+	.global byte_86C1EA0
+	.global byte_86C1F20
+	.global byte_86C1F80
+	.global byte_86C22C0
+	.global byte_86C22E0
+	.global byte_86C2300
+	.global byte_86C2320
+	.global byte_86C2340
+	.global byte_86C2360
+	.global byte_86C2380
 
 
 /* External Symbols */
@@ -707,6 +707,6 @@
 // .equ unk_2003334, 0x2003334
 // .equ unk_200AA98, 0x200AA98
 // .equ byte_3005040, 0x3005040
-.equ LCDControl, 0x4000000
+	.equ LCDControl, 0x4000000
 
-.endif // INC_DATA_DAT38_60
+	.endif // INC_DATA_DAT38_60

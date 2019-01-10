@@ -1,4 +1,4 @@
-.include "data/dat38_5.inc"
+	.include "data/dat38_5.inc"
 
 unk_8200810:    .byte  0
     .byte  0

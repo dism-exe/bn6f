@@ -1,4 +1,4 @@
-.include "asm/asm12.inc"
+	.include "asm/asm12.inc"
 
 	thumb_func_start sub_806D8F8
 sub_806D8F8:

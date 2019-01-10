@@ -1,4 +1,4 @@
-.include "asm/asm23.inc"
+	.include "asm/asm23.inc"
 
 	thumb_local_start
 sub_8088CA0:

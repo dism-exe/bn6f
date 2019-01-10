@@ -1,10 +1,10 @@
-.ifndef INC_DATA_DAT38_89
-.equ INC_DATA_DAT38_89, 0
+	.ifndef INC_DATA_DAT38_89
+	.equ INC_DATA_DAT38_89, 0
 
 /* Public Symbols */
-.global dword_87E54B0
+	.global dword_87E54B0
 
 
 /* External Symbols */
 
-.endif // INC_DATA_DAT38_89
+	.endif // INC_DATA_DAT38_89

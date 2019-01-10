@@ -1,4 +1,4 @@
-.include "asm/main.inc"
+	.include "asm/main.inc"
 
 	thumb_func_start main_
 main_:

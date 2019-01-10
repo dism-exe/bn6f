@@ -1,4 +1,4 @@
-.include "asm/asm37_1.inc"
+	.include "asm/asm37_1.inc"
 
 	thumb_func_start sub_814187C
 sub_814187C:
