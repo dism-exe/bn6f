@@ -1607,7 +1607,7 @@ loc_812FCB8:
 	ldrh r0, [r7,r6]
 	bl split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
 	mov r2, #1
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	add r6, #2
 	cmp r6, #0x3c 
 	blt loc_812FCB8

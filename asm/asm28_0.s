@@ -714,7 +714,7 @@ sub_809A078:
 	strh r0, [r7,#0x4] // (word_200AC84 - 0x200ac80)
 	strh r1, [r7,#0x6] // (word_200AC86 - 0x200ac80)
 	mov r2, #1
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	mov r0, #0xa
 	bl sub_803D0C8
 	mov r3, r10
@@ -1270,7 +1270,7 @@ sub_809A520:
 	mov r0, r2
 	mov r1, r3
 	mov r2, #1
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	mov r0, #0x37 
 	mov r1, #0x8c
 	str r0, [r5,r1]
@@ -1983,7 +1983,7 @@ loc_809AB92:
 	mov r0, r2
 	mov r1, r3
 	mov r2, #1
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	// initRefs
 	ldr r0, off_809AC28 // =dword_809AC2C 
 	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void

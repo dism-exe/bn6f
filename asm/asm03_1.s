@@ -3162,15 +3162,15 @@ byte_80357F0: .byte 0x3C, 0x3D, 0x3E, 0x3F, 0x10, 0x11, 0x12, 0x13, 0x14
 	.byte 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D
 	.byte 0x1E, 0x1F, 0x0, 0x0, 0x0, 0x0
 ScriptCmds8035808:
-	.word sub_8035920+1
-	.word sub_8035924+1
-	.word sub_8035932+1
-	.word sub_8035962+1
-	.word sub_8035992+1
-	.word sub_80359BE+1
-	.word sub_80359EE+1
-	.word sub_8035A1A+1
-	.word sub_8035A74+1
+	.word MapScript_end+1
+	.word MapScript_jump+1
+	.word MapScript_jump_if_progress_in_range+1
+	.word MapScript_jump_if_flag_set+1
+	.word MapScript_jump_if_flag_range_set+1
+	.word MapScript_jump_if_flag_clear+1
+	.word MapScript_jump_if_flag_range_clear+1
+	.word MapScript_jump_if_mem_equals+1
+	.word MapScript_jump_if_unk_range_func+1
 	.word sub_8035AAA+1
 	.word sub_803793A+1
 	.word sub_803795C+1
@@ -3237,27 +3237,27 @@ ScriptCmds8035808:
 	thumb_local_start
 // 0x00
 // return from script
-sub_8035920:
+MapScript_end: // 8035920
 	mov r0, #0
 	mov pc, lr
-	thumb_func_end sub_8035920
+	thumb_func_end MapScript_end
 
 	thumb_local_start
 // 0x01 destination
 // jump
-sub_8035924:
+MapScript_jump: // 8035924
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035924
+	thumb_func_end MapScript_jump
 
 	thumb_local_start
 // 0x02 byte1 byte2 destination
 // jump if byte1 < progress byte < byte2
-sub_8035932:
+MapScript_jump_if_progress_in_range: // 8035932
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3268,54 +3268,54 @@ sub_8035932:
 	mov r6, #2
 	bl ReadMapScriptByte
 	cmp r0, r1
-	blt .progressByteOutOfRange_803595C
+	blt .progressByteOutOfRange
 	cmp r0, r4
-	bgt .progressByteOutOfRange_803595C
+	bgt .progressByteOutOfRange
 	mov r6, #3
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-.progressByteOutOfRange_803595C:
+.progressByteOutOfRange
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035932
+	thumb_func_end MapScript_jump_if_progress_in_range
 
 	thumb_local_start
 // 0x03 byte flag destination
 // jump if event flag in mem or immediate is set
-sub_8035962:
+MapScript_jump_if_flag_set: // 8035962
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq .immediateEventFlag_8035972
+	beq .immediateEventFlag
 // event flag from memory
 	ldrh r4, [r5,r4]
-	b .gotEventFlag_8035978
-.immediateEventFlag_8035972:
+	b .gotEventFlag
+.immediateEventFlag
 	mov r6, #2
 	bl ReadMapScriptHalfword
-.gotEventFlag_8035978:
+.gotEventFlag
 	mov r0, r4
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
-	beq .eventFlagNotSet_803598C
+	beq .eventFlagNotSet
 	mov r6, #4
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-.eventFlagNotSet_803598C:
+.eventFlagNotSet
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035962
+	thumb_func_end MapScript_jump_if_flag_set
 
 	thumb_local_start
 // 0x04 byte flag destination
-// jump if TestEventFlagRange return flags is true (related to event flags)
-sub_8035992:
+// jump if (all) event flags in the event flag range are set
+MapScript_jump_if_flag_range_set: // 8035992
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3325,51 +3325,51 @@ sub_8035992:
 	mov r0, r4
 	mov r2, r1
 	bl TestEventFlagRange // (int a3, int a2) ->
-	beq loc_80359B8
+	beq .eventFlagRangeNotSet
 	mov r6, #4
 	bl ReadMapScriptWord // () -> void .spoils R4, R6
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_80359B8:
+.eventFlagRangeNotSet
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035992
+	thumb_func_end MapScript_jump_if_flag_range_set
 
 	thumb_local_start
 // 0x05 byte flag destination
 // jump if event flag in mem or immediate is clear
-sub_80359BE:
+MapScript_jump_if_flag_clear: // 80359BE
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq .immediateEventFlag_80359CE
+	beq .immediateEventFlag
 	ldrh r4, [r5,r4]
-	b .gotEventFlag_80359D4
-.immediateEventFlag_80359CE:
+	b .gotEventFlag
+.immediateEventFlag
 	mov r6, #2
 	bl ReadMapScriptHalfword
-.gotEventFlag_80359D4:
+.gotEventFlag
 	mov r0, r4
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
-	bne .eventFlagSet_80359E8
+	bne .eventFlagSet
 	mov r6, #4
 	bl ReadMapScriptWord // () -> void .spoils R4, R6
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-.eventFlagSet_80359E8:
+.eventFlagSet
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80359BE
+	thumb_func_end MapScript_jump_if_flag_clear
 
 	thumb_local_start
 // 0x06 byte flag destination
-// jump if TestEventFlagRange return flags is false (related to event flags)
-sub_80359EE:
+// jump if not all event flags in the event flag range are set
+MapScript_jump_if_flag_range_clear: // 80359EE
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3379,17 +3379,17 @@ sub_80359EE:
 	mov r0, r4
 	mov r2, r1
 	bl TestEventFlagRange // (int a3, int a2) ->
-	bne loc_8035A14
+	bne .atLeastOneEventFlagSet
 	mov r6, #4
 	bl ReadMapScriptWord // () -> void .spoils R4, R6
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8035A14:
+.atLeastOneEventFlagSet
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80359EE
+	thumb_func_end MapScript_jump_if_flag_range_clear
 
 	thumb_local_start
 // 0x07 0x00 word destination byte
@@ -3397,7 +3397,7 @@ loc_8035A14:
 // 0x07 0x02 word destination word
 // jump if [word] == param
 // this command is variable length
-sub_8035A1A:
+MapScript_jump_if_mem_equals: // 8035A1A
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptWord // word
@@ -3408,46 +3408,46 @@ sub_8035A1A:
 	mov r6, #1
 	bl ReadMapScriptByte // type
 	cmp r4, #1
-	beq .readHword_8035A4A
+	beq .readHword
 	cmp r4, #2
-	beq .readWord_8035A5A
+	beq .readWord
 // byte
-	mov r6, #0xa
+	mov r6, #10
 	bl ReadMapScriptByte
 	ldrb r0, [r0]
 	cmp r0, r4
-	beq .doScriptJump_8035A6E
-	mov r4, #0xb // end of variable size script command
-	b .addToNextCommand_8035A68
-.readHword_8035A4A:
-	mov r6, #0xa
+	beq .doScriptJump
+	mov r4, #11 // end of variable size script command
+	b .addToNextCommand
+.readHword
+	mov r6, #10
 	bl ReadMapScriptHalfword
 	ldrh r0, [r0]
 	cmp r0, r4
-	beq .doScriptJump_8035A6E
-	mov r4, #0xc
-	b .addToNextCommand_8035A68
-.readWord_8035A5A:
-	mov r6, #0xa
+	beq .doScriptJump
+	mov r4, #12
+	b .addToNextCommand
+.readWord
+	mov r6, #10
 	bl ReadMapScriptWord // () -> void .spoils R4, R6
 	ldr r0, [r0]
 	cmp r0, r4
-	beq .doScriptJump_8035A6E
-	mov r4, #0xe
-.addToNextCommand_8035A68:
+	beq .doScriptJump
+	mov r4, #14
+.addToNextCommand
 	add r7, r7, r4
 	mov r0, #1
 	pop {pc}
-.doScriptJump_8035A6E:
+.doScriptJump
 	mov r7, r1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035A1A
+	thumb_func_end MapScript_jump_if_mem_equals
 
 	thumb_local_start
 // 0x08 byte1 byte2 byte3 destination
 // jump if byte2 < sub_803CE28(byte1) < byte3
-sub_8035A74:
+MapScript_jump_if_unk_range_func: // 8035A74
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3459,19 +3459,19 @@ sub_8035A74:
 	mov r6, #3
 	bl ReadMapScriptByte
 	cmp r0, r1
-	blt .unkByteOutOfRange_8035AA4
+	blt .unkByteOutOfRange
 	cmp r0, r4
-	bgt .unkByteOutOfRange_8035AA4
+	bgt .unkByteOutOfRange
 	mov r6, #4
 	bl ReadMapScriptWord // () -> void .spoils R4, R6
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-.unkByteOutOfRange_8035AA4:
+.unkByteOutOfRange
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035A74
+	thumb_func_end MapScript_jump_if_unk_range_func
 
 	thumb_local_start
 // 0x09 hword byte1 byte2 byte3 destination
@@ -3481,7 +3481,7 @@ sub_8035A74:
 //     jump if byte2 < sub_8021BC0(byte1, hword) < byte3
 //     sub_8021BC0 calls chip_8021C7C
 // related to chips
-sub_8035AAA:
+sub_8035AAA: // 8035AAA
 	push {lr}
 	mov r6, #3
 	bl ReadMapScriptByte
@@ -4344,14 +4344,20 @@ off_8036090: .word eUnkMapScriptState_2011e60
 	thumb_func_end sub_8036064
 
 	thumb_local_start
+/* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:u8 result
+    preserves: r6,r7
+	unused: r0-r3,r5,r8-r12*/
 ReadMapScriptByte: // 8036094
 	push {r7,lr}
 	add r7, r7, r6
 	ldrb r4, [r7]
 	pop {r7,pc}
 	thumb_func_end ReadMapScriptByte
-
+	
 	thumb_local_start
+/* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:s8 result
+    preserves: r6,r7
+	unused: r0-r3,r5,r8-r12*/
 ReadMapScriptSignedByte: // 803609C
 	push {r7,lr}
 	add r7, r7, r6
@@ -4362,6 +4368,10 @@ ReadMapScriptSignedByte: // 803609C
 	thumb_func_end ReadMapScriptSignedByte
 
 	thumb_local_start
+/* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:u16 result
+	spoils: r6
+    preserves: r7
+	unused: r0-r3,r5,r8-r12*/
 ReadMapScriptHalfword: // 80360A8
 	push {r7,lr}
 	add r7, r7, r6
@@ -4373,6 +4383,10 @@ ReadMapScriptHalfword: // 80360A8
 	thumb_func_end ReadMapScriptHalfword
 
 	thumb_local_start
+/* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:s16 result
+	spoils: r6
+    preserves: r7
+	unused: r0-r3,r5,r8-r12*/
 ReadMapScriptSignedHalfword: // 80360B6
 	push {r7,lr}
 	add r7, r7, r6
@@ -4385,8 +4399,11 @@ ReadMapScriptSignedHalfword: // 80360B6
 	pop {r7,pc}
 	thumb_func_end ReadMapScriptSignedHalfword
 
-// () -> void .spoils R4, R6
 	thumb_local_start
+/* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:u32 result
+	spoils: r6
+    preserves: r7
+	unused: r0-r3,r5,r8-r12*/
 ReadMapScriptWord: // 80360C8
 	push {r7,lr}
 	add r7, r7, r6
@@ -6139,15 +6156,15 @@ jt_big_803749C: .word sub_80376C4+1
 	.word sub_80378C2+1
 	.word sub_80378EE+1
 	.word sub_8037904+1
-	.word sub_8035924+1
-	.word sub_8035932+1
-	.word sub_8035962+1
-	.word sub_8035992+1
-	.word sub_80359BE+1
-	.word sub_80359EE+1
-	.word sub_8035A1A+1
+	.word MapScript_jump+1
+	.word MapScript_jump_if_progress_in_range+1
+	.word MapScript_jump_if_flag_set+1
+	.word MapScript_jump_if_flag_range_set+1
+	.word MapScript_jump_if_flag_clear+1
+	.word MapScript_jump_if_flag_range_clear+1
+	.word MapScript_jump_if_mem_equals+1
 	.word sub_8037914+1
-	.word sub_8035A74+1
+	.word MapScript_jump_if_unk_range_func+1
 	.word sub_8035AAA+1
 	.word sub_803793A+1
 	.word sub_803795C+1
@@ -8044,7 +8061,7 @@ sub_80383AA:
 	bl ReadMapScriptByte
 	cmp r4, #1
 	beq loc_80383D4
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	b loc_80383D8
 loc_80383D4:
 	bl sub_8021B92 // (int idx, int searchItem, int off) -> void*

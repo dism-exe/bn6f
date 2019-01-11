@@ -12436,7 +12436,7 @@ sub_802CAA6:
 	pop {pc}
 loc_802CACE:
 	pop {r0-r2}
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	pop {pc}
 loc_802CAD6:
 	pop {r0-r2}
@@ -17184,7 +17184,9 @@ dword_802F10C: .word 0x16
 // than to load a halfword from memory into a single register
 // it would also require aligning to a word boundary which may take additional space
 
-// (u8 entryIdx, u8 byteFlagIdx) -> void
+/* (r0:u8 flagUpper, r1:u8 flagLower) -> void
+   clobbers: r0,r1,r3
+   ignores: r2,r4-r9,r11,r12 */
 	thumb_func_start SetEventFlagFromImmediate
 SetEventFlagFromImmediate:
 // merge r0 and r1 into a halfword
@@ -17192,10 +17194,12 @@ SetEventFlagFromImmediate:
 	orr r0, r1
 // fallthrough
 
-// (u16 entryFlagBitfield) -> void
-
 // Sets a flag at eEventFlags
 // r0 - flag to set
+
+/* (r0:u16 flagToSet) -> void
+   clobbers: r0,r1,r3
+   ignores: r2,r4-r9,r11,r12 */
 	thumb_func_start SetEventFlag
 SetEventFlag:
 	mov r3, r10
@@ -17221,17 +17225,21 @@ SetEventFlag:
 	thumb_func_end SetEventFlag
 	thumb_func_end SetEventFlagFromImmediate
 
-// (u8 entryIdx, u8 byteFlagIdx) -> void
+/* (r0:u8 flagUpper, r1:u8 flagLower) -> void
+   clobbers: r0,r1,r3
+   ignores: r2,r4-r9,r11-r12 */
 	thumb_func_start ClearEventFlagFromImmediate
 ClearEventFlagFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
 
-// (u16 entryFlagBitfield) -> void
-
 // Clears a flag at eEventFlags
 // r0 - flag to clear
+
+/* (r0:u16 flagToClear) -> void
+   clobbers: r0,r1,r3
+   ignores: r2,r4-r9,r11,r12 */
 	thumb_func_start ClearEventFlag
 ClearEventFlag:
 	mov r3, r10
@@ -17257,17 +17265,21 @@ ClearEventFlag:
 	thumb_func_end ClearEventFlag
 	thumb_func_end ClearEventFlagFromImmediate
 
-// (u8 entryIdx, u8 byteFlagIdx) -> void
+/* (r0:u8 flagUpper, r1:u8 flagLower) -> void
+   clobbers: r0,r1,r3
+   ignores: r2,r4-r9,r11,r12 */
 	thumb_func_start ToggleEventFlagFromImmediate
 ToggleEventFlagFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
 
-// (u16 entryFlagBitfield) -> void
-
 // Toggle a flag at eEventFlags
 // r0 - flag to toggle
+
+/* (r0:u16 flagToToggle) -> void
+   clobbers: r0,r1,r3
+   ignores: r2,r4-r9,r11,r12 */
 	thumb_func_start ToggleEventFlag
 ToggleEventFlag:
 	mov r3, r10
@@ -17293,17 +17305,21 @@ ToggleEventFlag:
 	thumb_func_end ToggleEventFlag
 	thumb_func_end ToggleEventFlagFromImmediate
 
-// (int entryIdx, int byteFlagIdx) -> zf
+/* (r0:u8 flagUpper, r1:u8 flagLower) -> zf
+   clobbers: r0,r1,r3
+   ignores: r2,r4-r9,r11,r12 */
 	thumb_func_start TestEventFlagFromImmediate
 TestEventFlagFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
 
-// (u16 entryFlagBitfield) -> zf
-
 // Test a flag at eEventFlags
 // r0 - flag to test
+
+/* (r0:u16 flagToTest) -> zf
+   clobbers: r0,r1,r3
+   ignores: r2,r4-r9,r11,r12 */
 	thumb_func_start TestEventFlag
 TestEventFlag:
 	mov r3, r10
@@ -17328,17 +17344,23 @@ TestEventFlag:
 	thumb_func_end TestEventFlag
 	thumb_func_end TestEventFlagFromImmediate
 
-// (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+/* (r0:u8 flagUpper, r1:u8 flagLower, r2:uint numEntries) -> void
+   preserves: r4,r5,lr
+   clobbers: r0-r3
+   ignores: r6-r9,r11,r12*/
 	thumb_func_start SetEventFlagRangeFromImmediate
 SetEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
 
-// (u16 entryFlagBitfield) -> void
-
 // Set multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
 // Number of flags to set is in r2
+
+/* (r0:u16 flagRangeStart, r2:uint numEntries) -> void
+   preserves: r4,r5,lr
+   clobbers: r0-r3
+   ignores: r6-r9,r11,r12*/
 	thumb_func_start SetEventFlagRange
 SetEventFlagRange:
 	push {r4,r5,lr}
@@ -17349,7 +17371,7 @@ SetEventFlagRange:
 // r2 = number of event flags left to set
 // r4 = eEventFlags
 // r5 = current event flag
-.loop_802f18a:
+.setEventFlagRangeLoop
 	// load invariants
 	mov r3, r4
 	mov r0, r5
@@ -17374,22 +17396,28 @@ SetEventFlagRange:
 	// loop check
 	add r5, #1 // current event flag + 1
 	sub r2, #1 // loop counter
-	bgt .loop_802f18a
+	bgt .setEventFlagRangeLoop
 	pop {r4,r5,pc}
 	thumb_func_end SetEventFlagRange
 	thumb_func_end SetEventFlagRangeFromImmediate
 
-// (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
+/* (r0:u8 flagUpper, r1:u8 flagLower, r2:uint numEntries) -> void
+   preserves: r4,r5,lr
+   clobbers: r0-r3
+   ignores: r6-r9,r11,r12*/
 	thumb_func_start ClearEventFlagRangeFromImmediate
 ClearEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
 
-// (u16 entryFlagBitfield) -> void
-
 // Clears multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
 // Number of flags to clear is in r2
+
+/* (r0:u16 flagRangeStart, r2:uint numEntries) -> void
+   preserves: r4,r5,lr
+   clobbers: r0-r3
+   ignores: r6-r9,r11,r12*/
 	thumb_func_start ClearEventFlagRange
 ClearEventFlagRange:
 	push {r4,r5,lr}
@@ -17400,7 +17428,7 @@ ClearEventFlagRange:
 // r2 = number of event flags left to clear
 // r4 = eEventFlags
 // r5 = current event flag
-.loop_802F1B4:
+.clearEventFlagRangeLoop
 	// load invariants
 	mov r3, r4
 	mov r0, r5
@@ -17425,22 +17453,28 @@ ClearEventFlagRange:
 	// loop check
 	add r5, #1 // current event flag + 1
 	sub r2, #1 // loop counter
-	bgt .loop_802F1B4
+	bgt .clearEventFlagRangeLoop
 	pop {r4,r5,pc}
 	thumb_func_end ClearEventFlagRange
 	thumb_func_end ClearEventFlagRangeFromImmediate
 
+/* (r0:u8 flagUpper, r1:u8 flagLower, r2:uint numEntries) -> void
+   preserves: r4,r5,lr
+   clobbers: r0-r3
+   ignores: r6-r9,r11,r12*/
 	thumb_func_start ToggleEventFlagRangeFromImmediate
-// (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 ToggleEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
 
-// (u16 entryFlagBitfield) -> void
-
 // Toggles multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
 // Number of flags to toggle is in r2
+
+/* (r0:u16 flagRangeStart, r2:uint numEntries) -> void
+   preserves: r4,r5
+   clobbers: r0-r3
+   ignores: r6-r9,r11,r12*/
 	thumb_func_start ToggleEventFlagRange
 ToggleEventFlagRange:
 	push {r4,r5,lr}
@@ -17451,7 +17485,7 @@ ToggleEventFlagRange:
 // r2 = number of event flags left to toggle
 // r4 = eEventFlags
 // r5 = current event flag
-.loop_802F1DE:
+.toggleEventFlagRangeLoop
 	// load invariants
 	mov r3, r4
 	mov r0, r5
@@ -17476,12 +17510,15 @@ ToggleEventFlagRange:
 	// loop check
 	add r5, #1 // current event flag + 1
 	sub r2, #1 // loop counter
-	bgt .loop_802F1DE
+	bgt .toggleEventFlagRangeLoop
 	pop {r4,r5,pc}
 	thumb_func_end ToggleEventFlagRange
 	thumb_func_end ToggleEventFlagRangeFromImmediate
 
-// (int a3, int a2) ->
+/* (r0:u8 flagUpper, r1:u8 flagLower, r2:uint numEntries) -> zf
+   preserves: r4-r7,lr
+   clobbers: r0-r3
+   ignores: r6-r9,r11,r12*/
 	thumb_func_start TestEventFlagRangeFromImmediate
 TestEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
@@ -17490,6 +17527,11 @@ TestEventFlagRangeFromImmediate:
 
 // Tests multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
 // Number of flags to tests is in r2
+
+/* (r0:u16 flagRangeStart, r2:uint numEntries) -> zf
+   preserves: r4-r7,lr
+   clobbers: r0-r3
+   ignores: r8-r9,r11,r12*/
 	thumb_func_start TestEventFlagRange
 TestEventFlagRange:
 	push {r4-r7,lr}
@@ -17504,7 +17546,7 @@ TestEventFlagRange:
 // r5 = current event flag
 // r6 = number of event flags set
 // r7 = range of event flags to test
-.loop_802f20c:
+.testEventFlagRangeLoop
 	// load invariants
 	mov r3, r4
 	mov r0, r5
@@ -17524,21 +17566,21 @@ TestEventFlagRange:
 	// test the flag and increment counter if set
 	ldrb r0, [r3]
 	tst r0, r1
-	beq .flagNotSet_802f224
+	beq .flagNotSet
 	add r6, #1
-.flagNotSet_802f224:
+.flagNotSet
 	// loop check
 	add r5, #1 // current event flag + 1
 	sub r2, #1 // loop counter
-	bgt .loop_802f20c
+	bgt .testEventFlagRangeLoop
 
 // return zero if not all flags were set
 	mov r0, #0
 	cmp r6, r7
-	bne loc_802F232
+	bne .notAllFlagsSet
 	mov r0, #1
-loc_802F232:
-	tst r0, r0 // unnecessary since mov sets condition flags already
+.notAllFlagsSet
+	tst r0, r0
 	pop {r4-r7,pc}
 	thumb_func_end TestEventFlagRange
 	thumb_func_end TestEventFlagRangeFromImmediate

@@ -1409,7 +1409,7 @@ loc_812CDC4:
 	lsl r1, r1, #0x11
 	lsr r1, r1, #0x1a
 	mov r2, #1
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 loc_812CDDA:
 	bl sub_8120AB8
 	bl sub_803F798

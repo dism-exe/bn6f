@@ -4235,7 +4235,7 @@ loc_8041E2A:
 	ldr r1, [r5,#0x58]
 loc_8041E32:
 	ldrb r2, [r4,#5]
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	pop {r4,r5}
 	add r4, #6
 	mov r0, #1
@@ -5008,7 +5008,7 @@ chatbox_8042418:
 	ldrb r0, [r0]
 	str r0, [r5,#0x4c]
 	push {r4}
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	pop {r4}
 	ldrb r0, [r4,#2]
 	add r0, #1

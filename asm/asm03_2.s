@@ -1766,7 +1766,7 @@ loc_8046F42:
 	bl sub_8047384
 	bne loc_8047000
 	mov r2, #1
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	mov r1, #9
 	cmp r0, #0
 	bne loc_804700E
@@ -1938,7 +1938,7 @@ sub_804709C:
 	bl sub_8047384
 	bne loc_804710A
 	mov r2, #1
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	mov r1, #9
 	cmp r0, #0
 	bne loc_8047118
@@ -6787,7 +6787,7 @@ loc_804A4AA:
 	strh r0, [r7,#0x4] // (word_200AC84 - 0x200ac80)
 	strh r1, [r7,#0x6] // (word_200AC86 - 0x200ac80)
 	mov r2, #1
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	bl sub_803F798
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]

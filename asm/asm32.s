@@ -32559,7 +32559,7 @@ loc_811FFE8:
 	cmp r1, #0xff
 	beq loc_811FFF6
 	mov r2, #0x5a 
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 loc_811FFF6:
 	sub r6, #1
 	cmp r6, #0
@@ -33490,7 +33490,7 @@ loc_81206D8:
 	beq loc_81206EE
 	lsl r1, r1, #9
 	lsr r1, r1, #0x19
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 loc_81206EE:
 	sub r7, #0x20 
 	add r4, #1
