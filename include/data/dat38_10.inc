@@ -64,7 +64,7 @@
 
 /* External Symbols */
 	.include "asm/start.inc"
-// .global start_
+// .global GameEntryPoint
 
 
 /* Undeclared Symbols */

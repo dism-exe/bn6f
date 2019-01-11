@@ -12,7 +12,7 @@
 
 /* External Symbols */
 	.include "asm/start.inc"
-// .global start_
+// .global GameEntryPoint
 
 	.include "data/dat20.inc"
 // .global dword_807FAC4

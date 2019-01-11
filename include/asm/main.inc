@@ -58,7 +58,7 @@
 // .global subsystem_triggerTransition_800630A
 // .global sub_8006910
 // .global CpuSet_toolKit // () -> void
-// .global sub_8006C22
+// .global RandomizeExtraToolkitPointers
 // .global sub_80071B4
 // .global isSameSubsystem_800A732 // () -> zf
 

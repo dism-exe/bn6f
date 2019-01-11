@@ -14287,7 +14287,7 @@ loc_802D8C0:
 	bl sub_801E0D0
 	bl sub_801DBD4
 	bl sub_800EA0E
-	ldr r0, off_802DCA4 // =start_ 
+	ldr r0, off_802DCA4 // =GameEntryPoint 
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_801086C
 	bl sub_8014216
@@ -14456,7 +14456,7 @@ sub_802D9B0:
 	ldrb r0, [r5,#0x16]
 	bl sub_80108FC
 	bl sub_800EA0E
-	ldr r0, off_802DCA4 // =start_ 
+	ldr r0, off_802DCA4 // =GameEntryPoint 
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_801086C
 	bl sub_8014216
@@ -14660,7 +14660,7 @@ sub_802DB80:
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
 	bl sub_801BB46
-	ldr r0, off_802DCA4 // =start_ 
+	ldr r0, off_802DCA4 // =GameEntryPoint 
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_801086C
 	bl sub_8014216
@@ -14707,7 +14707,7 @@ loc_802DC7C:
 locret_802DCA0:
 	pop {pc}
 	.balign 4, 0x00
-off_802DCA4: .word start_
+off_802DCA4: .word GameEntryPoint
 dword_802DCA8: .word 0x4000
 off_802DCAC: .word 0x1800
 dword_802DCB0: .word 0x8600
@@ -14773,7 +14773,7 @@ sub_802DD10:
 	push {r5,lr}
 	mov r5, r0
 	beq locret_802DD1C
-	ldr r0, off_802DE50 // =start_ 
+	ldr r0, off_802DE50 // =GameEntryPoint 
 	bl sub_800FFE4
 locret_802DD1C:
 	pop {r5,pc}
@@ -14872,7 +14872,7 @@ off_802DE40: .word unk_203A980
 off_802DE44: .word byte_203CED0
 off_802DE48: .word LCDControl
 off_802DE4C: .word 0x1000
-off_802DE50: .word start_
+off_802DE50: .word GameEntryPoint
 dword_802DE54: .word 0x4000
 off_802DE58: .word 0x2000
 	thumb_func_end sub_802DD70
@@ -16328,7 +16328,7 @@ loc_802E932:
 	.balign 4, 0x00
 off_802E938: .word off_802E93C
 off_802E93C: .word LCDControl
-	.word start_
+	.word GameEntryPoint
 dword_802E944: .word 0x10000
 dword_802E948: .word 0xFFFF
 dword_802E94C: .word 0x80000

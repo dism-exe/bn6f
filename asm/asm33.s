@@ -15342,7 +15342,7 @@ loc_812B652:
 	bl sub_80024A2
 	bl sub_8003962
 	bl sub_8003AB2
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	mov r0, #0x17
 	mov r1, #0x2d 
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void

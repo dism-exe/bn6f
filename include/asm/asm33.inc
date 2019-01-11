@@ -70,7 +70,7 @@
 // .global sub_8005F40
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
-// .global sub_8006C22
+// .global RandomizeExtraToolkitPointers
 // .global sub_8006DEC
 // .global sub_80070BC
 // .global sub_80070E6

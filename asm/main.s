@@ -227,7 +227,7 @@ loc_80004AA:
 	push {r5,lr}
 	push {r0}
 	bl CpuSet_toolKit // () -> void
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	pop {r1}
 	ldr r0, off_8000564 // =0x40 
 	tst r1, r1

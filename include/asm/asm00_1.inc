@@ -114,8 +114,8 @@
 	.global sub_8006990
 	.global sub_8006A5C
 	.global CpuSet_toolKit // () -> void
-	.global sub_8006C22
-	.global sub_8006C6C
+	.global RandomizeExtraToolkitPointers
+	.global SetExtraToolkitPointers
 	.global sub_8006DEC
 	.global sub_8006DF6
 	.global save_memSetFlags_8006E0E // (u8 *mem, int size) -> void
@@ -1074,7 +1074,7 @@
 // .equ byte_2001012, 0x2001012
 // .equ byte_2001013, 0x2001013
 // .equ dword_2001014, 0x2001014
-// .equ eUnusedGameStateBaseOffset, 0x2001060
+// .equ eUnusedExtraToolkitPtrsOffset, 0x2001060
 // .equ dword_2001064, 0x2001064
 // .equ map_activeNPCs, 0x20010E0
 // .equ dword_20013F0, 0x20013F0

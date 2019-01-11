@@ -2,7 +2,7 @@
 	.equ INC_ASM_START, 0
 
 /* Public Symbols */
-	.global start_
+	.global GameEntryPoint
 	.global start_800023C // () -> void
 	.global start_800024C
 	.global start_800027C
@@ -26,7 +26,7 @@
 
 	.include "asm/asm00_1.inc"
 // .global CpuSet_toolKit // () -> void
-// .global sub_8006C22
+// .global RandomizeExtraToolkitPointers
 
 
 /* Undeclared Symbols */

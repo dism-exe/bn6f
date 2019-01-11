@@ -2292,33 +2292,41 @@ sub_80014D4:
 	.balign 4, 0x00
 	thumb_func_end sub_80014D4
 
-// (void *src, void *dest, int size) -> void
+// Another function for copying words
+// except it will do a backwards copy if
+// source < dest, otherwise it will do a
+// forwards copy. This may possibly be
+// for when the source and dest overlap
+
+/* (r0:uint * src, r1:uint * dest, r2:int size) -> void
+   preserves: r0-r7,lr
+   ignores: r4-r12*/
 	thumb_func_start copyWords_80014EC
-copyWords_80014EC:
+copyWords_80014EC: // 80014EC
 	push {r0-r7,lr}
 	cmp r0, r1
-	blt setPointersToLastElem_8001500
-copyWords_80014F2:
+	blt .doReverseCopy
+.forwardsCopyLoop
 	ldr r3, [r0]
 	str r3, [r1]
 	add r0, #4
 	add r1, #4
 	sub r2, #4
 	// while (a3_size > 0);
-	bgt copyWords_80014F2
+	bgt .forwardsCopyLoop
 	pop {r0-r7,pc}
-setPointersToLastElem_8001500:
+.doReverseCopy
 	sub r2, #4
 	add r0, r0, r2
 	add r1, r1, r2
-reverseCopyWords_8001506:
+.reverseCopyLoop
 	ldr r3, [r0]
 	str r3, [r1]
 	sub r0, #4
 	sub r1, #4
 	sub r2, #4
 	// while (a3_size >= 0);
-	bge reverseCopyWords_8001506
+	bge .reverseCopyLoop
 	pop {r0-r7,pc}
 	thumb_func_end copyWords_80014EC
 

@@ -109,7 +109,7 @@
 
 /* External Symbols */
 	.include "asm/start.inc"
-// .global start_
+// .global GameEntryPoint
 
 	.include "data/dat38_17.inc"
 // .global byte_8420000

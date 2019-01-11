@@ -10597,7 +10597,7 @@ sub_8039E80:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	mov r0, #0
 	bl getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
 	bl sub_80071D4
@@ -21008,7 +21008,7 @@ sub_803F838:
 	mov r1, r2
 	bl save_memSetFlags_8006E0E // (u8 *mem, int size) -> void
 	pop {r0-r2}
-	bl sub_8006C6C
+	bl SetExtraToolkitPointers
 	bl sub_803F8C4
 	bne loc_803F870
 	bl sub_803F8F4
@@ -21027,7 +21027,7 @@ loc_803F870:
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_8001514 // () -> void
 loc_803F87E:
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	mov r0, r4
 	tst r0, r0
 	pop {r1-r7,pc}

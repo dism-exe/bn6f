@@ -254,7 +254,7 @@ byte_200103A:: // 0x200103a
 	.space 1
 byte_200103B:: // 0x200103b
 	.space 37
-eUnusedGameStateBaseOffset:: // 0x2001060
+eUnusedExtraToolkitPtrsOffset:: // 0x2001060
 	.space 4
 dword_2001064:: // 0x2001064
 	.space 124
@@ -350,6 +350,7 @@ dword_2001ABC:: // 0x2001abc
 	.space 4
 byte_2001AC0:: // 0x2001ac0
 	.space 192
+eToolkitExtraPtrsMemory::
 eGameState:: // 0x2001b80
 	game_state_struct eGameState
 eGameStateEnd::
@@ -409,7 +410,12 @@ unk_2005028:: // 0x2005028
 unk_2005030:: // 0x2005030
 	.space 8
 unk_2005038:: // 0x2005038
-	.space 1864
+	.space 260
+eToolkitExtraPtrsMemoryEnd:: // 0x200153c
+// 0x200153c, end of eToolkit extra pointers
+	.space 256
+// additional buffer for dummied out randomization
+	.space 1348
 dynamicArr:: // 0x2005780
 	.space 15
 unk_200578F:: // 0x200578f

@@ -284,8 +284,8 @@
 // .global byte_80065E0
 // .global sub_80068EC
 // .global sub_8006910
-// .global sub_8006C22
-// .global sub_8006C6C
+// .global RandomizeExtraToolkitPointers
+// .global SetExtraToolkitPointers
 // .global sub_8006DF6
 // .global save_memSetFlags_8006E0E // (u8 *mem, int size) -> void
 // .global save_8006E26

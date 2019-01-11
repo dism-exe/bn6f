@@ -4329,7 +4329,7 @@ loc_8005152:
 	mov r0, #0
 	bl sub_803F6B0
 	bl sub_803F500
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	mov r0, #0x17
 	mov r1, #0x41 
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
@@ -4479,7 +4479,7 @@ sub_800531C:
 	bl sub_80024A2
 	bl sub_8003962
 	bl sub_8003AB2
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r0, #0xc
@@ -4585,7 +4585,7 @@ sub_80053E4:
 	bl sub_80024A2
 	bl sub_8003962
 	bl sub_8003AB2
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -4685,7 +4685,7 @@ sub_8005524:
 	bl sub_80024A2
 	bl sub_8003962
 	bl sub_8003AB2
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]
@@ -4721,7 +4721,7 @@ sub_800555A:
 	bl sub_80024A2
 	bl sub_8003962
 	bl sub_8003AB2
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -4760,7 +4760,7 @@ sub_80055CE:
 	bl sub_80024A2
 	bl sub_8003962
 	bl sub_8003AB2
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -4799,7 +4799,7 @@ sub_8005642:
 	bl sub_80024A2
 	bl sub_8003962
 	bl sub_8003AB2
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -4839,7 +4839,7 @@ sub_80056B8:
 	bl sub_80024A2
 	bl sub_8003962
 	bl sub_8003AB2
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -4878,7 +4878,7 @@ sub_800572C:
 	bl sub_80024A2
 	bl sub_8003962
 	bl sub_8003AB2
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -4917,7 +4917,7 @@ sub_80057A0:
 	bl sub_80024A2
 	bl sub_8003962
 	bl sub_8003AB2
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -4980,7 +4980,7 @@ sub_800585A:
 	bl sub_80024A2
 	bl sub_8003962
 	bl sub_8003AB2
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -5635,7 +5635,7 @@ sub_8005D88:
 	bl sub_8003962
 	bl sub_8003AB2
 	bl sub_80385F0
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	pop {r4-r7,pc}
 	thumb_func_end sub_8005D88
@@ -6997,97 +6997,99 @@ ToolkitPointersEnd:
 	thumb_func_end CpuSet_toolKit
 
 	thumb_local_start
-CpuSet_toolkit_wrapper:
+SetPrimaryToolkitPointersWrapper:
 	push {lr}
 	bl CpuSet_toolKit // () -> void
 	pop {r0}
 	bx r0
-	thumb_func_end CpuSet_toolkit_wrapper
+	thumb_func_end SetPrimaryToolkitPointersWrapper
 
-	thumb_func_start sub_8006C22
-sub_8006C22:
+	thumb_func_start RandomizeExtraToolkitPointers
+RandomizeExtraToolkitPointers: // 8006C22
 	push {lr}
 	push {r4-r7}
 	bl change_20013F0_800151C // () -> int
 	// anti-cheat stuff? this block up to the copy 
 	// seems to do nothing due to the ands which zero 
 	// r5 was supposedly an offset to be added to the pointers 
-	// in sGameState
+	// in eGameState
 	mov r1, #0
 	and r0, r1
 	mov r4, r0
-	ldr r5, off_8006C98 // =eUnusedGameStateBaseOffset 
-	ldr r3, [r5]
+	ldr r5, ToolkitExtraPtrs_eUnusedExtraToolkitPtrsOffset_p // =eUnusedExtraToolkitPtrsOffset 
+	ldr r3, [r5] // read old offset value
 	mov r0, #0
 	and r3, r0
 	str r4, [r5]
-	ldr r0, off_8006C94 // =eGameState 
-	// src
-	add r0, r0, r3
-	ldr r1, off_8006C94 // =eGameState 
-	// dest
-	add r1, r1, r4
-	// size
-	ldr r2, size // =0x35bc
-	ldr r3, off_8006CA0 // =copyWords_80014EC+1 
+	ldr r0, ToolkitExtraPtrs_eToolkitExtraPtrsMemory_p
+	add r0, r0, r3 // src
+	ldr r1, ToolkitExtraPtrs_eToolkitExtraPtrsMemory_p
+	add r1, r1, r4	// dest
+	ldr r2, ToolkitExtraPtrs_ToolkitExtraPtrsMemorySize_p // size, =0x35bc
+	ldr r3, ToolkitExtraPtrs_copyWords_80014EC_p // =copyWords_80014EC+1 
 	mov lr, pc
 	// copyWords_80014EC(&sGameState, &sGameState, 0x35BC);
 	bx r3
 	mov r0, r10
-	mov r1, #0x3c // (ToolkitPointersEnd - ToolkitPointers)
+	mov r1, #(ToolkitPointersEnd - ToolkitPointers)
 	add r0, r0, r1
 	mov r1, #0
-	ldr r2, off_8006C94 // =eGameState 
+	ldr r2, ToolkitExtraPtrs_eToolkitExtraPtrsMemory_p
 	ldr r3, [r5]
 	add r2, r2, r3
-	ldr r3, off_8006CA8 // =GameStateOffsets 
-copy22Words_8006C5A:
-	// GameStateOffsets
+	ldr r3, ToolkitExtraPtrsOffsets_p
+.readjustToolkitExtraPtrsLoop
+	// ToolkitExtraPtrsOffsets
 	ldr r4, [r3,r1]
 	// sGameState + offset
 	add r4, r4, r2
 	// store in eToolkit
 	str r4, [r0,r1]
 	add r1, #4
-	cmp r1, #0x58 // (GameStateOffsetsEnd - GameStateOffsets + 8)
-	blt copy22Words_8006C5A
+	cmp r1, #(ToolkitExtraPtrsOffsetsEnd - ToolkitExtraPtrsOffsets + 4)
+	blt .readjustToolkitExtraPtrsLoop
 	pop {r4-r7}
 	pop {r0}
 	bx r0
-	thumb_func_end sub_8006C22
+	thumb_func_end RandomizeExtraToolkitPointers
 
-	thumb_func_start sub_8006C6C
-sub_8006C6C:
+	thumb_func_start SetExtraToolkitPointers
+SetExtraToolkitPointers:
 	push {r4-r7,lr}
-	ldr r5, off_8006C98 // =eUnusedGameStateBaseOffset 
+	ldr r5, ToolkitExtraPtrs_eUnusedExtraToolkitPtrsOffset_p
 	mov r0, r10
-	mov r1, #0x3c 
+	mov r1, #oToolkit_GameStatePtr
 	add r0, r0, r1
 	mov r1, #0
-	ldr r2, off_8006C94 // =eGameState 
+	ldr r2, ToolkitExtraPtrs_eToolkitExtraPtrsMemory_p // =eGameState
 	ldr r3, [r5]
 	mov r4, #0
 	and r3, r4
 	add r2, r2, r3
-	ldr r3, off_8006CA8 // =GameStateOffsets 
-loc_8006C84:
+	ldr r3, ToolkitExtraPtrsOffsets_p // =ToolkitExtraPtrsOffsets
+.copyToolkitExtraPtrsLoop
 	ldr r4, [r3,r1]
 	add r4, r4, r2
 	str r4, [r0,r1]
 	add r1, #4
 	// reads extra garbage
-	cmp r1, #0x58 // (GameStateOffsetsEnd - GameStateOffsets + 8)
-	blt loc_8006C84
+	cmp r1, #(ToolkitExtraPtrsOffsetsEnd - ToolkitExtraPtrsOffsets + 4)
+	blt .copyToolkitExtraPtrsLoop
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8006C94: .word eGameState
-off_8006C98: .word eUnusedGameStateBaseOffset
-size: .word 0x35BC
-off_8006CA0: .word copyWords_80014EC+1
+
+	// 8006C94
+ToolkitExtraPtrs_eToolkitExtraPtrsMemory_p:       .word eToolkitExtraPtrsMemory
+ToolkitExtraPtrs_eUnusedExtraToolkitPtrsOffset_p: .word eUnusedExtraToolkitPtrsOffset
+ToolkitExtraPtrs_ToolkitExtraPtrsMemorySize_p:    .word TOOLKIT_EXTRA_PTRS_MEMORY_SIZE
+ToolkitExtraPtrs_copyWords_80014EC_p:             .word copyWords_80014EC+1
+	thumb_func_end SetExtraToolkitPointers
+
 	// unused?
 	.word eToolkit
-off_8006CA8: .word GameStateOffsets
-GameStateOffsets: .word 0x0
+
+ToolkitExtraPtrsOffsets_p: .word ToolkitExtraPtrsOffsets
+ToolkitExtraPtrsOffsets: .word 0x0
 	.word 0x84
 	.word 0x108
 	.word 0x5F8
@@ -7107,13 +7109,14 @@ GameStateOffsets: .word 0x0
 	.word 0x32A4
 	.word 0x34A8
 	.word 0x34B0
-GameStateOffsetsEnd: .word 0x34B8
-	thumb_func_end sub_8006C6C
+	.word 0x34B8
+ToolkitExtraPtrsOffsetsEnd:
+
 
 	thumb_local_start
 sub_8006D00:
 	push {r4-r7,lr}
-	ldr r5, off_8006E38 // =eUnusedGameStateBaseOffset 
+	ldr r5, off_8006E38 // =eUnusedExtraToolkitPtrsOffset 
 	ldr r4, [r5]
 	// memBlock
 	mov r0, r5
@@ -7237,7 +7240,7 @@ sub_8006DEC:
 	thumb_func_start sub_8006DF6
 sub_8006DF6:
 	push {r4-r7,lr}
-	ldr r7, off_8006E38 // =eUnusedGameStateBaseOffset 
+	ldr r7, off_8006E38 // =eUnusedExtraToolkitPtrsOffset 
 	ldr r7, [r7,#0x4] // (dword_2001064 - 0x2001060)
 	sub r1, #1
 loc_8006DFE:
@@ -7246,7 +7249,7 @@ loc_8006DFE:
 	strb r3, [r0,r1]
 	sub r1, #1
 	bge loc_8006DFE
-	ldr r0, off_8006E38 // =eUnusedGameStateBaseOffset 
+	ldr r0, off_8006E38 // =eUnusedExtraToolkitPtrsOffset 
 	str r7, [r0,#0x4] // (dword_2001064 - 0x2001060)
 	pop {r4-r7,pc}
 	thumb_func_end sub_8006DF6
@@ -7255,7 +7258,7 @@ loc_8006DFE:
 	thumb_func_start save_memSetFlags_8006E0E
 save_memSetFlags_8006E0E:
 	push {r4-r7,lr}
-	ldr r7, off_8006E38 // =eUnusedGameStateBaseOffset 
+	ldr r7, off_8006E38 // =eUnusedExtraToolkitPtrsOffset 
 	ldr r7, [r7,#4]
 	sub r1, #1
 memSetFlags_8006E16:
@@ -7265,7 +7268,7 @@ memSetFlags_8006E16:
 	sub r1, #1
 	// while (a2_size >= 0);
 	bge memSetFlags_8006E16
-	ldr r0, off_8006E38 // =eUnusedGameStateBaseOffset 
+	ldr r0, off_8006E38 // =eUnusedExtraToolkitPtrsOffset 
 	str r7, [r0,#4]
 	pop {r4-r7,pc}
 	thumb_func_end save_memSetFlags_8006E0E
@@ -7273,7 +7276,7 @@ memSetFlags_8006E16:
 	thumb_func_start save_8006E26
 save_8006E26:
 	push {r4-r7,lr}
-	ldr r7, off_8006E38 // =eUnusedGameStateBaseOffset 
+	ldr r7, off_8006E38 // =eUnusedExtraToolkitPtrsOffset 
 loc_8006E2A:
 	bl change_20013F0_800151C // () -> int
 	mvn r0, r0
@@ -7281,7 +7284,7 @@ loc_8006E2A:
 	beq loc_8006E2A
 	str r0, [r7,#0x4] // (dword_2001064 - 0x2001060)
 	pop {r4-r7,pc}
-off_8006E38: .word eUnusedGameStateBaseOffset
+off_8006E38: .word eUnusedExtraToolkitPtrsOffset
 	thumb_func_end save_8006E26
 
 	thumb_func_start load_8006E3C
@@ -7859,7 +7862,7 @@ sub_80071D4:
 	// size
 	sub r1, r1, r0
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	bl CpuSet_toolkit_wrapper
+	bl SetPrimaryToolkitPointersWrapper
 	pop {r0}
 	b loc_8007208
 loc_80071FE:

@@ -1362,7 +1362,7 @@ off_800F740: .word off_800F748
 off_800F744: .word byte_800F758
 off_800F748: .word LCDControl
 	.word 0x0
-	.word start_
+	.word GameEntryPoint
 	.word 0x0
 byte_800F758: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -10187,7 +10187,7 @@ loc_8013918:
 	strb r0, [r7,#7]
 	ldrb r0, [r6,#7]
 	strb r0, [r7,#8]
-	ldr r0, off_8013CA8 // =start_+1 
+	ldr r0, off_8013CA8 // =GameEntryPoint+1 
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_800EB08
 	ldr r0, [r7,#0x50]
@@ -10653,7 +10653,7 @@ off_8013C70: .word nullsub_28+1
 nullsub_28:
 	mov pc, lr
 	.balign 4, 0x00
-off_8013CA8: .word start_+1
+off_8013CA8: .word GameEntryPoint+1
 off_8013CAC: .word timer_2000000
 dword_8013CB0: .word 0x100000
 off_8013CB4: .word byte_80210DD
@@ -12158,7 +12158,7 @@ sub_80147B2:
 	mov r1, #0x10
 	mov r2, #2
 	bl sub_801A082
-	ldr r0, dword_80147E0 // =start_ 
+	ldr r0, dword_80147E0 // =GameEntryPoint 
 	bl object_setFlag // (int a1) -> void
 	ldr r0, dword_80147D8 // =0xffff 
 	bl object_setInvulnerableTime
@@ -14430,7 +14430,7 @@ loc_8015AEE:
 	.balign 4, 0x00
 off_8015AF4: .word off_8015AF8
 off_8015AF8: .word LCDControl
-	.word start_
+	.word GameEntryPoint
 	thumb_func_end sub_8015AA6
 
 	thumb_func_start sub_8015B00
@@ -22044,7 +22044,7 @@ loc_801AFE4:
 	mov r0, #0
 	strb r0, [r5,#0x18]
 	bl sub_800FFFE
-	ldr r1, off_801B1A8 // =start_ 
+	ldr r1, off_801B1A8 // =GameEntryPoint 
 	tst r0, r1
 	beq loc_801B006
 	mov r0, r1
@@ -22229,7 +22229,7 @@ loc_801B1A0:
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
 	.word 0x40000
-off_801B1A8: .word start_
+off_801B1A8: .word GameEntryPoint
 off_801B1AC: .word 0x2000
 dword_801B1B0: .word 0x40000000
 dword_801B1B4: .word 0x10000
@@ -23299,7 +23299,7 @@ loc_801BA76:
 	bl sub_802DD2A
 	tst r0, r0
 	beq loc_801BA86
-	ldr r0, off_801BB18 // =start_ 
+	ldr r0, off_801BB18 // =GameEntryPoint 
 	bl sub_800FFE4
 	b loc_801BA8C
 loc_801BA86:
@@ -23377,7 +23377,7 @@ dword_801BB08: .word 0x30000000
 off_801BB0C: .word 0x100
 off_801BB10: .word JumpTable80EAC60
 dword_801BB14: .word 0x40000
-off_801BB18: .word start_
+off_801BB18: .word GameEntryPoint
 	thumb_func_end sub_801BADE
 
 	thumb_func_start sub_801BB1C

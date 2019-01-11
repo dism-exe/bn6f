@@ -13985,7 +13985,7 @@ sub_8115A2C:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl object_getPanelParameters
-	ldr r1, off_8115BC0 // =start_ 
+	ldr r1, off_8115BC0 // =GameEntryPoint 
 	ldrb r2, [r5,#0x16]
 	cmp r2, #0
 	beq loc_8115A46
@@ -14188,7 +14188,7 @@ sub_8115BB0:
 	.balign 4, 0x00
 off_8115BB8: .word byte_8115980
 dword_8115BBC: .word 0x8000
-off_8115BC0: .word start_
+off_8115BC0: .word GameEntryPoint
 off_8115BC4: .word LCDControl
 off_8115BC8: .word byte_8115998
 off_8115BCC: .word sub_8115AD0+1
@@ -20021,7 +20021,7 @@ sub_8118DFC:
 	bl sub_8002FA6
 	pop {pc}
 off_8118E10: .word off_8118E14
-off_8118E14: .word start_
+off_8118E14: .word GameEntryPoint
 	.word 0x10000000
 	thumb_func_end sub_8118DFC
 
