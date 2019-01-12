@@ -577,10 +577,10 @@ off_8003114: .word sub_8003B86+1
 	.word object_freeMemory+1
 	.word sub_80048B2+1
 off_800312C: .word eOWPlayerObject
-	.word eBattleObjectPlayer
+	.word eT1BattleObjects
 	.word eOverworldNPCObjects
-	.word byte_203CFE0
-	.word unk_2036870
+	.word eT3BattleObjects
+	.word eT4BattleObjects
 	.word byte_2011EE0
 off_8003144: .word dword_2009F34
 	.word unk_2034000
@@ -700,7 +700,7 @@ DebugMsg_3272: .asciz "F%02x"
 	thumb_func_end sub_80031AC
 
 	thumb_local_start
-sub_8003278:
+SpawnBattleObjectCommon: // 8003278
 	push {r4,r6,r7,lr}
 	sub sp, sp, #4
 	str r1, [sp]
@@ -748,20 +748,35 @@ loc_80032C8:
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
 off_80032CC: .word dword_80032D0
-dword_80032D0: .word 0x0, 0x0, 0x0, 0x0
+dword_80032D0:
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+
 	.word unk_2034000
 	.word unk_203A9A0
-	.word byte_203C4A0
-	.word 0x198CD8, 0x0, 0x0, 0x0, 0x0
+	.word eT1BattleObjectsEnd
+	.byte oT1BattleObject_Size, oT1BattleObject_SizeWithoutSpriteData, 0x19
+	.balign 4, 0
+
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+
 	.word unk_2034F54
 	.word byte_203CFD0
-	.word dword_203EAD0
-	.word 0x98CD8
+	.word eT3BattleObjectsEnd
+	.byte oT3BattleObject_Size, oT3BattleObject_SizeWithoutSpriteData, 0x9  
+	.balign 4, 0
+
 	.word unk_2036710
 	.word unk_2036860
 	.word unk_2038160
-	.word 0x197CC8
-	thumb_func_end sub_8003278
+	.byte oT4BattleObject_Size, oT4BattleObject_SizeWithoutSpriteData, 0x19
+	.balign 4, 0
+	thumb_func_end SpawnBattleObjectCommon
 
 	thumb_func_start object_spawnType1
 object_spawnType1:
@@ -771,7 +786,7 @@ object_spawnType1:
 	stmia r7!, {r0-r4}
 	mov r0, #1
 	mov r1, sp
-	bl sub_8003278
+	bl SpawnBattleObjectCommon
 	tst r5, r5
 	beq loc_8003338
 	bl sub_8003400
@@ -788,7 +803,7 @@ sub_800333C:
 	stmia r7!, {r0-r4}
 	mov r0, #1
 	mov r1, sp
-	bl sub_8003278
+	bl SpawnBattleObjectCommon
 	tst r5, r5
 	beq loc_8003354
 	bl sub_8003428
@@ -805,7 +820,7 @@ object_spawnType3:
 	stmia r7!, {r0-r4}
 	mov r0, #3
 	mov r1, sp
-	bl sub_8003278
+	bl SpawnBattleObjectCommon
 	tst r5, r5
 	beq loc_8003370
 	bl sub_8003400
@@ -822,7 +837,7 @@ sub_8003374:
 	stmia r7!, {r0-r4}
 	mov r0, #3
 	mov r1, sp
-	bl sub_8003278
+	bl SpawnBattleObjectCommon
 	tst r5, r5
 	beq loc_800338C
 	bl sub_8003428
@@ -839,7 +854,7 @@ sub_8003390:
 	stmia r7!, {r0-r4}
 	mov r0, #3
 	mov r1, sp
-	bl sub_8003278
+	bl SpawnBattleObjectCommon
 	tst r5, r5
 	beq loc_80033A8
 	bl sub_8003440
@@ -856,7 +871,7 @@ object_spawnType4:
 	stmia r7!, {r0-r4}
 	mov r0, #4
 	mov r1, sp
-	bl sub_8003278
+	bl SpawnBattleObjectCommon
 	tst r5, r5
 	beq loc_80033C4
 	bl sub_8003400
@@ -873,7 +888,7 @@ sub_80033C8:
 	stmia r7!, {r0-r4}
 	mov r0, #4
 	mov r1, sp
-	bl sub_8003278
+	bl SpawnBattleObjectCommon
 	tst r5, r5
 	beq loc_80033E0
 	bl sub_8003428
@@ -890,7 +905,7 @@ sub_80033E4:
 	stmia r7!, {r0-r4}
 	mov r0, #4
 	mov r1, sp
-	bl sub_8003278
+	bl SpawnBattleObjectCommon
 	tst r5, r5
 	beq loc_80033FC
 	bl sub_8003440
@@ -1023,39 +1038,44 @@ StructInitializationTable:
 	// word 1 is part of a linked list?
 	// word 2 is the actual list of structs
 	// byte 1 is struct offset part 2?
-	// apparently there's hypothetical support for 32 enemies, but unk_203A9A0 only supports 4 pointers
-	// maybe for virus battler?
-	// 
+
 	// OWPlayer struct
 	.word eOWPlayerObject, eOWPlayerObject
 	.hword 0xC8
 	.byte 0x90 | 0
 	.byte 0xC8, 0x1
 	.balign 4, 0x00
-	// apparently there's hypothetical support for 32 enemies, but unk_203A9A0 only supports 4 pointers
-	// maybe for virus battler?
-	.word unk_203A9A0, eBattleObjectPlayer
-	.hword NUM_BATTLE_OBJECTS * oBattleObject_Size
-	.byte 0x90 | 1
-	.byte 0xD8, 0x20
+
+	// todo these are actually battle objects for navis and viruses
+	.word unk_203A9A0, eT1BattleObjects
+	.hword NUM_T1_BATTLE_OBJECTS * oT1BattleObject_Size
+	.byte oT1BattleObject_SpriteData | 1
+	.byte oT1BattleObject_Size, NUM_T1_BATTLE_OBJECTS
 	.balign 4, 0x00
+
 	// NPC Structs
 	.word eOverworldNPCObjects
 	.word eOverworldNPCObjects
-	.hword 0xD80
-	.byte 0xA0 | 2
-	.byte 0xD8, 0x10
+	.hword OVERWORLD_NPC_OBJECTS_MEM_SIZE
+	.byte oOverworldNPCObject_SpriteData | 2
+	.byte oOverworldNPCObject_Size, NUM_OVERWORLD_NPC_OBJECTS
 	.balign 4, 0x00
-	.word byte_203CFD0, byte_203CFE0
-	.hword 0x1B00
-	.byte 0x90 | 3
-	.byte 0xD8, 0x20
+
+	// type 3 battle objects
+	.word byte_203CFD0, eT3BattleObjects
+	.hword NUM_T3_BATTLE_OBJECTS * oT3BattleObject_Size
+	.byte oT3BattleObject_SpriteData | 3
+	.byte oT3BattleObject_Size, NUM_T3_BATTLE_OBJECTS
 	.balign 4, 0x00
-	.word unk_2036860, unk_2036870
-	.hword 0x1900
-	.byte 0x80 | 4
-	.byte 0xC8, 0x20
+
+	// type 4 battle objects
+	.word unk_2036860, eT4BattleObjects
+	.hword NUM_T4_BATTLE_OBJECTS * oT4BattleObject_Size
+	.byte oT4BattleObject_SpriteData | 4
+	.byte oT4BattleObject_Size, NUM_T4_BATTLE_OBJECTS
 	.balign 4, 0x00
+
+	// unknown
 	.word byte_2011EE0, byte_2011EE0
 	.hword 0x1A40
 	.byte 0x40 | 5
@@ -2294,18 +2314,18 @@ sub_8003E98:
 	bl sub_80028C0
 	pop {pc}
 	mov r0, #0
-	ldr r3, off_8003EB8 // =eBattleObjectPlayer 
+	ldr r3, off_8003EB8 // =eT1BattleObjects 
 loc_8003EA6:
 	mov r1, r3
-	add r1, #oBattleObject_UnkSpriteData_90
+	add r1, #oT1BattleObject_SpriteData
 	mov r2, #0
 	str r2, [r1,#0x24]
-	add r3, #oBattleObject_Size
+	add r3, #oT1BattleObject_Size
 	add r0, #1
 	cmp r0, #0x20 
 	blt loc_8003EA6
 	mov pc, lr
-off_8003EB8: .word eBattleObjectPlayer
+off_8003EB8: .word eT1BattleObjects
 off_8003EBC: .word byte_2036778
 off_8003EC0: .word dword_2039A10
 off_8003EC4: .word sub_80C4E58+1
@@ -2606,13 +2626,13 @@ sub_80042A6:
 	mov r1, r3
 	add r1, #0x90
 	mov r2, #0
-	str r2, [r1,#0x24] // (byte_203CFE0+0xa4 - 0x203d060)
+	str r2, [r1,#0x24] // (eT3BattleObjects+0xa4 - 0x203d060)
 	add r3, #0xd8
 	add r0, #1
 	cmp r0, #0x20 
 	blt sub_80042A6
 	mov pc, lr
-	.word byte_203CFE0
+	.word eT3BattleObjects
 off_80042BC: .word byte_203CFD0
 off_80042C0: .word dword_203CA7C
 off_80042C4: .word dword_203A010
@@ -2843,7 +2863,7 @@ sub_8004590:
 	thumb_local_start
 dead_800459A:
 	mov r0, #0
-	ldr r3, off_80045B0 // =unk_2036870 
+	ldr r3, off_80045B0 // =eT4BattleObjects 
 loc_800459E:
 	mov r1, r3
 	add r1, #0x80
@@ -2854,7 +2874,7 @@ loc_800459E:
 	cmp r0, #0x20 
 	blt loc_800459E
 	mov pc, lr
-off_80045B0: .word unk_2036870
+off_80045B0: .word eT4BattleObjects
 off_80045B4: .word byte_2036830
 off_80045B8: .word byte_203F750
 off_80045BC: .word npc_809E570+1

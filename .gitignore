@@ -9,6 +9,7 @@
 *.ss?
 *.sa?
 *.sg?
+*.SNA
 
 # atom-specific settings
 .atom*

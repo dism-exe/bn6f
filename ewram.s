@@ -413,17 +413,33 @@ unk_2005038:: // 0x2005038
 	.space 260
 eToolkitExtraPtrsMemoryEnd:: // 0x200153c
 // 0x200153c, end of eToolkit extra pointers
-	.space 256
-// additional buffer for dummied out randomization
+	.space 256 // additional buffer for dummied out randomization
+
 	.space 1348
 dynamicArr:: // 0x2005780
 	.space 15
 unk_200578F:: // 0x200578f
 	.space 33
-	.set unk_20057D4, 0x20057d4 // temporary
-	.global unk_20057D4
+
 eOverworldNPCObjects:: // 0x20057b0
-	.space 3456
+	overworld_npc_object_struct eOverworldNPCObject0
+	overworld_npc_object_struct eOverworldNPCObject1
+	overworld_npc_object_struct eOverworldNPCObject2
+	overworld_npc_object_struct eOverworldNPCObject3
+	overworld_npc_object_struct eOverworldNPCObject4
+	overworld_npc_object_struct eOverworldNPCObject5
+	overworld_npc_object_struct eOverworldNPCObject6
+	overworld_npc_object_struct eOverworldNPCObject7
+	overworld_npc_object_struct eOverworldNPCObject8
+	overworld_npc_object_struct eOverworldNPCObject9
+	overworld_npc_object_struct eOverworldNPCObject10
+	overworld_npc_object_struct eOverworldNPCObject11
+	overworld_npc_object_struct eOverworldNPCObject12
+	overworld_npc_object_struct eOverworldNPCObject13
+	overworld_npc_object_struct eOverworldNPCObject14
+	overworld_npc_object_struct eOverworldNPCObject15
+eOverworldNPCObjectsEnd::
+
 byte_2006530:: // 0x2006530
 	.space 128
 reqBBS_numRequestsSent:: // 0x20065b0
@@ -2932,7 +2948,8 @@ byte_2036859:: // 0x2036859
 	.space 7
 unk_2036860:: // 0x2036860
 	.space 16
-unk_2036870:: // 0x2036870
+// note: this is an overlay with other data, figure that out
+eT4BattleObjects:: // 0x2036870
 	.space 3612
 unk_203768C:: // 0x203768c
 	.space 32
@@ -3048,13 +3065,40 @@ unk_203A990:: // 0x203a990
 	.space 16
 unk_203A9A0:: // 0x203a9a0
 	.space 16
-eBattleObjects:: // 0x203a9b0
-	battle_object_struct eBattleObjectPlayer // 0x203a9b0
-	battle_object_struct eBattleObject1 // 0x203aa88
-	battle_object_struct eBattleObject2 // 0x203ab60
-	battle_object_struct eBattleObject3 // 0x203ac38
-	.space 6032
-eBattleObjectsEnd::
+eT1BattleObjects:: // 0x203a9b0
+	t1_battle_object_struct eT1BattleObject0 // 0x203a9b0
+	t1_battle_object_struct eT1BattleObject1 // 0x203aa88
+	t1_battle_object_struct eT1BattleObject2 // 0x203ab60
+	t1_battle_object_struct eT1BattleObject3 // 0x203ac38
+	t1_battle_object_struct eT1BattleObject4
+	t1_battle_object_struct eT1BattleObject5
+	t1_battle_object_struct eT1BattleObject6
+	t1_battle_object_struct eT1BattleObject7
+	t1_battle_object_struct eT1BattleObject8
+	t1_battle_object_struct eT1BattleObject9
+	t1_battle_object_struct eT1BattleObject10
+	t1_battle_object_struct eT1BattleObject11
+	t1_battle_object_struct eT1BattleObject12
+	t1_battle_object_struct eT1BattleObject13
+	t1_battle_object_struct eT1BattleObject14
+	t1_battle_object_struct eT1BattleObject15
+	t1_battle_object_struct eT1BattleObject16
+	t1_battle_object_struct eT1BattleObject17
+	t1_battle_object_struct eT1BattleObject18
+	t1_battle_object_struct eT1BattleObject19
+	t1_battle_object_struct eT1BattleObject20
+	t1_battle_object_struct eT1BattleObject21
+	t1_battle_object_struct eT1BattleObject22
+	t1_battle_object_struct eT1BattleObject23
+	t1_battle_object_struct eT1BattleObject24
+	t1_battle_object_struct eT1BattleObject25
+	t1_battle_object_struct eT1BattleObject26
+	t1_battle_object_struct eT1BattleObject27
+	t1_battle_object_struct eT1BattleObject28
+	t1_battle_object_struct eT1BattleObject29
+	t1_battle_object_struct eT1BattleObject30
+	t1_battle_object_struct eT1BattleObject31, 0
+eT1BattleObjectsEnd:: // 0x203c4a0
 
 byte_203C4A0:: // 0x203c4a0
 	.space 64
@@ -3190,8 +3234,41 @@ byte_203CFC4:: // 0x203cfc4
 	.space 12
 byte_203CFD0:: // 0x203cfd0
 	.space 16
-byte_203CFE0:: // 0x203cfe0
-	.space 6896
+eT3BattleObjects:: // 0x203cfe0
+	t3_battle_object_struct eT3BattleObject0
+	t3_battle_object_struct eT3BattleObject1
+	t3_battle_object_struct eT3BattleObject2
+	t3_battle_object_struct eT3BattleObject3
+	t3_battle_object_struct eT3BattleObject4
+	t3_battle_object_struct eT3BattleObject5
+	t3_battle_object_struct eT3BattleObject6
+	t3_battle_object_struct eT3BattleObject7
+	t3_battle_object_struct eT3BattleObject8
+	t3_battle_object_struct eT3BattleObject9
+	t3_battle_object_struct eT3BattleObject10
+	t3_battle_object_struct eT3BattleObject11
+	t3_battle_object_struct eT3BattleObject12
+	t3_battle_object_struct eT3BattleObject13
+	t3_battle_object_struct eT3BattleObject14
+	t3_battle_object_struct eT3BattleObject15
+	t3_battle_object_struct eT3BattleObject16
+	t3_battle_object_struct eT3BattleObject17
+	t3_battle_object_struct eT3BattleObject18
+	t3_battle_object_struct eT3BattleObject19
+	t3_battle_object_struct eT3BattleObject20
+	t3_battle_object_struct eT3BattleObject21
+	t3_battle_object_struct eT3BattleObject22
+	t3_battle_object_struct eT3BattleObject23
+	t3_battle_object_struct eT3BattleObject24
+	t3_battle_object_struct eT3BattleObject25
+	t3_battle_object_struct eT3BattleObject26
+	t3_battle_object_struct eT3BattleObject27
+	t3_battle_object_struct eT3BattleObject28
+	t3_battle_object_struct eT3BattleObject29
+	t3_battle_object_struct eT3BattleObject30
+	t3_battle_object_struct eT3BattleObject31, 0
+eT3BattleObjectsEnd::
+
 dword_203EAD0:: // 0x203ead0
 	.space 4
 dword_203EAD4:: // 0x203ead4

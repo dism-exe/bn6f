@@ -15103,7 +15103,7 @@ sub_802DFFC:
 	mov r1, #0xe8
 	lsl r1, r1, #2
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	ldr r0, off_802E20C // =eBattleObjectPlayer 
+	ldr r0, off_802E20C // =eT1BattleObjects 
 	ldr r1, off_802E210 // =unk_20362F0 
 	str r0, [r1,#0x44] // (dword_2036334 - 0x20362f0)
 	bl sub_802E544
@@ -15123,7 +15123,7 @@ sub_802E014:
 	// size
 	mov r1, #0x60 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	ldr r0, off_802E21C // =eBattleObjectPlayer 
+	ldr r0, off_802E21C // =eT1BattleObjects 
 	ldr r1, off_802E220 // =unk_20362F0 
 	str r0, [r1,#0x44] // (dword_2036334 - 0x20362f0)
 	bl sub_802E544
@@ -15374,11 +15374,11 @@ sub_802E1EC:
 	pop {pc}
 	.balign 4, 0x00
 off_802E208: .word unk_2036120
-off_802E20C: .word eBattleObjectPlayer
+off_802E20C: .word eT1BattleObjects
 off_802E210: .word unk_20362F0
 off_802E214: .word unk_2036120
 off_802E218: .word unk_20362F0
-off_802E21C: .word eBattleObjectPlayer
+off_802E21C: .word eT1BattleObjects
 off_802E220: .word unk_20362F0
 dword_802E224: .word 0x4000
 off_802E228: .word unk_2036120

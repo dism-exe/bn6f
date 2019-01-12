@@ -1,12 +1,8 @@
 
-	.macro battle_object_struct label, struct_entry=label_struct_entry, struct_begin=struct_begin
-	\struct_begin \label
-	\struct_entry \label\()_Flags, 1 // loc=0x0
-	\struct_entry \label\()_Index, 1 // loc=0x1
-	\struct_entry \label\()_TypeAndSpriteOffset // loc=0x2
-	\struct_entry \label\()_Type
-	\struct_entry \label\()_SpriteOffset, 1
-	\struct_entry \label\()_ListIndex, 1 // loc=0x3
+	.macro battle_object_struct label:req, struct_entry=label_struct_entry, struct_begin=struct_begin, extra_vars_size=0, padding=0x10
+
+	object_header_struct \label, \struct_entry, \struct_begin
+
 	\struct_entry \label\()_Param1, 1 // loc=0x4
 	\struct_entry \label\()_Param2, 1 // loc=0x5
 	\struct_entry \label\()_Param3, 1 // loc=0x6
@@ -58,11 +54,32 @@
 	\struct_entry \label\()_CollisionDataPtr, 4 // loc=0x54
 	\struct_entry \label\()_AIPtr, 4 // loc=0x58
 	\struct_entry \label\()_Unk_5c, 4 // loc=0x5c
-	\struct_entry \label\()_ExtraVars, 44 // loc=0x60
-	\struct_entry \label\()_Unk_8c, 4 // loc=0x8c
-	\struct_entry \label\()_UnkSpriteData_90, 0x48 // loc=0x90
+	\struct_entry \label\()_ExtraVars, \extra_vars_size // loc=0x60, 44 for t1 and t3, 28 for t4
+	\struct_entry \label\()_SizeWithoutSpriteData // loc=0x8c OR 0x7c
+	.space 4
+	\struct_entry \label\()_SpriteData, 0x38 // loc=0x90 OR 0x80
+	.if \padding
+	.space \padding // todo figure if this is actually part of sprite data
+	.endif
 	\struct_entry \label\()_Size
-	\struct_entry \label\()_End // loc=0xd8
+	\struct_entry \label\()_End // loc=0xd8 OR 0xc8
 	.endm
 
-	def_struct_offsets battle_object_struct, oBattleObject
+	battle_object_struct oBattleObject, offset_struct_entry, offset_struct_begin
+	battle_object_struct oT1BattleObject, offset_struct_entry, offset_struct_begin, 0x2c
+	battle_object_struct oT3BattleObject, offset_struct_entry, offset_struct_begin, 0x2c
+	battle_object_struct oT4BattleObject, offset_struct_entry, offset_struct_begin, 0x1c
+
+	.macro t1_battle_object_struct label:req, padding
+	battle_object_struct \label, label_struct_entry, struct_begin, 0x2c, \padding
+	// maybe define offsets here as well?
+	.endm
+
+	.macro t3_battle_object_struct label:req, padding
+	battle_object_struct \label, label_struct_entry, struct_begin, 0x2c, \padding
+	// maybe define offsets here as well?
+	.endm
+
+	.macro t4_battle_object_struct label:req, padding
+	battle_object_struct \label, label_struct_entry, struct_begin, 0x1c, \padding
+	.endm

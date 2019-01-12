@@ -3170,11 +3170,11 @@ ScriptCmds8035808:
 	.word MapScript_jump_if_flag_clear+1
 	.word MapScript_jump_if_flag_range_clear+1
 	.word MapScript_jump_if_mem_equals+1
-	.word MapScript_jump_if_unk_range_func+1
-	.word sub_8035AAA+1
+	.word MapScript_jump_if_unk_navicust_range+1
+	.word MapScript_jump_if_chip_count_in_range+1
 	.word sub_803793A+1
 	.word sub_803795C+1
-	.word sub_8035AFA+1
+	.word MapScript_cmd_8035AFA+1
 	.word sub_8035B44+1
 	.word sub_8035B8E+1
 	.word sub_8035BB2+1
@@ -3447,7 +3447,7 @@ MapScript_jump_if_mem_equals: // 8035A1A
 	thumb_local_start
 // 0x08 byte1 byte2 byte3 destination
 // jump if byte2 < sub_803CE28(byte1) < byte3
-MapScript_jump_if_unk_range_func: // 8035A74
+MapScript_jump_if_unk_navicust_range: // 8035A74
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3471,7 +3471,7 @@ MapScript_jump_if_unk_range_func: // 8035A74
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_unk_range_func
+	thumb_func_end MapScript_jump_if_unk_navicust_range
 
 	thumb_local_start
 // 0x09 hword byte1 byte2 byte3 destination
@@ -3481,46 +3481,51 @@ MapScript_jump_if_unk_range_func: // 8035A74
 //     jump if byte2 < sub_8021BC0(byte1, hword) < byte3
 //     sub_8021BC0 calls chip_8021C7C
 // related to chips
-sub_8035AAA: // 8035AAA
+//
+MapScript_jump_if_chip_count_in_range: // 8035AAA
 	push {lr}
 	mov r6, #3
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	bne loc_8035AC4
+	bne .getChipCountOfCode
+// get total chip count
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
 	bl sub_8021BD8
-	b loc_8035AD2
-loc_8035AC4:
+	b .checkChipCountInRange
+.getChipCountOfCode
 	mov r1, r4
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
 	bl sub_8021BC0
-loc_8035AD2:
+.checkChipCountInRange
 	mov r6, #4
 	bl ReadMapScriptByte
 	mov r1, r4
 	mov r6, #5
 	bl ReadMapScriptByte
 	cmp r0, r1
-	blt loc_8035AF4
+	blt .chipCountOutOfRange
 	cmp r0, r4
-	bgt loc_8035AF4
+	bgt .chipCountOutOfRange
 	mov r6, #6
 	bl ReadMapScriptWord // () -> void .spoils R4, R6
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8035AF4:
-	add r7, #0xa
+.chipCountOutOfRange
+	add r7, #10
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035AAA
+	thumb_func_end MapScript_jump_if_chip_count_in_range
 
 	thumb_local_start
-sub_8035AFA:
+// 0x0c byte1 signedbyte2 destination
+// sub_8031A7A(complex) returns r0, r1. if r0 == 0, r1 is used in comparison
+// jump if byte1 == compByte
+MapScript_cmd_8035AFA:
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptSignedByte
@@ -3556,7 +3561,7 @@ loc_8035B3E:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035AFA
+	thumb_func_end MapScript_cmd_8035AFA
 
 	thumb_local_start
 sub_8035B44:
@@ -6164,11 +6169,11 @@ jt_big_803749C: .word sub_80376C4+1
 	.word MapScript_jump_if_flag_range_clear+1
 	.word MapScript_jump_if_mem_equals+1
 	.word sub_8037914+1
-	.word MapScript_jump_if_unk_range_func+1
-	.word sub_8035AAA+1
+	.word MapScript_jump_if_unk_navicust_range+1
+	.word MapScript_jump_if_chip_count_in_range+1
 	.word sub_803793A+1
 	.word sub_803795C+1
-	.word sub_8035AFA+1
+	.word MapScript_cmd_8035AFA+1
 	.word sub_8035B44+1
 	.word sub_803797E+1
 	.word sub_80379A0+1
