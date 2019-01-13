@@ -1,6 +1,7 @@
 	.include "structs/Toolkit.inc"
 	.include "structs/GameState.inc"
 	.include "structs/ObjectHeader.inc"
+	.include "structs/ObjectSprite.inc"
 	.include "structs/BattleObject.inc"
 	.include "structs/OverworldNPCObject.inc"
 	.include "structs/UnkMapScriptState_2011e60.inc"

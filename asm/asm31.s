@@ -29860,10 +29860,10 @@ locret_80C67A2:
 	thumb_local_start
 sub_80C67A4:
 	push {r4,r6,r7,lr}
-	ldr r4, off_80C67F0 // =dword_2009380 
+	ldr r4, off_80C67F0 // =eBattleObjectsLinkedListStart 
 loc_80C67A8:
 	ldr r4, [r4,#4]
-	ldr r2, off_80C67F4 // =dword_2009AB0 
+	ldr r2, off_80C67F4 // =eBattleObjectsLinkedListSentinel 
 	cmp r4, r2
 	beq locret_80C67D6
 	mov r6, #0x10
@@ -29903,8 +29903,8 @@ sub_80C67D8:
 locret_80C67EC:
 	pop {pc}
 	.byte 0, 0
-off_80C67F0: .word dword_2009380
-off_80C67F4: .word dword_2009AB0
+off_80C67F0: .word eBattleObjectsLinkedListStart
+off_80C67F4: .word eBattleObjectsLinkedListSentinel
 	thumb_func_end sub_80C67D8
 
 	thumb_func_start sub_80C67F8

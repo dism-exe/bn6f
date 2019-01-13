@@ -261,11 +261,11 @@ sub_8002F2C:
 
 	thumb_func_start sub_8002F3E
 sub_8002F3E:
-	ldrb r3, [r0,#2]
+	ldrb r3, [r0,#oObjectHeader_SpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r0
-	ldrb r0, [r3,#0x11]
+	ldrb r0, [r3,#oObjectSprite_Unk_11]
 	mov r2, #0x10
 	and r2, r0
 	mov r3, r10
@@ -280,32 +280,32 @@ sub_8002F3E:
 
 	thumb_func_start sub_8002F5C
 sub_8002F5C:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_SpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r2, [r3,#0x13]
+	ldrb r2, [r3,#oObjectSprite_Unk_13]
 	mov r1, #0x30 
 	bic r2, r1
 	lsl r0, r0, #4
 	orr r2, r0
-	strb r2, [r3,#0x13]
+	strb r2, [r3,#oObjectSprite_Unk_13]
 	and r2, r1
-	ldrb r1, [r3,#0x16]
+	ldrb r1, [r3,#oObjectSprite_Unk_16]
 	mov r0, #0x30 
 	bic r1, r0
 	orr r1, r2
-	strb r1, [r3,#0x16]
+	strb r1, [r3,#oObjectSprite_Unk_16]
 	mov pc, lr
 	thumb_func_end sub_8002F5C
 
 	thumb_func_start sub_8002F7E
 sub_8002F7E:
-	ldrb r3, [r0,#2]
+	ldrb r3, [r0,#oObjectHeader_SpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r0
-	ldrb r0, [r3,#0x16]
+	ldrb r0, [r3,#oObjectSprite_Unk_16]
 	mov r1, #0x30 
 	and r0, r1
 	lsr r0, r0, #4
@@ -315,16 +315,16 @@ sub_8002F7E:
 // () -> void
 	thumb_func_start sub_8002F90
 sub_8002F90:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_SpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r0, [r3,#3]
+	ldrb r0, [r3,#oObjectSprite_Unk_03]
 	mov r1, #4
 	orr r0, r1
 	mov r1, #1
 	bic r0, r1
-	strb r0, [r3,#3]
+	strb r0, [r3,#oObjectSprite_Unk_03]
 	mov pc, lr
 	thumb_func_end sub_8002F90
 
@@ -564,7 +564,7 @@ loc_80030F4:
 	mov r1, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-jt_80030FC: .word sub_8003B4C+1
+SpawnObjectFunctionsJumptable: .word sub_8003B4C+1
 	.word object_spawnType1+1
 	.word sub_80045C0+1
 	.word object_spawnType3+1
@@ -577,16 +577,16 @@ off_8003114: .word sub_8003B86+1
 	.word object_freeMemory+1
 	.word sub_80048B2+1
 off_800312C: .word eOWPlayerObject
-	.word eT1BattleObjects
+	.word eT1BattleObject0
 	.word eOverworldNPCObjects
-	.word eT3BattleObjects
-	.word eT4BattleObjects
+	.word eT3BattleObject0
+	.word eT4BattleObject0
 	.word byte_2011EE0
 off_8003144: .word dword_2009F34
-	.word unk_2034000
+	.word eActiveT1BattleObjectsBitfield
 	.word map_activeNPCs
-	.word unk_2034F54
-	.word unk_2036710
+	.word eActiveT3BattleObjectsBitfield
+	.word eActiveT4BattleObjectsBitfield
 	.word unk_2011E50
 byte_800315C: .byte 0xC8, 0x0, 0x0, 0x0, 0xD8, 0x0, 0x0, 0x0, 0xD8, 0x0, 0x0, 0x0, 0xD8
 	.byte 0x0, 0x0, 0x0, 0xC8, 0x0, 0x0, 0x0, 0x78, 0x0, 0x0, 0x0
@@ -596,8 +596,8 @@ byte_8003174: .byte 0x1, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0
 
 	thumb_local_start
 sub_800318C:
-	ldr r0, off_80031A4 // =dword_2009380 
-	ldr r1, off_80031A8 // =dword_2009AB0 
+	ldr r0, off_80031A4 // =eBattleObjectsLinkedListStart 
+	ldr r1, off_80031A8 // =eBattleObjectsLinkedListSentinel 
 	ldr r2, off_80031A0 // =dword_200AF70 
 	mov r3, #0
 	str r3, [r2]
@@ -607,8 +607,8 @@ sub_800318C:
 	str r3, [r1,#0x4] // (dword_2009AB4 - 0x2009ab0)
 	mov pc, lr
 off_80031A0: .word dword_200AF70
-off_80031A4: .word dword_2009380
-off_80031A8: .word dword_2009AB0
+off_80031A4: .word eBattleObjectsLinkedListStart
+off_80031A8: .word eBattleObjectsLinkedListSentinel
 	thumb_func_end sub_800318C
 
 	thumb_local_start
@@ -618,10 +618,10 @@ sub_80031AC:
 	bl sub_800371A
 	mov r0, #0
 	str r0, [sp]
-	ldr r7, off_8003214 // =dword_2009380 
+	ldr r7, off_8003214 // =eBattleObjectsLinkedListStart 
 loc_80031BA:
 	ldr r7, [r7,#4] // linked list
-	ldr r0, off_8003218 // =dword_2009AB0 
+	ldr r0, off_8003218 // =eBattleObjectsLinkedListSentinel 
 	cmp r7, r0
 	beq loc_8003208
 	ldr r0, off_8003234 // =dword_200AF70 
@@ -667,13 +667,13 @@ loc_8003208:
 	add sp, sp, #0x10
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8003214: .word dword_2009380
-off_8003218: .word dword_2009AB0
+off_8003214: .word eBattleObjectsLinkedListStart
+off_8003218: .word eBattleObjectsLinkedListSentinel
 JumptableTable8003220_p: .word JumptableTable8003220
 JumptableTable8003220:
 	// a table of jumptable pointers. Index to an entry is derived from the
 	// lower 4 bits of the 2nd (zero-indexed) member of the struct in the
-	// linked list, starting from dword_2009380. Index to an entry from the
+	// linked list, starting from eBattleObjectsLinkedListStart. Index to an entry from the
 	// read Jumptable pointer is derived from the first member of the struct
 	.word 0x0
 	.word off_8003C9C
@@ -754,10 +754,10 @@ dword_80032D0:
 	.word 0x0
 	.word 0x0
 
-	.word unk_2034000
-	.word unk_203A9A0
-	.word unk_203A9A0 + oT1BattleObject_Size * NUM_T1_BATTLE_OBJECTS
-	.byte oT1BattleObject_Size, oT1BattleObject_SizeWithoutSpriteData, 0x19
+	.word eActiveT1BattleObjectsBitfield
+	.word eT1BattleObject0_LinkedList
+	.word eT1BattleObject0_LinkedList + oT1BattleObject_Size * NUM_T1_BATTLE_OBJECTS
+	.byte oT1BattleObject_Size, oT1BattleObject_SizeWithoutSpriteDataAndLinkedList, 0x19
 	.balign 4, 0
 
 	.word 0x0
@@ -765,16 +765,16 @@ dword_80032D0:
 	.word 0x0
 	.word 0x0
 
-	.word unk_2034F54
-	.word byte_203CFD0
-	.word byte_203CFD0 + oT3BattleObject_Size * NUM_T3_BATTLE_OBJECTS
-	.byte oT3BattleObject_Size, oT3BattleObject_SizeWithoutSpriteData, 0x9  
+	.word eActiveT3BattleObjectsBitfield
+	.word eT3BattleObject0_LinkedList
+	.word eT3BattleObject0_LinkedList + oT3BattleObject_Size * NUM_T3_BATTLE_OBJECTS
+	.byte oT3BattleObject_Size, oT3BattleObject_SizeWithoutSpriteDataAndLinkedList, 0x9  
 	.balign 4, 0
 
-	.word unk_2036710
-	.word unk_2036860
-	.word unk_2036860 + oT4BattleObject_Size * NUM_T4_BATTLE_OBJECTS
-	.byte oT4BattleObject_Size, oT4BattleObject_SizeWithoutSpriteData, 0x19
+	.word eActiveT4BattleObjectsBitfield
+	.word eT4BattleObject0_LinkedList
+	.word eT4BattleObject0_LinkedList + oT4BattleObject_Size * NUM_T4_BATTLE_OBJECTS
+	.byte oT4BattleObject_Size, oT4BattleObject_SizeWithoutSpriteDataAndLinkedList, 0x19
 	.balign 4, 0
 	thumb_func_end SpawnBattleObjectCommon
 
@@ -806,7 +806,7 @@ sub_800333C:
 	bl SpawnBattleObjectCommon
 	tst r5, r5
 	beq loc_8003354
-	bl sub_8003428
+	bl UpdateBattleObjectLinkedList
 loc_8003354:
 	add sp, sp, #0x14
 	pop {r7,pc}
@@ -840,7 +840,7 @@ sub_8003374:
 	bl SpawnBattleObjectCommon
 	tst r5, r5
 	beq loc_800338C
-	bl sub_8003428
+	bl UpdateBattleObjectLinkedList
 loc_800338C:
 	add sp, sp, #0x14
 	pop {r7,pc}
@@ -891,7 +891,7 @@ sub_80033C8:
 	bl SpawnBattleObjectCommon
 	tst r5, r5
 	beq loc_80033E0
-	bl sub_8003428
+	bl UpdateBattleObjectLinkedList
 loc_80033E0:
 	add sp, sp, #0x14
 	pop {r7,pc}
@@ -917,55 +917,67 @@ loc_80033FC:
 	thumb_local_start
 sub_8003400:
 	push {lr}
-	mov r0, #0x10
+	mov r0, #oBattleObject_LinkedList_Size
 	sub r0, r5, r0
 	ldr r1, off_8003424 // =dword_200AF70 
 	ldr r1, [r1]
 	cmp r0, r1
-	beq loc_800341E
+	beq .loc_800341E
 	tst r1, r1
-	beq loc_800341E
-	str r1, [r0]
-	ldr r2, [r1,#4]
-	str r0, [r1,#4]
-	str r2, [r0,#4]
-	str r0, [r2]
-	b locret_8003422
-loc_800341E:
-	bl sub_8003428
-locret_8003422:
+	beq .loc_800341E
+	str r1, [r0,#oBattleObject_LinkedList_Prev]
+	ldr r2, [r1,#oBattleObject_LinkedList_Next]
+	str r0, [r1,#oBattleObject_LinkedList_Next]
+	str r2, [r0,#oBattleObject_LinkedList_Next]
+	str r0, [r2,#oBattleObject_LinkedList_Prev]
+	b .done
+.loc_800341E
+	bl UpdateBattleObjectLinkedList
+.done
 	pop {pc}
 off_8003424: .word dword_200AF70
 	thumb_func_end sub_8003400
 
 	thumb_local_start
-sub_8003428:
-	mov r0, #0x10
+UpdateBattleObjectLinkedList:
+	mov r0, #oBattleObject_LinkedList_Size
 	sub r0, r5, r0
-	ldr r1, off_800343C // =dword_2009AB0 
-	ldr r2, [r1]
-	str r0, [r2,#4]
-	str r2, [r0]
-	str r1, [r0,#4]
-	str r0, [r1]
+	ldr r1, .eBattleObjectsLinkedListSentinel_p
+
+	// get the pointer of the object created before this one
+	ldr r2, [r1,#oBattleObjectsLinkedListSentinel_Prev]
+
+	// update the next object pointer of the previous object
+	str r0, [r2,#oBattleObject_LinkedList_Next]
+
+	// update the prev object pointer of this object
+	str r2, [r0,#oBattleObject_LinkedList_Prev]
+
+	// update the next object pointer of this object to the sentinel
+	str r1, [r0,#oBattleObject_LinkedList_Next]
+
+	// update the previous object pointer of the sentinel to this object 
+	str r0, [r1,#oBattleObjectsLinkedListSentinel_Prev]
+
 	mov pc, lr
 	.balign 4, 0x00
-off_800343C: .word dword_2009AB0
-	thumb_func_end sub_8003428
+.eBattleObjectsLinkedListSentinel_p: .word eBattleObjectsLinkedListSentinel
+	thumb_func_end UpdateBattleObjectLinkedList
 
 	thumb_local_start
+// unused
 sub_8003440:
-	mov r0, #0x10
+	mov r0, #oBattleObject_LinkedList_Size
 	sub r0, r5, r0
-	ldr r1, off_8003454 // =dword_2009380 
-	ldr r2, [r1,#0x4] // (dword_2009384 - 0x2009380)
-	str r0, [r1,#0x4] // (dword_2009384 - 0x2009380)
-	str r2, [r0,#4]
-	str r1, [r0]
-	str r0, [r2]
+	ldr r1, .eBattleObjectsLinkedListStart_p
+	ldr r2, [r1,#oBattleObjectsLinkedListStart_Next]
+	str r0, [r1,#oBattleObjectsLinkedListStart_Next]
+	str r2, [r0,#oBattleObject_LinkedList_Next]
+	str r1, [r0,#oBattleObject_LinkedList_Prev]
+	str r0, [r2,#oBattleObject_LinkedList_Prev]
 	mov pc, lr
 	.balign 4, 0x00
-off_8003454: .word dword_2009380
+.eBattleObjectsLinkedListStart_p: .word eBattleObjectsLinkedListStart
 	thumb_func_end sub_8003440
 
 	thumb_func_start object_freeMemory
@@ -999,19 +1011,19 @@ off_800348C: .word off_8003144
 	thumb_func_end object_freeMemory
 
 	thumb_local_start
-sub_8003490:
+InitializeStructsOfObjectType:
 	push {r4,r7,lr}
-	ldr r7, StructInitializationTable_p // =StructInitializationTable 
+	ldr r7, ObjectInitializationTable_p // =ObjectInitializationTable 
 	lsl r1, r0, #4
-	add r7, r7, r1 // StructInitializationTable + r0 * 16
+	add r7, r7, r1 // ObjectInitializationTable + r0 * 16
 	lsl r1, r0, #2
 	ldr r4, off_8003530 // =off_8003144 
 	// memBlock
 	ldr r0, [r4,r1] // r0 = [off_8003144 + r0 * 4]
-	ldrb r1, [r7,#0xc] // r1 = StructInitializationTable[r0] + 0xc
+	ldrb r1, [r7,#0xc] // r1 = ObjectInitializationTable[r0] + 0xc
 	add r1, #0x1f
 	lsr r1, r1, #5
-	// weird conversion to convert number of structs to length of list of indices in words
+	// sprite offset * 4
 	lsl r1, r1, #2
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	// memBlock
@@ -1033,8 +1045,8 @@ loc_80034BC:
 	blt loc_80034BC
 	pop {r4,r7,pc}
 	.balign 4, 0x00
-StructInitializationTable_p: .word StructInitializationTable
-StructInitializationTable:
+ObjectInitializationTable_p: .word ObjectInitializationTable
+ObjectInitializationTable:
 	// word 1 is part of a linked list?
 	// word 2 is the actual list of structs
 	// byte 1 is struct offset part 2?
@@ -1046,8 +1058,8 @@ StructInitializationTable:
 	.byte 0xC8, 0x1
 	.balign 4, 0x00
 
-	// todo these are actually battle objects for navis and viruses
-	.word unk_203A9A0, eT1BattleObjects
+	// type 1 battle objects
+	.word eT1BattleObject0_LinkedList, eT1BattleObject0
 	.hword NUM_T1_BATTLE_OBJECTS * oT1BattleObject_Size
 	.byte oT1BattleObject_SpriteData | 1
 	.byte oT1BattleObject_Size, NUM_T1_BATTLE_OBJECTS
@@ -1062,14 +1074,14 @@ StructInitializationTable:
 	.balign 4, 0x00
 
 	// type 3 battle objects
-	.word byte_203CFD0, eT3BattleObjects
+	.word eT3BattleObject0_LinkedList, eT3BattleObject0
 	.hword NUM_T3_BATTLE_OBJECTS * oT3BattleObject_Size
 	.byte oT3BattleObject_SpriteData | 3
 	.byte oT3BattleObject_Size, NUM_T3_BATTLE_OBJECTS
 	.balign 4, 0x00
 
 	// type 4 battle objects
-	.word unk_2036860, eT4BattleObjects
+	.word eT4BattleObject0_LinkedList, eT4BattleObject0
 	.hword NUM_T4_BATTLE_OBJECTS * oT4BattleObject_Size
 	.byte oT4BattleObject_SpriteData | 4
 	.byte oT4BattleObject_Size, NUM_T4_BATTLE_OBJECTS
@@ -1082,13 +1094,13 @@ StructInitializationTable:
 	.byte 0x78, 0x38
 	.balign 4, 0x00
 off_8003530: .word off_8003144
-	thumb_func_end sub_8003490
+	thumb_func_end InitializeStructsOfObjectType
 
 	thumb_func_start sub_8003534
 sub_8003534:
 	push {lr}
 	mov r0, #0
-	bl sub_8003490
+	bl InitializeStructsOfObjectType
 	pop {pc}
 	thumb_func_end sub_8003534
 
@@ -1096,7 +1108,7 @@ sub_8003534:
 sub_800353E:
 	push {lr}
 	mov r0, #1
-	bl sub_8003490
+	bl InitializeStructsOfObjectType
 	pop {pc}
 	thumb_func_end sub_800353E
 
@@ -1104,7 +1116,7 @@ sub_800353E:
 sub_8003548:
 	push {lr}
 	mov r0, #3
-	bl sub_8003490
+	bl InitializeStructsOfObjectType
 	pop {pc}
 	thumb_func_end sub_8003548
 
@@ -1112,7 +1124,7 @@ sub_8003548:
 sub_8003552:
 	push {lr}
 	mov r0, #4
-	bl sub_8003490
+	bl InitializeStructsOfObjectType
 	pop {pc}
 	thumb_func_end sub_8003552
 
@@ -1120,7 +1132,7 @@ sub_8003552:
 sub_800355C:
 	push {lr}
 	mov r0, #2
-	bl sub_8003490
+	bl InitializeStructsOfObjectType
 	pop {pc}
 	thumb_func_end sub_800355C
 
@@ -1128,7 +1140,7 @@ sub_800355C:
 sub_8003566:
 	push {lr}
 	mov r0, #5
-	bl sub_8003490
+	bl InitializeStructsOfObjectType
 	pop {pc}
 	thumb_func_end sub_8003566
 
@@ -1138,7 +1150,7 @@ sub_8003570:
 	mov r7, r0
 	mov r4, #0
 loc_8003576:
-	ldr r0, off_800377C // =jt_80030FC 
+	ldr r0, SpawnObjectFunctionsJumptable_p // =SpawnObjectFunctionsJumptable 
 	ldrb r1, [r7]
 	cmp r1, #0xff
 	beq loc_800359E
@@ -1405,7 +1417,7 @@ dword_800374C: .word 0x0, 0x0
 	.word byte_203F750
 	.word byte_2036830
 	.word 0x0, 0x0
-off_800377C: .word jt_80030FC
+SpawnObjectFunctionsJumptable_p: .word SpawnObjectFunctionsJumptable
 off_8003780: .word byte_2036778
 off_8003784: .word dword_203CA7C
 off_8003788: .word byte_2036830
@@ -2314,7 +2326,7 @@ sub_8003E98:
 	bl sub_80028C0
 	pop {pc}
 	mov r0, #0
-	ldr r3, off_8003EB8 // =eT1BattleObjects 
+	ldr r3, off_8003EB8 // =eT1BattleObject0 
 loc_8003EA6:
 	mov r1, r3
 	add r1, #oT1BattleObject_SpriteData
@@ -2325,7 +2337,7 @@ loc_8003EA6:
 	cmp r0, #0x20 
 	blt loc_8003EA6
 	mov pc, lr
-off_8003EB8: .word eT1BattleObjects
+off_8003EB8: .word eT1BattleObject0
 off_8003EBC: .word byte_2036778
 off_8003EC0: .word dword_2039A10
 off_8003EC4: .word sub_80C4E58+1
@@ -2618,7 +2630,7 @@ sub_8004298:
 	bl sub_80028C0
 	pop {pc}
 	mov r0, #0x30 
-	ldr r3, off_80042BC // =byte_203CFD0 
+	ldr r3, off_80042BC // =eT3BattleObject0_LinkedList 
 	thumb_func_end sub_8004298
 
 	thumb_local_start
@@ -2626,14 +2638,14 @@ sub_80042A6:
 	mov r1, r3
 	add r1, #0x90
 	mov r2, #0
-	str r2, [r1,#0x24] // (eT3BattleObjects+0xa4 - 0x203d060)
+	str r2, [r1,#0x24] // (eT3BattleObject0+0xa4 - 0x203d060)
 	add r3, #0xd8
 	add r0, #1
 	cmp r0, #0x20 
 	blt sub_80042A6
 	mov pc, lr
-	.word eT3BattleObjects
-off_80042BC: .word byte_203CFD0
+	.word eT3BattleObject0
+off_80042BC: .word eT3BattleObject0_LinkedList
 off_80042C0: .word dword_203CA7C
 off_80042C4: .word dword_203A010
 off_80042C8: .word loc_80E0548+1
@@ -2863,7 +2875,7 @@ sub_8004590:
 	thumb_local_start
 dead_800459A:
 	mov r0, #0
-	ldr r3, off_80045B0 // =eT4BattleObjects 
+	ldr r3, off_80045B0 // =eT4BattleObject0 
 loc_800459E:
 	mov r1, r3
 	add r1, #0x80
@@ -2874,7 +2886,7 @@ loc_800459E:
 	cmp r0, #0x20 
 	blt loc_800459E
 	mov pc, lr
-off_80045B0: .word eT4BattleObjects
+off_80045B0: .word eT4BattleObject0
 off_80045B4: .word byte_2036830
 off_80045B8: .word byte_203F750
 off_80045BC: .word npc_809E570+1

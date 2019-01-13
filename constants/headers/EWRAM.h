@@ -48,7 +48,7 @@ in the 0x2000000 RAM region
   is likely contained within
 */
 #define s_2034880 (void*)                       0x2034880)
-#define eT1BattleObjects ((Battle*)                   0x203A9B0)
+#define eT1BattleObject0 ((Battle*)                   0x203A9B0)
 /*
   [DEAD] no xrefs. Last @ 203A9B0
 */
