@@ -67,7 +67,7 @@
 // .global sub_80010D4
 // .global sub_80010EC
 // .global sub_8001154
-// .global change_20013F0_800151C // () -> int
+// .global GetRNG2 // () -> int
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_8002694
 
@@ -106,8 +106,8 @@
 // .global dword_8021AEC
 // .global sub_8021B78 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
-// .global sub_8021BC0
-// .global sub_8021BD8
+// .global GetChipCountOfCode
+// .global GetTotalChipCount
 // .global sub_8021C02
 
 	.include "asm/asm03_0.inc"

@@ -156,7 +156,7 @@ loc_808C398:
 	lsl r4, r4, #8
 	push {r1-r7}
 loc_808C3C0:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #0xff
 	and r0, r1
 	lsr r1, r0, #5

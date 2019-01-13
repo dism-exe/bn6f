@@ -113,7 +113,7 @@
 // .global sub_8001172
 // .global calcAngle_800117C
 // .global sub_80014D4
-// .global change_20013F0_800151C // () -> int
+// .global GetRNG2 // () -> int
 
 	.include "asm/asm00_1.inc"
 // .global sub_8003570

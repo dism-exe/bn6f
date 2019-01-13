@@ -21,8 +21,8 @@
 // .global sub_8000A3C
 // .global objRender_8000A44
 // .global sub_8000E10
-// .global sub_8001514 // () -> void
-// .global rng_800154C // () -> void
+// .global SeedRNG2 // () -> void
+// .global GetRNG1 // () -> void
 // .global sub_80015B4
 // .global render_80015D0
 // .global render_800172C
@@ -57,7 +57,7 @@
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global subsystem_triggerTransition_800630A
 // .global sub_8006910
-// .global CpuSet_toolKit // () -> void
+// .global SetPrimaryToolkitPointers // () -> void
 // .global RandomizeExtraToolkitPointers
 // .global sub_80071B4
 // .global isSameSubsystem_800A732 // () -> zf

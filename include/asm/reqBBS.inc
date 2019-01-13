@@ -71,7 +71,7 @@
 // .global loc_8000AC8
 // .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
-// .global change_20013F0_800151C // () -> int
+// .global GetRNG2 // () -> int
 // .global sub_80015FC
 // .global sub_8001778
 // .global sub_8001788

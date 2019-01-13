@@ -88,8 +88,8 @@
 // .global sub_8000C00
 // .global sub_8000C5C
 // .global getPETNaviSelect // () -> u8
-// .global change_20013F0_800151C // () -> int
-// .global sub_8001532
+// .global GetRNG2 // () -> int
+// .global GetPositiveSignedRNG2
 // .global sub_80015FC
 // .global sub_8001708
 // .global sub_8001778
@@ -139,8 +139,8 @@
 // .global getChip_8021DA8 // (int chip_idx) -> ChipData*
 // .global dword_8021AEC
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
-// .global sub_8021BC0
-// .global sub_8021BD8
+// .global GetChipCountOfCode
+// .global GetTotalChipCount
 
 	.include "asm/asm03_0.inc"
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void

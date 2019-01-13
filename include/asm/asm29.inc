@@ -66,8 +66,8 @@
 // .global sub_800118A
 // .global sub_80011D6
 // .global sub_80014D4
-// .global change_20013F0_800151C // () -> int
-// .global sub_8001532
+// .global GetRNG2 // () -> int
+// .global GetPositiveSignedRNG2
 
 	.include "asm/sprite.inc"
 // .global sprite_loadAnimationData // () -> void

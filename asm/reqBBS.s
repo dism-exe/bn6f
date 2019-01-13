@@ -4409,7 +4409,7 @@ off_81409CC: .word dynamicArr
 reqBBS_81409D0:
 	push {r6,lr}
 	mov r6, r0
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #0xff
 	and r0, r1
 	mov r1, r6

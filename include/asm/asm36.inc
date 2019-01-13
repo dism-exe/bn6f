@@ -98,7 +98,7 @@
 // .global sub_8000F86
 // .global loc_8001048
 // .global getPETNaviSelect // () -> u8
-// .global rng_800154C // () -> void
+// .global GetRNG1 // () -> void
 // .global sub_80015FC
 // .global sub_80017AA
 // .global sub_80017E0

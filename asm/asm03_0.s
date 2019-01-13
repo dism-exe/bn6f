@@ -1331,7 +1331,7 @@ loc_8026F72:
 	add r2, r0, #1
 	str r2, [r1,#0x8] // (dword_20349A8 - 0x20349a0)
 	ldrb r4, [r3,r0]
-	bl rng_800154C // () -> void
+	bl GetRNG1 // () -> void
 	mov r1, #1
 	mov r2, #0xf
 	and r0, r2
@@ -12132,7 +12132,7 @@ sub_802C8B0:
 	sub sp, sp, #0xc
 	str r0, [sp]
 	str r1, [sp,#8]
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	lsr r0, r0, #8
 	ldr r1, [sp,#8]
 	svc 6
@@ -12612,7 +12612,7 @@ sub_802CC1A:
 	sub r0, #1
 	strb r0, [r5,#5]
 	beq loc_802CC3E
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r4, r0
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
@@ -13791,7 +13791,7 @@ loc_802D494:
 	ldrb r1, [r5,#0x13]
 	b loc_802D4B6
 loc_802D4A4:
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r6
 	svc 6
 	add r0, sp, #8
@@ -13951,7 +13951,7 @@ loc_802D5C2:
 	mul r0, r1
 	ldr r4, off_802D5E0 // =byte_802D5E4
 	add r4, r4, r0
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #3
 	cmp r6, #9
 	bne loc_802D5D8
@@ -15212,7 +15212,7 @@ sub_802E09A:
 	thumb_local_start
 sub_802E0A6:
 	push {lr}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r4, #7
 	and r4, r0
 	mov r1, #0x29 
@@ -16257,7 +16257,7 @@ loc_802E8B4:
 	blt loc_802E8D2
 	bgt loc_802E8CE
 	push {r0-r2}
-	bl rng_800154C // () -> void
+	bl GetRNG1 // () -> void
 	lsr r3, r0, #0x1c
 	lsr r0, r3
 	pop {r0-r2}
@@ -16803,7 +16803,7 @@ sub_802EE14:
 	thumb_local_start
 sub_802EE18:
 	push {lr}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r4, #7
 	and r4, r0
 	mov r1, #0x29 
@@ -17845,7 +17845,7 @@ Load_ho_802F544:
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	pop {r4-r7,pc}
 off_802F55C: .word jt_802F560
 jt_802F560: .word startScreen_802F574+1
@@ -19306,7 +19306,7 @@ loc_8030214:
 	sub r1, r0, #1
 	strh r1, [r5,#0x10]
 loc_8030226:
-	bl rng_800154C // () -> void
+	bl GetRNG1 // () -> void
 	ldr r2, [r7]
 	and r0, r2
 	lsl r0, r0, #0x10
@@ -19325,7 +19325,7 @@ loc_8030226:
 	lsl r0, r0, #1
 	str r0, [r5,#0x48]
 loc_803024C:
-	bl rng_800154C // () -> void
+	bl GetRNG1 // () -> void
 	ldr r2, [r7]
 	and r0, r2
 	lsl r0, r0, #0x10

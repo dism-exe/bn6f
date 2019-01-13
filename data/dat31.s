@@ -1102,7 +1102,7 @@ sub_810CDC0:
 	mov r0, #1
 	cmp r1, #1
 	beq loc_810CDE2
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #1
 	and r0, r1
 loc_810CDE2:

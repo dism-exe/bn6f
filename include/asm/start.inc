@@ -25,7 +25,7 @@
 // .global main_
 
 	.include "asm/asm00_1.inc"
-// .global CpuSet_toolKit // () -> void
+// .global SetPrimaryToolkitPointers // () -> void
 // .global RandomizeExtraToolkitPointers
 
 

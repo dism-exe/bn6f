@@ -126,7 +126,7 @@
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global sub_8000E30
-// .global sub_8001532
+// .global GetPositiveSignedRNG2
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 
 	.include "asm/asm00_1.inc"

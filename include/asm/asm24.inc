@@ -16,7 +16,7 @@
 // .global sound_8000672
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global sub_8001172
-// .global change_20013F0_800151C // () -> int
+// .global GetRNG2 // () -> int
 
 	.include "asm/asm00_1.inc"
 // .global sub_80047E0

@@ -3,7 +3,7 @@
 	thumb_func_start main_
 main_:
 	bl main_static_80004A4
-	bl sub_8001514 // () -> void
+	bl SeedRNG2 // () -> void
 	bl clear_200AD04 // () -> void
 	bl sub_803D1A8 // () -> void
 main_gameRoutine:
@@ -33,7 +33,7 @@ main_gameRoutine:
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-	bl rng_800154C // () -> void
+	bl GetRNG1 // () -> void
 	bl isSameSubsystem_800A732 // () -> zf
 	beq loc_800032A
 	bl subsystem_triggerTransition_800630A
@@ -226,7 +226,7 @@ main_static_80004A4:
 loc_80004AA:
 	push {r5,lr}
 	push {r0}
-	bl CpuSet_toolKit // () -> void
+	bl SetPrimaryToolkitPointers // () -> void
 	bl RandomizeExtraToolkitPointers
 	pop {r1}
 	ldr r0, off_8000564 // =0x40 

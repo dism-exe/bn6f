@@ -82,7 +82,7 @@
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010BE
-// .global change_20013F0_800151C // () -> int
+// .global GetRNG2 // () -> int
 
 	.include "asm/asm00_2.inc"
 // .global navicust_801379E // (int a1, int a2, int a3) -> void

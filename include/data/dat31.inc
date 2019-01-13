@@ -28,7 +28,7 @@
 /* External Symbols */
 	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global sub_8001532
+// .global GetPositiveSignedRNG2
 
 	.include "asm/asm00_1.inc"
 // .global sub_8002DEA

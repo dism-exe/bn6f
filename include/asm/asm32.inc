@@ -318,9 +318,9 @@
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001330
 // .global sub_800139A
-// .global change_20013F0_800151C // () -> int
-// .global sub_8001532
-// .global rng_8001562
+// .global GetRNG2 // () -> int
+// .global GetPositiveSignedRNG2
+// .global GetPositiveSignedRNG1
 // .global sub_80015FC
 // .global sub_8001850
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -474,8 +474,8 @@
 // .global dword_8021AEC
 // .global sub_8021B2A
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
-// .global sub_8021BC0
-// .global sub_8021BD8
+// .global GetChipCountOfCode
+// .global GetTotalChipCount
 // .global chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
 
 	.include "asm/asm03_0.inc"

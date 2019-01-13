@@ -8,8 +8,8 @@
 	.global sub_8021B2A
 	.global sub_8021B78 // (int idx, int searchItem, int off) -> void*
 	.global sub_8021B92 // (int idx, int searchItem, int off) -> void*
-	.global sub_8021BC0
-	.global sub_8021BD8
+	.global GetChipCountOfCode
+	.global GetTotalChipCount
 	.global sub_8021C02
 	.global sub_8021C68
 	.global chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*

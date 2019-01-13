@@ -3173,7 +3173,7 @@ loc_8131C34:
 	blt loc_8131C34
 	mov r7, #8
 loc_8131C40:
-	bl rng_800154C // () -> void
+	bl GetRNG1 // () -> void
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #2
@@ -3220,7 +3220,7 @@ sub_8131CAC:
 	mvn r0, r0
 	str r0, [sp]
 loc_8131CBA:
-	bl rng_800154C // () -> void
+	bl GetRNG1 // () -> void
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #2
@@ -3234,7 +3234,7 @@ loc_8131CBA:
 	add r6, #4
 	cmp r6, #8
 	blt loc_8131CBA
-	bl rng_800154C // () -> void
+	bl GetRNG1 // () -> void
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #2
@@ -3288,7 +3288,7 @@ sub_8131D80:
 	push {r4-r7,lr}
 	ldr r4, off_8131DC0 // =dword_202522C 
 	mov r6, #0
-	bl rng_800154C // () -> void
+	bl GetRNG1 // () -> void
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #2
@@ -3296,7 +3296,7 @@ sub_8131D80:
 	ldr r0, [r1,r0]
 	str r0, [r4,r6]
 	add r6, #4
-	bl rng_800154C // () -> void
+	bl GetRNG1 // () -> void
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #2
@@ -3304,7 +3304,7 @@ sub_8131D80:
 	ldr r0, [r1,r0]
 	str r0, [r4,r6]
 	add r6, #4
-	bl rng_800154C // () -> void
+	bl GetRNG1 // () -> void
 	mov r1, #7
 	and r0, r1
 	lsl r0, r0, #2
@@ -3367,7 +3367,7 @@ sub_8131E70:
 	// size
 	mov r1, #0x3c 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	bl rng_800154C // () -> void
+	bl GetRNG1 // () -> void
 	mov r1, #0xf
 	and r0, r1
 	lsl r4, r0, #2

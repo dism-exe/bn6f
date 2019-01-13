@@ -202,9 +202,9 @@
 // .global sub_8001040
 // .global getPETNaviSelect // () -> u8
 // .global sub_8001158 // () -> void
-// .global change_20013F0_800151C // () -> int
-// .global sub_8001532
-// .global rng_800154C // () -> void
+// .global GetRNG2 // () -> int
+// .global GetPositiveSignedRNG2
+// .global GetRNG1 // () -> void
 // .global sub_80015FC
 // .global sub_8001778
 // .global sub_8001788

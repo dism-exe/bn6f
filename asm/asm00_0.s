@@ -1034,14 +1034,14 @@ sub_8000C72:
 loc_8000C74:
 	push {r0,r2}
 	push {r1}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1}
 	push {r1}
 	svc 6
 	mov r3, r1
 	pop {r1}
 	push {r1,r3}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1}
 	push {r1}
 	svc 6
@@ -1063,14 +1063,14 @@ sub_8000CA6:
 loc_8000CA8:
 	push {r0,r2}
 	push {r1}
-	bl rng_8001562
+	bl GetPositiveSignedRNG1
 	pop {r1}
 	push {r1}
 	svc 6
 	mov r3, r1
 	pop {r1}
 	push {r1,r3}
-	bl rng_8001562
+	bl GetPositiveSignedRNG1
 	pop {r1}
 	push {r1}
 	svc 6
@@ -1092,14 +1092,14 @@ sub_8000CDA:
 loc_8000CDC:
 	push {r0,r2}
 	push {r1}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1}
 	push {r1}
 	svc 6
 	mov r3, r1
 	pop {r1}
 	push {r1,r3}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1}
 	push {r1}
 	svc 6
@@ -1123,14 +1123,14 @@ sub_8000D12:
 loc_8000D14:
 	push {r0,r2}
 	push {r1}
-	bl rng_8001562
+	bl GetPositiveSignedRNG1
 	pop {r1}
 	push {r1}
 	svc 6
 	mov r3, r1
 	pop {r1}
 	push {r1,r3}
-	bl rng_8001562
+	bl GetPositiveSignedRNG1
 	pop {r1}
 	push {r1}
 	svc 6
@@ -1153,7 +1153,7 @@ sub_8000D4A:
 	push {r7,lr}
 	mov r7, r0
 	push {r1,r7}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1,r7}
 	bl SWI_Div
 	ldrb r0, [r7,r1]
@@ -1296,7 +1296,7 @@ sub_8000E3A:
 	mov r4, r1
 	push {r0,r1}
 	push {r4}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	lsr r4, r0, #0x1e
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CurFramePtr]
@@ -1305,7 +1305,7 @@ sub_8000E3A:
 	and r0, r1
 	add r4, r4, r0
 loc_8000E54:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	sub r4, #1
 	bge loc_8000E54
 	pop {r4}
@@ -2331,17 +2331,17 @@ copyWords_80014EC: // 80014EC
 	thumb_func_end copyWords_80014EC
 
 // () -> void
-	thumb_func_start sub_8001514
-sub_8001514:
+	thumb_func_start SeedRNG2
+SeedRNG2:
 	ldr r0, rng_8001594 // =0xa338244f 
 	ldr r1, off_8001598 // =dword_20013F0 
 	str r0, [r1]
 	mov pc, lr
-	thumb_func_end sub_8001514
+	thumb_func_end SeedRNG2
 
 // () -> int
-	thumb_func_start change_20013F0_800151C
-change_20013F0_800151C:
+	thumb_func_start GetRNG2
+GetRNG2:
 	push {r7,lr}
 	ldr r7, off_800159C // =dword_20013F0 
 	ldr r0, [r7]
@@ -2353,10 +2353,10 @@ change_20013F0_800151C:
 	eor r0, r1
 	str r0, [r7]
 	pop {r7,pc}
-	thumb_func_end change_20013F0_800151C
+	thumb_func_end GetRNG2
 
-	thumb_func_start sub_8001532
-sub_8001532:
+	thumb_func_start GetPositiveSignedRNG2
+GetPositiveSignedRNG2:
 	push {r7,lr}
 	ldr r7, off_80015A4 // =dword_20013F0 
 	ldr r0, [r7]
@@ -2370,11 +2370,11 @@ sub_8001532:
 	lsl r0, r0, #1
 	lsr r0, r0, #1
 	pop {r7,pc}
-	thumb_func_end sub_8001532
+	thumb_func_end GetPositiveSignedRNG2
 
 // () -> void
-	thumb_func_start rng_800154C
-rng_800154C:
+	thumb_func_start GetRNG1
+GetRNG1:
 	push {r7,lr}
 	ldr r7, off_80015A8 // =rngSeed_2001120 
 	ldr r0, [r7]
@@ -2386,10 +2386,10 @@ rng_800154C:
 	eor r0, r1
 	str r0, [r7]
 	pop {r7,pc}
-	thumb_func_end rng_800154C
+	thumb_func_end GetRNG1
 
-	thumb_func_start rng_8001562
-rng_8001562:
+	thumb_func_start GetPositiveSignedRNG1
+GetPositiveSignedRNG1:
 	push {r7,lr}
 	ldr r7, off_80015AC // =rngSeed_2001120 
 	ldr r0, [r7]
@@ -2403,7 +2403,7 @@ rng_8001562:
 	lsl r0, r0, #1
 	lsr r0, r0, #1
 	pop {r7,pc}
-	thumb_func_end rng_8001562
+	thumb_func_end GetPositiveSignedRNG1
 
 	thumb_local_start
 dead_rng_800157C:

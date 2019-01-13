@@ -669,8 +669,8 @@
 // .global sub_8001330
 // .global sub_8001382
 // .global sub_800139A
-// .global change_20013F0_800151C // () -> int
-// .global sub_8001532
+// .global GetRNG2 // () -> int
+// .global GetPositiveSignedRNG2
 // .global sub_8002378
 // .global sub_800239A
 

@@ -235,8 +235,8 @@
 // .global sub_80010C6
 // .global sub_80010D4
 // .global sub_8001172
-// .global sub_8001514 // () -> void
-// .global change_20013F0_800151C // () -> int
+// .global SeedRNG2 // () -> void
+// .global GetRNG2 // () -> int
 // .global sub_80015FC
 // .global sub_8001778
 // .global sub_8001788
@@ -316,8 +316,8 @@
 	.include "asm/asm02.inc"
 // .global dword_8021AEC
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
-// .global sub_8021BC0
-// .global sub_8021BD8
+// .global GetChipCountOfCode
+// .global GetTotalChipCount
 
 	.include "asm/asm03_0.inc"
 // .global sub_802D070

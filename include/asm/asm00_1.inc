@@ -113,7 +113,7 @@
 	.global sub_8006920
 	.global sub_8006990
 	.global sub_8006A5C
-	.global CpuSet_toolKit // () -> void
+	.global SetPrimaryToolkitPointers // () -> void
 	.global RandomizeExtraToolkitPointers
 	.global SetExtraToolkitPointers
 	.global sub_8006DEC
@@ -242,10 +242,10 @@
 // .global sub_800139A
 // .global sub_80013A2
 // .global copyWords_80014EC // (void *src, void *dest, int size) -> void
-// .global change_20013F0_800151C // () -> int
-// .global sub_8001532
-// .global rng_800154C // () -> void
-// .global rng_8001562
+// .global GetRNG2 // () -> int
+// .global GetPositiveSignedRNG2
+// .global GetRNG1 // () -> void
+// .global GetPositiveSignedRNG1
 // .global sub_8001708
 // .global sub_8001778
 // .global sub_8001788

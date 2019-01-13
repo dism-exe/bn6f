@@ -73,11 +73,11 @@
 	.global loc_8001440
 	.global sub_80014D4
 	.global copyWords_80014EC // (void *src, void *dest, int size) -> void
-	.global sub_8001514 // () -> void
-	.global change_20013F0_800151C // () -> int
-	.global sub_8001532
-	.global rng_800154C // () -> void
-	.global rng_8001562
+	.global SeedRNG2 // () -> void
+	.global GetRNG2 // () -> int
+	.global GetPositiveSignedRNG2
+	.global GetRNG1 // () -> void
+	.global GetPositiveSignedRNG1
 	.global sub_80015B4
 	.global render_80015D0
 	.global sub_80015FC

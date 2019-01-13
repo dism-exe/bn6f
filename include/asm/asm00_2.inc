@@ -367,9 +367,9 @@
 // .global sub_80011A0
 // .global sub_800139A
 // .global loc_8001440
-// .global change_20013F0_800151C // () -> int
-// .global sub_8001532
-// .global rng_8001562
+// .global GetRNG2 // () -> int
+// .global GetPositiveSignedRNG2
+// .global GetPositiveSignedRNG1
 // .global sub_800187C
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0

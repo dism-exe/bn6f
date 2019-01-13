@@ -62,7 +62,7 @@ _GameEntryPoint:
 	// size
 	ldr r2, IWRAMRoutinesSize_p // =0x1ed4 
 	bl start_copyMemory // (void *src, void *dest, int size) -> void
-	ldr r0, off_8000214 // =CpuSet_toolKit+1 
+	ldr r0, off_8000214 // =SetPrimaryToolkitPointers+1 
 	mov lr, pc
 	bx r0
 	ldr r0, off_8000218 // =RandomizeExtraToolkitPointers+1 
@@ -121,7 +121,7 @@ dword_8000204: .word 0x45B4
 mem: .word IWRAMRoutinesROMLocation
 off_800020C: .word dword_3005B00
 IWRAMRoutinesSize_p: .word 0x1ED4
-off_8000214: .word CpuSet_toolKit+1
+off_8000214: .word SetPrimaryToolkitPointers+1
 off_8000218: .word RandomizeExtraToolkitPointers+1
 off_800021C: .word start_800023C+1
 off_8000220: .word byte_20081B0

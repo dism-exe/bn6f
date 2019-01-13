@@ -4301,8 +4301,8 @@ cb_80050EC:
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-	bl change_20013F0_800151C // () -> int
-	bl rng_800154C // () -> void
+	bl GetRNG2 // () -> int
+	bl GetRNG1 // () -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 GameStateJumptable_p: .word GameStateJumptable
@@ -6985,8 +6985,8 @@ off_8006BBC: .word 0x101
 	thumb_func_end sub_8006B94
 
 // () -> void
-	thumb_func_start CpuSet_toolKit
-CpuSet_toolKit:
+	thumb_func_start SetPrimaryToolkitPointers
+SetPrimaryToolkitPointers:
 	push {lr}
 	ldr r0, .ToolkitPointers_p // =ToolkitPointers 
 	ldr r1, .eToolkit_p // =eToolkit 
@@ -7014,12 +7014,12 @@ ToolkitPointers: .word i_joGameSubsysSel
 	.word sSubmenu
 	.word byte_200A220
 ToolkitPointersEnd:
-	thumb_func_end CpuSet_toolKit
+	thumb_func_end SetPrimaryToolkitPointers
 
 	thumb_local_start
 SetPrimaryToolkitPointersWrapper:
 	push {lr}
-	bl CpuSet_toolKit // () -> void
+	bl SetPrimaryToolkitPointers // () -> void
 	pop {r0}
 	bx r0
 	thumb_func_end SetPrimaryToolkitPointersWrapper
@@ -7028,7 +7028,7 @@ SetPrimaryToolkitPointersWrapper:
 RandomizeExtraToolkitPointers: // 8006C22
 	push {lr}
 	push {r4-r7}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	// anti-cheat stuff? this block up to the copy 
 	// seems to do nothing due to the ands which zero 
 	// r5 was supposedly an offset to be added to the pointers 
@@ -7146,7 +7146,7 @@ sub_8006D00:
 	mov r0, #0
 	and r4, r0
 	str r4, [r5]
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	str r0, [r5,#0x4] // (dword_2001064 - 0x2001060)
 	mov r6, r10
 	mov r0, #0x78 
@@ -7157,7 +7157,7 @@ loc_8006D24:
 	sub r7, #1
 	blt loc_8006D40
 loc_8006D28:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #0xff
 	and r0, r1
 	mov r1, #0x6f 
@@ -7178,7 +7178,7 @@ loc_8006D4A:
 	sub r7, #1
 	blt loc_8006D66
 loc_8006D4E:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #0xff
 	and r0, r1
 	mov r1, #0x81
@@ -7199,7 +7199,7 @@ loc_8006D70:
 	sub r7, #1
 	blt loc_8006D8C
 loc_8006D74:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #0xff
 	and r0, r1
 	mov r1, #0xfe
@@ -7214,7 +7214,7 @@ loc_8006D8C:
 	ldr r4, off_8006DDC // =dword_2000060 
 	ldr r6, off_8006DE0 // =dword_802412C 
 loc_8006D90:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	lsl r0, r0, #0xc
 	lsr r0, r0, #0xc
 	eor r0, r6
@@ -7225,7 +7225,7 @@ loc_8006D90:
 	ldr r4, off_8006DE4 // =dword_20018B8 
 	ldr r6, off_8006DE8 // =loc_803ED90 
 loc_8006DA8:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	lsl r0, r0, #0xc
 	lsr r0, r0, #0xc
 	eor r0, r6
@@ -7298,7 +7298,7 @@ save_8006E26:
 	push {r4-r7,lr}
 	ldr r7, off_8006E38 // =eUnusedExtraToolkitPtrsOffset 
 loc_8006E2A:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mvn r0, r0
 	tst r0, r0
 	beq loc_8006E2A
@@ -7633,7 +7633,7 @@ loc_8007042:
 	sub r7, #1
 	blt locret_800705E
 loc_8007046:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #0xff
 	and r0, r1
 	mov r1, #0x8d
@@ -8123,7 +8123,7 @@ dword_8007420: .word 0x8000
 	thumb_local_start
 sub_8007424:
 	push {r4,lr}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #0xf
 	svc 6
 	ldrb r0, [r6,#2]
@@ -9385,7 +9385,7 @@ loc_8007E38:
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0
 	strb r0, [r5,#0xa]
-	bl CpuSet_toolKit // () -> void
+	bl SetPrimaryToolkitPointers // () -> void
 locret_8007E60:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_8007CA0
@@ -14664,7 +14664,7 @@ loc_800A5D2:
 	beq loc_800A610
 	mov r4, #0
 loc_800A5E8:
-	bl rng_8001562
+	bl GetPositiveSignedRNG1
 	mov r1, #0xc
 	neg r1, r1
 	add r1, r1, r5
@@ -14685,7 +14685,7 @@ loc_800A5E8:
 loc_800A610:
 	mov r4, #0
 loc_800A612:
-	bl rng_8001562
+	bl GetPositiveSignedRNG1
 	mov r1, #0xb
 	svc 6
 	mov r3, #8
@@ -14704,7 +14704,7 @@ loc_800A634:
 	ldr r0, [sp,#8]
 	tst r0, r0
 	beq loc_800A664
-	bl rng_8001562
+	bl GetPositiveSignedRNG1
 	mov r1, #0x13
 	svc 6
 	mov r0, #1

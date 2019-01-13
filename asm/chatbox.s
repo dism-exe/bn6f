@@ -3380,7 +3380,7 @@ chatbox_8041818:
 	lsl r1, r1, #8
 	orr r0, r1
 	ldrb r1, [r4,#4]
-	bl sub_8021BC0
+	bl GetChipCountOfCode
 	pop {r4,r5}
 	ldrb r1, [r4,#5]
 	mov r2, #0
@@ -3401,7 +3401,7 @@ loc_804184C:
 	lsl r1, r1, #8
 	orr r0, r1
 	ldrb r1, [r4,#4]
-	bl sub_8021BC0
+	bl GetChipCountOfCode
 	pop {r4,r5}
 	push {r0,r4,r5}
 	ldrb r0, [r4,#2]
@@ -3431,7 +3431,7 @@ loc_804188A:
 	ldrb r1, [r4,#3]
 	lsl r1, r1, #8
 	orr r0, r1
-	bl sub_8021BD8
+	bl GetTotalChipCount
 	pop {r4,r5}
 	ldrb r1, [r4,#4]
 	mov r2, #0
@@ -3802,7 +3802,7 @@ loc_8041B00:
 	and r6, r0
 	add r6, #2
 loc_8041B0C:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	sub r6, #1
 	bgt loc_8041B0C
 	lsl r0, r0, #0x16
@@ -5174,7 +5174,7 @@ sub_8042554:
 	push {lr}
 	mov r0, #0x73 
 	bl sound_play // () -> void
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	ldrb r1, [r4,#2]
 	and r1, r0
 	add r0, r1, r4

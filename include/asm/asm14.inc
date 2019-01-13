@@ -18,7 +18,7 @@
 /* External Symbols */
 	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
-// .global change_20013F0_800151C // () -> int
+// .global GetRNG2 // () -> int
 // .global sub_8001778
 // .global sub_8001780
 // .global sub_800195C

@@ -336,7 +336,7 @@ loc_810DBC6:
 	bne loc_810DBAE
 loc_810DBCC:
 	mov r7, r0
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r7
 	svc 6
 	mov r0, sp
@@ -754,7 +754,7 @@ loc_810E004:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	push {r0}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	pop {r1}
 	mov r2, #7
 	and r0, r2
@@ -773,7 +773,7 @@ loc_810E02A:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	push {r0}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	pop {r1}
 	mov r2, #7
 	and r0, r2
@@ -794,7 +794,7 @@ loc_810E054:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	push {r0}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	pop {r1}
 	mov r2, #7
 	and r0, r2
@@ -802,7 +802,7 @@ loc_810E054:
 	push {r0}
 	ldr r0, off_810E0C8 // =byte_810E0CC 
 	push {r0}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	pop {r1}
 	mov r2, #7
 	and r0, r2
@@ -2345,7 +2345,7 @@ locret_810EE94:
 	bl sub_8015E46
 	b locret_810EEDC
 loc_810EEC0:
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #0xf
 	and r0, r1
 	cmp r0, #0xa
@@ -2374,7 +2374,7 @@ sub_810EEDE:
 	ldrb r0, [r0,#0x12]
 	b locret_810EF16
 loc_810EEFA:
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #0xf
 	and r0, r1
 	cmp r0, #0xa
@@ -2402,7 +2402,7 @@ sub_810EF40:
 	push {r4,lr}
 	bl object_getFlipDirection_800E2CA // () -> int
 	mov r4, r0
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #0xe
 	and r0, r1
 	ldr r1, off_810EF70 // =byte_810EF74
@@ -4120,7 +4120,7 @@ sub_810FFC4:
 	tst r0, r0
 	beq loc_810FFFC
 	push {r0}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1}
 	svc 6
 	add r0, sp, #0
@@ -4203,7 +4203,7 @@ loc_8110078:
 	mov r2, r6
 	mov r0, r6
 	beq loc_8110092
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r6
 	svc 6
 	add r0, sp, #0
@@ -5685,7 +5685,7 @@ sub_8110E76:
 	bl object_setFlag // (int a1) -> void
 	mov r0, #0x40
 	bl object_setFlag // (int a1) -> void
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #3
 	and r0, r1
 	str r0, [r5,#0x68]
@@ -6534,7 +6534,7 @@ sub_8111650:
 	mov r2, #0x66 
 	strb r1, [r5,r2]
 	push {r0,r1}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #3
 	and r0, r1
 	mov r1, #0x64 
@@ -6573,7 +6573,7 @@ sub_8111674:
 	mov r2, #0x66 
 	strb r1, [r5,r2]
 	push {r0,r1}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #3
 	and r0, r1
 	mov r1, #0x64 
@@ -6710,7 +6710,7 @@ loc_81117BC:
 	mov r2, r6
 	mov r0, r6
 	beq loc_81117D6
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r6
 	svc 6
 	add r0, sp, #0
@@ -6767,7 +6767,7 @@ sub_8111816:
 	push {r4,lr}
 	mov r0, #0
 	str r0, [r5,#0x60]
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #3
 	and r0, r1
 	mov r1, #0x64 
@@ -7206,7 +7206,7 @@ loc_8111C1E:
 	cmp r0, #0
 	beq loc_8111C62
 	mov r4, r0
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r4
 	svc 6
 	mov r0, sp
@@ -8053,7 +8053,7 @@ loc_8112406:
 	beq loc_8112422
 loc_811240E:
 	mov r4, r0
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r4
 	svc 6
 	add r0, sp, #0x10
@@ -8843,7 +8843,7 @@ sub_8112B06:
 	beq loc_8112B4A
 loc_8112B36:
 	mov r7, r0
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r7
 	svc 6
 	add r0, sp, #0
@@ -11152,7 +11152,7 @@ sub_8113FE8:
 	tst r0, r0
 	beq loc_8114020
 	push {r0}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1}
 	svc 6
 	add r0, sp, #0
@@ -11180,7 +11180,7 @@ sub_8114030:
 	thumb_local_start
 sub_8114040:
 	push {r4-r7,lr}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #2
@@ -11268,7 +11268,7 @@ loc_81140E0:
 	mov r2, r6
 	mov r0, r6
 	beq loc_81140FA
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r6
 	svc 6
 	add r0, sp, #0
@@ -12476,7 +12476,7 @@ sub_8114C90:
 	tst r0, r0
 	beq loc_8114CB4
 	mov r7, r0
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r7
 	svc 6
 	add r0, sp, #0
@@ -12573,7 +12573,7 @@ locret_8114D42:
 	thumb_local_start
 sub_8114D44:
 	push {r4-r7,lr}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #0xf
 	and r0, r1
 	ldr r1, off_8114D60 // =byte_8114D64 
@@ -13482,7 +13482,7 @@ sub_811555C:
 	ldr r0, [r5,#0x54]
 	mov r1, #0xa
 	strb r1, [r0,#7]
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #2
 	and r1, r0
 	sub r1, #1
@@ -14161,7 +14161,7 @@ loc_8115B7A:
 	add r4, #1
 	sub r3, #1
 	bne loc_8115B5C
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	ldr r1, [sp,#0x14]
 	svc 6
 	add r2, sp, #0x18
@@ -14873,7 +14873,7 @@ sub_811627A:
 	push {r4-r7,lr}
 	mov r0, #0
 	str r0, [r5,#0x64]
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #3
 	and r0, r1
 	mov r1, #0x68 
@@ -15095,13 +15095,13 @@ sub_8116510:
 	ldr r1, off_8116550 // =off_8116554 
 	ldr r0, [r1,r0]
 	push {r0}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #0xf
 	and r0, r1
 	pop {r1}
 	ldrb r0, [r1,r0]
 	push {r0}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #0xf
 	and r0, r1
 	ldr r1, off_8116590 // =loc_8116594 
@@ -15315,7 +15315,7 @@ sub_81167D2:
 	bl sub_8116834
 	cmp r0, #4
 	beq locret_81167EE
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #0xf
 	and r0, r1
 	ldrb r1, [r5,#4]
@@ -15361,7 +15361,7 @@ loc_8116858:
 	blt loc_8116874
 	cmp r6, #3
 	blt loc_8116874
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #7
 	and r0, r1
 	cmp r0, #4
@@ -17566,7 +17566,7 @@ sub_8117AA0:
 	push {lr}
 	cmp r1, #0x1a
 	bgt loc_8117AB0
-	bl sub_8021BC0
+	bl GetChipCountOfCode
 	bl sub_8117B94
 	pop {pc}
 loc_8117AB0:
@@ -29562,7 +29562,7 @@ sub_811E510:
 	thumb_local_start
 sub_811E51C:
 	push {lr}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #0x1f
 	and r0, r1
 	mov r1, #0x20 
@@ -29584,7 +29584,7 @@ dword_811E544: .word 0x180000
 	thumb_local_start
 sub_811E548:
 	push {lr}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #0x3f 
 	and r0, r1
 	strb r0, [r5,#7]
@@ -31473,7 +31473,7 @@ menuControl_cb_openSubmenu:
 	cmp r0, #0x1c
 	beq locret_811F798
 loc_811F794:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 locret_811F798:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -33775,7 +33775,7 @@ loc_81208D8:
 loc_81208DE:
 	ldrb r1, [r4,r5]
 	mov r0, r7
-	bl sub_8021BC0
+	bl GetChipCountOfCode
 	add r6, r6, r0
 	add r5, #1
 	cmp r5, #3
@@ -33919,7 +33919,7 @@ sub_81209DC:
 	ldr r1, off_8120A0C // =off_8120A14 
 	lsl r0, r0, #2
 	ldr r6, [r1,r0]
-	bl rng_8001562
+	bl GetPositiveSignedRNG1
 	mov r1, r6
 	svc 6
 	cmp r7, #2
@@ -33928,7 +33928,7 @@ sub_81209DC:
 	add r1, r1, r0
 loc_81209F6:
 	mov r6, r1
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #0x15 // (byte_8120A35 - 0x8120a20)
 	svc 6
 	lsl r0, r6, #0x18
@@ -33959,7 +33959,7 @@ sub_8120A38:
 	bl sub_8120898
 	str r0, [sp,#4]
 	ldr r0, dword_8120A84 // =0x137 
-	bl sub_8021BD8
+	bl GetTotalChipCount
 	tst r0, r0
 	beq loc_8120A60
 	ldr r1, [sp,#8]

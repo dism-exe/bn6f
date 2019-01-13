@@ -3476,10 +3476,10 @@ MapScript_jump_if_unk_navicust_range: // 8035A74
 	thumb_local_start
 // 0x09 hword byte1 byte2 byte3 destination
 // if byte1 == 0xff:
-//     jump if byte2 < sub_8021BD8(hword) < byte3
+//     jump if byte2 < GetTotalChipCount(hword) < byte3
 // else:
-//     jump if byte2 < sub_8021BC0(byte1, hword) < byte3
-//     sub_8021BC0 calls chip_8021C7C
+//     jump if byte2 < GetChipCountOfCode(byte1, hword) < byte3
+//     GetChipCountOfCode calls chip_8021C7C
 // related to chips
 //
 MapScript_jump_if_chip_count_in_range: // 8035AAA
@@ -3492,14 +3492,14 @@ MapScript_jump_if_chip_count_in_range: // 8035AAA
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
-	bl sub_8021BD8
+	bl GetTotalChipCount
 	b .checkChipCountInRange
 .getChipCountOfCode
 	mov r1, r4
 	mov r6, #1
 	bl ReadMapScriptHalfword
 	mov r0, r4
-	bl sub_8021BC0
+	bl GetChipCountOfCode
 .checkChipCountInRange
 	mov r6, #4
 	bl ReadMapScriptByte
@@ -14842,7 +14842,7 @@ off_803C408: .word byte_200A290
 	thumb_local_start
 sub_803C40C:
 	push {r4-r7,lr}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	ldr r1, off_803C430 // =word_2006770 
 	strh r0, [r1]
 	pop {r4-r7,pc}
@@ -21030,7 +21030,7 @@ loc_803F870:
 	mov r0, #0x17
 	mov r1, #4
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-	bl sub_8001514 // () -> void
+	bl SeedRNG2 // () -> void
 loc_803F87E:
 	bl RandomizeExtraToolkitPointers
 	mov r0, r4
@@ -21377,7 +21377,7 @@ sub_803FAEE:
 	ldr r6, off_803FB24 // =0x80 
 	ldr r4, off_803FB18 // =dword_20067C0 
 loc_803FAF6:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	str r0, [r4,r7]
 	add r7, #4
 	cmp r7, r6

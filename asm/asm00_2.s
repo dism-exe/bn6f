@@ -1314,7 +1314,7 @@ sub_800F6C6:
 	mov r1, r0
 	beq loc_800F6F6
 	push {r1}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1}
 	svc 6
 	ldrb r0, [r7,r1]
@@ -1334,7 +1334,7 @@ loc_800F6F6:
 	mov r1, r0
 	beq loc_800F720
 	push {r1}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1}
 	svc 6
 	ldrb r0, [r7,r1]
@@ -1348,7 +1348,7 @@ loc_800F720:
 	mov r3, #0
 	bl sub_800CEA0
 	push {r0}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1}
 	svc 6
 	ldrb r0, [r7,r1]
@@ -5683,7 +5683,7 @@ loc_8011A44:
 	mov r4, r0
 	cmp r4, #0
 	beq loc_8011A74
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #1
 	cmp r4, #0x1e
 	blt loc_8011A6E
@@ -5724,7 +5724,7 @@ loc_8011A98:
 	beq loc_8011AC2
 	cmp r4, #6
 	beq loc_8011AC4
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #1
 	cmp r4, #9
 	beq loc_8011ABC
@@ -8062,7 +8062,7 @@ sub_80129F4:
 	bl sub_800CEA0
 	mov r7, r0
 	beq loc_8012A20
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r7
 	svc 6
 	add r0, sp, #0
@@ -10675,7 +10675,7 @@ sub_8013CC4:
 	bl sub_8013774
 	mov r4, r0
 	beq locret_8013D3C
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #7
 	and r0, r1
 	sub r4, #1
@@ -10756,7 +10756,7 @@ loc_8013D88:
 	add r4, #1
 	b loc_8013D88
 loc_8013D92:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #0xf
 	and r0, r1
 	ldrb r0, [r7,r0]
@@ -10815,7 +10815,7 @@ loc_8013E00:
 	add r2, #1
 	cmp r2, #0x10
 	blt loc_8013DF2
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r7
 	svc 6
 	add r0, sp, #0
@@ -10864,7 +10864,7 @@ loc_8013E6C:
 	cmp r0, #0xa
 	bne loc_8013E8A
 loc_8013E7E:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #3
 	and r0, r1
 	add r0, r0, r4
@@ -11058,7 +11058,7 @@ sub_8013FAE:
 	bl sub_8013774
 	mov r4, r0
 	beq locret_8013FCE
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #7
 	and r0, r1
 	sub r1, r4, #1
@@ -14638,7 +14638,7 @@ sub_8015C48:
 	tst r0, r0
 	beq loc_8015C78
 	mov r7, r0
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r7
 	svc 6
 	add r0, sp, #0
@@ -14667,7 +14667,7 @@ sub_8015C94:
 	tst r0, r0
 	beq loc_8015CB8
 	mov r7, r0
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r7
 	svc 6
 	add r0, sp, #0
@@ -14762,7 +14762,7 @@ loc_8015D52:
 	ldr r0, [sp,#0x20]
 	tst r0, r0
 	beq loc_8015D6A
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	ldr r1, [sp,#0x20]
 	svc 6
 	add r0, sp, #0
@@ -14828,7 +14828,7 @@ loc_8015DD4:
 	ldr r0, [sp,#0x2c]
 	tst r0, r0
 	beq loc_8015DEC
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	ldr r1, [sp,#0x2c]
 	svc 6
 	add r0, sp, #0
@@ -14877,7 +14877,7 @@ loc_8015E2A:
 	ldr r0, [sp,#0x2c]
 	tst r0, r0
 	beq loc_8015E42
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	ldr r1, [sp,#0x2c]
 	svc 6
 	add r0, sp, #0
@@ -14947,7 +14947,7 @@ loc_8015EA8:
 	mov r2, r6
 	mov r0, r6
 	beq loc_8015EC2
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r6
 	svc 6
 	add r0, sp, #0
@@ -15005,7 +15005,7 @@ loc_8015EFC:
 	bl sub_800D012
 	mov r4, r0
 	beq loc_8015F2A
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r4
 	svc 6
 	add r0, sp, #0
@@ -15052,7 +15052,7 @@ sub_8016004:
 	bl sub_801632C
 	mov r7, r0
 	beq loc_8016038
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r7
 	svc 6
 	add r2, sp, #0
@@ -23779,7 +23779,7 @@ loc_801BDD0:
 sub_801BDDE:
 	push {r4,r6,r7,lr}
 	push {r0-r3}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r7, r0
 	pop {r0-r3}
 	mov r4, r7
@@ -25777,7 +25777,7 @@ loc_801CCB6:
 	cmp r0, #0
 	beq loc_801CCD8
 loc_801CCC8:
-	bl rng_8001562
+	bl GetPositiveSignedRNG1
 	mov r1, #1
 	and r1, r0
 	add r1, #1

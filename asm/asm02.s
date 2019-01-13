@@ -176,8 +176,8 @@ loc_8021BBC:
 	pop {r4,pc}
 	thumb_func_end sub_8021B92
 
-	thumb_func_start sub_8021BC0
-sub_8021BC0:
+	thumb_func_start GetChipCountOfCode
+GetChipCountOfCode:
 	push {r4,lr}
 	push {r0,r1}
 	bl sub_8006EA4
@@ -189,10 +189,10 @@ sub_8021BC0:
 loc_8021BD4:
 	mov r0, #0
 	pop {r4,pc}
-	thumb_func_end sub_8021BC0
+	thumb_func_end GetChipCountOfCode
 
-	thumb_func_start sub_8021BD8
-sub_8021BD8:
+	thumb_func_start GetTotalChipCount
+GetTotalChipCount:
 	push {r7,lr}
 	push {r0}
 	bl sub_8006E84
@@ -214,7 +214,7 @@ sub_8021BD8:
 loc_8021BFE:
 	mov r0, #0
 	pop {r7,pc}
-	thumb_func_end sub_8021BD8
+	thumb_func_end GetTotalChipCount
 
 	thumb_func_start sub_8021C02
 sub_8021C02:
