@@ -756,7 +756,7 @@ dword_80032D0:
 
 	.word unk_2034000
 	.word unk_203A9A0
-	.word eT1BattleObjectsEnd
+	.word unk_203A9A0 + oT1BattleObject_Size * NUM_T1_BATTLE_OBJECTS
 	.byte oT1BattleObject_Size, oT1BattleObject_SizeWithoutSpriteData, 0x19
 	.balign 4, 0
 
@@ -767,13 +767,13 @@ dword_80032D0:
 
 	.word unk_2034F54
 	.word byte_203CFD0
-	.word eT3BattleObjectsEnd
+	.word byte_203CFD0 + oT3BattleObject_Size * NUM_T3_BATTLE_OBJECTS
 	.byte oT3BattleObject_Size, oT3BattleObject_SizeWithoutSpriteData, 0x9  
 	.balign 4, 0
 
 	.word unk_2036710
 	.word unk_2036860
-	.word unk_2038160
+	.word unk_2036860 + oT4BattleObject_Size * NUM_T4_BATTLE_OBJECTS
 	.byte oT4BattleObject_Size, oT4BattleObject_SizeWithoutSpriteData, 0x19
 	.balign 4, 0
 	thumb_func_end SpawnBattleObjectCommon

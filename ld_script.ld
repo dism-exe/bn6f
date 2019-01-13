@@ -12,12 +12,48 @@ SECTIONS
 {
     INCLUDE "constants.ld"
 
-    ewram (NOLOAD) :
+    ewram_2000000 (NOLOAD) :
     ALIGN(4)
     {
-        ewram.o(.data);
+        ewram.o(ewram_2000000);
+    } >ewram_region
+
+    OVERLAY . :
+    {
+        ewram_t4_battle_objects { ewram.o(ewram_t4_battle_objects);    }
+        ewram_2036860 { ewram.o(ewram_2036860); }
     } >ewram_region
     
+    ewram_2038170 . (NOLOAD) :
+    ALIGN(4)
+    {
+        ewram.o(ewram_2038170);
+    } >ewram_region
+
+    OVERLAY . :
+    {
+        ewram_t1_battle_objects { ewram.o(ewram_t1_battle_objects); }
+        ewram_203a9a0 { ewram.o(ewram_203a9a0); }
+    } >ewram_region
+
+    ewram_203c4e0 . (NOLOAD) :
+    ALIGN(4)
+    {
+        ewram.o(ewram_203c4e0);
+    } >ewram_region
+
+    OVERLAY . :
+    {
+        ewram_t3_battle_objects { ewram.o(ewram_t3_battle_objects); }
+        ewram_203cfd0 { ewram.o(ewram_203cfd0); }
+    } >ewram_region
+
+    ewram_203eae0 . (NOLOAD) :
+    ALIGN(4)
+    {
+        ewram.o(ewram_203eae0);
+    } >ewram_region
+
     iwram (NOLOAD) :
     ALIGN(4)
     {
@@ -28,10 +64,9 @@ SECTIONS
 
     .text :
     {
-        /*rom.o(.text);*/
-		test.o(.text);
+        rom.o(.text);
     } >rom_region
-    
+
     iwram_text :
     {
         iwram.o(.text);

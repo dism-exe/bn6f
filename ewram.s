@@ -1,6 +1,6 @@
 	.include "include/macros.inc"
 
-	.data
+	.section ewram_2000000
 
 timer_2000000:: // 0x2000000
 	.space 96
@@ -2946,11 +2946,50 @@ byte_2036858:: // 0x2036858
 	.space 1
 byte_2036859:: // 0x2036859
 	.space 7
+
+	.section ewram_t4_battle_objects
 unk_2036860:: // 0x2036860
 	.space 16
 // note: this is an overlay with other data, figure that out
 eT4BattleObjects:: // 0x2036870
-	.space 3612
+	t4_battle_object_struct eT4BattleObject0 // 0x203a9b0
+	t4_battle_object_struct eT4BattleObject1 // 0x203aa88
+	t4_battle_object_struct eT4BattleObject2 // 0x203ab60
+	t4_battle_object_struct eT4BattleObject3 // 0x203ac38
+	t4_battle_object_struct eT4BattleObject4
+	t4_battle_object_struct eT4BattleObject5
+	t4_battle_object_struct eT4BattleObject6
+	t4_battle_object_struct eT4BattleObject7
+	t4_battle_object_struct eT4BattleObject8
+	t4_battle_object_struct eT4BattleObject9
+	t4_battle_object_struct eT4BattleObject10
+	t4_battle_object_struct eT4BattleObject11
+	t4_battle_object_struct eT4BattleObject12
+	t4_battle_object_struct eT4BattleObject13
+	t4_battle_object_struct eT4BattleObject14
+	t4_battle_object_struct eT4BattleObject15
+	t4_battle_object_struct eT4BattleObject16
+	t4_battle_object_struct eT4BattleObject17
+	t4_battle_object_struct eT4BattleObject18
+	t4_battle_object_struct eT4BattleObject19
+	t4_battle_object_struct eT4BattleObject20
+	t4_battle_object_struct eT4BattleObject21
+	t4_battle_object_struct eT4BattleObject22
+	t4_battle_object_struct eT4BattleObject23
+	t4_battle_object_struct eT4BattleObject24
+	t4_battle_object_struct eT4BattleObject25
+	t4_battle_object_struct eT4BattleObject26
+	t4_battle_object_struct eT4BattleObject27
+	t4_battle_object_struct eT4BattleObject28
+	t4_battle_object_struct eT4BattleObject29
+	t4_battle_object_struct eT4BattleObject30
+	t4_battle_object_struct eT4BattleObject31
+eT4BattleObjectsEnd:: // 0x2038160
+
+	.section ewram_2036860
+
+	.space 3628
+
 unk_203768C:: // 0x203768c
 	.space 32
 unk_20376AC:: // 0x20376ac
@@ -2987,10 +3026,14 @@ unk_2037A00:: // 0x2037a00
 	.space 4
 unk_2037A04:: // 0x2037a04
 	.space 1884
+
 unk_2038160:: // 0x2038160
 	.space 1
 byte_2038161:: // 0x2038161
 	.space 15
+
+	.section ewram_2038170
+
 unk_2038170:: // 0x2038170
 	.space 896
 unk_20384F0:: // 0x20384f0
@@ -3063,6 +3106,9 @@ unk_203A980:: // 0x203a980
 	.space 16
 unk_203A990:: // 0x203a990
 	.space 16
+
+	.section ewram_t1_battle_objects
+
 unk_203A9A0:: // 0x203a9a0
 	.space 16
 eT1BattleObjects:: // 0x203a9b0
@@ -3097,11 +3143,17 @@ eT1BattleObjects:: // 0x203a9b0
 	t1_battle_object_struct eT1BattleObject28
 	t1_battle_object_struct eT1BattleObject29
 	t1_battle_object_struct eT1BattleObject30
-	t1_battle_object_struct eT1BattleObject31, 0
-eT1BattleObjectsEnd:: // 0x203c4a0
+	t1_battle_object_struct eT1BattleObject31
+eT1BattleObjectsEnd:: // 0x203c4b0
+
+	.section ewram_203a9a0
+	.space 6912
 
 byte_203C4A0:: // 0x203c4a0
 	.space 64
+
+	.section ewram_203c4e0
+
 byte_203C4E0:: // 0x203c4e0
 	.space 512
 byte_203C6E0:: // 0x203c6e0
@@ -3232,6 +3284,9 @@ dword_203CFC0:: // 0x203cfc0
 	.space 4
 byte_203CFC4:: // 0x203cfc4
 	.space 12
+
+	.section ewram_t3_battle_objects
+
 byte_203CFD0:: // 0x203cfd0
 	.space 16
 eT3BattleObjects:: // 0x203cfe0
@@ -3266,8 +3321,11 @@ eT3BattleObjects:: // 0x203cfe0
 	t3_battle_object_struct eT3BattleObject28
 	t3_battle_object_struct eT3BattleObject29
 	t3_battle_object_struct eT3BattleObject30
-	t3_battle_object_struct eT3BattleObject31, 0
-eT3BattleObjectsEnd::
+	t3_battle_object_struct eT3BattleObject31
+eT3BattleObjectsEnd:: // 0x203eae0
+
+	.section ewram_203cfd0
+	.space 6912
 
 dword_203EAD0:: // 0x203ead0
 	.space 4
@@ -3281,6 +3339,9 @@ word_203EADC:: // 0x203eadc
 	.space 2
 word_203EADE:: // 0x203eade
 	.space 2
+
+	.section ewram_203eae0
+
 byte_203EAE0:: // 0x203eae0
 	.space 32
 byte_203EB00:: // 0x203eb00
