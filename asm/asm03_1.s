@@ -3174,8 +3174,8 @@ ScriptCmds8035808:
 	.word MapScript_jump_if_chip_count_in_range+1
 	.word sub_803793A+1
 	.word sub_803795C+1
-	.word MapScript_cmd_8035AFA+1
-	.word sub_8035B44+1
+	.word MapScript_cmd_8035afa+1
+	.word MapScript_cmd_8035b44+1
 	.word sub_8035B8E+1
 	.word sub_8035BB2+1
 	.word sub_803797E+1
@@ -3327,7 +3327,7 @@ MapScript_jump_if_flag_range_set: // 8035992
 	bl TestEventFlagRange // (int a3, int a2) ->
 	beq .eventFlagRangeNotSet
 	mov r6, #4
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3356,7 +3356,7 @@ MapScript_jump_if_flag_clear: // 80359BE
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne .eventFlagSet
 	mov r6, #4
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3381,7 +3381,7 @@ MapScript_jump_if_flag_range_clear: // 80359EE
 	bl TestEventFlagRange // (int a3, int a2) ->
 	bne .atLeastOneEventFlagSet
 	mov r6, #4
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3429,7 +3429,7 @@ MapScript_jump_if_mem_equals: // 8035A1A
 	b .addToNextCommand
 .readWord
 	mov r6, #10
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	ldr r0, [r0]
 	cmp r0, r4
 	beq .doScriptJump
@@ -3463,7 +3463,7 @@ MapScript_jump_if_unk_navicust_range: // 8035A74
 	cmp r0, r4
 	bgt .unkByteOutOfRange
 	mov r6, #4
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3511,7 +3511,7 @@ MapScript_jump_if_chip_count_in_range: // 8035AAA
 	cmp r0, r4
 	bgt .chipCountOutOfRange
 	mov r6, #6
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3525,7 +3525,7 @@ MapScript_jump_if_chip_count_in_range: // 8035AAA
 // 0x0c byte1 signedbyte2 destination
 // sub_8031A7A(complex) returns r0, r1. if r0 == 0, r1 is used in comparison
 // jump if byte1 == compByte
-MapScript_cmd_8035AFA:
+MapScript_cmd_8035afa: // 8035afa
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptSignedByte
@@ -3553,7 +3553,7 @@ loc_8035B28:
 	cmp r0, r4
 	bne loc_8035B3E
 	mov r6, #3
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3561,10 +3561,12 @@ loc_8035B3E:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_cmd_8035AFA
+	thumb_func_end MapScript_cmd_8035afa
 
 	thumb_local_start
-sub_8035B44:
+// 0x0d byte1 signedbyte2 destination
+// like 0x0c except jumps if not equal
+MapScript_cmd_8035b44: // 8035b44
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptSignedByte
@@ -3592,7 +3594,7 @@ loc_8035B72:
 	cmp r0, r4
 	beq loc_8035B88
 	mov r6, #3
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3600,7 +3602,7 @@ loc_8035B88:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035B44
+	thumb_func_end MapScript_cmd_8035b44
 
 	thumb_local_start
 sub_8035B8E:
@@ -3613,7 +3615,7 @@ sub_8035B8E:
 	cmp r0, r4
 	bne loc_8035BAC
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3634,7 +3636,7 @@ sub_8035BB2:
 	cmp r0, r4
 	beq loc_8035BD0
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3657,7 +3659,7 @@ sub_8035BD6:
 	cmp r0, r4
 	bne loc_8035BF8
 	mov r6, #3
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3680,7 +3682,7 @@ sub_8035BFE:
 	cmp r0, r4
 	beq loc_8035C20
 	mov r6, #3
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3701,7 +3703,7 @@ sub_8035C26:
 	cmp r0, r4
 	bne loc_8035C44
 	mov r6, #3
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3722,7 +3724,7 @@ sub_8035C4A:
 	cmp r0, r4
 	beq loc_8035C68
 	mov r6, #3
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3752,7 +3754,7 @@ loc_8035C88:
 	b loc_8035C9A
 loc_8035C8E:
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3773,19 +3775,19 @@ sub_8035CA0:
 	cmp r0, #2
 	beq loc_8035CCA
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
 loc_8035CBE:
 	mov r6, #5
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
 loc_8035CCA:
 	mov r6, #9
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3800,7 +3802,7 @@ sub_8035CD6:
 	cmp r0, r4
 	bne loc_8035CF2
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3819,7 +3821,7 @@ sub_8035CF8:
 	cmp r0, r4
 	beq loc_8035D14
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3833,7 +3835,7 @@ loc_8035D14:
 sub_8035D1A:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq loc_8035D2E
 	add r7, #5
@@ -3849,7 +3851,7 @@ loc_8035D2E:
 sub_8035D34:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	bl sub_80024C0
 	bne loc_8035D48
 	add r7, #5
@@ -3865,7 +3867,7 @@ loc_8035D48:
 sub_8035D4E:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, #1
 	bl sub_811EBE0
 	bne loc_8035D64
@@ -3996,7 +3998,7 @@ sub_8035E16:
 sub_8035E34:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 loc_8035E3C:
 	mov r1, #0
 	ldrsh r0, [r4,r1]
@@ -4016,7 +4018,7 @@ loc_8035E4E:
 sub_8035E54:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 loc_8035E5C:
 	mov r1, #0
 	ldrsh r0, [r4,r1]
@@ -4036,10 +4038,10 @@ loc_8035E6E:
 sub_8035E74:
 	push {lr}
 	mov r6, #5
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov lr, pc
 	bx r4
 	add r7, #9
@@ -4051,10 +4053,10 @@ sub_8035E74:
 sub_8035E8E:
 	push {lr}
 	mov r6, #5
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r1, r4
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	bl init_s_02011C50_8036E90
 	add r7, #9
@@ -4066,7 +4068,7 @@ sub_8035E8E:
 sub_8035EAA:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	mov r6, #5
 	bl ReadMapScriptByte
@@ -4080,7 +4082,7 @@ sub_8035EAA:
 sub_8035EC2:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	mov r6, #5
 	bl ReadMapScriptHalfword
@@ -4094,10 +4096,10 @@ sub_8035EC2:
 sub_8035EDA:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	mov r6, #5
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	str r4, [r0]
 	add r7, #9
 	mov r0, #1
@@ -4140,7 +4142,7 @@ sub_8035F0E:
 sub_8035F2A:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	bl sub_8001B1C
 	add r7, #5
@@ -4152,7 +4154,7 @@ sub_8035F2A:
 sub_8035F3E:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	bl sub_8002354
 	add r7, #5
@@ -4229,7 +4231,7 @@ sub_8035FBA:
 	cmp r4, #1
 	beq loc_8035FD4
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	str r4, [r5,#0x10]
 	add r7, #6
 	mov r0, #1
@@ -4250,7 +4252,7 @@ sub_8035FDE:
 	cmp r4, #1
 	beq loc_8035FFC
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	bl sub_8003570
 	add r7, #6
@@ -6173,8 +6175,8 @@ jt_big_803749C: .word sub_80376C4+1
 	.word MapScript_jump_if_chip_count_in_range+1
 	.word sub_803793A+1
 	.word sub_803795C+1
-	.word MapScript_cmd_8035AFA+1
-	.word sub_8035B44+1
+	.word MapScript_cmd_8035afa+1
+	.word MapScript_cmd_8035b44+1
 	.word sub_803797E+1
 	.word sub_80379A0+1
 	.word sub_80379C2+1
@@ -6596,7 +6598,7 @@ sub_80378BE:
 sub_80378C2:
 	push {lr}
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -6631,7 +6633,7 @@ off_8037900: .word dword_8037690
 sub_8037904:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	str r4, [r5,#0x38]
 	add r7, #5
 	mov r0, #1
@@ -6649,7 +6651,7 @@ sub_8037914:
 	cmp r0, r4
 	bne loc_8037934
 	mov r6, #3
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6668,7 +6670,7 @@ sub_803793A:
 	cmp r0, r4
 	bne loc_8037956
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6687,7 +6689,7 @@ sub_803795C:
 	cmp r0, r4
 	beq loc_8037978
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6706,7 +6708,7 @@ sub_803797E:
 	cmp r0, r4
 	bne loc_803799A
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6725,7 +6727,7 @@ sub_80379A0:
 	cmp r0, r4
 	beq loc_80379BC
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6744,7 +6746,7 @@ sub_80379C2:
 	cmp r0, r4
 	bne loc_80379DE
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6763,7 +6765,7 @@ sub_80379E4:
 	cmp r0, r4
 	beq loc_8037A00
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6866,7 +6868,7 @@ sub_8037AA0:
 	lsl r0, r0, #2
 	add r0, #1
 	mov r6, r0
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6876,7 +6878,7 @@ sub_8037AA0:
 sub_8037AB6:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	cmp r0, #0
 	bge loc_8037AC8
@@ -7136,7 +7138,7 @@ loc_8037CDA:
 sub_8037CE4:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	bl sub_809E496
 	add r7, #5
@@ -7330,7 +7332,7 @@ sub_8037E4C:
 	bl ReadMapScriptHalfword
 	mov r3, r4
 	mov r6, #9
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	lsl r1, r1, #0x10
 	lsl r2, r2, #0x10
 	lsl r3, r3, #0x10
@@ -7380,7 +7382,7 @@ sub_8037E96:
 	bl ReadMapScriptByte
 	mov r0, r4
 	mov r6, #9
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r6, r5
 	bl sub_80047E0
 	str r5, [r6]
@@ -7435,7 +7437,7 @@ sub_8037EFA:
 	bl ReadMapScriptByte
 	mov r0, r4
 	mov r6, #0xa
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r6, r5
 	bl sub_80047E0
 	str r5, [r6]
@@ -7506,7 +7508,7 @@ sub_8037FB8:
 	cmp r4, #5
 	beq loc_803801E
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	bl sub_8003570
 	add r7, #6
@@ -7522,7 +7524,7 @@ loc_8037FE6:
 	pop {pc}
 loc_8037FF8:
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	bl sub_8030A60
 	add r7, #6
@@ -7549,7 +7551,7 @@ loc_803801E:
 sub_8038028:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov lr, pc
 	bx r4
 	bne loc_803803C
@@ -7574,7 +7576,7 @@ sub_8038040:
 	tst r3, r0
 	bne loc_80380A6
 	mov r6, #3
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r2, r4
 	mov r0, #0x80
 	tst r3, r0
@@ -7611,7 +7613,7 @@ loc_8038098:
 	pop {pc}
 loc_80380A6:
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	str r4, [r5,#0x34]
 	add r7, #6
 	mov r0, #1
@@ -7726,7 +7728,7 @@ sub_803816A:
 	cmp r4, #0
 	bne loc_803818E
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	str r4, [r5,#0x3c]
 	mov r0, r4
 	bl sub_8036F98
@@ -7793,13 +7795,13 @@ sub_80381E0:
 sub_80381FA:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	mov r6, #5
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r1, r4
 	mov r6, #9
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r2, r4
 	bl sub_8002468
 	add r7, #0xd
@@ -7999,10 +8001,10 @@ loc_8038334:
 sub_8038346:
 	push {lr}
 	mov r6, #1
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	mov r6, #5
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r1, r4
 	bl sub_80356F8
 	add r7, #9
@@ -8111,7 +8113,7 @@ sub_8038412:
 	cmp r4, #1
 	beq loc_803842E
 	mov r6, #2
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	str r4, [r3,#oUnkMapScriptState_2011e60UnkScriptPtr3_10]
 	add r7, #6
 	mov r0, #1
@@ -8201,7 +8203,7 @@ sub_80384A8:
 	tst r0, r1
 	beq loc_80384CA
 	mov r6, #4
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -8227,7 +8229,7 @@ sub_80384DC:
 	cmp r0, #4
 	bne loc_80384F2
 	mov r6, #4
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -8246,13 +8248,13 @@ sub_80384F8:
 	cmp r0, #0x80
 	bge loc_8038510
 	mov r6, #4
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
 loc_8038510:
 	mov r6, #8
-	bl ReadMapScriptWord // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
