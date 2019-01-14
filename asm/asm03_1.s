@@ -4256,7 +4256,7 @@ sub_8035FDE:
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	add r7, #6
 	mov r0, #1
 	pop {pc}
@@ -7512,7 +7512,7 @@ sub_8037FB8:
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r0, r4
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	add r7, #6
 	mov r0, #1
 	pop {pc}

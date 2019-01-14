@@ -116,7 +116,7 @@
 // .global GetRNG2 // () -> int
 
 	.include "asm/asm00_1.inc"
-// .global sub_8003570
+// .global SpawnObjectsFromList
 // .global sub_8003A64
 // .global sub_80047E0
 // .global sub_8004822

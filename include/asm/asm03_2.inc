@@ -119,7 +119,7 @@
 
 	.include "asm/asm00_1.inc"
 // .global sub_800307C
-// .global sub_8003570
+// .global SpawnObjectsFromList
 // .global sub_8003962
 // .global sub_800399A
 // .global sub_8003AB2

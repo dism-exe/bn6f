@@ -26,7 +26,7 @@
 // .global sub_8002906
 
 	.include "asm/asm00_1.inc"
-// .global sub_8003570
+// .global SpawnObjectsFromList
 
 	.include "asm/asm03_0.inc"
 // .global sub_802FF4C

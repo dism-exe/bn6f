@@ -4,8 +4,8 @@
 	\struct_entry \label\()_Flags, 1 // loc=0x0
 	\struct_entry \label\()_Index, 1 // loc=0x1
 	\struct_entry \label\()_TypeAndSpriteOffset // loc=0x2
-	\struct_entry \label\()_Type
-	\struct_entry \label\()_SpriteOffset, 1
+	\struct_entry \label\()_Type            // 0X
+	\struct_entry \label\()_SpriteOffset, 1 // X0
 	\struct_entry \label\()_ListIndex, 1 // loc=0x3
 	.endm
 

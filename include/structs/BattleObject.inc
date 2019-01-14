@@ -9,6 +9,8 @@
 
 	def_struct_offsets battle_object_linked_list_struct, oBattleObjectsLinkedListSentinel
 	def_struct_offsets battle_object_linked_list_struct, oBattleObjectsLinkedListStart
+	def_struct_offsets battle_object_linked_list_struct, oUnkBattleObjectLinkedList
+	
 
 	.macro battle_object_struct label:req, struct_entry=label_struct_entry, struct_begin=struct_begin, extra_vars_size=0
 

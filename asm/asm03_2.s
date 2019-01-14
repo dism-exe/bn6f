@@ -10619,7 +10619,7 @@ sub_804CF84:
 	lsl r0, r0, #2
 	ldr r1, off_804CF98 // =off_804CF9C 
 	ldr r0, [r1,r0]
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	pop {pc}
 off_804CF98: .word off_804CF9C
 off_804CF9C:

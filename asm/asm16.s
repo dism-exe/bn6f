@@ -156,7 +156,7 @@ sub_8077E84:
 	lsl r0, r0, #2
 	ldr r1, off_8077E98 // =pt_8077E9C 
 	ldr r0, [r1,r0]
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	pop {pc}
 off_8077E98: .word pt_8077E9C
 pt_8077E9C:

@@ -202,7 +202,7 @@ sub_807AAD6:
 	lsl r0, r0, #2
 	ldr r1, off_807AAEC // =pt_807AAF0 
 	ldr r0, [r1,r0]
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	pop {pc}
 	.balign 4, 0x00
 off_807AAEC: .word pt_807AAF0

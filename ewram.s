@@ -944,8 +944,9 @@ sStartScr:: // 0x200ad10
 	.space 592
 BattleSettings_200AF60:: // 0x200af60
 	.space 16
-dword_200AF70:: // 0x200af70
-	.space 16
+eUnkBattleObjectLinkedList:: // 0x200af70
+	battle_object_linked_list_struct eUnkBattleObjectLinkedList
+
 byte_200AF80:: // 0x200af80
 	.space 1
 byte_200AF81:: // 0x200af81

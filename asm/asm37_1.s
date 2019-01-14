@@ -548,7 +548,7 @@ loc_8141FE4:
 	ldr r7, off_814203C // =off_8141B24 
 	lsl r0, r0, #2
 	ldr r0, [r7,r0]
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	mov r0, #7
 	mov r1, #2
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf

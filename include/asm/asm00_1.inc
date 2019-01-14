@@ -41,7 +41,7 @@
 	.global sub_8003534
 	.global sub_800355C
 	.global sub_8003566
-	.global sub_8003570
+	.global SpawnObjectsFromList
 	.global sub_80035A2
 	.global sub_800362C
 	.global sub_8003694
@@ -1177,7 +1177,7 @@
 // .equ dword_200ACF8, 0x200ACF8
 // .equ byte_200ACFC, 0x200ACFC
 // .equ dword_200AD00, 0x200AD00
-// .equ dword_200AF70, 0x200AF70
+// .equ eUnkBattleObjectLinkedList, 0x200AF70
 // .equ byte_200DF20, 0x200DF20
 // .equ byte_200DF21, 0x200DF21
 // .equ byte_200DF28, 0x200DF28

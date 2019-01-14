@@ -1,569 +1,5 @@
 	.include "asm/asm00_1.inc"
 
-	thumb_func_start sub_8002DC8
-sub_8002DC8:
-	ldrb r3, [r0,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r0
-	ldrb r0, [r3,#0x15]
-	mov r1, #0xf0
-	and r1, r0
-	mov pc, lr
-	thumb_func_end sub_8002DC8
-
-	thumb_func_start sub_8002DD8
-sub_8002DD8:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r0, [r3,#0x15]
-	mov r1, #0xf0
-	bic r0, r1
-	strb r0, [r3,#0x15]
-	mov pc, lr
-	thumb_func_end sub_8002DD8
-
-	thumb_func_start sub_8002DEA
-sub_8002DEA:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r0, [r3,#2]
-	ldrb r1, [r3,#1]
-	cmp r1, #0
-	beq loc_8002DFE
-	mov r1, #0xc0
-	bic r0, r1
-loc_8002DFE:
-	ldrb r1, [r3]
-	ldrb r2, [r3]
-	mov pc, lr
-	thumb_func_end sub_8002DEA
-
-	thumb_func_start sub_8002E04
-sub_8002E04:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r0, [r3,#3]
-	mov r1, #8
-	and r0, r1
-	mov pc, lr
-	thumb_func_end sub_8002E04
-
-	thumb_func_start sub_8002E14
-sub_8002E14:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	mov r2, #0xc
-	ldrb r1, [r3,#0x15]
-	bic r1, r2
-	lsl r0, r0, #2
-	orr r1, r0
-	strb r1, [r3,#0x15]
-	mov pc, lr
-	thumb_func_end sub_8002E14
-
-	thumb_local_start
-sub_8002E2A:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	mov r1, #0xc
-	ldrb r0, [r3,#0x15]
-	and r0, r1
-	lsr r0, r0, #2
-	mov pc, lr
-	thumb_func_end sub_8002E2A
-
-	thumb_func_start sub_8002E3C
-sub_8002E3C:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r0, [r3,#3]
-	mov r1, #1
-	orr r0, r1
-	mov r1, #4
-	bic r0, r1
-	strb r0, [r3,#3]
-	mov pc, lr
-	thumb_func_end sub_8002E3C
-
-	thumb_func_start sub_8002E52
-sub_8002E52:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r0, [r3,#3]
-	mov r1, #1
-	bic r0, r1
-	mov r1, #4
-	bic r0, r1
-	strb r0, [r3,#3]
-	mov pc, lr
-	thumb_func_end sub_8002E52
-
-	thumb_local_start
-sub_8002E68:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldr r0, [r3,#0x1c]
-	ldr r0, [r0]
-	ldr r1, [r3,#0x18]
-	add r0, r0, r1
-	ldr r0, [r0]
-	lsr r0, r0, #5
-	mov pc, lr
-	thumb_func_end sub_8002E68
-
-	thumb_local_start
-sub_8002E7E:
-	ldrb r0, [r5]
-	tst r0, r0
-	beq loc_8002EA4
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	mov r2, #0xc
-	ldrsh r1, [r3,r2]
-	mov r2, #0xe
-	ldrsb r2, [r3,r2]
-	mov r0, #0x10
-	lsl r0, r0, #4
-	add r0, #0xff
-	and r1, r0
-	mov r0, #0xff
-	and r2, r0
-	mov r0, #1
-	mov pc, lr
-loc_8002EA4:
-	mov r0, #0
-	mov r1, #0
-	mov r2, #0
-	mov pc, lr
-	thumb_func_end sub_8002E7E
-
-	thumb_func_start sub_8002EAC
-sub_8002EAC:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r0, [r3,#0x16]
-	mov r1, #2
-	orr r0, r1
-	strb r0, [r3,#0x16]
-	mov pc, lr
-	thumb_func_end sub_8002EAC
-
-	thumb_local_start
-sub_8002EBE:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r0, [r3,#0x16]
-	mov r1, #2
-	bic r0, r1
-	strb r0, [r3,#0x16]
-	mov pc, lr
-	thumb_func_end sub_8002EBE
-
-	thumb_func_start sub_8002ED0
-sub_8002ED0:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	strh r0, [r3,#6]
-	mov pc, lr
-	thumb_func_end sub_8002ED0
-
-	thumb_func_start sub_8002EDC
-sub_8002EDC:
-	ldrb r3, [r0,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r0
-	ldrh r0, [r3,#6]
-	mov pc, lr
-	thumb_func_end sub_8002EDC
-
-	thumb_func_start sub_8002EE8
-sub_8002EE8:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	mov r0, #0
-	strh r0, [r3,#6]
-	mov pc, lr
-	thumb_func_end sub_8002EE8
-
-	thumb_func_start sub_8002EF6
-sub_8002EF6:
-	lsl r1, r1, #4
-	orr r0, r1
-	mov r2, #0x10
-	b loc_8002F06
-	mov r2, #0x10
-	b loc_8002F06
-loc_8002F02:
-	tst r2, r2
-	beq sub_8002F2C
-loc_8002F06:
-	tst r0, r0
-	beq sub_8002F2C
-	lsl r0, r0, #8
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r1, [r3,#0x11]
-	orr r1, r2
-	strb r1, [r3,#0x11]
-	mov r3, r10
-	ldr r3, [r3,#oToolkit_RenderInfoPtr]
-	ldrh r1, [r3,#2]
-	mov r2, #0xff
-	lsl r2, r2, #8
-	bic r1, r2
-	orr r1, r0
-	strh r1, [r3,#2]
-	mov pc, lr
-	thumb_func_end sub_8002EF6
-
-	thumb_func_start sub_8002F2C
-sub_8002F2C:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r1, [r3,#0x11]
-	mov r0, #0x10
-	bic r1, r0
-	strb r1, [r3,#0x11]
-	mov pc, lr
-	thumb_func_end sub_8002F2C
-
-	thumb_func_start sub_8002F3E
-sub_8002F3E:
-	ldrb r3, [r0,#oObjectHeader_SpriteOffset]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r0
-	ldrb r0, [r3,#oObjectSprite_Unk_11]
-	mov r2, #0x10
-	and r2, r0
-	mov r3, r10
-	ldr r3, [r3,#oToolkit_RenderInfoPtr]
-	ldrh r0, [r3,#2]
-	mov r1, #0xff
-	bic r0, r1
-	lsr r0, r0, #8
-	mov pc, lr
-	.hword 0x2000
-	thumb_func_end sub_8002F3E
-
-	thumb_func_start sub_8002F5C
-sub_8002F5C:
-	ldrb r3, [r5,#oObjectHeader_SpriteOffset]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r2, [r3,#oObjectSprite_Unk_13]
-	mov r1, #0x30 
-	bic r2, r1
-	lsl r0, r0, #4
-	orr r2, r0
-	strb r2, [r3,#oObjectSprite_Unk_13]
-	and r2, r1
-	ldrb r1, [r3,#oObjectSprite_Unk_16]
-	mov r0, #0x30 
-	bic r1, r0
-	orr r1, r2
-	strb r1, [r3,#oObjectSprite_Unk_16]
-	mov pc, lr
-	thumb_func_end sub_8002F5C
-
-	thumb_func_start sub_8002F7E
-sub_8002F7E:
-	ldrb r3, [r0,#oObjectHeader_SpriteOffset]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r0
-	ldrb r0, [r3,#oObjectSprite_Unk_16]
-	mov r1, #0x30 
-	and r0, r1
-	lsr r0, r0, #4
-	mov pc, lr
-	thumb_func_end sub_8002F7E
-
-// () -> void
-	thumb_func_start sub_8002F90
-sub_8002F90:
-	ldrb r3, [r5,#oObjectHeader_SpriteOffset]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r0, [r3,#oObjectSprite_Unk_03]
-	mov r1, #4
-	orr r0, r1
-	mov r1, #1
-	bic r0, r1
-	strb r0, [r3,#oObjectSprite_Unk_03]
-	mov pc, lr
-	thumb_func_end sub_8002F90
-
-	thumb_func_start sub_8002FA6
-sub_8002FA6:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	str r0, [r3,#0x2c]
-	mov pc, lr
-	thumb_func_end sub_8002FA6
-
-	thumb_func_start sub_8002FB2
-sub_8002FB2:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldr r0, [r3,#0x2c]
-	mov pc, lr
-	thumb_func_end sub_8002FB2
-
-	thumb_local_start
-sub_8002FBE:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	mov r1, #0x80
-	lsl r1, r1, #0x18
-	lsr r1, r0
-	ldr r0, [r3,#0x2c]
-	orr r0, r1
-	str r0, [r3,#0x2c]
-	mov pc, lr
-	thumb_func_end sub_8002FBE
-
-	thumb_local_start
-sub_8002FD4:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	mov r1, #0x80
-	lsl r1, r1, #0x18
-	lsr r1, r0
-	ldr r0, [r3,#0x2c]
-	bic r0, r1
-	str r0, [r3,#0x2c]
-	mov pc, lr
-	.hword 0x2000
-	thumb_func_end sub_8002FD4
-
-	thumb_func_start sub_8002FEC
-sub_8002FEC:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	str r0, [r3,#0x30]
-	mov pc, lr
-	thumb_func_end sub_8002FEC
-
-	thumb_local_start
-sub_8002FF8:
-	mov r0, #0
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	str r0, [r3,#0x34]
-	mov pc, lr
-	thumb_func_end sub_8002FF8
-
-	thumb_func_start sub_8003006
-sub_8003006:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r0, [r3,#3]
-	mov r1, #0x20 
-	orr r0, r1
-	strb r0, [r3,#3]
-	mov pc, lr
-	thumb_func_end sub_8003006
-
-	thumb_local_start
-sub_8003018:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r0, [r3,#3]
-	mov r1, #0x20 
-	bic r0, r1
-	strb r0, [r3,#3]
-	mov pc, lr
-	thumb_func_end sub_8003018
-
-	thumb_func_start sub_800302A
-sub_800302A:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r1, [r3,#0x16]
-	mov r2, #0xc
-	bic r1, r2
-	mov r2, #2
-	lsl r0, r2
-	orr r1, r0
-	strb r1, [r3,#0x16]
-	ldrb r0, [r3,#3]
-	mov r1, #0x40 
-	orr r0, r1
-	strb r0, [r3,#3]
-	mov pc, lr
-	thumb_func_end sub_800302A
-
-	thumb_func_start sub_800304A
-sub_800304A:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	ldrb r1, [r3,#0x15]
-	mov r2, #0xf0
-	bic r1, r2
-	lsl r0, r0, #4
-	orr r1, r0
-	strb r1, [r3,#0x15]
-	mov pc, lr
-	thumb_func_end sub_800304A
-
-	thumb_func_start sub_8003060
-sub_8003060:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	strb r0, [r3,#0xa]
-	mov pc, lr
-	thumb_func_end sub_8003060
-
-	thumb_func_start sub_800306C
-sub_800306C:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	strh r0, [r3,#8]
-	mov r0, #0
-	str r0, [r3,#0x24]
-	mov pc, lr
-	thumb_func_end sub_800306C
-
-	thumb_func_start sub_800307C
-sub_800307C:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	strh r0, [r3,#0xc]
-	strh r1, [r3,#0xe]
-	mov pc, lr
-	thumb_func_end sub_800307C
-
-	thumb_func_start sub_800308A
-sub_800308A:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	mov r2, #0xc
-	ldrsh r2, [r3,r2]
-	add r0, r0, r2
-	mov r2, #0xc
-	strh r0, [r3,r2]
-	mov r2, #0xe
-	ldrsh r2, [r3,r2]
-	add r1, r1, r2
-	mov r2, #0xe
-	strh r1, [r3,r2]
-	mov pc, lr
-	thumb_func_end sub_800308A
-
-	thumb_func_start sub_80030A8
-sub_80030A8:
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r3, r3, r5
-	mov r0, #0xc
-	ldrsh r0, [r3,r0]
-	mov r1, #0xe
-	ldrsh r1, [r3,r1]
-	mov pc, lr
-	thumb_func_end sub_80030A8
-
-	thumb_func_start sub_80030BA
-sub_80030BA:
-	push {r4-r7,lr}
-	mov r5, r0
-	ldrb r3, [r5,#2]
-	lsr r3, r3, #4
-	lsl r3, r3, #4
-	add r5, r5, r3
-	ldr r3, [r5,#0x20]
-	ldrb r2, [r3]
-	lsl r2, r2, #2
-	ldr r0, [r5,#0x1c]
-	ldr r0, [r0,#0xc]
-	ldr r3, [r5,#0x18]
-	add r3, r3, r0
-	ldr r2, [r3,r2]
-	add r2, r2, r3
-	mov r4, #0
-loc_80030DA:
-	ldrb r3, [r2]
-	cmp r3, #0xff
-	beq loc_80030F4
-	cmp r4, r1
-	beq loc_80030EA
-	add r4, #1
-	add r2, #5
-	b loc_80030DA
-loc_80030EA:
-	mov r0, #1
-	ldrsb r0, [r2,r0]
-	mov r1, #2
-	ldrsb r1, [r2,r1]
-	pop {r4-r7,pc}
-loc_80030F4:
-	mov r0, #0
-	mov r1, #0
-	pop {r4-r7,pc}
-	.balign 4, 0x00
 SpawnObjectFunctionsJumptable: .word sub_8003B4C+1
 	.word object_spawnType1+1
 	.word sub_80045C0+1
@@ -582,7 +18,8 @@ off_800312C: .word eOWPlayerObject
 	.word eT3BattleObject0
 	.word eT4BattleObject0
 	.word byte_2011EE0
-off_8003144: .word dword_2009F34
+ActiveObjectBitfieldPointers:
+	.word dword_2009F34
 	.word eActiveT1BattleObjectsBitfield
 	.word map_activeNPCs
 	.word eActiveT3BattleObjectsBitfield
@@ -598,7 +35,7 @@ byte_8003174: .byte 0x1, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0
 sub_800318C:
 	ldr r0, off_80031A4 // =eBattleObjectsLinkedListStart 
 	ldr r1, off_80031A8 // =eBattleObjectsLinkedListSentinel 
-	ldr r2, off_80031A0 // =dword_200AF70 
+	ldr r2, off_80031A0 // =eUnkBattleObjectLinkedList 
 	mov r3, #0
 	str r3, [r2]
 	str r3, [r0]
@@ -606,25 +43,25 @@ sub_800318C:
 	str r0, [r1]
 	str r3, [r1,#0x4] // (dword_2009AB4 - 0x2009ab0)
 	mov pc, lr
-off_80031A0: .word dword_200AF70
+off_80031A0: .word eUnkBattleObjectLinkedList
 off_80031A4: .word eBattleObjectsLinkedListStart
 off_80031A8: .word eBattleObjectsLinkedListSentinel
 	thumb_func_end sub_800318C
 
 	thumb_local_start
-sub_80031AC:
+RunBattleObjectLogic:
 	push {r4-r7,lr}
 	sub sp, sp, #0x10
 	bl sub_800371A
 	mov r0, #0
 	str r0, [sp]
-	ldr r7, off_8003214 // =eBattleObjectsLinkedListStart 
-loc_80031BA:
-	ldr r7, [r7,#4] // linked list
-	ldr r0, off_8003218 // =eBattleObjectsLinkedListSentinel 
+	ldr r7, .eBattleObjectsLinkedListStart_p
+.processBattleObjectLoop
+	ldr r7, [r7,#oBattleObject_LinkedList_Next] // linked list
+	ldr r0, .eBattleObjectsLinkedListSentinel_p
 	cmp r7, r0
-	beq loc_8003208
-	ldr r0, off_8003234 // =dword_200AF70 
+	beq .reachedLinkedListSentinel
+	ldr r0, .dword_200AF70_p
 	str r7, [r0]
 	mov r5, #0x10
 	add r5, r5, r7
@@ -633,54 +70,55 @@ loc_80031BA:
 	ldr r6, [r6,#oToolkit_GameStatePtr]
 	ldrb r0, [r6,#oGameState_Unk_0a]
 	tst r0, r0
-	beq loc_80031DC
+	beq .loc_80031DC
 	mov r0, #4
 	tst r4, r0
-	beq loc_8003202
-loc_80031DC:
+	beq .doneCurrentBattleObject
+.loc_80031DC
 	bl battle_isTimeStop
-	beq loc_80031E8
+	beq .notInTimeStop
 	mov r0, #0x10
 	tst r4, r0
-	beq loc_8003202
-loc_80031E8:
-	ldrb r0, [r5,#2]
+	beq .doneCurrentBattleObject
+.notInTimeStop
+	ldrb r0, [r5,#oBattleObject_Type]
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #2
-	ldr r1, JumptableTable8003220_p // =JumptableTable8003220 
+	ldr r1, .BattleObjectFunctionJumptableTable_p
 	ldr r0, [r0,r1]
-	ldrb r1, [r5,#1]
+	ldrb r1, [r5,#oBattleObject_Index]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
 	push {r7}
 	mov lr, pc
 	bx r0
 	pop {r7}
-loc_8003202:
+.doneCurrentBattleObject
 	bl sub_800372A
-	b loc_80031BA
-loc_8003208:
+	b .processBattleObjectLoop
+.reachedLinkedListSentinel
 	mov r0, #0
-	ldr r1, off_8003234 // =dword_200AF70 
+	ldr r1, .dword_200AF70_p
 	str r0, [r1]
 	add sp, sp, #0x10
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8003214: .word eBattleObjectsLinkedListStart
-off_8003218: .word eBattleObjectsLinkedListSentinel
-JumptableTable8003220_p: .word JumptableTable8003220
-JumptableTable8003220:
+.eBattleObjectsLinkedListStart_p: .word eBattleObjectsLinkedListStart
+.eBattleObjectsLinkedListSentinel_p: .word eBattleObjectsLinkedListSentinel
+.BattleObjectFunctionJumptableTable_p: .word .BattleObjectFunctionJumptableTable
+.BattleObjectFunctionJumptableTable: // 8003220
 	// a table of jumptable pointers. Index to an entry is derived from the
 	// lower 4 bits of the 2nd (zero-indexed) member of the struct in the
 	// linked list, starting from eBattleObjectsLinkedListStart. Index to an entry from the
 	// read Jumptable pointer is derived from the first member of the struct
 	.word 0x0
-	.word off_8003C9C
+	.word T1BattleObjectJumptable
 	.word 0x0
-	.word off_8003EC4
-	.word off_80042C8
-off_8003234: .word dword_200AF70
+	.word T3BattleObjectJumptable
+	.word T4BattleObjectJumptable
+.dword_200AF70_p: .word eUnkBattleObjectLinkedList
+
 	.word off_800323C
 off_800323C: .word word_8003250
 	.word word_8003258
@@ -697,7 +135,7 @@ word_8003268: .hword 0x1B
 DebugMsg_800326A: .asciz "S%02x"
 word_8003270: .hword 0x1B
 DebugMsg_3272: .asciz "F%02x"
-	thumb_func_end sub_80031AC
+	thumb_func_end RunBattleObjectLogic
 
 	thumb_local_start
 SpawnBattleObjectCommon: // 8003278
@@ -919,23 +357,32 @@ sub_8003400:
 	push {lr}
 	mov r0, #oBattleObject_LinkedList_Size
 	sub r0, r5, r0
-	ldr r1, off_8003424 // =dword_200AF70 
+	ldr r1, off_8003424 // =eUnkBattleObjectLinkedList 
 	ldr r1, [r1]
-	cmp r0, r1
+	cmp r0, r1 // is the previous battle object of eUnkBattleObjectLinkedList this battle object?
 	beq .loc_800341E
-	tst r1, r1
+	tst r1, r1 // is there a previous battle object for eUnkBattleObjectLinkedList?
 	beq .loc_800341E
+	// update the previous object pointer of this object to the previous object pointer in eUnkBattleObjectLinkedList
 	str r1, [r0,#oBattleObject_LinkedList_Prev]
-	ldr r2, [r1,#oBattleObject_LinkedList_Next]
-	str r0, [r1,#oBattleObject_LinkedList_Next]
+
+	// get the next object pointer of eUnkBattleObjectLinkedList
+	ldr r2, [r1,#oUnkBattleObjectLinkedList_Next]
+
+	// update the next object pointer of eUnkBattleObjectLinkedList to this battle object
+	str r0, [r1,#oUnkBattleObjectLinkedList_Next]
+
+	// update the next object pointer of this battle object to the next object pointer of eUnkBattleObjectLinkedList
 	str r2, [r0,#oBattleObject_LinkedList_Next]
+
+	// update the previous object pointer of the next battle object to this battle object 
 	str r0, [r2,#oBattleObject_LinkedList_Prev]
 	b .done
 .loc_800341E
 	bl UpdateBattleObjectLinkedList
 .done
 	pop {pc}
-off_8003424: .word dword_200AF70
+off_8003424: .word eUnkBattleObjectLinkedList
 	thumb_func_end sub_8003400
 
 	thumb_local_start
@@ -984,30 +431,30 @@ sub_8003440:
 object_freeMemory:
 	push {r5,lr}
 	mov r1, #0
-	strb r1, [r5]
-	ldrb r1, [r5,#2]
+	strb r1, [r5,#oBattleObject_Flags]
+	ldrb r1, [r5,#oBattleObject_Type]
 	mov r2, #0xf
 	and r1, r2
 	lsl r1, r1, #2
-	ldr r2, off_800348C // =off_8003144 
+	ldr r2, .ActiveObjectBitfieldPointers_p
 	ldr r1, [r2,r1]
-	ldrb r2, [r5,#3]
+	ldrb r2, [r5,#oBattleObject_ListIndex]
 	mov r3, #1
-	lsl r3, r3, #0x1f
+	lsl r3, r3, #31
 	lsr r3, r2
 	ldr r2, [r1]
 	bic r2, r3
 	str r2, [r1]
-	mov r0, #0x10
+	mov r0, #oBattleObject_LinkedList_Size
 	sub r0, r5, r0
-	ldr r1, [r0]
-	ldr r2, [r0,#4]
-	str r2, [r1,#4]
-	str r1, [r2]
+	ldr r1, [r0,#oBattleObject_LinkedList_Prev]
+	ldr r2, [r0,#oBattleObject_LinkedList_Next]
+	str r2, [r1,#oBattleObject_LinkedList_Next]
+	str r1, [r2,#oBattleObject_LinkedList_Prev]
 	bl sprite_makeUnscalable
 	pop {r5,pc}
 	.balign 4, 0x00
-off_800348C: .word off_8003144
+.ActiveObjectBitfieldPointers_p: .word ActiveObjectBitfieldPointers
 	thumb_func_end object_freeMemory
 
 	thumb_local_start
@@ -1017,9 +464,9 @@ InitializeStructsOfObjectType:
 	lsl r1, r0, #4
 	add r7, r7, r1 // ObjectInitializationTable + r0 * 16
 	lsl r1, r0, #2
-	ldr r4, off_8003530 // =off_8003144 
+	ldr r4, off_8003530 // =ActiveObjectBitfieldPointers 
 	// memBlock
-	ldr r0, [r4,r1] // r0 = [off_8003144 + r0 * 4]
+	ldr r0, [r4,r1] // r0 = [ActiveObjectBitfieldPointers + r0 * 4]
 	ldrb r1, [r7,#0xc] // r1 = ObjectInitializationTable[r0] + 0xc
 	add r1, #0x1f
 	lsr r1, r1, #5
@@ -1093,7 +540,7 @@ ObjectInitializationTable:
 	.byte 0x40 | 5
 	.byte 0x78, 0x38
 	.balign 4, 0x00
-off_8003530: .word off_8003144
+off_8003530: .word ActiveObjectBitfieldPointers
 	thumb_func_end InitializeStructsOfObjectType
 
 	thumb_func_start sub_8003534
@@ -1144,16 +591,16 @@ sub_8003566:
 	pop {pc}
 	thumb_func_end sub_8003566
 
-	thumb_func_start sub_8003570
-sub_8003570:
+	thumb_func_start SpawnObjectsFromList
+SpawnObjectsFromList:
 	push {r4-r7,lr}
 	mov r7, r0
 	mov r4, #0
-loc_8003576:
+.spawnObjectsLoop
 	ldr r0, SpawnObjectFunctionsJumptable_p // =SpawnObjectFunctionsJumptable 
 	ldrb r1, [r7]
 	cmp r1, #0xff
-	beq loc_800359E
+	beq .doneSpawningObjects
 	lsl r1, r1, #2
 	ldr r6, [r0,r1]
 	push {r4,r7}
@@ -1166,15 +613,15 @@ loc_8003576:
 	bx r6
 	pop {r4,r7}
 	tst r5, r5
-	beq loc_800359A
+	beq .currentObjectFailedToSpawn
 	add r4, #1
-loc_800359A:
+.currentObjectFailedToSpawn
 	add r7, #0x14
-	b loc_8003576
-loc_800359E:
+	b .spawnObjectsLoop
+.doneSpawningObjects
 	mov r0, r4
 	pop {r4-r7,pc}
-	thumb_func_end sub_8003570
+	thumb_func_end SpawnObjectsFromList
 
 	thumb_func_start sub_80035A2
 sub_80035A2:
@@ -1182,7 +629,7 @@ sub_80035A2:
 	sub sp, sp, #0x18
 	ldr r1, off_8003618 // =off_8003114 
 	ldr r2, off_800361C // =off_800312C 
-	ldr r3, off_8003620 // =off_8003144 
+	ldr r3, off_8003620 // =ActiveObjectBitfieldPointers 
 	ldr r4, off_8003624 // =byte_800315C 
 	ldr r5, off_8003628 // =byte_8003174 
 loc_80035B0:
@@ -1244,7 +691,7 @@ loc_8003614:
 	pop {r4-r7,pc}
 off_8003618: .word off_8003114
 off_800361C: .word off_800312C
-off_8003620: .word off_8003144
+off_8003620: .word ActiveObjectBitfieldPointers
 off_8003624: .word byte_800315C
 off_8003628: .word byte_8003174
 	thumb_func_end sub_80035A2
@@ -1392,11 +839,11 @@ sub_800371A:
 
 	thumb_local_start
 sub_800372A:
-	ldrb r0, [r5,#2]
+	ldrb r0, [r5,#oBattleObject_Type]
 	mov r1, #0xf
 	and r0, r1
 	lsl r0, r0, #3
-	ldr r1, off_8003748 // =dword_800374C 
+	ldr r1, .dword_800374C_p
 	add r0, r0, r1
 	ldr r1, [r0]
 	ldr r2, [r0,#4]
@@ -1406,16 +853,14 @@ sub_800372A:
 	add r0, #1
 	strb r0, [r2]
 	mov pc, lr
-	.balign 4, 0x00
-off_8003748: .word dword_800374C
-dword_800374C: .word 0x0, 0x0
-	.word dword_2039A10
-	.word byte_2036778
+	.balign 4, 0
+.dword_800374C_p: .word dword_800374C
+dword_800374C:
 	.word 0x0, 0x0
-	.word dword_203A010
-	.word dword_203CA7C
-	.word byte_203F750
-	.word byte_2036830
+	.word dword_2039A10, byte_2036778
+	.word 0x0, 0x0
+	.word dword_203A010, dword_203CA7C
+	.word byte_203F750, byte_2036830
 	.word 0x0, 0x0
 SpawnObjectFunctionsJumptable_p: .word SpawnObjectFunctionsJumptable
 off_8003780: .word byte_2036778
@@ -2154,7 +1599,7 @@ loc_8003C7E:
 off_8003C90: .word dword_2009F34
 off_8003C94: .word eOWPlayerObject
 off_8003C98: .word byte_200A008
-off_8003C9C: .word sub_80B81EC+1
+T1BattleObjectJumptable: .word sub_80B81EC+1
 	.word sub_80B8210+1
 	.word sub_80B85E0+1
 	.word sub_80B88D0+1
@@ -2340,7 +1785,7 @@ loc_8003EA6:
 off_8003EB8: .word eT1BattleObject0
 off_8003EBC: .word byte_2036778
 off_8003EC0: .word dword_2039A10
-off_8003EC4: .word sub_80C4E58+1
+T3BattleObjectJumptable: .word sub_80C4E58+1
 	.word sub_80C50B8+1
 	.word sub_80C51AC+1
 	.word sub_80C52B0+1
@@ -2648,7 +2093,7 @@ sub_80042A6:
 off_80042BC: .word eT3BattleObject0_LinkedList
 off_80042C0: .word dword_203CA7C
 off_80042C4: .word dword_203A010
-off_80042C8: .word loc_80E0548+1
+T4BattleObjectJumptable: .word loc_80E0548+1
 	.word loc_80E0548+1
 	.word sub_80E0638+1
 	.word sub_80E0710+1
@@ -8979,7 +8424,7 @@ loc_8007A9A:
 	ldr r0, [r1,r0]
 	mov lr, pc
 	bx r0
-	bl sub_80031AC
+	bl RunBattleObjectLogic
 	bl sub_802FFF4
 	bl sub_800BFC4
 	bl sub_800FDC0
@@ -9079,7 +8524,7 @@ sub_8007B9C:
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl sub_80031AC
+	bl RunBattleObjectLogic
 	bl sub_800BFC4
 	bl sub_80027B4
 	bl sub_800286C
