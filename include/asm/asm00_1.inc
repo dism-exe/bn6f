@@ -38,8 +38,8 @@
 	.global object_spawnType4
 	.global sub_80033E4
 	.global object_freeMemory
-	.global sub_8003534
-	.global sub_800355C
+	.global InitializeOWPlayerObjectStruct
+	.global InitializeOverworldNPCObjectStructs
 	.global sub_8003566
 	.global SpawnObjectsFromList
 	.global sub_80035A2
@@ -61,15 +61,15 @@
 	.global sub_8003AD4
 	.global sub_8003AEA
 	.global sub_8003B1C
-	.global sub_8003B4C
-	.global sub_8003B86
+	.global SpawnOWPlayerObject
+	.global FreeOWPlayerObject
 	.global sub_8003BA2
 	.global sub_8003BF4
 	.global sub_8003E98
 	.global sub_8004298
 	.global sub_8004590
-	.global sub_80045C0
-	.global sub_8004602
+	.global SpawnOverworldNPCObject
+	.global FreeOverworldNPCObject
 	.global npc_800461E
 	.global sub_800467C
 	.global sub_8004702
@@ -1076,7 +1076,7 @@
 // .equ dword_2001014, 0x2001014
 // .equ eUnusedExtraToolkitPtrsOffset, 0x2001060
 // .equ dword_2001064, 0x2001064
-// .equ map_activeNPCs, 0x20010E0
+// .equ eActiveOverworldNPCObjectsBitfield, 0x20010E0
 // .equ dword_20013F0, 0x20013F0
 // .equ byte_2001600, 0x2001600
 // .equ dword_20018B8, 0x20018B8
@@ -1128,7 +1128,7 @@
 // .equ eBattleObjectsLinkedListSentinel, 0x2009AB0
 // .equ dword_2009AB4, 0x2009AB4
 // .equ sChatbox, 0x2009CD0
-// .equ dword_2009F34, 0x2009F34
+// .equ eActiveOWPlayerObjectBitfield, 0x2009F34
 // .equ eOWPlayerObject, 0x2009F40
 // .equ byte_2009F41, 0x2009F41
 // .equ dword_2009F44, 0x2009F44
@@ -1139,7 +1139,7 @@
 // .equ word_2009FB2, 0x2009FB2
 // .equ word_2009FB4, 0x2009FB4
 // .equ word_2009FB6, 0x2009FB6
-// .equ byte_200A008, 0x200A008
+// .equ eOWPlayerObjectEnd, 0x200A008
 // .equ byte_200A009, 0x200A009
 // .equ byte_200A00A, 0x200A00A
 // .equ byte_200A00B, 0x200A00B

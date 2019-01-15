@@ -1,27 +1,30 @@
 	.include "asm/asm00_1.inc"
 
-SpawnObjectFunctionsJumptable: .word sub_8003B4C+1
+SpawnObjectJumptable:
+	.word SpawnOWPlayerObject+1
 	.word object_spawnType1+1
-	.word sub_80045C0+1
+	.word SpawnOverworldNPCObject+1
 	.word object_spawnType3+1
 	.word object_spawnType4+1
 	.word sub_80047E0+1
-off_8003114: .word sub_8003B86+1
+FreeObjectJumptable:
+	.word FreeOWPlayerObject+1
 	.word object_freeMemory+1
-	.word sub_8004602+1
+	.word FreeOverworldNPCObject+1
 	.word object_freeMemory+1
 	.word object_freeMemory+1
 	.word sub_80048B2+1
-off_800312C: .word eOWPlayerObject
+ObjectMemoryPointers:
+	.word eOWPlayerObject
 	.word eT1BattleObject0
 	.word eOverworldNPCObjects
 	.word eT3BattleObject0
 	.word eT4BattleObject0
 	.word byte_2011EE0
 ActiveObjectBitfieldPointers:
-	.word dword_2009F34
+	.word eActiveOWPlayerObjectBitfield
 	.word eActiveT1BattleObjectsBitfield
-	.word map_activeNPCs
+	.word eActiveOverworldNPCObjectsBitfield
 	.word eActiveT3BattleObjectsBitfield
 	.word eActiveT4BattleObjectsBitfield
 	.word unk_2011E50
@@ -177,11 +180,11 @@ loc_80032A6:
 	strb r0, [r5]
 	ldr r7, [sp]
 	ldmia r7!, {r0-r4}
-	strb r0, [r5,#1]
-	str r1, [r5,#0x34]
-	str r2, [r5,#0x38]
-	str r3, [r5,#0x3c]
-	str r4, [r5,#4]
+	strb r0, [r5,#oBattleObject_Index]
+	str r1, [r5,#oBattleObject_X]
+	str r2, [r5,#oBattleObject_Y]
+	str r3, [r5,#oBattleObject_Z]
+	str r4, [r5,#oBattleObject_Params]
 loc_80032C8:
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
@@ -543,45 +546,45 @@ ObjectInitializationTable:
 off_8003530: .word ActiveObjectBitfieldPointers
 	thumb_func_end InitializeStructsOfObjectType
 
-	thumb_func_start sub_8003534
-sub_8003534:
+	thumb_func_start InitializeOWPlayerObjectStruct
+InitializeOWPlayerObjectStruct:
 	push {lr}
 	mov r0, #0
 	bl InitializeStructsOfObjectType
 	pop {pc}
-	thumb_func_end sub_8003534
+	thumb_func_end InitializeOWPlayerObjectStruct
 
 	thumb_local_start
-sub_800353E:
+InitializeT1BattleObjectStructs:
 	push {lr}
 	mov r0, #1
 	bl InitializeStructsOfObjectType
 	pop {pc}
-	thumb_func_end sub_800353E
+	thumb_func_end InitializeT1BattleObjectStructs
 
 	thumb_local_start
-sub_8003548:
+InitializeT3BattleObjectStructs:
 	push {lr}
 	mov r0, #3
 	bl InitializeStructsOfObjectType
 	pop {pc}
-	thumb_func_end sub_8003548
+	thumb_func_end InitializeT3BattleObjectStructs
 
 	thumb_local_start
-sub_8003552:
+InitializeT4BattleObjectStructs:
 	push {lr}
 	mov r0, #4
 	bl InitializeStructsOfObjectType
 	pop {pc}
-	thumb_func_end sub_8003552
+	thumb_func_end InitializeT4BattleObjectStructs
 
-	thumb_func_start sub_800355C
-sub_800355C:
+	thumb_func_start InitializeOverworldNPCObjectStructs
+InitializeOverworldNPCObjectStructs:
 	push {lr}
 	mov r0, #2
 	bl InitializeStructsOfObjectType
 	pop {pc}
-	thumb_func_end sub_800355C
+	thumb_func_end InitializeOverworldNPCObjectStructs
 
 	thumb_func_start sub_8003566
 sub_8003566:
@@ -597,7 +600,7 @@ SpawnObjectsFromList:
 	mov r7, r0
 	mov r4, #0
 .spawnObjectsLoop
-	ldr r0, SpawnObjectFunctionsJumptable_p // =SpawnObjectFunctionsJumptable 
+	ldr r0, SpawnObjectJumptable_p // =SpawnObjectJumptable 
 	ldrb r1, [r7]
 	cmp r1, #0xff
 	beq .doneSpawningObjects
@@ -627,8 +630,8 @@ SpawnObjectsFromList:
 sub_80035A2:
 	push {r4-r7,lr}
 	sub sp, sp, #0x18
-	ldr r1, off_8003618 // =off_8003114 
-	ldr r2, off_800361C // =off_800312C 
+	ldr r1, off_8003618 // =FreeObjectJumptable 
+	ldr r2, off_800361C // =ObjectMemoryPointers 
 	ldr r3, off_8003620 // =ActiveObjectBitfieldPointers 
 	ldr r4, off_8003624 // =byte_800315C 
 	ldr r5, off_8003628 // =byte_8003174 
@@ -689,8 +692,8 @@ loc_80035FA:
 loc_8003614:
 	add sp, sp, #0x18
 	pop {r4-r7,pc}
-off_8003618: .word off_8003114
-off_800361C: .word off_800312C
+off_8003618: .word FreeObjectJumptable
+off_800361C: .word ObjectMemoryPointers
 off_8003620: .word ActiveObjectBitfieldPointers
 off_8003624: .word byte_800315C
 off_8003628: .word byte_8003174
@@ -862,7 +865,7 @@ dword_800374C:
 	.word dword_203A010, dword_203CA7C
 	.word byte_203F750, byte_2036830
 	.word 0x0, 0x0
-SpawnObjectFunctionsJumptable_p: .word SpawnObjectFunctionsJumptable
+SpawnObjectJumptable_p: .word SpawnObjectJumptable
 off_8003780: .word byte_2036778
 off_8003784: .word dword_203CA7C
 off_8003788: .word byte_2036830
@@ -1409,15 +1412,15 @@ off_8003B44: .word off_80039F8
 off_8003B48: .word sub_809D19C+1
 	thumb_func_end sub_8003B24
 
-	thumb_func_start sub_8003B4C
-sub_8003B4C:
+	thumb_func_start SpawnOWPlayerObject
+SpawnOWPlayerObject:
 	push {r0-r4,lr}
-	ldr r0, off_8003C90 // =dword_2009F34 
+	ldr r0, off_8003C90 // =eActiveOWPlayerObjectBitfield 
 	ldr r2, [r0]
 	mov r1, #0x80
 	lsl r1, r1, #0x18
 	ldr r5, off_8003C94 // =eOWPlayerObject 
-	ldr r3, off_8003C98 // =byte_200A008 
+	ldr r3, off_8003C98 // =eOWPlayerObjectEnd 
 loc_8003B5A:
 	tst r2, r1
 	beq loc_8003B68
@@ -1443,16 +1446,16 @@ loc_8003B68:
 loc_8003B82:
 	mov r5, #0
 	pop {r0-r4,pc}
-	thumb_func_end sub_8003B4C
+	thumb_func_end SpawnOWPlayerObject
 
-	thumb_func_start sub_8003B86
-sub_8003B86:
+	thumb_func_start FreeOWPlayerObject
+FreeOWPlayerObject:
 	push {lr}
 	mov r0, #0x80
 	lsl r0, r0, #0x18
 	ldrb r1, [r5,#3]
 	lsr r0, r1
-	ldr r1, off_8003C90 // =dword_2009F34 
+	ldr r1, off_8003C90 // =eActiveOWPlayerObjectBitfield 
 	ldr r2, [r1]
 	bic r2, r0
 	str r2, [r1]
@@ -1460,7 +1463,7 @@ sub_8003B86:
 	strb r1, [r5]
 	bl sprite_makeUnscalable
 	pop {pc}
-	thumb_func_end sub_8003B86
+	thumb_func_end FreeOWPlayerObject
 
 	thumb_func_start sub_8003BA2
 sub_8003BA2:
@@ -1472,7 +1475,7 @@ sub_8003BA2:
 	sub sp, sp, #8
 	ldr r5, off_8003C94 // =eOWPlayerObject 
 	ldr r0, off_8003BF0 // =off_8003B48 
-	ldr r1, off_8003C98 // =byte_200A008 
+	ldr r1, off_8003C98 // =eOWPlayerObjectEnd 
 	str r0, [sp]
 	str r1, [sp,#4]
 loc_8003BB8:
@@ -1596,9 +1599,9 @@ loc_8003C7E:
 	cmp r0, #1
 	blt loc_8003C7E
 	mov pc, lr
-off_8003C90: .word dword_2009F34
+off_8003C90: .word eActiveOWPlayerObjectBitfield
 off_8003C94: .word eOWPlayerObject
-off_8003C98: .word byte_200A008
+off_8003C98: .word eOWPlayerObjectEnd
 T1BattleObjectJumptable: .word sub_80B81EC+1
 	.word sub_80B8210+1
 	.word sub_80B85E0+1
@@ -2337,10 +2340,10 @@ off_80045B8: .word byte_203F750
 off_80045BC: .word npc_809E570+1
 	thumb_func_end dead_800459A
 
-	thumb_func_start sub_80045C0
-sub_80045C0:
+	thumb_func_start SpawnOverworldNPCObject
+SpawnOverworldNPCObject:
 	push {r0-r4,lr}
-	ldr r0, off_8004718 // =map_activeNPCs 
+	ldr r0, off_8004718 // =eActiveOverworldNPCObjectsBitfield 
 	ldr r2, [r0]
 	mov r1, #0x80
 	lsl r1, r1, #0x18
@@ -2375,16 +2378,16 @@ loc_80045DC:
 loc_80045FE:
 	mov r5, #0
 	pop {r0-r4,pc}
-	thumb_func_end sub_80045C0
+	thumb_func_end SpawnOverworldNPCObject
 
-	thumb_func_start sub_8004602
-sub_8004602:
+	thumb_func_start FreeOverworldNPCObject
+FreeOverworldNPCObject:
 	push {lr}
 	mov r0, #0x80
 	lsl r0, r0, #0x18
 	ldrb r1, [r5,#3]
 	lsr r0, r1
-	ldr r1, off_8004718 // =map_activeNPCs 
+	ldr r1, off_8004718 // =eActiveOverworldNPCObjectsBitfield 
 	ldr r2, [r1]
 	bic r2, r0
 	str r2, [r1]
@@ -2392,7 +2395,7 @@ sub_8004602:
 	strb r1, [r5]
 	bl sprite_makeUnscalable
 	pop {pc}
-	thumb_func_end sub_8004602
+	thumb_func_end FreeOverworldNPCObject
 
 // [break] continuously called
 // [disable] - NPCs are no longer loaded, if they were already loaded, they are not interactable. Some are exceptions, like Central Robo Dog.
@@ -2540,7 +2543,7 @@ loc_8004706:
 	cmp r0, #0x10
 	blt loc_8004706
 	mov pc, lr
-off_8004718: .word map_activeNPCs
+off_8004718: .word eActiveOverworldNPCObjectsBitfield
 off_800471C: .word eOverworldNPCObjects
 off_8004720: .word byte_2006530
 off_8004724: .word ho_80A4984+1
@@ -8255,9 +8258,9 @@ off_8007940: .word sub_800794C+1
 sub_800794C:
 	push {lr}
 	bl sub_800318C
-	bl sub_800353E
-	bl sub_8003548
-	bl sub_8003552
+	bl InitializeT1BattleObjectStructs
+	bl InitializeT3BattleObjectStructs
+	bl InitializeT4BattleObjectStructs
 	bl sub_802E112
 	bl sub_8007338
 	bl sub_800A0C6
@@ -16419,7 +16422,7 @@ off_800B690: .word byte_203F5A4
 
 	thumb_local_start
 sub_800B694:
-	ldr r3, off_800B828 // =byte_200A008
+	ldr r3, off_800B828 // =eOWPlayerObjectEnd
 	ldr r0, dword_800B82C // =0xffff 
 	strh r0, [r3,#0x4] // (word_200A00C - 0x200a008)
 	strh r0, [r3,#0x6] // (word_200A00E - 0x200a008)
@@ -16434,84 +16437,84 @@ sub_800B694:
 
 	thumb_local_start
 sub_800B6AA:
-	ldr r1, off_800B830 // =byte_200A008 
+	ldr r1, off_800B830 // =eOWPlayerObjectEnd 
 	strb r0, [r1,#0x1] // (byte_200A009 - 0x200a008)
 	mov pc, lr
 	thumb_func_end sub_800B6AA
 
 	thumb_func_start sub_800B6B0
 sub_800B6B0:
-	ldr r1, off_800B834 // =byte_200A008 
+	ldr r1, off_800B834 // =eOWPlayerObjectEnd 
 	ldrb r0, [r1,#0x1] // (byte_200A009 - 0x200a008)
 	mov pc, lr
 	thumb_func_end sub_800B6B0
 
 	thumb_local_start
 sub_800B6B6:
-	ldr r1, off_800B838 // =byte_200A008 
+	ldr r1, off_800B838 // =eOWPlayerObjectEnd 
 	strb r0, [r1]
 	mov pc, lr
 	thumb_func_end sub_800B6B6
 
 	thumb_local_start
 sub_800B6BC:
-	ldr r1, off_800B83C // =byte_200A008
+	ldr r1, off_800B83C // =eOWPlayerObjectEnd
 	ldrb r0, [r1]
 	mov pc, lr
 	thumb_func_end sub_800B6BC
 
 	thumb_local_start
 sub_800B6C2:
-	ldr r1, off_800B840 // =byte_200A008 
+	ldr r1, off_800B840 // =eOWPlayerObjectEnd 
 	strb r0, [r1,#0x2] // (byte_200A00A - 0x200a008)
 	mov pc, lr
 	thumb_func_end sub_800B6C2
 
 	thumb_local_start
 sub_800B6C8:
-	ldr r1, off_800B844 // =byte_200A008
+	ldr r1, off_800B844 // =eOWPlayerObjectEnd
 	ldrb r0, [r1,#0x2] // (byte_200A00A - 0x200a008)
 	mov pc, lr
 	thumb_func_end sub_800B6C8
 
 	thumb_func_start sub_800B6CE
 sub_800B6CE:
-	ldr r1, off_800B848 // =byte_200A008 
+	ldr r1, off_800B848 // =eOWPlayerObjectEnd 
 	strh r0, [r1,#0x4] // (word_200A00C - 0x200a008)
 	mov pc, lr
 	thumb_func_end sub_800B6CE
 
 	thumb_func_start sub_800B6D4
 sub_800B6D4:
-	ldr r1, off_800B84C // =byte_200A008 
+	ldr r1, off_800B84C // =eOWPlayerObjectEnd 
 	ldrh r0, [r1,#0x4] // (word_200A00C - 0x200a008)
 	mov pc, lr
 	thumb_func_end sub_800B6D4
 
 	thumb_func_start sub_800B6DA
 sub_800B6DA:
-	ldr r1, off_800B850 // =byte_200A008 
+	ldr r1, off_800B850 // =eOWPlayerObjectEnd 
 	strh r0, [r1,#0x6] // (word_200A00E - 0x200a008)
 	mov pc, lr
 	thumb_func_end sub_800B6DA
 
 	thumb_func_start sub_800B6E0
 sub_800B6E0:
-	ldr r1, off_800B854 // =byte_200A008 
+	ldr r1, off_800B854 // =eOWPlayerObjectEnd 
 	ldrh r0, [r1,#0x6] // (word_200A00E - 0x200a008)
 	mov pc, lr
 	thumb_func_end sub_800B6E0
 
 	thumb_local_start
 sub_800B6E6:
-	ldr r1, off_800B858 // =byte_200A008 
+	ldr r1, off_800B858 // =eOWPlayerObjectEnd 
 	strb r0, [r1,#0x3] // (byte_200A00B - 0x200a008)
 	mov pc, lr
 	thumb_func_end sub_800B6E6
 
 	thumb_local_start
 sub_800B6EC:
-	ldr r1, off_800B85C // =byte_200A008
+	ldr r1, off_800B85C // =eOWPlayerObjectEnd
 	ldrb r0, [r1,#0x3] // (byte_200A00B - 0x200a008)
 	mov pc, lr
 	thumb_func_end sub_800B6EC
@@ -16702,20 +16705,20 @@ loc_800B81E:
 	bl sub_8013754
 	pop {pc}
 	.balign 4, 0x00
-off_800B828: .word byte_200A008
+off_800B828: .word eOWPlayerObjectEnd
 dword_800B82C: .word 0xFFFF
-off_800B830: .word byte_200A008
-off_800B834: .word byte_200A008
-off_800B838: .word byte_200A008
-off_800B83C: .word byte_200A008
-off_800B840: .word byte_200A008
-off_800B844: .word byte_200A008
-off_800B848: .word byte_200A008
-off_800B84C: .word byte_200A008
-off_800B850: .word byte_200A008
-off_800B854: .word byte_200A008
-off_800B858: .word byte_200A008
-off_800B85C: .word byte_200A008
+off_800B830: .word eOWPlayerObjectEnd
+off_800B834: .word eOWPlayerObjectEnd
+off_800B838: .word eOWPlayerObjectEnd
+off_800B83C: .word eOWPlayerObjectEnd
+off_800B840: .word eOWPlayerObjectEnd
+off_800B844: .word eOWPlayerObjectEnd
+off_800B848: .word eOWPlayerObjectEnd
+off_800B84C: .word eOWPlayerObjectEnd
+off_800B850: .word eOWPlayerObjectEnd
+off_800B854: .word eOWPlayerObjectEnd
+off_800B858: .word eOWPlayerObjectEnd
+off_800B85C: .word eOWPlayerObjectEnd
 dword_800B860: .word 0x80000
 off_800B864: .word 0x100
 off_800B868: .word 0x300

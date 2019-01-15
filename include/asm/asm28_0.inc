@@ -123,8 +123,8 @@
 // .global sub_8003AB2
 // .global sub_8003AD4
 // .global sub_8003AEA
-// .global sub_8003B4C
-// .global sub_8003B86
+// .global SpawnOWPlayerObject
+// .global FreeOWPlayerObject
 // .global sub_80047E0
 // .global engine_isScreeneffectAnimating // () -> zf
 

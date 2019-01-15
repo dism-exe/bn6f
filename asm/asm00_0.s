@@ -4623,8 +4623,8 @@ sub_800260C:
 	ldr r1, dword_8002648 // =0x8000 
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	bl sub_8002668
-	bl sub_8003534
-	bl sub_800355C
+	bl InitializeOWPlayerObjectStruct
+	bl InitializeOverworldNPCObjectStructs
 	bl sub_8003566
 	bl sprite_handleObjSprites_800289C
 	ldr r0, off_800264C // =unk_200F388 

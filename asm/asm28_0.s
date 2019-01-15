@@ -5181,7 +5181,7 @@ locret_809D7F6:
 	thumb_local_start
 sub_809D7F8:
 	push {lr}
-	bl sub_8003B86
+	bl FreeOWPlayerObject
 	pop {pc}
 	thumb_func_end sub_809D7F8
 
@@ -6146,7 +6146,7 @@ sub_809E064:
 	push {r4,r6,r7,lr}
 	mov r0, #0
 	mov r4, #0
-	bl sub_8003B4C
+	bl SpawnOWPlayerObject
 	tst r5, r5
 	beq locret_809E088
 	mov r6, r10
@@ -6170,7 +6170,7 @@ sub_809E08A:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
-	bl sub_8003B86
+	bl FreeOWPlayerObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E08A
 

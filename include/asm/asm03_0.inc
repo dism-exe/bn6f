@@ -234,7 +234,7 @@
 // .global sub_8002E3C
 // .global sub_8002F5C
 // .global sub_80035A2
-// .global sub_80045C0
+// .global SpawnOverworldNPCObject
 // .global sub_8004D48
 // .global sub_8004DF0
 // .global engine_setScreeneffect // (int a1, int a2) -> void

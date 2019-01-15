@@ -18,6 +18,7 @@
 
 	object_header_struct \label, \struct_entry, \struct_begin
 
+	\struct_entry \label\()_Params    // loc=0x4
 	\struct_entry \label\()_Param1, 1 // loc=0x4
 	\struct_entry \label\()_Param2, 1 // loc=0x5
 	\struct_entry \label\()_Param3, 1 // loc=0x6

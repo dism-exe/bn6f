@@ -675,7 +675,7 @@ npc_809EAA0:
 	mov r2, #0xa0
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8004602
+	bl FreeOverworldNPCObject
 	bl npc_809F51E
 loc_809EAD4:
 	bl npc_809EBF8
@@ -983,7 +983,7 @@ npc_809ED94:
 	mov r2, #0xa0
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8004602
+	bl FreeOverworldNPCObject
 	bl npc_809F51E
 	pop {pc}
 	thumb_func_end npc_809ED94
@@ -1512,7 +1512,7 @@ loc_809F0BE:
 	mov r2, #0xa0
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8004602
+	bl FreeOverworldNPCObject
 	bl npc_809F51E
 	pop {pc}
 	.balign 4, 0x00
@@ -2108,7 +2108,7 @@ loc_809F498:
 	mov r2, #0xa0
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8004602
+	bl FreeOverworldNPCObject
 	bl npc_809F51E
 	pop {pc}
 off_809F4B4: .word byte_87E30A0

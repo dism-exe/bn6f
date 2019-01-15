@@ -156,8 +156,8 @@
 // .global sprite_handleObjSprites_800289C
 
 	.include "asm/asm00_1.inc"
-// .global sub_8003534
-// .global sub_800355C
+// .global InitializeOWPlayerObjectStruct
+// .global InitializeOverworldNPCObjectStructs
 // .global sub_8003566
 // .global sub_8003694
 // .global byte_8006660

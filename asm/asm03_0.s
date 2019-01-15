@@ -20452,7 +20452,7 @@ sub_8030A8C:
 	push {lr}
 	push {r0-r2}
 	mov r0, #0
-	bl sub_80045C0
+	bl SpawnOverworldNPCObject
 	pop {r0-r2}
 	tst r5, r5
 	beq locret_8030AA0

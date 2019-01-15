@@ -38,7 +38,7 @@
 // .global sub_8002F90 // () -> void
 // .global sub_8002FA6
 // .global sub_8003006
-// .global sub_8004602
+// .global FreeOverworldNPCObject
 // .global sub_80047E0
 // .global sub_80062C8
 

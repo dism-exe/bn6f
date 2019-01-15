@@ -258,7 +258,7 @@ eUnusedExtraToolkitPtrsOffset:: // 0x2001060
 	.space 4
 dword_2001064:: // 0x2001064
 	.space 124
-map_activeNPCs:: // 0x20010e0
+eActiveOverworldNPCObjectsBitfield:: // 0x20010e0
 	.space 16
 byte_20010F0:: // 0x20010f0
 	.space 48
@@ -712,7 +712,7 @@ sChatbox:: // 0x2009cd0
 	.space 560
 unk_2009F00:: // 0x2009f00
 	.space 52
-dword_2009F34:: // 0x2009f34
+eActiveOWPlayerObjectBitfield:: // 0x2009f34
 	.space 4
 dword_2009F38:: // 0x2009f38
 	.space 8
@@ -744,7 +744,7 @@ word_2009FB6:: // 0x2009fb6
 	.space 13
 byte_2009FC3:: // 0x2009fc3
 	.space 69
-byte_200A008:: // 0x200a008
+eOWPlayerObjectEnd:: // 0x200a008
 	.space 1
 byte_200A009:: // 0x200a009
 	.space 1
