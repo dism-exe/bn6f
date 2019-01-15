@@ -158,7 +158,7 @@
 	.include "asm/asm00_1.inc"
 // .global InitializeOWPlayerObjectStruct
 // .global InitializeOverworldNPCObjectStructs
-// .global sub_8003566
+// .global InitializeOverworldMapObjectStructs
 // .global sub_8003694
 // .global byte_8006660
 // .global byte_80066E0

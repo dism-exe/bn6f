@@ -6,28 +6,28 @@ SpawnObjectJumptable:
 	.word SpawnOverworldNPCObject+1
 	.word object_spawnType3+1
 	.word object_spawnType4+1
-	.word sub_80047E0+1
+	.word SpawnOverworldMapObject+1
 FreeObjectJumptable:
 	.word FreeOWPlayerObject+1
 	.word object_freeMemory+1
 	.word FreeOverworldNPCObject+1
 	.word object_freeMemory+1
 	.word object_freeMemory+1
-	.word sub_80048B2+1
+	.word FreeOverworldMapObject+1
 ObjectMemoryPointers:
 	.word eOWPlayerObject
 	.word eT1BattleObject0
 	.word eOverworldNPCObjects
 	.word eT3BattleObject0
 	.word eT4BattleObject0
-	.word byte_2011EE0
+	.word eOverworldMapObjects
 ActiveObjectBitfieldPointers:
 	.word eActiveOWPlayerObjectBitfield
 	.word eActiveT1BattleObjectsBitfield
 	.word eActiveOverworldNPCObjectsBitfield
 	.word eActiveT3BattleObjectsBitfield
 	.word eActiveT4BattleObjectsBitfield
-	.word unk_2011E50
+	.word eActiveOverworldMapObjectsBitfield
 byte_800315C: .byte 0xC8, 0x0, 0x0, 0x0, 0xD8, 0x0, 0x0, 0x0, 0xD8, 0x0, 0x0, 0x0, 0xD8
 	.byte 0x0, 0x0, 0x0, 0xC8, 0x0, 0x0, 0x0, 0x78, 0x0, 0x0, 0x0
 byte_8003174: .byte 0x1, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x20, 0x0
@@ -463,11 +463,11 @@ object_freeMemory:
 	thumb_local_start
 InitializeStructsOfObjectType:
 	push {r4,r7,lr}
-	ldr r7, ObjectInitializationTable_p // =ObjectInitializationTable 
+	ldr r7, .ObjectInitializationTable_p
 	lsl r1, r0, #4
 	add r7, r7, r1 // ObjectInitializationTable + r0 * 16
 	lsl r1, r0, #2
-	ldr r4, off_8003530 // =ActiveObjectBitfieldPointers 
+	ldr r4, .ActiveObjectBitfieldPointers_p
 	// memBlock
 	ldr r0, [r4,r1] // r0 = [ActiveObjectBitfieldPointers + r0 * 4]
 	ldrb r1, [r7,#0xc] // r1 = ObjectInitializationTable[r0] + 0xc
@@ -486,70 +486,71 @@ InitializeStructsOfObjectType:
 	ldrb r2, [r7,#0xa]
 	ldrb r3, [r7,#0xc]
 	ldrb r4, [r7,#0xb]
-loc_80034BC:
+.loop
 	strb r2, [r0,#2]
 	strb r1, [r0,#3]
 	add r0, r0, r4
 	add r1, #1
 	cmp r1, r3
-	blt loc_80034BC
+	blt .loop
 	pop {r4,r7,pc}
 	.balign 4, 0x00
-ObjectInitializationTable_p: .word ObjectInitializationTable
-ObjectInitializationTable:
+.ObjectInitializationTable_p: .word .ObjectInitializationTable
+.ObjectInitializationTable:
 	// word 1 is part of a linked list?
 	// word 2 is the actual list of structs
 	// byte 1 is struct offset part 2?
 
 	// OWPlayer struct
 	.word eOWPlayerObject, eOWPlayerObject
-	.hword 0xC8
-	.byte 0x90 | 0
-	.byte 0xC8, 0x1
+	.hword oOWPlayerObject_Size
+	.byte oOWPlayerObject_SpriteData | OVERWORLD_PLAYER_OBJECT
+	.byte oOWPlayerObject_Size, 1
 	.balign 4, 0x00
 
 	// type 1 battle objects
 	.word eT1BattleObject0_LinkedList, eT1BattleObject0
 	.hword NUM_T1_BATTLE_OBJECTS * oT1BattleObject_Size
-	.byte oT1BattleObject_SpriteData | 1
+	.byte oT1BattleObject_SpriteData | T1_BATTLE_OBJECT
 	.byte oT1BattleObject_Size, NUM_T1_BATTLE_OBJECTS
 	.balign 4, 0x00
 
 	// NPC Structs
 	.word eOverworldNPCObjects
 	.word eOverworldNPCObjects
-	.hword OVERWORLD_NPC_OBJECTS_MEM_SIZE
-	.byte oOverworldNPCObject_SpriteData | 2
+	.hword NUM_OVERWORLD_NPC_OBJECTS * oOverworldNPCObject_Size
+	.byte oOverworldNPCObject_SpriteData | OVERWORLD_NPC_OBJECT
 	.byte oOverworldNPCObject_Size, NUM_OVERWORLD_NPC_OBJECTS
 	.balign 4, 0x00
 
 	// type 3 battle objects
 	.word eT3BattleObject0_LinkedList, eT3BattleObject0
 	.hword NUM_T3_BATTLE_OBJECTS * oT3BattleObject_Size
-	.byte oT3BattleObject_SpriteData | 3
+	.byte oT3BattleObject_SpriteData | T3_BATTLE_OBJECT
 	.byte oT3BattleObject_Size, NUM_T3_BATTLE_OBJECTS
 	.balign 4, 0x00
 
 	// type 4 battle objects
 	.word eT4BattleObject0_LinkedList, eT4BattleObject0
 	.hword NUM_T4_BATTLE_OBJECTS * oT4BattleObject_Size
-	.byte oT4BattleObject_SpriteData | 4
+	.byte oT4BattleObject_SpriteData | T4_BATTLE_OBJECT
 	.byte oT4BattleObject_Size, NUM_T4_BATTLE_OBJECTS
 	.balign 4, 0x00
 
-	// unknown
-	.word byte_2011EE0, byte_2011EE0
-	.hword 0x1A40
-	.byte 0x40 | 5
-	.byte 0x78, 0x38
+	// map objects
+	.word eOverworldMapObjects, eOverworldMapObjects
+	.hword NUM_OVERWORLD_MAP_OBJECTS * oOverworldMapObject_Size
+	.byte oOverworldMapObject_SpriteData | OVERWORLD_MAP_OBJECT
+	.byte oOverworldMapObject_Size, NUM_OVERWORLD_MAP_OBJECTS
 	.balign 4, 0x00
-off_8003530: .word ActiveObjectBitfieldPointers
+
+.ActiveObjectBitfieldPointers_p: .word ActiveObjectBitfieldPointers
 	thumb_func_end InitializeStructsOfObjectType
 
 	thumb_func_start InitializeOWPlayerObjectStruct
 InitializeOWPlayerObjectStruct:
 	push {lr}
-	mov r0, #0
+	mov r0, #OVERWORLD_PLAYER_OBJECT
 	bl InitializeStructsOfObjectType
 	pop {pc}
 	thumb_func_end InitializeOWPlayerObjectStruct
@@ -557,7 +558,7 @@ InitializeOWPlayerObjectStruct:
 	thumb_local_start
 InitializeT1BattleObjectStructs:
 	push {lr}
-	mov r0, #1
+	mov r0, #T1_BATTLE_OBJECT
 	bl InitializeStructsOfObjectType
 	pop {pc}
 	thumb_func_end InitializeT1BattleObjectStructs
@@ -565,7 +566,7 @@ InitializeT1BattleObjectStructs:
 	thumb_local_start
 InitializeT3BattleObjectStructs:
 	push {lr}
-	mov r0, #3
+	mov r0, #T3_BATTLE_OBJECT
 	bl InitializeStructsOfObjectType
 	pop {pc}
 	thumb_func_end InitializeT3BattleObjectStructs
@@ -573,7 +574,7 @@ InitializeT3BattleObjectStructs:
 	thumb_local_start
 InitializeT4BattleObjectStructs:
 	push {lr}
-	mov r0, #4
+	mov r0, #T4_BATTLE_OBJECT
 	bl InitializeStructsOfObjectType
 	pop {pc}
 	thumb_func_end InitializeT4BattleObjectStructs
@@ -581,18 +582,18 @@ InitializeT4BattleObjectStructs:
 	thumb_func_start InitializeOverworldNPCObjectStructs
 InitializeOverworldNPCObjectStructs:
 	push {lr}
-	mov r0, #2
+	mov r0, #OVERWORLD_NPC_OBJECT
 	bl InitializeStructsOfObjectType
 	pop {pc}
 	thumb_func_end InitializeOverworldNPCObjectStructs
 
-	thumb_func_start sub_8003566
-sub_8003566:
+	thumb_func_start InitializeOverworldMapObjectStructs
+InitializeOverworldMapObjectStructs:
 	push {lr}
-	mov r0, #5
+	mov r0, #OVERWORLD_MAP_OBJECT
 	bl InitializeStructsOfObjectType
 	pop {pc}
-	thumb_func_end sub_8003566
+	thumb_func_end InitializeOverworldMapObjectStructs
 
 	thumb_func_start SpawnObjectsFromList
 SpawnObjectsFromList:
@@ -2595,15 +2596,15 @@ off_8004724: .word ho_80A4984+1
 	.word sub_80AA374+1
 	thumb_func_end sub_8004702
 
-	thumb_func_start sub_80047E0
-sub_80047E0:
+	thumb_func_start SpawnOverworldMapObject
+SpawnOverworldMapObject:
 	push {r0-r4,r6,lr}
 	mov r1, #0x80
 	lsl r1, r1, #0x18
-	ldr r5, off_80049D4 // =byte_2011EE0 
+	ldr r5, off_80049D4 // =eOverworldMapObjects 
 	mov r6, #0
 loc_80047EA:
-	ldr r0, off_80049D0 // =unk_2011E50 
+	ldr r0, off_80049D0 // =eActiveOverworldMapObjectsBitfield 
 	lsr r3, r6, #5
 	lsl r3, r3, #2
 	ldr r2, [r0,r3]
@@ -2633,7 +2634,7 @@ loc_8004804:
 loc_800481E:
 	mov r5, #0
 	pop {r0-r4,r6,pc}
-	thumb_func_end sub_80047E0
+	thumb_func_end SpawnOverworldMapObject
 
 	thumb_func_start sub_8004822
 sub_8004822:
@@ -2646,7 +2647,7 @@ loc_8004828:
 	mov r1, #0x80
 	lsl r1, r1, #0x18
 	lsr r1, r2
-	ldr r0, off_80049D0 // =unk_2011E50 
+	ldr r0, off_80049D0 // =eActiveOverworldMapObjectsBitfield 
 	lsr r3, r6, #5
 	lsl r3, r3, #2
 	ldr r2, [r0,r3]
@@ -2684,12 +2685,12 @@ sub_8004864:
 	and r6, r5
 	lsr r1, r6
 	mov r6, r5
-	ldr r5, off_80049D4 // =byte_2011EE0 
+	ldr r5, off_80049D4 // =eOverworldMapObjects 
 	mov r3, #0x78 
 	mul r3, r6
 	add r5, r5, r3
 loc_800487A:
-	ldr r0, off_80049D0 // =unk_2011E50 
+	ldr r0, off_80049D0 // =eActiveOverworldMapObjectsBitfield 
 	lsr r3, r6, #5
 	lsl r3, r3, #2
 	ldr r2, [r0,r3]
@@ -2721,14 +2722,14 @@ loc_80048AE:
 	pop {r0-r4,r6,pc}
 	thumb_func_end sub_8004864
 
-	thumb_func_start sub_80048B2
-sub_80048B2:
+	thumb_func_start FreeOverworldMapObject
+FreeOverworldMapObject:
 	push {lr}
 	mov r0, #0x80
 	lsl r0, r0, #0x18
 	ldrb r1, [r5,#3]
 	ror r0, r1
-	ldr r2, off_80049D0 // =unk_2011E50 
+	ldr r2, off_80049D0 // =eActiveOverworldMapObjectsBitfield 
 	lsr r1, r1, #5
 	lsl r1, r1, #2
 	ldr r3, [r2,r1]
@@ -2738,7 +2739,7 @@ sub_80048B2:
 	strb r1, [r5]
 	bl sprite_makeUnscalable
 	pop {pc}
-	thumb_func_end sub_80048B2
+	thumb_func_end FreeOverworldMapObject
 
 	thumb_func_start sub_80048D2
 sub_80048D2:
@@ -2754,7 +2755,7 @@ sub_80048D2:
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8004920
 	sub sp, sp, #8
-	ldr r5, off_80049D4 // =byte_2011EE0 
+	ldr r5, off_80049D4 // =eOverworldMapObjects 
 	ldr r0, off_800492C // =off_8004724 
 	ldr r1, off_80049D8 // =dword_2013920 
 	str r0, [sp]
@@ -2805,7 +2806,7 @@ sub_8004934:
 	push {r4-r6}
 	mov r0, #0x38 
 	mov r1, #0
-	ldr r5, off_80049D4 // =byte_2011EE0 
+	ldr r5, off_80049D4 // =eOverworldMapObjects 
 loc_8004944:
 	ldrb r2, [r5]
 	mov r3, #2
@@ -2872,7 +2873,7 @@ sub_80049B0:
 	thumb_local_start
 sub_80049BA:
 	mov r0, #0
-	ldr r3, off_80049D4 // =byte_2011EE0 
+	ldr r3, off_80049D4 // =eOverworldMapObjects 
 loc_80049BE:
 	mov r1, r3
 	add r1, #0x40 
@@ -2883,8 +2884,8 @@ loc_80049BE:
 	cmp r0, #0x38 
 	blt loc_80049BE
 	mov pc, lr
-off_80049D0: .word unk_2011E50
-off_80049D4: .word byte_2011EE0
+off_80049D0: .word eActiveOverworldMapObjectsBitfield
+off_80049D4: .word eOverworldMapObjects
 off_80049D8: .word dword_2013920
 off_80049DC: .word byte_20138A8
 	thumb_func_end sub_80049BA
@@ -3793,7 +3794,7 @@ loc_8005152:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_8003566
+	bl InitializeOverworldMapObjectStructs
 	bl sub_8002668
 	bl sub_80024A2
 	bl sub_8003962

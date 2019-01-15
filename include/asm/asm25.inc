@@ -26,7 +26,7 @@
 // .global sub_8003914
 // .global sub_8003940
 // .global sub_80039D4
-// .global sub_80047E0
+// .global SpawnOverworldMapObject
 // .global engine_isScreeneffectAnimating // () -> zf
 
 	.include "asm/asm03_0.inc"

@@ -532,7 +532,7 @@ loc_8141FC0:
 	bne loc_8141FDE
 	push {r4-r7}
 	mov r0, #0xd
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r4-r7}
 loc_8141FDE:
 	add r4, #1
@@ -1110,7 +1110,7 @@ loc_8142566:
 	bne loc_814258C
 	push {r4-r7}
 	mov r0, #0xf
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r4-r7}
 	bl sub_8142178
 	ldr r0, dword_8142604 // =0x1650 
@@ -1680,7 +1680,7 @@ byte_8142A74: .byte 0x3, 0x0, 0x0, 0x3, 0xFD, 0x0, 0x0, 0xFD, 0x7F, 0x7F, 0x7F, 
 sub_8142A84:
 	push {r4-r7,lr}
 	mov r7, r0
-	ldr r5, off_8142AAC // =byte_2011EE0 
+	ldr r5, off_8142AAC // =eOverworldMapObjects 
 	mov r4, #0
 	mov r6, #0
 loc_8142A8E:
@@ -1698,7 +1698,7 @@ loc_8142A9C:
 	tst r0, r0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8142AAC: .word byte_2011EE0
+off_8142AAC: .word eOverworldMapObjects
 	thumb_func_end sub_8142A84
 
 	thumb_local_start
@@ -1757,7 +1757,7 @@ loc_8142AF6:
 sub_8142B04:
 	push {r4-r7,lr}
 	mov r7, r0
-	ldr r5, off_8142B54 // =byte_2011EE0 
+	ldr r5, off_8142B54 // =eOverworldMapObjects 
 	mov r4, #0
 	mov r6, #0
 loc_8142B0E:
@@ -1799,7 +1799,7 @@ loc_8142B4C:
 	tst r0, r0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8142B54: .word byte_2011EE0
+off_8142B54: .word eOverworldMapObjects
 	thumb_func_end sub_8142B28
 
 	thumb_func_start sub_8142B58
@@ -2261,7 +2261,7 @@ loc_8142F14:
 	lsl r2, r2, #0x10
 	ldrh r3, [r7,#6]
 	lsl r3, r3, #0x10
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r4-r7}
 loc_8142F3E:
 	add r4, #1
@@ -2295,7 +2295,7 @@ loc_8142F56:
 	lsl r2, r2, #0x10
 	ldrh r3, [r7,#6]
 	lsl r3, r3, #0x10
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r4-r7}
 loc_8142F86:
 	add r4, #1
@@ -2313,7 +2313,7 @@ loc_8142F90:
 	mov r1, #0
 	mov r2, #0
 	mov r3, #0
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r4-r7}
 loc_8142FA6:
 	add r5, #0x14
@@ -2805,7 +2805,7 @@ loc_8143324:
 	mov r1, #0
 	mov r2, #0
 	mov r3, #0
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r4-r7}
 	b locret_814338E
 loc_8143386:
@@ -3192,7 +3192,7 @@ loc_81439CA:
 	mov r2, r1
 	mov r1, r0
 	mov r0, #0x2b 
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r4-r7}
 loc_81439FC:
 	add r4, #1

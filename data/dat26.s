@@ -766,7 +766,7 @@ sub_809332C:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	ldr r4, dword_8093354 // =0x7c1c0000 
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	mov r0, #0xa5
 	bl sound_play // () -> void
 	mov r0, #0

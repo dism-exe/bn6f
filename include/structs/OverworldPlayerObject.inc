@@ -1,5 +1,28 @@
 // not done
 
+	.macro overworld_player_object_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
+	object_header_struct \label, \struct_entry, \struct_begin
+	.space 0x10
+	\struct_entry \label\()_AnimationSelect, 1 // loc=0x14
+	\struct_entry \label\()_AnimationSelectUpdate, 1 // loc=0x15
+	\struct_entry \label\()_PaletteIndex, 1 // loc=0x16
+	\struct_entry \label\()_InteractionLocked, 1 // loc=0x17
+	.space 0x4
+	\struct_entry \label\()_Coords // loc=0x1c
+	\struct_entry \label\()_X, 4 // loc=0x1c
+	\struct_entry \label\()_Y, 4 // loc=0x20
+	\struct_entry \label\()_Z, 4 // loc=0x24
+	\struct_entry \label\()_NextX, 4 // loc=0x28
+	\struct_entry \label\()_NextY, 4 // loc=0x2c
+	\struct_entry \label\()_NextZ, 4 // loc=0x30
+	.space 0x5c
+	\struct_entry \label\()_SpriteData // loc=0x90
+	object_sprite_struct \label\()_SpriteData, \struct_entry // loc=0x90
+	\struct_entry \label\()_Size // loc=0xc8
+	.endm
+
+	def_struct_offsets overworld_player_object_struct, oOWPlayerObject
+
 /*
 	.macro overworld_player_object_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
 	

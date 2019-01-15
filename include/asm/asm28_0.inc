@@ -125,7 +125,7 @@
 // .global sub_8003AEA
 // .global SpawnOWPlayerObject
 // .global FreeOWPlayerObject
-// .global sub_80047E0
+// .global SpawnOverworldMapObject
 // .global engine_isScreeneffectAnimating // () -> zf
 
 	.include "asm/asm00_2.inc"

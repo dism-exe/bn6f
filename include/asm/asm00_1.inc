@@ -40,7 +40,7 @@
 	.global object_freeMemory
 	.global InitializeOWPlayerObjectStruct
 	.global InitializeOverworldNPCObjectStructs
-	.global sub_8003566
+	.global InitializeOverworldMapObjectStructs
 	.global SpawnObjectsFromList
 	.global sub_80035A2
 	.global sub_800362C
@@ -73,9 +73,9 @@
 	.global npc_800461E
 	.global sub_800467C
 	.global sub_8004702
-	.global sub_80047E0
+	.global SpawnOverworldMapObject
 	.global sub_8004822
-	.global sub_80048B2
+	.global FreeOverworldMapObject
 	.global sub_80048D2
 	.global sub_8004934
 	.global sub_8004D48
@@ -1188,8 +1188,8 @@
 // .equ byte_2011800, 0x2011800
 // .equ byte_2011BB0, 0x2011BB0
 // .equ unk_2011C50, 0x2011C50
-// .equ unk_2011E50, 0x2011E50
-// .equ byte_2011EE0, 0x2011EE0
+// .equ eActiveOverworldMapObjectsBitfield, 0x2011E50
+// .equ eOverworldMapObjects, 0x2011EE0
 // .equ byte_2011EE1, 0x2011EE1
 // .equ dword_2011EE4, 0x2011EE4
 // .equ dword_2011EE8, 0x2011EE8

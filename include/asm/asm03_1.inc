@@ -270,8 +270,8 @@
 // .global sub_8003A64
 // .global sub_8003A90
 // .global sub_8003B1C
-// .global sub_80047E0
-// .global sub_80048B2
+// .global SpawnOverworldMapObject
+// .global FreeOverworldMapObject
 // .global gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 // .global sub_8005C04
 // .global sub_8005F00

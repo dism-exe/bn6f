@@ -4625,7 +4625,7 @@ sub_800260C:
 	bl sub_8002668
 	bl InitializeOWPlayerObjectStruct
 	bl InitializeOverworldNPCObjectStructs
-	bl sub_8003566
+	bl InitializeOverworldMapObjectStructs
 	bl sprite_handleObjSprites_800289C
 	ldr r0, off_800264C // =unk_200F388 
 	mov r1, #7

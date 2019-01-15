@@ -19,7 +19,7 @@
 // .global GetRNG2 // () -> int
 
 	.include "asm/asm00_1.inc"
-// .global sub_80047E0
+// .global SpawnOverworldMapObject
 // .global sub_8005D88
 
 	.include "asm/asm03_0.inc"

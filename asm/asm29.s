@@ -135,7 +135,7 @@ loc_80A4A8A:
 	thumb_local_start
 sub_80A4A90:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A4A90
 
@@ -241,7 +241,7 @@ loc_80A4ADC:
 	add r3, r3, r7
 	ldr r4, dword_80A4B80 // =0x140000 
 	mov r0, #2
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	mov r5, r8
 	ldr r0, [r5,#0x28]
 	sub r0, #1
@@ -263,7 +263,7 @@ dword_80A4B80: .word 0x140000
 off_80A4B84: .word off_80A4B88
 off_80A4B88: .word eOverworldNPCObjects+0x24
 	.word 0xD8
-	.word dword_2009F5C
+	.word eOWPlayerObject_Coords
 	.word 0xC8
 	.word dword_2011EEC
 	.word 0x78
@@ -278,7 +278,7 @@ byte_80A4BA4: .byte 0xF4, 0xFF, 0xF4, 0xFF, 0x8, 0x0, 0xF0, 0xFF, 0x0, 0x0, 0x8
 	thumb_local_start
 sub_80A4BD4:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A4BD4
 
@@ -347,7 +347,7 @@ loc_80A4C56:
 	thumb_local_start
 sub_80A4C5C:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 byte_80A4C64: .byte 0xE7, 0x4, 0x40, 0x16, 0xC0, 0x16, 0x1C, 0xE, 0x0, 0x1, 0x0
 	.byte 0x0, 0x3, 0xFF, 0x7D, 0x1, 0xE8, 0x4, 0x40, 0x16, 0xC0, 0x16
@@ -665,7 +665,7 @@ off_80A534C: .word 0x14C
 	thumb_local_start
 sub_80A5350:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 byte_80A5358: .byte 0x1C, 0xC, 0x0, 0x0, 0x1C, 0xC, 0x0, 0x0, 0x1C, 0xC, 0x0, 0x0
 	.byte 0x1C, 0xC, 0x0, 0x0, 0x1C, 0xC, 0x0, 0x0, 0x1C, 0xC, 0x0, 0x0
@@ -751,7 +751,7 @@ sub_80A5494:
 	thumb_local_start
 sub_80A549C:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A549C
 
@@ -903,7 +903,7 @@ locret_80A55CA:
 	thumb_local_start
 sub_80A55CC:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A55CC
 
@@ -1258,7 +1258,7 @@ loc_80A587E:
 	thumb_local_start
 sub_80A5888:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A5888
 
@@ -1745,7 +1745,7 @@ loc_80A5C62:
 	thumb_local_start
 sub_80A5C6C:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A5C6C
 
@@ -2155,7 +2155,7 @@ sub_80A5F68:
 	ldr r1, [r5,#0xc]
 	ldr r2, [r5,#0x10]
 	ldr r3, [r5,#0x14]
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	mov r0, #0x76 
 	bl sound_play // () -> void
@@ -2655,7 +2655,7 @@ JumpTable_80A6ABC: .word sub_80A6B10+1
 	thumb_local_start
 sub_80A6B08:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A6B08
 
@@ -3250,7 +3250,7 @@ loc_80A6F66:
 	thumb_local_start
 sub_80A6F70:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A6F70
 
@@ -3760,7 +3760,7 @@ loc_80A738E:
 	thumb_local_start
 sub_80A7398:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A7398
 
@@ -4381,7 +4381,7 @@ loc_80A780C:
 	thumb_local_start
 sub_80A7812:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_80A7812
@@ -4462,7 +4462,7 @@ loc_80A78A6:
 	thumb_local_start
 sub_80A78AE:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_80A78AE
@@ -4573,7 +4573,7 @@ sub_80A796C:
 	bl sub_8002ED0
 	b loc_80A79A0
 loc_80A799C:
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_80A79A0:
 	ldr r0, [r5,#0x24]
 	add r0, #1
@@ -4590,7 +4590,7 @@ byte_80A79C4: .byte 0x4, 0x6, 0x8, 0xA, 0xC, 0xE, 0x10, 0x12, 0x14, 0x16, 0x18
 	thumb_local_start
 sub_80A79D4:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A79D4
 
@@ -4999,7 +4999,7 @@ sub_80A7CA4:
 	ldr r2, [r5,#0x10]
 	ldr r3, [r5,#0x14]
 	mov r4, #0x7a 
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r4-r7}
 	mov r0, #4
 	strb r0, [r5,#8]
@@ -5018,7 +5018,7 @@ sub_80A7CEA:
 	thumb_local_start
 sub_80A7CF6:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A7CF6
 
@@ -5146,7 +5146,7 @@ sub_80A7DB8:
 	thumb_local_start
 sub_80A7E0C:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A7E0C
 
@@ -5320,7 +5320,7 @@ sub_80A7F26:
 	add r0, r0, r1
 	mov r0, r0
 	bl SetEventFlag
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 dword_80A7F54: .word 0x1650
 	thumb_func_end sub_80A7F26
@@ -5573,7 +5573,7 @@ loc_80A8294:
 	thumb_local_start
 sub_80A829C:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A829C
 
@@ -5829,7 +5829,7 @@ sub_80A8484:
 	mov r1, #0xd9
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl reqBBS_clearFlag_8140A0C
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 locret_80A84BC:
 	pop {pc}
 	.byte 0, 0
@@ -6107,7 +6107,7 @@ sub_80A86A0:
 	thumb_local_start
 sub_80A86AC:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A86AC
 
@@ -6249,7 +6249,7 @@ loc_80A87E2:
 	thumb_local_start
 sub_80A87E8:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A87E8
 
@@ -6314,7 +6314,7 @@ sub_80A8860:
 	mov r0, #5
 	mov r1, #0xe0
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A8860
 
@@ -6421,7 +6421,7 @@ sub_80A8918:
 	bl sub_8002ED0
 	b loc_80A894C
 loc_80A8948:
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_80A894C:
 	ldr r0, [r5,#0x24]
 	add r0, #1
@@ -6438,7 +6438,7 @@ byte_80A8970: .byte 0x4, 0x6, 0x8, 0xA, 0xC, 0xE, 0x10, 0x12, 0x14, 0x16, 0x18
 	thumb_local_start
 sub_80A8980:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A8980
 
@@ -6538,7 +6538,7 @@ sub_80A8A50:
 	ldrsh r0, [r5,r1]
 	cmp r0, #0
 	bgt loc_80A8A62
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_80A8A62:
 	mov r0, r5
 	add r0, #0xc
@@ -6551,7 +6551,7 @@ loc_80A8A62:
 	thumb_local_start
 sub_80A8A74:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A8A74
 
@@ -6642,7 +6642,7 @@ sub_80A8AF4:
 	thumb_local_start
 sub_80A8B24:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A8B24
 
@@ -6787,7 +6787,7 @@ sub_80A8C08:
 	bne loc_80A8C68
 	mov r0, #0
 	strb r0, [r7]
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_80A8C68:
 	bl sub_80A8C98
 loc_80A8C6C:
@@ -7211,7 +7211,7 @@ sub_80A8FE4:
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A8FF4
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_80A8FF4:
 	bl sprite_update
 	pop {pc}
@@ -7221,7 +7221,7 @@ loc_80A8FF4:
 	thumb_local_start
 sub_80A8FFC:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A8FFC
 
@@ -7762,7 +7762,7 @@ byte_80A93C0: .byte 0x4, 0x6, 0x8, 0xA, 0xC, 0xE, 0x10, 0x12, 0x14, 0x16, 0x18
 	thumb_local_start
 sub_80A93D0:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A93D0
 
@@ -7959,7 +7959,7 @@ byte_80A9558: .byte 0x4, 0x6, 0x8, 0xA, 0xC, 0xE, 0x10, 0x12, 0x14, 0x16, 0x18
 	thumb_local_start
 sub_80A9568:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A9568
 
@@ -8159,7 +8159,7 @@ sub_80A96F0:
 	thumb_local_start
 sub_80A96FC:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	mov r0, #0xb
 	mov r1, #0xe8
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -8387,7 +8387,7 @@ loc_80A9868:
 	lsl r2, r2, #0x10
 	lsl r3, r3, #0x10
 	ldr r4, dword_80A98C8 // =0x140000 
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	mov r5, r8
 	ldr r0, [r5,#0x28]
 	sub r0, #1
@@ -8410,7 +8410,7 @@ dword_80A98C8: .word 0x140000
 	thumb_local_start
 sub_80A98CC:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A98CC
 
@@ -8500,7 +8500,7 @@ loc_80A9918:
 	add r3, r3, r7
 	ldr r4, dword_80A9994 // =0x2140001 
 	mov r0, #0x20 
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	mov r5, r8
 	ldr r0, [r5,#0x28]
 	sub r0, #1
@@ -8534,7 +8534,7 @@ byte_80A99D4: .byte 0xFF, 0xFF, 0xFF, 0xFF, 0x4, 0x0, 0xFE, 0xFF, 0x0, 0x0, 0x4
 	thumb_local_start
 sub_80A9A04:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A9A04
 
@@ -8608,7 +8608,7 @@ loc_80A9A90:
 	thumb_local_start
 sub_80A9A96:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	.byte 0, 0
 byte_80A9AA0: .byte 0x2A, 0x1, 0xBF, 0x16, 0x8E, 0x1, 0x1C, 0x9E, 0x5, 0x5, 0x0
@@ -8775,7 +8775,7 @@ loc_80A9CA0:
 	thumb_local_start
 sub_80A9CA6:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A9CA6
 
@@ -8910,7 +8910,7 @@ off_80A9DA4: .word sub_80A9DC0+1
 	thumb_local_start
 sub_80A9DB8:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A9DB8
 
@@ -9128,7 +9128,7 @@ loc_80A9F44:
 	thumb_local_start
 sub_80A9F4E:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_80A9F4E
@@ -9220,7 +9220,7 @@ loc_80A9FF6:
 	thumb_local_start
 sub_80A9FFC:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A9FFC
 
@@ -9339,7 +9339,7 @@ loc_80AA0F6:
 	thumb_local_start
 sub_80AA0FC:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80AA0FC
 
@@ -9439,7 +9439,7 @@ sub_80AA1C8:
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80AA1D8
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_80AA1D8:
 	bl sprite_update
 	pop {r4-r7,pc}
@@ -9641,7 +9641,7 @@ off_80AA368: .word byte_8088708
 	thumb_local_start
 sub_80AA36C:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80AA36C
 
@@ -9764,7 +9764,7 @@ byte_80AA430: .byte 0x18, 0x37, 0x1C, 0x17, 0x14, 0xFF, 0xFF, 0xFF, 0x1C
 	thumb_local_start
 sub_80AA4B8:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80AA4B8
 

@@ -96,8 +96,8 @@
 // .global sub_8002FA6
 // .global sub_8003694
 // .global sub_80037AC
-// .global sub_80047E0
-// .global sub_80048B2
+// .global SpawnOverworldMapObject
+// .global FreeOverworldMapObject
 // .global sub_80062C8
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global byte_80065E0

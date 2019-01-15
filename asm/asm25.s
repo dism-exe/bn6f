@@ -447,7 +447,7 @@ sub_808FBA0:
 	mov r4, r0
 	push {r5}
 	mov r0, #0x1b
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	pop {pc}
 	.balign 4, 0x00
@@ -794,7 +794,7 @@ loc_808FEE2:
 	mov r3, #0x40 
 	lsl r3, r3, #0x10
 	mov r4, r6
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	add r6, #1
 	cmp r6, r7
@@ -881,7 +881,7 @@ loc_808FF74:
 	mov r1, #0
 	mov r2, #0
 	mov r3, #0
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	add r4, #1
 	cmp r4, #7
@@ -914,7 +914,7 @@ sub_808FF9C:
 	lsl r3, r3, #0x10
 	push {r5}
 	mov r0, #0x1b
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	strb r6, [r5,#5]
 	pop {r5}
 	mov r0, #0
@@ -1081,7 +1081,7 @@ sub_80900C8:
 	ldrh r4, [r5,#6]
 	push {r5}
 	mov r0, #0x1d
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	add r4, #1
 	strh r4, [r5,#6]

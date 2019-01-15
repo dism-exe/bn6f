@@ -2281,7 +2281,7 @@ sub_809AF00:
 	ldr r2, [r7,#0x34]
 	mov r3, #0
 	ldr r4, [r7,#0x38]
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r4-r7}
 	ldr r0, [r7,#0x20]
 	tst r0, r0
@@ -2460,7 +2460,7 @@ loc_809B0C4:
 	lsl r2, r2, #0x10
 	lsl r3, r3, #0x10
 	ldr r4, dword_809B0D4 // =0x48020000
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	mov r0, #0
 	pop {r4-r7,pc}
 dword_809B0D4: .word 0x48020000
@@ -2508,7 +2508,7 @@ loc_809B100:
 	ldr r1, [r3,#0x1c]
 	ldr r2, [r3,#0x20]
 	ldr r3, [r3,#0x24]
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 loc_809B128:
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -2755,7 +2755,7 @@ sub_809B800:
 	ldrh r4, [r7,#0x16]
 	lsr r4, r4, #1
 	str r4, [r6,#0xc]
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	mov r0, r5
 	pop {r5}
 	str r0, [r6,#0x10]
@@ -3154,7 +3154,7 @@ loc_809BDE6:
 	ldrh r4, [r7,#6]
 	lsr r4, r4, #1
 	str r4, [r6,#0xc]
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	mov r0, r5
 	pop {r5}
 	str r0, [r6,#0x10]

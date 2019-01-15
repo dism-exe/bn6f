@@ -26,7 +26,7 @@ loc_8086F36:
 	mov r2, #0
 	mov r3, #0
 	mov r4, r6
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	add r6, #1
 	cmp r6, r7
@@ -64,7 +64,7 @@ loc_8086F7A:
 	mov r2, #0
 	mov r3, #0
 	mov r4, r6
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	add r6, #1
 	cmp r6, r7

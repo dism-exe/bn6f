@@ -1327,7 +1327,7 @@ loc_8089D12:
 	ldr r5, [r7]
 	tst r5, r5
 	beq loc_8089D1C
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_8089D1C:
 	add r7, #4
 	add r4, #1

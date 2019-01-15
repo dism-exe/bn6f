@@ -17,7 +17,7 @@
 // .global calcAngle_800117C
 
 	.include "asm/asm00_1.inc"
-// .global sub_80047E0
+// .global SpawnOverworldMapObject
 
 	.include "asm/asm03_0.inc"
 // .global SetEventFlag

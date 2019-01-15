@@ -13,7 +13,7 @@
 // .global sub_800060A
 
 	.include "asm/asm00_1.inc"
-// .global sub_80047E0
+// .global SpawnOverworldMapObject
 
 	.include "asm/asm03_0.inc"
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void

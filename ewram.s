@@ -717,33 +717,7 @@ eActiveOWPlayerObjectBitfield:: // 0x2009f34
 dword_2009F38:: // 0x2009f38
 	.space 8
 eOWPlayerObject:: // 0x2009f40
-	.space 1
-byte_2009F41:: // 0x2009f41
-	.space 3
-dword_2009F44:: // 0x2009f44
-	.space 4
-dword_2009F48:: // 0x2009f48
-	.space 5
-byte_2009F4D:: // 0x2009f4d
-	.space 1
-byte_2009F4E:: // 0x2009f4e
-	.space 1
-byte_2009F4F:: // 0x2009f4f
-	.space 13
-dword_2009F5C:: // 0x2009f5c
-	.space 4
-pCoords:: // 0x2009f60
-	.space 4
-dword_2009F64:: // 0x2009f64
-	.space 78
-word_2009FB2:: // 0x2009fb2
-	.space 2
-word_2009FB4:: // 0x2009fb4
-	.space 2
-word_2009FB6:: // 0x2009fb6
-	.space 13
-byte_2009FC3:: // 0x2009fc3
-	.space 69
+	overworld_player_object_struct eOWPlayerObject
 eOWPlayerObjectEnd:: // 0x200a008
 	.space 1
 byte_200A009:: // 0x200a009
@@ -1748,8 +1722,11 @@ byte_2011E42:: // 0x2011e42
 	.space 4
 byte_2011E46:: // 0x2011e46
 	.space 10
-unk_2011E50:: // 0x2011e50
-	.space 16
+eActiveOverworldMapObjectsBitfield:: // 0x2011e50
+	.space 8
+
+	.space 8
+
 // some sort of state for some map script (bytecode)
 eUnkMapScriptState_2011e60:: // 0x2011e60
 	unk_map_script_state_2011e60_struct eUnkMapScriptState_2011e60
@@ -1759,7 +1736,7 @@ unk_2011EA0:: // 0x2011ea0
 	.space 4
 unk_2011EA4:: // 0x2011ea4
 	.space 60
-byte_2011EE0:: // 0x2011ee0
+eOverworldMapObjects:: // 0x2011ee0
 	.space 1
 byte_2011EE1:: // 0x2011ee1
 	.space 3

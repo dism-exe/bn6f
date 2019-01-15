@@ -20,7 +20,7 @@
 
 	.include "asm/asm00_1.inc"
 // .global sub_8004822
-// .global sub_80048B2
+// .global FreeOverworldMapObject
 // .global sub_8005D88
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf

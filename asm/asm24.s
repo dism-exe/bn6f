@@ -167,7 +167,7 @@ loc_808C3C0:
 	pop {r1-r7}
 	add r4, r4, r0
 	mov r0, #0x17
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r4-r7}
 loc_808C3DE:
 	ldr r0, [r7]
@@ -554,7 +554,7 @@ loc_808CBBC:
 	mov r2, #0
 	mov r3, #0
 	mov r4, r6
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	add r6, #1
 	cmp r6, r7
@@ -571,7 +571,7 @@ sub_808CBD8:
 	mov r1, #0
 	mov r2, #0
 	mov r3, #0
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	bl reqBBS_setFlag_e17b0f7_8140A00
 	mov r0, #3

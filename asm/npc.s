@@ -2134,7 +2134,7 @@ sub_809F4B8:
 	ldr r2, [r5,#0x28]
 	ldr r3, [r5,#0x2c]
 	mov r4, #1
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	mov r0, #0x76 
 	bl sound_play // () -> void

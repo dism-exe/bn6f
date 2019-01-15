@@ -39,7 +39,7 @@
 // .global sub_8002FA6
 // .global sub_8003006
 // .global FreeOverworldNPCObject
-// .global sub_80047E0
+// .global SpawnOverworldMapObject
 // .global sub_80062C8
 
 	.include "asm/asm03_0.inc"

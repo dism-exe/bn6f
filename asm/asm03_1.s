@@ -7339,7 +7339,7 @@ sub_8037E4C:
 	lsl r2, r2, #0x10
 	lsl r3, r3, #0x10
 	mov r6, r5
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	str r5, [r6]
 	pop {r5}
 	add r7, #0xd
@@ -7386,7 +7386,7 @@ sub_8037E96:
 	mov r6, #9
 	bl ReadMapScriptWord
 	mov r6, r5
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	str r5, [r6]
 	pop {r5}
 	add r7, #0xd
@@ -7441,7 +7441,7 @@ sub_8037EFA:
 	mov r6, #0xa
 	bl ReadMapScriptWord
 	mov r6, r5
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	str r5, [r6]
 	pop {r5}
 	add r7, #0xe
@@ -7462,7 +7462,7 @@ sub_8037F6E:
 	beq loc_8037F88
 	mov r0, #0
 	str r0, [r5,r4]
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_8037F88:
 	pop {r5}
 	add r7, #2
@@ -7482,7 +7482,7 @@ loc_8037F94:
 	str r1, [r5,r4]
 	push {r5}
 	mov r5, r0
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r5}
 loc_8037FA8:
 	add r4, #4
