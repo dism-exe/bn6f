@@ -105,7 +105,7 @@
 	.global sub_814E7E0
 	.global sub_814E87C
 	.global sub_814E8A0
-	.global sub_814E918
+	.global m4aSoundMain
 	.global m4a_SongNumStart
 	.global sub_814E9F0
 	.global sub_814EA58
@@ -113,7 +113,7 @@
 	.global sub_814EB1C
 	.global sub_814EDC0
 	.global sub_814EE2C
-	.global sub_814F00C
+	.global m4a_2_814F00C
 	.global sub_814F228
 	.global sub_814F2F0
 	.global sub_814F988

@@ -127,18 +127,18 @@ off_3005D74: .word sub_80068E0+1
 sub_3005D78:
 	push {lr}
 	push {lr}
-	ldr r0, off_3005D94 // =sub_80005C4+1
+	ldr r0, off_3005D94 // =call_m4a_2_814F00C+1
 	mov lr, pc
 	bx r0
 	pop {r0}
 	mov lr, r0
-	ldr r0, off_3005D90 // =sub_80005AC+1
+	ldr r0, off_3005D90 // =call_m4aSoundMain+1
 	mov lr, pc
 	bx r0
 	pop {r0}
 	bx r0
-off_3005D90: .word sub_80005AC+1
-off_3005D94: .word sub_80005C4+1
+off_3005D90: .word call_m4aSoundMain+1
+off_3005D94: .word call_m4a_2_814F00C+1
 	thumb_func_end sub_3005D78
 
 	thumb_local_start

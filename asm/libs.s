@@ -20782,14 +20782,14 @@ off_814E910: .word off_8158278
 off_814E914: .word byte_2010B90
 	thumb_func_end sub_814E8A0
 
-	thumb_func_start sub_814E918
-sub_814E918:
+	thumb_func_start m4aSoundMain
+m4aSoundMain:
 	push {lr}
 	bl sub_814DC04
 	pop {r0}
 	bx r0
 	.balign 4, 0x00
-	thumb_func_end sub_814E918
+	thumb_func_end m4aSoundMain
 
 	thumb_func_start m4a_SongNumStart
 m4a_SongNumStart:
@@ -21189,7 +21189,7 @@ sub_814EB84:
 	ldr r0, off_814EC84 // =sub_814F2F0+1 
 	str r0, [r1]
 	str r5, [r4,#0x1c]
-	ldr r0, off_814EC88 // =sub_814F508+1 
+	ldr r0, off_814EC88 // =CgbSound+1 
 	str r0, [r4,#0x28]
 	ldr r0, off_814EC8C // =sub_814F44C+1 
 	str r0, [r4,#0x2c]
@@ -21246,7 +21246,7 @@ off_814EC78: .word sub_814EDC0+1
 off_814EC7C: .word sub_814E4DC+1
 off_814EC80: .word sub_814F228+1
 off_814EC84: .word sub_814F2F0+1
-off_814EC88: .word sub_814F508+1
+off_814EC88: .word CgbSound+1
 off_814EC8C: .word sub_814F44C+1
 off_814EC90: .word sub_814F3A4+1
 dword_814EC94: .word 0x0
@@ -21687,8 +21687,8 @@ dword_814F004: .word 0x44940
 off_814F008: .word Timer0Control
 	thumb_func_end sub_814EF94
 
-	thumb_func_start sub_814F00C
-sub_814F00C:
+	thumb_func_start m4a_2_814F00C
+m4a_2_814F00C:
 	push {lr}
 	ldr r0, off_814F070 // =byte_3007FF0 
 	ldr r2, [r0]
@@ -21698,7 +21698,7 @@ sub_814F00C:
 	cmp r0, #1
 	bhi loc_814F06A
 	ldrb r0, [r2,#4]
-	.hword 0x3801
+	sub r0, #1
 	ldrb r1, [r2,#4]
 	strb r0, [r2,#4]
 	ldrb r0, [r2,#4]
@@ -21749,7 +21749,7 @@ dword_814F07C: .word 0x84400004
 off_814F080: .word DMA2WordCount
 off_814F084: .word DMA1Control
 off_814F088: .word DMA2Control
-	thumb_func_end sub_814F00C
+	thumb_func_end m4a_2_814F00C
 
 	thumb_local_start
 sub_814F08C:
@@ -22392,7 +22392,7 @@ loc_814F4EC:
 	thumb_func_end sub_814F4A0
 
 	thumb_local_start
-sub_814F508:
+CgbSound:
 	push {r4-r7,lr}
 	mov r7, r10
 	mov r6, r9
@@ -22998,7 +22998,7 @@ loc_814F978:
 	pop {r4-r7}
 	pop {r0}
 	bx r0
-	thumb_func_end sub_814F508
+	thumb_func_end CgbSound
 
 	thumb_func_start sub_814F988
 sub_814F988:

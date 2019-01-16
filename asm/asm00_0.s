@@ -1,21 +1,23 @@
 	.include "asm/asm00_0.inc"
 
-	thumb_func_start sub_80005AC
-sub_80005AC:
+	thumb_func_start call_m4aSoundMain
+call_m4aSoundMain:
 	push {lr}
-	bl sub_814E918
+	bl m4aSoundMain
 	pop {pc}
 	.word unk_2006840
 	.word dword_80005BC
-dword_80005BC: .word 0x4425121C, 0x0
-	thumb_func_end sub_80005AC
+dword_80005BC: .hword 0x121c
+	.asciz "%D"
+	.balign 4, 0
+	thumb_func_end call_m4aSoundMain
 
-	thumb_func_start sub_80005C4
-sub_80005C4:
+	thumb_func_start call_m4a_2_814F00C
+call_m4a_2_814F00C:
 	push {lr}
-	bl sub_814F00C
+	bl m4a_2_814F00C
 	pop {pc}
-	thumb_func_end sub_80005C4
+	thumb_func_end call_m4a_2_814F00C
 
 // () -> void
 	thumb_func_start sound_play
@@ -273,7 +275,7 @@ sub_80007A0:
 sub_80007B2:
 	push {lr}
 	// memBlock
-	ldr r0, memBlock // =dword_200A490 
+	ldr r0, dword_200A490_p
 	// size
 	ldr r1, numWords // =0x20c 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -283,7 +285,7 @@ sub_80007B2:
 	thumb_func_start sub_80007BE
 sub_80007BE:
 	push {r4-r7,lr}
-	ldr r5, memBlock // =dword_200A490 
+	ldr r5, dword_200A490_p
 	ldr r7, [r5]
 	cmp r7, #0
 	beq loc_80007F0
@@ -328,7 +330,7 @@ off_8000804: .word loc_80007E8+1
 	thumb_local_start
 sound_8000808:
 	push {r4-r7,lr}
-	ldr r5, memBlock // =dword_200A490 
+	ldr r5, dword_200A490_p
 	ldr r7, [r5]
 	cmp r7, #0x20 
 	blt loc_8000814
@@ -380,7 +382,7 @@ loc_8000854:
 	str r0, [r5,#8]
 locret_800085A:
 	pop {r4-r7,pc}
-memBlock: .word dword_200A490
+dword_200A490_p: .word dword_200A490
 	.word unk_200F390
 off_8000864: .word byte_2010B90
 off_8000868: .word sub_8000822+1

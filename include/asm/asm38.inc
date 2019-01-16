@@ -53,8 +53,8 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sub_80005AC
-// .global sub_80005C4
+// .global call_m4aSoundMain
+// .global call_m4a_2_814F00C
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global WordFill

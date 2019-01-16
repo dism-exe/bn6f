@@ -2,8 +2,8 @@
 	.equ INC_ASM_ASM00_0, 0
 
 /* Public Symbols */
-	.global sub_80005AC
-	.global sub_80005C4
+	.global call_m4aSoundMain
+	.global call_m4a_2_814F00C
 	.global sound_play // () -> void
 	.global sound_bgmusic_play // (int a1) -> void
 	.global sub_80005F2
@@ -198,13 +198,13 @@
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 // .global SWI_Sqrt
 // .global sub_814E87C
-// .global sub_814E918
+// .global m4aSoundMain
 // .global m4a_SongNumStart
 // .global sub_814E9F0
 // .global sub_814EA58
 // .global sub_814EAF0
 // .global sub_814EB1C
-// .global sub_814F00C
+// .global m4a_2_814F00C
 // .global sub_814F988
 // .global sub_814F9AC
 // .global sub_814FA14
