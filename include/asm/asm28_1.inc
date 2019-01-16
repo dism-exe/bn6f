@@ -7,8 +7,8 @@
 	.global sub_809F5FC
 	.global sub_809F612
 	.global sub_809F638
-	.global getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
-	.global sub_809F656 // (void* a1) -> int
+	.global ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
+	.global ReadNPCScriptWord // (void* a1) -> int
 	.global sub_809F68C
 	.global off_809F6AC
 	.global dword_809F6B0

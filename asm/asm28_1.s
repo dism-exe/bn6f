@@ -162,18 +162,18 @@ dword_809F648: .word 0x50000
 	thumb_func_end sub_809F638
 
 // (u8 bitfield_arr[2]) -> u16
-	thumb_func_start getBitfieldFromArr_809F64C
-getBitfieldFromArr_809F64C:
+	thumb_func_start ReadNPCScriptHalfword
+ReadNPCScriptHalfword:
 	ldrb r1, [r0]
 	ldrb r0, [r0,#1]
 	lsl r0, r0, #8
 	orr r0, r1
 	mov pc, lr
-	thumb_func_end getBitfieldFromArr_809F64C
+	thumb_func_end ReadNPCScriptHalfword
 
 // (void* a1) -> int
-	thumb_func_start sub_809F656
-sub_809F656:
+	thumb_func_start ReadNPCScriptWord
+ReadNPCScriptWord:
 	ldrb r1, [r0]
 	ldrb r2, [r0,#1]
 	lsl r2, r2, #8
@@ -185,7 +185,7 @@ sub_809F656:
 	orr r0, r2
 	orr r0, r3
 	mov pc, lr
-	thumb_func_end sub_809F656
+	thumb_func_end ReadNPCScriptWord
 
 	thumb_local_start
 sub_809F66C:
