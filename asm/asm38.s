@@ -1832,7 +1832,7 @@ loc_3006A26:
 loc_3006A40:
 	mov r0, r5
 	mov r1, #3
-	ldr r5, off_3006B14 // =sub_814DA9C+1
+	ldr r5, off_3006B14 // =__divsi3+1
 	mov lr, pc
 	bx r5
 	mov r5, r0
@@ -1933,7 +1933,7 @@ loc_3006ADC:
 loc_3006AF6:
 	mov r0, r5
 	mov r1, #3
-	ldr r5, off_3006B14 // =sub_814DA9C+1
+	ldr r5, off_3006B14 // =__divsi3+1
 	mov lr, pc
 	bx r5
 	mov r5, r0
@@ -1946,7 +1946,7 @@ loc_3006AF6:
 	mov r10, r6
 	mov r12, r7
 	pop {r4-r7,pc}
-off_3006B14: .word sub_814DA9C+1
+off_3006B14: .word __divsi3+1
 off_3006B18: .word sub_3006C38+1
 	.word sub_3006C3C+1
 	.word sub_3006F42+1

@@ -106,7 +106,7 @@
 	.include "asm/libs.inc"
 // .global sub_814469C
 // .global sub_81446AC
-// .global sub_814DA9C
+// .global __divsi3
 
 	.include "data/dat38_60.inc"
 // .global byte_86ACD60

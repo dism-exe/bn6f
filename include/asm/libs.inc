@@ -77,14 +77,14 @@
 	.global sub_814D954
 	.global sub_814D994
 	.global sub_814D9C4
-	.global sub_814DA9C
-	.global byte_814E02D
-	.global sub_814E044
-	.global sub_814E064
-	.global sub_814E0DC
+	.global __divsi3
+	.global SoundMainBTM
+	.global RealClearChain
+	.global ply_fine
+	.global ply_goto
 	.global loc_814E0DE
-	.global sub_814E0FC
-	.global sub_814E118
+	.global ply_patt
+	.global ply_pend
 	.global sub_814E12C
 	.global sub_814E15C
 	.global sub_814E168

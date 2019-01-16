@@ -2766,7 +2766,7 @@ loc_8145612:
 	strb r0, [r4,#0x4] // (byte_200FE04 - 0x200fe00)
 	mov r0, r3
 	mov r1, #0x8c
-	bl sub_814DB34
+	bl __umodsi3
 	strh r0, [r4,#0x1a] // (word_200FE1A - 0x200fe00)
 	mov r1, #0x8c
 	sub r1, r1, r0
@@ -18798,8 +18798,9 @@ sub_814DA6C:
 	nop 
 	bx lr
 	nop 
-	thumb_func_start sub_814DA9C
-sub_814DA9C:
+
+	thumb_func_start __divsi3, 2
+__divsi3:
 	cmp r1, #0
 	beq loc_814DB24
 	push {r4}
@@ -18887,7 +18888,7 @@ loc_814DB26:
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
-	thumb_func_end sub_814DA9C
+	thumb_func_end __divsi3
 
 	thumb_local_start
 nullsub_1:
@@ -18896,7 +18897,7 @@ nullsub_1:
 	thumb_func_end nullsub_1
 
 	thumb_local_start
-sub_814DB34:
+__umodsi3:
 	cmp r1, #0
 	beq loc_814DBEA
 	mov r3, #1
@@ -19007,14 +19008,21 @@ loc_814DBEA:
 	bl nullsub_1
 	mov r0, #0
 	pop {pc}
-byte_814DBF4:
-	// // TODO: sub_814D8F8 isn't its own function, it's part of sub_814DBF4
-	.byte 0x0, 0xA2, 0x10, 0x47, 0x90, 0x21, 0x83, 0xE0, 0x0, 0x0
-	.byte 0x83, 0xE2, 0x1E, 0xFF, 0x2F, 0xE1
-	thumb_func_end sub_814DB34
+	thumb_func_end __umodsi3
 
-	thumb_local_start
-sub_814DC04:
+	thumb_func_start umul3232H32, 2
+umul3232H32:
+	adr r2, .umul3232H32arm
+	bx r2
+	.arm
+.umul3232H32arm
+	umull r2, r3, r0, r1
+	add r0, r3, #0
+	bx lr
+	thumb_func_end umul3232H32
+
+	thumb_local_start 2
+SoundMain:
 	ldr r0, off_814DC70 // =byte_3007FF0 
 	ldr r0, [r0]
 	ldr r2, dword_814DC74 // =0x68736d53 
@@ -19073,26 +19081,23 @@ loc_814DC66:
 	ldr r6, m4a_814DC84 // =0x630 
 	ldr r3, off_814DC78 // =byte_3005700+1 
 	bx r3
-	.hword 0x0
+	.balign 4, 0
 off_814DC70: .word byte_3007FF0
 dword_814DC74: .word 0x68736D53
 off_814DC78: .word byte_3005700+1
 off_814DC7C: .word VerticalCounter_LY_
 off_814DC80: .word 0x350
-	thumb_func_end sub_814DC04
+m4a_814DC84: .word 1584
+	thumb_func_end SoundMain
 
-	thumb_local_start
-m4a_814DC84:
-	lsl r0, r6, #0x18
-	lsl r0, r0, #0
-loc_814DC88:
+	thumb_local_start 2
+SoundMainRAM:
 	ldrb r3, [r0,#5]
 	cmp r3, #0
 	beq sub_814DCE8
 	adr r1, sub_814DC94
 	bx r1
-	.balign 4, 0x00
-	thumb_func_end m4a_814DC84
+	thumb_func_end SoundMainRAM
 
 	arm_func_start sub_814DC94
 sub_814DC94:
@@ -19461,14 +19466,25 @@ loc_814E012:
 	pop {r3}
 locret_814E026:
 	bx r3
-byte_814E028: .byte 0x53, 0x6D, 0x73, 0x68, 0xA4
-byte_814E02D: .byte 0x46, 0x0, 0x21, 0x0, 0x22, 0x0, 0x23, 0x0, 0x24, 0x1E, 0xC0
-	.byte 0x1E, 0xC0, 0x1E, 0xC0, 0x1E, 0xC0, 0x64, 0x46, 0x70, 0x47, 0x0
-	.byte 0x0
-	thumb_func_end sub_814E008
+byte_814E028: .word 0x68736D53
 
-	thumb_func_start sub_814E044
-sub_814E044:
+	thumb_func_start SoundMainBTM, 2
+SoundMainBTM:
+	mov r12, r4
+	movs r1, #0
+	movs r2, #0
+	movs r3, #0
+	movs r4, #0
+	stm r0!, {r1-r4}
+	stm r0!, {r1-r4}
+	stm r0!, {r1-r4}
+	stm r0!, {r1-r4}
+	mov r4, r12
+	bx lr
+	thumb_func_end SoundMainBTM
+
+	thumb_func_start RealClearChain, 2
+RealClearChain:
 	ldr r3, [r0,#0x2c]
 	cmp r3, #0
 	beq locret_814E062
@@ -19489,10 +19505,10 @@ loc_814E05E:
 	str r1, [r0,#0x2c]
 locret_814E062:
 	bx lr
-	thumb_func_end sub_814E044
+	thumb_func_end RealClearChain
 
-	thumb_func_start sub_814E064
-sub_814E064:
+	thumb_func_start ply_fine
+ply_fine:
 	push {r4,r5,lr}
 	mov r5, r1
 	ldr r4, [r5,#0x20]
@@ -19508,7 +19524,7 @@ loc_814E06E:
 	strb r1, [r4]
 loc_814E07C:
 	mov r0, r4
-	bl sub_814E044
+	bl RealClearChain
 	ldr r1, [r4,#0x34]
 	cmp r1, r4
 	bne loc_814E08C
@@ -19524,7 +19540,7 @@ loc_814E092:
 	pop {r4,r5}
 	pop {r0}
 	bx r0
-	thumb_func_end sub_814E064
+	thumb_func_end ply_fine
 
 	thumb_local_start
 sub_814E09C:
@@ -19576,8 +19592,8 @@ loc_814E0D2:
 	.balign 4, 0x00
 	thumb_func_end sub_814E0D0
 
-	thumb_func_start sub_814E0DC
-sub_814E0DC:
+	thumb_func_start ply_goto
+ply_goto:
 	push {lr}
 loc_814E0DE:
 	ldr r2, [r1,#0x40]
@@ -19594,10 +19610,10 @@ loc_814E0DE:
 	str r0, [r1,#0x40]
 	pop {r0}
 	bx r0
-	thumb_func_end sub_814E0DC
+	thumb_func_end ply_goto
 
-	thumb_func_start sub_814E0FC
-sub_814E0FC:
+	thumb_func_start ply_patt
+ply_patt:
 	ldrb r2, [r1,#2]
 	cmp r2, #3
 	bcs loc_814E114
@@ -19609,14 +19625,14 @@ sub_814E0FC:
 	ldrb r2, [r1,#2]
 	add r2, #1
 	strb r2, [r1,#2]
-	b sub_814E0DC
+	b ply_goto
 loc_814E114:
-	b sub_814E064
+	b ply_fine
 	.balign 4, 0x00
-	thumb_func_end sub_814E0FC
+	thumb_func_end ply_patt
 
-	thumb_func_start sub_814E118
-sub_814E118:
+	thumb_func_start ply_pend
+ply_pend:
 	ldrb r2, [r1,#2]
 	cmp r2, #0
 	beq locret_814E12A
@@ -19628,7 +19644,7 @@ sub_814E118:
 	str r2, [r1,#0x40]
 locret_814E12A:
 	bx lr
-	thumb_func_end sub_814E118
+	thumb_func_end ply_pend
 
 	thumb_func_start sub_814E12C
 sub_814E12C:
@@ -20675,11 +20691,11 @@ loc_814E808:
 	ldr r4, [r1,#4]
 	sub r0, r0, r5
 	mov r1, r7
-	bl byte_814DBF4
+	bl umul3232H32
 	mov r1, r0
 	add r1, r5, r1
 	mov r0, r4
-	bl byte_814DBF4
+	bl umul3232H32
 	pop {r4-r7}
 	pop {r1}
 	bx r1
@@ -20733,7 +20749,7 @@ dword_814E89C: .word 0x68736D53
 	thumb_func_start sub_814E8A0
 sub_814E8A0:
 	push {r4-r6,lr}
-	ldr r0, off_814E8F4 // =loc_814DC88+1 
+	ldr r0, off_814E8F4 // =SoundMainRAM+1 
 	mov r1, #2
 	neg r1, r1
 	and r0, r1
@@ -20771,7 +20787,7 @@ loc_814E8EE:
 	pop {r4-r6}
 	pop {r0}
 	bx r0
-off_814E8F4: .word loc_814DC88+1
+off_814E8F4: .word SoundMainRAM+1
 off_814E8F8: .word byte_3005700
 off_814E8FC: .word Timer0Counter_Reload
 off_814E900: .word byte_30045C0
@@ -20785,7 +20801,7 @@ off_814E914: .word byte_2010B90
 	thumb_func_start m4aSoundMain
 m4aSoundMain:
 	push {lr}
-	bl sub_814DC04
+	bl SoundMain
 	pop {r0}
 	bx r0
 	.balign 4, 0x00
@@ -21409,19 +21425,19 @@ sub_814EDC0:
 	mov r0, #0xc6
 	lsl r0, r0, #3
 	mov r1, r4
-	bl sub_814DA9C
+	bl __divsi3
 	strb r0, [r5,#0xb]
 	ldr r0, dword_814EE20 // =0x91d1b 
 	mul r0, r4
 	ldr r1, dword_814EE24 // =0x1388 
 	add r0, r0, r1
 	ldr r1, dword_814EE28 // =0x2710 
-	bl sub_814DA9C
+	bl __divsi3
 	mov r1, r0
 	str r1, [r5,#0x14]
 	mov r0, #0x80
 	lsl r0, r0, #0x11
-	bl sub_814DA9C
+	bl __divsi3
 	add r0, #1
 	asr r0, r0, #1
 	str r0, [r5,#0x18]
@@ -21667,7 +21683,7 @@ loc_814EFD0:
 	bne loc_814EFD0
 	ldr r4, off_814F000 // =Timer0Counter_Reload 
 	ldr r0, dword_814F004 // =0x44940 
-	bl sub_814DA9C
+	bl __divsi3
 	neg r0, r0
 	strh r0, [r4]
 	ldr r1, off_814F008 // =Timer0Control 

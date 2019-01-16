@@ -9,15 +9,15 @@
 	.size \name, .-\name
 	.endm
 
-	.macro thumb_func_start name:req
-	.align 1, 0
+	.macro thumb_func_start name:req, align_amount=1
+	.align \align_amount, 0
 	.global \name
 	.thumb_func
 	.type \name, function
 	.endm
 
-	.macro thumb_local_start
-	.align 1, 0
+	.macro thumb_local_start, align_amount=1
+	.align \align_amount, 0
 	.thumb_func
 	.endm
 
