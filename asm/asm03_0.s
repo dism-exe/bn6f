@@ -8473,7 +8473,7 @@ dword_802A7CC: .word 0x10A050A
 	.word 0xB08040B
 	.word 0x40B01
 	.word 0x5090A0B
-off_802A7FC: .word off_8030904
+off_802A7FC: .word EnterMap_RealWorldMapGroupJumptable
 	.word 0xA000102
 byte_802A804: .byte 0x9, 0x8, 0x7, 0x6, 0x5, 0xB, 0xA, 0x7, 0x6, 0x5, 0x2, 0x1, 0x0, 0xB, 0xA
 	.byte 0x6, 0x5, 0xB, 0xA
@@ -20291,21 +20291,21 @@ loc_80308FA:
 	blt loc_80308A0
 	add sp, sp, #8
 	pop {r4-r7,pc}
-off_8030904: .word sub_804CE90+1
+EnterMap_RealWorldMapGroupJumptable: .word sub_804CE90+1
 off_8030908: .word sub_804E62C+1
 	.word sub_8052688+1
 	.word sub_80595B8+1
 	.word sub_805DF08+1
 	.word sub_806036C+1
 	.word sub_8062AB0+1
-off_8030920: .word sub_804CF32+1
+UnkRealWorldMapGroupJumptable_8030920: .word sub_804CF32+1
 	.word sub_804E6D0+1
 	.word sub_8052764+1
 	.word sub_8059664+1
 	.word sub_805DFA2+1
 	.word sub_8060406+1
 	.word sub_8062B64+1
-off_803093C: .word sub_80663D0+1
+EnterMap_InternetMapGroupJumptable: .word sub_80663D0+1
 	.word sub_8067B5C+1
 	.word sub_8069038+1
 	.word sub_8069FE8+1
@@ -20328,7 +20328,7 @@ off_803093C: .word sub_80663D0+1
 	.word sub_807A8E0+1
 	.word sub_807CDEC+1
 	.word sub_807ECD0+1
-off_8030998: .word sub_8066450+1
+UnkInternetMapGroupJumptable_8030998: .word sub_8066450+1
 	.word sub_8067BE4+1
 	.word sub_80690C2+1
 	.word sub_806A070+1
@@ -20351,8 +20351,8 @@ off_8030998: .word sub_8066450+1
 	.word sub_807A974+1
 	.word sub_807CE90+1
 	.word sub_807ED6C+1
-off_80309F4: .word nullsub_61+1
-off_80309F8: .word nullsub_62+1
+EnterMap_UnkMapGroupJumptable: .word nullsub_61+1
+UnkMapGroupRangeMapGroupJumptable_80309f8: .word nullsub_62+1
 	thumb_func_end sub_8030892
 
 	thumb_local_start
@@ -20365,60 +20365,57 @@ nullsub_62:
 	mov pc, lr
 	thumb_func_end nullsub_62
 
-	thumb_func_start sub_8030A00
-sub_8030A00:
+	thumb_func_start EnterMap_RunMapGroupAsmFunction_8030A00
+EnterMap_RunMapGroupAsmFunction_8030A00: // 8030A00
 	push {lr}
-	cmp r0, #0xf0
-	bge loc_8030A14
-	cmp r0, #0x80
-	bge loc_8030A0E
-	ldr r1, off_8030A24 // =off_8030904 
-	b loc_8030A18
-loc_8030A0E:
-	ldr r1, off_8030A28 // =off_803093C 
-	sub r0, #0x80
-	b loc_8030A18
-loc_8030A14:
-	ldr r1, off_8030A2C // =off_80309F4 
-	sub r0, #0xf0
-loc_8030A18:
+	cmp r0, #UNKNOWN_MAP_GROUP_START // 0xf0
+	bge .unknownMapGroupRange
+	cmp r0, #INTERNET_MAP_GROUP_START
+	bge .isInternetMap
+	ldr r1, =EnterMap_RealWorldMapGroupJumptable
+	b .runMapGroupFunction
+.isInternetMap
+	ldr r1, =EnterMap_InternetMapGroupJumptable
+	sub r0, #INTERNET_MAP_GROUP_START
+	b .runMapGroupFunction
+.unknownMapGroupRange
+	ldr r1, =EnterMap_UnkMapGroupJumptable
+	sub r0, #UNKNOWN_MAP_GROUP_START
+.runMapGroupFunction
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	mov lr, pc
 	bx r0
 	pop {pc}
-	.balign 4, 0x00
-off_8030A24: .word off_8030904
-off_8030A28: .word off_803093C
-off_8030A2C: .word off_80309F4
-	thumb_func_end sub_8030A00
+	.balign 4, 0
+	.pool
+	thumb_func_end EnterMap_RunMapGroupAsmFunction_8030A00
 
 	thumb_func_start sub_8030A30
+// r0 map group, r1 map number
 sub_8030A30:
 	push {lr}
-	cmp r0, #0xf0
-	bge loc_8030A44
-	cmp r0, #0x80
-	bge loc_8030A3E
-	ldr r2, off_8030A54 // =off_8030920 
-	b loc_8030A48
-loc_8030A3E:
-	ldr r2, off_8030A58 // =off_8030998 
-	sub r0, #0x80
-	b loc_8030A48
-loc_8030A44:
-	ldr r2, off_8030A5C // =off_80309F8 
-	sub r0, #0xf0
-loc_8030A48:
+	cmp r0, #UNKNOWN_MAP_GROUP_START
+	bge .unknownMapGroupRange
+	cmp r0, #INTERNET_MAP_GROUP_START
+	bge .isInternetMap
+	ldr r2, =UnkRealWorldMapGroupJumptable_8030920
+	b .runMapGroupFunction
+.isInternetMap
+	ldr r2, =UnkInternetMapGroupJumptable_8030998
+	sub r0, #INTERNET_MAP_GROUP_START
+	b .runMapGroupFunction
+.unknownMapGroupRange
+	ldr r2, =UnkMapGroupRangeMapGroupJumptable_80309f8
+	sub r0, #UNKNOWN_MAP_GROUP_START
+.runMapGroupFunction
 	lsl r0, r0, #2
 	ldr r2, [r2,r0]
 	mov lr, pc
 	bx r2
 	pop {pc}
-	.balign 4, 0x00
-off_8030A54: .word off_8030920
-off_8030A58: .word off_8030998
-off_8030A5C: .word off_80309F8
+	.balign 4, 0
+	.pool
 	thumb_func_end sub_8030A30
 
 	thumb_func_start sub_8030A60
@@ -20531,48 +20528,53 @@ sub_8030B0C:
 	thumb_local_start
 sub_8030B1E:
 	push {lr}
-	ldrh r2, [r5,#4]
+	ldrh r2, [r5,#oUnk_Ex2011a20_Unk_04]
 	cmp r2, #0
-	beq loc_8030B66
+	beq .loc_8030B66
 	mov r2, #0
-	ldrh r3, [r5,#4]
-	ldr r6, [r5]
+	ldrh r3, [r5,#oUnk_Ex2011a20_Unk_04]
+	ldr r6, [r5,#oUnk_Ex2011a20_UnkPtr_00]
 	mov r8, r6
-loc_8030B2E:
+
+// r3 = unk04
+.loop
 	add r4, r2, r3
 	lsr r4, r4, #1
 	lsl r7, r4, #2
 	mov r6, r8
 	add r6, r6, r7
+	// read hword from [UnkPtr_00 + ((r2 + r3) & ~1) * 2]
 	ldrh r7, [r6]
 	cmp r1, r7
-	beq loc_8030B4C
-	bgt loc_8030B44
+	beq .loc_8030B4C
+	bgt .loc_8030B44
+	// r3 = r4, which is (r2 + r3) / 2 from current iteration
 	mov r3, r4
-	b loc_8030B48
-loc_8030B44:
+	b .loc_8030B48
+.loc_8030B44:
 	mov r2, r4
 	add r2, #1
-loc_8030B48:
+.loc_8030B48:
 	cmp r2, r3
-	blt loc_8030B2E
-loc_8030B4C:
+	blt .loop
+
+.loc_8030B4C:
 	cmp r1, r7
-	bne loc_8030B66
+	bne .loc_8030B66
 	ldr r2, [r5]
-loc_8030B52:
+.loc_8030B52:
 	sub r6, #4
 	cmp r6, r2
-	blt loc_8030B60
+	blt .loc_8030B60
 	ldrh r7, [r6]
 	cmp r1, r7
-	bne loc_8030B60
-	b loc_8030B52
-loc_8030B60:
+	bne .loc_8030B60
+	b .loc_8030B52
+.loc_8030B60:
 	add r6, #4
 	mov r2, r6
 	pop {pc}
-loc_8030B66:
+.loc_8030B66:
 	mov r2, #0
 	pop {pc}
 	thumb_func_end sub_8030B1E
@@ -22015,7 +22017,7 @@ sub_8031612:
 	mov r5, r9
 	mov r6, r12
 	push {r4-r6}
-	ldr r5, off_8031780 // =dword_2011A20 
+	ldr r5, off_8031780 // =dword_2011A20
 	ldr r2, off_8031688 // =dword_200F3D0 
 	str r0, [r2]
 	bl sub_80316F8
@@ -22094,32 +22096,48 @@ dword_8031690: .word 0x0
 
 	thumb_local_start
 sub_80316F8:
-	mov r2, #2
+	mov r2, #oOWObjectCoords_X
 	ldrsh r1, [r0,r2]
-	mov r2, #6
+	mov r2, #oOWObjectCoords_Y
 	ldrsh r2, [r0,r2]
 	asr r1, r1, #3
 	asr r2, r2, #3
-	ldrb r3, [r5,#7]
+
+	// at a glance, unk07 and unk06 seem to be always 0xfe
+	ldrb r3, [r5,#oUnk_Ex2011a20_Unk_07]
 	lsr r3, r3, #1
+
+	// y/8 + unk07/2
 	add r2, r2, r3
-	ldrb r3, [r5,#6]
+
+	ldrb r3, [r5,#oUnk_Ex2011a20_Unk_06]	
 	lsr r3, r3, #1
+
+	// x/8 + unk06/2
 	add r1, r1, r3
+
 	lsl r3, r3, #1
 	mul r2, r3
+
+	// r2 = unk06 * (y/8 + unk07/2) + x/8 + unk06/2
 	add r2, r2, r1
-	strh r2, [r5,#8]
-	mov r2, #2
+	strh r2, [r5,#oUnk_Ex2011a20_Unk_08]
+
+	mov r2, #oOWObjectCoords_X
 	ldrsh r1, [r0,r2]
 	mov r2, #6
+	mov r2, #oOWObjectCoords_Y
 	ldrsh r2, [r0,r2]
+
+	// store x and y with lower 3 bits truncated into unk0c and unk10
 	mov r3, #7
 	bic r1, r3
-	str r1, [r5,#0xc]
+	str r1, [r5,#oUnk_Ex2011a20_Unk_0c]
 	bic r2, r3
-	str r2, [r5,#0x10]
-	ldrh r1, [r5,#8]
+	str r2, [r5,#oUnk_Ex2011a20_Unk_10]
+
+	// return value
+	ldrh r1, [r5,#oUnk_Ex2011a20_Unk_08]
 	mov pc, lr
 	thumb_func_end sub_80316F8
 

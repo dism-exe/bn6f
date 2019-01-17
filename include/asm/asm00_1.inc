@@ -440,7 +440,7 @@
 // .global sub_80301B2
 // .global sub_80303E8
 // .global sub_8030580
-// .global sub_8030A00
+// .global EnterMap_RunMapGroupAsmFunction_8030A00
 // .global sub_8030A30
 // .global sub_8031A7A
 

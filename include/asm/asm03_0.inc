@@ -151,7 +151,7 @@
 	.global loc_803083E
 	.global sub_803086C
 	.global off_8030908
-	.global sub_8030A00
+	.global EnterMap_RunMapGroupAsmFunction_8030A00
 	.global sub_8030A30
 	.global sub_8030A60
 	.global sub_8030AA4

@@ -3177,7 +3177,7 @@ ScriptCmds8035808:
 	.word MapScript_cmd_8035afa+1
 	.word MapScript_cmd_8035b44+1
 	.word MapScript_jump_if_game_state_0e_equals+1
-	.word sub_8035BB2+1
+	.word MapScript_jump_if_game_state_0e_not_equals+1
 	.word sub_803797E+1
 	.word sub_80379A0+1
 	.word sub_8035BD6+1
@@ -3628,7 +3628,9 @@ MapScript_jump_if_game_state_0e_equals: // 8035b8e
 	thumb_func_end MapScript_jump_if_game_state_0e_equals
 
 	thumb_local_start
-sub_8035BB2:
+// 0x0f byte1 destination
+// jump if byte1 != eGameStateUnk_0e
+MapScript_jump_if_game_state_0e_not_equals: // 8035BB2
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3646,26 +3648,28 @@ loc_8035BD0:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035BB2
+	thumb_func_end MapScript_jump_if_game_state_0e_not_equals
 
 	thumb_local_start
-sub_8035BD6:
+// 0x12 signedhword1 destination
+// jump if (eOWPlayerObject_Z >> 0x10) == signedhword1
+sub_8035BD6: // 8035BD6
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldr r0, [r0,#oGameState_OverworldPlayerObjectPtr]
-	ldr r0, [r0,#0x24]
+	ldr r0, [r0,#oOWPlayerObject_Z]
 	asr r0, r0, #0x10
 	mov r6, #1
 	bl ReadMapScriptSignedHalfword
 	cmp r0, r4
-	bne loc_8035BF8
+	bne .notEqual
 	mov r6, #3
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8035BF8:
+.notEqual
 	add r7, #7
 	mov r0, #1
 	pop {pc}
@@ -3677,7 +3681,7 @@ sub_8035BFE:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldr r0, [r0,#oGameState_OverworldPlayerObjectPtr]
-	ldr r0, [r0,#0x24]
+	ldr r0, [r0,#oOWPlayerObject_Z]
 	asr r0, r0, #0x10
 	mov r6, #1
 	bl ReadMapScriptSignedHalfword

@@ -2890,6 +2890,8 @@ off_80049D8: .word dword_2013920
 off_80049DC: .word byte_20138A8
 	thumb_func_end sub_80049BA
 
+// END OF OBJECT CODE
+
 	thumb_local_start
 sub_80049E0:
 	push {lr}
@@ -3767,7 +3769,7 @@ cb_80050EC:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 GameStateJumptable_p: .word GameStateJumptable
-GameStateJumptable: .word sub_8005148+1
+GameStateJumptable: .word EnterMap+1
 	.word sub_8005268+1
 	.word sub_80052D8+1
 	.word sub_8005360+1
@@ -3785,7 +3787,7 @@ GameStateJumptable: .word sub_8005148+1
 	thumb_func_end cb_80050EC
 
 	thumb_local_start
-sub_8005148:
+EnterMap:
 	push {lr}
 	bl engine_isScreeneffectAnimating // () -> zf
 	bne loc_8005152
@@ -3865,7 +3867,7 @@ loc_80051AA:
 	ldrb r1, [r5,#oGameState_MapNumber]
 	bl sub_8034B4C
 	ldrb r0, [r5,#oGameState_MapGroup]
-	bl sub_8030A00
+	bl EnterMap_RunMapGroupAsmFunction_8030A00
 	mov r0, #0x17
 	mov r1, #0x3d 
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -3890,7 +3892,7 @@ loc_80051AA:
 	strb r0, [r5,#oGameState_SubsystemIndex]
 	pop {pc}
 off_8005264: .word 0x1740
-	thumb_func_end sub_8005148
+	thumb_func_end EnterMap
 
 	thumb_local_start
 sub_8005268:

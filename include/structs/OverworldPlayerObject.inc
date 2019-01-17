@@ -23,6 +23,9 @@
 
 	def_struct_offsets overworld_player_object_struct, oOWPlayerObject
 
+	.equiv oOWObjectCoords_X, 2
+	.equiv oOWObjectCoords_Y, 6
+
 /*
 	.macro overworld_player_object_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
 	

@@ -4654,11 +4654,11 @@ loc_809D3BC:
 	mov r1, #0xe4
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_809D3E6
-	mov r0, #0x1c
+	mov r0, #oOWPlayerObject_Coords
 	add r0, r0, r5
 	bl sub_8031612
 	lsl r0, r0, #0x10
-	str r0, [r5,#0x24]
+	str r0, [r5,#oOWPlayerObject_Z]
 loc_809D3E6:
 	mov r0, #0x17
 	mov r1, #0x18
