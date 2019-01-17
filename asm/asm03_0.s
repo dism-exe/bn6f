@@ -22125,7 +22125,6 @@ sub_80316F8:
 
 	mov r2, #oOWObjectCoords_X
 	ldrsh r1, [r0,r2]
-	mov r2, #6
 	mov r2, #oOWObjectCoords_Y
 	ldrsh r2, [r0,r2]
 
