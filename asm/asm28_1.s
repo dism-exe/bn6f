@@ -427,7 +427,7 @@ sub_809F9C8:
 	ldr r1, dword_809F9D8 // =0x480
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {r4-r7,pc}
-	.balign 4, 0x00
+	.balign 4, 0
 dword_809F9D8: .word 0x480
 	thumb_func_end sub_809F9C8
 
@@ -437,7 +437,7 @@ sub_809F9DC:
 	mov r4, r12
 	push {r4}
 	bl sub_809FD70
-	ldr r4, off_809FC14 // =off_80A336C 
+	ldr r4, InternetMysteryDataMapGroupEntries_p1 // =InternetMysteryDataMapGroupEntries 
 loc_809F9E8:
 	ldr r6, [r4]
 	cmp r6, #1
@@ -597,9 +597,9 @@ dword_809FAF0: .word 0x1400
 	thumb_func_start sub_809FAF4
 sub_809FAF4:
 	push {r4-r7,lr}
-	ldr r4, off_809FC14 // =off_80A336C 
+	ldr r4, InternetMysteryDataMapGroupEntries_p1 // =InternetMysteryDataMapGroupEntries 
 	bl sub_809FB04
-	ldr r4, off_809FC10 // =byte_80A3360
+	ldr r4, RealWorldMysteryDataMapGroupEntries_p1 // =RealWorldMysteryDataMapGroupEntries
 	bl sub_809FB04
 	pop {r4-r7,pc}
 	thumb_func_end sub_809FAF4
@@ -607,44 +607,44 @@ sub_809FAF4:
 	thumb_local_start
 sub_809FB04:
 	push {r4-r7,lr}
-loc_809FB06:
-	ldr r6, [r4]
+.loop
+	ldr r6, [r4,#oMysteryDataMapGroupEntry_MapGroup]
 	cmp r6, #1
-	beq locret_809FB4A
+	beq .mysteryDataEntriesDone
 	cmp r6, #0
-	beq loc_809FB46
-	ldr r6, [r4,#4]
-loc_809FB12:
+	beq .doneCurrentMapGroupEntry
+	ldr r6, [r4,#oMysteryDataMapGroupEntry_MapNumberPtr]
+.loc_809FB12:
 	ldr r7, [r6]
 	cmp r7, #0
-	beq loc_809FB46
-loc_809FB18:
+	beq .doneCurrentMapGroupEntry
+.loc_809FB18:
 	ldrb r0, [r7]
 	cmp r0, #0
-	beq loc_809FB42
-	cmp r0, #5
-	beq loc_809FB3E
-	ldr r1, [r7,#4]
-	ldr r2, [r7,#8]
-	ldrh r3, [r7,#2]
+	beq .doneCurrentMapNumberEntry
+	cmp r0, #GREEN_MYSTERY_DATA
+	beq .skipGMD
+	ldr r1, [r7,#oMysteryDataEntry_PlacementsPtr]
+	ldr r2, [r7,#oMysteryDataEntry_ContentsPtr]
+	ldrh r3, [r7,#oMysteryDataEntry_EventFlag]
 	bl sub_809FB4C
 	mov r2, r1
 	mov r1, r0
-	ldrh r0, [r7,#2]
+	ldrh r0, [r7,#oMysteryDataEntry_EventFlag]
 	bl sub_809FACE
-	ldrh r0, [r7,#2]
+	ldrh r0, [r7,#oMysteryDataEntry_EventFlag]
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
-loc_809FB3E:
-	add r7, #0xc
-	b loc_809FB18
-loc_809FB42:
-	add r6, #4
-	b loc_809FB12
-loc_809FB46:
-	add r4, #8
-	b loc_809FB06
-locret_809FB4A:
+.skipGMD
+	add r7, #oMysteryDataEntry_Size
+	b .loc_809FB18
+.doneCurrentMapNumberEntry
+	add r6, #4 // pointer size
+	b .loc_809FB12
+.doneCurrentMapGroupEntry:
+	add r4, #oMysteryDataMapGroupEntry_Size
+	b .loop
+.mysteryDataEntriesDone:
 	pop {r4-r7,pc}
 	thumb_func_end sub_809FB04
 
@@ -654,13 +654,13 @@ sub_809FB4C:
 	mov r5, r3
 	mov r6, r1
 	mov r7, r2
-	cmp r0, #1
+	cmp r0, #BLUE_MYSTERY_DATA
 	beq loc_809FB64
-	cmp r0, #3
+	cmp r0, #PURPLE_MYSTERY_DATA
 	beq loc_809FB64
-	cmp r0, #2
+	cmp r0, #UNK_MYSTERY_DATA_2
 	beq loc_809FBAE
-	cmp r0, #4
+	cmp r0, #UNK_MYSTERY_DATA_4
 	beq loc_809FBAE
 loc_809FB64:
 	push {r6,r7}
@@ -764,9 +764,9 @@ sub_809FBF2:
 loc_809FC0A:
 	mov r0, r1
 	pop {r2-r7,pc}
-	.byte 0, 0
-off_809FC10: .word byte_80A3360
-off_809FC14: .word off_80A336C
+	.balign 4, 0
+RealWorldMysteryDataMapGroupEntries_p1: .word RealWorldMysteryDataMapGroupEntries
+InternetMysteryDataMapGroupEntries_p1: .word InternetMysteryDataMapGroupEntries
 	.word byte_2000210
 	thumb_func_end sub_809FBF2
 
@@ -783,10 +783,10 @@ sub_809FC1C:
 	b loc_809FC34
 loc_809FC2E:
 	sub r0, #0x80
-	ldr r4, off_809FE98 // =off_80A336C 
+	ldr r4, InternetMysteryDataMapGroupEntries_p2 // =InternetMysteryDataMapGroupEntries
 	b loc_809FC36
 loc_809FC34:
-	ldr r4, off_809FE94 // =byte_80A3360
+	ldr r4, RealWorldMysteryDataMapGroupEntries_p2 // =RealWorldMysteryDataMapGroupEntries
 loc_809FC36:
 	lsl r0, r0, #3
 	add r0, #4
@@ -862,10 +862,10 @@ loc_809FCB0:
 	b loc_809FCC4
 loc_809FCBE:
 	sub r0, #0x80
-	ldr r4, off_809FE98 // =off_80A336C 
+	ldr r4, InternetMysteryDataMapGroupEntries_p2 // =InternetMysteryDataMapGroupEntries 
 	b loc_809FCC6
 loc_809FCC4:
-	ldr r4, off_809FE94 // =byte_80A3360
+	ldr r4, RealWorldMysteryDataMapGroupEntries_p2 // =RealWorldMysteryDataMapGroupEntries
 loc_809FCC6:
 	lsl r0, r0, #3
 	add r0, #4
@@ -970,7 +970,7 @@ sub_809FD70:
 	strh r0, [r6,#0x4] // (word_2000214 - 0x2000210)
 	sub sp, sp, #0x20
 	mov r4, sp
-	ldr r7, off_809FE90 // =off_80A3428 
+	ldr r7, GoldMysteryDataEntries_p
 	mov r3, #0
 loc_809FD84:
 	ldr r0, [r7]
@@ -990,7 +990,7 @@ loc_809FD96:
 	strb r0, [r6,#0x3] // (byte_2000213 - 0x2000210)
 	mov r1, #0xc
 	mul r0, r1
-	ldr r1, off_809FE90 // =off_80A3428 
+	ldr r1, GoldMysteryDataEntries_p
 	add r1, r1, r0
 	ldr r0, [r1]
 	strh r0, [r6,#0x4] // (word_2000214 - 0x2000210)
@@ -1047,7 +1047,7 @@ sub_809FDE0:
 	bl sub_8000E3A
 	add r7, r0, #1
 	add sp, sp, #0x10
-	ldr r4, off_809FE98 // =off_80A336C 
+	ldr r4, InternetMysteryDataMapGroupEntries_p2 // =InternetMysteryDataMapGroupEntries 
 	ldrb r0, [r6,#0x4] // (word_2000214 - 0x2000210)
 	ldrb r1, [r6,#0x5] // (word_2000214+1 - 0x2000210)
 	sub r0, #0x80
@@ -1101,7 +1101,7 @@ sub_809FE44:
 	ldrb r0, [r6,#0x3] // (byte_2000213 - 0x2000210)
 	mov r1, #0xc
 	mul r0, r1
-	ldr r4, off_809FE90 // =off_80A3428 
+	ldr r4, GoldMysteryDataEntries_p // =GoldMysteryDataEntries 
 	add r4, r4, r0
 	ldr r4, [r4,#4]
 	ldrb r3, [r6,#0x2] // (byte_2000212 - 0x2000210)
@@ -1144,12 +1144,8 @@ locret_809FE8E:
 	pop {r4-r7,pc}
 	thumb_func_end sub_809FE7A
 
-off_809FE90: .word off_80A3428
-off_809FE94: .word byte_80A3360
-off_809FE98: .word off_80A336C
+GoldMysteryDataEntries_p: .word GoldMysteryDataEntries
+RealWorldMysteryDataMapGroupEntries_p2: .word RealWorldMysteryDataMapGroupEntries
+InternetMysteryDataMapGroupEntries_p2: .word InternetMysteryDataMapGroupEntries
 off_809FE9C: .word byte_2000210
-off_809FEA0:
-	// <endfile>
-	.word dword_809FEE4
-	.word dword_809FFE8
 /*For debugging purposes, connect comment at any range!*/

@@ -10,10 +10,10 @@
 	.global byte_80A0C10
 	.global byte_80A0C12
 	.global byte_80A2713
-	.global byte_80A3360
-	.global off_80A336C
+	.global RealWorldMysteryDataMapGroupEntries
+	.global InternetMysteryDataMapGroupEntries
 	.global off_80A3370
-	.global off_80A3428
+	.global GoldMysteryDataEntries
 	.global byte_80A3430
 	.global byte_80A3A44
 

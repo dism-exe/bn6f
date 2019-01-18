@@ -67,10 +67,10 @@
 	.include "data/dat28.inc"
 // .global dword_809FEE4
 // .global dword_809FFE8
-// .global byte_80A3360
-// .global off_80A336C
+// .global RealWorldMysteryDataMapGroupEntries
+// .global InternetMysteryDataMapGroupEntries
 // .global off_80A3370
-// .global off_80A3428
+// .global GoldMysteryDataEntries
 // .global byte_80A3430
 
 

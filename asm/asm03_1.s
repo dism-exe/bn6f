@@ -3180,12 +3180,12 @@ ScriptCmds8035808:
 	.word MapScript_jump_if_game_state_0e_not_equals+1
 	.word sub_803797E+1
 	.word sub_80379A0+1
-	.word sub_8035BD6+1
-	.word sub_8035BFE+1
-	.word sub_8035C26+1
-	.word sub_8035C4A+1
-	.word sub_8035C6E+1
-	.word sub_8035CA0+1
+	.word MapScript_jump_if_player_z_equals+1
+	.word MapScript_jump_if_player_z_not_equals+1
+	.word MapScript_jump_if_game_state_44_equals+1
+	.word MapScript_jump_if_game_state_44_not_equals+1
+	.word MapScript_jump_if_map_group_compare_last_map_group+1
+	.word MapScript_cmd_8035ca0+1
 	.word sub_8035CD6+1
 	.word sub_8035CF8+1
 	.word sub_8035D1A+1
@@ -3653,7 +3653,7 @@ loc_8035BD0:
 	thumb_local_start
 // 0x12 signedhword1 destination
 // jump if (eOWPlayerObject_Z >> 0x10) == signedhword1
-sub_8035BD6: // 8035BD6
+MapScript_jump_if_player_z_equals: // 8035BD6
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3673,10 +3673,13 @@ sub_8035BD6: // 8035BD6
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035BD6
+	thumb_func_end MapScript_jump_if_player_z_equals
 
 	thumb_local_start
-sub_8035BFE:
+// 0x13 signedhword1 destination
+// jump if (eOWPlayerObjectUnk_24 >> 0x10) != signedhword1
+// eOWPlayerObjectUnk_24 is signed
+MapScript_jump_if_player_z_not_equals: // 8035BFE
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3696,10 +3699,12 @@ loc_8035C20:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035BFE
+	thumb_func_end MapScript_jump_if_player_z_not_equals
 
 	thumb_local_start
-sub_8035C26:
+// 0x14 hword1 destination
+// jump if hword1 == eGameStateUnk_44
+MapScript_jump_if_game_state_44_equals: // 8035C26
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3717,10 +3722,12 @@ loc_8035C44:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035C26
+	thumb_func_end MapScript_jump_if_game_state_44_equals
 
 	thumb_local_start
-sub_8035C4A:
+// 0x15 hword1 destination
+// jump if hword1 != eGameStateUnk_44
+MapScript_jump_if_game_state_44_not_equals: // 8035C4A
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3738,10 +3745,14 @@ loc_8035C68:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035C4A
+	thumb_func_end MapScript_jump_if_game_state_44_not_equals
 
 	thumb_local_start
-sub_8035C6E:
+// 0x16 0x01 destination
+// jump if eGameStateMapGroup == eGameStateLastMapGroup
+// 0x16 !0x01 destination
+// jump if eGameStateMapGroup != eGameStateLastMapGroup
+MapScript_jump_if_map_group_compare_last_map_group: // 8035C6E
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3750,28 +3761,33 @@ sub_8035C6E:
 	ldrh r0, [r1,#oGameState_MapGroup]
 	ldrh r1, [r1,#oGameState_LastMapGroup]
 	cmp r4, #1
-	beq loc_8035C88
+	beq .compareEqual
+// jump if not equal
 	cmp r0, r1
-	bne loc_8035C8E
-	b loc_8035C9A
-loc_8035C88:
+	bne .doScriptJump
+	b .comparisonFailed
+.compareEqual
 	cmp r0, r1
-	beq loc_8035C8E
-	b loc_8035C9A
-loc_8035C8E:
+	beq .doScriptJump
+	b .comparisonFailed
+.doScriptJump
 	mov r6, #2
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8035C9A:
+.comparisonFailed
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035C6E
+	thumb_func_end MapScript_jump_if_map_group_compare_last_map_group
 
 	thumb_local_start
-sub_8035CA0:
+// 0x17 destination1 destination5 destination9
+// jumptable, using [[eToolkit_Unk20047cc_Ptr] + 0x4c] as the base index
+// default is destination1
+// eToolkit_Unk20047cc_Ptr
+MapScript_cmd_8035ca0: // 8035CA0
 	push {lr}
 	mov r0, #0
 	mov r1, #0x4c 
@@ -3797,9 +3813,15 @@ loc_8035CCA:
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035CA0
+	thumb_func_end MapScript_cmd_8035ca0
 
 	thumb_local_start
+// 0x18 byte1 destination2
+// jump if byte1 == sub_800B734()
+// sub_800B734 performs a summation on the 12 halfwords at word_2000FA0
+// returns 0 if the summation is greater than 0x2a30
+// returns 1 if 0x1c20 < summation <= 0x2a30
+// else returns 2
 sub_8035CD6:
 	push {lr}
 	bl sub_800B734
