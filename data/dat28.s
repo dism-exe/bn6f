@@ -1,5 +1,13 @@
 	.include "data/dat28.inc"
 
+	.macro mystery_data_entry_struct md_type:req, event_flag:req, placements_ptr:req, contents_ptr:req
+	.byte \md_type
+	.balign 2, 0
+	.hword \event_flag
+	.word \placements_ptr
+	.word \contents_ptr
+	.endm
+
 off_809FEA0:
 	// <endfile>
 	.word dword_809FEE4
@@ -18,9 +26,12 @@ dword_809FEE4:
 	.equiv oMysteryDataEntry_ContentsPtr, 8
 	.equiv oMysteryDataEntry_Size, 12
 
+	//mystery_data_entry_struct md_type=BLUE_MYSTERY_DATA, event_flag=0x14e0, placements_ptr=byte_809FF18, contents_ptr=byte_809FF48
+
 	.byte 0x01, 0x00, 0xE0, 0x14	
 	.word byte_809FF18
 	.word byte_809FF48
+
 	.word 0x14E10001
 	.word byte_809FF24
 	.word byte_809FF54
@@ -31,7 +42,11 @@ dword_809FEE4:
 	.word byte_809FF3C
 	.word byte_809FFA4
 	.word 0x0
-byte_809FF18: .byte 0x1, 0x20, 0x82, 0x1, 0x8A, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+byte_809FF18:
+	.byte 1, 32
+	.hword 386, 138, 0
+	.byte 0
+	.balign 4, 0
 byte_809FF24: .byte 0x1, 0x20, 0x24, 0x0, 0x4C, 0xFE, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 byte_809FF30: .byte 0x1, 0x20, 0x40, 0x0, 0xC, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 byte_809FF3C: .byte 0x1, 0x20, 0x24, 0x0, 0x8C, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0

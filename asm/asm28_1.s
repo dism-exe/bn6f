@@ -614,11 +614,11 @@ sub_809FB04:
 	cmp r6, #0
 	beq .doneCurrentMapGroupEntry
 	ldr r6, [r4,#oMysteryDataMapGroupEntry_MapNumberPtr]
-.loc_809FB12:
+.mapGroupEntryLoop
 	ldr r7, [r6]
 	cmp r7, #0
 	beq .doneCurrentMapGroupEntry
-.loc_809FB18:
+.mapNumberEntryLoop
 	ldrb r0, [r7]
 	cmp r0, #0
 	beq .doneCurrentMapNumberEntry
@@ -637,14 +637,14 @@ sub_809FB04:
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 .skipGMD
 	add r7, #oMysteryDataEntry_Size
-	b .loc_809FB18
+	b .mapNumberEntryLoop
 .doneCurrentMapNumberEntry
 	add r6, #4 // pointer size
-	b .loc_809FB12
-.doneCurrentMapGroupEntry:
+	b .mapGroupEntryLoop
+.doneCurrentMapGroupEntry
 	add r4, #oMysteryDataMapGroupEntry_Size
 	b .loop
-.mysteryDataEntriesDone:
+.mysteryDataEntriesDone
 	pop {r4-r7,pc}
 	thumb_func_end sub_809FB04
 
@@ -654,92 +654,97 @@ sub_809FB4C:
 	mov r5, r3
 	mov r6, r1
 	mov r7, r2
+
 	cmp r0, #BLUE_MYSTERY_DATA
-	beq loc_809FB64
+	beq .blueOrPurpleMysteryData
+
 	cmp r0, #PURPLE_MYSTERY_DATA
-	beq loc_809FB64
+	beq .blueOrPurpleMysteryData
+
 	cmp r0, #UNK_MYSTERY_DATA_2
-	beq loc_809FBAE
+	beq .loc_809FBAE
+
 	cmp r0, #UNK_MYSTERY_DATA_4
-	beq loc_809FBAE
-loc_809FB64:
+	beq .loc_809FBAE
+
+.blueOrPurpleMysteryData
 	push {r6,r7}
 	mov r0, r5
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r6,r7}
-	beq loc_809FBE6
+	beq .eventFlagSet
 	mov r4, #0
-loc_809FB72:
+.loc_809FB72:
 	ldrb r3, [r6]
 	cmp r3, #0
-	beq loc_809FB7E
+	beq .loc_809FB7E
 	add r4, #1
 	add r6, #8
-	b loc_809FB72
-loc_809FB7E:
+	b .loc_809FB72
+.loc_809FB7E:
 	mov r0, r5
 	bl sub_809FADE
 	ldrb r6, [r0]
 	add r6, #1
 	cmp r6, r4
-	blt loc_809FB8E
+	blt .loc_809FB8E
 	sub r6, r4, #1
-loc_809FB8E:
+.loc_809FB8E:
 	mov r4, #0
-loc_809FB90:
+.loc_809FB90:
 	ldrb r3, [r7]
 	cmp r3, #0
-	beq loc_809FB9C
+	beq .loc_809FB9C
 	add r4, #1
 	add r7, #8
-	b loc_809FB90
-loc_809FB9C:
+	b .loc_809FB90
+.loc_809FB9C:
 	mov r0, r5
 	bl sub_809FADE
 	ldrb r7, [r0,#1]
 	add r7, #1
 	cmp r7, r4
-	blt loc_809FBAC
+	blt .loc_809FBAC
 	sub r7, r4, #1
-loc_809FBAC:
-	b loc_809FBE0
-loc_809FBAE:
+.loc_809FBAC:
+	b .loc_809FBE0
+.loc_809FBAE:
 	mov r4, #0
-loc_809FBB0:
+.loc_809FBB0:
 	ldrb r3, [r6]
 	cmp r3, #0
-	beq loc_809FBBC
+	beq .loc_809FBBC
 	add r4, #1
 	add r6, #8
-	b loc_809FBB0
-loc_809FBBC:
+	b .loc_809FBB0
+.loc_809FBBC:
 	mov r0, #0
 	cmp r0, r4
-	blt loc_809FBC4
+	blt .loc_809FBC4
 	sub r0, r4, #1
-loc_809FBC4:
+.loc_809FBC4:
 	mov r6, r0
 	mov r4, #0
-loc_809FBC8:
+.loc_809FBC8:
 	ldrb r3, [r7]
 	cmp r3, #0
-	beq loc_809FBD4
+	beq .loc_809FBD4
 	add r4, #1
 	add r7, #8
-	b loc_809FBC8
-loc_809FBD4:
+	b .loc_809FBC8
+.loc_809FBD4:
 	mov r0, #0
 	cmp r0, r4
-	blt loc_809FBDC
+	blt .loc_809FBDC
 	sub r0, r4, #1
-loc_809FBDC:
+.loc_809FBDC:
 	mov r7, r0
-	b loc_809FBE0
-loc_809FBE0:
+	b .loc_809FBE0
+.loc_809FBE0:
 	mov r0, r6
 	mov r1, r7
 	pop {r4-r7,pc}
-loc_809FBE6:
+.eventFlagSet
 	mov r0, r5
 	bl sub_809FADE
 	ldrb r1, [r0,#1]
