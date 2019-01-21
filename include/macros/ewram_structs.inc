@@ -15,7 +15,7 @@ not incorpating into source yet until I have more time + I can come up with name
 width * (y/8 + height/2) + x/8 + width/2
 height * (y/8 + width/2) + x/8 + height/2
 
-unk06 * (y/8 + unk07/2) + x/8 + unk07/2
+unk06 * (y/8 + unk07/2) + x/8 + unk06/2
 
 0xfe * (b + 0x7f) + a + 0x7f
 b = {-0xfe,0xfe}
@@ -86,8 +86,6 @@ dword_2011D10 (06-07 and 08 are swapped)
 dword_2011A20
 dword_2013940
 dword_2013920
-
-for 2011d10:
 
 important function: sub_8030AA4
 can find all the struct labels of collision/tile data there through the calls after the decompression
