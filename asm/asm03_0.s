@@ -20601,7 +20601,7 @@ sub_8030B6A:
 	mov r4, #0
 	mov r12, r4
 	strb r4, [r5,#0xb] // (byte_2011D1B - 0x2011d10)
-loc_8030B80:
+loc_8030B80: .align 1, 0
 	mov r1, r5
 	add r1, #0x18
 	str r1, [r5,#0x14] // (dword_2011D24 - 0x2011d10)
@@ -20613,7 +20613,7 @@ loc_8030B80:
 	mov r2, #0x18
 	add r2, r2, r5
 	str r2, [r5,#0x10] // (dword_2011D20 - 0x2011d10)
-loc_8030B98:
+loc_8030B98: .align 1, 0
 	ldr r1, [r5,#0x14] // (dword_2011D24 - 0x2011d10)
 	cmp r2, r1
 	beq loc_8030C0E
@@ -20621,12 +20621,12 @@ loc_8030B98:
 	bl sub_8030B1E
 	cmp r2, #0
 	bne loc_8030BB0
-loc_8030BA8:
+loc_8030BA8: .align 1, 0
 	ldr r2, [r5,#0x10] // (dword_2011D20 - 0x2011d10)
 	add r2, #0x10
 	str r2, [r5,#0x10] // (dword_2011D20 - 0x2011d10)
 	b loc_8030B98
-loc_8030BB0:
+loc_8030BB0: .align 1, 0
 	ldrh r4, [r2]
 	cmp r1, r4
 	bne loc_8030BA8
@@ -20657,7 +20657,7 @@ loc_8030BB0:
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	pop {r0-r2}
 	bne loc_8030C0A
-loc_8030BEE:
+loc_8030BEE: .align 1, 0
 	ldrb r6, [r7,#3]
 	lsl r6, r6, #2
 	ldr r4, off_8030C3C // =dword_8030C40 
@@ -20672,17 +20672,17 @@ loc_8030BEE:
 	bge loc_8030C1A
 	cmp r3, #0
 	bne loc_8030B80
-loc_8030C0A:
+loc_8030C0A: .align 1, 0
 	add r2, #4
 	b loc_8030BB0
-loc_8030C0E:
+loc_8030C0E: .align 1, 0
 	mov r0, r12
 	pop {r2-r4}
 	mov r8, r2
 	mov r9, r3
 	mov r12, r4
 	pop {r4-r7,pc}
-loc_8030C1A:
+loc_8030C1A: .align 1, 0
 	ldr r0, off_8030C38 // =dword_200F3D0 
 	ldr r0, [r0]
 	ldr r6, [r0,#0xc]
@@ -22034,7 +22034,7 @@ sub_8031612:
 	cmp r2, #0
 	beq loc_8031678
 	mov r3, #0
-loc_8031630:
+loc_8031630: .align 1, 0
 	ldrh r4, [r2]
 	cmp r1, r4
 	bne loc_8031658
@@ -22053,17 +22053,17 @@ loc_8031630:
 	ldrsb r6, [r3,r6]
 	cmp r6, r4
 	bgt loc_803165E
-loc_8031654:
+loc_8031654: .align 1, 0
 	mov r3, r7
 	b loc_803165E
-loc_8031658:
+loc_8031658: .align 1, 0
 	cmp r3, #0
 	beq loc_8031678
 	b loc_8031662
-loc_803165E:
+loc_803165E: .align 1, 0
 	add r2, #4
 	b loc_8031630
-loc_8031662:
+loc_8031662: .align 1, 0
 	str r3, [r5,#0x14] // (dword_2011A34 - 0x2011a20)
 	ldrb r6, [r3,#3]
 	cmp r6, #0xff
@@ -22075,10 +22075,10 @@ loc_8031662:
 	mov lr, pc
 	bx r4
 	b loc_803167C
-loc_8031678:
+loc_8031678: .align 1, 0
 	mov r0, #0
 	mov r1, #0
-loc_803167C:
+loc_803167C: .align 1, 0
 	pop {r4-r6}
 	mov r8, r4
 	mov r9, r5
@@ -22387,7 +22387,7 @@ sub_80318B0:
 	bl sub_8030B1E
 	cmp r2, #0
 	beq loc_8031904
-loc_80318CC:
+loc_80318CC: .align 1, 0
 	ldrh r4, [r2]
 	cmp r1, r4
 	bne loc_8031904
@@ -22405,10 +22405,10 @@ loc_80318CC:
 	cmp r6, r4
 	bgt loc_80318EE
 	b loc_80318F2
-loc_80318EE:
+loc_80318EE: .align 1, 0
 	add r2, #4
 	b loc_80318CC
-loc_80318F2:
+loc_80318F2: .align 1, 0
 	str r7, [r5,#0x14] // (dword_2013954 - 0x2013940)
 	ldrb r6, [r7,#3]
 	lsl r6, r6, #2
@@ -22418,9 +22418,9 @@ loc_80318F2:
 	mov lr, pc
 	bx r4
 	b loc_8031906
-loc_8031904:
+loc_8031904: .align 1, 0
 	mov r0, #2
-loc_8031906:
+loc_8031906: .align 1, 0
 	pop {r1-r3}
 	mov r8, r1
 	mov r9, r2
