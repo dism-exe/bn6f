@@ -6,7 +6,8 @@
 	\struct_entry \label\()_Unk_11, 1 // loc=0x11
 	.space 0x1
 	\struct_entry \label\()_Unk_13, 1 // loc=0x13
-	.space 0x2
+	.space 0x1
+	\struct_entry \label\()_Unk_15, 1 // loc=0x15
 	\struct_entry \label\()_Unk_16, 1 // loc=0x16
 	.space 0x21
 	\struct_entry \label\()_Size

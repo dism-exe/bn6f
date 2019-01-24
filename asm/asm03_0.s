@@ -21938,6 +21938,7 @@ loc_8031590:
 
 	thumb_local_start
 sub_8031594:
+//  ((x*2 - (x & ~7)*2) * (r5 - r4)) + ((y*2 - (y & ~7)*2) * (r2 - r3)) + (r3 * r4 - r2 * r5)
 	sub r6, r5, r4
 	sub r7, r2, r3
 	mul r3, r4
@@ -21971,7 +21972,7 @@ sub_80315B8:
 	mov r5, r2
 	mul r3, r6
 	mul r4, r7
-loc_80315CC:
+loc_80315CC: // likely fake pointer
 	add r3, r3, r4
 	add r5, r5, r3
 	cmp r5, #0
@@ -22160,18 +22161,25 @@ sub_803172E:
 	ldr r7, [r6]
 	asr r7, r7, #0xf
 	sub r7, r7, r2
+	// (x * 2 - tx * 2)
 	str r7, [r0]
+
 	ldr r7, [r6,#4]
 	asr r7, r7, #0xf
 	sub r7, r7, r5
+	// (y * 2 - ty * 2)
 	str r7, [r0,#0x4] // (dword_200F3E4 - 0x200f3e0)
+	
 	ldr r7, [r6,#0xc]
 	asr r7, r7, #0xf
 	sub r7, r7, r2
+	// nextx * 2 - tx * 2
 	str r7, [r0,#0xc] // (dword_200F3EC - 0x200f3e0)
+	
 	ldr r7, [r6,#0x10]
 	asr r7, r7, #0xf
 	sub r7, r7, r5
+	// nexty * 2 - ty * 2
 	str r7, [r0,#0x10] // (dword_200F3F0 - 0x200f3e0)
 	mov pc, lr
 off_803175C: .word dword_200F3E0

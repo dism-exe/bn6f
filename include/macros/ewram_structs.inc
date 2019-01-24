@@ -78,8 +78,8 @@ ex2011a20 struct:
 06, 1 - width? always 0xfe, purpose in canonicalize formula is to set the lowest possible coords to zero
 07, 1 - height? always 0xfe, same purpose as above
 08, 2 - canonical position
-0c, 4 - truncated x (x & ~3)
-10, 4 - truncated y (x & ~3)
+0c, 4 - truncated x (x & ~7)
+10, 4 - truncated y (x & ~7)
 14, 4 - pointer to tile effect data if a tile effect was triggered
 known structs:
 dword_2011D10 -> sub_8030B6A (06-07 and 08 are swapped)

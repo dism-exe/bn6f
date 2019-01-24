@@ -5,6 +5,7 @@
 	\struct_entry \label\()_PETNaviIndex, 1 // loc=0x1
 	\struct_entry \label\()_Unk_02, 1 // loc=0x2
 	\struct_entry \label\()_Unk_03, 1 // loc=0x3
+	\struct_entry \label\()_MapId // loc=0x4
 	\struct_entry \label\()_MapGroup, 1 // loc=0x4
 	\struct_entry \label\()_MapNumber, 1 // loc=0x5
 	\struct_entry \label\()_GameProgress, 1 // loc=0x6
