@@ -3,43 +3,87 @@ import re
 import pathlib
 import argparse
 import pickle
+from enum import Enum
 
+class LineType(Enum):
+    COMMENTED = 0
+    UNCOMMENTED = 1
+    
 class SrcFile:
     def __init__(self):
         self._line_num = 0
-        self._lines = []
-    
+        self._commented_lines = []
+        self._uncommented_lines = []
+        self._line_type = LineType.UNCOMMENTED
+
     def __iter__(self):
         return self
 
     def __next__(self):
-        if self._line_num < len(self._lines):
+        if self._line_num < len(self.lines):
             self._line_num += 1
-            return self._lines[self._line_num - 1]
+            return self.lines[self._line_num - 1]
         else:
             raise StopIteration
 
     def __getitem__(self, index):
-        return self._lines[index]
+        return self.lines[index]
 
     def __len__(self):
-        return len(self._lines)
+        return len(self.lines)
 
     @property
     def cur_line(self):
-        return self._lines[self._line_num]
+        return self.lines[self._line_num]
 
     @property
     def line_num(self):
         return self._line_num
-    
+
     @line_num.setter
     def line_num(self, value):
         self._line_num = value
 
     @property
     def lines(self):
-        return self._lines
+        if self._line_type == LineType.COMMENTED:
+            return self._commented_lines
+        else:
+            return self._uncommented_lines
+
+    @property
+    def line_type(self):
+        return self._line_type
+    
+    @line_type.setter
+    def line_type(self, value):
+        self._line_type = value
+
+    def append_commented_and_uncommented_lines(self, commented_line, uncommented_line):
+        self._commented_lines.append(commented_line)
+        self._uncommented_lines.append(uncommented_line)
+
+class IterStr:
+    def __init__(self, str):
+        self.str = str
+
+    def __iter__(self):
+        self._index = 0
+        return self
+
+    def __next__(self):
+        if self._index < len(self.str):
+            self._index += 1
+            return self.str[self._index - 1]
+        else:
+            raise StopIteration
+
+    def next(self):
+        return self.__next__()
+
+    @property
+    def index(self):
+        return self._index
 
 recursion_depth = 0
 conditional_branches = ("beq", "bne", "bcs", "bcc", "bmi", "bpl", "bvs", "bvc", "bhi", "bls", "bge", "blt", "bgt", "ble")
@@ -79,16 +123,6 @@ def find_colon_label_in_files(label, scanned_files, input_file=None):
 
     return lines
 
-def skip_block_comment(lines, start_index=None):
-    if start_index is not None:
-        lines.line_num = start_index
-
-    for line in lines:
-        if "*/" in line:
-            return
-
-    raise RuntimeError("Unterminated block comment!")
-
 def parse_word_directives(label, lines, start_index=None):
     if start_index is not None:
         lines.line_num = start_index
@@ -104,11 +138,6 @@ def parse_word_directives(label, lines, start_index=None):
         line = line.lstrip()
         if line == "":
             continue
-        elif line.startswith("//"):
-            continue
-        elif line.startswith("/*"):
-            skip_block_comment(lines)
-            continue
         elif line.startswith(".word"):
             words.append(line.split()[1])
         elif line.startswith(".byte"):
@@ -122,7 +151,6 @@ def parse_jumptable_function(label, scanned_files):
     lines = find_colon_label_in_files(label, scanned_files)
     lines.line_num += 1
     #for line in lines:
-
 
 def read_jumptable(jumptable, scanned_files, input_file=None):
     """
@@ -156,6 +184,8 @@ def recursive_scan_includes(filepath, scanned_files):
     print("recursion depth: %s | file: %s" % (recursion_depth, filepath))
     recursion_depth += 1
     
+    in_block_comment = False
+
     with open(filepath, "r") as f:
         scanned_files[filepath] = SrcFile()
         for line in f:
@@ -181,7 +211,46 @@ def recursive_scan_includes(filepath, scanned_files):
                 except IOError:
                     raise
 
-            scanned_files[filepath].lines.append(line)
+
+            if len(line) > 1 and line[-2] == "\r":
+                line = line[-2] + "\n"
+
+            uncommented_line = ""
+            in_line_comment = False
+            iter_line = IterStr(line)
+            # faster to do this naive check for most cases because "in" is native
+            if not in_block_comment and "/*" not in line:
+                slash_line_comment_index = line.find("//") * -1
+                at_line_comment_index = line.find("@") * -1
+                line_comment_index = min(slash_line_comment_index, at_line_comment_index) * -1
+                if line_comment_index == -1:
+                    uncommented_line = line
+                else:
+                    uncommented_line = line[:line_comment_index] + " " * (len(line) - line_comment_index - 1) + "\n"
+            else:
+                for char in iter_line:
+                    if in_block_comment:
+                        uncommented_line += " "
+                        if char == "*":
+                            char = iter_line.next()
+                            uncommented_line += " "
+                            if char == "/":
+                                in_block_comment = False
+                    elif char == "@":
+                        uncommented_line += " " * (len(line) - iter_line.index - 1) + "\n"
+                        break
+                    elif char == "/":
+                        char = iter_line.next()
+                        if char == "/":
+                            uncommented_line += "  " + " " * (len(line) - iter_line.index - 1) + "\n"
+                            break
+                        elif char == "*":
+                            uncommented_line += "  "
+                            in_block_comment = True
+                    else:
+                        uncommented_line += char
+
+            scanned_files[filepath].append_commented_and_uncommented_lines(line, uncommented_line)
 
     recursion_depth -= 1
 
@@ -219,6 +288,13 @@ def main():
         with open(args.load_from_file, "rb") as f:
             scanned_files = pickle.load(f)
         os.chdir(cur_path)
+
+    #test_output = ""
+    #scanned_files["asm/asm03_0.s"].line_type = LineType.UNCOMMENTED
+    #test_output = "".join(line for line in scanned_files["asm/asm03_0.s"])
+    #
+    #with open("scanned_out_test.txt", "w+") as f:
+    #    f.write(test_output)
 
     read_jumptable("T1BattleObjectJumptable", scanned_files)
 
