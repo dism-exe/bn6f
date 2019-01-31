@@ -42,9 +42,10 @@ class SrcFile:
         return self._lines
 
 recursion_depth = 0
+conditional_branches = ("beq", "bne", "bcs", "bcc", "bmi", "bpl", "bvs", "bvc", "bhi", "bls", "bge", "blt", "bgt", "ble")
 #scanned_files = {}
 
-def find_colon_label(label, lines, start_index=None):
+def find_colon_label_from_lines(label, lines, start_index=None):
     if start_index is not None:
         lines.line_num = start_index
 
@@ -53,6 +54,30 @@ def find_colon_label(label, lines, start_index=None):
             return True
 
     return False
+
+def find_colon_label_in_files(label, scanned_files, input_file=None):
+    found_label = False
+
+    if label.endswith("+1"):
+        label = label[:-2]
+
+    if input_file is None:
+        for key, temp_lines in scanned_files.items():
+            if find_colon_label_from_lines(label, temp_lines, 0):
+                found_label = True
+                lines = temp_lines
+                break
+    else:
+        lines = scanned_files[input_file]
+        found_label = find_colon_label_from_lines(jumptable, lines, 0)
+
+    if not found_label:
+        if input_file is None:
+            raise RuntimeError("Could not find label \"%s\" in scanned files!" % label)
+        else:
+            raise RuntimeError("Could not find label \"%s\" in file \"%s\"!" % (label, input_file))
+
+    return lines
 
 def skip_block_comment(lines, start_index=None):
     if start_index is not None:
@@ -93,6 +118,12 @@ def parse_word_directives(label, lines, start_index=None):
     
     return words
 
+def parse_jumptable_function(label, scanned_files):
+    lines = find_colon_label_in_files(label, scanned_files)
+    lines.line_num += 1
+    #for line in lines:
+
+
 def read_jumptable(jumptable, scanned_files, input_file=None):
     """
     Returns a jumptable's entries in a list specified by the given label.
@@ -114,25 +145,11 @@ def read_jumptable(jumptable, scanned_files, input_file=None):
 
     found_jumptable = False
 
-    if input_file is None:
-        for key, temp_lines in scanned_files.items():
-            if find_colon_label(jumptable, temp_lines, 0):
-                found_jumptable = True
-                lines = temp_lines
-                break
-    else:
-        lines = scanned_files[input_file]
-        found_jumptable = find_colon_label(jumptable, lines, 0)
-
-    if not found_jumptable:
-        if input_file is None:
-            raise RuntimeError("Could not find jumptable label \"%s\" in scanned files!" % jumptable)
-        else:
-            raise RuntimeError("Could not find jumptable label \"%s\" in file \"%s\"!" % (jumptable, input_file))
-
+    lines = find_colon_label_in_files(jumptable, scanned_files, input_file)
     print("line: %s" % lines.cur_line)
     words = parse_word_directives(jumptable, lines)
     print("words: %s" % words)
+    parse_jumptable_function(words[0], scanned_files)
 
 def recursive_scan_includes(filepath, scanned_files):
     global recursion_depth
