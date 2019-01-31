@@ -68,7 +68,7 @@ RunBattleObjectLogic:
 	str r7, [r0]
 	mov r5, #0x10
 	add r5, r5, r7
-	ldrb r4, [r5]
+	ldrb r4, [r5,#oBattleObject_Flags]
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_GameStatePtr]
 	ldrb r0, [r6,#oGameState_Unk_0a]
