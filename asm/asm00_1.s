@@ -3985,7 +3985,7 @@ sub_8005360:
 	bl sub_8007800
 	bne locret_800536C
 	mov r0, #0
-	strb r0, [r5]
+	strb r0, [r5,#oGameState_SubsystemIndex]
 locret_800536C:
 	pop {pc}
 	thumb_func_end sub_8005360

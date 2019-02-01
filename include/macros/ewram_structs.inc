@@ -130,4 +130,22 @@ todo figure out what to call this (collision, tile effects?)
 	\struct_entry \label\()_Size // loc=0x18
 	.endm
 
+/*
+S2034880 is likely battle state struct
+known offsets from https://pastebin.com/grDF80Vp
+
+0x40 - battle time
+0x1b - multi delete count
+0x3c - battle bits(?)
+
+byte_203EAE0 - another battle struct
+two entries of size 0x10, one for each alliance
+0x20 bytes total
+known offsets from https://pastebin.com/grDF80Vp
+
+0x3 - times hit
+0x4 - times moved
+0x8 - num counter hits
+0xb - was cross used
+*/
 // .macro overworld_npc_object_struct, struct_entry=label_struct_entry, struct_begin=struct_begin
