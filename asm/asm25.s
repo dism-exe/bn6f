@@ -87,7 +87,7 @@ sub_808F8AC:
 	ldrb r0, [r5,#0x14]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sprite_update
 	ldr r1, off_808F8FC // =off_808F5D4 
 	ldr r1, [r1]
@@ -186,7 +186,7 @@ sub_808F990:
 	ldrb r0, [r5,#0x14]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sprite_update
 	mov r0, #0
 	pop {r5,pc}

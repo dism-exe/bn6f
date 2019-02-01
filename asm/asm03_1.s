@@ -5776,7 +5776,7 @@ loc_80371C2:
 	pop {r0-r3}
 loc_80371E8:
 	push {r0-r3}
-	ldr r7, off_803725C // =byte_80065E0 
+	ldr r7, off_803725C // =math_sinTable 
 	ldrh r3, [r5,#4]
 	ldr r4, [r5,#0x20]
 	sub r4, r3, r4
@@ -5786,7 +5786,7 @@ loc_80371E8:
 	mov r3, #0x40 
 	sub r4, r3, r4
 	lsl r4, r4, #1
-	ldr r0, off_803725C // =byte_80065E0 
+	ldr r0, off_803725C // =math_sinTable 
 	ldrsh r4, [r0,r4]
 	ldr r0, [r5,#0x14]
 	ldr r1, [r5,#8]
@@ -5832,7 +5832,7 @@ loc_8037242:
 	add r1, #9
 	pop {pc}
 	.balign 4, 0x00
-off_803725C: .word byte_80065E0
+off_803725C: .word math_sinTable
 	thumb_func_end sub_8037196
 
 	thumb_local_start

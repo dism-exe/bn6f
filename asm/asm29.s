@@ -31,7 +31,7 @@ sub_80A49B0:
 	ldrb r0, [r7,#2]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r7,#3]
 	cmp r0, #0xff
 	bne loc_80A49E8
@@ -50,7 +50,7 @@ loc_80A49E8:
 	ldr r0, [r7,#4]
 	bl sub_8002FA6
 	ldrb r0, [r7,#8]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	mov r0, #0
@@ -113,10 +113,10 @@ loc_80A4A58:
 loc_80A4A66:
 	cmp r4, #0xff
 	bne loc_80A4A6E
-	bl sprite_forceWhitePallete
+	bl sprite_forceWhitePalette
 loc_80A4A6E:
 	mov r0, r4
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 loc_80A4A74:
 	ldrb r0, [r5,#6]
 	ldrb r1, [r5,#7]
@@ -321,9 +321,9 @@ sub_80A4BFC:
 	ldrb r0, [r5,#4]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r5,#5]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_80A4C46
@@ -333,7 +333,7 @@ sub_80A4BFC:
 	thumb_local_start
 sub_80A4C46:
 	push {lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A4C56
@@ -518,12 +518,12 @@ sub_80A51F8:
 	ldrb r0, [r7,#8]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r7,#0xa]
 	lsl r0, r0, #0x18
 	bl sub_8002FA6
 	ldrb r0, [r7,#0xb]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldrh r0, [r7,#2]
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
@@ -608,7 +608,7 @@ dword_80A52E0: .word 0xFFFF
 	thumb_local_start
 sub_80A52E4:
 	push {lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A52FC
@@ -626,7 +626,7 @@ loc_80A52FC:
 	thumb_local_start
 sub_80A5304:
 	push {lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A531E
@@ -730,7 +730,7 @@ sub_80A5448:
 	strb r0, [r5,#5]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #2
 	bl sub_8002E14
 	ldrb r0, [r7,#3]
@@ -830,7 +830,7 @@ loc_80A552A:
 	ldrb r0, [r6,#5]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -1177,13 +1177,13 @@ sub_80A57D0:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
 	bl sub_8002E14
 	mov r0, #0
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	bl sub_80A5890
 	mov r0, #0
 	str r0, [r5,#0x30]
@@ -1425,7 +1425,7 @@ loc_80A598E:
 	beq locret_80A59AA
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	str r4, [r5,#0x30]
 locret_80A59AA:
 	pop {r4,pc}
@@ -1584,7 +1584,7 @@ sub_80A5AF8:
 	str r0, [r5,#0x34]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -1827,7 +1827,7 @@ sub_80A5CF0:
 	mov r4, r0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	str r4, [r5,#0x34]
 locret_80A5D0A:
 	pop {r4,pc}
@@ -1888,7 +1888,7 @@ sub_80A5D48:
 	str r0, [r5,#0x34]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0
 locret_80A5D7E:
 	pop {r4-r7,pc}
@@ -1996,7 +1996,7 @@ loc_80A5E0A:
 	beq locret_80A5E36
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	str r4, [r5,#0x34]
 locret_80A5E36:
 	pop {r4,pc}
@@ -2095,7 +2095,7 @@ loc_80A5EE2:
 	add r0, #0x19
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	add r4, #1
 	strb r4, [r5,#0xb]
 loc_80A5F12:
@@ -2109,7 +2109,7 @@ loc_80A5F12:
 	str r0, [r5,#0x34]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r4, #0
 	strb r4, [r5,#0xb]
 	mov r0, #0
@@ -2579,7 +2579,7 @@ sub_80A6A34:
 	ldrb r0, [r5,#7]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	mov r6, #0x24
@@ -2709,7 +2709,7 @@ loc_80A6B5C:
 	mov r3, #0x40 
 	sub r2, r3, r2
 	lsl r2, r2, #1
-	ldr r0, off_80A6BD4 // =byte_80065E0 
+	ldr r0, off_80A6BD4 // =math_sinTable 
 	ldrsh r2, [r0,r2]
 	ldr r0, [r5,#0x18]
 	ldr r1, [r5,#0x2c]
@@ -2759,7 +2759,7 @@ loc_80A6BB6:
 	bl sub_80A6E70
 	mov r0, #1
 	pop {pc}
-off_80A6BD4: .word byte_80065E0
+off_80A6BD4: .word math_sinTable
 	thumb_func_end sub_80A6B10
 
 	thumb_local_start
@@ -2823,7 +2823,7 @@ loc_80A6C3C:
 	sub r2, r3, r2
 	lsr r2, r2, #1
 	lsl r2, r2, #1
-	ldr r0, off_80A6CA0 // =byte_80065E0 
+	ldr r0, off_80A6CA0 // =math_sinTable 
 	ldrsh r2, [r0,r2]
 	lsl r2, r2, #1
 	ldr r0, [r5,#0xc]
@@ -2862,7 +2862,7 @@ loc_80A6C7E:
 	bl sub_80A6E70
 	mov r0, #1
 	pop {pc}
-off_80A6CA0: .word byte_80065E0
+off_80A6CA0: .word math_sinTable
 	thumb_func_end sub_80A6BD8
 
 	thumb_local_start
@@ -3084,7 +3084,7 @@ sub_80A6E22:
 	bl sub_80A6E78
 	ldrb r0, [r0,#2]
 	mov r1, r0
-	bl sub_8002EF6
+	bl sprite_setMosaicSize
 	mov r0, #4
 	bl sub_80A6E70
 	mov r0, #1
@@ -3176,13 +3176,13 @@ sub_80A6EBC:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
 	bl sub_8002E14
 	mov r0, #1
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	bl sub_80A70C0
 	cmp r0, #0
 	beq loc_80A6F66
@@ -3379,7 +3379,7 @@ sub_80A704C:
 	beq locret_80A707E
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	str r4, [r5,#0x2c]
 locret_80A707E:
 	pop {r4,pc}
@@ -3512,14 +3512,14 @@ sub_80A7160:
 	add r0, #0xa
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	add r4, #1
 	strb r4, [r5,#9]
 	b locret_80A71E8
 loc_80A717E:
 	cmp r4, #1
 	bgt loc_80A7190
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80A71E8
@@ -3540,7 +3540,7 @@ loc_80A7190:
 	mov r0, #9
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0xe1
 	bl sound_play // () -> void
 	add r4, #1
@@ -3550,7 +3550,7 @@ loc_80A71C0:
 	mov r0, #3
 	strb r0, [r6,#7]
 	bl sub_80A71EC
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80A71E8
@@ -3685,13 +3685,13 @@ sub_80A72D8:
 	strb r0, [r5,#5]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
 	bl sub_8002E14
 	mov r0, #0
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldrh r0, [r4]
 	lsl r0, r0, #0x10
 	str r0, [r5,#0xc]
@@ -3909,7 +3909,7 @@ loc_80A748A:
 	beq locret_80A74A6
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	strb r4, [r5,#5]
 locret_80A74A6:
 	pop {r4-r7,pc}
@@ -3969,7 +3969,7 @@ loc_80A74FA:
 	beq locret_80A7512
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	strb r4, [r5,#5]
 locret_80A7512:
 	pop {r4-r7,pc}
@@ -4150,14 +4150,14 @@ sub_80A7640:
 	add r0, #0xa
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	add r4, #1
 	strb r4, [r5,#9]
 	b locret_80A76C8
 loc_80A765E:
 	cmp r4, #1
 	bgt loc_80A7670
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80A76C8
@@ -4178,7 +4178,7 @@ loc_80A7670:
 	mov r0, #9
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0xe1
 	bl sound_play // () -> void
 	add r4, #1
@@ -4188,7 +4188,7 @@ loc_80A76A0:
 	mov r0, #3
 	strb r0, [r6,#7]
 	bl sub_80A76CC
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80A76C8
@@ -4265,7 +4265,7 @@ sub_80A76E8:
 	ldrb r0, [r5,#5]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r2, #1
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
@@ -4353,9 +4353,9 @@ sub_80A77C8:
 	ldrb r0, [r5,#4]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r5,#5]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldrb r0, [r5,#6]
 	bl sub_8002E14
 	mov r0, #4
@@ -4367,7 +4367,7 @@ sub_80A77C8:
 	thumb_local_start
 sub_80A77FC:
 	push {lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A780C
@@ -4415,9 +4415,9 @@ sub_80A783C:
 	strb r1, [r5,#5]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_80A786C
@@ -4497,7 +4497,7 @@ sub_80A78E0:
 	ldrb r0, [r6,#2]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #2
 	bl sub_8002E14
 	mov r0, #0
@@ -4570,7 +4570,7 @@ sub_80A796C:
 	lsl r2, r2, #0xa
 	orr r0, r1
 	orr r0, r2
-	bl sub_8002ED0
+	bl sprite_setColorShader
 	b loc_80A79A0
 loc_80A799C:
 	bl FreeOverworldMapObject
@@ -4646,7 +4646,7 @@ sub_80A7A40:
 	push {r4-r7,lr}
 	bl sub_80A7C58
 	bne loc_80A7A88
-	ldr r7, off_80A7AA0 // =byte_80065E0 
+	ldr r7, off_80A7AA0 // =math_sinTable 
 	ldrh r3, [r6,#6]
 	ldr r4, [r6,#0x24]
 	sub r4, r3, r4
@@ -4656,7 +4656,7 @@ sub_80A7A40:
 	mov r3, #0x40 
 	sub r4, r3, r4
 	lsl r4, r4, #1
-	ldr r0, off_80A7AA0 // =byte_80065E0 
+	ldr r0, off_80A7AA0 // =math_sinTable 
 	ldrsh r4, [r0,r4]
 	ldr r0, [r6,#0x1c]
 	ldr r1, [r6,#0x14]
@@ -4691,7 +4691,7 @@ loc_80A7A8C:
 	mov r0, #1
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_80A7AA0: .word byte_80065E0
+off_80A7AA0: .word math_sinTable
 	thumb_func_end sub_80A7A40
 
 	thumb_local_start
@@ -4988,11 +4988,11 @@ sub_80A7CA4:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #2
 	bl sub_8002E14
 	mov r0, #1
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	push {r4-r7}
 	mov r0, #0
 	ldr r1, [r5,#0xc]
@@ -5119,7 +5119,7 @@ sub_80A7DB8:
 	ldrb r0, [r7,#3]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sub_80A8020
 	ldrh r0, [r7,#4]
 	bl sub_8142868
@@ -5292,7 +5292,7 @@ sub_80A7EF8:
 	thumb_local_start
 sub_80A7F14:
 	push {r4-r7,lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80A7F24
@@ -5389,7 +5389,7 @@ locret_80A7FD2:
 	thumb_local_start
 sub_80A7FD4:
 	push {r4-r7,lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80A8004
@@ -5437,7 +5437,7 @@ sub_80A8020:
 	ldrb r0, [r7,#2]
 	ldr r1, off_80A8030 // =off_80A8034 
 	ldrb r0, [r1,r0]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_80A8030: .word off_80A8034
@@ -5533,7 +5533,7 @@ sub_80A822C:
 	strb r0, [r5,#5]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #2
 	bl sub_8002E14
 	bl sub_80A82A4
@@ -5563,7 +5563,7 @@ sub_80A827C:
 	beq loc_80A8294
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 loc_80A8294:
 	bl sprite_update
 	pop {r4-r7,pc}
@@ -5726,7 +5726,7 @@ sub_80A83B8:
 	ldrb r0, [r5,#4]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -5841,9 +5841,9 @@ sub_80A84C4:
 	push {r4-r7,lr}
 	bl sub_80A84FC
 	lsl r0, r0, #1
-	ldr r1, off_80A84F4 // =byte_8006660 
+	ldr r1, off_80A84F4 // =math_cosTable 
 	ldrsh r4, [r1,r0]
-	ldr r1, off_80A84F8 // =byte_80065E0 
+	ldr r1, off_80A84F8 // =math_sinTable 
 	ldrsh r6, [r1,r0]
 	mov r7, #0x60 
 	lsl r7, r7, #8
@@ -5860,8 +5860,8 @@ sub_80A84C4:
 	str r2, [r5,#0x14]
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_80A84F4: .word byte_8006660
-off_80A84F8: .word byte_80065E0
+off_80A84F4: .word math_cosTable
+off_80A84F8: .word math_sinTable
 	thumb_func_end sub_80A84C4
 
 	thumb_local_start
@@ -5914,7 +5914,7 @@ sub_80A8548:
 	beq locret_80A8568
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	strb r4, [r5,#4]
 locret_80A8568:
 	pop {r4,pc}
@@ -6087,7 +6087,7 @@ sub_80A8674:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	mov r0, #0
@@ -6160,7 +6160,7 @@ loc_80A86EA:
 	mov r4, #5
 loc_80A871E:
 	mov r0, r4
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_80A86B4
@@ -6202,7 +6202,7 @@ loc_80A8754:
 	ldrb r0, [r7,#2]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sub_809E1AE
 	str r2, [r5,#0x14]
 	mov r0, r5
@@ -6235,7 +6235,7 @@ byte_80A87C8: .byte 0xFA, 0x0, 0xB0, 0x0, 0xA, 0x1, 0xAF, 0x0, 0x0, 0x0
 	thumb_local_start
 sub_80A87D2:
 	push {r4-r7,lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A87E2
@@ -6282,7 +6282,7 @@ sub_80A8814:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -6296,7 +6296,7 @@ sub_80A8814:
 	thumb_local_start
 sub_80A8848:
 	push {r4-r7,lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A8858
@@ -6349,7 +6349,7 @@ sub_80A8894:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -6418,7 +6418,7 @@ sub_80A8918:
 	lsl r2, r2, #0xa
 	orr r0, r1
 	orr r0, r2
-	bl sub_8002ED0
+	bl sprite_setColorShader
 	b loc_80A894C
 loc_80A8948:
 	bl FreeOverworldMapObject
@@ -6515,7 +6515,7 @@ sub_80A89FC:
 	ldrb r0, [r1,r0]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0
 	str r0, [r5,#0x24]
 	mov r0, #4
@@ -6560,8 +6560,8 @@ sub_80A8A7C:
 	push {r4-r7,lr}
 	ldrb r0, [r5,#4]
 	lsl r0, r0, #1
-	ldr r1, off_80A8AAC // =byte_80065E0 
-	ldr r2, off_80A8AB0 // =byte_8006660 
+	ldr r1, off_80A8AAC // =math_sinTable 
+	ldr r2, off_80A8AB0 // =math_cosTable 
 	ldrsh r1, [r1,r0]
 	ldrsh r2, [r2,r0]
 	ldrb r0, [r5,#5]
@@ -6582,8 +6582,8 @@ sub_80A8A7C:
 	strh r0, [r5,r1]
 locret_80A8AAA:
 	pop {r4-r7,pc}
-off_80A8AAC: .word byte_80065E0
-off_80A8AB0: .word byte_8006660
+off_80A8AAC: .word math_sinTable
+off_80A8AB0: .word math_cosTable
 	thumb_func_end sub_80A8A7C
 
 	thumb_func_start sub_80A8AB4
@@ -6630,7 +6630,7 @@ sub_80A8AF4:
 	strb r0, [r5,#7]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0
 	str r0, [r5,#0x24]
 	mov r0, #4
@@ -6676,8 +6676,8 @@ sub_80A8B4C:
 	mov r1, #0xff
 	and r0, r1
 	lsl r0, r0, #1
-	ldr r1, off_80A8BB0 // =byte_8006660 
-	ldr r2, off_80A8BB4 // =byte_80065E0 
+	ldr r1, off_80A8BB0 // =math_cosTable 
+	ldr r2, off_80A8BB4 // =math_sinTable 
 	ldrsh r1, [r1,r0]
 	ldrsh r2, [r2,r0]
 	mov r0, #8
@@ -6704,8 +6704,8 @@ loc_80A8BA8:
 	bl sprite_update
 	pop {r4-r7,pc}
 	.byte 0, 0
-off_80A8BB0: .word byte_8006660
-off_80A8BB4: .word byte_80065E0
+off_80A8BB0: .word math_cosTable
+off_80A8BB4: .word math_sinTable
 dword_80A8BB8: .word 0x85
 	thumb_func_end sub_80A8B4C
 
@@ -6763,8 +6763,8 @@ sub_80A8C08:
 	mov r1, #0xff
 	and r0, r1
 	lsl r0, r0, #1
-	ldr r1, off_80A8C74 // =byte_8006660 
-	ldr r2, off_80A8C78 // =byte_80065E0 
+	ldr r1, off_80A8C74 // =math_cosTable 
+	ldr r2, off_80A8C78 // =math_sinTable 
 	ldrsh r1, [r1,r0]
 	ldrsh r2, [r2,r0]
 	mov r0, #0x80
@@ -6794,8 +6794,8 @@ loc_80A8C6C:
 	bl sprite_update
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_80A8C74: .word byte_8006660
-off_80A8C78: .word byte_80065E0
+off_80A8C74: .word math_cosTable
+off_80A8C78: .word math_sinTable
 	thumb_func_end sub_80A8C08
 
 	thumb_local_start
@@ -7060,7 +7060,7 @@ sub_80A8E9C:
 	mov r0, #0x18
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -7180,7 +7180,7 @@ sub_80A8FA0:
 	mov r0, #0x19
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0xc
 	strb r0, [r5,#8]
 	ldr r0, off_80A8FE0 // =0x160 
@@ -7207,7 +7207,7 @@ off_80A8FE0: .word 0x160
 	thumb_local_start
 sub_80A8FE4:
 	push {lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A8FF4
@@ -7655,11 +7655,11 @@ sub_80A92E0:
 	ldrb r0, [r5,#4]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r5,#5]
 	bl sub_8002E14
 	ldrb r0, [r6,#0x1c]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0
 	strb r0, [r5,#6]
 	strb r0, [r5,#7]
@@ -7738,7 +7738,7 @@ sub_80A937C:
 	lsl r2, r2, #0xa
 	orr r0, r1
 	orr r0, r2
-	bl sub_8002ED0
+	bl sprite_setColorShader
 	b loc_80A93B4
 loc_80A93A4:
 	mov r0, #0xc
@@ -7850,7 +7850,7 @@ sub_80A9458:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #2
 	bl sub_8002E14
 	bl sub_80A9570
@@ -7866,12 +7866,12 @@ sub_80A9458:
 	str r0, [r5,#0x14]
 	ldrb r0, [r4,#7]
 	strb r0, [r5,#4]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldrb r0, [r4,#6]
 	strb r0, [r5,#7]
 	cmp r0, #0
 	beq loc_80A94AC
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	bl sub_80A95EC
 loc_80A94AC:
 	mov r0, #0xb
@@ -7936,7 +7936,7 @@ sub_80A94F8:
 	lsl r2, r2, #0xa
 	orr r0, r1
 	orr r0, r2
-	bl sub_8002ED0
+	bl sprite_setColorShader
 	b loc_80A9534
 loc_80A9528:
 	mov r0, #0xb
@@ -8112,7 +8112,7 @@ sub_80A9680:
 	mov r0, #8
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -8141,7 +8141,7 @@ sub_80A96C8:
 	mov r0, #7
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sub_80A974C
 loc_80A96EA:
 	bl sprite_update
@@ -8223,7 +8223,7 @@ sub_80A974C:
 	lsl r2, r2, #0xa
 	orr r0, r1
 	orr r0, r2
-	bl sub_8002ED0
+	bl sprite_setColorShader
 	b loc_80A977C
 loc_80A9774:
 	mov r0, #0xc
@@ -8577,9 +8577,9 @@ sub_80A9A2C:
 	ldrb r0, [r5,#4]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r5,#5]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_80A9A76
@@ -8594,7 +8594,7 @@ sub_80A9A76:
 	lsl r1, r1, #0x10
 	add r0, r0, r1
 	str r0, [r5,#0x14]
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A9A90
@@ -8700,14 +8700,14 @@ loc_80A9BF6:
 	ldrb r0, [r7,#8]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r7,#0xa]
 	lsl r0, r0, #0x18
 	bl sub_8002FA6
 	ldrb r0, [r7,#0xb]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldrb r0, [r7,#0xd]
-	bl sub_8002F5C
+	bl sprite_setFlip
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_80A9C26
@@ -8752,7 +8752,7 @@ loc_80A9C54:
 	mov r0, #3
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0xd9
 	add r0, #0xff
 	bl sound_play // () -> void
@@ -8764,7 +8764,7 @@ loc_80A9C88:
 	mov r0, #5
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0
 	str r0, [r5,#0x24]
 loc_80A9CA0:
@@ -8865,7 +8865,7 @@ sub_80A9D30:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -8935,7 +8935,7 @@ loc_80A9DD8:
 	mov r0, #1
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r5,#4]
 	tst r0, r0
 	bne loc_80A9DF8
@@ -8979,7 +8979,7 @@ loc_80A9E2E:
 	mov r0, #2
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	b locret_80A9E46
 loc_80A9E3E:
 	mov r0, #0
@@ -9025,11 +9025,11 @@ sub_80A9E5E:
 	mov r0, #0
 	strh r0, [r5,#0x24]
 	ldrb r0, [r5,#5]
-	bl sub_8002F5C
+	bl sprite_setFlip
 	mov r0, #5
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sub_809C940
 	ldr r1, [r5,#0x30]
 	ldr r2, [r5,#0x34]
@@ -9094,7 +9094,7 @@ sub_80A9EEC:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -9112,7 +9112,7 @@ sub_80A9F30:
 	push {r4-r7,lr}
 	mov r4, r8
 	push {r4}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A9F44
@@ -9161,11 +9161,11 @@ sub_80A9F78:
 	ldrb r0, [r5,#6]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r5,#7]
 	bl sub_8002E14
 	mov r0, #0
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldrb r0, [r5,#4]
 	bl sub_80AA04C
 	str r0, [r5,#0x14]
@@ -9284,7 +9284,7 @@ sub_80AA078:
 	ldrb r0, [r5,#7]
 	bl sub_8002E14
 	mov r0, #0
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldrb r0, [r5,#4]
 	bl sub_80AA134
 	str r0, [r5,#0x14]
@@ -9397,7 +9397,7 @@ sub_80AA160:
 	mov r0, #2
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -9435,7 +9435,7 @@ loc_80AA1C2:
 	thumb_local_start
 sub_80AA1C8:
 	push {r4-r7,lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80AA1D8
@@ -9475,7 +9475,7 @@ sub_80AA204:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -9525,7 +9525,7 @@ loc_80AA27C:
 	thumb_local_start
 sub_80AA282:
 	push {r4-r7,lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80AA2A2
@@ -9598,7 +9598,7 @@ sub_80AA2F8:
 	strb r0, [r5,#4]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_80AA322
@@ -9710,7 +9710,7 @@ sub_80AA3C2:
 loc_80AA3E6:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -10276,7 +10276,7 @@ loc_80AA832:
 	lsl r3, r3, #0x1c
 	lsr r3, r3, #0x14
 	add r0, r0, r3
-	bl sub_800F23C
+	bl enemy_getStruct2
 	ldrh r1, [r0]
 	lsr r1, r1, #0xc
 	mov r2, #0xf

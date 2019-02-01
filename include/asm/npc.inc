@@ -23,19 +23,19 @@
 // .global sub_8002CCE
 // .global sprite_makeScalable
 // .global sprite_makeUnscalable
-// .global sprite_setPallete // (int pallete) -> void
+// .global sprite_setPalette // (int pallete) -> void
 // .global sprite_setAnimation // (u8 a1) -> void
 
 	.include "asm/asm00_1.inc"
-// .global sub_8002DEA
+// .global sprite_getFrameParameters
 // .global sub_8002E14
-// .global sub_8002E3C
+// .global sprite_hasShadow
 // .global sub_8002E52
-// .global sub_8002ED0
-// .global sub_8002EF6
+// .global sprite_setColorShader
+// .global sprite_setMosaicSize
 // .global sub_8002F2C
-// .global sub_8002F5C
-// .global sub_8002F90 // () -> void
+// .global sprite_setFlip
+// .global sprite_noShadow // () -> void
 // .global sub_8002FA6
 // .global sub_8003006
 // .global FreeOverworldNPCObject

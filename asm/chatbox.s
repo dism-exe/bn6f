@@ -4368,7 +4368,7 @@ chatbox_8041F1C:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldr r5, [r0,#oGameState_OverworldPlayerObjectPtr]
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	pop {r5}
 	mov r1, #0x80
 	and r1, r0
@@ -5480,7 +5480,7 @@ chatbox_8042770:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
 	pop {r4,r5}

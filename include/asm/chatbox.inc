@@ -83,8 +83,8 @@
 // .global sprite_setAnimation // (u8 a1) -> void
 
 	.include "asm/asm00_1.inc"
-// .global sub_8002DEA
-// .global sub_8002F90 // () -> void
+// .global sprite_getFrameParameters
+// .global sprite_noShadow // () -> void
 // .global sub_8003914
 // .global sub_8003A64
 // .global gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void

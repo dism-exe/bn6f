@@ -160,7 +160,7 @@
 // .global InitializeOverworldNPCObjectStructs
 // .global InitializeOverworldMapObjectStructs
 // .global sub_8003694
-// .global byte_8006660
+// .global math_cosTable
 // .global byte_80066E0
 
 	.include "asm/asm00_2.inc"

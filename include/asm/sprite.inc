@@ -35,11 +35,11 @@
 	.global sprite_getMosaicScalingParameters
 	.global sprite_makeScalable
 	.global sprite_makeUnscalable
-	.global sprite_setPallete // (int pallete) -> void
-	.global sprite_getPallete
+	.global sprite_setPalette // (int pallete) -> void
+	.global sprite_getPalette
 	.global sprite_setAnimation // (u8 a1) -> void
-	.global sprite_forceWhitePallete
-	.global loc_8002DB4
+	.global sprite_forceWhitePalette
+	.global sprite_setFinalPalette
 
 
 /* External Symbols */

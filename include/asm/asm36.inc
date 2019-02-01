@@ -118,7 +118,7 @@
 // .global sub_8002906
 
 	.include "asm/asm00_1.inc"
-// .global sub_800307C
+// .global sprite_setCoordinates
 // .global sub_80035A2
 // .global sub_800378C
 // .global sub_80037F4

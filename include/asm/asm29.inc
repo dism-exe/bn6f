@@ -78,21 +78,21 @@
 // .global sub_8002CCE
 // .global sprite_makeScalable
 // .global sprite_makeUnscalable
-// .global sprite_setPallete // (int pallete) -> void
+// .global sprite_setPalette // (int pallete) -> void
 // .global sprite_setAnimation // (u8 a1) -> void
-// .global sprite_forceWhitePallete
+// .global sprite_forceWhitePalette
 
 	.include "asm/asm00_1.inc"
-// .global sub_8002DEA
+// .global sprite_getFrameParameters
 // .global sub_8002E04
 // .global sub_8002E14
-// .global sub_8002E3C
+// .global sprite_hasShadow
 // .global sub_8002E52
-// .global sub_8002ED0
-// .global sub_8002EF6
+// .global sprite_setColorShader
+// .global sprite_setMosaicSize
 // .global sub_8002F2C
-// .global sub_8002F5C
-// .global sub_8002F90 // () -> void
+// .global sprite_setFlip
+// .global sprite_noShadow // () -> void
 // .global sub_8002FA6
 // .global sub_8003694
 // .global sub_80037AC
@@ -100,11 +100,11 @@
 // .global FreeOverworldMapObject
 // .global sub_80062C8
 // .global engine_isScreeneffectAnimating // () -> zf
-// .global byte_80065E0
-// .global byte_8006660
+// .global math_sinTable
+// .global math_cosTable
 
 	.include "asm/asm00_2.inc"
-// .global sub_800F23C
+// .global enemy_getStruct2
 // .global sub_80136CC
 // .global sub_80137B6 // (int a1, int a2) -> u8
 // .global sub_80137FE

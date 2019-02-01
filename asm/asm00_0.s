@@ -1832,7 +1832,7 @@ locret_800119E:
 	thumb_func_start sub_80011A0
 sub_80011A0:
 	lsl r0, r0, #1
-	ldr r2, off_80011B8 // =byte_8006660 
+	ldr r2, off_80011B8 // =math_cosTable 
 	ldrsh r3, [r2,r0]
 	ldr r2, off_80011BC // =byte_80066E0 
 	ldrsh r2, [r2,r0]
@@ -1843,7 +1843,7 @@ sub_80011A0:
 	asr r1, r2, #8
 	mov pc, lr
 	.balign 4, 0x00
-off_80011B8: .word byte_8006660
+off_80011B8: .word math_cosTable
 off_80011BC: .word byte_80066E0
 	thumb_func_end sub_80011A0
 

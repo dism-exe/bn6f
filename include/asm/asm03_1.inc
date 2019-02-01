@@ -281,7 +281,7 @@
 // .global sub_8005F6C
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
-// .global byte_80065E0
+// .global math_sinTable
 // .global sub_80068EC
 // .global sub_8006910
 // .global RandomizeExtraToolkitPointers

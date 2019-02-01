@@ -341,32 +341,32 @@
 // .global sprite_getMosaicScalingParameters
 // .global sprite_makeScalable
 // .global sprite_makeUnscalable
-// .global sprite_setPallete // (int pallete) -> void
+// .global sprite_setPalette // (int pallete) -> void
 // .global sprite_setAnimation // (u8 a1) -> void
 
 	.include "asm/asm00_1.inc"
-// .global sub_8002DEA
+// .global sprite_getFrameParameters
 // .global sub_8002E14
-// .global sub_8002ED0
+// .global sprite_setColorShader
 // .global sub_8002EE8
 // .global loc_8002F02
 // .global sub_8002F3E
-// .global sub_8002F5C
-// .global sub_8002F90 // () -> void
+// .global sprite_setFlip
+// .global sprite_noShadow // () -> void
 // .global sub_8002FA6
 // .global sub_8002FB2
 // .global sub_8002FEC
 // .global sub_800304A
 // .global sub_8003060
 // .global sub_800306C
-// .global sub_800307C
-// .global sub_800308A
-// .global sub_80030A8
+// .global sprite_setCoordinates
+// .global sprite_addCoordinates
+// .global sprite_getCoordinates
 // .global sub_8005524
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
-// .global byte_80065E0
-// .global byte_8006660
+// .global math_sinTable
+// .global math_cosTable
 // .global sub_80077B4
 // .global battle_isPaused
 // .global battle_isTimeStop
@@ -383,24 +383,24 @@
 // .global object_isValidPanel
 // .global object_checkPanelParameters
 // .global object_isPanelSolid
-// .global object_getPanelsExceptCurrentFilterred
-// .global sub_800CEA0
-// .global sub_800CFA6
-// .global sub_800CFDC
-// .global sub_800D086
-// .global sub_800D0BC
-// .global sub_800D3FE
+// .global object_getPanelsExceptCurrentFiltered
+// .global object_getPanelsFiltered
+// .global object_getPanelsIgnoreColumnFiltered
+// .global object_getPanelsInColumnFiltered
+// .global object_getClosestPanelMatchingRowFiltered
+// .global object_getFirstPanelInDirectionFiltered
+// .global object_getPanelRegion
 // .global sub_800D45C
 // .global sub_800D5F0
 // .global sub_800E258
-// .global sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-// .global sub_800E29C // () -> void
-// .global sub_800E2AC
-// .global sub_800E2C0
-// .global sub_800E2C2
-// .global object_getFlipDirection_800E2CA // () -> int
+// .global object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
+// .global object_setCoordinatesFromPanels // () -> void
+// .global object_setPanelsFromCoordinates
+// .global object_getEnemyDirection
+// .global object_getAllianceDirection
+// .global object_getFrontDirection // () -> int
 // .global sub_800E360
-// .global sub_800E456 // () -> int
+// .global object_getFlip // () -> int
 // .global object_canMove
 // .global sub_800E994
 // .global object_setCounterTime
@@ -416,8 +416,8 @@
 // .global sub_80103F8
 // .global sub_8010C76
 // .global sub_8010CE0
-// .global sub_8011680
-// .global sub_8011714
+// .global object_setAttack0
+// .global object_exitAttackState
 // .global loc_801171C
 // .global sub_80126E4
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
@@ -442,23 +442,23 @@
 // .global sub_8016EC4
 // .global sub_8018810
 // .global off_8019B78
-// .global sub_801A04C
-// .global sub_801A066
-// .global sub_801A074 // () -> void
-// .global sub_801A07C
+// .global object_updateCollisionPanels
+// .global object_setCollisionPanelsToCurrent
+// .global object_clearCollisionRegion // () -> void
+// .global object_setCollisionRegion
 // .global sub_801A082
 // .global object_setFlag // (int a1) -> void
 // .global object_clearFlag // (int bitfield) -> void
 // .global object_getFlag // () -> int
-// .global sub_801A176
-// .global sub_801A258
+// .global object_clearFlag2
+// .global object_setCollisionStatusEffect1
 // .global sub_801A284
 // .global sub_801A29A
 // .global sub_801A2B0
 // .global sub_801A5E2
 // .global sub_801A7F4
-// .global sub_801BB1C
-// .global sub_801BB46
+// .global object_reservePanel
+// .global object_removePanelReserve
 // .global sub_801BD3C
 // .global sub_801DC36
 // .global sub_801DC7C
@@ -546,7 +546,7 @@
 // .global sub_80C407C
 // .global sub_80C4086
 // .global sub_80C4090
-// .global sub_80C536A
+// .global object_spawnCollisionRegion
 // .global sub_80C579E
 // .global sub_80C59F6
 // .global sub_80CBAB8

@@ -2782,8 +2782,8 @@ loc_8143324:
 	mov r1, #0xf0
 	and r0, r1
 	lsl r0, r0, #1
-	ldr r1, off_8143390 // =byte_8006660 
-	ldr r2, off_8143394 // =byte_80065E0 
+	ldr r1, off_8143390 // =math_cosTable 
+	ldr r2, off_8143394 // =math_sinTable 
 	ldrsh r1, [r1,r0]
 	ldrsh r2, [r2,r0]
 	mov r0, #0x80
@@ -2815,8 +2815,8 @@ loc_8143386:
 	blt loc_8143324
 locret_814338E:
 	pop {r4-r7,pc}
-off_8143390: .word byte_8006660
-off_8143394: .word byte_80065E0
+off_8143390: .word math_cosTable
+off_8143394: .word math_sinTable
 off_8143398: .word byte_2000D20
 	thumb_func_end sub_8143314
 

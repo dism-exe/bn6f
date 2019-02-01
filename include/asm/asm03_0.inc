@@ -226,13 +226,13 @@
 // .global sprite_load // (int a1, int a2, int a3) ->
 // .global sub_8002A64
 // .global sub_8002ADE
-// .global sprite_setPallete // (int pallete) -> void
+// .global sprite_setPalette // (int pallete) -> void
 // .global sprite_setAnimation // (u8 a1) -> void
-// .global sprite_forceWhitePallete
+// .global sprite_forceWhitePalette
 
 	.include "asm/asm00_1.inc"
-// .global sub_8002E3C
-// .global sub_8002F5C
+// .global sprite_hasShadow
+// .global sprite_setFlip
 // .global sub_80035A2
 // .global SpawnOverworldNPCObject
 // .global sub_8004D48
@@ -242,8 +242,8 @@
 // .global sub_80062EC
 // .global engine_isScreeneffectAnimating // () -> zf
 // .global loc_80062FC
-// .global byte_80065E0
-// .global byte_8006660
+// .global math_sinTable
+// .global math_cosTable
 // .global modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
 // .global sub_80070BC
 // .global sub_80076A0
@@ -284,17 +284,17 @@
 
 	.include "asm/object.inc"
 // .global object_getPanelParameters
-// .global sub_800C90A
+// .global object_getPanelDataOffset
 // .global object_isValidPanel
 // .global object_checkPanelParameters
-// .global sub_800D012
-// .global sub_800D086
-// .global sub_800E29C // () -> void
-// .global sub_800E2C0
-// .global sub_800E2C2
-// .global object_getFlipDirection_800E2CA // () -> int
+// .global object_getPanelsInRowFiltered
+// .global object_getClosestPanelMatchingRowFiltered
+// .global object_setCoordinatesFromPanels // () -> void
+// .global object_getEnemyDirection
+// .global object_getAllianceDirection
+// .global object_getFrontDirection // () -> int
 // .global object_addHP
-// .global sub_800E456 // () -> int
+// .global object_getFlip // () -> int
 // .global sub_800E680
 // .global sub_800EA0E
 // .global object_setInvulnerableTime
@@ -303,8 +303,8 @@
 // .global sub_800EC3C
 
 	.include "asm/asm00_2.inc"
-// .global sub_800F214
-// .global sub_800F2B6
+// .global enemy_getStruct1
+// .global object_setAnimation
 // .global sub_800F2C6
 // .global sub_800F378
 // .global sub_800F46C
@@ -328,11 +328,11 @@
 // .global sub_8011020
 // .global sub_8011268
 // .global sub_8011384
-// .global sub_8011680
-// .global loc_8011690
-// .global loc_8011694
+// .global object_setAttack0
+// .global object_setAttack4
+// .global object_setAttack5
 // .global sub_80116AE
-// .global sub_8011714
+// .global object_exitAttackState
 // .global sub_8012EA8
 // .global sub_8013682 // (int idx) -> void*
 // .global sub_80136CC
@@ -360,17 +360,17 @@
 // .global sub_8015BEC
 // .global sub_8015CC0
 // .global sub_80182B4
-// .global sub_801A04C
-// .global sub_801A074 // () -> void
-// .global sub_801A07C
+// .global object_updateCollisionPanels
+// .global object_clearCollisionRegion // () -> void
+// .global object_setCollisionRegion
 // .global object_clearFlag // (int bitfield) -> void
 // .global object_getFlag // () -> int
-// .global sub_801A16C
-// .global sub_801A176
+// .global object_setFlag2
+// .global object_clearFlag2
 // .global sub_801A264
 // .global sub_801A66C
-// .global sub_801BB1C
-// .global sub_801BB46
+// .global object_reservePanel
+// .global object_removePanelReserve
 // .global sub_801BCD0
 // .global sub_801BEB8
 // .global sub_801BEC2

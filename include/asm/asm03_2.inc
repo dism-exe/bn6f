@@ -118,7 +118,7 @@
 // .global sprite_makeUnscalable
 
 	.include "asm/asm00_1.inc"
-// .global sub_800307C
+// .global sprite_setCoordinates
 // .global SpawnObjectsFromList
 // .global sub_8003962
 // .global sub_800399A
@@ -128,7 +128,7 @@
 // .global sub_8005F84
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global engine_isScreeneffectAnimating // () -> zf
-// .global byte_80065E0
+// .global math_sinTable
 // .global sub_8006920
 // .global sub_8006990
 // .global sub_8006A5C

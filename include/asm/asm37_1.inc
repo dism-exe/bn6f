@@ -121,8 +121,8 @@
 // .global SpawnOverworldMapObject
 // .global sub_8004822
 // .global engine_isScreeneffectAnimating // () -> zf
-// .global byte_80065E0
-// .global byte_8006660
+// .global math_sinTable
+// .global math_cosTable
 
 	.include "asm/asm03_0.inc"
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void

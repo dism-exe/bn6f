@@ -104,18 +104,18 @@
 // .global sub_8002CCE
 // .global sprite_makeScalable
 // .global sprite_makeUnscalable
-// .global sprite_setPallete // (int pallete) -> void
+// .global sprite_setPalette // (int pallete) -> void
 // .global sprite_setAnimation // (u8 a1) -> void
 
 	.include "asm/asm00_1.inc"
-// .global sub_8002DEA
+// .global sprite_getFrameParameters
 // .global sub_8002E04
 // .global sub_8002E14
-// .global sub_8002E3C
+// .global sprite_hasShadow
 // .global sub_8002E52
-// .global sub_8002ED0
+// .global sprite_setColorShader
 // .global sub_8002EE8
-// .global sub_8002F90 // () -> void
+// .global sprite_noShadow // () -> void
 // .global sub_80037AC
 // .global sub_8003962
 // .global sub_8003984

@@ -309,7 +309,7 @@ sub_81302D0:
 	mov r5, r1
 	ldr r0, [sp]
 	mov r1, #0x44 
-	bl sub_800307C
+	bl sprite_setCoordinates
 loc_81302EE:
 	add sp, sp, #4
 	pop {r4-r7,pc}
@@ -7297,7 +7297,7 @@ loc_81340C4:
 	mov r5, r1
 	mov r0, #0x30 
 	mov r1, #0x58 
-	bl sub_800307C
+	bl sprite_setCoordinates
 	str r7, [r5,#0x14]
 loc_81340D0:
 	add r6, #1
@@ -7319,7 +7319,7 @@ sub_81340DC:
 	mov r5, r1
 	mov r0, #0xc0
 	mov r1, #3
-	bl sub_800307C
+	bl sprite_setCoordinates
 locret_81340F6:
 	pop {r4-r7,pc}
 off_81340F8: .word byte_813314C
