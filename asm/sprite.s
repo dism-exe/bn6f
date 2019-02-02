@@ -48,6 +48,9 @@ off_80026E0: .word sub_3006792+1
 	thumb_func_end sprite_chatbox_80026D6
 
 // (int a1, int a2, int a3) ->
+/* r0 = 0x80
+   r1 = sprite category
+   r2 = sprite index*/
 	thumb_func_start sprite_load
 sprite_load:
 	push {r4,r5,lr}
@@ -1025,25 +1028,25 @@ locret_8002D7E:
 	thumb_func_end sprite_makeUnscalable
 
 // (int pallete) -> void
-	thumb_func_start sprite_setPallete
-sprite_setPallete:
+	thumb_func_start sprite_setPalette
+sprite_setPalette:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
 	strb r0, [r3,#4]
 	mov pc, lr
-	thumb_func_end sprite_setPallete
+	thumb_func_end sprite_setPalette
 
-	thumb_func_start sprite_getPallete
-sprite_getPallete:
+	thumb_func_start sprite_getPalette
+sprite_getPalette:
 	ldrb r3, [r0,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r0
 	ldrb r0, [r3,#4]
 	mov pc, lr
-	thumb_func_end sprite_getPallete
+	thumb_func_end sprite_getPalette
 
 	thumb_local_start
 sprite_setAnimationAlt:
@@ -1066,11 +1069,11 @@ sprite_setAnimation:
 	mov pc, lr
 	thumb_func_end sprite_setAnimation
 
-	thumb_func_start sprite_forceWhitePallete
-sprite_forceWhitePallete:
+	thumb_func_start sprite_forceWhitePalette
+sprite_forceWhitePalette:
 	mov r1, #0xf0
-	b loc_8002DB4
-loc_8002DB4:
+	b sprite_setFinalPalette
+sprite_setFinalPalette:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1081,10 +1084,10 @@ loc_8002DB4:
 	orr r0, r1
 	strb r0, [r3,#0x15]
 	mov pc, lr
-	thumb_func_end sprite_forceWhitePallete
+	thumb_func_end sprite_forceWhitePalette
 
-	thumb_func_start sub_8002DC8
-sub_8002DC8:
+	thumb_func_start sprite_getFinalPalette
+sprite_getFinalPalette:
 	ldrb r3, [r0,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1093,10 +1096,10 @@ sub_8002DC8:
 	mov r1, #0xf0
 	and r1, r0
 	mov pc, lr
-	thumb_func_end sub_8002DC8
+	thumb_func_end sprite_getFinalPalette
 
-	thumb_func_start sub_8002DD8
-sub_8002DD8:
+	thumb_func_start sprite_clearFinalPalette
+sprite_clearFinalPalette:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1106,10 +1109,10 @@ sub_8002DD8:
 	bic r0, r1
 	strb r0, [r3,#0x15]
 	mov pc, lr
-	thumb_func_end sub_8002DD8
+	thumb_func_end sprite_clearFinalPalette
 
-	thumb_func_start sub_8002DEA
-sub_8002DEA:
+	thumb_func_start sprite_getFrameParameters
+sprite_getFrameParameters:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1124,7 +1127,7 @@ loc_8002DFE:
 	ldrb r1, [r3]
 	ldrb r2, [r3]
 	mov pc, lr
-	thumb_func_end sub_8002DEA
+	thumb_func_end sprite_getFrameParameters
 
 	thumb_func_start sub_8002E04
 sub_8002E04:
@@ -1166,8 +1169,8 @@ sub_8002E2A:
 	mov pc, lr
 	thumb_func_end sub_8002E2A
 
-	thumb_func_start sub_8002E3C
-sub_8002E3C:
+	thumb_func_start sprite_hasShadow
+sprite_hasShadow:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1179,7 +1182,7 @@ sub_8002E3C:
 	bic r0, r1
 	strb r0, [r3,#3]
 	mov pc, lr
-	thumb_func_end sub_8002E3C
+	thumb_func_end sprite_hasShadow
 
 	thumb_func_start sub_8002E52
 sub_8002E52:
@@ -1265,25 +1268,25 @@ sub_8002EBE:
 	mov pc, lr
 	thumb_func_end sub_8002EBE
 
-	thumb_func_start sub_8002ED0
-sub_8002ED0:
+	thumb_func_start sprite_setColorShader
+sprite_setColorShader:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
 	strh r0, [r3,#6]
 	mov pc, lr
-	thumb_func_end sub_8002ED0
+	thumb_func_end sprite_setColorShader
 
-	thumb_func_start sub_8002EDC
-sub_8002EDC:
+	thumb_func_start sprite_getColorShader
+sprite_getColorShader:
 	ldrb r3, [r0,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r0
 	ldrh r0, [r3,#6]
 	mov pc, lr
-	thumb_func_end sub_8002EDC
+	thumb_func_end sprite_getColorShader
 
 	thumb_func_start sub_8002EE8
 sub_8002EE8:
@@ -1296,8 +1299,8 @@ sub_8002EE8:
 	mov pc, lr
 	thumb_func_end sub_8002EE8
 
-	thumb_func_start sub_8002EF6
-sub_8002EF6:
+	thumb_func_start sprite_setMosaicSize
+sprite_setMosaicSize:
 	lsl r1, r1, #4
 	orr r0, r1
 	mov r2, #0x10
@@ -1327,7 +1330,7 @@ loc_8002F06:
 	orr r1, r0
 	strh r1, [r3,#2]
 	mov pc, lr
-	thumb_func_end sub_8002EF6
+	thumb_func_end sprite_setMosaicSize
 
 	thumb_func_start sub_8002F2C
 sub_8002F2C:
@@ -1361,8 +1364,8 @@ sub_8002F3E:
 	.hword 0x2000
 	thumb_func_end sub_8002F3E
 
-	thumb_func_start sub_8002F5C
-sub_8002F5C:
+	thumb_func_start sprite_setFlip
+sprite_setFlip:
 	ldrb r3, [r5,#oObjectHeader_SpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1380,10 +1383,10 @@ sub_8002F5C:
 	orr r1, r2
 	strb r1, [r3,#oObjectSprite_Unk_16]
 	mov pc, lr
-	thumb_func_end sub_8002F5C
+	thumb_func_end sprite_setFlip
 
-	thumb_func_start sub_8002F7E
-sub_8002F7E:
+	thumb_func_start sprite_getFlip
+sprite_getFlip:
 	ldrb r3, [r0,#oObjectHeader_SpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1393,11 +1396,11 @@ sub_8002F7E:
 	and r0, r1
 	lsr r0, r0, #4
 	mov pc, lr
-	thumb_func_end sub_8002F7E
+	thumb_func_end sprite_getFlip
 
 // () -> void
-	thumb_func_start sub_8002F90
-sub_8002F90:
+	thumb_func_start sprite_noShadow
+sprite_noShadow:
 	ldrb r3, [r5,#oObjectHeader_SpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1409,7 +1412,7 @@ sub_8002F90:
 	bic r0, r1
 	strb r0, [r3,#oObjectSprite_Unk_03]
 	mov pc, lr
-	thumb_func_end sub_8002F90
+	thumb_func_end sprite_noShadow
 
 	thumb_func_start sub_8002FA6
 sub_8002FA6:
@@ -1566,8 +1569,8 @@ sub_800306C:
 	mov pc, lr
 	thumb_func_end sub_800306C
 
-	thumb_func_start sub_800307C
-sub_800307C:
+	thumb_func_start sprite_setCoordinates
+sprite_setCoordinates:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1575,10 +1578,10 @@ sub_800307C:
 	strh r0, [r3,#0xc]
 	strh r1, [r3,#0xe]
 	mov pc, lr
-	thumb_func_end sub_800307C
+	thumb_func_end sprite_setCoordinates
 
-	thumb_func_start sub_800308A
-sub_800308A:
+	thumb_func_start sprite_addCoordinates
+sprite_addCoordinates:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1594,10 +1597,10 @@ sub_800308A:
 	mov r2, #0xe
 	strh r1, [r3,r2]
 	mov pc, lr
-	thumb_func_end sub_800308A
+	thumb_func_end sprite_addCoordinates
 
-	thumb_func_start sub_80030A8
-sub_80030A8:
+	thumb_func_start sprite_getCoordinates
+sprite_getCoordinates:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1607,7 +1610,7 @@ sub_80030A8:
 	mov r1, #0xe
 	ldrsh r1, [r3,r1]
 	mov pc, lr
-	thumb_func_end sub_80030A8
+	thumb_func_end sprite_getCoordinates
 
 	thumb_func_start sub_80030BA
 sub_80030BA:

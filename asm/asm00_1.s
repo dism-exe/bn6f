@@ -68,7 +68,7 @@ RunBattleObjectLogic:
 	str r7, [r0]
 	mov r5, #0x10
 	add r5, r5, r7
-	ldrb r4, [r5]
+	ldrb r4, [r5,#oBattleObject_Flags]
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_GameStatePtr]
 	ldrb r0, [r6,#oGameState_Unk_0a]
@@ -3985,7 +3985,7 @@ sub_8005360:
 	bl sub_8007800
 	bne locret_800536C
 	mov r0, #0
-	strb r0, [r5]
+	strb r0, [r5,#oGameState_SubsystemIndex]
 locret_800536C:
 	pop {pc}
 	thumb_func_end sub_8005360
@@ -5963,7 +5963,7 @@ off_80065B8: .word byte_80065BC
 byte_80065BC: .byte 0x0, 0x10, 0x0, 0x18, 0x0, 0x20, 0x0, 0x28, 0x0, 0x30, 0x0, 0x38
 	.byte 0x0, 0x40, 0x0, 0x48, 0x0, 0x50, 0x0, 0x58, 0x0, 0x60, 0x0, 0x68
 	.byte 0x0, 0x70, 0x0, 0x78, 0x0, 0x7C, 0x0, 0x7C, 0x0, 0x7C, 0x0, 0x0
-byte_80065E0: .byte 0x0, 0x0, 0x6, 0x0, 0xC, 0x0, 0x12, 0x0, 0x19, 0x0, 0x1F, 0x0, 0x25
+math_sinTable: .byte 0x0, 0x0, 0x6, 0x0, 0xC, 0x0, 0x12, 0x0, 0x19, 0x0, 0x1F, 0x0, 0x25
 	.byte 0x0, 0x2B, 0x0, 0x31, 0x0, 0x38, 0x0, 0x3E, 0x0, 0x44, 0x0, 0x4A, 0x0
 	.byte 0x50, 0x0, 0x56, 0x0, 0x5C, 0x0, 0x61, 0x0, 0x67, 0x0, 0x6D, 0x0, 0x73
 	.byte 0x0, 0x78, 0x0, 0x7E, 0x0, 0x83, 0x0, 0x88, 0x0, 0x8E, 0x0, 0x93, 0x0
@@ -5973,7 +5973,7 @@ byte_80065E0: .byte 0x0, 0x0, 0x6, 0x0, 0xC, 0x0, 0x12, 0x0, 0x19, 0x0, 0x1F, 0x
 	.byte 0x0, 0xE7, 0x0, 0xEA, 0x0, 0xEC, 0x0, 0xEE, 0x0, 0xF1, 0x0, 0xF3, 0x0
 	.byte 0xF4, 0x0, 0xF6, 0x0, 0xF8, 0x0, 0xF9, 0x0, 0xFB, 0x0, 0xFC, 0x0, 0xFD
 	.byte 0x0, 0xFE, 0x0, 0xFE, 0x0, 0xFF, 0x0, 0xFF, 0x0, 0xFF, 0x0
-byte_8006660: .byte 0x0, 0x1, 0xFF, 0x0, 0xFF, 0x0, 0xFF, 0x0, 0xFE, 0x0, 0xFE, 0x0
+math_cosTable: .byte 0x0, 0x1, 0xFF, 0x0, 0xFF, 0x0, 0xFF, 0x0, 0xFE, 0x0, 0xFE, 0x0
 	.byte 0xFD, 0x0, 0xFC, 0x0, 0xFB, 0x0, 0xF9, 0x0, 0xF8, 0x0, 0xF6, 0x0
 	.byte 0xF4, 0x0, 0xF3, 0x0, 0xF1, 0x0, 0xEE, 0x0, 0xEC, 0x0, 0xEA, 0x0
 	.byte 0xE7, 0x0, 0xE4, 0x0, 0xE1, 0x0, 0xDE, 0x0, 0xDB, 0x0, 0xD8, 0x0
@@ -7379,7 +7379,7 @@ loc_8007232:
 loc_8007236:
 	mov r0, #1
 	bl sub_800719A
-	bl batle_clearEnemyFadeinList
+	bl battle_clearEnemyFadeinList
 	mov r0, #1
 	strb r0, [r5,#0x1b]
 	ldr r0, off_8007308 // =dword_2036820 
@@ -7722,7 +7722,7 @@ sub_80074FA:
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1d
 	push {r0,r1}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	ldrb r2, [r0,#3]
 	pop {r0,r1}
 	ldrb r3, [r6,#2]
@@ -7741,7 +7741,7 @@ sub_800751C:
 	lsl r0, r0, #0x1d
 	lsr r0, r0, #0x1d
 	push {r0,r1}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	ldrb r2, [r0,#3]
 	pop {r0,r1}
 	ldrb r3, [r6,#2]
@@ -7766,7 +7766,7 @@ sub_800753C:
 	strb r1, [r5,#0x13]
 	strb r0, [r5,#0x14]
 	strb r1, [r5,#0x15]
-	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
+	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	str r0, [r5,#0x34]
 	str r1, [r5,#0x38]
 	mov r2, #0
@@ -7808,7 +7808,7 @@ loc_80075A2:
 	ldrb r1, [r0,#2]
 	strb r1, [r4,#1]
 	ldrh r0, [r5,#0x28]
-	bl sub_800F214
+	bl enemy_getStruct1
 	ldrb r1, [r0,#2]
 	strb r1, [r4,#3]
 	mov r0, #0xff
@@ -7936,7 +7936,7 @@ loc_80076A8:
 	mov r7, r0
 	ldr r0, [sp,#4]
 	ldr r1, [sp,#8]
-	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
+	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	mov r3, #0
 	mov r2, r1
 	mov r1, r0
@@ -7983,11 +7983,11 @@ loc_8007708:
 	ldrb r1, [r0,#2]
 	strb r1, [r4,#1]
 	ldr r0, [sp]
-	bl sub_800F214
+	bl enemy_getStruct1
 	ldrb r1, [r0,#2]
 	strb r1, [r4,#3]
 	ldr r0, [sp]
-	bl sub_800F23C
+	bl enemy_getStruct2
 	ldrh r1, [r0]
 	mov r2, r1
 	lsl r2, r2, #0x14
@@ -8371,7 +8371,7 @@ sub_8007A0C:
 	ldr r0, [r0,#0xc]
 	bl sub_80029A8
 loc_8007A36:
-	bl batle_clearEnemyFadeinList
+	bl battle_clearEnemyFadeinList
 	mov r0, #4
 	str r0, [r5]
 	pop {pc}
@@ -14770,7 +14770,7 @@ battle_networkInvert:
 	thumb_func_end battle_networkInvert
 
 	thumb_local_start
-batle_clearEnemyFadeinList:
+battle_clearEnemyFadeinList:
 	push {lr}
 	mov r0, #0
 	bl sub_800AAAE
@@ -14778,7 +14778,7 @@ batle_clearEnemyFadeinList:
 	mov r1, #0x80
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
-	thumb_func_end batle_clearEnemyFadeinList
+	thumb_func_end battle_clearEnemyFadeinList
 
 	thumb_func_start sub_800AA06
 sub_800AA06:
@@ -15078,7 +15078,7 @@ loc_800ABB8:
 	thumb_func_start sub_800ABC6
 sub_800ABC6:
 	push {r4,lr}
-	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
+	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	mov r2, r1
 	mov r1, r0
 	mov r3, #0x10
@@ -16814,7 +16814,7 @@ sub_800B8EE:
 	mul r0, r1
 	add r0, #2
 	mov r1, #4
-	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
+	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	mov r2, r1
 	mov r1, r0
 	mov r3, #0x78 
@@ -16826,8 +16826,8 @@ sub_800B8EE:
 	pop {r4,pc}
 	thumb_func_end sub_800B8EE
 
-	thumb_func_start sub_800B916
-sub_800B916:
+	thumb_func_start object_timefreezeBegin
+object_timefreezeBegin:
 	push {lr}
 	ldrb r0, [r5,#0x16]
 	bl battle_networkInvert
@@ -16852,10 +16852,10 @@ loc_800B938:
 	strb r0, [r5,#8]
 	pop {pc}
 off_800B948: .word unk_200F3B8
-	thumb_func_end sub_800B916
+	thumb_func_end object_timefreezeBegin
 
-	thumb_func_start sub_800B94C
-sub_800B94C:
+	thumb_func_start object_dimScreen
+object_dimScreen:
 	push {lr}
 	ldrb r0, [r5,#0xb]
 	tst r0, r0
@@ -16881,7 +16881,7 @@ loc_800B964:
 	strh r0, [r5,#0xa]
 locret_800B97C:
 	pop {pc}
-	thumb_func_end sub_800B94C
+	thumb_func_end object_dimScreen
 
 	thumb_func_start sub_800B97E
 sub_800B97E:
@@ -16912,8 +16912,8 @@ locret_800B9AE:
 	pop {pc}
 	thumb_func_end sub_800B97E
 
-	thumb_func_start sub_800B9B0
-sub_800B9B0:
+	thumb_func_start object_drawChipName
+object_drawChipName:
 	push {lr}
 	ldrb r0, [r5,#0xb]
 	tst r0, r0
@@ -17017,7 +17017,7 @@ loc_800BA7E:
 	strh r0, [r5,#0xa]
 locret_800BA88:
 	pop {pc}
-	thumb_func_end sub_800B9B0
+	thumb_func_end object_drawChipName
 
 	thumb_func_start sub_800BA8A
 sub_800BA8A:
@@ -17269,8 +17269,8 @@ locret_800BC86:
 	pop {pc}
 	thumb_func_end sub_800BBA8
 
-	thumb_func_start sub_800BC88
-sub_800BC88:
+	thumb_func_start object_undimScreen
+object_undimScreen:
 	push {lr}
 	ldrb r0, [r5,#0xb]
 	tst r0, r0
@@ -17300,7 +17300,7 @@ loc_800BCB8:
 locret_800BCBC:
 	pop {pc}
 	.byte 0, 0
-	thumb_func_end sub_800BC88
+	thumb_func_end object_undimScreen
 
 	thumb_func_start sub_800BCC0
 sub_800BCC0:

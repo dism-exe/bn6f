@@ -188,7 +188,7 @@ sub_812EBD8:
 loc_812EBF8:
 	mov r1, #0x34 
 loc_812EBFA:
-	bl sub_800307C
+	bl sprite_setCoordinates
 loc_812EBFE:
 	add sp, sp, #4
 	pop {r4-r7,pc}

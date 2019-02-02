@@ -31,7 +31,7 @@
 // .global GetPositiveSignedRNG2
 
 	.include "asm/asm00_1.inc"
-// .global sub_8002DEA
+// .global sprite_getFrameParameters
 // .global sub_800A704
 
 	.include "asm/object.inc"
@@ -39,10 +39,10 @@
 // .global object_setPanelAlliance
 // .global object_setPanelAllianceTimerLong
 // .global object_checkPanelParameters
-// .global sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-// .global sub_800E29C // () -> void
-// .global sub_800E2AC
-// .global object_getFlipDirection_800E2CA // () -> int
+// .global object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
+// .global object_setCoordinatesFromPanels // () -> void
+// .global object_setPanelsFromCoordinates
+// .global object_getFrontDirection // () -> int
 // .global object_addHP
 // .global object_canMove
 // .global object_setCounterTime
@@ -53,8 +53,8 @@
 	.include "asm/asm00_2.inc"
 // .global sub_800ED90
 // .global sub_800F322
-// .global sub_8011680
-// .global sub_8011714
+// .global object_setAttack0
+// .global object_exitAttackState
 // .global sub_80126E4
 // .global sub_8015C94
 // .global sub_8015D80
@@ -66,15 +66,15 @@
 // .global sub_8016B36
 // .global sub_8016B72
 // .global sub_8016CE8
-// .global sub_801A04C
-// .global sub_801A074 // () -> void
-// .global sub_801A07C
+// .global object_updateCollisionPanels
+// .global object_clearCollisionRegion // () -> void
+// .global object_setCollisionRegion
 // .global sub_801A082
 // .global object_setFlag // (int a1) -> void
 // .global object_clearFlag // (int bitfield) -> void
 // .global object_getFlag // () -> int
-// .global sub_801BB1C
-// .global sub_801BB46
+// .global object_reservePanel
+// .global object_removePanelReserve
 // .global sub_801DC7C
 // .global sub_801DD34
 
@@ -83,7 +83,7 @@
 
 	.include "asm/asm31.inc"
 // .global sub_80C4072
-// .global sub_80C536A
+// .global object_spawnCollisionRegion
 // .global sub_80C5578
 // .global sub_80CB8DE
 // .global sub_80E05F6

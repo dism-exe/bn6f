@@ -9,7 +9,7 @@ sub_8026450:
 	str r0, [sp,#8]
 	str r1, [sp,#0xc]
 	mov r4, r2
-	bl object_getFlipDirection_800E2CA // () -> int
+	bl object_getFrontDirection // () -> int
 	mov r6, r0
 loc_8026464:
 	mov r0, #0
@@ -59,7 +59,7 @@ sub_80264A8:
 	str r0, [sp,#8]
 	str r1, [sp,#0xc]
 	mov r4, r2
-	bl object_getFlipDirection_800E2CA // () -> int
+	bl object_getFrontDirection // () -> int
 	mov r6, r0
 loc_80264BC:
 	mov r0, #0
@@ -113,7 +113,7 @@ sub_8026510:
 	mov r6, r2
 	mov r7, r3
 	push {r0,r1}
-	bl object_getFlipDirection_800E2CA // () -> int
+	bl object_getFrontDirection // () -> int
 	mov r4, r0
 	pop {r0,r1}
 loc_8026520:
@@ -196,7 +196,7 @@ loc_80265D8:
 	bl sub_8026450
 	cmp r0, #0
 	bne loc_80265FA
-	bl object_getFlipDirection_800E2CA // () -> int
+	bl object_getFrontDirection // () -> int
 	mov r1, #0
 	ldrsb r1, [r4,r1]
 	cmp r1, #0x7f
@@ -9320,7 +9320,7 @@ locret_802AEE8:
 sub_802AEEA:
 	push {r5-r7,lr}
 	mov r6, r0
-	bl sub_800F214
+	bl enemy_getStruct1
 	ldrb r1, [r0,#1]
 	ldrb r0, [r0]
 	bl sub_8002A64
@@ -9346,7 +9346,7 @@ sub_802AF0E:
 	strb r1, [r0,#0x13]
 	strb r1, [r0,#0x15]
 	mov r5, r0
-	bl sub_800E29C // () -> void
+	bl object_setCoordinatesFromPanels // () -> void
 	pop {r5,pc}
 	thumb_func_end sub_802AF0E
 
@@ -9355,7 +9355,7 @@ sub_802AF28:
 	push {r5,lr}
 	mov r5, r0
 	ldr r0, dword_802AF34 // =0x80000 
-	bl sub_801A16C
+	bl object_setFlag2
 	pop {r5,pc}
 dword_802AF34: .word 0x80000
 	thumb_func_end sub_802AF28
@@ -13738,7 +13738,7 @@ sub_802D430:
 	str r3, [sp,#4]
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
-	bl sub_801BB1C
+	bl object_reservePanel
 	add r7, sp, #8
 	mov r4, #1
 	mov r6, #0
@@ -13778,7 +13778,7 @@ loc_802D47C:
 	mov r0, r4
 	ldr r2, [sp]
 	ldr r3, [sp,#4]
-	bl sub_800D012
+	bl object_getPanelsInRowFiltered
 	add r6, r6, r0
 	add r7, r7, r0
 loc_802D494:
@@ -13803,7 +13803,7 @@ loc_802D4B6:
 	push {r0,r1}
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
-	bl sub_801BB46
+	bl object_removePanelReserve
 	pop {r0,r1}
 	add sp, sp, #0x20
 	pop {r4,r6,r7,pc}
@@ -13884,7 +13884,7 @@ loc_802D524:
 	strh r1, [r7,#8]
 loc_802D55A:
 	ldrb r0, [r4,#0xb]
-	bl loc_8011694
+	bl object_setAttack5
 	ldrb r0, [r4,#0xf]
 	strb r0, [r7,#0x1d]
 	mov r0, #8
@@ -14130,26 +14130,26 @@ sub_802D738:
 	strb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x15]
 	strb r1, [r5,#0x13]
-	bl sub_801BB46
-	bl sub_800E29C // () -> void
+	bl object_removePanelReserve
+	bl object_setCoordinatesFromPanels // () -> void
 	mov r0, #0
 	str r0, [r5,#0x3c]
-	bl sub_801A04C
+	bl object_updateCollisionPanels
 	bl sub_800F46C
 	strb r0, [r5,#0x17]
 	bl sub_800F2C6
 	ldr r0, dword_802D798 // =0x1c41 
 	bl object_clearFlag // (int bitfield) -> void
 	ldr r1, dword_802D79C // =0x10 
-	bl sub_801A176
+	bl object_clearFlag2
 	mov r0, #4
-	bl sub_800F2B6
+	bl object_setAnimation
 	mov r0, #0
 	str r0, [r5,#0x4c]
 	ldr r1, [r5,#0x58]
 	str r0, [r1,#0x68]
 	mov r0, #1
-	bl sub_801A07C
+	bl object_setCollisionRegion
 	mov r0, #4
 	strh r0, [r7,#0x10]
 	mov r0, #4
@@ -14241,16 +14241,16 @@ loc_802D822:
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	mov r0, #3
 	strb r0, [r5,#0x10]
 	strb r0, [r5,#0x10]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sub_801002C
-	bl sprite_setPallete // (int pallete) -> void
-	bl sub_800E456 // () -> int
-	bl sub_8002F5C
+	bl sprite_setPalette // (int pallete) -> void
+	bl object_getFlip // () -> int
+	bl sprite_setFlip
 	mov r1, #0x29 
 	bl sub_8013774
 	cmp r0, #0
@@ -14322,7 +14322,7 @@ loc_802D900:
 	bl sub_801031C
 	ldr r0, dword_802DCB0 // =0x8600 
 	bl sub_800FFEE
-	bl sub_8011714
+	bl object_exitAttackState
 locret_802D924:
 	pop {pc}
 	thumb_func_end sub_802D8F0
@@ -14358,20 +14358,20 @@ sub_802D950:
 	strb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x15]
 	strb r1, [r5,#0x13]
-	bl sub_801BB46
-	bl sub_800E29C // () -> void
+	bl object_removePanelReserve
+	bl object_setCoordinatesFromPanels // () -> void
 	mov r0, #0
 	str r0, [r5,#0x3c]
-	bl sub_801A04C
+	bl object_updateCollisionPanels
 	bl sub_800F46C
 	strb r0, [r5,#0x17]
 	bl sub_800F2C6
 	ldr r0, dword_802DCB4 // =0x1c41 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r1, #0x10
-	bl sub_801A176
+	bl object_clearFlag2
 	mov r0, #4
-	bl sub_800F2B6
+	bl object_setAnimation
 	mov r0, #0
 	str r0, [r5,#0x4c]
 	ldr r1, [r5,#0x58]
@@ -14426,16 +14426,16 @@ sub_802D9B0:
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	mov r0, #3
 	strb r0, [r5,#0x10]
 	strb r0, [r5,#0x10]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sub_801002C
-	bl sprite_setPallete // (int pallete) -> void
-	bl sub_800E456 // () -> int
-	bl sub_8002F5C
+	bl sprite_setPalette // (int pallete) -> void
+	bl object_getFlip // () -> int
+	bl sprite_setFlip
 	bl sub_8010DD0
 	mov r1, #0x2c 
 	bl sub_8013774
@@ -14487,7 +14487,7 @@ loc_802DA88:
 	bl sub_801031C
 	ldr r0, dword_802DCC0 // =0x4008600 
 	bl sub_800FFEE
-	bl sub_8011714
+	bl object_exitAttackState
 locret_802DAA6:
 	pop {pc}
 	thumb_func_end sub_802DA78
@@ -14512,7 +14512,7 @@ off_802DABC: .word sub_802DACC+1
 	thumb_local_start
 sub_802DACC:
 	push {lr}
-	bl sprite_forceWhitePallete
+	bl sprite_forceWhitePalette
 	ldrb r0, [r7,#1]
 	tst r0, r0
 	bne loc_802DB4A
@@ -14522,24 +14522,24 @@ sub_802DACC:
 	strb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x15]
 	strb r1, [r5,#0x13]
-	bl sub_801BB46
-	bl sub_800E29C // () -> void
+	bl object_removePanelReserve
+	bl object_setCoordinatesFromPanels // () -> void
 	mov r0, #0
 	str r0, [r5,#0x3c]
-	bl sub_801A04C
+	bl object_updateCollisionPanels
 	bl sub_800F46C
 	strb r0, [r5,#0x17]
 	bl sub_800F2C6
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
-	bl sub_801BB1C
-	bl sub_801A074 // () -> void
+	bl object_reservePanel
+	bl object_clearCollisionRegion // () -> void
 	ldr r0, dword_802DCB4 // =0x1c41 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r1, #0x10
-	bl sub_801A176
+	bl object_clearFlag2
 	mov r0, #2
-	bl sub_800F2B6
+	bl object_setAnimation
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -14573,12 +14573,12 @@ locret_802DB56:
 	thumb_local_start
 sub_802DB58:
 	push {lr}
-	bl sprite_forceWhitePallete
+	bl sprite_forceWhitePalette
 	ldrb r0, [r7,#1]
 	tst r0, r0
 	bne loc_802DB72
 	mov r0, #4
-	bl sub_800F2B6
+	bl object_setAnimation
 	mov r0, #4
 	strh r0, [r7,#0x10]
 	mov r0, #4
@@ -14626,16 +14626,16 @@ sub_802DB80:
 	mov r0, #0x80
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	mov r0, #3
 	strb r0, [r5,#0x10]
 	strb r0, [r5,#0x10]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sub_801002C
-	bl sprite_setPallete // (int pallete) -> void
-	bl sub_800E456 // () -> int
-	bl sub_8002F5C
+	bl sprite_setPalette // (int pallete) -> void
+	bl object_getFlip // () -> int
+	bl sprite_setFlip
 	bl sub_8010DD0
 	mov r1, #0x2c 
 	bl sub_8013774
@@ -14659,7 +14659,7 @@ sub_802DB80:
 	bl sub_801A66C
 	ldrb r0, [r5,#0x14]
 	ldrb r1, [r5,#0x15]
-	bl sub_801BB46
+	bl object_removePanelReserve
 	ldr r0, off_802DCA4 // =GameEntryPoint 
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_801086C
@@ -14685,7 +14685,7 @@ sub_802DC66:
 	tst r0, r0
 	bne loc_802DC7C
 	mov r0, #1
-	bl sub_801A07C
+	bl object_setCollisionRegion
 	mov r0, #4
 	strh r0, [r7,#0x10]
 	mov r0, #4
@@ -14703,7 +14703,7 @@ loc_802DC7C:
 	bl sub_800FFEE
 	mov r0, #4
 	bl battle_clearFlags
-	bl sub_8011714
+	bl object_exitAttackState
 locret_802DCA0:
 	pop {pc}
 	.balign 4, 0x00
@@ -15018,7 +15018,7 @@ sub_802DF34:
 	strh r1, [r7]
 	strb r1, [r7,#4]
 	ldrb r0, [r0,#0xb]
-	bl sub_8011680
+	bl object_setAttack0
 	mov r0, #0x40 
 	bl sub_801DACC
 	ldrb r0, [r5,#0x16]
@@ -15061,7 +15061,7 @@ sub_802DF8C:
 	strh r1, [r7]
 	strb r1, [r7,#4]
 	ldrb r0, [r0,#0xb]
-	bl sub_8011680
+	bl object_setAttack0
 	mov r0, #0x40 
 	bl sub_801DACC
 	pop {r7,pc}
@@ -15243,7 +15243,7 @@ sub_802E0D4:
 	mov r0, #2
 	strb r0, [r7,#3]
 	mov r0, #0x10
-	bl loc_8011690
+	bl object_setAttack4
 	bl sub_80EB04C
 	pop {r7,pc}
 	strb r0, [r7,#0x16]
@@ -15252,7 +15252,7 @@ sub_802E0D4:
 	mov r0, #2
 	strb r0, [r7,#3]
 	mov r0, #0x3f
-	bl loc_8011690
+	bl object_setAttack4
 	bl sub_80EB234
 	pop {r7,pc}
 	thumb_func_end sub_802E0D4
@@ -16302,7 +16302,7 @@ sub_802E8FE:
 	mov r7, r1
 	mov r5, r2
 	mov r0, r2
-	bl sub_800E2C2
+	bl object_getAllianceDirection
 	mov r4, r0
 loc_802E90E:
 	add r6, r6, r4
@@ -16500,7 +16500,7 @@ sub_802EB60:
 	mov r0, #0
 	str r0, [r6,#0xc]
 	mov r0, #0x11
-	bl sub_8011680
+	bl object_setAttack0
 	mov r0, #2
 	pop {pc}
 	thumb_func_end sub_802EB60
@@ -16521,7 +16521,7 @@ sub_802EB80:
 	ldr r0, off_802EBA4 // =0x23c 
 	str r0, [r6,#0xc]
 	mov r0, #0x2b 
-	bl sub_8011680
+	bl object_setAttack0
 	mov r0, #1
 	pop {pc}
 off_802EBA4: .word 0x23C
@@ -16543,7 +16543,7 @@ sub_802EBA8:
 	ldr r0, off_802EBCC // =0x13c 
 	str r0, [r6,#0xc]
 	mov r0, #0x2b 
-	bl sub_8011680
+	bl object_setAttack0
 	mov r0, #1
 	pop {pc}
 off_802EBCC: .word 0x13C
@@ -16686,7 +16686,7 @@ loc_802ED0E:
 	ldrb r0, [r0,r1]
 	bl sub_802EEA2
 	mov r0, #0x11
-	bl sub_8011680
+	bl object_setAttack0
 	mov r0, #0
 	mov r1, #0
 	pop {pc}
@@ -16710,7 +16710,7 @@ sub_802ED68:
 	strh r0, [r6,#8]
 	str r0, [r6,#0xc]
 	mov r0, #0x33 
-	bl sub_8011680
+	bl object_setAttack0
 	mov r0, #0
 	mov r1, #0
 	pop {pc}
@@ -16734,7 +16734,7 @@ sub_802ED8A:
 	mov r0, #0x8b
 	bl sub_802EEA2
 	mov r0, #0x2b 
-	bl sub_8011680
+	bl object_setAttack0
 	mov r0, #1
 	mov r1, #0
 	pop {pc}
@@ -16760,7 +16760,7 @@ sub_802EDBC:
 	mov r0, #0xa
 	bl sub_802EEA2
 	mov r0, #0x16
-	bl sub_8011680
+	bl object_setAttack0
 	mov r0, #1
 	mov r1, #0
 	pop {pc}
@@ -16786,7 +16786,7 @@ sub_802EDEC:
 	mov r0, #1
 	strb r0, [r6,#4]
 	mov r0, #0x13
-	bl sub_8011680
+	bl object_setAttack0
 	mov r0, #0x95
 	bl sub_802EEA2
 	mov r0, #1
@@ -16871,7 +16871,7 @@ sub_802EEC4:
 	bl sub_802EFEE
 	mov r7, r0
 	beq loc_802EF44
-	bl sub_800E2C0
+	bl object_getEnemyDirection
 	neg r4, r0
 	ldrb r0, [r5,#0x16]
 	bl sub_802E070
@@ -16882,7 +16882,7 @@ sub_802EEC4:
 	ldrb r1, [r7,#0x13]
 	str r0, [sp]
 	str r1, [sp,#4]
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_802EF00
 	ldr r0, [sp]
@@ -16913,7 +16913,7 @@ loc_802EF18:
 	ldr r2, [r3]
 	ldr r3, [r3,#4]
 	ldr r1, [sp,#4]
-	bl sub_800D086
+	bl object_getClosestPanelMatchingRowFiltered
 	ldr r1, [sp,#4]
 	b loc_802EF44
 loc_802EF2E:
@@ -17007,7 +17007,7 @@ loc_802EFD4:
 	thumb_local_start
 sub_802EFD8:
 	push {lr}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	ldrb r1, [r0,#3]
 	ldrb r0, [r5,#0x16]
 	cmp r0, r1
@@ -17048,7 +17048,7 @@ sub_802F006:
 	bl sub_80103BC
 	mov r5, r0
 	beq loc_802F05E
-	bl sub_800E2C0
+	bl object_getEnemyDirection
 	ldrb r2, [r5,#0x12]
 	add r2, r2, r0
 	ldrb r0, [r6,#0x12]
@@ -18800,7 +18800,7 @@ sub_802FE7A:
 	bl sub_802FF10
 	strb r3, [r0,#9]
 	mov r3, r7
-	ldr r1, off_802FF0C // =byte_8006660 
+	ldr r1, off_802FF0C // =math_cosTable 
 	ldrsh r4, [r1,r5]
 	mul r4, r3
 	lsr r4, r4, #4
@@ -18809,7 +18809,7 @@ sub_802FE7A:
 	mul r4, r3
 	lsr r4, r4, #4
 	strh r4, [r0]
-	ldr r1, off_802FF08 // =byte_80065E0 
+	ldr r1, off_802FF08 // =math_sinTable 
 	ldrsh r4, [r1,r5]
 	mul r4, r3
 	lsr r4, r4, #4
@@ -18823,7 +18823,7 @@ sub_802FE7A:
 	bl sub_802FF10
 	strb r3, [r0,#0xa]
 	mov r3, r7
-	ldr r1, off_802FF0C // =byte_8006660 
+	ldr r1, off_802FF0C // =math_cosTable 
 	ldrsh r4, [r1,r5]
 	mul r4, r3
 	lsr r4, r4, #4
@@ -18832,7 +18832,7 @@ sub_802FE7A:
 	mul r4, r3
 	lsr r4, r4, #4
 	strh r4, [r0,#6]
-	ldr r1, off_802FF08 // =byte_80065E0 
+	ldr r1, off_802FF08 // =math_sinTable 
 	ldrsh r4, [r1,r5]
 	neg r4, r4
 	mul r4, r3
@@ -18845,8 +18845,8 @@ sub_802FE7A:
 	strh r4, [r0,#4]
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_802FF08: .word byte_80065E0
-off_802FF0C: .word byte_8006660
+off_802FF08: .word math_sinTable
+off_802FF0C: .word math_cosTable
 	thumb_func_end sub_802FE7A
 
 	thumb_local_start

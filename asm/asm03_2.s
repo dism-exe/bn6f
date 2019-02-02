@@ -8203,7 +8203,7 @@ loc_804AF9C:
 	mov r5, r1
 	ldr r0, dword_804AFB4 // =0xffffffd8 
 	mov r1, #0x58 
-	bl sub_800307C
+	bl sprite_setCoordinates
 	str r7, [r5,#0x14]
 loc_804AFA8:
 	add r6, #1
@@ -9714,7 +9714,7 @@ dword_804C620: .word 0x800
 	thumb_local_start
 sub_804C624:
 	push {r4-r7,lr}
-	ldr r3, off_804C650 // =byte_80065E0 
+	ldr r3, off_804C650 // =math_sinTable 
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CurFramePtr]
 	ldrh r0, [r0]
@@ -9736,7 +9736,7 @@ loc_804C644:
 	strh r0, [r4,#0x1a]
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_804C650: .word byte_80065E0
+off_804C650: .word math_sinTable
 dword_804C654: .word 0x1FE
 	thumb_func_end sub_804C624
 

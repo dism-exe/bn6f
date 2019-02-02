@@ -775,7 +775,7 @@ loc_800C3D4:
 	strb r0, [r7,#2]
 	mov r0, r4
 	mov r1, r5
-	bl sub_800C928
+	bl object_updatePanelParameters
 	bl sub_800C488
 	strh r1, [r7,#0xe]
 	pop {r4-r7,pc}
@@ -807,7 +807,7 @@ loc_800C402:
 	strb r0, [r7,#2]
 	mov r0, r4
 	mov r1, r5
-	bl sub_800C928
+	bl object_updatePanelParameters
 	bl sub_800C488
 	strh r1, [r7,#0xe]
 	mov r0, #0x97
@@ -844,7 +844,7 @@ loc_800C45C:
 	strb r0, [r7,#2]
 	mov r0, r4
 	mov r1, r5
-	bl sub_800C928
+	bl object_updatePanelParameters
 	ldr r1, off_800C4B4 // =0x708 
 	strh r1, [r7,#0x12]
 	pop {r4-r7,pc}
@@ -1152,7 +1152,7 @@ sub_800C6F0:
 loc_800C700:
 	mov r0, r4
 	mov r1, r5
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800C734
 	ldrb r1, [r0,#3]
@@ -1282,7 +1282,7 @@ loc_800C7EA:
 loc_800C7EC:
 	mov r0, r6
 	mov r1, r7
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	ldrb r3, [r0,#3]
 	strb r3, [r0,#7]
 	ldrh r1, [r0,#0x10]
@@ -1325,7 +1325,7 @@ loc_800C828:
 	strb r1, [r0,#0x10]
 	mov r0, r4
 	mov r1, r5
-	bl sub_800C928
+	bl object_updatePanelParameters
 loc_800C842:
 	add r5, #1
 	tst r7, r7
@@ -1393,7 +1393,7 @@ loc_800C898:
 	strb r1, [r7,#4]
 	mov r0, r4
 	mov r1, r5
-	bl sub_800C928
+	bl object_updatePanelParameters
 	add r4, #1
 	cmp r4, #8
 	blt loc_800C898
@@ -1431,7 +1431,7 @@ sub_800C8F0:
 	thumb_func_start object_getPanelParameters
 object_getPanelParameters:
 	push {lr}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800C906
 	ldr r0, [r0,#0x14]
@@ -1441,15 +1441,15 @@ loc_800C906:
 	pop {pc}
 	thumb_func_end object_getPanelParameters
 
-	thumb_func_start sub_800C90A
-sub_800C90A:
+	thumb_func_start object_getPanelDataOffset
+object_getPanelDataOffset:
 	push {lr}
 	ldr r2, off_800C914 // =sub_3007958+1 
 	mov lr, pc
 	bx r2
 	pop {pc}
 off_800C914: .word sub_3007958+1
-	thumb_func_end sub_800C90A
+	thumb_func_end object_getPanelDataOffset
 
 	thumb_local_start
 sub_800C918:
@@ -1463,7 +1463,7 @@ off_800C924: .word sub_30078C8+1
 	thumb_func_end sub_800C918
 
 	thumb_local_start
-sub_800C928:
+object_updatePanelParameters:
 	push {lr}
 	ldr r2, off_800C934 // =sub_30078E0+1 
 	mov lr, pc
@@ -1471,12 +1471,12 @@ sub_800C928:
 	pop {pc}
 	.balign 4, 0x00
 off_800C934: .word sub_30078E0+1
-	thumb_func_end sub_800C928
+	thumb_func_end object_updatePanelParameters
 
 	thumb_func_start object_crackPanel
 object_crackPanel:
 	push {lr}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800C988
 	ldr r1, [r0,#0x14]
@@ -1524,7 +1524,7 @@ dword_800C994: .word 0x3F0F
 	thumb_func_start object_crackPanelDup1
 object_crackPanelDup1:
 	push {lr}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800C9E8
 	ldr r1, [r0,#0x14]
@@ -1572,7 +1572,7 @@ dword_800C9F4: .word 0x3F0F
 	thumb_func_start object_breakPanel
 object_breakPanel:
 	push {lr}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800CA28
 	ldr r1, [r0,#0x14]
@@ -1603,7 +1603,7 @@ dword_800CA30: .word 0x3F5F
 	thumb_func_start object_breakPanel_dup1
 object_breakPanel_dup1:
 	push {lr}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800CA7C
 	ldr r1, [r0,#0x14]
@@ -1647,7 +1647,7 @@ dword_800CA88: .word 0x3F0F
 	thumb_func_start object_breakPanel_dup2
 object_breakPanel_dup2:
 	push {lr}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800CAD8
 	ldr r1, [r0,#0x14]
@@ -1693,7 +1693,7 @@ dword_800CAE4: .word 0x3F0F
 	thumb_func_start object_breakPanel_dup3
 object_breakPanel_dup3:
 	push {lr}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800CB34
 	ldr r1, [r0,#0x14]
@@ -1739,7 +1739,7 @@ dword_800CB40: .word 0x3F0F
 	thumb_func_start object_breakPanelLoud
 object_breakPanelLoud:
 	push {lr}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800CB90
 	ldr r1, [r0,#0x14]
@@ -1785,7 +1785,7 @@ dword_800CB9C: .word 0x3F0F
 	thumb_func_start object_panel_setPoison
 object_panel_setPoison:
 	push {lr}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800CBCC
 	ldr r1, [r0,#0x14]
@@ -1818,7 +1818,7 @@ object_highlightPanel:
 	bl object_isValidPanel
 	pop {r0,r1}
 	beq locret_800CBEC
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	mov r1, #1
 	strb r1, [r0,#1]
 locret_800CBEC:
@@ -1832,7 +1832,7 @@ object_highlightPanelBlue:
 	bl object_isValidPanel
 	pop {r0,r1}
 	beq locret_800CC08
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	ldrb r1, [r0,#1]
 	cmp r1, #1
 	beq locret_800CC08
@@ -1857,7 +1857,7 @@ object_setPanelAlliance:
 	mov r4, r0
 	mov r5, r1
 	mov r6, r2
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	ldrb r3, [r0,#2]
 	tst r3, r3
 	beq locret_800CC34
@@ -1866,7 +1866,7 @@ object_setPanelAlliance:
 	strh r2, [r0,#0x10]
 	mov r0, r4
 	mov r1, r5
-	bl sub_800C928
+	bl object_updatePanelParameters
 locret_800CC34:
 	pop {r4-r6,pc}
 	thumb_func_end object_setPanelAlliance
@@ -1897,7 +1897,7 @@ object_setPanelAllianceTimerShort:
 object_setPanelTypeBlink:
 	push {lr}
 	push {r2,r3}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	pop {r2,r3}
 	mov r1, #1
 	strb r1, [r0,#0xd]
@@ -2117,7 +2117,7 @@ object_dead_getPanelsTypeAllianceCount:
 loc_800CDC8:
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	ldrb r1, [r0,#3]
 	ldr r2, [sp,#0xc]
 	cmp r1, r2
@@ -2158,7 +2158,7 @@ object_dead_getPanelsTypeCount:
 loc_800CE10:
 	mov r0, r6
 	mov r1, r7
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	ldrb r1, [r0,#2]
 	cmp r1, r4
 	bne loc_800CE20
@@ -2178,7 +2178,7 @@ loc_800CE20:
 	thumb_func_start object_hidePanel
 object_hidePanel:
 	push {lr}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq locret_800CE40
 	mov r1, #0
@@ -2190,7 +2190,7 @@ locret_800CE40:
 	thumb_local_start
 object_showPanel:
 	push {lr}
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq locret_800CE50
 	mov r1, #1
@@ -2204,8 +2204,8 @@ off_800CE5C: .word 0x708
 off_800CE60: .word unk_2034010
 	thumb_func_end object_showPanel
 
-	thumb_func_start object_getPanelsExceptCurrentFilterred
-object_getPanelsExceptCurrentFilterred:
+	thumb_func_start object_getPanelsExceptCurrentFiltered
+object_getPanelsExceptCurrentFiltered:
 	push {r4,r6,lr}
 	mov r6, #0
 	mov r1, #3
@@ -2239,10 +2239,10 @@ loc_800CE94:
 	bne loc_800CE6A
 	mov r0, r6
 	pop {r4,r6,pc}
-	thumb_func_end object_getPanelsExceptCurrentFilterred
+	thumb_func_end object_getPanelsExceptCurrentFiltered
 
-	thumb_func_start sub_800CEA0
-sub_800CEA0:
+	thumb_func_start object_getPanelsFiltered
+object_getPanelsFiltered:
 	push {r4,r6,lr}
 	mov r6, #0
 	mov r1, #3
@@ -2269,10 +2269,10 @@ loc_800CEC4:
 	bne loc_800CEA6
 	mov r0, r6
 	pop {r4,r6,pc}
-	thumb_func_end sub_800CEA0
+	thumb_func_end object_getPanelsFiltered
 
 	thumb_local_start
-sub_800CED0:
+object_getRandomPanelFromCurrentColumn:
 	push {r7,lr}
 	sub sp, sp, #0x10
 	push {r1}
@@ -2289,7 +2289,7 @@ loc_800CEE6:
 	ldr r3, [r2,#4]
 	ldr r2, [r2]
 	add r7, sp, #0
-	bl sub_800CF14
+	bl object_getPanelsInColumnIgnoreRowFiltered
 	tst r0, r0
 	beq loc_800CF0E
 	push {r0}
@@ -2307,10 +2307,10 @@ loc_800CF0E:
 	add sp, sp, #0x10
 	mov r2, r0
 	pop {r7,pc}
-	thumb_func_end sub_800CED0
+	thumb_func_end object_getRandomPanelFromCurrentColumn
 
-	thumb_func_start sub_800CF14
-sub_800CF14:
+	thumb_func_start object_getPanelsInColumnIgnoreRowFiltered
+object_getPanelsInColumnIgnoreRowFiltered:
 	push {r4,r6,lr}
 	mov r6, #0
 	mov r4, r1
@@ -2335,10 +2335,10 @@ loc_800CF38:
 	ble loc_800CF1C
 	mov r0, r6
 	pop {r4,r6,pc}
-	thumb_func_end sub_800CF14
+	thumb_func_end object_getPanelsInColumnIgnoreRowFiltered
 
-	thumb_func_start sub_800CF42
-sub_800CF42:
+	thumb_func_start object_getPanelsInRowIgnoreColumnFiltered
+object_getPanelsInRowIgnoreColumnFiltered:
 	push {r4,r6,lr}
 	mov r6, #0
 	mov r4, r0
@@ -2363,10 +2363,10 @@ loc_800CF66:
 	ble loc_800CF4A
 	mov r0, r6
 	pop {r4,r6,pc}
-	thumb_func_end sub_800CF42
+	thumb_func_end object_getPanelsInRowIgnoreColumnFiltered
 
-	thumb_func_start sub_800CF70
-sub_800CF70:
+	thumb_func_start object_getPanelsIgnoreRowFiltered
+object_getPanelsIgnoreRowFiltered:
 	push {r4,r6,lr}
 	mov r6, #0
 	mov r4, r0
@@ -2397,10 +2397,10 @@ loc_800CF9C:
 	ble loc_800CF78
 	mov r0, r6
 	pop {r4,r6,pc}
-	thumb_func_end sub_800CF70
+	thumb_func_end object_getPanelsIgnoreRowFiltered
 
-	thumb_func_start sub_800CFA6
-sub_800CFA6:
+	thumb_func_start object_getPanelsIgnoreColumnFiltered
+object_getPanelsIgnoreColumnFiltered:
 	push {r4,r6,lr}
 	mov r6, #0
 	mov r4, r0
@@ -2431,10 +2431,10 @@ loc_800CFD2:
 	ble loc_800CFAE
 	mov r0, r6
 	pop {r4,r6,pc}
-	thumb_func_end sub_800CFA6
+	thumb_func_end object_getPanelsIgnoreColumnFiltered
 
-	thumb_func_start sub_800CFDC
-sub_800CFDC:
+	thumb_func_start object_getPanelsInColumnFiltered
+object_getPanelsInColumnFiltered:
 	push {r4-r7,lr}
 	sub sp, sp, #8
 	mov r4, r0
@@ -2463,10 +2463,10 @@ loc_800D006:
 	mov r0, r6
 	add sp, sp, #8
 	pop {r4-r7,pc}
-	thumb_func_end sub_800CFDC
+	thumb_func_end object_getPanelsInColumnFiltered
 
-	thumb_func_start sub_800D012
-sub_800D012:
+	thumb_func_start object_getPanelsInRowFiltered
+object_getPanelsInRowFiltered:
 	push {r4-r7,lr}
 	sub sp, sp, #8
 	mov r4, #1
@@ -2495,10 +2495,10 @@ loc_800D03C:
 	mov r0, r6
 	add sp, sp, #8
 	pop {r4-r7,pc}
-	thumb_func_end sub_800D012
+	thumb_func_end object_getPanelsInRowFiltered
 
 	thumb_local_start
-sub_800D048:
+object_getEnemyPlayerPanelY:
 	push {lr}
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
@@ -2518,10 +2518,10 @@ loc_800D066:
 	ldrb r0, [r5,#0x13]
 locret_800D068:
 	pop {pc}
-	thumb_func_end sub_800D048
+	thumb_func_end object_getEnemyPlayerPanelY
 
-	thumb_func_start sub_800D06A
-sub_800D06A:
+	thumb_func_start object_getEnemyPlayerPanels
+object_getEnemyPlayerPanels:
 	push {lr}
 	ldrb r0, [r5,#0x16]
 	mov r1, #1
@@ -2536,13 +2536,13 @@ loc_800D080:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	pop {pc}
-	thumb_func_end sub_800D06A
+	thumb_func_end object_getEnemyPlayerPanels
 
-	thumb_func_start sub_800D086
-sub_800D086:
+	thumb_func_start object_getClosestPanelMatchingRowFiltered
+object_getClosestPanelMatchingRowFiltered:
 	push {r4,r5,lr}
 	push {r0-r3}
-	bl sub_800E2C2
+	bl object_getAllianceDirection
 	mov r5, r0
 	neg r5, r5
 	pop {r0-r3}
@@ -2566,10 +2566,10 @@ loc_800D09E:
 	mov r0, #0
 locret_800D0BA:
 	pop {r4,r5,pc}
-	thumb_func_end sub_800D086
+	thumb_func_end object_getClosestPanelMatchingRowFiltered
 
-	thumb_func_start sub_800D0BC
-sub_800D0BC:
+	thumb_func_start object_getFirstPanelInDirectionFiltered
+object_getFirstPanelInDirectionFiltered:
 	push {lr}
 loc_800D0BE:
 	push {r0-r3}
@@ -2586,10 +2586,10 @@ loc_800D0BE:
 	mov r0, #0
 locret_800D0DA:
 	pop {pc}
-	thumb_func_end sub_800D0BC
+	thumb_func_end object_getFirstPanelInDirectionFiltered
 
 	thumb_local_start
-sub_800D0DC:
+object_getFirstPanelInDirectionWithinDistanceFiltered:
 	push {lr}
 loc_800D0DE:
 	push {r0-r3}
@@ -2609,10 +2609,10 @@ loc_800D0FC:
 	mov r0, #0
 locret_800D0FE:
 	pop {pc}
-	thumb_func_end sub_800D0DC
+	thumb_func_end object_getFirstPanelInDirectionWithinDistanceFiltered
 
 	thumb_local_start
-sub_800D100:
+object_getFirstPanelInDirectionFilteredDup1:
 	push {lr}
 loc_800D102:
 	push {r0-r3}
@@ -2629,7 +2629,7 @@ loc_800D102:
 	mov r0, #0
 locret_800D11E:
 	pop {pc}
-	thumb_func_end sub_800D100
+	thumb_func_end object_getFirstPanelInDirectionFilteredDup1
 
 	thumb_func_start sub_800D120
 sub_800D120:
@@ -2713,7 +2713,7 @@ loc_800D1A0:
 	ldr r1, [sp,#0x10]
 	ldr r2, [sp,#4]
 	ldr r3, [sp,#8]
-	bl sub_800D086
+	bl object_getClosestPanelMatchingRowFiltered
 	tst r0, r0
 	beq loc_800D1B6
 	add r1, sp, #0
@@ -2785,7 +2785,7 @@ sub_800D1F0:
 loc_800D220:
 	ldr r0, [sp,#0x18]
 	ldr r1, [sp,#0x1c]
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800D25C
 	ldrb r1, [r0,#3]
@@ -2846,7 +2846,7 @@ sub_800D270:
 loc_800D292:
 	ldr r0, [sp,#0x18]
 	ldr r1, [sp,#0x1c]
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800D2EC
 	ldrb r1, [r0,#3]
@@ -2861,7 +2861,7 @@ loc_800D292:
 loc_800D2B0:
 	ldr r0, [sp,#0x18]
 	ldr r1, [sp,#0x1c]
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800D2EC
 	ldrb r1, [r0,#3]
@@ -2922,7 +2922,7 @@ sub_800D300:
 loc_800D322:
 	ldr r0, [sp,#0x18]
 	ldr r1, [sp,#0x1c]
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800D392
 	ldrb r1, [r0,#3]
@@ -2949,7 +2949,7 @@ loc_800D352:
 loc_800D356:
 	ldr r0, [sp,#0x18]
 	ldr r1, [sp,#0x1c]
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800D392
 	ldrb r1, [r0,#3]
@@ -2997,7 +2997,7 @@ sub_800D3A6:
 	str r1, [sp,#0x20]
 	str r2, [sp,#0x24]
 	str r3, [sp,#0x28]
-	bl sub_800E2C0
+	bl object_getEnemyDirection
 	str r0, [sp,#0x18]
 	mov r0, #0
 	str r0, [sp,#0x2c]
@@ -3038,8 +3038,8 @@ loc_800D3F8:
 	pop {r4,pc}
 	thumb_func_end sub_800D3A6
 
-	thumb_func_start sub_800D3FE
-sub_800D3FE:
+	thumb_func_start object_getPanelRegion
+object_getPanelRegion:
 	push {r4,r6,lr}
 	sub sp, sp, #0x1c
 	str r0, [sp]
@@ -3050,7 +3050,7 @@ sub_800D3FE:
 	lsl r4, r4, #2
 	ldr r4, [r0,r4]
 	mov r0, r6
-	bl sub_800E2C2
+	bl object_getAllianceDirection
 	str r0, [sp,#0x10]
 	mov r6, #0
 loc_800D41A:
@@ -3087,7 +3087,7 @@ loc_800D452:
 	add sp, sp, #0x1c
 	pop {r4,r6,pc}
 off_800D458: .word off_8019B78
-	thumb_func_end sub_800D3FE
+	thumb_func_end object_getPanelRegion
 
 	thumb_func_start sub_800D45C
 sub_800D45C:
@@ -3150,15 +3150,15 @@ loc_800D4BC:
 	pop {pc}
 	thumb_func_end sub_800D4AC
 
-	thumb_func_start sub_800D4C2
-sub_800D4C2:
+	thumb_func_start object_getEdgePanelMatchingRow
+object_getEdgePanelMatchingRow:
 	push {lr}
 	ldrb r0, [r5,#0x16]
 	ldrb r1, [r5,#0x17]
 	ldrb r2, [r5,#0x13]
 	bl sub_800D4D0
 	pop {pc}
-	thumb_func_end sub_800D4C2
+	thumb_func_end object_getEdgePanelMatchingRow
 
 	thumb_func_start sub_800D4D0
 sub_800D4D0:
@@ -3184,7 +3184,7 @@ sub_800D4D0:
 	ldr r3, [r1,#4]
 	ldr r1, [sp,#0xc]
 	ldr r4, [sp,#0x10]
-	bl sub_800D0BC
+	bl object_getFirstPanelInDirectionFiltered
 	str r0, [sp,#8]
 	tst r0, r0
 	beq loc_800D524
@@ -3232,7 +3232,7 @@ loc_800D55E:
 	beq loc_800D582
 	ldr r0, [sp]
 	ldr r1, [sp,#4]
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	ldrb r0, [r0,#3]
 	ldr r1, [sp,#8]
 	cmp r0, r1
@@ -3257,7 +3257,7 @@ sub_800D58C:
 	bl sub_800D5BA
 	mov r6, r0
 	ldrb r7, [r5,#0x16]
-	bl object_getFlipDirection_800E2CA // () -> int
+	bl object_getFrontDirection // () -> int
 	mov r4, r0
 loc_800D59C:
 	mov r0, r6
@@ -3281,7 +3281,7 @@ sub_800D5BA:
 	push {r4,r6,r7,lr}
 	ldrb r6, [r5,#0x12]
 	ldrb r7, [r5,#0x16]
-	bl object_getFlipDirection_800E2CA // () -> int
+	bl object_getFrontDirection // () -> int
 	neg r4, r0
 loc_800D5C6:
 	mov r0, r6
@@ -3300,7 +3300,7 @@ loc_800D5E0:
 	pop {r4,r6,r7,pc}
 loc_800D5E4:
 	ldrb r6, [r5,#0x12]
-	bl object_getFlipDirection_800E2CA // () -> int
+	bl object_getFrontDirection // () -> int
 	mov r4, r0
 	b loc_800D5C6
 	pop {r4,r6,r7,pc}
@@ -3316,7 +3316,7 @@ sub_800D5F0:
 loc_800D5FA:
 	mov r0, r6
 	mov r1, r7
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800D60E
 	ldrb r1, [r0,#3]
@@ -3335,7 +3335,7 @@ loc_800D60E:
 sub_800D618:
 	push {r4,lr}
 	mov r4, r2
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq locret_800D634
 	ldrb r1, [r0,#4]
@@ -3450,7 +3450,7 @@ sub_800D6CC:
 loc_800D6E0:
 	mov r0, r4
 	mov r1, r5
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800D6FC
 	ldrb r1, [r0,#3]
@@ -3476,7 +3476,7 @@ sub_800D700:
 loc_800D70A:
 	mov r0, r6
 	mov r1, r7
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	ldrb r1, [r0,#3]
 	cmp r1, r5
 	bne loc_800D71A
@@ -3806,8 +3806,8 @@ sub_800E258:
 	thumb_func_end sub_800E258
 
 // (int a1, int a2) -> (int n1, int n2)
-	thumb_func_start sub_800E276
-sub_800E276:
+	thumb_func_start object_getCoordinatesForPanels
+object_getCoordinatesForPanels:
 	mov r2, #0x28 
 	lsl r0, r0, #0x18
 	asr r0, r0, #0x18
@@ -3825,22 +3825,22 @@ sub_800E276:
 	mov pc, lr
 dword_800E294: .word 0xFF740000
 dword_800E298: .word 0xFFEC0000
-	thumb_func_end sub_800E276
+	thumb_func_end object_getCoordinatesForPanels
 
 // () -> void
-	thumb_func_start sub_800E29C
-sub_800E29C:
+	thumb_func_start object_setCoordinatesFromPanels
+object_setCoordinatesFromPanels:
 	push {lr}
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
-	bl sub_800E276 // (int a1, int a2) -> (int n1, int n2)
+	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	str r0, [r5,#0x34]
 	str r1, [r5,#0x38]
 	pop {pc}
-	thumb_func_end sub_800E29C
+	thumb_func_end object_setCoordinatesFromPanels
 
-	thumb_func_start sub_800E2AC
-sub_800E2AC:
+	thumb_func_start object_setPanelsFromCoordinates
+object_setPanelsFromCoordinates:
 	push {lr}
 	ldr r0, [r5,#0x34]
 	ldr r1, [r5,#0x38]
@@ -3850,27 +3850,27 @@ sub_800E2AC:
 	strb r0, [r5,#0x12]
 	strb r1, [r5,#0x13]
 	pop {pc}
-	thumb_func_end sub_800E2AC
+	thumb_func_end object_setPanelsFromCoordinates
 
-	thumb_func_start sub_800E2C0
-sub_800E2C0:
+	thumb_func_start object_getEnemyDirection
+object_getEnemyDirection:
 	ldrb r0, [r5,#0x16]
-	thumb_func_end sub_800E2C0
+	thumb_func_end object_getEnemyDirection
 
-	thumb_func_start sub_800E2C2
-sub_800E2C2:
+	thumb_func_start object_getAllianceDirection
+object_getAllianceDirection:
 	lsl r0, r0, #1
 	sub r0, #1
 	neg r0, r0
 	mov pc, lr
-	thumb_func_end sub_800E2C2
+	thumb_func_end object_getAllianceDirection
 
 // () -> int
-	thumb_func_start object_getFlipDirection_800E2CA
-object_getFlipDirection_800E2CA:
+	thumb_func_start object_getFrontDirection
+object_getFrontDirection:
 	ldrb r0, [r5,#0x16]
 	ldrb r1, [r5,#0x17]
-	thumb_func_end object_getFlipDirection_800E2CA
+	thumb_func_end object_getFrontDirection
 
 // (int a1, int a2) -> int
 	thumb_func_start object_getFlipDirection
@@ -4026,13 +4026,13 @@ loc_800E3C8:
 	pop {r4,pc}
 	thumb_func_end sub_800E3BE
 
-	thumb_func_start sub_800E3DE
-sub_800E3DE:
+	thumb_func_start object_calculateFinalDamage1
+object_calculateFinalDamage1:
 	push {r4,r6,lr}
 	ldr r4, [r5,#0x54]
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	mov r4, #0
 	mov r6, #0
 	ldrb r1, [r0,#2]
@@ -4061,7 +4061,7 @@ loc_800E404:
 	add r3, #0x80
 	strh r0, [r3]
 	pop {r4,r6,pc}
-	thumb_func_end sub_800E3DE
+	thumb_func_end object_calculateFinalDamage1
 
 	thumb_func_start object_calculateFinalDamage2
 object_calculateFinalDamage2:
@@ -4069,7 +4069,7 @@ object_calculateFinalDamage2:
 	ldr r4, [r5,#0x54]
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	mov r4, #0
 	ldrb r1, [r0,#2]
 	cmp r1, #5
@@ -4096,13 +4096,13 @@ loc_800E43E:
 	thumb_func_end object_calculateFinalDamage2
 
 // () -> int
-	thumb_func_start sub_800E456
-sub_800E456:
+	thumb_func_start object_getFlip
+object_getFlip:
 	ldrb r0, [r5,#0x16]
 	ldrb r1, [r5,#0x17]
 	eor r0, r1
 	mov pc, lr
-	thumb_func_end sub_800E456
+	thumb_func_end object_getFlip
 
 	thumb_func_start sub_800E45E
 sub_800E45E:
@@ -4172,7 +4172,7 @@ sub_800E500:
 	push {r4,lr}
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
-	bl sub_800C90A
+	bl object_getPanelDataOffset
 	tst r0, r0
 	beq loc_800E52C
 	ldrb r0, [r0,#2]
@@ -4410,7 +4410,7 @@ loc_800E72C:
 sub_800E730:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #4
-	bl sub_801A180
+	bl object_getFlag2
 	str r0, [sp]
 	ldr r6, [r5,#0x54]
 	bl battle_isPaused
@@ -4424,7 +4424,7 @@ loc_800E744:
 	ldr r0, off_800E960 // =0x800 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #8
-	bl sub_801A176
+	bl object_clearFlag2
 	mov r0, #0
 	strh r0, [r6,#0x1c]
 	b loc_800E7AE
@@ -4434,7 +4434,7 @@ loc_800E75E:
 	tst r1, r0
 	beq loc_800E786
 	mov r0, #0x88
-	bl sub_801A176
+	bl object_clearFlag2
 	ldr r0, [r5,#0x5c]
 	tst r0, r0
 	bne loc_800E776
@@ -4484,7 +4484,7 @@ loc_800E7C2:
 	tst r1, r0
 	beq loc_800E7EA
 	ldr r0, dword_800E96C // =0x30080 
-	bl sub_801A176
+	bl object_clearFlag2
 	ldr r0, [r5,#0x5c]
 	tst r0, r0
 	bne loc_800E7DA
@@ -4541,7 +4541,7 @@ loc_800E836:
 	tst r1, r0
 	beq loc_800E85E
 	ldr r0, dword_800E97C // =0x20080 
-	bl sub_801A176
+	bl object_clearFlag2
 	ldr r0, [r5,#0x5c]
 	tst r0, r0
 	bne loc_800E84E
@@ -4589,7 +4589,7 @@ loc_800E894:
 	ldr r0, dword_800E980 // =0x8000 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #0x80
-	bl sub_801A176
+	bl object_clearFlag2
 	mov r0, #0
 	strh r0, [r6,#0x1e]
 	str r0, [r6,#0x48]
@@ -4600,7 +4600,7 @@ loc_800E8B0:
 	tst r1, r0
 	beq loc_800E8C6
 	ldr r0, dword_800E984 // =0x30088 
-	bl sub_801A176
+	bl object_clearFlag2
 	mov r0, #0
 	strh r0, [r6,#0x1c]
 	strh r0, [r6,#0x2a]
@@ -4632,7 +4632,7 @@ loc_800E8F6:
 	mov r0, #0x40 
 	tst r1, r0
 	beq loc_800E908
-	bl sub_801A176
+	bl object_clearFlag2
 	ldr r0, dword_800E98C // =0x4000 
 	bl object_setFlag // (int a1) -> void
 loc_800E908:
@@ -4652,7 +4652,7 @@ loc_800E920:
 	mov r0, #0x20 
 	tst r1, r0
 	beq loc_800E942
-	bl sub_801A176
+	bl object_clearFlag2
 	ldr r0, off_800E990 // =0x2000 
 	bl object_setFlag // (int a1) -> void
 	mov r7, #0x4c 
@@ -4764,7 +4764,7 @@ locret_800E9F8:
 sub_800E9FA:
 	push {lr}
 	ldr r0, dword_800ECD8 // =0x301fe 
-	bl sub_801A176
+	bl object_clearFlag2
 	ldr r0, [r5,#0x54]
 	add r0, #0x80
 	mov r1, #0xe
@@ -4776,7 +4776,7 @@ sub_800E9FA:
 sub_800EA0E:
 	push {lr}
 	ldr r0, dword_800ECD8 // =0x301fe 
-	bl sub_801A176
+	bl object_clearFlag2
 	ldr r0, [r5,#0x54]
 	add r0, #0x80
 	mov r1, #0xe
@@ -4788,7 +4788,7 @@ sub_800EA0E:
 sub_800EA22:
 	push {lr}
 	ldr r0, dword_800ECDC // =0x300ee 
-	bl sub_801A176
+	bl object_clearFlag2
 	ldr r2, [r5,#0x54]
 	mov r3, #0x74 
 	mov r0, #0
@@ -4814,7 +4814,7 @@ loc_800EA38:
 sub_800EA4E:
 	push {lr}
 	ldr r0, dword_800ECD8 // =0x301fe 
-	bl sub_801A176
+	bl object_clearFlag2
 	ldr r2, [r5,#0x54]
 	mov r3, #0x74 
 	mov r0, #0
@@ -4880,7 +4880,7 @@ locret_800EAB8:
 sub_800EABA:
 	push {lr}
 	ldr r0, dword_800ECD8 // =0x301fe 
-	bl sub_801A176
+	bl object_clearFlag2
 	pop {pc}
 	thumb_func_end sub_800EABA
 
@@ -4903,7 +4903,7 @@ sub_800EAC4:
 sub_800EADA:
 	push {lr}
 	ldr r0, dword_800ECD8 // =0x301fe 
-	bl sub_801A176
+	bl object_clearFlag2
 	ldr r0, [r5,#0x54]
 	add r0, #0x80
 	mov r1, #0xe
@@ -4969,9 +4969,9 @@ loc_800EB3C:
 	mov r1, #0x12
 	strb r1, [r3,#0x11]
 	ldr r0, dword_800ECE0 // =0x4000 
-	bl sub_801A16C
+	bl object_setFlag2
 	mov r0, #6
-	bl sub_801A176
+	bl object_clearFlag2
 locret_800EB4C:
 	pop {pc}
 	thumb_func_end sub_800EB26
@@ -4987,9 +4987,9 @@ sub_800EB4E:
 	mov r1, #0x12
 	strb r1, [r4,#0x11]
 	ldr r0, dword_800ECE0 // =0x4000 
-	bl sub_801A16C
+	bl object_setFlag2
 	mov r0, #6
-	bl sub_801A176
+	bl object_clearFlag2
 locret_800EB6A:
 	pop {r4,pc}
 	thumb_func_end sub_800EB4E
@@ -5118,7 +5118,7 @@ sub_800EC3C:
 	push {r5,lr}
 	mov r5, r0
 	ldr r0, dword_800ECE8 // =0x8000 
-	bl sub_801A16C
+	bl object_setFlag2
 	pop {r5,pc}
 	thumb_func_end sub_800EC3C
 

@@ -17,7 +17,7 @@
 	.global sub_800C5E0
 	.global sub_800C8F0
 	.global object_getPanelParameters
-	.global sub_800C90A
+	.global object_getPanelDataOffset
 	.global object_crackPanel
 	.global object_crackPanelDup1
 	.global object_breakPanel
@@ -41,22 +41,22 @@
 	.global object_highlightPanelRegion
 	.global object_highlightPanelRegionBlue
 	.global object_hidePanel
-	.global object_getPanelsExceptCurrentFilterred
-	.global sub_800CEA0
-	.global sub_800CF14
-	.global sub_800CF42
-	.global sub_800CF70
-	.global sub_800CFA6
-	.global sub_800CFDC
-	.global sub_800D012
-	.global sub_800D06A
-	.global sub_800D086
-	.global sub_800D0BC
+	.global object_getPanelsExceptCurrentFiltered
+	.global object_getPanelsFiltered
+	.global object_getPanelsInColumnIgnoreRowFiltered
+	.global object_getPanelsInRowIgnoreColumnFiltered
+	.global object_getPanelsIgnoreRowFiltered
+	.global object_getPanelsIgnoreColumnFiltered
+	.global object_getPanelsInColumnFiltered
+	.global object_getPanelsInRowFiltered
+	.global object_getEnemyPlayerPanels
+	.global object_getClosestPanelMatchingRowFiltered
+	.global object_getFirstPanelInDirectionFiltered
 	.global sub_800D120
 	.global sub_800D15A
-	.global sub_800D3FE
+	.global object_getPanelRegion
 	.global sub_800D45C
-	.global sub_800D4C2
+	.global object_getEdgePanelMatchingRow
 	.global sub_800D4D0
 	.global sub_800D58C
 	.global sub_800D5F0
@@ -64,21 +64,21 @@
 	.global sub_800D668
 	.global sub_800E24C
 	.global sub_800E258
-	.global sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-	.global sub_800E29C // () -> void
-	.global sub_800E2AC
-	.global sub_800E2C0
-	.global sub_800E2C2
-	.global object_getFlipDirection_800E2CA // () -> int
+	.global object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
+	.global object_setCoordinatesFromPanels // () -> void
+	.global object_setPanelsFromCoordinates
+	.global object_getEnemyDirection
+	.global object_getAllianceDirection
+	.global object_getFrontDirection // () -> int
 	.global object_getFlipDirection // (int a1, int a2) -> int
 	.global object_subtractHP
 	.global object_addHP
 	.global sub_800E2FC
 	.global sub_800E360
 	.global sub_800E3BE
-	.global sub_800E3DE
+	.global object_calculateFinalDamage1
 	.global object_calculateFinalDamage2
-	.global sub_800E456 // () -> int
+	.global object_getFlip // () -> int
 	.global sub_800E45E
 	.global sub_800E468
 	.global sub_800E5AC
@@ -151,9 +151,9 @@
 // .global object_setFlag // (int a1) -> void
 // .global object_clearFlag // (int bitfield) -> void
 // .global object_getFlag // () -> int
-// .global sub_801A16C
-// .global sub_801A176
-// .global sub_801A180
+// .global object_setFlag2
+// .global object_clearFlag2
+// .global object_getFlag2
 // .global sub_801BDDE
 // .global sub_801E754
 // .global loc_801E792

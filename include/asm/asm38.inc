@@ -63,8 +63,8 @@
 // .global sub_8000C5C
 
 	.include "asm/asm00_1.inc"
-// .global byte_80065E0
-// .global byte_8006660
+// .global math_sinTable
+// .global math_cosTable
 // .global sub_80068E0
 // .global battle_isPaused
 // .global battle_isTimeStop
@@ -72,7 +72,7 @@
 	.include "asm/object.inc"
 // .global object_isValidPanel
 // .global object_checkPanelParameters
-// .global sub_800E2C2
+// .global object_getAllianceDirection
 // .global object_getFlipDirection // (int a1, int a2) -> int
 
 	.include "asm/asm00_2.inc"

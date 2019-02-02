@@ -2,24 +2,24 @@
 	.equ INC_ASM_ASM00_1, 0
 
 /* Public Symbols */
-	.global sub_8002DC8
-	.global sub_8002DD8
-	.global sub_8002DEA
+	.global sprite_getFinalPalette
+	.global sprite_clearFinalPalette
+	.global sprite_getFrameParameters
 	.global sub_8002E04
 	.global sub_8002E14
-	.global sub_8002E3C
+	.global sprite_hasShadow
 	.global sub_8002E52
 	.global sub_8002EAC
-	.global sub_8002ED0
-	.global sub_8002EDC
+	.global sprite_setColorShader
+	.global sprite_getColorShader
 	.global sub_8002EE8
-	.global sub_8002EF6
+	.global sprite_setMosaicSize
 	.global loc_8002F02
 	.global sub_8002F2C
 	.global sub_8002F3E
-	.global sub_8002F5C
-	.global sub_8002F7E
-	.global sub_8002F90 // () -> void
+	.global sprite_setFlip
+	.global sprite_getFlip
+	.global sprite_noShadow // () -> void
 	.global sub_8002FA6
 	.global sub_8002FB2
 	.global sub_8002FEC
@@ -28,9 +28,9 @@
 	.global sub_800304A
 	.global sub_8003060
 	.global sub_800306C
-	.global sub_800307C
-	.global sub_800308A
-	.global sub_80030A8
+	.global sprite_setCoordinates
+	.global sprite_addCoordinates
+	.global sprite_getCoordinates
 	.global sub_80030BA
 	.global object_spawnType1
 	.global object_spawnType3
@@ -104,8 +104,8 @@
 	.global engine_isScreeneffectAnimating // () -> zf
 	.global loc_80062FC
 	.global subsystem_triggerTransition_800630A
-	.global byte_80065E0
-	.global byte_8006660
+	.global math_sinTable
+	.global math_cosTable
 	.global byte_80066E0
 	.global sub_80068E0
 	.global sub_80068EC
@@ -201,13 +201,13 @@
 	.global sub_800B8AC
 	.global sub_800B8D8
 	.global sub_800B8EE
-	.global sub_800B916
-	.global sub_800B94C
+	.global object_timefreezeBegin
+	.global object_dimScreen
 	.global sub_800B97E
-	.global sub_800B9B0
+	.global object_drawChipName
 	.global sub_800BA8A
 	.global sub_800BBA8
-	.global sub_800BC88
+	.global object_undimScreen
 	.global sub_800BCC0
 
 
@@ -289,16 +289,16 @@
 // .global sub_800C5E0
 // .global sub_800C8F0
 // .global object_getPanelParameters
-// .global sub_800C90A
-// .global sub_800E276 // (int a1, int a2) -> (int n1, int n2)
+// .global object_getPanelDataOffset
+// .global object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 // .global sub_800EC80
 // .global sub_800ED00
 // .global object_createAIData
 
 	.include "asm/asm00_2.inc"
 // .global sub_800ED80
-// .global sub_800F214
-// .global sub_800F23C
+// .global enemy_getStruct1
+// .global enemy_getStruct2
 // .global sub_800FAE0
 // .global sub_800FDC0
 // .global sub_8010018

@@ -4463,10 +4463,10 @@ loc_809D222:
 	bne loc_809D238
 	ldr r0, dword_809D344 // =0xa108 
 loc_809D234:
-	bl sub_8002ED0
+	bl sprite_setColorShader
 loc_809D238:
 	ldrb r0, [r7,#0x5] // (byte_2000AA5 - 0x2000aa0)
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0x17
 	mov r1, #0x3d 
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
@@ -4533,7 +4533,7 @@ loc_809D2B2:
 	strb r0, [r5,#0x14]
 	mov r0, #0xff
 	strb r0, [r5,#0x15]
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	str r5, [r0,#oGameState_OverworldPlayerObjectPtr]
@@ -6522,7 +6522,7 @@ sub_809E276:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	pop {r5,pc}
 	thumb_func_end sub_809E276
 
@@ -6532,7 +6532,7 @@ sub_809E284:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	pop {r5,pc}
 	thumb_func_end sub_809E284
 
@@ -6552,7 +6552,7 @@ sub_809E2A0:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	pop {r5,pc}
 	thumb_func_end sub_809E2A0
 
@@ -6672,7 +6672,7 @@ sub_809E31A:
 	ldrb r0, [r5,#0x14]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sprite_update
 	mov r0, #0
 	bl sub_8001172
@@ -6702,7 +6702,7 @@ sub_809E35E:
 	ldrb r0, [r5,#0x14]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sprite_update
 	mov r0, #0x54
 	bl sub_8001172
@@ -6817,7 +6817,7 @@ sub_809E434:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	pop {r5,pc}
 	thumb_func_end sub_809E434
 
@@ -6933,7 +6933,7 @@ loc_809E4DA:
 	ldrb r0, [r5,#0x14]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sprite_update
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E4BC
@@ -6951,7 +6951,7 @@ sub_809E4F8:
 	ldrb r0, [r5,#0x14]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sprite_update
 	pop {r4-r7,pc}
 	.byte 0, 0

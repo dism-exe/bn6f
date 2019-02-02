@@ -4,12 +4,12 @@
 /* Public Symbols */
 	.global sub_800ED80
 	.global sub_800ED90
-	.global sub_800F214
-	.global sub_800F23C
+	.global enemy_getStruct1
+	.global enemy_getStruct2
 	.global sub_800F26C
 	.global sub_800F29C
 	.global sub_800F2AA
-	.global sub_800F2B6
+	.global object_setAnimation
 	.global sub_800F2C6
 	.global sub_800F2FC
 	.global sub_800F322
@@ -37,7 +37,7 @@
 	.global sub_800FC7C
 	.global sub_800FC9E
 	.global sub_800FCFC
-	.global sub_800FDB6
+	.global object_setDefaultCounterTime
 	.global sub_800FDC0
 	.global sub_800FE12
 	.global sub_800FE28
@@ -98,17 +98,17 @@
 	.global loc_8011508
 	.global sub_801155A
 	.global sub_801156A
-	.global sub_801162A
+	.global object_applyDamage
 	.global sub_801164C
-	.global sub_8011680
-	.global sub_8011684
-	.global sub_8011688
-	.global loc_801168C
-	.global loc_8011690
-	.global loc_8011694
+	.global object_setAttack0
+	.global object_setAttack1
+	.global object_setAttack2
+	.global object_setAttack3
+	.global object_setAttack4
+	.global object_setAttack5
 	.global sub_80116AE
 	.global sub_80116D8
-	.global sub_8011714
+	.global object_exitAttackState
 	.global loc_801171C
 	.global sub_8011764
 	.global sub_801177A
@@ -203,7 +203,7 @@
 	.global sub_8016B36
 	.global sub_8016B72
 	.global sub_8016C4E
-	.global sub_8016C8A
+	.global object_genericDestroy
 	.global sub_8016C9C
 	.global sub_8016CE8
 	.global sub_8016E64
@@ -225,7 +225,7 @@
 	.global sub_8018810
 	.global sub_8018842
 	.global sub_801986C
-	.global sub_8019892
+	.global object_createCollisionData
 	.global sub_80198CE
 	.global byte_80198F4
 	.global byte_80199B6
@@ -235,25 +235,25 @@
 	.global byte_8019C34
 	.global sub_8019F86
 	.global sub_8019F8C
-	.global sub_8019FB4
-	.global sub_801A00E
-	.global sub_801A018
-	.global sub_801A04C
-	.global sub_801A066
-	.global sub_801A074 // () -> void
-	.global sub_801A07C
+	.global object_setupCollisionData
+	.global object_removeCollisionData
+	.global object_presentCollisionData
+	.global object_updateCollisionPanels
+	.global object_setCollisionPanelsToCurrent
+	.global object_clearCollisionRegion // () -> void
+	.global object_setCollisionRegion
 	.global sub_801A082
-	.global sub_801A0D4
+	.global object_spawnCollisionEffect
 	.global sub_801A100
-	.global sub_801A140
+	.global object_setCollisionHitEffect
 	.global sub_801A146
 	.global object_setFlag // (int a1) -> void
 	.global object_clearFlag // (int bitfield) -> void
 	.global object_getFlag // () -> int
-	.global sub_801A16C
-	.global sub_801A176
-	.global sub_801A180
-	.global sub_801A258
+	.global object_setFlag2
+	.global object_clearFlag2
+	.global object_getFlag2
+	.global object_setCollisionStatusEffect1
 	.global sub_801A264
 	.global sub_801A284
 	.global sub_801A29A
@@ -282,13 +282,13 @@
 	.global sub_801B610
 	.global sub_801B750
 	.global sub_801B878
-	.global sub_801BB1C
-	.global sub_801BB46
-	.global sub_801BBAC
-	.global sub_801BBF4
+	.global object_reservePanel
+	.global object_removePanelReserve
+	.global object_updateSprite
+	.global object_updateSpriteTimestop
 	.global sub_801BC24
 	.global sub_801BC64
-	.global sub_801BCA6
+	.global object_updateSpritePaused
 	.global sub_801BCD0
 	.global sub_801BCF4
 	.global sub_801BD3C
@@ -382,20 +382,20 @@
 // .global sprite_decompress
 // .global sub_8002C7A
 // .global sub_8002CCE
-// .global sprite_setPallete // (int pallete) -> void
-// .global sprite_getPallete
+// .global sprite_setPalette // (int pallete) -> void
+// .global sprite_getPalette
 // .global sprite_setAnimation // (u8 a1) -> void
-// .global sprite_forceWhitePallete
+// .global sprite_forceWhitePalette
 
 	.include "asm/asm00_1.inc"
-// .global sub_8002DD8
-// .global sub_8002E3C
-// .global sub_8002ED0
+// .global sprite_clearFinalPalette
+// .global sprite_hasShadow
+// .global sprite_setColorShader
 // .global sub_8002EE8
-// .global sub_8002EF6
+// .global sprite_setMosaicSize
 // .global sub_8002F2C
-// .global sub_8002F5C
-// .global sub_8002F90 // () -> void
+// .global sprite_setFlip
+// .global sprite_noShadow // () -> void
 // .global sub_8002FB2
 // .global object_freeMemory
 // .global sub_800362C
@@ -433,32 +433,32 @@
 // .global sub_800BF16
 // .global loc_800BF30
 // .global object_getPanelParameters
-// .global sub_800C90A
+// .global object_getPanelDataOffset
 // .global object_crackPanelDup1
 // .global object_breakPanel_dup2
 // .global object_setPanelType
 // .global object_isValidPanel
 // .global object_checkPanelParameters
-// .global object_getPanelsExceptCurrentFilterred
-// .global sub_800CEA0
-// .global sub_800D012
+// .global object_getPanelsExceptCurrentFiltered
+// .global object_getPanelsFiltered
+// .global object_getPanelsInRowFiltered
 // .global sub_800D120
 // .global sub_800D15A
 // .global sub_800E258
-// .global sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-// .global sub_800E29C // () -> void
-// .global sub_800E2AC
-// .global sub_800E2C0
-// .global sub_800E2C2
-// .global object_getFlipDirection_800E2CA // () -> int
+// .global object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
+// .global object_setCoordinatesFromPanels // () -> void
+// .global object_setPanelsFromCoordinates
+// .global object_getEnemyDirection
+// .global object_getAllianceDirection
+// .global object_getFrontDirection // () -> int
 // .global object_getFlipDirection // (int a1, int a2) -> int
 // .global object_subtractHP
 // .global object_addHP
 // .global sub_800E2FC
 // .global sub_800E3BE
-// .global sub_800E3DE
+// .global object_calculateFinalDamage1
 // .global object_calculateFinalDamage2
-// .global sub_800E456 // () -> int
+// .global object_getFlip // () -> int
 // .global sub_800E45E
 // .global sub_800E468
 // .global sub_800E5AC

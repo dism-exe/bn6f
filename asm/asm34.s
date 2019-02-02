@@ -257,7 +257,7 @@ loc_812D588:
 	mov r5, r1
 	ldr r0, [sp]
 	mov r1, #0x58 
-	bl sub_800307C
+	bl sprite_setCoordinates
 	str r7, [r5,#0x14]
 loc_812D594:
 	add r6, #1

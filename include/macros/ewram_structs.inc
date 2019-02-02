@@ -58,10 +58,16 @@ void __fastcall sub_8030B1E(int a1, int a2)
 }
 
 at 2027a00
+coordinates that trigger an event 
+what do these coordinates do? they 
+CoordEventEntriesPtr
+CoordEventTotalEntries
+// it's a list of coordinate
 u16 canonicalPosition
-u16 offsetToBlockData
+u16 offsetToProperties
 
 at 02028336 (for judge room)
+CoordinateProperties 
 s8 zRangeLower
 u8 param
 u8 zRangeOffsetToUpper
@@ -113,5 +119,37 @@ todo figure out what to call this (collision, tile effects?)
 
 	def_struct_offsets unk_ex_2011a20_struct, oUnk_Ex2011a20
 
-	
+	.macro ow_collision_state_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
+	\struct_begin \label
+	\struct_entry \label\()_CoordEventPositionDataPtr, 4 // loc=0x0
+	\struct_entry \label\()_CoordEventPositionDataSize, 2 // loc=0x4
+	\struct_entry \label\()_Unk_06, 2 // loc=0x6
+	\struct_entry \label\()_Width, 1 // loc=0x8
+	\struct_entry \label\()_Height, 1 // loc=0x9
+	\struct_entry \label\()_Unk_0a, 1 // loc=0xa
+	\struct_entry \label\()_UnkLoopCounter_0b, 1 // loc=0xb
+	\struct_entry \label\()_Unk_0c, 4 // loc=0xc
+	\struct_entry \label\()_Unk_10, 4 // loc=0x10
+	\struct_entry \label\()_Unk_14, 4 // loc=0x14
+	\struct_entry \label\()_Size // loc=0x18
+	.endm
+
+/*
+S2034880 is likely battle state struct
+known offsets from https://pastebin.com/grDF80Vp
+
+0x40 - battle time
+0x1b - multi delete count
+0x3c - battle bits(?)
+
+byte_203EAE0 - another battle struct
+two entries of size 0x10, one for each alliance
+0x20 bytes total
+known offsets from https://pastebin.com/grDF80Vp
+
+0x3 - times hit
+0x4 - times moved
+0x8 - num counter hits
+0xb - was cross used
+*/
 // .macro overworld_npc_object_struct, struct_entry=label_struct_entry, struct_begin=struct_begin

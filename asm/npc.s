@@ -79,7 +79,7 @@ loc_809E5F0:
 	beq loc_809E60A
 	mov r0, #1
 loc_809E60A:
-	bl sub_8002F5C
+	bl sprite_setFlip
 	ldrh r0, [r5,#0x3c]
 	ldrh r1, [r5,#0x3e]
 	cmp r0, r1
@@ -93,14 +93,14 @@ loc_809E60A:
 	mov r1, #0x80
 	tst r0, r1
 	bne loc_809E632
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	b loc_809E644
 loc_809E632:
 	ldr r0, [r5,#0x60]
 	ldr r1, off_809E6C4 // =0x100 
 	tst r0, r1
 	beq loc_809E640
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	b loc_809E644
 loc_809E640:
 	bl sub_8002E52
@@ -117,7 +117,7 @@ loc_809E648:
 loc_809E658:
 	bl sprite_update
 	ldrb r0, [r5,#0x16]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldr r0, [r5,#0x68]
 	ldr r1, [r5,#0x6c]
 	cmp r0, r1
@@ -612,13 +612,13 @@ loc_809EA4A:
 	mov r1, #0xc0
 	tst r7, r1
 	beq loc_809EA62
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	tst r0, r7
 	beq loc_809EA6E
 	bl sub_809F516
 	b loc_809EA6E
 loc_809EA62:
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	cmp r0, r7
 	bne loc_809EA6E
 	bl sub_809F516
@@ -1355,7 +1355,7 @@ npc_809EFB4:
 	mov r1, #0x80
 	bic r0, r1
 	str r0, [r5,#0x60]
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	add r6, #1
 	pop {pc}
 	thumb_func_end npc_809EFB4
@@ -1367,7 +1367,7 @@ npc_809EFC6:
 	ldr r1, [r5,#0x60]
 	orr r1, r0
 	str r1, [r5,#0x60]
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	add r6, #1
 	pop {pc}
 	thumb_func_end npc_809EFC6
@@ -1541,7 +1541,7 @@ sub_809F104:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
-	bl sub_8002ED0
+	bl sprite_setColorShader
 	add r6, #3
 	pop {pc}
 	thumb_func_end sub_809F104
@@ -1555,7 +1555,7 @@ sub_809F114:
 	add r2, r0, r1
 	tst r2, r2
 	beq loc_809F128
-	bl sub_8002EF6
+	bl sprite_setMosaicSize
 loc_809F128:
 	add r6, #3
 	pop {pc}
@@ -2117,7 +2117,7 @@ off_809F4B4: .word byte_87E30A0
 	thumb_local_start
 sub_809F4B8:
 	push {lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r0, #7
 	and r0, r2
 	add r0, #0x21 
