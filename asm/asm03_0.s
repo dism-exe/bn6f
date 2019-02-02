@@ -20461,7 +20461,8 @@ locret_8030AA0:
 	thumb_func_end sub_8030A8C
 
 	thumb_func_start sub_8030AA4
-sub_8030AA4:
+// coordinate effect 
+sub_8030AA4: // JP 0x8031A60
 	push {r4-r7,lr}
 	mov r2, r8
 	mov r3, r9
@@ -20475,10 +20476,10 @@ loc_8030AB6:
 	ldr r3, off_8030B04 // =pt_803354C 
 	sub r0, #0x80
 loc_8030ABA:
-	lsl r0, r0, #2
+	lsl r0, r0, #2 // map group
 	add r3, r3, r0
 	ldr r3, [r3]
-	lsl r1, r1, #2
+	lsl r1, r1, #2 // map number
 	add r3, r3, r1
 	ldr r0, [r3]
 	push {r0}
@@ -20507,8 +20508,8 @@ loc_8030ABA:
 	mov r12, r4
 	pop {r4-r7,pc}
 	.byte 0, 0
-off_8030B00: .word pt_8033530
-off_8030B04: .word pt_803354C
+off_8030B00: .word pt_8033530 // JP Falzar 0x80344ec
+off_8030B04: .word pt_803354C // JP Falzar 0x8034508
 off_8030B08: .word unk_2027A00
 	thumb_func_end sub_8030AA4
 
@@ -20701,35 +20702,43 @@ loc_8030C1A: .align 1, 0
 off_8030C38: .word dword_200F3D0
 off_8030C3C: .word dword_8030C40
 dword_8030C40: .word 0x0
-	.word sub_8031388+1
-	.word sub_80313B0+1
-	.word sub_80313D4+1
-	.word sub_80313FC+1
-	.word sub_8031420+1
-	.word sub_8031478+1
-	.word sub_80314CC+1
-	.word sub_8031520+1
-	.word sub_80311F4+1
-	.word sub_803123E+1
-	.word sub_8031264+1
-	.word sub_803128E+1
-	.word sub_80312D0+1
-	.word sub_8031302+1
-	.word sub_8031330+1
-	.word sub_803135E+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0
+	.word sub_8031388+1 // 0x01 up left
+	.word sub_80313B0+1 // 0x02 down right
+	.word sub_80313D4+1 // 0x03 down left
+	.word sub_80313FC+1 // 0x04 up right
+	.word sub_8031420+1 // 0x05 corner right
+	.word sub_8031478+1 // 0x06 corner down
+	.word sub_80314CC+1 // 0x07 corner up
+	.word sub_8031520+1 // 0x08 corner left
+	.word sub_80311F4+1 // 0x09 vertical right
+	.word sub_803123E+1 // 0x0a horizontal down
+	.word sub_8031264+1 // 0x0b horizontal up
+	.word sub_803128E+1 // 0x0c vertical left
+	.word sub_80312D0+1 // 0x0d ??? weird version of 0x9, used partially for the judge tree comp stump walls https://i.imgur.com/dcfOYtJ.png
+	.word sub_8031302+1 // 0x0e ??? likely a weird version of 0xa
+	.word sub_8031330+1 // 0x0f ??? weird version of 0xb, used partially for the judge tree comp stump walls https://i.imgur.com/3tXbSRb.png
+	.word sub_803135E+1 // 0x10 ??? likely a weird version of 0xc
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 dword_8030CA8: .word 0x1640
 	thumb_func_end sub_8030B6A
 
 	thumb_local_start
+// r0 - pointer to coords
+// r5 - pointer to 2011d10
 sub_8030CAC:
 	push {lr}
 	push {r0,r5}
-	mov r2, #0xe
+	mov r2, #oOWObjectCoords_NextX
 	ldrsh r4, [r0,r2]
-	mov r2, #0x12
+	mov r2, #oOWObjectCoords_NextY
 	ldrsh r7, [r0,r2]
 	bl sub_8030DA2
 	mov r2, #2
@@ -20862,6 +20871,10 @@ loc_8030D92:
 	thumb_func_end sub_8030CAC
 
 	thumb_local_start
+// r0 - pointer to coords
+// r5 - pointer to 2011d10
+// r4 - next x
+// r7 - next y
 sub_8030DA2:
 	sub sp, sp, #0x10
 	str r0, [sp]
@@ -22684,25 +22697,31 @@ loc_8031AFC:
 off_8031B08: .word dword_200F3D0
 off_8031B0C: .word jt_8031B10
 jt_8031B10: .word 0x0
-	.word sub_8031B9A+1
-	.word sub_8031BB2+1
-	.word sub_8031BCA+1
-	.word sub_8031BE2+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word sub_8031BFA+1
-	.word sub_8031C12+1
-	.word sub_8031C2A+1
-	.word sub_8031C42+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word sub_8031C5A+1
-	.word sub_8031C5A+1
-	.word sub_8031C5A+1
-	.word sub_8031C5A+1
-	.word sub_8031C5A+1
-	.word sub_8031C64+1
-	.word sub_8031C7C+1
-	.word sub_8031C94+1
-	.word sub_8031CAC+1
+	.word sub_8031B9A+1 // 0x01
+	.word sub_8031BB2+1 // 0x02
+	.word sub_8031BCA+1 // 0x03
+	.word sub_8031BE2+1 // 0x04
+	.word 0x0 // 0x05
+	.word 0x0 // 0x06
+	.word 0x0 // 0x07
+	.word 0x0 // 0x08
+	.word sub_8031BFA+1 // 0x09
+	.word sub_8031C12+1 // 0x0a
+	.word sub_8031C2A+1 // 0x0b
+	.word sub_8031C42+1 // 0x0c
+	.word 0x0 // 0x0d
+	.word 0x0 // 0x0e
+	.word 0x0 // 0x0f
+	.word 0x0 // 0x10
+	.word sub_8031C5A+1 // 0x11
+	.word sub_8031C5A+1 // 0x12
+	.word sub_8031C5A+1 // 0x13
+	.word sub_8031C5A+1 // 0x14
+	.word sub_8031C5A+1 // 0x15
+	.word sub_8031C64+1 // 0x16
+	.word sub_8031C7C+1 // 0x17
+	.word sub_8031C94+1 // 0x18
+	.word sub_8031CAC+1 // 0x19
 dword_8031B78: .word 0x16EF
 	thumb_func_end sub_8031A7A
 

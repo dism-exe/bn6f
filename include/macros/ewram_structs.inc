@@ -63,7 +63,7 @@ u16 offsetToBlockData
 
 at 02028336 (for judge room)
 s8 zRangeLower
-u8 unk_01
+u8 param
 u8 zRangeOffsetToUpper
 u8 tilePropertyIndex
 
@@ -82,9 +82,13 @@ ex2011a20 struct:
 10, 4 - truncated y (x & ~7)
 14, 4 - pointer to tile effect data if a tile effect was triggered
 known structs:
+- collision
 dword_2011D10 -> sub_8030B6A (06-07 and 08 are swapped)
+- z coordinate modifiers
 dword_2011A20 -> sub_8031612
+- layer priority
 dword_2013940 -> sub_80318B0
+- coordinate triggers (warps, cutscenes, jack-in region, map object)
 dword_2013920 -> sub_8031A7A
 
 important function: sub_8030AA4
