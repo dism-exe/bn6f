@@ -23,12 +23,14 @@
 
 	def_struct_offsets overworld_player_object_struct, oOWPlayerObject
 
-	.equiv oOWObjectCoords_XFull, 0
-	.equiv oOWObjectCoords_X, 2
-	.equiv oOWObjectCoords_YFull, 4
-	.equiv oOWObjectCoords_Y, 6
-	.equiv oOWObjectCoords_ZFull, 8
-	.equiv oOWObjectCoords_Z, 10
+	.equiv oOWObjectCoords_XFull, 0x0
+	.equiv oOWObjectCoords_X, 0x2
+	.equiv oOWObjectCoords_YFull, 0x4
+	.equiv oOWObjectCoords_Y, 0x6
+	.equiv oOWObjectCoords_ZFull, 0x8
+	.equiv oOWObjectCoords_Z, 0xa
+	.equiv oOWObjectCoords_NextX, 0xe
+	.equiv oOWObjectCoords_NextY, 0x12
 
 /*
 	.macro overworld_player_object_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
