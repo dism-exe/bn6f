@@ -1,5 +1,5 @@
 // 0x807cdec
-int sub_807CDEC()
+unsigned int sub_807CDEC()
 {
   int v0; // r5
   int v1; // r10
@@ -7,7 +7,6 @@ int sub_807CDEC()
   int v3; // r1
   int v4; // r2
   int v5; // r3
-  int v6; // r0
 
   *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_807C82C + *(v0 + 5));
   sub_807CF24();
@@ -18,8 +17,8 @@ int sub_807CDEC()
   sub_8030472();
   sub_80028D4(byte_2037800, v3, v4, v5);
   sub_8002906(*(&off_807CE50 + *(v0 + 5)));
-  v6 = chatbox_uncomp_803FD08();
-  sub_807CFFC(v6);
+  chatbox_uncomp_803FD08();
+  sub_807CFFC();
   return sub_8034FB8();
 }
 
@@ -51,13 +50,12 @@ void sub_807CF24()
 // 0x807cfb8
 int __fastcall sub_807CFB8(int a1, int a2, int a3)
 {
-  unsigned int v3; // r4
+  __int16 v3; // t1
   __int16 v4; // t1
-  __int16 v5; // t1
 
-  v4 = *(a1 + 50);
-  v5 = *(a3 + 58);
-  return sub_807CFCC(v3, v3 >> 1);
+  v3 = *(a1 + 50);
+  v4 = *(a3 + 58);
+  return sub_807CFCC();
 }
 
 

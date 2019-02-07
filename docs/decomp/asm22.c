@@ -220,55 +220,54 @@ int sub_8087140()
 
 
 // 0x8087150
-int sub_8087150()
+__int64 sub_8087150()
 {
   int v0; // r5
-  int result; // r0
-  int v2; // r1
-  int v3; // r2
-  signed int v4; // r6
+  __int64 result; // r0
+  int v2; // r2
+  signed int v3; // r6
+  signed int v4; // r3
   signed int v5; // r3
-  signed int v6; // r3
-  signed int v7; // r6
-  signed int v8; // r3
-  signed int v9; // r6
+  signed int v6; // r6
+  signed int v7; // r3
+  signed int v8; // r6
 
   result = sub_809E1AE();
-  v4 = 0;
-  v5 = 16;
+  v3 = 0;
+  v4 = 16;
   do
   {
-    *(v0 + v5) = result;
+    *(v0 + v4) = result;
+    v4 += 12;
+    ++v3;
+  }
+  while ( v3 < 10 );
+  v5 = 20;
+  v6 = 0;
+  do
+  {
+    *(v0 + v5) = HIDWORD(result);
     v5 += 12;
-    ++v4;
+    ++v6;
   }
-  while ( v4 < 10 );
-  v6 = 20;
-  v7 = 0;
+  while ( v6 < 10 );
+  v7 = 24;
+  v8 = 0;
   do
   {
-    *(v0 + v6) = v2;
-    v6 += 12;
-    ++v7;
+    *(v0 + v7) = v2;
+    v7 += 12;
+    ++v8;
   }
-  while ( v7 < 10 );
-  v8 = 24;
-  v9 = 0;
-  do
-  {
-    *(v0 + v8) = v3;
-    v8 += 12;
-    ++v9;
-  }
-  while ( v9 < 10 );
+  while ( v8 < 10 );
   return result;
 }
 
 
 // 0x8087184
-int sub_8087184()
+__int64 sub_8087184()
 {
-  _DWORD *v0; // r5
+  int v0; // r5
   int v1; // r3
   int v2; // r4
   signed int v3; // r6
@@ -277,9 +276,8 @@ int sub_8087184()
   int v6; // r1
   int v7; // r2
   int v8; // r4
-  int result; // r0
-  int v10; // r1
-  int v11; // r2
+  __int64 result; // r0
+  int v10; // r2
 
   v1 = 112;
   v2 = 124;
@@ -302,9 +300,8 @@ int sub_8087184()
   }
   while ( v3 < 9 );
   result = sub_809E1AE();
-  v0[4] = result;
-  v0[5] = v10;
-  v0[6] = v11;
+  *(v0 + 16) = result;
+  *(v0 + 24) = v10;
   return result;
 }
 

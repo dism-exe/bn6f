@@ -16,7 +16,7 @@ int *__fastcall sub_813B780(int a1)
 
 
 // 0x813b790
-int __fastcall sub_813B790(int a1)
+void *__fastcall sub_813B790(int a1)
 {
   return sub_813B7A0(a1, byte_20096D8);
 }
@@ -146,32 +146,32 @@ int sub_813B830()
 // 0x813b84c
 __int64 __fastcall sub_813B84C(int a1)
 {
-  int v1; // r7
+  char *v1; // r7
   signed int v2; // r1
   signed int v3; // r4
   signed int v4; // r0
   signed int v5; // r2
   signed int v6; // r6
-  int v7; // r7
+  char *v7; // r7
   signed int v8; // r1
   signed int v9; // r4
   signed int v10; // r0
   signed int v11; // r2
   signed int v12; // r6
   unsigned __int8 v13; // vf
-  int v14; // r7
+  char *v14; // r7
   signed int v15; // r1
   signed int v16; // r4
   signed int v17; // r0
   signed int v18; // r2
   signed int v19; // r6
-  int v20; // r7
+  char *v20; // r7
   signed int v21; // r1
   signed int v22; // r4
   signed int v23; // r0
   signed int v24; // r2
   signed int v25; // r6
-  int v27; // [sp+0h] [bp-28h]
+  char *v27; // [sp+0h] [bp-28h]
   __int64 v28; // [sp+4h] [bp-24h]
 
   v1 = sub_813B790(a1);
@@ -185,7 +185,7 @@ __int64 __fastcall sub_813B84C(int a1)
     v6 = 0;
     do
     {
-      if ( *(v1 + v4) )
+      if ( v1[v4] )
         v6 = 1;
       if ( !v6 )
         ++v5;
@@ -209,7 +209,7 @@ __int64 __fastcall sub_813B84C(int a1)
     v12 = 0;
     do
     {
-      if ( *(v7 + v10) )
+      if ( v7[v10] )
         v12 = 1;
       if ( !v12 )
         ++v11;
@@ -233,7 +233,7 @@ __int64 __fastcall sub_813B84C(int a1)
     v19 = 0;
     do
     {
-      if ( *(v14 + v17) )
+      if ( v14[v17] )
         v19 = 1;
       if ( !v19 )
         ++v18;
@@ -256,7 +256,7 @@ __int64 __fastcall sub_813B84C(int a1)
     v25 = 0;
     do
     {
-      if ( *(v20 + v23) )
+      if ( v20[v23] )
         v25 = 1;
       if ( !v25 )
         ++v24;
@@ -307,7 +307,7 @@ int __fastcall sub_813B950(int a1, int a2, int a3, int a4)
   int v4; // r10
   int v5; // ST04_4
   int v6; // ST08_4
-  int v7; // r7
+  char *v7; // r7
   int result; // r0
   int v9; // r1
   int v10; // r2
@@ -336,7 +336,7 @@ int __fastcall sub_813B950(int a1, int a2, int a3, int a4)
       {
         if ( v9 >= 0 && v9 < 7 )
         {
-          if ( *(v7 + v13) )
+          if ( v7[v13] )
             *(v11 + v13) = v14;
         }
         ++v9;
@@ -507,7 +507,7 @@ int __fastcall sub_813BAEC(int a1, int a2, int a3, int a4)
   v7 = a2;
   v8 = a3;
   v9 = a4;
-  sub_813BB00();
+  sub_813BB00(a1, a2, a3, a4);
   result = v6;
   if ( v5 )
     result = sub_813BB68(v6, v7, v8, v9);
@@ -521,7 +521,7 @@ signed int __fastcall sub_813BB00(int a1, int a2, int a3, int a4)
   int v4; // ST04_4
   int v5; // ST08_4
   int v6; // ST0C_4
-  int v7; // r7
+  char *v7; // r7
   int v8; // r1
   signed int v9; // r2
   signed int result; // r0
@@ -541,7 +541,7 @@ signed int __fastcall sub_813BB00(int a1, int a2, int a3, int a4)
     v11 = 0;
     do
     {
-      if ( *(v7 + v11) )
+      if ( v7[v11] )
       {
         if ( !*(v8 + v11) )
           goto LABEL_10;
@@ -569,7 +569,7 @@ signed int __fastcall sub_813BB68(int a1, int a2, int a3, int a4)
 {
   int v4; // r10
   int v5; // ST0C_4
-  int v6; // r7
+  char *v6; // r7
   int v7; // r2
   int v8; // r6
   int v9; // r5
@@ -596,7 +596,7 @@ LABEL_10:
     if ( ++v9 >= 7 )
       return 0;
   }
-  while ( v10 < 0 || v10 >= 7 || !*(v6 + v11) || !*(v8 + v11) )
+  while ( v10 < 0 || v10 >= 7 || !v6[v11] || !*(v8 + v11) )
   {
     ++v10;
     if ( ++v11 >= 7 )
@@ -611,9 +611,6 @@ int sub_813BBD4()
 {
   int v0; // r10
   int v1; // r7
-  int v2; // r0
-  int v3; // r0
-  int v4; // r0
 
   v1 = *(v0 + oToolkit_Unk200431c_Ptr);
   ZeroFillByByte(*(v0 + oToolkit_Unk200431c_Ptr), 16);
@@ -621,10 +618,10 @@ int sub_813BBD4()
   ZeroFillByByte(&unk_2006C88, 49);
   ZeroFillByByte(&unk_2006CC0, 49);
   sub_813BC1C(v1);
-  v2 = sub_813BC98(v1);
-  v3 = sub_813BD24(v2);
-  v4 = sub_813BE8C(v3);
-  sub_813BEA8(v4);
+  sub_813BC98(v1);
+  sub_813BD24();
+  sub_813BE8C();
+  sub_813BEA8();
   return sub_813C584(v1);
 }
 
@@ -797,26 +794,24 @@ int sub_813BD24()
 {
   int v0; // r8
   int v1; // r6
-  unsigned __int16 *v2; // r7
-  int v3; // r1
-  int v4; // r2
-  int v5; // r3
+  unsigned __int8 *v2; // r0
+  unsigned __int8 *v3; // r7
+  int v4; // r0
 
   v1 = 0;
   do
   {
-    ZeroFillByByte(&byte_2006C50, 49);
+    ZeroFillByByte(byte_2006C50, 49);
     v2 = sub_813B9FC(v1);
-    if ( *v2 )
+    v3 = v2;
+    v4 = *v2;
+    if ( v4 )
     {
-      v3 = *(v2 + 3);
-      v4 = *(v2 + 4);
-      v5 = *(v2 + 5);
-      (sub_813BD90)();
-      sub_813BD90(*v2, *(v2 + 3) + 1, *(v2 + 4), *(v2 + 5));
-      sub_813BD90(*v2, *(v2 + 3), *(v2 + 4) - 1, *(v2 + 5));
-      sub_813BD90(*v2, *(v2 + 3), *(v2 + 4) + 1, *(v2 + 5));
-      sub_813BE38(*v2);
+      sub_813BD90(v4, v3[3] - 1, v3[4], v3[5]);
+      sub_813BD90(*v3, v3[3] + 1, v3[4], v3[5]);
+      sub_813BD90(*v3, v3[3], v3[4] - 1, v3[5]);
+      sub_813BD90(*v3, v3[3], v3[4] + 1, v3[5]);
+      sub_813BE38(*v3);
     }
     ++v1;
   }
@@ -877,7 +872,7 @@ _BYTE *__fastcall sub_813BD90(int a1, int a2, int a3, int a4)
             {
               v23 = v10;
               v16 = 0;
-              v17 = &byte_2006C50;
+              v17 = byte_2006C50;
               if ( v21 != v15 )
               {
                 while ( *v17 != v15 )
@@ -885,7 +880,7 @@ _BYTE *__fastcall sub_813BD90(int a1, int a2, int a3, int a4)
                   ++v17;
                   if ( ++v16 >= 49 )
                   {
-                    v18 = sub_813C624(v15);
+                    sub_813C624(v15, v23, v11);
                     if ( !v19 )
                       *v22++ = v18;
                     break;
@@ -1046,7 +1041,7 @@ signed int __fastcall sub_813BF60(int a1, int a2, int a3)
 {
   int v3; // ST04_4
   int v4; // ST08_4
-  int v5; // r7
+  char *v5; // r7
   int v6; // r1
   int v7; // r2
   int v8; // r5
@@ -1072,7 +1067,7 @@ LABEL_10:
     if ( ++v8 >= 7 )
       return 0;
   }
-  while ( v6 < 0 || v6 >= 7 || !*(v5 + v9) || v7 != 3 )
+  while ( v6 < 0 || v6 >= 7 || !v5[v9] || v7 != 3 )
   {
     ++v6;
     if ( ++v9 >= 7 )
@@ -1087,7 +1082,7 @@ signed int __fastcall sub_813BFB8(int a1, int a2, int a3)
 {
   int v3; // ST04_4
   int v4; // ST08_4
-  int v5; // r7
+  char *v5; // r7
   int v6; // r1
   int v7; // r2
   int v8; // r5
@@ -1113,7 +1108,7 @@ LABEL_13:
     if ( ++v8 >= 7 )
       return 0;
   }
-  while ( v6 < 0 || v6 >= 7 || !*(v5 + v9) || v6 >= 1 && v6 <= 4 && v7 >= 1 && v7 <= 4 )
+  while ( v6 < 0 || v6 >= 7 || !v5[v9] || v6 >= 1 && v6 <= 4 && v7 >= 1 && v7 <= 4 )
   {
     ++v6;
     if ( ++v9 >= 7 )
@@ -1358,6 +1353,8 @@ int __fastcall sub_813C334(unsigned int a1, int a2)
   int v5; // r1
   unsigned int v6; // r2
   char v7; // zf
+  int v8; // r1
+  int v9; // r2
 
   v3 = a2;
   if ( *(*(v2 + oToolkit_JoypadPtr) + 2) && a2 != 10 )
@@ -1373,7 +1370,7 @@ int __fastcall sub_813C334(unsigned int a1, int a2)
           SetEventFlagRange(v6, v5, 4);
         else
           ClearEventFlagRange(v6, v5, 4);
-        sound_play(139);
+        sound_play(139, v8, v9);
       }
     }
     else
@@ -1448,18 +1445,15 @@ int sub_813C3AC()
 int sub_813C458()
 {
   int v0; // r4
-  int v1; // r0
-  int v2; // r0
-  int v3; // r0
 
   sub_813BBD4();
   sub_8136C24();
   v0 = getPETNaviSelect();
-  v1 = sub_80010BE(0);
-  sub_813C678(v1);
-  v2 = ClearEventFlagFromImmediate(23, 13);
-  v3 = sub_813C684(v2);
-  sub_813CBCC(v3);
+  sub_80010BE(0);
+  sub_813C678();
+  ClearEventFlagFromImmediate(23, 13);
+  sub_813C684();
+  sub_813CBCC();
   sub_80010BE(v0);
   return sub_803CE44();
 }
@@ -1609,7 +1603,6 @@ int sub_813C684()
   _WORD *v9; // r0
   signed int v10; // r6
   _WORD *v11; // r0
-  int v12; // r0
 
   ZeroFillByByte(byte_2006DD8, 8);
   v1 = 6;
@@ -1670,8 +1663,8 @@ LABEL_8:
     ++v10;
   }
   while ( v10 < 49 );
-  v12 = sub_803CED4();
-  return sub_813CEA0(v12);
+  sub_803CED4();
+  return sub_813CEA0();
 }
 
 
@@ -2198,9 +2191,10 @@ void sub_813CD10()
 int sub_813CD14()
 {
   int v0; // r0
+  int v1; // r1
 
   v0 = sub_813CD3E();
-  return sub_813CD4C(v0);
+  return sub_813CD4C(v0, v1, 2);
 }
 
 
@@ -2208,9 +2202,10 @@ int sub_813CD14()
 int sub_813CD22()
 {
   int v0; // r0
+  int v1; // r1
 
   v0 = sub_813CD3E();
-  return sub_813CD4C(v0);
+  return sub_813CD4C(v0, v1, 3);
 }
 
 
@@ -2218,9 +2213,10 @@ int sub_813CD22()
 int sub_813CD30()
 {
   int v0; // r0
+  int v1; // r1
 
   v0 = sub_813CD3E();
-  return sub_813CD4C(v0);
+  return sub_813CD4C(v0, v1, 4);
 }
 
 
@@ -3123,11 +3119,10 @@ __int16 __fastcall sub_813D9A0(__int16 result)
 // 0x813d9ac
 int sub_813D9AC()
 {
-  int v0; // r0
   int result; // r0
 
-  v0 = (*(&off_813D9D4 + byte_200BC51))();
-  result = sub_813D9F4(v0);
+  (*(&off_813D9D4 + byte_200BC51))();
+  result = sub_813D9F4();
   if ( result != 4 )
     result = sub_8146B70();
   return result;
@@ -3135,22 +3130,18 @@ int sub_813D9AC()
 
 
 // 0x813d9dc
-int sub_813D9DC()
+__int16 *sub_813D9DC()
 {
-  int v0; // r0
-
-  v0 = sub_8148884();
-  return sub_813DAF4(v0);
+  sub_8148884();
+  return sub_813DAF4();
 }
 
 
 // 0x813d9e8
-int sub_813D9E8()
+__int16 *sub_813D9E8()
 {
-  int v0; // r0
-
-  v0 = sub_8148FC0();
-  return sub_813DAF4(v0);
+  sub_8148FC0();
+  return sub_813DAF4();
 }
 
 

@@ -1,5 +1,5 @@
 // 0x8071b50
-int sub_8071B50()
+unsigned int sub_8071B50()
 {
   int v0; // r5
   int v1; // r10
@@ -7,7 +7,6 @@ int sub_8071B50()
   int v3; // r1
   int v4; // r2
   int v5; // r3
-  int v6; // r0
 
   *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_8071584 + *(v0 + 5));
   sub_8071C30();
@@ -18,8 +17,8 @@ int sub_8071B50()
   sub_8030472();
   sub_80028D4(byte_2037800, v3, v4, v5);
   sub_8002906(*(&off_8071BB4 + *(v0 + 5)));
-  v6 = chatbox_uncomp_803FD08();
-  sub_8071CEE(v6);
+  chatbox_uncomp_803FD08();
+  sub_8071CEE();
   return sub_8034FB8();
 }
 
@@ -116,6 +115,7 @@ int __fastcall sub_8072B70(int a1)
   char v5; // zf
   int v6; // r0
   unsigned __int8 v7; // vf
+  int v8; // r2
 
   v2 = *(v1 + oToolkit_Unk2001c04_Ptr);
   v3 = a1;
@@ -128,7 +128,7 @@ int __fastcall sub_8072B70(int a1)
     if ( (result < 0) ^ v7 )
     {
       *(v2 + 60) = dword_258 + (change_20013F0_800151C() & 0x1FF);
-      result = sound_play(*&byte_8072BC0[2 * v3]);
+      result = sound_play(*&byte_8072BC0[2 * v3], dword_258, v8);
     }
     else
     {

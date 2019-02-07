@@ -2,45 +2,45 @@
 void __noreturn main_()
 {
   unsigned __int8 **v0; // r10
-  signed int v1; // r0
-  int v2; // r0
-  int v3; // r0
-  char *v4; // r0
-  int v5; // r1
-  int v6; // r2
-  int v7; // r3
-  signed int v8; // r0
+  int v1; // r0
+  int v2; // r1
+  int v3; // r2
+  int v4; // r3
+  int v5; // r0
+  int v6; // r1
+  int v7; // r2
+  int v8; // r3
   char v9; // zf
   int *v10; // r0
   int v11; // r0
 
   main_static_80004A4();
-  v1 = sub_8001514();
-  v2 = clear_200AD04(v1);
-  sub_803D1A8(v2);
+  sub_8001514();
+  v1 = clear_200AD04();
+  sub_803D1A8(v1, v2, v3, v4);
   while ( 1 )
   {
     main_static_await_80003D0();
     main_awaitFrame_80003A0();
     sub_80007BE();
     sub_80019A0();
-    v3 = render_800172C();
-    objRender_802FE0C(v3);
+    render_800172C();
+    objRender_802FE0C();
     objRender_8000A44();
     getPalleteAndTransition_80023E0();
     renderPalletes_8001808();
-    v4 = renderPalletesAndObjs_8002650();
-    sprite_handleObjSprites_800289C(v4, v5, v6, v7);
+    renderPalletesAndObjs_8002650();
+    sprite_handleObjSprites_800289C(v5, v6, v7, v8);
     render_80015D0();
     main_static_80003E4();
     ++*v0[9];
     sub_8000E10();
     (*(main_jt_subsystem + **v0))();
     rng_800154C();
-    v8 = isSameSubsystem_800A732();
+    isSameSubsystem_800A732();
     if ( !v9 )
-      v8 = subsystem_triggerTransition_800630A();
-    chatbox_onUpdate_803FEB4(v8);
+      subsystem_triggerTransition_800630A();
+    chatbox_onUpdate_803FEB4();
     v10 = cb_call_200A880();
     PET_onUpdate_8001B94(v10);
     v11 = sub_3006814();
@@ -148,7 +148,7 @@ int __fastcall main_static_8000454(int a1)
   result = engine_isScreeneffectAnimating();
   if ( !v3 )
   {
-    result = sub_813D60C(result);
+    result = sub_813D60C();
     if ( v3 )
     {
       result = *toolkit->jo_gameSubsysSel;

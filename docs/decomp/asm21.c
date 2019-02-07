@@ -8,8 +8,8 @@ int sub_8080D90()
 // 0x8080da0
 int sub_8080DA0()
 {
-  int v0; // r0
-  int v1; // r4
+  signed int v0; // r0
+  signed int v1; // r4
   void **v2; // r7
   __int16 v3; // r0
   int result; // r0
@@ -33,21 +33,21 @@ int sub_8080DA0()
 
 
 // 0x8080dea
-int sub_8080DEA()
+int __fastcall sub_8080DEA(int a1, signed int a2)
 {
-  int v0; // r0
-  int v1; // r4
-  void **v2; // r7
-  __int16 v3; // r0
+  signed int v2; // r0
+  signed int v3; // r4
+  void **v4; // r7
+  __int16 v5; // r0
 
-  v0 = sub_808137C();
-  v1 = v0;
-  v2 = &off_8080E34 + 4 * v0;
-  sub_800195C(*v2, v2[1], v2[2]);
-  v3 = sub_8001780();
-  sub_8001778(v3 | v2[3]);
-  sub_80304E8((&off_8080F98)[v1]);
-  sub_8002354(off_8081220[v1]);
+  v2 = sub_808137C(a1, a2);
+  v3 = v2;
+  v4 = &off_8080E34 + 4 * v2;
+  sub_800195C(*v4, v4[1], v4[2]);
+  v5 = sub_8001780();
+  sub_8001778(v5 | v4[3]);
+  sub_80304E8((&off_8080F98)[v3]);
+  sub_8002354(off_8081220[v3]);
   sub_803537C();
   return sub_8035424();
 }

@@ -1,5 +1,5 @@
 // 0x807a8e0
-int sub_807A8E0()
+unsigned int sub_807A8E0()
 {
   int v0; // r5
   int v1; // r10
@@ -7,7 +7,6 @@ int sub_807A8E0()
   int v3; // r1
   int v4; // r2
   int v5; // r3
-  int v6; // r0
 
   *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_8079F74 + *(v0 + 5));
   sub_807A9CC();
@@ -18,8 +17,8 @@ int sub_807A8E0()
   sub_8030472();
   sub_80028D4(byte_2037800, v3, v4, v5);
   sub_8002906(off_807A944[*(v0 + 5)]);
-  v6 = chatbox_uncomp_803FD08();
-  sub_807AAD6(v6);
+  chatbox_uncomp_803FD08();
+  sub_807AAD6();
   return sub_8034FB8();
 }
 

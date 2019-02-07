@@ -11,19 +11,21 @@ signed int __fastcall sub_812D3A8(int a1, int a2, int a3, int a4)
 {
   int v4; // r7
   int v5; // r10
-  int v6; // r0
-  int v7; // r1
+  int v6; // r2
+  int v7; // r3
+  int v8; // r0
+  int v9; // r1
   signed int result; // r0
 
   ZeroFillByEightWords(word_2023FA0, 0x20u, a3, a4);
   sub_8120A88();
-  v6 = sub_811FE7C(&unk_2023FC0, 1) + 1;
-  *(v4 + 40) = v6;
-  sub_8120018(&unk_2023FC0, v6, 5, 4);
-  v7 = *(v5 + oToolkit_Unk2001c04_Ptr);
-  *(v7 + 2) = 5;
+  v8 = sub_811FE7C(&unk_2023FC0, 1, v6, v7) + 1;
+  *(v4 + 40) = v8;
+  sub_8120018(&unk_2023FC0, v8, 5, 4);
+  v9 = *(v5 + oToolkit_Unk2001c04_Ptr);
+  *(v9 + 2) = 5;
   result = 4;
-  *(v7 + 3) = 4;
+  *(v9 + 3) = 4;
   return result;
 }
 
@@ -31,34 +33,31 @@ signed int __fastcall sub_812D3A8(int a1, int a2, int a3, int a4)
 // 0x812d3e4
 int sub_812D3E4()
 {
-  int v0; // r7
-  int v1; // r0
+  char *v0; // r7
 
   v0 = sub_812D6F8();
-  sub_8120194(*(v0 + 46), word_2023FA0, &unk_202DFA0);
+  sub_8120194(*(v0 + 23), word_2023FA0, &unk_202DFA0);
   copyTiles();
-  sub_8120390(*(v0 + 46), word_2023FA0, &unk_202E080, byte_812C288);
+  sub_8120390(*(v0 + 23), word_2023FA0, &unk_202E080, byte_812C288);
   copyTiles();
-  sub_81203E4(*(v0 + 46), word_2023FA0, &unk_202E0B8, &dword_35C | 0x9000);
+  sub_81203E4(*(v0 + 23), word_2023FA0, &unk_202E0B8, &dword_35C | 0x9000);
   copyTiles();
-  sub_8120458(*(v0 + 46), word_2023FA0, &unk_202E0F0, 41494);
+  sub_8120458(*(v0 + 23), word_2023FA0, &unk_202E0F0, 41494);
   copyTiles();
-  sub_81204C4(*(v0 + 46), word_2023FA0, byte_202E10C, 33615);
+  sub_81204C4(*(v0 + 23), word_2023FA0, byte_202E10C, 33615);
   copyTiles();
-  sub_8120618(*(v0 + 46), word_2023FA0, byte_202E144, 41472);
-  v1 = copyTiles();
-  return sub_812D5EC(v1);
+  sub_8120618(*(v0 + 23), word_2023FA0, byte_202E144, 41472);
+  copyTiles();
+  return sub_812D5EC();
 }
 
 
 // 0x812d4fc
 int sub_812D4FC()
 {
-  int v0; // r0
-
   sub_812D6F8();
-  v0 = sub_812D600(2, 32, 42, 19);
-  return sub_812D9F0(v0);
+  sub_812D600(2, 32, 42, 19);
+  return sub_812D9F0();
 }
 
 
@@ -132,12 +131,12 @@ int __fastcall sub_812D56C(void *a1, int a2, __int16 a3)
 // 0x812d5a0
 int sub_812D5A0()
 {
-  int v0; // r5
+  char *v0; // r5
   int v1; // r2
 
   v0 = sub_812D6F8();
-  v1 = *&word_2023FA0[16 * (*(v0 + 42) + *(v0 + 46)) + 14];
-  return sub_811980C((v1 << 16) >> 23, v1 & 0x7F, 0, *(v0 + 42) + *(v0 + 46));
+  v1 = *&word_2023FA0[16 * (*(v0 + 21) + *(v0 + 23)) + 14];
+  return sub_811980C((v1 << 16) >> 23, v1 & 0x7F, 0, *(v0 + 21) + *(v0 + 23));
 }
 
 
@@ -206,10 +205,11 @@ void sub_812D690()
   int v1; // r10
   int v2; // r0
   char v3; // zf
-  signed int v4; // r1
-  int v5; // r0
+  int v4; // r2
+  int v5; // r1
+  int v6; // r0
 
-  if ( *(sub_812D6F8() + 40) )
+  if ( *(sub_812D6F8() + 20) )
   {
     v2 = *(v0 + 38);
     if ( v2 == 4 )
@@ -227,18 +227,18 @@ void sub_812D690()
   sub_811F7EC();
   if ( v3 )
     return;
-  v4 = 4;
+  v5 = 4;
   if ( *(v0 + 17) )
   {
 LABEL_17:
     *(v0 + 27) |= 1u;
-    v4 = 8;
+    v5 = 8;
   }
-  *(v0 + 38) = v4;
-  v5 = 129;
-  if ( v4 != 4 )
-    v5 = 131;
-  sound_play(v5);
+  *(v0 + 38) = v5;
+  v6 = 129;
+  if ( v5 != 4 )
+    v6 = 131;
+  sound_play(v6, v5, v4);
 }
 
 
@@ -254,25 +254,27 @@ void sub_812D700()
 {
   int v0; // r5
   char *v1; // r7
-  char v2; // zf
-  int v3; // r0
+  int v2; // r1
+  int v3; // r2
+  char v4; // zf
+  int v5; // r0
 
   v1 = sub_812D6F8();
   sub_811F7EC();
-  if ( !v2 || *(v0 + 2) == 32 && (sub_811F7EC(), !v2) )
+  if ( !v4 || *(v0 + 2) == 32 && (sub_811F7EC(), !v4) )
   {
-    v3 = *(v0 + 2);
-    if ( v3 == 32 )
+    v5 = *(v0 + 2);
+    if ( v5 == 32 )
     {
       *(v0 + 2) = v1[13];
-      sound_play(131);
+      sound_play(131, v2, v3);
     }
     else
     {
-      v1[13] = v3;
+      v1[13] = v5;
       *(v0 + 2) = 32;
       *(v1 + 26) = 0;
-      sound_play(129);
+      sound_play(129, v2, v3);
     }
   }
 }
@@ -284,19 +286,15 @@ void sub_812D748()
   int v0; // r10
   char *v1; // r7
   char v2; // zf
-  int v3; // r0
 
   v1 = sub_812D6F8();
   sub_812D700();
   if ( v2 )
   {
-    v3 = sub_812D7A4();
+    sub_812D7A4();
     if ( v2 )
-    {
-      v3 = sub_811FA22(*(*(v0 + oToolkit_JoypadPtr) + 4), 7, 1, *(v1 + 26));
-      *(v1 + 26) = v3;
-    }
-    sub_812D78C(v3);
+      *(v1 + 26) = sub_811FA22(*(*(v0 + oToolkit_JoypadPtr) + 4), 7, 1, *(v1 + 26));
+    sub_812D78C();
   }
 }
 
@@ -309,7 +307,7 @@ int sub_812D778()
 
   result = *(v0 + 2);
   if ( result == 32 )
-    sub_812D78C(32);
+    sub_812D78C();
   return result;
 }
 
@@ -327,29 +325,31 @@ signed int sub_812D7A4()
 {
   int v0; // r10
   char *v1; // r5
-  char v2; // zf
-  int v3; // r0
-  int v4; // r2
-  int v5; // r3
-  int v6; // r3
+  int v2; // r1
+  int v3; // r2
+  char v4; // zf
+  int v5; // r0
+  int v6; // r2
+  int v7; // r3
+  int v8; // r3
 
   v1 = sub_812D6F8();
   sub_811F7EC();
-  if ( v2 )
+  if ( v4 )
     return 0;
-  sound_play(129);
-  v3 = *(v0 + oToolkit_Unk2001c04_Ptr);
-  v4 = *(v1 + 26);
-  v5 = *(v3 + 2);
-  *(v3 + 2) = v4;
-  if ( v4 == v5 )
-    v6 = *(v3 + 3) ^ 4;
+  sound_play(129, v2, v3);
+  v5 = *(v0 + oToolkit_Unk2001c04_Ptr);
+  v6 = *(v1 + 26);
+  v7 = *(v5 + 2);
+  *(v5 + 2) = v6;
+  if ( v6 == v7 )
+    v8 = *(v5 + 3) ^ 4;
   else
-    v6 = byte_30069A0[v4] ^ 4;
-  *(v3 + 3) = v6;
+    v8 = byte_30069A0[v6] ^ 4;
+  *(v5 + 3) = v8;
   if ( *(v1 + 20) != 1 )
   {
-    sub_8120018(&unk_2023FC0, *(v1 + 20) - 1, v4, v6);
+    sub_8120018(&unk_2023FC0, *(v1 + 20) - 1, v6, v8);
     sub_812D5A0();
   }
   return 1;
@@ -392,18 +392,15 @@ char *sub_812D830()
 
 
 // 0x812d83c
-int sub_812D83C()
+void sub_812D83C()
 {
   int v0; // r5
-  int result; // r0
 
-  result = *(v0 + 108);
-  if ( !result )
+  if ( !*(v0 + 108) )
   {
     *(v0 + 108) = byte_64;
-    result = sub_8132280(65);
+    sub_8132280(65);
   }
-  return result;
 }
 
 
@@ -423,7 +420,7 @@ int sub_812D854()
 int sub_812D880()
 {
   _BYTE *v0; // r5
-  signed int v1; // r1
+  int v1; // r1
   int result; // r0
 
   if ( sub_80062C8() == 12 )
@@ -471,10 +468,7 @@ void sub_812D91C()
 // 0x812d934
 int __fastcall sub_812D934(int a1, int a2)
 {
-  int v2; // r2
-
-  v2 = *(&off_812D94C + a2);
-  return sub_8120228();
+  return sub_8120228(a1, 4 * a2, *(&off_812D94C + a2));
 }
 
 

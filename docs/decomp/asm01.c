@@ -7,30 +7,31 @@ void __fastcall sub_801FE00(int a1, int a2, int a3)
   *eStruct203F7D8 = 0;
   flags_2036782 = 0;
   byte_2036784 = -1;
-  ZeroFillByEightWords(dword_203F4A0, &byte_200, a3, &struct_2036780);
-  ZeroFillByEightWords(dword_203CBE0, &byte_100, v3, v4);
+  ZeroFillByEightWords(dword_203F4A0, byte_200, a3, &struct_2036780);
+  ZeroFillByEightWords(dword_203CBE0, byte_100, v3, v4);
 }
 
 
 // 0x801fe24
 int __fastcall sub_801FE24(int a1)
 {
-  int v1; // r0
   int result; // r0
-  char v3; // zf
+  int v2; // r1
+  int v3; // r2
+  int v4; // r3
+  char v5; // zf
 
-  v1 = sub_802D246();
-  if ( v1 & 8 )
+  if ( sub_802D246() & 8 )
   {
-    sub_803DCE8(16, 0, 2, 0);
+    sub_803DCE8(0x10u, 0, 2u, 0);
   }
   else
   {
-    result = sub_803F524(v1);
-    if ( v3 )
+    result = sub_803F524();
+    if ( v5 )
       return result;
-    sub_803DE88(0);
-    sub_803DCE8(16, 0, 2, 5);
+    sub_803DE88(0, v2, v3, v4);
+    sub_803DCE8(0x10u, 0, 2u, 5u);
   }
   result = 1;
   eStruct203F7D8[0] = 1;
@@ -77,7 +78,7 @@ void sub_801FE6C()
     else
     {
       eStruct203F7D8[1] = v0;
-      if ( v0 == 2 && sub_802D246() & 8 && (sub_8144D04(0) != 1 || sub_8144D04(3) != 1) )
+      if ( v0 == 2 && sub_802D246() & 8 && (sub_8144D04(0) != 1 || sub_8144D04(3u) != 1) )
         eStruct203F7D8[1] = 4;
     }
   }
@@ -105,7 +106,7 @@ int __fastcall sub_801FEEE(int a1)
   int v2; // r0
 
   v1 = a1;
-  v2 = eStruct200BC30_getJumpOffset00(a1);
+  v2 = eStruct200BC30_getJumpOffset00();
   return (*(&JumpTable801FF08 + v2))(v1);
 }
 
@@ -145,7 +146,7 @@ int __fastcall sub_801FF18(int result)
     word_203678C = sub_803F740(4);
     if ( !(eStruct203F7D8[2] & 1) )
       goto LABEL_16;
-    result = sub_803EA2C(eStruct203F7D8[2]);
+    result = sub_803EA2C();
     if ( result )
       return result;
     v3 = __OFSUB__(eStruct203F7D8[3], 1);
@@ -263,16 +264,15 @@ int __fastcall sub_8020140(int a1)
 {
   int result; // r0
   char v2; // zf
-  int v3; // r0
 
-  result = sub_813D60C(a1);
+  result = sub_813D60C();
   if ( !v2 )
   {
-    result = eStruct200BC30_getJumpOffset00(result);
+    result = eStruct200BC30_getJumpOffset00();
     if ( result == 12 )
     {
-      v3 = sub_813D66C();
-      result = sub_803C620(v3);
+      sub_813D66C();
+      result = sub_803C620();
       eStruct2038160_BattleTerminate01 = result;
     }
   }

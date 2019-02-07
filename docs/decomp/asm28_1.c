@@ -182,8 +182,8 @@ char *sub_809F90C()
   result = TestEventFlagFromImmediate(23, 8);
   if ( v1 )
   {
-    result = &byte_2000210;
-    byte_2000210 = 0;
+    result = byte_2000210;
+    byte_2000210[0] = 0;
     dword_2000218 = 0;
   }
   return result;
@@ -278,51 +278,47 @@ void __fastcall sub_809F9C8(int a1, int a2, int a3, int a4)
 // 0x809f9dc
 int sub_809F9DC()
 {
-  int v0; // r0
-  _DWORD *i; // r4
+  int *i; // r4
   int *j; // r6
-  int v3; // r7
-  int *v4; // r5
-  int v5; // r12
-  int v6; // r1
-  int v7; // r0
-  int v8; // r0
-  int v9; // r1
-  int v10; // r12
-  int v12; // [sp-10h] [bp-28h]
+  int v2; // r7
+  int *v3; // r5
+  __int16 v4; // r12
+  int v5; // r0
+  __int64 v6; // r0
+  __int16 v7; // r12
+  int v9; // [sp-10h] [bp-28h]
 
-  v0 = sub_809FD70();
+  sub_809FD70();
   for ( i = &off_80A336C; *i != 1; i += 2 )
   {
     if ( *i )
     {
       for ( j = i[1]; ; ++j )
       {
-        v3 = *j;
+        v2 = *j;
         if ( !*j )
           break;
-        v4 = &v12;
-        ByteFill(&v12, 16, 0xFFu);
-        while ( *v3 )
+        v3 = &v9;
+        ByteFill(&v9, 16, 0xFFu);
+        while ( *v2 )
         {
-          if ( *v3 == 5 )
+          if ( *v2 == 5 )
           {
-            v6 = *(v3 + 8);
-            v7 = sub_809FBF2();
-            v8 = sub_809FA68(*(v3 + 4), v7, &v12);
-            *v4 = v9;
-            v4 = (v4 + 1);
-            sub_809FACE(*(v3 + 2), v8, v9);
-            ClearEventFlag(*(v3 + 2));
-            v5 = v10 + 1;
+            v5 = sub_809FBF2(5, *(v2 + 8));
+            v6 = sub_809FA68(*(v2 + 4), v5, &v9);
+            *v3 = BYTE4(v6);
+            v3 = (v3 + 1);
+            sub_809FACE(*(v2 + 2), v6, SBYTE4(v6));
+            ClearEventFlag(*(v2 + 2));
+            v4 = v7 + 1;
           }
-          v3 += 12;
+          v2 += 12;
         }
-        v0 = sub_809FDCE(*i, (j - i[1]) >> 2, v5);
+        sub_809FDCE(*i, (j - i[1]) >> 2, v4);
       }
     }
   }
-  return sub_809FDE0(v0);
+  return sub_809FDE0();
 }
 
 
@@ -385,7 +381,7 @@ _BYTE *__fastcall sub_809FACE(int a1, int a2, char a3)
   char v5; // [sp+0h] [bp-1Ch]
 
   v3 = a3;
-  result = sub_809FADE();
+  result = sub_809FADE(a1);
   *result = v5;
   result[1] = v3;
   return result;
@@ -402,12 +398,10 @@ int __fastcall sub_809FADE(int a1)
 
 
 // 0x809faf4
-int sub_809FAF4()
+void sub_809FAF4()
 {
-  int v0; // r0
-
-  v0 = (sub_809FB04)();
-  return sub_809FB04(v0);
+  sub_809FB04();
+  sub_809FB04();
 }
 
 
@@ -415,13 +409,11 @@ int sub_809FAF4()
 void sub_809FB04()
 {
   _DWORD *v0; // r4
-  int *i; // r6
-  int v2; // r7
-  int v3; // r1
-  int v4; // r2
-  int v5; // r3
-  int v6; // r0
-  char v7; // r1
+  unsigned __int8 **i; // r6
+  unsigned __int8 *v2; // r7
+  int v3; // r0
+  int v4; // r0
+  char v5; // r1
 
   while ( *v0 != 1 )
   {
@@ -432,16 +424,16 @@ void sub_809FB04()
         v2 = *i;
         if ( !*i )
           break;
-        while ( *v2 )
+        while ( 1 )
         {
-          if ( *v2 != 5 )
+          v3 = *v2;
+          if ( !*v2 )
+            break;
+          if ( v3 != 5 )
           {
-            v3 = *(v2 + 4);
-            v4 = *(v2 + 8);
-            v5 = *(v2 + 2);
-            v6 = sub_809FB4C();
-            sub_809FACE(*(v2 + 2), v6, v7);
-            ClearEventFlag(*(v2 + 2));
+            v4 = sub_809FB4C(v3, *(v2 + 1), *(v2 + 2), *(v2 + 1));
+            sub_809FACE(*(v2 + 1), v4, v5);
+            ClearEventFlag(*(v2 + 1));
           }
           v2 += 12;
         }
@@ -546,9 +538,8 @@ int __fastcall sub_809FC1C(int a1)
   int v7; // ST04_4
   int v8; // ST08_4
   unsigned __int8 *v9; // r0
-  unsigned __int8 *v10; // r7
-  int v11; // ST00_4
-  int v12; // r0
+  int v10; // ST00_4
+  int v11; // r3
 
   v2 = a1;
   v3 = *(v1 + oToolkit_GameStatePtr);
@@ -569,10 +560,9 @@ int __fastcall sub_809FC1C(int a1)
       v7 = *i;
       v8 = i[1];
       v9 = sub_809FADE(v2);
-      v10 = v9;
-      v11 = *(i + 1) + 8 * *v9 + 2;
-      v12 = sub_809FBF2(*i, *(i + 2));
-      return sub_809FE36(v7, v8, v11, *(v12 + 8 * v10[1]));
+      v10 = *(i + 1) + 8 * *v9 + 2;
+      v11 = *(sub_809FBF2(*i, *(i + 2)) + 8 * v9[1]);
+      return sub_809FE36(v7);
     }
   }
   return 0;

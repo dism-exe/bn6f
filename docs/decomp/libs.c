@@ -2,30 +2,24 @@
 // static () -> void
 int sub_81440D8()
 {
-  int v1; // [sp+0h] [bp-14h]
-  __int16 v2; // [sp+4h] [bp-10h]
-  int v3; // [sp+10h] [bp-4h]
+  int v1; // [sp+10h] [bp-4h]
 
   word_2006DFC = InterruptMasterEnableRegister;
   InterruptEnableRegister &= 0xFF3Fu;
   SIOControlRegister = 0x2000;
   Timer3Control = 0;
   InterruptRequestFlags_IRQAcknowledge = 192;
-  v1 = 0;
-  SWI_CpuSet(&v1, &byte_200F460, 83886694);
-  v2 = 0;
-  SWI_CpuSet(&v2, &unk_200F44C, 16777218);
+  SWI_CpuSet();
+  SWI_CpuSet();
   byte_200F44D = 0;
-  return v3;
+  return v1;
 }
 
 
 // 0x8144158
 int sub_8144158()
 {
-  int v1; // [sp+0h] [bp-1Ch]
-  __int16 v2; // [sp+4h] [bp-18h]
-  int v3; // [sp+18h] [bp-4h]
+  int v1; // [sp+18h] [bp-4h]
 
   InterruptEnableRegister &= 0xFF3Fu;
   SIOModeSelect_GeneralPurposeData = 0;
@@ -35,10 +29,8 @@ int sub_8144158()
   SIOData_Normal_8bitandUARTMode_ = 0;
   *&SIOData0_Parent__Multi_PlayerMode_ = 0;
   *&SIOData2_2ndChild__Multi_PlayerMode_ = 0;
-  v1 = 0;
-  SWI_CpuSet(&v1, &byte_200F460, 83886694);
-  v2 = 0;
-  SWI_CpuSet(&v2, &unk_200F44C, 16777218);
+  SWI_CpuSet();
+  SWI_CpuSet();
   byte_200F450 = 0;
   byte_2006DFE = 0;
   byte_2006E00 = 0;
@@ -47,7 +39,7 @@ int sub_8144158()
   byte_2006E01 = 0;
   word_2006E02 = 0;
   word_2006E04 = 0;
-  return v3;
+  return v1;
 }
 
 
@@ -66,7 +58,7 @@ int sub_8144240()
 int __fastcall sub_8144250(_BYTE *a1, int a2, int a3)
 {
   _BYTE *v3; // r4
-  int v4; // r5
+  __int16 *v4; // r5
   int v5; // r6
   int v6; // r1
   int v7; // r2
@@ -104,11 +96,11 @@ int __fastcall sub_8144250(_BYTE *a1, int a2, int a3)
       }
       else
       {
-        sub_8144380(byte_200F461);
+        sub_8144380();
       }
       break;
     case 3:
-      sub_81443AC(byte_200F461);
+      sub_81443AC();
       byte_200F461 = 4;
       goto LABEL_13;
     case 4:
@@ -338,22 +330,19 @@ int sub_81445F8()
 // 0x814469c
 int sub_814469C()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  v0 = sub_8144BBC();
-  sub_814474C(v0);
-  return v2;
+  sub_8144BBC();
+  sub_814474C();
+  return v1;
 }
 
 
 // 0x81446ac
 int sub_81446AC()
 {
-  int v0; // r0
-  int v1; // r0
-  unsigned int v2; // r2
-  int v4; // [sp+4h] [bp-4h]
+  unsigned int v0; // r2
+  int v2; // [sp+4h] [bp-4h]
 
   byte_200F462 = *&SIOControlRegister << 26 >> 30;
   if ( byte_200F461 == 2 )
@@ -372,27 +361,27 @@ int sub_81446AC()
     }
     else
     {
-      v2 = 0;
+      v0 = 0;
       do
       {
-        byte_200F48A[v2];
-        byte_200F48A[v2] = -1;
-        v2 = (v2 + 1) & 0xFF;
+        byte_200F48A[v0];
+        byte_200F48A[v0] = -1;
+        v0 = (v0 + 1) & 0xFF;
       }
-      while ( v2 <= 3 );
+      while ( v0 <= 3 );
     }
   }
   else if ( byte_200F461 == 4 )
   {
-    v0 = sub_8144920();
-    v1 = sub_8144AFC(v0);
-    sub_8144BF0(v1);
+    sub_8144920();
+    sub_8144AFC();
+    sub_8144BF0();
   }
   ++byte_200F46D;
   byte_200F450 = 0;
   if ( byte_200F46D == 8 )
     byte_200F448 = byte_200FDF5;
-  return v4;
+  return v2;
 }
 
 
@@ -735,7 +724,7 @@ BOOL sub_8144D3C()
 // 0x8144d64
 int sub_8144D64()
 {
-  int v0; // r4
+  signed int v0; // r4
 
   v0 = sub_8149718();
   if ( v0 == 32769 )
@@ -758,7 +747,7 @@ int sub_8144D64()
 // 0x8144db0
 int __fastcall sub_8144DB0(unsigned __int8 a1)
 {
-  signed int v1; // r2
+  char v1; // r2
   int v3; // [sp+0h] [bp-4h]
 
   v1 = a1;
@@ -782,18 +771,16 @@ signed int __fastcall sub_8144DF0(int a1, int a2)
 {
   int v2; // r5
   int v3; // r6
-  __int16 v5; // [sp+0h] [bp-14h]
 
   v2 = a1;
   v3 = a2;
   if ( !a1 )
     return 4;
-  v5 = 0;
-  SWI_CpuSet(&v5, &eStruct200FE00, 16777252);
+  SWI_CpuSet();
   byte_200FE06 = -1;
   dword_200FE40 = v2;
   dword_200FE44 = v3;
-  sub_8149464(sub_8145D54);
+  sub_8149464();
   sub_8149470(sub_8145658);
   return 0;
 }
@@ -802,13 +789,11 @@ signed int __fastcall sub_8144DF0(int a1, int a2)
 // 0x8144e44
 int sub_8144E44()
 {
-  __int16 v1; // [sp+0h] [bp-Ch]
-  int v2; // [sp+8h] [bp-4h]
+  int v1; // [sp+8h] [bp-4h]
 
-  v1 = 0;
-  SWI_CpuSet(&v1, &eStruct200FE00, 16777248);
+  SWI_CpuSet();
   byte_200FE06 = -1;
-  return v2;
+  return v1;
 }
 
 
@@ -1048,7 +1033,7 @@ int __fastcall sub_81450B4(unsigned __int8 a1)
 // 0x8145120
 int __fastcall sub_8145120(int a1)
 {
-  signed int v1; // r2
+  int v1; // r2
   int v3; // [sp+8h] [bp-4h]
 
   v1 = 0;
@@ -1123,32 +1108,31 @@ signed int __fastcall sub_8145210(unsigned __int16 a1)
 {
   signed int v1; // r8
   unsigned int v2; // r2
-  signed int v3; // r0
-  int v4; // r0
-  unsigned int v5; // r2
-  int v6; // r4
-  unsigned int v7; // r2
-  _WORD *v8; // r1
-  int v9; // r0
-  int v11; // [sp+0h] [bp-20h]
+  int v3; // r0
+  unsigned int v4; // r2
+  int v5; // r4
+  unsigned int v6; // r2
+  _WORD *v7; // r1
+  int v8; // r0
+  int v10; // [sp+0h] [bp-20h]
 
   v1 = 0;
-  sub_814A060(a1, &v11, &v11 + 1, &v11 + 2);
-  if ( v11 )
+  sub_814A060(a1, &v10, &v10 + 1, &v10 + 2);
+  if ( v10 )
   {
-    word_200FE14 = v11;
-    word_200FE16 = BYTE1(v11);
+    word_200FE14 = v10;
+    word_200FE16 = BYTE1(v10);
     if ( byte_200FE09 )
     {
       byte_200FE0A = 1;
-      if ( !byte_200FE06 && !BYTE1(v11) )
+      if ( !byte_200FE06 && !BYTE1(v10) )
         byte_200FE0A = 4;
       if ( byte_200FE0A == 1 )
       {
         v2 = 0;
         do
         {
-          if ( (v11 >> v2) & 1 )
+          if ( (v10 >> v2) & 1 )
           {
             byte_200FE30 |= 1 << v2;
             algn_200FE34[v2] = word_200FE32;
@@ -1161,64 +1145,64 @@ signed int __fastcall sub_8145210(unsigned __int16 a1)
       else
       {
         byte_200FE0A = 0;
-        sub_81461D8(v11);
+        sub_81461D8(v10);
         v1 = 1;
         v3 = 51;
       }
-      v4 = sub_81461B0(v3, 1);
+      sub_81461B0(v3, 1);
     }
     else
     {
-      sub_81461D8(v11);
+      sub_81461D8(v10);
       v1 = 1;
-      v4 = sub_81461B0(48, 2);
+      sub_81461B0(48, 2);
     }
-    sub_81464B4(v4);
+    sub_81464B4();
   }
   if ( *dword_2010CC0 == 1 )
   {
-    if ( BYTE2(v11) )
+    if ( BYTE2(v10) )
     {
-      v5 = 0;
+      v4 = 0;
       do
       {
-        if ( (byte_200FE30 >> v5) & 1 && (BYTE2(v11) >> v5) & 1 )
-          algn_200FE34[v5] = 0;
-        v5 = (v5 + 1) & 0xFF;
+        if ( (byte_200FE30 >> v4) & 1 && (BYTE2(v10) >> v4) & 1 )
+          algn_200FE34[v4] = 0;
+        v4 = (v4 + 1) & 0xFF;
       }
-      while ( v5 <= 3 );
-      byte_200FE30 &= ~BYTE2(v11);
-      word_200FE14 = BYTE2(v11);
+      while ( v4 <= 3 );
+      byte_200FE30 &= ~BYTE2(v10);
+      word_200FE14 = BYTE2(v10);
       sub_81461B0(50, 1);
     }
     if ( !byte_200FE30 )
       goto LABEL_38;
+    v5 = 0;
     v6 = 0;
-    v7 = 0;
     do
     {
-      if ( (byte_200FE30 >> v7) & 1 )
+      if ( (byte_200FE30 >> v6) & 1 )
       {
-        v8 = &algn_200FE34[v7];
-        if ( *v8 )
+        v7 = &algn_200FE34[v6];
+        if ( *v7 )
         {
-          v9 = *v8 - 1;
-          *v8 = v9;
-          if ( !(v9 << 16) )
+          v8 = *v7 - 1;
+          *v7 = v8;
+          if ( !(v8 << 16) )
           {
-            byte_200FE30 &= ~(1 << v7);
-            v6 = (v6 | (1 << v7)) & 0xFF;
+            byte_200FE30 &= ~(1 << v6);
+            v5 = (v5 | (1 << v6)) & 0xFF;
           }
         }
       }
-      v7 = (v7 + 1) & 0xFF;
+      v6 = (v6 + 1) & 0xFF;
     }
-    while ( v7 <= 3 );
-    if ( v6 )
+    while ( v6 <= 3 );
+    if ( v5 )
     {
-      sub_81461D8(v6);
+      sub_81461D8(v5);
       v1 = 1;
-      word_200FE14 = v6;
+      word_200FE14 = v5;
       sub_81461B0(51, 1);
     }
     if ( !byte_200FE30 )
@@ -1232,29 +1216,24 @@ LABEL_38:
 // 0x81453d4
 int sub_81453D4()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
   if ( sub_8149F80() << 16 )
   {
-    v0 = sub_81461B0(241, 0);
-    sub_81464B4(v0);
+    sub_81461B0(241, 0);
+    sub_81464B4();
   }
-  return v2;
+  return v1;
 }
 
 
 // 0x81453f0
 int __fastcall sub_81453F0(int a1)
 {
-  char *v1; // r0
-  int v2; // r0
-  signed int v3; // r2
-  signed int v4; // r0
-  int v5; // r0
-  int v6; // r0
-  int v7; // r0
-  int v9; // [sp+4h] [bp-4h]
+  int v1; // r0
+  signed int v2; // r2
+  int v3; // r0
+  int v5; // [sp+4h] [bp-4h]
 
   if ( dword_200FE40 || !byte_200FE04 )
   {
@@ -1264,9 +1243,8 @@ int __fastcall sub_81453F0(int a1)
     {
       if ( byte_200FE04 )
       {
-        sub_8149568(byte_200FE04);
+        sub_8149568();
         byte_200FE0E = 1;
-        v1 = (byte_200FE04 - 1);
         switch ( byte_200FE04 )
         {
           case 1:
@@ -1274,103 +1252,102 @@ int __fastcall sub_81453F0(int a1)
             {
               byte_200FE05 = 0;
               byte_200FE04 = 0;
-              v4 = 255;
+              v3 = 255;
               goto LABEL_14;
             }
-            v1 = &eStruct200FE00;
             byte_200FE04 = byte_200FE05;
             byte_200FE05 = 3;
             break;
           case 2:
-            v1 = sub_8149754();
+            sub_8149754();
             break;
           case 3:
-            v1 = sub_814978C(*(dword_200FE3C + 2), *dword_200FE3C, *(dword_200FE3C + 1));
+            sub_814978C(*(dword_200FE3C + 2), *dword_200FE3C, *(dword_200FE3C + 1));
             break;
           case 4:
-            v1 = sub_81497F4(*(dword_200FE3C + 4), *(dword_200FE3C + 6), *(dword_200FE3C + 8), *(dword_200FE3C + 12));
+            sub_81497F4(*(dword_200FE3C + 4), *(dword_200FE3C + 6), *(dword_200FE3C + 8), *(dword_200FE3C + 12));
             break;
           case 5:
-            v1 = sub_814991C();
+            sub_814991C();
             break;
           case 6:
-            v1 = sub_81499F8();
+            sub_81499F8();
             break;
           case 7:
-            v1 = sub_8149A0C();
+            sub_8149A0C();
             break;
           case 9:
-            v1 = sub_8149BE4();
+            sub_8149BE4();
             break;
           case 0xA:
-            v1 = sub_8149C1C();
+            sub_8149C1C();
             break;
           case 0xB:
-            v1 = sub_8149C54();
+            sub_8149C54();
             break;
           case 0xC:
-            v1 = sub_8149D78(word_200FE1E);
+            sub_8149D78(word_200FE1E);
             break;
           case 0xD:
-            v1 = sub_8149DE0();
+            sub_8149DE0();
             break;
           case 0xE:
-            v1 = sub_8149F48();
+            sub_8149F48();
             break;
           case 0x10:
-            v1 = sub_814A63C(*(dword_2010CC0 + 3));
+            sub_814A63C(*(dword_2010CC0 + 3));
             break;
           case 0x11:
-            v1 = sub_814A698();
+            sub_814A698();
             break;
           case 0x12:
-            v1 = sub_814A780();
+            sub_814A780();
             break;
           case 0x13:
-            v1 = sub_814A7C4();
+            sub_814A7C4();
             break;
           case 0x15:
-            v1 = sub_8149644(v1);
+            sub_8149644();
             break;
           case 0x17:
-            v2 = sub_8144D64();
-            v3 = 255;
-            if ( v2 == 32769 )
-              v3 = 68;
+            v1 = sub_8144D64();
+            v2 = 255;
+            if ( v1 == 32769 )
+              v2 = 68;
             byte_200FE05 = 0;
             byte_200FE04 = 0;
-            v4 = v3;
+            v3 = v2;
 LABEL_14:
-            v1 = sub_81461B0(v4, 0);
+            sub_81461B0(v3, 0);
             break;
           default:
             break;
         }
-        sub_8149568(v1);
+        sub_8149568();
         byte_200FE0E = 0;
       }
     }
     while ( ((byte_200FE04 - 18) & 0xFFu) <= 1 );
     if ( *dword_2010CC0 != 1 || !(sub_8145210(0) << 24) )
     {
-      v5 = sub_8145DD8();
-      v6 = sub_8145FFC(v5);
-      v7 = sub_814610C(v6);
-      sub_81462D8(v7);
+      sub_8145DD8();
+      sub_8145FFC();
+      sub_814610C();
+      sub_81462D8();
     }
   }
   else
   {
     byte_200FE04 = dword_200FE40;
   }
-  return v9;
+  return v5;
 }
 
 
 // 0x81455e8
 int __fastcall sub_81455E8(int a1)
 {
-  int v1; // r0
+  unsigned int v1; // r0
   char v2; // r0
   int v4; // [sp+4h] [bp-4h]
 
@@ -1388,7 +1365,7 @@ int __fastcall sub_81455E8(int a1)
   {
     byte_200FE06 = 1;
     byte_200FE04 = 5;
-    v1 = sub_814DB34(a1, 140);
+    v1 = sub_814DB34(a1, 0x8Cu);
     word_200FE1A = v1;
     word_200FE1C = 140 - v1;
     if ( v1 << 16 )
@@ -1413,27 +1390,21 @@ int __fastcall sub_8145658(unsigned __int16 a1, unsigned __int16 a2)
 {
   signed int v2; // r8
   int v3; // r6
-  signed int v4; // r0
+  int v4; // r0
   char v5; // r0
   int v6; // r0
   int v7; // r0
   int v8; // r0
   int v9; // r0
-  int v10; // r0
-  _WORD *v11; // r1
+  _WORD *v10; // r1
+  int v11; // r0
   int v12; // r0
   int v13; // r0
-  int v14; // r0
-  int v15; // r0
-  int v16; // r0
-  unsigned int v17; // r3
-  unsigned int v18; // r3
-  char v19; // r0
-  int v20; // r0
-  int v21; // r0
-  int v22; // r0
-  unsigned __int8 v24; // [sp+0h] [bp-1Ch]
-  int v25; // [sp+18h] [bp-4h]
+  unsigned int v14; // r3
+  unsigned int v15; // r3
+  char v16; // r0
+  unsigned __int8 v18; // [sp+0h] [bp-1Ch]
+  int v19; // [sp+18h] [bp-4h]
 
   v2 = a1;
   v3 = a2;
@@ -1508,22 +1479,22 @@ int __fastcall sub_8145658(unsigned __int16 a1, unsigned __int16 a2)
         if ( !a2 )
         {
           v7 = sub_8146138();
-          v24 = v7;
+          v18 = v7;
           word_200FE14 = v7;
           if ( v7 )
             sub_81461B0(32, 1);
           if ( byte_200FE0B && word_200FE1A != 1 && *(dword_2010CC0 + 8) == 4 )
           {
-            v8 = sub_8149C54(4);
-            sub_8149568(v8);
+            sub_8149C54();
+            sub_8149568();
             byte_200FE04 = 9;
             byte_200FE0B = 1;
           }
         }
         if ( word_200FE1A )
         {
-          v9 = word_200FE1A-- - 1;
-          if ( !(v9 << 16) )
+          v8 = word_200FE1A-- - 1;
+          if ( !(v8 << 16) )
           {
             byte_200FE04 = 11;
             byte_200FE05 = 0;
@@ -1559,24 +1530,24 @@ LABEL_40:
         }
         break;
       case 0x20u:
-        if ( !a2 && !(sub_8149F14(&v24, &byte_200FE10) << 16) && !v24 )
+        if ( !a2 && !(sub_8149F14(&v18, &byte_200FE10) << 16) && !v18 )
           byte_200FE04 = 14;
         if ( word_200FE1A )
         {
-          v10 = word_200FE1A-- - 1;
-          if ( !(v10 << 16) )
+          v9 = word_200FE1A-- - 1;
+          if ( !(v9 << 16) )
             byte_200FE04 = 14;
         }
         break;
       case 0x21u:
-        if ( !a2 && !(sub_8149F14(&v24, &byte_200FE10) << 16) )
+        if ( !a2 && !(sub_8149F14(&v18, &byte_200FE10) << 16) )
         {
-          if ( v24 )
+          if ( v18 )
           {
             byte_200FE05 = 0;
             byte_200FE04 = 0;
             word_200FE1E = 35;
-            word_200FE14 = v24;
+            word_200FE14 = v18;
             if ( byte_200FE07 )
             {
               byte_200FE07 = 3;
@@ -1614,16 +1585,15 @@ LABEL_76:
             byte_200FE24 |= 1 << byte_200FE10;
             *&algn_200FE28[2 * byte_200FE10] = word_200FE26;
             sub_814A934(4, byte_200FE10);
-            v13 = sub_814ABB8(byte_200FE10, 14);
-            v24 = v13;
-            v14 = v13 << 24;
-            if ( v14 )
+            v12 = sub_814ABB8(byte_200FE10, 0xEu);
+            v18 = v12;
+            if ( v12 << 24 )
             {
               byte_200FE05 = 0;
               byte_200FE04 = 0;
-              sub_81464B4(v14);
+              sub_81464B4();
               sub_81461D8(*(dword_2010CC0 + 3) | *(dword_2010CC0 + 2));
-              word_200FE14 = v24;
+              word_200FE14 = v18;
               sub_81461B0(37, 1);
             }
           }
@@ -1645,21 +1615,21 @@ LABEL_76:
         }
         break;
       case 0x33u:
-        if ( !a2 && !(sub_814A750(&v24) << 16) && v24 <= 1u )
+        if ( !a2 && !(sub_814A750(&v18) << 16) && v18 <= 1u )
           byte_200FE04 = 18;
-        v11 = &algn_200FE34[byte_200FE10];
-        if ( *v11 )
+        v10 = &algn_200FE34[byte_200FE10];
+        if ( *v10 )
         {
-          v12 = *v11 - 1;
-          *v11 = v12;
-          if ( !(v12 << 16) )
+          v11 = *v10 - 1;
+          *v10 = v11;
+          if ( !(v11 << 16) )
             byte_200FE04 = 18;
         }
         break;
       case 0x34u:
-        if ( !a2 && !(sub_814A750(&v24) << 16) )
+        if ( !a2 && !(sub_814A750(&v18) << 16) )
         {
-          if ( v24 )
+          if ( v18 )
           {
             byte_200FE05 = 0;
             byte_200FE04 = 0;
@@ -1694,14 +1664,14 @@ LABEL_76:
   }
   else if ( a2 == 3 && byte_200FE0F && (a1 == 36 || a1 == 38 || a1 == 39) )
   {
-    v15 = sub_814957C();
-    sub_8149568(v15);
-    sub_8149590(&v24);
-    if ( !v24 && !*dword_2010CC0 )
+    sub_814957C();
+    sub_8149568();
+    sub_8149590(&v18);
+    if ( !v18 && !*dword_2010CC0 )
     {
-      v16 = sub_8149454();
-      *(v16 + 4) = *(dword_2010CC0 + 2);
-      *(v16 + 5) = 1;
+      v13 = sub_8149454();
+      *(v13 + 4) = *(dword_2010CC0 + 2);
+      *(v13 + 5) = 1;
       sub_8145210(0x29u);
       v3 = 0;
     }
@@ -1724,33 +1694,33 @@ LABEL_76:
     if ( v3 )
       goto LABEL_130;
     word_200FE14 = *(sub_8149454() + 8);
-    sub_81461FC();
+    sub_81461FC(word_200FE14);
     if ( byte_200FE30 )
     {
       byte_200FE30 &= ~word_200FE14;
-      v17 = 0;
+      v14 = 0;
       do
       {
-        if ( (word_200FE14 >> v17) & 1 )
-          algn_200FE34[v17] = 0;
-        v17 = (v17 + 1) & 0xFF;
+        if ( (word_200FE14 >> v14) & 1 )
+          algn_200FE34[v14] = 0;
+        v14 = (v14 + 1) & 0xFF;
       }
-      while ( v17 <= 3 );
+      while ( v14 <= 3 );
       if ( !byte_200FE06 )
       {
         byte_200FE05 = byte_200FE06;
         byte_200FE04 = byte_200FE06;
       }
     }
-    v24 = word_200FE14 & eStruct200FE00;
-    v18 = 0;
+    v18 = word_200FE14 & eStruct200FE00;
+    v15 = 0;
     do
     {
-      if ( (v24 >> v18) & 1 && byte_200FE01 )
+      if ( (v18 >> v15) & 1 && byte_200FE01 )
         --byte_200FE01;
-      v18 = (v18 + 1) & 0xFF;
+      v15 = (v15 + 1) & 0xFF;
     }
-    while ( v18 <= 3 );
+    while ( v15 <= 3 );
     eStruct200FE00 &= ~word_200FE14;
     if ( !byte_200FE07 )
       goto LABEL_119;
@@ -1767,7 +1737,7 @@ LABEL_129:
     if ( byte_200FE07 == 8 )
     {
       word_200FE1A = word_200FE1C;
-      v19 = 6;
+      v16 = 6;
       byte_200FE07 = 6;
     }
     else
@@ -1780,9 +1750,9 @@ LABEL_119:
         goto LABEL_122;
       }
       byte_200FE07 = 1;
-      v19 = 5;
+      v16 = 5;
     }
-    byte_200FE04 = v19;
+    byte_200FE04 = v16;
     goto LABEL_119;
   }
   if ( v2 != 61 )
@@ -1794,7 +1764,7 @@ LABEL_126:
     byte_200FE01 = 0;
     eStruct200FE00 = 0;
     byte_200FE06 = -1;
-    sub_81464B4(&eStruct200FE00);
+    sub_81464B4();
     if ( v2 == 61 )
       sub_8144E44();
     goto LABEL_129;
@@ -1804,9 +1774,9 @@ LABEL_130:
   {
     *dword_2010CC0 = 1;
     *(dword_2010CC0 + 2) = 15;
-    v20 = sub_81461D8(15);
-    sub_8149568(v20);
-    return v25;
+    sub_81461D8(0xFu);
+    sub_8149568();
+    return v19;
   }
   word_200FE14 = v2;
   word_200FE16 = v3;
@@ -1815,15 +1785,15 @@ LABEL_130:
     byte_200FE05 = 0;
     byte_200FE04 = 0;
   }
-  v21 = sub_81461B0(240, 2);
-  sub_81464B4(v21);
+  sub_81461B0(240, 2);
+  sub_81464B4();
 LABEL_137:
   if ( v2 == 255 )
   {
-    v22 = sub_81461B0(242, 0);
-    sub_81464B4(v22);
+    sub_81461B0(242, 0);
+    sub_81464B4();
   }
-  return v25;
+  return v19;
 }
 
 
@@ -1849,14 +1819,14 @@ int __fastcall sub_8145D54(unsigned __int16 a1)
     sub_8145210(a1);
     if ( byte_200FE02 != 1 )
     {
-      sub_81464B4(byte_200FE02);
+      sub_81464B4();
       byte_200FE0F = 0;
       byte_200FE0E = v2;
       return v5;
     }
   }
   if ( dword_200FE44 )
-    return sub_814DA64(v1);
+    return sub_814DA64(v1, dword_200FE44);
   byte_200FE0F = 0;
   byte_200FE0E = v2;
   return v5;
@@ -2127,7 +2097,7 @@ int __fastcall sub_81461B0(int a1, int a2)
   a1 = a1;
   a2 = a2;
   if ( dword_200FE40 )
-    return sub_814DA68(a1, a2);
+    return sub_814DA68(a1, a2, dword_200FE40);
   word_200FE16 = 0;
   word_200FE14 = 0;
   return v3;
@@ -2138,15 +2108,14 @@ int __fastcall sub_81461B0(int a1, int a2)
 int __fastcall sub_81461D8(unsigned __int8 a1)
 {
   char v1; // r5
-  int v2; // r0
-  int v4; // [sp+8h] [bp-4h]
+  int v3; // [sp+8h] [bp-4h]
 
   v1 = byte_200FE0E;
   byte_200FE0E = 1;
-  v2 = sub_814A4CC(a1);
-  sub_8149568(v2);
+  sub_814A4CC(a1);
+  sub_8149568();
   byte_200FE0E = v1;
-  return v4;
+  return v3;
 }
 
 
@@ -2283,7 +2252,7 @@ int __fastcall sub_81463D0(int a1)
   int v2; // [sp+0h] [bp-4h]
 
   dword_200FE44 = a1;
-  sub_8149464(sub_8145D54);
+  sub_8149464();
   return v2;
 }
 
@@ -2388,9 +2357,9 @@ signed int sub_81465BC()
   int v1; // r2
   int v2; // r3
 
-  if ( sub_8149220(&unk_3000000, 3684, &off_3000E8C, 1) << 16 )
+  if ( sub_8149220(&unk_3000000, 0xE64u, &off_3000E8C, 1) << 16 )
     return 0;
-  sub_8149440(3, &off_3000E88);
+  sub_8149440(3u, &off_3000E88);
   sub_813D8C4();
   sub_803DE88(4, v0, v1, v2);
   return 1;
@@ -2489,11 +2458,11 @@ int __fastcall sub_8146738(int a1)
 // 0x814673c
 int sub_814673C()
 {
-  char *v0; // r7
-  char *v1; // r6
+  _BYTE *v0; // r7
+  _BYTE *v1; // r6
   unsigned int i; // r4
-  int v3; // r0
-  int v4; // r0
+  _BYTE *v3; // r0
+  _BYTE *v4; // r0
   int v6; // [sp+10h] [bp-4h]
 
   v0 = &unk_20098B0;
@@ -2502,9 +2471,9 @@ int sub_814673C()
   for ( i = 0; i < byte_2010288; i = (i + 1) & 0xFF )
   {
     v3 = sub_81466F4(i);
-    sub_81469F0(v3, v0, 13);
+    sub_81469F0(v3, v0, 0xDu);
     v4 = sub_81466C4(i);
-    sub_81469F0(v4, v1, 8);
+    sub_81469F0(v4, v1, 8u);
     v0 += 16;
     v1 += 8;
     ++byte_2009470;
@@ -2516,11 +2485,11 @@ int sub_814673C()
 // 0x81467a0
 int sub_81467A0()
 {
-  char *v0; // r7
-  char *v1; // r6
+  _BYTE *v0; // r7
+  _BYTE *v1; // r6
   unsigned int i; // r4
-  int v3; // r0
-  int v4; // r0
+  _BYTE *v3; // r0
+  _BYTE *v4; // r0
   int v6; // [sp+10h] [bp-4h]
 
   v0 = &unk_20098B0;
@@ -2530,9 +2499,9 @@ int sub_81467A0()
   for ( i = 0; i < byte_2010288; i = (i + 1) & 0xFF )
   {
     v3 = sub_81466F4(i);
-    sub_81469F0(v3, v0, 13);
+    sub_81469F0(v3, v0, 0xDu);
     v4 = sub_81466C4(i);
-    sub_81469F0(v4, v1, 8);
+    sub_81469F0(v4, v1, 8u);
     v0 += 16;
     v1 += 8;
     ++byte_2009470;
@@ -2542,18 +2511,18 @@ int sub_81467A0()
 
 
 // 0x8146808
-signed int __fastcall sub_8146808(int a1)
+unsigned int __fastcall sub_8146808(int a1)
 {
-  char *v1; // r5
+  unsigned __int8 *v1; // r5
   unsigned int i; // r4
-  int v3; // r0
+  unsigned __int8 *v3; // r0
 
   v1 = &unk_20098B0 + (16 * a1 & 0xFFF);
   sub_814665C();
   for ( i = 0; i < byte_2010288; i = (i + 1) & 0xFF )
   {
     v3 = sub_81466F4(i);
-    if ( !(sub_8146A18(v1, v3, 13) << 24) )
+    if ( !(sub_8146A18(v1, v3, 0xDu) << 24) )
       return i;
   }
   return 4;
@@ -2661,7 +2630,7 @@ int __fastcall sub_814695C(int a1)
 {
   int v2; // [sp+4h] [bp-4h]
 
-  sub_81469F0(a1, &unk_200FE63, 8);
+  sub_81469F0(a1, &unk_200FE63, 8u);
   byte_200FE62 = 1;
   if ( byte_200FE64 )
   {
@@ -2690,7 +2659,7 @@ int __fastcall sub_81469BC(int a1, int a2)
 
   v2 = a2 << 16;
   v3 = a2;
-  sub_8146A48(a1, &unk_2010150, 11);
+  sub_8146A48(a1, &unk_2010150, 0xBu);
   byte_201015B = v3;
   byte_201015C = HIBYTE(v2);
   return v5;
@@ -2769,14 +2738,12 @@ int __fastcall sub_8146A48(_BYTE *a1, _BYTE *a2, unsigned int a3)
 int __fastcall sub_8146A70(_BYTE *a1)
 {
   _BYTE *v1; // r4
-  int v3; // [sp+0h] [bp-Ch]
-  int v4; // [sp+8h] [bp-4h]
+  int v3; // [sp+8h] [bp-4h]
 
   v1 = a1;
-  v3 = 0;
-  SWI_CpuSet(&v3, a1, 83886165);
+  SWI_CpuSet();
   *v1 = 1;
-  return v4;
+  return v3;
 }
 
 
@@ -2825,7 +2792,7 @@ BOOL sub_8146BF4()
 // 0x8146c20
 int __fastcall sub_8146C20(unsigned __int8 *a1)
 {
-  _BYTE *v1; // r4
+  unsigned __int8 *v1; // r4
   signed int v2; // r0
   int v4; // [sp+4h] [bp-4h]
 
@@ -2861,12 +2828,12 @@ LABEL_10:
 // 0x8146c60
 int __fastcall sub_8146C60(int a1)
 {
-  char *v1; // r4
+  int v1; // r4
   char v2; // r0
   int v4; // [sp+4h] [bp-4h]
 
   v1 = a1;
-  if ( sub_814AB50((0x1000000 << byte_20103E0) >> 24, (*(a1 + 16) + 2) & 0xFF, &byte_200DD10) << 16 )
+  if ( sub_814AB50((0x1000000 << byte_20103E0) >> 24, *(v1 + 16) + 2, &byte_200DD10, *(v1 + 16)) << 16 )
     v2 = 4;
   else
     v2 = 2;
@@ -2912,12 +2879,10 @@ int __fastcall sub_8146CE4(int a1)
 // 0x8146cfc
 int sub_8146CFC()
 {
-  __int16 v1; // [sp+0h] [bp-8h]
-  int v2; // [sp+4h] [bp-4h]
+  int v1; // [sp+4h] [bp-4h]
 
-  v1 = 0;
-  SWI_CpuSet(&v1, &byte_200AF80, 16777228);
-  return v2;
+  SWI_CpuSet();
+  return v1;
 }
 
 
@@ -3031,7 +2996,7 @@ int sub_8146E60()
 {
   int v1; // [sp+0h] [bp-4h]
 
-  sub_8146E90(&byte_20101E0, &unk_2010230, 12);
+  sub_8146E90(&byte_20101E0, byte_2010230, 0xCu);
   return v1;
 }
 
@@ -3041,7 +3006,7 @@ int sub_8146E78()
 {
   int v1; // [sp+0h] [bp-4h]
 
-  sub_8146F90(&byte_20101E0, &unk_2010230, 12);
+  sub_8146F90(&byte_20101E0, byte_2010230, 12);
   return v1;
 }
 
@@ -3050,19 +3015,15 @@ int sub_8146E78()
 int __fastcall sub_8146E90(int a1, int a2, unsigned int a3)
 {
   int v3; // r8
-  unsigned int v4; // r7
+  int v4; // r7
   unsigned int v5; // r4
   unsigned int v6; // r4
-  __int16 v8; // [sp+0h] [bp-1Ch]
-  __int16 v9; // [sp+2h] [bp-1Ah]
-  int v10; // [sp+18h] [bp-4h]
+  int v8; // [sp+18h] [bp-4h]
 
   v3 = a2;
   v4 = a3;
-  v8 = 0;
-  SWI_CpuSet(&v8, a1, (a3 >> 1) & 0x1FFFFF | 0x1000000);
-  v9 = 0;
-  SWI_CpuSet(&v9, v3, 2 * v4 & 0x1FFFFF | 0x1000000);
+  SWI_CpuSet();
+  SWI_CpuSet();
   sub_8146A70(&unk_200FFF0);
   sub_8146A70(&unk_200FE90);
   byte_20101B4 = 1;
@@ -3090,7 +3051,7 @@ int __fastcall sub_8146E90(int a1, int a2, unsigned int a3)
   }
   while ( v6 <= 3 );
   word_200BC58 = 0;
-  return v10;
+  return v8;
 }
 
 
@@ -3101,9 +3062,8 @@ int __fastcall sub_8146F90(int a1, int a2, int a3)
   int v4; // r7
   int v5; // r5
   int v6; // r0
-  int v7; // r0
-  signed __int16 v8; // r0
-  int v10; // [sp+14h] [bp-4h]
+  signed __int16 v7; // r0
+  int v9; // [sp+14h] [bp-4h]
 
   v3 = a1;
   v4 = a2;
@@ -3115,8 +3075,8 @@ int __fastcall sub_8146F90(int a1, int a2, int a3)
     sub_81453F0(0);
     if ( byte_2010340 )
     {
-      v6 = sub_814A4CC(byte_2010340);
-      sub_8149568(v6);
+      sub_814A4CC(byte_2010340);
+      sub_8149568();
       byte_2010340 = 0;
     }
     if ( *dword_2010CC0 == 1 )
@@ -3129,29 +3089,29 @@ int __fastcall sub_8146F90(int a1, int a2, int a3)
     switch ( word_200BC58 )
     {
       case 9:
-        v7 = 1;
+        v6 = 1;
         goto LABEL_12;
       case 0xB:
         eStruct200FE00_setUnk04To15h();
-        v8 = 12;
+        v7 = 12;
         goto LABEL_13;
       case 0x34:
         sub_814A828();
         sub_813D760();
         break;
       case 0x40:
-        v7 = 0;
+        v6 = 0;
 LABEL_12:
-        sub_8145120(v7);
-        v8 = 10;
+        sub_8145120(v6);
+        v7 = 10;
 LABEL_13:
-        word_200BC58 = v8;
+        word_200BC58 = v7;
         break;
       default:
-        return v10;
+        return v9;
     }
   }
-  return v10;
+  return v9;
 }
 
 
@@ -3210,7 +3170,7 @@ int __fastcall sub_81471D8(_BYTE *a1, int a2)
   int v4; // [sp+4h] [bp-4h]
 
   v2 = a1;
-  if ( sub_814AB50(byte_2010280, (a2 + 3) & 0xFF, &byte_20101E0) )
+  if ( sub_814AB50(byte_2010280, a2 + 3, &byte_20101E0, a2) )
   {
     *v2 = 4;
     word_200BC58 |= 0x80u;
@@ -3267,12 +3227,10 @@ int sub_814728C()
 {
   char v0; // r5
   unsigned int v1; // r4
-  __int16 v3; // [sp+0h] [bp-10h]
-  int v4; // [sp+Ch] [bp-4h]
+  int v3; // [sp+Ch] [bp-4h]
 
   v0 = byte_20101E0;
-  v3 = 0;
-  SWI_CpuSet(&v3, &byte_20101E0, 16777222);
+  SWI_CpuSet();
   v1 = 0;
   do
   {
@@ -3283,7 +3241,7 @@ int sub_814728C()
   while ( v1 <= 3 );
   if ( byte_20101B4 == 1 )
     byte_20101E0 = v0 + 1;
-  return v4;
+  return v3;
 }
 
 
@@ -3327,7 +3285,6 @@ int __fastcall sub_8147350(int a1, int a2, int a3, int a4)
 {
   int v4; // r2
   int v5; // r3
-  __int16 v7; // [sp+0h] [bp-Ch]
 
   sub_803DE88(4, a2, a3, a4);
   byte_2010280 = 0;
@@ -3337,8 +3294,7 @@ int __fastcall sub_8147350(int a1, int a2, int a3, int a4)
   byte_2010328 = 0;
   byte_2010368 = 0;
   sub_813D960(&byte_2010368, 0, v4, v5);
-  v7 = 0;
-  SWI_CpuSet(&v7, &byte_2010290, 16777248);
+  SWI_CpuSet();
   sub_81465FC(&unk_2010350);
   sub_8144DF0(sub_81473EC, sub_81475B8);
   Timer2Counter_Reload = 0;
@@ -3481,12 +3437,9 @@ int sub_81475B8()
 int __fastcall sub_81475D4(unsigned __int16 *a1)
 {
   unsigned __int16 *v1; // r5
-  int v2; // r0
+  signed __int16 v2; // r0
   int v3; // r0
-  int v4; // r0
-  signed __int16 v5; // r0
-  int v6; // r0
-  int v8; // [sp+8h] [bp-4h]
+  int v5; // [sp+8h] [bp-4h]
 
   v1 = a1;
   while ( byte_2010368 == 1 )
@@ -3494,23 +3447,22 @@ int __fastcall sub_81475D4(unsigned __int16 *a1)
   sub_81453F0(Timer2Counter_Reload);
   if ( byte_2010340 )
   {
-    v2 = sub_814A4CC(byte_2010340);
-    sub_8149568(v2);
+    sub_814A4CC(byte_2010340);
+    sub_8149568();
     byte_2010340 = 0;
   }
-  v3 = dword_2010CC0;
   if ( *dword_2010CC0 == 1 )
   {
     byte_2010368 = 1;
-    v3 = sub_8144DB0(1u);
+    sub_8144DB0(1u);
   }
-  v4 = sub_8147834(v3);
-  sub_8147A84(v4);
+  sub_8147834();
+  sub_8147A84();
   switch ( word_200BC58 )
   {
     case 1:
       sub_8144E70(&unk_2010350);
-      v5 = 2;
+      v2 = 2;
       goto LABEL_27;
     case 3:
       if ( !(sub_8144EF8(1u, 0, 120, v1) << 24) )
@@ -3518,19 +3470,19 @@ int __fastcall sub_81475D4(unsigned __int16 *a1)
         word_200BC58 = 4;
         byte_2010284 = 0;
       }
-      return v8;
+      return v5;
     case 4:
       if ( byte_2010280 && byte_2010280 == *(dword_2010CC0 + 2) )
         sub_813D934(12);
       else
         sub_813D934(11);
-      return v8;
+      return v5;
     case 9:
-      v6 = 1;
+      v3 = 1;
       goto LABEL_26;
     case 0xB:
       eStruct200FE00_setUnk04To15h();
-      v5 = 12;
+      v2 = 12;
       goto LABEL_27;
     case 0x22:
       if ( byte_201028C & 0x80 )
@@ -3556,17 +3508,17 @@ int __fastcall sub_81475D4(unsigned __int16 *a1)
       sub_813D760();
       break;
     case 0x40:
-      v6 = 0;
+      v3 = 0;
 LABEL_26:
-      sub_8145120(v6);
-      v5 = 10;
+      sub_8145120(v3);
+      v2 = 10;
 LABEL_27:
-      word_200BC58 = v5;
+      word_200BC58 = v2;
       break;
     default:
-      return v8;
+      return v5;
   }
-  return v8;
+  return v5;
 }
 
 
@@ -3596,7 +3548,7 @@ signed int sub_8147834()
     byte_201028C &= 0xFBu;
     v0 = 1;
   }
-  if ( byte_201028C & 1 && !(sub_814AB50(byte_2010280, 67, &byte_2010290) << 16) )
+  if ( byte_201028C & 1 && !(sub_814AB50(byte_2010280, 0x43u, &byte_2010290, 64) << 16) )
   {
     v3 = 0;
     if ( !(*(dword_2010CC0 + 2) & 1) )
@@ -3620,11 +3572,9 @@ int sub_814794C()
   int v1; // r6
   int v2; // r7
   int v3; // r4
-  __int16 v5; // [sp+0h] [bp-24h]
-  int v6; // [sp+20h] [bp-4h]
+  int v5; // [sp+20h] [bp-4h]
 
-  v5 = 0;
-  SWI_CpuSet(&v5, &byte_2010290, 16777248);
+  SWI_CpuSet();
   if ( ((byte_200AF85 - 1) & 0xFFu) <= 1 )
     byte_2010290 = 1;
   byte_2010291 = (byte_201028C & 0x40) != 0;
@@ -3655,7 +3605,7 @@ int sub_814794C()
     v1 = v2;
   }
   while ( v2 <= 3u );
-  return v6;
+  return v5;
 }
 
 
@@ -3720,37 +3670,31 @@ int __fastcall sub_8147B54(int a1, int a2, int a3)
 {
   int v3; // r7
   int v4; // r8
-  int v5; // r4
-  unsigned int v6; // r2
-  __int16 v8; // [sp+0h] [bp-1Ch]
-  __int16 v9; // [sp+2h] [bp-1Ah]
-  int v10; // [sp+18h] [bp-4h]
+  unsigned int v5; // r2
+  int v7; // [sp+18h] [bp-4h]
 
   v3 = a2;
   v4 = a3;
-  v8 = 0;
-  v5 = ((a3 << 10) >> 11) | 0x1000000;
-  SWI_CpuSet(&v8, a1, v5);
-  v9 = 0;
-  SWI_CpuSet(&v9, v3, v5);
+  SWI_CpuSet();
+  SWI_CpuSet();
   sub_8146A70(&unk_200FFF0);
   sub_8146A70(&unk_200FE90);
   byte_20101B4 = 1;
   byte_2010274 = byte_2010292;
-  v6 = 0;
+  v5 = 0;
   do
   {
-    byte_2010220[v6] = 0;
-    word_2010400[v6] = 0;
-    word_2010428[v6] = 0;
-    v6 = (v6 + 1) & 0xFF;
+    byte_2010220[v5] = 0;
+    word_2010400[v5] = 0;
+    word_2010428[v5] = 0;
+    v5 = (v5 + 1) & 0xFF;
   }
-  while ( v6 <= 3 );
+  while ( v5 <= 3 );
   byte_2010390 = 0;
   sub_814A934(12, byte_20103E0);
   sub_814AAF0(32, byte_20103E0, v3, v4);
   word_200BC58 = 49;
-  return v10;
+  return v7;
 }
 
 
@@ -3760,8 +3704,7 @@ int __fastcall sub_8147C20(int a1, int a2, int a3)
   int v3; // r6
   int v4; // r7
   int v5; // r5
-  int v6; // r0
-  int v8; // [sp+10h] [bp-4h]
+  int v7; // [sp+10h] [bp-4h]
 
   v3 = a1;
   v4 = a2;
@@ -3784,8 +3727,8 @@ int __fastcall sub_8147C20(int a1, int a2, int a3)
     case 0x10:
       if ( !byte_200FE02 )
       {
-        v6 = sub_814A4CC(*(dword_2010CC0 + 3) | *(dword_2010CC0 + 2));
-        sub_8149568(v6);
+        sub_814A4CC(*(dword_2010CC0 + 3) | *(dword_2010CC0 + 2));
+        sub_8149568();
       }
       break;
     case 0x33:
@@ -3804,9 +3747,9 @@ int __fastcall sub_8147C20(int a1, int a2, int a3)
       sub_813D760();
       break;
     default:
-      return v8;
+      return v7;
   }
-  return v8;
+  return v7;
 }
 
 
@@ -3850,7 +3793,7 @@ int __fastcall sub_8147E44(_BYTE *a1, int a2)
   int v4; // [sp+4h] [bp-4h]
 
   v2 = a1;
-  if ( sub_814AB50((0x1000000 << byte_20103E0) >> 24, (a2 + 2) & 0xFF, &byte_2010390) << 16 )
+  if ( sub_814AB50((0x1000000 << byte_20103E0) >> 24, a2 + 2, &byte_2010390, a2) << 16 )
   {
     if ( word_200BC58 == 49 )
       *v2 = 4;
@@ -3902,20 +3845,18 @@ int __fastcall sub_8147F00(int a1, unsigned int a2)
   int v2; // r7
   unsigned int v3; // r5
   char v4; // r6
-  __int16 v6; // [sp+0h] [bp-18h]
-  int v7; // [sp+14h] [bp-4h]
+  int v6; // [sp+14h] [bp-4h]
 
   v2 = a1;
   v3 = a2;
   v4 = byte_2010390;
-  v6 = 0;
-  SWI_CpuSet(&v6, &byte_2010390, (a2 << 10 >> 11) | 0x1000000);
+  SWI_CpuSet();
   if ( byte_20101B4 == 1 )
   {
     byte_2010390 = v4 + 1;
     CopyWords(&byte_200DD10, v2, v3);
   }
-  return v7;
+  return v6;
 }
 
 
@@ -3964,7 +3905,6 @@ int __fastcall sub_8147F98(int a1, int a2, int a3, int a4)
   int v5; // r1
   int v6; // r2
   int v7; // r3
-  __int16 v9; // [sp+0h] [bp-14h]
 
   sub_803DE88(4, a2, a3, a4);
   v4 = sub_81465FC(&unk_2010350);
@@ -3977,8 +3917,7 @@ int __fastcall sub_8147F98(int a1, int a2, int a3, int a4)
   byte_200BC55 = 1;
   byte_2010288 = 0;
   byte_20103E0 = 0;
-  v9 = 0;
-  SWI_CpuSet(&v9, &byte_2010290, 16777248);
+  SWI_CpuSet();
   sub_8146CFC();
   return 0;
 }
@@ -4153,8 +4092,7 @@ int __fastcall sub_8148234(unsigned __int16 *a1)
   int v2; // r2
   int v3; // r3
   int v4; // r0
-  int v5; // r0
-  int v7; // [sp+4h] [bp-4h]
+  int v6; // [sp+4h] [bp-4h]
 
   v1 = a1;
   byte_2010324 = 0;
@@ -4164,7 +4102,7 @@ int __fastcall sub_8148234(unsigned __int16 *a1)
     case 1:
       sub_8144E70(&unk_2010350);
       word_200BC58 = 2;
-      return v7;
+      return v6;
     case 5:
       if ( !sub_8144EF8(0, 0, 120, v1) )
       {
@@ -4172,7 +4110,7 @@ int __fastcall sub_8148234(unsigned __int16 *a1)
         word_200BC58 = 6;
         sub_8146854(6, &byte_200BC50, v2, v3);
       }
-      return v7;
+      return v6;
     case 6:
       if ( byte_2010288 && byte_200FE04 > 8u && byte_200FE04 <= 0xBu )
       {
@@ -4182,7 +4120,7 @@ int __fastcall sub_8148234(unsigned __int16 *a1)
       {
         sub_813D934(6);
       }
-      return v7;
+      return v6;
     case 7:
       if ( sub_8144FD0(*(dword_2010CC0 + 32 * byte_2010330[byte_20103E4] + 20), 120) << 24 )
       {
@@ -4194,22 +4132,22 @@ int __fastcall sub_8148234(unsigned __int16 *a1)
         sub_813D934(9);
         word_200BC58 = 8;
       }
-      return v7;
+      return v6;
     case 9:
       sub_8145120(1);
       word_200BC58 = 10;
-      return v7;
+      return v6;
     case 0xB:
       eStruct200FE00_setUnk04To15h();
       word_200BC58 = 12;
-      return v7;
+      return v6;
     case 0x10:
       if ( !byte_200FE02 )
       {
-        v5 = sub_814A4CC(*(dword_2010CC0 + 3) | *(dword_2010CC0 + 2));
-        sub_8149568(v5);
+        sub_814A4CC(*(dword_2010CC0 + 3) | *(dword_2010CC0 + 2));
+        sub_8149568();
       }
-      return v7;
+      return v6;
     case 0x25:
       v4 = *(dword_2010CB0[byte_20103E0] + 52);
       if ( v4 == 70 )
@@ -4221,7 +4159,7 @@ int __fastcall sub_8148234(unsigned __int16 *a1)
           {
             sub_813D8D0();
             sub_813D934(0);
-            return v7;
+            return v6;
           }
           goto LABEL_19;
         }
@@ -4229,7 +4167,7 @@ int __fastcall sub_8148234(unsigned __int16 *a1)
         {
 LABEL_19:
           sub_813D934(18);
-          return v7;
+          return v6;
         }
         sub_813D934(17);
       }
@@ -4239,7 +4177,7 @@ LABEL_19:
         word_200BC58 = 63;
         sub_813D934(4);
       }
-      return v7;
+      return v6;
     case 0x33:
       if ( *(dword_2010CC0 + 3) | *(dword_2010CC0 + 2) )
       {
@@ -4250,13 +4188,13 @@ LABEL_19:
       {
         word_200BC58 = 5;
       }
-      return v7;
+      return v6;
     case 0x34:
       sub_814A828();
       sub_813D760();
-      return v7;
+      return v6;
     default:
-      return v7;
+      return v6;
   }
 }
 
@@ -4267,13 +4205,9 @@ int sub_8148540()
   unsigned int v0; // r4
   unsigned int v1; // r4
   int result; // r0
-  __int16 v3; // [sp+0h] [bp-1Ch]
-  __int16 v4; // [sp+2h] [bp-1Ah]
 
-  v3 = 0;
-  SWI_CpuSet(&v3, &byte_20101E0, 16777248);
-  v4 = 0;
-  SWI_CpuSet(&v4, &unk_2010230, 16777248);
+  SWI_CpuSet();
+  SWI_CpuSet();
   sub_8146A70(&unk_200FFF0);
   sub_8146A70(&unk_200FE90);
   byte_2010270 = 0;
@@ -4312,14 +4246,14 @@ int sub_8148540()
   {
     if ( byte_2010292 & (2 << v1) )
     {
-      sub_814AAF0(16, v1, &unk_2010230 + 16 * v1, 14);
+      sub_814AAF0(16, v1, &byte_2010230[16 * v1], 14);
       sub_814A934(3, v1);
     }
     v1 = (v1 + 1) & 0xFF;
   }
   while ( v1 <= 3 );
   byte_201021D = byte_2010293;
-  if ( sub_814AB7C(byte_2010292 >> 1) & 0xFFFF )
+  if ( sub_814AB7C(byte_2010292 >> 1, &byte_20101E0, 64) )
     return 1;
   byte_2010328 = 0;
   if ( !(byte_2010292 & 2) )
@@ -4339,8 +4273,7 @@ int sub_8148540()
 int __fastcall sub_8148738(signed int a1)
 {
   int v1; // r0
-  int v2; // r0
-  int v4; // [sp+4h] [bp-4h]
+  int v3; // [sp+4h] [bp-4h]
 
   a1 = a1;
   if ( a1 != 67 )
@@ -4368,12 +4301,12 @@ int __fastcall sub_8148738(signed int a1)
           if ( a1 == 68 )
           {
             word_200BC58 = 11;
-            return v4;
+            return v3;
           }
           if ( a1 != 80 )
-            return v4;
-          v1 = sub_8148B80();
-          sub_8148BCC(v1);
+            return v3;
+          sub_8148B80();
+          sub_8148BCC();
           byte_2010368 = 0;
           goto LABEL_24;
         }
@@ -4387,16 +4320,16 @@ int __fastcall sub_8148738(signed int a1)
           if ( a1 < 242 )
           {
             word_200BC58 = 63;
-            v2 = 13;
+            v1 = 13;
           }
           else
           {
             if ( a1 != 255 )
-              return v4;
+              return v3;
             word_200BC58 = 63;
-            v2 = 1;
+            v1 = 1;
           }
-          sub_813D934(v2);
+          sub_813D934(v1);
           byte_2010368 = 0;
         }
       }
@@ -4408,23 +4341,23 @@ int __fastcall sub_8148738(signed int a1)
         if ( a1 != 48 )
         {
           if ( a1 != 49 )
-            return v4;
+            return v3;
 LABEL_24:
           sub_813D934(14);
-          return v4;
+          return v3;
         }
 LABEL_25:
         byte_2010408 = 1;
         byte_2010368 = 0;
         sub_813D934(15);
-        return v4;
+        return v3;
       }
       if ( a1 != 64 )
       {
         if ( a1 <= 64 )
         {
           if ( a1 != 51 )
-            return v4;
+            return v3;
           goto LABEL_25;
         }
         if ( a1 == 66 )
@@ -4432,7 +4365,7 @@ LABEL_25:
       }
     }
   }
-  return v4;
+  return v3;
 }
 
 
@@ -4472,7 +4405,7 @@ int sub_8148884()
     }
     else
     {
-      sub_814AFD4(byte_2010328, &byte_20101E0, 64);
+      sub_814AFD4(byte_2010328, &byte_20101E0, 0x40u);
       sub_8144DB0(1u);
     }
   }
@@ -4510,8 +4443,7 @@ int sub_8148A80()
 {
   char v0; // r6
   unsigned int v1; // r4
-  __int16 v3; // [sp+0h] [bp-14h]
-  int v4; // [sp+10h] [bp-4h]
+  int v3; // [sp+10h] [bp-4h]
 
   if ( byte_20101B4 != 143 && (byte_20101D0 & byte_2010292) == byte_2010292 )
   {
@@ -4519,14 +4451,13 @@ int sub_8148A80()
     if ( byte_20101B4 == 1 && byte_20103F0 == 1 )
       sub_803F334(&byte_20101E0, 0x40u);
     byte_2010430 = 0;
-    v3 = 0;
-    SWI_CpuSet(&v3, &byte_20101E0, 16777248);
+    SWI_CpuSet();
     byte_201021D = byte_2010293;
     v1 = 0;
     do
     {
       if ( ((0x2000000 << v1) >> 24) & byte_2010292 && byte_20101B4 == 1 )
-        CopyWords(&unk_2010230 + 16 * v1, &unk_20101EC + 12 * v1, 0xCu);
+        CopyWords(&byte_2010230[16 * v1], &unk_20101EC + 12 * v1, 0xCu);
       v1 = (v1 + 1) & 0xFF;
     }
     while ( v1 <= 3 );
@@ -4544,7 +4475,7 @@ int sub_8148A80()
     if ( byte_2010293 > 1u )
       byte_2010430 = 1;
   }
-  return v4;
+  return v3;
 }
 
 
@@ -4660,8 +4591,6 @@ signed int sub_8148D24()
 {
   unsigned int v0; // r2
   int v1; // r0
-  __int16 v3; // [sp+0h] [bp-18h]
-  __int16 v4; // [sp+2h] [bp-16h]
 
   byte_2010480 = 0;
   if ( word_20102C6[0] != *(dword_2010CC0 + 148) )
@@ -4670,10 +4599,8 @@ signed int sub_8148D24()
       ++byte_2010480;
     while ( byte_2010480 <= 4u && word_20102C6[byte_2010480] != *(dword_2010CC0 + 148) );
   }
-  v3 = 0;
-  SWI_CpuSet(&v3, &byte_2010390, 16777224);
-  v4 = 0;
-  SWI_CpuSet(&v4, &unk_20103A0, 16777248);
+  SWI_CpuSet();
+  SWI_CpuSet();
   sub_8146A70(&unk_200FFF0);
   sub_8146A70(&unk_200FE90);
   v0 = 0;
@@ -4695,7 +4622,7 @@ signed int sub_8148D24()
   v1 = sub_814A934(3, byte_20103E0);
   sub_803ECFC(v1);
   sub_803F030(&byte_2010390, 0xCu);
-  if ( sub_814AB7C((0x1000000 << byte_20103E0) >> 24) << 16 )
+  if ( sub_814AB7C((0x1000000 << byte_20103E0) >> 24, &byte_2010390, 14) << 16 )
     return 1;
   word_200BC58 = 49;
   return 0;
@@ -4902,65 +4829,68 @@ signed int sub_8149150()
 // 0x8149220
 signed int __fastcall sub_8149220(int a1, unsigned __int16 a2, int a3, char a4)
 {
-  char *v5; // r3
-  unsigned int v6; // r5
-  int v7; // r1
-  int v8; // r0
-  unsigned int v9; // r5
-  int v10; // r0
-  char (*v11)[28]; // r0
-  _WORD *v12; // r5
-  _WORD *v13; // r4
-  int v14; // r3
+  char v4; // r7
+  char *v6; // r3
+  unsigned int v7; // r5
+  int v8; // r1
+  int v9; // r0
+  unsigned int v10; // r5
+  int v11; // r0
+  char (*v12)[28]; // r0
+  _WORD *v13; // r5
+  _WORD *v14; // r4
+  int v15; // r3
 
+  v4 = a4;
   if ( (a1 & 0xF000000) == 0x2000000 && a4 || a1 & 3 )
     return 2;
   if ( a4 )
-    v5 = &loc_E64;
+    v6 = &loc_E64;
   else
-    v5 = &byte_504;
-  if ( a2 < v5 )
+    v6 = &byte_504;
+  if ( a2 < v6 )
     return 1;
   dword_2010CC0 = a1;
   dword_2010CC4 = a1 + 180;
   dword_2010CC8 = a1 + 220;
   dword_2010CB0[0] = a1 + 444;
   off_2010CA0[0] = (a1 + 892);
-  v6 = 1;
+  v7 = 1;
   do
   {
-    v7 = v6 - 1;
-    dword_2010CB0[v6] = dword_2010CB0[v7] + 112;
-    off_2010CA0[v6] = off_2010CA0[v7] + 1;
-    v6 = (v6 + 1) & 0xFFFF;
+    v8 = v7 - 1;
+    dword_2010CB0[v7] = dword_2010CB0[v8] + 112;
+    off_2010CA0[v7] = off_2010CA0[v8] + 1;
+    v7 = (v7 + 1) & 0xFFFF;
   }
-  while ( v6 <= 3 );
+  while ( v7 <= 3 );
+  v9 = dword_2010CAC + 28;
   *(dword_2010CC8 + 220) = dword_2010CAC + 28;
-  v8 = sub_814C10C();
-  sub_814935C(v8);
-  v9 = 0;
+  sub_814C10C(v9, a3, v4);
+  sub_814935C();
+  v10 = 0;
   do
   {
-    v10 = dword_2010CB0[v9];
-    *(v10 + 104) = 0;
-    *(v10 + 108) = 0;
-    v11 = off_2010CA0[v9];
-    *&(*v11)[20] = 0;
-    *&(*v11)[24] = 0;
-    v9 = (v9 + 1) & 0xFFFF;
+    v11 = dword_2010CB0[v10];
+    *(v11 + 104) = 0;
+    *(v11 + 108) = 0;
+    v12 = off_2010CA0[v10];
+    *&(*v12)[20] = 0;
+    *&(*v12)[24] = 0;
+    v10 = (v10 + 1) & 0xFFFF;
   }
-  while ( v9 <= 3 );
-  v12 = (sub_814A794 & 0xFFFFFFFE);
-  v13 = (dword_2010CC8 + 8);
-  v14 = 23;
+  while ( v10 <= 3 );
+  v13 = (sub_814A794 & 0xFFFFFFFE);
+  v14 = (dword_2010CC8 + 8);
+  v15 = 23;
   do
   {
-    *v13 = *v12;
-    ++v12;
+    *v14 = *v13;
     ++v13;
-    v14 = (v14 - 1) & 0xFFFF;
+    ++v14;
+    v15 = (v15 - 1) & 0xFFFF;
   }
-  while ( v14 != 0xFFFF );
+  while ( v15 != 0xFFFF );
   *(dword_2010CC8 + 4) = dword_2010CC8 + 9;
   return 0;
 }
@@ -4972,18 +4902,14 @@ int sub_814935C()
   __int16 v0; // r7
   char v1; // r4
   unsigned int v2; // r2
-  __int16 v4; // [sp+0h] [bp-18h]
-  __int16 v5; // [sp+2h] [bp-16h]
-  int v6; // [sp+14h] [bp-4h]
+  int v4; // [sp+14h] [bp-4h]
 
   v0 = InterruptMasterEnableRegister;
   InterruptMasterEnableRegister = 0;
   v1 = *dword_2010CC4;
-  v4 = 0;
-  SWI_CpuSet(&v4, dword_2010CC4, 16777236);
+  SWI_CpuSet();
   *dword_2010CC4 = v1 & 8;
-  v5 = 0;
-  SWI_CpuSet(&v5, dword_2010CC0, 16777306);
+  SWI_CpuSet();
   *(dword_2010CC0 + 9) = 4;
   *(dword_2010CC4 + 6) = 0;
   *dword_2010CC0 = -1;
@@ -4997,19 +4923,18 @@ int sub_814935C()
   }
   while ( v2 <= 3 );
   InterruptMasterEnableRegister = v0;
-  return v6;
+  return v4;
 }
 
 
 // 0x81493e4
 int sub_81493E4()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  v0 = sub_814C360(sub_81494B8);
-  sub_814C7D4(v0);
-  return v2;
+  sub_814C360(sub_81494B8);
+  sub_814C7D4();
+  return v1;
 }
 
 
@@ -5058,12 +4983,12 @@ int sub_8149454()
 
 
 // 0x8149464
-int sub_8149464()
+int __fastcall sub_8149464(int a1)
 {
-  int v1; // [sp+0h] [bp-4h]
+  int v2; // [sp+0h] [bp-4h]
 
-  sub_814C36C();
-  return v1;
+  sub_814C36C(a1);
+  return v2;
 }
 
 
@@ -5106,8 +5031,7 @@ int __fastcall sub_81494B8(unsigned __int8 a1, unsigned __int16 a2)
   int v2; // r5
   int v3; // r4
   _BYTE *v4; // r0
-  int v5; // r2
-  int v7; // [sp+8h] [bp-4h]
+  int v6; // [sp+8h] [bp-4h]
 
   v2 = a1;
   v3 = a2;
@@ -5115,11 +5039,8 @@ int __fastcall sub_81494B8(unsigned __int8 a1, unsigned __int16 a2)
   v4 = dword_2010CC4;
   *(dword_2010CC4 + 28) = v3;
   if ( *v4 & 8 )
-  {
-    v5 = *dword_2010CC8;
-    sub_814DA68(v2, v3);
-  }
-  return v7;
+    sub_814DA68(v2, v3, *dword_2010CC8);
+  return v6;
 }
 
 
@@ -5127,31 +5048,27 @@ int __fastcall sub_81494B8(unsigned __int8 a1, unsigned __int16 a2)
 int __fastcall sub_81494F8(unsigned __int8 a1, int a2)
 {
   unsigned int v2; // r1
-  int v3; // r2
-  int v4; // r5
-  unsigned int v5; // r4
-  int v7; // [sp+8h] [bp-4h]
+  int v3; // r5
+  unsigned int v4; // r4
+  int v6; // [sp+8h] [bp-4h]
 
   v2 = a2 << 16;
   if ( a1 == 255 )
   {
     if ( *dword_2010CC4 & 8 )
-    {
-      v3 = *dword_2010CC8;
-      sub_814DA68(255, v2 >> 16);
-    }
-    v4 = *(dword_2010CC0 + 3) | *(dword_2010CC0 + 2);
-    v5 = 0;
+      sub_814DA68(255, v2 >> 16, *dword_2010CC8);
+    v3 = *(dword_2010CC0 + 3) | *(dword_2010CC0 + 2);
+    v4 = 0;
     do
     {
-      if ( (v4 >> v5) & 1 )
-        sub_814A41C(v5);
-      v5 = (v5 + 1) & 0xFF;
+      if ( (v3 >> v4) & 1 )
+        sub_814A41C(v4, 1);
+      v4 = (v4 + 1) & 0xFF;
     }
-    while ( v5 <= 3 );
+    while ( v4 <= 3 );
     *dword_2010CC0 = -1;
   }
-  return v7;
+  return v6;
 }
 
 
@@ -5166,12 +5083,11 @@ int sub_8149568()
 // 0x814957c
 int sub_814957C()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  v0 = sub_814C360(sub_81494B8);
-  sub_814C418(v0);
-  return v2;
+  sub_814C360(sub_81494B8);
+  sub_814C418();
+  return v1;
 }
 
 
@@ -5228,7 +5144,7 @@ signed int sub_81495CC()
   while ( v6 <= 0x59 );
   if ( v5 == *byte_30000FA )
   {
-    SWI_CpuSet(50331648, dword_2010CC0, 90);
+    SWI_CpuSet();
     *dword_2010CC4 |= 0x80u;
     return 0;
   }
@@ -5241,14 +5157,13 @@ int sub_8149644()
 {
   __int16 v0; // t1
   __int16 *v1; // r1
-  int v2; // r0
-  int v4; // [sp+0h] [bp-4h]
+  int v3; // [sp+0h] [bp-4h]
 
   if ( InterruptMasterEnableRegister )
   {
     sub_814C220();
     sub_814935C();
-    if ( sub_814CC48(8) == 32769 )
+    if ( sub_814CC48(8u) == 32769 )
     {
       v1 = &Timer0Counter_Reload[2 * *(dword_2010CCC + 10)];
       *v1 = 0;
@@ -5256,8 +5171,8 @@ int sub_8149644()
       while ( *v1 << 16 <= 0x105FFFFu )
         ;
       *v1 = 0;
-      v2 = sub_814C360(sub_81496EC);
-      sub_814C8E4(v2);
+      sub_814C360(sub_81496EC);
+      sub_814C8E4();
     }
     else
     {
@@ -5271,7 +5186,7 @@ int sub_8149644()
     v0 = *(dword_2010CCC + 18);
     *(dword_2010CCC + 18) = 6;
   }
-  return v4;
+  return v3;
 }
 
 
@@ -5290,13 +5205,13 @@ int __fastcall sub_81496EC(unsigned __int8 a1, unsigned __int16 a2)
 // 0x8149718
 signed int sub_8149718()
 {
-  int v1; // r2
+  signed int v1; // r2
 
   if ( !InterruptMasterEnableRegister )
     return -1;
   sub_814C220();
   sub_814935C();
-  v1 = sub_814CC48(30);
+  v1 = sub_814CC48(0x1Eu);
   if ( !v1 )
     SIOControlRegister = 0x2000;
   return v1;
@@ -5306,12 +5221,11 @@ signed int sub_8149718()
 // 0x8149754
 int sub_8149754()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  v0 = sub_814C360(sub_8149768);
-  sub_814C3AC(v0);
-  return v2;
+  sub_814C360(sub_8149768);
+  sub_814C3AC();
+  return v1;
 }
 
 
@@ -5335,10 +5249,11 @@ int __fastcall sub_8149768(unsigned __int8 a1, unsigned __int16 a2)
 int __fastcall sub_814978C(char a1, unsigned __int8 a2, unsigned __int8 a3)
 {
   char v3; // r4
-  int v4; // r5
+  unsigned __int8 v4; // r5
   int v5; // r6
   __int16 v6; // r4
-  int v8; // [sp+Ch] [bp-4h]
+  __int16 v7; // r0
+  int v9; // [sp+Ch] [bp-4h]
 
   v3 = a1;
   v4 = a2;
@@ -5349,14 +5264,15 @@ int __fastcall sub_814978C(char a1, unsigned __int8 a2, unsigned __int8 a3)
   {
     v6 = InterruptMasterEnableRegister;
     InterruptMasterEnableRegister = 0;
-    *(dword_2010CC4 + 26) = SWI_Div(600, v5);
+    SWI_Div();
+    *(dword_2010CC4 + 26) = v7;
     InterruptMasterEnableRegister = v6;
   }
   else
   {
     *(dword_2010CC4 + 26) = 1;
   }
-  return v8;
+  return v9;
 }
 
 
@@ -5478,26 +5394,23 @@ int __fastcall sub_8149880(unsigned __int8 a1, unsigned __int16 a2)
 // 0x814991c
 int sub_814991C()
 {
-  int v0; // r0
-  int v1; // r0
-  int v2; // r1
-  int v3; // r0
-  int v5; // [sp+0h] [bp-4h]
+  unsigned __int16 v0; // r0
+  int v2; // [sp+0h] [bp-4h]
 
-  v0 = sub_814C360(sub_81494F8);
-  v1 = sub_814C418(v0);
-  v2 = sub_814C384(v1) & 0xFFFF;
-  if ( v2 )
+  sub_814C360(sub_81494F8);
+  sub_814C418();
+  v0 = sub_814C384();
+  if ( v0 )
   {
-    sub_81494B8(0x19u, v2);
+    sub_81494B8(0x19u, v0);
   }
   else if ( !*(*(dword_2010CC8 + 220) + 7) )
   {
-    sub_8149994(1);
+    sub_8149994(1u);
   }
-  v3 = sub_814C360(sub_814996C);
-  sub_814C51C(v3);
-  return v5;
+  sub_814C360(sub_814996C);
+  sub_814C51C();
+  return v2;
 }
 
 
@@ -5518,15 +5431,13 @@ int __fastcall sub_8149994(unsigned __int8 a1)
 {
   int v1; // r4
   unsigned int v2; // r1
-  __int16 v4; // [sp+0h] [bp-10h]
-  int v5; // [sp+Ch] [bp-4h]
+  int v4; // [sp+Ch] [bp-4h]
 
   v1 = a1;
   sub_814A828();
   if ( v1 )
   {
-    v4 = 0;
-    SWI_CpuSet(&v4, dword_2010CC0 + 20, 16777280);
+    SWI_CpuSet();
     *(dword_2010CC0 + 8) = 0;
   }
   v2 = 0;
@@ -5540,31 +5451,29 @@ int __fastcall sub_8149994(unsigned __int8 a1)
   *(dword_2010CC0 + 2) = 0;
   *(dword_2010CC0 + 3) = 0;
   *(dword_2010CC0 + 7) = 0;
-  return v5;
+  return v4;
 }
 
 
 // 0x81499f8
 int sub_81499F8()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  v0 = sub_814C360(sub_8149A20);
-  sub_814C540(v0);
-  return v2;
+  sub_814C360(sub_8149A20);
+  sub_814C540();
+  return v1;
 }
 
 
 // 0x8149a0c
 int sub_8149A0C()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  v0 = sub_814C360(sub_8149A20);
-  sub_814C564(v0);
-  return v2;
+  sub_814C360(sub_8149A20);
+  sub_814C564();
+  return v1;
 }
 
 
@@ -5573,9 +5482,7 @@ int __fastcall sub_8149A20(unsigned __int8 a1, unsigned __int16 a2)
 {
   int v2; // r4
   unsigned __int16 v3; // r6
-  int v4; // r0
-  int v5; // r0
-  int v7; // [sp+Ch] [bp-4h]
+  int v5; // [sp+Ch] [bp-4h]
 
   v2 = a1;
   v3 = a2;
@@ -5585,9 +5492,9 @@ int __fastcall sub_8149A20(unsigned __int8 a1, unsigned __int16 a2)
   {
     if ( !*(dword_2010CC0 + 148) )
     {
-      v4 = sub_814C360(sub_81494F8);
-      v5 = sub_814C418(v4);
-      if ( !(sub_814C384(v5) << 16) )
+      sub_814C360(sub_81494F8);
+      sub_814C418();
+      if ( !(sub_814C384() << 16) )
         *(dword_2010CC0 + 148) = *(*(dword_2010CC8 + 220) + 4);
     }
   }
@@ -5598,7 +5505,7 @@ int __fastcall sub_8149A20(unsigned __int8 a1, unsigned __int16 a2)
     *(dword_2010CC4 + 9) = 0;
   }
   sub_81494B8(v2, v3);
-  return v7;
+  return v5;
 }
 
 
@@ -5608,74 +5515,71 @@ int sub_8149AA8()
   int v0; // r0
   int v1; // r8
   int v2; // r5
-  int v3; // r0
-  int v4; // r0
-  _BYTE *v5; // r4
-  unsigned int v6; // r2
+  _BYTE *v3; // r4
+  unsigned int v4; // r2
   int i; // r4
-  unsigned int v8; // r2
-  _BYTE *v9; // r1
-  int v10; // r1
-  int v12; // [sp+0h] [bp-24h]
-  int v13; // [sp+20h] [bp-4h]
+  unsigned int v6; // r2
+  _BYTE *v7; // r1
+  int v8; // r1
+  int v10; // [sp+0h] [bp-24h]
+  int v11; // [sp+20h] [bp-4h]
 
   v0 = *(dword_2010CC8 + 220);
   v1 = *(v0 + 1);
   if ( *(v0 + 1) )
   {
     v2 = *(v0 + 4);
-    v3 = sub_814C360(sub_81494F8);
-    v4 = sub_814C3D0(v3);
-    if ( !(sub_814C384(v4) << 16) )
+    sub_814C360(sub_81494F8);
+    sub_814C3D0();
+    if ( !(sub_814C384() << 16) )
     {
-      v5 = (*(dword_2010CC8 + 220) + 4);
-      v6 = 0;
+      v3 = (*(dword_2010CC8 + 220) + 4);
+      v4 = 0;
       do
       {
-        *(&v12 + v6) = *v5++;
-        v6 = (v6 + 1) & 0xFF;
+        *(&v10 + v4) = *v3++;
+        v4 = (v4 + 1) & 0xFF;
       }
-      while ( v6 <= 3 );
+      while ( v4 <= 3 );
     }
     *(*(dword_2010CC8 + 220) + 4) = v2;
   }
   for ( i = *(dword_2010CC8 + 220) + 4; v1; i += 4 )
   {
-    v8 = *(i + 2);
-    if ( v8 <= 3 && !((*(dword_2010CC0 + 2) >> v8) & 1) && !((*(dword_2010CC0 + 3) >> v8) & 1) )
+    v6 = *(i + 2);
+    if ( v6 <= 3 && !((*(dword_2010CC0 + 2) >> v6) & 1) && !((*(dword_2010CC0 + 3) >> v6) & 1) )
     {
-      if ( *(&v12 + v8) )
-        ++*(dword_2010CC4 + 14 + v8);
-      v9 = (dword_2010CC4 + 14 + v8);
-      if ( *v9 > 3u )
+      if ( *(&v10 + v6) )
+        ++*(dword_2010CC4 + 14 + v6);
+      v7 = (dword_2010CC4 + 14 + v6);
+      if ( *v7 > 3u )
       {
-        *v9 = 0;
-        *(dword_2010CC0 + 10 + v8) = -1;
-        *(dword_2010CC0 + 2) |= 1 << v8;
+        *v7 = 0;
+        *(dword_2010CC0 + 10 + v6) = -1;
+        *(dword_2010CC0 + 2) |= 1 << v6;
         ++*(dword_2010CC0 + 1);
-        v10 = dword_2010CC0 + 32 * v8;
-        *(v10 + 20) = *i;
-        *(v10 + 22) = v8;
+        v8 = dword_2010CC0 + 32 * v6;
+        *(v8 + 20) = *i;
+        *(v8 + 22) = v6;
         *dword_2010CC0 = 1;
         *dword_2010CC4 &= 0x7Fu;
-        *(dword_2010CC4 + 18 + 2 * v8) = *(dword_2010CC0 + 32 * v8 + 20);
+        *(dword_2010CC4 + 18 + 2 * v6) = *(dword_2010CC0 + 32 * v6 + 20);
       }
     }
     v1 = (v1 - 1) & 0xFF;
   }
-  return v13;
+  return v11;
 }
 
 
 // 0x8149be4
 int sub_8149BE4()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  v0 = sub_814C360(sub_8149BF8);
-  sub_814C588(v0);
-  return v2;
+  sub_814C360(sub_8149BF8);
+  sub_814C588();
+  return v1;
 }
 
 
@@ -5698,12 +5602,11 @@ int __fastcall sub_8149BF8(unsigned __int8 a1, unsigned __int16 a2)
 // 0x8149c1c
 int sub_8149C1C()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  v0 = sub_814C360(sub_8149C30);
-  sub_814C5AC(v0);
-  return v2;
+  sub_814C360(sub_8149C30);
+  sub_814C5AC();
+  return v1;
 }
 
 
@@ -5726,12 +5629,11 @@ int __fastcall sub_8149C30(unsigned __int8 a1, unsigned __int16 a2)
 // 0x8149c54
 int sub_8149C54()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  v0 = sub_814C360(sub_81494B8);
-  sub_814C5D0(v0);
-  return v2;
+  sub_814C360(sub_81494B8);
+  sub_814C5D0();
+  return v1;
 }
 
 
@@ -5756,11 +5658,9 @@ int sub_8149C68()
   int v15; // r5
   int v16; // r4
   unsigned int v17; // r3
-  __int16 v19; // [sp+0h] [bp-1Ch]
-  int v20; // [sp+18h] [bp-4h]
+  int v19; // [sp+18h] [bp-4h]
 
-  v19 = 0;
-  SWI_CpuSet(&v19, dword_2010CC0 + 20, 16777280);
+  SWI_CpuSet();
   v0 = *(dword_2010CC8 + 220);
   v1 = *(v0 + 1);
   v2 = (v0 + 4);
@@ -5821,14 +5721,14 @@ int sub_8149C68()
     }
     while ( v3 <= 3u && v1 );
   }
-  return v20;
+  return v19;
 }
 
 
 // 0x8149d78
 int __fastcall sub_8149D78(unsigned __int16 a1)
 {
-  int v1; // r4
+  unsigned __int16 v1; // r4
   signed int v2; // r3
   unsigned int v3; // r2
   int v5; // [sp+8h] [bp-4h]
@@ -5861,86 +5761,72 @@ int __fastcall sub_8149D78(unsigned __int16 a1)
 // 0x8149de0
 int sub_8149DE0()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  v0 = sub_814C360(sub_8149DF4);
-  sub_814C624(v0);
-  return v2;
+  sub_814C360(sub_8149DF4);
+  sub_814C624();
+  return v1;
 }
 
 
 // 0x8149df4
 int __fastcall sub_8149DF4(unsigned __int8 a1, unsigned __int16 a2)
 {
-  int *v2; // r9
-  int v3; // r0
-  __int16 v4; // r5
-  int v5; // r10
-  unsigned int v6; // r2
+  int v2; // r0
+  __int16 v3; // r5
+  int v4; // r10
+  unsigned int v5; // r2
+  int v6; // r1
   int v7; // r1
-  int v8; // r1
-  unsigned int v9; // r5
-  int v10; // r4
-  int v12; // [sp+0h] [bp-4Ch]
-  __int16 v13; // [sp+20h] [bp-2Ch]
-  int v14; // [sp+24h] [bp-28h]
-  int v15; // [sp+28h] [bp-24h]
-  int v16; // [sp+48h] [bp-4h]
+  unsigned int v8; // r5
+  unsigned __int8 v10; // [sp+24h] [bp-28h]
+  unsigned __int16 v11; // [sp+28h] [bp-24h]
+  int v12; // [sp+48h] [bp-4h]
 
-  v14 = a1;
-  v15 = a2;
+  v10 = a1;
+  v11 = a2;
   if ( !a2 )
   {
-    v3 = *(dword_2010CC8 + 220);
-    v4 = *(v3 + 4);
-    v5 = *(v3 + 6);
-    if ( !*(v3 + 7) )
+    v2 = *(dword_2010CC8 + 220);
+    v3 = *(v2 + 4);
+    v4 = *(v2 + 6);
+    if ( !*(v2 + 7) )
     {
-      v6 = (0x1000000 << *(v3 + 6)) >> 24;
-      v7 = *(dword_2010CC0 + 2);
-      if ( !(v6 & v7) )
+      v5 = (0x1000000 << *(v2 + 6)) >> 24;
+      v6 = *(dword_2010CC0 + 2);
+      if ( !(v5 & v6) )
       {
-        *(dword_2010CC0 + 2) = v6 | v7;
-        *(dword_2010CC0 + 3) &= ~v6;
-        v8 = dword_2010CC0;
-        *(dword_2010CC0 + 148) = v4;
-        ++*(v8 + 1);
+        *(dword_2010CC0 + 2) = v5 | v6;
+        *(dword_2010CC0 + 3) &= ~v5;
+        v7 = dword_2010CC0;
+        *(dword_2010CC0 + 148) = v3;
+        ++*(v7 + 1);
         *dword_2010CC0 = 0;
         *dword_2010CC4 |= 0x80u;
-        v9 = 0;
-        while ( 1 )
+        v8 = 0;
+        while ( *(dword_2010CC0 + 32 * v8 + 20) != *(dword_2010CC4 + 30) )
         {
-          v10 = 32 * v9;
-          if ( *(dword_2010CC0 + 32 * v9 + 20) == *(dword_2010CC4 + 30) )
-            break;
-          v9 = (v9 + 1) & 0xFF;
-          if ( v9 > 3 )
+          v8 = (v8 + 1) & 0xFF;
+          if ( v8 > 3 )
             goto LABEL_10;
         }
         if ( *(dword_2010CC0 + 8) )
         {
-          v2 = &v12;
-          SWI_CpuSet(dword_2010CC0 + v10 + 20, &v12, 16);
-          v13 = 0;
-          SWI_CpuSet(&v13, dword_2010CC0 + 20, 16777280);
+          SWI_CpuSet();
+          SWI_CpuSet();
           *(dword_2010CC0 + 8) = 0;
         }
-        else
-        {
-          v2 = (dword_2010CC0 + v10 + 20);
-        }
 LABEL_10:
-        if ( v9 <= 3 )
+        if ( v8 <= 3 )
         {
-          SWI_CpuSet(v2, dword_2010CC0 + 32 * v5 + 20, 16);
-          *(dword_2010CC0 + 32 * v5 + 22) = v5;
+          SWI_CpuSet();
+          *(dword_2010CC0 + 32 * v4 + 22) = v4;
         }
       }
     }
   }
-  sub_81494B8(v14, v15);
-  return v16;
+  sub_81494B8(v10, v11);
+  return v12;
 }
 
 
@@ -5964,16 +5850,15 @@ signed int __fastcall sub_8149F14(_BYTE *a1, _BYTE *a2)
 // 0x8149f48
 int sub_8149F48()
 {
-  int v0; // r0
-  int v1; // r1
-  int v3; // [sp+0h] [bp-4h]
+  int v0; // r1
+  int v2; // [sp+0h] [bp-4h]
 
-  v0 = sub_814C360(sub_8149DF4);
-  sub_814C648(v0);
-  v1 = *(dword_2010CC8 + 220);
-  if ( *(v1 + 6) <= 3u )
-    *(dword_2010CC4 + 10 + *(v1 + 6)) = 0;
-  return v3;
+  sub_814C360(sub_8149DF4);
+  sub_814C648();
+  v0 = *(dword_2010CC8 + 220);
+  if ( *(v0 + 6) <= 3u )
+    *(dword_2010CC4 + 10 + *(v0 + 6)) = 0;
+  return v2;
 }
 
 
@@ -5992,7 +5877,7 @@ signed int sub_8149F80()
     return 0;
   if ( *(dword_2010CC4 + 6) )
     --*(dword_2010CC4 + 6);
-  v0 = sub_814A7F0() & 0xFF;
+  v0 = sub_814A7F0();
   v1 = *dword_2010CC4;
   if ( *dword_2010CC4 & 2 )
   {
@@ -6032,7 +5917,7 @@ LABEL_12:
   do
   {
     if ( (v4 >> v5) & 1 )
-      sub_814A41C(v5);
+      sub_814A41C(v5, 1);
     v5 = (v5 + 1) & 0xFF;
   }
   while ( v5 <= 3 );
@@ -6049,40 +5934,33 @@ int __fastcall sub_814A060(__int16 a1, _BYTE *a2, char *a3, _BYTE *a4)
   char v6; // r0
   unsigned int v7; // r5
   int *v8; // r0
-  int v9; // r0
-  int v10; // r0
-  _BYTE *v11; // r2
-  unsigned int v12; // r5
-  unsigned int v13; // r9
-  int v14; // r5
-  unsigned int v16; // r6
-  int v17; // r0
-  int v18; // r0
-  char v19; // r1
-  char *v20; // r0
-  unsigned __int8 *v21; // r1
-  unsigned __int8 v22; // r0
-  int v23; // r0
-  unsigned __int8 v24; // r10
-  _BYTE *v25; // r4
-  int v26; // r2
-  int v27; // r0
-  int v28; // r2
-  int v29; // r3
-  unsigned __int16 *v30; // r2
-  unsigned int v31; // r0
-  int v32; // r0
-  char *v33; // [sp+0h] [bp-38h]
-  _BYTE *v34; // [sp+4h] [bp-34h]
-  signed int v35; // [sp+8h] [bp-30h]
-  int v36; // [sp+Ch] [bp-2Ch]
-  int v37; // [sp+10h] [bp-28h]
-  int v38; // [sp+14h] [bp-24h]
+  _BYTE *v9; // r2
+  unsigned int v10; // r5
+  unsigned int v11; // r9
+  int v12; // r5
+  unsigned int v14; // r6
+  char v15; // r1
+  char *v16; // r0
+  unsigned __int8 *v17; // r1
+  unsigned __int8 v18; // r0
+  unsigned __int8 v19; // r10
+  _BYTE *v20; // r4
+  int v21; // r2
+  int v22; // r2
+  int v23; // r3
+  unsigned __int16 *v24; // r2
+  unsigned int v25; // r0
+  char *v26; // [sp+0h] [bp-38h]
+  _BYTE *v27; // [sp+4h] [bp-34h]
+  signed int v28; // [sp+8h] [bp-30h]
+  int v29; // [sp+Ch] [bp-2Ch]
+  int v30; // [sp+10h] [bp-28h]
+  int v31; // [sp+14h] [bp-24h]
 
   v4 = a2;
-  v33 = a3;
-  v34 = a4;
-  v35 = 0;
+  v26 = a3;
+  v27 = a4;
+  v28 = 0;
   *a2 = 0;
   *a3 = 0;
   *a4 = 0;
@@ -6093,7 +5971,7 @@ int __fastcall sub_814A060(__int16 a1, _BYTE *a2, char *a3, _BYTE *a4)
   if ( !*(dword_2010CC4 + 6) )
   {
     *(dword_2010CC4 + 6) = *(dword_2010CC0 + 9);
-    v35 = 1;
+    v28 = 1;
   }
   if ( a1 == 41 )
   {
@@ -6103,7 +5981,7 @@ int __fastcall sub_814A060(__int16 a1, _BYTE *a2, char *a3, _BYTE *a4)
     *a3 = v6;
     if ( v6 == 1 )
       *v4 = *(dword_2010CC0 + 2);
-    v35 = 2;
+    v28 = 2;
   }
   else
   {
@@ -6117,150 +5995,149 @@ int __fastcall sub_814A060(__int16 a1, _BYTE *a2, char *a3, _BYTE *a4)
         if ( (*v4 >> v7) & 1 )
         {
           *(dword_2010CC0 + 10 + v7) = 0;
-          sub_814A41C(v7);
+          sub_814A41C(v7, 0);
         }
         v7 = (v7 + 1) & 0xFF;
       }
       while ( v7 <= 3 );
     }
-    if ( !v35 )
+    if ( !v28 )
       return 0;
   }
   v8 = *(dword_2010CC8 + 220);
-  v37 = *v8;
-  v38 = v8[1];
-  v9 = sub_814C360(sub_81494F8);
-  v10 = sub_814C3D0(v9);
-  v36 = sub_814C384(v10);
-  if ( !v36 )
+  v30 = *v8;
+  v31 = v8[1];
+  sub_814C360(sub_81494F8);
+  sub_814C3D0();
+  v29 = sub_814C384();
+  if ( !v29 )
   {
-    v11 = (*(dword_2010CC8 + 220) + 4);
-    v12 = 0;
+    v9 = (*(dword_2010CC8 + 220) + 4);
+    v10 = 0;
     do
     {
-      *(dword_2010CC0 + 10 + v12) = *v11++;
-      v12 = (v12 + 1) & 0xFF;
+      *(dword_2010CC0 + 10 + v10) = *v9++;
+      v10 = (v10 + 1) & 0xFF;
     }
-    while ( v12 <= 3 );
-    v13 = 0;
-    v14 = 0;
+    while ( v10 <= 3 );
+    v11 = 0;
+    v12 = 0;
     while ( 1 )
     {
-      v16 = (0x1000000 << v14) >> 24;
-      if ( v35 != 1 || !(*(dword_2010CC0 + 2) & v16) )
+      v14 = (0x1000000 << v12) >> 24;
+      if ( v28 != 1 || !(*(dword_2010CC0 + 2) & v14) )
         goto LABEL_36;
-      if ( *(dword_2010CC0 + 10 + v14) )
+      if ( *(dword_2010CC0 + 10 + v12) )
       {
-        v20 = (dword_2010CC4 + 10 + v14);
-        v19 = 0;
+        v16 = (dword_2010CC4 + 10 + v12);
+        v15 = 0;
       }
       else
       {
-        v17 = *dword_2010CC0;
-        if ( v17 == 1 )
+        if ( *dword_2010CC0 == 1 )
         {
-          if ( ++*(dword_2010CC4 + 10 + v14) <= 3u )
+          if ( ++*(dword_2010CC4 + 10 + v12) <= 3u )
             goto LABEL_36;
 LABEL_33:
-          *v4 |= v16;
-          *v33 = 1;
+          *v4 |= v14;
+          *v26 = 1;
           goto LABEL_36;
         }
-        v18 = sub_814C418(v17);
-        if ( sub_814C384(v18) << 16 )
+        sub_814C418();
+        if ( sub_814C384() << 16 )
           goto LABEL_36;
         if ( *(*(dword_2010CC8 + 220) + 7) )
         {
-          v21 = (dword_2010CC4 + 10 + v14);
-          v22 = *v21 + 1;
-          *v21 = v22;
-          if ( v22 <= *(dword_2010CC4 + 26) )
+          v17 = (dword_2010CC4 + 10 + v12);
+          v18 = *v17 + 1;
+          *v17 = v18;
+          if ( v18 <= *(dword_2010CC4 + 26) )
             goto LABEL_36;
-          *(dword_2010CC4 + 10 + v14) = 0;
-          v23 = sub_814C7F8(*(dword_2010CC0 + 2));
-          sub_814C384(v23);
+          *(dword_2010CC4 + 10 + v12) = 0;
+          sub_814C7F8(*(dword_2010CC0 + 2));
+          sub_814C384();
           goto LABEL_33;
         }
-        *v4 |= v16;
-        v19 = 1;
-        v20 = v33;
+        *v4 |= v14;
+        v15 = 1;
+        v16 = v26;
       }
-      *v20 = v19;
+      *v16 = v15;
 LABEL_36:
-      v24 = v14 + 1;
+      v19 = v12 + 1;
       if ( *dword_2010CC0 == 1 )
       {
-        v25 = (dword_2010CC0 + 10 + v14);
-        if ( *v25 )
+        v20 = (dword_2010CC0 + 10 + v12);
+        if ( *v20 )
         {
-          v26 = *(dword_2010CC0 + 3);
-          if ( v16 & v26 )
+          v21 = *(dword_2010CC0 + 3);
+          if ( v14 & v21 )
           {
-            if ( *v25 <= 0xAu )
+            if ( *v20 <= 0xAu )
             {
-              *v25 = 0;
+              *v20 = 0;
             }
             else
             {
-              *v34 |= v16;
-              *(dword_2010CC0 + 2) |= v16;
-              *(dword_2010CC0 + 3) &= ~v16;
+              *v27 |= v14;
+              *(dword_2010CC0 + 2) |= v14;
+              *(dword_2010CC0 + 3) &= ~v14;
               ++*(dword_2010CC0 + 1);
-              *(dword_2010CC4 + 10 + v14) = 0;
+              *(dword_2010CC4 + 10 + v12) = 0;
             }
           }
-          else if ( !((*(dword_2010CC0 + 2) | v26) & v16) )
+          else if ( !((*(dword_2010CC0 + 2) | v21) & v14) )
           {
-            v27 = sub_814C43C();
-            sub_814C384(v27);
-            v28 = *(dword_2010CC8 + 220);
-            v29 = (*(v28 + 1) - 1) & 0xFF;
-            v30 = (v28 + 8);
-            if ( v29 )
+            sub_814C43C();
+            sub_814C384();
+            v22 = *(dword_2010CC8 + 220);
+            v23 = (*(v22 + 1) - 1) & 0xFF;
+            v24 = (v22 + 8);
+            if ( v23 )
             {
-              if ( *(v30 + 2) != v14 || *v30 != *(dword_2010CC4 + 18 + 2 * v14) )
+              if ( *(v24 + 2) != v12 || *v24 != *(dword_2010CC4 + 18 + 2 * v12) )
               {
                 while ( 1 )
                 {
-                  v30 += 2;
-                  v29 = (v29 - 1) & 0xFF;
-                  if ( !v29 )
+                  v24 += 2;
+                  v23 = (v23 - 1) & 0xFF;
+                  if ( !v23 )
                     break;
-                  if ( *(v30 + 2) == v14 && *v30 == *(dword_2010CC4 + 18 + 2 * v14) )
+                  if ( *(v24 + 2) == v12 && *v24 == *(dword_2010CC4 + 18 + 2 * v12) )
                   {
-                    v31 = (v13 | (1 << v14)) << 24;
+                    v25 = (v11 | (1 << v12)) << 24;
                     goto LABEL_51;
                   }
                 }
               }
               else
               {
-                v31 = (v13 | (1 << v14)) << 24;
+                v25 = (v11 | (1 << v12)) << 24;
 LABEL_51:
-                v13 = v31 >> 24;
+                v11 = v25 >> 24;
               }
             }
           }
         }
       }
-      if ( v16 & (*v4 & *(dword_2010CC0 + 2)) )
-        sub_814A41C(v14);
-      v14 = (v14 + 1);
-      if ( v24 > 3u )
+      if ( v14 & (*v4 & *(dword_2010CC0 + 2)) )
+        sub_814A41C(v12, 0);
+      v12 = (v12 + 1);
+      if ( v19 > 3u )
       {
-        if ( v13 )
+        if ( v11 )
         {
-          v32 = sub_814C7F8(v13);
-          sub_814C384(v32);
+          sub_814C7F8(v11);
+          sub_814C384();
         }
-        **(dword_2010CC8 + 220) = v37;
-        *(*(dword_2010CC8 + 220) + 4) = v38;
+        **(dword_2010CC8 + 220) = v30;
+        *(*(dword_2010CC8 + 220) + 4) = v31;
         return 0;
       }
     }
   }
-  sub_81494B8(0x11u, v36);
-  return v36;
+  sub_81494B8(0x11u, v29);
+  return v29;
 }
 
 
@@ -6270,8 +6147,7 @@ int __fastcall sub_814A41C(unsigned __int8 a1, char a2)
   int v2; // r7
   unsigned int v3; // r5
   char v4; // r6
-  __int16 v6; // [sp+0h] [bp-1Ch]
-  int v7; // [sp+18h] [bp-4h]
+  int v6; // [sp+18h] [bp-4h]
 
   v2 = a1;
   v3 = (0x1000000 << a1) >> 24;
@@ -6284,24 +6160,21 @@ int __fastcall sub_814A41C(unsigned __int8 a1, char a2)
     *dword_2010CC0 = -1;
   if ( a2 )
   {
-    v6 = 0;
-    SWI_CpuSet(&v6, dword_2010CC0 + 32 * a1 + 20, 16777232);
+    SWI_CpuSet();
     *(dword_2010CC0 + 3) &= v4;
     *(dword_2010CC0 + 7) &= v4;
     *(dword_2010CC0 + 10 + v2) = 0;
   }
-  return v7;
+  return v6;
 }
 
 
 // 0x814a4cc
 int __fastcall sub_814A4CC(unsigned __int8 a1)
 {
-  int v1; // r4
-  int v2; // r0
-  int v3; // r0
-  unsigned __int16 v4; // r0
-  int v6; // [sp+4h] [bp-4h]
+  unsigned __int8 v1; // r4
+  unsigned __int16 v2; // r0
+  int v4; // [sp+4h] [bp-4h]
 
   v1 = a1;
   if ( (*(dword_2010CC0 + 2) | *(dword_2010CC0 + 3)) & a1 )
@@ -6310,11 +6183,11 @@ int __fastcall sub_814A4CC(unsigned __int8 a1)
     if ( *dword_2010CC0 == 255 && *dword_2010CC4 & 0x80 )
     {
       if ( *(dword_2010CC0 + 3) & a1 )
-        sub_814A55C(48, 0);
+        sub_814A55C(0x30u, 0);
     }
-    else if ( *(dword_2010CC4 + 9) && (v2 = sub_814C360(sub_81494F8), v3 = sub_814C564(v2), (v4 = sub_814C384(v3)) != 0) )
+    else if ( *(dword_2010CC4 + 9) && (sub_814C360(sub_81494F8), sub_814C564(), (v2 = sub_814C384()) != 0) )
     {
-      sub_81494B8(0x1Bu, v4);
+      sub_81494B8(0x1Bu, v2);
     }
     else
     {
@@ -6322,7 +6195,7 @@ int __fastcall sub_814A4CC(unsigned __int8 a1)
       sub_814C7F8(v1);
     }
   }
-  return v6;
+  return v4;
 }
 
 
@@ -6331,55 +6204,51 @@ int __fastcall sub_814A55C(unsigned __int8 a1, unsigned __int16 a2)
 {
   unsigned __int8 v2; // r6
   int v3; // r5
-  int v4; // r0
+  unsigned int v4; // r4
   int v5; // r0
-  unsigned int v6; // r4
-  int v7; // r0
-  int v8; // r0
-  int v9; // r0
-  int v11; // [sp+Ch] [bp-4h]
+  int v7; // [sp+Ch] [bp-4h]
 
   v2 = a1;
   v3 = a2;
   if ( a2 == 3 && !*dword_2010CC0 )
   {
-    v4 = sub_814C360(sub_81494F8);
-    v5 = sub_814C418(v4);
-    if ( !(sub_814C384(v5) << 16) && !*(*(dword_2010CC8 + 220) + 7) )
+    sub_814C360(sub_81494F8);
+    sub_814C418();
+    if ( !(sub_814C384() << 16) && !*(*(dword_2010CC8 + 220) + 7) )
       v3 = 0;
   }
   *(dword_2010CC4 + 5) &= *(dword_2010CC0 + 2) | *(dword_2010CC0 + 3);
   *(*(dword_2010CC8 + 220) + 8) = *(dword_2010CC4 + 5);
   if ( !v3 )
   {
-    v6 = 0;
+    v4 = 0;
     do
     {
-      if ( ((0x1000000 << v6) >> 24) & *(dword_2010CC4 + 5) )
-        sub_814A41C(v6, 1);
-      v6 = (v6 + 1) & 0xFF;
+      if ( ((0x1000000 << v4) >> 24) & *(dword_2010CC4 + 5) )
+        sub_814A41C(v4, 1);
+      v4 = (v4 + 1) & 0xFF;
     }
-    while ( v6 <= 3 );
+    while ( v4 <= 3 );
   }
   if ( !(*(dword_2010CC0 + 3) | *(dword_2010CC0 + 2)) )
     *dword_2010CC0 = -1;
   sub_81494B8(v2, v3);
   if ( *(dword_2010CC4 + 9) )
   {
-    v7 = sub_814C360(sub_81494F8);
-    v8 = sub_814C51C(v7);
-    v9 = sub_814C384(v8);
-    if ( v9 )
-      sub_81494B8(0x19u, v9);
+    sub_814C360(sub_81494F8);
+    sub_814C51C();
+    v5 = sub_814C384();
+    if ( v5 )
+      sub_81494B8(0x19u, v5);
   }
-  return v11;
+  return v7;
 }
 
 
 // 0x814a63c
 int __fastcall sub_814A63C(unsigned __int8 a1)
 {
-  int v1; // r5
+  unsigned __int8 v1; // r5
   unsigned int v2; // r4
   int v4; // [sp+8h] [bp-4h]
 
@@ -6401,12 +6270,11 @@ int __fastcall sub_814A63C(unsigned __int8 a1)
 // 0x814a698
 int sub_814A698()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  v0 = sub_814C360(sub_814A6AC);
-  sub_814C89C(v0);
-  return v2;
+  sub_814C360(sub_814A6AC);
+  sub_814C89C();
+  return v1;
 }
 
 
@@ -6458,12 +6326,11 @@ signed int __fastcall sub_814A750(_BYTE *a1)
 // 0x814a780
 int sub_814A780()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  v0 = sub_814C360(sub_814A6AC);
-  sub_814C8C0(v0);
-  return v2;
+  sub_814C360(sub_814A6AC);
+  sub_814C8C0();
+  return v1;
 }
 
 
@@ -6490,19 +6357,18 @@ int __fastcall sub_814A794(_BYTE **a1, _DWORD *a2, int a3)
 // 0x814a7c4
 int sub_814A7C4()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  if ( (sub_814C2E8(1) & 0xFFFF) == 1 )
+  if ( sub_814C2E8(1) == 1 )
   {
-    v0 = sub_814C360(sub_81494B8);
-    sub_814C720(v0);
+    sub_814C360(sub_81494B8);
+    sub_814C720();
   }
   else
   {
     sub_81494B8(0x27u, 0);
   }
-  return v2;
+  return v1;
 }
 
 
@@ -6531,8 +6397,8 @@ int sub_814A828()
 {
   __int16 v0; // r8
   unsigned int v1; // r5
-  __int16 v3; // [sp+0h] [bp-1Ch]
-  __int16 v4; // [sp+2h] [bp-1Ah]
+  int v2; // r1
+  char (*v3)[28]; // r1
   int v5; // [sp+18h] [bp-4h]
 
   v0 = InterruptMasterEnableRegister;
@@ -6540,10 +6406,10 @@ int sub_814A828()
   v1 = 0;
   do
   {
-    v3 = 0;
-    SWI_CpuSet(&v3, dword_2010CB0[v1], 16777268);
-    v4 = 0;
-    SWI_CpuSet(&v4, off_2010CA0[v1], 16777226);
+    v2 = dword_2010CB0[v1];
+    SWI_CpuSet();
+    v3 = off_2010CA0[v1];
+    SWI_CpuSet();
     *(dword_2010CC0 + 16 + v1) = 16;
     v1 = (v1 + 1) & 0xFFFF;
   }
@@ -6591,7 +6457,7 @@ signed int __fastcall sub_814A934(char a1, unsigned __int8 a2)
   unsigned __int16 v9; // r6
   unsigned int v10; // r1
   char (*v11)[28]; // r3
-  __int16 v12; // [sp+0h] [bp-24h]
+  char (*v12)[28]; // r1
 
   v2 = a1;
   v3 = a2;
@@ -6636,8 +6502,7 @@ signed int __fastcall sub_814A934(char a1, unsigned __int8 a2)
           }
           while ( v10 <= 3 );
         }
-        v12 = 0;
-        SWI_CpuSet(&v12, v8, 16777242);
+        SWI_CpuSet();
       }
       v6 = v9;
     }
@@ -6654,13 +6519,12 @@ signed int __fastcall sub_814A934(char a1, unsigned __int8 a2)
         *(dword_2010CC0 + 15) += 3 + (*v11)[4];
       *(dword_2010CC0 + 6) &= ~(*v11)[3];
     }
-    v12 = 0;
-    SWI_CpuSet(&v12, v11, 16777222);
+    SWI_CpuSet();
   }
   if ( v2 & 2 )
   {
-    v12 = 0;
-    SWI_CpuSet(&v12, &(*off_2010CA0[v3])[12], 16777220);
+    v12 = off_2010CA0[v3];
+    SWI_CpuSet();
   }
   InterruptMasterEnableRegister = v5;
   return 0;
@@ -6703,7 +6567,7 @@ signed int __fastcall sub_814AAF0(int a1, int a2, int a3, int a4)
 // 0x814ab50
 int __fastcall sub_814AB50(unsigned __int8 a1, unsigned __int8 a2, int a3, int a4)
 {
-  return sub_814ABEC(32, a1, a2, a3, a4);
+  return sub_814ABEC(0x20u, a1, a2, a3, a4);
 }
 
 
@@ -6711,7 +6575,7 @@ int __fastcall sub_814AB50(unsigned __int8 a1, unsigned __int8 a2, int a3, int a
 int __fastcall sub_814AB7C(unsigned __int8 a1, int a2, char a3)
 {
   int v3; // r3
-  int v4; // r1
+  unsigned __int8 v4; // r1
   unsigned __int8 v5; // r0
 
   v3 = a2;
@@ -6720,14 +6584,14 @@ int __fastcall sub_814AB7C(unsigned __int8 a1, int a2, char a3)
     v5 = a3 + 3;
   else
     v5 = a3 + 2;
-  return sub_814ABEC(16, v4, v5, v3, 0);
+  return sub_814ABEC(0x10u, v4, v5, v3, 0);
 }
 
 
 // 0x814abb8
 int __fastcall sub_814ABB8(char a1, unsigned __int8 a2)
 {
-  return sub_814ABEC(64, (0x1000000 << a1) >> 24, a2, dword_2010CC0 + 152, 26);
+  return sub_814ABEC(0x40u, (0x1000000 << a1) >> 24, a2, dword_2010CC0 + 152, 26);
 }
 
 
@@ -7035,7 +6899,7 @@ int __fastcall sub_814B0B4(unsigned __int8 a1)
   int v1; // r5
   int v2; // r1
   int v3; // r1
-  int v5; // r0
+  int (__fastcall *v4)(int); // r1
   int v6; // [sp+8h] [bp-4h]
 
   v1 = a1;
@@ -7085,13 +6949,14 @@ int __fastcall sub_814B0B4(unsigned __int8 a1)
   {
     if ( *dword_2010CC0 == 1 )
     {
-      if ( *(dword_2010CCC + 28) )
-        return sub_814DA64(39);
+      v4 = *(dword_2010CCC + 28);
+      if ( v4 )
+        return sub_814DA64(39, v4);
     }
     else
     {
-      v5 = sub_814C360(sub_814B290);
-      sub_814C720(v5);
+      sub_814C360(sub_814B290);
+      sub_814C720();
     }
   }
   return v6;
@@ -7174,7 +7039,7 @@ int sub_814B2C8()
   int v1; // r8
   unsigned int v2; // r6
   int v3; // r5
-  int *v4; // r4
+  unsigned __int16 **v4; // r4
   int i; // r2
   int v7; // [sp+0h] [bp-24h]
   int v8; // [sp+20h] [bp-4h]
@@ -7191,11 +7056,11 @@ int sub_814B2C8()
       v3 = 0;
       v4 = &dword_2010CB0[v2];
       if ( **v4 & 0x8000 )
-        v3 = sub_814B400(v2, &v7) & 0xFFFF;
-      if ( *(*v4 + 52) & 0x8000 )
-        v3 += sub_814B400(v2, &v7) & 0xFFFF;
+        v3 = sub_814B400(v2, &v7, *v4) & 0xFFFF;
+      if ( (*v4)[26] & 0x8000 )
+        v3 += sub_814B400(v2, &v7, *v4 + 26);
       if ( *&(*off_2010CA0[v2])[0] == 32804 )
-        v3 += sub_814B5C0(v2, &v7) & 0xFFFF;
+        v3 += sub_814B5C0(v2, &v7);
       if ( v3 )
       {
         if ( *dword_2010CC0 == 1 )
@@ -7227,13 +7092,13 @@ int __fastcall sub_814B400(char a1, _BYTE **a2, unsigned __int16 *a3)
   unsigned __int16 *v4; // r4
   char v5; // r10
   char *v6; // r8
-  _BYTE *v7; // r3
+  unsigned __int16 *v7; // r3
   char v8; // r0
   int v9; // r9
   int v10; // r5
   int v11; // r5
   unsigned int v12; // r0
-  _BYTE *v13; // r6
+  unsigned __int16 *v13; // r6
   unsigned int v14; // r0
   char v15; // r7
   char v16; // r1
@@ -7370,65 +7235,68 @@ int __fastcall sub_814B5C0(unsigned __int8 a1, _BYTE **a2)
 // 0x814b694
 int sub_814B694()
 {
-  int v0; // r0
-  int v2; // [sp+4h] [bp-4h]
+  int v1; // [sp+4h] [bp-4h]
 
   if ( *dword_2010CC0 != 255 )
   {
     *(dword_2010CC4 + 3) = *(dword_2010CC0 + 4) | *(dword_2010CC0 + 5) | *(dword_2010CC0 + 6);
     *(dword_2010CC4 + 4) = 0;
-    v0 = sub_814C360(sub_814B6D4);
-    sub_814C6FC(v0);
+    sub_814C360(sub_814B6D4);
+    sub_814C6FC();
   }
-  return v2;
+  return v1;
 }
 
 
 // 0x814b6d4
-int __fastcall sub_814B6D4(unsigned __int8 a1, unsigned __int16 a2)
+int __fastcall sub_814B6D4(unsigned __int8 a1, int a2, int a3, int a4)
 {
-  unsigned __int8 v2; // r9
-  unsigned __int16 v3; // r7
-  unsigned int v4; // r6
-  int *v5; // r3
-  int *v6; // r1
-  int v7; // r4
-  int *v8; // ST00_4
-  int v10; // [sp+1Ch] [bp-4h]
+  unsigned __int8 v4; // r9
+  unsigned int v5; // r1
+  unsigned int v6; // r7
+  int v7; // r0
+  unsigned int v8; // r6
+  int *v9; // r3
+  int *v10; // r1
+  int v11; // r4
+  int *v12; // ST00_4
+  int v14; // [sp+1Ch] [bp-4h]
 
-  v2 = a1;
-  v3 = a2;
-  if ( !a2 && *(*(dword_2010CC8 + 220) + 1) )
+  v4 = a1;
+  v5 = a2 << 16;
+  v6 = v5 >> 16;
+  if ( !(v5 >> 16) && *(*(dword_2010CC8 + 220) + 1) )
   {
     *(dword_2010CC4 + 1) = 0;
-    if ( *dword_2010CC0 == 1 )
+    v7 = *dword_2010CC0;
+    if ( v7 == 1 )
       sub_814B7C0();
     else
-      sub_814B858();
-    v4 = 0;
-    v5 = &dword_2010CC0;
+      sub_814B858(v7, v5, a3, a4);
+    v8 = 0;
+    v9 = &dword_2010CC0;
     do
     {
-      v6 = &dword_2010CB0[v4];
-      v7 = *v6;
-      if ( *(*v6 + 52) == 32835 && !((*(dword_2010CC4 + 1) >> v4) & 1) )
+      v10 = &dword_2010CB0[v8];
+      v11 = *v10;
+      if ( *(*v10 + 52) == 32835 && !((*(dword_2010CC4 + 1) >> v8) & 1) )
       {
-        if ( *(v7 + 97) == 1 )
-          *(*v5 + 7) |= 1 << v4;
-        v8 = v5;
-        sub_814A8C8(v4, 1, v7 + 52);
-        v5 = v8;
-        *(*v8 + 5) &= ~*(v7 + 78);
-        *(v7 + 52) = 70;
+        if ( *(v11 + 97) == 1 )
+          *(*v9 + 7) |= 1 << v8;
+        v12 = v9;
+        sub_814A8C8(v8, 1, v11 + 52);
+        v9 = v12;
+        *(*v12 + 5) &= ~*(v11 + 78);
+        *(v11 + 52) = 70;
       }
-      v4 = (v4 + 1) & 0xFF;
+      v8 = (v8 + 1) & 0xFF;
     }
-    while ( v4 <= 3 );
+    while ( v8 <= 3 );
     if ( *(dword_2010CC4 + 4) )
-      v3 = *(dword_2010CC4 + 4) | 0x700;
+      LOWORD(v6) = *(dword_2010CC4 + 4) | 0x700;
   }
-  sub_81494B8(v2, v3);
-  return v10;
+  sub_81494B8(v4, v6);
+  return v14;
 }
 
 
@@ -7438,7 +7306,7 @@ int sub_814B7C0()
   unsigned int v0; // r3
   unsigned int v1; // r5
   int v2; // r0
-  int v3; // r6
+  unsigned __int8 *v3; // r6
   int v4; // r5
   unsigned __int8 v5; // r7
   _BYTE *v6; // r4
@@ -7459,7 +7327,7 @@ int sub_814B7C0()
     v1 = (v1 + 1) & 0xFF;
   }
   while ( v1 <= 3 );
-  v3 = *(dword_2010CC8 + 220) + 8;
+  v3 = (*(dword_2010CC8 + 220) + 8);
   v4 = 0;
   do
   {
@@ -7469,7 +7337,7 @@ int sub_814B7C0()
       v6 = &v10 + v4;
       do
       {
-        v7 = sub_814B8B0(v4, v3, *v6, v0);
+        v7 = sub_814B8B0(v4, v3, *v6);
         v3 += v7;
         v8 = *v6 - v7;
         *v6 = v8;
@@ -7487,19 +7355,19 @@ int sub_814B7C0()
 int __fastcall sub_814B858(int a1, int a2, int a3, int a4)
 {
   int v4; // r4
-  int v5; // r5
+  unsigned __int8 *v5; // r5
   int v6; // r0
   int v8; // [sp+Ch] [bp-4h]
 
   v4 = *(*(dword_2010CC8 + 220) + 4) & 0x7F;
-  v5 = *(dword_2010CC8 + 220) + 8;
+  v5 = (*(dword_2010CC8 + 220) + 8);
   if ( !v4 )
     *(dword_2010CC4 + 1) = 15;
   do
   {
     if ( !v4 )
       break;
-    v6 = sub_814B8B0(0, v5, v4, a4);
+    v6 = sub_814B8B0(0, v5, v4);
     v5 += v6;
     v4 = (v4 - v6) & 0xFFFF;
   }
@@ -7557,7 +7425,7 @@ unsigned int __fastcall sub_814B8B0(unsigned __int8 a1, unsigned __int8 *a2, uns
       {
         if ( ((v10 >> 16) & 0xFF) == 4 )
         {
-          sub_814BAF4(v4);
+          sub_814BAF4(v4, &v17, v3);
         }
         else if ( HIBYTE(v17) )
         {
@@ -7570,7 +7438,7 @@ LABEL_17:
           if ( (v14 >> v13) & 1 )
           {
             if ( v12 <= 3 )
-              sub_814BBA8(v12, v4, &v17, v3, v17, v18);
+              sub_814BBA8(v12, v4, &v17);
           }
           else
           {
@@ -7607,12 +7475,12 @@ LABEL_14:
           {
             if ( BYTE2(v17) == 4 )
             {
-              sub_814BAF4(v16);
+              sub_814BAF4(v16, &v17, v3);
             }
             else if ( HIBYTE(v17) )
             {
               if ( (*(dword_2010CC0 + 4) >> v16) & 1 )
-                sub_814BBA8(v16, v16, &v17, v3, v17, v18);
+                sub_814BBA8(v16, v16, &v17);
             }
             else
             {
@@ -7781,7 +7649,7 @@ int __fastcall sub_814BBA8(int a1, unsigned __int8 a2, int a3)
 int __fastcall sub_814BD94(int a1, int a2, int a3)
 {
   int v3; // r6
-  int v4; // r8
+  unsigned __int8 v4; // r8
   signed int v5; // r7
   int v6; // r4
   unsigned __int16 *v7; // r5
@@ -7796,7 +7664,6 @@ int __fastcall sub_814BD94(int a1, int a2, int a3)
 
   v3 = a2;
   v15 = a3;
-  a1 = a1;
   v4 = a1;
   v5 = 0;
   v6 = dword_2010CB0[a1];
@@ -7991,8 +7858,7 @@ int __fastcall sub_814C10C(int a1, _DWORD *a2, char a3)
   char v8; // t1
   int v9; // r0
   __int16 v10; // t1
-  int v11; // r0
-  int v13; // [sp+4h] [bp-4h]
+  int v12; // [sp+4h] [bp-4h]
 
   v3 = a1;
   if ( a3 == 1 )
@@ -8032,10 +7898,10 @@ int __fastcall sub_814C10C(int a1, _DWORD *a2, char a3)
   *(dword_2010CCC + 44) = 0;
   SIOModeSelect_GeneralPurposeData = 256;
   SIOControlRegister = 20483;
-  v11 = sub_814C348();
-  sub_814C354(v11);
+  sub_814C348();
+  sub_814C354();
   InterruptEnableRegister |= 0x80u;
-  return v13;
+  return v12;
 }
 
 
@@ -8181,7 +8047,7 @@ int sub_814C3AC()
 {
   int v1; // [sp+0h] [bp-4h]
 
-  if ( !(sub_814CA44(16) & 0xFFFF) )
+  if ( !sub_814CA44(0x10u) )
   {
     *(dword_2010CCC + 4) = 0;
     sub_814CB1C();
@@ -8195,7 +8061,7 @@ int sub_814C3D0()
 {
   int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(17) )
+  if ( !sub_814CA44(0x11u) )
   {
     *(dword_2010CCC + 4) = 0;
     sub_814CB1C();
@@ -8209,7 +8075,7 @@ int sub_814C418()
 {
   int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(19) )
+  if ( !sub_814CA44(0x13u) )
   {
     *(dword_2010CCC + 4) = 0;
     sub_814CB1C();
@@ -8223,7 +8089,7 @@ int sub_814C43C()
 {
   int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(20) )
+  if ( !sub_814CA44(0x14u) )
   {
     *(dword_2010CCC + 4) = 0;
     sub_814CB1C();
@@ -8246,7 +8112,7 @@ int __fastcall sub_814C484(_WORD *a1, _BYTE *a2)
 
   v2 = a1;
   v3 = a2;
-  if ( !(sub_814CA44(22) << 16) )
+  if ( !(sub_814CA44(0x16u) << 16) )
   {
     *(dword_2010CCC + 4) = 6;
     v4 = (*(dword_2010CCC + 36) + 4);
@@ -8279,13 +8145,13 @@ int __fastcall sub_814C4DC(__int16 a1, char a2, char a3)
   __int16 v3; // r6
   char v4; // r5
   char v5; // r4
-  _BYTE *v6; // r0
+  char *v6; // r0
   int v8; // [sp+Ch] [bp-4h]
 
   v3 = a1;
   v4 = a2;
   v5 = a3;
-  if ( !(sub_814CA44(23) << 16) )
+  if ( !(sub_814CA44(0x17u) << 16) )
   {
     *(dword_2010CCC + 4) = 1;
     v6 = (*(dword_2010CCC + 36) + 4);
@@ -8303,7 +8169,7 @@ int sub_814C51C()
 {
   int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(25) )
+  if ( !sub_814CA44(0x19u) )
   {
     *(dword_2010CCC + 4) = 0;
     sub_814CB1C();
@@ -8317,7 +8183,7 @@ int sub_814C540()
 {
   int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(26) )
+  if ( !sub_814CA44(0x1Au) )
   {
     *(dword_2010CCC + 4) = 0;
     sub_814CB1C();
@@ -8331,7 +8197,7 @@ int sub_814C564()
 {
   int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(27) )
+  if ( !sub_814CA44(0x1Bu) )
   {
     *(dword_2010CCC + 4) = 0;
     sub_814CB1C();
@@ -8345,7 +8211,7 @@ int sub_814C588()
 {
   int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(28) )
+  if ( !sub_814CA44(0x1Cu) )
   {
     *(dword_2010CCC + 4) = 0;
     sub_814CB1C();
@@ -8359,7 +8225,7 @@ int sub_814C5AC()
 {
   int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(29) )
+  if ( !sub_814CA44(0x1Du) )
   {
     *(dword_2010CCC + 4) = 0;
     sub_814CB1C();
@@ -8373,7 +8239,7 @@ int sub_814C5D0()
 {
   int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(30) )
+  if ( !sub_814CA44(0x1Eu) )
   {
     *(dword_2010CCC + 4) = 0;
     sub_814CB1C();
@@ -8389,7 +8255,7 @@ int __fastcall sub_814C5F4(unsigned __int16 a1)
   int v3; // [sp+4h] [bp-4h]
 
   v1 = a1;
-  if ( !(sub_814CA44(31) << 16) )
+  if ( !(sub_814CA44(0x1Fu) << 16) )
   {
     *(dword_2010CCC + 4) = 1;
     *(*(dword_2010CCC + 36) + 4) = v1;
@@ -8404,7 +8270,7 @@ int sub_814C624()
 {
   int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(32) )
+  if ( !sub_814CA44(0x20u) )
   {
     *(dword_2010CCC + 4) = 0;
     sub_814CB1C();
@@ -8418,7 +8284,7 @@ int sub_814C648()
 {
   int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(33) )
+  if ( !sub_814CA44(0x21u) )
   {
     *(dword_2010CCC + 4) = 0;
     sub_814CB1C();
@@ -8430,24 +8296,25 @@ int sub_814C648()
 // 0x814c66c
 int __fastcall sub_814C66C(int a1, int a2)
 {
-  int v2; // r6
-  unsigned int v3; // r4
-  char v4; // r5
-  unsigned int v5; // r2
-  int v6; // r0
+  unsigned int v2; // r4
+  char v3; // r5
+  unsigned int v4; // r2
+  int v5; // r1
+  int v6; // r2
   int v8; // [sp+Ch] [bp-4h]
 
-  v2 = a1;
-  v3 = a2 << 24;
-  v4 = a2;
-  if ( !(sub_814CA44(36) << 16) )
+  v2 = a2 << 24;
+  v3 = a2;
+  if ( !(sub_814CA44(0x24u) << 16) )
   {
-    v5 = v3 >> 26;
-    if ( v4 & 3 )
-      LOBYTE(v5) = v5 + 1;
-    *(dword_2010CCC + 4) = v5;
-    v6 = SWI_CpuSet(v2, *(dword_2010CCC + 36) + 4, *(dword_2010CCC + 4) | 0x4000000);
-    sub_814CB1C(v6);
+    v4 = v2 >> 26;
+    if ( v3 & 3 )
+      LOBYTE(v4) = v4 + 1;
+    *(dword_2010CCC + 4) = v4;
+    v5 = *(dword_2010CCC + 36) + 4;
+    v6 = *(dword_2010CCC + 4) | 0x4000000;
+    SWI_CpuSet();
+    sub_814CB1C();
   }
   return v8;
 }
@@ -8456,24 +8323,25 @@ int __fastcall sub_814C66C(int a1, int a2)
 // 0x814c6b4
 int __fastcall sub_814C6B4(int a1, int a2)
 {
-  int v2; // r6
-  unsigned int v3; // r4
-  char v4; // r5
-  unsigned int v5; // r2
-  int v6; // r0
+  unsigned int v2; // r4
+  char v3; // r5
+  unsigned int v4; // r2
+  int v5; // r1
+  int v6; // r2
   int v8; // [sp+Ch] [bp-4h]
 
-  v2 = a1;
-  v3 = a2 << 24;
-  v4 = a2;
-  if ( !(sub_814CA44(37) << 16) )
+  v2 = a2 << 24;
+  v3 = a2;
+  if ( !(sub_814CA44(0x25u) << 16) )
   {
-    v5 = v3 >> 26;
-    if ( v4 & 3 )
-      LOBYTE(v5) = v5 + 1;
-    *(dword_2010CCC + 4) = v5;
-    v6 = SWI_CpuSet(v2, *(dword_2010CCC + 36) + 4, *(dword_2010CCC + 4) | 0x4000000);
-    sub_814CB1C(v6);
+    v4 = v2 >> 26;
+    if ( v3 & 3 )
+      LOBYTE(v4) = v4 + 1;
+    *(dword_2010CCC + 4) = v4;
+    v5 = *(dword_2010CCC + 36) + 4;
+    v6 = *(dword_2010CCC + 4) | 0x4000000;
+    SWI_CpuSet();
+    sub_814CB1C();
   }
   return v8;
 }
@@ -8482,32 +8350,28 @@ int __fastcall sub_814C6B4(int a1, int a2)
 // 0x814c6fc
 int sub_814C6FC()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(38) )
+  if ( !sub_814CA44(0x26u) )
   {
-    v0 = dword_2010CCC;
     *(dword_2010CCC + 4) = 0;
-    sub_814CB1C(v0);
+    sub_814CB1C();
   }
-  return v2;
+  return v1;
 }
 
 
 // 0x814c720
 int sub_814C720()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(39) )
+  if ( !sub_814CA44(0x27u) )
   {
-    v0 = dword_2010CCC;
     *(dword_2010CCC + 4) = 0;
-    sub_814CB1C(v0);
+    sub_814CB1C();
   }
-  return v2;
+  return v1;
 }
 
 
@@ -8516,32 +8380,29 @@ int __fastcall sub_814C744(unsigned __int8 a1)
 {
   int v1; // r4
   unsigned __int8 v2; // r5
-  _BYTE *v3; // r0
-  unsigned __int8 *v4; // r0
-  int v6; // [sp+8h] [bp-4h]
+  unsigned __int8 *v3; // r0
+  int v5; // [sp+8h] [bp-4h]
 
   v1 = a1;
   v2 = a1;
-  if ( !sub_814CA44(40) )
+  if ( !sub_814CA44(0x28u) )
   {
     if ( v1 )
     {
       *(dword_2010CCC + 4) = 1;
-      v4 = (*(dword_2010CCC + 36) + 4);
-      *v4++ = v2;
-      *v4 = 0;
-      v3 = v4 + 1;
+      v3 = (*(dword_2010CCC + 36) + 4);
+      *v3++ = v2;
+      *v3++ = 0;
       *v3 = 0;
       v3[1] = 0;
     }
     else
     {
-      v3 = dword_2010CCC;
       *(dword_2010CCC + 4) = 0;
     }
-    sub_814CB1C(v3);
+    sub_814CB1C();
   }
-  return v6;
+  return v5;
 }
 
 
@@ -8550,12 +8411,12 @@ int __fastcall sub_814C794(char a1, char a2)
 {
   char v2; // r4
   char v3; // r5
-  _BYTE *v4; // r0
+  char *v4; // r0
   int v6; // [sp+8h] [bp-4h]
 
   v2 = a1;
   v3 = a2;
-  if ( !sub_814CA44(41) )
+  if ( !sub_814CA44(0x29u) )
   {
     *(dword_2010CCC + 4) = 1;
     v4 = (*(dword_2010CCC + 36) + 4);
@@ -8563,7 +8424,7 @@ int __fastcall sub_814C794(char a1, char a2)
     *v4++ = v3;
     *v4 = 0;
     v4[1] = 0;
-    sub_814CB1C(v4);
+    sub_814CB1C();
   }
   return v6;
 }
@@ -8572,16 +8433,14 @@ int __fastcall sub_814C794(char a1, char a2)
 // 0x814c7d4
 int sub_814C7D4()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(55) )
+  if ( !sub_814CA44(0x37u) )
   {
-    v0 = dword_2010CCC;
     *(dword_2010CCC + 4) = 0;
-    sub_814CB1C(v0);
+    sub_814CB1C();
   }
-  return v2;
+  return v1;
 }
 
 
@@ -8589,18 +8448,16 @@ int sub_814C7D4()
 int __fastcall sub_814C7F8(unsigned __int8 a1)
 {
   int v1; // r4
-  int v2; // r0
-  int v4; // [sp+4h] [bp-4h]
+  int v3; // [sp+4h] [bp-4h]
 
   v1 = a1;
-  if ( !(sub_814CA44(48) << 16) )
+  if ( !(sub_814CA44(0x30u) << 16) )
   {
     *(dword_2010CCC + 4) = 1;
-    v2 = *(dword_2010CCC + 36);
-    *(v2 + 4) = v1;
-    sub_814CB1C(v2);
+    *(*(dword_2010CCC + 36) + 4) = v1;
+    sub_814CB1C();
   }
-  return v4;
+  return v3;
 }
 
 
@@ -8609,19 +8466,17 @@ int __fastcall sub_814C828(unsigned __int8 a1, unsigned __int8 a2)
 {
   int v2; // r5
   int v3; // r4
-  int v4; // r0
-  int v6; // [sp+8h] [bp-4h]
+  int v5; // [sp+8h] [bp-4h]
 
   v2 = a1;
   v3 = a2;
-  if ( !(sub_814CA44(49) << 16) )
+  if ( !(sub_814CA44(0x31u) << 16) )
   {
     *(dword_2010CCC + 4) = 1;
-    v4 = (v3 << 8) | v2;
-    *(*(dword_2010CCC + 36) + 4) = v4;
-    sub_814CB1C(v4);
+    *(*(dword_2010CCC + 36) + 4) = (v3 << 8) | v2;
+    sub_814CB1C();
   }
-  return v6;
+  return v5;
 }
 
 
@@ -8631,71 +8486,63 @@ int __fastcall sub_814C860(unsigned __int16 a1, unsigned __int16 a2, unsigned __
   int v3; // r5
   int v4; // r4
   int v5; // r6
-  int v6; // r0
-  int v7; // r1
-  int v9; // [sp+Ch] [bp-4h]
+  int v6; // r1
+  int v8; // [sp+Ch] [bp-4h]
 
   v3 = a1;
   v4 = a2;
   v5 = a3;
-  if ( !(sub_814CA44(50) << 16) )
+  if ( !(sub_814CA44(0x32u) << 16) )
   {
     *(dword_2010CCC + 4) = 2;
-    v6 = (v3 << 16) | v4;
-    v7 = *(dword_2010CCC + 36);
-    *(v7 + 4) = v6;
-    *(v7 + 8) = v5;
-    sub_814CB1C(v6);
+    v6 = *(dword_2010CCC + 36);
+    *(v6 + 4) = (v3 << 16) | v4;
+    *(v6 + 8) = v5;
+    sub_814CB1C();
   }
-  return v9;
+  return v8;
 }
 
 
 // 0x814c89c
 int sub_814C89C()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(51) )
+  if ( !sub_814CA44(0x33u) )
   {
-    v0 = dword_2010CCC;
     *(dword_2010CCC + 4) = 0;
-    sub_814CB1C(v0);
+    sub_814CB1C();
   }
-  return v2;
+  return v1;
 }
 
 
 // 0x814c8c0
 int sub_814C8C0()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(52) )
+  if ( !sub_814CA44(0x34u) )
   {
-    v0 = dword_2010CCC;
     *(dword_2010CCC + 4) = 0;
-    sub_814CB1C(v0);
+    sub_814CB1C();
   }
-  return v2;
+  return v1;
 }
 
 
 // 0x814c8e4
 int sub_814C8E4()
 {
-  int v0; // r0
-  int v2; // [sp+0h] [bp-4h]
+  int v1; // [sp+0h] [bp-4h]
 
-  if ( !sub_814CA44(61) )
+  if ( !sub_814CA44(0x3Du) )
   {
-    v0 = dword_2010CCC;
     *(dword_2010CCC + 4) = 0;
-    sub_814CB1C(v0);
+    sub_814CB1C();
   }
-  return v2;
+  return v1;
 }
 
 
@@ -8704,43 +8551,43 @@ int sub_814C908()
 {
   unsigned int v0; // r0
   char v1; // t1
-  int v2; // r0
-  char v3; // t1
-  int v4; // r0
-  int v6; // [sp+4h] [bp-4h]
+  char v2; // t1
+  int (__fastcall *v3)(int, int); // r2
+  int v5; // [sp+4h] [bp-4h]
 
   v0 = *(dword_2010CCC + 12);
   if ( v0 == 2 )
   {
     v1 = *(dword_2010CCC + 16);
     *(dword_2010CCC + 16) = 1;
-    sub_814C96C(50);
+    sub_814C96C(0x32u);
   }
   else
   {
     if ( v0 <= 2 )
     {
       if ( v0 != 1 )
-        return v6;
+        return v5;
       goto LABEL_9;
     }
     if ( v0 != 3 )
     {
       if ( v0 != 4 )
-        return v6;
+        return v5;
 LABEL_9:
-      v2 = sub_814CA18();
-      sub_814CB90(v2);
-      return v6;
+      sub_814CA18();
+      sub_814CB90();
+      return v5;
     }
-    v3 = *(dword_2010CCC + 16);
+    v2 = *(dword_2010CCC + 16);
     *(dword_2010CCC + 16) = 1;
-    v4 = sub_814CA18();
-    sub_814CC10(v4);
-    if ( *(dword_2010CCC + 24) )
-      sub_814DA68(255, 0);
+    sub_814CA18();
+    sub_814CC10();
+    v3 = *(dword_2010CCC + 24);
+    if ( v3 )
+      sub_814DA68(255, 0, v3);
   }
-  return v6;
+  return v5;
 }
 
 
@@ -8820,66 +8667,70 @@ int __fastcall sub_814CA44(unsigned __int8 a1)
 {
   int v1; // r1
   __int16 v2; // t1
-  int v3; // r2
-  _BYTE *v4; // r3
-  __int16 v5; // t1
+  int (__fastcall *v3)(int, int); // r2
+  int v4; // r2
+  _BYTE *v5; // r3
   __int16 v6; // t1
-  int v7; // r3
-  char v9; // t1
-  int v10; // r0
-  int v11; // r0
-  char v12; // t1
+  int (__fastcall *v7)(int, int); // r2
+  __int16 v8; // t1
+  int v9; // r3
+  char v11; // t1
+  int v12; // r0
   int v13; // r0
-  __int16 v14; // t1
+  char v14; // t1
+  int v15; // r0
+  __int16 v16; // t1
 
   if ( !InterruptMasterEnableRegister )
   {
     v1 = dword_2010CCC;
     v2 = *(dword_2010CCC + 18);
     *(dword_2010CCC + 18) = 6;
-    if ( *(v1 + 24) )
-      sub_814DA68(a1, *(v1 + 18));
+    v3 = *(v1 + 24);
+    if ( v3 )
+      sub_814DA68(a1, *(v1 + 18), v3);
     return 1;
   }
-  v3 = dword_2010CCC;
-  v4 = (dword_2010CCC + 44);
+  v4 = dword_2010CCC;
+  v5 = (dword_2010CCC + 44);
   if ( *(dword_2010CCC + 44) == 1 )
   {
-    v5 = *(dword_2010CCC + 18);
+    v6 = *(dword_2010CCC + 18);
     *(dword_2010CCC + 18) = 2;
-    LOBYTE(v5) = *v4;
-    *v4 = 0;
-    if ( *(dword_2010CCC + 24) )
-      sub_814DA68(a1, *(dword_2010CCC + 18));
+    LOBYTE(v6) = *v5;
+    *v5 = 0;
+    v7 = *(dword_2010CCC + 24);
+    if ( v7 )
+      sub_814DA68(a1, *(dword_2010CCC + 18), v7);
     return 1;
   }
   if ( !*(dword_2010CCC + 20) )
   {
-    v6 = *(dword_2010CCC + 18);
+    v8 = *(dword_2010CCC + 18);
     *(dword_2010CCC + 18) = 4;
-    v7 = *(v3 + 24);
-    if ( v7 )
-      return sub_814DA6C(a1, *(v3 + 18), v3, v7);
+    v9 = *(v4 + 24);
+    if ( v9 )
+      return sub_814DA6C(a1, *(v4 + 18), v4, v9);
     return 1;
   }
-  v9 = *v4;
-  *v4 = 1;
+  v11 = *v5;
+  *v5 = 1;
   *(dword_2010CCC + 6) = a1;
-  v10 = dword_2010CCC;
+  v12 = dword_2010CCC;
   *dword_2010CCC = 0;
-  *(v10 + 4) = 0;
+  *(v12 + 4) = 0;
   *(dword_2010CCC + 5) = 0;
   *(dword_2010CCC + 7) = 0;
   *(dword_2010CCC + 8) = 0;
   *(dword_2010CCC + 9) = 0;
-  v11 = dword_2010CCC;
-  *(dword_2010CCC + 12) = 0;
-  v12 = *(v11 + 16);
-  *(v11 + 16) = 0;
   v13 = dword_2010CCC;
-  v14 = *(dword_2010CCC + 18);
+  *(dword_2010CCC + 12) = 0;
+  v14 = *(v13 + 16);
+  *(v13 + 16) = 0;
+  v15 = dword_2010CCC;
+  v16 = *(dword_2010CCC + 18);
   *(dword_2010CCC + 18) = 0;
-  *(v13 + 21) = 0;
+  *(v15 + 21) = 0;
   SIOModeSelect_GeneralPurposeData = 256;
   SIOControlRegister = 20483;
   return 0;
@@ -8915,7 +8766,9 @@ int sub_814CB90()
   int v2; // r0
   _BYTE *v3; // r0
   __int16 v4; // t1
-  __int16 v5; // t1
+  int (__fastcall *v5)(int, int); // r2
+  __int16 v6; // t1
+  int (__fastcall *v7)(int, int); // r2
 
   v0 = dword_2010CCC;
   v1 = *(dword_2010CCC + 21);
@@ -8924,12 +8777,13 @@ int sub_814CB90()
     v2 = *(dword_2010CCC + 6);
     if ( v2 != 39 && v2 != 37 && v2 != 53 && v2 != 55 )
     {
-      v5 = *(dword_2010CCC + 18);
+      v6 = *(dword_2010CCC + 18);
       *(dword_2010CCC + 18) = 1;
-      LOBYTE(v5) = *(v0 + 44);
+      LOBYTE(v6) = *(v0 + 44);
       *(v0 + 44) = 0;
-      if ( *(dword_2010CCC + 24) )
-        sub_814DA68(*(dword_2010CCC + 6), *(dword_2010CCC + 18));
+      v7 = *(dword_2010CCC + 24);
+      if ( v7 )
+        sub_814DA68(*(dword_2010CCC + 6), *(dword_2010CCC + 18), v7);
       *dword_2010CCC = 4;
     }
     else
@@ -8940,8 +8794,9 @@ int sub_814CB90()
       v3 += 44;
       LOBYTE(v4) = *v3;
       *v3 = 0;
-      if ( *(dword_2010CCC + 24) )
-        sub_814DA68(*(dword_2010CCC + 6), *(dword_2010CCC + 18));
+      v5 = *(dword_2010CCC + 24);
+      if ( v5 )
+        sub_814DA68(*(dword_2010CCC + 6), *(dword_2010CCC + 18), v5);
     }
   }
   else
@@ -8974,34 +8829,33 @@ signed int __fastcall sub_814CC48(unsigned __int8 a1)
   int v1; // r6
   int v2; // r5
   __int16 v4; // r8
-  int v5; // r0
-  __int16 *v6; // r4
-  int v7; // r5
+  __int16 *v5; // r4
+  int v6; // r5
 
   v2 = a1;
   if ( !InterruptMasterEnableRegister )
     return -1;
   v4 = InterruptEnableRegister;
   *dword_2010CCC = 10;
-  v5 = sub_814C378(sub_814CE64);
-  sub_814CCFC(v5);
-  v6 = &Timer0Counter_Reload[2 * *(dword_2010CCC + 10)];
-  v7 = 8 * v2 & 0xFF;
+  sub_814C378(sub_814CE64);
+  sub_814CCFC();
+  v5 = &Timer0Counter_Reload[2 * *(dword_2010CCC + 10)];
+  v6 = 8 * v2 & 0xFF;
   while ( 1 )
   {
-    v7 = (v7 - 1) & 0xFF;
-    if ( v7 == 255 )
+    v6 = (v6 - 1) & 0xFF;
+    if ( v6 == 255 )
       break;
     v1 = sub_814CD70();
     if ( v1 )
       break;
-    v6[1] = 0;
-    *v6 = 0;
-    v6[1] = 131;
-    while ( *v6 <= 0x1Fu )
+    v5[1] = 0;
+    *v5 = 0;
+    v5[1] = 131;
+    while ( *v5 <= 0x1Fu )
       ;
-    v6[1] = 0;
-    *v6 = 0;
+    v5[1] = 0;
+    *v5 = 0;
   }
   InterruptEnableRegister = v4;
   InterruptMasterEnableRegister = 1;
@@ -9014,18 +8868,16 @@ signed int __fastcall sub_814CC48(unsigned __int8 a1)
 // 0x814ccfc
 int sub_814CCFC()
 {
-  int v1; // [sp+0h] [bp-10h]
-  int v2; // [sp+Ch] [bp-4h]
+  int v1; // [sp+Ch] [bp-4h]
 
   InterruptMasterEnableRegister = 0;
   InterruptEnableRegister &= ~((8 << *(dword_2010CCC + 10)) | 0x80);
   InterruptMasterEnableRegister = 1;
   SIOModeSelect_GeneralPurposeData = 0;
   SIOControlRegister = 20608;
-  v1 = 0;
-  SWI_CpuSet(&v1, &byte_2010CD0, 83886083);
+  SWI_CpuSet();
   InterruptRequestFlags_IRQAcknowledge = 128;
-  return v2;
+  return v1;
 }
 
 
@@ -9330,7 +9182,7 @@ int __fastcall sub_814DA6C(int a1, int a2, int a3, int a4)
 // 0x814da9c
 int __fastcall sub_814DA9C(unsigned int a1, unsigned int a2)
 {
-  int v2; // r12
+  signed int v2; // r12
   unsigned int v3; // r3
   int v4; // r2
   int result; // r0
@@ -9503,16 +9355,18 @@ int sub_814DC04()
 
 
 // 0x814dc84
-int m4a_814DC84()
+void __fastcall m4a_814DC84(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, unsigned int a10, int a11)
 {
-  int v0; // r6
-  int result; // r0
+  int v11; // r6
+  int v12; // r0
+  int v13; // r3
 
-  if ( BYTE1(dword_4[0x400000 * v0]) )
-    result = sub_814DC94();
+  v12 = v11 << 24;
+  v13 = BYTE1(dword_4[0x400000 * v11]);
+  if ( BYTE1(dword_4[0x400000 * v11]) )
+    sub_814DC94(v12, sub_814DC94, a3, v13);
   else
-    result = sub_814DCE8();
-  return result;
+    sub_814DCE8(v12, a2, a3, v13, a5, a6, a7, a8, a9, a10, a11);
 }
 
 
@@ -9708,12 +9562,14 @@ LABEL_34:
   v29 = (*(a11 + 7) + 1) * v26 >> 4;
   *(a11 + 90) = (*(a11 + 82) * v29) >> 8;
   *(a11 + 91) = (*(a11 + 83) * v29) >> 8;
+  v31 = v24 & 0x10;
   if ( v24 & 0x10 )
   {
     v15 = *(v23 + 8);
+    a8 = v23 + 16 + v15;
     v31 = *(v23 + 12) - v15;
   }
-  return sub_814DE20(sub_814DE20, v15, *(a11 + 104), *(a11 + 120), a5);
+  return sub_814DE20(sub_814DE20, v15, *(a11 + 104), *(a11 + 120), a5, v30, a7, a8, v31);
 }
 
 
@@ -10010,40 +9866,36 @@ int __fastcall sub_814E064(int a1, int a2)
 // 0x814e09c
 int __fastcall sub_814E09C(int a1)
 {
-  int v1; // r1
-  void **v2; // r2
-  void *v3; // r3
-  _DWORD *v4; // r0
-  int (__fastcall *v5)(int); // r12
-  int v6; // r3
-  int v7; // r2
-  int v8; // r1
-  unsigned __int8 v9; // vf
+  int (__fastcall *v1)(int); // lr
+  signed int v2; // r1
+  void **v3; // r2
+  void *v4; // r3
+  int v5; // r2
+  unsigned __int8 v6; // vf
 
-  v1 = 36;
-  v2 = &off_81C0418;
+  v2 = 36;
+  v3 = &off_81C0418;
   do
   {
-    v3 = *v2;
-    v4 = sub_814E0B6(a1, v1);
-    *v4 = v6;
-    a1 = (v4 + 1);
-    v2 = (v7 + 4);
-    v9 = __OFSUB__(v8, 1);
-    v1 = v8 - 1;
+    v4 = *v3;
+    sub_814E0B6();
+    *a1 = v4;
+    a1 += 4;
+    v3 = (v5 + 4);
+    v6 = __OFSUB__(v2--, 1);
   }
-  while ( !(((v1 < 0) ^ v9) | (v1 == 0)) );
-  return v5(a1);
+  while ( !(((v2 < 0) ^ v6) | (v2 == 0)) );
+  return v1(a1);
 }
 
 
 // 0x814e0b4
-int __fastcall sub_814E0B4(int a1, int a2, unsigned __int8 *a3)
+void __fastcall sub_814E0B4(int a1, int a2, unsigned __int8 *a3)
 {
   int v3; // r3
 
   v3 = *a3;
-  return sub_814E0B6(a1, a2);
+  sub_814E0B6();
 }
 
 
@@ -10075,7 +9927,7 @@ int __fastcall sub_814E0DC(int a1, int a2)
   int v4; // r1
   int v6; // [sp+0h] [bp-4h]
 
-  v2 = sub_814E0B4(((((*(*(a2 + 64) + 3) << 8) | *(*(a2 + 64) + 2)) << 8) | *(*(a2 + 64) + 1)) << 8, a2, *(a2 + 64));
+  sub_814E0B4(((((*(*(a2 + 64) + 3) << 8) | *(*(a2 + 64) + 2)) << 8) | *(*(a2 + 64) + 1)) << 8, a2, *(a2 + 64));
   *(v4 + 64) = v2 | v3;
   return v6;
 }
@@ -10321,244 +10173,237 @@ _DWORD *__fastcall sub_814E260(_DWORD *result, int a2)
   int v2; // r8
   int v3; // r9
   int v4; // r10
-  _DWORD *v5; // r7
-  _DWORD *v6; // r8
+  int (__fastcall *v5)(int, int, int); // r3
+  _DWORD *v6; // r7
+  int v7; // r8
   unsigned int i; // r0
-  signed int v8; // r10
-  int v9; // r11
-  char *v10; // r4
-  char v11; // r1
-  int v12; // r0
-  char *v13; // r1
-  unsigned __int8 *v14; // r2
-  unsigned int v15; // r1
-  int v16; // r3
-  int v17; // r3
-  int v18; // r0
+  signed int v9; // r10
+  int v10; // r11
+  int v11; // r4
+  char v12; // r1
+  int v13; // r0
+  int v14; // r1
+  unsigned __int8 *v15; // r2
+  unsigned int v16; // r1
+  int v17; // r0
+  int v18; // r2
   int v19; // r2
-  int v20; // r2
-  char v21; // r1
-  signed int v22; // r3
-  int v23; // r4
-  unsigned __int8 v24; // vf
-  int v25; // r6
-  int v26; // r5
-  int v27; // r2
-  int v28; // r5
-  int v29; // r9
-  int v30; // r4
-  int v31; // r6
-  int v32; // r2
-  int v33; // r3
-  int v34; // r1
-  int v35; // [sp-24h] [bp-24h]
-  int v36; // [sp-20h] [bp-20h]
-  int v37; // [sp-1Ch] [bp-1Ch]
+  char v20; // r1
+  signed int v21; // r3
+  int v22; // r4
+  unsigned __int8 v23; // vf
+  int v24; // r6
+  int v25; // r5
+  int v26; // r2
+  int v27; // r5
+  int v28; // r9
+  int v29; // r4
+  int v30; // r6
+  int v31; // r2
+  int v32; // r1
+  int v33; // [sp-24h] [bp-24h]
+  int v34; // [sp-20h] [bp-20h]
+  int v35; // [sp-1Ch] [bp-1Ch]
+  int (__fastcall *v36)(int, int, int); // [sp-4h] [bp-4h]
 
   if ( result[13] == 1752395091 )
   {
     result[13] = 1752395092;
-    if ( result[14] )
-      return sub_814E4CC(result[15], a2, 1752395091);
-    v35 = v2;
-    v36 = v3;
-    v37 = v4;
-    v5 = result;
+    v5 = result[14];
+    if ( v5 )
+      return sub_814E4CC(result[15], a2, 1752395091, v5);
+    v33 = v2;
+    v34 = v3;
+    v35 = v4;
+    v6 = result;
     if ( result[1] >= 0 )
     {
-      v6 = *byte_3007FF0;
+      v7 = *byte_3007FF0;
       sub_814F228(result);
-      if ( v5[1] >= 0 )
+      if ( v6[1] >= 0 )
       {
-        for ( i = *(v5 + 17) + *(v5 + 16); ; i = *(v5 + 17) - 150 )
+        for ( i = *(v6 + 17) + *(v6 + 16); ; i = *(v6 + 17) - 150 )
         {
-          *(v5 + 17) = i;
+          *(v6 + 17) = i;
           if ( i < 0x96 )
             break;
-          v25 = *(v5 + 8);
-          v26 = v5[11];
-          v22 = 1;
-          v23 = 0;
+          v24 = *(v6 + 8);
+          v25 = v6[11];
+          v21 = 1;
+          v22 = 0;
           while ( 1 )
           {
-            if ( *v26 & 0x80 )
+            if ( *v25 & 0x80 )
             {
-              v8 = v22;
-              v9 = v23 | v22;
-              v10 = *(v26 + 32);
-              if ( v10 )
+              v9 = v21;
+              v10 = v22 | v21;
+              v11 = *(v25 + 32);
+              if ( v11 )
               {
                 do
                 {
-                  v11 = *v10;
-                  if ( *v10 & 0xC7 )
+                  v12 = *v11;
+                  if ( *v11 & 0xC7 )
                   {
-                    if ( v10[16] )
+                    if ( *(v11 + 16) )
                     {
-                      v12 = v10[16] - 1;
-                      v10[16] = v12;
-                      if ( !v12 )
-                        *v10 = v11 | 0x40;
+                      v13 = *(v11 + 16) - 1;
+                      *(v11 + 16) = v13;
+                      if ( !v13 )
+                        *v11 = v12 | 0x40;
                     }
                   }
                   else
                   {
-                    sub_814ECA0(v10);
+                    sub_814ECA0(v11);
                   }
-                  v13 = *(v10 + 13);
-                  if ( v13 == v10 )
+                  v14 = *(v11 + 52);
+                  if ( v14 == v11 )
                   {
-                    v13 = 0;
-                    *(v10 + 13) = 0;
+                    v14 = 0;
+                    *(v11 + 52) = 0;
                   }
-                  v10 = v13;
+                  v11 = v14;
                 }
-                while ( v13 );
+                while ( v14 );
               }
-              if ( *v26 & 0x40 )
+              if ( *v25 & 0x40 )
               {
-                sub_814ECB4(v26);
-                *v26 = -128;
-                *(v26 + 15) = 2;
-                *(v26 + 19) = 64;
-                *(v26 + 25) = 22;
-                *(v26 + 36) = 1;
+                sub_814ECB4(v25);
+                *v25 = -128;
+                *(v25 + 15) = 2;
+                *(v25 + 19) = 64;
+                *(v25 + 25) = 22;
+                *(v25 + 36) = 1;
               }
-              while ( !*(v26 + 1) )
+              while ( !*(v25 + 1) )
               {
-                v14 = *(v26 + 64);
-                v15 = *v14;
-                if ( v15 >= 0x80 )
+                v15 = *(v25 + 64);
+                v16 = *v15;
+                if ( v16 >= 0x80 )
                 {
-                  *(v26 + 64) = ++v14;
-                  if ( v15 >= 0xBD )
-                    *(v26 + 7) = v15;
+                  *(v25 + 64) = ++v15;
+                  if ( v16 >= 0xBD )
+                    *(v25 + 7) = v16;
                 }
                 else
                 {
-                  v15 = *(v26 + 7);
+                  v16 = *(v25 + 7);
                 }
-                if ( v15 >= 0xCF )
+                if ( v16 >= 0xCF )
+                  return sub_814E4CC(v16 - 207, v6, v25, *(v7 + 56));
+                if ( v16 > 0xB0 )
                 {
-                  v16 = v6[14];
-                  return sub_814E4CC(v15 - 207, v5, v26);
+                  *(v6 + 10) = v16 + 79;
+                  return sub_814E4CC(v6, v25, v15, *(*(v7 + 52) + 4 * (v16 - 177)));
                 }
-                if ( v15 > 0xB0 )
-                {
-                  *(v5 + 10) = v15 + 79;
-                  v17 = *(v6[13] + 4 * (v15 - 177));
-                  return sub_814E4CC(v5, v26, v14);
-                }
-                *(v26 + 1) = byte_81C068C[v15 - 128];
+                *(v25 + 1) = byte_81C068C[v16 - 128];
               }
-              --*(v26 + 1);
-              if ( *(v26 + 25) && *(v26 + 23) )
+              --*(v25 + 1);
+              if ( *(v25 + 25) && *(v25 + 23) )
               {
-                if ( *(v26 + 28) )
+                if ( *(v25 + 28) )
                 {
-                  --*(v26 + 28);
+                  --*(v25 + 28);
                 }
                 else
                 {
-                  v18 = *(v26 + 26) + *(v26 + 25);
-                  *(v26 + 26) = v18;
-                  if ( (v18 - 64) & 0x80 )
-                    v19 = v18;
+                  v17 = *(v25 + 26) + *(v25 + 25);
+                  *(v25 + 26) = v17;
+                  if ( (v17 - 64) & 0x80 )
+                    v18 = v17;
                   else
-                    v19 = 128 - v18;
-                  v20 = *(v26 + 23) * v19 >> 6;
-                  if ( (*(v26 + 22) ^ v20) << 24 )
+                    v18 = 128 - v17;
+                  v19 = *(v25 + 23) * v18 >> 6;
+                  if ( (*(v25 + 22) ^ v19) << 24 )
                   {
-                    *(v26 + 22) = v20;
-                    if ( *(v26 + 24) )
-                      v21 = 3;
+                    *(v25 + 22) = v19;
+                    if ( *(v25 + 24) )
+                      v20 = 3;
                     else
-                      v21 = 12;
-                    *v26 |= v21;
+                      v20 = 12;
+                    *v25 |= v20;
                   }
                 }
               }
-              v22 = v8;
-              v23 = v9;
+              v21 = v9;
+              v22 = v10;
             }
-            v24 = __OFSUB__(v25--, 1);
-            if ( ((v25 < 0) ^ v24) | (v25 == 0) )
+            v23 = __OFSUB__(v24--, 1);
+            if ( ((v24 < 0) ^ v23) | (v24 == 0) )
               break;
-            v26 += 80;
-            v22 *= 2;
+            v25 += 80;
+            v21 *= 2;
           }
-          ++v5[3];
-          if ( !v23 )
+          ++v6[3];
+          if ( !v22 )
           {
-            v5[1] = 2147483648;
+            v6[1] = 2147483648;
             goto LABEL_71;
           }
-          v5[1] = v23;
+          v6[1] = v22;
         }
-        v27 = *(v5 + 8);
-        v28 = v5[11];
+        v26 = *(v6 + 8);
+        v27 = v6[11];
         do
         {
-          if ( *v28 & 0x80 && *v28 & 0xF )
+          if ( *v27 & 0x80 && *v27 & 0xF )
           {
-            v29 = v27;
-            sub_814F2F0(v5, v28);
-            v30 = *(v28 + 32);
-            if ( v30 )
+            v28 = v26;
+            sub_814F2F0(v6, v27);
+            v29 = *(v27 + 32);
+            if ( v29 )
             {
               do
               {
-                if ( *v30 & 0xC7 )
+                if ( *v29 & 0xC7 )
                 {
-                  v31 = *(v30 + 1) & 7;
-                  if ( *v28 & 3 )
+                  v30 = *(v29 + 1) & 7;
+                  if ( *v27 & 3 )
                   {
                     sub_814E528();
-                    if ( v31 )
-                      *(v30 + 29) |= 1u;
+                    if ( v30 )
+                      *(v29 + 29) |= 1u;
                   }
-                  if ( *v28 & 0xC )
+                  if ( *v27 & 0xC )
                   {
-                    v32 = *(v30 + 8) + *(v28 + 8);
-                    if ( v32 < 0 )
-                      v32 = 0;
-                    if ( v31 )
-                    {
-                      v33 = v6[12];
-                      return sub_814E4CC(v31, v32, *(v28 + 9));
-                    }
-                    *(v30 + 32) = sub_814E7F4(*(v30 + 36), v32, *(v28 + 9));
+                    v31 = *(v29 + 8) + *(v27 + 8);
+                    if ( v31 < 0 )
+                      v31 = 0;
+                    if ( v30 )
+                      return sub_814E4CC(v30, v31, *(v27 + 9), *(v7 + 48));
+                    *(v29 + 32) = sub_814E7F4(*(v29 + 36), v31, *(v27 + 9));
                   }
                 }
                 else
                 {
-                  sub_814ECA0(v30);
+                  sub_814ECA0(v29);
                 }
-                v34 = *(v30 + 52);
-                if ( v34 == v30 )
+                v32 = *(v29 + 52);
+                if ( v32 == v29 )
                 {
-                  v34 = 0;
-                  *(v30 + 52) = 0;
+                  v32 = 0;
+                  *(v29 + 52) = 0;
                 }
-                v30 = v34;
+                v29 = v32;
               }
-              while ( v34 );
+              while ( v32 );
             }
-            *v28 &= 0xF0u;
-            v27 = v29;
+            *v27 &= 0xF0u;
+            v26 = v28;
           }
-          v24 = __OFSUB__(v27--, 1);
-          if ( ((v27 < 0) ^ v24) | (v27 == 0) )
+          v23 = __OFSUB__(v26--, 1);
+          if ( ((v26 < 0) ^ v23) | (v26 == 0) )
             break;
-          v24 = __OFADD__(v28, 80);
-          v28 += 80;
+          v23 = __OFADD__(v27, 80);
+          v27 += 80;
         }
-        while ( !(((v28 < 0) ^ v24) | (v28 == 0)) );
+        while ( !(((v27 < 0) ^ v23) | (v27 == 0)) );
       }
     }
 LABEL_71:
-    v5[13] = 1752395091;
-    result = sub_814E4CC(v35, v36, v37);
+    v6[13] = 1752395091;
+    result = sub_814E4CC(v33, v34, v35, v36);
   }
   return result;
 }
@@ -10818,7 +10663,7 @@ LABEL_42:
   v30 = *(v3 + 27);
   *(v3 + 28) = v30;
   if ( v30 )
-    sub_814E7A4();
+    sub_814E7A4(v30, v3);
   sub_814F2F0(v35, v3);
   *(v19 + 16) = *(v3 + 4);
   *(v19 + 19) = v39;
@@ -11013,7 +10858,7 @@ int sub_814E8A0()
 {
   char (**v0)[64]; // r5
   signed int v1; // r6
-  char (*v2)[64]; // r4
+  int v2; // r4
   int v4; // [sp+Ch] [bp-4h]
 
   SWI_CpuSet();
@@ -11026,8 +10871,8 @@ int sub_814E8A0()
   {
     v2 = *v0;
     sub_814F08C(*v0, v0[1], *(v0 + 8));
-    (*v2)[11] = *(v0 + 5);
-    *&(*v2)[24] = byte_2010B90;
+    *(v2 + 11) = *(v0 + 5);
+    *(v2 + 24) = byte_2010B90;
     v0 += 3;
     --v1;
   }
@@ -11061,11 +10906,11 @@ int __fastcall m4a_SongNumStart(int a1)
 // 0x814e950
 int __fastcall sub_814E950(int a1)
 {
-  char *v1; // r0
+  unsigned __int8 **v1; // r0
   int v2; // r1
   int v4; // [sp+0h] [bp-4h]
 
-  v1 = sound_MusicTable + (8 * a1 & 0x7FFFF);
+  v1 = (sound_MusicTable + (8 * a1 & 0x7FFFF));
   v2 = *(&off_8158278 + 3 * *(v1 + 2));
   if ( *v2 == *v1 )
   {
@@ -11083,17 +10928,17 @@ int __fastcall sub_814E950(int a1)
 // 0x814e99c
 int __fastcall sub_814E99C(int a1)
 {
-  char *v1; // r0
-  _DWORD *v2; // r1
+  unsigned __int8 **v1; // r0
+  int v2; // r1
   int v4; // [sp+0h] [bp-4h]
 
-  v1 = sound_MusicTable + (8 * a1 & 0x7FFFF);
+  v1 = (sound_MusicTable + (8 * a1 & 0x7FFFF));
   v2 = *(&off_8158278 + 3 * *(v1 + 2));
   if ( *v2 == *v1 )
   {
-    if ( *(v2 + 2) )
+    if ( *(v2 + 4) )
     {
-      if ( v2[1] < 0 )
+      if ( *(v2 + 4) < 0 )
         sub_814E85C(v2);
     }
     else
@@ -11113,13 +10958,13 @@ int __fastcall sub_814E99C(int a1)
 int __fastcall sub_814E9F0(int a1)
 {
   char *v1; // r0
-  _DWORD *v2; // r2
+  int *v2; // r2
   int v4; // [sp+0h] [bp-4h]
 
   v1 = sound_MusicTable + (8 * a1 & 0x7FFFF);
   v2 = *(&off_8158278 + 3 * *(v1 + 2));
   if ( *v2 == *v1 )
-    sub_814F1E8(v2);
+    sub_814F1E8(v2, *v2, v2);
   return v4;
 }
 
@@ -11140,22 +10985,22 @@ int __fastcall sub_814EA24(int a1)
 
 
 // 0x814ea58
-int sub_814EA58()
+int __fastcall sub_814EA58(int a1, int a2, int a3)
 {
-  char (**v0)[64]; // r5
-  signed int v1; // r4
-  int v3; // [sp+8h] [bp-4h]
+  int *v3; // r5
+  signed int v4; // r4
+  int v6; // [sp+8h] [bp-4h]
 
-  v0 = &off_8158278;
-  v1 = 32;
+  v3 = &off_8158278;
+  v4 = 32;
   do
   {
-    sub_814F1E8(*v0);
-    v0 += 3;
-    --v1;
+    sub_814F1E8(*v3, a2, a3);
+    v3 += 3;
+    --v4;
   }
-  while ( v1 );
-  return v3;
+  while ( v4 );
+  return v6;
 }
 
 

@@ -364,6 +364,7 @@ void __fastcall sub_3006028(int result)
   _DWORD *v12; // r12
   __int16 v13; // r1
   _WORD *v14; // r0
+  char v15; // r0
 
   v2 = v1 + 16 * (*(v1 + 2) >> 4);
   v3 = *(v2 + 3) & 0xEF;
@@ -405,7 +406,10 @@ void __fastcall sub_3006028(int result)
     }
   }
   if ( (*(v2 + 21) & 0xF0) < 240 && !(*(v2 + 3) & 0x10) )
-    *(v2 + 21) = *(v2 + 21) & 0xF | 16 * sub_3006108();
+  {
+    sub_3006108();
+    *(v2 + 21) = *(v2 + 21) & 0xF | 16 * v15;
+  }
 }
 
 
@@ -1402,7 +1406,9 @@ int __fastcall sub_3006B94(unsigned __int8 *a1, int a2, int a3, int a4)
   int v10; // r9
   signed int v11; // r3
   int v12; // r1
-  int v14; // [sp+4h] [bp-8h]
+  int v13; // r0
+  int v14; // r0
+  int v16; // [sp+4h] [bp-8h]
 
   v8 = v6;
   v9 = *(v7 + 56);
@@ -1412,7 +1418,7 @@ int __fastcall sub_3006B94(unsigned __int8 *a1, int a2, int a3, int a4)
   *(v9 + 52) = 0;
   *(v9 + 48) = 0;
   v10 = 0;
-  v14 = a4;
+  v16 = a4;
   v11 = 1;
   while ( v11 )
   {
@@ -1422,11 +1428,12 @@ int __fastcall sub_3006B94(unsigned __int8 *a1, int a2, int a3, int a4)
       if ( v12 == 228 )
       {
         sub_3006C18(a1, a1[1] + 228, a3);
-        a1 += 2;
+        a1 = (v14 + 2);
       }
       else
       {
-        sub_3006C18(a1++, v12, a3);
+        sub_3006C18(a1, v12, a3);
+        a1 = (v13 + 1);
       }
       ++v10;
     }
@@ -1435,7 +1442,7 @@ int __fastcall sub_3006B94(unsigned __int8 *a1, int a2, int a3, int a4)
       a1 = (off_3006C08[v12 - 229])();
     }
   }
-  if ( v14 )
+  if ( v16 )
     off_3006C0C();
   return v10;
 }
@@ -1644,7 +1651,7 @@ char *__fastcall sub_3006DC8(int a1)
   char *v6; // ST00_4
 
   v1 = off_3006F1C[0];
-  ++*&off_3006F1C[0][&dword_30];
+  ++*&off_3006F1C[0][dword_30];
   v2 = &(*off_3006E10)[8 * *(a1 + 2)];
   v3 = *(v2 + 1);
   v4 = a1;
@@ -1711,7 +1718,7 @@ char *__fastcall sub_3006E98(int a1)
   char *v5; // ST00_4
 
   v1 = off_3006F1C[0];
-  ++*&off_3006F1C[0][&dword_30];
+  ++*&off_3006F1C[0][dword_30];
   v2 = *(a1 + 2);
   if ( *(a1 + 1) )
     v2 += 2;
@@ -2497,11 +2504,11 @@ int __fastcall sub_3007880(int a1, int a2, int a3)
 
 
 // 0x30078c8
-int sub_30078C8()
+char *sub_30078C8()
 {
   int v0; // r5
   int v1; // r4
-  int result; // r0
+  char *result; // r0
   unsigned __int8 v3; // vf
 
   v0 = 4;

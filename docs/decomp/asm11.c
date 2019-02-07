@@ -1,5 +1,5 @@
 // 0x8069038
-int sub_8069038()
+unsigned int sub_8069038()
 {
   int v0; // r5
   int v1; // r10
@@ -7,7 +7,6 @@ int sub_8069038()
   int v3; // r1
   int v4; // r2
   int v5; // r3
-  int v6; // r0
 
   *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_8068CCC + *(v0 + 5));
   sub_8069140();
@@ -18,8 +17,8 @@ int sub_8069038()
   sub_8030472();
   sub_80028D4(byte_2037800, v3, v4, v5);
   sub_8002906(off_806909C[*(v0 + 5)]);
-  v6 = chatbox_uncomp_803FD08();
-  sub_80691FE(v6);
+  chatbox_uncomp_803FD08();
+  sub_80691FE();
   return sub_8034FB8();
 }
 
@@ -88,7 +87,7 @@ int sub_80691FE()
 
 
 // 0x8069fe8
-int sub_8069FE8()
+unsigned int sub_8069FE8()
 {
   int v0; // r5
   int v1; // r10
@@ -96,7 +95,6 @@ int sub_8069FE8()
   int v3; // r1
   int v4; // r2
   int v5; // r3
-  int v6; // r0
 
   *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_80698DC + *(v0 + 5));
   sub_806A120();
@@ -107,8 +105,8 @@ int sub_8069FE8()
   sub_8030472();
   sub_80028D4(byte_2037800, v3, v4, v5);
   sub_8002906(off_806A04C[*(v0 + 5)]);
-  v6 = chatbox_uncomp_803FD08();
-  sub_806A1DE(v6);
+  chatbox_uncomp_803FD08();
+  sub_806A1DE();
   return sub_8034FB8();
 }
 
@@ -177,7 +175,7 @@ int sub_806A1DE()
 
 
 // 0x806aa00
-int sub_806AA00()
+unsigned int sub_806AA00()
 {
   int v0; // r5
   int v1; // r10
@@ -185,7 +183,6 @@ int sub_806AA00()
   int v3; // r1
   int v4; // r2
   int v5; // r3
-  int v6; // r0
 
   *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_806A7AC + *(v0 + 5));
   sub_806AB94();
@@ -196,8 +193,8 @@ int sub_806AA00()
   sub_8030472();
   sub_80028D4(byte_2037800, v3, v4, v5);
   sub_8002906(off_806AA64[*(v0 + 5)]);
-  v6 = chatbox_uncomp_803FD08();
-  sub_806AD00(v6);
+  chatbox_uncomp_803FD08();
+  sub_806AD00();
   return sub_8034FB8();
 }
 
@@ -280,7 +277,7 @@ int sub_806AD00()
 
 
 // 0x806c23c
-int sub_806C23C()
+unsigned int sub_806C23C()
 {
   int v0; // r5
   int v1; // r10
@@ -288,7 +285,6 @@ int sub_806C23C()
   int v3; // r1
   int v4; // r2
   int v5; // r3
-  int v6; // r0
 
   *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = off_806BFF8[*(v0 + 5)];
   sub_806C35C();
@@ -299,8 +295,8 @@ int sub_806C23C()
   sub_8030472();
   sub_80028D4(byte_2037800, v3, v4, v5);
   sub_8002906(*(&off_806C2A0 + *(v0 + 5)));
-  v6 = chatbox_uncomp_803FD08();
-  sub_806C59C(v6);
+  chatbox_uncomp_803FD08();
+  sub_806C59C();
   return sub_8034FB8();
 }
 
@@ -369,10 +365,10 @@ int __fastcall sub_806C514(int result, int a2)
 
 
 // 0x806c532
-int __fastcall sub_806C532(int a1, int a2)
+unsigned int __fastcall sub_806C532(int a1, int a2)
 {
   int v2; // r10
-  int result; // r0
+  unsigned int result; // r0
 
   if ( a1 != 3 || a2 != 2 || (result = *(*(v2 + oToolkit_GameStatePtr) + oGameState_Unk_3c)) != 0 )
   {

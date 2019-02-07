@@ -22,21 +22,19 @@ int reqBBS_cb_draw_813E0A4()
 
 // 0x813e0f8
 // () -> int
-void __noreturn reqBBS_static_draw_813E0F8()
+void __fastcall __noreturn reqBBS_static_draw_813E0F8(int a1, int a2, int a3, int a4)
 {
-  int v0; // r5
-  int v1; // r0
-  int v2; // r0
+  int v4; // r5
 
-  *(v0 + offsetof(reqBBS_GUI, animationTimer0)) = 0;
-  *(v0 + offsetof(reqBBS_GUI, cursorPos)) = 0;
-  *(v0 + offsetof(reqBBS_GUI, pagePos)) = 0;
-  *(v0 + offsetof(reqBBS_GUI, RO_pagePos)) = 0;
-  *(v0 + offsetof(reqBBS_GUI, animationTimer1)) = 0;
-  *(v0 + offsetof(reqBBS_GUI, unk_0B)) = 0;
-  v1 = reqBBS_static_813E6D0();
-  v2 = reqBBS_813E834(v1);
-  reqBBS_813E890(v2);
+  *(v4 + offsetof(reqBBS_GUI, animationTimer0)) = 0;
+  *(v4 + offsetof(reqBBS_GUI, cursorPos)) = 0;
+  *(v4 + offsetof(reqBBS_GUI, pagePos)) = 0;
+  *(v4 + offsetof(reqBBS_GUI, RO_pagePos)) = 0;
+  *(v4 + offsetof(reqBBS_GUI, animationTimer1)) = 0;
+  *(v4 + offsetof(reqBBS_GUI, unk_0B)) = 0;
+  reqBBS_static_813E6D0(0, a2, a3, a4);
+  reqBBS_813E834();
+  reqBBS_813E890();
 }
 
 
@@ -49,8 +47,7 @@ void reqBBS_draw_813E188()
   int v2; // r7
   int v3; // r0
   unsigned int v4; // r0
-  int v5; // r0
-  char v6; // zf
+  char v5; // zf
 
   sub_8001778(8000);
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
@@ -63,10 +60,10 @@ void reqBBS_draw_813E188()
   }
   v0[0x11] = v0[offsetof(reqBBS_GUI, pad_10)];
   v0[0x13] = v0[0x12];
-  v5 = engine_isScreeneffectAnimating();
-  if ( !v6 )
-    v5 = reqBBS_static_813EC10(0);
-  reqBBS_813E534(v5);
+  engine_isScreeneffectAnimating();
+  if ( !v5 )
+    reqBBS_static_813EC10();
+  reqBBS_813E534();
 }
 
 
@@ -74,11 +71,9 @@ void reqBBS_draw_813E188()
 void __noreturn reqBBS_draw_813E1C8()
 {
   int v0; // r10
-  _WORD *v1; // r0
 
-  v1 = *(v0 + oToolkit_RenderInfoPtr);
-  *v1 = 8000;
-  reqBBS_813E534(v1);
+  **(v0 + oToolkit_RenderInfoPtr) = 8000;
+  reqBBS_813E534();
 }
 
 
@@ -92,7 +87,6 @@ void __noreturn reqBBS_draw_813E224()
   int v4; // r0
   int v5; // r0
   unsigned __int8 v6; // vf
-  int v7; // r0
 
   **(v1 + oToolkit_RenderInfoPtr) = 24384;
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
@@ -103,11 +97,10 @@ void __noreturn reqBBS_draw_813E224()
   *(v4 + 7) -= 8;
   *(v4 + 6) += 8;
   v5 = *(v0 + offsetof(reqBBS_GUI, animationTimer0));
-  v6 = __OFSUB__(v5, 1);
-  v7 = v5 - 1;
-  *(v0 + 8) = v7;
-  if ( !(((v7 < 0) ^ v6) | (v7 == 0)) )
-    reqBBS_813E534(v7);
+  v6 = __OFSUB__(v5--, 1);
+  *(v0 + 8) = v5;
+  if ( !(((v5 < 0) ^ v6) | (v5 == 0)) )
+    reqBBS_813E534();
   *(*(v1 + oToolkit_ChatboxPtr) + 76) = 4;
   chatbox_reqBBS_80404C0(
     *(*(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers)) + 4),
@@ -125,11 +118,9 @@ void reqBBS_draw_813E2AC()
   int v2; // r7
   signed int v3; // r0
   unsigned int v4; // r0
-  int v5; // r0
-  char v6; // zf
-  unsigned int v7; // r8
-  int v8; // r0
-  _BYTE *v9; // r7
+  char v5; // zf
+  unsigned int v6; // r8
+  _BYTE *v7; // r7
 
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
   v3 = *(v2 + 6);
@@ -140,29 +131,29 @@ void reqBBS_draw_813E2AC()
     *(v2 + 4) = v4 >> 4;
     *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
   }
-  v5 = chatbox_8045F3C(8);
-  if ( !v6 )
+  chatbox_8045F3C(8);
+  if ( !v5 )
   {
-    v7 = reqBBS_requestEntries_IDs[*(v0 + offsetof(reqBBS_GUI, cursorPos)) + *(v0 + offsetof(reqBBS_GUI, pagePos))]
+    v6 = reqBBS_requestEntries_IDs[*(v0 + offsetof(reqBBS_GUI, cursorPos)) + *(v0 + offsetof(reqBBS_GUI, pagePos))]
        + *(*(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers)) + 12);
-    TestEventFlag(v7);
-    if ( !v6 )
+    TestEventFlag(v6);
+    if ( !v5 )
     {
-      ClearEventFlag(v7);
+      ClearEventFlag(v6);
       *(v0 + 5) = *(v0 + 5);
     }
-    v8 = chatbox_8040818();
-    reqBBS_813E834(v8);
+    chatbox_8040818();
+    reqBBS_813E834();
     *v0 = 20;
     *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
     *(v0 + 8) = 6;
-    v9 = *(v1 + oToolkit_Unk2009740_Ptr);
-    *v9 = -9;
-    v9[4] = 4;
-    v9[6] = 64;
-    reqBBS_813E534(64);
+    v7 = *(v1 + oToolkit_Unk2009740_Ptr);
+    *v7 = -9;
+    v7[4] = 4;
+    v7[6] = 64;
+    reqBBS_813E534();
   }
-  reqBBS_813E534(v5);
+  reqBBS_813E534();
 }
 
 
@@ -176,7 +167,6 @@ void reqBBS_draw_813E33C()
   int v4; // r0
   int v5; // r0
   unsigned __int8 v6; // vf
-  int v7; // r0
 
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
   v3 = *(v2 + 6) - 8;
@@ -187,13 +177,12 @@ void reqBBS_draw_813E33C()
   *(v4 + 7) += 8;
   *(v4 + 6) -= 8;
   v5 = v0[offsetof(reqBBS_GUI, animationTimer0)];
-  v6 = __OFSUB__(v5, 1);
-  v7 = v5 - 1;
-  v0[offsetof(reqBBS_GUI, animationTimer0)] = v7;
-  if ( !(((v7 < 0) ^ v6) | (v7 == 0)) )
-    reqBBS_813E534(v7);
+  v6 = __OFSUB__(v5--, 1);
+  v0[offsetof(reqBBS_GUI, animationTimer0)] = v5;
+  if ( !(((v5 < 0) ^ v6) | (v5 == 0)) )
+    reqBBS_813E534();
   *v0 = 4;
-  reqBBS_813E890(4);
+  reqBBS_813E890();
 }
 
 
@@ -203,9 +192,9 @@ void reqBBS_draw_813E398()
   _BYTE *v0; // r5
   int v1; // r10
   _BYTE *v2; // r0
-  _BYTE *v3; // r0
-  char v4; // zf
-  _BYTE *v5; // r7
+  char v3; // zf
+  _BYTE *v4; // r7
+  _BYTE *v5; // r0
 
   v2 = *(v1 + oToolkit_Unk200f3a0_Ptr);
   v2[9] = 26;
@@ -214,23 +203,23 @@ void reqBBS_draw_813E398()
   v2[2] = -1;
   v2[7] = 80;
   v2[6] = 80;
-  v3 = engine_isScreeneffectAnimating();
-  if ( !v4 )
+  engine_isScreeneffectAnimating();
+  if ( !v3 )
   {
-    v5 = *(v1 + oToolkit_Unk2009740_Ptr);
-    *v5 = -9;
-    v5[4] = 0;
-    v5[6] = 0;
+    v4 = *(v1 + oToolkit_Unk2009740_Ptr);
+    *v4 = -9;
+    v4[4] = 0;
+    v4[6] = 0;
     *v0 = 12;
-    v3 = *(v1 + oToolkit_Unk200f3a0_Ptr);
-    v3[9] = 26;
-    v3[10] = 54;
-    v3[3] = 0;
-    v3[2] = -1;
-    v3[7] = 80;
-    v3[6] = 80;
+    v5 = *(v1 + oToolkit_Unk200f3a0_Ptr);
+    v5[9] = 26;
+    v5[10] = 54;
+    v5[3] = 0;
+    v5[2] = -1;
+    v5[7] = 80;
+    v5[6] = 80;
   }
-  reqBBS_813E534(v3);
+  reqBBS_813E534();
 }
 
 
@@ -240,9 +229,9 @@ void reqBBS_draw_813E3F4()
   _BYTE *v0; // r5
   int v1; // r10
   _BYTE *v2; // r0
-  _BYTE *v3; // r0
-  char v4; // zf
-  _BYTE *v5; // r7
+  char v3; // zf
+  _BYTE *v4; // r7
+  _BYTE *v5; // r0
 
   v2 = *(v1 + oToolkit_Unk200f3a0_Ptr);
   v2[9] = 26;
@@ -251,23 +240,23 @@ void reqBBS_draw_813E3F4()
   v2[2] = -1;
   v2[7] = 80;
   v2[6] = 80;
-  v3 = engine_isScreeneffectAnimating();
-  if ( !v4 )
+  engine_isScreeneffectAnimating();
+  if ( !v3 )
   {
-    v5 = *(v1 + oToolkit_Unk2009740_Ptr);
-    *v5 = -9;
-    v5[4] = 0;
-    v5[6] = 0;
+    v4 = *(v1 + oToolkit_Unk2009740_Ptr);
+    *v4 = -9;
+    v4[4] = 0;
+    v4[6] = 0;
     *v0 = 28;
-    v3 = *(v1 + oToolkit_Unk200f3a0_Ptr);
-    v3[9] = 26;
-    v3[10] = 54;
-    v3[3] = 0;
-    v3[2] = -1;
-    v3[7] = 80;
-    v3[6] = 80;
+    v5 = *(v1 + oToolkit_Unk200f3a0_Ptr);
+    v5[9] = 26;
+    v5[10] = 54;
+    v5[3] = 0;
+    v5[2] = -1;
+    v5[7] = 80;
+    v5[6] = 80;
   }
-  reqBBS_813E534(v3);
+  reqBBS_813E534();
 }
 
 
@@ -282,7 +271,6 @@ void __noreturn reqBBS_draw_813E450()
   int v5; // r0
   unsigned __int8 v6; // vf
   int v7; // r0
-  int v8; // r0
 
   **(v1 + oToolkit_RenderInfoPtr) = 24384;
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
@@ -293,20 +281,18 @@ void __noreturn reqBBS_draw_813E450()
   *(v4 + 7) -= 8;
   *(v4 + 6) += 8;
   v5 = *(v0 + 8);
-  v6 = __OFSUB__(v5, 1);
-  v7 = v5 - 1;
-  *(v0 + 8) = v7;
-  if ( ((v7 < 0) ^ v6) | (v7 == 0) )
+  v6 = __OFSUB__(v5--, 1);
+  *(v0 + 8) = v5;
+  if ( ((v5 < 0) ^ v6) | (v5 == 0) )
   {
-    v8 = 0;
+    v7 = 0;
     if ( !*(v0 + 30) )
-      v8 = 1;
-    chatbox_runScript(reqBBS_dialogList, v8);
+      v7 = 1;
+    chatbox_runScript(reqBBS_dialogList, v7);
     reqBBS_drawHeaderText();
-    v7 = 32;
     *v0 = 32;
   }
-  reqBBS_813E534(v7);
+  reqBBS_813E534();
 }
 
 
@@ -318,8 +304,7 @@ void __noreturn reqBBS_draw_813E4AC()
   int v2; // r7
   signed int v3; // r0
   unsigned int v4; // r0
-  int v5; // r0
-  char v6; // zf
+  char v5; // zf
 
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
   v3 = *(v2 + 6);
@@ -330,16 +315,16 @@ void __noreturn reqBBS_draw_813E4AC()
     *(v2 + 4) = v4 >> 4;
     *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
   }
-  v5 = chatbox_8045F3C(8);
-  if ( !v6 )
+  chatbox_8045F3C(8);
+  if ( !v5 )
   {
     chatbox_8040818();
     *v0 = 36;
     *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 31;
     v0[8] = 5;
-    v5 = engine_setScreeneffect(16, 8);
+    engine_setScreeneffect(16, 8);
   }
-  reqBBS_813E534(v5);
+  reqBBS_813E534();
 }
 
 
@@ -351,27 +336,24 @@ void __noreturn reqBBS_draw_813E4F4()
   int v2; // r0
   int v3; // r0
   unsigned __int8 v4; // vf
-  int v5; // r0
 
   v2 = *(v1 + oToolkit_Unk200f3a0_Ptr);
   *(v2 + 7) += 8;
   *(v2 + 6) -= 8;
   v3 = *(v0 + 8);
-  v4 = __OFSUB__(v3, 1);
-  v5 = v3 - 1;
-  *(v0 + 8) = v5;
-  if ( ((v5 < 0) ^ v4) | (v5 == 0) )
+  v4 = __OFSUB__(v3--, 1);
+  *(v0 + 8) = v3;
+  if ( ((v3 < 0) ^ v4) | (v3 == 0) )
   {
     if ( *(v0 + 30) )
     {
       *v0 = 4;
-      reqBBS_813E890(4);
+      reqBBS_813E890();
     }
     engine_setScreeneffect(12, 16);
-    v5 = 8;
     *v0 = 8;
   }
-  reqBBS_813E534(v5);
+  reqBBS_813E534();
 }
 
 
@@ -379,12 +361,11 @@ void __noreturn reqBBS_draw_813E4F4()
 void __noreturn reqBBS_813E534()
 {
   int v0; // r5
-  int v1; // r0
 
   sub_80465BC();
   sub_80465F8();
-  v1 = reqBBS_813E8CC(*(v0 + 36));
-  reqBBS_drawRequestBBS(v1);
+  reqBBS_813E8CC(*(v0 + 36));
+  reqBBS_drawRequestBBS();
 }
 
 
@@ -518,51 +499,54 @@ signed int __fastcall reqBBS_static_813E6D0(int a1, int a2, int a3, int a4)
 // 0x813e834
 int reqBBS_813E834()
 {
-  int v0; // r5
-  int v1; // r6
-  int v2; // r0
-  int v3; // r6
+  unsigned __int8 *v0; // r5
+  int v1; // r1
+  int v2; // r6
+  int v3; // r0
+  int v4; // r6
   char *i; // r7
-  unsigned __int8 v5; // vf
+  unsigned __int8 v6; // vf
+  int v7; // r3
   int result; // r0
-  int v7; // r1
-  char v8; // r7
-  int v9; // ST04_4
-  char v10; // zf
-  int v11; // [sp-8h] [bp-1Ch]
+  int v9; // r1
+  unsigned __int8 v10; // r7
+  int v11; // ST04_4
+  char v12; // zf
+  int v13; // [sp-8h] [bp-1Ch]
 
   ByteFill(reqBBS_requestEntries_IDs, 48, 0x2Fu);
-  v1 = *(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers));
-  v2 = **(v1 + 16);
-  *(v0 + offsetof(reqBBS_GUI, totalNewRequests)) = v2;
-  v3 = *(v1 + 24);
+  v2 = *(v0 + offsetof(reqBBS_GUI, pad_0A));
+  v3 = **(v2 + 16);
+  *(v0 + offsetof(reqBBS_GUI, unk_0F)) = v3;
+  v4 = *(v2 + 24);
   for ( i = reqBBS_requestEntries_IDs; ; ++i )
   {
-    v5 = __OFSUB__(v2--, 1);
-    if ( (v2 < 0) ^ v5 )
+    v6 = __OFSUB__(v3--, 1);
+    if ( (v3 < 0) ^ v6 )
       break;
-    *i = *(v3 + v2);
+    v7 = *(v4 + v3);
+    *i = v7;
     if ( !*v0 )
-      v2 = reqBBS_813ED60();
+      reqBBS_813ED60(v3, v1, *v0, v7);
   }
   result = 0;
-  v7 = *(*(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers)) + 12);
-  v8 = 0;
-  if ( *(v0 + 30) )
+  v9 = *(*(v0 + offsetof(reqBBS_GUI, pad_0A)) + 12);
+  v10 = 0;
+  if ( *(v0 + 15) )
   {
     do
     {
-      v11 = result;
-      v9 = v7;
-      TestEventFlag(result + v7);
-      v7 = v9;
-      if ( !v10 )
-        ++v8;
-      result = v11 + 1;
+      v13 = result;
+      v11 = v9;
+      TestEventFlag(result + v9);
+      v9 = v11;
+      if ( !v12 )
+        ++v10;
+      result = v13 + 1;
     }
-    while ( v11 + 1 < 48 );
+    while ( v13 + 1 < 48 );
   }
-  *(v0 + 5) = v8;
+  v0[5] = v10;
   return result;
 }
 
@@ -655,26 +639,30 @@ signed __int64 __fastcall reqBBS_dead_813E910(int a1, int a2, int a3, int a4)
 
 
 // 0x813ea94
-void __noreturn reqBBS_static_813EA94()
+void __fastcall __noreturn reqBBS_static_813EA94(int a1, int a2, int a3, int a4, int a5, int a6, int a7, int a8, int a9, int a10, int a11, int a12, int (__fastcall *a13)(int, int, int, int))
 {
-  int v0; // r5
-  int v1; // r10
-  int v2; // r4
-  char v3; // zf
-  char (*v4)[64]; // r3
+  int v13; // r5
+  int v14; // r10
+  int v15; // r4
+  char v16; // zf
+  char (*v17)[64]; // r3
+  int v18; // r0
+  int v19; // r1
+  int v20; // r2
+  int v21; // r3
 
-  v2 = **(v1 + oToolkit_CurFramePtr) & 0x1F;
+  v15 = **(v14 + oToolkit_CurFramePtr) & 0x1F;
   TestEventFlag(
-    reqBBS_requestEntries_IDs[*(v0 + offsetof(reqBBS_GUI, pagePos))]
-  + *(*(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers)) + 12));
-  if ( !v3 )
+    reqBBS_requestEntries_IDs[*(v13 + offsetof(reqBBS_GUI, pagePos))]
+  + *(*(v13 + offsetof(reqBBS_GUI, reqBBS_textualPointers)) + 12));
+  if ( v16 )
   {
-    v4 = off_813EB10[v2];
-    copyTiles();
-    JUMPOUT(sub_813EAEE);
+    sub_80018D0(2, 3, 2, 0);
+    JUMPOUT(loc_813EAEC);
   }
-  sub_80018D0(2, 3, 2, 0);
-  JUMPOUT(loc_813EAEC);
+  v17 = off_813EB10[v15];
+  v18 = copyTiles();
+  sub_813EAEE(v18, v19, v20, v21, a5, a6, a7, a8, a9, a10, a11, a12, a13);
 }
 
 
@@ -724,30 +712,32 @@ int reqBBS_static_813EC10()
 int reqBBS_static_813EC54()
 {
   _BYTE *v0; // r5
+  int v1; // r1
+  int v2; // r2
 
   engine_setScreeneffect(12, 16);
   *v0 = 8;
-  return sound_play(104);
+  return sound_play(104, v1, v2);
 }
 
 
 // 0x813ec6c
-void __noreturn reqBBS_static_813EC6C()
+void __fastcall __noreturn reqBBS_static_813EC6C(int a1, int a2, int a3)
 {
-  _BYTE *v0; // r5
-  int v1; // r10
-  _BYTE *v2; // r0
+  _BYTE *v3; // r5
+  int v4; // r10
+  _BYTE *v5; // r0
 
-  *v0 = 24;
-  v2 = *(v1 + oToolkit_Unk200f3a0_Ptr);
-  v2[9] = 27;
-  v2[10] = 54;
-  v2[3] = 0;
-  v2[2] = -1;
-  v2[7] = 80;
-  v2[6] = 80;
-  sound_play(103);
-  v0[8] = 6;
+  *v3 = 24;
+  v5 = *(v4 + oToolkit_Unk200f3a0_Ptr);
+  v5[9] = 27;
+  v5[10] = 54;
+  v5[3] = 0;
+  v5[2] = -1;
+  v5[7] = 80;
+  v5[6] = 80;
+  sound_play(103, 80, a3);
+  v3[8] = 6;
   sub_80018D0(0, 0, 3, 0);
   JUMPOUT(loc_813ECAA);
 }
@@ -1029,18 +1019,21 @@ int reqBBS_cb_813F404()
 void __noreturn reqBBS_813F474()
 {
   int v0; // r5
-  char v1; // zf
-  int v2; // r0
-  int v3; // r0
+  int v1; // r1
+  int v2; // r2
+  int v3; // r3
+  char v4; // zf
 
   TestEventFlagFromImmediate(23, 58);
-  if ( !v1 )
+  if ( !v4 )
   {
     TestEventFlag(byte_200578F + 7264);
-    if ( !v1 )
+    if ( !v4 )
     {
       SetEventFlag(byte_200578F + 7200);
       ClearEventFlagFromImmediate(23, 58);
+      v1 = 15;
+      v3 = 0;
       byte_200578F = 0;
     }
   }
@@ -1050,9 +1043,9 @@ void __noreturn reqBBS_813F474()
   *(v0 + 38) = 0;
   *(v0 + 9) = 0;
   *(v0 + 11) = 0;
-  v2 = reqBBS_813FDA8();
-  v3 = reqBBS_813FE54(v2);
-  reqBBS_813FEB0(v3);
+  reqBBS_813FDA8(0, v1, v2, v3);
+  reqBBS_813FE54();
+  reqBBS_813FEB0();
 }
 
 
@@ -1064,8 +1057,7 @@ void __noreturn reqBBS_813F550()
   int v2; // r7
   int v3; // r0
   unsigned int v4; // r0
-  int v5; // r0
-  char v6; // zf
+  char v5; // zf
 
   sub_8001778(8000);
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
@@ -1078,10 +1070,10 @@ void __noreturn reqBBS_813F550()
   }
   v0[17] = v0[16];
   v0[19] = v0[18];
-  v5 = engine_isScreeneffectAnimating();
-  if ( !v6 )
-    v5 = reqBBS_8140358(0);
-  reqBBS_813F8F0(v5);
+  engine_isScreeneffectAnimating();
+  if ( !v5 )
+    reqBBS_8140358();
+  reqBBS_813F8F0();
 }
 
 
@@ -1089,11 +1081,9 @@ void __noreturn reqBBS_813F550()
 void __noreturn reqBBS_813F590()
 {
   int v0; // r10
-  _WORD *v1; // r0
 
-  v1 = *(v0 + oToolkit_RenderInfoPtr);
-  *v1 = 8000;
-  reqBBS_813F8F0(v1);
+  **(v0 + oToolkit_RenderInfoPtr) = 8000;
+  reqBBS_813F8F0();
 }
 
 
@@ -1107,8 +1097,6 @@ void __noreturn reqBBS_813F5EC()
   int v4; // r0
   int v5; // r0
   unsigned __int8 v6; // vf
-  int v7; // r0
-  int v8; // r0
 
   **(v1 + oToolkit_RenderInfoPtr) = 24384;
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
@@ -1119,15 +1107,14 @@ void __noreturn reqBBS_813F5EC()
   *(v4 + 7) -= 8;
   *(v4 + 6) += 8;
   v5 = *(v0 + 8);
-  v6 = __OFSUB__(v5, 1);
-  v7 = v5 - 1;
-  *(v0 + 8) = v7;
-  if ( !(((v7 < 0) ^ v6) | (v7 == 0)) )
-    reqBBS_813F8F0(v7);
+  v6 = __OFSUB__(v5--, 1);
+  *(v0 + 8) = v5;
+  if ( !(((v5 < 0) ^ v6) | (v5 == 0)) )
+    reqBBS_813F8F0();
   *(*(v1 + oToolkit_ChatboxPtr) + 76) = 4;
   chatbox_reqBBS_80404C0(*(*(v0 + 40) + 4), reqBBS_requestEntries_IDs[*(v0 + 32) + *(v0 + 36)], reqBBS_textualShades);
-  v8 = reqBBS_8140600();
-  reqBBS_drawChatbox_dup1(v8);
+  reqBBS_8140600();
+  reqBBS_drawChatbox_dup1();
 }
 
 
@@ -1139,10 +1126,9 @@ void __noreturn reqBBS_813F65C()
   int v2; // r7
   signed int v3; // r0
   unsigned int v4; // r0
-  int v5; // r0
-  char v6; // zf
-  unsigned int v7; // r8
-  int v8; // r1
+  char v5; // zf
+  unsigned int v6; // r8
+  int v7; // r1
 
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
   v3 = *(v2 + 6);
@@ -1153,26 +1139,25 @@ void __noreturn reqBBS_813F65C()
     *(v2 + 4) = v4 >> 4;
     *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
   }
-  v5 = chatbox_8045F3C(8);
-  if ( !v6 )
+  chatbox_8045F3C(8);
+  if ( !v5 )
   {
-    v7 = reqBBS_requestEntries_IDs[*(v0 + 32) + *(v0 + 36)] + *(*(v0 + 40) + 12);
-    TestEventFlag(v7);
-    if ( !v6 )
+    v6 = reqBBS_requestEntries_IDs[*(v0 + 32) + *(v0 + 36)] + *(*(v0 + 40) + 12);
+    TestEventFlag(v6);
+    if ( !v5 )
     {
-      ClearEventFlag(v7);
+      ClearEventFlag(v6);
       *(v0 + 5) = *(v0 + 5);
     }
     chatbox_8040818();
     if ( reqBBS_8140868(reqBBS_requestEntries_IDs[*(v0 + 36) + *(v0 + 32)]) )
-      v8 = 2;
+      v7 = 2;
     else
-      v8 = 17;
-    chatbox_reqBBS_80404C0(reqBBS_dialogList, v8, reqBBS_textualShades);
-    v5 = 64;
+      v7 = 17;
+    chatbox_reqBBS_80404C0(reqBBS_dialogList, v7, reqBBS_textualShades);
     *v0 = 64;
   }
-  reqBBS_813F8F0(v5);
+  reqBBS_813F8F0();
 }
 
 
@@ -1186,7 +1171,6 @@ void __noreturn reqBBS_813F6F8()
   int v4; // r0
   int v5; // r0
   unsigned __int8 v6; // vf
-  int v7; // r0
 
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
   v3 = *(v2 + 6) - 8;
@@ -1197,13 +1181,12 @@ void __noreturn reqBBS_813F6F8()
   *(v4 + 7) += 8;
   *(v4 + 6) -= 8;
   v5 = v0[8];
-  v6 = __OFSUB__(v5, 1);
-  v7 = v5 - 1;
-  v0[8] = v7;
-  if ( !(((v7 < 0) ^ v6) | (v7 == 0)) )
-    reqBBS_813F8F0(v7);
+  v6 = __OFSUB__(v5--, 1);
+  v0[8] = v5;
+  if ( !(((v5 < 0) ^ v6) | (v5 == 0)) )
+    reqBBS_813F8F0();
   *v0 = 4;
-  reqBBS_813FEB0(4);
+  reqBBS_813FEB0();
 }
 
 
@@ -1213,9 +1196,9 @@ void __noreturn reqBBS_813F754()
   _BYTE *v0; // r5
   int v1; // r10
   _BYTE *v2; // r0
-  _BYTE *v3; // r0
-  char v4; // zf
-  _BYTE *v5; // r7
+  char v3; // zf
+  _BYTE *v4; // r7
+  _BYTE *v5; // r0
 
   v2 = *(v1 + oToolkit_Unk200f3a0_Ptr);
   v2[9] = 26;
@@ -1224,23 +1207,23 @@ void __noreturn reqBBS_813F754()
   v2[2] = -1;
   v2[7] = 80;
   v2[6] = 80;
-  v3 = engine_isScreeneffectAnimating();
-  if ( !v4 )
+  engine_isScreeneffectAnimating();
+  if ( !v3 )
   {
-    v5 = *(v1 + oToolkit_Unk2009740_Ptr);
-    *v5 = -9;
-    v5[4] = 0;
-    v5[6] = 0;
+    v4 = *(v1 + oToolkit_Unk2009740_Ptr);
+    *v4 = -9;
+    v4[4] = 0;
+    v4[6] = 0;
     *v0 = 12;
-    v3 = *(v1 + oToolkit_Unk200f3a0_Ptr);
-    v3[9] = 26;
-    v3[10] = 54;
-    v3[3] = 0;
-    v3[2] = -1;
-    v3[7] = 80;
-    v3[6] = 80;
+    v5 = *(v1 + oToolkit_Unk200f3a0_Ptr);
+    v5[9] = 26;
+    v5[10] = 54;
+    v5[3] = 0;
+    v5[2] = -1;
+    v5[7] = 80;
+    v5[6] = 80;
   }
-  reqBBS_813F8F0(v3);
+  reqBBS_813F8F0();
 }
 
 
@@ -1250,9 +1233,9 @@ void __noreturn reqBBS_813F7B0()
   _BYTE *v0; // r5
   int v1; // r10
   _BYTE *v2; // r0
-  _BYTE *v3; // r0
-  char v4; // zf
-  _BYTE *v5; // r7
+  char v3; // zf
+  _BYTE *v4; // r7
+  _BYTE *v5; // r0
 
   v2 = *(v1 + oToolkit_Unk200f3a0_Ptr);
   v2[9] = 26;
@@ -1261,23 +1244,23 @@ void __noreturn reqBBS_813F7B0()
   v2[2] = -1;
   v2[7] = 80;
   v2[6] = 80;
-  v3 = engine_isScreeneffectAnimating();
-  if ( !v4 )
+  engine_isScreeneffectAnimating();
+  if ( !v3 )
   {
-    v5 = *(v1 + oToolkit_Unk2009740_Ptr);
-    *v5 = -9;
-    v5[4] = 0;
-    v5[6] = 0;
+    v4 = *(v1 + oToolkit_Unk2009740_Ptr);
+    *v4 = -9;
+    v4[4] = 0;
+    v4[6] = 0;
     *v0 = 28;
-    v3 = *(v1 + oToolkit_Unk200f3a0_Ptr);
-    v3[9] = 26;
-    v3[10] = 54;
-    v3[3] = 0;
-    v3[2] = -1;
-    v3[7] = 80;
-    v3[6] = 80;
+    v5 = *(v1 + oToolkit_Unk200f3a0_Ptr);
+    v5[9] = 26;
+    v5[10] = 54;
+    v5[3] = 0;
+    v5[2] = -1;
+    v5[7] = 80;
+    v5[6] = 80;
   }
-  reqBBS_813F8F0(v3);
+  reqBBS_813F8F0();
 }
 
 
@@ -1292,7 +1275,6 @@ void __noreturn reqBBS_813F80C()
   int v5; // r0
   unsigned __int8 v6; // vf
   int v7; // r0
-  int v8; // r0
 
   **(v1 + oToolkit_RenderInfoPtr) = 24384;
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
@@ -1303,15 +1285,14 @@ void __noreturn reqBBS_813F80C()
   *(v4 + 7) -= 8;
   *(v4 + 6) += 8;
   v5 = *(v0 + 8);
-  v6 = __OFSUB__(v5, 1);
-  v7 = v5 - 1;
-  *(v0 + 8) = v7;
-  if ( !(((v7 < 0) ^ v6) | (v7 == 0)) )
-    reqBBS_813F8F0(v7);
-  v8 = 0;
+  v6 = __OFSUB__(v5--, 1);
+  *(v0 + 8) = v5;
+  if ( !(((v5 < 0) ^ v6) | (v5 == 0)) )
+    reqBBS_813F8F0();
+  v7 = 0;
   if ( !*(v0 + 30) )
-    v8 = 1;
-  chatbox_runScript(reqBBS_dialogList, v8);
+    v7 = 1;
+  chatbox_runScript(reqBBS_dialogList, v7);
   reqBBS_renderSelectedEntry_HeaderText();
 }
 
@@ -1324,8 +1305,7 @@ void __noreturn reqBBS_813F868()
   int v2; // r7
   signed int v3; // r0
   unsigned int v4; // r0
-  int v5; // r0
-  char v6; // zf
+  char v5; // zf
 
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
   v3 = *(v2 + 6);
@@ -1336,16 +1316,16 @@ void __noreturn reqBBS_813F868()
     *(v2 + 4) = v4 >> 4;
     *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
   }
-  v5 = chatbox_8045F3C(8);
-  if ( !v6 )
+  chatbox_8045F3C(8);
+  if ( !v5 )
   {
     chatbox_8040818();
     *v0 = 36;
     *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 31;
     v0[8] = 5;
-    v5 = engine_setScreeneffect(16, 8);
+    engine_setScreeneffect(16, 8);
   }
-  reqBBS_813F8F0(v5);
+  reqBBS_813F8F0();
 }
 
 
@@ -1357,27 +1337,24 @@ void __noreturn reqBBS_813F8B0()
   int v2; // r0
   int v3; // r0
   unsigned __int8 v4; // vf
-  int v5; // r0
 
   v2 = *(v1 + oToolkit_Unk200f3a0_Ptr);
   *(v2 + 7) += 8;
   *(v2 + 6) -= 8;
   v3 = *(v0 + 8);
-  v4 = __OFSUB__(v3, 1);
-  v5 = v3 - 1;
-  *(v0 + 8) = v5;
-  if ( ((v5 < 0) ^ v4) | (v5 == 0) )
+  v4 = __OFSUB__(v3--, 1);
+  *(v0 + 8) = v3;
+  if ( ((v3 < 0) ^ v4) | (v3 == 0) )
   {
     if ( *(v0 + 30) )
     {
       *v0 = 4;
-      reqBBS_813FEB0(4);
+      reqBBS_813FEB0();
     }
     engine_setScreeneffect(12, 16);
-    v5 = 8;
     *v0 = 8;
   }
-  reqBBS_813F8F0(v5);
+  reqBBS_813F8F0();
 }
 
 
@@ -1572,8 +1549,7 @@ void __noreturn reqBBS_813FB24()
   signed int v3; // r0
   unsigned int v4; // r0
   char v5; // zf
-  int v6; // r0
-  _BYTE *v7; // r7
+  _BYTE *v6; // r7
 
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
   v3 = *(v2 + 6);
@@ -1592,17 +1568,17 @@ void __noreturn reqBBS_813FB24()
     {
       chatbox_reqBBS_80404C0(&reqBBS_requestInfo_textOffsets, byte_200578F, reqBBS_textualShades);
       *v0 = 56;
-      reqBBS_drawChatbox_dup1(56);
+      reqBBS_drawChatbox_dup1();
     }
-    v6 = chatbox_8040818();
-    reqBBS_813FE54(v6);
+    chatbox_8040818();
+    reqBBS_813FE54();
     *v0 = 60;
     *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
     v0[8] = 6;
-    v7 = *(v1 + oToolkit_Unk2009740_Ptr);
-    *v7 = -9;
-    v7[4] = 4;
-    v7[6] = 64;
+    v6 = *(v1 + oToolkit_Unk2009740_Ptr);
+    *v6 = -9;
+    v6[4] = 4;
+    v6[6] = 64;
     reqBBS_813F8F0();
   }
   reqBBS_813F8F0();
@@ -1618,8 +1594,7 @@ void __noreturn reqBBS_813FBC0()
   signed int v3; // r0
   unsigned int v4; // r0
   char v5; // zf
-  int v6; // r0
-  _BYTE *v7; // r7
+  _BYTE *v6; // r7
 
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
   v3 = *(v2 + 6);
@@ -1633,15 +1608,15 @@ void __noreturn reqBBS_813FBC0()
   chatbox_8045F3C(8);
   if ( !v5 )
   {
-    v6 = chatbox_8040818();
-    reqBBS_813FE54(v6);
+    chatbox_8040818();
+    reqBBS_813FE54();
     *v0 = 60;
     *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
     v0[8] = 6;
-    v7 = *(v1 + oToolkit_Unk2009740_Ptr);
-    *v7 = -9;
-    v7[4] = 4;
-    v7[6] = 64;
+    v6 = *(v1 + oToolkit_Unk2009740_Ptr);
+    *v6 = -9;
+    v6[4] = 4;
+    v6[6] = 64;
     reqBBS_813F8F0();
   }
   reqBBS_813F8F0();
@@ -1673,7 +1648,7 @@ void __noreturn reqBBS_813FC30()
   if ( !(((v5 < 0) ^ v6) | (v5 == 0)) )
     reqBBS_813F8F0();
   *v0 = 4;
-  reqBBS_813FEB0(4);
+  reqBBS_813FEB0();
 }
 
 
@@ -1687,8 +1662,7 @@ void __noreturn reqBBS_813FC8C()
   unsigned int v4; // r0
   int v5; // r0
   char v6; // zf
-  int v7; // r0
-  _BYTE *v8; // r7
+  _BYTE *v7; // r7
 
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
   v3 = *(v2 + 6);
@@ -1710,15 +1684,15 @@ void __noreturn reqBBS_813FC8C()
     chatbox_8045F3C(8);
     if ( !v6 )
     {
-      v7 = chatbox_8040818();
-      reqBBS_813FE54(v7);
+      chatbox_8040818();
+      reqBBS_813FE54();
       *v0 = 20;
       *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
       v0[8] = 6;
-      v8 = *(v1 + oToolkit_Unk2009740_Ptr);
-      *v8 = -9;
-      v8[4] = 4;
-      v8[6] = 64;
+      v7 = *(v1 + oToolkit_Unk2009740_Ptr);
+      *v7 = -9;
+      v7[4] = 4;
+      v7[6] = 64;
       reqBBS_813F8F0();
     }
   }
@@ -1735,8 +1709,7 @@ void __noreturn reqBBS_813FD14()
   signed int v3; // r0
   unsigned int v4; // r0
   char v5; // zf
-  int v6; // r0
-  _BYTE *v7; // r7
+  _BYTE *v6; // r7
 
   v2 = *(v1 + oToolkit_Unk2009740_Ptr);
   v3 = *(v2 + 6);
@@ -1750,15 +1723,15 @@ void __noreturn reqBBS_813FD14()
   chatbox_8045F3C(8);
   if ( !v5 )
   {
-    v6 = chatbox_8040818();
-    reqBBS_813FE54(v6);
+    chatbox_8040818();
+    reqBBS_813FE54();
     *v0 = 20;
     *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
     v0[8] = 6;
-    v7 = *(v1 + oToolkit_Unk2009740_Ptr);
-    *v7 = -9;
-    v7[4] = 4;
-    v7[6] = 64;
+    v6 = *(v1 + oToolkit_Unk2009740_Ptr);
+    *v6 = -9;
+    v6[4] = 4;
+    v6[6] = 64;
     reqBBS_813F8F0();
   }
   reqBBS_813F8F0();
@@ -1780,7 +1753,7 @@ signed int __fastcall reqBBS_813FDA8(int a1, int a2, int a3, int a4)
   sub_80017AA(a1, a2, a3, a4);
   sub_80017E0(v4, v5, v6, v7);
   decompAndCopyData_8000B30(byte_813FDCC);
-  v8 = reqBBS_8140600();
+  reqBBS_8140600();
   sub_800183C(v8, v9, v10, v11);
   return sub_8046664();
 }
@@ -1789,51 +1762,54 @@ signed int __fastcall reqBBS_813FDA8(int a1, int a2, int a3, int a4)
 // 0x813fe54
 int reqBBS_813FE54()
 {
-  int v0; // r5
-  int v1; // r6
-  int v2; // r0
-  int v3; // r6
+  unsigned __int8 *v0; // r5
+  int v1; // r1
+  int v2; // r6
+  int v3; // r0
+  int v4; // r6
   char *i; // r7
-  unsigned __int8 v5; // vf
+  unsigned __int8 v6; // vf
+  int v7; // r3
   int result; // r0
-  int v7; // r1
-  char v8; // r7
-  int v9; // ST04_4
-  char v10; // zf
-  int v11; // [sp-8h] [bp-1Ch]
+  int v9; // r1
+  unsigned __int8 v10; // r7
+  int v11; // ST04_4
+  char v12; // zf
+  int v13; // [sp-8h] [bp-1Ch]
 
   ByteFill(reqBBS_requestEntries_IDs, 48, 0x2Fu);
-  v1 = *(v0 + 40);
-  v2 = **(v1 + 28);
-  *(v0 + 30) = v2;
-  v3 = *(v1 + 36);
+  v2 = *(v0 + 10);
+  v3 = **(v2 + 28);
+  *(v0 + 15) = v3;
+  v4 = *(v2 + 36);
   for ( i = reqBBS_requestEntries_IDs; ; ++i )
   {
-    v5 = __OFSUB__(v2--, 1);
-    if ( (v2 < 0) ^ v5 )
+    v6 = __OFSUB__(v3--, 1);
+    if ( (v3 < 0) ^ v6 )
       break;
-    *i = *(v3 + v2);
+    v7 = *(v4 + v3);
+    *i = v7;
     if ( !*v0 )
-      v2 = reqBBS_8140604();
+      reqBBS_8140604(v3, v1, *v0, v7);
   }
   result = 0;
-  v7 = *(*(v0 + 40) + 12);
-  v8 = 0;
-  if ( *(v0 + 30) )
+  v9 = *(*(v0 + 10) + 12);
+  v10 = 0;
+  if ( *(v0 + 15) )
   {
     do
     {
-      v11 = result;
-      v9 = v7;
-      TestEventFlag(result + v7);
-      v7 = v9;
-      if ( !v10 )
-        ++v8;
-      result = v11 + 1;
+      v13 = result;
+      v11 = v9;
+      TestEventFlag(result + v9);
+      v9 = v11;
+      if ( !v12 )
+        ++v10;
+      result = v13 + 1;
     }
-    while ( v11 + 1 < 48 );
+    while ( v13 + 1 < 48 );
   }
-  *(v0 + 5) = v8;
+  v0[5] = v10;
   return result;
 }
 
@@ -2087,52 +2063,54 @@ int reqBBS_8140358()
 int reqBBS_81403A8()
 {
   _BYTE *v0; // r5
+  int v1; // r1
+  int v2; // r2
 
   engine_setScreeneffect(12, 16);
   *v0 = 8;
-  return sound_play(104);
+  return sound_play(104, v1, v2);
 }
 
 
 // 0x81403c0
-void __noreturn reqBBS_81403C0()
+void __fastcall __noreturn reqBBS_81403C0(int a1, int a2, int a3)
 {
-  _BYTE *v0; // r5
-  int v1; // r10
-  _BYTE *v2; // r0
+  _BYTE *v3; // r5
+  int v4; // r10
+  _BYTE *v5; // r0
 
-  *v0 = 24;
-  v2 = *(v1 + oToolkit_Unk200f3a0_Ptr);
-  v2[9] = 27;
-  v2[10] = 54;
-  v2[3] = 0;
-  v2[2] = -1;
-  v2[7] = 80;
-  v2[6] = 80;
-  sound_play(103);
-  v0[8] = 6;
+  *v3 = 24;
+  v5 = *(v4 + oToolkit_Unk200f3a0_Ptr);
+  v5[9] = 27;
+  v5[10] = 54;
+  v5[3] = 0;
+  v5[2] = -1;
+  v5[7] = 80;
+  v5[6] = 80;
+  sound_play(103, 80, a3);
+  v3[8] = 6;
   sub_80018D0(0, 0, 3, 0);
   JUMPOUT(loc_81403FE);
 }
 
 
 // 0x8140414
-void __noreturn reqBBS_8140414()
+void __fastcall __noreturn reqBBS_8140414(int a1, int a2, int a3)
 {
-  _BYTE *v0; // r5
-  int v1; // r10
-  _BYTE *v2; // r0
+  _BYTE *v3; // r5
+  int v4; // r10
+  _BYTE *v5; // r0
 
-  *v0 = 44;
-  v2 = *(v1 + oToolkit_Unk200f3a0_Ptr);
-  v2[9] = 27;
-  v2[10] = 54;
-  v2[3] = 0;
-  v2[2] = -1;
-  v2[7] = 80;
-  v2[6] = 80;
-  sound_play(103);
-  v0[8] = 6;
+  *v3 = 44;
+  v5 = *(v4 + oToolkit_Unk200f3a0_Ptr);
+  v5[9] = 27;
+  v5[10] = 54;
+  v5[3] = 0;
+  v5[2] = -1;
+  v5[7] = 80;
+  v5[6] = 80;
+  sound_play(103, 80, a3);
+  v3[8] = 6;
   sub_80018D0(0, 0, 3, 0);
   JUMPOUT(loc_8140452);
 }
@@ -2571,7 +2549,7 @@ int reqBBS_81409F4()
 
 
 // 0x8140a00
-int reqBBS_setFlag_e17b0f7_8140A00()
+unsigned int reqBBS_setFlag_e17b0f7_8140A00()
 {
   return SetEventFlagFromImmediate(23, 0);
 }
@@ -2595,8 +2573,8 @@ int reqBBS_clearFlag_8140A0C()
 // 0x8140a24
 int reqBBS_setFlags_8140A24()
 {
-  SetEventFlagRangeFromImmediate(22, 64);
-  SetEventFlagRangeFromImmediate(22, 192);
+  SetEventFlagRangeFromImmediate(22, 64, 64);
+  SetEventFlagRangeFromImmediate(22, 192, 16);
   return 0;
 }
 
@@ -2604,8 +2582,8 @@ int reqBBS_setFlags_8140A24()
 // 0x8140a40
 int reqBBS_setFlags_8140A40()
 {
-  SetEventFlagRangeFromImmediate(22, 243);
-  SetEventFlagRangeFromImmediate(22, 192);
+  SetEventFlagRangeFromImmediate(22, 243, 13);
+  SetEventFlagRangeFromImmediate(22, 192, 16);
   return 0;
 }
 

@@ -1,5 +1,5 @@
 // 0x806fc08
-int sub_806FC08()
+unsigned int sub_806FC08()
 {
   int v0; // r5
   int v1; // r10
@@ -7,7 +7,6 @@ int sub_806FC08()
   int v3; // r1
   int v4; // r2
   int v5; // r3
-  int v6; // r0
 
   *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = off_806FA98[*(v0 + 5)];
   sub_806FD54();
@@ -18,8 +17,8 @@ int sub_806FC08()
   sub_8030472();
   sub_80028D4(byte_2037800, v3, v4, v5);
   sub_8002906(off_806FC6C[*(v0 + 5)]);
-  v6 = chatbox_uncomp_803FD08();
-  sub_806FFDA(v6);
+  chatbox_uncomp_803FD08();
+  sub_806FFDA();
   return sub_8034FB8();
 }
 
@@ -83,10 +82,10 @@ int __fastcall sub_806FF76(int result, int a2)
 
 
 // 0x806ff94
-int __fastcall sub_806FF94(int a1, int a2)
+unsigned int __fastcall sub_806FF94(int a1, int a2)
 {
   int v2; // r10
-  int result; // r0
+  unsigned int result; // r0
 
   if ( a1 != 3 || a2 != 2 || (result = *(*(v2 + oToolkit_GameStatePtr) + oGameState_Unk_3c)) == 0 )
   {

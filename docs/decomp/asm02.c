@@ -320,7 +320,7 @@ __int64 sub_8021CA8()
     }
     v2 = v8 + 1;
   }
-  while ( v8 + 1 < &dword_140 );
+  while ( v8 + 1 < dword_140 );
   return v1;
 }
 

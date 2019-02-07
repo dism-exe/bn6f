@@ -14,43 +14,45 @@ int sub_80005C4()
 
 // 0x80005cc
 // () -> void
-int __fastcall sound_play(int a1)
+int __fastcall sound_play(int a1, int a2, int a3)
 {
-  return m4a_800061E(a1);
+  return m4a_800061E(a1, a2, a3);
 }
 
 
 // 0x80005d4
 // (int a1) -> void
-int __fastcall sound_bgmusic_play(int result)
+int __fastcall sound_bgmusic_play(int result, int a2, int a3)
 {
-  int v1; // r10
-  int v2; // r7
+  int v3; // r10
+  int v4; // r7
+  int v5; // r1
 
-  v2 = *(v1 + oToolkit_GameStatePtr);
-  if ( result != *(v2 + oGameState_BGMusicIndicator) )
+  v4 = *(v3 + oToolkit_GameStatePtr);
+  v5 = *(v4 + oGameState_BGMusicIndicator);
+  if ( result != v5 )
   {
-    *(v2 + oGameState_BGMusicIndicator) = result;
+    *(v4 + oGameState_BGMusicIndicator) = result;
     if ( result == 99 )
-      result = sub_8000630(99);
+      result = sub_8000630(99, v5, a3);
     else
-      result = m4a_800061E(result);
+      result = m4a_800061E(result, v5, a3);
   }
   return result;
 }
 
 
 // 0x80005f2
-int __fastcall sub_80005F2(int a1)
+int __fastcall sub_80005F2(int a1, int a2, int a3)
 {
-  int v1; // r10
+  int v3; // r10
   int result; // r0
 
-  *(*(v1 + oToolkit_GameStatePtr) + oGameState_BGMusicIndicator) = a1;
+  *(*(v3 + oToolkit_GameStatePtr) + oGameState_BGMusicIndicator) = a1;
   if ( a1 == 99 )
-    result = sub_8000630(99);
+    result = sub_8000630(99, a2, a3);
   else
-    result = m4a_800061E(a1);
+    result = m4a_800061E(a1, a2, a3);
   return result;
 }
 
@@ -243,7 +245,7 @@ int __fastcall sub_8000822(int result, int a2)
   int v3; // r6
   int v4; // r10
   int v5; // r7
-  int (*v6)(void); // r3
+  int (__cdecl *v6)(); // r3
 
   if ( a2 == byte_2010B90[0] )
   {
@@ -287,18 +289,7 @@ int __fastcall ZeroFillByByte(int result, int a2)
 // Source, destination, and size must be halfword compatible 
 void __fastcall ZeroFillByHalfword(int a1, unsigned int a2, int a3, int a4)
 {
-  int v4; // [sp+0h] [bp-18h]
-  int v5; // [sp+4h] [bp-14h]
-  unsigned int v6; // [sp+8h] [bp-10h]
-  int v7; // [sp+Ch] [bp-Ch]
-  int v8; // [sp+10h] [bp-8h]
-
-  v5 = a1;
-  v6 = a2;
-  v7 = a3;
-  v8 = a4;
-  v4 = 0;
-  SWI_CpuSet(&v4, a1, (a2 >> 1) | 0x1000000);
+  SWI_CpuSet();
 }
 
 
@@ -306,18 +297,7 @@ void __fastcall ZeroFillByHalfword(int a1, unsigned int a2, int a3, int a4)
 // (void *memBlock, int size) -> void
 void __fastcall ZeroFillByWord(int a1, unsigned int a2, int a3, int a4)
 {
-  int v4; // [sp+0h] [bp-18h]
-  int v5; // [sp+4h] [bp-14h]
-  unsigned int v6; // [sp+8h] [bp-10h]
-  int v7; // [sp+Ch] [bp-Ch]
-  int v8; // [sp+10h] [bp-8h]
-
-  v5 = a1;
-  v6 = a2;
-  v7 = a3;
-  v8 = a4;
-  v4 = 0;
-  SWI_CpuSet(&v4, a1, (a2 >> 2) | 0x5000000);
+  SWI_CpuSet();
 }
 
 
@@ -330,18 +310,7 @@ void __fastcall ZeroFillByWord(int a1, unsigned int a2, int a3, int a4)
 // Size must be a multiple of eight words
 void __fastcall ZeroFillByEightWords(int a1, unsigned int a2, int a3, int a4)
 {
-  int v4; // [sp+0h] [bp-18h]
-  int v5; // [sp+4h] [bp-14h]
-  unsigned int v6; // [sp+8h] [bp-10h]
-  int v7; // [sp+Ch] [bp-Ch]
-  int v8; // [sp+10h] [bp-8h]
-
-  v5 = a1;
-  v6 = a2;
-  v7 = a3;
-  v8 = a4;
-  v4 = 0;
-  SWI_CpuFastSet(&v4, a1, (a2 >> 2) | 0x1000000);
+  SWI_CpuFastSet();
 }
 
 
@@ -365,7 +334,7 @@ int __fastcall CopyBytes(int result, int a2, int a3)
 // Source, destination, and size must be halfword compatible.
 void __fastcall CopyHalfwords(int a1, int a2, unsigned int a3)
 {
-  SWI_CpuSet(a1, a2, a3 >> 1);
+  SWI_CpuSet();
 }
 
 
@@ -375,7 +344,7 @@ void __fastcall CopyHalfwords(int a1, int a2, unsigned int a3)
 // Source, destination, and size must be word compatible.
 void __fastcall CopyWords(int a1, int a2, unsigned int a3)
 {
-  SWI_CpuSet(a1, a2, (a3 >> 2) | 0x4000000);
+  SWI_CpuSet();
 }
 
 
@@ -388,7 +357,7 @@ void __fastcall CopyWords(int a1, int a2, unsigned int a3)
 // Size must be a multiple of eight words
 void __fastcall CopyByEightWords(int a1, int a2, unsigned int a3)
 {
-  SWI_CpuFastSet(a1, a2, a3 >> 2);
+  SWI_CpuFastSet();
 }
 
 
@@ -410,18 +379,7 @@ void __cdecl ByteFill(u8 *mem, int byteCount, u8 byte)
 // Source, destination, and size must be halfword compatible 
 void __fastcall HalfwordFill(int a1, unsigned int a2, int a3, int a4)
 {
-  int v4; // [sp+0h] [bp-18h]
-  int v5; // [sp+4h] [bp-14h]
-  unsigned int v6; // [sp+8h] [bp-10h]
-  int v7; // [sp+Ch] [bp-Ch]
-  int v8; // [sp+10h] [bp-8h]
-
-  v5 = a1;
-  v6 = a2;
-  v7 = a3;
-  v8 = a4;
-  v4 = a3;
-  SWI_CpuSet(&v4, a1, (a2 >> 1) | 0x1000000);
+  SWI_CpuSet();
 }
 
 
@@ -431,18 +389,7 @@ void __fastcall HalfwordFill(int a1, unsigned int a2, int a3, int a4)
 // Source, destination, and size must be word compatible
 void __fastcall WordFill(int a1, unsigned int a2, int a3, int a4)
 {
-  int v4; // [sp+0h] [bp-18h]
-  int v5; // [sp+4h] [bp-14h]
-  unsigned int v6; // [sp+8h] [bp-10h]
-  int v7; // [sp+Ch] [bp-Ch]
-  int v8; // [sp+10h] [bp-8h]
-
-  v5 = a1;
-  v6 = a2;
-  v7 = a3;
-  v8 = a4;
-  v4 = a3;
-  SWI_CpuSet(&v4, a1, (a2 >> 2) | 0x5000000);
+  SWI_CpuSet();
 }
 
 
@@ -455,18 +402,7 @@ void __fastcall WordFill(int a1, unsigned int a2, int a3, int a4)
 // Size must be a multiple of eight words
 void __fastcall FillByEightWords(int a1, unsigned int a2, int a3, int a4)
 {
-  int v4; // [sp+0h] [bp-18h]
-  int v5; // [sp+4h] [bp-14h]
-  unsigned int v6; // [sp+8h] [bp-10h]
-  int v7; // [sp+Ch] [bp-Ch]
-  int v8; // [sp+10h] [bp-8h]
-
-  v5 = a1;
-  v6 = a2;
-  v7 = a3;
-  v8 = a4;
-  v4 = a3;
-  SWI_CpuFastSet(&v4, a1, (a2 >> 2) | 0x1000000);
+  SWI_CpuFastSet();
 }
 
 
@@ -892,15 +828,12 @@ void __fastcall __spoils<R1,R2,R3,R12> sub_8000D12(int result, int a2, int a3)
 int __fastcall sub_8000D4A(int a1, int a2)
 {
   int v2; // ST04_4
-  int v3; // ST00_4
-  unsigned int v4; // r0
-  int v5; // r1
+  int v3; // r1
 
-  v3 = a2;
   v2 = a1;
-  v4 = sub_8001532();
-  SWI_Div(v4, v3);
-  return *(v2 + v5);
+  sub_8001532();
+  SWI_Div();
+  return *(v2 + v3);
 }
 
 
@@ -1256,13 +1189,15 @@ int __fastcall sub_8001040(int a1, int a2, int a3, int a4)
   int v5; // r10
   __int16 v6; // r6
   int result; // r0
+  int v8; // r1
+  int v9; // r2
 
   v6 = **(v5 + oToolkit_CurFramePtr);
   result = sub_802FE28((a1 << 16) | a2 | a3, a4 + ((v6 & 0x10u) >> 2), 1, 0);
   if ( v4 )
   {
     if ( !(v6 & 0xF) )
-      result = sound_play(145);
+      result = sound_play(145, v8, v9);
   }
   return result;
 }
@@ -1357,8 +1292,11 @@ int sub_80010C6()
 // 0x80010d4
 int __fastcall sub_80010D4(int a1)
 {
-  sub_80137FE();
-  return sub_80137FE();
+  int v1; // r4
+
+  v1 = a1;
+  sub_80137FE(a1);
+  return sub_80137FE(v1);
 }
 
 
@@ -1371,7 +1309,7 @@ int __fastcall sub_80010EC(int a1, int a2)
 
   v2 = a1;
   v3 = a2;
-  v4 = sub_80137FE();
+  v4 = sub_80137FE(a1);
   if ( v3 > v4 )
     LOWORD(v3) = v4;
   return sub_80137E6(v2, 64, v3);
@@ -1501,67 +1439,75 @@ BOOL __fastcall sub_80011F0(int a1, int a2, int a3, int a4)
 unsigned int __fastcall sub_800120E(_DWORD *a1, int a2, int a3, int a4)
 {
   unsigned int v4; // r4
-  unsigned int v5; // r6
-  int v6; // r0
-  int v8; // r7
-  int v9; // r0
-  int v10; // r0
-  int v11; // r1
-  int v12; // r1
-  _DWORD *v13; // [sp-8h] [bp-10h]
-  int v14; // [sp-4h] [bp-Ch]
+  int v5; // r6
+  unsigned int result; // r0
+  int v7; // r7
+  int v8; // r0
+  int v9; // r1
+  int v10; // r1
+  int v11; // r0
+  int v12; // ST08_4
+  int v13; // r0
+  _DWORD *v14; // [sp-8h] [bp-10h]
+  int v15; // [sp-4h] [bp-Ch]
 
-  if ( v4 )
-  {
-    v8 = a1[1];
-    v13 = a1 + 2;
-    v14 = a4;
-    SWI_Sqrt();
-    v10 = SWI_Div(v9 << 8, v4);
-    v4 >>= 1;
-    if ( (v11 - v4) >= 0 )
-      ++v10;
-    v12 = v10;
-    a1 = v13;
-    a4 = v14;
-    if ( v12 )
-      return SWI_Div(v14 - *v13, v12) + (-v5 * v12 >> 1);
-  }
-  v6 = a4 - a1[2];
-  if ( v6 >= 0 )
-    return v4;
-  SWI_Div(v6, v5 >> 8);
+  if ( !v4 )
+    goto LABEL_11;
+  v7 = a1[1];
+  v14 = a1 + 2;
+  v15 = a4;
   SWI_Sqrt();
-  return 0;
+  SWI_Div();
+  v4 >>= 1;
+  if ( (v9 - v4) >= 0 )
+    ++v8;
+  v10 = v8;
+  a1 = v14;
+  a4 = v15;
+  if ( v10 )
+  {
+    v11 = *v14;
+    v12 = v10;
+    SWI_Div();
+    result = v13 + ((-v5 * v12) >> 1);
+  }
+  else
+  {
+LABEL_11:
+    if ( a4 - a1[2] < 0 )
+    {
+      SWI_Div();
+      SWI_Sqrt();
+      result = 0;
+    }
+    else
+    {
+      result = v4;
+    }
+  }
+  return result;
 }
 
 
 // 0x8001288
 int __fastcall sub_8001288(_DWORD *a1, int a2, int a3, int a4)
 {
-  int v4; // r4
-  int v5; // r0
-  unsigned int v6; // r3
-  int v7; // r1
+  int v4; // ST00_4
+  int v5; // ST04_4
+  int v6; // r0
+  unsigned int v7; // r3
   int v8; // r1
-  int v9; // r2
-  int v10; // ST00_4
-  int v11; // ST04_4
-  int v13; // [sp-8h] [bp-Ch]
-  int v14; // [sp-4h] [bp-8h]
+  int v9; // ST00_4
 
-  v13 = a2 - *a1;
-  v14 = a3 - a1[1];
-  v5 = SWI_Div(2 * a4, -v4);
-  if ( (v7 - (v6 >> 1)) >= 0 )
-    ++v5;
-  v8 = v13;
-  v9 = v14;
-  v10 = v5;
-  v11 = v8;
-  SWI_Div(v9, v5);
-  SWI_Div(v11, v10);
-  return v10;
+  v4 = a2 - *a1;
+  v5 = a3 - a1[1];
+  SWI_Div();
+  if ( (v8 - (v7 >> 1)) >= 0 )
+    ++v6;
+  v9 = v6;
+  SWI_Div();
+  SWI_Div();
+  return v9;
 }
 
 
@@ -1571,12 +1517,8 @@ __int64 __fastcall sub_80012C6(_DWORD *a1, int a2, int a3)
   int v3; // ST00_4
   int v4; // ST04_4
   int v5; // r0
-  int v10; // r4
-  int v11; // r6
-  int v12; // r1
-  __int64 v13; // ST08_8
-  int v15; // [sp+0h] [bp-18h]
-  int v16; // [sp+4h] [bp-14h]
+  int v10; // r1
+  __int64 v11; // ST08_8
 
   v3 = a3 - a1[1];
   v4 = a2 - *a1;
@@ -1586,12 +1528,10 @@ __int64 __fastcall sub_80012C6(_DWORD *a1, int a2, int a3)
     SVC     8
     SVC     6
   }
-  v10 = v15;
-  v11 = v16;
-  LODWORD(v13) = sub_80011A0(v5, ((v3 >> 8) * (v3 >> 8) + (v4 >> 8) * (v4 >> 8)) << 8);
-  HIDWORD(v13) = v12;
-  SWI_Div(v10 << 17, v11 * v11);
-  return v13;
+  LODWORD(v11) = sub_80011A0(v5, ((v3 >> 8) * (v3 >> 8) + (v4 >> 8) * (v4 >> 8)) << 8);
+  HIDWORD(v11) = v10;
+  SWI_Div();
+  return v11;
 }
 
 
@@ -1832,7 +1772,7 @@ unsigned int dead_rng_800157C()
 
 
 // 0x80015b4
-char *__fastcall sub_80015B4(int a1, int a2, int a3, int a4)
+void __fastcall sub_80015B4(int a1, int a2, int a3, int a4)
 {
   int v4; // r0
   int v5; // r1
@@ -1841,7 +1781,7 @@ char *__fastcall sub_80015B4(int a1, int a2, int a3, int a4)
 
   ZeroFillByEightWords(100720640, 0x2000u, a3, a4);
   sub_800183C(v4, v5, v6, v7);
-  return sub_8001850();
+  sub_8001850();
 }
 
 
@@ -2480,7 +2420,7 @@ int __fastcall sub_8001C52(int a1)
     v4 = __OFSUB__(v3--, 1);
   }
   while ( !(((v3 < 0) ^ v4) | (v3 == 0)) );
-  sub_8030808(a1);
+  sub_8030808();
   result = 0;
   *v1 = 0;
   return result;
@@ -2773,22 +2713,22 @@ int __fastcall sub_8002310(_DWORD *a1)
 
 
 // 0x800232a
-int __fastcall sub_800232A(int *a1)
+int __fastcall sub_800232A(int *a1, int a2, int a3)
 {
   int result; // r0
 
   result = *a1;
   if ( result >= 0 )
-    result = sound_play(result);
+    result = sound_play(result, a2, a3);
   return result;
 }
 
 
 // 0x8002338
-int __fastcall sub_8002338(int *a1)
+unsigned int __fastcall sub_8002338(int *a1)
 {
   int v1; // r0
-  int result; // r0
+  unsigned int result; // r0
 
   v1 = *a1;
   if ( v1 < 0 )
@@ -3076,7 +3016,7 @@ int __fastcall sub_800260C(int a1, int a2, int a3, int a4)
 {
   int v4; // r2
   int v5; // r3
-  char *v6; // r0
+  int v6; // r0
   int v7; // r1
   int v8; // r2
   int v9; // r3
@@ -3095,7 +3035,7 @@ int __fastcall sub_800260C(int a1, int a2, int a3, int a4)
 
   ZeroFillByEightWords(117440512, &byte_400, a3, a4);
   ZeroFillByEightWords(100728832, 0x8000u, v4, v5);
-  v6 = sub_8002668();
+  sub_8002668();
   v10 = sub_8003534(v6, v7, v8, v9);
   v14 = sub_800355C(v10, v11, v12, v13);
   v18 = sub_8003566(v14, v15, v16, v17);

@@ -395,7 +395,7 @@ signed int __fastcall sub_80029A8(_BYTE *a1)
           v9 = ((2 * v8) >> 1);
           v10 = v9;
           v11 = *v9 >> 8;
-          if ( &v15[v11] < &dword_2033000 && byte_200DCA0[0] < 12 )
+          if ( &v15[v11] < dword_2033000 && byte_200DCA0[0] < 12 )
           {
             v12 = byte_200DCA0[0];
             *&byte_200DCA0[2 * v12 + 4] = v6;
@@ -438,7 +438,7 @@ signed int __fastcall sub_8002A64(int a1, int a2)
   v5 = ((2 * v4) >> 1);
   v6 = v5;
   v7 = *v5 >> 8;
-  if ( dword_200DCEC + v7 >= &dword_2033000 || byte_200DCA0[0] >= 12 )
+  if ( dword_200DCEC + v7 >= dword_2033000 || byte_200DCA0[0] >= 12 )
     return 0;
   v8 = byte_200DCA0[0];
   *&byte_200DCA0[2 * v8 + 4] = v2;
@@ -500,7 +500,7 @@ signed int __fastcall sprite_decompress(int a1, int a2)
       if ( v5 < 0 )
       {
         v6 = ((2 * v5) >> 1);
-        if ( dword_200DCEC + (*v6 >> 8) < &dword_2033000 && byte_200DCA0[0] < 12 )
+        if ( dword_200DCEC + (*v6 >> 8) < dword_2033000 && byte_200DCA0[0] < 12 )
         {
           v7 = byte_200DCA0[0];
           *&byte_200DCA0[2 * v7 + 4] = v2;
@@ -666,7 +666,7 @@ void sprite_makeScalable()
 signed int sub_8002D20()
 {
   int v0; // r5
-  int v1; // r0
+  signed int v1; // r0
 
   if ( *(v0 + 17) & 3 )
     return 0;

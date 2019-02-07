@@ -1,5 +1,5 @@
 // 0x8077d00
-int sub_8077D00()
+unsigned int sub_8077D00()
 {
   int v0; // r5
   int v1; // r10
@@ -7,7 +7,6 @@ int sub_8077D00()
   int v3; // r1
   int v4; // r2
   int v5; // r3
-  int v6; // r0
 
   *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_8077618 + *(v0 + 5));
   sub_8077DE0();
@@ -18,8 +17,8 @@ int sub_8077D00()
   sub_8030472();
   sub_80028D4(byte_2037800, v3, v4, v5);
   sub_8002906(*(&off_8077D64 + *(v0 + 5)));
-  v6 = chatbox_uncomp_803FD08();
-  sub_8077E84(v6);
+  chatbox_uncomp_803FD08();
+  sub_8077E84();
   return sub_8034FB8();
 }
 

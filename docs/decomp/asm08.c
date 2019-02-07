@@ -7,7 +7,6 @@ char (*sub_806036C())[8]
   int v3; // r1
   int v4; // r2
   int v5; // r3
-  int v6; // r0
   char (*result)[8]; // r0
 
   *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_8060184 + *(v0 + 5));
@@ -18,8 +17,8 @@ char (*sub_806036C())[8]
   sub_8030472();
   sub_80028D4(byte_2037800, v3, v4, v5);
   sub_8002906(*(&off_80603D8 + *(v0 + 5)));
-  v6 = chatbox_uncomp_803FD08();
-  sub_806044C(v6);
+  chatbox_uncomp_803FD08();
+  sub_806044C();
   result = off_80606BC[*(v0 + 5)];
   *(v0 + 100) = result;
   return result;
