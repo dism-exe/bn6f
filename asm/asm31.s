@@ -1,6 +1,7 @@
 	.include "asm/asm31.inc"
 
 	thumb_func_start sub_80B81EC
+// some sort of generic function for enemies?
 sub_80B81EC:
 	push {r4,lr}
 	ldr r4, [r5,#oBattleObject_AIPtr]

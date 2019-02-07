@@ -154,23 +154,311 @@ def parse_word_directives(label, lines, start_index=None, max_words=None):
 
     return words
 
-class BranchInfo:
+"""
+lsl Rd, Rs, #Offset5
+lsl Rd, Rs
+
+lsr Rd, Rs, #Offset5
+lsr Rd, Rs
+
+asr Rd, Rs, #Offset5
+asr Rd, Rs
+
+add Rd, Rs, Rn
+add Rd, Rs, #Offset3
+add Rd, #Offset8
+add RHd, RHs
+add Rd, sp, #imm
+add sp, #imm
+add sp, sp, #imm
+add sp, #-imm
+add sp, sp, #-imm
+
+sub Rd, Rs
+sub Rd, Rs, Rn
+sub Rd, Rs, #Offset3
+sub Rd, #Offset8
+sub sp, #imm
+sub sp, sp, #imm
+sub sp, #-imm
+sub sp, sp, #imm
+
+mov Rd, #Offset8
+mov RHd, RHs
+
+cmp Rd, #Offset8
+cmp RHd, RHs
+
+and Rd, Rs
+eor Rd, Rs
+adc Rd, Rs
+sbc Rd, Rs
+ror Rd, Rs
+tst Rd, Rs
+neg Rd, Rs
+cmn Rd, Rs
+orr Rd, Rs
+mul Rd, Rs
+bic Rd, Rs
+mvn Rd, Rs
+
+bx RHs
+
+ldr Rd, label // ldr Rd, [pc, #imm]
+ldr Rd, =label
+ldr Rd, [Rb, Ro]
+ldr Rd, [Rb, #imm]
+ldr Rd, [sp, #imm]
+
+str Rd, [Rb, Ro]
+str Rd, [Rb, #imm]
+str Rd, [sp, #imm]
+
+ldrb Rd, [Rb, Ro]
+ldrb Rd, [Rb, #imm]
+
+strb Rd, [Rb, Ro]
+strb Rd, [Rb, #imm]
+
+ldrh Rd, [Rb, Ro]
+ldrh Rd, [Rb, #imm]
+
+strh Rd, [Rb, Ro]
+strh Rd, [Rb, #imm]
+
+ldsb Rd, [Rb, Ro]
+ldsh Rd, [Rb, Ro]
+
+adr Rd, label // add Rd, pc, #imm
+
+push {Rlist}
+pop {Rlist}
+
+stmia Rb!, {Rlist}
+ldmia Rb!, {Rlist}
+
+bxx label
+
+swi Value8
+
+b label
+
+bl label
+"""
+
+def parse_first_register_operand(line):
+    register = line.split()[1]
+    if register.endswith(","):
+        return register[:-1]
+    return register
+
+
+
+clobber_dest_opcodes = set("lsl", "lsr", "asr", "and", "eor", "adc", "sbc", "ror", "tst", "neg", "orr", "mul", "bic", "mvn")
+ignore_opcodes = set("cmp", "tst", "cmn")
+
+rhd_rhs_regex = r"^(r[0-9]|r1[0-2]|sp|lr|pc), *(r[0-9]|r1[0-2]|sp|lr|pc)(?!,)$"
+rd_rs_regex = r"^(r[0-7]), *(r[0-7])(?!,)$"
+rd_rs_imm_regex = r"^(r[0-7]), *(r[0-7]), *#([^,]+)(?!,)$"
+rd_rs_rn_regex = r"^(r[0-7]), *(r[0-7]), *(r[0-7])$"
+rd_imm_regex = r"^(r[0-7]), *#([^,]+)(?!,)$"
+rd_sp_imm_regex = r"^(r[0-7]), *sp, *#([^,]+)(?!,)$"
+sp_or_sp_sp_imm_regex = r"^(sp, *){1,2}#([^,]+)(?!,)$"
+rhs_regex = r"^(r[0-9]|r1[0-2]|sp|lr|pc)$"
+rd_label_regex = r"^(r[0-7]), *([^,]+)(?!,)$"
+rd_pool_regex = r"^(r[0-7]), *([^,]+)(?!,)$"
+rd_deref_rb_ro_regex = r"^(r[0-7]), *\[ *(r[0-7]), *(r[0-7])\]$"
+rd_deref_rb_imm_regex = r"^(r[0-7]), *\[ *(r[0-7]), *#([^\]]+)\]$"
+rd_deref_sp_imm_regex = r"^(r[0-7]), *\[ *sp, *#([^\]]+)\]$"
+rlist_regex = r"^({[^}]+})$"
+label_or_imm_regex = r"^(.+)$"
+
+class RegexFunction:
+    def __init__(self, regex, function):
+        self.regex = regex
+        self.function = function
+
+opcodes = {
+    "lsl": (
+        RegexFunction(rd_rs_imm_regex, lsl_imm_opcode),
+        RegexFunction(rd_rs_regex, lsl_reg_opcode)
+    ),
+    "lsr": (
+        RegexFunction(rd_rs_imm_regex, lsr_imm_opcode),
+        RegexFunction(rd_rs_regex, lsr_reg_opcode),
+    ),
+    "asr": (
+        RegexFunction(rd_rs_imm_regex, asr_imm_opcode),
+        RegexFunction(rd_rs_regex, asr_reg_opcode),
+    ),
+    "add": (
+        RegexFunction(rd_rs_ro_regex, add_rd_rs_ro_opcode),
+        RegexFunction(rd_rs_imm_regex, add_rd_rs_imm_opcode),
+        RegexFunction(rd_imm_regex, add_rd_imm_opcode),
+        RegexFunction(rd_rs_regex, add_rd_rs_opcode),
+        RegexFunction(rd_sp_imm_regex, add_rd_sp_imm_opcode),
+        RegexFunction(sp_or_sp_sp_imm_regex, add_sp_opcode)
+    ),
+    "sub": (
+        RegexFunction(rd_rs_ro_regex, sub_rd_rs_ro_opcode),
+        RegexFunction(rd_rs_imm_regex, sub_rd_rs_imm_opcode),
+        RegexFunction(rd_imm_regex, sub_rd_imm_opcode),
+        RegexFunction(rd_rs_regex, sub_rd_rs_opcode),
+        RegexFunction(sp_or_sp_sp_imm_regex, add_sp_opcode)
+    ), 
+    "mov": (
+        RegexFunction(rd_imm_regex, mov_imm_opcode),
+        RegexFunction(rd_rs_regex, mov_reg_opcode),
+    ),
+    "cmp": (
+        RegexFunction(rd_imm_regex, cmp_imm_opcode),
+        RegexFunction(rd_rs_regex, cmp_reg_opcode),
+    ),
+    "and":, (
+        RegexFunction(rd_rs_regex, and_opcode),
+    ),
+    "eor": (
+        RegexFunction(rd_rs_regex, eor_opcode)
+    ),
+    "adc": (
+        RegexFunction(rd_rs_regex, adc_opcode)
+    ),
+    "sbc": (
+        RegexFunction(rd_rs_regex, sbc_opcode)
+    ),
+    "ror": (
+        RegexFunction(rd_rs_regex, ror_opcode)
+    ),
+    "tst": (
+        RegexFunction(rd_rs_regex, tst_opcode)
+    ),
+    "neg": (
+        RegexFunction(rd_rs_regex, neg_opcode)
+    ),
+    "cmn": (
+        RegexFunction(rd_rs_regex, cmn_opcode)
+    ),
+    "orr": (
+        RegexFunction(rd_rs_regex, orr_opcode)
+    ),
+    "mul": (
+        RegexFunction(rd_rs_regex, mul_opcode)
+    ),
+    "bic": (
+        RegexFunction(rd_rs_regex, bic_opcode)
+    ),
+    "mvn": (
+        RegexFunction(rd_rs_regex, mvn_opcode)
+    ), 
+    "bx": (
+        RegexFunction(rhs_regex, bx_opcode)
+    ),
+    "ldr": (
+        RegexFunction
+    "str":,
+    "ldrb":,
+    "strb":,
+    "ldrh":,
+    "strh":,
+    "ldrsb":,
+    "ldrsh":,
+    "adr":,
+    "push":,
+    "pop":,
+    "stmia":,
+    "ldmia":,
+    "beq":, 
+    "bne":, 
+    "bcs":, 
+    "bcc":, 
+    "bmi":, 
+    "bpl":, 
+    "bvs":, 
+    "bvc":, 
+    "bhi":, 
+    "bls":, 
+    "bge":, 
+    "blt":, 
+    "bgt":, 
+    "ble":, 
+    "svc":,
+    "b":,
+    "bl":
+}
+
+def read_opcode(line, function_state):
+    line = line.strip()
+    opcode_parts = line.split(None, 1)
+    opcode_subsyntaxes = opcodes[opcode_parts[0]]
+    
+    for subsyntax in opcode_syntaxes:
+        regex_groups = re.matchall(subsyntax.regex, opcode_parts[1])
+        if len(regex_groups) == 1:
+            subsyntax.function(regex_groups[0], function_state)
+            break
+    else:
+        raise RuntimeError("Unknown opcode \"%s\"!" % line)
+
+
+class FunctionState:
+    def __init__(self, registers):
+        self.branch_states = []
+        self.registers = registers.copy() # ignore lr and pc
+        self.cond_branch_labels = {}
+        self.uncond_branch_labels = {}
+        self.labels = {}
+
+class RegisterState(dict):
+    default_registers = {
+        "r0": "",
+        "r1": "",
+        "r2": "",
+        "r3": "",
+        "r4": "",
+        "r5": "",
+        "r6": "",
+        "r7": "",
+        "r8": "",
+        "r9": "",
+        "r10": "",
+        "r11": "",
+        "r12": "",
+        "sp": 0
+    }
+
+    valid_registers = set("r0", "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "sp")
+
+    def __init__(self):
+        dict.__init__(self, default_registers)
+
+    def __init__(self, *args):
+        dict.__init__(self, args)
+
+    def __getitem__(self, key):
+        if key not in valid_registers:
+            raise KeyError(key)
+        return dict.__getitem__(self, key)
+
+    def __setitem__(self, key, val):
+        if key not in valid_registers:
+            raise KeyError(key)
+        dict.__setitem__(self, key, val)
+
+class BranchState:
     def __init__(self, line_num, register_states):
         self.line_num = line_num
         self.register_states = register_states
 
 # note: probably tuned towards battle objects, fix later
-def parse_jumptable_function(label, scanned_files):
-    register_states = [""] * 14 # ignore lr and pc
-    cond_branch_labels = {}
-    uncond_branch_labels = {}
-    labels = {}
-    bx_states = [] * 8
+def parse_jumptable_function(label, scanned_files, registers):
+    function_state = FunctionState(registers)
     lines = find_colon_label_in_files(label, scanned_files)
     lines.line_num += 1
     end_codepath = False
     """
     for line in lines:
+        if line.startswith("\t"):
+            
         cond_branch_label_tuple = re.findall(cond_branches_pattern, line)
         if len(cond_branch_label_tuple) == 2:
             cond_branch_labels[cond_branch_label_tuple[1]] = BranchInfo(lines.line_num, list(register_states))
@@ -202,7 +490,7 @@ def parse_jumptable_function(label, scanned_files):
     else:
         raise RuntimeError("Hit end of file while parsing jumptable function \"%s\"!" % label)
     """
-    
+
 def read_jumptable(jumptable, scanned_files, input_file=None):
     """
     Returns a jumptable's entries in a list specified by the given label.
@@ -228,7 +516,9 @@ def read_jumptable(jumptable, scanned_files, input_file=None):
     print("line: %s" % lines.cur_line)
     words = parse_word_directives(jumptable, lines)
     print("words: %s" % words)
-    parse_jumptable_function(words[0], scanned_files)
+    registers = RegisterState()
+    registers["r5"] = "BattleObject"
+    parse_jumptable_function(words[0], scanned_files, registers)
 
 def recursive_scan_includes(filepath, scanned_files):
     global recursion_depth
