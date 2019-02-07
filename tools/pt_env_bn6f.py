@@ -13,6 +13,9 @@ pt.env(elfPath='dev/dis/bn6f/bn6f.elf')
 ## search utils
 pt.env(compareBinPath= '')
 
+## decomp path
+pt.env(decompPath='docs/decomp/')
+
 ## disassembly utils
 # TODO set this to your project path relative to your analysis idb path
 pt.env(dismProjPath= '../SPB_Data/dev/dis/bn6f/')

@@ -1,0 +1,109 @@
+// 0x807cdec
+int sub_807CDEC()
+{
+  int v0; // r5
+  int v1; // r10
+  int v2; // r4
+  int v3; // r1
+  int v4; // r2
+  int v5; // r3
+  int v6; // r0
+
+  *(*(v1 + oToolkit_Unk2011bb0_Ptr) + 20) = *(&off_807C82C + *(v0 + 5));
+  sub_807CF24();
+  sub_803037C(*(v0 + 4), *(v0 + 5));
+  sub_8030AA4(*(v0 + 4), *(v0 + 5));
+  v2 = *(v0 + 5);
+  sub_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
+  sub_8030472();
+  sub_80028D4(byte_2037800, v3, v4, v5);
+  sub_8002906(*(&off_807CE50 + *(v0 + 5)));
+  v6 = chatbox_uncomp_803FD08();
+  sub_807CFFC(v6);
+  return sub_8034FB8();
+}
+
+
+// 0x807ce90
+int __fastcall sub_807CE90(int a1, int a2)
+{
+  return sub_8002354(off_807CEA4[a2]);
+}
+
+
+// 0x807cf24
+void sub_807CF24()
+{
+  int v0; // r10
+  int v1; // r5
+  void **v2; // r7
+  __int16 v3; // r0
+
+  v1 = *(v0 + oToolkit_GameStatePtr);
+  v2 = &off_807CF5C + 4 * *(v1 + oGameState_MapNumber);
+  sub_800195C(*v2, v2[1], v2[2]);
+  v3 = sub_8001780();
+  sub_8001778(v3 | v2[3]);
+  sub_80304E8(off_807CFA0[*(v1 + oGameState_MapNumber)]);
+}
+
+
+// 0x807cfb8
+int __fastcall sub_807CFB8(int a1, int a2, int a3)
+{
+  unsigned int v3; // r4
+  __int16 v4; // t1
+  __int16 v5; // t1
+
+  v4 = *(a1 + 50);
+  v5 = *(a3 + 58);
+  return sub_807CFCC(v3, v3 >> 1);
+}
+
+
+// 0x807cfcc
+int sub_807CFCC()
+{
+  int v0; // r10
+
+  return (*(&off_807CFE4 + *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)))();
+}
+
+
+// 0x807cff4
+void nullsub_84()
+{
+  ;
+}
+
+
+// 0x807cff6
+void nullsub_85()
+{
+  ;
+}
+
+
+// 0x807cff8
+void nullsub_86()
+{
+  ;
+}
+
+
+// 0x807cffa
+void nullsub_87()
+{
+  ;
+}
+
+
+// 0x807cffc
+int sub_807CFFC()
+{
+  int v0; // r10
+
+  return sub_8003570(pt_807D014[*(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)]);
+}
+
+
