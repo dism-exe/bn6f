@@ -4,10 +4,7 @@ import pathlib
 import argparse
 import pickle
 from enum import Enum
-
-class LineType(Enum):
-    COMMENTED = 0
-    UNCOMMENTED = 1
+import copy
     
 class SrcFile:
     def __init__(self):
@@ -252,8 +249,6 @@ def parse_first_register_operand(line):
         return register[:-1]
     return register
 
-
-
 clobber_dest_opcodes = set("lsl", "lsr", "asr", "and", "eor", "adc", "sbc", "ror", "tst", "neg", "orr", "mul", "bic", "mvn")
 ignore_opcodes = set("cmp", "tst", "cmn")
 
@@ -271,7 +266,309 @@ rd_deref_rb_ro_regex = r"^(r[0-7]), *\[ *(r[0-7]), *(r[0-7])\]$"
 rd_deref_rb_imm_regex = r"^(r[0-7]), *\[ *(r[0-7]), *#([^\]]+)\]$"
 rd_deref_sp_imm_regex = r"^(r[0-7]), *\[ *sp, *#([^\]]+)\]$"
 rlist_regex = r"^({[^}]+})$"
+rb_excl_rlist_regex = r"^(r[0-7])!, *({[^}]+})$"
 label_or_imm_regex = r"^(.+)$"
+
+def lsl_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def lsl_reg_opcode_function(opcode_params, function_state):
+    pass
+
+def lsr_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def lsr_reg_opcode_function(opcode_params, function_state):
+    pass
+
+def asr_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def asr_reg_opcode_function(opcode_params, function_state):
+    pass
+
+def add_rd_rs_ro_opcode_function(opcode_params, function_state):
+    pass
+
+def add_rd_rs_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def add_rd_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def add_rd_rs_opcode_function(opcode_params, function_state):
+    pass
+
+def add_rd_sp_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def add_sp_opcode_function(opcode_params, function_state):
+    pass
+
+def sub_rd_rs_ro_opcode_function(opcode_params, function_state):
+    pass
+
+def sub_rd_rs_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def sub_rd_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def sub_rd_rs_opcode_function(opcode_params, function_state):
+    pass
+
+def add_sp_opcode_function(opcode_params, function_state):
+    pass
+
+def mov_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def mov_reg_opcode_function(opcode_params, function_state):
+    pass
+
+def cmp_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def cmp_reg_opcode_function(opcode_params, function_state):
+    pass
+
+def and_opcode_function(opcode_params, function_state):
+    pass
+
+def eor_opcode_function(opcode_params, function_state):
+    pass
+
+def adc_opcode_function(opcode_params, function_state):
+    pass
+
+def sbc_opcode_function(opcode_params, function_state):
+    pass
+
+def ror_opcode_function(opcode_params, function_state):
+    pass
+
+def tst_opcode_function(opcode_params, function_state):
+    pass
+
+def neg_opcode_function(opcode_params, function_state):
+    pass
+
+def cmn_opcode_function(opcode_params, function_state):
+    pass
+
+def orr_opcode_function(opcode_params, function_state):
+    pass
+
+def mul_opcode_function(opcode_params, function_state):
+    pass
+
+def bic_opcode_function(opcode_params, function_state):
+    pass
+
+def mvn_opcode_function(opcode_params, function_state):
+    pass
+
+def bx_opcode_function(opcode_params, function_state):
+    pass
+
+def ldr_label_opcode_function(opcode_params, function_state):
+    pass
+
+def ldr_pool_opcode_function(opcode_params, function_state):
+    pass
+
+def ldr_rb_ro_opcode_function(opcode_params, function_state):
+    pass
+
+def ldr_rb_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def ldr_sp_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def str_rb_ro_opcode_function(opcode_params, function_state):
+    pass
+
+def str_rb_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def str_sp_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def ldrb_rb_ro_opcode_function(opcode_params, function_state):
+    pass
+
+def ldrb_rb_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def strb_rb_ro_opcode_function(opcode_params, function_state):
+    pass
+
+def strb_rb_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def ldrh_rb_ro_opcode_function(opcode_params, function_state):
+    pass
+
+def ldrh_rb_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def strh_rb_ro_opcode_function(opcode_params, function_state):
+    pass
+
+def strh_rb_imm_opcode_function(opcode_params, function_state):
+    pass
+
+def ldrsb_opcode_function(opcode_params, function_state):
+    pass
+
+def ldrsh_opcode_function(opcode_params, function_state):
+    pass
+
+def adr_opcode_function(opcode_params, function_state):
+    pass
+
+def push_opcode_function(opcode_params, function_state):
+    pass
+
+def pop_opcode_function(opcode_params, function_state):
+    pass
+
+def stmia_opcode_function(opcode_params, function_state):
+    pass
+
+def ldmia_opcode_function(opcode_params, function_state):
+    pass
+
+def beq_opcode_function(opcode_params, function_state):
+    pass
+
+def bne_opcode_function(opcode_params, function_state):
+    pass
+
+def bcs_opcode_function(opcode_params, function_state):
+    pass
+
+def bcc_opcode_function(opcode_params, function_state):
+    pass
+
+def bmi_opcode_function(opcode_params, function_state):
+    pass
+
+def bpl_opcode_function(opcode_params, function_state):
+    pass
+
+def bvs_opcode_function(opcode_params, function_state):
+    pass
+
+def bvc_opcode_function(opcode_params, function_state):
+    pass
+
+def bhi_opcode_function(opcode_params, function_state):
+    pass
+
+def bls_opcode_function(opcode_params, function_state):
+    pass
+
+def bge_opcode_function(opcode_params, function_state):
+    pass
+
+def blt_opcode_function(opcode_params, function_state):
+    pass
+
+def bgt_opcode_function(opcode_params, function_state):
+    pass
+
+def ble_opcode_function(opcode_params, function_state):
+    pass
+
+def swi_opcode_function(opcode_params, function_state):
+    pass
+
+def swi_opcode_function(opcode_params, function_state):
+    pass
+
+def b_opcode_function(opcode_params, function_state):
+    pass
+
+def bl_opcode_function(opcode_params, function_state):
+    pass
+
+lsl_imm_opcode = Opcode(rd_rs_imm_regex, lsl_imm_opcode_function)
+lsl_reg_opcode = Opcode(rd_rs_regex, lsl_reg_opcode_function)
+lsr_imm_opcode = Opcode(rd_rs_imm_regex, lsr_imm_opcode_function)
+lsr_reg_opcode = Opcode(rd_rs_regex, lsr_reg_opcode_function)
+asr_imm_opcode = Opcode(rd_rs_imm_regex, asr_imm_opcode_function)
+asr_reg_opcode = Opcode(rd_rs_regex, asr_reg_opcode_function)
+add_rd_rs_ro_opcode = Opcode(rd_rs_ro_regex, add_rd_rs_ro_opcode_function)
+add_rd_rs_imm_opcode = Opcode(rd_rs_imm_regex, add_rd_rs_imm_opcode_function)
+add_rd_imm_opcode = Opcode(rd_imm_regex, add_rd_imm_opcode_function)
+add_rd_rs_opcode = Opcode(rd_rs_regex, add_rd_rs_opcode_function)
+add_rd_sp_imm_opcode = Opcode(rd_sp_imm_regex, add_rd_sp_imm_opcode_function)
+add_sp_opcode = Opcode(sp_or_sp_sp_imm_regex, add_sp_opcode_function)
+sub_rd_rs_ro_opcode = Opcode(rd_rs_ro_regex, sub_rd_rs_ro_opcode_function)
+sub_rd_rs_imm_opcode = Opcode(rd_rs_imm_regex, sub_rd_rs_imm_opcode_function)
+sub_rd_imm_opcode = Opcode(rd_imm_regex, sub_rd_imm_opcode_function)
+sub_rd_rs_opcode = Opcode(rd_rs_regex, sub_rd_rs_opcode_function)
+add_sp_opcode = Opcode(sp_or_sp_sp_imm_regex, add_sp_opcode_function)
+mov_imm_opcode = Opcode(rd_imm_regex, mov_imm_opcode_function)
+mov_reg_opcode = Opcode(rd_rs_regex, mov_reg_opcode_function)
+cmp_imm_opcode = Opcode(rd_imm_regex, cmp_imm_opcode_function)
+cmp_reg_opcode = Opcode(rd_rs_regex, cmp_reg_opcode_function)
+and_opcode = Opcode(rd_rs_regex, and_opcode_function)
+eor_opcode = Opcode(rd_rs_regex, eor_opcode_function)
+adc_opcode = Opcode(rd_rs_regex, adc_opcode_function)
+sbc_opcode = Opcode(rd_rs_regex, sbc_opcode_function)
+ror_opcode = Opcode(rd_rs_regex, ror_opcode_function)
+tst_opcode = Opcode(rd_rs_regex, tst_opcode_function)
+neg_opcode = Opcode(rd_rs_regex, neg_opcode_function)
+cmn_opcode = Opcode(rd_rs_regex, cmn_opcode_function)
+orr_opcode = Opcode(rd_rs_regex, orr_opcode_function)
+mul_opcode = Opcode(rd_rs_regex, mul_opcode_function)
+bic_opcode = Opcode(rd_rs_regex, bic_opcode_function)
+mvn_opcode = Opcode(rd_rs_regex, mvn_opcode_function)
+bx_opcode = Opcode(rhs_regex, bx_opcode_function)
+ldr_label_opcode = Opcode(rd_label_regex, ldr_label_opcode_function)
+ldr_pool_opcode = Opcode(rd_pool_regex, ldr_pool_opcode_function)
+ldr_rb_ro_opcode = Opcode(rd_deref_rb_ro_regex, ldr_rb_ro_opcode_function)
+ldr_rb_imm_opcode = Opcode(rd_deref_rb_imm_regex, ldr_rb_imm_opcode_function)
+ldr_sp_imm_opcode = Opcode(rd_deref_sp_imm_regex, ldr_sp_imm_opcode_function)
+str_rb_ro_opcode = Opcode(rd_deref_rb_ro_regex, str_rb_ro_opcode_function)
+str_rb_imm_opcode = Opcode(rd_deref_rb_imm_regex, str_rb_imm_opcode_function)
+str_sp_imm_opcode = Opcode(rd_deref_sp_imm_regex, str_sp_imm_opcode_function)
+ldrb_rb_ro_opcode = Opcode(rd_deref_rb_ro_regex, ldrb_rb_ro_opcode_function)
+ldrb_rb_imm_opcode = Opcode(rd_deref_rb_imm_regex, ldrb_rb_imm_opcode_function)
+strb_rb_ro_opcode = Opcode(rd_deref_rb_ro_regex, strb_rb_ro_opcode_function)
+strb_rb_imm_opcode = Opcode(rd_deref_rb_imm_regex, strb_rb_imm_opcode_function)
+ldrh_rb_ro_opcode = Opcode(rd_deref_rb_ro_regex, ldrh_rb_ro_opcode_function)
+ldrh_rb_imm_opcode = Opcode(rd_deref_rb_imm_regex, ldrh_rb_imm_opcode_function)
+strh_rb_ro_opcode = Opcode(rd_deref_rb_ro_regex, strh_rb_ro_opcode_function)
+strh_rb_imm_opcode = Opcode(rd_deref_rb_imm_regex, strh_rb_imm_opcode_function)
+ldrsb_opcode = Opcode(rd_deref_rb_ro_regex, ldrsb_opcode_function)
+ldrsh_opcode = Opcode(rd_deref_rb_ro_regex, ldrsh_opcode_function)
+adr_opcode = Opcode(rd_label_regex, adr_opcode_function)
+push_opcode = Opcode(rlist_regex, push_opcode_function)
+pop_opcode = Opcode(rlist_regex, pop_opcode_function)
+stmia_opcode = Opcode(rb_excl_rlist_regex, stmia_opcode_function)
+ldmia_opcode = Opcode(rb_excl_rlist_regex, ldmia_opcode_function)
+beq_opcode = Opcode(label_or_imm_regex, beq_opcode_function)
+bne_opcode = Opcode(label_or_imm_regex, bne_opcode_function)
+bcs_opcode = Opcode(label_or_imm_regex, bcs_opcode_function)
+bcc_opcode = Opcode(label_or_imm_regex, bcc_opcode_function)
+bmi_opcode = Opcode(label_or_imm_regex, bmi_opcode_function)
+bpl_opcode = Opcode(label_or_imm_regex, bpl_opcode_function)
+bvs_opcode = Opcode(label_or_imm_regex, bvs_opcode_function)
+bvc_opcode = Opcode(label_or_imm_regex, bvc_opcode_function)
+bhi_opcode = Opcode(label_or_imm_regex, bhi_opcode_function)
+bls_opcode = Opcode(label_or_imm_regex, bls_opcode_function)
+bge_opcode = Opcode(label_or_imm_regex, bge_opcode_function)
+blt_opcode = Opcode(label_or_imm_regex, blt_opcode_function)
+bgt_opcode = Opcode(label_or_imm_regex, bgt_opcode_function)
+ble_opcode = Opcode(label_or_imm_regex, ble_opcode_function)
+swi_opcode = Opcode(label_or_imm_regex, swi_opcode_function)
+swi_opcode = Opcode(label_or_imm_regex, swi_opcode_function)
+b_opcode = Opcode(label_or_imm_regex, b_opcode_function)
+bl_opcode = Opcode(label_or_imm_regex, bl_opcode_function)
 
 class RegexFunction:
     def __init__(self, regex, function):
@@ -281,7 +578,7 @@ class RegexFunction:
 opcodes = {
     "lsl": (
         RegexFunction(rd_rs_imm_regex, lsl_imm_opcode),
-        RegexFunction(rd_rs_regex, lsl_reg_opcode)
+        RegexFunction(rd_rs_regex, lsl_reg_opcode),
     ),
     "lsr": (
         RegexFunction(rd_rs_imm_regex, lsr_imm_opcode),
@@ -304,7 +601,7 @@ opcodes = {
         RegexFunction(rd_rs_imm_regex, sub_rd_rs_imm_opcode),
         RegexFunction(rd_imm_regex, sub_rd_imm_opcode),
         RegexFunction(rd_rs_regex, sub_rd_rs_opcode),
-        RegexFunction(sp_or_sp_sp_imm_regex, add_sp_opcode)
+        RegexFunction(sp_or_sp_sp_imm_regex, add_sp_opcode),
     ), 
     "mov": (
         RegexFunction(rd_imm_regex, mov_imm_opcode),
@@ -318,72 +615,144 @@ opcodes = {
         RegexFunction(rd_rs_regex, and_opcode),
     ),
     "eor": (
-        RegexFunction(rd_rs_regex, eor_opcode)
+        RegexFunction(rd_rs_regex, eor_opcode),
     ),
     "adc": (
-        RegexFunction(rd_rs_regex, adc_opcode)
+        RegexFunction(rd_rs_regex, adc_opcode),
     ),
     "sbc": (
-        RegexFunction(rd_rs_regex, sbc_opcode)
+        RegexFunction(rd_rs_regex, sbc_opcode),
     ),
     "ror": (
-        RegexFunction(rd_rs_regex, ror_opcode)
+        RegexFunction(rd_rs_regex, ror_opcode),
     ),
     "tst": (
-        RegexFunction(rd_rs_regex, tst_opcode)
+        RegexFunction(rd_rs_regex, tst_opcode),
     ),
     "neg": (
-        RegexFunction(rd_rs_regex, neg_opcode)
+        RegexFunction(rd_rs_regex, neg_opcode),
     ),
     "cmn": (
-        RegexFunction(rd_rs_regex, cmn_opcode)
+        RegexFunction(rd_rs_regex, cmn_opcode),
     ),
     "orr": (
-        RegexFunction(rd_rs_regex, orr_opcode)
+        RegexFunction(rd_rs_regex, orr_opcode),
     ),
     "mul": (
-        RegexFunction(rd_rs_regex, mul_opcode)
+        RegexFunction(rd_rs_regex, mul_opcode),
     ),
     "bic": (
-        RegexFunction(rd_rs_regex, bic_opcode)
+        RegexFunction(rd_rs_regex, bic_opcode),
     ),
     "mvn": (
-        RegexFunction(rd_rs_regex, mvn_opcode)
+        RegexFunction(rd_rs_regex, mvn_opcode),
     ), 
     "bx": (
-        RegexFunction(rhs_regex, bx_opcode)
+        RegexFunction(rhs_regex, bx_opcode),
     ),
     "ldr": (
-        RegexFunction
-    "str":,
-    "ldrb":,
-    "strb":,
-    "ldrh":,
-    "strh":,
-    "ldrsb":,
-    "ldrsh":,
-    "adr":,
-    "push":,
-    "pop":,
-    "stmia":,
-    "ldmia":,
-    "beq":, 
-    "bne":, 
-    "bcs":, 
-    "bcc":, 
-    "bmi":, 
-    "bpl":, 
-    "bvs":, 
-    "bvc":, 
-    "bhi":, 
-    "bls":, 
-    "bge":, 
-    "blt":, 
-    "bgt":, 
-    "ble":, 
-    "svc":,
-    "b":,
-    "bl":
+        RegexFunction(rd_label_regex, ldr_label_opcode),
+        RegexFunction(rd_pool_regex, ldr_pool_opcode),
+        RegexFunction(rd_deref_rb_ro_regex, ldr_rb_ro_opcode),
+        RegexFunction(rd_deref_rb_imm_regex, ldr_rb_imm_opcode),
+        RegexFunction(rd_deref_sp_imm_regex, ldr_sp_imm_opcode),
+    ),
+    "str": (
+        RegexFunction(rd_deref_rb_ro_regex, str_rb_ro_opcode),
+        RegexFunction(rd_deref_rb_imm_regex, str_rb_imm_opcode),
+        RegexFunction(rd_deref_sp_imm_regex, str_sp_imm_opcode),
+    ),
+    "ldrb": (
+        RegexFunction(rd_deref_rb_ro_regex, ldrb_rb_ro_opcode),
+        RegexFunction(rd_deref_rb_imm_regex, ldrb_rb_imm_opcode),
+    ),
+    "strb": (
+        RegexFunction(rd_deref_rb_ro_regex, strb_rb_ro_opcode),
+        RegexFunction(rd_deref_rb_imm_regex, strb_rb_imm_opcode),
+    ),
+    "ldrh": (
+        RegexFunction(rd_deref_rb_ro_regex, ldrh_rb_ro_opcode),
+        RegexFunction(rd_deref_rb_imm_regex, ldrh_rb_imm_opcode),
+    ),
+    "strh": (
+        RegexFunction(rd_deref_rb_ro_regex, strh_rb_ro_opcode),
+        RegexFunction(rd_deref_rb_imm_regex, strh_rb_imm_opcode),
+    ),
+    "ldrsb": (
+        RegexFunction(rd_deref_rb_ro_regex, ldrsb_opcode),
+    ),
+    "ldrsh": (
+        RegexFunction(rd_deref_rb_ro_regex, ldrsh_opcode),
+    ),
+    "adr": (
+        RegexFunction(rd_label_regex, adr_opcode),
+    ),
+    "push": (
+        RegexFunction(rlist_regex, push_opcode),
+    ),
+    "pop": (
+        RegexFunction(rlist_regex, pop_opcode),
+    ),
+    "stmia": (
+        RegexFunction(rb_excl_rlist_regex, stmia_opcode),
+    ),
+    "ldmia": (
+        RegexFunction(rb_excl_rlist_regex, ldmia_opcode),
+    ),
+    "beq": (
+        RegexFunction(label_or_imm_regex, beq_opcode),
+    ),
+    "bne": (
+        RegexFunction(label_or_imm_regex, bne_opcode),
+    ),
+    "bcs": (
+        RegexFunction(label_or_imm_regex, bcs_opcode),
+    ),
+    "bcc": (
+        RegexFunction(label_or_imm_regex, bcc_opcode),
+    ),
+    "bmi": (
+        RegexFunction(label_or_imm_regex, bmi_opcode),
+    ),
+    "bpl": (
+        RegexFunction(label_or_imm_regex, bpl_opcode),
+    ),
+    "bvs": (
+        RegexFunction(label_or_imm_regex, bvs_opcode),
+    ),
+    "bvc": (
+        RegexFunction(label_or_imm_regex, bvc_opcode),
+    ),
+    "bhi": (
+        RegexFunction(label_or_imm_regex, bhi_opcode),
+    ),
+    "bls": (
+        RegexFunction(label_or_imm_regex, bls_opcode),
+    ),
+    "bge": (
+        RegexFunction(label_or_imm_regex, bge_opcode),
+    ),
+    "blt": (
+        RegexFunction(label_or_imm_regex, blt_opcode),
+    ),
+    "bgt": (
+        RegexFunction(label_or_imm_regex, bgt_opcode),
+    ),
+    "ble": (
+        RegexFunction(label_or_imm_regex, ble_opcode),
+    ),
+    "svc": (
+        RegexFunction(label_or_imm_regex, swi_opcode),
+    ),
+    "swi": (
+        RegexFunction(label_or_imm_regex, swi_opcode),
+    ),
+    "b": (
+        RegexFunction(label_or_imm_regex, b_opcode),
+    ),
+    "bl": (
+        RegexFunction(label_or_imm_regex, bl_opcode),
+    )
 }
 
 def read_opcode(line, function_state):
@@ -392,14 +761,230 @@ def read_opcode(line, function_state):
     opcode_subsyntaxes = opcodes[opcode_parts[0]]
     
     for subsyntax in opcode_syntaxes:
-        regex_groups = re.matchall(subsyntax.regex, opcode_parts[1])
+        regex_groups = re.findall(subsyntax.regex, opcode_parts[1])
         if len(regex_groups) == 1:
             subsyntax.function(regex_groups[0], function_state)
             break
     else:
         raise RuntimeError("Unknown opcode \"%s\"!" % line)
 
+class RegisterValue(ABC):
+    def __init__(self, value, offset=0):
+        self.value = value
+        self.offset = offset
+        super().__init__()
 
+    @abstractmethod
+    @property
+    def is_array(self):
+        pass
+    
+    @abstractmethod
+    def add_op(self, data):
+        
+    # [r0, #2]
+    def read_as_pointer
+
+"""
+
+Rs is confirmed primitive, new Rd is primitive
+lsl Rd, Rs, #Offset5
+lsl Rd, Rs
+
+Rs is confirmed primitive, new Rd is primitive
+lsr Rd, Rs, #Offset5
+lsr Rd, Rs
+
+Rs is confirmed primitive signed, new Rd is primitive signed
+asr Rd, Rs, #Offset5
+asr Rd, Rs
+
+if Rs or Rn is pointer, new Rd is confirmed pointer, if the other register is unknown, it is primitive (probably)
+if Rs and Rn are primitive, new Rd is confirmed primitive
+add Rd, Rs, Rn
+add Rd, Rs, #Offset3
+add Rd, #Offset8
+add RHd, RHs
+
+Rd is stack
+add Rd, sp, #imm
+
+stack related
+add sp, #imm
+add sp, sp, #imm
+add sp, #-imm
+add sp, sp, #-imm
+
+if Rs or Rn is pointer, new Rd is confirmed pointer, if the not pointer register is unknown, it is primitive (probably)
+if Rs and Rn are primitive, Rd is confirmed primitive
+sub Rd, Rs
+sub Rd, Rs, Rn
+sub Rd, Rs, #Offset3
+sub Rd, #Offset8
+
+stack related
+sub sp, #imm
+sub sp, sp, #imm
+sub sp, #-imm
+sub sp, sp, #imm
+
+Rd will be confirmed primitive
+mov Rd, #Offset8
+
+RHd inherits RHs
+mov RHd, RHs
+
+Rd is primitive (probably, maybe have a "don't assume zero is primitive" flag)
+cmp Rd, #Offset8
+
+if RHd or RHs is primitive (and not zero?), then the other register is primitive
+if RHd or RHs is pointer, then the other register is pointer
+cmp RHd, RHs
+
+todo: find edge cases for ALU operations
+
+Rd and Rs are probably primitive (flag?, should find edge case)
+and Rd, Rs
+
+Rd and Rs are primitive (flag?, should find edge case)
+eor Rd, Rs
+
+not used in mmbn6, but both primitive
+adc Rd, Rs
+
+not used in mmbn6, but both primitive
+sbc Rd, Rs
+
+Rd and Rs are primitive
+ror Rd, Rs
+
+if Rd or Rs is primitive, the other register is primitive
+if Rd or Rs is pointer, the other register is pointer
+tst Rd, Rs
+
+Rs is primitive, new Rd is primitive
+neg Rd, Rs
+
+not used in mmbn6, but both primitive
+cmn Rd, Rs
+
+both probably primitive
+orr Rd, Rs
+
+both probably primitive
+mul Rd, Rs
+
+both probably primitive
+bic Rd, Rs
+
+Rs is primitive, new Rd is primitive
+mvn Rd, Rs
+
+RHs is function
+bx RHs
+
+evaluate [label] (check if label, if so it is pointer, otherwise it is primitive)
+ldr Rd, label // ldr Rd, [pc, #imm]
+
+evaluate label
+ldr Rd, =label
+
+if Rb or Ro is primitive, the other register is pointer
+if both are primitive or both are pointer then error
+ldr Rd, [Rb, Ro]
+
+Rb is pointer
+ldr Rd, [Rb, #imm]
+
+unknown
+ldr Rd, [sp, #imm]
+
+if Rb or Ro is primitive, the other register is pointer
+if both are primitive or both are pointer then error
+str Rd, [Rb, Ro]
+
+Rb is pointer
+str Rd, [Rb, #imm]
+
+unknown
+str Rd, [sp, #imm]
+
+Rd is primitive
+if Rb or Ro is primitive, the other register is pointer
+if both are primitive or both are pointer then error
+ldrb Rd, [Rb, Ro]
+ldrb Rd, [Rb, #imm]
+
+strb Rd, [Rb, Ro]
+strb Rd, [Rb, #imm]
+
+ldrh Rd, [Rb, Ro]
+ldrh Rd, [Rb, #imm]
+
+strh Rd, [Rb, Ro]
+strh Rd, [Rb, #imm]
+
+ldrsb Rd, [Rb, Ro]
+ldrsh Rd, [Rb, Ro]
+
+adr Rd, label // add Rd, pc, #imm
+
+push {Rlist}
+pop {Rlist}
+
+stmia Rb!, {Rlist}
+ldmia Rb!, {Rlist}
+
+bxx label
+
+swi Value8
+
+b label
+
+bl label
+"""
+
+class Type:
+    BYTE = 0
+    HWORD = 1
+    WORD = 2
+    def __init__(self, size, signed):
+        self.size = size
+        self.signed = signed
+
+class Primitive(RegisterValue):
+    def __init__(self, value, type):
+        super().__init__(self, value, 0)
+        self.primary_type = type
+        self.confirmed_primitive = (type.size == Type.BYTE or type.size == Type.HWORD)
+
+    @property
+    def is_array(self):
+        return False
+    
+    def add_op(self, register_value):
+        if register_value is Pointer:
+            new_register_value = copy.copy(register_value)
+            new_register_value.offset += self.value
+            return new_register_value
+        elif register_value is PrimitiveType:
+            
+
+class Pointer(Data):
+    def __init__(self, value, offset=0):
+        super().__init__(self, value, offset)
+        
+
+class Struct(Data):
+    def __init__(self, value, offset=0):
+        super().__init__(self, value, offset)
+
+    @abstractmethod
+    def get_fields(self):
+        pass
+
+class Stack(Data):
+    
 class FunctionState:
     def __init__(self, registers):
         self.branch_states = []
