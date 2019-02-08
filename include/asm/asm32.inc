@@ -563,7 +563,7 @@
 // .global sub_80DD25E
 // .global sub_80DFAD6
 // .global sub_80DFF84
-// .global sub_80E05F6
+// .global SpawnT4BattleObjectWithId0
 // .global sub_80E060E
 // .global sub_80E33FA
 // .global sub_80E3CF2

@@ -96,7 +96,7 @@ sub_810C4B4:
 	lsl r4, r4, #8
 	add r4, #0x61 
 	mov r3, #0
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	mov r2, #0
@@ -655,7 +655,7 @@ loc_810CA02:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	bl object_clearCollisionRegion // () -> void
 	bl sub_801DD34
 	ldrb r0, [r7,#0xd]
@@ -723,7 +723,7 @@ sub_810CA8E:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 loc_810CAAC:
 	ldrb r0, [r5]
 	mov r1, #2
@@ -862,7 +862,7 @@ loc_810CBA4:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 loc_810CBB6:
 	ldrh r0, [r7,#0x10]
 	sub r0, #1
@@ -884,7 +884,7 @@ loc_810CBCE:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 loc_810CBE0:
 	ldrb r0, [r5,#0x12]
 	ldrb r2, [r7,#0x16]
@@ -974,7 +974,7 @@ loc_810CC6C:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 loc_810CC82:
 	ldrh r0, [r7,#0x10]
 	sub r0, #1
@@ -996,7 +996,7 @@ loc_810CC9A:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 loc_810CCAC:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
@@ -1024,7 +1024,7 @@ sub_810CCDC:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 loc_810CCFA:
 	ldrb r0, [r5]
 	mov r1, #2
@@ -1421,7 +1421,7 @@ sub_810D2E4:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r4, #0x15
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 loc_810D302:
 	ldrh r0, [r7,#0x10]
 	sub r0, #1
@@ -1434,7 +1434,7 @@ loc_810D302:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #0x14
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	ldrb r0, [r5,#0x14]
 	strb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x15]
@@ -1730,7 +1730,7 @@ loc_810D526:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #6
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	ldrh r0, [r5,#0x26]
 	bl object_addHP
 	pop {r0-r3,r5}

@@ -27,4 +27,5 @@
 
 	.macro thumb_func_end name:req
 	.size \name, . - \name // location counter - function start
+	.type \name, function
 	.endm

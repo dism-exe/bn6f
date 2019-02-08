@@ -86,7 +86,7 @@
 // .global object_spawnCollisionRegion
 // .global sub_80C5578
 // .global sub_80CB8DE
-// .global sub_80E05F6
+// .global SpawnT4BattleObjectWithId0
 // .global sub_80E532C
 // .global sub_80E5410
 // .global sub_8109630

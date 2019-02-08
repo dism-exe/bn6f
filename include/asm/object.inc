@@ -167,7 +167,7 @@
 
 	.include "asm/asm31.inc"
 // .global sub_80C5B76
-// .global sub_80E05F6
+// .global SpawnT4BattleObjectWithId0
 // .global sub_80E08C4
 // .global sub_80E09EE
 // .global sub_80E37D2

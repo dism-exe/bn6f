@@ -3929,7 +3929,7 @@ loc_800E314:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #6
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x8a
 	bl sound_play // () -> void
 	mov r0, #0
@@ -3978,7 +3978,7 @@ loc_800E378:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #6
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	mov r0, #0
 	b locret_800E3BC
 loc_800E38E:

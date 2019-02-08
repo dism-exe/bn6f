@@ -368,7 +368,7 @@
 	.global sub_80DFFB8
 	.global off_80E0408
 	.global loc_80E0548
-	.global sub_80E05F6
+	.global SpawnT4BattleObjectWithId0
 	.global sub_80E060E
 	.global sub_80E0638
 	.global sub_80E06F8

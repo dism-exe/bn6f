@@ -15091,7 +15091,7 @@ sub_800ABC6:
 	lsl r4, r4, #8
 	add r4, #0x46 
 	mov r0, #1
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	mov r0, #0xa5
 	bl sound_play // () -> void
 	pop {r4,pc}
@@ -16820,7 +16820,7 @@ sub_800B8EE:
 	mov r3, #0x78 
 	lsl r3, r3, #0x10
 	mov r4, #0x1e
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	mov r0, #0xa5
 	bl sound_play // () -> void
 	pop {r4,pc}

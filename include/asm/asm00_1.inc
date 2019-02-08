@@ -865,7 +865,7 @@
 // .global sub_80DFE40
 // .global sub_80DFFB8
 // .global loc_80E0548
-// .global sub_80E05F6
+// .global SpawnT4BattleObjectWithId0
 // .global sub_80E0638
 // .global sub_80E06F8
 // .global sub_80E0710

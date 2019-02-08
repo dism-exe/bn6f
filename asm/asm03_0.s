@@ -14544,8 +14544,8 @@ sub_802DACC:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #3
-	bl sub_80E05F6
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
+	bl SpawnT4BattleObjectWithId0
 	mov r0, #0
 	str r0, [r5,#0x4c]
 	ldr r1, [r5,#0x58]

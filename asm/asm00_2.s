@@ -3205,7 +3205,7 @@ loc_801051E:
 	add r0, #0x34 
 	ldmia r0!, {r1-r3}
 	mov r4, #6
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x8a
 	bl sound_play // () -> void
 loc_801053E:
@@ -3620,7 +3620,7 @@ loc_801083E:
 	add r1, r1, r0
 	add r3, r3, r4
 	mov r4, #0x31 
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x1a
 	add r0, #0xff
 	bl sound_play // () -> void
@@ -5250,7 +5250,7 @@ object_applyDamage:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x70 
 	bl sound_play // () -> void
 	pop {r0}
@@ -11159,7 +11159,7 @@ sub_8014040:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #6
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x8a
 	bl sound_play // () -> void
 locret_801407E:
@@ -12859,7 +12859,7 @@ loc_8014D82:
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	cmp r0, #0
 	beq loc_8014DDE
 	mov r1, #0x36 
@@ -13112,7 +13112,7 @@ loc_8014FBA:
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	cmp r0, #0
 	beq loc_8015016
 	mov r1, #0x36 
@@ -13362,7 +13362,7 @@ loc_80151E6:
 	ldmia r0!, {r1-r3}
 	ldr r0, dword_80152B8 // =0x200000 
 	add r3, r3, r0
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	cmp r0, #0
 	beq loc_801527C
 	mov r1, #0x36 
@@ -13384,7 +13384,7 @@ loc_80151E6:
 	ldmia r0!, {r1-r3}
 	ldr r0, dword_80152B8 // =0x200000 
 	add r3, r3, r0
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	cmp r0, #0
 	beq loc_801527C
 	mov r1, #0x45 
@@ -13884,7 +13884,7 @@ loc_801565E:
 	lsl r0, r0, #0x10
 	add r3, r3, r0
 	mov r4, #3
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	ldrb r1, [r0]
 	mov r2, #4
 	orr r1, r2
@@ -14006,7 +14006,7 @@ loc_801577C:
 	lsl r0, r0, #0x10
 	add r3, r3, r0
 	mov r4, #3
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	ldrb r1, [r0]
 	mov r2, #4
 	orr r1, r2
@@ -15550,7 +15550,7 @@ sub_80164C0:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #6
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	ldrb r1, [r0]
 	mov r2, #4
 	orr r1, r2
@@ -15578,7 +15578,7 @@ sub_8016520:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #3
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	ldrb r1, [r0]
 	mov r2, #4
 	orr r1, r2
@@ -16789,7 +16789,7 @@ sub_8016F1A:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	ldrb r1, [r0]
 	mov r2, #4
 	orr r1, r2
@@ -17031,7 +17031,7 @@ sub_8017122:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #3
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	mov r1, #0x5a 
 	strh r1, [r0,#0x20]
 	mov r0, #0x5a 
@@ -17131,7 +17131,7 @@ loc_8017204:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	mov r4, #3
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	mov r1, #0x5a 
 	strh r1, [r0,#0x20]
 	mov r0, #0x5a 
@@ -17394,8 +17394,8 @@ sub_801746E:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #3
-	bl sub_80E05F6
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
+	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x15
 	strh r0, [r5,#0x20]
 	mov r0, #8
@@ -18935,7 +18935,7 @@ sub_8018186:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x42 
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 loc_80181AA:
 	ldrb r0, [r5,#0x19]
 	sub r0, #1
@@ -20483,7 +20483,7 @@ sub_801A324:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #6
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x8a
 	bl sound_play // () -> void
 locret_801A368:
@@ -23735,7 +23735,7 @@ loc_801BD5E:
 	mov r2, r1
 	mov r1, r0
 	mov r3, r8
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	pop {r0-r3}
 loc_801BD96:
 	pop {r0,r1}
@@ -23767,7 +23767,7 @@ loc_801BDB2:
 	mov r2, r1
 	mov r1, r0
 	mov r3, #0
-	bl sub_80E05F6
+	bl SpawnT4BattleObjectWithId0
 	pop {r0-r3}
 loc_801BDD0:
 	sub r0, #1
