@@ -5,13 +5,20 @@ import argparse
 import pickle
 from enum import Enum
 import copy
-    
+from collections import namedtuple
+
+NaN = float("nan")
+
+FileLine = namedtuple("FileLine", ("filename", "line_num"))
+default_fileline = FileLine("", 0)
+
 class SrcFile:
-    def __init__(self):
+    def __init__(self, filename):
         self._line_num = 0
         self._commented_lines = []
         self._uncommented_lines = []
         self._line_type = LineType.UNCOMMENTED
+        self._filename = filename
 
     def __iter__(self):
         return self
@@ -59,6 +66,10 @@ class SrcFile:
     def append_commented_and_uncommented_lines(self, commented_line, uncommented_line):
         self._commented_lines.append(commented_line)
         self._uncommented_lines.append(uncommented_line)
+    
+    @property
+    def filename(self):
+        return self._filename
 
 class IterStr:
     def __init__(self, str):
@@ -86,6 +97,8 @@ recursion_depth = 0
 conditional_branches = ("beq", "bne", "bcs", "bcc", "bmi", "bpl", "bvs", "bvc", "bhi", "bls", "bge", "blt", "bgt", "ble")
 cond_branches_pattern = r"^\t(" + "|".join(cond_branch for cond_branch in conditional_branches) + ") (\S+)"
 #scanned_files = {}
+
+FileLines = 
 
 def find_colon_label_from_lines(label, lines, start_index=None):
     if start_index is not None:
@@ -151,106 +164,11 @@ def parse_word_directives(label, lines, start_index=None, max_words=None):
 
     return words
 
-"""
-lsl Rd, Rs, #Offset5
-lsl Rd, Rs
-
-lsr Rd, Rs, #Offset5
-lsr Rd, Rs
-
-asr Rd, Rs, #Offset5
-asr Rd, Rs
-
-add Rd, Rs, Rn
-add Rd, Rs, #Offset3
-add Rd, #Offset8
-add RHd, RHs
-add Rd, sp, #imm
-add sp, #imm
-add sp, sp, #imm
-add sp, #-imm
-add sp, sp, #-imm
-
-sub Rd, Rs
-sub Rd, Rs, Rn
-sub Rd, Rs, #Offset3
-sub Rd, #Offset8
-sub sp, #imm
-sub sp, sp, #imm
-sub sp, #-imm
-sub sp, sp, #imm
-
-mov Rd, #Offset8
-mov RHd, RHs
-
-cmp Rd, #Offset8
-cmp RHd, RHs
-
-and Rd, Rs
-eor Rd, Rs
-adc Rd, Rs
-sbc Rd, Rs
-ror Rd, Rs
-tst Rd, Rs
-neg Rd, Rs
-cmn Rd, Rs
-orr Rd, Rs
-mul Rd, Rs
-bic Rd, Rs
-mvn Rd, Rs
-
-bx RHs
-
-ldr Rd, label // ldr Rd, [pc, #imm]
-ldr Rd, =label
-ldr Rd, [Rb, Ro]
-ldr Rd, [Rb, #imm]
-ldr Rd, [sp, #imm]
-
-str Rd, [Rb, Ro]
-str Rd, [Rb, #imm]
-str Rd, [sp, #imm]
-
-ldrb Rd, [Rb, Ro]
-ldrb Rd, [Rb, #imm]
-
-strb Rd, [Rb, Ro]
-strb Rd, [Rb, #imm]
-
-ldrh Rd, [Rb, Ro]
-ldrh Rd, [Rb, #imm]
-
-strh Rd, [Rb, Ro]
-strh Rd, [Rb, #imm]
-
-ldsb Rd, [Rb, Ro]
-ldsh Rd, [Rb, Ro]
-
-adr Rd, label // add Rd, pc, #imm
-
-push {Rlist}
-pop {Rlist}
-
-stmia Rb!, {Rlist}
-ldmia Rb!, {Rlist}
-
-bxx label
-
-swi Value8
-
-b label
-
-bl label
-"""
-
 def parse_first_register_operand(line):
     register = line.split()[1]
     if register.endswith(","):
         return register[:-1]
     return register
-
-clobber_dest_opcodes = set("lsl", "lsr", "asr", "and", "eor", "adc", "sbc", "ror", "tst", "neg", "orr", "mul", "bic", "mvn")
-ignore_opcodes = set("cmp", "tst", "cmn")
 
 rhd_rhs_regex = r"^(r[0-9]|r1[0-2]|sp|lr|pc), *(r[0-9]|r1[0-2]|sp|lr|pc)(?!,)$"
 rd_rs_regex = r"^(r[0-7]), *(r[0-7])(?!,)$"
@@ -269,230 +187,247 @@ rlist_regex = r"^({[^}]+})$"
 rb_excl_rlist_regex = r"^(r[0-7])!, *({[^}]+})$"
 label_or_imm_regex = r"^(.+)$"
 
-def lsl_imm_opcode_function(opcode_params, function_state):
+def lsl_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def lsl_reg_opcode_function(opcode_params, function_state):
+def lsl_reg_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def lsr_imm_opcode_function(opcode_params, function_state):
+def lsr_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def lsr_reg_opcode_function(opcode_params, function_state):
+def lsr_reg_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def asr_imm_opcode_function(opcode_params, function_state):
+def asr_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def asr_reg_opcode_function(opcode_params, function_state):
+def asr_reg_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def add_rd_rs_ro_opcode_function(opcode_params, function_state):
+def add_rd_rs_ro_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def add_rd_rs_imm_opcode_function(opcode_params, function_state):
+def add_rd_rs_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def add_rd_imm_opcode_function(opcode_params, function_state):
+def add_rd_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def add_rd_rs_opcode_function(opcode_params, function_state):
+def add_rd_rs_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def add_rd_sp_imm_opcode_function(opcode_params, function_state):
+def add_rd_sp_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def add_sp_opcode_function(opcode_params, function_state):
+def add_sp_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def sub_rd_rs_ro_opcode_function(opcode_params, function_state):
+def sub_rd_rs_ro_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def sub_rd_rs_imm_opcode_function(opcode_params, function_state):
+def sub_rd_rs_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def sub_rd_imm_opcode_function(opcode_params, function_state):
+def sub_rd_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def sub_rd_rs_opcode_function(opcode_params, function_state):
+def sub_rd_rs_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def add_sp_opcode_function(opcode_params, function_state):
+def add_sp_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def mov_imm_opcode_function(opcode_params, function_state):
+def mov_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def mov_reg_opcode_function(opcode_params, function_state):
+def mov_reg_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def cmp_imm_opcode_function(opcode_params, function_state):
+def cmp_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def cmp_reg_opcode_function(opcode_params, function_state):
+def cmp_reg_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def and_opcode_function(opcode_params, function_state):
+def and_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def eor_opcode_function(opcode_params, function_state):
+def eor_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def adc_opcode_function(opcode_params, function_state):
+def adc_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def sbc_opcode_function(opcode_params, function_state):
+def sbc_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def ror_opcode_function(opcode_params, function_state):
+def ror_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def tst_opcode_function(opcode_params, function_state):
+def tst_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def neg_opcode_function(opcode_params, function_state):
+def neg_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def cmn_opcode_function(opcode_params, function_state):
+def cmn_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def orr_opcode_function(opcode_params, function_state):
+def orr_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def mul_opcode_function(opcode_params, function_state):
+def mul_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def bic_opcode_function(opcode_params, function_state):
+def bic_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def mvn_opcode_function(opcode_params, function_state):
+def mvn_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def bx_opcode_function(opcode_params, function_state):
+def bx_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def ldr_label_opcode_function(opcode_params, function_state):
+def ldr_label_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def ldr_pool_opcode_function(opcode_params, function_state):
+def ldr_pool_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def ldr_rb_ro_opcode_function(opcode_params, function_state):
+def ldr_rb_ro_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def ldr_rb_imm_opcode_function(opcode_params, function_state):
+def ldr_rb_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def ldr_sp_imm_opcode_function(opcode_params, function_state):
+def ldr_sp_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def str_rb_ro_opcode_function(opcode_params, function_state):
+def str_rb_ro_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def str_rb_imm_opcode_function(opcode_params, function_state):
+def str_rb_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def str_sp_imm_opcode_function(opcode_params, function_state):
+def str_sp_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def ldrb_rb_ro_opcode_function(opcode_params, function_state):
+def ldrb_rb_ro_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def ldrb_rb_imm_opcode_function(opcode_params, function_state):
+def ldrb_rb_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def strb_rb_ro_opcode_function(opcode_params, function_state):
+def strb_rb_ro_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def strb_rb_imm_opcode_function(opcode_params, function_state):
+def strb_rb_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def ldrh_rb_ro_opcode_function(opcode_params, function_state):
+def ldrh_rb_ro_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def ldrh_rb_imm_opcode_function(opcode_params, function_state):
+def ldrh_rb_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def strh_rb_ro_opcode_function(opcode_params, function_state):
+def strh_rb_ro_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def strh_rb_imm_opcode_function(opcode_params, function_state):
+def strh_rb_imm_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def ldrsb_opcode_function(opcode_params, function_state):
+def ldrsb_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def ldrsh_opcode_function(opcode_params, function_state):
+def ldrsh_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def adr_opcode_function(opcode_params, function_state):
+def adr_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def push_opcode_function(opcode_params, function_state):
+def push_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def pop_opcode_function(opcode_params, function_state):
+def pop_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def stmia_opcode_function(opcode_params, function_state):
+def stmia_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def ldmia_opcode_function(opcode_params, function_state):
+def ldmia_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def beq_opcode_function(opcode_params, function_state):
+def beq_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def bne_opcode_function(opcode_params, function_state):
+def bne_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def bcs_opcode_function(opcode_params, function_state):
+def bcs_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def bcc_opcode_function(opcode_params, function_state):
+def bcc_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def bmi_opcode_function(opcode_params, function_state):
+def bmi_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def bpl_opcode_function(opcode_params, function_state):
+def bpl_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def bvs_opcode_function(opcode_params, function_state):
+def bvs_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def bvc_opcode_function(opcode_params, function_state):
+def bvc_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def bhi_opcode_function(opcode_params, function_state):
+def bhi_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def bls_opcode_function(opcode_params, function_state):
+def bls_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def bge_opcode_function(opcode_params, function_state):
+def bge_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def blt_opcode_function(opcode_params, function_state):
+def blt_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def bgt_opcode_function(opcode_params, function_state):
+def bgt_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def ble_opcode_function(opcode_params, function_state):
+def ble_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def swi_opcode_function(opcode_params, function_state):
+def swi_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def swi_opcode_function(opcode_params, function_state):
+def swi_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def b_opcode_function(opcode_params, function_state):
+def b_opcode_function(opcode_params, function_state, fileline):
     pass
 
-def bl_opcode_function(opcode_params, function_state):
+def bl_opcode_function(opcode_params, function_state, fileline):
     pass
+
+class Opcode:
+    def __init__(self, regex, function):
+        self.regex = regex
+        self.function = function
+        self.callbacks = []
+    
+    def run_function(self, opcode_params, function_state, fileline):
+        do_main_function = True
+        for callback in self.callbacks:
+            do_main_function &= callback(opcode_params, function_state, fileline)
+        
+        if do_main_function:
+            self.function(opcode_params, function_state, fileline)
+    
+    def append_callback(self, callback):
+        self.callbacks.append(callback)
 
 lsl_imm_opcode = Opcode(rd_rs_imm_regex, lsl_imm_opcode_function)
 lsl_reg_opcode = Opcode(rd_rs_regex, lsl_reg_opcode_function)
@@ -570,192 +505,236 @@ swi_opcode = Opcode(label_or_imm_regex, swi_opcode_function)
 b_opcode = Opcode(label_or_imm_regex, b_opcode_function)
 bl_opcode = Opcode(label_or_imm_regex, bl_opcode_function)
 
-class RegexFunction:
-    def __init__(self, regex, function):
-        self.regex = regex
-        self.function = function
-
 opcodes = {
     "lsl": (
-        RegexFunction(rd_rs_imm_regex, lsl_imm_opcode),
-        RegexFunction(rd_rs_regex, lsl_reg_opcode),
+        lsl_imm_opcode,
+        lsl_reg_opcode,
     ),
     "lsr": (
-        RegexFunction(rd_rs_imm_regex, lsr_imm_opcode),
-        RegexFunction(rd_rs_regex, lsr_reg_opcode),
+        lsr_imm_opcode,
+        lsr_reg_opcode,
     ),
     "asr": (
-        RegexFunction(rd_rs_imm_regex, asr_imm_opcode),
-        RegexFunction(rd_rs_regex, asr_reg_opcode),
+        asr_imm_opcode,
+        asr_reg_opcode,
     ),
     "add": (
-        RegexFunction(rd_rs_ro_regex, add_rd_rs_ro_opcode),
-        RegexFunction(rd_rs_imm_regex, add_rd_rs_imm_opcode),
-        RegexFunction(rd_imm_regex, add_rd_imm_opcode),
-        RegexFunction(rd_rs_regex, add_rd_rs_opcode),
-        RegexFunction(rd_sp_imm_regex, add_rd_sp_imm_opcode),
-        RegexFunction(sp_or_sp_sp_imm_regex, add_sp_opcode)
+        add_rd_rs_ro_opcode,
+        add_rd_rs_imm_opcode,
+        add_rd_imm_opcode,
+        add_rd_rs_opcode,
+        add_rd_sp_imm_opcode,
+        add_sp_opcode
     ),
     "sub": (
-        RegexFunction(rd_rs_ro_regex, sub_rd_rs_ro_opcode),
-        RegexFunction(rd_rs_imm_regex, sub_rd_rs_imm_opcode),
-        RegexFunction(rd_imm_regex, sub_rd_imm_opcode),
-        RegexFunction(rd_rs_regex, sub_rd_rs_opcode),
-        RegexFunction(sp_or_sp_sp_imm_regex, add_sp_opcode),
-    ), 
+        sub_rd_rs_ro_opcode,
+        sub_rd_rs_imm_opcode,
+        sub_rd_imm_opcode,
+        sub_rd_rs_opcode,
+        add_sp_opcode,
+    ),
     "mov": (
-        RegexFunction(rd_imm_regex, mov_imm_opcode),
-        RegexFunction(rd_rs_regex, mov_reg_opcode),
+        mov_imm_opcode,
+        mov_reg_opcode,
     ),
     "cmp": (
-        RegexFunction(rd_imm_regex, cmp_imm_opcode),
-        RegexFunction(rd_rs_regex, cmp_reg_opcode),
+        cmp_imm_opcode,
+        cmp_reg_opcode,
     ),
-    "and":, (
-        RegexFunction(rd_rs_regex, and_opcode),
+    "and": (
+        and_opcode,
     ),
     "eor": (
-        RegexFunction(rd_rs_regex, eor_opcode),
+        eor_opcode,
     ),
     "adc": (
-        RegexFunction(rd_rs_regex, adc_opcode),
+        adc_opcode,
     ),
     "sbc": (
-        RegexFunction(rd_rs_regex, sbc_opcode),
+        sbc_opcode,
     ),
     "ror": (
-        RegexFunction(rd_rs_regex, ror_opcode),
+        ror_opcode,
     ),
     "tst": (
-        RegexFunction(rd_rs_regex, tst_opcode),
+        tst_opcode,
     ),
     "neg": (
-        RegexFunction(rd_rs_regex, neg_opcode),
+        neg_opcode,
     ),
     "cmn": (
-        RegexFunction(rd_rs_regex, cmn_opcode),
+        cmn_opcode,
     ),
     "orr": (
-        RegexFunction(rd_rs_regex, orr_opcode),
+        orr_opcode,
     ),
     "mul": (
-        RegexFunction(rd_rs_regex, mul_opcode),
+        mul_opcode,
     ),
     "bic": (
-        RegexFunction(rd_rs_regex, bic_opcode),
+        bic_opcode,
     ),
     "mvn": (
-        RegexFunction(rd_rs_regex, mvn_opcode),
-    ), 
+        mvn_opcode,
+    ),
     "bx": (
-        RegexFunction(rhs_regex, bx_opcode),
+        bx_opcode,
     ),
     "ldr": (
-        RegexFunction(rd_label_regex, ldr_label_opcode),
-        RegexFunction(rd_pool_regex, ldr_pool_opcode),
-        RegexFunction(rd_deref_rb_ro_regex, ldr_rb_ro_opcode),
-        RegexFunction(rd_deref_rb_imm_regex, ldr_rb_imm_opcode),
-        RegexFunction(rd_deref_sp_imm_regex, ldr_sp_imm_opcode),
+        ldr_label_opcode,
+        ldr_pool_opcode,
+        ldr_rb_ro_opcode,
+        ldr_rb_imm_opcode,
+        ldr_sp_imm_opcode,
     ),
     "str": (
-        RegexFunction(rd_deref_rb_ro_regex, str_rb_ro_opcode),
-        RegexFunction(rd_deref_rb_imm_regex, str_rb_imm_opcode),
-        RegexFunction(rd_deref_sp_imm_regex, str_sp_imm_opcode),
+        str_rb_ro_opcode,
+        str_rb_imm_opcode,
+        str_sp_imm_opcode,
     ),
     "ldrb": (
-        RegexFunction(rd_deref_rb_ro_regex, ldrb_rb_ro_opcode),
-        RegexFunction(rd_deref_rb_imm_regex, ldrb_rb_imm_opcode),
+        ldrb_rb_ro_opcode,
+        ldrb_rb_imm_opcode,
     ),
     "strb": (
-        RegexFunction(rd_deref_rb_ro_regex, strb_rb_ro_opcode),
-        RegexFunction(rd_deref_rb_imm_regex, strb_rb_imm_opcode),
+        strb_rb_ro_opcode,
+        strb_rb_imm_opcode,
     ),
     "ldrh": (
-        RegexFunction(rd_deref_rb_ro_regex, ldrh_rb_ro_opcode),
-        RegexFunction(rd_deref_rb_imm_regex, ldrh_rb_imm_opcode),
+        ldrh_rb_ro_opcode,
+        ldrh_rb_imm_opcode,
     ),
     "strh": (
-        RegexFunction(rd_deref_rb_ro_regex, strh_rb_ro_opcode),
-        RegexFunction(rd_deref_rb_imm_regex, strh_rb_imm_opcode),
+        strh_rb_ro_opcode,
+        strh_rb_imm_opcode,
     ),
     "ldrsb": (
-        RegexFunction(rd_deref_rb_ro_regex, ldrsb_opcode),
+        ldrsb_opcode,
     ),
     "ldrsh": (
-        RegexFunction(rd_deref_rb_ro_regex, ldrsh_opcode),
+        ldrsh_opcode,
     ),
     "adr": (
-        RegexFunction(rd_label_regex, adr_opcode),
+        adr_opcode,
     ),
     "push": (
-        RegexFunction(rlist_regex, push_opcode),
+        push_opcode,
     ),
     "pop": (
-        RegexFunction(rlist_regex, pop_opcode),
+        pop_opcode,
     ),
     "stmia": (
-        RegexFunction(rb_excl_rlist_regex, stmia_opcode),
+        stmia_opcode,
     ),
     "ldmia": (
-        RegexFunction(rb_excl_rlist_regex, ldmia_opcode),
+        ldmia_opcode,
     ),
     "beq": (
-        RegexFunction(label_or_imm_regex, beq_opcode),
+        beq_opcode,
     ),
     "bne": (
-        RegexFunction(label_or_imm_regex, bne_opcode),
+        bne_opcode,
     ),
     "bcs": (
-        RegexFunction(label_or_imm_regex, bcs_opcode),
+        bcs_opcode,
     ),
     "bcc": (
-        RegexFunction(label_or_imm_regex, bcc_opcode),
+        bcc_opcode,
     ),
     "bmi": (
-        RegexFunction(label_or_imm_regex, bmi_opcode),
+        bmi_opcode,
     ),
     "bpl": (
-        RegexFunction(label_or_imm_regex, bpl_opcode),
+        bpl_opcode,
     ),
     "bvs": (
-        RegexFunction(label_or_imm_regex, bvs_opcode),
+        bvs_opcode,
     ),
     "bvc": (
-        RegexFunction(label_or_imm_regex, bvc_opcode),
+        bvc_opcode,
     ),
     "bhi": (
-        RegexFunction(label_or_imm_regex, bhi_opcode),
+        bhi_opcode,
     ),
     "bls": (
-        RegexFunction(label_or_imm_regex, bls_opcode),
+        bls_opcode,
     ),
     "bge": (
-        RegexFunction(label_or_imm_regex, bge_opcode),
+        bge_opcode,
     ),
     "blt": (
-        RegexFunction(label_or_imm_regex, blt_opcode),
+        blt_opcode,
     ),
     "bgt": (
-        RegexFunction(label_or_imm_regex, bgt_opcode),
+        bgt_opcode,
     ),
     "ble": (
-        RegexFunction(label_or_imm_regex, ble_opcode),
+        ble_opcode,
     ),
     "svc": (
-        RegexFunction(label_or_imm_regex, swi_opcode),
+        swi_opcode,
     ),
     "swi": (
-        RegexFunction(label_or_imm_regex, swi_opcode),
+        swi_opcode,
     ),
     "b": (
-        RegexFunction(label_or_imm_regex, b_opcode),
+        b_opcode,
     ),
     "bl": (
-        RegexFunction(label_or_imm_regex, bl_opcode),
+        bl_opcode,
     )
 }
 
-def read_opcode(line, function_state):
+def add_datatypes_from_registers(registers, dest_reg, source_reg, operand_reg_or_imm, fileline):
+    source_datatype = registers[source_reg]
+    if operand_reg_or_imm is Immediate:
+        operand_datatype = operand_reg_or_imm
+    else:
+        operand_datatype = registers[operand_reg_or_imm]
+    
+    result_datatype = add_datatypes(source_datatype, operand_datatype)
+    
+
+def add_datatypes(source_datatype, operand_datatype):
+    if source_datatype.type < operand_datatype.type:
+        datatype_weak = source_datatype
+        datatype_strong = operand_datatype
+    else:
+        datatype_weak = operand_datatype
+        datatype_strong = source_datatype
+
+    if datatype_weak.type == DataType.UNKNOWN:
+        if datatype_strong.type == DataType.UNKNOWN:
+            return UnknownDataType()
+        elif datatype_strong.type == DataType.PRIMITIVE:
+            return UnknownDataType()
+        elif datatype_strong.type == DataType.POINTER:
+            # if the operation is pointer + unk, then we know (assume) that unk is a primitive
+            datatype_weak.type = DataType.PRIMITIVE
+            print("Context information: unk + pointer")
+            result_datatype = copy.deepcopy(datatype_strong)
+            result_datatype.add_offset(NaN)
+            return result_datatype
+        else:
+            raise RuntimeError("Invalid DataType constant of %s!" % datatype_strong.type)
+    elif datatype_weak.type == DataType.PRIMITIVE:
+        if datatype_strong.type == DataType.PRIMITIVE:
+            return new_primitive(source_datatype.value + operand_datatype.value)
+        elif datatype_strong.type == DataType.POINTER:
+            result_datatype = copy.deepcopy(datatype_strong)
+            result_datatype.add_offset(datatype_weak.value)
+            return result_datatype
+        else:
+            raise RuntimeError("Invalid DataType constant of %s!" % datatype_strong.type)
+    elif datatype_weak == DataType.POINTER and datatype_strong == DataType.POINTER:
+        raise RuntimeError("Impossible add operation found! (pointer + pointer)")
+    else:
+        raise RuntimeError("Invalid DataType constant of %s!" % datatype_weak.type)
+
+def add_datatypes_for_dereference(datatype1, datatype2):
+    
+
+def read_opcode(line, function_state, fileline):
     line = line.strip()
     opcode_parts = line.split(None, 1)
     opcode_subsyntaxes = opcodes[opcode_parts[0]]
@@ -763,227 +742,153 @@ def read_opcode(line, function_state):
     for subsyntax in opcode_syntaxes:
         regex_groups = re.findall(subsyntax.regex, opcode_parts[1])
         if len(regex_groups) == 1:
-            subsyntax.function(regex_groups[0], function_state)
+            subsyntax.function(regex_groups[0], function_state, fileline)
             break
     else:
         raise RuntimeError("Unknown opcode \"%s\"!" % line)
 
-class RegisterValue(ABC):
-    def __init__(self, value, offset=0):
-        self.value = value
-        self.offset = offset
+class Size(Enum):
+    BYTE = 1
+    HWORD = 2
+    WORD = 4
+
+def new_unknown_data_type():
+    return DataType(NaN, DataType.UNKNOWN, Size.WORD)
+
+def new_primitive(value=NaN, size=Size.WORD):
+    return DataType(value, DataType.PRIMITIVE, size)
+
+def new_byte_primitive(value=NaN):
+    return DataType(value, DataType.PRIMITIVE, Size.BYTE)
+
+def new_hword_primitive(value=NaN):
+    return DataType(value, DataType.PRIMITIVE, Size.HWORD)
+
+def new_word_primitive(value=NaN):
+    return DataType(value, DataType.PRIMITIVE, Size.WORD)
+
+class DataTypeContainer:
+    def __init__(self, _ref=None):
+        if _ref is None:
+            _ref = UnknownDataType()
+        self._ref = _ref
         super().__init__()
 
-    @abstractmethod
     @property
-    def is_array(self):
+    def type(self):
+        return self.ref.type
+
+    @property
+    def ref(self):
+        return self._ref
+
+    @ref.setter
+    def ref(self, _ref):
+        self._ref = _ref
+
+class DataType(ABC):
+    UNKNOWN = 1 << 0
+    PRIMITIVE = 1 << 2
+    POINTER = 1 << 4
+
+    def __init__(self):
+        super().__init__()
+
+    @property
+    @abstractmethod
+    def type(self):
         pass
     
-    @abstractmethod
-    def add_op(self, data):
-        
-    # [r0, #2]
-    def read_as_pointer
+    def wrap(self):
+        return DataTypeContainer(self)
 
-"""
-
-Rs is confirmed primitive, new Rd is primitive
-lsl Rd, Rs, #Offset5
-lsl Rd, Rs
-
-Rs is confirmed primitive, new Rd is primitive
-lsr Rd, Rs, #Offset5
-lsr Rd, Rs
-
-Rs is confirmed primitive signed, new Rd is primitive signed
-asr Rd, Rs, #Offset5
-asr Rd, Rs
-
-if Rs or Rn is pointer, new Rd is confirmed pointer, if the other register is unknown, it is primitive (probably)
-if Rs and Rn are primitive, new Rd is confirmed primitive
-add Rd, Rs, Rn
-add Rd, Rs, #Offset3
-add Rd, #Offset8
-add RHd, RHs
-
-Rd is stack
-add Rd, sp, #imm
-
-stack related
-add sp, #imm
-add sp, sp, #imm
-add sp, #-imm
-add sp, sp, #-imm
-
-if Rs or Rn is pointer, new Rd is confirmed pointer, if the not pointer register is unknown, it is primitive (probably)
-if Rs and Rn are primitive, Rd is confirmed primitive
-sub Rd, Rs
-sub Rd, Rs, Rn
-sub Rd, Rs, #Offset3
-sub Rd, #Offset8
-
-stack related
-sub sp, #imm
-sub sp, sp, #imm
-sub sp, #-imm
-sub sp, sp, #imm
-
-Rd will be confirmed primitive
-mov Rd, #Offset8
-
-RHd inherits RHs
-mov RHd, RHs
-
-Rd is primitive (probably, maybe have a "don't assume zero is primitive" flag)
-cmp Rd, #Offset8
-
-if RHd or RHs is primitive (and not zero?), then the other register is primitive
-if RHd or RHs is pointer, then the other register is pointer
-cmp RHd, RHs
-
-todo: find edge cases for ALU operations
-
-Rd and Rs are probably primitive (flag?, should find edge case)
-and Rd, Rs
-
-Rd and Rs are primitive (flag?, should find edge case)
-eor Rd, Rs
-
-not used in mmbn6, but both primitive
-adc Rd, Rs
-
-not used in mmbn6, but both primitive
-sbc Rd, Rs
-
-Rd and Rs are primitive
-ror Rd, Rs
-
-if Rd or Rs is primitive, the other register is primitive
-if Rd or Rs is pointer, the other register is pointer
-tst Rd, Rs
-
-Rs is primitive, new Rd is primitive
-neg Rd, Rs
-
-not used in mmbn6, but both primitive
-cmn Rd, Rs
-
-both probably primitive
-orr Rd, Rs
-
-both probably primitive
-mul Rd, Rs
-
-both probably primitive
-bic Rd, Rs
-
-Rs is primitive, new Rd is primitive
-mvn Rd, Rs
-
-RHs is function
-bx RHs
-
-evaluate [label] (check if label, if so it is pointer, otherwise it is primitive)
-ldr Rd, label // ldr Rd, [pc, #imm]
-
-evaluate label
-ldr Rd, =label
-
-if Rb or Ro is primitive, the other register is pointer
-if both are primitive or both are pointer then error
-ldr Rd, [Rb, Ro]
-
-Rb is pointer
-ldr Rd, [Rb, #imm]
-
-unknown
-ldr Rd, [sp, #imm]
-
-if Rb or Ro is primitive, the other register is pointer
-if both are primitive or both are pointer then error
-str Rd, [Rb, Ro]
-
-Rb is pointer
-str Rd, [Rb, #imm]
-
-unknown
-str Rd, [sp, #imm]
-
-Rd is primitive
-if Rb or Ro is primitive, the other register is pointer
-if both are primitive or both are pointer then error
-ldrb Rd, [Rb, Ro]
-ldrb Rd, [Rb, #imm]
-
-strb Rd, [Rb, Ro]
-strb Rd, [Rb, #imm]
-
-ldrh Rd, [Rb, Ro]
-ldrh Rd, [Rb, #imm]
-
-strh Rd, [Rb, Ro]
-strh Rd, [Rb, #imm]
-
-ldrsb Rd, [Rb, Ro]
-ldrsh Rd, [Rb, Ro]
-
-adr Rd, label // add Rd, pc, #imm
-
-push {Rlist}
-pop {Rlist}
-
-stmia Rb!, {Rlist}
-ldmia Rb!, {Rlist}
-
-bxx label
-
-swi Value8
-
-b label
-
-bl label
-"""
-
-class Type:
-    BYTE = 0
-    HWORD = 1
-    WORD = 2
-    def __init__(self, size, signed):
-        self.size = size
-        self.signed = signed
-
-class Primitive(RegisterValue):
-    def __init__(self, value, type):
-        super().__init__(self, value, 0)
-        self.primary_type = type
-        self.confirmed_primitive = (type.size == Type.BYTE or type.size == Type.HWORD)
+class UnknownDataType(DataTypeBase):
+    def __init__(self):
+        self.size = Size.WORD
+        pass
 
     @property
-    def is_array(self):
-        return False
-    
-    def add_op(self, register_value):
-        if register_value is Pointer:
-            new_register_value = copy.copy(register_value)
-            new_register_value.offset += self.value
-            return new_register_value
-        elif register_value is PrimitiveType:
-            
+    def type(self):
+        return DataType.UNKNOWN
 
-class Pointer(Data):
-    def __init__(self, value, offset=0):
-        super().__init__(self, value, offset)
+class Primitive:
+    def __init__(self, value):
         
+class Pointer:
+    def __init__(self, offset=0):
+        super().__init__(self, NaN, DataType.POINTER, size=Size.WORD)
+        self.offset = offset
 
-class Struct(Data):
+    @abstractmethod
+    def dereference(self, offset):
+        pass
+
+    def add_offset(self, offset):
+        self.offset += offset
+
+class RAMPointer(Pointer):
+    def __init__(self, mem_type, offset=0):
+        super().__init__(self, NaN, DataType.POINTER, size=Size.WORD)
+        self.mem_type = mem_type
+        self.offset = offset
+
+    def dereference(self, offset):
+        total_offset = offset + self.offset
+        if total_offset == NaN:
+            raise NotImplementedError("Context information: pointer deref with NaN offset")
+
+class ROMPointer(Pointer):
+    def __init__(self, possible_fields=[], offset=0):
+        super().__init__(self, NaN, DataType.POINTER, size=Size.WORD)
+        self.possible_fields = possible_fields
+        self.offset = offset
+
+    def dereference(self, offset):
+        total_offset = offset + self.offset
+        if total_offset == NaN:
+            raise NotImplementedError("Context information: ROM pointer deref with NaN offset")
+            # return self.possible_fields
+        else:
+            # todo
+
+class Struct(RAMPointer):
     def __init__(self, value, offset=0):
         super().__init__(self, value, offset)
 
+    def dereference(self, offset):
+        total_offset = offset + self.offset
+        if total_offset == NaN:
+            raise NotImplementedError("Context information: pointer deref with NaN offset")
+
     @abstractmethod
-    def get_fields(self):
+    def get_struct_data(self):
         pass
 
-class Stack(Data):
+class StructField:
+    def __init__(self, field_name, datatype):
+        self.field_name = field_name
+        self.datatype = datatype
+
+class StructData:
+    def __init__(self, struct_prefix, struct_fields):
+        self.struct_prefix = struct_prefix
+        self.struct_fields = struct_fields
+
+class BattleObject(Struct):
+    struct_fields = StructData("oBattleObject",
+        {
+            0x0: "_Flags", new_byte_primitive,
+            0x1: "_Index", new_byte_primitive,
+            0x2: "_TypeAndSpriteOffset", new_byte_primitive
+            0x3: "_ListIndex", new_byte_primitive
+            0x4: "_Param1", 
+            0x5: "_Param2"
+    def __init__(self, value, offset=0):
+        super().__init__(self, value, offset)
+
+    def get_struct_data(self):
+        return StructField(
+class Stack(DataType):
     
 class FunctionState:
     def __init__(self, registers):
@@ -993,22 +898,29 @@ class FunctionState:
         self.uncond_branch_labels = {}
         self.labels = {}
 
+class RegisterInfo:
+    def __init__(self, datatype=new_unknown_data_type(), fileline=default_fileline):
+        self.datatype = datatype
+        self.fileline = fileline
+
 class RegisterState(dict):
     default_registers = {
-        "r0": "",
-        "r1": "",
-        "r2": "",
-        "r3": "",
-        "r4": "",
-        "r5": "",
-        "r6": "",
-        "r7": "",
-        "r8": "",
-        "r9": "",
-        "r10": "",
-        "r11": "",
-        "r12": "",
+        "r0": RegisterInfo(),
+        "r1": RegisterInfo(),
+        "r2": RegisterInfo(),
+        "r3": RegisterInfo(),
+        "r4": RegisterInfo(),
+        "r5": RegisterInfo(),
+        "r6": RegisterInfo(),
+        "r7": RegisterInfo(),
+        "r8": RegisterInfo(),
+        "r9": RegisterInfo(),
+        "r10": RegisterInfo(),
+        "r11": RegisterInfo(),
+        "r12": RegisterInfo(),
         "sp": 0
+        "lr": RegisterInfo(),
+        "pc": RegisterInfo()
     }
 
     valid_registers = set("r0", "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "sp")
@@ -1040,6 +952,14 @@ def parse_jumptable_function(label, scanned_files, registers):
     lines = find_colon_label_in_files(label, scanned_files)
     lines.line_num += 1
     end_codepath = False
+    
+    for line in lines:
+        if line.startswith("\t"):
+            # label stuff
+            pass
+        else:
+            read_opcode(line, function_state, FileLine(lines.filename, lines.line_num))
+
     """
     for line in lines:
         if line.startswith("\t"):
@@ -1113,7 +1033,7 @@ def recursive_scan_includes(filepath, scanned_files):
     in_block_comment = False
 
     with open(filepath, "r") as f:
-        scanned_files[filepath] = SrcFile()
+        scanned_files[filepath] = SrcFile(filepath)
         for line in f:
             include_file_list = re.findall(r"\t\.include \"([^\"]+)\"", line)
             if len(include_file_list) > 1:
