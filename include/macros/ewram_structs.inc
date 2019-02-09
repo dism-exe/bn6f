@@ -152,4 +152,27 @@ known offsets from https://pastebin.com/grDF80Vp
 0x8 - num counter hits
 0xb - was cross used
 */
+
+/*
+ePETMenuData = pet menu struct
+0x0 - jumptable word index
+0x1 - ???
+0x2 - undetected
+0x3 - saved cursor pos when moving cursor to exit
+0x4 - cursor pos
+0x5 - is PET menu or submenu open
+0x6, 0x7 - does the following cycle when cursor is on exit:
+	0x6 == 1: 0x7 cycles from 0x8 to 0x1
+	0x7 == 2 or 3: 0x7 cycles from 0x6 to 0x1
+0x8 - loaded with 0x1 when opened, temporarily 0x0 when returning from a submenu
+0x9 - cycles 0x3 to 0x0 when moving from exit to a main menu item
+0xa - counts from 0x0 to 0x4 once when opening the menu
+0xb - cycles from 0x4..0x1 sometime after start is pressed to open the menu, stops when B is pressed to close the menu
+0xc - 0x3 when menu is fully loaded
+0xd - cycles from 0x2..0x1 with same condition as above
+0xe - counts from 0x0..0x7 when menu is opened, maybe a counter for menu entries shown when each entry slides in from under the previous
+0xf - undetected
+s16 0x10 - x tile offset of where to draw these screen tiles (menu items, PET title + lines) https://i.imgur.com/Dn34dUF.png
+
+*/
 // .macro overworld_npc_object_struct, struct_entry=label_struct_entry, struct_begin=struct_begin

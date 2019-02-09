@@ -364,7 +364,7 @@
 // .global sprite_getCoordinates
 // .global sub_8005524
 // .global engine_setScreeneffect // (int a1, int a2) -> void
-// .global engine_isScreeneffectAnimating // () -> zf
+// .global IsPaletteFadeActive // () -> zf
 // .global math_sinTable
 // .global math_cosTable
 // .global sub_80077B4
@@ -814,7 +814,7 @@
 // .equ byte_200CF20, 0x200CF20
 // .equ byte_200D220, 0x200D220
 // .equ word_200DCF0, 0x200DCF0
-// .equ byte_200DF20, 0x200DF20
+// .equ ePETMenuData, 0x200DF20
 // .equ byte_200DF21, 0x200DF21
 // .equ byte_200DF24, 0x200DF24
 // .equ byte_200DF25, 0x200DF25

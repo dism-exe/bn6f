@@ -138,7 +138,7 @@
 // .global sub_8005F6C
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global sub_80062C8
-// .global engine_isScreeneffectAnimating // () -> zf
+// .global IsPaletteFadeActive // () -> zf
 
 	.include "asm/asm00_2.inc"
 // .global sub_8010C76

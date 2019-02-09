@@ -824,7 +824,7 @@ byte_200A494:: // 0x200a494
 	.space 4
 dword_200A498:: // 0x200a498
 	.space 520
-byte_200A6A0:: // 0x200a6a0
+eStruct200a6a0:: // 0x200a6a0
 	.space 4
 dword_200A6A4:: // 0x200a6a4
 	.space 4
@@ -1156,7 +1156,7 @@ byte_200DD14:: // 0x200dd14
 	.space 12
 byte_200DD20:: // 0x200dd20
 	.space 512
-byte_200DF20:: // 0x200df20
+ePETMenuData:: // 0x200df20
 	.space 1
 byte_200DF21:: // 0x200df21
 	.space 3

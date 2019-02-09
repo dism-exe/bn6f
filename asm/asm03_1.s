@@ -1174,7 +1174,7 @@ off_80342A0: .word 0x50
 	thumb_local_start
 sub_80342A4:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80342C0
 	ldrh r0, [r5,#4]
 	sub r0, #1
@@ -1193,7 +1193,7 @@ loc_80342C0:
 	thumb_local_start
 sub_80342C6:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80342D6
 	mov r0, #8
 	strb r0, [r5]
@@ -1741,7 +1741,7 @@ loc_8034C2C:
 	thumb_func_start sub_8034C36
 sub_8034C36:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8034C6A
 	// entryIdx
 	mov r0, #0x17
@@ -1772,7 +1772,7 @@ loc_8034C6A:
 	thumb_local_start
 sub_8034C6E:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8034C98
 	// entryIdx
 	mov r0, #0x17
@@ -3190,11 +3190,11 @@ ScriptCmds8035808:
 	.word MapScript_jump_if_game_state_44_not_equals+1
 	.word MapScript_jump_if_map_group_compare_last_map_group+1
 	.word MapScript_cmd_8035ca0+1
-	.word sub_8035CD6+1
-	.word sub_8035CF8+1
-	.word sub_8035D1A+1
-	.word sub_8035D34+1
-	.word sub_8035D4E+1
+	.word MapScriptCmd_8035cd6+1
+	.word MapScriptCmd_8035cf8+1
+	.word MapScriptCmd_jump_if_fade_active+1
+	.word MapScriptCmd_jump_if_eStruct200a6a0_initialized+1
+	.word MapScriptCmd_jump_if_in_pet_menu+1
 	.word sub_8035D6A+1
 	.word sub_8035D98+1
 	.word sub_8035DB4+1
@@ -3826,7 +3826,7 @@ loc_8035CCA:
 // returns 0 if the summation is greater than 0x2a30
 // returns 1 if 0x1c20 < summation <= 0x2a30
 // else returns 2
-sub_8035CD6:
+MapScriptCmd_8035cd6: // 8035cd6
 	push {lr}
 	bl sub_800B734
 	mov r6, #1
@@ -3842,10 +3842,12 @@ loc_8035CF2:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035CD6
+	thumb_func_end MapScriptCmd_8035cd6
 
 	thumb_local_start
-sub_8035CF8:
+// 0x19 byte1 destination2
+// same as above but performs !=
+MapScriptCmd_8035cf8:
 	push {lr}
 	bl sub_800B734
 	mov r6, #1
@@ -3861,14 +3863,16 @@ loc_8035D14:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035CF8
+	thumb_func_end MapScriptCmd_8035cf8
 
 	thumb_local_start
-sub_8035D1A:
+// 0x1a destination1
+// jump if palette fade is active
+MapScriptCmd_jump_if_fade_active: // 8035D1A
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8035D2E
 	add r7, #5
 	mov r0, #1
@@ -3877,14 +3881,16 @@ loc_8035D2E:
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035D1A
+	thumb_func_end MapScriptCmd_jump_if_fade_active
 
 	thumb_local_start
-sub_8035D34:
+// 0x1b destination1
+// jump if [eStruct200a6a0] != 0
+MapScriptCmd_jump_if_eStruct200a6a0_initialized: // 8035D34
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
-	bl sub_80024C0
+	bl Is_eStruct200a6a0_Initialized
 	bne loc_8035D48
 	add r7, #5
 	mov r0, #1
@@ -3893,10 +3899,12 @@ loc_8035D48:
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035D34
+	thumb_func_end MapScriptCmd_jump_if_eStruct200a6a0_initialized
 
 	thumb_local_start
-sub_8035D4E:
+// 0x1c destination1
+// jump if the PET menu or a submenu is open (ePETMenuData+5)
+MapScriptCmd_jump_if_in_pet_menu: // 8035D4E
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -3910,7 +3918,7 @@ loc_8035D64:
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035D4E
+	thumb_func_end MapScriptCmd_jump_if_in_pet_menu
 
 	thumb_local_start
 sub_8035D6A:
@@ -5457,7 +5465,7 @@ loc_8036F7E:
 	thumb_local_start
 sub_8036F84:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8036F96
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
@@ -6032,7 +6040,7 @@ sub_8037396:
 sub_80373B6:
 	push {lr}
 	push {r1}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	pop {r1}
 	beq loc_80373C8
 	mov r0, #1
@@ -6476,7 +6484,7 @@ loc_80377E0:
 	thumb_local_start
 sub_80377E4:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80377F2
 	add r7, #1
 	mov r0, #1
@@ -6538,7 +6546,7 @@ loc_803783C:
 	thumb_local_start
 sub_8037840:
 	push {lr}
-	bl sub_80024C0
+	bl Is_eStruct200a6a0_Initialized
 	bne loc_803784E
 	add r7, #1
 	mov r0, #1
@@ -7835,7 +7843,7 @@ sub_80381FA:
 	mov r6, #9
 	bl ReadMapScriptWord
 	mov r2, r4
-	bl sub_8002468
+	bl Initialize_eStruct200a6a0
 	add r7, #0xd
 	mov r0, #1
 	pop {pc}
@@ -8472,7 +8480,7 @@ dword_8038670: .word 0x1340
 	thumb_local_start
 sub_8038674:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8038684
 	ldr r0, off_8038688 // =0xb4 
 	strh r0, [r5,#4]
@@ -8511,7 +8519,7 @@ locret_80386B0:
 	thumb_local_start
 sub_80386B2:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_80386C4
 	ldr r0, off_80386C8 // =0x40 
 	bl sub_8001778
@@ -8718,7 +8726,7 @@ off_8038B78: .word sub_8038B80+1
 	thumb_local_start
 sub_8038B80:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8038B98
 	mov r0, #4
 	strb r0, [r5,#1]
@@ -9169,7 +9177,7 @@ dword_8038F08: .word 0x3FF
 sub_8038F0C:
 	push {lr}
 	bl sub_8039198
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8038F2A
 	bl loc_803D1AC // () -> void
 	bl clear_200AD04 // () -> void
@@ -9624,7 +9632,7 @@ off_803962C: .word 0x40
 	thumb_local_start
 sub_8039630:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8039652
 	bl sub_80017AA
 	bl sub_800183C
@@ -9714,7 +9722,7 @@ dword_8039708: .word 0x1F40
 	thumb_local_start
 sub_803970C:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803972A
 	mov r0, #8
 	bl chatbox_8045F3C
@@ -9734,7 +9742,7 @@ loc_803972A:
 	thumb_local_start
 sub_8039734:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80397A8
 	bl sub_803995C
 	cmp r0, #1
@@ -9817,7 +9825,7 @@ sub_80397BC:
 	thumb_local_start
 sub_80397DC:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80397F0
 	bl sub_802FF2C
 	mov r0, #0xc
@@ -9832,7 +9840,7 @@ loc_80397F0:
 	thumb_local_start
 sub_80397F6:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8039810
 	bl sub_802FF2C
 	mov r0, #0
@@ -9850,7 +9858,7 @@ loc_8039810:
 	thumb_local_start
 sub_8039816:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803982A
 	bl sub_802FF2C
 	mov r0, #0x14
@@ -9865,7 +9873,7 @@ loc_803982A:
 	thumb_local_start
 sub_8039830:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8039840
 	bl sub_802FF2C
 	mov r0, #4
@@ -10253,7 +10261,7 @@ loc_8039B5A:
 	thumb_local_start
 sub_8039B60:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8039B7C
 	mov r0, #8
 	bl chatbox_8045F3C
@@ -10271,7 +10279,7 @@ loc_8039B7C:
 	thumb_local_start
 sub_8039B82:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8039B92
 	mov r0, #8
 	strb r0, [r5]
@@ -10285,7 +10293,7 @@ loc_8039B92:
 	thumb_local_start
 sub_8039B98:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8039BBA
 	bl sub_803A524
 	bne loc_8039BBA
@@ -10629,7 +10637,7 @@ loc_8039E7A:
 sub_8039E80:
 	push {r4-r7,lr}
 	bl sub_803C620
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8039EB4
 	bl chatbox_8040818
 	bl sub_8001850
@@ -10855,7 +10863,7 @@ loc_803A04E:
 	thumb_local_start
 sub_803A054:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803A066
 	bl sub_8001850
 	bl sub_803CCC0
@@ -10883,7 +10891,7 @@ loc_803A080:
 	thumb_local_start
 sub_803A086:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803A09A
 	bl sub_8001850
 	ldr r0, off_803A0A0 // =sub_8039570+1 
@@ -10913,7 +10921,7 @@ loc_803A0B8:
 	thumb_local_start
 sub_803A0BE:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803A0CE
 	mov r0, #8
 	strb r0, [r5]
@@ -10942,7 +10950,7 @@ loc_803A0E8:
 	thumb_local_start
 sub_803A0EE:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803A0FE
 	mov r0, #8
 	strb r0, [r5]
@@ -11806,7 +11814,7 @@ loc_803A78C:
 	thumb_local_start
 sub_803A79A:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803A7B2
 	mov r0, #0x14
 	bl sub_803BB2C
@@ -12377,7 +12385,7 @@ loc_803AC26:
 	thumb_local_start
 sub_803AC2C:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803AC50
 	bl sub_803BA28
 	bl sub_803C3E0
@@ -12779,7 +12787,7 @@ loc_803AF16:
 	thumb_local_start
 sub_803AF1C:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803AF40
 	bl sub_803BA28
 	bl sub_803C3E0
@@ -12843,7 +12851,7 @@ loc_803AF8A:
 	thumb_local_start
 sub_803AF90:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803AFBC
 	mov r4, #0
 	bl sub_803C3E0
@@ -13017,7 +13025,7 @@ dword_803B1C0: .word 0x1F40
 	thumb_local_start
 sub_803B1C4:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803B1D0
 	mov r0, #8
 	strb r0, [r5,#1]
@@ -13047,7 +13055,7 @@ loc_803B1F2:
 	thumb_local_start
 sub_803B1F8:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803B210
 	bl chatbox_8040818
 	mov r0, #2
@@ -15971,7 +15979,7 @@ dword_803CC10: .word 0x1F40
 	thumb_local_start
 sub_803CC14:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_803CC26
 	mov r0, #0xb
 	bl sub_803CCB0
@@ -15999,7 +16007,7 @@ locret_803CC3E:
 	thumb_local_start
 sub_803CC40:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_803CC58
 	bl chatbox_8040818
 	ldr r0, off_803CC5C // =0x40 
@@ -16118,7 +16126,7 @@ dword_803CD3C: .word 0x1F40
 	thumb_local_start
 sub_803CD40:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_803CD52
 	mov r0, #0xa
 	bl sub_803CD64
@@ -16867,7 +16875,7 @@ dword_803D270: .word 0x1F40
 	thumb_local_start
 sub_803D274:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_803D292
 	ldrb r0, [r5,#4]
 	sub r0, #1
@@ -16887,7 +16895,7 @@ locret_803D292:
 	thumb_local_start
 sub_803D298:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_803D2A4
 	mov r0, #0x10
 	strb r0, [r5]
@@ -21518,7 +21526,7 @@ locret_803FBC0:
 	thumb_local_start
 sub_803FBC2:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_803FBE0
 	bl sub_8006910
 	bl sub_802F530

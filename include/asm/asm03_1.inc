@@ -254,9 +254,9 @@
 // .global sub_8001B1C
 // .global sub_8001B6C
 // .global sub_8002354
-// .global sub_8002468
+// .global Initialize_eStruct200a6a0
 // .global sub_8002484
-// .global sub_80024C0
+// .global 
 
 	.include "asm/sprite.inc"
 // .global sub_80027C4
@@ -280,7 +280,7 @@
 // .global sub_8005F40
 // .global sub_8005F6C
 // .global engine_setScreeneffect // (int a1, int a2) -> void
-// .global engine_isScreeneffectAnimating // () -> zf
+// .global IsPaletteFadeActive // () -> zf
 // .global math_sinTable
 // .global sub_80068EC
 // .global sub_8006910

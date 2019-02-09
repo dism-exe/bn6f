@@ -3576,7 +3576,7 @@ signed int sub_80A7C58()
             sub_809E462();
             if ( v1 )
             {
-                engine_isScreeneffectAnimating();
+                IsPaletteFadeActive();
                 if ( !v1 )
                 {
                     sub_809E3A2();
@@ -3677,7 +3677,7 @@ void *sub_80A7CFE()
                         result = sub_809E462();
                         if ( v10 )
                         {
-                            result = engine_isScreeneffectAnimating();
+                            result = IsPaletteFadeActive();
                             if ( !v10 )
                             {
                                 SetEventFlagFromImmediate(23, 49);
@@ -5236,7 +5236,7 @@ signed int sub_80A8DF0()
             sub_809E462();
             if ( v1 )
             {
-                engine_isScreeneffectAnimating();
+                IsPaletteFadeActive();
                 if ( !v1 )
                     v0 = 0;
             }

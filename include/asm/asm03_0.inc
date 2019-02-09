@@ -240,7 +240,7 @@
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global loc_8006274
 // .global sub_80062EC
-// .global engine_isScreeneffectAnimating // () -> zf
+// .global IsPaletteFadeActive // () -> zf
 // .global loc_80062FC
 // .global math_sinTable
 // .global math_cosTable

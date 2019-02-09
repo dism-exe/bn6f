@@ -4385,10 +4385,10 @@ off_8002460: .word 0x108
 off_8002464: .word byte_20097A0
 	thumb_func_end getPalleteAndTransition_80023E0
 
-	thumb_func_start sub_8002468
-sub_8002468:
+	thumb_func_start Initialize_eStruct200a6a0
+Initialize_eStruct200a6a0:
 	push {r4-r7,lr}
-	ldr r5, off_80024C8 // =byte_200A6A0 
+	ldr r5, off_80024C8 // =eStruct200a6a0 
 	push {r0-r2}
 	// memBlock
 	mov r0, r5
@@ -4402,12 +4402,12 @@ sub_8002468:
 	mov r0, #1
 	strb r0, [r5]
 	pop {r4-r7,pc}
-	thumb_func_end sub_8002468
+	thumb_func_end Initialize_eStruct200a6a0
 
 	thumb_func_start sub_8002484
 sub_8002484:
 	push {r4-r7,lr}
-	ldr r5, off_80024C8 // =byte_200A6A0 
+	ldr r5, off_80024C8 // =eStruct200a6a0 
 	ldrb r0, [r5]
 	tst r0, r0
 	beq loc_8002498
@@ -4429,7 +4429,7 @@ loc_8002498:
 sub_80024A2:
 	push {r4-r7,lr}
 	// memBlock
-	ldr r0, off_80024C8 // =byte_200A6A0 
+	ldr r0, off_80024C8 // =eStruct200a6a0 
 	// size
 	mov r1, #0x50 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -4439,7 +4439,7 @@ sub_80024A2:
 	thumb_func_start sub_80024AE
 sub_80024AE:
 	push {r4-r7,lr}
-	ldr r5, off_80024C8 // =byte_200A6A0 
+	ldr r5, off_80024C8 // =eStruct200a6a0 
 	ldrb r0, [r5]
 	tst r0, r0
 	beq locret_80024BE
@@ -4450,14 +4450,14 @@ locret_80024BE:
 	pop {r4-r7,pc}
 	thumb_func_end sub_80024AE
 
-	thumb_func_start sub_80024C0
-sub_80024C0:
-	ldr r1, off_80024C8 // =byte_200A6A0 
+	thumb_func_start Is_eStruct200a6a0_Initialized
+Is_eStruct200a6a0_Initialized:
+	ldr r1, off_80024C8 // =eStruct200a6a0 
 	ldrb r0, [r1]
 	tst r0, r0
 	mov pc, lr
-off_80024C8: .word byte_200A6A0
-	thumb_func_end sub_80024C0
+off_80024C8: .word eStruct200a6a0
+	thumb_func_end Is_eStruct200a6a0_Initialized
 
 	thumb_local_start
 sub_80024CC:

@@ -496,7 +496,7 @@ void *sub_808FE74()
     int v4; // r2
     int v5; // r3
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v1 )
     {
         sub_809019C();

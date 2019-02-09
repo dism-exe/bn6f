@@ -1534,7 +1534,7 @@ loc_8027112:
 	thumb_local_start
 sub_8027118:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	cmp r0, #0
 	bne loc_802712E
 	mov r0, #0x10
@@ -1550,7 +1550,7 @@ loc_802712E:
 	thumb_local_start
 sub_8027134:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	cmp r0, #0
 	bne loc_802714A
 	mov r0, #4
@@ -1566,7 +1566,7 @@ loc_802714A:
 	thumb_local_start
 sub_8027150:
 	push {r4,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	cmp r0, #0
 	bne loc_80271BC
 	ldrb r3, [r5,#8]
@@ -1623,7 +1623,7 @@ loc_80271BC:
 	thumb_local_start
 sub_80271C2:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_80271F2
 	mov r0, #4
@@ -2152,7 +2152,7 @@ locret_802759C:
 	thumb_local_start
 sub_802759E:
 	push {r4,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_80275D2
 	mov r0, #0
@@ -2181,7 +2181,7 @@ off_80275D4: .word dword_20349A0
 	thumb_local_start
 sub_80275D8:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_80275EA
 	mov r0, #4
@@ -2256,7 +2256,7 @@ sub_8027658:
 	str r0, [r5,#0x40]
 	cmp r0, #0x32 
 	blt locret_8027670
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027670
 	mov r0, #0xc
@@ -2317,7 +2317,7 @@ loc_80276AA:
 	thumb_local_start
 sub_80276D6:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027706
 	mov r0, #4
@@ -2407,7 +2407,7 @@ sub_802777C:
 	str r0, [r5,#0x40]
 	cmp r0, #0x32 
 	blt locret_8027794
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027794
 	mov r0, #0xc
@@ -2473,7 +2473,7 @@ loc_80277DA:
 	thumb_local_start
 sub_8027806:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_802782E
 	mov r0, #4
@@ -2824,7 +2824,7 @@ locret_8027AAC:
 	thumb_local_start
 sub_8027AAE:
 	push {r4,r6,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027ADC
 	mov r0, #0
@@ -2846,7 +2846,7 @@ locret_8027ADC:
 	thumb_local_start
 sub_8027ADE:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027B1A
 	bl sub_80279FC
@@ -7942,7 +7942,7 @@ sub_802A30C:
 	bl sub_8000642
 	add r4, #2
 	strb r4, [r5,#0x13]
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	bl loc_80062FC // () -> zf
 	cmp r0, #0
 	bne locret_802A33C
@@ -7988,7 +7988,7 @@ sub_802A362:
 	bl sub_8000642
 	add r4, #2
 	strb r4, [r5,#0x13]
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	bl loc_80062FC // () -> zf
 	cmp r0, #0
 	bne locret_802A392
@@ -10239,7 +10239,7 @@ sub_802B7A0:
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	b locret_802B7DE
 loc_802B7BC:
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_802B7DE
 	mov r0, #0x24 
@@ -10516,7 +10516,7 @@ locret_802B9D2:
 	thumb_local_start
 sub_802B9D4:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_802B9E2
 	mov r0, #8
@@ -11491,7 +11491,7 @@ sub_802C328:
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_802C33C:
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_802C346
 	mov r0, #8
 	str r0, [r5]
@@ -17996,7 +17996,7 @@ off_802F6A0: .word 0x1340
 	thumb_local_start
 sub_802F6A4:
 	push {r4,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_802F6B0
 	mov r0, #8
 	strb r0, [r5,#1]
@@ -18060,7 +18060,7 @@ sub_802F710:
 	ble loc_802F71C
 	bl sub_802F8D8
 loc_802F71C:
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_802F754
 	ldrh r0, [r5,#4]
 	cmp r0, #0
@@ -18185,7 +18185,7 @@ sub_802F81C:
 	mov r1, #9
 	tst r1, r0
 	beq loc_802F848
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_802F88C
 	bl musicGameState_8000784 // () -> void
 	mov r0, #0x9d

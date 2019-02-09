@@ -1631,7 +1631,7 @@ loc_8046E40:
 sub_8046E48:
 	push {lr}
 	bl sub_8047134
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8046E80
 	ldr r1, [r5,#0x28]
 	mov r0, r1
@@ -4438,7 +4438,7 @@ off_8049054: .word 0x40
 	thumb_local_start
 sub_8049058:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_804907A
 	bl sub_80017AA
 	bl sub_800183C
@@ -4584,7 +4584,7 @@ sub_804918A:
 	thumb_local_start
 sub_80491C4:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80491E0
 	mov r0, #8
 	bl chatbox_8045F3C
@@ -4602,7 +4602,7 @@ loc_80491E0:
 	thumb_local_start
 sub_80491E6:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80491F6
 	mov r0, #4
 	strb r0, [r5]
@@ -4616,7 +4616,7 @@ loc_80491F6:
 	thumb_local_start
 sub_80491FC:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8049218
 	bl sub_803C320
 	mov r0, #0x1c
@@ -5054,7 +5054,7 @@ loc_8049596:
 	thumb_local_start
 sub_804959C:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80495AE
 	bl sub_8001850
 	bl sub_803CCC0
@@ -5082,7 +5082,7 @@ loc_80495C8:
 	thumb_local_start
 sub_80495CE:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80495E2
 	bl sub_8001850
 	ldr r0, off_80495E8 // =sub_8039570+1 
@@ -5112,7 +5112,7 @@ loc_8049600:
 	thumb_local_start
 sub_8049606:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8049616
 	mov r0, #4
 	strb r0, [r5]
@@ -5141,7 +5141,7 @@ loc_8049630:
 	thumb_local_start
 sub_8049636:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8049646
 	mov r0, #4
 	strb r0, [r5]
@@ -5322,7 +5322,7 @@ dword_80497CC: .word 0x1F40
 	thumb_local_start
 sub_80497D0:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80497E8
 	mov r0, #0x14
 	bl sub_803BB2C
@@ -5401,7 +5401,7 @@ loc_8049868:
 	thumb_local_start
 sub_804986E:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8049882
 	bl sub_8049CBC
 	mov r0, #4
@@ -5537,7 +5537,7 @@ loc_8049964:
 	thumb_local_start
 sub_804996A:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_804997E
 	bl sub_8049CBC
 	mov r0, #4
@@ -5593,7 +5593,7 @@ loc_80499C8:
 	thumb_local_start
 sub_80499CE:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8049A0E
 	mov r4, #0
 	bl sub_8049D42
@@ -6078,7 +6078,7 @@ off_8049E58: .word 0x40
 	thumb_local_start
 sub_8049E5C:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8049E7E
 	bl sub_80017AA
 	bl sub_800183C
@@ -6168,7 +6168,7 @@ loc_8049F24:
 	thumb_local_start
 sub_8049F32:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8049F4A
 	mov r0, #0x14
 	bl sub_803BB2C
@@ -6275,7 +6275,7 @@ loc_804A004:
 	thumb_local_start
 sub_804A00A:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_804A01E
 	bl sub_804A14C
 	mov r0, #4
@@ -6335,7 +6335,7 @@ loc_804A072:
 	thumb_local_start
 sub_804A078:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_804A0A2
 	ldrh r0, [r5,#0x22]
 	bl sub_804A230
@@ -6712,7 +6712,7 @@ off_804A3F4: .word 0x3C0
 	thumb_local_start
 sub_804A3FC:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_804A436
 	mov r0, #0
 	strb r0, [r5,#3]
@@ -6763,7 +6763,7 @@ sub_804A460:
 	bl sub_804A7C0
 	bl sub_804A9A0
 	bl sub_804AA58
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_804A4CC
 	bl sub_8046664 // () -> void
 	bl sub_809E122

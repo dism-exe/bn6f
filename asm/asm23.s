@@ -638,7 +638,7 @@ loc_8089804:
 	thumb_local_start
 sub_8089808:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8089822
 	mov r0, #0
 	mov r1, #0x10
@@ -668,7 +668,7 @@ loc_8089836:
 	thumb_local_start
 sub_808983A:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8089856
 	bl sub_8089D44
 	bl sub_814216E
@@ -838,7 +838,7 @@ loc_808997A:
 	thumb_local_start
 sub_808997E:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8089998
 	mov r0, #0
 	mov r1, #0x10
@@ -884,7 +884,7 @@ loc_80899D4:
 	thumb_local_start
 sub_80899D8:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80899EE
 	bl sub_8089CB4
 	beq loc_80899EE

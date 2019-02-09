@@ -734,7 +734,7 @@ sub_808FE74:
 	push {r4-r7,lr}
 	ldr r5, off_808FEA0 // =off_808FDB8 
 	ldr r5, [r5]
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_808FE9C
 	bl sub_809019C
 	bne loc_808FE90

@@ -359,7 +359,7 @@ signed int sub_8089808()
     _BYTE *v0; // r5
     char v1; // zf
 
-    engine_isScreeneffectAnimating();
+    IsPaletteFadeActive();
     if ( !v1 )
     {
         engine_setScreeneffect(0, 16);
@@ -393,7 +393,7 @@ signed int sub_808983A()
     int v1; // r7
     char v2; // zf
 
-    engine_isScreeneffectAnimating();
+    IsPaletteFadeActive();
     if ( !v2 )
     {
         sub_8089D44();
@@ -574,7 +574,7 @@ signed int sub_808997E()
     _BYTE *v0; // r5
     char v1; // zf
 
-    engine_isScreeneffectAnimating();
+    IsPaletteFadeActive();
     if ( !v1 )
     {
         engine_setScreeneffect(0, 16);
@@ -618,7 +618,7 @@ signed int sub_80899D8()
     _BYTE *v0; // r5
     char v1; // zf
 
-    engine_isScreeneffectAnimating();
+    IsPaletteFadeActive();
     if ( !v1 )
     {
         sub_8089CB4();

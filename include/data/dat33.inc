@@ -23,7 +23,7 @@
 
 	.include "asm/asm00_1.inc"
 // .global engine_setScreeneffect // (int a1, int a2) -> void
-// .global engine_isScreeneffectAnimating // () -> zf
+// .global IsPaletteFadeActive // () -> zf
 
 	.include "asm/asm02.inc"
 // .global dword_8021AEC

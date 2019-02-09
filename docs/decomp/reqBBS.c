@@ -62,7 +62,7 @@ void reqBBS_draw_813E188()
     }
     v0[0x11] = v0[offsetof(reqBBS_GUI, pad_10)];
     v0[0x13] = v0[0x12];
-    engine_isScreeneffectAnimating();
+    IsPaletteFadeActive();
     if ( !v7 )
         reqBBS_static_813EC10(0, v5, v6);
     reqBBS_813E534();
@@ -205,7 +205,7 @@ void reqBBS_draw_813E398()
     v2[2] = -1;
     v2[7] = 80;
     v2[6] = 80;
-    engine_isScreeneffectAnimating();
+    IsPaletteFadeActive();
     if ( !v3 )
     {
         v4 = *(v1 + oToolkit_Unk2009740_Ptr);
@@ -242,7 +242,7 @@ void reqBBS_draw_813E3F4()
     v2[2] = -1;
     v2[7] = 80;
     v2[6] = 80;
-    engine_isScreeneffectAnimating();
+    IsPaletteFadeActive();
     if ( !v3 )
     {
         v4 = *(v1 + oToolkit_Unk2009740_Ptr);
@@ -1074,7 +1074,7 @@ void __noreturn reqBBS_813F550()
     }
     v0[17] = v0[16];
     v0[19] = v0[18];
-    engine_isScreeneffectAnimating();
+    IsPaletteFadeActive();
     if ( !v7 )
         reqBBS_8140358(0, v5, v6);
     reqBBS_813F8F0();
@@ -1211,7 +1211,7 @@ void __noreturn reqBBS_813F754()
     v2[2] = -1;
     v2[7] = 80;
     v2[6] = 80;
-    engine_isScreeneffectAnimating();
+    IsPaletteFadeActive();
     if ( !v3 )
     {
         v4 = *(v1 + oToolkit_Unk2009740_Ptr);
@@ -1248,7 +1248,7 @@ void __noreturn reqBBS_813F7B0()
     v2[2] = -1;
     v2[7] = 80;
     v2[6] = 80;
-    engine_isScreeneffectAnimating();
+    IsPaletteFadeActive();
     if ( !v3 )
     {
         v4 = *(v1 + oToolkit_Unk2009740_Ptr);
@@ -1494,7 +1494,7 @@ void __noreturn reqBBS_813FA54()
     v2[2] = -1;
     v2[7] = 80;
     v2[6] = 80;
-    engine_isScreeneffectAnimating();
+    IsPaletteFadeActive();
     if ( !v3 )
     {
         v4 = *(v1 + oToolkit_Unk2009740_Ptr);

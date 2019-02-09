@@ -115,7 +115,7 @@ void sub_812F0F8()
                     {
                         if ( !v8 )
                         {
-                            engine_isScreeneffectAnimating();
+                            IsPaletteFadeActive();
                             if ( !v10 )
                             {
                                 *(v0 + 2) = 4;
@@ -214,7 +214,7 @@ void __noreturn sub_812F190()
                     if ( v11 == 255 )
                     {
 LABEL_31:
-                        engine_isScreeneffectAnimating();
+                        IsPaletteFadeActive();
                         if ( !v14 )
                             sub_8130370();
                     }
@@ -314,7 +314,7 @@ LABEL_21:
                 }
                 while ( v5 <= v6 );
             }
-            engine_isScreeneffectAnimating();
+            IsPaletteFadeActive();
             if ( !v13 )
             {
                 v9 = *(v0 + 3);
@@ -577,7 +577,7 @@ void sub_812F530()
                                 {
                                     if ( *(v0 + 3) )
                                     {
-                                        engine_isScreeneffectAnimating();
+                                        IsPaletteFadeActive();
                                         if ( !v15 )
                                         {
                                             engine_setScreeneffect(8, 16);
@@ -973,7 +973,7 @@ void sub_812F920()
                                     v7 += 16;
                                 if ( *(v7 + 10) == 65244 )
                                 {
-                                    engine_isScreeneffectAnimating();
+                                    IsPaletteFadeActive();
                                     if ( !v12 )
                                     {
                                         engine_setScreeneffect(8, 16);
@@ -1070,7 +1070,7 @@ void __fastcall __noreturn sub_812FA0C(int a1)
                                     v8 += 16;
                                 if ( *(v8 + 10) == 65244 )
                                 {
-                                    engine_isScreeneffectAnimating();
+                                    IsPaletteFadeActive();
                                     if ( !v13 )
                                     {
                                         *(v1 + 2) = 4;
@@ -1394,7 +1394,7 @@ int sub_812FDC0()
     int v7; // r2
     int v8; // r3
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v2 )
     {
         if ( eStruct200BC30_getJumpOffset00() )

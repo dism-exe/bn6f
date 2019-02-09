@@ -23,7 +23,7 @@
 	.include "asm/asm00_1.inc"
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global sub_80062C8
-// .global engine_isScreeneffectAnimating // () -> zf
+// .global IsPaletteFadeActive // () -> zf
 
 	.include "asm/asm02.inc"
 // .global split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)

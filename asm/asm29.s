@@ -4949,7 +4949,7 @@ sub_80A7C58:
 	bne loc_80A7C7E
 	bl sub_809E462
 	bne loc_80A7C7E
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80A7C7E
 	bl sub_809E3A2
 	beq loc_80A7C7E
@@ -5054,7 +5054,7 @@ sub_80A7CFE:
 	bne locret_80A7D70
 	bl sub_809E462
 	bne locret_80A7D70
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_80A7D70
 	// entryIdx
 	mov r0, #0x17
@@ -7014,7 +7014,7 @@ sub_80A8DF0:
 loc_80A8E0A:
 	bl sub_809E462
 	bne loc_80A8E18
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80A8E18
 	mov r4, #0
 loc_80A8E18:
@@ -8369,7 +8369,7 @@ loc_80A9868:
 	ldrsh r2, [r5,r2]
 	mov r3, #0x16
 	ldrsh r3, [r5,r3]
-	ldr r4, off_80A98C4 // =byte_200A6A0 
+	ldr r4, off_80A98C4 // =eStruct200a6a0 
 	ldrb r0, [r4,#0xd] // (dword_200A6AC+1 - 0x200a6a0)
 	sub r3, r3, r0
 	mov r4, #0xf
@@ -8403,7 +8403,7 @@ loc_80A98BE:
 	pop {r4}
 	mov r8, r4
 	pop {r4-r7,pc}
-off_80A98C4: .word byte_200A6A0
+off_80A98C4: .word eStruct200a6a0
 dword_80A98C8: .word 0x140000
 	thumb_func_end sub_80A9858
 

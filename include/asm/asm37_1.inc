@@ -120,7 +120,7 @@
 // .global sub_8003A64
 // .global SpawnOverworldMapObject
 // .global sub_8004822
-// .global engine_isScreeneffectAnimating // () -> zf
+// .global IsPaletteFadeActive // () -> zf
 // .global math_sinTable
 // .global math_cosTable
 

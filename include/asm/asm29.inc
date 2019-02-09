@@ -99,7 +99,7 @@
 // .global SpawnOverworldMapObject
 // .global FreeOverworldMapObject
 // .global sub_80062C8
-// .global engine_isScreeneffectAnimating // () -> zf
+// .global IsPaletteFadeActive // () -> zf
 // .global math_sinTable
 // .global math_cosTable
 
@@ -290,7 +290,7 @@
 // .equ pCoords, 0x2009F60
 // .equ dword_2009F64, 0x2009F64
 // .equ iCurrFrame, 0x200A210
-// .equ byte_200A6A0, 0x200A6A0
+// .equ eStruct200a6a0, 0x200A6A0
 // .equ dword_200A6AC, 0x200A6AC
 // .equ unk_2010000, 0x2010000
 // .equ unk_2011A90, 0x2011A90

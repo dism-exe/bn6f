@@ -130,11 +130,11 @@
 	.global sub_800239A
 	.global sub_80023A8
 	.global getPalleteAndTransition_80023E0
-	.global sub_8002468
+	.global Initialize_eStruct200a6a0
 	.global sub_8002484
 	.global sub_80024A2
 	.global sub_80024AE
-	.global sub_80024C0
+	.global Is_eStruct200a6a0_Initialized
 	.global loc_80024D8
 	.global sub_800260C
 	.global renderPalletesAndObjs_8002650
@@ -240,7 +240,7 @@
 // .equ dword_200A490, 0x200A490
 // .equ byte_200A494, 0x200A494
 // .equ dword_200A498, 0x200A498
-// .equ byte_200A6A0, 0x200A6A0
+// .equ eStruct200a6a0, 0x200A6A0
 // .equ dword_200A6A4, 0x200A6A4
 // .equ dword_200A6A8, 0x200A6A8
 // .equ dword_200A6AC, 0x200A6AC

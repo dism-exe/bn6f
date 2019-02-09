@@ -12326,7 +12326,7 @@ loc_8014902:
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_8014912:
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	tst r0, r0
 	bne locret_801493E
 	bl sub_802D234
@@ -12412,7 +12412,7 @@ loc_80149A4:
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_80149AE:
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	tst r0, r0
 	bne locret_80149EA
 	bl sub_800A97A
@@ -17174,7 +17174,7 @@ locret_8017272:
 	thumb_local_start
 sub_8017274:
 	push {r4,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	tst r0, r0
 	bne loc_8017284
 	mov r0, #8

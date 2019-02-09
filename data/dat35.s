@@ -164,7 +164,7 @@ loc_812F148:
 	ble loc_812F148
 	tst r3, r3
 	bne loc_812F18A
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_812F18A
 	mov r0, #4
 	strb r0, [r5,#2]
@@ -303,7 +303,7 @@ loc_812F27E:
 	bl sub_8130424
 	b loc_812F28E
 loc_812F284:
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_812F28E
 	bl sub_8130370
 loc_812F28E:
@@ -401,7 +401,7 @@ loc_812F34A:
 	bl sub_8130424
 	b loc_812F376
 loc_812F350:
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	bne loc_812F366
 	ldrb r0, [r5,#3]
 	tst r0, r0
@@ -737,7 +737,7 @@ loc_812F5CC:
 	strb r0, [r5,#3]
 	b loc_812F622
 loc_812F5EE:
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_812F622
 	mov r0, #8
 	mov r1, #0x10
@@ -1217,7 +1217,7 @@ loc_812F9A6:
 	ldr r2, dword_812FA04 // =0xfedc 
 	cmp r1, r2
 	bne loc_812F9FA
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_812F9FA
 	mov r0, #8
 	mov r1, #0x10
@@ -1330,7 +1330,7 @@ loc_812FA9A:
 	ldr r2, dword_812FC24 // =0xfedc 
 	cmp r1, r2
 	bne loc_812FADE
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_812FADE
 	mov r0, #4
 	strb r0, [r5,#2]
@@ -1726,7 +1726,7 @@ locret_812FDBE:
 	thumb_local_start
 sub_812FDC0:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_812FE02
 	bl sub_803EA60
 	cmp r0, #0

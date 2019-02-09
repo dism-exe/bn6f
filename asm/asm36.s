@@ -1131,7 +1131,7 @@ loc_81309B8:
 	ble loc_81309B8
 	tst r3, r3
 	bne loc_81309FE
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_81309FE
 	ldrh r0, [r5,#0x2a]
 	strh r0, [r5,#0x32]
@@ -1274,7 +1274,7 @@ loc_8130ADA:
 loc_8130AFA:
 	bl sub_81313C0
 loc_8130AFE:
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8130B08
 	bl sub_8131210
 loc_8130B08:
@@ -1613,7 +1613,7 @@ loc_8130D8A:
 	ble loc_8130D8A
 	tst r3, r3
 	bne loc_8130DC4
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8130DC4
 	bl sub_8131864
 	mov r0, #0x18
@@ -1838,7 +1838,7 @@ locret_8130F76:
 	thumb_local_start
 sub_8130F78:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8130FBA
 	bl sub_803EA60
 	cmp r0, #0
@@ -1936,7 +1936,7 @@ loc_813101A:
 	tst r3, r3
 	bne loc_8131062
 loc_8131040:
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8131062
 	bl sub_81312FC
 	mov r0, #0
@@ -3481,7 +3481,7 @@ off_8131F34: .word sub_8131F3C+1
 	thumb_local_start
 sub_8131F3C:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8131F74
 	mov r0, #1
 	bl sub_813D90C
@@ -3542,7 +3542,7 @@ off_8131FB4: .word sub_8131FC4+1
 	thumb_local_start
 sub_8131FC4:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8132010
 	mov r0, #1
 	bl sub_813D90C
@@ -4527,7 +4527,7 @@ sub_813278C:
 	thumb_local_start
 sub_81327A0:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_81327AE
 	mov r1, #8
 	mov r0, #0x48 
@@ -5006,7 +5006,7 @@ off_8132C48: .word sub_8132C50+1
 	thumb_local_start
 sub_8132C50:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8132C62
 	mov r0, #0x40 
 	bl chatbox_8045F2C // (int a1) ->
@@ -5047,7 +5047,7 @@ off_8132C9C: .word 0x110
 	thumb_local_start
 sub_8132CA0:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8132CB2
 	mov r0, #0x40 
 	bl chatbox_8045F1C
@@ -5804,7 +5804,7 @@ off_81333EC: .word sub_8133400+1
 	thumb_local_start
 sub_8133400:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8133410
 	mov r0, #4
 	strb r0, [r5,#2]
@@ -6513,7 +6513,7 @@ sub_81339BC:
 	bl sub_81340FC
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8133A2A
 	bl sub_8046664 // () -> void
 	bl sub_8021C68
@@ -10252,7 +10252,7 @@ off_81357E0: .word sub_813581C+1
 	thumb_local_start
 sub_813581C:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_813582C
 	bl sub_8135F18
 	mov r0, #4
@@ -10683,7 +10683,7 @@ sub_8135B54:
 	push {r4,lr}
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8135B90
 	bl chatbox_8040818
 	mov r0, #0x40 
@@ -14483,7 +14483,7 @@ off_8137984: .word sub_8137990+1
 	thumb_local_start
 sub_8137990:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_813799C
 	mov r0, #4
 	strb r0, [r5,#2]
@@ -14600,7 +14600,7 @@ sub_8137A7C:
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
 	bl sub_81380E0
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8137AC8
 	bl chatbox_8040818
 	mov r0, #0x40 
@@ -15635,7 +15635,7 @@ dword_81383C0: .word 0x1E89
 	thumb_local_start
 sub_81383C4:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_81383E8
 	mov r0, #0x80
 	mov r1, #0xff
@@ -16074,7 +16074,7 @@ locret_81386FE:
 	thumb_local_start
 sub_8138700:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_813872E
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
@@ -16104,7 +16104,7 @@ sub_8138730:
 	sub r0, #1
 	strh r0, [r5,#4]
 	bne locret_813874E
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_813874E
 	ldr r0, [r5,#0x20]
 	bl sub_8000F86

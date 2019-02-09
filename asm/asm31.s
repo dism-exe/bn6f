@@ -81990,7 +81990,7 @@ loc_80E06B8:
 	mov r0, #4
 	strb r0, [r5,#0xb]
 loc_80E06C8:
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	tst r0, r0
 	bne locret_80E06DA
 	mov r0, #1

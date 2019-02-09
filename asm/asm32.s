@@ -15520,7 +15520,7 @@ dword_81169AC: .word 0x40
 	thumb_local_start
 sub_81169B0:
 	push {r7,lr}
-	ldr r7, off_81169C4 // =byte_200DF20 
+	ldr r7, off_81169C4 // =ePETMenuData 
 	ldr r0, off_81169C8 // =off_81169CC 
 	ldrb r1, [r5,#9]
 	ldr r0, [r0,r1]
@@ -15528,7 +15528,7 @@ sub_81169B0:
 	bx r0
 	bl sprite_update
 	pop {r7,pc}
-off_81169C4: .word byte_200DF20
+off_81169C4: .word ePETMenuData
 off_81169C8: .word off_81169CC
 off_81169CC: .word sub_81169D8+1
 	.word sub_8116A04+1
@@ -15655,7 +15655,7 @@ byte_8116AD0: .byte 0xA0, 0xE2, 0x0, 0x0, 0x52, 0x0, 0xC8, 0x40, 0xA8, 0xE2
 	thumb_func_start sub_8116ADC
 sub_8116ADC:
 	push {r7,lr}
-	ldr r7, off_8116AFC // =byte_200DF20 
+	ldr r7, off_8116AFC // =ePETMenuData 
 	ldr r0, off_8116AEC // =off_8116AF0 
 	ldrb r1, [r5,#8]
 	ldr r0, [r0,r1]
@@ -15666,7 +15666,7 @@ off_8116AEC: .word off_8116AF0
 off_8116AF0: .word sub_8116B00+1
 	.word sub_8116B9C+1
 	.word sub_8116C38+1
-off_8116AFC: .word byte_200DF20
+off_8116AFC: .word ePETMenuData
 	thumb_func_end sub_8116ADC
 
 	thumb_local_start
@@ -16013,7 +16013,7 @@ locret_8116DB0:
 sub_8116DB4:
 	push {r7,lr}
 	mov r0, #0
-	ldr r7, off_8116DE8 // =byte_200DF20 
+	ldr r7, off_8116DE8 // =ePETMenuData 
 	ldrb r3, [r7,#0x4] // (byte_200DF24 - 0x200df20)
 	cmp r3, #8
 	bne loc_8116DC2
@@ -16036,7 +16036,7 @@ loc_8116DD8:
 	strb r0, [r5,#9]
 locret_8116DE6:
 	pop {r7,pc}
-off_8116DE8: .word byte_200DF20
+off_8116DE8: .word ePETMenuData
 	thumb_func_end sub_8116DB4
 
 	thumb_local_start
@@ -30228,7 +30228,7 @@ byte_811EBDA: .byte 0x4, 0x4, 0x4, 0x4, 0x4, 0x0
 
 	thumb_func_start sub_811EBE0
 sub_811EBE0:
-	ldr r2, off_811EC4C // =byte_200DF20 
+	ldr r2, off_811EC4C // =ePETMenuData 
 	ldrb r1, [r2,#0x5] // (byte_200DF25 - 0x200df20)
 	tst r1, r0
 	mov pc, lr
@@ -30236,7 +30236,7 @@ sub_811EBE0:
 
 	thumb_local_start
 sub_811EBE8:
-	ldr r2, off_811EC4C // =byte_200DF20 
+	ldr r2, off_811EC4C // =ePETMenuData 
 	ldrb r1, [r2,#0x5] // (byte_200DF25 - 0x200df20)
 	orr r1, r0
 	strb r1, [r2,#0x5] // (byte_200DF25 - 0x200df20)
@@ -30246,7 +30246,7 @@ sub_811EBE8:
 
 	thumb_func_start sub_811EBF4
 sub_811EBF4:
-	ldr r2, off_811EC4C // =byte_200DF20 
+	ldr r2, off_811EC4C // =ePETMenuData 
 	ldrb r1, [r2,#0x5] // (byte_200DF25 - 0x200df20)
 	bic r1, r0
 	strb r1, [r2,#0x5] // (byte_200DF25 - 0x200df20)
@@ -30258,13 +30258,13 @@ sub_811EBF4:
 sub_811EC00:
 	push {lr}
 	// memBlock
-	ldr r0, off_811EC4C // =byte_200DF20 
+	ldr r0, off_811EC4C // =ePETMenuData 
 	mov r4, r0
 	// size
 	mov r1, #0x18
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
 	thumb_func_end sub_811EC00
 
 	thumb_func_start sub_811EC10
@@ -30277,7 +30277,7 @@ sub_811EC10:
 	mov r1, #0x80
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	// memBlock
-	ldr r0, off_811EC4C // =byte_200DF20 
+	ldr r0, off_811EC4C // =ePETMenuData 
 	mov r4, r0
 	// size
 	mov r1, #0x18
@@ -30296,7 +30296,7 @@ sub_811EC10:
 	.balign 4, 0x00
 dword_811EC44: .word 0xFFFFFFE0
 off_811EC48: .word byte_811EBDA
-off_811EC4C: .word byte_200DF20
+off_811EC4C: .word ePETMenuData
 	thumb_func_end sub_811EC10
 
 	thumb_func_start sub_811EC50
@@ -30377,7 +30377,7 @@ off_811ECFC: .word byte_86C9D8C
 	thumb_func_start ho_811ED1C
 ho_811ED1C:
 	push {r5,lr}
-	ldr r5, off_811ED54 // =byte_200DF20 
+	ldr r5, off_811ED54 // =ePETMenuData 
 	ldr r0, off_811ED38 // =jt_811ED3C 
 	ldrb r1, [r5]
 	ldr r0, [r0,r1]
@@ -30394,7 +30394,7 @@ jt_811ED3C: .word sub_811ED58+1
 	.word sub_811EED0+1
 	.word sub_811EF0C+1
 	.word sub_811EF28+1
-off_811ED54: .word byte_200DF20
+off_811ED54: .word ePETMenuData
 	thumb_func_end ho_811ED1C
 
 // () -> void
@@ -30455,7 +30455,7 @@ sub_811EDB4:
 	strb r0, [r5,#9]
 	b loc_811EE82
 loc_811EDD6:
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_811EE82
 	mov r0, #0xa
 	bl sub_811F7EC
@@ -31361,7 +31361,7 @@ sub_811F6C0:
 	// size
 	mov r1, #0x80
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	ldr r5, off_811F704 // =byte_200DF20 
+	ldr r5, off_811F704 // =ePETMenuData 
 	ldrb r0, [r5,#0x4] // (byte_200DF24 - 0x200df20)
 	lsl r0, r0, #2
 	strb r0, [r4]
@@ -31382,7 +31382,7 @@ sub_811F6E0:
 	// size
 	mov r1, #0x80
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	ldr r5, off_811F704 // =byte_200DF20 
+	ldr r5, off_811F704 // =ePETMenuData 
 	mov r0, #0x10
 	strb r0, [r4]
 	mov r0, #1
@@ -31393,7 +31393,7 @@ sub_811F6E0:
 	strh r1, [r0,#oGameState_LastMapGroup]
 	pop {r4,r5,pc}
 	.balign 4, 0x00
-off_811F704: .word byte_200DF20
+off_811F704: .word ePETMenuData
 	thumb_func_end sub_811F6E0
 
 	thumb_func_start sub_811F708
@@ -31404,7 +31404,7 @@ sub_811F708:
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	mov r1, #8
 	strb r1, [r0,#oGameState_Unk_16]
-	ldr r1, off_811F770 // =byte_200DF20 
+	ldr r1, off_811F770 // =ePETMenuData 
 	mov r0, #0x14
 	strb r0, [r1]
 	mov r0, #0
@@ -31450,7 +31450,7 @@ sub_811F758:
 	bl sub_8129248
 	pop {pc}
 off_811F76C: .word 0x40
-off_811F770: .word byte_200DF20
+off_811F770: .word ePETMenuData
 	thumb_func_end sub_811F758
 
 // () -> void
