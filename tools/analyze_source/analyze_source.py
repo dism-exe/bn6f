@@ -6,12 +6,18 @@ import pickle
 from enum import Enum
 import copy
 from collections import namedtuple
+import functools
 
 NaN = float("nan")
 
 FileLine = namedtuple("FileLine", ("filename", "line_num"))
-default_fileline = FileLine("", 0)
+default_fileline = FileLine("default_fileline", 0)
+global_fileline = default_fileline
+syms = None
 
+def global_fileline_error(error_msg):
+    raise RuntimeError("%s:%s: %s" % global_fileline.filename, global_fileline.line_num, error_msg)
+    
 class SrcFile:
     def __init__(self, filename):
         self._line_num = 0
@@ -94,11 +100,7 @@ class IterStr:
         return self._index
 
 recursion_depth = 0
-conditional_branches = ("beq", "bne", "bcs", "bcc", "bmi", "bpl", "bvs", "bvc", "bhi", "bls", "bge", "blt", "bgt", "ble")
-cond_branches_pattern = r"^\t(" + "|".join(cond_branch for cond_branch in conditional_branches) + ") (\S+)"
 #scanned_files = {}
-
-FileLines = 
 
 def find_colon_label_from_lines(label, lines, start_index=None):
     if start_index is not None:
@@ -171,24 +173,10 @@ def parse_first_register_operand(line):
     return register
 
 class Size(Enum):
+    UNKNOWN = 0
     BYTE = 1
     HWORD = 2
     WORD = 4
-
-def new_unknown_data_type():
-    return DataType(NaN, DataType.UNKNOWN, Size.WORD)
-
-def new_primitive(value=NaN, size=Size.WORD):
-    return DataType(value, DataType.PRIMITIVE, size)
-
-def new_byte_primitive(value=NaN):
-    return DataType(value, DataType.PRIMITIVE, Size.BYTE)
-
-def new_hword_primitive(value=NaN):
-    return DataType(value, DataType.PRIMITIVE, Size.HWORD)
-
-def new_word_primitive(value=NaN):
-    return DataType(value, DataType.PRIMITIVE, Size.WORD)
 
 class DataTypeContainer:
     def __init__(self, _ref=None):
@@ -222,65 +210,120 @@ class DataType(ABC):
     def type(self):
         pass
     
-    def wrap(self):
-        return DataTypeContainer(self)
-
-class UnknownDataType(DataTypeBase):
-    def __init__(self):
-        self.size = Size.WORD
+    @property
+    @abstractmethod
+    def size(self):
         pass
+
+    @property
+    def size(self, _size):
+        return self._size
+
+    def wrap(self):
+        return DataTypeContainer(self)    
+
+class UnknownDataType(DataType):
+    def __init__(self):
+        super().__init__()
 
     @property
     def type(self):
         return DataType.UNKNOWN
 
-class Primitive:
-    def __init__(self, value):
-        
-class Pointer:
+    @property
+    def size(self):
+        return Size.WORD
+
+class Primitive(DataType):
+    new_byte = functools.partial(Primitive(Size.BYTE))
+    new_hword = functools.partial(Primitive(Size.HWORD))
+    new_word = functools.partial(Primitive(Size.WORD))
+
+    def __init__(self, size=Size.UNKNOWN, value=NaN):
+        super().__init__()
+        self._size = size
+        self._value = value
+
+    @property
+    def type(self):
+        return DataType.PRIMITIVE
+
+    @property
+    def size(self):
+        return self._size
+
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        self._value = value
+
+class Pointer(DataType):
     def __init__(self, offset=0):
-        super().__init__(self, NaN, DataType.POINTER, size=Size.WORD)
-        self.offset = offset
+        super().__init__()
+        self._offset = offset
+
+    @property
+    def type(self):
+        return DataType.POINTER
 
     @abstractmethod
-    def dereference(self, offset):
+    def load(self, size, offset=0):
+        pass
+
+    @abstractmethod
+    def store(self, datatype, size, offset=0):
         pass
 
     def add_offset(self, offset):
         self.offset += offset
 
+    @property
+    def offset(self):
+        return self._offset
+
+    @offset.setter
+    def offset(self, offset):
+        self._offset = offset
+
+    @property
+    def size(self):
+        return Size.WORD
+
 class RAMPointer(Pointer):
-    def __init__(self, mem_type, offset=0):
-        super().__init__(self, NaN, DataType.POINTER, size=Size.WORD)
+    def __init__(self, offset=0):
+        super().__init__(self, offset)
         self.mem_type = mem_type
         self.offset = offset
 
-    def dereference(self, offset):
+    def load(self, size, offset=0):
         total_offset = offset + self.offset
-        if total_offset == NaN:
+        if math.isnan(total_offset):
             raise NotImplementedError("Context information: pointer deref with NaN offset")
 
-class ROMPointer(Pointer):
+class UnkROMPointer(Pointer):
     def __init__(self, possible_fields=[], offset=0):
         super().__init__(self, NaN, DataType.POINTER, size=Size.WORD)
         self.possible_fields = possible_fields
         self.offset = offset
 
-    def dereference(self, offset):
+    def load(self, size, offset=0):
         total_offset = offset + self.offset
-        if total_offset == NaN:
+        if math.isnan(total_offset):
             raise NotImplementedError("Context information: ROM pointer deref with NaN offset")
             # return self.possible_fields
         else:
             # todo
 
-class Struct(RAMPointer):
-    def __init__(self, value, offset=0):
-        super().__init__(self, value, offset)
+class Struct(Pointer):
+    def __init__(self, offset=0):
+        super().__init__(offset)
 
-    def dereference(self, offset):
+    def load(self, size, offset=0):
         total_offset = offset + self.offset
-        if total_offset == NaN:
+        if math.isnan(total_offset):
             raise NotImplementedError("Context information: pointer deref with NaN offset")
 
     @abstractmethod
@@ -288,10 +331,11 @@ class Struct(RAMPointer):
         pass
 
 class StructField:
-    def __init__(self, field_name, datatype):
-        self.field_name = field_name
+    def __init__(self, offset_name, datatype):
+        self.offset_name = offset_name
         self.datatype = datatype
 
+StructEntry = namedtuple("StructEntry", ("offset_name", "datatype", "size"
 class StructData:
     def __init__(self, struct_prefix, struct_fields):
         self.struct_prefix = struct_prefix
@@ -299,51 +343,74 @@ class StructData:
 
 class BattleObject(Struct):
     struct_fields = StructData("oBattleObject",
-        {
-            0x0: "_Flags", new_byte_primitive,
-            0x1: "_Index", new_byte_primitive,
-            0x2: "_TypeAndSpriteOffset", new_byte_primitive
-            0x3: "_ListIndex", new_byte_primitive
-            0x4: "_Param1", 
-            0x5: "_Param2"
+            0x0: StructField("_Flags", Primitive.new_byte),
+            0x1: StructField("_Index", Primitive.new_byte),
+            0x2: StructField("_TypeAndSpriteOffset", Primitive.new_byte),
+            0x3: StructField("_ListIndex", Primitive.new_byte),
+            0x4: StructField("_Param1", Primitive.new_byte)
+            0x5: "_Param2", Primitive.new_byte
+            
     def __init__(self, value, offset=0):
         super().__init__(self, value, offset)
 
     def get_struct_data(self):
         return StructField(
-class Stack(DataType):
-    
+
+class Stack(Pointer):
+    def __init__(self, datatypes={}):
+        super().__init__()
+        self.datatypes = datatypes
+
+    def load(self, size=Size.WORD, offset=0):
+        total_offset = self.offset + offset
+        if math.isnan(total_offset):
+            global_fileline_error("Stack offset is NaN!")
+        if total_offset % size != 0:
+            global_fileline_error("Misaligned stack read detected (size: %s, offset=%s)!" % size, total_offset)
+        return self.datatypes[(total_offset, size)]
+
+    # note: storing values may be risky. figure this out
+    def store(self, datatype, size=Size.WORD, offset=0):
+        total_offset = self.offset + offset
+        if math.isnan(total_offset):
+            global_fileline_error("Stack offset is NaN!")
+        if total_offset % size != 0:
+            global_fileline_error("Misaligned stack write detected (size: %s, offset=%s)!" % size, total_offset)
+        self.datatypes[(total_offset, size)] = datatype
+
 class FunctionState:
     def __init__(self, registers):
         self.branch_states = []
-        self.registers = registers.copy() # ignore lr and pc
+        self.regs = registers.copy() # ignore lr and pc
         self.cond_branch_labels = {}
         self.uncond_branch_labels = {}
         self.labels = {}
 
 class RegisterInfo:
-    def __init__(self, datatype=new_unknown_data_type(), fileline=default_fileline):
+    def __init__(self, datatype=None, fileline=default_fileline):
+        if datatype is None:
+            datatype = UnknownDataType().wrap()
         self.datatype = datatype
         self.fileline = fileline
 
 class RegisterState(dict):
     default_registers = {
-        "r0": RegisterInfo(),
-        "r1": RegisterInfo(),
-        "r2": RegisterInfo(),
-        "r3": RegisterInfo(),
-        "r4": RegisterInfo(),
-        "r5": RegisterInfo(),
-        "r6": RegisterInfo(),
-        "r7": RegisterInfo(),
-        "r8": RegisterInfo(),
-        "r9": RegisterInfo(),
-        "r10": RegisterInfo(),
-        "r11": RegisterInfo(),
-        "r12": RegisterInfo(),
-        "sp": 0
-        "lr": RegisterInfo(),
-        "pc": RegisterInfo()
+        "r0": [RegisterInfo()],
+        "r1": [RegisterInfo()],
+        "r2": [RegisterInfo()],
+        "r3": [RegisterInfo()],
+        "r4": [RegisterInfo()],
+        "r5": [RegisterInfo()],
+        "r6": [RegisterInfo()],
+        "r7": [RegisterInfo()],
+        "r8": [RegisterInfo()],
+        "r9": [RegisterInfo()],
+        "r10": [RegisterInfo()],
+        "r11": [RegisterInfo()],
+        "r12": [RegisterInfo()],
+        "sp": Stack()
+        "lr": [RegisterInfo()],
+        "pc": [RegisterInfo()]
     }
 
     valid_registers = set("r0", "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "sp")
@@ -371,7 +438,7 @@ class BranchState:
 
 # note: probably tuned towards battle objects, fix later
 def parse_jumptable_function(label, scanned_files, registers):
-    function_state = FunctionState(registers)
+    funcstate = FunctionState(registers)
     lines = find_colon_label_in_files(label, scanned_files)
     lines.line_num += 1
     end_codepath = False
@@ -381,7 +448,9 @@ def parse_jumptable_function(label, scanned_files, registers):
             # label stuff
             pass
         else:
-            read_opcode(line, function_state, FileLine(lines.filename, lines.line_num))
+            global global_fileline
+            global_fileline = FileLine(lines.filename, lines.line_num)
+            read_opcode(line, funcstate, global_fileline)
 
     """
     for line in lines:
@@ -529,16 +598,24 @@ def main():
     ap.add_argument("-l", "--load-from-file", dest="load_from_file")
     ap.add_argument("-c", "--cache", dest="cache")
     ap.add_argument("-p", "--path", dest="input_path")
+    ap.add_argument("-m", "--make", dest="make", action="store_true")
 
     args = ap.parse_args()
     # if symfile is unspecified, use the rom name as the symfile name
-
+    
     output_path = os.getcwd()
 
-    if args.input_path is None and os.path.basename(os.getcwd()) == "tools":
-        os.chdir("..")
+    if args.input_path is None and os.path.basename(os.getcwd()) == "analyze_source":
+        os.chdir("../..")
     else:
         os.chdir(args.input_path)
+
+    global syms
+
+    if args.make:
+        syms = readelf.make_and_read_syms()
+    else:
+        syms = readelf.read_syms()
 
     if args.load_from_file is None:
         scanned_files = {}

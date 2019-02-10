@@ -1,3 +1,22 @@
+import ctypes
+
+def fileline_error(error_msg, fileline):
+    raise RuntimeError("%s:%s: %s" % fileline.filename, fileline.line_num, error_msg)
+
+def evaluate_possible_sym_error_if_undefined(possible_sym, fileline):
+    try:
+        immediate_value = evaluate_possible_sym(possible_sym)
+    except KeyError:
+        fileline_error("Could not evaluate undefined symbol \"%s\"!" % possible_sym, fileline)
+    return immediate_value
+
+def evaluate_possible_sym(possible_sym):
+    global syms
+    try:
+        return int(possible_sym, 0)
+    except ValueError:
+        return syms[possible_sym].value
+
 rhd_rhs_regex = r"^(r[0-9]|r1[0-2]|sp|lr|pc), *(r[0-9]|r1[0-2]|sp|lr|pc)(?!,)$"
 rd_rs_regex = r"^(r[0-7]), *(r[0-7])(?!,)$"
 rd_rs_imm_regex = r"^(r[0-7]), *(r[0-7]), *#([^,]+)(?!,)$"
@@ -15,230 +34,269 @@ rlist_regex = r"^({[^}]+})$"
 rb_excl_rlist_regex = r"^(r[0-7])!, *({[^}]+})$"
 label_or_imm_regex = r"^(.+)$"
 
-def lsl_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def lsl_imm_opcode_function(opcode_params, funcstate, fileline):
+    immediate_value = evaluate_possible_sym_error_if_undefined(opcode_params[2], fileline)
+    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[1], immediate_value, lambda a, b: a << b, fileline)
+    return True
+
+def lsl_reg_opcode_function(opcode_params, funcstate, fileline):
+    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[0], opcode_params[1], lambda a, b: a << b, fileline)
+    return True
+    
+def lsr_imm_opcode_function(opcode_params, funcstate, fileline):
+    immediate_value = evaluate_possible_sym_error_if_undefined(opcode_params[2], fileline)
+    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[1], immediate_value, lambda a, b: a >> b, fileline)
+    return True
+
+def lsr_reg_opcode_function(opcode_params, funcstate, fileline):
+    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[0], opcode_params[1], lambda a, b: a >> b, fileline)
+    return True
+
+def asr_imm_opcode_function(opcode_params, funcstate, fileline):
+    immediate_value = evaluate_possible_sym_error_if_undefined(opcode_params[2], fileline)
+    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[1], immediate_value, lambda val, shift: ctypes.c_uint32(ctypes.c_int32(val).value >> shift).value, fileline)
+    return True
+
+def asr_reg_opcode_function(opcode_params, funcstate, fileline):
+    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[0], opcode_params[1], lambda val, shift: ctypes.c_uint32(ctypes.c_int32(val).value >> shift).value, fileline)
+    return True
 
-def lsl_reg_opcode_function(opcode_params, function_state, fileline):
-    pass
+def shift_datatypes_from_regs(registers, dest_reg, source_reg, operand_reg_or_imm, callback, fileline):
+    source_datatype = registers[source_reg][-1]
+    if source_datatype.type == DataType.UNKNOWN:
+        source_datatype.ref = Primitive(Size.WORD)
+    elif source_datatype.type == DataType.POINTER:
+        fileline_error("Impossible shift operation found! (Pointer shift imm)", fileline)
 
-def lsr_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+    if isinstance(operand_reg_or_imm, int):
+        immediate_value = Primitive(Size.BYTE, operand_reg_or_imm).wrap()
+    else:
+        immediate_value = operand_reg_or_imm
 
-def lsr_reg_opcode_function(opcode_params, function_state, fileline):
-    pass
+    try:
+        new_value = callback(source_datatype.ref.value, immediate_value.ref.value)
+    except TypeError:
+        new_value = NaN
 
-def asr_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+    new_dest_datatype = Primitive(Size.UNKNOWN, new_value)
+    registers[dest_reg].append(RegisterInfo(new_dest_datatype, fileline))
 
-def asr_reg_opcode_function(opcode_params, function_state, fileline):
-    pass
+def add_rd_rs_rn_opcode_function(opcode_params, funcstate, fileline):
+    add_datatypes_from_registers(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], fileline)
+    return True
 
-def add_rd_rs_ro_opcode_function(opcode_params, function_state, fileline):
-    pass
+def add_rd_rs_imm_opcode_function(opcode_params, funcstate, fileline):
+    immediate_value = evaluate_possible_sym_error_if_undefined(opcode_params[2], fileline)
+    add_datatypes_from_registers(funcstate.regs, opcode_params[0], opcode_params[1], immediate_value, fileline)
+    return True
 
-def add_rd_rs_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def add_rd_imm_opcode_function(opcode_params, funcstate, fileline):
+    immediate_value = evaluate_possible_sym_error_if_undefined(opcode_params[1], fileline)
+    add_datatypes_from_registers(funcstate.regs, opcode_params[0], opcode_params[0], immediate_value, fileline)
+    return True
 
-def add_rd_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def add_rd_rs_opcode_function(opcode_params, funcstate, fileline):
+    add_datatypes_from_registers(funcstate.regs, opcode_params[0], opcode_params[0], opcode_params[1], fileline)
+    return True
 
-def add_rd_rs_opcode_function(opcode_params, function_state, fileline):
-    pass
+def add_rd_sp_imm_opcode_function(opcode_params, funcstate, fileline):
+    immediate_value = evaluate_possible_sym_error_if_undefined(opcode_params[2], fileline)
+    new_sp = copy.deepcopy(funcstate.regs["sp"][-1])
+    new_sp.ref.add_offset(immediate_value)
+    funcstate.regs[opcode_params[0]].append(RegisterInfo(new_sp, fileline))
+    return True
 
-def add_rd_sp_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def add_sp_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def add_sp_opcode_function(opcode_params, function_state, fileline):
-    pass
+def sub_rd_rs_rn_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def sub_rd_rs_ro_opcode_function(opcode_params, function_state, fileline):
-    pass
+def sub_rd_rs_imm_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def sub_rd_rs_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def sub_rd_imm_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def sub_rd_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def sub_rd_rs_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def sub_rd_rs_opcode_function(opcode_params, function_state, fileline):
-    pass
+def add_sp_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def add_sp_opcode_function(opcode_params, function_state, fileline):
-    pass
+def mov_imm_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def mov_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def mov_reg_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def mov_reg_opcode_function(opcode_params, function_state, fileline):
-    pass
+def cmp_imm_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def cmp_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def cmp_reg_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def cmp_reg_opcode_function(opcode_params, function_state, fileline):
-    pass
+def and_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def and_opcode_function(opcode_params, function_state, fileline):
-    pass
+def eor_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def eor_opcode_function(opcode_params, function_state, fileline):
-    pass
+def adc_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def adc_opcode_function(opcode_params, function_state, fileline):
-    pass
+def sbc_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def sbc_opcode_function(opcode_params, function_state, fileline):
-    pass
+def ror_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def ror_opcode_function(opcode_params, function_state, fileline):
-    pass
+def tst_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def tst_opcode_function(opcode_params, function_state, fileline):
-    pass
+def neg_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def neg_opcode_function(opcode_params, function_state, fileline):
-    pass
+def cmn_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def cmn_opcode_function(opcode_params, function_state, fileline):
-    pass
+def orr_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def orr_opcode_function(opcode_params, function_state, fileline):
-    pass
+def mul_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def mul_opcode_function(opcode_params, function_state, fileline):
-    pass
+def bic_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def bic_opcode_function(opcode_params, function_state, fileline):
-    pass
+def mvn_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def mvn_opcode_function(opcode_params, function_state, fileline):
-    pass
+def bx_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def bx_opcode_function(opcode_params, function_state, fileline):
-    pass
+def ldr_label_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def ldr_label_opcode_function(opcode_params, function_state, fileline):
-    pass
+def ldr_pool_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def ldr_pool_opcode_function(opcode_params, function_state, fileline):
-    pass
+def ldr_rb_ro_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def ldr_rb_ro_opcode_function(opcode_params, function_state, fileline):
-    pass
+def ldr_rb_imm_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def ldr_rb_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def ldr_sp_imm_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def ldr_sp_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def str_rb_ro_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def str_rb_ro_opcode_function(opcode_params, function_state, fileline):
-    pass
+def str_rb_imm_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def str_rb_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def str_sp_imm_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def str_sp_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def ldrb_rb_ro_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def ldrb_rb_ro_opcode_function(opcode_params, function_state, fileline):
-    pass
+def ldrb_rb_imm_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def ldrb_rb_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def strb_rb_ro_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def strb_rb_ro_opcode_function(opcode_params, function_state, fileline):
-    pass
+def strb_rb_imm_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def strb_rb_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def ldrh_rb_ro_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def ldrh_rb_ro_opcode_function(opcode_params, function_state, fileline):
-    pass
+def ldrh_rb_imm_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def ldrh_rb_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def strh_rb_ro_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def strh_rb_ro_opcode_function(opcode_params, function_state, fileline):
-    pass
+def strh_rb_imm_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def strh_rb_imm_opcode_function(opcode_params, function_state, fileline):
-    pass
+def ldrsb_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def ldrsb_opcode_function(opcode_params, function_state, fileline):
-    pass
+def ldrsh_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def ldrsh_opcode_function(opcode_params, function_state, fileline):
-    pass
+def adr_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def adr_opcode_function(opcode_params, function_state, fileline):
-    pass
+def push_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def push_opcode_function(opcode_params, function_state, fileline):
-    pass
+def pop_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def pop_opcode_function(opcode_params, function_state, fileline):
-    pass
+def stmia_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def stmia_opcode_function(opcode_params, function_state, fileline):
-    pass
+def ldmia_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def ldmia_opcode_function(opcode_params, function_state, fileline):
-    pass
+def beq_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def beq_opcode_function(opcode_params, function_state, fileline):
-    pass
+def bne_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def bne_opcode_function(opcode_params, function_state, fileline):
-    pass
+def bcs_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def bcs_opcode_function(opcode_params, function_state, fileline):
-    pass
+def bcc_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def bcc_opcode_function(opcode_params, function_state, fileline):
-    pass
+def bmi_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def bmi_opcode_function(opcode_params, function_state, fileline):
-    pass
+def bpl_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def bpl_opcode_function(opcode_params, function_state, fileline):
-    pass
+def bvs_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def bvs_opcode_function(opcode_params, function_state, fileline):
-    pass
+def bvc_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def bvc_opcode_function(opcode_params, function_state, fileline):
-    pass
+def bhi_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def bhi_opcode_function(opcode_params, function_state, fileline):
-    pass
+def bls_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def bls_opcode_function(opcode_params, function_state, fileline):
-    pass
+def bge_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def bge_opcode_function(opcode_params, function_state, fileline):
-    pass
+def blt_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def blt_opcode_function(opcode_params, function_state, fileline):
-    pass
+def bgt_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def bgt_opcode_function(opcode_params, function_state, fileline):
-    pass
+def ble_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def ble_opcode_function(opcode_params, function_state, fileline):
-    pass
+def swi_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def swi_opcode_function(opcode_params, function_state, fileline):
-    pass
+def swi_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def swi_opcode_function(opcode_params, function_state, fileline):
-    pass
+def b_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
-def b_opcode_function(opcode_params, function_state, fileline):
-    pass
-
-def bl_opcode_function(opcode_params, function_state, fileline):
-    pass
+def bl_opcode_function(opcode_params, funcstate, fileline):
+    return True
 
 class Opcode:
     def __init__(self, regex, function):
@@ -246,13 +304,13 @@ class Opcode:
         self.function = function
         self.callbacks = []
     
-    def run_function(self, opcode_params, function_state, fileline):
+    def run_function(self, opcode_params, funcstate, fileline):
         do_main_function = True
         for callback in self.callbacks:
-            do_main_function &= callback(opcode_params, function_state, fileline)
+            do_main_function &= callback(opcode_params, funcstate, fileline)
         
         if do_main_function:
-            self.function(opcode_params, function_state, fileline)
+            self.function(opcode_params, funcstate, fileline)
     
     def append_callback(self, callback):
         self.callbacks.append(callback)
@@ -263,13 +321,13 @@ lsr_imm_opcode = Opcode(rd_rs_imm_regex, lsr_imm_opcode_function)
 lsr_reg_opcode = Opcode(rd_rs_regex, lsr_reg_opcode_function)
 asr_imm_opcode = Opcode(rd_rs_imm_regex, asr_imm_opcode_function)
 asr_reg_opcode = Opcode(rd_rs_regex, asr_reg_opcode_function)
-add_rd_rs_ro_opcode = Opcode(rd_rs_ro_regex, add_rd_rs_ro_opcode_function)
+add_rd_rs_rn_opcode = Opcode(rd_rs_rn_regex, add_rd_rs_rn_opcode_function)
 add_rd_rs_imm_opcode = Opcode(rd_rs_imm_regex, add_rd_rs_imm_opcode_function)
 add_rd_imm_opcode = Opcode(rd_imm_regex, add_rd_imm_opcode_function)
 add_rd_rs_opcode = Opcode(rd_rs_regex, add_rd_rs_opcode_function)
 add_rd_sp_imm_opcode = Opcode(rd_sp_imm_regex, add_rd_sp_imm_opcode_function)
 add_sp_opcode = Opcode(sp_or_sp_sp_imm_regex, add_sp_opcode_function)
-sub_rd_rs_ro_opcode = Opcode(rd_rs_ro_regex, sub_rd_rs_ro_opcode_function)
+sub_rd_rs_rn_opcode = Opcode(rd_rs_rn_regex, sub_rd_rs_rn_opcode_function)
 sub_rd_rs_imm_opcode = Opcode(rd_rs_imm_regex, sub_rd_rs_imm_opcode_function)
 sub_rd_imm_opcode = Opcode(rd_imm_regex, sub_rd_imm_opcode_function)
 sub_rd_rs_opcode = Opcode(rd_rs_regex, sub_rd_rs_opcode_function)
@@ -347,7 +405,7 @@ opcodes = {
         asr_reg_opcode,
     ),
     "add": (
-        add_rd_rs_ro_opcode,
+        add_rd_rs_rn_opcode,
         add_rd_rs_imm_opcode,
         add_rd_imm_opcode,
         add_rd_rs_opcode,
@@ -355,7 +413,7 @@ opcodes = {
         add_sp_opcode
     ),
     "sub": (
-        sub_rd_rs_ro_opcode,
+        sub_rd_rs_rn_opcode,
         sub_rd_rs_imm_opcode,
         sub_rd_imm_opcode,
         sub_rd_rs_opcode,
@@ -514,14 +572,14 @@ opcodes = {
 }
 
 def add_datatypes_from_registers(registers, dest_reg, source_reg, operand_reg_or_imm, fileline):
-    source_datatype = registers[source_reg]
-    if operand_reg_or_imm is Immediate:
-        operand_datatype = operand_reg_or_imm
+    source_datatype = registers[source_reg][-1]
+    if isinstance(operand_reg_or_imm, int):
+        operand_datatype = Primitive(Size.BYTE, operand_reg_or_imm).wrap()
     else:
-        operand_datatype = registers[operand_reg_or_imm]
+        operand_datatype = registers[operand_reg_or_imm][-1]
     
-    result_datatype = add_datatypes(source_datatype, operand_datatype)
-    
+    result_datatype = add_datatypes(source_datatype, operand_datatype, fileline)
+    registers[dest_reg].append(RegisterInfo(result_datatype, fileline))
 
 def add_datatypes(source_datatype, operand_datatype):
     if source_datatype.type < operand_datatype.type:
@@ -538,31 +596,31 @@ def add_datatypes(source_datatype, operand_datatype):
             return UnknownDataType()
         elif datatype_strong.type == DataType.POINTER:
             # if the operation is pointer + unk, then we know (assume) that unk is a primitive
-            datatype_weak.type = DataType.PRIMITIVE
+            datatype_weak.ref = Primitive(Size.WORD)
             print("Context information: unk + pointer")
             result_datatype = copy.deepcopy(datatype_strong)
-            result_datatype.add_offset(NaN)
+            result_datatype.ref.add_offset(NaN)
             return result_datatype
         else:
-            raise RuntimeError("Invalid DataType constant of %s!" % datatype_strong.type)
+            raise fileline_error("Invalid DataType constant of %s!" % datatype_strong.type, fileline)
     elif datatype_weak.type == DataType.PRIMITIVE:
         if datatype_strong.type == DataType.PRIMITIVE:
-            return new_primitive(source_datatype.value + operand_datatype.value)
+            return (source_datatype.ref.value + operand_datatype.ref.value)
         elif datatype_strong.type == DataType.POINTER:
             result_datatype = copy.deepcopy(datatype_strong)
             result_datatype.add_offset(datatype_weak.value)
             return result_datatype
         else:
-            raise RuntimeError("Invalid DataType constant of %s!" % datatype_strong.type)
+            raise fileline_error("Invalid DataType constant of %s!" % datatype_strong.type, fileline)
     elif datatype_weak == DataType.POINTER and datatype_strong == DataType.POINTER:
-        raise RuntimeError("Impossible add operation found! (pointer + pointer)")
+        raise fileline_error("Impossible add operation found! (pointer + pointer)", fileline)
     else:
-        raise RuntimeError("Invalid DataType constant of %s!" % datatype_weak.type)
+        raise fileline_error("Invalid DataType constant of %s!" % datatype_weak.type, fileline)
 
 def add_datatypes_for_dereference(datatype1, datatype2):
     
 
-def read_opcode(line, function_state, fileline):
+def read_opcode(line, funcstate, fileline):
     line = line.strip()
     opcode_parts = line.split(None, 1)
     opcode_subsyntaxes = opcodes[opcode_parts[0]]
@@ -570,7 +628,7 @@ def read_opcode(line, function_state, fileline):
     for subsyntax in opcode_syntaxes:
         regex_groups = re.findall(subsyntax.regex, opcode_parts[1])
         if len(regex_groups) == 1:
-            subsyntax.function(regex_groups[0], function_state, fileline)
+            subsyntax.function(regex_groups[0], funcstate, fileline)
             break
     else:
         raise RuntimeError("Unknown opcode \"%s\"!" % line)
