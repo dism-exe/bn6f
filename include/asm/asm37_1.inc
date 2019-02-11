@@ -255,6 +255,6 @@
 // .equ byte_200BE70, 0x200BE70
 // .equ dword_200BE7C, 0x200BE7C
 // .equ unk_2011EA0, 0x2011EA0
-// .equ byte_2011EE0, 0x2011EE0
+// .equ eStructArr2011EE0, 0x2011EE0
 
 .endif // INC_ASM_ASM37_1

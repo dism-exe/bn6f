@@ -4,7 +4,7 @@
 /* Public Symbols */
 .global byte_86C54D4
 .global byte_86C5550
-.global byte_86C5790
+.global tileRefs86C5790
 .global dword_86C57EC
 
 

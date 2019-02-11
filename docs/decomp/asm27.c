@@ -1,7 +1,7 @@
 // 0x80946c4
 int sub_80946C4()
 {
-    decompAndCopyData_8000B30(&initRefs_80946D4);
+    decompAndCopyData(&initRefs_80946D4);
     return 0;
 }
 

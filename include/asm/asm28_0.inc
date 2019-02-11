@@ -87,7 +87,7 @@
 // .global sound_play // () -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010BE
 // .global sub_80010C6
@@ -227,7 +227,7 @@
 .include "data/dat38_65.inc"
 // .global byte_86C54D4
 // .global byte_86C5550
-// .global byte_86C5790
+// .global tileRefs86C5790
 // .global dword_86C57EC
 
 .include "data/dat38_66.inc"
@@ -262,7 +262,7 @@
 // .equ byte_2009F4E, 0x2009F4E
 // .equ byte_2009F4F, 0x2009F4F
 // .equ byte_2009FC3, 0x2009FC3
-// .equ unk_200AC80, 0x200AC80
+// .equ eS200AC80, 0x200AC80
 // .equ word_200AC84, 0x200AC84
 // .equ word_200AC86, 0x200AC86
 // .equ dword_200ACB0, 0x200ACB0
@@ -277,16 +277,16 @@
 // .equ dword_200ACF8, 0x200ACF8
 // .equ byte_200ACFC, 0x200ACFC
 // .equ dword_200AD00, 0x200AD00
-// .equ byte_200AD04, 0x200AD04
+// .equ word_200AD04, 0x200AD04
 // .equ word_200AD06, 0x200AD06
 // .equ unk_200EF40, 0x200EF40
 // .equ unk_2011C50, 0x2011C50
 // .equ dword_2011CC0, 0x2011CC0
 // .equ unk_2020000, 0x2020000
 // .equ unk_2020204, 0x2020204
-// .equ unk_202DA04, 0x202DA04
+// .equ eDialogScript202DA04, 0x202DA04
 // .equ byte_202FA04, 0x202FA04
-// .equ unk_2033404, 0x2033404
+// .equ eDialogScript2033404, 0x2033404
 // .equ unk_2033700, 0x2033700
 // .equ unk_2034E00, 0x2034E00
 // .equ unk_2036500, 0x2036500

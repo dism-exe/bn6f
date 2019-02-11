@@ -237,7 +237,7 @@ sub_8089244:
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	// initRefs
 	ldr r0, off_8089264 // =byte_8089268
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	mov r0, #0x7f
 	bl sound_play // () -> void
 	pop {r4-r7,pc}

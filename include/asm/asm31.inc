@@ -1285,8 +1285,8 @@
 // .equ dword_203CFBC, 0x203CFBC
 // .equ dword_203CFC0, 0x203CFC0
 // .equ byte_203CFC4, 0x203CFC4
-// .equ byte_3001750, 0x3001750
-// .equ unk_3001B60, 0x3001B60
+// .equ iPallete3001750, 0x3001750
+// .equ iPallete3001B60, 0x3001B60
 // .equ byte_3003D0C, 0x3003D0C
 .equ LCDControl, 0x4000000
 .equ BG2Rotation_ScalingParameterA_dx_, 0x4000020

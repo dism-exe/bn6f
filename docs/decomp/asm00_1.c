@@ -1930,7 +1930,7 @@ int __fastcall sub_80047E0(int result, int a2, int a3, int a4)
     v10 = a3;
     v11 = a4;
     v4 = 2147483648;
-    v5 = byte_2011EE0;
+    v5 = eStructArr2011EE0;
     v6 = 0;
     while ( 1 )
     {
@@ -2017,7 +2017,7 @@ int __fastcall sub_8004864(int result, int a2, int a3, int a4)
     v12 = a4;
     v5 = 0x80000000 >> (v4 & 0x1F);
     v6 = v4;
-    v7 = &byte_2011EE0[120 * v4];
+    v7 = &eStructArr2011EE0[120 * v4];
     while ( 1 )
     {
         v8 = v6 >> 5;
@@ -2064,7 +2064,7 @@ int *sub_80048D2()
     result = TestEventFlagFromImmediate(23, 2);
     if ( v2 )
     {
-        v3 = byte_2011EE0;
+        v3 = eStructArr2011EE0;
         do
         {
             if ( *v3 & 1 && (!*(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_0a) || *v3 & 4) )
@@ -2092,7 +2092,7 @@ int sub_8004934()
 
     v0 = 56;
     v1 = 0;
-    v2 = byte_2011EE0;
+    v2 = eStructArr2011EE0;
     do
     {
         v3 = *v2;
@@ -2140,7 +2140,7 @@ signed int sub_80049BA()
     char *v1; // r3
 
     result = 0;
-    v1 = byte_2011EE0;
+    v1 = eStructArr2011EE0;
     do
     {
         *(v1 + 25) = 0;
@@ -4564,7 +4564,7 @@ int __fastcall sub_8005F40(int a1, int a2, int a3, int a4)
     int v26; // r2
     int v27; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_80017E0(v4, v5, v6, v7);
     v8 = sub_8001974();
     sub_8001AFC(v8, v9, v10, v11);
@@ -10784,7 +10784,7 @@ signed int sub_8009E2C()
     int v0; // r5
     signed int result; // r0
 
-    chatbox_runScript(dword_87F2F68, *(*(v0 + 144) + 4));
+    chatbox_runScript(dialogScript_87F2F68, *(*(v0 + 144) + 4));
     result = 4;
     *(v0 + 2) = 4;
     return result;
@@ -13122,7 +13122,7 @@ int sub_800B144()
     char v16; // r1
     int v17; // r0
 
-    dword_203CBE4 = dword_20013F0;
+    dword_203CBE4 = eRngSeed20013F0;
     *byte_203CBE8 = *(*(v0 + oToolkit_S2034880_Ptr) + 60);
     if ( sub_802D246() & 0x200000 )
     {
@@ -13231,7 +13231,7 @@ int sub_800B2D8()
         CopyWords(byte_203F5AC, &unk_2034AC4, 0x64u);
         CopyWords(byte_203F5AC, byte_203C980, 0x64u);
     }
-    dword_20013F0 = *byte_203F4A4;
+    eRngSeed20013F0 = *byte_203F4A4;
     CopyWords(byte_203F510, byte_203EB00, 0x28u);
     CopyWords(byte_203F610, byte_203EB28, 0x28u);
     CopyWords(byte_203F538, &unk_2036790, 0x28u);
@@ -14203,5 +14203,3 @@ int sub_800BCF6()
     }
     return result;
 }
-
-

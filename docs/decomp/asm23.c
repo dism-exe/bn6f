@@ -92,7 +92,7 @@ int __fastcall sub_8089244(int a1)
     int v2; // r2
 
     CopyWords(&dword_87DE44C[8 * a1], byte_30016F0, 0x20u);
-    decompAndCopyData_8000B30(byte_8089268);
+    decompAndCopyData(byte_8089268);
     return sound_play(127, v1, v2);
 }
 

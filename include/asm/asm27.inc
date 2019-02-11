@@ -8,7 +8,7 @@
 .include "asm/asm00_0.inc"
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 
 .include "asm/asm03_0.inc"
 // .global sub_80307D8

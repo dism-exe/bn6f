@@ -91,7 +91,7 @@
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global loc_8000AC8
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global sub_8000C00
 // .global sub_8000D84
 // .global sub_8000E28
@@ -100,7 +100,7 @@
 // .global getPETNaviSelect // () -> u8
 // .global rng_800154C // () -> void
 // .global sub_80015FC
-// .global sub_80017AA
+// .global zeroFillVRAM
 // .global sub_80017E0
 // .global sub_8001820
 // .global sub_800183C
@@ -514,8 +514,8 @@
 // .equ unk_20222F0, 0x20222F0
 // .equ unk_20226F0, 0x20226F0
 // .equ unk_20229F0, 0x20229F0
-// .equ unk_2022AA0, 0x2022AA0
-// .equ unk_2022AB0, 0x2022AB0
+// .equ eGuiSprite2022AA0, 0x2022AA0
+// .equ byte_2022AB0, 0x2022AB0
 // .equ unk_2022B70, 0x2022B70
 // .equ byte_2022B76, 0x2022B76
 // .equ word_2023BA0, 0x2023BA0
@@ -552,8 +552,8 @@
 // .equ word_202A020, 0x202A020
 // .equ dword_202A034, 0x202A034
 // .equ unk_202A3E0, 0x202A3E0
-// .equ word_202A3F4, 0x202A3F4
-// .equ word_202A3FC, 0x202A3FC
+// .equ byte_202A3F4, 0x202A3F4
+// .equ byte_202A3FC, 0x202A3FC
 // .equ unk_202CA00, 0x202CA00
 // .equ unk_2033800, 0x2033800
 // .equ unk_20343E0, 0x20343E0
@@ -563,12 +563,12 @@
 // .equ unk_2034570, 0x2034570
 // .equ unk_20345A8, 0x20345A8
 // .equ unk_20345C4, 0x20345C4
-// .equ unk_20345FC, 0x20345FC
-// .equ unk_20346DC, 0x20346DC
-// .equ unk_2034714, 0x2034714
-// .equ unk_203474C, 0x203474C
-// .equ unk_2034768, 0x2034768
-// .equ unk_20347A0, 0x20347A0
+// .equ eTileRefs20345FC, 0x20345FC
+// .equ eTileRefs20346DC, 0x20346DC
+// .equ eTileRefs2034714, 0x2034714
+// .equ eTileRefs203474C, 0x203474C
+// .equ eTileRefs2034768, 0xeTileRefs2034768
+// .equ eTileRefs20347A0, 0x20347A0
 // .equ unk_20347D8, 0x20347D8
 // .equ unk_2034814, 0x2034814
 // .equ unk_203486C, 0x203486C

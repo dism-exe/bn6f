@@ -189,7 +189,7 @@
 // .global WordFill
 // .global loc_8000AC4
 // .global loc_8000AC8
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
@@ -209,7 +209,7 @@
 // .global sub_8001778
 // .global sub_8001788
 // .global sub_80017A0
-// .global sub_80017AA
+// .global zeroFillVRAM
 // .global sub_800183C
 // .global sub_800187C
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -978,7 +978,7 @@
 // .equ byte_3001610, 0x3001610
 // .equ byte_30016B0, 0x30016B0
 // .equ byte_30016F0, 0x30016F0
-// .equ byte_3001750, 0x3001750
+// .equ iPallete3001750, 0x3001750
 // .equ byte_3001950, 0x3001950
 // .equ byte_3001960, 0x3001960
 // .equ unk_3001A40, 0x3001A40
@@ -989,7 +989,7 @@
 // .equ unk_3001AE0, 0x3001AE0
 // .equ byte_3001B00, 0x3001B00
 // .equ unk_3001B20, 0x3001B20
-// .equ dword_3001D70, 0x3001D70
+// .equ iObjectAttr3001D70, 0x3001D70
 // .equ unk_3002580, 0x3002580
 // .equ dword_3002590, 0x3002590
 // .equ unk_30025B0, 0x30025B0

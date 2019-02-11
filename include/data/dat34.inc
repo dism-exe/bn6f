@@ -16,9 +16,9 @@
 // .global sound_play // () -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global sub_80015FC
-// .global sub_80017AA
+// .global zeroFillVRAM
 // .global sub_80017E0
 // .global sub_800183C
 
@@ -122,8 +122,8 @@
 
 /* Undeclared Symbols */
 // .equ decomp_2013A00, 0x2013A00
-// .equ unk_2022AA0, 0x2022AA0
-// .equ unk_2022FA0, 0x2022FA0
+// .equ eGuiSprite2022AA0, 0x2022AA0
+// .equ eGuiSprite2022FA0, 0x2022FA0
 // .equ unk_2024290, 0x2024290
 // .equ unk_2025070, 0x2025070
 // .equ unk_20251A0, 0x20251A0

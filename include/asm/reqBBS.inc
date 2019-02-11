@@ -69,14 +69,14 @@
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global loc_8000AC8
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
 // .global change_20013F0_800151C // () -> int
 // .global sub_80015FC
 // .global sub_8001778
 // .global sub_8001788
 // .global sub_80017A0
-// .global sub_80017AA
+// .global zeroFillVRAM
 // .global sub_80017E0
 // .global sub_800183C
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -185,7 +185,7 @@
 // .equ unk_2018200, 0x2018200
 // .equ reqBBS_tile_data, 0x2018204
 // .equ unk_2018A00, 0x2018A00
-// .equ unk_2018A04, 0x2018A04
+// .equ eTileRefs2018A04, 0x2018A04
 // .equ unk_2019200, 0x2019200
 // .equ unk_201AA00, 0x201AA00
 // .equ unk_201AA04, 0x201AA04
@@ -194,7 +194,7 @@
 // .equ unk_201BA04, 0x201BA04
 // .equ unk_201C200, 0x201C200
 // .equ byte_201CA00, 0x201CA00
-// .equ reqBBS_requestEntries_IDs, 0x2023A00
+// .equ reqBBS_eRequestEntriesIDs, 0x2023A00
 // .equ unk_2025A00, 0x2025A00
 // .equ reqBBS_requestNames_textualData, 0x2025A04
 // .equ unk_2029A00, 0x2029A00
@@ -202,10 +202,10 @@
 // .equ unk_2033A00, 0x2033A00
 // .equ reqBBS_dialogList, 0x2033A04
 // .equ byte_30016D0, 0x30016D0
-// .equ byte_3001750, 0x3001750
+// .equ iPallete3001750, 0x3001750
 // .equ byte_3001960, 0x3001960
 // .equ unk_30019C0, 0x30019C0
 // .equ unk_30019E0, 0x30019E0
-// .equ unk_3001B60, 0x3001B60
+// .equ iPallete3001B60, 0x3001B60
 
 .endif // INC_ASM_REQBBS

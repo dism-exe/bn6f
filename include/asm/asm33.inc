@@ -50,12 +50,12 @@
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global HalfwordFill
 // .global loc_8000AC8
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global sub_8000C00
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010BE
 // .global sub_80015FC
-// .global sub_80017AA
+// .global zeroFillVRAM
 // .global sub_80017E0
 // .global sub_800183C
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -484,10 +484,10 @@
 // .equ unk_2020500, 0x2020500
 // .equ unk_2020C00, 0x2020C00
 // .equ unk_20222A0, 0x20222A0
-// .equ unk_2022AA0, 0x2022AA0
-// .equ unk_2022B94, 0x2022B94
-// .equ unk_2022C00, 0x2022C00
-// .equ unk_20231A0, 0x20231A0
+// .equ eGuiSprite2022AA0, 0x2022AA0
+// .equ byte_2022B94, 0x2022B94
+// .equ byte_2022C00, 0x2022C00
+// .equ byte_20231A0, 0x20231A0
 // .equ word_2023BB0, 0x2023BB0
 // .equ byte_2023BC0, 0x2023BC0
 // .equ byte_2023BC8, 0x2023BC8

@@ -250,7 +250,7 @@
 // .global sub_8001778
 // .global sub_8001788
 // .global sub_80017A0
-// .global sub_80017AA
+// .global zeroFillVRAM
 // .global sub_80017E0
 // .global sub_8001820
 // .global sub_800182E
@@ -1053,7 +1053,7 @@
 // .global dword_86E09F8
 
 .include "data/dat38_96.inc"
-// .global dword_87F2F68
+// .global dialogScript_87F2F68
 
 
 /* Undeclared Symbols */
@@ -1077,7 +1077,7 @@
 // .equ eUnusedGameStateBaseOffset, 0x2001060
 // .equ dword_2001064, 0x2001064
 // .equ map_activeNPCs, 0x20010E0
-// .equ dword_20013F0, 0x20013F0
+// .equ eRngSeed20013F0, 0x20013F0
 // .equ byte_2001600, 0x2001600
 // .equ dword_20018B8, 0x20018B8
 // .equ unk_20018C0, 0x20018C0
@@ -1178,7 +1178,7 @@
 // .equ byte_200ACFC, 0x200ACFC
 // .equ dword_200AD00, 0x200AD00
 // .equ dword_200AF70, 0x200AF70
-// .equ byte_200DF20, 0x200DF20
+// .equ eStruct200DF20, 0x200DF20
 // .equ byte_200DF21, 0x200DF21
 // .equ byte_200DF28, 0x200DF28
 // .equ unk_200F3A0, 0x200F3A0
@@ -1189,7 +1189,7 @@
 // .equ byte_2011BB0, 0x2011BB0
 // .equ unk_2011C50, 0x2011C50
 // .equ unk_2011E50, 0x2011E50
-// .equ byte_2011EE0, 0x2011EE0
+// .equ eStructArr2011EE0, 0x2011EE0
 // .equ byte_2011EE1, 0x2011EE1
 // .equ dword_2011EE4, 0x2011EE4
 // .equ dword_2011EE8, 0x2011EE8
@@ -1321,10 +1321,10 @@
 // .equ byte_203F7E4, 0x203F7E4
 // .equ byte_3000EA8, 0x3000EA8
 // .equ byte_3001690, 0x3001690
-// .equ byte_3001750, 0x3001750
+// .equ iPallete3001750, 0x3001750
 // .equ byte_3001960, 0x3001960
 // .equ unk_3001980, 0x3001980
-// .equ unk_3001B60, 0x3001B60
+// .equ iPallete3001B60, 0x3001B60
 // .equ dword_3002180, 0x3002180
 // .equ dword_3002184, 0x3002184
 // .equ dword_3002188, 0x3002188

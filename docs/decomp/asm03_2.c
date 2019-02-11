@@ -1111,7 +1111,7 @@ void uncomp_80471F8()
     int v0; // r5
 
     SWI_LZ77UnCompReadNormalWrite8bit(*(*(v0 + 28) + 4), &unk_2029A00);
-    SWI_LZ77UnCompReadNormalWrite8bit(comp_873DE4C, &unk_202BA00);
+    SWI_LZ77UnCompReadNormalWrite8bit(comp_873DE4C, &eDecomp202BA00);
     SWI_LZ77UnCompReadNormalWrite8bit(comp_873ECC8, &unk_202DA00);
 }
 
@@ -1290,7 +1290,7 @@ void __fastcall copyData_804747C(int a1, int a2, int a3, int a4)
 {
     sub_800183C(a1, a2, a3, a4);
     sub_8046664();
-    decompAndCopyData_8000B30(off_8047494);
+    decompAndCopyData(off_8047494);
 }
 
 
@@ -1488,16 +1488,16 @@ void sub_8047834()
             sub_80465A0(byte_8046B74);
             sub_811980C(*(v1 + 1), v1[4], 0, 0);
             sub_8119854(120, 80, 0);
-            chatbox_runScript(&unk_202BA04, 127);
+            chatbox_runScript(&eDialogScript202BA04, 127);
         }
         else if ( v2 == 1 )
         {
-            chatbox_runScript(&unk_202BA04, *(v1 + 1));
+            chatbox_runScript(&eDialogScript202BA04, *(v1 + 1));
             sub_80478B8();
         }
         else
         {
-            chatbox_runScript(&unk_202DA04, *(v1 + 1) >> 2);
+            chatbox_runScript(&eDialogScript202DA04, *(v1 + 1) >> 2);
             sub_80478B8();
             sub_80465A0(byte_8046B84);
         }
@@ -2521,7 +2521,7 @@ int sub_8049058()
     result = engine_isScreeneffectAnimating();
     if ( !v4 )
     {
-        sub_80017AA(result, v1, v2, v3);
+        zeroFillVRAM(result, v1, v2, v3);
         sub_800183C(v5, v6, v7, v8);
         sub_8001850();
         chatbox_8040818();
@@ -2806,8 +2806,8 @@ signed int __fastcall sub_804930C(int a1)
     {
         LODWORD(v5) = sub_803C440(v4);
         v6 = v5;
-        sub_803C150(v5, __PAIR__(&unk_202AF00, HIDWORD(v5)));
-        sub_803C2AA(&unk_202AB00, &unk_202AF00, v6, SHIDWORD(v6));
+        sub_803C150(v5, __PAIR__(&byte_202AF00, HIDWORD(v5)));
+        sub_803C2AA(&byte_202AB00, &byte_202AF00, v6, SHIDWORD(v6));
         sub_803BB2C(12);
         v1[1] = 40;
         sound_play(129, v7, v8);
@@ -3610,7 +3610,7 @@ void __noreturn sub_80499CE()
         sub_8049D4A();
         sub_8049D3A();
         v3 = sub_803F79E();
-        sub_80017AA(v3, v4, v5, v6);
+        zeroFillVRAM(v3, v4, v5, v6);
         sub_800183C(v7, v8, v9, v10);
         sub_8001850();
         sub_8001778(&byte_40);
@@ -3631,10 +3631,10 @@ int __fastcall copyData_8049A18(int a1, int a2, int a3, int a4)
     int v8; // r3
     _WORD *v9; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_800183C(v5, v6, v7, v8);
     sub_8001850();
-    decompAndCopyData_8000B30(&initRefs_8049A54);
+    decompAndCopyData(&initRefs_8049A54);
     v9 = *(v4 + oToolkit_RenderInfoPtr);
     v9[11] -= 4;
     v9[10] -= 2;
@@ -3654,10 +3654,10 @@ int __fastcall copyData_8049AAC(int a1, int a2, int a3, int a4)
     int v8; // r3
     int result; // r0
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_800183C(v5, v6, v7, v8);
     sub_8001850();
-    decompAndCopyData_8000B30(byte_8049AD8);
+    decompAndCopyData(byte_8049AD8);
     sub_803B91C(4);
     sub_803B91C(5);
     result = 0;
@@ -3688,7 +3688,7 @@ void sub_8049BC0()
             v5 = v3 >> 4;
             CopyWords(off_8049C84[v4], off_8049C70[v0], 0x20u);
             sub_802FE28(32 * v0 + 1074855968, (byte_8049C58[v4] + 2864) | (*(&dword_8049C68 + v0) << 12), 2, 0);
-            (loc_8000AC8)(&unk_202BA04 + 512 * v5, (v0 << 9) + 100756992, 512);
+            (loc_8000AC8)(&eDialogScript202BA04 + 512 * v5, (v0 << 9) + 100756992, 512);
             sub_8132A50(166, 32 * v0 + 19, 1, 16 * v0 + 880);
         }
         ++v0;
@@ -3873,7 +3873,7 @@ int sub_8049E5C()
     result = engine_isScreeneffectAnimating();
     if ( !v4 )
     {
-        sub_80017AA(result, v1, v2, v3);
+        zeroFillVRAM(result, v1, v2, v3);
         sub_800183C(v5, v6, v7, v8);
         sub_8001850();
         chatbox_8040818();
@@ -4114,7 +4114,7 @@ int sub_804A078()
     if ( v1 )
         sub_8049F70();
     v2 = sub_804A230(*(v0 + 34));
-    sub_80017AA(v2, v3, v4, v5);
+    zeroFillVRAM(v2, v3, v4, v5);
     sub_800183C(v6, v7, v8, v9);
     sub_8001850();
     sub_8001778(&byte_40);
@@ -4133,10 +4133,10 @@ int __fastcall copyData_804A0AC(int a1, int a2, int a3, int a4)
     int v8; // r3
     _WORD *v9; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_800183C(v5, v6, v7, v8);
     sub_8001850();
-    decompAndCopyData_8000B30(byte_804A0E8);
+    decompAndCopyData(byte_804A0E8);
     v9 = *(v4 + oToolkit_RenderInfoPtr);
     v9[11] -= 4;
     v9[10] -= 2;
@@ -4257,7 +4257,7 @@ void __fastcall sub_804A2E8(int a1, int a2, int a3, int a4)
     int v5; // r2
     int v6; // r3
 
-    ZeroFillByWord(&unk_200AC80, 0x58u, a3, a4);
+    ZeroFillByWord(&eS200AC80, 0x58u, a3, a4);
     ZeroFillByWord(*(v4 + oToolkit_SubmenuPtr), 0x80u, v5, v6);
 }
 
@@ -4297,7 +4297,7 @@ void __fastcall __noreturn sub_804A360(int a1, int a2, int a3, int a4)
     int v18; // r0
     int v19; // r1
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_80017E0(v6, v7, v8, v9);
     sub_800183C(v10, v11, v12, v13);
     sub_80015FC(16);
@@ -4516,8 +4516,8 @@ int __noreturn sub_804A61C()
     }
     while ( v1 < 64 );
     *(&unk_20096E0 + v0) = 0;
-    decompAndCopyData_8000B30(&unk_20096E0);
-    decompAndCopyData_8000B30(&initRefs_804A6E4);
+    decompAndCopyData(&unk_20096E0);
+    decompAndCopyData(&initRefs_804A6E4);
     copyTiles();
     copyTiles();
     return copyTiles();
@@ -4529,17 +4529,17 @@ int __noreturn sub_804A7C0()
 {
     int v0; // r5
 
-    sub_81200EC(*(v0 + 46), &unk_202A3E0, &unk_20345FC);
+    sub_81200EC(*(v0 + 46), &unk_202A3E0, &eTileRefs20345FC);
     copyTiles();
-    sub_8120390(*(v0 + 46), &unk_202A3E0, &unk_20346DC, byte_804A264);
+    sub_8120390(*(v0 + 46), &unk_202A3E0, &eTileRefs20346DC, byte_804A264);
     copyTiles();
-    sub_81203E4(*(v0 + 46), &unk_202A3E0, &unk_2034714, &dword_35C | 0xA000);
+    sub_81203E4(*(v0 + 46), &unk_202A3E0, &eTileRefs2034714, &dword_35C | 0xA000);
     copyTiles();
-    sub_8120458(*(v0 + 46), &unk_202A3E0, &unk_203474C, 45590);
+    sub_8120458(*(v0 + 46), &unk_202A3E0, &eTileRefs203474C, 45590);
     copyTiles();
-    sub_81204C4(*(v0 + 46), &unk_202A3E0, &unk_2034768, 37711);
+    sub_81204C4(*(v0 + 46), &unk_202A3E0, &eTileRefs2034768, 37711);
     copyTiles();
-    sub_8120618(*(v0 + 46), &unk_202A3E0, &unk_20347A0, byte_200 | 0xB000);
+    sub_8120618(*(v0 + 46), &unk_202A3E0, &eTileRefs20347A0, byte_200 | 0xB000);
     return copyTiles();
 }
 
@@ -6695,5 +6695,3 @@ int sub_804CF84()
 
     return sub_8003570(off_804CF9C[*(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)]);
 }
-
-

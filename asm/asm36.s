@@ -53,7 +53,7 @@ sub_8130084:
 	push {r7,lr}
 	bl sub_8130404
 	mov r7, r0
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #0x10
@@ -105,7 +105,7 @@ sub_8130108:
 	bl sub_812AFA4
 	// initRefs
 	ldr r0, off_8130120 // =byte_8130124
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {pc}
 	.byte 0x0, 0x0
 off_8130120: .word byte_8130124
@@ -2290,7 +2290,7 @@ sub_81312FC:
 	push {r4,r7,lr}
 	bl sub_81312EC
 	mov r7, r0
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #0x10
@@ -2409,7 +2409,7 @@ sub_8131400:
 	bl sub_812AF78
 	// initRefs
 	ldr r0, off_8131414 // =byte_8131418
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {pc}
 	.balign 4, 0x00
 off_8131414: .word byte_8131418
@@ -4461,7 +4461,7 @@ sub_81326D4:
 	bl sub_8046664 // () -> void
 	// initRefs
 	ldr r0, off_8132714 // =dword_8132718 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	// a1
 	ldr r0, off_8132710 // =byte_81326C8
 	bl sub_80465A0 // (void *a1) -> void
@@ -4744,14 +4744,14 @@ sub_8132980:
 	// cpyOff
 	mov r2, #1
 	// tileRefs
-	ldr r3, off_8132994 // =unk_2022AA0 
+	ldr r3, off_8132994 // =eGuiSprite2022AA0 
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	thumb_func_end sub_8132980
 
 	pop {r4-r7,pc}
-off_8132994: .word unk_2022AA0
+off_8132994: .word eGuiSprite2022AA0
 	push {r4-r7,lr}
 	mov r0, #0x20 
 	mov r1, #0x10
@@ -4937,7 +4937,7 @@ off_8132B9C: .word sub_8132BA8+1
 	thumb_local_start
 sub_8132BA8:
 	push {lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #0x10
@@ -5087,10 +5087,10 @@ loc_8132CD4:
 	str r0, [r4,r6]
 	// initRefs
 	ldr r0, off_8132D78 // =unk_20096E0 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	// initRefs
 	ldr r0, off_8132D7C // =off_8132D80
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_8132D14 // =off_8132D18
 	ldr r1, off_8132D4C // =byte_201BF00
 	ldr r2, off_8132D50 // =decomp_2013A00 
@@ -7153,10 +7153,10 @@ loc_8133EDC:
 	str r0, [r4,r6]
 	// initRefs
 	ldr r0, off_8133FB0 // =unk_20096E0 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	// initRefs
 	ldr r0, off_8133FB4 // =off_8133FB8
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_8133F2C // =off_8133F30
 	ldr r1, off_8133F64 // =unk_2028A20 
 	ldr r2, off_8133F68 // =decomp_2013A00 
@@ -7592,7 +7592,7 @@ sub_8134310:
 	mov r7, r5
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_8134458 // =unk_202A3E0 
-	ldr r2, off_813445C // =unk_20345FC 
+	ldr r2, off_813445C // =eTileRefs20345FC 
 	mov r3, #0xb
 	mov r5, #7
 	bl sub_81200EC
@@ -7607,7 +7607,7 @@ sub_8134310:
 	// cpyOff
 	mov r2, #2
 	// tileRefs
-	ldr r3, off_813445C // =unk_20345FC 
+	ldr r3, off_813445C // =eTileRefs20345FC 
 	mov r4, #8
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -7615,7 +7615,7 @@ sub_8134310:
 
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_8134458 // =unk_202A3E0 
-	ldr r2, off_8134460 // =unk_20346DC 
+	ldr r2, off_8134460 // =eTileRefs20346DC 
 	ldr r3, off_8134464 // =byte_81331B4
 	ldr r4, dword_8134468 // =0x6007600 
 	mov r5, #7
@@ -7627,13 +7627,13 @@ sub_8134310:
 	sub r0, r0, r1
 	mov r1, #4
 	mov r2, #2
-	ldr r3, off_8134460 // =unk_20346DC 
+	ldr r3, off_8134460 // =eTileRefs20346DC 
 	mov r4, #2
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_8134458 // =unk_202A3E0 
-	ldr r2, off_813446C // =unk_2034714 
+	ldr r2, off_813446C // =eTileRefs2034714 
 	mov r3, #0xa
 	lsl r3, r3, #0xc
 	ldr r4, off_8134470 // =0x35c 
@@ -7648,13 +7648,13 @@ sub_8134310:
 	sub r0, r0, r1
 	mov r1, #4
 	mov r2, #2
-	ldr r3, off_813446C // =unk_2034714 
+	ldr r3, off_813446C // =eTileRefs2034714 
 	mov r4, #2
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_8134458 // =unk_202A3E0 
-	ldr r2, off_8134478 // =unk_203474C 
+	ldr r2, off_8134478 // =eTileRefs203474C 
 	mov r3, #0xb
 	lsl r3, r3, #0xc
 	ldr r4, dword_813447C // =0x216 
@@ -7668,13 +7668,13 @@ sub_8134310:
 	sub r0, r0, r1
 	mov r1, #4
 	mov r2, #2
-	ldr r3, off_8134478 // =unk_203474C 
+	ldr r3, off_8134478 // =eTileRefs203474C 
 	mov r4, #1
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_8134458 // =unk_202A3E0 
-	ldr r2, off_8134480 // =unk_2034768 
+	ldr r2, off_8134480 // =eTileRefs2034768 
 	mov r3, #9
 	lsl r3, r3, #0xc
 	ldr r4, dword_8134484 // =0x34f 
@@ -7688,13 +7688,13 @@ sub_8134310:
 	sub r0, r0, r1
 	mov r1, #4
 	mov r2, #2
-	ldr r3, off_8134480 // =unk_2034768 
+	ldr r3, off_8134480 // =eTileRefs2034768 
 	mov r4, #2
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_8134458 // =unk_202A3E0 
-	ldr r2, off_8134488 // =unk_20347A0 
+	ldr r2, off_8134488 // =eTileRefs20347A0 
 	mov r3, #0xb
 	lsl r3, r3, #0xc
 	ldr r4, off_813448C // =0x200 
@@ -7708,7 +7708,7 @@ sub_8134310:
 	sub r0, r0, r1
 	mov r1, #4
 	mov r2, #2
-	ldr r3, off_8134488 // =unk_20347A0 
+	ldr r3, off_8134488 // =eTileRefs20347A0 
 	mov r4, #2
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -7748,18 +7748,18 @@ locret_8134454:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8134458: .word unk_202A3E0
-off_813445C: .word unk_20345FC
-off_8134460: .word unk_20346DC
+off_813445C: .word eTileRefs20345FC
+off_8134460: .word eTileRefs20346DC
 off_8134464: .word byte_81331B4
 dword_8134468: .word 0x6007600
-off_813446C: .word unk_2034714
+off_813446C: .word eTileRefs2034714
 off_8134470: .word 0x35C
 dword_8134474: .word 0x6006B80
-off_8134478: .word unk_203474C
+off_8134478: .word eTileRefs203474C
 dword_813447C: .word 0x216
-off_8134480: .word unk_2034768
+off_8134480: .word eTileRefs2034768
 dword_8134484: .word 0x34F
-off_8134488: .word unk_20347A0
+off_8134488: .word eTileRefs20347A0
 off_813448C: .word 0x200
 	thumb_local_start
 sub_8134490:
@@ -10136,7 +10136,7 @@ off_81356E8: .word sub_81356F4+1
 	thumb_local_start
 sub_81356F4:
 	push {lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #0x10
@@ -10741,10 +10741,10 @@ loc_8135BB4:
 	str r0, [r4,r6]
 	// initRefs
 	ldr r0, off_8135C5C // =unk_20096E0 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	// initRefs
 	ldr r0, off_8135C60 // =off_8135C64
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_8135C20 // =unk_201CF80 
 	ldr r1, off_8135C1C // =unk_30019E0 
 	ldr r2, off_8135C24 // =0x100 
@@ -10866,7 +10866,7 @@ off_8135CEC: .word unk_201D180
 	.word unk_20229F0
 	.word decomp_2013A00
 	.word 0x886D46E4
-	.word unk_2022AB0
+	.word byte_2022AB0
 	.word decomp_2013A00
 	.word 0x0
 off_8135D7C: .word off_8135D80
@@ -12684,7 +12684,7 @@ sub_8136B74:
 	pop {r4-r7,pc}
 off_8136B8C: .word off_8136B90
 off_8136B90: .word unk_20229F0
-	.word unk_2022AB0
+	.word byte_2022AB0
 off_8136B98: .word dword_8136B9C
 dword_8136B9C: .word 0xA0B0B
 	thumb_local_start
@@ -12916,7 +12916,7 @@ sub_8136D8C:
 	bl ZeroFillByByte // (void *mem, int size) -> void
 	// initRefs
 	ldr r0, off_8136EC4 // =off_8136EC8
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	bl sub_811F6C0
 	mov r0, r10
 	ldr r0, [r0,#0x34]
@@ -14404,7 +14404,7 @@ off_81378C8: .word sub_81378D4+1
 	thumb_local_start
 sub_81378D4:
 	push {r4-r7,lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #0x10
@@ -14665,10 +14665,10 @@ loc_8137AE8:
 	str r0, [r4,r6]
 	// initRefs
 	ldr r0, off_8137B9C // =unk_20096E0 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	// initRefs
 	ldr r0, off_8137BA0 // =off_8137BA4
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_8137B28 // =off_8137B2C
 	ldr r1, off_8137B60 // =byte_201BF00
 	ldr r2, off_8137B64 // =decomp_2013A00 
@@ -15525,7 +15525,7 @@ off_81382C4: .word sub_81382D0+1
 	thumb_local_start
 sub_81382D0:
 	push {lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	bl sub_81387D8
@@ -16152,7 +16152,7 @@ loc_8138782:
 	bge loc_8138782
 	// initRefs
 	ldr r0, off_8138790 // =off_8138794
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {pc}
 off_8138790: .word off_8138794
 off_8138794: .word dword_86C4B38

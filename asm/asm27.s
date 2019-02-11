@@ -5,7 +5,7 @@ sub_80946C4:
 	push {r4-r7,lr}
 	// initRefs
 	ldr r0, off_80946D0 // =initRefs_80946D4 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 off_80946D0: .word initRefs_80946D4

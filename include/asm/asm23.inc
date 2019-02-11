@@ -12,7 +12,7 @@
 .include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010D4
 // .global sub_8001158 // () -> void

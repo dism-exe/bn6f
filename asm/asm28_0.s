@@ -400,7 +400,7 @@ byte_809929C: .byte 0x0, 0x0, 0x0, 0x0, 0x34, 0x1, 0xFF, 0x1, 0x76, 0x0, 0x44, 0
 	.byte 0x54, 0x0, 0xDC, 0xFF, 0x0, 0x0, 0x54, 0x0, 0xD0, 0xFF, 0x0, 0x0, 0x4
 	.byte 0xDA, 0x2, 0x2, 0x1B, 0x1, 0xFF, 0x1, 0x9C, 0xFF, 0x0, 0x0, 0x0, 0x0
 	.byte 0xA8, 0xFF, 0x0, 0x0, 0x0, 0x0
-	.word unk_202DA04
+	.word eDialogScript202DA04
 	.byte 0x1C, 0x3, 0xFF, 0x1, 0x50, 0xFF, 0xCE, 0x0, 0x0, 0x0, 0x50
 	.byte 0xFF, 0xDA, 0x0, 0x0, 0x0, 0x4, 0xDA, 0x2, 0x2, 0x1D, 0x7
 	.byte 0xFF, 0x1, 0xD4, 0xFF, 0x70, 0xFF, 0x0, 0x0, 0xD4, 0xFF, 0x64
@@ -448,28 +448,28 @@ byte_809929C: .byte 0x0, 0x0, 0x0, 0x0, 0x34, 0x1, 0xFF, 0x1, 0x76, 0x0, 0x44, 0
 	.byte 0x52, 0xFF, 0x96, 0x0, 0x0, 0x0, 0x5E, 0xFF, 0x96, 0x0, 0x0
 	.byte 0x0, 0x4, 0xDA, 0x2, 0x2, 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word unk_202DA04
+	.word eDialogScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word unk_202DA04
+	.word eDialogScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word unk_202DA04
+	.word eDialogScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word unk_202DA04
+	.word eDialogScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word unk_202DA04
+	.word eDialogScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word unk_202DA04
+	.word eDialogScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word unk_202DA04
+	.word eDialogScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word unk_202DA04
+	.word eDialogScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
 	.word byte_202FA04
@@ -583,7 +583,7 @@ byte_8099E5C: .byte 0xA0, 0xE2, 0xA2, 0xE2, 0xA4, 0xE2, 0xA6, 0xE2, 0xA8
 	.byte 0xE2, 0xAA, 0xE2, 0xAC, 0xE2, 0xA1, 0xE2, 0xA3, 0xE2
 	.byte 0xA5, 0xE2, 0xA7, 0xE2, 0xA9, 0xE2, 0xAB, 0xE2, 0xAD
 	.byte 0xE2
-byte_8099E78: .byte 0xA0, 0xE2, 0xA2, 0xE2, 0xA4, 0xE2, 0xA6, 0xE2, 0xA8
+tileRefs8099E78: .byte 0xA0, 0xE2, 0xA2, 0xE2, 0xA4, 0xE2, 0xA6, 0xE2, 0xA8
 	.byte 0xE2, 0xAA, 0xE2, 0xA1, 0xE2, 0xA3, 0xE2, 0xA5, 0xE2
 	.byte 0xA7, 0xE2, 0xA9, 0xE2, 0xAB, 0xE2
 byte_8099E90: .byte 0x16, 0x0, 0x0, 0x5, 0x16, 0x1, 0x1, 0x5, 0x16, 0x2, 0x2, 0x5, 0xFF
@@ -709,7 +709,7 @@ sub_809A078:
 	cmp r0, #0
 	bne loc_809A0F2
 	bl sub_804A2E8
-	ldr r7, off_809A0FC // =unk_200AC80
+	ldr r7, off_809A0FC // =eS200AC80
 	bl sub_804BD00
 	strh r0, [r7,#0x4] // (word_200AC84 - 0x200ac80)
 	strh r1, [r7,#0x6] // (word_200AC86 - 0x200ac80)
@@ -755,7 +755,7 @@ loc_809A0F2:
 	bl sub_809A360
 	mov r0, #0
 	pop {r4-r7,pc}
-off_809A0FC: .word unk_200AC80
+off_809A0FC: .word eS200AC80
 off_809A100: .word scripts_86C580C
 	thumb_func_end sub_809A078
 
@@ -959,7 +959,7 @@ sub_809A2DC:
 	push {r4-r7,lr}
 	// initRefs
 	ldr r0, off_809A2E8 // =byte_809A2EC
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_809A2E8: .word byte_809A2EC
@@ -973,7 +973,7 @@ sub_809A308:
 	push {lr}
 	// initRefs
 	ldr r0, off_809A314 // =initRefs_809A318 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {pc}
 	.balign 4, 0x00
 off_809A314: .word initRefs_809A318
@@ -991,7 +991,7 @@ sub_809A334:
 	push {r4-r7,lr}
 	// initRefs
 	ldr r0, off_809A340 // =initRefs_809A344 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_809A340: .word initRefs_809A344
@@ -1183,7 +1183,7 @@ loc_809A4AE:
 	mov r0, #1
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-	.word unk_200AC80
+	.word eS200AC80
 	thumb_func_end sub_809A44C
 
 	thumb_local_start
@@ -1356,7 +1356,7 @@ loc_809A610:
 	pop {r4-r7,pc}
 off_809A614: .word byte_809A628
 off_809A618: .word off_809A624
-	.word unk_200AC80
+	.word eS200AC80
 	.word scripts_86C580C
 off_809A624: .word unk_2020204
 byte_809A628: .byte 0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0xFF, 0x0
@@ -1614,7 +1614,7 @@ sub_809A80C:
 	// cpyOff
 	mov r2, #0
 	// tileRefs
-	ldr r3, off_809A850 // =byte_86C5790 
+	ldr r3, off_809A850 // =tileRefs86C5790 
 	mov r4, #9
 	mov r5, #5
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -1625,11 +1625,11 @@ sub_809A80C:
 	// cpyOff
 	mov r2, #0
 	// tileRefs
-	ldr r3, off_809A854 // =byte_8099E78
+	ldr r3, off_809A854 // =tileRefs8099E78
 	mov r4, #6
 	mov r5, #2
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-	ldr r0, off_809A858 // =unk_2033404 
+	ldr r0, off_809A858 // =eDialogScript2033404 
 	mov r1, #6
 	ldr r2, off_809A85C // =unk_200EF40 
 	ldr r3, dword_809A860 // =0x600d400 
@@ -1640,9 +1640,9 @@ sub_809A80C:
 	bl render_graphicalText_8045F8C
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_809A850: .word byte_86C5790
-off_809A854: .word byte_8099E78
-off_809A858: .word unk_2033404
+off_809A850: .word tileRefs86C5790
+off_809A854: .word tileRefs8099E78
+off_809A858: .word eDialogScript2033404
 off_809A85C: .word unk_200EF40
 dword_809A860: .word 0x600D400
 off_809A864: .word dword_86A5D60
@@ -1692,7 +1692,7 @@ sub_809A8E4:
 	push {r4-r7,lr}
 	mov r0, #0
 	bl sub_8033FC0
-	ldr r7, off_809AA20 // =unk_200AC80
+	ldr r7, off_809AA20 // =eS200AC80
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_ChatboxPtr]
 	ldrh r2, [r7,#0x4] // (word_200AC84 - 0x200ac80)
@@ -1720,7 +1720,7 @@ loc_809A90A:
 	bl sub_8046664 // () -> void
 	// initRefs
 	ldr r0, off_809A930 // =byte_809A934
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -1835,7 +1835,7 @@ sub_809AA04:
 	bl sub_8033FC0
 	mov r0, #0
 	pop {r4-r7,pc}
-off_809AA20: .word unk_200AC80
+off_809AA20: .word eS200AC80
 byte_809AA24: .byte 0x16, 0x0, 0x0, 0x5, 0x16, 0x1, 0x1, 0x5, 0x16, 0x2, 0x2, 0x5, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 byte_809AA34: .byte 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17, 0x47, 0x1, 0xFF
@@ -1864,7 +1864,7 @@ sub_809AAB8:
 	bl sub_8033FC0
 	bl sub_8003984
 	bl sub_8003AD4
-	ldr r0, off_809AD78 // =unk_2033404 
+	ldr r0, off_809AD78 // =eDialogScript2033404 
 	mov r1, #0xa
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	bl sub_8046664 // () -> void
@@ -1883,7 +1883,7 @@ sub_809AADC:
 	bl chatbox_8045F4C
 	cmp r0, #0
 	bne loc_809AB0C
-	ldr r0, off_809AD78 // =unk_2033404 
+	ldr r0, off_809AD78 // =eDialogScript2033404 
 	mov r1, #0xc
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #1
@@ -1897,7 +1897,7 @@ sub_809AADC:
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_809AB0C:
-	ldr r0, off_809AD78 // =unk_2033404 
+	ldr r0, off_809AD78 // =eDialogScript2033404 
 	mov r1, #0xb
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0
@@ -1934,7 +1934,7 @@ loc_809AB3A:
 	strb r0, [r5,#8]
 	mov r0, #0x68 
 	bl sound_play // () -> void
-	ldr r0, off_809AD78 // =unk_2033404 
+	ldr r0, off_809AD78 // =eDialogScript2033404 
 	mov r1, #0xb
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	b loc_809AC20
@@ -1957,7 +1957,7 @@ loc_809AB5A:
 	beq loc_809AB92
 	cmp r0, #2
 	beq loc_809AC14
-	ldr r0, off_809AD78 // =unk_2033404 
+	ldr r0, off_809AD78 // =eDialogScript2033404 
 	mov r1, #0xd
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #1
@@ -1986,7 +1986,7 @@ loc_809AB92:
 	bl dword_8021AEC+2
 	// initRefs
 	ldr r0, off_809AC28 // =dword_809AC2C 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	mov r0, #0xf
 	mov r1, #3
 	b loc_809AC06
@@ -2029,7 +2029,7 @@ loc_809AC06:
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	b loc_809AC20
 loc_809AC14:
-	ldr r0, off_809AD78 // =unk_2033404 
+	ldr r0, off_809AD78 // =eDialogScript2033404 
 	mov r1, #0x14
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #1
@@ -2212,7 +2212,7 @@ sub_809AD4C:
 	bl sub_8003AEA
 	mov r0, #0
 	pop {r4-r7,pc}
-off_809AD78: .word unk_2033404
+off_809AD78: .word eDialogScript2033404
 off_809AD7C: .word byte_86C67E4
 	.byte 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17, 0x7, 0x2, 0xFF, 0x14
 	.byte 0x3E, 0xE0, 0xB9, 0x73, 0x8, 0x3A, 0xFF, 0xF, 0x4, 0x80, 0x2
@@ -4014,7 +4014,7 @@ loc_809CC1C:
 	beq loc_809CC3E
 	mov r6, #1
 	mov r4, #0
-	ldr r1, off_809CC5C // =byte_200AD04
+	ldr r1, off_809CC5C // =word_200AD04
 	ldrh r0, [r1,#0x2] // (word_200AD06 - 0x200ad04)
 	tst r0, r0
 	beq loc_809CC3C
@@ -4040,7 +4040,7 @@ loc_809CC56:
 locret_809CC58:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_809CC5C: .word byte_200AD04
+off_809CC5C: .word word_200AD04
 	thumb_func_end sub_809CC00
 
 	thumb_local_start
@@ -4169,7 +4169,7 @@ loc_809CD7C:
 	beq loc_809CD9E
 	mov r6, #1
 	mov r4, #0
-	ldr r1, off_809CDC0 // =byte_200AD04
+	ldr r1, off_809CDC0 // =word_200AD04
 	ldrh r0, [r1,#0x2] // (word_200AD06 - 0x200ad04)
 	tst r0, r0
 	beq loc_809CD9C
@@ -4195,7 +4195,7 @@ loc_809CDBA:
 locret_809CDBC:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_809CDC0: .word byte_200AD04
+off_809CDC0: .word word_200AD04
 	thumb_func_end sub_809CD60
 
 	thumb_local_start

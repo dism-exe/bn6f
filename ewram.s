@@ -284,7 +284,7 @@ ds unk_200119E // 0x200119E
 	.space 382
 ds unk_200131C // 0x200131c
 	.space 212
-ds dword_20013F0 // 0x20013f0
+ds eRngSeed20013F0 // 0x20013f0
 	.space 16
 ds unk_2001400 // 0x2001400
 	.space 268
@@ -694,7 +694,7 @@ ds unk_2009F00 // 0x2009f00
 	.space 52
 ds dword_2009F34 // 0x2009f34
 	.space 4
-ds dword_2009F38 // 0x2009f38
+ds eFlags2009F38 // 0x2009f38
 	.space 8
 ds eOWPlayerObject // 0x2009f40
 	.space 1
@@ -884,7 +884,7 @@ ds byte_200AC35 // 0x200ac35
 	.space 11
 ds unk_200AC40 // 0x200ac40
 	.space 64
-ds unk_200AC80 // 0x200ac80
+ds eS200AC80 // 0x200ac80
 	.space 4
 ds word_200AC84 // 0x200ac84
 	.space 44
@@ -914,7 +914,7 @@ ds byte_200ACFC // 0x200acfc
 	.space 4
 ds dword_200AD00 // 0x200ad00
 	.space 4
-ds byte_200AD04 // 0x200ad04
+ds word_200AD04 // 0x200ad04
 	.space 1
 ds byte_200AD05 // 0x200ad05
 	.space 1
@@ -1161,7 +1161,7 @@ ds byte_200DD14 // 0x200dd14
 	.space 12
 ds byte_200DD20 // 0x200dd20
 	.space 512
-ds byte_200DF20 // 0x200df20
+ds eStruct200DF20 // 0x200df20
 	.space 1
 ds byte_200DF21 // 0x200df21
 	.space 3
@@ -1738,7 +1738,7 @@ ds unk_2011EA0 // 0x2011ea0
 	.space 4
 ds unk_2011EA4 // 0x2011ea4
 	.space 60
-ds byte_2011EE0 // 0x2011ee0
+ds eStructArr2011EE0 // 0x2011ee0
 	.space 1
 ds byte_2011EE1 // 0x2011ee1
 	.space 3
@@ -1834,7 +1834,7 @@ ds byte_2017204 // 0x2017204
 	.space 2044
 ds byte_2017A00 // 0x2017a00
 	.space 4
-ds byte_2017A04 // 0x2017a04
+ds eTileRefs2017A04 // 0x2017a04
 	.space 28
 ds byte_2017A20 // 0x2017a20
 	.space 192
@@ -1868,7 +1868,7 @@ ds unk_2018800 // 0x2018800
 	.space 512
 ds unk_2018A00 // 0x2018a00
 	.space 4
-ds unk_2018A04 // 0x2018a04
+ds eTileRefs2018A04 // 0x2018a04
 	.space 508
 ds unk_2018C00 // 0x2018c00
 	.space 512
@@ -2158,27 +2158,27 @@ ds unk_20227A0 // 0x20227a0
 	.space 592
 ds unk_20229F0 // 0x20229f0
 	.space 176
-ds unk_2022AA0 // 0x2022aa0
+ds eGuiSprite2022AA0 // 0x2022aa0
 	.space 16
-ds unk_2022AB0 // 0x2022ab0
+ds byte_2022AB0 // 0x2022ab0
 	.space 192
 ds unk_2022B70 // 0x2022b70
 	.space 6
 ds byte_2022B76 // 0x2022b76
 	.space 30
-ds unk_2022B94 // 0x2022b94
+ds byte_2022B94 // 0x2022b94
 	.space 108
-ds unk_2022C00 // 0x2022c00
+ds byte_2022C00 // 0x2022c00
 	.space 284
-ds unk_2022D1C // 0x2022d1c
+ds byte_2022D1C // 0x2022d1c
 	.space 644
-ds unk_2022FA0 // 0x2022fa0
+ds eGuiSprite2022FA0 // 0x2022fa0
 	.space 512
-ds unk_20231A0 // 0x20231a0
+ds byte_20231A0 // 0x20231a0
 	.space 1660
-ds unk_202381C // 0x202381c
+ds byte_202381C // 0x202381c
 	.space 484
-ds reqBBS_requestEntries_IDs // 0x2023a00
+ds reqBBS_eRequestEntriesIDs // 0x2023a00
 	.space 416
 ds word_2023BA0 // 0x2023ba0
 	.space 16
@@ -2386,21 +2386,21 @@ ds unk_202A204 // 0x202a204
 	.space 476
 ds unk_202A3E0 // 0x202a3e0
 	.space 20
-ds word_202A3F4 // 0x202a3f4
+ds byte_202A3F4 // 0x202a3f4
 	.space 8
-ds word_202A3FC // 0x202a3fc
+ds byte_202A3FC // 0x202a3fc
 	.space 516
 ds unk_202A600 // 0x202a600
 	.space 4
-ds unk_202A604 // 0x202a604
+ds word_202A604 // 0x202a604
 	.space 1276
-ds unk_202AB00 // 0x202ab00
+ds byte_202AB00 // 0x202ab00
 	.space 1024
-ds unk_202AF00 // 0x202af00
+ds byte_202AF00 // 0x202af00
 	.space 2816
-ds unk_202BA00 // 0x202ba00
+ds eDecomp202BA00 // 0x202ba00
 	.space 4
-ds unk_202BA04 // 0x202ba04
+ds eDialogScript202BA04 // 0x202ba04
 	.space 4092
 ds unk_202CA00 // 0x202ca00
 	.space 512
@@ -2420,7 +2420,7 @@ ds unk_202D800 // 0x202d800
 	.space 512
 ds unk_202DA00 // 0x202da00
 	.space 4
-ds unk_202DA04 // 0x202da04
+ds eDialogScript202DA04 // 0x202da04
 	.space 508
 ds unk_202DC00 // 0x202dc00
 	.space 512
@@ -2522,7 +2522,7 @@ ds word_2033042 // 0x2033042
 	.space 958
 ds unk_2033400 // 0x2033400
 	.space 4
-ds unk_2033404 // 0x2033404
+ds eDialogScript2033404 // 0x2033404
 	.space 764
 ds unk_2033700 // 0x2033700
 	.space 256
@@ -2576,17 +2576,17 @@ ds unk_20345A8 // 0x20345a8
 	.space 28
 ds unk_20345C4 // 0x20345c4
 	.space 56
-ds unk_20345FC // 0x20345fc
+ds eTileRefs20345FC // 0x20345fc
 	.space 224
-ds unk_20346DC // 0x20346dc
+ds eTileRefs20346DC // 0x20346dc
 	.space 56
-ds unk_2034714 // 0x2034714
+ds eTileRefs2034714 // 0x2034714
 	.space 56
-ds unk_203474C // 0x203474c
+ds eTileRefs203474C // 0x203474c
 	.space 28
-ds unk_2034768 // 0x2034768
+ds eTileRefs2034768 // 0xeTileRefs2034768
 	.space 56
-ds unk_20347A0 // 0x20347a0
+ds eTileRefs20347A0 // 0x20347a0
 	.space 56
 ds unk_20347D8 // 0x20347d8
 	.space 40
@@ -2618,7 +2618,7 @@ ds byte_20349C0 // 0x20349c0
 	.space 64
 ds unk_2034A00 // 0x2034a00
 	.space 4
-ds unk_2034A04 // 0x2034a04
+ds eDialogScript2034A04 // 0x2034a04
 	.space 12
 ds byte_2034A10 // 0x2034a10
 	.space 80

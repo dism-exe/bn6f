@@ -1132,7 +1132,7 @@ sub_803423C:
 	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]
 	mov r1, #4
 	strb r1, [r0]
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_800183C
 	bl sub_8006910
 	mov r7, r10
@@ -1151,7 +1151,7 @@ sub_8034268:
 	push {lr}
 	mov r0, #9
 	bl sub_80015FC
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_800183C
 	bl decompJackInAnimationGfx_8034314 // () -> void
 	ldr r0, dword_803429C // =0x1341 
@@ -1227,7 +1227,7 @@ sub_80342EC:
 	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]
 	mov r1, #4
 	strb r1, [r0]
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_800183C
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_GameStatePtr]
@@ -1247,7 +1247,7 @@ decompJackInAnimationGfx_8034314:
 	push {r4-r7,lr}
 	// initRefs
 	ldr r0, off_8034334 // =initRefs_8034338 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r3, off_80343FC // =off_8034400 
 	mov r0, #0
 	strb r0, [r5,#3]
@@ -1316,7 +1316,7 @@ loc_80343D0:
 	// cpyOff
 	mov r2, #1
 	// tileRefs
-	ldr r3, off_803445C // =byte_2017A04 
+	ldr r3, off_803445C // =eTileRefs2017A04 
 	mov r4, #0x20 
 	mov r5, #0x14
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -1325,30 +1325,30 @@ loc_80343D0:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_80343FC: .word off_8034400
-off_8034400: .word byte_2017A04
+off_8034400: .word eTileRefs2017A04
 	.word byte_86C22C0
 dword_8034408: .word 0x2
-	.word byte_2017A04
+	.word eTileRefs2017A04
 	.word byte_86C22E0
 	.word 0x2
-	.word byte_2017A04
+	.word eTileRefs2017A04
 	.word byte_86C2300
 	.word 0x2
-	.word byte_2017A04
+	.word eTileRefs2017A04
 	.word byte_86C2320
 	.word 0x2
-	.word byte_2017A04
+	.word eTileRefs2017A04
 	.word byte_86C2340
 	.word 0x2
-	.word byte_2017A04
+	.word eTileRefs2017A04
 	.word byte_86C2360
 	.word 0x2
-	.word byte_2017A04
+	.word eTileRefs2017A04
 	.word byte_86C2380
 	.word 0x2
 	.word 0x0
 off_8034458: .word byte_3001960
-off_803445C: .word byte_2017A04
+off_803445C: .word eTileRefs2017A04
 byte_8034460: .byte 0x91, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 byte_803446C: .byte 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 dword_8034474: .word 0x0
@@ -1553,13 +1553,13 @@ off_80348FC: .word dword_8034908
 	.word dword_8034920
 	.word 0xFFFFFFFF
 dword_8034908: .word 0xC
-	.word unk_3001B60
+	.word iPallete3001B60
 	.word 0xFF0E0F0C
 	.word 0x80004210
 	.word 0x1
 	.word 0x0
 dword_8034920: .word 0xC
-	.word byte_3001750
+	.word iPallete3001750
 	.word 0xFF0C0E0C
 	.word 0x80004210
 	.word 0x1
@@ -1568,13 +1568,13 @@ off_8034938: .word dword_8034944
 	.word dword_803495C
 	.word 0xFFFFFFFF
 dword_8034944: .word 0x8
-	.word unk_3001B60
+	.word iPallete3001B60
 	.word 0xFF0E0F0C
 	.word 0x80004210
 	.word 0x1
 	.word 0x0
 dword_803495C: .word 0x8
-	.word byte_3001750
+	.word iPallete3001750
 	.word 0xFF0C0E0C
 	.word 0x80004210
 	.word 0x1
@@ -1582,7 +1582,7 @@ dword_803495C: .word 0x8
 	.word dword_803497C
 	.word 0xFFFFFFFF
 dword_803497C: .word 0xC
-	.word unk_3001B60
+	.word iPallete3001B60
 	.word 0xFF010F0C
 	.word 0x80004210
 	.word 0x1
@@ -1590,7 +1590,7 @@ dword_803497C: .word 0xC
 	.word dword_803499C
 	.word 0xFFFFFFFF
 dword_803499C: .word 0xC
-	.word unk_3001B60
+	.word iPallete3001B60
 	.word 0xFF010F0C
 	.word 0x80001084
 	.word 0x2
@@ -1935,7 +1935,7 @@ sub_8034DB0:
 	push {r4-r7,lr}
 	bl sub_8034C9C
 	beq loc_8034E22
-	ldr r7, off_8034E28 // =unk_200AC80 
+	ldr r7, off_8034E28 // =eS200AC80 
 	ldrh r0, [r7,#0x4] // (word_200AC84 - 0x200ac80)
 	cmp r0, #0
 	beq loc_8034DCA
@@ -1985,7 +1985,7 @@ loc_8034E22:
 	mov r0, #1
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8034E28: .word unk_200AC80
+off_8034E28: .word eS200AC80
 off_8034E2C: .word byte_8099EA0
 off_8034E30: .word byte_809A8A8
 off_8034E34: .word byte_809AA34
@@ -5268,13 +5268,13 @@ init_s_02011C50_8036E90:
 	str r0, [r5,#0x20] // s_02011C50.ptr_20
 	str r0, [r5,#0x24] // s_02011C50.ptr_24
 	str r0, [r5,#0x28] // s_02011C50.ptr_28
-	ldr r0, off_8036EBC // =unk_202DA04 
+	ldr r0, off_8036EBC // =eDialogScript202DA04 
 	str r0, [r5,#0x30] // s_02011C50.ptr_30
 	ldr r0, off_8036EC0 // =off_8036EC4 
 	str r0, [r5,#0x34] // s_02011C50.ptr_34
 	pop {r5,pc}
 	.balign 4, 0x00
-off_8036EBC: .word unk_202DA04
+off_8036EBC: .word eDialogScript202DA04
 off_8036EC0: .word off_8036EC4
 off_8036EC4: .word LCDControl
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -8468,11 +8468,11 @@ off_80386C8: .word 0x40
 	thumb_local_start
 initGfx_80386CC:
 	push {r4-r7,lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_800183C
 	// initRefs
 	ldr r0, off_80386E0 // =initRefs_80386E4 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_80386E0: .word initRefs_80386E4
@@ -8613,7 +8613,7 @@ off_8038B00: .word byte_2011E40
 	thumb_local_start
 sub_8038B04:
 	push {lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #0x14
@@ -9130,7 +9130,7 @@ decomp_initGfx_8038F30:
 	push {lr}
 	// initRefs
 	ldr r0, off_8038F3C // =initRefs_8038F40 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {pc}
 	.balign 4, 0x00
 off_8038F3C: .word initRefs_8038F40
@@ -9152,7 +9152,7 @@ initRefs_8038F40: .word dword_86BEAE0
 	thumb_local_start
 sub_8038F74:
 	push {r4-r7,lr}
-	ldr r0, off_8038F8C // =dword_873B9E0 
+	ldr r0, off_8038F8C // =dialogScript_873B9E0 
 	mov r1, #0x28 
 	ldr r2, off_8038F90 // =decomp_2013A00 
 	ldr r3, dword_8038F94 // =0x6005000 
@@ -9162,7 +9162,7 @@ sub_8038F74:
 	mov r7, #0
 	bl render_graphicalText_8045F8C
 	pop {r4-r7,pc}
-off_8038F8C: .word dword_873B9E0
+off_8038F8C: .word dialogScript_873B9E0
 off_8038F90: .word decomp_2013A00
 dword_8038F94: .word 0x6005000
 off_8038F98: .word dword_86B7AE0
@@ -9569,7 +9569,7 @@ sub_8039630:
 	push {r4-r7,lr}
 	bl engine_isScreeneffectAnimating // () -> zf
 	beq locret_8039652
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_800183C
 	bl sub_8001850
 	bl chatbox_8040818
@@ -10371,12 +10371,12 @@ sub_8039CB4:
 	bl sub_803C440
 	mov r2, r1
 	push {r0,r1}
-	ldr r1, off_8039D00 // =unk_202AB00 
-	ldr r3, off_8039D04 // =unk_202AF00 
+	ldr r1, off_8039D00 // =byte_202AB00 
+	ldr r3, off_8039D04 // =byte_202AF00 
 	bl sub_803C150
 	pop {r2,r3}
-	ldr r0, off_8039D00 // =unk_202AB00 
-	ldr r1, off_8039D04 // =unk_202AF00 
+	ldr r0, off_8039D00 // =byte_202AB00 
+	ldr r1, off_8039D04 // =byte_202AF00 
 	bl sub_803C2AA
 	mov r0, #0xc
 	bl sub_803BB2C
@@ -10392,8 +10392,8 @@ loc_8039CF4:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.byte 0, 0
-off_8039D00: .word unk_202AB00
-off_8039D04: .word unk_202AF00
+off_8039D00: .word byte_202AB00
+off_8039D04: .word byte_202AF00
 	thumb_func_end sub_8039CB4
 
 	thumb_local_start
@@ -11324,7 +11324,7 @@ loc_803A448:
 	mov r1, #0xc
 	add r1, r1, r7
 	mov r2, #1
-	ldr r3, off_803A46C // =unk_202A604 
+	ldr r3, off_803A46C // =word_202A604 
 	lsl r4, r7, #6
 	add r3, r3, r4
 	mov r4, #0x20 
@@ -11334,7 +11334,7 @@ loc_803A448:
 	blt loc_803A448
 	pop {r4-r7,pc}
 off_803A468: .word unk_202A204
-off_803A46C: .word unk_202A604
+off_803A46C: .word word_202A604
 	thumb_func_end sub_803A422
 
 	thumb_local_start
@@ -13007,12 +13007,12 @@ loc_803B210:
 	thumb_local_start
 copyData_803B216:
 	push {r4-r7,lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_800183C
 	bl sub_8001850
 	// initRefs
 	ldr r0, off_803B240 // =initRefs_803B244 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	mov r0, #0
 	bl sub_803B91C
 	mov r0, #1
@@ -13067,12 +13067,12 @@ initRefs_803B244: .word comp_87E4500 + 1<<31
 	thumb_local_start
 copyData_803B2E4:
 	push {r4-r7,lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_800183C
 	bl sub_8001850
 	// initRefs
 	ldr r0, off_803B30C // =initRefs_803B310 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	mov r0, #4
 	bl sub_803B91C
 	mov r0, #5
@@ -13133,12 +13133,12 @@ initRefs_803B310: .word comp_87E57BC + 1<<31
 	thumb_local_start
 copyData_803B3C8:
 	push {r4-r7,lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_800183C
 	bl sub_8001850
 	// initRefs
 	ldr r0, off_803B400 // =initRefs_803B404 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_RenderInfoPtr]
 	ldrh r0, [r3,#0x16]
@@ -13184,12 +13184,12 @@ initRefs_803B404: .word comp_87E50D4 + 1<<31
 	thumb_local_start
 copyData_803B45C:
 	push {r4-r7,lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_800183C
 	bl sub_8001850
 	// initRefs
 	ldr r0, off_803B48C // =initRefs_803B490 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	mov r0, #7
 	bl sub_803B91C
 	mov r0, #8
@@ -15959,11 +15959,11 @@ off_803CC5C: .word 0x40
 	thumb_local_start
 copyData_803CC60:
 	push {r4-r7,lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_800183C
 	// initRefs
-	ldr r0, off_803CC84 // =byte_803CC88
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	ldr r0, off_803CC84 // =initRefs803CC88
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	// j
 	mov r0, #0
 	// i
@@ -15977,8 +15977,8 @@ copyData_803CC60:
 	mov r5, #0x14
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r4-r7,pc}
-off_803CC84: .word byte_803CC88
-byte_803CC88: .byte 0x80, 0x69, 0x7E, 0x88, 0x20, 0x0, 0x0, 0x6
+off_803CC84: .word initRefs803CC88
+initRefs803CC88: .byte 0x80, 0x69, 0x7E, 0x88, 0x20, 0x0, 0x0, 0x6
 	.word decomp_2013A00
 	.word comp_87E6BFC + 1<<31
 	.word 0x0
@@ -15992,10 +15992,10 @@ off_803CC9C: .word byte_2017A00
 sub_803CCB0:
 	push {r4-r7,lr}
 	mov r1, r0
-	ldr r0, off_803CCBC // =dword_873B9E0 
+	ldr r0, off_803CCBC // =dialogScript_873B9E0 
 	bl chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
 	pop {r4-r7,pc}
-off_803CCBC: .word dword_873B9E0
+off_803CCBC: .word dialogScript_873B9E0
 	thumb_func_end sub_803CCB0
 
 	thumb_func_start sub_803CCC0
@@ -16080,7 +16080,7 @@ sub_803CD54:
 	thumb_local_start
 sub_803CD58:
 	push {r4-r7,lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_800183C
 	pop {r4-r7,pc}
 	thumb_func_end sub_803CD58
@@ -16089,10 +16089,10 @@ sub_803CD58:
 sub_803CD64:
 	push {r4-r7,lr}
 	mov r1, r0
-	ldr r0, off_803CD70 // =dword_873B9E0 
+	ldr r0, off_803CD70 // =dialogScript_873B9E0 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	pop {r4-r7,pc}
-off_803CD70: .word dword_873B9E0
+off_803CD70: .word dialogScript_873B9E0
 	thumb_func_end sub_803CD64
 
 	thumb_func_start sub_803CD74
@@ -16851,11 +16851,11 @@ off_803D2B4: .word 0x40
 	thumb_local_start
 copyData_803D2B8:
 	push {r4-r7,lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_800183C
 	// initRefs
 	ldr r0, off_803D2EC // =byte_803D2F0
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	// j
 	mov r0, #0
 	// i
@@ -18898,7 +18898,7 @@ loc_803E9C8:
 	beq loc_803E9E6
 	mov r6, #1
 	mov r4, #0
-	ldr r1, off_803EA18 // =byte_200AD04 
+	ldr r1, off_803EA18 // =word_200AD04 
 	ldrh r0, [r1,#0x2] // (word_200AD06 - 0x200ad04)
 	tst r0, r0
 	beq loc_803E9E4
@@ -18932,7 +18932,7 @@ loc_803EA0A:
 	pop {r4-r7,pc}
 	.word sCamera+0x50 // sCamera.unk_50
 off_803EA14: .word byte_200B1A0
-off_803EA18: .word byte_200AD04
+off_803EA18: .word word_200AD04
 	thumb_func_end sub_803E978
 
 	thumb_local_start
@@ -20495,7 +20495,7 @@ off_803F4C4: .word byte_200AC20
 	thumb_func_start clear_200AD04
 clear_200AD04:
 	push {lr}
-	ldr r0, off_803F55C // =byte_200AD04 
+	ldr r0, off_803F55C // =word_200AD04 
 	mov r1, #4
 	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {pc}
@@ -20505,7 +20505,7 @@ clear_200AD04:
 sub_803F4D4:
 	push {lr}
 	mov r2, #0
-	ldr r0, off_803F55C // =byte_200AD04 
+	ldr r0, off_803F55C // =word_200AD04 
 	ldrb r1, [r0,#0x1] // (byte_200AD05 - 0x200ad04)
 	tst r1, r1
 	beq loc_803F4E6
@@ -20522,7 +20522,7 @@ loc_803F4E8:
 	thumb_func_start sub_803F4EC
 sub_803F4EC:
 	push {lr}
-	ldr r1, off_803F55C // =byte_200AD04 
+	ldr r1, off_803F55C // =word_200AD04 
 	strb r0, [r1]
 	pop {pc}
 	thumb_func_end sub_803F4EC
@@ -20530,7 +20530,7 @@ sub_803F4EC:
 	thumb_local_start
 sub_803F4F4:
 	push {lr}
-	ldr r1, off_803F55C // =byte_200AD04 
+	ldr r1, off_803F55C // =word_200AD04 
 	mov r0, #1
 	strb r0, [r1,#0x1] // (byte_200AD05 - 0x200ad04)
 	pop {pc}
@@ -20540,7 +20540,7 @@ sub_803F4F4:
 	thumb_func_start sub_803F500
 sub_803F500:
 	push {lr}
-	ldr r1, off_803F55C // =byte_200AD04 
+	ldr r1, off_803F55C // =word_200AD04 
 	mov r0, #0xb4
 	strh r0, [r1,#0x2] // (word_200AD06 - 0x200ad04)
 	pop {pc}
@@ -20556,7 +20556,7 @@ loc_803F512:
 	push {lr}
 	ldr r0, off_803F51C // =0xf0 
 loc_803F516:
-	ldr r1, off_803F55C // =byte_200AD04 
+	ldr r1, off_803F55C // =word_200AD04 
 	strh r0, [r1,#0x2] // (word_200AD06 - 0x200ad04)
 	pop {pc}
 off_803F51C: .word 0xF0
@@ -20566,7 +20566,7 @@ off_803F520: .word 0x78
 	thumb_func_start sub_803F524
 sub_803F524:
 	push {lr}
-	ldr r1, off_803F55C // =byte_200AD04 
+	ldr r1, off_803F55C // =word_200AD04 
 	ldrb r0, [r1]
 	tst r0, r0
 	pop {pc}
@@ -20584,7 +20584,7 @@ sub_803F530:
 	beq loc_803F552
 	mov r4, #0
 	mov r6, #1
-	ldr r1, off_803F55C // =byte_200AD04 
+	ldr r1, off_803F55C // =word_200AD04 
 	ldrh r0, [r1,#0x2] // (word_200AD06 - 0x200ad04)
 	sub r0, #1
 	strh r0, [r1,#0x2] // (word_200AD06 - 0x200ad04)
@@ -20596,7 +20596,7 @@ loc_803F552:
 loc_803F558:
 	tst r6, r6
 	pop {r4,r6,pc}
-off_803F55C: .word byte_200AD04
+off_803F55C: .word word_200AD04
 	thumb_func_end sub_803F530
 
 	thumb_func_start sub_803F560
@@ -21544,7 +21544,7 @@ copyData_803FC64:
 	bl sub_80027C4
 	// initRefs
 	ldr r0, off_803FCA0 // =byte_803FCA4
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	bl sub_800183C
 	// j
 	mov r0, #0
@@ -21553,7 +21553,7 @@ copyData_803FC64:
 	// cpyOff
 	mov r2, #1
 	// tileRefs
-	ldr r3, off_803FCDC // =unk_2018A04 
+	ldr r3, off_803FCDC // =eTileRefs2018A04 
 	mov r4, #0x20 
 	mov r5, #0x14
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -21564,7 +21564,7 @@ copyData_803FC64:
 	// cpyOff
 	mov r2, #2
 	// tileRefs
-	ldr r3, off_803FCD8 // =byte_2017A04 
+	ldr r3, off_803FCD8 // =eTileRefs2017A04 
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -21583,8 +21583,8 @@ byte_803FCA4: .byte 0xD0, 0x41, 0x6C, 0x88, 0x0, 0x0, 0x0, 0x6
 	.word 0x0
 	.word unk_2018A00
 	.word 0x0
-off_803FCD8: .word byte_2017A04
-off_803FCDC: .word unk_2018A04
+off_803FCD8: .word eTileRefs2017A04
+off_803FCDC: .word eTileRefs2018A04
 off_803FCE0: .word decomp_2013A00
 byte_803FCE4: .byte 0x0, 0x2A, 0x0, 0x0, 0x0, 0x54, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end copyData_803FC64

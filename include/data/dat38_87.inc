@@ -3,7 +3,7 @@
 
 /* Public Symbols */
 .global byte_873811C
-.global dword_873B9E0
+.global dialogScript_873B9E0
 .global dword_873D108
 .global byte_873D9FC
 .global comp_873DE4C

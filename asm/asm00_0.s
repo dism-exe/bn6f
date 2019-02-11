@@ -837,8 +837,8 @@ locret_8000B2E:
 //   .word src | 1<<32
 //   .word
 //   .word dest
-	thumb_func_start decompAndCopyData_8000B30
-decompAndCopyData_8000B30:
+	thumb_func_start decompAndCopyData
+decompAndCopyData:
 	push {r4-r7,lr}
 	mov r7, r0
 loop_processArr_8000B34:
@@ -899,7 +899,7 @@ continue_advance3Elements_8000B88:
 	b loop_processArr_8000B34
 ret_reachedTerminator_8000B8C:
 	pop {r4-r7,pc}
-	thumb_func_end decompAndCopyData_8000B30
+	thumb_func_end decompAndCopyData
 
 // (u32 *dataRefs) -> void
 // [break] open PET
@@ -2326,7 +2326,7 @@ reverseCopyWords_8001506:
 	thumb_func_start sub_8001514
 sub_8001514:
 	ldr r0, rng_8001594 // =0xa338244f 
-	ldr r1, off_8001598 // =dword_20013F0 
+	ldr r1, off_8001598 // =eRngSeed20013F0 
 	str r0, [r1]
 	mov pc, lr
 	thumb_func_end sub_8001514
@@ -2335,7 +2335,7 @@ sub_8001514:
 	thumb_func_start change_20013F0_800151C
 change_20013F0_800151C:
 	push {r7,lr}
-	ldr r7, off_800159C // =dword_20013F0 
+	ldr r7, off_800159C // =eRngSeed20013F0 
 	ldr r0, [r7]
 	ldr r1, rng_80015A0 // =0x873ca9e5 
 	lsl r2, r0, #1
@@ -2350,7 +2350,7 @@ change_20013F0_800151C:
 	thumb_func_start sub_8001532
 sub_8001532:
 	push {r7,lr}
-	ldr r7, off_80015A4 // =dword_20013F0 
+	ldr r7, off_80015A4 // =eRngSeed20013F0 
 	ldr r0, [r7]
 	ldr r1, rng_80015A0 // =0x873ca9e5 
 	lsl r2, r0, #1
@@ -2412,10 +2412,10 @@ dead_rng_800157C:
 	pop {r7,pc}
 	.balign 4, 0x00
 rng_8001594: .word 0xA338244F
-off_8001598: .word dword_20013F0
-off_800159C: .word dword_20013F0
+off_8001598: .word eRngSeed20013F0
+off_800159C: .word eRngSeed20013F0
 rng_80015A0: .word 0x873CA9E5
-off_80015A4: .word dword_20013F0
+off_80015A4: .word eRngSeed20013F0
 off_80015A8: .word rngSeed_2001120
 off_80015AC: .word rngSeed_2001120
 off_80015B0: .word dword_20018E8
@@ -2586,8 +2586,8 @@ sub_80017A0:
 	mov pc, lr
 	thumb_func_end sub_80017A0
 
-	thumb_func_start sub_80017AA
-sub_80017AA:
+	thumb_func_start zeroFillVRAM
+zeroFillVRAM:
 	push {lr}
 	ldr r0, dword_80017D0 // =0x6000000 
 	mov r1, #0x40 
@@ -2607,7 +2607,7 @@ dword_80017D0: .word 0x6000000
 dword_80017D4: .word 0x6004000
 dword_80017D8: .word 0x6008000
 dword_80017DC: .word 0x600C000
-	thumb_func_end sub_80017AA
+	thumb_func_end zeroFillVRAM
 
 	thumb_func_start sub_80017E0
 sub_80017E0:
@@ -2635,13 +2635,13 @@ dword_8001804: .word 0x5000000
 	thumb_func_start renderPalletes_8001808
 renderPalletes_8001808:
 	push {lr}
-	ldr r0, off_8001818 // =unk_3001B60 
+	ldr r0, off_8001818 // =iPallete3001B60 
 	ldr r1, dword_800181C // =0x5000000 
 	mov r2, #0x20 
 	lsl r2, r2, #4
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {pc}
-off_8001818: .word unk_3001B60
+off_8001818: .word iPallete3001B60
 dword_800181C: .word 0x5000000
 	thumb_func_end renderPalletes_8001808
 
@@ -4320,12 +4320,12 @@ off_80023DC: .word 0x108
 getPalleteAndTransition_80023E0:
 	push {r5-r7,lr}
 	ldr r0, off_800243C // =byte_3001960 
-	ldr r1, off_8002440 // =unk_3001B60 
+	ldr r1, off_8002440 // =iPallete3001B60 
 	mov r2, #0x20 
 	lsl r2, r2, #4
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r0, off_8002444 // =byte_3001550 
-	ldr r1, off_8002448 // =byte_3001750 
+	ldr r1, off_8002448 // =iPallete3001750 
 	mov r2, #0x20 
 	lsl r2, r2, #4
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
@@ -4345,7 +4345,7 @@ loc_80023FC:
 	ldrb r1, [r7]
 	ldrb r6, [r7,#1]
 	sub r6, r6, r1
-	ldr r7, off_8002448 // =byte_3001750 
+	ldr r7, off_8002448 // =iPallete3001750 
 	lsl r1, r1, #5
 	add r7, r7, r1
 loc_800241E:
@@ -4365,9 +4365,9 @@ loc_8002428:
 	.balign 4, 0x00
 off_8002438: .word unk_200F388
 off_800243C: .word byte_3001960
-off_8002440: .word unk_3001B60
+off_8002440: .word iPallete3001B60
 off_8002444: .word byte_3001550
-off_8002448: .word byte_3001750
+off_8002448: .word iPallete3001750
 off_800244C: .word byte_8002450
 byte_8002450: .byte 0xF1, 0x5E, 0x0, 0x3, 0xF1, 0x5E, 0x0, 0x3, 0x79, 0x5F, 0x0
 	.byte 0x3, 0x79, 0x5F, 0x0, 0x3
@@ -4633,13 +4633,13 @@ off_800264C: .word unk_200F388
 	thumb_func_start renderPalletesAndObjs_8002650
 renderPalletesAndObjs_8002650:
 	push {lr}
-	ldr r0, off_8002660 // =byte_3001750 
+	ldr r0, off_8002660 // =iPallete3001750 
 	ldr r1, dword_8002664 // =0x5000200 
 	mov r2, #0x20 
 	lsl r2, r2, #4
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {pc}
-off_8002660: .word byte_3001750
+off_8002660: .word iPallete3001750
 dword_8002664: .word 0x5000200
 	thumb_func_end renderPalletesAndObjs_8002650
 

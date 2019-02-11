@@ -2007,7 +2007,7 @@ sub_812D298:
 	push {r7,lr}
 	bl sub_812D6F8
 	mov r7, r0
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #0x10
@@ -2056,7 +2056,7 @@ sub_812D310:
 	bl sub_812AF84
 	// initRefs
 	ldr r0, off_812D328 // =byte_812D32C 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {pc}
 	.byte 0x0, 0x0
 off_812D328: .word byte_812D32C

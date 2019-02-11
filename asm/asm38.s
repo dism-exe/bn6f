@@ -591,7 +591,7 @@ sub_3006108:
 	ldrh r7, [r5,#6]
 	tst r7, r7
 	beq loc_3006140
-	ldr r7, off_300619C // =byte_3001750
+	ldr r7, off_300619C // =iPallete3001750
 	mov r2, #0x20 
 loc_3006128:
 	sub r2, #4
@@ -659,7 +659,7 @@ loc_3006196:
 loc_3006198:
 	mov r5, r8
 	pop {pc}
-off_300619C: .word byte_3001750
+off_300619C: .word iPallete3001750
 off_30061A0: .word dword_200F340
 off_30061A4: .word byte_3001550
 	thumb_func_end sub_3006108
@@ -1541,7 +1541,7 @@ sub_3006814:
 	push {r4-r7,lr}
 	mov r0, r12
 	push {r0}
-	ldr r0, off_30068C0 // =dword_3001D70
+	ldr r0, off_30068C0 // =iObjectAttr3001D70
 	ldr r2, off_30068C4 // =unk_30025B0
 	ldr r3, off_30068C8 // =unk_3002170
 	ldr r6, off_30068CC // =dword_3002590
@@ -1594,7 +1594,7 @@ loc_3006868:
 	b loc_3006868
 loc_3006874:
 	ldr r0, off_30068D8 // =word_200A6F0
-	ldr r1, off_30068C0 // =dword_3001D70
+	ldr r1, off_30068C0 // =iObjectAttr3001D70
 	mov r3, #0x20 
 loc_300687A:
 	ldrh r4, [r0]
@@ -1633,7 +1633,7 @@ loc_30068A0:
 	mov r12, r0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_30068C0: .word dword_3001D70
+off_30068C0: .word iObjectAttr3001D70
 off_30068C4: .word unk_30025B0
 off_30068C8: .word unk_3002170
 off_30068CC: .word dword_3002590

@@ -106,7 +106,7 @@ void __noreturn reqBBS_draw_813E224()
     *(*(v1 + oToolkit_ChatboxPtr) + 76) = 4;
     chatbox_reqBBS_80404C0(
         *(*(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers)) + 4),
-        reqBBS_requestEntries_IDs[*(v0 + offsetof(reqBBS_GUI, cursorPos)) + *(v0 + offsetof(reqBBS_GUI, pagePos))],
+        reqBBS_eRequestEntriesIDs[*(v0 + offsetof(reqBBS_GUI, cursorPos)) + *(v0 + offsetof(reqBBS_GUI, pagePos))],
         off_813E294[*(v0 + offsetof(reqBBS_GUI, unk_04))]);
     reqBBS_draw_chatbox();
 }
@@ -136,7 +136,7 @@ void reqBBS_draw_813E2AC()
     chatbox_8045F3C(8);
     if ( !v5 )
     {
-        v6 = reqBBS_requestEntries_IDs[*(v0 + offsetof(reqBBS_GUI, cursorPos)) + *(v0 + offsetof(reqBBS_GUI, pagePos))]
+        v6 = reqBBS_eRequestEntriesIDs[*(v0 + offsetof(reqBBS_GUI, cursorPos)) + *(v0 + offsetof(reqBBS_GUI, pagePos))]
              + *(*(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers)) + 12);
         TestEventFlag(v6);
         if ( !v5 )
@@ -489,10 +489,10 @@ signed int __fastcall reqBBS_static_813E6D0(int a1, int a2, int a3, int a4)
     int v11; // r2
     int v12; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_80017E0(v5, v6, v7, v8);
-    decompAndCopyData_8000B30(byte_813E6FC);
-    decompAndCopyData_8000B30(off_813E758[*(v4 + 4)]);
+    decompAndCopyData(byte_813E6FC);
+    decompAndCopyData(off_813E758[*(v4 + 4)]);
     sub_800183C(v9, v10, v11, v12);
     return sub_8046664();
 }
@@ -516,12 +516,12 @@ int reqBBS_813E834()
     char v12; // zf
     int v13; // [sp-8h] [bp-1Ch]
 
-    ByteFill(reqBBS_requestEntries_IDs, 48, 0x2Fu);
+    ByteFill(reqBBS_eRequestEntriesIDs, 48, 0x2Fu);
     v2 = *(v0 + offsetof(reqBBS_GUI, pad_0A));
     v3 = **(v2 + 16);
     *(v0 + offsetof(reqBBS_GUI, unk_0F)) = v3;
     v4 = *(v2 + 24);
-    for ( i = reqBBS_requestEntries_IDs; ; ++i )
+    for ( i = reqBBS_eRequestEntriesIDs; ; ++i )
     {
         v6 = __OFSUB__(v3--, 1);
         if ( (v3 < 0) ^ v6 )
@@ -582,7 +582,7 @@ int __fastcall reqBBS_813E8CC(int a1)
     int v11; // ST0C_4
 
     v2 = **(v1 + 40);
-    v3 = &reqBBS_requestEntries_IDs[a1];
+    v3 = &reqBBS_eRequestEntriesIDs[a1];
     result = v2;
     v5 = 0;
     v6 = decomp_2013A00;
@@ -619,7 +619,7 @@ signed __int64 __fastcall reqBBS_dead_813E910(int a1, int a2, int a3, int a4)
 
     ZeroFillByHalfword(dword_2018A04, 0x40u, a3, a4);
     v7 = v6 + 2 * (**(v5 + oToolkit_CurFramePtr) & 0x1F);
-    v8 = &reqBBS_requestEntries_IDs[*(v4 + 36)];
+    v8 = &reqBBS_eRequestEntriesIDs[*(v4 + 36)];
     v9 = *(*(v4 + 40) + 12);
     v10 = 0;
     do
@@ -655,7 +655,7 @@ void __fastcall __noreturn reqBBS_static_813EA94(int a1, int a2, int a3, int a4,
 
     v15 = **(v14 + oToolkit_CurFramePtr) & 0x1F;
     TestEventFlag(
-        reqBBS_requestEntries_IDs[*(v13 + offsetof(reqBBS_GUI, pagePos))]
+        reqBBS_eRequestEntriesIDs[*(v13 + offsetof(reqBBS_GUI, pagePos))]
     + *(*(v13 + offsetof(reqBBS_GUI, reqBBS_textualPointers)) + 12));
     if ( v16 )
     {
@@ -773,7 +773,7 @@ int reqBBS_drawHeaderText()
 
     return render_graphicalText_8045F8C(
                      **(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers)),
-                     reqBBS_requestEntries_IDs[*(v0 + offsetof(reqBBS_GUI, pagePos)) + *(v0 + offsetof(reqBBS_GUI, cursorPos))],
+                     reqBBS_eRequestEntriesIDs[*(v0 + offsetof(reqBBS_GUI, pagePos)) + *(v0 + offsetof(reqBBS_GUI, cursorPos))],
                      byte_201B200,
                      100697088);
 }
@@ -807,7 +807,7 @@ void __fastcall __spoils<R1,R2,R3,R12> reqBBS_813ED60(int a1, int a2, int a3, in
 
     if ( *(v4 + 30) )
     {
-        v6 = v5 - reqBBS_requestEntries_IDs;
+        v6 = v5 - reqBBS_eRequestEntriesIDs;
         TestEventFlag(a4 + *(*(v4 + 40) + 12));
         if ( !v7 )
         {
@@ -1116,7 +1116,7 @@ void __noreturn reqBBS_813F5EC()
     if ( !(((v5 < 0) ^ v6) | (v5 == 0)) )
         reqBBS_813F8F0();
     *(*(v1 + oToolkit_ChatboxPtr) + 76) = 4;
-    chatbox_reqBBS_80404C0(*(*(v0 + 40) + 4), reqBBS_requestEntries_IDs[*(v0 + 32) + *(v0 + 36)], reqBBS_textualShades);
+    chatbox_reqBBS_80404C0(*(*(v0 + 40) + 4), reqBBS_eRequestEntriesIDs[*(v0 + 32) + *(v0 + 36)], reqBBS_textualShades);
     reqBBS_8140600();
     reqBBS_drawChatbox_dup1();
 }
@@ -1146,7 +1146,7 @@ void __noreturn reqBBS_813F65C()
     chatbox_8045F3C(8);
     if ( !v5 )
     {
-        v6 = reqBBS_requestEntries_IDs[*(v0 + 32) + *(v0 + 36)] + *(*(v0 + 40) + 12);
+        v6 = reqBBS_eRequestEntriesIDs[*(v0 + 32) + *(v0 + 36)] + *(*(v0 + 40) + 12);
         TestEventFlag(v6);
         if ( !v5 )
         {
@@ -1154,7 +1154,7 @@ void __noreturn reqBBS_813F65C()
             *(v0 + 5) = *(v0 + 5);
         }
         chatbox_8040818();
-        if ( reqBBS_8140868(reqBBS_requestEntries_IDs[*(v0 + 36) + *(v0 + 32)]) )
+        if ( reqBBS_8140868(reqBBS_eRequestEntriesIDs[*(v0 + 36) + *(v0 + 32)]) )
             v7 = 2;
         else
             v7 = 17;
@@ -1754,9 +1754,9 @@ signed int __fastcall reqBBS_813FDA8(int a1, int a2, int a3, int a4)
     int v10; // r2
     int v11; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_80017E0(v4, v5, v6, v7);
-    decompAndCopyData_8000B30(byte_813FDCC);
+    decompAndCopyData(byte_813FDCC);
     reqBBS_8140600();
     sub_800183C(v8, v9, v10, v11);
     return sub_8046664();
@@ -1781,12 +1781,12 @@ int reqBBS_813FE54()
     char v12; // zf
     int v13; // [sp-8h] [bp-1Ch]
 
-    ByteFill(reqBBS_requestEntries_IDs, 48, 0x2Fu);
+    ByteFill(reqBBS_eRequestEntriesIDs, 48, 0x2Fu);
     v2 = *(v0 + 10);
     v3 = **(v2 + 28);
     *(v0 + 15) = v3;
     v4 = *(v2 + 36);
-    for ( i = reqBBS_requestEntries_IDs; ; ++i )
+    for ( i = reqBBS_eRequestEntriesIDs; ; ++i )
     {
         v6 = __OFSUB__(v3--, 1);
         if ( (v3 < 0) ^ v6 )
@@ -1842,7 +1842,7 @@ int __fastcall __noreturn reqBBS_renderRequestNames(int a1)
     int v11; // ST0C_4
 
     v2 = **(v1 + 40);
-    v3 = &reqBBS_requestEntries_IDs[a1];
+    v3 = &reqBBS_eRequestEntriesIDs[a1];
     result = v2;
     v5 = 0;
     v6 = decomp_2013A00;
@@ -1888,7 +1888,7 @@ void __spoils<R2,R3,R12> __noreturn reqBBS_anim_814004C()
     v4 = 0;
     do
     {
-        TestEventFlag(reqBBS_requestEntries_IDs[v2 + v4] + *(*(v0 + 40) + 12));
+        TestEventFlag(reqBBS_eRequestEntriesIDs[v2 + v4] + *(*(v0 + 40) + 12));
         if ( v5 )
         {
             sub_80018D0(2, 2 * v4 + 3, 2, 0);
@@ -1919,10 +1919,10 @@ int reqBBS_renderRequestStatus()
     v2 = 0;
     do
     {
-        TestEventFlag(reqBBS_requestEntries_IDs[v1 + v2] + *(*(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers)) + 20));
+        TestEventFlag(reqBBS_eRequestEntriesIDs[v1 + v2] + *(*(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers)) + 20));
         if ( v3 )
         {
-            result = TestEventFlag(reqBBS_requestEntries_IDs[v1 + v2] + *(*(v0 + 40) + 16));
+            result = TestEventFlag(reqBBS_eRequestEntriesIDs[v1 + v2] + *(*(v0 + 40) + 16));
             if ( !v3 )
                 result = copyTiles();
         }
@@ -1954,12 +1954,12 @@ int reqBBS_renderRankStars()
     v2 = 0;
     do
     {
-        result = TestEventFlag(reqBBS_requestEntries_IDs[v1 + v2] + *(*(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers))
+        result = TestEventFlag(reqBBS_eRequestEntriesIDs[v1 + v2] + *(*(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers))
                                                                                                                                 + 8));
         if ( !v4 )
         {
             sub_80018D0(22, 2 * v2 + 3, 2, 0);
-            v5 = reqBBS_requestEntries_IDs[v1 + v2];
+            v5 = reqBBS_eRequestEntriesIDs[v1 + v2];
             result = byte_813F380[v5] + 1;
             if ( byte_813F380[v5] != -1 )
             {
@@ -2142,7 +2142,7 @@ int __noreturn reqBBS_renderSelectedEntry_HeaderText()
 
     return render_graphicalText_8045F8C(
                      **(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers)),
-                     reqBBS_requestEntries_IDs[*(v0 + offsetof(reqBBS_GUI, pagePos)) + *(v0 + offsetof(reqBBS_GUI, cursorPos))],
+                     reqBBS_eRequestEntriesIDs[*(v0 + offsetof(reqBBS_GUI, pagePos)) + *(v0 + offsetof(reqBBS_GUI, cursorPos))],
                      byte_201B200,
                      100697088);
 }
@@ -2222,7 +2222,7 @@ void __fastcall __spoils<R1,R2,R3,R12> reqBBS_8140604(int a1, int a2, int a3, in
 
     if ( *(v4 + 30) )
     {
-        v6 = v5 - reqBBS_requestEntries_IDs;
+        v6 = v5 - reqBBS_eRequestEntriesIDs;
         TestEventFlag(a4 + *(*(v4 + 40) + 12));
         if ( !v7 )
         {
@@ -2447,7 +2447,7 @@ int reqBBS_81408C8()
 {
     int v0; // r5
 
-    return reqBBS_requestEntries_IDs[*(v0 + 36) + *(v0 + 32)];
+    return reqBBS_eRequestEntriesIDs[*(v0 + 36) + *(v0 + 32)];
 }
 
 

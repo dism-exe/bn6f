@@ -706,7 +706,7 @@ sub_81237E0:
 	strb r0, [r5,#0x14]
 	tst r4, r4
 	beq loc_8123830
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	ldrb r0, [r5,#0x14]
 	mov r1, #0x2d 
@@ -770,10 +770,10 @@ loc_8123888:
 	str r0, [r4,r6]
 	// initRefs
 	ldr r0, off_812395C // =unk_20096E0 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	// initRefs
 	ldr r0, off_8123960 // =dword_8123964 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_81238E0 // =off_81238E4
 	ldr r1, off_81238D8 // =unk_201C220 
 	ldr r2, off_81238DC // =decomp_2013A00 
@@ -1508,7 +1508,7 @@ jt_8123F70: .word sub_8123F7C+1
 	thumb_local_start
 sub_8123F7C:
 	push {r4-r7,lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #0x10
@@ -2061,10 +2061,10 @@ loc_81243CC:
 	str r0, [r4,r6]
 	// initRefs
 	ldr r0, off_8124480 // =unk_20096E0 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	// initRefs
 	ldr r0, off_8124484 // =byte_8124488
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_812440C // =off_8124410
 	ldr r1, off_8124444 // =unk_201C100 
 	ldr r2, off_8124448 // =decomp_2013A00 
@@ -2714,7 +2714,7 @@ off_8124B50: .word sub_8124B5C+1
 	thumb_local_start
 sub_8124B5C:
 	push {lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #0x10
@@ -3604,10 +3604,10 @@ loc_812529C:
 	str r0, [r4,r6]
 	// initRefs
 	ldr r0, off_8125360 // =unk_2029000 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	// initRefs
 	ldr r0, off_8125364 // =byte_8125368
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {r4-r7,pc}
 	thumb_func_end sub_8125280
 
@@ -3705,7 +3705,7 @@ off_8125384: .word byte_201BF20
 	.word unk_2020C00
 	.word decomp_2013A00
 	.word comp_86C7980 + 1<<31
-	.word unk_2022C00
+	.word byte_2022C00
 	.word decomp_2013A00
 	.word comp_86C6B30 + 1<<31
 	.word unk_2024C00
@@ -6538,7 +6538,7 @@ off_8126B60: .word sub_8126B6C+1
 	thumb_local_start
 sub_8126B6C:
 	push {r4-r7,lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #0x1a
@@ -7206,10 +7206,10 @@ loc_81270EC:
 	str r0, [r4,r6]
 	// initRefs
 	ldr r0, off_8127180 // =unk_20096E0 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	// initRefs
 	ldr r0, off_8127184 // =byte_8127188
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_812711C // =off_8127120 
 	ldr r1, off_8127154 // =byte_201BF20
 	ldr r2, off_8127158 // =decomp_2013A00 
@@ -7294,7 +7294,7 @@ off_81271C8: .word unk_201D520
 	.word 0x6011400
 	.word 0x340
 	.word comp_86C7764 + 1<<31
-	.word unk_2022B94
+	.word byte_2022B94
 	.word decomp_2013A00
 	.word 0x0
 	thumb_func_end sub_81270D0
@@ -8227,7 +8227,7 @@ off_8127A10: .word sub_8127A1C+1
 	thumb_local_start
 sub_8127A1C:
 	push {lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #0x10
@@ -8552,10 +8552,10 @@ loc_8127CDA:
 	str r0, [r4,r6]
 	// initRefs
 	ldr r0, off_8127DE8 // =unk_20096E0 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	// initRefs
 	ldr r0, off_8127DEC // =byte_8127DF0
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_8127D74 // =off_8127D78
 	ldr r1, [sp]
 	mov r2, #1
@@ -8564,7 +8564,7 @@ loc_8127CDA:
 	// initRefs
 	ldr r0, off_8127D94 // =dword_8127D98 
 loc_8127D08:
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_8127D34 // =byte_8127D38
 	ldr r1, off_8127D6C // =unk_201BA00 
 	ldr r2, off_8127D70 // =decomp_2013A00 
@@ -9587,7 +9587,7 @@ off_8128744: .word sub_8128750+1
 	thumb_local_start
 sub_8128750:
 	push {lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #0x10
@@ -9824,10 +9824,10 @@ loc_8128918:
 	str r0, [r4,r6]
 	// initRefs
 	ldr r0, off_8128970 // =unk_20096E0 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	// initRefs
 	ldr r0, off_8128974 // =byte_8128978
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	// j
 	mov r0, #0
 	// i
@@ -10241,7 +10241,7 @@ sub_8128CD8:
 	// byteFlagIdx
 	mov r1, #0xad
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #8
@@ -10478,7 +10478,7 @@ sub_8128F04:
 	push {lr}
 	// initRefs
 	ldr r0, off_8128F34 // =byte_8128F38
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end sub_8128F04
@@ -10791,7 +10791,7 @@ off_81291FC: .word sub_8129248+1
 	thumb_func_start sub_8129248
 sub_8129248:
 	push {r4-r7,lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #0x10
@@ -14475,7 +14475,7 @@ sub_812AF18:
 	bl sub_812AF3C
 	// initRefs
 	ldr r0, off_812B088 // =off_812B08C
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	bl sub_812AF78
 	bl sub_812AF84
 	bl sub_812AF98
@@ -14515,7 +14515,7 @@ loc_812AF58:
 	str r0, [r4,r6]
 	// initRefs
 	ldr r0, off_812B084 // =unk_201D020 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_812AF3C
@@ -14525,7 +14525,7 @@ sub_812AF78:
 	push {lr}
 	// initRefs
 	ldr r0, off_812B0E4 // =off_812B0E8
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_812AF78
@@ -14535,7 +14535,7 @@ sub_812AF84:
 	push {lr}
 	// initRefs
 	ldr r0, off_812B164 // =byte_812B168
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_812AFE0 // =off_812AFE4
 	ldr r1, off_812B018 // =byte_201BA20
 	ldr r2, off_812B01C // =decomp_2013A00 
@@ -14548,7 +14548,7 @@ sub_812AF98:
 	push {lr}
 	// initRefs
 	ldr r0, off_812B19C // =byte_812B1A0
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_812AF98
@@ -14558,7 +14558,7 @@ sub_812AFA4:
 	push {lr}
 	// initRefs
 	ldr r0, off_812B1BC // =byte_812B1C0
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end sub_812AFA4
@@ -14641,10 +14641,10 @@ off_812B024: .word dword_86C9108
 off_812B084: .word unk_201D020
 off_812B088: .word off_812B08C
 off_812B08C: .word 0x886D91FC
-	.word unk_2022AA0
+	.word eGuiSprite2022AA0
 	.word decomp_2013A00
 	.word 0x886D93E0
-	.word unk_20231A0
+	.word byte_20231A0
 	.word decomp_2013A00
 	.word 0x886DB208
 	.word unk_20251B0

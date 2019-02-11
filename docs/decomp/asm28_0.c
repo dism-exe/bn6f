@@ -405,21 +405,21 @@ int __fastcall sub_809A260(int a1, int a2, int a3)
 // 0x809a2dc
 void sub_809A2DC()
 {
-    decompAndCopyData_8000B30(byte_809A2EC);
+    decompAndCopyData(byte_809A2EC);
 }
 
 
 // 0x809a308
 void sub_809A308()
 {
-    decompAndCopyData_8000B30(&initRefs_809A318);
+    decompAndCopyData(&initRefs_809A318);
 }
 
 
 // 0x809a334
 void sub_809A334()
 {
-    decompAndCopyData_8000B30(&initRefs_809A344);
+    decompAndCopyData(&initRefs_809A344);
 }
 
 
@@ -922,7 +922,7 @@ int sub_809A80C()
     *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = *(v0 + 112);
     copyTiles();
     copyTiles();
-    return render_graphicalText_8045F8C(&unk_2033404, 6, &unk_200EF40, 100717568);
+    return render_graphicalText_8045F8C(&eDialogScript2033404, 6, &unk_200EF40, 100717568);
 }
 
 
@@ -981,7 +981,7 @@ int __fastcall sub_809A8E4(int a1, int a2, int a3)
     sub_8003984();
     sub_8003AD4();
     sub_8046664();
-    decompAndCopyData_8000B30(byte_809A934);
+    decompAndCopyData(byte_809A934);
     return 0;
 }
 
@@ -1086,7 +1086,7 @@ int __fastcall sub_809AAB8(int a1, int a2, int a3)
     sub_8033FC0(0, a2, a3);
     sub_8003984();
     sub_8003AD4();
-    chatbox_runScript(&unk_2033404, 10);
+    chatbox_runScript(&eDialogScript2033404, 10);
     sub_8046664();
     result = 0;
     *(v3 + 8) = 0;
@@ -1106,13 +1106,13 @@ signed int sub_809AADC()
         return 1;
     if ( chatbox_8045F4C() )
     {
-        chatbox_runScript(&unk_2033404, 11);
+        chatbox_runScript(&eDialogScript2033404, 11);
         result = 0;
         *(v0 + 8) = 0;
     }
     else
     {
-        chatbox_runScript(&unk_2033404, 12);
+        chatbox_runScript(&eDialogScript2033404, 12);
         *(v0 + 8) = 1;
         ClearEventFlagFromImmediate(23, 37);
         *(v0 + 132) = 8;
@@ -1153,7 +1153,7 @@ signed int sub_809AB20()
         {
             *(v1 + 8) = 4;
             sound_play(104, v6, v3);
-            chatbox_runScript(&unk_2033404, 11);
+            chatbox_runScript(&eDialogScript2033404, 11);
             return 0;
         }
     }
@@ -1203,7 +1203,7 @@ signed int sub_809AB20()
                     *(v1 + 6) = 0;
                     *(v1 + 5) = 0;
                     sub_8021AEE(v9, v10, 1);
-                    decompAndCopyData_8000B30(&dword_809AC2C);
+                    decompAndCopyData(&dword_809AC2C);
                     v12 = 15;
                 }
                 v13 = 3;
@@ -1215,9 +1215,9 @@ signed int sub_809AB20()
         else
         {
             if ( v7 == 2 )
-                chatbox_runScript(&unk_2033404, 20);
+                chatbox_runScript(&eDialogScript2033404, 20);
             else
-                chatbox_runScript(&unk_2033404, 13);
+                chatbox_runScript(&eDialogScript2033404, 13);
             *(v1 + 8) = 1;
         }
         return 0;

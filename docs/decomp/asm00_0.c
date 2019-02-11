@@ -547,7 +547,7 @@ int __fastcall sub_8000B18(int *a1)
 //     .word src | 1<<32
 //     .word
 //     .word dest
-void __cdecl decompAndCopyData_8000B30(u32 *initRefs)
+void __cdecl decompAndCopyData(u32 *initRefs)
 {
     u32 *i; // r7
     u32 v2; // r0
@@ -1721,7 +1721,7 @@ signed int sub_8001514()
     signed int result; // r0
 
     result = -1556601777;
-    dword_20013F0 = -1556601777;
+    eRngSeed20013F0 = -1556601777;
     return result;
 }
 
@@ -1732,8 +1732,8 @@ int __cdecl change_20013F0_800151C()
 {
     int result; // r0
 
-    result = (2 * dword_20013F0 + (dword_20013F0 >> 31) + 1) ^ 0x873CA9E5;
-    dword_20013F0 = (2 * dword_20013F0 + (dword_20013F0 >> 31) + 1) ^ 0x873CA9E5;
+    result = (2 * eRngSeed20013F0 + (eRngSeed20013F0 >> 31) + 1) ^ 0x873CA9E5;
+    eRngSeed20013F0 = (2 * eRngSeed20013F0 + (eRngSeed20013F0 >> 31) + 1) ^ 0x873CA9E5;
     return result;
 }
 
@@ -1741,8 +1741,8 @@ int __cdecl change_20013F0_800151C()
 // 0x8001532
 unsigned int sub_8001532()
 {
-    dword_20013F0 = (2 * dword_20013F0 + (dword_20013F0 >> 31) + 1) ^ 0x873CA9E5;
-    return (2 * dword_20013F0) >> 1;
+    eRngSeed20013F0 = (2 * eRngSeed20013F0 + (eRngSeed20013F0 >> 31) + 1) ^ 0x873CA9E5;
+    return (2 * eRngSeed20013F0) >> 1;
 }
 
 
@@ -1904,7 +1904,7 @@ int sub_80017A0()
 
 
 // 0x80017aa
-void __fastcall sub_80017AA(int a1, int a2, int a3, int a4)
+void __fastcall zeroFillVRAM(int a1, int a2, int a3, int a4)
 {
     int v4; // r2
     int v5; // r3
@@ -1941,7 +1941,7 @@ void __fastcall main_static_80017EC(int a1, int a2, int a3, int a4)
 // 0x8001808
 void renderPalletes_8001808()
 {
-    CopyByEightWords(&unk_3001B60, 83886080, 0x200u);
+    CopyByEightWords(&iPallete3001B60, 83886080, 0x200u);
 }
 
 
@@ -2846,8 +2846,8 @@ char *getPalleteAndTransition_80023E0()
     int v6; // r6
     char *result; // r0
 
-    CopyByEightWords(byte_3001960, &unk_3001B60, 0x200u);
-    CopyByEightWords(byte_3001550, byte_3001750, 0x200u);
+    CopyByEightWords(byte_3001960, &iPallete3001B60, 0x200u);
+    CopyByEightWords(byte_3001550, iPallete3001750, 0x200u);
     v1 = byte_20097A0;
     do
     {
@@ -3049,7 +3049,7 @@ int __fastcall sub_800260C(int a1, int a2, int a3, int a4)
 // 0x8002650
 void renderPalletesAndObjs_8002650()
 {
-    CopyByEightWords(byte_3001750, 83886592, 0x200u);
+    CopyByEightWords(iPallete3001750, 83886592, 0x200u);
 }
 
 

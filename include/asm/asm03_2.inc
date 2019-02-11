@@ -84,7 +84,7 @@
 // .global HalfwordFill
 // .global FillByEightWords
 // .global loc_8000AC8
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
 // .global getPETNaviSelect // () -> u8
@@ -95,7 +95,7 @@
 // .global sub_8001778
 // .global sub_8001788
 // .global sub_80017A0
-// .global sub_80017AA
+// .global zeroFillVRAM
 // .global sub_80017E0
 // .global sub_8001820
 // .global sub_800183C
@@ -525,7 +525,7 @@
 // .equ word_200A2B2, 0x200A2B2
 // .equ word_200A2B4, 0x200A2B4
 // .equ word_200A2B6, 0x200A2B6
-// .equ unk_200AC80, 0x200AC80
+// .equ eS200AC80, 0x200AC80
 // .equ word_200AC84, 0x200AC84
 // .equ word_200AC86, 0x200AC86
 // .equ dword_200ACB0, 0x200ACB0
@@ -555,7 +555,7 @@
 // .equ byte_2017204, 0x2017204
 // .equ unk_2018200, 0x2018200
 // .equ unk_2018A00, 0x2018A00
-// .equ unk_2018A04, 0x2018A04
+// .equ eTileRefs2018A04, 0x2018A04
 // .equ unk_2019200, 0x2019200
 // .equ unk_2019204, 0x2019204
 // .equ unk_2019400, 0x2019400
@@ -584,15 +584,15 @@
 // .equ dword_202A03C, 0x202A03C
 // .equ unk_202A200, 0x202A200
 // .equ unk_202A3E0, 0x202A3E0
-// .equ word_202A3F4, 0x202A3F4
-// .equ word_202A3FC, 0x202A3FC
+// .equ byte_202A3F4, 0x202A3F4
+// .equ byte_202A3FC, 0x202A3FC
 // .equ unk_202A600, 0x202A600
-// .equ unk_202AB00, 0x202AB00
-// .equ unk_202AF00, 0x202AF00
-// .equ unk_202BA00, 0x202BA00
-// .equ unk_202BA04, 0x202BA04
+// .equ byte_202AB00, 0x202AB00
+// .equ byte_202AF00, 0x202AF00
+// .equ eDecomp202BA00, 0x202BA00
+// .equ eDialogScript202BA04, 0x202BA04
 // .equ unk_202DA00, 0x202DA00
-// .equ unk_202DA04, 0x202DA04
+// .equ eDialogScript202DA04, 0x202DA04
 // .equ byte_202F800, 0x202F800
 // .equ byte_202FA00, 0x202FA00
 // .equ byte_2030200, 0x2030200
@@ -600,12 +600,12 @@
 // .equ unk_20343E0, 0x20343E0
 // .equ unk_2034458, 0x2034458
 // .equ unk_20345A8, 0x20345A8
-// .equ unk_20345FC, 0x20345FC
-// .equ unk_20346DC, 0x20346DC
-// .equ unk_2034714, 0x2034714
-// .equ unk_203474C, 0x203474C
-// .equ unk_2034768, 0x2034768
-// .equ unk_20347A0, 0x20347A0
+// .equ eTileRefs20345FC, 0x20345FC
+// .equ eTileRefs20346DC, 0x20346DC
+// .equ eTileRefs2034714, 0x2034714
+// .equ eTileRefs203474C, 0x203474C
+// .equ eTileRefs2034768, 0xeTileRefs2034768
+// .equ eTileRefs20347A0, 0x20347A0
 // .equ dword_2034800, 0x2034800
 // .equ unk_2034814, 0x2034814
 // .equ unk_203486C, 0x203486C
@@ -625,7 +625,7 @@
 // .equ byte_30016B0, 0x30016B0
 // .equ byte_30016D0, 0x30016D0
 // .equ byte_3001730, 0x3001730
-// .equ byte_3001750, 0x3001750
+// .equ iPallete3001750, 0x3001750
 // .equ byte_3001960, 0x3001960
 // .equ unk_3001980, 0x3001980
 // .equ unk_30019C0, 0x30019C0
@@ -633,7 +633,7 @@
 // .equ unk_3001AC0, 0x3001AC0
 // .equ unk_3001AE0, 0x3001AE0
 // .equ byte_3001B00, 0x3001B00
-// .equ unk_3001B60, 0x3001B60
+// .equ iPallete3001B60, 0x3001B60
 .equ IWRAMRoutinesROMLocation, 0x81D6000
 // .global spriteWhiteDot
 // .global compSpriteWhiteDot_84E0C4C

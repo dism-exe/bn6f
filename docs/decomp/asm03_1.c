@@ -608,7 +608,7 @@ signed int __fastcall sub_803423C(int a1, int a2, int a3, int a4)
 
     v5 = *v4;
     *v5 = 4;
-    sub_80017AA(v5, 4, a3, a4);
+    zeroFillVRAM(v5, 4, a3, a4);
     sub_800183C(v6, v7, v8, v9);
     sub_8006910();
     *(*(v4 + oToolkit_GameStatePtr) + 22) = 0;
@@ -633,7 +633,7 @@ int sub_8034268()
     int v8; // r3
 
     v1 = sub_80015FC(9);
-    sub_80017AA(v1, v2, v3, v4);
+    zeroFillVRAM(v1, v2, v3, v4);
     sub_800183C(v5, v6, v7, v8);
     decompJackInAnimationGfx_8034314();
     sub_8001778(4929);
@@ -722,7 +722,7 @@ int __fastcall sub_80342EC(int a1, int a2, int a3, int a4)
 
     v5 = *v4;
     *v5 = 4;
-    sub_80017AA(v5, 4, a3, a4);
+    zeroFillVRAM(v5, 4, a3, a4);
     sub_800183C(v6, v7, v8, v9);
     v10 = *(v4 + oToolkit_GameStatePtr);
     *(v10 + 22) = 0;
@@ -738,7 +738,7 @@ void __cdecl decompJackInAnimationGfx_8034314()
 {
     int v0; // r5
 
-    decompAndCopyData_8000B30(&initRefs_8034338);
+    decompAndCopyData(&initRefs_8034338);
     *(v0 + 3) = 0;
     *(v0 + 6) = 2;
     sub_8046664();
@@ -2927,7 +2927,7 @@ void *__fastcall init_s_02011C50_8036E90(int a1, int a2, int a3, int a4)
     v5[8] = &dword_8037690;
     v5[9] = &dword_8037690;
     v5[0xA] = &dword_8037690;
-    v5[offsetof(s_02011C50, unk_0C)] = &unk_202DA04;
+    v5[offsetof(s_02011C50, unk_0C)] = &eDialogScript202DA04;
     result = &off_8036EC4;
     v5[offsetof(s_02011C50, unk_0D)] = &off_8036EC4;
     return result;
@@ -4019,7 +4019,7 @@ signed int __fastcall uncomp_8037AD0(signed int result)
     if ( result < 0 )
     {
         SWI_LZ77UnCompReadNormalWrite8bit(((2 * result) >> 1), &unk_2034A00);
-        result = &unk_2034A04;
+        result = &eDialogScript2034A04;
     }
     return result;
 }
@@ -4031,7 +4031,7 @@ signed int __fastcall sub_8037AEC(signed int result)
     if ( result < 0 )
     {
         SWI_LZ77UnCompReadNormalWrite8bit(((2 * result) >> 1), &unk_2033400);
-        result = &unk_2033404;
+        result = &eDialogScript2033404;
     }
     return result;
 }
@@ -5285,9 +5285,9 @@ void __fastcall initGfx_80386CC(int a1, int a2, int a3, int a4)
     int v6; // r2
     int v7; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_800183C(v4, v5, v6, v7);
-    decompAndCopyData_8000B30(&initRefs_80386E4);
+    decompAndCopyData(&initRefs_80386E4);
 }
 
 
@@ -5343,7 +5343,7 @@ void __fastcall __noreturn sub_8038B04(int a1, int a2, int a3, int a4)
     int v14; // r2
     int v15; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_80017E0(v4, v5, v6, v7);
     sub_800183C(v8, v9, v10, v11);
     sub_80015FC(20);
@@ -5780,14 +5780,14 @@ int sub_8038F0C()
 // () -> void
 void decomp_initGfx_8038F30()
 {
-    decompAndCopyData_8000B30(&initRefs_8038F40);
+    decompAndCopyData(&initRefs_8038F40);
 }
 
 
 // 0x8038f74
 int __noreturn sub_8038F74()
 {
-    return render_graphicalText_8045F8C(dword_873B9E0, 40, decomp_2013A00, 100683776);
+    return render_graphicalText_8045F8C(dialogScript_873B9E0, 40, decomp_2013A00, 100683776);
 }
 
 
@@ -6000,7 +6000,7 @@ int sub_8039630()
     result = engine_isScreeneffectAnimating();
     if ( !v4 )
     {
-        sub_80017AA(result, v1, v2, v3);
+        zeroFillVRAM(result, v1, v2, v3);
         sub_800183C(v5, v6, v7, v8);
         sub_8001850();
         v9 = chatbox_8040818();
@@ -6733,8 +6733,8 @@ signed int __fastcall sub_8039CB4(int a1)
     {
         LODWORD(v5) = sub_803C440(v4);
         v6 = v5;
-        sub_803C150(v5, __PAIR__(&unk_202AF00, HIDWORD(v5)));
-        sub_803C2AA(&unk_202AB00, &unk_202AF00, v6, SHIDWORD(v6));
+        sub_803C150(v5, __PAIR__(&byte_202AF00, HIDWORD(v5)));
+        sub_803C2AA(&byte_202AB00, &byte_202AF00, v6, SHIDWORD(v6));
         sub_803BB2C(12);
         v1[1] = 40;
         sound_play(103, v7, v8);
@@ -8958,10 +8958,10 @@ int __fastcall copyData_803B216(int a1, int a2, int a3, int a4)
     int v6; // r2
     int v7; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_800183C(v4, v5, v6, v7);
     sub_8001850();
-    decompAndCopyData_8000B30(&initRefs_803B244);
+    decompAndCopyData(&initRefs_803B244);
     sub_803B91C(0);
     sub_803B91C(1);
     return sub_803B91C(2);
@@ -8978,10 +8978,10 @@ int __fastcall copyData_803B2E4(int a1, int a2, int a3, int a4)
     int v8; // r3
     int result; // r0
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_800183C(v5, v6, v7, v8);
     sub_8001850();
-    decompAndCopyData_8000B30(&initRefs_803B310);
+    decompAndCopyData(&initRefs_803B310);
     sub_803B91C(4);
     sub_803B91C(5);
     result = 0;
@@ -9000,10 +9000,10 @@ int __fastcall copyData_803B3C8(int a1, int a2, int a3, int a4)
     int v8; // r3
     _WORD *v9; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_800183C(v5, v6, v7, v8);
     sub_8001850();
-    decompAndCopyData_8000B30(&initRefs_803B404);
+    decompAndCopyData(&initRefs_803B404);
     v9 = *(v4 + oToolkit_RenderInfoPtr);
     v9[11] -= 4;
     v9[10] -= 2;
@@ -9021,10 +9021,10 @@ int __fastcall copyData_803B45C(int a1, int a2, int a3, int a4)
     int v6; // r2
     int v7; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_800183C(v4, v5, v6, v7);
     sub_8001850();
-    decompAndCopyData_8000B30(&initRefs_803B490);
+    decompAndCopyData(&initRefs_803B490);
     sub_803B91C(7);
     sub_803B91C(8);
     sub_803B91C(9);
@@ -11021,9 +11021,9 @@ int __fastcall __noreturn copyData_803CC60(int a1, int a2, int a3, int a4)
     int v6; // r2
     int v7; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_800183C(v4, v5, v6, v7);
-    decompAndCopyData_8000B30(byte_803CC88);
+    decompAndCopyData(initRefs803CC88);
     return copyTiles();
 }
 
@@ -11031,7 +11031,7 @@ int __fastcall __noreturn copyData_803CC60(int a1, int a2, int a3, int a4)
 // 0x803ccb0
 void __fastcall sub_803CCB0(int a1)
 {
-    chatbox_runScript_803FD9C(dword_873B9E0, a1);
+    chatbox_runScript_803FD9C(dialogScript_873B9E0, a1);
 }
 
 
@@ -11121,7 +11121,7 @@ void __fastcall sub_803CD58(int a1, int a2, int a3, int a4)
     int v6; // r2
     int v7; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_800183C(v4, v5, v6, v7);
 }
 
@@ -11129,7 +11129,7 @@ void __fastcall sub_803CD58(int a1, int a2, int a3, int a4)
 // 0x803cd64
 void __fastcall sub_803CD64(int a1)
 {
-    chatbox_runScript(dword_873B9E0, a1);
+    chatbox_runScript(dialogScript_873B9E0, a1);
 }
 
 
@@ -11844,9 +11844,9 @@ int __fastcall __noreturn copyData_803D2B8(int a1, int a2, int a3, int a4)
     int v6; // r2
     int v7; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_800183C(v4, v5, v6, v7);
-    decompAndCopyData_8000B30(byte_803D2F0);
+    decompAndCopyData(byte_803D2F0);
     copyTiles();
     return copyTiles();
 }
@@ -14390,21 +14390,21 @@ signed int sub_803F460()
 // () -> void
 int clear_200AD04()
 {
-    return ZeroFillByByte(&byte_200AD04, 4);
+    return ZeroFillByByte(&word_200AD04, 4);
 }
 
 
 // 0x803f4d4
 char *sub_803F4D4()
 {
-    return &byte_200AD04;
+    return &word_200AD04;
 }
 
 
 // 0x803f4ec
 char __fastcall sub_803F4EC(char result)
 {
-    byte_200AD04 = result;
+    word_200AD04 = result;
     return result;
 }
 
@@ -14445,7 +14445,7 @@ int *sub_803F50C()
 // 0x803f524
 int sub_803F524()
 {
-    return byte_200AD04;
+    return word_200AD04;
 }
 
 
@@ -15162,7 +15162,7 @@ int __fastcall __noreturn copyData_803FC64(int a1, int a2, int a3, int a4)
     sub_8005F40(a1, a2, a3, a4);
     sub_8005F6C();
     sub_80027C4();
-    decompAndCopyData_8000B30(byte_803FCA4);
+    decompAndCopyData(byte_803FCA4);
     sub_800183C(v4, v5, v6, v7);
     copyTiles();
     return copyTiles();

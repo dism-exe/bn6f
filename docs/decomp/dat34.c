@@ -1497,7 +1497,7 @@ void __noreturn sub_812E9AC()
 
     v1 = sub_812ED2C();
     v2 = v1;
-    sub_80017AA(v1, v3, v4, v5);
+    zeroFillVRAM(v1, v3, v4, v5);
     sub_80017E0(v6, v7, v8, v9);
     sub_800183C(v10, v11, v12, v13);
     sub_80015FC(16);
@@ -1531,7 +1531,7 @@ void sub_812EA44()
     sub_812AF3C();
     sub_812AF78();
     sub_812AF98();
-    decompAndCopyData_8000B30(off_812EA60);
+    decompAndCopyData(off_812EA60);
 }
 
 

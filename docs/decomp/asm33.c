@@ -491,7 +491,7 @@ int __fastcall sub_81237E0(int a1, int a2)
     *(v2 + 20) = v7;
     if ( v4 )
     {
-        sub_80017AA(v7, v8, v9, v10);
+        zeroFillVRAM(v7, v8, v9, v10);
         sub_80017E0(v11, v12, v13, v14);
         v7 = sub_80137B6(*(v2 + 20));
         *(v2 + 12) = v7;
@@ -546,8 +546,8 @@ int __noreturn chipFolder_initGfx_812386C()
     }
     while ( v1 < 64 );
     *(&unk_20096E0 + v0) = 0;
-    decompAndCopyData_8000B30(&unk_20096E0);
-    decompAndCopyData_8000B30(&dword_8123964);
+    decompAndCopyData(&unk_20096E0);
+    decompAndCopyData(&dword_8123964);
     sub_8123300(&off_81238E4, &unk_201C220, decomp_2013A00);
     copyTiles();
     return copyTiles();
@@ -872,7 +872,7 @@ void __fastcall sub_8123F7C(int a1, int a2, int a3, int a4)
     int v13; // r3
     _WORD *v14; // r0
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_80017E0(v6, v7, v8, v9);
     sub_800183C(v10, v11, v12, v13);
     sub_80015FC(16);
@@ -1266,8 +1266,8 @@ int subchip_initGfx_81243B0()
     }
     while ( v1 < 48 );
     *(&unk_20096E0 + v0) = 0;
-    decompAndCopyData_8000B30(&unk_20096E0);
-    decompAndCopyData_8000B30(byte_8124488);
+    decompAndCopyData(&unk_20096E0);
+    decompAndCopyData(byte_8124488);
     sub_8123300(&off_8124410, &unk_201C100, decomp_2013A00);
     return copyTiles();
 }
@@ -1582,7 +1582,7 @@ void __fastcall __noreturn sub_8124B5C(int a1, int a2, int a3, int a4)
     int v13; // r3
     _WORD *v14; // r0
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_80017E0(v6, v7, v8, v9);
     sub_800183C(v10, v11, v12, v13);
     sub_80015FC(16);
@@ -2283,8 +2283,8 @@ void sub_8125280()
     }
     while ( v1 < 80 );
     *(&unk_2029000 + v0) = 0;
-    decompAndCopyData_8000B30(&unk_2029000);
-    decompAndCopyData_8000B30(byte_8125368);
+    decompAndCopyData(&unk_2029000);
+    decompAndCopyData(byte_8125368);
 }
 
 
@@ -4031,7 +4031,7 @@ void __fastcall __noreturn sub_8126B6C(int a1, int a2, int a3, int a4)
     char v22; // zf
     int v23; // r1
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_80017E0(v6, v7, v8, v9);
     sub_800183C(v10, v11, v12, v13);
     sub_80015FC(26);
@@ -4478,8 +4478,8 @@ void sub_81270D0()
     }
     while ( v1 < 32 );
     *(&unk_20096E0 + v0) = 0;
-    decompAndCopyData_8000B30(&unk_20096E0);
-    decompAndCopyData_8000B30(byte_8127188);
+    decompAndCopyData(&unk_20096E0);
+    decompAndCopyData(byte_8127188);
     sub_8123300(off_8127120, byte_201BF20, decomp_2013A00);
 }
 
@@ -5001,7 +5001,7 @@ void __fastcall __noreturn sub_8127A1C(int a1, int a2, int a3, int a4)
     int v13; // r3
     _WORD *v14; // r0
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_80017E0(v6, v7, v8, v9);
     sub_800183C(v10, v11, v12, v13);
     sub_80015FC(16);
@@ -5255,12 +5255,12 @@ int __noreturn sub_8127CB8()
     }
     while ( v2 < 48 );
     *(&unk_20096E0 + v1) = 0;
-    decompAndCopyData_8000B30(&unk_20096E0);
-    decompAndCopyData_8000B30(byte_8127DF0);
+    decompAndCopyData(&unk_20096E0);
+    decompAndCopyData(byte_8127DF0);
     v7 = &off_8127D78;
     if ( v9 & 1 )
         v7 = &dword_8127D98;
-    decompAndCopyData_8000B30(v7);
+    decompAndCopyData(v7);
     sub_8123300(byte_8127D38, &unk_201BA00, decomp_2013A00);
     return copyTiles();
 }
@@ -5826,7 +5826,7 @@ int __fastcall sub_8128750(int a1, int a2, int a3, int a4)
     int v17; // r2
     int v18; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_80017E0(v6, v7, v8, v9);
     sub_800183C(v10, v11, v12, v13);
     sub_80015FC(16);
@@ -6018,8 +6018,8 @@ int sub_81288FC()
     }
     while ( v1 < 32 );
     *(&unk_20096E0 + v0) = 0;
-    decompAndCopyData_8000B30(&unk_20096E0);
-    decompAndCopyData_8000B30(byte_8128978);
+    decompAndCopyData(&unk_20096E0);
+    decompAndCopyData(byte_8128978);
     return copyTiles();
 }
 
@@ -6299,7 +6299,7 @@ void __noreturn sub_8128CD8()
 
     SetEventFlagFromImmediate(1, 151);
     v2 = SetEventFlagFromImmediate(1, 173);
-    sub_80017AA(v2, v3, v4, v5);
+    zeroFillVRAM(v2, v3, v4, v5);
     sub_80017E0(v6, v7, v8, v9);
     sub_800183C(v10, v11, v12, v13);
     sub_80015FC(8);
@@ -6422,7 +6422,7 @@ int sub_8128ED4()
 // 0x8128f04
 void sub_8128F04()
 {
-    decompAndCopyData_8000B30(byte_8128F38);
+    decompAndCopyData(byte_8128F38);
 }
 
 
@@ -6568,7 +6568,7 @@ int __fastcall sub_8129248(int a1, int a2, int a3, int a4)
     char v15; // r1
     int result; // r0
 
-    sub_80017AA(a1, a2, a3, a4);
+    zeroFillVRAM(a1, a2, a3, a4);
     sub_80017E0(v6, v7, v8, v9);
     sub_800183C(v10, v11, v12, v13);
     sub_80015FC(16);
@@ -9598,7 +9598,7 @@ void sub_812AF14()
 int sub_812AF18()
 {
     sub_812AF3C();
-    decompAndCopyData_8000B30(&off_812B08C);
+    decompAndCopyData(&off_812B08C);
     sub_812AF78();
     sub_812AF84();
     sub_812AF98();
@@ -9639,21 +9639,21 @@ void sub_812AF3C()
     }
     while ( v1 < 96 );
     *(&unk_201D020 + v0) = 0;
-    decompAndCopyData_8000B30(&unk_201D020);
+    decompAndCopyData(&unk_201D020);
 }
 
 
 // 0x812af78
 void sub_812AF78()
 {
-    decompAndCopyData_8000B30(&off_812B0E8);
+    decompAndCopyData(&off_812B0E8);
 }
 
 
 // 0x812af84
 void sub_812AF84()
 {
-    decompAndCopyData_8000B30(byte_812B168);
+    decompAndCopyData(byte_812B168);
     sub_8123300(off_812AFE4, byte_201BA20, decomp_2013A00);
 }
 
@@ -9661,14 +9661,14 @@ void sub_812AF84()
 // 0x812af98
 void sub_812AF98()
 {
-    decompAndCopyData_8000B30(byte_812B1A0);
+    decompAndCopyData(byte_812B1A0);
 }
 
 
 // 0x812afa4
 void sub_812AFA4()
 {
-    decompAndCopyData_8000B30(byte_812B1C0);
+    decompAndCopyData(byte_812B1C0);
 }
 
 

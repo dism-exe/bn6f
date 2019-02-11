@@ -42,7 +42,7 @@ int chatbox_uncomp_803FD54()
 // (u8 scriptID) -> void
 void __fastcall chatbox_runScript_202da04(int a1)
 {
-    chatbox_runScript(&unk_202DA04, a1);
+    chatbox_runScript(&eDialogScript202DA04, a1);
 }
 
 
@@ -458,7 +458,7 @@ int __noreturn chatbox_copyTiles_8040344()
 // (u8 scriptOffIdx) -> void
 void __fastcall chatbox_runTrainScript(int a1)
 {
-    chatbox_runScript(&unk_2034A04, a1);
+    chatbox_runScript(&eDialogScript2034A04, a1);
 }
 
 
@@ -521,7 +521,7 @@ void __fastcall chatbox_runScript(int a1, int a2)
     *(v3 + 499) = 0;
     byte_1F4[v3] = 3;
     byte_1F5[v3] = 3;
-    dword_2009F38 = 0;
+    eFlags2009F38 = 0;
     v11 = chatbox_8045F1C(128);
     chatbox_8045F60(v11, v12, v13, v14);
     chatbox_setflags_3e(byte_100);
@@ -593,7 +593,7 @@ void __fastcall chatbox_reqBBS_80404C0(u16 *a1, int a2, int a3)
     chatbox[3].pad_28[3] = 0;
     byte_1F4[chatbox] = 3;
     byte_1F5[chatbox] = 3;
-    dword_2009F38 = 0;
+    eFlags2009F38 = 0;
     v13 = chatbox_8045F1C(128);
     chatbox_8045F60(v13, v14, v15, v16);
     chatbox_setflags_3e(byte_100);
@@ -668,7 +668,7 @@ void __fastcall dead_80405F8(int a1, int a2, int a3, int a4)
     *(v7 + 499) = 0;
     byte_1F4[v7] = 3;
     byte_1F5[v7] = 3;
-    dword_2009F38 = 0;
+    eFlags2009F38 = 0;
     v15 = chatbox_8045F1C(128);
     chatbox_8045F60(v15, v16, v17, v18);
     chatbox_setflags_3e(byte_100);
@@ -5068,7 +5068,7 @@ __int64 sub_8045F0C()
 // 0x8045f1c
 int __fastcall chatbox_8045F1C(int result)
 {
-    dword_2009F38 |= result;
+    eFlags2009F38 |= result;
     return result;
 }
 
@@ -5077,7 +5077,7 @@ int __fastcall chatbox_8045F1C(int result)
 // (int a1) ->
 int __fastcall chatbox_8045F2C(int result)
 {
-    dword_2009F38 &= ~result;
+    eFlags2009F38 &= ~result;
     return result;
 }
 
@@ -5085,14 +5085,14 @@ int __fastcall chatbox_8045F2C(int result)
 // 0x8045f3c
 int __fastcall chatbox_8045F3C(int a1)
 {
-    return a1 & dword_2009F38;
+    return a1 & eFlags2009F38;
 }
 
 
 // 0x8045f4c
 int chatbox_8045F4C()
 {
-    return dword_2009F38 & 7;
+    return eFlags2009F38 & 7;
 }
 
 

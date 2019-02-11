@@ -1680,7 +1680,7 @@ byte_8142A74: .byte 0x3, 0x0, 0x0, 0x3, 0xFD, 0x0, 0x0, 0xFD, 0x7F, 0x7F, 0x7F, 
 sub_8142A84:
 	push {r4-r7,lr}
 	mov r7, r0
-	ldr r5, off_8142AAC // =byte_2011EE0 
+	ldr r5, off_8142AAC // =eStructArr2011EE0 
 	mov r4, #0
 	mov r6, #0
 loc_8142A8E:
@@ -1698,7 +1698,7 @@ loc_8142A9C:
 	tst r0, r0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8142AAC: .word byte_2011EE0
+off_8142AAC: .word eStructArr2011EE0
 	thumb_func_end sub_8142A84
 
 	thumb_local_start
@@ -1757,7 +1757,7 @@ loc_8142AF6:
 sub_8142B04:
 	push {r4-r7,lr}
 	mov r7, r0
-	ldr r5, off_8142B54 // =byte_2011EE0 
+	ldr r5, off_8142B54 // =eStructArr2011EE0 
 	mov r4, #0
 	mov r6, #0
 loc_8142B0E:
@@ -1799,7 +1799,7 @@ loc_8142B4C:
 	tst r0, r0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8142B54: .word byte_2011EE0
+off_8142B54: .word eStructArr2011EE0
 	thumb_func_end sub_8142B28
 
 	thumb_func_start sub_8142B58

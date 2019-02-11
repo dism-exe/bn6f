@@ -33,7 +33,7 @@
 .global loc_8000AC4
 .global loc_8000AC8
 .global loc_8000ACA
-.global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+.global decompAndCopyData // (u32 *initRefs) -> void
 .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 .global sub_8000C00
 .global sub_8000C5C
@@ -87,7 +87,7 @@
 .global sub_8001780
 .global sub_8001788
 .global sub_80017A0
-.global sub_80017AA
+.global zeroFillVRAM
 .global sub_80017E0
 .global main_static_80017EC
 .global off_8001800
@@ -220,7 +220,7 @@
 
 /* Undeclared Symbols */
 // .equ rngSeed_2001120, 0x2001120
-// .equ dword_20013F0, 0x20013F0
+// .equ eRngSeed20013F0, 0x20013F0
 // .equ dword_20018E8, 0x20018E8
 // .equ unk_2006840, 0x2006840
 // .equ byte_20094C0, 0x20094C0
@@ -297,10 +297,10 @@
 // .equ byte_3001550, 0x3001550
 // .equ byte_3001710, 0x3001710
 // .equ byte_3001730, 0x3001730
-// .equ byte_3001750, 0x3001750
+// .equ iPallete3001750, 0x3001750
 // .equ byte_3001960, 0x3001960
 // .equ unk_3001B40, 0x3001B40
-// .equ unk_3001B60, 0x3001B60
+// .equ iPallete3001B60, 0x3001B60
 .equ LCDControl, 0x4000000
 .equ VerticalCounter_LY_, 0x4000006
 .equ BG0Control, 0x4000008

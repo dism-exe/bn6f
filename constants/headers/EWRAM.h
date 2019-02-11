@@ -39,7 +39,7 @@ in the 0x2000000 RAM region
 #define i_joGameSubsysSel ((u8*)                0x200A480)
 #define sStartScr ((StartScreen*)               0x200AD10)
 #define reqBBS_tile_data ((u8*)                 0x2018204)
-#define reqBBS_requestEntries_IDs ((u8*)        0x2023A00)
+#define reqBBS_eRequestEntriesIDs ((u8*)        0x2023A00)
 #define reqBBS_requestNames_textualData ((u8*)  0x2025A04)
 #define reqBBS_requestInfo_textOffsets ((u8*)   0x2029A04)
 #define reqBBS_dialog_list ((u16[254])          0x2033A04)

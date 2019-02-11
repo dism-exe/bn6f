@@ -227,7 +227,7 @@
 // .global HalfwordFill
 // .global loc_8000AC4
 // .global loc_8000AC8
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global sub_8000C00
 // .global sub_8000EE4
 // .global getPETNaviSelect // () -> u8
@@ -241,7 +241,7 @@
 // .global sub_8001778
 // .global sub_8001788
 // .global sub_80017A0
-// .global sub_80017AA
+// .global zeroFillVRAM
 // .global sub_80017E0
 // .global sub_800183C
 // .global sub_8001850
@@ -842,7 +842,7 @@
 // .global byte_86CB360
 
 .include "data/dat38_87.inc"
-// .global dword_873B9E0
+// .global dialogScript_873B9E0
 // .global byte_87E36F8
 
 .include "data/dat38_88.inc"
@@ -953,9 +953,9 @@
 // .equ byte_200AC33, 0x200AC33
 // .equ byte_200AC34, 0x200AC34
 // .equ byte_200AC35, 0x200AC35
-// .equ unk_200AC80, 0x200AC80
+// .equ eS200AC80, 0x200AC80
 // .equ word_200AC84, 0x200AC84
-// .equ byte_200AD04, 0x200AD04
+// .equ word_200AD04, 0x200AD04
 // .equ byte_200AD05, 0x200AD05
 // .equ word_200AD06, 0x200AD06
 // .equ byte_200AF80, 0x200AF80
@@ -1014,9 +1014,9 @@
 // .equ decomp_2013A00, 0x2013A00
 // .equ unk_2014A00, 0x2014A00
 // .equ byte_2017A00, 0x2017A00
-// .equ byte_2017A04, 0x2017A04
+// .equ eTileRefs2017A04, 0x2017A04
 // .equ unk_2018A00, 0x2018A00
-// .equ unk_2018A04, 0x2018A04
+// .equ eTileRefs2018A04, 0x2018A04
 // .equ unk_201AA00, 0x201AA00
 // .equ unk_201BA00, 0x201BA00
 // .equ byte_201BA10, 0x201BA10
@@ -1045,10 +1045,10 @@
 // .equ unk_202A200, 0x202A200
 // .equ unk_202A204, 0x202A204
 // .equ unk_202A600, 0x202A600
-// .equ unk_202A604, 0x202A604
-// .equ unk_202AB00, 0x202AB00
-// .equ unk_202AF00, 0x202AF00
-// .equ unk_202DA04, 0x202DA04
+// .equ word_202A604, 0x202A604
+// .equ byte_202AB00, 0x202AB00
+// .equ byte_202AF00, 0x202AF00
+// .equ eDialogScript202DA04, 0x202DA04
 // .equ byte_2030003, 0x2030003
 // .equ unk_2030A00, 0x2030A00
 // .equ unk_2032A00, 0x2032A00
@@ -1060,7 +1060,7 @@
 // .equ byte_3001550, 0x3001550
 // .equ byte_30015D0, 0x30015D0
 // .equ byte_30016D0, 0x30016D0
-// .equ byte_3001750, 0x3001750
+// .equ iPallete3001750, 0x3001750
 // .equ byte_3001960, 0x3001960
 // .equ unk_3001980, 0x3001980
 // .equ unk_30019A0, 0x30019A0
@@ -1069,7 +1069,7 @@
 // .equ unk_3001A40, 0x3001A40
 // .equ unk_3001AE0, 0x3001AE0
 // .equ unk_3001B20, 0x3001B20
-// .equ unk_3001B60, 0x3001B60
+// .equ iPallete3001B60, 0x3001B60
 .equ LCDControl, 0x4000000
 .equ BG1X_Offset, 0x4000014
 // .global comp_82E8470

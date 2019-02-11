@@ -7079,7 +7079,7 @@ int sub_802AFD4()
 // 0x802b060
 void decomp_802B060()
 {
-    decompAndCopyData_8000B30(&initRefs_802B070);
+    decompAndCopyData(&initRefs_802B070);
 }
 
 
@@ -13491,8 +13491,8 @@ void __fastcall startScreen_initGfx_802FCC0(int a1, int a2, int a3, int a4)
     int v6; // r2
     int v7; // r3
 
-    sub_80017AA(a1, a2, a3, a4);
-    decompAndCopyData_8000B30(&initRefs_802FCD8);
+    zeroFillVRAM(a1, a2, a3, a4);
+    decompAndCopyData(&initRefs_802FCD8);
     sub_800183C(v4, v5, v6, v7);
 }
 
@@ -13555,7 +13555,7 @@ char *sub_802FDB0()
 // 0x802fe0c
 void objRender_802FE0C()
 {
-    CopyByEightWords(&dword_3001D70, 117440512, &byte_400);
+    CopyByEightWords(&iObjectAttr3001D70, 117440512, &byte_400);
 }
 
 

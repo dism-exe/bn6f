@@ -83,7 +83,7 @@ ds byte_3001710 // 0x3001710
 	.space 32
 ds byte_3001730 // 0x3001730
 	.space 32
-ds byte_3001750 // 0x3001750
+ds iPallete3001750 // 0x3001750
 	.space 512
 ds byte_3001950 // 0x3001950
 	.space 16
@@ -127,11 +127,11 @@ ds word_3001B56 // 0x3001b56
 	.space 2
 ds word_3001B58 // 0x3001b58
 	.space 8
-ds unk_3001B60 // 0x3001b60
+ds iPallete3001B60 // 0x3001b60
 	.space 512
 ds dword_3001D60 // 0x3001d60
 	.space 16
-ds dword_3001D70 // 0x3001d70
+ds iObjectAttr3001D70 // 0x3001d70
 	.space 4
 ds word_3001D74 // 0x3001d74
 	.space 2

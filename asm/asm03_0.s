@@ -9506,7 +9506,7 @@ decomp_802B060:
 	push {lr}
 	// a1; src: (*a1)<<1>>1, dest= (u32)a1[8]
 	ldr r0, initRefs // =initRefs_802B070 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {pc}
 	.balign 4, 0x00
 initRefs: .word initRefs_802B070
@@ -17650,7 +17650,7 @@ byte_802F2F8: .byte 0x84, 0x10, 0x0, 0x80, 0x1, 0x0, 0x0, 0x0, 0xC6, 0x18, 0x0, 
 	.byte 0x1, 0x0, 0x0, 0x0, 0xCE, 0x39, 0x0, 0x80, 0x1, 0x0, 0x0, 0x0
 	.byte 0x10, 0x42, 0x0, 0x80, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 dword_802F334: .word 0x4
-	.word byte_3001750
+	.word iPallete3001750
 	.word 0xFF01010C
 	.word 0x80000842
 	.word 0x1
@@ -18537,10 +18537,10 @@ byte_802FCB4: .byte 0x16, 0x40, 0x6C, 0x80, 0x70, 0xA2, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_local_start
 startScreen_initGfx_802FCC0:
 	push {r4-r7,lr}
-	bl sub_80017AA
+	bl zeroFillVRAM
 	// initRefs
 	ldr r0, off_802FCD4 // =initRefs_802FCD8 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	bl sub_800183C
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -18662,13 +18662,13 @@ off_802FE08: .word dword_3002590
 	thumb_func_start objRender_802FE0C
 objRender_802FE0C:
 	push {lr}
-	ldr r0, off_802FE1C // =dword_3001D70 
+	ldr r0, off_802FE1C // =iObjectAttr3001D70 
 	ldr r1, dword_802FE20 // =0x7000000 
 	ldr r2, off_802FE24 // =0x400 
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {pc}
 	.balign 4, 0x00
-off_802FE1C: .word dword_3001D70
+off_802FE1C: .word iObjectAttr3001D70
 dword_802FE20: .word 0x7000000
 off_802FE24: .word 0x400
 	thumb_func_end objRender_802FE0C

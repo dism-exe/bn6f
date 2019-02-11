@@ -311,7 +311,7 @@
 // .global WordFill
 // .global loc_8000AC4
 // .global loc_8000AC8
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
@@ -814,7 +814,7 @@
 // .equ byte_200CF20, 0x200CF20
 // .equ byte_200D220, 0x200D220
 // .equ word_200DCF0, 0x200DCF0
-// .equ byte_200DF20, 0x200DF20
+// .equ eStruct200DF20, 0x200DF20
 // .equ byte_200DF21, 0x200DF21
 // .equ byte_200DF24, 0x200DF24
 // .equ byte_200DF25, 0x200DF25
@@ -881,10 +881,10 @@
 // .equ unk_20222A0, 0x20222A0
 // .equ unk_20222F0, 0x20222F0
 // .equ unk_20226F0, 0x20226F0
-// .equ unk_2022AA0, 0x2022AA0
-// .equ unk_2022C00, 0x2022C00
-// .equ unk_2022FA0, 0x2022FA0
-// .equ unk_20231A0, 0x20231A0
+// .equ eGuiSprite2022AA0, 0x2022AA0
+// .equ byte_2022C00, 0x2022C00
+// .equ eGuiSprite2022FA0, 0x2022FA0
+// .equ byte_20231A0, 0x20231A0
 // .equ byte_2023BC0, 0x2023BC0
 // .equ byte_2023BC8, 0x2023BC8
 // .equ word_2023FA0, 0x2023FA0

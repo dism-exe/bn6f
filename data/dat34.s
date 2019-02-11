@@ -1874,7 +1874,7 @@ sub_812E9AC:
 	push {r7,lr}
 	bl sub_812ED2C
 	mov r7, r0
-	bl sub_80017AA
+	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_800183C
 	mov r0, #0x10
@@ -1939,7 +1939,7 @@ sub_812EA44:
 	bl sub_812AF98
 	// initRefs
 	ldr r0, off_812EA5C // =off_812EA60 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	pop {pc}
 	.balign 4, 0x00
 off_812EA5C: .word off_812EA60
@@ -1947,10 +1947,10 @@ off_812EA60: .word byte_86C9D6C
 	.word byte_30016D0
 	.word 0x20
 	.word 0x886DC688
-	.word unk_2022FA0
+	.word eGuiSprite2022FA0
 	.word decomp_2013A00
 	.word 0x886DC518
-	.word unk_2022AA0
+	.word eGuiSprite2022AA0
 	.word decomp_2013A00
 	.word 0x886DCCF0
 	.word unk_2024290

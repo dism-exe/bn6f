@@ -15892,15 +15892,15 @@ void __noreturn sub_811A434()
 
     *v0 = 35;
     v1 = 36;
-    v2 = &unk_20231A0;
+    v2 = &byte_20231A0;
     if ( sSubmenu.jo_01 == 28 )
-        v2 = &unk_20231A0;
+        v2 = &byte_20231A0;
     if ( v0[4] )
     {
         v1 = 35;
-        v2 = &unk_2022AA0;
+        v2 = &eGuiSprite2022AA0;
         if ( sSubmenu.jo_01 == 28 )
-            v2 = &unk_2022AA0;
+            v2 = &eGuiSprite2022AA0;
     }
     sub_8002770(v1, v2);
     v3 = v0[5];
@@ -16151,7 +16151,7 @@ void __noreturn sub_811A7AC()
     _BYTE *v0; // r5
 
     *v0 = 35;
-    sub_8002770(42, &unk_2022AA0);
+    sub_8002770(42, &eGuiSprite2022AA0);
     sprite_setAnimation(0);
     sprite_loadAnimationData();
     sub_8002F90();
@@ -16221,7 +16221,7 @@ void __noreturn sub_811A878()
     _BYTE *v0; // r5
 
     *v0 = 35;
-    sub_8002770(43, &unk_2022FA0);
+    sub_8002770(43, &eGuiSprite2022FA0);
     sub_811A940(0, 6);
 }
 
@@ -16584,7 +16584,7 @@ void __noreturn sub_811AD58()
     _BYTE *v0; // r5
 
     *v0 = 35;
-    sub_8002770(104, &unk_2022FA0);
+    sub_8002770(104, &eGuiSprite2022FA0);
     sprite_setAnimation(0);
     sprite_loadAnimationData();
     sub_8002F90();
@@ -20990,7 +20990,7 @@ char __fastcall sub_811EBF4(char result)
 // 0x811ec00
 void __fastcall sub_811EC00(int a1, int a2, int a3, int a4)
 {
-    ZeroFillByWord(&byte_200DF20, 0x18u, a3, a4);
+    ZeroFillByWord(&eStruct200DF20, 0x18u, a3, a4);
 }
 
 
@@ -21003,7 +21003,7 @@ signed int __fastcall sub_811EC10(int a1, int a2, int a3, int a4)
     char v7; // r1
 
     ZeroFillByWord(*(v4 + oToolkit_SubmenuPtr), 0x80u, a3, a4);
-    ZeroFillByWord(&byte_200DF20, 0x18u, v5, v6);
+    ZeroFillByWord(&eStruct200DF20, 0x18u, v5, v6);
     sub_811EBE8(1);
     word_200DF30 = -32;
     byte_200DF2A = sub_8120CC8(0, byte_811EBDA);
@@ -21070,7 +21070,7 @@ int sub_811EC68()
 // () -> void
 int ho_811ED1C()
 {
-    (*(jt_811ED3C + byte_200DF20))();
+    (*(jt_811ED3C + eStruct200DF20))();
     sub_80465BC();
     sub_80465F8();
     return sub_811F508();
@@ -21281,7 +21281,7 @@ void __cdecl copyTiles_PET_811EF70()
 // 0x811ef8c
 void sub_811EF8C()
 {
-    decompAndCopyData_8000B30(&off_811EF9C);
+    decompAndCopyData(&off_811EF9C);
 }
 
 
@@ -21733,7 +21733,7 @@ signed int sub_811F708()
 
     sub_811F728();
     *(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_16) = 8;
-    byte_200DF20 = 20;
+    eStruct200DF20 = 20;
     byte_200DF21 = 0;
     byte_200DF28 = 0;
     result = 3;
@@ -24025,5 +24025,3 @@ int sub_8121198()
     v1 = *(*(v0 + oToolkit_Unk2001c04_Ptr) + 48);
     return v1 - *&byte_81211B4[2 * getPETNaviSelect()];
 }
-
-

@@ -83245,7 +83245,7 @@ loc_80E10DE:
 	mov r1, #0
 	mov r2, #9
 	mov r3, #0x14
-	ldr r4, off_80E1148 // =unk_3001B60 
+	ldr r4, off_80E1148 // =iPallete3001B60 
 	bl sub_8002378
 	b locret_80E1136
 loc_80E10EE:
@@ -83278,7 +83278,7 @@ loc_80E111E:
 	mov r0, #0
 	mov r2, #9
 	mov r3, #0x14
-	ldr r4, off_80E1148 // =unk_3001B60 
+	ldr r4, off_80E1148 // =iPallete3001B60 
 	bl sub_8002378
 	b locret_80E1136
 loc_80E112C:
@@ -83290,7 +83290,7 @@ locret_80E1136:
 off_80E1138: .word byte_80E113C
 byte_80E113C: .byte 0xFF, 0x7F, 0x0, 0x0, 0x1F, 0x0, 0x0, 0x0
 dword_80E1144: .word 0x0
-off_80E1148: .word unk_3001B60
+off_80E1148: .word iPallete3001B60
 	thumb_func_end sub_80E10C0
 
 	thumb_local_start
@@ -83313,13 +83313,13 @@ loc_80E116A:
 	mov r1, #0
 	mov r2, #9
 	mov r3, #0x14
-	ldr r4, off_80E11D8 // =unk_3001B60 
+	ldr r4, off_80E11D8 // =iPallete3001B60 
 	bl sub_8002378
 	mov r0, #0
 	mov r1, #0
 	mov r2, #9
 	mov r3, #0x15
-	ldr r4, off_80E11DC // =byte_3001750 
+	ldr r4, off_80E11DC // =iPallete3001750 
 	bl sub_8002378
 	b locret_80E11D0
 loc_80E1188:
@@ -83341,13 +83341,13 @@ loc_80E119A:
 	mov r0, #0
 	mov r2, #0xf
 	mov r3, #0x14
-	ldr r4, off_80E11D8 // =unk_3001B60 
+	ldr r4, off_80E11D8 // =iPallete3001B60 
 	bl sub_8002378
 	ldr r1, dword_80E11D4 // =0x7fff 
 	mov r0, #0
 	mov r2, #0xf
 	mov r3, #0x15
-	ldr r4, off_80E11DC // =byte_3001750 
+	ldr r4, off_80E11DC // =iPallete3001750 
 	bl sub_8002378
 	b locret_80E11D0
 loc_80E11C0:
@@ -83360,8 +83360,8 @@ locret_80E11D0:
 	pop {pc}
 	.balign 4, 0x00
 dword_80E11D4: .word 0x7FFF
-off_80E11D8: .word unk_3001B60
-off_80E11DC: .word byte_3001750
+off_80E11D8: .word iPallete3001B60
+off_80E11DC: .word iPallete3001750
 	thumb_func_end sub_80E114C
 
 	thumb_func_start sub_80E11E0

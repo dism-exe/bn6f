@@ -1112,7 +1112,7 @@ int sub_8142A84()
     int v3; // r0
     char v4; // zf
 
-    v0 = byte_2011EE0;
+    v0 = eStructArr2011EE0;
     v1 = 0;
     v2 = 0;
     do
@@ -1194,7 +1194,7 @@ int __fastcall sub_8142B04(int a1)
     char v6; // zf
 
     v1 = a1;
-    v2 = byte_2011EE0;
+    v2 = eStructArr2011EE0;
     v3 = 0;
     v4 = 0;
     do
