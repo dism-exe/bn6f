@@ -3,40 +3,52 @@ import ctypes
 def fileline_error(error_msg, fileline):
     raise RuntimeError("%s:%s: %s" % fileline.filename, fileline.line_num, error_msg)
 
-def evaluate_possible_sym_error_if_undefined(possible_sym, fileline):
-    try:
-        immediate_value = evaluate_possible_sym(possible_sym)
-    except KeyError:
-        fileline_error("Could not evaluate undefined symbol \"%s\"!" % possible_sym, fileline)
-    return immediate_value
+def evaluate_reg_or_imm(registers, reg_or_imm, fileline):
+    if reg_or_imm.startswith("#"):
+        imm_value = evaluate_sym_or_num_error_if_undefined(reg_or_imm[1:], fileline)
+        return Primitive(Size.BYTE, imm_value).wrap()
+    else:
+        return registers[reg_or_imm][-1]
 
-def evaluate_possible_sym(possible_sym):
-    global syms
+def evaluate_imm_sym_or_num_error_if_undefined(imm_sym_or_num, fileline):
+    if not reg_or_imm.startswith("#"):
+        fileline_error("Immediate argument \"%s\" is not prefixed with #!" % imm_sym_or_num, fileline)
+    
+    return evaluate_sym_or_num_error_if_undefined(imm_sym_or_num[1:], fileline)
+
+def evaluate_sym_or_num_error_if_undefined(sym_or_num, fileline):
     try:
-        return int(possible_sym, 0)
+        sym_value = evaluate_sym_or_num(sym_or_num)
+    except KeyError:
+        fileline_error("Could not evaluate undefined symbol \"%s\"!" % sym_or_num, fileline)
+    return sym_value
+
+def evaluate_sym_or_num(sym_or_num):
+    global syms    
+    try:
+        return int(sym_or_num, 0)
     except ValueError:
-        return syms[possible_sym].value
+        return syms[sym_or_num].value
 
 rhd_rhs_regex = r"^(r[0-9]|r1[0-2]|sp|lr|pc), *(r[0-9]|r1[0-2]|sp|lr|pc)(?!,)$"
 rd_rs_regex = r"^(r[0-7]), *(r[0-7])(?!,)$"
-rd_rs_imm_regex = r"^(r[0-7]), *(r[0-7]), *#([^,]+)(?!,)$"
+rd_rs_imm_regex = r"^(r[0-7]), *(r[0-7]), *(#[^,]+)(?!,)$"
 rd_rs_rn_regex = r"^(r[0-7]), *(r[0-7]), *(r[0-7])$"
-rd_imm_regex = r"^(r[0-7]), *#([^,]+)(?!,)$"
-rd_sp_imm_regex = r"^(r[0-7]), *sp, *#([^,]+)(?!,)$"
-sp_or_sp_sp_imm_regex = r"^(sp, *){1,2}#([^,]+)(?!,)$"
+rd_imm_regex = r"^(r[0-7]), *(#[^,]+)(?!,)$"
+rd_sp_imm_regex = r"^(r[0-7]), *sp, *(#[^,]+)(?!,)$"
+sp_or_sp_sp_imm_regex = r"^(sp, *){1,2}(#[^,]+)(?!,)$"
 rhs_regex = r"^(r[0-9]|r1[0-2]|sp|lr|pc)$"
 rd_label_regex = r"^(r[0-7]), *([^,]+)(?!,)$"
 rd_pool_regex = r"^(r[0-7]), *([^,]+)(?!,)$"
 rd_deref_rb_ro_regex = r"^(r[0-7]), *\[ *(r[0-7]), *(r[0-7])\]$"
-rd_deref_rb_imm_regex = r"^(r[0-7]), *\[ *(r[0-7]), *#([^\]]+)\]$"
-rd_deref_sp_imm_regex = r"^(r[0-7]), *\[ *sp, *#([^\]]+)\]$"
+rd_deref_rb_imm_regex = r"^(r[0-7]), *\[ *(r[0-7]), *(#[^\]]+)\]$"
+rd_deref_sp_imm_regex = r"^(r[0-7]), *\[ *sp, *(#[^\]]+)\]$"
 rlist_regex = r"^({[^}]+})$"
 rb_excl_rlist_regex = r"^(r[0-7])!, *({[^}]+})$"
 label_or_imm_regex = r"^(.+)$"
 
 def lsl_imm_opcode_function(opcode_params, funcstate, fileline):
-    immediate_value = evaluate_possible_sym_error_if_undefined(opcode_params[2], fileline)
-    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[1], immediate_value, lambda a, b: a << b, fileline)
+    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], lambda a, b: a << b, fileline)
     return True
 
 def lsl_reg_opcode_function(opcode_params, funcstate, fileline):
@@ -44,8 +56,7 @@ def lsl_reg_opcode_function(opcode_params, funcstate, fileline):
     return True
     
 def lsr_imm_opcode_function(opcode_params, funcstate, fileline):
-    immediate_value = evaluate_possible_sym_error_if_undefined(opcode_params[2], fileline)
-    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[1], immediate_value, lambda a, b: a >> b, fileline)
+    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], lambda a, b: a >> b, fileline)
     return True
 
 def lsr_reg_opcode_function(opcode_params, funcstate, fileline):
@@ -53,8 +64,7 @@ def lsr_reg_opcode_function(opcode_params, funcstate, fileline):
     return True
 
 def asr_imm_opcode_function(opcode_params, funcstate, fileline):
-    immediate_value = evaluate_possible_sym_error_if_undefined(opcode_params[2], fileline)
-    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[1], immediate_value, lambda val, shift: ctypes.c_uint32(ctypes.c_int32(val).value >> shift).value, fileline)
+    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], lambda val, shift: ctypes.c_uint32(ctypes.c_int32(val).value >> shift).value, fileline)
     return True
 
 def asr_reg_opcode_function(opcode_params, funcstate, fileline):
@@ -68,10 +78,7 @@ def shift_datatypes_from_regs(registers, dest_reg, source_reg, operand_reg_or_im
     elif source_datatype.type == DataType.POINTER:
         fileline_error("Impossible shift operation found! (Pointer shift imm)", fileline)
 
-    if isinstance(operand_reg_or_imm, int):
-        immediate_value = Primitive(Size.BYTE, operand_reg_or_imm).wrap()
-    else:
-        immediate_value = operand_reg_or_imm
+    immediate_value = evaluate_reg_or_imm(registers, operand_reg_or_imm, fileline)
 
     try:
         new_value = callback(source_datatype.ref.value, immediate_value.ref.value)
@@ -82,49 +89,66 @@ def shift_datatypes_from_regs(registers, dest_reg, source_reg, operand_reg_or_im
     registers[dest_reg].append(RegisterInfo(new_dest_datatype, fileline))
 
 def add_rd_rs_rn_opcode_function(opcode_params, funcstate, fileline):
-    add_datatypes_from_registers(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], fileline)
+    do_triple_arg_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], add_datatypes, fileline)
     return True
 
 def add_rd_rs_imm_opcode_function(opcode_params, funcstate, fileline):
-    immediate_value = evaluate_possible_sym_error_if_undefined(opcode_params[2], fileline)
-    add_datatypes_from_registers(funcstate.regs, opcode_params[0], opcode_params[1], immediate_value, fileline)
+    do_triple_arg_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], add_datatypes, fileline)
     return True
 
 def add_rd_imm_opcode_function(opcode_params, funcstate, fileline):
-    immediate_value = evaluate_possible_sym_error_if_undefined(opcode_params[1], fileline)
-    add_datatypes_from_registers(funcstate.regs, opcode_params[0], opcode_params[0], immediate_value, fileline)
+    do_double_arg_operation(funcstate.regs, opcode_params[0], opcode_params[1], add_datatypes, fileline)
     return True
 
 def add_rd_rs_opcode_function(opcode_params, funcstate, fileline):
-    add_datatypes_from_registers(funcstate.regs, opcode_params[0], opcode_params[0], opcode_params[1], fileline)
+    if opcode_params[1] == "sp":
+        fileline_error("Found instance of add rHS, sp", fileline)
+    do_double_arg_operation(funcstate.regs, opcode_params[0], opcode_params[1], add_datatypes, fileline)
     return True
 
 def add_rd_sp_imm_opcode_function(opcode_params, funcstate, fileline):
-    immediate_value = evaluate_possible_sym_error_if_undefined(opcode_params[2], fileline)
+    immediate_value = evaluate_imm_sym_or_num_error_if_undefined(opcode_params[2], fileline)
     new_sp = copy.deepcopy(funcstate.regs["sp"][-1])
     new_sp.ref.add_offset(immediate_value)
     funcstate.regs[opcode_params[0]].append(RegisterInfo(new_sp, fileline))
     return True
 
 def add_sp_opcode_function(opcode_params, funcstate, fileline):
+    sp_offset = evaluate_imm_sym_or_num_error_if_undefined(opcode_params[2], fileline)
+    add_offset_to_sp(funcstate.regs, sp_offset, fileline)
     return True
 
 def sub_rd_rs_rn_opcode_function(opcode_params, funcstate, fileline):
+    do_triple_arg_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], subtract_datatypes, fileline)
     return True
 
 def sub_rd_rs_imm_opcode_function(opcode_params, funcstate, fileline):
+    do_triple_arg_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], subtract_datatypes, fileline)
     return True
 
 def sub_rd_imm_opcode_function(opcode_params, funcstate, fileline):
+    do_double_arg_operation(funcstate.regs, opcode_params[0], opcode_params[1], subtract_datatypes, fileline)
     return True
 
 def sub_rd_rs_opcode_function(opcode_params, funcstate, fileline):
+    do_double_arg_operation(funcstate.regs, opcode_params[0], opcode_params[1], subtract_datatypes, fileline)
     return True
 
-def add_sp_opcode_function(opcode_params, funcstate, fileline):
+def sub_sp_opcode_function(opcode_params, funcstate, fileline):
+    sp_offset = evaluate_imm_sym_or_num_error_if_undefined(opcode_params[2], fileline) * -1
+    add_offset_to_sp(funcstate.regs, sp_offset, fileline)
     return True
+
+def add_offset_to_sp(registers, sp_offset, fileline):
+    new_sp = copy.deepcopy(registers["sp"][-1])
+    new_sp.ref.add_offset(sp_offset)
+    registers["sp"].append(RegisterInfo(new_sp, fileline))
+    return
 
 def mov_imm_opcode_function(opcode_params, funcstate, fileline):
+    imm_value = evaluate_imm_sym_or_num_error_if_undefined(opcode_params[1], fileline)
+    new_dest_reg = Primitive(Size.BYTE, imm_value).wrap()
+    funcstate.regs[opcode_params[0]].append(RegisterInfo(new_dest_reg, fileline))
     return True
 
 def mov_reg_opcode_function(opcode_params, funcstate, fileline):
@@ -331,7 +355,7 @@ sub_rd_rs_rn_opcode = Opcode(rd_rs_rn_regex, sub_rd_rs_rn_opcode_function)
 sub_rd_rs_imm_opcode = Opcode(rd_rs_imm_regex, sub_rd_rs_imm_opcode_function)
 sub_rd_imm_opcode = Opcode(rd_imm_regex, sub_rd_imm_opcode_function)
 sub_rd_rs_opcode = Opcode(rd_rs_regex, sub_rd_rs_opcode_function)
-add_sp_opcode = Opcode(sp_or_sp_sp_imm_regex, add_sp_opcode_function)
+sub_sp_opcode = Opcode(sp_or_sp_sp_imm_regex, sub_sp_opcode_function)
 mov_imm_opcode = Opcode(rd_imm_regex, mov_imm_opcode_function)
 mov_reg_opcode = Opcode(rd_rs_regex, mov_reg_opcode_function)
 cmp_imm_opcode = Opcode(rd_imm_regex, cmp_imm_opcode_function)
@@ -417,7 +441,7 @@ opcodes = {
         sub_rd_rs_imm_opcode,
         sub_rd_imm_opcode,
         sub_rd_rs_opcode,
-        add_sp_opcode,
+        sub_sp_opcode,
     ),
     "mov": (
         mov_imm_opcode,
@@ -571,14 +595,13 @@ opcodes = {
     )
 }
 
-def add_datatypes_from_registers(registers, dest_reg, source_reg, operand_reg_or_imm, fileline):
+def do_double_arg_operation(registers, dest_reg, source_reg, callback, fileline):
+    do_triple_arg_operation(registers, dest_reg, dest_reg, source_reg, callback, fileline)
+
+def do_triple_arg_operation(registers, dest_reg, source_reg, operand_reg_or_imm, callback, fileline):
     source_datatype = registers[source_reg][-1]
-    if isinstance(operand_reg_or_imm, int):
-        operand_datatype = Primitive(Size.BYTE, operand_reg_or_imm).wrap()
-    else:
-        operand_datatype = registers[operand_reg_or_imm][-1]
-    
-    result_datatype = add_datatypes(source_datatype, operand_datatype, fileline)
+    imm_value = evaluate_reg_or_imm(registers, operand_reg_or_imm, fileline)
+    result_datatype = callback(source_datatype, operand_datatype, fileline)
     registers[dest_reg].append(RegisterInfo(result_datatype, fileline))
 
 def add_datatypes(source_datatype, operand_datatype):
@@ -602,20 +625,60 @@ def add_datatypes(source_datatype, operand_datatype):
             result_datatype.ref.add_offset(NaN)
             return result_datatype
         else:
-            raise fileline_error("Invalid DataType constant of %s!" % datatype_strong.type, fileline)
+            fileline_error("Invalid DataType constant of %s!" % datatype_strong.type, fileline)
     elif datatype_weak.type == DataType.PRIMITIVE:
         if datatype_strong.type == DataType.PRIMITIVE:
-            return (source_datatype.ref.value + operand_datatype.ref.value)
+            return Primitive(Size.UNKNOWN, source_datatype.ref.value + operand_datatype.ref.value)
         elif datatype_strong.type == DataType.POINTER:
             result_datatype = copy.deepcopy(datatype_strong)
-            result_datatype.add_offset(datatype_weak.value)
+            result_datatype.ref.add_offset(datatype_weak.ref.value)
             return result_datatype
         else:
-            raise fileline_error("Invalid DataType constant of %s!" % datatype_strong.type, fileline)
+            fileline_error("Invalid DataType constant of %s!" % datatype_strong.type, fileline)
     elif datatype_weak == DataType.POINTER and datatype_strong == DataType.POINTER:
-        raise fileline_error("Impossible add operation found! (pointer + pointer)", fileline)
+        fileline_error("Impossible add operation found! (pointer + pointer)", fileline)
     else:
-        raise fileline_error("Invalid DataType constant of %s!" % datatype_weak.type, fileline)
+        fileline_error("Invalid DataType constant of %s!" % datatype_weak.type, fileline)
+
+def subtract_datatypes(source_datatype, operand_datatype):
+    if source_datatype.type < operand_datatype.type:
+        datatype_weak = source_datatype
+        datatype_strong = operand_datatype
+    else:
+        datatype_weak = operand_datatype
+        datatype_strong = source_datatype
+
+    if datatype_weak.type == DataType.UNKNOWN:
+        if datatype_strong.type == DataType.UNKNOWN:
+            return UnknownDataType()
+        elif datatype_strong.type == DataType.PRIMITIVE:
+            return UnknownDataType()
+        elif datatype_strong.type == DataType.POINTER:
+            # if the operand datatype is the pointer, then it is an error
+            if source_datatype.type == DataType.POINTER:
+                operand_datatype.ref = Primitive(Size.WORD)
+                print("Context information: pointer - unk")
+                result_datatype = copy.deepcopy(source_datatype)
+                result_datatype.ref.add_offset(NaN)
+                return result_datatype
+            else:
+                fileline_error("Impossible sub operation found! (unk - pointer)", fileline)
+        else:
+            fileline_error("Invalid DataType constant of %s!" % datatype_strong.type, fileline)
+    elif datatype_weak.type == DataType.PRIMITIVE:
+        if datatype_strong.type == DataType.PRIMITIVE:
+            return Primitive(Size.UNKNOWN, source_datatype.ref.value - operand_datatype.ref.value)
+        elif datatype_strong.type == DataType.POINTER:
+            if source_datatype.type == DataType.POINTER:
+                result_datatype = copy.deepcopy(source_datatype)
+                result_datatype.ref.add_offset(-operand_datatype.ref.value)
+                return result_datatype
+            else:
+                fileline_error("Impossible sub operation found! (num - pointer)", fileline)
+    elif datatype_weak == DataType.POINTER and datatype_strong == DataType.POINTER:
+        fileline_error("Context information: pointer - pointer", fileline)
+    else:
+        fileline_error("Invalid DataType constant of %s!" % datatype_weak.type, fileline)
 
 def add_datatypes_for_dereference(datatype1, datatype2):
     

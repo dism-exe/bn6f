@@ -335,7 +335,8 @@ class StructField:
         self.offset_name = offset_name
         self.datatype = datatype
 
-StructEntry = namedtuple("StructEntry", ("offset_name", "datatype", "size"
+StructEntry = namedtuple("StructEntry", ("offset_name", "datatype", "size"))
+
 class StructData:
     def __init__(self, struct_prefix, struct_fields):
         self.struct_prefix = struct_prefix
