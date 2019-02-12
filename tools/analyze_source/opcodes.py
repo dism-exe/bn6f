@@ -1,8 +1,47 @@
 import ctypes
 
+rhd_rhs_regex = r"^(r[0-9]|r1[0-2]|sp|lr|pc), *(r[0-9]|r1[0-2]|sp|lr|pc)(?!,)$"
+rd_rs_regex = r"^(r[0-7]), *(r[0-7])(?!,)$"
+rd_rs_imm_regex = r"^(r[0-7]), *(r[0-7]), *(#[^,]+)(?!,)$"
+rd_rs_rn_regex = r"^(r[0-7]), *(r[0-7]), *(r[0-7])$"
+rd_imm_regex = r"^(r[0-7]), *(#[^,]+)(?!,)$"
+rd_sp_imm_regex = r"^(r[0-7]), *sp, *(#[^,]+)(?!,)$"
+sp_or_sp_sp_imm_regex = r"^(sp, *){1,2}(#[^,]+)(?!,)$"
+rhs_regex = r"^(r[0-9]|r1[0-2]|sp|lr|pc)$"
+rd_label_regex = r"^(r[0-7]), *([^,]+)(?!,)$"
+rd_pool_regex = r"^(r[0-7]), *([^,]+)(?!,)$"
+rd_deref_rb_ro_regex = r"^(r[0-7]), *\[ *(r[0-7]), *(r[0-7])\]$"
+rd_deref_rb_imm_regex = r"^(r[0-7]), *\[ *(r[0-7]), *(#[^\]]+)\]$"
+rd_deref_sp_imm_regex = r"^(r[0-7]), *\[ *sp, *(#[^\]]+)\]$"
+rlist_regex = r"^({[^}]+})$"
+rb_excl_rlist_regex = r"^(r[0-7])!, *({[^}]+})$"
+label_or_imm_regex = r"^(.+)$"
+
+def assert_valid_datatype(datatype, fileline):
+    if not (datatype1.type == DataType.UNKNOWN or datatype1.type == DataType.PRIMITIVE or datatype1.type == DataType.POINTER):
+        fileline_error("Invalid DataType constant of %s!" % datatype.type, fileline)
+    return
+    
+def assert_valid_datatypes(datatype1, datatype2, fileline):
+    if not ((datatype1.type == DataType.UNKNOWN or datatype1.type == DataType.PRIMITIVE or datatype1.type == DataType.POINTER) and (datatype2.type == DataType.UNKNOWN or datatype2.type == DataType.PRIMITIVE or datatype1.type == DataType.POINTER)):
+       fileline_error("Invalid DataType constant found! (1: %s, 2: %s)" % (datatype1.type, datatype2.type), fileline)
+    return
+        
 def fileline_error(error_msg, fileline):
     raise RuntimeError("%s:%s: %s" % fileline.filename, fileline.line_num, error_msg)
 
+def evaluate_reg_or_imm_require_primitive(registers, reg_or_imm, fileline):
+    if reg_or_imm.startswith("#"):
+        imm_value = evaluate_sym_or_num_error_if_undefined(reg_or_imm[1:], fileline)
+        return Primitive(Size.BYTE, imm_value).wrap()
+    else:
+        datatype = registers[reg_or_imm][-1]
+        if datatype.type == DataType.UNKNOWN:
+            datatype.ref = Primitive(Size.WORD)
+        elif datatype.type != DataType.PRIMITIVE:
+            fileline_error("Expected register of primitive type, got register of type \"%s\" instead!" % datatype.type, fileline)
+        return datatype
+        
 def evaluate_reg_or_imm(registers, reg_or_imm, fileline):
     if reg_or_imm.startswith("#"):
         imm_value = evaluate_sym_or_num_error_if_undefined(reg_or_imm[1:], fileline)
@@ -30,55 +69,66 @@ def evaluate_sym_or_num(sym_or_num):
     except ValueError:
         return syms[sym_or_num].value
 
-rhd_rhs_regex = r"^(r[0-9]|r1[0-2]|sp|lr|pc), *(r[0-9]|r1[0-2]|sp|lr|pc)(?!,)$"
-rd_rs_regex = r"^(r[0-7]), *(r[0-7])(?!,)$"
-rd_rs_imm_regex = r"^(r[0-7]), *(r[0-7]), *(#[^,]+)(?!,)$"
-rd_rs_rn_regex = r"^(r[0-7]), *(r[0-7]), *(r[0-7])$"
-rd_imm_regex = r"^(r[0-7]), *(#[^,]+)(?!,)$"
-rd_sp_imm_regex = r"^(r[0-7]), *sp, *(#[^,]+)(?!,)$"
-sp_or_sp_sp_imm_regex = r"^(sp, *){1,2}(#[^,]+)(?!,)$"
-rhs_regex = r"^(r[0-9]|r1[0-2]|sp|lr|pc)$"
-rd_label_regex = r"^(r[0-7]), *([^,]+)(?!,)$"
-rd_pool_regex = r"^(r[0-7]), *([^,]+)(?!,)$"
-rd_deref_rb_ro_regex = r"^(r[0-7]), *\[ *(r[0-7]), *(r[0-7])\]$"
-rd_deref_rb_imm_regex = r"^(r[0-7]), *\[ *(r[0-7]), *(#[^\]]+)\]$"
-rd_deref_sp_imm_regex = r"^(r[0-7]), *\[ *sp, *(#[^\]]+)\]$"
-rlist_regex = r"^({[^}]+})$"
-rb_excl_rlist_regex = r"^(r[0-7])!, *({[^}]+})$"
-label_or_imm_regex = r"^(.+)$"
+def order_datatypes(datatype1, datatype2):
+    if datatype1.type < datatype2.type:
+        datatype_weak = datatype1
+        datatype_strong = datatype2
+    else:
+        datatype_weak = datatype2
+        datatype_strong = datatype1
+    
+    return (datatype_weak, datatype_strong)
+
+def read_ordered_and_unordered_alu_args(opcode_params, funcstate):
+    dest_datatype = funcstate.regs[opcode_params[0]][-1]
+    source_datatype = funcstate.regs[opcode_params[1]][-1]
+    return order_datatypes(dest_datatype, source_datatype) + (dest_datatype, source_datatype)
+
+def read_ordered_alu_args(opcode_params, funcstate):
+    dest_datatype = funcstate.regs[opcode_params[0]][-1]
+    source_datatype = funcstate.regs[opcode_params[1]][-1]
+    return order_datatypes(dest_datatype, source_datatype)
+
+def read_alu_args(opcode_params, funcstate):
+    dest_datatype = funcstate.regs[opcode_params[0]][-1]
+    source_datatype = funcstate.regs[opcode_params[1]][-1]
+    return dest_datatype, source_datatype
 
 def lsl_imm_opcode_function(opcode_params, funcstate, fileline):
-    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], lambda a, b: a << b, fileline)
+    do_triple_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], lambda a, b: a << b, fileline)
     return True
 
 def lsl_reg_opcode_function(opcode_params, funcstate, fileline):
-    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[0], opcode_params[1], lambda a, b: a << b, fileline)
+    do_double_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda a, b: a << b, fileline)
     return True
     
 def lsr_imm_opcode_function(opcode_params, funcstate, fileline):
-    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], lambda a, b: a >> b, fileline)
+    do_triple_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], lambda a, b: a >> b, fileline)
     return True
 
 def lsr_reg_opcode_function(opcode_params, funcstate, fileline):
-    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[0], opcode_params[1], lambda a, b: a >> b, fileline)
+    do_double_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda a, b: a >> b, fileline)
     return True
 
 def asr_imm_opcode_function(opcode_params, funcstate, fileline):
-    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], lambda val, shift: ctypes.c_uint32(ctypes.c_int32(val).value >> shift).value, fileline)
+    do_triple_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], lambda val, shift: ctypes.c_uint32(ctypes.c_int32(val).value >> shift).value, fileline)
     return True
 
 def asr_reg_opcode_function(opcode_params, funcstate, fileline):
-    shift_datatypes_from_regs(funcstate.regs, opcode_params[0], opcode_params[0], opcode_params[1], lambda val, shift: ctypes.c_uint32(ctypes.c_int32(val).value >> shift).value, fileline)
+    do_double_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda val, shift: ctypes.c_uint32(ctypes.c_int32(val).value >> shift).value, fileline)
     return True
 
-def shift_datatypes_from_regs(registers, dest_reg, source_reg, operand_reg_or_imm, callback, fileline):
+def do_double_arg_numeric_operation(registers, dest_reg, source_reg, callback, fileline):
+    do_triple_arg_numeric_operation(registers, dest_reg, dest_reg, source_reg, callback, fileline)
+
+def do_triple_arg_numeric_operation(registers, dest_reg, source_reg, operand_reg_or_imm, callback, fileline):
     source_datatype = registers[source_reg][-1]
     if source_datatype.type == DataType.UNKNOWN:
         source_datatype.ref = Primitive(Size.WORD)
     elif source_datatype.type == DataType.POINTER:
-        fileline_error("Impossible shift operation found! (Pointer shift imm)", fileline)
+        fileline_error("Tried performing numeric operation on pointer!", fileline)
 
-    immediate_value = evaluate_reg_or_imm(registers, operand_reg_or_imm, fileline)
+    immediate_value = evaluate_reg_or_imm_require_primitive(registers, operand_reg_or_imm, fileline)
 
     try:
         new_value = callback(source_datatype.ref.value, immediate_value.ref.value)
@@ -152,48 +202,88 @@ def mov_imm_opcode_function(opcode_params, funcstate, fileline):
     return True
 
 def mov_reg_opcode_function(opcode_params, funcstate, fileline):
+    new_dest_reg = copy.deepcopy(funcstate.regs[opcode_params[1]][-1])
+    funcstate.regs[opcode_params[0]].append(RegisterInfo(new_dest_reg, fileline))
     return True
 
 def cmp_imm_opcode_function(opcode_params, funcstate, fileline):
+    dest_datatype = funcstate.regs[opcode_params[1]][-1]
+
+    assert_valid_datatype(dest_datatype, fileline)
+
+    if dest_datatype.type == DataType.UNKNOWN:
+        dest_datatype.ref = Primitive(Size.WORD)
+    elif dest_datatype.type == DataType.POINTER:
+        fileline_error("Context information: cmp pointer, #imm", fileline)
     return True
 
 def cmp_reg_opcode_function(opcode_params, funcstate, fileline):
+    datatype_weak, datatype_strong, dest_datatype, source_datatype = read_ordered_and_unordered_alu_args(opcode_params, funcstate)
+
+    assert_valid_datatypes(dest_datatype, source_datatype, fileline)
+
+    if datatype_weak.type == DataType.UNKNOWN:
+        if datatype_strong.type == DataType.PRIMITIVE:
+            datatype_weak.ref = Primitive(Size.WORD)
+        elif datatype_strong.type == DataType.POINTER:
+            if dest_datatype.type == DataType.POINTER:
+                fileline_error("Context information: cmp pointer, unknown", fileline)
+            else:
+                fileline_error("Context information: cmp unknown, pointer", fileline)
+    elif datatype_weak.type == DataType.PRIMITIVE:
+        if datatype_strong.type == DataType.POINTER:
+            if dest_datatype.type == DataType.POINTER:
+                fileline_error("Impossible comparison found! (pointer == primitive)", fileline)
+            else:
+                fileline_error("Impossible comparison found! (primitive == pointer)", fileline)
+
     return True
 
 def and_opcode_function(opcode_params, funcstate, fileline):
+    do_double_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda a, b: a & b, fileline)
     return True
 
 def eor_opcode_function(opcode_params, funcstate, fileline):
+    do_double_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda a, b: a ^ b, fileline)
     return True
 
 def adc_opcode_function(opcode_params, funcstate, fileline):
+    fileline_error("adc not implemented!", fileline)
     return True
 
 def sbc_opcode_function(opcode_params, funcstate, fileline):
+    fileline_error("sbc not implemented!", fileline)
     return True
 
 def ror_opcode_function(opcode_params, funcstate, fileline):
+    do_double_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda val, rotate: ((val & MAX_UINT32) >> (rotate & 31)) | ((val << (32 - (rotate & 31))) & MAX_UINT32), fileline)
     return True
 
 def tst_opcode_function(opcode_params, funcstate, fileline):
     return True
 
 def neg_opcode_function(opcode_params, funcstate, fileline):
+    do_double_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda a, b: (-b) & 0xffffffff, fileline)
     return True
 
 def cmn_opcode_function(opcode_params, funcstate, fileline):
+    fileline_error("cmn not implemented!", fileline)
     return True
 
 def orr_opcode_function(opcode_params, funcstate, fileline):
+    do_double_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda a, b: a | b, fileline)
     return True
 
 def mul_opcode_function(opcode_params, funcstate, fileline):
+    do_double_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda a, b: a * b, fileline)
     return True
 
 def bic_opcode_function(opcode_params, funcstate, fileline):
+    do_double_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda a, b: a & ~b, fileline)
     return True
 
 def mvn_opcode_function(opcode_params, funcstate, fileline):
+    do_double_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda a, b: (~b) & 0xffffffff, fileline)
     return True
 
 def bx_opcode_function(opcode_params, funcstate, fileline):
@@ -600,17 +690,13 @@ def do_double_arg_operation(registers, dest_reg, source_reg, callback, fileline)
 
 def do_triple_arg_operation(registers, dest_reg, source_reg, operand_reg_or_imm, callback, fileline):
     source_datatype = registers[source_reg][-1]
-    imm_value = evaluate_reg_or_imm(registers, operand_reg_or_imm, fileline)
+    operand_datatype = evaluate_reg_or_imm(registers, operand_reg_or_imm, fileline)
+    assert_valid_datatypes(source_datatype, operand_datatype, fileline)
     result_datatype = callback(source_datatype, operand_datatype, fileline)
     registers[dest_reg].append(RegisterInfo(result_datatype, fileline))
 
 def add_datatypes(source_datatype, operand_datatype):
-    if source_datatype.type < operand_datatype.type:
-        datatype_weak = source_datatype
-        datatype_strong = operand_datatype
-    else:
-        datatype_weak = operand_datatype
-        datatype_strong = source_datatype
+    datatype_weak, datatype_strong = order_datatypes(source_datatype, operand_datatype)
 
     if datatype_weak.type == DataType.UNKNOWN:
         if datatype_strong.type == DataType.UNKNOWN:
@@ -641,12 +727,7 @@ def add_datatypes(source_datatype, operand_datatype):
         fileline_error("Invalid DataType constant of %s!" % datatype_weak.type, fileline)
 
 def subtract_datatypes(source_datatype, operand_datatype):
-    if source_datatype.type < operand_datatype.type:
-        datatype_weak = source_datatype
-        datatype_strong = operand_datatype
-    else:
-        datatype_weak = operand_datatype
-        datatype_strong = source_datatype
+    datatype_weak, datatype_strong = order_datatypes(source_datatype, operand_datatype)
 
     if datatype_weak.type == DataType.UNKNOWN:
         if datatype_strong.type == DataType.UNKNOWN:
@@ -681,7 +762,7 @@ def subtract_datatypes(source_datatype, operand_datatype):
         fileline_error("Invalid DataType constant of %s!" % datatype_weak.type, fileline)
 
 def add_datatypes_for_dereference(datatype1, datatype2):
-    
+    pass
 
 def read_opcode(line, funcstate, fileline):
     line = line.strip()

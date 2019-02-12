@@ -9,6 +9,7 @@ from collections import namedtuple
 import functools
 
 NaN = float("nan")
+MAX_UINT32 = 2**32 - 1
 
 FileLine = namedtuple("FileLine", ("filename", "line_num"))
 default_fileline = FileLine("default_fileline", 0)
@@ -261,8 +262,12 @@ class Primitive(DataType):
         self._value = value
 
 class Pointer(DataType):
-    def __init__(self, offset=0):
+    null_sym = SymInfo(value=NaN, scope="l", debug=" ", type=" ", section="*UND*", name="")
+    def __init__(self, offset=0, sym=None):
         super().__init__()
+        if sym is None:
+            sym = null_sym
+        self.sym = sym
         self._offset = offset
 
     @property
@@ -378,6 +383,36 @@ class Stack(Pointer):
         if total_offset % size != 0:
             global_fileline_error("Misaligned stack write detected (size: %s, offset=%s)!" % size, total_offset)
         self.datatypes[(total_offset, size)] = datatype
+
+class Function(Pointer):
+    def __init__(self):
+        super().__init__()
+    
+    @property
+    def type(self):
+        return DataType.POINTER
+
+    def load(self, size, offset=0):
+        global_fileline_error("Cannot read from a function
+        pass
+
+    def store(self, datatype, size, offset=0):
+        pass
+
+    def add_offset(self, offset):
+        self.offset += offset
+
+    @property
+    def offset(self):
+        return self._offset
+
+    @offset.setter
+    def offset(self, offset):
+        self._offset = offset
+
+    @property
+    def size(self):
+        return Size.WORD
 
 class FunctionState:
     def __init__(self, registers):
