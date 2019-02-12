@@ -218,25 +218,7 @@ def cmp_imm_opcode_function(opcode_params, funcstate, fileline):
     return True
 
 def cmp_reg_opcode_function(opcode_params, funcstate, fileline):
-    datatype_weak, datatype_strong, dest_datatype, source_datatype = read_ordered_and_unordered_alu_args(opcode_params, funcstate)
-
-    assert_valid_datatypes(dest_datatype, source_datatype, fileline)
-
-    if datatype_weak.type == DataType.UNKNOWN:
-        if datatype_strong.type == DataType.PRIMITIVE:
-            datatype_weak.ref = Primitive(Size.WORD)
-        elif datatype_strong.type == DataType.POINTER:
-            if dest_datatype.type == DataType.POINTER:
-                fileline_error("Context information: cmp pointer, unknown", fileline)
-            else:
-                fileline_error("Context information: cmp unknown, pointer", fileline)
-    elif datatype_weak.type == DataType.PRIMITIVE:
-        if datatype_strong.type == DataType.POINTER:
-            if dest_datatype.type == DataType.POINTER:
-                fileline_error("Impossible comparison found! (pointer == primitive)", fileline)
-            else:
-                fileline_error("Impossible comparison found! (primitive == pointer)", fileline)
-
+    do_tst_or_cmp_reg_opcode(opcode_params, funcstate, "cmp", fileline)
     return True
 
 def and_opcode_function(opcode_params, funcstate, fileline):
@@ -260,6 +242,29 @@ def ror_opcode_function(opcode_params, funcstate, fileline):
     return True
 
 def tst_opcode_function(opcode_params, funcstate, fileline):
+    do_tst_or_cmp_reg_opcode(opcode_params, funcstate, "tst", fileline)
+    return True
+
+def do_tst_or_cmp_reg_opcode(opcode_params, funcstate, opcode_name, fileline):
+    datatype_weak, datatype_strong, dest_datatype, source_datatype = read_ordered_and_unordered_alu_args(opcode_params, funcstate)
+
+    assert_valid_datatypes(dest_datatype, source_datatype, fileline)
+
+    if datatype_weak.type == DataType.UNKNOWN:
+        if datatype_strong.type == DataType.PRIMITIVE:
+            datatype_weak.ref = Primitive(Size.WORD)
+        elif datatype_strong.type == DataType.POINTER:
+            if dest_datatype.type == DataType.POINTER:
+                fileline_error("Context information: %s pointer, unknown" % opcode_name, fileline)
+            else:
+                fileline_error("Context information: %s unknown, pointer" % opcode_name, fileline)
+    elif datatype_weak.type == DataType.PRIMITIVE:
+        if datatype_strong.type == DataType.POINTER:
+            if dest_datatype.type == DataType.POINTER:
+                fileline_error("Impossible comparison found! (%s pointer, primitive)" % opcode_name, fileline)
+            else:
+                fileline_error("Impossible comparison found! (%s primitive, pointer)" % opcode_name, fileline)
+
     return True
 
 def neg_opcode_function(opcode_params, funcstate, fileline):
@@ -287,6 +292,10 @@ def mvn_opcode_function(opcode_params, funcstate, fileline):
     return True
 
 def bx_opcode_function(opcode_params, funcstate, fileline):
+    # TODO
+    bx_reg = funcstate.regs[opcode_params[0]]
+    
+    funcstate.regs["pc"][-1]
     return True
 
 def ldr_label_opcode_function(opcode_params, funcstate, fileline):

@@ -262,12 +262,12 @@ class Primitive(DataType):
         self._value = value
 
 class Pointer(DataType):
-    null_sym = SymInfo(value=NaN, scope="l", debug=" ", type=" ", section="*UND*", name="")
+    null_sym = SymInfo(value=NaN, scope="l", debug=" ", type=" ", section="*UND*", name="null")
     def __init__(self, offset=0, sym=None):
         super().__init__()
         if sym is None:
             sym = null_sym
-        self.sym = sym
+        self._sym = sym
         self._offset = offset
 
     @property
@@ -296,6 +296,10 @@ class Pointer(DataType):
     @property
     def size(self):
         return Size.WORD
+    
+    @property
+    def sym(self):
+        return self._sym
 
 class RAMPointer(Pointer):
     def __init__(self, offset=0):
@@ -385,42 +389,52 @@ class Stack(Pointer):
         self.datatypes[(total_offset, size)] = datatype
 
 class Function(Pointer):
-    def __init__(self):
-        super().__init__()
-    
+    def __init__(self, sym=None):
+        super().__init__(0, sym)
+
     @property
     def type(self):
         return DataType.POINTER
 
     def load(self, size, offset=0):
-        global_fileline_error("Cannot read from a function
-        pass
+        global_fileline_error("Cannot read from function \"%s\"!" % self.sym)
 
     def store(self, datatype, size, offset=0):
-        pass
+        global_fileline_error("Cannot write to function \"%s\"!" % self.sym)
 
     def add_offset(self, offset):
-        self.offset += offset
+        global_fileline_error("Cannot add an offset to function \"%s\"!" % self.sym)
 
     @property
     def offset(self):
-        return self._offset
+        global_fileline_error("Function \"%s\" has no offset!" % self.sym)
 
     @offset.setter
     def offset(self, offset):
-        self._offset = offset
+        global_fileline_error("Cannot set offset of function \"%s\"!" % self.sym)
 
     @property
     def size(self):
         return Size.WORD
 
+    def 
+
 class FunctionState:
-    def __init__(self, registers):
+    def __init__(self, registers, function, lines):
         self.branch_states = []
         self.regs = registers.copy() # ignore lr and pc
         self.cond_branch_labels = {}
         self.uncond_branch_labels = {}
         self.labels = {}
+        self._lines = lines
+
+    @property
+    def lines(self):
+        return self._lines
+    
+    @lines.setter
+    def lines(self, lines):
+        self._lines = lines
 
 class RegisterInfo:
     def __init__(self, datatype=None, fileline=default_fileline):
@@ -474,11 +488,10 @@ class BranchState:
 
 # note: probably tuned towards battle objects, fix later
 def parse_jumptable_function(label, scanned_files, registers):
-    funcstate = FunctionState(registers)
     lines = find_colon_label_in_files(label, scanned_files)
     lines.line_num += 1
-    end_codepath = False
-    
+    funcstate = FunctionState(registers, syms[label], lines)
+
     for line in lines:
         if line.startswith("\t"):
             # label stuff
