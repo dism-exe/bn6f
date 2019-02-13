@@ -15,9 +15,10 @@ FileLine = namedtuple("FileLine", ("filename", "line_num"))
 default_fileline = FileLine("default_fileline", 0)
 global_fileline = default_fileline
 syms = None
+scanned_files = None
 
 def global_fileline_error(error_msg):
-    raise RuntimeError("%s:%s: %s" % global_fileline.filename, global_fileline.line_num, error_msg)
+    raise RuntimeError("%s:%s: %s" % global_fileline.filename, global_fileline.line_num + 1, error_msg)
 
 def main():
     # argument parser
@@ -38,6 +39,7 @@ def main():
         os.chdir(args.input_path)
 
     global syms
+    global scanned_files
 
     if args.make:
         syms = readelf.make_and_read_syms()
@@ -45,10 +47,9 @@ def main():
         syms = readelf.read_syms()
 
     if args.load_from_file is None:
-        scanned_files = {}
         input_files = ("rom.s", "iwram_code.s", "data.s")
         for input_file in input_files:
-            recursive_scan_includes(input_file, scanned_files)
+            scanner.recursive_scan_includes(input_file, scanned_files, syms)
             if args.cache is not None:
                 cur_path = os.getcwd()
                 os.chdir(output_path)
@@ -69,7 +70,7 @@ def main():
     #with open("scanned_out_test.txt", "w+") as f:
     #    f.write(test_output)
 
-    read_jumptable("T1BattleObjectJumptable", scanned_files)
+    analyzer.read_jumptable("T1BattleObjectJumptable")
 
 if __name__ == "__main__":
     main()

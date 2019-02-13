@@ -4,8 +4,18 @@ from collections import namedtuple
 import sys
 import os
 
-SymInfo = namedtuple("SymInfo", ("value", "scope", "debug", "type", "section", "name"))
-
+class SymInfo:
+    __slots__ = ("value", "scope", "debug", "type", "section", "name", "filename", "line_num")
+    def __init__(self, sym_list):
+        self.value = sym_list[0]
+        self.scope = sym_list[1]
+        self.debug = sym_list[2]
+        self.type = sym_list[3]
+        self.section = sym_list[4]
+        self.name = sym_list[5]
+        self.filename = None
+        self.line_num = None
+        
 def make_and_read_syms():
     nproc_value = subprocess.check_output(["nproc"]).decode("utf-8").strip()
     subprocess.check_call(["make", "-j" + nproc_value])
@@ -29,17 +39,18 @@ def read_syms():
         sym_list = list(sym_tuple)
         sym_list[0] = int(sym_list[0], 16)
         # symbol name
-        syms[sym_tuple[5]] = SymInfo(*sym_list)
+        syms[sym_tuple[5]] = SymInfo(sym_list)
 
     print("Done reading syms!")
     return syms
 
 if __name__ == "__main__":
     os.chdir("../..")
-    syms = make_and_read_syms()
+    syms = read_syms()
+    print("Size: %s" % sys.getsizeof(syms))
     output = ""
     for sym, sym_info in syms.items():
-        output += "{}: {}\n".format(sym, sym_info)
+        output += "{}: value={}, scope=\"{}\", debug=\"{}\", type=\"{}\", section=\"{}\"\n".format(sym, sym_info.value, sym_info.scope, sym_info.debug, sym_info.type, sym_info.section)
 
     with open("bn6f_syms.dump", "w+") as f:
         f.write(output)

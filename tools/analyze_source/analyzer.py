@@ -1,19 +1,17 @@
 class FunctionState:
-    def __init__(self, registers, function, lines):
-        self.branch_states = []
+    def __init__(self, registers, function):
         self.regs = registers.copy() # ignore lr and pc
-        self.cond_branch_labels = {}
-        self.uncond_branch_labels = {}
-        self.labels = {}
-        self._lines = lines
+        self.next_execution_point = None # (function, None)
+        self.found_labels = {}
+        self._function = function
 
     @property
-    def lines(self):
-        return self._lines
-    
-    @lines.setter
-    def lines(self, lines):
-        self._lines = lines
+    def function(self):
+        return self._function
+
+    @function.setter
+    def function(self, function):
+        self._function = function
 
 class RegisterInfo:
     def __init__(self, datatype=None, fileline=default_fileline):
@@ -37,7 +35,7 @@ class RegisterState(dict):
         "r10": [RegisterInfo()],
         "r11": [RegisterInfo()],
         "r12": [RegisterInfo()],
-        "sp": Stack()
+        "sp": [Stack()],
         "lr": [RegisterInfo()],
         "pc": [RegisterInfo()]
     }
@@ -66,32 +64,41 @@ class BranchState:
         self.register_states = register_states
 
 # note: probably tuned towards battle objects, fix later
-def parse_jumptable_function(label, scanned_files, registers):
-    lines = find_colon_label_in_files(label, scanned_files)
-    lines.line_num += 1
-    funcstate = FunctionState(registers, syms[label], lines)
+def parse_jumptable_function(label, registers):
+    global global_fileline
+    src_file = parser.find_and_position_at_nonlocal_label(label)
+    src_file.line_num += 1
+    funcstate = FunctionState(registers, syms[label])
 
-    for line in lines:
-        if line.startswith("\t"):
-            # label stuff
-            pass
+    for line in src_file:
+        if not line.startswith("\t"):
+            # TODO: label logic
+            split_line = line.split(":", 1)
+            funcstate.found_labels[split_line[0]] = FileLine(src_file.filename, src_file.line_num)
+            if len(split_line) > 1:
+                line = split_line[1]
+            else:
+                continue
+
+        if line.strip() == "":
+            continue
+
+        global_fileline = FileLine(src_file.filename, src_file.line_num)
+        read_opcode(line, funcstate, src_file, global_fileline)
         else:
-            global global_fileline
-            global_fileline = FileLine(lines.filename, lines.line_num)
-            read_opcode(line, funcstate, global_fileline)
 
     """
-    for line in lines:
+    for line in src_file:
         if line.startswith("\t"):
             
         cond_branch_label_tuple = re.findall(cond_branches_pattern, line)
         if len(cond_branch_label_tuple) == 2:
-            cond_branch_labels[cond_branch_label_tuple[1]] = BranchInfo(lines.line_num, list(register_states))
+            cond_branch_labels[cond_branch_label_tuple[1]] = BranchInfo(src_file.line_num, list(register_states))
             continue
 
         uncond_branch_label_tuple = re.findall(r"^\tb (\S+)", line)
         if len(uncond_branch_label_tuple) == 1:
-            uncond_branch_labels[uncond_branch_label_tuple[0]] = BranchInfo(lines.line_num, list(register_states))
+            uncond_branch_labels[uncond_branch_label_tuple[0]] = BranchInfo(src_file.line_num, list(register_states))
             break
 
         # LDR HACK FOR BATTLE OBJECTS FIX LATER
@@ -110,13 +117,13 @@ def parse_jumptable_function(label, scanned_files, registers):
         label_tuple = re.findall(r"^([A-Za-z0-9_]+(?=:{1,2})|\.[A-Za-z0-9_]+(?=:?))", line)
         if len(label_tuple) == 1:
             if label_tuple[0] in labels:
-                raise RuntimeError("Duplicate label \"%s\" found! (prev line num: %s, this line num: %s)" % (label_tuple[0], labels[label_tuple[0]], lines.line_num))
-            labels[label_tuple[0]] = lines.line_num
+                raise RuntimeError("Duplicate label \"%s\" found! (prev line num: %s, this line num: %s)" % (label_tuple[0], labels[label_tuple[0]], src_file.line_num))
+            labels[label_tuple[0]] = src_file.line_num
     else:
         raise RuntimeError("Hit end of file while parsing jumptable function \"%s\"!" % label)
     """
 
-def read_jumptable(jumptable, scanned_files, input_file=None):
+def read_jumptable(jumptable):
     """
     Returns a jumptable's entries in a list specified by the given label.
     
@@ -137,10 +144,10 @@ def read_jumptable(jumptable, scanned_files, input_file=None):
 
     found_jumptable = False
 
-    lines = find_colon_label_in_files(jumptable, scanned_files, input_file)
-    print("line: %s" % lines.cur_line)
-    words = parse_word_directives(jumptable, lines)
+    src_file = parser.find_colon_label_in_files(jumptable, input_file)
+    print("line: %s" % src_file.cur_line)
+    words = parse_word_directives(src_file)
     print("words: %s" % words)
     registers = RegisterState()
     registers["r5"] = "BattleObject"
-    parse_jumptable_function(words[0], scanned_files, registers)
+    parse_jumptable_function(words[0], registers)

@@ -4,5 +4,5 @@ import opcodes
 import parser
 import readelf
 import scanner
-from types import DataType
-import types
+from datatypes import DataType
+import datatypes

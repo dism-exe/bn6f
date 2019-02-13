@@ -82,7 +82,7 @@ class IterStr:
 recursion_depth = 0
 #scanned_files = {}
 
-def recursive_scan_includes(filepath, scanned_files):
+def recursive_scan_includes(filepath, scanned_files, syms=None, callbacks=None):
     global recursion_depth
     print("recursion depth: %s | file: %s" % (recursion_depth, filepath))
     recursion_depth += 1
@@ -91,7 +91,7 @@ def recursive_scan_includes(filepath, scanned_files):
 
     with open(filepath, "r") as f:
         scanned_files[filepath] = SrcFile(filepath)
-        for line in f:
+        for line_num, line in enumerate(f, 1):
             include_file_list = re.findall(r"\t\.include \"([^\"]+)\"", line)
             if len(include_file_list) > 1:
                 raise RuntimeError("More than one group found!")
@@ -153,6 +153,15 @@ def recursive_scan_includes(filepath, scanned_files):
                     else:
                         uncommented_line += char
 
+            if syms is not None:
+                label_name = check_and_parse_colon_label(uncommented_line)
+                if label_name is not None:
+                    syms[label_name].filename = filepath
+                    syms[label_name].line_num = line_num
+
+            if callbacks is not None:
+                for callback in callbacks:
+                    callback(line, uncommented_line)
             scanned_files[filepath].append_commented_and_uncommented_lines(line, uncommented_line)
 
     recursion_depth -= 1

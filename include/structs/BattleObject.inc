@@ -72,7 +72,7 @@
 	\struct_entry \label\()_ExtraVars, \extra_vars_size // loc=0x60, 44 for t1 and t3, 28 for t4
 	\struct_entry \label\()_SizeWithoutSpriteDataAndLinkedList // loc=0x8c OR 0x7c
 	.space 4
-	\struct_entry \label\()_SpriteData // loc=0xa0
+	\struct_entry \label\()_SpriteData // loc=0x90
 	object_sprite_struct \label\()_SpriteData, \struct_entry // loc=0x90 OR 0x80
 	\struct_entry \label\()_SizeWithoutLinkedList
 	\struct_entry \label\()_End // loc=0xd8 OR 0xc8
