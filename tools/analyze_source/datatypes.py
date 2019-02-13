@@ -1,3 +1,5 @@
+ROM_END = 0x87FB2F4
+
 class Size(Enum):
     UNKNOWN = 0
     BYTE = 1
@@ -90,12 +92,14 @@ Primitive.new_hword = functools.partial(Primitive, Size.HWORD)
 Primitive.new_word = functools.partial(Primitive, Size.WORD)
 
 class Pointer(DataType):
-    null_sym = SymInfo(value=NaN, scope="l", debug=" ", type=" ", section="*UND*", name="null")
-    def __init__(self, offset=0, sym=None):
+    null_sym = SymInfo(value=NaN, scope="l", debug=" ", type=" ", section="*UND*", name="null", filename="dummy", line_num=0)
+    def __init__(self, offset=0, possible_syms=None):
         super().__init__()
-        if sym is None:
-            sym = null_sym
-        self._sym = sym
+        if not possible_syms:
+            possible_syms = [null_sym]
+        elif not isinstance(possible_syms, list):
+            possible_syms = [possible_syms]
+        self._possible_syms = possible_syms
         self._offset = offset
 
     @property
@@ -108,6 +112,10 @@ class Pointer(DataType):
 
     @abstractmethod
     def store(self, datatype, size, offset=0):
+        pass
+
+    @abstractmethod
+    def execute(self, funcstate):
         pass
 
     def add_offset(self, offset):
@@ -126,44 +134,12 @@ class Pointer(DataType):
         return Size.WORD
     
     @property
-    def sym(self):
-        return self._sym
-
-    # dumb hack for now
-    def is_function(self):
-        return False
-
-class Memory(ABC):
-    def __init__(self):
-        super().__init__()
-
-    @abstractmethod
-    def load(self):
-        pass
-
-    @abstractmethod
-    def store(self):
-        pass
-
-# Does not carry state.
-class AnonMemory(Memory):
-    __slots__ = ("read_action", "write_action")
-    dummy_func = lambda x: None
-    def __init__(self, read_action, write_action=dummy_func):
-        super().__init__()
-        self.read_action = read_action
-        self.write_action = write_action
+    def possible_syms(self):
+        return self._possible_syms
     
-    def load(self):
-        return self.read_action()
-
-    def write(self, datatype):
-        self.write_action(datatype)
-
 class UnkPointer(Pointer):
     def __init__(self):
         super().__init__(self)
-        self.fields
 
     # TODO mark offsets
     def load(self, size, offset=0):
@@ -175,46 +151,140 @@ class UnkPointer(Pointer):
     # TODO mark offsets
     def store(self, datatype, size, offset=0):
         pass
-
+    
 class RAMPointer(Pointer):
-    def __init__(self, offset=0, sym=None):
-        super().__init__(self, offset, sym)
+    def __init__(self, offset=0, possible_syms=None):
+        super().__init__(self, offset, possible_syms)
 
+    # TODO mark offsets
     def load(self, size, offset=0):
-        total_offset = offset + self.offset
-        if math.isnan(total_offset):
-            raise NotImplementedError("Context information: pointer deref with NaN offset")
+        return new_unk_datatype_from_size(size)
+    
+    # TODO mark offsets
+    def store(self, datatype, size, offset=0):
+        pass
 
 class ROMPointer(Pointer):
-    def __init__(self, offset=0, sym=None, possible_fields=[]):
-        super().__init__(self, offset, sym)
-        self.possible_fields = possible_fields
+    def __init__(self, possible_syms=None):
+        super().__init__(self, 0, possible_syms)
+        self.possible_syms = possible_syms
 
     def load(self, size, offset=0):
         global syms
         global scanned_files
-        if self.sym.section == "*UND*":
-            return new_unk_datatype_from_size(size)
-        elif size == Size.BYTE or size == Size.HWORD:
+    
+        if size == Size.BYTE or size == Size.HWORD:
             return Primitive(size).wrap()
 
-        words = try_parse_word_directives_from_sym(self.sym)
-        for word in words:
-            if word in syms:
-                if syms[word].section == "*ABS*":
-                    return new_unk_datatype_from_size(size)
-                break
-            else:
-                try:
-                    if int(word, 0) != 0:
-                        
-                    
-            # return self.possible_fields
-        else:
-            raise NotImplementedError("Context information: ROM pointer deref with NaN offset")
+        read_syms = []
+        for possible_sym in self.possible_syms:
+            if possible_sym.section == "*UND*":
+                return new_unk_datatype_from_size(size)
+            elif possible_sym.type == "F":
+                global_fileline_error("Cannot read from a function!")
+
+            words = try_parse_word_directives_from_sym(self.sym)
+            if len(words) == 0:
+                return new_unk_datatype_from_size(size)
+            
+            # assume that the elements of the pointer table have the same attributes
+            # so we only check one non-ambiguous element here
+            for word in words:
+                if word in syms:
+                    if syms[word].section == "*ABS*":
+                        return new_unk_datatype_from_size(size)
+                    elif not (0x8000000 <= syms[word].value < ROM_END):
+                        return new_unk_datatype_from_size(size)
+                    else:
+                        read_syms.append(syms[word])
+                else:
+                    try:
+                        if int(word, 0) != 0:
+                            return new_unk_datatype_from_size(size)
+                    except ValueError:
+                        global_fileline_error("Unknown .word parameter \"%s\" found!" % word)
+
+        if len(read_syms) == 0:
+            return new_unk_datatype_from_size(size)
+
+        return ROMPointer(read_syms).wrap()
 
     def store(self, datatype, size, offset=0):
         global_fileline_error("Cannot write to a ROMPointer!")
+
+    def execute(self, funcstate):
+        for sym in self.possible_syms:
+            if sym.type != "F":
+                global_fileline_error("Tried executing non-function symbol \"%s\"!" % sym.name)
+
+    @property
+    def sym(self):
+        if len(self.possible_syms) != 1:
+            global_fileline_error("Tried getting single sym when more than one possible sym exists!")
+        return self.possible_syms[0]
+
+    @property
+    def filename(self):
+        return self.sym.filename
+    
+    @filename.setter
+    def filename(self, filename):
+        global_fileline_error("Cannot set filename of ROMPointer!")
+
+    @property
+    def line_num(self):
+        return self.sym.line_num
+
+    @line_num.setter
+    def line_num(self, line_num):
+        global_fileline_error("Cannot set line num of ROMPointer!")
+
+class ProgramCounter(ROMPointer):
+    def __init__(self, filename, line_num):
+        super().__init__()
+        self._filename = filename
+        self._line_num = line_num
+
+    @property
+    def type(self):
+        return DataType.POINTER
+
+    def load(self, size, offset=0):
+        global_fileline_error("Cannot read from program counter \"%s\"!" % self.sym)
+
+    def store(self, datatype, size, offset=0):
+        global_fileline_error("Cannot write to program counter \"%s\"!" % self.sym)
+
+    def add_offset(self, offset):
+        global_fileline_error("Cannot add an offset to function \"%s\"!" % self.sym)
+
+    @property
+    def offset(self):
+        global_fileline_error("Function \"%s\" has no offset!" % self.sym)
+
+    @offset.setter
+    def offset(self, offset):
+        global_fileline_error("Cannot set offset of function \"%s\"!" % self.sym)
+
+    @property
+    def size(self):
+        return Size.WORD
+
+    @property
+    def filename(self):
+        return self._filename
+
+    @filename.setter
+    def filename(self, filename):
+        self._filename = filename
+
+    @property
+    def line_num(self):
+        return self._line_num
+
+    @line_num.setter
+    def line_num(self, line_num):
+        self._line_num = line_num
 
 class Struct(Pointer):
     def __init__(self, offset=0):
@@ -269,6 +339,32 @@ class StructInfo:
     -0x0c: {Size.WORD: StructField("_LinkedList_Next", AnonMemory(functools.partial(BattleObject, -0x10)))},
     
 
+class Memory(ABC):
+    def __init__(self):
+        super().__init__()
+
+    @abstractmethod
+    def load(self):
+        pass
+
+    @abstractmethod
+    def store(self):
+        pass
+
+# Does not carry state.
+class AnonMemory(Memory):
+    __slots__ = ("read_action", "write_action")
+    dummy_func = lambda x: None
+    def __init__(self, read_action, write_action=dummy_func):
+        super().__init__()
+        self.read_action = read_action
+        self.write_action = write_action
+    
+    def load(self):
+        return self.read_action()
+
+    def write(self, datatype):
+        self.write_action(datatype)
 
 class BattleObject(Struct):
     unprocessed_struct_info = StructInfo("oBattleObject", -0x10,
@@ -363,38 +459,6 @@ class Stack(Pointer):
         if total_offset % size != 0:
             global_fileline_error("Misaligned stack write detected (size: %s, offset=%s)!" % size, total_offset)
         self.datatypes[(total_offset, size)] = datatype
-
-class Function(Pointer):
-    def __init__(self, sym=None):
-        super().__init__(0, sym)
-
-    @property
-    def type(self):
-        return DataType.POINTER
-
-    def load(self, size, offset=0):
-        global_fileline_error("Cannot read from function \"%s\"!" % self.sym)
-
-    def store(self, datatype, size, offset=0):
-        global_fileline_error("Cannot write to function \"%s\"!" % self.sym)
-
-    def add_offset(self, offset):
-        global_fileline_error("Cannot add an offset to function \"%s\"!" % self.sym)
-
-    @property
-    def offset(self):
-        global_fileline_error("Function \"%s\" has no offset!" % self.sym)
-
-    @offset.setter
-    def offset(self, offset):
-        global_fileline_error("Cannot set offset of function \"%s\"!" % self.sym)
-
-    @property
-    def size(self):
-        return Size.WORD
-
-    def is_function(self):
-        return True
 
 def new_unk_datatype_from_size(size):
     if size == Size.BYTE or size == Size.HWORD:

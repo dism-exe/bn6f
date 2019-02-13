@@ -12,6 +12,12 @@ NaN = float("nan")
 MAX_UINT32 = 2**32 - 1
 
 FileLine = namedtuple("FileLine", ("filename", "line_num"))
+class MutableFileLine:
+    __slots__ = ("filename", "line_num")
+    def __init__(self, filename, line_num):
+        self.filename = filename
+        self.line_num = line_num
+
 default_fileline = FileLine("default_fileline", 0)
 global_fileline = default_fileline
 syms = None

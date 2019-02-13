@@ -41,7 +41,7 @@ def evaluate_reg_or_imm_require_primitive(registers, reg_or_imm, fileline):
         imm_value = evaluate_sym_or_num_error_if_undefined(reg_or_imm[1:], fileline)
         return Primitive(Size.BYTE, imm_value).wrap()
     else:
-        datatype = registers[reg_or_imm][-1]
+        datatype = registers[reg_or_imm].data
         if datatype.type == DataType.UNKNOWN:
             datatype.ref = Primitive(Size.WORD)
         elif datatype.type != DataType.PRIMITIVE:
@@ -53,7 +53,7 @@ def evaluate_reg_or_imm(registers, reg_or_imm, fileline):
         imm_value = evaluate_sym_or_num_error_if_undefined(reg_or_imm[1:], fileline)
         return Primitive(Size.BYTE, imm_value).wrap()
     else:
-        return registers[reg_or_imm][-1]
+        return registers[reg_or_imm].data
 
 def evaluate_imm_sym_or_num_error_if_undefined(imm_sym_or_num, fileline):
     if not reg_or_imm.startswith("#"):
@@ -72,7 +72,9 @@ def evaluate_data(data, fileline):
         except KeyError:
             fileline_error("Could not evaluate undefined symbol \"%s\"!" % data, fileline)
         if sym.type == "F":
-            return datatypes.Function(sym).wrap()
+            # technically asm38.s routines are not in ROM
+            # but they are read-only so they are functionally equivalent
+            return datatypes.ROMPointer(sym).wrap()
         elif sym.section == "*ABS*":
             if sym.name in HARDWARE_CONSTANTS:
                 return datatypes.RAMPointer(sym).wrap()
@@ -108,18 +110,18 @@ def order_datatypes(datatype1, datatype2):
     return (datatype_weak, datatype_strong)
 
 def read_ordered_and_unordered_alu_args(opcode_params, funcstate):
-    dest_datatype = funcstate.regs[opcode_params[0]][-1]
-    source_datatype = funcstate.regs[opcode_params[1]][-1]
+    dest_datatype = funcstate.regs[opcode_params[0]].data
+    source_datatype = funcstate.regs[opcode_params[1]].data
     return order_datatypes(dest_datatype, source_datatype) + (dest_datatype, source_datatype)
 
 def read_ordered_alu_args(opcode_params, funcstate):
-    dest_datatype = funcstate.regs[opcode_params[0]][-1]
-    source_datatype = funcstate.regs[opcode_params[1]][-1]
+    dest_datatype = funcstate.regs[opcode_params[0]].data
+    source_datatype = funcstate.regs[opcode_params[1]].data
     return order_datatypes(dest_datatype, source_datatype)
 
 def read_alu_args(opcode_params, funcstate):
-    dest_datatype = funcstate.regs[opcode_params[0]][-1]
-    source_datatype = funcstate.regs[opcode_params[1]][-1]
+    dest_datatype = funcstate.regs[opcode_params[0]].data
+    source_datatype = funcstate.regs[opcode_params[1]].data
     return dest_datatype, source_datatype
 
 def lsl_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -150,7 +152,7 @@ def do_double_arg_numeric_operation(registers, dest_reg, source_reg, callback, f
     do_triple_arg_numeric_operation(registers, dest_reg, dest_reg, source_reg, callback, fileline)
 
 def do_triple_arg_numeric_operation(registers, dest_reg, source_reg, operand_reg_or_imm, callback, fileline):
-    source_datatype = registers[source_reg][-1]
+    source_datatype = registers[source_reg].data
     if source_datatype.type == DataType.UNKNOWN:
         source_datatype.ref = Primitive(Size.WORD)
     elif source_datatype.type == DataType.POINTER:
@@ -186,7 +188,7 @@ def add_rd_rs_opcode_function(opcode_params, funcstate, src_file, fileline):
 
 def add_rd_sp_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
     immediate_value = evaluate_imm_sym_or_num_error_if_undefined(opcode_params[2], fileline)
-    new_sp = copy.deepcopy(funcstate.regs["sp"][-1])
+    new_sp = copy.deepcopy(funcstate.regs["sp"].data)
     new_sp.ref.add_offset(immediate_value)
     funcstate.regs[opcode_params[0]].append(RegisterInfo(new_sp, fileline))
     return True
@@ -218,7 +220,7 @@ def sub_sp_opcode_function(opcode_params, funcstate, src_file, fileline):
     return True
 
 def add_offset_to_sp(registers, sp_offset, fileline):
-    new_sp = copy.deepcopy(registers["sp"][-1])
+    new_sp = copy.deepcopy(registers["sp"].data)
     new_sp.ref.add_offset(sp_offset)
     registers["sp"].append(RegisterInfo(new_sp, fileline))
     return
@@ -230,12 +232,12 @@ def mov_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
     return True
 
 def mov_reg_opcode_function(opcode_params, funcstate, src_file, fileline):
-    new_dest_reg = copy.deepcopy(funcstate.regs[opcode_params[1]][-1])
+    new_dest_reg = copy.deepcopy(funcstate.regs[opcode_params[1]].data)
     funcstate.regs[opcode_params[0]].append(RegisterInfo(new_dest_reg, fileline))
     return True
 
 def cmp_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
-    dest_datatype = funcstate.regs[opcode_params[1]][-1]
+    dest_datatype = funcstate.regs[opcode_params[1]].data
 
     assert_valid_datatype(dest_datatype, fileline)
 
@@ -321,9 +323,8 @@ def mvn_opcode_function(opcode_params, funcstate, src_file, fileline):
 
 def bx_opcode_function(opcode_params, funcstate, src_file, fileline):
     # TODO
-    bx_reg = funcstate.regs[opcode_params[0]]
-    
-    funcstate.regs["pc"][-1]
+    bx_reg = funcstate.regs[opcode_params[0]].data
+    funcstate.regs["pc"].append(copy.deepcopy(bx_reg))
     return True
 
 def ldr_label_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -406,10 +407,34 @@ def adr_opcode_function(opcode_params, funcstate, src_file, fileline):
     fileline_error("adr not implemented!", fileline)
     return True
 
+def parse_reglist(reglist_str):
+    split_reglist = reglist_str[1:-2].split(",")
+    reglist = []
+    for reg in split_reglist:
+        regex_groups = re.findall(r"^r([0-7])-r([0-7])$", reg)
+        if len(regex_groups) == 0:
+            reglist.append(reg)
+        else:
+            reglist.extend("r%s" % regnum for regnum in range(regex_groups[0][0], regex_groups[0][1]+1))
+    
+    return reglist
+    
 def push_opcode_function(opcode_params, funcstate, src_file, fileline):
+    reglist = parse_reglist(opcode_params[0])
+    new_sp_reg = copy.deepcopy(funcstate.regs["sp"].data)
+    
+    for reg_name in reversed(reglist):
+        new_sp_reg.ref.add_offset(Size.WORD)
+        new_sp_reg.ref.store(copy.deepcopy(funcstate.regs[reg_name].data))
+
     return True
 
 def pop_opcode_function(opcode_params, funcstate, src_file, fileline):
+    reglist = parse_reglist(opcode_params[0])
+    new_sp_reg = copy.deepcopy(funcstate.regs["sp"].data)
+    
+    for reg_name in reglist:
+        new_sp_reg.ref.
     return True
 
 def stmia_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -746,7 +771,7 @@ opcodes = {
 }
 
 def get_datatypes_for_triple_arg_operation(registers, source_reg, operand_reg_or_imm, fileline):
-    source_datatype = registers[source_reg][-1]
+    source_datatype = registers[source_reg].data
     operand_datatype = evaluate_reg_or_imm(registers, operand_reg_or_imm, fileline)
     assert_valid_datatypes(source_datatype, operand_datatype, fileline)
     return source_datatype, operand_datatype
@@ -766,7 +791,7 @@ def do_load_operation(registers, dest_reg, source_reg, operand_reg_or_imm, size,
 
 def do_store_operation(registers, dest_reg, source_reg, operand_reg_or_imm, size, fileline):
     source_datatype, operand_datatype = get_datatypes_for_triple_arg_operation(registers, source_reg, operand_reg_or_imm, fileline)
-    dest_datatype = registers[dest_reg][-1]
+    dest_datatype = registers[dest_reg].data
     assert_valid_datatype(dest_datatype, fileline)
     store_to_datatypes(dest_datatype, source_datatype, operand_datatype, size, fileline)
 
@@ -878,7 +903,7 @@ def read_opcode(line, funcstate, src_file, fileline):
         regex_groups = re.findall(subsyntax.regex, opcode_parts[1])
         if len(regex_groups) == 1:
             subsyntax.function(regex_groups[0], funcstate, src_file, fileline)
-            break
+            return True
     else:
-        raise RuntimeError("Unknown opcode \"%s\"!" % line)
+        return False
 

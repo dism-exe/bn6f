@@ -49,8 +49,12 @@ if __name__ == "__main__":
     syms = read_syms()
     print("Size: %s" % sys.getsizeof(syms))
     output = ""
+    highest_sym_value = 0
     for sym, sym_info in syms.items():
         output += "{}: value={}, scope=\"{}\", debug=\"{}\", type=\"{}\", section=\"{}\"\n".format(sym, sym_info.value, sym_info.scope, sym_info.debug, sym_info.type, sym_info.section)
-
+        if sym_info.value > highest_sym_value and sym_info.section != "*ABS*" and sym_info.section != ".fill":
+            highest_sym_value = sym_info.value
+    
+    print("Highest sym: %s" % highest_sym_value)
     with open("bn6f_syms.dump", "w+") as f:
         f.write(output)
