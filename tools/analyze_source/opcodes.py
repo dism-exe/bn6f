@@ -422,73 +422,105 @@ def parse_reglist(reglist_str):
 def push_opcode_function(opcode_params, funcstate, src_file, fileline):
     reglist = parse_reglist(opcode_params[0])
     new_sp_reg = copy.deepcopy(funcstate.regs["sp"].data)
-    
-    for reg_name in reversed(reglist):
-        new_sp_reg.ref.add_offset(Size.WORD)
-        new_sp_reg.ref.store(copy.deepcopy(funcstate.regs[reg_name].data))
+
+    for reg_name in reglist:
+        new_sp_reg.add_offset(-Size.WORD)
+        push_datatype = copy.deepcopy(funcstate.regs[reg_name].data)
+        new_sp_reg.ref.store(push_datatype)
 
     return True
 
 def pop_opcode_function(opcode_params, funcstate, src_file, fileline):
     reglist = parse_reglist(opcode_params[0])
     new_sp_reg = copy.deepcopy(funcstate.regs["sp"].data)
-    
+
     for reg_name in reglist:
-        new_sp_reg.ref.
+        pop_datatype = copy.deepcopy(new_sp_reg.ref.load())
+        funcstate.regs[reg_name].append(RegisterInfo(pop_datatype, fileline))
+        new_sp_reg.ref.add_offset(Size.WORD)
+
     return True
 
 def stmia_opcode_function(opcode_params, funcstate, src_file, fileline):
+    reglist = parse_reglist(opcode_params[1])
+    store_src_datatype = copy.deepcopy(funcstate.regs[opcode_params[0]].data)
+
+    for reg_name in reglist:
+        store_datatype = copy.deepcopy(funcstate.regs[reg_name].data)
+        store_src_datatype.ref.store(store_datatype)
+        store_src_datatype.ref.add_offset(Size.WORD)
+
     return True
 
 def ldmia_opcode_function(opcode_params, funcstate, src_file, fileline):
+    reglist = parse_reglist(opcode_params[1])
+    load_src_datatype = copy.deepcopy(funcstate.regs[opcode_params[0]].data)
+
+    for reg_name in reglist:
+        load_datatype = copy.deepcopy(load_src_datatype.ref.load())
+        funcstate.regs[reg_name].append(RegisterInfo(load_datatype, fileline))
+        load_src_datatype.ref.add_offset(Size.WORD)
+
     return True
 
 def beq_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
 def bne_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
 def bcs_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
 def bcc_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
 def bmi_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
 def bpl_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
 def bvs_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
 def bvc_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
 def bhi_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
 def bls_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
 def bge_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
 def blt_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
 def bgt_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
 def ble_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
 def swi_opcode_function(opcode_params, funcstate, src_file, fileline):
-    return True
-
-def swi_opcode_function(opcode_params, funcstate, src_file, fileline):
+    
     return True
 
 def b_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -585,7 +617,6 @@ bge_opcode = Opcode(label_or_imm_regex, bge_opcode_function)
 blt_opcode = Opcode(label_or_imm_regex, blt_opcode_function)
 bgt_opcode = Opcode(label_or_imm_regex, bgt_opcode_function)
 ble_opcode = Opcode(label_or_imm_regex, ble_opcode_function)
-swi_opcode = Opcode(label_or_imm_regex, swi_opcode_function)
 swi_opcode = Opcode(label_or_imm_regex, swi_opcode_function)
 b_opcode = Opcode(label_or_imm_regex, b_opcode_function)
 bl_opcode = Opcode(label_or_imm_regex, bl_opcode_function)

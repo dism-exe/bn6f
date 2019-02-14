@@ -44,7 +44,7 @@ class FunctionState:
     def set_registers(self, registers):
         self.regs = copy.deepcopy(registers)
 
-class CondBranch:
+class CondBranchInfo:
     __slots__ = ("registers", "line_num")
     def __init__(self, registers, line_num):
         self.registers = registers
@@ -198,45 +198,10 @@ def run_analyzer_common(src_file, funcstate):
         else:
             if return_regs is not None:
                 return_regs["pc"].append(RegisterInfo(copy.deepcopy(return_lr), global_fileline))
-                return return_regs
             else:
                 fileline_error("Did not find a return point in function!", global_fileline)
 
-    """
-    for line in src_file:
-        if line.startswith("\t"):
-            
-        cond_branch_label_tuple = re.findall(cond_branches_pattern, line)
-        if len(cond_branch_label_tuple) == 2:
-            cond_branch_labels[cond_branch_label_tuple[1]] = BranchInfo(src_file.line_num, list(register_states))
-            continue
-
-        uncond_branch_label_tuple = re.findall(r"^\tb (\S+)", line)
-        if len(uncond_branch_label_tuple) == 1:
-            uncond_branch_labels[uncond_branch_label_tuple[0]] = BranchInfo(src_file.line_num, list(register_states))
-            break
-
-        # LDR HACK FOR BATTLE OBJECTS FIX LATER
-        ldr_pc_label_tuple = re.findall(r"^\tldr r1, (?!\[)(\S+)", line)
-        if len(ldr_pc_label_tuple) == 1:
-            register_states[1] = ldr_pc_label_tuple[0]
-            continue
-        
-        if line.startswith("\tbx r1"):
-            bx_states[1].append(list(register_states))
-            continue
-        
-        if line.startswith("\tmov pc, lr") or line.startswith("\tpop {pc}"):
-            break
-        
-        label_tuple = re.findall(r"^([A-Za-z0-9_]+(?=:{1,2})|\.[A-Za-z0-9_]+(?=:?))", line)
-        if len(label_tuple) == 1:
-            if label_tuple[0] in labels:
-                raise RuntimeError("Duplicate label \"%s\" found! (prev line num: %s, this line num: %s)" % (label_tuple[0], labels[label_tuple[0]], src_file.line_num))
-            labels[label_tuple[0]] = src_file.line_num
-    else:
-        raise RuntimeError("Hit end of file while parsing jumptable function \"%s\"!" % label)
-    """
+    return return_regs
 
 def read_jumptable(jumptable):
     """

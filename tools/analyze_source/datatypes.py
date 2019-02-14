@@ -444,7 +444,7 @@ class Stack(Pointer):
         self.datatypes = datatypes
 
     def load(self, size=Size.WORD, offset=0):
-        total_offset = self.offset + offset
+        total_offset = -(self.offset + offset)
         if math.isnan(total_offset):
             global_fileline_error("Stack offset is NaN!")
         if total_offset % size != 0:
@@ -453,7 +453,7 @@ class Stack(Pointer):
 
     # note: storing values may be risky. figure this out
     def store(self, datatype, size=Size.WORD, offset=0):
-        total_offset = self.offset + offset
+        total_offset = -(self.offset + offset)
         if math.isnan(total_offset):
             global_fileline_error("Stack offset is NaN!")
         if total_offset % size != 0:
