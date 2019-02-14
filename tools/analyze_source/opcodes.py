@@ -233,6 +233,9 @@ def mov_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
 
 def mov_reg_opcode_function(opcode_params, funcstate, src_file, fileline):
     new_dest_reg = copy.deepcopy(funcstate.regs[opcode_params[1]].data)
+    if opcode_params[1] == "pc":
+        new_dest_reg.ref.line_num = get_line_num_at_num_directives_ahead(src_file, 2)
+
     funcstate.regs[opcode_params[0]].append(RegisterInfo(new_dest_reg, fileline))
     return True
 
@@ -322,9 +325,8 @@ def mvn_opcode_function(opcode_params, funcstate, src_file, fileline):
     return True
 
 def bx_opcode_function(opcode_params, funcstate, src_file, fileline):
-    # TODO
-    bx_reg = funcstate.regs[opcode_params[0]].data
-    funcstate.regs["pc"].append(copy.deepcopy(bx_reg))
+    bx_reg = copy.deepcopy(funcstate.regs[opcode_params[0]].data)
+    funcstate.regs["pc"].append(RegisterInfo(bx_reg, fileline))
     return True
 
 def ldr_label_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -519,14 +521,77 @@ def ble_opcode_function(opcode_params, funcstate, src_file, fileline):
     funcstate.cond_branches.append(CondBranchInfo(funcstate.regs, fileline.line_num))
     return True
 
-def swi_opcode_function(opcode_params, funcstate, src_file, fileline):
+def infer_math_swi_arg_types(registers, swi_inputs, swi_outputs, operation_name, fileline):
+    for input_name in swi_inputs:
+        input_reg = registers[input_name].data
+        if input_reg.type == DataType.UNKNOWN:
+            input_reg.ref = datatypes.Primitive(Size.WORD)
+        elif input_reg.type == DataType.POINTER:
+            fileline_error("Tried performing %s on pointer %s!" % (operation_name, input_name), fileline)
+
+    for output_name in swi_outputs:
+        registers[output_name].append(RegisterInfo(Primitive(Size.UNKNOWN, NaN), fileline))
+
+def do_mem_transfer_swi(registers, has_length, operation_name, fileline):
+    pointer_reg_names = ("r0", "r1")
+
+    for pointer_reg_name in pointer_reg_names:
+        pointer_reg = registers[pointer_reg_name].data
+        if pointer_reg.type == DataType.UNKNOWN:
+            pointer_reg.ref = datatypes.UnkPointer()
+        elif pointer_reg.type == DataType.PRIMITIVE:
+            fileline_error("Tried performing %s on primitive %s!" % (operation_name, pointer_reg_name), fileline)
     
+    if has_length:
+        length_reg = registers["r2"].data
+        if length_reg.type == DataType.UNKNOWN:
+            length_reg.ref = datatypes.Primitive(Size.WORD)
+        elif length_reg.type == DataType.POINTER:
+            fileline_error("Operation %s expects primitive type for r2 but found pointer instead!" % (operation_name), fileline)
+
+def swi_opcode_function(opcode_params, funcstate, src_file, fileline):
+    try:
+        swi_value = int(opcode_params[0], 0)
+    except ValueError:
+        fileline_error("No support for non-numeric swi argument yet!", fileline)
+
+    # divide
+    if swi_value == 6:
+        infer_math_swi_arg_types(funcstate.regs, ("r0", "r1"), ("r0", "r1", "r3"), "division", fileline)
+    # square root
+    elif swi_value == 8:
+        infer_math_swi_arg_types(funcstate.regs, ("r0",), ("r0",), "square root", fileline)
+    # arctan2
+    elif swi_value == 10:
+        infer_math_swi_arg_types(funcstate.regs, ("r0", "r1"), ("r0",), "arctan2", fileline)
+    elif swi_value == 0x11:
+        do_mem_transfer_swi(funcstate.regs, False, "LZ77UnCompWRAM", fileline)
+    elif swi_value == 0x12:
+        do_mem_transfer_swi(funcstate.regs, False, "LZ77UnCompVRAM", fileline)
+    elif swi_value == 0xc:
+        do_mem_transfer_swi(funcstate.regs, True, "CpuFastSet", fileline)
+    elif swi_value == 0xb:
+        do_mem_transfer_swi(funcstate.regs, True, "CpuSet", fileline)
+    else:
+        fileline_error("Unimplemented swi \"%s\"" % swi_value, fileline)
+
     return True
 
 def b_opcode_function(opcode_params, funcstate, src_file, fileline):
+    funcstate.uncond_branch = opcode_params[0]
     return True
 
 def bl_opcode_function(opcode_params, funcstate, src_file, fileline):
+    new_lr_reg = datatypes.ProgramCounter(src_file.filename, get_line_num_at_num_directives_ahead(src_file, 1))
+    funcstate.regs["lr"].append(RegisterInfo(new_lr_reg, fileline))
+
+    try:
+        bl_sym = syms[opcode_params[0]]
+    except KeyError:
+        fileline_error("Could not find sym of function \"%s\"!" % opcode_params[0], fileline)
+
+    bl_reg = datatypes.ROMPointer(bl_sym).wrap()
+    funcstate.regs["pc"].append(RegisterInfo(bl_reg, fileline))
     return True
 
 class Opcode:

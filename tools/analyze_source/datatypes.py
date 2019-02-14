@@ -1,6 +1,7 @@
 ROM_END = 0x87FB2F4
 
 class Size(Enum):
+    DEFAULT = -1
     UNKNOWN = 0
     BYTE = 1
     HWORD = 2
@@ -294,11 +295,11 @@ class Struct(Pointer):
         total_offset = offset + self.offset
         if math.isnan(total_offset):
             raise NotImplementedError("Context information: pointer deref with NaN offset")
-        struct_field_action = self.get_struct_data()[total_offset]
-        return struct_field_action(self, size)
+        struct_field_action = self.get_struct_offset_action(total_offset, size)
+        return struct_field_action.load(self, size)
 
     @abstractmethod
-    def get_struct_data(self):
+    def get_struct_offset_action(self, offset, size):
         pass
 
     # @property
@@ -334,109 +335,151 @@ class StructInfo:
         self.start_offset = start_offset
         self.struct_fields = struct_fields
 
-{
-    -0x10: {Size.WORD: StructField("_LinkedList_Prev", AnonMemory(functools.partial(BattleObject, -0x10)))},
-    -0x0c: {Size.WORD: StructField("_LinkedList_Next", AnonMemory(functools.partial(BattleObject, -0x10)))},
-    
-
 class Memory(ABC):
     def __init__(self):
         super().__init__()
 
     @abstractmethod
-    def load(self):
+    def load(self, struct, size):
         pass
 
     @abstractmethod
-    def store(self):
+    def store(self, struct, datatype, size):
         pass
 
-# Does not carry state.
+# Does not carry state or provide struct and size args.
 class AnonMemory(Memory):
     __slots__ = ("read_action", "write_action")
-    dummy_func = lambda x: None
+    dummy_func = lambda x, y, z: None
     def __init__(self, read_action, write_action=dummy_func):
         super().__init__()
         self.read_action = read_action
         self.write_action = write_action
     
-    def load(self):
+    def load(self, struct, size):
         return self.read_action()
 
-    def write(self, datatype):
+    def write(self, struct, datatype, size):
         self.write_action(datatype)
 
+class UnkMemory(Memory):
+    def __init__(self):
+        super().__init__()
+
+    def load(self, struct, size):
+        return new_unk_datatype_from_size(size)
+
+    def write(self, struct, datatype, size):
+        pass
+
+class UnkPrimitiveMemory(Memory):
+    def __init__(self):
+        super().__init__()
+    
+    def load(self, struct, size):
+        return Primitive(size)
+
+    def write(self, struct, datatype, size):
+        pass
+
 class BattleObject(Struct):
-    unprocessed_struct_info = StructInfo("oBattleObject", -0x10,
-        StructEntry("_LinkedList_Prev", functools.partial(BattleObject, -0x10), 0x4),
-        StructEntry("_LinkedList_Next", functools.partial(BattleObject, -0x10), 0x4),
-        0x8,
-        StructEntry("_Flags", Primitive.new_byte, 1), # loc=0x0
-        StructEntry("_Index", Primitive.new_byte, 1), # loc=0x1
-        StructEntry("_TypeAndSpriteOffset", Primitive.new_byte, 1), # loc=0x2
-        StructEntry("_ListIndex", Primitive.new_byte, 1), # loc=0x3
-        StructEntry("_Param1", Primitive.new_byte, 1), # loc=0x4
-        StructEntry("_Param2", Primitive.new_byte, 1), # loc=0x5
-        StructEntry("_Param3", Primitive.new_byte, 1), # loc=0x6
-        StructEntry("_Param4", Primitive.new_byte, 1), # loc=0x7
-        StructEntry("_CurState", Primitive.new_byte, 1), # loc=0x8
-        StructEntry("_CurAction", Primitive.new_byte, 1), # loc=0x9
-        StructEntry("_CurPhase", Primitive.new_byte, 1), # loc=0xa
-        StructEntry("_PhaseInitialized", Primitive.new_byte, 1), # loc=0xb
-        StructEntry("_Unk_0c", Primitive.new_byte, 1), # loc=0xc
-        StructEntry("_Unk_0d", Primitive.new_byte, 1), # loc=0xd
-        StructEntry("_Element", Primitive.new_byte, 1), # loc=0xe
-        StructEntry("_Unk_0f", Primitive.new_byte, 1), # loc=0xf
-        StructEntry("_CurAnim", Primitive.new_byte, 1), # loc=0x10
-        StructEntry("_CurAnimCopy", Primitive.new_byte, 1), # loc=0x11
-        StructEntry("_PanelX", Primitive.new_byte, 1), # loc=0x12
-        StructEntry("_PanelY", Primitive.new_byte, 1), # loc=0x13
-        StructEntry("_FuturePanelX", Primitive.new_byte, 1), # loc=0x14
-        StructEntry("_FuturePanelY", Primitive.new_byte, 1), # loc=0x15
-        StructEntry("_Alliance", Primitive.new_byte, 1), # loc=0x16
-        StructEntry("_DirectionFlip", Primitive.new_byte, 1), # loc=0x17
-        StructEntry("_PreventAnim", Primitive.new_byte, 1), # loc=0x18
-        StructEntry("_Unk_19", Primitive.new_byte, 1), # loc=0x19
-        StructEntry("_ChipsHeld", Primitive.new_byte, 1), # loc=0x1a
-        StructEntry("_Unk_1b", Primitive.new_byte, 1), # loc=0x1b
-        StructEntry("_Unk_1c", Primitive.new_byte, 1), # loc=0x1c
-        StructEntry("_Unk_1d", Primitive.new_byte, 1), # loc=0x1d
-        StructEntry("_Unk_1e", Primitive.new_byte, 1), # loc=0x1e
-        StructEntry("_Unk_1f", Primitive.new_byte, 1), # loc=0x1f
-        StructEntry("_Timer", Primitive.new_hword, 2), # loc=0x20
-        StructEntry("_Timer2", Primitive.new_hword, 2), # loc=0x22
-        StructEntry("_HP", Primitive.new_hword, 2), # loc=0x24
-        StructEntry("_MaxHP", Primitive.new_hword, 2), # loc=0x26
-        StructEntry("_NameID", Primitive.new_hword, 2), # loc=0x28
-        StructEntry("_Chip", Primitive.new_hword, 2), # loc=0x2a
-        StructEntry("_Damage", Primitive.new_hword, 2), # loc=0x2c
-        StructEntry("_StaminaDamageCounterDisabler", Primitive.new_hword, 2), # loc=0x2e
-        StructEntry("_Unk_30", Primitive.new_hword, 2), # loc=0x30
-        StructEntry("_Unk_32", Primitive.new_hword, 2), # loc=0x32
-        StructEntry("_X", Primitive.new_word, 4), # loc=0x34
-        StructEntry("_Y", Primitive.new_word, 4), # loc=0x38
-        StructEntry("_Z", Primitive.new_word, 4), # loc=0x3c
-        StructEntry("_XVelocity", Primitive.new_word, 4), # loc=0x40
-        StructEntry("_YVelocity", Primitive.new_word, 4), # loc=0x44
-        StructEntry("_ZVelocity", Primitive.new_word, 4), # loc=0x48
-        StructEntry("_RelatedObject1Ptr", BattleObject, 4), # loc=0x4c
-        StructEntry("_RelatedObject2Ptr", BattleObject, 4), # loc=0x50
-        StructEntry("_CollisionDataPtr", , 4), # loc=0x54
-        StructEntry("_AIPtr", , 4), # loc=0x58
-        StructEntry("_Unk_5c", , 4), # loc=0x5c
-        StructEntry("_ExtraVars", , 44), # loc=0x60
-        0x8,
-        StructEntry("_SpriteData", , 0), # loc=0x90
-        StructEntry("
-
-    struct_fields = None
-
     def __init__(self, offset=0):
         super().__init__(self, offset)
-        BattleObject.struct_fields = 
+        self.basic_struct_fields = generate_basic_struct_fields()
 
-    def get_struct_data(self):
-        return StructField(
+    @staticmethod
+    def generate_basic_struct_fields():
+        return {
+                -0x10: {Size.WORD: StructField("_LinkedList_Prev", AnonMemory(functools.partial(BattleObject, -0x10)))},
+                -0x0c: {Size.WORD: StructField("_LinkedList_Next", AnonMemory(functools.partial(BattleObject, -0x10)))},
+                0x0: {Size.BYTE: StructField("_Flags", UnkPrimitiveMemory())},
+                0x1: {Size.BYTE: StructField("_Index", UnkPrimitiveMemory())},
+                0x2: {Size.BYTE: StructField("_TypeAndSpriteOffset", AnonMemory(functools.partial(Primitive, Size.BYTE, 0x91))},
+                0x3: {Size.BYTE: StructField("_ListIndex", UnkPrimitiveMemory())},
+                0x4: {Size.WORD: StructField("_Params", UnkPrimitiveMemory()),
+                      Size.DEFAULT: StructField("_Param1", UnkPrimitiveMemory())},
+                0x5: {Size.BYTE: StructField("_Param2", UnkPrimitiveMemory())},
+                0x6: {Size.DEFAULT: StructField("_Param3", UnkPrimitiveMemory())},
+                0x7: {Size.BYTE: StructField("_Param4", UnkPrimitiveMemory())},
+                0x8: {Size.BYTE: StructField("_CurState", UnkPrimitiveMemory())},
+                0x9: {Size.BYTE: StructField("_CurAction", UnkPrimitiveMemory())},
+                0xa: {Size.BYTE: StructField("_CurPhase", UnkPrimitiveMemory())},
+                0xb: {Size.BYTE: StructField("_PhaseInitialized", UnkPrimitiveMemory())},
+                0xc: {Size.BYTE: StructField("_Unk_0c", UnkPrimitiveMemory())},
+                0xd: {Size.BYTE: StructField("_Unk_0d", UnkPrimitiveMemory())},
+                0xe: {Size.BYTE: StructField("_Element", UnkPrimitiveMemory())},
+                0xf: {Size.BYTE: StructField("_Unk_0f", UnkPrimitiveMemory())},
+                0x10: {Size.BYTE: StructField("_CurAnim", UnkPrimitiveMemory())},
+                0x11: {Size.BYTE: StructField("_CurAnimCopy", UnkPrimitiveMemory())},
+                0x12: {Size.BYTE: StructField("_PanelX", UnkPrimitiveMemory())},
+                0x13: {Size.BYTE: StructField("_PanelY", UnkPrimitiveMemory())},
+                0x14: {Size.BYTE: StructField("_FuturePanelX", UnkPrimitiveMemory())},
+                0x15: {Size.BYTE: StructField("_FuturePanelY", UnkPrimitiveMemory())},
+                0x16: {Size.BYTE: StructField("_Alliance", UnkPrimitiveMemory())},
+                0x17: {Size.BYTE: StructField("_DirectionFlip", UnkPrimitiveMemory())},
+                0x18: {Size.BYTE: StructField("_PreventAnim", UnkPrimitiveMemory())},
+                0x19: {Size.BYTE: StructField("_Unk_19", UnkPrimitiveMemory())},
+                0x1a: {Size.BYTE: StructField("_ChipsHeld", UnkPrimitiveMemory())},
+                0x1b: {Size.BYTE: StructField("_Unk_1b", UnkPrimitiveMemory())},
+                0x1c: {Size.BYTE: StructField("_Unk_1c", UnkPrimitiveMemory())},
+                0x1d: {Size.BYTE: StructField("_Unk_1d", UnkPrimitiveMemory())},
+                0x1e: {Size.BYTE: StructField("_Unk_1e", UnkPrimitiveMemory())},
+                0x1f: {Size.BYTE: StructField("_Unk_1f", UnkPrimitiveMemory())},
+                0x20: {Size.HWORD: StructField("_Timer", UnkPrimitiveMemory())},
+                0x22: {Size.HWORD: StructField("_Timer2", UnkPrimitiveMemory())},
+                0x24: {Size.HWORD: StructField("_HP", UnkPrimitiveMemory())},
+                0x26: {Size.HWORD: StructField("_MaxHP", UnkPrimitiveMemory())},
+                0x28: {Size.HWORD: StructField("_NameID", UnkPrimitiveMemory())},
+                0x2a: {Size.HWORD: StructField("_Chip", UnkPrimitiveMemory())},
+                0x2c: {Size.HWORD: StructField("_Damage", UnkPrimitiveMemory())},
+                0x2e: {Size.HWORD: StructField("_StaminaDamageCounterDisabler", UnkPrimitiveMemory())},
+                0x30: {Size.HWORD: StructField("_Unk_30", UnkPrimitiveMemory())},
+                0x32: {Size.HWORD: StructField("_Unk_32", UnkPrimitiveMemory())},
+                0x34: {Size.WORD: StructField("_X", UnkPrimitiveMemory())},
+                0x38: {Size.WORD: StructField("_Y", UnkPrimitiveMemory())},
+                0x3c: {Size.WORD: StructField("_Z", UnkPrimitiveMemory())},
+                0x40: {Size.WORD: StructField("_XVelocity", UnkPrimitiveMemory())},
+                0x44: {Size.WORD: StructField("_YVelocity", UnkPrimitiveMemory())},
+                0x48: {Size.WORD: StructField("_ZVelocity", UnkPrimitiveMemory())},
+                0x4c: {Size.WORD: StructField("_RelatedObject1Ptr", AnonMemory(BattleObject))},
+                0x50: {Size.WORD: StructField("_RelatedObject2Ptr", AnonMemory(BattleObject))},
+                0x54: {Size.WORD: StructField("_CollisionDataPtr", AnonMemory(UnkPointer))},
+                0x58: {Size.WORD: StructField("_AIPtr", AnonMemory(UnkPointer))},
+                0x5c: {Size.WORD: StructField("_Unk_5c", UnkPrimitiveMemory())},
+                0x60: {Size.WORD: StructField("_ExtraVars", AnonMemory(UnknownDataType))},
+                0x64: {Size.WORD: StructField("_ExtraVars+4", AnonMemory(UnknownDataType))},
+                0x68: {Size.WORD: StructField("_ExtraVars+8", AnonMemory(UnknownDataType))},
+                0x6c: {Size.WORD: StructField("_ExtraVars+0xc", AnonMemory(UnknownDataType))},
+                0x70: {Size.WORD: StructField("_ExtraVars+0x10", AnonMemory(UnknownDataType))},
+                0x74: {Size.WORD: StructField("_ExtraVars+0x14", AnonMemory(UnknownDataType))},
+                0x78: {Size.WORD: StructField("_ExtraVars+0x18", AnonMemory(UnknownDataType))},
+                0x7c: {Size.WORD: StructField("_ExtraVars+0x1c", AnonMemory(UnknownDataType))},
+                0x80: {Size.WORD: StructField("_ExtraVars+0x20", AnonMemory(UnknownDataType))},
+                0x84: {Size.WORD: StructField("_ExtraVars+0x24", AnonMemory(UnknownDataType))},
+                0x88: {Size.WORD: StructField("_ExtraVars+0x28", AnonMemory(UnknownDataType))}
+            }
+    
+    @abstractmethod
+    def get_type_and_sprite_offset(self):
+        pass
+
+    @abstractmethod
+    def get_sprite_data_offset(self):
+        pass
+
+    def get_struct_offset_action(self, offset, size):
+        if offset in self.basic_struct_fields:
+            struct_field_possible_entries = self.basic_struct_fields[offset]
+            if size in struct_field_possible_entries:
+                return struct_field_possible_entries[size].memory
+            elif Size.DEFAULT in struct_field_possible_entries:
+                return struct_field_possible_entries[Size.DEFAULT].memory
+            else:
+                global_fileline_error("Did not find size \"%s\" in struct for struct offset \"%s\"!" % (size, offset))
+        elif 0x90 <= offset < 0xd8:
+            return UnkMemory()
+        else:
+            global_fileline_error("Invalid struct offset \"%s\"!" % offset)
 
 class Stack(Pointer):
     def __init__(self, datatypes={}):

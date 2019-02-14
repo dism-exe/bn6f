@@ -80,7 +80,7 @@ class RegisterState(dict):
         "r10": RegisterInfoList(RegisterInfo(),),
         "r11": RegisterInfoList(RegisterInfo(),),
         "r12": RegisterInfoList(RegisterInfo(),),
-        "sp": RegisterInfoList(Stack(),),
+        "sp": RegisterInfoList(RegisterInfo(),),
         "lr": RegisterInfoList(RegisterInfo(),),
         "pc": RegisterInfoList(RegisterInfo(),)
     }
@@ -127,9 +127,14 @@ def run_analyzer_common(src_file, funcstate):
     return_lr = funcstate.regs["lr"].data
     base_stack_offset = funcstate.regs["sp"].data.offset
     return_regs = None
+    return_pc = None
+
+    funcstate.regs["pc"].append(RegisterInfo(ProgramCounter(src_file.filename, src_file.line_num), FileLine(src_file.filename, src_file.line_num)))
 
     while True:
         for line in src_file:
+            funcstate.regs["pc"].data.ref.line_num = src_file.line_num
+
             pc_history_len = len(funcstate.regs["pc"])
             if not line.startswith("\t"):
                 split_line = line.split(":", 1)
@@ -146,7 +151,7 @@ def run_analyzer_common(src_file, funcstate):
     
             if line.strip() == "":
                 continue
-    
+
             global_fileline = FileLine(src_file.filename, src_file.line_num)
             if read_opcode(line, funcstate, src_file, global_fileline):
                 if len(funcstate.regs["pc"]) > pc_history_len:
@@ -160,8 +165,7 @@ def run_analyzer_common(src_file, funcstate):
                         for sym in possible_syms:
                             if sym.type != "F":
                                 fileline_error("Tried executing non-function symbol \"%s\"!" % sym.name, global_fileline)                        
-                            result_regs = funcstate.set_registers(run_analyzer_from_sym(sym, funcstate.regs))
-                        funcstate.set_registers(result_regs)
+                            subroutine_return_regs = run_analyzer_from_sym(sym, funcstate.regs)
                     elif len(possible_syms) == 1:
                         if sp_reg.offset == base_stack_offset:
                             # returning from function
@@ -171,15 +175,19 @@ def run_analyzer_common(src_file, funcstate):
                                     return_regs = funcstate.regs
                                 break
                             # not returning from function, then this is a noreturn bx or something similar
-                            # I don't think this happens in mmbn6 so don't implement yet
+                            # I think this only happens when performing an interwork return
                             else:
+                                
                                 fileline_error("Tried performing noreturn branch!", global_fileline)
                         else:
                             if possible_syms[0].type != "F":
                                 fileline_error("Tried executing non-function symbol \"%s\"!" % sym.name, global_fileline)
-                            funcstate.set_registers(run_analyzer_from_sym(possible_syms[0], funcstate.regs))
+                            subroutine_return_regs = run_analyzer_from_sym(possible_syms[0], funcstate.regs)
                     else:
                         fileline_error("Tried executing function but there was none!", global_fileline)
+
+                    funcstate.set_registers(subroutine_return_regs)
+                    src_file.line_num = funcstate.regs["pc"].data.ref.line_num
                 elif funcstate.uncond_branch != "":
                     if funcstate.uncond_branch in funcstate.found_labels:
                         # TODO: potential for loop detection here
@@ -197,7 +205,8 @@ def run_analyzer_common(src_file, funcstate):
                 break
         else:
             if return_regs is not None:
-                return_regs["pc"].append(RegisterInfo(copy.deepcopy(return_lr), global_fileline))
+                # return_regs["pc"].append(RegisterInfo(copy.deepcopy(return_pc), global_fileline))
+                break
             else:
                 fileline_error("Did not find a return point in function!", global_fileline)
 
@@ -224,10 +233,13 @@ def read_jumptable(jumptable):
 
     found_jumptable = False
 
-    src_file = parser.find_colon_label_in_files(jumptable, input_file)
+    src_file = parser.find_and_position_at_nonlocal_label(jumptable)
     print("line: %s" % src_file.cur_line)
     words = parse_word_directives(src_file)
     print("words: %s" % words)
     registers = RegisterState()
-    registers["r5"] = "BattleObject"
+    fileline = FileLine(src_file.filename, src_file.line_num)
+    registers["r5"].append(RegisterInfo(datatypes.BattleObject(), fileline))
+    registers["lr"].append(RegisterInfo(ProgramCounter("asm00_1.s", 99), fileline))
+    registers["sp"].append(RegisterInfo(datatypes.Stack(), fileline))
     run_analyzer(words[0], registers)

@@ -76,6 +76,26 @@ def try_parse_function_word_directives_from_sym(sym):
     src_file.line_num = saved_line_num
     return words
 
+def get_line_num_at_num_directives_ahead(src_file, num_directives):
+    saved_line_num = src_file.line_num
+    cur_directive_count = 0
+
+    for line in src_file:
+        if cur_directive_count >= num_directives
+            break
+
+        if not line.startswith("\t"):
+            line = consume_label(line)
+
+        line = line.strip()
+        if line == "":
+            continue
+        cur_directive_count += 1
+
+    line_num_at_num_directives_ahead = src_file.line_num
+    src_file.line_num = saved_line_num
+    return line_num_at_num_directives_ahead
+
 def parse_word_directive(src_file):
     parse_word_directives(src_file, 1)
 
