@@ -5303,15 +5303,22 @@ object_setAttack1:
 object_setAttack2:
 	mov r2, #2
 	b loc_8011698
+
+	thumb_func_start object_setAttack3
 object_setAttack3:
 	mov r2, #3
 	b loc_8011698
+
+	thumb_func_start object_setAttack4
 object_setAttack4:
 	mov r2, #4
 	b loc_8011698
+
+	thumb_func_start object_setAttack5
 object_setAttack5:
 	mov r2, #5
 	b loc_8011698
+
 loc_8011698:
 	push {lr}
 	strb r0, [r5,#9]
@@ -5324,6 +5331,9 @@ loc_8011698:
 	bl sub_801011A
 	pop {pc}
 	thumb_func_end object_setAttack2
+	thumb_func_end object_setAttack3
+	thumb_func_end object_setAttack4
+	thumb_func_end object_setAttack5
 
 	thumb_func_start sub_80116AE
 sub_80116AE:

@@ -56,8 +56,7 @@
 	\struct_entry \label\()_Damage, 2 // loc=0x2c
 	// ???
 	\struct_entry \label\()_StaminaDamageCounterDisabler, 2  // loc=0x2e
-	\struct_entry \label\()_Unk_30, 2 // loc=0x30
-	\struct_entry \label\()_Unk_32, 2 // loc=0x32
+	\struct_entry \label\()_Unk_30, 4 // loc=0x30
 	\struct_entry \label\()_X, 4 // loc=0x34
 	\struct_entry \label\()_Y, 4 // loc=0x38
 	\struct_entry \label\()_Z, 4 // loc=0x3c

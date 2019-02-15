@@ -433,9 +433,11 @@ class BattleObject(Struct):
                 0x5: {Size.BYTE: StructField("_Param2", UnkPrimitiveMemory())},
                 0x6: {Size.DEFAULT: StructField("_Param3", UnkPrimitiveMemory())},
                 0x7: {Size.BYTE: StructField("_Param4", UnkPrimitiveMemory())},
-                0x8: {Size.BYTE: StructField("_CurState", UnkPrimitiveMemory())},
+                0x8: {Size.BYTE: StructField("_CurState", UnkPrimitiveMemory()),
+                      Size.WORD: StructField("_CurStateActionPhaseAndPhaseInitialized", UnkPrimitiveMemory())},
                 0x9: {Size.BYTE: StructField("_CurAction", UnkPrimitiveMemory())},
-                0xa: {Size.BYTE: StructField("_CurPhase", UnkPrimitiveMemory())},
+                0xa: {Size.BYTE: StructField("_CurPhase", UnkPrimitiveMemory()),
+                      Size.HWORD: StructField("_CurPhaseAndPhaseInitialized", UnkPrimitiveMemory())},
                 0xb: {Size.BYTE: StructField("_PhaseInitialized", UnkPrimitiveMemory())},
                 0xc: {Size.BYTE: StructField("_Unk_0c", UnkPrimitiveMemory())},
                 0xd: {Size.BYTE: StructField("_Unk_0d", UnkPrimitiveMemory())},
@@ -443,7 +445,8 @@ class BattleObject(Struct):
                 0xf: {Size.BYTE: StructField("_Unk_0f", UnkPrimitiveMemory())},
                 0x10: {Size.BYTE: StructField("_CurAnim", UnkPrimitiveMemory())},
                 0x11: {Size.BYTE: StructField("_CurAnimCopy", UnkPrimitiveMemory())},
-                0x12: {Size.BYTE: StructField("_PanelX", UnkPrimitiveMemory())},
+                0x12: {Size.BYTE: StructField("_PanelX", UnkPrimitiveMemory()),
+                       Size.HWORD: StructField("_PanelXY", UnkPrimitiveMemory())},
                 0x13: {Size.BYTE: StructField("_PanelY", UnkPrimitiveMemory())},
                 0x14: {Size.BYTE: StructField("_FuturePanelX", UnkPrimitiveMemory())},
                 0x15: {Size.BYTE: StructField("_FuturePanelY", UnkPrimitiveMemory())},
@@ -467,8 +470,7 @@ class BattleObject(Struct):
                 0x2c: {Size.HWORD: StructField("_Damage", UnkPrimitiveMemory()),
                        Size.WORD: StructField("_DamageAndStaminaDamageCounterDisabler", UnkPrimitiveMemory())},
                 0x2e: {Size.HWORD: StructField("_StaminaDamageCounterDisabler", UnkPrimitiveMemory())},
-                0x30: {Size.HWORD: StructField("_Unk_30", UnkPrimitiveMemory())},
-                0x32: {Size.HWORD: StructField("_Unk_32", UnkPrimitiveMemory())},
+                0x30: {Size.WORD: StructField("_Unk_30", UnkPrimitiveMemory())},
                 0x34: {Size.WORD: StructField("_X", UnkPrimitiveMemory())},
                 0x38: {Size.WORD: StructField("_Y", UnkPrimitiveMemory())},
                 0x3c: {Size.WORD: StructField("_Z", UnkPrimitiveMemory())},
@@ -501,7 +503,7 @@ class BattleObject(Struct):
             elif Size.DEFAULT in struct_field_possible_entries:
                 return struct_field_possible_entries[Size.DEFAULT].memory
             else:
-                global_fileline_error("Did not find size \"%s\" in struct for struct offset \"%s\"!" % (size, offset))
+                global_fileline_error("Did not find size \"%s\" in struct for struct offset \"0x%x\"!" % (size, offset))
         elif 0x60 <= offset < 0x8c:
             return UnkMemory()
         elif 0x90 <= offset < 0xd8:

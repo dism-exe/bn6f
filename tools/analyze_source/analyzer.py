@@ -88,7 +88,7 @@ class RegisterInfo:
 
 class RegisterInfoList(list):
     def __init__(self):
-        list.__init__(self, [RegisterInfo()])
+        super().__init__()
 
     @property
     def data(self):
@@ -238,8 +238,8 @@ def run_analyzer_common(src_file, funcstate):
                         funcstate.uncond_branch = ""
                         break
             else:
-                line = line.strip()
-                if line.startswith("thumb_func"):
+                stripped_line = line.strip()
+                if stripped_line.startswith("thumb_func"):
                     continue
                 fileline_error("Unknown directive \"%s\"!" % line, fileline)
 
@@ -288,7 +288,10 @@ def read_jumptable(jumptable):
     registers["r5"].append(RegisterInfo(datatypes.BattleObject().wrap(), fileline))
     registers["r6"].append(RegisterInfo(datatypes.RAMPointer().wrap(), fileline))
     registers["r7"].append(RegisterInfo(datatypes.BattleObject(-0x10).wrap(), fileline))
+    registers["r8"].append(RegisterInfo(datatypes.UnknownDataType().wrap(), fileline))
+    registers["r9"].append(RegisterInfo(datatypes.UnknownDataType().wrap(), fileline))
     registers["r10"].append(RegisterInfo(datatypes.RAMPointer().wrap(), fileline))
+    registers["r12"].append(RegisterInfo(datatypes.UnknownDataType().wrap(), fileline))
     registers["lr"].append(RegisterInfo(datatypes.ProgramCounter("asm00_1.s", 99).wrap(), fileline))
     registers["sp"].append(RegisterInfo(datatypes.Stack().wrap(), fileline))
     opcodes.bl_opcode.append_callback(opcodes.check_spawn_battle_object)
