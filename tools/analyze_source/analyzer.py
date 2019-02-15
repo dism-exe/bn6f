@@ -95,12 +95,13 @@ class RegisterInfoList(list):
         if len(self) == 0:
             global_fileline_error("Found instance of uninitialized reg!")
         return self[-1].datatype
-"""
+
     def append(self, val):
         if len(self) == 0:
             list.append(self, val)
-        self[0] = val
-"""
+        else:
+            self[0] = val
+
 class RegisterState(dict):
     valid_registers = set(["r0", "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "sp", "lr", "pc"])
 
@@ -167,7 +168,7 @@ def run_analyzer_common(src_file, funcstate):
             print("cur src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
             funcstate.regs["pc"].data.ref.line_num = src_file.line_num
 
-            pc_history_len = len(funcstate.regs["pc"])
+            pc_fileline = funcstate.regs["pc"][-1].fileline
             if not line.startswith("\t"):
                 split_line = line.split(":", 1)
                 funcstate.found_labels[split_line[0]] = FileLine(src_file.filename, src_file.line_num)
@@ -190,7 +191,8 @@ def run_analyzer_common(src_file, funcstate):
             fileline = FileLine(src_file.filename, src_file.line_num)
             analyze_source.global_fileline = fileline
             if opcodes.read_opcode(line, funcstate, src_file, fileline):
-                if len(funcstate.regs["pc"]) > pc_history_len:
+                new_pc_fileline = funcstate.regs["pc"][-1].fileline
+                if new_pc_fileline.line_num != pc_fileline.line_num or new_pc_fileline.filename != pc_fileline.filename:
                     sp_datatype_ref = funcstate.regs["sp"].data.ref
                     pc_datatype_ref = funcstate.regs["pc"].data.ref
                     possible_syms = pc_datatype_ref.possible_syms
