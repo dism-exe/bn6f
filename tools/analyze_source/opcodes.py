@@ -274,7 +274,10 @@ def cmp_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
     assert_valid_datatype(dest_datatype, fileline)
 
     if dest_datatype.type == DataType.UNKNOWN:
-        dest_datatype.ref = datatypes.Primitive(Size.WORD)
+        if funcstate.function.name == "sub_80C9EE6" and evaluate_imm_sym_or_num_error_if_undefined(opcode_params[1], fileline) == 0:
+            pass
+        else:
+            dest_datatype.ref = datatypes.Primitive(Size.WORD)
     elif dest_datatype.type == DataType.POINTER:
         if evaluate_imm_sym_or_num_error_if_undefined(opcode_params[1], fileline) != 0:
             fileline_error("Context information: cmp pointer, #imm-nonzero", fileline)
@@ -646,7 +649,7 @@ def check_spawn_battle_object(opcode_params, funcstate, src_file, fileline):
         funcstate.regs["r5"].append(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
         fileline_msg("Called special function \"%s\"." % opcode_params, fileline)
         return False
-    elif bl_sym.name == "sub_80103BC":
+    elif bl_sym.name == "sub_80103BC" or bl_sym.name == "sub_80CD488":
         funcstate.regs["r0"].append(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
         fileline_msg("Called special function \"%s\"." % opcode_params, fileline)
         return False

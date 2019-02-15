@@ -307,7 +307,7 @@ sub_8002874:
 	ldrh r3, [r5,#8]
 	lsl r3, r3, #5
 	add r1, r1, r3
-	bl loc_8000AC8
+	bl sub_8000AC8
 locret_8002896:
 	pop {r5,pc}
 dword_8002898: .word 0x6010000

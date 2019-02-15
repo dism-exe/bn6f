@@ -446,13 +446,13 @@ loc_800C066:
 	mov r3, r6
 	mov r4, #5
 	mov r5, #3
-	ldr r6, off_800C080 // =dword_3005E80+1 
+	ldr r6, off_800C080 // =sub_3005E80+1 
 	mov lr, pc
 	bx r6
 	add sp, sp, #0x28
 	pop {r4-r7,pc}
 off_800C07C: .word byte_86DFA98
-off_800C080: .word dword_3005E80+1
+off_800C080: .word sub_3005E80+1
 off_800C084: .word byte_800C08C
 off_800C088: .word byte_800C0AA
 byte_800C08C: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0

@@ -165,7 +165,7 @@ def run_analyzer_common(src_file, funcstate):
     while True:
         print("start src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
         for line in src_file:
-            print("cur src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
+            #print("cur src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
             funcstate.regs["pc"].data.ref.line_num = src_file.line_num
 
             pc_fileline = funcstate.regs["pc"][-1].fileline

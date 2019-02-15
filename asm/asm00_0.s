@@ -769,17 +769,26 @@ off_8000AA8: .word CopyBytes+1
 sub_8000AB8:
 	mov r3, #0
 	b loc_8000ACA
+
+	thumb_local_start
 loc_8000ABC:
 	mov r3, #1
 	b loc_8000ACA
+
+	thumb_local_start
 loc_8000AC0:
 	mov r3, #2
 	b loc_8000ACA
-loc_8000AC4:
+
+	thumb_func_start sub_8000AC4
+sub_8000AC4:
 	mov r3, #3
 	b loc_8000ACA
-loc_8000AC8:
+
+	thumb_func_start sub_8000AC8
+sub_8000AC8:
 	mov r3, #4
+
 loc_8000ACA:
 	push {r4-r7}
 	mov r7, r3
@@ -811,6 +820,10 @@ byte_8000AFC: .byte 0x0, 0x0, 0x0, 0x84, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 off_8000B10: .word dword_200AC1C
 off_8000B14: .word dword_200B4B0
 	thumb_func_end sub_8000AB8
+	thumb_func_end loc_8000ABC
+	thumb_func_end loc_8000AC0
+	thumb_func_end sub_8000AC4
+	thumb_func_end sub_8000AC8
 
 	thumb_local_start
 sub_8000B18:
@@ -950,10 +963,10 @@ loc_8000BD6:
 	bl loc_8000AC0
 	b loc_8000BE6
 loc_8000BDC:
-	bl loc_8000AC4
+	bl sub_8000AC4
 	b loc_8000BE6
 loc_8000BE2:
-	bl loc_8000AC8
+	bl sub_8000AC8
 loc_8000BE6:
 	add r7, #0xc
 	b loc_8000B92
@@ -2758,11 +2771,11 @@ loc_80018A6:
 	thumb_func_start copyTiles
 copyTiles:
 	push {r6,r7,lr}
-	ldr r7, off_80018CC // =dword_3005E80+1
+	ldr r7, off_80018CC // =sub_3005E80+1
 	mov lr, pc
 	bx r7
 	pop {r6,r7,pc}
-off_80018CC: .word dword_3005E80+1
+off_80018CC: .word sub_3005E80+1
 	thumb_func_end copyTiles
 
 	thumb_func_start sub_80018D0
@@ -3285,7 +3298,7 @@ sub_8001C44:
 	ldr r0, [r0]
 	ldr r1, [r7,#0xc]
 	ldr r2, [r7,#0x10]
-	bl loc_8000AC8
+	bl sub_8000AC8
 	pop {pc}
 	thumb_func_end sub_8001C44
 
@@ -3364,7 +3377,7 @@ loc_8001CA6:
 	ldr r1, [r7,#0x10]
 	ldrb r2, [r7,#0x16]
 	lsl r2, r2, #5
-	bl loc_8000AC8
+	bl sub_8000AC8
 	pop {r4,r7,pc}
 	.balign 4, 0x00
 off_8001CE4: .word off_8001AB8
@@ -3414,7 +3427,7 @@ loc_8001D0E:
 	ldr r1, [r7,#0x10]
 	ldrb r2, [r7,#0x16]
 	lsl r2, r2, #6
-	bl loc_8000AC8
+	bl sub_8000AC8
 	pop {r4,r7,pc}
 	.balign 4, 0x00
 off_8001D4C: .word off_8001AB8

@@ -14,7 +14,7 @@
 	.global sub_3005E2C
 	.global sub_3005E60
 	.global sub_3005E6A
-	.global dword_3005E80
+	.global sub_3005E80
 	.global sub_3005EBA
 	.global sub_3005EF0
 	.global sub_3006028
@@ -58,7 +58,7 @@
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global WordFill
-// .global loc_8000AC8
+// .global sub_8000AC8
 // .global sub_8000C00
 // .global sub_8000C5C
 

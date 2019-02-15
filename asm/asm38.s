@@ -279,11 +279,19 @@ sub_3005E6A:
 off_3005E74: .word InterruptMasterEnableRegister
 off_3005E78: .word sub_814469C+1
 off_3005E7C: .word sub_81446AC+1
-dword_3005E80: .word 0x9000B081, 0x6AB64656, 0x18B602D2, 0x186D1824
 	thumb_func_end sub_3005E6A
 
-	thumb_local_start
-sub_3005E90:
+	thumb_func_start sub_3005E80
+sub_3005E80:
+	sub sp, sp, #4
+	str r0, [sp]
+	mov r6, r10
+	ldr r6, [r6,#oToolkit_GFX30025c0_Ptr]
+	lsl r2, r2, #11
+	add r6, r6, r2
+	add r4, r4, r0
+	add r5, r5, r1
+loc_3005E90:
 	mov r2, #0x1f
 	mvn r2, r2
 	mov r7, r0
@@ -299,14 +307,14 @@ loc_3005EA6:
 	add r3, #2
 	add r0, #1
 	cmp r0, r4
-	blt sub_3005E90
+	blt loc_3005E90
 	ldr r0, [sp]
 	add r1, #1
 	cmp r1, r5
-	blt sub_3005E90
+	blt loc_3005E90
 	add sp, sp, #4
 	mov pc, lr
-	thumb_func_end sub_3005E90
+	thumb_func_end sub_3005E80
 
 	thumb_func_start sub_3005EBA
 sub_3005EBA:
@@ -535,7 +543,7 @@ loc_300608C:
 	ldrh r3, [r5,#8]
 	lsl r3, r3, #5
 	add r1, r1, r3
-	ldr r7, off_3006104 // =loc_8000AC8+1
+	ldr r7, off_3006104 // =sub_8000AC8+1
 	mov lr, pc
 	bx r7
 	mov r5, r8
@@ -572,7 +580,7 @@ off_30060E8: .word dword_200F350
 	.word dword_200F350
 	.word dword_200F350
 dword_3006100: .word 0x6010000
-off_3006104: .word loc_8000AC8+1
+off_3006104: .word sub_8000AC8+1
 	thumb_func_end sub_3006028
 
 	thumb_local_start
@@ -2034,14 +2042,14 @@ loc_3006BF6:
 	tst r1, r1
 	beq loc_3006C04
 	sub r2, r2, r0
-	ldr r3, off_3006C0C // =loc_8000AC8+1
+	ldr r3, off_3006C0C // =sub_8000AC8+1
 	mov lr, pc
 	bx r3
 loc_3006C04:
 	mov r0, r9
 	pop {pc}
 off_3006C08: .word off_3006B18
-off_3006C0C: .word loc_8000AC8+1
+off_3006C0C: .word sub_8000AC8+1
 	.word ZeroFillByByte+1
 off_3006C14: .word dword_3006B84
 	thumb_func_end sub_3006B94
@@ -2809,7 +2817,7 @@ loc_30071BE:
 	ldr r0, off_30071F0 // =dword_200CDA0
 	ldr r1, dword_30071F4 // =0x6015700
 	ldr r2, dword_30071F8 // =0xf00
-	ldr r3, off_30071FC // =loc_8000AC8+1
+	ldr r3, off_30071FC // =sub_8000AC8+1
 	mov lr, pc
 	bx r3
 	mov r5, r10
@@ -2830,7 +2838,7 @@ locret_30071E8:
 off_30071F0: .word dword_200CDA0
 dword_30071F4: .word 0x6015700
 dword_30071F8: .word 0xF00
-off_30071FC: .word loc_8000AC8+1
+off_30071FC: .word sub_8000AC8+1
 off_3007200: .word 0x400
 off_3007204: .word chatbox_maskFlags_3e+1
 off_3007208: .word off_300720C

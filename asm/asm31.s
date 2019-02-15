@@ -79020,24 +79020,62 @@ loc_80DEDBC:
 	.byte 0, 0
 off_80DEDD0: .word byte_80DEA58
 off_80DEDD4: .word byte_80DEDD8
-byte_80DEDD8: .byte 0x0, 0x0, 0x0, 0x10, 0x1, 0xFF, 0xFF, 0x0, 0xD0
-byte_80DEDE1: .byte 0xB5, 0x84, 0xB0, 0x6F, 0x46, 0x3A, 0x60, 0x7B, 0x60
-	.byte 0xBC, 0x60, 0xFE, 0x60, 0x56, 0x46, 0xB6, 0x69, 0x80
-	.byte 0x36, 0xA8, 0x7D, 0x1, 0x21, 0x48, 0x40, 0x10, 0x21
-	.byte 0x48, 0x43, 0x36, 0x18, 0x4, 0x24, 0x32, 0x68, 0x0
-	.byte 0x2A, 0x16, 0xD0, 0x2F, 0xF7, 0x5F, 0xFA, 0x32, 0x68
-	.byte 0x91, 0x7C, 0x40, 0x18, 0xD1, 0x7C, 0x3, 0xB4, 0xA
-	.byte 0x4B, 0x2A, 0xF0, 0x6F, 0xFC, 0x2D, 0xF7, 0x33, 0xFF
-	.byte 0x0, 0x28, 0x3, 0xBC, 0x7, 0xD0, 0x50, 0xB4, 0x3A
-	.byte 0x68, 0x7B, 0x68, 0xBC, 0x68, 0xFE, 0x68, 0xFF, 0xF7
-	.byte 0x28, 0xFF, 0x50, 0xBC, 0x4, 0x36, 0x1, 0x3C, 0xE2
-	.byte 0xD1, 0x4, 0xB0, 0xD0, 0xBD
-	.word byte_80DEE44
-byte_80DEE44: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80
-	.byte 0xA
+byte_80DEDD8: .byte 0x0, 0x0, 0x0, 0x10, 0x1, 0xFF, 0xFF, 0x0
+	thumb_func_end sub_80DED80
+
+	thumb_local_start
+sub_80DEDE0:
+	push {r4,r6,r7,lr}
+	sub sp, sp, #0x10
+	mov r7, sp
+	str r2, [r7]
+	str r3, [r7,#4]
+	str r4, [r7,#8]
+	str r6, [r7,#0xc]
+	mov r6, r10
+	ldr r6, [r6,#oToolkit_S2034880_Ptr]
+	add r6, #0x80
+	ldrb r0, [r5,#0x16]
+	mov r1, #1
+	eor r0, r1
+	mov r1, #0x10
+	mul r0, r1
+	add r6, r6, r0
+	mov r4, #4
+loc_80DEE02:
+	ldr r2, [r6]
+	cmp r2, #0
+	beq loc_80DEE36
+	bl object_getFrontDirection
+	ldr r2, [r6]
+	ldrb r1, [r2,#0x12]
+	add r0, r0, r1
+	ldrb r1, [r2,#0x13]
+	push {r0,r1}
+	ldr r3, off_80DEE40 // =byte_80DEE44
+	bl sub_81096FA
+	bl object_checkPanelParameters
+	cmp r0, #0
+	pop {r0,r1}
+	beq loc_80DEE36
+	push {r4,r6}
+	ldr r2, [r7]
+	ldr r3, [r7,#4]
+	ldr r4, [r7,#8]
+	ldr r6, [r7,#0xc]
+	bl sub_80DEC84
+	pop {r4,r6}
+loc_80DEE36:
+	add r6, #4
+	sub r4, #1
+	bne loc_80DEE02
+	add sp, sp, #0x10
+	pop {r4,r6,r7,pc}
+off_80DEE40: .word byte_80DEE44
+byte_80DEE44: .byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80, 0x5, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x80, 0xA
+	thumb_func_end sub_80DEDE0
 off_80DEE54: .word math_sinTable
 byte_80DEE58: .byte 0x0, 0x0, 0x16, 0x0, 0x0, 0x0, 0x0, 0x0
-	thumb_func_end sub_80DED80
 
 	thumb_func_start sub_80DEE60
 sub_80DEE60:
@@ -85929,10 +85967,10 @@ loc_80E2444:
 loc_80E2448:
 	ldr r3, off_80E2498 // =off_80E24A0
 	ldmia r3!, {r0-r2}
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r3, off_80E249C // =off_80E24AC
 	ldmia r3!, {r0-r2}
-	bl loc_8000AC8
+	bl sub_8000AC8
 	mov r0, #0x46 
 	strh r0, [r5,#0x20]
 	mov r0, #4
@@ -90110,10 +90148,10 @@ sub_80E4470:
 	push {lr}
 	ldr r3, off_80E449C // =off_80E44A4
 	ldmia r3!, {r0-r2}
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r3, off_80E44A0 // =off_80E44B0
 	ldmia r3!, {r0-r2}
-	bl loc_8000AC8
+	bl sub_8000AC8
 	bl sub_80E4532
 	str r0, [r5,#0x60]
 	tst r0, r0
@@ -93966,10 +94004,10 @@ sub_80E60EC:
 loc_80E610A:
 	ldr r3, off_80E6160 // =off_80E6168
 	ldmia r3!, {r0-r2}
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r3, off_80E6164 // =off_80E6174
 	ldmia r3!, {r0-r2}
-	bl loc_8000AC8
+	bl sub_8000AC8
 	mov r0, #0x3c 
 	strh r0, [r5,#0x20]
 	mov r0, #4
@@ -102476,6 +102514,7 @@ sub_80EA11C:
 	beq locret_80EA14A
 	str r7, [r0,#0x64]
 	mov r1, #1
+// oops! r7 is the jumptable pointer and not RAM!
 	strb r1, [r7]
 locret_80EA14A:
 	pop {pc}
@@ -106117,7 +106156,7 @@ off_80EC3F0: .word sub_80104E0+1
 	.word sub_8015AA6+1
 	.word sub_8010820+1
 	.word sub_802E1BE+1
-	.word byte_80DEDE1
+	.word sub_80DEDE0+1
 	.word sub_80EC44C+1
 	.word sub_80EA11C+1
 	.word sub_80E94DC+1

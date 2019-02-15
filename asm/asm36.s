@@ -15747,7 +15747,7 @@ sub_81384AC:
 	add r1, r1, r2
 	ldr r0, off_81384CC // =unk_2014A00 
 	ldr r2, off_81384C4 // =0x600 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	thumb_func_end sub_81384AC
 
 	pop {r3-r7,pc}

@@ -114,7 +114,7 @@
 
 /* External Symbols */
 	.include "asm/asm38.inc"
-// .global dword_3005E80
+// .global sub_3005E80
 // .global sub_30078C8
 // .global sub_30078E0
 // .global sub_3007958

@@ -309,8 +309,8 @@
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global WordFill
-// .global loc_8000AC4
-// .global loc_8000AC8
+// .global sub_8000AC4
+// .global sub_8000AC8
 // .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00

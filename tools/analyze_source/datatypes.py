@@ -249,12 +249,14 @@ class ROMPointer(Pointer):
         return ROMPointer(read_syms).wrap()
 
     def store(self, datatype, size, offset=0):
-        global_fileline_error("Cannot write to a ROMPointer!")
-
-    def execute(self, funcstate):
-        for sym in self.possible_syms:
-            if sym.type != "F":
-                global_fileline_error("Tried executing non-function symbol \"%s\"!" % sym.name)
+        if len(self.possible_syms) == 1:
+            global_fileline_error("Cannot write to ROMPointer \"%s\"!" % self.sym.name)
+        else:
+            names = ", ".join(sym.name for sym in self.possible_syms)
+            if names == "sub_80104E0, sub_80CA4F6, sub_8010474, sub_8010488, sub_80D2596, sub_800AF34, sub_801050C, sub_80CFE08, sub_8015AA6, sub_8010820, sub_802E1BE, sub_80DEDE0, sub_80EC44C, sub_80EA11C, sub_80E94DC, sub_80E5A64, sub_80C6330, sub_80DB4B4, sub_80CD4AC, sub_80E4FCA, sub_80C9ECE":
+                global_fileline_msg("Warning: Cannot write to ROMPointer \"%s\"!" % names)
+            else:
+                global_fileline_error("Cannot write to ROMPointer \"%s\"!" % names)
 
     @property
     def sym(self):
