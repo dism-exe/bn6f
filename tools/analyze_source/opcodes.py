@@ -88,6 +88,10 @@ def evaluate_imm_sym_or_num_error_if_undefined(imm_sym_or_num, fileline):
 # todo: figure out a way to implement known struct detection
 def evaluate_data(data, fileline):
     global syms
+
+    if data == "":
+        return datatypes.Primitive(Size.UNKNOWN).wrap()
+
     try:
         return datatypes.Primitive(Size.WORD, int(data, 0)).wrap()
     except ValueError:
@@ -314,10 +318,11 @@ def do_tst_or_cmp_reg_opcode(opcode_params, funcstate, opcode_name, fileline):
         if datatype_strong.type == DataType.PRIMITIVE:
             datatype_weak.ref = datatypes.Primitive(Size.WORD)
         elif datatype_strong.type == DataType.POINTER:
+            datatype_weak.ref = datatypes.UnkPointer()
             if dest_datatype.type == DataType.POINTER:
-                fileline_error("Context information: %s pointer, unknown" % opcode_name, fileline)
+                fileline_msg("Context information: %s pointer, unknown" % opcode_name, fileline)
             else:
-                fileline_error("Context information: %s unknown, pointer" % opcode_name, fileline)
+                fileline_msg("Context information: %s unknown, pointer" % opcode_name, fileline)
     elif datatype_weak.type == DataType.PRIMITIVE:
         if datatype_strong.type == DataType.POINTER:
             if dest_datatype.type == DataType.POINTER:
@@ -639,6 +644,10 @@ def check_spawn_battle_object(opcode_params, funcstate, src_file, fileline):
             funcstate.regs[spawn_battle_object_numeric_reg_name_and_size.regname].append(analyzer.RegisterInfo(datatypes.Primitive().wrap(), fileline))
 
         funcstate.regs["r5"].append(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
+        fileline_msg("Called special function \"%s\"." % opcode_params, fileline)
+        return False
+    elif bl_sym.name == "sub_80103BC":
+        funcstate.regs["r0"].append(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
         fileline_msg("Called special function \"%s\"." % opcode_params, fileline)
         return False
     #else:
@@ -1068,8 +1077,11 @@ def subtract_datatypes(source_datatype, operand_datatype, fileline):
 def read_opcode(line, funcstate, src_file, fileline):
     line = line.strip()
     opcode_parts = line.split(None, 1)
-    opcode_subsyntaxes = opcodes[opcode_parts[0]]
-    
+    try:
+        opcode_subsyntaxes = opcodes[opcode_parts[0]]
+    except KeyError:
+        return False
+
     for subsyntax in opcode_subsyntaxes:
         regex_groups = subsyntax.regex.findall(opcode_parts[1])
         if len(regex_groups) == 1:

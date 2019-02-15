@@ -47,8 +47,8 @@ def get_ldr_label_contents(label, src_file):
     #    print("cur_line: %s" % src_file.lines[i])
     contents = parse_word_directive(src_file)
     src_file.line_num = saved_line_num
-    #if len(contents) == 0:
-    #    return ""
+    if len(contents) == 0:
+        return ""
     return contents[0]
 
 """
@@ -157,10 +157,9 @@ def parse_word_directives(src_file, max_words=None, must_be_words=False):
             else:
                 break
 
-        first_run = False
-
         line = line.strip()
         if line == "":
+            first_run = False
             continue
         elif line.startswith(".word"):
             #if "nullsub" in line:
@@ -172,14 +171,18 @@ def parse_word_directives(src_file, max_words=None, must_be_words=False):
                 if len(words) > max_words:
                     global_fileline_error("Context information: len(words) > max(words)")
                 break
-        elif line.startswith(".byte"):
+        elif first_run and line.startswith(".byte"):
+            words.extend(word_split_regex.split(line[5:].strip()))
             if not must_be_words:
                 break
             global_fileline_msg("Warning: No support for fake IDA zero bytes yet!")
-        elif line.startswith(".hword") and must_be_words:
+        elif first_run and line.startswith(".hword"):
+            words.extend(word_split_regex.split(line[6:].strip()))
             break
         else:
             break
+
+        first_run = False
 
     return words
 

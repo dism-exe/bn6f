@@ -88,14 +88,19 @@ class RegisterInfo:
 
 class RegisterInfoList(list):
     def __init__(self):
-        list.__init__([RegisterInfo()])
+        list.__init__(self, [RegisterInfo()])
 
     @property
     def data(self):
         if len(self) == 0:
             global_fileline_error("Found instance of uninitialized reg!")
         return self[-1].datatype
-
+"""
+    def append(self, val):
+        if len(self) == 0:
+            list.append(self, val)
+        self[0] = val
+"""
 class RegisterState(dict):
     valid_registers = set(["r0", "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "sp", "lr", "pc"])
 
@@ -231,6 +236,9 @@ def run_analyzer_common(src_file, funcstate):
                         funcstate.uncond_branch = ""
                         break
             else:
+                line = line.strip()
+                if line.startswith("thumb_func"):
+                    continue
                 fileline_error("Unknown directive \"%s\"!" % line, fileline)
 
         # now check if we have any conditional labels left
