@@ -3018,7 +3018,7 @@ loc_80103DC:
 	add r4, #1
 	cmp r4, #4
 	blt loc_80103CC
-	mov r0, #0
+	mov r0, #NULL
 	pop {r4-r6,pc}
 loc_80103E8:
 	mov r0, r5
@@ -20750,7 +20750,7 @@ dword_801A538: .word 0x80000000
 dword_801A53C: .word 0x20000
 dword_801A540: .word 0xFFFF
 dword_801A544: .word 0x100040
-off_801A548: .word timer_2000000
+off_801A548: .word 0x2000000
 off_801A54C: .word 0x1500
 off_801A550: .word unk_20384F0
 	thumb_func_end sub_801A506

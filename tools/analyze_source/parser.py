@@ -1,3 +1,25 @@
+import re
+
+from analyze_source import *
+import analyze_source
+import parser
+
+syms = None
+scanned_files = None
+
+def set_syms_and_scanned_files(_syms, _scanned_files):
+    global syms
+    global scanned_files
+    syms = _syms
+    scanned_files = _scanned_files
+
+def strip_plus1(label):
+    if label.endswith("+1"):
+        return label[:-2]
+    elif label.endswith(" + 1<<31"):
+        return label[:-8]
+    return label
+
 def find_colon_label_from_lines(label, src_file, start_index=None):
     if start_index is not None:
         src_file.line_num = start_index
@@ -10,18 +32,24 @@ def find_colon_label_from_lines(label, src_file, start_index=None):
 
 def get_ldr_label_contents(label, src_file):
     saved_line_num = src_file.line_num
+    #print("ldr line: %s" % (src_file.line_num + 1))
     if label.startswith("."):
         for line in src_file:
             if line.startswith(label):
                 break
     else:
         src_file.line_num = syms[label].line_num
+        #print("ldr contents line num: %s" % (src_file.line_num + 1))
         if syms[label].filename != src_file.filename:
             global_fileline_error("Could not find ldr label in file! (actual file: \"%s\")" % syms[label].filename) 
 
-    contents = parse_word_directive(src_file)[0]
+    #for i in range(src_file.line_num):
+    #    print("cur_line: %s" % src_file.lines[i])
+    contents = parse_word_directive(src_file)
     src_file.line_num = saved_line_num
-    return contents
+    #if len(contents) == 0:
+    #    return ""
+    return contents[0]
 
 """
 def parse_word_directives_at_label(label, file_state):
@@ -35,6 +63,21 @@ def parse_word_directives_at_local_label(label, src_file):
     
     for line in src_file:
 """
+
+def find_label_line_num(label, funcstate):
+    if not label.startswith("."):
+        return syms[label].line_num
+    else:
+        src_file = scanned_files[funcstate.function.filename]
+        saved_line_num = src_file.line_num
+        src_file.line_num = funcstate.function.line_num
+
+        for line in src_file:
+            if line.startswith(label):
+                label_line_num = src_file.line_num
+                src_file.line_num = saved_line_num
+                return label_line_num
+
 def find_and_position_at_nonlocal_label(label):
     if label.endswith("+1"):
         label = label[:-2]
@@ -68,7 +111,7 @@ def find_colon_label_in_files(label, input_file=None):
 
     return src_file
 
-def try_parse_function_word_directives_from_sym(sym):
+def try_parse_word_directives_from_sym(sym):
     src_file = scanned_files[sym.filename]
     saved_line_num = src_file.line_num
     src_file.line_num = sym.line_num
@@ -81,7 +124,7 @@ def get_line_num_at_num_directives_ahead(src_file, num_directives):
     cur_directive_count = 0
 
     for line in src_file:
-        if cur_directive_count >= num_directives
+        if cur_directive_count >= num_directives:
             break
 
         if not line.startswith("\t"):
@@ -96,8 +139,10 @@ def get_line_num_at_num_directives_ahead(src_file, num_directives):
     src_file.line_num = saved_line_num
     return line_num_at_num_directives_ahead
 
+word_split_regex = re.compile(r", *")
+
 def parse_word_directive(src_file):
-    parse_word_directives(src_file, 1)
+    return parse_word_directives(src_file, 1)
 
 def parse_word_directives(src_file, max_words=None, must_be_words=False):
     first_run = True
@@ -107,27 +152,32 @@ def parse_word_directives(src_file, max_words=None, must_be_words=False):
     for line in src_file:
         if not line.startswith("\t"):
             if first_run:
+                #if label.startswith("
                 line = consume_label(line)
             else:
                 break
 
         first_run = False
 
-        line = line.lstrip()
+        line = line.strip()
         if line == "":
             continue
         elif line.startswith(".word"):
-            words.extend(line.split(None, 1)[1].split(","))
+            #if "nullsub" in line:
+            #    print("nullsub: \"%s\"" % line.split(None, 1)[1].split(","))
+            
+            #print("split: %s" % word_split_regex.split(line[5:].strip()))
+            words.extend(word_split_regex.split(line[5:].strip()))
             if max_words is not None and len(words) >= max_words:
                 if len(words) > max_words:
                     global_fileline_error("Context information: len(words) > max(words)")
-                return words
+                break
         elif line.startswith(".byte"):
-            if must_be_words:
-                return words
-            raise NotImplementedError("No support for fake IDA zero bytes yet!")
-        elif line.startswith(".hword") and verify_words:
-            return words
+            if not must_be_words:
+                break
+            global_fileline_msg("Warning: No support for fake IDA zero bytes yet!")
+        elif line.startswith(".hword") and must_be_words:
+            break
         else:
             break
 
@@ -154,7 +204,10 @@ def parse_label(line):
 """
 
 def check_and_parse_colon_label(line):
-    split_line = line.split()
+    if line.startswith("\t") or line.startswith("\\") or line.startswith("."):
+        return None
+
+    split_line = line.split(":")
     if len(split_line) == 1:
         return None
 

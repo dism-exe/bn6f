@@ -1,9 +1,34 @@
+"""
+import opcodes
+import parser
+import readelf
+import scanner
+"""
+import multiprocessing
+
+from analyze_source import *
+import analyze_source
+import datatypes
+from datatypes import Size
+import parser
+import copy
+import opcodes
+
+syms = {}
+scanned_files = {}
+
+def set_syms_and_scanned_files(_syms, _scanned_files):
+    global syms
+    global scanned_files
+    syms = _syms
+    scanned_files = _scanned_files
+
 class FunctionState:
     def __init__(self, registers, function):
         self.regs = copy.deepcopy(registers) # ignore lr and pc
         self._function_branches = [] # (function, None)
         self._uncond_branch = ""
-        self._cond_branches = {}
+        self._cond_branches = []
         self.found_labels = {}
         self._function = function
 
@@ -26,7 +51,7 @@ class FunctionState:
     def uncond_branch(self):
         return self._uncond_branch
     
-    @local_branch.setter
+    @uncond_branch.setter
     def uncond_branch(self, label):
         self._uncond_branch = label
     
@@ -45,64 +70,63 @@ class FunctionState:
         self.regs = copy.deepcopy(registers)
 
 class CondBranchInfo:
-    __slots__ = ("registers", "line_num")
-    def __init__(self, registers, line_num):
-        self.registers = registers
-        self.line_num = line_num
+    __slots__ = ("branch_name", "registers")
+    def __init__(self, branch_name, registers):
+        self.branch_name = branch_name
+        self.registers = copy.deepcopy(registers)
 
 class RegisterInfo:
-    def __init__(self, datatype=None, fileline=default_fileline):
+    def __init__(self, datatype=None, fileline=None):
         if datatype is None:
-            datatype = UnknownDataType().wrap()
+            datatype = datatypes.UnknownDataType().wrap()
+        if fileline is None:
+            fileline = default_fileline
+        if not isinstance(datatype, datatypes.DataTypeContainer):
+            global_fileline_error("Did not pass wrapped datatype to RegisterInfo!")
         self.datatype = datatype
         self.fileline = fileline
 
 class RegisterInfoList(list):
-    def __init__(self, iterable):
-        list.__init__(self, iterable)
+    def __init__(self):
+        list.__init__([RegisterInfo()])
 
     @property
-    def reg(self):
+    def data(self):
+        if len(self) == 0:
+            global_fileline_error("Found instance of uninitialized reg!")
         return self[-1].datatype
 
 class RegisterState(dict):
-    default_registers = {
-        "r0": RegisterInfoList(RegisterInfo(),),
-        "r1": RegisterInfoList(RegisterInfo(),),
-        "r2": RegisterInfoList(RegisterInfo(),),
-        "r3": RegisterInfoList(RegisterInfo(),),
-        "r4": RegisterInfoList(RegisterInfo(),),
-        "r5": RegisterInfoList(RegisterInfo(),),
-        "r6": RegisterInfoList(RegisterInfo(),),
-        "r7": RegisterInfoList(RegisterInfo(),),
-        "r8": RegisterInfoList(RegisterInfo(),),
-        "r9": RegisterInfoList(RegisterInfo(),),
-        "r10": RegisterInfoList(RegisterInfo(),),
-        "r11": RegisterInfoList(RegisterInfo(),),
-        "r12": RegisterInfoList(RegisterInfo(),),
-        "sp": RegisterInfoList(RegisterInfo(),),
-        "lr": RegisterInfoList(RegisterInfo(),),
-        "pc": RegisterInfoList(RegisterInfo(),)
-    }
-
-    valid_registers = set("r0", "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "sp", "lr", "pc")
+    valid_registers = set(["r0", "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9", "r10", "r11", "r12", "sp", "lr", "pc"])
 
     def __init__(self):
+        default_registers = {
+            "r0": RegisterInfoList(),
+            "r1": RegisterInfoList(),
+            "r2": RegisterInfoList(),
+            "r3": RegisterInfoList(),
+            "r4": RegisterInfoList(),
+            "r5": RegisterInfoList(),
+            "r6": RegisterInfoList(),
+            "r7": RegisterInfoList(),
+            "r8": RegisterInfoList(),
+            "r9": RegisterInfoList(),
+            "r10": RegisterInfoList(),
+            "r11": RegisterInfoList(),
+            "r12": RegisterInfoList(),
+            "sp": RegisterInfoList(),
+            "lr": RegisterInfoList(),
+            "pc": RegisterInfoList()
+        }
         dict.__init__(self, default_registers)
 
-    def __init__(self, *args):
-        if args is None:
-            dict.__init__(self, args)
-        else:
-            dict.__init__(self, default_registers)
-
     def __getitem__(self, key):
-        if key not in valid_registers:
+        if key not in RegisterState.valid_registers:
             raise KeyError(key)
         return dict.__getitem__(self, key)
 
     def __setitem__(self, key, val):
-        if key not in valid_registers:
+        if key not in RegisterState.valid_registers:
             raise KeyError(key)
         dict.__setitem__(self, key, val)
 
@@ -113,26 +137,29 @@ class BranchState:
 
 def run_analyzer_from_sym(sym, registers):
     src_file = scanned_files[sym.filename]
+    src_file.line_num = sym.line_num
     funcstate = FunctionState(registers, sym)
-    run_analyzer_common(src_file, funcstate)
+    return run_analyzer_common(src_file, funcstate)
 
 # note: probably tuned towards battle objects, fix later
 def run_analyzer_from_label(label, registers):
     src_file = parser.find_and_position_at_nonlocal_label(label)
     funcstate = FunctionState(registers, syms[label])
-    run_analyzer_common(src_file, funcstate)
+    return run_analyzer_common(src_file, funcstate)
 
 def run_analyzer_common(src_file, funcstate):
-    global global_fileline
     return_lr = funcstate.regs["lr"].data
-    base_stack_offset = funcstate.regs["sp"].data.offset
+    base_stack_offset = funcstate.regs["sp"].data.ref.offset
+    print("funcstart: base stack offset: %s, function: %s (%s:%s)" % (base_stack_offset, funcstate.function.name, funcstate.function.filename, funcstate.function.line_num + 1))
     return_regs = None
     return_pc = None
 
-    funcstate.regs["pc"].append(RegisterInfo(ProgramCounter(src_file.filename, src_file.line_num), FileLine(src_file.filename, src_file.line_num)))
+    funcstate.regs["pc"].append(RegisterInfo(datatypes.ProgramCounter(src_file.filename, src_file.line_num).wrap(), FileLine(src_file.filename, src_file.line_num)))
 
     while True:
+        print("start src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
         for line in src_file:
+            print("cur src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
             funcstate.regs["pc"].data.ref.line_num = src_file.line_num
 
             pc_history_len = len(funcstate.regs["pc"])
@@ -152,25 +179,31 @@ def run_analyzer_common(src_file, funcstate):
             if line.strip() == "":
                 continue
 
-            global_fileline = FileLine(src_file.filename, src_file.line_num)
-            if read_opcode(line, funcstate, src_file, global_fileline):
+            if funcstate.uncond_branch != "":
+                continue
+
+            fileline = FileLine(src_file.filename, src_file.line_num)
+            analyze_source.global_fileline = fileline
+            if opcodes.read_opcode(line, funcstate, src_file, fileline):
                 if len(funcstate.regs["pc"]) > pc_history_len:
-                    sp_reg = funcstate.regs["sp"].data
-                    lr_reg = funcstate.regs["lr"].data
-                    pc_reg = funcstate.regs["pc"].data
-                    possible_syms = pc_reg.possible_syms
+                    sp_datatype_ref = funcstate.regs["sp"].data.ref
+                    pc_datatype_ref = funcstate.regs["pc"].data.ref
+                    possible_syms = pc_datatype_ref.possible_syms
                     if len(possible_syms) > 1:
-                        if sp_reg.offset == base_stack_offset:
-                            fileline_error("Tried performing jumptable at base stack offset!", global_fileline)
+                        #print("sp offset: %s" % sp_datatype_ref.offset)
+                        if sp_datatype_ref.offset == base_stack_offset:
+                            fileline_error("Tried performing jumptable at base stack offset!", fileline)
                         for sym in possible_syms:
                             if sym.type != "F":
-                                fileline_error("Tried executing non-function symbol \"%s\"!" % sym.name, global_fileline)                        
+                                fileline_error("Tried executing non-function symbol \"%s\"!" % sym.name, fileline)
+                            print("Start of jumptable function called from \"%s\" (%s:%s)" % (funcstate.function.name, funcstate.function.filename, funcstate.function.line_num + 1))
                             subroutine_return_regs = run_analyzer_from_sym(sym, funcstate.regs)
+                            print("End of jumptable function called from \"%s\" (%s:%s)" % (funcstate.function.name, funcstate.function.filename, funcstate.function.line_num + 1))
                     elif len(possible_syms) == 1:
-                        if sp_reg.offset == base_stack_offset:
+                        if sp_datatype_ref.offset == base_stack_offset:
                             # returning from function
-                            if return_lr.filename == pc_reg.filename and return_lr.line_num == pc_reg.line_num:
-                                if return_regs is not None:
+                            if return_lr.ref.filename == pc_datatype_ref.filename and return_lr.ref.line_num == pc_datatype_ref.line_num:
+                                if return_regs is None:
                                     # just use first return regs found for now
                                     return_regs = funcstate.regs
                                 break
@@ -178,38 +211,44 @@ def run_analyzer_common(src_file, funcstate):
                             # I think this only happens when performing an interwork return
                             else:
                                 
-                                fileline_error("Tried performing noreturn branch!", global_fileline)
+                                fileline_error("Tried performing noreturn branch!", fileline)
                         else:
                             if possible_syms[0].type != "F":
-                                fileline_error("Tried executing non-function symbol \"%s\"!" % sym.name, global_fileline)
+                                fileline_error("Tried executing non-function symbol \"%s\"!" % possible_syms[0].name, fileline)
+                            print("Start of regular function called from \"%s\" (%s:%s)" % (funcstate.function.name, funcstate.function.filename, funcstate.function.line_num + 1))                            
                             subroutine_return_regs = run_analyzer_from_sym(possible_syms[0], funcstate.regs)
+                            print("End of regular function called from \"%s\" (%s:%s)" % (funcstate.function.name, funcstate.function.filename, funcstate.function.line_num + 1))
+                            #print("return regs: %s" % subroutine_return_regs)
                     else:
-                        fileline_error("Tried executing function but there was none!", global_fileline)
+                        fileline_error("Tried executing function but there was none!", fileline)
 
                     funcstate.set_registers(subroutine_return_regs)
-                    src_file.line_num = funcstate.regs["pc"].data.ref.line_num
+                    src_file.line_num = funcstate.regs["pc"].data.ref.line_num - 1
                 elif funcstate.uncond_branch != "":
+                    print("uncond branch: %s" % funcstate.uncond_branch)
                     if funcstate.uncond_branch in funcstate.found_labels:
                         # TODO: potential for loop detection here
                         funcstate.uncond_branch = ""
                         break
             else:
-                fileline_error("Unknown directive \"%s\"!" % line, global_fileline)
+                fileline_error("Unknown directive \"%s\"!" % line, fileline)
 
         # now check if we have any conditional labels left
-        for cond_branch in funcstate.cond_branches:
-            if cond_branch not in funcstate.found_labels:
-                cond_branch_info = funcstate.cond_branches[cond_branch]
+        for cond_branch_info in funcstate.cond_branches:
+            if cond_branch_info.branch_name not in funcstate.found_labels:
+                #print("found labels: %s\nbranch name: %s" % (funcstate.found_labels, cond_branch_info.branch_name))
                 funcstate.set_registers(cond_branch_info.registers)
-                src_file.line_num = cond_branch_info.line_num
+                src_file.line_num = parser.find_label_line_num(cond_branch_info.branch_name, funcstate)
                 break
         else:
             if return_regs is not None:
-                # return_regs["pc"].append(RegisterInfo(copy.deepcopy(return_pc), global_fileline))
+                #print("about to return regs: %s" % return_regs)
+                # return_regs["pc"].append(RegisterInfo(copy.deepcopy(return_pc), fileline))
                 break
             else:
-                fileline_error("Did not find a return point in function!", global_fileline)
+                fileline_error("Did not find a return point in function!", fileline)
 
+    print("funcend: base stack offset: %s, function: %s (%s:%s)" % (base_stack_offset, funcstate.function.name, funcstate.function.filename, funcstate.function.line_num + 1))
     return return_regs
 
 def read_jumptable(jumptable):
@@ -220,10 +259,6 @@ def read_jumptable(jumptable):
     ----------
     jumptable : str
         The label of the jumptable.
-    scanned_files : dict
-        Base object containing the contents of all files, each using their filename as the key.
-    input_file : str, optional
-        Only search for the jumptable in this file.
 
     Raises
     ------
@@ -234,12 +269,18 @@ def read_jumptable(jumptable):
     found_jumptable = False
 
     src_file = parser.find_and_position_at_nonlocal_label(jumptable)
-    print("line: %s" % src_file.cur_line)
-    words = parse_word_directives(src_file)
-    print("words: %s" % words)
+    #print("line: %s" % src_file.cur_line)
+    words = parser.parse_word_directives(src_file)
+    #print("words: %s" % words)
     registers = RegisterState()
     fileline = FileLine(src_file.filename, src_file.line_num)
-    registers["r5"].append(RegisterInfo(datatypes.BattleObject(), fileline))
-    registers["lr"].append(RegisterInfo(ProgramCounter("asm00_1.s", 99), fileline))
-    registers["sp"].append(RegisterInfo(datatypes.Stack(), fileline))
-    run_analyzer(words[0], registers)
+    registers["r4"].append(RegisterInfo(datatypes.Primitive(Size.BYTE).wrap(), fileline))
+    registers["r5"].append(RegisterInfo(datatypes.BattleObject().wrap(), fileline))
+    registers["r6"].append(RegisterInfo(datatypes.RAMPointer().wrap(), fileline))
+    registers["r7"].append(RegisterInfo(datatypes.BattleObject(-0x10).wrap(), fileline))
+    registers["r10"].append(RegisterInfo(datatypes.RAMPointer().wrap(), fileline))
+    registers["lr"].append(RegisterInfo(datatypes.ProgramCounter("asm00_1.s", 99).wrap(), fileline))
+    registers["sp"].append(RegisterInfo(datatypes.Stack().wrap(), fileline))
+    opcodes.bl_opcode.append_callback(opcodes.check_spawn_battle_object)
+    print("function: %s" % parser.strip_plus1(words[0]))
+    run_analyzer_from_label(parser.strip_plus1(words[0]), registers)

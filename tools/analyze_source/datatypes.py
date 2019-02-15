@@ -1,3 +1,31 @@
+from enum import Enum
+from abc import ABC, abstractmethod
+import functools
+import math
+import numbers
+
+import parser
+import readelf
+from analyze_source import *
+
+"""
+from analyze_source import *
+import analyzer
+import opcodes
+import parser
+import readelf
+import scanner
+"""
+
+syms = {}
+scanned_files = {}
+
+def set_syms_and_scanned_files(_syms, _scanned_files):
+    global syms
+    global scanned_files
+    syms = _syms
+    scanned_files = _scanned_files
+
 ROM_END = 0x87FB2F4
 
 class Size(Enum):
@@ -51,6 +79,10 @@ class DataType(ABC):
     def wrap(self):
         return DataTypeContainer(self)
 
+    @property
+    def ref(self):
+        global_fileline_error("\"%s\" object should not exist here, check code for missing wrap()!" % type(self).__name__)
+
 class UnknownDataType(DataType):
     def __init__(self):
         super().__init__()
@@ -67,9 +99,11 @@ class Primitive(DataType):
     new_byte = None
     new_hword = None
     new_word = None
-    def __init__(self, size=Size.UNKNOWN, value=NaN):
+    def __init__(self, size=Size.UNKNOWN, value=None):
         super().__init__()
         self._size = size
+        if value is None:
+            value = NaN
         self._value = value
 
     @property
@@ -93,11 +127,11 @@ Primitive.new_hword = functools.partial(Primitive, Size.HWORD)
 Primitive.new_word = functools.partial(Primitive, Size.WORD)
 
 class Pointer(DataType):
-    null_sym = SymInfo(value=NaN, scope="l", debug=" ", type=" ", section="*UND*", name="null", filename="dummy", line_num=0)
+    null_sym = readelf.SymInfo(value=NaN, scope="l", debug=" ", type=" ", section="*UND*", name="null", filename="dummy", line_num=0)
     def __init__(self, offset=0, possible_syms=None):
         super().__init__()
         if not possible_syms:
-            possible_syms = [null_sym]
+            possible_syms = [Pointer.null_sym]
         elif not isinstance(possible_syms, list):
             possible_syms = [possible_syms]
         self._possible_syms = possible_syms
@@ -115,19 +149,23 @@ class Pointer(DataType):
     def store(self, datatype, size, offset=0):
         pass
 
-    @abstractmethod
-    def execute(self, funcstate):
-        pass
-
     def add_offset(self, offset):
-        self.offset += offset
+        # if not isinstance(self.offset, numbers.Number):
+        #     global_fileline_error("Trying to add variable of type \"%s\" to pointer!" % type(self.offset).__name__)
+        
+        self.offset = self.offset + offset
 
     @property
     def offset(self):
+        if isinstance(self._offset, readelf.SymInfo):
+            global_fileline_error("Pointer offset is somehow SymInfo!")
         return self._offset
 
     @offset.setter
     def offset(self, offset):
+        # if isinstance(offset, readelf.SymInfo):
+        #     global_fileline_error("Pointer offset assigned with type \"%s\"!" % type(offset).__name__)
+        
         self._offset = offset
 
     @property
@@ -140,7 +178,7 @@ class Pointer(DataType):
     
 class UnkPointer(Pointer):
     def __init__(self):
-        super().__init__(self)
+        super().__init__()
 
     # TODO mark offsets
     def load(self, size, offset=0):
@@ -155,7 +193,7 @@ class UnkPointer(Pointer):
     
 class RAMPointer(Pointer):
     def __init__(self, offset=0, possible_syms=None):
-        super().__init__(self, offset, possible_syms)
+        super().__init__(offset, possible_syms)
 
     # TODO mark offsets
     def load(self, size, offset=0):
@@ -167,8 +205,7 @@ class RAMPointer(Pointer):
 
 class ROMPointer(Pointer):
     def __init__(self, possible_syms=None):
-        super().__init__(self, 0, possible_syms)
-        self.possible_syms = possible_syms
+        super().__init__(0, possible_syms)
 
     def load(self, size, offset=0):
         global syms
@@ -182,15 +219,16 @@ class ROMPointer(Pointer):
             if possible_sym.section == "*UND*":
                 return new_unk_datatype_from_size(size)
             elif possible_sym.type == "F":
-                global_fileline_error("Cannot read from a function!")
+                global_fileline_error("Cannot read from a function! (function: %s)" % possible_sym.name)
 
-            words = try_parse_word_directives_from_sym(self.sym)
+            words = parser.try_parse_word_directives_from_sym(possible_sym)
             if len(words) == 0:
                 return new_unk_datatype_from_size(size)
             
             # assume that the elements of the pointer table have the same attributes
             # so we only check one non-ambiguous element here
             for word in words:
+                word = parser.strip_plus1(word)
                 if word in syms:
                     if syms[word].section == "*ABS*":
                         return new_unk_datatype_from_size(size)
@@ -294,34 +332,27 @@ class Struct(Pointer):
     def load(self, size, offset=0):
         total_offset = offset + self.offset
         if math.isnan(total_offset):
-            raise NotImplementedError("Context information: pointer deref with NaN offset")
+            raise NotImplementedError("Context information: struct load with NaN offset")
         struct_field_action = self.get_struct_offset_action(total_offset, size)
         return struct_field_action.load(self, size)
+
+    def store(self, datatype, size, offset=0):
+        total_offset = offset + self.offset
+        if math.isnan(total_offset):
+            raise NotImplementedError("Context information: struct store with NaN offset")
+        struct_field_action = self.get_struct_offset_action(total_offset, size)
+        struct_field_action.store(self, datatype, size)
 
     @abstractmethod
     def get_struct_offset_action(self, offset, size):
         pass
 
-    # @property
-    # @abstractmethod
-    # def struct_size(self):
-    #    pass
-
-    @staticmethod
-    def process_struct_data(unprocessed_struct_info):
-        cur_offset = unprocessed_struct_info.start_offset
-        for struct_field in unprocessed_struct_info.struct_fields:
-            
-class UnkStruct(Struct):
-    def __init__(self, offset=0)
-        super().__init__(offset)
-
 class StructField:
     __slots__ = ("offset_name", "memory")
-    def __init__(self, memory):
+    def __init__(self, offset_name, memory):
         self.offset_name = offset_name
         self.memory = memory
-
+"""
 class StructEntry:
     __slots__ = ("offset_name", "read_action", "write_action", "size")
     def __init__(self, offset_name, memory, size=0):
@@ -334,6 +365,7 @@ class StructInfo:
         self.struct_prefix = struct_prefix
         self.start_offset = start_offset
         self.struct_fields = struct_fields
+"""
 
 class Memory(ABC):
     def __init__(self):
@@ -350,16 +382,16 @@ class Memory(ABC):
 # Does not carry state or provide struct and size args.
 class AnonMemory(Memory):
     __slots__ = ("read_action", "write_action")
-    dummy_func = lambda x, y, z: None
+    dummy_func = lambda x: None
     def __init__(self, read_action, write_action=dummy_func):
         super().__init__()
         self.read_action = read_action
         self.write_action = write_action
     
     def load(self, struct, size):
-        return self.read_action()
+        return self.read_action().wrap()
 
-    def write(self, struct, datatype, size):
+    def store(self, struct, datatype, size):
         self.write_action(datatype)
 
 class UnkMemory(Memory):
@@ -369,7 +401,7 @@ class UnkMemory(Memory):
     def load(self, struct, size):
         return new_unk_datatype_from_size(size)
 
-    def write(self, struct, datatype, size):
+    def store(self, struct, datatype, size):
         pass
 
 class UnkPrimitiveMemory(Memory):
@@ -377,15 +409,15 @@ class UnkPrimitiveMemory(Memory):
         super().__init__()
     
     def load(self, struct, size):
-        return Primitive(size)
+        return Primitive(size).wrap()
 
-    def write(self, struct, datatype, size):
+    def store(self, struct, datatype, size):
         pass
 
 class BattleObject(Struct):
     def __init__(self, offset=0):
-        super().__init__(self, offset)
-        self.basic_struct_fields = generate_basic_struct_fields()
+        super().__init__(offset)
+        self.basic_struct_fields = BattleObject.generate_basic_struct_fields()
 
     @staticmethod
     def generate_basic_struct_fields():
@@ -394,7 +426,7 @@ class BattleObject(Struct):
                 -0x0c: {Size.WORD: StructField("_LinkedList_Next", AnonMemory(functools.partial(BattleObject, -0x10)))},
                 0x0: {Size.BYTE: StructField("_Flags", UnkPrimitiveMemory())},
                 0x1: {Size.BYTE: StructField("_Index", UnkPrimitiveMemory())},
-                0x2: {Size.BYTE: StructField("_TypeAndSpriteOffset", AnonMemory(functools.partial(Primitive, Size.BYTE, 0x91))},
+                0x2: {Size.BYTE: StructField("_TypeAndSpriteOffset", AnonMemory(functools.partial(Primitive, Size.BYTE, 0x91)))},
                 0x3: {Size.BYTE: StructField("_ListIndex", UnkPrimitiveMemory())},
                 0x4: {Size.WORD: StructField("_Params", UnkPrimitiveMemory()),
                       Size.DEFAULT: StructField("_Param1", UnkPrimitiveMemory())},
@@ -415,7 +447,8 @@ class BattleObject(Struct):
                 0x13: {Size.BYTE: StructField("_PanelY", UnkPrimitiveMemory())},
                 0x14: {Size.BYTE: StructField("_FuturePanelX", UnkPrimitiveMemory())},
                 0x15: {Size.BYTE: StructField("_FuturePanelY", UnkPrimitiveMemory())},
-                0x16: {Size.BYTE: StructField("_Alliance", UnkPrimitiveMemory())},
+                0x16: {Size.BYTE: StructField("_Alliance", UnkPrimitiveMemory()),
+                       Size.HWORD: StructField("_AllianceAndDirectionFlip", UnkPrimitiveMemory())},
                 0x17: {Size.BYTE: StructField("_DirectionFlip", UnkPrimitiveMemory())},
                 0x18: {Size.BYTE: StructField("_PreventAnim", UnkPrimitiveMemory())},
                 0x19: {Size.BYTE: StructField("_Unk_19", UnkPrimitiveMemory())},
@@ -431,7 +464,8 @@ class BattleObject(Struct):
                 0x26: {Size.HWORD: StructField("_MaxHP", UnkPrimitiveMemory())},
                 0x28: {Size.HWORD: StructField("_NameID", UnkPrimitiveMemory())},
                 0x2a: {Size.HWORD: StructField("_Chip", UnkPrimitiveMemory())},
-                0x2c: {Size.HWORD: StructField("_Damage", UnkPrimitiveMemory())},
+                0x2c: {Size.HWORD: StructField("_Damage", UnkPrimitiveMemory()),
+                       Size.WORD: StructField("_DamageAndStaminaDamageCounterDisabler", UnkPrimitiveMemory())},
                 0x2e: {Size.HWORD: StructField("_StaminaDamageCounterDisabler", UnkPrimitiveMemory())},
                 0x30: {Size.HWORD: StructField("_Unk_30", UnkPrimitiveMemory())},
                 0x32: {Size.HWORD: StructField("_Unk_32", UnkPrimitiveMemory())},
@@ -443,29 +477,21 @@ class BattleObject(Struct):
                 0x48: {Size.WORD: StructField("_ZVelocity", UnkPrimitiveMemory())},
                 0x4c: {Size.WORD: StructField("_RelatedObject1Ptr", AnonMemory(BattleObject))},
                 0x50: {Size.WORD: StructField("_RelatedObject2Ptr", AnonMemory(BattleObject))},
-                0x54: {Size.WORD: StructField("_CollisionDataPtr", AnonMemory(UnkPointer))},
-                0x58: {Size.WORD: StructField("_AIPtr", AnonMemory(UnkPointer))},
-                0x5c: {Size.WORD: StructField("_Unk_5c", UnkPrimitiveMemory())},
-                0x60: {Size.WORD: StructField("_ExtraVars", AnonMemory(UnknownDataType))},
-                0x64: {Size.WORD: StructField("_ExtraVars+4", AnonMemory(UnknownDataType))},
-                0x68: {Size.WORD: StructField("_ExtraVars+8", AnonMemory(UnknownDataType))},
-                0x6c: {Size.WORD: StructField("_ExtraVars+0xc", AnonMemory(UnknownDataType))},
-                0x70: {Size.WORD: StructField("_ExtraVars+0x10", AnonMemory(UnknownDataType))},
-                0x74: {Size.WORD: StructField("_ExtraVars+0x14", AnonMemory(UnknownDataType))},
-                0x78: {Size.WORD: StructField("_ExtraVars+0x18", AnonMemory(UnknownDataType))},
-                0x7c: {Size.WORD: StructField("_ExtraVars+0x1c", AnonMemory(UnknownDataType))},
-                0x80: {Size.WORD: StructField("_ExtraVars+0x20", AnonMemory(UnknownDataType))},
-                0x84: {Size.WORD: StructField("_ExtraVars+0x24", AnonMemory(UnknownDataType))},
-                0x88: {Size.WORD: StructField("_ExtraVars+0x28", AnonMemory(UnknownDataType))}
+                0x54: {Size.WORD: StructField("_CollisionDataPtr", AnonMemory(RAMPointer))},
+                0x58: {Size.WORD: StructField("_AIPtr", AnonMemory(RAMPointer))},
+                0x5c: {Size.WORD: StructField("_Unk_5c", UnkPrimitiveMemory())}
+                # 0x60: {Size.WORD: StructField("_ExtraVars", AnonMemory(UnknownDataType))},
+                # 0x64: {Size.WORD: StructField("_ExtraVars+4", AnonMemory(UnknownDataType))},
+                # 0x68: {Size.WORD: StructField("_ExtraVars+8", AnonMemory(UnknownDataType))},
+                # 0x6c: {Size.WORD: StructField("_ExtraVars+0xc", AnonMemory(UnknownDataType))},
+                # 0x70: {Size.WORD: StructField("_ExtraVars+0x10", AnonMemory(UnknownDataType))},
+                # 0x74: {Size.WORD: StructField("_ExtraVars+0x14", AnonMemory(UnknownDataType))},
+                # 0x78: {Size.WORD: StructField("_ExtraVars+0x18", AnonMemory(UnknownDataType))},
+                # 0x7c: {Size.WORD: StructField("_ExtraVars+0x1c", AnonMemory(UnknownDataType))},
+                # 0x80: {Size.WORD: StructField("_ExtraVars+0x20", AnonMemory(UnknownDataType))},
+                # 0x84: {Size.WORD: StructField("_ExtraVars+0x24", AnonMemory(UnknownDataType))},
+                # 0x88: {Size.WORD: StructField("_ExtraVars+0x28", AnonMemory(UnknownDataType))}
             }
-    
-    @abstractmethod
-    def get_type_and_sprite_offset(self):
-        pass
-
-    @abstractmethod
-    def get_sprite_data_offset(self):
-        pass
 
     def get_struct_offset_action(self, offset, size):
         if offset in self.basic_struct_fields:
@@ -476,6 +502,8 @@ class BattleObject(Struct):
                 return struct_field_possible_entries[Size.DEFAULT].memory
             else:
                 global_fileline_error("Did not find size \"%s\" in struct for struct offset \"%s\"!" % (size, offset))
+        elif 0x60 <= offset < 0x8c:
+            return UnkMemory()
         elif 0x90 <= offset < 0xd8:
             return UnkMemory()
         else:
@@ -490,7 +518,7 @@ class Stack(Pointer):
         total_offset = -(self.offset + offset)
         if math.isnan(total_offset):
             global_fileline_error("Stack offset is NaN!")
-        if total_offset % size != 0:
+        if total_offset % size.value != 0:
             global_fileline_error("Misaligned stack read detected (size: %s, offset=%s)!" % size, total_offset)
         return self.datatypes[(total_offset, size)]
 
@@ -499,7 +527,7 @@ class Stack(Pointer):
         total_offset = -(self.offset + offset)
         if math.isnan(total_offset):
             global_fileline_error("Stack offset is NaN!")
-        if total_offset % size != 0:
+        if total_offset % size.value != 0:
             global_fileline_error("Misaligned stack write detected (size: %s, offset=%s)!" % size, total_offset)
         self.datatypes[(total_offset, size)] = datatype
 

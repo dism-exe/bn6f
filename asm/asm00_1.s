@@ -141,6 +141,8 @@ DebugMsg_3272: .asciz "F%02x"
 	thumb_func_end RunBattleObjectLogic
 
 	thumb_local_start
+// clobbers: r0, r1, r2, r3
+// returns: r5
 SpawnBattleObjectCommon: // 8003278
 	push {r4,r6,r7,lr}
 	sub sp, sp, #4

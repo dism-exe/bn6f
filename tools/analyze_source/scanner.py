@@ -1,3 +1,13 @@
+from enum import Enum
+import re
+import pathlib
+
+import parser
+
+class LineType(Enum):
+    UNCOMMENTED = 0
+    COMMENTED = 1
+
 class SrcFile:
     def __init__(self, filename):
         self._line_num = 0
@@ -7,14 +17,18 @@ class SrcFile:
         self._filename = filename
 
     def __iter__(self):
-        return self
+        while self._line_num < len(self.lines):
+            yield self.lines[self._line_num]
+            self._line_num += 1
 
+    """
     def __next__(self):
         if self._line_num < len(self.lines):
             self._line_num += 1
             return self.lines[self._line_num - 1]
         else:
             raise StopIteration
+    """
 
     def __getitem__(self, index):
         return self.lines[index]
@@ -91,7 +105,7 @@ def recursive_scan_includes(filepath, scanned_files, syms=None, callbacks=None):
 
     with open(filepath, "r") as f:
         scanned_files[filepath] = SrcFile(filepath)
-        for line_num, line in enumerate(f, 1):
+        for line_num, line in enumerate(f):
             include_file_list = re.findall(r"\t\.include \"([^\"]+)\"", line)
             if len(include_file_list) > 1:
                 raise RuntimeError("More than one group found!")
@@ -106,17 +120,13 @@ def recursive_scan_includes(filepath, scanned_files, syms=None, callbacks=None):
                     else:
                         raise RuntimeError("Path specified by \"%s\" not found!" % include_given_pathname)
 
-                if include_real_pathname in scanned_files:
-                    continue
+                if include_real_pathname not in scanned_files:
+                    try:
+                        recursive_scan_includes(include_real_pathname, scanned_files, syms, callbacks)
+                    except IOError:
+                        raise
 
-                try:
-                    recursive_scan_includes(include_real_pathname, scanned_files)
-                except IOError:
-                    raise
-
-
-            if len(line) > 1 and line[-2] == "\r":
-                line = line[-2] + "\n"
+            line = line.rstrip("\r\n")
 
             uncommented_line = ""
             in_line_comment = False
@@ -129,7 +139,7 @@ def recursive_scan_includes(filepath, scanned_files, syms=None, callbacks=None):
                 if line_comment_index == -1:
                     uncommented_line = line
                 else:
-                    uncommented_line = line[:line_comment_index] + " " * (len(line) - line_comment_index - 1) + "\n"
+                    uncommented_line = line[:line_comment_index] + " " * (len(line) - line_comment_index - 1)
             else:
                 for char in iter_line:
                     if in_block_comment:
@@ -140,12 +150,12 @@ def recursive_scan_includes(filepath, scanned_files, syms=None, callbacks=None):
                             if char == "/":
                                 in_block_comment = False
                     elif char == "@":
-                        uncommented_line += " " * (len(line) - iter_line.index - 1) + "\n"
+                        uncommented_line += " " * (len(line) - iter_line.index - 1)
                         break
                     elif char == "/":
                         char = iter_line.next()
                         if char == "/":
-                            uncommented_line += "  " + " " * (len(line) - iter_line.index - 1) + "\n"
+                            uncommented_line += "  " + " " * (len(line) - iter_line.index - 1)
                             break
                         elif char == "*":
                             uncommented_line += "  "
@@ -154,7 +164,7 @@ def recursive_scan_includes(filepath, scanned_files, syms=None, callbacks=None):
                         uncommented_line += char
 
             if syms is not None:
-                label_name = check_and_parse_colon_label(uncommented_line)
+                label_name = parser.check_and_parse_colon_label(uncommented_line)
                 if label_name is not None:
                     syms[label_name].filename = filepath
                     syms[label_name].line_num = line_num

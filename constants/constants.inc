@@ -26,3 +26,5 @@
 	enum UNK_MYSTERY_DATA_4  // 4
 	enum GREEN_MYSTERY_DATA  // 5
 	enum UNK_MYSTERY_DATA_6  // 6
+
+	.equiv NULL, 0

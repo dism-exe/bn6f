@@ -1,6 +1,5 @@
 import os
 import re
-import pathlib
 import argparse
 import pickle
 from enum import Enum
@@ -8,23 +7,42 @@ import copy
 from collections import namedtuple
 import functools
 
+__all__ = ("NaN", "FileLine", "default_fileline", "global_fileline", "global_fileline_error", "global_fileline_msg", "fileline_error", "fileline_msg")
+
 NaN = float("nan")
-MAX_UINT32 = 2**32 - 1
-
 FileLine = namedtuple("FileLine", ("filename", "line_num"))
-class MutableFileLine:
-    __slots__ = ("filename", "line_num")
-    def __init__(self, filename, line_num):
-        self.filename = filename
-        self.line_num = line_num
-
 default_fileline = FileLine("default_fileline", 0)
 global_fileline = default_fileline
-syms = None
-scanned_files = None
+syms = {}
+scanned_files = {}
+
+class ScannedFilesAndSyms:
+    __slots__ = ("scanned_files", "syms")
+
+    def __init__(self, scanned_files, syms):
+        self.scanned_files = scanned_files
+        self.syms = syms
 
 def global_fileline_error(error_msg):
-    raise RuntimeError("%s:%s: %s" % global_fileline.filename, global_fileline.line_num + 1, error_msg)
+    raise RuntimeError("%s:%s: %s" % (global_fileline.filename, global_fileline.line_num + 1, error_msg))
+
+def global_fileline_msg(fileline_msg):
+    print("%s:%s: %s" % (global_fileline.filename, global_fileline.line_num + 1, fileline_msg))
+
+def fileline_error(error_msg, fileline):
+    raise RuntimeError("%s:%s: %s" % (fileline.filename, fileline.line_num + 1, error_msg))
+
+def fileline_msg(fileline_msg, fileline):
+    print("%s:%s: %s" % (fileline.filename, fileline.line_num + 1, fileline_msg))
+
+import analyzer
+import datatypes
+import opcodes
+import parser
+import readelf
+import scanner
+import multiprocessing
+#from datatypes import DataType
 
 def main():
     # argument parser
@@ -41,32 +59,35 @@ def main():
 
     if args.input_path is None and os.path.basename(os.getcwd()) == "analyze_source":
         os.chdir("../..")
-    else:
+    elif args.input_path is not None:
         os.chdir(args.input_path)
 
     global syms
     global scanned_files
 
-    if args.make:
-        syms = readelf.make_and_read_syms()
-    else:
-        syms = readelf.read_syms()
-
     if args.load_from_file is None:
+        if args.make:
+            syms = readelf.make_and_read_syms()
+        else:
+            syms = readelf.read_syms()
         input_files = ("rom.s", "iwram_code.s", "data.s")
         for input_file in input_files:
             scanner.recursive_scan_includes(input_file, scanned_files, syms)
+            #print(("%s" % syms)[:100])
             if args.cache is not None:
                 cur_path = os.getcwd()
                 os.chdir(output_path)
                 with open(args.cache, "wb+") as f:
-                    pickle.dump(scanned_files, f)
+                    pickle.dump(ScannedFilesAndSyms(scanned_files, syms), f, protocol=pickle.HIGHEST_PROTOCOL)
                 os.chdir(cur_path)
     else:
         cur_path = os.getcwd()
         os.chdir(output_path)
         with open(args.load_from_file, "rb") as f:
-            scanned_files = pickle.load(f)
+            scanned_files_and_syms = pickle.load(f)
+            scanned_files = scanned_files_and_syms.scanned_files
+            syms = scanned_files_and_syms.syms
+
         os.chdir(cur_path)
 
     #test_output = ""
@@ -76,8 +97,13 @@ def main():
     #with open("scanned_out_test.txt", "w+") as f:
     #    f.write(test_output)
 
+    parser.set_syms_and_scanned_files(syms, scanned_files)
+    analyzer.set_syms_and_scanned_files(syms, scanned_files)
+    opcodes.set_syms_and_scanned_files(syms, scanned_files)
+    datatypes.set_syms_and_scanned_files(syms, scanned_files)
     analyzer.read_jumptable("T1BattleObjectJumptable")
 
 if __name__ == "__main__":
+    multiprocessing.set_start_method("spawn")
     main()
 
