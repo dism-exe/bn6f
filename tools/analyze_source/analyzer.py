@@ -129,7 +129,14 @@ class RegisterState(dict):
     def __getitem__(self, key):
         if key not in RegisterState.valid_registers:
             raise KeyError(key)
+        #if key != "pc":
         return dict.__getitem__(self, key)
+        #item = dict.__getitem__(self, key)
+        #if len(item) == 0:
+        #    return item
+        #if isinstance(item.data.ref, datatypes.UnknownDataType):
+        #    global_fileline_error("pc is somehow UnknownDataType!")
+        #return item
 
     def __setitem__(self, key, val):
         if key not in RegisterState.valid_registers:
@@ -153,19 +160,32 @@ def run_analyzer_from_label(label, registers):
     funcstate = FunctionState(registers, syms[label])
     return run_analyzer_common(src_file, funcstate)
 
+# sub_801E1E4 - detected as recursive
+# sub_801E4F4 - writes to sp in a loop
+# sub_3006C8E - blatant read from invalid address
+problem_functions = set(("sub_801E1E4", "sub_801E4F4", "sub_3006C8E"))
+function_counts = {}
+
 def run_analyzer_common(src_file, funcstate):
     return_lr = funcstate.regs["lr"].data
     base_stack_offset = funcstate.regs["sp"].data.ref.offset
-    print("funcstart: base stack offset: %s, function: %s (%s:%s)" % (base_stack_offset, funcstate.function.name, funcstate.function.filename, funcstate.function.line_num + 1))
+    function_name = funcstate.function.name
+    function_filename = funcstate.function.filename
+    if function_name in function_counts:
+        function_counts[function_name] += 1
+    else:
+        function_counts[function_name] = 1
+
+    debug_print("funcstart: base stack offset: %s, function: %s (%s:%s)" % (base_stack_offset, function_name, function_filename, funcstate.function.line_num + 1))
     return_regs = None
     return_pc = None
 
     funcstate.regs["pc"].append(RegisterInfo(datatypes.ProgramCounter(src_file.filename, src_file.line_num).wrap(), FileLine(src_file.filename, src_file.line_num)))
 
     while True:
-        print("start src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
+        debug_print("start src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
         for line in src_file:
-            #print("cur src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
+            debug_print("cur src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
             funcstate.regs["pc"].data.ref.line_num = src_file.line_num
 
             pc_fileline = funcstate.regs["pc"][-1].fileline
@@ -193,19 +213,23 @@ def run_analyzer_common(src_file, funcstate):
             if opcodes.read_opcode(line, funcstate, src_file, fileline):
                 new_pc_fileline = funcstate.regs["pc"][-1].fileline
                 if new_pc_fileline.line_num != pc_fileline.line_num or new_pc_fileline.filename != pc_fileline.filename:
+                    
                     sp_datatype_ref = funcstate.regs["sp"].data.ref
                     pc_datatype_ref = funcstate.regs["pc"].data.ref
                     possible_syms = pc_datatype_ref.possible_syms
                     if len(possible_syms) > 1:
-                        #print("sp offset: %s" % sp_datatype_ref.offset)
+                        #debug_print("sp offset: %s" % sp_datatype_ref.offset)
                         if sp_datatype_ref.offset == base_stack_offset:
                             fileline_error("Tried performing jumptable at base stack offset!", fileline)
                         for sym in possible_syms:
                             if sym.type != "F":
-                                fileline_error("Tried executing non-function symbol \"%s\"!" % sym.name, fileline)
-                            print("Start of jumptable function called from \"%s\" (%s:%s)" % (funcstate.function.name, funcstate.function.filename, funcstate.function.line_num + 1))
-                            subroutine_return_regs = run_analyzer_from_sym(sym, funcstate.regs)
-                            print("End of jumptable function called from \"%s\" (%s:%s)" % (funcstate.function.name, funcstate.function.filename, funcstate.function.line_num + 1))
+                                fileline_msg("BadFunctionDefinitionWarning: Tried executing jumptable non-function symbol \"%s\"!" % sym.name, fileline)
+                            if sym.name not in problem_functions:
+                                debug_print("Start of jumptable function called from \"%s\" (%s:%s)" % (function_name, function_filename, funcstate.function.line_num + 1))
+                                subroutine_return_regs = run_analyzer_from_sym(sym, funcstate.regs)
+                                debug_print("End of jumptable function called from \"%s\" (%s:%s)" % (function_name, function_filename, funcstate.function.line_num + 1))
+                            else:
+                                debug_print("Skipped problem function \"%s\" called from \"%s\" (%s:%s)" % (sym.name, function_name, function_filename, funcstate.function.line_num + 1))
                     elif len(possible_syms) == 1:
                         if sp_datatype_ref.offset == base_stack_offset:
                             # returning from function
@@ -221,18 +245,18 @@ def run_analyzer_common(src_file, funcstate):
                                 fileline_error("Tried performing noreturn branch!", fileline)
                         else:
                             if possible_syms[0].type != "F":
-                                fileline_error("Tried executing non-function symbol \"%s\"!" % possible_syms[0].name, fileline)
-                            print("Start of regular function called from \"%s\" (%s:%s)" % (funcstate.function.name, funcstate.function.filename, funcstate.function.line_num + 1))                            
+                                fileline_msg("BadFunctionDefinitionWarning: Tried executing regular non-function symbol \"%s\"!" % possible_syms[0].name, fileline)
+                            debug_print("Start of regular function called from \"%s\" (%s:%s)" % (function_name, function_filename, funcstate.function.line_num + 1))                            
                             subroutine_return_regs = run_analyzer_from_sym(possible_syms[0], funcstate.regs)
-                            print("End of regular function called from \"%s\" (%s:%s)" % (funcstate.function.name, funcstate.function.filename, funcstate.function.line_num + 1))
-                            #print("return regs: %s" % subroutine_return_regs)
+                            debug_print("End of regular function called from \"%s\" (%s:%s)" % (function_name, function_filename, funcstate.function.line_num + 1))
+                            #debug_print("return regs: %s" % subroutine_return_regs)
                     else:
                         fileline_error("Tried executing function but there was none!", fileline)
 
                     funcstate.set_registers(subroutine_return_regs)
                     src_file.line_num = funcstate.regs["pc"].data.ref.line_num - 1
                 elif funcstate.uncond_branch != "":
-                    print("uncond branch: %s" % funcstate.uncond_branch)
+                    debug_print("uncond branch: %s" % funcstate.uncond_branch)
                     if funcstate.uncond_branch in funcstate.found_labels:
                         # TODO: potential for loop detection here
                         funcstate.uncond_branch = ""
@@ -246,20 +270,25 @@ def run_analyzer_common(src_file, funcstate):
         # now check if we have any conditional labels left
         for cond_branch_info in funcstate.cond_branches:
             if cond_branch_info.branch_name not in funcstate.found_labels:
-                #print("found labels: %s\nbranch name: %s" % (funcstate.found_labels, cond_branch_info.branch_name))
+                #debug_print("found labels: %s\nbranch name: %s" % (funcstate.found_labels, cond_branch_info.branch_name))
                 funcstate.set_registers(cond_branch_info.registers)
                 src_file.line_num = parser.find_label_line_num(cond_branch_info.branch_name, funcstate)
                 break
         else:
             if return_regs is not None:
-                #print("about to return regs: %s" % return_regs)
+                #debug_print("about to return regs: %s" % return_regs)
                 # return_regs["pc"].append(RegisterInfo(copy.deepcopy(return_pc), fileline))
                 break
             else:
                 fileline_error("Did not find a return point in function!", fileline)
 
-    print("funcend: base stack offset: %s, function: %s (%s:%s)" % (base_stack_offset, funcstate.function.name, funcstate.function.filename, funcstate.function.line_num + 1))
+    debug_print("funcend: base stack offset: %s, function: %s (%s:%s)" % (base_stack_offset, function_name, function_filename, funcstate.function.line_num + 1))
     return return_regs
+
+def check_pointer_shift_in_sprite_decompress(opcode_params, funcstate, src_file, fileline):
+    if funcstate.function.name != "sprite_decompress":
+        return True
+    return not (opcode_params[0] == "r2" and opcode_params[1] == "r2" and opcode_params[2] == "#1")
 
 def read_jumptable(jumptable):
     """
@@ -279,9 +308,9 @@ def read_jumptable(jumptable):
     found_jumptable = False
 
     src_file = parser.find_and_position_at_nonlocal_label(jumptable)
-    #print("line: %s" % src_file.cur_line)
+    #debug_print("line: %s" % src_file.cur_line)
     words = parser.parse_word_directives(src_file)
-    #print("words: %s" % words)
+    #debug_print("words: %s" % words)
     registers = RegisterState()
     fileline = FileLine(src_file.filename, src_file.line_num)
     registers["r4"].append(RegisterInfo(datatypes.Primitive(Size.BYTE).wrap(), fileline))
@@ -295,5 +324,8 @@ def read_jumptable(jumptable):
     registers["lr"].append(RegisterInfo(datatypes.ProgramCounter("asm00_1.s", 99).wrap(), fileline))
     registers["sp"].append(RegisterInfo(datatypes.Stack().wrap(), fileline))
     opcodes.bl_opcode.append_callback(opcodes.check_spawn_battle_object)
-    print("function: %s" % parser.strip_plus1(words[0]))
+    opcodes.ble_opcode.append_callback(opcodes.check_loc_80EE4F0)
+    opcodes.lsl_imm_opcode.append_callback(check_pointer_shift_in_sprite_decompress)
+    opcodes.lsr_imm_opcode.append_callback(check_pointer_shift_in_sprite_decompress)
+    debug_print("function: %s" % parser.strip_plus1(words[0]))
     run_analyzer_from_label(parser.strip_plus1(words[0]), registers)

@@ -70,9 +70,9 @@
 // .global sub_3006F24
 // .global sub_3006F42
 // .global sub_3006F48
-// .global byte_3006F5D
-// .global dword_3006F71
-// .global byte_3006F75
+// .global sub_3006F5C
+// .global sub_3006F70
+// .global sub_3006F74
 
 	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void

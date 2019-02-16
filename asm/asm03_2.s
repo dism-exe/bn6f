@@ -174,7 +174,7 @@ byte_80460BC: .byte 0xB8, 0xE2, 0x0, 0x0, 0x0, 0x0, 0x0, 0xFF, 0xB0, 0xE0, 0x0, 
 off_80460F4: .word sub_3006C38+1
 	.word sub_804634C+1
 	.word sub_3006F42+1
-	.word byte_3006F75
+	.word sub_3006F74
 	.word sub_8046356+1
 	.word sub_3006C8E+1
 	.word 0x0
@@ -187,8 +187,8 @@ off_80460F4: .word sub_3006C38+1
 	.word sub_80463A0+1
 	.word 0x0
 	.word 0x0
-	.word byte_3006F5D
-	.word dword_3006F71
+	.word sub_3006F5C
+	.word sub_3006F70
 	.word 0x0
 	.word 0x0
 	.word 0x0

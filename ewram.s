@@ -2,7 +2,9 @@
 
 	.section ewram_2000000
 
-timer_2000000:: // 0x2000000
+// temporarily making this as a constant to
+// make detecting fake instances of this easier
+// timer_2000000:: // 0x2000000
 	.space 96
 dword_2000060:: // 0x2000060
 	.space 16

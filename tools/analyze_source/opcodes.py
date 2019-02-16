@@ -38,9 +38,6 @@ rlist_regex = re.compile(r"^({[^}]+})$")
 rb_excl_rlist_regex = re.compile(r"^(r[0-7])!, *({[^}]+})$")
 label_or_imm_regex = re.compile(r"^(.+)$")
 
-RAM_SECTIONS_SYMBOLS = set(("ewram_2000000", "ewram_t4_battle_objects", "ewram_2036860", "ewram_2038170", "iwram"))
-HARDWARE_CONSTANTS = set(("LCDControl", "VerticalCounter_LY_", "BG0Control", "Window0HorizontalDimensions", "MosaicSize", "ColorSpecialEffectsSelection", "Brightness_Fade_In_Out_Coefficient", "DMA0SourceAddress", "DMA0WordCount", "DMA1SourceAddress", "DMA1WordCount", "DMA2SourceAddress", "DMA2WordCount", "DMA3SourceAddress", "DMA3WordCount", "BG1X_Offset", "Undocumented_GreenSwap", "InterruptEnableRegister", "BG2Rotation_ScalingParameterA_dx_", "Channel1Sweepregister_NR10_", "Channel1Duty_Length_Envelope_NR11_NR12_", "Channel1Frequency_Control_NR13_NR14_", "Channel2Duty_Length_Envelope_NR21_NR22_", "Channel2Frequency_Control_NR23_NR24_", "Channel3Stop_WaveRAMselect_NR30_", "Channel3Length_Volume_NR31_NR32_", "Channel3Frequency_Control_NR33_NR34_", "Channel4Length_Envelope_NR41_NR42_", "Channel4Frequency_Control_NR43_NR44_", "ControlStereo_Volume_Enable_NR50_NR51_", "ControlMixing_DMAControl", "ControlSoundon_off_NR52_", "SoundPWMControl", "Channel3WavePatternRAM_2banks___", "dword_4000094", "dword_4000098", "dword_400009C", "ChannelAFIFO_Data0_3", "ChannelBFIFO_Data0_3", "DMA1DestinationAddress", "DMA1Control", "DMA2DestinationAddress", "DMA2Control", "DMA3DestinationAddress", "Timer0Counter_Reload", "Timer0Control", "Timer2Counter_Reload", "Timer2Control", "Timer3Counter_Reload", "Timer3Control", "SIOData0_Parent__Multi_PlayerMode_", "SIOData2_2ndChild__Multi_PlayerMode_", "SIOControlRegister", "SIOData_Normal_8bitandUARTMode_", "SIOModeSelect_GeneralPurposeData", "InterruptRequestFlags_IRQAcknowledge", "GamePakWaitstateControl", "InterruptMasterEnableRegister", "DMA0DestinationAddress", "GeneralLCDStatus_STAT_LYC_", "KeyStatus", "KeyInterruptControl", "unk_4000190", "unk_400020C"))
-
 def set_syms_and_scanned_files(_syms, _scanned_files):
     global syms
     global scanned_files
@@ -56,9 +53,6 @@ def assert_valid_datatypes(datatype1, datatype2, fileline):
     if not ((datatype1.type == DataType.UNKNOWN or datatype1.type == DataType.PRIMITIVE or datatype1.type == DataType.POINTER) and (datatype2.type == DataType.UNKNOWN or datatype2.type == DataType.PRIMITIVE or datatype2.type == DataType.POINTER)):
         fileline_error("Invalid DataType constant found! (1: %s, 2: %s)" % (datatype1.type, datatype2.type), fileline)
     return
-
-def print_fileline_msg(message, fileline):
-    print("%s:%s: %s" % fileline.filename, fileline.line_num, error_msg)
 
 def evaluate_reg_or_imm_require_primitive(registers, reg_or_imm, fileline):
     if reg_or_imm.startswith("#"):
@@ -90,6 +84,7 @@ def evaluate_data(data, fileline):
     global syms
 
     if data == "":
+        fileline_msg("EmptyDataWarning: evaluating empty string as Unknown Primitive.")
         return datatypes.Primitive(Size.UNKNOWN).wrap()
 
     try:
@@ -182,8 +177,12 @@ def do_double_arg_numeric_operation(registers, dest_reg, source_reg, callback, f
 
 def do_triple_arg_numeric_operation(registers, dest_reg, source_reg, operand_reg_or_imm, callback, fileline):
     source_datatype = registers[source_reg].data
+
     if source_datatype.type == DataType.UNKNOWN:
         source_datatype.ref = datatypes.Primitive(Size.WORD)
+    #elif source_datatype.type == DataType.PRIMITIVE:
+    #    if source_datatype.ref.sym.name == "LCDControl" or source_datatype.ref.sym.name == "timer_2000000":
+    #        fileline_msg("FakePointerWarning: Fake pointer \"%s\" being used in numeric operation!" % source_datatype.ref.sym.name)
     elif source_datatype.type == DataType.POINTER:
         fileline_error("Tried performing numeric operation on pointer!", fileline)
 
@@ -216,7 +215,7 @@ def add_rhd_rhs_opcode_function(opcode_params, funcstate, src_file, fileline):
     return True
 
 def add_rd_sp_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
-    immediate_value = evaluate_imm_sym_or_num_error_if_undefined(opcode_params[2], fileline)
+    immediate_value = evaluate_imm_sym_or_num_error_if_undefined(opcode_params[1], fileline)
     new_sp = copy.deepcopy(funcstate.regs["sp"].data)
     new_sp.ref.add_offset(immediate_value)
     funcstate.regs[opcode_params[0]].append(analyzer.RegisterInfo(new_sp, fileline))
@@ -274,8 +273,8 @@ def cmp_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
     assert_valid_datatype(dest_datatype, fileline)
 
     if dest_datatype.type == DataType.UNKNOWN:
-        if funcstate.function.name == "sub_80C9EE6" and evaluate_imm_sym_or_num_error_if_undefined(opcode_params[1], fileline) == 0:
-            pass
+        if opcode_params[1] == "#NULL":
+            dest_datatype.ref = datatypes.UnkPointer()
         else:
             dest_datatype.ref = datatypes.Primitive(Size.WORD)
     elif dest_datatype.type == DataType.POINTER:
@@ -360,6 +359,8 @@ def mvn_opcode_function(opcode_params, funcstate, src_file, fileline):
     return True
 
 def bx_opcode_function(opcode_params, funcstate, src_file, fileline):
+    #if funcstate.function.name == "sub_3006B94":
+    #    debug_print("sub_3006B94: r7 jumptable type: %s, r1 function type: %s" % (type(funcstate.regs["r7"].data.ref).__name__, type(funcstate.regs["r1"].data.ref).__name__))
     bx_reg = copy.deepcopy(funcstate.regs[opcode_params].data)
     funcstate.regs["pc"].append(analyzer.RegisterInfo(bx_reg, fileline))
     return True
@@ -461,10 +462,10 @@ def push_opcode_function(opcode_params, funcstate, src_file, fileline):
     new_sp_reg = copy.deepcopy(funcstate.regs["sp"].data)
 
     for reg_name in reversed(reglist):
-        new_sp_reg.ref.add_offset(-(Size.WORD.value))
+        new_sp_reg.ref.add_offset(-Size.WORD.value)
         push_datatype = copy.deepcopy(funcstate.regs[reg_name].data)
-        print("push reg: %s, datatype: %s" % (reg_name, type(push_datatype.ref).__name__))
-        new_sp_reg.ref.store(push_datatype)
+        debug_print("push reg: %s, datatype: %s" % (reg_name, type(push_datatype.ref).__name__))
+        new_sp_reg.ref.store(push_datatype, Size.WORD, fileline)
 
     funcstate.regs["sp"].append(analyzer.RegisterInfo(new_sp_reg, fileline))
     return True
@@ -474,8 +475,8 @@ def pop_opcode_function(opcode_params, funcstate, src_file, fileline):
     new_sp_reg = copy.deepcopy(funcstate.regs["sp"].data)
 
     for reg_name in reglist:
-        pop_datatype = copy.deepcopy(new_sp_reg.ref.load())
-        print("pop reg: %s, datatype: %s" % (reg_name, type(pop_datatype.ref).__name__))
+        pop_datatype = copy.deepcopy(new_sp_reg.ref.load(Size.WORD, fileline))
+        debug_print("pop reg: %s, datatype: %s" % (reg_name, type(pop_datatype.ref).__name__))
         funcstate.regs[reg_name].append(analyzer.RegisterInfo(pop_datatype, fileline))
         new_sp_reg.ref.add_offset(Size.WORD.value)
 
@@ -488,7 +489,7 @@ def stmia_opcode_function(opcode_params, funcstate, src_file, fileline):
 
     for reg_name in reglist:
         store_datatype = copy.deepcopy(funcstate.regs[reg_name].data)
-        store_src_datatype.ref.store(store_datatype, Size.WORD)
+        store_src_datatype.ref.store(store_datatype, Size.WORD, fileline)
         store_src_datatype.ref.add_offset(Size.WORD.value)
 
     funcstate.regs[opcode_params[0]].append(analyzer.RegisterInfo(store_src_datatype, fileline))
@@ -499,7 +500,7 @@ def ldmia_opcode_function(opcode_params, funcstate, src_file, fileline):
     load_src_datatype = copy.deepcopy(funcstate.regs[opcode_params[0]].data)
 
     for reg_name in reglist:
-        load_datatype = copy.deepcopy(load_src_datatype.ref.load(Size.WORD))
+        load_datatype = copy.deepcopy(load_src_datatype.ref.load(Size.WORD, fileline))
         funcstate.regs[reg_name].append(analyzer.RegisterInfo(load_datatype, fileline))
         load_src_datatype.ref.add_offset(Size.WORD.value)
 
@@ -557,6 +558,12 @@ def blt_opcode_function(opcode_params, funcstate, src_file, fileline):
 def bgt_opcode_function(opcode_params, funcstate, src_file, fileline):
     funcstate.cond_branches.append(analyzer.CondBranchInfo(opcode_params, funcstate.regs))
     return True
+
+def check_loc_80EE4F0(opcode_params, funcstate, src_file, fileline):
+    if opcode_params != "loc_80EE4F0":
+        return True
+    funcstate.uncond_branch = opcode_params
+    return False
 
 def ble_opcode_function(opcode_params, funcstate, src_file, fileline):
     funcstate.cond_branches.append(analyzer.CondBranchInfo(opcode_params, funcstate.regs))
@@ -622,7 +629,7 @@ def b_opcode_function(opcode_params, funcstate, src_file, fileline):
     funcstate.uncond_branch = opcode_params
     return True
 
-spawn_battle_object_function_names = set(("object_spawnType1", "object_spawnType3", "object_spawnType4"))
+spawn_battle_object_function_names = set(("object_spawnType1", "object_spawnType3", "object_spawnType4", "sub_8003374", "sub_80033E4"))
 RegNameAndSize = namedtuple("RegNameAndSize", ("regname", "size"))
 spawn_battle_object_numeric_reg_name_and_sizes = (
     RegNameAndSize("r0", Size.BYTE),
@@ -643,7 +650,7 @@ def check_spawn_battle_object(opcode_params, funcstate, src_file, fileline):
             if reg_datatype.type == DataType.UNKNOWN:
                 reg_datatype.ref = datatypes.Primitive(spawn_battle_object_numeric_reg_name_and_size.size)
             elif reg_datatype.type == DataType.POINTER:
-                fileline_msg("Warning: %s is pointer for Battle Object Spawn function!" % spawn_battle_object_numeric_reg_name_and_size.regname, fileline)
+                fileline_msg("BattleObjectSpawnWarning: %s is pointer for Battle Object Spawn function!" % spawn_battle_object_numeric_reg_name_and_size.regname, fileline)
             funcstate.regs[spawn_battle_object_numeric_reg_name_and_size.regname].append(analyzer.RegisterInfo(datatypes.Primitive().wrap(), fileline))
 
         funcstate.regs["r5"].append(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
@@ -654,13 +661,13 @@ def check_spawn_battle_object(opcode_params, funcstate, src_file, fileline):
         fileline_msg("Called special function \"%s\"." % opcode_params, fileline)
         return False
     #else:
-    #    print("not object spawn function: %s" % bl_sym.name)
+    #    debug_print("not object spawn function: %s" % bl_sym.name)
 
     return True
 
 def bl_opcode_function(opcode_params, funcstate, src_file, fileline):
     new_lr_reg = datatypes.ProgramCounter(src_file.filename, parser.get_line_num_at_num_directives_ahead(src_file, 1)).wrap()
-    print("bl: this line num: %s, next line num: %s" % (fileline.line_num + 1, new_lr_reg.ref.line_num + 1))
+    debug_print("bl: this line num: %s, next line num: %s" % (fileline.line_num + 1, new_lr_reg.ref.line_num + 1))
     funcstate.regs["lr"].append(analyzer.RegisterInfo(new_lr_reg, fileline))
 
     try:
@@ -951,7 +958,7 @@ def get_datatypes_for_triple_arg_operation(registers, source_reg, operand_reg_or
     # elif operand_reg_or_imm != "" and not operand_reg_or_imm.startswith("#"):
         # if registers[operand_reg_or_imm].data.type == DataType.POINTER and isinstance(registers[operand_reg_or_imm].data.ref.offset, readelf.SymInfo):
             # fileline_error("Offset is somehow SymInfo! reg: %s (%s:%s)" % (operand_reg_or_imm, registers[operand_reg_or_imm].fileline.filename, registers[operand_reg_or_imm].fileline.line_num))
-    #print("reg or imm: \"%s\"" % operand_reg_or_imm)
+    #debug_print("reg or imm: \"%s\"" % operand_reg_or_imm)
     if operand_reg_or_imm == "":
         operand_reg_or_imm = "#0"
 
@@ -983,18 +990,18 @@ def load_from_datatypes(source_datatype, operand_datatype, size, fileline):
 
     if datatype_weak.type == DataType.UNKNOWN:
         if datatype_strong.type == DataType.UNKNOWN:
-            return new_unk_datatype_from_size(size)
+            return datatypes.new_unk_datatype_from_size(size)
         elif datatype_strong.type == DataType.PRIMITIVE:
             datatype_weak.ref = datatypes.UnkPointer()
-            return datatype_weak.ref.load(datatype_strong.ref.value, size)
+            return datatype_weak.ref.load(size, fileline, datatype_strong.ref.value)
         elif datatype_strong.type == DataType.POINTER:
             datatype_weak.ref = datatypes.Primitive(Size.WORD)
-            return datatype_strong.ref.load(NaN, size)
+            return datatype_strong.ref.load(size, fileline, NaN)
     elif datatype_weak.type == DataType.PRIMITIVE:
         if datatype_strong.type == DataType.PRIMITIVE:
             fileline_error("Impossible load operation found! (load [num, num])", fileline)
         elif datatype_strong.type == DataType.POINTER:
-            return datatype_strong.ref.load(size, datatype_weak.ref.value)
+            return datatype_strong.ref.load(size, fileline, datatype_weak.ref.value)
     elif datatype_weak == DataType.POINTER and datatype_strong == DataType.POINTER:
         fileline_error("Impossible load operation found! (load [pointer, pointer])", fileline)
 
@@ -1006,18 +1013,18 @@ def store_to_datatypes(dest_datatype, source_datatype, operand_datatype, size, f
 
     if datatype_weak.type == DataType.UNKNOWN:
         if datatype_strong.type == DataType.UNKNOWN:
-            print_fileline_msg("Context information: store [unk, unk]", fileline)
+            fileline_msg("Context information: store [unk, unk]", fileline)
         elif datatype_strong.type == DataType.PRIMITIVE:
             datatype_weak.ref = datatypes.UnkPointer()
-            datatype_weak.ref.store(dest_datatype, size, datatype_strong.ref.value)
+            datatype_weak.ref.store(dest_datatype, size, fileline, datatype_strong.ref.value)
         elif datatype_strong.type == DataType.POINTER:
             datatype_weak.ref = datatypes.Primitive(Size.WORD)
-            datatype_strong.ref.store(dest_datatype, size, NaN)
+            datatype_strong.ref.store(dest_datatype, size, fileline, NaN)
     elif datatype_weak.type == DataType.PRIMITIVE:
         if datatype_strong.type == DataType.PRIMITIVE:
             fileline_error("Impossible store operation found! (store [num, num])", fileline)
         elif datatype_strong.type == DataType.POINTER:
-            datatype_strong.ref.store(dest_datatype, size, datatype_weak.ref.value)
+            datatype_strong.ref.store(dest_datatype, size, fileline, datatype_weak.ref.value)
     elif datatype_weak == DataType.POINTER and datatype_strong == DataType.POINTER:
         fileline_error("Impossible store operation found! (store [pointer, pointer])", fileline)
 
@@ -1032,7 +1039,7 @@ def add_datatypes(source_datatype, operand_datatype, fileline):
         elif datatype_strong.type == DataType.POINTER:
             # if the operation is pointer + unk, then we know (assume) that unk is a primitive
             datatype_weak.ref = datatypes.Primitive(Size.WORD)
-            print("Context information: unk + pointer")
+            debug_print("Context information: unk + pointer")
             result_datatype = copy.deepcopy(datatype_strong)
             result_datatype.ref.add_offset(NaN)
             return result_datatype
@@ -1058,7 +1065,7 @@ def subtract_datatypes(source_datatype, operand_datatype, fileline):
             # if the operand datatype is the pointer, then it is an error
             if source_datatype.type == DataType.POINTER:
                 operand_datatype.ref = datatypes.Primitive(Size.WORD)
-                print("Context information: pointer - unk")
+                debug_print("Context information: pointer - unk")
                 result_datatype = copy.deepcopy(source_datatype)
                 result_datatype.ref.add_offset(NaN)
                 return result_datatype

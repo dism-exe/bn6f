@@ -502,7 +502,7 @@ sub_810DE00:
 	strb r0, [r6]
 	bl sub_810DEC4
 	bl sub_810E0D4
-	bl loc_801171C
+	bl sub_801171C
 	b locret_810DE28
 loc_810DE1E:
 	ldr r1, off_810DE2C // =off_810DE30 
@@ -1685,7 +1685,7 @@ loc_810E898:
 	cmp r3, #0xff
 	beq loc_810E8B8
 	ldr r0, [r5,#0x64]
-	cmp r0, #0
+	cmp r0, #NULL
 	beq loc_810E8B2
 	strb r3, [r0,#0x10]
 	b locret_810E8C6
@@ -1694,7 +1694,7 @@ loc_810E8B2:
 	b locret_810E8C6
 loc_810E8B8:
 	ldr r0, [r5,#0x64]
-	cmp r0, #0
+	cmp r0, #NULL
 	beq locret_810E8C6
 	bl sub_80C4072
 	mov r0, #0
@@ -2186,7 +2186,7 @@ sub_810ED70:
 	ldrh r0, [r0,#0x24]
 	tst r0, r0
 	bne loc_810ED9C
-	bl loc_801171C
+	bl sub_801171C
 	b locret_810EDA6
 loc_810ED9C:
 	ldr r1, off_810EDA8 // =off_810EDAC 
@@ -2288,7 +2288,7 @@ sub_810EE3E:
 	mov r1, #4
 	mul r0, r1
 	strb r0, [r5,#0x10]
-	bl loc_801171C
+	bl sub_801171C
 	b locret_810EE62
 loc_810EE5E:
 	mov r0, #4
@@ -2322,7 +2322,7 @@ loc_810EE7E:
 	mov r1, #4
 	mul r0, r1
 	strb r0, [r5,#0x10]
-	bl loc_801171C
+	bl sub_801171C
 locret_810EE94:
 	pop {pc}
 	thumb_func_end sub_810EE64
@@ -4838,7 +4838,7 @@ sub_811072C:
 	strb r0, [r6]
 	mov r0, #0
 	strh r0, [r6,#2]
-	bl loc_801171C
+	bl sub_801171C
 	b locret_811079E
 loc_8110794:
 	ldrh r0, [r7,#0x18]
@@ -4887,7 +4887,7 @@ sub_81107BC:
 loc_81107E8:
 	mov r0, #0
 	strb r0, [r7,#0x1a]
-	bl loc_801171C
+	bl sub_801171C
 locret_81107F0:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_81107BC
@@ -6837,7 +6837,7 @@ loc_811187C:
 	bl object_updateCollisionPanels
 	ldr r0, dword_8111908 // =0x501040 
 	bl object_clearFlag // (int bitfield) -> void
-	bl loc_801171C
+	bl sub_801171C
 	ldr r0, [r5,#0x5c]
 	cmp r0, #0
 	beq loc_81118C2
@@ -9706,7 +9706,7 @@ loc_8113378:
 	bl sub_811339A
 	b locret_8113398
 loc_8113394:
-	bl loc_801171C
+	bl sub_801171C
 locret_8113398:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_8113350
@@ -9825,7 +9825,7 @@ loc_8113466:
 	ldrb r0, [r7]
 	cmp r0, #8
 	beq locret_811348C
-	bl loc_801171C
+	bl sub_801171C
 locret_811348C:
 	pop {r4,pc}
 	thumb_func_end sub_811339A
@@ -13985,7 +13985,7 @@ sub_8115A2C:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x13]
 	bl object_getPanelParameters
-	ldr r1, off_8115BC0 // =GameEntryPoint 
+	ldr r1, off_8115BC0 // =0x8000000 
 	ldrb r2, [r5,#0x16]
 	cmp r2, #0
 	beq loc_8115A46
@@ -14188,7 +14188,7 @@ sub_8115BB0:
 	.balign 4, 0x00
 off_8115BB8: .word byte_8115980
 dword_8115BBC: .word 0x8000
-off_8115BC0: .word GameEntryPoint
+off_8115BC0: .word 0x8000000
 off_8115BC4: .word LCDControl
 off_8115BC8: .word byte_8115998
 off_8115BCC: .word sub_8115AD0+1
@@ -15118,19 +15118,12 @@ off_8116554: .word byte_8116560
 byte_8116560: .byte 0x0, 0x2, 0x3, 0x0, 0x2, 0x3, 0x0, 0x2, 0x3, 0x0, 0x2, 0x3, 0x0, 0x2, 0x3, 0x0
 byte_8116570: .byte 0x0, 0x2, 0x3, 0x0, 0x2, 0x3, 0x0, 0x2, 0x3, 0x0, 0x2, 0x3, 0x0, 0x2, 0x3, 0x0
 byte_8116580: .byte 0x0, 0x2, 0x3, 0x4, 0x0, 0x2, 0x3, 0x4, 0x0, 0x2, 0x3, 0x4, 0x0, 0x2, 0x3, 0x4
-off_8116590: .word loc_8116594
+off_8116590: .word byte_8116594
+byte_8116594: .byte 0x0, 0x1, 0x2, 0x0, 0x1, 0x2, 0x0, 0x1, 0x2, 0x0, 0x1, 0x2, 0x0, 0x1, 0x2, 0x0
 	thumb_func_end sub_8116510
 
-loc_8116594:
-	lsl r0, r0, #4
-	lsl r2, r0, #0
-	lsl r1, r0, #8
-	lsl r0, r0, #4
-	lsl r2, r0, #0
-	lsl r1, r0, #8
-	lsl r0, r0, #4
-	lsl r2, r0, #0
-loc_81165A4:
+	thumb_func_start sub_81165A4
+sub_81165A4:
 	mov r0, #0x60 
 	ldrh r0, [r5,r0]
 	mov r1, #0x62 
@@ -15141,6 +15134,8 @@ loc_81165A4:
 	strh r0, [r5,#0x24]
 locret_81165B4:
 	mov pc, lr
+	thumb_func_end sub_81165A4
+
 	.balign 4, 0x00
 dword_81165B8: .word 0x4000
 byte_81165BC: .byte 0x4, 0x1F, 0x1, 0x0, 0x1F, 0x0, 0x0, 0x0
@@ -20021,7 +20016,7 @@ sub_8118DFC:
 	bl sub_8002FA6
 	pop {pc}
 off_8118E10: .word off_8118E14
-off_8118E14: .word GameEntryPoint
+off_8118E14: .word 0x8000000
 	.word 0x10000000
 	thumb_func_end sub_8118DFC
 

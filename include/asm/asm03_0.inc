@@ -169,7 +169,7 @@
 // .global sub_3006920
 
 	.include "asm/start.inc"
-// .global GameEntryPoint
+// .global 0x4000000
 
 	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void

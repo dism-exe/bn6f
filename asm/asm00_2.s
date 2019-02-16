@@ -1362,7 +1362,7 @@ off_800F740: .word off_800F748
 off_800F744: .word byte_800F758
 off_800F748: .word LCDControl
 	.word 0x0
-	.word GameEntryPoint
+	.word 0x8000000
 	.word 0x0
 byte_800F758: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0
 	.byte 0x0
@@ -4365,7 +4365,7 @@ off_8010EA4: .word nullsub_42+1
 	.word nullsub_43+1
 	.word nullsub_43+1
 	.word nullsub_43+1
-	.word loc_8011366+1
+	.word sub_8011366+1
 off_8010F08: .word sub_80112E0+1
 	.word sub_80112EA+1
 	.word sub_80112F4+1
@@ -4377,19 +4377,19 @@ off_8010F08: .word sub_80112E0+1
 	.word sub_8011326+1
 	.word sub_801133A+1
 	.word nullsub_43+1
-	.word loc_8011366+1
+	.word sub_8011366+1
 	.word nullsub_43+1
 	.word nullsub_43+1
 	.word nullsub_43+1
 	.word nullsub_43+1
 	.word nullsub_43+1
 	.word sub_8011352+1
-	.word loc_8011356+1
-	.word loc_801135A+1
-	.word loc_801135E+1
-	.word loc_8011362+1
+	.word sub_8011356+1
+	.word sub_801135A+1
+	.word sub_801135E+1
+	.word sub_8011362+1
 	.word nullsub_43+1
-	.word loc_8011366+1
+	.word sub_8011366+1
 	thumb_func_end sub_8010DF6
 
 	thumb_local_start
@@ -4784,19 +4784,19 @@ off_801127C: .word nullsub_42+1
 	.word sub_8011326+1
 	.word sub_801133A+1
 	.word nullsub_43+1
-	.word loc_8011366+1
+	.word sub_8011366+1
 	.word nullsub_43+1
 	.word nullsub_43+1
 	.word nullsub_43+1
 	.word nullsub_43+1
 	.word nullsub_43+1
 	.word sub_8011352+1
-	.word loc_8011356+1
-	.word loc_801135A+1
-	.word loc_801135E+1
-	.word loc_8011362+1
+	.word sub_8011356+1
+	.word sub_801135A+1
+	.word sub_801135E+1
+	.word sub_8011362+1
 	.word nullsub_43+1
-	.word loc_8011366+1
+	.word sub_8011366+1
 	thumb_func_end sub_8011268
 
 	thumb_local_start
@@ -4893,20 +4893,31 @@ sub_8011344:
 sub_8011352:
 	mov r3, #2
 	b loc_8011368
-loc_8011356:
+
+	thumb_local_start
+sub_8011356:
 	mov r3, #4
 	b loc_8011368
-loc_801135A:
+
+	thumb_local_start
+sub_801135A:
 	mov r3, #6
 	b loc_8011368
-loc_801135E:
+
+	thumb_local_start
+sub_801135E:
 	mov r3, #8
 	b loc_8011368
-loc_8011362:
+
+	thumb_local_start
+sub_8011362:
 	mov r3, #0xa
 	b loc_8011368
-loc_8011366:
+
+	thumb_local_start
+sub_8011366:
 	mov r3, #0
+
 loc_8011368:
 	push {r4,r6,lr}
 	mov r6, r3
@@ -4922,6 +4933,11 @@ loc_8011368:
 locret_8011382:
 	pop {r4,r6,pc}
 	thumb_func_end sub_8011352
+	thumb_func_end sub_8011356
+	thumb_func_end sub_801135A
+	thumb_func_end sub_801135E
+	thumb_func_end sub_8011362
+	thumb_func_end sub_8011366
 
 	thumb_func_start sub_8011384
 sub_8011384:
@@ -5397,7 +5413,9 @@ object_exitAttackState:
 	mov r0, #0
 	strb r0, [r5,#0x10]
 	b loc_801171E
-loc_801171C:
+
+	thumb_func_start sub_801171C
+sub_801171C:
 	push {r6,r7,lr}
 loc_801171E:
 	ldr r1, [r5,#0x58]
@@ -5435,6 +5453,7 @@ loc_8011754:
 	.byte 0, 0
 dword_8011760: .word 0x1000003F
 	thumb_func_end object_exitAttackState
+	thumb_func_end sub_801171C
 
 	thumb_func_start sub_8011764
 sub_8011764:
@@ -10197,7 +10216,7 @@ loc_8013918:
 	strb r0, [r7,#7]
 	ldrb r0, [r6,#7]
 	strb r0, [r7,#8]
-	ldr r0, off_8013CA8 // =GameEntryPoint+1 
+	ldr r0, off_8013CA8 // =0x8000000
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_800EB08
 	ldr r0, [r7,#0x50]
@@ -10663,8 +10682,8 @@ off_8013C70: .word nullsub_28+1
 nullsub_28:
 	mov pc, lr
 	.balign 4, 0x00
-off_8013CA8: .word GameEntryPoint+1
-off_8013CAC: .word timer_2000000
+off_8013CA8: .word 0x8000001
+off_8013CAC: .word 0x2000000
 dword_8013CB0: .word 0x100000
 off_8013CB4: .word byte_80210DD
 off_8013CB8: .word byte_80210DD
@@ -12168,7 +12187,7 @@ sub_80147B2:
 	mov r1, #0x10
 	mov r2, #2
 	bl sub_801A082
-	ldr r0, dword_80147E0 // =GameEntryPoint 
+	ldr r0, dword_80147E0 // =0x8000000 
 	bl object_setFlag // (int a1) -> void
 	ldr r0, dword_80147D8 // =0xffff 
 	bl object_setInvulnerableTime
@@ -14440,7 +14459,7 @@ loc_8015AEE:
 	.balign 4, 0x00
 off_8015AF4: .word off_8015AF8
 off_8015AF8: .word LCDControl
-	.word GameEntryPoint
+	.word 0x8000000
 	thumb_func_end sub_8015AA6
 
 	thumb_func_start sub_8015B00
@@ -22058,7 +22077,7 @@ loc_801AFE4:
 	mov r0, #0
 	strb r0, [r5,#0x18]
 	bl sub_800FFFE
-	ldr r1, off_801B1A8 // =GameEntryPoint 
+	ldr r1, off_801B1A8 // =0x8000000 
 	tst r0, r1
 	beq loc_801B006
 	mov r0, r1
@@ -22243,7 +22262,7 @@ loc_801B1A0:
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
 	.word 0x40000
-off_801B1A8: .word GameEntryPoint
+off_801B1A8: .word 0x8000000
 off_801B1AC: .word 0x2000
 dword_801B1B0: .word 0x40000000
 dword_801B1B4: .word 0x10000
@@ -23240,9 +23259,9 @@ sub_801B9E6:
 	push {r4,r6,r7,lr}
 	ldr r4, [r5,#0x58]
 	mov r6, #0x80
-	add r6, r6, r4
+	add r6, r6, r4 // r6 = AI state
 	mov r7, #0xa0
-	add r7, r7, r4
+	add r7, r7, r4 // r7 = current attack variable region
 	ldrb r1, [r5,#9]
 	cmp r1, #0x10
 	blt loc_801BA08
@@ -23313,7 +23332,7 @@ loc_801BA76:
 	bl sub_802DD2A
 	tst r0, r0
 	beq loc_801BA86
-	ldr r0, off_801BB18 // =GameEntryPoint 
+	ldr r0, off_801BB18 // =0x8000000 
 	bl sub_800FFE4
 	b loc_801BA8C
 loc_801BA86:
@@ -23391,7 +23410,7 @@ dword_801BB08: .word 0x30000000
 off_801BB0C: .word 0x100
 off_801BB10: .word JumpTable80EAC60
 dword_801BB14: .word 0x40000
-off_801BB18: .word GameEntryPoint
+off_801BB18: .word 0x8000000
 	thumb_func_end sub_801BADE
 
 	thumb_func_start object_reservePanel
@@ -28770,6 +28789,7 @@ loc_801E51C:
 	add r2, r3, r6
 	add r2, r2, r6
 	add r2, #2
+	// r2 = sp + r6*2 + 2
 	ldr r0, word_801E5D8 // =0xd1d6
 	strh r0, [r3]
 	add r0, #1

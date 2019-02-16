@@ -1958,7 +1958,7 @@ off_3006B14: .word __divsi3+1
 off_3006B18: .word sub_3006C38+1
 	.word sub_3006C3C+1
 	.word sub_3006F42+1
-	.word byte_3006F75
+	.word sub_3006F74+1
 	.word sub_3006C72+1
 	.word sub_3006C8E+1
 	.word 0x0
@@ -1971,8 +1971,8 @@ off_3006B18: .word sub_3006C38+1
 	.word sub_3006CD0+1
 	.word 0x0
 	.word 0x0
-	.word byte_3006F5D
-	.word dword_3006F71
+	.word sub_3006F5C+1
+	.word sub_3006F70+1
 	.word 0x0
 	.word 0x0
 	.word 0x0
@@ -2137,6 +2137,7 @@ loc_3006C88:
 sub_3006C8E:
 	push {lr}
 	ldrb r1, [r0,#1]
+// oops! forgot the pool label!
 	ldr r2, byte_3006C9C // =0x4
 	ldrb r1, [r2,r1]
 	mov r4, #1
@@ -2512,15 +2513,38 @@ sub_3006F48:
 	mov pc, lr
 	.balign 4, 0x00
 off_3006F54: .word byte_3006F58
-byte_3006F58: .byte 0x3, 0x0, 0x0, 0x0, 0x47
-byte_3006F5D: .byte 0x78, 0x2, 0x49, 0x79, 0x5C, 0x40, 0x18, 0xF7, 0x46
-	.byte 0x0, 0x0, 0x6C, 0x6F, 0x0, 0x3, 0x3, 0x2, 0x3
-	.byte 0x3, 0x3
-dword_3006F71: .word 0x4746F730
-byte_3006F75: .byte 0x78, 0x2, 0x49, 0x79, 0x5C, 0x40, 0x18, 0xF7, 0x46
-	.byte 0x0, 0x0, 0x84, 0x6F, 0x0, 0x3, 0x2, 0x2, 0x2
-	.byte 0x2, 0x4, 0x4, 0x4, 0x4
+byte_3006F58: .byte 0x3, 0x0, 0x0, 0x0
 	thumb_func_end sub_3006F48
+
+	thumb_local_start
+sub_3006F5C:
+	ldrb r7, [r0,#1]
+	ldr r1, off_3006F68
+	ldrb r1, [r7,r1]
+	add r0, r0, r1
+	mov pc, lr
+	.balign 4, 0
+off_3006F68: .word byte_3006F6C
+byte_3006F6C: .byte 0x3, 0x2, 0x3, 0x3
+	thumb_func_end sub_3006F5C
+
+	thumb_local_start
+sub_3006F70:
+	add r0, #3
+	mov pc, lr
+	thumb_func_end sub_3006F70
+
+	thumb_local_start
+sub_3006F74:
+	ldrb r7, [r0,#1]
+	ldr r1, off_3006F80 // =byte_3006F84
+	ldrb r1, [r7,r1]
+	add r0, r0, r1
+	mov pc, lr
+	.balign 4, 0
+off_3006F80: .word byte_3006F84
+byte_3006F84: .byte 0x2, 0x2, 0x2, 0x2, 0x4, 0x4, 0x4, 0x4
+	thumb_func_end sub_3006F74
 
 	thumb_func_start sub_3006F8C
 sub_3006F8C:

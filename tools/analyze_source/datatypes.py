@@ -142,11 +142,11 @@ class Pointer(DataType):
         return DataType.POINTER
 
     @abstractmethod
-    def load(self, size, offset=0):
+    def load(self, size, fileline, offset=0):
         pass
 
     @abstractmethod
-    def store(self, datatype, size, offset=0):
+    def store(self, datatype, size, fileline, offset=0):
         pass
 
     def add_offset(self, offset):
@@ -181,14 +181,14 @@ class UnkPointer(Pointer):
         super().__init__()
 
     # TODO mark offsets
-    def load(self, size, offset=0):
+    def load(self, size, fileline, offset=0):
         #total_offset = offset + self.offset
         #if math.isnan(total_offset):
         return new_unk_datatype_from_size(size)
         #pass
 
     # TODO mark offsets
-    def store(self, datatype, size, offset=0):
+    def store(self, datatype, size, fileline, offset=0):
         pass
     
 class RAMPointer(Pointer):
@@ -196,18 +196,18 @@ class RAMPointer(Pointer):
         super().__init__(offset, possible_syms)
 
     # TODO mark offsets
-    def load(self, size, offset=0):
+    def load(self, size, fileline, offset=0):
         return new_unk_datatype_from_size(size)
     
     # TODO mark offsets
-    def store(self, datatype, size, offset=0):
+    def store(self, datatype, size, fileline, offset=0):
         pass
 
 class ROMPointer(Pointer):
     def __init__(self, possible_syms=None):
         super().__init__(0, possible_syms)
 
-    def load(self, size, offset=0):
+    def load(self, size, fileline, offset=0):
         global syms
         global scanned_files
     
@@ -232,7 +232,7 @@ class ROMPointer(Pointer):
                 if word in syms:
                     if syms[word].section == "*ABS*":
                         return new_unk_datatype_from_size(size)
-                    elif not (0x8000000 <= syms[word].value < ROM_END):
+                    elif syms[word].section in RAM_SECTIONS_SYMBOLS:
                         return new_unk_datatype_from_size(size)
                     else:
                         read_syms.append(syms[word])
@@ -248,13 +248,13 @@ class ROMPointer(Pointer):
 
         return ROMPointer(read_syms).wrap()
 
-    def store(self, datatype, size, offset=0):
+    def store(self, datatype, size, fileline, offset=0):
         if len(self.possible_syms) == 1:
             global_fileline_error("Cannot write to ROMPointer \"%s\"!" % self.sym.name)
         else:
             names = ", ".join(sym.name for sym in self.possible_syms)
             if names == "sub_80104E0, sub_80CA4F6, sub_8010474, sub_8010488, sub_80D2596, sub_800AF34, sub_801050C, sub_80CFE08, sub_8015AA6, sub_8010820, sub_802E1BE, sub_80DEDE0, sub_80EC44C, sub_80EA11C, sub_80E94DC, sub_80E5A64, sub_80C6330, sub_80DB4B4, sub_80CD4AC, sub_80E4FCA, sub_80C9ECE":
-                global_fileline_msg("Warning: Cannot write to ROMPointer \"%s\"!" % names)
+                global_fileline_msg("ROMWriteWarning: Cannot write to ROMPointer \"%s\"!" % names)
             else:
                 global_fileline_error("Cannot write to ROMPointer \"%s\"!" % names)
 
@@ -290,10 +290,10 @@ class ProgramCounter(ROMPointer):
     def type(self):
         return DataType.POINTER
 
-    def load(self, size, offset=0):
+    def load(self, size, fileline, offset=0):
         global_fileline_error("Cannot read from program counter \"%s\"!" % self.sym)
 
-    def store(self, datatype, size, offset=0):
+    def store(self, datatype, size, fileline, offset=0):
         global_fileline_error("Cannot write to program counter \"%s\"!" % self.sym)
 
     def add_offset(self, offset):
@@ -331,22 +331,22 @@ class Struct(Pointer):
     def __init__(self, offset=0):
         super().__init__(offset)
 
-    def load(self, size, offset=0):
+    def load(self, size, fileline, offset=0):
         total_offset = offset + self.offset
         if math.isnan(total_offset):
             raise NotImplementedError("Context information: struct load with NaN offset")
-        struct_field_action = self.get_struct_offset_action(total_offset, size)
+        struct_field_action = self.get_struct_offset_action(total_offset, fileline, size)
         return struct_field_action.load(self, size)
 
-    def store(self, datatype, size, offset=0):
+    def store(self, datatype, size, fileline, offset=0):
         total_offset = offset + self.offset
         if math.isnan(total_offset):
             raise NotImplementedError("Context information: struct store with NaN offset")
-        struct_field_action = self.get_struct_offset_action(total_offset, size)
+        struct_field_action = self.get_struct_offset_action(total_offset, fileline, size)
         struct_field_action.store(self, datatype, size)
 
     @abstractmethod
-    def get_struct_offset_action(self, offset, size):
+    def get_struct_offset_action(self, offset, fileline, size):
         pass
 
 class StructField:
@@ -445,7 +445,8 @@ class BattleObject(Struct):
                 0xd: {Size.BYTE: StructField("_Unk_0d", UnkPrimitiveMemory())},
                 0xe: {Size.BYTE: StructField("_Element", UnkPrimitiveMemory())},
                 0xf: {Size.BYTE: StructField("_Unk_0f", UnkPrimitiveMemory())},
-                0x10: {Size.BYTE: StructField("_CurAnim", UnkPrimitiveMemory())},
+                0x10: {Size.BYTE: StructField("_CurAnim", UnkPrimitiveMemory()),
+                       Size.HWORD: StructField("_CurAnimAndCurAnimCopy", UnkPrimitiveMemory())},
                 0x11: {Size.BYTE: StructField("_CurAnimCopy", UnkPrimitiveMemory())},
                 0x12: {Size.BYTE: StructField("_PanelX", UnkPrimitiveMemory()),
                        Size.HWORD: StructField("_PanelXY", UnkPrimitiveMemory())},
@@ -474,8 +475,11 @@ class BattleObject(Struct):
                 0x2e: {Size.HWORD: StructField("_StaminaDamageCounterDisabler", UnkPrimitiveMemory())},
                 0x30: {Size.WORD: StructField("_Unk_30", UnkPrimitiveMemory())},
                 0x34: {Size.WORD: StructField("_X", UnkPrimitiveMemory())},
+                0x36: {Size.HWORD: StructField("_X16", UnkPrimitiveMemory())},
                 0x38: {Size.WORD: StructField("_Y", UnkPrimitiveMemory())},
+                0x3a: {Size.HWORD: StructField("_Y16", UnkPrimitiveMemory())},
                 0x3c: {Size.WORD: StructField("_Z", UnkPrimitiveMemory())},
+                0x3e: {Size.HWORD: StructField("_Z16", UnkPrimitiveMemory())},
                 0x40: {Size.WORD: StructField("_XVelocity", UnkPrimitiveMemory())},
                 0x44: {Size.WORD: StructField("_YVelocity", UnkPrimitiveMemory())},
                 0x48: {Size.WORD: StructField("_ZVelocity", UnkPrimitiveMemory())},
@@ -497,7 +501,7 @@ class BattleObject(Struct):
                 # 0x88: {Size.WORD: StructField("_ExtraVars+0x28", AnonMemory(UnknownDataType))}
             }
 
-    def get_struct_offset_action(self, offset, size):
+    def get_struct_offset_action(self, offset, fileline, size):
         if offset in self.basic_struct_fields:
             struct_field_possible_entries = self.basic_struct_fields[offset]
             if size in struct_field_possible_entries:
@@ -518,21 +522,31 @@ class Stack(Pointer):
         super().__init__()
         self.datatypes = datatypes
 
-    def load(self, size=Size.WORD, offset=0):
-        total_offset = -(self.offset + offset)
+    def load(self, size, fileline, offset=0):
+        total_offset = self.offset + offset
         if math.isnan(total_offset):
-            global_fileline_error("Stack offset is NaN!")
+            global_fileline_msg("StackWarning: Stack offset is NaN for load!")
+            return new_unk_datatype_from_size(size)
         if total_offset % size.value != 0:
-            global_fileline_error("Misaligned stack read detected (size: %s, offset=%s)!" % size, total_offset)
-        return self.datatypes[(total_offset, size)]
+            global_fileline_error("Misaligned stack read detected (size: %s, offset=%s)!" % (size, total_offset))
+        try:
+            return self.datatypes[(total_offset, size)]
+        except KeyError:
+            if total_offset >= self.offset:
+                global_fileline_msg("StackWarning: Stack read of (%s, %s) is likely valid (e.g. overloads with other datatype) but not in datatypes!" % (total_offset, size))
+                return new_unk_datatype_from_size(size)
+            else:
+                global_fileline_error("Bad stack read of (%s, %s)! (stack size: %s)" % (total_offset, size, self.offset))
 
     # note: storing values may be risky. figure this out
-    def store(self, datatype, size=Size.WORD, offset=0):
-        total_offset = -(self.offset + offset)
+    def store(self, datatype, size, fileline, offset=0):
+        total_offset = self.offset + offset
         if math.isnan(total_offset):
-            global_fileline_error("Stack offset is NaN!")
+            global_fileline_msg("StackWarning: Stack offset is NaN for store!")
+            return
         if total_offset % size.value != 0:
-            global_fileline_error("Misaligned stack write detected (size: %s, offset=%s)!" % size, total_offset)
+            global_fileline_error("Misaligned stack write detected (size: %s, offset=%s)!" % (size, total_offset))
+
         self.datatypes[(total_offset, size)] = datatype
 
 def new_unk_datatype_from_size(size):

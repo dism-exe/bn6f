@@ -653,7 +653,7 @@
 
 /* External Symbols */
 	.include "asm/start.inc"
-// .global GameEntryPoint
+// .global 0x4000000
 
 	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
@@ -917,7 +917,7 @@
 // .global sub_80116AE
 // .global sub_80116D8
 // .global object_exitAttackState
-// .global loc_801171C
+// .global sub_801171C
 // .global sub_8011764
 // .global sub_801177A
 // .global sub_8011790
@@ -1237,7 +1237,7 @@
 // .global byte_8116300
 // .global off_81163F0
 // .global sub_8116414
-// .global loc_81165A4
+// .global sub_81165A4
 // .global byte_81165BC
 // .global byte_81165C4
 // .global off_81166B0

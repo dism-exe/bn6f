@@ -3,6 +3,7 @@ import re
 import pathlib
 
 import parser
+from analyze_source import debug_print
 
 class LineType(Enum):
     UNCOMMENTED = 0
@@ -98,7 +99,7 @@ recursion_depth = 0
 
 def recursive_scan_includes(filepath, scanned_files, syms=None, callbacks=None):
     global recursion_depth
-    print("recursion depth: %s | file: %s" % (recursion_depth, filepath))
+    debug_print("recursion depth: %s | file: %s" % (recursion_depth, filepath))
     recursion_depth += 1
     
     in_block_comment = False

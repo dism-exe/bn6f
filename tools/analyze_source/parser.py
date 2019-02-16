@@ -32,19 +32,19 @@ def find_colon_label_from_lines(label, src_file, start_index=None):
 
 def get_ldr_label_contents(label, src_file):
     saved_line_num = src_file.line_num
-    #print("ldr line: %s" % (src_file.line_num + 1))
+    #debug_print("ldr line: %s" % (src_file.line_num + 1))
     if label.startswith("."):
         for line in src_file:
             if line.startswith(label):
                 break
     else:
         src_file.line_num = syms[label].line_num
-        #print("ldr contents line num: %s" % (src_file.line_num + 1))
+        #debug_print("ldr contents line num: %s" % (src_file.line_num + 1))
         if syms[label].filename != src_file.filename:
             global_fileline_error("Could not find ldr label in file! (actual file: \"%s\")" % syms[label].filename) 
 
     #for i in range(src_file.line_num):
-    #    print("cur_line: %s" % src_file.lines[i])
+    #    debug_print("cur_line: %s" % src_file.lines[i])
     contents = parse_word_directive(src_file)
     src_file.line_num = saved_line_num
     if len(contents) == 0:
@@ -163,9 +163,9 @@ def parse_word_directives(src_file, max_words=None, must_be_words=False):
             continue
         elif line.startswith(".word"):
             #if "nullsub" in line:
-            #    print("nullsub: \"%s\"" % line.split(None, 1)[1].split(","))
+            #    debug_print("nullsub: \"%s\"" % line.split(None, 1)[1].split(","))
             
-            #print("split: %s" % word_split_regex.split(line[5:].strip()))
+            #debug_print("split: %s" % word_split_regex.split(line[5:].strip()))
             words.extend(word_split_regex.split(line[5:].strip()))
             if max_words is not None and len(words) >= max_words:
                 if len(words) > max_words:
@@ -175,7 +175,7 @@ def parse_word_directives(src_file, max_words=None, must_be_words=False):
             words.extend(word_split_regex.split(line[5:].strip()))
             if not must_be_words:
                 break
-            global_fileline_msg("Warning: No support for fake IDA zero bytes yet!")
+            global_fileline_msg("FakeIDAZeroesWarning: No support for fake IDA zero bytes yet!")
         elif first_run and line.startswith(".hword"):
             words.extend(word_split_regex.split(line[6:].strip()))
             break
