@@ -36,6 +36,7 @@ class Size(Enum):
     WORD = 4
 
 class DataTypeContainer:
+    __slots__ = ("_ref",)
     def __init__(self, _ref=None):
         if _ref is None:
             _ref = UnknownDataType()
@@ -99,6 +100,9 @@ class Primitive(DataType):
     new_byte = None
     new_hword = None
     new_word = None
+
+    __slots__ = ("_size", "_value")
+
     def __init__(self, size=Size.UNKNOWN, value=None):
         super().__init__()
         self._size = size
@@ -128,6 +132,7 @@ Primitive.new_word = functools.partial(Primitive, Size.WORD)
 
 class Pointer(DataType):
     null_sym = readelf.SymInfo(value=NaN, scope="l", debug=" ", type=" ", section="*UND*", name="null", filename="dummy", line_num=0)
+    __slots__ = ("_possible_syms", "_offset")
     def __init__(self, offset=0, possible_syms=None):
         super().__init__()
         if not possible_syms:
@@ -165,7 +170,6 @@ class Pointer(DataType):
     def offset(self, offset):
         # if isinstance(offset, readelf.SymInfo):
         #     global_fileline_error("Pointer offset assigned with type \"%s\"!" % type(offset).__name__)
-        
         self._offset = offset
 
     @property
@@ -281,6 +285,8 @@ class ROMPointer(Pointer):
         global_fileline_error("Cannot set line num of ROMPointer!")
 
 class ProgramCounter(ROMPointer):
+    __slots__ = ("_filename", "_line_num")
+
     def __init__(self, filename, line_num):
         super().__init__()
         self._filename = filename
@@ -331,18 +337,18 @@ class Struct(Pointer):
     def __init__(self, offset=0):
         super().__init__(offset)
 
-    def load(self, size, fileline, offset=0):
-        total_offset = offset + self.offset
-        if math.isnan(total_offset):
-            raise NotImplementedError("Context information: struct load with NaN offset")
-        struct_field_action = self.get_struct_offset_action(total_offset, fileline, size)
+    def load(self, size, fileline, offset):
+        # total_offset = offset + self.offset
+        # if math.isnan(total_offset):
+        #     raise NotImplementedError("Context information: struct load with NaN offset")
+        struct_field_action = self.get_struct_offset_action(offset, fileline, size)
         return struct_field_action.load(self, size)
 
-    def store(self, datatype, size, fileline, offset=0):
-        total_offset = offset + self.offset
-        if math.isnan(total_offset):
-            raise NotImplementedError("Context information: struct store with NaN offset")
-        struct_field_action = self.get_struct_offset_action(total_offset, fileline, size)
+    def store(self, datatype, size, fileline, offset):
+        # total_offset = offset + self.offset
+        # if math.isnan(total_offset):
+        #     raise NotImplementedError("Context information: struct store with NaN offset")
+        struct_field_action = self.get_struct_offset_action(offset, fileline, size)
         struct_field_action.store(self, datatype, size)
 
     @abstractmethod
@@ -409,14 +415,19 @@ class UnkMemory(Memory):
 class UnkPrimitiveMemory(Memory):
     def __init__(self):
         super().__init__()
-    
+
     def load(self, struct, size):
         return Primitive(size).wrap()
 
     def store(self, struct, datatype, size):
         pass
 
+class Toolkit(Struct):
+    def __init__(self):
+        super().__init__()
+
 class BattleObject(Struct):
+    __slots__ = ("basic_struct_fields",)
     def __init__(self, offset=0):
         super().__init__(offset)
         self.basic_struct_fields = BattleObject.generate_basic_struct_fields()
@@ -518,6 +529,7 @@ class BattleObject(Struct):
             global_fileline_error("Invalid struct offset \"%s\"!" % offset)
 
 class Stack(Pointer):
+    __slots__ = ("datatypes",)
     def __init__(self, datatypes={}):
         super().__init__()
         self.datatypes = datatypes

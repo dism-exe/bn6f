@@ -194,7 +194,7 @@ def do_triple_arg_numeric_operation(registers, dest_reg, source_reg, operand_reg
         new_value = NaN
 
     new_dest_datatype = datatypes.Primitive(Size.UNKNOWN, new_value).wrap()
-    registers[dest_reg].append(analyzer.RegisterInfo(new_dest_datatype, fileline))
+    registers[dest_reg].set_new_reg(analyzer.RegisterInfo(new_dest_datatype, fileline))
 
 def add_rd_rs_rn_opcode_function(opcode_params, funcstate, src_file, fileline):
     do_triple_arg_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], add_datatypes, fileline)
@@ -218,7 +218,7 @@ def add_rd_sp_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
     immediate_value = evaluate_imm_sym_or_num_error_if_undefined(opcode_params[1], fileline)
     new_sp = copy.deepcopy(funcstate.regs["sp"].data)
     new_sp.ref.add_offset(immediate_value)
-    funcstate.regs[opcode_params[0]].append(analyzer.RegisterInfo(new_sp, fileline))
+    funcstate.regs[opcode_params[0]].set_new_reg(analyzer.RegisterInfo(new_sp, fileline))
     return True
 
 def add_sp_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -250,13 +250,13 @@ def sub_sp_opcode_function(opcode_params, funcstate, src_file, fileline):
 def add_offset_to_sp(registers, sp_offset, fileline):
     new_sp = copy.deepcopy(registers["sp"].data)
     new_sp.ref.add_offset(sp_offset)
-    registers["sp"].append(analyzer.RegisterInfo(new_sp, fileline))
+    registers["sp"].set_new_reg(analyzer.RegisterInfo(new_sp, fileline))
     return
 
 def mov_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
     imm_value = evaluate_imm_sym_or_num_error_if_undefined(opcode_params[1], fileline)
     new_dest_reg = datatypes.Primitive(Size.BYTE, imm_value).wrap()
-    funcstate.regs[opcode_params[0]].append(analyzer.RegisterInfo(new_dest_reg, fileline))
+    funcstate.regs[opcode_params[0]].set_new_reg(analyzer.RegisterInfo(new_dest_reg, fileline))
     return True
 
 def mov_reg_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -264,7 +264,7 @@ def mov_reg_opcode_function(opcode_params, funcstate, src_file, fileline):
     if opcode_params[1] == "pc":
         new_dest_reg.ref.line_num = parser.get_line_num_at_num_directives_ahead(src_file, 2)
 
-    funcstate.regs[opcode_params[0]].append(analyzer.RegisterInfo(new_dest_reg, fileline))
+    funcstate.regs[opcode_params[0]].set_new_reg(analyzer.RegisterInfo(new_dest_reg, fileline))
     return True
 
 def cmp_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -362,19 +362,19 @@ def bx_opcode_function(opcode_params, funcstate, src_file, fileline):
     #if funcstate.function.name == "sub_3006B94":
     #    debug_print("sub_3006B94: r7 jumptable type: %s, r1 function type: %s" % (type(funcstate.regs["r7"].data.ref).__name__, type(funcstate.regs["r1"].data.ref).__name__))
     bx_reg = copy.deepcopy(funcstate.regs[opcode_params].data)
-    funcstate.regs["pc"].append(analyzer.RegisterInfo(bx_reg, fileline))
+    funcstate.regs["pc"].set_new_reg(analyzer.RegisterInfo(bx_reg, fileline))
     return True
 
 def ldr_label_opcode_function(opcode_params, funcstate, src_file, fileline):
     label_name = opcode_params[1]
     contents = parser.get_ldr_label_contents(label_name, src_file)
     dest_datatype = evaluate_data(contents, fileline)
-    funcstate.regs[opcode_params[0]].append(analyzer.RegisterInfo(dest_datatype, fileline))
+    funcstate.regs[opcode_params[0]].set_new_reg(analyzer.RegisterInfo(dest_datatype, fileline))
     return True
 
 def ldr_pool_opcode_function(opcode_params, funcstate, src_file, fileline):
     dest_datatype = evaluate_data(opcode_params[1], fileline)
-    funcstate.regs[opcode_params[0]].append(analyzer.RegisterInfo(dest_datatype, fileline))
+    funcstate.regs[opcode_params[0]].set_new_reg(analyzer.RegisterInfo(dest_datatype, fileline))
     return True
 
 def ldr_rb_ro_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -467,7 +467,7 @@ def push_opcode_function(opcode_params, funcstate, src_file, fileline):
         debug_print("push reg: %s, datatype: %s" % (reg_name, type(push_datatype.ref).__name__))
         new_sp_reg.ref.store(push_datatype, Size.WORD, fileline)
 
-    funcstate.regs["sp"].append(analyzer.RegisterInfo(new_sp_reg, fileline))
+    funcstate.regs["sp"].set_new_reg(analyzer.RegisterInfo(new_sp_reg, fileline))
     return True
 
 def pop_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -477,10 +477,10 @@ def pop_opcode_function(opcode_params, funcstate, src_file, fileline):
     for reg_name in reglist:
         pop_datatype = copy.deepcopy(new_sp_reg.ref.load(Size.WORD, fileline))
         debug_print("pop reg: %s, datatype: %s" % (reg_name, type(pop_datatype.ref).__name__))
-        funcstate.regs[reg_name].append(analyzer.RegisterInfo(pop_datatype, fileline))
+        funcstate.regs[reg_name].set_new_reg(analyzer.RegisterInfo(pop_datatype, fileline))
         new_sp_reg.ref.add_offset(Size.WORD.value)
 
-    funcstate.regs["sp"].append(analyzer.RegisterInfo(new_sp_reg, fileline))
+    funcstate.regs["sp"].set_new_reg(analyzer.RegisterInfo(new_sp_reg, fileline))
     return True
 
 def stmia_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -492,7 +492,7 @@ def stmia_opcode_function(opcode_params, funcstate, src_file, fileline):
         store_src_datatype.ref.store(store_datatype, Size.WORD, fileline)
         store_src_datatype.ref.add_offset(Size.WORD.value)
 
-    funcstate.regs[opcode_params[0]].append(analyzer.RegisterInfo(store_src_datatype, fileline))
+    funcstate.regs[opcode_params[0]].set_new_reg(analyzer.RegisterInfo(store_src_datatype, fileline))
     return True
 
 def ldmia_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -501,10 +501,10 @@ def ldmia_opcode_function(opcode_params, funcstate, src_file, fileline):
 
     for reg_name in reglist:
         load_datatype = copy.deepcopy(load_src_datatype.ref.load(Size.WORD, fileline))
-        funcstate.regs[reg_name].append(analyzer.RegisterInfo(load_datatype, fileline))
+        funcstate.regs[reg_name].set_new_reg(analyzer.RegisterInfo(load_datatype, fileline))
         load_src_datatype.ref.add_offset(Size.WORD.value)
 
-    funcstate.regs[opcode_params[0]].append(analyzer.RegisterInfo(load_src_datatype, fileline))
+    funcstate.regs[opcode_params[0]].set_new_reg(analyzer.RegisterInfo(load_src_datatype, fileline))
     return True
 
 def beq_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -578,7 +578,7 @@ def infer_math_swi_arg_types(registers, swi_inputs, swi_outputs, operation_name,
             fileline_error("Tried performing %s on pointer %s!" % (operation_name, input_name), fileline)
 
     for output_name in swi_outputs:
-        registers[output_name].append(analyzer.RegisterInfo(datatypes.Primitive(Size.UNKNOWN, NaN).wrap(), fileline))
+        registers[output_name].set_new_reg(analyzer.RegisterInfo(datatypes.Primitive(Size.UNKNOWN, NaN).wrap(), fileline))
 
 def do_mem_transfer_swi(registers, has_length, operation_name, fileline):
     pointer_reg_names = ("r0", "r1")
@@ -651,13 +651,13 @@ def check_spawn_battle_object(opcode_params, funcstate, src_file, fileline):
                 reg_datatype.ref = datatypes.Primitive(spawn_battle_object_numeric_reg_name_and_size.size)
             elif reg_datatype.type == DataType.POINTER:
                 fileline_msg("BattleObjectSpawnWarning: %s is pointer for Battle Object Spawn function!" % spawn_battle_object_numeric_reg_name_and_size.regname, fileline)
-            funcstate.regs[spawn_battle_object_numeric_reg_name_and_size.regname].append(analyzer.RegisterInfo(datatypes.Primitive().wrap(), fileline))
+            funcstate.regs[spawn_battle_object_numeric_reg_name_and_size.regname].set_new_reg(analyzer.RegisterInfo(datatypes.Primitive().wrap(), fileline))
 
-        funcstate.regs["r5"].append(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
+        funcstate.regs["r5"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
         fileline_msg("Called special function \"%s\"." % opcode_params, fileline)
         return False
     elif bl_sym.name == "sub_80103BC" or bl_sym.name == "sub_80CD488":
-        funcstate.regs["r0"].append(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
+        funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
         fileline_msg("Called special function \"%s\"." % opcode_params, fileline)
         return False
     #else:
@@ -668,7 +668,7 @@ def check_spawn_battle_object(opcode_params, funcstate, src_file, fileline):
 def bl_opcode_function(opcode_params, funcstate, src_file, fileline):
     new_lr_reg = datatypes.ProgramCounter(src_file.filename, parser.get_line_num_at_num_directives_ahead(src_file, 1)).wrap()
     debug_print("bl: this line num: %s, next line num: %s" % (fileline.line_num + 1, new_lr_reg.ref.line_num + 1))
-    funcstate.regs["lr"].append(analyzer.RegisterInfo(new_lr_reg, fileline))
+    funcstate.regs["lr"].set_new_reg(analyzer.RegisterInfo(new_lr_reg, fileline))
 
     try:
         bl_sym = syms[opcode_params]
@@ -676,7 +676,8 @@ def bl_opcode_function(opcode_params, funcstate, src_file, fileline):
         fileline_error("Could not find sym of function \"%s\"!" % opcode_params[0], fileline)
 
     bl_reg = datatypes.ROMPointer(bl_sym).wrap()
-    funcstate.regs["pc"].append(analyzer.RegisterInfo(bl_reg, fileline))
+    #debug_print("bl fileline: %s:%s" % (bl_sym.filename, bl_sym.line_num))
+    funcstate.regs["pc"].set_new_reg(analyzer.RegisterInfo(bl_reg, fileline))
     return True
 
 class Opcode:
@@ -972,12 +973,12 @@ def do_double_arg_operation(registers, dest_reg, source_reg, callback, fileline)
 def do_triple_arg_operation(registers, dest_reg, source_reg, operand_reg_or_imm, callback, fileline):
     source_datatype, operand_datatype = get_datatypes_for_triple_arg_operation(registers, source_reg, operand_reg_or_imm, fileline)
     result_datatype = callback(source_datatype, operand_datatype, fileline)
-    registers[dest_reg].append(analyzer.RegisterInfo(result_datatype, fileline))
+    registers[dest_reg].set_new_reg(analyzer.RegisterInfo(result_datatype, fileline))
 
 def do_load_operation(registers, dest_reg, source_reg, operand_reg_or_imm, size, fileline):
     source_datatype, operand_datatype = get_datatypes_for_triple_arg_operation(registers, source_reg, operand_reg_or_imm, fileline)
     result_datatype = load_from_datatypes(source_datatype, operand_datatype, size, fileline)
-    registers[dest_reg].append(analyzer.RegisterInfo(result_datatype, fileline))
+    registers[dest_reg].set_new_reg(analyzer.RegisterInfo(result_datatype, fileline))
 
 def do_store_operation(registers, dest_reg, source_reg, operand_reg_or_imm, size, fileline):
     source_datatype, operand_datatype = get_datatypes_for_triple_arg_operation(registers, source_reg, operand_reg_or_imm, fileline)

@@ -10,6 +10,7 @@ class LineType(Enum):
     COMMENTED = 1
 
 class SrcFile:
+    __slots__ = ("_line_num", "_commented_lines", "_uncommented_lines", "_line_type", "_filename")
     def __init__(self, filename):
         self._line_num = 0
         self._commented_lines = []
@@ -73,6 +74,7 @@ class SrcFile:
         return self._filename
 
 class IterStr:
+    __slots__ = ("str", "_index")
     def __init__(self, str):
         self.str = str
 
