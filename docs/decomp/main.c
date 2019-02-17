@@ -1,23 +1,17 @@
 // 0x80002bc
 void __noreturn main_()
 {
-    unsigned __int8 **v0; // r10
+    Toolkit *tk; // r10
     int v1; // r0
     int v2; // r1
     int v3; // r2
     int v4; // r3
-    int v5; // r0
-    int v6; // r1
-    int v7; // r2
-    int v8; // r3
-    char v9; // zf
-    int *v10; // r0
-    int v11; // r0
+    char zf; // zf
 
     main_initToolkitAndOtherSubsystems();
-    sub_8001514();
-    v1 = clear_e200AD04();
-    sub_803D1A8(v1, v2, v3, v4);
+    SeedRNG2();
+    clear_e200AD04();
+    sub_803D1A8();
     while ( 1 )
     {
         main_pollGeneralLCDStatus_STAT_LYC_();
@@ -30,27 +24,27 @@ void __noreturn main_()
         getPalleteAndTransition_80023E0();
         copyPalletesToIWRAM_8001808();
         copyPalletesToIWRAM_8002650();
-        sprite_resetObjVars_800289C(v5, v6, v7, v8);
+        sprite_resetObjVars_800289C(v1, v2, v3, v4);
         copyAndFillTo_GFX30025c0_Ptr();
         main_static_80003E4();
-        ++*v0[9];
+        ++*tk->currFrame;
         sub_8000E10();
-        (*(main_subsystemJumpTable + **v0))();
-        rng_800154C();
+        (*(&main_subsystemJumpTable + *tk->jo_gameSubsysSel))();
+        GetRNG1();
         isSameSubsystem_800A732();
-        if ( !v9 )
+        if ( !zf )
             subsystem_triggerTransition_800630A();
         chatbox_onUpdate();
-        v10 = cb_call_200A880();
-        PET_onUpdate_8001B94(v10);
-        v11 = sub_3006814();
-        main_static_8000454(v11);
+        cb_call_200A880();
+        PET_onUpdate_8001B94();
+        sub_3006814();
+        main_static_8000454();
     }
 }
 
 
 // 0x80003a0
-void main_awaitFrame_80003A0()
+void __cdecl main_awaitFrame_80003A0()
 {
     do
     {
@@ -64,22 +58,18 @@ void main_awaitFrame_80003A0()
 
 // 0x80003d0
 // () -> void
-__int16 *main_pollGeneralLCDStatus_STAT_LYC_()
+void __cdecl main_pollGeneralLCDStatus_STAT_LYC_()
 {
-    __int16 *result; // r0
-
-    result = &GeneralLCDStatus_STAT_LYC_;
     while ( GeneralLCDStatus_STAT_LYC_ & 1 )
         ;
-    return result;
 }
 
 
 // 0x80003e4
-unsigned __int16 *main_static_80003E4()
+Joystick *main_static_80003E4()
 {
-    int v0; // r10
-    unsigned __int16 *result; // r0
+    Toolkit *tk; // r10
+    Joystick *joystick; // r0
     int v2; // r7
     int v3; // r4
     int v4; // r5
@@ -89,15 +79,15 @@ unsigned __int16 *main_static_80003E4()
     signed int v8; // r2
     int v9; // r2
 
-    result = *(v0 + oToolkit_JoypadPtr);
-    v2 = *(result + 19) + 1;
+    joystick = tk->joystick;
+    v2 = joystick->Counter + 1;
     if ( v2 > 4 )
         LOBYTE(v2) = 0;
-    *(result + 19) = v2;
+    joystick->Counter = v2;
     v3 = ~KeyStatus;
-    v4 = *result;
-    result[3] = v4;
-    *result = v3;
+    v4 = joystick->keyState;
+    joystick->keyState_dup = v4;
+    joystick->keyState = v3;
     v5 = v3 & v4;
     v6 = 8;
     v7 = 0;
@@ -105,99 +95,129 @@ unsigned __int16 *main_static_80003E4()
     {
         if ( (1 << v7) & v5 )
         {
-            v8 = *(result + v6);
+            v8 = *(&joystick->keyState + v6);
             if ( v8 < 16 )
             {
                 v9 = v8 + 1;
-                *(result + v6) = v9;
+                *(&joystick->keyState + v6) = v9;
                 if ( v9 == 1 )
                     goto LABEL_10;
 LABEL_7:
                 v5 &= ~(1 << v7);
                 goto LABEL_10;
             }
-            if ( *(result + 19) )
+            if ( joystick->Counter )
                 goto LABEL_7;
         }
         else
         {
-            *(result + v6) = 0;
+            *(&joystick->keyState + v6) = 0;
         }
 LABEL_10:
         ++v7;
         ++v6;
     }
     while ( v6 < 18 );
-    result[2] = v5;
-    result[1] = v3 & ~v4;
-    return result;
+    joystick->keyPress = v5;
+    joystick->IQR = v3 & ~v4;
+    return joystick;
 }
 
 
 // 0x8000454
-int __fastcall main_static_8000454(int a1)
+void __cdecl main_static_8000454()
 {
-    Toolkit *toolkit; // r10
-    int result; // r0
-    char v3; // zf
-    Joystick *v4; // r0
-    u16 v5; // r2
-    u8 *v6; // r1
-    u8 v7; // r4
+    Toolkit *tk; // r10
+    char zf; // zf
+    Joystick *v2; // r0
+    u16 v3; // r2
+    u16 v4; // r0
+    u8 *v5; // r1
+    u8 v6; // r4
 
-    result = IsPaletteFadeActive();
-    if ( !v3 )
+    IsPaletteFadeActive();
+    if ( !zf )
     {
-        result = sub_813D60C();
-        if ( v3 )
+        sub_813D60C();
+        if ( zf )
         {
-            result = *toolkit->jo_gameSubsysSel;
-            if ( result != 16 )
+            if ( *tk->jo_gameSubsysSel != 16 )
             {
-                v4 = toolkit->joystick;
-                v5 = v4->IQR;
-                result = v4->keyState;
-                v6 = toolkit->jo_gameSubsysSel + 4;
-                v7 = *v6 - 1;
-                if ( *v6 - 1 <= 0 )
+                v2 = tk->joystick;
+                v3 = v2->IQR;
+                v4 = v2->keyState;
+                v5 = tk->jo_gameSubsysSel + 4;
+                v6 = *v5 - 1;
+                if ( *v5 - 1 <= 0 )
                 {
-                    v7 = 0;
-                    result &= 0xFu;
-                    if ( result == 15 )
+                    v6 = 0;
+                    if ( (v4 & 0xF) == 15 )
                     {
-                        if ( v5 & 0xF )
+                        if ( v3 & 0xF )
                             start_800023C();
                     }
                 }
-                *v6 = v7;
+                *v5 = v6;
             }
         }
     }
-    return result;
 }
 
 
 // 0x80004a4
-void main_initToolkitAndOtherSubsystems()
+void __cdecl main_initToolkitAndOtherSubsystems()
 {
-    int v0; // r0
+    Toolkit *tk; // r10
     int v1; // r0
     int v2; // r1
     int v3; // r2
     int v4; // r3
 
-    v0 = CpuSet_toolKit();
-    sub_8006C22(v0);
+    tk = SetPrimaryToolkitPointers();
+    RandomizeExtraToolkitPointers();
     v1 = sRender_08_setRenderingState(&loc_C0);
     main_zeroFill_80017EC(v1, v2, v3, v4);
     render_800172C();
     copyMemory_8001850();
     main_static_8000570();
+    zeroFill_80007B2();
+    sub_8001974();
+    zeroFill_80024A2();
+    sub_8003962();
+    zeroFill_8003AB2();
+    sub_80015B4();
+    sub_800260C();
+    sub_80027C4();
+    sub_802FDB0();
+    clearWord_e200AC1C();
+    clearChatboxAndEvent();
+    cleareMemory_802FF2C();
+    reqBBS_init_8004DF0();
+    sub_8004D48();
+    sub_8036ED4();
+    sub_8036F24();
+    zeroFill_e20094C0();
+    zeroFill_e20097A0();
+    zeroFill_e2009740();
+    zeroFill_e200F3A0();
+    sub_80062EC();
+    sub_8006910();
+    sub_803DE5C();
+    sub_8144240();
+    sub_803EBC8();
+    sub_813D960();
+    sub_80071B4();
+    sub_804657C();
+    sub_80467D8();
+    LOWORD(dword_2009930) = 1;
+    ZeroFillByWord(tk->jo_gameSubsysSel, 8);
+    sub_803D1A8();
+    sub_803E900();
 }
 
 
 // 0x8000570
-__int16 *__noreturn main_static_8000570()
+__int16 *__cdecl main_static_8000570()
 {
     __int16 *result; // r0
 

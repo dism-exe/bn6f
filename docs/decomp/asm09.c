@@ -15,7 +15,7 @@ char (*sub_8062AB0())[8]
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
     sub_8030472();
-    sub_80028D4(byte_2037800, v3, v4, v5);
+    sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(*(&off_8062B1C + *(v0 + 5)));
     chatbox_uncompBasedOnMap_803FD08();
     sub_8062BCC();
@@ -37,7 +37,7 @@ int sub_8062BCC()
 {
     int v0; // r10
 
-    return sub_8003570(pt_8062BE4[*(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)]);
+    return SpawnObjectsFromList(pt_8062BE4[*(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)]);
 }
 
 

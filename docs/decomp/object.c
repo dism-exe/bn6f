@@ -218,7 +218,7 @@ char *__fastcall sub_800BF5C(int a1)
 // 0x800bf66
 void __fastcall sub_800BF66(int a1, int a2, int a3, int a4)
 {
-    ZeroFillByWord(byte_203CF00, 0xA0u, a3, a4);
+    ZeroFillByWord(byte_203CF00, 160);
 }
 
 
@@ -264,7 +264,7 @@ int sub_800BFC4()
 
 
 // 0x800c01c
-int __fastcall sub_800C01C(int a1, int a2, signed int a3, int a4)
+void __fastcall sub_800C01C(int a1, int a2, signed int a3, int a4)
 {
     int v4; // r10
     int v5; // r6
@@ -285,42 +285,36 @@ int __fastcall sub_800C01C(int a1, int a2, signed int a3, int a4)
     v8 = byte_800C08C;
     if ( a3 != 255 )
         v8 = &byte_86DFA98[32 * (6 * a3 + 3 * v7 + a2 - 1)];
-    return (iCopyTiles[0])(byte_800C0AA[8 * v6 + a1], 3 * a2 + 6, 2, v8);
+    iCopyTiles(byte_800C0AA[8 * v6 + a1], 3 * a2 + 6, 2, v8, 5, 3);
 }
 
 
 // 0x800c0ba
-int __fastcall __noreturn sub_800C0BA(int a1, int a2, int a3)
+void __fastcall __noreturn sub_800C0BA(int a1, int a2, int a3)
 {
     int v3; // r10
-    int v4; // r0
-    int (*v5)[8]; // r3
 
-    v4 = byte_800C0AA[8 * *(*(v3 + oToolkit_S2034880_Ptr) + 13) + a1];
-    v5 = off_800C0F4[a3];
-    return copyTiles();
+    copyTiles(byte_800C0AA[8 * *(*(v3 + oToolkit_S2034880_Ptr) + 13) + a1], 3 * a2 + 6, 2, off_800C0F4[a3], 5, &byte_0[3]);
 }
 
 
 // 0x800c100
-int __fastcall __noreturn sub_800C100(int a1)
+void __fastcall __noreturn sub_800C100(int a1, int a2, int a3)
 {
-    int v1; // r10
-    int v2; // r0
+    int v3; // r10
+    int v4; // r4
 
-    v2 = byte_800C182[8 * *(*(v1 + oToolkit_S2034880_Ptr) + 13) + a1];
-    return copyTiles();
+    v4 = *(*(v3 + oToolkit_S2034880_Ptr) + 13);
+    copyTiles(byte_800C182[8 * v4 + a1], 3 * a2 + 6, 2, &byte_86E0498[32 * (a3 ^ v4)], 5, &byte_0[1]);
 }
 
 
 // 0x800c138
-int __fastcall __noreturn sub_800C138(int a1)
+void __fastcall __noreturn sub_800C138(int a1, int a2)
 {
-    int v1; // r10
-    int v2; // r0
+    int v2; // r10
 
-    v2 = byte_800C182[8 * *(*(v1 + oToolkit_S2034880_Ptr) + 13) + a1];
-    return copyTiles();
+    copyTiles(byte_800C182[8 * *(*(v2 + oToolkit_S2034880_Ptr) + 13) + a1], 3 * a2 + 6, 2, byte_800C178, 5, &byte_0[1]);
 }
 
 
@@ -392,7 +386,7 @@ void __fastcall sub_800C380(int a1, int a2)
                 if ( !v10 )
                 {
                     *(v2 + 2) = 2;
-                    sub_800C928(v3, v4);
+                    object_updatePanelParameters(v3, v4);
                 }
                 v11 = 1;
                 if ( v10 <= 60 )
@@ -410,7 +404,7 @@ void __fastcall sub_800C380(int a1, int a2)
                 if ( v12 & 0xF800000 && !(v12 & 0x100000) && !(object_getPanelParameters(v3, v4) & 0xF880080) )
                 {
                     *(v2 + 2) = 1;
-                    sub_800C928(v3, v4);
+                    object_updatePanelParameters(v3, v4);
                 }
                 break;
             case 8:
@@ -439,7 +433,7 @@ void __fastcall sub_800C380(int a1, int a2)
                     if ( !v14 )
                     {
                         *(v2 + 2) = 2;
-                        sub_800C928(v3, v4);
+                        object_updatePanelParameters(v3, v4);
                     }
                     v15 = *(v2 + 2);
                     if ( v14 <= 60 && __CFSHR__(v14, 2) )
@@ -463,74 +457,70 @@ void __fastcall sub_800C488(int a1)
 int __fastcall sub_800C4BC(int a1, unsigned int a2)
 {
     char *v2; // r0
-    int v3; // r2
-    int v4; // r3
-    int v5; // r2
-    int v6; // r3
-    char *v7; // r7
-    signed int v8; // r4
-    int v9; // r1
-    int v10; // r5
-    int v11; // r4
-    char *v12; // r7
-    BOOL v13; // r0
-    int v14; // r1
-    char *v15; // r0
-    char v16; // r1
-    int v17; // r0
-    __int16 v18; // r1
-    char *v20; // [sp+0h] [bp-1Ch]
-    unsigned int v21; // [sp+4h] [bp-18h]
+    char *v3; // r7
+    signed int v4; // r4
+    int v5; // r1
+    int v6; // r5
+    int v7; // r4
+    char *v8; // r7
+    BOOL v9; // r0
+    int v10; // r1
+    char *v11; // r0
+    char v12; // r1
+    int v13; // r0
+    __int16 v14; // r1
+    char *v16; // [sp+0h] [bp-1Ch]
+    unsigned int v17; // [sp+4h] [bp-18h]
 
-    v21 = a2;
-    v20 = sub_800C6D6(a1);
+    v17 = a2;
+    v16 = sub_800C6D6(a1);
     v2 = sub_800C8C2(0);
-    ZeroFillByWord(v2, 0x40u, v3, v4);
-    v7 = sub_800C8C2(0);
-    v8 = 0;
+    ZeroFillByWord(v2, 64);
+    v3 = sub_800C8C2(0);
+    v4 = 0;
     do
     {
-        LOBYTE(v9) = -1;
-        if ( (v8 - 1) <= 5 )
-            v9 = (v21 >> (v8 - 1)) & 1;
-        *v7 = v9;
-        v7 += 8;
-        ++v8;
+        LOBYTE(v5) = -1;
+        if ( (v4 - 1) <= 5 )
+            v5 = (v17 >> (v4 - 1)) & 1;
+        *v3 = v5;
+        v3 += 8;
+        ++v4;
     }
-    while ( v8 < 8 );
-    ZeroFillByWord(byte_2039AE0, &dword_500, v5, v6);
-    v10 = 0;
+    while ( v4 < 8 );
+    ZeroFillByWord(byte_2039AE0, &dword_500);
+    v6 = 0;
     do
     {
-        v11 = 0;
+        v7 = 0;
         do
         {
-            v12 = sub_800C6E0(v11, v10);
-            *v12 = byte_800C590[8 * v10 + v11];
-            v13 = object_isValidPanel(v11, v10);
-            LOBYTE(v14) = 0;
-            if ( v13 )
-                v14 = (*&v20[4 * (v10 - 1)] >> 4 * (v11 - 1)) & 0xF;
-            v12[2] = v14;
-            v12[6] = v14;
-            v15 = sub_800C8C2(v11);
-            v16 = *v15;
-            v12[3] = *v15;
-            v12[4] = v16;
-            v12[7] = v16;
-            v17 = byte_800C5B8[8 * v10 + v11];
-            v12[12] = v17;
-            v12[10] = v11;
-            v12[11] = v10;
-            sub_800C488(v17);
-            *(v12 + 7) = v18;
-            *(v12 + 9) = &loc_708;
-            ++v11;
+            v8 = sub_800C6E0(v7, v6);
+            *v8 = byte_800C590[8 * v6 + v7];
+            v9 = object_isValidPanel(v7, v6);
+            LOBYTE(v10) = 0;
+            if ( v9 )
+                v10 = (*&v16[4 * (v6 - 1)] >> 4 * (v7 - 1)) & 0xF;
+            v8[2] = v10;
+            v8[6] = v10;
+            v11 = sub_800C8C2(v7);
+            v12 = *v11;
+            v8[3] = *v11;
+            v8[4] = v12;
+            v8[7] = v12;
+            v13 = byte_800C5B8[8 * v6 + v7];
+            v8[12] = v13;
+            v8[10] = v7;
+            v8[11] = v6;
+            sub_800C488(v13);
+            *(v8 + 7) = v14;
+            *(v8 + 9) = &loc_708;
+            ++v7;
         }
-        while ( v11 < 8 );
-        ++v10;
+        while ( v7 < 8 );
+        ++v6;
     }
-    while ( v10 < 5 );
+    while ( v6 < 5 );
     return sub_800C67C();
 }
 
@@ -545,9 +535,7 @@ int sub_800C5E0()
     int result; // r0
     char v5; // zf
     int v6; // r0
-    int v7; // r1
-    int v8; // r2
-    int v9; // r2
+    int v7; // r2
 
     sub_800C192();
     v0 = byte_2039AE0;
@@ -562,9 +550,8 @@ int sub_800C5E0()
             if ( !*v0 )
             {
                 sub_800C01C(v2, v3, 255, 0);
-                v7 = v0[11];
-                v8 = v0[7];
-                sub_800C138(v0[10]);
+                v7 = v0[7];
+                sub_800C138(v0[10], v0[11] + 1);
             }
             if ( v0[13] )
             {
@@ -583,10 +570,7 @@ int sub_800C5E0()
             }
             result = v0[12];
             if ( v0[12] )
-            {
-                v9 = v0[7];
-                sub_800C100(v2);
-            }
+                sub_800C100(v2, v3 + 1, v0[7]);
         }
         v0 += 32;
         ++v1;
@@ -661,7 +645,7 @@ __int64 __fastcall __noreturn sub_800C6F0(int a1)
     v7 = 0;
     do
     {
-        v4 = sub_800C90A(v2, v3);
+        v4 = object_getPanelDataOffset(v2, v3);
         if ( v4 )
         {
             if ( v4[3] != v4[4] )
@@ -712,7 +696,7 @@ int __fastcall sub_800C81E(int result, unsigned int a2, char a3)
             v8 = sub_800C6E0(result, v4);
             v8[3] = v5;
             v8[16] = 90;
-            sub_800C928(v3, v4);
+            object_updatePanelParameters(v3, v4);
         }
         ++v4;
     }
@@ -773,7 +757,7 @@ void __fastcall __noreturn sub_800C878(unsigned int a1, char a2)
     }
     v5 = sub_800C6E0(0, 0);
     v5[4] = *sub_800C8C2(0);
-    sub_800C928(0, 0);
+    object_updatePanelParameters(0, 0);
 }
 
 
@@ -797,7 +781,7 @@ int __fastcall object_getPanelParameters(int a1, int a2)
     char *v2; // r0
     int result; // r0
 
-    v2 = sub_800C90A(a1, a2);
+    v2 = object_getPanelDataOffset(a1, a2);
     if ( v2 )
         result = *(v2 + 5);
     else
@@ -807,7 +791,7 @@ int __fastcall object_getPanelParameters(int a1, int a2)
 
 
 // 0x800c90a
-char *__fastcall sub_800C90A(int a1, int a2)
+char *__fastcall object_getPanelDataOffset(int a1, int a2)
 {
     return sub_3007958(a1, a2);
 }
@@ -821,7 +805,7 @@ char *__noreturn sub_800C918()
 
 
 // 0x800c928
-char *__fastcall __noreturn sub_800C928(int a1, int a2)
+char *__fastcall __noreturn object_updatePanelParameters(int a1, int a2)
 {
     return sub_30078E0(a1, a2);
 }
@@ -835,7 +819,7 @@ signed int __fastcall __noreturn object_crackPanel(int a1, int a2)
     int v4; // r1
     int v6; // r1
 
-    v2 = sub_800C90A(a1, a2);
+    v2 = object_getPanelDataOffset(a1, a2);
     if ( !v2 )
         return 0;
     v3 = *(v2 + 5);
@@ -869,7 +853,7 @@ signed int __fastcall __noreturn object_crackPanelDup1(int a1, int a2)
     int v4; // r1
     int v6; // r1
 
-    v2 = sub_800C90A(a1, a2);
+    v2 = object_getPanelDataOffset(a1, a2);
     if ( !v2 )
         return 0;
     v3 = *(v2 + 5);
@@ -902,7 +886,7 @@ signed int __fastcall __noreturn object_breakPanel(int a1, int a2)
     int v3; // r1
     int v4; // r1
 
-    v2 = sub_800C90A(a1, a2);
+    v2 = object_getPanelDataOffset(a1, a2);
     if ( !v2 )
         return 0;
     v3 = *(v2 + 5);
@@ -925,7 +909,7 @@ signed int __fastcall __noreturn object_breakPanel_dup1(int a1, int a2)
     int v4; // r1
     int v6; // r1
 
-    v2 = sub_800C90A(a1, a2);
+    v2 = object_getPanelDataOffset(a1, a2);
     if ( v2 )
     {
         v3 = *(v2 + 5);
@@ -959,7 +943,7 @@ signed int __fastcall __noreturn object_breakPanel_dup2(int a1, int a2)
     int v4; // r1
     int v6; // r1
 
-    v2 = sub_800C90A(a1, a2);
+    v2 = object_getPanelDataOffset(a1, a2);
     if ( !v2 )
         return 0;
     v3 = *(v2 + 5);
@@ -993,7 +977,7 @@ signed int __fastcall __noreturn object_breakPanel_dup3(int a1, int a2)
     int v4; // r1
     int v6; // r1
 
-    v2 = sub_800C90A(a1, a2);
+    v2 = object_getPanelDataOffset(a1, a2);
     if ( !v2 )
         return 0;
     v3 = *(v2 + 5);
@@ -1027,7 +1011,7 @@ signed int __fastcall __noreturn object_breakPanelLoud(int a1, int a2)
     int v4; // r1
     int v6; // r1
 
-    v2 = sub_800C90A(a1, a2);
+    v2 = object_getPanelDataOffset(a1, a2);
     if ( !v2 )
         return 0;
     v3 = *(v2 + 5);
@@ -1060,7 +1044,7 @@ signed int __fastcall __noreturn object_panel_setPoison(int a1, int a2)
     int v3; // r1
     int v4; // r1
 
-    v2 = sub_800C90A(a1, a2);
+    v2 = object_getPanelDataOffset(a1, a2);
     if ( !v2 )
         return 0;
     v3 = *(v2 + 5);
@@ -1079,15 +1063,15 @@ signed int __fastcall __noreturn object_panel_setPoison(int a1, int a2)
 char *__fastcall object_highlightPanel(__int64 a1)
 {
     char *result; // r0
-    char v2; // zf
+    char isValidPanel; // zf
     __int64 v3; // [sp+0h] [bp-Ch]
 
     v3 = a1;
     object_isValidPanel(a1, SHIDWORD(a1));
     result = v3;
-    if ( !v2 )
+    if ( !isValidPanel )
     {
-        result = sub_800C90A(v3, SHIDWORD(v3));
+        result = object_getPanelDataOffset(v3, SHIDWORD(v3));
         result[1] = 1;
     }
     return result;
@@ -1106,7 +1090,7 @@ char *__fastcall object_highlightPanelBlue(__int64 a1)
     result = v3;
     if ( !v2 )
     {
-        result = sub_800C90A(v3, SHIDWORD(v3));
+        result = object_getPanelDataOffset(v3, SHIDWORD(v3));
         if ( result[1] != 1 )
             result[1] = 2;
     }
@@ -1132,12 +1116,12 @@ char *__fastcall __noreturn object_setPanelAlliance(int a1, int a2, char a3)
     v3 = a1;
     v4 = a2;
     v5 = a3;
-    result = sub_800C90A(a1, a2);
+    result = object_getPanelDataOffset(a1, a2);
     if ( result[2] )
     {
         result[3] = v5;
         *(result + 8) = 0;
-        sub_800C928(v3, v4);
+        object_updatePanelParameters(v3, v4);
     }
     return result;
 }
@@ -1178,7 +1162,7 @@ char *__fastcall __noreturn object_setPanelTypeBlink(int a1, int a2, char a3, ch
 
     v4 = a3;
     v5 = a4;
-    result = sub_800C90A(a1, a2);
+    result = object_getPanelDataOffset(a1, a2);
     result[13] = 1;
     result[8] = v4;
     result[9] = v5;
@@ -1353,7 +1337,7 @@ int __fastcall __noreturn object_dead_getPanelsTypeAllianceCount(int a1, int a2)
     v5 = 1;
     while ( 1 )
     {
-        v2 = sub_800C90A(v4, v5);
+        v2 = object_getPanelDataOffset(v4, v5);
         if ( v2[3] == v7 && v2[2] == v6 )
             ++v8;
         if ( ++v4 > 6 )
@@ -1381,7 +1365,7 @@ int __fastcall __noreturn object_dead_getPanelsTypeCount(int a1)
     v4 = 1;
     while ( 1 )
     {
-        if ( sub_800C90A(v3, v4)[2] == v1 )
+        if ( object_getPanelDataOffset(v3, v4)[2] == v1 )
             ++v2;
         if ( ++v3 > 6 )
         {
@@ -1399,7 +1383,7 @@ char *__fastcall __noreturn object_hidePanel(int a1, int a2)
 {
     char *result; // r0
 
-    result = sub_800C90A(a1, a2);
+    result = object_getPanelDataOffset(a1, a2);
     if ( result )
         *result = 0;
     return result;
@@ -1411,7 +1395,7 @@ char *__fastcall __noreturn object_showPanel(int a1, int a2)
 {
     char *result; // r0
 
-    result = sub_800C90A(a1, a2);
+    result = object_getPanelDataOffset(a1, a2);
     if ( result )
         *result = 1;
     return result;
@@ -1464,7 +1448,7 @@ int __fastcall object_getPanelsExceptCurrentFilterred(int a1, int a2, int a3, in
 
 
 // 0x800cea0
-int __fastcall __noreturn sub_800CEA0(int a1, int a2, int a3, int a4)
+int __fastcall __noreturn object_getPanelsFiltered(int a1, int a2, int a3, int a4)
 {
     int v4; // r1
     int v5; // r0
@@ -1508,7 +1492,7 @@ int __fastcall __noreturn sub_800CEA0(int a1, int a2, int a3, int a4)
 
 
 // 0x800ced0
-int __fastcall sub_800CED0(int a1, int a2, int a3)
+int __fastcall object_getRandomPanelFromCurrentColumn(int a1, int a2, int a3)
 {
     int v3; // r5
     int v4; // r1
@@ -1523,11 +1507,11 @@ int __fastcall sub_800CED0(int a1, int a2, int a3)
     v5 = (a3 + v4);
     if ( !v4 )
         a1 = 7 - a1;
-    result = sub_800CF14(a1, v12, *v5, v5[1]);
+    result = object_getPanelsInColumnIgnoreRowFiltered(a1, v12, *v5, v5[1]);
     if ( result )
     {
         v7 = result;
-        sub_8001532();
+        GetPositiveSignedRNG2();
         __asm { SVC         6 }
         result = *(&v13 + v7) & 7;
     }
@@ -1536,7 +1520,7 @@ int __fastcall sub_800CED0(int a1, int a2, int a3)
 
 
 // 0x800cf14
-int __fastcall sub_800CF14(int a1, int a2, int a3, int a4)
+int __fastcall object_getPanelsInColumnIgnoreRowFiltered(int a1, int a2, int a3, int a4)
 {
     int v4; // r7
     int v5; // r6
@@ -1579,7 +1563,7 @@ int __fastcall sub_800CF14(int a1, int a2, int a3, int a4)
 
 
 // 0x800cf42
-int __fastcall sub_800CF42(int a1, int a2, int a3, int a4)
+int __fastcall object_getPanelsInRowIgnoreColumnFiltered(int a1, int a2, int a3, int a4)
 {
     int v4; // r7
     int v5; // r6
@@ -1622,7 +1606,7 @@ int __fastcall sub_800CF42(int a1, int a2, int a3, int a4)
 
 
 // 0x800cf70
-int __fastcall sub_800CF70(int a1, int a2, int a3, int a4)
+int __fastcall object_getPanelsIgnoreRowFiltered(int a1, int a2, int a3, int a4)
 {
     int v4; // r7
     int v5; // r6
@@ -1673,7 +1657,7 @@ int __fastcall sub_800CF70(int a1, int a2, int a3, int a4)
 
 
 // 0x800cfa6
-int __fastcall sub_800CFA6(int a1, int a2, int a3, int a4)
+int __fastcall object_getPanelsIgnoreColumnFiltered(int a1, int a2, int a3, int a4)
 {
     int v4; // r7
     int v5; // r6
@@ -1724,7 +1708,7 @@ int __fastcall sub_800CFA6(int a1, int a2, int a3, int a4)
 
 
 // 0x800cfdc
-int __fastcall sub_800CFDC(int a1, int a2, int a3, int a4)
+int __fastcall object_getPanelsInColumnFiltered(int a1, int a2, int a3, int a4)
 {
     int v4; // r7
     int v5; // r4
@@ -1750,7 +1734,7 @@ int __fastcall sub_800CFDC(int a1, int a2, int a3, int a4)
 
 
 // 0x800d012
-int __fastcall sub_800D012(int a1, int a2, int a3, int a4)
+int __fastcall object_getPanelsInRowFiltered(int a1, int a2, int a3, int a4)
 {
     int v4; // r7
     int v5; // r4
@@ -1776,11 +1760,11 @@ int __fastcall sub_800D012(int a1, int a2, int a3, int a4)
 
 
 // 0x800d048
-signed int sub_800D048()
+signed int object_getEnemyPlayerPanelY()
 {
     int v0; // r5
-    int v1; // r0
-    int v2; // r1
+    u32 v1; // r0
+    u32 v2; // r1
     signed int result; // r0
 
     v1 = sub_80103BC(*(v0 + 22) ^ 1);
@@ -1795,10 +1779,10 @@ signed int sub_800D048()
 
 
 // 0x800d06a
-int sub_800D06A()
+int object_getEnemyPlayerPanels()
 {
     unsigned __int8 *v0; // r5
-    int v1; // r0
+    u32 v1; // r0
     int v2; // r1
     int result; // r0
     int v4; // r1
@@ -1819,7 +1803,7 @@ int sub_800D06A()
 
 
 // 0x800d086
-int __fastcall sub_800D086(int a1, int a2, int a3, int a4)
+int __fastcall object_getClosestPanelMatchingRowFiltered(int a1, int a2, int a3, int a4)
 {
     int v4; // ST00_4
     int v5; // ST04_4
@@ -1842,7 +1826,7 @@ int __fastcall sub_800D086(int a1, int a2, int a3, int a4)
     v5 = a2;
     v6 = a3;
     v7 = a4;
-    v8 = -sub_800E2C2(a1);
+    v8 = -object_getAllianceDirection(a1);
     v9 = v5;
     v10 = v6;
     v11 = v7;
@@ -1871,7 +1855,7 @@ int __fastcall sub_800D086(int a1, int a2, int a3, int a4)
 
 
 // 0x800d0bc
-int __fastcall __noreturn sub_800D0BC(int a1, int a2, int a3, int a4)
+int __fastcall __noreturn object_getFirstPanelInDirectionFiltered(int a1, int a2, int a3, int a4)
 {
     int v4; // r4
     bool v5; // zf
@@ -1906,7 +1890,7 @@ int __fastcall __noreturn sub_800D0BC(int a1, int a2, int a3, int a4)
 
 
 // 0x800d0dc
-int __fastcall sub_800D0DC(int a1, int a2, int a3, int a4)
+int __fastcall object_getFirstPanelInDirectionWithinDistanceFiltered(int a1, int a2, int a3, int a4)
 {
     int v4; // r4
     int v5; // r6
@@ -1946,7 +1930,7 @@ int __fastcall sub_800D0DC(int a1, int a2, int a3, int a4)
 
 
 // 0x800d100
-int __fastcall sub_800D100(int a1, int a2, int a3, int a4)
+int __fastcall object_getFirstPanelInDirectionFilteredDup1(int a1, int a2, int a3, int a4)
 {
     int v4; // r4
     bool v5; // zf
@@ -2077,7 +2061,7 @@ signed int __fastcall __noreturn sub_800D190(int a1, int a2, int a3, int a4)
     v4 = 0;
     do
     {
-        v5 = sub_800D086(v11, v12, v9, v10);
+        v5 = object_getClosestPanelMatchingRowFiltered(v11, v12, v9, v10);
         if ( v5 )
             *(&v8 + v4++) = v5;
         ++v12;
@@ -2132,7 +2116,7 @@ int __fastcall sub_800D1F0(int a1, int a2, int a3, int a4)
     {
         while ( 1 )
         {
-            v8 = sub_800C90A(v15, v16);
+            v8 = object_getPanelDataOffset(v15, v16);
             if ( !v8 )
                 goto LABEL_7;
             if ( v8[3] == v10 )
@@ -2178,7 +2162,7 @@ int __fastcall sub_800D270(int a1, int a2, int a3, int a4)
     {
         while ( 1 )
         {
-            v7 = sub_800C90A(v15, v16);
+            v7 = object_getPanelDataOffset(v15, v16);
             if ( !v7 )
                 goto LABEL_10;
             if ( v7[3] != v10 )
@@ -2187,7 +2171,7 @@ int __fastcall sub_800D270(int a1, int a2, int a3, int a4)
         }
         while ( 1 )
         {
-            v8 = sub_800C90A(v15, v16);
+            v8 = object_getPanelDataOffset(v15, v16);
             if ( !v8 )
                 break;
             if ( v8[3] == v10 )
@@ -2237,7 +2221,7 @@ int __fastcall sub_800D300(int a1, int a2, int a3, int a4)
     {
         while ( 1 )
         {
-            v7 = sub_800C90A(v17, v18);
+            v7 = object_getPanelDataOffset(v17, v18);
             if ( !v7 )
                 goto LABEL_13;
             if ( v7[3] != v12 )
@@ -2252,7 +2236,7 @@ int __fastcall sub_800D300(int a1, int a2, int a3, int a4)
         {
             while ( 1 )
             {
-                v10 = sub_800C90A(v17, v18);
+                v10 = object_getPanelDataOffset(v17, v18);
                 if ( !v10 )
                     break;
                 if ( v10[3] == v12 )
@@ -2292,7 +2276,7 @@ int __fastcall sub_800D3A6(int a1, int a2, int a3, int a4)
     v10 = a2;
     v11 = a3;
     v12 = a4;
-    v8 = sub_800E2C0();
+    v8 = object_getEnemyDirection();
     v13 = 0;
     while ( 1 )
     {
@@ -2310,7 +2294,7 @@ int __fastcall sub_800D3A6(int a1, int a2, int a3, int a4)
 
 
 // 0x800d3fe
-int __fastcall sub_800D3FE(int a1, int a2, int a3, int a4)
+int __fastcall object_getPanelRegion(int a1, int a2, int a3, int a4)
 {
     int v4; // r4
     int v5; // r6
@@ -2331,7 +2315,7 @@ int __fastcall sub_800D3FE(int a1, int a2, int a3, int a4)
     v13 = a3;
     v14 = a4;
     v7 = *(&off_8019B78 + v4);
-    v15 = sub_800E2C2(v5);
+    v15 = object_getAllianceDirection(v5);
     v8 = 0;
     while ( 1 )
     {
@@ -2421,7 +2405,7 @@ int sub_800D4AC()
 
 
 // 0x800d4c2
-int sub_800D4C2()
+int object_getEdgePanelMatchingRow()
 {
     unsigned __int8 *v0; // r5
 
@@ -2443,7 +2427,7 @@ int __fastcall sub_800D4D0(int a1, int a2, int a3)
     object_getFlipDirection(a1, a2);
     result = sub_800D53C(v6, v5, v3);
     if ( result )
-        sub_800D0BC(result, v6, *&byte_800D52C[8 * v5], *&byte_800D52C[8 * v5 + 4]);
+        object_getFirstPanelInDirectionFiltered(result, v6, *&byte_800D52C[8 * v5], *&byte_800D52C[8 * v5 + 4]);
     return result;
 }
 
@@ -2465,7 +2449,7 @@ int __fastcall sub_800D53C(int a1, int a2, int a3)
         object_isValidPanel(v5, v6);
         if ( v3 )
             break;
-        if ( sub_800C90A(v5, v6)[3] != v7 )
+        if ( object_getPanelDataOffset(v5, v6)[3] != v7 )
             return v5;
     }
     return 0;
@@ -2482,21 +2466,21 @@ void __noreturn sub_800D58C()
 // 0x800d5ba
 void __noreturn sub_800D5BA()
 {
-    int v0; // r5
+    Battle *v0; // r5
     int v1; // r6
     int v2; // r7
     char v3; // zf
 
-    v1 = *(v0 + 18);
-    v2 = *(v0 + 22);
-    object_getFlipDirection_800E2CA();
+    v1 = v0->panelX;
+    v2 = v0->Alliance;
+    object_getFrontDirection(v0);
     while ( 1 )
     {
         object_isValidPanel(v1, 1);
         if ( !v3 )
             break;
-        v1 = *(v0 + 18);
-        object_getFlipDirection_800E2CA();
+        v1 = v0->panelX;
+        object_getFrontDirection(v0);
     }
     sub_800D5F0(v1, v2);
 }
@@ -2517,7 +2501,7 @@ int __fastcall __noreturn sub_800D5F0(int a1, int a2)
     v5 = 1;
     do
     {
-        v6 = sub_800C90A(v4, v5);
+        v6 = object_getPanelDataOffset(v4, v5);
         if ( v6 && v6[3] != v2 )
             ++v3;
         ++v5;
@@ -2536,7 +2520,7 @@ char *__fastcall __noreturn sub_800D618(int a1, int a2, int a3)
     int v6; // r2
 
     v3 = a3;
-    result = sub_800C90A(a1, a2);
+    result = object_getPanelDataOffset(a1, a2);
     if ( result )
     {
         v5 = result[4];
@@ -2612,7 +2596,7 @@ signed int __fastcall sub_800D6CC(int a1, int a2)
         v4 = 1;
         while ( 1 )
         {
-            v5 = sub_800C90A(v3, v4);
+            v5 = object_getPanelDataOffset(v3, v4);
             if ( !v5 || v5[3] != v2 )
                 break;
             if ( ++v4 > 3 )
@@ -2637,7 +2621,7 @@ int __fastcall sub_800D700(int a1, int a2)
     v5 = 1;
     do
     {
-        if ( sub_800C90A(v4, v5)[3] == v3 )
+        if ( object_getPanelDataOffset(v4, v5)[3] == v3 )
             ++v2;
         ++v5;
     }
@@ -2671,7 +2655,7 @@ int __fastcall sub_800E258(int a1)
 
 // 0x800e276
 // (int a1, int a2) -> (int n1, int n2)
-int __fastcall sub_800E276(char a1)
+int __fastcall object_getCoordinatesForPanels(char a1)
 {
     return 2621440 * a1 - 9175040;
 }
@@ -2679,50 +2663,48 @@ int __fastcall sub_800E276(char a1)
 
 // 0x800e29c
 // () -> void
-int sub_800E29C()
+int __usercall object_setCoordinatesFromPanels@<R0>(Battle *obj@<R5>)
 {
-    int v0; // r5
     int v1; // r1
     int result; // r0
-    int v3; // r1
+    u32 v3; // r1
 
-    v1 = *(v0 + 19);
-    result = sub_800E276(*(v0 + 18));
-    *(v0 + 52) = result;
-    *(v0 + 56) = v3;
+    v1 = obj->panelY;
+    result = object_getCoordinatesForPanels(obj->panelX);
+    obj->x = result;
+    obj->y = v3;
     return result;
 }
 
 
 // 0x800e2ac
-int sub_800E2AC()
+int __usercall object_setPanelsFromCoordinates@<R0>(Battle *obj@<R5>)
 {
-    int v0; // r5
-    int v1; // r1
-    int v2; // r2
+    u32 v1; // r1
+    u32 v2; // r2
     int result; // r0
-    char v4; // r1
+    u8 v4; // r1
 
-    v1 = *(v0 + 56);
-    v2 = *(v0 + 60);
-    result = sub_800E258(*(v0 + 52));
-    *(v0 + 18) = result;
-    *(v0 + 19) = v4;
+    v1 = obj->y;
+    v2 = obj->z;
+    result = sub_800E258(obj->x);
+    obj->panelX = result;
+    obj->panelY = v4;
     return result;
 }
 
 
 // 0x800e2c0
-int sub_800E2C0()
+int object_getEnemyDirection()
 {
     int v0; // r5
 
-    return sub_800E2C2(*(v0 + 22));
+    return object_getAllianceDirection(*(v0 + 22));
 }
 
 
 // 0x800e2c2
-int __fastcall sub_800E2C2(int a1)
+int __fastcall object_getAllianceDirection(int a1)
 {
     return 1 - 2 * a1;
 }
@@ -2730,11 +2712,9 @@ int __fastcall sub_800E2C2(int a1)
 
 // 0x800e2ca
 // () -> int
-int object_getFlipDirection_800E2CA()
+int __usercall object_getFrontDirection@<R0>(Battle *obj@<R5>)
 {
-    int v0; // r5
-
-    return object_getFlipDirection(*(v0 + 22), *(v0 + 23));
+    return object_getFlipDirection(obj->Alliance, obj->directionFlip);
 }
 
 
@@ -2747,63 +2727,59 @@ int __fastcall object_getFlipDirection(int a1, int a2)
 
 
 // 0x800e2d8
-int __fastcall object_subtractHP(int result)
+void __usercall object_subtractHP(Battle *obj@<R5>, int amt@<R0>)
 {
-    int v1; // r5
-    int v2; // r1
-    unsigned __int8 v3; // vf
+    int HP; // r1
+    unsigned __int8 vf; // vf
     int v4; // r1
 
-    v2 = *(v1 + 36);
-    v3 = __OFSUB__(v2, result);
-    v4 = v2 - result;
-    if ( (v4 < 0) ^ v3 )
-        LOWORD(v4) = 0;
-    *(v1 + 36) = v4;
-    return result;
+    HP = obj->HP;
+    vf = __OFSUB__(HP, amt);
+    v4 = HP - amt;
+    if ( (v4 < 0) ^ vf )
+        LOWORD(v4) = 0;                                                         // game over!
+    obj->HP = v4;
 }
 
 
 // 0x800e2ec
-int __fastcall object_addHP(int a1)
+int __usercall object_addHP@<R0>(Battle *obj@<R5>, int inc@<R0>)
 {
-    int v1; // r5
-    int v2; // r1
-    int result; // r0
+    int newHP; // r1
+    int maxHP; // r0
 
-    v2 = *(v1 + 36) + a1;
-    result = *(v1 + 38);
-    if ( v2 > result )
-        LOWORD(v2) = *(v1 + 38);
-    *(v1 + 36) = v2;
-    return result;
+    newHP = obj->HP + inc;
+    maxHP = obj->maxHP;
+    if ( newHP > maxHP )
+        LOWORD(newHP) = obj->maxHP;
+    obj->HP = newHP;
+    return maxHP;
 }
 
 
 // 0x800e2fc
-signed int __fastcall sub_800E2FC(int a1, int a2)
+signed int __usercall sub_800E2FC@<R0>(Battle *obj@<R5>, int HP@<R0>, int a2@<R1>)
 {
-    int v2; // r5
-    int v3; // r6
+    int vHP; // r6
     int v4; // r3
     int v5; // r1
     int v6; // r2
     signed int result; // r0
     int v8; // r0
 
-    v3 = a1;
-    if ( a2 && sub_802CE78(*(v2 + 22) ^ 1) == 189 )
+    vHP = HP;
+    if ( a2 && sub_802CE78(obj->Alliance ^ 1) == 189 )
     {
-        v8 = sub_80E37D2(*(v2 + 18), *(v2 + 19), 0, v4);
-        sub_800BF16(*(v2 + 22), 1, v8);
-        sub_800ABC6(*(v2 + 18), *(v2 + 19));
-        sub_802CEA6(*(v2 + 22) ^ 1);
+        v8 = sub_80E37D2(obj->panelX, obj->panelY, 0, v4);
+        sub_800BF16(obj->Alliance, 1, v8);
+        sub_800ABC6(obj->panelX, obj->panelY);
+        sub_802CEA6(obj->Alliance ^ 1);
         result = 1;
     }
     else
     {
-        object_addHP(v3);
-        sub_80E05F6(v2 + 64, *(v2 + 52), *(v2 + 56), *(v2 + 60));
+        object_addHP(obj, vHP);
+        SpawnT4BattleObjectWithId0(obj, &obj->vx, obj->x, obj->y, obj->z);
         sound_play(138, v5, v6);
         result = 0;
     }
@@ -2814,25 +2790,25 @@ signed int __fastcall sub_800E2FC(int a1, int a2)
 // 0x800e360
 signed int __fastcall sub_800E360(int a1, int a2)
 {
-    int v2; // r5
+    Battle *v2; // r5
     int v3; // r6
     int v4; // r3
     signed int result; // r0
     int v6; // r0
 
     v3 = a1;
-    if ( a2 && sub_802CE78(*(v2 + 22) ^ 1) == 189 )
+    if ( a2 && sub_802CE78(v2->Alliance ^ 1) == 189 )
     {
-        v6 = sub_80E37D2(*(v2 + 18), *(v2 + 19), 0, v4);
-        sub_800BF16(*(v2 + 22), 1, v6);
-        sub_800ABC6(*(v2 + 18), *(v2 + 19));
-        sub_802CEA6(*(v2 + 22) ^ 1);
+        v6 = sub_80E37D2(v2->panelX, v2->panelY, 0, v4);
+        sub_800BF16(v2->Alliance, 1, v6);
+        sub_800ABC6(v2->panelX, v2->panelY);
+        sub_802CEA6(v2->Alliance ^ 1);
         result = 1;
     }
     else
     {
-        object_addHP(v3);
-        sub_80E05F6(v2 + 64, *(v2 + 52), *(v2 + 56), *(v2 + 60));
+        object_addHP(v2, v3);
+        SpawnT4BattleObjectWithId0(v2, &v2->vx, v2->x, v2->y, v2->z);
         result = 0;
     }
     return result;
@@ -2868,7 +2844,7 @@ int sub_800E3BE()
 
 
 // 0x800e3de
-unsigned int __noreturn sub_800E3DE()
+unsigned int __noreturn object_calculateFinalDamage1()
 {
     int v0; // r5
     int v1; // r4
@@ -2882,7 +2858,7 @@ unsigned int __noreturn sub_800E3DE()
 
     v1 = *(v0 + 84);
     v2 = 0;
-    if ( sub_800C90A(*(v0 + 18), *(v0 + 19))[2] == 5 )
+    if ( object_getPanelDataOffset(*(v0 + 18), *(v0 + 19))[2] == 5 )
         v2 = 1;
     v3 = (*(v0 + 84) + 130);
     v4 = 5;
@@ -2916,7 +2892,7 @@ int __noreturn object_calculateFinalDamage2()
 
     v1 = *(v0 + 84);
     v2 = 0;
-    if ( sub_800C90A(*(v0 + 18), *(v0 + 19))[2] == 5 )
+    if ( object_getPanelDataOffset(*(v0 + 18), *(v0 + 19))[2] == 5 )
         v2 = 1;
     v3 = (*(v0 + 84) + 130);
     v4 = 5;
@@ -2937,11 +2913,9 @@ int __noreturn object_calculateFinalDamage2()
 
 // 0x800e456
 // () -> int
-int sub_800E456()
+int __usercall object_getFlip@<R0>(Battle *obj@<R5>)
 {
-    int v0; // r5
-
-    return *(v0 + 22) ^ *(v0 + 23);
+    return obj->Alliance ^ obj->directionFlip;
 }
 
 
@@ -2992,7 +2966,7 @@ int __noreturn sub_800E500()
     int v5; // r1
     int v6; // r2
 
-    v1 = sub_800C90A(*(v0 + 18), *(v0 + 19));
+    v1 = object_getPanelDataOffset(*(v0 + 18), *(v0 + 19));
     if ( !v1 )
         return 0;
     v2 = v1[2];
@@ -3161,7 +3135,7 @@ int sub_800E730()
     int v23; // r0
     int v24; // [sp+0h] [bp-14h]
 
-    v24 = sub_801A180();
+    v24 = object_getFlag2();
     v1 = *(v0 + 84);
     result = battle_isPaused();
     if ( !v3 )
@@ -3172,14 +3146,14 @@ int sub_800E730()
     if ( ((v4 < 0) ^ v5) | (v4 == 0) )
     {
         object_clearFlag(&loc_800);
-        sub_801A176(8);
+        object_clearFlag2(8);
         *(v1 + 28) = 0;
     }
     else
     {
         if ( v24 & 8 )
         {
-            sub_801A176(136);
+            object_clearFlag2(136);
             if ( !*(v0 + 92) )
                 *(v0 + 92) = *(v0 + 8);
             *(v0 + 9) = 4;
@@ -3210,7 +3184,7 @@ int sub_800E730()
     {
         if ( v24 & 0x10000 )
         {
-            sub_801A176(196736);
+            object_clearFlag2(196736);
             if ( !*(v0 + 92) )
                 *(v0 + 92) = *(v0 + 8);
             *(v0 + 9) = 6;
@@ -3245,7 +3219,7 @@ int sub_800E730()
 LABEL_29:
     if ( v24 & 0x20000 )
     {
-        sub_801A176(131200);
+        object_clearFlag2(131200);
         if ( !*(v0 + 92) )
             *(v0 + 92) = *(v0 + 8);
         *(v0 + 9) = 7;
@@ -3275,7 +3249,7 @@ LABEL_38:
 LABEL_41:
         if ( v24 & 0x80 )
         {
-            sub_801A176(196744);
+            object_clearFlag2(196744);
             *(v1 + 28) = 0;
             *(v1 + 42) = 0;
             *(v1 + 44) = 0;
@@ -3287,7 +3261,7 @@ LABEL_41:
         goto LABEL_45;
     }
     object_clearFlag(0x8000);
-    sub_801A176(128);
+    object_clearFlag2(128);
     *(v1 + 30) = 0;
     *(v1 + 72) = 0;
 LABEL_45:
@@ -3301,7 +3275,7 @@ LABEL_45:
     }
     else if ( v24 & 0x40 )
     {
-        sub_801A176(64);
+        object_clearFlag2(64);
         object_setFlag(0x4000);
     }
     v19 = *(v1 + 32);
@@ -3315,7 +3289,7 @@ LABEL_45:
     }
     else if ( v24 & 0x20 )
     {
-        sub_801A176(32);
+        object_clearFlag2(32);
         object_setFlag(&loc_2000);
         if ( !*(v1 + 76) )
             sub_80E09EE(0, v20, v21, v22);
@@ -3397,7 +3371,7 @@ void sub_800E9FA()
     int v1; // r2
     int v2; // r3
 
-    sub_801A176(197118);
+    object_clearFlag2(197118);
     ZeroFillByHalfword(*(v0 + 84) + 128, 0xEu, v1, v2);
 }
 
@@ -3409,7 +3383,7 @@ void sub_800EA0E()
     int v1; // r2
     int v2; // r3
 
-    sub_801A176(197118);
+    object_clearFlag2(197118);
     ZeroFillByHalfword(*(v0 + 84) + 128, 0xEu, v1, v2);
 }
 
@@ -3423,7 +3397,7 @@ int sub_800EA22()
     signed int v3; // r3
     int result; // r0
 
-    sub_801A176(196846);
+    object_clearFlag2(196846);
     v1 = *(v0 + 84);
     *v1 = 0;
     v2 = *(v1 + 128);
@@ -3451,7 +3425,7 @@ int sub_800EA4E()
     signed int v3; // r3
     int result; // r0
 
-    sub_801A176(197118);
+    object_clearFlag2(197118);
     v1 = *(v0 + 84);
     *v1 = 0;
     v2 = *(v1 + 128);
@@ -3513,7 +3487,7 @@ signed int sub_800EA90()
 // 0x800eaba
 int sub_800EABA()
 {
-    return sub_801A176(197118);
+    return object_clearFlag2(197118);
 }
 
 
@@ -3540,7 +3514,7 @@ int sub_800EADA()
     int v2; // r3
     int result; // r0
 
-    sub_801A176(197118);
+    object_clearFlag2(197118);
     ZeroFillByHalfword(*(v0 + 84) + 128, 0xEu, v1, v2);
     result = *(v0 + 84);
     *(result + 44) = 0;
@@ -3601,8 +3575,8 @@ int sub_800EB26()
         if ( result < 96 || result > 101 )
         {
             *(v1 + 17) = 18;
-            sub_801A16C(0x4000);
-            result = sub_801A176(6);
+            object_setFlag2(0x4000);
+            result = object_clearFlag2(6);
         }
     }
     return result;
@@ -3621,8 +3595,8 @@ int sub_800EB4E()
     if ( result & 0x40 )
     {
         *(v1 + 17) = 18;
-        sub_801A16C(0x4000);
-        result = sub_801A176(6);
+        object_setFlag2(0x4000);
+        result = object_clearFlag2(6);
     }
     return result;
 }
@@ -3741,7 +3715,7 @@ int __fastcall sub_800EC08(_DWORD *a1, int a2, int a3, int a4)
 // 0x800ec3c
 int sub_800EC3C()
 {
-    return sub_801A16C(0x8000);
+    return object_setFlag2(0x8000);
 }
 
 
@@ -3760,7 +3734,7 @@ void __fastcall sub_800EC48(int a1, int a2, int a3, int a4)
 
 
 // 0x800ec56
-unsigned __int64 __fastcall sub_800EC56(signed int a1)
+signed __int64 __fastcall sub_800EC56(signed int a1)
 {
     int *v1; // r2
 
@@ -3850,10 +3824,6 @@ char *object_createAIData()
     unsigned int v1; // r1
     int v2; // r4
     char *v4; // r4
-    int v5; // r2
-    int v6; // r3
-    int v7; // r2
-    int v8; // r3
 
     v0 = &unk_2034080;
     v1 = 2147483648;
@@ -3871,9 +3841,9 @@ char *object_createAIData()
     }
     *byte_203F6A0 |= v1;
     v4 = v0;
-    ZeroFillByWord(v0, 0x7Cu, *byte_203F6A0, byte_203F6A0);
-    ZeroFillByWord((v4 + 128), 0x20u, v5, v6);
-    ZeroFillByWord((v4 + 160), 0x50u, v7, v8);
+    ZeroFillByWord(v0, 124);
+    ZeroFillByWord(v4 + 128, 32);
+    ZeroFillByWord(v4 + 160, 80);
     return v4;
 }
 

@@ -938,7 +938,7 @@ void sub_812E440()
     int v7; // r0
     int v8; // r1
     __int16 v9; // r0
-    int v10; // r1
+    int v10; // r0
     __int16 v11; // r0
     u8 *v12; // r6
     _BYTE *v13; // r0
@@ -997,14 +997,14 @@ void sub_812E440()
                         (loc_812EE38)(0);
                     }
                     sub_811BC24(v8 + 60, 68, 0);
-                    v10 = *(v0 + 46);
-                    if ( 180 - v10 <= 60 )
+                    v10 = 180 - *(v0 + 46);
+                    if ( v10 <= 60 )
                     {
                         v11 = sub_812EDFC(*(v0 + 42) & 0x7FFF, 1);
                         *(v0 + 48) = v11;
                         (loc_812EE38)(1);
                     }
-                    sub_811BC24(180 - v10, 68, 1);
+                    sub_811BC24(v10, 68, 1);
                 }
                 *(v0 + 38) = 0;
                 *(v6 + 8) = 0;
@@ -1099,22 +1099,20 @@ int sub_812E61C()
     int v0; // r5
     int result; // r0
     char v2; // zf
-    char v3; // r4
-    int v4; // r0
-    char v5; // r6
-    int v6; // r1
-    int v7; // r2
-    int v8; // r3
+    int v3; // r4
+    int v4; // r6
+    int v5; // r1
+    int v6; // r2
+    int v7; // r3
 
     result = chatbox_8045F3C(8);
     if ( !v2 )
     {
         v3 = eStruct200BC30_getJumpOffset00();
         v4 = sub_803EA50();
-        v5 = v4;
-        sub_803EBAC(v4, v6, v7, v8);
+        sub_803EBAC(v4, v5, v6, v7);
         eStruct200BC30_setJumpOffset00(v3);
-        sub_803EA58(v5);
+        sub_803EA58(v4);
         *(v0 + 12) = 12;
         result = engine_setScreeneffect(12, 16);
     }
@@ -1138,12 +1136,11 @@ int sub_812E678()
     int v0; // r5
     char v1; // zf
     int result; // r0
-    char v3; // r4
-    int v4; // r0
-    char v5; // r6
-    int v6; // r1
-    int v7; // r2
-    int v8; // r3
+    int v3; // r4
+    int v4; // r6
+    int v5; // r1
+    int v6; // r2
+    int v7; // r3
 
     chatbox_8045F3C(128);
     if ( v1 )
@@ -1156,10 +1153,9 @@ int sub_812E678()
 LABEL_8:
         v3 = eStruct200BC30_getJumpOffset00();
         v4 = sub_803EA50();
-        v5 = v4;
-        sub_803EBAC(v4, v6, v7, v8);
+        sub_803EBAC(v4, v5, v6, v7);
         eStruct200BC30_setJumpOffset00(v3);
-        sub_803EA58(v5);
+        sub_803EA58(v4);
         *(v0 + 12) = 8;
         result = engine_setScreeneffect(12, 16);
     }
@@ -1183,8 +1179,6 @@ int sub_812E6CC()
     int v4; // r1
     int v5; // r2
     int v6; // r3
-    int v7; // r2
-    int v8; // r3
 
     result = IsPaletteFadeActive();
     if ( !v2 )
@@ -1200,7 +1194,7 @@ int sub_812E6CC()
         sub_8132614();
         *(v0 + 3) = 16;
         *(v0 + 30) = 0;
-        ZeroFillByWord(dword_20251A0, 0x10u, v7, v8);
+        ZeroFillByWord(dword_20251A0, 16);
         sub_812AFC8();
     }
     return result;
@@ -1477,48 +1471,37 @@ void __noreturn sub_812E910()
 void __noreturn sub_812E9AC()
 {
     int v0; // r10
-    char *v1; // r0
-    int v2; // r7
+    char *v1; // r7
+    int v2; // r0
     int v3; // r1
     int v4; // r2
     int v5; // r3
-    int v6; // r0
-    int v7; // r1
-    int v8; // r2
-    int v9; // r3
-    int v10; // r0
-    int v11; // r1
-    int v12; // r2
-    int v13; // r3
-    _WORD *v14; // r0
-    _BYTE *v15; // r0
-    int v16; // r2
-    int v17; // r3
+    _WORD *v6; // r0
+    _BYTE *v7; // r0
 
     v1 = sub_812ED2C();
-    v2 = v1;
-    zeroFillVRAM(v1, v3, v4, v5);
-    sub_80017E0(v6, v7, v8, v9);
-    sub_800183C(v10, v11, v12, v13);
+    zeroFillVRAM();
+    sub_80017E0(v2, v3, v4, v5);
+    sub_800183C();
     sub_80015FC(16);
     sub_8046664();
     chatbox_8040818();
-    v14 = *(v0 + oToolkit_RenderInfoPtr);
-    *v14 = -16576;
-    v14[8] = 0;
-    v14[9] = 0;
-    v14[10] = 0;
-    v14[11] = 0;
-    v14[12] = 0;
-    v14[13] = 0;
-    v15 = *(v0 + oToolkit_Unk200f3a0_Ptr);
-    v15[8] = 47;
-    v15[10] = 63;
-    v15[1] = 16;
-    v15[5] = 0;
-    *v15 = -16;
-    v15[4] = 14;
-    ZeroFillByEightWords(v2, 0x80u, v16, v17);
+    v6 = *(v0 + oToolkit_RenderInfoPtr);
+    *v6 = -16576;
+    v6[8] = 0;
+    v6[9] = 0;
+    v6[10] = 0;
+    v6[11] = 0;
+    v6[12] = 0;
+    v6[13] = 0;
+    v7 = *(v0 + oToolkit_Unk200f3a0_Ptr);
+    v7[8] = 47;
+    v7[10] = 63;
+    v7[1] = 16;
+    v7[5] = 0;
+    *v7 = -16;
+    v7[4] = 14;
+    ZeroFillByEightWords(v1, 128);
     sub_812EAC4();
     sub_812EA44();
     sub_812EAAC();

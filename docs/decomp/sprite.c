@@ -1,11 +1,10 @@
 // 0x80026a4
 // () -> void
-int sprite_loadAnimationData()
+int __usercall sprite_loadAnimationData@<R0>(Battle *obj@<R5>)
 {
-    int v0; // r5
-    unsigned int v1; // r5
+    char *v1; // r5
 
-    v1 = v0 + 16 * (*(v0 + 2) >> 4);
+    v1 = obj + 16 * (obj->objTypeSpriteOff >> 4);
     return sub_3006730();
 }
 
@@ -18,12 +17,11 @@ int sprite_80026B6()
 
 
 // 0x80026c4
-void __noreturn sprite_update()
+void __usercall sprite_update(Battle *obj@<R5>)
 {
-    int v0; // r5
-    unsigned int v1; // r5
+    char *v1; // r5
 
-    v1 = v0 + 16 * (*(v0 + 2) >> 4);
+    v1 = obj + 16 * (obj->objTypeSpriteOff >> 4);
     sub_3006792();
 }
 
@@ -36,43 +34,42 @@ int sprite_chatbox_80026D6()
 
 
 // 0x80026e4
-// (int a1, int a2, int a3) ->
-int __fastcall sprite_load(char a1, int a2, int a3)
+// (int a1, int spriteTypeIdx, int a3) ->
+int __usercall sprite_load@<R0>(Battle *obj@<R5>, char a1@<R0>, int spriteTypeIdx@<R1>, int spriteIdx@<R2>)
 {
-    _BYTE *v3; // r5
-    unsigned int v4; // r5
-    char *v5; // r0
+    char *v4; // r5
+    void *sprite; // r0
     int result; // r0
     char v7; // [sp+0h] [bp-18h]
-    int v8; // [sp+4h] [bp-14h]
-    int v9; // [sp+8h] [bp-10h]
+    int v8_spriteListIdx; // [sp+4h] [bp-14h]
+    int v3_spriteIdx; // [sp+8h] [bp-10h]
 
-    *v3 &= 0xF7u;
-    v4 = &v3[16 * (v3[2] >> 4)];
+    obj->objFlags &= 0xF7u;
+    v4 = obj + 16 * (obj->objTypeSpriteOff >> 4);
     v7 = a1;
-    v8 = a2;
-    v9 = a3;
-    v5 = sub_8002986((a2 << 8) | a3);
-    if ( !v5 )
+    v8_spriteListIdx = spriteTypeIdx;
+    v3_spriteIdx = spriteIdx;
+    sprite = sub_8002986((spriteTypeIdx << 8) | spriteIdx);
+    if ( !sprite )
     {
-        v5 = (*(&spritePointersList + v8))[v9];
-        if ( v5 < 0 )
-            v5 = spriteWhiteDot;
+        sprite = (*(spritePointersList + v8_spriteListIdx))[v3_spriteIdx];
+        if ( sprite < 0 )
+            sprite = spriteWhiteDot;
     }
-    result = sprite_initialize(v5);
-    *(v4 + 3) = v7;
+    result = sprite_initialize(sprite);
+    v4[3] = v7;
     return result;
 }
 
 
 // 0x800272c
 // (void *a1) -> void
-signed int __fastcall sprite_initialize(int a1)
+signed int __fastcall sprite_initialize(void *sprite)
 {
     int v1; // r5
     signed int result; // r0
 
-    *(v1 + 24) = a1 + 4;
+    *(v1 + 24) = sprite + 4;
     *(v1 + 3) = 0;
     *v1 = 0;
     *(v1 + 36) = 0;
@@ -109,19 +106,19 @@ signed int __fastcall spriteLoadMugshot_800275A(int a1)
 
 
 // 0x8002770
-// (int a1, int a2) -> void
-signed int __fastcall initGuiSprite_8002770(int a1, int a2)
+// (int guiSpriteIdx, void *defaultGuiPtr) -> void
+signed int __fastcall initGuiSprite_8002770(int guiSpriteIdx, void *defaultGuiPtr)
 {
     int v2; // r5
     int v3; // r5
-    int v4; // r0
+    void *guiSprite; // r0
     signed int result; // r0
 
     v3 = v2 + 32;
-    v4 = *(&guiSpritePtrs + a1);
-    if ( v4 < 0 )
-        v4 = a2;
-    sprite_initialize(v4);
+    guiSprite = *(&guiSpritePtrs + guiSpriteIdx);
+    if ( guiSprite < 0 )
+        guiSprite = defaultGuiPtr;
+    sprite_initialize(guiSprite);
     *(v3 + 3) = -128;
     result = 128;
     *(v3 + 22) = 128;
@@ -263,7 +260,7 @@ _DWORD *sub_8002874()
 void __fastcall sprite_resetObjVars_800289C(int a1, int a2, int a3, int a4)
 {
     dword_20093A8 = 0;
-    WordFill(&dword_200A890, &dword_388, -1, a4);
+    WordFill(&dword_200A890, &dword_388, -1);
 }
 
 
@@ -282,7 +279,7 @@ void __fastcall sub_80028D4(int a1, int a2, int a3, int a4)
     int v5; // r3
 
     v4 = a1;
-    ZeroFillByWord(byte_200DCA0, 0x50u, a3, a4);
+    ZeroFillByWord(byte_200DCA0, 80);
     dword_200DCEC = v4;
     HalfwordFill(&byte_200DCA0[4], 0x18u, 0x7FFF, v5);
     ByteFill(&byte_200DCA0[28], 48, 0xFFu);
@@ -294,10 +291,10 @@ signed int __fastcall uncompSprite_8002906(unsigned __int8 *a1)
 {
     int v1; // r1
     unsigned __int8 *i; // r7
-    int v3; // r0
+    int v3_spriteTypeIdx; // r0
     unsigned int v4; // r3
     _DWORD *v5; // r2
-    void *v6; // r8
+    void *compPtr; // r8
     int v7; // r0
     int v8; // r2
     int v9; // r3
@@ -308,13 +305,13 @@ signed int __fastcall uncompSprite_8002906(unsigned __int8 *a1)
     v1 = dword_200DCEC;
     for ( i = a1; ; i += 2 )
     {
-        v3 = *i;
-        if ( v3 == 255 )
+        v3_spriteTypeIdx = *i;
+        if ( v3_spriteTypeIdx == 255 )
             return 1;
         v4 = 4 * i[1];
-        v5 = ((2 * *(*(&spritePointersList + v3) + v4)) >> 1);
-        v6 = v5;
-        v7 = (v3 << 8) | (v4 >> 2);
+        v5 = ((2 * *(*(spritePointersList + v3_spriteTypeIdx) + v4)) >> 1);
+        compPtr = v5;
+        v7 = (v3_spriteTypeIdx << 8) | (v4 >> 2);
         v8 = *v5 >> 8;
         if ( v1 + v8 >= 33816576 || byte_200DCA0[0] >= 12 )
             break;
@@ -325,7 +322,7 @@ signed int __fastcall uncompSprite_8002906(unsigned __int8 *a1)
         byte_200DCA0[0] = v9 + 1;
         v11 = v10 - 4;
         v12 = v8;
-        SWI_LZ77UnCompReadNormalWrite8bit(v6, (v10 - 4));
+        SWI_LZ77UnCompReadNormalWrite8bit(compPtr, (v10 - 4));
         v1 = v11 + v12;
         dword_200DCEC = v11 + v12;
     }
@@ -336,16 +333,16 @@ signed int __fastcall uncompSprite_8002906(unsigned __int8 *a1)
 // 0x8002986
 int __fastcall sub_8002986(int a1)
 {
-    signed int v1; // r2
+    signed int i; // r2
 
-    v1 = 0;
+    i = 0;
     do
     {
-        if ( a1 == *&byte_200DCA0[2 * v1 + 4] )
-            return *&byte_200DCA0[4 * v1 + 28];
-        ++v1;
+        if ( a1 == *&byte_200DCA0[2 * i + 4] )
+            return *&byte_200DCA0[4 * i + 28];
+        ++i;
     }
-    while ( v1 < 12 );
+    while ( i < 12 );
     return 0;
 }
 
@@ -389,7 +386,7 @@ signed int __fastcall sub_80029A8(_BYTE *a1)
                 if ( v7 >= 24 )
                 {
                     v1 = v15;
-                    v8 = *(*(&spritePointersList + (v6 >> 8)) + (4 * v6 & 0x3FF));
+                    v8 = *(*(spritePointersList + (v6 >> 8)) + (4 * v6 & 0x3FF));
                     if ( v8 >= 0 )
                         break;
                     v9 = ((2 * v8) >> 1);
@@ -432,7 +429,7 @@ signed int __fastcall sub_8002A64(int a1, int a2)
 
     v2 = (a1 << 8) | a2;
     v3 = dword_200DCEC;
-    v4 = *(*(&spritePointersList + (v2 >> 8)) + (4 * v2 & 0x3FF));
+    v4 = *(*(spritePointersList + (v2 >> 8)) + (4 * v2 & 0x3FF));
     if ( v4 >= 0 )
         return 0;
     v5 = ((2 * v4) >> 1);
@@ -463,7 +460,7 @@ unsigned int sub_8002ADE()
     if ( byte_200DCA0[0] )
     {
         result = *&byte_200DCA0[2 * (byte_200DCA0[0] - 1) + 4];
-        v1 = *(*(&spritePointersList + (result >> 8)) + (4 * result & 0x3FF));
+        v1 = *(*(spritePointersList + (result >> 8)) + (4 * result & 0x3FF));
         if ( v1 < 0 )
         {
             dword_200DCEC -= *((2 * v1) >> 1) >> 8;
@@ -496,7 +493,7 @@ signed int __fastcall sprite_decompress(int a1, int a2)
         v4 += 2;
         if ( v4 >= 24 )
         {
-            v5 = *(*(&spritePointersList + (v2 >> 8)) + (4 * v2 & 0x3FF));
+            v5 = *(*(spritePointersList + (v2 >> 8)) + (4 * v2 & 0x3FF));
             if ( v5 < 0 )
             {
                 v6 = ((2 * v5) >> 1);
@@ -702,12 +699,11 @@ int sprite_makeUnscalable()
 
 // 0x8002d80
 // (int pallete) -> void
-char __fastcall sprite_setPallete(char result)
+void __fastcall sprite_setPallete(int pallete)
 {
     int v1; // r5
 
-    *(16 * (*(v1 + 2) >> 4) + v1 + 4) = result;
-    return result;
+    *(16 * (*(v1 + 2) >> 4) + v1 + 4) = pallete;
 }
 
 
@@ -719,7 +715,7 @@ int __fastcall sprite_getPallete(int a1)
 
 
 // 0x8002d98
-char __fastcall sprite_setAnimationAlt(char result)
+int __fastcall sprite_setAnimationAlt(int result)
 {
     int v1; // r5
 
@@ -730,12 +726,9 @@ char __fastcall sprite_setAnimationAlt(char result)
 
 // 0x8002da4
 // (u8 a1) -> void
-char __fastcall sprite_setAnimation(char result)
+void __usercall sprite_setAnimation(Battle *obj@<R5>, u8 animation@<R0>)
 {
-    int v1; // r5
-
-    *(16 * (*(v1 + 2) >> 4) + v1) = result;
-    return result;
+    *(&obj->objFlags + 16 * (obj->objTypeSpriteOff >> 4)) = animation;
 }
 
 
@@ -750,6 +743,494 @@ int sprite_forceWhitePallete()
     result = *(v1 + 21) & 0xF | 0xF0;
     *(v1 + 21) = result;
     return result;
+}
+
+
+// 0x8002dc8
+int __fastcall sprite_getFinalPalette(int a1)
+{
+    return *(16 * (*(a1 + 2) >> 4) + a1 + 21);
+}
+
+
+// 0x8002dd8
+int sprite_clearFinalPalette()
+{
+    int v0; // r5
+    unsigned int v1; // r3
+    int result; // r0
+
+    v1 = 16 * (*(v0 + 2) >> 4) + v0;
+    result = *(v1 + 21) & 0xF;
+    *(v1 + 21) = result;
+    return result;
+}
+
+
+// 0x8002dea
+int sprite_getFrameParameters()
+{
+    int v0; // r5
+    unsigned __int8 *v1; // r3
+    int result; // r0
+    int v3; // r1
+    int v4; // r2
+
+    v1 = (16 * (*(v0 + 2) >> 4) + v0);
+    result = v1[2];
+    if ( v1[1] )
+        result &= 0xFFFFFF3F;
+    v3 = *v1;
+    v4 = *v1;
+    return result;
+}
+
+
+// 0x8002e04
+int sub_8002E04()
+{
+    int v0; // r5
+
+    return *(16 * (*(v0 + 2) >> 4) + v0 + 3) & 8;
+}
+
+
+// 0x8002e14
+int __fastcall sub_8002E14(int a1)
+{
+    int v1; // r5
+    unsigned int v2; // r3
+    int result; // r0
+
+    v2 = 16 * (*(v1 + 2) >> 4) + v1;
+    result = 4 * a1;
+    *(v2 + 21) = *(v2 + 21) & 0xF3 | result;
+    return result;
+}
+
+
+// 0x8002e2a
+unsigned int sub_8002E2A()
+{
+    int v0; // r5
+
+    return (*(16 * (*(v0 + 2) >> 4) + v0 + 21) & 0xCu) >> 2;
+}
+
+
+// 0x8002e3c
+int sprite_hasShadow()
+{
+    Battle *obj; // r5
+    char *v1; // r3
+    int result; // r0
+
+    v1 = obj + 16 * (obj->objTypeSpriteOff >> 4);
+    result = (v1[3] | 1) & 0xFB;
+    v1[3] = result;
+    return result;
+}
+
+
+// 0x8002e52
+int sub_8002E52()
+{
+    int v0; // r5
+    unsigned int v1; // r3
+    int result; // r0
+
+    v1 = 16 * (*(v0 + 2) >> 4) + v0;
+    result = *(v1 + 3) & 0xFA;
+    *(v1 + 3) = result;
+    return result;
+}
+
+
+// 0x8002e68
+int sub_8002E68()
+{
+    int v0; // r5
+    unsigned int v1; // r3
+
+    v1 = 16 * (*(v0 + 2) >> 4) + v0;
+    return *(**(v1 + 28) + *(v1 + 24)) >> 5;
+}
+
+
+// 0x8002e7e
+signed int sub_8002E7E()
+{
+    _BYTE *v0; // r5
+    unsigned int v1; // r3
+    int v2; // r1
+    int v3; // r2
+
+    if ( !*v0 )
+        return 0;
+    v1 = &v0[16 * (v0[2] >> 4)];
+    v2 = *(v1 + 12) & 0x1FF;
+    v3 = *(v1 + 14) & 0xFF;
+    return 1;
+}
+
+
+// 0x8002eac
+int sub_8002EAC()
+{
+    int v0; // r5
+    unsigned int v1; // r3
+    int result; // r0
+
+    v1 = 16 * (*(v0 + 2) >> 4) + v0;
+    result = *(v1 + 22) | 2;
+    *(v1 + 22) = result;
+    return result;
+}
+
+
+// 0x8002ebe
+int sub_8002EBE()
+{
+    int v0; // r5
+    unsigned int v1; // r3
+    int result; // r0
+
+    v1 = 16 * (*(v0 + 2) >> 4) + v0;
+    result = *(v1 + 22) & 0xFD;
+    *(v1 + 22) = result;
+    return result;
+}
+
+
+// 0x8002ed0
+int __usercall sprite_setColorShader@<R0>(Battle *obj@<R5>, int result@<R0>)
+{
+    *(&obj->objParams + 8 * (obj->objTypeSpriteOff >> 4) + 1) = result;
+    return result;
+}
+
+
+// 0x8002edc
+int __fastcall sprite_getColorShader(int a1)
+{
+    return *(16 * (*(a1 + 2) >> 4) + a1 + 6);
+}
+
+
+// 0x8002ee8
+int sub_8002EE8()
+{
+    int v0; // r5
+    int result; // r0
+
+    result = 0;
+    *(16 * (*(v0 + 2) >> 4) + v0 + 6) = 0;
+    return result;
+}
+
+
+// 0x8002ef6
+int __fastcall sprite_setMosaicSize(int a1, int a2)
+{
+    int v2; // r5
+    int v3; // r10
+    int v4; // r0
+    int result; // r0
+    unsigned int v6; // r3
+
+    v4 = a1 | 16 * a2;
+    if ( !v4 )
+        return sub_8002F2C();
+    result = v4 << 8;
+    v6 = 16 * (*(v2 + 2) >> 4);
+    *(v6 + v2 + 17) |= 0x10u;
+    *(*(v3 + oToolkit_RenderInfoPtr) + 2) = *(*(v3 + oToolkit_RenderInfoPtr) + 2) & 0xFF | result;
+    return result;
+}
+
+
+// 0x8002f2c
+signed int sub_8002F2C()
+{
+    int v0; // r5
+    unsigned int v1; // r3
+    signed int result; // r0
+
+    v1 = 16 * (*(v0 + 2) >> 4) + v0;
+    result = 16;
+    *(v1 + 17) &= 0xEFu;
+    return result;
+}
+
+
+// 0x8002f3e
+unsigned int __fastcall sub_8002F3E(int a1)
+{
+    int v1; // r10
+    int v2; // r2
+
+    v2 = *(16 * (*(a1 + 2) >> 4) + a1 + 17) & 0x10;
+    return (*(*(v1 + oToolkit_RenderInfoPtr) + 2) & 0xFF00u) >> 8;
+}
+
+
+// 0x8002f5c
+int __usercall sprite_setFlip@<R0>(Battle *obj@<R5>, int a1@<R0>)
+{
+    char *v2; // r3
+    int v3; // r2
+    int result; // r0
+
+    v2 = obj + 16 * (obj->objTypeSpriteOff >> 4);
+    v3 = (v2[19] & 0xCF) | 16 * a1;
+    v2[19] = v3;
+    result = 48;
+    v2[22] = v2[22] & 0xCF | v3 & 0x30;
+    return result;
+}
+
+
+// 0x8002f7e
+unsigned int __fastcall sprite_getFlip(int a1)
+{
+    return (*(16 * (*(a1 + 2) >> 4) + a1 + 22) & 0x30u) >> 4;
+}
+
+
+// 0x8002f90
+// () -> void
+int __usercall sprite_noShadow@<R0>(Battle *obj@<R5>)
+{
+    char *v1; // r3
+    int result; // r0
+
+    v1 = obj + 16 * (obj->objTypeSpriteOff >> 4);
+    result = (v1[3] | 4) & 0xFE;
+    v1[3] = result;
+    return result;
+}
+
+
+// 0x8002fa6
+int __fastcall sub_8002FA6(int result)
+{
+    int v1; // r5
+
+    *(16 * (*(v1 + 2) >> 4) + v1 + 44) = result;
+    return result;
+}
+
+
+// 0x8002fb2
+int sub_8002FB2()
+{
+    int v0; // r5
+
+    return *(16 * (*(v0 + 2) >> 4) + v0 + 44);
+}
+
+
+// 0x8002fbe
+unsigned int __fastcall sub_8002FBE(char a1)
+{
+    int v1; // r5
+    unsigned int v2; // r3
+    unsigned int result; // r0
+
+    v2 = 16 * (*(v1 + 2) >> 4) + v1;
+    result = *(v2 + 44) | (0x80000000 >> a1);
+    *(v2 + 44) = result;
+    return result;
+}
+
+
+// 0x8002fd4
+unsigned int __fastcall sub_8002FD4(char a1)
+{
+    int v1; // r5
+    unsigned int v2; // r3
+    unsigned int result; // r0
+
+    v2 = 16 * (*(v1 + 2) >> 4) + v1;
+    result = *(v2 + 44) & ~(0x80000000 >> a1);
+    *(v2 + 44) = result;
+    return result;
+}
+
+
+// 0x8002fec
+int __fastcall sub_8002FEC(int result)
+{
+    int v1; // r5
+
+    *(16 * (*(v1 + 2) >> 4) + v1 + 48) = result;
+    return result;
+}
+
+
+// 0x8002ff8
+int sub_8002FF8()
+{
+    int v0; // r5
+    int result; // r0
+
+    result = 0;
+    *(16 * (*(v0 + 2) >> 4) + v0 + 52) = 0;
+    return result;
+}
+
+
+// 0x8003006
+int sub_8003006()
+{
+    int v0; // r5
+    unsigned int v1; // r3
+    int result; // r0
+
+    v1 = 16 * (*(v0 + 2) >> 4) + v0;
+    result = *(v1 + 3) | 0x20;
+    *(v1 + 3) = result;
+    return result;
+}
+
+
+// 0x8003018
+int sub_8003018()
+{
+    int v0; // r5
+    unsigned int v1; // r3
+    int result; // r0
+
+    v1 = 16 * (*(v0 + 2) >> 4) + v0;
+    result = *(v1 + 3) & 0xDF;
+    *(v1 + 3) = result;
+    return result;
+}
+
+
+// 0x800302a
+int __fastcall sub_800302A(char a1)
+{
+    int v1; // r5
+    unsigned int v2; // r3
+    int result; // r0
+
+    v2 = 16 * (*(v1 + 2) >> 4) + v1;
+    *(v2 + 22) = *(v2 + 22) & 0xF3 | 4 * a1;
+    result = *(v2 + 3) | 0x40;
+    *(v2 + 3) = result;
+    return result;
+}
+
+
+// 0x800304a
+int __fastcall sub_800304A(int a1)
+{
+    int v1; // r5
+    unsigned int v2; // r3
+    int result; // r0
+
+    v2 = 16 * (*(v1 + 2) >> 4) + v1;
+    result = 16 * a1;
+    *(v2 + 21) = *(v2 + 21) & 0xF | result;
+    return result;
+}
+
+
+// 0x8003060
+int __fastcall sub_8003060(int result)
+{
+    int v1; // r5
+
+    *(16 * (*(v1 + 2) >> 4) + v1 + 10) = result;
+    return result;
+}
+
+
+// 0x800306c
+int __fastcall sub_800306C(__int16 a1)
+{
+    int v1; // r5
+    unsigned int v2; // r3
+    int result; // r0
+
+    v2 = 16 * (*(v1 + 2) >> 4) + v1;
+    *(v2 + 8) = a1;
+    result = 0;
+    *(v2 + 36) = 0;
+    return result;
+}
+
+
+// 0x800307c
+int __fastcall sprite_setCoordinates(int result, __int16 a2)
+{
+    int v2; // r5
+    unsigned int v3; // r3
+
+    v3 = 16 * (*(v2 + 2) >> 4) + v2;
+    *(v3 + 12) = result;
+    *(v3 + 14) = a2;
+    return result;
+}
+
+
+// 0x800308a
+int __fastcall sprite_addCoordinates(int a1, __int16 a2)
+{
+    int v2; // r5
+    unsigned int v3; // r3
+    int result; // r0
+
+    v3 = 16 * (*(v2 + 2) >> 4) + v2;
+    result = a1 + *(v3 + 12);
+    *(v3 + 12) = result;
+    *(v3 + 14) += a2;
+    return result;
+}
+
+
+// 0x80030a8
+int sprite_getCoordinates()
+{
+    int v0; // r5
+    unsigned int v1; // r3
+    int result; // r0
+    int v3; // r1
+
+    v1 = 16 * (*(v0 + 2) >> 4) + v0;
+    result = *(v1 + 12);
+    v3 = *(v1 + 14);
+    return result;
+}
+
+
+// 0x80030ba
+int __fastcall sub_80030BA(int a1, int a2)
+{
+    unsigned int v2; // r5
+    int v3; // r3
+    unsigned __int8 *v4; // r2
+    int v5; // r4
+    int result; // r0
+    int v7; // r1
+
+    v2 = a1 + 16 * (*(a1 + 2) >> 4);
+    v3 = *(v2 + 24) + *(*(v2 + 28) + 12);
+    v4 = (*(v3 + 4 * **(v2 + 32)) + v3);
+    v5 = 0;
+    while ( *v4 != 255 )
+    {
+        if ( v5 == a2 )
+        {
+            result = v4[1];
+            v7 = v4[2];
+            return result;
+        }
+        ++v5;
+        v4 += 5;
+    }
+    return 0;
 }
 
 

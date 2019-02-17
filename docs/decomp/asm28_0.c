@@ -21,25 +21,25 @@ int sub_8098BE8()
 // 0x8099218
 int map_8099218()
 {
-    int v0; // r10
-    char v1; // zf
+    Toolkit *tk; // r10
+    char zf; // zf
     int v2; // r0
-    int v3; // r0
+    void *v3; // r0
     int v4; // r0
-    int v5; // r0
+    void *v5; // r0
 
     if ( getPETNaviSelect() )
         goto LABEL_12;
-    if ( *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) < 128 )
+    if ( tk->gamestate->MapSelect < 128 )
     {
         TestEventFlagFromImmediate(23, 41);
-        if ( !v1 )
+        if ( !zf )
             goto LABEL_12;
         TestEventFlagFromImmediate(23, 29);
-        if ( v1 )
+        if ( zf )
             goto LABEL_12;
         TestEventFlagFromImmediate(23, 42);
-        if ( !v1 )
+        if ( !zf )
             goto LABEL_12;
     }
     v2 = getPETNaviSelect();
@@ -55,7 +55,7 @@ int map_8099218()
         {
 LABEL_12:
             chatbox_uncomp_803FD3C();
-            chatbox_runTrainScript(*(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_15));
+            chatbox_runTrainScript(tk->gamestate->scriptOffIdx_LMsg_15);
             return 0;
         }
         v5 = uncomp_8037AEC(-2005687000);
@@ -162,7 +162,7 @@ int sub_809A05C()
     int v0; // r5
     int v1; // r0
 
-    chatbox_runScript(scripts_86C580C, *(v0 + 8));
+    chatbox_runScript(dialogScript86C580C, *(v0 + 8));
     v1 = *(v0 + 116);
     sub_809A360();
     *(v0 + 9) = 0;
@@ -214,7 +214,7 @@ signed int sub_809A078()
             v10 = word_200AC86;
             *(v8 + 80) = word_200AC86;
             *(v0 + 128) = v10;
-            chatbox_runScript(scripts_86C580C, 15);
+            chatbox_runScript(dialogScript86C580C, 15);
             LOWORD(dword_200ACB0) = 0;
             word_200AC84 = 0;
             word_200AC86 = 0;
@@ -382,20 +382,11 @@ signed int sub_809A1FC()
 // 0x809a260
 int __fastcall sub_809A260(int a1, int a2, int a3)
 {
-    int v3; // r0
-    int v4; // r1
-    int v5; // r2
-    int v6; // r3
-    int v7; // r0
-    int v8; // r1
-    int v9; // r2
-    int v10; // r3
-
     sub_8033FC0(1, a2, a3);
     copyMemory_8001850();
-    v3 = sub_8033978();
-    v7 = sub_8003962(v3, v4, v5, v6);
-    zeroFill_8003AB2(v7, v8, v9, v10);
+    sub_8033978();
+    sub_8003962();
+    zeroFill_8003AB2();
     sub_800399A();
     sub_8003AEA();
     return 0;
@@ -424,15 +415,17 @@ void sub_809A334()
 
 
 // 0x809a360
-int sub_809A360()
+int __fastcall sub_809A360(int a1)
 {
-    int v0; // r5
-    int v1; // r10
+    int v1; // r5
+    int v2; // r10
+    int v3; // r7
 
-    *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = *(v0 + 112);
-    copyTiles();
-    copyTiles();
-    return renderTextGfx_8045F8C(scripts_86C580C, 64, &unk_200EF40, 100717568);
+    v3 = a1;
+    *(*(v2 + oToolkit_Unk200a220_Ptr) + 8) = *(v1 + 112);
+    copyTiles(a1, 0, 0, byte_86C54D4, 9, dword_4 + 1);
+    copyTiles(v3 + 1, 2, 0, byte_8099E5C, 7, &byte_0[2]);
+    return renderTextGfx_8045F8C(dialogScript86C580C, 64, &unk_200EF40, 100717568);
 }
 
 
@@ -458,13 +451,13 @@ signed int sub_809A3CC()
     *(v0 + 116) = v1;
     if ( v1 > 21 )
     {
-        sub_809A80C();
+        sub_809A80C(v1);
         result = 1;
     }
     else
     {
         *(v0 + 116) = 21;
-        sub_809A80C();
+        sub_809A80C(21);
         result = 0;
     }
     return result;
@@ -475,11 +468,9 @@ signed int sub_809A3CC()
 int __noreturn sub_809A3EC()
 {
     int v0; // r5
-    int v1; // r0
 
-    chatbox_runScript(scripts_86C580C, *(v0 + 8));
-    v1 = *(v0 + 116);
-    sub_809A80C();
+    chatbox_runScript(dialogScript86C580C, *(v0 + 8));
+    sub_809A80C(*(v0 + 116));
     return 0;
 }
 
@@ -488,13 +479,11 @@ int __noreturn sub_809A3EC()
 signed int sub_809A404()
 {
     int v0; // r5
-    int v1; // r0
-    char v2; // zf
+    char v1; // zf
 
-    v1 = *(v0 + 116);
-    sub_809A80C();
+    sub_809A80C(*(v0 + 116));
     chatbox_8045F3C(8);
-    if ( v2 )
+    if ( v1 )
         return 1;
     if ( chatbox_8045F4C() )
     {
@@ -502,7 +491,7 @@ signed int sub_809A404()
     }
     else
     {
-        chatbox_runScript(scripts_86C580C, 51);
+        chatbox_runScript(dialogScript86C580C, 51);
         ClearEventFlagFromImmediate(23, 37);
         *(v0 + 132) = 8;
         *(v0 + 9) = 1;
@@ -516,35 +505,33 @@ signed int sub_809A44C()
 {
     int v0; // r5
     int v1; // r10
-    int v2; // r0
-    int v3; // r2
-    char v4; // zf
-    int v5; // r0
-    int v6; // r1
+    int v2; // r2
+    char v3; // zf
+    int v4; // r0
+    int v5; // r1
 
-    v2 = *(v0 + 116);
-    sub_809A80C();
+    sub_809A80C(*(v0 + 116));
     TestEventFlagFromImmediate(23, 37);
-    if ( !v4 )
+    if ( !v3 )
     {
-        v5 = *(v0 + 132);
-        if ( v5 )
-            *(v0 + 132) = v5 - 1;
-        v6 = *(*(v1 + oToolkit_JoypadPtr) + 2) & 2;
+        v4 = *(v0 + 132);
+        if ( v4 )
+            *(v0 + 132) = v4 - 1;
+        v5 = *(*(v1 + oToolkit_JoypadPtr) + 2) & 2;
         if ( *(*(v1 + oToolkit_JoypadPtr) + 2) & 2 )
         {
             *(v0 + 9) = 1;
-            sound_play(104, v6, v3);
+            sound_play(104, v5, v2);
             chatbox_8040818();
             return 0;
         }
     }
     chatbox_8045F3C(8);
-    if ( !v4 )
+    if ( !v3 )
     {
         *(v0 + 136) = *(*(v1 + oToolkit_ChatboxPtr) + 76);
         sub_809A868();
-        chatbox_runScript(scripts_86C580C, 53);
+        chatbox_runScript(dialogScript86C580C, 53);
         *(v0 + 9) = 0;
         return 0;
     }
@@ -558,22 +545,18 @@ signed int sub_809A4B8()
     int v0; // r5
     char v1; // zf
     int v2; // r0
-    int v3; // r0
     signed int result; // r0
-    int v5; // r0
 
     chatbox_8045F3C(8);
     if ( v1 && (chatbox_8045F3C(128), !v1) || (v2 = *(v0 + 116) + 2, *(v0 + 116) = v2, v2 < 32) )
     {
-        v5 = *(v0 + 116);
-        sub_809A80C();
+        sub_809A80C(*(v0 + 116));
         result = 1;
     }
     else
     {
         *(v0 + 116) = 32;
-        v3 = *(v0 + 116);
-        sub_809A80C();
+        sub_809A80C(*(v0 + 116));
         result = 0;
     }
     return result;
@@ -585,22 +568,14 @@ int sub_809A4EC()
 {
     int v0; // r1
     int v1; // r2
-    int v2; // r0
-    int v3; // r1
-    int v4; // r2
-    int v5; // r3
-    int v6; // r0
-    int v7; // r1
-    int v8; // r2
-    int v9; // r3
 
     ClearEventFlagFromImmediate(0, 245);
     ClearEventFlagFromImmediate(23, 37);
     sub_8033FC0(1, v0, v1);
     copyMemory_8001850();
-    v2 = sub_8033978();
-    v6 = sub_8003962(v2, v3, v4, v5);
-    zeroFill_8003AB2(v6, v7, v8, v9);
+    sub_8033978();
+    sub_8003962();
+    zeroFill_8003AB2();
     sub_800399A();
     sub_8003AEA();
     return 0;
@@ -612,20 +587,18 @@ signed int sub_809A520()
 {
     int v0; // r5
     int v1; // r10
-    int v2; // r0
-    signed int v4; // r0
-    int v5; // r1
-    signed int v6; // r2
-    int v7; // r3
-    int v8; // r0
+    signed int v3; // r0
+    int v4; // r1
+    signed int v5; // r2
+    int v6; // r3
+    int v7; // r0
     int i; // r6
-    signed int v10; // r0
-    int v11; // r1
-    int v12; // r2
-    __int16 v13; // r0
+    signed int v9; // r0
+    int v10; // r1
+    int v11; // r2
+    __int16 v12; // r0
 
-    v2 = *(v0 + 116);
-    sub_809A80C();
+    sub_809A80C(*(v0 + 116));
     chatbox_8045F3C(128);
     if ( _ZF )
         return 1;
@@ -634,65 +607,65 @@ signed int sub_809A520()
         return 1;
     if ( chatbox_8045F4C() )
     {
-        chatbox_runScript(scripts_86C580C, 51);
+        chatbox_runScript(dialogScript86C580C, 51);
         *(v0 + 132) = 8;
         *(v0 + 9) = 0;
     }
     else
     {
-        v4 = sub_813D48C(*(v0 + 136));
-        if ( v4 && v4 != 2 )
+        v3 = sub_813D48C(*(v0 + 136));
+        if ( v3 && v3 != 2 )
         {
-            if ( v5 == 1 )
+            if ( v4 == 1 )
             {
-                *(*(v1 + oToolkit_ChatboxPtr) + 76) = v6;
-                if ( v6 == 134 )
+                *(*(v1 + oToolkit_ChatboxPtr) + 76) = v5;
+                if ( v5 == 134 )
                 {
                     for ( i = 0; ; ++i )
                     {
-                        v10 = byte_809A628[i];
-                        if ( v10 == 255 )
+                        v9 = byte_809A628[i];
+                        if ( v9 == 255 )
                             break;
-                        sub_803CD98(v10, 1);
+                        sub_803CD98(v9, 1);
                     }
                 }
                 else
                 {
-                    sub_803CD98(v6, 1);
+                    sub_803CD98(v5, 1);
                 }
                 *(v0 + 140) = 56;
             }
-            else if ( v5 == 2 )
+            else if ( v4 == 2 )
             {
-                *(*(v1 + oToolkit_ChatboxPtr) + 76) = v6;
+                *(*(v1 + oToolkit_ChatboxPtr) + 76) = v5;
                 sub_803D080();
                 *(v0 + 140) = 57;
             }
             else
             {
-                *(v0 + 124) = v6;
-                *(v0 + 128) = v7;
-                v8 = *(v1 + oToolkit_ChatboxPtr);
-                *(v8 + 76) = v6;
-                *(v8 + 80) = v7;
-                sub_8021AEE(v6, v7, 1);
+                *(v0 + 124) = v5;
+                *(v0 + 128) = v6;
+                v7 = *(v1 + oToolkit_ChatboxPtr);
+                *(v7 + 76) = v5;
+                *(v7 + 80) = v6;
+                sub_8021AEE(v5, v6, 1);
                 *(v0 + 140) = 55;
             }
             *(*(v1 + oToolkit_GameStatePtr) + oGameState_LastMapGroup) = *(*(v1 + oToolkit_GameStatePtr) + oGameState_MapGroup);
             sub_803F798();
             sub_803F9E4();
             *(v0 + 9) = 1;
-            sound_play(138, v11, v12);
-            v13 = sub_809A880();
-            *(v0 + 26) = v13;
+            sound_play(138, v10, v11);
+            v12 = sub_809A880();
+            *(v0 + 26) = v12;
             *(v0 + 14) = *(&off_809A624 + *(v0 + 136));
             *(v0 + 12) = 10;
             __asm { SVC         6 }
-            *(v0 + 15) = v13;
+            *(v0 + 15) = v12;
         }
         else
         {
-            chatbox_runScript(scripts_86C580C, 54);
+            chatbox_runScript(dialogScript86C580C, 54);
             *(v0 + 9) = 2;
         }
     }
@@ -708,7 +681,6 @@ signed int sub_809A630()
     int v2; // r0
     unsigned __int8 v3; // vf
     int v4; // r0
-    int v6; // r0
 
     TestEventFlagFromImmediate(0, 246);
     if ( !v1 )
@@ -738,8 +710,7 @@ signed int sub_809A630()
             *(v0 + 112) -= *(v0 + 15);
         }
     }
-    v6 = *(v0 + 116);
-    sub_809A80C();
+    sub_809A80C(*(v0 + 116));
     return 1;
 }
 
@@ -751,8 +722,7 @@ signed int sub_809A6A4()
     int v1; // r10
     int v2; // r0
     int v3; // r6
-    int v4; // r0
-    char v5; // zf
+    char v4; // zf
     signed int result; // r0
 
     v2 = *(v0 + 4) + 16;
@@ -767,10 +737,9 @@ signed int sub_809A6A4()
     sub_8119854(v2 - 48, 88, 0);
     sub_80465BC();
     sub_80465F8();
-    v4 = *(v0 + 116);
-    sub_809A80C();
+    sub_809A80C(*(v0 + 116));
     TestEventFlagFromImmediate(0, 245);
-    if ( v5 )
+    if ( v4 )
         result = 0;
     else
         result = 1;
@@ -784,9 +753,7 @@ signed int sub_809A6EC()
     int v0; // r5
     int v1; // r0
     char v2; // zf
-    int v3; // r0
     signed int result; // r0
-    int v5; // r0
 
     v1 = *(v0 + 4) - 16;
     if ( v1 < 0 )
@@ -798,8 +765,7 @@ signed int sub_809A6EC()
     chatbox_8045F3C(8);
     if ( v2 )
     {
-        v5 = *(v0 + 116);
-        sub_809A80C();
+        sub_809A80C(*(v0 + 116));
         result = 1;
     }
     else
@@ -810,13 +776,12 @@ signed int sub_809A6EC()
         }
         else
         {
-            chatbox_runScript(scripts_86C580C, 51);
+            chatbox_runScript(dialogScript86C580C, 51);
             ClearEventFlagFromImmediate(23, 37);
             *(v0 + 132) = 8;
             *(v0 + 9) = 1;
         }
-        v3 = *(v0 + 116);
-        sub_809A80C();
+        sub_809A80C(*(v0 + 116));
         result = 0;
     }
     return result;
@@ -827,16 +792,14 @@ signed int sub_809A6EC()
 int sub_809A75C()
 {
     int v0; // r5
-    int v1; // r0
-    char v2; // r1
+    char v1; // r1
 
-    v1 = *(v0 + 116);
-    sub_809A80C();
-    chatbox_runScript(scripts_86C580C, *(v0 + 140));
-    v2 = 1;
+    sub_809A80C(*(v0 + 116));
+    chatbox_runScript(dialogScript86C580C, *(v0 + 140));
+    v1 = 1;
     if ( *(v0 + 140) != 55 )
-        v2 = 0;
-    *(v0 + 9) = v2;
+        v1 = 0;
+    *(v0 + 9) = v1;
     return 0;
 }
 
@@ -847,22 +810,18 @@ signed int sub_809A784()
     int v0; // r5
     char v1; // zf
     int v2; // r0
-    int v3; // r0
     signed int result; // r0
-    int v5; // r0
 
     chatbox_8045F3C(128);
     if ( v1 && (v2 = *(v0 + 116) + 2, *(v0 + 116) = v2, v2 >= 32) )
     {
         *(v0 + 116) = 32;
-        v3 = *(v0 + 116);
-        sub_809A80C();
+        sub_809A80C(*(v0 + 116));
         result = 0;
     }
     else
     {
-        v5 = *(v0 + 116);
-        sub_809A80C();
+        sub_809A80C(*(v0 + 116));
         result = 1;
     }
     return result;
@@ -877,8 +836,6 @@ signed int sub_809A7B0()
     unsigned __int8 v2; // vf
     int v3; // r0
     char v4; // zf
-    int v5; // r0
-    int v7; // r0
 
     v1 = *(v0 + 12);
     v2 = __OFSUB__(v1, 1);
@@ -888,8 +845,7 @@ signed int sub_809A7B0()
         *(v0 + 12) = v3;
         *(v0 + 112) -= *(v0 + 15);
 LABEL_8:
-        v7 = *(v0 + 116);
-        sub_809A80C();
+        sub_809A80C(*(v0 + 116));
         return 1;
     }
     chatbox_8045F3C(32);
@@ -902,10 +858,9 @@ LABEL_8:
     }
     else
     {
-        v5 = *(v0 + 116);
-        sub_809A80C();
+        sub_809A80C(*(v0 + 116));
         *(v0 + 9) = 0;
-        chatbox_runScript(scripts_86C580C, 51);
+        chatbox_runScript(dialogScript86C580C, 51);
         ClearEventFlagFromImmediate(23, 37);
         *(v0 + 132) = 8;
     }
@@ -914,14 +869,16 @@ LABEL_8:
 
 
 // 0x809a80c
-int sub_809A80C()
+int __fastcall sub_809A80C(int a1)
 {
-    int v0; // r5
-    int v1; // r10
+    int v1; // r5
+    Toolkit *tk; // r10
+    int v3; // r7
 
-    *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = *(v0 + 112);
-    copyTiles();
-    copyTiles();
+    v3 = a1;
+    *(tk->unk_200A220 + 2) = *(v1 + 112);
+    copyTiles(a1, 0, 0, tileRefs86C5790, 9, dword_4 + 1);
+    copyTiles(v3 + 2, 2, 0, tileRefs8099E78, 6, &byte_0[2]);
     return renderTextGfx_8045F8C(&eDialogScript2033404, 6, &unk_200EF40, 100717568);
 }
 
@@ -1061,18 +1018,14 @@ signed int sub_809A9CC()
 // 0x809aa04
 int __fastcall sub_809AA04(int a1, int a2, int a3, int a4)
 {
-    int v4; // r0
-    int v5; // r1
-    int v6; // r2
-    int v7; // r3
-    int v8; // r1
-    int v9; // r2
+    int v4; // r1
+    int v5; // r2
 
-    v4 = sub_8003962(a1, a2, a3, a4);
-    zeroFill_8003AB2(v4, v5, v6, v7);
+    sub_8003962();
+    zeroFill_8003AB2();
     sub_800399A();
     sub_8003AEA();
-    sub_8033FC0(1, v8, v9);
+    sub_8033FC0(1, v4, v5);
     return 0;
 }
 
@@ -1349,20 +1302,12 @@ int sub_809AD4C()
 {
     int v0; // r1
     int v1; // r2
-    int v2; // r0
-    int v3; // r1
-    int v4; // r2
-    int v5; // r3
-    int v6; // r0
-    int v7; // r1
-    int v8; // r2
-    int v9; // r3
 
     ClearEventFlagFromImmediate(0, 245);
     ClearEventFlagFromImmediate(23, 37);
-    v2 = sub_8033FC0(1, v0, v1);
-    v6 = sub_8003962(v2, v3, v4, v5);
-    zeroFill_8003AB2(v6, v7, v8, v9);
+    sub_8033FC0(1, v0, v1);
+    sub_8003962();
+    zeroFill_8003AB2();
     sub_800399A();
     sub_8003AEA();
     return 0;
@@ -1396,7 +1341,7 @@ int sub_809AF00()
     sub_809E2FC();
     sub_809E4F8();
     v3 = *(v2 + 14);
-    sub_80047E0(46, *(v2 + 12), *(v2 + 13), 0);
+    SpawnOverworldMapObject(46, *(v2 + 12), *(v2 + 13), 0);
     v4 = *(v2 + 8);
     if ( v4 )
         SetEventFlag(v4);
@@ -1516,7 +1461,7 @@ signed int sub_809B054()
         v11 = v8;
         v12 = v9;
     }
-    sub_80047E0(11, v10 << 16, v11 << 16, v12 << 16);
+    SpawnOverworldMapObject(11, v10 << 16, v11 << 16, v12 << 16);
     return 0;
 }
 
@@ -1545,7 +1490,7 @@ LABEL_8:
         if ( !(v6 & 7) )
         {
             v7 = (*(v0 + 7) << 16) | 0x48000001;
-            sub_80047E0(11, *(*(*(v1 + 60) + 24) + 28), *(*(*(v1 + 60) + 24) + 32), *(*(*(v1 + 60) + 24) + 36));
+            SpawnOverworldMapObject(11, *(*(*(v1 + 60) + 24) + 28), *(*(*(v1 + 60) + 24) + 32), *(*(*(v1 + 60) + 24) + 36));
         }
         return 1;
     }
@@ -1638,7 +1583,7 @@ int sub_809B800()
     v5 = *(v1 + 10) << 16;
     v2[2] = v5;
     v2[3] = *(v1 + 11) >> 1;
-    sub_80047E0(12, v3, v4, v5);
+    SpawnOverworldMapObject(12, v3, v4, v5);
     v2[4] = v0;
     v2[5] = *(v1 + 15);
     v2[7] = 0;
@@ -1865,7 +1810,7 @@ int sub_809BDB8()
         v12 = *(v9 + 2) << 16;
         v8[2] = v12;
         v8[3] = *(v9 + 3) >> 1;
-        sub_80047E0(12, v10, v11, v12);
+        SpawnOverworldMapObject(12, v10, v11, v12);
         v8[4] = v0;
         v8[5] = *(v9 + 7);
         *(v0 + 20) = 0;
@@ -2123,7 +2068,7 @@ unsigned int sub_809C968()
                 {
                     if ( v2 >= 48 && v2 <= 51 )
                     {
-                        byte_2009FC3 = v2;
+                        eOWPlayerObject[131] = v2;
                         return SetEventFlagFromImmediate(1, 185);
                     }
                 }
@@ -2142,7 +2087,7 @@ LABEL_23:
                                                                                                                                                                                 + oGameState_MapNumber)];
             if ( v5 )
             {
-                v6 = 24 * (byte_2009FC3 - 48) + v5;
+                v6 = 24 * (eOWPlayerObject[131] - 48) + v5;
                 TestEventFlag(*(v6 + 16));
                 if ( v4 )
                 {
@@ -2195,7 +2140,7 @@ int sub_809CA84()
     v1 = (&off_809C0F0)[*(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) - 144][*(*(v0 + oToolkit_GameStatePtr)
                                                                                                                                                                         + oGameState_MapNumber)];
     if ( v1 )
-        result = *(24 * (byte_2009FC3 - 48) + v1 + 13) + 1;
+        result = *(24 * (eOWPlayerObject[131] - 48) + v1 + 13) + 1;
     else
         result = 0;
     return result;
@@ -2205,16 +2150,16 @@ int sub_809CA84()
 // 0x809cb68
 int __fastcall sub_809CB68(int a1, int a2, int a3)
 {
-    int v3; // r5
+    void *v3; // r5
     int result; // r0
 
     sub_8033FC0(0, a2, a3);
     sub_8003984();
     sub_8003AD4();
-    chatbox_runScript(33764356, 30);
+    chatbox_runScript(&eDialogScript2033404, 30);
     result = 0;
     *(v3 + 8) = 0;
-    *(v3 + 112) = 0;
+    *(v3 + 28) = 0;
     return result;
 }
 
@@ -2232,7 +2177,7 @@ signed int sub_809CB88()
         chatbox_8045F3C(256);
         if ( !v1 )
         {
-            chatbox_runScript(33764356, 32);
+            chatbox_runScript(&eDialogScript2033404, 32);
             *(v0 + 8) = 2;
             return 0;
         }
@@ -2251,13 +2196,13 @@ signed int sub_809CB88()
                 sub_80010BE(0);
                 *(v0 + 112) = 0;
 LABEL_10:
-                chatbox_runScript(33764356, 32);
+                chatbox_runScript(&eDialogScript2033404, 32);
                 result = 0;
                 *(v0 + 8) = 0;
                 return result;
             }
         }
-        chatbox_runScript(33764356, 31);
+        chatbox_runScript(&eDialogScript2033404, 31);
         *(v0 + 8) = 1;
         return 0;
     }
@@ -2272,7 +2217,7 @@ signed int sub_809CC00()
     int v1; // r1
     int v2; // r2
     int v3; // r3
-    signed int v4; // r4
+    int v4; // r4
     char v5; // zf
 
     if ( !*(v0 + 112) )
@@ -2288,16 +2233,16 @@ signed int sub_809CC00()
     if ( !v5 )
     {
         v4 = 0;
-        if ( word_200AD06 )
+        if ( word_200AD04[1] )
         {
-            --word_200AD06;
+            --word_200AD04[1];
             return 1;
         }
     }
     sub_803F4EC(v4);
     *(v0 + 8) = v4;
     if ( v4 )
-        chatbox_runScript(33764356, 34);
+        chatbox_runScript(&eDialogScript2033404, 34);
     return 0;
 }
 
@@ -2342,7 +2287,7 @@ LABEL_12:
                     *(v1[11] + 76) = v7;
                     sub_80010BE(v7);
                     sound_play(141, v8, v9);
-                    chatbox_runScript(33764356, 35);
+                    chatbox_runScript(&eDialogScript2033404, 35);
                     goto LABEL_11;
                 }
                 v5 += 4;
@@ -2352,7 +2297,7 @@ LABEL_12:
                 goto LABEL_12;
             sound_play(104, 2, byte_809CCF8);
             sub_80010C6();
-            chatbox_runScript(33764356, 32);
+            chatbox_runScript(&eDialogScript2033404, 32);
 LABEL_11:
             sub_81440D8();
             *(v0 + 8) = 1;
@@ -2371,7 +2316,7 @@ LABEL_11:
 // 0x809cd34
 int sub_809CD34()
 {
-    chatbox_runScript(33764356, 33);
+    chatbox_runScript(&eDialogScript2033404, 33);
     return 0;
 }
 
@@ -2379,18 +2324,9 @@ int sub_809CD34()
 // 0x809cd44
 int __fastcall sub_809CD44(int a1, int a2, int a3)
 {
-    int v3; // r0
-    int v4; // r1
-    int v5; // r2
-    int v6; // r3
-    int v7; // r0
-    int v8; // r1
-    int v9; // r2
-    int v10; // r3
-
-    v3 = sub_8033FC0(1, a2, a3);
-    v7 = sub_8003962(v3, v4, v5, v6);
-    zeroFill_8003AB2(v7, v8, v9, v10);
+    sub_8033FC0(1, a2, a3);
+    sub_8003962();
+    zeroFill_8003AB2();
     sub_800399A();
     sub_8003AEA();
     return 0;
@@ -2404,22 +2340,22 @@ signed int sub_809CD60()
     int v1; // r1
     int v2; // r2
     int v3; // r3
-    char v4; // r4
+    int v4; // r4
     char v5; // zf
 
     if ( *(v0 + 112) )
     {
         v4 = 1;
         sub_803F560();
-        if ( v5 || (v4 = 0, !word_200AD06) )
+        if ( v5 || (v4 = 0, !word_200AD04[1]) )
         {
             sub_803F4EC(v4);
             *(v0 + 8) = v4;
             ClearEventFlagFromImmediate(1, 99);
-            chatbox_runScript(33764356, 49);
+            chatbox_runScript(&eDialogScript2033404, 49);
             return 0;
         }
-        --word_200AD06;
+        --word_200AD04[1];
     }
     else
     {
@@ -2435,7 +2371,7 @@ signed int sub_809CD60()
 // 0x809cdc4
 int sub_809CDC4()
 {
-    chatbox_runScript(33764356, 31);
+    chatbox_runScript(&eDialogScript2033404, 31);
     return 0;
 }
 
@@ -2462,7 +2398,7 @@ int sub_809CDD4()
         if ( v0 != 15 )
             v2 = 51;
     }
-    chatbox_runScript(33764356, v2);
+    chatbox_runScript(&eDialogScript2033404, v2);
     return 0;
 }
 
@@ -2527,22 +2463,21 @@ void *sub_809CF2C()
     {
         result = reqBBS_81407D8();
         if ( result )
-            result = init_s_02011C50_8036E90(byte_809CEB4, byte_200578E + 49, 14, v2);
+            result = init_s_02011C50_8036E90(byte_809CEB4, dynamicArr2005780.totalPointsIndex + 49, 14, v2);
     }
     return result;
 }
 
 
 // 0x809d19c
-int sub_809D19C()
+void sub_809D19C()
 {
-    unsigned __int8 *v0; // r5
+    Battle *v0; // r5
     int v1; // r10
     char v2; // zf
     int v3; // r0
     int v4; // r0
-    __int16 v5; // r0
-    int result; // r0
+    int v5; // r0
 
     ClearEventFlagFromImmediate(23, 22);
     TestEventFlagFromImmediate(11, 228);
@@ -2555,13 +2490,13 @@ int sub_809D19C()
                 SetEventFlagFromImmediate(23, 22);
         }
     }
-    (*(&off_809D25C + v0[8]))();
-    v4 = v0[20];
-    if ( v4 != v0[21] )
+    (*(&off_809D25C + v0->currState))();
+    v4 = v0->futurePanelX;
+    if ( v4 != v0->futurePanelY )
     {
-        v0[21] = v4;
-        sprite_setAnimation(v4);
-        sprite_loadAnimationData();
+        v0->futurePanelY = v4;
+        sprite_setAnimation(v0, v4);
+        sprite_loadAnimationData(v0);
     }
     if ( *(*(v1 + oToolkit_GameStatePtr) + oGameState_MapGroup) >= 128 )
     {
@@ -2575,21 +2510,16 @@ int sub_809D19C()
             goto LABEL_17;
     }
     sub_8002EE8();
-    if ( sub_8031A7A((v0 + 28)) == 60 )
+    if ( sub_8031A7A(&v0->unk_1C) == 60 )
     {
-        v5 = -24312;
+        v5 = 41224;
 LABEL_17:
-        sub_8002ED0(v5);
+        sprite_setColorShader(v0, v5);
     }
     sprite_setPallete(byte_2000AA5);
     TestEventFlagFromImmediate(23, 61);
-    if ( v2
-        || (result = *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_10),
-                *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_10)) )
-    {
-        sprite_update();
-    }
-    return result;
+    if ( v2 || *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_10) )
+        sprite_update(v0);
 }
 
 
@@ -2602,10 +2532,8 @@ unsigned int sub_809D270()
     int v3; // r6
     char v4; // zf
     int v5; // r0
-    int v6; // r2
-    int v7; // r3
-    int v8; // r1
-    int v9; // r2
+    int v6; // r1
+    int v7; // r2
 
     *v0 = 3;
     v2 = byte_809D328[getPETNaviSelect()];
@@ -2621,13 +2549,13 @@ unsigned int sub_809D270()
         v3 = byte_809D338[v5];
         v2 = byte_809D338[v5 + 1];
     }
-    sprite_load(128, v3, v2);
+    sprite_load(v0, 128, v3, v2);
     *(v0 + 20) = 0;
     *(v0 + 21) = -1;
-    sub_8002F90();
+    sprite_noShadow(v0);
     *(*(v1 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr) = v0;
     *(v0 + 8) = 4;
-    ZeroFillByWord(v0 + 72, 0x20u, v6, v7);
+    ZeroFillByWord((v0 + 72), 32);
     *(v0 + 23) = 1;
     *(v0 + 12) = 1;
     *(v0 + 22) = 0;
@@ -2644,11 +2572,11 @@ unsigned int sub_809D270()
     *(v0 + 15) = 0;
     *(v0 + 24) = 0;
     *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_10) = 0;
-    v8 = *(v0 + 32);
-    v9 = *(v0 + 36);
+    v6 = *(v0 + 32);
+    v7 = *(v0 + 36);
     *(v0 + 40) = *(v0 + 28);
-    *(v0 + 44) = v8;
-    *(v0 + 48) = v9;
+    *(v0 + 44) = v6;
+    *(v0 + 48) = v7;
     return sub_809D348();
 }
 
@@ -2657,20 +2585,20 @@ unsigned int sub_809D270()
 unsigned int sub_809D348()
 {
     int v0; // r5
-    int v1; // r10
+    Toolkit *tk; // r10
     int v2; // r1
     int v3; // r2
     char v4; // zf
     int v5; // r0
     int v6; // r1
-    int v7; // r7
+    _WORD *v7; // r7
     int v8; // r0
     unsigned __int8 v9; // vf
     int v10; // r0
     int v11; // r0
     int v12; // r0
 
-    *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_11) = 0;
+    tk->gamestate->unk_11 = 0;
     *(v0 + 19) = 0;
     *(v0 + 19) = 0;
     *(v0 + 15) = *(v0 + 14);
@@ -2724,25 +2652,25 @@ unsigned int sub_809D348()
     if ( sub_809DFA0() && !s_2011C50_ptr_1C_isNull() )
     {
         v6 = *(v0 + 19);
-        v7 = *(v1 + oToolkit_Unk2001c04_Ptr);
-        *(v7 + 18) += v6;
-        v8 = *(v7 + 36);
+        v7 = tk->unk_2001C04;
+        v7[9] += v6;
+        v8 = *(v7 + 9);
         if ( v8 )
         {
             v9 = __OFSUB__(v8, v6);
             v10 = v8 - v6;
             if ( (v10 < 0) ^ v9 )
                 v10 = 0;
-            *(v7 + 36) = v10;
+            *(v7 + 9) = v10;
         }
-        v11 = *(v7 + 40);
+        v11 = *(v7 + 10);
         if ( v11 )
         {
             v9 = __OFSUB__(v11, v6);
             v12 = v11 - v6;
             if ( (v12 < 0) ^ v9 )
                 v12 = 0;
-            *(v7 + 40) = v12;
+            *(v7 + 10) = v12;
         }
     }
     sub_809DFC0();
@@ -3067,7 +2995,7 @@ signed int sub_809D7A8()
 // 0x809d7f8
 int sub_809D7F8()
 {
-    return sub_8003B86();
+    return FreeOWPlayerObject();
 }
 
 
@@ -3550,7 +3478,7 @@ int sub_809DED4()
     char v1; // zf
     int result; // r0
 
-    sub_811EBE0();
+    sub_811EBE0(1);
     if ( v1 )
     {
         s_2011C50_ptr_1C_isNull();
@@ -3662,7 +3590,7 @@ int sub_809DFC0()
 
 
 // 0x809e004
-char __fastcall sub_809E004(char result)
+int __fastcall sub_809E004(int result)
 {
     _BYTE *v1; // r5
 
@@ -3702,9 +3630,9 @@ signed int sub_809E01C()
 // 0x809e04c
 void sub_809E04C()
 {
-    byte_2009F4D = 0;
-    byte_2009F4E = 0;
-    byte_2009F4F = 0;
+    eOWPlayerObject[13] = 0;
+    eOWPlayerObject[14] = 0;
+    eOWPlayerObject[15] = 0;
 }
 
 
@@ -3716,7 +3644,7 @@ int __fastcall sub_809E064(int a1, int a2, int a3, int a4)
     int result; // r0
     _DWORD *v7; // r6
 
-    result = sub_8003B4C(0, a2, a3, a4);
+    result = SpawnOWPlayerObject(0, a2, a3, a4);
     if ( v4 )
     {
         v7 = *(v5 + oToolkit_GameStatePtr);
@@ -3737,7 +3665,7 @@ int sub_809E08A()
     int v1; // r5
 
     v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    return sub_8003B86();
+    return FreeOWPlayerObject();
 }
 
 
@@ -3973,7 +3901,7 @@ int __fastcall sub_809E1FA(int result, int a2, int a3)
 
 
 // 0x809e218
-__int16 __fastcall sub_809E218(__int16 result)
+int __fastcall sub_809E218(int result)
 {
     if ( byte_200ACF5 )
         HIWORD(dword_200ACF8) = result;
@@ -4037,7 +3965,7 @@ int sub_809E254()
 
 
 // 0x809e260
-char __fastcall sub_809E260(char result)
+int __fastcall sub_809E260(int result)
 {
     int v1; // r10
 
@@ -4062,10 +3990,8 @@ int sub_809E26A()
 int sub_809E276()
 {
     int v0; // r10
-    int v1; // r5
 
-    v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    return sub_8002F90();
+    return sprite_noShadow(*(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr));
 }
 
 
@@ -4076,7 +4002,7 @@ int sub_809E284()
     int v1; // r5
 
     v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    return sub_8002E3C();
+    return sprite_hasShadow();
 }
 
 
@@ -4092,18 +4018,18 @@ int sub_809E292()
 
 
 // 0x809e2a0
-int __fastcall sub_809E2A0(char a1)
+void __fastcall sub_809E2A0(int a1)
 {
     int v1; // r10
     int v2; // r5
 
     v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    return sprite_setPallete(a1);
+    sprite_setPallete(a1);
 }
 
 
 // 0x809e2ae
-char __fastcall sub_809E2AE(char result)
+int __fastcall sub_809E2AE(int result)
 {
     int v1; // r10
 
@@ -4142,7 +4068,7 @@ int sub_809E2D2()
 
 
 // 0x809e2dc
-char __fastcall sub_809E2DC(char result, char a2, char a3)
+int __fastcall sub_809E2DC(int result, char a2, char a3)
 {
     byte_2000AA0 += result;
     byte_2000AA1 += a2;
@@ -4206,33 +4132,39 @@ int sub_809E312()
 void sub_809E31A()
 {
     int v0; // r10
-    int v1; // r5
+    Battle *v1; // r5
 
     byte_2000AA8 = 0;
     byte_2000AA4 = 0;
     v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    sprite_load(128, 24, 72);
-    sprite_setAnimation(*(v1 + 20));
-    sprite_loadAnimationData();
-    sub_8002F90();
-    sprite_update();
+    sprite_load(v1, 128, 24, 72);
+    sprite_setAnimation(v1, v1->futurePanelX);
+    sprite_loadAnimationData(v1);
+    sprite_noShadow(v1);
+    sprite_update(v1);
+    sub_8001172(0);
+    SetEventFlagFromImmediate(6, 142);
+    ClearEventFlagFromImmediate(6, 143);
 }
 
 
 // 0x809e35e
-void sub_809E35E()
+void __cdecl sub_809E35E()
 {
-    int v0; // r10
-    int v1; // r5
+    Toolkit *tk; // r10
+    Battle *player; // r5
 
     byte_2000AA8 = 1;
     byte_2000AA4 = 1;
-    v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    sprite_load(128, 28, 84);
-    sprite_setAnimation(*(v1 + 20));
-    sprite_loadAnimationData();
-    sub_8002F90();
-    sprite_update();
+    player = tk->gamestate->player;
+    sprite_load(player, 128, 28, 84);
+    sprite_setAnimation(player, player->futurePanelX);
+    sprite_loadAnimationData(player);
+    sprite_noShadow(player);
+    sprite_update(player);
+    sub_8001172(84);
+    ClearEventFlagFromImmediate(6, 142);
+    SetEventFlagFromImmediate(6, 143);
 }
 
 
@@ -4343,7 +4275,7 @@ int sub_809E434()
     int v1; // r5
 
     v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    return sub_8002DEA();
+    return sprite_getFrameParameters();
 }
 
 
@@ -4436,7 +4368,7 @@ signed int sub_809E4AE()
 void __noreturn sub_809E4BC()
 {
     int v0; // r10
-    int v1; // r5
+    Battle *v1; // r5
     int v2; // r4
     char v3; // zf
 
@@ -4446,11 +4378,11 @@ void __noreturn sub_809E4BC()
     TestEventFlagFromImmediate(23, 41);
     if ( v3 )
         v2 = 0;
-    sprite_load(128, 24, v2);
-    sprite_setAnimation(*(v1 + 20));
-    sprite_loadAnimationData();
-    sub_8002F90();
-    sprite_update();
+    sprite_load(v1, 128, 24, v2);
+    sprite_setAnimation(v1, v1->futurePanelX);
+    sprite_loadAnimationData(v1);
+    sprite_noShadow(v1);
+    sprite_update(v1);
 }
 
 
@@ -4458,14 +4390,14 @@ void __noreturn sub_809E4BC()
 void sub_809E4F8()
 {
     int v0; // r10
-    int v1; // r5
+    Battle *v1; // r5
 
     v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    sprite_load(128, 24, 0);
-    sprite_setAnimation(*(v1 + 20));
-    sprite_loadAnimationData();
-    sub_8002F90();
-    sprite_update();
+    sprite_load(v1, 128, 24, 0);
+    sprite_setAnimation(v1, v1->futurePanelX);
+    sprite_loadAnimationData(v1);
+    sprite_noShadow(v1);
+    sprite_update(v1);
 }
 
 

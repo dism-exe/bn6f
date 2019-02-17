@@ -11,7 +11,7 @@ int sub_8080DA0()
     signed int v0; // r0
     signed int v1; // r4
     void **v2; // r7
-    __int16 v3; // r0
+    int v3; // r0
     int result; // r0
 
     v0 = sub_8081308();
@@ -38,7 +38,7 @@ int __fastcall sub_8080DEA(int a1, signed int a2)
     signed int v2; // r0
     signed int v3; // r4
     void **v4; // r7
-    __int16 v5; // r0
+    int v5; // r0
 
     v2 = sub_808137C(a1, a2);
     v3 = v2;

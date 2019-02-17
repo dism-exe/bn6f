@@ -967,7 +967,7 @@ void __fastcall sub_8089CA4(int a1)
 
 
 // 0x8089cb0
-__int16 __fastcall sub_8089CB0(__int16 result)
+int __fastcall sub_8089CB0(int result)
 {
     int v1; // r5
 
@@ -1054,7 +1054,7 @@ int sub_8089D0E()
     do
     {
         if ( *v0 )
-            result = sub_80048B2();
+            result = FreeOverworldMapObject();
         ++v0;
         ++v1;
     }

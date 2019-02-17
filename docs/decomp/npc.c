@@ -35,8 +35,8 @@ void npc_809E590()
     *(v0 + 8) = 4;
     *(v0 + 12) = 4;
     *(v0 + 13) = 8;
-    sprite_load(128, 28, 160);
-    sprite_loadAnimationData();
+    sprite_load(v0, 128, 28, 160);
+    sprite_loadAnimationData(v0);
     npc_809E5E2();
 }
 
@@ -47,6 +47,8 @@ void npc_809E5E2()
     int v0; // r5
     int v1; // r0
     int v2; // r0
+    int v3; // r0
+    int v4; // r0
 
     if ( *(v0 + 24) )
     {
@@ -59,32 +61,47 @@ void npc_809E5E2()
         v1 = 0;
         if ( *(v0 + 96) & 8 )
             v1 = 1;
-        sub_8002F5C(v1);
+        sprite_setFlip(v0, v1);
         if ( *(v0 + 60) != *(v0 + 62) )
         {
-            sprite_load(128, *(v0 + 120), *(v0 + 60));
-            sprite_loadAnimationData();
+            sprite_load(v0, 128, *(v0 + 120), *(v0 + 60));
+            sprite_loadAnimationData(v0);
             if ( *(v0 + 96) & 0x80 )
             {
                 if ( *(v0 + 96) & byte_100 )
-                    sub_8002E3C();
+                    sprite_hasShadow();
                 else
                     sub_8002E52();
             }
             else
             {
-                sub_8002F90();
+                sprite_noShadow(v0);
             }
             *(v0 + 21) = -1;
         }
         v2 = *(v0 + 20);
         if ( v2 != *(v0 + 21) )
         {
-            sprite_setAnimation(v2);
-            sprite_loadAnimationData();
+            sprite_setAnimation(v0, v2);
+            sprite_loadAnimationData(v0);
         }
     }
-    sprite_update();
+    sprite_update(v0);
+    sprite_setPallete(*(v0 + 22));
+    v3 = *(v0 + 104);
+    if ( v3 != *(v0 + 108) )
+        sub_8002FA6(v3);
+    *(v0 + 15) = *(v0 + 14);
+    *(v0 + 21) = *(v0 + 20);
+    *(v0 + 62) = *(v0 + 60);
+    *(v0 + 108) = *(v0 + 104);
+    sub_809F526();
+    v4 = *(v0 + 100);
+    if ( !v4 )
+        v4 = sub_8035694((v0 + 36));
+    sub_8002E14(v4);
+    if ( *(v0 + 96) & 0x40 )
+        sub_809F922();
 }
 
 
@@ -117,29 +134,27 @@ int npc_809E704()
 {
     int v0; // r5
     char *v1; // r7
-    int v2; // r1
+    int v2; // r0
     _DWORD *v3; // r5
-    int v4; // r0
-    char *v5; // r7
-    int v6; // r4
-    int v8; // [sp+0h] [bp-8h]
+    char *v4; // r7
+    int v5; // r4
+    int v7; // [sp+0h] [bp-8h]
 
     v1 = &byte_809E77E[4 * *(v0 + 14)];
     *(v0 + 112) = *(v0 + 36) + (*v1 << 16);
     *(v0 + 116) = *(v0 + 40) + (*(v1 + 1) << 16);
-    v2 = *(v0 + 4);
-    SWI_Div();
-    v3 = v8;
-    *(v8 + 32) = (v4 + 4095) >> 12;
-    v5 = &byte_809E79E[2 * *(v8 + 14)];
-    v6 = *(v8 + 4);
-    *(v8 + 64) = *v5 * v6 << 12;
-    *(v8 + 68) = v5[1] * v6 << 12;
-    *(v8 + 72) = 0;
-    *(v8 + 10) = 4;
+    v2 = SWI_Div(0x80000, *(v0 + 4));
+    v3 = v7;
+    *(v7 + 32) = (v2 + 4095) >> 12;
+    v4 = &byte_809E79E[2 * *(v7 + 14)];
+    v5 = *(v7 + 4);
+    *(v7 + 64) = *v4 * v5 << 12;
+    *(v7 + 68) = v4[1] * v5 << 12;
+    *(v7 + 72) = 0;
+    *(v7 + 10) = 4;
     v3[12] = v3[9] + v3[16];
     v3[13] = v3[10] + v3[17];
-    *(v8 + 56) = *(v8 + 44) + *(v8 + 72);
+    *(v7 + 56) = *(v7 + 44) + *(v7 + 72);
     return sub_809F5B0();
 }
 
@@ -398,10 +413,10 @@ int npc_809EA3C()
         v1 = *(v0 + 128);
         if ( v1 & 0xC0 )
         {
-            if ( sub_8002DEA() & v1 )
+            if ( sprite_getFrameParameters() & v1 )
                 sub_809F516();
         }
-        else if ( sub_8002DEA() == v1 )
+        else if ( sprite_getFrameParameters() == v1 )
         {
             sub_809F516();
         }
@@ -448,9 +463,9 @@ int npc_809EAA0()
         sub_809F516();
         *(v0 + 96) |= 1u;
         *v0 = 1;
-        sprite_load(128, 28, 160);
-        sprite_loadAnimationData();
-        sub_8004602();
+        sprite_load(v0, 128, 28, 160);
+        sprite_loadAnimationData(v0);
+        FreeOverworldNPCObject();
         npc_809F51E();
     }
     return npc_809EBF8();
@@ -463,7 +478,10 @@ void npc_809EADA()
     int v0; // r5
 
     (*(&off_809EAFC + *(v0 + 9)))();
-    sprite_update();
+    sprite_update(v0);
+    sub_809F526();
+    if ( *(v0 + 96) & 0x40 )
+        sub_809F922();
 }
 
 
@@ -479,48 +497,46 @@ int sub_809EB04()
 // 0x809eb20
 int __fastcall npc_809EB20(int a1, int a2, int a3, int a4)
 {
-    int v4; // r5
-    int v5; // r10
-    int v6; // r0
-    unsigned int v7; // r0
-    int v8; // r2
-    _DWORD *v9; // r7
+    NPC *npc; // r5
+    Toolkit *tk; // r10
+    u32 flags; // r0
+    unsigned int angle; // r0
+    u32 v8; // r2
+    ChatBoxPropreties *chatbox; // r7
     int v10; // r0
-    int v11; // r1
-    char v12; // r2
+    u32 v11; // r1
+    u8 v12; // r2
 
-    v6 = *(v4 + 96);
-    if ( !(v6 & 2) )
+    flags = npc->flags_60;
+    if ( !(flags & 2) )
     {
-        v7 = calcAngle_800117C(
-                     *(*(*(v5 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr) + 32) - *(v4 + 40),
-                     *(*(*(v5 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr) + 28) - *(v4 + 36));
-        sprite_setAnimation(2 * (((v7 + 32) & 0xC0) >> 6) + 1);
-        v6 = sprite_loadAnimationData();
+        angle = calcAngle_800117C(tk->gamestate->player->y - npc->y, tk->gamestate->player->x - npc->x);
+        sprite_setAnimation(npc, 2 * (((angle + 32) & 0xC0) >> 6) + 1);
+        flags = sprite_loadAnimationData(npc);
     }
-    v8 = *(v4 + 96);
+    v8 = npc->flags_60;
     if ( v8 & &byte_400 )
     {
         if ( v8 & 0x800 )
         {
-            v9 = *(v5 + oToolkit_ChatboxPtr);
-            v10 = *(v4 + 144);
-            v9[19] = v10;
-            v6 = sub_809FC96(v10);
-            v9[21] = v6;
-            v9[22] = v11;
-            *(v4 + 28) = v12;
+            chatbox = tk->chatbox;
+            v10 = *npc->pad_90;
+            chatbox->unk_4C = v10;
+            flags = sub_809FC96(v10);
+            chatbox->unk_54 = flags;
+            chatbox->unk_58 = v11;
+            npc->scriptArrayOffset = v12;
         }
-        if ( a4 == 8 && v6 == 112 && getPETNaviSelect() )
-            chatbox_runScript(*(v4 + offsetof(NPC, scriptArray)), 120);
+        if ( a4 == 8 && flags == 112 && getPETNaviSelect() )
+            chatbox_runScript(npc->scriptArray, 120);
         else
-            chatbox_runScript(*(v4 + 148), *(v4 + 28));
+            chatbox_runScript(npc->scriptArray, npc->scriptArrayOffset);
     }
     else
     {
-        chatbox_runScript_202da04(*(v4 + 28));
+        chatbox_runScript_202da04(npc->scriptArrayOffset);
     }
-    *(v4 + 10) = 4;
+    npc->walkingFlag_0A = 4;
     return npc_809EBBC();
 }
 
@@ -620,19 +636,19 @@ int npc_809ED88()
 {
     int v0; // r6
 
-    return sub_809F656((v0 + 1));
+    return ReadNPCScriptWord((v0 + 1));
 }
 
 
 // 0x809ed94
 int __noreturn npc_809ED94()
 {
-    _BYTE *v0; // r5
+    Battle *v0; // r5
 
-    *v0 = 1;
-    sprite_load(128, 28, 160);
-    sprite_loadAnimationData();
-    sub_8004602();
+    v0->objFlags = 1;
+    sprite_load(v0, 128, 28, 160);
+    sprite_loadAnimationData(v0);
+    FreeOverworldNPCObject();
     return npc_809F51E();
 }
 
@@ -645,10 +661,10 @@ int npc_809EDB2()
     int result; // r0
     char v3; // zf
 
-    v1 = getBitfieldFromArr_809F64C((v0 + 1));
+    v1 = ReadNPCScriptHalfword((v0 + 1));
     result = TestEventFlag(v1);
     if ( !v3 )
-        result = sub_809F656((v0 + 3));
+        result = ReadNPCScriptWord((v0 + 3));
     return result;
 }
 
@@ -661,10 +677,10 @@ int npc_809EDD0()
     int result; // r0
     char v3; // zf
 
-    v1 = getBitfieldFromArr_809F64C((v0 + 1));
+    v1 = ReadNPCScriptHalfword((v0 + 1));
     result = TestEventFlag(v1);
     if ( v3 )
-        result = sub_809F656((v0 + 3));
+        result = ReadNPCScriptWord((v0 + 3));
     return result;
 }
 
@@ -675,7 +691,7 @@ unsigned int npc_809EDEE()
     int v0; // r6
     int v1; // r0
 
-    v1 = getBitfieldFromArr_809F64C((v0 + 1));
+    v1 = ReadNPCScriptHalfword((v0 + 1));
     return SetEventFlag(v1);
 }
 
@@ -686,7 +702,7 @@ unsigned int npc_809EE00()
     int v0; // r6
     int v1; // r0
 
-    v1 = getBitfieldFromArr_809F64C((v0 + 1));
+    v1 = ReadNPCScriptHalfword((v0 + 1));
     return ClearEventFlag(v1);
 }
 
@@ -851,9 +867,9 @@ int npc_809EEB6()
     unsigned __int8 *v1; // r6
     int result; // r0
 
-    v0[9] = getBitfieldFromArr_809F64C(v1 + 1) << 16;
-    v0[10] = getBitfieldFromArr_809F64C(v1 + 3) << 16;
-    result = getBitfieldFromArr_809F64C(v1 + 5) << 16;
+    v0[9] = ReadNPCScriptHalfword(v1 + 1) << 16;
+    v0[10] = ReadNPCScriptHalfword(v1 + 3) << 16;
+    result = ReadNPCScriptHalfword(v1 + 5) << 16;
     v0[11] = result;
     return result;
 }
@@ -977,7 +993,7 @@ int npc_809EF60()
     int v1; // r6
     int result; // r0
 
-    result = sub_809F656((v1 + 1));
+    result = ReadNPCScriptWord((v1 + 1));
     *(v0 + 104) = result;
     return result;
 }
@@ -1041,7 +1057,7 @@ int npc_809EFB4()
     int v0; // r5
 
     *(v0 + 96) &= 0xFFFFFF7F;
-    return sub_8002F90();
+    return sprite_noShadow(v0);
 }
 
 
@@ -1051,7 +1067,7 @@ int npc_809EFC6()
     int v0; // r5
 
     *(v0 + 96) |= 0x180u;
-    return sub_8002E3C();
+    return sprite_hasShadow();
 }
 
 
@@ -1127,7 +1143,7 @@ int npc_809F048()
     int v2; // r1
     int v3; // r2
 
-    v1 = getBitfieldFromArr_809F64C((v0 + 1));
+    v1 = ReadNPCScriptHalfword((v0 + 1));
     return sound_play(v1, v2, v3);
 }
 
@@ -1144,7 +1160,7 @@ int npc_809F058()
     int result; // r0
 
     *(v0 + 96) |= 0xC02u;
-    v2 = getBitfieldFromArr_809F64C((v1 + 1));
+    v2 = ReadNPCScriptHalfword((v1 + 1));
     *(v0 + 144) = v2;
     v3 = sub_809FC1C(v2);
     if ( v3 )
@@ -1164,9 +1180,9 @@ int npc_809F058()
     else
     {
         *v0 = 1;
-        sprite_load(128, 28, 160);
-        sprite_loadAnimationData();
-        sub_8004602();
+        sprite_load(v0, 128, 28, 160);
+        sprite_loadAnimationData(v0);
+        FreeOverworldNPCObject();
         result = npc_809F51E();
     }
     return result;
@@ -1189,11 +1205,12 @@ int sub_809F0EC()
 // 0x809f104
 int sub_809F104()
 {
-    int v0; // r6
-    __int16 v1; // r0
+    Battle *v0; // r5
+    int v1; // r6
+    int v2; // r0
 
-    v1 = getBitfieldFromArr_809F64C((v0 + 1));
-    return sub_8002ED0(v1);
+    v2 = ReadNPCScriptHalfword((v1 + 1));
+    return sprite_setColorShader(v0, v2);
 }
 
 
@@ -1208,7 +1225,7 @@ int sub_809F114()
     result = *(v0 + 1);
     v2 = *(v0 + 2);
     if ( result + v2 )
-        result = sub_8002EF6(result, v2);
+        result = sprite_setMosaicSize(result, v2);
     return result;
 }
 
@@ -1268,7 +1285,7 @@ int sub_809F16E()
     int v1; // r6
     int result; // r0
 
-    result = sub_809F656((v1 + 1));
+    result = ReadNPCScriptWord((v1 + 1));
     *(v0 + 92) = result;
     return result;
 }
@@ -1310,7 +1327,7 @@ int sub_809F198()
     signed int v2; // r1
 
     *(v0 + 140) = v1 + 5;
-    *(v0 + 124) = sub_809F656((v1 + 1));
+    *(v0 + 124) = ReadNPCScriptWord((v1 + 1));
     *(v0 + 9) = 16;
     *(v0 + 10) = 0;
     v2 = 128;
@@ -1331,7 +1348,7 @@ int sub_809F1C6()
     int v1; // r6
 
     *(v0 + 140) = v1 + 5;
-    return sub_809F656((v1 + 1));
+    return ReadNPCScriptWord((v1 + 1));
 }
 
 
@@ -1347,7 +1364,7 @@ int sub_809F1D8()
     *(v0 + 4) = v1[2];
     *(v0 + 5) = v1[3];
     *(v0 + 32) = v1[4];
-    *(v0 + 124) = sub_809F656(v1 + 5);
+    *(v0 + 124) = ReadNPCScriptWord(v1 + 5);
     *(v0 + 9) = 16;
     *(v0 + 10) = 0;
     v2 = 128;
@@ -1371,7 +1388,7 @@ int sub_809F218()
     *(v0 + 129) = v1[1];
     *(v0 + 130) = v1[2];
     *(v0 + 131) = v1[3];
-    return sub_809F656(v1 + 4);
+    return ReadNPCScriptWord(v1 + 4);
 }
 
 
@@ -1409,7 +1426,7 @@ signed int sub_809F270()
 
     result = *(*(v1 + oToolkit_GameStatePtr) + oGameState_GameProgress);
     if ( result >= v0[1] && result <= v0[2] )
-        result = sub_809F656(v0 + 3);
+        result = ReadNPCScriptWord(v0 + 3);
     return result;
 }
 
@@ -1436,7 +1453,7 @@ int sub_809F2A2()
 
     result = *(*(v1 + oToolkit_S2011c50_Ptr) + v0[1]);
     if ( result == v0[2] )
-        result = sub_809F656(v0 + 3);
+        result = ReadNPCScriptWord(v0 + 3);
     return result;
 }
 
@@ -1450,7 +1467,7 @@ int sub_809F2C0()
 
     result = *(*(v1 + oToolkit_S2011c50_Ptr) + v0[1]);
     if ( result != v0[2] )
-        result = sub_809F656(v0 + 3);
+        result = ReadNPCScriptWord(v0 + 3);
     return result;
 }
 
@@ -1502,7 +1519,7 @@ int sub_809F31C()
 
     *(v0 + 28) = *(v1 + 1);
     *(v0 + 96) |= &byte_400;
-    result = sub_809F656((v1 + 2));
+    result = ReadNPCScriptWord((v1 + 2));
     *(v0 + 148) = result;
     return result;
 }
@@ -1516,7 +1533,7 @@ int sub_809F338()
 
     *(v0 + 9) = 24;
     *(v0 + 10) = 0;
-    *(v0 + 128) = getBitfieldFromArr_809F64C((v1 + 1));
+    *(v0 + 128) = ReadNPCScriptHalfword((v1 + 1));
     return npc_809F51E();
 }
 
@@ -1546,7 +1563,7 @@ int sub_809F36E()
     int v2; // r1
     int v3; // r2
 
-    v1 = getBitfieldFromArr_809F64C((v0 + 1));
+    v1 = ReadNPCScriptHalfword((v0 + 1));
     return sound_bgmusic_play(v1, v2, v3);
 }
 
@@ -1571,7 +1588,7 @@ int sub_809F392()
     int v0; // r6
     __int16 v1; // r0
 
-    v1 = getBitfieldFromArr_809F64C((v0 + 2));
+    v1 = ReadNPCScriptHalfword((v0 + 2));
     return sub_80302A8(*(v0 + 1), v1);
 }
 
@@ -1585,7 +1602,7 @@ int sub_809F3A6()
 
     result = *(v1 + 1);
     if ( *(v0 + 20) != result )
-        result = sub_809F656((v1 + 2));
+        result = ReadNPCScriptWord((v1 + 2));
     return result;
 }
 
@@ -1610,7 +1627,7 @@ int sub_809F3E8()
 {
     int v0; // r6
 
-    return sub_809F656((v0 + 5));
+    return ReadNPCScriptWord((v0 + 5));
 }
 
 
@@ -1675,9 +1692,9 @@ int sub_809F45A()
     int v8; // r2
     int result; // r0
 
-    v2 = getBitfieldFromArr_809F64C((v1 + 1));
+    v2 = ReadNPCScriptHalfword((v1 + 1));
     TestEventFlag(v2);
-    if ( v3 && (v4 = getBitfieldFromArr_809F64C((v1 + 1)), sub_8143B88(v4), v6) )
+    if ( v3 && (v4 = ReadNPCScriptHalfword((v1 + 1)), sub_8143B88(v4), v6) )
     {
         *(v0 + 28) = v5;
         *(v0 + 148) = byte_87E30A0;
@@ -1690,9 +1707,9 @@ int sub_809F45A()
     else
     {
         *v0 = 1;
-        sprite_load(128, 28, 160);
-        sprite_loadAnimationData();
-        sub_8004602();
+        sprite_load(v0, 128, 28, 160);
+        sprite_loadAnimationData(v0);
+        FreeOverworldNPCObject();
         result = npc_809F51E();
     }
     return result;
@@ -1708,12 +1725,12 @@ int sub_809F4B8()
     int v3; // r1
     int v4; // r2
 
-    sub_8002DEA();
+    sprite_getFrameParameters();
     v2 = (v1 & 7) + 33;
     *(v0 + 20) = v2;
     *(v0 + 21) = ~v2;
     *(v0 + 96) |= 0x11u;
-    sub_80047E0(0, *(v0 + 36), *(v0 + 40), *(v0 + 44));
+    SpawnOverworldMapObject(0, *(v0 + 36), *(v0 + 40), *(v0 + 44));
     return sound_play(118, v3, v4);
 }
 
@@ -1727,7 +1744,7 @@ int npc_809F4EE()
 
     result = sub_80062C8();
     if ( v2 )
-        result = sub_809F656((v0 + 1));
+        result = ReadNPCScriptWord((v0 + 1));
     return result;
 }
 

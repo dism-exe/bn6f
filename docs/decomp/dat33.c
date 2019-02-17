@@ -947,7 +947,7 @@ int sub_812CC44()
     int v6; // r0
     int v7; // r1
     __int16 v8; // r0
-    int v9; // r1
+    int v9; // r0
     __int16 v10; // r0
     u8 *v11; // r6
     _BYTE *v12; // r0
@@ -1002,14 +1002,14 @@ int sub_812CC44()
                         sub_812D954(0);
                     }
                     sub_8119854(v7 + 48, 88, 0);
-                    v9 = *(v0 + 46);
-                    if ( 192 - v9 <= 48 )
+                    v9 = 192 - *(v0 + 46);
+                    if ( v9 <= 48 )
                     {
                         v10 = sub_812D934(*(v0 + 42) & 0x1FF, 1);
                         *(v0 + 48) = v10;
                         sub_812D954(1);
                     }
-                    sub_8119854(192 - v9, 88, 3);
+                    sub_8119854(v9, 88, 3);
                 }
                 *(v0 + 38) = 0;
                 *(v5 + 8) = 0;
@@ -1105,22 +1105,20 @@ int sub_812CDF4()
     int v0; // r5
     int result; // r0
     char v2; // zf
-    char v3; // r4
-    int v4; // r0
-    char v5; // r6
-    int v6; // r1
-    int v7; // r2
-    int v8; // r3
+    int v3; // r4
+    int v4; // r6
+    int v5; // r1
+    int v6; // r2
+    int v7; // r3
 
     result = chatbox_8045F3C(8);
     if ( !v2 )
     {
         v3 = eStruct200BC30_getJumpOffset00();
         v4 = sub_803EA50();
-        v5 = v4;
-        sub_803EBAC(v4, v6, v7, v8);
+        sub_803EBAC(v4, v5, v6, v7);
         eStruct200BC30_setJumpOffset00(v3);
-        sub_803EA58(v5);
+        sub_803EA58(v4);
         *(v0 + 12) = 12;
         result = engine_setScreeneffect(12, 16);
     }
@@ -1144,12 +1142,11 @@ int sub_812CE50()
     int v0; // r5
     char v1; // zf
     int result; // r0
-    char v3; // r4
-    int v4; // r0
-    char v5; // r6
-    int v6; // r1
-    int v7; // r2
-    int v8; // r3
+    int v3; // r4
+    int v4; // r6
+    int v5; // r1
+    int v6; // r2
+    int v7; // r3
 
     chatbox_8045F3C(128);
     if ( v1 )
@@ -1162,10 +1159,9 @@ int sub_812CE50()
 LABEL_8:
         v3 = eStruct200BC30_getJumpOffset00();
         v4 = sub_803EA50();
-        v5 = v4;
-        sub_803EBAC(v4, v6, v7, v8);
+        sub_803EBAC(v4, v5, v6, v7);
         eStruct200BC30_setJumpOffset00(v3);
-        sub_803EA58(v5);
+        sub_803EA58(v4);
         *(v0 + 12) = 8;
         result = engine_setScreeneffect(12, 16);
     }
@@ -1189,8 +1185,6 @@ int sub_812CEA4()
     int v4; // r1
     int v5; // r2
     int v6; // r3
-    int v7; // r2
-    int v8; // r3
 
     result = IsPaletteFadeActive();
     if ( !v2 )
@@ -1206,7 +1200,7 @@ int sub_812CEA4()
         sub_8132614();
         *(v0 + 3) = 16;
         *(v0 + 30) = 0;
-        ZeroFillByWord(dword_20251A0, 0x10u, v7, v8);
+        ZeroFillByWord(dword_20251A0, 16);
         sub_812AFC8();
     }
     return result;
@@ -1605,45 +1599,34 @@ void __noreturn sub_812D204()
 void __noreturn sub_812D298()
 {
     int v0; // r10
-    char *v1; // r0
-    int v2; // r7
+    char *v1; // r7
+    int v2; // r0
     int v3; // r1
     int v4; // r2
     int v5; // r3
-    int v6; // r0
-    int v7; // r1
-    int v8; // r2
-    int v9; // r3
-    int v10; // r0
-    int v11; // r1
-    int v12; // r2
-    int v13; // r3
-    _WORD *v14; // r0
-    int v15; // r2
-    int v16; // r3
-    int v17; // r0
-    int v18; // r1
-    int v19; // r2
-    int v20; // r3
+    _WORD *v6; // r0
+    int v7; // r0
+    int v8; // r1
+    int v9; // r2
+    int v10; // r3
 
     v1 = sub_812D6F8();
-    v2 = v1;
-    zeroFillVRAM(v1, v3, v4, v5);
-    sub_80017E0(v6, v7, v8, v9);
-    sub_800183C(v10, v11, v12, v13);
+    zeroFillVRAM();
+    sub_80017E0(v2, v3, v4, v5);
+    sub_800183C();
     sub_80015FC(16);
     sub_8046664();
     chatbox_8040818();
-    v14 = *(v0 + oToolkit_RenderInfoPtr);
-    *v14 = 8000;
-    v14[8] = 0;
-    v14[9] = 0;
-    v14[10] = 0;
-    v14[11] = 0;
-    v14[12] = 0;
-    v14[13] = 0;
-    ZeroFillByEightWords(v2, 0x80u, v15, v16);
-    sub_812D3A8(v17, v18, v19, v20);
+    v6 = *(v0 + oToolkit_RenderInfoPtr);
+    *v6 = 8000;
+    v6[8] = 0;
+    v6[9] = 0;
+    v6[10] = 0;
+    v6[11] = 0;
+    v6[12] = 0;
+    v6[13] = 0;
+    v7 = ZeroFillByEightWords(v1, 128);
+    sub_812D3A8(v7, v8, v9, v10);
     sub_812D310();
     sub_812D378();
 }

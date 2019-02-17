@@ -1,8 +1,8 @@
 // 0x812d378
-int __noreturn sub_812D378()
+void __noreturn sub_812D378()
 {
-    copyTiles();
-    return copyTiles();
+    copyTiles(0, 0, 1, &unk_201D620, 30, dword_14);
+    copyTiles(-30, 2, 1, &unk_201DB20, 60, &dword_10 + 1);
 }
 
 
@@ -17,7 +17,7 @@ signed int __fastcall sub_812D3A8(int a1, int a2, int a3, int a4)
     int v9; // r1
     signed int result; // r0
 
-    ZeroFillByEightWords(word_2023FA0, 0x20u, a3, a4);
+    ZeroFillByEightWords(word_2023FA0, 32);
     sub_8120A88();
     v8 = sub_811FE7C(&unk_2023FC0, 1, v6, v7) + 1;
     *(v4 + 40) = v8;
@@ -37,17 +37,17 @@ int sub_812D3E4()
 
     v0 = sub_812D6F8();
     sub_8120194(*(v0 + 23), word_2023FA0, &unk_202DFA0);
-    copyTiles();
+    copyTiles(3, 4, 2, &unk_202DFA0, 8, &dword_C + 2);
     sub_8120390(*(v0 + 23), word_2023FA0, &unk_202E080, byte_812C288);
-    copyTiles();
+    copyTiles(1, 4, 2, &unk_202E080, 2, &dword_C + 2);
     sub_81203E4(*(v0 + 23), word_2023FA0, &unk_202E0B8, &dword_35C | 0x9000);
-    copyTiles();
+    copyTiles(11, 4, 2, &unk_202E0B8, 2, &dword_C + 2);
     sub_8120458(*(v0 + 23), word_2023FA0, &unk_202E0F0, 41494);
-    copyTiles();
+    copyTiles(13, 4, 2, &unk_202E0F0, 1, &dword_C + 2);
     sub_81204C4(*(v0 + 23), word_2023FA0, byte_202E10C, 33615);
-    copyTiles();
+    copyTiles(14, 4, 2, byte_202E10C, 2, &dword_C + 2);
     sub_8120618(*(v0 + 23), word_2023FA0, byte_202E144, 41472);
-    copyTiles();
+    copyTiles(16, 4, 2, byte_202E144, 2, &dword_C + 2);
     return sub_812D5EC();
 }
 
@@ -95,7 +95,7 @@ int sub_812D54C()
 
 
 // 0x812d56c
-int __fastcall sub_812D56C(void *a1, int a2, __int16 a3)
+int __fastcall sub_812D56C(void *a1, int a2, int a3)
 {
     int v3; // r7
     int v4; // r6
@@ -104,7 +104,7 @@ int __fastcall sub_812D56C(void *a1, int a2, __int16 a3)
     int v7; // r1
     char v8; // zf
     int v9; // r5
-    __int16 v10; // [sp+0h] [bp-18h]
+    int v10; // [sp+0h] [bp-18h]
 
     v10 = a3;
     v4 = a2;
@@ -118,7 +118,7 @@ int __fastcall sub_812D56C(void *a1, int a2, __int16 a3)
             if ( !v4 )
                 v3 = v7;
             v9 = v7;
-            result = sub_800307C(v10, 88);
+            result = sprite_setCoordinates(v10, 88);
             *(v9 + 20) = v3;
         }
         ++v4;
@@ -245,7 +245,7 @@ LABEL_17:
 // 0x812d6f8
 char *sub_812D6F8()
 {
-    return byte_2037780;
+    return &eT4BattleObjects[3872];
 }
 
 
@@ -315,7 +315,7 @@ int sub_812D778()
 // 0x812d78c
 void __noreturn sub_812D78C()
 {
-    copyTiles();
+    copyTiles(21, 2, 0, &unk_20227A0, 8, &dword_10 + 1);
     JUMPOUT(locret_812D79E);
 }
 
@@ -405,7 +405,7 @@ void sub_812D83C()
 
 
 // 0x812d854
-int sub_812D854()
+unsigned int sub_812D854()
 {
     char *v0; // r0
     unsigned int v1; // r0
@@ -448,9 +448,9 @@ void __fastcall __noreturn sub_812D8C8(int a1, int a2, int a3, int a4)
     int v4; // r5
     int v5; // r0
 
-    sub_800183C(a1, a2, a3, a4);
+    sub_800183C();
     sub_8046664();
-    copyTiles();
+    copyTiles(0, 0, 1, &dword_201E420, 30, dword_14);
     sub_812D52E();
     v5 = sub_812D5D0(*(v4 + 42), 0, 0);
     sub_812D934(v5, 0);
@@ -551,7 +551,7 @@ signed int __fastcall sub_812DA4C(char a1)
 
 
 // 0x812da60
-void __spoils<R1,R2,R3,R12> sub_812DA60()
+void sub_812DA60()
 {
     _BYTE *v0; // r5
 

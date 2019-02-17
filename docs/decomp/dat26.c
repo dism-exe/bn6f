@@ -441,7 +441,7 @@ void __fastcall sub_80931EE(int a1)
 
 
 // 0x80931fa
-__int16 __fastcall sub_80931FA(__int16 result)
+int __fastcall sub_80931FA(int result)
 {
     int v1; // r5
 
@@ -487,7 +487,7 @@ int sub_809322A()
 // 0x809323a
 int __fastcall sub_809323A(int a1, int a2, int a3, int a4)
 {
-    __int16 v4; // r4
+    int v4; // r4
     int v5; // r7
 
     __asm { SVC         6 }
@@ -519,7 +519,7 @@ int sub_809332C()
     int v4; // r2
 
     sub_809E1BC();
-    sub_80047E0(2, v0 + 0x80000, v1 + 0x80000, v2 + 2359296);
+    SpawnOverworldMapObject(2, v0 + 0x80000, v1 + 0x80000, v2 + 2359296);
     sound_play(165, v3, v4);
     return 0;
 }

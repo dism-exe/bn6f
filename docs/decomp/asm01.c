@@ -1,14 +1,11 @@
 // 0x801fe00
 void __fastcall sub_801FE00(int a1, int a2, int a3)
 {
-    int v3; // r2
-    int v4; // r3
-
     *eStruct203F7D8 = 0;
-    flags_2036782 = 0;
+    eFlags2036782 = 0;
     byte_2036784 = -1;
-    ZeroFillByEightWords(dword_203F4A0, byte_200, a3, &struct_2036780);
-    ZeroFillByEightWords(dword_203CBE0, byte_100, v3, v4);
+    ZeroFillByEightWords(dword_203F4A0, byte_200);
+    ZeroFillByEightWords(dword_203CBE0, byte_100);
 }
 
 
@@ -84,8 +81,8 @@ void sub_801FE6C()
     }
     else
     {
-        CopyWords(&struct_2036780, &unk_20399F0, 0x10u);
-        CopyWords(&struct_2036780, &unk_2039A00, 0x10u);
+        CopyWords(&eStruct2036780, &unk_20399F0, 0x10u);
+        CopyWords(&eStruct2036780, &unk_2039A00, 0x10u);
     }
 }
 
@@ -141,7 +138,7 @@ int __fastcall sub_801FF18(int result)
             if ( !((byte_2039A04 < 0) ^ v3) )
                 dword_203F5A0[byte_2039A04] = dword_2039A08;
         }
-        flags_2036782 = **(v1 + oToolkit_JoypadPtr);
+        eFlags2036782 = **(v1 + oToolkit_JoypadPtr);
         byte_2036786 = *(*(v1 + oToolkit_S2034880_Ptr) + 17);
         word_203678C = sub_803F740(4);
         if ( !(eStruct203F7D8[2] & 1) )
@@ -218,7 +215,7 @@ int __fastcall sub_801FFD6(int result)
         }
         if ( !(v8 & 0x10) )
         {
-            flags_2036782 = **(v2 + oToolkit_JoypadPtr);
+            eFlags2036782 = **(v2 + oToolkit_JoypadPtr);
             byte_2036786 = *(*(v2 + oToolkit_S2034880_Ptr) + 17);
             word_203678C = sub_803F740(4);
             if ( !(v1[2] & 1) || (v6 = v1[3], v4 = __OFSUB__(v6, 1), v7 = v6 - 1, v1[3] = v7, (v7 < 0) ^ v4) )
@@ -255,7 +252,7 @@ int __fastcall sub_80200A4(char a1)
 // () -> void
 void __fastcall eStruct2038160_clearStruct(int a1, int a2, int a3, int a4)
 {
-    ZeroFillByWord(&eStruct2038160, 4u, a3, a4);
+    ZeroFillByWord(&eStruct2038160, 4);
 }
 
 

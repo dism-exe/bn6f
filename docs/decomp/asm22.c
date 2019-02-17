@@ -17,7 +17,7 @@ int sub_8086F18()
     byte_2011A9A = *(&dword_8086F58 + v3);
     do
     {
-        sub_80047E0(9, 0, 0, 0);
+        SpawnOverworldMapObject(9, 0, 0, 0);
         ++v1;
     }
     while ( v1 < v4 );
@@ -44,7 +44,7 @@ int sub_8086F5C()
     byte_2011A9B = *(&dword_8086F9C + v3);
     do
     {
-        sub_80047E0(10, 0, 0, 0);
+        SpawnOverworldMapObject(10, 0, 0, 0);
         ++v1;
     }
     while ( v1 < v4 );

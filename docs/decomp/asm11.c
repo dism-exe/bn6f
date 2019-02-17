@@ -15,7 +15,7 @@ unsigned int sub_8069038()
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
     sub_8030472();
-    sub_80028D4(byte_2037800, v3, v4, v5);
+    sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(off_806909C[*(v0 + 5)]);
     chatbox_uncompBasedOnMap_803FD08();
     sub_80691FE();
@@ -36,7 +36,7 @@ void sub_8069140()
     int v0; // r10
     int v1; // r5
     void **v2; // r7
-    __int16 v3; // r0
+    int v3; // r0
 
     v1 = *(v0 + oToolkit_GameStatePtr);
     v2 = &off_8069178 + 4 * *(v1 + oGameState_MapNumber);
@@ -82,7 +82,7 @@ int sub_80691FE()
 {
     int v0; // r10
 
-    return sub_8003570(off_8069218[*(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)]);
+    return SpawnObjectsFromList(off_8069218[*(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)]);
 }
 
 
@@ -103,7 +103,7 @@ unsigned int sub_8069FE8()
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
     sub_8030472();
-    sub_80028D4(byte_2037800, v3, v4, v5);
+    sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(off_806A04C[*(v0 + 5)]);
     chatbox_uncompBasedOnMap_803FD08();
     sub_806A1DE();
@@ -124,7 +124,7 @@ void sub_806A120()
     int v0; // r10
     int v1; // r5
     void **v2; // r7
-    __int16 v3; // r0
+    int v3; // r0
 
     v1 = *(v0 + oToolkit_GameStatePtr);
     v2 = &off_806A158 + 4 * *(v1 + oGameState_MapNumber);
@@ -170,7 +170,7 @@ int sub_806A1DE()
 {
     int v0; // r10
 
-    return sub_8003570(off_806A1F8[*(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)]);
+    return SpawnObjectsFromList(off_806A1F8[*(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)]);
 }
 
 
@@ -191,7 +191,7 @@ unsigned int sub_806AA00()
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
     sub_8030472();
-    sub_80028D4(byte_2037800, v3, v4, v5);
+    sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(off_806AA64[*(v0 + 5)]);
     chatbox_uncompBasedOnMap_803FD08();
     sub_806AD00();
@@ -212,7 +212,7 @@ void sub_806AB94()
     int v0; // r10
     int v1; // r5
     void **v2; // r7
-    __int16 v3; // r0
+    int v3; // r0
 
     v1 = *(v0 + oToolkit_GameStatePtr);
     v2 = &off_806ABCC + 4 * *(v1 + oGameState_MapNumber);
@@ -272,7 +272,7 @@ int sub_806AD00()
 {
     int v0; // r10
 
-    return sub_8003570(*(&off_806AD18 + *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)));
+    return SpawnObjectsFromList(*(&off_806AD18 + *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)));
 }
 
 
@@ -293,7 +293,7 @@ unsigned int sub_806C23C()
     v2 = *(v0 + 5);
     camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
     sub_8030472();
-    sub_80028D4(byte_2037800, v3, v4, v5);
+    sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
     uncompSprite_8002906(*(&off_806C2A0 + *(v0 + 5)));
     chatbox_uncompBasedOnMap_803FD08();
     sub_806C59C();
@@ -314,7 +314,7 @@ void sub_806C35C()
     int v0; // r10
     int v1; // r5
     void **v2; // r7
-    __int16 v3; // r0
+    int v3; // r0
 
     v1 = *(v0 + oToolkit_GameStatePtr);
     v2 = &off_806C394 + 4 * *(v1 + oGameState_MapNumber);
@@ -408,7 +408,7 @@ int sub_806C59C()
 {
     int v0; // r10
 
-    return sub_8003570(*(&pt_806C5B4 + *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)));
+    return SpawnObjectsFromList(*(&pt_806C5B4 + *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)));
 }
 
 

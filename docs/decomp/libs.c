@@ -503,7 +503,7 @@ int sub_8144920()
     unsigned int v5; // r7
     int v6; // r0
     __int16 v7; // r2
-    char *v8; // r1
+    _WORD *v8; // r1
     __int16 v9; // r0
     int v11; // [sp+0h] [bp-24h]
     int v12; // [sp+4h] [bp-20h]
@@ -565,7 +565,7 @@ int sub_8144920()
                     switch ( byte_200F488 )
                     {
                         case 4:
-                            v8 = &unk_200F478 + 2 * v4;
+                            v8 = (&unk_200F478 + 2 * v4);
                             v9 = *(&v11 + v4);
 LABEL_28:
                             *v8 = v9;
@@ -675,7 +675,7 @@ int sub_8144CEC()
 
 
 // 0x8144cf8
-char __fastcall sub_8144CF8(char result)
+int __fastcall sub_8144CF8(int result)
 {
     byte_200F454 = result;
     return result;
@@ -1347,9 +1347,8 @@ LABEL_14:
 // 0x81455e8
 int __fastcall sub_81455E8(int a1)
 {
-    unsigned int v1; // r0
-    char v2; // r0
-    int v4; // [sp+4h] [bp-4h]
+    char v1; // r0
+    int v3; // [sp+4h] [bp-4h]
 
     if ( byte_200FE07 == 5 )
     {
@@ -1365,14 +1364,13 @@ int __fastcall sub_81455E8(int a1)
     {
         byte_200FE06 = 1;
         byte_200FE04 = 5;
-        v1 = sub_814DB34(a1, 0x8Cu);
-        word_200FE1A = v1;
-        word_200FE1C = 140 - v1;
-        if ( v1 << 16 )
-            v2 = 2;
+        word_200FE1A = a1 % 0x8Cu;
+        word_200FE1C = 140 - a1 % 0x8Cu;
+        if ( a1 % 0x8Cu << 16 )
+            v1 = 2;
         else
-            v2 = 3;
-        byte_200FE07 = v2;
+            v1 = 3;
+        byte_200FE07 = v1;
     }
     if ( byte_200FE07 == 3 )
     {
@@ -1381,7 +1379,7 @@ int __fastcall sub_81455E8(int a1)
         byte_200FE07 = 4;
         byte_200FE04 = 9;
     }
-    return v4;
+    return v3;
 }
 
 
@@ -2535,23 +2533,21 @@ int __fastcall sub_8146854(int a1, int a2, int a3, int a4)
     char *v4; // r6
     char *v5; // r5
     unsigned int v6; // r4
-    int v7; // r2
-    int v8; // r3
-    int v10; // [sp+Ch] [bp-4h]
+    int v8; // [sp+Ch] [bp-4h]
 
     v4 = &unk_20098B0;
     v5 = &unk_2009750;
     v6 = 0;
     do
     {
-        ZeroFillByWord(v4, 0x10u, a3, a4);
-        ZeroFillByWord(v5, 8u, v7, v8);
+        ZeroFillByWord(v4, 16);
+        ZeroFillByWord(v5, 8);
         v4 += 16;
         v5 += 8;
         v6 = (v6 + 1) & 0xFF;
     }
     while ( v6 <= 7 );
-    return v10;
+    return v8;
 }
 
 
@@ -2667,7 +2663,7 @@ int __fastcall sub_81469BC(int a1, int a2)
 
 
 // 0x81469dc
-char __fastcall sub_81469DC(char result)
+int __fastcall sub_81469DC(int result)
 {
     byte_201015A = result;
     return result;
@@ -2771,7 +2767,7 @@ signed int sub_8146BB8()
 {
     unsigned int v0; // r0
 
-    v0 = *(dword_2010CC0 + 10 + byte_200AF84);
+    v0 = *(dword_2010CC0 + 10 + unk_200AF84);
     if ( v0 > 0xE5 )
         return 4;
     if ( v0 & 0x80 )
@@ -2889,9 +2885,9 @@ int sub_8146CFC()
 // 0x8146d20
 signed int sub_8146D20()
 {
-    if ( byte_200AF82 )
+    if ( unk_200AF82 )
         return 1;
-    byte_200AF82 = 1;
+    unk_200AF82 = 1;
     return 0;
 }
 
@@ -2966,7 +2962,7 @@ LABEL_8:
         *(v4 + 1) = 1;
         v9 = *(v4 + 20);
         v10 = &unk_2009480 + 4 * byte_2010328 * (v9 >> 2);
-        ZeroFillByWord(*(v4 + 12), v9, v9 >> 2, a4);
+        ZeroFillByWord(*(v4 + 12), v9);
         sub_8146E48(v4, v10);
     }
     return v12;
@@ -3084,8 +3080,8 @@ int __fastcall sub_8146F90(int a1, int a2, int a3)
             byte_2010368 = 1;
             sub_8144DB0(1u);
         }
-        sub_81472F8(&byte_200AF80, v3, v5);
-        sub_814713C(&byte_200AF80, v4);
+        sub_81472F8(&unk_200AF80, v3, v5);
+        sub_814713C(&unk_200AF80, v4);
         switch ( word_200BC58 )
         {
             case 9:
@@ -3248,7 +3244,7 @@ int sub_814728C()
 // 0x81472f8
 int __fastcall sub_81472F8(unsigned __int8 *a1, int a2, int a3)
 {
-    _BYTE *v3; // r4
+    unsigned __int8 *v3; // r4
     int v4; // r5
     int v6; // [sp+8h] [bp-4h]
 
@@ -3283,9 +3279,6 @@ LABEL_5:
 // 0x8147350
 int __fastcall sub_8147350(int a1, int a2, int a3, int a4)
 {
-    int v4; // r2
-    int v5; // r3
-
     sub_803DE88(4, a2, a3, a4);
     byte_2010280 = 0;
     byte_201033C = 0;
@@ -3293,7 +3286,7 @@ int __fastcall sub_8147350(int a1, int a2, int a3, int a4)
     byte_2010340 = 0;
     byte_2010328 = 0;
     byte_2010368 = 0;
-    sub_813D960(&byte_2010368, 0, v4, v5);
+    sub_813D960();
     SWI_CpuSet();
     sub_81465FC(&unk_2010350);
     sub_8144DF0(sub_81473EC, sub_81475B8);
@@ -3489,10 +3482,10 @@ int __fastcall sub_81475D4(unsigned __int16 *a1)
             {
                 if ( byte_2010290 )
                 {
-                    if ( byte_200AF85 == 1 )
+                    if ( unk_200AF85 == 1 )
                         sub_813D98C();
                 }
-                else if ( byte_200AF85 == 1 )
+                else if ( unk_200AF85 == 1 )
                 {
                     sub_813D978();
                 }
@@ -3558,7 +3551,7 @@ signed int sub_8147834()
             while ( v3 <= 3 && !((*(dword_2010CC0 + 2) >> v3) & 1) );
         }
         byte_2010328 = v3;
-        byte_200AF84 = v3;
+        unk_200AF84 = v3;
         byte_201028C = byte_201028C & 0xFE | 2;
     }
     return v0;
@@ -3575,7 +3568,7 @@ int sub_814794C()
     int v5; // [sp+20h] [bp-4h]
 
     SWI_CpuSet();
-    if ( ((byte_200AF85 - 1) & 0xFFu) <= 1 )
+    if ( ((unk_200AF85 - 1) & 0xFFu) <= 1 )
         byte_2010290 = 1;
     byte_2010291 = (byte_201028C & 0x40) != 0;
     byte_2010293 = 1;
@@ -3709,11 +3702,11 @@ int __fastcall sub_8147C20(int a1, int a2, int a3)
     v3 = a1;
     v4 = a2;
     v5 = a3;
-    if ( byte_200AF81 == 2 || byte_200AF80 == 4 )
+    if ( unk_200AF81 == 2 || unk_200AF80 == 4 )
         sub_813D934(15);
     sub_81453F0(Timer2Counter_Reload);
-    sub_8147F50(&byte_200AF80, v3, v5);
-    sub_8147DE0(&byte_200AF80, v4);
+    sub_8147F50(&unk_200AF80, v3, v5);
+    sub_8147DE0(&unk_200AF80, v4);
     switch ( word_200BC58 )
     {
         case 9:
@@ -3863,7 +3856,7 @@ int __fastcall sub_8147F00(int a1, unsigned int a2)
 // 0x8147f50
 int __fastcall sub_8147F50(unsigned __int8 *a1, int a2, unsigned int a3)
 {
-    _BYTE *v3; // r4
+    unsigned __int8 *v3; // r4
     int v4; // r5
     signed int v5; // r0
     int v7; // [sp+8h] [bp-4h]
@@ -3901,15 +3894,10 @@ LABEL_10:
 // 0x8147f98
 int __fastcall sub_8147F98(int a1, int a2, int a3, int a4)
 {
-    int v4; // r0
-    int v5; // r1
-    int v6; // r2
-    int v7; // r3
-
     sub_803DE88(4, a2, a3, a4);
-    v4 = sub_81465FC(&unk_2010350);
+    sub_81465FC(&unk_2010350);
     word_2010352 = 0;
-    sub_813D960(v4, v5, v6, v7);
+    sub_813D960();
     sub_8144DF0(sub_814801C, sub_8148208);
     Timer2Counter_Reload = 0;
     Timer2Control = 131;
@@ -3961,7 +3949,7 @@ int __fastcall sub_814801C(signed int a1)
                 if ( a1 == 34 )
                 {
                     byte_20103E0 = word_200FE14;
-                    byte_200AF84 = word_200FE14;
+                    unk_200AF84 = word_200FE14;
                     sub_814AAF0(32, word_200FE14, &byte_2010290, 64);
                     word_200BC58 = 13;
                     sub_813D934(10);
@@ -4262,7 +4250,7 @@ int sub_8148540()
             ++byte_2010328;
         while ( byte_2010328 <= 3u && !(byte_2010292 & (2 << byte_2010328)) );
     }
-    byte_200AF84 = byte_2010328;
+    unk_200AF84 = byte_2010328;
     result = sub_814B068(byte_2010328);
     word_200BC58 = 48;
     return result;
@@ -5252,8 +5240,7 @@ int __fastcall sub_814978C(char a1, unsigned __int8 a2, unsigned __int8 a3)
     unsigned __int8 v4; // r5
     int v5; // r6
     __int16 v6; // r4
-    __int16 v7; // r0
-    int v9; // [sp+Ch] [bp-4h]
+    int v8; // [sp+Ch] [bp-4h]
 
     v3 = a1;
     v4 = a2;
@@ -5264,15 +5251,14 @@ int __fastcall sub_814978C(char a1, unsigned __int8 a2, unsigned __int8 a3)
     {
         v6 = InterruptMasterEnableRegister;
         InterruptMasterEnableRegister = 0;
-        SWI_Div();
-        *(dword_2010CC4 + 26) = v7;
+        *(dword_2010CC4 + 26) = SWI_Div(600, v5);
         InterruptMasterEnableRegister = v6;
     }
     else
     {
         *(dword_2010CC4 + 26) = 1;
     }
-    return v9;
+    return v8;
 }
 
 
@@ -8991,16 +8977,18 @@ void SWI_CpuSet()
 
 
 // 0x814d8bc
-void SWI_Div()
+int __cdecl SWI_Div(int result, int denom)
 {
     __asm { SVC         6; Signed Division, r0/r1. }
+    return result;
 }
 
 
 // 0x814d8c0
-void SWI_LZ77UnCompReadNormalWrite16bit()
+int __cdecl SWI_LZ77UnCompReadNormalWrite16bit(int result, void *dest)
 {
     __asm { SVC         0x12;     r0    Source address, pointing to data as such: }
+    return result;
 }
 
 
@@ -9013,9 +9001,10 @@ void __cdecl SWI_LZ77UnCompReadNormalWrite8bit(void *src, void *dest)
 
 
 // 0x814d8c8
-void SWI_Sqrt()
+int __cdecl SWI_Sqrt(int result)
 {
     __asm { SVC         8; Calculate square root. }
+    return result;
 }
 
 
@@ -9084,7 +9073,7 @@ int __fastcall sub_814D954(_BYTE *a1, _BYTE *a2, int a3)
 
 
 // 0x814d994
-int __fastcall sub_814D994(unsigned __int8 *a1, unsigned __int8 *a2, int a3)
+unsigned __int8 *__fastcall sub_814D994(unsigned __int8 *a1, unsigned __int8 *a2, int a3)
 {
     unsigned __int8 *v3; // r5
     unsigned __int8 *v4; // r3
@@ -9107,7 +9096,7 @@ int __fastcall sub_814D994(unsigned __int8 *a1, unsigned __int8 *a2, int a3)
         if ( --v5 == -1 )
             return 0;
     }
-    return (v4 - 1);
+    return v4 - 1;
 }
 
 
@@ -9161,14 +9150,14 @@ int __fastcall sub_814DA28(_BYTE *a1, _BYTE *a2, int a3, int a4)
 // 0x814da64
 int __fastcall sub_814DA64(int a1, int (__fastcall *a2)(int))
 {
-    return a2(a1);
+    return (a2)(a1, a2);
 }
 
 
 // 0x814da68
 int __fastcall sub_814DA68(int a1, int a2, int (__fastcall *a3)(int, int))
 {
-    return a3(a1, a2);
+    return (a3)(a1, a2, a3);
 }
 
 
@@ -9180,7 +9169,7 @@ int __fastcall sub_814DA6C(int a1, int a2, int a3, int a4)
 
 
 // 0x814da9c
-int __fastcall sub_814DA9C(unsigned int a1, unsigned int a2)
+int __fastcall _divsi3(unsigned int a1, unsigned int a2)
 {
     signed int v2; // r12
     unsigned int v3; // r3
@@ -9259,7 +9248,7 @@ void nullsub_1()
 
 
 // 0x814db34
-unsigned int __fastcall sub_814DB34(unsigned int result, unsigned int a2)
+unsigned int __fastcall _umodsi3(unsigned int result, unsigned int a2)
 {
     unsigned int v2; // r3
     int v3; // r2
@@ -9330,8 +9319,22 @@ unsigned int __fastcall sub_814DB34(unsigned int result, unsigned int a2)
 }
 
 
+// 0x814dbf4
+int umul3232H32()
+{
+    return sub_814DBF8();
+}
+
+
+// 0x814dbf8
+int __fastcall sub_814DBF8(unsigned int a1, unsigned int a2)
+{
+    return a1 * a2 >> 32;
+}
+
+
 // 0x814dc04
-int sub_814DC04()
+int SoundMain()
 {
     int result; // r0
     int v1; // r0
@@ -9595,7 +9598,7 @@ int __fastcall sub_814DE20(int a1, int a2, int a3, char *a4, int a5, int a6, int
     int v25; // r7
     int v26; // t1
     int v27; // r0
-    int v28; // r3
+    char *v28; // r3
     int i; // r9
     bool v30; // zf
     unsigned int v31; // r0
@@ -9693,7 +9696,7 @@ int __fastcall sub_814DE20(int a1, int a2, int a3, char *a4, int a5, int a6, int
         v35 = v12 * *(v9 + 32);
         v27 = *a4;
         v36 = a4[1];
-        v28 = (a4 + 1);
+        v28 = a4 + 1;
         v22 = v36 - v27;
         while ( 2 )
         {
@@ -9746,11 +9749,11 @@ LABEL_28:
                     }
                     if ( !v30 )
                     {
-                        v39 = *(v28 + i);
+                        v39 = v28[i];
                         v28 += i;
                         v27 = v39;
                     }
-                    v40 = *(v28++ + 1);
+                    v40 = (v28++)[1];
                     v22 = v40 - v27;
                 }
                 v23 = __CFADD__(v10, 0x40000000);
@@ -9766,7 +9769,7 @@ LABEL_28:
                 continue;
             break;
         }
-        a4 = (v28 - 1);
+        a4 = v28 - 1;
         v9 = v42;
         *(v42 + 28) = v34;
     }
@@ -9800,7 +9803,7 @@ int sub_814E008() { // could not decompile
     locret_814E026:\
         bx r3\
     byte_814E028: .byte 0x53, 0x6D, 0x73, 0x68, 0xA4\
-    byte_814E02D: .byte 0x46, 0x0, 0x21, 0x0, 0x22, 0x0, 0x23, 0x0, 0x24, 0x1E, 0xC0\
+    SoundMainBTM: .byte 0x46, 0x0, 0x21, 0x0, 0x22, 0x0, 0x23, 0x0, 0x24, 0x1E, 0xC0\
         .byte 0x1E, 0xC0, 0x1E, 0xC0, 0x1E, 0xC0, 0x64, 0x46, 0x70, 0x47, 0x0\
         .byte 0x0\
     .endfunc // sub_814E008"
@@ -9808,7 +9811,7 @@ int sub_814E008() { // could not decompile
 }
 
 // 0x814e044
-_DWORD *__fastcall sub_814E044(_DWORD *result)
+_DWORD *__fastcall RealClearChain(_DWORD *result)
 {
     int v1; // r3
     int v2; // r1
@@ -9832,7 +9835,7 @@ _DWORD *__fastcall sub_814E044(_DWORD *result)
 
 
 // 0x814e064
-int __fastcall sub_814E064(int a1, int a2)
+int __fastcall ply_fine(int a1, int a2)
 {
     _BYTE *v2; // r5
     _DWORD *v3; // r4
@@ -9847,7 +9850,7 @@ int __fastcall sub_814E064(int a1, int a2)
         {
             if ( *v3 & 0xC7 )
                 *v3 |= 0x40u;
-            sub_814E044(v3);
+            RealClearChain(v3);
             v4 = v3[13];
             if ( v4 == v3 )
             {
@@ -9900,7 +9903,7 @@ void __fastcall sub_814E0B4(int a1, int a2, unsigned __int8 *a3)
 
 
 // 0x814e0b6
-void __spoils<R2> sub_814E0B6()
+void sub_814E0B6()
 {
     ;
 }
@@ -9920,7 +9923,7 @@ void __fastcall sub_814E0D0(int a1, int a2)
 
 
 // 0x814e0dc
-int __fastcall sub_814E0DC(int a1, int a2)
+int __fastcall ply_goto(int a1, int a2)
 {
     int v2; // r0
     int v3; // r3
@@ -9934,21 +9937,21 @@ int __fastcall sub_814E0DC(int a1, int a2)
 
 
 // 0x814e0fc
-int __fastcall sub_814E0FC(int a1, int a2)
+int __fastcall ply_patt(int a1, int a2)
 {
     unsigned int v2; // r2
 
     v2 = *(a2 + 2);
     if ( v2 >= 3 )
-        return sub_814E064(a1, a2);
+        return ply_fine(a1, a2);
     *(a2 + 4 * v2 + 68) = *(a2 + 64) + 4;
     ++*(a2 + 2);
-    return sub_814E0DC(a1, a2);
+    return ply_goto(a1, a2);
 }
 
 
 // 0x814e118
-void __fastcall sub_814E118(int a1, int a2)
+void __fastcall ply_pend(int a1, int a2)
 {
     int v2; // r2
 
@@ -10032,28 +10035,34 @@ int __fastcall sub_814E17C(int a1, int a2)
 // 0x814e190
 int __fastcall sub_814E190(int a1, _DWORD *a2)
 {
-    int (*v2)(void); // lr
-    unsigned __int8 *v3; // r2
+    unsigned __int8 *v2; // r2
+    int v3; // r3
     int v4; // r3
-    int v5; // r3
-    int v6; // r2
-    int v7; // r3
-    int v8; // r2
-    int v9; // r3
+    int v5; // r1
+    int v6; // r3
+    int v7; // r2
+    int v8; // r3
+    int v9; // r1
+    int v10; // r3
+    int v11; // r2
+    int v12; // r3
+    int v13; // r1
+    int v14; // r3
+    int (*v15)(void); // r12
 
-    v3 = a2[16];
-    v4 = *v3;
-    a2[16] = v3 + 1;
-    v5 = *(12 * v4 + *(a1 + 48));
+    v2 = a2[16];
+    v3 = *v2;
+    a2[16] = v2 + 1;
+    v4 = *(12 * v3 + *(a1 + 48));
     sub_814E0B6();
-    a2[9] = v5;
-    v7 = *(v6 + 4);
+    *(v5 + 36) = v6;
+    v8 = *(v7 + 4);
     sub_814E0B6();
-    a2[10] = v7;
-    v9 = *(v8 + 8);
+    *(v9 + 40) = v10;
+    v12 = *(v11 + 8);
     sub_814E0B6();
-    a2[11] = v9;
-    return v2();
+    *(v13 + 44) = v14;
+    return v15();
 }
 
 
@@ -10412,7 +10421,7 @@ LABEL_71:
 // 0x814e4cc
 int __fastcall sub_814E4CC(int a1, int a2, int a3, int (__fastcall *a4)(int, int, int))
 {
-    return a4(a1, a2, a3);
+    return (a4)(a1, a2, a3, a4);
 }
 
 
@@ -10808,22 +10817,17 @@ int __fastcall sub_814E7E0(int a1, int a2)
 int __fastcall sub_814E7F4(int a1, unsigned __int8 a2, int a3)
 {
     signed int v3; // r6
-    signed int v4; // r7
-    int v5; // r5
-    int v6; // r4
-    int v7; // r0
+    int v4; // r4
+    int v5; // r0
 
     v3 = a2;
-    v4 = a3 << 24;
     if ( a2 > 0xB2u )
-    {
         v3 = 178;
-        v4 = -16777216;
-    }
-    v5 = *&byte_81C055C[4 * (byte_81C04A8[v3] & 0xF)] >> (byte_81C04A8[v3] >> 4);
-    v6 = *(a1 + 4);
-    v7 = (*byte_814DBF4)((*&byte_81C055C[4 * (byte_81C04A8[v3 + 1] & 0xF)] >> (byte_81C04A8[v3 + 1] >> 4)) - v5, v4);
-    return (*byte_814DBF4)(v6, v5 + v7);
+    v4 = *(a1 + 4);
+    v5 = (*&byte_81C055C[4 * (byte_81C04A8[v3 + 1] & 0xF)] >> (byte_81C04A8[v3 + 1] >> 4))
+         - (*&byte_81C055C[4 * (byte_81C04A8[v3] & 0xF)] >> (byte_81C04A8[v3] >> 4));
+    umul3232H32();
+    return umul3232H32();
 }
 
 
@@ -10882,11 +10886,11 @@ int sub_814E8A0()
 
 
 // 0x814e918
-int sub_814E918()
+int m4aSoundMain()
 {
     int v1; // [sp+0h] [bp-4h]
 
-    sub_814DC04();
+    SoundMain();
     return v1;
 }
 
@@ -11153,7 +11157,7 @@ int __fastcall sub_814EB84(_BYTE *a1)
         off_30055F0 = sub_814F228;
         off_30055F4 = sub_814F2F0;
         *(v2 + 28) = a1;
-        *(v2 + 40) = sub_814F508;
+        *(v2 + 40) = CgbSound;
         *(v2 + 44) = sub_814F44C;
         *(v2 + 48) = sub_814F3A4;
         *(v2 + 12) = 0;
@@ -11231,7 +11235,7 @@ int __fastcall sub_814EDC0(int a1)
     int v1; // r4
     int v2; // r5
     unsigned int v3; // r4
-    unsigned int v4; // r4
+    int v4; // r4
     int v5; // r0
     int v7; // [sp+8h] [bp-4h]
 
@@ -11242,10 +11246,10 @@ int __fastcall sub_814EDC0(int a1)
     *(*byte_3007FF0 + 8) = v3;
     v4 = *&byte_81C058C[2 * (v3 - 1)];
     *(v2 + 16) = v4;
-    *(v2 + 11) = sub_814DA9C(0x630u, v4);
-    v5 = sub_814DA9C(597275 * v4 + 5000, 0x2710u);
+    *(v2 + 11) = 1584 / v4;
+    v5 = (597275 * v4 + 5000) / 10000;
     *(v2 + 20) = v5;
-    *(v2 + 24) = (sub_814DA9C(0x1000000u, v5) + 1) >> 1;
+    *(v2 + 24) = (0x1000000 / v5 + 1) >> 1;
     sub_814EF94();
     return v7;
 }
@@ -11363,7 +11367,7 @@ int sub_814EF94()
             ;
         while ( VerticalCounter_LY_ != 159 )
             ;
-        Timer0Counter_Reload[0] = -sub_814DA9C(0x44940u, v0[4]);
+        Timer0Counter_Reload[0] = -(280896 / v0[4]);
         Timer0Control[0] = 128;
     }
     return v4;
@@ -11371,7 +11375,7 @@ int sub_814EF94()
 
 
 // 0x814f00c
-int sub_814F00C()
+int m4a_2_814F00C()
 {
     int v1; // [sp+0h] [bp-4h]
 
@@ -11386,7 +11390,7 @@ int __fastcall sub_814F08C(int a1, _BYTE *a2, unsigned __int8 a3)
 {
     int v3; // r7
     _BYTE *v4; // r6
-    int v5; // r4
+    signed int v5; // r4
     _DWORD *v6; // r5
     int v7; // r0
     int v9; // [sp+10h] [bp-4h]
@@ -11778,7 +11782,7 @@ LABEL_10:
 
 
 // 0x814f508
-int sub_814F508()
+int CgbSound()
 {
     signed int v0; // r6
     int v1; // r4
@@ -12552,28 +12556,28 @@ int __fastcall sub_814FE20(int a1, int a2)
 
 
 // 0x814fe34
-int __fastcall sub_814FE34(int a1, int a2)
+_BYTE *__fastcall sub_814FE34(int a1, int a2)
 {
     _BYTE *v2; // r0
-    int result; // r0
+    _BYTE *result; // r0
 
     v2 = *(a2 + 64);
     *(a2 + 30) = *v2;
-    result = (v2 + 1);
+    result = v2 + 1;
     *(a2 + 64) = result;
     return result;
 }
 
 
 // 0x814fe40
-int __fastcall sub_814FE40(int a1, int a2)
+_BYTE *__fastcall sub_814FE40(int a1, int a2)
 {
     _BYTE *v2; // r0
-    int result; // r0
+    _BYTE *result; // r0
 
     v2 = *(a2 + 64);
     *(a2 + 31) = *v2;
-    result = (v2 + 1);
+    result = v2 + 1;
     *(a2 + 64) = result;
     return result;
 }

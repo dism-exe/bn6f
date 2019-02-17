@@ -48,7 +48,7 @@ int __fastcall sub_8086DF8(int a1, int a2, int a3, int a4)
     char v6; // zf
     int v7; // r2
 
-    ZeroFillByWord(&unk_2011A90, 0x94u, a3, a4);
+    ZeroFillByWord(&unk_2011A90, 148);
     byte_2011A94 = 10;
     byte_2011A9D[0] = 15;
     byte_2011A93 = 1;
@@ -82,7 +82,7 @@ int __fastcall sub_8086DF8(int a1, int a2, int a3, int a4)
 // 0x8086ed8
 int sub_8086ED8()
 {
-    return sub_80047E0(6, 0, 0, 0);
+    return SpawnOverworldMapObject(6, 0, 0, 0);
 }
 
 
@@ -100,7 +100,7 @@ int sub_8086EEC()
         v2 = 4;
     do
     {
-        result = sub_80047E0(7, 0, 0, 0);
+        result = SpawnOverworldMapObject(7, 0, 0, 0);
         ++v1;
     }
     while ( v1 < v2 );
