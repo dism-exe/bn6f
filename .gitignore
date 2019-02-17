@@ -37,3 +37,4 @@ bn6f.txt
 tools/agbcc/
 tools/binutils/
 *.pickle
+temp/

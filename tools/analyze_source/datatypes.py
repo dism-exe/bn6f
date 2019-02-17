@@ -3,6 +3,8 @@ from abc import ABC, abstractmethod
 import functools
 import math
 import numbers
+import re
+import collections
 
 import parser
 import readelf
@@ -126,9 +128,21 @@ class Primitive(DataType):
     def value(self, value):
         self._value = value
 
+    @property
+    def is_immediate(self):
+        return False
+
 Primitive.new_byte = functools.partial(Primitive, Size.BYTE)
 Primitive.new_hword = functools.partial(Primitive, Size.HWORD)
 Primitive.new_word = functools.partial(Primitive, Size.WORD)
+
+class Immediate(Primitive):
+    def __init__(self, size=Size.BYTE, value=0):
+        super().__init__(size, value)
+
+    @property
+    def is_immediate(self):
+        return True
 
 class Pointer(DataType):
     null_sym = readelf.SymInfo(value=NaN, scope="l", debug=" ", type=" ", section="*UND*", name="null", filename="dummy", line_num=0)
@@ -147,11 +161,11 @@ class Pointer(DataType):
         return DataType.POINTER
 
     @abstractmethod
-    def load(self, size, fileline, offset=0):
+    def load(self, size, fileline, offset=None):
         pass
 
     @abstractmethod
-    def store(self, datatype, size, fileline, offset=0):
+    def store(self, datatype, size, fileline, offset=None):
         pass
 
     def add_offset(self, offset):
@@ -185,14 +199,14 @@ class UnkPointer(Pointer):
         super().__init__()
 
     # TODO mark offsets
-    def load(self, size, fileline, offset=0):
+    def load(self, size, fileline, offset=None):
         #total_offset = offset + self.offset
         #if math.isnan(total_offset):
         return new_unk_datatype_from_size(size)
         #pass
 
     # TODO mark offsets
-    def store(self, datatype, size, fileline, offset=0):
+    def store(self, datatype, size, fileline, offset=None):
         pass
     
 class RAMPointer(Pointer):
@@ -200,18 +214,18 @@ class RAMPointer(Pointer):
         super().__init__(offset, possible_syms)
 
     # TODO mark offsets
-    def load(self, size, fileline, offset=0):
+    def load(self, size, fileline, offset=None):
         return new_unk_datatype_from_size(size)
     
     # TODO mark offsets
-    def store(self, datatype, size, fileline, offset=0):
+    def store(self, datatype, size, fileline, offset=None):
         pass
 
 class ROMPointer(Pointer):
     def __init__(self, possible_syms=None):
         super().__init__(0, possible_syms)
 
-    def load(self, size, fileline, offset=0):
+    def load(self, size, fileline, offset=None):
         global syms
         global scanned_files
     
@@ -252,7 +266,7 @@ class ROMPointer(Pointer):
 
         return ROMPointer(read_syms).wrap()
 
-    def store(self, datatype, size, fileline, offset=0):
+    def store(self, datatype, size, fileline, offset=None):
         if len(self.possible_syms) == 1:
             global_fileline_error("Cannot write to ROMPointer \"%s\"!" % self.sym.name)
         else:
@@ -296,10 +310,10 @@ class ProgramCounter(ROMPointer):
     def type(self):
         return DataType.POINTER
 
-    def load(self, size, fileline, offset=0):
+    def load(self, size, fileline, offset=None):
         global_fileline_error("Cannot read from program counter \"%s\"!" % self.sym)
 
-    def store(self, datatype, size, fileline, offset=0):
+    def store(self, datatype, size, fileline, offset=None):
         global_fileline_error("Cannot write to program counter \"%s\"!" % self.sym)
 
     def add_offset(self, offset):
@@ -332,48 +346,6 @@ class ProgramCounter(ROMPointer):
     @line_num.setter
     def line_num(self, line_num):
         self._line_num = line_num
-
-class Struct(Pointer):
-    def __init__(self, offset=0):
-        super().__init__(offset)
-
-    def load(self, size, fileline, offset):
-        # total_offset = offset + self.offset
-        # if math.isnan(total_offset):
-        #     raise NotImplementedError("Context information: struct load with NaN offset")
-        struct_field_action = self.get_struct_offset_action(offset, fileline, size)
-        return struct_field_action.load(self, size)
-
-    def store(self, datatype, size, fileline, offset):
-        # total_offset = offset + self.offset
-        # if math.isnan(total_offset):
-        #     raise NotImplementedError("Context information: struct store with NaN offset")
-        struct_field_action = self.get_struct_offset_action(offset, fileline, size)
-        struct_field_action.store(self, datatype, size)
-
-    @abstractmethod
-    def get_struct_offset_action(self, offset, fileline, size):
-        pass
-
-class StructField:
-    __slots__ = ("offset_name", "memory")
-    def __init__(self, offset_name, memory):
-        self.offset_name = offset_name
-        self.memory = memory
-"""
-class StructEntry:
-    __slots__ = ("offset_name", "read_action", "write_action", "size")
-    def __init__(self, offset_name, memory, size=0):
-        self.offset_name = offset_name
-        self.memory = memory
-        self.size = size
-        
-class StructInfo:
-    def __init__(self, struct_prefix, start_offset, *struct_fields):
-        self.struct_prefix = struct_prefix
-        self.start_offset = start_offset
-        self.struct_fields = struct_fields
-"""
 
 class Memory(ABC):
     def __init__(self):
@@ -422,19 +394,104 @@ class UnkPrimitiveMemory(Memory):
     def store(self, struct, datatype, size):
         pass
 
+class StructField:
+    __slots__ = ("offset_name", "memory")
+    def __init__(self, offset_name, memory):
+        self.offset_name = offset_name
+        self.memory = memory
+
+class Struct(Pointer):
+    unk_memory = UnkMemory()
+    unk_primitive_memory = UnkPrimitiveMemory()
+    barebones_struct_field = StructField("", UnkMemory())
+    zero_immediate = Immediate().wrap()
+    imm_value_regex = re.compile(r"# *([^\]]+)|(?= *\])")
+
+    def __init__(self, offset=0):
+        super().__init__(offset)
+
+    def load(self, size, fileline, offset=None):
+        if offset is None:
+            offset = Struct.zero_immediate
+        struct_field = self.get_struct_offset_field(offset, fileline, size)
+        #if struct_field.offset_name != "":
+        #    self.mark_struct_access(offset, fileline, size, struct_field)
+        return struct_field.memory.load(self, size)
+
+    def store(self, datatype, size, fileline, offset=None):
+        if offset is None:
+            offset = Struct.zero_immediate
+        struct_field = self.get_struct_offset_field(offset, fileline, size)
+        #if struct_field.offset_name != "":
+        #    self.mark_struct_access(offset, fileline, size, struct_field)
+        struct_field.memory.store(self, datatype, size)
+
+    def mark_struct_access(self, offset, fileline, size, struct_field):
+        if offset.ref.is_immediate and self.offset == 0 and fileline not in self.marked_accesses_case_1:
+            self.marked_accesses_case_1.add(fileline)
+            src_file = scanned_files[fileline.filename]
+            uncommented_line = src_file.lines[fileline.line_num]
+            search_obj = Struct.imm_value_regex.search(uncommented_line)
+            if search_obj[1] is not None and '0' <= search_obj[1][0] < '9':
+                commented_line = src_file.commented_lines[fileline.line_num]
+                prefix_and_offset_name = self.get_prefix(offset.ref.value) + struct_field.offset_name
+                src_file.commented_lines[fileline.line_num] = commented_line[:search_obj.start(1)] + prefix_and_offset_name + commented_line[search_obj.end(1):]
+                fileline_msg("Marked \"%s\" offset \"%s\"." % (self.struct_name, prefix_and_offset_name), fileline)
+            else:
+                commented_line = src_file.commented_lines[fileline.line_num]
+                prefix_and_offset_name = self.get_prefix(offset.ref.value) + struct_field.offset_name
+                src_file.commented_lines[fileline.line_num] = commented_line[:search_obj.start(0)] + ",#" + prefix_and_offset_name + commented_line[search_obj.end(0):]
+                fileline_msg("Marked \"%s\" offset \"%s\"." % (self.struct_name, prefix_and_offset_name), fileline)
+
+    @abstractmethod
+    def get_struct_offset_field(self, offset, fileline, size):
+        pass
+
+    @property
+    @abstractmethod
+    def marked_accesses_case_1(self):
+        pass
+
+    # @marked_accesses_case_1.setter
+    # @abstractmethod
+    # def marked_accesses_case_1(self, val):
+        # pass
+
+    @abstractmethod
+    def get_prefix(self, offset):
+        pass
+
+"""
+class StructEntry:
+    __slots__ = ("offset_name", "read_action", "write_action", "size")
+    def __init__(self, offset_name, memory, size=0):
+        self.offset_name = offset_name
+        self.memory = memory
+        self.size = size
+        
+class StructInfo:
+    def __init__(self, struct_prefix, start_offset, *struct_fields):
+        self.struct_prefix = struct_prefix
+        self.start_offset = start_offset
+        self.struct_fields = struct_fields
+"""
+
 class Toolkit(Struct):
     def __init__(self):
         super().__init__()
 
 class BattleObject(Struct):
     __slots__ = ("basic_struct_fields",)
+    _marked_accesses_case_1 = set()
+
     def __init__(self, offset=0):
         super().__init__(offset)
         self.basic_struct_fields = BattleObject.generate_basic_struct_fields()
 
     @staticmethod
     def generate_basic_struct_fields():
-        return {
+        struct_fields = collections.defaultdict(lambda: {})
+        struct_fields.update({
                 -0x10: {Size.WORD: StructField("_LinkedList_Prev", AnonMemory(functools.partial(BattleObject, -0x10)))},
                 -0x0c: {Size.WORD: StructField("_LinkedList_Next", AnonMemory(functools.partial(BattleObject, -0x10)))},
                 0x0: {Size.BYTE: StructField("_Flags", UnkPrimitiveMemory())},
@@ -498,35 +555,66 @@ class BattleObject(Struct):
                 0x50: {Size.WORD: StructField("_RelatedObject2Ptr", AnonMemory(BattleObject))},
                 0x54: {Size.WORD: StructField("_CollisionDataPtr", AnonMemory(RAMPointer))},
                 0x58: {Size.WORD: StructField("_AIPtr", AnonMemory(RAMPointer))},
-                0x5c: {Size.WORD: StructField("_Unk_5c", UnkPrimitiveMemory())}
-                # 0x60: {Size.WORD: StructField("_ExtraVars", AnonMemory(UnknownDataType))},
-                # 0x64: {Size.WORD: StructField("_ExtraVars+4", AnonMemory(UnknownDataType))},
-                # 0x68: {Size.WORD: StructField("_ExtraVars+8", AnonMemory(UnknownDataType))},
-                # 0x6c: {Size.WORD: StructField("_ExtraVars+0xc", AnonMemory(UnknownDataType))},
-                # 0x70: {Size.WORD: StructField("_ExtraVars+0x10", AnonMemory(UnknownDataType))},
-                # 0x74: {Size.WORD: StructField("_ExtraVars+0x14", AnonMemory(UnknownDataType))},
-                # 0x78: {Size.WORD: StructField("_ExtraVars+0x18", AnonMemory(UnknownDataType))},
-                # 0x7c: {Size.WORD: StructField("_ExtraVars+0x1c", AnonMemory(UnknownDataType))},
-                # 0x80: {Size.WORD: StructField("_ExtraVars+0x20", AnonMemory(UnknownDataType))},
-                # 0x84: {Size.WORD: StructField("_ExtraVars+0x24", AnonMemory(UnknownDataType))},
-                # 0x88: {Size.WORD: StructField("_ExtraVars+0x28", AnonMemory(UnknownDataType))}
-            }
+                0x5c: {Size.WORD: StructField("_Unk_5c", UnkPrimitiveMemory())},
+                #0x60: {Size.WORD: StructField("_ExtraVars", AnonMemory(UnknownDataType))},
+                #0x64: {Size.WORD: StructField("_ExtraVars+4", AnonMemory(UnknownDataType))},
+                #0x68: {Size.WORD: StructField("_ExtraVars+8", AnonMemory(UnknownDataType))},
+                #0x6c: {Size.WORD: StructField("_ExtraVars+0xc", AnonMemory(UnknownDataType))},
+                #0x70: {Size.WORD: StructField("_ExtraVars+0x10", AnonMemory(UnknownDataType))},
+                #0x74: {Size.WORD: StructField("_ExtraVars+0x14", AnonMemory(UnknownDataType))},
+                #0x78: {Size.WORD: StructField("_ExtraVars+0x18", AnonMemory(UnknownDataType))},
+                #0x7c: {Size.WORD: StructField("_ExtraVars+0x1c", AnonMemory(UnknownDataType))},
+                #0x80: {Size.WORD: StructField("_ExtraVars+0x20", AnonMemory(UnknownDataType))},
+                #0x84: {Size.WORD: StructField("_ExtraVars+0x24", AnonMemory(UnknownDataType))},
+                #0x88: {Size.WORD: StructField("_ExtraVars+0x28", AnonMemory(UnknownDataType))}
+            })
+        return struct_fields
 
-    def get_struct_offset_action(self, offset, fileline, size):
-        if offset in self.basic_struct_fields:
-            struct_field_possible_entries = self.basic_struct_fields[offset]
+    def get_struct_offset_field(self, offset, fileline, size):
+        total_offset = self.offset + offset.ref.value
+        if math.isnan(total_offset):
+            raise NotImplementedError("Context information: struct operation with NaN offset")
+            
+        if total_offset in self.basic_struct_fields:
+            struct_field_possible_entries = self.basic_struct_fields[total_offset]
             if size in struct_field_possible_entries:
-                return struct_field_possible_entries[size].memory
+                return struct_field_possible_entries[size]
             elif Size.DEFAULT in struct_field_possible_entries:
-                return struct_field_possible_entries[Size.DEFAULT].memory
+                return struct_field_possible_entries[Size.DEFAULT]
+            elif not (0x60 <= total_offset < 0x8c):
+                global_fileline_error("Did not find size \"%s\" in struct for struct offset \"0x%x\"!" % (size, total_offset))
+        if 0x60 <= total_offset < 0x8c:
+            if total_offset == 0x60:
+                self.basic_struct_fields[total_offset] = {size: StructField("_ExtraVars", AnonMemory(UnknownDataType))}
+            elif 0x60 <= total_offset <= 0x69:
+                self.basic_struct_fields[total_offset] = {size: StructField("_ExtraVars+%s" % (total_offset - 0x60), AnonMemory(UnknownDataType))}
             else:
-                global_fileline_error("Did not find size \"%s\" in struct for struct offset \"0x%x\"!" % (size, offset))
-        elif 0x60 <= offset < 0x8c:
-            return UnkMemory()
-        elif 0x90 <= offset < 0xd8:
-            return UnkMemory()
+                self.basic_struct_fields[total_offset] = {size: StructField("_ExtraVars+0x%x" % (total_offset - 0x60), AnonMemory(UnknownDataType))}
+            return self.basic_struct_fields[total_offset][size]
+        elif 0x90 <= total_offset < 0xd8:
+            return Struct.barebones_struct_field
         else:
-            global_fileline_error("Invalid struct offset \"%s\"!" % offset)
+            global_fileline_error("Invalid struct offset \"%s\"!" % total_offset)
+
+    @property
+    def marked_accesses_case_1(self):
+        return BattleObject._marked_accesses_case_1
+
+    # @marked_accesses_case_1.setter
+    # def marked_accesses_case_1(self, val):
+        # BattleObject.marked_accesses_case_1 = val
+
+    def get_prefix(self, offset):
+        if offset < 0 or 0x4 <= offset < 0x90:
+            return "oBattleObject"
+        elif 0 <= offset < 0x4:
+            return "oObjectHeader"
+        else:
+            global_fileline_error("Struct offset \"%s\" does not have prefix!" % offset)
+
+    @property
+    def struct_name(self):
+        return "BattleObject"
 
 class Stack(Pointer):
     __slots__ = ("datatypes",)
@@ -534,8 +622,11 @@ class Stack(Pointer):
         super().__init__()
         self.datatypes = datatypes
 
-    def load(self, size, fileline, offset=0):
-        total_offset = self.offset + offset
+    def load(self, size, fileline, offset=None):
+        if offset is None:
+            total_offset = self.offset
+        else:
+            total_offset = self.offset + offset.ref.value
         if math.isnan(total_offset):
             global_fileline_msg("StackWarning: Stack offset is NaN for load!")
             return new_unk_datatype_from_size(size)
@@ -551,8 +642,11 @@ class Stack(Pointer):
                 global_fileline_error("Bad stack read of (%s, %s)! (stack size: %s)" % (total_offset, size, self.offset))
 
     # note: storing values may be risky. figure this out
-    def store(self, datatype, size, fileline, offset=0):
-        total_offset = self.offset + offset
+    def store(self, datatype, size, fileline, offset=None):
+        if offset is None:
+            total_offset = self.offset
+        else:
+            total_offset = self.offset + offset.ref.value
         if math.isnan(total_offset):
             global_fileline_msg("StackWarning: Stack offset is NaN for store!")
             return
@@ -566,3 +660,8 @@ def new_unk_datatype_from_size(size):
         return Primitive(size).wrap()
     else:
         return UnknownDataType().wrap()
+
+if __name__ == "__main__":
+    struct_fields = BattleObject.generate_basic_struct_fields()
+    struct_fields[0x60][Size.BYTE] = StructField("_ExtraVars", AnonMemory(UnknownDataType))
+    print(struct_fields)

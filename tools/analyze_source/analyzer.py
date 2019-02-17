@@ -14,6 +14,7 @@ import parser
 import copy
 import opcodes
 import time
+import collections
 
 syms = {}
 scanned_files = {}
@@ -176,6 +177,7 @@ class FunctionTracker:
         self.time = time
 
 function_trackers = {}
+global_function_tree = {}
 
 def run_analyzer_common(src_file, funcstate, function_start_time):
     function_total_time = 0
@@ -183,6 +185,7 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
     base_stack_offset = funcstate.regs["sp"].data.ref.offset
     function_name = funcstate.function.name
     function_filename = funcstate.function.filename
+    #function_tree = collections.OrderedDict()
 
     debug_print("funcstart: base stack offset: %s, function: %s (%s:%s)" % (base_stack_offset, function_name, function_filename, funcstate.function.line_num + 1))
     return_regs = None
@@ -235,6 +238,7 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
                             if sym.name not in problem_functions:
                                 debug_print("Start of jumptable function called from \"%s\" (%s:%s)" % (function_name, function_filename, funcstate.function.line_num + 1))
                                 function_total_time += time.time() - function_start_time
+                                #subroutine_return_regs, function_tree["!" + sym.name] = run_analyzer_from_sym(sym, funcstate.regs, time.time())
                                 subroutine_return_regs = run_analyzer_from_sym(sym, funcstate.regs, time.time())
                                 function_start_time = time.time()
                                 debug_print("End of jumptable function called from \"%s\" (%s:%s)" % (function_name, function_filename, funcstate.function.line_num + 1))
@@ -251,13 +255,13 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
                             # not returning from function, then this is a noreturn bx or something similar
                             # I think this only happens when performing an interwork return
                             else:
-                                
                                 fileline_error("Tried performing noreturn branch!", fileline)
                         else:
                             if possible_syms[0].type != "F":
                                 fileline_msg("BadFunctionDefinitionWarning: Tried executing regular non-function symbol \"%s\"!" % possible_syms[0].name, fileline)
                             debug_print("Start of regular function called from \"%s\" (%s:%s)" % (function_name, function_filename, funcstate.function.line_num + 1))                            
                             function_total_time = time.time() - function_start_time
+                            #subroutine_return_regs, function_tree[possible_syms[0].name] = run_analyzer_from_sym(possible_syms[0], funcstate.regs, time.time())
                             subroutine_return_regs = run_analyzer_from_sym(possible_syms[0], funcstate.regs, time.time())
                             function_start_time = time.time()
                             debug_print("End of regular function called from \"%s\" (%s:%s)" % (function_name, function_filename, funcstate.function.line_num + 1))
@@ -304,6 +308,7 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
         function_total_time += time.time() - function_start_time
         function_trackers[function_name] = FunctionTracker(function_total_time)
 
+    #return (return_regs, function_tree)
     return return_regs
 
 def check_pointer_shift_in_sprite_decompress(opcode_params, funcstate, src_file, fileline):
@@ -354,4 +359,6 @@ def read_jumptable(jumptable):
     opcodes.lsl_imm_opcode.append_callback(check_pointer_shift_in_sprite_decompress)
     opcodes.lsr_imm_opcode.append_callback(check_pointer_shift_in_sprite_decompress)
     debug_print("function: %s" % parser.strip_plus1(words[0]))
+    #global global_function_tree
+    #global_function_tree = run_analyzer_from_label(parser.strip_plus1(words[0]), registers, time.time())[1]
     run_analyzer_from_label(parser.strip_plus1(words[0]), registers, time.time())

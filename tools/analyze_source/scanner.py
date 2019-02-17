@@ -10,12 +10,12 @@ class LineType(Enum):
     COMMENTED = 1
 
 class SrcFile:
-    __slots__ = ("_line_num", "_commented_lines", "_uncommented_lines", "_line_type", "_filename")
+    __slots__ = ("_line_num", "_commented_lines", "_uncommented_lines", "_filename")
     def __init__(self, filename):
         self._line_num = 0
         self._commented_lines = []
         self._uncommented_lines = []
-        self._line_type = LineType.UNCOMMENTED
+        # self._line_type = LineType.UNCOMMENTED
         self._filename = filename
 
     def __iter__(self):
@@ -52,10 +52,17 @@ class SrcFile:
 
     @property
     def lines(self):
-        if self._line_type == LineType.COMMENTED:
-            return self._commented_lines
-        else:
-            return self._uncommented_lines
+        #if self._line_type == LineType.COMMENTED:
+        #    return self._commented_lines
+        #else:
+        return self._uncommented_lines
+
+    def set_commented_line(self, line, index):
+        self._commented_lines[index] = line
+
+    @property
+    def commented_lines(self):
+        return self._commented_lines
 
     @property
     def line_type(self):

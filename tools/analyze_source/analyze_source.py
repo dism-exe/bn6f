@@ -8,7 +8,6 @@ from collections import namedtuple
 import functools
 import time
 import sys
-import json
 
 import analyze_source
 
@@ -19,10 +18,23 @@ RAM_SECTIONS_SYMBOLS = set(("ewram_2000000", "ewram_t4_battle_objects", "ewram_2
 HARDWARE_CONSTANTS = set(("VerticalCounter_LY_", "BG0Control", "Window0HorizontalDimensions", "MosaicSize", "ColorSpecialEffectsSelection", "Brightness_Fade_In_Out_Coefficient", "DMA0SourceAddress", "DMA0WordCount", "DMA1SourceAddress", "DMA1WordCount", "DMA2SourceAddress", "DMA2WordCount", "DMA3SourceAddress", "DMA3WordCount", "BG1X_Offset", "Undocumented_GreenSwap", "InterruptEnableRegister", "BG2Rotation_ScalingParameterA_dx_", "Channel1Sweepregister_NR10_", "Channel1Duty_Length_Envelope_NR11_NR12_", "Channel1Frequency_Control_NR13_NR14_", "Channel2Duty_Length_Envelope_NR21_NR22_", "Channel2Frequency_Control_NR23_NR24_", "Channel3Stop_WaveRAMselect_NR30_", "Channel3Length_Volume_NR31_NR32_", "Channel3Frequency_Control_NR33_NR34_", "Channel4Length_Envelope_NR41_NR42_", "Channel4Frequency_Control_NR43_NR44_", "ControlStereo_Volume_Enable_NR50_NR51_", "ControlMixing_DMAControl", "ControlSoundon_off_NR52_", "SoundPWMControl", "Channel3WavePatternRAM_2banks___", "dword_4000094", "dword_4000098", "dword_400009C", "ChannelAFIFO_Data0_3", "ChannelBFIFO_Data0_3", "DMA1DestinationAddress", "DMA1Control", "DMA2DestinationAddress", "DMA2Control", "DMA3DestinationAddress", "Timer0Counter_Reload", "Timer0Control", "Timer2Counter_Reload", "Timer2Control", "Timer3Counter_Reload", "Timer3Control", "SIOData0_Parent__Multi_PlayerMode_", "SIOData2_2ndChild__Multi_PlayerMode_", "SIOControlRegister", "SIOData_Normal_8bitandUARTMode_", "SIOModeSelect_GeneralPurposeData", "InterruptRequestFlags_IRQAcknowledge", "GamePakWaitstateControl", "InterruptMasterEnableRegister", "DMA0DestinationAddress", "GeneralLCDStatus_STAT_LYC_", "KeyStatus", "KeyInterruptControl", "unk_4000190", "unk_400020C"))
 
 class FileLine:
-    __slots__ = ("filename", "line_num")
+    __slots__ = ("filename", "line_num", "hashval")
     def __init__(self, filename, line_num):
         self.filename = filename
         self.line_num = line_num
+        self.hashval = None
+
+    def __hash__(self):
+        if self.hashval is not None:
+            return self.hashval
+        self.hashval = hash((self.filename, self.line_num))
+        return self.hashval
+
+    def __eq__(self, other):
+        return self.filename == other.filename and self.line_num == other.line_num
+
+    def __ne__(self, other):    
+        return self.filename != other.filename or self.line_num != other.line_num
 
 default_fileline = FileLine("default_fileline", 0)
 global_fileline = default_fileline
@@ -130,6 +142,12 @@ def main():
     analyzer_start_time = time.time()
     analyzer.read_jumptable("T1BattleObjectJumptable")
 
+def recursive_print_function_tree(f, function_tree, indentation_level=0):
+    for function, subtree in function_tree.items():
+        f.write((" " * indentation_level) + "- " + function + "\n")
+        if subtree:
+            recursive_print_function_tree(f, subtree, indentation_level + 2)
+
 def print_post_output_info(start_time, analyzer_end_time):
     global analyzer_start_time
     analyzer_execution_time = analyzer_end_time - analyzer_start_time
@@ -142,11 +160,21 @@ def print_post_output_info(start_time, analyzer_end_time):
         post_output += "%s: time: %s, count: %s, avg: %s\n" % (function_name_and_count[0], function_tracker.time, function_tracker.count, function_tracker.time / function_tracker.count)
         function_time_sum += function_tracker.time
 
+    with open("trace_path.txt", "w+") as f:
+        recursive_print_function_tree(f, analyzer.global_function_tree)
+
+    # with open("function_tracker_output.pickle", "wb+") as f:
+    #     pickle.dump(analyzer.function_trackers, f)
+
+    #if True:
+    #    for filename, src_file in scanned_files.items():
+    #        os.makedirs("temp/" + os.path.dirname(filename), exist_ok=True)
+    #        with open("temp/" + filename, "w+") as f:
+    #            f.writelines(line + "\n" for line in src_file.commented_lines)
+
     execution_time = time.time() - start_time
     post_output += "Full execution time: %s, Analyzer execution time: %s, Function time sum: %s, Full - Analyzer difference: %s, Full - Function difference: %s, Analyzer - Function difference: %s" % (execution_time, analyzer_execution_time, function_time_sum, execution_time - analyzer_execution_time, execution_time - function_time_sum, analyzer_execution_time - function_time_sum)
     debug_print(post_output)
-    with open("function_tracker_output.txt", "w+") as f:
-        json.dump(analyzer.function_trackers, f)
     if analyze_source.debug_file is not None:
         analyze_source.debug_file.close()
 

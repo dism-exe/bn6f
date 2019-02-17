@@ -57,7 +57,7 @@ def assert_valid_datatypes(datatype1, datatype2, fileline):
 def evaluate_reg_or_imm_require_primitive(registers, reg_or_imm, fileline):
     if reg_or_imm.startswith("#"):
         imm_value = evaluate_sym_or_num_error_if_undefined(reg_or_imm[1:], fileline)
-        return datatypes.Primitive(Size.BYTE, imm_value).wrap()
+        return datatypes.Immediate(Size.BYTE, imm_value).wrap()
     else:
         datatype = registers[reg_or_imm].data
         if datatype.type == DataType.UNKNOWN:
@@ -69,7 +69,7 @@ def evaluate_reg_or_imm_require_primitive(registers, reg_or_imm, fileline):
 def evaluate_reg_or_imm(registers, reg_or_imm, fileline):
     if reg_or_imm.startswith("#"):
         imm_value = evaluate_sym_or_num_error_if_undefined(reg_or_imm[1:], fileline)
-        return datatypes.Primitive(Size.BYTE, imm_value).wrap()
+        return datatypes.Immediate(Size.BYTE, imm_value).wrap()
     else:
         return registers[reg_or_imm].data
 
@@ -660,6 +660,9 @@ def check_spawn_battle_object(opcode_params, funcstate, src_file, fileline):
         funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
         fileline_msg("Called special function \"%s\"." % opcode_params, fileline)
         return False
+    elif bl_sym.name == "sound_play":
+        funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(datatypes.UnknownDataType().wrap(), fileline))
+        fileline_msg("Called special function \"%s\"." % opcode_params, fileline)
     #else:
     #    debug_print("not object spawn function: %s" % bl_sym.name)
 
@@ -994,15 +997,15 @@ def load_from_datatypes(source_datatype, operand_datatype, size, fileline):
             return datatypes.new_unk_datatype_from_size(size)
         elif datatype_strong.type == DataType.PRIMITIVE:
             datatype_weak.ref = datatypes.UnkPointer()
-            return datatype_weak.ref.load(size, fileline, datatype_strong.ref.value)
+            return datatype_weak.ref.load(size, fileline, datatype_strong)
         elif datatype_strong.type == DataType.POINTER:
             datatype_weak.ref = datatypes.Primitive(Size.WORD)
-            return datatype_strong.ref.load(size, fileline, NaN)
+            return datatype_strong.ref.load(size, fileline, datatype_weak)
     elif datatype_weak.type == DataType.PRIMITIVE:
         if datatype_strong.type == DataType.PRIMITIVE:
             fileline_error("Impossible load operation found! (load [num, num])", fileline)
         elif datatype_strong.type == DataType.POINTER:
-            return datatype_strong.ref.load(size, fileline, datatype_weak.ref.value)
+            return datatype_strong.ref.load(size, fileline, datatype_weak)
     elif datatype_weak == DataType.POINTER and datatype_strong == DataType.POINTER:
         fileline_error("Impossible load operation found! (load [pointer, pointer])", fileline)
 
@@ -1017,15 +1020,15 @@ def store_to_datatypes(dest_datatype, source_datatype, operand_datatype, size, f
             fileline_msg("Context information: store [unk, unk]", fileline)
         elif datatype_strong.type == DataType.PRIMITIVE:
             datatype_weak.ref = datatypes.UnkPointer()
-            datatype_weak.ref.store(dest_datatype, size, fileline, datatype_strong.ref.value)
+            datatype_weak.ref.store(dest_datatype, size, fileline, datatype_strong)
         elif datatype_strong.type == DataType.POINTER:
             datatype_weak.ref = datatypes.Primitive(Size.WORD)
-            datatype_strong.ref.store(dest_datatype, size, fileline, NaN)
+            datatype_strong.ref.store(dest_datatype, size, fileline, datatype_weak)
     elif datatype_weak.type == DataType.PRIMITIVE:
         if datatype_strong.type == DataType.PRIMITIVE:
             fileline_error("Impossible store operation found! (store [num, num])", fileline)
         elif datatype_strong.type == DataType.POINTER:
-            datatype_strong.ref.store(dest_datatype, size, fileline, datatype_weak.ref.value)
+            datatype_strong.ref.store(dest_datatype, size, fileline, datatype_weak)
     elif datatype_weak == DataType.POINTER and datatype_strong == DataType.POINTER:
         fileline_error("Impossible store operation found! (store [pointer, pointer])", fileline)
 
