@@ -1,4 +1,4 @@
-.include "asm/sprite.inc"
+	.include "asm/sprite.inc"
 
 // () -> void
 	thumb_func_start sprite_loadAnimationData
@@ -48,6 +48,9 @@ off_80026E0: .word sub_3006792+1
 	thumb_func_end sprite_chatbox_80026D6
 
 // (int a1, int a2, int a3) ->
+/* r0 = 0x80
+   r1 = sprite category
+   r2 = sprite index*/
 	thumb_func_start sprite_load
 sprite_load:
 	push {r4,r5,lr}
@@ -1025,25 +1028,25 @@ locret_8002D7E:
 	thumb_func_end sprite_makeUnscalable
 
 // (int pallete) -> void
-	thumb_func_start sprite_setPallete
-sprite_setPallete:
+	thumb_func_start sprite_setPalette
+sprite_setPalette:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
 	strb r0, [r3,#4]
 	mov pc, lr
-	thumb_func_end sprite_setPallete
+	thumb_func_end sprite_setPalette
 
-	thumb_func_start sprite_getPallete
-sprite_getPallete:
+	thumb_func_start sprite_getPalette
+sprite_getPalette:
 	ldrb r3, [r0,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r0
 	ldrb r0, [r3,#4]
 	mov pc, lr
-	thumb_func_end sprite_getPallete
+	thumb_func_end sprite_getPalette
 
 	thumb_local_start
 sprite_setAnimationAlt:
@@ -1066,11 +1069,11 @@ sprite_setAnimation:
 	mov pc, lr
 	thumb_func_end sprite_setAnimation
 
-	thumb_func_start sprite_forceWhitePallete
-sprite_forceWhitePallete:
+	thumb_func_start sprite_forceWhitePalette
+sprite_forceWhitePalette:
 	mov r1, #0xf0
-	b loc_8002DB4
-loc_8002DB4:
+	b sprite_setFinalPalette
+sprite_setFinalPalette:
 	ldrb r3, [r5,#2]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
@@ -1081,6 +1084,571 @@ loc_8002DB4:
 	orr r0, r1
 	strb r0, [r3,#0x15]
 	mov pc, lr
-	thumb_func_end sprite_forceWhitePallete
+	thumb_func_end sprite_forceWhitePalette
+
+	thumb_func_start sprite_getFinalPalette
+sprite_getFinalPalette:
+	ldrb r3, [r0,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r0
+	ldrb r0, [r3,#0x15]
+	mov r1, #0xf0
+	and r1, r0
+	mov pc, lr
+	thumb_func_end sprite_getFinalPalette
+
+	thumb_func_start sprite_clearFinalPalette
+sprite_clearFinalPalette:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r0, [r3,#0x15]
+	mov r1, #0xf0
+	bic r0, r1
+	strb r0, [r3,#0x15]
+	mov pc, lr
+	thumb_func_end sprite_clearFinalPalette
+
+	thumb_func_start sprite_getFrameParameters
+sprite_getFrameParameters:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r0, [r3,#2]
+	ldrb r1, [r3,#1]
+	cmp r1, #0
+	beq loc_8002DFE
+	mov r1, #0xc0
+	bic r0, r1
+loc_8002DFE:
+	ldrb r1, [r3]
+	ldrb r2, [r3]
+	mov pc, lr
+	thumb_func_end sprite_getFrameParameters
+
+	thumb_func_start sub_8002E04
+sub_8002E04:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r0, [r3,#3]
+	mov r1, #8
+	and r0, r1
+	mov pc, lr
+	thumb_func_end sub_8002E04
+
+	thumb_func_start sub_8002E14
+sub_8002E14:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	mov r2, #0xc
+	ldrb r1, [r3,#0x15]
+	bic r1, r2
+	lsl r0, r0, #2
+	orr r1, r0
+	strb r1, [r3,#0x15]
+	mov pc, lr
+	thumb_func_end sub_8002E14
+
+	thumb_local_start
+sub_8002E2A:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	mov r1, #0xc
+	ldrb r0, [r3,#0x15]
+	and r0, r1
+	lsr r0, r0, #2
+	mov pc, lr
+	thumb_func_end sub_8002E2A
+
+	thumb_func_start sprite_hasShadow
+sprite_hasShadow:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r0, [r3,#3]
+	mov r1, #1
+	orr r0, r1
+	mov r1, #4
+	bic r0, r1
+	strb r0, [r3,#3]
+	mov pc, lr
+	thumb_func_end sprite_hasShadow
+
+	thumb_func_start sub_8002E52
+sub_8002E52:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r0, [r3,#3]
+	mov r1, #1
+	bic r0, r1
+	mov r1, #4
+	bic r0, r1
+	strb r0, [r3,#3]
+	mov pc, lr
+	thumb_func_end sub_8002E52
+
+	thumb_local_start
+sub_8002E68:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldr r0, [r3,#0x1c]
+	ldr r0, [r0]
+	ldr r1, [r3,#0x18]
+	add r0, r0, r1
+	ldr r0, [r0]
+	lsr r0, r0, #5
+	mov pc, lr
+	thumb_func_end sub_8002E68
+
+	thumb_local_start
+sub_8002E7E:
+	ldrb r0, [r5]
+	tst r0, r0
+	beq loc_8002EA4
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	mov r2, #0xc
+	ldrsh r1, [r3,r2]
+	mov r2, #0xe
+	ldrsb r2, [r3,r2]
+	mov r0, #0x10
+	lsl r0, r0, #4
+	add r0, #0xff
+	and r1, r0
+	mov r0, #0xff
+	and r2, r0
+	mov r0, #1
+	mov pc, lr
+loc_8002EA4:
+	mov r0, #0
+	mov r1, #0
+	mov r2, #0
+	mov pc, lr
+	thumb_func_end sub_8002E7E
+
+	thumb_func_start sub_8002EAC
+sub_8002EAC:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r0, [r3,#0x16]
+	mov r1, #2
+	orr r0, r1
+	strb r0, [r3,#0x16]
+	mov pc, lr
+	thumb_func_end sub_8002EAC
+
+	thumb_local_start
+sub_8002EBE:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r0, [r3,#0x16]
+	mov r1, #2
+	bic r0, r1
+	strb r0, [r3,#0x16]
+	mov pc, lr
+	thumb_func_end sub_8002EBE
+
+	thumb_func_start sprite_setColorShader
+sprite_setColorShader:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	strh r0, [r3,#6]
+	mov pc, lr
+	thumb_func_end sprite_setColorShader
+
+	thumb_func_start sprite_getColorShader
+sprite_getColorShader:
+	ldrb r3, [r0,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r0
+	ldrh r0, [r3,#6]
+	mov pc, lr
+	thumb_func_end sprite_getColorShader
+
+	thumb_func_start sub_8002EE8
+sub_8002EE8:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	mov r0, #0
+	strh r0, [r3,#6]
+	mov pc, lr
+	thumb_func_end sub_8002EE8
+
+	thumb_func_start sprite_setMosaicSize
+sprite_setMosaicSize:
+	lsl r1, r1, #4
+	orr r0, r1
+	mov r2, #0x10
+	b loc_8002F06
+	mov r2, #0x10
+	b loc_8002F06
+loc_8002F02:
+	tst r2, r2
+	beq sub_8002F2C
+loc_8002F06:
+	tst r0, r0
+	beq sub_8002F2C
+	lsl r0, r0, #8
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r1, [r3,#0x11]
+	orr r1, r2
+	strb r1, [r3,#0x11]
+	mov r3, r10
+	ldr r3, [r3,#oToolkit_RenderInfoPtr]
+	ldrh r1, [r3,#2]
+	mov r2, #0xff
+	lsl r2, r2, #8
+	bic r1, r2
+	orr r1, r0
+	strh r1, [r3,#2]
+	mov pc, lr
+	thumb_func_end sprite_setMosaicSize
+
+	thumb_func_start sub_8002F2C
+sub_8002F2C:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r1, [r3,#0x11]
+	mov r0, #0x10
+	bic r1, r0
+	strb r1, [r3,#0x11]
+	mov pc, lr
+	thumb_func_end sub_8002F2C
+
+	thumb_func_start sub_8002F3E
+sub_8002F3E:
+	ldrb r3, [r0,#oObjectHeader_SpriteOffset]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r0
+	ldrb r0, [r3,#oObjectSprite_Unk_11]
+	mov r2, #0x10
+	and r2, r0
+	mov r3, r10
+	ldr r3, [r3,#oToolkit_RenderInfoPtr]
+	ldrh r0, [r3,#2]
+	mov r1, #0xff
+	bic r0, r1
+	lsr r0, r0, #8
+	mov pc, lr
+	.hword 0x2000
+	thumb_func_end sub_8002F3E
+
+	thumb_func_start sprite_setFlip
+sprite_setFlip:
+	ldrb r3, [r5,#oObjectHeader_SpriteOffset]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r2, [r3,#oObjectSprite_Unk_13]
+	mov r1, #0x30 
+	bic r2, r1
+	lsl r0, r0, #4
+	orr r2, r0
+	strb r2, [r3,#oObjectSprite_Unk_13]
+	and r2, r1
+	ldrb r1, [r3,#oObjectSprite_Unk_16]
+	mov r0, #0x30 
+	bic r1, r0
+	orr r1, r2
+	strb r1, [r3,#oObjectSprite_Unk_16]
+	mov pc, lr
+	thumb_func_end sprite_setFlip
+
+	thumb_func_start sprite_getFlip
+sprite_getFlip:
+	ldrb r3, [r0,#oObjectHeader_SpriteOffset]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r0
+	ldrb r0, [r3,#oObjectSprite_Unk_16]
+	mov r1, #0x30 
+	and r0, r1
+	lsr r0, r0, #4
+	mov pc, lr
+	thumb_func_end sprite_getFlip
+
+// () -> void
+	thumb_func_start sprite_noShadow
+sprite_noShadow:
+	ldrb r3, [r5,#oObjectHeader_SpriteOffset]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r0, [r3,#oObjectSprite_Unk_03]
+	mov r1, #4
+	orr r0, r1
+	mov r1, #1
+	bic r0, r1
+	strb r0, [r3,#oObjectSprite_Unk_03]
+	mov pc, lr
+	thumb_func_end sprite_noShadow
+
+	thumb_func_start sub_8002FA6
+sub_8002FA6:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	str r0, [r3,#0x2c]
+	mov pc, lr
+	thumb_func_end sub_8002FA6
+
+	thumb_func_start sub_8002FB2
+sub_8002FB2:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldr r0, [r3,#0x2c]
+	mov pc, lr
+	thumb_func_end sub_8002FB2
+
+	thumb_local_start
+sub_8002FBE:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	mov r1, #0x80
+	lsl r1, r1, #0x18
+	lsr r1, r0
+	ldr r0, [r3,#0x2c]
+	orr r0, r1
+	str r0, [r3,#0x2c]
+	mov pc, lr
+	thumb_func_end sub_8002FBE
+
+	thumb_local_start
+sub_8002FD4:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	mov r1, #0x80
+	lsl r1, r1, #0x18
+	lsr r1, r0
+	ldr r0, [r3,#0x2c]
+	bic r0, r1
+	str r0, [r3,#0x2c]
+	mov pc, lr
+	.hword 0x2000
+	thumb_func_end sub_8002FD4
+
+	thumb_func_start sub_8002FEC
+sub_8002FEC:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	str r0, [r3,#0x30]
+	mov pc, lr
+	thumb_func_end sub_8002FEC
+
+	thumb_local_start
+sub_8002FF8:
+	mov r0, #0
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	str r0, [r3,#0x34]
+	mov pc, lr
+	thumb_func_end sub_8002FF8
+
+	thumb_func_start sub_8003006
+sub_8003006:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r0, [r3,#3]
+	mov r1, #0x20 
+	orr r0, r1
+	strb r0, [r3,#3]
+	mov pc, lr
+	thumb_func_end sub_8003006
+
+	thumb_local_start
+sub_8003018:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r0, [r3,#3]
+	mov r1, #0x20 
+	bic r0, r1
+	strb r0, [r3,#3]
+	mov pc, lr
+	thumb_func_end sub_8003018
+
+	thumb_func_start sub_800302A
+sub_800302A:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r1, [r3,#0x16]
+	mov r2, #0xc
+	bic r1, r2
+	mov r2, #2
+	lsl r0, r2
+	orr r1, r0
+	strb r1, [r3,#0x16]
+	ldrb r0, [r3,#3]
+	mov r1, #0x40 
+	orr r0, r1
+	strb r0, [r3,#3]
+	mov pc, lr
+	thumb_func_end sub_800302A
+
+	thumb_func_start sub_800304A
+sub_800304A:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	ldrb r1, [r3,#0x15]
+	mov r2, #0xf0
+	bic r1, r2
+	lsl r0, r0, #4
+	orr r1, r0
+	strb r1, [r3,#0x15]
+	mov pc, lr
+	thumb_func_end sub_800304A
+
+	thumb_func_start sub_8003060
+sub_8003060:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	strb r0, [r3,#0xa]
+	mov pc, lr
+	thumb_func_end sub_8003060
+
+	thumb_func_start sub_800306C
+sub_800306C:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	strh r0, [r3,#8]
+	mov r0, #0
+	str r0, [r3,#0x24]
+	mov pc, lr
+	thumb_func_end sub_800306C
+
+	thumb_func_start sprite_setCoordinates
+sprite_setCoordinates:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	strh r0, [r3,#0xc]
+	strh r1, [r3,#0xe]
+	mov pc, lr
+	thumb_func_end sprite_setCoordinates
+
+	thumb_func_start sprite_addCoordinates
+sprite_addCoordinates:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	mov r2, #0xc
+	ldrsh r2, [r3,r2]
+	add r0, r0, r2
+	mov r2, #0xc
+	strh r0, [r3,r2]
+	mov r2, #0xe
+	ldrsh r2, [r3,r2]
+	add r1, r1, r2
+	mov r2, #0xe
+	strh r1, [r3,r2]
+	mov pc, lr
+	thumb_func_end sprite_addCoordinates
+
+	thumb_func_start sprite_getCoordinates
+sprite_getCoordinates:
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r3, r3, r5
+	mov r0, #0xc
+	ldrsh r0, [r3,r0]
+	mov r1, #0xe
+	ldrsh r1, [r3,r1]
+	mov pc, lr
+	thumb_func_end sprite_getCoordinates
+
+	thumb_func_start sub_80030BA
+sub_80030BA:
+	push {r4-r7,lr}
+	mov r5, r0
+	ldrb r3, [r5,#2]
+	lsr r3, r3, #4
+	lsl r3, r3, #4
+	add r5, r5, r3
+	ldr r3, [r5,#0x20]
+	ldrb r2, [r3]
+	lsl r2, r2, #2
+	ldr r0, [r5,#0x1c]
+	ldr r0, [r0,#0xc]
+	ldr r3, [r5,#0x18]
+	add r3, r3, r0
+	ldr r2, [r3,r2]
+	add r2, r2, r3
+	mov r4, #0
+loc_80030DA:
+	ldrb r3, [r2]
+	cmp r3, #0xff
+	beq loc_80030F4
+	cmp r4, r1
+	beq loc_80030EA
+	add r4, #1
+	add r2, #5
+	b loc_80030DA
+loc_80030EA:
+	mov r0, #1
+	ldrsb r0, [r2,r0]
+	mov r1, #2
+	ldrsb r1, [r2,r1]
+	pop {r4-r7,pc}
+loc_80030F4:
+	mov r0, #0
+	mov r1, #0
+	pop {r4-r7,pc}
+	.balign 4, 0x00
 
 /*For debugging purposes, connect comment at any range!*/

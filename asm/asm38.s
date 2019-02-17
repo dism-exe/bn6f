@@ -1,4 +1,4 @@
-.include "asm/asm38.inc"
+	.include "asm/asm38.inc"
 
 dword_3005B00: .word 0xE3A03301, 0xE2833C02, 0xE5932000, 0xE1D310B8, 0xE14F0000
 	.word 0xE92D400F, 0xE3A00000, 0xE1C300B8, 0xE0021822, 0xE59F0168
@@ -127,18 +127,18 @@ off_3005D74: .word sub_80068E0+1
 sub_3005D78:
 	push {lr}
 	push {lr}
-	ldr r0, off_3005D94 // =sub_80005C4+1
+	ldr r0, off_3005D94 // =call_m4a_2_814F00C+1
 	mov lr, pc
 	bx r0
 	pop {r0}
 	mov lr, r0
-	ldr r0, off_3005D90 // =sub_80005AC+1
+	ldr r0, off_3005D90 // =call_m4aSoundMain+1
 	mov lr, pc
 	bx r0
 	pop {r0}
 	bx r0
-off_3005D90: .word sub_80005AC+1
-off_3005D94: .word sub_80005C4+1
+off_3005D90: .word call_m4aSoundMain+1
+off_3005D94: .word call_m4a_2_814F00C+1
 	thumb_func_end sub_3005D78
 
 	thumb_local_start
@@ -544,8 +544,8 @@ loc_30060B8:
 	strh r0, [r5,#8]
 	mov r0, r12
 	str r0, [r5,#0x24]
-loc_30060BE:
-	ldrb r1, [r5,#0x15]
+loc_30060BE: .align 1, 0
+	ldrb r1, [r5,#oObjectSprite_Unk_15]
 	mov r2, #0xf0
 	and r1, r2
 	mov r2, #0xf0
@@ -556,12 +556,12 @@ loc_30060BE:
 	tst r1, r2
 	bne locret_30060E2
 	bl sub_3006108
-	ldrb r1, [r5,#0x15]
+	ldrb r1, [r5,#oObjectSprite_Unk_15]
 	mov r2, #0xf0
 	bic r1, r2
 	lsl r0, r0, #4
 	orr r1, r0
-	strb r1, [r5,#0x15]
+	strb r1, [r5,#oObjectSprite_Unk_15]
 locret_30060E2:
 	pop {r5,pc}
 off_30060E4: .word off_30060E8
@@ -1300,7 +1300,7 @@ loc_30065FE:
 	sub r3, r3, r4
 	ldrb r0, [r6,#9]
 	mul r3, r0
-	ldr r0, off_3006728 // =byte_80065E0
+	ldr r0, off_3006728 // =math_sinTable
 	ldrsh r0, [r0,r1]
 	mul r3, r0
 	mov r7, #2
@@ -1317,7 +1317,7 @@ loc_30065FE:
 	sub r7, r7, r4
 	ldrb r0, [r6,#0xa]
 	mul r7, r0
-	ldr r0, off_300672C // =byte_8006660
+	ldr r0, off_300672C // =math_cosTable
 	ldrsh r0, [r0,r1]
 	mul r7, r0
 	add r3, r3, r7
@@ -1352,7 +1352,7 @@ loc_30065FE:
 	sub r3, r3, r4
 	ldrb r0, [r6,#9]
 	mul r3, r0
-	ldr r0, off_300672C // =byte_8006660
+	ldr r0, off_300672C // =math_cosTable
 	ldrsh r0, [r0,r1]
 	neg r0, r0
 	mul r3, r0
@@ -1370,7 +1370,7 @@ loc_30065FE:
 	sub r7, r7, r4
 	ldrb r0, [r6,#0xa]
 	mul r7, r0
-	ldr r0, off_3006728 // =byte_80065E0
+	ldr r0, off_3006728 // =math_sinTable
 	ldrsh r0, [r0,r1]
 	mul r7, r0
 	add r3, r3, r7
@@ -1403,8 +1403,8 @@ byte_300670C: .byte 0xF8, 0xF0, 0xE0, 0xC0, 0xF0, 0xE0, 0xE0, 0xC0, 0xF8
 byte_3006718: .byte 0xF8, 0xF0, 0xE0, 0xC0, 0xF8, 0xF8, 0xF0, 0xE0, 0xF0
 	.byte 0xE0, 0xE0, 0xC0
 off_3006724: .word word_200A6F0
-off_3006728: .word byte_80065E0
-off_300672C: .word byte_8006660
+off_3006728: .word math_sinTable
+off_300672C: .word math_cosTable
 	thumb_func_end sub_3006594
 
 	thumb_func_start sub_3006730
@@ -1832,7 +1832,7 @@ loc_3006A26:
 loc_3006A40:
 	mov r0, r5
 	mov r1, #3
-	ldr r5, off_3006B14 // =sub_814DA9C+1
+	ldr r5, off_3006B14 // =__divsi3+1
 	mov lr, pc
 	bx r5
 	mov r5, r0
@@ -1933,7 +1933,7 @@ loc_3006ADC:
 loc_3006AF6:
 	mov r0, r5
 	mov r1, #3
-	ldr r5, off_3006B14 // =sub_814DA9C+1
+	ldr r5, off_3006B14 // =__divsi3+1
 	mov lr, pc
 	bx r5
 	mov r5, r0
@@ -1946,7 +1946,7 @@ loc_3006AF6:
 	mov r10, r6
 	mov r12, r7
 	pop {r4-r7,pc}
-off_3006B14: .word sub_814DA9C+1
+off_3006B14: .word __divsi3+1
 off_3006B18: .word sub_3006C38+1
 	.word sub_3006C3C+1
 	.word sub_3006F42+1
@@ -3660,7 +3660,7 @@ sub_3007828:
 	ldr r4, [r2,r1]
 	ldrb r0, [r5,#4]
 	ldrb r1, [r5,#5]
-	ldr r2, off_30078C4 // =sub_800E2C2+1
+	ldr r2, off_30078C4 // =object_getAllianceDirection+1
 	mov lr, pc
 	bx r2
 	mov r6, r0
@@ -3725,7 +3725,7 @@ off_30078B4: .word battle_isPaused+1
 off_30078B8: .word object_getFlipDirection+1
 off_30078BC: .word object_isValidPanel+1
 off_30078C0: .word object_checkPanelParameters+1
-off_30078C4: .word sub_800E2C2+1
+off_30078C4: .word object_getAllianceDirection+1
 	thumb_func_end sub_3007880
 
 	thumb_func_start sub_30078C8

@@ -1,4 +1,4 @@
-.include "data/dat21.inc"
+	.include "data/dat21.inc"
 
 byte_80813F8: .byte 0x6
 	.byte 0x6, 0x7, 0x7
@@ -2480,7 +2480,7 @@ sub_8086ED8:
 	mov r1, #0
 	mov r2, #0
 	mov r3, #0
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	pop {r4-r7,pc}
 	thumb_func_end sub_8086ED8
@@ -2503,7 +2503,7 @@ loc_8086EFE:
 	mov r2, #0
 	mov r3, #0
 	mov r4, r6
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	add r6, #1
 	cmp r6, r7

@@ -1,4 +1,4 @@
-.include "data/dat23.inc"
+	.include "data/dat23.inc"
 
 	.word 0x206003F
 	.word 0x1C3E1EFF

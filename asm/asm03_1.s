@@ -1,4 +1,4 @@
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 
 off_8033764: .word spriteWhiteDot
 	.word byte_8699EDC
@@ -1174,7 +1174,7 @@ off_80342A0: .word 0x50
 	thumb_local_start
 sub_80342A4:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80342C0
 	ldrh r0, [r5,#4]
 	sub r0, #1
@@ -1193,7 +1193,7 @@ loc_80342C0:
 	thumb_local_start
 sub_80342C6:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80342D6
 	mov r0, #8
 	strb r0, [r5]
@@ -1349,31 +1349,34 @@ dword_8034408: .word 0x2
 	.word 0x0
 off_8034458: .word byte_3001960
 off_803445C: .word byte_2017A04
-byte_8034460: .byte 0x91, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-byte_803446C: .byte 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-dword_8034474: .word 0x0
-byte_8034478: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x5, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x74, 0xFF, 0x0, 0x0, 0xC2, 0x1, 0x0, 0x0
-	.byte 0xAC, 0xFE, 0x0, 0x0, 0x28, 0x0, 0x83, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0xD4, 0xFE, 0x0, 0x0, 0xBA, 0x0, 0x0, 0x0, 0x60, 0xFF
-	.byte 0x0, 0x0, 0x20, 0x1, 0x83, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x3
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x70, 0xFE, 0x0, 0x0, 0xE, 0x1, 0x0, 0x0, 0xDE, 0xFE, 0x0, 0x0
-	.byte 0xB8, 0x1, 0x83, 0x2, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0xC0, 0xFE, 0x0, 0x0, 0x40, 0x1, 0x0, 0x0, 0xCA, 0xFE, 0x0, 0x0, 0xAE, 0x1
-	.byte 0x95, 0x2, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x64, 0x0, 0x0, 0x0, 0xFE, 0x1, 0x0, 0x0, 0x6, 0xFF, 0x0, 0x0, 0x54, 0x1, 0x95, 0x2
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x52
-	.byte 0xFE, 0x0, 0x0, 0xD4, 0xFE, 0x0, 0x0, 0xEC, 0xFF, 0x0, 0x0, 0xC8, 0x0, 0x95, 0x2, 0x0, 0x0
-	.byte 0x0, 0x0, 0x40, 0x0, 0x0, 0x0, 0x40, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x3C, 0xFF, 0x0
-	.byte 0x0, 0x82, 0x0, 0x0, 0x0, 0x88, 0xFF, 0x0, 0x0, 0xBA, 0xFF, 0x95, 0x2, 0x0, 0x0, 0x0, 0x0
-	.byte 0x40, 0x0, 0x0, 0x0, 0x40, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x7E, 0xFF, 0x0, 0x0, 0x4A
-	.byte 0x0, 0x0, 0x0, 0xCE, 0xFF, 0x0, 0x0, 0xEC, 0xFF, 0x85, 0x2, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x84, 0xFE, 0x0, 0x0, 0x54, 0x1, 0x0
-	.byte 0x0, 0x98, 0xFE, 0x0, 0x0, 0xBA, 0xFF, 0x85, 0x2, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x84, 0xFE, 0x0, 0x0, 0x64, 0x0, 0x0, 0x0, 0xBA
-	.byte 0xFF, 0x0, 0x0, 0x3C, 0x0, 0x85, 0x2, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x84, 0xFE, 0x0, 0x0, 0x54, 0x1, 0x0, 0x0, 0x3C, 0x0, 0x0
-	.byte 0x0, 0xAE, 0x1, 0xFF, 0xFF, 0xFF, 0xFF
+Struct8034460:
+	// seaside 1
+	.word 0x0091, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0
+	.equiv oStruct8034460_MapId, 0x0
+	.equiv oStruct8034460_ZLowerBound, 0x4
+	.equiv oStruct8034460_ZUpperBound, 0x8
+	.equiv oStruct8034460_Unk_0c, 0xc
+	.equiv oStruct8034460_XLowerBound, 0x10
+	.equiv oStruct8034460_XUpperBound, 0x14
+	.equiv oStruct8034460_YLowerBound, 0x18
+	.equiv oStruct8034460_YUpperBound, 0x1c
+	.equiv oStruct8034460_Size, 0x20
+	// sky town
+	.word 0x0105, 0x0, 0x0, 0x3, 0xff740000, 0x1c20000, 0xfeac0000, 0x280000
+	// weather comps 1-3
+	.word 0x0083, 0x0, 0x0, 0x3, 0xfed40000, 0xba0000, 0xff600000, 0x1200000
+	.word 0x0183, 0x0, 0x0, 0x3, 0xfe700000, 0x10e0000, 0xfede0000, 0x1b80000
+	.word 0x0283, 0x0, 0x0, 0x3, 0xfec00000, 0x1400000, 0xfeca0000, 0x1ae0000
+	// undernet 2
+	.word 0x0295, 0x0, 0x0, 0x3, 0x640000, 0x1fe0000, 0xff060000, 0x1540000
+	.word 0x0295, 0x0, 0x0, 0x3, 0xfe520000, 0xfed40000, 0xffec0000, 0xc80000
+	.word 0x0295, 0x400000, 0x400000, 0x3, 0xff3c0000, 0x820000, 0xff880000, 0xffba0000
+	.word 0x0295, 0x400000, 0x400000, 0x3, 0xff7e0000, 0x4a0000, 0xffce0000, 0xffec0000
+	// pavillion comp 3
+	.word 0x0285, 0x0, 0x0, 0x3, 0xfe840000, 0x1540000, 0xfe980000, 0xffba0000
+	.word 0x0285, 0x0, 0x0, 0x3, 0xfe840000, 0x640000, 0xffba0000, 0x3c0000
+	.word 0x0285, 0x0, 0x0, 0x3, 0xfe840000, 0x1540000, 0x3c0000, 0x1ae0000
+	.word 0xffffffff
 off_80345E4:
 	.word off_804D0A4
 	.word off_804D0AC
@@ -1738,7 +1741,7 @@ loc_8034C2C:
 	thumb_func_start sub_8034C36
 sub_8034C36:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8034C6A
 	// entryIdx
 	mov r0, #0x17
@@ -1769,7 +1772,7 @@ loc_8034C6A:
 	thumb_local_start
 sub_8034C6E:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8034C98
 	// entryIdx
 	mov r0, #0x17
@@ -2941,53 +2944,54 @@ off_8035688: .word byte_80525C0
 	thumb_func_end sub_80355EC
 
 	thumb_func_start sub_8035694
+// r0 - coords
 sub_8035694:
 	push {r4-r7,lr}
 	mov r5, r0
-	ldr r7, off_80356E8 // =byte_8034460 
+	ldr r7, =Struct8034460
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_GameStatePtr]
-	ldrh r4, [r4,#oGameState_MapGroup]
-loc_80356A0:
-	ldr r0, [r7]
+	ldrh r4, [r4,#oGameState_MapId]
+.loop
+	ldr r0, [r7,#oStruct8034460_MapId]
 	cmp r0, #0
-	blt loc_80356E0
+	blt .reachedTerminator
 	cmp r0, r4
-	bne loc_80356DC
-	ldr r0, [r7,#0xc]
-	ldr r1, [r5]
-	ldr r2, [r7,#0x10]
-	ldr r3, [r7,#0x14]
+	bne .doneCurrentStruct
+	ldr r0, [r7,#oStruct8034460_Unk_0c]
+	ldr r1, [r5,#oOWObjectCoords_XFull]
+	ldr r2, [r7,#oStruct8034460_XLowerBound]
+	ldr r3, [r7,#oStruct8034460_XUpperBound]
 	cmp r2, r3
-	beq loc_80356CC
+	beq .skipXCompareAndYCompare
 	cmp r1, r2
-	blt loc_80356DC
+	blt .doneCurrentStruct
 	cmp r1, r3
-	bgt loc_80356DC
-	ldr r1, [r5,#4]
-	ldr r2, [r7,#0x18]
-	ldr r3, [r7,#0x1c]
+	bgt .doneCurrentStruct
+	ldr r1, [r5,#oOWObjectCoords_YFull]
+	ldr r2, [r7,#oStruct8034460_YLowerBound]
+	ldr r3, [r7,#oStruct8034460_YUpperBound]
 	cmp r1, r2
-	blt loc_80356DC
+	blt .doneCurrentStruct
 	cmp r1, r3
-	bgt loc_80356DC
-loc_80356CC:
-	ldr r1, [r5,#8]
-	ldr r2, [r7,#4]
-	ldr r3, [r7,#8]
+	bgt .doneCurrentStruct
+.skipXCompareAndYCompare
+	ldr r1, [r5,#oOWObjectCoords_ZFull]
+	ldr r2, [r7,#oStruct8034460_ZLowerBound]
+	ldr r3, [r7,#oStruct8034460_ZUpperBound]
 	cmp r1, r2
-	blt loc_80356DC
+	blt .doneCurrentStruct
 	cmp r1, r3
-	bgt loc_80356DC
+	bgt .doneCurrentStruct
 	pop {r4-r7,pc}
-loc_80356DC:
-	add r7, #0x20 
-	b loc_80356A0
-loc_80356E0:
+.doneCurrentStruct
+	add r7, #oStruct8034460_Size 
+	b .loop
+.reachedTerminator
 	mov r0, r5
 	bl sub_80318B0
 	pop {r4-r7,pc}
-off_80356E8: .word byte_8034460
+	.pool // Struct8034460
 	thumb_func_end sub_8035694
 
 	thumb_func_start sub_80356EC
@@ -3162,35 +3166,35 @@ byte_80357F0: .byte 0x3C, 0x3D, 0x3E, 0x3F, 0x10, 0x11, 0x12, 0x13, 0x14
 	.byte 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D
 	.byte 0x1E, 0x1F, 0x0, 0x0, 0x0, 0x0
 ScriptCmds8035808:
-	.word sub_8035920+1
-	.word sub_8035924+1
-	.word sub_8035932+1
-	.word sub_8035962+1
-	.word sub_8035992+1
-	.word sub_80359BE+1
-	.word sub_80359EE+1
-	.word sub_8035A1A+1
-	.word sub_8035A74+1
-	.word sub_8035AAA+1
+	.word MapScript_end+1
+	.word MapScript_jump+1
+	.word MapScript_jump_if_progress_in_range+1
+	.word MapScript_jump_if_flag_set+1
+	.word MapScript_jump_if_flag_range_set+1
+	.word MapScript_jump_if_flag_clear+1
+	.word MapScript_jump_if_flag_range_clear+1
+	.word MapScript_jump_if_mem_equals+1
+	.word MapScript_jump_if_unk_navicust_range+1
+	.word MapScript_jump_if_chip_count_in_range+1
 	.word sub_803793A+1
 	.word sub_803795C+1
-	.word sub_8035AFA+1
-	.word sub_8035B44+1
-	.word sub_8035B8E+1
-	.word sub_8035BB2+1
+	.word MapScript_cmd_8035afa+1
+	.word MapScript_cmd_8035b44+1
+	.word MapScript_jump_if_game_state_0e_equals+1
+	.word MapScript_jump_if_game_state_0e_not_equals+1
 	.word sub_803797E+1
 	.word sub_80379A0+1
-	.word sub_8035BD6+1
-	.word sub_8035BFE+1
-	.word sub_8035C26+1
-	.word sub_8035C4A+1
-	.word sub_8035C6E+1
-	.word sub_8035CA0+1
-	.word sub_8035CD6+1
-	.word sub_8035CF8+1
-	.word sub_8035D1A+1
-	.word sub_8035D34+1
-	.word sub_8035D4E+1
+	.word MapScript_jump_if_player_z_equals+1
+	.word MapScript_jump_if_player_z_not_equals+1
+	.word MapScript_jump_if_game_state_44_equals+1
+	.word MapScript_jump_if_game_state_44_not_equals+1
+	.word MapScript_jump_if_map_group_compare_last_map_group+1
+	.word MapScript_cmd_8035ca0+1
+	.word MapScriptCmd_8035cd6+1
+	.word MapScriptCmd_8035cf8+1
+	.word MapScriptCmd_jump_if_fade_active+1
+	.word MapScriptCmd_jump_if_eStruct200a6a0_initialized+1
+	.word MapScriptCmd_jump_if_in_pet_menu+1
 	.word sub_8035D6A+1
 	.word sub_8035D98+1
 	.word sub_8035DB4+1
@@ -3237,159 +3241,159 @@ ScriptCmds8035808:
 	thumb_local_start
 // 0x00
 // return from script
-sub_8035920:
+MapScript_end: // 8035920
 	mov r0, #0
 	mov pc, lr
-	thumb_func_end sub_8035920
+	thumb_func_end MapScript_end
 
 	thumb_local_start
 // 0x01 destination
 // jump
-sub_8035924:
+MapScript_jump: // 8035924
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035924
+	thumb_func_end MapScript_jump
 
 	thumb_local_start
 // 0x02 byte1 byte2 destination
 // jump if byte1 < progress byte < byte2
-sub_8035932:
+MapScript_jump_if_progress_in_range: // 8035932
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_GameProgress]
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r0, r1
-	blt .progressByteOutOfRange_803595C
+	blt .progressByteOutOfRange
 	cmp r0, r4
-	bgt .progressByteOutOfRange_803595C
+	bgt .progressByteOutOfRange
 	mov r6, #3
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-.progressByteOutOfRange_803595C:
+.progressByteOutOfRange
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035932
+	thumb_func_end MapScript_jump_if_progress_in_range
 
 	thumb_local_start
 // 0x03 byte flag destination
 // jump if event flag in mem or immediate is set
-sub_8035962:
+MapScript_jump_if_flag_set: // 8035962
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq .immediateEventFlag_8035972
+	beq .immediateEventFlag
 // event flag from memory
 	ldrh r4, [r5,r4]
-	b .gotEventFlag_8035978
-.immediateEventFlag_8035972:
+	b .gotEventFlag
+.immediateEventFlag
 	mov r6, #2
-	bl Script_ReadHalfword80360A8
-.gotEventFlag_8035978:
+	bl ReadMapScriptHalfword
+.gotEventFlag
 	mov r0, r4
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
-	beq .eventFlagNotSet_803598C
+	beq .eventFlagNotSet
 	mov r6, #4
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-.eventFlagNotSet_803598C:
+.eventFlagNotSet
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035962
+	thumb_func_end MapScript_jump_if_flag_set
 
 	thumb_local_start
 // 0x04 byte flag destination
-// jump if TestEventFlagRange return flags is true (related to event flags)
-sub_8035992:
+// jump if (all) event flags in the event flag range are set
+MapScript_jump_if_flag_range_set: // 8035992
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	mov r6, #2
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	mov r2, r1
 	bl TestEventFlagRange // (int a3, int a2) ->
-	beq loc_80359B8
+	beq .eventFlagRangeNotSet
 	mov r6, #4
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_80359B8:
+.eventFlagRangeNotSet
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035992
+	thumb_func_end MapScript_jump_if_flag_range_set
 
 	thumb_local_start
 // 0x05 byte flag destination
 // jump if event flag in mem or immediate is clear
-sub_80359BE:
+MapScript_jump_if_flag_clear: // 80359BE
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq .immediateEventFlag_80359CE
+	beq .immediateEventFlag
 	ldrh r4, [r5,r4]
-	b .gotEventFlag_80359D4
-.immediateEventFlag_80359CE:
+	b .gotEventFlag
+.immediateEventFlag
 	mov r6, #2
-	bl Script_ReadHalfword80360A8
-.gotEventFlag_80359D4:
+	bl ReadMapScriptHalfword
+.gotEventFlag
 	mov r0, r4
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
-	bne .eventFlagSet_80359E8
+	bne .eventFlagSet
 	mov r6, #4
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-.eventFlagSet_80359E8:
+.eventFlagSet
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80359BE
+	thumb_func_end MapScript_jump_if_flag_clear
 
 	thumb_local_start
 // 0x06 byte flag destination
-// jump if TestEventFlagRange return flags is false (related to event flags)
-sub_80359EE:
+// jump if not all event flags in the event flag range are set
+MapScript_jump_if_flag_range_clear: // 80359EE
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	mov r6, #2
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	mov r2, r1
 	bl TestEventFlagRange // (int a3, int a2) ->
-	bne loc_8035A14
+	bne .atLeastOneEventFlagSet
 	mov r6, #4
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8035A14:
+.atLeastOneEventFlagSet
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_80359EE
+	thumb_func_end MapScript_jump_if_flag_range_clear
 
 	thumb_local_start
 // 0x07 0x00 word destination byte
@@ -3397,133 +3401,138 @@ loc_8035A14:
 // 0x07 0x02 word destination word
 // jump if [word] == param
 // this command is variable length
-sub_8035A1A:
+MapScript_jump_if_mem_equals: // 8035A1A
 	push {lr}
 	mov r6, #2
-	bl Script_ReadWord80360C8 // word
+	bl ReadMapScriptWord // word
 	mov r0, r4
 	mov r6, #6
-	bl Script_ReadWord80360C8 // destination
+	bl ReadMapScriptWord // destination
 	mov r1, r4
 	mov r6, #1
-	bl Script_ReadByte8036094 // type
+	bl ReadMapScriptByte // type
 	cmp r4, #1
-	beq .readHword_8035A4A
+	beq .readHword
 	cmp r4, #2
-	beq .readWord_8035A5A
+	beq .readWord
 // byte
-	mov r6, #0xa
-	bl Script_ReadByte8036094
+	mov r6, #10
+	bl ReadMapScriptByte
 	ldrb r0, [r0]
 	cmp r0, r4
-	beq .doScriptJump_8035A6E
-	mov r4, #0xb // end of variable size script command
-	b .addToNextCommand_8035A68
-.readHword_8035A4A:
-	mov r6, #0xa
-	bl Script_ReadHalfword80360A8
+	beq .doScriptJump
+	mov r4, #11 // end of variable size script command
+	b .addToNextCommand
+.readHword
+	mov r6, #10
+	bl ReadMapScriptHalfword
 	ldrh r0, [r0]
 	cmp r0, r4
-	beq .doScriptJump_8035A6E
-	mov r4, #0xc
-	b .addToNextCommand_8035A68
-.readWord_8035A5A:
-	mov r6, #0xa
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	beq .doScriptJump
+	mov r4, #12
+	b .addToNextCommand
+.readWord
+	mov r6, #10
+	bl ReadMapScriptWord
 	ldr r0, [r0]
 	cmp r0, r4
-	beq .doScriptJump_8035A6E
-	mov r4, #0xe
-.addToNextCommand_8035A68:
+	beq .doScriptJump
+	mov r4, #14
+.addToNextCommand
 	add r7, r7, r4
 	mov r0, #1
 	pop {pc}
-.doScriptJump_8035A6E:
+.doScriptJump
 	mov r7, r1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035A1A
+	thumb_func_end MapScript_jump_if_mem_equals
 
 	thumb_local_start
 // 0x08 byte1 byte2 byte3 destination
 // jump if byte2 < sub_803CE28(byte1) < byte3
-sub_8035A74:
+MapScript_jump_if_unk_navicust_range: // 8035A74
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	bl sub_803CE28
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	mov r6, #3
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r0, r1
-	blt .unkByteOutOfRange_8035AA4
+	blt .unkByteOutOfRange
 	cmp r0, r4
-	bgt .unkByteOutOfRange_8035AA4
+	bgt .unkByteOutOfRange
 	mov r6, #4
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-.unkByteOutOfRange_8035AA4:
+.unkByteOutOfRange
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035A74
+	thumb_func_end MapScript_jump_if_unk_navicust_range
 
 	thumb_local_start
 // 0x09 hword byte1 byte2 byte3 destination
 // if byte1 == 0xff:
-//     jump if byte2 < sub_8021BD8(hword) < byte3
+//     jump if byte2 < GetTotalChipCount(hword) < byte3
 // else:
-//     jump if byte2 < sub_8021BC0(byte1, hword) < byte3
-//     sub_8021BC0 calls chip_8021C7C
+//     jump if byte2 < GetChipCountOfCode(byte1, hword) < byte3
+//     GetChipCountOfCode calls chip_8021C7C
 // related to chips
-sub_8035AAA:
+//
+MapScript_jump_if_chip_count_in_range: // 8035AAA
 	push {lr}
 	mov r6, #3
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
-	bne loc_8035AC4
+	bne .getChipCountOfCode
+// get total chip count
 	mov r6, #1
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
-	bl sub_8021BD8
-	b loc_8035AD2
-loc_8035AC4:
+	bl GetTotalChipCount
+	b .checkChipCountInRange
+.getChipCountOfCode
 	mov r1, r4
 	mov r6, #1
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
-	bl sub_8021BC0
-loc_8035AD2:
+	bl GetChipCountOfCode
+.checkChipCountInRange
 	mov r6, #4
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	mov r6, #5
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r0, r1
-	blt loc_8035AF4
+	blt .chipCountOutOfRange
 	cmp r0, r4
-	bgt loc_8035AF4
+	bgt .chipCountOutOfRange
 	mov r6, #6
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8035AF4:
-	add r7, #0xa
+.chipCountOutOfRange
+	add r7, #10
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035AAA
+	thumb_func_end MapScript_jump_if_chip_count_in_range
 
 	thumb_local_start
-sub_8035AFA:
+// 0x0c byte1 signedbyte2 destination
+// sub_8031A7A(complex) returns r0, r1. if r0 == 0, r1 is used in comparison
+// jump if byte1 == compByte
+MapScript_cmd_8035afa: // 8035afa
 	push {lr}
 	mov r6, #2
-	bl Script_ReadSignedByte803609C
+	bl ReadMapScriptSignedByte
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
@@ -3544,11 +3553,11 @@ sub_8035AFA:
 	mov r0, r1
 loc_8035B28:
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r0, r4
 	bne loc_8035B3E
 	mov r6, #3
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3556,13 +3565,15 @@ loc_8035B3E:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035AFA
+	thumb_func_end MapScript_cmd_8035afa
 
 	thumb_local_start
-sub_8035B44:
+// 0x0d byte1 signedbyte2 destination
+// like 0x0c except jumps if not equal
+MapScript_cmd_8035b44: // 8035b44
 	push {lr}
 	mov r6, #2
-	bl Script_ReadSignedByte803609C
+	bl ReadMapScriptSignedByte
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
@@ -3583,11 +3594,11 @@ sub_8035B44:
 	mov r0, r1
 loc_8035B72:
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r0, r4
 	beq loc_8035B88
 	mov r6, #3
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3595,41 +3606,45 @@ loc_8035B88:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035B44
+	thumb_func_end MapScript_cmd_8035b44
 
 	thumb_local_start
-sub_8035B8E:
+// 0x0e byte1 destination
+// jump if byte1 == eGameState_Unk_0e
+MapScript_jump_if_game_state_0e_equals: // 8035b8e
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_Unk_0e]
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r0, r4
-	bne loc_8035BAC
+	bne .notEqual
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8035BAC:
+.notEqual
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035B8E
+	thumb_func_end MapScript_jump_if_game_state_0e_equals
 
 	thumb_local_start
-sub_8035BB2:
+// 0x0f byte1 destination
+// jump if byte1 != eGameStateUnk_0e
+MapScript_jump_if_game_state_0e_not_equals: // 8035BB2
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_Unk_0e]
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r0, r4
 	beq loc_8035BD0
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3637,45 +3652,50 @@ loc_8035BD0:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035BB2
+	thumb_func_end MapScript_jump_if_game_state_0e_not_equals
 
 	thumb_local_start
-sub_8035BD6:
+// 0x12 signedhword1 destination
+// jump if (eOWPlayerObject_Z >> 0x10) == signedhword1
+MapScript_jump_if_player_z_equals: // 8035BD6
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldr r0, [r0,#oGameState_OverworldPlayerObjectPtr]
-	ldr r0, [r0,#0x24]
+	ldr r0, [r0,#oOWPlayerObject_Z]
 	asr r0, r0, #0x10
 	mov r6, #1
-	bl Script_ReadSignedHalfword80360B6
+	bl ReadMapScriptSignedHalfword
 	cmp r0, r4
-	bne loc_8035BF8
+	bne .notEqual
 	mov r6, #3
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8035BF8:
+.notEqual
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035BD6
+	thumb_func_end MapScript_jump_if_player_z_equals
 
 	thumb_local_start
-sub_8035BFE:
+// 0x13 signedhword1 destination
+// jump if (eOWPlayerObjectUnk_24 >> 0x10) != signedhword1
+// eOWPlayerObjectUnk_24 is signed
+MapScript_jump_if_player_z_not_equals: // 8035BFE
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldr r0, [r0,#oGameState_OverworldPlayerObjectPtr]
-	ldr r0, [r0,#0x24]
+	ldr r0, [r0,#oOWPlayerObject_Z]
 	asr r0, r0, #0x10
 	mov r6, #1
-	bl Script_ReadSignedHalfword80360B6
+	bl ReadMapScriptSignedHalfword
 	cmp r0, r4
 	beq loc_8035C20
 	mov r6, #3
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3683,20 +3703,22 @@ loc_8035C20:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035BFE
+	thumb_func_end MapScript_jump_if_player_z_not_equals
 
 	thumb_local_start
-sub_8035C26:
+// 0x14 hword1 destination
+// jump if hword1 == eGameStateUnk_44
+MapScript_jump_if_game_state_44_equals: // 8035C26
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldr r0, [r0,#oGameState_Unk_44]
 	mov r6, #1
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	cmp r0, r4
 	bne loc_8035C44
 	mov r6, #3
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3704,20 +3726,22 @@ loc_8035C44:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035C26
+	thumb_func_end MapScript_jump_if_game_state_44_equals
 
 	thumb_local_start
-sub_8035C4A:
+// 0x15 hword1 destination
+// jump if hword1 != eGameStateUnk_44
+MapScript_jump_if_game_state_44_not_equals: // 8035C4A
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldr r0, [r0,#oGameState_Unk_44]
 	mov r6, #1
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	cmp r0, r4
 	beq loc_8035C68
 	mov r6, #3
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3725,40 +3749,49 @@ loc_8035C68:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035C4A
+	thumb_func_end MapScript_jump_if_game_state_44_not_equals
 
 	thumb_local_start
-sub_8035C6E:
+// 0x16 0x01 destination
+// jump if eGameStateMapGroup == eGameStateLastMapGroup
+// 0x16 !0x01 destination
+// jump if eGameStateMapGroup != eGameStateLastMapGroup
+MapScript_jump_if_map_group_compare_last_map_group: // 8035C6E
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	ldrh r0, [r1,#oGameState_MapGroup]
 	ldrh r1, [r1,#oGameState_LastMapGroup]
 	cmp r4, #1
-	beq loc_8035C88
+	beq .compareEqual
+// jump if not equal
 	cmp r0, r1
-	bne loc_8035C8E
-	b loc_8035C9A
-loc_8035C88:
+	bne .doScriptJump
+	b .comparisonFailed
+.compareEqual
 	cmp r0, r1
-	beq loc_8035C8E
-	b loc_8035C9A
-loc_8035C8E:
+	beq .doScriptJump
+	b .comparisonFailed
+.doScriptJump
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-loc_8035C9A:
+.comparisonFailed
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035C6E
+	thumb_func_end MapScript_jump_if_map_group_compare_last_map_group
 
 	thumb_local_start
-sub_8035CA0:
+// 0x17 destination1 destination5 destination9
+// jumptable, using [[eToolkit_Unk20047cc_Ptr] + 0x4c] as the base index
+// default is destination1
+// eToolkit_Unk20047cc_Ptr
+MapScript_cmd_8035ca0: // 8035CA0
 	push {lr}
 	mov r0, #0
 	mov r1, #0x4c 
@@ -3768,34 +3801,40 @@ sub_8035CA0:
 	cmp r0, #2
 	beq loc_8035CCA
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
 loc_8035CBE:
 	mov r6, #5
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
 loc_8035CCA:
 	mov r6, #9
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035CA0
+	thumb_func_end MapScript_cmd_8035ca0
 
 	thumb_local_start
-sub_8035CD6:
+// 0x18 byte1 destination2
+// jump if byte1 == sub_800B734()
+// sub_800B734 performs a summation on the 12 halfwords at word_2000FA0
+// returns 0 if the summation is greater than 0x2a30
+// returns 1 if 0x1c20 < summation <= 0x2a30
+// else returns 2
+MapScriptCmd_8035cd6: // 8035cd6
 	push {lr}
 	bl sub_800B734
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r0, r4
 	bne loc_8035CF2
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3803,18 +3842,20 @@ loc_8035CF2:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035CD6
+	thumb_func_end MapScriptCmd_8035cd6
 
 	thumb_local_start
-sub_8035CF8:
+// 0x19 byte1 destination2
+// same as above but performs !=
+MapScriptCmd_8035cf8:
 	push {lr}
 	bl sub_800B734
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r0, r4
 	beq loc_8035D14
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -3822,14 +3863,16 @@ loc_8035D14:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035CF8
+	thumb_func_end MapScriptCmd_8035cf8
 
 	thumb_local_start
-sub_8035D1A:
+// 0x1a destination1
+// jump if palette fade is active
+MapScriptCmd_jump_if_fade_active: // 8035D1A
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl ReadMapScriptWord
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8035D2E
 	add r7, #5
 	mov r0, #1
@@ -3838,14 +3881,16 @@ loc_8035D2E:
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035D1A
+	thumb_func_end MapScriptCmd_jump_if_fade_active
 
 	thumb_local_start
-sub_8035D34:
+// 0x1b destination1
+// jump if [eStruct200a6a0] != 0
+MapScriptCmd_jump_if_eStruct200a6a0_initialized: // 8035D34
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
-	bl sub_80024C0
+	bl ReadMapScriptWord
+	bl Is_eStruct200a6a0_Initialized
 	bne loc_8035D48
 	add r7, #5
 	mov r0, #1
@@ -3854,13 +3899,15 @@ loc_8035D48:
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035D34
+	thumb_func_end MapScriptCmd_jump_if_eStruct200a6a0_initialized
 
 	thumb_local_start
-sub_8035D4E:
+// 0x1c destination1
+// jump if the PET menu or a submenu is open (ePETMenuData+5)
+MapScriptCmd_jump_if_in_pet_menu: // 8035D4E
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, #1
 	bl sub_811EBE0
 	bne loc_8035D64
@@ -3871,13 +3918,13 @@ loc_8035D64:
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035D4E
+	thumb_func_end MapScriptCmd_jump_if_in_pet_menu
 
 	thumb_local_start
 sub_8035D6A:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
 	beq loc_8035D7E
 	ldrb r0, [r5,r4]
@@ -3886,10 +3933,10 @@ sub_8035D6A:
 	b loc_8035D8E
 loc_8035D7E:
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	mov r6, #3
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 loc_8035D8E:
 	bl engine_setScreeneffect // (int a1, int a2) -> void
@@ -3904,10 +3951,10 @@ sub_8035D98:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	strb r4, [r1,#oGameState_Unk_16]
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	strb r4, [r1,#oGameState_Unk_17]
 	add r7, #3
 	mov r0, #1
@@ -3918,14 +3965,14 @@ sub_8035D98:
 sub_8035DB4:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
 	beq loc_8035DC4
 	ldrh r4, [r5,r4]
 	b loc_8035DCA
 loc_8035DC4:
 	mov r6, #2
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 loc_8035DCA:
 	// bitfield
 	mov r0, r4
@@ -3939,14 +3986,14 @@ loc_8035DCA:
 sub_8035DD6:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
 	beq loc_8035DE6
 	ldrh r4, [r5,r4]
 	b loc_8035DEC
 loc_8035DE6:
 	mov r6, #2
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 loc_8035DEC:
 	mov r0, r4
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
@@ -3959,10 +4006,10 @@ loc_8035DEC:
 sub_8035DF8:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	mov r6, #2
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	mov r2, r1
 	bl SetEventFlagRange // (u16 entryFlagBitfield) -> void
@@ -3975,10 +4022,10 @@ sub_8035DF8:
 sub_8035E16:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	mov r6, #2
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	mov r2, r1
 	bl ClearEventFlagRange // (u16 entryFlagBitfield) -> void
@@ -3991,7 +4038,7 @@ sub_8035E16:
 sub_8035E34:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 loc_8035E3C:
 	mov r1, #0
 	ldrsh r0, [r4,r1]
@@ -4011,7 +4058,7 @@ loc_8035E4E:
 sub_8035E54:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 loc_8035E5C:
 	mov r1, #0
 	ldrsh r0, [r4,r1]
@@ -4031,10 +4078,10 @@ loc_8035E6E:
 sub_8035E74:
 	push {lr}
 	mov r6, #5
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov lr, pc
 	bx r4
 	add r7, #9
@@ -4046,10 +4093,10 @@ sub_8035E74:
 sub_8035E8E:
 	push {lr}
 	mov r6, #5
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r1, r4
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	bl init_s_02011C50_8036E90
 	add r7, #9
@@ -4061,10 +4108,10 @@ sub_8035E8E:
 sub_8035EAA:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	mov r6, #5
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	strb r4, [r0]
 	add r7, #6
 	mov r0, #1
@@ -4075,10 +4122,10 @@ sub_8035EAA:
 sub_8035EC2:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	mov r6, #5
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	strh r4, [r0]
 	add r7, #7
 	mov r0, #1
@@ -4089,10 +4136,10 @@ sub_8035EC2:
 sub_8035EDA:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	mov r6, #5
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	str r4, [r0]
 	add r7, #9
 	mov r0, #1
@@ -4105,10 +4152,10 @@ sub_8035EF2:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	add r0, r0, r4
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	strb r4, [r0]
 	add r7, #3
 	mov r0, #1
@@ -4121,10 +4168,10 @@ sub_8035F0E:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	add r0, r0, r4
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	strb r4, [r0]
 	add r7, #3
 	mov r0, #1
@@ -4135,7 +4182,7 @@ sub_8035F0E:
 sub_8035F2A:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	bl sub_8001B1C
 	add r7, #5
@@ -4147,7 +4194,7 @@ sub_8035F2A:
 sub_8035F3E:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	bl sub_8002354
 	add r7, #5
@@ -4173,7 +4220,7 @@ sub_8035F52:
 sub_8035F6A:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	cmp r0, #0xff
 	beq loc_8035F7A
@@ -4200,14 +4247,14 @@ loc_8035F8E:
 sub_8035F98:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
 	beq loc_8035FA8
 	ldrb r0, [r5,r4]
 	b loc_8035FB0
 loc_8035FA8:
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 loc_8035FB0:
 	bl sub_8033FC0
@@ -4220,11 +4267,11 @@ loc_8035FB0:
 sub_8035FBA:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #1
 	beq loc_8035FD4
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	str r4, [r5,#0x10]
 	add r7, #6
 	mov r0, #1
@@ -4241,19 +4288,19 @@ loc_8035FD4:
 sub_8035FDE:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #1
 	beq loc_8035FFC
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	add r7, #6
 	mov r0, #1
 	pop {pc}
 loc_8035FFC:
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	bl sub_80035A2
 	add r7, #3
@@ -4344,25 +4391,35 @@ off_8036090: .word eUnkMapScriptState_2011e60
 	thumb_func_end sub_8036064
 
 	thumb_local_start
-Script_ReadByte8036094:
+/* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:u8 result
+    preserves: r6,r7
+	unused: r0-r3,r5,r8-r12*/
+ReadMapScriptByte: // 8036094
 	push {r7,lr}
 	add r7, r7, r6
 	ldrb r4, [r7]
 	pop {r7,pc}
-	thumb_func_end Script_ReadByte8036094
-
+	thumb_func_end ReadMapScriptByte
+	
 	thumb_local_start
-Script_ReadSignedByte803609C:
+/* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:s8 result
+    preserves: r6,r7
+	unused: r0-r3,r5,r8-r12*/
+ReadMapScriptSignedByte: // 803609C
 	push {r7,lr}
 	add r7, r7, r6
 	ldrb r4, [r7]
 	lsl r4, r4, #0x18
 	asr r4, r4, #0x18
 	pop {r7,pc}
-	thumb_func_end Script_ReadSignedByte803609C
+	thumb_func_end ReadMapScriptSignedByte
 
 	thumb_local_start
-Script_ReadHalfword80360A8:
+/* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:u16 result
+	spoils: r6
+    preserves: r7
+	unused: r0-r3,r5,r8-r12*/
+ReadMapScriptHalfword: // 80360A8
 	push {r7,lr}
 	add r7, r7, r6
 	ldrb r4, [r7,#1]
@@ -4370,10 +4427,14 @@ Script_ReadHalfword80360A8:
 	lsl r4, r4, #8
 	orr r4, r6
 	pop {r7,pc}
-	thumb_func_end Script_ReadHalfword80360A8
+	thumb_func_end ReadMapScriptHalfword
 
 	thumb_local_start
-Script_ReadSignedHalfword80360B6:
+/* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:s16 result
+	spoils: r6
+    preserves: r7
+	unused: r0-r3,r5,r8-r12*/
+ReadMapScriptSignedHalfword: // 80360B6
 	push {r7,lr}
 	add r7, r7, r6
 	ldrb r4, [r7,#1]
@@ -4383,11 +4444,14 @@ Script_ReadSignedHalfword80360B6:
 	lsl r4, r4, #0x10
 	asr r4, r4, #0x10
 	pop {r7,pc}
-	thumb_func_end Script_ReadSignedHalfword80360B6
+	thumb_func_end ReadMapScriptSignedHalfword
 
-// () -> void .spoils R4, R6
 	thumb_local_start
-Script_ReadWord80360C8:
+/* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:u32 result
+	spoils: r6
+    preserves: r7
+	unused: r0-r3,r5,r8-r12*/
+ReadMapScriptWord: // 80360C8
 	push {r7,lr}
 	add r7, r7, r6
 	ldrb r4, [r7,#3]
@@ -4401,6 +4465,8 @@ Script_ReadWord80360C8:
 	lsl r4, r4, #8
 	orr r4, r6
 	pop {r7,pc}
+	thumb_func_end ReadMapScriptWord
+
 	.balign 4, 0x00
 off_80360E4: .word dword_80362A4
 	.word dword_80362EC
@@ -5197,7 +5263,6 @@ dword_8036D8C: .word 0xFFFFFF00
 	.word byte_806AEA8
 	.word 0xFFFFFFFF
 	.word 0xFFFFFFFF
-	thumb_func_end Script_ReadWord80360C8
 
 	thumb_func_start sub_8036E44
 sub_8036E44:
@@ -5400,7 +5465,7 @@ loc_8036F7E:
 	thumb_local_start
 sub_8036F84:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8036F96
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
@@ -5719,7 +5784,7 @@ loc_80371C2:
 	pop {r0-r3}
 loc_80371E8:
 	push {r0-r3}
-	ldr r7, off_803725C // =byte_80065E0 
+	ldr r7, off_803725C // =math_sinTable 
 	ldrh r3, [r5,#4]
 	ldr r4, [r5,#0x20]
 	sub r4, r3, r4
@@ -5729,7 +5794,7 @@ loc_80371E8:
 	mov r3, #0x40 
 	sub r4, r3, r4
 	lsl r4, r4, #1
-	ldr r0, off_803725C // =byte_80065E0 
+	ldr r0, off_803725C // =math_sinTable 
 	ldrsh r4, [r0,r4]
 	ldr r0, [r5,#0x14]
 	ldr r1, [r5,#8]
@@ -5775,7 +5840,7 @@ loc_8037242:
 	add r1, #9
 	pop {pc}
 	.balign 4, 0x00
-off_803725C: .word byte_80065E0
+off_803725C: .word math_sinTable
 	thumb_func_end sub_8037196
 
 	thumb_local_start
@@ -5975,7 +6040,7 @@ sub_8037396:
 sub_80373B6:
 	push {lr}
 	push {r1}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	pop {r1}
 	beq loc_80373C8
 	mov r0, #1
@@ -6138,20 +6203,20 @@ jt_big_803749C: .word sub_80376C4+1
 	.word sub_80378C2+1
 	.word sub_80378EE+1
 	.word sub_8037904+1
-	.word sub_8035924+1
-	.word sub_8035932+1
-	.word sub_8035962+1
-	.word sub_8035992+1
-	.word sub_80359BE+1
-	.word sub_80359EE+1
-	.word sub_8035A1A+1
+	.word MapScript_jump+1
+	.word MapScript_jump_if_progress_in_range+1
+	.word MapScript_jump_if_flag_set+1
+	.word MapScript_jump_if_flag_range_set+1
+	.word MapScript_jump_if_flag_clear+1
+	.word MapScript_jump_if_flag_range_clear+1
+	.word MapScript_jump_if_mem_equals+1
 	.word sub_8037914+1
-	.word sub_8035A74+1
-	.word sub_8035AAA+1
+	.word MapScript_jump_if_unk_navicust_range+1
+	.word MapScript_jump_if_chip_count_in_range+1
 	.word sub_803793A+1
 	.word sub_803795C+1
-	.word sub_8035AFA+1
-	.word sub_8035B44+1
+	.word MapScript_cmd_8035afa+1
+	.word MapScript_cmd_8035b44+1
 	.word sub_803797E+1
 	.word sub_80379A0+1
 	.word sub_80379C2+1
@@ -6291,14 +6356,14 @@ sub_80376F4:
 	add r0, #0
 	bl sub_80385C0
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
 	beq loc_8037716
 	ldrb r4, [r5,r4]
 	b loc_803771C
 loc_8037716:
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 loc_803771C:
 	ldrb r1, [r5,#0x12]
 	add r1, #0xc
@@ -6332,14 +6397,14 @@ sub_8037740:
 	add r0, #4
 	bl sub_80385C0
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
 	beq loc_8037762
 	ldrh r4, [r5,r4]
 	b loc_8037768
 loc_8037762:
 	mov r6, #2
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 loc_8037768:
 	ldrb r1, [r5,#0x12]
 	lsl r1, r1, #1
@@ -6368,7 +6433,7 @@ loc_803778C:
 sub_8037790:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, #0x80
 	and r0, r4
 	bl chatbox_8045F3C
@@ -6390,7 +6455,7 @@ loc_80377B2:
 sub_80377B6:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	bl sub_809E434
 	cmp r0, r4
 	bne loc_80377CC
@@ -6419,7 +6484,7 @@ loc_80377E0:
 	thumb_local_start
 sub_80377E4:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80377F2
 	add r7, #1
 	mov r0, #1
@@ -6447,10 +6512,10 @@ loc_8037804:
 sub_8037808:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	ldrb r0, [r5,r4]
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r0, r4
 	bne loc_8037822
 	add r7, #3
@@ -6465,7 +6530,7 @@ loc_8037822:
 sub_8037826:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	ldr r0, [r5,r4]
 	ldrb r0, [r0]
 	cmp r0, #0x11
@@ -6481,7 +6546,7 @@ loc_803783C:
 	thumb_local_start
 sub_8037840:
 	push {lr}
-	bl sub_80024C0
+	bl Is_eStruct200a6a0_Initialized
 	bne loc_803784E
 	add r7, #1
 	mov r0, #1
@@ -6509,7 +6574,7 @@ loc_8037862:
 sub_8037866:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_803787C
@@ -6525,7 +6590,7 @@ loc_803787C:
 sub_8037880:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_8037896
@@ -6573,10 +6638,10 @@ sub_80378BE:
 sub_80378C2:
 	push {lr}
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	str r0, [r5,r4]
 	sub r4, #0x1c
 	lsr r4, r4, #2
@@ -6596,7 +6661,7 @@ sub_80378EE:
 	push {lr}
 	ldr r0, off_8037900 // =dword_8037690 
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	str r0, [r5,r4]
 	add r7, #2
 	mov r0, #1
@@ -6608,7 +6673,7 @@ off_8037900: .word dword_8037690
 sub_8037904:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	str r4, [r5,#0x38]
 	add r7, #5
 	mov r0, #1
@@ -6619,14 +6684,14 @@ sub_8037904:
 sub_8037914:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	ldrb r0, [r5,r4]
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r0, r4
 	bne loc_8037934
 	mov r6, #3
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6640,12 +6705,12 @@ loc_8037934:
 sub_803793A:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	bl sub_800B6B0
 	cmp r0, r4
 	bne loc_8037956
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6659,12 +6724,12 @@ loc_8037956:
 sub_803795C:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	bl sub_800B6B0
 	cmp r0, r4
 	beq loc_8037978
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6678,12 +6743,12 @@ loc_8037978:
 sub_803797E:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	bl getPETNaviSelect // () -> u8
 	cmp r0, r4
 	bne loc_803799A
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6697,12 +6762,12 @@ loc_803799A:
 sub_80379A0:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	bl getPETNaviSelect // () -> u8
 	cmp r0, r4
 	beq loc_80379BC
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6716,12 +6781,12 @@ loc_80379BC:
 sub_80379C2:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	bl sub_8000EE4
 	cmp r0, r4
 	bne loc_80379DE
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6735,12 +6800,12 @@ loc_80379DE:
 sub_80379E4:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	bl sub_8000EE4
 	cmp r0, r4
 	beq loc_8037A00
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6754,15 +6819,15 @@ loc_8037A00:
 sub_8037A06:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	lsl r0, r4, #2
 	add r0, #0x44 
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	ldr r0, [r5,r0]
 	add r0, r0, r4
 	mov r6, #3
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	strb r4, [r0]
 	add r7, #4
 	mov r0, #1
@@ -6773,10 +6838,10 @@ sub_8037A06:
 sub_8037A2A:
 	push {lr}
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	strb r0, [r5,r4]
 	add r7, #3
 	mov r0, #1
@@ -6787,7 +6852,7 @@ sub_8037A2A:
 sub_8037A42:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
 	beq loc_8037A5C
 	ldr r0, [r5,#0x30]
@@ -6798,7 +6863,7 @@ sub_8037A42:
 	pop {pc}
 loc_8037A5C:
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	ldr r0, [r5,#0x30]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -6820,10 +6885,10 @@ sub_8037A70:
 sub_8037A7C:
 	push {lr}
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #1
 	beq loc_8037A96
 	bl chatbox_8045F1C
@@ -6843,7 +6908,7 @@ sub_8037AA0:
 	lsl r0, r0, #2
 	add r0, #1
 	mov r6, r0
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -6853,7 +6918,7 @@ sub_8037AA0:
 sub_8037AB6:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	cmp r0, #0
 	bge loc_8037AC8
@@ -6906,7 +6971,7 @@ off_8037B04: .word unk_2033400
 sub_8037B08:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	ldr r0, off_8037B20 // =off_8037B24 
 	ldr r0, [r0,r4]
 	mov lr, pc
@@ -6940,18 +7005,18 @@ off_8037B24: .word updateFlags_809E0B0+1
 sub_8037B6C:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	ldr r3, off_8037B98 // =off_8037B9C 
 	ldr r3, [r3,r4]
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
 	beq loc_8037B86
 	ldrb r4, [r5,r4]
 	b loc_8037B8C
 loc_8037B86:
 	mov r6, #3
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 loc_8037B8C:
 	mov r0, r4
 	mov lr, pc
@@ -6972,7 +7037,7 @@ off_8037B9C: .word sub_809E260+1
 sub_8037BB4:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #8
 	blt loc_8037BC6
 	ldrb r0, [r5,#0x12]
@@ -6985,31 +7050,31 @@ loc_8037BC6:
 	mov r0, #8
 	bl sub_80385C0
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
 	beq loc_8037BE2
 	ldrb r4, [r5,r4]
 	b loc_8037BE8
 loc_8037BE2:
 	mov r6, #3
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 loc_8037BE8:
 	strb r4, [r5,#0x10]
 loc_8037BEA:
 	mov r6, #4
-	bl Script_ReadSignedHalfword80360B6
+	bl ReadMapScriptSignedHalfword
 	mov r0, r4
 	mov r6, #6
-	bl Script_ReadSignedHalfword80360B6
+	bl ReadMapScriptSignedHalfword
 	mov r1, r4
 	mov r6, #8
-	bl Script_ReadSignedHalfword80360B6
+	bl ReadMapScriptSignedHalfword
 	mov r2, r4
 	lsl r0, r0, #0xc
 	lsl r1, r1, #0xc
 	lsl r2, r2, #0xc
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	ldr r3, off_8037C30 // =off_8037C34 
 	ldr r3, [r3,r4]
 	mov lr, pc
@@ -7048,19 +7113,19 @@ sub_8037C44:
 	mov r0, #8
 	bl sub_80385C0
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
 	beq loc_8037C6E
 	ldrb r4, [r5,r4]
 	b loc_8037C74
 loc_8037C6E:
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 loc_8037C74:
 	strb r4, [r5,#0x10]
 loc_8037C76:
 	mov r6, #3
-	bl Script_ReadSignedHalfword80360B6
+	bl ReadMapScriptSignedHalfword
 	mov r0, r4
 	lsl r0, r0, #8
 	mov r1, r0
@@ -7095,10 +7160,10 @@ byte_8037CB4: .byte 0x10, 0xF0, 0x10, 0x0, 0x8, 0x8, 0x0, 0x10, 0xF0, 0x10, 0xF0
 sub_8037CC4:
 	push {lr}
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
 	beq loc_8037CDA
 	ldrb r0, [r5,r4]
@@ -7113,7 +7178,7 @@ loc_8037CDA:
 sub_8037CE4:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	bl sub_809E496
 	add r7, #5
@@ -7125,7 +7190,7 @@ sub_8037CE4:
 sub_8037CF8:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0
 	beq loc_8037D0A
 	cmp r4, #1
@@ -7133,13 +7198,13 @@ sub_8037CF8:
 	b loc_8037D36
 loc_8037D0A:
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	mov r6, #3
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	mov r6, #4
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r2, r4
 	bl loc_809E2C8
 	add r7, #5
@@ -7157,17 +7222,17 @@ loc_8037D36:
 	mov r0, #9
 	bl sub_80385C0
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	strb r4, [r5,#0x11]
 loc_8037D4C:
 	mov r6, #3
-	bl Script_ReadSignedByte803609C
+	bl ReadMapScriptSignedByte
 	mov r0, r4
 	mov r6, #4
-	bl Script_ReadSignedByte803609C
+	bl ReadMapScriptSignedByte
 	mov r1, r4
 	mov r6, #5
-	bl Script_ReadSignedByte803609C
+	bl ReadMapScriptSignedByte
 	mov r2, r4
 	bl sub_809E2DC
 	ldrb r0, [r5,#0x11]
@@ -7188,14 +7253,14 @@ loc_8037D7C:
 sub_8037D80:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0
 	beq loc_8037D90
 	cmp r4, #1
 	beq loc_8037DA2
 loc_8037D90:
 	mov r6, #2
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	bl loc_809E2F6
 	add r7, #4
@@ -7212,18 +7277,18 @@ loc_8037DA2:
 sub_8037DAC:
 	push {lr}
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0xff
 	beq loc_8037DBC
 	ldrb r4, [r5,r4]
 	b loc_8037DC2
 loc_8037DBC:
 	mov r6, #3
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 loc_8037DC2:
 	mov r0, r4
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0
 	beq loc_8037DD6
 	mov r4, r0
@@ -7240,7 +7305,7 @@ loc_8037DD6:
 sub_8037DE0:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, #0xd8
 	mul r4, r0
 	ldr r0, off_8037E14 // =eOverworldNPCObjects 
@@ -7252,7 +7317,7 @@ sub_8037DE0:
 	ldrb r0, [r4,#0x14]
 	bl sub_809E13C
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	bl sub_809E2AE
 	add r7, #3
@@ -7266,7 +7331,7 @@ off_8037E14: .word eOverworldNPCObjects
 sub_8037E18:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	mov r1, #0xf0
 	and r1, r4
@@ -7295,24 +7360,24 @@ sub_8037E4C:
 	push {r5}
 	add r5, r5, r4
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	mov r6, #3
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r1, r4
 	mov r6, #5
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r2, r4
 	mov r6, #7
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r3, r4
 	mov r6, #9
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	lsl r1, r1, #0x10
 	lsl r2, r2, #0x10
 	lsl r3, r3, #0x10
 	mov r6, r5
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	str r5, [r6]
 	pop {r5}
 	add r7, #0xd
@@ -7335,13 +7400,13 @@ sub_8037E96:
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	mov r6, #3
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r1, r4
 	mov r6, #5
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r2, r4
 	mov r6, #7
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r3, r4
 	lsl r1, r1, #0x10
 	lsl r2, r2, #0x10
@@ -7354,12 +7419,12 @@ sub_8037E96:
 	add r3, r3, r4
 	add sp, sp, #0xc
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	mov r6, #9
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r6, r5
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	str r5, [r6]
 	pop {r5}
 	add r7, #0xd
@@ -7377,7 +7442,7 @@ sub_8037EFA:
 	push {r5}
 	add r5, r5, r4
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, #0xd8
 	mul r1, r4
 	ldr r4, off_8037FB4 // =eOverworldNPCObjects 
@@ -7390,13 +7455,13 @@ sub_8037EFA:
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	mov r6, #4
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r1, r4
 	mov r6, #6
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r2, r4
 	mov r6, #8
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r3, r4
 	lsl r1, r1, #0x10
 	lsl r2, r2, #0x10
@@ -7409,12 +7474,12 @@ sub_8037EFA:
 	add r3, r3, r4
 	add sp, sp, #0xc
 	mov r6, #3
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	mov r6, #0xa
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r6, r5
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	str r5, [r6]
 	pop {r5}
 	add r7, #0xe
@@ -7435,7 +7500,7 @@ sub_8037F6E:
 	beq loc_8037F88
 	mov r0, #0
 	str r0, [r5,r4]
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_8037F88:
 	pop {r5}
 	add r7, #2
@@ -7455,7 +7520,7 @@ loc_8037F94:
 	str r1, [r5,r4]
 	push {r5}
 	mov r5, r0
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r5}
 loc_8037FA8:
 	add r4, #4
@@ -7471,7 +7536,7 @@ off_8037FB4: .word eOverworldNPCObjects
 sub_8037FB8:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #1
 	beq loc_8037FE6
 	cmp r4, #2
@@ -7483,15 +7548,15 @@ sub_8037FB8:
 	cmp r4, #5
 	beq loc_803801E
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	add r7, #6
 	mov r0, #1
 	pop {pc}
 loc_8037FE6:
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	bl sub_80035A2
 	add r7, #3
@@ -7499,7 +7564,7 @@ loc_8037FE6:
 	pop {pc}
 loc_8037FF8:
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	bl sub_8030A60
 	add r7, #6
@@ -7526,7 +7591,7 @@ loc_803801E:
 sub_8038028:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov lr, pc
 	bx r4
 	bne loc_803803C
@@ -7542,7 +7607,7 @@ loc_803803C:
 sub_8038040:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r3, r4
 	mov r0, #0x40 
 	tst r3, r0
@@ -7551,7 +7616,7 @@ sub_8038040:
 	tst r3, r0
 	bne loc_80380A6
 	mov r6, #3
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r2, r4
 	mov r0, #0x80
 	tst r3, r0
@@ -7564,7 +7629,7 @@ loc_8038066:
 	mov r0, r2
 	mov r1, #0
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r2, r4
 	bl sub_8005F00
 	add r7, #7
@@ -7574,7 +7639,7 @@ loc_8038082:
 	mov r0, r2
 	mov r1, #0
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r2, r4
 	bl sub_8005F14
 	add r7, #7
@@ -7588,7 +7653,7 @@ loc_8038098:
 	pop {pc}
 loc_80380A6:
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	str r4, [r5,#0x34]
 	add r7, #6
 	mov r0, #1
@@ -7599,7 +7664,7 @@ loc_80380A6:
 sub_80380B4:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	bl sound_play // () -> void
 	add r7, #3
@@ -7611,7 +7676,7 @@ sub_80380B4:
 sub_80380C8:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadSignedHalfword80360B6
+	bl ReadMapScriptSignedHalfword
 	cmp r4, #0
 	bge loc_80380DE
 	bl sub_8036E44
@@ -7630,13 +7695,13 @@ loc_80380E4:
 sub_80380EA:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	mov r6, #3
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	mov r6, #4
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r2, r4
 	bl sub_80006A2
 	add r7, #5
@@ -7648,10 +7713,10 @@ sub_80380EA:
 sub_803810E:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	bl sub_800068A
 	mov r1, r10
@@ -7676,13 +7741,13 @@ sub_8038132:
 sub_803813E:
 	push {lr}
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	mov r6, #3
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #1
 	beq loc_8038160
 	bl sub_803CD98
@@ -7699,11 +7764,11 @@ loc_8038164:
 sub_803816A:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0
 	bne loc_803818E
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	str r4, [r5,#0x3c]
 	mov r0, r4
 	bl sub_8036F98
@@ -7735,13 +7800,13 @@ sub_80381A0:
 	bl sub_8015C32
 loc_80381B4:
 	mov r6, #1
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	bl getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
 	mov r1, #1
 	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 	mov r6, #1
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	bl sub_803522E
 	mov r0, #0x2c 
@@ -7770,15 +7835,15 @@ sub_80381E0:
 sub_80381FA:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	mov r6, #5
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r1, r4
 	mov r6, #9
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r2, r4
-	bl sub_8002468
+	bl Initialize_eStruct200a6a0
 	add r7, #0xd
 	mov r0, #1
 	pop {pc}
@@ -7797,10 +7862,10 @@ sub_803821E:
 sub_803822A:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	bl sub_80302A8
 	add r7, #4
@@ -7812,7 +7877,7 @@ sub_803822A:
 sub_8038246:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	add r7, #2
 	mov r0, #1
@@ -7856,7 +7921,7 @@ sub_803826E:
 sub_803827A:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	bl sub_8003914
 	add r7, #2
@@ -7877,7 +7942,7 @@ sub_803828E:
 sub_803829A:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	bl sub_8003A64
 	add r7, #2
@@ -7898,10 +7963,10 @@ sub_80382AE:
 sub_80382BA:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	mov r6, #3
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r6, r0
 loc_80382CC:
 	mov r0, r6
@@ -7918,7 +7983,7 @@ loc_80382CC:
 sub_80382DE:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	// idx_2008A0
 	mov r0, r4
 	bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
@@ -7941,7 +8006,7 @@ sub_80382FE:
 	push {lr}
 	bl sub_80010C6
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	bl sub_80010BE
 	bl sub_8120DF0
@@ -7956,10 +8021,10 @@ sub_80382FE:
 sub_8038322:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	mov r6, #3
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r6, r0
 loc_8038334:
 	mov r0, r6
@@ -7976,10 +8041,10 @@ loc_8038334:
 sub_8038346:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r0, r4
 	mov r6, #5
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r1, r4
 	bl sub_80356F8
 	add r7, #9
@@ -7991,10 +8056,10 @@ sub_8038346:
 sub_8038362:
 	push {lr}
 	mov r6, #2
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #1
 	beq loc_803837C
 	bl sub_803CFF8
@@ -8011,10 +8076,10 @@ loc_8038380:
 sub_8038386:
 	push {lr}
 	mov r6, #2
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #1
 	beq loc_80383A0
 	bl sub_803D080
@@ -8031,19 +8096,19 @@ loc_80383A4:
 sub_80383AA:
 	push {lr}
 	mov r6, #2
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	mov r6, #4
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	mov r6, #5
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r2, r4
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #1
 	beq loc_80383D4
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	b loc_80383D8
 loc_80383D4:
 	bl sub_8021B92 // (int idx, int searchItem, int off) -> void*
@@ -8057,16 +8122,16 @@ loc_80383D8:
 sub_80383DE:
 	push {lr}
 	mov r6, #2
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	mov r6, #4
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r1, r4
 	mov r6, #5
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r2, r4
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #1
 	beq loc_8038408
 	bl sub_803D108
@@ -8084,11 +8149,11 @@ sub_8038412:
 	push {lr}
 	ldr r3, off_8038438 // =eUnkMapScriptState_2011e60
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #1
 	beq loc_803842E
 	mov r6, #2
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	str r4, [r3,#oUnkMapScriptState_2011e60UnkScriptPtr3_10]
 	add r7, #6
 	mov r0, #1
@@ -8108,10 +8173,10 @@ sub_803843C:
 	mov r3, r10
 	ldr r2, [r3,#oToolkit_GameStatePtr]
 	mov r6, #2
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r0, r4
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0
 	beq loc_8038456
 	b loc_803845C
@@ -8130,7 +8195,7 @@ loc_8038460:
 sub_8038466:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	cmp r4, #0
 	beq loc_8038474
 	b loc_803847A
@@ -8149,10 +8214,10 @@ loc_803847E:
 sub_8038484:
 	push {lr}
 	mov r6, #1
-	bl Script_ReadHalfword80360A8
+	bl ReadMapScriptHalfword
 	mov r0, r4
 	mov r6, #3
-	bl Script_ReadByte8036094
+	bl ReadMapScriptByte
 	mov r6, r0
 loc_8038496:
 	mov r0, r6
@@ -8178,7 +8243,7 @@ sub_80384A8:
 	tst r0, r1
 	beq loc_80384CA
 	mov r6, #4
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -8204,7 +8269,7 @@ sub_80384DC:
 	cmp r0, #4
 	bne loc_80384F2
 	mov r6, #4
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -8223,13 +8288,13 @@ sub_80384F8:
 	cmp r0, #0x80
 	bge loc_8038510
 	mov r6, #4
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
 loc_8038510:
 	mov r6, #8
-	bl Script_ReadWord80360C8 // () -> void .spoils R4, R6
+	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
@@ -8415,7 +8480,7 @@ dword_8038670: .word 0x1340
 	thumb_local_start
 sub_8038674:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8038684
 	ldr r0, off_8038688 // =0xb4 
 	strh r0, [r5,#4]
@@ -8454,7 +8519,7 @@ locret_80386B0:
 	thumb_local_start
 sub_80386B2:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_80386C4
 	ldr r0, off_80386C8 // =0x40 
 	bl sub_8001778
@@ -8661,7 +8726,7 @@ off_8038B78: .word sub_8038B80+1
 	thumb_local_start
 sub_8038B80:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8038B98
 	mov r0, #4
 	strb r0, [r5,#1]
@@ -9112,7 +9177,7 @@ dword_8038F08: .word 0x3FF
 sub_8038F0C:
 	push {lr}
 	bl sub_8039198
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8038F2A
 	bl loc_803D1AC // () -> void
 	bl clear_200AD04 // () -> void
@@ -9567,7 +9632,7 @@ off_803962C: .word 0x40
 	thumb_local_start
 sub_8039630:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8039652
 	bl sub_80017AA
 	bl sub_800183C
@@ -9657,7 +9722,7 @@ dword_8039708: .word 0x1F40
 	thumb_local_start
 sub_803970C:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803972A
 	mov r0, #8
 	bl chatbox_8045F3C
@@ -9677,7 +9742,7 @@ loc_803972A:
 	thumb_local_start
 sub_8039734:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80397A8
 	bl sub_803995C
 	cmp r0, #1
@@ -9760,7 +9825,7 @@ sub_80397BC:
 	thumb_local_start
 sub_80397DC:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80397F0
 	bl sub_802FF2C
 	mov r0, #0xc
@@ -9775,7 +9840,7 @@ loc_80397F0:
 	thumb_local_start
 sub_80397F6:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8039810
 	bl sub_802FF2C
 	mov r0, #0
@@ -9793,7 +9858,7 @@ loc_8039810:
 	thumb_local_start
 sub_8039816:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803982A
 	bl sub_802FF2C
 	mov r0, #0x14
@@ -9808,7 +9873,7 @@ loc_803982A:
 	thumb_local_start
 sub_8039830:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8039840
 	bl sub_802FF2C
 	mov r0, #4
@@ -10196,7 +10261,7 @@ loc_8039B5A:
 	thumb_local_start
 sub_8039B60:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8039B7C
 	mov r0, #8
 	bl chatbox_8045F3C
@@ -10214,7 +10279,7 @@ loc_8039B7C:
 	thumb_local_start
 sub_8039B82:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8039B92
 	mov r0, #8
 	strb r0, [r5]
@@ -10228,7 +10293,7 @@ loc_8039B92:
 	thumb_local_start
 sub_8039B98:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8039BBA
 	bl sub_803A524
 	bne loc_8039BBA
@@ -10572,14 +10637,14 @@ loc_8039E7A:
 sub_8039E80:
 	push {r4-r7,lr}
 	bl sub_803C620
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8039EB4
 	bl chatbox_8040818
 	bl sub_8001850
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	mov r0, #0
 	bl getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
 	bl sub_80071D4
@@ -10798,7 +10863,7 @@ loc_803A04E:
 	thumb_local_start
 sub_803A054:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803A066
 	bl sub_8001850
 	bl sub_803CCC0
@@ -10826,7 +10891,7 @@ loc_803A080:
 	thumb_local_start
 sub_803A086:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803A09A
 	bl sub_8001850
 	ldr r0, off_803A0A0 // =sub_8039570+1 
@@ -10856,7 +10921,7 @@ loc_803A0B8:
 	thumb_local_start
 sub_803A0BE:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803A0CE
 	mov r0, #8
 	strb r0, [r5]
@@ -10885,7 +10950,7 @@ loc_803A0E8:
 	thumb_local_start
 sub_803A0EE:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803A0FE
 	mov r0, #8
 	strb r0, [r5]
@@ -11749,7 +11814,7 @@ loc_803A78C:
 	thumb_local_start
 sub_803A79A:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803A7B2
 	mov r0, #0x14
 	bl sub_803BB2C
@@ -12320,7 +12385,7 @@ loc_803AC26:
 	thumb_local_start
 sub_803AC2C:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803AC50
 	bl sub_803BA28
 	bl sub_803C3E0
@@ -12722,7 +12787,7 @@ loc_803AF16:
 	thumb_local_start
 sub_803AF1C:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803AF40
 	bl sub_803BA28
 	bl sub_803C3E0
@@ -12786,7 +12851,7 @@ loc_803AF8A:
 	thumb_local_start
 sub_803AF90:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803AFBC
 	mov r4, #0
 	bl sub_803C3E0
@@ -12960,7 +13025,7 @@ dword_803B1C0: .word 0x1F40
 	thumb_local_start
 sub_803B1C4:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803B1D0
 	mov r0, #8
 	strb r0, [r5,#1]
@@ -12990,7 +13055,7 @@ loc_803B1F2:
 	thumb_local_start
 sub_803B1F8:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_803B210
 	bl chatbox_8040818
 	mov r0, #2
@@ -14819,7 +14884,7 @@ off_803C408: .word byte_200A290
 	thumb_local_start
 sub_803C40C:
 	push {r4-r7,lr}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	ldr r1, off_803C430 // =word_2006770 
 	strh r0, [r1]
 	pop {r4-r7,pc}
@@ -15914,7 +15979,7 @@ dword_803CC10: .word 0x1F40
 	thumb_local_start
 sub_803CC14:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_803CC26
 	mov r0, #0xb
 	bl sub_803CCB0
@@ -15942,7 +16007,7 @@ locret_803CC3E:
 	thumb_local_start
 sub_803CC40:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_803CC58
 	bl chatbox_8040818
 	ldr r0, off_803CC5C // =0x40 
@@ -16061,7 +16126,7 @@ dword_803CD3C: .word 0x1F40
 	thumb_local_start
 sub_803CD40:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_803CD52
 	mov r0, #0xa
 	bl sub_803CD64
@@ -16810,7 +16875,7 @@ dword_803D270: .word 0x1F40
 	thumb_local_start
 sub_803D274:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_803D292
 	ldrb r0, [r5,#4]
 	sub r0, #1
@@ -16830,7 +16895,7 @@ locret_803D292:
 	thumb_local_start
 sub_803D298:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_803D2A4
 	mov r0, #0x10
 	strb r0, [r5]
@@ -20990,7 +21055,7 @@ sub_803F838:
 	mov r1, r2
 	bl save_memSetFlags_8006E0E // (u8 *mem, int size) -> void
 	pop {r0-r2}
-	bl sub_8006C6C
+	bl SetExtraToolkitPointers
 	bl sub_803F8C4
 	bne loc_803F870
 	bl sub_803F8F4
@@ -21007,9 +21072,9 @@ loc_803F870:
 	mov r0, #0x17
 	mov r1, #4
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-	bl sub_8001514 // () -> void
+	bl SeedRNG2 // () -> void
 loc_803F87E:
-	bl sub_8006C22
+	bl RandomizeExtraToolkitPointers
 	mov r0, r4
 	tst r0, r0
 	pop {r1-r7,pc}
@@ -21354,7 +21419,7 @@ sub_803FAEE:
 	ldr r6, off_803FB24 // =0x80 
 	ldr r4, off_803FB18 // =dword_20067C0 
 loc_803FAF6:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	str r0, [r4,r7]
 	add r7, #4
 	cmp r7, r6
@@ -21461,7 +21526,7 @@ locret_803FBC0:
 	thumb_local_start
 sub_803FBC2:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_803FBE0
 	bl sub_8006910
 	bl sub_802F530

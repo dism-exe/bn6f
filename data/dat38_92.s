@@ -1,4 +1,4 @@
-.include "data/dat38_92.inc"
+	.include "data/dat38_92.inc"
 
 	.word 0x19410, 0x1940001, 0x26302500, 0xE08301F0, 0x29302801
 	.word 0x1F02A30, 0x2C7101E0, 0x1F027F0, 0x302D2720, 0x8C01F017

@@ -1,4 +1,4 @@
-.include "asm/asm02.inc"
+	.include "asm/asm02.inc"
 
 // (int chip_idx) -> ChipData*
 	thumb_func_start getChip_8021DA8
@@ -37,19 +37,25 @@ loc_8021ACC:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_8021AB4
 
-// (int bitfield) -> (int, int)
+/* (r0:u16 bitfield) -> r0:u16 upper9Bits, r1:u16 lower9Bits
+   preserves: lr
+   clobbers: r2
+   ignores: r3-r12*/
 	thumb_func_start split9BitsFromBitfield_8021AE0
-split9BitsFromBitfield_8021AE0:
+split9BitsFromBitfield_8021AE0: // 8021AE0
 	// splits bitfield into lower and upper 9 bits, and returns those in r0, r1
 	push {lr}
 	lsr r1, r0, #9
-	ldr r2, dword_8021AEC // =0xb51001ff 
-	and r0, r2
+	ldr r2, .Mask9Bits // =0x01ff 
+	and r0, r2 // r0 assumed to have bits 16-31 unset
 	pop {pc}
 	.balign 4, 0x00
-dword_8021AEC: .word 0xB51001FF
+.Mask9Bits: .hword 0x01FF
 	thumb_func_end split9BitsFromBitfield_8021AE0
 
+	thumb_func_start sub_8021AEE
+sub_8021AEE:
+	push {r4,lr}
 	push {r0-r2}
 	bl modifyToolkit_unk7C_using_2008A0 // (int idx_2008A0) -> void
 	pop {r0-r2}
@@ -170,8 +176,8 @@ loc_8021BBC:
 	pop {r4,pc}
 	thumb_func_end sub_8021B92
 
-	thumb_func_start sub_8021BC0
-sub_8021BC0:
+	thumb_func_start GetChipCountOfCode
+GetChipCountOfCode:
 	push {r4,lr}
 	push {r0,r1}
 	bl sub_8006EA4
@@ -183,10 +189,10 @@ sub_8021BC0:
 loc_8021BD4:
 	mov r0, #0
 	pop {r4,pc}
-	thumb_func_end sub_8021BC0
+	thumb_func_end GetChipCountOfCode
 
-	thumb_func_start sub_8021BD8
-sub_8021BD8:
+	thumb_func_start GetTotalChipCount
+GetTotalChipCount:
 	push {r7,lr}
 	push {r0}
 	bl sub_8006E84
@@ -208,7 +214,7 @@ sub_8021BD8:
 loc_8021BFE:
 	mov r0, #0
 	pop {r7,pc}
-	thumb_func_end sub_8021BD8
+	thumb_func_end GetTotalChipCount
 
 	thumb_func_start sub_8021C02
 sub_8021C02:

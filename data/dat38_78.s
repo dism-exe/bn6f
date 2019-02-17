@@ -1,4 +1,4 @@
-.include "data/dat38_78.inc"
+	.include "data/dat38_78.inc"
 
 dword_86DAC40: .word 0x672B0000, 0xEBE177F, 0xE5C0238, 0x4BF57FDE, 0x672B1FFF
 	.word 0x2D4045C2, 0x664739C0, 0x73B14808, 0x14410, 0x1440004

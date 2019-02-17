@@ -1,4 +1,4 @@
-.include "data/dat38_72.inc"
+	.include "data/dat38_72.inc"
 
 dword_86CF994: .word 0x1B110, 0x1B10000, 0x2D001E00, 0x3E0000, 0x78005B
 	.word 0xAE000098, 0x900CB00, 0x12001, 0x14D0139, 0x18A0166

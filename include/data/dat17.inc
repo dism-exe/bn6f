@@ -1,30 +1,30 @@
-.ifndef INC_DATA_DAT17
-.equ INC_DATA_DAT17, 0
+	.ifndef INC_DATA_DAT17
+	.equ INC_DATA_DAT17, 0
 
 /* Public Symbols */
-.global byte_80794AC
-.global byte_80794EC
-.global off_807952C
-.global off_8079534
-.global off_807953C
-.global off_8079544
-.global byte_807956C
-.global byte_807956E
-.global off_8079F74
-.global off_807A080
-.global byte_807A370
-.global byte_807A3C0
-.global byte_807A410
-.global byte_807A460
-.global byte_807A4B0
-.global off_807A4E0
-.global byte_807A7D0
-.global byte_807A800
-.global byte_807A850
+	.global byte_80794AC
+	.global byte_80794EC
+	.global off_807952C
+	.global off_8079534
+	.global off_807953C
+	.global off_8079544
+	.global byte_807956C
+	.global byte_807956E
+	.global off_8079F74
+	.global off_807A080
+	.global byte_807A370
+	.global byte_807A3C0
+	.global byte_807A410
+	.global byte_807A460
+	.global byte_807A4B0
+	.global off_807A4E0
+	.global byte_807A7D0
+	.global byte_807A800
+	.global byte_807A850
 
 
 /* External Symbols */
-.include "data/dat38_60.inc"
+	.include "data/dat38_60.inc"
 // .global byte_85DB0C0
 // .global byte_85DB0E0
 // .global byte_85DB100
@@ -66,4 +66,4 @@
 // .global dword_8617488
 
 
-.endif // INC_DATA_DAT17
+	.endif // INC_DATA_DAT17

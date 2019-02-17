@@ -1,21 +1,23 @@
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 
-	thumb_func_start sub_80005AC
-sub_80005AC:
+	thumb_func_start call_m4aSoundMain
+call_m4aSoundMain:
 	push {lr}
-	bl sub_814E918
+	bl m4aSoundMain
 	pop {pc}
 	.word unk_2006840
 	.word dword_80005BC
-dword_80005BC: .word 0x4425121C, 0x0
-	thumb_func_end sub_80005AC
+dword_80005BC: .hword 0x121c
+	.asciz "%D"
+	.balign 4, 0
+	thumb_func_end call_m4aSoundMain
 
-	thumb_func_start sub_80005C4
-sub_80005C4:
+	thumb_func_start call_m4a_2_814F00C
+call_m4a_2_814F00C:
 	push {lr}
-	bl sub_814F00C
+	bl m4a_2_814F00C
 	pop {pc}
-	thumb_func_end sub_80005C4
+	thumb_func_end call_m4a_2_814F00C
 
 // () -> void
 	thumb_func_start sound_play
@@ -273,7 +275,7 @@ sub_80007A0:
 sub_80007B2:
 	push {lr}
 	// memBlock
-	ldr r0, memBlock // =dword_200A490 
+	ldr r0, dword_200A490_p
 	// size
 	ldr r1, numWords // =0x20c 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -283,7 +285,7 @@ sub_80007B2:
 	thumb_func_start sub_80007BE
 sub_80007BE:
 	push {r4-r7,lr}
-	ldr r5, memBlock // =dword_200A490 
+	ldr r5, dword_200A490_p
 	ldr r7, [r5]
 	cmp r7, #0
 	beq loc_80007F0
@@ -328,7 +330,7 @@ off_8000804: .word loc_80007E8+1
 	thumb_local_start
 sound_8000808:
 	push {r4-r7,lr}
-	ldr r5, memBlock // =dword_200A490 
+	ldr r5, dword_200A490_p
 	ldr r7, [r5]
 	cmp r7, #0x20 
 	blt loc_8000814
@@ -380,7 +382,7 @@ loc_8000854:
 	str r0, [r5,#8]
 locret_800085A:
 	pop {r4-r7,pc}
-memBlock: .word dword_200A490
+dword_200A490_p: .word dword_200A490
 	.word unk_200F390
 off_8000864: .word byte_2010B90
 off_8000868: .word sub_8000822+1
@@ -1034,14 +1036,14 @@ sub_8000C72:
 loc_8000C74:
 	push {r0,r2}
 	push {r1}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1}
 	push {r1}
 	svc 6
 	mov r3, r1
 	pop {r1}
 	push {r1,r3}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1}
 	push {r1}
 	svc 6
@@ -1063,14 +1065,14 @@ sub_8000CA6:
 loc_8000CA8:
 	push {r0,r2}
 	push {r1}
-	bl rng_8001562
+	bl GetPositiveSignedRNG1
 	pop {r1}
 	push {r1}
 	svc 6
 	mov r3, r1
 	pop {r1}
 	push {r1,r3}
-	bl rng_8001562
+	bl GetPositiveSignedRNG1
 	pop {r1}
 	push {r1}
 	svc 6
@@ -1092,14 +1094,14 @@ sub_8000CDA:
 loc_8000CDC:
 	push {r0,r2}
 	push {r1}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1}
 	push {r1}
 	svc 6
 	mov r3, r1
 	pop {r1}
 	push {r1,r3}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1}
 	push {r1}
 	svc 6
@@ -1123,14 +1125,14 @@ sub_8000D12:
 loc_8000D14:
 	push {r0,r2}
 	push {r1}
-	bl rng_8001562
+	bl GetPositiveSignedRNG1
 	pop {r1}
 	push {r1}
 	svc 6
 	mov r3, r1
 	pop {r1}
 	push {r1,r3}
-	bl rng_8001562
+	bl GetPositiveSignedRNG1
 	pop {r1}
 	push {r1}
 	svc 6
@@ -1153,7 +1155,7 @@ sub_8000D4A:
 	push {r7,lr}
 	mov r7, r0
 	push {r1,r7}
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	pop {r1,r7}
 	bl SWI_Div
 	ldrb r0, [r7,r1]
@@ -1296,7 +1298,7 @@ sub_8000E3A:
 	mov r4, r1
 	push {r0,r1}
 	push {r4}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	lsr r4, r0, #0x1e
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CurFramePtr]
@@ -1305,7 +1307,7 @@ sub_8000E3A:
 	and r0, r1
 	add r4, r4, r0
 loc_8000E54:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	sub r4, #1
 	bge loc_8000E54
 	pop {r4}
@@ -1830,7 +1832,7 @@ locret_800119E:
 	thumb_func_start sub_80011A0
 sub_80011A0:
 	lsl r0, r0, #1
-	ldr r2, off_80011B8 // =byte_8006660 
+	ldr r2, off_80011B8 // =math_cosTable 
 	ldrsh r3, [r2,r0]
 	ldr r2, off_80011BC // =byte_80066E0 
 	ldrsh r2, [r2,r0]
@@ -1841,7 +1843,7 @@ sub_80011A0:
 	asr r1, r2, #8
 	mov pc, lr
 	.balign 4, 0x00
-off_80011B8: .word byte_8006660
+off_80011B8: .word math_cosTable
 off_80011BC: .word byte_80066E0
 	thumb_func_end sub_80011A0
 
@@ -2292,48 +2294,56 @@ sub_80014D4:
 	.balign 4, 0x00
 	thumb_func_end sub_80014D4
 
-// (void *src, void *dest, int size) -> void
+// Another function for copying words
+// except it will do a backwards copy if
+// source < dest, otherwise it will do a
+// forwards copy. This may possibly be
+// for when the source and dest overlap
+
+/* (r0:uint * src, r1:uint * dest, r2:int size) -> void
+   preserves: r0-r7,lr
+   ignores: r4-r12*/
 	thumb_func_start copyWords_80014EC
-copyWords_80014EC:
+copyWords_80014EC: // 80014EC
 	push {r0-r7,lr}
 	cmp r0, r1
-	blt setPointersToLastElem_8001500
-copyWords_80014F2:
+	blt .doReverseCopy
+.forwardsCopyLoop
 	ldr r3, [r0]
 	str r3, [r1]
 	add r0, #4
 	add r1, #4
 	sub r2, #4
 	// while (a3_size > 0);
-	bgt copyWords_80014F2
+	bgt .forwardsCopyLoop
 	pop {r0-r7,pc}
-setPointersToLastElem_8001500:
+.doReverseCopy
 	sub r2, #4
 	add r0, r0, r2
 	add r1, r1, r2
-reverseCopyWords_8001506:
+.reverseCopyLoop
 	ldr r3, [r0]
 	str r3, [r1]
 	sub r0, #4
 	sub r1, #4
 	sub r2, #4
 	// while (a3_size >= 0);
-	bge reverseCopyWords_8001506
+	bge .reverseCopyLoop
 	pop {r0-r7,pc}
 	thumb_func_end copyWords_80014EC
 
 // () -> void
-	thumb_func_start sub_8001514
-sub_8001514:
+	thumb_func_start SeedRNG2
+SeedRNG2:
 	ldr r0, rng_8001594 // =0xa338244f 
 	ldr r1, off_8001598 // =dword_20013F0 
 	str r0, [r1]
 	mov pc, lr
-	thumb_func_end sub_8001514
+	thumb_func_end SeedRNG2
 
 // () -> int
-	thumb_func_start change_20013F0_800151C
-change_20013F0_800151C:
+	thumb_func_start GetRNG2
+GetRNG2:
 	push {r7,lr}
 	ldr r7, off_800159C // =dword_20013F0 
 	ldr r0, [r7]
@@ -2345,10 +2355,10 @@ change_20013F0_800151C:
 	eor r0, r1
 	str r0, [r7]
 	pop {r7,pc}
-	thumb_func_end change_20013F0_800151C
+	thumb_func_end GetRNG2
 
-	thumb_func_start sub_8001532
-sub_8001532:
+	thumb_func_start GetPositiveSignedRNG2
+GetPositiveSignedRNG2:
 	push {r7,lr}
 	ldr r7, off_80015A4 // =dword_20013F0 
 	ldr r0, [r7]
@@ -2362,11 +2372,11 @@ sub_8001532:
 	lsl r0, r0, #1
 	lsr r0, r0, #1
 	pop {r7,pc}
-	thumb_func_end sub_8001532
+	thumb_func_end GetPositiveSignedRNG2
 
 // () -> void
-	thumb_func_start rng_800154C
-rng_800154C:
+	thumb_func_start GetRNG1
+GetRNG1:
 	push {r7,lr}
 	ldr r7, off_80015A8 // =rngSeed_2001120 
 	ldr r0, [r7]
@@ -2378,10 +2388,10 @@ rng_800154C:
 	eor r0, r1
 	str r0, [r7]
 	pop {r7,pc}
-	thumb_func_end rng_800154C
+	thumb_func_end GetRNG1
 
-	thumb_func_start rng_8001562
-rng_8001562:
+	thumb_func_start GetPositiveSignedRNG1
+GetPositiveSignedRNG1:
 	push {r7,lr}
 	ldr r7, off_80015AC // =rngSeed_2001120 
 	ldr r0, [r7]
@@ -2395,7 +2405,7 @@ rng_8001562:
 	lsl r0, r0, #1
 	lsr r0, r0, #1
 	pop {r7,pc}
-	thumb_func_end rng_8001562
+	thumb_func_end GetPositiveSignedRNG1
 
 	thumb_local_start
 dead_rng_800157C:
@@ -4375,10 +4385,10 @@ off_8002460: .word 0x108
 off_8002464: .word byte_20097A0
 	thumb_func_end getPalleteAndTransition_80023E0
 
-	thumb_func_start sub_8002468
-sub_8002468:
+	thumb_func_start Initialize_eStruct200a6a0
+Initialize_eStruct200a6a0:
 	push {r4-r7,lr}
-	ldr r5, off_80024C8 // =byte_200A6A0 
+	ldr r5, off_80024C8 // =eStruct200a6a0 
 	push {r0-r2}
 	// memBlock
 	mov r0, r5
@@ -4392,12 +4402,12 @@ sub_8002468:
 	mov r0, #1
 	strb r0, [r5]
 	pop {r4-r7,pc}
-	thumb_func_end sub_8002468
+	thumb_func_end Initialize_eStruct200a6a0
 
 	thumb_func_start sub_8002484
 sub_8002484:
 	push {r4-r7,lr}
-	ldr r5, off_80024C8 // =byte_200A6A0 
+	ldr r5, off_80024C8 // =eStruct200a6a0 
 	ldrb r0, [r5]
 	tst r0, r0
 	beq loc_8002498
@@ -4419,7 +4429,7 @@ loc_8002498:
 sub_80024A2:
 	push {r4-r7,lr}
 	// memBlock
-	ldr r0, off_80024C8 // =byte_200A6A0 
+	ldr r0, off_80024C8 // =eStruct200a6a0 
 	// size
 	mov r1, #0x50 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -4429,7 +4439,7 @@ sub_80024A2:
 	thumb_func_start sub_80024AE
 sub_80024AE:
 	push {r4-r7,lr}
-	ldr r5, off_80024C8 // =byte_200A6A0 
+	ldr r5, off_80024C8 // =eStruct200a6a0 
 	ldrb r0, [r5]
 	tst r0, r0
 	beq locret_80024BE
@@ -4440,14 +4450,14 @@ locret_80024BE:
 	pop {r4-r7,pc}
 	thumb_func_end sub_80024AE
 
-	thumb_func_start sub_80024C0
-sub_80024C0:
-	ldr r1, off_80024C8 // =byte_200A6A0 
+	thumb_func_start Is_eStruct200a6a0_Initialized
+Is_eStruct200a6a0_Initialized:
+	ldr r1, off_80024C8 // =eStruct200a6a0 
 	ldrb r0, [r1]
 	tst r0, r0
 	mov pc, lr
-off_80024C8: .word byte_200A6A0
-	thumb_func_end sub_80024C0
+off_80024C8: .word eStruct200a6a0
+	thumb_func_end Is_eStruct200a6a0_Initialized
 
 	thumb_local_start
 sub_80024CC:
@@ -4615,9 +4625,9 @@ sub_800260C:
 	ldr r1, dword_8002648 // =0x8000 
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	bl sub_8002668
-	bl sub_8003534
-	bl sub_800355C
-	bl sub_8003566
+	bl InitializeOWPlayerObjectStruct
+	bl InitializeOverworldNPCObjectStructs
+	bl InitializeOverworldMapObjectStructs
 	bl sprite_handleObjSprites_800289C
 	ldr r0, off_800264C // =unk_200F388 
 	mov r1, #7

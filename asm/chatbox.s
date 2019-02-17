@@ -1,4 +1,4 @@
-.include "asm/chatbox.inc"
+	.include "asm/chatbox.inc"
 
 // () -> int
 	thumb_func_start chatbox_uncomp_803FD08
@@ -3380,7 +3380,7 @@ chatbox_8041818:
 	lsl r1, r1, #8
 	orr r0, r1
 	ldrb r1, [r4,#4]
-	bl sub_8021BC0
+	bl GetChipCountOfCode
 	pop {r4,r5}
 	ldrb r1, [r4,#5]
 	mov r2, #0
@@ -3401,7 +3401,7 @@ loc_804184C:
 	lsl r1, r1, #8
 	orr r0, r1
 	ldrb r1, [r4,#4]
-	bl sub_8021BC0
+	bl GetChipCountOfCode
 	pop {r4,r5}
 	push {r0,r4,r5}
 	ldrb r0, [r4,#2]
@@ -3431,7 +3431,7 @@ loc_804188A:
 	ldrb r1, [r4,#3]
 	lsl r1, r1, #8
 	orr r0, r1
-	bl sub_8021BD8
+	bl GetTotalChipCount
 	pop {r4,r5}
 	ldrb r1, [r4,#4]
 	mov r2, #0
@@ -3802,7 +3802,7 @@ loc_8041B00:
 	and r6, r0
 	add r6, #2
 loc_8041B0C:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	sub r6, #1
 	bgt loc_8041B0C
 	lsl r0, r0, #0x16
@@ -4235,7 +4235,7 @@ loc_8041E2A:
 	ldr r1, [r5,#0x58]
 loc_8041E32:
 	ldrb r2, [r4,#5]
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	pop {r4,r5}
 	add r4, #6
 	mov r0, #1
@@ -4368,7 +4368,7 @@ chatbox_8041F1C:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldr r5, [r0,#oGameState_OverworldPlayerObjectPtr]
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	pop {r5}
 	mov r1, #0x80
 	and r1, r0
@@ -5008,7 +5008,7 @@ chatbox_8042418:
 	ldrb r0, [r0]
 	str r0, [r5,#0x4c]
 	push {r4}
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	pop {r4}
 	ldrb r0, [r4,#2]
 	add r0, #1
@@ -5174,7 +5174,7 @@ sub_8042554:
 	push {lr}
 	mov r0, #0x73 
 	bl sound_play // () -> void
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	ldrb r1, [r4,#2]
 	and r1, r0
 	add r0, r1, r4
@@ -5480,7 +5480,7 @@ chatbox_8042770:
 	bl sprite_load // (int a1, int a2, int a3) ->
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
 	pop {r4,r5}

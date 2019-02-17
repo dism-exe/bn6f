@@ -1,4 +1,4 @@
-.include "asm/asm03_2.inc"
+	.include "asm/asm03_2.inc"
 
 	thumb_func_start render_graphicalText_8045F8C
 render_graphicalText_8045F8C:
@@ -1631,7 +1631,7 @@ loc_8046E40:
 sub_8046E48:
 	push {lr}
 	bl sub_8047134
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8046E80
 	ldr r1, [r5,#0x28]
 	mov r0, r1
@@ -1766,7 +1766,7 @@ loc_8046F42:
 	bl sub_8047384
 	bne loc_8047000
 	mov r2, #1
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	mov r1, #9
 	cmp r0, #0
 	bne loc_804700E
@@ -1938,7 +1938,7 @@ sub_804709C:
 	bl sub_8047384
 	bne loc_804710A
 	mov r2, #1
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	mov r1, #9
 	cmp r0, #0
 	bne loc_8047118
@@ -2188,7 +2188,7 @@ sub_804733C:
 	push {r0-r4,lr}
 	mov r4, r0
 loc_8047340:
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r2, #0xff
 	and r2, r0
 	tst r2, r2
@@ -3467,7 +3467,7 @@ loc_8047D16:
 	mov r6, r0
 	mov r0, r1
 	mov r1, r2
-	bl sub_8021BC0
+	bl GetChipCountOfCode
 	tst r0, r0
 	bne locret_8047D68
 	mov r0, r6
@@ -4438,7 +4438,7 @@ off_8049054: .word 0x40
 	thumb_local_start
 sub_8049058:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_804907A
 	bl sub_80017AA
 	bl sub_800183C
@@ -4584,7 +4584,7 @@ sub_804918A:
 	thumb_local_start
 sub_80491C4:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80491E0
 	mov r0, #8
 	bl chatbox_8045F3C
@@ -4602,7 +4602,7 @@ loc_80491E0:
 	thumb_local_start
 sub_80491E6:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80491F6
 	mov r0, #4
 	strb r0, [r5]
@@ -4616,7 +4616,7 @@ loc_80491F6:
 	thumb_local_start
 sub_80491FC:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8049218
 	bl sub_803C320
 	mov r0, #0x1c
@@ -5054,7 +5054,7 @@ loc_8049596:
 	thumb_local_start
 sub_804959C:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80495AE
 	bl sub_8001850
 	bl sub_803CCC0
@@ -5082,7 +5082,7 @@ loc_80495C8:
 	thumb_local_start
 sub_80495CE:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80495E2
 	bl sub_8001850
 	ldr r0, off_80495E8 // =sub_8039570+1 
@@ -5112,7 +5112,7 @@ loc_8049600:
 	thumb_local_start
 sub_8049606:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8049616
 	mov r0, #4
 	strb r0, [r5]
@@ -5141,7 +5141,7 @@ loc_8049630:
 	thumb_local_start
 sub_8049636:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8049646
 	mov r0, #4
 	strb r0, [r5]
@@ -5322,7 +5322,7 @@ dword_80497CC: .word 0x1F40
 	thumb_local_start
 sub_80497D0:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80497E8
 	mov r0, #0x14
 	bl sub_803BB2C
@@ -5401,7 +5401,7 @@ loc_8049868:
 	thumb_local_start
 sub_804986E:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8049882
 	bl sub_8049CBC
 	mov r0, #4
@@ -5537,7 +5537,7 @@ loc_8049964:
 	thumb_local_start
 sub_804996A:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_804997E
 	bl sub_8049CBC
 	mov r0, #4
@@ -5593,7 +5593,7 @@ loc_80499C8:
 	thumb_local_start
 sub_80499CE:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8049A0E
 	mov r4, #0
 	bl sub_8049D42
@@ -5947,7 +5947,7 @@ off_8049D6C: .word byte_200A290
 	thumb_local_start
 sub_8049D70:
 	push {r4-r7,lr}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	ldr r1, off_8049D94 // =word_2001800 
 	strh r0, [r1]
 	pop {r4-r7,pc}
@@ -6078,7 +6078,7 @@ off_8049E58: .word 0x40
 	thumb_local_start
 sub_8049E5C:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_8049E7E
 	bl sub_80017AA
 	bl sub_800183C
@@ -6168,7 +6168,7 @@ loc_8049F24:
 	thumb_local_start
 sub_8049F32:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_8049F4A
 	mov r0, #0x14
 	bl sub_803BB2C
@@ -6275,7 +6275,7 @@ loc_804A004:
 	thumb_local_start
 sub_804A00A:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_804A01E
 	bl sub_804A14C
 	mov r0, #4
@@ -6335,7 +6335,7 @@ loc_804A072:
 	thumb_local_start
 sub_804A078:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_804A0A2
 	ldrh r0, [r5,#0x22]
 	bl sub_804A230
@@ -6625,7 +6625,7 @@ cb_804A304:
 	bl sub_80465F8 // () -> void
 	bl sub_804AFB8
 	bl sub_804AFE4
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	pop {r0-r2}
 	mov r8, r0
 	mov r9, r1
@@ -6712,7 +6712,7 @@ off_804A3F4: .word 0x3C0
 	thumb_local_start
 sub_804A3FC:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_804A436
 	mov r0, #0
 	strb r0, [r5,#3]
@@ -6763,7 +6763,7 @@ sub_804A460:
 	bl sub_804A7C0
 	bl sub_804A9A0
 	bl sub_804AA58
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_804A4CC
 	bl sub_8046664 // () -> void
 	bl sub_809E122
@@ -6787,7 +6787,7 @@ loc_804A4AA:
 	strh r0, [r7,#0x4] // (word_200AC84 - 0x200ac80)
 	strh r1, [r7,#0x6] // (word_200AC86 - 0x200ac80)
 	mov r2, #1
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	bl sub_803F798
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -8203,7 +8203,7 @@ loc_804AF9C:
 	mov r5, r1
 	ldr r0, dword_804AFB4 // =0xffffffd8 
 	mov r1, #0x58 
-	bl sub_800307C
+	bl sprite_setCoordinates
 	str r7, [r5,#0x14]
 loc_804AFA8:
 	add r6, #1
@@ -8615,7 +8615,7 @@ off_804BD78: .word off_804B018
 sub_804BD7C:
 	push {r5,lr}
 	push {r0,r1}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	lsl r0, r0, #0x16
 	lsr r0, r0, #0x16
 	pop {r6,r7}
@@ -8797,7 +8797,7 @@ loc_804BEBE:
 	sub r0, #1
 	bgt loc_804BEB0
 	str r2, [r5,#0x48]
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	lsl r0, r0, #0x16
 	lsr r0, r0, #0x16
 	ldr r1, [r5,#0x48]
@@ -8820,7 +8820,7 @@ sub_804BEEC:
 	push {r5,lr}
 	cmp r2, #3
 	blt loc_804BF10
-	bl sub_8021BD8
+	bl GetTotalChipCount
 	cmp r0, #4
 	blt loc_804BEFC
 	mov r0, #4
@@ -8859,7 +8859,7 @@ loc_804BF2C:
 	cmp r1, #0xff
 	beq loc_804BF56
 	push {r0-r4,r7}
-	bl sub_8021BC0
+	bl GetChipCountOfCode
 	tst r0, r0
 	pop {r0-r4,r7}
 	beq loc_804BF48
@@ -8946,7 +8946,7 @@ loc_804BFC8:
 	sub r0, r7, r6
 	lsr r0, r0, #2
 	str r0, [r5,#0x48]
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	lsl r0, r0, #0x16
 	lsr r0, r0, #0x16
 	ldr r1, [r5,#0x48]
@@ -9714,7 +9714,7 @@ dword_804C620: .word 0x800
 	thumb_local_start
 sub_804C624:
 	push {r4-r7,lr}
-	ldr r3, off_804C650 // =byte_80065E0 
+	ldr r3, off_804C650 // =math_sinTable 
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CurFramePtr]
 	ldrh r0, [r0]
@@ -9736,7 +9736,7 @@ loc_804C644:
 	strh r0, [r4,#0x1a]
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_804C650: .word byte_80065E0
+off_804C650: .word math_sinTable
 dword_804C654: .word 0x1FE
 	thumb_func_end sub_804C624
 
@@ -9966,7 +9966,7 @@ sub_804C818:
 	str r0, [r5,#0x14]
 	b locret_804C840
 loc_804C824:
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	ldr r1, dword_804C84C // =0xff 
 	and r0, r1
 	ldr r1, off_804C850 // =0x12c 
@@ -10619,7 +10619,7 @@ sub_804CF84:
 	lsl r0, r0, #2
 	ldr r1, off_804CF98 // =off_804CF9C 
 	ldr r0, [r1,r0]
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	pop {pc}
 off_804CF98: .word off_804CF9C
 off_804CF9C:

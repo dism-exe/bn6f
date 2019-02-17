@@ -1,4 +1,4 @@
-.include "asm/asm29.inc"
+	.include "asm/asm29.inc"
 
 	thumb_func_start ho_80A4984
 ho_80A4984:
@@ -31,7 +31,7 @@ sub_80A49B0:
 	ldrb r0, [r7,#2]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r7,#3]
 	cmp r0, #0xff
 	bne loc_80A49E8
@@ -50,7 +50,7 @@ loc_80A49E8:
 	ldr r0, [r7,#4]
 	bl sub_8002FA6
 	ldrb r0, [r7,#8]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	mov r0, #0
@@ -113,10 +113,10 @@ loc_80A4A58:
 loc_80A4A66:
 	cmp r4, #0xff
 	bne loc_80A4A6E
-	bl sprite_forceWhitePallete
+	bl sprite_forceWhitePalette
 loc_80A4A6E:
 	mov r0, r4
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 loc_80A4A74:
 	ldrb r0, [r5,#6]
 	ldrb r1, [r5,#7]
@@ -135,7 +135,7 @@ loc_80A4A8A:
 	thumb_local_start
 sub_80A4A90:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A4A90
 
@@ -193,14 +193,14 @@ loc_80A4ADC:
 	ldr r0, [r0]
 	mul r7, r1
 	add r7, r7, r0
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #8
 	svc 6
 	mov r0, #6
 	mul r0, r1
 	ldr r4, off_80A4BA0 // =byte_80A4BA4
 	add r4, r4, r0
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r6, r0
 	mov r8, r5
 	mov r0, #0
@@ -241,7 +241,7 @@ loc_80A4ADC:
 	add r3, r3, r7
 	ldr r4, dword_80A4B80 // =0x140000 
 	mov r0, #2
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	mov r5, r8
 	ldr r0, [r5,#0x28]
 	sub r0, #1
@@ -263,7 +263,7 @@ dword_80A4B80: .word 0x140000
 off_80A4B84: .word off_80A4B88
 off_80A4B88: .word eOverworldNPCObjects+0x24
 	.word 0xD8
-	.word dword_2009F5C
+	.word eOWPlayerObject_Coords
 	.word 0xC8
 	.word dword_2011EEC
 	.word 0x78
@@ -278,7 +278,7 @@ byte_80A4BA4: .byte 0xF4, 0xFF, 0xF4, 0xFF, 0x8, 0x0, 0xF0, 0xFF, 0x0, 0x0, 0x8
 	thumb_local_start
 sub_80A4BD4:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A4BD4
 
@@ -321,9 +321,9 @@ sub_80A4BFC:
 	ldrb r0, [r5,#4]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r5,#5]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_80A4C46
@@ -333,7 +333,7 @@ sub_80A4BFC:
 	thumb_local_start
 sub_80A4C46:
 	push {lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A4C56
@@ -347,7 +347,7 @@ loc_80A4C56:
 	thumb_local_start
 sub_80A4C5C:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 byte_80A4C64: .byte 0xE7, 0x4, 0x40, 0x16, 0xC0, 0x16, 0x1C, 0xE, 0x0, 0x1, 0x0
 	.byte 0x0, 0x3, 0xFF, 0x7D, 0x1, 0xE8, 0x4, 0x40, 0x16, 0xC0, 0x16
@@ -518,12 +518,12 @@ sub_80A51F8:
 	ldrb r0, [r7,#8]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r7,#0xa]
 	lsl r0, r0, #0x18
 	bl sub_8002FA6
 	ldrb r0, [r7,#0xb]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldrh r0, [r7,#2]
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
@@ -608,7 +608,7 @@ dword_80A52E0: .word 0xFFFF
 	thumb_local_start
 sub_80A52E4:
 	push {lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A52FC
@@ -626,7 +626,7 @@ loc_80A52FC:
 	thumb_local_start
 sub_80A5304:
 	push {lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A531E
@@ -665,7 +665,7 @@ off_80A534C: .word 0x14C
 	thumb_local_start
 sub_80A5350:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 byte_80A5358: .byte 0x1C, 0xC, 0x0, 0x0, 0x1C, 0xC, 0x0, 0x0, 0x1C, 0xC, 0x0, 0x0
 	.byte 0x1C, 0xC, 0x0, 0x0, 0x1C, 0xC, 0x0, 0x0, 0x1C, 0xC, 0x0, 0x0
@@ -730,7 +730,7 @@ sub_80A5448:
 	strb r0, [r5,#5]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #2
 	bl sub_8002E14
 	ldrb r0, [r7,#3]
@@ -751,7 +751,7 @@ sub_80A5494:
 	thumb_local_start
 sub_80A549C:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A549C
 
@@ -830,7 +830,7 @@ loc_80A552A:
 	ldrb r0, [r6,#5]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -903,7 +903,7 @@ locret_80A55CA:
 	thumb_local_start
 sub_80A55CC:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A55CC
 
@@ -1177,13 +1177,13 @@ sub_80A57D0:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
 	bl sub_8002E14
 	mov r0, #0
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	bl sub_80A5890
 	mov r0, #0
 	str r0, [r5,#0x30]
@@ -1258,7 +1258,7 @@ loc_80A587E:
 	thumb_local_start
 sub_80A5888:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A5888
 
@@ -1425,7 +1425,7 @@ loc_80A598E:
 	beq locret_80A59AA
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	str r4, [r5,#0x30]
 locret_80A59AA:
 	pop {r4,pc}
@@ -1584,7 +1584,7 @@ sub_80A5AF8:
 	str r0, [r5,#0x34]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -1745,7 +1745,7 @@ loc_80A5C62:
 	thumb_local_start
 sub_80A5C6C:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A5C6C
 
@@ -1827,7 +1827,7 @@ sub_80A5CF0:
 	mov r4, r0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	str r4, [r5,#0x34]
 locret_80A5D0A:
 	pop {r4,pc}
@@ -1888,7 +1888,7 @@ sub_80A5D48:
 	str r0, [r5,#0x34]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0
 locret_80A5D7E:
 	pop {r4-r7,pc}
@@ -1996,7 +1996,7 @@ loc_80A5E0A:
 	beq locret_80A5E36
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	str r4, [r5,#0x34]
 locret_80A5E36:
 	pop {r4,pc}
@@ -2095,7 +2095,7 @@ loc_80A5EE2:
 	add r0, #0x19
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	add r4, #1
 	strb r4, [r5,#0xb]
 loc_80A5F12:
@@ -2109,7 +2109,7 @@ loc_80A5F12:
 	str r0, [r5,#0x34]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r4, #0
 	strb r4, [r5,#0xb]
 	mov r0, #0
@@ -2155,7 +2155,7 @@ sub_80A5F68:
 	ldr r1, [r5,#0xc]
 	ldr r2, [r5,#0x10]
 	ldr r3, [r5,#0x14]
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	mov r0, #0x76 
 	bl sound_play // () -> void
@@ -2579,7 +2579,7 @@ sub_80A6A34:
 	ldrb r0, [r5,#7]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	mov r6, #0x24
@@ -2655,7 +2655,7 @@ JumpTable_80A6ABC: .word sub_80A6B10+1
 	thumb_local_start
 sub_80A6B08:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A6B08
 
@@ -2709,7 +2709,7 @@ loc_80A6B5C:
 	mov r3, #0x40 
 	sub r2, r3, r2
 	lsl r2, r2, #1
-	ldr r0, off_80A6BD4 // =byte_80065E0 
+	ldr r0, off_80A6BD4 // =math_sinTable 
 	ldrsh r2, [r0,r2]
 	ldr r0, [r5,#0x18]
 	ldr r1, [r5,#0x2c]
@@ -2759,7 +2759,7 @@ loc_80A6BB6:
 	bl sub_80A6E70
 	mov r0, #1
 	pop {pc}
-off_80A6BD4: .word byte_80065E0
+off_80A6BD4: .word math_sinTable
 	thumb_func_end sub_80A6B10
 
 	thumb_local_start
@@ -2823,7 +2823,7 @@ loc_80A6C3C:
 	sub r2, r3, r2
 	lsr r2, r2, #1
 	lsl r2, r2, #1
-	ldr r0, off_80A6CA0 // =byte_80065E0 
+	ldr r0, off_80A6CA0 // =math_sinTable 
 	ldrsh r2, [r0,r2]
 	lsl r2, r2, #1
 	ldr r0, [r5,#0xc]
@@ -2862,7 +2862,7 @@ loc_80A6C7E:
 	bl sub_80A6E70
 	mov r0, #1
 	pop {pc}
-off_80A6CA0: .word byte_80065E0
+off_80A6CA0: .word math_sinTable
 	thumb_func_end sub_80A6BD8
 
 	thumb_local_start
@@ -3084,7 +3084,7 @@ sub_80A6E22:
 	bl sub_80A6E78
 	ldrb r0, [r0,#2]
 	mov r1, r0
-	bl sub_8002EF6
+	bl sprite_setMosaicSize
 	mov r0, #4
 	bl sub_80A6E70
 	mov r0, #1
@@ -3176,13 +3176,13 @@ sub_80A6EBC:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
 	bl sub_8002E14
 	mov r0, #1
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	bl sub_80A70C0
 	cmp r0, #0
 	beq loc_80A6F66
@@ -3250,7 +3250,7 @@ loc_80A6F66:
 	thumb_local_start
 sub_80A6F70:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A6F70
 
@@ -3379,7 +3379,7 @@ sub_80A704C:
 	beq locret_80A707E
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	str r4, [r5,#0x2c]
 locret_80A707E:
 	pop {r4,pc}
@@ -3512,14 +3512,14 @@ sub_80A7160:
 	add r0, #0xa
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	add r4, #1
 	strb r4, [r5,#9]
 	b locret_80A71E8
 loc_80A717E:
 	cmp r4, #1
 	bgt loc_80A7190
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80A71E8
@@ -3540,7 +3540,7 @@ loc_80A7190:
 	mov r0, #9
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0xe1
 	bl sound_play // () -> void
 	add r4, #1
@@ -3550,7 +3550,7 @@ loc_80A71C0:
 	mov r0, #3
 	strb r0, [r6,#7]
 	bl sub_80A71EC
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80A71E8
@@ -3685,13 +3685,13 @@ sub_80A72D8:
 	strb r0, [r5,#5]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
 	bl sub_8002E14
 	mov r0, #0
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldrh r0, [r4]
 	lsl r0, r0, #0x10
 	str r0, [r5,#0xc]
@@ -3760,7 +3760,7 @@ loc_80A738E:
 	thumb_local_start
 sub_80A7398:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A7398
 
@@ -3909,7 +3909,7 @@ loc_80A748A:
 	beq locret_80A74A6
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	strb r4, [r5,#5]
 locret_80A74A6:
 	pop {r4-r7,pc}
@@ -3969,7 +3969,7 @@ loc_80A74FA:
 	beq locret_80A7512
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	strb r4, [r5,#5]
 locret_80A7512:
 	pop {r4-r7,pc}
@@ -4150,14 +4150,14 @@ sub_80A7640:
 	add r0, #0xa
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	add r4, #1
 	strb r4, [r5,#9]
 	b locret_80A76C8
 loc_80A765E:
 	cmp r4, #1
 	bgt loc_80A7670
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80A76C8
@@ -4178,7 +4178,7 @@ loc_80A7670:
 	mov r0, #9
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0xe1
 	bl sound_play // () -> void
 	add r4, #1
@@ -4188,7 +4188,7 @@ loc_80A76A0:
 	mov r0, #3
 	strb r0, [r6,#7]
 	bl sub_80A76CC
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80A76C8
@@ -4265,7 +4265,7 @@ sub_80A76E8:
 	ldrb r0, [r5,#5]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r2, #1
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
@@ -4353,9 +4353,9 @@ sub_80A77C8:
 	ldrb r0, [r5,#4]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r5,#5]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldrb r0, [r5,#6]
 	bl sub_8002E14
 	mov r0, #4
@@ -4367,7 +4367,7 @@ sub_80A77C8:
 	thumb_local_start
 sub_80A77FC:
 	push {lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A780C
@@ -4381,7 +4381,7 @@ loc_80A780C:
 	thumb_local_start
 sub_80A7812:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_80A7812
@@ -4415,9 +4415,9 @@ sub_80A783C:
 	strb r1, [r5,#5]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_80A786C
@@ -4462,7 +4462,7 @@ loc_80A78A6:
 	thumb_local_start
 sub_80A78AE:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_80A78AE
@@ -4497,7 +4497,7 @@ sub_80A78E0:
 	ldrb r0, [r6,#2]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #2
 	bl sub_8002E14
 	mov r0, #0
@@ -4570,10 +4570,10 @@ sub_80A796C:
 	lsl r2, r2, #0xa
 	orr r0, r1
 	orr r0, r2
-	bl sub_8002ED0
+	bl sprite_setColorShader
 	b loc_80A79A0
 loc_80A799C:
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_80A79A0:
 	ldr r0, [r5,#0x24]
 	add r0, #1
@@ -4590,7 +4590,7 @@ byte_80A79C4: .byte 0x4, 0x6, 0x8, 0xA, 0xC, 0xE, 0x10, 0x12, 0x14, 0x16, 0x18
 	thumb_local_start
 sub_80A79D4:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A79D4
 
@@ -4646,7 +4646,7 @@ sub_80A7A40:
 	push {r4-r7,lr}
 	bl sub_80A7C58
 	bne loc_80A7A88
-	ldr r7, off_80A7AA0 // =byte_80065E0 
+	ldr r7, off_80A7AA0 // =math_sinTable 
 	ldrh r3, [r6,#6]
 	ldr r4, [r6,#0x24]
 	sub r4, r3, r4
@@ -4656,7 +4656,7 @@ sub_80A7A40:
 	mov r3, #0x40 
 	sub r4, r3, r4
 	lsl r4, r4, #1
-	ldr r0, off_80A7AA0 // =byte_80065E0 
+	ldr r0, off_80A7AA0 // =math_sinTable 
 	ldrsh r4, [r0,r4]
 	ldr r0, [r6,#0x1c]
 	ldr r1, [r6,#0x14]
@@ -4691,7 +4691,7 @@ loc_80A7A8C:
 	mov r0, #1
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_80A7AA0: .word byte_80065E0
+off_80A7AA0: .word math_sinTable
 	thumb_func_end sub_80A7A40
 
 	thumb_local_start
@@ -4949,7 +4949,7 @@ sub_80A7C58:
 	bne loc_80A7C7E
 	bl sub_809E462
 	bne loc_80A7C7E
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80A7C7E
 	bl sub_809E3A2
 	beq loc_80A7C7E
@@ -4988,18 +4988,18 @@ sub_80A7CA4:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #2
 	bl sub_8002E14
 	mov r0, #1
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	push {r4-r7}
 	mov r0, #0
 	ldr r1, [r5,#0xc]
 	ldr r2, [r5,#0x10]
 	ldr r3, [r5,#0x14]
 	mov r4, #0x7a 
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r4-r7}
 	mov r0, #4
 	strb r0, [r5,#8]
@@ -5018,7 +5018,7 @@ sub_80A7CEA:
 	thumb_local_start
 sub_80A7CF6:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A7CF6
 
@@ -5054,7 +5054,7 @@ sub_80A7CFE:
 	bne locret_80A7D70
 	bl sub_809E462
 	bne locret_80A7D70
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_80A7D70
 	// entryIdx
 	mov r0, #0x17
@@ -5119,7 +5119,7 @@ sub_80A7DB8:
 	ldrb r0, [r7,#3]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sub_80A8020
 	ldrh r0, [r7,#4]
 	bl sub_8142868
@@ -5146,7 +5146,7 @@ sub_80A7DB8:
 	thumb_local_start
 sub_80A7E0C:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A7E0C
 
@@ -5292,7 +5292,7 @@ sub_80A7EF8:
 	thumb_local_start
 sub_80A7F14:
 	push {r4-r7,lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80A7F24
@@ -5320,7 +5320,7 @@ sub_80A7F26:
 	add r0, r0, r1
 	mov r0, r0
 	bl SetEventFlag
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 dword_80A7F54: .word 0x1650
 	thumb_func_end sub_80A7F26
@@ -5389,7 +5389,7 @@ locret_80A7FD2:
 	thumb_local_start
 sub_80A7FD4:
 	push {r4-r7,lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80A8004
@@ -5437,7 +5437,7 @@ sub_80A8020:
 	ldrb r0, [r7,#2]
 	ldr r1, off_80A8030 // =off_80A8034 
 	ldrb r0, [r1,r0]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_80A8030: .word off_80A8034
@@ -5533,7 +5533,7 @@ sub_80A822C:
 	strb r0, [r5,#5]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #2
 	bl sub_8002E14
 	bl sub_80A82A4
@@ -5563,7 +5563,7 @@ sub_80A827C:
 	beq loc_80A8294
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 loc_80A8294:
 	bl sprite_update
 	pop {r4-r7,pc}
@@ -5573,7 +5573,7 @@ loc_80A8294:
 	thumb_local_start
 sub_80A829C:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A829C
 
@@ -5726,7 +5726,7 @@ sub_80A83B8:
 	ldrb r0, [r5,#4]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -5829,7 +5829,7 @@ sub_80A8484:
 	mov r1, #0xd9
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl reqBBS_clearFlag_8140A0C
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 locret_80A84BC:
 	pop {pc}
 	.byte 0, 0
@@ -5841,9 +5841,9 @@ sub_80A84C4:
 	push {r4-r7,lr}
 	bl sub_80A84FC
 	lsl r0, r0, #1
-	ldr r1, off_80A84F4 // =byte_8006660 
+	ldr r1, off_80A84F4 // =math_cosTable 
 	ldrsh r4, [r1,r0]
-	ldr r1, off_80A84F8 // =byte_80065E0 
+	ldr r1, off_80A84F8 // =math_sinTable 
 	ldrsh r6, [r1,r0]
 	mov r7, #0x60 
 	lsl r7, r7, #8
@@ -5860,8 +5860,8 @@ sub_80A84C4:
 	str r2, [r5,#0x14]
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_80A84F4: .word byte_8006660
-off_80A84F8: .word byte_80065E0
+off_80A84F4: .word math_cosTable
+off_80A84F8: .word math_sinTable
 	thumb_func_end sub_80A84C4
 
 	thumb_local_start
@@ -5914,7 +5914,7 @@ sub_80A8548:
 	beq locret_80A8568
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	strb r4, [r5,#4]
 locret_80A8568:
 	pop {r4,pc}
@@ -6087,7 +6087,7 @@ sub_80A8674:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	mov r0, #0
@@ -6107,7 +6107,7 @@ sub_80A86A0:
 	thumb_local_start
 sub_80A86AC:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A86AC
 
@@ -6160,7 +6160,7 @@ loc_80A86EA:
 	mov r4, #5
 loc_80A871E:
 	mov r0, r4
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_80A86B4
@@ -6202,7 +6202,7 @@ loc_80A8754:
 	ldrb r0, [r7,#2]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sub_809E1AE
 	str r2, [r5,#0x14]
 	mov r0, r5
@@ -6235,7 +6235,7 @@ byte_80A87C8: .byte 0xFA, 0x0, 0xB0, 0x0, 0xA, 0x1, 0xAF, 0x0, 0x0, 0x0
 	thumb_local_start
 sub_80A87D2:
 	push {r4-r7,lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A87E2
@@ -6249,7 +6249,7 @@ loc_80A87E2:
 	thumb_local_start
 sub_80A87E8:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A87E8
 
@@ -6282,7 +6282,7 @@ sub_80A8814:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -6296,7 +6296,7 @@ sub_80A8814:
 	thumb_local_start
 sub_80A8848:
 	push {r4-r7,lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A8858
@@ -6314,7 +6314,7 @@ sub_80A8860:
 	mov r0, #5
 	mov r1, #0xe0
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A8860
 
@@ -6349,7 +6349,7 @@ sub_80A8894:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -6418,10 +6418,10 @@ sub_80A8918:
 	lsl r2, r2, #0xa
 	orr r0, r1
 	orr r0, r2
-	bl sub_8002ED0
+	bl sprite_setColorShader
 	b loc_80A894C
 loc_80A8948:
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_80A894C:
 	ldr r0, [r5,#0x24]
 	add r0, #1
@@ -6438,7 +6438,7 @@ byte_80A8970: .byte 0x4, 0x6, 0x8, 0xA, 0xC, 0xE, 0x10, 0x12, 0x14, 0x16, 0x18
 	thumb_local_start
 sub_80A8980:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A8980
 
@@ -6515,7 +6515,7 @@ sub_80A89FC:
 	ldrb r0, [r1,r0]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0
 	str r0, [r5,#0x24]
 	mov r0, #4
@@ -6538,7 +6538,7 @@ sub_80A8A50:
 	ldrsh r0, [r5,r1]
 	cmp r0, #0
 	bgt loc_80A8A62
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_80A8A62:
 	mov r0, r5
 	add r0, #0xc
@@ -6551,7 +6551,7 @@ loc_80A8A62:
 	thumb_local_start
 sub_80A8A74:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A8A74
 
@@ -6560,8 +6560,8 @@ sub_80A8A7C:
 	push {r4-r7,lr}
 	ldrb r0, [r5,#4]
 	lsl r0, r0, #1
-	ldr r1, off_80A8AAC // =byte_80065E0 
-	ldr r2, off_80A8AB0 // =byte_8006660 
+	ldr r1, off_80A8AAC // =math_sinTable 
+	ldr r2, off_80A8AB0 // =math_cosTable 
 	ldrsh r1, [r1,r0]
 	ldrsh r2, [r2,r0]
 	ldrb r0, [r5,#5]
@@ -6582,8 +6582,8 @@ sub_80A8A7C:
 	strh r0, [r5,r1]
 locret_80A8AAA:
 	pop {r4-r7,pc}
-off_80A8AAC: .word byte_80065E0
-off_80A8AB0: .word byte_8006660
+off_80A8AAC: .word math_sinTable
+off_80A8AB0: .word math_cosTable
 	thumb_func_end sub_80A8A7C
 
 	thumb_func_start sub_80A8AB4
@@ -6630,7 +6630,7 @@ sub_80A8AF4:
 	strb r0, [r5,#7]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0
 	str r0, [r5,#0x24]
 	mov r0, #4
@@ -6642,7 +6642,7 @@ sub_80A8AF4:
 	thumb_local_start
 sub_80A8B24:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A8B24
 
@@ -6676,8 +6676,8 @@ sub_80A8B4C:
 	mov r1, #0xff
 	and r0, r1
 	lsl r0, r0, #1
-	ldr r1, off_80A8BB0 // =byte_8006660 
-	ldr r2, off_80A8BB4 // =byte_80065E0 
+	ldr r1, off_80A8BB0 // =math_cosTable 
+	ldr r2, off_80A8BB4 // =math_sinTable 
 	ldrsh r1, [r1,r0]
 	ldrsh r2, [r2,r0]
 	mov r0, #8
@@ -6704,8 +6704,8 @@ loc_80A8BA8:
 	bl sprite_update
 	pop {r4-r7,pc}
 	.byte 0, 0
-off_80A8BB0: .word byte_8006660
-off_80A8BB4: .word byte_80065E0
+off_80A8BB0: .word math_cosTable
+off_80A8BB4: .word math_sinTable
 dword_80A8BB8: .word 0x85
 	thumb_func_end sub_80A8B4C
 
@@ -6763,8 +6763,8 @@ sub_80A8C08:
 	mov r1, #0xff
 	and r0, r1
 	lsl r0, r0, #1
-	ldr r1, off_80A8C74 // =byte_8006660 
-	ldr r2, off_80A8C78 // =byte_80065E0 
+	ldr r1, off_80A8C74 // =math_cosTable 
+	ldr r2, off_80A8C78 // =math_sinTable 
 	ldrsh r1, [r1,r0]
 	ldrsh r2, [r2,r0]
 	mov r0, #0x80
@@ -6787,15 +6787,15 @@ sub_80A8C08:
 	bne loc_80A8C68
 	mov r0, #0
 	strb r0, [r7]
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_80A8C68:
 	bl sub_80A8C98
 loc_80A8C6C:
 	bl sprite_update
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_80A8C74: .word byte_8006660
-off_80A8C78: .word byte_80065E0
+off_80A8C74: .word math_cosTable
+off_80A8C78: .word math_sinTable
 	thumb_func_end sub_80A8C08
 
 	thumb_local_start
@@ -6854,11 +6854,11 @@ sub_80A8CCC:
 	sub r0, #1
 	strh r0, [r7,#2]
 	bgt locret_80A8D00
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #0x60 
 	svc 6
 	lsl r6, r1, #8
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #7
 	and r0, r1
 	cmp r0, #4
@@ -7014,7 +7014,7 @@ sub_80A8DF0:
 loc_80A8E0A:
 	bl sub_809E462
 	bne loc_80A8E18
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_80A8E18
 	mov r4, #0
 loc_80A8E18:
@@ -7060,7 +7060,7 @@ sub_80A8E9C:
 	mov r0, #0x18
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -7180,7 +7180,7 @@ sub_80A8FA0:
 	mov r0, #0x19
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0xc
 	strb r0, [r5,#8]
 	ldr r0, off_80A8FE0 // =0x160 
@@ -7207,11 +7207,11 @@ off_80A8FE0: .word 0x160
 	thumb_local_start
 sub_80A8FE4:
 	push {lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A8FF4
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_80A8FF4:
 	bl sprite_update
 	pop {pc}
@@ -7221,7 +7221,7 @@ loc_80A8FF4:
 	thumb_local_start
 sub_80A8FFC:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A8FFC
 
@@ -7655,11 +7655,11 @@ sub_80A92E0:
 	ldrb r0, [r5,#4]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r5,#5]
 	bl sub_8002E14
 	ldrb r0, [r6,#0x1c]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0
 	strb r0, [r5,#6]
 	strb r0, [r5,#7]
@@ -7738,7 +7738,7 @@ sub_80A937C:
 	lsl r2, r2, #0xa
 	orr r0, r1
 	orr r0, r2
-	bl sub_8002ED0
+	bl sprite_setColorShader
 	b loc_80A93B4
 loc_80A93A4:
 	mov r0, #0xc
@@ -7762,7 +7762,7 @@ byte_80A93C0: .byte 0x4, 0x6, 0x8, 0xA, 0xC, 0xE, 0x10, 0x12, 0x14, 0x16, 0x18
 	thumb_local_start
 sub_80A93D0:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A93D0
 
@@ -7850,7 +7850,7 @@ sub_80A9458:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #2
 	bl sub_8002E14
 	bl sub_80A9570
@@ -7866,12 +7866,12 @@ sub_80A9458:
 	str r0, [r5,#0x14]
 	ldrb r0, [r4,#7]
 	strb r0, [r5,#4]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldrb r0, [r4,#6]
 	strb r0, [r5,#7]
 	cmp r0, #0
 	beq loc_80A94AC
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	bl sub_80A95EC
 loc_80A94AC:
 	mov r0, #0xb
@@ -7936,7 +7936,7 @@ sub_80A94F8:
 	lsl r2, r2, #0xa
 	orr r0, r1
 	orr r0, r2
-	bl sub_8002ED0
+	bl sprite_setColorShader
 	b loc_80A9534
 loc_80A9528:
 	mov r0, #0xb
@@ -7959,7 +7959,7 @@ byte_80A9558: .byte 0x4, 0x6, 0x8, 0xA, 0xC, 0xE, 0x10, 0x12, 0x14, 0x16, 0x18
 	thumb_local_start
 sub_80A9568:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A9568
 
@@ -8112,7 +8112,7 @@ sub_80A9680:
 	mov r0, #8
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -8141,7 +8141,7 @@ sub_80A96C8:
 	mov r0, #7
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sub_80A974C
 loc_80A96EA:
 	bl sprite_update
@@ -8159,7 +8159,7 @@ sub_80A96F0:
 	thumb_local_start
 sub_80A96FC:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	mov r0, #0xb
 	mov r1, #0xe8
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -8223,7 +8223,7 @@ sub_80A974C:
 	lsl r2, r2, #0xa
 	orr r0, r1
 	orr r0, r2
-	bl sub_8002ED0
+	bl sprite_setColorShader
 	b loc_80A977C
 loc_80A9774:
 	mov r0, #0xc
@@ -8360,7 +8360,7 @@ sub_80A9858:
 loc_80A9868:
 	ldrb r0, [r5,#5]
 	str r0, [r5,#0x24]
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r6, r0
 	mov r8, r5
 	mov r1, #0xe
@@ -8369,7 +8369,7 @@ loc_80A9868:
 	ldrsh r2, [r5,r2]
 	mov r3, #0x16
 	ldrsh r3, [r5,r3]
-	ldr r4, off_80A98C4 // =byte_200A6A0 
+	ldr r4, off_80A98C4 // =eStruct200a6a0 
 	ldrb r0, [r4,#0xd] // (dword_200A6AC+1 - 0x200a6a0)
 	sub r3, r3, r0
 	mov r4, #0xf
@@ -8387,7 +8387,7 @@ loc_80A9868:
 	lsl r2, r2, #0x10
 	lsl r3, r3, #0x10
 	ldr r4, dword_80A98C8 // =0x140000 
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	mov r5, r8
 	ldr r0, [r5,#0x28]
 	sub r0, #1
@@ -8403,14 +8403,14 @@ loc_80A98BE:
 	pop {r4}
 	mov r8, r4
 	pop {r4-r7,pc}
-off_80A98C4: .word byte_200A6A0
+off_80A98C4: .word eStruct200a6a0
 dword_80A98C8: .word 0x140000
 	thumb_func_end sub_80A9858
 
 	thumb_local_start
 sub_80A98CC:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A98CC
 
@@ -8456,7 +8456,7 @@ sub_80A9908:
 loc_80A9918:
 	ldrb r0, [r5,#5]
 	str r0, [r5,#0x24]
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #8
 	svc 6
 	mov r0, #6
@@ -8465,7 +8465,7 @@ loc_80A9918:
 	ldrb r1, [r5,#4]
 	ldr r4, [r4,r1]
 	add r4, r4, r0
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r6, r0
 	mov r8, r5
 	mov r0, #0
@@ -8500,7 +8500,7 @@ loc_80A9918:
 	add r3, r3, r7
 	ldr r4, dword_80A9994 // =0x2140001 
 	mov r0, #0x20 
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	mov r5, r8
 	ldr r0, [r5,#0x28]
 	sub r0, #1
@@ -8534,7 +8534,7 @@ byte_80A99D4: .byte 0xFF, 0xFF, 0xFF, 0xFF, 0x4, 0x0, 0xFE, 0xFF, 0x0, 0x0, 0x4
 	thumb_local_start
 sub_80A9A04:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A9A04
 
@@ -8577,9 +8577,9 @@ sub_80A9A2C:
 	ldrb r0, [r5,#4]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r5,#5]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_80A9A76
@@ -8594,7 +8594,7 @@ sub_80A9A76:
 	lsl r1, r1, #0x10
 	add r0, r0, r1
 	str r0, [r5,#0x14]
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A9A90
@@ -8608,7 +8608,7 @@ loc_80A9A90:
 	thumb_local_start
 sub_80A9A96:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	.byte 0, 0
 byte_80A9AA0: .byte 0x2A, 0x1, 0xBF, 0x16, 0x8E, 0x1, 0x1C, 0x9E, 0x5, 0x5, 0x0
@@ -8700,14 +8700,14 @@ loc_80A9BF6:
 	ldrb r0, [r7,#8]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r7,#0xa]
 	lsl r0, r0, #0x18
 	bl sub_8002FA6
 	ldrb r0, [r7,#0xb]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldrb r0, [r7,#0xd]
-	bl sub_8002F5C
+	bl sprite_setFlip
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_80A9C26
@@ -8752,7 +8752,7 @@ loc_80A9C54:
 	mov r0, #3
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0xd9
 	add r0, #0xff
 	bl sound_play // () -> void
@@ -8764,7 +8764,7 @@ loc_80A9C88:
 	mov r0, #5
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #0
 	str r0, [r5,#0x24]
 loc_80A9CA0:
@@ -8775,7 +8775,7 @@ loc_80A9CA0:
 	thumb_local_start
 sub_80A9CA6:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A9CA6
 
@@ -8865,7 +8865,7 @@ sub_80A9D30:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -8910,7 +8910,7 @@ off_80A9DA4: .word sub_80A9DC0+1
 	thumb_local_start
 sub_80A9DB8:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A9DB8
 
@@ -8935,7 +8935,7 @@ loc_80A9DD8:
 	mov r0, #1
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r5,#4]
 	tst r0, r0
 	bne loc_80A9DF8
@@ -8979,7 +8979,7 @@ loc_80A9E2E:
 	mov r0, #2
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	b locret_80A9E46
 loc_80A9E3E:
 	mov r0, #0
@@ -9025,11 +9025,11 @@ sub_80A9E5E:
 	mov r0, #0
 	strh r0, [r5,#0x24]
 	ldrb r0, [r5,#5]
-	bl sub_8002F5C
+	bl sprite_setFlip
 	mov r0, #5
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sub_809C940
 	ldr r1, [r5,#0x30]
 	ldr r2, [r5,#0x34]
@@ -9094,7 +9094,7 @@ sub_80A9EEC:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -9112,7 +9112,7 @@ sub_80A9F30:
 	push {r4-r7,lr}
 	mov r4, r8
 	push {r4}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80A9F44
@@ -9128,7 +9128,7 @@ loc_80A9F44:
 	thumb_local_start
 sub_80A9F4E:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_80A9F4E
@@ -9161,11 +9161,11 @@ sub_80A9F78:
 	ldrb r0, [r5,#6]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	ldrb r0, [r5,#7]
 	bl sub_8002E14
 	mov r0, #0
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldrb r0, [r5,#4]
 	bl sub_80AA04C
 	str r0, [r5,#0x14]
@@ -9220,7 +9220,7 @@ loc_80A9FF6:
 	thumb_local_start
 sub_80A9FFC:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80A9FFC
 
@@ -9284,7 +9284,7 @@ sub_80AA078:
 	ldrb r0, [r5,#7]
 	bl sub_8002E14
 	mov r0, #0
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldrb r0, [r5,#4]
 	bl sub_80AA134
 	str r0, [r5,#0x14]
@@ -9339,7 +9339,7 @@ loc_80AA0F6:
 	thumb_local_start
 sub_80AA0FC:
 	push {lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {pc}
 	thumb_func_end sub_80AA0FC
 
@@ -9397,7 +9397,7 @@ sub_80AA160:
 	mov r0, #2
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -9435,11 +9435,11 @@ loc_80AA1C2:
 	thumb_local_start
 sub_80AA1C8:
 	push {r4-r7,lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80AA1D8
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 loc_80AA1D8:
 	bl sprite_update
 	pop {r4-r7,pc}
@@ -9475,7 +9475,7 @@ sub_80AA204:
 	mov r0, #0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -9525,13 +9525,13 @@ loc_80AA27C:
 	thumb_local_start
 sub_80AA282:
 	push {r4-r7,lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r1, #0x80
 	tst r0, r1
 	beq loc_80AA2A2
 	mov r0, #1
 	strb r0, [r5]
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #0x1f
 	and r0, r1
 	add r0, #8
@@ -9598,7 +9598,7 @@ sub_80AA2F8:
 	strb r0, [r5,#4]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_80AA322
@@ -9641,7 +9641,7 @@ off_80AA368: .word byte_8088708
 	thumb_local_start
 sub_80AA36C:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80AA36C
 
@@ -9710,7 +9710,7 @@ sub_80AA3C2:
 loc_80AA3E6:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	mov r0, r5
 	add r0, #0xc
 	bl sub_8035694
@@ -9764,7 +9764,7 @@ byte_80AA430: .byte 0x18, 0x37, 0x1C, 0x17, 0x14, 0xFF, 0xFF, 0xFF, 0x1C
 	thumb_local_start
 sub_80AA4B8:
 	push {r4-r7,lr}
-	bl sub_80048B2
+	bl FreeOverworldMapObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_80AA4B8
 
@@ -9818,7 +9818,7 @@ loc_80AA514:
 	add r4, r4, r3
 	ldrb r3, [r4,r2]
 	push {r0,r3}
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r2, r0
 	pop {r0,r3}
 	mov r1, #0x1f
@@ -9828,7 +9828,7 @@ loc_80AA514:
 	ldr r1, [r6,#0x28]
 	tst r1, r1
 	beq loc_80AA54E
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	lsr r0, r0, #1
 	bcs loc_80AA54E
 	ldr r0, [r6,#0x2c]
@@ -9857,7 +9857,7 @@ loc_80AA54E:
 	strh r2, [r1,#0x2] // (dword_2000B30+2 - 0x2000b30)
 	b loc_80AA59E
 loc_80AA56E:
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #0xc
 	svc 6
 	cmp r1, #6
@@ -10159,7 +10159,7 @@ sub_80AA78C:
 	mov r1, #0x14
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_80AA7A8
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #0xff
 	and r0, r1
 	cmp r0, #0xc0
@@ -10276,7 +10276,7 @@ loc_80AA832:
 	lsl r3, r3, #0x1c
 	lsr r3, r3, #0x14
 	add r0, r0, r3
-	bl sub_800F23C
+	bl enemy_getStruct2
 	ldrh r1, [r0]
 	lsr r1, r1, #0xc
 	mov r2, #0xf
@@ -10315,7 +10315,7 @@ off_80AA888: .word dword_2000B30
 sub_80AA88C:
 	push {r4-r7,lr}
 	sub sp, sp, #8
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r7, r0
 	mov r0, #0
 	str r0, [sp]
@@ -10513,7 +10513,7 @@ loc_80AAA04:
 	sub r0, #1
 	b loc_80AAA18
 loc_80AAA0A:
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	ldr r1, [sp,#0x28]
 	svc 6
 	add r0, sp, #0x24
@@ -10552,7 +10552,7 @@ sub_80AAA3C:
 	mov r5, r1
 	tst r2, r2
 	bne loc_80AAA56
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r5
 	svc 6
 	add r1, r1, r1
@@ -10584,7 +10584,7 @@ loc_80AAA7A:
 	ldr r0, [sp,#8]
 	tst r0, r0
 	beq loc_80AAA94
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	ldr r1, [sp,#8]
 	svc 6
 	mov r0, sp
@@ -10612,7 +10612,7 @@ sub_80AAA98:
 	mov r0, #0
 loc_80AAAB2:
 	str r0, [sp,#0x14]
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	lsr r0, r0, #8
 	mov r1, #1
 	and r1, r0
@@ -10695,7 +10695,7 @@ loc_80AAB3A:
 	blt loc_80AAB28
 	tst r6, r6
 	bne loc_80AAB56
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #1
 	and r0, r1
 	add r0, r0, r0
@@ -10703,7 +10703,7 @@ loc_80AAB3A:
 	ldrh r0, [r1,r0]
 	b loc_80AAB64
 loc_80AAB56:
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r6
 	svc 6
 	add r0, sp, #0xc
@@ -10718,7 +10718,7 @@ loc_80AAB64:
 sub_80AAB68:
 	push {r4,lr}
 	mov r4, r0
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #0xf
 	and r1, r0
 	mov r0, r4
@@ -10820,7 +10820,7 @@ loc_80AAC1C:
 	b loc_80AAC1C
 loc_80AAC1E:
 	str r1, [sp]
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r2, sp
 	ldr r1, [sp]
 	add r1, #4
@@ -10852,7 +10852,7 @@ loc_80AAC54:
 	mov r0, #0x1a
 	tst r2, r2
 	beq loc_80AAC68
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r4
 	svc 6
 	ldrb r0, [r5,r1]
@@ -10879,7 +10879,7 @@ sub_80AAC8C:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x10
 	str r0, [sp]
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, #0xff
 	and r0, r1
 	cmp r0, #8
@@ -10920,7 +10920,7 @@ loc_80AACD8:
 loc_80AACE2:
 	mov r4, r0
 	lsr r6, r1, #1
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	mov r1, r4
 	svc 6
 	mov r0, r6
@@ -10983,7 +10983,7 @@ loc_80AAD4E:
 	cmp r3, #4
 	bmi loc_80AAD42
 	str r1, [sp,#8]
-	bl sub_8001532
+	bl GetPositiveSignedRNG2
 	ldr r1, [sp,#8]
 	svc 6
 	add r4, sp, #0xc

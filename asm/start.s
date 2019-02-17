@@ -1,8 +1,8 @@
-.include "asm/start.inc"
+	.include "asm/start.inc"
 
-	arm_func_start start_
-start_:
-	b loc_80000D0
+	arm_func_start GameEntryPoint
+GameEntryPoint:
+	b _GameEntryPoint
 GameHeader: .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B2411
 	.word 0x217F81C0, 0x19BE52A3, 0x20CE0993, 0x4A4A4610, 0xEC3127F8
 	.word 0x33E8C758, 0xBFCEE382, 0x94DFF485, 0xC1094BCE, 0xC08A5694
@@ -14,7 +14,7 @@ GameHeader: .word 0x51AEFF24, 0x21A29A69, 0xA82843D, 0xAD09E484, 0x988B2411
 	.word 0x364E414D, 0x5858465F, 0x45365242, 0x963830, 0x0
 	.word 0x0, 0x5900, 0x0, 0x0, 0x0
 	.word 0x0
-loc_80000D0:
+_GameEntryPoint:
 	mov r0, #0x12
 	msr CPSR_cf, r0
 	ldr r13, off_80001EC // =byte_3007F60 
@@ -62,10 +62,10 @@ loc_80000D0:
 	// size
 	ldr r2, IWRAMRoutinesSize_p // =0x1ed4 
 	bl start_copyMemory // (void *src, void *dest, int size) -> void
-	ldr r0, off_8000214 // =CpuSet_toolKit+1 
+	ldr r0, off_8000214 // =SetPrimaryToolkitPointers+1 
 	mov lr, pc
 	bx r0
-	ldr r0, off_8000218 // =sub_8006C22+1 
+	ldr r0, off_8000218 // =RandomizeExtraToolkitPointers+1 
 	mov lr, pc
 	bx r0
 	ldr r0, off_800021C // =start_800023C+1 
@@ -88,8 +88,8 @@ loc_80000D0:
 	strh r1, [r0]
 	ldr r0, off_8000238 // =main_+1 
 	bx r0
-	b start_
-	arm_func_end start_
+	b GameEntryPoint
+	arm_func_end GameEntryPoint
 
 // (void *mem, int size) -> void
 	arm_func_start start_clearMemory
@@ -121,8 +121,8 @@ dword_8000204: .word 0x45B4
 mem: .word IWRAMRoutinesROMLocation
 off_800020C: .word dword_3005B00
 IWRAMRoutinesSize_p: .word 0x1ED4
-off_8000214: .word CpuSet_toolKit+1
-off_8000218: .word sub_8006C22+1
+off_8000214: .word SetPrimaryToolkitPointers+1
+off_8000218: .word RandomizeExtraToolkitPointers+1
 off_800021C: .word start_800023C+1
 off_8000220: .word byte_20081B0
 off_8000224: .word dword_2009930

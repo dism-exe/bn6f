@@ -1,5 +1,4 @@
 
-	.macro ds name
-	.global \name
-	\name\():
+	.macro ds name:req
+\name\()::
 	.endm

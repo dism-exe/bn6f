@@ -65682,7 +65682,7 @@ int sub_80E0684()
         byte_2036740[0] = 1;
         *(v0 + 11) = 4;
     }
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !result )
     {
         sub_8001382(1);

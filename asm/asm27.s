@@ -1,4 +1,4 @@
-.include "asm/asm27.inc"
+	.include "asm/asm27.inc"
 
 	thumb_local_start
 sub_80946C4:

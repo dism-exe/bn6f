@@ -1,19 +1,19 @@
-.ifndef INC_ASM_ASM27
-.equ INC_ASM_ASM27, 0
+	.ifndef INC_ASM_ASM27
+	.equ INC_ASM_ASM27, 0
 
 /* Public Symbols */
 
 
 /* External Symbols */
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global sub_80307D8
 
-.include "data/dat38_59.inc"
+	.include "data/dat38_59.inc"
 // .global byte_857CC88
 
 
@@ -30,4 +30,4 @@
 // .global comp_857D43C
 // .global comp_857D63C
 
-.endif // INC_ASM_ASM27
+	.endif // INC_ASM_ASM27

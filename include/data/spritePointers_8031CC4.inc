@@ -1,33 +1,33 @@
-.ifndef INC_DATA_SPRITEPOINTERS_8031CC4
-.equ INC_DATA_SPRITEPOINTERS_8031CC4, 0
+	.ifndef INC_DATA_SPRITEPOINTERS_8031CC4
+	.equ INC_DATA_SPRITEPOINTERS_8031CC4, 0
 
 /* Public Symbols */
-.global spritePointers_8031CC4
-.global off_8032108
-.global mugshots_8032598
-.global guiSprites_803271C
-.global off_80329A8
-.global off_80329C4
-.global off_8032F6C
-.global off_8032F88
-.global pt_8033530
-.global pt_803354C
+	.global spritePointers_8031CC4
+	.global off_8032108
+	.global mugshots_8032598
+	.global guiSprites_803271C
+	.global off_80329A8
+	.global off_80329C4
+	.global off_8032F6C
+	.global off_8032F88
+	.global pt_8033530
+	.global pt_803354C
 
 
 /* External Symbols */
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global sub_8030628
 // .global sub_8030808
 // .global sub_803086C
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global off_8033764
 
-.include "data/dat38_30.inc"
+	.include "data/dat38_30.inc"
 // .global sprite_8336320
 // .global sprite_8336D54
 
-.include "data/dat38_31.inc"
+	.include "data/dat38_31.inc"
 // .global sprite_8338F18
 // .global sprite_833BE68
 // .global sprite_833F3A0
@@ -44,7 +44,7 @@
 // .global sprite_834BEB8
 // .global sprite_834C6F0
 
-.include "data/dat38_32.inc"
+	.include "data/dat38_32.inc"
 // .global sprite_8350628
 // .global sprite_8350888
 // .global sprite_8351FA8
@@ -106,7 +106,7 @@
 // .global sprite_838849C
 // .global sprite_838A9A8
 
-.include "data/dat38_33.inc"
+	.include "data/dat38_33.inc"
 // .global sprite_838B930
 // .global sprite_838C3C8
 // .global sprite_838C864
@@ -171,7 +171,7 @@
 // .global sprite_83F6824
 // .global sprite_83FA130
 
-.include "data/dat38_34.inc"
+	.include "data/dat38_34.inc"
 // .global sprite_83FEC68
 // .global sprite_8402FA0
 // .global sprite_8406044
@@ -179,10 +179,10 @@
 // .global sprite_8408360
 // .global sprite_8408DB4
 
-.include "data/dat38_35.inc"
+	.include "data/dat38_35.inc"
 // .global sprite_840B3A4
 
-.include "data/dat38_36.inc"
+	.include "data/dat38_36.inc"
 // .global sprite_8411E90
 // .global sprite_8415A90
 // .global sprite_8419440
@@ -193,7 +193,7 @@
 // .global sprite_842DAC0
 // .global npcSpriteMegaMan
 
-.include "data/dat38_37.inc"
+	.include "data/dat38_37.inc"
 // .global npcSpriteProtoMan
 // .global npcSpriteProgman
 // .global npcSpriteGreenNavi
@@ -209,86 +209,86 @@
 // .global npcSpriteColonel
 // .global sprite_848FCEC
 
-.include "data/dat38_38.inc"
+	.include "data/dat38_38.inc"
 // .global sprite_8495B88
 // .global sprite_8497CF8
 
-.include "data/dat38_39.inc"
+	.include "data/dat38_39.inc"
 // .global sprite_849B424
 // .global sprite_849BA28
 // .global sprite_849D164
 // .global objSpriteSkullBarrier
 // .global sprite_849FBC0
 
-.include "data/dat38_40.inc"
+	.include "data/dat38_40.inc"
 // .global sprite_84A3048
 
-.include "data/dat38_41.inc"
+	.include "data/dat38_41.inc"
 // .global sprite_84A53C4
 // .global sprite_84A599C
 
-.include "data/dat38_42.inc"
+	.include "data/dat38_42.inc"
 // .global sprite_84A8AC0
 
-.include "data/dat38_43.inc"
+	.include "data/dat38_43.inc"
 // .global sprite_84A97A8
 
-.include "data/dat38_44.inc"
+	.include "data/dat38_44.inc"
 // .global sprite_84AB2D0
 // .global sprite_84AB680
 // .global sprite_84ADD6C
 
-.include "data/dat38_45.inc"
+	.include "data/dat38_45.inc"
 // .global sprite_84AF710
 // .global sprite_84B1BA0
 
-.include "data/dat38_46.inc"
+	.include "data/dat38_46.inc"
 // .global sprite_84B4838
 // .global sprite_84B5238
 
-.include "data/dat38_47.inc"
+	.include "data/dat38_47.inc"
 // .global sprite_84B5C18
 // .global sprite_84B62AC
 
-.include "data/dat38_48.inc"
+	.include "data/dat38_48.inc"
 // .global sprite_84B7414
 // .global sprite_84B8BB4
 // .global sprite_84BA414
 // .global sprite_84BA7A8
 
-.include "data/dat38_49.inc"
+	.include "data/dat38_49.inc"
 // .global sprite_84BC0C8
 
-.include "data/dat38_50.inc"
+	.include "data/dat38_50.inc"
 // .global sprite_84BC854
 
-.include "data/dat38_51.inc"
+	.include "data/dat38_51.inc"
 // .global sprite_84BDDD4
 
-.include "data/dat38_52.inc"
+	.include "data/dat38_52.inc"
 // .global sprite_84BF6F8
 
-.include "data/dat38_53.inc"
+	.include "data/dat38_53.inc"
 // .global sprite_84C0298
 // .global sprite_84C2D34
 
-.include "data/dat38_54.inc"
+	.include "data/dat38_54.inc"
 // .global sprite_84C5194
 // .global sprite_84C832C
 
-.include "data/dat38_55.inc"
+	.include "data/dat38_55.inc"
 // .global sprite_84C90B4
 
-.include "data/dat38_56.inc"
+	.include "data/dat38_56.inc"
 // .global sprite_84CDF74
 
-.include "data/dat38_57.inc"
+	.include "data/dat38_57.inc"
 // .global sprite_84D3DBC
 
-.include "data/dat38_58.inc"
+	.include "data/dat38_58.inc"
 // .global sprite_84DF96C
 
-.include "data/dat38_59.inc"
+	.include "data/dat38_59.inc"
 // .global mugshotLan
 // .global mugshotMayl
 // .global mugshotDex
@@ -449,7 +449,7 @@
 // .global byte_857B5E4
 // .global byte_857B788
 
-.include "data/dat38_60.inc"
+	.include "data/dat38_60.inc"
 // .global byte_857D8D0
 // .global byte_8580D64
 // .global dword_8580F08
@@ -599,12 +599,12 @@
 // .global byte_8691154
 // .global byte_8694FB4
 
-.include "data/dat38_70.inc"
+	.include "data/dat38_70.inc"
 // .global sprite_86CBB7C
 // .global sprite_86CC13C
 // .global sprite_86CD410
 
-.include "data/dat38_87.inc"
+	.include "data/dat38_87.inc"
 // .global sprite_87DC190
 // .global sprite_87DC5F0
 // .global byte_87DD248
@@ -618,7 +618,7 @@
 // .global sprite_87E24F4
 // .global sprite_87E2860
 
-.include "data/dat38_92.inc"
+	.include "data/dat38_92.inc"
 // .global sprite_87E6E20
 
 
@@ -911,4 +911,4 @@
 // .global comp_87F0664
 // .global comp_87F0834
 
-.endif // INC_DATA_SPRITEPOINTERS_8031CC4
+	.endif // INC_DATA_SPRITEPOINTERS_8031CC4

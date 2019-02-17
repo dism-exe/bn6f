@@ -1,4 +1,4 @@
-.include "data/dat38_63.inc"
+	.include "data/dat38_63.inc"
 
 dword_86C4660: .word 0x1ADF0000, 0x3CB43871, 0x7C1F44D9, 0x267F29DE, 0x2D143029
 	.word 0x7FBD3178, 0x307003FF, 0x40F438D2, 0x6A410, 0x6A40007

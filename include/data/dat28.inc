@@ -1,25 +1,25 @@
-.ifndef INC_DATA_DAT28
-.equ INC_DATA_DAT28, 0
+	.ifndef INC_DATA_DAT28
+	.equ INC_DATA_DAT28, 0
 
 /* Public Symbols */
-.global dword_809FEE4
-.global dword_809FFE8
-.global byte_80A083F
-.global byte_80A0840
-.global byte_80A0C0E
-.global byte_80A0C10
-.global byte_80A0C12
-.global byte_80A2713
-.global byte_80A3360
-.global off_80A336C
-.global off_80A3370
-.global off_80A3428
-.global byte_80A3430
-.global byte_80A3A44
+	.global dword_809FEE4
+	.global dword_809FFE8
+	.global byte_80A083F
+	.global byte_80A0840
+	.global byte_80A0C0E
+	.global byte_80A0C10
+	.global byte_80A0C12
+	.global byte_80A2713
+	.global RealWorldMysteryDataMapGroupEntries
+	.global InternetMysteryDataMapGroupEntries
+	.global off_80A3370
+	.global GoldMysteryDataEntries
+	.global byte_80A3430
+	.global byte_80A3A44
 
 
 /* External Symbols */
-.include "asm/asm28_1.inc"
+	.include "asm/asm28_1.inc"
 // .global off_809FEA0
 
 
@@ -54,4 +54,4 @@
 // .equ byte_300451C, 0x300451C
 // .equ byte_300511C, 0x300511C
 
-.endif // INC_DATA_DAT28
+	.endif // INC_DATA_DAT28

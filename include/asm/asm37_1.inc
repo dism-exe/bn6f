@@ -1,107 +1,107 @@
-.ifndef INC_ASM_ASM37_1
-.equ INC_ASM_ASM37_1, 0
+	.ifndef INC_ASM_ASM37_1
+	.equ INC_ASM_ASM37_1, 0
 
 /* Public Symbols */
-.global sub_814187C
-.global sub_81418E4
-.global sub_81418F0
-.global sub_81419A0
-.global sub_8142050
-.global sub_8142068
-.global sub_8142080
-.global sub_81420B0
-.global sub_81420C8
-.global sub_81420F0
-.global sub_8142134
-.global sub_814216E
-.global sub_8142184
-.global sub_8142190
-.global sub_814219C
-.global sub_81421B2
-.global sub_81421C8
-.global sub_81421D0
-.global sub_81421D8
-.global sub_81421E0
-.global sub_8142204
-.global sub_8142224
-.global sub_814223E
-.global sub_8142248
-.global sub_814227A
-.global sub_81422B4
-.global sub_81426CE
-.global sub_81427A4
-.global sub_81427CE
-.global sub_8142816
-.global sub_8142868
-.global sub_8142896
-.global sub_81428C2
-.global sub_81428D4
-.global sub_8142990
-.global sub_81429CA
-.global sub_8142A84
-.global sub_8142ADA
-.global sub_8142B04
-.global sub_8142B58
-.global sub_8142BB6
-.global sub_8142BF4
-.global sub_8142BFA
-.global sub_8142C20
-.global sub_8142C46
-.global sub_8142C94
-.global sub_8142CB0
-.global sub_8142CC8
-.global sub_8142D4C
-.global sub_8143088
-.global sub_81430B6
-.global sub_8143198
-.global sub_81431F8
-.global sub_8143204
-.global sub_8143220
-.global sub_8143294
-.global sub_81433DA
-.global sub_81433E4
-.global sub_8143482
-.global byte_81434E4
-.global byte_814350C
-.global byte_814352C
-.global byte_8143564
-.global byte_814359C
-.global byte_81435BA
-.global byte_81435D2
-.global byte_81435FC
-.global byte_8143628
-.global byte_8143646
-.global byte_814365E
-.global byte_8143688
-.global byte_81436B4
-.global byte_81436C4
-.global byte_81436E4
-.global byte_8143704
-.global byte_8143724
-.global byte_814375C
-.global byte_8143794
-.global byte_81437CC
-.global sub_8143B5E
-.global sub_8143B88
-.global sub_8143BB0
-.global sub_8143D4C
-.global sub_8143DBC
-.global sub_8143DEA
-.global sub_8143E68
-.global sub_8143EA4
-.global sub_8143EB0
-.global sub_8143EDC
-.global sub_8143F68
-.global sub_8143F72
-.global sub_8143F90
-.global sub_8143FAA
-.global sub_8143FC4
-.global sub_8144010
-.global sub_8144048
+	.global sub_814187C
+	.global sub_81418E4
+	.global sub_81418F0
+	.global sub_81419A0
+	.global sub_8142050
+	.global sub_8142068
+	.global sub_8142080
+	.global sub_81420B0
+	.global sub_81420C8
+	.global sub_81420F0
+	.global sub_8142134
+	.global sub_814216E
+	.global sub_8142184
+	.global sub_8142190
+	.global sub_814219C
+	.global sub_81421B2
+	.global sub_81421C8
+	.global sub_81421D0
+	.global sub_81421D8
+	.global sub_81421E0
+	.global sub_8142204
+	.global sub_8142224
+	.global sub_814223E
+	.global sub_8142248
+	.global sub_814227A
+	.global sub_81422B4
+	.global sub_81426CE
+	.global sub_81427A4
+	.global sub_81427CE
+	.global sub_8142816
+	.global sub_8142868
+	.global sub_8142896
+	.global sub_81428C2
+	.global sub_81428D4
+	.global sub_8142990
+	.global sub_81429CA
+	.global sub_8142A84
+	.global sub_8142ADA
+	.global sub_8142B04
+	.global sub_8142B58
+	.global sub_8142BB6
+	.global sub_8142BF4
+	.global sub_8142BFA
+	.global sub_8142C20
+	.global sub_8142C46
+	.global sub_8142C94
+	.global sub_8142CB0
+	.global sub_8142CC8
+	.global sub_8142D4C
+	.global sub_8143088
+	.global sub_81430B6
+	.global sub_8143198
+	.global sub_81431F8
+	.global sub_8143204
+	.global sub_8143220
+	.global sub_8143294
+	.global sub_81433DA
+	.global sub_81433E4
+	.global sub_8143482
+	.global byte_81434E4
+	.global byte_814350C
+	.global byte_814352C
+	.global byte_8143564
+	.global byte_814359C
+	.global byte_81435BA
+	.global byte_81435D2
+	.global byte_81435FC
+	.global byte_8143628
+	.global byte_8143646
+	.global byte_814365E
+	.global byte_8143688
+	.global byte_81436B4
+	.global byte_81436C4
+	.global byte_81436E4
+	.global byte_8143704
+	.global byte_8143724
+	.global byte_814375C
+	.global byte_8143794
+	.global byte_81437CC
+	.global sub_8143B5E
+	.global sub_8143B88
+	.global sub_8143BB0
+	.global sub_8143D4C
+	.global sub_8143DBC
+	.global sub_8143DEA
+	.global sub_8143E68
+	.global sub_8143EA4
+	.global sub_8143EB0
+	.global sub_8143EDC
+	.global sub_8143F68
+	.global sub_8143F72
+	.global sub_8143F90
+	.global sub_8143FAA
+	.global sub_8143FC4
+	.global sub_8144010
+	.global sub_8144048
 
 
 /* External Symbols */
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
@@ -113,18 +113,18 @@
 // .global sub_8001172
 // .global calcAngle_800117C
 // .global sub_80014D4
-// .global change_20013F0_800151C // () -> int
+// .global GetRNG2 // () -> int
 
-.include "asm/asm00_1.inc"
-// .global sub_8003570
+	.include "asm/asm00_1.inc"
+// .global SpawnObjectsFromList
 // .global sub_8003A64
-// .global sub_80047E0
+// .global SpawnOverworldMapObject
 // .global sub_8004822
-// .global engine_isScreeneffectAnimating // () -> zf
-// .global byte_80065E0
-// .global byte_8006660
+// .global IsPaletteFadeActive // () -> zf
+// .global math_sinTable
+// .global math_cosTable
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -138,7 +138,7 @@
 // .global sub_80307D8
 // .global sub_8030A60
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global sub_8034C36
 // .global loc_80353EA
 // .global sub_80357AE
@@ -146,58 +146,58 @@
 // .global init_s_02011C50_8036E90
 // .global s_2011C50_ptr_1C_isNull // () -> zf
 
-.include "asm/chatbox.inc"
+	.include "asm/chatbox.inc"
 // .global chatbox_8045F3C
 
-.include "asm/asm03_2.inc"
+	.include "asm/asm03_2.inc"
 // .global sub_8046818
 // .global sub_8046854
 // .global sub_80468BA
 // .global sub_80468C6
 // .global sub_804691A
 
-.include "data/dat14.inc"
+	.include "data/dat14.inc"
 // .global off_8072C10
 // .global off_8073650
 
-.include "asm/asm23.inc"
+	.include "asm/asm23.inc"
 // .global dword_8089128
 // .global byte_80893CC
 // .global byte_8089448
 // .global byte_8089554
 
-.include "data/dat23.inc"
+	.include "data/dat23.inc"
 // .global byte_8089DF4
 // .global byte_808A128
 
-.include "asm/asm24.inc"
+	.include "asm/asm24.inc"
 // .global byte_808C004
 // .global byte_808C0F4
 // .global byte_808C2F0
 
-.include "data/dat26.inc"
+	.include "data/dat26.inc"
 // .global byte_8092A98
 // .global byte_8092DE8
 // .global byte_809326C
 // .global byte_8093358
 // .global byte_80933B8
 
-.include "asm/asm28_0.inc"
+	.include "asm/asm28_0.inc"
 // .global sub_809E1AE
 // .global sub_809E2B8
 // .global sub_809E3A2
 // .global sub_809E462
 
-.include "asm/asm32.inc"
+	.include "asm/asm32.inc"
 // .global sub_811E0BA
 // .global sub_811E744
 // .global sub_811EBE0
 
-.include "asm/reqBBS.inc"
+	.include "asm/reqBBS.inc"
 // .global reqBBS_setFlag_e17b0f7_8140A00
 // .global reqBBS_clearFlag_8140A0C
 
-.include "data/dat38_60.inc"
+	.include "data/dat38_60.inc"
 // .global dword_8619730
 // .global dword_8619B50
 // .global byte_8619B90
@@ -255,6 +255,6 @@
 // .equ byte_200BE70, 0x200BE70
 // .equ dword_200BE7C, 0x200BE7C
 // .equ unk_2011EA0, 0x2011EA0
-// .equ byte_2011EE0, 0x2011EE0
+// .equ eOverworldMapObjects, 0x2011EE0
 
-.endif // INC_ASM_ASM37_1
+	.endif // INC_ASM_ASM37_1

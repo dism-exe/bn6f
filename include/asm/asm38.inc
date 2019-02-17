@@ -1,60 +1,60 @@
-.ifndef INC_ASM_ASM38
-.equ INC_ASM_ASM38, 0
+	.ifndef INC_ASM_ASM38
+	.equ INC_ASM_ASM38, 0
 
 /* Public Symbols */
-.global dword_3005B00
-.global nullsub_38
-.global sub_3005CDA
-.global sub_3005D78
-.global sub_3005DA0
-.global sub_3005DD4
-.global sub_3005DEC
-.global sub_3005E02
-.global sub_3005E18
-.global sub_3005E2C
-.global sub_3005E60
-.global sub_3005E6A
-.global dword_3005E80
-.global sub_3005EBA
-.global sub_3005EF0
-.global sub_3006028
-.global sub_30061E8
-.global loc_3006392
-.global sub_3006440
-.global sub_3006730
-.global sub_3006792
-.global loc_3006794
-.global sub_3006814
-.global sub_30068E8
-.global sub_3006920
-.global byte_30069A0
-.global dword_3006B84
-.global sub_3006B94
-.global sub_3006C38
-.global sub_3006C8E
-.global sub_3006CA8
-.global sub_3006F20
-.global sub_3006F24
-.global sub_3006F42
-.global sub_3006F48
-.global byte_3006F5D
-.global dword_3006F71
-.global byte_3006F75
-.global sub_3006F8C
-.global sub_3007038
-.global sub_30070B4
-.global sub_3007550
-.global sub_300777C
-.global sub_30078C8
-.global sub_30078E0
-.global sub_3007958
-.global sub_30079A4
+	.global dword_3005B00
+	.global nullsub_38
+	.global sub_3005CDA
+	.global sub_3005D78
+	.global sub_3005DA0
+	.global sub_3005DD4
+	.global sub_3005DEC
+	.global sub_3005E02
+	.global sub_3005E18
+	.global sub_3005E2C
+	.global sub_3005E60
+	.global sub_3005E6A
+	.global dword_3005E80
+	.global sub_3005EBA
+	.global sub_3005EF0
+	.global sub_3006028
+	.global sub_30061E8
+	.global loc_3006392
+	.global sub_3006440
+	.global sub_3006730
+	.global sub_3006792
+	.global loc_3006794
+	.global sub_3006814
+	.global sub_30068E8
+	.global sub_3006920
+	.global byte_30069A0
+	.global dword_3006B84
+	.global sub_3006B94
+	.global sub_3006C38
+	.global sub_3006C8E
+	.global sub_3006CA8
+	.global sub_3006F20
+	.global sub_3006F24
+	.global sub_3006F42
+	.global sub_3006F48
+	.global byte_3006F5D
+	.global dword_3006F71
+	.global byte_3006F75
+	.global sub_3006F8C
+	.global sub_3007038
+	.global sub_30070B4
+	.global sub_3007550
+	.global sub_300777C
+	.global sub_30078C8
+	.global sub_30078E0
+	.global sub_3007958
+	.global sub_30079A4
 
 
 /* External Symbols */
-.include "asm/asm00_0.inc"
-// .global sub_80005AC
-// .global sub_80005C4
+	.include "asm/asm00_0.inc"
+// .global call_m4aSoundMain
+// .global call_m4a_2_814F00C
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global WordFill
@@ -62,34 +62,34 @@
 // .global sub_8000C00
 // .global sub_8000C5C
 
-.include "asm/asm00_1.inc"
-// .global byte_80065E0
-// .global byte_8006660
+	.include "asm/asm00_1.inc"
+// .global math_sinTable
+// .global math_cosTable
 // .global sub_80068E0
 // .global battle_isPaused
 // .global battle_isTimeStop
 
-.include "asm/object.inc"
+	.include "asm/object.inc"
 // .global object_isValidPanel
 // .global object_checkPanelParameters
-// .global sub_800E2C2
+// .global object_getAllianceDirection
 // .global object_getFlipDirection // (int a1, int a2) -> int
 
-.include "asm/asm00_2.inc"
+	.include "asm/asm00_2.inc"
 // .global off_8019B78
 // .global byte_8019C34
 // .global sub_801A29A
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global off_802FD70
 // .global dword_802FD74
 // .global sub_8031612
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global sub_803DE72
 // .global sub_803EA68
 
-.include "asm/chatbox.inc"
+	.include "asm/chatbox.inc"
 // .global chatbox_maskFlags_3e // (int mask) -> void
 // 
 // .global chatbox_8040D5C
@@ -100,15 +100,15 @@
 // .global off_8044378
 // .global off_804440C
 
-.include "asm/asm37_0.inc"
+	.include "asm/asm37_0.inc"
 // .global sub_813D5DC
 
-.include "asm/libs.inc"
+	.include "asm/libs.inc"
 // .global sub_814469C
 // .global sub_81446AC
-// .global sub_814DA9C
+// .global __divsi3
 
-.include "data/dat38_60.inc"
+	.include "data/dat38_60.inc"
 // .global byte_86ACD60
 
 
@@ -197,10 +197,10 @@
 // .equ dword_3002590, 0x3002590
 // .equ dword_3002594, 0x3002594
 // .equ unk_30025B0, 0x30025B0
-.equ DMA0SourceAddress, 0x40000B0
-.equ DMA0DestinationAddress, 0x40000B4
-.equ DMA0WordCount, 0x40000B8
-.equ InterruptEnableRegister, 0x4000200
-.equ InterruptMasterEnableRegister, 0x4000208
+	.equ DMA0SourceAddress, 0x40000B0
+	.equ DMA0DestinationAddress, 0x40000B4
+	.equ DMA0WordCount, 0x40000B8
+	.equ InterruptEnableRegister, 0x4000200
+	.equ InterruptMasterEnableRegister, 0x4000208
 
-.endif // INC_ASM_ASM38
+	.endif // INC_ASM_ASM38

@@ -1,356 +1,356 @@
-.ifndef INC_ASM_ASM00_2
-.equ INC_ASM_ASM00_2, 0
+	.ifndef INC_ASM_ASM00_2
+	.equ INC_ASM_ASM00_2, 0
 
 /* Public Symbols */
-.global sub_800ED80
-.global sub_800ED90
-.global sub_800F214
-.global sub_800F23C
-.global sub_800F26C
-.global sub_800F29C
-.global sub_800F2AA
-.global sub_800F2B6
-.global sub_800F2C6
-.global sub_800F2FC
-.global sub_800F322
-.global sub_800F378
-.global sub_800F46C
-.global sub_800F486
-.global sub_800F49E
-.global sub_800F614
-.global sub_800F656
-.global sub_800F672
-.global sub_800F884
-.global sub_800F898
-.global sub_800F8B0
-.global sub_800F8CE
-.global sub_800F90E
-.global sub_800F964
-.global sub_800F998
-.global sub_800FA20
-.global sub_800FA54
-.global sub_800FAAC
-.global sub_800FAE0
-.global sub_800FAF6
-.global sub_800FB54
-.global sub_800FC30
-.global sub_800FC7C
-.global sub_800FC9E
-.global sub_800FCFC
-.global sub_800FDB6
-.global sub_800FDC0
-.global sub_800FE12
-.global sub_800FE28
-.global sub_800FE36
-.global sub_800FE52
-.global sub_800FFE4
-.global sub_800FFEE
-.global sub_800FFFE
-.global sub_8010004
-.global sub_8010018
-.global sub_801002C
-.global sub_80100EC
-.global sub_801011A
-.global sub_80101AE
-.global sub_80101C4
-.global sub_80101D4
-.global sub_80101F8
-.global sub_80102AC
-.global sub_8010300
-.global sub_8010312
-.global sub_801031C
-.global sub_801032C
-.global sub_8010332
-.global sub_80103A8
-.global sub_80103BC
-.global sub_80103EC
-.global sub_80103F8
-.global sub_8010474
-.global sub_8010488
-.global sub_80104E0
-.global sub_801050C
-.global sub_801055E
-.global sub_801056A
-.global sub_80105F2
-.global sub_8010660
-.global sub_80106C0
-.global sub_8010740
-.global sub_80107C0
-.global sub_80107D4
-.global sub_8010820
-.global loc_801083E
-.global sub_801086C
-.global sub_80108FC
-.global sub_80109A4
-.global sub_8010C76
-.global sub_8010CE0
-.global sub_8010D20
-.global sub_8010DD0
-.global sub_8010DF6
-.global off_8010F08
-.global sub_8011020
-.global sub_8011044
-.global sub_8011268
-.global sub_8011384
-.global sub_8011420
-.global sub_8011450
-.global sub_8011504
-.global loc_8011508
-.global sub_801155A
-.global sub_801156A
-.global sub_801162A
-.global sub_801164C
-.global sub_8011680
-.global sub_8011684
-.global sub_8011688
-.global loc_801168C
-.global loc_8011690
-.global loc_8011694
-.global sub_80116AE
-.global sub_80116D8
-.global sub_8011714
-.global loc_801171C
-.global sub_8011764
-.global sub_801177A
-.global sub_8011790
-.global sub_80117A4
-.global sub_801265A
-.global sub_80126E4
-.global sub_8012792
-.global sub_8012956
-.global sub_801299C
-.global sub_8012DFC
-.global sub_8012E74
-.global sub_8012EA8
-.global loc_8013308
-.global sub_80133EC
-.global sub_8013422
-.global initStruct_8013438 // (void *struc) -> void
-.global sub_80134C8
-.global sub_8013554
-.global sub_80135E8
-.global sub_8013682 // (int idx) -> void*
-.global sub_80136CC
-.global sub_80136D8
-.global sub_80136E4
-.global sub_80136F0
-.global sub_8013704
-.global sub_8013754
-.global sub_8013764
-.global sub_8013774
-.global sub_8013790
-.global navicust_801379E // (int a1, int a2, int a3) -> void
-.global sub_80137B6 // (int a1, int a2) -> u8
-.global sub_80137E6
-.global sub_80137FE
-.global sub_8013816
-.global sub_801382E
-.global sub_8013846
-.global sub_8013854
-.global sub_8013864
-.global sub_8013874
-.global sub_8013884
-.global sub_801393A
-.global sub_80139C4
-.global init_8013B4E // (bool a1, int a2) -> void
-.global init_8013B64 // (int idx, int a2) -> void
-.global sub_8013CC4
-.global sub_8013D5E
-.global sub_8013DA0
-.global sub_8013FAE
-.global sub_8013FD0
-.global navicust_8014018 // (int idx_8014034) -> bool
-.global sub_801401E
-.global sub_8014040
-.global sub_8014150
-.global sub_8014178
-.global sub_80141AC
-.global sub_8014216
-.global sub_80142C2
-.global sub_80143A6
-.global loc_80143B4
-.global sub_801443C
-.global sub_8014446
-.global sub_80144C0
-.global sub_80147E4
-.global sub_801482C
-.global sub_801483C
-.global sub_8015940
-.global sub_8015952
-.global sub_8015A16
-.global sub_8015A38
-.global sub_8015AA6
-.global sub_8015B00
-.global sub_8015B54
-.global sub_8015B5C
-.global sub_8015BEC
-.global sub_8015C32
-.global sub_8015C48
-.global sub_8015C94
-.global sub_8015CC0
-.global sub_8015D80
-.global sub_8015E46
-.global sub_8016004
-.global sub_8016218
-.global sub_801632C
-.global sub_8016380
-.global sub_80165B8
-.global sub_80165C2
-.global sub_80166AE
-.global sub_8016934
-.global sub_80169BE
-.global sub_8016B02
-.global sub_8016B36
-.global sub_8016B72
-.global sub_8016C4E
-.global sub_8016C8A
-.global sub_8016C9C
-.global sub_8016CE8
-.global sub_8016E64
-.global sub_8016EC4
-.global sub_8016F56
-.global sub_80170C4
-.global sub_80171A6
-.global sub_80172F0
-.global sub_80173F4
-.global sub_80174FE
-.global sub_80175B8
-.global sub_8017688
-.global sub_8017768
-.global sub_8017888
-.global sub_80178B6
-.global sub_8017CC0
-.global sub_8017E26
-.global sub_80182B4
-.global sub_8018810
-.global sub_8018842
-.global sub_801986C
-.global sub_8019892
-.global sub_80198CE
-.global byte_80198F4
-.global byte_80199B6
-.global byte_80199F5
-.global off_8019B78
-.global off_8019BE0
-.global byte_8019C34
-.global sub_8019F86
-.global sub_8019F8C
-.global sub_8019FB4
-.global sub_801A00E
-.global sub_801A018
-.global sub_801A04C
-.global sub_801A066
-.global sub_801A074 // () -> void
-.global sub_801A07C
-.global sub_801A082
-.global sub_801A0D4
-.global sub_801A100
-.global sub_801A140
-.global sub_801A146
-.global object_setFlag // (int a1) -> void
-.global object_clearFlag // (int bitfield) -> void
-.global object_getFlag // () -> int
-.global sub_801A16C
-.global sub_801A176
-.global sub_801A180
-.global sub_801A258
-.global sub_801A264
-.global sub_801A284
-.global sub_801A29A
-.global sub_801A2B0
-.global sub_801A4D0
-.global sub_801A4DC
-.global sub_801A5E2
-.global sub_801A66C
-.global sub_801A67E
-.global sub_801A7CC
-.global sub_801A7F4
-.global sub_801A9B8
-.global sub_801AA48
-.global sub_801AAC0
-.global sub_801AB40
-.global sub_801ABB8
-.global sub_801AC6C
-.global sub_801AD12
-.global sub_801AD6A
-.global sub_801AD9E
-.global sub_801ADFA
-.global sub_801AF44
-.global sub_801B1C4
-.global sub_801B394
-.global sub_801B4D4
-.global sub_801B610
-.global sub_801B750
-.global sub_801B878
-.global sub_801BB1C
-.global sub_801BB46
-.global sub_801BBAC
-.global sub_801BBF4
-.global sub_801BC24
-.global sub_801BC64
-.global sub_801BCA6
-.global sub_801BCD0
-.global sub_801BCF4
-.global sub_801BD3C
-.global sub_801BDDE
-.global sub_801BE04
-.global nullsub_10
-.global sub_801BE2A
-.global sub_801BE70
-.global sub_801BEB8
-.global sub_801BEC2
-.global sub_801BECC
-.global sub_801BED6
-.global sub_801BEE0
-.global sub_801BF64
-.global sub_801DA24
-.global sub_801DA48
-.global sub_801DACC
-.global sub_801DBD4
-.global sub_801DC36
-.global sub_801DC7C
-.global sub_801DCCC
-.global sub_801DD34
-.global sub_801DED0
-.global sub_801DEEE
-.global sub_801DF0C
-.global sub_801DF8C
-.global sub_801DF92
-.global sub_801DFA2
-.global sub_801DFB8
-.global sub_801DFE4
-.global sub_801E0A0
-.global sub_801E0C8
-.global sub_801E0D0
-.global sub_801E15C
-.global sub_801E228
-.global sub_801E2BA
-.global sub_801E398
-.global sub_801E408
-.global sub_801E474
-.global sub_801E574
-.global sub_801E5F8
-.global sub_801E658
-.global sub_801E660
-.global sub_801E71C
-.global sub_801E724
-.global sub_801E754
-.global sub_801E780
-.global loc_801E792
-.global sub_801E914
-.global sub_801EB18
-.global sub_801EC44
+	.global sub_800ED80
+	.global sub_800ED90
+	.global enemy_getStruct1
+	.global enemy_getStruct2
+	.global sub_800F26C
+	.global sub_800F29C
+	.global sub_800F2AA
+	.global object_setAnimation
+	.global sub_800F2C6
+	.global sub_800F2FC
+	.global sub_800F322
+	.global sub_800F378
+	.global sub_800F46C
+	.global sub_800F486
+	.global sub_800F49E
+	.global sub_800F614
+	.global sub_800F656
+	.global sub_800F672
+	.global sub_800F884
+	.global sub_800F898
+	.global sub_800F8B0
+	.global sub_800F8CE
+	.global sub_800F90E
+	.global sub_800F964
+	.global sub_800F998
+	.global sub_800FA20
+	.global sub_800FA54
+	.global sub_800FAAC
+	.global sub_800FAE0
+	.global sub_800FAF6
+	.global sub_800FB54
+	.global sub_800FC30
+	.global sub_800FC7C
+	.global sub_800FC9E
+	.global sub_800FCFC
+	.global object_setDefaultCounterTime
+	.global sub_800FDC0
+	.global sub_800FE12
+	.global sub_800FE28
+	.global sub_800FE36
+	.global sub_800FE52
+	.global sub_800FFE4
+	.global sub_800FFEE
+	.global sub_800FFFE
+	.global sub_8010004
+	.global sub_8010018
+	.global sub_801002C
+	.global sub_80100EC
+	.global sub_801011A
+	.global sub_80101AE
+	.global sub_80101C4
+	.global sub_80101D4
+	.global sub_80101F8
+	.global sub_80102AC
+	.global sub_8010300
+	.global sub_8010312
+	.global sub_801031C
+	.global sub_801032C
+	.global sub_8010332
+	.global sub_80103A8
+	.global sub_80103BC
+	.global sub_80103EC
+	.global sub_80103F8
+	.global sub_8010474
+	.global sub_8010488
+	.global sub_80104E0
+	.global sub_801050C
+	.global sub_801055E
+	.global sub_801056A
+	.global sub_80105F2
+	.global sub_8010660
+	.global sub_80106C0
+	.global sub_8010740
+	.global sub_80107C0
+	.global sub_80107D4
+	.global sub_8010820
+	.global loc_801083E
+	.global sub_801086C
+	.global sub_80108FC
+	.global sub_80109A4
+	.global sub_8010C76
+	.global sub_8010CE0
+	.global sub_8010D20
+	.global sub_8010DD0
+	.global sub_8010DF6
+	.global off_8010F08
+	.global sub_8011020
+	.global sub_8011044
+	.global sub_8011268
+	.global sub_8011384
+	.global sub_8011420
+	.global sub_8011450
+	.global sub_8011504
+	.global loc_8011508
+	.global sub_801155A
+	.global sub_801156A
+	.global object_applyDamage
+	.global sub_801164C
+	.global object_setAttack0
+	.global object_setAttack1
+	.global object_setAttack2
+	.global object_setAttack3
+	.global object_setAttack4
+	.global object_setAttack5
+	.global sub_80116AE
+	.global sub_80116D8
+	.global object_exitAttackState
+	.global loc_801171C
+	.global sub_8011764
+	.global sub_801177A
+	.global sub_8011790
+	.global sub_80117A4
+	.global sub_801265A
+	.global sub_80126E4
+	.global sub_8012792
+	.global sub_8012956
+	.global sub_801299C
+	.global sub_8012DFC
+	.global sub_8012E74
+	.global sub_8012EA8
+	.global loc_8013308
+	.global sub_80133EC
+	.global sub_8013422
+	.global initStruct_8013438 // (void *struc) -> void
+	.global sub_80134C8
+	.global sub_8013554
+	.global sub_80135E8
+	.global sub_8013682 // (int idx) -> void*
+	.global sub_80136CC
+	.global sub_80136D8
+	.global sub_80136E4
+	.global sub_80136F0
+	.global sub_8013704
+	.global sub_8013754
+	.global sub_8013764
+	.global sub_8013774
+	.global sub_8013790
+	.global navicust_801379E // (int a1, int a2, int a3) -> void
+	.global sub_80137B6 // (int a1, int a2) -> u8
+	.global sub_80137E6
+	.global sub_80137FE
+	.global sub_8013816
+	.global sub_801382E
+	.global sub_8013846
+	.global sub_8013854
+	.global sub_8013864
+	.global sub_8013874
+	.global sub_8013884
+	.global sub_801393A
+	.global sub_80139C4
+	.global init_8013B4E // (bool a1, int a2) -> void
+	.global init_8013B64 // (int idx, int a2) -> void
+	.global sub_8013CC4
+	.global sub_8013D5E
+	.global sub_8013DA0
+	.global sub_8013FAE
+	.global sub_8013FD0
+	.global navicust_8014018 // (int idx_8014034) -> bool
+	.global sub_801401E
+	.global sub_8014040
+	.global sub_8014150
+	.global sub_8014178
+	.global sub_80141AC
+	.global sub_8014216
+	.global sub_80142C2
+	.global sub_80143A6
+	.global loc_80143B4
+	.global sub_801443C
+	.global sub_8014446
+	.global sub_80144C0
+	.global sub_80147E4
+	.global sub_801482C
+	.global sub_801483C
+	.global sub_8015940
+	.global sub_8015952
+	.global sub_8015A16
+	.global sub_8015A38
+	.global sub_8015AA6
+	.global sub_8015B00
+	.global sub_8015B54
+	.global sub_8015B5C
+	.global sub_8015BEC
+	.global sub_8015C32
+	.global sub_8015C48
+	.global sub_8015C94
+	.global sub_8015CC0
+	.global sub_8015D80
+	.global sub_8015E46
+	.global sub_8016004
+	.global sub_8016218
+	.global sub_801632C
+	.global sub_8016380
+	.global sub_80165B8
+	.global sub_80165C2
+	.global sub_80166AE
+	.global sub_8016934
+	.global sub_80169BE
+	.global sub_8016B02
+	.global sub_8016B36
+	.global sub_8016B72
+	.global sub_8016C4E
+	.global object_genericDestroy
+	.global sub_8016C9C
+	.global sub_8016CE8
+	.global sub_8016E64
+	.global sub_8016EC4
+	.global sub_8016F56
+	.global sub_80170C4
+	.global sub_80171A6
+	.global sub_80172F0
+	.global sub_80173F4
+	.global sub_80174FE
+	.global sub_80175B8
+	.global sub_8017688
+	.global sub_8017768
+	.global sub_8017888
+	.global sub_80178B6
+	.global sub_8017CC0
+	.global sub_8017E26
+	.global sub_80182B4
+	.global sub_8018810
+	.global sub_8018842
+	.global sub_801986C
+	.global object_createCollisionData
+	.global sub_80198CE
+	.global byte_80198F4
+	.global byte_80199B6
+	.global byte_80199F5
+	.global off_8019B78
+	.global off_8019BE0
+	.global byte_8019C34
+	.global sub_8019F86
+	.global sub_8019F8C
+	.global object_setupCollisionData
+	.global object_removeCollisionData
+	.global object_presentCollisionData
+	.global object_updateCollisionPanels
+	.global object_setCollisionPanelsToCurrent
+	.global object_clearCollisionRegion // () -> void
+	.global object_setCollisionRegion
+	.global sub_801A082
+	.global object_spawnCollisionEffect
+	.global sub_801A100
+	.global object_setCollisionHitEffect
+	.global sub_801A146
+	.global object_setFlag // (int a1) -> void
+	.global object_clearFlag // (int bitfield) -> void
+	.global object_getFlag // () -> int
+	.global object_setFlag2
+	.global object_clearFlag2
+	.global object_getFlag2
+	.global object_setCollisionStatusEffect1
+	.global sub_801A264
+	.global sub_801A284
+	.global sub_801A29A
+	.global sub_801A2B0
+	.global sub_801A4D0
+	.global sub_801A4DC
+	.global sub_801A5E2
+	.global sub_801A66C
+	.global sub_801A67E
+	.global sub_801A7CC
+	.global sub_801A7F4
+	.global sub_801A9B8
+	.global sub_801AA48
+	.global sub_801AAC0
+	.global sub_801AB40
+	.global sub_801ABB8
+	.global sub_801AC6C
+	.global sub_801AD12
+	.global sub_801AD6A
+	.global sub_801AD9E
+	.global sub_801ADFA
+	.global sub_801AF44
+	.global sub_801B1C4
+	.global sub_801B394
+	.global sub_801B4D4
+	.global sub_801B610
+	.global sub_801B750
+	.global sub_801B878
+	.global object_reservePanel
+	.global object_removePanelReserve
+	.global object_updateSprite
+	.global object_updateSpriteTimestop
+	.global sub_801BC24
+	.global sub_801BC64
+	.global object_updateSpritePaused
+	.global sub_801BCD0
+	.global sub_801BCF4
+	.global sub_801BD3C
+	.global sub_801BDDE
+	.global sub_801BE04
+	.global nullsub_10
+	.global sub_801BE2A
+	.global sub_801BE70
+	.global sub_801BEB8
+	.global sub_801BEC2
+	.global sub_801BECC
+	.global sub_801BED6
+	.global sub_801BEE0
+	.global sub_801BF64
+	.global sub_801DA24
+	.global sub_801DA48
+	.global sub_801DACC
+	.global sub_801DBD4
+	.global sub_801DC36
+	.global sub_801DC7C
+	.global sub_801DCCC
+	.global sub_801DD34
+	.global sub_801DED0
+	.global sub_801DEEE
+	.global sub_801DF0C
+	.global sub_801DF8C
+	.global sub_801DF92
+	.global sub_801DFA2
+	.global sub_801DFB8
+	.global sub_801DFE4
+	.global sub_801E0A0
+	.global sub_801E0C8
+	.global sub_801E0D0
+	.global sub_801E15C
+	.global sub_801E228
+	.global sub_801E2BA
+	.global sub_801E398
+	.global sub_801E408
+	.global sub_801E474
+	.global sub_801E574
+	.global sub_801E5F8
+	.global sub_801E658
+	.global sub_801E660
+	.global sub_801E71C
+	.global sub_801E724
+	.global sub_801E754
+	.global sub_801E780
+	.global loc_801E792
+	.global sub_801E914
+	.global sub_801EB18
+	.global sub_801EC44
 
 
 /* External Symbols */
-.include "asm/asm38.inc"
+	.include "asm/asm38.inc"
 // .global sub_3007550
 // .global sub_300777C
 
-.include "asm/start.inc"
-// .global start_
+	.include "asm/start.inc"
+// .global GameEntryPoint
 
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global musicGameState_8000784 // () -> void
 // .global ZeroFillByHalfword
@@ -367,40 +367,40 @@
 // .global sub_80011A0
 // .global sub_800139A
 // .global loc_8001440
-// .global change_20013F0_800151C // () -> int
-// .global sub_8001532
-// .global rng_8001562
+// .global GetRNG2 // () -> int
+// .global GetPositiveSignedRNG2
+// .global GetPositiveSignedRNG1
 // .global sub_800187C
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
 // .global sub_80018E0
 
-.include "asm/sprite.inc"
+	.include "asm/sprite.inc"
 // .global sprite_loadAnimationData // () -> void
 // .global sprite_update
 // .global sprite_load // (int a1, int a2, int a3) ->
 // .global sprite_decompress
 // .global sub_8002C7A
 // .global sub_8002CCE
-// .global sprite_setPallete // (int pallete) -> void
-// .global sprite_getPallete
+// .global sprite_setPalette // (int pallete) -> void
+// .global sprite_getPalette
 // .global sprite_setAnimation // (u8 a1) -> void
-// .global sprite_forceWhitePallete
+// .global sprite_forceWhitePalette
 
-.include "asm/asm00_1.inc"
-// .global sub_8002DD8
-// .global sub_8002E3C
-// .global sub_8002ED0
+	.include "asm/asm00_1.inc"
+// .global sprite_clearFinalPalette
+// .global sprite_hasShadow
+// .global sprite_setColorShader
 // .global sub_8002EE8
-// .global sub_8002EF6
+// .global sprite_setMosaicSize
 // .global sub_8002F2C
-// .global sub_8002F5C
-// .global sub_8002F90 // () -> void
+// .global sprite_setFlip
+// .global sprite_noShadow // () -> void
 // .global sub_8002FB2
 // .global object_freeMemory
 // .global sub_800362C
 // .global engine_setScreeneffect // (int a1, int a2) -> void
-// .global engine_isScreeneffectAnimating // () -> zf
+// .global IsPaletteFadeActive // () -> zf
 // .global sub_80077B4
 // .global battle_isPaused
 // .global battle_isTimeStop
@@ -428,37 +428,37 @@
 // .global sub_800B79A
 // .global sub_800B8EE
 
-.include "asm/object.inc"
+	.include "asm/object.inc"
 // .global sub_800BEDA
 // .global sub_800BF16
 // .global loc_800BF30
 // .global object_getPanelParameters
-// .global sub_800C90A
+// .global object_getPanelDataOffset
 // .global object_crackPanelDup1
 // .global object_breakPanel_dup2
 // .global object_setPanelType
 // .global object_isValidPanel
 // .global object_checkPanelParameters
-// .global object_getPanelsExceptCurrentFilterred
-// .global sub_800CEA0
-// .global sub_800D012
+// .global object_getPanelsExceptCurrentFiltered
+// .global object_getPanelsFiltered
+// .global object_getPanelsInRowFiltered
 // .global sub_800D120
 // .global sub_800D15A
 // .global sub_800E258
-// .global sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-// .global sub_800E29C // () -> void
-// .global sub_800E2AC
-// .global sub_800E2C0
-// .global sub_800E2C2
-// .global object_getFlipDirection_800E2CA // () -> int
+// .global object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
+// .global object_setCoordinatesFromPanels // () -> void
+// .global object_setPanelsFromCoordinates
+// .global object_getEnemyDirection
+// .global object_getAllianceDirection
+// .global object_getFrontDirection // () -> int
 // .global object_getFlipDirection // (int a1, int a2) -> int
 // .global object_subtractHP
 // .global object_addHP
 // .global sub_800E2FC
 // .global sub_800E3BE
-// .global sub_800E3DE
+// .global object_calculateFinalDamage1
 // .global object_calculateFinalDamage2
-// .global sub_800E456 // () -> int
+// .global object_getFlip // () -> int
 // .global sub_800E45E
 // .global sub_800E468
 // .global sub_800E5AC
@@ -475,7 +475,7 @@
 // .global object_getEnemyByNameRange
 // .global sub_800EC56
 
-.include "data/dat00.inc"
+	.include "data/dat00.inc"
 // .global off_801ECB4
 // .global word_801ED6C
 // .global word_801EDB4
@@ -498,7 +498,7 @@
 // .global off_801FD90
 // .global byte_801FDC0
 
-.include "data/dat01.inc"
+	.include "data/dat01.inc"
 // .global byte_8020354
 // .global byte_80203EA
 // .global byte_8020404
@@ -518,11 +518,11 @@
 // .global byte_802136B
 // .global byte_802136C
 
-.include "asm/asm02.inc"
+	.include "asm/asm02.inc"
 // .global getChip_8021DA8 // (int chip_idx) -> ChipData*
 // .global sub_8021D14
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global sub_8027D10
 // .global off_802CCB4
 // .global off_802CD5C
@@ -565,24 +565,24 @@
 // .global sub_80302A8
 // .global sub_80302B6
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global sub_803D0C8
 // .global sub_803F524
 
-.include "asm/chatbox.inc"
+	.include "asm/chatbox.inc"
 // .global loc_8040A04
 
-.include "asm/asm03_2.inc"
+	.include "asm/asm03_2.inc"
 // .global render_graphicalText_8045F8C
 
-.include "data/dat08.inc"
+	.include "data/dat08.inc"
 // .global byte_8061416
 // .global byte_8061622
 
-.include "data/dat28.inc"
+	.include "data/dat28.inc"
 // .global byte_80A0C0E
 
-.include "asm/asm31.inc"
+	.include "asm/asm31.inc"
 // .global sub_80BC844
 // .global sub_80C41D8
 // .global sub_80C4204
@@ -601,7 +601,7 @@
 // .global sub_80CC0B2
 // .global sub_80CFBC4
 // .global sub_80D99EC
-// .global sub_80E05F6
+// .global SpawnT4BattleObjectWithId0
 // .global sub_80E08C4
 // .global sub_80E0D98
 // .global sub_80E0F02
@@ -658,10 +658,10 @@
 // .global off_8109550
 // .global sub_81096FA
 
-.include "asm/asm37_0.inc"
+	.include "asm/asm37_0.inc"
 // .global sub_813BF1C
 
-.include "data/dat38_60.inc"
+	.include "data/dat38_60.inc"
 // .global byte_8610881
 // .global byte_8650866
 // .global byte_8660444
@@ -682,7 +682,7 @@
 // .global dword_86BA120
 // .global byte_86BA140
 
-.include "data/dat38_85.inc"
+	.include "data/dat38_85.inc"
 // .global dword_86E0AB8
 // .global dword_86E0AF8
 // .global dword_86E0B38
@@ -742,7 +742,7 @@
 // .global dword_86F2E40
 // .global dword_86F2E54
 
-.include "data/dat38_86.inc"
+	.include "data/dat38_86.inc"
 // .global byte_8721C58
 // .global dword_872CE94
 // .global byte_872D014
@@ -879,10 +879,10 @@
 // .equ unk_3001AC0, 0x3001AC0
 // .equ unk_3001AE0, 0x3001AE0
 // .equ byte_3001B00, 0x3001B00
-.equ LCDControl, 0x4000000
-.equ IWRAMRoutinesROMLocation, 0x81D6000
-.equ IWRAMRoutinesROMLocation, 0x81D6000
-.equ loc_8870888, 0x8870888
-.equ loc_8880886, 0x8880886
+	.equ LCDControl, 0x4000000
+	.equ IWRAMRoutinesROMLocation, 0x81D6000
+	.equ IWRAMRoutinesROMLocation, 0x81D6000
+	.equ loc_8870888, 0x8870888
+	.equ loc_8880886, 0x8880886
 
-.endif // INC_ASM_ASM00_2
+	.endif // INC_ASM_ASM00_2

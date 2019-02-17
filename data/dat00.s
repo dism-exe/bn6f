@@ -1,4 +1,4 @@
-.include "data/dat00.inc"
+	.include "data/dat00.inc"
 
 off_801ECB4:
 	// <endfile>

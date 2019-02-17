@@ -1098,7 +1098,7 @@ int sub_8027118()
 {
     int v0; // r5
 
-    if ( !engine_isScreeneffectAnimating() )
+    if ( !IsPaletteFadeActive() )
     {
         *(v0 + 2) = 16;
         engine_setScreeneffect(48, 32);
@@ -1112,7 +1112,7 @@ int sub_8027134()
 {
     int v0; // r5
 
-    if ( !engine_isScreeneffectAnimating() )
+    if ( !IsPaletteFadeActive() )
     {
         engine_setScreeneffect(4, 32);
         *(v0 + 2) = 20;
@@ -1137,7 +1137,7 @@ int sub_8027150()
     int v10; // r1
     int v11; // r2
 
-    if ( !engine_isScreeneffectAnimating() )
+    if ( !IsPaletteFadeActive() )
     {
         v1 = *(v0 + 8) - 1;
         v2 = (*(v0 + 8) + 71 + v0);
@@ -1176,7 +1176,7 @@ int sub_80271C2()
     int v0; // r5
     int result; // r0
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !result )
     {
         *(v0 + 1) = 4;
@@ -1582,7 +1582,7 @@ int sub_802759E()
     int v2; // r1
     int v3; // r2
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !result )
     {
         engine_setScreeneffect(0, 32);
@@ -1603,7 +1603,7 @@ int sub_80275D8()
     int v0; // r5
     int result; // r0
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !result )
     {
         *(v0 + 1) = 4;
@@ -1673,7 +1673,7 @@ int sub_8027658()
     *(v0 + 64) = result;
     if ( result >= 50 )
     {
-        result = engine_isScreeneffectAnimating();
+        result = IsPaletteFadeActive();
         if ( !result )
         {
             result = 12;
@@ -1732,7 +1732,7 @@ int sub_80276D6()
     int v0; // r5
     int result; // r0
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !result )
     {
         *(v0 + 1) = 4;
@@ -1810,7 +1810,7 @@ int sub_802777C()
     *(v0 + 64) = result;
     if ( result >= 50 )
     {
-        result = engine_isScreeneffectAnimating();
+        result = IsPaletteFadeActive();
         if ( !result )
         {
             result = 12;
@@ -1874,7 +1874,7 @@ int sub_8027806()
     int v0; // r5
     int result; // r0
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !result )
     {
         *(v0 + 1) = 4;
@@ -2116,7 +2116,7 @@ int sub_8027AAE()
     int v3; // r1
     int v4; // r2
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !result )
     {
         engine_setScreeneffect(0, 32);
@@ -2139,7 +2139,7 @@ int sub_8027ADE()
     int result; // r0
     int v2; // r0
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !result )
     {
         v2 = sub_80279FC();
@@ -5968,7 +5968,7 @@ int sub_802A30C()
     sub_8000642(31, 0xFFFF, *&byte_802A3F4[v1]);
     sub_8000642(22, 0xFFFF, *&byte_802A400[v1]);
     *(v0 + 19) = v1 + 2;
-    v2 = engine_isScreeneffectAnimating();
+    v2 = IsPaletteFadeActive();
     result = (loc_80062FC)(v2);
     if ( !result )
     {
@@ -6010,7 +6010,7 @@ int sub_802A362()
     sub_8000642(31, 0xFFFF, *&byte_802A400[v1]);
     sub_8000642(22, 0xFFFF, *&byte_802A3F4[v1]);
     *(v0 + 19) = v1 + 2;
-    v2 = engine_isScreeneffectAnimating();
+    v2 = IsPaletteFadeActive();
     result = (loc_80062FC)(v2);
     if ( !result )
     {
@@ -7554,7 +7554,7 @@ int sub_802B7A0()
 
     if ( *(v0 + 2) )
     {
-        result = engine_isScreeneffectAnimating();
+        result = IsPaletteFadeActive();
         if ( !result )
         {
             v2 = 36;
@@ -7770,7 +7770,7 @@ int sub_802B9D4()
     _DWORD *v0; // r5
     int result; // r0
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !result )
     {
         result = 8;
@@ -8361,7 +8361,7 @@ int sub_802C328()
         engine_setScreeneffect(12, 16);
         *(v0 + 3) = 4;
     }
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v2 )
     {
         result = 8;
@@ -13005,7 +13005,7 @@ int sub_802F6A4()
     int result; // r0
     char v2; // zf
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v2 )
     {
         result = 8;
@@ -13096,7 +13096,7 @@ int sub_802F710()
 
     if ( v0[2] > 0 )
         sub_802F8D8();
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v5 )
     {
         v6 = v0[2];
@@ -13233,7 +13233,7 @@ int __fastcall sub_802F81C(int a1, int a2, int a3)
     v5 = *(v4 + oToolkit_JoypadPtr);
     if ( *(v5 + 2) & 9 )
     {
-        result = engine_isScreeneffectAnimating();
+        result = IsPaletteFadeActive();
         if ( !v9 )
         {
             musicGameState_8000784(result, v7, v8);
