@@ -9956,7 +9956,7 @@ sub_8013764:
 	thumb_func_start sub_8013774
 sub_8013774:
 	push {r6,lr}
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r6, r1
 	bl sub_8013682 // (int idx) -> void*
 	ldrb r0, [r0,r6]
@@ -11438,7 +11438,7 @@ off_801426C: .word sub_801429C+1
 	thumb_local_start
 sub_801429C:
 	push {lr}
-	bl loc_80144CA
+	bl sub_80144CA
 	pop {pc}
 	thumb_func_end sub_801429C
 
@@ -11590,7 +11590,9 @@ sub_80143A6:
 	mov r1, #0x80
 	strb r1, [r0,#0xe]
 	b loc_80143B6
-loc_80143B4:
+
+	thumb_func_start sub_80143B4
+sub_80143B4:
 	push {lr}
 loc_80143B6:
 	mov r0, #1
@@ -11604,6 +11606,7 @@ loc_80143B6:
 	str r0, [r1,#0x4c]
 	pop {pc}
 	thumb_func_end sub_80143A6
+	thumb_func_end sub_80143B4
 
 	thumb_local_start
 sub_80143CE:
@@ -11783,7 +11786,9 @@ sub_80144C0:
 	mov r7, #0
 	bl sub_801390C
 	b loc_80144CE
-loc_80144CA:
+
+	thumb_local_start
+sub_80144CA:
 	push {r4,r7,lr}
 	mov r7, #1
 loc_80144CE:
@@ -11828,6 +11833,7 @@ loc_8014528:
 	bl sub_80142C2
 	pop {r4,r7,pc}
 	thumb_func_end sub_80144C0
+	thumb_func_end sub_80144CA
 
 	thumb_local_start
 sub_8014536:
@@ -13953,7 +13959,7 @@ loc_80156DC:
 	mov r0, #0
 	bl sub_8015B22
 	bl sub_80144C0
-	bl loc_80143B4
+	bl sub_80143B4
 	bl sub_800EB08
 	mov r1, #0x2c 
 	bl sub_8013774
@@ -14093,7 +14099,7 @@ loc_801580A:
 	mov r1, #0x80
 	bl sub_8015BEC
 	bl sub_80144C0
-	bl loc_80143B4
+	bl sub_80143B4
 	mov r1, #0x2c 
 	bl sub_8013774
 	mov r2, #0

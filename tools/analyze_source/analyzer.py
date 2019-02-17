@@ -15,6 +15,8 @@ import copy
 import opcodes
 import time
 import collections
+import analyzer
+import functools
 
 syms = {}
 scanned_files = {}
@@ -316,6 +318,73 @@ def check_pointer_shift_in_sprite_decompress(opcode_params, funcstate, src_file,
         return True
     return not (opcode_params[0] == "r2" and opcode_params[1] == "r2" and opcode_params[2] == "#1")
 
+class ReturnValue:
+    __slots__ = ("regname", "datatype")
+    def __init__(self, regname, *datatype):
+        self.regname = regname
+        if len(datatype) == 1:
+            self.datatype = datatype[0]
+        else:
+            self.datatype = functools.partial(datatype[0], datatype[1:])
+
+template_functions = None
+
+# do this later once syms has been set
+def set_template_functions():
+    analyzer.template_functions = {
+        "sound_play": (
+            ReturnValue("r0", datatypes.UnknownDataType),
+        ),
+        "sub_3007958": (
+            ReturnValue("r0", datatypes.RAMPointer),
+            ReturnValue("r1", datatypes.RAMPointer), # side effect
+            ReturnValue("r3", datatypes.Primitive.new_byte)
+        ),
+        "object_getPanelDataOffset": (
+            ReturnValue("r0", datatypes.RAMPointer),
+            ReturnValue("r1", datatypes.RAMPointer), # side effect
+            ReturnValue("r2", datatypes.ROMPointer, syms["sub_3007958"]), # side effect
+            ReturnValue("r3", datatypes.Primitive.new_byte) # side effect
+        ),
+        "object_getPanelParameters": (
+            ReturnValue("r0", datatypes.Primitive.new_word),
+            ReturnValue("r1", datatypes.RAMPointer), # side effect
+            ReturnValue("r2", datatypes.ROMPointer, syms["sub_3007958"]), # side effect
+            ReturnValue("r3", datatypes.Primitive.new_byte) # side effect
+        ),
+        "sub_8013682": (
+            ReturnValue("r0", datatypes.RAMPointer),
+            ReturnValue("r1", datatypes.Primitive.new_byte)
+        ),
+        "sub_8013774": (
+            ReturnValue("r0", datatypes.Primitive.new_byte),
+            ReturnValue("r1", datatypes.Primitive.new_byte)
+        ),
+        "object_checkPanelParameters": (
+            ReturnValue("r0", datatypes.Primitive.new_byte),
+            ReturnValue("r1", datatypes.RAMPointer), # side effect
+            ReturnValue("r2", datatypes.ROMPointer, syms["sub_3007958"]), # side effect
+            ReturnValue("r3", datatypes.Primitive.new_byte) # side effect
+        ),
+        "sub_800E994": (
+            ReturnValue("r0", datatypes.Primitive.new_byte),
+            ReturnValue("r1", datatypes.Primitive.new_byte), # side effect
+        )
+    }
+
+def check_stored_functions(opcode_params, funcstate, src_file, fileline):
+    if opcode_params.startswith("nullsub"):
+        return False
+    elif opcode_params not in analyzer.template_functions:
+        return True
+
+    return_values = analyzer.template_functions[opcode_params]
+    for return_value in return_values:
+        funcstate.regs[return_value.regname].set_new_reg(analyzer.RegisterInfo(return_value.datatype().wrap(), fileline))
+
+    fileline_msg("Called stored function \"%s\"." % opcode_params, fileline)
+    return False
+
 def read_jumptable(jumptable):
     """
     Returns a jumptable's entries in a list specified by the given label.
@@ -354,6 +423,7 @@ def read_jumptable(jumptable):
     registers["lr"].append(RegisterInfo(datatypes.ProgramCounter("asm00_1.s", 99).wrap(), fileline))
     registers["sp"].append(RegisterInfo(datatypes.Stack().wrap(), fileline))
     registers["pc"].default_initialize(fileline)
+    opcodes.bl_opcode.append_callback(check_stored_functions)
     opcodes.bl_opcode.append_callback(opcodes.check_spawn_battle_object)
     opcodes.ble_opcode.append_callback(opcodes.check_loc_80EE4F0)
     opcodes.lsl_imm_opcode.append_callback(check_pointer_shift_in_sprite_decompress)
@@ -361,4 +431,5 @@ def read_jumptable(jumptable):
     debug_print("function: %s" % parser.strip_plus1(words[0]))
     #global global_function_tree
     #global_function_tree = run_analyzer_from_label(parser.strip_plus1(words[0]), registers, time.time())[1]
+    set_template_functions()
     run_analyzer_from_label(parser.strip_plus1(words[0]), registers, time.time())

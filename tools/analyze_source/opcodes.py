@@ -660,9 +660,6 @@ def check_spawn_battle_object(opcode_params, funcstate, src_file, fileline):
         funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
         fileline_msg("Called special function \"%s\"." % opcode_params, fileline)
         return False
-    elif bl_sym.name == "sound_play":
-        funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(datatypes.UnknownDataType().wrap(), fileline))
-        fileline_msg("Called special function \"%s\"." % opcode_params, fileline)
     #else:
     #    debug_print("not object spawn function: %s" % bl_sym.name)
 
@@ -692,7 +689,9 @@ class Opcode:
     def run_function(self, opcode_params, funcstate, src_file, fileline):
         do_main_function = True
         for callback in self.callbacks:
-            do_main_function &= callback(opcode_params, funcstate, src_file, fileline)
+            if not callback(opcode_params, funcstate, src_file, fileline):
+                do_main_function = False
+                break
 
         if do_main_function:
             self.function(opcode_params, funcstate, src_file, fileline)

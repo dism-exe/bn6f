@@ -351,7 +351,7 @@
 // .global sub_8013FD0
 // .global sub_8014216
 // .global sub_80143A6
-// .global loc_80143B4
+// .global sub_80143B4
 // .global sub_80144C0
 // .global sub_8015940
 // .global sub_8015952

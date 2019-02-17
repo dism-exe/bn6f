@@ -414,16 +414,16 @@ class Struct(Pointer):
         if offset is None:
             offset = Struct.zero_immediate
         struct_field = self.get_struct_offset_field(offset, fileline, size)
-        #if struct_field.offset_name != "":
-        #    self.mark_struct_access(offset, fileline, size, struct_field)
+        if struct_field.offset_name != "":
+            self.mark_struct_access(offset, fileline, size, struct_field)
         return struct_field.memory.load(self, size)
 
     def store(self, datatype, size, fileline, offset=None):
         if offset is None:
             offset = Struct.zero_immediate
         struct_field = self.get_struct_offset_field(offset, fileline, size)
-        #if struct_field.offset_name != "":
-        #    self.mark_struct_access(offset, fileline, size, struct_field)
+        if struct_field.offset_name != "":
+            self.mark_struct_access(offset, fileline, size, struct_field)
         struct_field.memory.store(self, datatype, size)
 
     def mark_struct_access(self, offset, fileline, size, struct_field):

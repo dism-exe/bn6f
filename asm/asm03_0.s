@@ -14444,7 +14444,7 @@ sub_802D9B0:
 	bl sub_8011268
 	bl sub_801A264
 	bl sub_80144C0
-	bl loc_80143B4
+	bl sub_80143B4
 	mov r1, #0x40 
 	bl sub_8013790
 	strh r0, [r5,#0x24]
@@ -14644,7 +14644,7 @@ sub_802DB80:
 	bl sub_8011268
 	bl sub_801A264
 	bl sub_80144C0
-	bl loc_80143B4
+	bl sub_80143B4
 	mov r1, #0x40 
 	bl sub_8013790
 	strh r0, [r5,#0x24]

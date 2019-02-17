@@ -166,11 +166,11 @@ def print_post_output_info(start_time, analyzer_end_time):
     # with open("function_tracker_output.pickle", "wb+") as f:
     #     pickle.dump(analyzer.function_trackers, f)
 
-    #if True:
-    #    for filename, src_file in scanned_files.items():
-    #        os.makedirs("temp/" + os.path.dirname(filename), exist_ok=True)
-    #        with open("temp/" + filename, "w+") as f:
-    #            f.writelines(line + "\n" for line in src_file.commented_lines)
+    if True:
+        for filename, src_file in scanned_files.items():
+            os.makedirs("temp/" + os.path.dirname(filename), exist_ok=True)
+            with open("temp/" + filename, "w+") as f:
+                f.writelines(line + "\n" for line in src_file.commented_lines)
 
     execution_time = time.time() - start_time
     post_output += "Full execution time: %s, Analyzer execution time: %s, Function time sum: %s, Full - Analyzer difference: %s, Full - Function difference: %s, Analyzer - Function difference: %s" % (execution_time, analyzer_execution_time, function_time_sum, execution_time - analyzer_execution_time, execution_time - function_time_sum, analyzer_execution_time - function_time_sum)

@@ -168,7 +168,7 @@
 	.global sub_8014216
 	.global sub_80142C2
 	.global sub_80143A6
-	.global loc_80143B4
+	.global sub_80143B4
 	.global sub_801443C
 	.global sub_8014446
 	.global sub_80144C0
