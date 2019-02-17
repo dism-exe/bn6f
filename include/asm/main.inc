@@ -1,28 +1,28 @@
-.ifndef INC_ASM_MAIN
-.equ INC_ASM_MAIN, 0
+	.ifndef INC_ASM_MAIN
+	.equ INC_ASM_MAIN, 0
 
 /* Public Symbols */
-.global main_
+	.global main_
 
 
 /* External Symbols */
-.include "asm/asm38.inc"
+	.include "asm/asm38.inc"
 // .global sub_3005D78
 // .global sub_3006814
 
-.include "asm/start.inc"
+	.include "asm/start.inc"
 // .global start_800023C // () -> void
 // .global start_800024C
 
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global sub_80007B2
 // .global sub_80007BE
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global sub_8000A3C
 // .global objRender_8000A44
 // .global sub_8000E10
-// .global sub_8001514 // () -> void
-// .global rng_800154C // () -> void
+// .global SeedRNG2 // () -> void
+// .global GetRNG1 // () -> void
 // .global sub_80015B4
 // .global render_80015D0
 // .global render_800172C
@@ -43,32 +43,32 @@
 // .global sub_800260C
 // .global renderPalletesAndObjs_8002650
 
-.include "asm/sprite.inc"
+	.include "asm/sprite.inc"
 // .global sub_80027C4
 // .global sprite_handleObjSprites_800289C
 
-.include "asm/asm00_1.inc"
+	.include "asm/asm00_1.inc"
 // .global sub_8003962
 // .global sub_8003AB2
 // .global sub_8004D48
 // .global sub_8004DF0
 // .global cb_80050EC // () -> void
 // .global sub_80062EC
-// .global engine_isScreeneffectAnimating // () -> zf
+// .global IsPaletteFadeActive // () -> zf
 // .global subsystem_triggerTransition_800630A
 // .global sub_8006910
-// .global CpuSet_toolKit // () -> void
-// .global sub_8006C22
+// .global SetPrimaryToolkitPointers // () -> void
+// .global RandomizeExtraToolkitPointers
 // .global sub_80071B4
 // .global isSameSubsystem_800A732 // () -> zf
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global Load_ho_802F544
 // .global sub_802FDB0
 // .global objRender_802FE0C
 // .global sub_802FF2C
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global ho_jackIn_80341B6
 // .global sub_8036ED4
 // .global sub_8036F24
@@ -85,10 +85,10 @@
 // .global cb_803FB3C
 // .global sub_803FCF0
 
-.include "asm/chatbox.inc"
+	.include "asm/chatbox.inc"
 // .global chatbox_onUpdate_803FEB4
 
-.include "asm/asm03_2.inc"
+	.include "asm/asm03_2.inc"
 // .global sub_804657C // () -> void
 // .global sub_80467D8
 // .global cb_8046CF8
@@ -96,24 +96,24 @@
 // .global cb_8049E04
 // .global cb_804A304
 
-.include "asm/asm32.inc"
+	.include "asm/asm32.inc"
 // .global menuControl_cb_openSubmenu // () -> void
 
-.include "asm/asm33.inc"
+	.include "asm/asm33.inc"
 // .global menuControl_cb_email
 
-.include "asm/asm36.inc"
+	.include "asm/asm36.inc"
 // .global cb_81382AC
 
-.include "asm/asm37_0.inc"
+	.include "asm/asm37_0.inc"
 // .global sub_813D60C
 // .global sub_813D960
 
-.include "asm/reqBBS.inc"
+	.include "asm/reqBBS.inc"
 // .global reqBBS_cb_draw_813E0A4
 // .global reqBBS_cb_813F404
 
-.include "asm/libs.inc"
+	.include "asm/libs.inc"
 // .global sub_8144240
 // .global sub_814E8A0
 // .global sub_814EE2C
@@ -124,8 +124,8 @@
 // .equ dword_2009CC0, 0x2009CC0
 // .equ dword_200A870, 0x200A870
 // .equ off_3000E70, 0x3000E70
-.equ GeneralLCDStatus_STAT_LYC_, 0x4000004
-.equ KeyStatus, 0x4000130
-.equ IWRAMRoutinesROMLocation, 0x81D6000
+	.equ GeneralLCDStatus_STAT_LYC_, 0x4000004
+	.equ KeyStatus, 0x4000130
+	.equ IWRAMRoutinesROMLocation, 0x81D6000
 
-.endif // INC_ASM_MAIN
+	.endif // INC_ASM_MAIN

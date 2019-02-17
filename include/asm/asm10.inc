@@ -1,45 +1,45 @@
-.ifndef INC_ASM_ASM10
-.equ INC_ASM_ASM10, 0
+	.ifndef INC_ASM_ASM10
+	.equ INC_ASM_ASM10, 0
 
 /* Public Symbols */
-.global sub_80663D0
-.global sub_8066450
-.global sub_806649C
-.global sub_806651C
-.global sub_8066540
-.global off_80665A4
-.global off_80665AC
-.global off_80665B4
-.global off_80665BC
-.global dword_80665E4
-.global off_8067230
-.global off_8067524
-.global off_8067754
-.global off_8067914
-.global off_8067944
-.global off_80679A4
-.global off_80679D4
-.global off_8067A14
-.global off_8067A44
-.global off_8067A6C
-.global off_8067A9C
-.global off_8067ACC
-.global sub_8067B5C
-.global sub_8067BE4
-.global sub_8067C88
-.global sub_8067D1C
-.global sub_8067D46
-.global off_8067DC8
-.global off_8067DD4
-.global off_8067DE0
-.global pt_8067DEC
+	.global sub_80663D0
+	.global sub_8066450
+	.global sub_806649C
+	.global sub_806651C
+	.global sub_8066540
+	.global off_80665A4
+	.global off_80665AC
+	.global off_80665B4
+	.global off_80665BC
+	.global dword_80665E4
+	.global off_8067230
+	.global off_8067524
+	.global off_8067754
+	.global off_8067914
+	.global off_8067944
+	.global off_80679A4
+	.global off_80679D4
+	.global off_8067A14
+	.global off_8067A44
+	.global off_8067A6C
+	.global off_8067A9C
+	.global off_8067ACC
+	.global sub_8067B5C
+	.global sub_8067BE4
+	.global sub_8067C88
+	.global sub_8067D1C
+	.global sub_8067D46
+	.global off_8067DC8
+	.global off_8067DD4
+	.global off_8067DE0
+	.global pt_8067DEC
 
 
 /* External Symbols */
-.include "asm/asm38.inc"
+	.include "asm/asm38.inc"
 // .global nullsub_38
 
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global sub_8001778
 // .global sub_8001780
 // .global sub_800195C
@@ -48,27 +48,27 @@
 // .global nullsub_39
 // .global sub_8002354
 
-.include "asm/sprite.inc"
+	.include "asm/sprite.inc"
 // .global sub_80028D4
 // .global sub_8002906
 
-.include "asm/asm00_1.inc"
-// .global sub_8003570
+	.include "asm/asm00_1.inc"
+// .global SpawnObjectsFromList
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global sub_802FF4C
 // .global sub_803037C
 // .global sub_8030472
 // .global sub_80304E8
 // .global sub_8030AA4
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global sub_8034FB8
 
-.include "asm/chatbox.inc"
+	.include "asm/chatbox.inc"
 // .global chatbox_uncomp_803FD08 // () -> int
 
-.include "data/dat09.inc"
+	.include "data/dat09.inc"
 // .global off_8066020
 // .global off_8066048
 // .global byte_80662B8
@@ -76,7 +76,7 @@
 // .global byte_8066328
 // .global byte_8066368
 
-.include "data/dat10.inc"
+	.include "data/dat10.inc"
 // .global byte_8067DF8
 // .global byte_8067E08
 // .global byte_8067E18
@@ -90,15 +90,15 @@
 // .global off_8068400
 // .global off_8068734
 
-.include "asm/asm28_1.inc"
+	.include "asm/asm28_1.inc"
 // .global byte_809F6CC
 
-.include "data/dat38_33.inc"
+	.include "data/dat38_33.inc"
 // .global byte_83C09C0
 // .global byte_83F0016
 // .global byte_83F2C16
 
-.include "data/dat38_60.inc"
+	.include "data/dat38_60.inc"
 // .global dword_859E6D0
 // .global off_8610B04
 // .global byte_8610C18
@@ -120,4 +120,4 @@
 // .equ unk_3001AC0, 0x3001AC0
 // .equ unk_3001AE0, 0x3001AE0
 
-.endif // INC_ASM_ASM10
+	.endif // INC_ASM_ASM10

@@ -3267,7 +3267,7 @@ int sub_809D9E0()
 
     if ( !byte_200ACF5 )
     {
-        v2 = engine_isScreeneffectAnimating();
+        v2 = IsPaletteFadeActive();
         if ( !v3 )
         {
             v4 = v2;

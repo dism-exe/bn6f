@@ -710,7 +710,7 @@ void sub_813096C()
                     {
                         if ( !v8 )
                         {
-                            engine_isScreeneffectAnimating();
+                            IsPaletteFadeActive();
                             if ( !v10 )
                             {
                                 *(v0 + 50) = *(v0 + 42);
@@ -798,7 +798,7 @@ void __noreturn sub_8130A04()
                     if ( v11 == 255 )
                     {
 LABEL_27:
-                        engine_isScreeneffectAnimating();
+                        IsPaletteFadeActive();
                         if ( !v16 )
                             sub_8131210();
                         goto LABEL_29;
@@ -1111,7 +1111,7 @@ void __noreturn sub_8130D40()
                 while ( v6 <= v7 );
                 if ( !v8 )
                 {
-                    v10 = engine_isScreeneffectAnimating();
+                    v10 = IsPaletteFadeActive();
                     if ( !v14 )
                     {
                         sub_8131864(v10, v11, v12, v13);
@@ -1297,7 +1297,7 @@ int sub_8130F78()
     int v7; // r2
     int v8; // r3
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v2 )
     {
         if ( eStruct200BC30_getJumpOffset00() )
@@ -1344,7 +1344,7 @@ int sub_8130FC8()
     if ( result == 4 )
     {
 LABEL_13:
-        result = engine_isScreeneffectAnimating();
+        result = IsPaletteFadeActive();
         if ( !v8 )
             sub_81312FC();
     }
@@ -2326,7 +2326,7 @@ int sub_8131F3C()
     char v2; // zf
     int v3; // r0
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v2 )
     {
         sub_813D90C(1);
@@ -2377,7 +2377,7 @@ int sub_8131FC4()
     int v10; // r2
     int v11; // r3
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v3 )
     {
         v4 = sub_813D90C(1);
@@ -3152,7 +3152,7 @@ int sub_81327A0()
     int result; // r0
     char v2; // zf
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v2 )
     {
         result = 72;
@@ -3454,7 +3454,7 @@ void __noreturn sub_8132C50()
     int v0; // r5
     char v1; // zf
 
-    engine_isScreeneffectAnimating();
+    IsPaletteFadeActive();
     if ( !v1 )
     {
         chatbox_8045F2C(64);
@@ -3486,7 +3486,7 @@ void __noreturn sub_8132CA0()
 {
     char v0; // zf
 
-    engine_isScreeneffectAnimating();
+    IsPaletteFadeActive();
     if ( !v0 )
     {
         chatbox_8045F1C(64);
@@ -3845,7 +3845,7 @@ void __noreturn sub_8133400()
     int v1; // r0
     char v2; // zf
 
-    v1 = engine_isScreeneffectAnimating();
+    v1 = IsPaletteFadeActive();
     if ( !v2 )
     {
         *(v0 + 2) = 4;
@@ -4477,7 +4477,7 @@ int __fastcall sub_81339BC(int a1)
     sub_81340FC();
     sub_80465BC();
     sub_80465F8();
-    v2 = engine_isScreeneffectAnimating();
+    v2 = IsPaletteFadeActive();
     if ( !v3 )
     {
         v4 = sub_8046664();
@@ -6773,7 +6773,7 @@ int sub_813581C()
     int result; // r0
     char v1; // zf
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v1 )
         sub_8135F18();
     return result;
@@ -7179,7 +7179,7 @@ int sub_8135B54()
 
     sub_80465BC();
     sub_80465F8();
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v3 )
     {
         chatbox_8040818();
@@ -9945,7 +9945,7 @@ int sub_8137990()
     int result; // r0
     char v2; // zf
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v2 )
     {
         result = 4;
@@ -10054,7 +10054,7 @@ signed int sub_8137A7C()
     sub_80465BC();
     sub_80465F8();
     sub_81380E0();
-    engine_isScreeneffectAnimating();
+    IsPaletteFadeActive();
     if ( !v2 )
     {
         chatbox_8040818();
@@ -10700,7 +10700,7 @@ int sub_81383C4()
     int result; // r0
     char v2; // zf
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v2 )
     {
         engine_setScreeneffect(128, 255);
@@ -11042,7 +11042,7 @@ int sub_8138700()
     int result; // r0
     char v3; // zf
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v3 )
     {
         result = *(*(v1 + oToolkit_JoypadPtr) + 2);
@@ -11071,7 +11071,7 @@ _BYTE *sub_8138730()
     *(v0 + 4) = result;
     if ( !result )
     {
-        result = engine_isScreeneffectAnimating();
+        result = IsPaletteFadeActive();
         if ( !v2 )
         {
             sub_8000F86(*(v0 + 32));

@@ -1,13 +1,13 @@
-.ifndef INC_DATA_CHIPDATAARR
-.equ INC_DATA_CHIPDATAARR, 0
+	.ifndef INC_DATA_CHIPDATAARR
+	.equ INC_DATA_CHIPDATAARR, 0
 
 /* Public Symbols */
-.global ChipDataArr_8021DA8
-.global dword_802412C
+	.global ChipDataArr_8021DA8
+	.global dword_802412C
 
 
 /* External Symbols */
-.include "data/dat38_86.inc"
+	.include "data/dat38_86.inc"
 // .global dword_86F5BB4
 // .global byte_86F60F4
 // .global byte_86F6634
@@ -652,4 +652,4 @@
 // .global byte_872CF14
 
 
-.endif // INC_DATA_CHIPDATAARR
+	.endif // INC_DATA_CHIPDATAARR

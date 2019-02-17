@@ -1,4 +1,4 @@
-.include "data/dat38_87.inc"
+	.include "data/dat38_87.inc"
 
 byte_873811C: .byte 0x3C
 	.byte 0x0, 0x3C, 0x0

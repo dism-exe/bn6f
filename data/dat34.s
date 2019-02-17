@@ -1,4 +1,4 @@
-.include "data/dat34.inc"
+	.include "data/dat34.inc"
 
 byte_812DA94: .byte 0x26
 	.byte 0x0, 0x0, 0xFF, 0x26, 0x1, 0x1, 0xFF, 0x26, 0x2, 0x2, 0xFF, 0x26
@@ -104,7 +104,7 @@ loc_812DB94:
 	ble loc_812DB94
 	tst r3, r3
 	bne loc_812DBDA
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_812DBDA
 	mov r0, #4
 	strb r0, [r5,#2]
@@ -248,7 +248,7 @@ loc_812DCD6:
 	bl sub_812ED58
 	b loc_812DCE6
 loc_812DCDC:
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_812DCE6
 	bl sub_812ECAC
 loc_812DCE6:
@@ -353,7 +353,7 @@ loc_812DDB0:
 	bl sub_812ED58
 	b loc_812DDCC
 loc_812DDB6:
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_812DDE4
 	ldrb r0, [r5,#3]
 	cmp r0, #4
@@ -687,7 +687,7 @@ loc_812E046:
 	ldr r2, dword_812E25C // =0xfedc 
 	cmp r1, r2
 	bne loc_812E080
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_812E080
 	mov r0, #8
 	mov r1, #0x10
@@ -1035,7 +1035,7 @@ loc_812E306:
 	ldr r2, dword_812E368 // =0xfedc 
 	cmp r1, r2
 	bne loc_812E35E
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_812E35E
 	mov r0, #8
 	mov r1, #0x10
@@ -1148,7 +1148,7 @@ loc_812E3F6:
 	ldr r2, dword_812E57C // =0xfedc 
 	cmp r1, r2
 	bne loc_812E43A
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_812E43A
 	mov r0, #4
 	strb r0, [r5,#2]
@@ -1502,7 +1502,7 @@ locret_812E6CA:
 	thumb_local_start
 sub_812E6CC:
 	push {lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_812E70A
 	bl sub_803EA60
 	cmp r0, #0

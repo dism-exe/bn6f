@@ -1,10 +1,10 @@
-.ifndef INC_DATA_DAT38_24
-.equ INC_DATA_DAT38_24, 0
+	.ifndef INC_DATA_DAT38_24
+	.equ INC_DATA_DAT38_24, 0
 
 /* Public Symbols */
-.global byte_84A97A8
+	.global byte_84A97A8
 
 
 /* External Symbols */
 
-.endif // INC_DATA_DAT38_24
+	.endif // INC_DATA_DAT38_24

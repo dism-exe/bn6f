@@ -1,4 +1,4 @@
-.include "asm/asm11.inc"
+	.include "asm/asm11.inc"
 
 	thumb_func_start sub_8069038
 sub_8069038:
@@ -178,7 +178,7 @@ sub_80691FE:
 	lsl r0, r0, #2
 	ldr r1, off_8069214 // =off_8069218 
 	ldr r0, [r1,r0]
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	pop {pc}
 	.balign 4, 0x00
 off_8069214: .word off_8069218
@@ -1117,7 +1117,7 @@ sub_806A1DE:
 	lsl r0, r0, #2
 	ldr r1, off_806A1F4 // =off_806A1F8 
 	ldr r0, [r1,r0]
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	pop {pc}
 	.balign 4, 0x00
 off_806A1F4: .word off_806A1F8
@@ -1832,7 +1832,7 @@ sub_806AD00:
 	lsl r0, r0, #2
 	ldr r1, off_806AD14 // =off_806AD18 
 	ldr r0, [r1,r0]
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	pop {pc}
 off_806AD14: .word off_806AD18
 off_806AD18: .word byte_806AD2C
@@ -3161,7 +3161,7 @@ sub_806C59C:
 	lsl r0, r0, #2
 	ldr r1, off_806C5B0 // =pt_806C5B4 
 	ldr r0, [r1,r0]
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	pop {pc}
 off_806C5B0: .word pt_806C5B4
 pt_806C5B4:

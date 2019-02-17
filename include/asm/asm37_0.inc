@@ -1,78 +1,78 @@
-.ifndef INC_ASM_ASM37_0
-.equ INC_ASM_ASM37_0, 0
+	.ifndef INC_ASM_ASM37_0
+	.equ INC_ASM_ASM37_0, 0
 
 /* Public Symbols */
-.global sub_813B768
-.global sub_813B780
-.global sub_813B7A0
-.global sub_813B84C
-.global sub_813B920
-.global sub_813B928
-.global sub_813B934
-.global sub_813B950
-.global sub_813B9B4
-.global sub_813B9C4
-.global sub_813B9E0
-.global sub_813B9FC
-.global sub_813BA08
-.global sub_813BA48
-.global sub_813BA64
-.global sub_813BA80
-.global sub_813BAA8
-.global sub_813BAC4
-.global sub_813BAEC
-.global sub_813BB68
-.global sub_813BBD4
-.global sub_813BF1C
-.global sub_813BF60
-.global sub_813BFB8
-.global sub_813C030 // () -> void
-.global sub_813C06C
-.global sub_813C1C0
-.global sub_813C324
-.global sub_813C334
-.global sub_813C3AC
-.global sub_813D41C
-.global sub_813D48C
-.global sub_813D5C8
-.global sub_813D5D0
-.global sub_813D5DC
-.global sub_813D60C
-.global sub_813D638
-.global sub_813D648
-.global sub_813D66C
-.global sub_813D750
-.global sub_813D760
-.global sub_813D78C
-.global sub_813D7B8
-.global sub_813D8C4
-.global sub_813D8D0
-.global sub_813D90C
-.global sub_813D91C
-.global sub_813D924
-.global sub_813D934
-.global sub_813D94C
-.global sub_813D960
-.global sub_813D978
-.global sub_813D98C
-.global sub_813D9A0
-.global sub_813DA84
-.global sub_813DA94
-.global sub_813DB24
-.global byte_813DBC0
-.global byte_813DBDC
-.global tileRefs_813DBE4
-.global byte_813DEC4
-.global tileRefs_813DF44
-.global off_813DF74
-.global off_813E04C
+	.global sub_813B768
+	.global sub_813B780
+	.global sub_813B7A0
+	.global sub_813B84C
+	.global sub_813B920
+	.global sub_813B928
+	.global sub_813B934
+	.global sub_813B950
+	.global sub_813B9B4
+	.global sub_813B9C4
+	.global sub_813B9E0
+	.global sub_813B9FC
+	.global sub_813BA08
+	.global sub_813BA48
+	.global sub_813BA64
+	.global sub_813BA80
+	.global sub_813BAA8
+	.global sub_813BAC4
+	.global sub_813BAEC
+	.global sub_813BB68
+	.global sub_813BBD4
+	.global sub_813BF1C
+	.global sub_813BF60
+	.global sub_813BFB8
+	.global sub_813C030 // () -> void
+	.global sub_813C06C
+	.global sub_813C1C0
+	.global sub_813C324
+	.global sub_813C334
+	.global sub_813C3AC
+	.global sub_813D41C
+	.global sub_813D48C
+	.global sub_813D5C8
+	.global sub_813D5D0
+	.global sub_813D5DC
+	.global sub_813D60C
+	.global sub_813D638
+	.global sub_813D648
+	.global sub_813D66C
+	.global sub_813D750
+	.global sub_813D760
+	.global sub_813D78C
+	.global sub_813D7B8
+	.global sub_813D8C4
+	.global sub_813D8D0
+	.global sub_813D90C
+	.global sub_813D91C
+	.global sub_813D924
+	.global sub_813D934
+	.global sub_813D94C
+	.global sub_813D960
+	.global sub_813D978
+	.global sub_813D98C
+	.global sub_813D9A0
+	.global sub_813DA84
+	.global sub_813DA94
+	.global sub_813DB24
+	.global byte_813DBC0
+	.global byte_813DBDC
+	.global tileRefs_813DBE4
+	.global byte_813DEC4
+	.global tileRefs_813DF44
+	.global off_813DF74
+	.global off_813E04C
 
 
 /* External Symbols */
-.include "asm/start.inc"
+	.include "asm/start.inc"
 // .global start_800027C
 
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
@@ -82,19 +82,19 @@
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global getPETNaviSelect // () -> u8
 // .global sub_80010BE
-// .global change_20013F0_800151C // () -> int
+// .global GetRNG2 // () -> int
 
-.include "asm/asm00_2.inc"
+	.include "asm/asm00_2.inc"
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6 // (int a1, int a2) -> u8
 // .global sub_80137E6
 // .global sub_80137FE
 
-.include "asm/asm02.inc"
+	.include "asm/asm02.inc"
 // .global getChip_8021DA8 // (int chip_idx) -> ChipData*
 // .global split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global sub_802D064
 // .global sub_802D158
 // .global sub_802D15E
@@ -106,7 +106,7 @@
 // .global SetEventFlagRange // (u16 entryFlagBitfield) -> void
 // .global ClearEventFlagRange // (u16 entryFlagBitfield) -> void
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global sub_803CB00
 // .global sub_803CE28
 // .global sub_803CE44
@@ -114,13 +114,13 @@
 // .global sub_803D108
 // .global sub_803DD30
 
-.include "asm/asm32.inc"
+	.include "asm/asm32.inc"
 // .global sub_8121154
 
-.include "asm/asm36.inc"
+	.include "asm/asm36.inc"
 // .global sub_8136C24
 
-.include "data/dat36.inc"
+	.include "data/dat36.inc"
 // .global StructArr_813944C
 // .global byte_813B1EC
 // .global byte_813B2CD
@@ -130,7 +130,7 @@
 // .global byte_813B3AE
 // .global byte_813B522
 
-.include "asm/libs.inc"
+	.include "asm/libs.inc"
 // .global sub_81465BC
 // .global sub_814692C
 // .global sub_8146B70
@@ -139,7 +139,7 @@
 // .global sub_8148FC0
 // .global sub_8149718
 
-.include "data/dat38_92.inc"
+	.include "data/dat38_92.inc"
 // .global byte_87E78A8
 // .global byte_87E7B30
 // .global byte_87E9320
@@ -211,4 +211,4 @@
 // .equ byte_203F7D8, 0x203F7D8
 // .equ unk_30019E0, 0x30019E0
 
-.endif // INC_ASM_ASM37_0
+	.endif // INC_ASM_ASM37_0

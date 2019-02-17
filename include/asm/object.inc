@@ -1,135 +1,135 @@
-.ifndef INC_ASM_OBJECT
-.equ INC_ASM_OBJECT, 0
+	.ifndef INC_ASM_OBJECT
+	.equ INC_ASM_OBJECT, 0
 
 /* Public Symbols */
-.global object_timefreezeEnd
-.global sub_800BDB2
-.global sub_800BEDA
-.global sub_800BF16
-.global loc_800BF30
-.global sub_800BF5C
-.global sub_800BF66
-.global dword_800BF74
-.global off_800BF78
-.global off_800BF7C
-.global sub_800BF88
-.global sub_800BFC4
-.global sub_800C5E0
-.global sub_800C8F0
-.global object_getPanelParameters
-.global sub_800C90A
-.global object_crackPanel
-.global object_crackPanelDup1
-.global object_breakPanel
-.global object_breakPanel_dup1
-.global object_breakPanel_dup2
-.global object_breakPanel_dup3
-.global object_breakPanelLoud
-.global object_panel_setPoison
-.global object_highlightPanel
-.global object_setPanelType
-.global object_setPanelAlliance
-.global object_setPanelAllianceTimerLong
-.global object_setPanelAllianceTimerShort
-.global object_setPanelTypeBlink
-.global object_isCurrentPanelValid
-.global object_isValidPanel
-.global object_checkPanelParameters
-.global object_isCurrentPanelSolid
-.global object_isPanelSolid
-.global object_highlightCurrentCollisionPanels
-.global object_highlightPanelRegion
-.global object_highlightPanelRegionBlue
-.global object_hidePanel
-.global object_getPanelsExceptCurrentFilterred
-.global sub_800CEA0
-.global sub_800CF14
-.global sub_800CF42
-.global sub_800CF70
-.global sub_800CFA6
-.global sub_800CFDC
-.global sub_800D012
-.global sub_800D06A
-.global sub_800D086
-.global sub_800D0BC
-.global sub_800D120
-.global sub_800D15A
-.global sub_800D3FE
-.global sub_800D45C
-.global sub_800D4C2
-.global sub_800D4D0
-.global sub_800D58C
-.global sub_800D5F0
-.global sub_800D618
-.global sub_800D668
-.global sub_800E24C
-.global sub_800E258
-.global sub_800E276 // (int a1, int a2) -> (int n1, int n2)
-.global sub_800E29C // () -> void
-.global sub_800E2AC
-.global sub_800E2C0
-.global sub_800E2C2
-.global object_getFlipDirection_800E2CA // () -> int
-.global object_getFlipDirection // (int a1, int a2) -> int
-.global object_subtractHP
-.global object_addHP
-.global sub_800E2FC
-.global sub_800E360
-.global sub_800E3BE
-.global sub_800E3DE
-.global object_calculateFinalDamage2
-.global sub_800E456 // () -> int
-.global sub_800E45E
-.global sub_800E468
-.global sub_800E5AC
-.global object_canMove
-.global sub_800E5FC
-.global sub_800E618
-.global sub_800E680
-.global sub_800E6E8
-.global sub_800E708
-.global sub_800E730
-.global sub_800E994
-.global object_setCounterTime
-.global sub_800E9FA
-.global sub_800EA0E
-.global sub_800EA22
-.global sub_800EA90
-.global sub_800EABA
-.global sub_800EAC4
-.global sub_800EADA
-.global object_setInvulnerableTime
-.global sub_800EB08
-.global sub_800EB26
-.global sub_800EB6C
-.global object_spawnHiteffect
-.global object_getEnemyByNameRange
-.global sub_800EC3C
-.global sub_800EC48
-.global sub_800EC56
-.global sub_800EC80
-.global sub_800ED00
-.global object_createAIData
+	.global object_timefreezeEnd
+	.global sub_800BDB2
+	.global sub_800BEDA
+	.global sub_800BF16
+	.global loc_800BF30
+	.global sub_800BF5C
+	.global sub_800BF66
+	.global dword_800BF74
+	.global off_800BF78
+	.global off_800BF7C
+	.global sub_800BF88
+	.global sub_800BFC4
+	.global sub_800C5E0
+	.global sub_800C8F0
+	.global object_getPanelParameters
+	.global object_getPanelDataOffset
+	.global object_crackPanel
+	.global object_crackPanelDup1
+	.global object_breakPanel
+	.global object_breakPanel_dup1
+	.global object_breakPanel_dup2
+	.global object_breakPanel_dup3
+	.global object_breakPanelLoud
+	.global object_panel_setPoison
+	.global object_highlightPanel
+	.global object_setPanelType
+	.global object_setPanelAlliance
+	.global object_setPanelAllianceTimerLong
+	.global object_setPanelAllianceTimerShort
+	.global object_setPanelTypeBlink
+	.global object_isCurrentPanelValid
+	.global object_isValidPanel
+	.global object_checkPanelParameters
+	.global object_isCurrentPanelSolid
+	.global object_isPanelSolid
+	.global object_highlightCurrentCollisionPanels
+	.global object_highlightPanelRegion
+	.global object_highlightPanelRegionBlue
+	.global object_hidePanel
+	.global object_getPanelsExceptCurrentFiltered
+	.global object_getPanelsFiltered
+	.global object_getPanelsInColumnIgnoreRowFiltered
+	.global object_getPanelsInRowIgnoreColumnFiltered
+	.global object_getPanelsIgnoreRowFiltered
+	.global object_getPanelsIgnoreColumnFiltered
+	.global object_getPanelsInColumnFiltered
+	.global object_getPanelsInRowFiltered
+	.global object_getEnemyPlayerPanels
+	.global object_getClosestPanelMatchingRowFiltered
+	.global object_getFirstPanelInDirectionFiltered
+	.global sub_800D120
+	.global sub_800D15A
+	.global object_getPanelRegion
+	.global sub_800D45C
+	.global object_getEdgePanelMatchingRow
+	.global sub_800D4D0
+	.global sub_800D58C
+	.global sub_800D5F0
+	.global sub_800D618
+	.global sub_800D668
+	.global sub_800E24C
+	.global sub_800E258
+	.global object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
+	.global object_setCoordinatesFromPanels // () -> void
+	.global object_setPanelsFromCoordinates
+	.global object_getEnemyDirection
+	.global object_getAllianceDirection
+	.global object_getFrontDirection // () -> int
+	.global object_getFlipDirection // (int a1, int a2) -> int
+	.global object_subtractHP
+	.global object_addHP
+	.global sub_800E2FC
+	.global sub_800E360
+	.global sub_800E3BE
+	.global object_calculateFinalDamage1
+	.global object_calculateFinalDamage2
+	.global object_getFlip // () -> int
+	.global sub_800E45E
+	.global sub_800E468
+	.global sub_800E5AC
+	.global object_canMove
+	.global sub_800E5FC
+	.global sub_800E618
+	.global sub_800E680
+	.global sub_800E6E8
+	.global sub_800E708
+	.global sub_800E730
+	.global sub_800E994
+	.global object_setCounterTime
+	.global sub_800E9FA
+	.global sub_800EA0E
+	.global sub_800EA22
+	.global sub_800EA90
+	.global sub_800EABA
+	.global sub_800EAC4
+	.global sub_800EADA
+	.global object_setInvulnerableTime
+	.global sub_800EB08
+	.global sub_800EB26
+	.global sub_800EB6C
+	.global object_spawnHiteffect
+	.global object_getEnemyByNameRange
+	.global sub_800EC3C
+	.global sub_800EC48
+	.global sub_800EC56
+	.global sub_800EC80
+	.global sub_800ED00
+	.global object_createAIData
 
 
 /* External Symbols */
-.include "asm/asm38.inc"
+	.include "asm/asm38.inc"
 // .global dword_3005E80
 // .global sub_30078C8
 // .global sub_30078E0
 // .global sub_3007958
 // .global sub_30079A4
 
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global sub_8000E30
-// .global sub_8001532
+// .global GetPositiveSignedRNG2
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 
-.include "asm/asm00_1.inc"
+	.include "asm/asm00_1.inc"
 // .global object_freeMemory
 // .global battle_isPaused
 // .global battle_isTimeStop
@@ -142,7 +142,7 @@
 // .global sub_800B8AC
 // .global sub_800B8D8
 
-.include "asm/asm00_2.inc"
+	.include "asm/asm00_2.inc"
 // .global sub_80103BC
 // .global sub_8014150
 // .global sub_80182B4
@@ -151,30 +151,30 @@
 // .global object_setFlag // (int a1) -> void
 // .global object_clearFlag // (int bitfield) -> void
 // .global object_getFlag // () -> int
-// .global sub_801A16C
-// .global sub_801A176
-// .global sub_801A180
+// .global object_setFlag2
+// .global object_clearFlag2
+// .global object_getFlag2
 // .global sub_801BDDE
 // .global sub_801E754
 // .global loc_801E792
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global sub_802CE10
 // .global sub_802CE78
 // .global sub_802CEA6
 // .global sub_802D234
 // .global get_802D246 // () -> int
 
-.include "asm/asm31.inc"
+	.include "asm/asm31.inc"
 // .global sub_80C5B76
-// .global sub_80E05F6
+// .global SpawnT4BattleObjectWithId0
 // .global sub_80E08C4
 // .global sub_80E09EE
 // .global sub_80E37D2
 // .global sub_80E4B34
 // .global sub_80E9BDC
 
-.include "data/dat38_85.inc"
+	.include "data/dat38_85.inc"
 // .global byte_86DFA98
 // .global dword_86E0458
 // .global dword_86E0478
@@ -267,10 +267,10 @@
 // .equ unk_3001A20, 0x3001A20
 // .equ unk_3001A40, 0x3001A40
 // .equ unk_3001A60, 0x3001A60
-.equ IWRAMRoutinesROMLocation, 0x81D6000
-.equ IWRAMRoutinesROMLocation, 0x81D6000
-.equ IWRAMRoutinesROMLocation, 0x81D6000
-.equ IWRAMRoutinesROMLocation, 0x81D6000
-.equ IWRAMRoutinesROMLocation, 0x81D6000
+	.equ IWRAMRoutinesROMLocation, 0x81D6000
+	.equ IWRAMRoutinesROMLocation, 0x81D6000
+	.equ IWRAMRoutinesROMLocation, 0x81D6000
+	.equ IWRAMRoutinesROMLocation, 0x81D6000
+	.equ IWRAMRoutinesROMLocation, 0x81D6000
 
-.endif // INC_ASM_OBJECT
+	.endif // INC_ASM_OBJECT

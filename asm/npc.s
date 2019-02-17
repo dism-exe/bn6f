@@ -1,4 +1,4 @@
-.include "asm/npc.inc"
+	.include "asm/npc.inc"
 
 	thumb_func_start npc_809E570
 npc_809E570:
@@ -79,7 +79,7 @@ loc_809E5F0:
 	beq loc_809E60A
 	mov r0, #1
 loc_809E60A:
-	bl sub_8002F5C
+	bl sprite_setFlip
 	ldrh r0, [r5,#0x3c]
 	ldrh r1, [r5,#0x3e]
 	cmp r0, r1
@@ -93,14 +93,14 @@ loc_809E60A:
 	mov r1, #0x80
 	tst r0, r1
 	bne loc_809E632
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	b loc_809E644
 loc_809E632:
 	ldr r0, [r5,#0x60]
 	ldr r1, off_809E6C4 // =0x100 
 	tst r0, r1
 	beq loc_809E640
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	b loc_809E644
 loc_809E640:
 	bl sub_8002E52
@@ -117,7 +117,7 @@ loc_809E648:
 loc_809E658:
 	bl sprite_update
 	ldrb r0, [r5,#0x16]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	ldr r0, [r5,#0x68]
 	ldr r1, [r5,#0x6c]
 	cmp r0, r1
@@ -612,13 +612,13 @@ loc_809EA4A:
 	mov r1, #0xc0
 	tst r7, r1
 	beq loc_809EA62
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	tst r0, r7
 	beq loc_809EA6E
 	bl sub_809F516
 	b loc_809EA6E
 loc_809EA62:
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	cmp r0, r7
 	bne loc_809EA6E
 	bl sub_809F516
@@ -675,7 +675,7 @@ npc_809EAA0:
 	mov r2, #0xa0
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8004602
+	bl FreeOverworldNPCObject
 	bl npc_809F51E
 loc_809EAD4:
 	bl npc_809EBF8
@@ -968,7 +968,7 @@ npc_00_terminateScript:
 npc_809ED88:
 	push {lr}
 	add r0, r6, #1
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
 	thumb_func_end npc_809ED88
@@ -983,7 +983,7 @@ npc_809ED94:
 	mov r2, #0xa0
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8004602
+	bl FreeOverworldNPCObject
 	bl npc_809F51E
 	pop {pc}
 	thumb_func_end npc_809ED94
@@ -992,12 +992,12 @@ npc_809ED94:
 npc_809EDB2:
 	push {lr}
 	add r0, r6, #1
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_809EDCC
 	add r0, r6, #3
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
 loc_809EDCC:
@@ -1009,12 +1009,12 @@ loc_809EDCC:
 npc_809EDD0:
 	push {lr}
 	add r0, r6, #1
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_809EDEA
 	add r0, r6, #3
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
 loc_809EDEA:
@@ -1026,7 +1026,7 @@ loc_809EDEA:
 npc_809EDEE:
 	push {lr}
 	add r0, r6, #1
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r0, r0
 	bl SetEventFlag
 	add r6, #3
@@ -1037,7 +1037,7 @@ npc_809EDEE:
 npc_809EE00:
 	push {lr}
 	add r0, r6, #1
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	add r6, #3
@@ -1176,15 +1176,15 @@ npc_809EEAA:
 npc_809EEB6:
 	push {lr}
 	add r0, r6, #1
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x24]
 	add r0, r6, #3
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x28]
 	add r0, r6, #5
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x2c]
 	add r6, #7
@@ -1291,7 +1291,7 @@ npc_809EF58:
 npc_809EF60:
 	push {lr}
 	add r0, r6, #1
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	str r0, [r5,#0x68]
 	add r6, #5
 	pop {pc}
@@ -1355,7 +1355,7 @@ npc_809EFB4:
 	mov r1, #0x80
 	bic r0, r1
 	str r0, [r5,#0x60]
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	add r6, #1
 	pop {pc}
 	thumb_func_end npc_809EFB4
@@ -1367,7 +1367,7 @@ npc_809EFC6:
 	ldr r1, [r5,#0x60]
 	orr r1, r0
 	str r1, [r5,#0x60]
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	add r6, #1
 	pop {pc}
 	thumb_func_end npc_809EFC6
@@ -1447,7 +1447,7 @@ npc_809F03C:
 npc_809F048:
 	push {lr}
 	add r0, r6, #1
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	bl sound_play // () -> void
 	add r6, #3
 	pop {pc}
@@ -1464,7 +1464,7 @@ npc_809F058:
 	orr r1, r0
 	str r1, [r5,#0x60]
 	add r0, r6, #1
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r1, #0x90
 	str r0, [r5,r1]
 	bl sub_809FC1C
@@ -1512,7 +1512,7 @@ loc_809F0BE:
 	mov r2, #0xa0
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8004602
+	bl FreeOverworldNPCObject
 	bl npc_809F51E
 	pop {pc}
 	.balign 4, 0x00
@@ -1540,8 +1540,8 @@ sub_809F0EC:
 sub_809F104:
 	push {lr}
 	add r0, r6, #1
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
-	bl sub_8002ED0
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
+	bl sprite_setColorShader
 	add r6, #3
 	pop {pc}
 	thumb_func_end sub_809F104
@@ -1555,7 +1555,7 @@ sub_809F114:
 	add r2, r0, r1
 	tst r2, r2
 	beq loc_809F128
-	bl sub_8002EF6
+	bl sprite_setMosaicSize
 loc_809F128:
 	add r6, #3
 	pop {pc}
@@ -1609,7 +1609,7 @@ loc_809F16A:
 sub_809F16E:
 	push {lr}
 	add r0, r6, #1
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	str r0, [r5,#0x5c]
 	add r6, #5
 	pop {pc}
@@ -1644,7 +1644,7 @@ sub_809F198:
 	add r0, r6, #5
 	str r0, [r5,r4]
 	add r0, r6, #1
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	str r0, [r5,#0x7c]
 	mov r0, #0x10
 	strb r0, [r5,#9]
@@ -1670,7 +1670,7 @@ sub_809F1C6:
 	add r0, r6, #5
 	str r0, [r5,r4]
 	add r0, r6, #1
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
 	thumb_func_end sub_809F1C6
@@ -1691,7 +1691,7 @@ sub_809F1D8:
 	ldrb r2, [r6,#4]
 	strh r2, [r5,#0x20]
 	add r0, r6, #5
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	str r0, [r5,#0x7c]
 	mov r0, #0x10
 	strb r0, [r5,#9]
@@ -1727,7 +1727,7 @@ sub_809F218:
 	mov r4, #0x83
 	strb r2, [r5,r4]
 	add r0, r6, #4
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
 	thumb_func_end sub_809F218
@@ -1777,7 +1777,7 @@ sub_809F270:
 	cmp r0, r2
 	bgt loc_809F28E
 	add r0, r6, #3
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	b locret_809F290
 loc_809F28E:
@@ -1809,7 +1809,7 @@ sub_809F2A2:
 	cmp r0, r1
 	bne loc_809F2BC
 	add r0, r6, #3
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
 loc_809F2BC:
@@ -1828,7 +1828,7 @@ sub_809F2C0:
 	cmp r0, r1
 	beq loc_809F2DA
 	add r0, r6, #3
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
 loc_809F2DA:
@@ -1888,7 +1888,7 @@ sub_809F31C:
 	orr r1, r0
 	str r1, [r5,#0x60]
 	add r0, r6, #2
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r1, #0x94
 	str r0, [r5,r1]
 	add r6, #6
@@ -1903,7 +1903,7 @@ sub_809F338:
 	mov r0, #0
 	strh r0, [r5,#0xa]
 	add r0, r6, #1
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r7, #0x80
 	str r0, [r5,r7]
 	bl npc_809F51E
@@ -1931,7 +1931,7 @@ loc_809F36A:
 sub_809F36E:
 	push {lr}
 	add r0, r6, #1
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	bl sound_bgmusic_play // (int a1) -> void
 	add r6, #3
 	pop {pc}
@@ -1957,7 +1957,7 @@ sub_809F388:
 sub_809F392:
 	push {lr}
 	add r0, r6, #2
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r1, r0
 	ldrb r0, [r6,#1]
 	bl sub_80302A8
@@ -1977,7 +1977,7 @@ sub_809F3A6:
 loc_809F3B4:
 	add r6, #2
 	mov r0, r6
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
 	thumb_func_end sub_809F3A6
@@ -2006,7 +2006,7 @@ off_809F3E0: .word off_8044470
 sub_809F3E8:
 	push {lr}
 	add r0, r6, #5
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	b locret_809F3F4
 locret_809F3F4:
@@ -2076,12 +2076,12 @@ sub_809F438:
 sub_809F45A:
 	push {lr}
 	add r0, r6, #1
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_809F498
 	add r0, r6, #1
-	bl getBitfieldFromArr_809F64C // (u8 bitfield_arr[2]) -> u16
+	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
 	bl sub_8143B88
 	tst r1, r1
 	beq loc_809F498
@@ -2108,7 +2108,7 @@ loc_809F498:
 	mov r2, #0xa0
 	bl sprite_load // (int a1, int a2, int a3) ->
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8004602
+	bl FreeOverworldNPCObject
 	bl npc_809F51E
 	pop {pc}
 off_809F4B4: .word byte_87E30A0
@@ -2117,7 +2117,7 @@ off_809F4B4: .word byte_87E30A0
 	thumb_local_start
 sub_809F4B8:
 	push {lr}
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	mov r0, #7
 	and r0, r2
 	add r0, #0x21 
@@ -2134,7 +2134,7 @@ sub_809F4B8:
 	ldr r2, [r5,#0x28]
 	ldr r3, [r5,#0x2c]
 	mov r4, #1
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	mov r0, #0x76 
 	bl sound_play // () -> void
@@ -2149,7 +2149,7 @@ npc_809F4EE:
 	cmp r1, #0
 	beq loc_809F502
 	add r0, r6, #1
-	bl sub_809F656 // (void* a1) -> int
+	bl ReadNPCScriptWord // (void* a1) -> int
 	mov r6, r0
 	pop {pc}
 loc_809F502:

@@ -1,4 +1,4 @@
-.include "asm/asm04.inc"
+	.include "asm/asm04.inc"
 
 	thumb_func_start sub_804E62C
 sub_804E62C:
@@ -93,7 +93,7 @@ sub_804E720:
 	lsl r0, r0, #2
 	ldr r1, off_804E734 // =off_804E738 
 	ldr r0, [r1,r0]
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	pop {pc}
 off_804E734: .word off_804E738
 off_804E738:

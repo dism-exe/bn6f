@@ -1,14 +1,14 @@
-.ifndef INC_ASM_ASM21
-.equ INC_ASM_ASM21, 0
+	.ifndef INC_ASM_ASM21
+	.equ INC_ASM_ASM21, 0
 
 /* Public Symbols */
-.global sub_8080D90
-.global sub_8080DA0
-.global dword_8081010
+	.global sub_8080D90
+	.global sub_8080DA0
+	.global dword_8081010
 
 
 /* External Symbols */
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global sub_8001778
 // .global sub_8001780
@@ -22,25 +22,25 @@
 // .global nullsub_39
 // .global sub_8002354
 
-.include "asm/asm03_0.inc"
+	.include "asm/asm03_0.inc"
 // .global sub_802D234
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global sub_80304E8
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global sub_803537C
 // .global sub_8035424
 
-.include "asm/asm11.inc"
+	.include "asm/asm11.inc"
 // .global byte_8069AF0
 // .global off_8069C80
 // .global off_806A810
 // .global off_806C20C
 
-.include "data/dat19.inc"
+	.include "data/dat19.inc"
 // .global off_807EB18
 
-.include "data/dat20.inc"
+	.include "data/dat20.inc"
 // .global off_807F690
 // .global off_807F900
 // .global off_807FAC0
@@ -54,7 +54,7 @@
 // .global off_80808D8
 // .global off_8080AA0
 
-.include "data/dat21.inc"
+	.include "data/dat21.inc"
 // .global byte_80813F8
 // .global dword_80813FC
 // .global dword_8081400
@@ -71,7 +71,7 @@
 // .global dword_808144C
 // .global byte_8081450
 
-.include "data/dat38_60.inc"
+	.include "data/dat38_60.inc"
 // .global off_8610B04
 // .global byte_8610C18
 // .global byte_8610D64
@@ -123,4 +123,4 @@
 // .equ dword_2009690, 0x2009690
 // .equ byte_3001960, 0x3001960
 
-.endif // INC_ASM_ASM21
+	.endif // INC_ASM_ASM21

@@ -1,4 +1,4 @@
-.include "data/dat38_65.inc"
+	.include "data/dat38_65.inc"
 
 	.word 0x0, 0x0
 	.word 0x33333330, 0x33333330, 0x11113330, 0x11113330, 0x11113330

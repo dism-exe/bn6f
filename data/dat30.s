@@ -1,4 +1,4 @@
-.include "data/dat30.inc"
+	.include "data/dat30.inc"
 
 off_80B1B7C: .word byte_80B1BBC
 	.word byte_80B1C80

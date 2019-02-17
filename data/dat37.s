@@ -1,4 +1,4 @@
-.include "data/dat37.inc"
+	.include "data/dat37.inc"
 
 	.byte 0x0
 	.byte 0x0, 0x0
@@ -44053,15 +44053,15 @@ LibInfoText_SRAM_V113: .asciz "SRAM_V113"
 	.word sub_814D8F0+1
 	.word sub_814D994+1
 	.word sub_814D9C4+1
-off_81C0418: .word sub_814E064+1
-	.word sub_814E0DC+1
-	.word sub_814E0FC+1
-	.word sub_814E118+1
+off_81C0418: .word ply_fine+1
+	.word ply_goto+1
+	.word ply_patt+1
+	.word ply_pend+1
 	.word sub_814E12C+1
-	.word sub_814E064+1
-	.word sub_814E064+1
-	.word sub_814E064+1
-	.word sub_814E064+1
+	.word ply_fine+1
+	.word ply_fine+1
+	.word ply_fine+1
+	.word ply_fine+1
 	.word sub_814E15C+1
 	.word sub_814E168+1
 	.word sub_814E17C+1
@@ -44074,21 +44074,21 @@ off_81C0418: .word sub_814E064+1
 	.word sub_814E210+1
 	.word sub_814E7E0+1
 	.word sub_814E21C+1
-	.word sub_814E064+1
-	.word sub_814E064+1
+	.word ply_fine+1
+	.word ply_fine+1
 	.word sub_814E234+1
-	.word sub_814E064+1
-	.word sub_814E064+1
-	.word sub_814E064+1
+	.word ply_fine+1
+	.word ply_fine+1
+	.word ply_fine+1
 	.word sub_814E248+1
-	.word sub_814E064+1
+	.word ply_fine+1
 	.word sub_814E758+1
 	.word sub_814EDC0+1
 	.word sub_814E4DC+1
 	.word sub_814F228+1
 	.word sub_814F2F0+1
-	.word sub_814E044+1
-	.word byte_814E02D
+	.word RealClearChain+1
+	.word SoundMainBTM+1
 byte_81C04A8: .byte 0xE0, 0xE1, 0xE2, 0xE3, 0xE4, 0xE5, 0xE6, 0xE7, 0xE8
 	.byte 0xE9, 0xEA, 0xEB, 0xD0, 0xD1, 0xD2, 0xD3, 0xD4, 0xD5
 	.byte 0xD6, 0xD7, 0xD8, 0xD9, 0xDA, 0xDB, 0xC0, 0xC1, 0xC2

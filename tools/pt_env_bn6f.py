@@ -34,9 +34,9 @@ pt.env(gameFiles={
 'asm/asm00_0.s':
 	(0x80005AC, 0x80026A4), # size=0x20F8
 'asm/sprite.s':
-	(0x80026A4, 0x8002DC8), # size=0x724
+	(0x80026A4, 0x80030FC), # size=0xa58
 'asm/asm00_1.s':
-	(0x8002DC8, 0x800BD34), # size=0x8F6C
+	(0x80030FC, 0x800BD34), # size=0x8F6C
 'asm/object.s':
 	(0x800BD34, 0x800ED80), # size=0x304C
 'asm/asm00_2.s':

@@ -1,4 +1,4 @@
-.include "asm/asm25.inc"
+	.include "asm/asm25.inc"
 
 	thumb_local_start
 sub_808F810:
@@ -87,7 +87,7 @@ sub_808F8AC:
 	ldrb r0, [r5,#0x14]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sprite_update
 	ldr r1, off_808F8FC // =off_808F5D4 
 	ldr r1, [r1]
@@ -186,7 +186,7 @@ sub_808F990:
 	ldrb r0, [r5,#0x14]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sprite_update
 	mov r0, #0
 	pop {r5,pc}
@@ -447,7 +447,7 @@ sub_808FBA0:
 	mov r4, r0
 	push {r5}
 	mov r0, #0x1b
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	pop {pc}
 	.balign 4, 0x00
@@ -734,7 +734,7 @@ sub_808FE74:
 	push {r4-r7,lr}
 	ldr r5, off_808FEA0 // =off_808FDB8 
 	ldr r5, [r5]
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_808FE9C
 	bl sub_809019C
 	bne loc_808FE90
@@ -794,7 +794,7 @@ loc_808FEE2:
 	mov r3, #0x40 
 	lsl r3, r3, #0x10
 	mov r4, r6
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	add r6, #1
 	cmp r6, r7
@@ -881,7 +881,7 @@ loc_808FF74:
 	mov r1, #0
 	mov r2, #0
 	mov r3, #0
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	add r4, #1
 	cmp r4, #7
@@ -914,7 +914,7 @@ sub_808FF9C:
 	lsl r3, r3, #0x10
 	push {r5}
 	mov r0, #0x1b
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	strb r6, [r5,#5]
 	pop {r5}
 	mov r0, #0
@@ -1081,7 +1081,7 @@ sub_80900C8:
 	ldrh r4, [r5,#6]
 	push {r5}
 	mov r0, #0x1d
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r5}
 	add r4, #1
 	strh r4, [r5,#6]

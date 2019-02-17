@@ -9,6 +9,7 @@
 *.ss?
 *.sa?
 *.sg?
+*.SNA
 
 # atom-specific settings
 .atom*
@@ -35,3 +36,4 @@ bn6f.txt
 *.exe
 tools/agbcc/
 tools/binutils/
+*.pickle

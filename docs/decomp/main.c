@@ -145,7 +145,7 @@ int __fastcall main_static_8000454(int a1)
     u8 *v6; // r1
     u8 v7; // r4
 
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !v3 )
     {
         result = sub_813D60C();

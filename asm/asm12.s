@@ -1,4 +1,4 @@
-.include "asm/asm12.inc"
+	.include "asm/asm12.inc"
 
 	thumb_func_start sub_806D8F8
 sub_806D8F8:
@@ -321,7 +321,7 @@ sub_806DCD4:
 	lsl r0, r0, #2
 	ldr r1, off_806DCE8 // =pt_806DCEC 
 	ldr r0, [r1,r0]
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	pop {pc}
 off_806DCE8: .word pt_806DCEC
 pt_806DCEC:

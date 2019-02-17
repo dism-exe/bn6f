@@ -1,4 +1,4 @@
-.include "data/dat38_80.inc"
+	.include "data/dat38_80.inc"
 
 off_86DC3F8: .word byte_8420000
 	.word 0x49DF5E7F, 0x33F38DF, 0x7FAB793F, 0x27F47F26, 0x7E4113E4

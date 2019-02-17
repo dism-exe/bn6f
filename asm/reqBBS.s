@@ -1,4 +1,4 @@
-.include "asm/reqBBS.inc"
+	.include "asm/reqBBS.inc"
 
 	thumb_func_start reqBBS_813E07C
 reqBBS_813E07C:
@@ -140,7 +140,7 @@ loc_813E1A2:
 	strh r0, [r5,#0x22] // reqBBS_GUI.RO_cursorPos
 	ldrh r0, [r5,#0x24] // reqBBS_GUI.pagePos
 	strh r0, [r5,#0x26] // reqBBS_GUI.RO_pagePos
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_813E1B6
 	mov r0, #0
 	bl reqBBS_static_813EC10
@@ -161,7 +161,7 @@ reqBBS_draw_813E1C8:
 	ldr r1, dword_813E220 // =0x1f40 
 	strh r1, [r0]
 	bl reqBBS_813E534
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_813E21C
 	ldrb r0, [r5,#0x5] // reqBBS_GUI.numNewRequests
 	ldr r1, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
@@ -396,7 +396,7 @@ reqBBS_draw_813E398:
 	strb r1, [r0,#7]
 	mov r1, #0x50 
 	strb r1, [r0,#6]
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_813E3EA
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
@@ -445,7 +445,7 @@ reqBBS_draw_813E3F4:
 	strb r1, [r0,#7]
 	mov r1, #0x50 
 	strb r1, [r0,#6]
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_813E446
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
@@ -1955,7 +1955,7 @@ loc_813F56A:
 	strh r0, [r5,#0x22]
 	ldrh r0, [r5,#0x24]
 	strh r0, [r5,#0x26]
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_813F57E
 	mov r0, #0
 	bl reqBBS_8140358
@@ -1978,7 +1978,7 @@ reqBBS_813F590:
 	bl reqBBS_813F8F0
 	thumb_func_end reqBBS_813F590
 
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_813F5E4
 	ldrb r0, [r5,#5]
 	ldr r1, [r5,#0x28]
@@ -2206,7 +2206,7 @@ reqBBS_813F754:
 	strb r1, [r0,#7]
 	mov r1, #0x50 
 	strb r1, [r0,#6]
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_813F7A6
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
@@ -2255,7 +2255,7 @@ reqBBS_813F7B0:
 	strb r1, [r0,#7]
 	mov r1, #0x50 
 	strb r1, [r0,#6]
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_813F802
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
@@ -2621,7 +2621,7 @@ reqBBS_813FA54:
 	strb r1, [r0,#7]
 	mov r1, #0x50 
 	strb r1, [r0,#6]
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_813FAA6
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
@@ -4409,7 +4409,7 @@ off_81409CC: .word dynamicArr
 reqBBS_81409D0:
 	push {r6,lr}
 	mov r6, r0
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	mov r1, #0xff
 	and r0, r1
 	mov r1, r6

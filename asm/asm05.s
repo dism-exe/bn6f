@@ -1,4 +1,4 @@
-.include "asm/asm05.inc"
+	.include "asm/asm05.inc"
 
 	thumb_func_start sub_8052688
 sub_8052688:
@@ -121,7 +121,7 @@ sub_80527F0:
 	lsl r0, r0, #2
 	ldr r1, off_8052804 // =off_8052808 
 	ldr r0, [r1,r0]
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	pop {pc}
 off_8052804: .word off_8052808
 off_8052808: .word byte_8052834

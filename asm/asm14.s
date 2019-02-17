@@ -1,4 +1,4 @@
-.include "asm/asm14.inc"
+	.include "asm/asm14.inc"
 
 	thumb_func_start sub_8071B50
 sub_8071B50:
@@ -163,7 +163,7 @@ sub_8071CEE:
 	lsl r0, r0, #2
 	ldr r1, off_8071D04 // =off_8071D08 
 	ldr r0, [r1,r0]
-	bl sub_8003570
+	bl SpawnObjectsFromList
 	pop {pc}
 	.balign 4, 0x00
 off_8071D04: .word off_8071D08
@@ -610,7 +610,7 @@ sub_8072B70:
 	b locret_8072BA0
 loc_8072B88:
 	lsl r4, r4, #1
-	bl change_20013F0_800151C // () -> int
+	bl GetRNG2 // () -> int
 	ldr r1, dword_8072BB4 // =0x1ff 
 	and r0, r1
 	ldr r1, off_8072BB8 // =0x258 

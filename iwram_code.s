@@ -2,4 +2,4 @@
 	.text
 
 asm38:
-.include "asm/asm38.s"
+	.include "asm/asm38.s"

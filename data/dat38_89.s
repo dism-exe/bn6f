@@ -1,4 +1,4 @@
-.include "data/dat38_89.inc"
+	.include "data/dat38_89.inc"
 
 dword_87E54B0: .word 0x7BDE0000, 0x354212BE, 0x4A0C6AF4, 0x73087F6D, 0xDB37201
 	.word 0x3D8441E6, 0x777813D0, 0x25E03AE1, 0x7BDE0000, 0x35A55E75

@@ -20990,7 +20990,7 @@ char __fastcall sub_811EBF4(char result)
 // 0x811ec00
 void __fastcall sub_811EC00(int a1, int a2, int a3, int a4)
 {
-    ZeroFillByWord(&eStruct200DF20, 0x18u, a3, a4);
+    ZeroFillByWord(&ePETMenuData, 0x18u, a3, a4);
 }
 
 
@@ -21003,7 +21003,7 @@ signed int __fastcall sub_811EC10(int a1, int a2, int a3, int a4)
     char v7; // r1
 
     ZeroFillByWord(*(v4 + oToolkit_SubmenuPtr), 0x80u, a3, a4);
-    ZeroFillByWord(&eStruct200DF20, 0x18u, v5, v6);
+    ZeroFillByWord(&ePETMenuData, 0x18u, v5, v6);
     sub_811EBE8(1);
     word_200DF30 = -32;
     byte_200DF2A = sub_8120CC8(0, byte_811EBDA);
@@ -21070,7 +21070,7 @@ int sub_811EC68()
 // () -> void
 int ho_811ED1C()
 {
-    (*(jt_811ED3C + eStruct200DF20))();
+    (*(jt_811ED3C + ePETMenuData))();
     sub_80465BC();
     sub_80465F8();
     return sub_811F508();
@@ -21137,7 +21137,7 @@ void sub_811EDB4()
             --v0[9];
             goto LABEL_22;
         }
-        engine_isScreeneffectAnimating();
+        IsPaletteFadeActive();
         if ( !v2 )
         {
             sub_811F7EC();
@@ -21733,7 +21733,7 @@ signed int sub_811F708()
 
     sub_811F728();
     *(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_16) = 8;
-    eStruct200DF20 = 20;
+    ePETMenuData = 20;
     byte_200DF21 = 0;
     byte_200DF28 = 0;
     result = 3;

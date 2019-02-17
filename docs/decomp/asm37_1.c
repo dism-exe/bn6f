@@ -138,7 +138,7 @@ int sub_81419A0()
             sub_809E462();
             if ( v1 )
             {
-                engine_isScreeneffectAnimating();
+                IsPaletteFadeActive();
                 if ( !v1 )
                 {
                     chatbox_8045F3C(128);
@@ -2768,7 +2768,7 @@ int sub_8144048()
         v2 = sub_804691A(3);
         if ( !v1 )
             sub_811E744(v2, v3, v4, v5);
-        engine_isScreeneffectAnimating();
+        IsPaletteFadeActive();
         if ( !v1 && **(v0 + oToolkit_GameStatePtr) == 4 )
             sub_8143F7C();
     }

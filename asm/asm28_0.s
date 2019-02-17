@@ -1,4 +1,4 @@
-.include "asm/asm28_0.inc"
+	.include "asm/asm28_0.inc"
 
 	thumb_local_start
 sub_8098BE8:
@@ -714,7 +714,7 @@ sub_809A078:
 	strh r0, [r7,#0x4] // (word_200AC84 - 0x200ac80)
 	strh r1, [r7,#0x6] // (word_200AC86 - 0x200ac80)
 	mov r2, #1
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	mov r0, #0xa
 	bl sub_803D0C8
 	mov r3, r10
@@ -1270,7 +1270,7 @@ sub_809A520:
 	mov r0, r2
 	mov r1, r3
 	mov r2, #1
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	mov r0, #0x37 
 	mov r1, #0x8c
 	str r0, [r5,r1]
@@ -1983,7 +1983,7 @@ loc_809AB92:
 	mov r0, r2
 	mov r1, r3
 	mov r2, #1
-	bl dword_8021AEC+2
+	bl sub_8021AEE
 	// initRefs
 	ldr r0, off_809AC28 // =dword_809AC2C 
 	bl decompAndCopyData // (u32 *initRefs) -> void
@@ -2281,7 +2281,7 @@ sub_809AF00:
 	ldr r2, [r7,#0x34]
 	mov r3, #0
 	ldr r4, [r7,#0x38]
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	pop {r4-r7}
 	ldr r0, [r7,#0x20]
 	tst r0, r0
@@ -2460,7 +2460,7 @@ loc_809B0C4:
 	lsl r2, r2, #0x10
 	lsl r3, r3, #0x10
 	ldr r4, dword_809B0D4 // =0x48020000
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	mov r0, #0
 	pop {r4-r7,pc}
 dword_809B0D4: .word 0x48020000
@@ -2508,7 +2508,7 @@ loc_809B100:
 	ldr r1, [r3,#0x1c]
 	ldr r2, [r3,#0x20]
 	ldr r3, [r3,#0x24]
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 loc_809B128:
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -2755,7 +2755,7 @@ sub_809B800:
 	ldrh r4, [r7,#0x16]
 	lsr r4, r4, #1
 	str r4, [r6,#0xc]
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	mov r0, r5
 	pop {r5}
 	str r0, [r6,#0x10]
@@ -3154,7 +3154,7 @@ loc_809BDE6:
 	ldrh r4, [r7,#6]
 	lsr r4, r4, #1
 	str r4, [r6,#0xc]
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	mov r0, r5
 	pop {r5}
 	str r0, [r6,#0x10]
@@ -4463,10 +4463,10 @@ loc_809D222:
 	bne loc_809D238
 	ldr r0, dword_809D344 // =0xa108 
 loc_809D234:
-	bl sub_8002ED0
+	bl sprite_setColorShader
 loc_809D238:
 	ldrb r0, [r7,#0x5] // (byte_2000AA5 - 0x2000aa0)
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0x17
 	mov r1, #0x3d 
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
@@ -4533,7 +4533,7 @@ loc_809D2B2:
 	strb r0, [r5,#0x14]
 	mov r0, #0xff
 	strb r0, [r5,#0x15]
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	str r5, [r0,#oGameState_OverworldPlayerObjectPtr]
@@ -4654,11 +4654,11 @@ loc_809D3BC:
 	mov r1, #0xe4
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_809D3E6
-	mov r0, #0x1c
+	mov r0, #oOWPlayerObject_Coords
 	add r0, r0, r5
 	bl sub_8031612
 	lsl r0, r0, #0x10
-	str r0, [r5,#0x24]
+	str r0, [r5,#oOWPlayerObject_Z]
 loc_809D3E6:
 	mov r0, #0x17
 	mov r1, #0x18
@@ -5181,7 +5181,7 @@ locret_809D7F6:
 	thumb_local_start
 sub_809D7F8:
 	push {lr}
-	bl sub_8003B86
+	bl FreeOWPlayerObject
 	pop {pc}
 	thumb_func_end sub_809D7F8
 
@@ -5439,7 +5439,7 @@ sub_809D9E0:
 	ldrb r0, [r7,#0x15] // (byte_200ACF5 - 0x200ace0)
 	tst r0, r0
 	bne loc_809DA98
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq loc_809DA94
 	push {r0}
 	// entryIdx
@@ -6146,7 +6146,7 @@ sub_809E064:
 	push {r4,r6,r7,lr}
 	mov r0, #0
 	mov r4, #0
-	bl sub_8003B4C
+	bl SpawnOWPlayerObject
 	tst r5, r5
 	beq locret_809E088
 	mov r6, r10
@@ -6170,7 +6170,7 @@ sub_809E08A:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
-	bl sub_8003B86
+	bl FreeOWPlayerObject
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E08A
 
@@ -6522,7 +6522,7 @@ sub_809E276:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	pop {r5,pc}
 	thumb_func_end sub_809E276
 
@@ -6532,7 +6532,7 @@ sub_809E284:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
-	bl sub_8002E3C
+	bl sprite_hasShadow
 	pop {r5,pc}
 	thumb_func_end sub_809E284
 
@@ -6552,7 +6552,7 @@ sub_809E2A0:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
-	bl sprite_setPallete // (int pallete) -> void
+	bl sprite_setPalette // (int pallete) -> void
 	pop {r5,pc}
 	thumb_func_end sub_809E2A0
 
@@ -6672,7 +6672,7 @@ sub_809E31A:
 	ldrb r0, [r5,#0x14]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sprite_update
 	mov r0, #0
 	bl sub_8001172
@@ -6702,7 +6702,7 @@ sub_809E35E:
 	ldrb r0, [r5,#0x14]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sprite_update
 	mov r0, #0x54
 	bl sub_8001172
@@ -6817,7 +6817,7 @@ sub_809E434:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
-	bl sub_8002DEA
+	bl sprite_getFrameParameters
 	pop {r5,pc}
 	thumb_func_end sub_809E434
 
@@ -6933,7 +6933,7 @@ loc_809E4DA:
 	ldrb r0, [r5,#0x14]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sprite_update
 	pop {r4-r7,pc}
 	thumb_func_end sub_809E4BC
@@ -6951,7 +6951,7 @@ sub_809E4F8:
 	ldrb r0, [r5,#0x14]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	bl sub_8002F90 // () -> void
+	bl sprite_noShadow // () -> void
 	bl sprite_update
 	pop {r4-r7,pc}
 	.byte 0, 0

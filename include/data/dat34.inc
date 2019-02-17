@@ -1,18 +1,18 @@
-.ifndef INC_DATA_DAT34
-.equ INC_DATA_DAT34, 0
+	.ifndef INC_DATA_DAT34
+	.equ INC_DATA_DAT34, 0
 
 /* Public Symbols */
-.global byte_812DA94
-.global byte_812DABC
-.global byte_812DAC4
-.global byte_812DACC
-.global byte_812DAD4
-.global byte_812DADC
-.global sub_812DAE4
+	.global byte_812DA94
+	.global byte_812DABC
+	.global byte_812DAC4
+	.global byte_812DACC
+	.global byte_812DAD4
+	.global byte_812DADC
+	.global sub_812DAE4
 
 
 /* External Symbols */
-.include "asm/asm00_0.inc"
+	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
@@ -22,11 +22,11 @@
 // .global sub_80017E0
 // .global sub_800183C
 
-.include "asm/asm00_1.inc"
+	.include "asm/asm00_1.inc"
 // .global engine_setScreeneffect // (int a1, int a2) -> void
-// .global engine_isScreeneffectAnimating // () -> zf
+// .global IsPaletteFadeActive // () -> zf
 
-.include "asm/asm03_1.inc"
+	.include "asm/asm03_1.inc"
 // .global sub_803C59C
 // .global sub_803D108
 // .global sub_803D128
@@ -43,18 +43,18 @@
 // .global sub_803EF74
 // .global sub_803F798
 
-.include "asm/chatbox.inc"
+	.include "asm/chatbox.inc"
 // .global chatbox_8040818
 // .global chatbox_8045F3C
 
-.include "asm/asm03_2.inc"
+	.include "asm/asm03_2.inc"
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
 // .global sub_80465F8 // () -> void
 // .global sub_8046664 // () -> void
 // .global sub_8046696
 
-.include "asm/asm32.inc"
+	.include "asm/asm32.inc"
 // .global sub_811A914
 // .global sub_811A940
 // .global sub_811A968
@@ -64,7 +64,7 @@
 // .global sub_811FA22
 // .global sub_8120CC8
 
-.include "asm/asm33.inc"
+	.include "asm/asm33.inc"
 // .global byte_8129150
 // .global dword_8129180
 // .global sub_8129248
@@ -75,7 +75,7 @@
 // .global sub_812AFC8
 // .global sub_812B530
 
-.include "asm/asm35.inc"
+	.include "asm/asm35.inc"
 // .global sub_812EAAC
 // .global sub_812EAC4
 // .global sub_812EB78
@@ -95,12 +95,12 @@
 // .global sub_812EF20
 // .global sub_812EFD4
 
-.include "data/dat35.inc"
+	.include "data/dat35.inc"
 // .global sub_812EFE4
 // .global sub_812F000
 // .global sub_812F014
 
-.include "asm/asm36.inc"
+	.include "asm/asm36.inc"
 // .global sub_8132280
 // .global sub_81323B0
 // .global sub_8132430
@@ -109,14 +109,14 @@
 // .global sub_81325CC
 // .global sub_8132614
 
-.include "asm/asm37_0.inc"
+	.include "asm/asm37_0.inc"
 // .global sub_813B780
 
-.include "asm/libs.inc"
+	.include "asm/libs.inc"
 // .global sub_8149568
 // .global sub_8149644
 
-.include "data/dat38_70.inc"
+	.include "data/dat38_70.inc"
 // .global byte_86C9D6C
 
 
@@ -130,4 +130,4 @@
 // .equ unk_2025AE8, 0x2025AE8
 // .equ byte_30016D0, 0x30016D0
 
-.endif // INC_DATA_DAT34
+	.endif // INC_DATA_DAT34

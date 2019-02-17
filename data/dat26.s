@@ -1,4 +1,4 @@
-.include "data/dat26.inc"
+	.include "data/dat26.inc"
 
 	.balign 4, 0x00
 	.byte 0x0, 0x40, 0xF5, 0x80, 0xF7, 0x0, 0xFC, 0x8, 0x3F, 0x0, 0x6
@@ -766,7 +766,7 @@ sub_809332C:
 	lsl r4, r4, #0x10
 	add r3, r3, r4
 	ldr r4, dword_8093354 // =0x7c1c0000 
-	bl sub_80047E0
+	bl SpawnOverworldMapObject
 	mov r0, #0xa5
 	bl sound_play // () -> void
 	mov r0, #0

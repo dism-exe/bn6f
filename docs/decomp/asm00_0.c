@@ -2873,7 +2873,7 @@ char *getPalleteAndTransition_80023E0()
 
 
 // 0x8002468
-signed int __fastcall sub_8002468(int a1, int a2, int a3, int a4)
+signed int __fastcall Initialize_eStruct200a6a0(int a1, int a2, int a3, int a4)
 {
     int (*v4)(void); // ST00_4
     int v5; // ST08_4
@@ -2882,12 +2882,12 @@ signed int __fastcall sub_8002468(int a1, int a2, int a3, int a4)
 
     v4 = a1;
     v5 = a3;
-    ZeroFillByWord(&byte_200A6A0, 0x50u, a3, a4);
+    ZeroFillByWord(&eStruct200a6a0, 0x50u, a3, a4);
     dword_200A6A4 = v4;
     dword_200A6A8 = v7;
     dword_200A6AC = v5;
     result = 1;
-    byte_200A6A0 = 1;
+    eStruct200a6a0 = 1;
     return result;
 }
 
@@ -2895,16 +2895,16 @@ signed int __fastcall sub_8002468(int a1, int a2, int a3, int a4)
 // 0x8002484
 void __fastcall sub_8002484(int a1, int a2, int a3, int a4)
 {
-    if ( byte_200A6A0 && dword_200A6A8 )
+    if ( eStruct200a6a0 && dword_200A6A8 )
         (dword_200A6A8)();
-    ZeroFillByWord(&byte_200A6A0, 0x50u, a3, a4);
+    ZeroFillByWord(&eStruct200a6a0, 0x50u, a3, a4);
 }
 
 
 // 0x80024a2
 void __fastcall sub_80024A2(int a1, int a2, int a3, int a4)
 {
-    ZeroFillByWord(&byte_200A6A0, 0x50u, a3, a4);
+    ZeroFillByWord(&eStruct200a6a0, 0x50u, a3, a4);
 }
 
 
@@ -2913,17 +2913,17 @@ int sub_80024AE()
 {
     int result; // r0
 
-    result = byte_200A6A0;
-    if ( byte_200A6A0 )
+    result = eStruct200a6a0;
+    if ( eStruct200a6a0 )
         result = dword_200A6A4();
     return result;
 }
 
 
 // 0x80024c0
-int sub_80024C0()
+int Is_eStruct200a6a0_Initialized()
 {
-    return byte_200A6A0;
+    return eStruct200a6a0;
 }
 
 

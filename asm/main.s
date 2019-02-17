@@ -1,9 +1,9 @@
-.include "asm/main.inc"
+	.include "asm/main.inc"
 
 	thumb_func_start main_
 main_:
 	bl main_static_80004A4
-	bl sub_8001514 // () -> void
+	bl SeedRNG2 // () -> void
 	bl clear_200AD04 // () -> void
 	bl sub_803D1A8 // () -> void
 main_gameRoutine:
@@ -33,7 +33,7 @@ main_gameRoutine:
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
-	bl rng_800154C // () -> void
+	bl GetRNG1 // () -> void
 	bl isSameSubsystem_800A732 // () -> zf
 	beq loc_800032A
 	bl subsystem_triggerTransition_800630A
@@ -180,7 +180,7 @@ dword_8000450: .word 0x3FF
 	thumb_local_start
 main_static_8000454:
 	push {r4-r7,lr}
-	bl engine_isScreeneffectAnimating // () -> zf
+	bl IsPaletteFadeActive // () -> zf
 	beq locret_80004A2
 	bl sub_813D60C
 	bne locret_80004A2
@@ -226,8 +226,8 @@ main_static_80004A4:
 loc_80004AA:
 	push {r5,lr}
 	push {r0}
-	bl CpuSet_toolKit // () -> void
-	bl sub_8006C22
+	bl SetPrimaryToolkitPointers // () -> void
+	bl RandomizeExtraToolkitPointers
 	pop {r1}
 	ldr r0, off_8000564 // =0x40 
 	tst r1, r1

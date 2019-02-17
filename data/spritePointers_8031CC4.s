@@ -1,4 +1,4 @@
-.include "data/spritePointers_8031CC4.inc"
+	.include "data/spritePointers_8031CC4.inc"
 
 spritePointers_8031CC4: .word battleSprites_8031CEC
 	.word virusBattleSprites_8031D24

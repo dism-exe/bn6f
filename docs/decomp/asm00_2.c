@@ -9383,7 +9383,7 @@ int sub_80148EC()
         sub_801DACC(0x4000);
         *(v0 + 3) = 4;
     }
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !result )
     {
         if ( sub_802D234() == 1 )
@@ -9464,7 +9464,7 @@ int sub_801498E()
         engine_setScreeneffect(v1, 16);
         *(v0 + 3) = 4;
     }
-    result = engine_isScreeneffectAnimating();
+    result = IsPaletteFadeActive();
     if ( !result )
     {
         v6 = sub_800A97A(0);
@@ -13288,7 +13288,7 @@ signed int sub_8017274()
     signed int result; // r0
     unsigned __int8 v3; // cf
 
-    v1 = engine_isScreeneffectAnimating();
+    v1 = IsPaletteFadeActive();
     if ( v1 )
     {
         v3 = __CFSHR__(v1, 2);

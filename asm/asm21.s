@@ -1,4 +1,4 @@
-.include "asm/asm21.inc"
+	.include "asm/asm21.inc"
 
 	thumb_func_start sub_8080D90
 sub_8080D90:
