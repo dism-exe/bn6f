@@ -13434,11 +13434,11 @@ off_800A100: .word dword_2036820
 
 	thumb_func_start sub_800A104
 sub_800A104:
-	ldr r0, [r5,#0x58]
+	ldr r0, [r5,#oBattleObject_AIPtr]
 	ldrb r0, [r0,#2]
 	cmp r0, #0
 	bne locret_800A11A
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	add r0, #4
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_S2034880_Ptr]
@@ -14374,7 +14374,7 @@ loc_800A76E:
 sub_800A772:
 	push {lr}
 	push {r0}
-	ldr r0, [r5,#0x58]
+	ldr r0, [r5,#oBattleObject_AIPtr]
 	ldrb r1, [r0,#0x19]
 	tst r1, r1
 	pop {r0}
@@ -15537,7 +15537,7 @@ sub_800AF34:
 	bl sub_801DFA2
 	pop {pc}
 loc_800AF46:
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	ldr r1, dword_800B140 // =0x1555 
 	bl sub_802E032
 	pop {pc}

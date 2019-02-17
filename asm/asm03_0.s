@@ -233,8 +233,8 @@ locret_802661A:
 
 	thumb_local_start
 sub_802661C:
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov pc, lr
 	thumb_func_end sub_802661C
 
@@ -243,14 +243,14 @@ sub_8026622:
 	push {r4,lr}
 	mov r1, r7
 	ldr r2, off_80267EC // =byte_802673C 
-	ldrb r3, [r5,#0x13]
+	ldrb r3, [r5,#oBattleObject_PanelY]
 	cmp r1, r3
 	bne loc_8026630
 	ldr r2, off_80267F0 // =byte_802673A 
 loc_8026630:
 	ldr r4, off_80267F4 // =byte_8026730 
 loc_8026632:
-	ldrb r0, [r5,#0x12]
+	ldrb r0, [r5,#oBattleObject_PanelX]
 	bl sub_8026450
 	cmp r0, #0
 	bne locret_802664E
@@ -348,8 +348,8 @@ sub_80266AC:
 sub_80266BA:
 	push {lr}
 	mov r2, #0
-	ldrb r0, [r5,#0x16]
-	ldrb r1, [r5,#0x17]
+	ldrb r0, [r5,#oBattleObject_Alliance]
+	ldrb r1, [r5,#oBattleObject_DirectionFlip]
 	eor r0, r1
 	mov r1, #1
 	eor r0, r1
@@ -12821,7 +12821,7 @@ sub_802CDFE:
 	thumb_func_start sub_802CE10
 sub_802CE10:
 	ldr r1, off_802CE50 // =dword_203CFB0 
-	ldrb r2, [r5,#0x16]
+	ldrb r2, [r5,#oBattleObject_Alliance]
 	tst r2, r2
 	beq loc_802CE1A
 	add r1, #0xc
@@ -12973,7 +12973,7 @@ locret_802CEF2:
 	thumb_func_start sub_802CEF4
 sub_802CEF4:
 	push {r4,r6,r7,lr}
-	ldr r4, [r5,#0x54]
+	ldr r4, [r5,#oBattleObject_CollisionDataPtr]
 	bl sub_801032C
 	ldr r1, dword_802D038 // =0x200000 
 	tst r0, r1
@@ -12993,7 +12993,7 @@ sub_802CEF4:
 	orr r2, r1
 	cmp r2, #0
 	beq loc_802CFB8
-	ldr r3, [r5,#0x58]
+	ldr r3, [r5,#oBattleObject_AIPtr]
 	add r3, #0xa0
 	mov r0, #1
 	str r0, [r3,#0x30]
@@ -13106,17 +13106,17 @@ locret_802CFF6:
 	thumb_func_start sub_802CFF8
 sub_802CFF8:
 	push {r4,lr}
-	ldr r4, [r5,#0x54]
+	ldr r4, [r5,#oBattleObject_CollisionDataPtr]
 	mov r1, #0x76 
 	ldrb r0, [r4,r1]
 	mov r1, #0x40 
 	tst r0, r1
 	beq locret_802D01C
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_802CE78
 	cmp r0, #0
 	beq locret_802D01C
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_802CEA6
 	mov r0, #0x8e
 	bl sound_play // () -> void
@@ -13591,7 +13591,7 @@ off_802D300: .word byte_203CA50
 
 	thumb_func_start sub_802D310
 sub_802D310:
-	ldr r0, [r5,#0x58]
+	ldr r0, [r5,#oBattleObject_AIPtr]
 	sub r0, #0xf
 	add r0, #0xff
 	mov r1, #0
@@ -14127,17 +14127,17 @@ sub_802D738:
 	ldrb r0, [r7,#1]
 	tst r0, r0
 	bne loc_802D78A
-	ldrb r0, [r5,#0x14]
-	strb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x15]
-	strb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
+	strb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
+	strb r1, [r5,#oBattleObject_PanelY]
 	bl object_removePanelReserve
 	bl object_setCoordinatesFromPanels // () -> void
 	mov r0, #0
-	str r0, [r5,#0x3c]
+	str r0, [r5,#oBattleObject_Z]
 	bl object_updateCollisionPanels
 	bl sub_800F46C
-	strb r0, [r5,#0x17]
+	strb r0, [r5,#oBattleObject_DirectionFlip]
 	bl sub_800F2C6
 	ldr r0, dword_802D798 // =0x1c41 
 	bl object_clearFlag // (int bitfield) -> void
@@ -14146,8 +14146,8 @@ sub_802D738:
 	mov r0, #4
 	bl object_setAnimation
 	mov r0, #0
-	str r0, [r5,#0x4c]
-	ldr r1, [r5,#0x58]
+	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
+	ldr r1, [r5,#oBattleObject_AIPtr]
 	str r0, [r1,#0x68]
 	mov r0, #1
 	bl object_setCollisionRegion
@@ -14176,7 +14176,7 @@ sub_802D7A0:
 	bl sub_8011384
 	bl sub_8011020
 	bl sub_80143A6
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x29 
 	bl sub_801382E
 	push {r0}
@@ -14185,12 +14185,12 @@ sub_802D7A0:
 	pop {r1}
 	cmp r0, r1
 	bne loc_802D7E8
-	ldrh r2, [r5,#0x24]
+	ldrh r2, [r5,#oBattleObject_HP]
 	mov r1, #0x40 
 	bl sub_8013764
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_8013682 // (int idx) -> void*
-	ldrb r1, [r5,#0x16]
+	ldrb r1, [r5,#oBattleObject_Alliance]
 	mov r2, #0x64 
 	mul r2, r1
 	ldr r1, off_802D8EC // =unk_2034A60 
@@ -14198,20 +14198,20 @@ sub_802D7A0:
 	mov r2, #0x64 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 loc_802D7E8:
-	ldr r4, [r5,#0x58]
-	ldrb r0, [r5,#0x16]
+	ldr r4, [r5,#oBattleObject_AIPtr]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x29 
 	bl sub_801382E
 	push {r0}
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_802DCCC
 	pop {r1}
 	cmp r0, r1
 	bne loc_802D81A
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_8013682 // (int idx) -> void*
 	mov r1, r0
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r2, #0x64 
 	mul r2, r0
 	ldr r0, off_802D8EC // =unk_2034A60 
@@ -14225,13 +14225,13 @@ loc_802D81A:
 	bl init_8013B64 // (int idx, int a2) -> void
 loc_802D822:
 	bl sub_801393A
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x29 
 	bl sub_80136CC
 	strb r0, [r4,#1]
 	add r0, #0xff
 	add r0, #0xa1
-	strh r0, [r5,#0x28]
+	strh r0, [r5,#oBattleObject_NameID]
 	mov r1, #0x2c 
 	bl sub_8013774
 	push {r0}
@@ -14244,8 +14244,8 @@ loc_802D822:
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_hasShadow
 	mov r0, #3
-	strb r0, [r5,#0x10]
-	strb r0, [r5,#0x10]
+	strb r0, [r5,#oBattleObject_CurAnim]
+	strb r0, [r5,#oBattleObject_CurAnim]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sub_801002C
@@ -14282,8 +14282,8 @@ loc_802D8B8:
 	bl sub_802DD70
 	mov r1, r0
 loc_802D8C0:
-	strh r0, [r5,#0x24]
-	strh r1, [r5,#0x26]
+	strh r0, [r5,#oBattleObject_HP]
+	strh r1, [r5,#oBattleObject_MaxHP]
 	mov r0, #1
 	bl sub_801E0D0
 	bl sub_801DBD4
@@ -14355,17 +14355,17 @@ sub_802D950:
 	ldrb r0, [r7,#1]
 	tst r0, r0
 	bne loc_802D9A2
-	ldrb r0, [r5,#0x14]
-	strb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x15]
-	strb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
+	strb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
+	strb r1, [r5,#oBattleObject_PanelY]
 	bl object_removePanelReserve
 	bl object_setCoordinatesFromPanels // () -> void
 	mov r0, #0
-	str r0, [r5,#0x3c]
+	str r0, [r5,#oBattleObject_Z]
 	bl object_updateCollisionPanels
 	bl sub_800F46C
-	strb r0, [r5,#0x17]
+	strb r0, [r5,#oBattleObject_DirectionFlip]
 	bl sub_800F2C6
 	ldr r0, dword_802DCB4 // =0x1c41 
 	bl object_clearFlag // (int bitfield) -> void
@@ -14374,10 +14374,10 @@ sub_802D950:
 	mov r0, #4
 	bl object_setAnimation
 	mov r0, #0
-	str r0, [r5,#0x4c]
-	ldr r1, [r5,#0x58]
+	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
+	ldr r1, [r5,#oBattleObject_AIPtr]
 	str r0, [r1,#0x68]
-	ldr r1, [r5,#0x58]
+	ldr r1, [r5,#oBattleObject_AIPtr]
 	mov r0, #0
 	str r0, [r1,#0x5c]
 	mov r0, #4
@@ -14399,24 +14399,24 @@ locret_802D9AE:
 sub_802D9B0:
 	push {r4,lr}
 	bl sub_8011020
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_8013682 // (int idx) -> void*
 	mov r1, r0
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r2, #0x64 
 	mul r2, r0
 	ldr r0, off_802DCB8 // =unk_2034A60 
 	add r0, r0, r2
 	mov r2, #0x64 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
-	ldr r4, [r5,#0x58]
-	ldrb r0, [r5,#0x16]
+	ldr r4, [r5,#oBattleObject_AIPtr]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x29 
 	bl sub_80136CC
 	strb r0, [r4,#1]
 	add r0, #0xff
 	add r0, #0xa1
-	strh r0, [r5,#0x28]
+	strh r0, [r5,#oBattleObject_NameID]
 	mov r1, #0x2c 
 	bl sub_8013774
 	push {r0}
@@ -14429,8 +14429,8 @@ sub_802D9B0:
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_hasShadow
 	mov r0, #3
-	strb r0, [r5,#0x10]
-	strb r0, [r5,#0x10]
+	strb r0, [r5,#oBattleObject_CurAnim]
+	strb r0, [r5,#oBattleObject_CurAnim]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sub_801002C
@@ -14447,14 +14447,14 @@ sub_802D9B0:
 	bl sub_80143B4
 	mov r1, #0x40 
 	bl sub_8013790
-	strh r0, [r5,#0x24]
+	strh r0, [r5,#oBattleObject_HP]
 	mov r1, #0x42 
 	bl sub_8013790
-	strh r0, [r5,#0x26]
+	strh r0, [r5,#oBattleObject_MaxHP]
 	mov r0, #1
 	bl sub_801E0D0
 	bl sub_801DBD4
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_80108FC
 	bl sub_800EA0E
 	ldr r0, off_802DCA4 // =0x8000000 
@@ -15339,7 +15339,7 @@ sub_802E1BE:
 	beq loc_802E1CC
 	ldr r7, off_802E238 // =0x168 
 loc_802E1CC:
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_802E070
 	strb r4, [r0,#0xb]
 	strh r7, [r0,#0x2e]

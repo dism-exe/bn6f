@@ -1909,8 +1909,8 @@ object_setPanelTypeBlink:
 	thumb_func_start object_isCurrentPanelValid
 object_isCurrentPanelValid:
 	push {lr}
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_isValidPanel
 	pop {pc}
 	thumb_func_end object_isCurrentPanelValid
@@ -3831,30 +3831,30 @@ dword_800E298: .word 0xFFEC0000
 	thumb_func_start object_setCoordinatesFromPanels
 object_setCoordinatesFromPanels:
 	push {lr}
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
-	str r0, [r5,#0x34]
-	str r1, [r5,#0x38]
+	str r0, [r5,#oBattleObject_X]
+	str r1, [r5,#oBattleObject_Y]
 	pop {pc}
 	thumb_func_end object_setCoordinatesFromPanels
 
 	thumb_func_start object_setPanelsFromCoordinates
 object_setPanelsFromCoordinates:
 	push {lr}
-	ldr r0, [r5,#0x34]
-	ldr r1, [r5,#0x38]
+	ldr r0, [r5,#oBattleObject_X]
+	ldr r1, [r5,#oBattleObject_Y]
 	mov r2, #0
-	ldr r2, [r5,#0x3c]
+	ldr r2, [r5,#oBattleObject_Z]
 	bl sub_800E258
-	strb r0, [r5,#0x12]
-	strb r1, [r5,#0x13]
+	strb r0, [r5,#oBattleObject_PanelX]
+	strb r1, [r5,#oBattleObject_PanelY]
 	pop {pc}
 	thumb_func_end object_setPanelsFromCoordinates
 
 	thumb_func_start object_getEnemyDirection
 object_getEnemyDirection:
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	thumb_func_end object_getEnemyDirection
 
 	thumb_func_start object_getAllianceDirection
@@ -3868,8 +3868,8 @@ object_getAllianceDirection:
 // () -> int
 	thumb_func_start object_getFrontDirection
 object_getFrontDirection:
-	ldrb r0, [r5,#0x16]
-	ldrb r1, [r5,#0x17]
+	ldrb r0, [r5,#oBattleObject_Alliance]
+	ldrb r1, [r5,#oBattleObject_DirectionFlip]
 	thumb_func_end object_getFrontDirection
 
 // (int a1, int a2) -> int
@@ -3885,12 +3885,12 @@ object_getFlipDirection:
 	thumb_func_start object_subtractHP
 object_subtractHP:
 	push {r4,lr}
-	ldrh r1, [r5,#0x24]
+	ldrh r1, [r5,#oBattleObject_HP]
 	sub r1, r1, r0
 	bge loc_800E2E2
 	mov r1, #0
 loc_800E2E2:
-	strh r1, [r5,#0x24]
+	strh r1, [r5,#oBattleObject_HP]
 	pop {r4,pc}
 	.balign 4, 0x00
 	.word 0x40000000
@@ -3898,14 +3898,14 @@ loc_800E2E2:
 
 	thumb_func_start object_addHP
 object_addHP:
-	ldrh r1, [r5,#0x24]
+	ldrh r1, [r5,#oBattleObject_HP]
 	add r1, r1, r0
-	ldrh r0, [r5,#0x26]
+	ldrh r0, [r5,#oBattleObject_MaxHP]
 	cmp r1, r0
 	ble loc_800E2F8
 	mov r1, r0
 loc_800E2F8:
-	strh r1, [r5,#0x24]
+	strh r1, [r5,#oBattleObject_HP]
 	mov pc, lr
 	thumb_func_end object_addHP
 
@@ -3915,7 +3915,7 @@ sub_800E2FC:
 	mov r6, r0
 	tst r1, r1
 	beq loc_800E314
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
 	bl sub_802CE78
@@ -4029,9 +4029,9 @@ loc_800E3C8:
 	thumb_func_start object_calculateFinalDamage1
 object_calculateFinalDamage1:
 	push {r4,r6,lr}
-	ldr r4, [r5,#0x54]
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	ldr r4, [r5,#oBattleObject_CollisionDataPtr]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getPanelDataOffset
 	mov r4, #0
 	mov r6, #0
@@ -4043,7 +4043,7 @@ loc_800E3F6:
 	mov r6, #1
 	lsl r6, r4
 	sub r6, #1
-	ldr r3, [r5,#0x54]
+	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
 	add r3, #0x82
 	mov r1, #5
 	mov r0, #0
@@ -4057,7 +4057,7 @@ loc_800E404:
 	sub r1, #1
 	bgt loc_800E404
 	bl sub_802CE10
-	ldr r3, [r5,#0x54]
+	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
 	add r3, #0x80
 	strh r0, [r3]
 	pop {r4,r6,pc}
@@ -4098,8 +4098,8 @@ loc_800E43E:
 // () -> int
 	thumb_func_start object_getFlip
 object_getFlip:
-	ldrb r0, [r5,#0x16]
-	ldrb r1, [r5,#0x17]
+	ldrb r0, [r5,#oBattleObject_Alliance]
+	ldrb r1, [r5,#oBattleObject_DirectionFlip]
 	eor r0, r1
 	mov pc, lr
 	thumb_func_end object_getFlip
@@ -4286,8 +4286,8 @@ sub_800E618:
 	mov r1, #0x10
 	tst r0, r1
 	bne loc_800E63C
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_isPanelSolid
 	beq loc_800E63C
 	mov r0, #0
@@ -4295,7 +4295,7 @@ sub_800E618:
 loc_800E63C:
 	mov r0, #0x10
 loc_800E63E:
-	ldrb r1, [r5,#0x16]
+	ldrb r1, [r5,#oBattleObject_Alliance]
 	lsl r1, r1, #3
 	add r0, r0, r1
 	ldr r1, off_800E65C // =byte_800E660 
@@ -4327,8 +4327,8 @@ sub_800E680:
 	mov r1, #0x10
 	tst r0, r1
 	bne loc_800E6A4
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_isPanelSolid
 	beq loc_800E6A4
 	mov r0, #0
@@ -4336,7 +4336,7 @@ sub_800E680:
 loc_800E6A4:
 	mov r0, #0x10
 loc_800E6A6:
-	ldrb r1, [r5,#0x16]
+	ldrb r1, [r5,#oBattleObject_Alliance]
 	lsl r1, r1, #3
 	add r0, r0, r1
 	ldr r1, off_800E6C4 // =byte_800E6C8 
@@ -4743,7 +4743,7 @@ loc_800E9D8:
 	thumb_func_start object_setCounterTime
 object_setCounterTime:
 	push {lr}
-	ldr r2, [r5,#0x58]
+	ldr r2, [r5,#oBattleObject_AIPtr]
 	ldrb r1, [r2]
 	cmp r1, #2
 	bne loc_800E9F4
@@ -4754,7 +4754,7 @@ object_setCounterTime:
 	pop {r0}
 	beq locret_800E9F8
 loc_800E9F4:
-	ldr r3, [r5,#0x54]
+	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r3,#0xd]
 locret_800E9F8:
 	pop {pc}
@@ -4765,7 +4765,7 @@ sub_800E9FA:
 	push {lr}
 	ldr r0, dword_800ECD8 // =0x301fe 
 	bl object_clearFlag2
-	ldr r0, [r5,#0x54]
+	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
 	add r0, #0x80
 	mov r1, #0xe
 	bl ZeroFillByHalfword
@@ -4777,7 +4777,7 @@ sub_800EA0E:
 	push {lr}
 	ldr r0, dword_800ECD8 // =0x301fe 
 	bl object_clearFlag2
-	ldr r0, [r5,#0x54]
+	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
 	add r0, #0x80
 	mov r1, #0xe
 	bl ZeroFillByHalfword
@@ -4789,7 +4789,7 @@ sub_800EA22:
 	push {lr}
 	ldr r0, dword_800ECDC // =0x300ee 
 	bl object_clearFlag2
-	ldr r2, [r5,#0x54]
+	ldr r2, [r5,#oBattleObject_CollisionDataPtr]
 	mov r3, #0x74 
 	mov r0, #0
 	strb r0, [r2,r0]
@@ -4924,7 +4924,7 @@ sub_800EAF6:
 	thumb_func_start object_setInvulnerableTime
 object_setInvulnerableTime:
 	push {lr}
-	ldr r1, [r5,#0x54]
+	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strh r0, [r1,#0x28]
 	mov r0, #8
 	bl object_setFlag // (int a1) -> void
@@ -4934,7 +4934,7 @@ object_setInvulnerableTime:
 	thumb_func_start sub_800EB08
 sub_800EB08:
 	push {lr}
-	ldr r1, [r5,#0x54]
+	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	mov r0, #0
 	strh r0, [r1,#0x28]
 	mov r0, #8
@@ -4955,7 +4955,7 @@ sub_800EB18:
 	thumb_func_start sub_800EB26
 sub_800EB26:
 	push {lr}
-	ldr r3, [r5,#0x54]
+	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
 	ldr r0, [r3,#0x70]
 	mov r1, #0x40 
 	tst r0, r1
@@ -5027,7 +5027,7 @@ object_spawnHiteffect:
 	push {r4,r6,lr}
 	bl battle_isPaused
 	bne locret_800EBCE
-	ldr r1, [r5,#0x54]
+	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	ldr r0, [r1,#0x70]
 	ldr r1, dword_800EBD0 // =0x20000 
 	tst r1, r0

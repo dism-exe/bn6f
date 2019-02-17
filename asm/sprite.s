@@ -4,7 +4,7 @@
 	thumb_func_start sprite_loadAnimationData
 sprite_loadAnimationData:
 	push {r4,r5,lr}
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
@@ -27,7 +27,7 @@ off_80026C0: .word sub_3006730+1
 	thumb_func_start sprite_update
 sprite_update:
 	push {r4,r5,lr}
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
@@ -54,11 +54,11 @@ off_80026E0: .word sub_3006792+1
 	thumb_func_start sprite_load
 sprite_load:
 	push {r4,r5,lr}
-	ldrb r3, [r5]
+	ldrb r3, [r5,#oObjectHeader_Flags]
 	mov r4, #8
 	bic r3, r4
-	strb r3, [r5]
-	ldrb r3, [r5,#2]
+	strb r3, [r5,#oObjectHeader_Flags]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
@@ -1002,7 +1002,7 @@ loc_8002D4E:
 	thumb_func_start sprite_makeUnscalable
 sprite_makeUnscalable:
 	push {r5,lr}
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
@@ -1030,7 +1030,7 @@ locret_8002D7E:
 // (int pallete) -> void
 	thumb_func_start sprite_setPalette
 sprite_setPalette:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
@@ -1061,7 +1061,7 @@ sprite_setAnimationAlt:
 // (u8 a1) -> void
 	thumb_func_start sprite_setAnimation
 sprite_setAnimation:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
@@ -1074,7 +1074,7 @@ sprite_forceWhitePalette:
 	mov r1, #0xf0
 	b sprite_setFinalPalette
 sprite_setFinalPalette:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
@@ -1100,7 +1100,7 @@ sprite_getFinalPalette:
 
 	thumb_func_start sprite_clearFinalPalette
 sprite_clearFinalPalette:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
@@ -1113,7 +1113,7 @@ sprite_clearFinalPalette:
 
 	thumb_func_start sprite_getFrameParameters
 sprite_getFrameParameters:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
@@ -1171,7 +1171,7 @@ sub_8002E2A:
 
 	thumb_func_start sprite_hasShadow
 sprite_hasShadow:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
@@ -1270,7 +1270,7 @@ sub_8002EBE:
 
 	thumb_func_start sprite_setColorShader
 sprite_setColorShader:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
@@ -1290,7 +1290,7 @@ sprite_getColorShader:
 
 	thumb_func_start sub_8002EE8
 sub_8002EE8:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5

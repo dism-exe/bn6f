@@ -2146,14 +2146,14 @@ off_810D910: .word sub_8016380+1
 sub_810D940:
 	push {lr}
 	bl sub_810DCCE
-	ldr r0, [r5,#0x58]
+	ldr r0, [r5,#oBattleObject_AIPtr]
 	ldrb r2, [r0,#0x16]
 	ldr r1, off_810D960 // =byte_810D964 
 	ldrb r0, [r1,r2]
-	str r0, [r5,#0x60]
+	str r0, [r5,#oBattleObject_ExtraVars]
 	add r2, #6
 	ldrb r0, [r1,r2]
-	str r0, [r5,#0x64]
+	str r0, [r5,#oBattleObject_ExtraVars+4]
 	pop {pc}
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 off_810D960: .word byte_810D964

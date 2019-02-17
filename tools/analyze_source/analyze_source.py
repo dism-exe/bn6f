@@ -63,11 +63,13 @@ def fileline_error(error_msg, fileline):
 def fileline_msg(fileline_msg, fileline):
     debug_print("%s:%s: %s" % (fileline.filename, fileline.line_num + 1, fileline_msg))
 
-def debug_print(msg):
-    if analyze_source.debug_file is not None:
-        analyze_source.debug_file.write(msg + "\n")
-    else:
-        print(msg)
+def debug_print(msg, override=False):
+    return
+    # if override:
+        # if analyze_source.debug_file is not None:
+            # analyze_source.debug_file.write(msg + "\n")
+        # else:
+            # print(msg)
 
 import analyzer
 import datatypes

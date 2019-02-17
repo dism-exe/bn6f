@@ -3294,7 +3294,7 @@ dword_300754C: .word 0x2000
 sub_3007550:
 	push {r4-r7,lr}
 	sub sp, sp, #8
-	ldr r5, [r5,#0x54]
+	ldr r5, [r5,#oBattleObject_CollisionDataPtr]
 	ldrb r1, [r5,#1]
 	mov r2, #0x80
 	tst r1, r2
