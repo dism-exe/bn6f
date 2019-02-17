@@ -10,7 +10,7 @@
 /* External Symbols */
 	.include "asm/asm00_0.inc"
 // .global ZeroFillByByte // (void *mem, int size) -> void
-// .global sub_8001778
+// .global sRender_08_setRenderingState
 // .global sub_8001780
 // .global sub_800195C
 // .global nullsub_35

@@ -45,7 +45,7 @@ int map_8099218()
     v2 = getPETNaviSelect();
     if ( sub_8013704(v2, 37) == 1 )
     {
-        v3 = sub_8037AEC(-2005693660);
+        v3 = uncomp_8037AEC(-2005693660);
         chatbox_runScript(v3, 0);
     }
     else
@@ -54,11 +54,11 @@ int map_8099218()
         if ( sub_8013704(v4, 95) != 1 )
         {
 LABEL_12:
-            chatbox_dead_uncomp_803FD3C();
+            chatbox_uncomp_803FD3C();
             chatbox_runTrainScript(*(*(v0 + oToolkit_GameStatePtr) + oGameState_Unk_15));
             return 0;
         }
-        v5 = sub_8037AEC(-2005687000);
+        v5 = uncomp_8037AEC(-2005687000);
         chatbox_runScript(v5, 0);
     }
     return 0;
@@ -392,10 +392,10 @@ int __fastcall sub_809A260(int a1, int a2, int a3)
     int v10; // r3
 
     sub_8033FC0(1, a2, a3);
-    sub_8001850();
+    copyMemory_8001850();
     v3 = sub_8033978();
     v7 = sub_8003962(v3, v4, v5, v6);
-    sub_8003AB2(v7, v8, v9, v10);
+    zeroFill_8003AB2(v7, v8, v9, v10);
     sub_800399A();
     sub_8003AEA();
     return 0;
@@ -432,7 +432,7 @@ int sub_809A360()
     *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = *(v0 + 112);
     copyTiles();
     copyTiles();
-    return render_graphicalText_8045F8C(scripts_86C580C, 64, &unk_200EF40, 100717568);
+    return renderTextGfx_8045F8C(scripts_86C580C, 64, &unk_200EF40, 100717568);
 }
 
 
@@ -597,10 +597,10 @@ int sub_809A4EC()
     ClearEventFlagFromImmediate(0, 245);
     ClearEventFlagFromImmediate(23, 37);
     sub_8033FC0(1, v0, v1);
-    sub_8001850();
+    copyMemory_8001850();
     v2 = sub_8033978();
     v6 = sub_8003962(v2, v3, v4, v5);
-    sub_8003AB2(v6, v7, v8, v9);
+    zeroFill_8003AB2(v6, v7, v8, v9);
     sub_800399A();
     sub_8003AEA();
     return 0;
@@ -922,7 +922,7 @@ int sub_809A80C()
     *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = *(v0 + 112);
     copyTiles();
     copyTiles();
-    return render_graphicalText_8045F8C(&eDialogScript2033404, 6, &unk_200EF40, 100717568);
+    return renderTextGfx_8045F8C(&eDialogScript2033404, 6, &unk_200EF40, 100717568);
 }
 
 
@@ -1069,7 +1069,7 @@ int __fastcall sub_809AA04(int a1, int a2, int a3, int a4)
     int v9; // r2
 
     v4 = sub_8003962(a1, a2, a3, a4);
-    sub_8003AB2(v4, v5, v6, v7);
+    zeroFill_8003AB2(v4, v5, v6, v7);
     sub_800399A();
     sub_8003AEA();
     sub_8033FC0(1, v8, v9);
@@ -1362,7 +1362,7 @@ int sub_809AD4C()
     ClearEventFlagFromImmediate(23, 37);
     v2 = sub_8033FC0(1, v0, v1);
     v6 = sub_8003962(v2, v3, v4, v5);
-    sub_8003AB2(v6, v7, v8, v9);
+    zeroFill_8003AB2(v6, v7, v8, v9);
     sub_800399A();
     sub_8003AEA();
     return 0;
@@ -2278,7 +2278,7 @@ signed int sub_809CC00()
     if ( !*(v0 + 112) )
     {
         *(v0 + 112) = 1;
-        clear_200AD04();
+        clear_e200AD04();
         sub_803F6B0(0, v1, v2, v3);
         (loc_803F512)();
         return 1;
@@ -2390,7 +2390,7 @@ int __fastcall sub_809CD44(int a1, int a2, int a3)
 
     v3 = sub_8033FC0(1, a2, a3);
     v7 = sub_8003962(v3, v4, v5, v6);
-    sub_8003AB2(v7, v8, v9, v10);
+    zeroFill_8003AB2(v7, v8, v9, v10);
     sub_800399A();
     sub_8003AEA();
     return 0;
@@ -2424,7 +2424,7 @@ signed int sub_809CD60()
     else
     {
         *(v0 + 112) = 1;
-        clear_200AD04();
+        clear_e200AD04();
         sub_803F6B0(0, v1, v2, v3);
         (loc_803F512)();
     }

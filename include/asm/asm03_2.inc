@@ -2,7 +2,7 @@
 	.equ INC_ASM_ASM03_2, 0
 
 /* Public Symbols */
-	.global render_graphicalText_8045F8C
+	.global renderTextGfx_8045F8C
 	.global sub_8045FBC
 	.global sub_8045FC6
 	.global sub_8045FD0
@@ -91,15 +91,15 @@
 // .global GetRNG2 // () -> int
 // .global GetPositiveSignedRNG2
 // .global sub_80015FC
-// .global sub_8001708
-// .global sub_8001778
-// .global sub_8001788
-// .global sub_80017A0
+// .global map_8001708
+// .global sRender_08_setRenderingState
+// .global renderInfo_8001788
+// .global renderInfo_80017A0
 // .global zeroFillVRAM
 // .global sub_80017E0
-// .global sub_8001820
+// .global zeroFill_e2009740
 // .global sub_800183C
-// .global sub_8001850
+// .global copyMemory_8001850
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
 // .global sub_8001974
@@ -114,7 +114,7 @@
 // .global sub_8002818
 // .global sub_8002874
 // .global sub_80028D4
-// .global sub_8002906
+// .global uncompSprite_8002906
 // .global sprite_makeUnscalable
 
 	.include "asm/asm00_1.inc"
@@ -122,7 +122,7 @@
 // .global SpawnObjectsFromList
 // .global sub_8003962
 // .global sub_800399A
-// .global sub_8003AB2
+// .global zeroFill_8003AB2
 // .global sub_8003AEA
 // .global sub_8005F40
 // .global sub_8005F84
@@ -136,7 +136,7 @@
 // .global sub_800A7D0 // () -> (zf, int)
 
 	.include "asm/asm02.inc"
-// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global getChip8021DA8 // (int chip_idx) -> ChipData*
 // .global dword_8021AEC
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global GetChipCountOfCode
@@ -149,7 +149,7 @@
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
-// .global sub_802FF4C
+// .global camera_802FF4C
 // .global sub_803037C
 // .global sub_8030472
 // .global sub_8030AA4
@@ -228,7 +228,7 @@
 // .global sub_803F79E
 
 	.include "asm/chatbox.inc"
-// .global chatbox_uncomp_803FD08 // () -> int
+// .global chatbox_uncompBasedOnMap_803FD08 // () -> int
 // .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
@@ -237,7 +237,7 @@
 // .global byte_8044064
 // .global chatbox_8045EEC
 // .global chatbox_8045EFC
-// .global chatbox_8045F1C
+// .global chatbox_setFlags2009F38
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C
 
@@ -330,7 +330,7 @@
 // .global sub_811EBE0
 // .global sub_811F728
 // .global sub_811F758
-// .global sub_811F7EC
+// .global isJoystickIRQActive
 // .global sub_811F7F8
 // .global sub_811FA22
 // .global sub_811FA98

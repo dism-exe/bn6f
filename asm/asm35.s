@@ -323,10 +323,10 @@ loc_812ECF2:
 	strh r1, [r7,#0x3c]
 loc_812ECFA:
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	bne loc_812ED12
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_812ED2A
 	mov r1, #4
 	ldrb r0, [r5,#0x11]
@@ -397,7 +397,7 @@ loc_812ED6A:
 	tst r1, r0
 	bne locret_812ED90
 	mov r1, #0x40 
-	bl sub_803EBF4
+	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
 	cmp r0, #2
 	bne loc_812ED8A
@@ -641,7 +641,7 @@ sub_812EF60:
 	mov r5, #3
 	ldr r6, off_812EF9C // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	thumb_func_end sub_812EF60
 
 	bl sub_812EFA4

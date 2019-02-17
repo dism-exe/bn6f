@@ -28,9 +28,9 @@ ActiveObjectBitfieldPointers:
 	.word eActiveT3BattleObjectsBitfield
 	.word eActiveT4BattleObjectsBitfield
 	.word eActiveOverworldMapObjectsBitfield
-byte_800315C: .byte 0xC8, 0x0, 0x0, 0x0, 0xD8, 0x0, 0x0, 0x0, 0xD8, 0x0, 0x0, 0x0, 0xD8
-	.byte 0x0, 0x0, 0x0, 0xC8, 0x0, 0x0, 0x0, 0x78, 0x0, 0x0, 0x0
-byte_8003174: .byte 0x1, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x20, 0x0
+	dword_800315C: .word 0xC8, 0xD8, 0xD8, 0xD8, 0xC8
+  .word 0x78
+	byte_8003174: .byte 0x1, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x20, 0x0
 	.byte 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x38, 0x0, 0x0, 0x0
 	thumb_func_end sub_80030BA
 
@@ -55,7 +55,7 @@ off_80031A8: .word eBattleObjectsLinkedListSentinel
 RunBattleObjectLogic:
 	push {r4-r7,lr}
 	sub sp, sp, #0x10
-	bl sub_800371A
+	bl object_Clear3RAMBytes_800371A
 	mov r0, #0
 	str r0, [sp]
 	ldr r7, .eBattleObjectsLinkedListStart_p
@@ -98,7 +98,7 @@ RunBattleObjectLogic:
 	bx r0
 	pop {r7}
 .doneCurrentBattleObject
-	bl sub_800372A
+	bl object_800372A
 	b .processBattleObjectLoop
 .reachedLinkedListSentinel
 	mov r0, #0
@@ -632,7 +632,7 @@ sub_80035A2:
 	ldr r1, off_8003618 // =FreeObjectJumptable
 	ldr r2, off_800361C // =ObjectMemoryPointers
 	ldr r3, off_8003620 // =ActiveObjectBitfieldPointers
-	ldr r4, off_8003624 // =byte_800315C
+	ldr r4, off_8003624 // =dword_800315C
 	ldr r5, off_8003628 // =byte_8003174
 loc_80035B0:
 	str r0, [sp]
@@ -694,7 +694,7 @@ loc_8003614:
 off_8003618: .word FreeObjectJumptable
 off_800361C: .word ObjectMemoryPointers
 off_8003620: .word ActiveObjectBitfieldPointers
-off_8003624: .word byte_800315C
+off_8003624: .word dword_800315C
 off_8003628: .word byte_8003174
 	thumb_func_end sub_80035A2
 
@@ -828,7 +828,7 @@ loc_8003708:
 	thumb_func_end sub_8003694
 
 	thumb_local_start
-sub_800371A:
+object_Clear3RAMBytes_800371A:
 	mov r0, #0
 	ldr r1, off_8003780 // =byte_2036778
 	strb r0, [r1]
@@ -837,10 +837,10 @@ sub_800371A:
 	ldr r1, off_8003788 // =byte_2036830
 	strb r0, [r1]
 	mov pc, lr
-	thumb_func_end sub_800371A
+	thumb_func_end object_Clear3RAMBytes_800371A
 
 	thumb_local_start
-sub_800372A:
+object_800372A:
 	ldrb r0, [r5,#oBattleObject_Type]
 	mov r1, #0xf
 	and r0, r1
@@ -856,8 +856,8 @@ sub_800372A:
 	strb r0, [r2]
 	mov pc, lr
 	.balign 4, 0
-.dword_800374C_p: .word dword_800374C
-dword_800374C:
+.dword_800374C_p: .word object_PtrPairs_800374C
+object_PtrPairs_800374C:
 	.word 0x0, 0x0
 	.word dword_2039A10, byte_2036778
 	.word 0x0, 0x0
@@ -868,13 +868,13 @@ SpawnObjectJumptable_p: .word SpawnObjectJumptable
 off_8003780: .word byte_2036778
 off_8003784: .word dword_203CA7C
 off_8003788: .word byte_2036830
-	thumb_func_end sub_800372A
+	thumb_func_end object_800372A
 
 	thumb_func_start sub_800378C
 sub_800378C:
 	push {lr}
 	// memBlock
-	ldr r0, off_80037A0 // =unk_20081D0
+	ldr r0, off_80037A0 // =dword_20081D0
 	// size
 	ldr r1, off_80037A4 // =0x280
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -883,7 +883,7 @@ sub_800378C:
 	str r1, [r0]
 	pop {pc}
 	.balign 4, 0x00
-off_80037A0: .word unk_20081D0
+off_80037A0: .word dword_20081D0
 off_80037A4: .word 0x280
 off_80037A8: .word dword_200AC18
 	thumb_func_end sub_800378C
@@ -911,7 +911,7 @@ sub_80037AC:
 loc_80037D0:
 	mov r7, #0x14
 	mul r7, r0
-	ldr r0, off_80037F0 // =unk_20081D0
+	ldr r0, off_80037F0 // =dword_20081D0
 	add r7, r7, r0
 	str r1, [r7]
 	str r2, [r7,#4]
@@ -924,7 +924,7 @@ loc_80037D0:
 	str r0, [r7]
 	pop {r7,pc}
 off_80037EC: .word dword_200AC18
-off_80037F0: .word unk_20081D0
+off_80037F0: .word dword_20081D0
 	thumb_func_end sub_80037AC
 
 	thumb_func_start sub_80037F4
@@ -934,7 +934,7 @@ sub_80037F4:
 	ldr r0, [r0]
 	cmp r0, #1
 	ble loc_800387C
-	ldr r5, off_8003888 // =unk_20081D0
+	ldr r5, off_8003888 // =dword_20081D0
 	mov r6, #0
 loc_8003802:
 	mov r0, #0x14
@@ -1006,7 +1006,7 @@ loc_800387C:
 	str r0, [r1]
 	pop {r5,pc}
 off_8003884: .word dword_200AC18
-off_8003888: .word unk_20081D0
+off_8003888: .word dword_20081D0
 off_800388C: .word eOWPlayerObject
 dword_8003890: .word 0x200000
 	thumb_func_end sub_80037F4
@@ -1305,8 +1305,8 @@ loc_8003AA8:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8003A90
 
-	thumb_func_start sub_8003AB2
-sub_8003AB2:
+	thumb_func_start zeroFill_8003AB2
+zeroFill_8003AB2:
 	push {r4-r7,lr}
 	ldr r5, off_8003B40 // =byte_2001010
 	ldrb r0, [r5,#0x2] // (byte_2001012 - 0x2001010)
@@ -1321,7 +1321,7 @@ loc_8003AC4:
 	mov r0, #1
 	strb r0, [r5,#0x3] // (byte_2001013 - 0x2001010)
 	pop {r4-r7,pc}
-	thumb_func_end sub_8003AB2
+	thumb_func_end zeroFill_8003AB2
 
 	thumb_local_start
 sub_8003ACA:
@@ -2684,7 +2684,7 @@ sub_8004864:
 	lsr r1, r6
 	mov r6, r5
 	ldr r5, off_80049D4 // =eOverworldMapObjects
-	mov r3, #0x78 
+	mov r3, #0x78
 	mul r3, r6
 	add r5, r5, r3
 loc_800487A:
@@ -2754,8 +2754,8 @@ sub_80048D2:
 	bne loc_8004920
 	sub sp, sp, #8
 	ldr r5, off_80049D4 // =eOverworldMapObjects
-	ldr r0, off_800492C // =off_8004724 
-	ldr r1, off_80049D8 // =dword_2013920 
+	ldr r0, off_800492C // =off_8004724
+	ldr r1, off_80049D8 // =dword_2013920
 	str r0, [sp]
 	str r1, [sp,#4]
 loc_80048F2:
@@ -3407,8 +3407,8 @@ off_8004DE8: .word sCamera+0x4C // sCamera.unk_4C
 off_8004DEC: .word dword_20096D0
 	thumb_func_end sub_8004D48
 
-	thumb_func_start sub_8004DF0
-sub_8004DF0:
+	thumb_func_start reqBBS_init_8004DF0
+reqBBS_init_8004DF0:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -3469,7 +3469,7 @@ sub_8004DF0:
 	bl sub_809E3B2
 	bl sub_8003908
 	bl sub_8003A58
-	bl sub_809F9C8
+	bl zeroFill_e2004348
 	bl sub_809FAF4
 	bl sub_809F9DC
 	bl sub_8049CF8
@@ -3715,7 +3715,7 @@ sub_8004DF0:
 	mov r2, #3
 	mul r1, r2
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	bl sub_8021C68
+	bl zeroFill_e2002230
 	ldr r0, off_80050E8 // =byte_80213AC
 	mov r1, #0
 	bl sub_8021AB4
@@ -3724,7 +3724,7 @@ sub_8004DF0:
 	bl sub_8137808
 	bl sub_80133EC
 	bl sub_813B768
-	bl sub_813B934
+	bl zeroFill_813B934
 	bl sub_813C324
 	bl sub_8121144
 	bl sub_800AAF2
@@ -3749,11 +3749,11 @@ sub_8004DF0:
 	pop {r4-r7,pc}
 off_80050E4: .word 0x100
 off_80050E8: .word byte_80213AC
-	thumb_func_end sub_8004DF0
+	thumb_func_end reqBBS_init_8004DF0
 
 // () -> void
-	thumb_func_start cb_80050EC
-cb_80050EC:
+	thumb_func_start cbGameState_80050EC
+cbGameState_80050EC:
 	push {r4-r7,lr}
 	ldr r0, GameStateJumptable_p // =GameStateJumptable
 	mov r5, r10
@@ -3768,7 +3768,7 @@ cb_80050EC:
 	.balign 4, 0x00
 GameStateJumptable_p: .word GameStateJumptable
 GameStateJumptable: .word EnterMap+1
-	.word sub_8005268+1
+	.word gamestate_8005268+1
 	.word sub_80052D8+1
 	.word sub_8005360+1
 	.word sub_800536E+1
@@ -3782,7 +3782,7 @@ GameStateJumptable: .word EnterMap+1
 	.word sub_80055CE+1
 	.word sub_8005814+1
 	.word sub_800585A+1
-	thumb_func_end cb_80050EC
+	thumb_func_end cbGameState_80050EC
 
 	thumb_local_start
 EnterMap:
@@ -3796,9 +3796,9 @@ loc_8005152:
 	bl sub_80027C4
 	bl InitializeOverworldMapObjectStructs
 	bl sub_8002668
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl sub_802F0D8
 	bl sub_802F0F4
 	bl sub_8036EFE
@@ -3854,16 +3854,16 @@ loc_80051AA:
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	bl sub_8033948
 	ldr r0, off_8005264 // =0x1740
-	bl sub_8001778
+	bl sRender_08_setRenderingState
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl sub_8030A30
+	bl map_8030A30
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl sub_8001708
+	bl map_8001708
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl sub_8034B4C
+	bl map_8034B4C
 	ldrb r0, [r5,#oGameState_MapGroup]
 	bl EnterMap_RunMapGroupAsmFunction_8030A00
 	mov r0, #0x17
@@ -3893,7 +3893,7 @@ off_8005264: .word 0x1740
 	thumb_func_end EnterMap
 
 	thumb_local_start
-sub_8005268:
+gamestate_8005268:
 	push {lr}
 	bl sub_8036F24
 	bl sub_8034BB8
@@ -3924,7 +3924,7 @@ sub_8005268:
 	bl sub_8005B6A
 	bl sub_8005AF4
 	pop {pc}
-	thumb_func_end sub_8005268
+	thumb_func_end gamestate_8005268
 
 	thumb_local_start
 sub_80052D8:
@@ -3957,9 +3957,9 @@ sub_800531C:
 	mov r0, #0x21
 	bl sub_80035A2
 	bl sub_8004702
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -4063,15 +4063,15 @@ sub_80053E4:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r0, word_8005460 // =0x40
-	bl sub_8001778
+	bl sRender_08_setRenderingState
 locret_800545C:
 	pop {pc}
 	.balign 4, 0x00
@@ -4108,9 +4108,9 @@ loc_8005474:
 	bne loc_80054D6
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_80054D6
-	bl sub_8001850
-	bl sub_8001820
-	bl sub_800182E
+	bl copyMemory_8001850
+	bl zeroFill_e2009740
+	bl zeroFill_e200F3A0
 	bl sub_811F6C0
 	bl sub_8005524
 	mov r0, #0x11
@@ -4163,9 +4163,9 @@ sub_8005524:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r7, r10
@@ -4199,9 +4199,9 @@ sub_800555A:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
@@ -4238,9 +4238,9 @@ sub_80055CE:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
@@ -4277,9 +4277,9 @@ sub_8005642:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
@@ -4317,9 +4317,9 @@ sub_80056B8:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
@@ -4356,9 +4356,9 @@ sub_800572C:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
@@ -4395,9 +4395,9 @@ sub_80057A0:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
@@ -4458,9 +4458,9 @@ sub_800585A:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
 	mov r5, r10
@@ -4796,7 +4796,7 @@ sub_8005AF4:
 	bl chatbox_8045F3C
 	bne locret_8005B68
 	mov r0, #8
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_8005B68
 	// entryIdx
 	mov r0, #0x17
@@ -4809,7 +4809,7 @@ sub_8005AF4:
 	bl updatePlayerGameState_800107A // () -> void
 	bl sub_811EC10
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 loc_8005B64:
 	mov r0, #0x18
 	strb r0, [r5,#oGameState_SubsystemIndex]
@@ -4918,9 +4918,9 @@ sub_8005C04:
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_MapNumber]
-	bl sub_8001708
+	bl map_8001708
 	ldr r0, off_8005CE4 // =0x40
-	bl sub_8001778
+	bl sRender_08_setRenderingState
 	mov r5, r10
 	ldr r7, [r5,#oToolkit_Unk2011bb0_Ptr]
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -5112,9 +5112,9 @@ sub_8005D88:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl sub_80385F0
 	bl RandomizeExtraToolkitPointers
 	bl sub_813C3AC
@@ -5133,9 +5133,9 @@ sub_8005DBE:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl sub_803FB28
 	bl sub_813C3AC
 	pop {r4-r7,pc}
@@ -5153,9 +5153,9 @@ dead_8005DF0:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl sub_8138294
 	bl sub_813C3AC
 	pop {r4-r7,pc}
@@ -5173,9 +5173,9 @@ dead_8005E22:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl sub_8038A9C
 	bl sub_813C3AC
 	pop {r4-r7,pc}
@@ -5193,9 +5193,9 @@ dead_8005E54:
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl loc_803D1AC // () -> void
 	bl sub_813C3AC
 	pop {r4-r7,pc}
@@ -5322,13 +5322,13 @@ sub_8005F40:
 	bl zeroFillVRAM
 	bl sub_80017E0
 	bl sub_8001974
-	bl sub_8001AFC
+	bl zeroFill_e20094C0
 	bl sub_80023A8
-	bl sub_8001820
-	bl sub_800182E
-	bl sub_80024A2
-	bl sub_8001788
-	bl sub_80017A0
+	bl zeroFill_e2009740
+	bl zeroFill_e200F3A0
+	bl zeroFill_80024A2
+	bl renderInfo_8001788
+	bl renderInfo_80017A0
 	pop {r4-r7,pc}
 	thumb_func_end sub_8005F40
 
@@ -5336,7 +5336,7 @@ sub_8005F40:
 sub_8005F6C:
 	push {r4-r7,lr}
 	bl sub_802FDB0
-	bl sub_802FF2C
+	bl cleareMemory_802FF2C
 	pop {r4-r7,pc}
 	thumb_func_end sub_8005F6C
 
@@ -5344,7 +5344,7 @@ sub_8005F6C:
 sub_8005F78:
 	push {r4-r7,lr}
 	bl loc_802FDB4
-	bl sub_802FF2C
+	bl cleareMemory_802FF2C
 	pop {r4-r7,pc}
 	thumb_func_end sub_8005F78
 
@@ -5352,11 +5352,11 @@ sub_8005F78:
 sub_8005F84:
 	push {r4-r7,lr}
 	ldr r0, off_8005FB0 // =0x40
-	bl sub_8001778
+	bl sRender_08_setRenderingState
 	bl sub_809F68C
 	bl chatbox_8040818
 	mov r0, #0x40
-	bl chatbox_8045F2C // (int a1) ->
+	bl chatbox_clear_eFlags2009F38 // (int a1) ->
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]
 	mov r1, #4
@@ -6848,7 +6848,7 @@ sub_8006EA4:
 	beq loc_8006EE0
 	// idx
 	mov r0, r7
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r3, [r0]
 	cmp r3, r4
 	beq loc_8006ED2
@@ -6890,7 +6890,7 @@ sub_8006EE8:
 	beq loc_8006F16
 	// idx
 	mov r0, r7
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r3, [r0]
 	cmp r3, r4
 	beq loc_8006F16
@@ -6922,7 +6922,7 @@ sub_8006F1E:
 	beq loc_8006F4C
 	// idx
 	mov r0, r7
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r3, [r0]
 	cmp r3, r4
 	beq loc_8006F4C
@@ -7055,7 +7055,7 @@ off_8007000: .word dword_20018B8
 sub_8007004:
 	push {r1-r7,lr}
 	bl sub_800708C
-	ldr r5, off_8007088 // =unk_2000670
+	ldr r5, off_8007088 // =byte_2000670
 	mov r7, r10
 	mov r1, #0x8c
 	ldr r7, [r7,r1]
@@ -7070,7 +7070,7 @@ sub_8007004:
 sub_800701C:
 	push {r1-r7,lr}
 	bl sub_800708C
-	ldr r5, off_8007088 // =unk_2000670
+	ldr r5, off_8007088 // =byte_2000670
 	mov r7, r10
 	mov r1, #0x8c
 	ldr r7, [r7,r1]
@@ -7088,7 +7088,7 @@ sub_8007036:
 	mov r6, r10
 	mov r0, #0x8c
 	ldr r6, [r6,r0]
-	ldr r4, off_8007060 // =unk_2000670
+	ldr r4, off_8007060 // =byte_2000670
 	ldr r7, off_8007064 // =0x100
 loc_8007042:
 	sub r7, #1
@@ -7107,7 +7107,7 @@ loc_8007046:
 	b loc_8007042
 locret_800705E:
 	pop {r1-r7,pc}
-off_8007060: .word unk_2000670
+off_8007060: .word byte_2000670
 off_8007064: .word 0x100
 	thumb_func_end sub_8007036
 
@@ -7115,7 +7115,7 @@ off_8007064: .word 0x100
 sub_8007068:
 	push {r1-r7,lr}
 	bl sub_800708C
-	ldr r5, off_8007088 // =unk_2000670
+	ldr r5, off_8007088 // =byte_2000670
 	mov r7, r10
 	mov r1, #0x8c
 	ldr r7, [r7,r1]
@@ -7129,7 +7129,7 @@ sub_8007068:
 locret_8007084:
 	pop {r1-r7,pc}
 	.balign 4, 0x00
-off_8007088: .word unk_2000670
+off_8007088: .word byte_2000670
 	thumb_func_end sub_8007068
 
 	thumb_local_start
@@ -7400,7 +7400,7 @@ loc_8007236:
 	bl sub_8080DA0
 	bl sub_8007628
 	bl sub_801FE00
-	bl sub_8020134
+	bl eStruct2038160_clearStruct
 	bl sub_800ED00
 	mov r0, #0
 	bl sub_8013422
@@ -7413,7 +7413,7 @@ loc_8007236:
 	bl sub_802CE54
 	bl sub_800A79C
 	bl sub_800A032
-	bl sub_800371A
+	bl object_Clear3RAMBytes_800371A
 	cmp r7, #2
 	beq loc_80072BA
 	bl sub_802DFFC
@@ -7438,11 +7438,11 @@ loc_80072BE:
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 loc_80072E2:
 	mov r0, #0
-	bl sub_800B6CE
+	bl eStruct200A008_setUnk04
 	mov r0, #0
-	bl sub_800B6DA
+	bl eStruct200A008_setUnk06
 	mov r0, #0
-	bl sub_800B6B6
+	bl eStruct200A008_setUnk00
 	bl sub_800B75A
 	mov r0, #0
 	bl sub_802D08C
@@ -7473,7 +7473,7 @@ sub_8007338:
 	mov r2, #0
 	mov r3, #0xf0
 	mov r4, #0
-	bl sub_802FF4C
+	bl camera_802FF4C
 	mov r0, #0
 	bl sub_80301B2
 	pop {pc}
@@ -7567,7 +7567,7 @@ sub_80073E2:
 	mov r5, #0
 	push {r1-r3}
 	push {r0}
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, dword_8007420 // =0x8000
 	tst r0, r1
 	pop {r0}
@@ -8109,7 +8109,7 @@ sub_8007800:
 	bl sub_8020140
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_S2034880_Ptr]
-	ldr r1, off_8007834 // =off_8007838
+	ldr r1, off_8007834 // =JumpTable8007838
 	ldrb r0, [r5]
 	ldr r1, [r1,r0]
 	mov lr, pc
@@ -8117,7 +8117,7 @@ sub_8007800:
 	ldr r0, [r5,#0x60]
 	add r0, #1
 	str r0, [r5,#0x60]
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r4, r0
 	bl sub_800A832
 	mov r2, r1
@@ -8126,8 +8126,8 @@ sub_8007800:
 	mov r3, r4
 	tst r0, r0
 	pop {r4,r5,pc}
-off_8007834: .word off_8007838
-off_8007838: .word sub_8007850+1
+off_8007834: .word JumpTable8007838
+JumpTable8007838: .word sub_8007850+1
 	.word sub_8007A44+1
 	.word sub_8007B80+1
 	.word sub_8007E62+1
@@ -8138,7 +8138,7 @@ off_8007838: .word sub_8007850+1
 	thumb_local_start
 sub_8007850:
 	push {r4,lr}
-	bl sub_801FEE8
+	bl eStruct203F7D8_getUnk01
 	mov r4, r0
 	cmp r4, #4
 	bne loc_80078C6
@@ -8146,7 +8146,7 @@ sub_8007850:
 	mov r0, #0xff
 	str r0, [r1]
 loc_8007862:
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #4
 	beq loc_8007872
 	cmp r0, #8
@@ -8155,31 +8155,31 @@ loc_8007862:
 loc_8007872:
 	bl sub_801FE64
 	mov r4, #5
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #4
 	beq loc_8007884
 	cmp r0, #8
 	bne loc_8007898
 loc_8007884:
-	bl sub_803EBF4
+	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
 	cmp r0, #8
 	beq loc_8007892
 	cmp r0, #2
 	bne loc_8007898
 loc_8007892:
-	bl sub_8144EEC
+	bl eStruct200FE00_setUnk04To15h
 	mov r4, #9
 loc_8007898:
 	mov r0, r4
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	mov r0, #8
 	strb r0, [r5]
 	mov r0, #4
 	strb r0, [r5,#1]
 	mov r0, #0
 	strh r0, [r5,#2]
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne locret_8007936
@@ -8193,13 +8193,13 @@ loc_8007898:
 loc_80078C6:
 	cmp r4, #2
 	beq loc_80078D6
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	mov r1, #0xc
 	tst r0, r1
 	bne loc_80078D6
 	b loc_8007918
 loc_80078D6:
-	bl sub_802015E
+	bl eStruct2038160_getBattleTerminate01
 	cmp r0, #0
 	beq loc_8007900
 	mov r1, #9
@@ -8211,7 +8211,7 @@ loc_80078D6:
 	b loc_80078EC
 loc_80078EC:
 	mov r0, r1
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	mov r0, #8
 	strb r0, [r5]
 	mov r0, #4
@@ -8232,7 +8232,7 @@ loc_8007900:
 	bx r1
 	pop {r4,pc}
 loc_8007918:
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #4
 	beq locret_8007936
 	cmp r0, #8
@@ -8301,7 +8301,7 @@ sub_800799C:
 	thumb_local_start
 sub_80079A8:
 	push {lr}
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne loc_80079B8
@@ -8361,7 +8361,7 @@ sub_8007A0C:
 	bl sub_800BFC4
 	ldr r0, off_8007A40 // =byte_2011800
 	bl sub_80028D4
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne loc_8007A36
@@ -8379,14 +8379,14 @@ off_8007A40: .word byte_2011800
 	thumb_local_start
 sub_8007A44:
 	push {r4,lr}
-	bl sub_801FEE8
+	bl eStruct203F7D8_getUnk01
 	cmp r0, #4
 	bne loc_8007A6C
-	bl sub_803EBF4
+	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
 	cmp r0, #8
 	bne loc_8007A5E
-	bl sub_8144EEC
+	bl eStruct200FE00_setUnk04To15h
 	b loc_8007A62
 loc_8007A5E:
 	cmp r0, #2
@@ -8404,7 +8404,7 @@ loc_8007A6C:
 	mov r0, #8
 	and r0, r4
 	bne loc_8007B10
-	bl sub_802015E
+	bl eStruct2038160_getBattleTerminate01
 	cmp r0, #0
 	beq loc_8007A9A
 	mov r1, #9
@@ -8416,7 +8416,7 @@ loc_8007A6C:
 	b loc_8007A8E
 loc_8007A8E:
 	mov r0, r1
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	mov r0, #0x10
 	str r0, [r5]
 	b loc_8007B10
@@ -8434,7 +8434,7 @@ loc_8007A9A:
 	bl sub_800FDC0
 	bl sub_801BEE0
 	bl sub_802CEC8
-	bl sub_800AEE8
+	bl chip_800AEE8
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r0, [r7,#oGameState_Unk_0a]
@@ -8461,7 +8461,7 @@ loc_8007AF0:
 loc_8007AF4:
 	mov r0, #0
 	bl sub_80102AC
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8007B0A
@@ -8565,7 +8565,7 @@ locret_8007BEE:
 	thumb_local_start
 sub_8007BF0:
 	push {lr}
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	ldr r1, off_8007C00 // =off_8007C04
 	ldr r0, [r1,r0]
 	mov lr, pc
@@ -8614,7 +8614,7 @@ locret_8007C4C:
 	thumb_local_start
 sub_8007C50:
 	push {lr}
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, off_8007C9C // =0x400
 	tst r0, r1
 	beq loc_8007C74
@@ -8662,7 +8662,7 @@ sub_8007CA0:
 	ldr r6, [r6,#oToolkit_MainJumptableIndexPtr]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, dword_8007FEC // =0x400
 	tst r0, r1
 	beq loc_8007D06
@@ -8677,7 +8677,7 @@ sub_8007CA0:
 	tst r0, r0
 	bne loc_8007CF2
 	bl sub_8001974
-	bl sub_8001AFC
+	bl zeroFill_e20094C0
 	bl sub_80023A8
 	ldr r1, [r5,#0x18]
 	push {r1}
@@ -8696,7 +8696,7 @@ loc_8007CF2:
 	mov r1, #2
 loc_8007D00:
 	mov r0, r1
-	bl sub_800A840
+	bl setTwoStructs_800A840
 loc_8007D06:
 	bl sub_800A832
 	cmp r0, #1
@@ -8710,7 +8710,7 @@ loc_8007D06:
 loc_8007D1A:
 	cmp r0, #5
 	bne loc_8007D4E
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8007D2A
@@ -8725,7 +8725,7 @@ loc_8007D2A:
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8007E38
 	bl sub_8001974
-	bl sub_8001AFC
+	bl zeroFill_e20094C0
 	bl sub_80023A8
 	ldr r0, [r5,#0x3c]
 	bl loc_80071FE
@@ -8733,7 +8733,7 @@ loc_8007D2A:
 loc_8007D4E:
 	bl sub_800FAE0
 	bl sub_800A86E
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #0x40
 	tst r0, r1
 	beq loc_8007D72
@@ -8746,7 +8746,7 @@ loc_8007D4E:
 loc_8007D6E:
 	bl sub_80137E6
 loc_8007D72:
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne loc_8007DE4
@@ -8762,7 +8762,7 @@ loc_8007D8A:
 	pop {r2}
 	mov r1, #0xe
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, r0
 	mov r0, #3
 	ldr r2, dword_8007FF8 // =0x400000
@@ -8799,7 +8799,7 @@ loc_8007DE4:
 	bl sub_800A832
 	cmp r0, #2
 	bne loc_8007E26
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, dword_8007FFC // =0x800000
 	tst r0, r1
 	beq loc_8007DFE
@@ -8825,7 +8825,7 @@ loc_8007E14:
 	mov r2, #0x80
 	bl navicust_801379E // (int a1, int a2, int a3) -> void
 loc_8007E26:
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #0x10
 	tst r0, r1
 	beq loc_8007E34
@@ -8835,9 +8835,9 @@ loc_8007E34:
 loc_8007E38:
 	mov r0, #0
 	strb r0, [r7,#oGameState_Unk_0a]
-	bl sub_8002368
+	bl zeroFill_e20097A0
 	mov r0, #0x40
-	bl sub_8001778
+	bl sRender_08_setRenderingState
 	bl sub_800A892
 	mov r0, #1
 	bl sub_80071A4
@@ -8871,9 +8871,9 @@ sub_8007E62:
 	bl sub_80046F8
 	bl sub_80049B0
 	bl sub_8009FCC
-	ldr r1, off_8008008 // =byte_203F7D8
+	ldr r1, off_8008008 // =eStruct203F7D8
 	mov r0, #2
-	strb r0, [r1,#0x1] // (byte_203F7D8+1 - 0x203f7d8)
+	strb r0, [r1,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	pop {pc}
 	.balign 4, 0x00
 off_8007EA8: .word off_8007EAC
@@ -8893,11 +8893,11 @@ sub_8007EB8:
 	ldr r0, dword_800800C // =0x280000
 	bl sub_801DACC
 	mov r0, #5
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	bl sub_80062EC
 	bl getPETNaviSelect // () -> u8
 	mov r4, r0
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, dword_8008010 // =0x200000
 	tst r0, r1
 	beq loc_8007EEE
@@ -8981,9 +8981,9 @@ sub_8007F4E:
 	bl sub_80046F8
 	bl sub_80049B0
 	bl sub_8009FCC
-	ldr r1, off_8008018 // =byte_203F7D8
+	ldr r1, off_8008018 // =eStruct203F7D8
 	mov r0, #2
-	strb r0, [r1,#0x1] // (byte_203F7D8+1 - 0x203f7d8)
+	strb r0, [r1,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	pop {pc}
 	.balign 4, 0x00
 off_8007F98: .word off_8007F9C
@@ -9038,11 +9038,11 @@ dword_8007FF8: .word 0x400000
 dword_8007FFC: .word 0x800000
 off_8008000: .word 0x1000
 dword_8008004: .word 0x40000
-off_8008008: .word byte_203F7D8
+off_8008008: .word eStruct203F7D8
 dword_800800C: .word 0x280000
 dword_8008010: .word 0x200000
 off_8008014: .word scripts_commErr_87370C0
-off_8008018: .word byte_203F7D8
+off_8008018: .word eStruct203F7D8
 	thumb_func_end sub_8007FD2
 
 	thumb_local_start
@@ -9097,7 +9097,7 @@ sub_8008064:
 	mov r1, #0
 	b loc_80080AE
 loc_8008096:
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne loc_80080A6
@@ -9268,7 +9268,7 @@ loc_80081EE:
 	mov r4, #0x5e
 	b loc_8008206
 loc_80081F4:
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r4, #0x5e
 	mov r2, #0x19
 	mov r1, #2
@@ -9281,7 +9281,7 @@ loc_8008206:
 	bl sound_bgmusic_play // (int a1) -> void
 	strh r4, [r5,#8]
 	mov r6, #4
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8008222
@@ -9313,7 +9313,7 @@ loc_8008232:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #0
-	bl sub_800B6C2
+	bl eStruct200A008_setUnk02
 locret_8008258:
 	pop {r4,r6,pc}
 	thumb_func_end sub_80081A4
@@ -9334,14 +9334,14 @@ sub_800825A:
 	mov r2, #1
 	eor r1, r2
 	strb r1, [r0,#0x10]
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_800828A
 	mov r0, #0x1a
 	bl sound_bgmusic_play // (int a1) -> void
 loc_800828A:
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #2
 	tst r0, r1
 	bne loc_8008298
@@ -9378,7 +9378,7 @@ loc_80082B4:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #1
-	bl sub_800B6C2
+	bl eStruct200A008_setUnk02
 locret_80082DA:
 	pop {r4,pc}
 	thumb_func_end sub_800825A
@@ -9409,7 +9409,7 @@ loc_80082FE:
 	ldrh r0, [r5,#8]
 	tst r0, r0
 	blt locret_8008348
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, off_80084E0 // =0x400
 	tst r0, r1
 	beq loc_8008338
@@ -9429,7 +9429,7 @@ loc_8008332:
 	b locret_8008348
 loc_8008338:
 	mov r0, #3
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	mov r0, #3
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
@@ -9883,7 +9883,7 @@ sub_8008688:
 	strb r1, [r0,#0x10]
 	mov r0, #4
 	strb r0, [r5,#3]
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r2, #0x19
 	mov r4, #0x41
 	mov r1, #2
@@ -9982,7 +9982,7 @@ loc_800874A:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #0
-	bl sub_800B6C2
+	bl eStruct200A008_setUnk02
 locret_8008762:
 	pop {pc}
 	thumb_func_end sub_800873A
@@ -10003,14 +10003,14 @@ sub_8008764:
 	mov r2, #1
 	eor r1, r2
 	strb r1, [r0,#0x10]
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8008794
 	mov r0, #0x1a
 	bl sound_bgmusic_play // (int a1) -> void
 loc_8008794:
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #2
 	tst r0, r1
 	bne loc_80087A2
@@ -10041,7 +10041,7 @@ loc_80087B0:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #1
-	bl sub_800B6C2
+	bl eStruct200A008_setUnk02
 locret_80087D6:
 	pop {r4,pc}
 	thumb_func_end sub_8008764
@@ -10072,7 +10072,7 @@ loc_80087FA:
 	ldrh r0, [r5,#8]
 	tst r0, r0
 	blt locret_800883E
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, off_8008940 // =0x400
 	tst r0, r1
 	beq loc_8008834
@@ -10207,7 +10207,7 @@ loc_80088E6:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #1
-	bl sub_800B6C2
+	bl eStruct200A008_setUnk02
 locret_80088FE:
 	pop {pc}
 	thumb_func_end sub_80088D6
@@ -10416,7 +10416,7 @@ sub_8008AA0:
 	strb r1, [r0,#0x10]
 	mov r0, #4
 	strb r0, [r5,#3]
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r2, #0x19
 	mov r4, #0x41
 	mov r1, #2
@@ -10515,7 +10515,7 @@ loc_8008B62:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #0
-	bl sub_800B6C2
+	bl eStruct200A008_setUnk02
 locret_8008B7A:
 	pop {pc}
 	thumb_func_end sub_8008B52
@@ -10536,14 +10536,14 @@ sub_8008B7C:
 	mov r2, #1
 	eor r1, r2
 	strb r1, [r0,#0x10]
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8008BAC
 	mov r0, #0x1a
 	bl sound_bgmusic_play // (int a1) -> void
 loc_8008BAC:
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #2
 	tst r0, r1
 	bne loc_8008BBA
@@ -10574,7 +10574,7 @@ loc_8008BC8:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #1
-	bl sub_800B6C2
+	bl eStruct200A008_setUnk02
 locret_8008BEE:
 	pop {r4,pc}
 	thumb_func_end sub_8008B7C
@@ -10605,7 +10605,7 @@ loc_8008C12:
 	ldrh r0, [r5,#8]
 	tst r0, r0
 	blt locret_8008C56
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, off_8008D58 // =0x400
 	tst r0, r1
 	beq loc_8008C4C
@@ -10740,7 +10740,7 @@ loc_8008CFE:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #1
-	bl sub_800B6C2
+	bl eStruct200A008_setUnk02
 locret_8008D16:
 	pop {pc}
 	thumb_func_end sub_8008CEE
@@ -10945,7 +10945,7 @@ sub_8008EA0:
 	strb r1, [r0,#0x10]
 	mov r0, #4
 	strb r0, [r5,#3]
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r2, #0x19
 	mov r4, #0x41
 	mov r1, #2
@@ -11044,7 +11044,7 @@ loc_8008F62:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #0
-	bl sub_800B6C2
+	bl eStruct200A008_setUnk02
 locret_8008F7A:
 	pop {pc}
 	thumb_func_end sub_8008F52
@@ -11065,14 +11065,14 @@ sub_8008F7C:
 	mov r2, #1
 	eor r1, r2
 	strb r1, [r0,#0x10]
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8008FAC
 	mov r0, #0x1a
 	bl sound_bgmusic_play // (int a1) -> void
 loc_8008FAC:
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #2
 	tst r0, r1
 	bne loc_8008FBA
@@ -11103,7 +11103,7 @@ loc_8008FC8:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #1
-	bl sub_800B6C2
+	bl eStruct200A008_setUnk02
 locret_8008FEE:
 	pop {r4,pc}
 	thumb_func_end sub_8008F7C
@@ -11134,7 +11134,7 @@ loc_8009012:
 	ldrh r0, [r5,#8]
 	tst r0, r0
 	blt locret_8009056
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, off_8009154 // =0x400
 	tst r0, r1
 	beq loc_800904C
@@ -11269,7 +11269,7 @@ loc_80090FE:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	strb r0, [r1,#oGameState_Unk_14]
 	mov r0, #1
-	bl sub_800B6C2
+	bl eStruct200A008_setUnk02
 locret_8009116:
 	pop {pc}
 	thumb_func_end sub_80090EE
@@ -11316,7 +11316,7 @@ sub_8009158:
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq locret_80091B6
@@ -11376,7 +11376,7 @@ sub_80091F0:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_8009240
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, off_8009278 // =0x400
 	tst r0, r1
 	bne loc_800920A
@@ -11393,7 +11393,7 @@ loc_8009210:
 	bl sub_8007358
 	bl sub_800A028
 	bl sub_8014178
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_800922E
@@ -11619,15 +11619,15 @@ loc_80093B0:
 	beq locret_800945A
 	push {r0}
 	ldrb r0, [r5,#7]
-	bl sub_800B6E6
+	bl eStruct200A008_setUnk03
 	pop {r0}
 	cmp r0, #1
 	bne loc_8009414
 	mov r0, #1
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	bl sub_800AF84
 	strb r0, [r5,#0x1e]
-	bl sub_800B6B6
+	bl eStruct200A008_setUnk00
 	bl sub_800B6F2
 	bl sub_802D234
 	mov r2, #0x18
@@ -11639,11 +11639,11 @@ loc_80093B0:
 	mov r2, #0x20
 	cmp r0, #8
 	beq loc_8009454
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #2
 	tst r0, r1
 	beq loc_8009452
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r2, #0x10
 	ldr r1, off_80095F8 // =0x400
 	tst r0, r1
@@ -11660,11 +11660,11 @@ loc_8009414:
 	cmp r0, #2
 	bne loc_8009452
 	mov r0, #2
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	bl sub_800AF84
 	strb r0, [r5,#0x1e]
-	bl sub_800B6B6
-	bl get_802D246 // () -> int
+	bl eStruct200A008_setUnk00
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8009452
@@ -11816,7 +11816,7 @@ loc_8009534:
 	mov r0, #0x80
 	bl chatbox_8045F3C
 	bne locret_8009550
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r2, #0x10
 	mov r1, #2
 	tst r0, r1
@@ -11855,7 +11855,7 @@ loc_8009576:
 	mov r0, #0x80
 	bl chatbox_8045F3C
 	bne locret_8009592
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r2, #0x10
 	mov r1, #2
 	tst r0, r1
@@ -11885,7 +11885,7 @@ loc_80095AA:
 	mov r0, #0x80
 	bl chatbox_8045F3C
 	bne locret_80095C6
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r2, #0x10
 	mov r1, #2
 	tst r0, r1
@@ -11962,7 +11962,7 @@ sub_8009658:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_80096A8
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, off_8009994 // =0x400
 	tst r0, r1
 	bne loc_8009672
@@ -11979,7 +11979,7 @@ loc_8009678:
 	bl sub_8007358
 	bl sub_800A028
 	bl sub_8014178
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8009696
@@ -12216,21 +12216,21 @@ loc_800981E:
 	beq locret_80098BA
 	push {r0}
 	ldrb r0, [r5,#7]
-	bl sub_800B6E6
+	bl eStruct200A008_setUnk03
 	pop {r0}
 	cmp r0, #1
 	bne loc_8009870
 	mov r0, #1
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	bl sub_800AF84
 	strb r0, [r5,#0x1e]
-	bl sub_800B6B6
+	bl eStruct200A008_setUnk00
 	bl sub_800B6F2
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #2
 	tst r0, r1
 	beq loc_80098B2
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r2, #0x10
 	ldr r1, off_8009994 // =0x400
 	tst r0, r1
@@ -12245,11 +12245,11 @@ loc_8009870:
 	cmp r0, #2
 	bne loc_80098A8
 	mov r0, #2
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	bl sub_800AF84
 	strb r0, [r5,#0x1e]
-	bl sub_800B6B6
-	bl get_802D246 // () -> int
+	bl eStruct200A008_setUnk00
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_80098B2
@@ -12269,7 +12269,7 @@ loc_80098A8:
 	cmp r0, #7
 	bne loc_80098B2
 	mov r0, #7
-	bl sub_800A840
+	bl setTwoStructs_800A840
 loc_80098B2:
 	mov r2, #0x14
 loc_80098B4:
@@ -12432,7 +12432,7 @@ sub_80099E0:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_8009A30
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, off_8009C84 // =0x400
 	tst r0, r1
 	bne loc_80099FA
@@ -12449,7 +12449,7 @@ loc_8009A00:
 	bl sub_8007358
 	bl sub_800A028
 	bl sub_8014178
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8009A1E
@@ -12621,26 +12621,26 @@ loc_8009B30:
 	beq locret_8009BAA
 	push {r0}
 	ldrb r0, [r5,#7]
-	bl sub_800B6E6
+	bl eStruct200A008_setUnk03
 	pop {r0}
 	cmp r0, #1
 	bne loc_8009B60
 	mov r0, #1
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	bl sub_800AF84
 	strb r0, [r5,#0x1e]
-	bl sub_800B6B6
+	bl eStruct200A008_setUnk00
 	bl sub_800B6F2
 	b loc_8009BA2
 loc_8009B60:
 	cmp r0, #2
 	bne loc_8009B98
 	mov r0, #2
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	bl sub_800AF84
 	strb r0, [r5,#0x1e]
-	bl sub_800B6B6
-	bl get_802D246 // () -> int
+	bl eStruct200A008_setUnk00
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8009BA2
@@ -12660,7 +12660,7 @@ loc_8009B98:
 	cmp r0, #7
 	bne loc_8009BA2
 	mov r0, #7
-	bl sub_800A840
+	bl setTwoStructs_800A840
 loc_8009BA2:
 	mov r2, #0x14
 loc_8009BA4:
@@ -12823,7 +12823,7 @@ sub_8009CD0:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_8009D20
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, off_8009FB8 // =0x400
 	tst r0, r1
 	bne loc_8009CEA
@@ -12840,7 +12840,7 @@ loc_8009CF0:
 	bl sub_8007358
 	bl sub_800A028
 	bl sub_8014178
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8009D0E
@@ -13055,26 +13055,26 @@ loc_8009E66:
 	beq locret_8009EE0
 	push {r0}
 	ldrb r0, [r5,#7]
-	bl sub_800B6E6
+	bl eStruct200A008_setUnk03
 	pop {r0}
 	cmp r0, #1
 	bne loc_8009E96
 	mov r0, #1
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	bl sub_800AF84
 	strb r0, [r5,#0x1e]
-	bl sub_800B6B6
+	bl eStruct200A008_setUnk00
 	bl sub_800B6F2
 	b loc_8009ED8
 loc_8009E96:
 	cmp r0, #2
 	bne loc_8009ECE
 	mov r0, #2
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	bl sub_800AF84
 	strb r0, [r5,#0x1e]
-	bl sub_800B6B6
-	bl get_802D246 // () -> int
+	bl eStruct200A008_setUnk00
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8009ED8
@@ -13094,7 +13094,7 @@ loc_8009ECE:
 	cmp r0, #7
 	bne loc_8009ED8
 	mov r0, #7
-	bl sub_800A840
+	bl setTwoStructs_800A840
 loc_8009ED8:
 	mov r2, #0x14
 loc_8009EDA:
@@ -13645,7 +13645,7 @@ sub_800A244:
 	mov r0, #0
 	bl sub_800A29A
 	push {r0}
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	and r0, r1
 	beq loc_800A290
@@ -13749,7 +13749,7 @@ sub_800A2F8:
 sub_800A318:
 	push {r4-r7,lr}
 	mov r7, #0
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r4, r0
 	ldr r1, dword_800A564 // =0x200000
 	tst r0, r1
@@ -13862,7 +13862,7 @@ sub_800A3E4:
 	str r0, [sp,#4]
 	str r0, [sp,#8]
 	mov r7, #0
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r4, r0
 	ldr r1, dword_800A564 // =0x200000
 	tst r0, r1
@@ -14041,7 +14041,7 @@ sub_800A540:
 	push {r4,r6,lr}
 	mov r6, r0
 	mov r4, r1
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, dword_800A564 // =0x200000
 	tst r0, r1
 	beq loc_800A558
@@ -14075,7 +14075,7 @@ loc_800A582:
 	ldrh r0, [r7]
 	lsl r0, r0, #0x17
 	lsr r0, r0, #0x17
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#0x7] // ChipData.elemIdx
 	cmp r1, #2
 	beq loc_800A59E
@@ -14332,8 +14332,8 @@ isSameSubsystem_800A732:
 	mov r4, #1
 	bl sub_800A7D0 // () -> (zf, int)
 	beq loc_800A748
-	ldr r3, off_800A750 // =byte_203F7D8
-	ldrb r1, [r3,#0x1] // (byte_203F7D8+1 - 0x203f7d8)
+	ldr r3, off_800A750 // =eStruct203F7D8
+	ldrb r1, [r3,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	mov r2, #2
 	tst r1, r2
 	bne loc_800A748
@@ -14343,7 +14343,7 @@ loc_800A748:
 	tst r0, r0
 	pop {r4,pc}
 	.balign 4, 0
-off_800A750: .word byte_203F7D8
+off_800A750: .word eStruct203F7D8
 	thumb_func_end isSameSubsystem_800A732
 
 	thumb_local_start
@@ -14480,7 +14480,7 @@ loc_800A812:
 	ldrh r0, [r4]
 	lsl r0, r0, #0x17
 	lsr r0, r0, #0x17
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#7]
 	cmp r0, #2
 	beq loc_800A82E
@@ -14507,14 +14507,14 @@ sub_800A832:
 	thumb_func_end sub_800A832
 
 	thumb_local_start
-sub_800A840:
+setTwoStructs_800A840:
 	push {lr}
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_S2034880_Ptr]
 	strb r0, [r1,#0x1f]
-	bl sub_800B6AA
+	bl eStruct200A008_setUnk01
 	pop {pc}
-	thumb_func_end sub_800A840
+	thumb_func_end setTwoStructs_800A840
 
 	thumb_local_start
 sub_800A84E:
@@ -14569,7 +14569,7 @@ loc_800A888:
 	thumb_local_start
 sub_800A892:
 	push {lr}
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, off_800A94C // =0x100
 	tst r0, r1
 	beq locret_800A8B0
@@ -14682,7 +14682,7 @@ sub_800A964:
 	thumb_func_start sub_800A97A
 sub_800A97A:
 	push {lr}
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_800A994
@@ -14905,7 +14905,7 @@ sub_800AABC:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_S2034880_Ptr]
 	mov r0, #4
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	mov r1, #0x14
@@ -14922,7 +14922,7 @@ sub_800AAD6:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_S2034880_Ptr]
 	mov r0, #2
-	bl sub_800A840
+	bl setTwoStructs_800A840
 	pop {r5,pc}
 	thumb_func_end sub_800AAD6
 
@@ -15482,7 +15482,7 @@ dword_800AEE4: .word 0xD3CA
 	thumb_func_end sub_800AE90
 
 	thumb_local_start
-sub_800AEE8:
+chip_800AEE8:
 	push {r4-r6,lr}
 	ldr r4, off_800B138 // =byte_20349C0
 	ldrb r0, [r4]
@@ -15492,7 +15492,7 @@ sub_800AEE8:
 	// idx
 	ldrh r0, [r5]
 	mov r6, r0
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #0x80
 	tst r1, r2
@@ -15510,7 +15510,7 @@ loc_800AF0E:
 	// idx
 	ldrh r0, [r5]
 	mov r6, r0
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #0x80
 	tst r1, r2
@@ -15521,7 +15521,7 @@ loc_800AF0E:
 	strh r0, [r5,#0xc]
 locret_800AF32:
 	pop {r4-r6,pc}
-	thumb_func_end sub_800AEE8
+	thumb_func_end chip_800AEE8
 
 	thumb_func_start sub_800AF34
 sub_800AF34:
@@ -15577,7 +15577,7 @@ locret_800AF82:
 	thumb_local_start
 sub_800AF84:
 	push {lr}
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne loc_800AFA0
@@ -15610,7 +15610,7 @@ sub_800AFBA:
 	push {r1-r7,lr}
 	mov r4, r0
 	mov r6, #0
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_800AFCC
@@ -15626,7 +15626,7 @@ loc_800AFCC:
 	beq loc_800B00C
 	lsl r0, r4, #0x17
 	lsr r0, r0, #0x17
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r6, [r0,#7]
 	cmp r6, #1
 	beq loc_800AFF0
@@ -15667,7 +15667,7 @@ sub_800B022:
 	push {r1-r7,lr}
 	mov r4, r0
 	mov r6, #0
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_800B034
@@ -15683,7 +15683,7 @@ loc_800B034:
 	beq loc_800B074
 	lsl r0, r4, #0x17
 	lsr r0, r0, #0x17
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r6, [r0,#7]
 	cmp r6, #1
 	beq loc_800B058
@@ -15754,7 +15754,7 @@ sub_800B090:
 	bne loc_800B0F6
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r7, [r0,#0x7] // ChipData.elemIdx
 	cmp r7, #1
 	beq loc_800B0DE
@@ -15820,7 +15820,7 @@ sub_800B144:
 	ldr r0, [r0,#oToolkit_S2034880_Ptr]
 	ldr r0, [r0,#0x3c]
 	str r0, [r4,#0x8] // (byte_203CBE8 - 0x203cbe0)
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, dword_800B2C4 // =0x200000
 	tst r0, r1
 	bne loc_800B1F0
@@ -15848,7 +15848,7 @@ sub_800B144:
 	mov r6, r1
 	mov r2, #0x64
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_800B1A8
@@ -16017,7 +16017,7 @@ sub_800B2D8:
 	ldr r1, off_800B57C // =byte_203C9E4
 	mov r2, #0x64
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_800B334
@@ -16128,7 +16128,7 @@ sub_800B3D8:
 	mov r2, #0x50
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 loc_800B3EC:
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_800B408
@@ -16145,7 +16145,7 @@ loc_800B408:
 	ldr r1, off_800B630 // =byte_203CE00
 	mov r2, #0x64
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq locret_800B426
@@ -16271,7 +16271,7 @@ loc_800B4D8:
 	mov r4, r1
 	cmp r1, #0x90
 	bne locret_800B50C
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq locret_800B50C
@@ -16310,7 +16310,7 @@ sub_800B50E:
 	str r2, [r0,#0x44]
 	ldr r2, [r1,#4]
 	strb r2, [r0,#0xe]
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq locret_800B546
@@ -16437,95 +16437,95 @@ sub_800B694:
 	thumb_func_end sub_800B694
 
 	thumb_local_start
-sub_800B6AA:
+eStruct200A008_setUnk01:
 	ldr r1, off_800B830 // =eOWPlayerObjectEnd
 	strb r0, [r1,#0x1] // (byte_200A009 - 0x200a008)
 	mov pc, lr
-	thumb_func_end sub_800B6AA
+	thumb_func_end eStruct200A008_setUnk01
 
-	thumb_func_start sub_800B6B0
-sub_800B6B0:
+	thumb_func_start eStruct200A008_getUnk01
+eStruct200A008_getUnk01:
 	ldr r1, off_800B834 // =eOWPlayerObjectEnd
 	ldrb r0, [r1,#0x1] // (byte_200A009 - 0x200a008)
 	mov pc, lr
-	thumb_func_end sub_800B6B0
+	thumb_func_end eStruct200A008_getUnk01
 
 	thumb_local_start
-sub_800B6B6:
+eStruct200A008_setUnk00:
 	ldr r1, off_800B838 // =eOWPlayerObjectEnd
 	strb r0, [r1]
 	mov pc, lr
-	thumb_func_end sub_800B6B6
+	thumb_func_end eStruct200A008_setUnk00
 
 	thumb_local_start
-sub_800B6BC:
+eStruct200A008_getUnk00:
 	ldr r1, off_800B83C // =eOWPlayerObjectEnd
 	ldrb r0, [r1]
 	mov pc, lr
-	thumb_func_end sub_800B6BC
+	thumb_func_end eStruct200A008_getUnk00
 
 	thumb_local_start
-sub_800B6C2:
+eStruct200A008_setUnk02:
 	ldr r1, off_800B840 // =eOWPlayerObjectEnd
 	strb r0, [r1,#0x2] // (byte_200A00A - 0x200a008)
 	mov pc, lr
-	thumb_func_end sub_800B6C2
+	thumb_func_end eStruct200A008_setUnk02
 
 	thumb_local_start
-sub_800B6C8:
+eStruct200A008_getUnk02:
 	ldr r1, off_800B844 // =eOWPlayerObjectEnd
 	ldrb r0, [r1,#0x2] // (byte_200A00A - 0x200a008)
 	mov pc, lr
-	thumb_func_end sub_800B6C8
+	thumb_func_end eStruct200A008_getUnk02
 
-	thumb_func_start sub_800B6CE
-sub_800B6CE:
+	thumb_func_start eStruct200A008_setUnk04
+eStruct200A008_setUnk04:
 	ldr r1, off_800B848 // =eOWPlayerObjectEnd
 	strh r0, [r1,#0x4] // (word_200A00C - 0x200a008)
 	mov pc, lr
-	thumb_func_end sub_800B6CE
+	thumb_func_end eStruct200A008_setUnk04
 
-	thumb_func_start sub_800B6D4
-sub_800B6D4:
+	thumb_func_start eStruct200A008_getUnk04
+eStruct200A008_getUnk04:
 	ldr r1, off_800B84C // =eOWPlayerObjectEnd
 	ldrh r0, [r1,#0x4] // (word_200A00C - 0x200a008)
 	mov pc, lr
-	thumb_func_end sub_800B6D4
+	thumb_func_end eStruct200A008_getUnk04
 
-	thumb_func_start sub_800B6DA
-sub_800B6DA:
+	thumb_func_start eStruct200A008_setUnk06
+eStruct200A008_setUnk06:
 	ldr r1, off_800B850 // =eOWPlayerObjectEnd
 	strh r0, [r1,#0x6] // (word_200A00E - 0x200a008)
 	mov pc, lr
-	thumb_func_end sub_800B6DA
+	thumb_func_end eStruct200A008_setUnk06
 
-	thumb_func_start sub_800B6E0
-sub_800B6E0:
+	thumb_func_start eStruct200A008_getUnk06
+eStruct200A008_getUnk06:
 	ldr r1, off_800B854 // =eOWPlayerObjectEnd
 	ldrh r0, [r1,#0x6] // (word_200A00E - 0x200a008)
 	mov pc, lr
-	thumb_func_end sub_800B6E0
+	thumb_func_end eStruct200A008_getUnk06
 
 	thumb_local_start
-sub_800B6E6:
+eStruct200A008_setUnk03:
 	ldr r1, off_800B858 // =eOWPlayerObjectEnd
 	strb r0, [r1,#0x3] // (byte_200A00B - 0x200a008)
 	mov pc, lr
-	thumb_func_end sub_800B6E6
+	thumb_func_end eStruct200A008_setUnk03
 
 	thumb_local_start
-sub_800B6EC:
+eStruct200A008_getUnk03:
 	ldr r1, off_800B85C // =eOWPlayerObjectEnd
 	ldrb r0, [r1,#0x3] // (byte_200A00B - 0x200a008)
 	mov pc, lr
-	thumb_func_end sub_800B6EC
+	thumb_func_end eStruct200A008_getUnk03
 
 	thumb_local_start
 sub_800B6F2:
 	push {r4,r6,r7,lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_S2034880_Ptr]
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne locret_800B732
@@ -16843,13 +16843,13 @@ loc_800B928:
 loc_800B938:
 	ldrb r0, [r5,#0x16]
 	lsl r0, r0, #2
-	ldr r1, off_800B948 // =unk_200F3B8
+	ldr r1, off_800B948 // =dword_200F3B8
 	mov r2, #0
 	str r2, [r1,r0]
 	mov r0, #4
 	strb r0, [r5,#8]
 	pop {pc}
-off_800B948: .word unk_200F3B8
+off_800B948: .word dword_200F3B8
 	thumb_func_end object_timefreezeBegin
 
 	thumb_func_start object_dimScreen
@@ -16937,7 +16937,7 @@ loc_800B9D4:
 	bl sub_801DACC
 	// idx
 	ldrh r0, [r5,#0x30]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r1, #0
 	mov r2, #0
 	ldrb r3, [r0,#9]
@@ -17046,7 +17046,7 @@ loc_800BAB8:
 	bl sub_801DACC
 	// idx
 	ldrh r0, [r5,#0x30]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r1, #0
 	mov r2, #0
 	ldrb r3, [r0,#9]
@@ -17117,7 +17117,7 @@ loc_800BB46:
 	bne loc_800BB72
 	ldrb r1, [r5,#0x16]
 	lsl r1, r1, #2
-	ldr r0, off_800BBA4 // =unk_200F3B8
+	ldr r0, off_800BBA4 // =dword_200F3B8
 	mov r2, #1
 	str r2, [r0,r1]
 	ldrb r0, [r5,#9]
@@ -17153,7 +17153,7 @@ loc_800BB94:
 locret_800BB9E:
 	pop {pc}
 dword_800BBA0: .word 0x10000
-off_800BBA4: .word unk_200F3B8
+off_800BBA4: .word dword_200F3B8
 	thumb_func_end sub_800BA8A
 
 	thumb_func_start sub_800BBA8
@@ -17181,7 +17181,7 @@ loc_800BBCC:
 	bl sub_801DACC
 	// idx
 	ldrh r0, [r5,#0x30]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r1, #0
 	mov r2, #0
 	ldrb r3, [r0,#9]

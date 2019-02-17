@@ -1070,7 +1070,7 @@
 // .global byte_802136D
 
 	.include "asm/asm02.inc"
-// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global getChip8021DA8 // (int chip_idx) -> ChipData*
 
 	.include "asm/asm03_0.inc"
 // .global ho_8026554
@@ -1084,7 +1084,7 @@
 // .global sub_802CE8A
 // .global sub_802CEA6
 // .global sub_802D234
-// .global get_802D246 // () -> int
+// .global sub_802D246 // () -> int
 // .global sub_802D26A
 // .global sub_802D322
 // .global sub_802D4C6

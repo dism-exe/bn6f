@@ -1,6 +1,6 @@
 // 0x8021aa4
 // (int chip_idx) -> ChipData*
-char *__fastcall getChip_8021DA8(int a1)
+char *__fastcall getChip8021DA8(int a1)
 {
     return &ChipDataArr_8021DA8[44 * a1];
 }
@@ -249,7 +249,7 @@ int __fastcall sub_8021C02(int a1, int a2)
 
 
 // 0x8021c68
-void __fastcall sub_8021C68(int a1, int a2, int a3, int a4)
+void __fastcall zeroFill_e2002230(int a1, int a2, int a3, int a4)
 {
     int v4; // r10
 
@@ -269,7 +269,7 @@ char *__fastcall chip_8021C7C(int a1, int a2)
 
     v6 = a2;
     vIdx = a1;
-    arr = getChip_8021DA8(a1);
+    arr = getChip8021DA8(a1);
     v4 = 0;
     while ( v6 != arr[v4] )
     {
@@ -300,7 +300,7 @@ __int64 sub_8021CA8()
     do
     {
         v8 = v2;
-        v7 = getChip_8021DA8(v2);
+        v7 = getChip8021DA8(v2);
         sub_8006E84(v8);
         if ( v3 )
         {

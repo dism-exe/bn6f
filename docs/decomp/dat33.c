@@ -391,7 +391,7 @@ void sub_812C5D0()
                     }
                 }
             }
-            sub_811F7EC();
+            isJoystickIRQActive();
             if ( !v16 )
             {
                 sound_play(131, v14, v15);
@@ -590,7 +590,7 @@ void sub_812C884()
     *(v0 + 16) = 22;
     if ( *(v0 + 3) )
     {
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( !v3 )
         {
             *(v0 + 38) = 0;
@@ -607,10 +607,10 @@ void sub_812C884()
             *(v0 + 21) = v6;
             goto LABEL_14;
         }
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( v3 )
         {
-            sub_811F7EC();
+            isJoystickIRQActive();
             if ( v3 )
                 goto LABEL_14;
         }

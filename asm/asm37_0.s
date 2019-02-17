@@ -285,8 +285,8 @@ sub_813B928:
 off_813B930: .word byte_20096D8
 	thumb_func_end sub_813B928
 
-	thumb_func_start sub_813B934
-sub_813B934:
+	thumb_func_start zeroFill_813B934
+zeroFill_813B934:
 	push {lr}
 	mov r0, r10
 	// memBlock
@@ -302,7 +302,7 @@ sub_813B934:
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_813B94C: .word 0x188
-	thumb_func_end sub_813B934
+	thumb_func_end zeroFill_813B934
 
 	thumb_func_start sub_813B950
 sub_813B950:
@@ -1075,7 +1075,7 @@ loc_813BE9E:
 sub_813BEA8:
 	push {r4-r7,lr}
 	// mem
-	ldr r0, off_813BF08 // =unk_2006D30 
+	ldr r0, off_813BF08 // =byte_2006D30 
 	mov r4, r0
 	// byteCount
 	mov r1, #0x31 
@@ -1126,7 +1126,7 @@ loc_813BEFE:
 	strb r2, [r0,r1]
 locret_813BF06:
 	pop {r4-r7,pc}
-off_813BF08: .word unk_2006D30
+off_813BF08: .word byte_2006D30
 	thumb_func_end sub_813BEA8
 
 	thumb_local_start
@@ -1828,7 +1828,7 @@ sub_813C584:
 	push {r4-r7,lr}
 	sub sp, sp, #4
 	str r0, [sp]
-	ldr r0, off_813C638 // =unk_2006D68 
+	ldr r0, off_813C638 // =byte_2006D68 
 	mov r1, #0x31 
 	bl ZeroFillByByte // (void *mem, int size) -> void
 	ldr r0, off_813C63C // =byte_2006DA0 
@@ -1855,7 +1855,7 @@ loc_813C5A0:
 	bl sub_813B9B4
 	tst r0, r0
 	beq loc_813C5CC
-	ldr r1, off_813C638 // =unk_2006D68 
+	ldr r1, off_813C638 // =byte_2006D68 
 	strb r0, [r1,r5]
 	add r5, #1
 loc_813C5CC:
@@ -1870,7 +1870,7 @@ loc_813C5CC:
 loc_813C5DC:
 	mov r4, #0
 loc_813C5DE:
-	ldr r2, off_813C638 // =unk_2006D68 
+	ldr r2, off_813C638 // =byte_2006D68 
 	ldrb r0, [r2,r4]
 	cmp r0, r6
 	bne loc_813C5EE
@@ -1920,7 +1920,7 @@ sub_813C624:
 	pop {r0,r2,pc}
 	.balign 4, 0x00
 off_813C634: .word byte_813C640
-off_813C638: .word unk_2006D68
+off_813C638: .word byte_2006D68
 off_813C63C: .word byte_2006DA0
 byte_813C640: .byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0xFF, 0xFF, 0x0, 0x0, 0x0
@@ -1945,7 +1945,7 @@ sub_813C678:
 sub_813C684:
 	push {r4-r7,lr}
 	sub sp, sp, #4
-	ldr r0, off_813C744 // =unk_2006DD8 
+	ldr r0, off_813C744 // =byte_2006DD8 
 	mov r1, #8
 	bl ZeroFillByByte // (void *mem, int size) -> void
 	mov r6, #6
@@ -1966,7 +1966,7 @@ loc_813C698:
 	ldrb r1, [r0]
 	tst r1, r1
 	beq loc_813C6CA
-	ldr r0, off_813C744 // =unk_2006DD8 
+	ldr r0, off_813C744 // =byte_2006DD8 
 	strb r1, [r0,r6]
 	add r2, r6, #1
 loc_813C6BE:
@@ -2037,7 +2037,7 @@ loc_813C730:
 	add sp, sp, #4
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_813C744: .word unk_2006DD8
+off_813C744: .word byte_2006DD8
 off_813C748: .word navicust_jt_NCPs
 navicust_jt_NCPs: .word sub_813C808+1
 	.word navicust_NCP_SuperArmor+1
@@ -3168,7 +3168,7 @@ sub_813CEA0:
 	add r0, r0, r1
 	ldrh r0, [r0]
 	bl split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#8]
 	cmp r0, r7
 	ble loc_813CEF2
@@ -3549,7 +3549,7 @@ loc_813D538:
 	mov r6, #0
 	// idx
 	mov r0, r2
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r7, r0
 	bl GetRNG2 // () -> int
 	mov r1, #3
@@ -4181,11 +4181,11 @@ sub_813D98C:
 	push {lr}
 	bl sub_813D978
 	mov r0, #4
-	ldr r1, off_813D99C // =byte_200BC30 
+	ldr r1, off_813D99C // =eStruct200BC30 
 	strb r0, [r1,#0xe] // (byte_200BC3E - 0x200bc30)
 	pop {pc}
 	.balign 4, 0x00
-off_813D99C: .word byte_200BC30
+off_813D99C: .word eStruct200BC30
 	thumb_func_end sub_813D98C
 
 	thumb_func_start sub_813D9A0
@@ -4255,21 +4255,21 @@ off_813DA08: .word byte_20101B4
 	thumb_local_start
 sub_813DA0C:
 	push {r4,lr}
-	ldr r4, off_813DB0C // =byte_203F7D8 
+	ldr r4, off_813DB0C // =eStruct203F7D8 
 	mov r0, #2
-	strb r0, [r4,#0x1] // (byte_203F7D8+1 - 0x203f7d8)
+	strb r0, [r4,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	ldrb r0, [r4]
 	tst r0, r0
 	beq loc_813DA22
 	bl sub_813D9AC
-	strb r0, [r4,#0x1] // (byte_203F7D8+1 - 0x203f7d8)
+	strb r0, [r4,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	b locret_813DA36
 loc_813DA22:
-	ldr r0, off_813DB10 // =word_2036780 
+	ldr r0, off_813DB10 // =eStruct2036780 
 	ldr r1, off_813DB14 // =unk_20399F0 
 	mov r2, #0x10
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
-	ldr r0, off_813DB18 // =word_2036780 
+	ldr r0, off_813DB18 // =eStruct2036780 
 	ldr r1, off_813DB1C // =unk_2039A00 
 	mov r2, #0x10
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
@@ -4385,16 +4385,16 @@ sub_813DAF4:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r1, [r0]
-	ldr r0, off_813DB04 // =word_2036780 
+	ldr r0, off_813DB04 // =eStruct2036780 
 	strh r1, [r0]
 	strh r1, [r0,#0xa] // (dword_2036788+2 - 0x2036780)
 	pop {pc}
-off_813DB04: .word word_2036780
+off_813DB04: .word eStruct2036780
 off_813DB08: .word 0x214
-off_813DB0C: .word byte_203F7D8
-off_813DB10: .word word_2036780
+off_813DB0C: .word eStruct203F7D8
+off_813DB10: .word eStruct2036780
 off_813DB14: .word unk_20399F0
-off_813DB18: .word word_2036780
+off_813DB18: .word eStruct2036780
 off_813DB1C: .word unk_2039A00
 	thumb_func_end sub_813DAF4
 
@@ -4411,7 +4411,7 @@ sub_813DB24:
 	beq loc_813DB36
 	mov r0, #1
 loc_813DB36:
-	ldr r4, off_813DBA0 // =byte_200F360 
+	ldr r4, off_813DBA0 // =eStruct200F360 
 	strb r0, [r4]
 	mov r5, #0
 loc_813DB3C:
@@ -4471,7 +4471,7 @@ loc_813DB98:
 	add sp, sp, #8
 	pop {r4-r7,pc}
 	.byte 0, 0
-off_813DBA0: .word byte_200F360
+off_813DBA0: .word eStruct200F360
 dword_813DBA4: .word 0x42523545
 off_813DBA8: .word byte_813DBAC
 byte_813DBAC: .byte 0x0, 0x40, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0

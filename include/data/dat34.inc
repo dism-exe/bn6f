@@ -35,11 +35,11 @@
 // .global sub_803E8F8
 // .global sub_803EA50
 // .global sub_803EA58
-// .global sub_803EA60
-// .global sub_803EA70
+// .global eStruct200BC30_getJumpOffset00
+// .global eStruct200BC30_setJumpOffset00
 // .global sub_803EAE4
 // .global sub_803EBAC
-// .global sub_803EBF4
+// .global eStruct200BC30_getRef
 // .global sub_803EF74
 // .global sub_803F798
 
@@ -59,7 +59,7 @@
 // .global sub_811A940
 // .global sub_811A968
 // .global sub_811BC24
-// .global sub_811F7EC
+// .global isJoystickIRQActive
 // .global sub_811FA0C
 // .global sub_811FA22
 // .global sub_8120CC8

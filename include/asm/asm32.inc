@@ -239,7 +239,7 @@
 	.global sub_811F728
 	.global sub_811F758
 	.global menuControl_cb_openSubmenu // () -> void
-	.global sub_811F7EC
+	.global isJoystickIRQActive
 	.global sub_811F7F8
 	.global sub_811F91C
 	.global sub_811FA0C
@@ -322,7 +322,7 @@
 // .global GetPositiveSignedRNG2
 // .global GetPositiveSignedRNG1
 // .global sub_80015FC
-// .global sub_8001850
+// .global copyMemory_8001850
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_8001B1C
 // .global sub_8001B84
@@ -331,7 +331,7 @@
 	.include "asm/sprite.inc"
 // .global sprite_loadAnimationData // () -> void
 // .global sprite_update
-// .global sub_8002770 // (int a1, int a2) -> void
+// .global initGuiSprite_8002770 // (int a1, int a2) -> void
 // .global loc_8002774
 // .global sprite_setScaleParameters
 // .global sub_8002C52
@@ -469,7 +469,7 @@
 // .global byte_80203EA
 
 	.include "asm/asm02.inc"
-// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global getChip8021DA8 // (int chip_idx) -> ChipData*
 // .global split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
 // .global dword_8021AEC
 // .global sub_8021B2A
@@ -481,7 +481,7 @@
 	.include "asm/asm03_0.inc"
 // .global sub_802CDD0
 // .global sub_802D234
-// .global get_802D246 // () -> int
+// .global sub_802D246 // () -> int
 // .global sub_802EF5C
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
@@ -497,17 +497,17 @@
 // .global sub_803D138
 // .global sub_803D148
 // .global sub_803DD60
-// .global sub_803F524
+// .global notZero_eByte200AD04
 // .global sub_803F674
 // .global sub_803F740
 
 	.include "asm/chatbox.inc"
 // .global chatbox_8040818
-// .global chatbox_8045F2C // (int a1) ->
+// .global chatbox_clear_eFlags2009F38 // (int a1) ->
 // .global chatbox_8045F3C
 
 	.include "asm/asm03_2.inc"
-// .global render_graphicalText_8045F8C
+// .global renderTextGfx_8045F8C
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
 // .global sub_80465F8 // () -> void
@@ -788,7 +788,7 @@
 // .equ unk_2001186, 0x2001186
 // .equ unk_200119E, 0x200119E
 // .equ unk_20018EC, 0x20018EC
-// .equ dynamicArr, 0x2005780
+// .equ dynamicArr2005780, 0x2005780
 // .equ byte_20065C0, 0x20065C0
 // .equ unk_20096E0, 0x20096E0
 // .equ sSubmenu, 0x2009A30
@@ -817,13 +817,13 @@
 // .equ ePETMenuData, 0x200DF20
 // .equ byte_200DF21, 0x200DF21
 // .equ byte_200DF24, 0x200DF24
-// .equ byte_200DF25, 0x200DF25
+// .equ eFlags200DF25, 0x200DF25
 // .equ byte_200DF28, 0x200DF28
 // .equ byte_200DF29, 0x200DF29
 // .equ byte_200DF2A, 0x200DF2A
 // .equ byte_200DF2B, 0x200DF2B
 // .equ word_200DF30, 0x200DF30
-// .equ byte_200F360, 0x200F360
+// .equ eStruct200F360, 0x200F360
 // .equ unk_2010100, 0x2010100
 // .equ byte_2011C10, 0x2011C10
 // .equ byte_2011E40, 0x2011E40

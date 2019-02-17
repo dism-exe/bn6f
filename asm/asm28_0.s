@@ -235,7 +235,7 @@ loc_809924A:
 	cmp r0, #1
 	bne loc_8099266
 	ldr r0, dword_8099294 // =0x88738b24 
-	bl sub_8037AEC
+	bl uncomp_8037AEC
 	mov r1, #0
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	b loc_8099290
@@ -246,12 +246,12 @@ loc_8099266:
 	cmp r0, #1
 	bne loc_8099282
 	ldr r0, dword_8099298 // =0x8873a528 
-	bl sub_8037AEC
+	bl uncomp_8037AEC
 	mov r1, #0
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	b loc_8099290
 loc_8099282:
-	bl chatbox_dead_uncomp_803FD3C
+	bl chatbox_uncomp_803FD3C
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_Unk_15]
@@ -936,10 +936,10 @@ sub_809A260:
 	push {r4-r7,lr}
 	mov r0, #1
 	bl sub_8033FC0
-	bl sub_8001850
+	bl copyMemory_8001850
 	bl sub_8033978
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl sub_800399A
 	bl sub_8003AEA
 	mov r0, #0
@@ -1042,7 +1042,7 @@ sub_809A360:
 	mov r5, #1
 	ldr r6, off_809A3B8 // =dword_86A5D60 
 	mov r7, #4
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_809A3A4: .word byte_86C54D4
@@ -1225,10 +1225,10 @@ sub_809A4EC:
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #1
 	bl sub_8033FC0
-	bl sub_8001850
+	bl copyMemory_8001850
 	bl sub_8033978
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl sub_800399A
 	bl sub_8003AEA
 	mov r0, #0
@@ -1637,7 +1637,7 @@ sub_809A80C:
 	mov r5, #1
 	ldr r6, off_809A864 // =dword_86A5D60 
 	mov r7, #4
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_809A850: .word tileRefs86C5790
@@ -1828,7 +1828,7 @@ dword_809AA00: .word 0xFFFFFFD0
 sub_809AA04:
 	push {r4-r7,lr}
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl sub_800399A
 	bl sub_8003AEA
 	mov r0, #1
@@ -2207,7 +2207,7 @@ sub_809AD4C:
 	mov r0, #1
 	bl sub_8033FC0
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl sub_800399A
 	bl sub_8003AEA
 	mov r0, #0
@@ -4000,7 +4000,7 @@ sub_809CC00:
 	bne loc_809CC1C
 	mov r0, #1
 	str r0, [r5,#0x70]
-	bl clear_200AD04 // () -> void
+	bl clear_e200AD04 // () -> void
 	mov r0, #0
 	bl sub_803F6B0
 	bl loc_803F512
@@ -4140,7 +4140,7 @@ sub_809CD44:
 	mov r0, #1
 	bl sub_8033FC0
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl sub_800399A
 	bl sub_8003AEA
 	mov r0, #0
@@ -4155,7 +4155,7 @@ sub_809CD60:
 	bne loc_809CD7C
 	mov r0, #1
 	str r0, [r5,#0x70]
-	bl clear_200AD04 // () -> void
+	bl clear_e200AD04 // () -> void
 	mov r0, #0
 	bl sub_803F6B0
 	bl loc_803F512
@@ -4332,7 +4332,7 @@ sub_809CF2C:
 	tst r0, r0
 	beq locret_809CF4E
 	ldr r0, off_809CF50 // =byte_809CEB4
-	ldr r1, off_809CF58 // =dynamicArr
+	ldr r1, off_809CF58 // =dynamicArr2005780
 	ldr r2, dword_809CF54 // =0xe 
 	ldrb r1, [r1,r2]
 	sub r1, #1
@@ -4343,7 +4343,7 @@ locret_809CF4E:
 	pop {r4-r7,pc}
 off_809CF50: .word byte_809CEB4
 dword_809CF54: .word 0xE
-off_809CF58: .word dynamicArr
+off_809CF58: .word dynamicArr2005780
 byte_809CF5C: .byte 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0xFF, 0xFF, 0x9, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0x0, 0x80
 	.byte 0x0, 0x0, 0x0, 0x80, 0x0, 0x0, 0xB, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0

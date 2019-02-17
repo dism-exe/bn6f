@@ -423,10 +423,10 @@ sub_812D690:
 	pop {r5,r7}
 loc_812D6C4:
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	bne loc_812D6DC
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_812D6F4
 	mov r1, #4
 	ldrb r0, [r5,#0x11]
@@ -464,13 +464,13 @@ sub_812D700:
 	bl sub_812D6F8
 	mov r7, r0
 	mov r0, #8
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	bne loc_812D71E
 	ldrb r0, [r5,#2]
 	cmp r0, #0x20 
 	bne loc_812D742
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_812D746
 loc_812D71E:
 	ldrb r0, [r5,#2]
@@ -560,7 +560,7 @@ sub_812D7A4:
 	bl sub_812D6F8
 	mov r5, r0
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	bne loc_812D7BA
 	b loc_812D800
 loc_812D7BA:
@@ -697,7 +697,7 @@ loc_812D892:
 	tst r1, r0
 	bne loc_812D8BC
 	mov r1, #0x40 
-	bl sub_803EBF4
+	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
 	cmp r0, #2
 	bne loc_812D8B6
@@ -931,7 +931,7 @@ sub_812DA60:
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 loc_812DA72:
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	bne loc_812DA80
 	bl sub_81440D8 // static () -> void

@@ -285,7 +285,7 @@ int __fastcall sub_800C01C(int a1, int a2, signed int a3, int a4)
     v8 = byte_800C08C;
     if ( a3 != 255 )
         v8 = &byte_86DFA98[32 * (6 * a3 + 3 * v7 + a2 - 1)];
-    return (dword_3005E80[0])(byte_800C0AA[8 * v6 + a1], 3 * a2 + 6, 2, v8);
+    return (iCopyTiles[0])(byte_800C0AA[8 * v6 + a1], 3 * a2 + 6, 2, v8);
 }
 
 

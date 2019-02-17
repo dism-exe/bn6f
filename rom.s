@@ -35,8 +35,8 @@ ChipDataArr:
 	.include "data/ChipDataArr.s"
 asm03_0:
 	.include "asm/asm03_0.s"
-spritePointers_8031CC4:
-	.include "data/spritePointers_8031CC4.s"
+spritePointersList:
+	.include "data/spritePointersList.s"
 asm03_1:
 	.include "asm/asm03_1.s"
 chatbox:

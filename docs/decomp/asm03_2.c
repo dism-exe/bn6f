@@ -1,5 +1,5 @@
 // 0x8045f8c
-int __fastcall render_graphicalText_8045F8C(int a1, int a2, int a3, int a4)
+int __fastcall renderTextGfx_8045F8C(int a1, int a2, int a3, int a4)
 {
     int v4; // r10
 
@@ -1301,7 +1301,7 @@ int __noreturn sub_804754C()
     int v1; // r10
 
     CopyByEightWords(byte_2017204, *(v1 + oToolkit_GFX30025c0_Ptr) + 2048, 0x800u);
-    return render_graphicalText_8045F8C(*(v0 + 36), 16, &unk_2015E00, 100671488);
+    return renderTextGfx_8045F8C(*(v0 + 36), 16, &unk_2015E00, 100671488);
 }
 
 
@@ -1354,8 +1354,8 @@ void __fastcall __spoils<R1,R2,R3,R12> __noreturn sub_804760E(int a1, int a2)
     int v2; // [sp+0h] [bp-18h]
     int v3; // [sp+4h] [bp-14h]
 
-    render_graphicalText_8045F8C(byte_873D9FC, a2, &decomp_2013A00[512 * a1], (a1 << 10) + 100697088);
-    render_graphicalText_8045F8C(*(v3 + 36), 16, &unk_2013C00 + v2, v2 + 100697600);
+    renderTextGfx_8045F8C(byte_873D9FC, a2, &decomp_2013A00[512 * a1], (a1 << 10) + 100697088);
+    renderTextGfx_8045F8C(*(v3 + 36), 16, &unk_2013C00 + v2, v2 + 100697600);
 }
 
 
@@ -1372,7 +1372,7 @@ void __fastcall __spoils<R1,R2,R3,R12> __noreturn sub_8047664(int a1, unsigned i
     v7 = a2;
     v8 = a3;
     v4 = a4;
-    render_graphicalText_8045F8C(*(&off_80476E4 + (a2 >> 8)), a2, &decomp_2013A00[512 * a1], (a1 << 10) + 100697088);
+    renderTextGfx_8045F8C(*(&off_80476E4 + (a2 >> 8)), a2, &decomp_2013A00[512 * a1], (a1 << 10) + 100697088);
     if ( v4 )
     {
         v5 = v8;
@@ -1393,7 +1393,7 @@ void __fastcall __spoils<R1,R2,R3,R12> __noreturn sub_8047664(int a1, unsigned i
     {
         v5 = 27;
     }
-    render_graphicalText_8045F8C(byte_86EF71C, v5, &unk_2013C00 + v9, v9 + 100697600);
+    renderTextGfx_8045F8C(byte_86EF71C, v5, &unk_2013C00 + v9, v9 + 100697600);
 }
 
 
@@ -1403,8 +1403,8 @@ void __fastcall __spoils<R1,R2,R3,R12> __noreturn sub_8047708(int a1, unsigned i
     int v2; // [sp+0h] [bp-18h]
     int v3; // [sp+4h] [bp-14h]
 
-    render_graphicalText_8045F8C(byte_873EA50, a2 >> 2, &decomp_2013A00[512 * a1], (a1 << 10) + 100697088);
-    render_graphicalText_8045F8C(*(v3 + 36), 16, &unk_2013C00 + v2, v2 + 100697600);
+    renderTextGfx_8045F8C(byte_873EA50, a2 >> 2, &decomp_2013A00[512 * a1], (a1 << 10) + 100697088);
+    renderTextGfx_8045F8C(*(v3 + 36), 16, &unk_2013C00 + v2, v2 + 100697600);
 }
 
 
@@ -1413,7 +1413,7 @@ void __fastcall __spoils<R1,R2,R3,R12> __noreturn sub_8047760(int a1)
 {
     int v1; // r5
 
-    render_graphicalText_8045F8C(*(v1 + 36), 16, &decomp_2013A00[512 * a1], (a1 << 10) + 100697088);
+    renderTextGfx_8045F8C(*(v1 + 36), 16, &decomp_2013A00[512 * a1], (a1 << 10) + 100697088);
 }
 
 
@@ -1453,7 +1453,7 @@ void __fastcall __noreturn sub_8047790(int a1, int a2, int a3)
     {
         v11 = 17;
     }
-    render_graphicalText_8045F8C(v10, v11, &unk_2013C40 + v8, v8 + 100697664);
+    renderTextGfx_8045F8C(v10, v11, &unk_2013C40 + v8, v8 + 100697664);
 }
 
 
@@ -1533,7 +1533,7 @@ int sub_80478D4()
     if ( **(v0 + 28) == 1 )
         v4 = 13;
     *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = *(v0 + 40);
-    return render_graphicalText_8045F8C(*(v0 + 36), v4, &unk_2015A00, 100705280);
+    return renderTextGfx_8045F8C(*(v0 + 36), v4, &unk_2015A00, 100705280);
 }
 
 
@@ -2338,7 +2338,7 @@ int __fastcall sub_8048DF8(int a1, int a2, unsigned __int8 *a3)
                         v15 = v9;
                 }
             }
-            v17 = getChip_8021DA8(*(v8 + 2));
+            v17 = getChip8021DA8(*(v8 + 2));
             v19 = &v15[8 * (*(v17 + 14) + v18)];
             *v19 = *v8;
             *(v19 + 1) = *(v8 + 1);
@@ -2481,9 +2481,9 @@ int sub_804900C()
     int result; // r0
 
     chatbox_8040818();
-    sub_8001778(&byte_40);
-    sub_8001788();
-    sub_80017A0();
+    sRender_08_setRenderingState(&byte_40);
+    renderInfo_8001788();
+    renderInfo_80017A0();
     v1 = sub_80015FC(17);
     sub_8005F40(v1, v2, v3, v4);
     sub_803BEC0();
@@ -2523,9 +2523,9 @@ int sub_8049058()
     {
         zeroFillVRAM(result, v1, v2, v3);
         sub_800183C(v5, v6, v7, v8);
-        sub_8001850();
+        copyMemory_8001850();
         chatbox_8040818();
-        sub_8001778(&byte_40);
+        sRender_08_setRenderingState(&byte_40);
         sub_811F758();
     }
     return result;
@@ -2552,9 +2552,9 @@ signed int sub_8049104()
     int v4; // r3
     signed int result; // r0
 
-    sub_8001778(8000);
-    sub_8001788();
-    sub_80017A0();
+    sRender_08_setRenderingState(8000);
+    renderInfo_8001788();
+    renderInfo_80017A0();
     sub_80015FC(18);
     v1 = sub_8046664();
     copyData_8049AAC(v1, v2, v3, v4);
@@ -3092,7 +3092,7 @@ int sub_804959C()
     IsPaletteFadeActive();
     if ( v0 )
         return sub_803A1B0();
-    sub_8001850();
+    copyMemory_8001850();
     return sub_803CCC0(v1, v2, v3, v4);
 }
 
@@ -3124,7 +3124,7 @@ int sub_80495CE()
     IsPaletteFadeActive();
     if ( v0 )
         return sub_803A1B0();
-    sub_8001850();
+    copyMemory_8001850();
     return sub_803CB8C(sub_8039570, v1, v2, v3);
 }
 
@@ -3320,9 +3320,9 @@ void __noreturn sub_8049770()
     int v7; // r2
     int v8; // r3
 
-    sub_8001778(8000);
-    sub_8001788();
-    sub_80017A0();
+    sRender_08_setRenderingState(8000);
+    renderInfo_8001788();
+    renderInfo_80017A0();
     sub_80015FC(19);
     v1 = sub_8046664();
     copyData_8049A18(v1, v2, v3, v4);
@@ -3612,8 +3612,8 @@ void __noreturn sub_80499CE()
         v3 = sub_803F79E();
         zeroFillVRAM(v3, v4, v5, v6);
         sub_800183C(v7, v8, v9, v10);
-        sub_8001850();
-        sub_8001778(&byte_40);
+        copyMemory_8001850();
+        sRender_08_setRenderingState(&byte_40);
         chatbox_8040818();
         sub_811F758();
     }
@@ -3633,7 +3633,7 @@ int __fastcall copyData_8049A18(int a1, int a2, int a3, int a4)
 
     zeroFillVRAM(a1, a2, a3, a4);
     sub_800183C(v5, v6, v7, v8);
-    sub_8001850();
+    copyMemory_8001850();
     decompAndCopyData(&initRefs_8049A54);
     v9 = *(v4 + oToolkit_RenderInfoPtr);
     v9[11] -= 4;
@@ -3656,7 +3656,7 @@ int __fastcall copyData_8049AAC(int a1, int a2, int a3, int a4)
 
     zeroFillVRAM(a1, a2, a3, a4);
     sub_800183C(v5, v6, v7, v8);
-    sub_8001850();
+    copyMemory_8001850();
     decompAndCopyData(byte_8049AD8);
     sub_803B91C(4);
     sub_803B91C(5);
@@ -3843,9 +3843,9 @@ int __noreturn sub_8049E28()
     int result; // r0
 
     chatbox_8040818();
-    sub_8001778(&byte_40);
-    sub_8001788();
-    sub_80017A0();
+    sRender_08_setRenderingState(&byte_40);
+    renderInfo_8001788();
+    renderInfo_80017A0();
     v1 = sub_80015FC(17);
     sub_8005F40(v1, v2, v3, v4);
     sub_803BEC0();
@@ -3875,9 +3875,9 @@ int sub_8049E5C()
     {
         zeroFillVRAM(result, v1, v2, v3);
         sub_800183C(v5, v6, v7, v8);
-        sub_8001850();
+        copyMemory_8001850();
         chatbox_8040818();
-        sub_8001778(&byte_40);
+        sRender_08_setRenderingState(&byte_40);
         result = sub_8123408();
     }
     return result;
@@ -3906,9 +3906,9 @@ void __noreturn sub_8049EBC()
     int v7; // r2
     int v8; // r3
 
-    sub_8001778(8000);
-    sub_8001788();
-    sub_80017A0();
+    sRender_08_setRenderingState(8000);
+    renderInfo_8001788();
+    renderInfo_80017A0();
     sub_80015FC(19);
     v1 = sub_8046664();
     copyData_804A0AC(v1, v2, v3, v4);
@@ -4116,8 +4116,8 @@ int sub_804A078()
     v2 = sub_804A230(*(v0 + 34));
     zeroFillVRAM(v2, v3, v4, v5);
     sub_800183C(v6, v7, v8, v9);
-    sub_8001850();
-    sub_8001778(&byte_40);
+    copyMemory_8001850();
+    sRender_08_setRenderingState(&byte_40);
     chatbox_8040818();
     return sub_8123408();
 }
@@ -4135,7 +4135,7 @@ int __fastcall copyData_804A0AC(int a1, int a2, int a3, int a4)
 
     zeroFillVRAM(a1, a2, a3, a4);
     sub_800183C(v5, v6, v7, v8);
-    sub_8001850();
+    copyMemory_8001850();
     decompAndCopyData(byte_804A0E8);
     v9 = *(v4 + oToolkit_RenderInfoPtr);
     v9[11] -= 4;
@@ -4331,7 +4331,7 @@ void __noreturn sub_804A3FC()
         if ( !v2 || (sub_804AAD0(), !v2) )
 LABEL_11:
             sub_804A8F4();
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( !v2 )
         {
             sound_play(156, v3, v4);
@@ -4457,7 +4457,7 @@ void sub_804A5D4()
     int v2; // r2
     char v3; // zf
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( !v3 )
     {
         *(v0 + 1) = 12;
@@ -4525,7 +4525,7 @@ int __noreturn sub_804A61C()
 
 
 // 0x804a7c0
-int __noreturn sub_804A7C0()
+int __noreturn menuCopyTiles_804A7C0()
 {
     int v0; // r5
 
@@ -4654,7 +4654,7 @@ void sub_804AAA4()
     int v2; // r2
     char v3; // zf
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( !v3 )
     {
         if ( *(v0 + 30) )
@@ -4679,8 +4679,8 @@ void sub_804AAD0()
     int v2; // r2
     char v3; // zf
 
-    sub_811F7EC();
-    if ( !v3 || *v0 == 20 && (sub_811F7EC(), !v3) )
+    isJoystickIRQActive();
+    if ( !v3 || *v0 == 20 && (isJoystickIRQActive(), !v3) )
     {
         if ( *v0 == 20 )
         {
@@ -4708,7 +4708,7 @@ signed int sub_804AB10()
     int v5; // r2
 
     v1 = 0;
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( !v2 )
     {
         v1 = 1;
@@ -5049,7 +5049,7 @@ void sub_804AE04()
     int v7; // r3
     int v8; // r3
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( !v4 )
     {
         sound_play(129, v2, v3);
@@ -5265,7 +5265,7 @@ LABEL_3:
     v4 = sub_804BE88(off_804B018[v3], algn_200ACB4, v3);
     v11 = v4;
     v12 = v5;
-    v6 = getChip_8021DA8(v4);
+    v6 = getChip8021DA8(v4);
     sub_804BEEC(v11, v12, v6[5]);
     result = v11;
     if ( v10 )
@@ -5347,7 +5347,7 @@ unsigned int __fastcall sub_804BDB4(_WORD *a1, _DWORD *a2)
         {
             *v8 = v14;
             *(v8 + 2) = v15;
-            v12 = getChip_8021DA8(v14)[5];
+            v12 = getChip8021DA8(v14)[5];
             ++*(v5 + v12);
             v10 = v15;
             *(v8 + 3) = v12;
@@ -5395,7 +5395,7 @@ unsigned int __fastcall sub_804BE1C(_WORD *a1, _DWORD *a2, int a3, int a4)
         {
             *v9 = v14;
             *(v9 + 2) = v15;
-            v12 = getChip_8021DA8(v14)[5];
+            v12 = getChip8021DA8(v14)[5];
             ++*(v5 + v12);
             v10 = v15;
             *(v9 + 3) = v12;
@@ -6193,7 +6193,7 @@ void __fastcall sub_804C6C4(int a1)
     {
         *(v1 + 24) = 0;
         *(v1 + 13) = 0;
-        sub_8001820(0, v5, v4, v3);
+        zeroFill_e2009740(0, v5, v4, v3);
     }
 }
 
@@ -6346,8 +6346,8 @@ signed int __fastcall sub_804CAE0(int a1, int a2, int a3, int a4)
 {
     int v4; // r10
 
-    sub_8001820(a1, a2, a3, a4);
-    sub_8001708(
+    zeroFill_e2009740(a1, a2, a3, a4);
+    map_8001708(
         *(*(v4 + oToolkit_GameStatePtr) + oGameState_MapGroup),
         *(*(v4 + oToolkit_GameStatePtr) + oGameState_MapNumber));
     **(v4 + oToolkit_RenderInfoPtr) &= 0xD7FFu;
@@ -6422,7 +6422,7 @@ void __fastcall sub_804CBC0(int a1, int a2, int a3, int a4)
     v5 = *(v4 + oToolkit_RenderInfoPtr);
     *v5 &= 0xF7FFu;
     v5[5] = 16139;
-    sub_8001820(16139, v5, 2048, a4);
+    zeroFill_e2009740(16139, v5, 2048, a4);
 }
 
 
@@ -6669,11 +6669,11 @@ char (*sub_804CE90())[8]
     sub_803037C(*(v0 + 4), *(v0 + 5));
     sub_8030AA4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
-    sub_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
+    camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
     sub_8030472();
     sub_80028D4(byte_2037800, v3, v4, v5);
-    sub_8002906(off_804CEFC[*(v0 + 5)]);
-    chatbox_uncomp_803FD08();
+    uncompSprite_8002906(off_804CEFC[*(v0 + 5)]);
+    chatbox_uncompBasedOnMap_803FD08();
     sub_804CF84();
     result = off_804D0E4[*(v0 + 5)];
     *(v0 + 100) = result;

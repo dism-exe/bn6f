@@ -55,7 +55,7 @@ int __fastcall sprite_load(char a1, int a2, int a3)
     v5 = sub_8002986((a2 << 8) | a3);
     if ( !v5 )
     {
-        v5 = (*(&spritePointers_8031CC4 + v8))[v9];
+        v5 = (*(&spritePointersList + v8))[v9];
         if ( v5 < 0 )
             v5 = spriteWhiteDot;
     }
@@ -101,7 +101,7 @@ signed int __fastcall spriteLoadMugshot_800275A(int a1)
     int v1; // r5
     signed int result; // r0
 
-    sprite_initialize(*(&mugshots_8032598 + a1));
+    sprite_initialize(*(&mugshotSpritePtrs + a1));
     result = 128;
     *(v1 + 22) = 128;
     return result;
@@ -110,7 +110,7 @@ signed int __fastcall spriteLoadMugshot_800275A(int a1)
 
 // 0x8002770
 // (int a1, int a2) -> void
-signed int __fastcall sub_8002770(int a1, int a2)
+signed int __fastcall initGuiSprite_8002770(int a1, int a2)
 {
     int v2; // r5
     int v3; // r5
@@ -118,7 +118,7 @@ signed int __fastcall sub_8002770(int a1, int a2)
     signed int result; // r0
 
     v3 = v2 + 32;
-    v4 = *(&guiSprites_803271C + a1);
+    v4 = *(&guiSpritePtrs + a1);
     if ( v4 < 0 )
         v4 = a2;
     sprite_initialize(v4);
@@ -135,7 +135,7 @@ signed int __fastcall sub_800279C(int a1)
     int v1; // r5
     signed int result; // r0
 
-    sprite_initialize(*(&mugshots_8032598 + a1));
+    sprite_initialize(*(&mugshotSpritePtrs + a1));
     result = 128;
     *(v1 + 54) = 128;
     return result;
@@ -260,7 +260,7 @@ _DWORD *sub_8002874()
 
 
 // 0x800289c
-void __fastcall sprite_handleObjSprites_800289C(int a1, int a2, int a3, int a4)
+void __fastcall sprite_resetObjVars_800289C(int a1, int a2, int a3, int a4)
 {
     dword_20093A8 = 0;
     WordFill(&dword_200A890, &dword_388, -1, a4);
@@ -290,7 +290,7 @@ void __fastcall sub_80028D4(int a1, int a2, int a3, int a4)
 
 
 // 0x8002906
-signed int __fastcall sub_8002906(unsigned __int8 *a1)
+signed int __fastcall uncompSprite_8002906(unsigned __int8 *a1)
 {
     int v1; // r1
     unsigned __int8 *i; // r7
@@ -312,7 +312,7 @@ signed int __fastcall sub_8002906(unsigned __int8 *a1)
         if ( v3 == 255 )
             return 1;
         v4 = 4 * i[1];
-        v5 = ((2 * *(*(&spritePointers_8031CC4 + v3) + v4)) >> 1);
+        v5 = ((2 * *(*(&spritePointersList + v3) + v4)) >> 1);
         v6 = v5;
         v7 = (v3 << 8) | (v4 >> 2);
         v8 = *v5 >> 8;
@@ -389,7 +389,7 @@ signed int __fastcall sub_80029A8(_BYTE *a1)
                 if ( v7 >= 24 )
                 {
                     v1 = v15;
-                    v8 = *(*(&spritePointers_8031CC4 + (v6 >> 8)) + (4 * v6 & 0x3FF));
+                    v8 = *(*(&spritePointersList + (v6 >> 8)) + (4 * v6 & 0x3FF));
                     if ( v8 >= 0 )
                         break;
                     v9 = ((2 * v8) >> 1);
@@ -432,7 +432,7 @@ signed int __fastcall sub_8002A64(int a1, int a2)
 
     v2 = (a1 << 8) | a2;
     v3 = dword_200DCEC;
-    v4 = *(*(&spritePointers_8031CC4 + (v2 >> 8)) + (4 * v2 & 0x3FF));
+    v4 = *(*(&spritePointersList + (v2 >> 8)) + (4 * v2 & 0x3FF));
     if ( v4 >= 0 )
         return 0;
     v5 = ((2 * v4) >> 1);
@@ -463,7 +463,7 @@ unsigned int sub_8002ADE()
     if ( byte_200DCA0[0] )
     {
         result = *&byte_200DCA0[2 * (byte_200DCA0[0] - 1) + 4];
-        v1 = *(*(&spritePointers_8031CC4 + (result >> 8)) + (4 * result & 0x3FF));
+        v1 = *(*(&spritePointersList + (result >> 8)) + (4 * result & 0x3FF));
         if ( v1 < 0 )
         {
             dword_200DCEC -= *((2 * v1) >> 1) >> 8;
@@ -496,7 +496,7 @@ signed int __fastcall sprite_decompress(int a1, int a2)
         v4 += 2;
         if ( v4 >= 24 )
         {
-            v5 = *(*(&spritePointers_8031CC4 + (v2 >> 8)) + (4 * v2 & 0x3FF));
+            v5 = *(*(&spritePointersList + (v2 >> 8)) + (4 * v2 & 0x3FF));
             if ( v5 < 0 )
             {
                 v6 = ((2 * v5) >> 1);

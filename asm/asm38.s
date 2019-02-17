@@ -46,11 +46,11 @@ nullsub_38:
 	thumb_func_start sub_3005CDA
 sub_3005CDA:
 	push {lr}
-	ldr r0, off_3005D20 // =sub_803EA68+1
+	ldr r0, off_3005D20 // =eStruct200BC30_getJumpOffset00_pushpop+1
 	mov lr, pc
 	bx r0
 	mov r1, r0
-	ldr r0, jt_81D620C // =off_3005D10
+	ldr r0, jt_81D620C // =iJumpTable3005D10
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
@@ -71,12 +71,12 @@ sub_3005CF0:
 	bx lr
 off_3005D04: .word dword_200A870
 	.word sCamera+0x50 // sCamera.unk_50
-jt_81D620C: .word off_3005D10
-off_3005D10: .word sub_803DE72+1
+jt_81D620C: .word iJumpTable3005D10
+iJumpTable3005D10: .word sub_803DE72+1
 	.word sub_813D5DC+1
 	.word sub_813D5DC+1
 	.word sub_813D5DC+1
-off_3005D20: .word sub_803EA68+1
+off_3005D20: .word eStruct200BC30_getJumpOffset00_pushpop+1
 	thumb_func_end sub_3005CF0
 
 	thumb_local_start
@@ -279,7 +279,7 @@ sub_3005E6A:
 off_3005E74: .word InterruptMasterEnableRegister
 off_3005E78: .word sub_814469C+1
 off_3005E7C: .word sub_81446AC+1
-dword_3005E80: .word 0x9000B081, 0x6AB64656, 0x18B602D2, 0x186D1824
+iCopyTiles: .word 0x9000B081, 0x6AB64656, 0x18B602D2, 0x186D1824
 	thumb_func_end sub_3005E6A
 
 	thumb_local_start
@@ -1832,7 +1832,7 @@ loc_3006A26:
 loc_3006A40:
 	mov r0, r5
 	mov r1, #3
-	ldr r5, off_3006B14 // =__divsi3+1
+	ldr r5, off_3006B14 // =sub_814DA9C+1
 	mov lr, pc
 	bx r5
 	mov r5, r0
@@ -1933,7 +1933,7 @@ loc_3006ADC:
 loc_3006AF6:
 	mov r0, r5
 	mov r1, #3
-	ldr r5, off_3006B14 // =__divsi3+1
+	ldr r5, off_3006B14 // =sub_814DA9C+1
 	mov lr, pc
 	bx r5
 	mov r5, r0
@@ -1946,7 +1946,7 @@ loc_3006AF6:
 	mov r10, r6
 	mov r12, r7
 	pop {r4-r7,pc}
-off_3006B14: .word __divsi3+1
+off_3006B14: .word sub_814DA9C+1
 off_3006B18: .word sub_3006C38+1
 	.word sub_3006C3C+1
 	.word sub_3006F42+1
@@ -2424,7 +2424,7 @@ loc_3006EAE:
 	add r7, #0x34
 	ldrh r2, [r7]
 	lsl r2, r2, #6
-	ldr r1, off_3006F14 // =unk_200AFA0
+	ldr r1, off_3006F14 // =byte_200AFA0
 	add r1, r1, r2
 	push {r0,r1}
 	mov r0, r6
@@ -2457,7 +2457,7 @@ off_3006EEC: .word unk_2001186
 	.word byte_2001A08
 	.word byte_2001A64
 	.word byte_2001AC0
-off_3006F14: .word unk_200AFA0
+off_3006F14: .word byte_200AFA0
 off_3006F18: .word CopyBytes+1
 off_3006F1C: .word byte_200A220
 	thumb_func_end sub_3006E98

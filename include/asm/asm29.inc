@@ -131,7 +131,7 @@
 // .global byte_8020CE4
 
 	.include "asm/asm02.inc"
-// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global getChip8021DA8 // (int chip_idx) -> ChipData*
 // .global sub_8021B2A
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 
@@ -279,7 +279,7 @@
 // .equ dword_2000F94, 0x2000F94
 // .equ dword_2000F98, 0x2000F98
 // .equ dword_2000F9C, 0x2000F9C
-// .equ unk_2001130, 0x2001130
+// .equ byte_2001130, 0x2001130
 // .equ unk_20018B0, 0x20018B0
 // .equ eOverworldNPCObjects, 0x20057B0
 // .equ eOverworldNPCObjects, 0x20057B0

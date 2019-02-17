@@ -2,10 +2,10 @@
 	.equ INC_DATA_SPRITEPOINTERS_8031CC4, 0
 
 /* Public Symbols */
-	.global spritePointers_8031CC4
+	.global spritePointersList
 	.global off_8032108
-	.global mugshots_8032598
-	.global guiSprites_803271C
+	.global mugshotSpritePtrs
+	.global guiSpritePtrs
 	.global off_80329A8
 	.global off_80329C4
 	.global off_8032F6C
@@ -680,7 +680,7 @@
 // .global comp_82CED74
 // .global comp_82D2AC8
 // .global comp_82D6FE4
-// .global comp_82DABC8
+// .global compSprite_82DABC8
 // .global comp_82DD9A8
 // .global compBattleSprite_Colonel
 // .global comp_82E4050

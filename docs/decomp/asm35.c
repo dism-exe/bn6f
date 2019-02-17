@@ -186,10 +186,10 @@ void sub_812ECAC()
         *(v2 + 31) = *(v2 + 18);
         *(v2 + 30) = v3;
     }
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( !v5 )
         goto LABEL_17;
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( v5 )
         return;
     v6 = 4;
@@ -348,7 +348,7 @@ void __noreturn sub_812EF20()
 // 0x812ef60
 void __fastcall __noreturn sub_812EF60(int a1)
 {
-    render_graphicalText_8045F8C(&unk_2025070, a1, byte_201B200, 100710400);
+    renderTextGfx_8045F8C(&unk_2025070, a1, byte_201B200, 100710400);
     JUMPOUT(loc_812EF76);
 }
 

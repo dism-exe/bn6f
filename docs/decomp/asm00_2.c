@@ -93,9 +93,9 @@ int __fastcall sub_800EE26(int a1)
         v3 = sub_802E070(*(v2 + 22));
         sub_800EE98();
         v9 = sub_800EF34(v3[26], 0);
-        *(v1 + 29) = getChip_8021DA8(v3[26])[15];
+        *(v1 + 29) = getChip8021DA8(v3[26])[15];
         sub_80109A4(v3[26], *(v2 + 22));
-        v4 = getChip_8021DA8(v3[26])[9];
+        v4 = getChip8021DA8(v3[26])[9];
         if ( v4 & 2 )
         {
             v5 = v9 + v3[27];
@@ -137,7 +137,7 @@ void sub_800EE98()
         sub_801E2BA(v2);
         sound_play(141, v3, v4);
     }
-    v5 = getChip_8021DA8(*(v1 + 52));
+    v5 = getChip8021DA8(*(v1 + 52));
     if ( !(v5[offsetof(ChipData, unk_16)] & 0x80) )
     {
         v6 = *&byte_800EEF8[2 * v5[offsetof(ChipData, elemIdx)]];
@@ -205,7 +205,7 @@ int __fastcall sub_800EF34(int a1, int a2)
                             {
                                 if ( v5 == dword_14 + 1 || v5 == &dword_8 + 1 )
                                 {
-                                    v5 = getChip_8021DA8(v2);
+                                    v5 = getChip8021DA8(v2);
                                     if ( v5[9] & 2 )
                                     {
                                         if ( v5[6] == 9 && !(v5[9] & 1) )
@@ -218,7 +218,7 @@ int __fastcall sub_800EF34(int a1, int a2)
                             }
                             else
                             {
-                                v5 = getChip_8021DA8(v2);
+                                v5 = getChip8021DA8(v2);
                                 if ( v5[9] & 2 && v5[6] == 6 )
                                 {
                                     v3 = 34359738398LL;
@@ -228,7 +228,7 @@ int __fastcall sub_800EF34(int a1, int a2)
                         }
                         else
                         {
-                            v5 = getChip_8021DA8(v2);
+                            v5 = getChip8021DA8(v2);
                             if ( v5[9] & 2 && v5[6] == 8 && !(v5[9] & 1) )
                             {
                                 v3 = 30064771082LL;
@@ -238,7 +238,7 @@ int __fastcall sub_800EF34(int a1, int a2)
                     }
                     else
                     {
-                        v5 = getChip_8021DA8(v2);
+                        v5 = getChip8021DA8(v2);
                         if ( v5[9] & 2 && v5[6] == 5 && !(v5[9] & 1) )
                         {
                             v3 = 25769803826LL;
@@ -248,7 +248,7 @@ int __fastcall sub_800EF34(int a1, int a2)
                 }
                 else
                 {
-                    v5 = getChip_8021DA8(v2);
+                    v5 = getChip8021DA8(v2);
                     if ( v5[9] & 2 && v5[6] == 2 && !(v5[9] & 1) )
                     {
                         v3 = 25769803826LL;
@@ -258,7 +258,7 @@ int __fastcall sub_800EF34(int a1, int a2)
             }
             else
             {
-                v5 = getChip_8021DA8(v2);
+                v5 = getChip8021DA8(v2);
                 if ( v5[9] & 2 && !v5[6] && !(v5[9] & 1) )
                 {
                     v3 = 8589934642LL;
@@ -268,7 +268,7 @@ int __fastcall sub_800EF34(int a1, int a2)
             v6 = sub_8013774(v5, 44);
             if ( v6 >= 11 && v6 <= 22 )
             {
-                v7 = getChip_8021DA8(v2);
+                v7 = getChip8021DA8(v2);
                 if ( v7[9] & 2 )
                 {
                     if ( v7[6] == 10 && !(v7[9] & 1) && sub_802D234() != 1 )
@@ -308,43 +308,43 @@ __int64 __fastcall sub_800F09E(int a1)
         switch ( v3 )
         {
             case 1:
-                v4 = getChip_8021DA8(v1);
+                v4 = getChip8021DA8(v1);
                 if ( !(v4[9] & 2) || v4[6] || v4[9] & 1 )
                     return v2;
                 HIDWORD(v2) = 12;
                 break;
             case 2:
-                v5 = getChip_8021DA8(v1);
+                v5 = getChip8021DA8(v1);
                 if ( !(v5[9] & 2) || v5[6] != 2 || v5[9] & 1 )
                     return v2;
                 HIDWORD(v2) = 13;
                 break;
             case 3:
-                v6 = getChip_8021DA8(v1);
+                v6 = getChip8021DA8(v1);
                 if ( !(v6[9] & 2) || v6[6] != 5 || v6[9] & 1 )
                     return v2;
                 HIDWORD(v2) = 14;
                 break;
             case 4:
-                v7 = getChip_8021DA8(v1);
+                v7 = getChip8021DA8(v1);
                 if ( !(v7[9] & 2) || v7[6] != 6 )
                     return v2;
                 HIDWORD(v2) = 15;
                 break;
             case 8:
-                v8 = getChip_8021DA8(v1);
+                v8 = getChip8021DA8(v1);
                 if ( !(v8[9] & 2) || v8[6] != 8 || v8[9] & 1 )
                     return v2;
                 HIDWORD(v2) = 16;
                 break;
             case 9:
-                v9 = getChip_8021DA8(v1);
+                v9 = getChip8021DA8(v1);
                 if ( !(v9[9] & 2) || v9[6] != 9 || v9[9] & 1 )
                     return v2;
                 HIDWORD(v2) = 17;
                 break;
             case 10:
-                v10 = getChip_8021DA8(v1);
+                v10 = getChip8021DA8(v1);
                 if ( !(v10[9] & 2) || v10[6] != 9 || v10[9] & 1 )
                     return v2;
                 HIDWORD(v2) = 18;
@@ -1416,7 +1416,7 @@ signed int __fastcall sub_800FB54(int a1)
     if ( !(v4 & 8) )
         goto LABEL_22;
     v7 = sub_800EDD0(v1, 8);
-    v6 = getChip_8021DA8(v7)[6];
+    v6 = getChip8021DA8(v7)[6];
     v8 = *(v1 + 88);
     if ( v6 == 10 )
     {
@@ -1438,7 +1438,7 @@ LABEL_22:
             v10 = sub_80127C0(v6);
             sub_8011688(v10);
             if ( *(v2 + 27) || (v11 = sub_8013774(*(v2 + 27), 44), v11 >= 11) && v11 <= 24 )
-                *(v2 + 29) = getChip_8021DA8(*(v2 + 20))[15];
+                *(v2 + 29) = getChip8021DA8(*(v2 + 20))[15];
             goto LABEL_26;
         case 13:
         case 31:
@@ -1475,7 +1475,7 @@ int sub_800FC30()
     result = sub_800EDD0(v0, 0);
     if ( result != 0xFFFF )
     {
-        if ( result == 82 || result == 83 || getChip_8021DA8(result)[9] & 1 )
+        if ( result == 82 || result == 83 || getChip8021DA8(result)[9] & 1 )
         {
             result = 0xFFFF;
         }
@@ -2150,7 +2150,7 @@ int sub_80101F8()
         TestEventFlagFromImmediate(1, 99);
         if ( v1 )
         {
-            sub_803F524();
+            notZero_eByte200AD04();
             if ( !v1 )
                 v0 = 13;
         }
@@ -2731,7 +2731,7 @@ signed int __fastcall sub_80106C0(int a1)
         return 0;
     if ( !(v4 & 2) )
         return 0;
-    v5 = getChip_8021DA8(v2)[7];
+    v5 = getChip8021DA8(v2)[7];
     if ( v5 != 1 && v5 != 2 )
         return 0;
     v6 = sub_80136CC(v3, 13);
@@ -2761,7 +2761,7 @@ signed int __fastcall sub_8010740(int a1)
         return 0;
     v3 = *(v1 + 22) ^ 1;
     v4 = sub_80136CC(v3, 13);
-    if ( v4 == 255 || !(v4 & 1) || !(getChip_8021DA8(v2)[22] & 2) )
+    if ( v4 == 255 || !(v4 & 1) || !(getChip8021DA8(v2)[22] & 2) )
         return 0;
     v5 = sub_80136CC(v3, 13);
     sub_80136B0(v3, 13, v5 & 0xFE);
@@ -2942,7 +2942,7 @@ int __fastcall sub_80109A4(int a1, int a2)
     v3 = a2;
     if ( a1 == 0xFFFF )
         return 0;
-    result = *(getChip_8021DA8(a1) + 13);
+    result = *(getChip8021DA8(a1) + 13);
     if ( result >= 1000 )
         result = (*(&off_80109DC + result - 1000))(v2, v3);
     return result;
@@ -3000,7 +3000,7 @@ int __fastcall sub_8010AE4(int a1, int a2)
     char *v8; // r2
 
     v2 = a2;
-    v3 = *(getChip_8021DA8(a1) + 13) - byte_3E9;
+    v3 = *(getChip8021DA8(a1) + 13) - byte_3E9;
     v4 = *&byte_203EB00[40 * v2 + 2 * v3];
     v5 = v3;
     v6 = sub_8000D84(v4);
@@ -3144,7 +3144,7 @@ int __fastcall sub_8010C50(int a1, int a2)
     result = sub_80103BC(a2);
     if ( result )
     {
-        v4 = getChip_8021DA8(v2);
+        v4 = getChip8021DA8(v2);
         result = sub_8010D04(*(v4 + 13) - 1023);
     }
     return result;
@@ -3161,7 +3161,7 @@ int __fastcall sub_8010C76(int a1)
     signed int v5; // r1
     char *v6; // r2
 
-    v1 = getChip_8021DA8(a1);
+    v1 = getChip8021DA8(a1);
     v2 = *(v1 + 13);
     if ( v2 < byte_3E9 )
         return *(v1 + 13);
@@ -3188,7 +3188,7 @@ int __fastcall sub_8010CE0(int a1)
     signed int v2; // r1
     int result; // r0
 
-    v1 = getChip_8021DA8(a1);
+    v1 = getChip8021DA8(a1);
     v2 = *(v1 + 13);
     if ( v2 < byte_3E9 )
         result = *(v1 + 13);
@@ -5780,7 +5780,7 @@ int __fastcall sub_80126E4(int a1)
     char *v4; // r6
 
     *(v2 + 20) = a1;
-    v3 = getChip_8021DA8(a1);
+    v3 = getChip8021DA8(a1);
     v4 = v3;
     *(v2 + 12) = *(v3 + 4);
     *(v2 + 8) = (v3[10] << 16) + sub_80109A4(*(v2 + 20), *(v1 + 22));
@@ -5924,7 +5924,7 @@ int __fastcall sub_80127C0(int a1)
     v29 = v5;
     v30 = v6;
     v31 = v1;
-    v7 = getChip_8021DA8(v4);
+    v7 = getChip8021DA8(v4);
     v8 = v7;
     v9 = sub_8010D58(v7[31]);
     if ( v9 != 0xFFFF )
@@ -5933,7 +5933,7 @@ int __fastcall sub_80127C0(int a1)
         v29 = v10;
         v30 = v11;
         v31 = v8;
-        v8 = getChip_8021DA8(v9);
+        v8 = getChip8021DA8(v9);
     }
     *(v3 + 20) = v28;
     sub_80126E4(v28);
@@ -6011,7 +6011,7 @@ int __fastcall sub_80128FC(int a1, int a2)
         v6 = sub_8013774(v5, 44);
         if ( v6 != 7 && v6 != 19 )
             JUMPOUT(&loc_8012998);
-        v7 = getChip_8021DA8(v9);
+        v7 = getChip8021DA8(v9);
         if ( !(v7[9] & 2) )
             JUMPOUT(&loc_8012998);
         if ( v7[9] & 1 )
@@ -6074,7 +6074,7 @@ int __fastcall sub_80129A6(int a1)
     char *v2; // r0
 
     *(v1 + 20) = a1;
-    v2 = getChip_8021DA8(a1);
+    v2 = getChip8021DA8(a1);
     *(v1 + 12) = *(v2 + 4);
     *(v1 + 8) = (v2[10] << 16) + *(v2 + 13);
     *(v1 + 5) = v2[20];
@@ -6111,7 +6111,7 @@ int __fastcall sub_8012A38(int a1, int a2, int a3, int a4)
     v7 = a2;
     v8 = a3;
     v9 = a4;
-    if ( getChip_8021DA8(a2)[9] & 2 )
+    if ( getChip8021DA8(a2)[9] & 2 )
     {
         v5 = sub_8015B54(*(v4 + 22));
         if ( v5 == 2 || v5 == 3 || sub_8012AFA(v7, v9) || sub_8012B4E(v7, v9) || sub_8012BA2(v7, v9) || sub_8012ABC(v7) )
@@ -6139,7 +6139,7 @@ signed int __fastcall sub_8012ABC(int a1)
         if ( v4 >= 23 && v4 <= 24 )
         {
             v1 = 0;
-            v5 = getChip_8021DA8(v2);
+            v5 = getChip8021DA8(v2);
             if ( v5[9] & 2 )
             {
                 if ( !(v5[9] & 1) && v5[6] == 10 )
@@ -6170,7 +6170,7 @@ signed int __fastcall sub_8012AFA(int a1, int a2)
     if ( v6 == 7 || (v7 = sub_8013774(v6, 44), v7 == 7) || v7 == 19 )
     {
         v4 = 0;
-        v8 = getChip_8021DA8(v3);
+        v8 = getChip8021DA8(v3);
         if ( v8[9] & 2 )
         {
             if ( !(v8[9] & 1) && v8[4] == 4 )
@@ -6203,7 +6203,7 @@ signed int __fastcall sub_8012B4E(int a1, int a2)
     if ( v6 == 6 || (v7 = sub_8013774(v6, 44), v7 == 6) || v7 == 18 )
     {
         v4 = 0;
-        v8 = getChip_8021DA8(v3);
+        v8 = getChip8021DA8(v3);
         if ( v8[9] & 2 )
         {
             if ( !(v8[9] & 1) && v8[4] == 2 )
@@ -6233,7 +6233,7 @@ signed int __fastcall sub_8012BA2(int a1, int a2)
     if ( sub_8013774(a1, 41) == 11 )
     {
         v4 = 0;
-        v6 = getChip_8021DA8(v3);
+        v6 = getChip8021DA8(v3);
         if ( v6[9] & 2 )
         {
             if ( !(v6[9] & 1) && v6[6] == 5 )
@@ -6268,7 +6268,7 @@ signed int __fastcall sub_8012BE8(int a1, int a2)
         if ( v7 >= 11 && v7 <= 22 )
         {
             v3 = 0;
-            v8 = getChip_8021DA8(v4);
+            v8 = getChip8021DA8(v4);
             if ( v8[9] & 2 )
             {
                 if ( !(v8[9] & 1) && v8[6] == 10 && (v5 || *(*(v2 + 88) + 29) == 2) )
@@ -6299,7 +6299,7 @@ int __fastcall sub_8012C4A(int a1, int a2)
     int v4; // r0
 
     v2 = a2;
-    v3 = getChip_8021DA8(a1);
+    v3 = getChip8021DA8(a1);
     if ( v3[9] & 2 )
     {
         if ( !(v3[9] & 1) && v3[6] == 10 )
@@ -6681,7 +6681,7 @@ signed int __fastcall sub_8012F62(int a1)
             a1 = sub_8010004();
             if ( !v4 )
             {
-                a1 = getChip_8021DA8(a1)[6];
+                a1 = getChip8021DA8(a1)[6];
                 if ( a1 == 10 )
                     v3 = 17;
             }
@@ -6931,7 +6931,7 @@ signed int __fastcall sub_8013236(int a1)
     v10 = a1;
     if ( a1 >= byte_190 )
         return 0;
-    v1 = getChip_8021DA8(a1);
+    v1 = getChip8021DA8(a1);
     v2 = v1[6];
     v3 = sub_8013774(v1, 44);
     if ( v3 == 2 && v2 == 10 && v1[9] & 2 && !(v1[9] & 1)
@@ -14028,7 +14028,7 @@ int sub_8017AB4()
         if ( !sub_800BEDA() )
             goto LABEL_13;
         v1 = sub_8010004();
-        if ( !((v1 + 1) & 0xFFFF) || !(getChip_8021DA8(v1)[9] & 1) )
+        if ( !((v1 + 1) & 0xFFFF) || !(getChip8021DA8(v1)[9] & 1) )
             goto LABEL_13;
         v2 = sub_80127C0(0);
         if ( v2 == 21 )
@@ -18398,7 +18398,7 @@ int __fastcall sub_801C002(int a1)
                     {
                         if ( result == 0xFFFF )
                             LOWORD(result) = 0;
-                        v7 = *(getChip_8021DA8(result & 0x1FF) + 8);
+                        v7 = *(getChip8021DA8(result & 0x1FF) + 8);
                     }
                     else
                     {
@@ -19059,10 +19059,10 @@ char *__noreturn sub_801C6EE()
         v16 = v1;
         v17 = v2;
         v4 = sub_8027D10(result);
-        render_graphicalText_8045F8C(v4, v5, byte_203EBA0, 100715264);
+        renderTextGfx_8045F8C(v4, v5, byte_203EBA0, 100715264);
         sub_80018E0(0, 18, 3, word_801D944);
         sub_80018E0(0, 19, 3, word_801D954);
-        result = getChip_8021DA8(v15);
+        result = getChip8021DA8(v15);
         if ( result[9] & 2 )
         {
             v6 = sub_8000C00(v16);
@@ -19869,7 +19869,7 @@ void sub_801D048()
     sub_801CF3C();
     if ( *v0 < 8 )
     {
-        render_graphicalText_8045F8C(byte_86F0374, 2, byte_203C4E0, 100701024);
+        renderTextGfx_8045F8C(byte_86F0374, 2, byte_203C4E0, 100701024);
         copyTiles();
         sub_801D12A(*(v0 + 6), v1, v2, v3, v4);
     }
@@ -20043,7 +20043,7 @@ int __fastcall __noreturn sub_801D344(__int16 a1, int a2, int a3, signed int a4)
     }
     else
     {
-        v7 = getChip_8021DA8(v4)[7];
+        v7 = getChip8021DA8(v4)[7];
         if ( v7 > 2 )
             v7 = 0;
         v8 = v7;
@@ -20053,7 +20053,7 @@ int __fastcall __noreturn sub_801D344(__int16 a1, int a2, int a3, signed int a4)
         (loc_8000AC8)(v9, v12 + 100714816, dword_280);
         v5 = sub_8027D10(v11);
     }
-    return render_graphicalText_8045F8C(v5, v6, &unk_203A380 + v13, v13 + 100716736);
+    return renderTextGfx_8045F8C(v5, v6, &unk_203A380 + v13, v13 + 100716736);
 }
 
 
@@ -21097,7 +21097,7 @@ int __fastcall __noreturn sub_801E228(signed int a1)
         sub_801DACC(256);
     byte_203528B = 60;
     byte_203528C = 0;
-    render_graphicalText_8045F8C(byte_86F0374, v1, byte_203C4E0, 100701536);
+    renderTextGfx_8045F8C(byte_86F0374, v1, byte_203C4E0, 100701536);
     sub_801BECC(256);
     return sub_801DA48(256);
 }
@@ -21117,7 +21117,7 @@ int sub_801E270()
     }
     byte_203528B = 60;
     byte_203528C = 1;
-    render_graphicalText_8045F8C(byte_86F0374, 14, byte_203C4E0, 100701536);
+    renderTextGfx_8045F8C(byte_86F0374, 14, byte_203C4E0, 100701536);
     sub_801BECC(256);
     return sub_801DA48(256);
 }
@@ -21143,7 +21143,7 @@ int __fastcall sub_801E2BA(int a1)
     v2 = 15;
     if ( !v4 )
         v2 = 16;
-    render_graphicalText_8045F8C(byte_86F0374, v2, byte_203C4E0, 100701536);
+    renderTextGfx_8045F8C(byte_86F0374, v2, byte_203C4E0, 100701536);
     sub_801BECC(256);
     sub_801DA48(256);
     return v4;
@@ -21169,7 +21169,7 @@ int __noreturn sub_801E376()
 // 0x801e398
 int __fastcall __noreturn sub_801E398(int a1)
 {
-    render_graphicalText_8045F8C(byte_86F0374, a1 + 3, byte_203C4E0, 100701536);
+    renderTextGfx_8045F8C(byte_86F0374, a1 + 3, byte_203C4E0, 100701536);
     sub_801BECC(2048);
     return sub_801DA48(2048);
 }
@@ -21195,7 +21195,7 @@ int __noreturn sub_801E3E4()
 int __noreturn sub_801E408()
 {
     word_20352B2 = 50;
-    render_graphicalText_8045F8C(byte_86F0374, 18, byte_203C4E0, 100702432);
+    renderTextGfx_8045F8C(byte_86F0374, 18, byte_203C4E0, 100702432);
     sub_801BECC(0x100000);
     return sub_801DA48(0x100000);
 }
@@ -21345,7 +21345,7 @@ int __noreturn sub_801E574()
         v7 = v2;
         v8 = v3;
         v9 = sub_800EC56(*v0);
-        v10 = render_graphicalText_8045F8C(v9, SHIDWORD(v9), v7, v8);
+        v10 = renderTextGfx_8045F8C(v9, SHIDWORD(v9), v7, v8);
         v2 = &dword_240 + v5;
         v3 = &dword_240 + v6;
         *v0 = v10;
@@ -21685,8 +21685,8 @@ int __fastcall __noreturn sub_801E95C(int a1, unsigned int a2, int a3, __int16 a
     v19 = a3;
     sub_8027D10(*(v4 + 4));
     sub_801EA5A();
-    *(v21 + 9) = render_graphicalText_8045F8C(v5, v6, v7, v8);
-    v9 = getChip_8021DA8(*(v21 + 4));
+    *(v21 + 9) = renderTextGfx_8045F8C(v5, v6, v7, v8);
+    v9 = getChip8021DA8(*(v21 + 4));
     v10 = v18;
     v11 = v19;
     if ( v9[9] & 2 )

@@ -19,7 +19,7 @@ int sub_8080DA0()
     v2 = &off_8080E34 + 4 * v0;
     sub_800195C(*v2, v2[1], v2[2]);
     v3 = sub_8001780();
-    sub_8001778(v3 | v2[3]);
+    sRender_08_setRenderingState(v3 | v2[3]);
     sub_80304E8((&off_8080F98)[v1]);
     sub_8002354(off_8081220[v1]);
     result = sub_802D234();
@@ -45,7 +45,7 @@ int __fastcall sub_8080DEA(int a1, signed int a2)
     v4 = &off_8080E34 + 4 * v2;
     sub_800195C(*v4, v4[1], v4[2]);
     v5 = sub_8001780();
-    sub_8001778(v5 | v4[3]);
+    sRender_08_setRenderingState(v5 | v4[3]);
     sub_80304E8((&off_8080F98)[v3]);
     sub_8002354(off_8081220[v3]);
     sub_803537C();

@@ -167,7 +167,7 @@ char *sub_81301DC()
 // 0x8130208
 int sub_8130208()
 {
-    return render_graphicalText_8045F8C(dword_86CF4AC, word_2023FA0[0] & 0xF, byte_2017A00, 100731904);
+    return renderTextGfx_8045F8C(dword_86CF4AC, word_2023FA0[0] & 0xF, byte_2017A00, 100731904);
 }
 
 
@@ -561,7 +561,7 @@ signed int __fastcall sub_8130780(int a1)
     while ( 1 )
     {
         v5 = split9BitsFromBitfield_8021AE0(*(v3 + v4));
-        if ( getChip_8021DA8(v5)[22] & 0x10 )
+        if ( getChip8021DA8(v5)[22] & 0x10 )
             break;
         v4 += 2;
         if ( v4 >= 60 )
@@ -822,7 +822,7 @@ LABEL_27:
                     }
                     else
                     {
-                        sub_811F7EC();
+                        isJoystickIRQActive();
                         if ( !v16 )
                             sub_8131768(v13, v14, v15);
                     }
@@ -1587,10 +1587,10 @@ LABEL_10:
     if ( *(v3 + 38) != 4 )
         goto LABEL_10;
 LABEL_13:
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( !v5 )
         goto LABEL_23;
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( v5 )
         return;
     sub_8132280(105);
@@ -1784,7 +1784,7 @@ void __noreturn sub_81314E4()
     char (*v0)[8]; // ST04_4
 
     v0 = off_813154C[sub_81312EC()[12]];
-    render_graphicalText_8045F8C(byte_873EA50, (*v0 - 144) >> 2, byte_2019A00, 100704256);
+    renderTextGfx_8045F8C(byte_873EA50, (*v0 - 144) >> 2, byte_2019A00, 100704256);
     JUMPOUT(loc_8131528);
 }
 
@@ -2438,7 +2438,7 @@ void sub_8132080()
     int v0; // r5
     char v1; // zf
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( v1 )
     {
         sub_803CB18();
@@ -3457,7 +3457,7 @@ void __noreturn sub_8132C50()
     IsPaletteFadeActive();
     if ( !v1 )
     {
-        chatbox_8045F2C(64);
+        chatbox_clear_eFlags2009F38(64);
         *(v0 + 2) = 4;
     }
     sub_8132F4C();
@@ -3475,7 +3475,7 @@ void __noreturn sub_8132C68()
     {
         *(v0 + 1) = 8;
         engine_setScreeneffect(12, 12);
-        chatbox_8045F1C(64);
+        chatbox_setFlags2009F38(64);
     }
     sub_8132F4C();
 }
@@ -3489,7 +3489,7 @@ void __noreturn sub_8132CA0()
     IsPaletteFadeActive();
     if ( !v0 )
     {
-        chatbox_8045F1C(64);
+        chatbox_setFlags2009F38(64);
         sub_811F708();
     }
     sub_8132F4C();
@@ -3539,7 +3539,7 @@ void __noreturn sub_8132CB8()
 // 0x8132d9c
 void __noreturn sub_8132D9C()
 {
-    render_graphicalText_8045F8C(byte_201BF00, 0, byte_2017A00, 100679680);
+    renderTextGfx_8045F8C(byte_201BF00, 0, byte_2017A00, 100679680);
     JUMPOUT(loc_8132DB2);
 }
 
@@ -3556,7 +3556,7 @@ void __noreturn sub_8132EF4()
 void __noreturn sub_8132F4C()
 {
     sub_8132F78();
-    render_graphicalText_8045F8C(byte_201BF00, 4, &unk_2018A00, 100681728);
+    renderTextGfx_8045F8C(byte_201BF00, 4, &unk_2018A00, 100681728);
     JUMPOUT(locret_8132F66);
 }
 
@@ -3935,7 +3935,7 @@ LABEL_14:
         chatbox_8045F3C(32);
         if ( v2 )
         {
-            sub_811F7EC();
+            isJoystickIRQActive();
             if ( !v2 )
             {
                 *(v1 + 2) = 16;
@@ -3990,10 +3990,10 @@ void sub_8133564()
     chatbox_8045F3C(128);
     if ( v2 && !sub_811F7F8(*(*(v1 + oToolkit_JoypadPtr) + 4), 7u, 0, 0) )
     {
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( v2 )
         {
-            sub_811F7EC();
+            isJoystickIRQActive();
             if ( !v2 )
             {
                 sound_play(131, v3, v4);
@@ -4171,10 +4171,10 @@ void sub_81336C4()
     chatbox_8045F3C(128);
     if ( v2 && !sub_811F7F8(*(*(v1 + oToolkit_JoypadPtr) + 4), 7u, 0, 0) )
     {
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( v2 )
         {
-            sub_811F7EC();
+            isJoystickIRQActive();
             if ( !v2 )
             {
                 sound_play(131, v4, v5);
@@ -4325,7 +4325,7 @@ void __fastcall __noreturn sub_81337E8(int a1)
     {
         if ( sSubmenu.unk_02 == 36 || sSubmenu.unk_1B & 0x40 )
             goto LABEL_20;
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( !v3 )
         {
             *(v1 + 1) = 16;
@@ -4481,7 +4481,7 @@ int __fastcall sub_81339BC(int a1)
     if ( !v3 )
     {
         v4 = sub_8046664();
-        sub_8021C68(v4, v5, v6, v7);
+        zeroFill_e2002230(v4, v5, v6, v7);
         sub_8137700();
         sub_81206C4(&unk_202A3E0);
         sub_8120740(*(v1 + 12));
@@ -4601,7 +4601,7 @@ int __fastcall sub_8133B18(int a1)
     }
     else
     {
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( !v2 )
         {
             sub_8134190(11);
@@ -4663,7 +4663,7 @@ void sub_8133BB4()
     int v5; // r1
     int v6; // r2
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( !v4 )
     {
         if ( *(v0 + 68) )
@@ -4697,8 +4697,8 @@ void sub_8133C0C()
     char v3; // zf
     int v4; // r0
 
-    sub_811F7EC();
-    if ( !v3 || *(v0 + 3) == 12 && (sub_811F7EC(), !v3) )
+    isJoystickIRQActive();
+    if ( !v3 || *(v0 + 3) == 12 && (isJoystickIRQActive(), !v3) )
     {
         if ( !*(v0 + 68) )
         {
@@ -4729,7 +4729,7 @@ void sub_8133C58()
     char v3; // zf
     int v4; // r6
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( !v3 && !v0[68] )
     {
         sound_play(129, v1, v2);
@@ -5330,7 +5330,7 @@ signed int sub_81347A4()
     int v18; // [sp+8h] [bp-1Ch]
     int v19; // [sp+Ch] [bp-18h]
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( v4 )
         return 0;
     if ( !*(v0 + 13) )
@@ -5543,7 +5543,7 @@ signed int sub_8134A3C()
     int v7; // r2
 
     v1 = 0;
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( !v2 )
     {
         v1 = 1;
@@ -6159,11 +6159,11 @@ int __fastcall sub_8135080(int a1, int a2, int a3, int a4)
     v5 = 2;
     if ( !a2 )
         return 0;
-    v6 = getChip_8021DA8(a2);
+    v6 = getChip8021DA8(a2);
     if ( v6[9] & 0x20 )
     {
         v7 = sub_81351C0();
-        if ( v18 && getChip_8021DA8(v18)[9] & 0x20 )
+        if ( v18 && getChip8021DA8(v18)[9] & 0x20 )
             --v7;
         if ( v7 >= 3 )
             return v5;
@@ -6174,7 +6174,7 @@ int __fastcall sub_8135080(int a1, int a2, int a3, int a4)
     if ( v6[7] == 1 )
     {
         v8 = sub_8135184(1);
-        if ( v18 && getChip_8021DA8(v18)[7] == 1 )
+        if ( v18 && getChip8021DA8(v18)[7] == 1 )
             --v8;
         v9 = getPETNaviSelect();
         if ( v8 >= sub_80137B6(v9) )
@@ -6191,13 +6191,13 @@ LABEL_20:
             ++v12;
         }
         while ( v12 < v13 );
-        v15 = getChip_8021DA8(v17);
+        v15 = getChip8021DA8(v17);
         if ( sub_8135500(v15, v17) )
             return v5;
         return 0;
     }
     v10 = sub_8135184(2);
-    if ( v18 && getChip_8021DA8(v18)[7] == 2 )
+    if ( v18 && getChip8021DA8(v18)[7] == 2 )
         --v10;
     v11 = getPETNaviSelect();
     if ( v10 < sub_80137B6(v11) )
@@ -6222,7 +6222,7 @@ int __fastcall sub_8135184(int a1)
     v4 = 0;
     do
     {
-        if ( getChip_8021DA8(*&word_202A020[16 * v2 + 14] << 16 >> 23)[7] == v7 )
+        if ( getChip8021DA8(*&word_202A020[16 * v2 + 14] << 16 >> 23)[7] == v7 )
             ++v4;
         v2 = v5 + 1;
     }
@@ -6245,7 +6245,7 @@ int sub_81351C0()
     v3 = 0;
     do
     {
-        if ( getChip_8021DA8(*&word_202A020[16 * v1 + 14] << 16 >> 23)[9] & 0x20 )
+        if ( getChip8021DA8(*&word_202A020[16 * v1 + 14] << 16 >> 23)[9] & 0x20 )
             ++v3;
         v1 = v4 + 1;
     }
@@ -6720,7 +6720,7 @@ void __fastcall __noreturn sub_81356F4(int a1, int a2, int a3, int a4)
     v14[11] = 0;
     v14[12] = 0;
     v14[13] = 0;
-    sub_8001820(v14, 0, v15, v16);
+    zeroFill_e2009740(v14, 0, v15, v16);
     v17 = *(v5 + oToolkit_Unk200f3a0_Ptr);
     v17[9] = 47;
     v17[10] = 63;
@@ -6799,13 +6799,13 @@ int sub_8135830()
     *(v0 + 38) = *(v0 + 36);
     if ( !*(v0 + 13) )
     {
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( !v2 )
         {
             sub_81367C0();
             goto LABEL_20;
         }
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( !v2 )
         {
             sub_81367A0(v3, v4, v5);
@@ -6818,13 +6818,13 @@ int sub_8135830()
             goto LABEL_20;
         }
         *(v0 + 23) = 0;
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( !v2 )
         {
             sub_813627C();
             goto LABEL_20;
         }
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( !v2 )
         {
             sub_8136218();
@@ -7183,7 +7183,7 @@ int sub_8135B54()
     if ( !v3 )
     {
         chatbox_8040818();
-        chatbox_8045F2C(64);
+        chatbox_clear_eFlags2009F38(64);
         v4 = *v0;
         ZeroFillByWord(*(v1 + oToolkit_SubmenuPtr), 0x80u, v5, v6);
         if ( v4 == 40 )
@@ -7425,7 +7425,7 @@ void __noreturn sub_8135F18()
 // 0x8135f34
 void __fastcall __noreturn sub_8135F34(int a1)
 {
-    render_graphicalText_8045F8C(&unk_201E670, a1, byte_201B200, 100710400);
+    renderTextGfx_8045F8C(&unk_201E670, a1, byte_201B200, 100710400);
     JUMPOUT(loc_8135F4A);
 }
 
@@ -8591,7 +8591,7 @@ void __noreturn sub_8136B74()
 // 0x8136ba0
 void __fastcall __noreturn sub_8136BA0(int a1)
 {
-    render_graphicalText_8045F8C(&unk_201D280, a1, byte_201B200, 100710400);
+    renderTextGfx_8045F8C(&unk_201D280, a1, byte_201B200, 100710400);
     JUMPOUT(loc_8136BB6);
 }
 
@@ -9974,7 +9974,7 @@ signed int sub_81379A0()
     TestEventFlagFromImmediate(23, 16);
     if ( v2 )
     {
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( !v2 )
         {
             if ( !sub_8138170() )
@@ -9987,7 +9987,7 @@ signed int sub_81379A0()
             sound_play(105, v3, v4);
         }
     }
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( v2 )
     {
         v8 = v0[30];
@@ -10058,7 +10058,7 @@ signed int sub_8137A7C()
     if ( !v2 )
     {
         chatbox_8040818();
-        chatbox_8045F2C(64);
+        chatbox_clear_eFlags2009F38(64);
         ClearEventFlagRangeFromImmediate(0, 191, 19);
         TestEventFlagFromImmediate(23, 16);
         if ( !v2 )
@@ -10980,7 +10980,7 @@ int __fastcall sub_8138624(int a1, int a2, int a3, int a4)
         v6 = v5;
         v8 = a4;
         sub_80028D4(&unk_202A000, a2, a3, a4);
-        sub_8002906(*(&off_8138694 + v6 * 4));
+        uncompSprite_8002906(*(&off_8138694 + v6 * 4));
         sub_8030A60((&off_813866C)[v6]);
         engine_setScreeneffect(124, 8);
     }
@@ -11164,12 +11164,12 @@ unsigned int __fastcall __noreturn sub_81387D8(int a1, int a2, int a3, int a4)
     sub_8002668();
     sub_80303F2();
     sub_8030AA4(0, 2);
-    sub_802FF4C(0, 0, 0, 208);
+    camera_802FF4C(0, 0, 0, 208);
     sub_80301B2(0, v10);
     v11 = sub_80301DC(0, 0, 0);
-    sub_80024A2(v11, v12, v13, v14);
+    zeroFill_80024A2(v11, v12, v13, v14);
     v19 = sub_8003962(v15, v16, v17, v18);
-    v23 = sub_8003AB2(v19, v20, v21, v22);
+    v23 = zeroFill_8003AB2(v19, v20, v21, v22);
     sub_802F0D8(v23, v24, v25, v26);
     sub_802F0F4(v27, v28, v29, v30);
     sub_8036EFE();

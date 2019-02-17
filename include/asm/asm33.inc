@@ -60,12 +60,12 @@
 // .global sub_800183C
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
-// .global sub_80024A2
+// .global zeroFill_80024A2
 
 	.include "asm/asm00_1.inc"
 // .global sub_80035A2
 // .global sub_8003962
-// .global sub_8003AB2
+// .global zeroFill_8003AB2
 // .global sub_8004702
 // .global sub_8005F40
 // .global engine_setScreeneffect // (int a1, int a2) -> void
@@ -86,7 +86,7 @@
 // .global sub_80137FE
 
 	.include "asm/asm02.inc"
-// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global getChip8021DA8 // (int chip_idx) -> ChipData*
 
 	.include "asm/asm03_0.inc"
 // .global sub_802B2A0
@@ -128,17 +128,17 @@
 // .global sub_803DEAC
 // .global sub_803E8F8
 // .global sub_803EA50
-// .global sub_803EA60
-// .global sub_803EA70
+// .global eStruct200BC30_getJumpOffset00
+// .global eStruct200BC30_setJumpOffset00
 // .global sub_803EA78
 // .global sub_803EAE4
 // .global sub_803EBAC
-// .global sub_803EBF4
+// .global eStruct200BC30_getRef
 // .global sub_803EF60
 // .global sub_803EF74
 // .global sub_803EF7C
 // .global sub_803F4EC
-// .global sub_803F524
+// .global notZero_eByte200AD04
 // .global sub_803F674
 // .global sub_803F798
 
@@ -149,13 +149,13 @@
 // .global chatbox_runScript_803FE08 // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_803FE10
 // .global chatbox_8040818
-// .global chatbox_8045F1C
-// .global chatbox_8045F2C // (int a1) ->
+// .global chatbox_setFlags2009F38
+// .global chatbox_clear_eFlags2009F38 // (int a1) ->
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C
 
 	.include "asm/asm03_2.inc"
-// .global render_graphicalText_8045F8C
+// .global renderTextGfx_8045F8C
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
 // .global sub_80465F8 // () -> void
@@ -207,7 +207,7 @@
 // .global sub_811F6C0
 // .global sub_811F708
 // .global sub_811F728
-// .global sub_811F7EC
+// .global isJoystickIRQActive
 // .global sub_811F7F8
 // .global sub_811F91C
 // .global sub_811FA0C
@@ -392,7 +392,7 @@
 // .equ sSubmenu, 0x2009A30
 // .equ byte_200A290, 0x200A290
 // .equ byte_200AF80, 0x200AF80
-// .equ byte_200BC30, 0x200BC30
+// .equ eStruct200BC30, 0x200BC30
 // .equ byte_200BC3C, 0x200BC3C
 // .equ byte_200BC50, 0x200BC50
 // .equ word_200DCF0, 0x200DCF0

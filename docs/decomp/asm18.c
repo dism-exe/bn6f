@@ -13,11 +13,11 @@ unsigned int sub_807A8E0()
     sub_803037C(*(v0 + 4), *(v0 + 5));
     sub_8030AA4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
-    sub_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
+    camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
     sub_8030472();
     sub_80028D4(byte_2037800, v3, v4, v5);
-    sub_8002906(off_807A944[*(v0 + 5)]);
-    chatbox_uncomp_803FD08();
+    uncompSprite_8002906(off_807A944[*(v0 + 5)]);
+    chatbox_uncompBasedOnMap_803FD08();
     sub_807AAD6();
     return sub_8034FB8();
 }
@@ -42,7 +42,7 @@ void sub_807A9CC()
     v2 = &off_807AA34 + 4 * *(v1 + oGameState_MapNumber);
     sub_800195C(*v2, v2[1], v2[2]);
     v3 = sub_8001780();
-    sub_8001778(v3 | v2[3]);
+    sRender_08_setRenderingState(v3 | v2[3]);
     sub_80304E8(off_807AA68[*(v1 + oGameState_MapNumber)]);
 }
 
@@ -59,7 +59,7 @@ int sub_807A9FE()
     v2 = &off_807AA34 + 4 * *(v1 + oGameState_MapNumber);
     sub_800195C(*v2, v2[1], v2[2]);
     v3 = sub_8001780();
-    sub_8001778(v3 | v2[3]);
+    sRender_08_setRenderingState(v3 | v2[3]);
     return sub_8030540(off_807AA68[*(v1 + oGameState_MapNumber)]);
 }
 

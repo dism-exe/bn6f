@@ -7,12 +7,12 @@
 	.global sub_801FE5E
 	.global sub_801FE64
 	.global sub_801FE6C
-	.global sub_801FEE8
+	.global eStruct203F7D8_getUnk01
 	.global sub_801FEEE
 	.global sub_80200A4
-	.global sub_8020134
+	.global eStruct2038160_clearStruct
 	.global sub_8020140
-	.global sub_802015E
+	.global eStruct2038160_getBattleTerminate01
 	.global off_8020170
 	.global off_8020174
 	.global off_8020178
@@ -38,7 +38,7 @@
 // .global sub_800A0D6
 
 	.include "asm/asm03_0.inc"
-// .global get_802D246 // () -> int
+// .global sub_802D246 // () -> int
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 
 	.include "asm/asm03_1.inc"
@@ -47,8 +47,8 @@
 // .global sub_803DE88
 // .global sub_803DEB4
 // .global sub_803EA2C
-// .global sub_803EA60
-// .global sub_803F524
+// .global eStruct200BC30_getJumpOffset00
+// .global notZero_eByte200AD04
 // .global sub_803F740
 
 	.include "data/dat30.inc"
@@ -84,13 +84,13 @@
 // .equ word_203614C, 0x203614C
 // .equ unk_20362F0, 0x20362F0
 // .equ word_203631C, 0x203631C
-// .equ word_2036780, 0x2036780
-// .equ word_2036782, 0x2036782
+// .equ eStruct2036780, 0x2036780
+// .equ eFlags2036782, 0x2036782
 // .equ byte_2036784, 0x2036784
 // .equ byte_2036786, 0x2036786
 // .equ dword_2036788, 0x2036788
 // .equ word_203678C, 0x203678C
-// .equ unk_2038160, 0x2038160
+// .equ eStruct2038160, 0x2038160
 // .equ byte_2038161, 0x2038161
 // .equ unk_20399F0, 0x20399F0
 // .equ word_20399F2, 0x20399F2
@@ -107,9 +107,9 @@
 // .equ dword_203CBE0, 0x203CBE0
 // .equ dword_203F4A0, 0x203F4A0
 // .equ dword_203F5A0, 0x203F5A0
-// .equ byte_203F7D8, 0x203F7D8
-// .equ byte_203F7D8, 0x203F7D8
-// .equ byte_203F7D8, 0x203F7D8
-// .equ byte_203F7D8, 0x203F7D8
+// .equ eStruct203F7D8, 0x203F7D8
+// .equ eStruct203F7D8, 0x203F7D8
+// .equ eStruct203F7D8, 0x203F7D8
+// .equ eStruct203F7D8, 0x203F7D8
 
 	.endif // INC_ASM_ASM01

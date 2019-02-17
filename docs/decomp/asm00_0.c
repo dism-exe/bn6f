@@ -170,7 +170,7 @@ int __fastcall sub_80007A0(int a1, int a2, int a3)
 
 
 // 0x80007b2
-void __fastcall sub_80007B2(int a1, int a2, int a3, int a4)
+void __fastcall zeroFill_80007B2(int a1, int a2, int a3, int a4)
 {
     ZeroFillByWord(dword_200A490, &loc_20C, a3, a4);
 }
@@ -447,7 +447,7 @@ int __fastcall sub_80009FC(int result)
 
 
 // 0x8000a3c
-int *sub_8000A3C()
+int *clearWord_e200AC1C()
 {
     int *result; // r0
 
@@ -484,7 +484,7 @@ int objRender_8000A44()
         v7 = i[4];
         if ( v7 >= 1 )
         {
-            (*(&off_8000AA8 + v7 - 1))(*i, i[1], i[2]);
+            (*(&CopyJumpTable8000AA8 + v7 - 1))(*i, i[1], i[2]);
         }
         else
         {
@@ -494,7 +494,7 @@ int objRender_8000A44()
         }
         v1 = v5;
     }
-    sub_8000A3C();
+    clearWord_e200AC1C();
     return v10;
 }
 
@@ -1783,12 +1783,12 @@ void __fastcall sub_80015B4(int a1, int a2, int a3, int a4)
 
     ZeroFillByEightWords(100720640, 0x2000u, a3, a4);
     sub_800183C(v4, v5, v6, v7);
-    sub_8001850();
+    copyMemory_8001850();
 }
 
 
 // 0x80015d0
-void render_80015D0()
+void copyAndFillTo_GFX30025c0_Ptr()
 {
     int v0; // r10
     int v1; // r3
@@ -1816,7 +1816,7 @@ int __fastcall sub_80015FC(int a1)
 
 
 // 0x8001708
-int __fastcall sub_8001708(signed int a1, int a2)
+int __fastcall map_8001708(signed int a1, int a2)
 {
     _DWORD *v2; // r3
 
@@ -1854,7 +1854,7 @@ int render_800172C()
 
 
 // 0x8001778
-__int16 __fastcall sub_8001778(__int16 result)
+__int16 __fastcall sRender_08_setRenderingState(__int16 result)
 {
     int v1; // r10
 
@@ -1873,7 +1873,7 @@ int sub_8001780()
 
 
 // 0x8001788
-_WORD *sub_8001788()
+_WORD *renderInfo_8001788()
 {
     int v0; // r10
     _WORD *result; // r0
@@ -1892,7 +1892,7 @@ _WORD *sub_8001788()
 
 
 // 0x80017a0
-int sub_80017A0()
+int renderInfo_80017A0()
 {
     int v0; // r10
     int result; // r0
@@ -1928,7 +1928,7 @@ void __fastcall sub_80017E0(int a1, int a2, int a3, int a4)
 
 
 // 0x80017ec
-void __fastcall main_static_80017EC(int a1, int a2, int a3, int a4)
+void __fastcall main_zeroFill_80017EC(int a1, int a2, int a3, int a4)
 {
     int v4; // r2
     int v5; // r3
@@ -1939,14 +1939,14 @@ void __fastcall main_static_80017EC(int a1, int a2, int a3, int a4)
 
 
 // 0x8001808
-void renderPalletes_8001808()
+void copyPalletesToIWRAM_8001808()
 {
     CopyByEightWords(&iPallete3001B60, 83886080, 0x200u);
 }
 
 
 // 0x8001820
-void __fastcall sub_8001820(int a1, int a2, int a3, int a4)
+void __fastcall zeroFill_e2009740(int a1, int a2, int a3, int a4)
 {
     int v4; // r10
 
@@ -1955,7 +1955,7 @@ void __fastcall sub_8001820(int a1, int a2, int a3, int a4)
 
 
 // 0x800182e
-void __fastcall sub_800182E(int a1, int a2, int a3, int a4)
+void __fastcall zeroFill_e200F3A0(int a1, int a2, int a3, int a4)
 {
     int v4; // r10
 
@@ -1973,7 +1973,7 @@ void __fastcall sub_800183C(int a1, int a2, int a3, int a4)
 
 
 // 0x8001850
-void sub_8001850()
+void copyMemory_8001850()
 {
     CopyByEightWords(dword_86A5520, 100717568, 0x800u);
     CopyByEightWords(byte_86BEC80, &unk_3001B40, 0x20u);
@@ -2031,7 +2031,7 @@ int __fastcall sub_8001890(int a1, int a2, int a3, _WORD *a4)
 // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 int copyTiles()
 {
-    return (dword_3005E80[0])();
+    return (iCopyTiles[0])();
 }
 
 
@@ -2107,7 +2107,7 @@ int __fastcall sub_800195C(int result, int a2, void *a3)
     {
         off_200A880 = result;
         off_200A888 = a2;
-        dword_200A884 = a3;
+        doff_200A884 = a3;
         result = start_800024C(4, a3);
     }
     return result;
@@ -2119,7 +2119,7 @@ int sub_8001974()
 {
     off_200A880 = nullsub_39;
     off_200A888 = nullsub_39;
-    dword_200A884 = 50355417;
+    doff_200A884 = 50355417;
     return start_800024C(4, nullsub_38 + 1);
 }
 
@@ -2290,7 +2290,7 @@ void nullsub_39()
 
 
 // 0x8001afc
-void __fastcall sub_8001AFC(int a1, int a2, int a3, int a4)
+void __fastcall zeroFill_e20094C0(int a1, int a2, int a3, int a4)
 {
     ZeroFillByWord(byte_20094C0, &loc_1B0, a3, a4);
 }
@@ -2759,7 +2759,7 @@ int __fastcall sub_8002354(int *a1)
 
 
 // 0x8002368
-void __fastcall sub_8002368(int a1, int a2, int a3, int a4)
+void __fastcall zeroFill_e20097A0(int a1, int a2, int a3, int a4)
 {
     ZeroFillByWord(byte_20097A0, &byte_108, a3, a4);
 }
@@ -2902,7 +2902,7 @@ void __fastcall sub_8002484(int a1, int a2, int a3, int a4)
 
 
 // 0x80024a2
-void __fastcall sub_80024A2(int a1, int a2, int a3, int a4)
+void __fastcall zeroFill_80024A2(int a1, int a2, int a3, int a4)
 {
     ZeroFillByWord(&eStruct200a6a0, 0x50u, a3, a4);
 }
@@ -3041,13 +3041,13 @@ int __fastcall sub_800260C(int a1, int a2, int a3, int a4)
     v10 = sub_8003534(v6, v7, v8, v9);
     v14 = sub_800355C(v10, v11, v12, v13);
     v18 = sub_8003566(v14, v15, v16, v17);
-    sprite_handleObjSprites_800289C(v18, v19, v20, v21);
+    sprite_resetObjVars_800289C(v18, v19, v20, v21);
     return ZeroFillByByte(&unk_200F388, 7);
 }
 
 
 // 0x8002650
-void renderPalletesAndObjs_8002650()
+void copyPalletesToIWRAM_8002650()
 {
     CopyByEightWords(iPallete3001750, 83886592, 0x200u);
 }

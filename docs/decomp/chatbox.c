@@ -1,14 +1,14 @@
 // 0x803fd08
 // () -> int
-int chatbox_uncomp_803FD08()
+int chatbox_uncompBasedOnMap_803FD08()
 {
     int (*v0)[19]; // r0
     int (*v1)[205]; // r0
     void *v2; // r0
 
-    v0 = chatbox_static_8040730(0);
+    v0 = chatbox_map_8040730(0);
     SWI_LZ77UnCompReadNormalWrite8bit(v0, &unk_202DA00);
-    v1 = chatbox_8040794();
+    v1 = chatbox_map_8040794();
     SWI_LZ77UnCompReadNormalWrite8bit(v1, &unk_2033400);
     v2 = chatbox_map_80407C8();
     SWI_LZ77UnCompReadNormalWrite8bit(v2, byte_202FA00);
@@ -17,11 +17,11 @@ int chatbox_uncomp_803FD08()
 
 
 // 0x803fd3c
-int chatbox_dead_uncomp_803FD3C()
+int chatbox_uncomp_803FD3C()
 {
     int (*v0)[19]; // r0
 
-    v0 = chatbox_static_8040730(1);
+    v0 = chatbox_map_8040730(1);
     SWI_LZ77UnCompReadNormalWrite8bit(v0, &unk_2034A00);
     return 0;
 }
@@ -32,7 +32,7 @@ int chatbox_uncomp_803FD54()
 {
     int (*v0)[205]; // r0
 
-    v0 = chatbox_8040794();
+    v0 = chatbox_map_8040794();
     SWI_LZ77UnCompReadNormalWrite8bit(v0, &unk_2033400);
     return 0;
 }
@@ -101,7 +101,7 @@ void __fastcall chatbox_runScript_803FE74(int a1, int a2)
 
 
 // 0x803feb4
-int **chatbox_onUpdate_803FEB4()
+int **chatbox_onUpdate()
 {
     int v0; // r10
     unsigned __int8 *v1; // r5
@@ -114,7 +114,7 @@ int **chatbox_onUpdate_803FEB4()
     result = *v1;
     if ( *v1 )
     {
-        chatbox_8045F2C(&dword_338);
+        chatbox_clear_eFlags2009F38(&dword_338);
         chatbox_8045F3C(64);
         if ( v3 )
         {
@@ -156,7 +156,7 @@ LABEL_11:
 
 // 0x803ff50
 // () ->
-int chatbox_interpreteScriptChar()
+int chatbox_interpreteAndDrawDialogChar()
 {
     int v0; // r5
     unsigned __int8 *v1; // r4
@@ -245,7 +245,7 @@ LABEL_16:
 
 
 // 0x804005c
-signed int sub_804005C()
+signed int chatbox_interpreteAndDrawDialogChar_1()
 {
     int v0; // r5
     unsigned __int8 *v1; // r4
@@ -445,7 +445,7 @@ int __noreturn chatbox_copyTiles_8040344()
     int v4; // r4
     int v5; // r5
 
-    v1 = off_8045CEC[8 * v0[466] + 4 * v0[offsetof(ChatBoxPropreties, chatboxOpenState)]];
+    v1 = spritePtrArr8045CEC[8 * v0[466] + 4 * v0[offsetof(ChatBoxPropreties, chatboxOpenState)]];
     v2 = v0[offsetof(ChatBoxPropreties, unk_1C)];
     v3 = v0[offsetof(ChatBoxPropreties, unk_1D)];
     v4 = v0[offsetof(ChatBoxPropreties, unk_1E)];
@@ -522,7 +522,7 @@ void __fastcall chatbox_runScript(int a1, int a2)
     byte_1F4[v3] = 3;
     byte_1F5[v3] = 3;
     eFlags2009F38 = 0;
-    v11 = chatbox_8045F1C(128);
+    v11 = chatbox_setFlags2009F38(128);
     chatbox_8045F60(v11, v12, v13, v14);
     chatbox_setflags_3e(byte_100);
     *(v3 + 148) = *(v3 + 24);
@@ -594,7 +594,7 @@ void __fastcall chatbox_reqBBS_80404C0(u16 *a1, int a2, int a3)
     byte_1F4[chatbox] = 3;
     byte_1F5[chatbox] = 3;
     eFlags2009F38 = 0;
-    v13 = chatbox_8045F1C(128);
+    v13 = chatbox_setFlags2009F38(128);
     chatbox_8045F60(v13, v14, v15, v16);
     chatbox_setflags_3e(byte_100);
     chatbox->unk_94 = chatbox->textCoord;
@@ -669,7 +669,7 @@ void __fastcall dead_80405F8(int a1, int a2, int a3, int a4)
     byte_1F4[v7] = 3;
     byte_1F5[v7] = 3;
     eFlags2009F38 = 0;
-    v15 = chatbox_8045F1C(128);
+    v15 = chatbox_setFlags2009F38(128);
     chatbox_8045F60(v15, v16, v17, v18);
     chatbox_setflags_3e(byte_100);
     *(v7 + 148) = *(v7 + 24);
@@ -681,7 +681,7 @@ void __fastcall dead_80405F8(int a1, int a2, int a3, int a4)
 
 
 // 0x8040730
-int (*__fastcall chatbox_static_8040730(int a1))[19]
+int (*__fastcall chatbox_map_8040730(int a1))[19]
 {
     int v1; // r10
     int v2; // r4
@@ -709,7 +709,7 @@ int (*__fastcall chatbox_static_8040730(int a1))[19]
 
 
 // 0x8040794
-int (*chatbox_8040794())[205]
+int (*chatbox_map_8040794())[205]
 {
     int v0; // r10
     unsigned __int8 *v1; // r2
@@ -728,7 +728,7 @@ int (*chatbox_8040794())[205]
         v5 = 1;
         v2 -= 128;
     }
-    return (&off_80407C0)[v5][v2][v3];
+    return (&mapPtrs80407C0)[v5][v2][v3];
 }
 
 
@@ -748,7 +748,7 @@ int chatbox_map_80407C8()
         v3 = 1;
         v2 -= 128;
     }
-    return (*(&off_80407FC)[v3][v2][*(v1 + oGameState_MapNumber)])[4];
+    return (*(&mapPtrs80407FC)[v3][v2][*(v1 + oGameState_MapNumber)])[4];
 }
 
 
@@ -758,7 +758,7 @@ int chatbox_8040818()
     int v0; // r10
 
     **(v0 + oToolkit_ChatboxPtr) = 0;
-    return chatbox_8045F2C(200);
+    return chatbox_clear_eFlags2009F38(200);
 }
 
 
@@ -1200,7 +1200,7 @@ int chatbox_E6_end()
     if ( result )
     {
 LABEL_9:
-        chatbox_8045F2C(128);
+        chatbox_clear_eFlags2009F38(128);
         *v0 = 0;
         v0[4] = 0;
         result = 0;
@@ -1339,7 +1339,7 @@ char *chatbox_E8_msgbox()
     {
         v1[466] = 6;
     }
-    result = (*(&off_8040FDC + v2))();
+    result = (*(&chatbox_EB_msgboxJumpTable + v2))();
     if ( result )
     {
         result = byte_804102C;
@@ -1704,11 +1704,11 @@ LABEL_18:
             sound_play(*(v1 + 110), 110, v15);
 LABEL_22:
         chatbox_clearFlags_3e(80);
-        chatbox_8045F2C(7);
-        chatbox_8045F1C(*(v1 + offsetof(ChatBoxPropreties, choiceCursorPos)));
+        chatbox_clear_eFlags2009F38(7);
+        chatbox_setFlags2009F38(*(v1 + offsetof(ChatBoxPropreties, choiceCursorPos)));
         if ( *(v1 + offsetof(ChatBoxPropreties, choiceCursorPos)) == *(v1 + 128) - 1 )
         {
-            chatbox_8045F1C(16);
+            chatbox_setFlags2009F38(16);
             v18 = *(v1 + offsetof(ChatBoxPropreties, choiceCursorPos));
         }
         v19 = *(v0 + *(v1 + offsetof(ChatBoxPropreties, choiceCursorPos)) + 3);
@@ -1732,14 +1732,14 @@ LABEL_22:
         }
         *(v1 + 4) = 0;
         *(v1 + offsetof(ChatBoxPropreties, unk_78)) = 4;
-        chatbox_8045F1C(32);
+        chatbox_setFlags2009F38(32);
         return 0;
     }
     if ( !(v10 & 2) )
         goto LABEL_18;
     if ( *(v0 + 2) & 0x20 )
     {
-        chatbox_8045F1C(&dword_130);
+        chatbox_setFlags2009F38(&dword_130);
         v27 = *(v0 + 2);
         v28 = v0 + *(v0 + 1);
         result = 1;
@@ -1748,12 +1748,12 @@ LABEL_22:
     {
         if ( !(*(v0 + 2) & 0x40) )
         {
-            chatbox_8045F1C(&byte_110);
-            chatbox_8045F2C(7);
+            chatbox_setFlags2009F38(&byte_110);
+            chatbox_clear_eFlags2009F38(7);
             v23 = *(v1 + offsetof(ChatBoxPropreties, unk_80));
             *(v1 + offsetof(ChatBoxPropreties, unk_12)) = v23--;
             *(v1 + offsetof(ChatBoxPropreties, choiceCursorPos)) = v23;
-            chatbox_8045F1C(v23);
+            chatbox_setFlags2009F38(v23);
             if ( !chatbox_maskFlags_3e(0x80u) )
                 sound_play(*(v1 + 106), 106, v24);
             *(v1 + offsetof(ChatBoxPropreties, chatPageState)) = 2;
@@ -1788,7 +1788,7 @@ signed int chatbox_EE_pause()
     {
         case 255:
             chatbox_setflags_3e(1);
-            chatbox_8045F1C(8);
+            chatbox_setFlags2009F38(8);
             return 0;
         case 2:
             TestEventFlag(v0[2] | (v0[3] << 8));
@@ -2011,7 +2011,7 @@ signed int chatbox_80417C0()
     int v4; // r0
     int v5; // r1
 
-    sub_803F524();
+    notZero_eByte200AD04();
     if ( v3 )
         v4 = 2;
     else
@@ -2516,7 +2516,7 @@ signed int chatbox_F2_clearmsgbox()
     int v4; // r2
     int v5; // r3
 
-    chatbox_8045F1C(byte_200);
+    chatbox_setFlags2009F38(byte_200);
     if ( *(v1 + 8) )
     {
         chatbox_setflags_3e(1);
@@ -2552,13 +2552,13 @@ signed int chatbox_F3_control()
     if ( *(v0 + 1) )
     {
         if ( *(v0 + 1) == 1 )
-            chatbox_8045F2C(64);
+            chatbox_clear_eFlags2009F38(64);
         else
-            chatbox_8045F1C(*(v0 + 2));
+            chatbox_setFlags2009F38(*(v0 + 2));
     }
     else
     {
-        chatbox_8045F1C(64);
+        chatbox_setFlags2009F38(64);
     }
     return 1;
 }
@@ -3489,7 +3489,7 @@ signed int chatbox_804271C()
 
 
 // 0x8042770
-void __noreturn chatbox_8042770()
+void __noreturn chatbox_sprite_8042770()
 {
     int v0; // r4
     int v1; // r10
@@ -3882,12 +3882,12 @@ int chatbox_8042D68()
         return 0;
     sound_play(*(v0 + 110), 110, v5);
     chatbox_clearFlags_3e(17);
-    chatbox_8045F2C(7);
-    chatbox_8045F1C(*(v0 + 19));
+    chatbox_clear_eFlags2009F38(7);
+    chatbox_setFlags2009F38(*(v0 + 19));
     *(v0 + 4) = 0;
     *(v0 + 12) = 0;
     *(v0 + 120) = 4;
-    chatbox_8045F1C(32);
+    chatbox_setFlags2009F38(32);
     return 0;
 }
 
@@ -4280,12 +4280,12 @@ LABEL_7:
         return 0;
     sound_play(*(v0 + 110), 110, v17);
     chatbox_clearFlags_3e(17);
-    chatbox_8045F2C(7);
-    chatbox_8045F1C(*(v0 + 19));
+    chatbox_clear_eFlags2009F38(7);
+    chatbox_setFlags2009F38(*(v0 + 19));
     *(v0 + 4) = 0;
     *(v0 + 12) = 0;
     *(v0 + 120) = 4;
-    chatbox_8045F1C(32);
+    chatbox_setFlags2009F38(32);
     return 0;
 }
 
@@ -4453,7 +4453,7 @@ LABEL_7:
     *(v1 + 4) = 0;
     *(v1 + 12) = 0;
     *(v1 + 120) = 4;
-    chatbox_8045F1C(32);
+    chatbox_setFlags2009F38(32);
     if ( *(v0 + 1) == 3 )
     {
         if ( !chatbox_8042EC8() )
@@ -4608,7 +4608,7 @@ LABEL_7:
         *(v1 + 4) = 0;
         *(v1 + 12) = 0;
         *(v1 + 120) = 4;
-        chatbox_8045F1C(32);
+        chatbox_setFlags2009F38(32);
         if ( chatbox_8042EE8(*(v0 + 5), *(v1 + 128) - 1) )
             sound_play(*(v1 + 110), 110, v27);
     }
@@ -4775,7 +4775,7 @@ LABEL_7:
     *(v1 + 4) = 0;
     *(v1 + 12) = 0;
     *(v1 + 120) = 4;
-    chatbox_8045F1C(32);
+    chatbox_setFlags2009F38(32);
     if ( *(v0 + 1) == 3 )
     {
         v22 = chatbox_8042EC8();
@@ -4934,12 +4934,12 @@ LABEL_7:
     }
     sound_play(*(v0 + 110), 110, v18);
     chatbox_clearFlags_3e(17);
-    chatbox_8045F2C(7);
-    chatbox_8045F1C(*(v0 + 19));
+    chatbox_clear_eFlags2009F38(7);
+    chatbox_setFlags2009F38(*(v0 + 19));
     *(v0 + 4) = 0;
     *(v0 + 12) = 0;
     *(v0 + 120) = 4;
-    chatbox_8045F1C(32);
+    chatbox_setFlags2009F38(32);
     return 0;
 }
 
@@ -5066,7 +5066,7 @@ __int64 sub_8045F0C()
 
 
 // 0x8045f1c
-int __fastcall chatbox_8045F1C(int result)
+int __fastcall chatbox_setFlags2009F38(int result)
 {
     eFlags2009F38 |= result;
     return result;
@@ -5075,7 +5075,7 @@ int __fastcall chatbox_8045F1C(int result)
 
 // 0x8045f2c
 // (int a1) ->
-int __fastcall chatbox_8045F2C(int result)
+int __fastcall chatbox_clear_eFlags2009F38(int result)
 {
     eFlags2009F38 &= ~result;
     return result;

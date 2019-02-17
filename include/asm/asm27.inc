@@ -18,7 +18,7 @@
 
 
 /* Undeclared Symbols */
-// .equ byte_200BE70, 0x200BE70
+// .equ eStruct200BE70, 0x200BE70
 // .equ dword_200BE7C, 0x200BE7C
 // .equ unk_2024400, 0x2024400
 // .equ unk_2025400, 0x2025400

@@ -27,7 +27,7 @@ int __fastcall sub_801FE24(int a1)
     }
     else
     {
-        result = sub_803F524();
+        result = notZero_eByte200AD04();
         if ( v5 )
             return result;
         sub_803DE88(0, v2, v3, v4);

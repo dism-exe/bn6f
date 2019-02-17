@@ -519,7 +519,7 @@
 // .global byte_802136C
 
 	.include "asm/asm02.inc"
-// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global getChip8021DA8 // (int chip_idx) -> ChipData*
 // .global sub_8021D14
 
 	.include "asm/asm03_0.inc"
@@ -534,7 +534,7 @@
 // .global sub_802D1B4
 // .global sub_802D1BE
 // .global sub_802D234
-// .global get_802D246 // () -> int
+// .global sub_802D246 // () -> int
 // .global sub_802D26A
 // .global sub_802D310
 // .global sub_802D644
@@ -567,13 +567,13 @@
 
 	.include "asm/asm03_1.inc"
 // .global sub_803D0C8
-// .global sub_803F524
+// .global notZero_eByte200AD04
 
 	.include "asm/chatbox.inc"
 // .global loc_8040A04
 
 	.include "asm/asm03_2.inc"
-// .global render_graphicalText_8045F8C
+// .global renderTextGfx_8045F8C
 
 	.include "data/dat08.inc"
 // .global byte_8061416
@@ -773,12 +773,12 @@
 /* Undeclared Symbols */
 // .equ timer_2000000, 0x2000000
 // .equ unk_20018C0, 0x20018C0
-// .equ unk_200F3C4, 0x200F3C4
+// .equ word_200F3C4, 0x200F3C4
 // .equ unk_2020000, 0x2020000
 // .equ byte_20349C0, 0x20349C0
 // .equ unk_2034A60, 0x2034A60
 // .equ unk_2034F60, 0x2034F60
-// .equ byte_2035280, 0x2035280
+// .equ eStruct2035280, 0x2035280
 // .equ byte_2035281, 0x2035281
 // .equ byte_2035282, 0x2035282
 // .equ byte_203528B, 0x203528B
@@ -787,7 +787,7 @@
 // .equ byte_2035293, 0x2035293
 // .equ byte_2035295, 0x2035295
 // .equ byte_2035296, 0x2035296
-// .equ byte_2035297, 0x2035297
+// .equ eStruct2035280_NaviStatusGfxIdx17, 0x2035297
 // .equ byte_2035298, 0x2035298
 // .equ byte_2035299, 0x2035299
 // .equ byte_203529A, 0x203529A

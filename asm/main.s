@@ -2,23 +2,23 @@
 
 	thumb_func_start main_
 main_:
-	bl main_static_80004A4
+	bl main_initToolkitAndOtherSubsystems
 	bl SeedRNG2 // () -> void
-	bl clear_200AD04 // () -> void
+	bl clear_e200AD04 // () -> void
 	bl sub_803D1A8 // () -> void
 main_gameRoutine:
-	bl main_static_await_80003D0 // () -> void
-	bl main_static_awaitFrame_80003A0
+	bl main_pollGeneralLCDStatus_STAT_LYC_ // () -> void
+	bl main_awaitFrame_80003A0 
 	bl sub_80007BE
 	bl sub_80019A0
 	bl render_800172C
-	bl objRender_802FE0C
+	bl copyObjAttributesToIWRAM_802FE0C
 	bl objRender_8000A44
 	bl getPalleteAndTransition_80023E0
-	bl renderPalletes_8001808
-	bl renderPalletesAndObjs_8002650
-	bl sprite_handleObjSprites_800289C
-	bl render_80015D0
+	bl copyPalletesToIWRAM_8001808
+	bl copyPalletesToIWRAM_8002650
+	bl sprite_resetObjVars_800289C
+	bl copyAndFillTo_GFX30025c0_Ptr
 	bl main_static_80003E4
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CurFramePtr]
@@ -26,7 +26,7 @@ main_gameRoutine:
 	add r1, #1
 	strh r1, [r0]
 	bl sub_8000E10
-	ldr r0, off_8000348 // =main_jt_subsystem 
+	ldr r0, off_8000348 // =main_subsystemJumpTable 
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	ldrb r1, [r1]
@@ -38,7 +38,7 @@ main_gameRoutine:
 	beq loc_800032A
 	bl subsystem_triggerTransition_800630A
 loc_800032A:
-	bl chatbox_onUpdate_803FEB4
+	bl chatbox_onUpdate
 	bl cb_call_200A880
 	bl PET_onUpdate_8001B94
 	ldr r0, off_8000344 // =sub_3006814+1 
@@ -48,9 +48,9 @@ loc_800032A:
 	b main_gameRoutine
 	.balign 4, 0x00
 off_8000344: .word sub_3006814+1
-off_8000348: .word main_jt_subsystem
-main_jt_subsystem: .word Load_ho_802F544+1
-	.word cb_80050EC+1
+off_8000348: .word main_subsystemJumpTable
+main_subsystemJumpTable: .word startscreen_802F544+1
+	.word cbGameState_80050EC+1
 	.word ho_jackIn_80341B6+1
 	.word cb_8038AD0+1
 	.word cb_803D1CA+1
@@ -73,7 +73,7 @@ main_jt_subsystem: .word Load_ho_802F544+1
 	thumb_func_end main_
 
 	thumb_local_start
-main_static_awaitFrame_80003A0:
+main_awaitFrame_80003A0 :
 	push {lr}
 loc_80003A2:
 	ldr r0, off_80003CC // =GeneralLCDStatus_STAT_LYC_ 
@@ -96,11 +96,11 @@ loc_80003A6:
 off_80003C4: .word dword_200A870
 off_80003C8: .word dword_2009930
 off_80003CC: .word GeneralLCDStatus_STAT_LYC_
-	thumb_func_end main_static_awaitFrame_80003A0
+	thumb_func_end main_awaitFrame_80003A0 
 
 // () -> void
 	thumb_local_start
-main_static_await_80003D0:
+main_pollGeneralLCDStatus_STAT_LYC_:
 	push {lr}
 	ldr r0, off_80003E0 // =GeneralLCDStatus_STAT_LYC_ 
 	mov r2, #1
@@ -111,7 +111,7 @@ loc_80003D6:
 	pop {pc}
 	.byte 0, 0
 off_80003E0: .word GeneralLCDStatus_STAT_LYC_
-	thumb_func_end main_static_await_80003D0
+	thumb_func_end main_pollGeneralLCDStatus_STAT_LYC_
 
 	thumb_local_start
 main_static_80003E4:
@@ -208,8 +208,8 @@ main_static_8000454:
 	beq loc_80004A0
 	push {r1}
 	bl start_800023C // () -> void
-	bl main_static_80004A4
-	bl clear_200AD04 // () -> void
+	bl main_initToolkitAndOtherSubsystems
+	bl clear_e200AD04 // () -> void
 	pop {r1}
 	mov r4, #0xa
 loc_80004A0:
@@ -219,7 +219,7 @@ locret_80004A2:
 	thumb_func_end main_static_8000454
 
 	thumb_local_start
-main_static_80004A4:
+main_initToolkitAndOtherSubsystems:
 	mov r0, #1
 	b loc_80004AA
 	mov r0, #0
@@ -234,31 +234,31 @@ loc_80004AA:
 	beq loc_80004C0
 	ldr r0, off_8000568 // =0xc0 
 loc_80004C0:
-	bl sub_8001778
-	bl main_static_80017EC
+	bl sRender_08_setRenderingState
+	bl main_zeroFill_80017EC
 	bl render_800172C
-	bl sub_8001850
+	bl copyMemory_8001850
 	bl main_static_8000570
-	bl sub_80007B2
+	bl zeroFill_80007B2
 	bl sub_8001974
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl sub_80015B4
 	bl sub_800260C
 	bl sub_80027C4
 	bl sub_802FDB0
-	bl sub_8000A3C
-	bl sub_803FCF0
-	bl sub_802FF2C
-	bl sub_8004DF0
+	bl clearWord_e200AC1C
+	bl clearChatboxAndEvent
+	bl cleareMemory_802FF2C
+	bl reqBBS_init_8004DF0
 	bl sub_8004D48
 	bl sub_8036ED4
 	bl sub_8036F24
-	bl sub_8001AFC
-	bl sub_8002368
-	bl sub_8001820
-	bl sub_800182E
+	bl zeroFill_e20094C0
+	bl zeroFill_e20097A0
+	bl zeroFill_e2009740
+	bl zeroFill_e200F3A0
 	bl sub_80062EC
 	bl sub_8006910
 	bl sub_803DE5C
@@ -284,7 +284,7 @@ loc_80004C0:
 off_8000564: .word 0x40
 off_8000568: .word 0xC0
 off_800056C: .word dword_2009930
-	thumb_func_end main_static_80004A4
+	thumb_func_end main_initToolkitAndOtherSubsystems
 
 	thumb_local_start
 main_static_8000570:

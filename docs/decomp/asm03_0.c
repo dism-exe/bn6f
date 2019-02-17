@@ -2620,7 +2620,7 @@ int sub_802806C()
             if ( !*v0 )
             {
                 v4 = sub_802A53C(**(v0 + 2));
-                result = getChip_8021DA8(v4 & 0x1FF)[9];
+                result = getChip8021DA8(v4 & 0x1FF)[9];
                 if ( result & 0x20 )
                     break;
             }
@@ -2736,7 +2736,7 @@ char *__fastcall sub_80281A8(__int16 a1)
     if ( v1 == 511 )
         result = byte_86E601C;
     else
-        result = *(getChip_8021DA8(v1) + 8);
+        result = *(getChip8021DA8(v1) + 8);
     return result;
 }
 
@@ -3038,10 +3038,10 @@ char *__fastcall __noreturn sub_80284E2(unsigned int a1)
 
     v18 = a1;
     v2 = sub_8027D10(a1);
-    render_graphicalText_8045F8C(v2, v3, byte_203C4E0, 100701024);
+    renderTextGfx_8045F8C(v2, v3, byte_203C4E0, 100701024);
     v4 = v17;
     v21 = sub_80109A4(v18 & 0x1FF, *(*(v1 + oToolkit_S2034880_Ptr) + 13));
-    v19 = getChip_8021DA8(v18 & 0x1FF);
+    v19 = getChip8021DA8(v18 & 0x1FF);
     if ( *(v19 + 9) )
     {
         (loc_8000AC8)();
@@ -3121,8 +3121,8 @@ char *__fastcall __noreturn sub_80285FE(__int16 a1)
 
     v1 = a1;
     v2 = sub_8027D10(a1);
-    render_graphicalText_8045F8C(v2, v3, byte_203C4E0, 100701024);
-    v4 = getChip_8021DA8(v1 & 0x1FF);
+    renderTextGfx_8045F8C(v2, v3, byte_203C4E0, 100701024);
+    v4 = getChip8021DA8(v1 & 0x1FF);
     v7 = v4;
     v8 = *(v4 + 9);
     if ( v8 )
@@ -4034,7 +4034,7 @@ signed int sub_8028FC0()
         if ( !*(v0 + 8)
             || (v4 = getLocOfActiveChips_8027E1C(*(v0 + *(v0 + 8) + 71)), *v4)
             || v4[5]
-            || (v5 = getChipID_802A54E(**(v4 + 2)), !(getChip_8021DA8(v5 & 0x1FF)[9] & 2)) )
+            || (v5 = getChipID_802A54E(**(v4 + 2)), !(getChip8021DA8(v5 & 0x1FF)[9] & 2)) )
         {
             if ( v2[7] != 2 )
                 v2[7] = 1;
@@ -4200,7 +4200,7 @@ int __fastcall sub_8029110(int a1, int a2, int a3, int a4)
                     word_20349AC |= 1 << (v16 - byte_190 + 1);
                 v17 = v16;
                 *(v9 + 6) = sub_80109A4(v16, *(*(v5 + oToolkit_S2034880_Ptr) + 13));
-                *(v9 + 18) = getChip_8021DA8(v17)[6];
+                *(v9 + 18) = getChip8021DA8(v17)[6];
                 v9 = (v9 + 2);
             }
             ++v11;
@@ -4293,7 +4293,7 @@ LABEL_10:
         }
         v4 = v2;
         v11 = v3;
-        v5 = getChip_8021DA8(*(i - 1))[9];
+        v5 = getChip8021DA8(*(i - 1))[9];
         if ( v5 & v4 && !(v5 & v11) )
         {
             v7 = *i;
@@ -4348,7 +4348,7 @@ int __fastcall sub_80292CC(int a1, int a2, int a3)
     *(dword_2033000 + a2) = a1;
     v7 = a1;
     v4[6] = sub_80109A4(a1, *(*(v3 + oToolkit_S2034880_Ptr) + 13));
-    v4[18] = getChip_8021DA8(v7)[6];
+    v4[18] = getChip8021DA8(v7)[6];
     v8 = 31;
     do
     {
@@ -6038,7 +6038,7 @@ signed int sub_802A394()
         if ( !*v3 )
         {
             v4 = getChipID_802A54E(**(v3 + 2));
-            if ( getChip_8021DA8(v4 & 0x1FF)[9] & 0x20 )
+            if ( getChip8021DA8(v4 & 0x1FF)[9] & 0x20 )
                 v1 = 1;
         }
     }
@@ -6174,7 +6174,7 @@ int sub_802A4FC()
             result = *i;
             if ( result == 0xFFFF )
                 break;
-            v2 = getChip_8021DA8(result & 0x1FF)[7];
+            v2 = getChip8021DA8(result & 0x1FF)[7];
             if ( v2 <= 2 )
                 ++*(&dword_20367E0 + v2);
         }
@@ -7266,7 +7266,7 @@ int __fastcall __noreturn sub_802B358(int a1, int a2)
             v9 = *&byte_802B3F8[2 * v8];
             v10 = dword_86F047C;
         }
-        result = render_graphicalText_8045F8C(v10, v9, v13 + 640 * v12, 640 * v12 + 100699648);
+        result = renderTextGfx_8045F8C(v10, v9, v13 + 640 * v12, 640 * v12 + 100699648);
         v4 = v12 + 1;
         v12 = v4;
     }
@@ -7630,10 +7630,10 @@ int sub_802B80C()
         v13 = *(v0 + (result >> 2) + 20);
         v14 = result;
         v2 = sub_8027D10(v13);
-        render_graphicalText_8045F8C(v2, v4, byte_203C4E0, &byte_48 * v3 + 100701536);
+        renderTextGfx_8045F8C(v2, v4, byte_203C4E0, &byte_48 * v3 + 100701536);
         v5 = v13 & 0x1FF;
         if ( v5 < dword_160 )
-            render_graphicalText_8045F8C(byte_86F0300, v13 >> 9, byte_203C6E0, &byte_48 * v14 + 100702048);
+            renderTextGfx_8045F8C(byte_86F0300, v13 >> 9, byte_203C6E0, &byte_48 * v14 + 100702048);
         v6 = v14;
         v7 = *(v0 + 16) >> 3;
         v8 = *(v0 + 6);
@@ -7741,7 +7741,7 @@ void sub_802B920()
     {
         sub_802B8B0(18 * *(v0 + 6) + 41131);
         v2 = sub_8027D10(*(v0 + 4));
-        render_graphicalText_8045F8C(v2, v3, byte_203C4E0, &byte_48 * 8 * *(v0 + 6) + 100701536);
+        renderTextGfx_8045F8C(v2, v3, byte_203C4E0, &byte_48 * 8 * *(v0 + 6) + 100701536);
         sound_play(146, v4, v5);
     }
 }
@@ -8040,7 +8040,7 @@ signed int sub_802BF6C()
     v2 = sub_802C54C(v2);
     if ( !v2 )
     {
-        v4 = getChip_8021DA8(v3);
+        v4 = getChip8021DA8(v3);
         v5 = *(v4 + 9);
         v6 = *(v4 + 10);
         goto LABEL_19;
@@ -8164,7 +8164,7 @@ int sub_802C0A4()
                     v6 = v5;
                     if ( v4 <= 310 )
                     {
-                        v7 = getChip_8021DA8(v4);
+                        v7 = getChip8021DA8(v4);
                         if ( *v7 != -1 && *v7 != v6 && v7[1] != v6 )
                             v7[2];
                     }
@@ -8579,7 +8579,7 @@ int __fastcall __noreturn sub_802C5B0(int a1)
     int v1; // r10
 
     *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = a1;
-    render_graphicalText_8045F8C(&byte_8736D74, 5, byte_2035320, 100711040);
+    renderTextGfx_8045F8C(&byte_8736D74, 5, byte_2035320, 100711040);
     return sub_802C4B6(2, 12, byte_802C6C4, 10);
 }
 
@@ -8597,9 +8597,9 @@ int __fastcall __noreturn sub_802C5E6(int a1)
         v3 = sub_8000C00(a1);
         sub_8000C5C(v3);
         *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = v2;
-        render_graphicalText_8045F8C(&byte_8736D74, 6, &unk_20354E0, 100711488);
+        renderTextGfx_8045F8C(&byte_8736D74, 6, &unk_20354E0, 100711488);
     }
-    render_graphicalText_8045F8C(&byte_8736D74, 1, byte_2035320, 100711040);
+    renderTextGfx_8045F8C(&byte_8736D74, 1, byte_2035320, 100711040);
     return sub_802C4B6(2, 12, byte_802C6C4, 10);
 }
 
@@ -8618,13 +8618,13 @@ int __fastcall __noreturn sub_802C646(int a1)
         v3 = sub_8000C00(a1);
         v5 = sub_8000C5C(v3);
         *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = v2;
-        render_graphicalText_8045F8C(&byte_8736D74, 6, &unk_20354E0, 100711488);
+        renderTextGfx_8045F8C(&byte_8736D74, 6, &unk_20354E0, 100711488);
     }
     else
     {
         v5 = 4;
     }
-    render_graphicalText_8045F8C(&byte_8736D74, v5 + 6, byte_2035320, 100711040);
+    renderTextGfx_8045F8C(&byte_8736D74, v5 + 6, byte_2035320, 100711040);
     return sub_802C4B6(2, 12, byte_802C6C4, 10);
 }
 
@@ -8691,12 +8691,12 @@ int __fastcall __noreturn sub_802C75C(unsigned int a1, int a2)
     _WORD *v4; // [sp+8h] [bp-7Ch]
 
     v2 = a2;
-    render_graphicalText_8045F8C(*(&off_802C7C4 + (a1 >> 8)), a1, byte_2035320, 100711040);
+    renderTextGfx_8045F8C(*(&off_802C7C4 + (a1 >> 8)), a1, byte_2035320, 100711040);
     sub_802C4B6(2, 12, byte_802C7EC, 9);
     *v4 = -28188;
     v4[1] = -28187;
     sub_802C4B6(11, 12, v4, 1);
-    return render_graphicalText_8045F8C(byte_86EF71C, v2, &unk_2035520, 100711552);
+    return renderTextGfx_8045F8C(byte_86EF71C, v2, &unk_2035520, 100711552);
 }
 
 
@@ -10113,13 +10113,13 @@ signed int __fastcall sub_802D4F0(int a1, int a2, int a3)
     *(v4 + 4) = 0;
     v8 = sub_802D5A8(0);
     *(v5 + 20) = v8;
-    v9 = getChip_8021DA8(v8);
+    v9 = getChip8021DA8(v8);
     *(v5 + 3) = v9[12];
     *(v5 + 12) = *(v9 + 4);
     *(v5 + 8) = *(v9 + 13);
     *(v5 + 10) = v9[10] | 0x80;
     if ( *(v5 + 20) == 339 )
-        *(v5 + 8) = *(getChip_8021DA8(82) + 13);
+        *(v5 + 8) = *(getChip8021DA8(82) + 13);
     (loc_8011694)(v9[11]);
     *(v5 + 29) = v9[15];
     *v4 = 8;
@@ -11017,7 +11017,7 @@ int sub_802DED8()
     {
         v11 = result;
         v6 = v3;
-        v7 = getChip_8021DA8(result)[9];
+        v7 = getChip8021DA8(result)[9];
         if ( v7 & 2 )
         {
             v8 = v6 + *(v1 + 27);
@@ -11025,7 +11025,7 @@ int sub_802DED8()
                 v9 = v8 + *(v1 + 28);
         }
         v10 = __PAIR__(sub_80109A4(v11, *(v0 + 22)), v11);
-        getChip_8021DA8(v11);
+        getChip8021DA8(v11);
         result = v10;
     }
     return result;
@@ -11048,7 +11048,7 @@ int __fastcall sub_802DF34(int a1, __int16 a2, __int16 a3)
     v5 = a3;
     v6 = *(v3 + 88) + 160;
     *(*(v3 + 88) + 180) = a1;
-    v7 = getChip_8021DA8(a1);
+    v7 = getChip8021DA8(a1);
     v8 = v7;
     *(v6 + 8) = v4;
     *(v6 + 6) = v5;
@@ -11084,7 +11084,7 @@ int __fastcall sub_802DF8C(int a1, __int16 a2, __int16 a3)
     v5 = a3;
     v6 = *(v3 + 88) + 160;
     *(*(v3 + 88) + 180) = a1;
-    v7 = getChip_8021DA8(a1);
+    v7 = getChip8021DA8(a1);
     *(v6 + 8) = v4;
     *(v6 + 6) = v5;
     *(v6 + 10) = v7[10];
@@ -11275,7 +11275,7 @@ int sub_802E112()
         result = sub_802D246();
         if ( !(result & 0x200000) )
         {
-            if ( sub_803F524() || (result = sub_802D246(), result & 8) && (result = TestEventFlagFromImmediate(23, 34), !v1) )
+            if ( notZero_eByte200AD04() || (result = sub_802D246(), result & 8) && (result = TestEventFlagFromImmediate(23, 34), !v1) )
                 result = battle_setFlags(64);
         }
     }
@@ -11419,7 +11419,7 @@ int __fastcall sub_802E2C4(int a1)
             v8 = 0;
         if ( !*(v3 + 18) || *(v3 + 18) == *(v3 + 19) )
             goto LABEL_28;
-        v9 = getChip_8021DA8(*(v3 + 18));
+        v9 = getChip8021DA8(*(v3 + 18));
         if ( !v8 )
         {
             if ( v9[9] & 0x20 )
@@ -11623,7 +11623,7 @@ signed int __fastcall sub_802E588(int a1, int a2, int a3)
     v10 = a3;
     v3 = sub_8010018(a1);
     sub_802E070(v8);
-    v4 = getChip_8021DA8(v9);
+    v4 = getChip8021DA8(v9);
     v5 = v3[1];
     if ( v5 >= 5 )
         return 0;
@@ -11889,7 +11889,7 @@ int __fastcall sub_802E830(int a1, int a2)
 
     v2 = a1;
     v3 = a2;
-    v4 = getChip_8021DA8(a2);
+    v4 = getChip8021DA8(a2);
     v5 = sub_802E070(v2) + 96;
     v6 = v5[v3];
     v7 = v4[30];
@@ -12878,7 +12878,7 @@ int __fastcall sub_802F530(int a1, int a2, int a3, int a4)
 
 
 // 0x802f544
-int Load_ho_802F544()
+int startscreen_802F544()
 {
     sub_803E938();
     (*(jt_802F560 + sStartScr.jo_00))();
@@ -12904,9 +12904,9 @@ int startScreen_802F574()
     int result; // r0
 
     sub_80015FC(11);
-    sub_8001778(&loc_1140);
-    sub_8001788();
-    v1 = sub_80017A0();
+    sRender_08_setRenderingState(&loc_1140);
+    renderInfo_8001788();
+    v1 = renderInfo_80017A0();
     startScreen_initGfx_802FCC0(v1, v2, v3, v4);
     v5 = engine_setScreeneffect(12, 255);
     musicGameState_8000784(v5, v6, v7);
@@ -12949,7 +12949,7 @@ int startScreen_802F574()
 
 
 // 0x802f60c
-int sub_802F60C()
+int startscreen_802F60C()
 {
     int v0; // r5
 
@@ -12963,7 +12963,7 @@ int sub_802F624()
     _BYTE *v0; // r5
     int result; // r0
 
-    sub_8001778(5953);
+    sRender_08_setRenderingState(5953);
     *v0 = 8;
     result = 0;
     v0[1] = 0;
@@ -12992,7 +12992,7 @@ void __fastcall __noreturn sub_802F668(int a1, int a2, int a3)
     *(v3 + 4) = 2630;
     sub_80005F2(1, a2, a3);
     sub_80015FC(10);
-    sub_8001778(&loc_1340);
+    sRender_08_setRenderingState(&loc_1340);
     *(v3 + 6) = 0;
     sub_802FD3C();
 }
@@ -13102,12 +13102,12 @@ int sub_802F710()
         v6 = v0[2];
         if ( v6 <= 0 )
         {
-            sub_8001AFC(v6, v2, v3, v4);
+            zeroFill_e20094C0(v6, v2, v3, v4);
             sub_80023A8(v7, v8, v9, v10);
             (loc_803D1AC)();
             v11 = sub_81440D8();
             sub_813D960(v11, v12, v13, v14);
-            clear_200AD04();
+            clear_e200AD04();
             sub_803F6B0(0, v15, v16, v17);
             (loc_803F512)();
             result = sub_803E900();
@@ -13150,7 +13150,7 @@ int sub_802F756()
     int v22; // r3
 
     **v1 = 4;
-    v2 = sub_8001778(&loc_1140);
+    v2 = sRender_08_setRenderingState(&loc_1140);
     sub_813D960(v2, v3, v4, v5);
     v9 = *(v0 + 8);
     if ( *(v0 + 8) )
@@ -13177,7 +13177,7 @@ int sub_802F756()
     else
     {
         v10 = sub_800260C(v9, v6, v7, v8);
-        sub_8004DF0(v10, v11, v12, v13);
+        reqBBS_init_8004DF0(v10, v11, v12, v13);
         sub_8004D48();
         sub_81440D8();
         sub_8149644();
@@ -13308,13 +13308,13 @@ int __noreturn sub_802F8D8()
     if ( v0[2] )
     {
         sub_802F9EC(v0[8]);
-        sub_803F524();
+        notZero_eByte200AD04();
         if ( v3 )
             sub_803E930();
     }
     else
     {
-        sub_803F524();
+        notZero_eByte200AD04();
         if ( v3 )
             sub_803E930();
     }
@@ -13553,7 +13553,7 @@ char *sub_802FDB0()
 
 
 // 0x802fe0c
-void objRender_802FE0C()
+void copyObjAttributesToIWRAM_802FE0C()
 {
     CopyByEightWords(&iObjectAttr3001D70, 117440512, &byte_400);
 }
@@ -13665,7 +13665,7 @@ void __fastcall sub_802FF10(int a1, int a2, int a3, signed int a4)
 
 
 // 0x802ff2c
-void __fastcall sub_802FF2C(int a1, int a2, int a3, int a4)
+void __fastcall cleareMemory_802FF2C(int a1, int a2, int a3, int a4)
 {
     dword_2009A2C = 0;
     ZeroFillByEightWords(word_200A6F0, &byte_180, a3, a4);
@@ -13673,7 +13673,7 @@ void __fastcall sub_802FF2C(int a1, int a2, int a3, int a4)
 
 
 // 0x802ff4c
-void __fastcall sub_802FF4C(int a1, int a2, int a3, int a4)
+void __fastcall camera_802FF4C(int a1, int a2, int a3, int a4)
 {
     int v4; // r10
     int v5; // ST0C_4
@@ -14760,7 +14760,7 @@ int __fastcall sub_8030A00(signed int a1)
 
 
 // 0x8030a30
-int __fastcall sub_8030A30(signed int a1)
+int __fastcall map_8030A30(signed int a1)
 {
     void **v1; // r2
 

@@ -92,7 +92,7 @@
 // .global sub_80010BE
 // .global sub_80010C6
 // .global sub_8001172
-// .global sub_8001850
+// .global copyMemory_8001850
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 
 	.include "asm/sprite.inc"
@@ -120,7 +120,7 @@
 // .global sub_8003962
 // .global sub_8003984
 // .global sub_800399A
-// .global sub_8003AB2
+// .global zeroFill_8003AB2
 // .global sub_8003AD4
 // .global sub_8003AEA
 // .global SpawnOWPlayerObject
@@ -162,14 +162,14 @@
 // .global init_s_02011C50_8036E90
 // .global s_2011C50_ptr_1C_isNull // () -> zf
 // .global sub_8036F98
-// .global sub_8037AEC
+// .global uncomp_8037AEC
 // .global sub_803CD98
 // .global sub_803CE28
 // .global sub_803D080
 // .global sub_803D0C8
 // .global sub_803D0F4
 // .global sub_803D108
-// .global clear_200AD04 // () -> void
+// .global clear_e200AD04 // () -> void
 // .global sub_803F4EC
 // .global loc_803F512
 // .global sub_803F560
@@ -180,7 +180,7 @@
 // .global sub_803F9E4
 
 	.include "asm/chatbox.inc"
-// .global chatbox_dead_uncomp_803FD3C
+// .global chatbox_uncomp_803FD3C
 // .global chatbox_runTrainScript // (u8 scriptOffIdx) -> void
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
@@ -188,7 +188,7 @@
 // .global chatbox_8045F4C
 
 	.include "asm/asm03_2.inc"
-// .global render_graphicalText_8045F8C
+// .global renderTextGfx_8045F8C
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
 // .global sub_80465F8 // () -> void
@@ -248,7 +248,7 @@
 // .equ dword_2000AB0, 0x2000AB0
 // .equ dword_2000AB4, 0x2000AB4
 // .equ dword_2000AB8, 0x2000AB8
-// .equ dynamicArr, 0x2005780
+// .equ dynamicArr2005780, 0x2005780
 // .equ eOverworldNPCObjects, 0x20057B0
 // .equ eOverworldNPCObjects, 0x20057B0
 // .equ eOverworldNPCObjects, 0x20057B0

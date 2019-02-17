@@ -267,7 +267,7 @@ void sub_809F9BE()
 
 
 // 0x809f9c8
-void __fastcall sub_809F9C8(int a1, int a2, int a3, int a4)
+void __fastcall zeroFill_e2004348(int a1, int a2, int a3, int a4)
 {
     int v4; // r10
 

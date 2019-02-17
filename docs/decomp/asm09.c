@@ -13,11 +13,11 @@ char (*sub_8062AB0())[8]
     sub_803037C(*(v0 + 4), *(v0 + 5));
     sub_8030AA4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
-    sub_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
+    camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
     sub_8030472();
     sub_80028D4(byte_2037800, v3, v4, v5);
-    sub_8002906(*(&off_8062B1C + *(v0 + 5)));
-    chatbox_uncomp_803FD08();
+    uncompSprite_8002906(*(&off_8062B1C + *(v0 + 5)));
+    chatbox_uncompBasedOnMap_803FD08();
     sub_8062BCC();
     result = off_8063008[*(v0 + 5)];
     *(v0 + 100) = result;

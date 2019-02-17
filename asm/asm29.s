@@ -9230,7 +9230,7 @@ sub_80AA004:
 	ldr r1, off_80AA018 // =byte_80AA01C
 	lsl r0, r0, #4
 	add r0, r0, r1
-	ldr r1, off_80AA054 // =unk_2001130 
+	ldr r1, off_80AA054 // =byte_2001130 
 	mov r2, #0x10
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	mov r0, #0
@@ -9245,11 +9245,11 @@ byte_80AA01C: .byte 0xC, 0xF0, 0x2A, 0x10, 0x4, 0x48, 0x50, 0x4, 0x50, 0xFF
 
 	thumb_local_start
 sub_80AA04C:
-	ldr r1, off_80AA054 // =unk_2001130 
+	ldr r1, off_80AA054 // =byte_2001130 
 	ldrsb r0, [r1,r0]
 	lsl r0, r0, #0x10
 	mov pc, lr
-off_80AA054: .word unk_2001130
+off_80AA054: .word byte_2001130
 	thumb_func_end sub_80AA04C
 
 	thumb_func_start sub_80AA058
@@ -9349,7 +9349,7 @@ sub_80AA104:
 	ldr r1, off_80AA118 // =byte_80AA11C
 	lsl r0, r0, #3
 	add r0, r0, r1
-	ldr r1, off_80AA13C // =unk_20018B0 
+	ldr r1, off_80AA13C // =byte_20018B0 
 	mov r2, #8
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 	mov r0, #0
@@ -9362,11 +9362,11 @@ byte_80AA11C: .byte 0x78, 0x68, 0x50, 0x70, 0xFF, 0xFF, 0xFF, 0xFF, 0x20
 
 	thumb_local_start
 sub_80AA134:
-	ldr r1, off_80AA13C // =unk_20018B0 
+	ldr r1, off_80AA13C // =byte_20018B0 
 	ldrsb r0, [r1,r0]
 	lsl r0, r0, #0x10
 	mov pc, lr
-off_80AA13C: .word unk_20018B0
+off_80AA13C: .word byte_20018B0
 	thumb_func_end sub_80AA134
 
 	thumb_func_start sub_80AA140
@@ -10773,7 +10773,7 @@ loc_80AABB8:
 	beq loc_80AABEA
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #8
 	tst r1, r2
@@ -10833,7 +10833,7 @@ loc_80AAC1E:
 	// idx
 	ldrh r0, [r6,r1]
 	str r0, [sp,#0xc]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r2, #0
 	mov r3, #0
 loc_80AAC42:
@@ -10949,7 +10949,7 @@ loc_80AAD10:
 	beq loc_80AAD26
 	// idx
 	mov r0, r5
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#5]
 	cmp r1, r7
 	bne loc_80AAD26
@@ -11013,7 +11013,7 @@ loc_80AAD80:
 	beq loc_80AAD9A
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#5]
 	cmp r1, #0xff
 	beq loc_80AAD9A
@@ -11077,7 +11077,7 @@ loc_80AADE4:
 loc_80AADFC:
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#7]
 	cmp r1, #2
 	beq loc_80AAE24
@@ -11116,7 +11116,7 @@ sub_80AAE36:
 loc_80AAE3C:
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#9]
 	mov r1, #8
 	tst r0, r1

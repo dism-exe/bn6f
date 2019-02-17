@@ -43,7 +43,7 @@ sub_812F014:
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 loc_812F026:
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	bne loc_812F034
 	bl sub_81440D8 // static () -> void
@@ -79,7 +79,7 @@ sub_812F094:
 	bx r0
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq locret_812F0B8
 	mov r0, #0
@@ -543,7 +543,7 @@ loc_812F460:
 	b loc_812F48E
 loc_812F466:
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_812F48E
 	mov r0, #0xc
 	strb r0, [r5,#2]
@@ -770,7 +770,7 @@ sub_812F628:
 	tst r0, r0
 	beq loc_812F648
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_812F698
 	mov r1, #0
 	strh r1, [r5,#0x26]
@@ -792,7 +792,7 @@ loc_812F648:
 	b loc_812F698
 loc_812F662:
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_812F676
 	mov r0, #1
 	strb r0, [r5,#0x15]
@@ -801,7 +801,7 @@ loc_812F662:
 	b loc_812F67E
 loc_812F676:
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_812F698
 loc_812F67E:
 	mov r1, #4
@@ -1650,13 +1650,13 @@ sub_812FD10:
 	mov r0, #8
 	bl chatbox_8045F3C
 	beq locret_812FD42
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	mov r4, r0
 	bl sub_803EA50
 	mov r6, r0
 	bl sub_803EBAC
 	mov r0, r4
-	bl sub_803EA70
+	bl eStruct200BC30_setJumpOffset00
 	mov r0, r6
 	bl sub_803EA58
 	mov r0, #0xc
@@ -1695,7 +1695,7 @@ sub_812FD6C:
 	mov r0, #8
 	bl chatbox_8045F3C
 	beq locret_812FDBE
-	bl sub_803EBF4
+	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
 	cmp r0, #2
 	bne loc_812FD96
@@ -1705,13 +1705,13 @@ sub_812FD6C:
 	bl sub_8149568
 	b locret_812FDBE
 loc_812FD96:
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	mov r4, r0
 	bl sub_803EA50
 	mov r6, r0
 	bl sub_803EBAC
 	mov r0, r4
-	bl sub_803EA70
+	bl eStruct200BC30_setJumpOffset00
 	mov r0, r6
 	bl sub_803EA58
 	mov r0, #8
@@ -1728,7 +1728,7 @@ sub_812FDC0:
 	push {lr}
 	bl IsPaletteFadeActive // () -> zf
 	beq locret_812FE02
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq loc_812FDD8
 	bl sub_8149644

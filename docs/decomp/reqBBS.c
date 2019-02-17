@@ -32,7 +32,7 @@ void __fastcall __noreturn reqBBS_static_draw_813E0F8(int a1, int a2, int a3, in
     *(v4 + offsetof(reqBBS_GUI, RO_pagePos)) = 0;
     *(v4 + offsetof(reqBBS_GUI, animationTimer1)) = 0;
     *(v4 + offsetof(reqBBS_GUI, unk_0B)) = 0;
-    reqBBS_static_813E6D0(0, a2, a3, a4);
+    reqBB_vram_813E6D0(0, a2, a3, a4);
     reqBBS_813E834();
     reqBBS_813E890();
 }
@@ -51,7 +51,7 @@ void reqBBS_draw_813E188()
     int v6; // r2
     char v7; // zf
 
-    sub_8001778(8000);
+    sRender_08_setRenderingState(8000);
     v2 = *(v1 + oToolkit_Unk2009740_Ptr);
     v3 = *(v2 + 6);
     if ( v3 > 0 )
@@ -477,7 +477,7 @@ unsigned int reqBBS_813E660()
 
 
 // 0x813e6d0
-signed int __fastcall reqBBS_static_813E6D0(int a1, int a2, int a3, int a4)
+signed int __fastcall reqBB_vram_813E6D0(int a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r0
@@ -593,7 +593,7 @@ int __fastcall reqBBS_813E8CC(int a1)
         v9 = v5;
         v10 = v6;
         v11 = v7;
-        render_graphicalText_8045F8C(result, v3[v5], v6, v7);
+        renderTextGfx_8045F8C(result, v3[v5], v6, v7);
         result = v8;
         v6 = v10 + 1024;
         v7 = v11 + 2048;
@@ -771,7 +771,7 @@ int reqBBS_drawHeaderText()
 {
     int v0; // r5
 
-    return render_graphicalText_8045F8C(
+    return renderTextGfx_8045F8C(
                      **(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers)),
                      reqBBS_eRequestEntriesIDs[*(v0 + offsetof(reqBBS_GUI, pagePos)) + *(v0 + offsetof(reqBBS_GUI, cursorPos))],
                      byte_201B200,
@@ -974,7 +974,7 @@ void __noreturn reqBBS_813EEF4()
 {
     int v0; // r5
 
-    render_graphicalText_8045F8C(reqBBS_dialogList, byte_813EF24[*(v0 + 4)], byte_201CA00, 100678656);
+    renderTextGfx_8045F8C(reqBBS_dialogList, byte_813EF24[*(v0 + 4)], byte_201CA00, 100678656);
     JUMPOUT(locret_813EF0E);
 }
 
@@ -999,7 +999,7 @@ char (**__fastcall reqBBS_init_s_2005780(int a1))[108]
     v2 = byte_200578D;
     v3 = byte_200578E;
     v4 = byte_200578F;
-    ZeroFillByWord(&dynamicArr, 0x2Cu, byte_200578E, byte_200578F);
+    ZeroFillByWord(&dynamicArr2005780, 0x2Cu, byte_200578E, byte_200578F);
     byte_200578D = v2;
     byte_200578E = v3;
     byte_200578F = v4;
@@ -1013,7 +1013,7 @@ char (**__fastcall reqBBS_init_s_2005780(int a1))[108]
 // 0x813f404
 int reqBBS_cb_813F404()
 {
-    return (*(&jt_813F42C + dynamicArr.jto_0))();
+    return (*(&jt_813F42C + dynamicArr2005780.jto_0))();
 }
 
 
@@ -1063,7 +1063,7 @@ void __noreturn reqBBS_813F550()
     int v6; // r2
     char v7; // zf
 
-    sub_8001778(8000);
+    sRender_08_setRenderingState(8000);
     v2 = *(v1 + oToolkit_Unk2009740_Ptr);
     v3 = *(v2 + 6);
     if ( v3 > 0 )
@@ -1853,7 +1853,7 @@ int __fastcall __noreturn reqBBS_renderRequestNames(int a1)
         v9 = v5;
         v10 = v6;
         v11 = v7;
-        render_graphicalText_8045F8C(result, v3[v5], v6, v7);
+        renderTextGfx_8045F8C(result, v3[v5], v6, v7);
         result = v8;
         v6 = v10 + 1024;
         v7 = v11 + 2048;
@@ -2140,7 +2140,7 @@ int __noreturn reqBBS_renderSelectedEntry_HeaderText()
 {
     int v0; // r5
 
-    return render_graphicalText_8045F8C(
+    return renderTextGfx_8045F8C(
                      **(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers)),
                      reqBBS_eRequestEntriesIDs[*(v0 + offsetof(reqBBS_GUI, pagePos)) + *(v0 + offsetof(reqBBS_GUI, cursorPos))],
                      byte_201B200,
@@ -2153,7 +2153,7 @@ int __noreturn reqBBS_setChatboxHeaderBasedOn_0F()
 {
     int v0; // r5
 
-    return render_graphicalText_8045F8C(
+    return renderTextGfx_8045F8C(
                      **(v0 + offsetof(reqBBS_GUI, reqBBS_textualPointers)),
                      byte_200578F,
                      byte_201B200,
@@ -2191,7 +2191,7 @@ int reqBBS_81405A4()
 // 0x81405c0
 int __noreturn reqBBS_81405C0()
 {
-    return render_graphicalText_8045F8C(reqBBS_dialogList, 18, byte_201CA00, 100678656);
+    return renderTextGfx_8045F8C(reqBBS_dialogList, 18, byte_201CA00, 100678656);
 }
 
 
@@ -2513,7 +2513,7 @@ reqBBS_GUI *reqBBS_8140984()
 {
     reqBBS_GUI *result; // r0
 
-    result = &dynamicArr;
+    result = &dynamicArr2005780;
     byte_200578D = 0;
     byte_200578E = 0;
     byte_200578F = 0;

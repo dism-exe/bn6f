@@ -8,7 +8,7 @@
 	.global sprite_chatbox_80026D6
 	.global sprite_load // (int a1, int a2, int a3) ->
 	.global spriteLoadMugshot_800275A // (int a1) -> void
-	.global sub_8002770 // (int a1, int a2) -> void
+	.global initGuiSprite_8002770 // (int a1, int a2) -> void
 	.global loc_8002774
 	.global sub_80027B4
 	.global sub_80027C4
@@ -18,10 +18,10 @@
 	.global sub_8002818
 	.global sub_800286C
 	.global sub_8002874
-	.global sprite_handleObjSprites_800289C
+	.global sprite_resetObjVars_800289C
 	.global sub_80028C0
 	.global sub_80028D4
-	.global sub_8002906
+	.global uncompSprite_8002906
 	.global sub_80029A8
 	.global sub_8002A64
 	.global sub_8002ADE
@@ -64,10 +64,10 @@
 // .global sub_802FE6A
 // .global sub_802FE7A
 
-	.include "data/spritePointers_8031CC4.inc"
-// .global spritePointers_8031CC4
-// .global mugshots_8032598
-// .global guiSprites_803271C
+	.include "data/spritePointersList.inc"
+// .global spritePointersList
+// .global mugshotSpritePtrs
+// .global guiSpritePtrs
 
 	.include "asm/libs.inc"
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
@@ -83,7 +83,7 @@
 // .equ dword_200DCEC, 0x200DCEC
 // .equ dword_200F340, 0x200F340
 // .equ dword_200F350, 0x200F350
-// .equ unk_200F389, 0x200F389
+// .equ byte_200F389, 0x200F389
 // .equ dword_2033000, 0x2033000
 // .equ unk_2037800, 0x2037800
 // .equ byte_3001550, 0x3001550

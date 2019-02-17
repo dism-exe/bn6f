@@ -109,7 +109,7 @@ sub_800EE26:
 	push {r0,r1}
 	// idx
 	ldrh r0, [r6,#0x34]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#0xf]
 	strb r0, [r7,#0x1d]
 	ldrh r0, [r6,#0x34]
@@ -120,7 +120,7 @@ sub_800EE26:
 	push {r1-r3}
 	// idx
 	ldrh r0, [r6,#0x34]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#9]
 	pop {r1-r3}
 	mov r4, #2
@@ -169,7 +169,7 @@ sub_800EE98:
 loc_800EEBA:
 	// idx
 	ldrh r0, [r6,#0x34]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r4, r0
 	ldrb r0, [r4,#0x16] // ChipData.unk_16
 	mov r1, #0x80
@@ -179,7 +179,7 @@ loc_800EEBA:
 	add r0, r0, r0
 	ldr r1, off_800EEF4 // =byte_800EEF8 
 	ldrh r0, [r1,r0]
-	ldr r2, off_800EEF0 // =unk_200F3C4 
+	ldr r2, off_800EEF0 // =word_200F3C4 
 	add r3, r6, r6
 	strh r0, [r2,r3]
 	ldrh r1, [r6,#0x28]
@@ -192,7 +192,7 @@ locret_800EEE2:
 	pop {r0-r4,pc}
 	.word 0, 0
 	.byte 0, 0, 0, 0
-off_800EEF0: .word unk_200F3C4
+off_800EEF0: .word word_200F3C4
 off_800EEF4: .word byte_800EEF8
 byte_800EEF8: .byte 0x0, 0x15, 0x0, 0x2A, 0x0, 0x40, 0xFF, 0xFF, 0xFF, 0xFF
 	thumb_func_end sub_800EE98
@@ -256,7 +256,7 @@ loc_800EF5C:
 loc_800EF6A:
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -281,7 +281,7 @@ loc_800EF8E:
 loc_800EF96:
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -304,7 +304,7 @@ loc_800EFB8:
 loc_800EFC0:
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -327,7 +327,7 @@ loc_800EFE2:
 loc_800EFEA:
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -350,7 +350,7 @@ loc_800F00C:
 loc_800F014:
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -369,7 +369,7 @@ loc_800F02E:
 loc_800F036:
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -393,7 +393,7 @@ loc_800F058:
 	bgt loc_800F090
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -438,7 +438,7 @@ sub_800F09E:
 	bne loc_800F0E0
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -462,7 +462,7 @@ loc_800F0E0:
 	bne loc_800F106
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -482,7 +482,7 @@ loc_800F106:
 	bne loc_800F12C
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -502,7 +502,7 @@ loc_800F12C:
 	bne loc_800F14A
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -518,7 +518,7 @@ loc_800F14A:
 	bne loc_800F170
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -538,7 +538,7 @@ loc_800F170:
 	bne loc_800F196
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -558,7 +558,7 @@ loc_800F196:
 	bne loc_800F1BC
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -1881,7 +1881,7 @@ loc_800FB74:
 	beq loc_800FBEE
 	mov r0, r5
 	bl sub_800EDD0
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#6]
 	ldr r1, [r5,#0x58]
 	cmp r0, #0xa
@@ -1951,7 +1951,7 @@ loc_800FBEE:
 loc_800FC0C:
 	// idx
 	ldrh r0, [r7,#0x14]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#0xf]
 	strb r0, [r7,#0x1d]
 	b loc_800FC18
@@ -1982,7 +1982,7 @@ sub_800FC30:
 	mov r1, #0x53 
 	cmp r0, r1
 	beq loc_800FC58
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#9]
 	mov r1, #1
 	tst r0, r1
@@ -2768,7 +2768,7 @@ sub_80101F8:
 	mov r1, #0x63 
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_8010216
-	bl sub_803F524
+	bl notZero_eByte200AD04
 	beq loc_8010216
 	mov r4, #0xd
 loc_8010216:
@@ -3363,7 +3363,7 @@ loc_801065C:
 	thumb_func_start sub_8010660
 sub_8010660:
 	push {r4,r6,r7,lr}
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_80106B8
@@ -3410,7 +3410,7 @@ dword_80106BC: .word 0x17B
 sub_80106C0:
 	push {r4,r6,r7,lr}
 	mov r4, r0
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8010738
@@ -3427,7 +3427,7 @@ sub_80106C0:
 	beq loc_8010738
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#7]
 	cmp r1, #1
 	beq loc_80106F6
@@ -3472,7 +3472,7 @@ dword_801073C: .word 0x17A
 sub_8010740:
 	push {r4,r6,r7,lr}
 	mov r4, r0
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_80107B6
@@ -3489,7 +3489,7 @@ sub_8010740:
 	beq loc_80107B6
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#0x16]
 	mov r2, #2
 	tst r1, r2
@@ -3532,7 +3532,7 @@ off_80107BC: .word 0x179
 	thumb_func_start sub_80107C0
 sub_80107C0:
 	push {lr}
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne loc_80107D0
@@ -3777,7 +3777,7 @@ sub_80109A4:
 	ldr r2, dword_80109D8 // =0xffff 
 	cmp r0, r2
 	beq loc_80109D0
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrh r0, [r0,#0x1a]
 	mov r2, #0xfa
 	lsl r2, r2, #2
@@ -3849,7 +3849,7 @@ off_80109DC: .word sub_8010A90+1
 sub_8010A90:
 	push {r4,lr}
 	mov r4, r1
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne loc_8010ACE
@@ -3898,7 +3898,7 @@ locret_8010AE2:
 sub_8010AE4:
 	push {r4,lr}
 	mov r4, r1
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrh r1, [r0,#0x1a]
 	ldr r2, off_8010D28 // =0x3e9 
 	sub r1, r1, r2
@@ -4028,7 +4028,7 @@ locret_8010C04:
 sub_8010C06:
 	push {r4,lr}
 	mov r4, r1
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne loc_8010C36
@@ -4080,7 +4080,7 @@ sub_8010C50:
 	beq locret_8010C74
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrh r0, [r0,#0x1a]
 	ldr r1, dword_8010D40 // =0x3ff 
 	sub r0, r0, r1
@@ -4093,7 +4093,7 @@ locret_8010C74:
 	thumb_func_start sub_8010C76
 sub_8010C76:
 	push {r4,lr}
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrh r1, [r0,#0x1a]
 	ldr r2, off_8010D28 // =0x3e9 
 	cmp r1, r2
@@ -4133,7 +4133,7 @@ byte_8010CB8: .byte 0x0, 0x10, 0x0, 0x0, 0x0, 0x12, 0x0, 0x0, 0x0, 0x14, 0x0, 0x
 	thumb_func_start sub_8010CE0
 sub_8010CE0:
 	push {r4,lr}
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrh r1, [r0,#0x1a]
 	ldr r2, off_8010D28 // =0x3e9 
 	cmp r1, r2
@@ -7660,7 +7660,7 @@ loc_80126EA:
 	add r7, #0xa0
 loc_80126F6:
 	strh r0, [r7,#0x14]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r6, r0
 	ldr r1, [r6,#0x10]
 	str r1, [r7,#0xc]
@@ -7792,7 +7792,7 @@ loc_80127E4:
 	str r6, [sp,#0x14]
 	lsr r4, r4, #8
 	str r4, [sp,#0x18]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r4, r0
 	ldrb r0, [r4,#0x1f]
 	bl sub_8010D58
@@ -7809,7 +7809,7 @@ loc_80127E4:
 	str r6, [sp,#0x14]
 	lsr r4, r4, #8
 	str r4, [sp,#0x18]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r4, r0
 loc_8012822:
 	ldr r0, [sp,#4]
@@ -7940,7 +7940,7 @@ sub_80128FC:
 	bne loc_8012998
 loc_8012928:
 	ldr r0, [sp]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -8019,7 +8019,7 @@ sub_801299C:
 sub_80129A6:
 	push {r7,lr}
 	strh r0, [r7,#0x14]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldr r1, [r0,#0x10]
 	str r1, [r7,#0xc]
 	ldrb r1, [r0,#0xa]
@@ -8089,7 +8089,7 @@ sub_8012A38:
 	mov r6, #0
 	// idx
 	mov r0, r1
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r4, r0
 	ldrb r1, [r4,#9]
 	mov r2, #2
@@ -8168,7 +8168,7 @@ sub_8012ABC:
 	mov r7, #0
 	// idx
 	mov r0, r6
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -8205,7 +8205,7 @@ loc_8012B1A:
 	mov r7, #0
 	// idx
 	mov r0, r6
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -8252,7 +8252,7 @@ loc_8012B6E:
 	mov r7, #0
 	// idx
 	mov r0, r6
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -8292,7 +8292,7 @@ sub_8012BA2:
 	mov r7, #0
 	// idx
 	mov r0, r6
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -8336,7 +8336,7 @@ sub_8012BE8:
 	bgt loc_8012C30
 	mov r7, #0
 	mov r0, r6
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -8381,7 +8381,7 @@ locret_8012C48:
 sub_8012C4A:
 	push {r4,lr}
 	mov r4, r1
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -8826,7 +8826,7 @@ sub_8012F62:
 	bl sub_8010004
 	ldr r1, dword_8012FC0 // =0xffff 
 	beq loc_8012F90
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#6]
 	cmp r0, #0xa
 	bne loc_8012F90
@@ -9171,7 +9171,7 @@ sub_8013236:
 	blt loc_8013244
 	b loc_8013360
 loc_8013244:
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r7, r0
 	ldrb r4, [r7,#6]
 	mov r1, #0x2c 
@@ -10128,7 +10128,7 @@ sub_8013892:
 	ldr r7, [r5,#0x58]
 	mov r0, #0xa
 	strh r0, [r5,#0x2e]
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne loc_80138BC
@@ -10847,7 +10847,7 @@ dword_8013E54: .word 0xFF003C99
 	thumb_local_start
 sub_8013E58:
 	push {r4,lr}
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne loc_8013E6C
@@ -11141,7 +11141,7 @@ sub_8014040:
 	push {r4,r5,lr}
 	bl sub_80103BC
 	mov r5, r0
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne locret_801407E
@@ -11319,7 +11319,7 @@ sub_80141C8:
 	bl sub_8013790
 	strh r0, [r5,#0x24]
 	strh r0, [r5,#0x26]
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #4
 	tst r0, r1
 	bne loc_80141E6
@@ -11364,7 +11364,7 @@ sub_8014216:
 	add r0, #0x26 
 	mov r1, #0xc
 	bl ZeroFillByHalfword
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8014256
@@ -11429,7 +11429,7 @@ nullsub_47:
 	thumb_local_start
 sub_80142B0:
 	push {lr}
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq locret_80142C0
@@ -11442,7 +11442,7 @@ locret_80142C0:
 	thumb_func_start sub_80142C2
 sub_80142C2:
 	push {lr}
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq locret_80142D4
@@ -11765,7 +11765,7 @@ loc_80144CE:
 	bl ZeroFillByHalfword
 	mov r0, #0x20 
 	bl sub_801031C
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_801450C
@@ -17289,7 +17289,7 @@ loc_801738A:
 	bl sub_8018856
 	neg r1, r1
 	bl sub_801DC06
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_80173C6
@@ -18078,7 +18078,7 @@ sub_8017AB4:
 	bl sub_800F29C
 	cmp r0, #2
 	bne loc_8017B64
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	beq loc_8017B64
@@ -18094,7 +18094,7 @@ sub_8017AB4:
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	beq loc_8017B5E
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#9]
 	mov r1, #1
 	tst r0, r1
@@ -23871,12 +23871,12 @@ off_801BE6C: .word byte_8019C34
 sub_801BE70:
 	push {lr}
 	// memBlock
-	ldr r0, off_801BFE8 // =byte_2035280 
+	ldr r0, off_801BFE8 // =eStruct2035280 
 	// size
 	mov r1, #0x60 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r2, #0x20 
-	ldr r1, off_801BFE8 // =byte_2035280 
+	ldr r1, off_801BFE8 // =eStruct2035280 
 	strh r2, [r1,#0x22] // (word_20352A2 - 0x2035280)
 	mov r2, #0
 	sub r2, #1
@@ -23908,7 +23908,7 @@ off_801BEB4: .word dword_20367E0
 
 	thumb_func_start sub_801BEB8
 sub_801BEB8:
-	ldr r1, off_801BFE8 // =byte_2035280 
+	ldr r1, off_801BFE8 // =eStruct2035280 
 	ldr r2, [r1,#0x44] // (dword_20352C4 - 0x2035280)
 	orr r2, r0
 	str r2, [r1,#0x44] // (dword_20352C4 - 0x2035280)
@@ -23917,7 +23917,7 @@ sub_801BEB8:
 
 	thumb_func_start sub_801BEC2
 sub_801BEC2:
-	ldr r1, off_801BFE8 // =byte_2035280 
+	ldr r1, off_801BFE8 // =eStruct2035280 
 	ldr r2, [r1,#0x44] // (dword_20352C4 - 0x2035280)
 	bic r2, r0
 	str r2, [r1,#0x44] // (dword_20352C4 - 0x2035280)
@@ -23926,7 +23926,7 @@ sub_801BEC2:
 
 	thumb_func_start sub_801BECC
 sub_801BECC:
-	ldr r1, off_801BFE8 // =byte_2035280 
+	ldr r1, off_801BFE8 // =eStruct2035280 
 	ldr r2, [r1,#0x40] // (dword_20352C0 - 0x2035280)
 	orr r2, r0
 	str r2, [r1,#0x40] // (dword_20352C0 - 0x2035280)
@@ -23935,7 +23935,7 @@ sub_801BECC:
 
 	thumb_func_start sub_801BED6
 sub_801BED6:
-	ldr r1, off_801BFE8 // =byte_2035280 
+	ldr r1, off_801BFE8 // =eStruct2035280 
 	ldr r2, [r1,#0x40] // (dword_20352C0 - 0x2035280)
 	bic r2, r0
 	str r2, [r1,#0x40] // (dword_20352C0 - 0x2035280)
@@ -23945,7 +23945,7 @@ sub_801BED6:
 	thumb_func_start sub_801BEE0
 sub_801BEE0:
 	push {r5-r7,lr}
-	ldr r5, off_801BFE8 // =byte_2035280 
+	ldr r5, off_801BFE8 // =eStruct2035280 
 	ldr r6, off_801BF00 // =off_801BF04 
 	ldr r7, [r5,#0x40] // (dword_20352C0 - 0x2035280)
 loc_801BEE8:
@@ -23993,7 +23993,7 @@ off_801BF04: .word sub_801BFEE+1
 	thumb_func_start sub_801BF64
 sub_801BF64:
 	push {r5-r7,lr}
-	ldr r5, off_801BFE8 // =byte_2035280 
+	ldr r5, off_801BFE8 // =eStruct2035280 
 	ldr r6, off_801BF84 // =off_801BF88 
 	ldr r7, [r5,#0x44] // (dword_20352C4 - 0x2035280)
 loc_801BF6C:
@@ -24036,7 +24036,7 @@ off_801BF88: .word sub_801C06E+1
 	.word sub_801D564+1
 	.word sub_801D65C+1
 	.word sub_801D792+1
-off_801BFE8: .word byte_2035280
+off_801BFE8: .word eStruct2035280
 	thumb_func_end sub_801BF64
 
 	thumb_local_start
@@ -24088,7 +24088,7 @@ loc_801C00C:
 	pop {r0}
 	beq loc_801C048
 	push {r0}
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	mov r1, #8
 	tst r0, r1
 	pop {r0}
@@ -24103,7 +24103,7 @@ loc_801C048:
 loc_801C050:
 	lsl r0, r0, #0x17
 	lsr r0, r0, #0x17
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldr r0, [r0,#0x20]
 loc_801C05A:
 	mov r1, r7
@@ -24993,7 +24993,7 @@ sub_801C6EE:
 	mov r4, #0x11
 	mov r5, #2
 	bl sub_80018D0
-	ldr r0, off_801C83C // =byte_2035280 
+	ldr r0, off_801C83C // =eStruct2035280 
 	ldr r0, [r0,#0x48] // (dword_20352C8 - 0x2035280)
 	bl sub_800ED90
 	cmp r3, #0
@@ -25008,7 +25008,7 @@ sub_801C6EE:
 	mov r5, #1
 	ldr r6, off_801C824 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r7, r0
 	mov r4, r0
 	mov r0, #0
@@ -25024,7 +25024,7 @@ sub_801C6EE:
 	bl sub_80018E0
 	// idx
 	ldr r0, [sp]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -25085,7 +25085,7 @@ loc_801C7C8:
 	sub r3, #1
 	bne loc_801C7C8
 loc_801C7DE:
-	ldr r0, off_801C83C // =byte_2035280 
+	ldr r0, off_801C83C // =eStruct2035280 
 	ldr r0, [r0,#0x48] // (dword_20352C8 - 0x2035280)
 	ldr r1, [sp]
 	mov r3, #0
@@ -25128,7 +25128,7 @@ off_801C82C: .word byte_801D954
 dword_801C830: .word 0xD1B8
 dword_801C834: .word 0xD1CE
 dword_801C838: .word 0xD1D2
-off_801C83C: .word byte_2035280
+off_801C83C: .word eStruct2035280
 	thumb_func_end sub_801C6EE
 
 	thumb_local_start
@@ -26206,7 +26206,7 @@ loc_801D070:
 	mov r5, #1
 	ldr r6, off_801D1D0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	// j
 	mov r0, #0xe
 	// i
@@ -26569,7 +26569,7 @@ sub_801D344:
 	mov r1, #0x1c
 	b loc_801D3A2
 loc_801D36C:
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r3, [r0,#7]
 	cmp r3, #2
 	ble loc_801D378
@@ -26605,7 +26605,7 @@ loc_801D3A2:
 	mov r5, #1
 	ldr r6, off_801D3F0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	add sp, sp, #0x10
 	pop {r4-r7,pc}
 off_801D3BC: .word off_801D3C0
@@ -27135,7 +27135,7 @@ sub_801D814:
 	bne loc_801D84A
 	bl sub_802E09A
 	bne loc_801D84A
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, dword_801D850 // =0x200000 
 	tst r0, r1
 	bne loc_801D84A
@@ -27245,7 +27245,7 @@ sub_801DA24:
 	ldr r0, off_801DA40 // =off_801ECB4 
 	bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 	bl sub_80103EC
-	ldr r1, off_801DB50 // =byte_2035280 
+	ldr r1, off_801DB50 // =eStruct2035280 
 	str r0, [r1,#0x48] // (dword_20352C8 - 0x2035280)
 	pop {pc}
 	.byte 0, 0
@@ -27256,7 +27256,7 @@ dword_801DA44: .word 0x1F09
 	thumb_func_start sub_801DA48
 sub_801DA48:
 	push {r5-r7,lr}
-	ldr r5, off_801DB50 // =byte_2035280 
+	ldr r5, off_801DB50 // =eStruct2035280 
 	ldr r6, off_801DA68 // =off_801DA6C 
 	mov r7, r0
 loc_801DA50:
@@ -27304,7 +27304,7 @@ off_801DA6C: .word sub_801DB60+1
 	thumb_func_start sub_801DACC
 sub_801DACC:
 	push {r5-r7,lr}
-	ldr r5, off_801DB50 // =byte_2035280 
+	ldr r5, off_801DB50 // =eStruct2035280 
 	ldr r6, off_801DAEC // =off_801DAF0 
 	ldr r7, [r5,#0x44] // (dword_20352C4 - 0x2035280)
 	and r7, r0
@@ -27347,7 +27347,7 @@ off_801DAF0: .word sub_801DB54+1
 	.word sub_801EC2C+1
 	.word sub_801EC84+1
 	.word sub_801E060+1
-off_801DB50: .word byte_2035280
+off_801DB50: .word eStruct2035280
 	thumb_func_end sub_801DACC
 
 	thumb_local_start
@@ -27923,7 +27923,7 @@ sub_801DF0C:
 	mov r0, #1
 	lsl r0, r0, #0x11
 	bl sub_801DA48
-	ldr r1, off_801E0D8 // =byte_2035280 
+	ldr r1, off_801E0D8 // =eStruct2035280 
 	mov r0, #0
 	strb r0, [r1,#0x18] // (byte_2035298 - 0x2035280)
 	strb r0, [r1,#0x19] // (byte_2035299 - 0x2035280)
@@ -27964,7 +27964,7 @@ dword_801DF88: .word 0x20
 
 	thumb_func_start sub_801DF8C
 sub_801DF8C:
-	ldr r1, off_801E0D8 // =byte_2035280 
+	ldr r1, off_801E0D8 // =eStruct2035280 
 	strh r0, [r1,#0x22] // (word_20352A2 - 0x2035280)
 	mov pc, lr
 	thumb_func_end sub_801DF8C
@@ -27972,7 +27972,7 @@ sub_801DF8C:
 	thumb_func_start sub_801DF92
 sub_801DF92:
 	push {lr}
-	ldr r1, off_801E0D8 // =byte_2035280 
+	ldr r1, off_801E0D8 // =eStruct2035280 
 	mov r0, #0
 	strh r0, [r1,#0x20] // (word_20352A0 - 0x2035280)
 	mov r0, #0x12
@@ -27988,7 +27988,7 @@ sub_801DFA2:
 	ble loc_801DFAC
 	mov r0, r1
 loc_801DFAC:
-	ldr r1, off_801E0D8 // =byte_2035280 
+	ldr r1, off_801E0D8 // =eStruct2035280 
 	strh r0, [r1,#0x20] // (word_20352A0 - 0x2035280)
 	pop {r1,pc}
 	.balign 4, 0x00
@@ -27998,7 +27998,7 @@ dword_801DFB4: .word 0x4000
 	thumb_func_start sub_801DFB8
 sub_801DFB8:
 	push {lr}
-	ldr r2, off_801E0D8 // =byte_2035280 
+	ldr r2, off_801E0D8 // =eStruct2035280 
 	ldrh r1, [r2,#0x20] // (word_20352A0 - 0x2035280)
 	add r0, r0, r1
 	ldr r1, dword_801DFCC // =0x4000 
@@ -28014,7 +28014,7 @@ dword_801DFCC: .word 0x4000
 	thumb_local_start
 sub_801DFD0:
 	push {lr}
-	ldr r2, off_801E0D8 // =byte_2035280 
+	ldr r2, off_801E0D8 // =eStruct2035280 
 	ldrh r1, [r2,#0x20] // (word_20352A0 - 0x2035280)
 	sub r1, r1, r0
 	bge loc_801DFDC
@@ -28027,7 +28027,7 @@ loc_801DFDC:
 
 	thumb_func_start sub_801DFE4
 sub_801DFE4:
-	ldr r0, off_801E0D8 // =byte_2035280 
+	ldr r0, off_801E0D8 // =eStruct2035280 
 	ldrh r0, [r0,#0x20] // (word_20352A0 - 0x2035280)
 	mov pc, lr
 	thumb_func_end sub_801DFE4
@@ -28086,7 +28086,7 @@ sub_801E022:
 	thumb_local_start
 sub_801E03E:
 	push {r4,r5,lr}
-	ldr r3, off_801E0D8 // =byte_2035280 
+	ldr r3, off_801E0D8 // =eStruct2035280 
 	// j
 	ldrb r0, [r3,#0x1] // (byte_2035281 - 0x2035280)
 	// i
@@ -28124,7 +28124,7 @@ sub_801E060:
 	thumb_local_start
 sub_801E07C:
 	push {r4,r5,lr}
-	ldr r3, off_801E0D8 // =byte_2035280 
+	ldr r3, off_801E0D8 // =eStruct2035280 
 	// j
 	mov r0, #0x18
 	// i
@@ -28147,7 +28147,7 @@ off_801E09C: .word byte_801EDFC
 	thumb_func_start sub_801E0A0
 sub_801E0A0:
 	push {lr}
-	ldr r3, off_801E0D8 // =byte_2035280 
+	ldr r3, off_801E0D8 // =eStruct2035280 
 	ldr r2, [r3,#0x48] // (dword_20352C8 - 0x2035280)
 	ldrh r2, [r2,#0x24]
 	strh r2, [r3,#0x24] // (word_20352A4 - 0x2035280)
@@ -28163,7 +28163,7 @@ sub_801E0A0:
 	thumb_local_start
 sub_801E0BC:
 	push {lr}
-	ldr r1, off_801E0D8 // =byte_2035280 
+	ldr r1, off_801E0D8 // =eStruct2035280 
 	ldr r0, [r1,#0x48] // (dword_20352C8 - 0x2035280)
 	ldrh r0, [r0,#0x24]
 	strh r0, [r1,#0x24] // (word_20352A4 - 0x2035280)
@@ -28173,7 +28173,7 @@ sub_801E0BC:
 	thumb_func_start sub_801E0C8
 sub_801E0C8:
 	push {r5,lr}
-	ldr r5, off_801E0D8 // =byte_2035280 
+	ldr r5, off_801E0D8 // =eStruct2035280 
 	strh r0, [r5,#0x26] // (word_20352A6 - 0x2035280)
 	pop {r5,pc}
 	thumb_func_end sub_801E0C8
@@ -28181,10 +28181,10 @@ sub_801E0C8:
 	thumb_func_start sub_801E0D0
 sub_801E0D0:
 	push {lr}
-	ldr r3, off_801E0D8 // =byte_2035280 
+	ldr r3, off_801E0D8 // =eStruct2035280 
 	strb r0, [r3,#0x1c] // (byte_203529C - 0x2035280)
 	pop {pc}
-off_801E0D8: .word byte_2035280
+off_801E0D8: .word eStruct2035280
 	thumb_func_end sub_801E0D0
 
 	thumb_local_start
@@ -28363,7 +28363,7 @@ sub_801E228:
 	mov r0, #0x13
 loc_801E230:
 	mov r7, r0
-	ldr r6, off_801E4AC // =byte_2035280 
+	ldr r6, off_801E4AC // =eStruct2035280 
 	ldr r1, [r6,#0x40] // (dword_20352C0 - 0x2035280)
 	mov r0, #1
 	lsl r0, r0, #8
@@ -28383,7 +28383,7 @@ loc_801E242:
 	mov r5, #1
 	ldr r6, off_801E444 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #1
 	lsl r0, r0, #8
 	bl sub_801BECC
@@ -28396,7 +28396,7 @@ loc_801E242:
 	thumb_local_start
 sub_801E270:
 	push {r4-r7,lr}
-	ldr r6, off_801E4AC // =byte_2035280 
+	ldr r6, off_801E4AC // =eStruct2035280 
 	ldr r0, [r6,#0x40] // (dword_20352C0 - 0x2035280)
 	mov r1, #1
 	lsl r1, r1, #8
@@ -28421,7 +28421,7 @@ loc_801E28C:
 	mov r5, #1
 	ldr r6, off_801E444 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #1
 	lsl r0, r0, #8
 	bl sub_801BECC
@@ -28436,7 +28436,7 @@ locret_801E2B8:
 sub_801E2BA:
 	push {r4-r7,lr}
 	push {r0}
-	ldr r6, off_801E4AC // =byte_2035280 
+	ldr r6, off_801E4AC // =eStruct2035280 
 	ldr r0, [r6,#0x40] // (dword_20352C0 - 0x2035280)
 	mov r1, #1
 	lsl r1, r1, #8
@@ -28469,7 +28469,7 @@ loc_801E2F0:
 	mov r5, #1
 	ldr r6, off_801E444 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #1
 	lsl r0, r0, #8
 	bl sub_801BECC
@@ -28480,7 +28480,7 @@ loc_801E312:
 	pop {r0}
 	pop {r4-r7,pc}
 	push {r4-r7,lr}
-	ldr r6, off_801E4AC // =byte_2035280 
+	ldr r6, off_801E4AC // =eStruct2035280 
 	ldr r0, [r6,#0x40] // (dword_20352C0 - 0x2035280)
 	mov r1, #1
 	lsl r1, r1, #8
@@ -28502,7 +28502,7 @@ loc_801E32C:
 	mov r5, #1
 	ldr r6, off_801E444 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #1
 	lsl r0, r0, #8
 	bl sub_801BECC
@@ -28563,7 +28563,7 @@ sub_801E398:
 	mov r5, #1
 	ldr r6, off_801E444 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #1
 	lsl r0, r0, #0xb
 	bl sub_801BECC
@@ -28615,7 +28615,7 @@ off_801E404: .word byte_801EF10
 	thumb_func_start sub_801E408
 sub_801E408:
 	push {r4-r7,lr}
-	ldr r1, off_801E4AC // =byte_2035280 
+	ldr r1, off_801E4AC // =eStruct2035280 
 	mov r0, #0x32 
 	strh r0, [r1,#0x32] // (word_20352B2 - 0x2035280)
 	ldr r0, off_801E438 // =byte_86F0374 
@@ -28626,7 +28626,7 @@ sub_801E408:
 	mov r5, #1
 	ldr r6, off_801E444 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #1
 	lsl r0, r0, #0x14
 	bl sub_801BECC
@@ -28670,14 +28670,14 @@ sub_801E468:
 	thumb_func_start sub_801E474
 sub_801E474:
 	push {lr}
-	ldr r1, off_801E4AC // =byte_2035280 
+	ldr r1, off_801E4AC // =eStruct2035280 
 	strb r0, [r1,#0xb] // (byte_203528B - 0x2035280)
 	ldr r1, off_801E49C // =off_801E4A0 
 	lsl r0, r0, #2
 	// dataList
 	ldr r0, [r1,r0]
 	bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
-	ldr r1, off_801E4AC // =byte_2035280 
+	ldr r1, off_801E4AC // =eStruct2035280 
 	mov r0, #0x3f 
 	strb r0, [r1]
 	mov r0, #1
@@ -28691,7 +28691,7 @@ off_801E49C: .word off_801E4A0
 off_801E4A0: .word off_801EF30
 	.word off_801EF4C
 	.word off_801EF68
-off_801E4AC: .word byte_2035280
+off_801E4AC: .word eStruct2035280
 	thumb_func_end sub_801E474
 
 	thumb_local_start
@@ -28813,7 +28813,7 @@ loc_801E568:
 sub_801E574:
 	push {r4,r5,r7,lr}
 	mov r1, #0xff
-	ldr r0, off_801E77C // =byte_2035280 
+	ldr r0, off_801E77C // =eStruct2035280 
 	add r0, #0x28 
 	strh r1, [r0]
 	strh r1, [r0,#0x2] // (word_20352AA - 0x20352a8)
@@ -28835,7 +28835,7 @@ loc_801E594:
 	mov r4, #9
 	mov r5, #1
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r7, r0
 	pop {r0,r2-r4,r6}
 	ldr r1, off_801E5D4 // =0x240 
@@ -28878,18 +28878,18 @@ sub_801E5EC:
 	thumb_func_start sub_801E5F8
 sub_801E5F8:
 	push {r4,r5,lr}
-	ldr r5, off_801E77C // =byte_2035280 
+	ldr r5, off_801E77C // =eStruct2035280 
 	mov r0, #0
 	strb r0, [r5,#0x12] // (byte_2035292 - 0x2035280)
 	mov r0, #0xff
 	strb r0, [r5,#0x13] // (byte_2035293 - 0x2035280)
-	strb r0, [r5,#0x17] // (byte_2035297 - 0x2035280)
+	strb r0, [r5,#0x17] // (eStruct2035280_NaviStatusGfxIdx17 - 0x2035280)
 	mov r0, #0xff
 	strb r0, [r5,#0x15] // (byte_2035295 - 0x2035280)
 	mov r1, #0x78 
 	strh r1, [r5,#0x38] // (word_20352B8 - 0x2035280)
 	mov r4, #0
-	bl get_802D246 // () -> int
+	bl sub_802D246 // () -> int
 	ldr r1, dword_801E654 // =0x200000 
 	tst r0, r1
 	bne loc_801E63E
@@ -28925,7 +28925,7 @@ dword_801E654: .word 0x200000
 	thumb_func_start sub_801E658
 sub_801E658:
 	mov r0, #0
-	ldr r1, off_801E77C // =byte_2035280 
+	ldr r1, off_801E77C // =eStruct2035280 
 	strb r0, [r1,#0x1e] // (byte_203529E - 0x2035280)
 	mov pc, lr
 	thumb_func_end sub_801E658
@@ -29029,7 +29029,7 @@ word_801E700: .hword 0x500, 0x706, 0x908, 0x605, 0x807
 	thumb_func_start sub_801E71C
 sub_801E71C:
 	push {r1,lr}
-	ldr r1, off_801E77C // =byte_2035280 
+	ldr r1, off_801E77C // =eStruct2035280 
 	strb r0, [r1,#0x12] // (byte_2035292 - 0x2035280)
 	pop {r1,pc}
 	thumb_func_end sub_801E71C
@@ -29037,15 +29037,15 @@ sub_801E71C:
 	thumb_func_start sub_801E724
 sub_801E724:
 	push {r5,lr}
-	ldr r5, off_801E77C // =byte_2035280 
-	ldrb r2, [r5,#0x17] // (byte_2035297 - 0x2035280)
+	ldr r5, off_801E77C // =eStruct2035280 
+	ldrb r2, [r5,#0x17] // (eStruct2035280_NaviStatusGfxIdx17 - 0x2035280)
 	cmp r2, #0xff
 	bne loc_801E730
 	ldrb r2, [r5,#0x15] // (byte_2035295 - 0x2035280)
 loc_801E730:
 	strb r2, [r5,#0x1f] // (byte_203529F - 0x2035280)
 	strb r1, [r5,#0x16] // (byte_2035296 - 0x2035280)
-	strb r0, [r5,#0x17] // (byte_2035297 - 0x2035280)
+	strb r0, [r5,#0x17] // (eStruct2035280_NaviStatusGfxIdx17 - 0x2035280)
 	mov r0, #0xff
 	strb r0, [r5,#0x13] // (byte_2035293 - 0x2035280)
 	pop {r5,pc}
@@ -29072,7 +29072,7 @@ sub_801E748:
 	thumb_func_start sub_801E754
 sub_801E754:
 	push {r1,r2,lr}
-	ldr r2, off_801E77C // =byte_2035280 
+	ldr r2, off_801E77C // =eStruct2035280 
 	ldr r1, [r2,#0x40] // (dword_20352C0 - 0x2035280)
 	mov r0, #1
 	lsl r0, r0, #0xf
@@ -29093,7 +29093,7 @@ loc_801E770:
 locret_801E778:
 	pop {r1,r2,pc}
 	.balign 4, 0x00
-off_801E77C: .word byte_2035280
+off_801E77C: .word eStruct2035280
 	thumb_func_end sub_801E754
 
 	thumb_func_start sub_801E780
@@ -29116,7 +29116,7 @@ loc_801E792:
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	str r3, [sp,#0xc]
-	ldr r3, off_801E824 // =byte_2035280 
+	ldr r3, off_801E824 // =eStruct2035280 
 	ldr r3, [r3,#0x40] // (dword_20352C0 - 0x2035280)
 	mov r0, #1
 	lsl r0, r0, #0xf
@@ -29181,7 +29181,7 @@ loc_801E81C:
 	add sp, sp, #0xc
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_801E824: .word byte_2035280
+off_801E824: .word eStruct2035280
 	thumb_func_end sub_801E780
 
 	thumb_local_start
@@ -29358,13 +29358,13 @@ sub_801E95C:
 	mov r5, #1
 	ldr r6, off_801EAA0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r2-r5}
 	strb r0, [r5,#9]
 	push {r2,r3}
 	// idx
 	ldrh r0, [r5,#4]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#9]
 	mov r1, #2
 	tst r0, r1
@@ -29626,7 +29626,7 @@ off_801EB98: .word byte_801EE98
 	lsl r0, r0, #0x12
 	bl sub_801DA48
 	mov r0, #0
-	ldr r1, off_801ECB0 // =byte_2035280 
+	ldr r1, off_801ECB0 // =eStruct2035280 
 	strb r0, [r1,#0x1a] // (byte_203529A - 0x2035280)
 	pop {r4,r6,r7,pc}
 off_801EBC0: .word dword_86EA92C
@@ -29635,7 +29635,7 @@ off_801EBC4: .word unk_3001AC0
 
 	thumb_local_start
 sub_801EBC8:
-	ldr r1, off_801ECB0 // =byte_2035280 
+	ldr r1, off_801ECB0 // =eStruct2035280 
 	strb r0, [r1,#0x1a] // (byte_203529A - 0x2035280)
 	mov r0, #0
 	strh r0, [r1,#0x30] // (word_20352B0 - 0x2035280)
@@ -29675,7 +29675,7 @@ off_801EBFC: .word 0x100
 	ldr r0, dword_801EC20 // =0x80000 
 	bl sub_801DA48
 	mov r0, #0
-	ldr r1, off_801ECB0 // =byte_2035280 
+	ldr r1, off_801ECB0 // =eStruct2035280 
 	strh r0, [r1,#0x34] // (word_20352B4 - 0x2035280)
 	pop {pc}
 dword_801EC20: .word 0x80000
@@ -29718,7 +29718,7 @@ sub_801EC44:
 	mov r0, #1
 	lsl r0, r0, #0x15
 	bl sub_801DA48
-	ldr r1, off_801ECB0 // =byte_2035280 
+	ldr r1, off_801ECB0 // =eStruct2035280 
 	mov r0, #0x3c 
 	strb r0, [r1,#0x1b] // (byte_203529B - 0x2035280)
 	pop {r4,r6,r7,pc}
@@ -29756,5 +29756,5 @@ off_801ECAC:
 	.word byte_30016D0
 	thumb_func_end sub_801EC90
 
-off_801ECB0: .word byte_2035280
+off_801ECB0: .word eStruct2035280
 /*For debugging purposes, connect comment at any range!*/

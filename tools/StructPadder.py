@@ -1,10 +1,8 @@
-##
-# Author: Lan
-# Description: This module's purpose is to pad incomplete structures so that they are usable. It also sorts the
-# structure's members into correct order by consequence.
-# Refer to "__main__" if using this from the commandline.
-# If using this in another program, make use of the Structure class!
-##
+"""
+@Author Lan
+@Module Struct This allows padding of incomplete struct as well as reading/writing asm and C structs.
+
+"""
 import re
 
 POINTER_SIZE = 32  # (bits) size of a pointer in ARM7TDMI
@@ -12,11 +10,11 @@ POINTER_SIZE = 32  # (bits) size of a pointer in ARM7TDMI
 # setting that specified whether the structure uses signed/unsigned primitives as u8/i32 or uint8_t/int32_t
 int_types_long = False
 
-##
-# This dictionary contains entries with predetermined sizes specified to the structPadder.
-# This includes primitive types, structs, and any defined type with a known size.
-# The sizes are specified in bytes.
-##
+"""
+This dictionary contains entries with predetermined sizes specified to the structPadder.
+This includes primitive types, structs, and any defined type with a known size.
+The sizes are specified in bytes.
+"""
 known_types = {
     # primitives
     'bool': 1, 'int': 4, 'short': 2, 'long': 4, 'char': 1,
@@ -27,14 +25,14 @@ known_types = {
     'bool_t': 1,
 }
 
-##
-# An entry represents one member in a C structure. One entry may look like this:
-# "uint8_t someMember; // loc=0x04"
-# It must consist of a type, name, and a location in the comments. Those propreties are defined in this class.
-# If the StructMember is a structure itself, its size must be passed in structSize when initializing, as it cannot be
-# determined through type context. (if it's a pointer to a structure, it doesn't count as a structure.)
-# Note that the size of a structure MUST be a multiple of 8, as anything else isn't really possible in C
-##
+"""
+An entry represents one member in a C structure. One entry may look like this:
+"uint8_t someMember; // loc=0x04"
+It must consist of a type, name, and a location in the comments. Those propreties are defined in this class.
+If the StructMember is a structure itself, its size must be passed in structSize when initializing, as it cannot be
+determined through type context. (if it's a pointer to a structure, it doesn't count as a structure.)
+Note that the size of a structure MUST be a multiple of 8, as anything else isn't really possible in C
+"""
 class StructMember:
     size: int          # Size of entry member. 8 for uint8_t, 32 for uint32_t, 32 for BANANA*, etc.
     type: str          # The first string in the entry for output reconstruction May include a star.
@@ -42,15 +40,15 @@ class StructMember:
     location: int      # The location as extracted from the loc=<location> argument in the comment.
     otherContent: str  # Any more text that comes after // loc=<location>
 
-    ##
-    # Initiates the entry with a type, name, and location.
-    # This is parted from strings passed in that are found in the input file.
-    # If the entry is a POINTER, its type is still passed in but its size is automatically set to POINTER_SIZE
-    # @param _type This is the type of the member, ex. (uint8_t) or (longSword*)
-    # @param name The name of the member. If it contains *, the member is regarded as a pointer, like _type.
-    # @param location
-    ##
     def __init__(self, _type: str, name: str, location: int, otherContent: str, structSize=None):
+    """
+    Initiates the entry with a type, name, and location.
+    This is parted from strings passed in that are found in the input file.
+    If the entry is a POINTER, its type is still passed in but its size is automatically set to POINTER_SIZE
+    :param _type: This is the type of the member, ex. (uint8_t) or (longSword*)
+    :param name: The name of the member. If it contains *, the member is regarded as a pointer, like _type.
+    :param location:
+    """
         self.type = _type
         # if _size is not None, that means this is a structure, and you can't figure out its size from context.
         if not structSize:
@@ -85,6 +83,12 @@ class Structure:
     # @param structFile file to parse to obtain structure, ignored if name and size are not None
     ##
     def __init__(self, name=None, size=None, structFile=None):
+        """
+
+        :param name:
+        :param size:
+        :param structFile:
+        """
         self.maxLen = 0
         if name != None and size != None and structFile == None:
             self.name = name

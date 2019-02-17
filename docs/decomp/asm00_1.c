@@ -1394,7 +1394,7 @@ void __fastcall sub_8003A90(int a1, int a2, int a3, int a4)
 
 
 // 0x8003ab2
-signed int __fastcall sub_8003AB2(int a1, int a2, int a3, int a4)
+signed int __fastcall zeroFill_8003AB2(int a1, int a2, int a3, int a4)
 {
     signed int result; // r0
 
@@ -2549,7 +2549,7 @@ char *sub_8004D48()
 
 
 // 0x8004df0
-reqBBS_GUI *__fastcall sub_8004DF0(int a1, int a2, int a3, int a4)
+reqBBS_GUI *__fastcall reqBBS_init_8004DF0(int a1, int a2, int a3, int a4)
 {
     _DWORD *v4; // r10
     int v5; // r5
@@ -2664,7 +2664,7 @@ reqBBS_GUI *__fastcall sub_8004DF0(int a1, int a2, int a3, int a4)
     v15 = sub_809E3B2();
     sub_8003908(v15, v16, v17, v18);
     sub_8003A58(v19, v20, v21, v22);
-    sub_809F9C8(v23, v24, v25, v26);
+    zeroFill_e2004348(v23, v24, v25, v26);
     sub_809FAF4();
     v27 = sub_809F9DC();
     v31 = sub_8049CF8(v27, v28, v29, v30);
@@ -2741,14 +2741,14 @@ reqBBS_GUI *__fastcall sub_8004DF0(int a1, int a2, int a3, int a4)
     v47 = sub_803532C();
     sub_8021D36(v47, v48, v49, v50);
     ZeroFillByWord(v4[0x12], 0xB4u, 3, v51);
-    sub_8021C68(v52, v53, v54, v55);
+    zeroFill_e2002230(v52, v53, v54, v55);
     sub_8021AB4(byte_80213AC, 0);
     sub_81376E8();
     sub_8137700();
     sub_8137808();
     sub_80133EC();
     v56 = sub_813B768();
-    sub_813B934(v56, v57, v58, v59);
+    zeroFill_813B934(v56, v57, v58, v59);
     v60 = sub_813C324();
     sub_8121144(v60, v61, v62, v63);
     sub_800AAF2(v64, v65, v66, v67);
@@ -2766,7 +2766,7 @@ reqBBS_GUI *__fastcall sub_8004DF0(int a1, int a2, int a3, int a4)
 
 // 0x80050ec
 // () -> void
-void __cdecl cb_80050EC()
+void __cdecl cbGameState_80050EC()
 {
     int v0; // r10
 
@@ -2828,9 +2828,9 @@ int __fastcall sub_8005148(int a1)
         v6 = sub_80027C4();
         sub_8003566(v6, v7, v8, v9);
         sub_8002668();
-        sub_80024A2(v10, v11, v12, v13);
+        zeroFill_80024A2(v10, v11, v12, v13);
         v18 = sub_8003962(v14, v15, v16, v17);
-        v22 = sub_8003AB2(v18, v19, v20, v21);
+        v22 = zeroFill_8003AB2(v18, v19, v20, v21);
         sub_802F0D8(v22, v23, v24, v25);
         sub_802F0F4(v26, v27, v28, v29);
         sub_8036EFE();
@@ -2860,11 +2860,11 @@ int __fastcall sub_8005148(int a1)
         ClearEventFlagFromImmediate(23, 50);
         v36 = ClearEventFlagFromImmediate(1, 187);
         sub_8033948(v36, v37, v38, v39);
-        sub_8001778(&loc_1740);
+        sRender_08_setRenderingState(&loc_1740);
         v40 = *(v35 + oGameState_MapNumber);
-        sub_8030A30(*(v35 + oGameState_MapGroup));
-        sub_8001708(*(v35 + oGameState_MapGroup), *(v35 + oGameState_MapNumber));
-        sub_8034B4C(*(v35 + oGameState_MapGroup), *(v35 + oGameState_MapNumber));
+        map_8030A30(*(v35 + oGameState_MapGroup));
+        map_8001708(*(v35 + oGameState_MapGroup), *(v35 + oGameState_MapNumber));
+        map_8034B4C(*(v35 + oGameState_MapGroup), *(v35 + oGameState_MapNumber));
         sub_8030A00(*(v35 + oGameState_MapGroup));
         ClearEventFlagFromImmediate(23, 61);
         ClearEventFlagFromImmediate(23, 62);
@@ -2881,7 +2881,7 @@ int __fastcall sub_8005148(int a1)
 
 
 // 0x8005268
-void __fastcall sub_8005268(int a1)
+void __fastcall gamestate_8005268(int a1)
 {
     int v1; // r5
     int v2; // r0
@@ -2973,9 +2973,9 @@ void __fastcall __noreturn sub_800531C(int a1)
     chatbox_8040818();
     sub_80035A2(0x21u);
     v2 = sub_8004702();
-    sub_80024A2(v2, v3, v4, v5);
+    zeroFill_80024A2(v2, v3, v4, v5);
     v10 = sub_8003962(v6, v7, v8, v9);
-    v14 = sub_8003AB2(v10, v11, v12, v13);
+    v14 = zeroFill_8003AB2(v10, v11, v12, v13);
     sub_8006C22(v14);
     v18 = *(v1 + oToolkit_GameStatePtr);
     *v18 = 12;
@@ -3104,13 +3104,13 @@ int __fastcall sub_80053E4(int a1)
         sub_8005F40(v8, 8, v9, v10);
         sub_8005F6C();
         v11 = sub_80027C4();
-        sub_80024A2(v11, v12, v13, v14);
+        zeroFill_80024A2(v11, v12, v13, v14);
         v19 = sub_8003962(v15, v16, v17, v18);
-        v23 = sub_8003AB2(v19, v20, v21, v22);
+        v23 = zeroFill_8003AB2(v19, v20, v21, v22);
         sub_8006C22(v23);
         sub_813C3AC();
         v24 = *(v1 + oToolkit_GameStatePtr);
-        result = sub_8001778(64);
+        result = sRender_08_setRenderingState(64);
     }
     return result;
 }
@@ -3177,9 +3177,9 @@ int sub_8005462()
     }
     else
     {
-        sub_8001850();
-        sub_8001820(v2, v3, v4, v5);
-        sub_800182E(v6, v7, v8, v9);
+        copyMemory_8001850();
+        zeroFill_e2009740(v2, v3, v4, v5);
+        zeroFill_e200F3A0(v6, v7, v8, v9);
         sub_811F6C0(v10, v11, v12, v13);
         sub_8005524();
         sub_8001B6C(17);
@@ -3218,9 +3218,9 @@ _BYTE *sub_8005524()
     sub_8005F40(v1, v2, v3, v4);
     sub_8005F6C();
     v5 = sub_80027C4();
-    sub_80024A2(v5, v6, v7, v8);
+    zeroFill_80024A2(v5, v6, v7, v8);
     v13 = sub_8003962(v9, v10, v11, v12);
-    v17 = sub_8003AB2(v13, v14, v15, v16);
+    v17 = zeroFill_8003AB2(v13, v14, v15, v16);
     sub_8006C22(v17);
     sub_813C3AC();
     result = *v0;
@@ -3275,9 +3275,9 @@ _BYTE *__fastcall sub_800555A(int a1)
         sub_8005F40(v4, v5, v6, v7);
         sub_8005F6C();
         v8 = sub_80027C4();
-        sub_80024A2(v8, v9, v10, v11);
+        zeroFill_80024A2(v8, v9, v10, v11);
         v16 = sub_8003962(v12, v13, v14, v15);
-        v20 = sub_8003AB2(v16, v17, v18, v19);
+        v20 = zeroFill_8003AB2(v16, v17, v18, v19);
         sub_8006C22(v20);
         sub_813C3AC();
         v21 = *(v1 + oToolkit_GameStatePtr);
@@ -3334,9 +3334,9 @@ _BYTE *__fastcall sub_80055CE(int a1)
         sub_8005F40(v4, v5, v6, v7);
         sub_8005F6C();
         v8 = sub_80027C4();
-        sub_80024A2(v8, v9, v10, v11);
+        zeroFill_80024A2(v8, v9, v10, v11);
         v16 = sub_8003962(v12, v13, v14, v15);
-        v20 = sub_8003AB2(v16, v17, v18, v19);
+        v20 = zeroFill_8003AB2(v16, v17, v18, v19);
         sub_8006C22(v20);
         sub_813C3AC();
         v21 = *(v1 + oToolkit_GameStatePtr);
@@ -3393,9 +3393,9 @@ _BYTE *__fastcall sub_8005642(int a1)
         sub_8005F40(v4, v5, v6, v7);
         sub_8005F6C();
         v8 = sub_80027C4();
-        sub_80024A2(v8, v9, v10, v11);
+        zeroFill_80024A2(v8, v9, v10, v11);
         v16 = sub_8003962(v12, v13, v14, v15);
-        v20 = sub_8003AB2(v16, v17, v18, v19);
+        v20 = zeroFill_8003AB2(v16, v17, v18, v19);
         sub_8006C22(v20);
         sub_813C3AC();
         v21 = *(v1 + oToolkit_GameStatePtr);
@@ -3452,9 +3452,9 @@ _BYTE *__fastcall sub_80056B8(int a1)
         sub_8005F40(v4, v5, v6, v7);
         sub_8005F6C();
         v8 = sub_80027C4();
-        sub_80024A2(v8, v9, v10, v11);
+        zeroFill_80024A2(v8, v9, v10, v11);
         v16 = sub_8003962(v12, v13, v14, v15);
-        v20 = sub_8003AB2(v16, v17, v18, v19);
+        v20 = zeroFill_8003AB2(v16, v17, v18, v19);
         sub_8006C22(v20);
         sub_813C3AC();
         v21 = *(v1 + oToolkit_GameStatePtr);
@@ -3511,9 +3511,9 @@ _BYTE *__fastcall sub_800572C(int a1)
         sub_8005F40(v4, v5, v6, v7);
         sub_8005F6C();
         v8 = sub_80027C4();
-        sub_80024A2(v8, v9, v10, v11);
+        zeroFill_80024A2(v8, v9, v10, v11);
         v16 = sub_8003962(v12, v13, v14, v15);
-        v20 = sub_8003AB2(v16, v17, v18, v19);
+        v20 = zeroFill_8003AB2(v16, v17, v18, v19);
         sub_8006C22(v20);
         sub_813C3AC();
         v21 = *(v1 + oToolkit_GameStatePtr);
@@ -3570,9 +3570,9 @@ _BYTE *__fastcall sub_80057A0(int a1)
         sub_8005F40(v4, v5, v6, v7);
         sub_8005F6C();
         v8 = sub_80027C4();
-        sub_80024A2(v8, v9, v10, v11);
+        zeroFill_80024A2(v8, v9, v10, v11);
         v16 = sub_8003962(v12, v13, v14, v15);
-        v20 = sub_8003AB2(v16, v17, v18, v19);
+        v20 = zeroFill_8003AB2(v16, v17, v18, v19);
         sub_8006C22(v20);
         sub_813C3AC();
         v21 = *(v1 + oToolkit_GameStatePtr);
@@ -3662,9 +3662,9 @@ _BYTE *__fastcall sub_800585A(int a1)
         sub_8005F40(v4, v5, v6, v7);
         sub_8005F6C();
         v8 = sub_80027C4();
-        sub_80024A2(v8, v9, v10, v11);
+        zeroFill_80024A2(v8, v9, v10, v11);
         v16 = sub_8003962(v12, v13, v14, v15);
-        v20 = sub_8003AB2(v16, v17, v18, v19);
+        v20 = zeroFill_8003AB2(v16, v17, v18, v19);
         sub_8006C22(v20);
         sub_813C3AC();
         v21 = *(v1 + oToolkit_GameStatePtr);
@@ -3949,7 +3949,7 @@ void sub_8005AF4()
                             chatbox_8045F3C(128);
                             if ( !v2 )
                                 return;
-                            sub_811F7EC();
+                            isJoystickIRQActive();
                             if ( v2 )
                                 return;
                             TestEventFlagFromImmediate(23, 7);
@@ -3959,7 +3959,7 @@ void sub_8005AF4()
                             v5 = updatePlayerGameState_800107A();
                             v9 = sub_811EC10(v5, v6, v7, v8);
                             v13 = sub_8003962(v9, v10, v11, v12);
-                            sub_8003AB2(v13, v14, v15, v16);
+                            zeroFill_8003AB2(v13, v14, v15, v16);
                         }
                         *v1 = 24;
                         return;
@@ -4088,8 +4088,8 @@ int sub_8005C04()
     *(v0[0xF] + oGameState_Unk_20) = 0;
     sub_80035A2(0x25u);
     CopyWords(*(v0[5] + 20) + 16 * (*(v0[5] + 17) - 1), v0[5], 0x10u);
-    sub_8001708(*(v0[0xF] + oGameState_MapGroup), *(v0[0xF] + oGameState_MapNumber));
-    sub_8001778(&byte_40);
+    map_8001708(*(v0[0xF] + oGameState_MapGroup), *(v0[0xF] + oGameState_MapNumber));
+    sRender_08_setRenderingState(&byte_40);
     v1 = v0[5];
     v2 = v0[0xF];
     TestEventFlagFromImmediate(23, 27);
@@ -4266,9 +4266,9 @@ int sub_8005D88()
     sub_8005F40(v1, v2, v3, v4);
     sub_8005F6C();
     v5 = sub_80027C4();
-    sub_80024A2(v5, v6, v7, v8);
+    zeroFill_80024A2(v5, v6, v7, v8);
     v13 = sub_8003962(v9, v10, v11, v12);
-    v17 = sub_8003AB2(v13, v14, v15, v16);
+    v17 = zeroFill_8003AB2(v13, v14, v15, v16);
     v21 = sub_80385F0(v17, v18, v19, v20);
     sub_8006C22(v21);
     return sub_813C3AC();
@@ -4305,9 +4305,9 @@ int __noreturn sub_8005DBE()
     sub_8005F40(v1, v2, v3, v4);
     sub_8005F6C();
     v5 = sub_80027C4();
-    sub_80024A2(v5, v6, v7, v8);
+    zeroFill_80024A2(v5, v6, v7, v8);
     v13 = sub_8003962(v9, v10, v11, v12);
-    v17 = sub_8003AB2(v13, v14, v15, v16);
+    v17 = zeroFill_8003AB2(v13, v14, v15, v16);
     sub_803FB28(v17, v18, v19, v20);
     return sub_813C3AC();
 }
@@ -4339,9 +4339,9 @@ int __noreturn dead_8005DF0()
     sub_8005F40(v1, v2, v3, v4);
     sub_8005F6C();
     v5 = sub_80027C4();
-    sub_80024A2(v5, v6, v7, v8);
+    zeroFill_80024A2(v5, v6, v7, v8);
     v13 = sub_8003962(v9, v10, v11, v12);
-    sub_8003AB2(v13, v14, v15, v16);
+    zeroFill_8003AB2(v13, v14, v15, v16);
     sub_8138294();
     return sub_813C3AC();
 }
@@ -4373,9 +4373,9 @@ int __noreturn dead_8005E22()
     sub_8005F40(v1, v2, v3, v4);
     sub_8005F6C();
     v5 = sub_80027C4();
-    sub_80024A2(v5, v6, v7, v8);
+    zeroFill_80024A2(v5, v6, v7, v8);
     v13 = sub_8003962(v9, v10, v11, v12);
-    sub_8003AB2(v13, v14, v15, v16);
+    zeroFill_8003AB2(v13, v14, v15, v16);
     sub_8038A9C();
     return sub_813C3AC();
 }
@@ -4408,9 +4408,9 @@ int __noreturn dead_8005E54()
     sub_8005F40(v1, v2, v3, v4);
     sub_8005F6C();
     v5 = sub_80027C4();
-    sub_80024A2(v5, v6, v7, v8);
+    zeroFill_80024A2(v5, v6, v7, v8);
     v13 = sub_8003962(v9, v10, v11, v12);
-    v17 = sub_8003AB2(v13, v14, v15, v16);
+    v17 = zeroFill_8003AB2(v13, v14, v15, v16);
     (loc_803D1AC)(v17);
     return sub_813C3AC();
 }
@@ -4567,13 +4567,13 @@ int __fastcall sub_8005F40(int a1, int a2, int a3, int a4)
     zeroFillVRAM(a1, a2, a3, a4);
     sub_80017E0(v4, v5, v6, v7);
     v8 = sub_8001974();
-    sub_8001AFC(v8, v9, v10, v11);
+    zeroFill_e20094C0(v8, v9, v10, v11);
     sub_80023A8(v12, v13, v14, v15);
-    sub_8001820(v16, v17, v18, v19);
-    sub_800182E(v20, v21, v22, v23);
-    sub_80024A2(v24, v25, v26, v27);
-    sub_8001788();
-    return sub_80017A0();
+    zeroFill_e2009740(v16, v17, v18, v19);
+    zeroFill_e200F3A0(v20, v21, v22, v23);
+    zeroFill_80024A2(v24, v25, v26, v27);
+    renderInfo_8001788();
+    return renderInfo_80017A0();
 }
 
 
@@ -4586,7 +4586,7 @@ void sub_8005F6C()
     int v3; // r3
 
     v0 = sub_802FDB0();
-    sub_802FF2C(v0, v1, v2, v3);
+    cleareMemory_802FF2C(v0, v1, v2, v3);
 }
 
 
@@ -4599,7 +4599,7 @@ void sub_8005F78()
     int v3; // r3
 
     v0 = (loc_802FDB4)();
-    sub_802FF2C(v0, v1, v2, v3);
+    cleareMemory_802FF2C(v0, v1, v2, v3);
 }
 
 
@@ -4609,10 +4609,10 @@ _BYTE *sub_8005F84()
     int v0; // r10
     _BYTE *result; // r0
 
-    sub_8001778(&byte_40);
+    sRender_08_setRenderingState(&byte_40);
     sub_809F68C();
     chatbox_8040818();
-    chatbox_8045F2C(64);
+    chatbox_clear_eFlags2009F38(64);
     **v0 = 4;
     result = *(v0 + oToolkit_GameStatePtr);
     *result = 0;
@@ -5475,7 +5475,7 @@ BOOL __fastcall sub_8006EA4(signed int a1, int a2)
     if ( v4 )
     {
         if ( v3 == 255
-            || ((v5 = getChip_8021DA8(v2), *v5 == v3) || v5[1] == v3 || v5[2] == v3 || v5[3] == v3) && *chip_8021C7C(v2, v3) )
+            || ((v5 = getChip8021DA8(v2), *v5 == v3) || v5[1] == v3 || v5[2] == v3 || v5[3] == v3) && *chip_8021C7C(v2, v3) )
         {
             result = 0;
         }
@@ -5501,7 +5501,7 @@ BOOL __fastcall sub_8006EE8(signed int a1, int a2)
     if ( v4 )
     {
         if ( v3 == 255
-            || (v5 = getChip_8021DA8(v2), *v5 == v3)
+            || (v5 = getChip8021DA8(v2), *v5 == v3)
             || v5[offsetof(ChipData, unk_01)] == v3
             || v5[offsetof(ChipData, unk_02)] == v3
             || v5[offsetof(ChipData, unk_03)] == v3 )
@@ -5529,7 +5529,7 @@ BOOL __fastcall sub_8006F1E(int a1, int a2)
     if ( v4 )
     {
         if ( v3 == 255
-            || (v5 = getChip_8021DA8(v2), *v5 == v3)
+            || (v5 = getChip8021DA8(v2), *v5 == v3)
             || v5[offsetof(ChipData, unk_01)] == v3
             || v5[offsetof(ChipData, unk_02)] == v3
             || v5[offsetof(ChipData, unk_03)] == v3 )
@@ -5958,7 +5958,7 @@ int sub_8007338()
     int v0; // r1
 
     sub_80303E8();
-    sub_802FF4C(0, 0, 0, 240);
+    camera_802FF4C(0, 0, 0, 240);
     return sub_80301B2(0, v0);
 }
 
@@ -6932,7 +6932,7 @@ int __fastcall sub_8007CA0(int a1, int a2, int a3)
             if ( !v9 )
             {
                 v10 = sub_8001974();
-                sub_8001AFC(v10, v11, v12, v13);
+                zeroFill_e20094C0(v10, v11, v12, v13);
                 sub_80023A8(v14, v15, v16, v17);
                 v18 = *(v3 + 24);
                 v19 = battleSettings_802D2B2();
@@ -6962,7 +6962,7 @@ int __fastcall sub_8007CA0(int a1, int a2, int a3)
             if ( !v26 )
             {
                 v27 = sub_8001974();
-                sub_8001AFC(v27, v28, v29, v30);
+                zeroFill_e20094C0(v27, v28, v29, v30);
                 sub_80023A8(v31, v32, v33, v34);
                 (loc_80071FE)(*(v3 + 60));
             }
@@ -7034,8 +7034,8 @@ int __fastcall sub_8007CA0(int a1, int a2, int a3)
         sub_802CA82();
     }
     *(v7 + oGameState_Unk_0a) = 0;
-    sub_8002368(0, v25, v23, v24);
-    v50 = sub_8001778(64);
+    zeroFill_e20097A0(0, v25, v23, v24);
+    v50 = sRender_08_setRenderingState(64);
     sub_800A892(v50);
     sub_80071A4(1);
     ClearEventFlagFromImmediate(23, 34);
@@ -11702,7 +11702,7 @@ void __fastcall sub_800A570(__int16 *a1, int a2, int a3)
     v7 = 0;
     do
     {
-        if ( getChip_8021DA8(*v4 & 0x1FF)[offsetof(ChipData, elemIdx)] == 2 )
+        if ( getChip8021DA8(*v4 & 0x1FF)[offsetof(ChipData, elemIdx)] == 2 )
             word_2033040[v6++] = *v4;
         else
             *(dword_2033000 + v5++) = *v4;
@@ -12046,7 +12046,7 @@ signed int __fastcall sub_800A80C(_WORD *a1)
 
     v1 = a1;
     v2 = 0;
-    while ( getChip_8021DA8(*v1 & 0x1FF)[7] != 2 )
+    while ( getChip8021DA8(*v1 & 0x1FF)[7] != 2 )
     {
         ++v1;
         if ( ++v2 >= 10 )
@@ -12909,11 +12909,11 @@ char *chip_800AEE8()
 
     v0 = &byte_20349C0[2 * byte_20349C0[0] + 2];
     v1 = *v0;
-    if ( getChip_8021DA8(v1)[9] & 0x80 )
+    if ( getChip8021DA8(v1)[9] & 0x80 )
         *(v0 + 6) = sub_80109A4(v1, 0);
     v2 = &byte_2034A10[2 * byte_2034A10[0] + 2];
     v3 = *v2;
-    result = getChip_8021DA8(v3);
+    result = getChip8021DA8(v3);
     if ( result[9] & 0x80 )
     {
         result = sub_80109A4(v3, 1);
@@ -13007,7 +13007,7 @@ int __fastcall sub_800AFBA(unsigned int a1)
     v6 = v3 | sub_802E09A();
     if ( v2 >> 9 == 27
         || v2 >> 9 == 28
-        || (v4 = getChip_8021DA8(v2 & 0x1FF)[7], v4 != 1) && v4 != 2
+        || (v4 = getChip8021DA8(v2 & 0x1FF)[7], v4 != 1) && v4 != 2
         || *(&dword_20367E0 + v4) <= sub_80136CC(*(*(v1 + oToolkit_S2034880_Ptr) + 13), v4 + 10) )
     {
         if ( (v2 & 0x1FF) < 411 )
@@ -13035,7 +13035,7 @@ int __fastcall sub_800B022(unsigned int a1)
     v7 = v3 | sub_802E09A();
     if ( v2 >> 9 == 27
         || v2 >> 9 == 28
-        || (v4 = getChip_8021DA8(v2 & 0x1FF)[7], v4 != 1) && v4 != 2
+        || (v4 = getChip8021DA8(v2 & 0x1FF)[7], v4 != 1) && v4 != 2
         || *(&dword_20367E0 + v4) <= sub_80136CC(*(*(v1 + oToolkit_S2034880_Ptr) + 13), v4 + 10) )
     {
         v5 = v2 << 23;
@@ -13073,7 +13073,7 @@ void sub_800B090()
         {
             sub_8006EE8(v4, 255);
             if ( !v6
-                || ((v7 = getChip_8021DA8(v5)[offsetof(ChipData, elemIdx)], v7 == 1) || v7 == 2)
+                || ((v7 = getChip8021DA8(v5)[offsetof(ChipData, elemIdx)], v7 == 1) || v7 == 2)
                 && (sub_80136CC(*(*(v0 + oToolkit_S2034880_Ptr) + 13), v7 + 10), *(&dword_20367E0 + v7) >= v2) )
             {
                 *v3 = 389;
@@ -13927,7 +13927,7 @@ char *sub_800B9B0()
         {
             sub_801BED6(0x10000);
             sub_801DACC(0x10000);
-            v2 = getChip_8021DA8(*(v0 + 48));
+            v2 = getChip8021DA8(*(v0 + 48));
             v3 = 0;
             v4 = 0;
             if ( __CFSHR__(v2[9], 2) )
@@ -14012,7 +14012,7 @@ char *sub_800BA8A()
     {
         sub_801BED6(0x10000);
         sub_801DACC(0x10000);
-        v2 = getChip_8021DA8(*(v0 + 48));
+        v2 = getChip8021DA8(*(v0 + 48));
         v3 = 0;
         v4 = 0;
         if ( __CFSHR__(v2[9], 2) )
@@ -14083,7 +14083,7 @@ char *sub_800BBA8()
         {
             sub_801BED6(0x10000);
             sub_801DACC(0x10000);
-            v2 = getChip_8021DA8(*(v0 + 48));
+            v2 = getChip8021DA8(*(v0 + 48));
             v3 = 0;
             v4 = 0;
             if ( __CFSHR__(v2[9], 2) )

@@ -1,16 +1,16 @@
-	.include "data/spritePointers_8031CC4.inc"
+	.include "data/spritePointersList.inc"
 
-spritePointers_8031CC4: .word battleSprites_8031CEC
-	.word virusBattleSprites_8031D24
-	.word naviBattleSprites_8031DA4
+spritePointersList: .word battleSpritePtrs
+	.word virusBattleSpritePtrs
+	.word naviBattleSpritePtrs
 	.word off_8031E00
 	.word off_8031FA4
 	.word off_8032114
-	.word npcSprites
-	.word objSprites_8032314
-	.word mugshots_8032598
-	.word guiSprites_803271C
-battleSprites_8031CEC: .word battleSpriteMegaMan
+	.word npcSpritePtrs
+	.word objSpritePtrs
+	.word mugshotSpritePtrs
+	.word guiSpritePtrs
+battleSpritePtrs: .word battleSpriteMegaMan
 	.word battleSpriteFlameCross
 	.word battleSpriteElecCross
 	.word battleSpriteSlashCross
@@ -24,7 +24,7 @@ battleSprites_8031CEC: .word battleSpriteMegaMan
 	.word battleSprite_8233728
 	.word battleSprite_823B768
 	.word spriteWhiteDot
-virusBattleSprites_8031D24: .word spriteWhiteDot
+virusBattleSpritePtrs: .word spriteWhiteDot
 	.word compVirusBattleSpriteMetteur + 1<<31
 	.word compVirusBattleSprite_8242E94 + 1<<31
 	.word virusBattleSprite_8244164
@@ -56,7 +56,7 @@ virusBattleSprites_8031D24: .word spriteWhiteDot
 	.word comp_8263484 + 1<<31
 	.word spriteWhiteDot
 	.word comp_82647E4 + 1<<31
-naviBattleSprites_8031DA4: .word spriteWhiteDot
+naviBattleSpritePtrs: .word spriteWhiteDot
 	.word battleSpriteFlameMan
 	.word battleSpriteElecMan
 	.word battleSpriteSlashMan
@@ -71,7 +71,7 @@ naviBattleSprites_8031DA4: .word spriteWhiteDot
 	.word comp_82CED74 + 1<<31
 	.word comp_82D2AC8 + 1<<31
 	.word comp_82D6FE4 + 1<<31
-	.word comp_82DABC8 + 1<<31
+	.word compSprite_82DABC8 + 1<<31
 	.word comp_82DD9A8 + 1<<31
 	.word spriteWhiteDot
 	.word compBattleSprite_Colonel + 1<<31
@@ -308,7 +308,7 @@ off_8032114: .word sprite_8399578
 	.word sprite_83BCC70
 	.word sprite_83BD228
 	.word sprite_83BE6B0
-npcSprites: .word npcSpriteLan
+npcSpritePtrs: .word npcSpriteLan
 	.word npcSpriteMayl
 	.word npcSpriteDex
 	.word npcSpriteYai
@@ -404,7 +404,7 @@ npcSprites: .word npcSpriteLan
 	.word npcSpriteProgman
 	.word npcSpriteProgman
 	.word npcSpriteProgman
-objSprites_8032314: .word sprite_849B424
+objSpritePtrs: .word sprite_849B424
 	.word sprite_849BA28
 	.word sprite_849D164
 	.word objSpriteSkullBarrier
@@ -565,7 +565,7 @@ objSprites_8032314: .word sprite_849B424
 	.word sprite_84DF96C
 	.word comp_84E00A0 + 1<<31
 	.word spriteWhiteDot
-mugshots_8032598: .word mugshotLan
+mugshotSpritePtrs: .word mugshotLan
 	.word mugshotMayl
 	.word mugshotDex
 	.word mugshotYai
@@ -662,7 +662,7 @@ mugshots_8032598: .word mugshotLan
 	.word sprite_84F3B08
 	.word sprite_84F3B08
 	.word mugshotBlack
-guiSprites_803271C: .word sprite_86CBB7C
+guiSpritePtrs: .word sprite_86CBB7C
 	.word sprite_86CC13C
 	.word sprite_86CD410
 	.word comp_86C6B30 + 1<<31

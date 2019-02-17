@@ -1,7 +1,7 @@
 	.include "asm/asm03_2.inc"
 
-	thumb_func_start render_graphicalText_8045F8C
-render_graphicalText_8045F8C:
+	thumb_func_start renderTextGfx_8045F8C
+renderTextGfx_8045F8C:
 	push {lr}
 	push {r7}
 	mov r7, r10
@@ -25,7 +25,7 @@ render_graphicalText_8045F8C:
 	pop {pc}
 	.balign 4, 0x00
 off_8045FB8: .word sub_3006B94+1
-	thumb_func_end render_graphicalText_8045F8C
+	thumb_func_end renderTextGfx_8045F8C
 
 	thumb_func_start sub_8045FBC
 sub_8045FBC:
@@ -1536,9 +1536,9 @@ sub_8046D4C:
 	mov r1, #0
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	ldr r0, dword_8046DD4 // =0x1f40 
-	bl sub_8001778
-	bl sub_8001788
-	bl sub_80017A0
+	bl sRender_08_setRenderingState
+	bl renderInfo_8001788
+	bl renderInfo_80017A0
 	mov r0, #0x18
 	bl sub_80015FC
 	mov r0, #8
@@ -1685,7 +1685,7 @@ loc_8046E9E:
 	b loc_8046ECE
 loc_8046EBC:
 	mov r0, #0x40 
-	bl chatbox_8045F1C
+	bl chatbox_setFlags2009F38
 	ldr r0, [r5,#0x24]
 	mov r1, #3
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -2452,7 +2452,7 @@ sub_804754C:
 	mov r5, #1
 	ldr r6, off_8047588 // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r5,pc}
 	.balign 4, 0x00
 off_8047578: .word byte_2017204
@@ -2546,7 +2546,7 @@ sub_804760E:
 	mov r5, #1
 	ldr r6, off_8047660 // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r4,r5}
 	ldr r0, [r5,#0x24]
 	mov r1, #0x10
@@ -2558,7 +2558,7 @@ sub_804760E:
 	mov r5, #1
 	ldr r6, off_8047660 // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r0,r5,r7,pc}
 	.balign 4, 0x00
 off_804764C: .word byte_873D9FC
@@ -2590,7 +2590,7 @@ sub_8047664:
 	mov r5, #1
 	ldr r6, off_8047700 // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r1-r4,r7}
 	tst r3, r3
 	bne loc_8047698
@@ -2628,7 +2628,7 @@ loc_80476C4:
 	mov r5, #1
 	ldr r6, off_8047700 // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r0,r5,r7,pc}
 	.byte 0, 0
 off_80476E0: .word off_80476E4
@@ -2660,7 +2660,7 @@ sub_8047708:
 	mov r5, #1
 	ldr r6, off_804775C // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r4,r5}
 	ldr r0, [r5,#0x24]
 	mov r1, #0x10
@@ -2672,7 +2672,7 @@ sub_8047708:
 	mov r5, #1
 	ldr r6, off_804775C // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r0,r5,r7,pc}
 	.balign 4, 0x00
 off_8047748: .word byte_873EA50
@@ -2699,7 +2699,7 @@ sub_8047760:
 	mov r5, #1
 	ldr r6, off_804778C // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r0,r5,r7,pc}
 	.balign 4, 0x00
 off_8047784: .word decomp_2013A00
@@ -2755,7 +2755,7 @@ loc_80477DA:
 	mov r5, #1
 	ldr r6, off_80477F0 // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r0,r5,r7,pc}
 off_80477F0: .word dword_86A5D60
 off_80477F4: .word unk_2013C40
@@ -2919,7 +2919,7 @@ loc_804791A:
 	mov r5, #1
 	ldr r6, off_804794C // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8047938: .word unk_2019404
@@ -4189,7 +4189,7 @@ loc_8048E8A:
 	mov r12, r3
 	// idx
 	ldrh r0, [r7,#2]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrh r0, [r0,#0x1c]
 	add r0, r12
 	mov r1, #8
@@ -4405,9 +4405,9 @@ sub_804900C:
 	push {r4-r7,lr}
 	bl chatbox_8040818
 	ldr r0, off_8049054 // =0x40 
-	bl sub_8001778
-	bl sub_8001788
-	bl sub_80017A0
+	bl sRender_08_setRenderingState
+	bl renderInfo_8001788
+	bl renderInfo_80017A0
 	mov r0, #0x11
 	bl sub_80015FC
 	bl sub_8005F40
@@ -4442,10 +4442,10 @@ sub_8049058:
 	beq locret_804907A
 	bl zeroFillVRAM
 	bl sub_800183C
-	bl sub_8001850
+	bl copyMemory_8001850
 	bl chatbox_8040818
 	ldr r0, off_804907C // =0x40 
-	bl sub_8001778
+	bl sRender_08_setRenderingState
 	bl sub_811F758
 locret_804907A:
 	pop {r4-r7,pc}
@@ -4497,9 +4497,9 @@ off_8049098: .word sub_8049104+1
 sub_8049104:
 	push {r4-r7,lr}
 	ldr r0, dword_8049154 // =0x1f40 
-	bl sub_8001778
-	bl sub_8001788
-	bl sub_80017A0
+	bl sRender_08_setRenderingState
+	bl renderInfo_8001788
+	bl renderInfo_80017A0
 	mov r0, #0x12
 	bl sub_80015FC
 	bl sub_8046664 // () -> void
@@ -5056,7 +5056,7 @@ sub_804959C:
 	push {r4-r7,lr}
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_80495AE
-	bl sub_8001850
+	bl copyMemory_8001850
 	bl sub_803CCC0
 	pop {r4-r7,pc}
 loc_80495AE:
@@ -5084,7 +5084,7 @@ sub_80495CE:
 	push {r4-r7,lr}
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_80495E2
-	bl sub_8001850
+	bl copyMemory_8001850
 	ldr r0, off_80495E8 // =sub_8039570+1 
 	bl sub_803CB8C
 	pop {r4-r7,pc}
@@ -5287,9 +5287,9 @@ off_8049730: .word sub_8049770+1
 sub_8049770:
 	push {r4-r7,lr}
 	ldr r0, dword_80497CC // =0x1f40 
-	bl sub_8001778
-	bl sub_8001788
-	bl sub_80017A0
+	bl sRender_08_setRenderingState
+	bl renderInfo_8001788
+	bl renderInfo_80017A0
 	mov r0, #0x13
 	bl sub_80015FC
 	bl sub_8046664 // () -> void
@@ -5607,9 +5607,9 @@ loc_80499E0:
 	bl sub_803F79E
 	bl zeroFillVRAM
 	bl sub_800183C
-	bl sub_8001850
+	bl copyMemory_8001850
 	ldr r0, off_8049A14 // =0x40 
-	bl sub_8001778
+	bl sRender_08_setRenderingState
 	bl chatbox_8040818
 	bl sub_811F758
 	b locret_8049A12
@@ -5625,7 +5625,7 @@ copyData_8049A18:
 	push {r4-r7,lr}
 	bl zeroFillVRAM
 	bl sub_800183C
-	bl sub_8001850
+	bl copyMemory_8001850
 	// initRefs
 	ldr r0, off_8049A50 // =initRefs_8049A54 
 	bl decompAndCopyData // (u32 *initRefs) -> void
@@ -5676,7 +5676,7 @@ copyData_8049AAC:
 	push {r4-r7,lr}
 	bl zeroFillVRAM
 	bl sub_800183C
-	bl sub_8001850
+	bl copyMemory_8001850
 	// initRefs
 	ldr r0, off_8049AD4 // =byte_8049AD8
 	bl decompAndCopyData // (u32 *initRefs) -> void
@@ -6059,9 +6059,9 @@ sub_8049E28:
 	push {r4-r7,lr}
 	bl chatbox_8040818
 	ldr r0, off_8049E58 // =0x40 
-	bl sub_8001778
-	bl sub_8001788
-	bl sub_80017A0
+	bl sRender_08_setRenderingState
+	bl renderInfo_8001788
+	bl renderInfo_80017A0
 	mov r0, #0x11
 	bl sub_80015FC
 	bl sub_8005F40
@@ -6082,10 +6082,10 @@ sub_8049E5C:
 	beq locret_8049E7E
 	bl zeroFillVRAM
 	bl sub_800183C
-	bl sub_8001850
+	bl copyMemory_8001850
 	bl chatbox_8040818
 	ldr r0, off_8049E80 // =0x40 
-	bl sub_8001778
+	bl sRender_08_setRenderingState
 	bl sub_8123408
 locret_8049E7E:
 	pop {r4-r7,pc}
@@ -6118,9 +6118,9 @@ off_8049E98: .word sub_8049EBC+1
 sub_8049EBC:
 	push {r4-r7,lr}
 	ldr r0, dword_8049F1C // =0x1f40 
-	bl sub_8001778
-	bl sub_8001788
-	bl sub_80017A0
+	bl sRender_08_setRenderingState
+	bl renderInfo_8001788
+	bl renderInfo_80017A0
 	mov r0, #0x13
 	bl sub_80015FC
 	bl sub_8046664 // () -> void
@@ -6341,9 +6341,9 @@ sub_804A078:
 	bl sub_804A230
 	bl zeroFillVRAM
 	bl sub_800183C
-	bl sub_8001850
+	bl copyMemory_8001850
 	ldr r0, off_804A0A8 // =0x40 
-	bl sub_8001778
+	bl sRender_08_setRenderingState
 	bl chatbox_8040818
 	bl sub_8123408
 	b locret_804A0A6
@@ -6359,7 +6359,7 @@ copyData_804A0AC:
 	push {r4-r7,lr}
 	bl zeroFillVRAM
 	bl sub_800183C
-	bl sub_8001850
+	bl copyMemory_8001850
 	// initRefs
 	ldr r0, off_804A0E4 // =byte_804A0E8
 	bl decompAndCopyData // (u32 *initRefs) -> void
@@ -6721,7 +6721,7 @@ sub_804A3FC:
 	bl sub_804AAD0
 	bne loc_804A44C
 	mov r0, #0x10
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_804A42C
 	mov r0, #0x9c
 	bl sound_play // () -> void
@@ -6748,7 +6748,7 @@ loc_804A436:
 	bl sub_811F7F8
 loc_804A44C:
 	bl sub_804A8F4
-	bl sub_804A7C0
+	bl menuCopyTiles_804A7C0
 	bl sub_804A9A0
 	bl sub_804AA58
 	mov r0, #0
@@ -6760,7 +6760,7 @@ sub_804A460:
 	push {r4-r7,lr}
 	ldr r7, off_804A4D0 // =eS200AC80 
 	bl sub_804A8F4
-	bl sub_804A7C0
+	bl menuCopyTiles_804A7C0
 	bl sub_804A9A0
 	bl sub_804AA58
 	bl IsPaletteFadeActive // () -> zf
@@ -6777,7 +6777,7 @@ sub_804A460:
 	strh r0, [r7,#0x4] // (word_200AC84 - 0x200ac80)
 	strh r0, [r7,#0x6] // (word_200AC86 - 0x200ac80)
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl sub_800399A
 	bl sub_8003AEA
 	b loc_804A4CC
@@ -6854,7 +6854,7 @@ loc_804A534:
 loc_804A53C:
 	bl sub_804AA58
 	bl sub_804A8F4
-	bl sub_804A7C0
+	bl menuCopyTiles_804A7C0
 	mov r0, #0
 	pop {pc}
 	thumb_func_end sub_804A514
@@ -6933,7 +6933,7 @@ loc_804A5C6:
 sub_804A5D4:
 	push {lr}
 	mov r0, #0xe2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_804A5E8
 	mov r0, #0xc
 	strb r0, [r5,#1]
@@ -7121,7 +7121,7 @@ off_804A7B4: .word unk_2035C8C
 	thumb_func_end sub_804A61C
 
 	thumb_local_start
-sub_804A7C0:
+menuCopyTiles_804A7C0:
 	push {r4-r7,lr}
 	mov r7, r5
 	ldrh r0, [r7,#0x2e]
@@ -7274,7 +7274,7 @@ off_804A8E4: .word eTileRefs2034768
 dword_804A8E8: .word 0x34F
 off_804A8EC: .word eTileRefs20347A0
 off_804A8F0: .word 0x200
-	thumb_func_end sub_804A7C0
+	thumb_func_end menuCopyTiles_804A7C0
 
 	thumb_local_start
 sub_804A8F4:
@@ -7507,7 +7507,7 @@ dword_804AAA0: .word 0xC24C
 sub_804AAA4:
 	push {lr}
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_804AACC
 	ldrh r0, [r5,#0x1e]
 	tst r0, r0
@@ -7531,13 +7531,13 @@ locret_804AACC:
 sub_804AAD0:
 	push {lr}
 	mov r0, #8
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	bne loc_804AAE8
 	ldrb r0, [r5]
 	cmp r0, #0x14
 	bne loc_804AB0A
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_804AB0E
 loc_804AAE8:
 	ldrb r0, [r5]
@@ -7568,7 +7568,7 @@ sub_804AB10:
 	push {r4-r7,lr}
 	mov r6, #0
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_804AB44
 	mov r6, #1
 	mov r4, #0x44 
@@ -7978,7 +7978,7 @@ sub_804AE04:
 	push {r4-r7,lr}
 	sub sp, sp, #8
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_804AE44
 	mov r0, #0x81
 	bl sound_play // () -> void
@@ -8591,7 +8591,7 @@ loc_804BD34:
 	add r1, #0x34 
 	bl sub_804BE88
 	push {r0,r1}
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r2, [r0,#5]
 	pop {r0,r1}
 	push {r0,r1}
@@ -8678,7 +8678,7 @@ loc_804BDD6:
 	strh r0, [r7]
 	strb r3, [r7,#2]
 	push {r0,r1,r3,r6,r7}
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r2, [r0,#5]
 	mov r4, r8
 	ldrb r6, [r4,r2]
@@ -8734,7 +8734,7 @@ loc_804BE3C:
 	strh r0, [r7]
 	strb r3, [r7,#2]
 	push {r0,r1,r3,r6,r7}
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r2, [r0,#5]
 	mov r4, r8
 	ldrb r6, [r4,r2]
@@ -9820,7 +9820,7 @@ sub_804C6C4:
 	mov r0, #0
 	str r0, [r5,#0x18]
 	strb r0, [r5,#0xd]
-	bl sub_8001820
+	bl zeroFill_e2009740
 locret_804C6FC:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -10074,12 +10074,12 @@ off_804CADC: .word byte_804C860
 	thumb_local_start
 sub_804CAE0:
 	push {r4-r7,lr}
-	bl sub_8001820
+	bl zeroFill_e2009740
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	ldrb r0, [r1,#oGameState_MapGroup]
 	ldrb r1, [r1,#oGameState_MapNumber]
-	bl sub_8001708
+	bl map_8001708
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	ldrh r0, [r1]
@@ -10195,7 +10195,7 @@ sub_804CBC0:
 	strh r0, [r1]
 	ldr r0, dword_804CBD8 // =0x3f0b 
 	strh r0, [r1,#0xa]
-	bl sub_8001820
+	bl zeroFill_e2009740
 	pop {r4-r7,pc}
 dword_804CBD8: .word 0x3F0B
 	thumb_func_end sub_804CBC0
@@ -10543,7 +10543,7 @@ sub_804CE90:
 	ldr r2, [r5,#0x2c]
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
-	bl sub_802FF4C
+	bl camera_802FF4C
 	bl sub_8030472
 	ldr r0, off_804CEF0 // =unk_2037800 
 	bl sub_80028D4
@@ -10551,8 +10551,8 @@ sub_804CE90:
 	lsl r1, r1, #2
 	ldr r0, off_804CEF8 // =off_804CEFC 
 	ldr r0, [r0,r1]
-	bl sub_8002906
-	bl chatbox_uncomp_803FD08 // () -> int
+	bl uncompSprite_8002906
+	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
 	bl sub_804CF84
 	ldr r0, off_804CEF4 // =off_804D0E4 
 	ldrb r1, [r5,#5]

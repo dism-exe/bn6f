@@ -13,7 +13,7 @@
 	.global sub_8144D18
 	.global sub_8144D24
 	.global sub_8144D30
-	.global sub_8144EEC
+	.global eStruct200FE00_setUnk04To15h
 	.global sub_814656C
 	.global sub_8146588
 	.global sub_81465BC
@@ -77,7 +77,7 @@
 	.global sub_814D954
 	.global sub_814D994
 	.global sub_814D9C4
-	.global __divsi3
+	.global sub_814DA9C
 	.global SoundMainBTM
 	.global RealClearChain
 	.global ply_fine
@@ -241,7 +241,7 @@
 // .equ byte_200F671, 0x200F671
 // .equ byte_200FDF4, 0x200FDF4
 // .equ byte_200FDF5, 0x200FDF5
-// .equ byte_200FE00, 0x200FE00
+// .equ eStruct200FE00, 0x200FE00
 // .equ byte_200FE01, 0x200FE01
 // .equ byte_200FE02, 0x200FE02
 // .equ byte_200FE03, 0x200FE03

@@ -114,7 +114,7 @@
 
 /* External Symbols */
 	.include "asm/asm38.inc"
-// .global dword_3005E80
+// .global iCopyTiles
 // .global sub_30078C8
 // .global sub_30078E0
 // .global sub_3007958
@@ -163,7 +163,7 @@
 // .global sub_802CE78
 // .global sub_802CEA6
 // .global sub_802D234
-// .global get_802D246 // () -> int
+// .global sub_802D246 // () -> int
 
 	.include "asm/asm31.inc"
 // .global sub_80C5B76

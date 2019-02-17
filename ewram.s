@@ -6,7 +6,7 @@ timer_2000000:: // 0x2000000
 	.space 96
 dword_2000060:: // 0x2000060
 	.space 16
-unk_2000070:: // 0x2000070
+byte_2000070:: // 0x2000070
 	.space 32
 unk_2000090:: // 0x2000090
 	.space 16
@@ -68,7 +68,7 @@ unk_2000370:: // 0x2000370
 	.space 368
 byte_20004E0:: // 0x20004e0
 	.space 400
-unk_2000670:: // 0x2000670
+byte_2000670:: // 0x2000670
 	.space 256
 unk_2000770:: // 0x2000770
 	.space 16
@@ -264,7 +264,7 @@ byte_20010F0:: // 0x20010f0
 	.space 48
 rngSeed_2001120:: // 0x2001120
 	.space 16
-unk_2001130:: // 0x2001130
+byte_2001130:: // 0x2001130
 	.space 16
 dword_2001140:: // 0x2001140
 	.space 16
@@ -286,7 +286,7 @@ unk_200131C:: // 0x200131c
 	.space 212
 eRngSeed20013F0:: // 0x20013f0
 	.space 16
-unk_2001400:: // 0x2001400
+byte_2001400:: // 0x2001400
 	.space 268
 unk_200150C:: // 0x200150c
 	.space 244
@@ -312,7 +312,7 @@ byte_2001880:: // 0x2001880
 	.space 32
 byte_20018A0:: // 0x20018a0
 	.space 16
-unk_20018B0:: // 0x20018b0
+byte_20018B0:: // 0x20018b0
 	.space 8
 dword_20018B8:: // 0x20018b8
 	.space 8
@@ -416,9 +416,9 @@ eToolkitExtraPtrsMemoryEnd:: // 0x200153c
 	.space 256 // additional buffer for dummied out randomization
 
 	.space 1348
-dynamicArr:: // 0x2005780
+dynamicArr2005780:: // 0x2005780
 	.space 15
-unk_200578F:: // 0x200578f
+byte_200578F:: // 0x200578f
 	.space 33
 
 eOverworldNPCObjects:: // 0x20057b0
@@ -474,7 +474,7 @@ dword_2006740:: // 0x2006740
 	.space 4
 dword_2006744:: // 0x2006744
 	.space 12
-unk_2006750:: // 0x2006750
+byte_2006750:: // 0x2006750
 	.space 32
 word_2006770:: // 0x2006770
 	.space 2
@@ -512,13 +512,13 @@ unk_2006CC0:: // 0x2006cc0
 	.space 56
 unk_2006CF8:: // 0x2006cf8
 	.space 56
-unk_2006D30:: // 0x2006d30
+byte_2006D30:: // 0x2006d30
 	.space 56
-unk_2006D68:: // 0x2006d68
+byte_2006D68:: // 0x2006d68
 	.space 56
 byte_2006DA0:: // 0x2006da0
 	.space 56
-unk_2006DD8:: // 0x2006dd8
+byte_2006DD8:: // 0x2006dd8
 	.space 36
 word_2006DFC:: // 0x2006dfc
 	.space 2
@@ -554,7 +554,7 @@ dword_20081BC:: // 0x20081bc
 	.space 4
 dword_20081C0:: // 0x20081c0
 	.space 16
-unk_20081D0:: // 0x20081d0
+dword_20081D0:: // 0x20081d0
 	.space 640
 byte_2008450:: // 0x2008450
 	.space 1
@@ -581,7 +581,7 @@ word_2009398:: // 0x2009398
 	.space 2
 word_200939A:: // 0x200939a
 	.space 2
-word_200939C:: // 0x200939c
+byte_200939C:: // 0x200939c
 	.space 8
 dword_20093A4:: // 0x20093a4
 	.space 4
@@ -730,7 +730,7 @@ word_200A00C:: // 0x200a00c
 	.space 2
 word_200A00E:: // 0x200a00e
 	.space 2
-unk_200A010:: // 0x200a010
+word_200A010:: // 0x200a010
 	.space 512
 iCurrFrame:: // 0x200a210
 	.space 16
@@ -842,11 +842,11 @@ word_200A6F6:: // 0x200a6f6
 	.space 378
 dword_200A870:: // 0x200a870
 	.space 16
-dword_200A880:: // 0x200a880
+doff_200A880:: // 0x200a880
 	.space 4
-dword_200A884:: // 0x200a884
+doff_200A884:: // 0x200a884
 	.space 4
-dword_200A888:: // 0x200a888
+off_200A888:: // 0x200a888
 	.space 8
 dword_200A890:: // 0x200a890
 	.space 4
@@ -941,7 +941,7 @@ byte_200AF90:: // 0x200af90
 	.space 4
 dword_200AF94:: // 0x200af94
 	.space 12
-unk_200AFA0:: // 0x200afa0
+byte_200AFA0:: // 0x200afa0
 	.space 512
 byte_200B1A0:: // 0x200b1a0
 	.space 1
@@ -975,13 +975,13 @@ dword_200B4BC:: // 0x200b4bc
 	.space 4
 dword_200B4C0:: // 0x200b4c0
 	.space 1904
-byte_200BC30:: // 0x200bc30
+eStruct200BC30:: // 0x200bc30
 	.space 1
 byte_200BC31:: // 0x200bc31
 	.space 1
 byte_200BC32:: // 0x200bc32
 	.space 3
-byte_200BC35:: // 0x200bc35
+eStruct200BC30_JumpOffset05:: // 0x200bc35
 	.space 7
 byte_200BC3C:: // 0x200bc3c
 	.space 1
@@ -1015,9 +1015,9 @@ byte_200BC60:: // 0x200bc60
 	.space 1
 byte_200BC61:: // 0x200bc61
 	.space 15
-unk_200BC70:: // 0x200bc70
+byte_200BC70:: // 0x200bc70
 	.space 512
-byte_200BE70:: // 0x200be70
+eStruct200BE70:: // 0x200be70
 	.space 1
 byte_200BE71:: // 0x200be71
 	.space 3
@@ -1162,7 +1162,7 @@ byte_200DF21:: // 0x200df21
 	.space 3
 byte_200DF24:: // 0x200df24
 	.space 1
-byte_200DF25:: // 0x200df25
+eFlags200DF25:: // 0x200df25
 	.space 3
 byte_200DF28:: // 0x200df28
 	.space 1
@@ -1190,7 +1190,7 @@ byte_200F348:: // 0x200f348
 	.space 8
 dword_200F350:: // 0x200f350
 	.space 16
-byte_200F360:: // 0x200f360
+eStruct200F360:: // 0x200f360
 	.space 1
 byte_200F361:: // 0x200f361
 	.space 1
@@ -1202,7 +1202,7 @@ unk_200F380:: // 0x200f380
 	.space 8
 unk_200F388:: // 0x200f388
 	.space 1
-unk_200F389:: // 0x200f389
+byte_200F389:: // 0x200f389
 	.space 7
 unk_200F390:: // 0x200f390
 	.space 16
@@ -1210,9 +1210,9 @@ unk_200F3A0:: // 0x200f3a0
 	.space 16
 dword_200F3B0:: // 0x200f3b0
 	.space 8
-unk_200F3B8:: // 0x200f3b8
+dword_200F3B8:: // 0x200f3b8
 	.space 12
-unk_200F3C4:: // 0x200f3c4
+word_200F3C4:: // 0x200f3c4
 	.space 12
 dword_200F3D0:: // 0x200f3d0
 	.space 16
@@ -1286,7 +1286,7 @@ byte_200FDF4:: // 0x200fdf4
 	.space 1
 byte_200FDF5:: // 0x200fdf5
 	.space 11
-byte_200FE00:: // 0x200fe00
+eStruct200FE00:: // 0x200fe00
 	.space 1
 byte_200FE01:: // 0x200fe01
 	.space 1
@@ -2662,7 +2662,7 @@ byte_203526D:: // 0x203526d
 	.space 7
 dword_2035274:: // 0x2035274
 	.space 12
-byte_2035280:: // 0x2035280
+eStruct2035280:: // 0x2035280
 	.space 1
 byte_2035281:: // 0x2035281
 	.space 1
@@ -2680,7 +2680,7 @@ byte_2035295:: // 0x2035295
 	.space 1
 byte_2035296:: // 0x2035296
 	.space 1
-byte_2035297:: // 0x2035297
+eStruct2035280_NaviStatusGfxIdx17:: // 0x2035297
 	.space 1
 byte_2035298:: // 0x2035298
 	.space 1
@@ -2864,9 +2864,11 @@ unk_2036750:: // 0x2036750
 	.space 40
 byte_2036778:: // 0x2036778
 	.space 8
-word_2036780:: // 0x2036780
+// flags? flag 0x02 is set without clearing mem
+eStruct2036780:: // 0x2036780
 	.space 2
-word_2036782:: // 0x2036782
+// flag (0x0008): pause toggle in-battle (not custom)
+eFlags2036782:: // 0x2036782
 	.space 2
 byte_2036784:: // 0x2036784
 	.space 2
@@ -2999,9 +3001,10 @@ unk_2037A00:: // 0x2037a00
 	.space 4
 unk_2037A04:: // 0x2037a04
 	.space 1884
-unk_2038160:: // 0x2038160
+eStruct2038160:: // 0x2038160
 	.space 1
-byte_2038161:: // 0x2038161
+// when set to nonzero in battle, battle simply terminates. Defeat message may display
+eStruct2038160_BattleTerminate01:: // 0x2038161
 	.space 15
 
 	.section ewram_2038170
@@ -3152,6 +3155,8 @@ byte_203CA74:: // 0x203ca74
 	.space 6
 word_203CA7A:: // 0x203ca7a
 	.space 2
+// triggers when an attack is used. Usually changes to from 0x00 to 0x01 and toggles
+// till end of attack. some chips cause others like 0x05
 dword_203CA7C:: // 0x203ca7c
 	.space 4
 byte_203CA80:: // 0x203ca80
@@ -3380,7 +3385,7 @@ byte_203F6D0:: // 0x203f6d0
 	.space 128
 byte_203F750:: // 0x203f750
 	.space 136
-byte_203F7D8:: // 0x203f7d8
+eStruct203F7D8:: // 0x203f7d8
 	.space 8
 dword_203F7E0:: // 0x203f7e0
 	.space 4

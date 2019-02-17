@@ -8084,7 +8084,7 @@ char *__fastcall sub_80AABA4(int a1)
     {
         if ( byte_2036750[v1 >> 3] & (0x80u >> (v1 & 7)) )
         {
-            v2 = getChip_8021DA8(v1);
+            v2 = getChip8021DA8(v1);
             if ( v2[9] & 8 )
             {
                 v3 = v2[5];
@@ -8127,7 +8127,7 @@ char *__fastcall sub_80AABA4(int a1)
     v12 = 2 * *(&v22 + v22 + 4);
     v13 = *(v11 + v12);
     v24 = *(v11 + v12);
-    v14 = getChip_8021DA8(v13);
+    v14 = getChip8021DA8(v13);
     v15 = 0;
     v16 = 0;
     do
@@ -8232,7 +8232,7 @@ int __fastcall sub_80AAD04(int a1, int a2)
         v6 = *v2;
         if ( *v2 )
         {
-            v6 = getChip_8021DA8(v5);
+            v6 = getChip8021DA8(v5);
             if ( v6[5] == v3 )
             {
                 _VF = __OFSUB__(v4--, 1);
@@ -8288,7 +8288,7 @@ char *__fastcall sub_80AAD70(_DWORD *a1)
         result = *v2;
         if ( *v2 )
         {
-            result = getChip_8021DA8(v3);
+            result = getChip8021DA8(v3);
             v5 = result[5];
             if ( v5 != 255 )
             {
@@ -8341,7 +8341,7 @@ signed int sub_80AADA6()
     v6 = dword_2033000;
     do
     {
-        v7 = getChip_8021DA8(v5);
+        v7 = getChip8021DA8(v5);
         if ( v7[7] == 2 || v7[9] & 0x20 || v5 == (&dword_134 + 3) || v5 == &word_138 || v5 == (&word_138 + 1) )
             *v6 = 0;
         v6 += 3;
@@ -8359,7 +8359,7 @@ signed int sub_80AAE36()
     unsigned int v0; // r4
 
     v0 = 1;
-    while ( !(getChip_8021DA8(v0)[9] & 8) || !(byte_2036750[v0 >> 3] & (0x80u >> (v0 & 7))) )
+    while ( !(getChip8021DA8(v0)[9] & 8) || !(byte_2036750[v0 >> 3] & (0x80u >> (v0 & 7))) )
     {
         if ( ++v0 >= dword_140 )
             return 1;

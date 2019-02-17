@@ -124,8 +124,8 @@ comp_82D2AC8:
 	.incbin "data/sprites/comp_82D2AC8.lz77"
 comp_82D6FE4:
 	.incbin "data/sprites/comp_82D6FE4.lz77"
-comp_82DABC8:
-	.incbin "data/sprites/comp_82DABC8.lz77"
+compSprite_82DABC8:
+	.incbin "data/sprites/compSprite_82DABC8.lz77"
 comp_82DD9A8:
 	.incbin "data/sprites/comp_82DD9A8.lz77"
 compBattleSprite_Colonel:

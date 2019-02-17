@@ -217,7 +217,7 @@ sub_8130208:
 	mov r5, #1
 	ldr r6, off_813024C // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
 	.word unk_20347D8
 off_8130234: .word word_2023FA0
@@ -426,10 +426,10 @@ loc_81303C4:
 	thumb_func_end sub_8130370
 
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	bne loc_81303E0
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_81303F8
 	mov r1, #4
 	ldrb r0, [r7,#0x11]
@@ -498,7 +498,7 @@ loc_8130436:
 	tst r1, r0
 	bne locret_8130462
 	mov r1, #0x40 
-	bl sub_803EBF4
+	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
 	cmp r0, #2
 	bne loc_813045C
@@ -916,7 +916,7 @@ loc_8130790:
 loc_8130794:
 	ldrh r0, [r4,r6]
 	bl split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#0x16]
 	mov r1, #0x10
 	tst r0, r1
@@ -1027,7 +1027,7 @@ sub_8130850:
 	thumb_func_start sub_8130864
 sub_8130864:
 	push {r0,lr}
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	bne loc_8130874
 	bl sub_81440D8 // static () -> void
@@ -1183,7 +1183,7 @@ loc_8130A36:
 	mov r1, #8
 	tst r4, r1
 	beq loc_8130A46
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq loc_8130B12
 	b loc_8130B08
@@ -1244,7 +1244,7 @@ loc_8130AB2:
 	cmp r0, #4
 	beq loc_8130AC8
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_8130B08
 	bl sub_8131768
 	b loc_8130B08
@@ -1654,7 +1654,7 @@ loc_8130DF8:
 	mov r1, #8
 	tst r4, r1
 	beq loc_8130E08
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq loc_8130EA0
 	b loc_8130E98
@@ -1796,7 +1796,7 @@ off_8130F0C: .word sub_812AC14+1
 	thumb_local_start
 sub_8130F1C:
 	push {r4-r7,lr}
-	bl sub_803EBF4
+	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
 	cmp r0, #2
 	bne loc_8130F36
@@ -1817,13 +1817,13 @@ loc_8130F36:
 	bl chatbox_8045F3C
 	beq locret_8130F76
 loc_8130F4E:
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	mov r4, r0
 	bl sub_803EA50
 	mov r6, r0
 	bl sub_803EBAC
 	mov r0, r4
-	bl sub_803EA70
+	bl eStruct200BC30_setJumpOffset00
 	mov r0, r6
 	bl sub_803EA58
 	mov r0, #8
@@ -1840,7 +1840,7 @@ sub_8130F78:
 	push {lr}
 	bl IsPaletteFadeActive // () -> zf
 	beq locret_8130FBA
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq loc_8130F90
 	bl sub_8149644
@@ -2225,10 +2225,10 @@ loc_813126C:
 	b locret_81312C8
 loc_8131292:
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	bne loc_81312B0
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_81312C8
 	mov r0, #0x69 
 	bl sub_8132280
@@ -2389,7 +2389,7 @@ loc_81313D2:
 	tst r1, r0
 	bne locret_81313FC
 	mov r1, #0x40 
-	bl sub_803EBF4
+	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
 	cmp r0, #2
 	bne loc_81313F6
@@ -2544,7 +2544,7 @@ loc_81314FC:
 	mov r5, #2
 	ldr r6, off_8131544 // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	thumb_func_end sub_81314E4
 
 	ldr r0, [sp]
@@ -3018,7 +3018,7 @@ off_81318AC: .word unk_2037700
 	thumb_local_start
 sub_81318B0:
 	push {r0,lr}
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	bne loc_81318C0
 	bl sub_81440D8 // static () -> void
@@ -3511,7 +3511,7 @@ dword_8131F7C: .word 0x2000
 	thumb_local_start
 sub_8131F80:
 	push {lr}
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	ldr r1, off_8131F90 // =byte_8131F94
 	ldr r1, [r1,r0]
 	mov lr, pc
@@ -3629,7 +3629,7 @@ off_8132070: .word sub_8132080+1
 sub_8132080:
 	push {lr}
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_8132094
 	bl sub_813D978
 	mov r0, #0xc
@@ -4984,7 +4984,7 @@ sub_8132BA8:
 	mov r1, #0xa
 	bl chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
 	mov r0, #0x40 
-	bl chatbox_8045F1C
+	bl chatbox_setFlags2009F38
 	pop {pc}
 dword_8132C2C: .word 0x1F40
 off_8132C30: .word byte_201BF00
@@ -5009,7 +5009,7 @@ sub_8132C50:
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_8132C62
 	mov r0, #0x40 
-	bl chatbox_8045F2C // (int a1) ->
+	bl chatbox_clear_eFlags2009F38 // (int a1) ->
 	mov r0, #4
 	strb r0, [r5,#2]
 loc_8132C62:
@@ -5036,7 +5036,7 @@ loc_8132C82:
 	mov r1, #0xc
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	mov r0, #0x40 
-	bl chatbox_8045F1C
+	bl chatbox_setFlags2009F38
 	b loc_8132C96
 loc_8132C96:
 	bl sub_8132F4C
@@ -5050,7 +5050,7 @@ sub_8132CA0:
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_8132CB2
 	mov r0, #0x40 
-	bl chatbox_8045F1C
+	bl chatbox_setFlags2009F38
 	bl sub_811F708
 loc_8132CB2:
 	bl sub_8132F4C
@@ -5155,7 +5155,7 @@ sub_8132D9C:
 	mov r5, #1
 	ldr r6, off_8132EF0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	thumb_func_end sub_8132D9C
 
 	ldr r0, off_8132EEC // =byte_201BF00
@@ -5166,7 +5166,7 @@ sub_8132D9C:
 	mov r5, #1
 	ldr r6, off_8132EF0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	ldr r0, off_8132EEC // =byte_201BF00
 	mov r1, #2
 	ldr r2, off_8132EAC // =unk_2018200 
@@ -5175,7 +5175,7 @@ sub_8132D9C:
 	mov r5, #1
 	ldr r6, off_8132EF0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	ldr r0, off_8132EEC // =byte_201BF00
 	mov r1, #3
 	ldr r2, off_8132EB4 // =unk_2018600 
@@ -5184,7 +5184,7 @@ sub_8132D9C:
 	mov r5, #1
 	ldr r6, off_8132EF0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #0xc
 	mov r1, r10
 	ldr r1, [r1,#0x34]
@@ -5197,7 +5197,7 @@ sub_8132D9C:
 	mov r5, #1
 	ldr r6, off_8132EF0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #0xe
 	mov r1, r10
 	ldr r1, [r1,#0x34]
@@ -5210,7 +5210,7 @@ sub_8132D9C:
 	mov r5, #1
 	ldr r6, off_8132EF0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #0x10
 	mov r1, r10
 	ldr r1, [r1,#0x34]
@@ -5223,7 +5223,7 @@ sub_8132D9C:
 	mov r5, #1
 	ldr r6, off_8132EF0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #0x14
 	mov r1, r10
 	ldr r1, [r1,#0x34]
@@ -5236,7 +5236,7 @@ sub_8132D9C:
 	mov r5, #1
 	ldr r6, off_8132EF0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	bl sub_803D06C
 	mov r1, r10
 	ldr r1, [r1,#0x38]
@@ -5249,7 +5249,7 @@ sub_8132D9C:
 	mov r5, #1
 	ldr r6, off_8132EF0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	ldr r0, off_8132EEC // =byte_201BF00
 	mov r1, #5
 	ldr r2, off_8132EE4 // =unk_201A200 
@@ -5258,7 +5258,7 @@ sub_8132D9C:
 	mov r5, #1
 	ldr r6, off_8132EF0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8132E9C: .word byte_2017A00
@@ -5339,7 +5339,7 @@ sub_8132F4C:
 	mov r5, #1
 	ldr r6, off_8132F74 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	thumb_func_end sub_8132F4C
 
 	pop {r4-r7,pc}
@@ -5908,7 +5908,7 @@ loc_81334E2:
 	bl chatbox_8045F3C
 	bne loc_8133504
 	mov r0, #6
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_8133534
 	mov r0, #0x10
 	strb r0, [r5,#2]
@@ -5978,14 +5978,14 @@ sub_8133564:
 	tst r0, r0
 	bne locret_81335B6
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_8133590
 	mov r0, #4
 	str r0, [r5,#0x68]
 	b locret_81335B6
 loc_8133590:
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_81335B6
 	mov r0, #0x83
 	bl sound_play // () -> void
@@ -6165,7 +6165,7 @@ sub_81336C4:
 	tst r0, r0
 	bne locret_8133738
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_81336FA
 	mov r0, #0
 	ldr r1, [r5,#0x5c]
@@ -6178,7 +6178,7 @@ loc_81336F6:
 	b locret_8133738
 loc_81336FA:
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_8133738
 	mov r0, #0x83
 	bl sound_play // () -> void
@@ -6315,7 +6315,7 @@ sub_81337E8:
 	tst r1, r2
 	bne loc_8133864
 	mov r0, #0xb
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_8133830
 	mov r0, #0x10
 	strb r0, [r5,#1]
@@ -6516,7 +6516,7 @@ sub_81339BC:
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_8133A2A
 	bl sub_8046664 // () -> void
-	bl sub_8021C68
+	bl zeroFill_e2002230
 	bl sub_8137700
 	ldr r0, off_8133A40 // =unk_202A3E0 
 	bl sub_81206C4
@@ -6667,7 +6667,7 @@ sub_8133B18:
 	b loc_8133B4C
 loc_8133B2C:
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_8133B4C
 	mov r0, #0xb
 	bl sub_8134190
@@ -6724,7 +6724,7 @@ loc_8133B8E:
 sub_8133BB4:
 	push {lr}
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_8133C0A
 	mov r0, #0x44 
 	add r0, #0
@@ -6770,13 +6770,13 @@ locret_8133C0A:
 sub_8133C0C:
 	push {lr}
 	mov r0, #8
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	bne loc_8133C24
 	ldrb r0, [r5,#3]
 	cmp r0, #0xc
 	bne loc_8133C52
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_8133C56
 loc_8133C24:
 	mov r0, #0x44 
@@ -6812,7 +6812,7 @@ locret_8133C56:
 sub_8133C58:
 	push {r4,r6,lr}
 	mov r0, #4
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq locret_8133C98
 	mov r0, #0x44 
 	add r0, #0
@@ -8172,7 +8172,7 @@ sub_81347A4:
 	push {r4-r7,lr}
 	sub sp, sp, #0x10
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	bne loc_81347B2
 	b loc_81348C4
 loc_81347B2:
@@ -8519,7 +8519,7 @@ sub_8134A3C:
 	push {lr}
 	mov r6, #0
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_8134AB4
 	mov r6, #1
 	mov r4, #0x44 
@@ -9344,7 +9344,7 @@ sub_8135080:
 	ldr r0, [sp]
 	tst r0, r0
 	beq loc_8135166
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r4, r0
 	ldrb r0, [r4,#9]
 	mov r1, #0x20 
@@ -9356,7 +9356,7 @@ sub_8135080:
 	ldr r0, [sp,#4]
 	tst r0, r0
 	beq loc_81350BE
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#9]
 	mov r1, #0x20 
 	tst r0, r1
@@ -9383,7 +9383,7 @@ loc_81350CA:
 	ldr r0, [sp,#4]
 	tst r0, r0
 	beq loc_81350F0
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#7]
 	cmp r0, #1
 	bne loc_81350F0
@@ -9405,7 +9405,7 @@ loc_8135104:
 	ldr r0, [sp,#4]
 	tst r0, r0
 	beq loc_813511E
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#7]
 	cmp r0, #2
 	bne loc_813511E
@@ -9442,7 +9442,7 @@ loc_8135150:
 	blt loc_813513E
 	// idx
 	ldr r0, [sp]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldr r1, [sp]
 	bl sub_8135500
 	tst r0, r0
@@ -9478,7 +9478,7 @@ loc_8135192:
 	ldr r0, [r4,r2]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x17
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#7]
 	ldr r1, [sp]
 	cmp r0, r1
@@ -9510,7 +9510,7 @@ loc_81351CA:
 	ldr r0, [r4,r2]
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x17
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#9]
 	mov r1, #0x20 
 	tst r0, r1
@@ -10152,7 +10152,7 @@ sub_81356F4:
 	strh r1, [r0,#0x16]
 	strh r1, [r0,#0x18]
 	strh r1, [r0,#0x1a]
-	bl sub_8001820
+	bl zeroFill_e2009740
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk200f3a0_Ptr]
 	mov r1, #0x2f 
@@ -10274,13 +10274,13 @@ sub_8135830:
 	tst r0, r0
 	bne loc_81358E0
 	mov r0, #4
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_8135850
 	bl sub_81367C0
 	b loc_81358EE
 loc_8135850:
 	mov r0, #8
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_8135862
 	bl sub_81367A0
 	bl sub_8135F18
@@ -10299,13 +10299,13 @@ loc_8135876:
 	mov r0, #0
 	strb r0, [r5,#0x17]
 	mov r0, #0xa
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_8135888
 	bl sub_813627C
 	b loc_81358EE
 loc_8135888:
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_8135896
 	bl sub_8136218
 	b loc_81358EE
@@ -10687,7 +10687,7 @@ sub_8135B54:
 	beq locret_8135B90
 	bl chatbox_8040818
 	mov r0, #0x40 
-	bl chatbox_8045F2C // (int a1) ->
+	bl chatbox_clear_eFlags2009F38 // (int a1) ->
 	ldrb r4, [r5]
 	mov r0, r10
 	// memBlock
@@ -11124,7 +11124,7 @@ sub_8135F34:
 	mov r5, #3
 	ldr r6, off_8135F80 // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	thumb_func_end sub_8135F34
 
 	mov r0, #0x12
@@ -12698,7 +12698,7 @@ sub_8136BA0:
 	mov r5, #3
 	ldr r6, off_8136BD4 // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	thumb_func_end sub_8136BA0
 
 	mov r0, #0x12
@@ -12955,7 +12955,7 @@ sub_8136DE0:
 	ldrh r0, [r1,#2]
 	strh r0, [r5,#0xa] // (word_200939A - 0x2009390)
 	ldrh r0, [r1,#4]
-	strh r0, [r5,#0xc] // (word_200939C - 0x2009390)
+	strh r0, [r5,#0xc] // (byte_200939C - 0x2009390)
 	mov r0, #0
 	strh r0, [r1]
 	strh r0, [r1,#2]
@@ -12975,7 +12975,7 @@ sub_8136DE0:
 	strh r0, [r1]
 	ldrh r0, [r5,#0xa] // (word_200939A - 0x2009390)
 	strh r0, [r1,#2]
-	ldrh r0, [r5,#0xc] // (word_200939C - 0x2009390)
+	ldrh r0, [r5,#0xc] // (byte_200939C - 0x2009390)
 	strh r0, [r1,#4]
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -14502,7 +14502,7 @@ sub_81379A0:
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_81379D0
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_81379D0
 	bl sub_8138170
 	tst r0, r0
@@ -14518,7 +14518,7 @@ loc_81379C4:
 	b locret_8137A1A
 loc_81379D0:
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_81379F0
 	mov r0, #8
 	strb r0, [r5,#1]
@@ -14604,7 +14604,7 @@ sub_8137A7C:
 	beq loc_8137AC8
 	bl chatbox_8040818
 	mov r0, #0x40 
-	bl chatbox_8045F2C // (int a1) ->
+	bl chatbox_clear_eFlags2009F38 // (int a1) ->
 	mov r0, #0
 	mov r1, #0xbf
 	mov r2, #0x13
@@ -15986,7 +15986,7 @@ loc_813863A:
 	bl sub_80028D4
 	ldr r0, off_8138690 // =off_8138694 
 	ldr r0, [r0,r4]
-	bl sub_8002906
+	bl uncompSprite_8002906
 	ldr r0, off_8138668 // =off_813866C 
 	ldr r0, [r0,r4]
 	bl sub_8030A60
@@ -16186,16 +16186,16 @@ sub_81387D8:
 	mov r2, #0
 	mov r3, #0xd0
 	mov r4, #0
-	bl sub_802FF4C
+	bl camera_802FF4C
 	mov r0, #0
 	bl sub_80301B2
 	mov r0, #0
 	mov r1, #0
 	mov r2, #0
 	bl sub_80301DC
-	bl sub_80024A2
+	bl zeroFill_80024A2
 	bl sub_8003962
-	bl sub_8003AB2
+	bl zeroFill_8003AB2
 	bl sub_802F0D8
 	bl sub_802F0F4
 	bl sub_8036EFE

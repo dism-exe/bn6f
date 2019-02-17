@@ -25,7 +25,7 @@ sub_8080DA0:
 	bl sub_8001780
 	ldr r1, [r7,#0xc]
 	orr r0, r1
-	bl sub_8001778
+	bl sRender_08_setRenderingState
 	ldr r6, off_8080F94 // =off_8080F98 
 	lsl r1, r4, #2
 	ldr r0, [r6,r1]
@@ -58,7 +58,7 @@ sub_8080DEA:
 	bl sub_8001780
 	ldr r1, [r7,#0xc]
 	orr r0, r1
-	bl sub_8001778
+	bl sRender_08_setRenderingState
 	ldr r6, off_8080F94 // =off_8080F98 
 	lsl r1, r4, #2
 	ldr r0, [r6,r1]

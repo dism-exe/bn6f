@@ -16,7 +16,7 @@
 	.global ho_jackIn_80341B6
 	.global off_80348FC
 	.global off_8034938
-	.global sub_8034B4C
+	.global map_8034B4C
 	.global sub_8034BB8
 	.global sub_8034C36
 	.global sub_8034FB8
@@ -50,7 +50,7 @@
 	.global sub_8036F70
 	.global sub_8036F98
 	.global sub_8036FAA
-	.global sub_8037AEC
+	.global uncomp_8037AEC
 	.global sub_80385F0
 	.global sub_8038A9C
 	.global cb_8038AD0
@@ -166,15 +166,15 @@
 	.global sub_803EA2C
 	.global sub_803EA50
 	.global sub_803EA58
-	.global sub_803EA60
-	.global sub_803EA68
-	.global sub_803EA70
+	.global eStruct200BC30_getJumpOffset00
+	.global eStruct200BC30_getJumpOffset00_pushpop
+	.global eStruct200BC30_setJumpOffset00
 	.global sub_803EA78
 	.global sub_803EAE4
 	.global sub_803EBAC
 	.global sub_803EBB8
 	.global sub_803EBC8
-	.global sub_803EBF4
+	.global eStruct200BC30_getRef
 	.global sub_803ECFC
 	.global loc_803ED90
 	.global sub_803EF60
@@ -183,11 +183,11 @@
 	.global sub_803F030
 	.global sub_803F05C
 	.global sub_803F334
-	.global clear_200AD04 // () -> void
+	.global clear_e200AD04 // () -> void
 	.global sub_803F4EC
 	.global sub_803F500
 	.global loc_803F512
-	.global sub_803F524
+	.global notZero_eByte200AD04
 	.global sub_803F530
 	.global sub_803F560
 	.global sub_803F618
@@ -203,7 +203,7 @@
 	.global sub_803FB28
 	.global cb_803FB3C
 	.global byte_803FCE4
-	.global sub_803FCF0
+	.global clearChatboxAndEvent
 
 
 /* External Symbols */
@@ -238,13 +238,13 @@
 // .global SeedRNG2 // () -> void
 // .global GetRNG2 // () -> int
 // .global sub_80015FC
-// .global sub_8001778
-// .global sub_8001788
-// .global sub_80017A0
+// .global sRender_08_setRenderingState
+// .global renderInfo_8001788
+// .global renderInfo_80017A0
 // .global zeroFillVRAM
 // .global sub_80017E0
 // .global sub_800183C
-// .global sub_8001850
+// .global copyMemory_8001850
 // .global sub_8001890
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
@@ -301,7 +301,7 @@
 // .global getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
 // .global sub_800A7D0 // () -> (zf, int)
 // .global sub_800A908
-// .global sub_800B6B0
+// .global eStruct200A008_getUnk01
 // .global sub_800B734
 
 	.include "asm/asm00_2.inc"
@@ -322,7 +322,7 @@
 	.include "asm/asm03_0.inc"
 // .global sub_802D070
 // .global sub_802D150
-// .global get_802D246 // () -> int
+// .global sub_802D246 // () -> int
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -337,12 +337,12 @@
 // .global sub_802F238
 // .global sub_802F530
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
-// .global sub_802FF2C
+// .global cleareMemory_802FF2C
 // .global sub_80301B2
 // .global sub_80301D0
 // .global sub_80301DC
 // .global sub_80302A8
-// .global sub_8030A30
+// .global map_8030A30
 // .global sub_8030A60
 // .global sub_80318B0
 // .global sub_8031A7A
@@ -353,13 +353,13 @@
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global chatbox_8045ED0
-// .global chatbox_8045F1C
-// .global chatbox_8045F2C // (int a1) ->
+// .global chatbox_setFlags2009F38
+// .global chatbox_clear_eFlags2009F38 // (int a1) ->
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C
 
 	.include "asm/asm03_2.inc"
-// .global render_graphicalText_8045F8C
+// .global renderTextGfx_8045F8C
 // .global sub_8045FC6
 // .global sub_8045FD0
 // .global loc_8045FE4
@@ -879,7 +879,7 @@
 // .equ byte_2006720, 0x2006720
 // .equ dword_2006740, 0x2006740
 // .equ dword_2006744, 0x2006744
-// .equ unk_2006750, 0x2006750
+// .equ byte_2006750, 0x2006750
 // .equ word_2006770, 0x2006770
 // .equ byte_2006772, 0x2006772
 // .equ word_2006774, 0x2006774
@@ -972,19 +972,19 @@
 // .equ byte_200B1A2, 0x200B1A2
 // .equ byte_200B1A3, 0x200B1A3
 // .equ dword_200B1B0, 0x200B1B0
-// .equ byte_200BC30, 0x200BC30
+// .equ eStruct200BC30, 0x200BC30
 // .equ byte_200BC31, 0x200BC31
 // .equ byte_200BC32, 0x200BC32
-// .equ byte_200BC35, 0x200BC35
+// .equ eStruct200BC30_JumpOffset05, 0x200BC35
 // .equ byte_200BC3D, 0x200BC3D
 // .equ byte_200BC50, 0x200BC50
 // .equ dword_200BC5C, 0x200BC5C
 // .equ byte_200BC60, 0x200BC60
 // .equ byte_200BC61, 0x200BC61
-// .equ unk_200BC70, 0x200BC70
+// .equ byte_200BC70, 0x200BC70
 // .equ byte_200DD10, 0x200DD10
 // .equ byte_200F348, 0x200F348
-// .equ byte_200F360, 0x200F360
+// .equ eStruct200F360, 0x200F360
 // .equ byte_200F361, 0x200F361
 // .equ byte_200F362, 0x200F362
 // .equ dword_200F368, 0x200F368
@@ -1054,7 +1054,7 @@
 // .equ unk_2032A00, 0x2032A00
 // .equ unk_2033400, 0x2033400
 // .equ unk_2034A00, 0x2034A00
-// .equ word_2036780, 0x2036780
+// .equ eStruct2036780, 0x2036780
 // .equ unk_20399F0, 0x20399F0
 // .equ unk_2039A00, 0x2039A00
 // .equ byte_3001550, 0x3001550

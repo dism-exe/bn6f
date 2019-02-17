@@ -45,8 +45,8 @@
 
 	.include "asm/asm03_1.inc"
 // .global sub_803C754
-// .global sub_803EA60
-// .global sub_803EBF4
+// .global eStruct200BC30_getJumpOffset00
+// .global eStruct200BC30_getRef
 
 	.include "asm/chatbox.inc"
 // .global chatbox_8040818
@@ -59,7 +59,7 @@
 	.include "asm/asm32.inc"
 // .global sub_811980C
 // .global sub_8119854
-// .global sub_811F7EC
+// .global isJoystickIRQActive
 // .global sub_811F7F8
 // .global sub_811FA22
 // .global sub_811FA98

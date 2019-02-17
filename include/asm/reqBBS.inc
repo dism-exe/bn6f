@@ -73,9 +73,9 @@
 // .global getPETNaviSelect // () -> u8
 // .global GetRNG2 // () -> int
 // .global sub_80015FC
-// .global sub_8001778
+// .global sRender_08_setRenderingState
 // .global sub_8001788
-// .global sub_80017A0
+// .global renderInfo_80017A0
 // .global zeroFillVRAM
 // .global sub_80017E0
 // .global sub_800183C
@@ -106,7 +106,7 @@
 // .global chatbox_8045F3C
 
 	.include "asm/asm03_2.inc"
-// .global render_graphicalText_8045F8C
+// .global renderTextGfx_8045F8C
 // .global sub_8045FC6
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
@@ -171,8 +171,8 @@
 // .equ reqBBS_bxo_2001150, 0x2001150
 // .equ byte_2001154, 0x2001154
 // .equ dword_2001178, 0x2001178
-// .equ unk_2001400, 0x2001400
-// .equ dynamicArr, 0x2005780
+// .equ byte_2001400, 0x2001400
+// .equ dynamicArr2005780, 0x2005780
 // .equ byte_2005784, 0x2005784
 // .equ byte_200578D, 0x200578D
 // .equ byte_200578E, 0x200578E

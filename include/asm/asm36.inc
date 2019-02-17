@@ -102,11 +102,11 @@
 // .global sub_80015FC
 // .global zeroFillVRAM
 // .global sub_80017E0
-// .global sub_8001820
+// .global zeroFill_e2009740
 // .global sub_800183C
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
-// .global sub_80024A2
+// .global zeroFill_80024A2
 // .global sub_800260C
 // .global sub_8002668
 
@@ -115,7 +115,7 @@
 // .global sub_80027F4
 // .global sub_800286C
 // .global sub_80028D4
-// .global sub_8002906
+// .global uncompSprite_8002906
 
 	.include "asm/asm00_1.inc"
 // .global sprite_setCoordinates
@@ -123,7 +123,7 @@
 // .global sub_800378C
 // .global sub_80037F4
 // .global sub_8003962
-// .global sub_8003AB2
+// .global zeroFill_8003AB2
 // .global sub_8003BA2
 // .global sub_8003BF4
 // .global sub_8003E98
@@ -162,11 +162,11 @@
 // .global byte_8021640
 
 	.include "asm/asm02.inc"
-// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global getChip8021DA8 // (int chip_idx) -> ChipData*
 // .global sub_8021AB4
 // .global split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
-// .global sub_8021C68
+// .global zeroFill_e2002230
 // .global sub_8021CA8
 
 	.include "asm/asm03_0.inc"
@@ -178,7 +178,7 @@
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
-// .global sub_802FF4C
+// .global camera_802FF4C
 // .global sub_802FFF4
 // .global sub_80301B2
 // .global sub_80301DC
@@ -210,13 +210,13 @@
 // .global sub_803E8F8
 // .global sub_803EA50
 // .global sub_803EA58
-// .global sub_803EA60
-// .global sub_803EA70
+// .global eStruct200BC30_getJumpOffset00
+// .global eStruct200BC30_setJumpOffset00
 // .global sub_803EA78
 // .global sub_803EAE4
 // .global sub_803EBAC
 // .global sub_803EBB8
-// .global sub_803EBF4
+// .global eStruct200BC30_getRef
 // .global sub_803EF60
 // .global sub_803EF74
 // .global sub_803EF7C
@@ -226,13 +226,13 @@
 // .global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
-// .global chatbox_8045F1C
-// .global chatbox_8045F2C // (int a1) ->
+// .global chatbox_setFlags2009F38
+// .global chatbox_clear_eFlags2009F38 // (int a1) ->
 // .global chatbox_8045F3C
 // .global chatbox_8045F4C
 
 	.include "asm/asm03_2.inc"
-// .global render_graphicalText_8045F8C
+// .global renderTextGfx_8045F8C
 // .global sub_8045FBC
 // .global sub_8045FC6
 // .global sub_80465A0 // (void *a1) -> void
@@ -268,7 +268,7 @@
 // .global sub_811F6C0
 // .global sub_811F708
 // .global sub_811F728
-// .global sub_811F7EC
+// .global isJoystickIRQActive
 // .global sub_811F7F8
 // .global sub_811F91C
 // .global sub_811FA0C
@@ -442,7 +442,7 @@
 // .equ byte_2009390, 0x2009390
 // .equ word_2009398, 0x2009398
 // .equ word_200939A, 0x200939A
-// .equ word_200939C, 0x200939C
+// .equ byte_200939C, 0x200939C
 // .equ unk_20096E0, 0x20096E0
 // .equ sSubmenu, 0x2009A30
 // .equ sSubmenu, 0x2009A30

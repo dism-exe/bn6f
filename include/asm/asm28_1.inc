@@ -29,7 +29,7 @@
 	.global sub_809F922
 	.global sub_809F942
 	.global sub_809F9BE
-	.global sub_809F9C8
+	.global zeroFill_e2004348
 	.global sub_809F9DC
 	.global sub_809FAF4
 	.global sub_809FC1C

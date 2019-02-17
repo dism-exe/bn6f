@@ -6,9 +6,13 @@
 # set up a new environment
 pt.clrenv()
 
+# project path
+projPath = '../../../SPB_Data/dev/dis/bn6f/'
+pt.env(projPath=projPath)
+
 ## ROM Paths
 pt.env(ROMPath= '')
-pt.env(elfPath='dev/dis/bn6f/bn6f.elf')
+pt.env(elfPath=projPath + 'bn6f.elf')
 
 ## search utils
 pt.env(compareBinPath= '')
@@ -18,7 +22,7 @@ pt.env(decompPath='docs/decomp/')
 
 ## disassembly utils
 # TODO set this to your project path relative to your analysis idb path
-pt.env(dismProjPath= '../SPB_Data/dev/dis/bn6f/')
+pt.env(dismProjPath= [projPath])
 # header files generated for *.s files. The file structure is duplicated there
 # (ie. files in data/datXX.s will have headers as inc/data/datXX.inc)
 pt.env(incPath='include/')
@@ -53,7 +57,7 @@ pt.env(gameFiles={
 	(0x8021DA8, 0x8026450), # size=0x46a8
 'asm/asm03_0.s':
 	(0x8026450, 0x8031CC4), # size=0xB874
-'data/spritePointers_8031CC4.s':
+'data/spritePointersList.s':
 	(0x8031CC4, 0x8033764), # size=0x1AA0
 'asm/asm03_1.s':
 	(0x8033764, 0x803FD08), # size=0xC5A4

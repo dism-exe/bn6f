@@ -14,33 +14,33 @@ void __noreturn main_()
     int *v10; // r0
     int v11; // r0
 
-    main_static_80004A4();
+    main_initToolkitAndOtherSubsystems();
     sub_8001514();
-    v1 = clear_200AD04();
+    v1 = clear_e200AD04();
     sub_803D1A8(v1, v2, v3, v4);
     while ( 1 )
     {
-        main_static_await_80003D0();
+        main_pollGeneralLCDStatus_STAT_LYC_();
         main_awaitFrame_80003A0();
         sub_80007BE();
         sub_80019A0();
         render_800172C();
-        objRender_802FE0C();
+        copyObjAttributesToIWRAM_802FE0C();
         objRender_8000A44();
         getPalleteAndTransition_80023E0();
-        renderPalletes_8001808();
-        renderPalletesAndObjs_8002650();
-        sprite_handleObjSprites_800289C(v5, v6, v7, v8);
-        render_80015D0();
+        copyPalletesToIWRAM_8001808();
+        copyPalletesToIWRAM_8002650();
+        sprite_resetObjVars_800289C(v5, v6, v7, v8);
+        copyAndFillTo_GFX30025c0_Ptr();
         main_static_80003E4();
         ++*v0[9];
         sub_8000E10();
-        (*(main_jt_subsystem + **v0))();
+        (*(main_subsystemJumpTable + **v0))();
         rng_800154C();
         isSameSubsystem_800A732();
         if ( !v9 )
             subsystem_triggerTransition_800630A();
-        chatbox_onUpdate_803FEB4();
+        chatbox_onUpdate();
         v10 = cb_call_200A880();
         PET_onUpdate_8001B94(v10);
         v11 = sub_3006814();
@@ -64,7 +64,7 @@ void main_awaitFrame_80003A0()
 
 // 0x80003d0
 // () -> void
-__int16 *main_static_await_80003D0()
+__int16 *main_pollGeneralLCDStatus_STAT_LYC_()
 {
     __int16 *result; // r0
 
@@ -178,7 +178,7 @@ int __fastcall main_static_8000454(int a1)
 
 
 // 0x80004a4
-void main_static_80004A4()
+void main_initToolkitAndOtherSubsystems()
 {
     int v0; // r0
     int v1; // r0
@@ -188,10 +188,10 @@ void main_static_80004A4()
 
     v0 = CpuSet_toolKit();
     sub_8006C22(v0);
-    v1 = sub_8001778(&loc_C0);
-    main_static_80017EC(v1, v2, v3, v4);
+    v1 = sRender_08_setRenderingState(&loc_C0);
+    main_zeroFill_80017EC(v1, v2, v3, v4);
     render_800172C();
-    sub_8001850();
+    copyMemory_8001850();
     main_static_8000570();
 }
 

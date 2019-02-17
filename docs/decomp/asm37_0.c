@@ -290,7 +290,7 @@ int sub_813B928()
 
 
 // 0x813b934
-void __fastcall sub_813B934(int a1, int a2, int a3, int a4)
+void __fastcall zeroFill_813B934(int a1, int a2, int a3, int a4)
 {
     int v4; // r10
     int v5; // r2
@@ -2473,7 +2473,7 @@ int sub_813CEA0()
     if ( result != 255 )
     {
         v5 = split9BitsFromBitfield_8021AE0(*(2 * result + 60 * v6 + *(v0 + oToolkit_S_Chip_2002178_Ptr)));
-        result = getChip_8021DA8(v5)[8];
+        result = getChip8021DA8(v5)[8];
         if ( result > v1 )
             result = navicust_801379E(0, v3, 255);
     }
@@ -2658,7 +2658,7 @@ __int64 sub_813D510()
     }
     LODWORD(v8) = v4;
     HIDWORD(v8) = *v3;
-    v5 = getChip_8021DA8(*(v3 + 1));
+    v5 = getChip8021DA8(*(v3 + 1));
     v6 = change_20013F0_800151C() & 3;
     while ( v5[v6] == 255 )
     {

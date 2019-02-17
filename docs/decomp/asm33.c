@@ -235,10 +235,10 @@ void __noreturn sub_81235A4()
     int v12; // r3
     int v13; // r0
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( v4 )
     {
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( v4 )
         {
             *(v0 + 30) = 26;
@@ -342,7 +342,7 @@ int sub_812368C()
     int v13; // r0
     int v14; // r4
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( !v2 )
     {
         *(v0 + 2) = 4;
@@ -350,7 +350,7 @@ int sub_812368C()
         sound_play(131, v3, v4);
         return sub_8119118(0);
     }
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( v2 )
     {
         v14 = 3;
@@ -941,10 +941,10 @@ void sub_81240D0()
     __int16 v9; // r0
     int v10; // r1
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( v4 )
     {
-        if ( !*(v0 + 12) || (sub_811F7EC(), v4) )
+        if ( !*(v0 + 12) || (isJoystickIRQActive(), v4) )
         {
             v9 = *(*(v1 + oToolkit_JoypadPtr) + 4);
             v10 = *(v0 + 12);
@@ -1306,7 +1306,7 @@ void __noreturn sub_812453C()
     {
         v1 = byte_201C400[2 * *(v0 + 20)] - 128;
         *(v0 + 15) = byte_201C400[2 * *(v0 + 20)] + -128;
-        *(v0 + 14) = render_graphicalText_8045F8C(&unk_201C100, v1, &unk_201AA00, 100691968);
+        *(v0 + 14) = renderTextGfx_8045F8C(&unk_201C100, v1, &unk_201AA00, 100691968);
     }
     sub_8124588();
 }
@@ -1528,7 +1528,7 @@ int __noreturn sub_81247EC()
     v2 = 0;
     do
     {
-        result = render_graphicalText_8045F8C(
+        result = renderTextGfx_8045F8C(
                              byte_873D9FC,
                              *&byte_8124864[2 * v0],
                              *(&off_812482C + v0),
@@ -2243,7 +2243,7 @@ signed int sub_8125254()
     else
     {
         chatbox_8040818();
-        chatbox_8045F2C(64);
+        chatbox_clear_eFlags2009F38(64);
         ClearEventFlagFromImmediate(23, 17);
         result = 1;
     }
@@ -2351,11 +2351,11 @@ int __noreturn sub_812546C()
 // 0x81254fc
 int __noreturn sub_81254FC()
 {
-    render_graphicalText_8045F8C(&unk_201CC20, 0, &unk_2018A00, 100700160);
-    render_graphicalText_8045F8C(&unk_201CC20, 1, &unk_2018E00, 100701184);
-    render_graphicalText_8045F8C(&unk_201CC20, 2, &unk_2019200, 100702208);
-    render_graphicalText_8045F8C(&unk_201CC20, 5, &unk_2019600, 100703232);
-    return render_graphicalText_8045F8C(&unk_201CC20, 3, byte_2019A00, 100704256);
+    renderTextGfx_8045F8C(&unk_201CC20, 0, &unk_2018A00, 100700160);
+    renderTextGfx_8045F8C(&unk_201CC20, 1, &unk_2018E00, 100701184);
+    renderTextGfx_8045F8C(&unk_201CC20, 2, &unk_2019200, 100702208);
+    renderTextGfx_8045F8C(&unk_201CC20, 5, &unk_2019600, 100703232);
+    return renderTextGfx_8045F8C(&unk_201CC20, 3, byte_2019A00, 100704256);
 }
 
 
@@ -2742,7 +2742,7 @@ int __fastcall sub_81258F8(int a1, int a2, int a3, int a4)
     v5 = 0;
     do
     {
-        v6 = getChip_8021DA8(v4);
+        v6 = getChip8021DA8(v4);
         if ( v6[9] & 0x40 )
         {
             if ( !(v6[22] & 1) )
@@ -2813,7 +2813,7 @@ int __fastcall sub_8125994(int a1, int a2, int a3, int a4)
     v5 = 0;
     do
     {
-        v6 = getChip_8021DA8(v4);
+        v6 = getChip8021DA8(v4);
         v7 = 4 * (v6[21] - 1);
         if ( v6[9] & 0x40 && !(v6[22] & 1) && v6[7] == 1 )
         {
@@ -2905,7 +2905,7 @@ int __fastcall sub_8125A6C(int a1, int a2, int a3, int a4)
     v5 = 0;
     do
     {
-        v6 = getChip_8021DA8(v4);
+        v6 = getChip8021DA8(v4);
         v7 = 4 * (v6[21] - 1);
         if ( v6[9] & 0x40 && v6[7] == 2 )
         {
@@ -2997,7 +2997,7 @@ int __fastcall sub_8125B3C(int a1, int a2, int a3, int a4)
     v5 = 0;
     do
     {
-        v6 = getChip_8021DA8(v4);
+        v6 = getChip8021DA8(v4);
         v7 = 4 * (v6[21] - 1);
         if ( v6[9] & 0x40 && v6[22] & 1 )
         {
@@ -3088,7 +3088,7 @@ int __fastcall sub_8125C08(int a1, int a2, int a3, int a4)
     v5 = 0;
     do
     {
-        v6 = getChip_8021DA8(dword_140 + v4);
+        v6 = getChip8021DA8(dword_140 + v4);
         v7 = 4 * (v6[21] - 1);
         if ( v6[7] == 4 )
         {
@@ -3602,7 +3602,7 @@ void __fastcall sub_8126430(int a1, int a2, int a3, int a4)
             else
             {
                 v12 = v8;
-                v13 = getChip_8021DA8(*v9);
+                v13 = getChip8021DA8(*v9);
                 CopyWords(*(v13 + 8), v11, 0x80u);
                 v8 = v12;
             }
@@ -3645,7 +3645,7 @@ int __fastcall sub_8126494(int a1, int a2, _WORD *a3)
         if ( *v3 )
         {
             v6 = a3;
-            v7 = getChip_8021DA8(result);
+            v7 = getChip8021DA8(result);
             a3 = v6;
             result = 3 * v7[5];
             *v6 = 0;
@@ -3993,7 +3993,7 @@ int sub_81268D8()
     int v0; // r5
     char *v1; // r0
 
-    v1 = getChip_8021DA8(LOWORD(dword_201F420[*(v0 + 50) + *(v0 + 54)]));
+    v1 = getChip8021DA8(LOWORD(dword_201F420[*(v0 + 50) + *(v0 + 54)]));
     return sub_811983C(v1[7], 1);
 }
 
@@ -4090,7 +4090,7 @@ void __fastcall __noreturn sub_8126B6C(int a1, int a2, int a3, int a4)
         if ( *(v4 + 16) == 2 )
         {
 LABEL_10:
-            chatbox_8045F1C(64);
+            chatbox_setFlags2009F38(64);
             sub_812741C();
         }
         v23 = 0;
@@ -4179,7 +4179,7 @@ int sub_8126DF8()
     IsPaletteFadeActive();
     if ( !v1 )
     {
-        chatbox_8045F2C(64);
+        chatbox_clear_eFlags2009F38(64);
         *(v0 + 2) = 4;
     }
     return sub_81272C4();
@@ -4201,7 +4201,7 @@ int sub_8126E10()
     int v9; // r2
     int v10; // r1
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( v4 )
     {
         if ( v0[16] == 2 || (chatbox_8045F3C(128), !v4) )
@@ -4220,7 +4220,7 @@ int sub_8126E10()
                 v0[16] = v8;
                 sound_play(122, v10, v9);
                 v0[2] = 16;
-                chatbox_8045F1C(64);
+                chatbox_setFlags2009F38(64);
                 return sub_81272C4();
             }
         }
@@ -4228,7 +4228,7 @@ int sub_8126E10()
     else
     {
         sub_811FB64(8, v2, v3);
-        chatbox_8045F1C(64);
+        chatbox_setFlags2009F38(64);
     }
     if ( v0[16] == 1 )
         sub_811F7F8(*(*(v1 + oToolkit_JoypadPtr) + 4), 0x44u, 0, 0);
@@ -4287,7 +4287,7 @@ void __noreturn sub_8126EC0()
     v0[13] = v3;
     if ( *&byte_8126F34[4 * v2] == v3 )
     {
-        chatbox_8045F2C(64);
+        chatbox_clear_eFlags2009F38(64);
         if ( v0[16] == 2 )
         {
             chatbox_8040818();
@@ -4319,7 +4319,7 @@ void sub_8126F40()
     IsPaletteFadeActive();
     if ( !v1 )
     {
-        chatbox_8045F2C(64);
+        chatbox_clear_eFlags2009F38(64);
         chatbox_8045F3C(8);
         if ( !v1 )
         {
@@ -4400,7 +4400,7 @@ void sub_8126FF0()
     IsPaletteFadeActive();
     if ( !v2 )
     {
-        chatbox_8045F2C(64);
+        chatbox_clear_eFlags2009F38(64);
         sub_81440D8();
         sub_8046664();
         ClearEventFlagFromImmediate(23, 19);
@@ -4410,7 +4410,7 @@ void sub_8126FF0()
             v4 = 36;
 LABEL_8:
             chatbox_8040818();
-            chatbox_8045F2C(64);
+            chatbox_clear_eFlags2009F38(64);
             ZeroFillByWord(*(v1 + oToolkit_SubmenuPtr), 0x80u, v5, v6);
             *v0 = v4;
             return;
@@ -4659,7 +4659,7 @@ int __fastcall __noreturn sub_8127580(int a1, int a2, int a3, int a4)
 {
     int v4; // r4
 
-    return render_graphicalText_8045F8C(a4, a1, v4 + a2, a3 + a2);
+    return renderTextGfx_8045F8C(a4, a1, v4 + a2, a3 + a2);
 }
 
 
@@ -5068,16 +5068,16 @@ signed int sub_8127B18()
     int v9; // r2
     char v10; // r1
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( !v4 )
         return sub_811FB64(8, v2, v3);
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( v4 )
     {
         result = *(v0 + 30);
         if ( *(v0 + 30) )
         {
-            sub_811F7EC();
+            isJoystickIRQActive();
             if ( v4 )
             {
                 result = sub_811F7F8(*(*(v1 + oToolkit_JoypadPtr) + 4), 4u, 0, 0);
@@ -5143,10 +5143,10 @@ void __noreturn sub_8127BE4()
     int v6; // r2
     int v7; // r0
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( v4 )
     {
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( v4 )
         {
             *(v0 + 42) = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 4), 4, 1, *(v0 + 42));
@@ -5416,7 +5416,7 @@ int sub_8128008()
     if ( *(v0 + 30) )
     {
         v4 = &dword_2027590[8 * *(v0 + 36)];
-        render_graphicalText_8045F8C(&unk_2025700, *(v4 + 20), byte_2017A20, 100679712);
+        renderTextGfx_8045F8C(&unk_2025700, *(v4 + 20), byte_2017A20, 100679712);
         v3 = *(v4 + 16);
         JUMPOUT(1310008577);
     }
@@ -5906,7 +5906,7 @@ void sub_8128800()
     *(v0 + 38) = *(v0 + 36);
     *(v0 + 34) = *(v0 + 32);
     *(v0 + 14) = *(v0 + 13);
-    if ( (*(v0 + 30) || (sub_811F7EC(), v4)) && ((chatbox_8045F3C(8), v4) || (sub_811F7EC(), v4)) )
+    if ( (*(v0 + 30) || (isJoystickIRQActive(), v4)) && ((chatbox_8045F3C(8), v4) || (sub_811F7EC(), v4)) )
     {
         if ( *(v0 + 30) )
         {
@@ -5930,7 +5930,7 @@ void sub_8128800()
                 }
                 else
                 {
-                    sub_811F7EC();
+                    isJoystickIRQActive();
                     if ( !v4 )
                         sub_8128BF0();
                 }
@@ -6108,7 +6108,7 @@ int sub_8128A44()
         do
         {
             v6 = v2;
-            result = render_graphicalText_8045F8C(
+            result = renderTextGfx_8045F8C(
                                  byte_873D9FC,
                                  byte_201BF00[2 * v1++],
                                  &byte_2017A00[dword_280 * v5],
@@ -6385,7 +6385,7 @@ int sub_8128E2C()
     }
     else
     {
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( !v2 )
         {
             engine_setScreeneffect(12, 16);
@@ -6500,7 +6500,7 @@ void __fastcall __noreturn sub_81290A4(int a1)
     }
     else
     {
-        render_graphicalText_8045F8C(&unk_201C2F8, v2, byte_201B200, 100710400);
+        renderTextGfx_8045F8C(&unk_201C2F8, v2, byte_201B200, 100710400);
         copyTiles();
     }
 }
@@ -6650,10 +6650,10 @@ int sub_812933C()
         v4 = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 2), 2, 1, v3);
         if ( v3 == v4 )
         {
-            sub_811F7EC();
+            isJoystickIRQActive();
             if ( v2 )
             {
-                sub_811F7EC();
+                isJoystickIRQActive();
                 if ( !v2 )
                 {
                     sound_play(131, v9, v10);
@@ -6758,10 +6758,10 @@ void sub_8129454()
             v7 = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 2), 2, 1, v6);
             if ( v6 == v7 )
             {
-                sub_811F7EC();
+                isJoystickIRQActive();
                 if ( v2 )
                 {
-                    sub_811F7EC();
+                    isJoystickIRQActive();
                     if ( !v2 )
                     {
                         sound_play(131, v16, v17);
@@ -6947,7 +6947,7 @@ int sub_812968C()
     result = IsPaletteFadeActive();
     if ( !v2 )
     {
-        chatbox_8045F2C(64);
+        chatbox_clear_eFlags2009F38(64);
         result = 4;
         *(v0 + 3) = 4;
     }
@@ -7000,10 +7000,10 @@ void sub_81296D8()
     v3 = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 2), 3, 1, v2);
     if ( v2 == v3 )
     {
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( v6 )
         {
-            sub_811F7EC();
+            isJoystickIRQActive();
             if ( !v6 )
             {
                 sound_play(131, v7, v8);
@@ -7207,10 +7207,10 @@ void sub_8129870()
     v3 = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 2), 3, 1, v2);
     if ( v2 == v3 )
     {
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( v6 )
         {
-            sub_811F7EC();
+            isJoystickIRQActive();
             if ( !v6 )
             {
                 sound_play(131, v7, v8);
@@ -7360,10 +7360,10 @@ void sub_81299B0()
     v3 = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 2), 3, 1, v2);
     if ( v2 == v3 )
     {
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( v6 )
         {
-            sub_811F7EC();
+            isJoystickIRQActive();
             if ( !v6 )
             {
                 sound_play(131, v7, v8);
@@ -7545,10 +7545,10 @@ void sub_8129B34()
         v4 = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 2), 2, 1, v3);
         if ( v3 == v4 )
         {
-            sub_811F7EC();
+            isJoystickIRQActive();
             if ( v2 )
             {
-                sub_811F7EC();
+                isJoystickIRQActive();
                 if ( !v2 )
                 {
                     sound_play(131, v7, v8);
@@ -7748,10 +7748,10 @@ void sub_8129D00()
     v3 = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 2), v0[32], 1, v2);
     if ( v2 == v3 )
     {
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( v6 )
         {
-            sub_811F7EC();
+            isJoystickIRQActive();
             if ( !v6 )
             {
                 sound_play(131, v7, v8);
@@ -8048,7 +8048,7 @@ void sub_8129F88()
         sub_8132398(0, v2, v3, v4);
         return;
     }
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( !v7 )
     {
         sound_play(131, v5, v6);
@@ -8329,7 +8329,7 @@ void sub_812A2B4()
         IsPaletteFadeActive();
         if ( !v1 )
         {
-            sub_811F7EC();
+            isJoystickIRQActive();
             if ( !v1 )
             {
                 sound_play(131, v2, v3);
@@ -8588,7 +8588,7 @@ void sub_812A574()
     int v4; // r2
 
     IsPaletteFadeActive();
-    if ( v1 || (sub_8048FC4(), v2 != 28) || (sub_811F7EC(), v1) )
+    if ( v1 || (sub_8048FC4(), v2 != 28) || (isJoystickIRQActive(), v1) )
     {
         sub_803CB18();
         if ( !v1 )
@@ -9335,7 +9335,7 @@ int sub_812AC80()
     }
     if ( eStruct200BC30_getRef()[14] != 2 )
     {
-        sub_811F7EC();
+        isJoystickIRQActive();
         if ( !v2 )
         {
             if ( eStruct200BC30_getJumpOffset00() )
@@ -9921,14 +9921,14 @@ int __noreturn sub_812B430()
     int v3; // r2
     int v4; // r0
 
-    render_graphicalText_8045F8C(byte_201BA20, 32, byte_2017A00, 100692480);
+    renderTextGfx_8045F8C(byte_201BA20, 32, byte_2017A00, 100692480);
     v1 = *(v0 + 64);
     v2 = *(v1 + 8);
     v3 = *(v1 + 10);
     v4 = *(v0 + 56);
     *(v4 + 8) = v2;
     *(v4 + 12) = v3;
-    render_graphicalText_8045F8C(byte_201BA20, 33, &unk_2017C80, 100693120);
+    renderTextGfx_8045F8C(byte_201BA20, 33, &unk_2017C80, 100693120);
     copyTiles();
     return copyTiles();
 }
@@ -10094,9 +10094,9 @@ int sub_812B640()
         chatbox_8040818();
         sub_80035A2(0x21u);
         v3 = sub_8004702();
-        sub_80024A2(v3, v4, v5, v6);
+        zeroFill_80024A2(v3, v4, v5, v6);
         v11 = sub_8003962(v7, v8, v9, v10);
-        v15 = sub_8003AB2(v11, v12, v13, v14);
+        v15 = zeroFill_8003AB2(v11, v12, v13, v14);
         sub_8006C22(v15);
         ClearEventFlagFromImmediate(23, 45);
         ClearEventFlagFromImmediate(23, 47);
@@ -10151,9 +10151,9 @@ void sub_812B698()
                 break;
         }
         v5 = sub_8005F40(v1, v2, v3, v4);
-        sub_80024A2(v5, v6, v7, v8);
+        zeroFill_80024A2(v5, v6, v7, v8);
         v13 = sub_8003962(v9, v10, v11, v12);
-        sub_8003AB2(v13, v14, v15, v16);
+        zeroFill_8003AB2(v13, v14, v15, v16);
         *(v0 + 2) = 12;
         sub_80010BE(*(v0 + 26));
         v17 = sub_813C3AC();
@@ -10658,7 +10658,7 @@ void sub_812BC38()
         v7 = 0;
         while ( 1 )
         {
-            if ( getChip_8021DA8(v7)[9] & 0x40 )
+            if ( getChip8021DA8(v7)[9] & 0x40 )
             {
                 TestEventFlag(v7 + 8224);
                 if ( !v8 )
@@ -10684,7 +10684,7 @@ void sub_812BC38()
         v9 = 0;
         do
         {
-            if ( !(getChip_8021DA8(v9)[9] & 0x40) )
+            if ( !(getChip8021DA8(v9)[9] & 0x40) )
                 ClearEventFlag(v9 + 8224);
             ++v9;
         }
@@ -10734,7 +10734,7 @@ void sub_812BD60()
     char v1; // zf
     int v2; // r0
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( !v1 )
     {
         v2 = v0[16];
@@ -10856,7 +10856,7 @@ void sub_812BF10()
     _BYTE *v0; // r5
     char v1; // zf
 
-    sub_811F7EC();
+    isJoystickIRQActive();
     if ( !v1 )
     {
         if ( v0[16] == 17 )

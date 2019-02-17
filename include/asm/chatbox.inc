@@ -2,8 +2,8 @@
 	.equ INC_ASM_CHATBOX, 0
 
 /* Public Symbols */
-	.global chatbox_uncomp_803FD08 // () -> int
-	.global chatbox_dead_uncomp_803FD3C
+	.global chatbox_uncompBasedOnMap_803FD08 // () -> int
+	.global chatbox_uncomp_803FD3C
 	.global chatbox_runScript_202da04 // (u8 scriptID) -> void
 	.global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
 	.global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
@@ -11,7 +11,7 @@
 	.global chatbox_runScript_803FE08 // (u16 *scriptArr, u8 scriptID) -> void
 	.global chatbox_803FE10
 	.global chatbox_runScript_803FE74 // (u16 *scriptList, u8 scriptOffIdx) -> void
-	.global chatbox_onUpdate_803FEB4
+	.global chatbox_onUpdate
 	.global byte_804033B
 	.global off_804033C
 	.global chatbox_runTrainScript // (u8 scriptOffIdx) -> void
@@ -36,8 +36,8 @@
 	.global chatbox_8045EDC
 	.global chatbox_8045EEC
 	.global chatbox_8045EFC
-	.global chatbox_8045F1C
-	.global chatbox_8045F2C // (int a1) ->
+	.global chatbox_setFlags2009F38
+	.global chatbox_clear_eFlags2009F38 // (int a1) ->
 	.global chatbox_8045F3C
 	.global chatbox_8045F4C
 
@@ -96,7 +96,7 @@
 // .global subsystem_launchMail
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
-// .global sub_800B6B0
+// .global eStruct200A008_getUnk01
 
 	.include "asm/asm00_2.inc"
 // .global sub_8013704
@@ -148,7 +148,7 @@
 // .global sub_803D118
 // .global sub_803D128
 // .global sub_803D138
-// .global sub_803F524
+// .global notZero_eByte200AD04
 // .global sub_803F798
 // .global byte_803FCE4
 
@@ -868,7 +868,7 @@
 // .equ dword_2001A04, 0x2001A04
 // .equ dword_2001A60, 0x2001A60
 // .equ dword_2001ABC, 0x2001ABC
-// .equ dynamicArr, 0x2005780
+// .equ dynamicArr2005780, 0x2005780
 // .equ sSubmenu, 0x2009A30
 // .equ unk_2009A80, 0x2009A80
 // .equ unk_2009A82, 0x2009A82
@@ -880,7 +880,7 @@
 // .equ eOWPlayerObject, 0x2009F40
 // .equ unk_200A293, 0x200A293
 // .equ i_joGameSubsysSel, 0x200A480
-// .equ unk_200AFA0, 0x200AFA0
+// .equ byte_200AFA0, 0x200AFA0
 // .equ unk_200B2B0, 0x200B2B0
 // .equ unk_200BEA0, 0x200BEA0
 // .equ unk_200C1A0, 0x200C1A0

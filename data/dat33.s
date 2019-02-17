@@ -24,7 +24,7 @@ sub_812C2C0:
 	bx r0
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq locret_812C2E4
 	mov r0, #0
@@ -157,7 +157,7 @@ loc_812C3EC:
 	mov r1, #8
 	tst r4, r1
 	beq loc_812C3FC
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq loc_812C4C4
 	b loc_812C4C2
@@ -314,7 +314,7 @@ loc_812C536:
 	mov r1, #8
 	tst r4, r1
 	beq loc_812C546
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	bne loc_812C5C6
 	b loc_812C5C8
@@ -419,7 +419,7 @@ loc_812C600:
 	mov r1, #8
 	tst r4, r1
 	beq loc_812C610
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	bne loc_812C6FC
 	b loc_812C6FE
@@ -515,7 +515,7 @@ loc_812C6C2:
 	b loc_812C6FC
 loc_812C6C8:
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_812C6FC
 	mov r0, #0x83
 	bl sound_play // () -> void
@@ -576,7 +576,7 @@ loc_812C738:
 	mov r1, #8
 	tst r4, r1
 	beq loc_812C748
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	bne loc_812C748
 	b loc_812C796
@@ -740,7 +740,7 @@ sub_812C884:
 	tst r0, r0
 	beq loc_812C8A4
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_812C8F4
 	mov r1, #0
 	strh r1, [r5,#0x26]
@@ -762,7 +762,7 @@ loc_812C8A4:
 	b loc_812C8F4
 loc_812C8BE:
 	mov r0, #2
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_812C8D2
 	mov r0, #1
 	strb r0, [r5,#0x15]
@@ -771,7 +771,7 @@ loc_812C8BE:
 	b loc_812C8DA
 loc_812C8D2:
 	mov r0, #1
-	bl sub_811F7EC
+	bl isJoystickIRQActive
 	beq loc_812C8F4
 loc_812C8DA:
 	mov r1, #4
@@ -813,7 +813,7 @@ loc_812C91A:
 	mov r1, #8
 	tst r4, r1
 	beq loc_812C92C
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	bne loc_812C92A
 	b loc_812CA52
@@ -849,7 +849,7 @@ loc_812C954:
 	ldr r2, dword_812CA64 // =0xfedb 
 	cmp r1, r2
 	beq loc_812C986
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	bne loc_812C986
 	ldrh r0, [r5,#0x28]
@@ -1231,7 +1231,7 @@ loc_812CC64:
 	tst r4, r1
 	beq loc_812CC7C
 	push {r0}
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	pop {r0}
 	bne loc_812CC7C
@@ -1428,13 +1428,13 @@ sub_812CDF4:
 	mov r0, #8
 	bl chatbox_8045F3C
 	beq locret_812CE26
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	mov r4, r0
 	bl sub_803EA50
 	mov r6, r0
 	bl sub_803EBAC
 	mov r0, r4
-	bl sub_803EA70
+	bl eStruct200BC30_setJumpOffset00
 	mov r0, r6
 	bl sub_803EA58
 	mov r0, #0xc
@@ -1473,7 +1473,7 @@ sub_812CE50:
 	mov r0, #8
 	bl chatbox_8045F3C
 	beq locret_812CEA2
-	bl sub_803EBF4
+	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
 	cmp r0, #2
 	bne loc_812CE7A
@@ -1483,13 +1483,13 @@ sub_812CE50:
 	bl sub_8149568
 	b locret_812CEA2
 loc_812CE7A:
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	mov r4, r0
 	bl sub_803EA50
 	mov r6, r0
 	bl sub_803EBAC
 	mov r0, r4
-	bl sub_803EA70
+	bl eStruct200BC30_setJumpOffset00
 	mov r0, r6
 	bl sub_803EA58
 	mov r0, #8
@@ -1506,7 +1506,7 @@ sub_812CEA4:
 	push {lr}
 	bl IsPaletteFadeActive // () -> zf
 	beq locret_812CEE2
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq loc_812CEBC
 	bl sub_8149644
@@ -1565,7 +1565,7 @@ loc_812CF1A:
 	mov r1, #8
 	tst r4, r1
 	beq loc_812CF2A
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq loc_812CFB2
 	b loc_812CFAC

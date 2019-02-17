@@ -419,8 +419,8 @@ sub_809F9BE:
 off_809F9C4: .word byte_2000210
 	thumb_func_end sub_809F9BE
 
-	thumb_func_start sub_809F9C8
-sub_809F9C8:
+	thumb_func_start zeroFill_e2004348
+zeroFill_e2004348:
 	push {r4-r7,lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk2004348_Ptr]
@@ -429,7 +429,7 @@ sub_809F9C8:
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_809F9D8: .word 0x480
-	thumb_func_end sub_809F9C8
+	thumb_func_end zeroFill_e2004348
 
 	thumb_func_start sub_809F9DC
 sub_809F9DC:
