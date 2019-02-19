@@ -6,7 +6,7 @@
 	\struct_entry \label\()_CameraPtr, 4 // loc=0xc
 	\struct_entry \label\()_S2011c50_Ptr, 4 // loc=0x10
 	\struct_entry \label\()_Unk2011bb0_Ptr, 4 // loc=0x14
-	\struct_entry \label\()_S2034880_Ptr, 4 // loc=0x18
+	\struct_entry \label\()_BattleStatePtr, 4 // loc=0x18
 	\struct_entry \label\()_Unk200f3a0_Ptr, 4 // loc=0x1c
 	\struct_entry \label\()_Unk2009740_Ptr, 4 // loc=0x20
 	\struct_entry \label\()_CurFramePtr, 4 // loc=0x24

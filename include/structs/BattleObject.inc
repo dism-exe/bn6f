@@ -75,7 +75,7 @@
 	\struct_entry \label\()_RelatedObject1Ptr, 4 // loc=0x4c
 	\struct_entry \label\()_RelatedObject2Ptr, 4 // loc=0x50
 	\struct_entry \label\()_CollisionDataPtr, 4 // loc=0x54
-	\struct_entry \label\()_AIPtr, 4 // loc=0x58
+	\struct_entry \label\()_AIDataPtr, 4 // loc=0x58
 	\struct_entry \label\()_Unk_5c, 4 // loc=0x5c
 	\struct_entry \label\()_ExtraVars, \extra_vars_size // loc=0x60, 44 for t1 and t3, 28 for t4
 	\struct_entry \label\()_SizeWithoutSpriteDataAndLinkedList // loc=0x8c OR 0x7c

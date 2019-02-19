@@ -762,8 +762,15 @@ dword_200A258:: // 0x200a258
 	.space 4
 dword_200A25C:: // 0x200a25c
 	.space 20
-sJoystick:: // 0x200a270
-	.space 32
+
+eJoypad:: // 0x200a270
+	joypad_struct eJoypad
+eJoypadEnd::
+
+unk_200A284:: // 0x200a284
+	.space 4
+
+	.space 8
 byte_200A290:: // 0x200a290
 	.space 1
 byte_200A291:: // 0x200a291
@@ -2596,7 +2603,7 @@ unk_2034814:: // 0x2034814
 	.space 88
 unk_203486C:: // 0x203486c
 	.space 20
-s_2034880:: // 0x2034880
+eBattleState:: // 0x2034880
 	.space 288
 dword_20349A0:: // 0x20349a0
 	.space 4

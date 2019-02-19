@@ -9,7 +9,7 @@ import multiprocessing
 from analyze_source import *
 import analyze_source
 import datatypes
-from datatypes import Size
+from datatypes import Size, DataType
 import parser
 import copy
 import opcodes
@@ -180,6 +180,7 @@ class FunctionTracker:
 
 function_trackers = {}
 global_function_tree = {}
+already_executed_jumptables = set()
 
 def run_analyzer_common(src_file, funcstate, function_start_time):
     function_total_time = 0
@@ -199,17 +200,14 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
         debug_print("start src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
         for line in src_file:
             debug_print("cur src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
-            funcstate.regs["pc"].data.ref.line_num = src_file.line_num
-
-            pc_fileline = funcstate.regs["pc"][-1].fileline
             if not line.startswith("\t"):
                 split_line = line.split(":", 1)
-                funcstate.found_labels[split_line[0]] = FileLine(src_file.filename, src_file.line_num)
                 # if we're currently in an unconditional branch, don't read opcodes until we find the label
                 if funcstate.uncond_branch != "":
                     if funcstate.uncond_branch != split_line[0]:
                         continue
                     funcstate.uncond_branch = ""
+                funcstate.found_labels[split_line[0]] = FileLine(src_file.filename, src_file.line_num)
                 if len(split_line) > 1:
                     line = split_line[1]
                 else:
@@ -217,16 +215,17 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
     
             if line.strip() == "":
                 continue
-
-            if funcstate.uncond_branch != "":
+            elif funcstate.uncond_branch != "":
                 continue
+
+            funcstate.regs["pc"].data.ref.line_num = src_file.line_num
+            pc_fileline = funcstate.regs["pc"][-1].fileline
 
             fileline = FileLine(src_file.filename, src_file.line_num)
             analyze_source.global_fileline = fileline
             if opcodes.read_opcode(line, funcstate, src_file, fileline):
                 new_pc_fileline = funcstate.regs["pc"][-1].fileline
                 if new_pc_fileline.line_num != pc_fileline.line_num or new_pc_fileline.filename != pc_fileline.filename:
-                    
                     sp_datatype_ref = funcstate.regs["sp"].data.ref
                     pc_datatype_ref = funcstate.regs["pc"].data.ref
                     possible_syms = pc_datatype_ref.possible_syms
@@ -234,18 +233,23 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
                         #debug_print("sp offset: %s" % sp_datatype_ref.offset)
                         if sp_datatype_ref.offset == base_stack_offset:
                             fileline_error("Tried performing jumptable at base stack offset!", fileline)
+                        jumptable_already_executed = pc_datatype_ref.original_sym.name in already_executed_jumptables
                         for sym in possible_syms:
                             if sym.type != "F":
                                 fileline_msg("BadFunctionDefinitionWarning: Tried executing jumptable non-function symbol \"%s\"!" % sym.name, fileline)
                             if sym.name not in problem_functions:
-                                debug_print("Start of jumptable function called from \"%s\" (%s:%s)" % (function_name, function_filename, funcstate.function.line_num + 1))
+                                debug_print("Start of jumptable function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
                                 function_total_time += time.time() - function_start_time
                                 #subroutine_return_regs, function_tree["!" + sym.name] = run_analyzer_from_sym(sym, funcstate.regs, time.time())
                                 subroutine_return_regs = run_analyzer_from_sym(sym, funcstate.regs, time.time())
                                 function_start_time = time.time()
-                                debug_print("End of jumptable function called from \"%s\" (%s:%s)" % (function_name, function_filename, funcstate.function.line_num + 1))
+                                debug_print("End of jumptable function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
+                                if jumptable_already_executed:
+                                    break
                             else:
-                                debug_print("Skipped problem function \"%s\" called from \"%s\" (%s:%s)" % (sym.name, function_name, function_filename, funcstate.function.line_num + 1))
+                                debug_print("Skipped problem function \"%s\" called from \"%s\" (%s:%s)" % (sym.name, function_name, src_file.filename, src_file.line_num + 1))
+                        else:
+                            already_executed_jumptables.add(pc_datatype_ref.original_sym.name)
                     elif len(possible_syms) == 1:
                         if sp_datatype_ref.offset == base_stack_offset:
                             # returning from function
@@ -261,12 +265,12 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
                         else:
                             if possible_syms[0].type != "F":
                                 fileline_msg("BadFunctionDefinitionWarning: Tried executing regular non-function symbol \"%s\"!" % possible_syms[0].name, fileline)
-                            debug_print("Start of regular function called from \"%s\" (%s:%s)" % (function_name, function_filename, funcstate.function.line_num + 1))                            
+                            debug_print("Start of regular function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))                            
                             function_total_time = time.time() - function_start_time
                             #subroutine_return_regs, function_tree[possible_syms[0].name] = run_analyzer_from_sym(possible_syms[0], funcstate.regs, time.time())
                             subroutine_return_regs = run_analyzer_from_sym(possible_syms[0], funcstate.regs, time.time())
                             function_start_time = time.time()
-                            debug_print("End of regular function called from \"%s\" (%s:%s)" % (function_name, function_filename, funcstate.function.line_num + 1))
+                            debug_print("End of regular function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
                             #debug_print("return regs: %s" % subroutine_return_regs)
                     else:
                         fileline_error("Tried executing function but there was none!", fileline)
@@ -281,9 +285,9 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
                         break
             else:
                 stripped_line = line.strip()
-                if stripped_line.startswith("thumb_func"):
+                if stripped_line.startswith("thumb_func") or stripped_line.startswith(".align 1, 0"):
                     continue
-                fileline_error("Unknown directive \"%s\"!" % line, fileline)
+                fileline_error("Unknown directive \"%s\"!" % stripped_line, fileline)
 
         # now check if we have any conditional labels left
         for cond_branch_info in funcstate.cond_branches:
@@ -300,6 +304,9 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
             else:
                 fileline_error("Did not find a return point in function!", fileline)
 
+    if funcstate.function.value == 0x8019892: # "object_createCollisionData":
+        return_regs = funcstate.regs
+
     debug_print("funcend: base stack offset: %s, function: %s (%s:%s)" % (base_stack_offset, function_name, function_filename, funcstate.function.line_num + 1))
 
     if function_name in function_trackers:
@@ -314,9 +321,12 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
     return return_regs
 
 def check_pointer_shift_in_sprite_decompress(opcode_params, funcstate, src_file, fileline):
-    if funcstate.function.name != "sprite_decompress":
+    if funcstate.function.name == "sprite_decompress":
+        return not (opcode_params[0] == "r2" and opcode_params[1] == "r2" and opcode_params[2] == "#1")
+    elif funcstate.function.value == 0x8000B8E: # decomp_initGfx_8000B8E
+        return not (opcode_params[0] == "r0")
+    else:
         return True
-    return not (opcode_params[0] == "r2" and opcode_params[1] == "r2" and opcode_params[2] == "#1")
 
 class ReturnValue:
     __slots__ = ("regname", "datatype")
@@ -369,7 +379,77 @@ def set_template_functions():
         "sub_800E994": (
             ReturnValue("r0", datatypes.Primitive.new_byte),
             ReturnValue("r1", datatypes.Primitive.new_byte), # side effect
-        )
+        ),
+        "sub_3007978": (
+            ReturnValue("r0", datatypes.Primitive.new_word),
+            ReturnValue("r1", datatypes.RAMPointer),
+            ReturnValue("r2", datatypes.Primitive, Size.WORD, 0),
+            ReturnValue("r3", datatypes.Primitive.new_word)
+        ),
+        "sub_80113FC": (
+            ReturnValue("r0", datatypes.BattleObject),
+            ReturnValue("r1", datatypes.Primitive, Size.WORD, 8)
+        ),
+        "sub_80C44A8": ( # spawns t1 object 0x56
+            ReturnValue("r0", datatypes.BattleObject),
+            ReturnValue("r1", datatypes.Primitive.new_byte),
+            ReturnValue("r2", datatypes.Primitive, Size.BYTE, 0x14)
+        ),
+        "sub_80E1620": ( # spawns t4 object 0x14
+            ReturnValue("r0", datatypes.BattleObject),
+            ReturnValue("r1", datatypes.Primitive.new_byte),
+            ReturnValue("r2", datatypes.Primitive, Size.BYTE, 0x4)
+        ),
+        "object_setCounterTime": (
+            ReturnValue("r1", datatypes.Primitive.new_byte),
+            ReturnValue("r2", datatypes.RAMPointer),
+            ReturnValue("r3", datatypes.UnknownDataType)
+        ),
+        "get_802D246": (
+            ReturnValue("r0", datatypes.Primitive.new_word),
+        ),
+        "battle_isTimeStop": (
+            ReturnValue("r0", datatypes.Primitive.new_hword),
+            ReturnValue("r1", datatypes.Primitive, Size.BYTE, 0x4),
+        ),
+        "battle_getFlags": (
+            ReturnValue("r0", datatypes.Primitive.new_hword),
+            ReturnValue("r1", datatypes.RAMPointer), # toolkit
+        ),
+        "sub_80C44C8": (
+            ReturnValue("r1", datatypes.Primitive, Size.BYTE, 0x8),
+        ),
+        "object_setAnimation": (
+            ReturnValue("r0", datatypes.Primitive, Size.BYTE, 0xff),
+            ReturnValue("r1", datatypes.Primitive.new_hword),
+        ),
+        "sub_801140E": (
+            ReturnValue("r0", datatypes.RAMPointer, 0, syms["NULL"]),
+            ReturnValue("r1", datatypes.Primitive, Size.BYTE, 0x8),
+        ),
+        "sub_80C46B0": (
+            ReturnValue("r1", datatypes.Primitive, Size.BYTE, 0x8),
+        ),
+        "battle_isPaused": (
+            ReturnValue("r0", datatypes.Primitive.new_byte),
+            ReturnValue("r1", datatypes.RAMPointer), # game state
+        ),
+        "sub_800E680": (
+            ReturnValue("r0", datatypes.Primitive.new_byte),
+            ReturnValue("r1", datatypes.RAMPointer), # side effect
+            ReturnValue("r2", datatypes.ROMPointer, syms["sub_3007958"]), # side effect
+            ReturnValue("r3", datatypes.Primitive.new_byte) # side effect
+        ),
+        "object_isValidPanel": (
+            ReturnValue("r0", datatypes.Primitive.new_byte),
+            ReturnValue("r1", datatypes.Primitive.new_byte)
+        ),
+        "sub_8000C00": (
+            ReturnValue("r0", datatypes.Primitive.new_word),
+            ReturnValue("r1", datatypes.Primitive.new_word),
+            ReturnValue("r2", datatypes.Primitive.new_word),
+            ReturnValue("r3", datatypes.Primitive.new_word),
+        ),
     }
 
 def check_stored_functions(opcode_params, funcstate, src_file, fileline):
@@ -385,7 +465,62 @@ def check_stored_functions(opcode_params, funcstate, src_file, fileline):
     fileline_msg("Called stored function \"%s\"." % opcode_params, fileline)
     return False
 
-def read_jumptable(jumptable):
+def check_loc_800EA38(opcode_params, funcstate, src_file, fileline):
+    if funcstate.function.value != 0x800EA22: # sub_800EA22
+        return True
+    funcstate.regs["r3"].set_new_reg(analyzer.RegisterInfo(datatypes.Primitive(Size.BYTE, 0x8c).wrap(), fileline))
+    return True
+
+def check_sub_810AB8C(opcode_params, funcstate, src_file, fileline):
+    if funcstate.function.value != 0x810ab8c: # sub_810AB8C
+        return True
+    funcstate.regs["r4"].set_new_reg(analyzer.RegisterInfo(datatypes.Primitive(Size.BYTE).wrap(), fileline))
+    return False
+
+def check_sub_80127C0(opcode_params, funcstate, src_file, fileline):
+    if funcstate.function.value != 0x80127c0: # sub_80127C0
+        return True
+    funcstate.regs["r6"].set_new_reg(analyzer.RegisterInfo(datatypes.Primitive(Size.BYTE).wrap(), fileline))
+    funcstate.regs["r4"].set_new_reg(analyzer.RegisterInfo(datatypes.Primitive().wrap(), fileline))
+    return False
+
+def check_sub_800FC30(opcode_params, funcstate, src_file, fileline):
+    if funcstate.function.value != 0x800FC30: # sub_800FC30
+        return True
+    if funcstate.regs["r1"].data.type == DataType.POINTER:
+        return funcstate.regs["r1"].data.ref.sym.value != 0x800FCD5      
+    else:
+        return True
+
+# make system that only enables callbacks when a function is called
+# also allows the callbacks to unset themselves once they've been called
+def check_sub_802EF74_ldr(opcode_params, funcstate, src_file, fileline):
+    if funcstate.function.value != 0x802EF74:
+        return True
+    if opcode_params[0] == "r6" and opcode_params[1] == "r0":
+        funcstate.regs["r6"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
+        return False
+
+    return True
+
+def check_sub_802EF74_tst(opcode_params, funcstate, src_file, fileline):
+    if funcstate.function.value != 0x802EF74:
+        return True
+    if opcode_params[0] == "r7":
+        funcstate.regs["r7"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
+        return False
+
+    return True
+
+def check_sub_8013892_push_r7(opcode_params, funcstate, src_file, fileline):
+    if funcstate.function.value != 0x8013892: # sub_8013892
+        return True
+    if opcode_params == "{r7}":
+        funcstate.regs["r4"].set_new_reg(analyzer.RegisterInfo(datatypes.AIData().wrap(), fileline))
+    return True
+
+# funcstate.regs["r1"]
+def read_battle_object_jumptables():
     """
     Returns a jumptable's entries in a list specified by the given label.
     
@@ -400,14 +535,10 @@ def read_jumptable(jumptable):
         Thrown if the jumptable was not found.
     """
 
-    found_jumptable = False
+    jumptables = ("T1BattleObjectJumptable",)#, "T3BattleObjectJumptable", "T4BattleObjectJumptable")
 
-    src_file = parser.find_and_position_at_nonlocal_label(jumptable)
-    #debug_print("line: %s" % src_file.cur_line)
-    words = parser.parse_word_directives(src_file)
-    #debug_print("words: %s" % words)
     registers = RegisterState()
-    fileline = FileLine(src_file.filename, src_file.line_num)
+    fileline = default_fileline
     registers["r0"].default_initialize(fileline)
     registers["r1"].default_initialize(fileline)
     registers["r2"].default_initialize(fileline)
@@ -418,18 +549,32 @@ def read_jumptable(jumptable):
     registers["r7"].append(RegisterInfo(datatypes.BattleObject(-0x10).wrap(), fileline))
     registers["r8"].default_initialize(fileline)
     registers["r9"].default_initialize(fileline)
-    registers["r10"].append(RegisterInfo(datatypes.RAMPointer().wrap(), fileline))
+    registers["r10"].append(RegisterInfo(datatypes.Toolkit().wrap(), fileline))
     registers["r12"].default_initialize(fileline)
     registers["lr"].append(RegisterInfo(datatypes.ProgramCounter("asm00_1.s", 99).wrap(), fileline))
     registers["sp"].append(RegisterInfo(datatypes.Stack().wrap(), fileline))
     registers["pc"].default_initialize(fileline)
     opcodes.bl_opcode.append_callback(check_stored_functions)
     opcodes.bl_opcode.append_callback(opcodes.check_spawn_battle_object)
+    opcodes.push_opcode.append_callback(check_sub_8013892_push_r7)
     opcodes.ble_opcode.append_callback(opcodes.check_loc_80EE4F0)
     opcodes.lsl_imm_opcode.append_callback(check_pointer_shift_in_sprite_decompress)
     opcodes.lsr_imm_opcode.append_callback(check_pointer_shift_in_sprite_decompress)
-    debug_print("function: %s" % parser.strip_plus1(words[0]))
+    opcodes.bne_opcode.append_callback(check_loc_800EA38)
+    opcodes.and_opcode.append_callback(check_sub_80127C0)
+    opcodes.cmp_reg_opcode.append_callback(check_sub_800FC30)
+    opcodes.ldrb_rb_imm_opcode.append_callback(check_sub_810AB8C)
+    opcodes.ldr_rb_imm_opcode.append_callback(check_sub_802EF74_ldr)
+    #opcodes.tst_opcode.append_callback(check_sub_802EF74_tst)
+
     #global global_function_tree
     #global_function_tree = run_analyzer_from_label(parser.strip_plus1(words[0]), registers, time.time())[1]
     set_template_functions()
-    run_analyzer_from_label(parser.strip_plus1(words[0]), registers, time.time())
+    for jumptable in jumptables:
+        src_file = parser.find_and_position_at_nonlocal_label(jumptable)
+        words = parser.parse_word_directives(src_file)
+        for word in words[:1]:
+            if word not in function_trackers:
+                function_name = parser.strip_plus1(word)
+                debug_print("function: %s" % function_name)
+                run_analyzer_from_label(function_name, registers, time.time())

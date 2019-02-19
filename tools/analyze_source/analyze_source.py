@@ -52,10 +52,10 @@ class ScannedFilesAndSyms:
         self.syms = syms
 
 def global_fileline_error(error_msg):
-    raise RuntimeError("%s:%s: %s" % (global_fileline.filename, global_fileline.line_num + 1, error_msg))
+    raise RuntimeError("%s:%s: %s" % (analyze_source.global_fileline.filename, analyze_source.global_fileline.line_num + 1, error_msg))
 
 def global_fileline_msg(fileline_msg):
-    debug_print("%s:%s: %s" % (global_fileline.filename, global_fileline.line_num + 1, fileline_msg))
+    debug_print("%s:%s: %s" % (analyze_source.global_fileline.filename, analyze_source.global_fileline.line_num + 1, fileline_msg))
 
 def fileline_error(error_msg, fileline):
     raise RuntimeError("%s:%s: %s" % (fileline.filename, fileline.line_num + 1, error_msg))
@@ -64,12 +64,10 @@ def fileline_msg(fileline_msg, fileline):
     debug_print("%s:%s: %s" % (fileline.filename, fileline.line_num + 1, fileline_msg))
 
 def debug_print(msg, override=False):
-    return
-    # if override:
-        # if analyze_source.debug_file is not None:
-            # analyze_source.debug_file.write(msg + "\n")
-        # else:
-            # print(msg)
+    if analyze_source.debug_file is not None:
+        analyze_source.debug_file.write(msg + "\n")
+    else:
+        print(msg)
 
 import analyzer
 import datatypes
@@ -142,7 +140,7 @@ def main():
     datatypes.set_syms_and_scanned_files(syms, scanned_files)
     global analyzer_start_time
     analyzer_start_time = time.time()
-    analyzer.read_jumptable("T1BattleObjectJumptable")
+    analyzer.read_battle_object_jumptables()
 
 def recursive_print_function_tree(f, function_tree, indentation_level=0):
     for function, subtree in function_tree.items():
@@ -162,8 +160,8 @@ def print_post_output_info(start_time, analyzer_end_time):
         post_output += "%s: time: %s, count: %s, avg: %s\n" % (function_name_and_count[0], function_tracker.time, function_tracker.count, function_tracker.time / function_tracker.count)
         function_time_sum += function_tracker.time
 
-    with open("trace_path.txt", "w+") as f:
-        recursive_print_function_tree(f, analyzer.global_function_tree)
+    #with open("trace_path.txt", "w+") as f:
+    #    recursive_print_function_tree(f, analyzer.global_function_tree)
 
     # with open("function_tracker_output.pickle", "wb+") as f:
     #     pickle.dump(analyzer.function_trackers, f)
@@ -191,8 +189,8 @@ if __name__ == "__main__":
             print('\a')
             time.sleep(0.4)
         print_post_output_info(start_time, analyzer_end_time)
-        print("%s:%s: Error!" % (global_fileline.filename, global_fileline.line_num))
-        raise RuntimeError
+        #print("%s:%s: Error!" % (global_fileline.filename, global_fileline.line_num))
+        global_fileline_error("Error!")
 
     analyzer_end_time = time.time()
     for i in range(5):

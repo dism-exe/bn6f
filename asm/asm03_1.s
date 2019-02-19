@@ -17347,7 +17347,7 @@ off_803DE58: .word sCamera+0x50 // sCamera.unk_50
 	thumb_func_start sub_803DE5C
 sub_803DE5C:
 	push {lr}
-	ldr r0, off_803DE84 // =sJoystick+20 
+	ldr r0, =unk_200A284
 	mov r1, #1
 	str r1, [r0]
 	pop {pc}
@@ -17357,7 +17357,7 @@ sub_803DE5C:
 	thumb_local_start
 sub_803DE68:
 	push {lr}
-	ldr r0, off_803DE84 // =sJoystick+20 
+	ldr r0, =unk_200A284
 	mov r1, #0
 	str r1, [r0]
 	pop {pc}
@@ -17366,7 +17366,7 @@ sub_803DE68:
 	thumb_func_start sub_803DE72
 sub_803DE72:
 	push {lr}
-	ldr r0, off_803DE84 // =sJoystick+20 
+	ldr r0, =unk_200A284
 	ldr r0, [r0]
 	tst r0, r0
 	beq locret_803DE80
@@ -17374,7 +17374,8 @@ sub_803DE72:
 locret_803DE80:
 	pop {pc}
 	.balign 4, 0x00
-off_803DE84: .word sJoystick+0x14 // sJoystick.unk_14
+// 0x803DE84
+	.pool
 	thumb_func_end sub_803DE72
 
 	thumb_func_start sub_803DE88
@@ -18667,7 +18668,7 @@ sub_803E80C:
 	bl sub_800A7D0 // () -> (zf, int)
 	beq locret_803E826
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0]
 	cmp r0, #4
 	bne locret_803E826

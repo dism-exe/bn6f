@@ -477,7 +477,7 @@ off_802683C: .word byte_80267D5
 sub_8026840:
 	push {r4-r7,lr}
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_S2034880_Ptr]
+	ldr r2, [r2,#oToolkit_BattleStatePtr]
 	ldrb r0, [r2,#7]
 	cmp r0, #0
 	bne loc_8026858
@@ -498,7 +498,7 @@ loc_8026858:
 	mov r4, #0
 	ldr r5, off_8026BF0 // =dword_20364C0 
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	mov r1, #0x29 
 	bl sub_80136CC
@@ -546,7 +546,7 @@ loc_80268AC:
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	ldr r5, off_8026BF0 // =dword_20364C0 
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	mov r1, #0x29 
 	bl sub_80136CC
@@ -577,7 +577,7 @@ loc_802690E:
 	sub r0, #1
 	strh r0, [r5,#0x20] // (word_20364E0 - 0x20364c0)
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_S2034880_Ptr]
+	ldr r2, [r2,#oToolkit_BattleStatePtr]
 	ldrb r0, [r2,#7]
 	add r1, r0, #1
 	strb r1, [r2,#7]
@@ -862,7 +862,7 @@ loc_8026B8C:
 	cmp r0, #0
 	bne loc_8026BE8
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#7]
 	cmp r0, #1
 	bne loc_8026BB6
@@ -880,7 +880,7 @@ loc_8026BC2:
 	cmp r0, #5
 	bne loc_8026BD6
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#7]
 	cmp r0, #5
 	bge loc_8026BE0
@@ -1079,7 +1079,7 @@ loc_8026D5C:
 	mov r0, #0x80
 	bl sound_play // () -> void
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#7]
 	cmp r0, #1
 	bne locret_8026DA6
@@ -1305,7 +1305,7 @@ loc_8026F34:
 	bl sub_802D258
 	mov r4, r0
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	mov r1, #0x3e 
 	bl sub_80136E4
@@ -1794,7 +1794,7 @@ loc_80272FE:
 loc_8027308:
 	ldrb r1, [r4,#1]
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	bl sub_8015BEC
 	add r4, #2
@@ -2004,7 +2004,7 @@ sub_8027458:
 	tst r1, r2
 	beq loc_802748E
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_S2034880_Ptr]
+	ldr r2, [r2,#oToolkit_BattleStatePtr]
 	mov r1, #0
 	strb r1, [r2,#0x17]
 loc_802748E:
@@ -3067,7 +3067,7 @@ sub_8027D78:
 	tst r0, r0
 	bne locret_8027E10
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#7]
 	cmp r0, #1
 	bne loc_8027DD4
@@ -3140,7 +3140,7 @@ sub_8027E2C:
 	bl sub_802A40C
 	bl sub_8027E90
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0x17]
 	cmp r0, #0
 	beq loc_8027E52
@@ -3150,7 +3150,7 @@ loc_8027E52:
 	ldrb r6, [r5,#6]
 	bl sub_8027EE8
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	ldrb r1, [r5,#0x10]
 	cmp r1, #0
@@ -4066,7 +4066,7 @@ sub_80284E2:
 	and r0, r1
 	push {r0}
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	ldrb r1, [r1,#0xd]
 	bl sub_80109A4
 	str r0, [sp,#0x10]
@@ -4554,7 +4554,7 @@ byte_802897C: .byte 0x2, 0x0, 0x2, 0x0, 0x2, 0x0, 0x16, 0x10, 0xE, 0x0, 0x16, 0x
 sub_802899C:
 	push {r4-r6,lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0x17]
 	cmp r0, #0
 	beq locret_80289CE
@@ -5596,7 +5596,7 @@ loc_802918C:
 	push {r3}
 	push {r0}
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	ldrb r1, [r1,#0xd]
 	bl sub_80109A4
 	strh r0, [r4,#0xc]
@@ -5645,7 +5645,7 @@ loc_80291E6:
 loc_80291F6:
 	strb r0, [r6]
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#7]
 	sub r0, #1
 	mov r3, #6
@@ -5779,7 +5779,7 @@ sub_80292CC:
 	strh r0, [r4]
 	push {r0}
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	ldrb r1, [r1,#0xd]
 	bl sub_80109A4
 	strh r0, [r4,#0xc]
@@ -5957,14 +5957,14 @@ loc_8029426:
 	tst r1, r2
 	beq loc_802943A
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_S2034880_Ptr]
+	ldr r2, [r2,#oToolkit_BattleStatePtr]
 	mov r1, #0
 	strb r1, [r2,#0x17]
 loc_802943A:
 	ldr r0, [r0,#8]
 	strh r7, [r0]
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_S2034880_Ptr]
+	ldr r2, [r2,#oToolkit_BattleStatePtr]
 	mov r1, #0x44 
 	ldrb r3, [r2,r1]
 	tst r3, r3
@@ -6016,7 +6016,7 @@ locret_8029486:
 sub_8029488:
 	push {r4,r6,r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_S2034880_Ptr]
+	ldr r4, [r4,#oToolkit_BattleStatePtr]
 	mov r0, #0x44 
 	ldrb r0, [r4,r0]
 	tst r0, r0
@@ -6321,7 +6321,7 @@ sub_8029688:
 	mov r0, #0
 	str r0, [sp]
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	mov r0, #0x44 
 	ldrb r0, [r1,r0]
 	tst r0, r0
@@ -6466,7 +6466,7 @@ sub_8029788:
 	mov r0, #0
 	str r0, [sp]
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	mov r0, #0x44 
 	ldrb r0, [r1,r0]
 	tst r0, r0
@@ -6568,7 +6568,7 @@ sub_802983C:
 	mov r0, #0
 	str r0, [sp]
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	mov r0, #0x44 
 	ldrb r0, [r1,r0]
 	tst r0, r0
@@ -6861,7 +6861,7 @@ locret_8029A34:
 sub_8029A36:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#7]
 	cmp r0, #1
 	bne loc_8029A52
@@ -7756,7 +7756,7 @@ sub_802A11C:
 	lsl r0, r0, #2
 	ldr r4, [r1,r0]
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	mov r1, #0x32 
 	bl sub_80136D8
@@ -7827,7 +7827,7 @@ sub_802A220:
 	bne loc_802A2A2
 loc_802A248:
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	mov r1, #0x29 
 	bl sub_80136CC
@@ -8056,7 +8056,7 @@ sub_802A40C:
 	push {r4,r6,r7,lr}
 	mov r7, #0
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_S2034880_Ptr]
+	ldr r6, [r6,#oToolkit_BattleStatePtr]
 	bl sub_802D234
 	cmp r0, #2
 	beq loc_802A42C
@@ -8149,13 +8149,13 @@ sub_802A49C:
 	cmp r0, r1
 	bne loc_802A4CE
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	bl sub_8015B54
 	b loc_802A4D8
 loc_802A4CE:
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	bl sub_8015B5C
 loc_802A4D8:
@@ -8250,7 +8250,7 @@ dword_802A560: .word 0x3785
 sub_802A564:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	ldrb r1, [r5,#0x15]
 	cmp r1, #0
@@ -8304,7 +8304,7 @@ sub_802A5A0:
 	cmp r0, #9
 	beq loc_802A5D6
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	mov r1, #0x61 
 	bl sub_80136CC
@@ -8339,7 +8339,7 @@ sub_802A5DA:
 	b loc_802A616
 loc_802A604:
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	mov r1, #0x60 
 	bl sub_80136CC
@@ -8382,7 +8382,7 @@ loc_802A63E:
 sub_802A646:
 	push {lr}
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_S2034880_Ptr]
+	ldr r3, [r3,#oToolkit_BattleStatePtr]
 	mov r0, #0x44 
 	ldrb r0, [r3,r0]
 	tst r0, r0
@@ -8588,7 +8588,7 @@ off_802A930: .word unk_2030E60
 sub_802A934:
 	push {lr}
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	ldrb r2, [r1,#4]
 	strb r2, [r1,#0x12]
 	mov r0, #0x80
@@ -9141,7 +9141,7 @@ sub_802AD84:
 	strb r1, [r2,#2]
 	bl sub_800EC3C
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	ldrb r0, [r1,#8]
 	sub r0, #1
 	strb r0, [r1,#8]
@@ -9383,7 +9383,7 @@ sub_802AF42:
 	strb r1, [r2,#2]
 	bl sub_800EC3C
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	ldrb r0, [r1,#8]
 	sub r0, #1
 	strb r0, [r1,#8]
@@ -11258,7 +11258,7 @@ sub_802C170:
 	mov r0, r1
 	push {r0,r5}
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_S2034880_Ptr]
+	ldr r7, [r7,#oToolkit_BattleStatePtr]
 	push {r0}
 	bl sub_80103EC
 	mov r5, r0
@@ -11511,7 +11511,7 @@ sub_802C348:
 sub_802C34E:
 	push {r4-r7,lr}
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	ldrb r1, [r1,#0xd]
 	mov r2, #0xc
 	mul r1, r2
@@ -12169,7 +12169,7 @@ locret_802C8E8:
 	thumb_local_start
 sub_802C8EA:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	ldrb r2, [r1,#0xd]
 	mov r1, #8
 	mul r2, r1
@@ -12200,7 +12200,7 @@ loc_802C91A:
 	bl sub_800A704
 	str r0, [r7,#4]
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0x1e]
 	strb r0, [r7,#1]
 	bl get_802D246 // () -> int
@@ -12215,7 +12215,7 @@ loc_802C91A:
 	lsl r0, r2, #3
 	add r0, #0x4c 
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_S2034880_Ptr]
+	ldr r6, [r6,#oToolkit_BattleStatePtr]
 	add r0, r0, r6
 	add r2, #8
 	ldrb r1, [r6,r2]
@@ -12319,7 +12319,7 @@ sub_802C9EA:
 	ldr r6, off_802CB14 // =unk_203526C 
 	ldr r7, off_802CB18 // =unk_2035260 
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0x10]
 	tst r0, r0
 	beq loc_802CA08
@@ -12348,7 +12348,7 @@ sub_802CA1E:
 	mul r0, r1
 	add r0, #0x4c 
 	mov r5, r10
-	ldr r5, [r5,#oToolkit_S2034880_Ptr]
+	ldr r5, [r5,#oToolkit_BattleStatePtr]
 	add r5, r5, r0
 	mov r4, #0
 loc_802CA32:
@@ -12497,7 +12497,7 @@ loc_802CB4E:
 	beq loc_802CB66
 	mov r6, r2
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	mov r4, #2
 	eor r0, r6
@@ -12565,7 +12565,7 @@ sub_802CBCC:
 	ldrh r1, [r5,#8]
 	ldrh r2, [r5,#0xa]
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_S2034880_Ptr]
+	ldr r3, [r3,#oToolkit_BattleStatePtr]
 	ldrb r3, [r3,#0xd]
 	tst r3, r3
 	beq loc_802CBE2
@@ -12654,7 +12654,7 @@ loc_802CC60:
 	ldrh r0, [r5,#8]
 	ldrh r1, [r5,#0xa]
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_S2034880_Ptr]
+	ldr r2, [r2,#oToolkit_BattleStatePtr]
 	ldrb r2, [r2,#0xd]
 	tst r2, r2
 	beq loc_802CC7C
@@ -12878,7 +12878,7 @@ sub_802CE54:
 	thumb_func_start sub_802CE60
 sub_802CE60:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	ldrb r1, [r1,#0xd]
 	eor r0, r1
 	mov r1, #0x10
@@ -12993,7 +12993,7 @@ sub_802CEF4:
 	orr r2, r1
 	cmp r2, #0
 	beq loc_802CFB8
-	ldr r3, [r5,#oBattleObject_AIPtr]
+	ldr r3, [r5,#oBattleObject_AIDataPtr]
 	add r3, #0xa0
 	mov r0, #1
 	str r0, [r3,#0x30]
@@ -13379,7 +13379,7 @@ sub_802D1C8:
 	mul r0, r1
 	add r0, #0x84
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_S2034880_Ptr]
+	ldr r4, [r4,#oToolkit_BattleStatePtr]
 	add r4, r4, r0
 	mov r5, #0
 loc_802D1D8:
@@ -13432,7 +13432,7 @@ off_802D230: .word dword_2006740
 sub_802D234:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldr r0, [r0,#0x3c]
 	bl sub_802D242
 	pop {pc}
@@ -13449,7 +13449,7 @@ sub_802D242:
 get_802D246:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldr r0, [r0,#0x3c]
 	bl sub_802D254 // () -> int
 	pop {pc}
@@ -13466,7 +13466,7 @@ sub_802D254:
 sub_802D258:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldr r0, [r0,#0x3c]
 	bl sub_802D266
 	pop {pc}
@@ -13482,7 +13482,7 @@ sub_802D266:
 sub_802D26A:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldr r0, [r0,#0x3c]
 	bl sub_802D278
 	pop {pc}
@@ -13562,7 +13562,7 @@ battleSettings_802D2B2:
 	bl battleSettings_getUnkOptSettings // () -> u32
 	mov r4, r0
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_S2034880_Ptr]
+	ldr r7, [r7,#oToolkit_BattleStatePtr]
 	ldrb r0, [r7,#0x1a]
 	sub r0, #1
 	add r0, r0, r0
@@ -13591,7 +13591,7 @@ off_802D300: .word byte_203CA50
 
 	thumb_func_start sub_802D310
 sub_802D310:
-	ldr r0, [r5,#oBattleObject_AIPtr]
+	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	sub r0, #0xf
 	add r0, #0xff
 	mov r1, #0
@@ -14147,7 +14147,7 @@ sub_802D738:
 	bl object_setAnimation
 	mov r0, #0
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
-	ldr r1, [r5,#oBattleObject_AIPtr]
+	ldr r1, [r5,#oBattleObject_AIDataPtr]
 	str r0, [r1,#0x68]
 	mov r0, #1
 	bl object_setCollisionRegion
@@ -14198,7 +14198,7 @@ sub_802D7A0:
 	mov r2, #0x64 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 loc_802D7E8:
-	ldr r4, [r5,#oBattleObject_AIPtr]
+	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x29 
 	bl sub_801382E
@@ -14375,9 +14375,9 @@ sub_802D950:
 	bl object_setAnimation
 	mov r0, #0
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
-	ldr r1, [r5,#oBattleObject_AIPtr]
+	ldr r1, [r5,#oBattleObject_AIDataPtr]
 	str r0, [r1,#0x68]
-	ldr r1, [r5,#oBattleObject_AIPtr]
+	ldr r1, [r5,#oBattleObject_AIDataPtr]
 	mov r0, #0
 	str r0, [r1,#0x5c]
 	mov r0, #4
@@ -14409,7 +14409,7 @@ sub_802D9B0:
 	add r0, r0, r2
 	mov r2, #0x64 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
-	ldr r4, [r5,#oBattleObject_AIPtr]
+	ldr r4, [r5,#oBattleObject_AIDataPtr]
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0x29 
 	bl sub_80136CC
@@ -15300,7 +15300,7 @@ sub_802E156:
 	bl sub_802E09A
 	beq locret_802E170
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	bl sub_802E070
 	mov r4, r0
@@ -15544,7 +15544,7 @@ loc_802E37A:
 	mov r1, #1
 loc_802E37C:
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
 	cmp r0, r6
 	bne loc_802E406
@@ -16973,7 +16973,7 @@ sub_802EF74:
 	lsl r0, r0, #4
 	add r0, #0x80
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	add r0, r0, r1
 loc_802EFA4:
 	ldr r6, [r0]

@@ -2905,20 +2905,20 @@ loc_300724E:
 	mov r4, #4
 	tst r0, r4
 	beq loc_300725C
-	ldr r4, byte_3007510+4 // =0x8
+	ldr r4, byte_3007514 // =0x8
 	tst r3, r4
 	bne loc_300725C
 	pop {r4,r6,r7,pc}
 loc_300725C:
-	ldr r4, byte_3007510+8 // =0x0
+	ldr r4, byte_3007518 // =0x0
 	tst r0, r4
 	beq loc_300726A
-	ldr r4, byte_3007510+12 // =0x0
+	ldr r4, byte_300751c // =0x0
 	tst r3, r4
 	bne loc_300726A
 	pop {r4,r6,r7,pc}
 loc_300726A:
-	ldr r4, byte_3007510+16 // =0x0
+	ldr r4, byte_3007520 // =0x0
 	tst r0, r4
 	beq loc_3007272
 	pop {r4,r6,r7,pc}
@@ -2944,21 +2944,21 @@ loc_3007290:
 	tst r2, r4
 	beq loc_30072A0
 	ldr r3, [r7,#0x30]
-	ldr r4, byte_3007510+4 // =0x8
+	ldr r4, byte_3007514 // =0x8
 	tst r3, r4
 	bne loc_30072A0
 	pop {r4,r6,r7,pc}
 loc_30072A0:
-	ldr r4, byte_3007510+8 // =0x0
+	ldr r4, byte_3007518 // =0x0
 	tst r2, r4
 	beq loc_30072B0
 	ldr r3, [r7,#0x30]
-	ldr r4, byte_3007510+20 // =0x0
+	ldr r4, byte_3007524 // =0x0
 	tst r3, r4
 	bne loc_30072B0
 	pop {r4,r6,r7,pc}
 loc_30072B0:
-	ldr r4, byte_3007510+16 // =0x0
+	ldr r4, byte_3007520 // =0x0
 	tst r2, r4
 	beq loc_30072B8
 	pop {r4,r6,r7,pc}
@@ -2976,13 +2976,13 @@ loc_30072C8:
 	tst r2, r4
 	beq loc_300730C
 	ldr r1, [r7,#0x30]
-	ldr r4, byte_3007510+24 // =0x0
+	ldr r4, byte_3007528 // =0x0
 	tst r1, r4
 	bne loc_30072DA
 	mov r4, #2
 	b loc_30072DC
 loc_30072DA:
-	ldr r4, byte_3007510+28 // =0x2
+	ldr r4, byte_300752c // =0x2
 loc_30072DC:
 	tst r1, r4
 	bne loc_300730C
@@ -2993,7 +2993,7 @@ loc_30072DC:
 	ldr r3, [r7,#0x30]
 	mov r2, #0x10
 	bic r3, r2
-	ldr r1, byte_3007510+32 // =0x0
+	ldr r1, byte_3007530 // =0x0
 	tst r3, r1
 	bne loc_3007304
 	ldrb r2, [r7,#5]
@@ -3002,7 +3002,7 @@ loc_30072DC:
 	ldrb r2, [r6,#3]
 	orr r2, r0
 	strb r2, [r6,#3]
-	ldr r2, byte_3007510+36 // =0x0
+	ldr r2, byte_3007534 // =0x0
 	orr r3, r2
 loc_3007304:
 	ldr r2, [r6,#0x70]
@@ -3011,21 +3011,21 @@ loc_3007304:
 	pop {r4,r6,r7,pc}
 loc_300730C:
 	ldr r3, [r6,#0x30]
-	ldr r4, byte_3007510+40 // =0x0
+	ldr r4, byte_3007538 // =0x0
 	tst r3, r4
 	beq loc_300731E
 	ldr r3, [r7,#0x30]
-	ldr r4, byte_3007510+44 // =0x0
+	ldr r4, byte_300753c // =0x0
 	tst r3, r4
 	beq loc_300731E
 	pop {r4,r6,r7,pc}
 loc_300731E:
 	ldr r3, [r6,#0x30]
-	ldr r4, byte_3007510+44 // =0x0
+	ldr r4, byte_300753c // =0x0
 	tst r3, r4
 	beq loc_3007330
 	ldr r3, [r7,#0x30]
-	ldr r4, byte_3007510+40 // =0x0
+	ldr r4, byte_3007538 // =0x0
 	tst r3, r4
 	beq loc_3007330
 	pop {r4,r6,r7,pc}
@@ -3172,7 +3172,8 @@ sub_3007432:
 	ldrb r0, [r1,r0]
 	mov pc, lr
 	.balign 4, 0x00
-byte_3007440: .byte 0x44, 0x74, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+byte_3007440: .word byte_3007444
+byte_3007444: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0
 	thumb_func_end sub_3007432
@@ -3280,10 +3281,18 @@ loc_30074FE:
 off_3007504: .word battle_isTimeStop+1
 dword_3007508: .word 0x1000000
 dword_300750C: .word 0x10000
-byte_3007510: .byte 0x2, 0x2, 0x0, 0x0, 0x8, 0x10, 0x0, 0x0, 0x0, 0x0, 0x80, 0x0, 0x0, 0x30
-	.byte 0x0, 0xC, 0x0, 0x0, 0x0, 0x8, 0x0, 0x30, 0x0, 0x0, 0x0, 0x40, 0x0, 0x0
-	.byte 0x2, 0x10, 0x0, 0x0, 0x0, 0x50, 0x0, 0xC, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0
-	.byte 0x10, 0x0, 0x0, 0x80, 0x0, 0x0
+byte_3007510: .byte 0x2, 0x2, 0x0, 0x0
+byte_3007514: .byte 0x8, 0x10, 0x0, 0x0
+byte_3007518: .byte 0x0, 0x0, 0x80, 0x0
+byte_300751c: .byte 0x0, 0x30, 0x0, 0xC
+byte_3007520: .byte 0x0, 0x0, 0x0, 0x8
+byte_3007524: .byte 0x0, 0x30, 0x0, 0x0
+byte_3007528: .byte 0x0, 0x40, 0x0, 0x0
+byte_300752c: .byte 0x2, 0x10, 0x0, 0x0
+byte_3007530: .byte 0x0, 0x50, 0x0, 0xC
+byte_3007534: .byte 0x0, 0x0, 0x2, 0x0
+byte_3007538: .byte 0x0, 0x0, 0x10, 0x0
+byte_300753c: .byte 0x0, 0x80, 0x0, 0x0
 dword_3007540: .word 0xC000000
 dword_3007544: .word 0x80000000
 off_3007548: .word sub_801A29A+1
@@ -3480,7 +3489,7 @@ sub_3007692:
 	tst r2, r4
 	bne loc_30076B2
 	ldr r1, [r7,#0x30]
-	ldr r4, byte_30078AC+4 // =0x0
+	ldr r4, byte_30078B0 // =0x0
 	tst r1, r4
 	bne loc_30076B2
 	pop {r4,r6,r7,pc}
@@ -3752,7 +3761,8 @@ off_300789C: .word object_getFlipDirection+1
 off_30078A0: .word object_isValidPanel+1
 off_30078A4: .word battle_isPaused+1
 off_30078A8: .word battle_isTimeStop+1
-byte_30078AC: .byte 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x1, 0x0
+byte_30078AC: .byte 0x0, 0x0, 0x0, 0x1
+byte_30078B0: .byte 0x0, 0x0, 0x1, 0x0
 off_30078B4: .word battle_isPaused+1
 off_30078B8: .word object_getFlipDirection+1
 off_30078BC: .word object_isValidPanel+1
@@ -3845,7 +3855,7 @@ sub_3007978:
 	ldr r1, off_30079A0 // =unk_2034F60
 	ldr r2, [r0,r1]
 	mov r1, r10
-	ldr r1, [r1,#0x30]
+	ldr r1, [r1,#oToolkit_Unk20384f0_Ptr]
 	mov r0, #0
 loc_3007988:
 	lsl r2, r2, #1

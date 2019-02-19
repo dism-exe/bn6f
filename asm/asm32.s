@@ -1164,7 +1164,7 @@ sub_810E386:
 	str r0, [r5,#oBattleObject_ExtraVars+0xc]
 	str r0, [r5,#oBattleObject_ExtraVars+0x10]
 	str r0, [r5,#oBattleObject_ExtraVars+0x14]
-	ldr r0, [r5,#oBattleObject_AIPtr]
+	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldrb r0, [r0,#0x16]
 	ldr r1, off_810E3E0 // =byte_810E174
 	ldrb r0, [r1,r0]
@@ -2473,7 +2473,7 @@ sub_810F040:
 	lsl r2, r2, #2
 	ldr r1, [r1,r2]
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_S2034880_Ptr]
+	ldr r2, [r2,#oToolkit_BattleStatePtr]
 	add r1, r1, r2
 	ldrb r2, [r5,#oObjectHeader_ListIndex]
 	mov r3, #0
@@ -4241,7 +4241,7 @@ sub_81100B0:
 	mov r1, #0
 	strb r1, [r5,r0]
 	mov r0, #0x7e
-	ldr r1, [r5,#oBattleObject_AIPtr]
+	ldr r1, [r5,#oBattleObject_AIDataPtr]
 	ldrb r1, [r1,#0x16]
 	strb r1, [r5,r0]
 	bl sub_80C10C8
@@ -4369,7 +4369,7 @@ dword_8110250: .word 0x0
 	thumb_func_start sub_8110254
 sub_8110254:
 	push {r4-r7,lr}
-	ldr r0, [r5,#oBattleObject_AIPtr]
+	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldrb r0, [r0,#0x16]
 	ldr r1, off_8110270 // =byte_810FD20
 	ldrb r0, [r1,r0]
@@ -11537,7 +11537,7 @@ sub_8114316:
 	ldrb r1, [r5,#0x13]
 	str r1, [sp,#4]
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_S2034880_Ptr]
+	ldr r6, [r6,#oToolkit_BattleStatePtr]
 	mov r1, #0x10
 	mul r0, r1
 	add r0, #0xd0
@@ -12697,7 +12697,7 @@ sub_8114DF2:
 	thumb_func_start sub_8114E30
 sub_8114E30:
 	push {r4-r7,lr}
-	ldr r0, [r5,#oBattleObject_AIPtr]
+	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldrb r0, [r0,#0x16]
 	ldr r1, off_8114E40 // =byte_8114758
 	ldrb r0, [r1,r0]
@@ -13921,7 +13921,7 @@ byte_81159AA: .byte 0xB4, 0xB4, 0xB4, 0xB4, 0xB4, 0xB4
 	thumb_func_start sub_81159B0
 sub_81159B0:
 	push {r4,r6,lr}
-	ldr r0, [r5,#oBattleObject_AIPtr]
+	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldrb r4, [r0,#0x16]
 	lsl r1, r4, #2
 	ldr r6, off_8115BB8 // =byte_8115980
@@ -14963,7 +14963,7 @@ sub_8116414:
 	strh r0, [r5,r1]
 	mov r1, #0x62 
 	strh r0, [r5,r1]
-	ldr r0, [r5,#oBattleObject_AIPtr]
+	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldrb r0, [r0,#0x16]
 	lsl r0, r0, #1
 	ldr r1, off_8116458 // =byte_811645C
@@ -14975,7 +14975,7 @@ sub_8116414:
 	svc 6
 	mov r1, #0x66 
 	strh r0, [r5,r1]
-	ldr r0, [r5,#oBattleObject_AIPtr]
+	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldrb r0, [r0,#0x16]
 	lsl r0, r0, #1
 	ldr r1, off_8116464 // =byte_8116468

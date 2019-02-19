@@ -2146,7 +2146,7 @@ off_810D910: .word sub_8016380+1
 sub_810D940:
 	push {lr}
 	bl sub_810DCCE
-	ldr r0, [r5,#oBattleObject_AIPtr]
+	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldrb r2, [r0,#0x16]
 	ldr r1, off_810D960 // =byte_810D964 
 	ldrb r0, [r1,r2]

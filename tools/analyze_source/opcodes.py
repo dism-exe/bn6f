@@ -116,12 +116,22 @@ def evaluate_sym_or_num_error_if_undefined(sym_or_num, fileline):
         fileline_error("Could not evaluate undefined symbol \"%s\"!" % sym_or_num, fileline)
     return sym_value
 
+plus_or_minus_regex = re.compile(r" *\+ *| *- *")
+
 def evaluate_sym_or_num(sym_or_num):
     global syms    
     try:
         return int(sym_or_num, 0)
     except ValueError:
-        return syms[sym_or_num].value
+        try:
+            return syms[sym_or_num].value
+        except KeyError:
+        # allow simple + or - operations
+            split_sym_or_num = plus_or_minus_regex.split(sym_or_num)
+            if len(split_sym_or_num) != 2:
+                debug_print("Failed recursive plus or minus sym split: %s" % split_sym_or_num)
+                raise KeyError
+            return evaluate_sym_or_num(split_sym_or_num[0]) + evaluate_sym_or_num(split_sym_or_num[1])
 
 def order_datatypes(datatype1, datatype2):
     if datatype1.type < datatype2.type:

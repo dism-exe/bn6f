@@ -1,4 +1,6 @@
 	.include "structs/Toolkit.inc"
+	.include "structs/Joypad.inc"
+	// .include "structs/BattleState.inc"
 	.include "structs/GameState.inc"
 	.include "structs/ObjectHeader.inc"
 	.include "structs/ObjectSprite.inc"

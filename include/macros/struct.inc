@@ -25,3 +25,7 @@
 	.macro def_struct_offsets macro:req, label:req
 	\macro \label, offset_struct_entry, offset_struct_begin
 	.endm
+
+	.macro struct_org offset:req
+	.space . - \offset
+	.endm

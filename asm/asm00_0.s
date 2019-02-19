@@ -987,7 +987,7 @@ off_8000BFC: .word dword_2009CC0
 	thumb_func_end sub_8000BEC
 
 	thumb_func_start sub_8000C00
-sub_8000C00:
+sub_8000C00: // converts a number to BCD for printing?
 	push {r4,r7,lr}
 	ldr r1, dword_8000C54 // =0x5f5e0ff 
 	cmp r0, r1
@@ -995,7 +995,7 @@ sub_8000C00:
 	ldr r0, dword_8000C58 // =0x99999999 
 	b locret_8000C2C
 loc_8000C0C:
-	ldr r7, off_8000C30 // =byte_8000C34
+	ldr r7, off_8000C30 // =off_8000C34
 	mov r2, #0
 	mov r3, #8
 loc_8000C12:
@@ -1017,12 +1017,17 @@ loc_8000C22:
 locret_8000C2C:
 	pop {r4,r7,pc}
 	.byte 0, 0
-off_8000C30: .word byte_8000C34
-byte_8000C34: .byte 0x80, 0x96, 0x98, 0x0, 0x40, 0x42, 0xF, 0x0, 0xA0, 0x86
-	.byte 0x1, 0x0, 0x10, 0x27, 0x0, 0x0, 0xE8, 0x3, 0x0, 0x0
-	.byte 0x64, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0x1, 0x0
-	.byte 0x0, 0x0
-dword_8000C54: .word 0x5F5E0FF
+off_8000C30: .word off_8000C34
+off_8000C34:
+	.word 10000000
+	.word 1000000
+	.word 100000
+	.word 10000
+	.word 1000
+	.word 100
+	.word 10
+	.word 1
+dword_8000C54: .word   99999999
 dword_8000C58: .word 0x99999999
 	thumb_func_end sub_8000C00
 
@@ -2111,7 +2116,7 @@ sub_8001330:
 	thumb_func_start sub_8001382
 sub_8001382:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	ldr r2, [r1,#0x5c]
 	orr r2, r0
 	str r2, [r1,#0x5c]
@@ -2121,7 +2126,7 @@ sub_8001382:
 	thumb_local_start
 sub_800138E:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	ldr r2, [r1,#0x5c]
 	bic r2, r0
 	str r2, [r1,#0x5c]
@@ -2131,7 +2136,7 @@ sub_800138E:
 	thumb_func_start sub_800139A
 sub_800139A:
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldr r0, [r0,#0x5c]
 	mov pc, lr
 	thumb_func_end sub_800139A
@@ -2139,7 +2144,7 @@ sub_800139A:
 	thumb_func_start sub_80013A2
 sub_80013A2:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	str r0, [r1,#0x5c]
 	mov pc, lr
 	thumb_func_end sub_80013A2
