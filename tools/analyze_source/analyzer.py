@@ -75,10 +75,11 @@ class FunctionState:
         self.regs = copy.deepcopy(registers)
 
 class CondBranchInfo:
-    __slots__ = ("branch_name", "registers")
+    __slots__ = ("branch_name", "registers", "stack")
     def __init__(self, branch_name, registers):
         self.branch_name = branch_name
         self.registers = copy.deepcopy(registers)
+        self.stack = copy.deepcopy(datatypes.Stack.datatypes)
 
 class RegisterInfo:
     __slots__ = ("datatype", "fileline")
@@ -182,6 +183,24 @@ function_trackers = {}
 global_function_tree = {}
 already_executed_jumptables = set()
 
+class FunctionSpecificCallback:
+    __slots__ = ("opcode", "callback")
+    def __init__(self, opcode, callback):
+        self.opcode = opcode
+        self.callback = callback
+
+function_specific_callbacks = {}
+
+def add_function_specific_callbacks(function_value):
+    if function_value in function_specific_callbacks:
+        for function_specific_callback in function_specific_callbacks[function_value]:
+            function_specific_callback.opcode.append_callback(function_specific_callback.callback)
+
+def remove_function_specific_callbacks(function_value):
+    if function_value in function_specific_callbacks:
+        for function_specific_callback in function_specific_callbacks[function_value]:
+            function_specific_callback.opcode.remove_callback(function_specific_callback.callback)
+
 def run_analyzer_common(src_file, funcstate, function_start_time):
     function_total_time = 0
     return_lr = funcstate.regs["lr"].data
@@ -193,13 +212,16 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
     debug_print("funcstart: base stack offset: %s, function: %s (%s:%s)" % (base_stack_offset, function_name, function_filename, funcstate.function.line_num + 1))
     return_regs = None
     return_pc = None
+    return_stack = None
 
     funcstate.regs["pc"].set_new_reg(RegisterInfo(datatypes.ProgramCounter(src_file.filename, src_file.line_num).wrap(), FileLine(src_file.filename, src_file.line_num)))
+
+    add_function_specific_callbacks(funcstate.function.value)
 
     while True:
         debug_print("start src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
         for line in src_file:
-            debug_print("cur src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
+            #debug_print("cur src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
             if not line.startswith("\t"):
                 split_line = line.split(":", 1)
                 # if we're currently in an unconditional branch, don't read opcodes until we find the label
@@ -228,55 +250,80 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
                 if new_pc_fileline.line_num != pc_fileline.line_num or new_pc_fileline.filename != pc_fileline.filename:
                     sp_datatype_ref = funcstate.regs["sp"].data.ref
                     pc_datatype_ref = funcstate.regs["pc"].data.ref
-                    possible_syms = pc_datatype_ref.possible_syms
-                    if len(possible_syms) > 1:
-                        #debug_print("sp offset: %s" % sp_datatype_ref.offset)
-                        if sp_datatype_ref.offset == base_stack_offset:
-                            fileline_error("Tried performing jumptable at base stack offset!", fileline)
-                        jumptable_already_executed = pc_datatype_ref.original_sym.name in already_executed_jumptables
-                        for sym in possible_syms:
-                            if sym.type != "F":
-                                fileline_msg("BadFunctionDefinitionWarning: Tried executing jumptable non-function symbol \"%s\"!" % sym.name, fileline)
-                            if sym.name not in problem_functions:
-                                debug_print("Start of jumptable function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
-                                function_total_time += time.time() - function_start_time
-                                #subroutine_return_regs, function_tree["!" + sym.name] = run_analyzer_from_sym(sym, funcstate.regs, time.time())
-                                subroutine_return_regs = run_analyzer_from_sym(sym, funcstate.regs, time.time())
-                                function_start_time = time.time()
-                                debug_print("End of jumptable function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
-                                if jumptable_already_executed:
-                                    break
-                            else:
-                                debug_print("Skipped problem function \"%s\" called from \"%s\" (%s:%s)" % (sym.name, function_name, src_file.filename, src_file.line_num + 1))
-                        else:
-                            already_executed_jumptables.add(pc_datatype_ref.original_sym.name)
-                    elif len(possible_syms) == 1:
-                        if sp_datatype_ref.offset == base_stack_offset:
-                            # returning from function
-                            if return_lr.ref.filename == pc_datatype_ref.filename and return_lr.ref.line_num == pc_datatype_ref.line_num:
-                                if return_regs is None:
-                                    # just use first return regs found for now
-                                    return_regs = funcstate.regs
-                                break
-                            # not returning from function, then this is a noreturn bx or something similar
-                            # I think this only happens when performing an interwork return
-                            else:
-                                fileline_error("Tried performing noreturn branch!", fileline)
-                        else:
-                            if possible_syms[0].type != "F":
-                                fileline_msg("BadFunctionDefinitionWarning: Tried executing regular non-function symbol \"%s\"!" % possible_syms[0].name, fileline)
-                            debug_print("Start of regular function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))                            
-                            function_total_time = time.time() - function_start_time
-                            #subroutine_return_regs, function_tree[possible_syms[0].name] = run_analyzer_from_sym(possible_syms[0], funcstate.regs, time.time())
-                            subroutine_return_regs = run_analyzer_from_sym(possible_syms[0], funcstate.regs, time.time())
-                            function_start_time = time.time()
-                            debug_print("End of regular function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
-                            #debug_print("return regs: %s" % subroutine_return_regs)
-                    else:
-                        fileline_error("Tried executing function but there was none!", fileline)
+                    try:
+                        possible_syms = pc_datatype_ref.possible_syms
+                    except AttributeError:
+                    # need to fundamentally rethink how to parse variable callbacks, for now just hope that they don't do anything significant
+                        fileline_msg("VariableCallbackWarning: Skipped bad callback of type \"%s\"!" % type(pc_datatype_ref).__name__, fileline)
+                        funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(datatypes.UnknownDataType().wrap(), fileline))
+                        funcstate.regs["r1"].set_new_reg(analyzer.RegisterInfo(datatypes.UnknownDataType().wrap(), fileline))
+                        funcstate.regs["r2"].set_new_reg(analyzer.RegisterInfo(datatypes.UnknownDataType().wrap(), fileline))
+                        funcstate.regs["r3"].set_new_reg(analyzer.RegisterInfo(datatypes.UnknownDataType().wrap(), fileline))
+                        possible_syms = None
 
-                    funcstate.set_registers(subroutine_return_regs)
-                    src_file.line_num = funcstate.regs["pc"].data.ref.line_num - 1
+                    if possible_syms is not None:
+                        if len(possible_syms) > 1:
+                            #debug_print("sp offset: %s" % sp_datatype_ref.offset)
+                            if sp_datatype_ref.offset == base_stack_offset:
+                                fileline_error("Tried performing jumptable at base stack offset!", fileline)
+    
+                            remove_function_specific_callbacks(funcstate.function.value)
+                            jumptable_already_executed = pc_datatype_ref.original_sym.value in already_executed_jumptables
+                            debug_print("Jumptable found: name: %s" % pc_datatype_ref.original_sym.name)
+                            #if funcstate.function.value == 0x801B9E6: # sub_801B9E6, runs jumptables
+                            #    dumb_hack_please_remove_function_memory = datatypes.Struct.dumb_hack_basic_struct_fields[datatypes.AIData][0xc8][Size.WORD].memory
+                            #    dumb_hack_please_remove_function_memory.function = None
+                            #    dumb_hack_please_remove_function_memory.dumb_hack_please_remove_in_sub_801B9E6 = True
+                            for sym in possible_syms:
+                                if sym.type != "F":
+                                    fileline_msg("BadFunctionDefinitionWarning: Tried executing jumptable non-function symbol \"%s\"!" % sym.name, fileline)
+                                if sym.name not in problem_functions:
+                                    debug_print("Start of jumptable function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
+                                    function_total_time += time.time() - function_start_time
+                                    #subroutine_return_regs, function_tree["!" + sym.name] = run_analyzer_from_sym(sym, funcstate.regs, time.time())
+                                    subroutine_return_regs = run_analyzer_from_sym(sym, funcstate.regs, time.time())
+                                    function_start_time = time.time()
+                                    debug_print("End of jumptable function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
+                                    if jumptable_already_executed:
+                                        break
+                                else:
+                                    debug_print("Skipped problem function \"%s\" called from \"%s\" (%s:%s)" % (sym.name, function_name, src_file.filename, src_file.line_num + 1))
+                            else:
+                                #pass
+                                already_executed_jumptables.add(pc_datatype_ref.original_sym.value)
+                            #if funcstate.function.value == 0x801B9E6: # sub_801B9E6
+                            #    dumb_hack_please_remove_function_memory.dumb_hack_please_remove_in_sub_801B9E6 = False
+                            add_function_specific_callbacks(funcstate.function.value)
+                        elif len(possible_syms) == 1:
+                            if sp_datatype_ref.offset == base_stack_offset:
+                                # returning from function
+                                if return_lr.ref.filename == pc_datatype_ref.filename and return_lr.ref.line_num == pc_datatype_ref.line_num:
+                                    if return_regs is None:
+                                        # just use first return regs found for now
+                                        return_regs = funcstate.regs
+                                        return_stack = datatypes.Stack.datatypes
+                                    break
+                                # not returning from function, then this is a noreturn bx or something similar
+                                # I think this only happens when performing an interwork return
+                                else:
+                                    fileline_error("Tried performing noreturn branch!", fileline)
+                            else:
+                                if possible_syms[0].type != "F":
+                                    fileline_msg("BadFunctionDefinitionWarning: Tried executing regular non-function symbol \"%s\"!" % possible_syms[0].name, fileline)
+                                debug_print("Start of regular function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
+                                remove_function_specific_callbacks(funcstate.function.value)
+                                function_total_time = time.time() - function_start_time
+                                #subroutine_return_regs, function_tree[possible_syms[0].name] = run_analyzer_from_sym(possible_syms[0], funcstate.regs, time.time())
+                                subroutine_return_regs = run_analyzer_from_sym(possible_syms[0], funcstate.regs, time.time())
+                                function_start_time = time.time()
+                                debug_print("End of regular function called from \"%s\" (%s:%s)" % (function_name, src_file.filename, src_file.line_num + 1))
+                                add_function_specific_callbacks(funcstate.function.value)
+                                #debug_print("return regs: %s" % subroutine_return_regs)
+                        else:
+                            fileline_error("Tried executing function but there was none!", fileline)
+    
+                        funcstate.set_registers(subroutine_return_regs)
+                        src_file.line_num = funcstate.regs["pc"].data.ref.line_num - 1
                 elif funcstate.uncond_branch != "":
                     debug_print("uncond branch: %s" % funcstate.uncond_branch)
                     if funcstate.uncond_branch in funcstate.found_labels:
@@ -289,12 +336,17 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
                     continue
                 fileline_error("Unknown directive \"%s\"!" % stripped_line, fileline)
 
+        # don't attempt to run any conditional branches if this function already had its conditional branches executed
+        if function_name in function_trackers and return_regs is not None and funcstate.function.value != 0x8019892: # object_createCollisionData
+            break
+
         # now check if we have any conditional labels left
         for cond_branch_info in funcstate.cond_branches:
             if cond_branch_info.branch_name not in funcstate.found_labels:
                 #debug_print("found labels: %s\nbranch name: %s" % (funcstate.found_labels, cond_branch_info.branch_name))
                 funcstate.set_registers(cond_branch_info.registers)
                 src_file.line_num = parser.find_label_line_num(cond_branch_info.branch_name, funcstate)
+                datatypes.Stack.datatypes = cond_branch_info.stack
                 break
         else:
             if return_regs is not None:
@@ -304,8 +356,11 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
             else:
                 fileline_error("Did not find a return point in function!", fileline)
 
-    if funcstate.function.value == 0x8019892: # "object_createCollisionData":
+    remove_function_specific_callbacks(funcstate.function.value)
+    if funcstate.function.value == 0x8019892: # object_createCollisionData
         return_regs = funcstate.regs
+
+    datatypes.Stack.datatypes = return_stack
 
     debug_print("funcend: base stack offset: %s, function: %s (%s:%s)" % (base_stack_offset, function_name, function_filename, funcstate.function.line_num + 1))
 
@@ -319,14 +374,6 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
 
     #return (return_regs, function_tree)
     return return_regs
-
-def check_pointer_shift_in_sprite_decompress(opcode_params, funcstate, src_file, fileline):
-    if funcstate.function.name == "sprite_decompress":
-        return not (opcode_params[0] == "r2" and opcode_params[1] == "r2" and opcode_params[2] == "#1")
-    elif funcstate.function.value == 0x8000B8E: # decomp_initGfx_8000B8E
-        return not (opcode_params[0] == "r0")
-    else:
-        return True
 
 class ReturnValue:
     __slots__ = ("regname", "datatype")
@@ -465,38 +512,34 @@ def check_stored_functions(opcode_params, funcstate, src_file, fileline):
     fileline_msg("Called stored function \"%s\"." % opcode_params, fileline)
     return False
 
-def check_loc_800EA38(opcode_params, funcstate, src_file, fileline):
-    if funcstate.function.value != 0x800EA22: # sub_800EA22
+def check_pointer_shift(opcode_params, funcstate, src_file, fileline):
+    if funcstate.function.value == 0x8002b30: # sprite_decompress
+        return not (opcode_params[0] == "r2" and opcode_params[1] == "r2" and opcode_params[2] == "#1")
+    elif funcstate.function.value == 0x8000B8E: # decomp_initGfx_8000B8E
+        return not (opcode_params[0] == "r0")
+    else:
         return True
+
+def check_loc_800EA38(opcode_params, funcstate, src_file, fileline):
     funcstate.regs["r3"].set_new_reg(analyzer.RegisterInfo(datatypes.Primitive(Size.BYTE, 0x8c).wrap(), fileline))
     return True
 
 def check_sub_810AB8C(opcode_params, funcstate, src_file, fileline):
-    if funcstate.function.value != 0x810ab8c: # sub_810AB8C
-        return True
     funcstate.regs["r4"].set_new_reg(analyzer.RegisterInfo(datatypes.Primitive(Size.BYTE).wrap(), fileline))
     return False
 
 def check_sub_80127C0(opcode_params, funcstate, src_file, fileline):
-    if funcstate.function.value != 0x80127c0: # sub_80127C0
-        return True
     funcstate.regs["r6"].set_new_reg(analyzer.RegisterInfo(datatypes.Primitive(Size.BYTE).wrap(), fileline))
     funcstate.regs["r4"].set_new_reg(analyzer.RegisterInfo(datatypes.Primitive().wrap(), fileline))
     return False
 
 def check_sub_800FC30(opcode_params, funcstate, src_file, fileline):
-    if funcstate.function.value != 0x800FC30: # sub_800FC30
-        return True
     if funcstate.regs["r1"].data.type == DataType.POINTER:
-        return funcstate.regs["r1"].data.ref.sym.value != 0x800FCD5      
+        return funcstate.regs["r1"].data.ref.sym.value != 0x800FCD5 # byte_800FCD5
     else:
         return True
 
-# make system that only enables callbacks when a function is called
-# also allows the callbacks to unset themselves once they've been called
 def check_sub_802EF74_ldr(opcode_params, funcstate, src_file, fileline):
-    if funcstate.function.value != 0x802EF74:
-        return True
     if opcode_params[0] == "r6" and opcode_params[1] == "r0":
         funcstate.regs["r6"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
         return False
@@ -504,8 +547,6 @@ def check_sub_802EF74_ldr(opcode_params, funcstate, src_file, fileline):
     return True
 
 def check_sub_802EF74_tst(opcode_params, funcstate, src_file, fileline):
-    if funcstate.function.value != 0x802EF74:
-        return True
     if opcode_params[0] == "r7":
         funcstate.regs["r7"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
         return False
@@ -513,13 +554,47 @@ def check_sub_802EF74_tst(opcode_params, funcstate, src_file, fileline):
     return True
 
 def check_sub_8013892_push_r7(opcode_params, funcstate, src_file, fileline):
-    if funcstate.function.value != 0x8013892: # sub_8013892
-        return True
     if opcode_params == "{r7}":
         funcstate.regs["r4"].set_new_reg(analyzer.RegisterInfo(datatypes.AIData().wrap(), fileline))
     return True
 
+def check_loc_80EE4F0(opcode_params, funcstate, src_file, fileline):    
+    if opcode_params != "loc_80EE4F0":
+        return True
+    funcstate.uncond_branch = opcode_params
+    return False
+
+def sub_8107E66_hack_push_lr(opcode_params, funcstate, src_file, fileline):
+    opcodes.push_opcode_function("{lr}", funcstate, src_file, fileline)
+    return True
+
+def sub_80F0700_hack_pop_balance(opcode_params, funcstate, src_file, fileline):
+    opcodes.pop_opcode_function("{pc}", funcstate, src_file, fileline)
+
+def sub_80103F8_hack_battle_obj_null(opcode_params, funcstate, src_file, fileline):
+    if opcode_params[0] != "r7":
+        return True
+    funcstate.regs["r7"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
+    return False
+
+def sub_8109D08_bx_callback_fix(opcode_params, funcstate, src_file, fileline):
+    funcstate.regs["r1"].set_new_reg(analyzer.RegisterInfo(datatypes.ROMPointer([syms["sub_810A21A"], syms["sub_810A254"]], syms["off_810A2B0"]).wrap(), fileline))
+    return True
+
+def check_bl_sub_80BC3B8(opcode_params, funcstate, src_file, fileline):
+    if opcode_params == "sub_80BC3B8":
+        funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
+    return True
+#def sub_810A724
+#def set_function_only_callback(
 # funcstate.regs["r1"]
+
+def hack_battle_state_field_0x80_object_read(opcode_params, funcstate, src_file, fileline):
+    if opcode_params[0] == "r7" and opcode_params[1] == "r4":
+        funcstate.regs["r7"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
+        return False
+    return True
+
 def read_battle_object_jumptables():
     """
     Returns a jumptable's entries in a list specified by the given label.
@@ -556,16 +631,28 @@ def read_battle_object_jumptables():
     registers["pc"].default_initialize(fileline)
     opcodes.bl_opcode.append_callback(check_stored_functions)
     opcodes.bl_opcode.append_callback(opcodes.check_spawn_battle_object)
-    opcodes.push_opcode.append_callback(check_sub_8013892_push_r7)
-    opcodes.ble_opcode.append_callback(opcodes.check_loc_80EE4F0)
-    opcodes.lsl_imm_opcode.append_callback(check_pointer_shift_in_sprite_decompress)
-    opcodes.lsr_imm_opcode.append_callback(check_pointer_shift_in_sprite_decompress)
-    opcodes.bne_opcode.append_callback(check_loc_800EA38)
-    opcodes.and_opcode.append_callback(check_sub_80127C0)
-    opcodes.cmp_reg_opcode.append_callback(check_sub_800FC30)
-    opcodes.ldrb_rb_imm_opcode.append_callback(check_sub_810AB8C)
-    opcodes.ldr_rb_imm_opcode.append_callback(check_sub_802EF74_ldr)
-    #opcodes.tst_opcode.append_callback(check_sub_802EF74_tst)
+
+    global function_specific_callbacks
+    function_specific_callbacks.update({
+        0x800EA22: (FunctionSpecificCallback(opcodes.bne_opcode, check_loc_800EA38),), # sub_800EA22
+        0x810ab8c: (FunctionSpecificCallback(opcodes.ldrb_rb_imm_opcode, check_sub_810AB8C),), # sub_810AB8C
+        0x80127c0: (FunctionSpecificCallback(opcodes.and_opcode, check_sub_80127C0),), # sub_80127C0
+        0x800fc30: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, check_sub_800FC30),), # sub_800FC30
+        0x802EF74: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, check_sub_802EF74_ldr), # sub_802EF74
+                    FunctionSpecificCallback(opcodes.tst_opcode, check_sub_802EF74_tst)),
+        0x8013892: (FunctionSpecificCallback(opcodes.push_opcode, check_sub_8013892_push_r7),), # sub_8013892
+        0x8002b30: (FunctionSpecificCallback(opcodes.lsl_imm_opcode, check_pointer_shift), # sprite_decompress
+                    FunctionSpecificCallback(opcodes.lsr_imm_opcode, check_pointer_shift)),
+        0x8000B8E: (FunctionSpecificCallback(opcodes.lsl_imm_opcode, check_pointer_shift), # decomp_initGfx_8000B8E
+                    FunctionSpecificCallback(opcodes.lsr_imm_opcode, check_pointer_shift)),
+        0x80EE406: (FunctionSpecificCallback(opcodes.ble_opcode, check_loc_80EE4F0),), # sub_80EE406
+        0x8107E66: (FunctionSpecificCallback(opcodes.tst_opcode, sub_8107E66_hack_push_lr),), # sub_8107E66
+        0x80F0700: (FunctionSpecificCallback(opcodes.pop_opcode, sub_80F0700_hack_pop_balance),), # sub_80F0700
+        0x80103F8: (FunctionSpecificCallback(opcodes.mov_imm_opcode, sub_80103F8_hack_battle_obj_null),), # sub_80103F8
+        0x8109D08: (FunctionSpecificCallback(opcodes.bx_opcode, sub_8109D08_bx_callback_fix),), # sub_8109D08
+        0x810A94C: (FunctionSpecificCallback(opcodes.bl_opcode, check_bl_sub_80BC3B8),),
+        0x800ebd4: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, hack_battle_state_field_0x80_object_read),) # object_getEnemyByNameRange
+    })
 
     #global global_function_tree
     #global_function_tree = run_analyzer_from_label(parser.strip_plus1(words[0]), registers, time.time())[1]

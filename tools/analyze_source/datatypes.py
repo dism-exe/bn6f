@@ -5,6 +5,7 @@ import math
 import numbers
 import re
 import collections
+import copy
 
 import parser
 import readelf
@@ -147,19 +148,22 @@ class Immediate(Primitive):
 class Pointer(DataType):
     null_sym = readelf.SymInfo(value=NaN, scope="l", debug=" ", type=" ", section="*UND*", name="null", filename="dummy", line_num=0)
     __slots__ = ("_possible_syms", "_offset", "original_sym")
+    
+    # if possible_syms is list: original sym is preserved
+    # else: original sym = possible sym
     def __init__(self, offset=0, possible_syms=None, original_sym=None):
         super().__init__()
         if not possible_syms:
-            possible_syms = [Pointer.null_sym]
+            self.original_sym = Pointer.null_sym
+            self._possible_syms = [Pointer.null_sym]
         elif not isinstance(possible_syms, list):
-            possible_syms = [possible_syms]
-        self._possible_syms = possible_syms
-        if original_sym is None:
-            if not isinstance(possible_syms, list):
-                original_sym = possible_syms
-            else:
-                original_sym = Pointer.null_sym
-        self.original_sym = original_sym
+            self.original_sym = possible_syms
+            self._possible_syms = [possible_syms]
+        elif original_sym is not None:
+            self.original_sym = original_sym
+            self._possible_syms = possible_syms
+        else:
+            global_fileline_error("Tried making Pointer with multiple possible syms but no original sym!")
         self._offset = offset
 
     @property
@@ -167,11 +171,11 @@ class Pointer(DataType):
         return DataType.POINTER
 
     @abstractmethod
-    def load(self, size, fileline, offset=None):
+    def load(self, size, fileline, funcstate, offset=None):
         pass
 
     @abstractmethod
-    def store(self, datatype, size, fileline, offset=None):
+    def store(self, datatype, size, fileline, funcstate, offset=None):
         pass
 
     def add_offset(self, offset):
@@ -205,33 +209,33 @@ class UnkPointer(Pointer):
         super().__init__()
 
     # TODO mark offsets
-    def load(self, size, fileline, offset=None):
+    def load(self, size, fileline, funcstate, offset=None):
         #total_offset = offset + self.offset
         #if math.isnan(total_offset):
         return new_unk_datatype_from_size(size)
         #pass
 
     # TODO mark offsets
-    def store(self, datatype, size, fileline, offset=None):
+    def store(self, datatype, size, fileline, funcstate, offset=None):
         pass
-    
+
 class RAMPointer(Pointer):
     def __init__(self, offset=0, possible_syms=None):
         super().__init__(offset, possible_syms)
 
     # TODO mark offsets
-    def load(self, size, fileline, offset=None):
+    def load(self, size, fileline, funcstate, offset=None):
         return new_unk_datatype_from_size(size)
     
     # TODO mark offsets
-    def store(self, datatype, size, fileline, offset=None):
+    def store(self, datatype, size, fileline, funcstate, offset=None):
         pass
 
 class ROMPointer(Pointer):
     def __init__(self, possible_syms=None, original_sym=None):
         super().__init__(0, possible_syms, original_sym)
 
-    def load(self, size, fileline, offset=None):
+    def load(self, size, fileline, funcstate, offset=None):
         global syms
         global scanned_files
     
@@ -243,7 +247,8 @@ class ROMPointer(Pointer):
             if possible_sym.section == "*UND*":
                 return new_unk_datatype_from_size(size)
             elif possible_sym.type == "F":
-                global_fileline_error("Cannot read from a function! (function: %s)" % possible_sym.name)
+                global_fileline_msg("BadReadWarning: Cannot read from a function! (function: %s)" % possible_sym.name)
+                return new_unk_datatype_from_size(size)
 
             words = parser.try_parse_word_directives_from_sym(possible_sym)
             if len(words) == 0:
@@ -272,7 +277,7 @@ class ROMPointer(Pointer):
 
         return ROMPointer(read_syms, self.original_sym).wrap()
 
-    def store(self, datatype, size, fileline, offset=None):
+    def store(self, datatype, size, fileline, funcstate, offset=None):
         if len(self.possible_syms) == 1:
             global_fileline_error("Cannot write to ROMPointer \"%s\"!" % self.sym.name)
         else:
@@ -316,22 +321,22 @@ class ProgramCounter(ROMPointer):
     def type(self):
         return DataType.POINTER
 
-    def load(self, size, fileline, offset=None):
-        global_fileline_error("Cannot read from program counter \"%s\"!" % self.sym)
+    def load(self, size, fileline, funcstate, offset=None):
+        global_fileline_msg("PCWarning: Cannot read from program counter at filename \"%s\", line num: \"%s\"!" % (self.filename, self.line_num + 1))
 
-    def store(self, datatype, size, fileline, offset=None):
-        global_fileline_error("Cannot write to program counter \"%s\"!" % self.sym)
+    def store(self, datatype, size, fileline, funcstate, offset=None):
+        global_fileline_msg("PCWarning: Cannot write from program counter at filename \"%s\", line num: \"%s\"!" % (self.filename, self.line_num + 1))
 
     def add_offset(self, offset):
-        global_fileline_error("Cannot add an offset to function \"%s\"!" % self.sym)
+        global_fileline_msg("PCWarning: Cannot add to program counter at filename \"%s\", line num: \"%s\"!" % (self.filename, self.line_num + 1))
 
     @property
     def offset(self):
-        global_fileline_error("Function \"%s\" has no offset!" % self.sym)
+        global_fileline_msg("PCWarning: Program counter has no offset at filename \"%s\", line num: \"%s\"!" % (self.filename, self.line_num + 1))
 
     @offset.setter
     def offset(self, offset):
-        global_fileline_error("Cannot set offset of function \"%s\"!" % self.sym)
+        global_fileline_msg("PCWarning: Cannot set offset of program counter at filename \"%s\", line num: \"%s\"!" % (self.filename, self.line_num + 1))
 
     @property
     def size(self):
@@ -358,11 +363,11 @@ class Memory(ABC):
         super().__init__()
 
     @abstractmethod
-    def load(self, struct, size):
+    def load(self, struct, funcstate, size):
         pass
 
     @abstractmethod
-    def store(self, struct, datatype, size):
+    def store(self, struct, funcstate, datatype, size):
         pass
 
 # Does not carry state or provide struct and size args.
@@ -374,30 +379,30 @@ class AnonMemory(Memory):
         self.read_action = read_action
         self.write_action = write_action
     
-    def load(self, struct, size):
+    def load(self, struct, funcstate, size):
         return self.read_action().wrap()
 
-    def store(self, struct, datatype, size):
+    def store(self, struct, funcstate, datatype, size):
         self.write_action(datatype)
 
 class UnkMemory(Memory):
     def __init__(self):
         super().__init__()
 
-    def load(self, struct, size):
+    def load(self, struct, funcstate, size):
         return new_unk_datatype_from_size(size)
 
-    def store(self, struct, datatype, size):
+    def store(self, struct, funcstate, datatype, size):
         pass
 
 class UnkPrimitiveMemory(Memory):
     def __init__(self):
         super().__init__()
 
-    def load(self, struct, size):
+    def load(self, struct, funcstate, size):
         return Primitive(size).wrap()
 
-    def store(self, struct, datatype, size):
+    def store(self, struct, funcstate, datatype, size):
         pass
 
 class StructField:
@@ -431,37 +436,39 @@ class Struct(Pointer):
     # array_field_templates
     # unk_field_offset_ranges
 
-    __slots__ = ("basic_struct_fields",)
+    __slots__ = ()
 
     def __init__(self, offset=0):
         super().__init__(offset)
         # dumb hack can't think fix later
-        if type(self) in Struct.dumb_hack_basic_struct_fields:
-            self.basic_struct_fields = Struct.dumb_hack_basic_struct_fields[type(self)]
-        else:
-            self.basic_struct_fields = collections.defaultdict(lambda: {})
-            self.basic_struct_fields.update(self.generate_basic_struct_fields())
-            Struct.dumb_hack_basic_struct_fields[type(self)] = self.basic_struct_fields
+        if type(self) not in Struct.dumb_hack_basic_struct_fields:
+            basic_struct_fields = collections.defaultdict(lambda: {})
+            basic_struct_fields.update(self.generate_basic_struct_fields())
+            Struct.dumb_hack_basic_struct_fields[type(self)] = basic_struct_fields
+
+    @property
+    def basic_struct_fields(self):
+        return Struct.dumb_hack_basic_struct_fields[type(self)]
 
     @abstractmethod
     def generate_basic_struct_fields(self):
         pass
 
-    def load(self, size, fileline, offset=None):
+    def load(self, size, fileline, funcstate, offset=None):
         if offset is None:
             offset = Struct.zero_immediate
         struct_field = self.get_struct_offset_field(offset, fileline, size)
         if struct_field.offset_name != "":
             self.mark_struct_access(offset, fileline, size, struct_field)
-        return struct_field.memory.load(self, size)
+        return struct_field.memory.load(self, funcstate, size)
 
-    def store(self, datatype, size, fileline, offset=None):
+    def store(self, datatype, size, fileline, funcstate, offset=None):
         if offset is None:
             offset = Struct.zero_immediate
         struct_field = self.get_struct_offset_field(offset, fileline, size)
         if struct_field.offset_name != "":
             self.mark_struct_access(offset, fileline, size, struct_field)
-        struct_field.memory.store(self, datatype, size)
+        struct_field.memory.store(self, funcstate, datatype, size)
 
     def get_struct_offset_field(self, offset, fileline, size):
         total_offset = self.offset + offset.ref.value
@@ -568,21 +575,6 @@ class Struct(Pointer):
     def struct_name(self):
         pass
 
-"""
-class StructEntry:
-    __slots__ = ("offset_name", "read_action", "write_action", "size")
-    def __init__(self, offset_name, memory, size=0):
-        self.offset_name = offset_name
-        self.memory = memory
-        self.size = size
-        
-class StructInfo:
-    def __init__(self, struct_prefix, start_offset, *struct_fields):
-        self.struct_prefix = struct_prefix
-        self.start_offset = start_offset
-        self.struct_fields = struct_fields
-"""
-
 class Toolkit(Struct):
     def __init__(self):
         super().__init__()
@@ -598,7 +590,7 @@ class Toolkit(Struct):
             0x18: {Size.WORD: StructField("_BattleStatePtr", AnonMemory(BattleState))},
             #0x1c: {Size.WORD: StructField("_Unk200f3a0_Ptr", AnonMemory(Unk200f3a0))},
         }
-    
+
     def get_prefix(self, offset):
         return "oToolkit"
 
@@ -824,11 +816,14 @@ class CollisionData(Struct):
             0x76: {Size.DEFAULT: StructField("_DamageElements", UnkPrimitiveMemory())},
             0x7c: {Size.WORD: StructField("_Unk_7c", UnkMemory())},
             0x80: {Size.HWORD: StructField("_FinalDamage", UnkPrimitiveMemory())},
-            0x82: {Size.HWORD: StructField("_PanelDamage1", UnkPrimitiveMemory())},
+            0x82: {Size.HWORD: StructField("_PanelDamage1", UnkPrimitiveMemory()),
+                   Size.WORD: StructField("_PanelDamage1And2", UnkPrimitiveMemory())},
             0x84: {Size.HWORD: StructField("_PanelDamage2", UnkPrimitiveMemory())},
-            0x86: {Size.HWORD: StructField("_PanelDamage3", UnkPrimitiveMemory())},
+            0x86: {Size.HWORD: StructField("_PanelDamage3", UnkPrimitiveMemory()),
+                   Size.WORD: StructField("_PanelDamage3And4", UnkPrimitiveMemory())},
             0x88: {Size.HWORD: StructField("_PanelDamage4", UnkPrimitiveMemory())},
-            0x8a: {Size.HWORD: StructField("_PanelDamage5", UnkPrimitiveMemory())},
+            0x8a: {Size.HWORD: StructField("_PanelDamage5", UnkPrimitiveMemory()),
+                   Size.WORD: StructField("_PanelDamage5And6", UnkPrimitiveMemory())},
             0x8c: {Size.DEFAULT: StructField("_PanelDamage6", UnkPrimitiveMemory())},
             0xa4: {Size.DEFAULT: StructField("_InflictedBugs", UnkPrimitiveMemory())},
         }
@@ -848,6 +843,28 @@ class CollisionData(Struct):
     @property
     def unk_field_offset_ranges(self):
         return CollisionData._unk_field_offset_ranges
+
+class FunctionMemory(Memory):
+    __slots__ = ("function",)
+    def __init__(self):
+        super().__init__()
+        self.function = None
+
+    def load(self, struct, funcstate, size):
+        if self.function is not None:
+            global_fileline_msg("Loaded ROMPointer from AIAttackVars_Callback with original sym \"%s\"!" % (self.function.ref.original_sym.name))
+            return copy.deepcopy(self.function)
+        else:
+            global_fileline_msg("Loaded non-ROMPointer from AIAttackVars_Callback.")
+            return new_unk_datatype_from_size(size)
+
+    def store(self, struct, funcstate, datatype, size):
+        if isinstance(datatype.ref, ROMPointer) and len(datatype.ref.possible_syms) == 1 and datatype.ref.possible_syms[0].type == "F":
+            global_fileline_msg("Stored ROMPointer to AIAttackVars_Callback with original sym \"%s\"! (len: %s)" % (datatype.ref.original_sym.name, len(datatype.ref.possible_syms)))
+            self.function = copy.deepcopy(datatype)
+        else:
+            global_fileline_msg("Stored non-ROMPointer to AIAttackVars_Callback of type \"%s\"!" % (type(datatype.ref).__name__))
+            self.function = None
 
 class AIData(Struct):
     def __init__(self):
@@ -870,36 +887,47 @@ class AIData(Struct):
             0x26: {Size.HWORD: StructField("_JoypadUp", UnkPrimitiveMemory())},
             0x28: {Size.HWORD: StructField("_JoypadReleased", UnkPrimitiveMemory())},
             0x34: {Size.DEFAULT: StructField("_Anger", UnkPrimitiveMemory())},
+            0xc8: {Size.WORD: StructField("_Unk_28", FunctionMemory())},
+            0xd0: {Size.WORD: StructField("_Unk_30", FunctionMemory()),
+                   Size.DEFAULT: StructField("_Unk_30", UnkMemory())},
+            0xd4: {Size.WORD: StructField("_Unk_34", FunctionMemory()),
+                   Size.DEFAULT: StructField("_Unk_34", UnkPrimitiveMemory())},
+            
         }
 
     def get_prefix(self, offset):
-        return "oAIData"
+        if offset < 0x80:
+            return "oAIData"
+        elif 0x80 <= offset < 0xa0:
+            return "oAIState"
+        elif 0xa0 <= offset < 0x100:
+            return "oAIAttackVars"
+        else:
+            global_fileline_error("Struct offset \"%s\" does not have prefix!" % offset)
 
     @property
     def struct_name(self):
         return "AIData"
 
     def on_nan_struct_offset(self, fileline):
-        fileline_msg("Context information: CollisionDataNanOffset", fileline)
+        fileline_msg("Context information: AIDataNanOffset", fileline)
         return Struct.barebones_struct_field
 
-    _array_field_templates = (ArrayField(0x80, 0x20, "_AIState"), ArrayField(0xa0, 0x50, "_AttackVars"))
-    @property
-    def array_field_templates(self):
-        return AIData._array_field_templates
-
-    _unk_field_offset_ranges = (0x0, 0x100)
+    _unk_field_offset_ranges = (0x0, 0x80, 0xa0, 0x100)
     @property
     def unk_field_offset_ranges(self):
         return AIData._unk_field_offset_ranges
 
-class Stack(Pointer):
-    __slots__ = ("datatypes",)
-    def __init__(self, datatypes={}):
-        super().__init__()
-        self.datatypes = datatypes
+    def struct_offset_in_marked_accesses_case_1_range(self, offset):
+        return offset == 0 or offset == 0x80 or offset == 0xa0
 
-    def load(self, size, fileline, offset=None):
+class Stack(Pointer):
+    __slots__ = ()
+    datatypes = {}
+    def __init__(self):
+        super().__init__()
+
+    def load(self, size, fileline, funcstate, offset=None):
         if offset is None:
             total_offset = self.offset
         else:
@@ -910,7 +938,7 @@ class Stack(Pointer):
         if total_offset % size.value != 0:
             global_fileline_error("Misaligned stack read detected (size: %s, offset=%s)!" % (size, total_offset))
         try:
-            return self.datatypes[(total_offset, size)]
+            return Stack.datatypes[(total_offset, size)]
         except KeyError:
             if total_offset >= self.offset:
                 global_fileline_msg("StackWarning: Stack read of (%s, %s) is likely valid (e.g. overloads with other datatype) but not in datatypes!" % (total_offset, size))
@@ -919,7 +947,7 @@ class Stack(Pointer):
                 global_fileline_error("Bad stack read of (%s, %s)! (stack size: %s)" % (total_offset, size, self.offset))
 
     # note: storing values may be risky. figure this out
-    def store(self, datatype, size, fileline, offset=None):
+    def store(self, datatype, size, fileline, funcstate, offset=None):
         if offset is None:
             total_offset = self.offset
         else:
@@ -930,7 +958,7 @@ class Stack(Pointer):
         if total_offset % size.value != 0:
             global_fileline_error("Misaligned stack write detected (size: %s, offset=%s)!" % (size, total_offset))
 
-        self.datatypes[(total_offset, size)] = datatype
+        Stack.datatypes[(total_offset, size)] = datatype
 
 def new_unk_datatype_from_size(size):
     if size == Size.BYTE or size == Size.HWORD:

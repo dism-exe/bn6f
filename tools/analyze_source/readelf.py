@@ -61,13 +61,16 @@ if __name__ == "__main__":
     os.chdir("../..")
     syms = read_syms()
     debug_print("Size: %s" % sys.getsizeof(syms))
-    output = ""
+    sym_dump_output = ""
+    cfg_output = ""
     highest_sym_value = 0
     for sym, sym_info in syms.items():
-        output += "{}: value=0x{:x}, scope=\"{}\", debug=\"{}\", type=\"{}\", section=\"{}\"\n".format(sym, sym_info.value, sym_info.scope, sym_info.debug, sym_info.type, sym_info.section)
-        if sym_info.value > highest_sym_value and sym_info.section != "*ABS*" and sym_info.section != ".fill":
-            highest_sym_value = sym_info.value
-    
-    debug_print("Highest sym: %s" % highest_sym_value)
+        sym_dump_output += "{}: value=0x{:x}, scope=\"{}\", debug=\"{}\", type=\"{}\", section=\"{}\"\n".format(sym, sym_info.value, sym_info.scope, sym_info.debug, sym_info.type, sym_info.section)
+        if sym_info.type == "F" and sym_info.value >= 0x8000000:
+            cfg_output += "{} 0x{:x} {}\n".format("thumb_func", sym_info.value, sym)
+
     with open("bn6f_syms.dump", "w+") as f:
-        f.write(output)
+        f.write(sym_dump_output)
+
+    with open("bn6f.cfg", "w+") as f:
+        f.write(cfg_output)

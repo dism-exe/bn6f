@@ -51,19 +51,6 @@ def get_ldr_label_contents(label, src_file):
         return ""
     return contents[0]
 
-"""
-def parse_word_directives_at_label(label, file_state):
-    if label.startswith("."):
-        parse_word_directives_at_local_label(label, file_state.src_file)
-    else:
-        parse_word_directives_at_nonlocal_label(label, file_state.scanned_files)
-
-def parse_word_directives_at_local_label(label, src_file):
-    saved_line_num = src_file.line_num
-    
-    for line in src_file:
-"""
-
 def find_label_line_num(label, funcstate):
     if not label.startswith("."):
         return syms[label].line_num
@@ -175,7 +162,7 @@ def parse_word_directives(src_file, max_words=None, must_be_words=False):
             words.extend(word_split_regex.split(line[5:].strip()))
             if not must_be_words:
                 break
-            global_fileline_msg("FakeIDAZeroesWarning: No support for fake IDA zero bytes yet!")
+            #global_fileline_msg("FakeIDAZeroesWarning: No support for fake IDA zero bytes yet!")
         elif first_run and line.startswith(".hword"):
             words.extend(word_split_regex.split(line[6:].strip()))
             break

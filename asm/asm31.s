@@ -114663,6 +114663,8 @@ sub_80F0700:
 	push {lr}
 	ldr r0, [r5,#0x50]
 	tst r0, r0
+	// error: jumping to the middle of a routine with a different stack balance
+	// again, works out due to previous calls having pc pushes on the stack
 	beq loc_80F073E
 	bl sub_80C44D2
 	pop {pc}
@@ -118773,7 +118775,7 @@ off_80F27F8: .word sub_80F06CE+1
 	.word nullsub_106+1
 	.word nullsub_106+1
 	.word sub_8106A22+1
-	.word loc_8107E66+1
+	.word sub_8107E66+1
 off_80F285C: .word sub_80F06CE+1
 	.word sub_80F2C90+1
 	.word nullsub_106+1
@@ -160047,12 +160049,20 @@ locret_8107E58:
 	pop {pc}
 	push {r4,lr}
 	pop {r4,pc}
-loc_8107E66:
+
+	thumb_local_start
+sub_8107E66:
 	ldr r0, [r5,#0x50]
 	tst r0, r0
 	beq loc_8107E74
+	// whoops! lr isn't preserved, so this function call overwrites it.
+	// but because this function that it common branches to performs pop {pc}
+	// and the caller of this function (sub_800F3E8 -> sub_800F420) calls this
+	// function right before a pop {pc}, this doesn't do anything harmful
 	bl sub_80C46B6
 	b loc_8107E74
+	thumb_func_end sub_8107E66
+
 	thumb_local_start
 sub_8107E72:
 	push {lr}
@@ -162768,6 +162778,7 @@ loc_81096E8:
 	strh r0, [r4]
 locret_81096F8:
 	pop {r4,pc}
+
 	thumb_func_start sub_81096FA
 sub_81096FA:
 	ldrb r2, [r5,#oBattleObject_Alliance]
@@ -163464,8 +163475,12 @@ sub_8109D70:
 	ldrb r1, [r5,#0x15]
 	strb r1, [r5,#0x13]
 	bl object_removePanelReserve
-	.byte 0x4, 0xF7, 0x89, 0xFA, 0x10, 0xF7, 0x5F, 0xF9, 0x3, 0x20
-	.byte 0x38, 0x82, 0x8, 0x20, 0x38, 0x80
+	bl object_setCoordinatesFromPanels
+	bl object_updateCollisionPanels
+	mov r0, #3
+	strh r0, [r7,#0x10]
+	mov r0, #8
+	strh r0, [r7]
 locret_8109D96:
 	pop {pc}
 	thumb_func_end sub_8109D70
@@ -164867,7 +164882,10 @@ sub_810A9AE:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	bl object_removePanelReserve
-	.byte 0x40, 0x20, 0xF, 0xF7, 0xC1, 0xFB, 0x8, 0x20, 0x38, 0x80
+	mov r0, #0x40
+	bl object_clearFlag
+	mov r0, #8
+	strh r0, [r7]
 locret_810A9DE:
 	pop {r4,r6,pc}
 off_810A9E0: .word byte_810A9E4
@@ -164884,7 +164902,7 @@ off_810A9EC: .word sub_8016380+1
 	.word sub_81097B4+1
 	.word sub_810A92C+1
 	.word sub_8109974+1
-	.word byte_810AC35
+	.word sub_810AC34+1
 byte_810AA20: .byte 0x28, 0x46, 0x5A, 0x6E, 0x46, 0x78, 0x0, 0x0
 byte_810AA28: .byte 0xA, 0xA, 0xA, 0xA, 0xA, 0xA, 0x0, 0x0
 byte_810AA30: .byte 0x4B, 0x0, 0x4B, 0x0, 0x4B, 0x0, 0x4B, 0x0, 0x4B, 0x0, 0x4B
@@ -165131,8 +165149,16 @@ locret_810AC24:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_810AC28: .word byte_810AC2C
-byte_810AC2C: .byte 0xC, 0xB, 0xE, 0xD, 0xF, 0xF, 0xFF, 0xFF, 0x0
-byte_810AC35: .byte 0xB5, 0x0, 0xBD, 0xF0, 0xB5, 0xE8, 0x6E, 0x0, 0x42, 0x20
+byte_810AC2C: .byte 0xC, 0xB, 0xE, 0xD, 0xF, 0xF, 0xFF, 0xFF
+
+	thumb_local_start
+sub_810AC34:
+	push {lr}
+	pop {pc}
+	thumb_func_end sub_810AC34
+
+	// this is code that hasn't been referenced yet
+	.byte 0xF0, 0xB5, 0xE8, 0x6E, 0x0, 0x42, 0x20
 	.byte 0xD1, 0xF, 0xF7, 0x91, 0xFA, 0x79, 0x49, 0x8, 0x42, 0x1D
 	.byte 0xD1, 0x60, 0x20, 0xD, 0x21, 0x12, 0x22, 0xFE, 0xF7, 0xEE
 	.byte 0xFC, 0x0, 0x28, 0x16, 0xD1, 0xA8, 0x7D, 0x1, 0x21, 0x48
@@ -165294,7 +165320,7 @@ sub_810AD9E:
 	ldr r3, off_810AE38 // =byte_810AE08
 	bl sub_81096FA
 	bl sub_8015C94
-	.byte 0xF0, 0xBD
+	pop {r4-r7,pc}
 	thumb_func_end sub_810AD9E
 
 	thumb_local_start
@@ -165951,7 +165977,7 @@ sub_810B36C:
 	tst r0, r0
 	bne locret_810B3A0
 	bl object_getFlag // () -> int
-	ldr r1, byte_810B752+6 // =0x0
+	ldr r1, byte_810B758 // =0x0
 	tst r0, r1
 	beq locret_810B3A0
 	mov r0, #4
@@ -166401,7 +166427,10 @@ off_810B73C: .word byte_810B752
 byte_810B740: .byte 0x1E, 0x3C, 0x5A, 0x78, 0x50, 0x96
 byte_810B746: .byte 0x1E, 0x3C, 0x5A, 0x78, 0x50, 0x96
 byte_810B74C: .byte 0x3C, 0x14, 0x28, 0x28, 0xC, 0x14
-byte_810B752: .byte 0x64, 0x1E, 0x3C, 0x50, 0x10, 0x28, 0x0, 0x80, 0x0, 0x0
+byte_810B752: .byte 0x64, 0x1E, 0x3C, 0x50, 0x10, 0x28
+byte_810B758: .byte 0x0, 0x80, 0x0, 0x0
+	thumb_func_end sub_810B6F0
+
 dword_810B75C: .word 0xA000
 off_810B760: .word byte_810B6E0
 off_810B764: .word byte_810B6E0
@@ -166440,24 +166469,60 @@ byte_810B7B8: .byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xA7, 0x34, 0xA7, 0x34, 0xA7, 0x34, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
-	.byte 0xFF, 0xFF, 0xFF, 0x0
-byte_810B879: .byte 0xB5, 0xFE, 0xF6, 0x88, 0xFC, 0x0, 0x42, 0x28, 0xD1
-	.byte 0x7C, 0x21, 0x68, 0x5C, 0x0, 0x42, 0x7, 0xD0, 0x0
-	.byte 0x20, 0x68, 0x54, 0x40, 0x20, 0xE, 0xF7, 0x64, 0xFC
-	.byte 0x5, 0xF7, 0x3E, 0xFF, 0x1C, 0xE0, 0xE, 0xF7, 0x64
-	.byte 0xFC, 0xBA, 0x49, 0x8, 0x42, 0x12, 0xD0, 0x38, 0x88
-	.byte 0x8, 0x21, 0x88, 0x42, 0xE, 0xD0, 0x64, 0x20, 0x28
-	.byte 0x58, 0xCD, 0xF7, 0xE8, 0xFC, 0x0, 0xF0, 0x56, 0xF9
-	.byte 0x1, 0x20, 0x28, 0x74, 0x8, 0x20, 0x38, 0x80, 0x40
-	.byte 0x20, 0xE, 0xF7, 0x4B, 0xFC, 0x0, 0x20, 0x78, 0x70
-	.byte 0x3, 0x49, 0x38, 0x78, 0x9, 0x58, 0xFE, 0x46, 0x8
-	.byte 0x47, 0x0, 0xBD, 0x0, 0x0
-	.word off_810B8DC
+	.byte 0xFF, 0xFF, 0xFF
+
+	thumb_local_start
+sub_810B878:
+	push {lr}
+	bl battle_isBattleOver
+	tst r0, r0
+	bne locret_810B8D4
+	mov r1, #0x7c
+	ldrb r0, [r5,r1]
+	tst r0, r0
+	beq loc_810B89A
+	mov r0, #0
+	strb r0, [r5,r1]
+	mov r0, #0x40
+	bl object_clearFlag
+	bl object_exitAttackState
+	b locret_810B8D4
+loc_810B89A:
+	bl object_getFlag
+	ldr r1, off_810BB88 // =0xa000
+	tst r0, r1
+	beq loc_810B8CA
+	ldrh r0, [r7]
+	mov r1, #8
+	cmp r0, r1
+	beq loc_810B8CA
+	mov r0, #0x64
+	ldr r0, [r5,r0]
+	bl sub_80D9284
+	bl sub_810BB64
+	mov r0, #1
+	strb r0, [r5,#0x10]
+	mov r0, #8
+	strh r0, [r7]
+	mov r0, #0x40
+	bl object_clearFlag
+	mov r0, #0
+	strb r0, [r7,#1]
+loc_810B8CA:
+	ldr r1, off_810B8D8 // =off_810B8DC
+	ldrb r0, [r7]
+	ldr r1, [r1,r0]
+	mov lr, pc
+	bx r1
+locret_810B8D4:
+	pop {pc}
+	.balign 4, 0
+off_810B8D8: .word off_810B8DC
 off_810B8DC: .word sub_810B8EC+1
 	.word sub_810B964+1
 	.word sub_810B9AA+1
 	.word sub_81097B4+1
-	thumb_func_end sub_810B6F0
+	thumb_func_end sub_810B878
 
 	thumb_local_start
 sub_810B8EC:
@@ -166557,7 +166622,7 @@ locret_810B9A8:
 sub_810B9AA:
 	push {r4,r6,lr}
 	bl object_getFlag // () -> int
-	ldr r1, byte_810BB86+2 // =0x0
+	ldr r1, off_810BB88 // =0x0
 	tst r0, r1
 	beq loc_810B9D4
 	bl sprite_getFrameParameters
@@ -166795,7 +166860,8 @@ sub_810BB64:
 	ldr r0, [r5,#0x78]
 	bl sub_80D9532
 	pop {r4-r7,pc}
-byte_810BB86: .byte 0x0, 0x0, 0x0, 0xA0, 0x0, 0x0
+	.balign 4, 0
+off_810BB88: .word 0xa000
 off_810BB8C: .word byte_810BBE0
 off_810BB90: .word byte_810BBE8
 off_810BB94: .word sub_8016380+1
@@ -166808,7 +166874,7 @@ off_810BB94: .word sub_8016380+1
 	.word sub_810BC2A+1
 	.word sub_810BC44+1
 	.word sub_81097B4+1
-	.word byte_810B879
+	.word sub_810B878+1
 	.word sub_8109952+1
 	.word sub_8109804+1
 byte_810BBC8: .byte 0x32, 0x64, 0x96, 0xC8, 0x78, 0xFA, 0x0, 0x0
@@ -167361,8 +167427,14 @@ loc_810C0BC:
 	ldrb r1, [r5,#0x15]
 	strb r1, [r5,#0x13]
 	bl object_removePanelReserve
-	.byte 0x2, 0xF7, 0xE4, 0xF8, 0x0, 0x20, 0xE8, 0x63, 0x38, 0x82
-	.byte 0x2, 0x20, 0x28, 0x74, 0xC, 0x20, 0x38, 0x80
+	bl object_setCoordinatesFromPanels
+	mov r0, #0
+	str r0, [r5,#0x3c]
+	strh r0, [r7,#0x10]
+	mov r0, #2
+	strb r0, [r5,#0x10]
+	mov r0, #0xc
+	strh r0, [r7]
 locret_810C0E2:
 	pop {pc}
 	thumb_func_end sub_810C070

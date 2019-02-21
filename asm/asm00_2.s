@@ -12058,13 +12058,13 @@ sub_801469C:
 	pop {r6,pc}
 	.balign 4, 0x00
 off_80146B4: .word off_80146B8
-off_80146B8: .word byte_801471D
-	.word byte_801471F
-	.word byte_8014721
-	.word byte_8014723
-	.word byte_8014725
-	.word byte_8014727
-	.word byte_8014729
+off_80146B8: .word nullsub_801471C
+	.word nullsub_801471E
+	.word nullsub_8014720
+	.word nullsub_8014722
+	.word nullsub_8014724
+	.word nullsub_8014726
+	.word nullsub_8014728
 	.word sub_801472A+1
 	.word sub_801473C+1
 	.word sub_8014746+1
@@ -12083,15 +12083,42 @@ off_80146B8: .word byte_801471D
 	.word sub_8014760+1
 	.word sub_801479C+1
 	.word sub_80147B2+1
-	.byte 0xF7
-byte_801471D: .byte 0x46, 0xF7
-byte_801471F: .byte 0x46, 0xF7
-byte_8014721: .byte 0x46, 0xF7
-byte_8014723: .byte 0x46, 0xF7
-byte_8014725: .byte 0x46, 0xF7
-byte_8014727: .byte 0x46, 0xF7
-byte_8014729: .byte 0x46
 	thumb_func_end sub_801469C
+
+	thumb_local_start
+nullsub_801471C:
+	mov pc, lr
+	thumb_func_end nullsub_801471C
+
+	thumb_local_start
+nullsub_801471E:
+	mov pc, lr
+	thumb_func_end nullsub_801471E
+
+	thumb_local_start
+nullsub_8014720:
+	mov pc, lr
+	thumb_func_end nullsub_8014720
+
+	thumb_local_start
+nullsub_8014722:
+	mov pc, lr
+	thumb_func_end nullsub_8014722
+
+	thumb_local_start
+nullsub_8014724:
+	mov pc, lr
+	thumb_func_end nullsub_8014724
+
+	thumb_local_start
+nullsub_8014726:
+	mov pc, lr
+	thumb_func_end nullsub_8014726
+
+	thumb_local_start
+nullsub_8014728:
+	mov pc, lr
+	thumb_func_end nullsub_8014728
 
 	thumb_local_start
 sub_801472A:
@@ -14200,7 +14227,7 @@ sub_80158FA:
 	pop {pc}
 	.balign 4, 0x00
 dword_8015924: .word 0x80111C40
-off_8015928: .word loc_8001440
+off_8015928: .word 0x8001440
 dword_801592C: .word 0x1000863D
 dword_8015930: .word 0x200900
 dword_8015934: .word 0x80111C40

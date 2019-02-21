@@ -38,3 +38,4 @@ tools/agbcc/
 tools/binutils/
 *.pickle
 temp/
+*.cfg

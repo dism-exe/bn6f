@@ -8,6 +8,7 @@ from collections import namedtuple
 import functools
 import time
 import sys
+import random
 
 import analyze_source
 
@@ -141,6 +142,38 @@ def main():
     global analyzer_start_time
     analyzer_start_time = time.time()
     analyzer.read_battle_object_jumptables()
+    #analyze_source.benchmark_line_iterator(scanned_files)
+
+def benchmark_line_iterator(scanned_files):
+    if random.random() < 0.5:
+        benchmark_list_iterator(scanned_files)
+        benchmark_src_file_iterator(scanned_files)
+    else:
+        benchmark_src_file_iterator(scanned_files)
+        benchmark_list_iterator(scanned_files)
+
+def benchmark_list_iterator(scanned_files):
+    list_iterator_start_time = time.time()
+    for src_file in scanned_files.values():
+        src_file.line_num = 0
+        output = ""
+        for line in src_file._uncommented_lines:
+            output += line
+
+    list_iterator_total_time = time.time() - list_iterator_start_time
+    debug_print("list_iterator_total_time: %s" % list_iterator_total_time)
+
+def benchmark_src_file_iterator(scanned_files):
+    src_file_iterator_start_time = time.time()
+
+    for src_file in scanned_files.values():
+        src_file.line_num = 0
+        output = ""
+        for line in src_file:
+            output += line
+
+    src_file_iterator_total_time = time.time() - src_file_iterator_start_time
+    debug_print("src_file_iterator_total_time: %s" % src_file_iterator_total_time)
 
 def recursive_print_function_tree(f, function_tree, indentation_level=0):
     for function, subtree in function_tree.items():
@@ -180,7 +213,7 @@ def print_post_output_info(start_time, analyzer_end_time):
 
 if __name__ == "__main__":
     start_time = time.time()
-    multiprocessing.set_start_method("spawn") 
+    #multiprocessing.set_start_method("spawn") 
     try:
         main()
     except:

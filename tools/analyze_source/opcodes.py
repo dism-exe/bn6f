@@ -285,11 +285,13 @@ def cmp_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
     if dest_datatype.type == DataType.UNKNOWN:
         if opcode_params[1] == "#NULL":
             dest_datatype.ref = datatypes.UnkPointer()
-        else:
+        elif evaluate_imm_sym_or_num_error_if_undefined(opcode_params[1], fileline) != 0:
             dest_datatype.ref = datatypes.Primitive(Size.WORD)
+        else:
+            global_fileline_msg("NullPointerWarning: Possible null pointer immediate found!")
     elif dest_datatype.type == DataType.POINTER:
         if evaluate_imm_sym_or_num_error_if_undefined(opcode_params[1], fileline) != 0:
-            fileline_error("Context information: cmp pointer, #imm-nonzero", fileline)
+            fileline_msg("BadPointerCmpWarning: Context information: cmp pointer, #imm-nonzero", fileline)
 
     return True
 
@@ -388,67 +390,67 @@ def ldr_pool_opcode_function(opcode_params, funcstate, src_file, fileline):
     return True
 
 def ldr_rb_ro_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_load_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], Size.WORD, fileline)
+    do_load_operation(funcstate, opcode_params[0], opcode_params[1], opcode_params[2], Size.WORD, fileline)
     return True
 
 def ldr_rb_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_load_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[3], Size.WORD, fileline)
+    do_load_operation(funcstate, opcode_params[0], opcode_params[1], opcode_params[3], Size.WORD, fileline)
     return True
 
 def ldr_sp_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_load_operation(funcstate.regs, opcode_params[0], "sp", opcode_params[2], Size.WORD, fileline)
+    do_load_operation(funcstate, opcode_params[0], "sp", opcode_params[2], Size.WORD, fileline)
     return True
 
 def str_rb_ro_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_store_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], Size.WORD, fileline)
+    do_store_operation(funcstate, opcode_params[0], opcode_params[1], opcode_params[2], Size.WORD, fileline)
     return True
 
 def str_rb_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_store_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[3], Size.WORD, fileline)
+    do_store_operation(funcstate, opcode_params[0], opcode_params[1], opcode_params[3], Size.WORD, fileline)
     return True
 
 def str_sp_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_store_operation(funcstate.regs, opcode_params[0], "sp", opcode_params[2], Size.WORD, fileline)
+    do_store_operation(funcstate, opcode_params[0], "sp", opcode_params[2], Size.WORD, fileline)
     return True
 
 def ldrb_rb_ro_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_load_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], Size.BYTE, fileline)
+    do_load_operation(funcstate, opcode_params[0], opcode_params[1], opcode_params[2], Size.BYTE, fileline)
     return True
 
 def ldrb_rb_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_load_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[3], Size.BYTE, fileline)
+    do_load_operation(funcstate, opcode_params[0], opcode_params[1], opcode_params[3], Size.BYTE, fileline)
     return True
 
 def strb_rb_ro_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_store_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], Size.BYTE, fileline)
+    do_store_operation(funcstate, opcode_params[0], opcode_params[1], opcode_params[2], Size.BYTE, fileline)
     return True
 
 def strb_rb_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_store_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[3], Size.BYTE, fileline)
+    do_store_operation(funcstate, opcode_params[0], opcode_params[1], opcode_params[3], Size.BYTE, fileline)
     return True
 
 def ldrh_rb_ro_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_load_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], Size.HWORD, fileline)
+    do_load_operation(funcstate, opcode_params[0], opcode_params[1], opcode_params[2], Size.HWORD, fileline)
     return True
 
 def ldrh_rb_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_load_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[3], Size.HWORD, fileline)
+    do_load_operation(funcstate, opcode_params[0], opcode_params[1], opcode_params[3], Size.HWORD, fileline)
     return True
 
 def strh_rb_ro_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_store_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], Size.HWORD, fileline)
+    do_store_operation(funcstate, opcode_params[0], opcode_params[1], opcode_params[2], Size.HWORD, fileline)
     return True
 
 def strh_rb_imm_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_store_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[3], Size.HWORD, fileline)
+    do_store_operation(funcstate, opcode_params[0], opcode_params[1], opcode_params[3], Size.HWORD, fileline)
     return True
 
 def ldrsb_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_load_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], Size.BYTE, fileline)
+    do_load_operation(funcstate, opcode_params[0], opcode_params[1], opcode_params[2], Size.BYTE, fileline)
     return True
 
 def ldrsh_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_load_operation(funcstate.regs, opcode_params[0], opcode_params[1], opcode_params[2], Size.HWORD, fileline)
+    do_load_operation(funcstate, opcode_params[0], opcode_params[1], opcode_params[2], Size.HWORD, fileline)
     return True
 
 def adr_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -475,7 +477,7 @@ def push_opcode_function(opcode_params, funcstate, src_file, fileline):
         new_sp_reg.ref.add_offset(-Size.WORD.value)
         push_datatype = copy.deepcopy(funcstate.regs[reg_name].data)
         debug_print("push reg: %s, datatype: %s" % (reg_name, type(push_datatype.ref).__name__))
-        new_sp_reg.ref.store(push_datatype, Size.WORD, fileline)
+        new_sp_reg.ref.store(push_datatype, Size.WORD, fileline, funcstate)
 
     funcstate.regs["sp"].set_new_reg(analyzer.RegisterInfo(new_sp_reg, fileline))
     return True
@@ -485,7 +487,7 @@ def pop_opcode_function(opcode_params, funcstate, src_file, fileline):
     new_sp_reg = copy.deepcopy(funcstate.regs["sp"].data)
 
     for reg_name in reglist:
-        pop_datatype = copy.deepcopy(new_sp_reg.ref.load(Size.WORD, fileline))
+        pop_datatype = copy.deepcopy(new_sp_reg.ref.load(Size.WORD, fileline, funcstate))
         debug_print("pop reg: %s, datatype: %s" % (reg_name, type(pop_datatype.ref).__name__))
         funcstate.regs[reg_name].set_new_reg(analyzer.RegisterInfo(pop_datatype, fileline))
         new_sp_reg.ref.add_offset(Size.WORD.value)
@@ -499,7 +501,7 @@ def stmia_opcode_function(opcode_params, funcstate, src_file, fileline):
 
     for reg_name in reglist:
         store_datatype = copy.deepcopy(funcstate.regs[reg_name].data)
-        store_src_datatype.ref.store(store_datatype, Size.WORD, fileline)
+        store_src_datatype.ref.store(store_datatype, Size.WORD, fileline, funcstate)
         store_src_datatype.ref.add_offset(Size.WORD.value)
 
     funcstate.regs[opcode_params[0]].set_new_reg(analyzer.RegisterInfo(store_src_datatype, fileline))
@@ -510,7 +512,7 @@ def ldmia_opcode_function(opcode_params, funcstate, src_file, fileline):
     load_src_datatype = copy.deepcopy(funcstate.regs[opcode_params[0]].data)
 
     for reg_name in reglist:
-        load_datatype = copy.deepcopy(load_src_datatype.ref.load(Size.WORD, fileline))
+        load_datatype = copy.deepcopy(load_src_datatype.ref.load(Size.WORD, fileline, funcstate))
         funcstate.regs[reg_name].set_new_reg(analyzer.RegisterInfo(load_datatype, fileline))
         load_src_datatype.ref.add_offset(Size.WORD.value)
 
@@ -568,12 +570,6 @@ def blt_opcode_function(opcode_params, funcstate, src_file, fileline):
 def bgt_opcode_function(opcode_params, funcstate, src_file, fileline):
     funcstate.cond_branches.append(analyzer.CondBranchInfo(opcode_params, funcstate.regs))
     return True
-
-def check_loc_80EE4F0(opcode_params, funcstate, src_file, fileline):
-    if opcode_params != "loc_80EE4F0":
-        return True
-    funcstate.uncond_branch = opcode_params
-    return False
 
 def ble_opcode_function(opcode_params, funcstate, src_file, fileline):
     funcstate.cond_branches.append(analyzer.CondBranchInfo(opcode_params, funcstate.regs))
@@ -660,7 +656,8 @@ def check_spawn_battle_object(opcode_params, funcstate, src_file, fileline):
             if reg_datatype.type == DataType.UNKNOWN:
                 reg_datatype.ref = datatypes.Primitive(spawn_battle_object_numeric_reg_name_and_size.size)
             elif reg_datatype.type == DataType.POINTER:
-                fileline_msg("BattleObjectSpawnWarning: %s is pointer for Battle Object Spawn function!" % spawn_battle_object_numeric_reg_name_and_size.regname, fileline)
+                pass
+                #fileline_msg("BattleObjectSpawnWarning: %s is pointer for Battle Object Spawn function!" % spawn_battle_object_numeric_reg_name_and_size.regname, fileline)
             funcstate.regs[spawn_battle_object_numeric_reg_name_and_size.regname].set_new_reg(analyzer.RegisterInfo(datatypes.Primitive().wrap(), fileline))
 
         funcstate.regs["r5"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
@@ -697,17 +694,23 @@ class Opcode:
         self.callbacks = []
     
     def run_function(self, opcode_params, funcstate, src_file, fileline):
-        do_main_function = True
+        chosen_callback = None
         for callback in self.callbacks:
             if not callback(opcode_params, funcstate, src_file, fileline):
-                do_main_function = False
+                chosen_callback = callback
                 break
 
-        if do_main_function:
+        if chosen_callback is None:
             self.function(opcode_params, funcstate, src_file, fileline)
+        else:
+            fileline_msg("Ran chosen callback \"%s\" for opcode \"%s\"." % (chosen_callback.__name__, self.function.__name__), fileline)
 
     def append_callback(self, callback):
         self.callbacks.append(callback)
+        return len(self.callbacks) - 1
+
+    def remove_callback(self, callback):
+        self.callbacks.remove(callback)
 
 lsl_imm_opcode = Opcode(rd_rs_imm_regex, lsl_imm_opcode_function)
 lsl_reg_opcode = Opcode(rd_rs_regex, lsl_reg_opcode_function)
@@ -987,18 +990,20 @@ def do_triple_arg_operation(registers, dest_reg, source_reg, operand_reg_or_imm,
     result_datatype = callback(source_datatype, operand_datatype, fileline)
     registers[dest_reg].set_new_reg(analyzer.RegisterInfo(result_datatype, fileline))
 
-def do_load_operation(registers, dest_reg, source_reg, operand_reg_or_imm, size, fileline):
+def do_load_operation(funcstate, dest_reg, source_reg, operand_reg_or_imm, size, fileline):
+    registers = funcstate.regs
     source_datatype, operand_datatype = get_datatypes_for_triple_arg_operation(registers, source_reg, operand_reg_or_imm, fileline)
-    result_datatype = load_from_datatypes(source_datatype, operand_datatype, size, fileline)
+    result_datatype = load_from_datatypes(source_datatype, operand_datatype, size, funcstate, fileline)
     registers[dest_reg].set_new_reg(analyzer.RegisterInfo(result_datatype, fileline))
 
-def do_store_operation(registers, dest_reg, source_reg, operand_reg_or_imm, size, fileline):
+def do_store_operation(funcstate, dest_reg, source_reg, operand_reg_or_imm, size, fileline):
+    registers = funcstate.regs
     source_datatype, operand_datatype = get_datatypes_for_triple_arg_operation(registers, source_reg, operand_reg_or_imm, fileline)
     dest_datatype = registers[dest_reg].data
     assert_valid_datatype(dest_datatype, fileline)
-    store_to_datatypes(dest_datatype, source_datatype, operand_datatype, size, fileline)
+    store_to_datatypes(dest_datatype, source_datatype, operand_datatype, size, funcstate, fileline)
 
-def load_from_datatypes(source_datatype, operand_datatype, size, fileline):
+def load_from_datatypes(source_datatype, operand_datatype, size, funcstate, fileline):
     datatype_weak, datatype_strong = order_datatypes(source_datatype, operand_datatype)
 
     if datatype_weak.type == DataType.UNKNOWN:
@@ -1006,19 +1011,20 @@ def load_from_datatypes(source_datatype, operand_datatype, size, fileline):
             return datatypes.new_unk_datatype_from_size(size)
         elif datatype_strong.type == DataType.PRIMITIVE:
             datatype_weak.ref = datatypes.UnkPointer()
-            return datatype_weak.ref.load(size, fileline, datatype_strong)
+            return datatype_weak.ref.load(size, fileline, funcstate, datatype_strong)
         elif datatype_strong.type == DataType.POINTER:
             datatype_weak.ref = datatypes.Primitive(Size.WORD)
-            return datatype_strong.ref.load(size, fileline, datatype_weak)
+            return datatype_strong.ref.load(size, fileline, funcstate, datatype_weak)
     elif datatype_weak.type == DataType.PRIMITIVE:
         if datatype_strong.type == DataType.PRIMITIVE:
-            fileline_error("Impossible load operation found! (load [num, num])", fileline)
+            fileline_msg("DereferenceWarning: Impossible load operation found! (load [num, num])", fileline)
+            return datatypes.new_unk_datatype_from_size(size)
         elif datatype_strong.type == DataType.POINTER:
-            return datatype_strong.ref.load(size, fileline, datatype_weak)
+            return datatype_strong.ref.load(size, fileline, funcstate, datatype_weak)
     elif datatype_weak == DataType.POINTER and datatype_strong == DataType.POINTER:
         fileline_error("Impossible load operation found! (load [pointer, pointer])", fileline)
 
-def store_to_datatypes(dest_datatype, source_datatype, operand_datatype, size, fileline):
+def store_to_datatypes(dest_datatype, source_datatype, operand_datatype, size, funcstate, fileline):
     if dest_datatype.type == DataType.UNKNOWN and size == Size.BYTE or size == Size.HWORD:
         dest_datatype.ref = datatypes.Primitive(size)
 
@@ -1029,15 +1035,15 @@ def store_to_datatypes(dest_datatype, source_datatype, operand_datatype, size, f
             fileline_msg("Context information: store [unk, unk]", fileline)
         elif datatype_strong.type == DataType.PRIMITIVE:
             datatype_weak.ref = datatypes.UnkPointer()
-            datatype_weak.ref.store(dest_datatype, size, fileline, datatype_strong)
+            datatype_weak.ref.store(dest_datatype, size, fileline, funcstate, datatype_strong)
         elif datatype_strong.type == DataType.POINTER:
             datatype_weak.ref = datatypes.Primitive(Size.WORD)
-            datatype_strong.ref.store(dest_datatype, size, fileline, datatype_weak)
+            datatype_strong.ref.store(dest_datatype, size, fileline, funcstate, datatype_weak)
     elif datatype_weak.type == DataType.PRIMITIVE:
         if datatype_strong.type == DataType.PRIMITIVE:
-            fileline_error("Impossible store operation found! (store [num, num])", fileline)
+            fileline_msg("DereferenceWarning: Impossible store operation found! (store [num, num])", fileline)
         elif datatype_strong.type == DataType.POINTER:
-            datatype_strong.ref.store(dest_datatype, size, fileline, datatype_weak)
+            datatype_strong.ref.store(dest_datatype, size, fileline, funcstate, datatype_weak)
     elif datatype_weak == DataType.POINTER and datatype_strong == DataType.POINTER:
         fileline_error("Impossible store operation found! (store [pointer, pointer])", fileline)
 
