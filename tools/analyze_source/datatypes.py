@@ -552,7 +552,7 @@ class Struct(Pointer):
             uncommented_line = src_file.lines[fileline.line_num]
             search_obj = Struct.imm_value_regex.search(uncommented_line)
             if search_obj[1] is not None:
-                if '0' <= search_obj[1][0] < '9':
+                if '0' <= search_obj[1][0] <= '9':
                     commented_line = src_file.commented_lines[fileline.line_num]
                     prefix_and_offset_name = self.get_prefix(self.offset + offset.ref.value) + struct_field.offset_name
                     src_file.commented_lines[fileline.line_num] = commented_line[:search_obj.start(1)] + prefix_and_offset_name + commented_line[search_obj.end(1):]

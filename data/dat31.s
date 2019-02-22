@@ -1919,7 +1919,7 @@ sub_810D5A6:
 	bl sub_810D4E8
 loc_810D5B8:
 	bl sub_8016B02
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	cmp r0, #4
 	beq locret_810D5CC
 	ldr r0, [r5,#oBattleObject_ExtraVars]
@@ -1942,7 +1942,7 @@ sub_810D5CE:
 	bl sub_810D4E8
 loc_810D5E0:
 	bl sub_8016B36
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	cmp r0, #6
 	beq locret_810D5F4
 	ldr r0, [r5,#oBattleObject_ExtraVars]
@@ -1965,7 +1965,7 @@ sub_810D5F6:
 	bl sub_810D4E8
 loc_810D608:
 	bl sub_8016B72
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	cmp r0, #7
 	beq locret_810D61C
 	ldr r0, [r5,#oBattleObject_ExtraVars]

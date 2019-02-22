@@ -141,9 +141,9 @@ loc_800B964:
 	bl engine_isScreeneffectAnimating // () -> zf
 	tst r0, r0
 	bne locret_800B97C
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	add r0, #4
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_800B97C:
@@ -170,9 +170,9 @@ loc_800B996:
 	bl engine_isScreeneffectAnimating // () -> zf
 	tst r0, r0
 	bne locret_800B9AE
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	add r0, #4
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_800B9AE:
@@ -270,16 +270,16 @@ loc_800BA56:
 	ldrh r2, [r1,#0x24]
 	tst r2, r2
 	bne loc_800BA7E
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	add r0, #8
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	b locret_800BA88
 loc_800BA7E:
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	add r0, #4
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_800BA88:
@@ -389,9 +389,9 @@ loc_800BB46:
 	ldr r0, off_800BBA4 // =unk_200F3B8 
 	mov r2, #1
 	str r2, [r0,r1]
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	add r0, #8
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	b locret_800BB9E
@@ -407,16 +407,16 @@ loc_800BB72:
 	cmp r0, #0xba
 	beq loc_800BB94
 loc_800BB88:
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	add r0, #4
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	b locret_800BB9E
 loc_800BB94:
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	sub r0, #4
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_800BB9E:
@@ -520,16 +520,16 @@ loc_800BC5A:
 	ldrh r2, [r1,#0x24]
 	tst r2, r2
 	bne loc_800BC7C
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	add r0, #8
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	b locret_800BC86
 loc_800BC7C:
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	add r0, #4
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_800BC86:
@@ -726,9 +726,9 @@ sub_800BDD0:
 	cmp r0, #0xba
 	beq loc_800BDF4
 loc_800BDE8:
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	add r0, #4
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	b locret_800BE08
@@ -843,9 +843,9 @@ loc_800BEA2:
 loc_800BEC8:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_802CEA6
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	add r0, #4
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_800BED8:
@@ -5128,7 +5128,7 @@ loc_800E75E:
 	str r0, [r5,#oBattleObject_Unk_5c]
 loc_800E776:
 	mov r0, #4
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	mov r0, #0
@@ -5151,7 +5151,7 @@ loc_800E786:
 	str r0, [r5,#oBattleObject_Unk_5c]
 loc_800E7A6:
 	mov r0, #4
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 loc_800E7AE:
@@ -5178,7 +5178,7 @@ loc_800E7C2:
 	str r0, [r5,#oBattleObject_Unk_5c]
 loc_800E7DA:
 	mov r0, #6
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	mov r0, #0
@@ -5201,7 +5201,7 @@ loc_800E7EA:
 	str r0, [r5,#oBattleObject_Unk_5c]
 loc_800E80A:
 	mov r0, #6
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	mov r7, #0x58 
@@ -5235,7 +5235,7 @@ loc_800E836:
 	str r0, [r5,#oBattleObject_Unk_5c]
 loc_800E84E:
 	mov r0, #7
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	mov r0, #0
@@ -5258,7 +5258,7 @@ loc_800E85E:
 	str r0, [r5,#oBattleObject_Unk_5c]
 loc_800E87E:
 	mov r0, #7
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	mov r7, #0x60 

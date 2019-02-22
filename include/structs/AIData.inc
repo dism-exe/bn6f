@@ -11,6 +11,7 @@
 	\struct_entry \label\()_Unk_06, 1 // loc=0x6
 	\struct_entry \label\()_Unk_07, 1 // loc=0x7
 	\struct_entry \label\()_Unk_08, 1 // loc=0x8
+	\struct_entry \label\()_Unk_09, 1 // loc=0x9
 	struct_org 0xb
 	\struct_entry \label\()_Unk_0b, 1 // loc=0xb
 	\struct_entry \label\()_Unk_0c, 1 // loc=0xc

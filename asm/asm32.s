@@ -8715,7 +8715,7 @@ byte_81129E8: .byte 0x1E, 0x1E, 0x1E, 0x1E, 0x1E, 0x1E
 	thumb_func_start sub_81129EE
 sub_81129EE:
 	push {lr}
-	ldrb r0, [r5,#9]
+	ldrb r0, [r5,#oBattleObject_CurAction]
 	cmp r0, #0xb
 	beq locret_8112A1C
 	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
@@ -15061,7 +15061,7 @@ sub_8116470:
 	lsr r0, r0, #2
 	bcc locret_811648A
 	mov r0, #1
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_811648A:
@@ -15255,7 +15255,7 @@ sub_81166F2:
 	lsr r0, r0, #2
 	bcc locret_811670C
 	mov r0, #1
-	strb r0, [r5,#9]
+	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_811670C:
