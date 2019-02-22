@@ -56,6 +56,7 @@
 	\struct_entry \label\()_Timer2, 2 // loc=0x22
 	\struct_entry \label\()_HP, 2 // loc=0x24
 	\struct_entry \label\()_MaxHP, 2 // loc=0x26
+	\struct_entry \label\()_NameIDAndChip // loc=0x28
 	\struct_entry \label\()_NameID, 2 // loc=0x28
 	\struct_entry \label\()_Chip, 2 // loc=0x2a
 	// also includes flags

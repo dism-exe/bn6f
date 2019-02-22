@@ -20863,7 +20863,7 @@ sub_81195E4:
 	ldr r1, [r1,r2]
 	ldr r1, [r1]
 	lsl r1, r1, #5
-	ldr r2, dword_8119654 // =0x6010000 
+	ldr r2, dword_8119654 // =vObjectTiles
 	add r1, r1, r2
 	push {r0,r1}
 	mov r0, r1
@@ -20876,7 +20876,7 @@ sub_81195E4:
 	ldr r1, [r1,r2]
 	ldr r1, [r1,#8]
 	lsl r1, r1, #5
-	ldr r2, dword_8119654 // =0x6010000 
+	ldr r2, dword_8119654 // =vObjectTiles
 	add r1, r1, r2
 	push {r0,r1}
 	mov r0, r1
@@ -20897,7 +20897,7 @@ off_8119644: .word off_8119228
 off_8119648: .word off_811924C
 off_811964C: .word off_8119304
 off_8119650: .word off_8119330
-dword_8119654: .word 0x6010000
+dword_8119654: .word vObjectTiles
 off_8119658: .word 0x100
 off_811965C: .word byte_3001550
 off_8119660: .word dword_86E2E98
@@ -21985,7 +21985,7 @@ loc_8119F18:
 	ldr r3, [r3,r4]
 	ldr r3, [r3]
 	lsl r3, r3, #5
-	ldr r4, byte_811A04C // =0x0
+	ldr r4, off_811A04C // =0x0
 	add r3, r3, r4
 	mov r4, #9
 	mov r5, #5
@@ -22011,7 +22011,7 @@ loc_8119F5A:
 	ldr r3, [r3,r4]
 	ldr r3, [r3,#8]
 	lsl r3, r3, #5
-	ldr r4, byte_811A04C // =0x0
+	ldr r4, off_811A04C // =0x0
 	add r3, r3, r4
 	mov r4, #9
 	mov r5, #4
@@ -22033,7 +22033,7 @@ sub_8119F88:
 	ldr r1, [r1,r2]
 	ldr r1, [r1]
 	lsl r1, r1, #5
-	ldr r2, byte_811A04C // =0x0
+	ldr r2, off_811A04C // =vObjectTiles
 	add r1, r1, r2
 	push {r0,r1}
 	mov r0, r1
@@ -22046,7 +22046,7 @@ sub_8119F88:
 	ldr r1, [r1,r2]
 	ldr r1, [r1,#8]
 	lsl r1, r1, #5
-	ldr r2, byte_811A04C // =0x0
+	ldr r2, off_811A04C // =vObjectTiles
 	add r1, r1, r2
 	push {r0,r1}
 	mov r0, r1
@@ -22088,7 +22088,8 @@ dword_811A03C: .word 0x3000003
 	.word off_811A044
 off_811A044: .word dword_811A048
 dword_811A048: .word 0x5000005
-byte_811A04C: .byte 0x0, 0x0, 0x1, 0x6, 0x0, 0x1, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0
+off_811A04C: .word vObjectTiles
+	.byte 0x0, 0x1, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0
 	.word byte_3001550
 	.word dword_86E2E98
 	.word 0x800

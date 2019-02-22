@@ -182,6 +182,9 @@ def asr_reg_opcode_function(opcode_params, funcstate, src_file, fileline):
     do_double_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda val, shift: ctypes.c_uint32(ctypes.c_int32(val).value >> shift).value, fileline)
     return True
 
+def do_single_arg_numeric_operation(registers, dest_reg, source_reg, callback, fileline):
+    do_triple_arg_numeric_operation(registers, dest_reg, source_reg, source_reg, callback, fileline)
+
 def do_double_arg_numeric_operation(registers, dest_reg, source_reg, callback, fileline):
     do_triple_arg_numeric_operation(registers, dest_reg, dest_reg, source_reg, callback, fileline)
 
@@ -347,7 +350,7 @@ def do_tst_or_cmp_reg_opcode(opcode_params, funcstate, opcode_name, fileline):
     return True
 
 def neg_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_double_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda a, b: (-b) & 0xffffffff, fileline)
+    do_single_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda a, b: (-b) & 0xffffffff, fileline)
     return True
 
 def cmn_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -367,7 +370,7 @@ def bic_opcode_function(opcode_params, funcstate, src_file, fileline):
     return True
 
 def mvn_opcode_function(opcode_params, funcstate, src_file, fileline):
-    do_double_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda a, b: (~b) & 0xffffffff, fileline)
+    do_single_arg_numeric_operation(funcstate.regs, opcode_params[0], opcode_params[1], lambda a, b: (~b) & 0xffffffff, fileline)
     return True
 
 def bx_opcode_function(opcode_params, funcstate, src_file, fileline):
@@ -1118,4 +1121,3 @@ def read_opcode(line, funcstate, src_file, fileline):
             return True
     else:
         return False
-

@@ -1,5 +1,641 @@
 	.include "asm/object.inc"
 
+	thumb_func_start sub_800B884
+sub_800B884:
+	push {lr}
+	push {r1}
+	bl sub_800BF5C
+	pop {r1}
+	strb r1, [r0,#1]
+	pop {pc}
+	thumb_func_end sub_800B884
+
+	thumb_func_start sub_800B892
+sub_800B892:
+	push {lr}
+	bl sub_800BF5C
+	ldrb r0, [r0,#1]
+	pop {pc}
+	thumb_func_end sub_800B892
+
+	thumb_func_start sub_800B89C
+sub_800B89C:
+	push {lr}
+	bl sub_800BF5C
+	mov r1, #0
+	strb r1, [r0,#1]
+	mov r1, #0
+	str r1, [r0,#8]
+	pop {pc}
+	thumb_func_end sub_800B89C
+
+	thumb_func_start sub_800B8AC
+sub_800B8AC:
+	push {r4,lr}
+	mov r4, r0
+	mov r0, #0
+	bl sub_800BF5C
+	strb r4, [r0]
+	mov r0, #1
+	bl sub_800BF5C
+	strb r4, [r0]
+	pop {r4,pc}
+	thumb_func_end sub_800B8AC
+
+	thumb_local_start
+sub_800B8C2:
+	push {lr}
+	push {r0}
+	bl sub_800BF5C
+	ldrb r1, [r0]
+	pop {r2}
+	mov r0, #0
+	cmp r1, r2
+	bne locret_800B8D6
+	mov r0, #1
+locret_800B8D6:
+	pop {pc}
+	thumb_func_end sub_800B8C2
+
+	thumb_func_start sub_800B8D8
+sub_800B8D8:
+	push {lr}
+	push {r0}
+	bl sub_800BF5C
+	ldrb r1, [r0,#3]
+	pop {r2}
+	mov r0, #0
+	cmp r1, r2
+	bne locret_800B8EC
+	mov r0, #1
+locret_800B8EC:
+	pop {pc}
+	thumb_func_end sub_800B8D8
+
+	thumb_func_start sub_800B8EE
+sub_800B8EE:
+	push {r4,lr}
+	mov r1, #1
+	eor r0, r1
+	mov r1, #3
+	mul r0, r1
+	add r0, #2
+	mov r1, #4
+	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
+	mov r2, r1
+	mov r1, r0
+	mov r3, #0x78 
+	lsl r3, r3, #0x10
+	mov r4, #0x1e
+	bl SpawnT4BattleObjectWithId0
+	mov r0, #0xa5
+	bl sound_play // () -> void
+	pop {r4,pc}
+	thumb_func_end sub_800B8EE
+
+	thumb_func_start object_timefreezeBegin
+object_timefreezeBegin:
+	push {lr}
+	ldrb r0, [r5,#0x16]
+	bl battle_networkInvert
+	tst r0, r0
+	bne loc_800B928
+	mov r0, #0x40 
+	bl sub_801DACC
+loc_800B928:
+	ldrb r0, [r5,#0x16]
+	bl sub_800B8D8
+	tst r0, r0
+	beq loc_800B938
+	mov r0, #4
+	bl battle_setFlags
+loc_800B938:
+	ldrb r0, [r5,#0x16]
+	lsl r0, r0, #2
+	ldr r1, off_800B948 // =unk_200F3B8 
+	mov r2, #0
+	str r2, [r1,r0]
+	mov r0, #4
+	strb r0, [r5,#8]
+	pop {pc}
+off_800B948: .word unk_200F3B8
+	thumb_func_end object_timefreezeBegin
+
+	thumb_func_start object_dimScreen
+object_dimScreen:
+	push {lr}
+	ldrb r0, [r5,#0xb]
+	tst r0, r0
+	bne loc_800B964
+	mov r0, #0x3c 
+	mov r1, #4
+	bl engine_setScreeneffect // (int a1, int a2) -> void
+	mov r0, #0
+	strh r0, [r5,#0x20]
+	mov r0, #4
+	strb r0, [r5,#0xb]
+loc_800B964:
+	ldrh r0, [r5,#0x20]
+	add r0, #1
+	strh r0, [r5,#0x20]
+	bl engine_isScreeneffectAnimating // () -> zf
+	tst r0, r0
+	bne locret_800B97C
+	ldrb r0, [r5,#9]
+	add r0, #4
+	strb r0, [r5,#9]
+	mov r0, #0
+	strh r0, [r5,#0xa]
+locret_800B97C:
+	pop {pc}
+	thumb_func_end object_dimScreen
+
+	thumb_func_start sub_800B97E
+sub_800B97E:
+	push {lr}
+	ldrb r0, [r5,#0xb]
+	tst r0, r0
+	bne loc_800B996
+	mov r0, #0x78 
+	mov r1, #0x80
+	bl engine_setScreeneffect // (int a1, int a2) -> void
+	mov r0, #0
+	strh r0, [r5,#0x20]
+	mov r0, #4
+	strb r0, [r5,#0xb]
+loc_800B996:
+	ldrh r0, [r5,#0x20]
+	add r0, #1
+	strh r0, [r5,#0x20]
+	bl engine_isScreeneffectAnimating // () -> zf
+	tst r0, r0
+	bne locret_800B9AE
+	ldrb r0, [r5,#9]
+	add r0, #4
+	strb r0, [r5,#9]
+	mov r0, #0
+	strh r0, [r5,#0xa]
+locret_800B9AE:
+	pop {pc}
+	thumb_func_end sub_800B97E
+
+	thumb_func_start object_drawChipName
+object_drawChipName:
+	push {lr}
+	ldrb r0, [r5,#0xb]
+	tst r0, r0
+	bne loc_800BA28
+	ldrb r0, [r5,#0x16]
+	mov r1, #2
+	bl sub_800B884
+	ldrb r0, [r5,#0x16]
+	mov r1, #1
+	eor r0, r1
+	bl sub_800B892
+	cmp r0, #3
+	beq loc_800B9D4
+	cmp r0, #0
+	beq loc_800B9D4
+	b locret_800BA88
+loc_800B9D4:
+	mov r0, #1
+	lsl r0, r0, #0x10
+	bl sub_801BED6
+	mov r0, #1
+	lsl r0, r0, #0x10
+	bl sub_801DACC
+	// idx
+	ldrh r0, [r5,#0x30]
+	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	mov r1, #0
+	mov r2, #0
+	ldrb r3, [r0,#9]
+	lsr r3, r3, #2
+	bcc loc_800B9F8
+	ldrh r1, [r5,#0x2c]
+	ldrh r2, [r5,#0x32]
+loc_800B9F8:
+	ldrh r0, [r5,#0x30]
+	push {r0-r2}
+	ldrb r0, [r5,#0x16]
+	bl battle_networkInvert
+	tst r0, r0
+	pop {r0-r2}
+	bne loc_800BA12
+	mov r3, r0
+	mov r0, #0x4c 
+	bl loc_801E792
+	b loc_800BA1A
+loc_800BA12:
+	mov r3, r0
+	mov r0, #0x50 
+	bl loc_801E792
+loc_800BA1A:
+	mov r0, #0x74 
+	add r0, #0xff
+	bl sound_play // () -> void
+	mov r0, #4
+	strb r0, [r5,#0xb]
+	b locret_800BA88
+loc_800BA28:
+	bl sub_801E754
+	tst r0, r0
+	bne locret_800BA88
+	ldrb r0, [r5,#0x16]
+	bl sub_800B8C2
+	tst r0, r0
+	bne loc_800BA56
+	ldrb r0, [r5,#0x16]
+	mov r1, #1
+	eor r0, r1
+	bl sub_800B892
+	cmp r0, #0
+	beq loc_800BA56
+	cmp r0, #5
+	beq loc_800BA56
+	ldrb r0, [r5,#0x16]
+	mov r1, #3
+	bl sub_800B884
+	b locret_800BA88
+loc_800BA56:
+	ldrb r0, [r5,#0x16]
+	mov r1, #4
+	bl sub_800B884
+	ldrb r0, [r5,#0x16]
+	bl sub_800BF5C
+	ldrb r1, [r0,#2]
+	tst r1, r1
+	bne loc_800BA7E
+	ldr r1, [r0,#0xc]
+	ldrh r2, [r1,#0x24]
+	tst r2, r2
+	bne loc_800BA7E
+	ldrb r0, [r5,#9]
+	add r0, #8
+	strb r0, [r5,#9]
+	mov r0, #0
+	strh r0, [r5,#0xa]
+	b locret_800BA88
+loc_800BA7E:
+	ldrb r0, [r5,#9]
+	add r0, #4
+	strb r0, [r5,#9]
+	mov r0, #0
+	strh r0, [r5,#0xa]
+locret_800BA88:
+	pop {pc}
+	thumb_func_end object_drawChipName
+
+	thumb_func_start sub_800BA8A
+sub_800BA8A:
+	push {lr}
+	ldrb r0, [r5,#0xb]
+	tst r0, r0
+	bne loc_800BB08
+	ldrb r0, [r5,#0x16]
+	bl sub_800B892
+	cmp r0, #4
+	beq loc_800BAB8
+	ldrb r0, [r5,#0x16]
+	mov r1, #2
+	bl sub_800B884
+	ldrb r0, [r5,#0x16]
+	mov r1, #1
+	eor r0, r1
+	bl sub_800B892
+	cmp r0, #3
+	beq loc_800BAB8
+	cmp r0, #0
+	beq loc_800BAB8
+	b locret_800BB9E
+loc_800BAB8:
+	ldr r0, dword_800BBA0 // =0x10000 
+	bl sub_801BED6
+	ldr r0, dword_800BBA0 // =0x10000 
+	bl sub_801DACC
+	// idx
+	ldrh r0, [r5,#0x30]
+	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	mov r1, #0
+	mov r2, #0
+	ldrb r3, [r0,#9]
+	lsr r3, r3, #2
+	bcc loc_800BAD8
+	ldrh r1, [r5,#0x2c]
+	ldrh r2, [r5,#0x32]
+loc_800BAD8:
+	ldrh r0, [r5,#0x30]
+	push {r0-r2}
+	ldrb r0, [r5,#0x16]
+	bl battle_networkInvert
+	tst r0, r0
+	pop {r0-r2}
+	bne loc_800BAF2
+	mov r3, r0
+	mov r0, #0x4c 
+	bl loc_801E792
+	b loc_800BAFA
+loc_800BAF2:
+	mov r3, r0
+	mov r0, #0x50 
+	bl loc_801E792
+loc_800BAFA:
+	mov r0, #0x74 
+	add r0, #0xff
+	bl sound_play // () -> void
+	mov r0, #4
+	strb r0, [r5,#0xb]
+	b locret_800BB9E
+loc_800BB08:
+	ldrb r0, [r5,#0x16]
+	bl battle_networkInvert
+	tst r0, r0
+	bne loc_800BB18
+	bl sub_801E754
+	b loc_800BB1C
+loc_800BB18:
+	bl sub_801E754
+loc_800BB1C:
+	tst r0, r0
+	bne locret_800BB9E
+	ldrb r0, [r5,#0x16]
+	bl sub_800B8C2
+	tst r0, r0
+	bne loc_800BB46
+	ldrb r0, [r5,#0x16]
+	mov r1, #1
+	eor r0, r1
+	bl sub_800B892
+	cmp r0, #0
+	beq loc_800BB46
+	cmp r0, #5
+	beq loc_800BB46
+	ldrb r0, [r5,#0x16]
+	mov r1, #3
+	bl sub_800B884
+	b locret_800BB9E
+loc_800BB46:
+	ldrb r0, [r5,#0x16]
+	mov r1, #4
+	bl sub_800B884
+	ldrb r0, [r5,#0x16]
+	bl sub_800BF5C
+	ldr r1, [r0,#0xc]
+	ldrh r2, [r1,#0x24]
+	tst r2, r2
+	bne loc_800BB72
+	ldrb r1, [r5,#0x16]
+	lsl r1, r1, #2
+	ldr r0, off_800BBA4 // =unk_200F3B8 
+	mov r2, #1
+	str r2, [r0,r1]
+	ldrb r0, [r5,#9]
+	add r0, #8
+	strb r0, [r5,#9]
+	mov r0, #0
+	strh r0, [r5,#0xa]
+	b locret_800BB9E
+loc_800BB72:
+	ldrh r0, [r5,#0x30]
+	sub r0, #0xdd
+	cmp r0, #0x3b 
+	bhi loc_800BB88
+	ldrb r0, [r5,#0x16]
+	mov r1, #1
+	eor r0, r1
+	bl sub_802CE78
+	cmp r0, #0xba
+	beq loc_800BB94
+loc_800BB88:
+	ldrb r0, [r5,#9]
+	add r0, #4
+	strb r0, [r5,#9]
+	mov r0, #0
+	strh r0, [r5,#0xa]
+	b locret_800BB9E
+loc_800BB94:
+	ldrb r0, [r5,#9]
+	sub r0, #4
+	strb r0, [r5,#9]
+	mov r0, #0
+	strh r0, [r5,#0xa]
+locret_800BB9E:
+	pop {pc}
+dword_800BBA0: .word 0x10000
+off_800BBA4: .word unk_200F3B8
+	thumb_func_end sub_800BA8A
+
+	thumb_func_start sub_800BBA8
+sub_800BBA8:
+	push {lr}
+	ldrb r0, [r5,#0xb]
+	tst r0, r0
+	bne loc_800BC2C
+	ldrb r0, [r5,#0x16]
+	mov r1, #2
+	bl sub_800B884
+	ldrb r0, [r5,#0x16]
+	mov r1, #1
+	eor r0, r1
+	bl sub_800B892
+	cmp r0, #3
+	beq loc_800BBCC
+	cmp r0, #0
+	beq loc_800BBCC
+	b locret_800BC86
+loc_800BBCC:
+	ldr r0, dword_800BF74 // =0x10000 
+	bl sub_801BED6
+	ldr r0, dword_800BF74 // =0x10000 
+	bl sub_801DACC
+	// idx
+	ldrh r0, [r5,#0x30]
+	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	mov r1, #0
+	mov r2, #0
+	ldrb r3, [r0,#9]
+	lsr r3, r3, #2
+	bcc loc_800BBEC
+	ldrh r1, [r5,#0x2c]
+	ldrh r2, [r5,#0x32]
+loc_800BBEC:
+	ldrh r0, [r5,#0x30]
+	push {r0-r2}
+	ldrb r0, [r5,#0x16]
+	bl battle_networkInvert
+	tst r0, r0
+	pop {r0-r2}
+	bne loc_800BC12
+	ldrb r3, [r5,#7]
+	cmp r3, #1
+	bne loc_800BC08
+	ldr r0, off_800BF78 // =0x171 
+	mov r1, #0
+	mov r2, #0
+loc_800BC08:
+	mov r3, r0
+	mov r0, #0x4c 
+	bl loc_801E792
+	b loc_800BC1E
+loc_800BC12:
+	ldr r3, off_800BF78 // =0x171 
+	mov r1, #0
+	mov r2, #0
+	mov r0, #0x50 
+	bl loc_801E792
+loc_800BC1E:
+	mov r0, #0x74 
+	add r0, #0xff
+	bl sound_play // () -> void
+	mov r0, #4
+	strb r0, [r5,#0xb]
+	b locret_800BC86
+loc_800BC2C:
+	bl sub_801E754
+	tst r0, r0
+	bne locret_800BC86
+	ldrb r0, [r5,#0x16]
+	bl sub_800B8C2
+	tst r0, r0
+	bne loc_800BC5A
+	ldrb r0, [r5,#0x16]
+	mov r1, #1
+	eor r0, r1
+	bl sub_800B892
+	cmp r0, #0
+	beq loc_800BC5A
+	cmp r0, #5
+	beq loc_800BC5A
+	ldrb r0, [r5,#0x16]
+	mov r1, #3
+	bl sub_800B884
+	b locret_800BC86
+loc_800BC5A:
+	ldrb r0, [r5,#0x16]
+	mov r1, #4
+	bl sub_800B884
+	ldrb r0, [r5,#0x16]
+	bl sub_800BF5C
+	ldr r1, [r0,#0xc]
+	ldrh r2, [r1,#0x24]
+	tst r2, r2
+	bne loc_800BC7C
+	ldrb r0, [r5,#9]
+	add r0, #8
+	strb r0, [r5,#9]
+	mov r0, #0
+	strh r0, [r5,#0xa]
+	b locret_800BC86
+loc_800BC7C:
+	ldrb r0, [r5,#9]
+	add r0, #4
+	strb r0, [r5,#9]
+	mov r0, #0
+	strh r0, [r5,#0xa]
+locret_800BC86:
+	pop {pc}
+	thumb_func_end sub_800BBA8
+
+	thumb_func_start object_undimScreen
+object_undimScreen:
+	push {lr}
+	ldrb r0, [r5,#0xb]
+	tst r0, r0
+	bne loc_800BCB0
+	ldrb r0, [r5,#0x16]
+	mov r1, #1
+	eor r0, r1
+	bl sub_800B892
+	cmp r0, #5
+	beq loc_800BCA4
+	cmp r0, #0
+	beq loc_800BCA4
+	b loc_800BCB8
+loc_800BCA4:
+	mov r0, #0x38 
+	mov r1, #4
+	bl engine_setScreeneffect // (int a1, int a2) -> void
+	mov r0, #4
+	strb r0, [r5,#0xb]
+loc_800BCB0:
+	bl engine_isScreeneffectAnimating // () -> zf
+	tst r0, r0
+	bne locret_800BCBC
+loc_800BCB8:
+	mov r0, #8
+	str r0, [r5,#8]
+locret_800BCBC:
+	pop {pc}
+	.byte 0, 0
+	thumb_func_end object_undimScreen
+
+	thumb_func_start sub_800BCC0
+sub_800BCC0:
+	push {lr}
+	ldrb r0, [r5,#0xb]
+	tst r0, r0
+	bne loc_800BCE8
+	ldrb r0, [r5,#0x16]
+	mov r1, #1
+	eor r0, r1
+	bl sub_800B892
+	cmp r0, #5
+	beq loc_800BCDC
+	cmp r0, #0
+	beq loc_800BCDC
+	b loc_800BCF0
+loc_800BCDC:
+	mov r0, #0x74 
+	mov r1, #0x80
+	bl engine_setScreeneffect // (int a1, int a2) -> void
+	mov r0, #4
+	strb r0, [r5,#0xb]
+loc_800BCE8:
+	bl engine_isScreeneffectAnimating // () -> zf
+	tst r0, r0
+	bne locret_800BCF4
+loc_800BCF0:
+	mov r0, #8
+	str r0, [r5,#8]
+locret_800BCF4:
+	pop {pc}
+	thumb_func_end sub_800BCC0
+
+	thumb_local_start
+sub_800BCF6:
+	push {lr}
+	ldrb r0, [r5,#0xb]
+	tst r0, r0
+	bne loc_800BD26
+	ldrb r0, [r5,#0x16]
+	mov r1, #1
+	eor r0, r1
+	bl sub_800B892
+	cmp r0, #5
+	beq loc_800BD1A
+	cmp r0, #0
+	beq loc_800BD1A
+	mov r0, #0x3c 
+	ldr r1, off_800BF7C // =0x100 
+	bl engine_setScreeneffect // (int a1, int a2) -> void
+	b loc_800BD22
+loc_800BD1A:
+	mov r0, #0x84
+	mov r1, #0x10
+	bl engine_setScreeneffect // (int a1, int a2) -> void
+loc_800BD22:
+	mov r0, #4
+	strb r0, [r5,#0xb]
+loc_800BD26:
+	bl engine_isScreeneffectAnimating // () -> zf
+	tst r0, r0
+	bne locret_800BD32
+	mov r0, #8
+	str r0, [r5,#8]
+locret_800BD32:
+	pop {pc}
+	thumb_func_end sub_800BCF6
+
 	thumb_func_start object_timefreezeEnd
 object_timefreezeEnd:
 	push {lr}

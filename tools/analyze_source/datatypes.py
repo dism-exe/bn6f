@@ -473,7 +473,7 @@ class Struct(Pointer):
     def get_struct_offset_field(self, offset, fileline, size):
         total_offset = self.offset + offset.ref.value
         if math.isnan(total_offset):
-            return self.on_nan_struct_offset(fileline)
+            return self.on_nan_struct_offset(fileline, offset)
 
         if total_offset in self.basic_struct_fields:
             struct_field_possible_entries = self.basic_struct_fields[total_offset]
@@ -516,7 +516,7 @@ class Struct(Pointer):
         else:
             global_fileline_error("Invalid struct offset \"0x%x\" for struct \"%s\"!" % (total_offset, self.struct_name))
 
-    def on_nan_struct_offset(self, fileline):
+    def on_nan_struct_offset(self, fileline, offset):
         fileline_error("Tried reading NaN offset from struct \"%s\"!" % self.struct_name, fileline)
 
     def try_get_array_field(self, total_offset, size):
@@ -648,7 +648,7 @@ class BattleState(Struct):
     def struct_name(self):
         return "BattleState"
 
-    def on_nan_struct_offset(self, fileline):
+    def on_nan_struct_offset(self, fileline, offset):
         fileline_msg("Context information: BattleStateNanOffset", fileline)
         return Struct.barebones_struct_field
 
@@ -665,7 +665,8 @@ class BattleObject(Struct):
         return {
             -0x10: {Size.WORD: StructField("_LinkedList_Prev", AnonMemory(functools.partial(BattleObject, -0x10)))},
             -0x0c: {Size.WORD: StructField("_LinkedList_Next", AnonMemory(functools.partial(BattleObject, -0x10)))},
-            0x0: {Size.BYTE: StructField("_Flags", UnkPrimitiveMemory())},
+            0x0: {Size.BYTE: StructField("_Flags", UnkPrimitiveMemory()),
+                  Size.WORD: StructField("_ObjectHeader", UnkPrimitiveMemory())},
             0x1: {Size.BYTE: StructField("_Index", UnkPrimitiveMemory())},
             0x2: {Size.BYTE: StructField("_TypeAndSpriteOffset", AnonMemory(functools.partial(Primitive, Size.BYTE, 0x91)))},
             0x3: {Size.BYTE: StructField("_ListIndex", UnkPrimitiveMemory())},
@@ -690,7 +691,8 @@ class BattleObject(Struct):
             0x12: {Size.BYTE: StructField("_PanelX", UnkPrimitiveMemory()),
                    Size.HWORD: StructField("_PanelXY", UnkPrimitiveMemory())},
             0x13: {Size.BYTE: StructField("_PanelY", UnkPrimitiveMemory())},
-            0x14: {Size.BYTE: StructField("_FuturePanelX", UnkPrimitiveMemory())},
+            0x14: {Size.BYTE: StructField("_FuturePanelX", UnkPrimitiveMemory()),
+                   Size.HWORD: StructField("_FuturePanelXY", UnkPrimitiveMemory())},
             0x15: {Size.BYTE: StructField("_FuturePanelY", UnkPrimitiveMemory())},
             0x16: {Size.BYTE: StructField("_Alliance", UnkPrimitiveMemory()),
                    Size.HWORD: StructField("_AllianceAndDirectionFlip", UnkPrimitiveMemory())},
@@ -708,7 +710,8 @@ class BattleObject(Struct):
             0x22: {Size.HWORD: StructField("_Timer2", UnkPrimitiveMemory())},
             0x24: {Size.HWORD: StructField("_HP", UnkPrimitiveMemory())},
             0x26: {Size.HWORD: StructField("_MaxHP", UnkPrimitiveMemory())},
-            0x28: {Size.HWORD: StructField("_NameID", UnkPrimitiveMemory())},
+            0x28: {Size.HWORD: StructField("_NameID", UnkPrimitiveMemory()),
+                   Size.WORD: StructField("_NameIDAndChip", UnkPrimitiveMemory())},
             0x2a: {Size.HWORD: StructField("_Chip", UnkPrimitiveMemory())},
             0x2c: {Size.HWORD: StructField("_Damage", UnkPrimitiveMemory()),
                    Size.WORD: StructField("_DamageAndStaminaDamageCounterDisabler", UnkPrimitiveMemory())},
@@ -728,19 +731,12 @@ class BattleObject(Struct):
             0x50: {Size.WORD: StructField("_RelatedObject2Ptr", AnonMemory(BattleObject))},
             0x54: {Size.WORD: StructField("_CollisionDataPtr", AnonMemory(CollisionData))},
             0x58: {Size.WORD: StructField("_AIDataPtr", AnonMemory(AIData))},
-            0x5c: {Size.WORD: StructField("_Unk_5c", UnkPrimitiveMemory())},
-            #0x60: {Size.WORD: StructField("_ExtraVars", AnonMemory(UnknownDataType))},
-            #0x64: {Size.WORD: StructField("_ExtraVars+4", AnonMemory(UnknownDataType))},
-            #0x68: {Size.WORD: StructField("_ExtraVars+8", AnonMemory(UnknownDataType))},
-            #0x6c: {Size.WORD: StructField("_ExtraVars+0xc", AnonMemory(UnknownDataType))},
-            #0x70: {Size.WORD: StructField("_ExtraVars+0x10", AnonMemory(UnknownDataType))},
-            #0x74: {Size.WORD: StructField("_ExtraVars+0x14", AnonMemory(UnknownDataType))},
-            #0x78: {Size.WORD: StructField("_ExtraVars+0x18", AnonMemory(UnknownDataType))},
-            #0x7c: {Size.WORD: StructField("_ExtraVars+0x1c", AnonMemory(UnknownDataType))},
-            #0x80: {Size.WORD: StructField("_ExtraVars+0x20", AnonMemory(UnknownDataType))},
-            #0x84: {Size.WORD: StructField("_ExtraVars+0x24", AnonMemory(UnknownDataType))},
-            #0x88: {Size.WORD: StructField("_ExtraVars+0x28", AnonMemory(UnknownDataType))}
+            0x5c: {Size.WORD: StructField("_Unk_5c", UnkPrimitiveMemory())}
         }
+
+    def on_nan_struct_offset(self, fileline, offset):
+        fileline_msg("BattleObjectNanOffsetWarning: Offset is NaN!", fileline)
+        return Struct.barebones_struct_field
 
     _array_field_templates = (ArrayField(offset=0x60, size=0x2c, name="_ExtraVars"),)
     @property
@@ -835,7 +831,7 @@ class CollisionData(Struct):
     def struct_name(self):
         return "CollisionData"
 
-    def on_nan_struct_offset(self, fileline):
+    def on_nan_struct_offset(self, fileline, offset):
         fileline_msg("Context information: CollisionDataNanOffset", fileline)
         return Struct.barebones_struct_field
 
@@ -892,7 +888,6 @@ class AIData(Struct):
                    Size.DEFAULT: StructField("_Unk_30", UnkMemory())},
             0xd4: {Size.WORD: StructField("_Unk_34", FunctionMemory()),
                    Size.DEFAULT: StructField("_Unk_34", UnkPrimitiveMemory())},
-            
         }
 
     def get_prefix(self, offset):
@@ -909,7 +904,7 @@ class AIData(Struct):
     def struct_name(self):
         return "AIData"
 
-    def on_nan_struct_offset(self, fileline):
+    def on_nan_struct_offset(self, fileline, offset):
         fileline_msg("Context information: AIDataNanOffset", fileline)
         return Struct.barebones_struct_field
 
@@ -944,7 +939,7 @@ class Stack(Pointer):
                 global_fileline_msg("StackWarning: Stack read of (%s, %s) is likely valid (e.g. overloads with other datatype) but not in datatypes!" % (total_offset, size))
                 return new_unk_datatype_from_size(size)
             else:
-                global_fileline_error("Bad stack read of (%s, %s)! (stack size: %s)" % (total_offset, size, self.offset))
+                global_fileline_error("Bad stack read of (%s, %s)! (stack size: %s, offset: %s)" % (total_offset, size, self.offset, offset.ref.value))
 
     # note: storing values may be risky. figure this out
     def store(self, datatype, size, fileline, funcstate, offset=None):

@@ -104,7 +104,16 @@ class RegisterInfoList(list):
         return self[-1].datatype
 
     def default_initialize(self, fileline):
-        self.append(RegisterInfo(datatypes.UnknownDataType().wrap(), fileline))
+        if len(self) == 1:
+            self[0] = RegisterInfo(datatypes.UnknownDataType().wrap(), fileline)
+        else:
+            self.append(RegisterInfo(datatypes.UnknownDataType().wrap(), fileline))
+
+    def initialize(self, val):
+        if len(self) == 1:
+            self[0] = val
+        else:
+            self.append(val)
 
     def set_new_reg(self, val):
         self[0] = val
@@ -221,7 +230,8 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
     while True:
         debug_print("start src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
         for line in src_file:
-            #debug_print("cur src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
+            #if funcstate.function.value == 0x80BE8AE: # sub_80BE8AE
+            #    debug_print("cur src_file: %s:%s" % (src_file.filename, src_file.line_num + 1))
             if not line.startswith("\t"):
                 split_line = line.split(":", 1)
                 # if we're currently in an unconditional branch, don't read opcodes until we find the label
@@ -274,6 +284,7 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
                             #    dumb_hack_please_remove_function_memory = datatypes.Struct.dumb_hack_basic_struct_fields[datatypes.AIData][0xc8][Size.WORD].memory
                             #    dumb_hack_please_remove_function_memory.function = None
                             #    dumb_hack_please_remove_function_memory.dumb_hack_please_remove_in_sub_801B9E6 = True
+                            already_executed_jumptables.add(pc_datatype_ref.original_sym.value)
                             for sym in possible_syms:
                                 if sym.type != "F":
                                     fileline_msg("BadFunctionDefinitionWarning: Tried executing jumptable non-function symbol \"%s\"!" % sym.name, fileline)
@@ -288,9 +299,6 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
                                         break
                                 else:
                                     debug_print("Skipped problem function \"%s\" called from \"%s\" (%s:%s)" % (sym.name, function_name, src_file.filename, src_file.line_num + 1))
-                            else:
-                                #pass
-                                already_executed_jumptables.add(pc_datatype_ref.original_sym.value)
                             #if funcstate.function.value == 0x801B9E6: # sub_801B9E6
                             #    dumb_hack_please_remove_function_memory.dumb_hack_please_remove_in_sub_801B9E6 = False
                             add_function_specific_callbacks(funcstate.function.value)
@@ -330,11 +338,17 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
                         # TODO: potential for loop detection here
                         funcstate.uncond_branch = ""
                         break
+                    elif funcstate.uncond_branch in syms:
+                        if src_file.filename != syms[funcstate.uncond_branch].filename:
+                            global_fileline_error("Unconditional branch jumps to other file!")
+                        src_file.line_num = syms[funcstate.uncond_branch].line_num - 1
             else:
                 stripped_line = line.strip()
                 if stripped_line.startswith("thumb_func") or stripped_line.startswith(".align 1, 0"):
                     continue
                 fileline_error("Unknown directive \"%s\"!" % stripped_line, fileline)
+        else:
+            global_fileline_error("Reached end of file while parsing!")
 
         # don't attempt to run any conditional branches if this function already had its conditional branches executed
         if function_name in function_trackers and return_regs is not None and funcstate.function.value != 0x8019892: # object_createCollisionData
@@ -566,10 +580,11 @@ def check_loc_80EE4F0(opcode_params, funcstate, src_file, fileline):
 
 def sub_8107E66_hack_push_lr(opcode_params, funcstate, src_file, fileline):
     opcodes.push_opcode_function("{lr}", funcstate, src_file, fileline)
-    return True
+    return False
 
 def sub_80F0700_hack_pop_balance(opcode_params, funcstate, src_file, fileline):
     opcodes.pop_opcode_function("{pc}", funcstate, src_file, fileline)
+    return False
 
 def sub_80103F8_hack_battle_obj_null(opcode_params, funcstate, src_file, fileline):
     if opcode_params[0] != "r7":
@@ -595,6 +610,40 @@ def hack_battle_state_field_0x80_object_read(opcode_params, funcstate, src_file,
         return False
     return True
 
+def object_get_panel_region_set_correct_return_value(opcode_params, funcstate, src_file, fileline):
+    funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(datatypes.Primitive().wrap(), fileline))
+    return True
+
+def sub_80BC670_set_r0_battle_object(opcode_params, funcstate, src_file, fileline):
+    funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
+    return True
+
+def sub_80BDB3C_sub_80DA68C_fix_misaligned_push(opcode_params, funcstate, src_file, fileline):
+    opcodes.push_opcode_function("{r4,lr}", funcstate, src_file, fileline)
+    return False
+
+def fix_misaligned_pop_r7_lr(opcode_params, funcstate, src_file, fileline):
+    if opcode_params == "{pc}":
+        opcodes.pop_opcode_function("{r7,pc}", funcstate, src_file, fileline)
+        return False
+    return True
+
+def sub_80C57F4_fix_misaligned_pop(opcode_params, funcstate, src_file, fileline):
+    opcodes.pop_opcode_function("{r4,pc}", funcstate, src_file, fileline)
+    return False
+
+def sub_80C7A58_sub_80CAC44_ignore_cmp(opcode_params, funcstate, src_file, fileline):
+    return False
+
+def sub_80DCA38_fix_uninitialized_stack_read(opcode_params, funcstate, src_file, fileline):
+    if opcode_params[1] == "r6":
+        funcstate.regs["r6"].set_new_reg(analyzer.RegisterInfo(datatypes.Primitive().wrap(), fileline))
+    return True
+
+def sub_80E1566_fix_sub_80E1670_return_value(opcode_params, funcstate, src_file, fileline):
+    funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
+    return True
+
 def read_battle_object_jumptables():
     """
     Returns a jumptable's entries in a list specified by the given label.
@@ -610,25 +659,10 @@ def read_battle_object_jumptables():
         Thrown if the jumptable was not found.
     """
 
-    jumptables = ("T1BattleObjectJumptable",)#, "T3BattleObjectJumptable", "T4BattleObjectJumptable")
+    jumptables = ("T1BattleObjectJumptable", "T3BattleObjectJumptable", "T4BattleObjectJumptable")
 
     registers = RegisterState()
     fileline = default_fileline
-    registers["r0"].default_initialize(fileline)
-    registers["r1"].default_initialize(fileline)
-    registers["r2"].default_initialize(fileline)
-    registers["r3"].default_initialize(fileline)
-    registers["r4"].append(RegisterInfo(datatypes.Primitive(Size.BYTE).wrap(), fileline))
-    registers["r5"].append(RegisterInfo(datatypes.BattleObject().wrap(), fileline))
-    registers["r6"].append(RegisterInfo(datatypes.RAMPointer().wrap(), fileline))
-    registers["r7"].append(RegisterInfo(datatypes.BattleObject(-0x10).wrap(), fileline))
-    registers["r8"].default_initialize(fileline)
-    registers["r9"].default_initialize(fileline)
-    registers["r10"].append(RegisterInfo(datatypes.Toolkit().wrap(), fileline))
-    registers["r12"].default_initialize(fileline)
-    registers["lr"].append(RegisterInfo(datatypes.ProgramCounter("asm00_1.s", 99).wrap(), fileline))
-    registers["sp"].append(RegisterInfo(datatypes.Stack().wrap(), fileline))
-    registers["pc"].default_initialize(fileline)
     opcodes.bl_opcode.append_callback(check_stored_functions)
     opcodes.bl_opcode.append_callback(opcodes.check_spawn_battle_object)
 
@@ -651,7 +685,21 @@ def read_battle_object_jumptables():
         0x80103F8: (FunctionSpecificCallback(opcodes.mov_imm_opcode, sub_80103F8_hack_battle_obj_null),), # sub_80103F8
         0x8109D08: (FunctionSpecificCallback(opcodes.bx_opcode, sub_8109D08_bx_callback_fix),), # sub_8109D08
         0x810A94C: (FunctionSpecificCallback(opcodes.bl_opcode, check_bl_sub_80BC3B8),),
-        0x800ebd4: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, hack_battle_state_field_0x80_object_read),) # object_getEnemyByNameRange
+        0x800ebd4: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, hack_battle_state_field_0x80_object_read),), # object_getEnemyByNameRange
+        0x800d3fe: (FunctionSpecificCallback(opcodes.add_sp_opcode, object_get_panel_region_set_correct_return_value),), # object_getPanelRegion
+        0x80BC670: (FunctionSpecificCallback(opcodes.bne_opcode, sub_80BC670_set_r0_battle_object),), # sub_80BC670
+        0x80BDB3C: (FunctionSpecificCallback(opcodes.push_opcode, sub_80BDB3C_sub_80DA68C_fix_misaligned_push),), # sub_80BDB3C
+        0x80C51CC: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80C51CC
+        0x80C57F4: (FunctionSpecificCallback(opcodes.pop_opcode, sub_80C57F4_fix_misaligned_pop),), # sub_80C57F4
+        0x80C7A58: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, sub_80C7A58_sub_80CAC44_ignore_cmp),), # sub_80C7A58
+        0x80CAC44: (FunctionSpecificCallback(opcodes.cmp_reg_opcode, sub_80C7A58_sub_80CAC44_ignore_cmp),), # sub_80CAC44
+        0x80CBB76: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80CBB76
+        0x80CF3DC: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80CF3DC
+        0x80DA68C: (FunctionSpecificCallback(opcodes.push_opcode, sub_80BDB3C_sub_80DA68C_fix_misaligned_push),), # sub_80DA68C
+        0x80DBF04: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80DBF04
+        0x80DCA38: (FunctionSpecificCallback(opcodes.mov_reg_opcode, sub_80DCA38_fix_uninitialized_stack_read),), # sub_80DCA38
+        0x80DDC30: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80DDC30
+        0x80E1566: (FunctionSpecificCallback(opcodes.mov_reg_opcode, sub_80E1566_fix_sub_80E1670_return_value),), # sub_80E1566
     })
 
     #global global_function_tree
@@ -660,8 +708,24 @@ def read_battle_object_jumptables():
     for jumptable in jumptables:
         src_file = parser.find_and_position_at_nonlocal_label(jumptable)
         words = parser.parse_word_directives(src_file)
-        for word in words[:1]:
+        for word in words:
             if word not in function_trackers:
+                registers["r0"].default_initialize(fileline)
+                registers["r1"].default_initialize(fileline)
+                registers["r2"].default_initialize(fileline)
+                registers["r3"].default_initialize(fileline)
+                registers["r4"].initialize(RegisterInfo(datatypes.Primitive(Size.BYTE).wrap(), fileline))
+                registers["r5"].initialize(RegisterInfo(datatypes.BattleObject().wrap(), fileline))
+                registers["r6"].initialize(RegisterInfo(datatypes.RAMPointer().wrap(), fileline))
+                registers["r7"].initialize(RegisterInfo(datatypes.BattleObject(-0x10).wrap(), fileline))
+                registers["r8"].default_initialize(fileline)
+                registers["r9"].default_initialize(fileline)
+                registers["r10"].initialize(RegisterInfo(datatypes.Toolkit().wrap(), fileline))
+                registers["r12"].default_initialize(fileline)
+                registers["lr"].initialize(RegisterInfo(datatypes.ProgramCounter("asm00_1.s", 99).wrap(), fileline))
+                registers["sp"].initialize(RegisterInfo(datatypes.Stack().wrap(), fileline))
+                registers["pc"].default_initialize(fileline)
+                datatypes.Stack.datatypes = {}
                 function_name = parser.strip_plus1(word)
                 debug_print("function: %s" % function_name)
                 run_analyzer_from_label(function_name, registers, time.time())
