@@ -21,7 +21,7 @@ from collections import namedtuple
 
 MAX_UINT32 = 2**32 - 1
 
-rhd_rhs_regex = re.compile(r"^(r[0-9]|r1[0-2]|sp|lr|pc), *(r[0-9]|r1[0-2]|sp|lr|pc)(?!,)$")
+rhd_rhs_regex = re.compile(r"^(r[0-9]|r1[0-2]|sp|lr|pc), *(r1[0-2]|r[0-9]|sp|lr|pc)(?!,)$")
 rd_rs_regex = re.compile(r"^(r[0-7]), *(r[0-7])(?!,)$")
 rd_rs_imm_regex = re.compile(r"^(r[0-7]), *(r[0-7]), *(#[^,]+)(?!,)$")
 rd_rs_rn_regex = re.compile(r"^(r[0-7]), *(r[0-7]), *(r[0-7])$")
@@ -94,6 +94,11 @@ def evaluate_data(data, fileline):
         try:
             sym = syms[data]
         except KeyError:
+            # hack please fix
+            if data.startswith("eCamera"):
+                split_data = data.split("+")
+                if len(split_data) == 2:
+                    return datatypes.RAMPointer(int(split_data[1], 0), syms[split_data[0]]).wrap()
             fileline_error("Could not evaluate undefined symbol \"%s\"!" % data, fileline)
         if sym.type == "F":
             # technically asm38.s routines are not in ROM
@@ -724,7 +729,7 @@ asr_reg_opcode = Opcode(rd_rs_regex, asr_reg_opcode_function)
 add_rd_rs_rn_opcode = Opcode(rd_rs_rn_regex, add_rd_rs_rn_opcode_function)
 add_rd_rs_imm_opcode = Opcode(rd_rs_imm_regex, add_rd_rs_imm_opcode_function)
 add_rd_imm_opcode = Opcode(rd_imm_regex, add_rd_imm_opcode_function)
-add_rhd_rhs_opcode = Opcode(rd_rs_regex, add_rhd_rhs_opcode_function)
+add_rhd_rhs_opcode = Opcode(rhd_rhs_regex, add_rhd_rhs_opcode_function)
 add_rd_sp_imm_opcode = Opcode(rd_sp_imm_regex, add_rd_sp_imm_opcode_function)
 add_sp_opcode = Opcode(sp_or_sp_sp_imm_regex, add_sp_opcode_function)
 sub_rd_rs_rn_opcode = Opcode(rd_rs_rn_regex, sub_rd_rs_rn_opcode_function)

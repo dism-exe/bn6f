@@ -652,7 +652,7 @@ off_804646C: .word sub_8116894+1
 	.word sub_811B338+1
 	.word sub_811B3F4+1
 	.word sub_811B4AC+1
-	.word byte_811B9B5
+	.word sub_811B9B4+1
 	.word 0x0
 	.word sub_811BC44+1
 	.word sub_811BD64+1

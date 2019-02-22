@@ -511,6 +511,9 @@ def set_template_functions():
             ReturnValue("r2", datatypes.Primitive.new_word),
             ReturnValue("r3", datatypes.Primitive.new_word),
         ),
+        "sub_80E7486": (
+            ReturnValue("r0", datatypes.BattleObject),
+        ),
     }
 
 def check_stored_functions(opcode_params, funcstate, src_file, fileline):
@@ -644,6 +647,15 @@ def sub_80E1566_fix_sub_80E1670_return_value(opcode_params, funcstate, src_file,
     funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
     return True
 
+def sub_80E72C8_fix_extra_vars_0x74_read(opcode_params, funcstate, src_file, fileline):
+    if opcode_params[0] == "r0" and opcode_params[1] == "r5":
+        funcstate.regs["r0"].set_new_reg(analyzer.RegisterInfo(datatypes.BattleObject().wrap(), fileline))
+        return False
+    return True
+
+def sub_80E72C8_fix_misaligned_stack(opcode_params, funcstate, src_file, fileline):
+    return False
+
 def read_battle_object_jumptables():
     """
     Returns a jumptable's entries in a list specified by the given label.
@@ -700,6 +712,8 @@ def read_battle_object_jumptables():
         0x80DCA38: (FunctionSpecificCallback(opcodes.mov_reg_opcode, sub_80DCA38_fix_uninitialized_stack_read),), # sub_80DCA38
         0x80DDC30: (FunctionSpecificCallback(opcodes.pop_opcode, fix_misaligned_pop_r7_lr),), # sub_80DDC30
         0x80E1566: (FunctionSpecificCallback(opcodes.mov_reg_opcode, sub_80E1566_fix_sub_80E1670_return_value),), # sub_80E1566
+        0x80E72C8: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, sub_80E72C8_fix_extra_vars_0x74_read),
+                    FunctionSpecificCallback(opcodes.add_sp_opcode, sub_80E72C8_fix_misaligned_stack)), # sub_80E72C8
     })
 
     #global global_function_tree

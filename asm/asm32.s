@@ -25082,15 +25082,24 @@ loc_811B9A2:
 loc_811B9B0:
 	mov r0, r2
 	mov pc, lr
-	.byte 0x0
-byte_811B9B5: .byte 0xB5, 0x7, 0x4E, 0x2, 0x48, 0x29, 0x7A, 0x40, 0x58, 0xFE
-	.byte 0x46, 0x0, 0x47, 0x0, 0xBD
-	.word off_811B9C8
+	thumb_func_end sub_811B990
+
+	thumb_func_start sub_811B9B4
+sub_811B9B4:
+	push {lr}
+	ldr r6, off_811B9D4 // =unk_2037780
+	ldr r0, off_811B9C4 // =off_811B9C8
+	ldrb r1, [r5,#8]
+	ldr r0, [r0,r1]
+	mov lr, pc
+	bx r0
+	pop {pc}
+off_811B9C4: .word off_811B9C8
 off_811B9C8: .word sub_811B9D8+1
 	.word sub_811BA58+1
 	.word sub_811BAEC+1
-	.word unk_2037780
-	thumb_func_end sub_811B990
+off_811B9D4: .word unk_2037780
+	thumb_func_end sub_811B9B4
 
 	thumb_local_start
 sub_811B9D8:
