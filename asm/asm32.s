@@ -3003,8 +3003,8 @@ byte_810F510: .byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	thumb_local_start
 sub_810F5D0:
 	push {r4-r7,lr}
-	ldr r0, [r5,#0x54]
-	ldr r0, [r0,#0x70]
+	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
+	ldr r0, [r0,#oCollisionData_FlagsFromCollision]
 	tst r0, r0
 	beq loc_810F610
 	ldr r1, dword_810F658 // =0xc000000
@@ -3017,22 +3017,22 @@ sub_810F5D0:
 	ldr r0, [r0,r1]
 	bl sub_8110222
 	bl object_clearCollisionRegion // () -> void
-	ldrb r0, [r4,#0x16]
+	ldrb r0, [r4,#oAIData_Version_16]
 	tst r0, r0
 	bne loc_810F610
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getPanelParameters
 	ldr r1, off_810F65C // =0x400
 	tst r0, r1
 	beq loc_810F610
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #2
 	bl object_setPanelType
 loc_810F610:
 	ldr r1, off_810F61C // =off_810F620
-	ldrb r0, [r7]
+	ldrb r0, [r7,#oAIAttackVars_Unk_00]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
@@ -3055,16 +3055,16 @@ off_810F65C: .word 0x400
 	thumb_local_start
 sub_810F660:
 	push {r4-r7,lr}
-	ldrb r0, [r7,#1]
+	ldrb r0, [r7,#oAIAttackVars_Unk_01]
 	tst r0, r0
 	bne loc_810F678
 	mov r0, #0xca
 	add r0, #0xff
 	bl sound_play // () -> void
 	mov r0, #1
-	strb r0, [r5,#0x10]
+	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #1
-	strb r0, [r7,#1]
+	strb r0, [r7,#oAIAttackVars_Unk_01]
 loc_810F678:
 	mov r1, #0x6e
 	ldrb r0, [r5,r1]
@@ -3074,12 +3074,12 @@ loc_810F678:
 	bne locret_810F6BA
 	mov r0, #0
 	strb r0, [r5,r1]
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r2, dword_810F6BC // =0x200000
 	bl sub_811016C
 	mov r0, #1
-	str r0, [r5,#0x70]
+	str r0, [r5,#oBattleObject_ExtraVars+0x10]
 	mov r0, #0x40
 	bl object_setFlag // (int a1) -> void
 	mov r0, #0x7f
@@ -3094,9 +3094,9 @@ loc_810F678:
 	strb r1, [r5,r0]
 loc_810F6B2:
 	mov r0, #4
-	strb r0, [r7]
+	strb r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #0
-	strb r0, [r7,#1]
+	strb r0, [r7,#oAIAttackVars_Unk_01]
 locret_810F6BA:
 	pop {r4-r7,pc}
 dword_810F6BC: .word 0x200000
@@ -3106,47 +3106,47 @@ dword_810F6C0: .word 0xA000
 	thumb_local_start
 sub_810F6C4:
 	push {r4,lr}
-	ldrb r0, [r7,#1]
+	ldrb r0, [r7,#oAIAttackVars_Unk_01]
 	tst r0, r0
 	bne loc_810F6E4
 	mov r0, #0
 	mov r1, #0
-	strb r0, [r7,#0x16]
-	strb r0, [r5,#0x12]
-	strb r1, [r7,#0x17]
-	strb r1, [r5,#0x13]
+	strb r0, [r7,#oAIAttackVars_Unk_16]
+	strb r0, [r5,#oBattleObject_PanelX]
+	strb r1, [r7,#oAIAttackVars_Unk_17]
+	strb r1, [r5,#oBattleObject_PanelY]
 	bl object_setCoordinatesFromPanels // () -> void
 	bl object_updateCollisionPanels
 	mov r0, #1
-	strb r0, [r7,#1]
+	strb r0, [r7,#oAIAttackVars_Unk_01]
 loc_810F6E4:
 	bl object_clearCollisionRegion // () -> void
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
-	strb r0, [r5]
-	ldrh r0, [r7,#0x10]
+	strb r0, [r5,#oObjectHeader_Flags]
+	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
-	strh r0, [r7,#0x10]
+	strh r0, [r7,#oAIAttackVars_Unk_10]
 	beq loc_810F6FA
 	b locret_810F76E
 loc_810F6FA:
 	bl sub_810F9F6
 	tst r0, r0
 	beq loc_810F766
-	strb r0, [r7,#0x16]
-	strb r0, [r5,#0x12]
-	strb r1, [r7,#0x17]
-	strb r1, [r5,#0x13]
+	strb r0, [r7,#oAIAttackVars_Unk_16]
+	strb r0, [r5,#oBattleObject_PanelX]
+	strb r1, [r7,#oAIAttackVars_Unk_17]
+	strb r1, [r5,#oBattleObject_PanelY]
 	bl object_setCoordinatesFromPanels // () -> void
-	ldrh r0, [r5,#0x3e]
+	ldrh r0, [r5,#oBattleObject_Z16]
 	sub r0, #0x24
-	strh r0, [r5,#0x3e]
+	strh r0, [r5,#oBattleObject_Z16]
 	bl object_updateCollisionPanels
 	mov r0, #1
 	bl sub_810FC0C
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #0x6c
 	strb r0, [r5,r2]
 	mov r2, #0x6d
@@ -3163,23 +3163,23 @@ loc_810F738:
 	bl sound_play // () -> void
 	mov r0, #1
 	bl object_setCollisionRegion
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 	bl sub_8016934
 	mov r0, #2
-	strb r0, [r5,#0x10]
+	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #8
-	strh r0, [r7]
+	strh r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #0
-	strb r0, [r7,#1]
+	strb r0, [r7,#oAIAttackVars_Unk_01]
 	b locret_810F76E
 loc_810F766:
 	mov r0, #0x14
-	strh r0, [r7]
+	strh r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #0
-	strb r0, [r7,#1]
+	strb r0, [r7,#oAIAttackVars_Unk_01]
 locret_810F76E:
 	pop {r4,pc}
 	thumb_func_end sub_810F6C4
@@ -3187,16 +3187,16 @@ locret_810F76E:
 	thumb_local_start
 sub_810F770:
 	push {r4-r7,lr}
-	ldr r0, [r5,#0x44]
-	ldr r1, [r5,#0x38]
+	ldr r0, [r5,#oBattleObject_YVelocity]
+	ldr r1, [r5,#oBattleObject_Y]
 	add r1, r1, r0
-	str r1, [r5,#0x38]
+	str r1, [r5,#oBattleObject_Y]
 	bl object_setPanelsFromCoordinates
 	bl object_updateCollisionPanels
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
-	ldrb r3, [r5,#0x16]
-	ldrb r2, [r5,#0x17]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
+	ldrb r3, [r5,#oBattleObject_Alliance]
+	ldrb r2, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	mov r2, #1
 	bl sub_8109660
@@ -3209,7 +3209,7 @@ sub_810F770:
 	eor r0, r1
 	mov r1, #3
 	mul r0, r1
-	ldrb r1, [r5,#0x13]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	cmp r0, r1
 	beq loc_810F7B0
 	b locret_810F7EA
@@ -3218,31 +3218,31 @@ loc_810F7B0:
 	ldrb r0, [r5,r0]
 	cmp r0, #0
 	beq loc_810F7DE
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
 	mov r1, #5
 	mul r0, r1
 	add r0, #1
-	ldrb r1, [r5,#0x12]
+	ldrb r1, [r5,#oBattleObject_PanelX]
 	cmp r0, r1
 	beq loc_810F7DE
 	mov r0, #0x77
 	mov r1, #0
 	strb r1, [r5,r0]
-	ldr r0, [r5,#0x38]
-	str r0, [r5,#0x78]
+	ldr r0, [r5,#oBattleObject_Y]
+	str r0, [r5,#oBattleObject_ExtraVars+0x18]
 	mov r0, #0xc
-	strh r0, [r7]
+	strh r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #0
-	strb r0, [r7,#1]
+	strb r0, [r7,#oAIAttackVars_Unk_01]
 	b locret_810F7EA
 loc_810F7DE:
 	bl sub_810FCA2
 	mov r0, #0x10
-	strh r0, [r7]
+	strh r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #0
-	strb r0, [r7,#1]
+	strb r0, [r7,#oAIAttackVars_Unk_01]
 locret_810F7EA:
 	pop {r4-r7,pc}
 	thumb_func_end sub_810F770
@@ -3270,11 +3270,11 @@ sub_810F7EC:
 	ldr r1, [r3,r1]
 	mul r0, r1
 	add r0, r0, r2
-	strb r0, [r5,#0x10]
-	ldr r0, [r5,#0x40]
-	ldr r1, [r5,#0x34]
+	strb r0, [r5,#oBattleObject_CurAnim]
+	ldr r0, [r5,#oBattleObject_XVelocity]
+	ldr r1, [r5,#oBattleObject_X]
 	add r1, r1, r0
-	str r1, [r5,#0x34]
+	str r1, [r5,#oBattleObject_X]
 	bl sub_810FA64
 	bl object_setPanelsFromCoordinates
 	mov r0, #1
@@ -3291,28 +3291,28 @@ loc_810F836:
 	mov r2, #1
 	eor r1, r2
 	strb r1, [r5,r0]
-	ldr r0, [r5,#0x44]
+	ldr r0, [r5,#oBattleObject_YVelocity]
 	neg r0, r0
-	str r0, [r5,#0x44]
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	str r0, [r5,#oBattleObject_YVelocity]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
-	str r0, [r5,#0x34]
+	str r0, [r5,#oBattleObject_X]
 	mov r0, #0x6e
 	mov r1, #0
 	strb r1, [r5,r0]
 	mov r0, #0xf7
 	bl sound_play // () -> void
 	mov r0, #8
-	strh r0, [r7]
+	strh r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #0
-	strb r0, [r7,#1]
+	strb r0, [r7,#oAIAttackVars_Unk_01]
 loc_810F86C:
 	bl object_updateCollisionPanels
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
-	ldrb r3, [r5,#0x16]
-	ldrb r2, [r5,#0x17]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
+	ldrb r3, [r5,#oBattleObject_Alliance]
+	ldrb r2, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	mov r2, #1
 	bl sub_8109660
@@ -3333,16 +3333,16 @@ sub_810F898:
 	beq loc_810F8D2
 	sub r1, #1
 	strb r1, [r5,r0]
-	ldr r0, [r5,#0x44]
-	ldr r1, [r5,#0x38]
+	ldr r0, [r5,#oBattleObject_YVelocity]
+	ldr r1, [r5,#oBattleObject_Y]
 	add r1, r1, r0
-	str r1, [r5,#0x38]
+	str r1, [r5,#oBattleObject_Y]
 	bl object_setPanelsFromCoordinates
 	bl object_updateCollisionPanels
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
-	ldrb r3, [r5,#0x16]
-	ldrb r2, [r5,#0x17]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
+	ldrb r3, [r5,#oBattleObject_Alliance]
+	ldrb r2, [r5,#oBattleObject_DirectionFlip]
 	eor r3, r2
 	mov r2, #1
 	bl sub_8109660
@@ -3351,20 +3351,20 @@ sub_810F898:
 	bl sub_810FC30
 	b locret_810F96A
 loc_810F8D2:
-	ldrb r0, [r7,#1]
+	ldrb r0, [r7,#oAIAttackVars_Unk_01]
 	tst r0, r0
 	bne loc_810F8E4
 	mov r0, #1
-	strb r0, [r7,#1]
+	strb r0, [r7,#oAIAttackVars_Unk_01]
 	mov r0, #0x74
 	ldrb r0, [r5,r0]
 	bl sub_810FC0C
 loc_810F8E4:
 	bl object_clearCollisionRegion // () -> void
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0x7c
 	ldrb r1, [r5,r0]
 	tst r1, r1
@@ -3373,26 +3373,26 @@ loc_810F8E4:
 	strb r1, [r5,r0]
 	bl sub_810FB54
 	mov r0, #0
-	str r0, [r5,#0x60]
-	str r0, [r5,#0x70]
+	str r0, [r5,#oBattleObject_ExtraVars]
+	str r0, [r5,#oBattleObject_ExtraVars+0x10]
 	mov r2, #0x64
 	ldrb r0, [r5,r2]
-	strb r0, [r7,#0x16]
-	strb r0, [r5,#0x12]
+	strb r0, [r7,#oAIAttackVars_Unk_16]
+	strb r0, [r5,#oBattleObject_PanelX]
 	mov r2, #0x65
 	ldrb r0, [r5,r2]
-	strb r0, [r7,#0x17]
-	strb r0, [r5,#0x13]
+	strb r0, [r7,#oAIAttackVars_Unk_17]
+	strb r0, [r5,#oBattleObject_PanelY]
 	bl object_setCoordinatesFromPanels // () -> void
 	bl object_updateCollisionPanels
 	mov r0, #0
-	str r0, [r5,#0x3c]
+	str r0, [r5,#oBattleObject_Z]
 	mov r0, #1
 	bl object_setCollisionRegion
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 	bl sub_8016934
 	mov r0, #0x40
 	bl object_clearFlag // (int bitfield) -> void
@@ -3408,13 +3408,13 @@ loc_810F8E4:
 	ldrb r1, [r5,r2]
 	bl object_removePanelReserve
 	mov r0, #0
-	strb r0, [r5,#0x10]
-	ldrh r0, [r7,#0x18]
-	strh r0, [r7,#0x10]
+	strb r0, [r5,#oBattleObject_CurAnim]
+	ldrh r0, [r7,#oAIAttackVars_Unk_18]
+	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0x18
-	strh r0, [r7]
+	strh r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #0
-	strb r0, [r7,#1]
+	strb r0, [r7,#oAIAttackVars_Unk_01]
 	mov r0, #0x40
 	bl object_clearFlag
 locret_810F96A:
@@ -3424,42 +3424,42 @@ locret_810F96A:
 	thumb_local_start
 sub_810F96C:
 	push {r4-r7,lr}
-	ldrb r0, [r7,#1]
+	ldrb r0, [r7,#oAIAttackVars_Unk_01]
 	tst r0, r0
 	bne loc_810F978
 	mov r0, #1
-	strb r0, [r7,#1]
+	strb r0, [r7,#oAIAttackVars_Unk_01]
 loc_810F978:
 	bl object_clearCollisionRegion // () -> void
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0x7c
 	mov r1, #0
 	strb r1, [r5,r0]
 	bl sub_810FB54
 	mov r0, #0
-	str r0, [r5,#0x60]
-	str r0, [r5,#0x70]
+	str r0, [r5,#oBattleObject_ExtraVars]
+	str r0, [r5,#oBattleObject_ExtraVars+0x10]
 	mov r2, #0x64
 	ldrb r0, [r5,r2]
-	strb r0, [r7,#0x16]
-	strb r0, [r5,#0x12]
+	strb r0, [r7,#oAIAttackVars_Unk_16]
+	strb r0, [r5,#oBattleObject_PanelX]
 	mov r2, #0x65
 	ldrb r0, [r5,r2]
-	strb r0, [r7,#0x17]
-	strb r0, [r5,#0x13]
+	strb r0, [r7,#oAIAttackVars_Unk_17]
+	strb r0, [r5,#oBattleObject_PanelY]
 	bl object_setCoordinatesFromPanels // () -> void
 	mov r0, #0
-	str r0, [r5,#0x3c]
+	str r0, [r5,#oBattleObject_Z]
 	bl object_updateCollisionPanels
 	mov r0, #1
 	bl object_setCollisionRegion
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0x40
 	bl object_clearFlag // (int bitfield) -> void
 	mov r2, #0x64
@@ -3474,13 +3474,13 @@ loc_810F978:
 	ldrb r1, [r5,r2]
 	bl object_removePanelReserve
 	mov r0, #0
-	strb r0, [r5,#0x10]
-	ldrh r0, [r7,#0x18]
-	strh r0, [r7,#0x10]
+	strb r0, [r5,#oBattleObject_CurAnim]
+	ldrh r0, [r7,#oAIAttackVars_Unk_18]
+	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0x18
-	strh r0, [r7]
+	strh r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #0
-	strb r0, [r7,#1]
+	strb r0, [r7,#oAIAttackVars_Unk_01]
 	mov r0, #0x40
 	bl object_clearFlag
 	pop {r4-r7,pc}
@@ -3501,7 +3501,7 @@ sub_810F9F6:
 loc_810FA0C:
 	bl object_getFrontDirection // () -> int
 	mov r4, r0
-	ldr r0, [r7,#0x2c]
+	ldr r0, [r7,#oAIAttackVars_Unk_2c]
 	tst r0, r0
 	beq loc_810FA28
 	ldrh r1, [r0,#0x24]
@@ -3567,9 +3567,9 @@ sub_810FA64:
 	ldr r2, off_810FA94 // =byte_810FA98 
 	ldr r1, [r2,r1]
 	mul r0, r1
-	ldr r1, [r5,#0x78]
+	ldr r1, [r5,#oBattleObject_ExtraVars+0x18]
 	add r1, r1, r0
-	str r1, [r5,#0x38]
+	str r1, [r5,#oBattleObject_Y]
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_810FA94: .word byte_810FA98
@@ -3581,7 +3581,7 @@ sub_810FAA0:
 	push {r4-r7,lr}
 	mov r2, #0
 	ldr r0, off_810FCD8 // =byte_810FD58
-	ldrb r1, [r4,#0x16]
+	ldrb r1, [r4,#oAIData_Version_16]
 	lsl r1, r1, #2
 	add r0, r0, r1
 loc_810FAAC:
@@ -3608,12 +3608,12 @@ sub_810FACA:
 	ldr r4, off_810FAF8 // =byte_810FAFC 
 	ldr r4, [r4,r0]
 	push {r0}
-	ldrh r0, [r7,#8]
-	ldrh r1, [r7,#0xa]
+	ldrh r0, [r7,#oAIAttackVars_Unk_08]
+	ldrh r1, [r7,#oAIAttackVars_Unk_0a]
 	lsl r1, r1, #0x10
 	orr r0, r1
 	mov r6, r0
-	ldrb r2, [r7,#2]
+	ldrb r2, [r7,#oAIAttackVars_Unk_02]
 	pop {r3}
 	ldr r7, off_810FB14 // =byte_810FB18
 	ldr r7, [r7,r3]
@@ -3633,7 +3633,7 @@ byte_810FB18: .byte 0x3, 0x0, 0x0, 0x0, 0x1, 0x10, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0,
 	thumb_local_start
 sub_810FB30:
 	push {r4-r7,lr}
-	ldrb r0, [r4,#0x16]
+	ldrb r0, [r4,#oAIData_Version_16]
 	lsl r0, r0, #2
 	ldr r1, off_810FB84 // =byte_810FB88
 	ldr r1, [r1,r0]
@@ -3642,7 +3642,7 @@ sub_810FB30:
 	ldr r3, off_810FBA0 // =byte_810FBA4
 	ldr r3, [r3,r0]
 	bl sub_801A082
-	ldrb r0, [r4,#0x16]
+	ldrb r0, [r4,#oAIData_Version_16]
 	lsl r0, r0, #2
 	ldr r1, off_810FBBC // =byte_810FBC0
 	ldr r0, [r1,r0]
@@ -3679,19 +3679,19 @@ sub_810FBD8:
 	push {r4-r7,lr}
 	tst r0, r0
 	bne loc_810FBE8
-	ldr r0, [r5,#0x34]
-	ldr r1, [r5,#0x38]
-	ldr r2, [r5,#0x44]
+	ldr r0, [r5,#oBattleObject_X]
+	ldr r1, [r5,#oBattleObject_Y]
+	ldr r2, [r5,#oBattleObject_YVelocity]
 	add r1, r1, r2
 	b loc_810FBF0
 loc_810FBE8:
-	ldr r0, [r5,#0x34]
-	ldr r1, [r5,#0x38]
-	ldr r2, [r5,#0x40]
+	ldr r0, [r5,#oBattleObject_X]
+	ldr r1, [r5,#oBattleObject_Y]
+	ldr r2, [r5,#oBattleObject_XVelocity]
 	add r0, r0, r2
 loc_810FBF0:
 	mov r2, #0
-	ldr r2, [r5,#0x3c]
+	ldr r2, [r5,#oBattleObject_Z]
 	bl sub_800E258
 	push {r0,r1}
 	bl object_getPanelParameters
@@ -3709,13 +3709,13 @@ sub_810FC0C:
 	push {r4-r7,lr}
 	tst r0, r0
 	beq locret_810FC2A
-	ldrb r0, [r5,#0x16]
-	ldrb r1, [r5,#0x17]
+	ldrb r0, [r5,#oBattleObject_Alliance]
+	ldrb r1, [r5,#oBattleObject_DirectionFlip]
 	eor r0, r1
 	lsl r0, r0, #8
-	ldr r1, [r5,#0x34]
-	ldr r2, [r5,#0x38]
-	ldr r3, [r5,#0x3c]
+	ldr r1, [r5,#oBattleObject_X]
+	ldr r2, [r5,#oBattleObject_Y]
+	ldr r3, [r5,#oBattleObject_Z]
 	mov r3, #0
 	ldr r4, dword_810FC2C // =0x2
 	orr r4, r0
@@ -3728,8 +3728,8 @@ dword_810FC2C: .word 0x2
 	thumb_local_start
 sub_810FC30:
 	push {r4-r7,lr}
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #0x6c
 	ldrb r2, [r5,r2]
 	mov r3, #0x6d
@@ -3745,8 +3745,8 @@ loc_810FC48:
 	mov r2, #0x6d
 	ldrb r1, [r5,r2]
 	bl sub_810FC68
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #0x6c
 	strb r0, [r5,r2]
 	mov r2, #0x6d
@@ -3773,7 +3773,7 @@ sub_810FC68:
 	tst r0, r0
 	pop {r0,r1}
 	beq locret_810FC94
-	ldrb r2, [r4,#0x16]
+	ldrb r2, [r4,#oAIData_Version_16]
 	ldr r3, off_810FC98 // =byte_810FC9C
 	ldrb r2, [r3,r2]
 	cmp r2, #0xff
@@ -3794,7 +3794,7 @@ sub_810FCA2:
 	lsl r0, r0, #2
 	ldr r1, off_810FCC0 // =byte_810FCC4
 	ldr r0, [r1,r0]
-	ldr r1, [r5,#0x44]
+	ldr r1, [r5,#oBattleObject_YVelocity]
 	cmp r1, #0
 	bge loc_810FCB6
 	neg r1, r1
@@ -4325,8 +4325,8 @@ sub_811013C:
 	push {r4-r7,lr}
 	mov r4, r2
 	push {r0,r1}
-	ldrb r0, [r5,#0x16]
-	ldrb r1, [r5,#0x17]
+	ldrb r0, [r5,#oBattleObject_Alliance]
+	ldrb r1, [r5,#oBattleObject_DirectionFlip]
 	eor r0, r1
 	lsl r0, r0, #8
 	mov r2, r0
@@ -4350,8 +4350,8 @@ sub_811016C:
 	push {r4-r7,lr}
 	mov r4, r2
 	push {r0,r1}
-	ldrb r0, [r5,#0x16]
-	ldrb r1, [r5,#0x17]
+	ldrb r0, [r5,#oBattleObject_Alliance]
+	ldrb r1, [r5,#oBattleObject_DirectionFlip]
 	eor r0, r1
 	lsl r0, r0, #8
 	mov r2, r0
@@ -4387,13 +4387,13 @@ byte_8110198: .byte 0x14, 0x0, 0x0, 0x0, 0xF0, 0xB5, 0x82, 0xB0, 0xA9, 0x7C
 sub_8110222:
 	push {r4-r7,lr}
 	push {r0}
-	ldrb r0, [r5,#0x16]
-	ldrb r1, [r5,#0x17]
+	ldrb r0, [r5,#oBattleObject_Alliance]
+	ldrb r1, [r5,#oBattleObject_DirectionFlip]
 	eor r0, r1
 	lsl r0, r0, #8
 	push {r0}
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	mov r2, r1
 	mov r1, r0

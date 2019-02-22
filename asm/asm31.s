@@ -19384,9 +19384,9 @@ sub_80C1400:
 	pop {r2,r3,r5}
 	tst r0, r0
 	beq locret_80C145E
-	str r5, [r0,#0x4c]
-	ldrh r1, [r5,#0x16]
-	strh r1, [r0,#0x16]
+	str r5, [r0,#oBattleObject_RelatedObject1Ptr]
+	ldrh r1, [r5,#oBattleObject_AllianceAndDirectionFlip]
+	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
 	mov r1, #0x60 
 	strb r2, [r0,r1]
 	mov r1, #0x61 
@@ -19412,16 +19412,16 @@ sub_80C1400:
 	ldrb r1, [r5,r1]
 	mov r2, #0x66 
 	strb r1, [r0,r2]
-	ldr r1, [r5,#0x40]
-	ldr r2, [r5,#0x44]
-	str r1, [r0,#0x40]
-	str r2, [r0,#0x44]
-	ldr r1, [r5,#0x34]
-	str r1, [r0,#0x34]
-	ldr r1, [r5,#0x38]
-	str r1, [r0,#0x38]
-	ldr r1, [r5,#0x3c]
-	str r1, [r0,#0x3c]
+	ldr r1, [r5,#oBattleObject_XVelocity]
+	ldr r2, [r5,#oBattleObject_YVelocity]
+	str r1, [r0,#oBattleObject_XVelocity]
+	str r2, [r0,#oBattleObject_YVelocity]
+	ldr r1, [r5,#oBattleObject_X]
+	str r1, [r0,#oBattleObject_X]
+	ldr r1, [r5,#oBattleObject_Y]
+	str r1, [r0,#oBattleObject_Y]
+	ldr r1, [r5,#oBattleObject_Z]
+	str r1, [r0,#oBattleObject_Z]
 locret_80C145E:
 	pop {pc}
 	thumb_func_end sub_80C1400
