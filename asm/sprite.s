@@ -82,7 +82,7 @@ loc_8002716:
 	push {r1}
 	bl sprite_initialize // (void *a1) -> void
 	pop {r1}
-	strb r1, [r5,#3]
+	strb r1, [r5,#oObjectSprite_Unk_03]
 	pop {r4,r5,pc}
 	.balign 4, 0x00
 off_8002724: .word spritePointers_8031CC4
@@ -93,27 +93,27 @@ off_8002728: .word spriteWhiteDot
 	thumb_local_start
 sprite_initialize:
 	add r0, #4
-	str r0, [r5,#0x18]
+	str r0, [r5,#oObjectSprite_Unk_18]
 	mov r0, #0
-	strb r0, [r5,#3]
-	strb r0, [r5]
-	str r0, [r5,#0x24]
-	strb r0, [r5,#4]
-	strh r0, [r5,#0xa]
-	strh r0, [r5,#6]
-	str r0, [r5,#0x2c]
-	strh r0, [r5,#0x10]
-	strh r0, [r5,#0x12]
-	strb r0, [r5,#0x14]
-	strb r0, [r5,#5]
-	str r0, [r5,#0x30]
-	str r0, [r5,#0x34]
+	strb r0, [r5,#oObjectSprite_Unk_03]
+	strb r0, [r5,#oObjectSprite_Unk_00]
+	str r0, [r5,#oObjectSprite_Unk_24]
+	strb r0, [r5,#oObjectSprite_Unk_04]
+	strh r0, [r5,#oObjectSprite_Unk_0a]
+	strh r0, [r5,#oObjectSprite_Unk_06]
+	str r0, [r5,#oObjectSprite_Unk_2c]
+	strh r0, [r5,#oObjectSprite_Unk_10]
+	strh r0, [r5,#oObjectSprite_Unk_12]
+	strb r0, [r5,#oObjectSprite_Unk_14]
+	strb r0, [r5,#oObjectSprite_Unk_05]
+	str r0, [r5,#oObjectSprite_Unk_30]
+	str r0, [r5,#oObjectSprite_Unk_34]
 	mvn r0, r0
-	str r0, [r5,#0x28]
+	str r0, [r5,#oObjectSprite_Unk_28]
 	mov r0, #8
-	strb r0, [r5,#0x15]
+	strb r0, [r5,#oObjectSprite_Unk_15]
 	mov r0, #8
-	strh r0, [r5,#0x16]
+	strh r0, [r5,#oObjectSprite_Unk_16]
 	mov pc, lr
 	thumb_func_end sprite_initialize
 
@@ -862,16 +862,16 @@ sub_8002C7A:
 	mov r2, #4
 	b sprite_setMosaicScalingParameters
 sprite_setMosaicScalingParameters:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
 	push {r7}
-	ldrb r1, [r3,#0x11]
+	ldrb r1, [r3,#oObjectSprite_Unk_11]
 	mov r7, #0xc
 	bic r1, r7
 	orr r1, r2
-	strb r1, [r3,#0x11]
+	strb r1, [r3,#oObjectSprite_Unk_11]
 	pop {r7}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_Unk2009740_Ptr]
@@ -911,14 +911,14 @@ loc_8002CBA:
 
 	thumb_func_start sub_8002CCE
 sub_8002CCE:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r1, [r3,#0x11]
+	ldrb r1, [r3,#oObjectSprite_Unk_11]
 	mov r0, #0xc
 	bic r1, r0
-	strb r1, [r3,#0x11]
+	strb r1, [r3,#oObjectSprite_Unk_11]
 	mov pc, lr
 	thumb_func_end sub_8002CCE
 
@@ -1009,19 +1009,19 @@ sprite_makeUnscalable:
 	b loc_8002D60
 	push {r5,lr}
 loc_8002D60:
-	ldrb r0, [r5,#0x11]
+	ldrb r0, [r5,#oObjectSprite_Unk_11]
 	mov r1, #3
 	tst r1, r0
 	beq locret_8002D7E
 	bic r0, r1
-	strb r0, [r5,#0x11]
-	ldrb r0, [r5,#0x13]
+	strb r0, [r5,#oObjectSprite_Unk_11]
+	ldrb r0, [r5,#oObjectSprite_Unk_13]
 	mov r2, r0
 	mov r1, #0x3e 
 	and r0, r1
 	lsr r0, r0, #1
 	bic r2, r1
-	strb r2, [r5,#0x13]
+	strb r2, [r5,#oObjectSprite_Unk_13]
 	bl sub_802FE6A
 locret_8002D7E:
 	pop {r5,pc}
@@ -1034,7 +1034,7 @@ sprite_setPalette:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	strb r0, [r3,#4]
+	strb r0, [r3,#oObjectSprite_Unk_04]
 	mov pc, lr
 	thumb_func_end sprite_setPalette
 
@@ -1065,7 +1065,7 @@ sprite_setAnimation:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	strb r0, [r3]
+	strb r0, [r3,#oObjectSprite_Unk_00]
 	mov pc, lr
 	thumb_func_end sprite_setAnimation
 
@@ -1078,11 +1078,11 @@ sprite_setFinalPalette:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r0, [r3,#0x15]
+	ldrb r0, [r3,#oObjectSprite_Unk_15]
 	mov r2, #0xf0
 	bic r0, r2
 	orr r0, r1
-	strb r0, [r3,#0x15]
+	strb r0, [r3,#oObjectSprite_Unk_15]
 	mov pc, lr
 	thumb_func_end sprite_forceWhitePalette
 
@@ -1104,10 +1104,10 @@ sprite_clearFinalPalette:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r0, [r3,#0x15]
+	ldrb r0, [r3,#oObjectSprite_Unk_15]
 	mov r1, #0xf0
 	bic r0, r1
-	strb r0, [r3,#0x15]
+	strb r0, [r3,#oObjectSprite_Unk_15]
 	mov pc, lr
 	thumb_func_end sprite_clearFinalPalette
 
@@ -1117,15 +1117,15 @@ sprite_getFrameParameters:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r0, [r3,#2]
-	ldrb r1, [r3,#1]
+	ldrb r0, [r3,#oObjectSprite_Unk_02]
+	ldrb r1, [r3,#oObjectSprite_Unk_01]
 	cmp r1, #0
 	beq loc_8002DFE
 	mov r1, #0xc0
 	bic r0, r1
 loc_8002DFE:
-	ldrb r1, [r3]
-	ldrb r2, [r3]
+	ldrb r1, [r3,#oObjectSprite_Unk_00]
+	ldrb r2, [r3,#oObjectSprite_Unk_00]
 	mov pc, lr
 	thumb_func_end sprite_getFrameParameters
 
@@ -1175,12 +1175,12 @@ sprite_hasShadow:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r0, [r3,#3]
+	ldrb r0, [r3,#oObjectSprite_Unk_03]
 	mov r1, #1
 	orr r0, r1
 	mov r1, #4
 	bic r0, r1
-	strb r0, [r3,#3]
+	strb r0, [r3,#oObjectSprite_Unk_03]
 	mov pc, lr
 	thumb_func_end sprite_hasShadow
 
@@ -1274,7 +1274,7 @@ sprite_setColorShader:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	strh r0, [r3,#6]
+	strh r0, [r3,#oObjectSprite_Unk_06]
 	mov pc, lr
 	thumb_func_end sprite_setColorShader
 
@@ -1295,7 +1295,7 @@ sub_8002EE8:
 	lsl r3, r3, #4
 	add r3, r3, r5
 	mov r0, #0
-	strh r0, [r3,#6]
+	strh r0, [r3,#oObjectSprite_Unk_06]
 	mov pc, lr
 	thumb_func_end sub_8002EE8
 
@@ -1314,13 +1314,13 @@ loc_8002F06:
 	tst r0, r0
 	beq sub_8002F2C
 	lsl r0, r0, #8
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r1, [r3,#0x11]
+	ldrb r1, [r3,#oObjectSprite_Unk_11]
 	orr r1, r2
-	strb r1, [r3,#0x11]
+	strb r1, [r3,#oObjectSprite_Unk_11]
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_RenderInfoPtr]
 	ldrh r1, [r3,#2]
@@ -1334,14 +1334,14 @@ loc_8002F06:
 
 	thumb_func_start sub_8002F2C
 sub_8002F2C:
-	ldrb r3, [r5,#2]
+	ldrb r3, [r5,#oObjectHeader_TypeAndSpriteOffset]
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r3, r3, r5
-	ldrb r1, [r3,#0x11]
+	ldrb r1, [r3,#oObjectSprite_Unk_11]
 	mov r0, #0x10
 	bic r1, r0
-	strb r1, [r3,#0x11]
+	strb r1, [r3,#oObjectSprite_Unk_11]
 	mov pc, lr
 	thumb_func_end sub_8002F2C
 

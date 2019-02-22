@@ -2603,8 +2603,12 @@ unk_2034814:: // 0x2034814
 	.space 88
 unk_203486C:: // 0x203486c
 	.space 20
+
 eBattleState:: // 0x2034880
-	.space 288
+	battle_state_struct eBattleState
+eBattleStateEnd:: // 0x2034970
+	.space 48
+
 dword_20349A0:: // 0x20349a0
 	.space 4
 byte_20349A4:: // 0x20349a4

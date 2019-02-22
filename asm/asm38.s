@@ -1418,55 +1418,55 @@ off_300672C: .word math_cosTable
 	thumb_func_start sub_3006730
 sub_3006730:
 	push {lr}
-	ldrb r0, [r5,#3]
+	ldrb r0, [r5,#oObjectSprite_Unk_03]
 	mov r1, #0x80
 	and r0, r1
 	bne loc_300675A
-	ldr r1, [r5,#0x18]
+	ldr r1, [r5,#oObjectSprite_Unk_18]
 	ldr r2, [r1]
 	add r3, r2, r1
-	str r3, [r5,#0x1c]
-	ldrb r0, [r5]
+	str r3, [r5,#oObjectSprite_Unk_1c]
+	ldrb r0, [r5,#oObjectSprite_Unk_00]
 	lsl r0, r0, #2
 	ldr r2, [r3,#8]
 	add r1, r1, r2
 	ldr r2, [r1,r0]
 	add r1, r1, r2
-	str r1, [r5,#0x20]
+	str r1, [r5,#oObjectSprite_Unk_20]
 	ldrb r2, [r1,#1]
-	strb r2, [r5,#1]
+	strb r2, [r5,#oObjectSprite_Unk_01]
 	ldrb r2, [r1,#2]
-	strb r2, [r5,#2]
+	strb r2, [r5,#oObjectSprite_Unk_02]
 	b loc_3006778
 loc_300675A:
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectSprite_Unk_00]
 	lsl r0, r0, #2
-	ldr r1, [r5,#0x18]
+	ldr r1, [r5,#oObjectSprite_Unk_18]
 	ldr r2, [r1,r0]
 	add r3, r2, r1
-	str r3, [r5,#0x1c]
+	str r3, [r5,#oObjectSprite_Unk_1c]
 	ldr r2, [r3,#8]
 	add r1, r1, r2
 	ldr r2, [r1]
 	add r1, r1, r2
-	str r1, [r5,#0x20]
+	str r1, [r5,#oObjectSprite_Unk_20]
 	ldrb r2, [r3,#0x10]
-	strb r2, [r5,#1]
+	strb r2, [r5,#oObjectSprite_Unk_01]
 	ldrb r2, [r3,#0x12]
-	strb r2, [r5,#2]
+	strb r2, [r5,#oObjectSprite_Unk_02]
 loc_3006778:
-	ldr r1, [r5,#0x20]
+	ldr r1, [r5,#oObjectSprite_Unk_20]
 	ldrb r2, [r1]
 	lsl r2, r2, #2
-	ldr r0, [r5,#0x1c]
+	ldr r0, [r5,#oObjectSprite_Unk_1c]
 	ldr r0, [r0,#0xc]
-	ldr r1, [r5,#0x18]
+	ldr r1, [r5,#oObjectSprite_Unk_18]
 	add r1, r1, r0
 	ldr r2, [r1,r2]
 	add r2, r2, r1
 	ldrb r1, [r2,#4]
 	lsr r1, r1, #4
-	strb r1, [r5,#5]
+	strb r1, [r5,#oObjectSprite_Unk_05]
 	pop {pc}
 	thumb_func_end sub_3006730
 
@@ -1474,47 +1474,47 @@ loc_3006778:
 sub_3006792:
 	push {r4,lr}
 loc_3006794:
-	ldrb r0, [r5,#1]
+	ldrb r0, [r5,#oObjectSprite_Unk_01]
 	sub r0, #1
-	strb r0, [r5,#1]
+	strb r0, [r5,#oObjectSprite_Unk_01]
 	cmp r0, #0
 	bge loc_30067F8
-	ldrb r0, [r5,#3]
+	ldrb r0, [r5,#oObjectSprite_Unk_03]
 	mov r1, #0x80
 	and r0, r1
 	bne loc_30067C0
-	ldr r1, [r5,#0x20]
+	ldr r1, [r5,#oObjectSprite_Unk_20]
 	ldrb r0, [r1,#2]
 	ldrb r4, [r1,#1]
 	mov r2, #0x80
 	tst r0, r2
 	bne loc_30067E6
 	add r1, #3
-	str r1, [r5,#0x20]
+	str r1, [r5,#oObjectSprite_Unk_20]
 	ldrb r2, [r1,#1]
-	strb r2, [r5,#1]
+	strb r2, [r5,#oObjectSprite_Unk_01]
 	ldrb r2, [r1,#2]
-	strb r2, [r5,#2]
+	strb r2, [r5,#oObjectSprite_Unk_02]
 	b loc_30067E4
 loc_30067C0:
-	ldr r3, [r5,#0x1c]
+	ldr r3, [r5,#oObjectSprite_Unk_1c]
 	ldrb r0, [r3,#0x12]
 	ldrb r4, [r3,#0x10]
 	mov r2, #0x80
 	tst r0, r2
 	bne loc_30067E6
 	add r3, #0x14
-	str r3, [r5,#0x1c]
-	ldr r1, [r5,#0x18]
+	str r3, [r5,#oObjectSprite_Unk_1c]
+	ldr r1, [r5,#oObjectSprite_Unk_18]
 	ldr r2, [r3,#8]
 	add r1, r1, r2
 	ldr r2, [r1]
 	add r1, r1, r2
-	str r1, [r5,#0x20]
+	str r1, [r5,#oObjectSprite_Unk_20]
 	ldrb r2, [r3,#0x10]
-	strb r2, [r5,#1]
+	strb r2, [r5,#oObjectSprite_Unk_01]
 	ldrb r2, [r3,#0x12]
-	strb r2, [r5,#2]
+	strb r2, [r5,#oObjectSprite_Unk_02]
 loc_30067E4:
 	b loc_3006794
 loc_30067E6:
@@ -1522,24 +1522,24 @@ loc_30067E6:
 	tst r0, r2
 	bne loc_30067F2
 	mov r4, #1
-	strb r4, [r5,#1]
+	strb r4, [r5,#oObjectSprite_Unk_01]
 	b loc_3006794
 loc_30067F2:
 	bl sub_3006730
 	b loc_3006794
 loc_30067F8:
-	ldr r1, [r5,#0x20]
+	ldr r1, [r5,#oObjectSprite_Unk_20]
 	ldrb r2, [r1]
 	lsl r2, r2, #2
-	ldr r0, [r5,#0x1c]
+	ldr r0, [r5,#oObjectSprite_Unk_1c]
 	ldr r0, [r0,#0xc]
-	ldr r1, [r5,#0x18]
+	ldr r1, [r5,#oObjectSprite_Unk_18]
 	add r1, r1, r0
 	ldr r2, [r1,r2]
 	add r2, r2, r1
 	ldrb r1, [r2,#4]
 	lsr r1, r1, #4
-	strb r1, [r5,#5]
+	strb r1, [r5,#oObjectSprite_Unk_05]
 	pop {r4,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_3006792
@@ -2876,8 +2876,8 @@ sub_3007218:
 	push {r4,r6,r7,lr}
 	mov r6, r0
 	mov r7, r1
-	ldr r2, [r6,#0x3c]
-	ldr r3, [r6,#0x30]
+	ldr r2, [r6,#oCollisionData_ObjectFlags1]
+	ldr r3, [r6,#oCollisionData_SelfCollisionTypeFlags]
 	push {r2,r3}
 	ldr r0, off_3007504 // =battle_isTimeStop+1
 	mov lr, pc
@@ -2887,7 +2887,7 @@ sub_3007218:
 	ldr r4, dword_3007508 // =0x1000000
 	tst r2, r4
 	bne loc_300723E
-	ldr r1, [r7,#0x30]
+	ldr r1, [r7,#oCollisionData_SelfCollisionTypeFlags]
 	ldr r4, dword_300750C // =0x10000
 	tst r1, r4
 	bne loc_300723E
@@ -2999,18 +2999,18 @@ loc_30072DC:
 	ldrb r2, [r7,#5]
 	mov r0, #1
 	lsl r0, r2
-	ldrb r2, [r6,#3]
+	ldrb r2, [r6,#oCollisionData_Unk_03]
 	orr r2, r0
-	strb r2, [r6,#3]
+	strb r2, [r6,#oCollisionData_Unk_03]
 	ldr r2, byte_3007534 // =0x0
 	orr r3, r2
 loc_3007304:
-	ldr r2, [r6,#0x70]
+	ldr r2, [r6,#oCollisionData_FlagsFromCollision]
 	orr r2, r3
-	str r2, [r6,#0x70]
+	str r2, [r6,#oCollisionData_FlagsFromCollision]
 	pop {r4,r6,r7,pc}
 loc_300730C:
-	ldr r3, [r6,#0x30]
+	ldr r3, [r6,#oCollisionData_SelfCollisionTypeFlags]
 	ldr r4, byte_3007538 // =0x0
 	tst r3, r4
 	beq loc_300731E
@@ -3020,7 +3020,7 @@ loc_300730C:
 	beq loc_300731E
 	pop {r4,r6,r7,pc}
 loc_300731E:
-	ldr r3, [r6,#0x30]
+	ldr r3, [r6,#oCollisionData_SelfCollisionTypeFlags]
 	ldr r4, byte_300753c // =0x0
 	tst r3, r4
 	beq loc_3007330
@@ -3034,13 +3034,13 @@ loc_3007330:
 	tst r2, r4
 	bne locret_3007430
 	ldr r3, [r7,#0x44]
-	ldr r2, [r6,#0x7c]
+	ldr r2, [r6,#oCollisionData_Unk_7c]
 	orr r2, r3
-	str r2, [r6,#0x7c]
+	str r2, [r6,#oCollisionData_Unk_7c]
 	ldr r3, [r7,#0x30]
-	ldr r2, [r6,#0x70]
+	ldr r2, [r6,#oCollisionData_FlagsFromCollision]
 	orr r2, r3
-	str r2, [r6,#0x70]
+	str r2, [r6,#oCollisionData_FlagsFromCollision]
 	mov r4, r3
 	ldrb r2, [r7,#0x19]
 	mov r1, #0x76 
@@ -3050,11 +3050,11 @@ loc_3007330:
 	ldrb r2, [r7,#0x10]
 	cmp r2, #0
 	beq loc_300735A
-	strb r2, [r6,#0x11]
+	strb r2, [r6,#oCollisionData_StatusEffectFinal]
 loc_300735A:
 	bl sub_3007460
 	ldrb r2, [r7,#7]
-	ldrb r0, [r6,#0xd]
+	ldrb r0, [r6,#oCollisionData_CounterTimer]
 	tst r0, r0
 	beq loc_300737A
 	mov r0, #0x7f
@@ -3064,9 +3064,9 @@ loc_300735A:
 	tst r2, r0
 	bne loc_300737A
 	mov r3, #0x40 
-	ldr r1, [r6,#0x70]
+	ldr r1, [r6,#oCollisionData_FlagsFromCollision]
 	orr r1, r3
-	str r1, [r6,#0x70]
+	str r1, [r6,#oCollisionData_FlagsFromCollision]
 loc_300737A:
 	mov r1, #0x80
 	tst r1, r2
@@ -3074,7 +3074,7 @@ loc_300737A:
 	mov r3, #0x7f
 	and r2, r3
 	beq loc_300739E
-	ldrb r0, [r6,#0xd]
+	ldrb r0, [r6,#oCollisionData_CounterTimer]
 	tst r0, r0
 	beq loc_3007396
 	mov r2, #1
@@ -3102,9 +3102,9 @@ loc_300739E:
 	strh r3, [r6,r1]
 loc_30073B6:
 	ldrb r2, [r7,#0xe]
-	ldrb r3, [r6,#0xf]
+	ldrb r3, [r6,#oCollisionData_HitModifierFinal]
 	orr r3, r2
-	strb r3, [r6,#0xf]
+	strb r3, [r6,#oCollisionData_HitModifierFinal]
 	mov r0, #0x12
 	ldrh r1, [r7,r0]
 	mov r2, #0xff
@@ -3114,11 +3114,11 @@ loc_30073B6:
 	strh r1, [r6,r2]
 loc_30073CC:
 	mov r4, #1
-	ldrb r0, [r6,#2]
+	ldrb r0, [r6,#oCollisionData_PrimaryElement]
 	ldrb r1, [r7,#2]
 	bl sub_3007432
 	add r4, r4, r0
-	ldrb r0, [r6,#0x18]
+	ldrb r0, [r6,#oCollisionData_SecondaryElementWeakness]
 	ldrb r1, [r7,#0x19]
 	bl sub_30074E2
 	add r4, r4, r0
@@ -3181,20 +3181,20 @@ byte_3007444: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
 	thumb_local_start
 sub_3007460:
 	push {lr}
-	ldrb r0, [r6,#2]
+	ldrb r0, [r6,#oCollisionData_PrimaryElement]
 	cmp r0, #2
 	bne locret_30074A0
 	ldr r0, [r7,#0x30]
 	ldr r1, dword_3007540 // =0xc000000
 	tst r0, r1
 	beq locret_30074A0
-	ldr r0, [r6,#0x30]
+	ldr r0, [r6,#oCollisionData_SelfCollisionTypeFlags]
 	tst r0, r1
 	bne locret_30074A0
 	ldrh r0, [r7,#0x28]
 	cmp r0, #0
 	bne locret_30074A0
-	ldr r0, [r6,#0x70]
+	ldr r0, [r6,#oCollisionData_FlagsFromCollision]
 	mov r1, #1
 	tst r0, r1
 	bne locret_30074A0
@@ -3218,7 +3218,7 @@ locret_30074A0:
 sub_30074A2:
 	push {r4,lr}
 	mov r4, #0
-	ldr r0, [r6,#0x3c]
+	ldr r0, [r6,#oCollisionData_ObjectFlags1]
 	ldr r1, dword_3007544 // =0x80000000
 	tst r0, r1
 	beq loc_30074B6
@@ -3235,11 +3235,11 @@ loc_30074B6:
 sub_30074BA:
 	push {r4,r5,lr}
 	mov r4, #0
-	ldr r0, [r6,#0x3c]
+	ldr r0, [r6,#oCollisionData_ObjectFlags1]
 	ldr r1, dword_300750C // =0x10000
 	tst r0, r1
 	beq loc_30074DE
-	ldr r0, [r6,#0x70]
+	ldr r0, [r6,#oCollisionData_FlagsFromCollision]
 	mov r1, #2
 	tst r0, r1
 	bne loc_30074D4
@@ -3248,7 +3248,7 @@ sub_30074BA:
 	bne loc_30074DE
 loc_30074D4:
 	mov r4, #1
-	ldr r5, [r6,#0x38]
+	ldr r5, [r6,#oCollisionData_ParentObjectPtr]
 	ldr r0, off_3007548 // =sub_801A29A+1
 	mov lr, pc
 	bx r0
@@ -3304,15 +3304,15 @@ sub_3007550:
 	push {r4-r7,lr}
 	sub sp, sp, #8
 	ldr r5, [r5,#oBattleObject_CollisionDataPtr]
-	ldrb r1, [r5,#1]
+	ldrb r1, [r5,#oCollisionData_Region]
 	mov r2, #0x80
 	tst r1, r2
 	bne loc_30075BC
 	lsl r1, r1, #2
 	ldr r2, off_30075F8 // =off_8019B78
 	ldr r4, [r2,r1]
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldrb r0, [r5,#oCollisionData_Alliance]
+	ldrb r1, [r5,#oCollisionData_Flip]
 	ldr r2, off_300789C // =object_getFlipDirection+1
 	mov lr, pc
 	bx r2
@@ -3323,11 +3323,11 @@ loc_3007570:
 	cmp r0, #0x7f
 	beq loc_30075F4
 	mul r0, r6
-	ldrb r2, [r5,#0xa]
+	ldrb r2, [r5,#oCollisionData_PanelX]
 	add r0, r0, r2
 	mov r1, #1
 	ldrsb r1, [r4,r1]
-	ldrb r2, [r5,#0xb]
+	ldrb r2, [r5,#oCollisionData_PanelY]
 	add r1, r1, r2
 	mov r2, r5
 	str r0, [sp]
@@ -3410,14 +3410,14 @@ loc_300761A:
 	beq locret_300764A
 	b loc_3007646
 loc_3007622:
-	ldr r0, [r5,#0x68]
+	ldr r0, [r5,#oCollisionData_Unk_68]
 	ldr r1, [r6,#0x44]
 	tst r0, r1
 	bne loc_3007646
 	orr r0, r1
-	str r0, [r5,#0x68]
+	str r0, [r5,#oCollisionData_Unk_68]
 	ldr r0, [r6,#0x68]
-	ldr r1, [r5,#0x44]
+	ldr r1, [r5,#oCollisionData_CollisionIndexBit]
 	orr r0, r1
 	str r0, [r6,#0x68]
 	mov r0, r5
@@ -3437,8 +3437,8 @@ off_300764C: .word unk_2034F60
 	thumb_local_start
 sub_3007650:
 	push {r6,r7,lr}
-	ldr r2, [r0,#0x34]
-	ldr r3, [r1,#0x30]
+	ldr r2, [r0,#oCollisionData_TargetCollisionTypeFlags]
+	ldr r3, [r1,#oCollisionData_SelfCollisionTypeFlags]
 	tst r2, r3
 	beq locret_300766A
 	mov r6, r0
@@ -3455,8 +3455,8 @@ locret_300766A:
 sub_300766C:
 	push {r4,lr}
 	mov r4, r1
-	ldrb r1, [r0,#0xb]
-	ldrb r0, [r0,#0xa]
+	ldrb r1, [r0,#oCollisionData_PanelY]
+	ldrb r0, [r0,#oCollisionData_PanelX]
 	bl sub_3007958
 	ldrb r0, [r0,#2]
 	ldrb r1, [r4,#2]
@@ -3483,19 +3483,19 @@ sub_3007692:
 	ldr r0, off_30078A8 // =battle_isTimeStop+1
 	mov lr, pc
 	bx r0
-	ldr r2, [r6,#0x3c]
+	ldr r2, [r6,#oCollisionData_ObjectFlags1]
 	beq loc_30076B2
 	ldr r4, byte_30078AC // =0x0
 	tst r2, r4
 	bne loc_30076B2
-	ldr r1, [r7,#0x30]
+	ldr r1, [r7,#oCollisionData_SelfCollisionTypeFlags]
 	ldr r4, byte_30078B0 // =0x0
 	tst r1, r4
 	bne loc_30076B2
 	pop {r4,r6,r7,pc}
 loc_30076B2:
 	ldr r0, [r7,#0x3c]
-	ldr r3, [r6,#0x30]
+	ldr r3, [r6,#oCollisionData_SelfCollisionTypeFlags]
 	mov r4, #0x20 
 	tst r0, r4
 	beq loc_30076C4
@@ -3505,7 +3505,7 @@ loc_30076B2:
 	pop {r4,r6,r7,pc}
 loc_30076C4:
 	ldr r1, [r7,#0x30]
-	ldr r2, [r6,#0x3c]
+	ldr r2, [r6,#oCollisionData_ObjectFlags1]
 	mov r4, #0x20 
 	tst r2, r4
 	beq loc_30076D6
@@ -3514,10 +3514,10 @@ loc_30076C4:
 	bne loc_30076D6
 	pop {r4,r6,r7,pc}
 loc_30076D6:
-	ldr r2, [r6,#0x6c]
+	ldr r2, [r6,#oCollisionData_Unk_6c]
 	ldr r3, [r7,#0x30]
 	orr r2, r3
-	str r2, [r6,#0x6c]
+	str r2, [r6,#oCollisionData_Unk_6c]
 	ldrb r2, [r7,#0x19]
 	mov r1, #0x77 
 	ldrb r0, [r6,r1]
@@ -3556,14 +3556,14 @@ sub_3007708:
 	bl sub_3007958
 	tst r0, r0
 	beq locret_3007774
-	ldr r2, [r4,#0x30]
+	ldr r2, [r4,#oCollisionData_SelfCollisionTypeFlags]
 	ldr r1, dword_3007778 // =0xc000000
 	tst r2, r1
 	bne locret_3007774
 	ldrb r0, [r0,#2]
 	cmp r0, #6
 	bne loc_3007746
-	ldrb r0, [r4,#2]
+	ldrb r0, [r4,#oCollisionData_PrimaryElement]
 	cmp r0, #1
 	bne locret_3007774
 	mov r0, r6
@@ -3574,7 +3574,7 @@ sub_3007708:
 loc_3007746:
 	cmp r0, #8
 	bne loc_300775C
-	ldrb r0, [r4,#2]
+	ldrb r0, [r4,#oCollisionData_PrimaryElement]
 	cmp r0, #2
 	bne locret_3007774
 	mov r0, r6
@@ -3587,7 +3587,7 @@ loc_300775C:
 	blt locret_3007774
 	cmp r0, #0xc
 	bgt locret_3007774
-	ldrb r0, [r4,#2]
+	ldrb r0, [r4,#oCollisionData_PrimaryElement]
 	cmp r0, #4
 	bne locret_3007774
 	mov r0, r6
@@ -3606,15 +3606,15 @@ sub_300777C:
 	mov r3, r8
 	push {r0}
 	mov r5, r0
-	ldrb r1, [r5,#1]
+	ldrb r1, [r5,#oCollisionData_Region]
 	mov r2, #0x80
 	tst r1, r2
 	bne loc_30077D6
 	lsl r1, r1, #2
 	ldr r2, off_3007820 // =off_8019B78
 	ldr r4, [r2,r1]
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldrb r0, [r5,#oCollisionData_Alliance]
+	ldrb r1, [r5,#oCollisionData_Flip]
 	ldr r2, off_30078B8 // =object_getFlipDirection+1
 	mov lr, pc
 	bx r2
@@ -3625,11 +3625,11 @@ loc_300779E:
 	cmp r0, #0x7f
 	beq loc_300781A
 	mul r0, r6
-	ldrb r2, [r5,#0xa]
+	ldrb r2, [r5,#oCollisionData_PanelX]
 	add r0, r0, r2
 	mov r1, #1
 	ldrsb r1, [r4,r1]
-	ldrb r2, [r5,#0xb]
+	ldrb r2, [r5,#oCollisionData_PanelY]
 	add r1, r1, r2
 	mov r7, r0
 	mov r8, r1
@@ -3734,7 +3734,7 @@ sub_3007868:
 	add r0, r0, r1
 	lsl r0, r0, #2
 	ldr r1, [r3,r0]
-	ldr r2, [r2,#0x44]
+	ldr r2, [r2,#oCollisionData_CollisionIndexBit]
 	orr r1, r2
 	str r1, [r3,r0]
 	mov pc, lr
@@ -3751,7 +3751,7 @@ sub_3007880:
 	add r3, r3, r0
 	ldr r1, [r3]
 	mov r0, r1
-	ldr r2, [r2,#0x44]
+	ldr r2, [r2,#oCollisionData_CollisionIndexBit]
 	bic r1, r2
 	str r1, [r3]
 	tst r0, r2

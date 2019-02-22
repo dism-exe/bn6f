@@ -38,6 +38,7 @@
 	\struct_entry \label\()_PanelXY // loc=0x12
 	\struct_entry \label\()_PanelX, 1 // loc=0x12
 	\struct_entry \label\()_PanelY, 1 // loc=0x13
+	\struct_entry \label\()_FuturePanelXY // loc=0x14
 	\struct_entry \label\()_FuturePanelX, 1 // loc=0x14
 	\struct_entry \label\()_FuturePanelY, 1 // loc=0x15
 	\struct_entry \label\()_AllianceAndDirectionFlip // loc=0x16
@@ -62,7 +63,8 @@
 	\struct_entry \label\()_Damage, 2 // loc=0x2c
 	// ???
 	\struct_entry \label\()_StaminaDamageCounterDisabler, 2  // loc=0x2e
-	\struct_entry \label\()_Unk_30, 4 // loc=0x30
+	\struct_entry \label\()_Unk_30, 2 // loc=0x30
+	\struct_entry \label\()_Unk_32, 2 // loc=0x32
 	\struct_entry \label\()_X, 2 // loc=0x34 size 4
 	\struct_entry \label\()_X16, 2 // loc=0x36
 	\struct_entry \label\()_Y, 2 // loc=0x38 size 4

@@ -13435,7 +13435,7 @@ off_800A100: .word dword_2036820
 	thumb_func_start sub_800A104
 sub_800A104:
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
-	ldrb r0, [r0,#2]
+	ldrb r0, [r0,#oAIData_Unk_02]
 	cmp r0, #0
 	bne locret_800A11A
 	ldrb r0, [r5,#oBattleObject_Alliance]
@@ -13451,7 +13451,7 @@ locret_800A11A:
 
 	thumb_func_start sub_800A11C
 sub_800A11C:
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	add r0, #0x12
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
@@ -13528,13 +13528,13 @@ battle_isBattleOver:
 	mov r0, #1
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_BattleStatePtr]
-	ldrb r1, [r3,#0x12]
+	ldrb r1, [r3,#oBattleState_Unk_12]
 	tst r1, r1
 	beq locret_800A1A8
-	ldrb r1, [r3,#0x13]
+	ldrb r1, [r3,#oBattleState_Unk_13]
 	tst r1, r1
 	beq locret_800A1A8
-	ldrb r1, [r3,#0xb]
+	ldrb r1, [r3,#oBattleState_Unk_0b]
 	tst r1, r1
 	bne locret_800A1A8
 	mov r0, #0
@@ -13705,9 +13705,9 @@ sub_800A2D0:
 battle_setFlags:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
-	ldrh r2, [r1,#0x32]
+	ldrh r2, [r1,#oBattleState_Unk_32]
 	orr r2, r0
-	strh r2, [r1,#0x32]
+	strh r2, [r1,#oBattleState_Unk_32]
 	mov pc, lr
 	thumb_func_end battle_setFlags
 
@@ -13715,9 +13715,9 @@ battle_setFlags:
 battle_clearFlags:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
-	ldrh r2, [r1,#0x32]
+	ldrh r2, [r1,#oBattleState_Unk_32]
 	bic r2, r0
-	strh r2, [r1,#0x32]
+	strh r2, [r1,#oBattleState_Unk_32]
 	mov pc, lr
 	thumb_func_end battle_clearFlags
 
@@ -14288,7 +14288,7 @@ locret_800A702:
 sub_800A704:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldr r0, [r0,#0x40]
+	ldr r0, [r0,#oBattleState_Unk_40]
 	mov pc, lr
 	thumb_func_end sub_800A704
 
@@ -14375,7 +14375,7 @@ sub_800A772:
 	push {lr}
 	push {r0}
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
-	ldrb r1, [r0,#0x19]
+	ldrb r1, [r0,#oAIData_Unk_19]
 	tst r1, r1
 	pop {r0}
 	bne loc_800A798
@@ -14766,7 +14766,7 @@ sub_800A9E2:
 battle_networkInvert:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
-	ldrb r2, [r1,#0xd]
+	ldrb r2, [r1,#oBattleState_Unk_0d]
 	eor r0, r2
 	mov pc, lr
 	thumb_func_end battle_networkInvert
@@ -14935,7 +14935,7 @@ sub_800AAE8:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	mov r0, #1
-	strh r0, [r1,#0x3a]
+	strh r0, [r1,#oBattleState_Unk_3a]
 	mov pc, lr
 	thumb_func_end sub_800AAE8
 
@@ -15089,7 +15089,7 @@ sub_800ABC6:
 	add r3, r3, r3
 	mov r4, r10
 	ldr r4, [r4,#oToolkit_BattleStatePtr]
-	ldrb r4, [r4,#0xd]
+	ldrb r4, [r4,#oBattleState_Unk_0d]
 	lsl r4, r4, #8
 	add r4, #0x46 
 	mov r0, #1
@@ -15396,11 +15396,11 @@ locret_800AE42:
 sub_800AE44:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
-	ldrb r0, [r1,#0x1c]
+	ldrb r0, [r1,#oBattleState_Unk_1c]
 	add r0, #1
-	strb r0, [r1,#0x1c]
+	strb r0, [r1,#oBattleState_Unk_1c]
 	mov r0, #0xa
-	strb r0, [r1,#0x1d]
+	strb r0, [r1,#oBattleState_Unk_1d]
 	mov pc, lr
 	thumb_func_end sub_800AE44
 

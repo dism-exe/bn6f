@@ -1,6 +1,7 @@
 
 	.macro collision_data_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
 
+	\struct_begin \label
 	\struct_entry \label\()_Enabled, 1 // loc=0x0
 	\struct_entry \label\()_Region, 1 // loc=0x1
 	\struct_entry \label\()_PrimaryElement, 1 // loc=0x2
@@ -26,19 +27,18 @@
 	\struct_entry \label\()_Unk_17, 1 // loc=0x17
 	\struct_entry \label\()_SecondaryElementWeakness, 1 // loc=0x18
 	\struct_entry \label\()_SecondaryElement, 1 // loc=0x19
+	\struct_entry \label\()_Unk_1a_1b // loc=0x1a
 	\struct_entry \label\()_Unk_1a, 1 // loc=0x1a
 	\struct_entry \label\()_Unk_1b, 1 // loc=0x1b
-	\struct_entry \label\()_Unk_1c, 1 // loc=0x1c
-	\struct_entry \label\()_Unk_1d, 1 // loc=0x1d
-	\struct_entry \label\()_Unk_1e, 1 // loc=0x1e
-	\struct_entry \label\()_Unk_1f, 1 // loc=0x1f
+	\struct_entry \label\()_Unk_1c, 2 // loc=0x1c
+	\struct_entry \label\()_Unk_1e, 2 // loc=0x1e
 	\struct_entry \label\()_Unk_20, 2 // loc=0x20
 	\struct_entry \label\()_Unk_22, 2 // loc=0x22
 	\struct_entry \label\()_Unk_24, 2 // loc=0x24
-	\struct_entry \label\()_Unk_26, 2 // loc=0x20
-	\struct_entry \label\()_Unk_28, 2 // loc=0x20
-	\struct_entry \label\()_Unk_2a, 2 // loc=0x20
-	\struct_entry \label\()_Unk_2c, 2 // loc=0x20
+	\struct_entry \label\()_Unk_26, 2 // loc=0x26
+	\struct_entry \label\()_Unk_28, 2 // loc=0x28
+	\struct_entry \label\()_Unk_2a, 2 // loc=0x2a
+	\struct_entry \label\()_Unk_2c, 2 // loc=0x2c
 	\struct_entry \label\()_SelfDamage, 2 // loc=0x2e
 	\struct_entry \label\()_SelfCollisionTypeFlags, 4 // loc=0x30
 	\struct_entry \label\()_TargetCollisionTypeFlags, 4 // loc=0x34
@@ -46,16 +46,15 @@
 	\struct_entry \label\()_ObjectFlags1, 4 // loc=0x3c
 	\struct_entry \label\()_ObjectFlags2, 4 // loc=0x40
 	\struct_entry \label\()_CollisionIndexBit, 4 // loc=0x44
-	/*\struct_entry \label\()_Unk_48, 4 // loc=0x48
-	\struct_entry \label\()_Unk_4c, 4 // loc=0x4c
-	\struct_entry \label\()_Unk_50, 4 // loc=0x50*/
+	\struct_entry \label\()_Unk_48, 4 // loc=0x48
 	struct_org 0x54
 	\struct_entry \label\()_Unk_54, 4 // loc=0x54
-	struct_org 0x70
-	/*\struct_entry \label\()_Unk_58, 4 // loc=0x58
-	\struct_entry \label\()_Unk_5c, 4 // loc=0x5c
+	\struct_entry \label\()_Unk_58, 4 // loc=0x58
+	struct_org 0x60
+	//\struct_entry \label\()_Unk_5c, 4 // loc=0x5c
 	\struct_entry \label\()_Unk_60, 4 // loc=0x60
-	\struct_entry \label\()_Unk_64, 4 // loc=0x64
+	struct_org 0x68
+	//\struct_entry \label\()_Unk_64, 4 // loc=0x64
 	\struct_entry \label\()_Unk_68, 4 // loc=0x68
 	\struct_entry \label\()_Unk_6c, 4 // loc=0x6c*/
 	\struct_entry \label\()_FlagsFromCollision, 4 // loc=0x70
@@ -74,7 +73,7 @@
 	\struct_entry \label\()_PanelDamage6, 2 // loc=0x8c
 	struct_org 0xa4
 	\struct_entry \label\()_InflictedBugs, 4 // loc=0xa4
-	\struct_entry \label\()_Size, 2 // loc=0x8c
+	\struct_entry \label\()_Size // loc=0xa8
 	.endm
 
 	def_struct_offsets collision_data_struct, oCollisionData

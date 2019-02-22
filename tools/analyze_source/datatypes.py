@@ -800,7 +800,7 @@ class CollisionData(Struct):
             0x1a: {Size.BYTE: StructField("_Unk_1a", UnkPrimitiveMemory()),
                    Size.HWORD: StructField("_Unk_1a_1b", UnkPrimitiveMemory())},
             0x24: {Size.HWORD: StructField("_Unk_24", UnkPrimitiveMemory())},
-            0x20: {Size.HWORD: StructField("_Unk_26", UnkPrimitiveMemory())},
+            0x26: {Size.HWORD: StructField("_Unk_26", UnkPrimitiveMemory())},
             0x2e: {Size.HWORD: StructField("_SelfDamage", UnkPrimitiveMemory())},
             0x30: {Size.WORD: StructField("_SelfCollisionTypeFlags", UnkPrimitiveMemory())},
             0x34: {Size.WORD: StructField("_TargetCollisionTypeFlags", UnkPrimitiveMemory())},
