@@ -13493,8 +13493,8 @@ sub_800A152:
 	bne loc_800A18A
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
-	ldrb r2, [r0,#0xd]
-	ldrb r1, [r0,#4]
+	ldrb r2, [r0,#oBattleState_Unk_0d]
+	ldrb r1, [r0,#oBattleState_Unk_04]
 	tst r1, r1
 	bne loc_800A170
 	mov r0, #2
@@ -13503,7 +13503,7 @@ sub_800A152:
 	mov r0, #1
 	b locret_800A18C
 loc_800A170:
-	ldrb r1, [r0,#5]
+	ldrb r1, [r0,#oBattleState_Unk_05]
 	tst r1, r1
 	bne loc_800A180
 	mov r0, #1
@@ -13512,7 +13512,7 @@ loc_800A170:
 	mov r0, #2
 	b locret_800A18C
 loc_800A180:
-	ldrb r1, [r0,#0xb]
+	ldrb r1, [r0,#oBattleState_Unk_0b]
 	tst r1, r1
 	beq loc_800A18A
 	mov r0, #7

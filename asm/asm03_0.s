@@ -12790,7 +12790,7 @@ locret_802CDE4:
 	thumb_func_start sub_802CDE6
 sub_802CDE6:
 	ldr r0, off_802CE50 // =dword_203CFB0 
-	ldrb r1, [r5,#0x16]
+	ldrb r1, [r5,#oBattleObject_Alliance]
 	tst r1, r1
 	bne loc_802CDF0
 	add r0, #0xc
@@ -12844,7 +12844,7 @@ locret_802CE2E:
 	thumb_func_start sub_802CE30
 sub_802CE30:
 	ldr r0, off_802CE50 // =dword_203CFB0 
-	ldrb r1, [r5,#0x16]
+	ldrb r1, [r5,#oBattleObject_Alliance]
 	tst r1, r1
 	bne loc_802CE3A
 	add r0, #0xc
@@ -12909,7 +12909,7 @@ sub_802CE8A:
 	push {r4-r6,lr}
 	mov r6, r2
 	mov r5, r3
-	ldrb r2, [r0,#0x16]
+	ldrb r2, [r0,#oBattleObject_Alliance]
 	mov r3, #0x10
 	mul r2, r3
 	ldr r3, off_802D02C // =unk_2036720 

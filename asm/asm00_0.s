@@ -2117,9 +2117,9 @@ sub_8001330:
 sub_8001382:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
-	ldr r2, [r1,#0x5c]
+	ldr r2, [r1,#oBattleState_Unk_5c]
 	orr r2, r0
-	str r2, [r1,#0x5c]
+	str r2, [r1,#oBattleState_Unk_5c]
 	mov pc, lr
 	thumb_func_end sub_8001382
 

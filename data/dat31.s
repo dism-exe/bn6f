@@ -1255,10 +1255,10 @@ sub_810CEAE:
 	bl object_getFrontDirection // () -> int
 	mov r4, r0
 	ldr r2, [sp]
-	ldrb r1, [r2,#0x12]
+	ldrb r1, [r2,#oBattleObject_PanelX]
 	sub r1, r1, r4
 	mov r0, r1
-	ldrb r1, [r2,#0x13]
+	ldrb r1, [r2,#oBattleObject_PanelY]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldrb r2, [r5,#oBattleObject_PanelX]
 	cmp r0, r2

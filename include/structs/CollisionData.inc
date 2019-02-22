@@ -12,6 +12,7 @@
 	\struct_entry \label\()_StaminaDamageCounterDisabler, 1 // loc=0x7
 	\struct_entry \label\()_PoisonPanelTimer, 1 // loc=0x8
 	\struct_entry \label\()_HitEffect, 1 // loc=0x9
+	\struct_entry \label\()_PanelXY // loc=0xa
 	\struct_entry \label\()_PanelX, 1 // loc=0xa
 	\struct_entry \label\()_PanelY, 1 // loc=0xb
 	\struct_entry \label\()_Direction, 1 // loc=0xc
@@ -53,8 +54,7 @@
 	struct_org 0x60
 	//\struct_entry \label\()_Unk_5c, 4 // loc=0x5c
 	\struct_entry \label\()_Unk_60, 4 // loc=0x60
-	struct_org 0x68
-	//\struct_entry \label\()_Unk_64, 4 // loc=0x64
+	\struct_entry \label\()_Unk_64, 4 // loc=0x64
 	\struct_entry \label\()_Unk_68, 4 // loc=0x68
 	\struct_entry \label\()_Unk_6c, 4 // loc=0x6c*/
 	\struct_entry \label\()_FlagsFromCollision, 4 // loc=0x70

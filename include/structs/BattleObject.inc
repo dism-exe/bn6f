@@ -23,6 +23,7 @@
 	\struct_entry \label\()_Param3, 1 // loc=0x6
 	\struct_entry \label\()_Param4, 1 // loc=0x7
 	\struct_entry \label\()_CurStateActionPhaseAndPhaseInitialized // loc=0x8
+	\struct_entry \label\()_CurState_CurAction // loc=0x8
 	\struct_entry \label\()_CurState, 1 // loc=0x8
 	\struct_entry \label\()_CurAction, 1 // loc=0x9
 	\struct_entry \label\()_CurPhaseAndPhaseInitialized // loc=0xa
@@ -50,8 +51,10 @@
 	\struct_entry \label\()_Unk_1b, 1 // loc=0x1b
 	\struct_entry \label\()_Unk_1c, 1 // loc=0x1c
 	\struct_entry \label\()_Unk_1d, 1 // loc=0x1d
+	\struct_entry \label\()_Unk_1e_Unk_1f // loc=0x1e
 	\struct_entry \label\()_Unk_1e, 1 // loc=0x1e
 	\struct_entry \label\()_Unk_1f, 1 // loc=0x1f
+	\struct_entry \label\()_TimerAndTimer2 // loc=0x20
 	\struct_entry \label\()_Timer, 2 // loc=0x20
 	\struct_entry \label\()_Timer2, 2 // loc=0x22
 	\struct_entry \label\()_HP, 2 // loc=0x24

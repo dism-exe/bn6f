@@ -1108,7 +1108,7 @@ sub_800F55C:
 	mov r7, r1
 	bl object_isValidPanel
 	beq loc_800F580
-	ldrb r0, [r5,#0xc]
+	ldrb r0, [r5,#oBattleObject_Unk_0c]
 	sub r0, #1
 	lsl r0, r0, #3
 	ldr r3, off_800F584 // =byte_800F588 
@@ -1130,9 +1130,9 @@ byte_800F588: .byte 0x30, 0x0, 0x0, 0x0, 0x0, 0x0, 0x80, 0x3, 0x10, 0x0, 0x0, 0x
 	thumb_local_start
 sub_800F598:
 	push {r4,r6,r7,lr}
-	ldr r3, [r5,#0x54]
+	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
 	mov r0, #1
-	ldr r1, [r3,#0x70]
+	ldr r1, [r3,#oCollisionData_FlagsFromCollision]
 	mov r2, #0x54 
 	ldr r2, [r3,r2]
 	orr r1, r2
@@ -1156,7 +1156,7 @@ loc_800F5BC:
 	pop {r4,r6,r7,pc}
 loc_800F5C6:
 	push {r0}
-	ldrb r1, [r3,#0xf]
+	ldrb r1, [r3,#oCollisionData_HitModifierFinal]
 	lsr r1, r1, #2
 	mov r2, #0
 loc_800F5CE:
@@ -1260,24 +1260,24 @@ sub_800F672:
 	bne locret_800F6AA
 	bl battle_isPaused
 	bne locret_800F6AA
-	ldrh r0, [r5,#0x20]
+	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
-	strh r0, [r5,#0x20]
+	strh r0, [r5,#oBattleObject_Timer]
 	bne loc_800F69A
 loc_800F690:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #0
-	strh r0, [r5,#0x24]
+	strh r0, [r5,#oBattleObject_HP]
 	pop {pc}
 loc_800F69A:
 	cmp r0, #0xb4
 	bhi locret_800F6AA
 	lsr r0, r0, #2
 	bcc locret_800F6AA
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 locret_800F6AA:
 	pop {pc}
 	thumb_func_end sub_800F672
@@ -1372,9 +1372,9 @@ byte_800F758: .byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0,
 sub_800F768:
 	push {lr}
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
-	ldrh r2, [r5,#0x36]
+	ldrh r2, [r5,#oBattleObject_X16]
 	lsl r2, r2, #0x10
-	ldrh r3, [r5,#0x3a]
+	ldrh r3, [r5,#oBattleObject_Y16]
 	lsl r3, r3, #0x10
 	sub r2, r0, r2
 	sub r0, r1, r3
@@ -1383,13 +1383,13 @@ sub_800F768:
 	push {r5}
 	bl calcAngle_800117C
 	pop {r5}
-	strb r0, [r5,#0xc]
+	strb r0, [r5,#oBattleObject_Unk_0c]
 	mov r1, #8
 	lsl r1, r1, #0x10
 	push {r1}
 	bl sub_80011A0
-	str r0, [r5,#0x40]
-	str r1, [r5,#0x44]
+	str r0, [r5,#oBattleObject_XVelocity]
+	str r1, [r5,#oBattleObject_YVelocity]
 	pop {r4}
 	pop {r0,r1}
 	lsr r0, r0, #8
@@ -1410,16 +1410,16 @@ sub_800F768:
 	mov r0, #0x40 
 	lsl r0, r0, #0x10
 	svc 6
-	str r0, [r5,#0x48]
+	str r0, [r5,#oBattleObject_ZVelocity]
 	pop {r0}
 	pop {pc}
 loc_800F7C4:
 	mov r0, #8
 	lsl r0, r0, #0x10
-	str r0, [r5,#0x48]
+	str r0, [r5,#oBattleObject_ZVelocity]
 	mov r0, #0
-	str r0, [r5,#0x40]
-	str r0, [r5,#0x44]
+	str r0, [r5,#oBattleObject_XVelocity]
+	str r0, [r5,#oBattleObject_YVelocity]
 	mov r0, #8
 	pop {pc}
 	thumb_func_end sub_800F768
@@ -1492,7 +1492,7 @@ sub_800F884:
 	push {r5,lr}
 	mov r5, r0
 	beq locret_800F896
-	ldr r0, [r5,#0x54]
+	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
 	tst r0, r0
 	beq locret_800F896
 	ldr r0, dword_800F954 // =0x8000
@@ -1542,30 +1542,30 @@ sub_800F8CE:
 	tst r0, r1
 	beq loc_800F90A
 	mov r4, #0
-	ldrb r0, [r5,#0xb]
+	ldrb r0, [r5,#oBattleObject_PhaseInitialized]
 	cmp r0, #0
 	bne loc_800F8E8
 	mov r0, #1
-	strb r0, [r5,#0xb]
+	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	mov r0, #0x14
-	strh r0, [r5,#0x20]
+	strh r0, [r5,#oBattleObject_Timer]
 loc_800F8E8:
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
-	strb r0, [r5]
-	ldrh r0, [r5,#0x20]
+	strb r0, [r5,#oObjectHeader_Flags]
+	ldrh r0, [r5,#oBattleObject_Timer]
 	mov r1, #2
 	tst r0, r1
 	bne loc_800F900
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 loc_800F900:
-	ldrh r0, [r5,#0x20]
+	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
-	strh r0, [r5,#0x20]
+	strh r0, [r5,#oBattleObject_Timer]
 	bgt loc_800F90A
 	mov r4, #1
 loc_800F90A:
@@ -1585,7 +1585,7 @@ sub_800F90E:
 	lsl r0, r0, #8
 	orr r4, r0
 loc_800F922:
-	ldrb r0, [r5,#0x10]
+	ldrb r0, [r5,#oBattleObject_CurAnim]
 	lsl r0, r0, #0x10
 	orr r4, r0
 	mov r0, r5
@@ -2068,7 +2068,7 @@ sub_800FCE4:
 sub_800FCFC:
 	ldr r1, off_800FEDC // =byte_80212BB 
 	ldrb r0, [r1,r0]
-	ldrb r2, [r5,#4]
+	ldrb r2, [r5,#oBattleObject_Param1]
 	ldr r1, off_800FD58 // =byte_800FD5C 
 	ldrb r1, [r1,r2]
 	mul r0, r1
@@ -2711,14 +2711,14 @@ locret_80101AC:
 	thumb_func_start sub_80101AE
 sub_80101AE:
 	push {lr}
-	ldr r1, [r5,#0x54]
-	strh r0, [r1,#0x26]
+	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
+	strh r0, [r1,#oCollisionData_Unk_26]
 	mov r0, #4
 	bl object_setFlag // (int a1) -> void
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 	pop {pc}
 	thumb_func_end sub_80101AE
 
@@ -5119,9 +5119,9 @@ loc_8011528:
 loc_801152C:
 	lsl r0, r6, #8
 	lsr r0, r0, #0x18
-	strb r0, [r5,#0x10]
+	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xff
-	strb r0, [r5,#0x11]
+	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	bl object_createCollisionData
 	tst r0, r0
 	bne loc_8011540
@@ -5164,9 +5164,9 @@ sub_801156A:
 	ldr r2, [sp,#8]
 	cmp r2, #1
 	beq loc_8011594
-	ldrh r1, [r5,#0x24]
+	ldrh r1, [r5,#oBattleObject_HP]
 	sub r1, r1, r0
-	strh r1, [r5,#0x24]
+	strh r1, [r5,#oBattleObject_HP]
 	bgt loc_8011594
 	mov r0, #0
 	sub r0, #1
@@ -16222,18 +16222,18 @@ sub_80169BE:
 	push {lr}
 	bl battle_isTimeStop
 	bne loc_80169CE
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 loc_80169CE:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
-	ldrb r0, [r1,#0xd]
-	ldrb r1, [r5,#0x16]
+	ldrb r0, [r1,#oBattleState_Unk_0d]
+	ldrb r1, [r5,#oBattleObject_Alliance]
 	eor r0, r1
 	beq loc_8016A02
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
 	bl sub_80103BC
@@ -16246,17 +16246,17 @@ loc_80169CE:
 	tst r0, r1
 	pop {r5}
 	beq locret_8016A26
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 	b locret_8016A26
 loc_8016A02:
 	ldrb r0, [r5,#9]
 	cmp r0, #0
 	beq locret_8016A26
-	ldr r0, [r5,#0x58]
-	ldrb r0, [r0]
+	ldr r0, [r5,#oBattleObject_AIDataPtr]
+	ldrb r0, [r0,#oAIData_ActorType]
 	cmp r0, #2
 	bne locret_8016A26
 	mov r0, #5
@@ -16527,7 +16527,7 @@ locret_8016C88:
 object_genericDestroy:
 	push {lr}
 	bl sub_801BB78
-	ldr r0, [r5,#0x54]
+	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
 	bl sub_80198CE
 	bl object_freeMemory
 	pop {pc}
@@ -18372,7 +18372,7 @@ byte_8017CB0: .byte 0x0, 0x0, 0x0, 0x8, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 
 sub_8017CC0:
 	push {lr}
 	ldr r1, off_8017CD0 // =off_8017CD4 
-	ldrb r0, [r5,#0xd]
+	ldrb r0, [r5,#oBattleObject_Unk_0d]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
@@ -18391,25 +18391,25 @@ sub_8017CE0:
 	lsl r0, r0, #0x14
 	bl object_setFlag // (int a1) -> void
 	mov r0, #0
-	str r0, [r5,#0x4c]
-	ldrh r0, [r5,#0x14]
-	strh r0, [r5,#0x12]
+	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
+	ldrh r0, [r5,#oBattleObject_FuturePanelXY]
+	strh r0, [r5,#oBattleObject_PanelXY]
 	bl object_setCoordinatesFromPanels // () -> void
 	bl object_updateCollisionPanels
 	ldr r0, off_8017D58 // =0x1040 
 	bl object_clearFlag // (int bitfield) -> void
-	ldrb r0, [r5,#0x14]
-	ldrb r1, [r5,#0x15]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_removePanelReserve
 	bl sub_800F598
-	strb r0, [r5,#0x1c]
-	strb r1, [r5,#0x1d]
-	strb r2, [r5,#0xb]
+	strb r0, [r5,#oBattleObject_Unk_1c]
+	strb r1, [r5,#oBattleObject_Unk_1d]
+	strb r2, [r5,#oBattleObject_PhaseInitialized]
 	tst r2, r2
 	beq loc_8017D4E
-	ldrb r3, [r5,#0x12]
+	ldrb r3, [r5,#oBattleObject_PanelX]
 	add r0, r0, r3
-	ldrb r3, [r5,#0x13]
+	ldrb r3, [r5,#oBattleObject_PanelY]
 	add r1, r1, r3
 	mov r6, r0
 	mov r7, r1
@@ -18419,25 +18419,25 @@ sub_8017CE0:
 	ldrsb r1, [r5,r1]
 	ldr r0, dword_8017D5C // =0xa0000 
 	mul r0, r1
-	str r0, [r5,#0x40]
+	str r0, [r5,#oBattleObject_XVelocity]
 	mov r1, #0x1d
 	ldrsb r1, [r5,r1]
 	ldr r0, dword_8017D60 // =0x60000 
 	mul r0, r1
-	str r0, [r5,#0x44]
+	str r0, [r5,#oBattleObject_YVelocity]
 	mov r0, r6
 	mov r1, r7
-	strb r0, [r5,#0x14]
-	strb r1, [r5,#0x15]
+	strb r0, [r5,#oBattleObject_FuturePanelX]
+	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
 	mov r0, #4
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 	pop {r6,r7,pc}
 loc_8017D4E:
 	mov r0, #0x18
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oBattleObject_CurPhase]
 	mov r0, #8
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 	pop {r6,r7,pc}
 off_8017D58: .word 0x1040
 dword_8017D5C: .word 0xA0000
@@ -18447,56 +18447,56 @@ dword_8017D60: .word 0x60000
 	thumb_local_start
 sub_8017D64:
 	push {r4,lr}
-	ldrb r0, [r5,#0x14]
-	ldrb r1, [r5,#0x15]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	mov r2, r0
 	mov r4, r1
-	ldr r1, [r5,#0x34]
-	ldr r0, [r5,#0x40]
+	ldr r1, [r5,#oBattleObject_X]
+	ldr r0, [r5,#oBattleObject_XVelocity]
 	add r0, r0, r1
-	str r0, [r5,#0x34]
+	str r0, [r5,#oBattleObject_X]
 	bl sub_800E6E8
 	tst r0, r0
 	bne loc_8017D94
 	mov r2, r4
-	ldr r1, [r5,#0x38]
-	ldr r0, [r5,#0x44]
+	ldr r1, [r5,#oBattleObject_Y]
+	ldr r0, [r5,#oBattleObject_YVelocity]
 	add r0, r0, r1
-	str r0, [r5,#0x38]
+	str r0, [r5,#oBattleObject_Y]
 	bl sub_800E6E8
 	tst r0, r0
 	beq loc_8017E00
 loc_8017D94:
-	ldrb r0, [r5,#0x14]
-	ldrb r1, [r5,#0x15]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_removePanelReserve
-	ldr r0, [r5,#0x54]
-	ldrb r0, [r0,#2]
+	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
+	ldrb r0, [r0,#oCollisionData_PrimaryElement]
 	cmp r0, #2
 	beq loc_8017DBA
-	ldrb r0, [r5,#0x14]
-	ldrb r1, [r5,#0x15]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_getPanelDataOffset
 	ldrb r0, [r0,#2]
 	cmp r0, #7
 	bne loc_8017DBA
-	ldrb r0, [r5,#0xb]
+	ldrb r0, [r5,#oBattleObject_PhaseInitialized]
 	add r0, #1
-	strb r0, [r5,#0xb]
+	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	b loc_8017DBA
 loc_8017DBA:
-	ldrb r0, [r5,#0xb]
+	ldrb r0, [r5,#oBattleObject_PhaseInitialized]
 	sub r0, #1
-	strb r0, [r5,#0xb]
+	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	ble loc_8017DEA
 	mov r2, #0x1c
 	ldrsb r2, [r5,r2]
-	ldrb r0, [r5,#0x14]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	add r0, r0, r2
 	mov r2, #0x1d
 	ldrsb r2, [r5,r2]
-	ldrb r1, [r5,#0x15]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	add r1, r1, r2
 	mov r6, r0
 	mov r7, r1
@@ -18504,19 +18504,19 @@ loc_8017DBA:
 	beq loc_8017DEA
 	mov r0, r6
 	mov r1, r7
-	strb r0, [r5,#0x14]
-	strb r1, [r5,#0x15]
+	strb r0, [r5,#oBattleObject_FuturePanelX]
+	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
 	pop {r4,pc}
 loc_8017DEA:
-	ldrh r0, [r5,#0x14]
-	strh r0, [r5,#0x12]
+	ldrh r0, [r5,#oBattleObject_FuturePanelXY]
+	strh r0, [r5,#oBattleObject_PanelXY]
 	bl object_setCoordinatesFromPanels // () -> void
 	bl object_updateCollisionPanels
 	mov r0, #0x14
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oBattleObject_CurPhase]
 	mov r0, #8
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 	pop {r4,pc}
 loc_8017E00:
 	bl object_setPanelsFromCoordinates
@@ -18527,17 +18527,17 @@ loc_8017E00:
 	thumb_local_start
 sub_8017E0A:
 	push {lr}
-	ldrb r0, [r5,#0xa]
+	ldrb r0, [r5,#oBattleObject_CurPhase]
 	sub r0, #1
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oBattleObject_CurPhase]
 	bge locret_8017E24
 	mov r0, #1
 	lsl r0, r0, #0x14
 	bl object_clearFlag // (int bitfield) -> void
-	ldr r0, [r5,#0x5c]
-	str r0, [r5,#8]
+	ldr r0, [r5,#oBattleObject_Unk_5c]
+	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r0, #0
-	str r0, [r5,#0x5c]
+	str r0, [r5,#oBattleObject_Unk_5c]
 locret_8017E24:
 	pop {pc}
 	thumb_func_end sub_8017E0A
@@ -18546,7 +18546,7 @@ locret_8017E24:
 sub_8017E26:
 	push {lr}
 	ldr r1, off_8017E34 // =off_8017E38 
-	ldrb r0, [r5,#0xd]
+	ldrb r0, [r5,#oBattleObject_Unk_0d]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
@@ -18564,39 +18564,39 @@ sub_8017E44:
 	lsl r0, r0, #0x14
 	bl object_setFlag // (int a1) -> void
 	mov r0, #0
-	str r0, [r5,#0x4c]
-	ldrh r0, [r5,#0x14]
-	strh r0, [r5,#0x12]
+	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
+	ldrh r0, [r5,#oBattleObject_FuturePanelXY]
+	strh r0, [r5,#oBattleObject_PanelXY]
 	bl object_setCoordinatesFromPanels // () -> void
 	bl object_updateCollisionPanels
 	ldr r0, off_8017F2C // =0x1040 
 	bl object_clearFlag // (int bitfield) -> void
-	ldrb r0, [r5,#0x14]
-	ldrb r1, [r5,#0x15]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_removePanelReserve
 	bl sub_800F598
-	strb r0, [r5,#0x1c]
-	strb r1, [r5,#0x1d]
-	strb r3, [r5,#0xc]
+	strb r0, [r5,#oBattleObject_Unk_1c]
+	strb r1, [r5,#oBattleObject_Unk_1d]
+	strb r3, [r5,#oBattleObject_Unk_0c]
 	mov r2, #6
-	strb r2, [r5,#0xb]
+	strb r2, [r5,#oBattleObject_PhaseInitialized]
 	tst r2, r2
 	beq loc_8017F08
 	mov r4, #0
-	ldrb r2, [r5,#0xc]
+	ldrb r2, [r5,#oBattleObject_Unk_0c]
 	cmp r2, #1
 	beq loc_8017E88
 	add r4, #4
 loc_8017E88:
-	ldrb r0, [r5,#0x1c]
+	ldrb r0, [r5,#oBattleObject_Unk_1c]
 	cmp r0, r2
 	beq loc_8017E90
 	add r4, #2
 loc_8017E90:
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getPanelParameters
-	ldrb r2, [r5,#0xc]
+	ldrb r2, [r5,#oBattleObject_Unk_0c]
 	mov r1, #0x20 
 	tst r0, r1
 	beq loc_8017EA2
@@ -18606,14 +18606,14 @@ loc_8017EA2:
 	ldrb r0, [r0,r4]
 	cmp r0, #0
 	beq loc_8017EC8
-	strb r0, [r5,#0xc]
+	strb r0, [r5,#oBattleObject_Unk_0c]
 	mov r0, #0x1c
 	ldrsb r0, [r5,r0]
 	mov r1, #0x1d
 	ldrsb r1, [r5,r1]
-	ldrb r3, [r5,#0x12]
+	ldrb r3, [r5,#oBattleObject_PanelX]
 	add r0, r0, r3
-	ldrb r3, [r5,#0x13]
+	ldrb r3, [r5,#oBattleObject_PanelY]
 	add r1, r1, r3
 	mov r6, r0
 	mov r7, r1
@@ -18622,14 +18622,14 @@ loc_8017EA2:
 	b loc_8017EE6
 loc_8017EC8:
 	mov r0, #0
-	strb r0, [r5,#0xc]
+	strb r0, [r5,#oBattleObject_Unk_0c]
 	mov r0, #0x1c
 	ldrsb r0, [r5,r0]
 	mov r1, #0x1d
 	ldrsb r1, [r5,r1]
-	ldrb r3, [r5,#0x12]
+	ldrb r3, [r5,#oBattleObject_PanelX]
 	add r0, r0, r3
-	ldrb r3, [r5,#0x13]
+	ldrb r3, [r5,#oBattleObject_PanelY]
 	add r1, r1, r3
 	mov r6, r0
 	mov r7, r1
@@ -18640,24 +18640,24 @@ loc_8017EE6:
 	ldrsb r1, [r5,r1]
 	ldr r0, dword_8017F30 // =0xa0000 
 	mul r0, r1
-	str r0, [r5,#0x40]
+	str r0, [r5,#oBattleObject_XVelocity]
 	mov r1, #0x1d
 	ldrsb r1, [r5,r1]
 	ldr r0, dword_8017F34 // =0x60000 
 	mul r0, r1
-	str r0, [r5,#0x44]
+	str r0, [r5,#oBattleObject_YVelocity]
 	mov r0, r6
 	mov r1, r7
-	strb r0, [r5,#0x14]
-	strb r1, [r5,#0x15]
+	strb r0, [r5,#oBattleObject_FuturePanelX]
+	strb r1, [r5,#oBattleObject_FuturePanelY]
 	mov r0, #4
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 	pop {r4,r6,r7,pc}
 loc_8017F08:
 	mov r0, #0x18
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oBattleObject_CurPhase]
 	mov r0, #8
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 	pop {r4,r6,r7,pc}
 	.word 0, 0, 0
 	.byte 0, 0
@@ -18671,60 +18671,60 @@ dword_8017F34: .word 0x60000
 	thumb_local_start
 sub_8017F38:
 	push {r4,lr}
-	ldrb r0, [r5,#0x14]
-	ldrb r1, [r5,#0x15]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	mov r2, r0
 	mov r4, r1
-	ldr r1, [r5,#0x34]
-	ldr r0, [r5,#0x40]
+	ldr r1, [r5,#oBattleObject_X]
+	ldr r0, [r5,#oBattleObject_XVelocity]
 	add r0, r0, r1
-	str r0, [r5,#0x34]
+	str r0, [r5,#oBattleObject_X]
 	bl sub_800E6E8
 	tst r0, r0
 	bne loc_8017F68
 	mov r2, r4
-	ldr r1, [r5,#0x38]
-	ldr r0, [r5,#0x44]
+	ldr r1, [r5,#oBattleObject_Y]
+	ldr r0, [r5,#oBattleObject_YVelocity]
 	add r0, r0, r1
-	str r0, [r5,#0x38]
+	str r0, [r5,#oBattleObject_Y]
 	bl sub_800E6E8
 	tst r0, r0
 	beq loc_8017FDC
 loc_8017F68:
-	ldrb r0, [r5,#0x14]
-	ldrb r1, [r5,#0x15]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_removePanelReserve
-	ldr r0, [r5,#0x54]
-	ldrb r0, [r0,#2]
+	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
+	ldrb r0, [r0,#oCollisionData_PrimaryElement]
 	cmp r0, #2
 	beq loc_8017F8E
-	ldrb r0, [r5,#0x14]
-	ldrb r1, [r5,#0x15]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_getPanelDataOffset
 	ldrb r0, [r0,#2]
 	cmp r0, #7
 	bne loc_8017F8E
-	ldrb r0, [r5,#0xb]
+	ldrb r0, [r5,#oBattleObject_PhaseInitialized]
 	add r0, #1
-	strb r0, [r5,#0xb]
+	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	b loc_8017F8E
 loc_8017F8E:
-	ldrb r0, [r5,#0xb]
+	ldrb r0, [r5,#oBattleObject_PhaseInitialized]
 	sub r0, #1
-	strb r0, [r5,#0xb]
+	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	ble loc_8017FC6
 	mov r2, #0x1c
 	ldrsb r2, [r5,r2]
-	ldrb r0, [r5,#0x14]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	add r0, r0, r2
 	mov r2, #0x1d
 	ldrsb r2, [r5,r2]
-	ldrb r1, [r5,#0x15]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	add r1, r1, r2
 	mov r6, r0
 	mov r7, r1
-	ldrb r2, [r5,#0xc]
+	ldrb r2, [r5,#oBattleObject_Unk_0c]
 	cmp r2, #0
 	bne loc_8017FB6
 	bl sub_800F534
@@ -18735,18 +18735,18 @@ loc_8017FBA:
 	beq loc_8017FC6
 	mov r0, r6
 	mov r1, r7
-	strb r0, [r5,#0x14]
-	strb r1, [r5,#0x15]
+	strb r0, [r5,#oBattleObject_FuturePanelX]
+	strb r1, [r5,#oBattleObject_FuturePanelY]
 	pop {r4,pc}
 loc_8017FC6:
-	ldrh r0, [r5,#0x14]
-	strh r0, [r5,#0x12]
+	ldrh r0, [r5,#oBattleObject_FuturePanelXY]
+	strh r0, [r5,#oBattleObject_PanelXY]
 	bl object_setCoordinatesFromPanels // () -> void
 	bl object_updateCollisionPanels
 	mov r0, #0x14
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oBattleObject_CurPhase]
 	mov r0, #8
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 	pop {r4,pc}
 loc_8017FDC:
 	bl object_setPanelsFromCoordinates
@@ -18757,17 +18757,17 @@ loc_8017FDC:
 	thumb_local_start
 sub_8017FE6:
 	push {lr}
-	ldrb r0, [r5,#0xa]
+	ldrb r0, [r5,#oBattleObject_CurPhase]
 	sub r0, #1
-	strb r0, [r5,#0xa]
+	strb r0, [r5,#oBattleObject_CurPhase]
 	bge locret_8018000
 	mov r0, #1
 	lsl r0, r0, #0x14
 	bl object_clearFlag // (int bitfield) -> void
-	ldr r0, [r5,#0x5c]
-	str r0, [r5,#8]
+	ldr r0, [r5,#oBattleObject_Unk_5c]
+	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r0, #0
-	str r0, [r5,#0x5c]
+	str r0, [r5,#oBattleObject_Unk_5c]
 locret_8018000:
 	pop {pc}
 	thumb_func_end sub_8017FE6
@@ -18776,7 +18776,7 @@ locret_8018000:
 sub_8018002:
 	push {lr}
 	ldr r1, off_8018010 // =off_8018014 
-	ldrb r0, [r5,#0x18]
+	ldrb r0, [r5,#oBattleObject_PreventAnim]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
@@ -18800,48 +18800,48 @@ sub_801802C:
 	bne loc_801803C
 	mov r2, #1
 loc_801803C:
-	strb r2, [r5,#0x16]
+	strb r2, [r5,#oBattleObject_Alliance]
 	ldr r0, off_8018298 // =0xc00 
 	bl object_clearFlag2
 	ldr r0, off_801829C // =LCDControl 
 	bl object_setFlag // (int a1) -> void
 	mov r0, #0x40 
 	lsl r0, r0, #0x10
-	ldr r1, [r5,#0x3c]
+	ldr r1, [r5,#oBattleObject_Z]
 	sub r0, r0, r1
 	mov r1, #0x20 
 	svc 6
-	str r0, [r5,#0x48]
-	ldrb r0, [r5,#0x14]
-	ldrb r1, [r5,#0x15]
+	str r0, [r5,#oBattleObject_ZVelocity]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_removePanelReserve
 	mov r0, #0x20 
-	strb r0, [r5,#0x19]
+	strb r0, [r5,#oBattleObject_Unk_19]
 	mov r0, #0x2b 
 	add r0, #0xff
 	bl sound_play // () -> void
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #4
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	pop {pc}
 	thumb_func_end sub_801802C
 
 	thumb_local_start
 sub_8018076:
 	push {lr}
-	ldr r0, [r5,#0x3c]
-	ldr r1, [r5,#0x48]
+	ldr r0, [r5,#oBattleObject_Z]
+	ldr r1, [r5,#oBattleObject_ZVelocity]
 	add r0, r0, r1
-	str r0, [r5,#0x3c]
-	ldrb r0, [r5,#0x19]
+	str r0, [r5,#oBattleObject_Z]
+	ldrb r0, [r5,#oBattleObject_Unk_19]
 	sub r0, #1
-	strb r0, [r5,#0x19]
+	strb r0, [r5,#oBattleObject_Unk_19]
 	bne locret_8018092
 	mov r0, #0x40 
 	lsl r0, r0, #0x10
-	str r0, [r5,#0x3c]
+	str r0, [r5,#oBattleObject_Z]
 	mov r0, #8
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 locret_8018092:
 	pop {pc}
 	thumb_func_end sub_8018076
@@ -18849,49 +18849,49 @@ locret_8018092:
 	thumb_local_start
 sub_8018094:
 	push {lr}
-	ldrh r0, [r5,#0x1e]
-	strb r0, [r5,#0x19]
-	ldrh r0, [r5,#0x36]
-	strh r0, [r5,#0x30]
-	ldrh r0, [r5,#0x3e]
-	strh r0, [r5,#0x32]
+	ldrh r0, [r5,#oBattleObject_Unk_1e_Unk_1f]
+	strb r0, [r5,#oBattleObject_Unk_19]
+	ldrh r0, [r5,#oBattleObject_X16]
+	strh r0, [r5,#oBattleObject_Unk_30]
+	ldrh r0, [r5,#oBattleObject_Z16]
+	strh r0, [r5,#oBattleObject_Unk_32]
 	mov r0, #0xc
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	pop {pc}
 	thumb_func_end sub_8018094
 
 	thumb_local_start
 sub_80180A8:
 	push {r7,lr}
-	ldrh r1, [r5,#0x30]
+	ldrh r1, [r5,#oBattleObject_Unk_30]
 	lsl r1, r1, #0x10
-	ldr r2, [r5,#0x38]
-	ldrh r3, [r5,#0x32]
+	ldr r2, [r5,#oBattleObject_Y]
+	ldrh r3, [r5,#oBattleObject_Unk_32]
 	lsl r3, r3, #0x10
 	mov r0, #3
 	bl sub_801BDDE
 	mov r7, #0x34 
 	add r7, r7, r5
 	stmia r7!, {r1-r3}
-	ldrb r0, [r5,#0x19]
+	ldrb r0, [r5,#oBattleObject_Unk_19]
 	sub r0, #1
-	strb r0, [r5,#0x19]
+	strb r0, [r5,#oBattleObject_Unk_19]
 	bne locret_80180EA
-	ldrh r0, [r5,#0x30]
-	strh r0, [r5,#0x36]
-	ldrh r0, [r5,#0x32]
-	strh r0, [r5,#0x3e]
-	ldrb r0, [r5,#0x1c]
-	ldrb r1, [r5,#0x1d]
-	strb r0, [r5,#0x14]
-	strb r1, [r5,#0x15]
+	ldrh r0, [r5,#oBattleObject_Unk_30]
+	strh r0, [r5,#oBattleObject_X16]
+	ldrh r0, [r5,#oBattleObject_Unk_32]
+	strh r0, [r5,#oBattleObject_Z16]
+	ldrb r0, [r5,#oBattleObject_Unk_1c]
+	ldrb r1, [r5,#oBattleObject_Unk_1d]
+	strb r0, [r5,#oBattleObject_FuturePanelX]
+	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl sub_800F768
-	strb r0, [r5,#0x19]
+	strb r0, [r5,#oBattleObject_Unk_19]
 	mov r0, #0xd
 	add r0, #0xff
 	bl sound_play // () -> void
 	mov r0, #0x10
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 locret_80180EA:
 	pop {r7,pc}
 	thumb_func_end sub_80180A8
@@ -18908,29 +18908,29 @@ sub_80180EC:
 	mov r7, #0x34 
 	add r7, r7, r5
 	stmia r7!, {r0-r2}
-	ldrb r0, [r5,#0x19]
+	ldrb r0, [r5,#oBattleObject_Unk_19]
 	sub r0, #1
-	strb r0, [r5,#0x19]
+	strb r0, [r5,#oBattleObject_Unk_19]
 	bne locret_8018132
-	ldrb r0, [r5,#0x14]
-	ldrb r1, [r5,#0x15]
-	strb r0, [r5,#0x12]
-	strb r1, [r5,#0x13]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
+	strb r0, [r5,#oBattleObject_PanelX]
+	strb r1, [r5,#oBattleObject_PanelY]
 	bl object_setCoordinatesFromPanels // () -> void
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
-	ldrb r2, [r5,#0xe]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
+	ldrb r2, [r5,#oBattleObject_Element]
 	mov r3, #0
 	ldr r4, dword_8018134 // =0x6050001 
-	ldr r6, [r5,#0x2c]
+	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r7, #3
 	bl sub_80C53A6
 	mov r0, #0
-	strh r0, [r5,#0x24]
+	strh r0, [r5,#oBattleObject_HP]
 	mov r0, #2
 	strb r0, [r5,#9]
 	mov r0, #0
-	strh r0, [r5,#0xa]
+	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_8018132:
 	pop {r4,r6,r7,pc}
 dword_8018134: .word 0x6050001
@@ -18945,7 +18945,7 @@ nullsub_57:
 sub_801813A:
 	push {lr}
 	ldr r1, off_8018148 // =off_801814C 
-	ldrb r0, [r5,#0x18]
+	ldrb r0, [r5,#oBattleObject_PreventAnim]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
@@ -18970,39 +18970,39 @@ loc_8018164:
 	ldr r0, off_80182AC // =0x3000 
 	bl object_clearFlag2
 	mov r0, #0x3c 
-	strb r0, [r5,#0x19]
-	ldrb r0, [r5,#0x14]
-	ldrb r1, [r5,#0x15]
+	strb r0, [r5,#oBattleObject_Unk_19]
+	ldrb r0, [r5,#oBattleObject_FuturePanelX]
+	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_removePanelReserve
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #4
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	pop {pc}
 	thumb_func_end sub_8018154
 
 	thumb_local_start
 sub_8018186:
 	push {r4,lr}
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
-	strb r0, [r5]
-	ldrb r0, [r5,#0x19]
+	strb r0, [r5,#oObjectHeader_Flags]
+	ldrb r0, [r5,#oBattleObject_Unk_19]
 	lsr r0, r0, #2
 	bcs loc_80181AA
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r4, #0x42 
 	bl SpawnT4BattleObjectWithId0
 loc_80181AA:
-	ldrb r0, [r5,#0x19]
+	ldrb r0, [r5,#oBattleObject_Unk_19]
 	sub r0, #1
-	strb r0, [r5,#0x19]
+	strb r0, [r5,#oBattleObject_Unk_19]
 	bne locret_80181F4
 	bl sub_800F806
 	mov r4, #1
@@ -19017,22 +19017,22 @@ loc_80181AA:
 	tst r0, r1
 	beq loc_80181E2
 	add r4, #3
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
-	ldrb r2, [r5,#0x16]
-	ldr r6, [r5,#0x2c]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
+	ldrb r2, [r5,#oBattleObject_Alliance]
+	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	bl sub_80CFBC4
 	b loc_80181F0
 loc_80181E2:
 	mov r4, #1
-	ldrb r0, [r5,#0x12]
-	ldrb r1, [r5,#0x13]
-	ldrb r2, [r5,#0x16]
-	ldr r6, [r5,#0x2c]
+	ldrb r0, [r5,#oBattleObject_PanelX]
+	ldrb r1, [r5,#oBattleObject_PanelY]
+	ldrb r2, [r5,#oBattleObject_Alliance]
+	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	bl sub_80D99EC
 loc_80181F0:
 	mov r0, #8
-	str r0, [r5,#8]
+	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80181F4:
 	pop {r4,pc}
 	thumb_func_end sub_8018186
@@ -19042,18 +19042,18 @@ sub_80181F6:
 	push {lr}
 	bl battle_isTimeStop
 	bne loc_8018206
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 loc_8018206:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
-	ldrb r0, [r1,#0xd]
-	ldrb r1, [r5,#0x16]
+	ldrb r0, [r1,#oBattleState_Unk_0d]
+	ldrb r1, [r5,#oBattleObject_Alliance]
 	eor r0, r1
 	beq locret_801823A
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #1
 	eor r0, r1
 	bl sub_80103BC
@@ -19066,10 +19066,10 @@ loc_8018206:
 	tst r0, r1
 	pop {r5}
 	beq locret_801823A
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
-	strb r0, [r5]
+	strb r0, [r5,#oObjectHeader_Flags]
 	b locret_801823A
 locret_801823A:
 	pop {pc}
@@ -19079,35 +19079,35 @@ locret_801823A:
 sub_801823C:
 	push {lr}
 	bl sub_80181F6
-	ldrb r0, [r5,#0x18]
+	ldrb r0, [r5,#oBattleObject_PreventAnim]
 	tst r0, r0
 	bne loc_8018258
-	ldrh r0, [r5,#0x36]
-	strh r0, [r5,#0x30]
-	ldrh r0, [r5,#0x3e]
-	strh r0, [r5,#0x32]
+	ldrh r0, [r5,#oBattleObject_X16]
+	strh r0, [r5,#oBattleObject_Unk_30]
+	ldrh r0, [r5,#oBattleObject_Z16]
+	strh r0, [r5,#oBattleObject_Unk_32]
 	mov r0, #0
-	strb r0, [r5,#0x19]
+	strb r0, [r5,#oBattleObject_Unk_19]
 	mov r0, #4
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 loc_8018258:
-	ldr r0, [r5,#0x54]
+	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
 	mov r1, #0x80
 	ldrh r1, [r0,r1]
 	tst r1, r1
 	beq loc_8018266
 	mov r0, #0x1e
-	strb r0, [r5,#0x19]
+	strb r0, [r5,#oBattleObject_Unk_19]
 loc_8018266:
-	ldrb r0, [r5,#0x19]
+	ldrb r0, [r5,#oBattleObject_Unk_19]
 	tst r0, r0
 	beq loc_8018288
 	sub r0, #1
-	strb r0, [r5,#0x19]
-	ldrh r1, [r5,#0x30]
+	strb r0, [r5,#oBattleObject_Unk_19]
+	ldrh r1, [r5,#oBattleObject_Unk_30]
 	lsl r1, r1, #0x10
-	ldr r2, [r5,#0x38]
-	ldrh r3, [r5,#0x32]
+	ldr r2, [r5,#oBattleObject_Y]
+	ldrh r3, [r5,#oBattleObject_Unk_32]
 	lsl r3, r3, #0x10
 	mov r0, #3
 	bl sub_801BDDE
@@ -19116,10 +19116,10 @@ loc_8018266:
 	stmia r0!, {r1-r3}
 	b locret_8018290
 loc_8018288:
-	ldrh r0, [r5,#0x30]
-	strh r0, [r5,#0x36]
-	ldrh r0, [r5,#0x32]
-	strh r0, [r5,#0x3e]
+	ldrh r0, [r5,#oBattleObject_Unk_30]
+	strh r0, [r5,#oBattleObject_X16]
+	ldrh r0, [r5,#oBattleObject_Unk_32]
+	strh r0, [r5,#oBattleObject_Z16]
 locret_8018290:
 	pop {pc}
 	.balign 4, 0x00
@@ -20160,8 +20160,8 @@ off_801A0D0: .word byte_8019C7C
 	thumb_func_start object_spawnCollisionEffect
 object_spawnCollisionEffect:
 	push {r4,r6,lr}
-	ldr r3, [r5,#0x54]
-	ldr r6, [r3,#0x70]
+	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
+	ldr r6, [r3,#oCollisionData_FlagsFromCollision]
 	ldr r1, dword_801A13C // =0x3f800000 
 	tst r6, r1
 	beq locret_801A0FE
@@ -20185,8 +20185,8 @@ locret_801A0FE:
 	thumb_func_start sub_801A100
 sub_801A100:
 	push {r4,r6,lr}
-	ldr r3, [r5,#0x54]
-	ldr r6, [r3,#0x70]
+	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
+	ldr r6, [r3,#oCollisionData_FlagsFromCollision]
 	ldr r1, dword_801A13C // =0x3f800000 
 	tst r6, r1
 	beq locret_801A138
@@ -20197,8 +20197,8 @@ sub_801A100:
 	cmp r0, #0xff
 	beq locret_801A138
 	mov r4, r0
-	ldr r0, [r5,#0x34]
-	ldr r1, [r5,#0x38]
+	ldr r0, [r5,#oBattleObject_X]
+	ldr r1, [r5,#oBattleObject_Y]
 	bl sub_800E258
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
 	mov r2, r1
@@ -20223,10 +20223,10 @@ object_setCollisionHitEffect:
 
 	thumb_func_start sub_801A146
 sub_801A146:
-	ldrb r0, [r5,#0xe]
+	ldrb r0, [r5,#oBattleObject_Element]
 	mov r3, #0xf
 	and r0, r3
-	ldr r3, [r5,#0x54]
+	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r3,#9]
 	mov pc, lr
 	thumb_func_end sub_801A146
@@ -20393,8 +20393,8 @@ locret_801A256:
 
 	thumb_func_start object_setCollisionStatusEffect1
 object_setCollisionStatusEffect1:
-	ldr r3, [r5,#0x54]
-	strb r0, [r3,#0x10]
+	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
+	strb r0, [r3,#oCollisionData_StatusEffectBase]
 	mov pc, lr
 	thumb_func_end object_setCollisionStatusEffect1
 
@@ -20762,9 +20762,9 @@ sub_801A4D0:
 	thumb_func_start sub_801A4DC
 sub_801A4DC:
 	push {r4,r5,lr}
-	ldr r2, [r5,#0x54]
+	ldr r2, [r5,#oBattleObject_CollisionDataPtr]
 	mov r5, r1
-	ldr r1, [r2,#0x7c]
+	ldr r1, [r2,#oCollisionData_Unk_7c]
 	ldr r2, off_801A550 // =unk_20384F0 
 	mov r3, #0
 loc_801A4E8:
@@ -21018,7 +21018,7 @@ sub_801A686:
 	thumb_local_start
 sub_801A6A6:
 	push {r4,lr}
-	ldr r0, [r5,#0x54]
+	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
 	add r0, #0x80
 	mov r1, #0x14
 	bl ZeroFillByHalfword
@@ -21776,7 +21776,7 @@ locret_801AD10:
 sub_801AD12:
 	push {r4,r7,lr}
 	bl sprite_clearFinalPalette
-	ldr r7, [r5,#0x54]
+	ldr r7, [r5,#oBattleObject_CollisionDataPtr]
 	bl battle_getFlags
 	mov r1, #1
 	tst r0, r1
@@ -21790,7 +21790,7 @@ sub_801AD12:
 	lsl r1, r1, #8
 	tst r0, r1
 	bne locret_801AD68
-	ldrb r4, [r7,#0xf]
+	ldrb r4, [r7,#oCollisionData_HitModifierFinal]
 	bl object_getFlag // () -> int
 	mov r1, #0x40 
 	tst r0, r1
@@ -21804,7 +21804,7 @@ sub_801AD12:
 	mov r0, #4
 	bl object_clearFlag2
 	mov r0, #1
-	strb r0, [r5,#0xf]
+	strb r0, [r5,#oBattleObject_Unk_0f]
 loc_801AD60:
 	bl object_calculateFinalDamage2
 	bl object_spawnHiteffect
@@ -21816,7 +21816,7 @@ locret_801AD68:
 sub_801AD6A:
 	push {r4,r7,lr}
 	bl sprite_clearFinalPalette
-	ldr r7, [r5,#0x54]
+	ldr r7, [r5,#oBattleObject_CollisionDataPtr]
 	bl battle_getFlags
 	mov r1, #1
 	tst r0, r1
@@ -21840,7 +21840,7 @@ locret_801AD9C:
 sub_801AD9E:
 	push {r4,r7,lr}
 	bl sprite_clearFinalPalette
-	ldr r7, [r5,#0x54]
+	ldr r7, [r5,#oBattleObject_CollisionDataPtr]
 	bl battle_getFlags
 	mov r1, #1
 	tst r0, r1
@@ -21854,7 +21854,7 @@ sub_801AD9E:
 	lsl r1, r1, #8
 	tst r0, r1
 	bne locret_801ADF8
-	ldrb r4, [r7,#0xf]
+	ldrb r4, [r7,#oCollisionData_HitModifierFinal]
 	bl object_getFlag // () -> int
 	mov r1, #0x40 
 	tst r0, r1
@@ -21869,7 +21869,7 @@ sub_801AD9E:
 	bl object_clearFlag2
 	bl sub_801A6A6
 	mov r0, #1
-	strb r0, [r5,#0xf]
+	strb r0, [r5,#oBattleObject_Unk_0f]
 loc_801ADF0:
 	bl object_calculateFinalDamage2
 	bl object_spawnHiteffect
@@ -21881,7 +21881,7 @@ locret_801ADF8:
 sub_801ADFA:
 	push {r4,r7,lr}
 	bl sprite_clearFinalPalette
-	ldr r7, [r5,#0x54]
+	ldr r7, [r5,#oBattleObject_CollisionDataPtr]
 	bl battle_getFlags
 	mov r1, #1
 	tst r0, r1
@@ -21896,7 +21896,7 @@ sub_801ADFA:
 	tst r0, r1
 	bne locret_801AE54
 	bl sub_801AE56
-	ldrb r4, [r7,#0xf]
+	ldrb r4, [r7,#oCollisionData_HitModifierFinal]
 	bl object_getFlag // () -> int
 	mov r1, #0x40 
 	tst r0, r1
@@ -21910,7 +21910,7 @@ sub_801ADFA:
 	mov r0, #4
 	bl object_clearFlag2
 	mov r0, #1
-	strb r0, [r5,#0xf]
+	strb r0, [r5,#oBattleObject_Unk_0f]
 loc_801AE4C:
 	bl object_calculateFinalDamage2
 	bl object_spawnHiteffect
@@ -21920,16 +21920,16 @@ locret_801AE54:
 
 	thumb_local_start
 sub_801AE56:
-	ldr r0, [r7,#0x70]
+	ldr r0, [r7,#oCollisionData_FlagsFromCollision]
 	ldr r1, off_801AF3C // =0x1000 
 	tst r0, r1
 	bne locret_801AE90
-	ldrb r0, [r7,#0xf]
+	ldrb r0, [r7,#oCollisionData_HitModifierFinal]
 	mov r1, #0x40 
 	tst r0, r1
 	bne locret_801AE90
 	mov r1, #0
-	ldr r0, [r7,#0x70]
+	ldr r0, [r7,#oCollisionData_FlagsFromCollision]
 	ldr r3, dword_801AE98 // =0xa2000000 
 	tst r3, r0
 	beq loc_801AE72
@@ -21948,9 +21948,9 @@ loc_801AE7A:
 	ldrb r3, [r7,r1]
 	orr r3, r2
 	strb r3, [r7,r1]
-	ldrb r1, [r7,#0xf]
+	ldrb r1, [r7,#oCollisionData_HitModifierFinal]
 	orr r1, r2
-	strb r1, [r7,#0xf]
+	strb r1, [r7,#oCollisionData_HitModifierFinal]
 locret_801AE90:
 	mov pc, lr
 	.balign 4, 0x00
@@ -22511,8 +22511,8 @@ sub_801B394:
 	push {r6,r7,lr}
 	sub sp, sp, #4
 	str r0, [sp]
-	ldr r6, [r5,#0x54]
-	ldr r7, [r5,#0x58]
+	ldr r6, [r5,#oBattleObject_CollisionDataPtr]
+	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	mov r0, #0x80
 	ldrh r0, [r6,r0]
 	tst r0, r0
@@ -22526,19 +22526,19 @@ sub_801B394:
 	tst r1, r1
 	beq loc_801B3DA
 loc_801B3BC:
-	ldr r0, [r6,#0x70]
+	ldr r0, [r6,#oCollisionData_FlagsFromCollision]
 	ldr r1, dword_801B4BC // =0xc800002 
 	tst r0, r1
 	beq loc_801B3CA
 	mov r0, #0
-	strh r0, [r5,#0x24]
+	strh r0, [r5,#oBattleObject_HP]
 	b loc_801B3DA
 loc_801B3CA:
 	bl object_getFlag2
 	ldr r1, dword_801B4D0 // =0x8000 
 	tst r0, r1
 	bne loc_801B3DA
-	ldrh r0, [r5,#0x24]
+	ldrh r0, [r5,#oBattleObject_HP]
 	tst r0, r0
 	bne loc_801B3E0
 loc_801B3DA:
@@ -22562,7 +22562,7 @@ loc_801B3E0:
 	mov r0, #2
 	strb r0, [r5,#9]
 	mov r0, #0
-	strh r0, [r5,#0xa]
+	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	b loc_801B4A2
 loc_801B40E:
 	bl object_getFlag2
@@ -22570,7 +22570,7 @@ loc_801B40E:
 	tst r0, r1
 	beq loc_801B41E
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	b loc_801B428
 loc_801B41E:
 	bl object_getFlag // () -> int
@@ -22586,7 +22586,7 @@ loc_801B42E:
 	tst r0, r1
 	beq loc_801B43E
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	b loc_801B448
 loc_801B43E:
 	bl object_getFlag // () -> int
@@ -22606,7 +22606,7 @@ loc_801B44E:
 	b loc_801B4B6
 loc_801B460:
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	bl object_getFlag2
 	mov r1, #1
 	lsl r1, r1, #8
@@ -22614,17 +22614,17 @@ loc_801B460:
 	beq loc_801B48C
 	mov r0, r1
 	bl object_clearFlag2
-	ldr r0, [r5,#0x5c]
+	ldr r0, [r5,#oBattleObject_Unk_5c]
 	tst r0, r0
 	bne loc_801B480
-	ldr r0, [r5,#8]
-	str r0, [r5,#0x5c]
+	ldr r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
+	str r0, [r5,#oBattleObject_Unk_5c]
 loc_801B480:
 	mov r0, #5
 	strb r0, [r5,#9]
 	mov r0, #0
-	strb r0, [r5,#0xa]
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_CurPhase]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 	b loc_801B4A2
 loc_801B48C:
 	bl object_getFlag // () -> int
@@ -22637,7 +22637,7 @@ loc_801B48C:
 	b loc_801B4A2
 loc_801B49E:
 	mov r0, #0
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B4A2:
 	bl sub_8002EE8
 	bl sub_80181F6
@@ -22664,8 +22664,8 @@ sub_801B4D4:
 	push {r6,r7,lr}
 	sub sp, sp, #4
 	str r0, [sp]
-	ldr r6, [r5,#0x54]
-	ldr r7, [r5,#0x58]
+	ldr r6, [r5,#oBattleObject_CollisionDataPtr]
+	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	mov r0, #0x80
 	ldrh r0, [r6,r0]
 	tst r0, r0
@@ -22679,7 +22679,7 @@ sub_801B4D4:
 	tst r1, r1
 	beq loc_801B516
 loc_801B4FC:
-	ldr r0, [r6,#0x70]
+	ldr r0, [r6,#oCollisionData_FlagsFromCollision]
 	ldr r1, dword_801B5F8 // =0xc800002 
 	tst r0, r1
 	beq loc_801B506
@@ -22689,7 +22689,7 @@ loc_801B506:
 	ldr r1, dword_801B60C // =0x8000 
 	tst r0, r1
 	bne loc_801B516
-	ldrh r0, [r5,#0x24]
+	ldrh r0, [r5,#oBattleObject_HP]
 	tst r0, r0
 	bne loc_801B51C
 loc_801B516:
@@ -22713,7 +22713,7 @@ loc_801B51C:
 	mov r0, #2
 	strb r0, [r5,#9]
 	mov r0, #0
-	strh r0, [r5,#0xa]
+	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	b loc_801B5DE
 loc_801B54A:
 	bl object_getFlag2
@@ -22721,7 +22721,7 @@ loc_801B54A:
 	tst r0, r1
 	beq loc_801B55A
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	b loc_801B564
 loc_801B55A:
 	bl object_getFlag // () -> int
@@ -22737,7 +22737,7 @@ loc_801B56A:
 	tst r0, r1
 	beq loc_801B57A
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	b loc_801B584
 loc_801B57A:
 	bl object_getFlag // () -> int
@@ -22757,7 +22757,7 @@ loc_801B58A:
 	b loc_801B5F2
 loc_801B59C:
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	bl object_getFlag2
 	mov r1, #1
 	lsl r1, r1, #8
@@ -22765,17 +22765,17 @@ loc_801B59C:
 	beq loc_801B5C8
 	mov r0, r1
 	bl object_clearFlag2
-	ldr r0, [r5,#0x5c]
+	ldr r0, [r5,#oBattleObject_Unk_5c]
 	tst r0, r0
 	bne loc_801B5BC
-	ldr r0, [r5,#8]
-	str r0, [r5,#0x5c]
+	ldr r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
+	str r0, [r5,#oBattleObject_Unk_5c]
 loc_801B5BC:
 	mov r0, #5
 	strb r0, [r5,#9]
 	mov r0, #0
-	strb r0, [r5,#0xa]
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_CurPhase]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 	b loc_801B5DE
 loc_801B5C8:
 	bl object_getFlag // () -> int
@@ -22788,7 +22788,7 @@ loc_801B5C8:
 	b loc_801B5DE
 loc_801B5DA:
 	mov r0, #0
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B5DE:
 	bl sub_8002EE8
 	bl sub_80181F6
@@ -22815,8 +22815,8 @@ sub_801B610:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #4
 	str r0, [sp]
-	ldr r6, [r5,#0x54]
-	ldr r7, [r5,#0x58]
+	ldr r6, [r5,#oBattleObject_CollisionDataPtr]
+	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	mov r0, #0x80
 	ldrh r0, [r6,r0]
 	tst r0, r0
@@ -22830,19 +22830,19 @@ sub_801B610:
 	tst r1, r1
 	beq loc_801B656
 loc_801B638:
-	ldr r0, [r6,#0x70]
+	ldr r0, [r6,#oCollisionData_FlagsFromCollision]
 	ldr r1, dword_801B738 // =0x800002 
 	tst r0, r1
 	beq loc_801B646
 	mov r0, #0
-	strh r0, [r5,#0x24]
+	strh r0, [r5,#oBattleObject_HP]
 	b loc_801B656
 loc_801B646:
 	bl object_getFlag2
 	ldr r1, dword_801B73C // =0x8000 
 	tst r0, r1
 	bne loc_801B656
-	ldrh r0, [r5,#0x24]
+	ldrh r0, [r5,#oBattleObject_HP]
 	tst r0, r0
 	bne loc_801B65C
 loc_801B656:
@@ -22866,7 +22866,7 @@ loc_801B65C:
 	mov r0, #2
 	strb r0, [r5,#9]
 	mov r0, #0
-	strh r0, [r5,#0xa]
+	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	b loc_801B71E
 loc_801B68A:
 	bl object_getFlag2
@@ -22874,7 +22874,7 @@ loc_801B68A:
 	tst r0, r1
 	beq loc_801B69A
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	b loc_801B6A4
 loc_801B69A:
 	bl object_getFlag // () -> int
@@ -22890,7 +22890,7 @@ loc_801B6AA:
 	tst r0, r1
 	beq loc_801B6BA
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	b loc_801B6C4
 loc_801B6BA:
 	bl object_getFlag // () -> int
@@ -22910,7 +22910,7 @@ loc_801B6CA:
 	b loc_801B732
 loc_801B6DC:
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	bl object_getFlag2
 	mov r1, #1
 	lsl r1, r1, #8
@@ -22918,17 +22918,17 @@ loc_801B6DC:
 	beq loc_801B708
 	mov r0, r1
 	bl object_clearFlag2
-	ldr r0, [r5,#0x5c]
+	ldr r0, [r5,#oBattleObject_Unk_5c]
 	tst r0, r0
 	bne loc_801B6FC
-	ldr r0, [r5,#8]
-	str r0, [r5,#0x5c]
+	ldr r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
+	str r0, [r5,#oBattleObject_Unk_5c]
 loc_801B6FC:
 	mov r0, #5
 	strb r0, [r5,#9]
 	mov r0, #0
-	strb r0, [r5,#0xa]
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_CurPhase]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 	b loc_801B71E
 loc_801B708:
 	bl object_getFlag // () -> int
@@ -22941,7 +22941,7 @@ loc_801B708:
 	b loc_801B71E
 loc_801B71A:
 	mov r0, #0
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B71E:
 	bl sub_8002EE8
 	bl sub_80181F6
@@ -22968,8 +22968,8 @@ sub_801B750:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #4
 	str r0, [sp]
-	ldr r6, [r5,#0x54]
-	ldr r7, [r5,#0x58]
+	ldr r6, [r5,#oBattleObject_CollisionDataPtr]
+	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	mov r0, #0x80
 	ldrh r0, [r6,r0]
 	tst r0, r0
@@ -22983,19 +22983,19 @@ sub_801B750:
 	tst r1, r1
 	beq loc_801B796
 loc_801B778:
-	ldr r0, [r6,#0x70]
+	ldr r0, [r6,#oCollisionData_FlagsFromCollision]
 	ldr r1, dword_801B870 // =0xc800002 
 	tst r0, r1
 	beq loc_801B786
 	mov r0, #0
-	strh r0, [r5,#0x24]
+	strh r0, [r5,#oBattleObject_HP]
 	b loc_801B796
 loc_801B786:
 	bl object_getFlag2
 	ldr r1, dword_801B874 // =0x8000 
 	tst r0, r1
 	bne loc_801B796
-	ldrh r0, [r5,#0x24]
+	ldrh r0, [r5,#oBattleObject_HP]
 	tst r0, r0
 	bne loc_801B79C
 loc_801B796:
@@ -23019,7 +23019,7 @@ loc_801B79C:
 	mov r0, #2
 	strb r0, [r5,#9]
 	mov r0, #0
-	strh r0, [r5,#0xa]
+	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	b loc_801B858
 loc_801B7CA:
 	bl object_getFlag2
@@ -23027,7 +23027,7 @@ loc_801B7CA:
 	tst r0, r1
 	beq loc_801B7DA
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	b loc_801B7E4
 loc_801B7DA:
 	bl object_getFlag // () -> int
@@ -23043,7 +23043,7 @@ loc_801B7EA:
 	tst r0, r1
 	beq loc_801B7FA
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	b loc_801B804
 loc_801B7FA:
 	bl object_getFlag // () -> int
@@ -23060,7 +23060,7 @@ loc_801B80A:
 	b loc_801B86C
 loc_801B816:
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	bl object_getFlag2
 	mov r1, #1
 	lsl r1, r1, #8
@@ -23068,17 +23068,17 @@ loc_801B816:
 	beq loc_801B842
 	mov r0, r1
 	bl object_clearFlag2
-	ldr r0, [r5,#0x5c]
+	ldr r0, [r5,#oBattleObject_Unk_5c]
 	tst r0, r0
 	bne loc_801B836
-	ldr r0, [r5,#8]
-	str r0, [r5,#0x5c]
+	ldr r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
+	str r0, [r5,#oBattleObject_Unk_5c]
 loc_801B836:
 	mov r0, #5
 	strb r0, [r5,#9]
 	mov r0, #0
-	strb r0, [r5,#0xa]
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_CurPhase]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 	b loc_801B858
 loc_801B842:
 	bl object_getFlag // () -> int
@@ -23091,7 +23091,7 @@ loc_801B842:
 	b loc_801B858
 loc_801B854:
 	mov r0, #0
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B858:
 	bl sub_8002EE8
 	bl sub_80181F6
@@ -23113,8 +23113,8 @@ sub_801B878:
 	push {r6,r7,lr}
 	sub sp, sp, #4
 	str r0, [sp]
-	ldr r6, [r5,#0x54]
-	ldr r7, [r5,#0x58]
+	ldr r6, [r5,#oBattleObject_CollisionDataPtr]
+	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	mov r0, #0x80
 	ldrh r0, [r6,r0]
 	tst r0, r0
@@ -23128,22 +23128,22 @@ sub_801B878:
 	tst r1, r1
 	beq loc_801B8C4
 loc_801B8A0:
-	ldr r0, [r6,#0x70]
+	ldr r0, [r6,#oCollisionData_FlagsFromCollision]
 	ldr r1, dword_801B9A4 // =0xc800002 
 	tst r0, r1
 	beq loc_801B8B4
-	ldr r0, [r5,#0x64]
+	ldr r0, [r5,#oBattleObject_ExtraVars+4]
 	cmp r0, #0
 	bne loc_801B8B4
 	mov r0, #0
-	strh r0, [r5,#0x24]
+	strh r0, [r5,#oBattleObject_HP]
 	b loc_801B8C4
 loc_801B8B4:
 	bl object_getFlag2
 	ldr r1, dword_801B9B8 // =0x8000 
 	tst r0, r1
 	bne loc_801B8C4
-	ldrh r0, [r5,#0x24]
+	ldrh r0, [r5,#oBattleObject_HP]
 	tst r0, r0
 	bne loc_801B8CA
 loc_801B8C4:
@@ -23167,7 +23167,7 @@ loc_801B8CA:
 	mov r0, #2
 	strb r0, [r5,#9]
 	mov r0, #0
-	strh r0, [r5,#0xa]
+	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	b loc_801B98C
 loc_801B8F8:
 	bl object_getFlag2
@@ -23175,7 +23175,7 @@ loc_801B8F8:
 	tst r0, r1
 	beq loc_801B908
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	b loc_801B912
 loc_801B908:
 	bl object_getFlag // () -> int
@@ -23191,7 +23191,7 @@ loc_801B918:
 	tst r0, r1
 	beq loc_801B928
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	b loc_801B932
 loc_801B928:
 	bl object_getFlag // () -> int
@@ -23211,7 +23211,7 @@ loc_801B938:
 	b loc_801B9A0
 loc_801B94A:
 	mov r0, #0
-	strb r0, [r5,#0x18]
+	strb r0, [r5,#oBattleObject_PreventAnim]
 	bl object_getFlag2
 	mov r1, #1
 	lsl r1, r1, #8
@@ -23219,17 +23219,17 @@ loc_801B94A:
 	beq loc_801B976
 	mov r0, r1
 	bl object_clearFlag2
-	ldr r0, [r5,#0x5c]
+	ldr r0, [r5,#oBattleObject_Unk_5c]
 	tst r0, r0
 	bne loc_801B96A
-	ldr r0, [r5,#8]
-	str r0, [r5,#0x5c]
+	ldr r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
+	str r0, [r5,#oBattleObject_Unk_5c]
 loc_801B96A:
 	mov r0, #5
 	strb r0, [r5,#9]
 	mov r0, #0
-	strb r0, [r5,#0xa]
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_CurPhase]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 	b loc_801B98C
 loc_801B976:
 	bl object_getFlag // () -> int
@@ -23242,7 +23242,7 @@ loc_801B976:
 	b loc_801B98C
 loc_801B988:
 	mov r0, #0
-	strb r0, [r5,#0xd]
+	strb r0, [r5,#oBattleObject_Unk_0d]
 loc_801B98C:
 	bl sub_8002EE8
 	bl sub_80181F6
@@ -23581,21 +23581,21 @@ object_updateSpriteTimestop:
 	push {lr}
 	bl battle_isPaused
 	bne locret_801BC22
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #1
 	tst r0, r1
 	beq locret_801BC22
 	mov r1, #8
 	tst r0, r1
 	bne locret_801BC22
-	ldrb r0, [r5,#0x10]
-	ldrb r1, [r5,#0x11]
+	ldrb r0, [r5,#oBattleObject_CurAnim]
+	ldrb r1, [r5,#oBattleObject_CurAnimCopy]
 	cmp r0, r1
 	beq loc_801BC1E
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	ldrb r0, [r5,#0x10]
-	strb r0, [r5,#0x11]
+	ldrb r0, [r5,#oBattleObject_CurAnim]
+	strb r0, [r5,#oBattleObject_CurAnimCopy]
 loc_801BC1E:
 	bl sprite_update
 locret_801BC22:
@@ -23607,28 +23607,28 @@ sub_801BC24:
 	push {lr}
 	bl battle_isPaused
 	bne locret_801BC62
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #1
 	tst r0, r1
 	beq locret_801BC62
 	mov r1, #8
 	tst r0, r1
 	bne locret_801BC62
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #0x10
 	tst r0, r1
 	bne loc_801BC48
 	bl battle_isTimeStop
 	bne locret_801BC62
 loc_801BC48:
-	ldrb r0, [r5,#0x10]
-	ldrb r1, [r5,#0x11]
+	ldrb r0, [r5,#oBattleObject_CurAnim]
+	ldrb r1, [r5,#oBattleObject_CurAnimCopy]
 	cmp r0, r1
 	beq loc_801BC5E
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	ldrb r0, [r5,#0x10]
-	strb r0, [r5,#0x11]
+	ldrb r0, [r5,#oBattleObject_CurAnim]
+	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	pop {pc}
 loc_801BC5E:
 	bl sprite_update
@@ -23639,7 +23639,7 @@ locret_801BC62:
 	thumb_func_start sub_801BC64
 sub_801BC64:
 	push {lr}
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #1
 	tst r0, r1
 	beq locret_801BCA4
@@ -23652,21 +23652,21 @@ sub_801BC64:
 	bl battle_isTimeStop
 	bne locret_801BCA4
 loc_801BC80:
-	ldr r0, [r5,#0x54]
+	ldr r0, [r5,#oBattleObject_CollisionDataPtr]
 	tst r0, r0
 	beq loc_801BC8C
-	ldrb r0, [r5,#0x18]
+	ldrb r0, [r5,#oBattleObject_PreventAnim]
 	tst r0, r0
 	bne locret_801BCA4
 loc_801BC8C:
-	ldrb r0, [r5,#0x10]
-	ldrb r1, [r5,#0x11]
+	ldrb r0, [r5,#oBattleObject_CurAnim]
+	ldrb r1, [r5,#oBattleObject_CurAnimCopy]
 	cmp r0, r1
 	beq loc_801BCA0
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	ldrb r0, [r5,#0x10]
-	strb r0, [r5,#0x11]
+	ldrb r0, [r5,#oBattleObject_CurAnim]
+	strb r0, [r5,#oBattleObject_CurAnimCopy]
 loc_801BCA0:
 	bl sprite_update
 locret_801BCA4:
@@ -23676,20 +23676,20 @@ locret_801BCA4:
 	thumb_func_start object_updateSpritePaused
 object_updateSpritePaused:
 	push {lr}
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #1
 	tst r0, r1
 	beq locret_801BCCE
 	bl battle_isTimeStop
 	bne locret_801BCCE
-	ldrb r0, [r5,#0x10]
-	ldrb r1, [r5,#0x11]
+	ldrb r0, [r5,#oBattleObject_CurAnim]
+	ldrb r1, [r5,#oBattleObject_CurAnimCopy]
 	cmp r0, r1
 	beq loc_801BCCA
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	ldrb r0, [r5,#0x10]
-	strb r0, [r5,#0x11]
+	ldrb r0, [r5,#oBattleObject_CurAnim]
+	strb r0, [r5,#oBattleObject_CurAnimCopy]
 loc_801BCCA:
 	bl sprite_update
 locret_801BCCE:
@@ -23918,9 +23918,9 @@ loc_801BE4C:
 loc_801BE50:
 	lsl r0, r6, #8
 	lsr r0, r0, #0x18
-	strb r0, [r5,#0x10]
+	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xff
-	strb r0, [r5,#0x11]
+	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
 	mov r0, #1

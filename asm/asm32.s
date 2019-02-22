@@ -3803,7 +3803,7 @@ off_810FCE0: .word sub_8016380+1
 	.word sub_810FDB0+1
 	.word sub_810FDD0+1
 	.word sub_81097B4+1
-off_810FD08: .word sub_810F5D0+1
+	.word sub_810F5D0+1
 	.word sub_8109952+1
 	.word sub_8109804+1
 byte_810FD14: .byte 0x3C, 0x3C, 0x3C, 0x3C, 0x1E, 0x1E
@@ -15413,11 +15413,11 @@ loc_8116874:
 	thumb_func_start sub_8116878
 sub_8116878:
 	push {lr}
-	ldrh r1, [r0,#0x24]
+	ldrh r1, [r0,#oBattleObject_HP]
 	cmp r1, #0
 	ble locret_8116884
 	sub r1, #1
-	strh r1, [r0,#0x24]
+	strh r1, [r0,#oBattleObject_HP]
 locret_8116884:
 	pop {pc}
 	.balign 4, 0x00
