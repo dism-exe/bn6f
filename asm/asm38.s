@@ -70,7 +70,7 @@ sub_3005CF0:
 	str r1, [r0]
 	bx lr
 off_3005D04: .word dword_200A870
-	.word sCamera+0x50 // sCamera.unk_50
+	.word eCamera+0x50 // eCamera.unk_50
 jt_81D620C: .word off_3005D10
 off_3005D10: .word sub_803DE72+1
 	.word sub_813D5DC+1
@@ -720,7 +720,7 @@ sub_30061E8:
 	push {r1}
 	ldrb r6, [r5]
 	push {r6}
-	ldr r4, off_3006308 // =sCamera+76
+	ldr r4, off_3006308 // =eCamera+76
 	ldrb r4, [r4]
 	ldrb r7, [r5,#2]
 	lsr r7, r7, #4
@@ -732,7 +732,7 @@ sub_30061E8:
 	ldr r2, [r3,r2]
 	mov lr, pc
 	bx r2
-	ldr r0, off_3006308 // =sCamera+76
+	ldr r0, off_3006308 // =eCamera+76
 	ldrb r0, [r0]
 	mov r10, r0
 	mov r12, r7
@@ -871,7 +871,7 @@ loc_30062FC:
 	mov r10, r1
 	pop {r5,pc}
 	.balign 4, 0x00
-off_3006308: .word sCamera+0x4C // sCamera.unk_4C
+off_3006308: .word eCamera+0x4C // eCamera.unk_4C
 off_300630C: .word byte_20098A8
 off_3006310: .word off_3006314
 off_3006314: .word sub_300631C+1

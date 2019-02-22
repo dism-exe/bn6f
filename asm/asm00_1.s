@@ -712,7 +712,7 @@ sub_800362C:
 	ldr r4, [r3,#0x3c]
 	asr r4, r4, #0x10
 	sub r1, r1, r4
-	ldr r6, off_8003690 // =sCamera+76 
+	ldr r6, off_8003690 // =eCamera+76 
 	ldrb r6, [r6]
 	tst r6, r6
 	beq loc_8003646
@@ -756,7 +756,7 @@ loc_8003688:
 	mov r1, #0x50 
 	mov r2, #0
 	pop {r4-r7,pc}
-off_8003690: .word sCamera+0x4C // sCamera.unk_4C
+off_8003690: .word eCamera+0x4C // eCamera.unk_4C
 	thumb_func_end sub_800362C
 
 	thumb_func_start sub_8003694
@@ -3371,7 +3371,7 @@ sub_8004D48:
 	strb r0, [r1,#0x1c] // (byte_200ACFC - 0x200ace0)
 	bl setFlag3_2e2_2001C88
 	mov r0, #0
-	ldr r1, off_8004DE8 // =sCamera+76 
+	ldr r1, off_8004DE8 // =eCamera+76 
 	strb r0, [r1]
 	ldr r1, off_8004DEC // =dword_20096D0 
 	strb r0, [r1]
@@ -3407,7 +3407,7 @@ loc_8004DDA:
 	pop {r4-r7,pc}
 off_8004DE0: .word byte_200ACE0
 off_8004DE4: .word byte_200F410
-off_8004DE8: .word sCamera+0x4C // sCamera.unk_4C
+off_8004DE8: .word eCamera+0x4C // eCamera.unk_4C
 off_8004DEC: .word dword_20096D0
 	thumb_func_end sub_8004D48
 
@@ -6466,7 +6466,7 @@ SetPrimaryToolkitPointers:
 ToolkitPointers: .word i_joGameSubsysSel
 	.word eJoypad
 	.word unk_200AC40
-	.word sCamera
+	.word eCamera
 	.word unk_2011C50
 	.word byte_2011BB0
 	.word eBattleState
@@ -7396,7 +7396,7 @@ loc_8007236:
 	lsl r1, r1, #8
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	mov r0, #0
-	ldr r1, off_800730C // =sCamera+76 
+	ldr r1, off_800730C // =eCamera+76 
 	strb r0, [r1]
 	bl sub_800A01C
 	bl sub_80075CA
@@ -7455,7 +7455,7 @@ loc_80072E2:
 	pop {r4,r5,r7,pc}
 	.balign 4, 0x00
 off_8007308: .word dword_2036820
-off_800730C: .word sCamera+0x4C // sCamera.unk_4C
+off_800730C: .word eCamera+0x4C // eCamera.unk_4C
 off_8007310: .word dword_20364C0
 Word_8007314: .word 0x6014000
 	.word dword_2033000
@@ -8315,13 +8315,13 @@ loc_80079B8:
 	bl sub_803DD60
 loc_80079BC:
 	strb r0, [r5,#0xd]
-	ldr r1, off_80079CC // =sCamera+76 
+	ldr r1, off_80079CC // =eCamera+76 
 	strb r0, [r1]
 	bl sub_800B144
 	mov r0, #8
 	strb r0, [r5,#2]
 	pop {pc}
-off_80079CC: .word sCamera+0x4C // sCamera.unk_4C
+off_80079CC: .word eCamera+0x4C // eCamera.unk_4C
 	thumb_func_end sub_80079A8
 
 	thumb_local_start

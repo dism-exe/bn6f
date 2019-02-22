@@ -677,7 +677,7 @@ dword_2009930:: // 0x2009930
 	.space 16
 byte_2009940:: // 0x2009940
 	.space 64
-sCamera:: // 0x2009980
+eCamera:: // 0x2009980
 	.space 144
 dword_2009A10:: // 0x2009a10
 	.space 8

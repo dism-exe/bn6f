@@ -2155,7 +2155,7 @@ sub_80013AA:
 	sub sp, sp, #0x40
 	str r6, [sp,#4]
 	str r7, [sp,#0x10]
-	ldr r7, off_80014B8 // =sCamera+76 
+	ldr r7, off_80014B8 // =eCamera+76 
 	ldrb r7, [r7]
 	str r3, [sp,#0x24]
 	str r4, [sp,#0x28]
@@ -2288,7 +2288,7 @@ loc_80014A8:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_80014B4: .word byte_80014BC
-off_80014B8: .word sCamera+0x4C // sCamera.unk_4C
+off_80014B8: .word eCamera+0x4C // eCamera.unk_4C
 byte_80014BC: .byte 0x8, 0x8, 0x10, 0x10, 0x20, 0x20, 0x40, 0x40
 	.word byte_8200810
 	.word 0x20401020
