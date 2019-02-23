@@ -279,7 +279,7 @@ class ROMPointer(Pointer):
 
     def store(self, datatype, size, fileline, funcstate, offset=None):
         if len(self.possible_syms) == 1:
-            global_fileline_error("Cannot write to ROMPointer \"%s\"!" % self.sym.name)
+            global_fileline_msg("ROMPointerWriteWarning: Cannot write to ROMPointer \"%s\"!" % self.sym.name)
         else:
             names = ", ".join(sym.name for sym in self.possible_syms)
             if names == "sub_80104E0, sub_80CA4F6, sub_8010474, sub_8010488, sub_80D2596, sub_800AF34, sub_801050C, sub_80CFE08, sub_8015AA6, sub_8010820, sub_802E1BE, sub_80DEDE0, sub_80EC44C, sub_80EA11C, sub_80E94DC, sub_80E5A64, sub_80C6330, sub_80DB4B4, sub_80CD4AC, sub_80E4FCA, sub_80C9ECE":
@@ -677,7 +677,8 @@ class BattleObject(Struct):
             0x7: {Size.BYTE: StructField("_Param4", UnkPrimitiveMemory())},
             0x8: {Size.BYTE: StructField("_CurState", UnkPrimitiveMemory()),
                   Size.WORD: StructField("_CurStateActionPhaseAndPhaseInitialized", UnkPrimitiveMemory())},
-            0x9: {Size.BYTE: StructField("_CurAction", UnkPrimitiveMemory())},
+            0x9: {Size.BYTE: StructField("_CurAction", UnkPrimitiveMemory()),
+                  Size.WORD: StructField("_CurAction", UnkPrimitiveMemory())},
             0xa: {Size.BYTE: StructField("_CurPhase", UnkPrimitiveMemory()),
                   Size.HWORD: StructField("_CurPhaseAndPhaseInitialized", UnkPrimitiveMemory())},
             0xb: {Size.BYTE: StructField("_PhaseInitialized", UnkPrimitiveMemory())},
@@ -722,7 +723,8 @@ class BattleObject(Struct):
             0x36: {Size.HWORD: StructField("_X16", UnkPrimitiveMemory())},
             0x38: {Size.WORD: StructField("_Y", UnkPrimitiveMemory())},
             0x3a: {Size.HWORD: StructField("_Y16", UnkPrimitiveMemory())},
-            0x3c: {Size.WORD: StructField("_Z", UnkPrimitiveMemory())},
+            0x3c: {Size.WORD: StructField("_Z", UnkPrimitiveMemory()),
+                   Size.HWORD: StructField("_Z_3c", UnkPrimitiveMemory())},
             0x3e: {Size.HWORD: StructField("_Z16", UnkPrimitiveMemory())},
             0x40: {Size.WORD: StructField("_XVelocity", UnkPrimitiveMemory())},
             0x44: {Size.WORD: StructField("_YVelocity", UnkPrimitiveMemory())},

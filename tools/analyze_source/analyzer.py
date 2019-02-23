@@ -180,6 +180,7 @@ def run_analyzer_from_label(label, registers, function_start_time):
 # sub_801E1E4 - detected as recursive
 # sub_801E4F4 - writes to sp in a loop
 # sub_3006C8E - blatant read from invalid address
+# sub_8102CF8 - actually recursive function (blatantly calls itself)
 problem_functions = set(("sub_801E1E4", "sub_801E4F4", "sub_3006C8E"))
 
 class FunctionTracker:
@@ -209,6 +210,11 @@ def remove_function_specific_callbacks(function_value):
     if function_value in function_specific_callbacks:
         for function_specific_callback in function_specific_callbacks[function_value]:
             function_specific_callback.opcode.remove_callback(function_specific_callback.callback)
+
+# exceptions:
+# - object_createCollisionData: force second function return for data
+# - sub_801B9E6: has a jumptable passed to it
+force_all_paths_functions = set((0x8019892, 0x801B9E6))  # object_createCollisionData, sub_801B9E6
 
 def run_analyzer_common(src_file, funcstate, function_start_time):
     function_total_time = 0
@@ -351,7 +357,8 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
             global_fileline_error("Reached end of file while parsing!")
 
         # don't attempt to run any conditional branches if this function already had its conditional branches executed
-        if function_name in function_trackers and return_regs is not None and funcstate.function.value != 0x8019892: # object_createCollisionData
+        # unless the function is forced to run all paths each time
+        if function_name in function_trackers and return_regs is not None and funcstate.function.value not in force_all_paths_functions:
             break
 
         # now check if we have any conditional labels left
@@ -656,6 +663,11 @@ def sub_80E72C8_fix_extra_vars_0x74_read(opcode_params, funcstate, src_file, fil
 def sub_80E72C8_fix_misaligned_stack(opcode_params, funcstate, src_file, fileline):
     return False
 
+def sub_81023C0_sub_8102428_skip_bl_sub_8102CF8(opcode_params, funcstate, src_file, fileline):
+    if opcode_params == "sub_8102CF8":
+        return False
+    return True
+
 def read_battle_object_jumptables():
     """
     Returns a jumptable's entries in a list specified by the given label.
@@ -714,6 +726,9 @@ def read_battle_object_jumptables():
         0x80E1566: (FunctionSpecificCallback(opcodes.mov_reg_opcode, sub_80E1566_fix_sub_80E1670_return_value),), # sub_80E1566
         0x80E72C8: (FunctionSpecificCallback(opcodes.ldr_rb_imm_opcode, sub_80E72C8_fix_extra_vars_0x74_read),
                     FunctionSpecificCallback(opcodes.add_sp_opcode, sub_80E72C8_fix_misaligned_stack)), # sub_80E72C8
+        0x81023C0: (FunctionSpecificCallback(opcodes.bl_opcode, sub_81023C0_sub_8102428_skip_bl_sub_8102CF8),), # sub_81023C0
+        0x8102428: (FunctionSpecificCallback(opcodes.bl_opcode, sub_81023C0_sub_8102428_skip_bl_sub_8102CF8),), # sub_8102428
+        
     })
 
     #global global_function_tree

@@ -135592,7 +135592,7 @@ loc_80FB4FC:
 
 	thumb_local_start
 sub_80FB4FE:
-	push {r4, lr}
+	push {r4,lr}
 	ldrb r0, [r7,#1]
 	tst r0, r0
 	bne loc_80FB520
@@ -135613,7 +135613,7 @@ loc_80FB520:
 	add r0, #1
 	strh r0, [r7,#0x12]
 	lsr r0, r0, #3
-	bhs loc_80FB532
+	bcs loc_80FB532
 	ldrb r0, [r7,#0x16]
 	ldrb r1, [r7,#0x17]
 	bl object_highlightPanel
@@ -135625,7 +135625,7 @@ loc_80FB532:
 	mov r0, #0x10
 	strh r0, [r7]
 loc_80FB53E:
-	pop {r4, pc}
+	pop {r4,pc}
 	thumb_func_end sub_80FB4FE
 
 	thumb_local_start
@@ -136072,7 +136072,7 @@ sub_80FB886:
 	beq loc_80FB8A8
 	ldrb r2, [r5,#0x12]
 	sub r3, r0, r2
-	mul r3, r4, r3
+	mul r3, r4
 	bgt loc_80FB8B2
 loc_80FB8A8:
 	mov r0, #6
