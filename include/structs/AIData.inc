@@ -82,10 +82,13 @@
 	\struct_entry \label\()_Unk_04, 1 // loc=0x4
 	\struct_entry \label\()_Unk_05, 1 // loc=0x5
 	\struct_entry \label\()_Unk_06, 1 // loc=0x6
-	.space 0x1
+	\struct_entry \label\()_Unk_07, 1 // loc=0x7
 	\struct_entry \label\()_Unk_08, 2 // loc=0x8
 	.space 0x2
-	\struct_entry \label\()_Unk_0c, 4 // loc=0xc
+	\struct_entry \label\()_Unk_0c, 1 // loc=0xc
+	\struct_entry \label\()_Unk_0d, 1 // loc=0xd
+	\struct_entry \label\()_Unk_0e, 1 // loc=0xe
+	\struct_entry \label\()_Unk_0f, 1 // loc=0xf
 	struct_org 0x20
 	\struct_entry \label\()_Size // loc=0x20
 	\struct_entry \label\()_End // loc=0x20

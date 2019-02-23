@@ -73,6 +73,7 @@
 	\struct_entry \label\()_X16, 2 // loc=0x36
 	\struct_entry \label\()_Y, 2 // loc=0x38 size 4
 	\struct_entry \label\()_Y16, 2 // loc=0x3a
+	\struct_entry \label\()_Z_3c // loc=0x3c bad read?
 	\struct_entry \label\()_Z, 2 // loc=0x3c size 4
 	\struct_entry \label\()_Z16, 2 // loc=0x3e
 	\struct_entry \label\()_XVelocity, 4 // loc=0x40
