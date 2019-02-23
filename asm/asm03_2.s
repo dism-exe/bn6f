@@ -174,7 +174,7 @@ byte_80460BC: .byte 0xB8, 0xE2, 0x0, 0x0, 0x0, 0x0, 0x0, 0xFF, 0xB0, 0xE0, 0x0, 
 off_80460F4: .word sub_3006C38+1
 	.word sub_804634C+1
 	.word sub_3006F42+1
-	.word byte_3006F75
+	.word sub_3006F74
 	.word sub_8046356+1
 	.word sub_3006C8E+1
 	.word 0x0
@@ -187,8 +187,8 @@ off_80460F4: .word sub_3006C38+1
 	.word sub_80463A0+1
 	.word 0x0
 	.word 0x0
-	.word byte_3006F5D
-	.word dword_3006F71
+	.word sub_3006F5C
+	.word sub_3006F70
 	.word 0x0
 	.word 0x0
 	.word 0x0
@@ -448,7 +448,7 @@ loc_8046308:
 	ldrb r3, [r6,#0x4] // (byte_200A224 - 0x200a220)
 	tst r3, r3
 	bne loc_804633E
-	bl loc_8000AC8
+	bl sub_8000AC8
 loc_804633E:
 	mov r0, r7
 	pop {pc}
@@ -652,7 +652,7 @@ off_804646C: .word sub_8116894+1
 	.word sub_811B338+1
 	.word sub_811B3F4+1
 	.word sub_811B4AC+1
-	.word byte_811B9B5
+	.word sub_811B9B4+1
 	.word 0x0
 	.word sub_811BC44+1
 	.word sub_811BD64+1
@@ -1377,7 +1377,7 @@ byte_80469F0: .byte 0x20, 0x10, 0x22, 0x10, 0x24, 0x10, 0x26, 0x10, 0x28
 	.byte 0x10, 0xAB, 0x10, 0xAD, 0x10, 0xAF, 0x10, 0x0, 0x10
 	.byte 0xB1, 0x10, 0x0, 0x10, 0xB3, 0x10, 0xB5, 0x10, 0xB7
 	.byte 0x10, 0xB9, 0x10, 0xBB, 0x10, 0xBD, 0x10, 0xBF, 0x10
-    byte_8046B58: .byte 0x20, 0x11, 0x22, 0x11, 0x24, 0x11, 0x26, 0x11, 0x28
+byte_8046B58: .byte 0x20, 0x11, 0x22, 0x11, 0x24, 0x11, 0x26, 0x11, 0x28
 	.byte 0x11, 0x2A, 0x11, 0x2C, 0x11, 0x21, 0x11, 0x23, 0x11
 	.byte 0x25, 0x11, 0x27, 0x11, 0x29, 0x11, 0x2B, 0x11, 0x2D
 	.byte 0x11
@@ -5797,7 +5797,7 @@ loc_8049BC4:
 	add r1, r1, r2
 	mov r2, #0x20 
 	lsl r2, r2, #4
-	bl loc_8000AC8
+	bl sub_8000AC8
 	mov r0, #0xa6
 	mov r1, #0x13
 	lsl r2, r4, #5
@@ -9041,11 +9041,11 @@ sub_804C08C:
 	ldr r0, off_804C104 // =byte_869D76C 
 	ldr r1, dword_804C108 // =0x600cc00 
 	ldr r2, off_804C10C // =0xc0 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r0, off_804C110 // =byte_869D74C 
 	ldr r1, off_804C114 // =byte_3001B00 
 	mov r2, #0x20 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	mov r4, r10
 	ldr r1, [r4,#oToolkit_RenderInfoPtr]
 	ldr r0, dword_804C118 // =0x1e09 
@@ -9399,11 +9399,11 @@ sub_804C348:
 	ldr r0, off_804C3A0 // =byte_86A10D0 
 	ldr r1, dword_804C3A4 // =0x600ca00 
 	ldr r2, off_804C3A8 // =0x320 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r0, off_804C3AC // =byte_86A10B0 
 	ldr r1, off_804C3B0 // =byte_3001B00 
 	mov r2, #0x20 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	mov r4, r10
 	ldr r1, [r4,#oToolkit_RenderInfoPtr]
 	ldr r0, dword_804C3B4 // =0x1f09 
@@ -9516,7 +9516,7 @@ sub_804C43C:
 	ldr r0, off_804C468 // =byte_86A1480
 	ldr r1, dword_804C46C // =0x600cb00 
 	ldr r2, off_804C470 // =0x4c0 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	mov r4, r10
 	ldr r1, [r4,#oToolkit_RenderInfoPtr]
 	ldr r0, dword_804C474 // =0x1f82 
@@ -9629,13 +9629,13 @@ sub_804C53C:
 	ldr r2, off_804C598 // =byte_804C59C
 	ldrb r3, [r5,#0xc]
 	ldr r2, [r2,r3]
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r0, off_804C5A4 // =off_804C5A8 
 	ldrb r1, [r5,#0xc]
 	ldr r0, [r0,r1]
 	ldr r1, off_804C5B0 // =byte_3001B00 
 	mov r2, #0x20 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	mov r4, r10
 	ldr r1, [r4,#oToolkit_RenderInfoPtr]
 	ldr r0, dword_804C5B4 // =0x1f09 
@@ -9859,11 +9859,11 @@ sub_804C72C:
 	ldr r0, off_804C758 // =byte_86A2C00 
 	ldr r1, dword_804C75C // =0x600cf40 
 	ldr r2, off_804C760 // =0x80 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r0, off_804C764 // =byte_86A2BE0 
 	ldr r1, off_804C768 // =byte_3001B00 
 	mov r2, #0x20 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	mov r4, r10
 	ldr r1, [r4,#oToolkit_RenderInfoPtr]
 	ldr r0, dword_804C76C // =0x1f09 
@@ -10100,14 +10100,14 @@ sub_804CB0C:
 	ldr r0, off_804CB48 // =byte_86A34C0 
 	ldr r1, dword_804CB4C // =0x600cfe0 
 	ldr r2, dword_804CB50 // =0x20 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldrb r1, [r5,#0xd]
 	lsl r1, r1, #5
 	ldr r0, off_804CB54 // =byte_86A3480 
 	add r0, r0, r1
 	ldr r1, off_804CB58 // =byte_3001B00 
 	mov r2, #0x20 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	mov r4, r10
 	ldr r1, [r4,#oToolkit_RenderInfoPtr]
 	ldr r0, dword_804CB5C // =0x1f09 
@@ -10206,11 +10206,11 @@ sub_804CBDC:
 	ldr r0, off_804CC24 // =byte_86A39B0 
 	ldr r1, dword_804CC28 // =0x600cfe0 
 	ldr r2, dword_804CC2C // =0x20 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r0, off_804CC30 // =byte_86A3990 
 	ldr r1, off_804CC34 // =byte_3001B00 
 	mov r2, #0x20 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	mov r4, r10
 	ldr r1, [r4,#oToolkit_RenderInfoPtr]
 	ldr r0, dword_804CC38 // =0x1f09 
@@ -10386,11 +10386,11 @@ sub_804CD5C:
 	ldr r0, off_804CDB0 // =byte_86A3EA0 
 	ldr r1, dword_804CDB4 // =0x600cc00 
 	ldr r2, off_804CDB8 // =0xa0 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r0, off_804CDBC // =byte_86A3E80 
 	ldr r1, off_804CDC0 // =byte_3001B00 
 	mov r2, #0x20 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	mov r4, r10
 	ldr r1, [r4,#oToolkit_RenderInfoPtr]
 	ldr r0, byte_804CDC4 // =0x9

@@ -1401,7 +1401,7 @@ reqBBS_813ED40:
 	ldr r2, [r2,#oToolkit_GFX30025c0_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl loc_8000AC8
+	bl sub_8000AC8
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_813ED58: .word byte_813DEC4
@@ -1504,7 +1504,7 @@ reqBBS_813EDE4:
 	add r0, r0, r2
 	ldr r1, dword_813EE38 // =0x6017f80 
 	mov r2, #0x80
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldrh r1, [r5,#0x20]
 	mov r0, #3
 	mov r3, #0x10
@@ -3830,7 +3830,7 @@ reqBBS_8140588:
 	ldr r2, [r2,#oToolkit_GFX30025c0_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl loc_8000AC8
+	bl sub_8000AC8
 	thumb_func_end reqBBS_8140588
 
 	pop {r4-r7,pc}
@@ -3846,7 +3846,7 @@ reqBBS_81405A4:
 	ldr r2, [r2,#oToolkit_GFX30025c0_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl loc_8000AC8
+	bl sub_8000AC8
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_81405BC: .word byte_813F2AC
@@ -3982,7 +3982,7 @@ reqBBS_animateCursor:
 	add r0, r0, r2
 	ldr r1, dword_81406DC // =0x6017f80 
 	mov r2, #0x80
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldrh r1, [r5,#0x20]
 	mov r0, #3
 	mov r3, #0x10

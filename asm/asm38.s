@@ -70,7 +70,7 @@ sub_3005CF0:
 	str r1, [r0]
 	bx lr
 off_3005D04: .word dword_200A870
-	.word sCamera+0x50 // sCamera.unk_50
+	.word eCamera+0x50 // eCamera.unk_50
 jt_81D620C: .word off_3005D10
 off_3005D10: .word sub_803DE72+1
 	.word sub_813D5DC+1
@@ -279,11 +279,19 @@ sub_3005E6A:
 off_3005E74: .word InterruptMasterEnableRegister
 off_3005E78: .word sub_814469C+1
 off_3005E7C: .word sub_81446AC+1
-dword_3005E80: .word 0x9000B081, 0x6AB64656, 0x18B602D2, 0x186D1824
 	thumb_func_end sub_3005E6A
 
-	thumb_local_start
-sub_3005E90:
+	thumb_func_start sub_3005E80
+sub_3005E80:
+	sub sp, sp, #4
+	str r0, [sp]
+	mov r6, r10
+	ldr r6, [r6,#oToolkit_GFX30025c0_Ptr]
+	lsl r2, r2, #11
+	add r6, r6, r2
+	add r4, r4, r0
+	add r5, r5, r1
+loc_3005E90:
 	mov r2, #0x1f
 	mvn r2, r2
 	mov r7, r0
@@ -299,14 +307,14 @@ loc_3005EA6:
 	add r3, #2
 	add r0, #1
 	cmp r0, r4
-	blt sub_3005E90
+	blt loc_3005E90
 	ldr r0, [sp]
 	add r1, #1
 	cmp r1, r5
-	blt sub_3005E90
+	blt loc_3005E90
 	add sp, sp, #4
 	mov pc, lr
-	thumb_func_end sub_3005E90
+	thumb_func_end sub_3005E80
 
 	thumb_func_start sub_3005EBA
 sub_3005EBA:
@@ -535,7 +543,7 @@ loc_300608C:
 	ldrh r3, [r5,#8]
 	lsl r3, r3, #5
 	add r1, r1, r3
-	ldr r7, off_3006104 // =loc_8000AC8+1
+	ldr r7, off_3006104 // =sub_8000AC8+1
 	mov lr, pc
 	bx r7
 	mov r5, r8
@@ -572,7 +580,7 @@ off_30060E8: .word dword_200F350
 	.word dword_200F350
 	.word dword_200F350
 dword_3006100: .word 0x6010000
-off_3006104: .word loc_8000AC8+1
+off_3006104: .word sub_8000AC8+1
 	thumb_func_end sub_3006028
 
 	thumb_local_start
@@ -712,7 +720,7 @@ sub_30061E8:
 	push {r1}
 	ldrb r6, [r5]
 	push {r6}
-	ldr r4, off_3006308 // =sCamera+76
+	ldr r4, off_3006308 // =eCamera+76
 	ldrb r4, [r4]
 	ldrb r7, [r5,#2]
 	lsr r7, r7, #4
@@ -724,7 +732,7 @@ sub_30061E8:
 	ldr r2, [r3,r2]
 	mov lr, pc
 	bx r2
-	ldr r0, off_3006308 // =sCamera+76
+	ldr r0, off_3006308 // =eCamera+76
 	ldrb r0, [r0]
 	mov r10, r0
 	mov r12, r7
@@ -863,7 +871,7 @@ loc_30062FC:
 	mov r10, r1
 	pop {r5,pc}
 	.balign 4, 0x00
-off_3006308: .word sCamera+0x4C // sCamera.unk_4C
+off_3006308: .word eCamera+0x4C // eCamera.unk_4C
 off_300630C: .word byte_20098A8
 off_3006310: .word off_3006314
 off_3006314: .word sub_300631C+1
@@ -1410,55 +1418,55 @@ off_300672C: .word math_cosTable
 	thumb_func_start sub_3006730
 sub_3006730:
 	push {lr}
-	ldrb r0, [r5,#3]
+	ldrb r0, [r5,#oObjectSprite_Unk_03]
 	mov r1, #0x80
 	and r0, r1
 	bne loc_300675A
-	ldr r1, [r5,#0x18]
+	ldr r1, [r5,#oObjectSprite_Unk_18]
 	ldr r2, [r1]
 	add r3, r2, r1
-	str r3, [r5,#0x1c]
-	ldrb r0, [r5]
+	str r3, [r5,#oObjectSprite_Unk_1c]
+	ldrb r0, [r5,#oObjectSprite_Unk_00]
 	lsl r0, r0, #2
 	ldr r2, [r3,#8]
 	add r1, r1, r2
 	ldr r2, [r1,r0]
 	add r1, r1, r2
-	str r1, [r5,#0x20]
+	str r1, [r5,#oObjectSprite_Unk_20]
 	ldrb r2, [r1,#1]
-	strb r2, [r5,#1]
+	strb r2, [r5,#oObjectSprite_Unk_01]
 	ldrb r2, [r1,#2]
-	strb r2, [r5,#2]
+	strb r2, [r5,#oObjectSprite_Unk_02]
 	b loc_3006778
 loc_300675A:
-	ldrb r0, [r5]
+	ldrb r0, [r5,#oObjectSprite_Unk_00]
 	lsl r0, r0, #2
-	ldr r1, [r5,#0x18]
+	ldr r1, [r5,#oObjectSprite_Unk_18]
 	ldr r2, [r1,r0]
 	add r3, r2, r1
-	str r3, [r5,#0x1c]
+	str r3, [r5,#oObjectSprite_Unk_1c]
 	ldr r2, [r3,#8]
 	add r1, r1, r2
 	ldr r2, [r1]
 	add r1, r1, r2
-	str r1, [r5,#0x20]
+	str r1, [r5,#oObjectSprite_Unk_20]
 	ldrb r2, [r3,#0x10]
-	strb r2, [r5,#1]
+	strb r2, [r5,#oObjectSprite_Unk_01]
 	ldrb r2, [r3,#0x12]
-	strb r2, [r5,#2]
+	strb r2, [r5,#oObjectSprite_Unk_02]
 loc_3006778:
-	ldr r1, [r5,#0x20]
+	ldr r1, [r5,#oObjectSprite_Unk_20]
 	ldrb r2, [r1]
 	lsl r2, r2, #2
-	ldr r0, [r5,#0x1c]
+	ldr r0, [r5,#oObjectSprite_Unk_1c]
 	ldr r0, [r0,#0xc]
-	ldr r1, [r5,#0x18]
+	ldr r1, [r5,#oObjectSprite_Unk_18]
 	add r1, r1, r0
 	ldr r2, [r1,r2]
 	add r2, r2, r1
 	ldrb r1, [r2,#4]
 	lsr r1, r1, #4
-	strb r1, [r5,#5]
+	strb r1, [r5,#oObjectSprite_Unk_05]
 	pop {pc}
 	thumb_func_end sub_3006730
 
@@ -1466,47 +1474,47 @@ loc_3006778:
 sub_3006792:
 	push {r4,lr}
 loc_3006794:
-	ldrb r0, [r5,#1]
+	ldrb r0, [r5,#oObjectSprite_Unk_01]
 	sub r0, #1
-	strb r0, [r5,#1]
+	strb r0, [r5,#oObjectSprite_Unk_01]
 	cmp r0, #0
 	bge loc_30067F8
-	ldrb r0, [r5,#3]
+	ldrb r0, [r5,#oObjectSprite_Unk_03]
 	mov r1, #0x80
 	and r0, r1
 	bne loc_30067C0
-	ldr r1, [r5,#0x20]
+	ldr r1, [r5,#oObjectSprite_Unk_20]
 	ldrb r0, [r1,#2]
 	ldrb r4, [r1,#1]
 	mov r2, #0x80
 	tst r0, r2
 	bne loc_30067E6
 	add r1, #3
-	str r1, [r5,#0x20]
+	str r1, [r5,#oObjectSprite_Unk_20]
 	ldrb r2, [r1,#1]
-	strb r2, [r5,#1]
+	strb r2, [r5,#oObjectSprite_Unk_01]
 	ldrb r2, [r1,#2]
-	strb r2, [r5,#2]
+	strb r2, [r5,#oObjectSprite_Unk_02]
 	b loc_30067E4
 loc_30067C0:
-	ldr r3, [r5,#0x1c]
+	ldr r3, [r5,#oObjectSprite_Unk_1c]
 	ldrb r0, [r3,#0x12]
 	ldrb r4, [r3,#0x10]
 	mov r2, #0x80
 	tst r0, r2
 	bne loc_30067E6
 	add r3, #0x14
-	str r3, [r5,#0x1c]
-	ldr r1, [r5,#0x18]
+	str r3, [r5,#oObjectSprite_Unk_1c]
+	ldr r1, [r5,#oObjectSprite_Unk_18]
 	ldr r2, [r3,#8]
 	add r1, r1, r2
 	ldr r2, [r1]
 	add r1, r1, r2
-	str r1, [r5,#0x20]
+	str r1, [r5,#oObjectSprite_Unk_20]
 	ldrb r2, [r3,#0x10]
-	strb r2, [r5,#1]
+	strb r2, [r5,#oObjectSprite_Unk_01]
 	ldrb r2, [r3,#0x12]
-	strb r2, [r5,#2]
+	strb r2, [r5,#oObjectSprite_Unk_02]
 loc_30067E4:
 	b loc_3006794
 loc_30067E6:
@@ -1514,24 +1522,24 @@ loc_30067E6:
 	tst r0, r2
 	bne loc_30067F2
 	mov r4, #1
-	strb r4, [r5,#1]
+	strb r4, [r5,#oObjectSprite_Unk_01]
 	b loc_3006794
 loc_30067F2:
 	bl sub_3006730
 	b loc_3006794
 loc_30067F8:
-	ldr r1, [r5,#0x20]
+	ldr r1, [r5,#oObjectSprite_Unk_20]
 	ldrb r2, [r1]
 	lsl r2, r2, #2
-	ldr r0, [r5,#0x1c]
+	ldr r0, [r5,#oObjectSprite_Unk_1c]
 	ldr r0, [r0,#0xc]
-	ldr r1, [r5,#0x18]
+	ldr r1, [r5,#oObjectSprite_Unk_18]
 	add r1, r1, r0
 	ldr r2, [r1,r2]
 	add r2, r2, r1
 	ldrb r1, [r2,#4]
 	lsr r1, r1, #4
-	strb r1, [r5,#5]
+	strb r1, [r5,#oObjectSprite_Unk_05]
 	pop {r4,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_3006792
@@ -1950,7 +1958,7 @@ off_3006B14: .word __divsi3+1
 off_3006B18: .word sub_3006C38+1
 	.word sub_3006C3C+1
 	.word sub_3006F42+1
-	.word byte_3006F75
+	.word sub_3006F74+1
 	.word sub_3006C72+1
 	.word sub_3006C8E+1
 	.word 0x0
@@ -1963,8 +1971,8 @@ off_3006B18: .word sub_3006C38+1
 	.word sub_3006CD0+1
 	.word 0x0
 	.word 0x0
-	.word byte_3006F5D
-	.word dword_3006F71
+	.word sub_3006F5C+1
+	.word sub_3006F70+1
 	.word 0x0
 	.word 0x0
 	.word 0x0
@@ -2034,14 +2042,14 @@ loc_3006BF6:
 	tst r1, r1
 	beq loc_3006C04
 	sub r2, r2, r0
-	ldr r3, off_3006C0C // =loc_8000AC8+1
+	ldr r3, off_3006C0C // =sub_8000AC8+1
 	mov lr, pc
 	bx r3
 loc_3006C04:
 	mov r0, r9
 	pop {pc}
 off_3006C08: .word off_3006B18
-off_3006C0C: .word loc_8000AC8+1
+off_3006C0C: .word sub_8000AC8+1
 	.word ZeroFillByByte+1
 off_3006C14: .word dword_3006B84
 	thumb_func_end sub_3006B94
@@ -2129,6 +2137,7 @@ loc_3006C88:
 sub_3006C8E:
 	push {lr}
 	ldrb r1, [r0,#1]
+// oops! forgot the pool label!
 	ldr r2, byte_3006C9C // =0x4
 	ldrb r1, [r2,r1]
 	mov r4, #1
@@ -2504,15 +2513,38 @@ sub_3006F48:
 	mov pc, lr
 	.balign 4, 0x00
 off_3006F54: .word byte_3006F58
-byte_3006F58: .byte 0x3, 0x0, 0x0, 0x0, 0x47
-byte_3006F5D: .byte 0x78, 0x2, 0x49, 0x79, 0x5C, 0x40, 0x18, 0xF7, 0x46
-	.byte 0x0, 0x0, 0x6C, 0x6F, 0x0, 0x3, 0x3, 0x2, 0x3
-	.byte 0x3, 0x3
-dword_3006F71: .word 0x4746F730
-byte_3006F75: .byte 0x78, 0x2, 0x49, 0x79, 0x5C, 0x40, 0x18, 0xF7, 0x46
-	.byte 0x0, 0x0, 0x84, 0x6F, 0x0, 0x3, 0x2, 0x2, 0x2
-	.byte 0x2, 0x4, 0x4, 0x4, 0x4
+byte_3006F58: .byte 0x3, 0x0, 0x0, 0x0
 	thumb_func_end sub_3006F48
+
+	thumb_local_start
+sub_3006F5C:
+	ldrb r7, [r0,#1]
+	ldr r1, off_3006F68
+	ldrb r1, [r7,r1]
+	add r0, r0, r1
+	mov pc, lr
+	.balign 4, 0
+off_3006F68: .word byte_3006F6C
+byte_3006F6C: .byte 0x3, 0x2, 0x3, 0x3
+	thumb_func_end sub_3006F5C
+
+	thumb_local_start
+sub_3006F70:
+	add r0, #3
+	mov pc, lr
+	thumb_func_end sub_3006F70
+
+	thumb_local_start
+sub_3006F74:
+	ldrb r7, [r0,#1]
+	ldr r1, off_3006F80 // =byte_3006F84
+	ldrb r1, [r7,r1]
+	add r0, r0, r1
+	mov pc, lr
+	.balign 4, 0
+off_3006F80: .word byte_3006F84
+byte_3006F84: .byte 0x2, 0x2, 0x2, 0x2, 0x4, 0x4, 0x4, 0x4
+	thumb_func_end sub_3006F74
 
 	thumb_func_start sub_3006F8C
 sub_3006F8C:
@@ -2809,7 +2841,7 @@ loc_30071BE:
 	ldr r0, off_30071F0 // =dword_200CDA0
 	ldr r1, dword_30071F4 // =0x6015700
 	ldr r2, dword_30071F8 // =0xf00
-	ldr r3, off_30071FC // =loc_8000AC8+1
+	ldr r3, off_30071FC // =sub_8000AC8+1
 	mov lr, pc
 	bx r3
 	mov r5, r10
@@ -2830,7 +2862,7 @@ locret_30071E8:
 off_30071F0: .word dword_200CDA0
 dword_30071F4: .word 0x6015700
 dword_30071F8: .word 0xF00
-off_30071FC: .word loc_8000AC8+1
+off_30071FC: .word sub_8000AC8+1
 off_3007200: .word 0x400
 off_3007204: .word chatbox_maskFlags_3e+1
 off_3007208: .word off_300720C
@@ -2844,8 +2876,8 @@ sub_3007218:
 	push {r4,r6,r7,lr}
 	mov r6, r0
 	mov r7, r1
-	ldr r2, [r6,#0x3c]
-	ldr r3, [r6,#0x30]
+	ldr r2, [r6,#oCollisionData_ObjectFlags1]
+	ldr r3, [r6,#oCollisionData_SelfCollisionTypeFlags]
 	push {r2,r3}
 	ldr r0, off_3007504 // =battle_isTimeStop+1
 	mov lr, pc
@@ -2855,7 +2887,7 @@ sub_3007218:
 	ldr r4, dword_3007508 // =0x1000000
 	tst r2, r4
 	bne loc_300723E
-	ldr r1, [r7,#0x30]
+	ldr r1, [r7,#oCollisionData_SelfCollisionTypeFlags]
 	ldr r4, dword_300750C // =0x10000
 	tst r1, r4
 	bne loc_300723E
@@ -2873,20 +2905,20 @@ loc_300724E:
 	mov r4, #4
 	tst r0, r4
 	beq loc_300725C
-	ldr r4, byte_3007510+4 // =0x8
+	ldr r4, byte_3007514 // =0x8
 	tst r3, r4
 	bne loc_300725C
 	pop {r4,r6,r7,pc}
 loc_300725C:
-	ldr r4, byte_3007510+8 // =0x0
+	ldr r4, byte_3007518 // =0x0
 	tst r0, r4
 	beq loc_300726A
-	ldr r4, byte_3007510+12 // =0x0
+	ldr r4, byte_300751c // =0x0
 	tst r3, r4
 	bne loc_300726A
 	pop {r4,r6,r7,pc}
 loc_300726A:
-	ldr r4, byte_3007510+16 // =0x0
+	ldr r4, byte_3007520 // =0x0
 	tst r0, r4
 	beq loc_3007272
 	pop {r4,r6,r7,pc}
@@ -2912,21 +2944,21 @@ loc_3007290:
 	tst r2, r4
 	beq loc_30072A0
 	ldr r3, [r7,#0x30]
-	ldr r4, byte_3007510+4 // =0x8
+	ldr r4, byte_3007514 // =0x8
 	tst r3, r4
 	bne loc_30072A0
 	pop {r4,r6,r7,pc}
 loc_30072A0:
-	ldr r4, byte_3007510+8 // =0x0
+	ldr r4, byte_3007518 // =0x0
 	tst r2, r4
 	beq loc_30072B0
 	ldr r3, [r7,#0x30]
-	ldr r4, byte_3007510+20 // =0x0
+	ldr r4, byte_3007524 // =0x0
 	tst r3, r4
 	bne loc_30072B0
 	pop {r4,r6,r7,pc}
 loc_30072B0:
-	ldr r4, byte_3007510+16 // =0x0
+	ldr r4, byte_3007520 // =0x0
 	tst r2, r4
 	beq loc_30072B8
 	pop {r4,r6,r7,pc}
@@ -2944,13 +2976,13 @@ loc_30072C8:
 	tst r2, r4
 	beq loc_300730C
 	ldr r1, [r7,#0x30]
-	ldr r4, byte_3007510+24 // =0x0
+	ldr r4, byte_3007528 // =0x0
 	tst r1, r4
 	bne loc_30072DA
 	mov r4, #2
 	b loc_30072DC
 loc_30072DA:
-	ldr r4, byte_3007510+28 // =0x2
+	ldr r4, byte_300752c // =0x2
 loc_30072DC:
 	tst r1, r4
 	bne loc_300730C
@@ -2961,39 +2993,39 @@ loc_30072DC:
 	ldr r3, [r7,#0x30]
 	mov r2, #0x10
 	bic r3, r2
-	ldr r1, byte_3007510+32 // =0x0
+	ldr r1, byte_3007530 // =0x0
 	tst r3, r1
 	bne loc_3007304
 	ldrb r2, [r7,#5]
 	mov r0, #1
 	lsl r0, r2
-	ldrb r2, [r6,#3]
+	ldrb r2, [r6,#oCollisionData_Unk_03]
 	orr r2, r0
-	strb r2, [r6,#3]
-	ldr r2, byte_3007510+36 // =0x0
+	strb r2, [r6,#oCollisionData_Unk_03]
+	ldr r2, byte_3007534 // =0x0
 	orr r3, r2
 loc_3007304:
-	ldr r2, [r6,#0x70]
+	ldr r2, [r6,#oCollisionData_FlagsFromCollision]
 	orr r2, r3
-	str r2, [r6,#0x70]
+	str r2, [r6,#oCollisionData_FlagsFromCollision]
 	pop {r4,r6,r7,pc}
 loc_300730C:
-	ldr r3, [r6,#0x30]
-	ldr r4, byte_3007510+40 // =0x0
+	ldr r3, [r6,#oCollisionData_SelfCollisionTypeFlags]
+	ldr r4, byte_3007538 // =0x0
 	tst r3, r4
 	beq loc_300731E
 	ldr r3, [r7,#0x30]
-	ldr r4, byte_3007510+44 // =0x0
+	ldr r4, byte_300753c // =0x0
 	tst r3, r4
 	beq loc_300731E
 	pop {r4,r6,r7,pc}
 loc_300731E:
-	ldr r3, [r6,#0x30]
-	ldr r4, byte_3007510+44 // =0x0
+	ldr r3, [r6,#oCollisionData_SelfCollisionTypeFlags]
+	ldr r4, byte_300753c // =0x0
 	tst r3, r4
 	beq loc_3007330
 	ldr r3, [r7,#0x30]
-	ldr r4, byte_3007510+40 // =0x0
+	ldr r4, byte_3007538 // =0x0
 	tst r3, r4
 	beq loc_3007330
 	pop {r4,r6,r7,pc}
@@ -3002,13 +3034,13 @@ loc_3007330:
 	tst r2, r4
 	bne locret_3007430
 	ldr r3, [r7,#0x44]
-	ldr r2, [r6,#0x7c]
+	ldr r2, [r6,#oCollisionData_Unk_7c]
 	orr r2, r3
-	str r2, [r6,#0x7c]
+	str r2, [r6,#oCollisionData_Unk_7c]
 	ldr r3, [r7,#0x30]
-	ldr r2, [r6,#0x70]
+	ldr r2, [r6,#oCollisionData_FlagsFromCollision]
 	orr r2, r3
-	str r2, [r6,#0x70]
+	str r2, [r6,#oCollisionData_FlagsFromCollision]
 	mov r4, r3
 	ldrb r2, [r7,#0x19]
 	mov r1, #0x76 
@@ -3018,11 +3050,11 @@ loc_3007330:
 	ldrb r2, [r7,#0x10]
 	cmp r2, #0
 	beq loc_300735A
-	strb r2, [r6,#0x11]
+	strb r2, [r6,#oCollisionData_StatusEffectFinal]
 loc_300735A:
 	bl sub_3007460
 	ldrb r2, [r7,#7]
-	ldrb r0, [r6,#0xd]
+	ldrb r0, [r6,#oCollisionData_CounterTimer]
 	tst r0, r0
 	beq loc_300737A
 	mov r0, #0x7f
@@ -3032,9 +3064,9 @@ loc_300735A:
 	tst r2, r0
 	bne loc_300737A
 	mov r3, #0x40 
-	ldr r1, [r6,#0x70]
+	ldr r1, [r6,#oCollisionData_FlagsFromCollision]
 	orr r1, r3
-	str r1, [r6,#0x70]
+	str r1, [r6,#oCollisionData_FlagsFromCollision]
 loc_300737A:
 	mov r1, #0x80
 	tst r1, r2
@@ -3042,7 +3074,7 @@ loc_300737A:
 	mov r3, #0x7f
 	and r2, r3
 	beq loc_300739E
-	ldrb r0, [r6,#0xd]
+	ldrb r0, [r6,#oCollisionData_CounterTimer]
 	tst r0, r0
 	beq loc_3007396
 	mov r2, #1
@@ -3070,9 +3102,9 @@ loc_300739E:
 	strh r3, [r6,r1]
 loc_30073B6:
 	ldrb r2, [r7,#0xe]
-	ldrb r3, [r6,#0xf]
+	ldrb r3, [r6,#oCollisionData_HitModifierFinal]
 	orr r3, r2
-	strb r3, [r6,#0xf]
+	strb r3, [r6,#oCollisionData_HitModifierFinal]
 	mov r0, #0x12
 	ldrh r1, [r7,r0]
 	mov r2, #0xff
@@ -3082,11 +3114,11 @@ loc_30073B6:
 	strh r1, [r6,r2]
 loc_30073CC:
 	mov r4, #1
-	ldrb r0, [r6,#2]
+	ldrb r0, [r6,#oCollisionData_PrimaryElement]
 	ldrb r1, [r7,#2]
 	bl sub_3007432
 	add r4, r4, r0
-	ldrb r0, [r6,#0x18]
+	ldrb r0, [r6,#oCollisionData_SecondaryElementWeakness]
 	ldrb r1, [r7,#0x19]
 	bl sub_30074E2
 	add r4, r4, r0
@@ -3140,7 +3172,8 @@ sub_3007432:
 	ldrb r0, [r1,r0]
 	mov pc, lr
 	.balign 4, 0x00
-byte_3007440: .byte 0x44, 0x74, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
+byte_3007440: .word byte_3007444
+byte_3007444: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0
 	thumb_func_end sub_3007432
@@ -3148,20 +3181,20 @@ byte_3007440: .byte 0x44, 0x74, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1
 	thumb_local_start
 sub_3007460:
 	push {lr}
-	ldrb r0, [r6,#2]
+	ldrb r0, [r6,#oCollisionData_PrimaryElement]
 	cmp r0, #2
 	bne locret_30074A0
 	ldr r0, [r7,#0x30]
 	ldr r1, dword_3007540 // =0xc000000
 	tst r0, r1
 	beq locret_30074A0
-	ldr r0, [r6,#0x30]
+	ldr r0, [r6,#oCollisionData_SelfCollisionTypeFlags]
 	tst r0, r1
 	bne locret_30074A0
 	ldrh r0, [r7,#0x28]
 	cmp r0, #0
 	bne locret_30074A0
-	ldr r0, [r6,#0x70]
+	ldr r0, [r6,#oCollisionData_FlagsFromCollision]
 	mov r1, #1
 	tst r0, r1
 	bne locret_30074A0
@@ -3185,7 +3218,7 @@ locret_30074A0:
 sub_30074A2:
 	push {r4,lr}
 	mov r4, #0
-	ldr r0, [r6,#0x3c]
+	ldr r0, [r6,#oCollisionData_ObjectFlags1]
 	ldr r1, dword_3007544 // =0x80000000
 	tst r0, r1
 	beq loc_30074B6
@@ -3202,11 +3235,11 @@ loc_30074B6:
 sub_30074BA:
 	push {r4,r5,lr}
 	mov r4, #0
-	ldr r0, [r6,#0x3c]
+	ldr r0, [r6,#oCollisionData_ObjectFlags1]
 	ldr r1, dword_300750C // =0x10000
 	tst r0, r1
 	beq loc_30074DE
-	ldr r0, [r6,#0x70]
+	ldr r0, [r6,#oCollisionData_FlagsFromCollision]
 	mov r1, #2
 	tst r0, r1
 	bne loc_30074D4
@@ -3215,7 +3248,7 @@ sub_30074BA:
 	bne loc_30074DE
 loc_30074D4:
 	mov r4, #1
-	ldr r5, [r6,#0x38]
+	ldr r5, [r6,#oCollisionData_ParentObjectPtr]
 	ldr r0, off_3007548 // =sub_801A29A+1
 	mov lr, pc
 	bx r0
@@ -3248,10 +3281,18 @@ loc_30074FE:
 off_3007504: .word battle_isTimeStop+1
 dword_3007508: .word 0x1000000
 dword_300750C: .word 0x10000
-byte_3007510: .byte 0x2, 0x2, 0x0, 0x0, 0x8, 0x10, 0x0, 0x0, 0x0, 0x0, 0x80, 0x0, 0x0, 0x30
-	.byte 0x0, 0xC, 0x0, 0x0, 0x0, 0x8, 0x0, 0x30, 0x0, 0x0, 0x0, 0x40, 0x0, 0x0
-	.byte 0x2, 0x10, 0x0, 0x0, 0x0, 0x50, 0x0, 0xC, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0
-	.byte 0x10, 0x0, 0x0, 0x80, 0x0, 0x0
+byte_3007510: .byte 0x2, 0x2, 0x0, 0x0
+byte_3007514: .byte 0x8, 0x10, 0x0, 0x0
+byte_3007518: .byte 0x0, 0x0, 0x80, 0x0
+byte_300751c: .byte 0x0, 0x30, 0x0, 0xC
+byte_3007520: .byte 0x0, 0x0, 0x0, 0x8
+byte_3007524: .byte 0x0, 0x30, 0x0, 0x0
+byte_3007528: .byte 0x0, 0x40, 0x0, 0x0
+byte_300752c: .byte 0x2, 0x10, 0x0, 0x0
+byte_3007530: .byte 0x0, 0x50, 0x0, 0xC
+byte_3007534: .byte 0x0, 0x0, 0x2, 0x0
+byte_3007538: .byte 0x0, 0x0, 0x10, 0x0
+byte_300753c: .byte 0x0, 0x80, 0x0, 0x0
 dword_3007540: .word 0xC000000
 dword_3007544: .word 0x80000000
 off_3007548: .word sub_801A29A+1
@@ -3262,16 +3303,16 @@ dword_300754C: .word 0x2000
 sub_3007550:
 	push {r4-r7,lr}
 	sub sp, sp, #8
-	ldr r5, [r5,#0x54]
-	ldrb r1, [r5,#1]
+	ldr r5, [r5,#oBattleObject_CollisionDataPtr]
+	ldrb r1, [r5,#oCollisionData_Region]
 	mov r2, #0x80
 	tst r1, r2
 	bne loc_30075BC
 	lsl r1, r1, #2
 	ldr r2, off_30075F8 // =off_8019B78
 	ldr r4, [r2,r1]
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldrb r0, [r5,#oCollisionData_Alliance]
+	ldrb r1, [r5,#oCollisionData_Flip]
 	ldr r2, off_300789C // =object_getFlipDirection+1
 	mov lr, pc
 	bx r2
@@ -3282,11 +3323,11 @@ loc_3007570:
 	cmp r0, #0x7f
 	beq loc_30075F4
 	mul r0, r6
-	ldrb r2, [r5,#0xa]
+	ldrb r2, [r5,#oCollisionData_PanelX]
 	add r0, r0, r2
 	mov r1, #1
 	ldrsb r1, [r4,r1]
-	ldrb r2, [r5,#0xb]
+	ldrb r2, [r5,#oCollisionData_PanelY]
 	add r1, r1, r2
 	mov r2, r5
 	str r0, [sp]
@@ -3369,14 +3410,14 @@ loc_300761A:
 	beq locret_300764A
 	b loc_3007646
 loc_3007622:
-	ldr r0, [r5,#0x68]
+	ldr r0, [r5,#oCollisionData_Unk_68]
 	ldr r1, [r6,#0x44]
 	tst r0, r1
 	bne loc_3007646
 	orr r0, r1
-	str r0, [r5,#0x68]
+	str r0, [r5,#oCollisionData_Unk_68]
 	ldr r0, [r6,#0x68]
-	ldr r1, [r5,#0x44]
+	ldr r1, [r5,#oCollisionData_CollisionIndexBit]
 	orr r0, r1
 	str r0, [r6,#0x68]
 	mov r0, r5
@@ -3396,8 +3437,8 @@ off_300764C: .word unk_2034F60
 	thumb_local_start
 sub_3007650:
 	push {r6,r7,lr}
-	ldr r2, [r0,#0x34]
-	ldr r3, [r1,#0x30]
+	ldr r2, [r0,#oCollisionData_TargetCollisionTypeFlags]
+	ldr r3, [r1,#oCollisionData_SelfCollisionTypeFlags]
 	tst r2, r3
 	beq locret_300766A
 	mov r6, r0
@@ -3414,8 +3455,8 @@ locret_300766A:
 sub_300766C:
 	push {r4,lr}
 	mov r4, r1
-	ldrb r1, [r0,#0xb]
-	ldrb r0, [r0,#0xa]
+	ldrb r1, [r0,#oCollisionData_PanelY]
+	ldrb r0, [r0,#oCollisionData_PanelX]
 	bl sub_3007958
 	ldrb r0, [r0,#2]
 	ldrb r1, [r4,#2]
@@ -3442,19 +3483,19 @@ sub_3007692:
 	ldr r0, off_30078A8 // =battle_isTimeStop+1
 	mov lr, pc
 	bx r0
-	ldr r2, [r6,#0x3c]
+	ldr r2, [r6,#oCollisionData_ObjectFlags1]
 	beq loc_30076B2
 	ldr r4, byte_30078AC // =0x0
 	tst r2, r4
 	bne loc_30076B2
-	ldr r1, [r7,#0x30]
-	ldr r4, byte_30078AC+4 // =0x0
+	ldr r1, [r7,#oCollisionData_SelfCollisionTypeFlags]
+	ldr r4, byte_30078B0 // =0x0
 	tst r1, r4
 	bne loc_30076B2
 	pop {r4,r6,r7,pc}
 loc_30076B2:
 	ldr r0, [r7,#0x3c]
-	ldr r3, [r6,#0x30]
+	ldr r3, [r6,#oCollisionData_SelfCollisionTypeFlags]
 	mov r4, #0x20 
 	tst r0, r4
 	beq loc_30076C4
@@ -3464,7 +3505,7 @@ loc_30076B2:
 	pop {r4,r6,r7,pc}
 loc_30076C4:
 	ldr r1, [r7,#0x30]
-	ldr r2, [r6,#0x3c]
+	ldr r2, [r6,#oCollisionData_ObjectFlags1]
 	mov r4, #0x20 
 	tst r2, r4
 	beq loc_30076D6
@@ -3473,10 +3514,10 @@ loc_30076C4:
 	bne loc_30076D6
 	pop {r4,r6,r7,pc}
 loc_30076D6:
-	ldr r2, [r6,#0x6c]
+	ldr r2, [r6,#oCollisionData_Unk_6c]
 	ldr r3, [r7,#0x30]
 	orr r2, r3
-	str r2, [r6,#0x6c]
+	str r2, [r6,#oCollisionData_Unk_6c]
 	ldrb r2, [r7,#0x19]
 	mov r1, #0x77 
 	ldrb r0, [r6,r1]
@@ -3515,14 +3556,14 @@ sub_3007708:
 	bl sub_3007958
 	tst r0, r0
 	beq locret_3007774
-	ldr r2, [r4,#0x30]
+	ldr r2, [r4,#oCollisionData_SelfCollisionTypeFlags]
 	ldr r1, dword_3007778 // =0xc000000
 	tst r2, r1
 	bne locret_3007774
 	ldrb r0, [r0,#2]
 	cmp r0, #6
 	bne loc_3007746
-	ldrb r0, [r4,#2]
+	ldrb r0, [r4,#oCollisionData_PrimaryElement]
 	cmp r0, #1
 	bne locret_3007774
 	mov r0, r6
@@ -3533,7 +3574,7 @@ sub_3007708:
 loc_3007746:
 	cmp r0, #8
 	bne loc_300775C
-	ldrb r0, [r4,#2]
+	ldrb r0, [r4,#oCollisionData_PrimaryElement]
 	cmp r0, #2
 	bne locret_3007774
 	mov r0, r6
@@ -3546,7 +3587,7 @@ loc_300775C:
 	blt locret_3007774
 	cmp r0, #0xc
 	bgt locret_3007774
-	ldrb r0, [r4,#2]
+	ldrb r0, [r4,#oCollisionData_PrimaryElement]
 	cmp r0, #4
 	bne locret_3007774
 	mov r0, r6
@@ -3565,15 +3606,15 @@ sub_300777C:
 	mov r3, r8
 	push {r0}
 	mov r5, r0
-	ldrb r1, [r5,#1]
+	ldrb r1, [r5,#oCollisionData_Region]
 	mov r2, #0x80
 	tst r1, r2
 	bne loc_30077D6
 	lsl r1, r1, #2
 	ldr r2, off_3007820 // =off_8019B78
 	ldr r4, [r2,r1]
-	ldrb r0, [r5,#4]
-	ldrb r1, [r5,#5]
+	ldrb r0, [r5,#oCollisionData_Alliance]
+	ldrb r1, [r5,#oCollisionData_Flip]
 	ldr r2, off_30078B8 // =object_getFlipDirection+1
 	mov lr, pc
 	bx r2
@@ -3584,11 +3625,11 @@ loc_300779E:
 	cmp r0, #0x7f
 	beq loc_300781A
 	mul r0, r6
-	ldrb r2, [r5,#0xa]
+	ldrb r2, [r5,#oCollisionData_PanelX]
 	add r0, r0, r2
 	mov r1, #1
 	ldrsb r1, [r4,r1]
-	ldrb r2, [r5,#0xb]
+	ldrb r2, [r5,#oCollisionData_PanelY]
 	add r1, r1, r2
 	mov r7, r0
 	mov r8, r1
@@ -3693,7 +3734,7 @@ sub_3007868:
 	add r0, r0, r1
 	lsl r0, r0, #2
 	ldr r1, [r3,r0]
-	ldr r2, [r2,#0x44]
+	ldr r2, [r2,#oCollisionData_CollisionIndexBit]
 	orr r1, r2
 	str r1, [r3,r0]
 	mov pc, lr
@@ -3710,7 +3751,7 @@ sub_3007880:
 	add r3, r3, r0
 	ldr r1, [r3]
 	mov r0, r1
-	ldr r2, [r2,#0x44]
+	ldr r2, [r2,#oCollisionData_CollisionIndexBit]
 	bic r1, r2
 	str r1, [r3]
 	tst r0, r2
@@ -3720,7 +3761,8 @@ off_300789C: .word object_getFlipDirection+1
 off_30078A0: .word object_isValidPanel+1
 off_30078A4: .word battle_isPaused+1
 off_30078A8: .word battle_isTimeStop+1
-byte_30078AC: .byte 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x1, 0x0
+byte_30078AC: .byte 0x0, 0x0, 0x0, 0x1
+byte_30078B0: .byte 0x0, 0x0, 0x1, 0x0
 off_30078B4: .word battle_isPaused+1
 off_30078B8: .word object_getFlipDirection+1
 off_30078BC: .word object_isValidPanel+1
@@ -3813,7 +3855,7 @@ sub_3007978:
 	ldr r1, off_30079A0 // =unk_2034F60
 	ldr r2, [r0,r1]
 	mov r1, r10
-	ldr r1, [r1,#0x30]
+	ldr r1, [r1,#oToolkit_Unk20384f0_Ptr]
 	mov r0, #0
 loc_3007988:
 	lsl r2, r2, #1
@@ -3858,7 +3900,8 @@ loc_30079C6:
 	bl sub_30078E0
 locret_30079CE:
 	pop {r4-r6,pc}
-byte_30079D0: .byte 0x8, 0x7, 0x0, 0x0, 0x83, 0x78, 0x1B, 0x42, 0xB, 0xD0, 0x86
+byte_30079D0: .word 0x708
+	.byte 0x83, 0x78, 0x1B, 0x42, 0xB, 0xD0, 0x86
 	.byte 0x70, 0x9, 0x2E, 0x4, 0xDB, 0xC, 0x2E, 0x2, 0xDC, 0x3, 0x49
 	.byte 0x41, 0x82, 0xFF, 0xE7, 0x20, 0x1C, 0x29, 0x1C, 0xFF, 0xF7, 0x89
 	.byte 0xFF, 0x70, 0xBD

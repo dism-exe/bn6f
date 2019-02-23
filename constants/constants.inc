@@ -26,3 +26,6 @@
 	enum UNK_MYSTERY_DATA_4  // 4
 	enum GREEN_MYSTERY_DATA  // 5
 	enum UNK_MYSTERY_DATA_6  // 6
+
+	.equiv NULL, 0
+	.equiv timer_2000000, 0x2000000

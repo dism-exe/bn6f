@@ -10320,7 +10320,7 @@ sub_80AA88C:
 	mov r0, #0
 	str r0, [sp]
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_S2034880_Ptr]
+	ldr r4, [r4,#oToolkit_BattleStatePtr]
 	add r4, #0x90
 	mov r6, #0
 loc_80AA8A2:
@@ -10375,7 +10375,7 @@ sub_80AA8E0:
 	bl sub_80AA910
 	str r0, [sp,#0x1c]
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrh r0, [r0,#0x36]
 	str r0, [sp,#0x20]
 loc_80AA908:

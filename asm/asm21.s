@@ -357,7 +357,7 @@ off_80812FC: .word off_80808D8
 sub_8081308:
 	push {r4-r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldr r1, [r0,#0x3c]
 	ldrb r0, [r1,#4]
 	cmp r0, #0xff
