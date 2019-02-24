@@ -9967,7 +9967,7 @@ sub_8013774:
 	thumb_local_start
 sub_8013782:
 	push {r6,lr}
-	ldrb r0, [r5,#0x16]
+	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r6, r1
 	bl sub_8013682 // (int idx) -> void*
 	ldrb r0, [r0,r6]
@@ -16477,7 +16477,7 @@ loc_8016C22:
 	ldrh r3, [r5,#oBattleObject_Unk_32]
 	lsl r3, r3, #0x10
 	mov r0, #3
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r0, #0x34 
 	add r0, r0, r5
 	stmia r0!, {r1-r3}
@@ -18247,7 +18247,7 @@ loc_8017B88:
 	ldrh r3, [r5,#oBattleObject_Unk_32]
 	lsl r3, r3, #0x10
 	mov r0, #3
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r0, #0x34 
 	add r0, r0, r5
 	stmia r0!, {r1-r3}
@@ -18869,7 +18869,7 @@ sub_80180A8:
 	ldrh r3, [r5,#oBattleObject_Unk_32]
 	lsl r3, r3, #0x10
 	mov r0, #3
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r7, #0x34 
 	add r7, r7, r5
 	stmia r7!, {r1-r3}
@@ -19110,7 +19110,7 @@ loc_8018266:
 	ldrh r3, [r5,#oBattleObject_Unk_32]
 	lsl r3, r3, #0x10
 	mov r0, #3
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r0, #0x34 
 	add r0, r0, r5
 	stmia r0!, {r1-r3}
@@ -20176,7 +20176,7 @@ object_spawnCollisionEffect:
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
 	mov r0, #0xf
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	bl sub_80E08C4
 locret_801A0FE:
 	pop {r4,r6,pc}
@@ -20206,7 +20206,7 @@ sub_801A100:
 	mov r3, #0x10
 	lsl r3, r3, #0x10
 	mov r0, #0xf
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	bl sub_80E08C4
 locret_801A138:
 	pop {r4,r6,pc}
@@ -23842,27 +23842,34 @@ loc_801BDD0:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_801BD3C
 
-	thumb_func_start sub_801BDDE
-sub_801BDDE:
+	thumb_func_start AddRandomVarianceToTwoCoords
+// adds variance to input coords determined by randint(-mask/2,mask/2+1)
+// randint is inclusive
+// input args seem to (always?) be X and Z
+AddRandomVarianceToTwoCoords:
 	push {r4,r6,r7,lr}
 	push {r0-r3}
 	bl GetRNG2 // () -> int
 	mov r7, r0
 	pop {r0-r3}
 	mov r4, r7
+	// r4 = RNG() & r0
 	and r4, r0
+	// r4 = (RNG() & r0) - (r0>>1)
 	lsr r6, r0, #1
 	sub r4, r4, r6
 	lsl r4, r4, #0x10
+	// r1 += ((RNG() & r0) - (r0>>1))<<16
 	add r1, r1, r4
 	lsr r7, r7, #0x10
 	and r7, r0
 	lsr r0, r0, #1
 	sub r7, r7, r0
 	lsl r7, r7, #0x10
+	// r3 += ((RNG() >> 16) & r0 - (r0>>1))<<16
 	add r3, r3, r7
 	pop {r4,r6,r7,pc}
-	thumb_func_end sub_801BDDE
+	thumb_func_end AddRandomVarianceToTwoCoords
 
 	thumb_func_start sub_801BE04
 sub_801BE04:

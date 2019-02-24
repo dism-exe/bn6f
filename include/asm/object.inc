@@ -154,7 +154,7 @@
 // .global object_setFlag2
 // .global object_clearFlag2
 // .global object_getFlag2
-// .global sub_801BDDE
+// .global AddRandomVarianceToTwoCoords
 // .global sub_801E754
 // .global loc_801E792
 

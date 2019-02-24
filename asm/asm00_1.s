@@ -13697,7 +13697,7 @@ off_800A2CC: .word 0x300
 sub_800A2D0:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
-	strh r0, [r1,#0x32]
+	strh r0, [r1,#oBattleState_Unk_32]
 	mov pc, lr
 	thumb_func_end sub_800A2D0
 
@@ -13725,7 +13725,7 @@ battle_clearFlags:
 battle_getFlags:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
-	ldrh r0, [r1,#0x32]
+	ldrh r0, [r1,#oBattleState_Unk_32]
 	mov pc, lr
 	thumb_func_end battle_getFlags
 

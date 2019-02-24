@@ -292,7 +292,7 @@
 	.global sub_801BCD0
 	.global sub_801BCF4
 	.global sub_801BD3C
-	.global sub_801BDDE
+	.global AddRandomVarianceToTwoCoords
 	.global sub_801BE04
 	.global nullsub_10
 	.global sub_801BE2A

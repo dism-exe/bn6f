@@ -18575,7 +18575,7 @@ sub_80C0DC2:
 	ldr r1, [r5,#oBattleObject_X]
 	ldr r2, [r5,#oBattleObject_Y]
 	ldr r3, [r5,#oBattleObject_Z]
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r4, #0x26 
 	bl SpawnT4BattleObjectWithId0
 	pop {pc}
@@ -24708,7 +24708,7 @@ sub_80C3CA0:
 	lsl r0, r0, #0x10
 	add r3, r3, r0
 	mov r0, #0xf
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	ldrb r4, [r5,#oBattleObject_Alliance]
 	ldrb r6, [r5,#oBattleObject_DirectionFlip]
 	eor r4, r6
@@ -45175,7 +45175,7 @@ sub_80CE198:
 	ldr r1, [r5,#oBattleObject_X]
 	ldr r2, [r5,#oBattleObject_Y]
 	ldr r3, [r5,#oBattleObject_Z]
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r4, #0x26 
 	bl SpawnT4BattleObjectWithId0
 loc_80CE1BA:
@@ -48406,11 +48406,11 @@ loc_80CFB7A:
 	ldrb r4, [r0,#3]
 	push {r1-r4}
 	mov r0, #0xf
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	bl sub_80E47A4
 	pop {r1-r4}
 	mov r0, #0xf
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	bl sub_80E47A4
 	mov r0, #0x34 
 	add r0, r0, r5
@@ -53624,14 +53624,14 @@ loc_80D23F0:
 	add r7, r7, r5
 	ldmia r7!, {r1-r3}
 	mov r0, #0xf
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r4, #0
 	bl sub_80E47A4
 	mov r7, #0x34 
 	add r7, r7, r5
 	ldmia r7!, {r1-r3}
 	mov r0, #0xf
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r4, #0
 	bl sub_80E47A4
 	mov r0, #0x34 
@@ -65921,14 +65921,14 @@ loc_80D85B0:
 	add r7, r7, r5
 	ldmia r7!, {r1-r3}
 	mov r0, #0xf
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r4, #0
 	bl sub_80E47A4
 	mov r7, #0x34 
 	add r7, r7, r5
 	ldmia r7!, {r1-r3}
 	mov r0, #0xf
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r4, #0
 	bl sub_80E47A4
 	mov r0, #0x34 
@@ -68535,11 +68535,11 @@ sub_80D99A4:
 	mov r4, #1
 	push {r1-r4}
 	mov r0, #0xf
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	bl sub_80E47A4
 	pop {r1-r4}
 	mov r0, #0xf
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	bl sub_80E47A4
 	mov r0, #0x34 
 	add r0, r0, r5
@@ -73094,7 +73094,7 @@ sub_80DBDBC:
 	mov r1, r0
 	mov r3, #0
 	mov r0, #3
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r4, #5
 	bl SpawnT4BattleObjectWithId0
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -80242,7 +80242,7 @@ loc_80DF69E:
 	ldrh r3, [r5,#oBattleObject_Unk_32]
 	lsl r3, r3, #0x10
 	mov r0, #3
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r0, #0x34 
 	add r0, r0, r5
 	stmia r0!, {r1-r3}
@@ -80420,7 +80420,7 @@ loc_80DF802:
 	ldrh r3, [r5,#oBattleObject_Unk_32]
 	lsl r3, r3, #0x10
 	mov r0, #3
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r0, #0x34 
 	add r0, r0, r5
 	stmia r0!, {r1-r3}
@@ -80567,7 +80567,7 @@ sub_80DF8D2:
 	lsl r0, r0, #0x10
 	add r3, r3, r0
 	mov r0, #0x1f
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r4, #0xc
 	bl SpawnT4BattleObjectWithId0
 	pop {r4,pc}
@@ -84717,7 +84717,7 @@ loc_80E1A30:
 	ldr r1, [r7,#oBattleObject_X]
 	ldr r2, [r7,#oBattleObject_Y]
 	ldr r3, [r7,#oBattleObject_Z]
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r4, #0x10
 	lsl r4, r4, #0x10
 	add r3, r3, r4
@@ -114306,7 +114306,7 @@ loc_80F027A:
 	bl object_setCoordinatesFromPanels // () -> void
 	ldr r1, [r5,#oBattleObject_X]
 	mov r0, #3
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	str r1, [r5,#oBattleObject_X]
 loc_80F0290:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]

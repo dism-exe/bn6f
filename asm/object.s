@@ -5727,7 +5727,7 @@ object_spawnHiteffect:
 	lsl r0, r0, #0x10
 	add r3, r3, r0
 	mov r0, #0xf
-	bl sub_801BDDE
+	bl AddRandomVarianceToTwoCoords
 	mov r4, #8
 	bl sub_80E08C4
 locret_800EBCE:
@@ -5928,7 +5928,7 @@ loc_800ED0A:
 	ldr r1, off_800ED28 // =byte_203F6A0 
 	str r0, [r1]
 	mov pc, lr
-	.byte 0, 0
+	.balign 4, 0
 off_800ED20: .word unk_2034080
 dword_800ED24: .word 0x80000000
 off_800ED28: .word byte_203F6A0

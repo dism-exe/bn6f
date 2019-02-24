@@ -2567,7 +2567,6 @@ word_203401E:: // 0x203401e
 	.space 98
 unk_2034080:: // 0x2034080
 	.space 124
-dword_20340FC:: // 0x20340fc
 	.space 740
 unk_20343E0:: // 0x20343e0
 	.space 32

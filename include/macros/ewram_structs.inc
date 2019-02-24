@@ -155,6 +155,10 @@ known offsets from https://pastebin.com/grDF80Vp
 0x4 - times moved
 0x8 - num counter hits
 0xb - was cross used
+
+what is byte_203CE00? field 0e is karma
+
+sub_801BCF4 = animate battle sprite?
 */
 
 /*
