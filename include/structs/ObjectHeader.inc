@@ -1,6 +1,7 @@
 
 	.macro object_header_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
 	\struct_begin \label
+	\struct_entry \label\()_ObjectHeader // loc=0x0
 	\struct_entry \label\()_Flags, 1 // loc=0x0
 	\struct_entry \label\()_Index, 1 // loc=0x1
 	\struct_entry \label\()_TypeAndSpriteOffset // loc=0x2

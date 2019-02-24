@@ -10,7 +10,7 @@
 
 /* External Symbols */
 	.include "asm/start.inc"
-// .global GameEntryPoint
+// .global 0x4000000
 
 
 /* Undeclared Symbols */

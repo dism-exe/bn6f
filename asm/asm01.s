@@ -166,7 +166,7 @@ sub_801FF18:
 	ldr r4, off_80200F0 // =byte_203F7D8 
 	ldr r5, off_80200F4 // =unk_20399F0 
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_S2034880_Ptr]
+	ldr r6, [r6,#oToolkit_BattleStatePtr]
 	ldr r7, off_80200F8 // =dword_203F4A0 
 	ldrh r1, [r5,#0x2] // (word_20399F2 - 0x20399f0)
 	mov r2, #0xfc
@@ -221,7 +221,7 @@ loc_801FF84:
 	strh r1, [r5,#0x2] // (word_2036782 - 0x2036780)
 	str r1, [sp]
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r1, [r0,#0x11]
 	strb r1, [r5,#0x6] // (byte_2036786 - 0x2036780)
 	mov r0, #4
@@ -273,7 +273,7 @@ loc_801FFEA:
 	ldr r4, off_8020110 // =byte_203F7D8 
 	ldr r5, off_8020114 // =unk_20399F0 
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_S2034880_Ptr]
+	ldr r6, [r6,#oToolkit_BattleStatePtr]
 	ldr r7, off_8020118 // =dword_203F4A0 
 	ldrh r1, [r5,#0x2] // (word_20399F2 - 0x20399f0)
 	mov r2, #0xfc
@@ -335,7 +335,7 @@ loc_802005A:
 	strh r1, [r5,#0x2] // (word_2036782 - 0x2036780)
 	str r1, [sp]
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r1, [r0,#0x11]
 	strb r1, [r5,#0x6] // (byte_2036786 - 0x2036780)
 	mov r0, #4

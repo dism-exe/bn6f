@@ -43,7 +43,7 @@ typedef struct{
 	// 02011BB0
 	void *unk_2011BB0;                // loc=0x14
 	// 02034880
-	s_02034880 *s_2034880;     // loc=0x18
+	s_02034880 *eBattleState;     // loc=0x18
 	// 0200F3A0
 	void *unk_200F3A0;                // loc=0x1C
 	// 02009740

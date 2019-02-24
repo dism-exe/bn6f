@@ -17,7 +17,7 @@
 
 /* External Symbols */
 	.include "asm/start.inc"
-// .global GameEntryPoint
+// .global 0x4000000
 
 	.include "data/dat20.inc"
 // .global byte_8080808

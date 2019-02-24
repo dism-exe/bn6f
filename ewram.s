@@ -2,7 +2,9 @@
 
 	.section ewram_2000000
 
-timer_2000000:: // 0x2000000
+// temporarily making this as a constant to
+// make detecting fake instances of this easier
+// timer_2000000:: // 0x2000000
 	.space 96
 dword_2000060:: // 0x2000060
 	.space 16
@@ -675,7 +677,7 @@ dword_2009930:: // 0x2009930
 	.space 16
 byte_2009940:: // 0x2009940
 	.space 64
-sCamera:: // 0x2009980
+eCamera:: // 0x2009980
 	.space 144
 dword_2009A10:: // 0x2009a10
 	.space 8
@@ -760,8 +762,15 @@ dword_200A258:: // 0x200a258
 	.space 4
 dword_200A25C:: // 0x200a25c
 	.space 20
-sJoystick:: // 0x200a270
-	.space 32
+
+eJoypad:: // 0x200a270
+	joypad_struct eJoypad
+eJoypadEnd::
+
+unk_200A284:: // 0x200a284
+	.space 4
+
+	.space 8
 byte_200A290:: // 0x200a290
 	.space 1
 byte_200A291:: // 0x200a291
@@ -2594,8 +2603,12 @@ unk_2034814:: // 0x2034814
 	.space 88
 unk_203486C:: // 0x203486c
 	.space 20
-s_2034880:: // 0x2034880
-	.space 288
+
+eBattleState:: // 0x2034880
+	battle_state_struct eBattleState
+eBattleStateEnd:: // 0x2034970
+	.space 48
+
 dword_20349A0:: // 0x20349a0
 	.space 4
 byte_20349A4:: // 0x20349a4

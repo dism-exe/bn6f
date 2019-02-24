@@ -14,7 +14,7 @@
 	.global sub_3005E2C
 	.global sub_3005E60
 	.global sub_3005E6A
-	.global dword_3005E80
+	.global sub_3005E80
 	.global sub_3005EBA
 	.global sub_3005EF0
 	.global sub_3006028
@@ -37,9 +37,9 @@
 	.global sub_3006F24
 	.global sub_3006F42
 	.global sub_3006F48
-	.global byte_3006F5D
-	.global dword_3006F71
-	.global byte_3006F75
+	.global sub_3006F5C
+	.global sub_3006F70
+	.global sub_3006F74
 	.global sub_3006F8C
 	.global sub_3007038
 	.global sub_30070B4
@@ -58,7 +58,7 @@
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global WordFill
-// .global loc_8000AC8
+// .global sub_8000AC8
 // .global sub_8000C00
 // .global sub_8000C5C
 
@@ -135,8 +135,8 @@
 // .equ byte_20098A8, 0x20098A8
 // .equ byte_20098A9, 0x20098A9
 // .equ word_20098AA, 0x20098AA
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
 // .equ dword_2009CC0, 0x2009CC0
 // .equ byte_200A220, 0x200A220
 // .equ dword_200A250, 0x200A250

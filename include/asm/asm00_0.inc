@@ -30,8 +30,8 @@
 	.global FillByEightWords
 	.global sub_8000A3C
 	.global objRender_8000A44
-	.global loc_8000AC4
-	.global loc_8000AC8
+	.global sub_8000AC4
+	.global sub_8000AC8
 	.global loc_8000ACA
 	.global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 	.global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
@@ -145,7 +145,7 @@
 
 /* External Symbols */
 	.include "asm/asm38.inc"
-// .global dword_3005E80
+// .global sub_3005E80
 // .global sub_3005EBA
 // .global sub_3006440
 
@@ -235,7 +235,7 @@
 // .equ byte_20097A2, 0x20097A2
 // .equ dword_20097A4, 0x20097A4
 // .equ dword_20097A8, 0x20097A8
-// .equ sCamera, 0x2009980
+// .equ eCamera, 0x2009980
 // .equ dword_2009CC0, 0x2009CC0
 // .equ dword_200A490, 0x200A490
 // .equ byte_200A494, 0x200A494

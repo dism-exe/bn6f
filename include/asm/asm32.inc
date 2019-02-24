@@ -114,7 +114,7 @@
 	.global byte_8116300
 	.global off_81163F0
 	.global sub_8116414
-	.global loc_81165A4
+	.global sub_81165A4
 	.global byte_81165BC
 	.global byte_81165C4
 	.global off_81166B0
@@ -299,7 +299,7 @@
 // .global sub_3006B94
 
 	.include "asm/start.inc"
-// .global GameEntryPoint
+// .global 0x4000000
 
 	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
@@ -309,8 +309,8 @@
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global WordFill
-// .global loc_8000AC4
-// .global loc_8000AC8
+// .global sub_8000AC4
+// .global sub_8000AC8
 // .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
@@ -418,7 +418,7 @@
 // .global sub_8010CE0
 // .global object_setAttack0
 // .global object_exitAttackState
-// .global loc_801171C
+// .global sub_801171C
 // .global sub_80126E4
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6 // (int a1, int a2) -> u8

@@ -6,4 +6,4 @@ if [ "$1" = "" -o "$2" = "" ]; then
 	exit 0
 fi
 
-sed -i 's/\<'"$1"'\>/'"$2"'/' $(grep -lwr --include="*.s" --include="*.h" --include="*.inc" --include="*.c" --exclude-dir="tools" --exclude-dir=".git" "$1")
+sed -i 's/\<'"$1"'\>/'"$2"'/' $(grep -lwr --include="*.s" --include="*.h" --include="*.inc" --exclude-dir="tools" --exclude-dir=".git" --exclude-dir="temp" "$1")
