@@ -4043,11 +4043,11 @@ off_813D8C0: .word 0x200
 
 	thumb_func_start sub_813D8C4
 sub_813D8C4:
-	ldr r0, off_813D8CC // =sCamera+80 
+	ldr r0, off_813D8CC // =eCamera+80 
 	mov r1, #4
 	str r1, [r0,#0x58] // (dword_2009A28 - 0x20099d0)
 	mov pc, lr
-off_813D8CC: .word sCamera+0x50 // sCamera.unk_50
+off_813D8CC: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_813D8C4
 
 	thumb_func_start sub_813D8D0
@@ -4278,8 +4278,8 @@ locret_813DA36:
 	thumb_func_end sub_813DA0C
 
 	push {lr}
-	ldr r3, off_813DA7C // =sCamera+80 
-	ldrb r3, [r3,#0x6] // (sCamera.pad_56 - 0x20099d0)
+	ldr r3, off_813DA7C // =eCamera+80 
+	ldrb r3, [r3,#0x6] // (eCamera.pad_56 - 0x20099d0)
 	cmp r3, #1
 	bne locret_813DA4C
 	mov r2, r1
@@ -4294,24 +4294,24 @@ locret_813DA4C:
 	pop {pc}
 	push {r4,lr}
 	mov r2, r1
-	ldr r3, off_813DA7C // =sCamera+80 
-	ldrb r0, [r3,#0x6] // (sCamera.pad_56 - 0x20099d0)
+	ldr r3, off_813DA7C // =eCamera+80 
+	ldrb r0, [r3,#0x6] // (eCamera.pad_56 - 0x20099d0)
 	cmp r0, #1
 	bne locret_813DA78
 	strb r1, [r7,#6]
-	ldr r1, [r3,#0x38] // (sCamera.unk_88 - 0x20099d0)
+	ldr r1, [r3,#0x38] // (eCamera.unk_88 - 0x20099d0)
 	ldr r4, off_813DA80 // =byte_200BC50 
 	ldrb r4, [r4,#0x1] // (byte_200BC51 - 0x200bc50)
 	tst r4, r4
 	beq loc_813DA72
-	ldr r1, [r3,#0x3c] // (sCamera.unk_8C - 0x20099d0)
+	ldr r1, [r3,#0x3c] // (eCamera.unk_8C - 0x20099d0)
 loc_813DA72:
 	mov r2, #0xa
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 locret_813DA78:
 	pop {r4,pc}
 	.balign 4, 0x00
-off_813DA7C: .word sCamera+0x50 // sCamera.unk_50
+off_813DA7C: .word eCamera+0x50 // eCamera.unk_50
 off_813DA80: .word byte_200BC50
 	thumb_func_start sub_813DA84
 sub_813DA84:
@@ -4415,11 +4415,11 @@ loc_813DB36:
 	strb r0, [r4]
 	mov r5, #0
 loc_813DB3C:
-	ldr r1, off_813DBBC // =sCamera+80 
-	ldr r6, [r1,#0x3c] // (sCamera.unk_8C - 0x20099d0)
+	ldr r1, off_813DBBC // =eCamera+80 
+	ldr r6, [r1,#0x3c] // (eCamera.unk_8C - 0x20099d0)
 	tst r5, r5
 	bne loc_813DB46
-	ldr r6, [r1,#0x38] // (sCamera.unk_88 - 0x20099d0)
+	ldr r6, [r1,#0x38] // (eCamera.unk_88 - 0x20099d0)
 loc_813DB46:
 	ldr r0, [r6]
 	ldr r1, dword_813DBA4 // =0x42523545 
@@ -4434,16 +4434,16 @@ loc_813DB58:
 	add r5, #1
 	cmp r5, #2
 	blt loc_813DB3C
-	ldr r1, off_813DBBC // =sCamera+80 
-	ldr r6, [r1,#0x38] // (sCamera.unk_88 - 0x20099d0)
+	ldr r1, off_813DBBC // =eCamera+80 
+	ldr r6, [r1,#0x38] // (eCamera.unk_88 - 0x20099d0)
 	str r6, [sp]
-	ldr r6, [r1,#0x3c] // (sCamera.unk_8C - 0x20099d0)
+	ldr r6, [r1,#0x3c] // (eCamera.unk_8C - 0x20099d0)
 	ldrb r5, [r4]
 	tst r5, r5
 	beq loc_813DB72
-	ldr r6, [r1,#0x3c] // (sCamera.unk_8C - 0x20099d0)
+	ldr r6, [r1,#0x3c] // (eCamera.unk_8C - 0x20099d0)
 	str r6, [sp]
-	ldr r6, [r1,#0x38] // (sCamera.unk_88 - 0x20099d0)
+	ldr r6, [r1,#0x38] // (eCamera.unk_88 - 0x20099d0)
 loc_813DB72:
 	ldr r0, [r6]
 	ldr r1, dword_813DBA4 // =0x42523545 
@@ -4475,7 +4475,7 @@ off_813DBA0: .word eStruct200F360
 dword_813DBA4: .word 0x42523545
 off_813DBA8: .word byte_813DBAC
 byte_813DBAC: .byte 0x0, 0x40, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
-off_813DBBC: .word sCamera+0x50 // sCamera.unk_50
+off_813DBBC: .word eCamera+0x50 // eCamera.unk_50
 byte_813DBC0: .byte 0x10, 0xB5, 0x4, 0x4C, 0x20, 0x81, 0xE1, 0x80, 0xA2
 	.byte 0x80, 0x3, 0x48, 0x20, 0x60, 0x3C, 0x20, 0x60, 0x81
 	.byte 0x10, 0xBD

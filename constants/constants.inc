@@ -56,3 +56,6 @@
 	enum TEXTSCRIPT_FD_SOUND            //
 	enum TEXTSCRIPT_FE_NUMBERINPUT      //
 	enum TEXTSCRIPT_FF_COPYTEXT         //
+
+	.equiv NULL, 0
+	.equiv timer_2000000, 0x2000000

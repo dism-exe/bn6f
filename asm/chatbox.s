@@ -97,7 +97,7 @@ loc_803FDA8:
 	ldr r0, off_803FDEC // =byte_86BFBA0
 	ldr r1, dword_803FDF0 // =0x600dc80
 	ldr r2, off_803FDF4 // =0x280
-	bl loc_8000AC8
+	bl sub_8000AC8
 	cmp r4, #1
 	beq loc_803FDC6
 	ldr r0, off_803FDFC // =byte_86BFE20
@@ -150,7 +150,7 @@ loc_803FE14:
 	ldr r0, off_803FE58 // =byte_86C05E0
 	ldr r1, dword_803FE5C // =0x600dc80
 	ldr r2, off_803FE60 // =0x320
-	bl loc_8000AC8
+	bl sub_8000AC8
 	cmp r4, #1
 	beq loc_803FE32
 	ldr r0, off_803FE68 // =byte_86C0900
@@ -193,7 +193,7 @@ chatbox_runScript_803FE74:
 	ldr r0, off_803FE9C // =spriteWhiteDot
 	ldr r1, dword_803FEA0 // =0x600dc80
 	ldr r2, off_803FEA4 // =0x6f8
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r0, off_803FEAC // =spriteWhiteDot
 	ldr r1, off_803FEB0 // =unk_3001B40
 	mov r2, #0x20
@@ -899,7 +899,7 @@ chatbox_runScript:
 	ldr r0, off_804046C // =dword_86BEB20
 	ldr r1, dword_8040470 // =0x600dc80
 	ldr r2, off_8040474 // =0x160
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r0, off_804047C // =byte_86BEC80
 	ldr r1, off_8040480 // =unk_3001B40
 	mov r2, #0x20
@@ -1038,7 +1038,7 @@ chatbox_reqBBS_80404C0:
 	ldr r0, off_80405A8 // =dword_86BEB20
 	ldr r1, dword_80405AC // =0x600dc80
 	ldr r2, off_80405B0 // =0x160
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r0, off_80405B4 // =byte_86BEC80
 	ldr r1, off_80405B8 // =unk_3001B40
 	mov r2, #0x20
@@ -1174,7 +1174,7 @@ dead_80405F8:
 	str r0, [r5,r2]
 	pop {r0,r2}
 	ldr r1, byte_80406E4 // =0x80
-	bl loc_8000AC8
+	bl sub_8000AC8
 	pop {r0}
 	ldr r1, off_80406F0 // =unk_3001B40
 	mov r2, #0x20
@@ -1348,7 +1348,7 @@ chatbox_804082C:
 	add r0, r0, r2
 	ldr r1, dword_804088C // =0x6017f00
 	mov r2, #0x80
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldrb r0, [r5,#0x1a]
 	ldrb r1, [r5,#0x1b]
 	lsl r0, r0, #0x10
@@ -1471,7 +1471,7 @@ chatbox_ED_select_8040944:
 	add r0, r0, r2
 	ldr r1, dword_80409A8 // =0x6017f80
 	mov r2, #0x80
-	bl loc_8000AC8
+	bl sub_8000AC8
 	mov r2, r5
 	add r2, #0x94
 	ldrb r1, [r2]
@@ -1525,7 +1525,7 @@ chatbox_80409C8:
 	ldr r0, off_80409D8 // =dword_86A4A40
 	ldr r1, dword_80409DC // =0x6017f80
 	mov r2, #0x80
-	bl loc_8000AC8
+	bl sub_8000AC8
 	pop {pc}
 	.hword 0x0
 off_80409D8: .word dword_86A4A40
@@ -1543,7 +1543,7 @@ chatbox_80409E0:
 	add r0, r0, r2
 	ldr r1, dword_8040A78 // =0x6017f80
 	mov r2, #0x80
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldrb r1, [r5,#0x18]
 	ldr r0, [r5,#0x70]
 	add r0, r0, r1
@@ -1628,7 +1628,7 @@ chatbox_8040A9A:
 	add r0, r0, r2
 	ldr r1, dword_8040B18 // =0x6017f80
 	mov r2, #0x80
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldrb r1, [r5,#0x18]
 	ldr r0, [r5,#0x70]
 	add r0, r0, r1
@@ -1911,11 +1911,11 @@ loc_8040CDA:
 	ldr r0, [r4,#8]
 	ldr r1, [r4,#0xc]
 	ldr r2, [r4,#0x10]
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r0, [r4,#0x14]
 	ldr r1, [r4,#0x18]
 	ldr r2, [r4,#0x1c]
-	bl loc_8000AC8
+	bl sub_8000AC8
 	pop {r4,r6,r7}
 	push {r4,r6}
 	ldr r0, [r7,#8]

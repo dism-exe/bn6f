@@ -225,8 +225,8 @@
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global HalfwordFill
-// .global loc_8000AC4
-// .global loc_8000AC8
+// .global sub_8000AC4
+// .global sub_8000AC8
 // .global decompAndCopyData // (u32 *initRefs) -> void
 // .global sub_8000C00
 // .global sub_8000EE4
@@ -899,30 +899,30 @@
 // .equ byte_2009940, 0x2009940
 // .equ byte_2009940, 0x2009940
 // .equ byte_2009940, 0x2009940
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
-// .equ sCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
+// .equ eCamera, 0x2009980
 // .equ dword_2009A10, 0x2009A10
 // .equ dword_2009A18, 0x2009A18
 // .equ dword_2009A24, 0x2009A24
@@ -930,7 +930,7 @@
 // .equ sSubmenu, 0x2009A30
 // .equ unk_2009AC0, 0x2009AC0
 // .equ unk_200A010, 0x200A010
-// .equ sJoystick, 0x200A270
+// .equ eJoypad, 0x200A270
 // .equ byte_200A290, 0x200A290
 // .equ byte_200A2A4, 0x200A2A4
 // .equ byte_200A2A6, 0x200A2A6

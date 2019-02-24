@@ -26,7 +26,7 @@ in the 0x2000000 RAM region
   Always in r10
 */
 #define eToolkit ((Toolkit*)                     0x20093B0)
-#define sCamera ((Camera*)                      0x2009980)
+#define eCamera ((Camera*)                      0x2009980)
 #define sSubmenu ((MenuControl*)                0x2009A30)
 #define sChatbox ((ChatBoxPropreties*)          0x2009CD0)
 /*
@@ -35,7 +35,7 @@ in the 0x2000000 RAM region
 */
 #define pCoords ((u32*)                         0x2009F60)
 #define iCurrFrame ((u16*)                      0x200A210)
-#define sJoystick ((Joystick*)                  0x200A270)
+#define eJoypad ((Joystick*)                  0x200A270)
 #define i_joGameSubsysSel ((u8*)                0x200A480)
 #define sStartScr ((StartScreen*)               0x200AD10)
 #define reqBBS_tile_data ((u8*)                 0x2018204)
@@ -47,7 +47,7 @@ in the 0x2000000 RAM region
   Probably an uncovered struct. pCurrBattle0 (0x020348BC)
   is likely contained within
 */
-#define s_2034880 (void*)                       0x2034880)
+#define eBattleState (void*)                       0x2034880)
 #define eT1BattleObject0 ((Battle*)                   0x203A9B0)
 /*
   [DEAD] no xrefs. Last @ 203A9B0

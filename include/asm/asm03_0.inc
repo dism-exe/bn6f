@@ -169,7 +169,7 @@
 // .global sub_3006920
 
 	.include "asm/start.inc"
-// .global GameEntryPoint
+// .global 0x4000000
 
 	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
@@ -187,8 +187,8 @@
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global HalfwordFill
 // .global WordFill
-// .global loc_8000AC4
-// .global loc_8000AC8
+// .global sub_8000AC4
+// .global sub_8000AC8
 // .global decompAndCopyData // (u32 *initRefs) -> void
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
@@ -351,7 +351,7 @@
 // .global sub_8013FD0
 // .global sub_8014216
 // .global sub_80143A6
-// .global loc_80143B4
+// .global sub_80143B4
 // .global sub_80144C0
 // .global sub_8015940
 // .global sub_8015952
@@ -779,7 +779,7 @@
 // .equ byte_2006530, 0x2006530
 // .equ dword_2006740, 0x2006740
 // .equ unk_2008170, 0x2008170
-// .equ sCamera, 0x2009980
+// .equ eCamera, 0x2009980
 // .equ dword_2009A2C, 0x2009A2C
 // .equ word_200A6F0, 0x200A6F0
 // .equ sStartScr, 0x200AD10

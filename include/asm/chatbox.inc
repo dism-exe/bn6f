@@ -60,7 +60,7 @@
 // .global CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
-// .global loc_8000AC8
+// .global sub_8000AC8
 // .global sub_8000C00
 // .global sub_8000C5C
 // .global getPETNaviSelect // () -> u8

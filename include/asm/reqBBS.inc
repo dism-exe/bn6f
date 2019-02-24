@@ -68,7 +68,7 @@
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
-// .global loc_8000AC8
+// .global sub_8000AC8
 // .global decompAndCopyData // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
 // .global GetRNG2 // () -> int

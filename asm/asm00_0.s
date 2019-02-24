@@ -769,17 +769,26 @@ CopyJumpTable8000AA8: .word CopyBytes+1
 sub_8000AB8:
 	mov r3, #0
 	b loc_8000ACA
+
+	thumb_local_start
 loc_8000ABC:
 	mov r3, #1
 	b loc_8000ACA
+
+	thumb_local_start
 loc_8000AC0:
 	mov r3, #2
 	b loc_8000ACA
-loc_8000AC4:
+
+	thumb_func_start sub_8000AC4
+sub_8000AC4:
 	mov r3, #3
 	b loc_8000ACA
-loc_8000AC8:
+
+	thumb_func_start sub_8000AC8
+sub_8000AC8:
 	mov r3, #4
+
 loc_8000ACA:
 	push {r4-r7}
 	mov r7, r3
@@ -811,6 +820,10 @@ byte_8000AFC: .byte 0x0, 0x0, 0x0, 0x84, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 off_8000B10: .word dword_200AC1C
 off_8000B14: .word fiveWordArr200B4B0
 	thumb_func_end sub_8000AB8
+	thumb_func_end loc_8000ABC
+	thumb_func_end loc_8000AC0
+	thumb_func_end sub_8000AC4
+	thumb_func_end sub_8000AC8
 
 	thumb_local_start
 sub_8000B18:
@@ -950,10 +963,10 @@ loc_8000BD6:
 	bl loc_8000AC0
 	b loc_8000BE6
 loc_8000BDC:
-	bl loc_8000AC4
+	bl sub_8000AC4
 	b loc_8000BE6
 loc_8000BE2:
-	bl loc_8000AC8
+	bl sub_8000AC8
 loc_8000BE6:
 	add r7, #0xc
 	b loc_8000B92
@@ -974,7 +987,7 @@ off_8000BFC: .word dword_2009CC0
 	thumb_func_end sub_8000BEC
 
 	thumb_func_start sub_8000C00
-sub_8000C00:
+sub_8000C00: // converts a number to BCD for printing?
 	push {r4,r7,lr}
 	ldr r1, dword_8000C54 // =0x5f5e0ff
 	cmp r0, r1
@@ -982,7 +995,7 @@ sub_8000C00:
 	ldr r0, dword_8000C58 // =0x99999999
 	b locret_8000C2C
 loc_8000C0C:
-	ldr r7, off_8000C30 // =byte_8000C34
+	ldr r7, off_8000C30 // =off_8000C34
 	mov r2, #0
 	mov r3, #8
 loc_8000C12:
@@ -1004,12 +1017,17 @@ loc_8000C22:
 locret_8000C2C:
 	pop {r4,r7,pc}
 	.byte 0, 0
-off_8000C30: .word byte_8000C34
-byte_8000C34: .byte 0x80, 0x96, 0x98, 0x0, 0x40, 0x42, 0xF, 0x0, 0xA0, 0x86
-	.byte 0x1, 0x0, 0x10, 0x27, 0x0, 0x0, 0xE8, 0x3, 0x0, 0x0
-	.byte 0x64, 0x0, 0x0, 0x0, 0xA, 0x0, 0x0, 0x0, 0x1, 0x0
-	.byte 0x0, 0x0
-dword_8000C54: .word 0x5F5E0FF
+off_8000C30: .word off_8000C34
+off_8000C34:
+	.word 10000000
+	.word 1000000
+	.word 100000
+	.word 10000
+	.word 1000
+	.word 100
+	.word 10
+	.word 1
+dword_8000C54: .word   99999999
 dword_8000C58: .word 0x99999999
 	thumb_func_end sub_8000C00
 
@@ -2098,17 +2116,17 @@ sub_8001330:
 	thumb_func_start sub_8001382
 sub_8001382:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
-	ldr r2, [r1,#0x5c]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
+	ldr r2, [r1,#oBattleState_Unk_5c]
 	orr r2, r0
-	str r2, [r1,#0x5c]
+	str r2, [r1,#oBattleState_Unk_5c]
 	mov pc, lr
 	thumb_func_end sub_8001382
 
 	thumb_local_start
 sub_800138E:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	ldr r2, [r1,#0x5c]
 	bic r2, r0
 	str r2, [r1,#0x5c]
@@ -2118,15 +2136,15 @@ sub_800138E:
 	thumb_func_start sub_800139A
 sub_800139A:
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
-	ldr r0, [r0,#0x5c]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
+	ldr r0, [r0,#oBattleState_Unk_5c]
 	mov pc, lr
 	thumb_func_end sub_800139A
 
 	thumb_func_start sub_80013A2
 sub_80013A2:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2034880_Ptr]
+	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	str r0, [r1,#0x5c]
 	mov pc, lr
 	thumb_func_end sub_80013A2
@@ -2137,7 +2155,7 @@ sub_80013AA:
 	sub sp, sp, #0x40
 	str r6, [sp,#4]
 	str r7, [sp,#0x10]
-	ldr r7, off_80014B8 // =sCamera+76
+	ldr r7, off_80014B8 // =eCamera+76
 	ldrb r7, [r7]
 	str r3, [sp,#0x24]
 	str r4, [sp,#0x28]
@@ -2270,7 +2288,7 @@ loc_80014A8:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_80014B4: .word byte_80014BC
-off_80014B8: .word sCamera+0x4C // sCamera.unk_4C
+off_80014B8: .word eCamera+0x4C // eCamera.unk_4C
 byte_80014BC: .byte 0x8, 0x8, 0x10, 0x10, 0x20, 0x20, 0x40, 0x40
 	.word byte_8200810
 	.word 0x20401020
@@ -3285,7 +3303,7 @@ sub_8001C44:
 	ldr r0, [r0]
 	ldr r1, [r7,#0xc]
 	ldr r2, [r7,#0x10]
-	bl loc_8000AC8
+	bl sub_8000AC8
 	pop {pc}
 	thumb_func_end sub_8001C44
 
@@ -3364,7 +3382,7 @@ loc_8001CA6:
 	ldr r1, [r7,#0x10]
 	ldrb r2, [r7,#0x16]
 	lsl r2, r2, #5
-	bl loc_8000AC8
+	bl sub_8000AC8
 	pop {r4,r7,pc}
 	.balign 4, 0x00
 off_8001CE4: .word off_8001AB8
@@ -3414,7 +3432,7 @@ loc_8001D0E:
 	ldr r1, [r7,#0x10]
 	ldrb r2, [r7,#0x16]
 	lsl r2, r2, #6
-	bl loc_8000AC8
+	bl sub_8000AC8
 	pop {r4,r7,pc}
 	.balign 4, 0x00
 off_8001D4C: .word off_8001AB8

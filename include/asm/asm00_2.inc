@@ -109,7 +109,7 @@
 	.global sub_80116AE
 	.global sub_80116D8
 	.global object_exitAttackState
-	.global loc_801171C
+	.global sub_801171C
 	.global sub_8011764
 	.global sub_801177A
 	.global sub_8011790
@@ -168,7 +168,7 @@
 	.global sub_8014216
 	.global sub_80142C2
 	.global sub_80143A6
-	.global loc_80143B4
+	.global sub_80143B4
 	.global sub_801443C
 	.global sub_8014446
 	.global sub_80144C0
@@ -348,7 +348,7 @@
 // .global sub_300777C
 
 	.include "asm/start.inc"
-// .global GameEntryPoint
+// .global 0x4000000
 
 	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
@@ -356,8 +356,8 @@
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
-// .global loc_8000AC4
-// .global loc_8000AC8
+// .global sub_8000AC4
+// .global sub_8000AC8
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C

@@ -653,14 +653,14 @@
 
 /* External Symbols */
 	.include "asm/start.inc"
-// .global GameEntryPoint
+// .global 0x4000000
 
 	.include "asm/asm00_0.inc"
 // .global sound_play // () -> void
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global loc_8000AC8
+// .global sub_8000AC8
 // .global sub_8000C72
 // .global sub_8000DE0
 // .global calcAngle_800117C
@@ -917,7 +917,7 @@
 // .global sub_80116AE
 // .global sub_80116D8
 // .global object_exitAttackState
-// .global loc_801171C
+// .global sub_801171C
 // .global sub_8011764
 // .global sub_801177A
 // .global sub_8011790
@@ -1237,7 +1237,7 @@
 // .global byte_8116300
 // .global off_81163F0
 // .global sub_8116414
-// .global loc_81165A4
+// .global sub_81165A4
 // .global byte_81165BC
 // .global byte_81165C4
 // .global off_81166B0

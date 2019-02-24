@@ -147,7 +147,7 @@ sub_8033978:
 	ldr r0, off_80339B0 // =dword_86C0D20
 	ldr r1, dword_80339B4 // =0x6017200
 	ldr r2, off_80339B8 // =0x100
-	bl loc_8000AC8
+	bl sub_8000AC8
 	mov r0, #0
 	bl sub_8033DA0
 	pop {r4-r7,pc}
@@ -155,11 +155,11 @@ loc_8033998:
 	ldr r0, off_80339C0 // =byte_86C1F80
 	ldr r1, dword_80339B4 // =0x6017200
 	ldr r2, off_80339C4 // =0x340
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r0, off_80339C8 // =byte_86C1F20
 	ldr r1, off_80339BC // =byte_30016D0
 	mov r2, #0x20
-	bl loc_8000AC8
+	bl sub_8000AC8
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_80339B0: .word dword_86C0D20
@@ -436,7 +436,7 @@ loc_8033C02:
 	ldr r0, [r1,r4]
 	ldr r1, dword_8033C58 // =0x6017380
 	ldr r2, off_8033C5C // =0x80
-	bl loc_8000AC4
+	bl sub_8000AC4
 	ldr r0, dword_8033C60 // =0x40120006
 	ldr r1, dword_8033C64 // =0xc79c
 	mov r2, #1
@@ -473,7 +473,7 @@ sub_8033C68:
 	ldr r0, [r1,r0]
 	ldr r1, dword_8033CD8 // =0x6017400
 	ldr r2, off_8033CDC // =0x100
-	bl loc_8000AC4
+	bl sub_8000AC4
 	ldrb r0, [r5,#6]
 	ldr r1, off_8033CC0 // =byte_8033CC4
 	ldrb r0, [r1,r0]
@@ -528,7 +528,7 @@ sub_8033CF0:
 	ldr r0, [r1,r0]
 	ldr r1, dword_8033D74 // =0x6017400
 	ldr r2, off_8033D78 // =0x100
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldrb r0, [r5,#6]
 	add r0, #1
 	cmp r0, #0x12
@@ -612,7 +612,7 @@ loc_8033DBC:
 	add r0, r0, r6
 	ldr r1, off_8033E08 // =byte_30016D0
 	mov r2, #0x20
-	bl loc_8000AC8
+	bl sub_8000AC8
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_8033DD0: .word off_8033DD4
@@ -806,7 +806,7 @@ sub_8033F80:
 	ldr r0, off_8033FA8 // =byte_86C1AA0
 	ldr r1, dword_8033FAC // =0x6017580
 	mov r2, #0x80
-	bl loc_8000AC8
+	bl sub_8000AC8
 	ldr r0, off_8033FB0 // =byte_8033FB4
 	lsl r4, r4, #2
 	ldr r0, [r0,r4]
@@ -1308,7 +1308,7 @@ loc_80343D0:
 	ldr r0, [r7,#4]
 	ldr r1, off_8034458 // =byte_3001960
 	mov r2, #0x20
-	bl loc_8000AC4
+	bl sub_8000AC4
 	// j
 	mov r0, #0
 	// i
@@ -14096,7 +14096,7 @@ loc_803BE78:
 	ldr r0, [sp,#4]
 	ldr r1, [sp,#8]
 	ldr r2, [sp,#0xc]
-	bl loc_8000AC8
+	bl sub_8000AC8
 	add sp, sp, #0x10
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -15147,7 +15147,7 @@ loc_803C5DE:
 	add r0, r0, r1
 	ldr r1, dword_803C5FC // =0x6017e80
 	mov r2, #0x80
-	bl loc_8000AC8
+	bl sub_8000AC8
 locret_803C5EC:
 	pop {r4-r7,pc}
 	.byte 0, 0
@@ -17125,48 +17125,48 @@ off_803DC78: .word eStruct2036780
 	thumb_func_start sub_803DCD8
 sub_803DCD8:
 	push {r4-r7,lr}
-	ldr r7, off_803DCE4 // =sCamera+80
-	str r0, [r7,#0x1c] // (sCamera.pad_6A+2 - 0x20099d0)
-	strh r1, [r7,#0xa] // (sCamera.pad_59+1 - 0x20099d0)
-	strh r2, [r7,#0xe] // (sCamera.pad_5E - 0x20099d0)
+	ldr r7, off_803DCE4 // =eCamera+80
+	str r0, [r7,#0x1c] // (eCamera.pad_6A+2 - 0x20099d0)
+	strh r1, [r7,#0xa] // (eCamera.pad_59+1 - 0x20099d0)
+	strh r2, [r7,#0xe] // (eCamera.pad_5E - 0x20099d0)
 	pop {r4-r7,pc}
-off_803DCE4: .word sCamera+0x50 // sCamera.unk_50
+off_803DCE4: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803DCD8
 
 	thumb_func_start sub_803DCE8
 sub_803DCE8:
 	push {r4-r7,lr}
-	ldr r7, off_803DD5C // =sCamera+80
-	str r0, [r7,#0x20] // (sCamera.unk_70 - 0x20099d0)
-	str r0, [r7,#0x24] // (sCamera.unk_74 - 0x20099d0)
-	strb r2, [r7,#0x3] // (sCamera.unk_53 - 0x20099d0)
-	strb r3, [r7,#0x2] // (sCamera.unk_52 - 0x20099d0)
+	ldr r7, off_803DD5C // =eCamera+80
+	str r0, [r7,#0x20] // (eCamera.unk_70 - 0x20099d0)
+	str r0, [r7,#0x24] // (eCamera.unk_74 - 0x20099d0)
+	strb r2, [r7,#0x3] // (eCamera.unk_53 - 0x20099d0)
+	strb r3, [r7,#0x2] // (eCamera.unk_52 - 0x20099d0)
 	ldr r0, off_803DD58 // =off_803DC78
 	lsl r1, r1, #4
 	add r0, r0, r1
 	ldr r1, [r0]
-	str r1, [r7,#0x34] // (sCamera.unk_84 - 0x20099d0)
+	str r1, [r7,#0x34] // (eCamera.unk_84 - 0x20099d0)
 	ldr r1, [r0,#4]
-	str r1, [r7,#0x38] // (sCamera.unk_88 - 0x20099d0)
+	str r1, [r7,#0x38] // (eCamera.unk_88 - 0x20099d0)
 	ldr r1, [r0,#8]
-	str r1, [r7,#0x3c] // (sCamera.unk_8C - 0x20099d0)
+	str r1, [r7,#0x3c] // (eCamera.unk_8C - 0x20099d0)
 	ldrb r1, [r0,#0xc]
 	strb r1, [r7]
-	strb r1, [r7,#0x1] // (sCamera.unk_51 - 0x20099d0)
+	strb r1, [r7,#0x1] // (eCamera.unk_51 - 0x20099d0)
 	mov r1, #0
-	strb r1, [r7,#0x5] // (sCamera.unk_55 - 0x20099d0)
-	strb r1, [r7,#0x8] // (sCamera.unk_58 - 0x20099d0)
-	strh r1, [r7,#0x18] // (sCamera.unk_68 - 0x20099d0)
+	strb r1, [r7,#0x5] // (eCamera.unk_55 - 0x20099d0)
+	strb r1, [r7,#0x8] // (eCamera.unk_58 - 0x20099d0)
+	strh r1, [r7,#0x18] // (eCamera.unk_68 - 0x20099d0)
 	mvn r1, r1
-	strh r1, [r7,#0x10] // (sCamera.unk_60 - 0x20099d0)
-	strh r1, [r7,#0x12] // (sCamera.unk_62 - 0x20099d0)
-	strh r1, [r7,#0x14] // (sCamera.unk_64 - 0x20099d0)
-	strh r1, [r7,#0x16] // (sCamera.unk_66 - 0x20099d0)
-	ldr r0, [r7,#0x38] // (sCamera.unk_88 - 0x20099d0)
-	ldr r1, [r7,#0x24] // (sCamera.unk_74 - 0x20099d0)
+	strh r1, [r7,#0x10] // (eCamera.unk_60 - 0x20099d0)
+	strh r1, [r7,#0x12] // (eCamera.unk_62 - 0x20099d0)
+	strh r1, [r7,#0x14] // (eCamera.unk_64 - 0x20099d0)
+	strh r1, [r7,#0x16] // (eCamera.unk_66 - 0x20099d0)
+	ldr r0, [r7,#0x38] // (eCamera.unk_88 - 0x20099d0)
+	ldr r1, [r7,#0x24] // (eCamera.unk_74 - 0x20099d0)
 	bl ZeroFillByByte // (void *mem, int size) -> void
-	ldr r0, [r7,#0x3c] // (sCamera.unk_8C - 0x20099d0)
-	ldr r1, [r7,#0x24] // (sCamera.unk_74 - 0x20099d0)
+	ldr r0, [r7,#0x3c] // (eCamera.unk_8C - 0x20099d0)
+	ldr r1, [r7,#0x24] // (eCamera.unk_74 - 0x20099d0)
 	bl ZeroFillByByte // (void *mem, int size) -> void
 	pop {r4-r7,pc}
 	thumb_func_end sub_803DCE8
@@ -17185,7 +17185,7 @@ sub_803DD30:
 	cmp r1, #8
 	beq loc_803DD52
 loc_803DD48:
-	ldr r7, off_803DD5C // =sCamera+80
+	ldr r7, off_803DD5C // =eCamera+80
 	ldr r0, [r7,#0x48] // (dword_2009A18 - 0x20099d0)
 	mov r1, #3
 	and r0, r1
@@ -17195,7 +17195,7 @@ loc_803DD52:
 	pop {r7,pc}
 	.balign 4, 0x00
 off_803DD58: .word off_803DC78
-off_803DD5C: .word sCamera+0x50 // sCamera.unk_50
+off_803DD5C: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803DD30
 
 	thumb_func_start sub_803DD60
@@ -17211,7 +17211,7 @@ sub_803DD60:
 	cmp r1, #8
 	beq loc_803DD84
 loc_803DD76:
-	ldr r7, off_803DD88 // =sCamera+80
+	ldr r7, off_803DD88 // =eCamera+80
 	ldr r0, [r7,#0x48] // (dword_2009A18 - 0x20099d0)
 	mov r1, #3
 	and r0, r1
@@ -17222,60 +17222,60 @@ loc_803DD84:
 	mov r0, #1
 locret_803DD86:
 	pop {r7,pc}
-off_803DD88: .word sCamera+0x50 // sCamera.unk_50
+off_803DD88: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803DD60
 
 	thumb_local_start
 sub_803DD8C:
 	push {r7,lr}
-	ldr r7, off_803DDA0 // =sCamera+80
+	ldr r7, off_803DDA0 // =eCamera+80
 	mov r0, #8
 	strb r0, [r7]
-	strb r0, [r7,#0x1] // (sCamera.unk_51 - 0x20099d0)
+	strb r0, [r7,#0x1] // (eCamera.unk_51 - 0x20099d0)
 	mov r0, #0x10
-	strh r0, [r7,#0xc] // (sCamera.unk_5C - 0x20099d0)
+	strh r0, [r7,#0xc] // (eCamera.unk_5C - 0x20099d0)
 	mov r0, #0
-	strb r0, [r7,#0x8] // (sCamera.unk_58 - 0x20099d0)
+	strb r0, [r7,#0x8] // (eCamera.unk_58 - 0x20099d0)
 	pop {r7,pc}
-off_803DDA0: .word sCamera+0x50 // sCamera.unk_50
+off_803DDA0: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803DD8C
 
 	thumb_func_start sub_803DDA4
 sub_803DDA4:
 	push {r7,lr}
-	ldr r7, off_803DDBC // =sCamera+80
+	ldr r7, off_803DDBC // =eCamera+80
 	mov r0, #0x10
 	strb r0, [r7]
 	mov r0, #0xc
-	strb r0, [r7,#0x1] // (sCamera.unk_51 - 0x20099d0)
+	strb r0, [r7,#0x1] // (eCamera.unk_51 - 0x20099d0)
 	mov r0, #0x10
-	strh r0, [r7,#0xc] // (sCamera.unk_5C - 0x20099d0)
+	strh r0, [r7,#0xc] // (eCamera.unk_5C - 0x20099d0)
 	mov r0, #0
-	strb r0, [r7,#0x8] // (sCamera.unk_58 - 0x20099d0)
+	strb r0, [r7,#0x8] // (eCamera.unk_58 - 0x20099d0)
 	pop {r7,pc}
 	.balign 4, 0x00
-off_803DDBC: .word sCamera+0x50 // sCamera.unk_50
+off_803DDBC: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803DDA4
 
 	thumb_local_start
 sub_803DDC0:
 	push {r7,lr}
-	ldr r7, off_803DDD0 // =sCamera+80
+	ldr r7, off_803DDD0 // =eCamera+80
 	mov r0, #8
 	strb r0, [r7]
 	mov r0, #0x10
-	strh r0, [r7,#0xc] // (sCamera.unk_5C - 0x20099d0)
+	strh r0, [r7,#0xc] // (eCamera.unk_5C - 0x20099d0)
 	pop {r7,pc}
 	.byte 0, 0
-off_803DDD0: .word sCamera+0x50 // sCamera.unk_50
+off_803DDD0: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803DDC0
 
 	thumb_local_start
 sub_803DDD4:
 	push {r7,lr}
 	mov r1, #1
-	ldr r7, off_803DDE8 // =sCamera+80
-	ldrh r0, [r7,#0xe] // (sCamera.pad_5E - 0x20099d0)
+	ldr r7, off_803DDE8 // =eCamera+80
+	ldrh r0, [r7,#0xe] // (eCamera.pad_5E - 0x20099d0)
 	cmp r0, #2
 	blt loc_803DDE2
 	mov r1, #0
@@ -17283,15 +17283,15 @@ loc_803DDE2:
 	mov r0, r1
 	pop {r7,pc}
 	.balign 4, 0x00
-off_803DDE8: .word sCamera+0x50 // sCamera.unk_50
+off_803DDE8: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803DDD4
 
 	thumb_local_start
 sub_803DDEC:
 	push {r4,r7,lr}
 	mov r4, #1
-	ldr r7, off_803DE20 // =sCamera+80
-	ldrb r0, [r7,#0x1] // (sCamera.unk_51 - 0x20099d0)
+	ldr r7, off_803DE20 // =eCamera+80
+	ldrb r0, [r7,#0x1] // (eCamera.unk_51 - 0x20099d0)
 	cmp r0, #8
 	bne loc_803DE1A
 	ldrb r0, [r7]
@@ -17302,12 +17302,12 @@ sub_803DDEC:
 	mov r1, #0x7f
 	and r1, r0
 	beq loc_803DE12
-	ldrh r0, [r7,#0xc] // (sCamera.unk_5C - 0x20099d0)
+	ldrh r0, [r7,#0xc] // (eCamera.unk_5C - 0x20099d0)
 	cmp r0, #8
 	blt loc_803DE18
 	b loc_803DE1A
 loc_803DE12:
-	ldrh r0, [r7,#0xc] // (sCamera.unk_5C - 0x20099d0)
+	ldrh r0, [r7,#0xc] // (eCamera.unk_5C - 0x20099d0)
 	tst r0, r0
 	bne loc_803DE1A
 loc_803DE18:
@@ -17316,15 +17316,15 @@ loc_803DE1A:
 	mov r0, r4
 	pop {r4,r7,pc}
 	.byte 0, 0
-off_803DE20: .word sCamera+0x50 // sCamera.unk_50
+off_803DE20: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803DDEC
 
 	thumb_func_start sub_803DE24
 sub_803DE24:
 	push {r4,r7,lr}
 	mov r4, #1
-	ldr r7, off_803DE58 // =sCamera+80
-	ldrb r0, [r7,#0x1] // (sCamera.unk_51 - 0x20099d0)
+	ldr r7, off_803DE58 // =eCamera+80
+	ldrb r0, [r7,#0x1] // (eCamera.unk_51 - 0x20099d0)
 	cmp r0, #0xc
 	bne loc_803DE52
 	ldrb r0, [r7]
@@ -17335,12 +17335,12 @@ sub_803DE24:
 	mov r1, #0x7f
 	and r1, r0
 	beq loc_803DE4A
-	ldrh r0, [r7,#0xc] // (sCamera.unk_5C - 0x20099d0)
+	ldrh r0, [r7,#0xc] // (eCamera.unk_5C - 0x20099d0)
 	cmp r0, #8
 	blt loc_803DE50
 	b loc_803DE52
 loc_803DE4A:
-	ldrh r0, [r7,#0xc] // (sCamera.unk_5C - 0x20099d0)
+	ldrh r0, [r7,#0xc] // (eCamera.unk_5C - 0x20099d0)
 	tst r0, r0
 	bne loc_803DE52
 loc_803DE50:
@@ -17349,13 +17349,13 @@ loc_803DE52:
 	mov r0, r4
 	pop {r4,r7,pc}
 	.balign 4, 0x00
-off_803DE58: .word sCamera+0x50 // sCamera.unk_50
+off_803DE58: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803DE24
 
 	thumb_func_start sub_803DE5C
 sub_803DE5C:
 	push {lr}
-	ldr r0, off_803DE84 // =sJoystick+20
+	ldr r0, =unk_200A284
 	mov r1, #1
 	str r1, [r0]
 	pop {pc}
@@ -17365,7 +17365,7 @@ sub_803DE5C:
 	thumb_local_start
 sub_803DE68:
 	push {lr}
-	ldr r0, off_803DE84 // =sJoystick+20
+	ldr r0, =unk_200A284
 	mov r1, #0
 	str r1, [r0]
 	pop {pc}
@@ -17374,7 +17374,7 @@ sub_803DE68:
 	thumb_func_start sub_803DE72
 sub_803DE72:
 	push {lr}
-	ldr r0, off_803DE84 // =sJoystick+20
+	ldr r0, =unk_200A284
 	ldr r0, [r0]
 	tst r0, r0
 	beq locret_803DE80
@@ -17382,14 +17382,15 @@ sub_803DE72:
 locret_803DE80:
 	pop {pc}
 	.balign 4, 0x00
-off_803DE84: .word sJoystick+0x14 // sJoystick.unk_14
+// 0x803DE84
+	.pool
 	thumb_func_end sub_803DE72
 
 	thumb_func_start sub_803DE88
 sub_803DE88:
 	push {r4-r7,lr}
 	mov r4, r0
-	ldr r0, off_803DF9C // =sCamera+80
+	ldr r0, off_803DF9C // =eCamera+80
 	mov r6, r0
 	mov r1, #0x58
 	bl ZeroFillByHalfword
@@ -17415,7 +17416,7 @@ sub_803DEAC:
 sub_803DEB4:
 	push {r4-r7,lr}
 	mov r6, #1
-	ldr r7, off_803DF9C // =sCamera+80
+	ldr r7, off_803DF9C // =eCamera+80
 	add r0, r7, #6
 	ldr r1, off_803DFA0 // =byte_200DD10
 	ldr r2, off_803DFA4 // =unk_2009480
@@ -17440,29 +17441,29 @@ loc_803DED6:
 	mov r1, #0x2f
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_803DEF8
-	ldrh r0, [r7,#0xc] // (sCamera.unk_5C - 0x20099d0)
+	ldrh r0, [r7,#0xc] // (eCamera.unk_5C - 0x20099d0)
 	tst r0, r0
 	beq loc_803DEF8
 	sub r0, #1
-	strh r0, [r7,#0xc] // (sCamera.unk_5C - 0x20099d0)
+	strh r0, [r7,#0xc] // (eCamera.unk_5C - 0x20099d0)
 	b loc_803DF16
 loc_803DEF8:
 	mov r1, #1
-	strb r1, [r7,#0x6] // (sCamera.pad_56 - 0x20099d0)
+	strb r1, [r7,#0x6] // (eCamera.pad_56 - 0x20099d0)
 	b loc_803DF16
 loc_803DEFE:
 	cmp r0, #2
 	bne loc_803DF16
-	ldrb r2, [r7,#0x7] // (sCamera.pad_56+1 - 0x20099d0)
+	ldrb r2, [r7,#0x7] // (eCamera.pad_56+1 - 0x20099d0)
 	cmp r2, #2
 	bne loc_803DF0E
 	mov r0, #0xff
-	strb r0, [r7,#0x7] // (sCamera.pad_56+1 - 0x20099d0)
+	strb r0, [r7,#0x7] // (eCamera.pad_56+1 - 0x20099d0)
 	b loc_803DF16
 loc_803DF0E:
-	strb r0, [r7,#0x7] // (sCamera.pad_56+1 - 0x20099d0)
+	strb r0, [r7,#0x7] // (eCamera.pad_56+1 - 0x20099d0)
 	mov r1, #1
-	strb r1, [r7,#0x6] // (sCamera.pad_56 - 0x20099d0)
+	strb r1, [r7,#0x6] // (eCamera.pad_56 - 0x20099d0)
 	b loc_803DF16
 loc_803DF16:
 	ldr r0, [sp]
@@ -17475,7 +17476,7 @@ loc_803DF16:
 	and r0, r1
 	lsr r0, r0, #2
 	str r0, [sp,#8]
-	strb r0, [r7,#0x4] // (sCamera.pad_54 - 0x20099d0)
+	strb r0, [r7,#0x4] // (eCamera.pad_54 - 0x20099d0)
 	ldr r0, [sp]
 	mov r1, #0x20
 	and r0, r1
@@ -17528,8 +17529,8 @@ loc_803DF86:
 	add sp, sp, #0x10
 	cmp r6, #4
 	bne loc_803DF96
-	ldr r0, off_803DF9C // =sCamera+80
-	ldrb r1, [r0,#0x5] // (sCamera.unk_55 - 0x20099d0)
+	ldr r0, off_803DF9C // =eCamera+80
+	ldrb r1, [r0,#0x5] // (eCamera.unk_55 - 0x20099d0)
 	tst r1, r1
 	beq loc_803DF96
 	mov r6, #4
@@ -17537,7 +17538,7 @@ loc_803DF96:
 	mov r0, r6
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_803DF9C: .word sCamera+0x50 // sCamera.unk_50
+off_803DF9C: .word eCamera+0x50 // eCamera.unk_50
 off_803DFA0: .word byte_200DD10
 off_803DFA4: .word unk_2009480
 	.word byte_200F460
@@ -17685,7 +17686,7 @@ ho_803E114:
 	mov r3, r9
 	push {r0,r3}
 	ldr r5, off_803E14C // =byte_200DD10
-	ldr r7, off_803E150 // =sCamera+80
+	ldr r7, off_803E150 // =eCamera+80
 	ldr r1, off_803E134 // =jt_803E138
 	ldrb r0, [r7]
 	ldr r0, [r1,r0]
@@ -17703,7 +17704,7 @@ jt_803E138: .word sub_803E154+1
 	.word sub_803E1E0+1
 	.word sub_803E1D0+1
 off_803E14C: .word byte_200DD10
-off_803E150: .word sCamera+0x50 // sCamera.unk_50
+off_803E150: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end ho_803E114
 
 	thumb_local_start
@@ -17821,11 +17822,11 @@ loc_803E1F4:
 sub_803E200:
 	push {r4-r7,lr}
 	ldr r5, off_803E22C // =unk_2009480
-	ldr r6, off_803E230 // =sCamera+80
+	ldr r6, off_803E230 // =eCamera+80
 	mov r0, #1
-	strb r0, [r6,#0x5] // (sCamera.unk_55 - 0x20099d0)
+	strb r0, [r6,#0x5] // (eCamera.unk_55 - 0x20099d0)
 	ldr r1, off_803E218 // =off_803E21C
-	ldrb r0, [r6,#0x1] // (sCamera.unk_51 - 0x20099d0)
+	ldrb r0, [r6,#0x1] // (eCamera.unk_51 - 0x20099d0)
 	ldr r0, [r1,r0]
 	mov lr, pc
 	bx r0
@@ -17837,7 +17838,7 @@ off_803E21C: .word sub_803E234+1
 	.word sub_803E6F8+1
 	.word sub_803E740+1
 off_803E22C: .word unk_2009480
-off_803E230: .word sCamera+0x50 // sCamera.unk_50
+off_803E230: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803E200
 
 	thumb_local_start
@@ -18631,7 +18632,7 @@ locret_803E7C6:
 	pop {r4-r7,pc}
 off_803E7C8: .word dword_803E7D4
 off_803E7CC: .word byte_2009940
-	.word sCamera+0x50 // sCamera.unk_50
+	.word eCamera+0x50 // eCamera.unk_50
 dword_803E7D4: .word 0x4FFFF02
 	thumb_func_end sub_803E7A4
 
@@ -18675,7 +18676,7 @@ sub_803E80C:
 	bl sub_800A7D0 // () -> (zf, int)
 	beq locret_803E826
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2034880_Ptr]
+	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0]
 	cmp r0, #4
 	bne locret_803E826
@@ -18699,7 +18700,7 @@ loc_803E832:
 	cmp r2, #5
 	ble locret_803E84A
 loc_803E838:
-	ldr r7, off_803E84C // =sCamera+80
+	ldr r7, off_803E84C // =eCamera+80
 	mov r0, r1
 	cmp r1, r2
 	bge loc_803E842
@@ -18711,7 +18712,7 @@ loc_803E842:
 	strb r0, [r7]
 locret_803E84A:
 	pop {r0-r2,r7,pc}
-off_803E84C: .word sCamera+0x50 // sCamera.unk_50
+off_803E84C: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803E828
 
 	thumb_local_start
@@ -18726,7 +18727,7 @@ loc_803E85A:
 	cmp r2, #5
 	ble locret_803E87A
 loc_803E860:
-	ldr r7, off_803E87C // =sCamera+80
+	ldr r7, off_803E87C // =eCamera+80
 	mov r0, r1
 	cmp r1, r2
 	bge loc_803E86A
@@ -18743,7 +18744,7 @@ loc_803E874:
 	strb r0, [r7]
 locret_803E87A:
 	pop {r0-r2,r7,pc}
-off_803E87C: .word sCamera+0x50 // sCamera.unk_50
+off_803E87C: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803E850
 
 	thumb_local_start
@@ -18759,26 +18760,26 @@ sub_803E880:
 	thumb_local_start
 sub_803E88C:
 	push {lr}
-	ldr r2, off_803E898 // =sCamera+80
-	ldrb r0, [r2,#0x4] // (sCamera.pad_54 - 0x20099d0)
-	ldrb r1, [r2,#0x3] // (sCamera.unk_53 - 0x20099d0)
+	ldr r2, off_803E898 // =eCamera+80
+	ldrb r0, [r2,#0x4] // (eCamera.pad_54 - 0x20099d0)
+	ldrb r1, [r2,#0x3] // (eCamera.unk_53 - 0x20099d0)
 	cmp r0, r1
 	pop {pc}
-off_803E898: .word sCamera+0x50 // sCamera.unk_50
+off_803E898: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803E88C
 
 	thumb_local_start
 sub_803E89C:
 	push {lr}
-	ldr r6, off_803E8B0 // =sCamera+80
+	ldr r6, off_803E8B0 // =eCamera+80
 	mov r0, #0
-	strh r0, [r6,#0xe] // (sCamera.pad_5E - 0x20099d0)
+	strh r0, [r6,#0xe] // (eCamera.pad_5E - 0x20099d0)
 	mov r0, #8
-	strb r0, [r6,#0x1] // (sCamera.unk_51 - 0x20099d0)
+	strb r0, [r6,#0x1] // (eCamera.unk_51 - 0x20099d0)
 	mov r0, r6
 	bl sub_803E880
 	pop {pc}
-off_803E8B0: .word sCamera+0x50 // sCamera.unk_50
+off_803E8B0: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803E89C
 
 	thumb_local_start
@@ -18809,19 +18810,19 @@ loc_803E8D8:
 
 	thumb_local_start
 sub_803E8DC:
-	ldr r0, off_803E8EC // =sCamera+80
-	ldr r0, [r0,#0x24] // (sCamera.unk_74 - 0x20099d0)
+	ldr r0, off_803E8EC // =eCamera+80
+	ldr r0, [r0,#0x24] // (eCamera.unk_74 - 0x20099d0)
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end sub_803E8DC
 
 	thumb_func_start sub_803E8E4
 sub_803E8E4:
-	ldr r0, off_803E8EC // =sCamera+80
+	ldr r0, off_803E8EC // =eCamera+80
 	ldrb r0, [r0]
 	mov pc, lr
 	.balign 4, 0x00
-off_803E8EC: .word sCamera+0x50 // sCamera.unk_50
+off_803E8EC: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803E8E4
 
 	thumb_local_start
@@ -18834,9 +18835,9 @@ sub_803E8F0:
 
 	thumb_func_start sub_803E8F8
 sub_803E8F8:
-	ldr r0, off_803E8FC // =sCamera+80
+	ldr r0, off_803E8FC // =eCamera+80
 	mov pc, lr
-off_803E8FC: .word sCamera+0x50 // sCamera.unk_50
+off_803E8FC: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803E8F8
 
 	thumb_func_start sub_803E900
@@ -18995,7 +18996,7 @@ loc_803EA0A:
 	mov r0, r6
 	tst r0, r0
 	pop {r4-r7,pc}
-	.word sCamera+0x50 // sCamera.unk_50
+	.word eCamera+0x50 // eCamera.unk_50
 off_803EA14: .word byte_200B1A0
 off_803EA18: .word word_200AD04
 	thumb_func_end sub_803E978
@@ -19015,14 +19016,14 @@ locret_803EA28:
 sub_803EA2C:
 	push {lr}
 	mov r0, #0
-	ldr r1, off_803EA3C // =sCamera+80
+	ldr r1, off_803EA3C // =eCamera+80
 	ldrb r1, [r1]
 	cmp r1, #0xc
 	bne locret_803EA3A
 	mov r0, #1
 locret_803EA3A:
 	pop {pc}
-off_803EA3C: .word sCamera+0x50 // sCamera.unk_50
+off_803EA3C: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803EA2C
 
 	thumb_local_start
@@ -19481,8 +19482,8 @@ off_803ED48: .word eStruct200BC30
 sub_803ED4C:
 	push {r4-r7,lr}
 	ldr r5, off_803EE84 // =unk_2009480
-	ldr r6, off_803EE88 // =sCamera+80
-	ldrb r7, [r6,#0x4] // (sCamera.pad_54 - 0x20099d0)
+	ldr r6, off_803EE88 // =eCamera+80
+	ldrb r7, [r6,#0x4] // (eCamera.pad_54 - 0x20099d0)
 	mov r3, #2
 	mov r0, #4
 	mul r3, r0
@@ -19547,7 +19548,7 @@ loc_803EDB8:
 	ldrh r1, [r4,r1]
 	lsl r1, r1, #0x10
 	orr r0, r1
-	ldr r1, [r6,#0x1c] // (sCamera.pad_6A+2 - 0x20099d0)
+	ldr r1, [r6,#0x1c] // (eCamera.pad_6A+2 - 0x20099d0)
 	cmp r0, r1
 	pop {r1}
 	bne loc_803EE6A
@@ -19568,7 +19569,7 @@ loc_803EDD6:
 	ldrh r1, [r4,r1]
 	lsl r1, r1, #0x10
 	orr r0, r1
-	str r0, [r6,#0x20] // (sCamera.unk_70 - 0x20099d0)
+	str r0, [r6,#0x20] // (eCamera.unk_70 - 0x20099d0)
 	ldr r1, dword_803EE8C // =0x800
 	cmp r0, r1
 	bne loc_803EE08
@@ -19606,14 +19607,14 @@ loc_803EE28:
 	lsl r1, r1, #0x10
 	orr r0, r1
 	str r0, [r6,#0x40] // (dword_2009A10 - 0x20099d0)
-	ldrb r0, [r6,#0x1] // (sCamera.unk_51 - 0x20099d0)
+	ldrb r0, [r6,#0x1] // (eCamera.unk_51 - 0x20099d0)
 	add r0, #4
-	strb r0, [r6,#0x1] // (sCamera.unk_51 - 0x20099d0)
+	strb r0, [r6,#0x1] // (eCamera.unk_51 - 0x20099d0)
 	strb r0, [r6]
 	mov r0, #2
-	strh r0, [r6,#0xe] // (sCamera.pad_5E - 0x20099d0)
+	strh r0, [r6,#0xe] // (eCamera.pad_5E - 0x20099d0)
 	mov r0, #0
-	str r0, [r6,#0x30] // (sCamera.pad_78+8 - 0x20099d0)
+	str r0, [r6,#0x30] // (eCamera.pad_78+8 - 0x20099d0)
 	mov r0, #4
 	bl sub_803EBE4
 	add sp, sp, #0x14
@@ -19637,7 +19638,7 @@ loc_803EE6A:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_803EE84: .word unk_2009480
-off_803EE88: .word sCamera+0x50 // sCamera.unk_50
+off_803EE88: .word eCamera+0x50 // eCamera.unk_50
 dword_803EE8C: .word 0x800
 off_803EE90: .word sSubmenu
 dword_803EE94: .word 0x1000
@@ -19647,7 +19648,7 @@ dword_803EE94: .word 0x1000
 sub_803EE98:
 	push {r4-r7,lr}
 	sub sp, sp, #0x14
-	ldr r6, off_803EF44 // =sCamera+80
+	ldr r6, off_803EF44 // =eCamera+80
 	ldr r5, off_803EF40 // =unk_2009480
 	mov r0, #0
 	str r0, [sp]
@@ -19674,9 +19675,9 @@ loc_803EEC6:
 	add r1, #2
 	cmp r1, #8
 	blt loc_803EEAE
-	ldr r3, [r6,#0x38] // (sCamera.unk_88 - 0x20099d0)
-	ldr r4, [r6,#0x3c] // (sCamera.unk_8C - 0x20099d0)
-	ldr r7, [r6,#0x20] // (sCamera.unk_70 - 0x20099d0)
+	ldr r3, [r6,#0x38] // (eCamera.unk_88 - 0x20099d0)
+	ldr r4, [r6,#0x3c] // (eCamera.unk_8C - 0x20099d0)
+	ldr r7, [r6,#0x20] // (eCamera.unk_70 - 0x20099d0)
 	mov r0, #2
 	mov r1, #4
 	mul r0, r1
@@ -19692,22 +19693,22 @@ loc_803EED8:
 	add r4, #2
 	sub r7, #2
 	bgt loc_803EED8
-	ldr r0, [r6,#0x38] // (sCamera.unk_88 - 0x20099d0)
+	ldr r0, [r6,#0x38] // (eCamera.unk_88 - 0x20099d0)
 	ldrb r0, [r0]
 	mov r1, #0xfc
 	and r0, r1
 	cmp r0, #0xfc
 	bne loc_803EF00
-	ldr r5, [r6,#0x38] // (sCamera.unk_88 - 0x20099d0)
+	ldr r5, [r6,#0x38] // (eCamera.unk_88 - 0x20099d0)
 	bl sub_803E828
 loc_803EF00:
-	ldr r0, [r6,#0x3c] // (sCamera.unk_8C - 0x20099d0)
+	ldr r0, [r6,#0x3c] // (eCamera.unk_8C - 0x20099d0)
 	ldrb r0, [r0]
 	mov r1, #0xfc
 	and r0, r1
 	cmp r0, #0xfc
 	bne loc_803EF12
-	ldr r5, [r6,#0x3c] // (sCamera.unk_8C - 0x20099d0)
+	ldr r5, [r6,#0x3c] // (eCamera.unk_8C - 0x20099d0)
 	bl sub_803E850
 loc_803EF12:
 	bl sub_803EF7C
@@ -19730,7 +19731,7 @@ loc_803EF12:
 	add sp, sp, #0x14
 	pop {r4-r7,pc}
 off_803EF40: .word unk_2009480
-off_803EF44: .word sCamera+0x50 // sCamera.unk_50
+off_803EF44: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803EE98
 
 	thumb_local_start
@@ -19765,27 +19766,27 @@ off_803EF70: .word 0x100
 
 	thumb_func_start sub_803EF74
 sub_803EF74:
-	ldr r0, off_803EF8C // =sCamera+80
-	ldr r0, [r0,#0x38] // (sCamera.unk_88 - 0x20099d0)
+	ldr r0, off_803EF8C // =eCamera+80
+	ldr r0, [r0,#0x38] // (eCamera.unk_88 - 0x20099d0)
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end sub_803EF74
 
 	thumb_func_start sub_803EF7C
 sub_803EF7C:
-	ldr r0, off_803EF8C // =sCamera+80
-	ldr r0, [r0,#0x34] // (sCamera.unk_84 - 0x20099d0)
+	ldr r0, off_803EF8C // =eCamera+80
+	ldr r0, [r0,#0x34] // (eCamera.unk_84 - 0x20099d0)
 	mov pc, lr
 	.balign 4, 0x00
 	thumb_func_end sub_803EF7C
 
 	thumb_local_start
 sub_803EF84:
-	ldr r1, off_803EF8C // =sCamera+80
-	str r0, [r1,#0x34] // (sCamera.unk_84 - 0x20099d0)
+	ldr r1, off_803EF8C // =eCamera+80
+	str r0, [r1,#0x34] // (eCamera.unk_84 - 0x20099d0)
 	mov pc, lr
 	.balign 4, 0x00
-off_803EF8C: .word sCamera+0x50 // sCamera.unk_50
+off_803EF8C: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803EF84
 
 	thumb_local_start
@@ -20707,7 +20708,7 @@ loc_803F5A6:
 	mov r0, r6
 	tst r0, r0
 	pop {r4,r6,r7,pc}
-	.word sCamera+0x50 // sCamera.unk_50
+	.word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803F560
 
 	thumb_local_start
@@ -20822,7 +20823,7 @@ sub_803F664:
 	thumb_func_start sub_803F674
 sub_803F674:
 	push {r4-r7,lr}
-	ldr r7, off_803F6AC // =sCamera+80
+	ldr r7, off_803F6AC // =eCamera+80
 	ldr r0, [r7,#0x48] // (dword_2009A18 - 0x20099d0)
 	mov r1, #0x1c
 	and r0, r1
@@ -20852,7 +20853,7 @@ loc_803F6A4:
 	mov r1, r5
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_803F6AC: .word sCamera+0x50 // sCamera.unk_50
+off_803F6AC: .word eCamera+0x50 // eCamera.unk_50
 	thumb_func_end sub_803F674
 
 	thumb_func_start sub_803F6B0
@@ -20877,7 +20878,7 @@ sub_803F6B0:
 	lsl r4, r4, #2
 	ldr r2, [r2,r4]
 	bl byte_813DBC0
-	ldr r0, off_803F738 // =sCamera+80
+	ldr r0, off_803F738 // =eCamera+80
 	mov r1, #0x3c
 	strh r1, [r0,#0xc] // Camera.unk_0C
 	// flag 0 @ 0x2001c88[0x2e5] (=2001f6d)
@@ -20908,9 +20909,9 @@ sub_803F6F4:
 	lsl r4, r4, #2
 	ldr r2, [r2,r4]
 	bl byte_813DBC0
-	ldr r0, off_803F738 // =sCamera+80
+	ldr r0, off_803F738 // =eCamera+80
 	mov r1, #0x3c
-	strh r1, [r0,#0xc] // (sCamera.unk_5C - 0x20099d0)
+	strh r1, [r0,#0xc] // (eCamera.unk_5C - 0x20099d0)
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx
@@ -20919,7 +20920,7 @@ sub_803F6F4:
 	pop {r4,r5,pc}
 off_803F730: .word dword_803F734
 dword_803F734: .word 0x4000
-off_803F738: .word sCamera+0x50 // sCamera.unk_50
+off_803F738: .word eCamera+0x50 // eCamera.unk_50
 off_803F73C: .word eStruct200F360
 	thumb_func_end sub_803F6F4
 
@@ -20935,9 +20936,9 @@ sub_803F740:
 	mov r1, #8
 	mul r1, r7
 	add r1, r1, r0
-	ldr r7, off_803F770 // =sCamera+80
-	ldrh r2, [r7,#0x10] // (sCamera.unk_60 - 0x20099d0)
-	ldrh r0, [r7,#0x16] // (sCamera.unk_66 - 0x20099d0)
+	ldr r7, off_803F770 // =eCamera+80
+	ldrh r2, [r7,#0x10] // (eCamera.unk_60 - 0x20099d0)
+	ldrh r0, [r7,#0x16] // (eCamera.unk_66 - 0x20099d0)
 	mov r1, #0
 	b locret_803F764
 loc_803F760:
@@ -20948,7 +20949,7 @@ locret_803F764:
 	.balign 4, 0x00
 off_803F768: .word byte_803F774
 	.word byte_2009940
-off_803F770: .word sCamera+0x50 // sCamera.unk_50
+off_803F770: .word eCamera+0x50 // eCamera.unk_50
 byte_803F774: .byte 0x2, 0xFF, 0xFF, 0x4, 0x40, 0x99, 0x0, 0x2, 0x40, 0x99, 0x0
 	.byte 0x2
 EXE6_InfoText_timestamp: .asciz "REXE6 F 20060110a US"

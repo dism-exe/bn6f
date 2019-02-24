@@ -1984,7 +1984,7 @@ sub_8142C94:
 	ldr r0, off_8142CA4 // =dword_8619730 
 	ldr r1, dword_8142CA8 // =0x6006c00 
 	ldr r2, off_8142CAC // =0x420 
-	bl loc_8000AC8
+	bl sub_8000AC8
 	pop {pc}
 	.balign 4, 0x00
 off_8142CA4: .word dword_8619730
