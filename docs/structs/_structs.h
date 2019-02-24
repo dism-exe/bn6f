@@ -5,10 +5,10 @@
 #include "Toolkit/Toolkit.h"
 #include "Battle.h"
 #include "BattleMenuControl.h"
-#include "chatBoxPropreties.h"
+#include "ChatBoxPropreties.h"
 #include "NPC.h"
 #include "OWPlayer.h"
 #include "reqBBS_GUI.h"
-#include "StartScreen.h"
+#include "startScreen.h"
 
 #endif // STRUCTS__STRUCTS_H
