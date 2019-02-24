@@ -4453,24 +4453,25 @@ int sub_8111438()
 
 
 // 0x81114c8
-int sub_81114C8()
+void sub_81114C8()
 {
     int v0; // r5
-    int result; // r0
+    int v1; // r0
     int v2; // r1
     int v3; // r2
+    char v4; // r0
+    char v5; // r1
 
-    result = sub_81114EE();
-    if ( !result )
+    v1 = sub_81114EE();
+    if ( !v1 )
     {
-        result = sub_811152C(0, v2, v3);
-        if ( !result )
+        v1 = sub_811152C(0, v2, v3);
+        if ( !v1 )
             sub_8111650();
     }
-    sub_81117DA(result, v2);
-    *(v0 + 101) = result;
-    *(v0 + 102) = v2;
-    return result;
+    sub_81117DA(v1, v2);
+    *(v0 + 101) = v4;
+    *(v0 + 102) = v5;
 }
 
 
@@ -5687,11 +5688,11 @@ int sub_811239A()
 
 
 // 0x81123ec
-int __fastcall sub_81123EC(int a1, int a2)
+_BYTE *__fastcall sub_81123EC(int a1, int a2)
 {
     int v2; // r0
-    int result; // r0
-    int v4; // r4
+    _BYTE *result; // r0
+    _BYTE *v4; // r4
     int v9; // [sp+10h] [bp+10h]
 
     v2 = object_getPanelsExceptCurrentFilterred(a1, a2, 0x800000, 0);
@@ -5700,7 +5701,7 @@ int __fastcall sub_81123EC(int a1, int a2)
         v4 = result;
         GetPositiveSignedRNG2();
         __asm { SVC         6 }
-        result = *(&v9 + v4) & 7;
+        result = (*(&v9 + v4) & 7);
     }
     return result;
 }
@@ -7631,40 +7632,28 @@ void __noreturn sub_8113AB8()
 
 
 // 0x8113b20
-int sub_8113B20()
+void sub_8113B20()
 {
     Battle *v0; // r5
     int v1; // r7
     int v2; // r4
     int v3; // r6
-    int result; // r0
+    int v4; // r0
     int v5; // r0
     int v6; // r0
     int v7; // [sp-8h] [bp-1Ch]
 
     v2 = -object_getFrontDirection(v0);
     v3 = *(v1 + 44);
-    result = *(v1 + 44);
-    if ( result )
+    v4 = *(v1 + 44);
+    if ( v4 && *(v4 + 36) )
     {
-        result = *(result + 36);
-        if ( result )
+        if ( (v7 = *(v3 + 18) + v2, v5 = object_getPanelParameters(v7, *(v3 + 19)), v5 & 0x10) && !(v5 & 0xF800000)
+            || (v7 = *(v3 + 18) - v2, v6 = object_getPanelParameters(v7, *(v3 + 19)), v6 & 0x10) && !(v6 & 0xF800000) )
         {
-            v7 = *(v3 + 18) + v2;
-            v5 = object_getPanelParameters(v7, *(v3 + 19));
-            if ( (!(v5 & 0x10) || v5 & 0xF800000)
-                && ((v7 = *(v3 + 18) - v2, v6 = object_getPanelParameters(v7, *(v3 + 19)), !(v6 & 0x10)) || v6 & 0xF800000) )
-            {
-                result = 0;
-            }
-            else
-            {
-                result = v7;
-                sub_8113B7A(v7);
-            }
+            sub_8113B7A(v7);
         }
     }
-    return result;
 }
 
 
@@ -9448,19 +9437,18 @@ void sub_8115404()
 
 
 // 0x8115432
-int sub_8115432()
+void sub_8115432()
 {
     int v0; // r7
-    int result; // r0
+    int v1; // r0
 
-    result = *(v0 + 13) - 1;
-    *(v0 + 13) = result;
-    if ( !result )
+    v1 = *(v0 + 13) - 1;
+    *(v0 + 13) = v1;
+    if ( !v1 )
     {
         *(v0 + 13) = 16;
-        result = sub_8115446();
+        sub_8115446();
     }
-    return result;
 }
 
 
@@ -10394,33 +10382,35 @@ __int64 __noreturn sub_8115FCE()
     unsigned __int8 *v0; // r5
     int v1; // r0
     int v2; // r2
-    __int64 v3; // r0
-    __int64 v4; // ST00_8
+    int v3; // r0
+    int v4; // r1
+    __int64 v5; // r0
+    __int64 v6; // ST00_8
 
     object_reservePanel(v0[18], v0[19]);
     v1 = object_getFlag();
     if ( v1 & 0xA000 )
         sub_81160B0(v1, 40960, v2);
-    LODWORD(v3) = sub_8116044();
-    if ( v3 || (LODWORD(v3) = sub_811606A(), v3) )
+    v3 = sub_8116044();
+    if ( v3 || (v3 = sub_811606A()) != 0 )
     {
-        sub_81161B0(v3, SHIDWORD(v3));
+        sub_81161B0(v3, v4);
         sub_8116210();
-        v0[105] = v3;
-        v0[106] = BYTE4(v3);
+        v0[105] = v5;
+        v0[106] = BYTE4(v5);
     }
     else
     {
-        LODWORD(v3) = sub_8116090();
-        if ( !v3 )
+        LODWORD(v5) = sub_8116090();
+        if ( !v5 )
         {
-            LODWORD(v3) = v0[105];
-            HIDWORD(v3) = v0[106];
+            LODWORD(v5) = v0[105];
+            HIDWORD(v5) = v0[106];
         }
     }
-    v4 = v3;
+    v6 = v5;
     object_removePanelReserve(v0[18], v0[19]);
-    return v4;
+    return v6;
 }
 
 
@@ -11505,11 +11495,10 @@ void __noreturn sub_8116F34()
 
 
 // 0x8116f60
-int __noreturn sub_8116F60()
+void __noreturn sub_8116F60()
 {
     int v0; // r5
     u8 v1; // r0
-    int result; // r0
 
     v1 = 0;
     if ( !*(v0 + 14) )
@@ -11517,14 +11506,8 @@ int __noreturn sub_8116F60()
     sprite_setAnimation(v0, v1);
     sprite_loadAnimationData(v0);
     sprite_noShadow(v0);
-    result = *(v0 + 4);
-    if ( result != 3 )
-    {
-        result = *(v0 + 5);
-        if ( !*(v0 + 5) )
-            result = sub_81170AC();
-    }
-    return result;
+    if ( *(v0 + 4) != 3 && !*(v0 + 5) )
+        sub_81170AC();
 }
 
 
@@ -11595,7 +11578,7 @@ int __fastcall sub_8116FDC(signed int a1, __int16 a2, int a3)
     v4 = a3 + 3;
     do
     {
-        sub_80466C4(v3);
+        getStructFrom2008450(v3);
         if ( !v6 )
         {
             v7 = v5;
@@ -11637,7 +11620,7 @@ int __fastcall sub_8117084(__int16 a1, int a2, int a3)
     v4 = a3 + 3;
     do
     {
-        result = sub_80466C4(v3);
+        result = getStructFrom2008450(v3);
         if ( v7 )
             break;
         *(v6 + 12) = v8;
@@ -11743,7 +11726,7 @@ int __fastcall sub_81171D4(int a1, __int16 a2, int a3)
 
     v5 = a1;
     v6 = a2;
-    result = sub_80466C4(a3);
+    result = getStructFrom2008450(a3);
     if ( !v4 )
         result = sprite_setCoordinates(v5, v6);
     return result;
@@ -11761,7 +11744,7 @@ int __fastcall sub_81171F4(int a1, int a2)
     int v7; // [sp+0h] [bp-1Ch]
 
     v7 = a1;
-    result = sub_80466C4(a2);
+    result = getStructFrom2008450(a2);
     if ( !v4 )
     {
         v5 = *(v3 + 6);
@@ -12705,7 +12688,7 @@ int __fastcall sub_8117D10(int a1, int a2)
     char v5; // zf
 
     v2 = a1;
-    result = sub_80466C4(a2);
+    result = getStructFrom2008450(a2);
     if ( !v5 )
     {
         if ( v2 )
@@ -14545,7 +14528,7 @@ signed int __fastcall sub_81190F8(int a1)
     char v2; // zf
 
     v1 = 0;
-    sub_80466C4(a1);
+    getStructFrom2008450(a1);
     if ( !v2 && sprite_getFrameParameters() & 0xC0 )
         v1 = 1;
     return v1;
@@ -14559,7 +14542,7 @@ int __fastcall sub_8119118(int a1)
     int v2; // r1
     char v3; // zf
 
-    result = sub_80466C4(a1);
+    result = getStructFrom2008450(a1);
     if ( !v3 )
     {
         result = 8;
@@ -14948,7 +14931,7 @@ int __fastcall sub_811980C(__int16 a1, char a2, int a3, int a4)
     v5 = a3 + 3;
     do
     {
-        result = sub_80466C4(v4);
+        result = getStructFrom2008450(v4);
         if ( !v8 )
         {
             *(v7 + 14) = v9;
@@ -14972,7 +14955,7 @@ int __fastcall sub_811983C(int a1, int a2)
     int v5; // [sp+0h] [bp-18h]
 
     v5 = a1;
-    result = sub_80466C4(a2);
+    result = getStructFrom2008450(a2);
     if ( !v4 )
     {
         result = v5;
@@ -14998,7 +14981,7 @@ int __fastcall sub_8119854(int a1, __int16 a2, int a3)
     v4 = a3 + 3;
     do
     {
-        result = sub_80466C4(v3);
+        result = getStructFrom2008450(v3);
         if ( !v6 )
             result = sprite_setCoordinates(v7, v8);
         ++v3;
@@ -15284,7 +15267,7 @@ int __fastcall sub_8119BE8(int a1, __int16 a2, int a3)
 
     v5 = a1;
     v6 = a2;
-    result = sub_80466C4(a3);
+    result = getStructFrom2008450(a3);
     if ( !v4 )
         result = sprite_setCoordinates(v5, v6);
     return result;
@@ -15343,7 +15326,7 @@ int __fastcall sub_8119C74(int a1, int a2)
     int v5; // [sp+0h] [bp-18h]
 
     v5 = a1;
-    result = sub_80466C4(a2);
+    result = getStructFrom2008450(a2);
     if ( !v4 )
     {
         result = 35;
@@ -15427,7 +15410,7 @@ void __noreturn sub_8119DE8()
     int v5; // r0
     unsigned int v6; // r0
 
-    sub_80466C4(0);
+    getStructFrom2008450(0);
     v2 = v1;
     sprite_setCoordinates(*(v1 + 44), *(v1 + 46));
     v3 = *v2 | 0x80;
@@ -15706,7 +15689,7 @@ int __fastcall sub_811A1F4(__int16 a1, char a2, int a3, int a4)
     v4 = a3;
     do
     {
-        result = sub_80466C4(v4);
+        result = getStructFrom2008450(v4);
         if ( !v7 )
         {
             *(v6 + 14) = v8;
@@ -15737,7 +15720,7 @@ int __fastcall sub_811A220(int a1, __int16 a2, int a3)
     v4 = a3 + 4;
     do
     {
-        result = sub_80466C4(v3);
+        result = getStructFrom2008450(v3);
         if ( !v6 )
             result = sprite_setCoordinates(v7, v8);
         ++v3;
@@ -16049,7 +16032,7 @@ int __fastcall sub_811A610(int a1, int a2)
     Battle *v6; // r5
 
     v2 = a1;
-    result = sub_80466C4(a2);
+    result = getStructFrom2008450(a2);
     if ( !v5 )
     {
         result = v4->objFlags;
@@ -16226,7 +16209,7 @@ int __fastcall sub_811A838(int a1, __int16 a2, int a3)
 
     v5 = a1;
     v6 = a2;
-    result = sub_80466C4(a3);
+    result = getStructFrom2008450(a3);
     if ( !v4 )
         result = sprite_setCoordinates(v5, v6);
     return result;
@@ -16289,7 +16272,7 @@ int __fastcall sub_811A8F4(int a1, __int16 a2, int a3)
 
     v5 = a1;
     v6 = a2;
-    result = sub_80466C4(a3);
+    result = getStructFrom2008450(a3);
     if ( !v4 )
         result = sprite_setCoordinates(v5, v6);
     return result;
@@ -16304,7 +16287,7 @@ int __fastcall sub_811A914(int a1, int a2)
     unsigned __int8 *v4; // r5
 
     v2 = a1;
-    sub_80466C4(a2);
+    getStructFrom2008450(a2);
     v4 = v3;
     sub_8002FA6(*&byte_811A938[4 * v2]);
     return *v4;
@@ -16320,7 +16303,7 @@ int __fastcall __noreturn sub_811A940(int a1, int a2)
     int result; // r0
 
     v2 = a1;
-    sub_80466C4(a2);
+    getStructFrom2008450(a2);
     v4 = v3;
     sprite_setAnimation(v3, v2);
     sprite_loadAnimationData(v4);
@@ -16334,7 +16317,7 @@ int __fastcall __noreturn sub_811A940(int a1, int a2)
 // 0x811a968
 int __fastcall sub_811A968(int a1)
 {
-    sub_80466C4(a1);
+    getStructFrom2008450(a1);
     return sub_804668A();
 }
 
@@ -16571,7 +16554,7 @@ int __fastcall sub_811AD04(__int16 a1, int a2, int a3)
     char v6; // zf
 
     v3 = a1;
-    result = sub_80466C4(a3);
+    result = getStructFrom2008450(a3);
     if ( !v6 )
     {
         *(v5 + 12) = v3;
@@ -16592,7 +16575,7 @@ int __fastcall sub_811AD18(int a1, __int16 a2, int a3)
 
     v5 = a1;
     v6 = a2;
-    result = sub_80466C4(a3);
+    result = getStructFrom2008450(a3);
     if ( !v4 )
         result = sprite_setCoordinates(v5, v6);
     return result;
@@ -16710,7 +16693,7 @@ int __fastcall sub_811AE5C(int a1, __int16 a2, int a3)
 
     v5 = a1;
     v6 = a2;
-    result = sub_80466C4(a3);
+    result = getStructFrom2008450(a3);
     if ( !v4 )
         result = sprite_setCoordinates(v5, v6);
     return result;
@@ -16733,7 +16716,7 @@ int __fastcall sub_811AE7C(int a1, int a2)
 
     v10 = a1;
     v11 = a2;
-    result = sub_80466C4(a2);
+    result = getStructFrom2008450(a2);
     if ( !v4 )
     {
         v5 = v3;
@@ -16764,7 +16747,7 @@ int __fastcall sub_811AFD8(int a1)
     char v3; // zf
     _BYTE *v4; // r5
 
-    result = sub_80466C4(a1);
+    result = getStructFrom2008450(a1);
     if ( !v3 )
     {
         v4 = v2;
@@ -16786,7 +16769,7 @@ int __fastcall sub_811AFFC(int a1)
     _BYTE *v2; // r1
     char v3; // zf
 
-    result = sub_80466C4(a1);
+    result = getStructFrom2008450(a1);
     if ( !v3 )
     {
         *v2 = 35;
@@ -16804,7 +16787,7 @@ int __fastcall sub_811B010(int a1)
     int v2; // r1
     char v3; // zf
 
-    result = sub_80466C4(a1);
+    result = getStructFrom2008450(a1);
     if ( !v3 )
     {
         result = *(v2 + 17);
@@ -16981,7 +16964,7 @@ int __fastcall sub_811B314(int a1, char a2)
     Battle *v6; // r5
 
     v2 = a2;
-    result = sub_80466C4(a1);
+    result = getStructFrom2008450(a1);
     if ( !v5 )
     {
         result = v4->objFlags;
@@ -17110,7 +17093,7 @@ int __fastcall sub_811B46C(int a1, __int16 a2, int a3)
 
     v5 = a1;
     v6 = a2;
-    result = sub_80466C4(a3);
+    result = getStructFrom2008450(a3);
     if ( !v4 )
         result = sprite_setCoordinates(v5, v6);
     return result;
@@ -17126,7 +17109,7 @@ int __fastcall sub_811B48C(int a1, int a2)
     int v5; // [sp+0h] [bp-18h]
 
     v5 = a1;
-    result = sub_80466C4(a2);
+    result = getStructFrom2008450(a2);
     if ( !v4 )
     {
         result = 35;
@@ -17732,7 +17715,7 @@ int __fastcall sub_811BC00(__int16 a1, int a2, int a3, __int16 a4)
     v7 = a1;
     v8 = a2;
     v9 = a4;
-    result = sub_80466C4(a3);
+    result = getStructFrom2008450(a3);
     if ( !v6 )
     {
         *(v5 + 14) = v7;
@@ -17754,7 +17737,7 @@ int __fastcall sub_811BC24(int a1, __int16 a2, int a3)
 
     v5 = a1;
     v6 = a2;
-    result = sub_80466C4(a3);
+    result = getStructFrom2008450(a3);
     if ( !v4 )
         result = sprite_setCoordinates(v5, v6);
     return result;
@@ -17837,7 +17820,7 @@ int sub_811BD64()
 
 
 // 0x811bd88
-int sub_811BD88()
+void sub_811BD88()
 {
     int v0; // r5
     int v1; // r0
@@ -17866,7 +17849,7 @@ int sub_811BD88()
     *(v0 + 12) = v4;
     sub_811BE1C(v4);
     *(v0 + 8) = 4;
-    return sub_811BDCC();
+    sub_811BDCC();
 }
 
 
@@ -17907,7 +17890,7 @@ int __fastcall sub_811BDFC(int a1, __int16 a2, int a3)
 
     v5 = a1;
     v6 = a2;
-    result = sub_80466C4(a3);
+    result = getStructFrom2008450(a3);
     if ( !v4 )
         result = sprite_setCoordinates(v5, v6);
     return result;
@@ -17994,7 +17977,7 @@ int __fastcall sub_811BED4(int a1, int a2)
     char v5; // zf
 
     v2 = a1;
-    result = sub_80466C4(a2);
+    result = getStructFrom2008450(a2);
     if ( !v5 )
     {
         result = 1;
@@ -18201,7 +18184,7 @@ int __fastcall sub_811C23C(int a1, __int16 a2, int a3)
 
     v5 = a1;
     v6 = a2;
-    result = sub_80466C4(a3);
+    result = getStructFrom2008450(a3);
     if ( !v4 )
         result = sprite_setCoordinates(v5, v6);
     return result;
@@ -18261,7 +18244,7 @@ int __fastcall sub_811C2A8(int a1, int a2)
     int v11; // [sp+0h] [bp-10h]
 
     v11 = a1;
-    result = sub_80466C4(a2);
+    result = getStructFrom2008450(a2);
     if ( !v4 )
     {
         v5 = v3;
@@ -18305,7 +18288,7 @@ int __fastcall sub_811C4D8(int a1)
     _BYTE *v2; // r1
     char v3; // zf
 
-    result = sub_80466C4(a1);
+    result = getStructFrom2008450(a1);
     if ( !v3 )
     {
         result = 1;
@@ -18363,7 +18346,7 @@ int __fastcall sub_811C544(int a1)
     int v2; // r1
     char v3; // zf
 
-    result = sub_80466C4(a1);
+    result = getStructFrom2008450(a1);
     if ( !v3 )
     {
         result = 1;
@@ -18388,7 +18371,7 @@ int __fastcall sub_811C554(int a1, int a2)
     int v11; // [sp+0h] [bp-10h]
 
     v11 = a1;
-    result = sub_80466C4(a2);
+    result = getStructFrom2008450(a2);
     if ( !v4 )
     {
         v5 = v3;
@@ -18757,7 +18740,7 @@ int sub_811CC74()
 
 
 // 0x811cc94
-int sub_811CC94()
+void sub_811CC94()
 {
     _BYTE *v0; // r5
 
@@ -18768,7 +18751,7 @@ int sub_811CC94()
     v0[18] = 0;
     v0[12] = 0;
     (*(&off_811CCD0 + v0[4]))();
-    return sub_811CD08();
+    sub_811CD08();
 }
 
 
@@ -19437,7 +19420,7 @@ int __fastcall sub_811D2E8(int a1)
     int result; // r0
     char v2; // zf
 
-    result = sub_80466C4(a1);
+    result = getStructFrom2008450(a1);
     if ( !v2 )
         result = sub_804668A();
     return result;
@@ -19598,7 +19581,7 @@ int __fastcall sub_811D634(int a1, int a2, int a3)
     int result; // r0
     char v4; // zf
 
-    result = sub_80466C4(a3);
+    result = getStructFrom2008450(a3);
     if ( !v4 )
     {
         sub_811D6CC();
@@ -19618,7 +19601,7 @@ int __fastcall sub_811D66C(int a1, int a2)
 
     v9 = a1;
     v2 = a2;
-    result = sub_80466C4(a2);
+    result = getStructFrom2008450(a2);
     if ( !_ZF )
     {
         result = 100 * v9;
@@ -19641,7 +19624,7 @@ int __fastcall sub_811D69C(int a1, int a2)
 
     v9 = a1;
     v2 = a2;
-    result = sub_80466C4(a2);
+    result = getStructFrom2008450(a2);
     if ( !_ZF )
     {
         result = 100 * v9;
@@ -19926,7 +19909,7 @@ int __fastcall sub_811DBF0(int a1)
     int v2; // r1
     char v3; // zf
 
-    result = sub_80466C4(a1);
+    result = getStructFrom2008450(a1);
     if ( !v3 )
     {
         result = 12;
@@ -19956,7 +19939,7 @@ int sub_811DC34()
 
 
 // 0x811dc54
-int sub_811DC54()
+void sub_811DC54()
 {
     _BYTE *v0; // r5
 
@@ -19964,7 +19947,7 @@ int sub_811DC54()
     v0[8] = 4;
     sprite_setCoordinates(176, 64);
     v0[8] = 4;
-    return sub_811DC70();
+    sub_811DC70();
 }
 
 
@@ -19999,7 +19982,7 @@ int __fastcall sub_811DC88(int a1, int a2)
     int v10; // [sp+0h] [bp-10h]
 
     v10 = a1;
-    result = sub_80466C4(a2);
+    result = getStructFrom2008450(a2);
     if ( !v4 )
     {
         v5 = v3;
@@ -20047,7 +20030,7 @@ int __fastcall sub_811DF0C(int a1)
     _BYTE *v2; // r1
     char v3; // zf
 
-    result = sub_80466C4(a1);
+    result = getStructFrom2008450(a1);
     if ( !v3 )
     {
         result = 1;
@@ -21191,12 +21174,11 @@ int ho_811ED1C()
 
 // 0x811ed58
 // () -> void
-int sub_811ED58()
+void sub_811ED58()
 {
     int v0; // r5
     int v1; // r0
     unsigned __int8 v2; // vf
-    int result; // r0
 
     v1 = *(v0 + 16);
     v2 = __OFADD__(v1, 4);
@@ -21217,10 +21199,8 @@ int sub_811ED58()
     sub_811F0C8();
     sub_811F11C();
     copyTiles_PET_811EF70();
-    result = *(v0 + 16);
-    if ( result >= 0 )
-        result = copyTiles_onNaviSelect_811F54C();
-    return result;
+    if ( *(v0 + 16) >= 0 )
+        copyTiles_onNaviSelect_811F54C();
 }
 
 
@@ -21312,7 +21292,7 @@ LABEL_22:
 
 
 // 0x811ee98
-int __noreturn sub_811EE98()
+void __noreturn sub_811EE98()
 {
     int v0; // r5
     int v1; // r0
@@ -21330,7 +21310,7 @@ int __noreturn sub_811EE98()
     sub_811F0C8();
     sub_811F11C();
     copyTiles_PET_811EF70();
-    return copyTiles_onNaviSelect_811F54C();
+    copyTiles_onNaviSelect_811F54C();
 }
 
 

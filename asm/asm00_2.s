@@ -16741,15 +16741,15 @@ dword_8016EC0: .word 0x80110C00
 	thumb_func_start sub_8016EC4
 sub_8016EC4:
 	push {lr}
-	ldr r1, off_8016ED4 // =off_8016ED8 
+	ldr r1, JumpTable8016ED8_p // =JumpTable8016ED8 
 	ldrb r0, [r5,#0xa]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
 	pop {pc}
 	.balign 4, 0x00
-off_8016ED4: .word off_8016ED8
-off_8016ED8: .word sub_8016EE0+1
+JumpTable8016ED8_p: .word JumpTable8016ED8
+JumpTable8016ED8: .word sub_8016EE0+1
 	.word sub_8016F1A+1
 	thumb_func_end sub_8016EC4
 

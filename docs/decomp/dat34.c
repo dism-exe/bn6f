@@ -99,9 +99,10 @@ void sub_812DBE0()
     unsigned int v9; // r3
     unsigned int v10; // r3
     int v11; // r0
-    char v12; // r1
-    u32 v13; // r0
-    char v14; // zf
+    int v12; // r0
+    char v13; // r1
+    u32 v14; // r0
+    char v15; // zf
 
     *(v0 + 16) = 12;
     *(v0 + 42) = sub_812ED34();
@@ -153,13 +154,13 @@ void sub_812DBE0()
                             sub_812F014();
                             *(v0 + 22) = 1;
                             *(v0 + 16) = 4;
-                            if ( v11 != 2 )
+                            if ( v12 != 2 )
                             {
                                 sub_8132280(64);
-                                v12 = 3;
+                                v13 = 3;
                                 if ( *(v0 + 38) == 8 )
-                                    v12 = 4;
-                                *(v0 + 16) = v12;
+                                    v13 = 4;
+                                *(v0 + 16) = v13;
                                 *(v0 + 38) = 16;
                             }
                             break;
@@ -168,7 +169,7 @@ void sub_812DBE0()
                         {
 LABEL_34:
                             IsPaletteFadeActive();
-                            if ( !v14 )
+                            if ( !v15 )
                                 sub_812ECAC();
                         }
                         else
@@ -179,9 +180,9 @@ LABEL_34:
                             {
                                 *(v0 + 2) = 8;
                                 *(v0 + 3) = 0;
-                                v13 = sub_81325CC();
+                                v14 = sub_81325CC();
                                 *(v0 + 38) = 2;
-                                *(v13 + 8) = 2;
+                                *(v14 + 8) = 2;
                                 engine_setScreeneffect(12, 16);
                             }
                         }

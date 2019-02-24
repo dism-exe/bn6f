@@ -1377,8 +1377,8 @@ Struct8034460:
 	.word 0x0285, 0x0, 0x0, 0x3, 0xfe840000, 0x640000, 0xffba0000, 0x3c0000
 	.word 0x0285, 0x0, 0x0, 0x3, 0xfe840000, 0x1540000, 0x3c0000, 0x1ae0000
 	.word 0xffffffff
-off_80345E4:
-	.word off_804D0A4
+maps00_80345E4:
+	.word map00_ACDC_804D0A4
 	.word off_804D0AC
 	.word off_804E92C
 	.word off_804E940
@@ -1399,8 +1399,8 @@ off_803461C: .word off_804D0BC
 	.word off_805E198
 	.word off_806066C
 	.word off_8062F90
-NPCList_maps00: .word off_804D0B4
-	.word off_804E954
+NPCList_maps00: .word npc_map00_ACDC_804D0B4
+	.word npc_map00_804E954
 	.word off_8052DE0
 	.word off_8059D70
 	.word off_805E184
@@ -1413,7 +1413,7 @@ off_8034654: .word sub_804CF84+1
 	.word sub_805DFF0+1
 	.word sub_806044C+1
 	.word sub_8062BCC+1
-off_8034670: .word off_80665A4
+maps80_8034670: .word off_80665A4
 	.word off_80665AC
 	.word off_8067DC8
 	.word off_8067DD4
@@ -1664,10 +1664,10 @@ map_8034B4C:
 	pop {r0,r1}
 	cmp r0, #0x80
 	bge loc_8034B86
-	ldr r4, off_8034BAC // =off_80345E4
+	ldr r4, off_8034BAC // =maps00_80345E4
 	b loc_8034B8A
 loc_8034B86:
-	ldr r4, off_8034BB0 // =off_8034670
+	ldr r4, off_8034BB0 // =maps80_8034670
 	sub r0, #0x80
 loc_8034B8A:
 	lsl r0, r0, #3
@@ -1677,7 +1677,7 @@ loc_8034B8A:
 	ldr r1, [r4,#4]
 	ldr r0, [r0,r3]
 	ldr r1, [r1,r3]
-	bl sub_803600E
+	bl map_script_overworld_803600E
 	bl sub_8036E78
 	pop {r2-r4}
 	mov r8, r2
@@ -1685,8 +1685,8 @@ loc_8034B8A:
 	mov r12, r4
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8034BAC: .word off_80345E4
-off_8034BB0: .word off_8034670
+off_8034BAC: .word maps00_80345E4
+off_8034BB0: .word maps80_8034670
 off_8034BB4: .word unk_2011EA0
 	thumb_func_end map_8034B4C
 
@@ -1714,7 +1714,7 @@ sub_8034BB8:
 	bl sub_8035084
 	bl sub_809CF2C
 loc_8034BFE:
-	bl sub_8036064
+	bl map_script_overworld_8036064
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	beq loc_8034C2C
 	bl ho_803851C // () -> void
@@ -2425,7 +2425,7 @@ off_8035168: .word NPCList_maps80
 	thumb_func_end npc_getMapSpriteScriptOffsets
 
 	thumb_local_start
-npc_dead_803516C:
+npc_803516C:
 	push {r4-r7,lr}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
@@ -2446,7 +2446,7 @@ loc_8035180:
 	.balign 4, 0x00
 off_803518C: .word off_8034654
 off_8035190: .word off_803483C
-	thumb_func_end npc_dead_803516C
+	thumb_func_end npc_803516C
 
 	thumb_local_start
 sub_8035194:
@@ -4309,7 +4309,7 @@ loc_8035FFC:
 	thumb_func_end sub_8035FDE
 
 	thumb_local_start
-sub_803600E:
+map_script_overworld_803600E:
 	push {r4-r7,lr}
 	mov r4, r12
 	push {r4}
@@ -4337,7 +4337,7 @@ loc_803602C:
 	pop {r4}
 	mov r12, r4
 	pop {r4-r7,pc}
-	thumb_func_end sub_803600E
+	thumb_func_end map_script_overworld_803600E
 
 	thumb_local_start
 sub_8036040:
@@ -4363,7 +4363,7 @@ loc_8036050:
 	thumb_func_end sub_8036040
 
 	thumb_local_start
-sub_8036064:
+map_script_overworld_8036064:
 	push {r4-r7,lr}
 	mov r4, r12
 	push {r4}
@@ -4388,7 +4388,7 @@ loc_8036086:
 	pop {r4-r7,pc}
 off_803608C: .word ScriptCmds8035808
 off_8036090: .word eUnkMapScriptState_2011e60
-	thumb_func_end sub_8036064
+	thumb_func_end map_script_overworld_8036064
 
 	thumb_local_start
 /* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:u8 result
@@ -7576,7 +7576,7 @@ loc_803800A:
 	mov r0, #1
 	pop {pc}
 loc_8038014:
-	bl npc_dead_803516C
+	bl npc_803516C
 	add r7, #2
 	mov r0, #1
 	pop {pc}

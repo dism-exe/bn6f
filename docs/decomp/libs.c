@@ -2,24 +2,30 @@
 // static () -> void
 int sub_81440D8()
 {
-    int v1; // [sp+10h] [bp-4h]
+    int v1; // [sp+0h] [bp-14h]
+    __int16 v2; // [sp+4h] [bp-10h]
+    int v3; // [sp+10h] [bp-4h]
 
     word_2006DFC = InterruptMasterEnableRegister;
     InterruptEnableRegister &= 0xFF3Fu;
     SIOControlRegister = 0x2000;
     Timer3Control = 0;
     InterruptRequestFlags_IRQAcknowledge = 192;
-    SWI_CpuSet();
-    SWI_CpuSet();
+    v1 = 0;
+    SWI_CpuSet(&v1, &byte_200F460, 83886694);
+    v2 = 0;
+    SWI_CpuSet(&v2, &unk_200F44C, 16777218);
     byte_200F44D = 0;
-    return v1;
+    return v3;
 }
 
 
 // 0x8144158
 int sub_8144158()
 {
-    int v1; // [sp+18h] [bp-4h]
+    int v1; // [sp+0h] [bp-1Ch]
+    __int16 v2; // [sp+4h] [bp-18h]
+    int v3; // [sp+18h] [bp-4h]
 
     InterruptEnableRegister &= 0xFF3Fu;
     SIOModeSelect_GeneralPurposeData = 0;
@@ -29,8 +35,10 @@ int sub_8144158()
     SIOData_Normal_8bitandUARTMode_ = 0;
     *&SIOData0_Parent__Multi_PlayerMode_ = 0;
     *&SIOData2_2ndChild__Multi_PlayerMode_ = 0;
-    SWI_CpuSet();
-    SWI_CpuSet();
+    v1 = 0;
+    SWI_CpuSet(&v1, &byte_200F460, 83886694);
+    v2 = 0;
+    SWI_CpuSet(&v2, &unk_200F44C, 16777218);
     byte_200F450 = 0;
     byte_2006DFE = 0;
     byte_2006E00 = 0;
@@ -39,7 +47,7 @@ int sub_8144158()
     byte_2006E01 = 0;
     word_2006E02 = 0;
     word_2006E04 = 0;
-    return v1;
+    return v3;
 }
 
 
@@ -771,12 +779,14 @@ signed int __fastcall sub_8144DF0(int a1, int a2)
 {
     int v2; // r5
     int v3; // r6
+    __int16 v5; // [sp+0h] [bp-14h]
 
     v2 = a1;
     v3 = a2;
     if ( !a1 )
         return 4;
-    SWI_CpuSet();
+    v5 = 0;
+    SWI_CpuSet(&v5, &eStruct200FE00, 16777252);
     byte_200FE06 = -1;
     dword_200FE40 = v2;
     dword_200FE44 = v3;
@@ -789,11 +799,13 @@ signed int __fastcall sub_8144DF0(int a1, int a2)
 // 0x8144e44
 int sub_8144E44()
 {
-    int v1; // [sp+8h] [bp-4h]
+    __int16 v1; // [sp+0h] [bp-Ch]
+    int v2; // [sp+8h] [bp-4h]
 
-    SWI_CpuSet();
+    v1 = 0;
+    SWI_CpuSet(&v1, &eStruct200FE00, 16777248);
     byte_200FE06 = -1;
-    return v1;
+    return v2;
 }
 
 
@@ -2734,12 +2746,14 @@ int __fastcall sub_8146A48(_BYTE *a1, _BYTE *a2, unsigned int a3)
 int __fastcall sub_8146A70(_BYTE *a1)
 {
     _BYTE *v1; // r4
-    int v3; // [sp+8h] [bp-4h]
+    int v3; // [sp+0h] [bp-Ch]
+    int v4; // [sp+8h] [bp-4h]
 
     v1 = a1;
-    SWI_CpuSet();
+    v3 = 0;
+    SWI_CpuSet(&v3, a1, 83886165);
     *v1 = 1;
-    return v3;
+    return v4;
 }
 
 
@@ -2875,10 +2889,12 @@ int __fastcall sub_8146CE4(int a1)
 // 0x8146cfc
 int sub_8146CFC()
 {
-    int v1; // [sp+4h] [bp-4h]
+    __int16 v1; // [sp+0h] [bp-8h]
+    int v2; // [sp+4h] [bp-4h]
 
-    SWI_CpuSet();
-    return v1;
+    v1 = 0;
+    SWI_CpuSet(&v1, &unk_200AF80, 16777228);
+    return v2;
 }
 
 
@@ -3010,16 +3026,20 @@ int sub_8146E78()
 // 0x8146e90
 int __fastcall sub_8146E90(int a1, int a2, unsigned int a3)
 {
-    int v3; // r8
+    void *v3; // r8
     int v4; // r7
     unsigned int v5; // r4
     unsigned int v6; // r4
-    int v8; // [sp+18h] [bp-4h]
+    __int16 v8; // [sp+0h] [bp-1Ch]
+    __int16 v9; // [sp+2h] [bp-1Ah]
+    int v10; // [sp+18h] [bp-4h]
 
     v3 = a2;
     v4 = a3;
-    SWI_CpuSet();
-    SWI_CpuSet();
+    v8 = 0;
+    SWI_CpuSet(&v8, a1, (a3 >> 1) & 0x1FFFFF | 0x1000000);
+    v9 = 0;
+    SWI_CpuSet(&v9, v3, 2 * v4 & 0x1FFFFF | 0x1000000);
     sub_8146A70(&unk_200FFF0);
     sub_8146A70(&unk_200FE90);
     byte_20101B4 = 1;
@@ -3040,14 +3060,14 @@ int __fastcall sub_8146E90(int a1, int a2, unsigned int a3)
         if ( byte_2010292 & (2 << v6) )
         {
             sub_814A934(12, v6);
-            if ( sub_814AAF0(32, v6, 4 * v6 + v3, v4) << 16 )
+            if ( sub_814AAF0(32, v6, v3 + 4 * v6, v4) << 16 )
                 word_200BC58 |= 0x80u;
         }
         v6 = (v6 + 1) & 0xFF;
     }
     while ( v6 <= 3 );
     word_200BC58 = 0;
-    return v8;
+    return v10;
 }
 
 
@@ -3223,10 +3243,12 @@ int sub_814728C()
 {
     char v0; // r5
     unsigned int v1; // r4
-    int v3; // [sp+Ch] [bp-4h]
+    __int16 v3; // [sp+0h] [bp-10h]
+    int v4; // [sp+Ch] [bp-4h]
 
     v0 = byte_20101E0;
-    SWI_CpuSet();
+    v3 = 0;
+    SWI_CpuSet(&v3, &byte_20101E0, 16777222);
     v1 = 0;
     do
     {
@@ -3237,7 +3259,7 @@ int sub_814728C()
     while ( v1 <= 3 );
     if ( byte_20101B4 == 1 )
         byte_20101E0 = v0 + 1;
-    return v3;
+    return v4;
 }
 
 
@@ -3279,6 +3301,8 @@ LABEL_5:
 // 0x8147350
 int __fastcall sub_8147350(int a1, int a2, int a3, int a4)
 {
+    __int16 v5; // [sp+0h] [bp-Ch]
+
     sub_803DE88(4, a2, a3, a4);
     byte_2010280 = 0;
     byte_201033C = 0;
@@ -3287,7 +3311,8 @@ int __fastcall sub_8147350(int a1, int a2, int a3, int a4)
     byte_2010328 = 0;
     byte_2010368 = 0;
     sub_813D960();
-    SWI_CpuSet();
+    v5 = 0;
+    SWI_CpuSet(&v5, &byte_2010290, 16777248);
     sub_81465FC(&unk_2010350);
     sub_8144DF0(sub_81473EC, sub_81475B8);
     Timer2Counter_Reload = 0;
@@ -3565,9 +3590,11 @@ int sub_814794C()
     int v1; // r6
     int v2; // r7
     int v3; // r4
-    int v5; // [sp+20h] [bp-4h]
+    __int16 v5; // [sp+0h] [bp-24h]
+    int v6; // [sp+20h] [bp-4h]
 
-    SWI_CpuSet();
+    v5 = 0;
+    SWI_CpuSet(&v5, &byte_2010290, 16777248);
     if ( ((unk_200AF85 - 1) & 0xFFu) <= 1 )
         byte_2010290 = 1;
     byte_2010291 = (byte_201028C & 0x40) != 0;
@@ -3598,7 +3625,7 @@ int sub_814794C()
         v1 = v2;
     }
     while ( v2 <= 3u );
-    return v5;
+    return v6;
 }
 
 
@@ -3661,33 +3688,39 @@ int sub_8147B3C()
 // 0x8147b54
 int __fastcall sub_8147B54(int a1, int a2, int a3)
 {
-    int v3; // r7
+    void *v3; // r7
     int v4; // r8
-    unsigned int v5; // r2
-    int v7; // [sp+18h] [bp-4h]
+    int v5; // r4
+    unsigned int v6; // r2
+    __int16 v8; // [sp+0h] [bp-1Ch]
+    __int16 v9; // [sp+2h] [bp-1Ah]
+    int v10; // [sp+18h] [bp-4h]
 
     v3 = a2;
     v4 = a3;
-    SWI_CpuSet();
-    SWI_CpuSet();
+    v8 = 0;
+    v5 = ((a3 << 10) >> 11) | 0x1000000;
+    SWI_CpuSet(&v8, a1, v5);
+    v9 = 0;
+    SWI_CpuSet(&v9, v3, v5);
     sub_8146A70(&unk_200FFF0);
     sub_8146A70(&unk_200FE90);
     byte_20101B4 = 1;
     byte_2010274 = byte_2010292;
-    v5 = 0;
+    v6 = 0;
     do
     {
-        byte_2010220[v5] = 0;
-        word_2010400[v5] = 0;
-        word_2010428[v5] = 0;
-        v5 = (v5 + 1) & 0xFF;
+        byte_2010220[v6] = 0;
+        word_2010400[v6] = 0;
+        word_2010428[v6] = 0;
+        v6 = (v6 + 1) & 0xFF;
     }
-    while ( v5 <= 3 );
+    while ( v6 <= 3 );
     byte_2010390 = 0;
     sub_814A934(12, byte_20103E0);
     sub_814AAF0(32, byte_20103E0, v3, v4);
     word_200BC58 = 49;
-    return v7;
+    return v10;
 }
 
 
@@ -3838,18 +3871,20 @@ int __fastcall sub_8147F00(int a1, unsigned int a2)
     int v2; // r7
     unsigned int v3; // r5
     char v4; // r6
-    int v6; // [sp+14h] [bp-4h]
+    __int16 v6; // [sp+0h] [bp-18h]
+    int v7; // [sp+14h] [bp-4h]
 
     v2 = a1;
     v3 = a2;
     v4 = byte_2010390;
-    SWI_CpuSet();
+    v6 = 0;
+    SWI_CpuSet(&v6, &byte_2010390, (a2 << 10 >> 11) | 0x1000000);
     if ( byte_20101B4 == 1 )
     {
         byte_2010390 = v4 + 1;
         CopyWords(&byte_200DD10, v2, v3);
     }
-    return v6;
+    return v7;
 }
 
 
@@ -3894,6 +3929,8 @@ LABEL_10:
 // 0x8147f98
 int __fastcall sub_8147F98(int a1, int a2, int a3, int a4)
 {
+    __int16 v5; // [sp+0h] [bp-14h]
+
     sub_803DE88(4, a2, a3, a4);
     sub_81465FC(&unk_2010350);
     word_2010352 = 0;
@@ -3905,7 +3942,8 @@ int __fastcall sub_8147F98(int a1, int a2, int a3, int a4)
     byte_200BC55 = 1;
     byte_2010288 = 0;
     byte_20103E0 = 0;
-    SWI_CpuSet();
+    v5 = 0;
+    SWI_CpuSet(&v5, &byte_2010290, 16777248);
     sub_8146CFC();
     return 0;
 }
@@ -4193,9 +4231,13 @@ int sub_8148540()
     unsigned int v0; // r4
     unsigned int v1; // r4
     int result; // r0
+    __int16 v3; // [sp+0h] [bp-1Ch]
+    __int16 v4; // [sp+2h] [bp-1Ah]
 
-    SWI_CpuSet();
-    SWI_CpuSet();
+    v3 = 0;
+    SWI_CpuSet(&v3, &byte_20101E0, 16777248);
+    v4 = 0;
+    SWI_CpuSet(&v4, byte_2010230, 16777248);
     sub_8146A70(&unk_200FFF0);
     sub_8146A70(&unk_200FE90);
     byte_2010270 = 0;
@@ -4431,7 +4473,8 @@ int sub_8148A80()
 {
     char v0; // r6
     unsigned int v1; // r4
-    int v3; // [sp+10h] [bp-4h]
+    __int16 v3; // [sp+0h] [bp-14h]
+    int v4; // [sp+10h] [bp-4h]
 
     if ( byte_20101B4 != 143 && (byte_20101D0 & byte_2010292) == byte_2010292 )
     {
@@ -4439,7 +4482,8 @@ int sub_8148A80()
         if ( byte_20101B4 == 1 && byte_20103F0 == 1 )
             sub_803F334(&byte_20101E0, 0x40u);
         byte_2010430 = 0;
-        SWI_CpuSet();
+        v3 = 0;
+        SWI_CpuSet(&v3, &byte_20101E0, 16777248);
         byte_201021D = byte_2010293;
         v1 = 0;
         do
@@ -4463,7 +4507,7 @@ int sub_8148A80()
         if ( byte_2010293 > 1u )
             byte_2010430 = 1;
     }
-    return v3;
+    return v4;
 }
 
 
@@ -4579,6 +4623,8 @@ signed int sub_8148D24()
 {
     unsigned int v0; // r2
     int v1; // r0
+    __int16 v3; // [sp+0h] [bp-18h]
+    __int16 v4; // [sp+2h] [bp-16h]
 
     byte_2010480 = 0;
     if ( word_20102C6[0] != *(dword_2010CC0 + 148) )
@@ -4587,8 +4633,10 @@ signed int sub_8148D24()
             ++byte_2010480;
         while ( byte_2010480 <= 4u && word_20102C6[byte_2010480] != *(dword_2010CC0 + 148) );
     }
-    SWI_CpuSet();
-    SWI_CpuSet();
+    v3 = 0;
+    SWI_CpuSet(&v3, &byte_2010390, 16777224);
+    v4 = 0;
+    SWI_CpuSet(&v4, &unk_20103A0, 16777248);
     sub_8146A70(&unk_200FFF0);
     sub_8146A70(&unk_200FE90);
     v0 = 0;
@@ -4890,14 +4938,18 @@ int sub_814935C()
     __int16 v0; // r7
     char v1; // r4
     unsigned int v2; // r2
-    int v4; // [sp+14h] [bp-4h]
+    __int16 v4; // [sp+0h] [bp-18h]
+    __int16 v5; // [sp+2h] [bp-16h]
+    int v6; // [sp+14h] [bp-4h]
 
     v0 = InterruptMasterEnableRegister;
     InterruptMasterEnableRegister = 0;
     v1 = *dword_2010CC4;
-    SWI_CpuSet();
+    v4 = 0;
+    SWI_CpuSet(&v4, dword_2010CC4, 16777236);
     *dword_2010CC4 = v1 & 8;
-    SWI_CpuSet();
+    v5 = 0;
+    SWI_CpuSet(&v5, dword_2010CC0, 16777306);
     *(dword_2010CC0 + 9) = 4;
     *(dword_2010CC4 + 6) = 0;
     *dword_2010CC0 = -1;
@@ -4911,7 +4963,7 @@ int sub_814935C()
     }
     while ( v2 <= 3 );
     InterruptMasterEnableRegister = v0;
-    return v4;
+    return v6;
 }
 
 
@@ -5132,7 +5184,7 @@ signed int sub_81495CC()
     while ( v6 <= 0x59 );
     if ( v5 == *byte_30000FA )
     {
-        SWI_CpuSet();
+        SWI_CpuSet(&unk_3000000, dword_2010CC0, 90);
         *dword_2010CC4 |= 0x80u;
         return 0;
     }
@@ -5417,13 +5469,15 @@ int __fastcall sub_8149994(unsigned __int8 a1)
 {
     int v1; // r4
     unsigned int v2; // r1
-    int v4; // [sp+Ch] [bp-4h]
+    __int16 v4; // [sp+0h] [bp-10h]
+    int v5; // [sp+Ch] [bp-4h]
 
     v1 = a1;
     sub_814A828();
     if ( v1 )
     {
-        SWI_CpuSet();
+        v4 = 0;
+        SWI_CpuSet(&v4, (dword_2010CC0 + 20), 16777280);
         *(dword_2010CC0 + 8) = 0;
     }
     v2 = 0;
@@ -5437,7 +5491,7 @@ int __fastcall sub_8149994(unsigned __int8 a1)
     *(dword_2010CC0 + 2) = 0;
     *(dword_2010CC0 + 3) = 0;
     *(dword_2010CC0 + 7) = 0;
-    return v4;
+    return v5;
 }
 
 
@@ -5644,9 +5698,11 @@ int sub_8149C68()
     int v15; // r5
     int v16; // r4
     unsigned int v17; // r3
-    int v19; // [sp+18h] [bp-4h]
+    __int16 v19; // [sp+0h] [bp-1Ch]
+    int v20; // [sp+18h] [bp-4h]
 
-    SWI_CpuSet();
+    v19 = 0;
+    SWI_CpuSet(&v19, (dword_2010CC0 + 20), 16777280);
     v0 = *(dword_2010CC8 + 220);
     v1 = *(v0 + 1);
     v2 = (v0 + 4);
@@ -5707,7 +5763,7 @@ int sub_8149C68()
         }
         while ( v3 <= 3u && v1 );
     }
-    return v19;
+    return v20;
 }
 
 
@@ -5758,61 +5814,74 @@ int sub_8149DE0()
 // 0x8149df4
 int __fastcall sub_8149DF4(unsigned __int8 a1, unsigned __int16 a2)
 {
-    int v2; // r0
-    __int16 v3; // r5
-    int v4; // r10
-    unsigned int v5; // r2
-    int v6; // r1
+    int *v2; // r9
+    int v3; // r0
+    __int16 v4; // r5
+    int v5; // r10
+    unsigned int v6; // r2
     int v7; // r1
-    unsigned int v8; // r5
-    unsigned __int8 v10; // [sp+24h] [bp-28h]
-    unsigned __int16 v11; // [sp+28h] [bp-24h]
-    int v12; // [sp+48h] [bp-4h]
+    int v8; // r1
+    unsigned int v9; // r5
+    int v10; // r4
+    int v12; // [sp+0h] [bp-4Ch]
+    __int16 v13; // [sp+20h] [bp-2Ch]
+    int v14; // [sp+24h] [bp-28h]
+    int v15; // [sp+28h] [bp-24h]
+    int v16; // [sp+48h] [bp-4h]
 
-    v10 = a1;
-    v11 = a2;
+    v14 = a1;
+    v15 = a2;
     if ( !a2 )
     {
-        v2 = *(dword_2010CC8 + 220);
-        v3 = *(v2 + 4);
-        v4 = *(v2 + 6);
-        if ( !*(v2 + 7) )
+        v3 = *(dword_2010CC8 + 220);
+        v4 = *(v3 + 4);
+        v5 = *(v3 + 6);
+        if ( !*(v3 + 7) )
         {
-            v5 = (0x1000000 << *(v2 + 6)) >> 24;
-            v6 = *(dword_2010CC0 + 2);
-            if ( !(v5 & v6) )
+            v6 = (0x1000000 << *(v3 + 6)) >> 24;
+            v7 = *(dword_2010CC0 + 2);
+            if ( !(v6 & v7) )
             {
-                *(dword_2010CC0 + 2) = v5 | v6;
-                *(dword_2010CC0 + 3) &= ~v5;
-                v7 = dword_2010CC0;
-                *(dword_2010CC0 + 148) = v3;
-                ++*(v7 + 1);
+                *(dword_2010CC0 + 2) = v6 | v7;
+                *(dword_2010CC0 + 3) &= ~v6;
+                v8 = dword_2010CC0;
+                *(dword_2010CC0 + 148) = v4;
+                ++*(v8 + 1);
                 *dword_2010CC0 = 0;
                 *dword_2010CC4 |= 0x80u;
-                v8 = 0;
-                while ( *(dword_2010CC0 + 32 * v8 + 20) != *(dword_2010CC4 + 30) )
+                v9 = 0;
+                while ( 1 )
                 {
-                    v8 = (v8 + 1) & 0xFF;
-                    if ( v8 > 3 )
+                    v10 = 32 * v9;
+                    if ( *(dword_2010CC0 + 32 * v9 + 20) == *(dword_2010CC4 + 30) )
+                        break;
+                    v9 = (v9 + 1) & 0xFF;
+                    if ( v9 > 3 )
                         goto LABEL_10;
                 }
                 if ( *(dword_2010CC0 + 8) )
                 {
-                    SWI_CpuSet();
-                    SWI_CpuSet();
+                    v2 = &v12;
+                    SWI_CpuSet((dword_2010CC0 + v10 + 20), &v12, 16);
+                    v13 = 0;
+                    SWI_CpuSet(&v13, (dword_2010CC0 + 20), 16777280);
                     *(dword_2010CC0 + 8) = 0;
                 }
-LABEL_10:
-                if ( v8 <= 3 )
+                else
                 {
-                    SWI_CpuSet();
-                    *(dword_2010CC0 + 32 * v4 + 22) = v4;
+                    v2 = (dword_2010CC0 + v10 + 20);
+                }
+LABEL_10:
+                if ( v9 <= 3 )
+                {
+                    SWI_CpuSet(v2, (dword_2010CC0 + 32 * v5 + 20), 16);
+                    *(dword_2010CC0 + 32 * v5 + 22) = v5;
                 }
             }
         }
     }
-    sub_81494B8(v10, v11);
-    return v12;
+    sub_81494B8(v14, v15);
+    return v16;
 }
 
 
@@ -6133,7 +6202,8 @@ int __fastcall sub_814A41C(unsigned __int8 a1, char a2)
     int v2; // r7
     unsigned int v3; // r5
     char v4; // r6
-    int v6; // [sp+18h] [bp-4h]
+    __int16 v6; // [sp+0h] [bp-1Ch]
+    int v7; // [sp+18h] [bp-4h]
 
     v2 = a1;
     v3 = (0x1000000 << a1) >> 24;
@@ -6146,12 +6216,13 @@ int __fastcall sub_814A41C(unsigned __int8 a1, char a2)
         *dword_2010CC0 = -1;
     if ( a2 )
     {
-        SWI_CpuSet();
+        v6 = 0;
+        SWI_CpuSet(&v6, (dword_2010CC0 + 32 * a1 + 20), 16777232);
         *(dword_2010CC0 + 3) &= v4;
         *(dword_2010CC0 + 7) &= v4;
         *(dword_2010CC0 + 10 + v2) = 0;
     }
-    return v6;
+    return v7;
 }
 
 
@@ -6383,8 +6454,8 @@ int sub_814A828()
 {
     __int16 v0; // r8
     unsigned int v1; // r5
-    int v2; // r1
-    char (*v3)[28]; // r1
+    __int16 v3; // [sp+0h] [bp-1Ch]
+    __int16 v4; // [sp+2h] [bp-1Ah]
     int v5; // [sp+18h] [bp-4h]
 
     v0 = InterruptMasterEnableRegister;
@@ -6392,10 +6463,10 @@ int sub_814A828()
     v1 = 0;
     do
     {
-        v2 = dword_2010CB0[v1];
-        SWI_CpuSet();
-        v3 = off_2010CA0[v1];
-        SWI_CpuSet();
+        v3 = 0;
+        SWI_CpuSet(&v3, dword_2010CB0[v1], 16777268);
+        v4 = 0;
+        SWI_CpuSet(&v4, off_2010CA0[v1], 16777226);
         *(dword_2010CC0 + 16 + v1) = 16;
         v1 = (v1 + 1) & 0xFFFF;
     }
@@ -6439,11 +6510,11 @@ signed int __fastcall sub_814A934(char a1, unsigned __int8 a2)
     __int16 v5; // r10
     int v6; // r3
     int *v7; // r9
-    int v8; // r4
+    _WORD *v8; // r4
     unsigned __int16 v9; // r6
     unsigned int v10; // r1
     char (*v11)[28]; // r3
-    char (*v12)[28]; // r1
+    __int16 v12; // [sp+0h] [bp-24h]
 
     v2 = a1;
     v3 = a2;
@@ -6464,7 +6535,7 @@ signed int __fastcall sub_814A934(char a1, unsigned __int8 a2)
             {
                 if ( v2 & 8 )
                 {
-                    v8 = *v7 + 52;
+                    v8 = (*v7 + 52);
                     *(dword_2010CC0 + 5) &= ~(1 << v3);
                 }
             }
@@ -6483,12 +6554,13 @@ signed int __fastcall sub_814A934(char a1, unsigned __int8 a2)
                     do
                     {
                         if ( (*(v8 + 44) >> v10) & 1 )
-                            *(v8 + 2) = 0;
+                            v8[1] = 0;
                         v10 = (v10 + 1) & 0xFFFF;
                     }
                     while ( v10 <= 3 );
                 }
-                SWI_CpuSet();
+                v12 = 0;
+                SWI_CpuSet(&v12, v8, 16777242);
             }
             v6 = v9;
         }
@@ -6505,12 +6577,13 @@ signed int __fastcall sub_814A934(char a1, unsigned __int8 a2)
                 *(dword_2010CC0 + 15) += 3 + (*v11)[4];
             *(dword_2010CC0 + 6) &= ~(*v11)[3];
         }
-        SWI_CpuSet();
+        v12 = 0;
+        SWI_CpuSet(&v12, v11, 16777222);
     }
     if ( v2 & 2 )
     {
-        v12 = off_2010CA0[v3];
-        SWI_CpuSet();
+        v12 = 0;
+        SWI_CpuSet(&v12, &(*off_2010CA0[v3])[12], 16777220);
     }
     InterruptMasterEnableRegister = v5;
     return 0;
@@ -8282,54 +8355,50 @@ int sub_814C648()
 // 0x814c66c
 int __fastcall sub_814C66C(int a1, int a2)
 {
-    unsigned int v2; // r4
-    char v3; // r5
-    unsigned int v4; // r2
-    int v5; // r1
-    int v6; // r2
-    int v8; // [sp+Ch] [bp-4h]
+    void *v2; // r6
+    unsigned int v3; // r4
+    char v4; // r5
+    unsigned int v5; // r2
+    int v7; // [sp+Ch] [bp-4h]
 
-    v2 = a2 << 24;
-    v3 = a2;
+    v2 = a1;
+    v3 = a2 << 24;
+    v4 = a2;
     if ( !(sub_814CA44(0x24u) << 16) )
     {
-        v4 = v2 >> 26;
-        if ( v3 & 3 )
-            LOBYTE(v4) = v4 + 1;
-        *(dword_2010CCC + 4) = v4;
-        v5 = *(dword_2010CCC + 36) + 4;
-        v6 = *(dword_2010CCC + 4) | 0x4000000;
-        SWI_CpuSet();
+        v5 = v3 >> 26;
+        if ( v4 & 3 )
+            LOBYTE(v5) = v5 + 1;
+        *(dword_2010CCC + 4) = v5;
+        SWI_CpuSet(v2, (*(dword_2010CCC + 36) + 4), *(dword_2010CCC + 4) | 0x4000000);
         sub_814CB1C();
     }
-    return v8;
+    return v7;
 }
 
 
 // 0x814c6b4
 int __fastcall sub_814C6B4(int a1, int a2)
 {
-    unsigned int v2; // r4
-    char v3; // r5
-    unsigned int v4; // r2
-    int v5; // r1
-    int v6; // r2
-    int v8; // [sp+Ch] [bp-4h]
+    void *v2; // r6
+    unsigned int v3; // r4
+    char v4; // r5
+    unsigned int v5; // r2
+    int v7; // [sp+Ch] [bp-4h]
 
-    v2 = a2 << 24;
-    v3 = a2;
+    v2 = a1;
+    v3 = a2 << 24;
+    v4 = a2;
     if ( !(sub_814CA44(0x25u) << 16) )
     {
-        v4 = v2 >> 26;
-        if ( v3 & 3 )
-            LOBYTE(v4) = v4 + 1;
-        *(dword_2010CCC + 4) = v4;
-        v5 = *(dword_2010CCC + 36) + 4;
-        v6 = *(dword_2010CCC + 4) | 0x4000000;
-        SWI_CpuSet();
+        v5 = v3 >> 26;
+        if ( v4 & 3 )
+            LOBYTE(v5) = v5 + 1;
+        *(dword_2010CCC + 4) = v5;
+        SWI_CpuSet(v2, (*(dword_2010CCC + 36) + 4), *(dword_2010CCC + 4) | 0x4000000);
         sub_814CB1C();
     }
-    return v8;
+    return v7;
 }
 
 
@@ -8854,16 +8923,18 @@ signed int __fastcall sub_814CC48(unsigned __int8 a1)
 // 0x814ccfc
 int sub_814CCFC()
 {
-    int v1; // [sp+Ch] [bp-4h]
+    int v1; // [sp+0h] [bp-10h]
+    int v2; // [sp+Ch] [bp-4h]
 
     InterruptMasterEnableRegister = 0;
     InterruptEnableRegister &= ~((8 << *(dword_2010CCC + 10)) | 0x80);
     InterruptMasterEnableRegister = 1;
     SIOModeSelect_GeneralPurposeData = 0;
     SIOControlRegister = 20608;
-    SWI_CpuSet();
+    v1 = 0;
+    SWI_CpuSet(&v1, &byte_2010CD0, 83886083);
     InterruptRequestFlags_IRQAcknowledge = 128;
-    return v1;
+    return v2;
 }
 
 
@@ -8970,7 +9041,7 @@ void SWI_CpuFastSet()
 
 // 0x814d8b8
 // (void *src, void *dest, int mode) -> void
-void SWI_CpuSet()
+void __fastcall SWI_CpuSet(void *src, void *dest, int mode)
 {
     __asm { SVC         0xB;     r0        Source address                (must be aligned by 4 for 32bit, by 2 for 16bit) }
 }
@@ -9320,9 +9391,9 @@ unsigned int __fastcall _umodsi3(unsigned int result, unsigned int a2)
 
 
 // 0x814dbf4
-int umul3232H32()
+int __fastcall umul3232H32(unsigned int a1, unsigned int a2)
 {
-    return sub_814DBF8();
+    return sub_814DBF8(a1, a2);
 }
 
 
@@ -9869,26 +9940,26 @@ int __fastcall ply_fine(int a1, int a2)
 // 0x814e09c
 int __fastcall sub_814E09C(int a1)
 {
-    int (__fastcall *v1)(int); // lr
-    signed int v2; // r1
-    void **v3; // r2
-    void *v4; // r3
-    int v5; // r2
-    unsigned __int8 v6; // vf
+    void **v1; // r2
+    void *v2; // r3
+    int (__fastcall *v3)(int); // r12
+    _DWORD *v4; // r0
+    int v5; // r3
+    int v6; // r0
+    int v7; // r2
+    signed int v8; // r1
 
-    v2 = 36;
-    v3 = &off_81C0418;
+    v1 = &off_81C0418;
     do
     {
-        v4 = *v3;
+        v2 = *v1;
         sub_814E0B6();
-        *a1 = v4;
-        a1 += 4;
-        v3 = (v5 + 4);
-        v6 = __OFSUB__(v2--, 1);
+        *v4 = v5;
+        v6 = (v4 + 1);
+        v1 = (v7 + 4);
     }
-    while ( !(((v2 < 0) ^ v6) | (v2 == 0)) );
-    return v1(a1);
+    while ( v8 > 1 );
+    return v3(v6);
 }
 
 
@@ -10817,17 +10888,22 @@ int __fastcall sub_814E7E0(int a1, int a2)
 int __fastcall sub_814E7F4(int a1, unsigned __int8 a2, int a3)
 {
     signed int v3; // r6
-    int v4; // r4
-    int v5; // r0
+    unsigned int v4; // r7
+    int v5; // r5
+    unsigned int v6; // r4
+    int v7; // r0
 
     v3 = a2;
+    v4 = a3 << 24;
     if ( a2 > 0xB2u )
+    {
         v3 = 178;
-    v4 = *(a1 + 4);
-    v5 = (*&byte_81C055C[4 * (byte_81C04A8[v3 + 1] & 0xF)] >> (byte_81C04A8[v3 + 1] >> 4))
-         - (*&byte_81C055C[4 * (byte_81C04A8[v3] & 0xF)] >> (byte_81C04A8[v3] >> 4));
-    umul3232H32();
-    return umul3232H32();
+        v4 = -16777216;
+    }
+    v5 = *&byte_81C055C[4 * (byte_81C04A8[v3] & 0xF)] >> (byte_81C04A8[v3] >> 4);
+    v6 = *(a1 + 4);
+    v7 = umul3232H32((*&byte_81C055C[4 * (byte_81C04A8[v3 + 1] & 0xF)] >> (byte_81C04A8[v3 + 1] >> 4)) - v5, v4);
+    return umul3232H32(v6, v5 + v7);
 }
 
 
@@ -10865,7 +10941,7 @@ int sub_814E8A0()
     int v2; // r4
     int v4; // [sp+Ch] [bp-4h]
 
-    SWI_CpuSet();
+    SWI_CpuSet((&SoundMainRAM & 0xFFFFFFFE), byte_3005700, Timer0Counter_Reload);
     sub_814ECC8(byte_30045C0);
     sub_814EB84(byte_3005600);
     sub_814EE2C(9696256);
@@ -11130,7 +11206,8 @@ int __fastcall sub_814EB84(_BYTE *a1)
     _BYTE *v1; // r5
     int v2; // r4
     int v3; // r1
-    int v5; // [sp+10h] [bp-4h]
+    int v5; // [sp+0h] [bp-14h]
+    int v6; // [sp+10h] [bp-4h]
 
     v1 = a1;
     ControlSoundon_off_NR52_ = 143;
@@ -11161,7 +11238,8 @@ int __fastcall sub_814EB84(_BYTE *a1)
         *(v2 + 44) = sub_814F44C;
         *(v2 + 48) = sub_814F3A4;
         *(v2 + 12) = 0;
-        SWI_CpuSet();
+        v5 = 0;
+        SWI_CpuSet(&v5, a1, 83886144);
         v1[1] = 1;
         v1[28] = 17;
         v1[65] = 2;
@@ -11173,7 +11251,7 @@ int __fastcall sub_814EB84(_BYTE *a1)
         *(v3 + 28) = -120;
         *v2 = 1752395091;
     }
-    return v5;
+    return v6;
 }
 
 
@@ -11195,7 +11273,8 @@ int __fastcall sub_814ECB4(int a1)
 int __fastcall sub_814ECC8(_DWORD *a1)
 {
     _DWORD *v1; // r5
-    int v3; // [sp+Ch] [bp-4h]
+    int v3; // [sp+0h] [bp-10h]
+    int v4; // [sp+Ch] [bp-4h]
 
     v1 = a1;
     *a1 = 0;
@@ -11213,7 +11292,8 @@ int __fastcall sub_814ECC8(_DWORD *a1)
     DMA2SourceAddress = (a1 + 608);
     DMA2DestinationAddress = &ChannelBFIFO_Data0_3;
     *byte_3007FF0 = a1;
-    SWI_CpuSet();
+    v3 = 0;
+    SWI_CpuSet(&v3, a1, 83887084);
     *(v1 + 6) = 8;
     *(v1 + 7) = 15;
     v1[14] = sub_814E558;
@@ -11225,7 +11305,7 @@ int __fastcall sub_814ECC8(_DWORD *a1)
     v1[13] = &off_3005570;
     sub_814EDC0(0x40000);
     *v1 = 1752395091;
-    return v3;
+    return v4;
 }
 
 
@@ -11328,8 +11408,11 @@ int sub_814EEC0()
 // 0x814ef14
 int sub_814EF14()
 {
-    int v1; // [sp+4h] [bp-4h]
+    int v0; // r2
+    int v2; // [sp+0h] [bp-8h]
+    int v3; // [sp+4h] [bp-4h]
 
+    v0 = *byte_3007FF0;
     if ( (**byte_3007FF0 - 1752395091) <= 1 )
     {
         **byte_3007FF0 += 10;
@@ -11340,9 +11423,10 @@ int sub_814EF14()
             *&DMA2WordCount = -2076180476;
         DMA1Control = 1024;
         DMA2Control = 1024;
-        SWI_CpuSet();
+        v2 = 0;
+        SWI_CpuSet(&v2, (v0 + 848), 83886872);
     }
-    return v1;
+    return v3;
 }
 
 

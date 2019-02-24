@@ -447,7 +447,7 @@ int sub_80A54F0()
 
 
 // 0x80a5514
-int __noreturn sub_80A5514()
+void __noreturn sub_80A5514()
 {
     int v0; // r5
     int v1; // r6
@@ -481,7 +481,7 @@ int __noreturn sub_80A5514()
             *(v1 + 15) = 10;
     }
     *(v0 + 8) = 4;
-    return sub_80A5588();
+    sub_80A5588();
 }
 
 
@@ -3354,8 +3354,8 @@ signed int sub_80A7AE0()
 {
     int v0; // r5
     int v1; // r7
-    char v2; // r1
-    char v3; // r4
+    int v2; // r1
+    int v3; // r4
 
     sub_80A7B7A((v1 + 1));
     v3 = v2;
@@ -4240,7 +4240,7 @@ void __noreturn sub_80A8424()
                     TestEventFlagFromImmediate(9, 212);
                     if ( v1 )
                     {
-                        sub_811EBE0(1);
+                        sub_811EBE0();
                         if ( v1 )
                         {
                             v2 = *(v0 + 9);

@@ -43,7 +43,7 @@
 // .global renderTextGfx_8045F8C
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_8046664 // () -> void
-// .global sub_80466C4
+// .global getStructFrom2008450
 
 	.include "asm/asm32.inc"
 // .global sub_811BC00

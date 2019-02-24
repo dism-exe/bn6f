@@ -8,7 +8,7 @@ main_:
 	bl sub_803D1A8 // () -> void
 main_gameRoutine:
 	bl main_pollGeneralLCDStatus_STAT_LYC_ // () -> void
-	bl main_awaitFrame_80003A0 
+	bl main_awaitFrame
 	bl sub_80007BE
 	bl sub_80019A0
 	bl render_800172C
@@ -26,7 +26,7 @@ main_gameRoutine:
 	add r1, #1
 	strh r1, [r0]
 	bl sub_8000E10
-	ldr r0, off_8000348 // =main_subsystemJumpTable 
+	ldr r0, off_8000348 // =main_subsystemJumpTable
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_MainJumptableIndexPtr]
 	ldrb r1, [r1]
@@ -41,7 +41,7 @@ loc_800032A:
 	bl chatbox_onUpdate
 	bl cb_call_200A880
 	bl PET_onUpdate_8001B94
-	ldr r0, off_8000344 // =sub_3006814+1 
+	ldr r0, off_8000344 // =sub_3006814+1
 	mov lr, pc
 	bx r0
 	bl main_static_8000454
@@ -73,18 +73,18 @@ main_subsystemJumpTable: .word startscreen_802F544+1
 	thumb_func_end main_
 
 	thumb_local_start
-main_awaitFrame_80003A0 :
+main_awaitFrame :
 	push {lr}
 loc_80003A2:
-	ldr r0, off_80003CC // =GeneralLCDStatus_STAT_LYC_ 
+	ldr r0, off_80003CC // =GeneralLCDStatus_STAT_LYC_
 	mov r2, #1
 loc_80003A6:
 	ldrh r1, [r0]
 	tst r1, r2
 	beq loc_80003A6
-	ldr r0, off_80003C4 // =dword_200A870 
+	ldr r0, off_80003C4 // =dword_200A870
 	ldr r2, [r0]
-	ldr r1, off_80003C8 // =dword_2009930 
+	ldr r1, off_80003C8 // =dword_2009930
 	ldr r1, [r1]
 	cmp r2, r1
 	blt loc_80003A2
@@ -96,13 +96,13 @@ loc_80003A6:
 off_80003C4: .word dword_200A870
 off_80003C8: .word dword_2009930
 off_80003CC: .word GeneralLCDStatus_STAT_LYC_
-	thumb_func_end main_awaitFrame_80003A0 
+	thumb_func_end main_awaitFrame
 
 // () -> void
 	thumb_local_start
 main_pollGeneralLCDStatus_STAT_LYC_:
 	push {lr}
-	ldr r0, off_80003E0 // =GeneralLCDStatus_STAT_LYC_ 
+	ldr r0, off_80003E0 // =GeneralLCDStatus_STAT_LYC_
 	mov r2, #1
 loc_80003D6:
 	ldrh r1, [r0]
@@ -124,12 +124,12 @@ main_static_80003E4:
 	mov r7, #0
 loc_80003F2:
 	strb r7, [r0,#0x13]
-	ldr r4, off_800044C // =KeyStatus 
+	ldr r4, off_800044C // =KeyStatus
 	ldrh r4, [r4]
 	mvn r4, r4
 	ldrh r5, [r0]
 	strh r5, [r0,#6]
-	ldr r3, dword_8000450 // =0x3ff 
+	ldr r3, dword_8000450 // =0x3ff
 	strh r4, [r0]
 	mov r6, r4
 	and r6, r5
@@ -229,10 +229,10 @@ loc_80004AA:
 	bl SetPrimaryToolkitPointers // () -> void
 	bl RandomizeExtraToolkitPointers
 	pop {r1}
-	ldr r0, off_8000564 // =0x40 
+	ldr r0, off_8000564 // =0x40
 	tst r1, r1
 	beq loc_80004C0
-	ldr r0, off_8000568 // =0xc0 
+	ldr r0, off_8000568 // =0xc0
 loc_80004C0:
 	bl sRender_08_setRenderingState
 	bl main_zeroFill_80017EC
@@ -268,7 +268,7 @@ loc_80004C0:
 	bl sub_80071B4
 	bl sub_804657C // () -> void
 	bl sub_80467D8
-	ldr r0, off_800056C // =dword_2009930 
+	ldr r0, off_800056C // =dword_2009930
 	mov r1, #1
 	strh r1, [r0]
 	mov r0, r10
@@ -290,18 +290,18 @@ off_800056C: .word dword_2009930
 main_static_8000570:
 	push {lr}
 	bl sub_814E8A0
-	ldr r0, dword_800059C // =0x93040d 
+	ldr r0, dword_800059C // =0x93040d
 	bl sub_814EE2C
 	mov r0, #8
-	ldr r1, off_80005A8 // =sub_3005D78+1 
+	ldr r1, off_80005A8 // =sub_3005D78+1
 	bl start_800024C
-	ldr r0, off_80005A0 // =GeneralLCDStatus_STAT_LYC_ 
+	ldr r0, off_80005A0 // =GeneralLCDStatus_STAT_LYC_
 	ldrh r1, [r0]
 	mov r2, #0xff
 	and r1, r2
-	mov r2, #0x20 
+	mov r2, #0x20
 	orr r1, r2
-	mov r2, #0x50 
+	mov r2, #0x50
 	lsl r2, r2, #8
 	orr r1, r2
 	strh r1, [r0]

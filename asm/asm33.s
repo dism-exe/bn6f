@@ -1391,7 +1391,7 @@ loc_8123E28:
 	ldr r0, off_8123E48 // =byte_8123E4C
 	lsl r1, r4, #2
 	ldr r0, [r0,r1]
-	bl sub_80466C4
+	bl getStructFrom2008450
 	beq loc_8123E40
 	mov r0, #0
 	ldrb r2, [r5,#0xc]
@@ -6100,7 +6100,7 @@ sub_8126630:
 	cmp r4, #4
 	beq loc_8126686
 	mov r0, #0
-	bl sub_80466C4
+	bl getStructFrom2008450
 	beq locret_81266BE
 	ldrb r0, [r1,#1]
 	cmp r0, #0x16
@@ -6136,7 +6136,7 @@ loc_8126652:
 	b locret_81266BE
 loc_8126686:
 	mov r0, #0
-	bl sub_80466C4
+	bl getStructFrom2008450
 	beq locret_81266BE
 	ldrb r0, [r1,#1]
 	cmp r0, #0x1a

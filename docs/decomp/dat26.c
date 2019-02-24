@@ -81,7 +81,7 @@ signed int __fastcall sub_8092F1E(int a1)
     char v3; // zf
     int v4; // r0
     int v5; // r1
-    char v6; // r0
+    int v6; // r0
     int v7; // r0
 
     sub_8093258(a1);
@@ -254,7 +254,7 @@ signed int __fastcall sub_8093054(int a1)
 // 0x8093074
 int __fastcall sub_8093074(int a1)
 {
-    int *v1; // r7
+    unsigned int *v1; // r7
     int v2; // r1
     int v3; // ST00_4
     int v4; // ST04_4

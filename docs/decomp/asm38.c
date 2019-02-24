@@ -294,7 +294,7 @@ int __fastcall sub_3005EF0(int result, int a2, int a3)
 
 
 // 0x3005f34
-unsigned int __fastcall sub_3005F34(int a1, int a2, int a3, unsigned int a4)
+int __fastcall sub_3005F34(int a1, int a2, int a3, unsigned int a4)
 {
     int v4; // r8
     unsigned int v5; // r4
@@ -305,7 +305,7 @@ unsigned int __fastcall sub_3005F34(int a1, int a2, int a3, unsigned int a4)
 
 
 // 0x3005f56
-unsigned int __fastcall sub_3005F56(int a1, int a2, int a3, unsigned int a4)
+int __fastcall sub_3005F56(int a1, int a2, int a3, unsigned int a4)
 {
     int v4; // r8
     unsigned int v5; // r4

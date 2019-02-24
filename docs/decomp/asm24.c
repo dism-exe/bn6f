@@ -158,7 +158,7 @@ void sub_808CB0C()
         if ( *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) != 133 )
             sound_8000672(31, 315, v2);
     }
-    sub_811EBE0(1);
+    sub_811EBE0();
     if ( v1 )
     {
         if ( !byte_2000B4C )

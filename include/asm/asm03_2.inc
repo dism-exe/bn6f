@@ -15,7 +15,7 @@
 	.global sub_8046670
 	.global sub_804668A
 	.global sub_8046696
-	.global sub_80466C4
+	.global getStructFrom2008450
 	.global sub_80467D8
 	.global sub_80467FC
 	.global sub_8046818
@@ -503,10 +503,10 @@
 // .equ byte_2001860, 0x2001860
 // .equ byte_2001880, 0x2001880
 // .equ byte_20018A0, 0x20018A0
-// .equ byte_2008450, 0x2008450
+// .equ eStructArr2008450, 0x2008450
 // .equ byte_2008451, 0x2008451
 // .equ byte_2008452, 0x2008452
-// .equ byte_2008453, 0x2008453
+// .equ eStructArr2008453, 0x2008453
 // .equ unk_20096E0, 0x20096E0
 // .equ sSubmenu, 0x2009A30
 // .equ byte_200A220, 0x200A220
@@ -591,7 +591,7 @@
 // .equ byte_202AF00, 0x202AF00
 // .equ eDecomp202BA00, 0x202BA00
 // .equ eDialogScript202BA04, 0x202BA04
-// .equ unk_202DA00, 0x202DA00
+// .equ byte_202DA00, 0x202DA00
 // .equ eDialogScript202DA04, 0x202DA04
 // .equ byte_202F800, 0x202F800
 // .equ byte_202FA00, 0x202FA00

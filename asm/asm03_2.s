@@ -677,11 +677,11 @@ off_804646C: .word sub_8116894+1
 sub_804657C:
 	push {r4-r7,lr}
 	// memBlock
-	ldr r0, off_80466D4 // =byte_2008450 
+	ldr r0, off_80466D4 // =eStructArr2008450 
 	// size
 	ldr r1, off_804659C // =0x528 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	ldr r5, off_80466D4 // =byte_2008450 
+	ldr r5, off_80466D4 // =eStructArr2008450 
 	mov r7, #0
 loc_804658A:
 	mov r0, #0x20 
@@ -723,7 +723,7 @@ sub_80465BC:
 	mov r5, r9
 	mov r6, r12
 	push {r4-r6}
-	ldr r5, off_80466D4 // =byte_2008450 
+	ldr r5, off_80466D4 // =eStructArr2008450 
 	mov r7, #0
 loc_80465CA:
 	ldrb r0, [r5]
@@ -763,7 +763,7 @@ loc_80465FC:
 	mov r6, r12
 	push {r4-r6}
 	mov r4, r0
-	ldr r5, off_80466D4 // =byte_2008450 
+	ldr r5, off_80466D4 // =eStructArr2008450 
 	mov r7, #0
 loc_804660C:
 	ldrb r0, [r5]
@@ -823,7 +823,7 @@ sub_8046664:
 	thumb_func_start sub_8046670
 sub_8046670:
 	push {r4-r7,lr}
-	ldr r5, off_80466D4 // =byte_2008450 
+	ldr r5, off_80466D4 // =eStructArr2008450 
 	mov r4, #0x58 
 	mul r1, r4
 	add r5, r5, r1
@@ -849,7 +849,7 @@ sub_804668A:
 	thumb_func_start sub_8046696
 sub_8046696:
 	push {r4-r7,lr}
-	ldr r5, off_80466D4 // =byte_2008450 
+	ldr r5, off_80466D4 // =eStructArr2008450 
 	mov r1, #0x58 
 	mul r1, r0
 	add r5, r5, r1
@@ -863,7 +863,7 @@ sub_8046696:
 	thumb_local_start
 sub_80466AA:
 	push {r4-r7,lr}
-	ldr r5, off_80466D4 // =byte_2008450 
+	ldr r5, off_80466D4 // =eStructArr2008450 
 	mov r7, #0
 loc_80466B0:
 	ldrb r0, [r5]
@@ -878,9 +878,9 @@ loc_80466BA:
 	pop {r4-r7,pc}
 	thumb_func_end sub_80466AA
 
-	thumb_func_start sub_80466C4
-sub_80466C4:
-	ldr r1, off_80466D4 // =byte_2008450 
+	thumb_func_start getStructFrom2008450
+getStructFrom2008450:
+	ldr r1, off_80466D4 // =eStructArr2008450 
 	mov r2, #0x58 
 	mul r2, r0
 	add r1, r1, r2
@@ -888,8 +888,8 @@ sub_80466C4:
 	tst r0, r0
 	mov pc, lr
 	.balign 4, 0x00
-off_80466D4: .word byte_2008450
-	thumb_func_end sub_80466C4
+off_80466D4: .word eStructArr2008450
+	thumb_func_end getStructFrom2008450
 
 	thumb_local_start
 sub_80466D8:
@@ -2098,7 +2098,7 @@ uncomp_80471F8:
 	// src
 	ldr r0, off_8047224 // =comp_873ECC8 
 	// dest
-	ldr r1, off_8047228 // =unk_202DA00 
+	ldr r1, off_8047228 // =byte_202DA00 
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -2106,7 +2106,7 @@ off_8047218: .word unk_2029A00
 off_804721C: .word comp_873DE4C
 off_8047220: .word eDecomp202BA00
 off_8047224: .word comp_873ECC8
-off_8047228: .word unk_202DA00
+off_8047228: .word byte_202DA00
 	thumb_func_end uncomp_80471F8
 
 	thumb_local_start
@@ -8194,7 +8194,7 @@ sub_804AF84:
 	mov r6, #0
 loc_804AF8E:
 	mov r0, r6
-	bl sub_80466C4
+	bl getStructFrom2008450
 	beq loc_804AFA8
 	tst r6, r6
 	bne loc_804AF9C

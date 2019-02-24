@@ -503,7 +503,7 @@ AI *sub_800F2C6()
 
 
 // 0x800f2f0
-_BYTE *sub_800F2F0()
+AI *sub_800F2F0()
 {
     int v0; // r5
 
@@ -716,20 +716,13 @@ int sub_800F4A8()
 
 
 // 0x800f4b2
-int __fastcall sub_800F4B2(int a1)
+void __fastcall sub_800F4B2(int a1)
 {
     int v1; // r5
-    int v2; // ST00_4
-    bool v3; // zf
-    int result; // r0
 
     dword_203F7E0[*(v1 + 22)] -= a1;
-    v2 = a1;
-    v3 = battle_networkInvert(*(v1 + 22)) == 0;
-    result = v2;
-    if ( v3 )
-        result = sub_803D0C8();
-    return result;
+    if ( !battle_networkInvert(*(v1 + 22)) )
+        sub_803D0C8();
 }
 
 
@@ -989,7 +982,7 @@ void __fastcall __noreturn sub_800F6C6(int a1, int a2)
 
 
 // 0x800f768
-unsigned int __fastcall sub_800F768(char a1)
+int __fastcall sub_800F768(char a1)
 {
     int v1; // r5
     int v2; // r0
@@ -998,7 +991,7 @@ unsigned int __fastcall sub_800F768(char a1)
     unsigned int v5; // ST04_4
     int v6; // r0
     int v7; // r1
-    unsigned int result; // r0
+    int result; // r0
 
     v2 = object_getCoordinatesForPanels(a1);
     v5 = v4 - (*(v1 + 58) << 16);
@@ -2015,13 +2008,13 @@ int sub_801011A()
 
 
 // 0x801012c
-int __fastcall sub_801012C(int a1)
+Battle *__fastcall sub_801012C(int a1)
 {
     int v1; // r5
     int v2; // r4
     int v3; // r2
     int v4; // r3
-    int result; // r0
+    Battle *result; // r0
 
     v2 = *(v1 + 84);
     if ( object_getFlag() & 4 )
@@ -8306,7 +8299,7 @@ Battle *__fastcall sub_8013FD0(int a1)
 {
     Battle *result; // r0
     Battle *v2; // r5
-    int v3; // r1
+    signed int v3; // r1
     int v4; // r1
     int v5; // r2
 
@@ -8940,7 +8933,7 @@ int sub_80144C0()
     int v2; // r2
     int v3; // r3
     int v4; // r0
-    char v5; // r3
+    int v5; // r3
     int v6; // r0
     int v7; // r0
     int v8; // r0
@@ -9535,42 +9528,44 @@ int sub_8014A00()
 
 
 // 0x8014a38
-int sub_8014A38()
+void sub_8014A38()
 {
     int v0; // r5
     unsigned __int8 *v1; // r7
     signed int v2; // r0
-    int result; // r0
 
     v2 = sub_801595E(*(v0 + 22));
     if ( v2 < 1 || v2 > 24 )
-        return sub_801031C(128);
-    if ( v2 < 23 )
     {
-        if ( v2 < 13 )
-        {
-            if ( v2 < 11 )
-                (*(&off_8014AB4 + *v1))();
-            else
-                (*(&off_8014AC8 + *v1))();
-        }
-        else if ( sub_8013774(v2, 44) > 10 )
-        {
-            (*(&off_8014B04 + *v1))();
-        }
-        else
-        {
-            (*(&off_8014ADC + *v1))();
-        }
+        sub_801031C(128);
     }
     else
     {
-        (*(&off_8014AF0 + *v1))();
+        if ( v2 < 23 )
+        {
+            if ( v2 < 13 )
+            {
+                if ( v2 < 11 )
+                    (*(&off_8014AB4 + *v1))();
+                else
+                    (*(&off_8014AC8 + *v1))();
+            }
+            else if ( sub_8013774(v2, 44) > 10 )
+            {
+                (*(&off_8014B04 + *v1))();
+            }
+            else
+            {
+                (*(&off_8014ADC + *v1))();
+            }
+        }
+        else
+        {
+            (*(&off_8014AF0 + *v1))();
+        }
+        if ( !(sub_801032C() & 0x80000) )
+            sub_801BCD0();
     }
-    result = sub_801032C();
-    if ( !(result & 0x80000) )
-        result = sub_801BCD0();
-    return result;
 }
 
 
@@ -12933,7 +12928,7 @@ int sub_8016EC4()
 {
     int v0; // r5
 
-    return (*(&off_8016ED8 + *(v0 + 10)))();
+    return (*(&JumpTable8016ED8 + *(v0 + 10)))();
 }
 
 
@@ -12992,7 +12987,7 @@ int __noreturn sub_8016F56()
 {
     int v0; // r5
     int v1; // r6
-    char (*v2)[8]; // r7
+    unsigned __int8 *v2; // r7
     int v3; // r0
     int v4; // r0
     _BYTE *v5; // r0
@@ -13007,8 +13002,8 @@ int __noreturn sub_8016F56()
     sub_800F35C();
     v1 = *(v0 + oBattleObject_AIPtr);
     v2 = enemy_getStruct1(*(v0 + oBattleObject_NameID));
-    sprite_load(v0, 128, *v2, (*v2)[1]);
-    if ( (*v2)[7] )
+    sprite_load(v0, 128, *v2, v2[1]);
+    if ( v2[7] )
         sprite_hasShadow();
     else
         sprite_noShadow(v0);
@@ -13020,8 +13015,8 @@ int __noreturn sub_8016F56()
     sprite_setPallete(v3);
     v4 = object_getFlip(v0);
     sprite_setFlip(v0, v4);
-    *(v0 + 14) |= (*v2)[5];
-    if ( sub_802D234() == 6 && !byte_80170A4[(*v2)[4]] )
+    *(v0 + 14) |= v2[5];
+    if ( sub_802D234() == 6 && !byte_80170A4[v2[4]] )
         *(v0 + 44) = 0;
     v5 = object_createCollisionData();
     if ( !v5 )
@@ -13032,7 +13027,7 @@ int __noreturn sub_8016F56()
     if ( v7 & 4 )
         v8 = 16;
     object_setupCollisionData(v16, v8, 2, 3);
-    sub_8019F9E((*v2)[6]);
+    sub_8019F9E(v2[6]);
     if ( v7 & 0x10 )
         object_setFlag(0x8000000);
     if ( v7 & 8 )
@@ -15614,17 +15609,17 @@ int sub_801A420()
 
 
 // 0x801a42e
-int sub_801A42E()
+Battle *sub_801A42E()
 {
     int v0; // r5
-    int result; // r0
+    Battle *result; // r0
     int v2; // r0
     int v3; // r1
 
     result = *(v0 + 84);
-    if ( *(result + 116) )
+    if ( result->extraVars[20] )
     {
-        if ( *(result + 128) )
+        if ( *&result->extraVars[32] )
         {
             v2 = sub_8018810(*(v0 + 40), 5, *(v0 + 22), *(v0 + 23));
             result = sub_80E8124(v2, v2 << 16, 0, v3 << 16);
@@ -15659,16 +15654,16 @@ void __fastcall sub_801A45C(int a1)
 
 
 // 0x801a4a6
-int sub_801A4A6()
+Battle *sub_801A4A6()
 {
     int v0; // r5
-    int result; // r0
+    Battle *result; // r0
     int v2; // r1
     int v3; // r0
     int v4; // r1
 
     result = *(v0 + 84);
-    v2 = *(result + 164);
+    v2 = result[1].preventAnimation;
     if ( v2 == 244 || v2 == 247 )
     {
         v3 = sub_8018810(*(v0 + 40), 5, *(v0 + 22), *(v0 + 23));
@@ -16834,7 +16829,7 @@ void __fastcall sub_801AF44(int a1)
     int v1; // r5
     int v2; // r6
     int v3; // r7
-    int v4; // r0
+    Battle *v4; // r0
     char v5; // zf
     signed int v6; // r0
     int v7; // r0
@@ -16999,7 +16994,7 @@ int __fastcall sub_801B1C4(int a1)
     int v1; // r5
     unsigned __int16 *v2; // r6
     int result; // r0
-    int v4; // r0
+    Battle *v4; // r0
     int v5; // ST00_4
     int v6; // r1
     int v7; // r2
@@ -19227,14 +19222,14 @@ int sub_801C9A4()
     if ( v0[8] != v1 )
     {
         v0[8] = v1;
-        sub_801C9C8();
+        sub_801C9C8(6, v1);
     }
     v2 = v0[9];
     result = v0[10];
     if ( result != v2 )
     {
         v0[10] = v2;
-        sub_801C9C8();
+        sub_801C9C8(26, v2);
     }
     return result;
 }

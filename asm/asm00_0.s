@@ -715,7 +715,7 @@ objRender_8000A44:
 	push {r0,r1,r4-r7}
 	ldr r0, off_8000B10 // =dword_200AC1C
 	ldr r1, [r0]
-	ldr r2, off_8000B14 // =dword_200B4B0
+	ldr r2, off_8000B14 // =fiveWordArr200B4B0
 loc_8000A52:
 	sub r1, #1
 	blt loc_8000A96
@@ -790,7 +790,7 @@ loc_8000ACA:
 	mov r5, r4
 	add r4, #1
 	str r4, [r3]
-	ldr r4, off_8000B14 // =dword_200B4B0
+	ldr r4, off_8000B14 // =fiveWordArr200B4B0
 	mov r6, #0x14
 	mul r5, r6
 	add r4, r4, r5
@@ -809,7 +809,7 @@ off_8000AF8: .word byte_8000AFC
 byte_8000AFC: .byte 0x0, 0x0, 0x0, 0x84, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 off_8000B10: .word dword_200AC1C
-off_8000B14: .word dword_200B4B0
+off_8000B14: .word fiveWordArr200B4B0
 	thumb_func_end sub_8000AB8
 
 	thumb_local_start

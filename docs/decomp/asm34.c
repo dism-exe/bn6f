@@ -74,7 +74,7 @@ int sub_812D52E()
     int result; // r0
     char v1; // zf
 
-    result = sub_80466C4(0);
+    result = getStructFrom2008450(0);
     if ( v1 )
         result = sub_812D56C(&byte_812C258, 0, 48);
     return result;
@@ -87,7 +87,7 @@ int sub_812D54C()
     int result; // r0
     char v1; // zf
 
-    result = sub_80466C4(3);
+    result = getStructFrom2008450(3);
     if ( v1 )
         result = sub_812D56C(byte_812C268, 3, 192);
     return result;
@@ -112,7 +112,7 @@ int __fastcall sub_812D56C(void *a1, int a2, int a3)
     sub_80465A0(a1);
     do
     {
-        result = sub_80466C4(v4);
+        result = getStructFrom2008450(v4);
         if ( !v8 )
         {
             if ( !v4 )
@@ -405,7 +405,7 @@ void sub_812D83C()
 
 
 // 0x812d854
-unsigned int sub_812D854()
+int sub_812D854()
 {
     char *v0; // r0
     unsigned int v1; // r0
@@ -528,7 +528,7 @@ int sub_812DA3C()
     int result; // r0
     char v1; // zf
 
-    result = sub_80466C4(6);
+    result = getStructFrom2008450(6);
     if ( v1 )
         result = sub_812D4FC();
     return result;

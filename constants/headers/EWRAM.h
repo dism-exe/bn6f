@@ -13,7 +13,7 @@ in the 0x2000000 RAM region
 
 #define timer_2000000 ((u32*)                   0x2000000)
 #define reqBBS_requestEntries_list ((u8*)       0x2000290)
-#define reqBBS_bxo_2001150 ((u8*)               0x2001150)
+#define reqBBS_eStruct2001150 ((u8*)               0x2001150)
 #define eGameState ((GameState*)                0x2001B80)
 #define sReqBBS_GUI ((reqBBS_GUI*)              0x2005780)
 /*

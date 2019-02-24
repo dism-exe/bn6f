@@ -7,7 +7,7 @@ int chatbox_uncompBasedOnMap_803FD08()
     void *v2; // r0
 
     v0 = chatbox_map_8040730(0);
-    SWI_LZ77UnCompReadNormalWrite8bit(v0, &unk_202DA00);
+    SWI_LZ77UnCompReadNormalWrite8bit(v0, &byte_202DA00);
     v1 = chatbox_map_8040794();
     SWI_LZ77UnCompReadNormalWrite8bit(v1, &unk_2033400);
     v2 = chatbox_map_80407C8();

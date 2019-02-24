@@ -266,7 +266,7 @@ sub_8130290:
 	mov r1, #0
 	push {r1}
 	mov r0, r1
-	bl sub_80466C4
+	bl getStructFrom2008450
 	pop {r1}
 	bne locret_81302A8
 	mov r2, #0x40 
@@ -284,7 +284,7 @@ sub_81302B0:
 	mov r1, #1
 	push {r1}
 	mov r0, r1
-	bl sub_80466C4
+	bl getStructFrom2008450
 	pop {r1}
 	bne locret_81302C8
 	mov r2, #0xb0
@@ -304,7 +304,7 @@ sub_81302D0:
 	mov r6, r1
 	bl sub_80465A0 // (void *a1) -> void
 	mov r0, r6
-	bl sub_80466C4
+	bl getStructFrom2008450
 	beq loc_81302EE
 	mov r5, r1
 	ldr r0, [sp]
@@ -6849,7 +6849,7 @@ locret_8133C98:
 sub_8133C9C:
 	push {r4,lr}
 	mov r0, #4
-	bl sub_80466C4
+	bl getStructFrom2008450
 	beq loc_8133CD2
 	mov r4, r1
 	ldrh r0, [r5,#0x20]
@@ -6953,7 +6953,7 @@ sub_8133D64:
 	mov r4, #5
 loc_8133D68:
 	mov r0, r4
-	bl sub_80466C4
+	bl getStructFrom2008450
 	beq loc_8133D76
 	add r4, #1
 	cmp r4, #6
@@ -7288,7 +7288,7 @@ sub_81340AC:
 	mov r6, #0
 loc_81340B6:
 	mov r0, r6
-	bl sub_80466C4
+	bl getStructFrom2008450
 	beq loc_81340D0
 	tst r6, r6
 	bne loc_81340C4
@@ -7314,7 +7314,7 @@ sub_81340DC:
 	ldr r0, off_81340F8 // =byte_813314C
 	bl sub_80465A0 // (void *a1) -> void
 	mov r0, #3
-	bl sub_80466C4
+	bl getStructFrom2008450
 	beq locret_81340F6
 	mov r5, r1
 	mov r0, #0xc0
@@ -9200,7 +9200,7 @@ sub_8134F88:
 	cmp r0, r1
 	bne locret_8134FA8
 	mov r0, #4
-	bl sub_80466C4
+	bl getStructFrom2008450
 	beq locret_8134FA8
 	mov r0, #8
 	strb r0, [r1,#8]
@@ -9253,7 +9253,7 @@ sub_8134FE0:
 loc_8134FE4:
 	ldr r0, off_8135020 // =byte_8135024
 	ldr r0, [r0,r4]
-	bl sub_80466C4
+	bl getStructFrom2008450
 	beq loc_8134FF2
 	mov r0, #8
 	strb r0, [r1,#8]
@@ -10465,7 +10465,7 @@ sub_81359A0:
 	strh r0, [r5,#0x32]
 	bl sub_813652C
 	mov r0, #0xa
-	bl sub_80466C4
+	bl getStructFrom2008450
 	bne loc_8135A08
 	ldrh r0, [r5,#0x30]
 	tst r0, r0

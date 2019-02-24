@@ -134,7 +134,7 @@ signed int sub_808964C()
     int v1; // r0
     char v2; // zf
     char v3; // r0
-    char v4; // r0
+    int v4; // r0
     int v5; // r0
 
     v1 = sub_814219C();
@@ -270,7 +270,7 @@ signed int __fastcall sub_8089704(int a1, int a2, int a3)
             v14 = __OFSUB__(v13, 1);
             v15 = v13 - 1;
             if ( (v15 < 0) ^ v14 )
-                LOBYTE(v15) = 3;
+                v15 = 3;
             sub_81421C8(v15);
             v5 = 1;
         }
@@ -279,7 +279,7 @@ signed int __fastcall sub_8089704(int a1, int a2, int a3)
             sound_play(102, a2, a3);
             v16 = sub_81421D0() + 1;
             if ( v16 >= 4 )
-                LOBYTE(v16) = 0;
+                v16 = 0;
             sub_81421C8(v16);
             v5 = 1;
         }
@@ -527,7 +527,7 @@ signed int sub_808991C()
 {
     _BYTE *v0; // r5
     char v1; // zf
-    char v2; // r0
+    int v2; // r0
     int v3; // r0
 
     chatbox_8045F3C(128);

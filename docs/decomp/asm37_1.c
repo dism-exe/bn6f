@@ -325,8 +325,8 @@ unsigned int sub_8141F7C()
     int v10; // r1
     int v11; // r2
     int v12; // r3
-    signed int v13; // r0
-    signed int v14; // r0
+    unsigned int v13; // r0
+    unsigned int v14; // r0
     int v15; // r2
     int v16; // r3
     int v18; // [sp-10h] [bp-24h]
@@ -384,10 +384,10 @@ void sub_814204C()
 
 
 // 0x8142050
-int __fastcall sub_8142050(int a1)
+unsigned int __fastcall sub_8142050(int a1)
 {
     int v1; // r4
-    int result; // r0
+    unsigned int result; // r0
     char (*v3)[72]; // r7
 
     v1 = a1;
@@ -692,7 +692,7 @@ int sub_81422B4()
 BOOL sub_81422BE()
 {
     char v0; // zf
-    signed int v1; // r4
+    unsigned int v1; // r4
     int v2; // r0
     BOOL result; // r0
 
@@ -1003,13 +1003,13 @@ char *__fastcall sub_81428C2(int a1)
 
 
 // 0x81428d4
-int __fastcall sub_81428D4(int a1)
+unsigned int __fastcall sub_81428D4(int a1)
 {
     int v1; // r4
     int v2; // r0
     int v4; // r7
-    int v5; // r6
-    int v6; // r7
+    unsigned int v5; // r6
+    unsigned int v6; // r7
     __int64 v7; // ST00_8
     int v8; // r0
     int v9; // r1
@@ -1072,12 +1072,12 @@ signed int __fastcall sub_814299C(unsigned int a1, unsigned int a2)
 
 
 // 0x81429ca
-unsigned int sub_81429CA()
+int sub_81429CA()
 {
     char *v0; // r6
     unsigned int v1; // r4
     int v2; // r7
-    unsigned int result; // r0
+    int result; // r0
     char *i; // r7
     int v5; // r2
 
@@ -1228,7 +1228,7 @@ int sub_8142B28()
 
 
 // 0x8142b58
-signed int sub_8142B58()
+unsigned int sub_8142B58()
 {
     char *v0; // r5
     signed int v1; // r4
@@ -1615,7 +1615,7 @@ int sub_8142FC8()
     char v5; // zf
     int v6; // r2
     int v7; // r3
-    signed int v8; // r0
+    unsigned int v8; // r0
     int v9; // r2
     int v10; // r3
 
@@ -2217,7 +2217,7 @@ int sub_8143A54()
     int v7; // r0
     int v8; // r2
     int v9; // r3
-    signed int v10; // r0
+    unsigned int v10; // r0
     int v11; // r2
     int v12; // r3
     int result; // r0
@@ -2502,13 +2502,13 @@ int sub_8143DBC()
 
 
 // 0x8143dea
-int __fastcall sub_8143DEA(int a1)
+unsigned int __fastcall sub_8143DEA(int a1)
 {
     int v1; // r4
     int v2; // r0
     int v4; // r7
-    int v5; // r6
-    int v6; // r7
+    unsigned int v5; // r6
+    unsigned int v6; // r7
     __int64 v7; // ST00_8
     int v8; // r0
     int v9; // r1

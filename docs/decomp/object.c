@@ -3616,10 +3616,10 @@ BOOL __fastcall sub_800EB6C(int a1)
 
 
 // 0x800eb9e
-int object_spawnHiteffect()
+Battle *object_spawnHiteffect()
 {
     int v0; // r5
-    int result; // r0
+    Battle *result; // r0
     int v2; // r2
     char v3; // zf
     int v4; // r1

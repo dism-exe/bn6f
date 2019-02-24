@@ -15,7 +15,7 @@ void __noreturn main_()
     while ( 1 )
     {
         main_pollGeneralLCDStatus_STAT_LYC_();
-        main_awaitFrame_80003A0();
+        main_awaitFrame();
         sub_80007BE();
         sub_80019A0();
         render_800172C();
@@ -44,7 +44,7 @@ void __noreturn main_()
 
 
 // 0x80003a0
-void __cdecl main_awaitFrame_80003A0()
+void __cdecl main_awaitFrame()
 {
     do
     {
@@ -228,5 +228,3 @@ __int16 *__cdecl main_static_8000570()
     GeneralLCDStatus_STAT_LYC_ = GeneralLCDStatus_STAT_LYC_ | 0x5020;
     return result;
 }
-
-

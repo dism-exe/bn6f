@@ -6,7 +6,7 @@
 sub_812EFE4:
 	push {lr}
 	mov r0, #6
-	bl sub_80466C4
+	bl getStructFrom2008450
 	bne locret_812EFFC
 	ldrb r0, [r1,#1]
 	cmp r0, #0x1d

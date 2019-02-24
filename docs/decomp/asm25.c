@@ -599,7 +599,7 @@ signed int sub_808FF44()
     char v1; // zf
     signed int result; // r0
 
-    sub_811EBE0(1);
+    sub_811EBE0();
     if ( v1 )
     {
         result = *(v0 + 5);

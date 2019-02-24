@@ -241,7 +241,7 @@
 // .global sub_8046664 // () -> void
 // .global sub_8046670
 // .global sub_8046696
-// .global sub_80466C4
+// .global getStructFrom2008450
 // .global sub_8048F9C
 // .global cb_8048FD4
 // .global sub_8049D7C

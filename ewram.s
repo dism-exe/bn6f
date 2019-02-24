@@ -268,7 +268,7 @@ byte_2001130:: // 0x2001130
 	.space 16
 dword_2001140:: // 0x2001140
 	.space 16
-reqBBS_bxo_2001150:: // 0x2001150
+reqBBS_eStruct2001150:: // 0x2001150
 	.space 4
 byte_2001154:: // 0x2001154
 	.space 36
@@ -556,14 +556,9 @@ dword_20081C0:: // 0x20081c0
 	.space 16
 dword_20081D0:: // 0x20081d0
 	.space 640
-byte_2008450:: // 0x2008450
-	.space 1
-byte_2008451:: // 0x2008451
-	.space 1
-byte_2008452:: // 0x2008452
-	.space 1
-byte_2008453:: // 0x2008453
-	.space 1317
+// looks dynamic
+eStructArr2008450:: // 0x2008453
+	.space 1320
 byte_2008978:: // 0x2008978
 	.space 4
 dword_200897C:: // 0x200897c
@@ -965,16 +960,15 @@ word_200B1BA:: // 0x200b1ba
 	.space 246
 unk_200B2B0:: // 0x200b2b0
 	.space 512
-dword_200B4B0:: // 0x200b4b0
-	.space 4
-dword_200B4B4:: // 0x200b4b4
-	.space 4
-dword_200B4B8:: // 0x200b4b8
-	.space 4
-dword_200B4BC:: // 0x200b4bc
-	.space 4
-dword_200B4C0:: // 0x200b4c0
-	.space 1904
+// array of 5 words, then zeros?
+fiveWordArr200B4B0:: // 0x200b4b0
+	.space 4*5
+	.space 4*5
+	.space 4*5
+	.space 4*5
+	.space 4*5
+	.space 4*5
+	.space 1800
 eStruct200BC30:: // 0x200bc30
 	.space 1
 byte_200BC31:: // 0x200bc31
@@ -2404,23 +2398,23 @@ unk_202CA00:: // 0x202ca00
 	.space 512
 unk_202CC00:: // 0x202cc00
 	.space 512
-unk_202CE00:: // 0x202ce00
+byte_202CE00:: // 0x202ce00
 	.space 512
-unk_202D000:: // 0x202d000
+byte_202D000:: // 0x202d000
 	.space 512
-unk_202D200:: // 0x202d200
+byte_202D200:: // 0x202d200
 	.space 512
-unk_202D400:: // 0x202d400
+byte_202D400:: // 0x202d400
 	.space 512
-unk_202D600:: // 0x202d600
+byte_202D600:: // 0x202d600
 	.space 512
-unk_202D800:: // 0x202d800
+byte_202D800:: // 0x202d800
 	.space 512
-unk_202DA00:: // 0x202da00
+byte_202DA00:: // 0x202da00
 	.space 4
 eDialogScript202DA04:: // 0x202da04
 	.space 508
-unk_202DC00:: // 0x202dc00
+byte_202DC00:: // 0x202dc00
 	.space 512
 unk_202DE00:: // 0x202de00
 	.space 416

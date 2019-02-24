@@ -682,7 +682,7 @@ int sprite_makeUnscalable()
     int v0; // r5
     unsigned int v1; // r5
     int result; // r0
-    unsigned int v3; // r0
+    int v3; // r0
 
     v1 = v0 + 16 * (*(v0 + 2) >> 4);
     result = *(v1 + 17);

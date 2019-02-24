@@ -5,7 +5,7 @@ void sub_812EFE4()
     char v1; // zf
     int v2; // r0
 
-    sub_80466C4(6);
+    getStructFrom2008450(6);
     if ( v1 )
     {
         v2 = *(v0 + 1);
@@ -148,9 +148,10 @@ void __noreturn sub_812F190()
     unsigned int v9; // r3
     unsigned int v10; // r3
     int v11; // r0
-    char v12; // r1
-    u32 v13; // r0
-    char v14; // zf
+    int v12; // r0
+    char v13; // r1
+    u32 v14; // r0
+    char v15; // zf
 
     *(v0 + 16) = 12;
     *(v0 + 42) = sub_813040C();
@@ -200,13 +201,13 @@ void __noreturn sub_812F190()
                         sub_8130864();
                         *(v0 + 73) = 4;
                         *(v0 + 16) = 4;
-                        if ( v11 != 2 )
+                        if ( v12 != 2 )
                         {
                             sub_8132280(64);
-                            v12 = 3;
+                            v13 = 3;
                             if ( *(v0 + 38) == 8 )
-                                v12 = 4;
-                            *(v0 + 16) = v12;
+                                v13 = 4;
+                            *(v0 + 16) = v13;
                             *(v0 + 38) = 16;
                         }
                         goto LABEL_27;
@@ -215,7 +216,7 @@ void __noreturn sub_812F190()
                     {
 LABEL_31:
                         IsPaletteFadeActive();
-                        if ( !v14 )
+                        if ( !v15 )
                             sub_8130370();
                     }
                     else
@@ -226,9 +227,9 @@ LABEL_31:
                         {
                             *(v0 + 2) = 8;
                             *(v0 + 3) = 0;
-                            v13 = sub_81325CC();
+                            v14 = sub_81325CC();
                             *(v0 + 38) = 2;
-                            *(v13 + 8) = 2;
+                            *(v14 + 8) = 2;
                             engine_setScreeneffect(12, 16);
                         }
                     }
@@ -252,90 +253,89 @@ int sub_812F2AC()
 
 
 // 0x812f2d0
-int sub_812F2D0()
+void sub_812F2D0()
 {
     int v0; // r5
-    int result; // r0
+    int v1; // r0
     char v2; // r4
-    u8 *v3; // r6
-    _BYTE *v4; // r0
-    int v5; // r0
-    int v6; // r7
-    unsigned int v7; // r3
+    u32 v3; // r0
+    u8 *v4; // r6
+    _BYTE *v5; // r0
+    int v6; // r0
+    int v7; // r7
     unsigned int v8; // r3
-    int v9; // r0
-    int v10; // r1
-    int v11; // r2
-    int v12; // r3
-    char v13; // zf
+    unsigned int v9; // r3
+    int v10; // r0
+    int v11; // r1
+    int v12; // r2
+    int v13; // r3
+    char v14; // zf
 
     *(v0 + 16) = 19;
-    result = sub_803EAE4();
-    if ( result == 4 )
+    v1 = sub_803EAE4();
+    if ( v1 == 4 )
     {
         sub_8130424();
 LABEL_21:
-        sub_8130464(v9, v10, v11, v12);
+        sub_8130464(v10, v11, v12, v13);
         sub_8130850();
         *(v0 + 3) = 4;
-        return engine_setScreeneffect(8, 16);
+        engine_setScreeneffect(8, 16);
+        return;
     }
-    if ( result != 1 )
+    if ( v1 != 1 )
     {
-        v2 = result;
-        if ( !(result & 0x10) )
+        v2 = v1;
+        if ( !(v1 & 0x10) )
         {
-            result = sub_81325CC();
-            *(result + 8) = *(v0 + 38);
-            *(result + 10) = *(v0 + 42);
+            v3 = sub_81325CC();
+            *(v3 + 8) = *(v0 + 38);
+            *(v3 + 10) = *(v0 + 42);
         }
         if ( !(v2 & 8) )
         {
-            v3 = sub_803E8F8();
-            v4 = sub_803EF74();
-            v5 = sub_81323B0(v4);
-            if ( v5 != -1 )
+            v4 = sub_803E8F8();
+            v5 = sub_803EF74();
+            v6 = sub_81323B0(v5);
+            if ( v6 != -1 )
             {
-                v6 = v5 + 16;
-                v7 = 8;
+                v7 = v6 + 16;
+                v8 = 8;
                 do
                 {
-                    if ( *(v5 + 4) != *(v3 + 7) )
+                    if ( *(v6 + 4) != *(v4 + 7) )
                         break;
-                    v8 = v7 >> 1;
-                    if ( *(v5 + 2) != *(v3 + 5) )
+                    v9 = v8 >> 1;
+                    if ( *(v6 + 2) != *(v4 + 5) )
                         break;
-                    if ( !*(v5 + 8) )
+                    if ( !*(v6 + 8) )
                         break;
-                    if ( *(v5 + 10) > 32771 )
+                    if ( *(v6 + 10) > 32771 )
                         break;
-                    v7 = v8 >> 1;
-                    v5 += 16;
+                    v8 = v9 >> 1;
+                    v6 += 16;
                 }
-                while ( v5 <= v6 );
+                while ( v6 <= v7 );
             }
             IsPaletteFadeActive();
-            if ( !v13 )
+            if ( !v14 )
             {
-                v9 = *(v0 + 3);
-                if ( v9 == 4 )
+                v10 = *(v0 + 3);
+                if ( v10 == 4 )
                 {
                     *(v0 + 3) = 8;
-                    result = 4;
                     *(v0 + 38) = 4;
-                    return result;
+                    return;
                 }
                 goto LABEL_21;
             }
-            result = *(v0 + 3);
             if ( !*(v0 + 3) )
             {
                 sub_813064C();
-                result = sub_8130810();
+                sub_8130810();
             }
         }
     }
-    return result;
 }
 
 

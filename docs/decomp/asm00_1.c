@@ -2998,7 +2998,7 @@ void sub_80058D0()
             sub_8005F28();
             if ( v2 )
             {
-                sub_811EBE0(1);
+                sub_811EBE0();
                 if ( v2 )
                 {
                     IsPaletteFadeActive();
@@ -3174,7 +3174,7 @@ void sub_8005A8C()
                         sub_8005F28();
                         if ( v1 )
                         {
-                            sub_811EBE0(1);
+                            sub_811EBE0();
                             if ( v1 )
                             {
                                 IsPaletteFadeActive();
@@ -3233,7 +3233,7 @@ void sub_8005AF4()
                     sub_8005F28();
                     if ( v2 )
                     {
-                        sub_811EBE0(1);
+                        sub_811EBE0();
                         if ( v2 )
                         {
                             IsPaletteFadeActive();
@@ -3294,7 +3294,7 @@ int __fastcall sub_8005B6E(int a1, int a2, int a3, int a4, int a5, int (__fastca
                 v7 = sub_8005F28();
                 if ( v8 )
                 {
-                    v7 = sub_811EBE0(1);
+                    sub_811EBE0();
                     if ( v8 )
                     {
                         v7 = IsPaletteFadeActive();
@@ -5243,10 +5243,10 @@ void sub_80073E2()
 
 
 // 0x8007424
-signed int sub_8007424()
+unsigned int sub_8007424()
 {
     int v0; // r6
-    signed int result; // r0
+    unsigned int result; // r0
 
     GetPositiveSignedRNG2();
     __asm { SVC         6 }
@@ -8371,7 +8371,7 @@ int sub_8009158()
 {
     int v0; // r5
     int result; // r0
-    int v2; // r0
+    u32 v2; // r0
     int v3; // r2
     int v4; // r2
 
@@ -8628,14 +8628,14 @@ void __fastcall sub_800938A(int a1, int a2, int a3, int a4)
     int v4; // r5
     int v5; // r0
     int v6; // r0
-    char v7; // r0
+    int v7; // r0
     int v8; // r0
     int v9; // r0
     char v10; // r2
     int v11; // r0
     signed int v12; // r0
     int v13; // r0
-    char v14; // r0
+    int v14; // r0
     int v15; // r0
     signed int v16; // r0
     int v17; // [sp-4h] [bp-Ch]
@@ -9210,13 +9210,13 @@ void __fastcall sub_800980E(int a1, int a2, int a3, int a4)
     int v4; // r5
     int v5; // r0
     int v6; // r0
-    char v7; // r0
+    int v7; // r0
     int v8; // r0
     int v9; // r0
     char v10; // r2
     signed int v11; // r0
     int v12; // r0
-    char v13; // r0
+    int v13; // r0
     int v14; // r0
     char v15; // ST00_1
     signed int v16; // r0
@@ -9602,10 +9602,10 @@ void __fastcall sub_8009B20(int a1, int a2, int a3, int a4)
     int v4; // r5
     int v5; // r0
     int v6; // r0
-    char v7; // r0
+    int v7; // r0
     int v8; // r0
     int v9; // r0
-    char v10; // r0
+    int v10; // r0
     int v11; // r0
     char v12; // r2
     char v13; // ST00_1
@@ -10020,10 +10020,10 @@ void __fastcall sub_8009E56(int a1, int a2, int a3, int a4)
     int v4; // r5
     int v5; // r0
     int v6; // r0
-    char v7; // r0
+    int v7; // r0
     int v8; // r0
     int v9; // r0
-    char v10; // r0
+    int v10; // r0
     int v11; // r0
     char v12; // r2
     char v13; // ST00_1
@@ -11273,7 +11273,7 @@ int sub_800A832()
 
 // 0x800a840
 // (u8 a0) -> void
-int __fastcall setTwoStructs_800A840(char a1)
+int __fastcall setTwoStructs_800A840(int a1)
 {
     int v1; // r10
 

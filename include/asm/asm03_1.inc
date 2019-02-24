@@ -377,9 +377,9 @@
 // .global sub_804CF84
 
 	.include "data/dat03.inc"
-// .global off_804D0A4
+// .global map00_ACDC_804D0A4
 // .global off_804D0AC
-// .global off_804D0B4
+// .global npc_map00_ACDC_804D0B4
 // .global off_804D0BC
 // .global byte_804D0FC
 // .global byte_804D0FE
@@ -391,7 +391,7 @@
 	.include "data/dat04.inc"
 // .global off_804E92C
 // .global off_804E940
-// .global off_804E954
+// .global npc_map00_804E954
 // .global off_804E968
 // .global byte_804EA08
 // .global byte_804EA0D

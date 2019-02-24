@@ -210,7 +210,7 @@ loc_812D532:
 	mov r1, #0
 	push {r1,r2}
 	mov r0, r1
-	bl sub_80466C4
+	bl getStructFrom2008450
 	pop {r1,r2}
 	bne locret_812D546
 	ldr r0, off_812D548 // =byte_812C258 
@@ -226,7 +226,7 @@ sub_812D54C:
 	mov r1, #3
 	push {r1}
 	mov r0, r1
-	bl sub_80466C4
+	bl getStructFrom2008450
 	pop {r1}
 	bne locret_812D564
 	mov r2, #0xc0
@@ -248,7 +248,7 @@ sub_812D56C:
 	bl sub_80465A0 // (void *a1) -> void
 loc_812D57A:
 	mov r0, r6
-	bl sub_80466C4
+	bl getStructFrom2008450
 	beq loc_812D594
 	tst r6, r6
 	bne loc_812D588
@@ -901,7 +901,7 @@ dword_812DA38: .word 0xC24C
 sub_812DA3C:
 	push {lr}
 	mov r0, #6
-	bl sub_80466C4
+	bl getStructFrom2008450
 	bne locret_812DA4A
 	bl sub_812D4FC
 locret_812DA4A:

@@ -42,7 +42,7 @@ void sub_80339CC()
     char v1; // zf
     int v2; // r4
 
-    sub_811EBE0(1);
+    sub_811EBE0();
     if ( v1 )
     {
         if ( tk->gamestate->MapSelect >= 128 )
@@ -766,23 +766,22 @@ int sub_80343B0()
 
 
 // 0x8034b4c
-int __fastcall map_8034B4C(int a1, int a2)
+int __fastcall map_8034B4C(int mapGroup, int mapNumber)
 {
     int v2; // r0
     int v3; // r1
     int v4; // r2
     int v5; // r3
-    int v6; // r2
-    int v7; // r0
-    int **v8; // r4
-    int v9; // r0
-    int v10; // r1
-    int v11; // r2
-    int v13; // [sp+0h] [bp-28h]
-    int v14; // [sp+4h] [bp-24h]
+    int vRelMapGroup; // r0
+    int **v7; // r4
+    int v8; // r0
+    int v9; // r1
+    int v10; // r2
+    int vMapGroup; // [sp+0h] [bp-28h]
+    int vMapNumber; // [sp+4h] [bp-24h]
 
-    v13 = a1;
-    v14 = a2;
+    vMapGroup = mapGroup;
+    vMapNumber = mapNumber;
     ZeroFillByWord(dword_2011EA0, 64);
     sub_8036E44();
     v2 = sub_8035028();
@@ -790,35 +789,35 @@ int __fastcall map_8034B4C(int a1, int a2)
     npc_getMapSpriteScriptOffsets();
     sub_803537C();
     sub_80353DA();
-    v7 = v13;
-    if ( v13 >= 128 )
+    vRelMapGroup = vMapGroup;
+    if ( vMapGroup >= 0x80 )
     {
-        v8 = &off_8034670;
-        v7 = v13 - 128;
+        v7 = &maps80_8034670;
+        vRelMapGroup = vMapGroup - 0x80;
     }
     else
     {
-        v8 = &off_80345E4;
+        v7 = &maps00_80345E4;
     }
-    v9 = sub_803600E(v8[2 * v7][v14], v8[2 * v7 + 1][v14], v6, 4 * v14);
-    return sub_8036E78(v9, v10, v11);
+    v8 = map_script_overworld_803600E(v7[2 * vRelMapGroup][vMapNumber], v7[2 * vRelMapGroup + 1][vMapNumber]);
+    return sub_8036E78(v8, v9, v10);
 }
 
 
 // 0x8034bb8
 int __fastcall sub_8034BB8(int a1)
 {
-    char v1; // zf
+    char zf; // zf
     void *v2; // r0
     int result; // r0
 
     s_2011C50_ptr_1C_isNull();
-    if ( v1 )
+    if ( zf )
     {
         sub_8036040();
         sub_809C968();
         sub_8034C6E();
-        if ( !v1 )
+        if ( !zf )
         {
             v2 = sub_8034EF0();
             sub_8034F68(v2);
@@ -832,9 +831,9 @@ int __fastcall sub_8034BB8(int a1)
             sub_809CF2C();
         }
     }
-    sub_8036064();
+    map_script_overworld_8036064();
     result = s_2011C50_ptr_1C_isNull();
-    if ( !v1 )
+    if ( !zf )
     {
         ho_803851C();
         ClearEventFlagFromImmediate(7, 66);
@@ -1423,7 +1422,7 @@ _DWORD *npc_getMapSpriteScriptOffsets()
 
 
 // 0x803516c
-int npc_dead_803516C()
+int npc_803516C()
 {
     int v0; // r10
     signed int v1; // r0
@@ -1930,56 +1929,55 @@ LABEL_12:
 
 
 // 0x8035920
-int MapScript_end()
+int __cdecl MapScript_end()
 {
     return 0;
 }
 
 
 // 0x8035924
-signed int MapScript_jump()
+int __usercall MapScript_jump@<R0>(void *p7@<R7>)
 {
-    ReadMapScriptWord();
+    ReadMapScriptWord(1, p7);
     return 1;
 }
 
 
 // 0x8035932
-signed int MapScript_jump_if_progress_in_range()
+int __usercall MapScript_jump_if_progress_in_range@<R0>(void *pScript@<R7>)
 {
-    void *v0; // r7
-    int v1; // r10
+    Toolkit *tk; // r10
     int v2; // r0
     int v3; // r0
     int v4; // r4
     int v5; // r1
 
-    v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_GameProgress);
-    ReadMapScriptByte(1, v0);
-    v4 = ReadMapScriptByte(2, v0);
+    v2 = tk->gamestate->gameProgress;
+    ReadMapScriptByte(1, pScript);
+    v4 = ReadMapScriptByte(2, pScript);
     if ( v3 < v5 || v3 > v4 )
         return 1;
-    ReadMapScriptWord();
+    ReadMapScriptWord(3, pScript);
     return 1;
 }
 
 
 // 0x8035962
-signed int __fastcall MapScript_jump_if_flag_set(int a1)
+int __usercall MapScript_jump_if_flag_set@<R0>(void *p7@<R7>)
 {
     int v1; // r5
-    void *v2; // r7
+    int v2; // r4
     int v3; // r4
     char v4; // zf
 
-    v3 = ReadMapScriptByte(1, v2);
-    if ( v3 == 255 )
-        ReadMapScriptHalfword();
+    v2 = ReadMapScriptByte(1, p7);
+    if ( v2 == 255 )
+        v3 = ReadMapScriptHalfword(2, p7);
     else
-        v3 = *(v1 + v3);
+        v3 = *(v1 + v2);
     TestEventFlag(v3);
     if ( !v4 )
-        ReadMapScriptWord();
+        ReadMapScriptWord(4, p7);
     return 1;
 }
 
@@ -1991,11 +1989,11 @@ signed int __fastcall MapScript_jump_if_flag_range_set(int a1)
     int v2; // r4
     char v3; // zf
 
-    v2 = ReadMapScriptByte(1, v1);
-    ReadMapScriptHalfword();
+    ReadMapScriptByte(1, v1);
+    v2 = ReadMapScriptHalfword(2, v1);
     (TestEventFlagRange)(v2);
     if ( !v3 )
-        ReadMapScriptWord();
+        ReadMapScriptWord(4, v1);
     return 1;
 }
 
@@ -2006,16 +2004,17 @@ signed int __fastcall MapScript_jump_if_flag_clear(int a1)
     int v1; // r5
     void *v2; // r7
     int v3; // r4
-    char v4; // zf
+    int v4; // r4
+    char v5; // zf
 
     v3 = ReadMapScriptByte(1, v2);
     if ( v3 == 255 )
-        ReadMapScriptHalfword();
+        v4 = ReadMapScriptHalfword(2, v2);
     else
-        v3 = *(v1 + v3);
-    TestEventFlag(v3);
-    if ( v4 )
-        ReadMapScriptWord();
+        v4 = *(v1 + v3);
+    TestEventFlag(v4);
+    if ( v5 )
+        ReadMapScriptWord(4, v2);
     return 1;
 }
 
@@ -2027,11 +2026,11 @@ signed int __fastcall MapScript_jump_if_flag_range_clear(int a1)
     int v2; // r4
     char v3; // zf
 
-    v2 = ReadMapScriptByte(1, v1);
-    ReadMapScriptHalfword();
+    ReadMapScriptByte(1, v1);
+    v2 = ReadMapScriptHalfword(2, v1);
     (TestEventFlagRange)(v2);
     if ( v3 )
-        ReadMapScriptWord();
+        ReadMapScriptWord(4, v1);
     return 1;
 }
 
@@ -2043,22 +2042,24 @@ signed int __fastcall MapScript_jump_if_mem_equals(int a1)
     int v2; // r4
     int v3; // r4
     unsigned __int8 *v4; // r0
-    _WORD *v5; // r0
-    _DWORD *v6; // r0
+    int v5; // r4
+    unsigned __int16 *v6; // r0
+    int v7; // r4
+    _DWORD *v8; // r0
 
-    ReadMapScriptWord();
-    ReadMapScriptWord();
+    ReadMapScriptWord(2, v1);
+    ReadMapScriptWord(6, v1);
     v2 = ReadMapScriptByte(1, v1);
     if ( v2 == 1 )
     {
-        ReadMapScriptHalfword();
-        if ( *v5 != 1 )
+        v5 = ReadMapScriptHalfword(10, v1);
+        if ( *v6 != v5 )
             return 1;
     }
     else if ( v2 == 2 )
     {
-        ReadMapScriptWord();
-        if ( *v6 != 2 )
+        v7 = ReadMapScriptWord(10, v1);
+        if ( *v8 != v7 )
             return 1;
     }
     else
@@ -2086,7 +2087,7 @@ signed int __fastcall MapScript_jump_if_unk_navicust_range(int a1)
     v4 = ReadMapScriptByte(3, v1);
     if ( v3 < v5 || v3 > v4 )
         return 1;
-    ReadMapScriptWord();
+    ReadMapScriptWord(4, v1);
     return 1;
 }
 
@@ -2094,28 +2095,28 @@ signed int __fastcall MapScript_jump_if_unk_navicust_range(int a1)
 // 0x8035aaa
 signed int __usercall MapScript_jump_if_chip_count_in_range@<R0>(void *r7@<R7>, int a1@<R0>)
 {
-    int chipIdx; // r4
-    int v3; // r1
-    int v4; // r0
-    int v5; // r4
-    int v6; // r1
+    int v2; // r4
+    int v3; // r4
+    int v4; // r1
+    int v5; // r0
+    int v6; // r4
+    int v7; // r1
 
-    chipIdx = ReadMapScriptByte(3, r7);
-    if ( chipIdx == 255 )
+    if ( ReadMapScriptByte(3, r7) == 255 )
     {
-        ReadMapScriptHalfword();
-        GetTotalChipCount(255);
+        v2 = ReadMapScriptHalfword(1, r7);
+        GetTotalChipCount(v2);
     }
     else
     {
-        ReadMapScriptHalfword();
-        GetChipCountOfCode(chipIdx, v3);
+        v3 = ReadMapScriptHalfword(1, r7);
+        GetChipCountOfCode(v3, v4);
     }
     ReadMapScriptByte(4, r7);
-    v5 = ReadMapScriptByte(5, r7);
-    if ( v4 < v6 || v4 > v5 )
+    v6 = ReadMapScriptByte(5, r7);
+    if ( v5 < v7 || v5 > v6 )
         return 1;
-    ReadMapScriptWord();
+    ReadMapScriptWord(6, r7);
     return 1;
 }
 
@@ -2143,7 +2144,7 @@ signed int MapScript_cmd_8035afa()
     v10 = v5;
     sub_8031A7A(&v8);
     if ( v6 == ReadMapScriptByte(1, v0) )
-        ReadMapScriptWord();
+        ReadMapScriptWord(3, v0);
     return 1;
 }
 
@@ -2171,7 +2172,7 @@ signed int MapScript_cmd_8035b44()
     v10 = v5;
     sub_8031A7A(&v8);
     if ( v6 != ReadMapScriptByte(1, v0) )
-        ReadMapScriptWord();
+        ReadMapScriptWord(3, v0);
     return 1;
 }
 
@@ -2185,7 +2186,7 @@ signed int MapScript_jump_if_game_state_0e_equals()
 
     v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_0e);
     if ( v2 == ReadMapScriptByte(1, v0) )
-        ReadMapScriptWord();
+        ReadMapScriptWord(2, v0);
     return 1;
 }
 
@@ -2199,7 +2200,7 @@ signed int MapScript_jump_if_game_state_0e_not_equals()
 
     v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_0e);
     if ( v2 != ReadMapScriptByte(1, v0) )
-        ReadMapScriptWord();
+        ReadMapScriptWord(2, v0);
     return 1;
 }
 
@@ -2207,15 +2208,13 @@ signed int MapScript_jump_if_game_state_0e_not_equals()
 // 0x8035bd6
 signed int MapScript_jump_if_player_z_equals()
 {
-    int v0; // r4
+    int v0; // r7
     int v1; // r10
     int v2; // r0
-    int v3; // r0
 
     v2 = *(*(*(v1 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr) + 36);
-    ReadMapScriptSignedHalfword();
-    if ( v3 == v0 )
-        ReadMapScriptWord();
+    if ( v2 == ReadMapScriptSignedHalfword(1, v0) )
+        ReadMapScriptWord(3, v0);
     return 1;
 }
 
@@ -2223,15 +2222,13 @@ signed int MapScript_jump_if_player_z_equals()
 // 0x8035bfe
 signed int MapScript_jump_if_player_z_not_equals()
 {
-    int v0; // r4
+    int v0; // r7
     int v1; // r10
     int v2; // r0
-    int v3; // r0
 
     v2 = *(*(*(v1 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr) + 36);
-    ReadMapScriptSignedHalfword();
-    if ( v3 != v0 )
-        ReadMapScriptWord();
+    if ( v2 != ReadMapScriptSignedHalfword(1, v0) )
+        ReadMapScriptWord(3, v0);
     return 1;
 }
 
@@ -2239,15 +2236,13 @@ signed int MapScript_jump_if_player_z_not_equals()
 // 0x8035c26
 signed int MapScript_jump_if_game_state_44_equals()
 {
-    int v0; // r4
+    int v0; // r7
     int v1; // r10
     int v2; // r0
-    int v3; // r0
 
     v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_44);
-    ReadMapScriptHalfword();
-    if ( v3 == v0 )
-        ReadMapScriptWord();
+    if ( v2 == ReadMapScriptHalfword(1, v0) )
+        ReadMapScriptWord(3, v0);
     return 1;
 }
 
@@ -2255,15 +2250,13 @@ signed int MapScript_jump_if_game_state_44_equals()
 // 0x8035c4a
 signed int MapScript_jump_if_game_state_44_not_equals()
 {
-    int v0; // r4
+    int v0; // r7
     int v1; // r10
     int v2; // r0
-    int v3; // r0
 
     v2 = *(*(v1 + oToolkit_GameStatePtr) + oGameState_Unk_44);
-    ReadMapScriptHalfword();
-    if ( v3 != v0 )
-        ReadMapScriptWord();
+    if ( v2 != ReadMapScriptHalfword(1, v0) )
+        ReadMapScriptWord(3, v0);
     return 1;
 }
 
@@ -2287,7 +2280,7 @@ signed int __fastcall MapScript_jump_if_map_group_compare_last_map_group(int a1)
         if ( v5 == v6 )
             return 1;
 LABEL_5:
-        ReadMapScriptWord();
+        ReadMapScriptWord(2, v1);
         return 1;
     }
     if ( v5 == v6 )
@@ -2299,9 +2292,25 @@ LABEL_5:
 // 0x8035ca0
 signed int MapScript_cmd_8035ca0()
 {
-    sub_8013704(0, 76);
-    ReadMapScriptWord();
-    return 1;
+    int v0; // r7
+    int v1; // r0
+    signed int result; // r0
+
+    v1 = sub_8013704(0, 76);
+    if ( v1 == 1 )
+    {
+        ReadMapScriptWord(5, v0);
+        result = 1;
+    }
+    else
+    {
+        if ( v1 == 2 )
+            ReadMapScriptWord(9, v0);
+        else
+            ReadMapScriptWord(1, v0);
+        result = 1;
+    }
+    return result;
 }
 
 
@@ -2313,7 +2322,7 @@ signed int MapScriptCmd_8035cd6()
 
     sub_800B734();
     if ( v1 == ReadMapScriptByte(1, v0) )
-        ReadMapScriptWord();
+        ReadMapScriptWord(2, v0);
     return 1;
 }
 
@@ -2326,7 +2335,7 @@ signed int MapScriptCmd_8035cf8()
 
     sub_800B734();
     if ( v1 != ReadMapScriptByte(1, v0) )
-        ReadMapScriptWord();
+        ReadMapScriptWord(2, v0);
     return 1;
 }
 
@@ -2334,7 +2343,9 @@ signed int MapScriptCmd_8035cf8()
 // 0x8035d1a
 signed int __fastcall MapScriptCmd_jump_if_fade_active(int a1)
 {
-    ReadMapScriptWord();
+    int v1; // r7
+
+    ReadMapScriptWord(1, v1);
     IsPaletteFadeActive();
     return 1;
 }
@@ -2343,7 +2354,9 @@ signed int __fastcall MapScriptCmd_jump_if_fade_active(int a1)
 // 0x8035d34
 signed int __fastcall MapScriptCmd_jump_if_eStruct200a6a0_initialized(int a1)
 {
-    ReadMapScriptWord();
+    int v1; // r7
+
+    ReadMapScriptWord(1, v1);
     Is_eStruct200a6a0_Initialized();
     return 1;
 }
@@ -2352,8 +2365,10 @@ signed int __fastcall MapScriptCmd_jump_if_eStruct200a6a0_initialized(int a1)
 // 0x8035d4e
 signed int __fastcall MapScriptCmd_jump_if_in_pet_menu(int a1)
 {
-    ReadMapScriptWord();
-    sub_811EBE0(1);
+    int v1; // r7
+
+    ReadMapScriptWord(1, v1);
+    sub_811EBE0();
     return 1;
 }
 
@@ -2409,13 +2424,14 @@ signed int __fastcall sub_8035DB4(int a1)
     int v1; // r5
     void *v2; // r7
     int v3; // r4
+    int v4; // r4
 
     v3 = ReadMapScriptByte(1, v2);
     if ( v3 == 255 )
-        ReadMapScriptHalfword();
+        v4 = ReadMapScriptHalfword(2, v2);
     else
-        v3 = *(v1 + v3);
-    SetEventFlag(v3);
+        v4 = *(v1 + v3);
+    SetEventFlag(v4);
     return 1;
 }
 
@@ -2426,13 +2442,14 @@ signed int __fastcall sub_8035DD6(int a1)
     int v1; // r5
     void *v2; // r7
     int v3; // r4
+    int v4; // r4
 
     v3 = ReadMapScriptByte(1, v2);
     if ( v3 == 255 )
-        ReadMapScriptHalfword();
+        v4 = ReadMapScriptHalfword(2, v2);
     else
-        v3 = *(v1 + v3);
-    ClearEventFlag(v3);
+        v4 = *(v1 + v3);
+    ClearEventFlag(v4);
     return 1;
 }
 
@@ -2444,8 +2461,8 @@ signed int __fastcall sub_8035DF8(int a1)
     int v2; // r4
     int v3; // r1
 
-    v2 = ReadMapScriptByte(1, v1);
-    ReadMapScriptHalfword();
+    ReadMapScriptByte(1, v1);
+    v2 = ReadMapScriptHalfword(2, v1);
     SetEventFlagRange(v2, v3, v3);
     return 1;
 }
@@ -2458,8 +2475,8 @@ signed int __fastcall sub_8035E16(int a1)
     int v2; // r4
     int v3; // r1
 
-    v2 = ReadMapScriptByte(1, v1);
-    ReadMapScriptHalfword();
+    ReadMapScriptByte(1, v1);
+    v2 = ReadMapScriptHalfword(2, v1);
     ClearEventFlagRange(v2, v3, v3);
     return 1;
 }
@@ -2468,17 +2485,16 @@ signed int __fastcall sub_8035E16(int a1)
 // 0x8035e34
 signed int __fastcall sub_8035E34(int a1)
 {
-    signed __int16 *v1; // r4
-    signed int v2; // r0
+    int v1; // r7
+    signed __int16 *i; // r4
+    signed int v3; // r0
 
-    ReadMapScriptWord();
-    while ( 1 )
+    for ( i = ReadMapScriptWord(1, v1); ; ++i )
     {
-        v2 = *v1;
-        if ( v2 < 0 )
+        v3 = *i;
+        if ( v3 < 0 )
             break;
-        SetEventFlag(v2);
-        ++v1;
+        SetEventFlag(v3);
     }
     return 1;
 }
@@ -2487,17 +2503,16 @@ signed int __fastcall sub_8035E34(int a1)
 // 0x8035e54
 signed int __fastcall sub_8035E54(int a1)
 {
-    signed __int16 *v1; // r4
-    signed int v2; // r0
+    int v1; // r7
+    signed __int16 *i; // r4
+    signed int v3; // r0
 
-    ReadMapScriptWord();
-    while ( 1 )
+    for ( i = ReadMapScriptWord(1, v1); ; ++i )
     {
-        v2 = *v1;
-        if ( v2 < 0 )
+        v3 = *i;
+        if ( v3 < 0 )
             break;
-        ClearEventFlag(v2);
-        ++v1;
+        ClearEventFlag(v3);
     }
     return 1;
 }
@@ -2506,11 +2521,12 @@ signed int __fastcall sub_8035E54(int a1)
 // 0x8035e74
 signed int __fastcall sub_8035E74(int a1)
 {
-    void (*v1)(void); // r4
+    int v1; // r7
+    void (*v2)(void); // r4
 
-    ReadMapScriptWord();
-    ReadMapScriptWord();
-    v1();
+    ReadMapScriptWord(5, v1);
+    v2 = ReadMapScriptWord(1, v1);
+    v2();
     return 1;
 }
 
@@ -2518,14 +2534,15 @@ signed int __fastcall sub_8035E74(int a1)
 // 0x8035e8e
 signed int __fastcall sub_8035E8E(int a1)
 {
-    int v1; // r4
-    int v2; // r1
-    int v3; // r2
-    int v4; // r3
+    int v1; // r7
+    int v2; // r4
+    int v3; // r1
+    int v4; // r2
+    int v5; // r3
 
-    ReadMapScriptWord();
-    ReadMapScriptWord();
-    init_s_02011C50_8036E90(v1, v2, v3, v4);
+    ReadMapScriptWord(5, v1);
+    v2 = ReadMapScriptWord(1, v1);
+    init_s_02011C50_8036E90(v2, v3, v4, v5);
     return 1;
 }
 
@@ -2537,7 +2554,7 @@ signed int __fastcall sub_8035EAA(int a1)
     char v2; // r4
     _BYTE *v3; // r0
 
-    ReadMapScriptWord();
+    ReadMapScriptWord(1, v1);
     v2 = ReadMapScriptByte(5, v1);
     *v3 = v2;
     return 1;
@@ -2547,12 +2564,13 @@ signed int __fastcall sub_8035EAA(int a1)
 // 0x8035ec2
 signed int __fastcall sub_8035EC2(int a1)
 {
-    __int16 v1; // r4
-    _WORD *v2; // r0
+    int v1; // r7
+    __int16 v2; // r4
+    _WORD *v3; // r0
 
-    ReadMapScriptWord();
-    ReadMapScriptHalfword();
-    *v2 = v1;
+    ReadMapScriptWord(1, v1);
+    v2 = ReadMapScriptHalfword(5, v1);
+    *v3 = v2;
     return 1;
 }
 
@@ -2560,12 +2578,13 @@ signed int __fastcall sub_8035EC2(int a1)
 // 0x8035eda
 signed int __fastcall sub_8035EDA(int a1)
 {
-    int v1; // r4
-    _DWORD *v2; // r0
+    int v1; // r7
+    int v2; // r4
+    int *v3; // r0
 
-    ReadMapScriptWord();
-    ReadMapScriptWord();
-    *v2 = v1;
+    ReadMapScriptWord(1, v1);
+    v2 = ReadMapScriptWord(5, v1);
+    *v3 = v2;
     return 1;
 }
 
@@ -2607,10 +2626,11 @@ signed int sub_8035F0E()
 // 0x8035f2a
 signed int __fastcall sub_8035F2A(int a1)
 {
-    int v1; // r4
+    int v1; // r7
+    int v2; // r4
 
-    ReadMapScriptWord();
-    sub_8001B1C(v1);
+    v2 = ReadMapScriptWord(1, v1);
+    sub_8001B1C(v2);
     return 1;
 }
 
@@ -2618,10 +2638,11 @@ signed int __fastcall sub_8035F2A(int a1)
 // 0x8035f3e
 signed int __fastcall sub_8035F3E(int a1)
 {
-    int *v1; // r4
+    int v1; // r7
+    int *v2; // r4
 
-    ReadMapScriptWord();
-    sub_8002354(v1);
+    v2 = ReadMapScriptWord(1, v1);
+    sub_8002354(v2);
     return 1;
 }
 
@@ -2694,18 +2715,11 @@ signed int __fastcall sub_8035FBA(int a1)
 {
     int v1; // r5
     void *v2; // r7
-    int v3; // r4
 
-    v3 = ReadMapScriptByte(1, v2);
-    if ( v3 == 1 )
-    {
+    if ( ReadMapScriptByte(1, v2) == 1 )
         *(v1 + 16) = 0;
-    }
     else
-    {
-        ReadMapScriptWord();
-        *(v1 + 16) = v3;
-    }
+        *(v1 + 16) = ReadMapScriptWord(2, v2);
     return 1;
 }
 
@@ -2717,15 +2731,14 @@ signed int __fastcall sub_8035FDE(int a1)
     unsigned __int8 *v2; // r4
     int v4; // r4
 
-    v2 = ReadMapScriptByte(1, v1);
-    if ( v2 == &byte_0[1] )
+    if ( ReadMapScriptByte(1, v1) == 1 )
     {
         v4 = ReadMapScriptByte(2, v1);
         sub_80035A2(v4);
     }
     else
     {
-        ReadMapScriptWord();
+        v2 = ReadMapScriptWord(2, v1);
         SpawnObjectsFromList(v2);
     }
     return 1;
@@ -2733,23 +2746,23 @@ signed int __fastcall sub_8035FDE(int a1)
 
 
 // 0x803600e
-int __fastcall sub_803600E(unsigned __int8 *a1, int a2, int a3, int a4)
+int __fastcall map_script_overworld_803600E(u8 *mapScript, u8 *otherMapScript)
 {
-    unsigned __int8 *v4; // r4
-    int v5; // r6
-    void **v6; // r12
+    u8 *vMapScript; // r4
+    u8 *vOtherMapScript; // r6
+    void **cmds; // r12
     int result; // r0
-    char v8; // zf
+    char zf; // zf
 
-    v4 = a1;
-    v5 = a2;
+    vMapScript = mapScript;
+    vOtherMapScript = otherMapScript;
     ZeroFillByWord(&eActiveOverworldMapObjectsBitfield[4], 20);
-    eActiveOverworldMapObjectsBitfield[6] = v4;
-    eActiveOverworldMapObjectsBitfield[7] = v5;
-    v6 = &ScriptCmds8035808;
+    eActiveOverworldMapObjectsBitfield[6] = vMapScript;
+    eActiveOverworldMapObjectsBitfield[7] = vOtherMapScript;
+    cmds = &ScriptCmds8035808;
     do
-        result = (v6[*v4])();
-    while ( !v8 );
+        result = (cmds[*vMapScript])();                         // takes r7=mapScript
+    while ( !zf );
     return result;
 }
 
@@ -2772,71 +2785,55 @@ int sub_8036040()
 
 
 // 0x8036064
-int sub_8036064()
+void __cdecl map_script_overworld_8036064()
 {
-    int result; // r0
-    void **v1; // r12
-    unsigned __int8 *v2; // r7
-    char v3; // zf
+    void **scriptCmds; // r12
+    unsigned __int8 *bf; // r7
+    char zf; // zf
 
-    result = eActiveOverworldMapObjectsBitfield[8];
     if ( eActiveOverworldMapObjectsBitfield[8] )
     {
-        v1 = &ScriptCmds8035808;
-        v2 = eActiveOverworldMapObjectsBitfield[8];
+        scriptCmds = &ScriptCmds8035808;
+        bf = eActiveOverworldMapObjectsBitfield[8];
         do
-            result = (v1[*v2])();
-        while ( !v3 );
+            (scriptCmds[*bf])();
+        while ( !zf );
     }
-    return result;
 }
 
 
 // 0x8036094
-int __usercall ReadMapScriptByte@<R4>(int a1@<R6>, void *a2@<R7>)
+int __usercall ReadMapScriptByte@<R4>(int idx@<R6>, void *mapScript@<R7>)
 {
-    return *(a2 + a1);
+    return *(mapScript + idx);
 }
 
 
 // 0x803609c
-int __usercall ReadMapScriptSignedByte@<R4>(int a1@<R6>, int a2@<R7>)
+int __usercall ReadMapScriptSignedByte@<R4>(int idx@<R6>, int mapScript@<R7>)
 {
-    return *(a2 + a1);
+    return *(mapScript + idx);
 }
 
 
 // 0x80360a8
-void ReadMapScriptHalfword()
+int __usercall ReadMapScriptHalfword@<R4>(int idx@<R6>, int mapScript@<R7>)
 {
-    int v0; // r6
-    int v1; // r7
-    int v2; // r4
-
-    v2 = (*(v1 + v0 + 1) << 8) | *(v1 + v0);
+    return (*(mapScript + idx + 1) << 8) | *(mapScript + idx);
 }
 
 
 // 0x80360b6
-void ReadMapScriptSignedHalfword()
+int __usercall ReadMapScriptSignedHalfword@<R4>(int idx@<R6>, int mapScript@<R7>)
 {
-    int v0; // r6
-    int v1; // r7
-    int v2; // r4
-
-    v2 = ((*(v1 + v0 + 1) << 8) | *(v1 + v0));
+    return ((*(mapScript + idx + 1) << 8) | *(mapScript + idx));
 }
 
 
 // 0x80360c8
-// () -> void .spoils R4, R6
-void ReadMapScriptWord()
+int __usercall ReadMapScriptWord@<R4>(int idx@<R6>, int mapScript@<R7>)
 {
-    int v0; // r6
-    int v1; // r7
-    int v2; // r4
-
-    v2 = (((((*(v1 + v0 + 3) << 8) | *(v1 + v0 + 2)) << 8) | *(v1 + v0 + 1)) << 8) | *(v1 + v0);
+    return (((((*(mapScript + idx + 3) << 8) | *(mapScript + idx + 2)) << 8) | *(mapScript + idx + 1)) << 8) | *(mapScript + idx);
 }
 
 
@@ -3498,7 +3495,7 @@ int sub_80376DC()
 
 
 // 0x80376f4
-signed int sub_80376F4()
+signed int MapScript_80376F4()
 {
     int v0; // r5
     void *v1; // r7
@@ -3541,9 +3538,10 @@ signed int sub_8037740()
     int v2; // r0
     char v3; // zf
     int v4; // r4
-    int v5; // r1
-    int v6; // r0
-    unsigned __int8 v7; // vf
+    __int16 v5; // r4
+    int v6; // r1
+    int v7; // r0
+    unsigned __int8 v8; // vf
 
     v2 = *(v0 + 18);
     sub_80385E0();
@@ -3552,16 +3550,16 @@ signed int sub_8037740()
         sub_80385C0(*(v0 + 18) + 4);
         v4 = ReadMapScriptByte(1, v1);
         if ( v4 == 255 )
-            ReadMapScriptHalfword();
+            v5 = ReadMapScriptHalfword(2, v1);
         else
-            LOWORD(v4) = *(v0 + v4);
-        *(v0 + 2 * *(v0 + 18) + 20) = v4;
+            v5 = *(v0 + v4);
+        *(v0 + 2 * *(v0 + 18) + 20) = v5;
     }
-    v5 = 2 * *(v0 + 18) + 20;
-    v6 = *(v0 + v5);
-    v7 = __OFSUB__(v6--, 1);
-    *(v0 + v5) = v6;
-    if ( !((v6 < 0) ^ v7) )
+    v6 = 2 * *(v0 + 18) + 20;
+    v7 = *(v0 + v6);
+    v8 = __OFSUB__(v7--, 1);
+    *(v0 + v6) = v7;
+    if ( !((v7 < 0) ^ v8) )
         return 0;
     sub_80385D0(*(v0 + 18) + 4);
     return 1;
@@ -3674,7 +3672,7 @@ signed int sub_8037852()
     char v0; // zf
     signed int result; // r0
 
-    sub_811EBE0(1);
+    sub_811EBE0();
     if ( v0 )
         result = 1;
     else
@@ -3686,13 +3684,14 @@ signed int sub_8037852()
 // 0x8037866
 signed int sub_8037866()
 {
-    unsigned int v0; // r4
-    char v1; // zf
+    int v0; // r7
+    int v1; // r4
+    char v2; // zf
     signed int result; // r0
 
-    ReadMapScriptHalfword();
-    TestEventFlag(v0);
-    if ( v1 )
+    v1 = ReadMapScriptHalfword(1, v0);
+    TestEventFlag(v1);
+    if ( v2 )
         result = 0;
     else
         result = 1;
@@ -3703,13 +3702,14 @@ signed int sub_8037866()
 // 0x8037880
 signed int sub_8037880()
 {
-    unsigned int v0; // r4
-    char v1; // zf
+    int v0; // r7
+    int v1; // r4
+    char v2; // zf
     signed int result; // r0
 
-    ReadMapScriptHalfword();
-    TestEventFlag(v0);
-    if ( v1 )
+    v1 = ReadMapScriptHalfword(1, v0);
+    TestEventFlag(v1);
+    if ( v2 )
         result = 1;
     else
         result = 0;
@@ -3763,7 +3763,7 @@ signed int sub_80378C2()
     int v3; // r0
     unsigned int v4; // r4
 
-    ReadMapScriptWord();
+    ReadMapScriptWord(2, v1);
     v2 = ReadMapScriptByte(1, v1);
     *(v0 + v2) = v3;
     v4 = (v2 - 28) >> 2;
@@ -3790,11 +3790,10 @@ signed int sub_80378EE()
 // 0x8037904
 signed int sub_8037904()
 {
-    int v0; // r4
-    int v1; // r5
+    int v0; // r5
+    int v1; // r7
 
-    ReadMapScriptWord();
-    *(v1 + 56) = v0;
+    *(v0 + 56) = ReadMapScriptWord(1, v1);
     return 1;
 }
 
@@ -3808,7 +3807,7 @@ signed int sub_8037914()
 
     v2 = *(v0 + ReadMapScriptByte(1, v1));
     if ( v2 == ReadMapScriptByte(2, v1) )
-        ReadMapScriptWord();
+        ReadMapScriptWord(3, v1);
     return 1;
 }
 
@@ -3821,7 +3820,7 @@ signed int sub_803793A()
 
     v1 = ReadMapScriptByte(1, v0);
     if ( eStruct200A008_getUnk01() == v1 )
-        ReadMapScriptWord();
+        ReadMapScriptWord(2, v0);
     return 1;
 }
 
@@ -3834,7 +3833,7 @@ signed int sub_803795C()
 
     v1 = ReadMapScriptByte(1, v0);
     if ( eStruct200A008_getUnk01() != v1 )
-        ReadMapScriptWord();
+        ReadMapScriptWord(2, v0);
     return 1;
 }
 
@@ -3847,7 +3846,7 @@ signed int sub_803797E()
 
     v1 = ReadMapScriptByte(1, v0);
     if ( getPETNaviSelect() == v1 )
-        ReadMapScriptWord();
+        ReadMapScriptWord(2, v0);
     return 1;
 }
 
@@ -3860,7 +3859,7 @@ signed int sub_80379A0()
 
     v1 = ReadMapScriptByte(1, v0);
     if ( getPETNaviSelect() != v1 )
-        ReadMapScriptWord();
+        ReadMapScriptWord(2, v0);
     return 1;
 }
 
@@ -3873,7 +3872,7 @@ signed int sub_80379C2()
 
     v1 = ReadMapScriptByte(1, v0);
     if ( sub_8000EE4() == v1 )
-        ReadMapScriptWord();
+        ReadMapScriptWord(2, v0);
     return 1;
 }
 
@@ -3886,7 +3885,7 @@ signed int sub_80379E4()
 
     v1 = ReadMapScriptByte(1, v0);
     if ( sub_8000EE4() != v1 )
-        ReadMapScriptWord();
+        ReadMapScriptWord(2, v0);
     return 1;
 }
 
@@ -3973,10 +3972,11 @@ signed int sub_8037A7C()
 // 0x8037aa0
 signed int __fastcall sub_8037AA0(int a1)
 {
-    int v1; // r6
+    int v1; // r7
+    int v2; // r0
 
-    v1 = 4 * chatbox_8045F4C() + 1;
-    ReadMapScriptWord();
+    v2 = chatbox_8045F4C();
+    ReadMapScriptWord(4 * v2 + 1, v1);
     return 1;
 }
 
@@ -3984,15 +3984,14 @@ signed int __fastcall sub_8037AA0(int a1)
 // 0x8037ab6
 signed int sub_8037AB6()
 {
-    signed int v0; // r4
-    int v1; // r5
-    signed int v2; // r0
+    int v0; // r5
+    int v1; // r7
+    int v2; // r0
 
-    ReadMapScriptWord();
-    v2 = v0;
-    if ( v0 < 0 )
-        v2 = uncomp_8037AD0(v0);
-    *(v1 + 48) = v2;
+    v2 = ReadMapScriptWord(1, v1);
+    if ( v2 < 0 )
+        v2 = uncomp_8037AD0(v2);
+    *(v0 + 48) = v2;
     return 1;
 }
 
@@ -4080,9 +4079,9 @@ signed int sub_8037BB4()
             v4 = *(v0 + v3);
         *(v0 + 16) = v4;
     }
-    ReadMapScriptSignedHalfword();
-    ReadMapScriptSignedHalfword();
-    ReadMapScriptSignedHalfword();
+    ReadMapScriptSignedHalfword(4, v1);
+    ReadMapScriptSignedHalfword(6, v1);
+    ReadMapScriptSignedHalfword(8, v1);
     v5 = ReadMapScriptByte(1, v1);
     (*(&off_8037C34 + v5))();
     v6 = *(v0 + 16);
@@ -4098,35 +4097,36 @@ signed int sub_8037BB4()
 // 0x8037c44
 signed int sub_8037C44()
 {
-    int v0; // r4
-    int v1; // r5
-    void *v2; // r7
-    char v3; // zf
-    int v4; // r4
-    int v5; // r3
-    int v6; // r0
-    unsigned __int8 v7; // vf
+    int v0; // r5
+    void *v1; // r7
+    char v2; // zf
+    int v3; // r4
+    char v4; // r4
+    int v5; // r0
+    int v6; // r3
+    int v7; // r0
+    unsigned __int8 v8; // vf
 
-    if ( !*(v1 + 18) )
+    if ( !*(v0 + 18) )
         return 0;
     sub_809E2B8();
     sub_80385E0();
-    if ( v3 )
+    if ( v2 )
     {
         sub_80385C0(8);
-        v4 = ReadMapScriptByte(1, v2);
-        if ( v4 == 255 )
-            v0 = ReadMapScriptByte(2, v2);
+        v3 = ReadMapScriptByte(1, v1);
+        if ( v3 == 255 )
+            v4 = ReadMapScriptByte(2, v1);
         else
-            v0 = *(v1 + v4);
-        *(v1 + 16) = v0;
+            v4 = *(v0 + v3);
+        *(v0 + 16) = v4;
     }
-    ReadMapScriptSignedHalfword();
-    sub_809E1FA((v0 << 8) * byte_8037CB4[2 * v5], (v0 << 8) * byte_8037CB4[2 * v5 + 1], 0);
-    v6 = *(v1 + 16);
-    v7 = __OFSUB__(v6--, 1);
-    *(v1 + 16) = v6;
-    if ( !(((v6 < 0) ^ v7) | (v6 == 0)) )
+    v5 = ReadMapScriptSignedHalfword(3, v1) << 8;
+    sub_809E1FA(v5 * byte_8037CB4[2 * v6], v5 * byte_8037CB4[2 * v6 + 1], 0);
+    v7 = *(v0 + 16);
+    v8 = __OFSUB__(v7--, 1);
+    *(v0 + 16) = v7;
+    if ( !(((v7 < 0) ^ v8) | (v7 == 0)) )
         return 0;
     sub_80385D0(8);
     return 1;
@@ -4138,7 +4138,7 @@ signed int sub_8037CC4()
 {
     int v0; // r5
     void *v1; // r7
-    __int16 v2; // r0
+    int v2; // r0
     int v3; // r4
 
     ReadMapScriptByte(2, v1);
@@ -4153,10 +4153,11 @@ signed int sub_8037CC4()
 // 0x8037ce4
 signed int sub_8037CE4()
 {
-    int v0; // r4
+    int v0; // r7
+    int v1; // r4
 
-    ReadMapScriptWord();
-    sub_809E496(v0);
+    v1 = ReadMapScriptWord(1, v0);
+    sub_809E496(v1);
     return 1;
 }
 
@@ -4170,7 +4171,7 @@ signed int sub_8037CF8()
     signed int result; // r0
     char v4; // zf
     char v5; // r4
-    char v6; // r0
+    int v6; // r0
     char v7; // r1
     int v8; // r0
     unsigned __int8 v9; // vf
@@ -4226,6 +4227,7 @@ signed int sub_8037D80()
 {
     void *v0; // r7
     int v1; // r4
+    int v2; // r4
     signed int result; // r0
 
     v1 = ReadMapScriptByte(1, v0);
@@ -4236,8 +4238,8 @@ signed int sub_8037D80()
     }
     else
     {
-        ReadMapScriptHalfword();
-        (loc_809E2F6)(v1);
+        v2 = ReadMapScriptHalfword(2, v0);
+        (loc_809E2F6)(v2);
         result = 1;
     }
     return result;
@@ -4270,7 +4272,7 @@ signed int sub_8037DE0()
 {
     void *v0; // r7
     char *v1; // r4
-    char v2; // r4
+    int v2; // r4
 
     v1 = &eOverworldNPCObjects[216 * ReadMapScriptByte(1, v0)];
     (loc_809E1A4)(*(v1 + 9), *(v1 + 10), *(v1 + 11));
@@ -4306,10 +4308,10 @@ signed int sub_8037E4C()
 
     v3 = (v1 + 4 * (v0 & 0xF) + 68);
     ReadMapScriptByte(2, v2);
-    ReadMapScriptHalfword();
-    ReadMapScriptHalfword();
-    ReadMapScriptHalfword();
-    ReadMapScriptWord();
+    ReadMapScriptHalfword(3, v2);
+    ReadMapScriptHalfword(5, v2);
+    ReadMapScriptHalfword(7, v2);
+    ReadMapScriptWord(9, v2);
     SpawnOverworldMapObject(v7, v4 << 16, v5 << 16, v6 << 16);
     *v3 = v3;
     return 1;
@@ -4330,11 +4332,11 @@ signed int sub_8037E96()
 
     v3 = (v1 + 4 * (v0 & 0xF) + 68);
     sub_809E1AE();
-    ReadMapScriptHalfword();
-    ReadMapScriptHalfword();
-    ReadMapScriptHalfword();
+    ReadMapScriptHalfword(3, v2);
+    ReadMapScriptHalfword(5, v2);
+    ReadMapScriptHalfword(7, v2);
     ReadMapScriptByte(2, v2);
-    ReadMapScriptWord();
+    ReadMapScriptWord(9, v2);
     SpawnOverworldMapObject(v4, v5, v6, v7);
     *v3 = v3;
     return 1;
@@ -4362,11 +4364,11 @@ signed int sub_8037EFA()
     v5 = *(v4 + 9);
     v6 = *(v4 + 10);
     v7 = *(v4 + 11);
-    ReadMapScriptHalfword();
-    ReadMapScriptHalfword();
-    ReadMapScriptHalfword();
+    ReadMapScriptHalfword(4, v2);
+    ReadMapScriptHalfword(6, v2);
+    ReadMapScriptHalfword(8, v2);
     ReadMapScriptByte(3, v2);
-    ReadMapScriptWord();
+    ReadMapScriptWord(10, v2);
     SpawnOverworldMapObject(v8, v9, v10, v11);
     *v3 = v3;
     return 1;
@@ -4417,43 +4419,45 @@ signed int sub_8037F90()
 signed int sub_8037FB8()
 {
     void *v0; // r7
-    unsigned __int8 *v1; // r4
+    int v1; // r4
+    unsigned __int8 *v2; // r4
     signed int result; // r0
-    int v3; // r4
+    int v4; // r4
+    _DWORD *v5; // r4
 
     v1 = ReadMapScriptByte(1, v0);
-    if ( v1 == &byte_0[1] )
+    if ( v1 == 1 )
     {
-        v3 = ReadMapScriptByte(2, v0);
-        sub_80035A2(v3);
+        v4 = ReadMapScriptByte(2, v0);
+        sub_80035A2(v4);
         result = 1;
     }
-    else if ( v1 == &byte_0[2] )
+    else if ( v1 == 2 )
     {
-        ReadMapScriptWord();
-        sub_8030A60(&byte_0[2]);
+        v5 = ReadMapScriptWord(2, v0);
+        sub_8030A60(v5);
         result = 1;
     }
-    else if ( v1 == &byte_0[3] )
+    else if ( v1 == 3 )
     {
         npc_getMapSpriteScriptOffsets();
         result = 1;
     }
-    else if ( v1 == dword_4 )
+    else if ( v1 == 4 )
     {
-        npc_dead_803516C();
+        npc_803516C();
         result = 1;
     }
     else
     {
-        if ( v1 == dword_4 + 1 )
+        if ( v1 == 5 )
         {
             sub_80351B4();
         }
         else
         {
-            ReadMapScriptWord();
-            SpawnObjectsFromList(v1);
+            v2 = ReadMapScriptWord(2, v0);
+            SpawnObjectsFromList(v2);
         }
         result = 1;
     }
@@ -4464,13 +4468,14 @@ signed int sub_8037FB8()
 // 0x8038028
 signed int sub_8038028()
 {
-    void (*v0)(void); // r4
-    char v1; // zf
+    int v0; // r7
+    void (*v1)(void); // r4
+    char v2; // zf
     signed int result; // r0
 
-    ReadMapScriptWord();
-    v0();
-    if ( v1 )
+    v1 = ReadMapScriptWord(1, v0);
+    v1();
+    if ( v2 )
         result = 1;
     else
         result = 0;
@@ -4483,7 +4488,7 @@ signed int sub_8038040()
 {
     int v0; // r5
     void *v1; // r7
-    int v2; // r4
+    char v2; // r4
     char v3; // r3
     int v4; // r2
     char v5; // r4
@@ -4506,13 +4511,12 @@ signed int sub_8038040()
     }
     else if ( v2 & 0x20 )
     {
-        ReadMapScriptWord();
-        *(v0 + 52) = v2;
+        *(v0 + 52) = ReadMapScriptWord(2, v1);
         result = 1;
     }
     else
     {
-        ReadMapScriptWord();
+        ReadMapScriptWord(3, v1);
         if ( v3 & 0x80 )
             v4 = *(v0 + 52);
         if ( v3 & 1 )
@@ -4534,12 +4538,13 @@ signed int sub_8038040()
 // 0x80380b4
 signed int sub_80380B4()
 {
-    int v0; // r4
-    int v1; // r1
-    int v2; // r2
+    int v0; // r7
+    int v1; // r4
+    int v2; // r1
+    int v3; // r2
 
-    ReadMapScriptHalfword();
-    sound_play(v0, v1, v2);
+    v1 = ReadMapScriptHalfword(1, v0);
+    sound_play(v1, v2, v3);
     return 1;
 }
 
@@ -4547,22 +4552,23 @@ signed int sub_80380B4()
 // 0x80380c8
 signed int sub_80380C8()
 {
-    int v0; // r4
+    int v0; // r7
     int v1; // r1
     int v2; // r2
-    int v3; // r0
-    int v4; // r1
-    int v5; // r2
+    int v3; // r4
+    int v4; // r0
+    int v5; // r1
+    int v6; // r2
 
-    ReadMapScriptSignedHalfword();
-    if ( v0 >= 0 )
+    v3 = ReadMapScriptSignedHalfword(1, v0);
+    if ( v3 >= 0 )
     {
-        sound_bgmusic_play(v0, v1, v2);
+        sound_bgmusic_play(v3, v1, v2);
     }
     else
     {
-        v3 = sub_8036E44();
-        sub_8036E78(v3, v4, v5);
+        v4 = sub_8036E44();
+        sub_8036E78(v4, v5, v6);
     }
     return 1;
 }
@@ -4576,7 +4582,7 @@ signed int sub_80380EA()
     signed int v2; // r0
     int v3; // r1
 
-    ReadMapScriptHalfword();
+    ReadMapScriptHalfword(1, v0);
     ReadMapScriptByte(3, v0);
     v1 = ReadMapScriptByte(4, v0);
     sub_80006A2(v2, v3, v1);
@@ -4630,6 +4636,7 @@ signed int sub_803816A()
 {
     int v0; // r5
     void *v1; // r7
+    int v2; // r4
 
     if ( ReadMapScriptByte(1, v1) )
     {
@@ -4639,9 +4646,9 @@ signed int sub_803816A()
     }
     else
     {
-        ReadMapScriptWord();
-        *(v0 + 60) = 0;
-        sub_8036F98(0);
+        v2 = ReadMapScriptWord(2, v1);
+        *(v0 + 60) = v2;
+        sub_8036F98(v2);
         *(v0 + 19) = 1;
     }
     return 1;
@@ -4651,20 +4658,22 @@ signed int sub_803816A()
 // 0x80381a0
 signed int sub_80381A0()
 {
-    unsigned int v0; // r4
+    int v0; // r7
     int v1; // r10
-    char *v2; // r0
+    int v2; // r4
+    char *v3; // r0
+    int v4; // r4
 
     if ( *(*(v1 + oToolkit_GameStatePtr) + oGameState_MapGroup) < 128 )
     {
         sub_80141AC();
         sub_8015C32();
     }
-    ReadMapScriptHalfword();
-    v2 = getBattleSettingsFromList0(v0);
-    gameState_8005BC8(v2, 1);
-    ReadMapScriptHalfword();
-    sub_803522E(v0);
+    v2 = ReadMapScriptHalfword(1, v0);
+    v3 = getBattleSettingsFromList0(v2);
+    gameState_8005BC8(v3, 1);
+    v4 = ReadMapScriptHalfword(1, v0);
+    sub_803522E(v4);
     engine_setScreeneffect(44, 16);
     return 1;
 }
@@ -4685,15 +4694,16 @@ signed int __fastcall sub_80381E0(int a1, int a2)
 // 0x80381fa
 signed int sub_80381FA()
 {
-    int v0; // r4
-    int v1; // r0
-    int v2; // r1
-    int v3; // r3
+    int v0; // r7
+    int v1; // r4
+    int v2; // r0
+    int v3; // r1
+    int v4; // r3
 
-    ReadMapScriptWord();
-    ReadMapScriptWord();
-    ReadMapScriptWord();
-    Initialize_eStruct200a6a0(v1, v2, v0, v3);
+    ReadMapScriptWord(1, v0);
+    ReadMapScriptWord(5, v0);
+    v1 = ReadMapScriptWord(9, v0);
+    Initialize_eStruct200a6a0(v2, v3, v1, v4);
     return 1;
 }
 
@@ -4814,7 +4824,7 @@ signed int sub_80382BA()
     unsigned int v3; // r6
     unsigned __int8 v4; // vf
 
-    ReadMapScriptHalfword();
+    ReadMapScriptHalfword(1, v0);
     v1 = ReadMapScriptByte(3, v0);
     v3 = v2;
     do
@@ -4830,10 +4840,11 @@ signed int sub_80382BA()
 // 0x80382de
 signed int sub_80382DE()
 {
-    int v0; // r4
+    int v0; // r7
+    int v1; // r4
 
-    ReadMapScriptHalfword();
-    modifyToolkit_unk7C_using_2008A0(v0);
+    v1 = ReadMapScriptHalfword(1, v0);
+    modifyToolkit_unk7C_using_2008A0(v1);
     return 1;
 }
 
@@ -4871,7 +4882,7 @@ signed int sub_8038322()
     unsigned int v3; // r6
     unsigned __int8 v4; // vf
 
-    ReadMapScriptHalfword();
+    ReadMapScriptHalfword(1, v0);
     v1 = ReadMapScriptByte(3, v0);
     v3 = v2;
     do
@@ -4887,12 +4898,13 @@ signed int sub_8038322()
 // 0x8038346
 signed int sub_8038346()
 {
-    int v0; // r4
-    int v1; // r0
+    int v0; // r7
+    int v1; // r4
+    int v2; // r0
 
-    ReadMapScriptWord();
-    ReadMapScriptWord();
-    sub_80356F8(v1, v0);
+    ReadMapScriptWord(1, v0);
+    v1 = ReadMapScriptWord(5, v0);
+    sub_80356F8(v2, v1);
     return 1;
 }
 
@@ -4902,7 +4914,7 @@ signed int sub_8038362()
 {
     void *v0; // r7
 
-    ReadMapScriptHalfword();
+    ReadMapScriptHalfword(2, v0);
     if ( ReadMapScriptByte(1, v0) == 1 )
         sub_803D040();
     else
@@ -4916,7 +4928,7 @@ signed int sub_8038386()
 {
     void *v0; // r7
 
-    ReadMapScriptHalfword();
+    ReadMapScriptHalfword(2, v0);
     if ( ReadMapScriptByte(1, v0) == 1 )
         sub_803D0C8();
     else
@@ -4933,7 +4945,7 @@ signed int sub_80383AA()
     int v2; // r1
     int v3; // r2
 
-    ReadMapScriptHalfword();
+    ReadMapScriptHalfword(2, v0);
     ReadMapScriptByte(4, v0);
     ReadMapScriptByte(5, v0);
     if ( ReadMapScriptByte(1, v0) == 1 )
@@ -4952,7 +4964,7 @@ signed int sub_80383DE()
     int v2; // r1
     int v3; // r2
 
-    ReadMapScriptHalfword();
+    ReadMapScriptHalfword(2, v0);
     ReadMapScriptByte(4, v0);
     ReadMapScriptByte(5, v0);
     if ( ReadMapScriptByte(1, v0) == 1 )
@@ -4971,14 +4983,13 @@ signed int sub_8038412()
     int v2; // r4
     int v3; // r3
 
-    v2 = ReadMapScriptByte(1, v0);
-    if ( v2 == 1 )
+    if ( ReadMapScriptByte(1, v0) == 1 )
     {
         *(v1 + 16) = 0;
     }
     else
     {
-        ReadMapScriptWord();
+        v2 = ReadMapScriptWord(2, v0);
         *(v3 + 16) = v2;
     }
     return 1;
@@ -5026,7 +5037,7 @@ signed int sub_8038484()
     unsigned int v3; // r6
     unsigned __int8 v4; // vf
 
-    ReadMapScriptHalfword();
+    ReadMapScriptHalfword(1, v0);
     v1 = ReadMapScriptByte(3, v0);
     v3 = v2;
     do
@@ -5042,13 +5053,14 @@ signed int sub_8038484()
 // 0x80384a8
 signed int sub_80384A8()
 {
-    int v0; // r10
-    char v1; // zf
+    int v0; // r7
+    int v1; // r10
+    char v2; // zf
 
     sub_803CE28(44);
-    if ( v1 || !(*(*(v0 + oToolkit_JoypadPtr) + 2) & 1) )
+    if ( v2 || !(*(*(v1 + oToolkit_JoypadPtr) + 2) & 1) )
         return 1;
-    ReadMapScriptWord();
+    ReadMapScriptWord(4, v0);
     return 1;
 }
 
@@ -5064,8 +5076,10 @@ signed int sub_80384D0()
 // 0x80384dc
 signed int sub_80384DC()
 {
+    int v0; // r7
+
     if ( reqBBS_getTotalPointsIndex() == 4 )
-        ReadMapScriptWord();
+        ReadMapScriptWord(4, v0);
     return 1;
 }
 
@@ -5073,54 +5087,57 @@ signed int sub_80384DC()
 // 0x80384f8
 signed int sub_80384F8()
 {
-    int v0; // r10
+    int v0; // r7
+    int v1; // r10
 
-    *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup);
-    ReadMapScriptWord();
+    if ( *(*(v1 + oToolkit_GameStatePtr) + oGameState_MapGroup) >= 128 )
+        ReadMapScriptWord(8, v0);
+    else
+        ReadMapScriptWord(4, v0);
     return 1;
 }
 
 
 // 0x803851c
 // () -> void
-int ho_803851C()
+void *ho_803851C()
 {
-    int v0; // r10
-    int v1; // r5
+    Toolkit *tk; // r10
+    s_02011C50 *v1; // r5
     signed int v2; // r8
-    void **v3; // r12
+    void **pJt; // r12
     unsigned __int8 *v4; // r7
-    char v5; // zf
+    char zf; // zf
     signed int v6; // r0
-    int result; // r0
+    void *result; // r0
 
-    v1 = *(v0 + oToolkit_S2011c50_Ptr);
-    *(v1 + 18) = 0;
+    v1 = tk->s_2011C50;
+    v1->unk_12 = 0;
     v2 = 28;
     do
     {
-        v3 = &jt_big_803749C;
-        v4 = *(v1 + v2);
+        pJt = &jt_big_803749C;
+        v4 = *&v1->pad_00[v2];
         do
-            (v3[*v4])();
-        while ( !v5 );
-        *(v1 + 18) = &byte_0[*(v1 + 18) + 1];
+            (pJt[*v4])();
+        while ( !zf );
+        v1->unk_12 = &byte_0[v1->unk_12 + 1];
         v6 = v2;
-        if ( *(v1 + v2) != 1 )
-            *(v1 + v2) = v4;
+        if ( *&v1->pad_00[v2] != 1 )
+            *&v1->pad_00[v2] = v4;
         v2 += 4;
     }
     while ( v6 + 4 <= 40 );
-    if ( *(v1 + 60) )
-        *(v1 + 19) = sub_8036FBC();
+    if ( v1->unk_3C )
+        v1->pad_13[0] = sub_8036FBC();
     result = sub_8036F84();
-    if ( !v5 )
+    if ( !zf )
     {
-        result = *(v1 + 56);
+        result = v1->unk_38;
         if ( result )
         {
-            *(v1 + 28) = result;
-            *(v1 + 56) = 0;
+            v1->ptr_1C = result;
+            v1->unk_38 = 0;
             sub_80385D0(0);
             sub_80385D0(1);
             sub_80385D0(2);
@@ -5591,20 +5608,19 @@ void sub_8038D7C()
 
 
 // 0x8038d94
-int sub_8038D94()
+void sub_8038D94()
 {
     int v0; // r5
-    int result; // r0
+    int v1; // r0
 
-    result = *(v0 + 4) - 1;
-    *(v0 + 4) = result;
-    if ( !result )
+    v1 = *(v0 + 4) - 1;
+    *(v0 + 4) = v1;
+    if ( !v1 )
     {
         *(v0 + 4) = &loc_98;
         *(v0 + 2) = 24;
-        result = sub_80468BA();
+        sub_80468BA();
     }
-    return result;
 }
 
 
@@ -7756,58 +7772,50 @@ void __fastcall sub_803A740(int a1, int a2, int a3, int a4)
 
 
 // 0x803a752
-int __noreturn sub_803A752()
+void __noreturn sub_803A752()
 {
     int v0; // r4
-    int result; // r0
 
     v0 = 4;
     do
-        result = sub_803B674(v0++);
+        sub_803B674(v0++);
     while ( v0 <= 15 );
-    return result;
 }
 
 
 // 0x803a764
-int __noreturn sub_803A764()
+void __noreturn sub_803A764()
 {
     int v0; // r4
-    int result; // r0
 
     v0 = 29;
     do
-        result = sub_803B674(v0++);
+        sub_803B674(v0++);
     while ( v0 <= 32 );
-    return result;
 }
 
 
 // 0x803a776
-int sub_803A776()
+void sub_803A776()
 {
     int v0; // r4
-    int result; // r0
 
     v0 = 16;
     do
-        result = sub_803B674(v0++);
+        sub_803B674(v0++);
     while ( v0 <= 27 );
-    return result;
 }
 
 
 // 0x803a788
-int sub_803A788()
+void sub_803A788()
 {
     int v0; // r4
-    int result; // r0
 
     v0 = 33;
     do
-        result = sub_803B674(v0++);
+        sub_803B674(v0++);
     while ( v0 <= 37 );
-    return result;
 }
 
 
@@ -7845,7 +7853,7 @@ void __noreturn sub_803A7B8()
     sub_803B674(38);
     sub_803B522(11, v3, v4, v5);
     sub_803B674(39);
-    sub_803A8B4();
+    sub_803A8B4(0);
 }
 
 
@@ -7866,7 +7874,7 @@ void __noreturn sub_803A7EC()
     sub_803B674(38);
     sub_803B522(11, v3, v4, v5);
     sub_803B674(39);
-    sub_803A8B4();
+    sub_803A8B4(0);
 }
 
 
@@ -7886,7 +7894,7 @@ void sub_803A820()
     sub_803B674(38);
     sub_803B522(11, v3, v4, v5);
     sub_803B674(39);
-    sub_803A8B4();
+    sub_803A8B4(0);
 }
 
 
@@ -8149,7 +8157,7 @@ signed int __fastcall sub_803AAD8(int a1, int a2, int a3)
 
 
 // 0x803aaf6
-int __fastcall __noreturn sub_803AAF6(int a1, int a2, int a3)
+void __fastcall __noreturn sub_803AAF6(int a1, int a2, int a3)
 {
     int v3; // r5
     int v4; // r0
@@ -8160,7 +8168,7 @@ int __fastcall __noreturn sub_803AAF6(int a1, int a2, int a3)
     if ( !v4 )
         sub_803A752();
     sub_803A776();
-    return sub_803A788();
+    sub_803A788();
 }
 
 
@@ -8518,7 +8526,7 @@ signed int __fastcall sub_803ADB8(int a1, int a2, int a3)
 
 
 // 0x803adda
-int __fastcall __noreturn sub_803ADDA(int a1, int a2, int a3)
+void __fastcall __noreturn sub_803ADDA(int a1, int a2, int a3)
 {
     int v3; // r5
     int v4; // r0
@@ -8529,7 +8537,7 @@ int __fastcall __noreturn sub_803ADDA(int a1, int a2, int a3)
     if ( !v4 )
         sub_803A752();
     sub_803A776();
-    return sub_803A788();
+    sub_803A788();
 }
 
 
@@ -12564,9 +12572,11 @@ signed int sub_803E598()
     int v3; // r2
     int v4; // r1
     int v5; // r7
-    int v6; // r5
-    int v7; // r3
-    unsigned __int8 v8; // vf
+    int v6; // r0
+    int v7; // r5
+    int v8; // r3
+    int v9; // r1
+    unsigned __int8 v10; // vf
 
     if ( eStruct200F360 )
         return 0;
@@ -12582,16 +12592,17 @@ signed int sub_803E598()
     v3 = *(v1 + 56);
     v4 = 14;
     v5 = *(v1 + 40);
-    v6 = (v2 + 4);
+    v6 = 4;
+    v7 = (v2 + 4);
     do
     {
-        sub_803E608(4, v4, v3);
-        v6 += v7;
+        sub_803E608(v6, v4, v3);
+        v7 += v8;
         v5 += 2;
-        v8 = __OFSUB__(v4, 2);
-        v4 -= 2;
+        v10 = __OFSUB__(v9, 2);
+        v4 = v9 - 2;
     }
-    while ( !(((v4 < 0) ^ v8) | (v4 == 0)) );
+    while ( !(((v4 < 0) ^ v10) | (v4 == 0)) );
     *(v1 + 40) = v5;
     if ( v5 >= *(v1 + 32) )
     {
@@ -13110,7 +13121,7 @@ signed int sub_803E978()
     int v3; // r1
     int v4; // r2
     int v5; // r3
-    signed int v6; // r4
+    int v6; // r4
 
     v0 = 1;
     sub_803E930();

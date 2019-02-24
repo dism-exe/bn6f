@@ -5,7 +5,7 @@ char (**__fastcall reqBBS_813E07C(int a1, int a2, int a3, int a4))[108]
     char (**result)[108]; // r0
 
     v4 = a1;
-    ZeroFillByWord(&reqBBS_bxo_2001150, 44);
+    ZeroFillByWord(&reqBBS_eStruct2001150, 44);
     byte_2001154 = v4;
     result = &off_813DF74 + 9 * v4;
     dword_2001178 = (&off_813DF74 + 9 * v4);
@@ -16,7 +16,7 @@ char (**__fastcall reqBBS_813E07C(int a1, int a2, int a3, int a4))[108]
 // 0x813e0a4
 int reqBBS_cb_draw_813E0A4()
 {
-    return (*(reqBBS_jtDraw_813E0CC + reqBBS_bxo_2001150))();
+    return (*(reqBBS_jtDraw_813E0CC + reqBBS_eStruct2001150))();
 }
 
 

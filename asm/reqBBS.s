@@ -5,12 +5,12 @@ reqBBS_813E07C:
 	push {r4-r7,lr}
 	push {r0}
 	// memBlock
-	ldr r0, off_813E0A0 // =reqBBS_bxo_2001150 
+	ldr r0, off_813E0A0 // =reqBBS_eStruct2001150 
 	// size
 	mov r1, #0x2c 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0}
-	ldr r5, off_813E0A0 // =reqBBS_bxo_2001150 
+	ldr r5, off_813E0A0 // =reqBBS_eStruct2001150 
 	strb r0, [r5,#0x4] // (byte_2001154 - 0x2001150)
 	ldr r2, off_813E09C // =off_813DF74 
 	mov r1, #0x24 
@@ -20,7 +20,7 @@ reqBBS_813E07C:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_813E09C: .word off_813DF74
-off_813E0A0: .word reqBBS_bxo_2001150
+off_813E0A0: .word reqBBS_eStruct2001150
 	thumb_func_end reqBBS_813E07C
 
 	thumb_func_start reqBBS_cb_draw_813E0A4
@@ -30,7 +30,7 @@ reqBBS_cb_draw_813E0A4:
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
-	ldr r5, off_813E0C4 // =reqBBS_bxo_2001150 
+	ldr r5, off_813E0C4 // =reqBBS_eStruct2001150 
 	ldr r0, off_813E0C8 // =reqBBS_jtDraw_813E0CC 
 	ldrb r1, [r5]
 	ldr r0, [r0,r1]
@@ -41,7 +41,7 @@ reqBBS_cb_draw_813E0A4:
 	mov r9, r2
 	mov r12, r3
 	pop {r4-r7,pc}
-off_813E0C4: .word reqBBS_bxo_2001150
+off_813E0C4: .word reqBBS_eStruct2001150
 off_813E0C8: .word reqBBS_jtDraw_813E0CC
 reqBBS_jtDraw_813E0CC: .word reqBBS_static_draw_813E0F8+1
 	.word reqBBS_draw_813E188+1
@@ -1623,11 +1623,11 @@ loc_813EECE:
 	add r1, #0xf
 	lsl r3, r1
 	eor r0, r3
-	ldr r5, off_813EEF0 // =byte_2008450 
+	ldr r5, off_813EEF0 // =eStructArr2008450 
 	bl sub_8002FA6
 	pop {r5,pc}
 dword_813EEEC: .word 0x3FFFFFFF
-off_813EEF0: .word byte_2008450
+off_813EEF0: .word eStructArr2008450
 	thumb_func_end reqBBS_813EE58
 
 	thumb_local_start
@@ -4101,11 +4101,11 @@ loc_8140772:
 	add r1, #0xf
 	lsl r3, r1
 	eor r0, r3
-	ldr r5, off_8140794 // =byte_2008450 
+	ldr r5, off_8140794 // =eStructArr2008450 
 	bl sub_8002FA6
 	pop {r5,pc}
 dword_8140790: .word 0x3FFFFFFF
-off_8140794: .word byte_2008450
+off_8140794: .word eStructArr2008450
 	thumb_func_end reqBBS_81406FC
 
 // () -> u8

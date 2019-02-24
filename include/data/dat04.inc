@@ -9,7 +9,7 @@
 	.global byte_804E8D8
 	.global off_804E92C
 	.global off_804E940
-	.global off_804E954
+	.global npc_map00_804E954
 	.global off_804E968
 	.global off_804E9CC
 	.global byte_804EA08

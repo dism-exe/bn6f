@@ -7,7 +7,7 @@ chatbox_uncompBasedOnMap_803FD08:
 	mov r0, #0
 	bl chatbox_map_8040730
 	// dest
-	ldr r1, off_803FD30 // =unk_202DA00
+	ldr r1, off_803FD30 // =byte_202DA00
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 	bl chatbox_map_8040794
 	// dest
@@ -20,7 +20,7 @@ chatbox_uncompBasedOnMap_803FD08:
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_803FD30: .word unk_202DA00
+off_803FD30: .word byte_202DA00
 off_803FD34: .word unk_2033400
 off_803FD38: .word byte_202FA00
 	thumb_func_end chatbox_uncompBasedOnMap_803FD08

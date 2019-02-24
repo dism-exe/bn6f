@@ -398,8 +398,8 @@ void __cdecl sub_804657C()
     char *v0; // r5
     signed int v1; // r7
 
-    ZeroFillByWord(byte_2008450, dword_528);
-    v0 = byte_2008450;
+    ZeroFillByWord(eStructArr2008450, dword_528);
+    v0 = eStructArr2008450;
     v1 = 0;
     do
     {
@@ -434,7 +434,7 @@ int sub_80465BC()
     signed int v1; // r7
     int result; // r0
 
-    v0 = byte_2008450;
+    v0 = eStructArr2008450;
     v1 = 0;
     do
     {
@@ -459,7 +459,7 @@ int sub_80465F8()
     char v3; // r0
     char v4; // [sp-10h] [bp-30h]
 
-    v0 = byte_2008450;
+    v0 = eStructArr2008450;
     v1 = 0;
     do
     {
@@ -505,12 +505,12 @@ char *__fastcall sub_8046670(char a1, int a2, int a3)
     char *v4; // r5
 
     v3 = 88 * a2;
-    v4 = &byte_2008450[v3];
+    v4 = &eStructArr2008450[v3];
     v4[1] = a1;
     *v4 = 9;
     *(v4 + 1) = a3;
     *(v4 + 2) = 0;
-    return &byte_2008450[v3];
+    return &eStructArr2008450[v3];
 }
 
 
@@ -527,7 +527,7 @@ int sub_804668A()
 // 0x8046696
 int __fastcall sub_8046696(int a1)
 {
-    byte_2008450[88 * a1] = 0;
+    eStructArr2008450[88 * a1] = 0;
     return sprite_makeUnscalable();
 }
 
@@ -540,7 +540,7 @@ int sub_80466AA()
     signed int v1; // r7
     int result; // r0
 
-    v0 = byte_2008450;
+    v0 = eStructArr2008450;
     v1 = 0;
     do
     {
@@ -556,9 +556,9 @@ int sub_80466AA()
 
 
 // 0x80466c4
-int __fastcall sub_80466C4(int a1)
+int __fastcall getStructFrom2008450(int a1)
 {
-    return byte_2008450[88 * a1];
+    return eStructArr2008450[88 * a1];
 }
 
 
@@ -1094,7 +1094,7 @@ void uncomp_80471F8()
 
     SWI_LZ77UnCompReadNormalWrite8bit(*(*(v0 + 28) + 4), &unk_2029A00);
     SWI_LZ77UnCompReadNormalWrite8bit(comp_873DE4C, eDecomp202BA00);
-    SWI_LZ77UnCompReadNormalWrite8bit(comp_873ECC8, &unk_202DA00);
+    SWI_LZ77UnCompReadNormalWrite8bit(comp_873ECC8, &byte_202DA00);
 }
 
 
@@ -1404,35 +1404,36 @@ void __fastcall __noreturn sub_8047790(int a1, int a2, int a3)
     int v5; // r10
     int v6; // r7
     int v7; // r3
-    int v8; // r4
-    int v9; // r1
-    void *v10; // r0
-    int v11; // r1
-    int v12; // r6
-    void *v13; // ST00_4
-    int v14; // ST04_4
-    char v15; // zf
-    int v16; // [sp+0h] [bp-14h]
+    int v8; // r0
+    int v9; // r4
+    int v10; // r1
+    void *v11; // r0
+    int v12; // r1
+    int v13; // r6
+    void *v14; // ST00_4
+    int v15; // ST04_4
+    char v16; // zf
+    int v17; // [sp+0h] [bp-14h]
 
     v6 = 8 * v3;
-    v16 = a3;
+    v17 = a3;
     sub_8047CDC();
-    v8 = a1 << 10;
-    *(*(v5 + oToolkit_Unk200a220_Ptr) + 8) = v9;
-    v10 = *(v4 + 36);
-    v11 = 15;
-    v12 = **(v4 + 28);
-    if ( v12 == 1 )
-        v11 = 13;
-    if ( v12 == 2 && v6 && (v13 = *(v4 + 36), v14 = v11, TestEventFlag(v7 + 9248), v10 = v13, v11 = v14, v15) )
+    v9 = v8 << 10;
+    *(*(v5 + oToolkit_Unk200a220_Ptr) + 8) = v10;
+    v11 = *(v4 + 36);
+    v12 = 15;
+    v13 = **(v4 + 28);
+    if ( v13 == 1 )
+        v12 = 13;
+    if ( v13 == 2 && v6 && (v14 = *(v4 + 36), v15 = v12, TestEventFlag(v7 + 9248), v11 = v14, v12 = v15, v16) )
     {
-        v11 = 16;
+        v12 = 16;
     }
-    else if ( !v16 )
+    else if ( !v17 )
     {
-        v11 = 17;
+        v12 = 17;
     }
-    renderTextGfx_8045F8C(v10, v11, &unk_2013C40 + v8, v8 + 100697664);
+    renderTextGfx_8045F8C(v11, v12, &unk_2013C40 + v9, v9 + 100697664);
 }
 
 
@@ -4361,7 +4362,7 @@ int sub_804A5B4()
     if ( v1 > 40 )
     {
         *(v0 + 1) = 8;
-        LOWORD(v1) = 40;
+        v1 = 40;
     }
     *(v0 + 24) = v1;
     return sub_8119854(v1, 88, 0);
@@ -4396,7 +4397,7 @@ int sub_804A5EC()
     {
         sub_811980C(0, 0, 0, 0);
         *v0 = 4;
-        LOWORD(v1) = -40;
+        v1 = -40;
     }
     *(v0 + 24) = v1;
     return sub_8119854(v1, 88, 0);
@@ -4692,13 +4693,15 @@ int sub_804AB6C()
     int v15; // r1
     int v16; // r2
     int v17; // r3
-    int v18; // r3
-    int v19; // r2
-    int v20; // r2
-    int v21; // r1
+    int v18; // r0
+    int v19; // r1
+    int v20; // r3
+    int v21; // r2
     int v22; // r2
-    int v23; // r3
-    int v24; // r0
+    int v23; // r1
+    int v24; // r2
+    int v25; // r3
+    int v26; // r0
     int result; // r0
 
     v1 = dword_804ACB0;
@@ -4750,29 +4753,31 @@ int sub_804AB6C()
             {
                 *(v10 + 20) = (v14 << 16) | *(v10 + 20) & 0xFFFF;
                 CopyByEightWords(v10, word_202A020 + v1, 0x20u);
-                *(v0 + 23) = sub_804ACC8(*(v0 + 30), v21, v22, v23);
+                *(v0 + 23) = sub_804ACC8(*(v0 + 30), v23, v24, v25);
                 sub_804ADD0();
             }
             else
             {
                 CopyByEightWords(v10, word_202A020 + v1, 0x20u);
                 *(v0 + 23) = sub_804ACC8(*(v0 + 30), v15, v16, v17);
-                v18 = *(v0 + 46) + *(v0 + 42);
-                v19 = *(v0 + 40) - 1;
-                *(v0 + 40) = v19;
-                v20 = v19 - v18;
-                if ( !v20 )
+                v18 = v10 + 32;
+                v19 = v10;
+                v20 = *(v0 + 46) + *(v0 + 42);
+                v21 = *(v0 + 40) - 1;
+                *(v0 + 40) = v21;
+                v22 = v21 - v20;
+                if ( !v22 )
                     sub_804AD98();
-                sub_804ADE0(v10 + 32, v10, v20, v18);
+                sub_804ADE0(v18, v19, v22, v20);
                 sub_804ADB0();
                 sub_804ADD0();
             }
             if ( dword_200ACB0 <= *(v0 + 30) )
             {
-                v24 = 2;
+                v26 = 2;
                 if ( dword_200ACB0 != 3 )
-                    v24 = 8;
-                sub_804AF10(v24);
+                    v26 = 8;
+                sub_804AF10(v26);
                 *v0 = 12;
             }
         }
@@ -5123,7 +5128,7 @@ int sub_804AF84()
     v1 = 0;
     do
     {
-        result = sub_80466C4(v1);
+        result = getStructFrom2008450(v1);
         if ( !v4 )
         {
             if ( !v1 )
@@ -5158,7 +5163,7 @@ int sub_804AFE4()
 
 
 // 0x804bd00
-int sub_804BD00()
+void sub_804BD00()
 {
     int v0; // r1
     int v1; // r2
@@ -5169,10 +5174,9 @@ int sub_804BD00()
     unsigned __int8 *v6; // r0
     int v7; // r2
     int v8; // r3
-    int result; // r0
-    char v10; // zf
-    signed int v11; // [sp-8h] [bp-1Ch]
-    int v12; // [sp-4h] [bp-18h]
+    char v9; // zf
+    signed int v10; // [sp-8h] [bp-1Ch]
+    int v11; // [sp-4h] [bp-18h]
 
     dword_200ACCC = sub_804BFF0();
     dword_200ACD0 = v0;
@@ -5186,15 +5190,14 @@ LABEL_3:
     }
     v3 = sub_804BD7C(dword_200ACD0, 5);
     v4 = sub_804BE88(off_804B018[v3], algn_200ACB4, v3);
-    v11 = v4;
-    v12 = v5;
+    v10 = v4;
+    v11 = v5;
     v6 = getChip8021DA8(v4);
-    sub_804BEEC(v11, v12, v6[5]);
-    result = v11;
-    if ( v10 )
-        return sub_804BF94(dword_200ACCC, v12, v7, v8);
-    sub_804BF18(v11, v12, dword_200ACCC);
-    return result;
+    sub_804BEEC(v10, v11, v6[5]);
+    if ( v9 )
+        sub_804BF94(dword_200ACCC, v11, v7, v8);
+    else
+        sub_804BF18(v10, v11, dword_200ACCC);
 }
 
 
@@ -5605,7 +5608,7 @@ void sub_804C11C()
 {
     char v0; // zf
 
-    sub_811EBE0(1);
+    sub_811EBE0();
     if ( v0 )
     {
         s_2011C50_8036F40();
@@ -5876,9 +5879,9 @@ int sub_804C348()
 
 
 // 0x804c3bc
-int sub_804C3BC()
+void sub_804C3BC()
 {
-    return sub_804C3C4();
+    sub_804C3C4();
 }
 
 
@@ -5980,7 +5983,7 @@ int sub_804C52C()
 
 
 // 0x804c53c
-int sub_804C53C()
+void sub_804C53C()
 {
     int v0; // r5
     int v1; // r10
@@ -5995,7 +5998,7 @@ int sub_804C53C()
         sub_8001B1C(&dword_804C4E0);
     }
     *(v0 + 16) = 4;
-    return sub_804C5C0();
+    sub_804C5C0();
 }
 
 
@@ -6129,7 +6132,7 @@ int sub_804C71C()
 
 
 // 0x804c72c
-int sub_804C72C()
+void sub_804C72C()
 {
     int v0; // r5
     int v1; // r10
@@ -6139,7 +6142,7 @@ int sub_804C72C()
     *(*(v1 + oToolkit_RenderInfoPtr) + 10) = 7945;
     sub_804C844();
     *(v0 + 16) = 4;
-    return sub_804C770();
+    sub_804C770();
 }
 
 
@@ -6487,9 +6490,9 @@ int sub_804CD5C()
 
 
 // 0x804cdcc
-int __fastcall sub_804CDCC(int a1)
+void __fastcall sub_804CDCC(int a1)
 {
-    return sub_804CDD4();
+    sub_804CDD4();
 }
 
 

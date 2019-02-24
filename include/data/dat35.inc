@@ -55,7 +55,7 @@
 // .global sub_80465F8 // () -> void
 // .global sub_8046664 // () -> void
 // .global sub_8046696
-// .global sub_80466C4
+// .global getStructFrom2008450
 // .global sub_804A24C
 
 	.include "asm/asm32.inc"

@@ -291,7 +291,18 @@ int __fastcall ZeroFillByByte(int result, int a2)
 // Source, destination, and size must be halfword compatible 
 void __fastcall ZeroFillByHalfword(int a1, unsigned int a2, int a3, int a4)
 {
-    SWI_CpuSet();
+    int v4; // [sp+0h] [bp-18h]
+    int v5; // [sp+4h] [bp-14h]
+    unsigned int v6; // [sp+8h] [bp-10h]
+    int v7; // [sp+Ch] [bp-Ch]
+    int v8; // [sp+10h] [bp-8h]
+
+    v5 = a1;
+    v6 = a2;
+    v7 = a3;
+    v8 = a4;
+    v4 = 0;
+    SWI_CpuSet(&v4, a1, (a2 >> 1) | 0x1000000);
 }
 
 
@@ -299,7 +310,14 @@ void __fastcall ZeroFillByHalfword(int a1, unsigned int a2, int a3, int a4)
 // (void *memBlock, int size) -> void
 void __cdecl ZeroFillByWord(void *src, int size)
 {
-    SWI_CpuSet();
+    int v2; // [sp+0h] [bp-18h]
+    void *v3; // [sp+4h] [bp-14h]
+    int v4; // [sp+8h] [bp-10h]
+
+    v3 = src;
+    v4 = size;
+    v2 = 0;
+    SWI_CpuSet(&v2, src, (size >> 2) | 0x5000000);
 }
 
 
@@ -340,7 +358,7 @@ int __fastcall CopyBytes(int result, int a2, int a3)
 // Source, destination, and size must be halfword compatible.
 void __cdecl CopyHalfwords(u16 *src, const u16 *dest, int size)
 {
-    SWI_CpuSet();
+    SWI_CpuSet(src, dest, size >> 1);
 }
 
 
@@ -350,7 +368,7 @@ void __cdecl CopyHalfwords(u16 *src, const u16 *dest, int size)
 // Source, destination, and size must be word compatible.
 void __fastcall CopyWords(int a1, int a2, unsigned int a3)
 {
-    SWI_CpuSet();
+    SWI_CpuSet(a1, a2, (a3 >> 2) | 0x4000000);
 }
 
 
@@ -385,7 +403,18 @@ void __cdecl ByteFill(u8 *mem, int byteCount, u8 byte)
 // Source, destination, and size must be halfword compatible 
 void __fastcall HalfwordFill(int a1, unsigned int a2, int a3, int a4)
 {
-    SWI_CpuSet();
+    int v4; // [sp+0h] [bp-18h]
+    int v5; // [sp+4h] [bp-14h]
+    unsigned int v6; // [sp+8h] [bp-10h]
+    int v7; // [sp+Ch] [bp-Ch]
+    int v8; // [sp+10h] [bp-8h]
+
+    v5 = a1;
+    v6 = a2;
+    v7 = a3;
+    v8 = a4;
+    v4 = a3;
+    SWI_CpuSet(&v4, a1, (a2 >> 1) | 0x1000000);
 }
 
 
@@ -395,7 +424,16 @@ void __fastcall HalfwordFill(int a1, unsigned int a2, int a3, int a4)
 // Source, destination, and size must be word compatible
 void __cdecl WordFill(void *src, int size, int fill)
 {
-    SWI_CpuSet();
+    int v3; // [sp+0h] [bp-18h]
+    void *v4; // [sp+4h] [bp-14h]
+    int v5; // [sp+8h] [bp-10h]
+    int v6; // [sp+Ch] [bp-Ch]
+
+    v4 = src;
+    v5 = size;
+    v6 = fill;
+    v3 = fill;
+    SWI_CpuSet(&v3, src, (size >> 2) | 0x5000000);
 }
 
 
@@ -470,7 +508,7 @@ void __cdecl objRender_8000A44()
     int v7; // r4
 
     v0 = dword_200AC1C;
-    for ( i = dword_200B4B0; ; i = v5 + 5 )
+    for ( i = fiveWordArr200B4B0; ; i = v5 + 5 )
     {
         v2 = __OFSUB__(v0, 1);
         v3 = v0 - 1;
@@ -505,7 +543,7 @@ int __fastcall sub_8000AB8(int result, int a2, int a3)
     if ( dword_200AC1C < 96 )
     {
         ++dword_200AC1C;
-        v4 = &dword_200B4B0[5 * v3];
+        v4 = &fiveWordArr200B4B0[5 * v3];
         *v4 = result;
         v4[1] = a2;
         v4[2] = a3;

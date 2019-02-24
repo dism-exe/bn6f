@@ -514,7 +514,7 @@
 // .global sub_8046664 // () -> void
 // .global sub_8046670
 // .global sub_804668A
-// .global sub_80466C4
+// .global getStructFrom2008450
 // .global sub_80468E0
 // .global sub_8047D84
 // .global sub_804A24C
@@ -784,7 +784,7 @@
 // .equ byte_2001010, 0x2001010
 // .equ dword_2001020, 0x2001020
 // .equ dword_2001020, 0x2001020
-// .equ reqBBS_bxo_2001150, 0x2001150
+// .equ reqBBS_eStruct2001150, 0x2001150
 // .equ unk_2001186, 0x2001186
 // .equ unk_200119E, 0x200119E
 // .equ unk_20018EC, 0x20018EC
@@ -914,14 +914,14 @@
 // .equ unk_2028000, 0x2028000
 // .equ unk_202CA00, 0x202CA00
 // .equ unk_202CC00, 0x202CC00
-// .equ unk_202CE00, 0x202CE00
-// .equ unk_202D000, 0x202D000
-// .equ unk_202D200, 0x202D200
-// .equ unk_202D400, 0x202D400
-// .equ unk_202D600, 0x202D600
-// .equ unk_202D800, 0x202D800
-// .equ unk_202DA00, 0x202DA00
-// .equ unk_202DC00, 0x202DC00
+// .equ byte_202CE00, 0x202CE00
+// .equ byte_202D000, 0x202D000
+// .equ byte_202D200, 0x202D200
+// .equ byte_202D400, 0x202D400
+// .equ byte_202D600, 0x202D600
+// .equ byte_202D800, 0x202D800
+// .equ byte_202DA00, 0x202DA00
+// .equ byte_202DC00, 0x202DC00
 // .equ unk_202DE00, 0x202DE00
 // .equ byte_202E17C, 0x202E17C
 // .equ byte_202F57C, 0x202F57C

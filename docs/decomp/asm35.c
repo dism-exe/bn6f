@@ -93,7 +93,7 @@ int sub_812EB92()
     int result; // r0
     char v1; // zf
 
-    result = sub_80466C4(0);
+    result = getStructFrom2008450(0);
     if ( v1 )
         result = sub_812EBD8(byte_812DAC4, 0, 60);
     return result;
@@ -106,7 +106,7 @@ int sub_812EBB8()
     int result; // r0
     char v1; // zf
 
-    result = sub_80466C4(1);
+    result = getStructFrom2008450(1);
     if ( v1 )
         result = sub_812EBD8(byte_812DACC, 1, 180);
     return result;
@@ -125,7 +125,7 @@ int __fastcall sub_812EBD8(void *a1, int a2, int a3)
     v7 = a3;
     v3 = a2;
     sub_80465A0(a1);
-    result = sub_80466C4(v3);
+    result = getStructFrom2008450(v3);
     if ( !v5 )
     {
         if ( v7 == 68 )
