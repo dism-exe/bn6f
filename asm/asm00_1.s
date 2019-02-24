@@ -7416,7 +7416,7 @@ loc_8007236:
 	bl sub_800AB70
 	bl sub_802CE54
 	bl sub_800A79C
-	bl sub_800A032
+	bl UnpauseBattle
 	bl sub_800371A
 	cmp r7, #2
 	beq loc_80072BA
@@ -8889,7 +8889,7 @@ off_8007EAC: .word sub_8007EB8+1
 	thumb_local_start
 sub_8007EB8:
 	push {r4,lr}
-	bl sub_800A028
+	bl PauseBattle
 	bl sub_81440D8 // static () -> void
 	bl sub_801FE64
 	ldr r0, dword_800800C // =0x280000 
@@ -9001,7 +9001,7 @@ sub_8007FA4:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_8007FC4
-	bl sub_800A028
+	bl PauseBattle
 	bl sub_801FE64
 	bl sub_80062EC
 	mov r0, #0xc
@@ -9139,7 +9139,7 @@ sub_80080D2:
 	bl sub_8012DFC
 	mov r0, #1
 	bl sub_8012DFC
-	bl sub_800A032
+	bl UnpauseBattle
 	mov r0, #1
 	bl battle_setFlags
 	bl sub_800AE0C
@@ -9188,7 +9188,7 @@ loc_8008140:
 	cmp r0, #0xff
 	beq loc_8008158
 	strb r0, [r5,#5]
-	bl sub_800A028
+	bl PauseBattle
 	mov r0, #0x1c
 	str r0, [r5]
 	bl sub_801E15C
@@ -9225,7 +9225,7 @@ loc_8008184:
 	sub r1, r1, r2
 	strh r1, [r0,#0x28]
 loc_800819A:
-	bl sub_800A028
+	bl PauseBattle
 	mov r0, #0x20 
 	str r0, [r5]
 locret_80081A2:
@@ -9723,7 +9723,7 @@ sub_800855E:
 	bl sub_8012DFC
 	mov r0, #1
 	bl sub_8012DFC
-	bl sub_800A032
+	bl UnpauseBattle
 	mov r0, #1
 	bl battle_setFlags
 	bl sub_800AE0C
@@ -9766,7 +9766,7 @@ loc_80085C4:
 	cmp r0, #0xff
 	beq loc_80085DC
 	strb r0, [r5,#5]
-	bl sub_800A028
+	bl PauseBattle
 	mov r0, #0x18
 	str r0, [r5]
 	bl sub_801E15C
@@ -9782,7 +9782,7 @@ loc_80085E8:
 	beq locret_80085FC
 	cmp r0, #1
 	bne locret_80085FC
-	bl sub_800A028
+	bl PauseBattle
 	mov r0, #0x14
 	str r0, [r5]
 locret_80085FC:
@@ -10316,7 +10316,7 @@ sub_80089CC:
 	bl sub_8012DFC
 	mov r0, #1
 	bl sub_8012DFC
-	bl sub_800A032
+	bl UnpauseBattle
 	mov r0, #1
 	bl battle_setFlags
 	bl sub_800AE0C
@@ -10361,7 +10361,7 @@ loc_8008A34:
 	cmp r0, #0xff
 	beq loc_8008A4C
 	strb r0, [r5,#5]
-	bl sub_800A028
+	bl PauseBattle
 	mov r0, #0x18
 	str r0, [r5]
 	bl sub_801E15C
@@ -10372,7 +10372,7 @@ loc_8008A4C:
 	beq locret_8008A60
 	cmp r0, #1
 	bne locret_8008A60
-	bl sub_800A028
+	bl PauseBattle
 	mov r0, #0x14
 	str r0, [r5]
 locret_8008A60:
@@ -10848,7 +10848,7 @@ sub_8008DDC:
 	bl sub_8012DFC
 	mov r0, #1
 	bl sub_8012DFC
-	bl sub_800A032
+	bl UnpauseBattle
 	mov r0, #1
 	bl battle_setFlags
 	bl sub_800AE0C
@@ -10891,7 +10891,7 @@ loc_8008E3E:
 	cmp r0, #0xff
 	beq loc_8008E56
 	strb r0, [r5,#5]
-	bl sub_800A028
+	bl PauseBattle
 	mov r0, #0x18
 	str r0, [r5]
 	bl sub_801E15C
@@ -10902,7 +10902,7 @@ loc_8008E56:
 	beq locret_8008E6A
 	cmp r0, #1
 	bne locret_8008E6A
-	bl sub_800A028
+	bl PauseBattle
 	mov r0, #0x14
 	str r0, [r5]
 locret_8008E6A:
@@ -11395,7 +11395,7 @@ loc_800920A:
 loc_8009210:
 	bl sub_80E06F8
 	bl sub_8007358
-	bl sub_800A028
+	bl PauseBattle
 	bl sub_8014178
 	bl get_802D246 // () -> int
 	mov r1, #8
@@ -11981,7 +11981,7 @@ loc_8009672:
 loc_8009678:
 	bl sub_80E06F8
 	bl sub_8007358
-	bl sub_800A028
+	bl PauseBattle
 	bl sub_8014178
 	bl get_802D246 // () -> int
 	mov r1, #8
@@ -12451,7 +12451,7 @@ loc_80099FA:
 loc_8009A00:
 	bl sub_80E06F8
 	bl sub_8007358
-	bl sub_800A028
+	bl PauseBattle
 	bl sub_8014178
 	bl get_802D246 // () -> int
 	mov r1, #8
@@ -12842,7 +12842,7 @@ loc_8009CEA:
 loc_8009CF0:
 	bl sub_80E06F8
 	bl sub_8007358
-	bl sub_800A028
+	bl PauseBattle
 	bl sub_8014178
 	bl get_802D246 // () -> int
 	mov r1, #8
@@ -13289,22 +13289,22 @@ off_800A024: .word byte_3000EA8
 	thumb_func_end sub_800A01C
 
 	thumb_local_start
-sub_800A028:
+PauseBattle:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #1
 	strb r0, [r1,#oGameState_Unk_0a]
 	mov pc, lr
-	thumb_func_end sub_800A028
+	thumb_func_end PauseBattle
 
 	thumb_local_start
-sub_800A032:
+UnpauseBattle:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #0
 	strb r0, [r1,#oGameState_Unk_0a]
 	mov pc, lr
-	thumb_func_end sub_800A032
+	thumb_func_end UnpauseBattle
 
 	thumb_func_start battle_isPaused
 battle_isPaused:
