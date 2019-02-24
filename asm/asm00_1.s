@@ -71,7 +71,7 @@ RunBattleObjectLogic:
 	ldrb r4, [r5,#oBattleObject_Flags]
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_GameStatePtr]
-	ldrb r0, [r6,#oGameState_Unk_0a]
+	ldrb r0, [r6,#oGameState_BattlePaused]
 	tst r0, r0
 	beq .loc_80031DC
 	mov r0, #4
@@ -1488,7 +1488,7 @@ loc_8003BB8:
 	beq loc_8003BDC
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r1, [r7,#oGameState_Unk_0a]
+	ldrb r1, [r7,#oGameState_BattlePaused]
 	tst r1, r1
 	beq loc_8003BD0
 	mov r1, #4
@@ -2429,7 +2429,7 @@ loc_800463E:
 	beq loc_8004662
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r1, [r7,#oGameState_Unk_0a]
+	ldrb r1, [r7,#oGameState_BattlePaused]
 	tst r1, r1
 	beq loc_8004656
 	mov r1, #4
@@ -2769,7 +2769,7 @@ loc_80048F2:
 	beq loc_8004916
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r1, [r7,#oGameState_Unk_0a]
+	ldrb r1, [r7,#oGameState_BattlePaused]
 	tst r1, r1
 	beq loc_800490A
 	mov r1, #4
@@ -3353,7 +3353,7 @@ sub_8004D48:
 	strb r0, [r5,#oGameState_Unk_0e]
 	strb r0, [r5,#oGameState_Unk_03]
 	strb r0, [r5,#oGameState_Unk_15]
-	strb r0, [r5,#oGameState_Unk_0a]
+	strb r0, [r5,#oGameState_BattlePaused]
 	str r0, [r5,#oGameState_Unk_74]
 	mov r0, #0x63 
 	strb r0, [r5,#oGameState_BGMusicIndicator]
@@ -8441,7 +8441,7 @@ loc_8007A9A:
 	bl sub_800AEE8
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
-	ldrb r0, [r7,#oGameState_Unk_0a]
+	ldrb r0, [r7,#oGameState_BattlePaused]
 	tst r0, r0
 	bne loc_8007AF4
 	bl battle_isTimeStop
@@ -8838,7 +8838,7 @@ loc_8007E34:
 	bl sub_802CA82
 loc_8007E38:
 	mov r0, #0
-	strb r0, [r7,#oGameState_Unk_0a]
+	strb r0, [r7,#oGameState_BattlePaused]
 	bl sub_8002368
 	mov r0, #0x40 
 	bl sub_8001778
@@ -13293,7 +13293,7 @@ PauseBattle:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #1
-	strb r0, [r1,#oGameState_Unk_0a]
+	strb r0, [r1,#oGameState_BattlePaused]
 	mov pc, lr
 	thumb_func_end PauseBattle
 
@@ -13302,7 +13302,7 @@ UnpauseBattle:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	mov r0, #0
-	strb r0, [r1,#oGameState_Unk_0a]
+	strb r0, [r1,#oGameState_BattlePaused]
 	mov pc, lr
 	thumb_func_end UnpauseBattle
 
@@ -13310,7 +13310,7 @@ UnpauseBattle:
 battle_isPaused:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
-	ldrb r0, [r1,#oGameState_Unk_0a]
+	ldrb r0, [r1,#oGameState_BattlePaused]
 	tst r0, r0
 	mov pc, lr
 	thumb_func_end battle_isPaused

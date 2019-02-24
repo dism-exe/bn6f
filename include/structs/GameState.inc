@@ -13,7 +13,7 @@
 	// related to L button messages
 	\struct_entry \label\()_Unk_08, 1 // loc=0x8
 	\struct_entry \label\()_Unk_09, 1 // loc=0x9
-	\struct_entry \label\()_Unk_0a, 1 // loc=0xa
+	\struct_entry \label\()_BattlePaused, 1 // loc=0xa
 	\struct_entry \label\()_Unk_0b, 1 // loc=0xb
 	
 	\struct_entry \label\()_LastMapGroup, 1 // loc=0xc
