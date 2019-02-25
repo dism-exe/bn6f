@@ -3151,7 +3151,7 @@ loc_810F6FA:
 	strb r0, [r5,r2]
 	mov r2, #0x6d
 	strb r1, [r5,r2]
-	bl sub_802D234
+	bl GetBattleMode
 	cmp r0, #6
 	beq loc_810F738
 	mov r0, #0x10
@@ -11741,7 +11741,7 @@ loc_8114510:
 	mov r0, #0x72
 	mov r1, #0
 	strh r1, [r5,r0]
-	bl sub_802D234
+	bl GetBattleMode
 	cmp r0, #6
 	beq loc_811452C
 	mov r0, #0x1e
@@ -13140,7 +13140,7 @@ loc_81151E4:
 	mov r0, #1
 	lsl r0, r0, #0x16
 	bl object_setFlag // (int a1) -> void
-	bl sub_802D234
+	bl GetBattleMode
 	cmp r0, #6
 	beq loc_811520A
 	mov r0, #0x10
@@ -34174,7 +34174,7 @@ sub_8120B54:
 	bl sub_803F674
 	cmp r0, #2
 	blt loc_8120B74
-	bl get_802D246 // () -> int
+	bl GetBattleEffects // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne loc_8120B74

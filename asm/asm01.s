@@ -23,7 +23,7 @@ sub_801FE00:
 	thumb_func_start sub_801FE24
 sub_801FE24:
 	push {r4,lr}
-	bl get_802D246 // () -> int
+	bl GetBattleEffects // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne loc_801FE4A
@@ -87,7 +87,7 @@ sub_801FE6C:
 	cmp r0, #2
 	bne locret_801FEE6
 	push {r5}
-	bl get_802D246 // () -> int
+	bl GetBattleEffects // () -> int
 	mov r1, #8
 	tst r0, r1
 	pop {r5}
@@ -106,7 +106,7 @@ loc_801FEB0:
 	b locret_801FEE6
 loc_801FEB6:
 	push {r5}
-	bl get_802D246 // () -> int
+	bl GetBattleEffects // () -> int
 	mov r1, #8
 	tst r0, r1
 	pop {r5}

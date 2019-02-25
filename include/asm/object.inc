@@ -162,8 +162,8 @@
 // .global sub_802CE10
 // .global sub_802CE78
 // .global sub_802CEA6
-// .global sub_802D234
-// .global get_802D246 // () -> int
+// .global GetBattleMode
+// .global GetBattleEffects // () -> int
 
 	.include "asm/asm31.inc"
 // .global sub_80C5B76

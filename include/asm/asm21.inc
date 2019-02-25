@@ -23,7 +23,7 @@
 // .global sub_8002354
 
 	.include "asm/asm03_0.inc"
-// .global sub_802D234
+// .global GetBattleMode
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global sub_80304E8
 

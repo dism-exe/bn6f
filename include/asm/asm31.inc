@@ -867,9 +867,9 @@
 // .global sub_800FE28
 // .global sub_800FE36
 // .global sub_800FE52
-// .global sub_800FFE4
-// .global sub_800FFEE
-// .global sub_800FFFE
+// .global SetAIData_Unk_44_Flag
+// .global ClearAIData_Unk_44_Flag
+// .global GetAIData_Unk_44_Flag
 // .global sub_8010004
 // .global sub_8010018
 // .global sub_801002C
@@ -929,11 +929,11 @@
 // .global sub_801299C
 // .global sub_8012E74
 // .global sub_8012EA8
-// .global sub_8013682 // (int idx) -> void*
-// .global sub_80136CC
-// .global sub_8013754
-// .global sub_8013764
-// .global sub_8013774
+// .global GetPlayerBattleVarsAddr // (int idx) -> void*
+// .global GetPlayerBattleVarByte
+// .global SetPlayerBattleVarByte_AllianceFromBattleObject
+// .global SetPlayerBattleVarHword_AllianceFromBattleObject
+// .global GetPlayerBattleVarByte_AllianceFromBattleObject
 // .global sub_80139C4
 // .global sub_8013CC4
 // .global sub_8013DA0
@@ -1083,9 +1083,9 @@
 // .global sub_802CE78
 // .global sub_802CE8A
 // .global sub_802CEA6
-// .global sub_802D234
-// .global get_802D246 // () -> int
-// .global sub_802D26A
+// .global GetBattleMode
+// .global GetBattleEffects // () -> int
+// .global GetBattlePanelColumnPattern
 // .global sub_802D322
 // .global sub_802D4C6
 // .global sub_802DD2A

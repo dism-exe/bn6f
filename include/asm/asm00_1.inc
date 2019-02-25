@@ -315,10 +315,10 @@
 // .global sub_80134C8
 // .global sub_8013554
 // .global sub_80135E8
-// .global sub_8013682 // (int idx) -> void*
-// .global sub_80136CC
-// .global sub_8013754
-// .global sub_8013774
+// .global GetPlayerBattleVarsAddr // (int idx) -> void*
+// .global GetPlayerBattleVarByte
+// .global SetPlayerBattleVarByte_AllianceFromBattleObject
+// .global GetPlayerBattleVarByte_AllianceFromBattleObject
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6 // (int a1, int a2) -> u8
 // .global sub_80137E6
@@ -403,10 +403,10 @@
 // .global sub_802CE78
 // .global sub_802CEC8
 // .global sub_802D08C
-// .global sub_802D234
-// .global get_802D246 // () -> int
-// .global sub_802D254 // () -> int
-// .global sub_802D26A
+// .global GetBattleMode
+// .global GetBattleEffects // () -> int
+// .global GetBattleEffectsFromBattleSettings // () -> int
+// .global GetBattlePanelColumnPattern
 // .global battleSettings_802D2B2 // () -> BattleSettings*
 // .global sub_802D638
 // .global sub_802D6A0
@@ -416,7 +416,7 @@
 // .global sub_802E014
 // .global sub_802E032
 // .global sub_802E070
-// .global sub_802E09A
+// .global TestBattleFlag_0x40
 // .global sub_802E112
 // .global sub_802E156
 // .global sub_802E240
@@ -1278,7 +1278,7 @@
 // .equ byte_203CDEA, 0x203CDEA
 // .equ dword_203CDF0, 0x203CDF0
 // .equ byte_203CDF4, 0x203CDF4
-// .equ byte_203CE00, 0x203CE00
+// .equ ePlayerBattleVars, 0x203CE00
 // .equ byte_203CE64, 0x203CE64
 // .equ byte_203CED0, 0x203CED0
 // .equ dword_203CFA0, 0x203CFA0

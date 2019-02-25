@@ -3224,7 +3224,7 @@ dword_203CDF0:: // 0x203cdf0
 	.space 4
 byte_203CDF4:: // 0x203cdf4
 	.space 12
-byte_203CE00:: // 0x203ce00
+ePlayerBattleVars:: // 0x203ce00
 	.space 100
 byte_203CE64:: // 0x203ce64
 	.space 108

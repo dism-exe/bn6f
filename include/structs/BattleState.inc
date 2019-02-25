@@ -29,11 +29,18 @@
 	\struct_entry \label\()_Unk_36, 2 // loc=0x36
 	struct_org 0x3a
 	\struct_entry \label\()_Unk_3a, 2 // loc=0x3a
-	\struct_entry \label\()_Unk_3c, 4 // loc=0x3c
+	\struct_entry \label\()_BattleSettings, 4 // loc=0x3c
 	\struct_entry \label\()_Unk_40, 4 // loc=0x40
 	struct_org 0x5c
 	\struct_entry \label\()_Unk_5c, 1 // loc=0x5c
-	struct_org 0xf0
+	struct_org 0x80
+	\struct_entry \label\()_AliveBattleActors // loc=0x80
+	\struct_entry \label\()_AlivePlayerActors, 0x10 // loc=0x80
+	\struct_entry \label\()_AliveOpponentActors, 0x10 // loc=0x90
+	struct_org 0xd0
+	\struct_entry \label\()_BattleActors // loc=0xd0
+	\struct_entry \label\()_PlayerActors, 0x10 // loc=0xd0
+	\struct_entry \label\()_OpponentActors, 0x10 // loc=0xe0
 	\struct_entry \label\()_Size // loc=0xf0
 	.endm
 
