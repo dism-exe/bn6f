@@ -17274,6 +17274,7 @@ ToggleEventFlagFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
+	thumb_func_end ToggleEventFlagFromImmediate
 
 // Toggle a flag at eEventFlags
 // r0 - flag to toggle
@@ -17304,7 +17305,6 @@ ToggleEventFlag:
 	strb r0, [r3]
 	mov pc, lr
 	thumb_func_end ToggleEventFlag
-	thumb_func_end ToggleEventFlagFromImmediate
 
 /* (r0:u8 flagUpper, r1:u8 flagLower) -> zf
    clobbers: r0,r1,r3
@@ -17314,6 +17314,7 @@ TestEventFlagFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
+    thumb_func_end TestEventFlagFromImmediate
 
 // Test a flag at eEventFlags
 // r0 - flag to test
@@ -17343,7 +17344,6 @@ TestEventFlag:
 	tst r0, r1
 	mov pc, lr
 	thumb_func_end TestEventFlag
-	thumb_func_end TestEventFlagFromImmediate
 
 /* (r0:u8 flagUpper, r1:u8 flagLower, r2:uint numEntries) -> void
    preserves: r4,r5,lr
@@ -17354,6 +17354,8 @@ SetEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
+    thumb_func_end SetEventFlagRangeFromImmediate
+
 
 // Set multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
 // Number of flags to set is in r2
@@ -17400,7 +17402,6 @@ SetEventFlagRange:
 	bgt .setEventFlagRangeLoop
 	pop {r4,r5,pc}
 	thumb_func_end SetEventFlagRange
-	thumb_func_end SetEventFlagRangeFromImmediate
 
 /* (r0:u8 flagUpper, r1:u8 flagLower, r2:uint numEntries) -> void
    preserves: r4,r5,lr
@@ -17411,6 +17412,7 @@ ClearEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
+    thumb_func_end ClearEventFlagRangeFromImmediate
 
 // Clears multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
 // Number of flags to clear is in r2
@@ -17457,7 +17459,6 @@ ClearEventFlagRange:
 	bgt .clearEventFlagRangeLoop
 	pop {r4,r5,pc}
 	thumb_func_end ClearEventFlagRange
-	thumb_func_end ClearEventFlagRangeFromImmediate
 
 /* (r0:u8 flagUpper, r1:u8 flagLower, r2:uint numEntries) -> void
    preserves: r4,r5,lr
@@ -17468,6 +17469,7 @@ ToggleEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
+	thumb_func_end ToggleEventFlagRangeFromImmediate
 
 // Toggles multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
 // Number of flags to toggle is in r2
@@ -17514,7 +17516,6 @@ ToggleEventFlagRange:
 	bgt .toggleEventFlagRangeLoop
 	pop {r4,r5,pc}
 	thumb_func_end ToggleEventFlagRange
-	thumb_func_end ToggleEventFlagRangeFromImmediate
 
 /* (r0:u8 flagUpper, r1:u8 flagLower, r2:uint numEntries) -> zf
    preserves: r4-r7,lr
@@ -17525,6 +17526,7 @@ TestEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
+	thumb_func_end TestEventFlagRangeFromImmediate
 
 // Tests multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
 // Number of flags to tests is in r2
@@ -17584,7 +17586,6 @@ TestEventFlagRange:
 	tst r0, r0
 	pop {r4-r7,pc}
 	thumb_func_end TestEventFlagRange
-	thumb_func_end TestEventFlagRangeFromImmediate
 
 // file boundary?
 	.balign 4, 0x00

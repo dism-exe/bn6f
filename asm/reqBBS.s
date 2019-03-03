@@ -517,13 +517,13 @@ loc_813E48A:
 	strb r0, [r5]
 loc_813E49A:
 	bl reqBBS_813E534
-	thumb_func_end reqBBS_draw_813E450
-
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
 off_813E4A4: .word reqBBS_dialogList
 dword_813E4A8: .word 0x5F40
+	thumb_func_end reqBBS_draw_813E450
+
 	thumb_local_start
 reqBBS_draw_813E4AC:
 	push {lr}
@@ -558,10 +558,10 @@ loc_813E4C8:
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 loc_813E4EC:
 	bl reqBBS_813E534
-	thumb_func_end reqBBS_draw_813E4AC
-
 	mov r0, #0
 	pop {pc}
+	thumb_func_end reqBBS_draw_813E4AC
+
 	thumb_local_start
 reqBBS_draw_813E4F4:
 	push {lr}
@@ -592,11 +592,11 @@ loc_813E522:
 	bl reqBBS_813E890
 loc_813E52A:
 	bl reqBBS_813E534
-	thumb_func_end reqBBS_draw_813E4F4
-
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
+	thumb_func_end reqBBS_draw_813E4F4
+
 	thumb_local_start
 reqBBS_813E534:
 	push {r5,lr}
@@ -1158,8 +1158,6 @@ loc_813EAD6:
 	mov r4, #2
 	mov r5, #2
 	bl sub_80018D0
-	thumb_func_end reqBBS_static_813EA94
-
 	pop {r4-r7}
 loc_813EAEE:
 	add r6, #1
@@ -1174,6 +1172,8 @@ loc_813EAEE:
 	mov r5, #2
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r0-r7,pc}
+	thumb_func_end reqBBS_static_813EA94
+
 off_813EB08: .word reqBBS_eRequestEntriesIDs
 off_813EB0C: .word off_813EB10
 off_813EB10: .word byte_813EB90
@@ -1302,8 +1302,6 @@ reqBBS_static_813EC6C:
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl sub_80018D0
-	thumb_func_end reqBBS_static_813EC6C
-
 	pop {r5}
 	bl reqBBS_drawHeaderText
 	mov r7, r10
@@ -1314,6 +1312,8 @@ reqBBS_static_813EC6C:
 	strb r0, [r7,#4]
 	strb r0, [r7,#6]
 	pop {pc}
+	thumb_func_end reqBBS_static_813EC6C
+
 	thumb_local_start
 reqBBS_draw_chatbox:
 	push {r4-r7,lr}
@@ -1644,8 +1644,6 @@ reqBBS_813EEF4:
 	ldr r6, off_813EF1C // =dword_86B7AE0 
 	mov r7, #0
 	bl renderTextGfx_8045F8C
-	thumb_func_end reqBBS_813EEF4
-
 	pop {r4-r7,pc}
 off_813EF10: .word reqBBS_dialogList
 off_813EF14: .word byte_201CA00
@@ -1653,6 +1651,8 @@ dword_813EF18: .word 0x6003C00
 off_813EF1C: .word dword_86B7AE0
 off_813EF20: .word byte_813EF24
 byte_813EF24: .byte 0x6, 0x7, 0x8, 0x9, 0xA, 0x0, 0x0, 0x0
+	thumb_func_end reqBBS_813EEF4
+
 	thumb_local_start
 reqBBS_drawRequestBBS:
 	push {r4-r7,lr}
@@ -1884,8 +1884,6 @@ loc_813F4B6:
 	bl reqBBS_813FDA8
 	bl reqBBS_813FE54
 	bl reqBBS_813FEB0
-	thumb_func_end reqBBS_813F474
-
 	bl reqBBS_copyTextDataToRAM
 	ldrh r0, [r5,#0x24]
 	bl reqBBS_renderRequestNames
@@ -1936,6 +1934,8 @@ byte_813F53C: .byte 0x40, 0x5E, 0x0, 0x0, 0xA0, 0x17, 0x0, 0x0
 dword_813F544: .word 0xF
 off_813F548: .word dynamicArr2005780
 off_813F54C: .word reqBBS_textualPointers
+	thumb_func_end reqBBS_813F474
+
 	thumb_local_start
 reqBBS_813F550:
 	push {lr}
@@ -1961,13 +1961,13 @@ loc_813F56A:
 	bl reqBBS_8140358
 loc_813F57E:
 	bl reqBBS_813F8F0
-	thumb_func_end reqBBS_813F550
-
 	bl reqBBS_animateCursor
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
 dword_813F58C: .word 0x1F40
+	thumb_func_end reqBBS_813F550
+
 	thumb_local_start
 reqBBS_813F590:
 	push {lr}
@@ -1976,8 +1976,6 @@ reqBBS_813F590:
 	ldr r1, dword_813F5E8 // =0x1f40 
 	strh r1, [r0]
 	bl reqBBS_813F8F0
-	thumb_func_end reqBBS_813F590
-
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_813F5E4
 	ldrb r0, [r5,#5]
@@ -2014,6 +2012,8 @@ loc_813F5E4:
 	mov r0, #0
 	pop {pc}
 dword_813F5E8: .word 0x1F40
+	thumb_func_end reqBBS_813F590
+
 	thumb_local_start
 reqBBS_813F5EC:
 	push {lr}
@@ -2060,13 +2060,13 @@ reqBBS_813F5EC:
 	strb r0, [r5]
 loc_813F648:
 	bl reqBBS_813F8F0
-	thumb_func_end reqBBS_813F5EC
-
 	mov r0, #0
 	pop {pc}
 	.word 0x800
 off_813F654: .word reqBBS_textualShades
 off_813F658: .word reqBBS_eRequestEntriesIDs
+	thumb_func_end reqBBS_813F5EC
+
 	thumb_local_start
 reqBBS_813F65C:
 	push {lr}
@@ -2126,8 +2126,6 @@ loc_813F6C2:
 	strb r0, [r5]
 loc_813F6CE:
 	bl reqBBS_813F8F0
-	thumb_func_end reqBBS_813F65C
-
 	bl reqBBS_8140588
 	bl reqBBS_81402CC
 	mov r0, #0
@@ -2140,6 +2138,8 @@ loc_813F6CE:
 off_813F6EC: .word reqBBS_eRequestEntriesIDs
 off_813F6F0: .word reqBBS_textualShades
 off_813F6F4: .word reqBBS_dialogList
+	thumb_func_end reqBBS_813F65C
+
 	thumb_local_start
 reqBBS_813F6F8:
 	push {lr}
@@ -2184,11 +2184,11 @@ reqBBS_813F6F8:
 	strb r1, [r0,#6]
 loc_813F74A:
 	bl reqBBS_813F8F0
-	thumb_func_end reqBBS_813F6F8
-
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
+	thumb_func_end reqBBS_813F6F8
+
 	thumb_local_start
 reqBBS_813F754:
 	push {lr}
@@ -2233,11 +2233,11 @@ reqBBS_813F754:
 	strb r1, [r0,#6]
 loc_813F7A6:
 	bl reqBBS_813F8F0
-	thumb_func_end reqBBS_813F754
-
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
+	thumb_func_end reqBBS_813F754
+
 	thumb_local_start
 reqBBS_813F7B0:
 	push {lr}
@@ -2368,10 +2368,10 @@ loc_813F884:
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 loc_813F8A8:
 	bl reqBBS_813F8F0
-	thumb_func_end reqBBS_813F868
-
 	mov r0, #0
 	pop {pc}
+	thumb_func_end reqBBS_813F868
+
 	thumb_local_start
 reqBBS_813F8B0:
 	push {lr}
@@ -2402,11 +2402,11 @@ loc_813F8DE:
 	bl reqBBS_813FEB0
 loc_813F8E6:
 	bl reqBBS_813F8F0
-	thumb_func_end reqBBS_813F8B0
-
 	mov r0, #0
 	pop {pc}
 	.byte 0, 0
+	thumb_func_end reqBBS_813F8B0
+
 	thumb_local_start
 reqBBS_813F8F0:
 	push {r5,lr}
@@ -2648,11 +2648,11 @@ reqBBS_813FA54:
 	strb r1, [r0,#6]
 loc_813FAA6:
 	bl reqBBS_813F8F0
-	thumb_func_end reqBBS_813FA54
-
 	mov r0, #0
 	pop {pc}
-	.byte 0, 0
+	.balign 4, 0
+	thumb_func_end reqBBS_813FA54
+
 	thumb_local_start
 reqBBS_813FAB0:
 	push {lr}
@@ -2695,8 +2695,6 @@ reqBBS_813FAB0:
 	strb r0, [r5]
 loc_813FB02:
 	bl reqBBS_813F8F0
-	thumb_func_end reqBBS_813FAB0
-
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
@@ -2706,6 +2704,8 @@ dword_813FB14: .word 0x5F40
 off_813FB18: .word reqBBS_dialogList
 dword_813FB1C: .word 0xF
 off_813FB20: .word 0x50
+    thumb_func_end reqBBS_813FAB0
+
 	thumb_local_start
 reqBBS_813FB24:
 	push {lr}
@@ -2770,8 +2770,6 @@ loc_813FB98:
 	pop {pc}
 loc_813FBA4:
 	bl reqBBS_813F8F0
-	thumb_func_end reqBBS_813FB24
-
 	bl reqBBS_813FEB0
 	mov r0, #0
 	pop {pc}
@@ -2779,6 +2777,8 @@ loc_813FBA4:
 off_813FBB4: .word reqBBS_requestInfo_textOffsets
 off_813FBB8: .word reqBBS_textualShades
 dword_813FBBC: .word 0xF
+	thumb_func_end reqBBS_813FB24
+
 	thumb_local_start
 reqBBS_813FBC0:
 	push {lr}
@@ -2826,13 +2826,13 @@ loc_813FC0E:
 	pop {pc}
 loc_813FC1E:
 	bl reqBBS_813F8F0
-	thumb_func_end reqBBS_813FBC0
-
 	bl reqBBS_813FEB0
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
 	.word reqBBS_eRequestEntriesIDs
+	thumb_func_end reqBBS_813FBC0
+
 	thumb_local_start
 reqBBS_813FC30:
 	push {lr}
@@ -2877,11 +2877,11 @@ reqBBS_813FC30:
 	strb r1, [r0,#6]
 loc_813FC82:
 	bl reqBBS_813F8F0
-	thumb_func_end reqBBS_813FC30
-
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
+	thumb_func_end reqBBS_813FC30
+
 	thumb_local_start
 reqBBS_813FC8C:
 	push {lr}
@@ -2990,8 +2990,6 @@ loc_813FD30:
 	pop {pc}
 loc_813FD6C:
 	bl reqBBS_813F8F0
-	thumb_func_end reqBBS_813FD14
-
 	mov r0, #0
 	pop {pc}
 off_813FD74: .word 0x1B60
@@ -3007,6 +3005,8 @@ off_813FD98: .word unk_2000770
 off_813FD9C: .word sChatbox
 off_813FDA0: .word dynamicArr2005780
 off_813FDA4: .word dynamicArr2005780
+	thumb_func_end reqBBS_813FD14
+
 	thumb_local_start
 reqBBS_813FDA8:
 	push {r5,lr}
@@ -3115,8 +3115,6 @@ reqBBS_813FEB0:
 	mov r4, #0x17
 	mov r5, #0x10
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-	thumb_func_end reqBBS_813FEB0
-
 	ldr r3, [r7,#0x28]
 	ldr r3, [r3,#0x28]
 	mov r0, #0
@@ -3134,6 +3132,8 @@ reqBBS_813FEB0:
 	bl sub_80018D0
 	pop {r4-r7,pc}
 off_813FEE8: .word tileRefs_813EF4C
+	thumb_func_end reqBBS_813FEB0
+
 	thumb_local_start
 reqBBS_renderRequestNames:
 	push {r4-r7,lr}
@@ -3626,8 +3626,6 @@ reqBBS_81403C0:
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl sub_80018D0
-	thumb_func_end reqBBS_81403C0
-
 	pop {r5}
 	bl reqBBS_renderSelectedEntry_HeaderText
 	mov r7, r10
@@ -3638,6 +3636,8 @@ reqBBS_81403C0:
 	strb r0, [r7,#4]
 	strb r0, [r7,#6]
 	pop {pc}
+	thumb_func_end reqBBS_81403C0
+
 	thumb_local_start
 reqBBS_8140414:
 	push {lr}
@@ -3669,8 +3669,6 @@ reqBBS_8140414:
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl sub_80018D0
-	thumb_func_end reqBBS_8140414
-
 	pop {r5}
 	bl reqBBS_changeChatboxHeader
 	ldr r0, off_8140488 // =sChatbox 
@@ -3700,6 +3698,8 @@ dword_814048C: .word 0xE
 off_8140490: .word byte_8140494
 byte_8140494: .byte 0xA, 0x19, 0x23, 0x4B, 0x4B, 0x0, 0x0, 0x0
 off_814049C: .word 0x54
+	thumb_func_end reqBBS_8140414
+
 	thumb_local_start
 reqBBS_drawChatbox_dup1:
 	push {r4-r7,lr}
@@ -3732,10 +3732,12 @@ reqBBS_drawSelectChatbox:
 	mov r4, #0x14
 	mov r5, #0xa
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-	thumb_func_end reqBBS_drawSelectChatbox
-
 	pop {r4-r7,pc}
 off_81404CC: .word unk_201BA04
+	thumb_func_end reqBBS_drawSelectChatbox
+
+	thumb_local_start
+sub_81404D0:
 	push {r4-r7,lr}
 	mov r0, #3
 	mov r1, #5
@@ -3747,6 +3749,8 @@ off_81404CC: .word unk_201BA04
 	pop {r4-r7,pc}
 	push {r4-r7,lr}
 	pop {r4-r7,pc}
+	thumb_func_end sub_81404D0
+
 	thumb_local_start
 reqBBS_renderSelectedEntry_HeaderText:
 	push {r4-r7,lr}
@@ -3831,11 +3835,11 @@ reqBBS_8140588:
 	add r1, r1, r2
 	mov r2, #0x80
 	bl sub_8000AC8
-	thumb_func_end reqBBS_8140588
-
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_81405A0: .word byte_813F22C
+	thumb_func_end reqBBS_8140588
+
 	thumb_local_start
 reqBBS_81405A4:
 	push {r4-r7,lr}
@@ -3885,10 +3889,10 @@ reqBBS_81405E8:
 	mov r4, #8
 	mov r5, #2
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-	thumb_func_end reqBBS_81405E8
-
 	pop {r4-r7,pc}
 off_81405FC: .word byte_813F32C
+	thumb_func_end reqBBS_81405E8
+
 	thumb_local_start
 reqBBS_8140600:
 	push {r4-r7,lr}
@@ -3928,6 +3932,8 @@ locret_8140634:
 off_8140638: .word reqBBS_eRequestEntriesIDs
 	thumb_func_end reqBBS_8140604
 
+    thumb_local_start
+sub_814063C:
 	push {r0-r7,lr}
 	ldrh r7, [r5,#0x1e]
 	ldrh r6, [r5,#0x20]
@@ -3971,6 +3977,8 @@ loc_814067C:
 	strh r4, [r5,#0x24]
 locret_8140686:
 	pop {r0-r7,pc}
+	thumb_func_end sub_814063C
+
 	thumb_local_start
 reqBBS_animateCursor:
 	push {r0-r7,lr}

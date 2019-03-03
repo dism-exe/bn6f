@@ -310,14 +310,14 @@ loc_812F28E:
 	b loc_812F290
 loc_812F290:
 	bl sub_813064C
-	thumb_func_end sub_812F190
-
 	bl sub_8130810
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 dword_812F29C: .word 0xFFFFFFFF
 byte_812F2A0: .byte 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE, 0x0, 0x0
 dword_812F2A8: .word 0x8003
+	thumb_func_end sub_812F190
+
 	thumb_local_start
 sub_812F2AC:
 	push {r4-r7,lr}

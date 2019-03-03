@@ -137,7 +137,7 @@ DebugMsg_8003262: .asciz "M%02x"
 word_8003268: .hword 0x1B
 DebugMsg_800326A: .asciz "S%02x"
 word_8003270: .hword 0x1B
-DebugMsg_3272: .asciz "F%02x"
+DebugMsg_8003272: .asciz "F%02x"
 	thumb_func_end RunBattleObjectLogic
 
 	thumb_local_start

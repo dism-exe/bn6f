@@ -29677,7 +29677,12 @@ sub_801EB7C:
 	lsl r0, r0, #0x12
 	bl sub_801BEB8
 	pop {pc}
+
 off_801EB98: .word byte_801EE98
+	thumb_func_end sub_801EB7C
+
+	thumb_local_start
+sub_801EB9C:
 	push {r4,r6,r7,lr}
 	ldr r0, off_801EBC0 // =dword_86EA92C 
 	ldr r1, off_801EBC4 // =unk_3001AC0 
@@ -29695,7 +29700,7 @@ off_801EB98: .word byte_801EE98
 	pop {r4,r6,r7,pc}
 off_801EBC0: .word dword_86EA92C
 off_801EBC4: .word unk_3001AC0
-	thumb_func_end sub_801EB7C
+    thumb_func_end sub_801EB9C
 
 	thumb_local_start
 sub_801EBC8:

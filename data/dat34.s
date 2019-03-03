@@ -1833,8 +1833,6 @@ loc_812E92C:
 	strh r0, [r5,#0x30]
 	mov r0, #1
 	bl loc_812EE38
-	thumb_func_end sub_812E910
-
 	ldrh r0, [r5,#0x2a]
 	ldrh r1, [r5,#0x2c]
 	cmp r0, r1
@@ -1869,6 +1867,8 @@ locret_812E9A0:
 	.balign 4, 0x00
 dword_812E9A4: .word 0xFEDB
 dword_812E9A8: .word 0xFEDC
+	thumb_func_end sub_812E910
+
 	thumb_local_start
 sub_812E9AC:
 	push {r7,lr}
