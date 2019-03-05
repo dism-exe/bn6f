@@ -448,7 +448,7 @@ void __fastcall __noreturn sub_812D8C8(int a1, int a2, int a3, int a4)
     int v4; // r5
     int v5; // r0
 
-    sub_800183C();
+    ZeroFillGFX30025c0();
     sub_8046664();
     copyTiles(0, 0, 1, &dword_201E420, 30, dword_14);
     sub_812D52E();

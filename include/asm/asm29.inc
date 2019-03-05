@@ -158,7 +158,7 @@
 // .global sub_8036F70
 
 	.include "asm/chatbox.inc"
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 // .global chatbox_8045F4C
 
 	.include "data/dat22.inc"

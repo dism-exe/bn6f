@@ -50,7 +50,7 @@ int sub_8123208()
 
 
 // 0x8123300
-void __fastcall sub_8123300(int a1, int a2, _DWORD *a3)
+void sub_8123300(const void *textScriptPtrs, void *textScript, _DWORD *decompBuffer)
 {
     int v3; // r7
     u16 *v4; // r0
@@ -59,9 +59,9 @@ void __fastcall sub_8123300(int a1, int a2, _DWORD *a3)
     const u16 *v7; // [sp+4h] [bp-10h]
     u16 *v8; // [sp+8h] [bp-Ch]
 
-    v6 = a1;
-    v7 = a2;
-    v8 = a3;
+    v6 = textScriptPtrs;
+    v7 = textScript;
+    v8 = decompBuffer;
     v3 = 48;
     if ( sub_8123360() )
         v3 = 4 * getPETNaviSelect();
@@ -127,7 +127,7 @@ signed int sub_8123408()
 
 
 // 0x8123434
-int sub_8123434()
+int HandleChipFolderMenu8123434()
 {
     int v0; // r5
 
@@ -399,7 +399,7 @@ int sub_812377C()
     int result; // r0
     char v2; // zf
 
-    result = chatbox_8045F3C(8);
+    result = chatbox_check_eFlags2009F38(8);
     if ( !v2 )
     {
         *(v0 + 2) = 4;
@@ -485,10 +485,10 @@ int __fastcall sub_81237E0(int a1, int a2)
     if ( v4 )
     {
         zeroFillVRAM();
-        sub_80017E0(v7, v8, v9, v10);
+        ZeroFill_byte_3001960(v7, v8, v9, v10);
         *(v2 + 12) = sub_80137B6(*(v2 + 20));
     }
-    sub_800183C();
+    ZeroFillGFX30025c0();
     sub_80015FC(16);
     v11 = *(v3 + oToolkit_RenderInfoPtr);
     *v11 = 8000;
@@ -540,7 +540,7 @@ void __noreturn chipFolder_initGfx_812386C()
     *(&unk_20096E0 + v0) = 0;
     decompAndCopyData(&unk_20096E0);
     decompAndCopyData(&dword_8123964);
-    sub_8123300(&off_81238E4, &eTextScript201C220, decomp_2013A00);
+    sub_8123300(&off_81238E4, &eTextScript201C220, eDecompBuffer2013A00);
     copyTiles(0, 0, 1, eTextScript201BA20, 30, dword_14);
     copyTiles(9, 6, 1, eTextScript201BF20, 20, &dword_C + 1);
 }
@@ -841,7 +841,7 @@ int sub_8123E58()
 
 
 // 0x8123f5c
-int ho_8123F5C()
+int HandleSubChipMenu8123F5C()
 {
     int v0; // r5
 
@@ -861,8 +861,8 @@ void __fastcall sub_8123F7C(int a1, int a2, int a3, int a4)
     _WORD *v10; // r0
 
     zeroFillVRAM();
-    sub_80017E0(v6, v7, v8, v9);
-    sub_800183C();
+    ZeroFill_byte_3001960(v6, v7, v8, v9);
+    ZeroFillGFX30025c0();
     sub_80015FC(16);
     v10 = *(v5 + oToolkit_RenderInfoPtr);
     *v10 = 8000;
@@ -968,7 +968,7 @@ int sub_8124134()
     int result; // r0
     char v2; // zf
 
-    result = chatbox_8045F3C(128);
+    result = chatbox_check_eFlags2009F38(128);
     if ( v2 )
     {
         result = 4;
@@ -987,13 +987,13 @@ int sub_8124144()
 
     if ( v0[17] & 1 )
         return (*(&off_8124188 + v0[3]))();
-    result = chatbox_8045F3C(128);
+    result = chatbox_check_eFlags2009F38(128);
     if ( !result )
         return result;
-    chatbox_8045F3C(16);
+    chatbox_check_eFlags2009F38(16);
     if ( !v2 )
         goto LABEL_12;
-    result = chatbox_8045F3C(32);
+    result = chatbox_check_eFlags2009F38(32);
     if ( v2 )
         return result;
     if ( !chatbox_8045F4C() )
@@ -1118,7 +1118,7 @@ void __noreturn sub_81242D8()
     int v0; // r5
     int v1; // r0
 
-    if ( !chatbox_8045F3C(128) )
+    if ( !chatbox_check_eFlags2009F38(128) )
     {
         *(v0 + 2) = 4;
         sub_803CE08(*(v0 + 16), 1);
@@ -1139,7 +1139,7 @@ int sub_8124308()
     char v2; // zf
     int v3; // r0
 
-    result = chatbox_8045F3C(128);
+    result = chatbox_check_eFlags2009F38(128);
     if ( v2 )
     {
         sub_803CE08(*(v0 + 16), 1);
@@ -1256,7 +1256,7 @@ void subchip_initGfx_81243B0()
     *(&unk_20096E0 + v0) = 0;
     decompAndCopyData(&unk_20096E0);
     decompAndCopyData(byte_8124488);
-    sub_8123300(&off_8124410, &eTextScript201C100, decomp_2013A00);
+    sub_8123300(&off_8124410, &eTextScript201C100, eDecompBuffer2013A00);
     copyTiles(0, 0, 1, &eTextScript201BA00, 30, dword_14);
 }
 
@@ -1543,7 +1543,7 @@ void __noreturn sub_8124870()
 
 
 // 0x8124b3c
-int sub_8124B3C()
+int HandleLibraryMenu8124B3C()
 {
     int v0; // r5
 
@@ -1563,8 +1563,8 @@ void __fastcall __noreturn sub_8124B5C(int a1, int a2, int a3, int a4)
     _WORD *v10; // r0
 
     zeroFillVRAM();
-    sub_80017E0(v6, v7, v8, v9);
-    sub_800183C();
+    ZeroFill_byte_3001960(v6, v7, v8, v9);
+    ZeroFillGFX30025c0();
     sub_80015FC(16);
     v10 = *(v5 + oToolkit_RenderInfoPtr);
     *v10 = 32576;
@@ -3957,7 +3957,7 @@ int sub_81268D8()
 
 
 // 0x8126b4c
-int sub_8126B4C()
+int HandleMegaManStatusMenu8126B4C()
 {
     int v0; // r5
 
@@ -3986,8 +3986,8 @@ void __fastcall __noreturn sub_8126B6C(int a1, int a2, int a3, int a4)
     int v19; // r1
 
     zeroFillVRAM();
-    sub_80017E0(v6, v7, v8, v9);
-    sub_800183C();
+    ZeroFill_byte_3001960(v6, v7, v8, v9);
+    ZeroFillGFX30025c0();
     sub_80015FC(26);
     v10 = *(v5 + oToolkit_RenderInfoPtr);
     *v10 = 8000;
@@ -4044,7 +4044,7 @@ void __fastcall __noreturn sub_8126B6C(int a1, int a2, int a3, int a4)
         if ( *(v4 + 16) == 2 )
         {
 LABEL_10:
-            chatbox_setFlags2009F38(64);
+            chatbox_set_eFlags2009F38(64);
             sub_812741C();
         }
         v19 = 0;
@@ -4158,7 +4158,7 @@ int sub_8126E10()
     isJoystickIRQActive();
     if ( v4 )
     {
-        if ( v0[16] == 2 || (chatbox_8045F3C(128), !v4) )
+        if ( v0[16] == 2 || (chatbox_check_eFlags2009F38(128), !v4) )
         {
             sub_8127264();
             if ( !v4 )
@@ -4174,7 +4174,7 @@ int sub_8126E10()
                 v0[16] = v8;
                 sound_play(122, v10, v9);
                 v0[2] = 16;
-                chatbox_setFlags2009F38(64);
+                chatbox_set_eFlags2009F38(64);
                 return sub_81272C4();
             }
         }
@@ -4182,7 +4182,7 @@ int sub_8126E10()
     else
     {
         sub_811FB64(8, v2, v3);
-        chatbox_setFlags2009F38(64);
+        chatbox_set_eFlags2009F38(64);
     }
     if ( v0[16] == 1 )
         sub_811F7F8(*(*(v1 + oToolkit_JoypadPtr) + 4), 0x44u, 0, 0);
@@ -4248,7 +4248,7 @@ void __noreturn sub_8126EC0()
         }
         else
         {
-            chatbox_8045F3C(128);
+            chatbox_check_eFlags2009F38(128);
             if ( v4 )
             {
                 sub_8120D10(0);
@@ -4274,7 +4274,7 @@ void sub_8126F40()
     if ( !v1 )
     {
         chatbox_clear_eFlags2009F38(64);
-        chatbox_8045F3C(8);
+        chatbox_check_eFlags2009F38(8);
         if ( !v1 )
         {
             if ( *(v0 + 58) == 4112 )
@@ -4424,7 +4424,7 @@ void sub_81270D0()
     *(&unk_20096E0 + v0) = 0;
     decompAndCopyData(&unk_20096E0);
     decompAndCopyData(byte_8127188);
-    sub_8123300(off_8127120, eTextScript201BF20, decomp_2013A00);
+    sub_8123300(off_8127120, eTextScript201BF20, eDecompBuffer2013A00);
 }
 
 
@@ -4438,7 +4438,7 @@ signed int sub_8127264()
     char v4; // r0
 
     v1 = 0;
-    chatbox_8045F3C(32);
+    chatbox_check_eFlags2009F38(32);
     if ( !v2 )
     {
         v3 = 0;
@@ -4912,7 +4912,7 @@ signed int sub_81279A8()
 
 
 // 0x81279f8
-int menuControl_cb_email()
+int HandleEmailMenu81279F8()
 {
     return (*(&off_8127A10 + sSubmenu.jo_01))();
 }
@@ -4930,8 +4930,8 @@ void __fastcall __noreturn sub_8127A1C(int a1, int a2, int a3, int a4)
     _WORD *v10; // r0
 
     zeroFillVRAM();
-    sub_80017E0(v6, v7, v8, v9);
-    sub_800183C();
+    ZeroFill_byte_3001960(v6, v7, v8, v9);
+    ZeroFillGFX30025c0();
     sub_80015FC(16);
     v10 = *(v5 + oToolkit_RenderInfoPtr);
     *v10 = 8000;
@@ -5044,7 +5044,7 @@ void sub_8127B94()
     char v1; // zf
     unsigned int v2; // r4
 
-    chatbox_8045F3C(8);
+    chatbox_check_eFlags2009F38(8);
     if ( !v1 )
     {
         v2 = dword_2027590[8 * (*(v0 + 32) + *(v0 + 36)) + 6] >> 16;
@@ -5189,7 +5189,7 @@ void __noreturn sub_8127CB8()
     if ( v9 & 1 )
         v7 = &dword_8127D98;
     decompAndCopyData(v7);
-    sub_8123300(byte_8127D38, &eTextScript201BA00, decomp_2013A00);
+    sub_8123300(byte_8127D38, &eTextScript201BA00, eDecompBuffer2013A00);
     v8 = &unk_201C200;
     if ( v9 & 1 )
         v8 = &unk_2028690;
@@ -5728,7 +5728,7 @@ signed int sub_8128500()
 
 
 // 0x8128730
-int sub_8128730()
+int HandleKeyItemMenu8128730()
 {
     int v0; // r5
 
@@ -5752,8 +5752,8 @@ int __fastcall sub_8128750(int a1, int a2, int a3, int a4)
     int v14; // r3
 
     zeroFillVRAM();
-    sub_80017E0(v6, v7, v8, v9);
-    sub_800183C();
+    ZeroFill_byte_3001960(v6, v7, v8, v9);
+    ZeroFillGFX30025c0();
     sub_80015FC(16);
     v10 = *(v5 + oToolkit_RenderInfoPtr);
     *v10 = 8000;
@@ -5831,7 +5831,7 @@ void sub_8128800()
     *(v0 + 38) = *(v0 + 36);
     *(v0 + 34) = *(v0 + 32);
     *(v0 + 14) = *(v0 + 13);
-    if ( (*(v0 + 30) || (isJoystickIRQActive(), v4)) && ((chatbox_8045F3C(8), v4) || (isJoystickIRQActive(), v4)) )
+    if ( (*(v0 + 30) || (isJoystickIRQActive(), v4)) && ((chatbox_check_eFlags2009F38(8), v4) || (isJoystickIRQActive(), v4)) )
     {
         if ( *(v0 + 30) )
         {
@@ -6215,8 +6215,8 @@ void __noreturn sub_8128CD8()
     SetEventFlagFromImmediate(1, 151);
     SetEventFlagFromImmediate(1, 173);
     zeroFillVRAM();
-    sub_80017E0(v2, v3, v4, v5);
-    sub_800183C();
+    ZeroFill_byte_3001960(v2, v3, v4, v5);
+    ZeroFillGFX30025c0();
     sub_80015FC(8);
     v6 = *(v1 + oToolkit_RenderInfoPtr);
     *v6 = 8000;
@@ -6241,7 +6241,7 @@ void __noreturn sub_8128CD8()
     *(v0 + 16) = -1;
     *(v0 + 16) = -1;
     if ( *(v0 + 30) )
-        sub_802B358(byte_201BDB8, decomp_2013A00);
+        sub_802B358(byte_201BDB8, eDecompBuffer2013A00);
     sub_8128F10();
 }
 
@@ -6291,7 +6291,7 @@ int sub_8128E2C()
     if ( sub_811F7F8(*(*(v1 + oToolkit_JoypadPtr) + 4), 5u, 0, 0) )
     {
         if ( *(v0 + 36) != *(v0 + 38) )
-            sub_802B358(byte_201BDB8, decomp_2013A00);
+            sub_802B358(byte_201BDB8, eDecompBuffer2013A00);
         if ( *(v0 + 32) != *(v0 + 34) )
         {
             sub_802B438(&eTextScript201BA00, byte_201BDB8);
@@ -6458,7 +6458,7 @@ int sub_81291D8()
 
 
 // 0x81291e8
-int sub_81291E8()
+int HandleCommMenu81291E8()
 {
     int v0; // r5
 
@@ -6480,8 +6480,8 @@ int __fastcall sub_8129248(int a1, int a2, int a3, int a4)
     int result; // r0
 
     zeroFillVRAM();
-    sub_80017E0(v6, v7, v8, v9);
-    sub_800183C();
+    ZeroFill_byte_3001960(v6, v7, v8, v9);
+    ZeroFillGFX30025c0();
     sub_80015FC(16);
     sub_8046664();
     v10 = *(v5 + oToolkit_RenderInfoPtr);
@@ -6867,13 +6867,13 @@ void sub_81296A0()
     int v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(8);
+    chatbox_check_eFlags2009F38(8);
     if ( v1 )
     {
-        chatbox_8045F3C(32);
+        chatbox_check_eFlags2009F38(32);
         if ( !v1 )
         {
-            chatbox_8045F3C(&byte_110);
+            chatbox_check_eFlags2009F38(&byte_110);
             if ( !v1 )
             {
                 *(v0 + 2) = 32;
@@ -7810,7 +7810,7 @@ int sub_8129E54()
     int result; // r0
     char v2; // zf
 
-    result = chatbox_8045F3C(8);
+    result = chatbox_check_eFlags2009F38(8);
     if ( !v2 )
     {
         result = *(v0 + 34) & 0xFF;
@@ -8300,7 +8300,7 @@ int __fastcall sub_812A350(int a1)
     }
     else
     {
-        result = chatbox_8045F3C(32);
+        result = chatbox_check_eFlags2009F38(32);
         if ( !v2 )
         {
             if ( chatbox_8045F4C() )
@@ -8358,8 +8358,8 @@ int __fastcall sub_812A3FC(int a1)
     result = sub_813D60C();
     if ( v3 )
     {
-        chatbox_8045F3C(128);
-        if ( v3 || (result = chatbox_8045F3C(8), !v3) )
+        chatbox_check_eFlags2009F38(128);
+        if ( v3 || (result = chatbox_check_eFlags2009F38(8), !v3) )
         {
             engine_setScreeneffect(12, 16);
             result = 20;
@@ -8406,7 +8406,7 @@ int __fastcall sub_812A494(int a1)
     result = sub_813D60C();
     if ( v3 )
     {
-        result = chatbox_8045F3C(8);
+        result = chatbox_check_eFlags2009F38(8);
         if ( !v3 )
         {
             result = 16;
@@ -8709,7 +8709,7 @@ int sub_812A758()
     int result; // r0
     char v2; // zf
 
-    result = chatbox_8045F3C(8);
+    result = chatbox_check_eFlags2009F38(8);
     if ( !v2 )
     {
         *(v0 + 3) = 0;
@@ -8881,12 +8881,12 @@ int sub_812A8EC()
     char v19; // [sp-4h] [bp-18h]
 
     *(v0 + 16) = 0;
-    if ( chatbox_8045F3C(128) )
+    if ( chatbox_check_eFlags2009F38(128) )
     {
-        chatbox_8045F3C(16);
+        chatbox_check_eFlags2009F38(16);
         if ( !v1 )
             goto LABEL_54;
-        chatbox_8045F3C(32);
+        chatbox_check_eFlags2009F38(32);
         if ( v1 )
             goto LABEL_15;
         if ( chatbox_8045F4C() )
@@ -9046,12 +9046,12 @@ int sub_812AAC0()
     int v12; // r2
 
     *(v0 + 16) = 0;
-    if ( chatbox_8045F3C(128) )
+    if ( chatbox_check_eFlags2009F38(128) )
     {
-        chatbox_8045F3C(16);
+        chatbox_check_eFlags2009F38(16);
         if ( !v1 )
             goto LABEL_35;
-        chatbox_8045F3C(32);
+        chatbox_check_eFlags2009F38(32);
         if ( v1 )
             goto LABEL_10;
         if ( chatbox_8045F4C() )
@@ -9405,8 +9405,8 @@ int sub_812AE3C()
     char v1; // zf
     int result; // r0
 
-    chatbox_8045F3C(128);
-    if ( v1 || (result = chatbox_8045F3C(8), !v1) )
+    chatbox_check_eFlags2009F38(128);
+    if ( v1 || (result = chatbox_check_eFlags2009F38(8), !v1) )
     {
         if ( eStruct200BC30_getJumpOffset00() )
         {
@@ -9484,8 +9484,8 @@ int sub_812AEFC()
     char v0; // zf
     int result; // r0
 
-    chatbox_8045F3C(128);
-    if ( v0 || (result = chatbox_8045F3C(8), !v0) )
+    chatbox_check_eFlags2009F38(128);
+    if ( v0 || (result = chatbox_check_eFlags2009F38(8), !v0) )
         result = sub_8132614();
     return result;
 }
@@ -9558,7 +9558,7 @@ void sub_812AF78()
 void sub_812AF84()
 {
     decompAndCopyData(byte_812B168);
-    sub_8123300(off_812AFE4, eTextScript201BA20, decomp_2013A00);
+    sub_8123300(off_812AFE4, eTextScript201BA20, eDecompBuffer2013A00);
 }
 
 
@@ -9867,7 +9867,7 @@ int sub_812B530()
     int result; // r0
 
     v1 = eStruct200BC30_getJumpOffset00();
-    SWI_LZ77UnCompReadNormalWrite8bit(*(&off_812B55C + v1), decomp_2013A00);
+    SWI_LZ77UnCompReadNormalWrite8bit(*(&off_812B55C + v1), eDecompBuffer2013A00);
     (loc_8000AC8)(&unk_2013A04, 100747008, byte_100);
     result = *(v0 + 27) | 0x10;
     *(v0 + 27) = result;
@@ -10804,7 +10804,7 @@ int sub_812BFAC()
     int v3; // r2
     int v4; // r3
 
-    result = sub_8124B3C();
+    result = HandleLibraryMenu8124B3C();
     if ( result )
     {
         sub_8129248(result, v2, v3, v4);

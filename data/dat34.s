@@ -1424,7 +1424,7 @@ loc_812E606:
 sub_812E61C:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_812E64E
 	bl eStruct200BC30_getJumpOffset00
 	mov r4, r0
@@ -1466,10 +1466,10 @@ off_812E668: .word sub_812AC14+1
 sub_812E678:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_812E6A2
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_812E6CA
 	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
@@ -1704,7 +1704,7 @@ loc_812E840:
 	tst r3, r3
 	bne loc_812E894
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_812E894
 	bl chatbox_8040818
 	mov r0, #0xc
@@ -1875,8 +1875,8 @@ sub_812E9AC:
 	bl sub_812ED2C
 	mov r7, r0
 	bl zeroFillVRAM
-	bl sub_80017E0
-	bl sub_800183C
+	bl ZeroFill_byte_3001960
+	bl ZeroFillGFX30025c0
 	mov r0, #0x10
 	bl sub_80015FC
 	bl sub_8046664 // () -> void
@@ -1948,19 +1948,19 @@ off_812EA60: .word byte_86C9D6C
 	.word 0x20
 	.word 0x886DC688
 	.word eGuiSprite2022FA0
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886DC518
 	.word eGuiSprite2022AA0
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886DCCF0
 	.word unk_2024290
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D497C
 	.word unk_2025AE8
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x8873ECC8
 	.word unk_2025070
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x0
 	thumb_func_end sub_812EA44
 

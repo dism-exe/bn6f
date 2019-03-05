@@ -91,16 +91,16 @@
 	.include "asm/asm03_2.inc"
 // .global sub_804657C // () -> void
 // .global sub_80467D8
-// .global cb_8046CF8
+// .global ShopControl
 // .global cb_8048FD4
 // .global cb_8049E04
-// .global cb_804A304
+// .global ChipTraderControl
 
 	.include "asm/asm32.inc"
-// .global menuControl_cb_openSubmenu // () -> void
+// .global SubMenuControl // () -> void
 
 	.include "asm/asm33.inc"
-// .global menuControl_cb_email
+// .global HandleEmailMenu81279F8
 
 	.include "asm/asm36.inc"
 // .global cb_81382AC
@@ -111,7 +111,7 @@
 
 	.include "asm/reqBBS.inc"
 // .global reqBBS_cb_draw_813E0A4
-// .global reqBBS_cb_813F404
+// .global reqBBS_subsystemCotnrol
 
 	.include "asm/libs.inc"
 // .global sub_8144240

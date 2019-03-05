@@ -1112,7 +1112,7 @@ int sub_812CDF4()
     int v6; // r2
     int v7; // r3
 
-    result = chatbox_8045F3C(8);
+    result = chatbox_check_eFlags2009F38(8);
     if ( !v2 )
     {
         v3 = eStruct200BC30_getJumpOffset00();
@@ -1149,10 +1149,10 @@ int sub_812CE50()
     int v6; // r2
     int v7; // r3
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
         goto LABEL_8;
-    result = chatbox_8045F3C(8);
+    result = chatbox_check_eFlags2009F38(8);
     if ( v1 )
         return result;
     if ( eStruct200BC30_getRef()[14] != 2 )
@@ -1470,7 +1470,7 @@ int sub_812D0C0()
                     {
                         if ( !v6 )
                         {
-                            result = chatbox_8045F3C(8);
+                            result = chatbox_check_eFlags2009F38(8);
                             if ( !v8 )
                             {
                                 chatbox_8040818();
@@ -1613,8 +1613,8 @@ void __noreturn sub_812D298()
 
     v1 = sub_812D6F8();
     zeroFillVRAM();
-    sub_80017E0(v2, v3, v4, v5);
-    sub_800183C();
+    ZeroFill_byte_3001960(v2, v3, v4, v5);
+    ZeroFillGFX30025c0();
     sub_80015FC(16);
     sub_8046664();
     chatbox_8040818();

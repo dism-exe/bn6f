@@ -310,7 +310,7 @@ signed int sub_80897A6()
 
     if ( !v0[19] )
     {
-        chatbox_8045F3C(128);
+        chatbox_check_eFlags2009F38(128);
         if ( v1 )
         {
             if ( chatbox_8045F4C() )
@@ -339,7 +339,7 @@ signed int sub_80897E8()
     _BYTE *v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         sub_8089CB4();
@@ -464,7 +464,7 @@ signed int sub_80898B2()
     _BYTE *v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         sub_814216E();
@@ -530,7 +530,7 @@ signed int sub_808991C()
     int v2; // r0
     int v3; // r0
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         sub_8089CB4();
@@ -733,7 +733,7 @@ signed int sub_8089AE8()
     char v2; // zf
     char v3; // r0
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v2 )
     {
         sub_8089CB4();
@@ -786,7 +786,7 @@ signed int sub_8089B54()
     char v1; // zf
     char v2; // r0
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         sub_8089CB4();
@@ -825,7 +825,7 @@ signed int sub_8089B94()
     int v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( !v1 )
         return 1;
     *(v0 + 8) = 1;
@@ -855,7 +855,7 @@ signed int sub_8089BC0()
     _BYTE *v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         SetEventFlagFromImmediate(7, 69);
@@ -889,7 +889,7 @@ signed int sub_8089BFA()
     _BYTE *v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         v0[8] = 0;

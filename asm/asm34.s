@@ -718,7 +718,7 @@ locret_812D8C6:
 sub_812D8C8:
 	push {r4-r7,lr}
 	mov r7, r5
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl sub_8046664 // () -> void
 	mov r0, #0
 	mov r1, #0

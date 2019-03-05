@@ -242,8 +242,8 @@
 // .global renderInfo_8001788
 // .global renderInfo_80017A0
 // .global zeroFillVRAM
-// .global sub_80017E0
-// .global sub_800183C
+// .global ZeroFill_byte_3001960
+// .global ZeroFillGFX30025c0
 // .global copyMemory_8001850
 // .global sub_8001890
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -353,9 +353,9 @@
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global chatbox_8045ED0
-// .global chatbox_setFlags2009F38
+// .global chatbox_set_eFlags2009F38
 // .global chatbox_clear_eFlags2009F38 // (int a1) ->
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 // .global chatbox_8045F4C
 
 	.include "asm/asm03_2.inc"
@@ -1011,7 +1011,7 @@
 // .equ dword_2011E6C, 0x2011E6C
 // .equ dword_2011E70, 0x2011E70
 // .equ unk_2011EA0, 0x2011EA0
-// .equ decomp_2013A00, 0x2013A00
+// .equ eDecompBuffer2013A00, 0x2013A00
 // .equ unk_2014A00, 0x2014A00
 // .equ byte_2017A00, 0x2017A00
 // .equ eTileRefs2017A04, 0x2017A04

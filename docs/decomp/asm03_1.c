@@ -603,7 +603,7 @@ signed int __fastcall sub_803423C(int a1, int a2, int a3, int a4)
 
     **v4 = 4;
     zeroFillVRAM();
-    sub_800183C();
+    ZeroFillGFX30025c0();
     sub_8006910();
     *(*(v4 + oToolkit_GameStatePtr) + 22) = 0;
     v5 = sub_8005C04();
@@ -620,7 +620,7 @@ int sub_8034268()
 
     sub_80015FC(9);
     zeroFillVRAM();
-    sub_800183C();
+    ZeroFillGFX30025c0();
     decompJackInAnimationGfx_8034314();
     sRender_08_setRenderingState(4929);
     *(v0 + 4) = &word_50;
@@ -703,7 +703,7 @@ int __fastcall sub_80342EC(int a1, int a2, int a3, int a4)
 
     **v4 = 4;
     zeroFillVRAM();
-    sub_800183C();
+    ZeroFillGFX30025c0();
     v5 = *(v4 + oToolkit_GameStatePtr);
     *(v5 + 22) = 0;
     *(v5 + 23) = 16;
@@ -864,7 +864,7 @@ BOOL sub_8034C36()
                 sub_809E462();
                 if ( v0 )
                 {
-                    chatbox_8045F3C(128);
+                    chatbox_check_eFlags2009F38(128);
                     if ( v0 )
                     {
                         s_2011C50_ptr_1C_isNull();
@@ -895,7 +895,7 @@ BOOL sub_8034C6E()
             sub_809E462();
             if ( v0 )
             {
-                chatbox_8045F3C(128);
+                chatbox_check_eFlags2009F38(128);
                 if ( v0 )
                 {
                     s_2011C50_ptr_1C_isNull();
@@ -3324,7 +3324,7 @@ signed int __fastcall sub_8037332(int a1, int a2)
 // 0x8037352
 signed int sub_8037352()
 {
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     return 1;
 }
 
@@ -3575,11 +3575,11 @@ BOOL sub_8037790()
     BOOL result; // r0
 
     v1 = ReadMapScriptByte(1, v0);
-    chatbox_8045F3C(v1 & 0x80);
+    chatbox_check_eFlags2009F38(v1 & 0x80);
     result = 1;
     if ( !v2 )
     {
-        chatbox_8045F3C(v1 & 0x38);
+        chatbox_check_eFlags2009F38(v1 & 0x38);
         if ( v2 )
             result = 0;
     }
@@ -3964,7 +3964,7 @@ signed int sub_8037A7C()
     if ( ReadMapScriptByte(1, v0) == 1 )
         chatbox_clear_eFlags2009F38(v1);
     else
-        chatbox_setFlags2009F38(v1);
+        chatbox_set_eFlags2009F38(v1);
     return 1;
 }
 
@@ -5307,7 +5307,7 @@ int sub_80386B2()
 void __fastcall initGfx_80386CC(int a1, int a2, int a3, int a4)
 {
     zeroFillVRAM();
-    sub_800183C();
+    ZeroFillGFX30025c0();
     decompAndCopyData(&initRefs_80386E4);
 }
 
@@ -5361,8 +5361,8 @@ void __fastcall __noreturn sub_8038B04(int a1, int a2, int a3, int a4)
     int v11; // r3
 
     zeroFillVRAM();
-    sub_80017E0(v4, v5, v6, v7);
-    sub_800183C();
+    ZeroFill_byte_3001960(v4, v5, v6, v7);
+    ZeroFillGFX30025c0();
     sub_80015FC(20);
     sRender_08_setRenderingState(8000);
     renderInfo_8001788();
@@ -5803,7 +5803,7 @@ void decomp_initGfx_8038F30()
 // 0x8038f74
 int __noreturn sub_8038F74()
 {
-    return renderTextGfx_8045F8C(TextScriptCommError873B9E0, 40, decomp_2013A00, 100683776);
+    return renderTextGfx_8045F8C(TextScriptCommError873B9E0, 40, eDecompBuffer2013A00, 100683776);
 }
 
 
@@ -6011,7 +6011,7 @@ int sub_8039630()
     if ( !v1 )
     {
         zeroFillVRAM();
-        sub_800183C();
+        ZeroFillGFX30025c0();
         copyMemory_8001850();
         v2 = chatbox_8040818();
         sub_802F530(v2, v3, v4, v5);
@@ -6043,7 +6043,7 @@ signed int __fastcall __noreturn sub_8039694(int a1, int a2, int a3, int a4)
     signed int result; // r0
 
     sub_8005F40(a1, a2, a3, a4);
-    sub_800183C();
+    ZeroFillGFX30025c0();
     sRender_08_setRenderingState(8000);
     renderInfo_8001788();
     renderInfo_80017A0();
@@ -6088,7 +6088,7 @@ void __noreturn sub_803970C()
     IsPaletteFadeActive();
     if ( !v1 )
     {
-        chatbox_8045F3C(8);
+        chatbox_check_eFlags2009F38(8);
         if ( !v1 )
         {
             *(v0 + 20) = 0;
@@ -6528,7 +6528,7 @@ int sub_8039B60()
     IsPaletteFadeActive();
     if ( !v1 )
     {
-        chatbox_8045F3C(8);
+        chatbox_check_eFlags2009F38(8);
         if ( !v1 )
         {
             engine_setScreeneffect(12, 16);
@@ -6598,7 +6598,7 @@ int __fastcall sub_8039BC0(int a1)
             }
             else
             {
-                chatbox_8045F3C(8);
+                chatbox_check_eFlags2009F38(8);
                 if ( !v3 )
                 {
                     sub_803BB94();
@@ -6627,7 +6627,7 @@ int sub_8039C14()
     _BYTE *v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         v0[14] = 0;
@@ -6743,7 +6743,7 @@ int __fastcall sub_8039D08(int a1)
     sub_803A558(a1);
     if ( v2 )
     {
-        chatbox_8045F3C(8);
+        chatbox_check_eFlags2009F38(8);
         if ( !v2 )
         {
             if ( chatbox_8045F4C() || (v3 = sub_813D638(), v4 = v1[11], v5 = v1[14] + v4, v5 >= v3) )
@@ -6805,7 +6805,7 @@ int __fastcall sub_8039D9A(int a1)
     sub_803A558(a1);
     if ( v2 )
     {
-        chatbox_8045F3C(128);
+        chatbox_check_eFlags2009F38(128);
         if ( v2 )
             *(v1 + 1) = 36;
     }
@@ -6875,7 +6875,7 @@ int __fastcall sub_8039E2C(int a1)
     sub_803A58C(a1);
     if ( !v2 )
     {
-        chatbox_8045F3C(8);
+        chatbox_check_eFlags2009F38(8);
         if ( !v2 )
         {
             sub_8146588();
@@ -7075,7 +7075,7 @@ int sub_8039FEC()
     char v1; // zf
     int v2; // r0
 
-    chatbox_8045F3C(8);
+    chatbox_check_eFlags2009F38(8);
     if ( !v1 )
     {
         sub_8146588();
@@ -7248,7 +7248,7 @@ void __noreturn sub_803A186()
     char v2; // zf
 
     v1 = 0;
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v2 )
         v1 = 1;
     sub_803BBA4(4, 32 * *(v0 + 14) + 33, v1);
@@ -7366,7 +7366,7 @@ void __noreturn sub_803A2CC()
     char v2; // zf
     _BYTE *v3; // r3
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v2 )
     {
         sRender_08_setRenderingState(32576);
@@ -8024,7 +8024,7 @@ void __noreturn sub_803A9CC()
     int v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         sub_803BB80();
@@ -8305,7 +8305,7 @@ void __noreturn sub_803AC02()
     int v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         if ( chatbox_8045F4C() )
@@ -8349,7 +8349,7 @@ void __noreturn sub_803AC56()
     int v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         if ( chatbox_8045F4C() )
@@ -8367,7 +8367,7 @@ void __noreturn sub_803AC78()
     _BYTE *v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         v0[19] = 0;
@@ -8396,7 +8396,7 @@ void __noreturn sub_803ACB2()
     int v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
         *(v0 + 1) = 40;
     sub_803A820();
@@ -8674,7 +8674,7 @@ void __noreturn sub_803AEE6()
     int v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         if ( *(v0 + 3) == 1 )
@@ -8722,7 +8722,7 @@ void __noreturn sub_803AF46()
     int v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         if ( chatbox_8045F4C() )
@@ -8745,7 +8745,7 @@ void __noreturn sub_803AF70()
     int v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         *(v0 + 19) = 0;
@@ -8898,7 +8898,7 @@ int sub_803B1D6()
     int v2; // r2
     char v3; // zf
 
-    chatbox_8045F3C(8);
+    chatbox_check_eFlags2009F38(8);
     if ( !v3 )
     {
         sound_play(104, v1, v2);
@@ -8931,7 +8931,7 @@ int sub_803B1F8()
 int __fastcall copyData_803B216(int a1, int a2, int a3, int a4)
 {
     zeroFillVRAM();
-    sub_800183C();
+    ZeroFillGFX30025c0();
     copyMemory_8001850();
     decompAndCopyData(&initRefs_803B244);
     sub_803B91C(0);
@@ -8947,7 +8947,7 @@ int __fastcall copyData_803B2E4(int a1, int a2, int a3, int a4)
     int result; // r0
 
     zeroFillVRAM();
-    sub_800183C();
+    ZeroFillGFX30025c0();
     copyMemory_8001850();
     decompAndCopyData(&initRefs_803B310);
     sub_803B91C(4);
@@ -8965,7 +8965,7 @@ int __fastcall copyData_803B3C8(int a1, int a2, int a3, int a4)
     _WORD *v5; // r3
 
     zeroFillVRAM();
-    sub_800183C();
+    ZeroFillGFX30025c0();
     copyMemory_8001850();
     decompAndCopyData(&initRefs_803B404);
     v5 = *(v4 + oToolkit_RenderInfoPtr);
@@ -8981,7 +8981,7 @@ int __fastcall copyData_803B3C8(int a1, int a2, int a3, int a4)
 int __fastcall copyData_803B45C(int a1, int a2, int a3, int a4)
 {
     zeroFillVRAM();
-    sub_800183C();
+    ZeroFillGFX30025c0();
     copyMemory_8001850();
     decompAndCopyData(&initRefs_803B490);
     sub_803B91C(7);
@@ -10931,7 +10931,7 @@ int sub_803CC28()
     int result; // r0
     char v2; // zf
 
-    result = chatbox_8045F3C(8);
+    result = chatbox_check_eFlags2009F38(8);
     if ( !v2 )
     {
         engine_setScreeneffect(12, 8);
@@ -10964,7 +10964,7 @@ int sub_803CC40()
 void __fastcall __noreturn copyData_803CC60(int a1, int a2, int a3, int a4)
 {
     zeroFillVRAM();
-    sub_800183C();
+    ZeroFillGFX30025c0();
     decompAndCopyData(&initRefs803CC88);
     copyTiles(0, 0, 1, eTileRefs2017A04, 30, dword_14);
 }
@@ -11059,7 +11059,7 @@ void sub_803CD54()
 void __fastcall sub_803CD58(int a1, int a2, int a3, int a4)
 {
     zeroFillVRAM();
-    sub_800183C();
+    ZeroFillGFX30025c0();
 }
 
 
@@ -11743,7 +11743,7 @@ int sub_803D2A6()
 void __fastcall __noreturn copyTileData_803D2B8(int a1, int a2, int a3, int a4)
 {
     zeroFillVRAM();
-    sub_800183C();
+    ZeroFillGFX30025c0();
     decompAndCopyData(&initRefs803D2F0);
     copyTiles(0, 0, 1, &unk_2013A04, 32, dword_14);
     copyTiles(8, 17, 2, tileRefs86C41B4, 14, &byte_0[1]);
@@ -14995,12 +14995,12 @@ signed __int64 sub_803FBE8()
     signed int v0; // r2
     signed __int64 result; // r0
 
-    sub_80068EC(decomp_2013A00, &BG1X_Offset, 1, -1572864000);
+    sub_80068EC(eDecompBuffer2013A00, &BG1X_Offset, 1, -1572864000);
     v0 = 0;
     result = 1374389534720LL;
     do
     {
-        *&decomp_2013A00[v0] = 0;
+        *&eDecompBuffer2013A00[v0] = 0;
         v0 += 2;
     }
     while ( v0 < 160 );
@@ -15027,14 +15027,14 @@ int sub_803FC14()
     v5 = 0;
     while ( 1 )
     {
-        decomp_2013A00[v4] = result;
+        eDecompBuffer2013A00[v4] = result;
         ++v4;
         if ( v4 >= 160 )
             break;
         v6 = __OFSUB__(v3--, 1);
         if ( ((v3 < 0) ^ v6) | (v3 == 0) )
         {
-            result = decomp_2013A00[v4] - byte_803FC50[v5];
+            result = eDecompBuffer2013A00[v4] - byte_803FC50[v5];
             v3 = 8;
             if ( ++v5 > 20 )
                 break;
@@ -15051,7 +15051,7 @@ void __fastcall __noreturn copyTileData_803FC64(int a1, int a2, int a3, int a4)
     sub_8005F6C();
     sub_80027C4();
     decompAndCopyData(&initRefs803FCA4);
-    sub_800183C();
+    ZeroFillGFX30025c0();
     copyTiles(0, 0, 1, eTileRefs2018A04, 32, dword_14);
     copyTiles(0, 0, 2, eTileRefs2017A04, 30, dword_14);
 }

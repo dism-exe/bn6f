@@ -2455,7 +2455,7 @@ sub_80015B4:
 	ldr r0, dword_80015C8 // =0x600e000
 	ldr r1, dword_80015CC // =0x2000
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	pop {pc}
 dword_80015C8: .word 0x600E000
@@ -2637,14 +2637,14 @@ dword_80017D8: .word 0x6008000
 dword_80017DC: .word 0x600C000
 	thumb_func_end zeroFillVRAM
 
-	thumb_func_start sub_80017E0
-sub_80017E0:
+	thumb_func_start ZeroFill_byte_3001960
+ZeroFill_byte_3001960:
 	push {lr}
 	ldr r0, off_8001800 // =byte_3001960
 	mov r1, #2
 	bl ZeroFillByHalfword
 	pop {pc}
-	thumb_func_end sub_80017E0
+	thumb_func_end ZeroFill_byte_3001960
 
 	thumb_func_start main_zeroFill_80017EC
 main_zeroFill_80017EC:
@@ -2697,8 +2697,8 @@ zeroFill_e200F3A0:
 	pop {pc}
 	thumb_func_end zeroFill_e200F3A0
 
-	thumb_func_start sub_800183C
-sub_800183C:
+	thumb_func_start ZeroFillGFX30025c0
+ZeroFillGFX30025c0:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GFX30025c0_Ptr]
@@ -2707,7 +2707,7 @@ sub_800183C:
 	pop {pc}
 	.balign 4, 0x00
 dword_800184C: .word 0x2000
-	thumb_func_end sub_800183C
+	thumb_func_end ZeroFillGFX30025c0
 
 	thumb_func_start copyMemory_8001850
 copyMemory_8001850:

@@ -54,8 +54,8 @@ sub_8130084:
 	bl sub_8130404
 	mov r7, r0
 	bl zeroFillVRAM
-	bl sub_80017E0
-	bl sub_800183C
+	bl ZeroFill_byte_3001960
+	bl ZeroFillGFX30025c0
 	mov r0, #0x10
 	bl sub_80015FC
 	bl sub_8046664 // () -> void
@@ -514,7 +514,7 @@ locret_8130462:
 sub_8130464:
 	push {r4-r7,lr}
 	mov r7, r5
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl sub_8046664 // () -> void
 	mov r0, #0
 	mov r1, #0
@@ -1379,7 +1379,7 @@ sub_8130BC8:
 	mov r0, #0x23 
 	strb r0, [r5,#0x10]
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_8130BDA
 	ldr r1, byte_8130C88 // =0xdc
 	strh r1, [r5,#0x2a]
@@ -1811,10 +1811,10 @@ loc_8130F36:
 	tst r1, r0
 	bne loc_8130F4E
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_8130F4E
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_8130F76
 loc_8130F4E:
 	bl eStruct200BC30_getJumpOffset00
@@ -2171,7 +2171,7 @@ sub_8131210:
 	tst r1, r0
 	beq loc_813123E
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_81312C8
 	ldrb r1, [r7,#0x1b]
 	mov r0, #0x20 
@@ -2291,8 +2291,8 @@ sub_81312FC:
 	bl sub_81312EC
 	mov r7, r0
 	bl zeroFillVRAM
-	bl sub_80017E0
-	bl sub_800183C
+	bl ZeroFill_byte_3001960
+	bl ZeroFillGFX30025c0
 	mov r0, #0x10
 	bl sub_80015FC
 	bl sub_8046664 // () -> void
@@ -4457,7 +4457,7 @@ byte_81326C8: .byte 0x21, 0x0, 0x0, 0x0, 0x21, 0x1, 0x0, 0x0, 0xFF, 0xFF, 0xFF, 
 	thumb_func_start sub_81326D4
 sub_81326D4:
 	push {lr}
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl sub_8046664 // () -> void
 	// initRefs
 	ldr r0, off_8132714 // =dword_8132718 
@@ -4483,7 +4483,7 @@ off_8132710: .word byte_81326C8
 off_8132714: .word dword_8132718
 dword_8132718: .word 0x886DBD94
 	.word unk_202CA00
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.byte 0xF8, 0xB0, 0x6D, 0x88, 0xA0, 0x2A, 0x2, 0x2, 0x0, 0x3A
 	.byte 0x1, 0x2, 0xC, 0xBB, 0x6D, 0x88, 0xA0, 0x2F, 0x2, 0x2
 	.byte 0x0, 0x3A, 0x1, 0x2, 0x64, 0xBD, 0x6D, 0x88, 0x50, 0x15
@@ -4923,28 +4923,28 @@ byte_8132ABC: .byte 0x0, 0x10, 0x0, 0x40, 0x0, 0xB2, 0x2, 0xB2, 0x4, 0xB2, 0x6, 
 	.byte 0xA3, 0xB2, 0xA5, 0xB2, 0xA6, 0xB2, 0xA8, 0xB2, 0xA7, 0xB2, 0xA9, 0xB2
 	thumb_func_end sub_8132A9E
 
-	thumb_func_start sub_8132B88
-sub_8132B88:
+	thumb_func_start HandleSaveMenu8132B88
+HandleSaveMenu8132B88:
 	push {lr}
-	ldr r0, off_8132B98 // =off_8132B9C 
+	ldr r0, off_8132B98 // =JumpTable8132B9C
 	ldrb r1, [r5,#1]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
 	pop {pc}
 	.balign 4, 0x00
-off_8132B98: .word off_8132B9C
-off_8132B9C: .word sub_8132BA8+1
-	.word sub_8132C34+1
-	.word sub_8132CA0+1
-	thumb_func_end sub_8132B88
+off_8132B98: .word JumpTable8132B9C
+JumpTable8132B9C: .word OpenSaveMenu8132BA8+1
+	.word SaveMenuUpdate8132C34+1
+	.word ExitSaveMenu8132CA0+1 // continuous calls as screen dims
+	thumb_func_end HandleSaveMenu8132B88
 
 	thumb_local_start
-sub_8132BA8:
+OpenSaveMenu8132BA8:
 	push {lr}
 	bl zeroFillVRAM
-	bl sub_80017E0
-	bl sub_800183C
+	bl ZeroFill_byte_3001960
+	bl ZeroFillGFX30025c0
 	mov r0, #0x10
 	bl sub_80015FC
 	mov r7, r10
@@ -4978,38 +4978,38 @@ sub_8132BA8:
 	bl sub_8021CA8
 	str r0, [r5,#0x14]
 	bl sub_8132CB8
-	thumb_func_end sub_8132BA8
-
 	bl sub_8132D9C
 	bl sub_81330AC
 	bl sub_8132EF4
-	bl sub_8132F4C
+	bl textGfx_8132F4C
 	bl sub_8132FD0
 	ldr r0, off_8132C30 // =eTextScript201BF00
 	mov r1, #0xa
 	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 	mov r0, #0x40 
-	bl chatbox_setFlags2009F38
+	bl chatbox_set_eFlags2009F38
 	pop {pc}
 dword_8132C2C: .word 0x1F40
 off_8132C30: .word eTextScript201BF00
+	thumb_func_end OpenSaveMenu8132BA8
+
 	thumb_local_start
-sub_8132C34:
+SaveMenuUpdate8132C34:
 	push {lr}
-	ldr r0, off_8132C44 // =off_8132C48 
+	ldr r0, off_8132C44 // =JumpTable8132C48
 	ldrb r1, [r5,#2]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
 	pop {pc}
 	.balign 4, 0x00
-off_8132C44: .word off_8132C48
-off_8132C48: .word sub_8132C50+1
-	.word sub_8132C68+1
-	thumb_func_end sub_8132C34
+off_8132C44: .word JumpTable8132C48
+JumpTable8132C48: .word SaveMenuOpenUpdate8132C50+1
+	.word SaveMenuUpdate8132C68+1
+	thumb_func_end SaveMenuUpdate8132C34
 
 	thumb_local_start
-sub_8132C50:
+SaveMenuOpenUpdate8132C50:
 	push {lr}
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_8132C62
@@ -5018,21 +5018,21 @@ sub_8132C50:
 	mov r0, #4
 	strb r0, [r5,#2]
 loc_8132C62:
-	bl sub_8132F4C
-	thumb_func_end sub_8132C50
-
+	bl textGfx_8132F4C
 	pop {pc}
+	thumb_func_end SaveMenuOpenUpdate8132C50
+
 	thumb_local_start
-sub_8132C68:
+SaveMenuUpdate8132C68:
 	push {lr}
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8132C82
 	mov r0, #0x20 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_8132C96
 	ldr r0, off_8132C9C // =0x110 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_8132C96
 loc_8132C82:
 	mov r0, #8
@@ -5041,25 +5041,25 @@ loc_8132C82:
 	mov r1, #0xc
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	mov r0, #0x40 
-	bl chatbox_setFlags2009F38
+	bl chatbox_set_eFlags2009F38
 	b loc_8132C96
 loc_8132C96:
-	bl sub_8132F4C
-	thumb_func_end sub_8132C68
-
+	bl textGfx_8132F4C
 	pop {pc}
 off_8132C9C: .word 0x110
+	thumb_func_end SaveMenuUpdate8132C68
+
 	thumb_local_start
-sub_8132CA0:
+ExitSaveMenu8132CA0:
 	push {lr}
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_8132CB2
 	mov r0, #0x40 
-	bl chatbox_setFlags2009F38
+	bl chatbox_set_eFlags2009F38
 	bl sub_811F708
 loc_8132CB2:
-	bl sub_8132F4C
-	thumb_func_end sub_8132CA0
+	bl textGfx_8132F4C
+	thumb_func_end ExitSaveMenu8132CA0
 
 	pop {pc}
 	thumb_local_start
@@ -5098,7 +5098,7 @@ loc_8132CD4:
 	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, TextScriptNetworkPtrs8132D18_p // =TextScriptNetworkPtrs8132D18
 	ldr r1, eTextScript201BF00_p // =eTextScript201BF00
-	ldr r2, off_8132D50 // =decomp_2013A00 
+	ldr r2, off_8132D50 // =eDecompBuffer2013A00
 	bl sub_8123300
 	// j
 	mov r0, #0
@@ -5130,7 +5130,7 @@ TextScriptNetworkPtrs8132D18: .word TextScriptNetworkPlyTmSave86CF618
 	.word TextScriptNetworkPlyTmSave86CF618
 	.word eTextScriptNetworkSave86CF730
 eTextScript201BF00_p: .word eTextScript201BF00
-off_8132D50: .word decomp_2013A00
+off_8132D50: .word eDecompBuffer2013A00
 off_8132D54: .word off_8132D58
 off_8132D58: .word dword_86C9108
 	.word 0x2
@@ -5144,10 +5144,10 @@ off_8132D78: .word unk_20096E0
 off_8132D7C: .word off_8132D80
 off_8132D80: .word 0x886C8054
 	.word 0x6000020
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886CF508
 off_8132D90: .word eTextScript201BA00
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x0
 	thumb_local_start
 sub_8132D9C:
@@ -5333,7 +5333,7 @@ off_8132F40: .word unk_201C480
 off_8132F44: .word unk_201C4A0
 off_8132F48: .word unk_201C4C0
 	thumb_local_start
-sub_8132F4C:
+textGfx_8132F4C:
 	push {r4-r7,lr}
 	bl sub_8132F78
 	ldr r0, off_8132F70 // =eTextScript201BF00
@@ -5345,13 +5345,13 @@ sub_8132F4C:
 	ldr r6, off_8132F74 // =dword_86B7AE0 
 	mov r7, #0
 	bl renderTextGfx_8045F8C
-	thumb_func_end sub_8132F4C
-
 	pop {r4-r7,pc}
 off_8132F68: .word unk_2018A00
 dword_8132F6C: .word 0x6004800
 off_8132F70: .word eTextScript201BF00
 off_8132F74: .word dword_86B7AE0
+	thumb_func_end textGfx_8132F4C
+
 	thumb_local_start
 sub_8132F78:
 	push {r4-r7,lr}
@@ -5432,7 +5432,7 @@ loc_8132FDE:
 	add r7, #2
 	cmp r7, #0x10
 	ble loc_8132FDA
-	ldr r7, off_81330A8 // =decomp_2013A00 
+	ldr r7, off_81330A8 // =eDecompBuffer2013A00
 	mov r4, #0
 	lsl r6, r6, #1
 	ldr r0, off_8133090 // =word_201C4E0 
@@ -5506,7 +5506,7 @@ loc_813306A:
 	// cpyOff
 	mov r2, #2
 	// tileRefs
-	ldr r3, off_81330A8 // =decomp_2013A00 
+	ldr r3, off_81330A8 // =eDecompBuffer2013A00
 	lsr r4, r6, #2
 	mov r0, #0x19
 	// j
@@ -5523,7 +5523,7 @@ off_8133098: .word unk_201C4F0
 dword_813309C: .word 0x30B260
 off_81330A0: .word unk_201C500
 dword_81330A4: .word 0x30B270
-off_81330A8: .word decomp_2013A00
+off_81330A8: .word eDecompBuffer2013A00
 	thumb_local_start
 sub_81330AC:
 	push {r4-r7,lr}
@@ -5610,7 +5610,7 @@ off_8133214: .word sub_8133228+1
 	thumb_local_start
 sub_8133228:
 	push {r4-r7,lr}
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	mov r0, #0x10
 	bl sub_80015FC
 	mov r7, r10
@@ -5838,7 +5838,7 @@ sub_8133434:
 	bl sub_81345B0
 	bl sub_8134548
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8133458
 	mov r0, #4
 	strb r0, [r5,#2]
@@ -5847,7 +5847,7 @@ sub_8133434:
 	pop {pc}
 loc_8133458:
 	mov r0, #0x20 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_8133482
 	bl chatbox_8045F4C
 	tst r0, r0
@@ -5910,7 +5910,7 @@ sub_81334C8:
 	b locret_8133534
 loc_81334E2:
 	mov r0, #0x20 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8133504
 	mov r0, #6
 	bl isJoystickIRQActive
@@ -5971,7 +5971,7 @@ off_8133554: .word sub_8133564+1
 sub_8133564:
 	push {r4,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_81335B6
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
@@ -6020,7 +6020,7 @@ sub_81335B8:
 sub_81335C0:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_81335D4
 	mov r0, #0x14
 	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
@@ -6035,7 +6035,7 @@ locret_81335D4:
 sub_81335D8:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_81335EA
 	mov r0, #4
 	strb r0, [r5,#2]
@@ -6137,7 +6137,7 @@ byte_8133694: .byte 0x1, 0x0, 0x0, 0x0, 0xE, 0x0, 0x0, 0x0, 0xF, 0x0, 0x0, 0x0
 sub_81336A0:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_81336BC
 	ldr r0, [r5,#0x5c]
 	ldr r1, dword_81336C0 // =0xffff 
@@ -6158,7 +6158,7 @@ dword_81336C0: .word 0xFFFF
 sub_81336C4:
 	push {r4,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8133738
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
@@ -6219,7 +6219,7 @@ dword_813373C: .word 0xFFFF
 sub_8133740:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8133758
 	bl sub_8134FE0
 	mov r0, #0xc
@@ -6235,7 +6235,7 @@ locret_8133758:
 sub_813375C:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_813376E
 	mov r0, #4
 	strb r0, [r5,#2]
@@ -6264,7 +6264,7 @@ locret_8133784:
 sub_8133788:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_81337B0
 	bl sub_81355D8
 	beq loc_81337A8
@@ -6599,10 +6599,10 @@ sub_8133A68:
 	b loc_8133AE2
 loc_8133A7C:
 	ldr r0, off_8133B14 // =0x120 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_8133AE2
 	ldr r0, off_8133B10 // =0x100 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_8133AA0
 	mov r0, #0xb
 	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
@@ -7164,7 +7164,7 @@ loc_8133EDC:
 	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_8133F2C // =off_8133F30
 	ldr r1, off_8133F64 // =eTextScript2028A20
-	ldr r2, off_8133F68 // =decomp_2013A00 
+	ldr r2, off_8133F68 // =eDecompBuffer2013A00
 	bl sub_8123300
 	// j
 	mov r0, #0
@@ -7203,7 +7203,7 @@ off_8133F30: .word dword_86CEE84
 	.word dword_86CEE84
 	.word dword_86CF1A8
 off_8133F64: .word eTextScript2028A20
-off_8133F68: .word decomp_2013A00
+off_8133F68: .word eDecompBuffer2013A00
 off_8133F6C: .word off_8133F70
 off_8133F70: .word dword_86C9108
 	.word 0x2
@@ -7216,7 +7216,7 @@ off_8133F70: .word dword_86C9108
 	.word 0x886C9AA4
 	.word 0x2
 	.word unk_3001A80
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word byte_872CF94
 	.word 0x2
 	.word unk_3001AE0
@@ -7225,64 +7225,64 @@ off_8133FB0: .word unk_20096E0
 off_8133FB4: .word off_8133FB8
 off_8133FB8: .word 0x886CEC3C
 	.word unk_203526C
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886CEAA8
 	.word unk_2034B6C
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C7E74
 	.word 0x6012800
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C7F70
 	.word byte_30015F0
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C7F98
 	.word 0x6012C00
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C8034
 	.word byte_3001630
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C9274
 	.word 0x6008020
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C9668
 	.word unk_3001A20
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886CE9E8
 	.word unk_203486C
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C96C0
 	.word 0x6006800
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C980C
 	.word 0x6006B80
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C7980
 	.word unk_2024A20
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C73D8
 	.word unk_2026A20
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C9BD4
 	.word 0x6014800
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C9D38
 	.word 0x6014980
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C9C80
 	.word 0x60149C0
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word byte_86C9D6C
 	.word byte_30016D0
 	.word 0x20
 	.word 0x886C8054
 	.word 0x6000020
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886CE7D0
 off_8134094: .word unk_201CA20
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886CE8AC
 off_81340A0: .word unk_2020A20
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x0
 	thumb_local_start
 sub_81340AC:
@@ -10142,8 +10142,8 @@ off_81356E8: .word sub_81356F4+1
 sub_81356F4:
 	push {lr}
 	bl zeroFillVRAM
-	bl sub_80017E0
-	bl sub_800183C
+	bl ZeroFill_byte_3001960
+	bl ZeroFillGFX30025c0
 	mov r0, #0x10
 	bl sub_80015FC
 	mov r7, r10
@@ -10557,10 +10557,10 @@ loc_8135A3E:
 sub_8135A44:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_8135AF2
 	mov r0, #0x20 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_8135AF2
 	ldrb r0, [r5,#0x16]
 	strb r0, [r5,#2]
@@ -10640,10 +10640,10 @@ locret_8135AF2:
 sub_8135AF8:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_8135B2E
 	mov r0, #0x20 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_8135B2E
 	bl chatbox_8045F4C
 	bne loc_8135B26
@@ -10671,10 +10671,10 @@ locret_8135B2E:
 sub_8135B38:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_8135B52
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_8135B52
 	bl chatbox_8040818
 	mov r0, #8
@@ -10802,7 +10802,7 @@ off_8135C2C: .word dword_86C9108
 	.word 0x886D3CF4
 	.word 0x3
 	.word unk_201CF80
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 off_8135C5C: .word unk_20096E0
 off_8135C60: .word off_8135C64
 off_8135C64: .word dword_86A4740
@@ -10812,67 +10812,67 @@ off_8135C64: .word dword_86A4740
 	.word 0x20
 	.word 0x886C8054
 	.word 0x6000020
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D372C
 	.word 0x6004000
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D4494
 	.word 0x6007C20
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D45AC
 	.word 0x6008020
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D4670
 	.word unk_30019C0
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D439C
 off_8135CBC: .word byte_201BE80
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D3D70
 	.word unk_201C380
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D3F34
 	.word byte_201C780
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D4140
 	.word unk_201CB80
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D4560
 off_8135CEC: .word unk_201D180
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D471C
 	.word unk_201DD70
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D497C
 	.word unk_201F6F0
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D5224
 	.word unk_20218F0
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D4FC4
 	.word unk_2021FF0
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D5070
 	.word unk_20222F0
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D54F4
 	.word unk_20226F0
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x8873ECC8
 	.word unk_201E670
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D55C8
 	.word eTextScript201D280
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word dword_86CDBC4
 	.word byte_3001610
 	.word 0x20
 	.word 0x886D46A8
 	.word unk_20229F0
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886D46E4
 	.word byte_2022AB0
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x0
 off_8135D7C: .word off_8135D80
 off_8135D80: .word unk_201C380
@@ -12558,10 +12558,10 @@ sub_8136AA0:
 	cmp r0, #0x28 
 	beq loc_8136ACC
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_8136AE2
 	ldr r0, dword_8136AE4 // =0x20 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_8136AE2
 	bl sub_813BAA8
 	bl chatbox_8045F4C
@@ -13074,7 +13074,7 @@ sub_8136F0C:
 	bl sub_81375F4
 	bl sub_8137618
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_8136F3C
 	bl sub_81375D8
 	mov r0, #1
@@ -13101,7 +13101,7 @@ sub_8136F40:
 	bl sub_81375F4
 	bl sub_8137618
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_8136F70
 	bl sub_81375D8
 	mov r0, #2
@@ -13129,7 +13129,7 @@ sub_8136F74:
 	bl sub_8137618
 	beq locret_8136FA2
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8136FA2
 	mov r0, #3
 	bl RunTextScriptNaviCustDialog
@@ -13143,7 +13143,7 @@ locret_8136FA2:
 sub_8136FA4:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8136FB6
 	mov r0, #0
 	strb r0, [r5,#4]
@@ -13203,7 +13203,7 @@ dword_8137014: .word 0x1
 sub_8137018:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8137026
 	mov r0, #0x18
 	strb r0, [r5]
@@ -13270,7 +13270,7 @@ off_8137098: .word 0x34
 sub_813709C:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_81370AA
 	mov r0, #0x20 
 	strb r0, [r5]
@@ -13298,7 +13298,7 @@ locret_81370C2:
 sub_81370C4:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_81370D2
 	mov r0, #0x30 
 	strb r0, [r5]
@@ -13374,7 +13374,7 @@ dword_813715C: .word 0x1
 sub_8137160:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_813716E
 	mov r0, #0x30 
 	strb r0, [r5]
@@ -13398,7 +13398,7 @@ sub_8137170:
 	bl sub_8137618
 	beq locret_813719E
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_813719E
 	mov r0, #0x15
 	bl RunTextScriptNaviCustDialog
@@ -13412,7 +13412,7 @@ locret_813719E:
 sub_81371A0:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_81371AE
 	mov r0, #0x40 
 	strb r0, [r5]
@@ -13485,7 +13485,7 @@ off_813722C: .word 0x8C
 sub_8137234:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8137242
 	mov r0, #0x40 
 	strb r0, [r5]
@@ -13513,7 +13513,7 @@ locret_813725A:
 sub_813725C:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_813726A
 	mov r0, #0x50 
 	strb r0, [r5]
@@ -13580,7 +13580,7 @@ dword_81372E0: .word 0x1
 sub_81372E4:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_81372F2
 	mov r0, #0x50 
 	strb r0, [r5]
@@ -13610,7 +13610,7 @@ sub_81372F4:
 	bl sub_8137618
 	beq locret_8137332
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8137332
 	bl sub_81375D8
 	mov r0, #0x1d
@@ -13637,7 +13637,7 @@ sub_8137334:
 	bl sub_8137618
 	beq locret_8137366
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8137366
 	bl sub_81375D8
 	mov r0, #0x1e
@@ -13652,7 +13652,7 @@ locret_8137366:
 sub_8137368:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8137376
 	mov r0, #0x64 
 	strb r0, [r5]
@@ -13800,7 +13800,7 @@ off_8137498: .word 0x34
 sub_813749C:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_81374AA
 	mov r0, #0x64 
 	strb r0, [r5]
@@ -13828,7 +13828,7 @@ locret_81374C2:
 sub_81374C4:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_81374D2
 	mov r0, #0x74 
 	strb r0, [r5]
@@ -13880,7 +13880,7 @@ dword_8137524: .word 0x1
 sub_8137528:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8137536
 	mov r0, #0x74 
 	strb r0, [r5]
@@ -13938,7 +13938,7 @@ sub_813756C:
 	bl sub_8137618
 	beq locret_813759A
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_813759A
 	mov r0, #0x26 
 	bl RunTextScriptNaviCustDialog
@@ -13952,7 +13952,7 @@ locret_813759A:
 sub_813759C:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_81375AA
 	mov r0, #0x8c
 	strb r0, [r5]
@@ -14410,8 +14410,8 @@ off_81378C8: .word sub_81378D4+1
 sub_81378D4:
 	push {r4-r7,lr}
 	bl zeroFillVRAM
-	bl sub_80017E0
-	bl sub_800183C
+	bl ZeroFill_byte_3001960
+	bl ZeroFillGFX30025c0
 	mov r0, #0x10
 	bl sub_80015FC
 	bl sub_8046664 // () -> void
@@ -14561,13 +14561,13 @@ locret_8137A1A:
 sub_8137A1C:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_8137A6C
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8137A64
 	mov r0, #0x20 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_8137A6C
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -14676,7 +14676,7 @@ loc_8137AE8:
 	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_8137B28 // =off_8137B2C
 	ldr r1, off_8137B60 // =eTextScript201BF00
-	ldr r2, off_8137B64 // =decomp_2013A00 
+	ldr r2, off_8137B64 // =eDecompBuffer2013A00
 	bl sub_8123300
 	// j
 	mov r0, #0
@@ -14708,7 +14708,7 @@ off_8137B2C: .word dword_86D8FA4
 	.word dword_86D8FA4
 	.word dword_86D9068
 off_8137B60: .word eTextScript201BF00
-off_8137B64: .word decomp_2013A00
+off_8137B64: .word eDecompBuffer2013A00
 off_8137B68: .word off_8137B6C
 off_8137B6C: .word dword_86C9108
 	.word 0x2
@@ -14726,19 +14726,19 @@ off_8137B9C: .word unk_20096E0
 off_8137BA0: .word off_8137BA4
 off_8137BA4: .word 0x886C8054
 	.word 0x6000020
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word dword_86B7AE0
 	.word 0x6004000
 	.word 0x2800
 	.word 0x886D8E94
 off_8137BC0: .word eTextScript201BA00
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C9BD4
 	.word 0x6014800
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x886C9CE4
 	.word 0x60149C0
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word byte_86C9D6C
 	.word byte_30016D0
 	.word 0x20
@@ -15531,8 +15531,8 @@ off_81382C4: .word sub_81382D0+1
 sub_81382D0:
 	push {lr}
 	bl zeroFillVRAM
-	bl sub_80017E0
-	bl sub_800183C
+	bl ZeroFill_byte_3001960
+	bl ZeroFillGFX30025c0
 	bl sub_81387D8
 	bl sub_8138758
 	mov r1, #0
@@ -15721,7 +15721,7 @@ sub_8138478:
 	push {r0-r7}
 	ldr r0, off_81384DC // =byte_2017A00 
 	ldrb r1, [r3,#1]
-	ldr r2, off_81384C8 // =decomp_2013A00 
+	ldr r2, off_81384C8 // =eDecompBuffer2013A00
 	ldr r3, off_81384CC // =unk_2014A00 
 	mov r4, #0xc
 	mov r5, #1
@@ -15758,7 +15758,7 @@ sub_81384AC:
 	pop {r3-r7,pc}
 	.balign 4, 0x00
 off_81384C4: .word 0x600
-off_81384C8: .word decomp_2013A00
+off_81384C8: .word eDecompBuffer2013A00
 off_81384CC: .word unk_2014A00
 off_81384D0: .word byte_86ACD60
 off_81384D4: .word unk_2014000

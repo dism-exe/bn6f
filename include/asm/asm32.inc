@@ -238,7 +238,7 @@
 	.global sub_811F708
 	.global sub_811F728
 	.global sub_811F758
-	.global menuControl_cb_openSubmenu // () -> void
+	.global SubMenuControl // () -> void
 	.global isJoystickIRQActive
 	.global sub_811F7F8
 	.global sub_811F91C
@@ -504,7 +504,7 @@
 	.include "asm/chatbox.inc"
 // .global chatbox_8040818
 // .global chatbox_clear_eFlags2009F38 // (int a1) ->
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 
 	.include "asm/asm03_2.inc"
 // .global renderTextGfx_8045F8C
@@ -626,15 +626,15 @@
 	.include "asm/asm33.inc"
 // .global sub_8123208
 // .global sub_8123360
-// .global sub_8123434
-// .global ho_8123F5C
+// .global HandleChipFolderMenu8123434
+// .global HandleSubChipMenu8123F5C
 // .global byte_8124B1C
-// .global sub_8124B3C
-// .global sub_8126B4C
-// .global menuControl_cb_email
-// .global sub_8128730
+// .global HandleLibraryMenu8124B3C
+// .global HandleMegaManStatusMenu8126B4C
+// .global HandleEmailMenu81279F8
+// .global HandleKeyItemMenu8128730
 // .global sub_8128CBC
-// .global sub_81291E8
+// .global HandleCommMenu81291E8
 // .global sub_8129248
 
 	.include "asm/asm36.inc"
@@ -643,7 +643,7 @@
 // .global sub_8132A14
 // .global sub_8132A50
 // .global dword_8132A9C
-// .global sub_8132B88
+// .global HandleSaveMenu8132B88
 // .global sub_8133200
 // .global sub_81355D8
 // .global sub_81356D4

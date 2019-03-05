@@ -1805,7 +1805,7 @@ byte_2013965:: // 0x2013965
 	.space 15
 word_2013974:: // 0x2013974
 	.space 140
-decomp_2013A00:: // 0x2013a00
+eDecompBuffer2013A00:: // 0x2013a00
 	.space 512
 unk_2013C00:: // 0x2013c00
 	.space 64

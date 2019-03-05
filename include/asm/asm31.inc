@@ -1102,7 +1102,7 @@
 
 	.include "asm/chatbox.inc"
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 
 	.include "asm/asm03_2.inc"
 // .global sub_80465BC

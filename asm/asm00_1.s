@@ -4750,7 +4750,7 @@ sub_8005A8C:
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	bne locret_8005AF2
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8005AF2
 	bl sub_80AA4C0
 	beq locret_8005AF2
@@ -4795,7 +4795,7 @@ sub_8005AF4:
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	bne locret_8005B68
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8005B68
 	mov r0, #8
 	bl isJoystickIRQActive
@@ -4848,7 +4848,7 @@ sub_8005B6E:
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	bne locret_8005BC6
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8005BC6
 	mov r0, #0x17
 	mov r1, #0x39
@@ -5322,7 +5322,7 @@ sub_8005F32:
 sub_8005F40:
 	push {r4-r7,lr}
 	bl zeroFillVRAM
-	bl sub_80017E0
+	bl ZeroFill_byte_3001960
 	bl sub_8001974
 	bl zeroFill_e20094C0
 	bl sub_80023A8
@@ -8932,7 +8932,7 @@ loc_8007F08:
 sub_8007F14:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8007F2A
 	mov r0, #0xc
 	mov r1, #0x10
@@ -11816,7 +11816,7 @@ sub_800951E:
 	b locret_8009550
 loc_8009534:
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8009550
 	bl sub_802D246 // () -> int
 	mov r2, #0x10
@@ -11855,7 +11855,7 @@ loc_800956A:
 	b locret_8009592
 loc_8009576:
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8009592
 	bl sub_802D246 // () -> int
 	mov r2, #0x10
@@ -11885,7 +11885,7 @@ sub_8009594:
 	b locret_80095C6
 loc_80095AA:
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_80095C6
 	bl sub_802D246 // () -> int
 	mov r2, #0x10
@@ -11917,7 +11917,7 @@ sub_80095C8:
 	b locret_80095F4
 loc_80095E4:
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_80095F4
 	mov r0, #4
 	strb r0, [r5,#1]
@@ -12385,7 +12385,7 @@ sub_8009966:
 	b locret_8009992
 loc_8009982:
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8009992
 	mov r0, #4
 	strb r0, [r5,#1]
@@ -12776,7 +12776,7 @@ sub_8009C56:
 	b locret_8009C82
 loc_8009C72:
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8009C82
 	mov r0, #4
 	strb r0, [r5,#1]
@@ -13022,7 +13022,7 @@ RunTextScriptDustManUndernetTut_8009E2C:
 sub_8009E40:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	cmp r0, #0
 	bne locret_8009E54
 	mov r0, #0xc
@@ -13209,7 +13209,7 @@ sub_8009F8A:
 	b locret_8009FB6
 loc_8009FA6:
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_8009FB6
 	mov r0, #4
 	strb r0, [r5,#1]

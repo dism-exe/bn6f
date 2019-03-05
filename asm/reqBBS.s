@@ -278,7 +278,7 @@ reqBBS_draw_813E2AC:
 	strb r1, [r0,#9]
 loc_813E2C8:
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_813E320
 	ldrh r0, [r5,#0x24] // reqBBS_GUI.pagePos
 	ldrh r1, [r5,#0x20] // reqBBS_GUI.cursorPos
@@ -542,7 +542,7 @@ reqBBS_draw_813E4AC:
 	strb r1, [r0,#9]
 loc_813E4C8:
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_813E4EC
 	bl chatbox_8040818
 	mov r0, #0x24 
@@ -810,7 +810,7 @@ off_813E6CC: .word unk_2000FF0
 reqBB_vram_813E6D0:
 	push {r5,lr}
 	bl zeroFillVRAM
-	bl sub_80017E0
+	bl ZeroFill_byte_3001960
 	// initRefs
 	ldr r0, off_813E6F8 // =byte_813E6FC 
 	bl decompAndCopyData // (u32 *initRefs) -> void
@@ -820,7 +820,7 @@ reqBB_vram_813E6D0:
 	// initRefs
 	ldr r0, [r1,r0]
 	bl decompAndCopyData // (u32 *initRefs) -> void
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl sub_8046664 // () -> void
 	pop {r5,pc}
 	.balign 4, 0x00
@@ -991,7 +991,7 @@ reqBBS_813E8CC:
 	add r5, r0, r1
 	mov r0, r7
 	mov r1, #0
-	ldr r2, off_813E900 // =decomp_2013A00 
+	ldr r2, off_813E900 // =eDecompBuffer2013A00
 	ldr r3, dword_813E904 // =0x6004000 
 	ldr r6, off_813E908 // =dword_86A5D60 
 loc_813E8E0:
@@ -1010,7 +1010,7 @@ loc_813E8E0:
 	cmp r1, #8
 	blt loc_813E8E0
 	pop {r4-r7,pc}
-off_813E900: .word decomp_2013A00
+off_813E900: .word eDecompBuffer2013A00
 dword_813E904: .word 0x6004000
 off_813E908: .word dword_86A5D60
 off_813E90C: .word reqBBS_eRequestEntriesIDs
@@ -1799,8 +1799,8 @@ off_813F3FC: .word reqBBS_textualPointers
 off_813F400: .word dynamicArr2005780
 	thumb_func_end reqBBS_init_s_2005780
 
-	thumb_func_start reqBBS_cb_813F404
-reqBBS_cb_813F404:
+	thumb_func_start reqBBS_subsystemCotnrol
+reqBBS_subsystemCotnrol:
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
@@ -1837,7 +1837,7 @@ jt_813F42C: .word reqBBS_813F474+1
 	.word reqBBS_813FC30+1
 	.word reqBBS_813FC8C+1
 	.word reqBBS_813FD14+1
-	thumb_func_end reqBBS_cb_813F404
+	thumb_func_end reqBBS_subsystemCotnrol
 
 	thumb_local_start
 reqBBS_813F474:
@@ -2085,7 +2085,7 @@ reqBBS_813F65C:
 	strb r1, [r0,#9]
 loc_813F678:
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_813F6CE
 	ldrh r0, [r5,#0x24]
 	ldrh r1, [r5,#0x20]
@@ -2352,7 +2352,7 @@ reqBBS_813F868:
 	strb r1, [r0,#9]
 loc_813F884:
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_813F8A8
 	bl chatbox_8040818
 	mov r0, #0x24 
@@ -2724,7 +2724,7 @@ reqBBS_813FB24:
 	strb r1, [r0,#9]
 loc_813FB40:
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_813FB98
 	// entryIdx
 	mov r0, #0x17
@@ -2797,7 +2797,7 @@ reqBBS_813FBC0:
 	strb r1, [r0,#9]
 loc_813FBDC:
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_813FC0E
 	bl chatbox_8040818
 	bl reqBBS_813FE54
@@ -2910,7 +2910,7 @@ loc_813FCA8:
 	b loc_813FCF0
 loc_813FCBE:
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_813FCF0
 	bl chatbox_8040818
 	bl reqBBS_813FE54
@@ -2964,7 +2964,7 @@ reqBBS_813FD14:
 	strb r1, [r0,#9]
 loc_813FD30:
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_813FD6C
 	bl chatbox_8040818
 	bl reqBBS_813FE54
@@ -3011,12 +3011,12 @@ off_813FDA4: .word dynamicArr2005780
 reqBBS_813FDA8:
 	push {r5,lr}
 	bl zeroFillVRAM
-	bl sub_80017E0
+	bl ZeroFill_byte_3001960
 	// initRefs
 	ldr r0, off_813FDC8 // =byte_813FDCC 
 	bl decompAndCopyData // (u32 *initRefs) -> void
 	bl reqBBS_8140600
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl sub_8046664 // () -> void
 	pop {r5,pc}
 	.balign 4, 0x00
@@ -3143,7 +3143,7 @@ reqBBS_renderRequestNames:
 	add r5, r0, r1
 	mov r0, r7
 	mov r1, #0
-	ldr r2, off_813FF20 // =decomp_2013A00 
+	ldr r2, off_813FF20 // =eDecompBuffer2013A00
 	ldr r3, dword_813FF24 // =0x6004000 
 	ldr r6, off_813FF28 // =dword_86A5D60 
 loc_813FF00:
@@ -3162,7 +3162,7 @@ loc_813FF00:
 	cmp r1, #8
 	blt loc_813FF00
 	pop {r4-r7,pc}
-off_813FF20: .word decomp_2013A00
+off_813FF20: .word eDecompBuffer2013A00
 dword_813FF24: .word 0x6004000
 off_813FF28: .word dword_86A5D60
 off_813FF2C: .word reqBBS_eRequestEntriesIDs
@@ -4314,13 +4314,13 @@ dword_81408EC: .word 0xF
 reqBBS_81408F0:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_814095E
 	mov r0, #0x20 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_814096A
 	ldr r0, off_8140970 // =0x110 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_814096A
 	bl reqBBS_81408C8
 	bl reqBBS_8140868

@@ -88,13 +88,13 @@
 	.global renderInfo_8001788
 	.global renderInfo_80017A0
 	.global zeroFillVRAM
-	.global sub_80017E0
+	.global ZeroFill_byte_3001960
 	.global main_zeroFill_80017EC
 	.global off_8001800
 	.global copyPalletesToIWRAM_8001808
 	.global zeroFill_e2009740
 	.global zeroFill_e200F3A0
-	.global sub_800183C
+	.global ZeroFillGFX30025c0
 	.global copyMemory_8001850
 	.global sub_800187C
 	.global sub_8001890

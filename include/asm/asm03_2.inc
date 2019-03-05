@@ -26,7 +26,7 @@
 	.global sub_80468EC
 	.global sub_804691A
 	.global sub_8046CC8
-	.global cb_8046CF8
+	.global ShopControl
 	.global sub_8047D84
 	.global sub_8048C24
 	.global sub_8048C68
@@ -50,7 +50,7 @@
 	.global sub_804A24C
 	.global sub_804A2CC
 	.global sub_804A2E8
-	.global cb_804A304
+	.global ChipTraderControl
 	.global sub_804BD00
 	.global sub_804C058
 	.global sub_804C074
@@ -96,9 +96,9 @@
 // .global renderInfo_8001788
 // .global renderInfo_80017A0
 // .global zeroFillVRAM
-// .global sub_80017E0
+// .global ZeroFill_byte_3001960
 // .global zeroFill_e2009740
-// .global sub_800183C
+// .global ZeroFillGFX30025c0
 // .global copyMemory_8001850
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
@@ -237,8 +237,8 @@
 // .global byte_8044064
 // .global chatbox_8045EEC
 // .global chatbox_8045EFC
-// .global chatbox_setFlags2009F38
-// .global chatbox_8045F3C
+// .global chatbox_set_eFlags2009F38
+// .global chatbox_check_eFlags2009F38
 // .global chatbox_8045F4C
 
 	.include "data/dat03.inc"
@@ -545,7 +545,7 @@
 // .equ unk_2013960, 0x2013960
 // .equ byte_2013965, 0x2013965
 // .equ word_2013974, 0x2013974
-// .equ decomp_2013A00, 0x2013A00
+// .equ eDecompBuffer2013A00, 0x2013A00
 // .equ unk_2013C00, 0x2013C00
 // .equ unk_2013C40, 0x2013C40
 // .equ unk_2015A00, 0x2015A00

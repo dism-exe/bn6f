@@ -59,21 +59,21 @@ main_subsystemJumpTable: .word startscreen_802F544+1
 	.word cb_803CBA6+1
 	.word cb_803CCD6+1
 	.word reqBBS_cb_draw_813E0A4+1
-	.word menuControl_cb_openSubmenu+1
-	.word cb_8046CF8+1
+	.word SubMenuControl+1
+	.word ShopControl+1 // shop!
 	.word cb_8048FD4+1
-	.word cb_804A304+1
+	.word ChipTraderControl+1
 	.word cb_81382AC+1
 	.word 0x0
 	.word 0x0
-	.word reqBBS_cb_813F404+1
-	.word menuControl_cb_email+1
+	.word reqBBS_subsystemCotnrol+1
+	.word HandleEmailMenu81279F8+1
 	.word cb_8049E04+1
 	.word 0x0
 	thumb_func_end main_
 
 	thumb_local_start
-main_awaitFrame :
+main_awaitFrame:
 	push {lr}
 loc_80003A2:
 	ldr r0, off_80003CC // =GeneralLCDStatus_STAT_LYC_

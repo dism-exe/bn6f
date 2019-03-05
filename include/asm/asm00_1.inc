@@ -251,7 +251,7 @@
 // .global renderInfo_8001788
 // .global renderInfo_80017A0
 // .global zeroFillVRAM
-// .global sub_80017E0
+// .global ZeroFill_byte_3001960
 // .global zeroFill_e2009740
 // .global zeroFill_e200F3A0
 // .global copyMemory_8001850
@@ -484,7 +484,7 @@
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global chatbox_clear_eFlags2009F38 // (int a1) ->
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 
 	.include "asm/asm03_2.inc"
 // .global sub_8046664 // () -> void

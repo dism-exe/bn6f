@@ -49,7 +49,7 @@
 	.global sub_81329C8
 	.global sub_8132A14
 	.global sub_8132A50
-	.global sub_8132B88
+	.global HandleSaveMenu8132B88
 	.global sub_8133200
 	.global sub_81348DC
 	.global sub_8134930
@@ -101,9 +101,9 @@
 // .global GetRNG1 // () -> void
 // .global sub_80015FC
 // .global zeroFillVRAM
-// .global sub_80017E0
+// .global ZeroFill_byte_3001960
 // .global zeroFill_e2009740
-// .global sub_800183C
+// .global ZeroFillGFX30025c0
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
 // .global zeroFill_80024A2
@@ -226,9 +226,9 @@
 // .global chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
-// .global chatbox_setFlags2009F38
+// .global chatbox_set_eFlags2009F38
 // .global chatbox_clear_eFlags2009F38 // (int a1) ->
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 // .global chatbox_8045F4C
 
 	.include "asm/asm03_2.inc"
@@ -458,7 +458,7 @@
 // .equ byte_200A290, 0x200A290
 // .equ byte_200BC50, 0x200BC50
 // .equ unk_2011CE0, 0x2011CE0
-// .equ decomp_2013A00, 0x2013A00
+// .equ eDecompBuffer2013A00, 0x2013A00
 // .equ unk_2014000, 0x2014000
 // .equ unk_2014A00, 0x2014A00
 // .equ byte_2016A00, 0x2016A00

@@ -873,7 +873,7 @@ sub_80A5588:
 	bl sub_8036F58
 	bne locret_80A55CA
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_80A55CA
 	bl sub_809E462
 	bne locret_80A55CA
@@ -1789,7 +1789,7 @@ sub_80A5C9C:
 	b loc_80A5CDE
 loc_80A5CBE:
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80A5CDE
 	bl chatbox_8045F4C
 	mov r4, #0
@@ -3222,7 +3222,7 @@ sub_80A6F2C:
 	bl sub_8036F58
 	bne loc_80A6F66
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80A6F66
 	ldrb r0, [r6,#9]
 	cmp r0, #0
@@ -3732,7 +3732,7 @@ sub_80A7354:
 	bl sub_8036F58
 	bne loc_80A738E
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80A738E
 	ldrb r0, [r6,#9]
 	cmp r0, #0
@@ -4943,7 +4943,7 @@ sub_80A7C58:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80A7C7E
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	bne loc_80A7C7E
@@ -5048,7 +5048,7 @@ sub_80A7CFE:
 	cmp r3, r1
 	bgt locret_80A7D70
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_80A7D70
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	bne locret_80A7D70
@@ -5779,7 +5779,7 @@ loc_80A843A:
 	bl sub_809E462
 	bne loc_80A8478
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80A8478
 	// entryIdx
 	mov r0, #9
@@ -7004,7 +7004,7 @@ sub_80A8DF0:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80A8E18
 	ldr r0, byte_80A8E20 // =0xf0
 	bl sub_8036F70
@@ -7115,7 +7115,7 @@ loc_80A8F1E:
 	bl sub_8036F58
 	bne loc_80A8F3A
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80A8F3A
 	bl sub_80A8F48
 	bl sub_80A91A4

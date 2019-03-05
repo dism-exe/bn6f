@@ -1177,7 +1177,7 @@ off_8026E48: .word 0x1000
 sub_8026E4C:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	cmp r0, #0
 	beq loc_8026E64
 	bl sub_802A220
@@ -1200,7 +1200,7 @@ loc_8026E72:
 sub_8026E78:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	cmp r0, #0
 	bne loc_8026E92
 	mov r0, #0x9e
@@ -1287,7 +1287,7 @@ loc_8026F0E:
 sub_8026F1A:
 	push {r4,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	cmp r0, #0
 	beq loc_8026F34
 	bl sub_802A220
@@ -1362,7 +1362,7 @@ locret_8026FA8:
 sub_8026FAA:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	cmp r0, #0
 	bne locret_8026FBE
 	mov r0, #4
@@ -1401,7 +1401,7 @@ loc_8026FE8:
 	b locret_8027004
 loc_8026FF2:
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	cmp r0, #0
 	bne locret_8027004
 	mov r0, #0x14
@@ -1809,7 +1809,7 @@ off_802731C: .word TextScriptFirstBattleTutorials
 sub_8027320:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	cmp r0, #0
 	bne locret_8027330
 	mov r0, #4
@@ -1924,7 +1924,7 @@ sub_80273E4:
 sub_80273EC:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	cmp r0, #0
 	bne loc_8027400
 	ldrb r0, [r5,#0xd]
@@ -9208,7 +9208,7 @@ locret_802AE12:
 sub_802AE14:
 	push {lr}
 	mov r0, #0x20 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_802AE5A
 	bl chatbox_8045F4C
 	tst r0, r0
@@ -9246,7 +9246,7 @@ locret_802AE5A:
 sub_802AE5C:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_802AE70
 	mov r0, #0x9e
 	bl sound_play // () -> void
@@ -9266,7 +9266,7 @@ loc_802AE70:
 sub_802AE84:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_802AEA6
 	bl chatbox_8045F4C
 	tst r0, r0
@@ -9292,7 +9292,7 @@ loc_802AEA6:
 sub_802AEB8:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_802AEC6
 	mov r0, #0x24 
 	strb r0, [r5,#1]
@@ -11467,7 +11467,7 @@ loc_802C2FA:
 	bl sub_80018D0
 	pop {r5}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	cmp r0, #0
 	bne locret_802C320
 	mov r0, #0x10
@@ -18593,25 +18593,25 @@ startScreen_initGfx_802FCC0:
 	// initRefs
 	ldr r0, off_802FCD4 // =initRefs_802FCD8 
 	bl decompAndCopyData // (u32 *initRefs) -> void
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_802FCD4: .word initRefs_802FCD8
 initRefs_802FCD8: .word comp_87F36A0 + 1<<31
 	.word 0x6013000
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word byte_87F40F4
 	.word byte_3001610
 	.word 0xA0
 	.word comp_87F3370 + 1<<31
 	.word 0x6010020
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word dword_87F3620
 	.word byte_3001590
 	.word 0x80
 	.word comp_87F4394 + 1<<31
 	.word 0x6000000
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word dword_87F4194
 	.word byte_3001960
 	.word 0x1C0
@@ -19537,7 +19537,7 @@ loc_8030398:
 	ldr r2, [r4,#8]
 	str r2, [r5,#0x20] // (dword_200BE90 - 0x200be70)
 	ldr r0, [r3,#8]
-	ldr r1, off_803057C // =decomp_2013A00 
+	ldr r1, off_803057C // =eDecompBuffer2013A00
 	ldrb r2, [r0]
 	strb r2, [r5]
 	ldrb r2, [r0,#1]
@@ -19667,9 +19667,9 @@ loc_8030492:
 	// src
 	add r0, r0, r6
 	// dest
-	ldr r1, off_803057C // =decomp_2013A00
+	ldr r1, off_803057C // =eDecompBuffer2013A00
 	bl SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
-	ldr r0, off_803057C // =decomp_2013A00 
+	ldr r0, off_803057C // =eDecompBuffer2013A00
 	ldr r1, [r7,#8]
 	ldr r2, dword_80304E4 // =0x6000000 
 	add r1, r1, r2
@@ -19683,7 +19683,7 @@ loc_8030492:
 	blt loc_8030492
 	ldr r3, [r5,#0x8] // (dword_200BE78 - 0x200be70)
 	ldr r0, [r3,#8]
-	ldr r1, off_803057C // =decomp_2013A00 
+	ldr r1, off_803057C // =eDecompBuffer2013A00
 	mov r2, #0xc
 	push {r0,r1}
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
@@ -19784,7 +19784,7 @@ loc_8030554:
 	bl sub_8000AC8
 	pop {r4-r7,pc}
 off_8030578: .word unk_2034A00
-off_803057C: .word decomp_2013A00
+off_803057C: .word eDecompBuffer2013A00
 	thumb_func_end sub_8030540
 
 	thumb_func_start sub_8030580

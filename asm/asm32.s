@@ -18785,7 +18785,7 @@ sub_811842C:
 	cmp r0, #0x28
 	beq loc_811843E
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8118454
 loc_811843E:
 	ldrb r0, [r6,#0xc]
@@ -18822,7 +18822,7 @@ sub_811847C:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_811848A
 	mov r4, #0x23
 loc_811848A:
@@ -18859,7 +18859,7 @@ sub_81184C0:
 	push {lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_81184CE
 	mov r4, #0x23
 loc_81184CE:
@@ -18897,7 +18897,7 @@ sub_8118510:
 	push {lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_811851E
 	mov r4, #0x23
 loc_811851E:
@@ -18933,7 +18933,7 @@ sub_8118550:
 	push {lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_811855E
 	mov r4, #0x23
 loc_811855E:
@@ -18954,7 +18954,7 @@ sub_811857C:
 	push {lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_811858A
 	mov r4, #0x23
 loc_811858A:
@@ -18974,7 +18974,7 @@ loc_811858A:
 sub_81185A8:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_81185B6
 	mov r0, #1
 	strb r0, [r5]
@@ -19432,7 +19432,7 @@ sub_811891C:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_811892A
 	mov r4, #0x23
 loc_811892A:
@@ -19472,7 +19472,7 @@ sub_8118964:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8118972
 	mov r4, #0x23
 loc_8118972:
@@ -19566,7 +19566,7 @@ sub_8118A00:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8118A0E
 	mov r4, #0x23
 loc_8118A0E:
@@ -19590,7 +19590,7 @@ sub_8118A2C:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8118A3A
 	mov r4, #0x23
 loc_8118A3A:
@@ -19889,7 +19889,7 @@ sub_8118C8C:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8118C9A
 	mov r4, #0x43
 loc_8118C9A:
@@ -21474,7 +21474,7 @@ sub_8119A48:
 	and r4, r3
 	bne loc_8119A76
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8119A76
 	mov r0, #0x7e
 	bl sound_play // () -> void
@@ -23071,7 +23071,7 @@ sub_811A818:
 	push {r4,lr}
 	mov r4, #0x23
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_811A826
 	mov r4, #1
 loc_811A826:
@@ -23165,7 +23165,7 @@ sub_811A8D0:
 	ldrb r4, [r5]
 	mov r7, #2
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_811A8E2
 	bic r4, r7
 	b loc_811A8E4
@@ -25203,7 +25203,7 @@ sub_811BA88:
 	push {r4-r7,lr}
 	mov r4, #1
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_811BAAC
 	ldrb r0, [r6,#0xc]
 	cmp r0, #0xc
@@ -31520,8 +31520,8 @@ off_811F770: .word ePETMenuData
 	thumb_func_end sub_811F758
 
 // () -> void
-	thumb_func_start menuControl_cb_openSubmenu
-menuControl_cb_openSubmenu:
+	thumb_func_start SubMenuControl
+SubMenuControl:
 	push {r4-r7,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_SubmenuPtr]
@@ -31544,22 +31544,26 @@ locret_811F798:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_811F79C: .word JumpTable811F7A0
-JumpTable811F7A0: .word sub_8123434+1
-	.word ho_8123F5C+1
-	.word sub_8124B3C+1
-	.word sub_8126B4C+1
-	.word menuControl_cb_email+1
-	.word sub_8128730+1
-	.word sub_81291E8+1
-	.word sub_8132B88+1
+JumpTable811F7A0: .word HandleChipFolderMenu8123434+1
+	.word HandleSubChipMenu8123F5C+1
+	.word HandleLibraryMenu8124B3C+1
+	.word HandleMegaManStatusMenu8126B4C+1
+	.word HandleEmailMenu81279F8+1
+	.word HandleKeyItemMenu8128730+1
+	.word HandleCommMenu81291E8+1
+	.word HandleSaveMenu8132B88+1
 	.word sub_8133200+1
 	.word sub_81356D4+1
 	.word sub_8136DE0+1
 	.word sub_81378B4+1
 	.word sub_8128CBC+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	thumb_func_end menuControl_cb_openSubmenu
+	.word 0
+	.word 0
+	.word 0
+	.word 0
+	.word 0
+	.word 0
+	thumb_func_end SubMenuControl
 
 	thumb_func_start isJoystickIRQActive
 isJoystickIRQActive:

@@ -289,7 +289,7 @@ int __fastcall ZeroFillByByte(int result, int a2)
 // Fill r0 with zero, using halfwords.
 // Size is in r1, in bytes.
 // Source, destination, and size must be halfword compatible 
-void __fastcall ZeroFillByHalfword(int a1, unsigned int a2, int a3, int a4)
+void __fastcall ZeroFillByHalfword(u16 *a1, unsigned int size)
 {
     int v4; // [sp+0h] [bp-18h]
     int v5; // [sp+4h] [bp-14h]
@@ -298,11 +298,11 @@ void __fastcall ZeroFillByHalfword(int a1, unsigned int a2, int a3, int a4)
     int v8; // [sp+10h] [bp-8h]
 
     v5 = a1;
-    v6 = a2;
-    v7 = a3;
-    v8 = a4;
+    v6 = size;
+//    v7 = a3;
+//    v8 = a4;
     v4 = 0;
-    SWI_CpuSet(&v4, a1, (a2 >> 1) | 0x1000000);
+    SWI_CpuSet(&v4, a1, (size >> 1) | 0x1000000);
 }
 
 
@@ -1804,7 +1804,7 @@ unsigned int dead_rng_800157C()
 void __cdecl sub_80015B4()
 {
     ZeroFillByEightWords(0x600E000, 0x2000);
-    sub_800183C();
+    ZeroFillGFX30025c0();
     copyMemory_8001850();
 }
 
@@ -1820,19 +1820,18 @@ void copyAndFillTo_GFX30025c0_Ptr()
 
 
 // 0x80015fc
-int __fastcall sub_80015FC(int a1)
+void __fastcall sub_80015FC(int idx)
 {
     int v1; // r10
     char *v2; // r1
     _DWORD *v3; // r2
     int result; // r0
 
-    v2 = &byte_8001618[8 * a1];
+    v2 = &byte_8001618[8 * idx];
     v3 = (*(v1 + oToolkit_RenderInfoPtr) + 4);
     *v3 = *v2;
     result = *(v2 + 1);
     v3[1] = result;
-    return result;
 }
 
 
@@ -1931,7 +1930,7 @@ void __fastcall zeroFillVRAM()
 
 
 // 0x80017e0
-void __fastcall sub_80017E0(int a1, int a2, int a3, int a4)
+void __fastcall ZeroFill_byte_3001960(int unused1, int unused2, int a3, int a4)
 {
     ZeroFillByHalfword(byte_3001960, 2u, a3, a4);
 }
@@ -1974,7 +1973,7 @@ void __cdecl zeroFill_e200F3A0()
 
 
 // 0x800183c
-void __cdecl sub_800183C()
+void __cdecl ZeroFillGFX30025c0()
 {
     int v0; // r10
 

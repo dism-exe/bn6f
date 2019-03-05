@@ -153,7 +153,7 @@ void reqBBS_draw_813E2AC()
         *(v2 + 4) = v4 >> 4;
         *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
     }
-    chatbox_8045F3C(8);
+    chatbox_check_eFlags2009F38(8);
     if ( !v5 )
     {
         v6 = reqBBS_eRequestEntriesIDs[v0->cursorPos + v0->pagePos] + *(v0->reqBBS_textualPointers + 3);
@@ -346,7 +346,7 @@ void __noreturn reqBBS_draw_813E4AC()
         *(v2 + 4) = v4 >> 4;
         *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
     }
-    chatbox_8045F3C(8);
+    chatbox_check_eFlags2009F38(8);
     if ( !v5 )
     {
         chatbox_8040818();
@@ -507,10 +507,10 @@ void __usercall reqBB_vram_813E6D0(reqBBS_GUI *gui@<R5>)
     int v4; // r3
 
     zeroFillVRAM();
-    sub_80017E0(v1, v2, v3, v4);
+    ZeroFill_byte_3001960(v1, v2, v3, v4);
     decompAndCopyData(byte_813E6FC);
     decompAndCopyData(off_813E758[gui->unk_04]);
-    sub_800183C();
+    ZeroFillGFX30025c0();
     sub_8046664();
 }
 
@@ -596,7 +596,7 @@ void __usercall reqBBS_813E8CC(reqBBS_GUI *gui@<R5>, int requestEntryIdx@<R0>)
     v3 = &reqBBS_eRequestEntriesIDs[requestEntryIdx];
     v4 = v2;
     v5 = 0;
-    v6 = decomp_2013A00;
+    v6 = eDecompBuffer2013A00;
     v7 = 0x6004000;
     do
     {
@@ -1014,7 +1014,7 @@ char (**__fastcall reqBBS_init_s_2005780(int a1))[108]
 
 
 // 0x813f404
-int reqBBS_cb_813F404()
+int reqBBS_subsystemCotnrol()
 {
     return (*(&jt_813F42C + dynamicArr2005780.jto_0))();
 }
@@ -1146,7 +1146,7 @@ void __noreturn reqBBS_813F65C()
         *(v2 + 4) = v4 >> 4;
         *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
     }
-    chatbox_8045F3C(8);
+    chatbox_check_eFlags2009F38(8);
     if ( !v5 )
     {
         v6 = reqBBS_eRequestEntriesIDs[*(v0 + 32) + *(v0 + 36)] + *(*(v0 + 40) + 12);
@@ -1323,7 +1323,7 @@ void __noreturn reqBBS_813F868()
         *(v2 + 4) = v4 >> 4;
         *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
     }
-    chatbox_8045F3C(8);
+    chatbox_check_eFlags2009F38(8);
     if ( !v5 )
     {
         chatbox_8040818();
@@ -1558,7 +1558,7 @@ void __noreturn reqBBS_813FB24()
         *(v2 + 4) = v4 >> 4;
         *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
     }
-    chatbox_8045F3C(8);
+    chatbox_check_eFlags2009F38(8);
     if ( !v5 )
     {
         TestEventFlagFromImmediate(23, 58);
@@ -1603,7 +1603,7 @@ void __noreturn reqBBS_813FBC0()
         *(v2 + 4) = v4 >> 4;
         *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
     }
-    chatbox_8045F3C(8);
+    chatbox_check_eFlags2009F38(8);
     if ( !v5 )
     {
         chatbox_8040818();
@@ -1679,7 +1679,7 @@ void __noreturn reqBBS_813FC8C()
     }
     else
     {
-        chatbox_8045F3C(8);
+        chatbox_check_eFlags2009F38(8);
         if ( !v6 )
         {
             chatbox_8040818();
@@ -1718,7 +1718,7 @@ void __noreturn reqBBS_813FD14()
         *(v2 + 4) = v4 >> 4;
         *(*(v1 + oToolkit_Unk200f3a0_Ptr) + 9) = 27;
     }
-    chatbox_8045F3C(8);
+    chatbox_check_eFlags2009F38(8);
     if ( !v5 )
     {
         chatbox_8040818();
@@ -1745,10 +1745,10 @@ void __fastcall reqBBS_813FDA8(int a1, int a2, int a3, int a4)
     int v7; // r3
 
     zeroFillVRAM();
-    sub_80017E0(v4, v5, v6, v7);
+    ZeroFill_byte_3001960(v4, v5, v6, v7);
     decompAndCopyData(byte_813FDCC);
     reqBBS_8140600();
-    sub_800183C();
+    ZeroFillGFX30025c0();
     sub_8046664();
 }
 
@@ -1835,7 +1835,7 @@ void *__fastcall __noreturn reqBBS_renderRequestNames(int a1)
     v3 = &reqBBS_eRequestEntriesIDs[a1];
     result = v2;
     v5 = 0;
-    v6 = decomp_2013A00;
+    v6 = eDecompBuffer2013A00;
     v7 = 100679680;
     do
     {
@@ -2455,13 +2455,13 @@ signed int reqBBS_81408F0()
     int v2; // r0
     int v3; // r0
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v0 )
         return 14;
-    chatbox_8045F3C(32);
+    chatbox_check_eFlags2009F38(32);
     if ( v0 )
         return 0;
-    chatbox_8045F3C(&byte_110);
+    chatbox_check_eFlags2009F38(&byte_110);
     if ( !v0 )
         return 0;
     v1 = reqBBS_81408C8();

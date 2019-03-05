@@ -179,7 +179,7 @@ loc_81419CC:
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_8141A0C
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8141A0C
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]

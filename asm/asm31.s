@@ -95195,7 +95195,7 @@ sub_80E68F8:
 	b locret_80E691E
 loc_80E6910:
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	tst r0, r0
 	bne locret_80E691E
 	mov r0, #4

@@ -1477,8 +1477,8 @@ off_8046CF0: .word dword_8046B98
 off_8046CF4: .word reqBBS_requestInfo_textOffsets
 	thumb_func_end sub_8046CC8
 
-	thumb_func_start cb_8046CF8
-cb_8046CF8:
+	thumb_func_start ShopControl
+ShopControl:
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
@@ -1508,7 +1508,7 @@ off_8046D1C: .word sub_8046D4C+1
 	.word sub_8047066+1
 	.word sub_804709C+1
 off_8046D48: .word byte_2011C10
-	thumb_func_end cb_8046CF8
+	thumb_func_end ShopControl
 
 	thumb_local_start
 sub_8046D4C:
@@ -1597,7 +1597,7 @@ sub_8046DF8:
 sub_8046E06:
 	push {lr}
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_8046E40
 	ldr r0, [r5,#0x28]
 	bl sub_8047366
@@ -1672,7 +1672,7 @@ sub_8046E84:
 	b loc_8046EBC
 loc_8046E9E:
 	mov r0, #0x20 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_8046ECE
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -1685,7 +1685,7 @@ loc_8046E9E:
 	b loc_8046ECE
 loc_8046EBC:
 	mov r0, #0x40 
-	bl chatbox_setFlags2009F38
+	bl chatbox_set_eFlags2009F38
 	ldr r0, [r5,#0x24]
 	mov r1, #3
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -1701,10 +1701,10 @@ sub_8046ED2:
 	push {lr}
 	bl sub_8047134
 	mov r0, #0x20 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_8046EF2
 	ldr r0, off_8047024 // =0x100 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_8046EF2
 	mov r0, #1
 	strb r0, [r5,#7]
@@ -1712,7 +1712,7 @@ sub_8046ED2:
 	bl sound_play // () -> void
 loc_8046EF2:
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8046EFC
 	b loc_8047020
 loc_8046EFC:
@@ -1863,7 +1863,7 @@ sub_8047028:
 	push {lr}
 	bl sub_8047134
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_804704C
 	mov r1, #1
 	mov r2, #8
@@ -1886,7 +1886,7 @@ sub_8047050:
 	push {lr}
 	bl sub_8047134
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_8047062
 	mov r0, #0xc
 	strb r0, [r5]
@@ -1900,7 +1900,7 @@ sub_8047066:
 	push {lr}
 	bl sub_8047134
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_8047094
 	mov r0, #0
 	bl chatbox_8045EEC
@@ -1927,7 +1927,7 @@ sub_804709C:
 	push {lr}
 	bl sub_8047134
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_8047130
 	ldr r0, [r5,#0x2c]
 	bl sub_8047366
@@ -2377,7 +2377,7 @@ off_8047478: .word byte_8047DA0
 	thumb_local_start
 copyData_804747C:
 	push {r5,lr}
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl sub_8046664 // () -> void
 	// initRefs
 	ldr r0, off_8047490 // =off_8047494 
@@ -2538,7 +2538,7 @@ sub_804760E:
 	mul r4, r0
 	push {r4,r5}
 	ldr r0, off_804764C // =byte_873D9FC 
-	ldr r2, off_8047650 // =decomp_2013A00 
+	ldr r2, off_8047650 // =eDecompBuffer2013A00
 	ldr r3, dword_8047654 // =0x6008400 
 	add r2, r2, r4
 	add r3, r3, r4
@@ -2562,7 +2562,7 @@ sub_804760E:
 	pop {r0,r5,r7,pc}
 	.balign 4, 0x00
 off_804764C: .word byte_873D9FC
-off_8047650: .word decomp_2013A00
+off_8047650: .word eDecompBuffer2013A00
 dword_8047654: .word 0x6008400
 off_8047658: .word unk_2013C00
 dword_804765C: .word 0x6008600
@@ -2577,7 +2577,7 @@ sub_8047664:
 	mul r4, r0
 	push {r1-r4,r7}
 	ldr r0, off_80476E0 // =off_80476E4 
-	ldr r2, off_80476EC // =decomp_2013A00 
+	ldr r2, off_80476EC // =eDecompBuffer2013A00
 	ldr r3, dword_80476F0 // =0x6008400 
 	add r2, r2, r4
 	add r3, r3, r4
@@ -2634,7 +2634,7 @@ loc_80476C4:
 off_80476E0: .word off_80476E4
 off_80476E4: .word dword_86EA94C
 	.word TextScriptEnemyNames86EB354
-off_80476EC: .word decomp_2013A00
+off_80476EC: .word eDecompBuffer2013A00
 dword_80476F0: .word 0x6008400
 off_80476F4: .word byte_86EF71C
 off_80476F8: .word unk_2013C00
@@ -2652,7 +2652,7 @@ sub_8047708:
 	push {r4,r5}
 	ldr r0, off_8047748 // =byte_873EA50 
 	lsr r1, r1, #2
-	ldr r2, off_804774C // =decomp_2013A00 
+	ldr r2, off_804774C // =eDecompBuffer2013A00
 	ldr r3, dword_8047750 // =0x6008400 
 	add r2, r2, r4
 	add r3, r3, r4
@@ -2676,7 +2676,7 @@ sub_8047708:
 	pop {r0,r5,r7,pc}
 	.balign 4, 0x00
 off_8047748: .word byte_873EA50
-off_804774C: .word decomp_2013A00
+off_804774C: .word eDecompBuffer2013A00
 dword_8047750: .word 0x6008400
 off_8047754: .word unk_2013C00
 dword_8047758: .word 0x6008600
@@ -2691,7 +2691,7 @@ sub_8047760:
 	mul r4, r0
 	ldr r0, [r5,#0x24]
 	mov r1, #0x10
-	ldr r2, off_8047784 // =decomp_2013A00 
+	ldr r2, off_8047784 // =eDecompBuffer2013A00
 	ldr r3, dword_8047788 // =0x6008400 
 	add r2, r2, r4
 	add r3, r3, r4
@@ -2702,7 +2702,7 @@ sub_8047760:
 	bl renderTextGfx_8045F8C
 	pop {r0,r5,r7,pc}
 	.balign 4, 0x00
-off_8047784: .word decomp_2013A00
+off_8047784: .word eDecompBuffer2013A00
 dword_8047788: .word 0x6008400
 off_804778C: .word dword_86A5D60
 	thumb_func_end sub_8047760
@@ -4441,7 +4441,7 @@ sub_8049058:
 	bl IsPaletteFadeActive // () -> zf
 	beq locret_804907A
 	bl zeroFillVRAM
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	bl chatbox_8040818
 	ldr r0, off_804907C // =0x40 
@@ -4587,7 +4587,7 @@ sub_80491C4:
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_80491E0
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_80491E0
 	mov r0, #0xc
 	mov r1, #0x10
@@ -4650,7 +4650,7 @@ sub_804921E:
 	b loc_804926C
 loc_8049244:
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_804926C
 	bl sub_803BB94
 	beq loc_804926C
@@ -4672,7 +4672,7 @@ loc_804926C:
 sub_8049272:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_804928A
 	mov r0, #0
 	strb r0, [r5,#0xe]
@@ -4784,7 +4784,7 @@ off_804935C: .word byte_202AF00
 sub_8049360:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_80493B2
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -4858,7 +4858,7 @@ loc_80493F4:
 sub_80493FE:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_804940C
 	mov r0, #0x24 
 	strb r0, [r5,#1]
@@ -4914,7 +4914,7 @@ sub_804946E:
 	bl sub_80496B4
 	beq loc_80494C0
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_80494C0
 	bl sub_8146588
 	mov r0, r5
@@ -5003,7 +5003,7 @@ loc_8049522:
 sub_804952C:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_8049578
 	bl sub_8146588
 	mov r0, r5
@@ -5339,7 +5339,7 @@ loc_80497E8:
 sub_80497EE:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8049802
 	bl sub_803BB80
 	beq loc_8049802
@@ -5379,7 +5379,7 @@ dword_804982C: .word 0x0
 sub_8049844:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8049868
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -5417,7 +5417,7 @@ loc_8049882:
 sub_8049888:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80498A4
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -5437,7 +5437,7 @@ loc_80498A4:
 sub_80498AA:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80498CE
 	mov r0, #0
 	strb r0, [r5,#0x13]
@@ -5470,7 +5470,7 @@ sub_80498D4:
 sub_80498E4:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80498F2
 	mov r0, #0x28 
 	strb r0, [r5,#1]
@@ -5508,7 +5508,7 @@ dword_804991C: .word 0x0
 sub_8049934:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8049964
 	ldrb r0, [r5,#3]
 	cmp r0, #1
@@ -5553,7 +5553,7 @@ loc_804997E:
 sub_8049984:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80499A8
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -5576,7 +5576,7 @@ loc_80499A8:
 sub_80499AE:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80499C8
 	mov r0, #0
 	strb r0, [r5,#0x13]
@@ -5606,7 +5606,7 @@ loc_80499E0:
 	bl sub_8049D3A
 	bl sub_803F79E
 	bl zeroFillVRAM
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	ldr r0, off_8049A14 // =0x40 
 	bl sRender_08_setRenderingState
@@ -5624,7 +5624,7 @@ off_8049A14: .word 0x40
 copyData_8049A18:
 	push {r4-r7,lr}
 	bl zeroFillVRAM
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	// initRefs
 	ldr r0, off_8049A50 // =initRefs_8049A54 
@@ -5675,7 +5675,7 @@ initRefs_8049A54: .word comp_87E50D4 + 1<<31
 copyData_8049AAC:
 	push {r4-r7,lr}
 	bl zeroFillVRAM
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	// initRefs
 	ldr r0, off_8049AD4 // =byte_8049AD8
@@ -6081,7 +6081,7 @@ sub_8049E5C:
 	bl IsPaletteFadeActive // () -> zf
 	beq locret_8049E7E
 	bl zeroFillVRAM
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	bl chatbox_8040818
 	ldr r0, off_8049E80 // =0x40 
@@ -6213,7 +6213,7 @@ sub_8049F70:
 sub_8049F8A:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8049F9E
 	bl sub_803BB80
 	beq loc_8049F9E
@@ -6253,7 +6253,7 @@ dword_8049FC8: .word 0x0
 sub_8049FE0:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_804A004
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -6291,7 +6291,7 @@ loc_804A01E:
 sub_804A024:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_804A048
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -6314,7 +6314,7 @@ loc_804A048:
 sub_804A04E:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_804A072
 	mov r0, #0
 	strb r0, [r5,#0x13]
@@ -6340,7 +6340,7 @@ sub_804A078:
 	ldrh r0, [r5,#0x22]
 	bl sub_804A230
 	bl zeroFillVRAM
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	ldr r0, off_804A0A8 // =0x40 
 	bl sRender_08_setRenderingState
@@ -6358,7 +6358,7 @@ off_804A0A8: .word 0x40
 copyData_804A0AC:
 	push {r4-r7,lr}
 	bl zeroFillVRAM
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl copyMemory_8001850
 	// initRefs
 	ldr r0, off_804A0E4 // =byte_804A0E8
@@ -6608,8 +6608,8 @@ sub_804A2E8:
 off_804A300: .word eS200AC80
 	thumb_func_end sub_804A2E8
 
-	thumb_func_start cb_804A304
-cb_804A304:
+	thumb_func_start ChipTraderControl
+ChipTraderControl:
 	push {r4-r7,lr}
 	mov r0, r8
 	mov r1, r9
@@ -6641,14 +6641,14 @@ off_804A33C: .word sub_804A360+1
 	.word sub_804A54C+1
 	.word eS200AC80
 off_804A35C: .word sSubmenu
-	thumb_func_end cb_804A304
+	thumb_func_end ChipTraderControl
 
 	thumb_local_start
 sub_804A360:
 	push {lr}
 	bl zeroFillVRAM
-	bl sub_80017E0
-	bl sub_800183C
+	bl ZeroFill_byte_3001960
+	bl ZeroFillGFX30025c0
 	mov r0, #0x10
 	bl sub_80015FC
 	bl sub_8046664 // () -> void
@@ -6805,10 +6805,10 @@ off_804A4D0: .word eS200AC80
 sub_804A4D4:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_804A50A
 	mov r0, #0x20 
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_804A50A
 	bl chatbox_8045F4C
 	tst r0, r0
@@ -7056,7 +7056,7 @@ off_804A69C: .word dword_86C9108
 	.word comp_86C9AA4 + 1<<31
 	.word 0x2
 	.word unk_3001A80
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word byte_872CF94
 	.word 0x2
 	.word unk_3001AE0
@@ -7110,13 +7110,13 @@ initRefs_804A6E4: .word comp_86C8054 + 1<<31
 	.word 0x2013A00
 	.word comp_86CE8AC + 1<<31
 off_804A79C: .word unk_201CA20
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word comp_86C5190 + 1<<31
 off_804A7A8: .word unk_2020A20
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word comp_86C526C + 1<<31
 off_804A7B4: .word unk_2035C8C
-	.word decomp_2013A00
+	.word eDecompBuffer2013A00
 	.word 0x0
 	thumb_func_end sub_804A61C
 
@@ -9109,7 +9109,7 @@ sub_804C11C:
 	bl sub_8036F58
 	bne locret_804C142
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne locret_804C142
 	bl sub_804C144
 	bl sub_804C298

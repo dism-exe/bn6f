@@ -6,22 +6,22 @@
 	.global sub_8123300
 	.global sub_8123360
 	.global sub_8123408
-	.global sub_8123434
-	.global ho_8123F5C
+	.global HandleChipFolderMenu8123434
+	.global HandleSubChipMenu8123F5C
 	.global byte_8124B1C
-	.global sub_8124B3C
-	.global sub_8126B4C
+	.global HandleLibraryMenu8124B3C
+	.global HandleMegaManStatusMenu8126B4C
 	.global sub_8127990
 	.global sub_81279A8
-	.global menuControl_cb_email
+	.global HandleEmailMenu81279F8
 	.global sub_81284A4
-	.global sub_8128730
+	.global HandleKeyItemMenu8128730
 	.global sub_8128CBC
 	.global byte_8129150
 	.global byte_8129178
 	.global dword_8129180
 	.global sub_81291D8
-	.global sub_81291E8
+	.global HandleCommMenu81291E8
 	.global sub_8129248
 	.global sub_812AC14
 	.global sub_812AF3C
@@ -56,8 +56,8 @@
 // .global sub_80010BE
 // .global sub_80015FC
 // .global zeroFillVRAM
-// .global sub_80017E0
-// .global sub_800183C
+// .global ZeroFill_byte_3001960
+// .global ZeroFillGFX30025c0
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
 // .global zeroFill_80024A2
@@ -149,9 +149,9 @@
 // .global chatbox_runScript_803FE08 // (void *textScript, u8 scriptIdx) -> void
 // .global chatbox_runScript_803FE10
 // .global chatbox_8040818
-// .global chatbox_setFlags2009F38
+// .global chatbox_set_eFlags2009F38
 // .global chatbox_clear_eFlags2009F38 // (int a1) ->
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 // .global chatbox_8045F4C
 
 	.include "asm/asm03_2.inc"
@@ -406,7 +406,7 @@
 // .equ word_200DD00, 0x200DD00
 // .equ word_200DD02, 0x200DD02
 // .equ word_200DD04, 0x200DD04
-// .equ decomp_2013A00, 0x2013A00
+// .equ eDecompBuffer2013A00, 0x2013A00
 // .equ byte_2017A00, 0x2017A00
 // .equ byte_2017A20, 0x2017A20
 // .equ unk_2017C80, 0x2017C80

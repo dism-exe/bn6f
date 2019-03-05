@@ -10,7 +10,7 @@
 	.global reqBBS_813EE58
 	.global byte_813F380
 	.global reqBBS_init_s_2005780
-	.global reqBBS_cb_813F404
+	.global reqBBS_subsystemCotnrol
 	.global reqBBS_813F9A0
 	.global reqBBS_initMemory_813F9DA
 	.global sub_813FA24
@@ -77,8 +77,8 @@
 // .global sub_8001788
 // .global renderInfo_80017A0
 // .global zeroFillVRAM
-// .global sub_80017E0
-// .global sub_800183C
+// .global ZeroFill_byte_3001960
+// .global ZeroFillGFX30025c0
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 // .global sub_80018D0
 
@@ -103,7 +103,7 @@
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_reqBBS_80404C0
 // .global chatbox_8040818
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 
 	.include "asm/asm03_2.inc"
 // .global renderTextGfx_8045F8C
@@ -181,7 +181,7 @@
 // .equ reqBBS_numRequestsSent, 0x20065B0
 // .equ eStructArr2008450, 0x2008450
 // .equ sChatbox, 0x2009CD0
-// .equ decomp_2013A00, 0x2013A00
+// .equ eDecompBuffer2013A00, 0x2013A00
 // .equ unk_2018200, 0x2018200
 // .equ reqBBS_tile_data, 0x2018204
 // .equ unk_2018A00, 0x2018A00

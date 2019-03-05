@@ -593,7 +593,7 @@ sub_80897A6:
 	tst r0, r0
 	bne loc_80897E4
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80897E4
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -621,7 +621,7 @@ loc_80897E4:
 sub_80897E8:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8089804
 	bl sub_8089CB4
 	beq loc_8089804
@@ -734,7 +734,7 @@ loc_80898AE:
 sub_80898B2:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80898E4
 	bl sub_814216E
 	bne loc_80898CE
@@ -794,7 +794,7 @@ loc_8089918:
 sub_808991C:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_808994E
 	bl sub_8089CB4
 	beq loc_808994E
@@ -1015,7 +1015,7 @@ loc_8089AE4:
 sub_8089AE8:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8089B2A
 	bl sub_8089CB4
 	beq loc_8089B2A
@@ -1068,7 +1068,7 @@ loc_8089B50:
 sub_8089B54:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8089B7A
 	bl sub_8089CB4
 	beq loc_8089B7A
@@ -1102,7 +1102,7 @@ loc_8089B90:
 sub_8089B94:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8089BA6
 	mov r0, #1
 	strb r0, [r5,#8]
@@ -1131,7 +1131,7 @@ loc_8089BBC:
 sub_8089BC0:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8089BE0
 	// entryIdx
 	mov r0, #7
@@ -1167,7 +1167,7 @@ loc_8089BF6:
 sub_8089BFA:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8089C12
 	mov r0, #0
 	strb r0, [r5,#8]

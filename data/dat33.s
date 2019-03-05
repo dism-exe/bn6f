@@ -1426,7 +1426,7 @@ loc_812CDDA:
 sub_812CDF4:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_812CE26
 	bl eStruct200BC30_getJumpOffset00
 	mov r4, r0
@@ -1468,10 +1468,10 @@ off_812CE40: .word sub_812AC14+1
 sub_812CE50:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_812CE7A
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_812CEA2
 	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
@@ -1823,7 +1823,7 @@ loc_812D10C:
 	tst r3, r3
 	bne loc_812D160
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_812D160
 	bl chatbox_8040818
 	mov r0, #0xc
@@ -2008,8 +2008,8 @@ sub_812D298:
 	bl sub_812D6F8
 	mov r7, r0
 	bl zeroFillVRAM
-	bl sub_80017E0
-	bl sub_800183C
+	bl ZeroFill_byte_3001960
+	bl ZeroFillGFX30025c0
 	mov r0, #0x10
 	bl sub_80015FC
 	bl sub_8046664 // () -> void

@@ -36,9 +36,9 @@
 	.global chatbox_8045EDC
 	.global chatbox_8045EEC
 	.global chatbox_8045EFC
-	.global chatbox_setFlags2009F38
+	.global chatbox_set_eFlags2009F38
 	.global chatbox_clear_eFlags2009F38 // (int a1) ->
-	.global chatbox_8045F3C
+	.global chatbox_check_eFlags2009F38
 	.global chatbox_8045F4C
 
 

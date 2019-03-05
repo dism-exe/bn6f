@@ -147,7 +147,7 @@
 // .global s_2011C50_ptr_1C_isNull // () -> zf
 
 	.include "asm/chatbox.inc"
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 
 	.include "asm/asm03_2.inc"
 // .global sub_8046818

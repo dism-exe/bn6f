@@ -498,7 +498,7 @@ void sub_80A5588()
         sub_8036F58();
         if ( v2 )
         {
-            chatbox_8045F3C(128);
+            chatbox_check_eFlags2009F38(128);
             if ( v2 )
             {
                 sub_809E462();
@@ -1244,7 +1244,7 @@ signed int sub_80A5C9C()
         *(v0 + 10) = v1 + 1;
         return 2;
     }
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( !v2 )
         return 2;
     v3 = 0;
@@ -2179,7 +2179,7 @@ void __noreturn sub_80A6F2C()
         sub_8036F58();
         if ( v2 )
         {
-            chatbox_8045F3C(128);
+            chatbox_check_eFlags2009F38(128);
             if ( v2 )
             {
                 if ( *(v1 + 9) && *(v1 + 9) == 1 )
@@ -2566,7 +2566,7 @@ void __noreturn sub_80A7354()
         sub_8036F58();
         if ( v2 )
         {
-            chatbox_8045F3C(128);
+            chatbox_check_eFlags2009F38(128);
             if ( v2 )
             {
                 if ( *(v1 + 9) && *(v1 + 9) == 1 )
@@ -3566,7 +3566,7 @@ signed int sub_80A7C58()
     char v1; // zf
 
     v0 = 1;
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         s_2011C50_ptr_1C_isNull();
@@ -3669,7 +3669,7 @@ void *sub_80A7CFE()
             result = 1835008;
             if ( v8 <= 1835008 && v9 <= 1835008 )
             {
-                result = chatbox_8045F3C(128);
+                result = chatbox_check_eFlags2009F38(128);
                 if ( v10 )
                 {
                     result = s_2011C50_ptr_1C_isNull();
@@ -4234,7 +4234,7 @@ void __noreturn sub_80A8424()
             sub_809E462();
             if ( v1 )
             {
-                chatbox_8045F3C(128);
+                chatbox_check_eFlags2009F38(128);
                 if ( v1 )
                 {
                     TestEventFlagFromImmediate(9, 212);
@@ -5233,7 +5233,7 @@ signed int sub_80A8DF0()
     char v1; // zf
 
     v0 = 1;
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         sub_8036F70(134791920);
@@ -5316,7 +5316,7 @@ void __noreturn sub_80A8F08()
         sub_8036F58();
         if ( v1 )
         {
-            chatbox_8045F3C(128);
+            chatbox_check_eFlags2009F38(128);
             if ( v1 )
             {
                 sub_80A8F48();

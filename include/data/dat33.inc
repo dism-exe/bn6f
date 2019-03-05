@@ -18,8 +18,8 @@
 // .global decompAndCopyData // (u32 *initRefs) -> void
 // .global sub_80015FC
 // .global zeroFillVRAM
-// .global sub_80017E0
-// .global sub_800183C
+// .global ZeroFill_byte_3001960
+// .global ZeroFillGFX30025c0
 
 	.include "asm/asm00_1.inc"
 // .global engine_setScreeneffect // (int a1, int a2) -> void
@@ -46,7 +46,7 @@
 
 	.include "asm/chatbox.inc"
 // .global chatbox_8040818
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 
 	.include "asm/asm03_2.inc"
 // .global sub_80465A0 // (void *a1) -> void
