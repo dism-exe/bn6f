@@ -7226,7 +7226,7 @@ off_8127120: .word byte_86D7578
 	.word byte_86D78C0
 	.word byte_86D7C24
 	.word byte_86D7F74
-	.word byte_86D82C4
+	.word TextScriptNaviCustAndFolders86D82C4
 	.word byte_86D860C
 	.word byte_86D7578
 	.word byte_86D894C

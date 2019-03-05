@@ -3487,7 +3487,7 @@ void __noreturn sub_8132CB8()
     *(&unk_20096E0 + v0) = 0;
     decompAndCopyData(&unk_20096E0);
     decompAndCopyData(&off_8132D80);
-    sub_8123300(&off_8132D18, eTextScript201BF00, decomp_2013A00);
+    sub_8123300(&TextScriptNetworkPtrs8132D18, eTextScript201BF00, decomp_2013A00);
     copyTiles(0, 0, 1, &eTextScript201BA00, 30, dword_14);
     JUMPOUT(locret_8132D10);
 }

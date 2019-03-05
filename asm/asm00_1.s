@@ -11647,7 +11647,7 @@ loc_80093B0:
 	beq loc_8009452
 	bl sub_802D246 // () -> int
 	mov r2, #0x10
-	ldr r1, off_80095F8 // =0x400
+	ldr r1, =0x400
 	tst r0, r1
 	beq loc_8009454
 	push {r2}
@@ -11674,7 +11674,7 @@ loc_8009414:
 	tst r0, r1
 	beq loc_8009452
 	mov r2, #0x10
-	ldr r1, off_80095F8 // =0x400
+	ldr r1, =0x400
 	tst r0, r1
 	beq loc_8009454
 	push {r2}
@@ -11723,7 +11723,7 @@ sub_8009478:
 	strb r0, [r5,#3]
 	b locret_80094B4
 loc_800948E:
-	ldr r0, dword_80095FC // =0x1f2f3f4f
+	ldr r0, =0x1f2f3f4f
 	bl sub_800B46C
 	tst r0, r0
 	beq loc_80094A6
@@ -11750,7 +11750,7 @@ sub_80094B6:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_80094C8
-	ldr r0, off_8009600 // =unk_2035260
+	ldr r0, =unk_2035260
 	bl sub_802C34E
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -11772,8 +11772,8 @@ sub_80094DA:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_8009508
-	ldr r1, dword_8009604 // =0x173
-	ldr r2, dword_8009608 // =0x17e
+	ldr r1, =0x173
+	ldr r2, =0x17e
 	bl sub_800A7A6
 	cmp r0, #0
 	beq loc_80094FA
@@ -11808,7 +11808,7 @@ sub_800951E:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_8009534
-	ldr r0, off_800960C // =TextScriptBattleTutFullSyncrho
+	ldr r0, =TextScriptBattleTutFullSyncrho
 	mov r1, #0xa
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #4
@@ -11848,7 +11848,7 @@ sub_8009552:
 loc_8009568:
 	mov r1, #0x20
 loc_800956A:
-	ldr r0, off_8009610 // =TextScriptDadCybeastTut
+	ldr r0, =TextScriptDadCybeastTut
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -11877,7 +11877,7 @@ sub_8009594:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_80095AA
-	ldr r0, off_8009614 // =TextScriptShukoCrossTut
+	ldr r0, =TextScriptShukoCrossTut
 	mov r1, #3
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #4
@@ -11910,7 +11910,7 @@ sub_80095C8:
 	bl getPETNaviSelect // () -> u8
 	mov r1, #0x73
 	add r1, r1, r0
-	ldr r0, off_8009618 // =TextScriptCommError87370C0
+	ldr r0, =TextScriptCommError87370C0
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -11926,15 +11926,7 @@ loc_80095E4:
 locret_80095F4:
 	pop {pc}
 	.balign 4, 0x00
-off_80095F8: .word 0x400
-dword_80095FC: .word 0x1F2F3F4F
-off_8009600: .word unk_2035260
-dword_8009604: .word 0x173
-dword_8009608: .word 0x17E
-off_800960C: .word TextScriptBattleTutFullSyncrho
-off_8009610: .word TextScriptDadCybeastTut
-off_8009614: .word TextScriptShukoCrossTut
-off_8009618: .word TextScriptCommError87370C0
+    .pool
 	thumb_func_end sub_80095C8
 
 	thumb_local_start

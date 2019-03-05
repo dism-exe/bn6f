@@ -5096,8 +5096,8 @@ loc_8132CD4:
 	// initRefs
 	ldr r0, off_8132D7C // =off_8132D80
 	bl decompAndCopyData // (u32 *initRefs) -> void
-	ldr r0, off_8132D14 // =off_8132D18
-	ldr r1, off_8132D4C // =eTextScript201BF00
+	ldr r0, TextScriptNetworkPtrs8132D18_p // =TextScriptNetworkPtrs8132D18
+	ldr r1, eTextScript201BF00_p // =eTextScript201BF00
 	ldr r2, off_8132D50 // =decomp_2013A00 
 	bl sub_8123300
 	// j
@@ -5115,21 +5115,21 @@ loc_8132CD4:
 
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8132D14: .word off_8132D18
-off_8132D18: .word dword_86CF618
-	.word dword_86CF730
-	.word dword_86CF730
-	.word dword_86CF730
-	.word dword_86CF730
-	.word dword_86CF730
-	.word dword_86CF730
-	.word dword_86CF730
-	.word dword_86CF730
-	.word dword_86CF730
-	.word dword_86CF730
-	.word dword_86CF618
-	.word dword_86CF730
-off_8132D4C: .word eTextScript201BF00
+TextScriptNetworkPtrs8132D18_p: .word TextScriptNetworkPtrs8132D18
+TextScriptNetworkPtrs8132D18: .word TextScriptNetworkPlyTmSave86CF618
+	.word eTextScriptNetworkSave86CF730
+	.word eTextScriptNetworkSave86CF730
+	.word eTextScriptNetworkSave86CF730
+	.word eTextScriptNetworkSave86CF730
+	.word eTextScriptNetworkSave86CF730
+	.word eTextScriptNetworkSave86CF730
+	.word eTextScriptNetworkSave86CF730
+	.word eTextScriptNetworkSave86CF730
+	.word eTextScriptNetworkSave86CF730
+	.word eTextScriptNetworkSave86CF730
+	.word TextScriptNetworkPlyTmSave86CF618
+	.word eTextScriptNetworkSave86CF730
+eTextScript201BF00_p: .word eTextScript201BF00
 off_8132D50: .word decomp_2013A00
 off_8132D54: .word off_8132D58
 off_8132D58: .word dword_86C9108

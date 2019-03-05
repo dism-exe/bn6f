@@ -1697,7 +1697,7 @@ int sub_809F45A()
     if ( v3 && (v4 = ReadNPCScriptHalfword((v1 + 1)), sub_8143B88(v4), v6) )
     {
         *(v0 + 28) = v5;
-        *(v0 + 148) = byte_87E30A0;
+        *(v0 + 148) = TextScriptDialog87E30A0;
         *(v0 + 36) = sub_8143DBC();
         *(v0 + 40) = v7;
         *(v0 + 44) = v8;

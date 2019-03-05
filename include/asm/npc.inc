@@ -86,7 +86,7 @@
 
 	.include "data/dat38_87.inc"
 // .global dword_873D108
-// .global byte_87E30A0
+// .global TextScriptDialog87E30A0
 
 
 /* Undeclared Symbols */

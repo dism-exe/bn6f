@@ -1916,7 +1916,7 @@ sub_809F354:
 	push {lr}
 	mov r7, r10
 	ldr r4, [r7,#oToolkit_Unk200f3a0_Ptr]
-	ldr r7, off_809F4B4 // =byte_87E30A0 
+	ldr r7, TextScriptDialog87E30A0_p // =TextScriptDialog87E30A0
 	bl sub_8002C68
 	ldrb r0, [r6,#1]
 	tst r0, r0
@@ -2086,7 +2086,7 @@ sub_809F45A:
 	tst r1, r1
 	beq loc_809F498
 	strb r2, [r5,#0x1c]
-	ldr r3, off_809F4B4 // =byte_87E30A0 
+	ldr r3, TextScriptDialog87E30A0_p // =TextScriptDialog87E30A0
 	mov r2, #0x94
 	str r3, [r5,r2]
 	mov r0, r1
@@ -2111,7 +2111,7 @@ loc_809F498:
 	bl FreeOverworldNPCObject
 	bl npc_809F51E
 	pop {pc}
-off_809F4B4: .word byte_87E30A0
+TextScriptDialog87E30A0_p: .word TextScriptDialog87E30A0
 	thumb_func_end sub_809F45A
 
 	thumb_local_start

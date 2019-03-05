@@ -624,7 +624,7 @@
 	.global sprite_87E1D84
 	.global sprite_87E24F4
 	.global sprite_87E2860
-	.global byte_87E30A0
+	.global TextScriptDialog87E30A0
 	.global TextScript87E36F8
 
 
