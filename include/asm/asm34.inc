@@ -89,7 +89,7 @@
 // .global byte_812C288
 
 	.include "asm/asm36.inc"
-// .global sub_8132280
+// .global chatbox_runScript_803FD9C_on_eTextScript201BA20
 
 	.include "asm/libs.inc"
 // .global sub_81440D8 // static () -> void

@@ -71,7 +71,7 @@ sprite_load:
 	beq loc_8002708
 	b loc_8002716
 loc_8002708:
-	ldr r4, off_8002724 // =spritePointersList
+	ldr r4, off_8002724 // =SpritePointersList
 	ldr r4, [r4,r2]
 	lsl r3, r3, #2
 	ldr r0, [r4,r3]
@@ -85,7 +85,7 @@ loc_8002716:
 	strb r1, [r5,#oObjectSprite_Unk_03]
 	pop {r4,r5,pc}
 	.balign 4, 0x00
-off_8002724: .word spritePointersList
+off_8002724: .word SpritePointersList
 sprite8002728: .word spriteWhiteDot
 	thumb_func_end sprite_load
 
@@ -382,7 +382,7 @@ uncompSprite_8002906:
 	push {r1,r2}
 	ldr r5, off_8002BF0 // =byte_200DCA0
 	ldr r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
-	ldr r4, off_8002BC0 // =spritePointersList
+	ldr r4, off_8002BC0 // =SpritePointersList
 	ldr r6, dword_8002BC4 // =0x2040000
 	mov r7, r0
 loc_8002918:
@@ -478,7 +478,7 @@ sub_80029A8:
 	push {r1-r3}
 	ldr r5, off_8002BF0 // =byte_200DCA0
 	ldr r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
-	ldr r4, off_8002BC0 // =spritePointersList
+	ldr r4, off_8002BC0 // =SpritePointersList
 	ldr r6, off_8002BC8 // =dword_2033000
 	mov r7, r0
 loc_80029BC:
@@ -583,7 +583,7 @@ sub_8002A64:
 	push {r1-r3}
 	ldr r5, off_8002BF0 // =byte_200DCA0
 	ldr r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
-	ldr r4, off_8002BC0 // =spritePointersList
+	ldr r4, off_8002BC0 // =SpritePointersList
 	ldr r6, off_8002BC8 // =dword_2033000
 	lsl r2, r0, #0x18
 	lsr r2, r2, #0x16
@@ -643,7 +643,7 @@ loc_8002AD2:
 sub_8002ADE:
 	push {r4-r7,lr}
 	ldr r5, off_8002BF0 // =byte_200DCA0
-	ldr r4, off_8002BC0 // =spritePointersList
+	ldr r4, off_8002BC0 // =SpritePointersList
 	ldrb r3, [r5]
 	cmp r3, #0
 	beq locret_8002B2E
@@ -697,7 +697,7 @@ sprite_decompress:
 	ldr r5, off_8002BF0 // =byte_200DCA0
 	bl sub_8002BCC
 	ldr r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
-	ldr r4, off_8002BC0 // =spritePointersList
+	ldr r4, off_8002BC0 // =SpritePointersList
 	ldr r6, off_8002BC8 // =dword_2033000
 	mov r3, r5
 	add r3, #4
@@ -761,7 +761,7 @@ loc_8002BB2:
 	mov r12, r3
 	pop {r4-r7,pc}
 	.byte 0, 0
-off_8002BC0: .word spritePointersList
+off_8002BC0: .word SpritePointersList
 dword_8002BC4: .word 0x2040000
 off_8002BC8: .word dword_2033000
 	thumb_func_end sprite_decompress

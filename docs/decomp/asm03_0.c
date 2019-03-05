@@ -894,16 +894,16 @@ int __fastcall sub_8026EC8(int a1)
         if ( *(v2 + 12) != 255 )
         {
             v5 = *(v2 + 12);
-            v3 = *(&off_8027BD0 + v5);
+            v3 = *(&TextScriptFirstBattleTutorials + v5);
             v4 = byte_8027034[v5];
             goto LABEL_9;
         }
         v4 = v1 + 3;
 LABEL_8:
-        v3 = notAdded_scripts_86EF78C;
+        v3 = TextScriptBattleRunDialog;
         goto LABEL_9;
     }
-    v3 = scripts_dad_cybeastTut_86F4498;
+    v3 = TextScriptDadCybeastTut;
     v4 = 35;
 LABEL_9:
     chatbox_runScript(v3, v4);
@@ -1015,7 +1015,7 @@ void __fastcall sub_8026FC0(int a1)
         v3 = 1;
         if ( *(v1 + 4) != 2 )
             v3 = 2;
-        chatbox_runScript(notAdded_scripts_86EF78C, v3 + v2);
+        chatbox_runScript(TextScriptBattleRunDialog, v3 + v2);
     }
 }
 
@@ -1186,7 +1186,7 @@ int sub_80271C2()
         *(v0 + 2) = 0;
         if ( *(v0 + 12) == 3 )
         {
-            chatbox_runScript(scripts_dad_cybeastTut_86F4498, 10);
+            chatbox_runScript(TextScriptDadCybeastTut, 10);
             *(v0 + 13) = 4;
             *(v0 + 1) = 52;
             result = 0;
@@ -1321,7 +1321,7 @@ void sub_80272D0()
     else
     {
         *(v1 + 2) = 8;
-        chatbox_runScript(*(&off_8027BD0 + *(v1 + 12)), v0[1]);
+        chatbox_runScript(*(&TextScriptFirstBattleTutorials + *(v1 + 12)), v0[1]);
         *(v1 + 64) = v0 + 2;
     }
 }
@@ -1742,7 +1742,7 @@ int sub_80276D6()
         *(v0 + 2) = 0;
         if ( *(v0 + 12) == 3 )
         {
-            chatbox_runScript(scripts_dad_cybeastTut_86F4498, 10);
+            chatbox_runScript(TextScriptDadCybeastTut, 10);
             *(v0 + 13) = 4;
             *(v0 + 1) = 52;
             result = 0;
@@ -2152,7 +2152,7 @@ int sub_8027ADE()
         *(v0 + 2) = 0;
         if ( *(v0 + 12) == 6 )
         {
-            chatbox_runScript(scripts_shuko_crossTut_86F53CC, 2);
+            chatbox_runScript(TextScriptShukoCrossTut, 2);
             *(v0 + 13) = 4;
             *(v0 + 1) = 52;
             result = 0;
@@ -3442,7 +3442,7 @@ LABEL_25:
         else if ( !(result & 4) && result & byte_100 )
         {
             getLocOfActiveChips_8027E1C(*(v3 + 7));
-            chatbox_runScript(dword_86EF4D4, *(&word_50 + *(v3 + 27) + v3) + 5);
+            chatbox_runScript(TextScriptChipDesc86EF4D4, *(&word_50 + *(v3 + 27) + v3) + 5);
             sound_play(156, v12, v13);
             *(v3 + 1) = 88;
             result = 0;
@@ -5128,7 +5128,7 @@ int sub_80298F4()
     {
         v3 = result;
 LABEL_20:
-        chatbox_runScript(*(&off_8027BD0 + *(v0 + 12)), v3);
+        chatbox_runScript(*(&TextScriptFirstBattleTutorials + *(v0 + 12)), v3);
         *(v0 + 13) = *(v0 + 1);
         *(v0 + 1) = 52;
         *(v0 + 2) = 0;
@@ -5284,7 +5284,7 @@ int sub_8029A56()
             {
                 v2 = result;
 LABEL_12:
-                chatbox_runScript(*(&off_8027BD0 + *(v0 + 12)), v2);
+                chatbox_runScript(*(&TextScriptFirstBattleTutorials + *(v0 + 12)), v2);
                 *(v0 + 13) = *(v0 + 1);
                 *(v0 + 1) = 52;
                 result = 0;
@@ -5415,7 +5415,7 @@ int sub_8029B1C()
     {
         v3 = result;
 LABEL_17:
-        chatbox_runScript(*(&off_8027BD0 + *(v0 + 12)), v3);
+        chatbox_runScript(*(&TextScriptFirstBattleTutorials + *(v0 + 12)), v3);
         *(v0 + 13) = *(v0 + 1);
         *(v0 + 1) = 52;
         *(v0 + 2) = 0;
@@ -6497,7 +6497,7 @@ int __fastcall sub_802A9D0(int a1, int a2, int a3)
     else if ( *(*(v4 + oToolkit_JoypadPtr) + 4) & byte_200 )
     {
         *(v3 + 1) = 28;
-        sub_802B5EC(0);
+        RunTextScriptBattleRunDialog(0);
         sound_play(123, v8, v9);
     }
     else if ( *(*(v4 + oToolkit_JoypadPtr) + 4) & byte_100 )
@@ -6696,7 +6696,7 @@ int __fastcall sub_802AC6E(int a1, int a2, int a3)
             *(v3 + 5) = v19;
             if ( v19 >= 2 || (v20 = *(v3 + 17), v20 == 255) )
             {
-                chatbox_runScript(&dialogScript_8736D74, 40);
+                chatbox_runScript(&TextScriptBattleDialog8736D74, 40);
                 *(v3 + 1) = 20;
                 *(v3 + 2) = 0;
             }
@@ -6854,7 +6854,7 @@ int sub_802AE84()
         }
         else
         {
-            sub_802B5EC(1);
+            RunTextScriptBattleRunDialog(1);
             *(v0 + 1) = 32;
         }
     }
@@ -7238,7 +7238,7 @@ int __fastcall __noreturn sub_802B358(int a1, int a2)
         if ( v8 == 0xFFFF )
         {
             v9 = 41;
-            v10 = &dialogScript_8736D74;
+            v10 = &TextScriptBattleDialog8736D74;
         }
         else
         {
@@ -7438,14 +7438,14 @@ int __fastcall sub_802B5D0(int a1, int a2, int a3)
 // 0x802b5dc
 void __fastcall sub_802B5DC(int a1)
 {
-    chatbox_runScript(&comp_2030860, a1);
+    chatbox_runScript(&eTextScript2030860, a1);
 }
 
 
 // 0x802b5ec
-void __fastcall sub_802B5EC(int a1)
+void __fastcall RunTextScriptBattleRunDialog(int a1)
 {
-    chatbox_runScript(notAdded_scripts_86EF78C, a1);
+    chatbox_runScript(TextScriptBattleRunDialog, a1);
 }
 
 
@@ -8324,7 +8324,7 @@ int sub_802C2D0()
         if ( result >= 30 )
         {
             v2 = sub_800AB3A(0, 10);
-            chatbox_runScript(byte_873811C, v2);
+            chatbox_runScript(TextScriptYouGotNewVirusData, v2);
             result = 1;
             *(v0 + 2) = 1;
         }
@@ -8563,7 +8563,7 @@ int __fastcall __noreturn sub_802C5B0(int a1)
     Toolkit *tk; // r10
 
     *(tk->unk_200A220 + 2) = a1;
-    renderTextGfx_8045F8C(&dialogScript_8736D74, 5, byte_2035320, 100711040);
+    renderTextGfx_8045F8C(&TextScriptBattleDialog8736D74, 5, byte_2035320, 100711040);
     return sub_802C4B6(2, 12, byte_802C6C4, 10);
 }
 
@@ -8581,9 +8581,9 @@ int __fastcall __noreturn sub_802C5E6(int a1)
         v3 = sub_8000C00(a1);
         sub_8000C5C(v3);
         *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = v2;
-        renderTextGfx_8045F8C(&dialogScript_8736D74, 6, &unk_20354E0, 100711488);
+        renderTextGfx_8045F8C(&TextScriptBattleDialog8736D74, 6, &unk_20354E0, 100711488);
     }
-    renderTextGfx_8045F8C(&dialogScript_8736D74, 1, byte_2035320, 100711040);
+    renderTextGfx_8045F8C(&TextScriptBattleDialog8736D74, 1, byte_2035320, 100711040);
     return sub_802C4B6(2, 12, byte_802C6C4, 10);
 }
 
@@ -8602,13 +8602,13 @@ int __fastcall __noreturn sub_802C646(int a1)
         v3 = sub_8000C00(a1);
         v5 = sub_8000C5C(v3);
         *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = v2;
-        renderTextGfx_8045F8C(&dialogScript_8736D74, 6, &unk_20354E0, 100711488);
+        renderTextGfx_8045F8C(&TextScriptBattleDialog8736D74, 6, &unk_20354E0, 100711488);
     }
     else
     {
         v5 = 4;
     }
-    renderTextGfx_8045F8C(&dialogScript_8736D74, v5 + 6, byte_2035320, 100711040);
+    renderTextGfx_8045F8C(&TextScriptBattleDialog8736D74, v5 + 6, byte_2035320, 100711040);
     return sub_802C4B6(2, 12, byte_802C6C4, 10);
 }
 

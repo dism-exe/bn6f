@@ -1249,8 +1249,8 @@ sub_8026EC8:
 	bl sub_802D234
 	cmp r0, #5
 	bne loc_8026EEA
-	ldr r0, off_802702C // =off_8027BD0 
-	mov r1, #0xc // (off_8027BDC - 0x8027bd0)
+	ldr r0, off_802702C // =TextScriptFirstBattleTutorials
+	mov r1, #0xc // (TextScriptPtrArr8027BDC - 0x8027bd0)
 	ldr r0, [r0,r1]
 	mov r1, #0x23 
 	b loc_8026F0E
@@ -1258,7 +1258,7 @@ loc_8026EEA:
 	ldrb r0, [r5,#0xc]
 	cmp r0, #0xff
 	beq loc_8026EFE
-	ldr r0, off_802702C // =off_8027BD0 
+	ldr r0, off_802702C // =TextScriptFirstBattleTutorials
 	ldrb r1, [r5,#0xc]
 	lsl r2, r1, #2
 	ldr r0, [r0,r2]
@@ -1275,7 +1275,7 @@ loc_8026F04:
 	mov r1, #0
 	add r1, r1, r4
 loc_8026F0C:
-	ldr r0, off_8027008 // =notAdded_scripts_86EF78C 
+	ldr r0, off_8027008 // =TextScriptBattleRunDialog
 loc_8026F0E:
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0x7b 
@@ -1396,7 +1396,7 @@ loc_8026FD0:
 	mov r1, #2
 loc_8026FE8:
 	add r1, r1, r4
-	ldr r0, off_8027008 // =notAdded_scripts_86EF78C 
+	ldr r0, off_8027008 // =TextScriptBattleRunDialog
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	b locret_8027004
 loc_8026FF2:
@@ -1411,7 +1411,7 @@ loc_8026FF2:
 locret_8027004:
 	pop {r4,pc}
 	.balign 4, 0x00
-off_8027008: .word notAdded_scripts_86EF78C
+off_8027008: .word TextScriptBattleRunDialog
 off_802700C: .word byte_20366C0
 off_8027010: .word off_8027014
 off_8027014: .word byte_8027020
@@ -1420,7 +1420,7 @@ off_8027014: .word byte_8027020
 byte_8027020: .byte 0x4, 0x8, 0xF
 byte_8027023: .byte 0x8, 0xC, 0xF
 byte_8027026: .byte 0xC, 0xE, 0xF, 0x0, 0x0, 0x0
-off_802702C: .word off_8027BD0
+off_802702C: .word TextScriptFirstBattleTutorials
 off_8027030: .word byte_8027034
 byte_8027034: .byte 0xD, 0xE, 0xC, 0x23, 0x23, 0x23, 0x6, 0x0
 off_802703C: .word dword_20349A0
@@ -1634,7 +1634,7 @@ sub_80271C2:
 	ldrb r2, [r5,#0xc]
 	cmp r2, #3
 	bne locret_80271F2
-	ldr r0, off_80271F4 // =off_8027BD0 
+	ldr r0, off_80271F4 // =TextScriptFirstBattleTutorials
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
 	mov r1, #0xa
@@ -1647,7 +1647,7 @@ sub_80271C2:
 	strh r0, [r5,#2]
 locret_80271F2:
 	pop {pc}
-off_80271F4: .word off_8027BD0
+off_80271F4: .word TextScriptFirstBattleTutorials
 	thumb_func_end sub_80271C2
 
 	thumb_local_start
@@ -1776,7 +1776,7 @@ sub_80272D0:
 loc_80272E6:
 	mov r0, #8
 	strh r0, [r5,#2]
-	ldr r0, off_802731C // =off_8027BD0 
+	ldr r0, off_802731C // =TextScriptFirstBattleTutorials
 	ldrb r1, [r5,#0xc]
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
@@ -1802,7 +1802,7 @@ loc_8027308:
 locret_8027318:
 	pop {pc}
 	.balign 4, 0x00
-off_802731C: .word off_8027BD0
+off_802731C: .word TextScriptFirstBattleTutorials
 	thumb_func_end sub_80272D0
 
 	thumb_local_start
@@ -2328,7 +2328,7 @@ sub_80276D6:
 	ldrb r2, [r5,#0xc]
 	cmp r2, #3
 	bne locret_8027706
-	ldr r0, off_8027708 // =off_8027BD0 
+	ldr r0, off_8027708 // =TextScriptFirstBattleTutorials
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
 	mov r1, #0xa
@@ -2341,7 +2341,7 @@ sub_80276D6:
 	strh r0, [r5,#2]
 locret_8027706:
 	pop {pc}
-off_8027708: .word off_8027BD0
+off_8027708: .word TextScriptFirstBattleTutorials
 	thumb_func_end sub_80276D6
 
 	thumb_local_start
@@ -2494,7 +2494,7 @@ sub_8027806:
 	strh r0, [r5,#2]
 locret_802782E:
 	pop {pc}
-	.word off_8027BD0
+	.word TextScriptFirstBattleTutorials
 	thumb_func_end sub_8027806
 
 	thumb_local_start
@@ -2860,7 +2860,7 @@ sub_8027ADE:
 	ldrb r2, [r5,#0xc]
 	cmp r2, #6
 	bne locret_8027B1A
-	ldr r0, off_8027B1C // =off_8027BD0 
+	ldr r0, off_8027B1C // =TextScriptFirstBattleTutorials
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
 	mov r1, #2
@@ -2873,7 +2873,7 @@ sub_8027ADE:
 	strh r0, [r5,#2]
 locret_8027B1A:
 	pop {pc}
-off_8027B1C: .word off_8027BD0
+off_8027B1C: .word TextScriptFirstBattleTutorials
 	.word dword_20364C0
 off_8027B24: .word unk_2035000
 	.word dword_20349A0
@@ -2898,13 +2898,13 @@ byte_8027B4F: .byte 0x0, 0x1, 0xF, 0x2, 0x1, 0x9, 0x0, 0x3, 0xD, 0x2, 0x2, 0xB, 
 	.byte 0x0, 0x7, 0x10, 0x2, 0x2, 0xB, 0x0, 0x7, 0x12, 0x2, 0x1, 0x9, 0x0, 0x9, 0x10
 	.byte 0x2, 0x2, 0xB, 0x0, 0x9, 0x12, 0x2, 0x1, 0x9, 0x0, 0xB, 0x11, 0x4, 0x2, 0x9
 	.byte 0x0, 0xC, 0x3, 0x2, 0xA, 0xB, 0x0, 0xFF, 0x0
-off_8027BD0: .word dword_86F2E60
-	.word dword_86F3868
-	.word scripts_fullSynchro_86F3F5C
-off_8027BDC: .word scripts_dad_cybeastTut_86F4498
-	.word scripts_dad_cybeastTut_86F4498
-	.word scripts_dad_cybeastTut_86F4498
-	.word scripts_shuko_crossTut_86F53CC
+TextScriptFirstBattleTutorials: .word TextScriptBattleTut1
+	.word TextScriptBattleTutAreaGrab
+	.word TextScriptBattleTutFullSyncrho
+TextScriptPtrArr8027BDC: .word TextScriptDadCybeastTut
+	.word TextScriptDadCybeastTut
+	.word TextScriptDadCybeastTut
+	.word TextScriptShukoCrossTut
 off_8027BEC: .word byte_8027C08
 	.word byte_8027C38
 	.word byte_8027C50
@@ -3001,7 +3001,7 @@ loc_8027D22:
 	.balign 4, 0x00
 off_8027D28: .word off_8027D2C
 off_8027D2C: .word dword_86EA94C
-off_8027D30: .word dword_86EB354
+off_8027D30: .word TextScriptEnemyNames86EB354
 	thumb_func_end sub_8027D10
 
 // (int chipID) -> void*
@@ -4739,7 +4739,7 @@ loc_8028B3C:
 	beq locret_8028B66
 	ldrb r0, [r5,#7]
 	bl getLocOfActiveChips_8027E1C // (int a1) -> void*
-	ldr r0, off_8028B68 // =dword_86EF4D4 
+	ldr r0, off_8028B68 // =TextScriptChipDesc86EF4D4
 	ldrb r1, [r5,#0x1b]
 	ldr r2, off_8028B6C // =0x50 
 	add r2, r2, r1
@@ -4754,7 +4754,7 @@ loc_8028B3C:
 	strh r0, [r5,#2]
 locret_8028B66:
 	pop {r4,pc}
-off_8028B68: .word dword_86EF4D4
+off_8028B68: .word TextScriptChipDesc86EF4D4
 off_8028B6C: .word 0x50
 dword_8028B70: .word 0x55
 	thumb_func_end sub_8028A78
@@ -6708,7 +6708,7 @@ loc_8029948:
 	beq locret_802996C
 	mov r1, r0
 loc_8029952:
-	ldr r0, off_8029C04 // =off_8027BD0 
+	ldr r0, off_8029C04 // =TextScriptFirstBattleTutorials
 	ldrb r2, [r5,#0xc]
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
@@ -6911,7 +6911,7 @@ loc_8029A84:
 	mov r1, r0
 	b loc_8029A90
 loc_8029A90:
-	ldr r0, off_8029C04 // =off_8027BD0 
+	ldr r0, off_8029C04 // =TextScriptFirstBattleTutorials
 	ldrb r2, [r5,#0xc]
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
@@ -7048,7 +7048,7 @@ loc_8029B60:
 	beq locret_8029B84
 	mov r1, r0
 loc_8029B6A:
-	ldr r0, off_8029C04 // =off_8027BD0 
+	ldr r0, off_8029C04 // =TextScriptFirstBattleTutorials
 	ldrb r2, [r5,#0xc]
 	lsl r2, r2, #2
 	ldr r0, [r0,r2]
@@ -7151,7 +7151,7 @@ loc_8029BFE:
 locret_8029C00:
 	pop {pc}
 	.balign 4, 0x00
-off_8029C04: .word off_8027BD0
+off_8029C04: .word TextScriptFirstBattleTutorials
 	thumb_func_end sub_8029BE6
 
 	thumb_local_start
@@ -8754,7 +8754,7 @@ loc_802AA7C:
 	mov r0, #0x1c
 	strb r0, [r5,#1]
 	mov r0, #0
-	bl sub_802B5EC
+	bl RunTextScriptBattleRunDialog
 	mov r0, #0x7b 
 	bl sound_play // () -> void
 	b loc_802AB98
@@ -9276,7 +9276,7 @@ sub_802AE84:
 	b loc_802AEA6
 loc_802AE9C:
 	mov r0, #1
-	bl sub_802B5EC
+	bl RunTextScriptBattleRunDialog
 	mov r0, #0x20 
 	strb r0, [r5,#1]
 loc_802AEA6:
@@ -9539,7 +9539,7 @@ off_802B08C: .word unk_2035000
 	.word 0x6016E80
 	.word decomp_2032000
 	.word comp_86D6974 + 1<<31
-	.word comp_2030860
+	.word eTextScript2030860
 	.word decomp_2032000
 	.word 0x0
 	thumb_func_end decomp_802B060
@@ -10085,20 +10085,20 @@ sub_802B5D0:
 sub_802B5DC:
 	push {lr}
 	mov r1, r0
-	ldr r0, off_802B5E8 // =comp_2030860 
+	ldr r0, off_802B5E8 // =eTextScript2030860
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	pop {pc}
-off_802B5E8: .word comp_2030860
+off_802B5E8: .word eTextScript2030860
 	thumb_func_end sub_802B5DC
 
 	thumb_local_start
-sub_802B5EC:
+RunTextScriptBattleRunDialog:
 	push {lr}
 	mov r1, r0
-	ldr r0, off_802B5F8 // =notAdded_scripts_86EF78C 
+	ldr r0, off_802B5F8 // =TextScriptBattleRunDialog
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	pop {pc}
-off_802B5F8: .word notAdded_scripts_86EF78C
+off_802B5F8: .word TextScriptBattleRunDialog
 byte_802B5FC:
 	// this looks like text
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x28, 0x0, 0xA, 0x0, 0xA, 0x0, 0x0
@@ -10117,7 +10117,7 @@ byte_802B5FC:
 	.byte 0x0, 0x1E, 0x0, 0x0, 0x0, 0xB4, 0x0, 0x64, 0x0, 0x28, 0x0, 0x0, 0x0, 0x82, 0x0
 	.byte 0x3C, 0x0, 0x1E, 0x0, 0x0, 0x0, 0x64, 0x0, 0x14, 0x0, 0x14, 0x0, 0x0, 0x0, 0x78
 	.byte 0x0, 0x32, 0x0, 0x28, 0x0, 0x0, 0x0, 0x64, 0x0, 0x28, 0x0, 0x1E, 0x0, 0x0, 0x0
-	thumb_func_end sub_802B5EC
+	thumb_func_end RunTextScriptBattleRunDialog
 
 	thumb_func_start sub_802B6EC
 sub_802B6EC:
@@ -11451,7 +11451,7 @@ sub_802C2D0:
 	mov r1, #0xa
 	bl sub_800AB3A
 	mov r1, r0
-	ldr r0, off_802C324 // =byte_873811C
+	ldr r0, off_802C324 // =TextScriptYouGotNewVirusData
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #1
 	strb r0, [r5,#2]
@@ -11477,7 +11477,7 @@ loc_802C2FA:
 locret_802C320:
 	pop {pc}
 	.balign 4, 0x00
-off_802C324: .word byte_873811C
+off_802C324: .word TextScriptYouGotNewVirusData
 	thumb_func_end sub_802C2D0
 
 	thumb_local_start
@@ -12057,7 +12057,7 @@ sub_802C75C:
 	pop {r5,pc}
 off_802C7C0: .word off_802C7C4
 off_802C7C4: .word dword_86EA94C
-	.word dword_86EB354
+	.word TextScriptEnemyNames86EB354
 off_802C7CC: .word unk_2035320
 dword_802C7D0: .word 0x600BA80
 off_802C7D4: .word dword_86B7AE0

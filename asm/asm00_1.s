@@ -8921,7 +8921,7 @@ loc_8007F04:
 	mov r1, #0x5c
 	add r1, r1, r4
 loc_8007F08:
-	ldr r0, off_8008014 // =scripts_commErr_87370C0
+	ldr r0, off_8008014 // =TextScriptCommError87370C0
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#1]
@@ -9043,7 +9043,7 @@ dword_8008004: .word 0x40000
 off_8008008: .word eStruct203F7D8
 dword_800800C: .word 0x280000
 dword_8008010: .word 0x200000
-off_8008014: .word scripts_commErr_87370C0
+off_8008014: .word TextScriptCommError87370C0
 off_8008018: .word eStruct203F7D8
 	thumb_func_end sub_8007FD2
 
@@ -11808,7 +11808,7 @@ sub_800951E:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_8009534
-	ldr r0, off_800960C // =scripts_fullSynchro_86F3F5C
+	ldr r0, off_800960C // =TextScriptBattleTutFullSyncrho
 	mov r1, #0xa
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #4
@@ -11848,7 +11848,7 @@ sub_8009552:
 loc_8009568:
 	mov r1, #0x20
 loc_800956A:
-	ldr r0, off_8009610 // =scripts_dad_cybeastTut_86F4498
+	ldr r0, off_8009610 // =TextScriptDadCybeastTut
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -11877,7 +11877,7 @@ sub_8009594:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_80095AA
-	ldr r0, off_8009614 // =scripts_shuko_crossTut_86F53CC
+	ldr r0, off_8009614 // =TextScriptShukoCrossTut
 	mov r1, #3
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #4
@@ -11910,7 +11910,7 @@ sub_80095C8:
 	bl getPETNaviSelect // () -> u8
 	mov r1, #0x73
 	add r1, r1, r0
-	ldr r0, off_8009618 // =scripts_commErr_87370C0
+	ldr r0, off_8009618 // =TextScriptCommError87370C0
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -11931,10 +11931,10 @@ dword_80095FC: .word 0x1F2F3F4F
 off_8009600: .word unk_2035260
 dword_8009604: .word 0x173
 dword_8009608: .word 0x17E
-off_800960C: .word scripts_fullSynchro_86F3F5C
-off_8009610: .word scripts_dad_cybeastTut_86F4498
-off_8009614: .word scripts_shuko_crossTut_86F53CC
-off_8009618: .word scripts_commErr_87370C0
+off_800960C: .word TextScriptBattleTutFullSyncrho
+off_8009610: .word TextScriptDadCybeastTut
+off_8009614: .word TextScriptShukoCrossTut
+off_8009618: .word TextScriptCommError87370C0
 	thumb_func_end sub_80095C8
 
 	thumb_local_start
@@ -12386,7 +12386,7 @@ sub_8009966:
 	bl getPETNaviSelect // () -> u8
 	mov r1, #0x73
 	add r1, r1, r0
-	ldr r0, off_80099A0 // =scripts_commErr_87370C0
+	ldr r0, off_80099A0 // =TextScriptCommError87370C0
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -12404,7 +12404,7 @@ locret_8009992:
 off_8009994: .word 0x400
 dword_8009998: .word 0x1F2F3F4F
 off_800999C: .word unk_2035260
-off_80099A0: .word scripts_commErr_87370C0
+off_80099A0: .word TextScriptCommError87370C0
 	thumb_func_end sub_8009966
 
 	thumb_local_start
@@ -12777,7 +12777,7 @@ sub_8009C56:
 	bl getPETNaviSelect // () -> u8
 	mov r1, #0x73
 	add r1, r1, r0
-	ldr r0, off_8009C90 // =scripts_commErr_87370C0
+	ldr r0, off_8009C90 // =TextScriptCommError87370C0
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -12795,7 +12795,7 @@ locret_8009C82:
 off_8009C84: .word 0x400
 dword_8009C88: .word 0x1F2F3F4F
 off_8009C8C: .word unk_2035260
-off_8009C90: .word scripts_commErr_87370C0
+off_8009C90: .word TextScriptCommError87370C0
 	thumb_func_end sub_8009C56
 
 	thumb_local_start
@@ -13009,22 +13009,22 @@ sub_8009E10:
 	pop {pc}
 	.byte 0, 0
 off_8009E20: .word off_8009E24
-off_8009E24: .word sub_8009E2C+1
+off_8009E24: .word RunTextScriptDustManUndernetTut_8009E2C+1
 	.word sub_8009E40+1
 	thumb_func_end sub_8009E10
 
 	thumb_local_start
-sub_8009E2C:
+RunTextScriptDustManUndernetTut_8009E2C:
 	push {lr}
 	mov r0, #0x90
 	ldr r0, [r5,r0]
 	ldrb r1, [r0,#4]
-	ldr r0, off_8009FBC // =dialogScript_87F2F68
+	ldr r0, off_8009FBC // =TextScriptDustManUndernetTut
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #4
 	strh r0, [r5,#2]
 	pop {pc}
-	thumb_func_end sub_8009E2C
+	thumb_func_end RunTextScriptDustManUndernetTut_8009E2C
 
 	thumb_local_start
 sub_8009E40:
@@ -13210,7 +13210,7 @@ sub_8009F8A:
 	bl getPETNaviSelect // () -> u8
 	mov r1, #0x73
 	add r1, r1, r0
-	ldr r0, off_8009FC8 // =scripts_commErr_87370C0
+	ldr r0, off_8009FC8 // =TextScriptCommError87370C0
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -13226,10 +13226,10 @@ loc_8009FA6:
 locret_8009FB6:
 	pop {pc}
 off_8009FB8: .word 0x400
-off_8009FBC: .word dialogScript_87F2F68
+off_8009FBC: .word TextScriptDustManUndernetTut
 dword_8009FC0: .word 0x1F2F3F4F
 off_8009FC4: .word unk_2035260
-off_8009FC8: .word scripts_commErr_87370C0
+off_8009FC8: .word TextScriptCommError87370C0
 	thumb_func_end sub_8009F8A
 
 	thumb_local_start

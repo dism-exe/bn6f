@@ -1240,7 +1240,7 @@ signed int sub_80A5C9C()
         sub_80A5CE4();
         updateFlags_809E0B0();
         sub_80A5E44();
-        reqBBS_runDialog_8140A70(0, *(v0 + 6));
+        reqBBS_RunTextScriptWhoAmI(0, *(v0 + 6));
         *(v0 + 10) = v1 + 1;
         return 2;
     }

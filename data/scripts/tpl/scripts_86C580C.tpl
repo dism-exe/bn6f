@@ -1,4 +1,4 @@
-@archive scripts_86C580C
+@archive TextScriptChipTrader86C580C
 @size 65
 
 script 0 mmbn6 {

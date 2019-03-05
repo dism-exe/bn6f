@@ -39,4 +39,4 @@ tools/binutils/
 *.pickle
 temp/
 *.cfg
-*.rsyc
+*.rsync

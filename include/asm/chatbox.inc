@@ -5,11 +5,11 @@
 	.global chatbox_uncompBasedOnMap_803FD08 // () -> int
 	.global chatbox_uncomp_803FD3C
 	.global chatbox_runScript_202da04 // (u8 scriptID) -> void
-	.global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
-	.global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
-	.global loc_803FDA4
-	.global chatbox_runScript_803FE08 // (u16 *scriptArr, u8 scriptID) -> void
-	.global chatbox_803FE10
+	.global chatbox_runScript_803FD78 // (void *textScript, u8 scriptIdx) -> void
+	.global chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
+	.global chatbox_runScript_803FDA4
+	.global chatbox_runScript_803FE08 // (void *textScript, u8 scriptIdx) -> void
+	.global chatbox_runScript_803FE10
 	.global chatbox_runScript_803FE74 // (u16 *scriptList, u8 scriptOffIdx) -> void
 	.global chatbox_onUpdate
 	.global byte_804033B
@@ -237,11 +237,11 @@
 // .global byte_86C0940
 
 	.include "data/dat38_71.inc"
-// .global dword_86CF4AC
+// .global TextScript86CF4AC
 
 	.include "data/dat38_85.inc"
 // .global dword_86EA94C
-// .global dword_86EB354
+// .global TextScriptEnemyNames86EB354
 // .global byte_86EF71C
 // .global byte_86F2960
 // .global byte_86F2980
@@ -857,8 +857,8 @@
 // .global dword_87A3B84
 
 	.include "data/dat38_96.inc"
-// .global byte_87F2E38
-// .global dword_87F2ED0
+// .global TextScriptNaviNames0
+// .global TextScriptNaviNames1
 
 
 /* Undeclared Symbols */
@@ -901,11 +901,11 @@
 // .equ byte_201F070, 0x201F070
 // .equ reqBBS_requestNames_textualData, 0x2025A04
 // .equ byte_202DA00, 0x202DA00
-// .equ eDialogScript202DA04, 0x202DA04
+// .equ eTextScript202DA04, 0x202DA04
 // .equ byte_202FA00, 0x202FA00
 // .equ unk_2033400, 0x2033400
 // .equ unk_2034A00, 0x2034A00
-// .equ eDialogScript2034A04, 0x2034A04
+// .equ eTextScript2034A04, 0x2034A04
 // .equ byte_3001650, 0x3001650
 // .equ byte_3001710, 0x3001710
 // .equ unk_3001B40, 0x3001B40

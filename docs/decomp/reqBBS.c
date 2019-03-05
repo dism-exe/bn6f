@@ -319,7 +319,7 @@ void __noreturn reqBBS_draw_813E450()
         v7 = 0;
         if ( !*(v0 + 30) )
             v7 = 1;
-        chatbox_runScript(reqBBS_dialogList, v7);
+        chatbox_runScript(reqBBS_eTextScript, v7);
         reqBBS_drawHeaderText();
         *v0 = 32;
     }
@@ -978,7 +978,7 @@ int reqBBS_813EE58()
 // 0x813eef4
 void __usercall reqBBS_813EEF4(reqBBS_GUI *gui@<R5>)
 {
-    renderTextGfx_8045F8C(reqBBS_dialogList, byte_813EF24[gui->unk_04], byte_201CA00, 100678656);
+    renderTextGfx_8045F8C(reqBBS_eTextScript, byte_813EF24[gui->unk_04], byte_201CA00, 100678656);
 }
 
 
@@ -1161,7 +1161,7 @@ void __noreturn reqBBS_813F65C()
             v7 = 2;
         else
             v7 = 17;
-        chatbox_reqBBS_80404C0(reqBBS_dialogList, v7, reqBBS_textualShades);
+        chatbox_reqBBS_80404C0(reqBBS_eTextScript, v7, reqBBS_textualShades);
         *v0 = 64;
     }
     reqBBS_813F8F0();
@@ -1299,7 +1299,7 @@ void __noreturn reqBBS_813F80C()
     v7 = 0;
     if ( !*(v0 + 30) )
         v7 = 1;
-    chatbox_runScript(reqBBS_dialogList, v7);
+    chatbox_runScript(reqBBS_eTextScript, v7);
     reqBBS_renderSelectedEntry_HeaderText();
 }
 
@@ -1533,7 +1533,7 @@ void __noreturn reqBBS_813FAB0()
     if ( !(((v5 < 0) ^ v6) | (v5 == 0)) )
         reqBBS_813F8F0();
     sChatbox.unk_50 = byte_200578F[0];
-    chatbox_reqBBS_80404C0(reqBBS_dialogList, 6, reqBBS_textualShades);
+    chatbox_reqBBS_80404C0(reqBBS_eTextScript, 6, reqBBS_textualShades);
     reqBBS_drawSelectChatbox();
 }
 
@@ -1674,7 +1674,7 @@ void __noreturn reqBBS_813FC8C()
     v5 = reqBBS_81408F0();
     if ( v5 )
     {
-        chatbox_runScript(reqBBS_dialogList, v5);
+        chatbox_runScript(reqBBS_eTextScript, v5);
         *v0 = 68;
     }
     else
@@ -2171,7 +2171,7 @@ int reqBBS_81405A4()
 // 0x81405c0
 int __noreturn reqBBS_81405C0()
 {
-    return renderTextGfx_8045F8C(reqBBS_dialogList, 18, byte_201CA00, 100678656);
+    return renderTextGfx_8045F8C(reqBBS_eTextScript, 18, byte_201CA00, 100678656);
 }
 
 
@@ -2578,9 +2578,9 @@ int reqBBS_setFlags_8140A40()
 
 
 // 0x8140a5c
-void __fastcall reqBBS_runDialog_8140A70(int a1, int a2)
+void __fastcall reqBBS_RunTextScriptWhoAmI(int a1, int a2)
 {
-    chatbox_runScript(*(&off_8140A70 + a1), a2);
+    chatbox_runScript(*(&TextScriptWhoAmIPtr + a1), a2);
 }
 
 

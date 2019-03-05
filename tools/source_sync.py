@@ -16,12 +16,12 @@ class DATA_TYPES:
     OFF = i; i+=1
     ASCII = i; i+=1
     ALIGN = i; i+=1
+    SPACE = i; i+=1
+    INCBIN = i; i+=1
     MACRO = i; i+=1
     ERROR = i; i+=1
 
-    SIZES = [1, 2, 4, 4, 0, 0]
-
-DATA_TYPES_STR = ['BYTE', 'HWORD', 'WORD', 'OFF', 'ASCII', 'ALIGN', 'MACRO', 'ERROR']
+    STR = ['BYTE', 'HWORD', 'WORD', 'OFF', 'ASCII', 'ALIGN', 'SPACE', 'INCBIN', 'MACRO', 'ERROR']
 
 class AsmFile:
     """
@@ -35,10 +35,11 @@ class AsmFile:
         DIRECTIVE = i; i+=1
         FUNCTION = i; i+=1
         CODE = i; i+=1
-        RAM_DATA = i; i+=1
         DATA = i; i+=1
         LABEL = i; i+=1
         ERROR = i; i+=1
+
+        STR = ['DIRECTIVE_INCLUDE', 'DIRECTIVE', 'FUNCTION', 'CODE', 'DATA', 'LABEL', 'ERROR']
 
     class Unit:
         def __init__(self, unit_id, content, file_path, line_number):
@@ -142,7 +143,7 @@ class AsmFile:
         function is detected based on the function macro before its label
         """
         return 'thumb_func_start' in self.lines[line_number] or 'thumb_local_start' in self.lines[line_number] or \
-            'arm_func_start' in self.lines[line_number] or 'arm_local_start' in self.lines[line_number]
+               'arm_func_start' in self.lines[line_number] or 'arm_local_start' in self.lines[line_number]
 
 
     def _is_code(self, line_number):
@@ -186,6 +187,9 @@ class AsmFile:
 
     def _find_data_end(self, line_num):
         cur_line = self._advance_line(line_num+1)
+        data_types = list(DATA_TYPES.STR)
+        for i in range(len(data_types)):
+            data_types[i] = '.' + data_types[i].lower()
         while cur_line < len(self.lines):
             # a new label
             if ':' in self.lines[cur_line]:
@@ -193,7 +197,7 @@ class AsmFile:
             # something other than .data_def
             line = self.lines[cur_line].rstrip()
             if '.' in line: line = line[line.index('.'):]
-            if not ('.' in line and line[:line.index(' ')] in ['.byte', '.hword', '.word']):
+            if not ('.' in line and line[:line.index(' ')] in data_types):
                 break
             cur_line = self._advance_line(cur_line+1)
         return cur_line
@@ -215,7 +219,7 @@ def is_code(line):
 
 
 def is_data(line):
-    data_directives = ['.byte', '.hword', '.word', '.asciz', '.ascii', '.align', '.balign']
+    data_directives = ['.byte', '.hword', '.word', '.asciz', '.ascii', '.align', '.balign', '.incbin', '.space']
     # filter label
     line = line.strip()
     if ':' in line:
@@ -364,7 +368,7 @@ def filter_source(content):
     return content.strip()
 
 
-def process_function(unit, sym_table, function_types):
+def process_function(unit, sym_table, function_types, dict_out=False):
     """
     Processes the following parameters:
         Function effective address (according to the symbol table)
@@ -405,7 +409,7 @@ def process_function(unit, sym_table, function_types):
     locals = []
     xrefs_to = []
     skipFunctionLabel = False
-    pool_data = ''
+    pool_data = [] if dict_out else ''
     lines = content.split('\n')
     for i in range(len(lines)):
         line = lines[i]
@@ -473,7 +477,10 @@ def process_function(unit, sym_table, function_types):
             # create sub unit and process it
             line_number = unit.line_number + unit.content[:start_idx].count('\n')+1
             pool_unit = AsmFile.Unit(AsmFile.UNITS.DATA, pool_content, unit.file_path, line_number)
-            pool_data += process_data(pool_unit, sym_table, function_name)
+            if dict_out:
+                pool_data.append(process_data(pool_unit, sym_table, function_name, dict_out))
+            else:
+                pool_data += process_data(pool_unit, sym_table, function_name)
 
     # filter out xrefs_to that are locals
     for ea in xrefs_to:
@@ -481,46 +488,76 @@ def process_function(unit, sym_table, function_types):
             xrefs_to.remove(ea)
 
     # construct output
-    out = 'F %07x <%s>:\n' % (function_ea, function_name)
-    out += '\tpath: %s:%d\n' % (unit.file_path, unit.line_number)
-    out += '\ttype: %s\n' % (function_type)
-    out += '\tlocal: ['
-    for label in locals:
-        # process local labels
-        if label.startswith('.'):
-            label = function_name + label
-        out += '%07x <%s>, ' % (sym_table[label], label)
-    if len(locals): out = out[:-2] # filer last ', '
-    out += ']\n'
-    out += '\txrefs_to: ['
-    for label in xrefs_to:
-        offset = 0
-        if '+' in label:
-            base = 16 if '0x' in label else 10
-            offset = int(label[label.index('+')+1:], base)
-            label = label[:label.index('+')]
-        # process local labels
-        if label.startswith('.'):
-            label = function_name + label
-        out += '%07x <%s>, ' % (sym_table[label]+offset, label)
-    if len(xrefs_to): out = out[:-2] # filer last ', '
-    out += ']\n'
-    if pool_data:
-        out += '\tpool:\n\t\t' + pool_data.replace('\n', '\n\t\t') + '\n'
+    if dict_out:
+        out = {}
+        out['id'] = 'F'
+        out['ea'] = function_ea
+        out['name'] = function_name
+        out['unit'] = unit
+        out['path'] = '%s:%d\n' % (unit.file_path, unit.line_number)
+        out['local'] = []
+        for label in locals:
+            # process local labels
+            if label.startswith('.'):
+                label = function_name + label
+            out['local'].append((sym_table[label], label))
+        out['xrefs_to'] = []
+        for label in xrefs_to:
+            offset = 0
+            if '+' in label:
+                base = 16 if '0x' in label else 10
+                offset = int(label[label.index('+')+1:], base)
+                label = label[:label.index('+')]
+            # process local labels
+            if label.startswith('.'):
+                label = function_name + label
+            out['xrefs_to'].append((sym_table[label]+offset, label))
+            out['pool'] = pool_data
+    else:
+        out = 'F %07x <%s>:\n' % (function_ea, function_name)
+        out += '\tpath: %s:%d\n' % (unit.file_path, unit.line_number)
+        out += '\ttype: %s\n' % (function_type)
+        out += '\tlocal: ['
+        for label in locals:
+            # process local labels
+            if label.startswith('.'):
+                label = function_name + label
+            out += '%07x <%s>, ' % (sym_table[label], label)
+        out += ']\n'
+        out += '\txrefs_to: ['
+        for label in xrefs_to:
+            offset = 0
+            if '+' in label:
+                base = 16 if '0x' in label else 10
+                offset = int(label[label.index('+')+1:], base)
+                label = label[:label.index('+')]
+            # process local labels
+            if label.startswith('.'):
+                label = function_name + label
+            out += '%07x <%s>, ' % (sym_table[label]+offset, label)
+        if len(xrefs_to): out = out[:-2] # filer last ', '
+        out += ']\n'
+        if pool_data:
+            out += '\tpool:\n\t\t' + pool_data.replace('\n', '\n\t\t') + '\n'
 
     return out
 
 
-def process_code(unit, sym_table, warning=False):
+def process_code(unit, sym_table, warning=False, dict_out=False):
     # first label in function is the function label
     content = filter_source(unit.content)
     lines = content.split('\n')
     if warning: print('WARNING: Non-function code in %s:%d' % (unit.file_path, unit.line_number))
     if has_label(lines[0]):
-        return process_function(unit, sym_table, None).replace('F ', 'C ', 1)
-    return ''
+        out = process_function(unit, sym_table, None, dict_out)
+        if dict_out:
+            out['id'] = 'C'
+        else:
+            out = out.replace('F ', 'C ', 1)
+        return out
+    return {} if dict_out else ''
 
-def process_data(unit, sym_table, function_label=''):
+def process_data(unit, sym_table, function_label='', dict_out=False):
     """
     Processes the following parameters:
         Data effective address (according to the symbol table
@@ -557,7 +594,6 @@ def process_data(unit, sym_table, function_label=''):
             data_type = DATA_TYPES.BYTE
         elif line.startswith('.hword'):
             data_type = DATA_TYPES.HWORD
-            pass
         elif line.startswith('.ascii') or line.startswith('.asciz'):
             data_type = DATA_TYPES.ASCII
         elif line.startswith('.balign'):
@@ -570,6 +606,13 @@ def process_data(unit, sym_table, function_label=''):
             line = line.replace('.align ', '')
             line = line[:line.index(', 0')] ## usually aligns need to specify padding byte
             types.append([data_type, 2**int(line, 16 if '0x' in line else 10)])
+        elif line.startswith('.space'):
+            data_type = DATA_TYPES.SPACE
+            line = line.replace('.space ', '')
+            if (line.isdigit() or '0x' in line) and not '*' in line:
+                types.append([data_type, int(line, 16 if '0x' in line else 10)])
+        elif line.startswith('.incbin'):
+            data_type = DATA_TYPES.INCBIN
         elif line.startswith('.word'):
             # might be data or an xref
             data = elements[0].replace('.word ', '').strip()
@@ -596,7 +639,7 @@ def process_data(unit, sym_table, function_label=''):
             print('ERROR: invalid data format\n', function_label, '||', data_label, '||', unit.content)
 
         # record number of elements
-        if types[-1][0] == data_type and data_type != DATA_TYPES.ALIGN:
+        if types[-1][0] == data_type and data_type != DATA_TYPES.ALIGN and data_type != DATA_TYPES.SPACE:
             types[-1][1] += len(elements)
         else:
             types.append([data_type, len(elements)])
@@ -606,26 +649,47 @@ def process_data(unit, sym_table, function_label=''):
         types = types[1:] if len(types) > 1 else []
 
     # construct output
-    out = 'D %07x <%s>:\n' % (data_ea, data_label)
-    out += '\tpath: %s:%d\n' % (unit.file_path, unit.line_number)
-    if types:
-        out += '\ttypes: ['
-        for type in types:
-            out += '(%s, %d), ' % (DATA_TYPES_STR[type[0]], type[1])
-        out += ']\n'
-    if xrefs_to:
-        out += '\txrefs_to: ['
+    if dict_out:
+        out = {}
+        out['id'] = 'D'
+        out['ea'] = data_ea
+        out['name'] = data_label
+        out['unit'] = unit
+        out['path'] = '%s:%d\n' % (unit.file_path, unit.line_number)
+        out['types'] = types
+        out['xrefs_to'] = []
         for label in xrefs_to:
             offset = 0
             if '+' in label:
                 base = 16 if '0x' in label else 10
-                offset = int(label[label.index('+')+1:], base)
+                offset = int(label[label.index('+') + 1:], base)
                 label = label[:label.index('+')]
-             # process local labels
+                # process local labels
             if label.startswith('.'):
                 label = function_label + label
-            out += '%07x <%s>, ' % (sym_table[label]+offset, label)
-        out += ']\n'
+            out['xrefs_to'].append((sym_table[label]+offset, label))
+
+    else:
+        out = 'D %07x <%s>:\n' % (data_ea, data_label)
+        out += '\tpath: %s:%d\n' % (unit.file_path, unit.line_number)
+        if types:
+            out += '\ttypes: ['
+            for type in types:
+                out += '(%s, %d), ' % (DATA_TYPES.STR[type[0]], type[1])
+            out += ']\n'
+        if xrefs_to:
+            out += '\txrefs_to: ['
+            for label in xrefs_to:
+                offset = 0
+                if '+' in label:
+                    base = 16 if '0x' in label else 10
+                    offset = int(label[label.index('+')+1:], base)
+                    label = label[:label.index('+')]
+                # process local labels
+                if label.startswith('.'):
+                    label = function_label + label
+                out += '%07x <%s>, ' % (sym_table[label]+offset, label)
+            out += ']\n'
 
     return out
 
@@ -660,18 +724,52 @@ def process_function_types(units, warning=False):
             for i in range(c_content.count(function_name + '(')):
                 line_number = c_content[:find_nth(c_content, function_name + '(', i+1)].count('\n')
                 if '{' in c_lines[line_number+1]:
-                    out[function_name] = c_lines[line_number]
+                    out[function_name] = c_lines[line_number].strip()
                     break
             if function_name not in out and function_name + '@' in c_content:
                 line_number = c_content[:c_content.index(function_name + '@')].count('\n')
                 if '{' in c_lines[line_number+1]:
-                    out[function_name] = c_lines[line_number]
+                    out[function_name] = c_lines[line_number].strip()
             if function_name not in out:
                 if warning: print('WARNING: Type unidentified for %s' % function_name)
                 out[function_name] = ''
 
     return out
 
+def read_repo(proj_path, elf_path, file_paths, info=False):
+    """
+    reads and processes asm files into different units such as functions and data
+    :return: list of dictionaries representing functions, data, or code
+    """
+    import os
+    cwd = os.getcwd()
+    os.chdir(proj_path)
+    try:
+        units = []
+        for path in file_paths:
+            if info: print('> reading %s...' % path)
+            units += read_file(path)
+
+        if info: print('> processing symbol table from elf...')
+        sym_table = get_sym_table(elf_path)
+
+        if info: print('> processing function types...')
+        function_types = process_function_types(units)
+
+        if info: print('> processing units...')
+        out = []
+        for unit in units:
+            if unit.id == AsmFile.UNITS.FUNCTION:
+                out.append(process_function(unit, sym_table, function_types, dict_out=True))
+            elif unit.id == AsmFile.UNITS.CODE:
+                out.append(process_code(unit, sym_table, dict_out=True))
+            elif unit.id == AsmFile.UNITS.DATA:
+                out.append(process_data(unit, sym_table, dict_out=True))
+            else:
+                pass
+        return out
+    finally:
+        os.chdir(cwd)
 
 def main():
     import sys

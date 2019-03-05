@@ -156,7 +156,7 @@ void sub_812DBE0()
                             *(v0 + 16) = 4;
                             if ( v12 != 2 )
                             {
-                                sub_8132280(64);
+                                chatbox_runScript_803FD9C_on_eTextScript201BA20(64);
                                 v13 = 3;
                                 if ( *(v0 + 38) == 8 )
                                     v13 = 4;
@@ -358,7 +358,7 @@ void sub_812DDE8()
                             else
                             {
                                 v12 = v11;
-                                sub_8132280(64);
+                                chatbox_runScript_803FD9C_on_eTextScript201BA20(64);
                                 *(v0 + 2) = 36;
                                 *(v0 + 22) = 0;
                                 *(v0 + 16) = 4;
@@ -665,7 +665,7 @@ LABEL_14:
                         *(v0 + 40) = v23;
                         if ( v23 >= 180 )
                         {
-                            sub_8132280(64);
+                            chatbox_runScript_803FD9C_on_eTextScript201BA20(64);
                             sub_812F014();
                         }
                         return;
@@ -1086,7 +1086,7 @@ signed int sub_812E5A8()
         sub_803D108(v9, *(v10 + 67), 1);
     }
     sub_803F798();
-    sub_8132280(61);
+    chatbox_runScript_803FD9C_on_eTextScript201BA20(61);
     sound_play(115, v11, v12);
     result = 8;
     *(v0 + 12) = 8;

@@ -52,7 +52,7 @@ int __usercall sprite_load@<R0>(Battle *obj@<R5>, char a1@<R0>, int spriteTypeId
     sprite = sub_8002986((spriteTypeIdx << 8) | spriteIdx);
     if ( !sprite )
     {
-        sprite = (*(spritePointersList + v8_spriteListIdx))[v3_spriteIdx];
+        sprite = (*(SpritePointersList + v8_spriteListIdx))[v3_spriteIdx];
         if ( sprite < 0 )
             sprite = spriteWhiteDot;
     }
@@ -309,7 +309,7 @@ signed int __fastcall uncompSprite_8002906(unsigned __int8 *a1)
         if ( v3_spriteTypeIdx == 255 )
             return 1;
         v4 = 4 * i[1];
-        v5 = ((2 * *(*(spritePointersList + v3_spriteTypeIdx) + v4)) >> 1);
+        v5 = ((2 * *(*(SpritePointersList + v3_spriteTypeIdx) + v4)) >> 1);
         compPtr = v5;
         v7 = (v3_spriteTypeIdx << 8) | (v4 >> 2);
         v8 = *v5 >> 8;
@@ -386,7 +386,7 @@ signed int __fastcall sub_80029A8(_BYTE *a1)
                 if ( v7 >= 24 )
                 {
                     v1 = v15;
-                    v8 = *(*(spritePointersList + (v6 >> 8)) + (4 * v6 & 0x3FF));
+                    v8 = *(*(SpritePointersList + (v6 >> 8)) + (4 * v6 & 0x3FF));
                     if ( v8 >= 0 )
                         break;
                     v9 = ((2 * v8) >> 1);
@@ -429,7 +429,7 @@ signed int __fastcall sub_8002A64(int a1, int a2)
 
     v2 = (a1 << 8) | a2;
     v3 = dword_200DCEC;
-    v4 = *(*(spritePointersList + (v2 >> 8)) + (4 * v2 & 0x3FF));
+    v4 = *(*(SpritePointersList + (v2 >> 8)) + (4 * v2 & 0x3FF));
     if ( v4 >= 0 )
         return 0;
     v5 = ((2 * v4) >> 1);
@@ -460,7 +460,7 @@ unsigned int sub_8002ADE()
     if ( byte_200DCA0[0] )
     {
         result = *&byte_200DCA0[2 * (byte_200DCA0[0] - 1) + 4];
-        v1 = *(*(spritePointersList + (result >> 8)) + (4 * result & 0x3FF));
+        v1 = *(*(SpritePointersList + (result >> 8)) + (4 * result & 0x3FF));
         if ( v1 < 0 )
         {
             dword_200DCEC -= *((2 * v1) >> 1) >> 8;
@@ -493,7 +493,7 @@ signed int __fastcall sprite_decompress(int a1, int a2)
         v4 += 2;
         if ( v4 >= 24 )
         {
-            v5 = *(*(spritePointersList + (v2 >> 8)) + (4 * v2 & 0x3FF));
+            v5 = *(*(SpritePointersList + (v2 >> 8)) + (4 * v2 & 0x3FF));
             if ( v5 < 0 )
             {
                 v6 = ((2 * v5) >> 1);

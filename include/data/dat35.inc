@@ -104,7 +104,7 @@
 // .global sub_8130810
 // .global sub_8130850
 // .global sub_8130864
-// .global sub_8132280
+// .global chatbox_runScript_803FD9C_on_eTextScript201BA20
 // .global sub_81323B0
 // .global sub_8132430
 // .global sub_81324A8

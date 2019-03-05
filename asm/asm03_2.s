@@ -2633,7 +2633,7 @@ loc_80476C4:
 	.byte 0, 0
 off_80476E0: .word off_80476E4
 off_80476E4: .word dword_86EA94C
-	.word dword_86EB354
+	.word TextScriptEnemyNames86EB354
 off_80476EC: .word decomp_2013A00
 dword_80476F0: .word 0x6008400
 off_80476F4: .word byte_86EF71C
@@ -2822,20 +2822,20 @@ sub_8047834:
 	mov r1, #0x50 
 	mov r2, #0
 	bl sub_8119854
-	ldr r0, off_80478A8 // =eDialogScript202BA04 
+	ldr r0, off_80478A8 // =eTextScript202BA04
 	mov r1, #0x7f
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	b locret_80478A0
 loc_804787A:
 	cmp r3, #1
 	bne loc_804788C
-	ldr r0, off_80478A8 // =eDialogScript202BA04 
+	ldr r0, off_80478A8 // =eTextScript202BA04
 	ldrh r1, [r7,#2]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	bl sub_80478B8
 	b locret_80478A0
 loc_804788C:
-	ldr r0, off_80478AC // =eDialogScript202DA04 
+	ldr r0, off_80478AC // =eTextScript202DA04
 	ldrh r1, [r7,#2]
 	lsr r1, r1, #2
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -2847,8 +2847,8 @@ locret_80478A0:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_80478A4: .word byte_8046B74
-off_80478A8: .word eDialogScript202BA04
-off_80478AC: .word eDialogScript202DA04
+off_80478A8: .word eTextScript202BA04
+off_80478AC: .word eTextScript202DA04
 off_80478B0: .word byte_2019A00
 off_80478B4: .word byte_8046B84
 	thumb_func_end sub_8047834
@@ -5789,7 +5789,7 @@ loc_8049BC4:
 	mov r2, #2
 	mov r3, #0
 	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
-	ldr r0, off_8049CB4 // =eDialogScript202BA04 
+	ldr r0, off_8049CB4 // =eTextScript202BA04
 	lsl r1, r7, #9
 	add r0, r0, r1
 	ldr r1, dword_8049CB8 // =0x6016e00 
@@ -5839,7 +5839,7 @@ off_8049C84: .word byte_86C0B20
 	.word byte_86C19A0
 	.word byte_86C19E0
 	.word byte_86C1A60
-off_8049CB4: .word eDialogScript202BA04
+off_8049CB4: .word eTextScript202BA04
 dword_8049CB8: .word 0x6016E00
 	thumb_func_end sub_8049BC0
 
@@ -6501,7 +6501,7 @@ sub_804A1D0:
 	thumb_local_start
 sub_804A1FC:
 	push {r4-r7,lr}
-	ldr r4, off_804A22C // =dword_86CF4AC
+	ldr r4, off_804A22C // =TextScript86CF4AC
 	lsl r0, r0, #1
 	ldrh r0, [r4,r0]
 	add r4, r4, r0
@@ -6529,7 +6529,7 @@ loc_804A224:
 locret_804A228:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_804A22C: .word dword_86CF4AC
+off_804A22C: .word TextScript86CF4AC
 	thumb_func_end sub_804A1FC
 
 	thumb_local_start
@@ -8125,10 +8125,10 @@ loc_804AEFC:
 sub_804AF10:
 	push {lr}
 	mov r1, r0
-	ldr r0, off_804AF1C // =scripts_86C580C 
-	bl chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
+	ldr r0, off_804AF1C // =TextScriptChipTrader86C580C
+	bl chatbox_runScript_803FD78 // (void *textScript, u8 scriptIdx) -> void
 	pop {pc}
-off_804AF1C: .word scripts_86C580C
+off_804AF1C: .word TextScriptChipTrader86C580C
 	thumb_func_end sub_804AF10
 
 	thumb_local_start

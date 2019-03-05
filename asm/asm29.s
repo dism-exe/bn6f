@@ -1783,7 +1783,7 @@ sub_80A5C9C:
 	bl sub_80A5E44
 	mov r0, #0
 	ldrb r1, [r5,#6]
-	bl reqBBS_runDialog_8140A70
+	bl reqBBS_RunTextScriptWhoAmI
 	add r4, #1
 	strb r4, [r5,#0xa]
 	b loc_80A5CDE

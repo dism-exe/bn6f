@@ -125,7 +125,7 @@
 // .global byte_86B7D4B
 
 	.include "data/dat38_87.inc"
-// .global dword_87DAC90
+// .global TextScriptWhoAmI
 
 
 /* Undeclared Symbols */

@@ -421,7 +421,7 @@
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global sub_8021D14
 
-	.include "data/spritePointersList.inc"
+	.include "data/SpritePointersList.inc"
 // .global off_80329A8
 // .global off_80329C4
 // .global off_8032F6C
@@ -680,16 +680,16 @@
 // .global dword_86E7DCC
 // .global dword_86E944C
 // .global dword_86EA94C
-// .global dword_86EB354
+// .global TextScriptEnemyNames86EB354
 // .global byte_86EB8B8
 // .global dword_86EE0CC
-// .global dword_86EF4D4
+// .global TextScriptChipDesc86EF4D4
 // .global byte_86EF71C
-// .global notAdded_scripts_86EF78C
+// .global TextScriptBattleRunDialog
 // .global byte_86F0300
 // .global dword_86F047C
-// .global dword_86F2E60
-// .global dword_86F3868
+// .global TextScriptBattleTut1
+// .global TextScriptBattleTutAreaGrab
 
 	.include "data/dat38_86.inc"
 // .global byte_86F5834
@@ -725,7 +725,7 @@
 // .global byte_8736D74
 
 	.include "data/dat38_87.inc"
-// .global byte_873811C
+// .global TextScriptYouGotNewVirusData
 
 	.include "data/dat38_97.inc"
 // .global dword_87F3620
@@ -836,7 +836,7 @@
 // .equ dword_2013954, 0x2013954
 // .equ decomp_2013A00, 0x2013A00
 // .equ unk_2027A00, 0x2027A00
-// .equ comp_2030860, 0x2030860
+// .equ eTextScript2030860, 0x2030860
 // .equ unk_2030E60, 0x2030E60
 // .equ unk_2031000, 0x2031000
 // .equ decomp_2032000, 0x2032000
@@ -1003,9 +1003,9 @@
 // .global comp_86DDAD0
 // .global comp_86DDB44
 // .global comp_86DDB7C
-// .global scripts_fullSynchro_86F3F5C
-// .global scripts_dad_cybeastTut_86F4498
-// .global scripts_shuko_crossTut_86F53CC
+// .global TextScriptBattleTutFullSyncrho
+// .global TextScriptDadCybeastTut
+// .global TextScriptShukoCrossTut
 // .global comp_87F3370
 // .global comp_87F36A0
 // .global comp_87F4394

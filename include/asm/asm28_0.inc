@@ -231,7 +231,7 @@
 // .global dword_86C57EC
 
 	.include "data/dat38_66.inc"
-// .global byte_86C67E4
+// .global TextScriptLottery86C67E4
 
 
 /* Undeclared Symbols */
@@ -284,16 +284,16 @@
 // .equ dword_2011CC0, 0x2011CC0
 // .equ unk_2020000, 0x2020000
 // .equ unk_2020204, 0x2020204
-// .equ eDialogScript202DA04, 0x202DA04
+// .equ eTextScript202DA04, 0x202DA04
 // .equ byte_202FA04, 0x202FA04
-// .equ eDialogScript2033404, 0x2033404
+// .equ eTextScript2033404, 0x2033404
 // .equ unk_2033700, 0x2033700
 // .equ unk_2034E00, 0x2034E00
 // .equ unk_2036500, 0x2036500
 // .equ unk_3001B20, 0x3001B20
 	.equ Undocumented_GreenSwap, 0x4000002
 	.equ InterruptEnableRegister, 0x4000200
-// .global scripts_86C580C
+// .global TextScriptChipTrader86C580C
 // .global comp_86C73D8
 // .global comp_86C7980
 

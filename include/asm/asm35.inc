@@ -66,7 +66,7 @@
 // .global byte_812DADC
 
 	.include "asm/asm36.inc"
-// .global sub_8132280
+// .global chatbox_runScript_803FD9C_on_eTextScript201BA20
 
 	.include "asm/asm37_0.inc"
 // .global sub_813B780

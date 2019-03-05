@@ -207,7 +207,7 @@
 // .global reqBBS_81409F4
 // .global reqBBS_setFlag_e17b0f7_8140A00
 // .global reqBBS_clearFlag_8140A0C
-// .global reqBBS_runDialog_8140A70
+// .global reqBBS_RunTextScriptWhoAmI
 // .global byte_8140C60
 // .global byte_8140C68
 // .global byte_8140C7C

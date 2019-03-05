@@ -143,11 +143,11 @@
 // .global sub_803F798
 
 	.include "asm/chatbox.inc"
-// .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
-// .global loc_803FDA4
-// .global chatbox_runScript_803FE08 // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_803FE10
+// .global chatbox_runScript_803FD78 // (void *textScript, u8 scriptIdx) -> void
+// .global chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
+// .global chatbox_runScript_803FDA4
+// .global chatbox_runScript_803FE08 // (void *textScript, u8 scriptIdx) -> void
+// .global chatbox_runScript_803FE10
 // .global chatbox_8040818
 // .global chatbox_setFlags2009F38
 // .global chatbox_clear_eFlags2009F38 // (int a1) ->
@@ -247,7 +247,7 @@
 
 	.include "asm/asm36.inc"
 // .global byte_8130905
-// .global sub_8132280
+// .global chatbox_runScript_803FD9C_on_eTextScript201BA20
 // .global sub_8132290
 // .global sub_81322E8
 // .global sub_8132398
@@ -366,7 +366,7 @@
 
 	.include "data/dat38_85.inc"
 // .global dword_86EA94C
-// .global dword_86EB354
+// .global TextScriptEnemyNames86EB354
 
 	.include "data/dat38_86.inc"
 // .global byte_872CF94
@@ -420,23 +420,23 @@
 // .equ unk_201A600, 0x201A600
 // .equ unk_201AA00, 0x201AA00
 // .equ byte_201B200, 0x201B200
-// .equ unk_201BA00, 0x201BA00
-// .equ byte_201BA20, 0x201BA20
+// .equ eTextScript201BA00, 0x201BA00
+// .equ eTextScript201BA20, 0x201BA20
 // .equ byte_201BB60, 0x201BB60
 // .equ byte_201BDB8, 0x201BDB8
 // .equ byte_201BDF8, 0x201BDF8
-// .equ byte_201BF00, 0x201BF00
-// .equ byte_201BF20, 0x201BF20
+// .equ eTextScript201BF00, 0x201BF00
+// .equ eTextScript201BF20, 0x201BF20
 // .equ unk_201C040, 0x201C040
-// .equ unk_201C100, 0x201C100
+// .equ eTextScript201C100, 0x201C100
 // .equ unk_201C1B0, 0x201C1B0
 // .equ unk_201C200, 0x201C200
-// .equ unk_201C220, 0x201C220
+// .equ eTextScript201C220, 0x201C220
 // .equ unk_201C2F8, 0x201C2F8
 // .equ unk_201C400, 0x201C400
 // .equ unk_201C4B0, 0x201C4B0
 // .equ unk_201C4DC, 0x201C4DC
-// .equ unk_201C700, 0x201C700
+// .equ eTextScript201C700, 0x201C700
 // .equ unk_201CB5C, 0x201CB5C
 // .equ unk_201CC20, 0x201CC20
 // .equ unk_201CF20, 0x201CF20

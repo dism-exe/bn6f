@@ -3,14 +3,14 @@
 
 /* Public Symbols */
 	.global dword_87F25B4
-	.global byte_87F2654
-	.global dword_87F2808
+	.global TextScriptNetworkEnterFolderName1
+	.global TextScriptNetworkEnterFolderName0
 	.global dword_87F28DC
-	.global dword_87F2A1C
-	.global byte_87F2E38
-	.global dword_87F2ED0
-	.global dialogScript_873B9E0
-	.global dialogScript_87F2F68
+	.global TextScriptNetworkRequestConnection87F2A1C
+	.global TextScriptNaviNames0
+	.global TextScriptNaviNames1
+	.global TextScriptCommError873B9E0
+	.global TextScriptDustManUndernetTut
 
 
 /* External Symbols */

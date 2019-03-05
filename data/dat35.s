@@ -27,7 +27,7 @@ sub_812F000:
 	mov r0, #0x30 
 	strb r0, [r5,#2]
 	mov r0, #0x41 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	mov r0, #0xf0
 	strh r0, [r5,#0x28]
 	pop {pc}
@@ -263,7 +263,7 @@ loc_812F1E2:
 	beq loc_812F28E
 	push {r0}
 	mov r0, #0x40 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	pop {r0}
 	mov r1, #3
 	ldrh r0, [r5,#0x26]
@@ -510,7 +510,7 @@ loc_812F40E:
 	bgt loc_812F456
 	push {r0}
 	mov r0, #0x40 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	pop {r0}
 	ldrb r1, [r5,#2]
 	mov r2, #0x49 
@@ -1034,7 +1034,7 @@ loc_812F818:
 	mov r0, #0x34 
 	strb r0, [r5,#2]
 	mov r0, #0x41 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	b loc_812F852
 loc_812F84E:
 	bl sub_8130424
@@ -1500,7 +1500,7 @@ loc_812FBE0:
 	bl sub_81307BC
 	bne loc_812FC1C
 	mov r0, #0x42 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	ldrb r0, [r5,#2]
 	mov r1, #0x49 
 	strb r0, [r5,r1]
@@ -1634,7 +1634,7 @@ loc_812FCEC:
 	mov r0, #0x73 
 	bl sound_play // () -> void
 	mov r0, #0x3d 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	mov r0, #8
 	strb r0, [r5,#0xc]
 	pop {r4-r7,pc}
@@ -2003,7 +2003,7 @@ loc_812FFBC:
 	mov r0, #0
 	strb r0, [r5,#3]
 	mov r0, #0x3c 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	mov r0, #6
 	bl sub_8046696
 	mov r0, #0

@@ -479,7 +479,7 @@ sub_813BA64:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk200414c_Ptr]
-	ldr r1, off_813BA9C // =unk_201BA00 
+	ldr r1, off_813BA9C // =eTextScript201BA00
 	mov r2, #0x40 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, r10
@@ -495,7 +495,7 @@ sub_813BA80:
 	push {lr}
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_Unk200414c_Ptr]
-	ldr r0, off_813BA9C // =unk_201BA00 
+	ldr r0, off_813BA9C // =eTextScript201BA00
 	mov r2, #0x40 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r1, r10
@@ -504,7 +504,7 @@ sub_813BA80:
 	ldr r2, off_813BAA4 // =0x188 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
-off_813BA9C: .word unk_201BA00
+off_813BA9C: .word eTextScript201BA00
 off_813BAA0: .word byte_201BA40
 off_813BAA4: .word 0x188
 	thumb_func_end sub_813BA80

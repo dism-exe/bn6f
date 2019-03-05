@@ -399,7 +399,7 @@ void sub_812D83C()
     if ( !*(v0 + 108) )
     {
         *(v0 + 108) = byte_64;
-        sub_8132280(65);
+        chatbox_runScript_803FD9C_on_eTextScript201BA20(65);
     }
 }
 
@@ -433,7 +433,7 @@ int sub_812D880()
     {
         if ( eStruct200BC30_getRef()[14] == 2 )
             v1 = 48;
-        sub_8132280(v1);
+        chatbox_runScript_803FD9C_on_eTextScript201BA20(v1);
     }
     result = v0[22];
     if ( v0[22] )
@@ -543,7 +543,7 @@ signed int __fastcall sub_812DA4C(char a1)
 
     *(v1 + 31) = a1;
     *(v1 + 2) = 48;
-    sub_8132280(65);
+    chatbox_runScript_803FD9C_on_eTextScript201BA20(65);
     result = 240;
     *(v1 + 40) = 240;
     return result;

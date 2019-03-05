@@ -20354,7 +20354,7 @@ off_8119068: .word byte_811906C
 byte_811906C: .byte 0x0, 0x20, 0x1, 0x6, 0x0, 0x22, 0x1, 0x6, 0x0, 0x24, 0x1, 0x6
 off_8119078: .word dword_86B7AE0
 off_811907C: .word sub_3006B94+1
-	.word dword_86CF4AC
+	.word TextScript86CF4AC
 	thumb_func_end sub_8119018
 
 	thumb_local_start
@@ -21415,7 +21415,7 @@ sub_81199E4:
 	mov r0, #0
 	str r0, [r5,#0x10]
 	push {r5,r6}
-	ldr r0, off_8119A3C // =unk_201D280
+	ldr r0, off_8119A3C // =eTextScript201D280
 	mov r1, #0xa
 	ldrb r2, [r5,#4]
 	tst r2, r2
@@ -21450,7 +21450,7 @@ off_8119A2C: .word byte_201B480
 dword_8119A30: .word 0x600BA80
 off_8119A34: .word byte_873EA50
 off_8119A38: .word dword_86A5D60
-off_8119A3C: .word unk_201D280
+off_8119A3C: .word eTextScript201D280
 off_8119A40: .word byte_201B200
 dword_8119A44: .word 0x600B800
 	thumb_func_end sub_81199E4
@@ -22973,11 +22973,11 @@ sub_811A718:
 	ldr r6, off_811A764 // =dword_86B7AE0
 	mov r7, #0
 	mov r1, r0
-	ldr r0, off_811A738 // =byte_201BA20
+	ldr r0, off_811A738 // =eTextScript201BA20
 	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_811A738: .word byte_201BA20
+off_811A738: .word eTextScript201BA20
 off_811A73C: .word off_811A740
 off_811A740: .word byte_2017A00
 	.word unk_2017C00
@@ -23364,7 +23364,7 @@ sub_811AA4C:
 	.byte 0, 0
 	.word unk_20347D8
 	.word word_2023FA0
-	.word dword_86CF4AC
+	.word TextScript86CF4AC
 off_811AA8C: .word off_811AA90
 off_811AA90: .word unk_2017E00
 	.word unk_2018000
@@ -23583,7 +23583,7 @@ loc_811AC40:
 	bx r1
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-	.word dword_86CF4AC
+	.word TextScript86CF4AC
 off_811AC68: .word off_811AC6C
 off_811AC6C: .word unk_2017C00
 	.word unk_2017E00
@@ -24909,7 +24909,7 @@ sub_811B7D4:
 	mov r1, #0x46
 	ldrb r4, [r5,#4]
 	lsl r4, r4, #2
-	ldr r0, off_811B870 // =byte_201BA20
+	ldr r0, off_811B870 // =eTextScript201BA20
 	ldr r2, off_811B874 // =off_811B878
 	ldr r2, [r2,r4]
 	ldr r3, off_811B8A0 // =byte_811B8A4
@@ -24964,7 +24964,7 @@ dword_811B860: .word 0x100000
 dword_811B864: .word 0x0
 off_811B868: .word word_2023FA0
 off_811B86C: .word dword_86B7AE0
-off_811B870: .word byte_201BA20
+off_811B870: .word eTextScript201BA20
 off_811B874: .word off_811B878
 off_811B878: .word unk_2017C00
 	.word unk_2018000
@@ -25516,7 +25516,7 @@ sub_811BCD8:
 	ldrb r7, [r5,#5]
 	ldr r4, off_811BD04 // =dword_811BD30
 	ldrb r1, [r4,r7]
-	ldr r0, off_811BD08 // =byte_201BF20
+	ldr r0, off_811BD08 // =eTextScript201BF20
 	ldr r2, off_811BD0C // =off_811BD10
 	lsl r7, r7, #2
 	ldr r2, [r2,r7]
@@ -25533,7 +25533,7 @@ sub_811BCD8:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_811BD04: .word dword_811BD30
-off_811BD08: .word byte_201BF20
+off_811BD08: .word eTextScript201BF20
 off_811BD0C: .word off_811BD10
 off_811BD10: .word unk_201AA00
 	.word byte_201AE00
@@ -27875,7 +27875,7 @@ byte_811D39C: .byte 0x8A, 0x0, 0x0, 0x0, 0x44, 0x0, 0x0, 0x0, 0x45, 0x0, 0x0, 0x
 	.byte 0x0, 0x0
 off_811D3B8: .word off_811D3BC
 off_811D3BC: .word unk_201AA00
-	.word unk_201BA00
+	.word eTextScript201BA00
 off_811D3C4: .word off_811D3C8
 off_811D3C8: .word battleSpriteMegaMan
 	.word battleSpriteSpoutMan
@@ -32834,7 +32834,7 @@ loc_8120160:
 	.balign 4, 0x00
 off_8120174: .word off_8120178
 off_8120178: .word dword_86EA94C
-	.word dword_86EB354
+	.word TextScriptEnemyNames86EB354
 off_8120180: .word 0x200
 dword_8120184: .word 0x137
 dword_8120188: .word 0x139
@@ -32913,8 +32913,8 @@ loc_8120202:
 	pop {r4-r7,pc}
 off_8120214: .word off_8120218
 off_8120218: .word dword_86EA94C
-	.word dword_86EB354
-off_8120220: .word byte_201BA20
+	.word TextScriptEnemyNames86EB354
+off_8120220: .word eTextScript201BA20
 off_8120224: .word 0x200
 	thumb_func_end sub_8120194
 
@@ -32957,8 +32957,8 @@ loc_8120258:
 	.balign 4, 0x00
 off_812026C: .word off_8120270
 off_8120270: .word dword_86EA94C
-	.word dword_86EB354
-off_8120278: .word byte_201BA20
+	.word TextScriptEnemyNames86EB354
+off_8120278: .word eTextScript201BA20
 dword_812027C: .word 0x200
 	thumb_func_end sub_8120228
 
@@ -33061,7 +33061,7 @@ loc_812031C:
 	sub r4, #1
 	bgt loc_812031C
 	mov r6, #0
-	ldr r1, off_8120340 // =dword_86CF4AC
+	ldr r1, off_8120340 // =TextScript86CF4AC
 	lsl r0, r0, #1
 	ldrh r0, [r1,r0]
 	add r0, r0, r1
@@ -33071,7 +33071,7 @@ loc_812031C:
 	add sp, sp, #0x14
 	pop {r4-r7,pc}
 	.byte 0, 0
-off_8120340: .word dword_86CF4AC
+off_8120340: .word TextScript86CF4AC
 off_8120344: .word 0x200
 	thumb_func_end sub_81202FC
 

@@ -15111,7 +15111,7 @@ int __noreturn sub_81199E4()
     v2 = 10;
     if ( *(v0 + 4) )
         v2 = *(v1 + 28);
-    renderTextGfx_8045F8C(&unk_201D280, v2, byte_201B200, 100710400);
+    renderTextGfx_8045F8C(&eTextScript201D280, v2, byte_201B200, 100710400);
     *(v4 + 20) = renderTextGfx_8045F8C(byte_873EA50, *(v5 + 28), byte_201B480, 100711040);
     result = 0;
     *(v4 + 24) = 0;
@@ -16124,7 +16124,7 @@ void __fastcall __noreturn sub_811A704(int a1, int a2)
 // 0x811a718
 int __fastcall __noreturn sub_811A718(int a1, int a2)
 {
-    return renderTextGfx_8045F8C(byte_201BA20, a1, (&off_811A740)[a2], *&byte_811A754[4 * a2]);
+    return renderTextGfx_8045F8C(eTextScript201BA20, a1, (&off_811A740)[a2], *&byte_811A754[4 * a2]);
 }
 
 
@@ -17334,7 +17334,7 @@ int sub_811B7D4()
     if ( !((result < 0) ^ v3) && result < *&eT4BattleObjects[3902] )
     {
         *(*(v1 + oToolkit_Unk200a220_Ptr) + 8) = word_2023FA0[2 * result + 1];
-        result = renderTextGfx_8045F8C(byte_201BA20, 70, *(&off_811B878 + *(v0 + 4)), *&byte_811B8A4[4 * *(v0 + 4)]);
+        result = renderTextGfx_8045F8C(eTextScript201BA20, 70, *(&off_811B878 + *(v0 + 4)), *&byte_811B8A4[4 * *(v0 + 4)]);
     }
     return result;
 }
@@ -17781,7 +17781,7 @@ signed int __noreturn sub_811BCD8()
     int v2; // [sp+0h] [bp-18h]
 
     renderTextGfx_8045F8C(
-        byte_201BF20,
+        eTextScript201BF20,
         *(&dword_811BD30 + *(v0 + 5)),
         *(&off_811BD10 + *(v0 + 5)),
         *&byte_811BD20[4 * *(v0 + 5)]);
@@ -22763,7 +22763,7 @@ int __fastcall sub_8120194(int a1, int a2, int a3)
                 goto LABEL_8;
             }
             v15 = 1;
-            v12 = byte_201BA20;
+            v12 = eTextScript201BA20;
             v7 = 49;
         }
         sub_81202B4(&v12[*&v12[2 * v7]], *&v12[2 * v7], a3, v5);
@@ -22793,7 +22793,7 @@ int __fastcall sub_8120228(int a1, int a2, _WORD *a3)
     }
     else
     {
-        v4 = byte_201BA20;
+        v4 = eTextScript201BA20;
         v5 = 49;
     }
     return sub_81202B4(&v4[*&v4[2 * v5]], *&v4[2 * v5], a3, a3 + 8);
@@ -22876,7 +22876,7 @@ int __fastcall sub_81202FC(int a1, _WORD *a2, int a3, int a4)
         v9 = __OFSUB__(v8--, 1);
     }
     while ( !(((v8 < 0) ^ v9) | (v8 == 0)) );
-    return sub_81202B4(dword_86CF4AC + *(dword_86CF4AC + a1), dword_86CF4AC, v7, v6);
+    return sub_81202B4(TextScript86CF4AC + *(TextScript86CF4AC + a1), TextScript86CF4AC, v7, v6);
 }
 
 

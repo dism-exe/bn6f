@@ -1268,7 +1268,7 @@ initRefs_8034338: .word compFile_86C23A0 + 1<<31
 	.word byte_2017A00
 	.word comp_86C33B4 + 1<<31
 	.word 0x0
-	.word unk_201BA00
+	.word eTextScript201BA00
 	.word byte_86C22C0
 	.word 0x3001960
 	.word 0x20
@@ -5333,13 +5333,13 @@ init_s_02011C50_8036E90:
 	str r0, [r5,#0x20] // s_02011C50.ptr_20
 	str r0, [r5,#0x24] // s_02011C50.ptr_24
 	str r0, [r5,#0x28] // s_02011C50.ptr_28
-	ldr r0, off_8036EBC // =eDialogScript202DA04
+	ldr r0, off_8036EBC // =eTextScript202DA04
 	str r0, [r5,#0x30] // s_02011C50.ptr_30
 	ldr r0, off_8036EC0 // =off_8036EC4
 	str r0, [r5,#0x34] // s_02011C50.ptr_34
 	pop {r5,pc}
 	.balign 4, 0x00
-off_8036EBC: .word eDialogScript202DA04
+off_8036EBC: .word eTextScript202DA04
 off_8036EC0: .word off_8036EC4
 off_8036EC4: .word LCDControl
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -9217,7 +9217,7 @@ initRefs_8038F40: .word dword_86BEAE0
 	thumb_local_start
 sub_8038F74:
 	push {r4-r7,lr}
-	ldr r0, off_8038F8C // =dialogScript_873B9E0
+	ldr r0, off_8038F8C // =TextScriptCommError873B9E0
 	mov r1, #0x28
 	ldr r2, off_8038F90 // =decomp_2013A00
 	ldr r3, dword_8038F94 // =0x6005000
@@ -9227,7 +9227,7 @@ sub_8038F74:
 	mov r7, #0
 	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
-off_8038F8C: .word dialogScript_873B9E0
+off_8038F8C: .word TextScriptCommError873B9E0
 off_8038F90: .word decomp_2013A00
 dword_8038F94: .word 0x6005000
 off_8038F98: .word dword_86B7AE0
@@ -13326,7 +13326,7 @@ sub_803B522:
 	mov r1, #0x10
 	mul r0, r1
 	add r7, r7, r0
-	ldr r0, off_803B634 // =byte_87E36F8
+	ldr r0, off_803B634 // =TextScript87E36F8
 	ldrb r1, [r7]
 	ldrb r2, [r7,#3]
 	lsl r2, r2, #0x10
@@ -13340,11 +13340,11 @@ sub_803B522:
 	mov r0, r8
 	cmp r0, #0xa
 	bge loc_803B562
-	ldr r0, off_803B634 // =byte_87E36F8
+	ldr r0, off_803B634 // =TextScript87E36F8
 	bl sub_8045FC6
 	b loc_803B568
 loc_803B562:
-	ldr r0, off_803B634 // =byte_87E36F8
+	ldr r0, off_803B634 // =TextScript87E36F8
 	bl loc_8045FE4
 loc_803B568:
 	pop {r4}
@@ -13366,7 +13366,7 @@ byte_803B574: .byte 0x1E, 0x7, 0x1, 0x0, 0x0, 0xCA, 0x2, 0x2, 0x0, 0xCE, 0x2, 0x
 	.byte 0x2, 0x2, 0x0, 0xCA, 0x0, 0x6, 0x38, 0x7, 0x1, 0x0, 0x0, 0xDA, 0x2, 0x2
 	.byte 0x0, 0xEA, 0x2, 0x2, 0x0, 0xCC, 0x0, 0x6, 0x39, 0xB, 0x1, 0x0, 0x0, 0xDE
 	.byte 0x2, 0x2, 0x0, 0xEE, 0x2, 0x2, 0x0, 0xD0, 0x0, 0x6
-off_803B634: .word byte_87E36F8
+off_803B634: .word TextScript87E36F8
 off_803B638: .word byte_86ACD60
 	thumb_func_end sub_803B522
 
@@ -13383,7 +13383,7 @@ sub_803B63C:
 	mov r1, #0xc
 	mul r0, r1
 	add r7, r7, r0
-	ldr r0, off_803B66C // =byte_87E36F8
+	ldr r0, off_803B66C // =TextScript87E36F8
 	ldrb r1, [r7]
 	ldr r2, [r7,#4]
 	ldr r3, [r7,#8]
@@ -13394,7 +13394,7 @@ sub_803B63C:
 	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
 off_803B668: .word off_803B66C
-off_803B66C: .word byte_87E36F8
+off_803B66C: .word TextScript87E36F8
 off_803B670: .word dword_86A5D60
 	thumb_func_end sub_803B63C
 
@@ -13829,29 +13829,29 @@ sub_803BB2C:
 	beq loc_803BB4A
 	cmp r3, #0x4c
 	beq loc_803BB52
-	ldr r0, off_803BB68 // =byte_87E36F8
+	ldr r0, off_803BB68 // =TextScript87E36F8
 	bl chatbox_runScript_803FE74 // (u16 *scriptList, u8 scriptOffIdx) -> void
 	b locret_803BB64
 loc_803BB4A:
-	ldr r0, off_803BB6C // =dword_87F2A1C
-	bl chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
+	ldr r0, off_803BB6C // =TextScriptNetworkRequestConnection87F2A1C
+	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 	b locret_803BB64
 loc_803BB52:
 	push {r1}
 	bl sub_8123360
 	lsl r1, r0, #2
-	ldr r0, off_803BB70 // =off_803BB74
+	ldr r0, TextScriptNetworkEnterFolderNamePtrs_p // =TextScriptNetworkEnterFolderNamePtrs
 	ldr r0, [r0,r1]
 	pop {r1}
-	bl chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
+	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 locret_803BB64:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_803BB68: .word byte_87E36F8
-off_803BB6C: .word dword_87F2A1C
-off_803BB70: .word off_803BB74
-off_803BB74: .word dword_87F2808
-	.word byte_87F2654
+off_803BB68: .word TextScript87E36F8
+off_803BB6C: .word TextScriptNetworkRequestConnection87F2A1C
+TextScriptNetworkEnterFolderNamePtrs_p: .word TextScriptNetworkEnterFolderNamePtrs
+TextScriptNetworkEnterFolderNamePtrs: .word TextScriptNetworkEnterFolderName0
+	.word TextScriptNetworkEnterFolderName1
 	thumb_func_end sub_803BB2C
 
 	thumb_func_start sub_803BB7C
@@ -14120,7 +14120,7 @@ loc_803BEC4:
 	tst r4, r4
 	beq locret_803BF12
 	ldr r1, [r6,#4]
-	ldr r7, off_803BF6C // =byte_87E36F8
+	ldr r7, off_803BF6C // =TextScript87E36F8
 	lsl r1, r1, #1
 	ldrh r1, [r7,r1]
 	add r7, r7, r1
@@ -14170,7 +14170,7 @@ off_803BF1C: .word 0x28
 	.byte 0x0, 0x0, 0x0, 0x66, 0x2, 0x2, 0x2F, 0x0, 0x0, 0x0, 0x0, 0x6A, 0x2, 0x2
 	.byte 0x30, 0x0, 0x0, 0x0, 0x0, 0x72, 0x2, 0x2, 0x31, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0
-off_803BF6C: .word byte_87E36F8
+off_803BF6C: .word TextScript87E36F8
 	thumb_func_end sub_803BEC0
 
 	thumb_local_start
@@ -15983,7 +15983,7 @@ sub_803CC14:
 	bl IsPaletteFadeActive // () -> zf
 	beq locret_803CC26
 	mov r0, #0xb
-	bl sub_803CCB0
+	bl RunTextScriptCommError_803CCB0
 	mov r0, #8
 	strb r0, [r5]
 locret_803CC26:
@@ -16055,14 +16055,14 @@ off_803CC9C: .word byte_2017A00
 	thumb_func_end copyData_803CC60
 
 	thumb_local_start
-sub_803CCB0:
+RunTextScriptCommError_803CCB0:
 	push {r4-r7,lr}
 	mov r1, r0
-	ldr r0, off_803CCBC // =dialogScript_873B9E0
-	bl chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
+	ldr r0, off_803CCBC // =TextScriptCommError873B9E0
+	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 	pop {r4-r7,pc}
-off_803CCBC: .word dialogScript_873B9E0
-	thumb_func_end sub_803CCB0
+off_803CCBC: .word TextScriptCommError873B9E0
+	thumb_func_end RunTextScriptCommError_803CCB0
 
 	thumb_func_start sub_803CCC0
 sub_803CCC0:
@@ -16130,7 +16130,7 @@ sub_803CD40:
 	bl IsPaletteFadeActive // () -> zf
 	beq locret_803CD52
 	mov r0, #0xa
-	bl sub_803CD64
+	bl RunTextScriptCommError_803CD64
 	mov r0, #8
 	strb r0, [r5]
 locret_803CD52:
@@ -16152,14 +16152,14 @@ sub_803CD58:
 	thumb_func_end sub_803CD58
 
 	thumb_local_start
-sub_803CD64:
+RunTextScriptCommError_803CD64:
 	push {r4-r7,lr}
 	mov r1, r0
-	ldr r0, off_803CD70 // =dialogScript_873B9E0
+	ldr r0, off_803CD70 // =TextScriptCommError873B9E0
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	pop {r4-r7,pc}
-off_803CD70: .word dialogScript_873B9E0
-	thumb_func_end sub_803CD64
+off_803CD70: .word TextScriptCommError873B9E0
+	thumb_func_end RunTextScriptCommError_803CD64
 
 	thumb_func_start sub_803CD74
 sub_803CD74:
@@ -17114,7 +17114,7 @@ off_803DC78: .word eStruct2036780
 	.byte 0x4, 0x0, 0x0, 0x0, 0xB0, 0xB1, 0x0, 0x2, 0x0, 0xBA, 0x1, 0x2, 0x10
 	.byte 0xBA, 0x1, 0x2, 0x0, 0x0, 0x0, 0x0
 	.word dword_200B1B0
-	.word unk_201BA00
+	.word eTextScript201BA00
 	.word byte_201BA10
 	.word 0x0
 	.word dword_200B1B0

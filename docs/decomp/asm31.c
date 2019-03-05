@@ -77099,7 +77099,7 @@ void sub_80E68F8()
     else
     {
         *(v0 + 11) = 4;
-        chatbox_runScript(&dialogScript_8736D74, *(v0 + 5) + 30);
+        chatbox_runScript(&TextScriptBattleDialog8736D74, *(v0 + 5) + 30);
     }
 }
 

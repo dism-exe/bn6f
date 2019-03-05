@@ -400,7 +400,7 @@ byte_809929C: .byte 0x0, 0x0, 0x0, 0x0, 0x34, 0x1, 0xFF, 0x1, 0x76, 0x0, 0x44, 0
 	.byte 0x54, 0x0, 0xDC, 0xFF, 0x0, 0x0, 0x54, 0x0, 0xD0, 0xFF, 0x0, 0x0, 0x4
 	.byte 0xDA, 0x2, 0x2, 0x1B, 0x1, 0xFF, 0x1, 0x9C, 0xFF, 0x0, 0x0, 0x0, 0x0
 	.byte 0xA8, 0xFF, 0x0, 0x0, 0x0, 0x0
-	.word eDialogScript202DA04
+	.word eTextScript202DA04
 	.byte 0x1C, 0x3, 0xFF, 0x1, 0x50, 0xFF, 0xCE, 0x0, 0x0, 0x0, 0x50
 	.byte 0xFF, 0xDA, 0x0, 0x0, 0x0, 0x4, 0xDA, 0x2, 0x2, 0x1D, 0x7
 	.byte 0xFF, 0x1, 0xD4, 0xFF, 0x70, 0xFF, 0x0, 0x0, 0xD4, 0xFF, 0x64
@@ -448,28 +448,28 @@ byte_809929C: .byte 0x0, 0x0, 0x0, 0x0, 0x34, 0x1, 0xFF, 0x1, 0x76, 0x0, 0x44, 0
 	.byte 0x52, 0xFF, 0x96, 0x0, 0x0, 0x0, 0x5E, 0xFF, 0x96, 0x0, 0x0
 	.byte 0x0, 0x4, 0xDA, 0x2, 0x2, 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.word eDialogScript202DA04
+	.word eTextScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word eDialogScript202DA04
+	.word eTextScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word eDialogScript202DA04
+	.word eTextScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word eDialogScript202DA04
+	.word eTextScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word eDialogScript202DA04
+	.word eTextScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word eDialogScript202DA04
+	.word eTextScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word eDialogScript202DA04
+	.word eTextScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
-	.word eDialogScript202DA04
+	.word eTextScript202DA04
 	.byte 0xFF, 0x4, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0
 	.word byte_202FA04
@@ -684,7 +684,7 @@ loc_809A054:
 	thumb_local_start
 sub_809A05C:
 	push {r4-r7,lr}
-	ldr r0, off_809A074 // =scripts_86C580C
+	ldr r0, off_809A074 // =TextScriptChipTrader86C580C
 	ldr r1, [r5,#8]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	ldr r0, [r5,#0x74]
@@ -693,7 +693,7 @@ sub_809A05C:
 	strb r0, [r5,#9]
 	mov r0, #0
 	pop {r4-r7,pc}
-off_809A074: .word scripts_86C580C
+off_809A074: .word TextScriptChipTrader86C580C
 	thumb_func_end sub_809A05C
 
 	thumb_local_start
@@ -731,7 +731,7 @@ sub_809A078:
 	str r2, [r6,#0x50]
 	mov r0, #0x80
 	str r2, [r5,r0]
-	ldr r0, off_809A100 // =scripts_86C580C
+	ldr r0, off_809A100 // =TextScriptChipTrader86C580C
 	mov r1, #0xf
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r2, #0
@@ -756,7 +756,7 @@ loc_809A0F2:
 	mov r0, #0
 	pop {r4-r7,pc}
 off_809A0FC: .word eS200AC80
-off_809A100: .word scripts_86C580C
+off_809A100: .word TextScriptChipTrader86C580C
 	thumb_func_end sub_809A078
 
 	thumb_local_start
@@ -1034,7 +1034,7 @@ sub_809A360:
 	mov r4, #7
 	mov r5, #2
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-	ldr r0, off_809A3AC // =scripts_86C580C 
+	ldr r0, off_809A3AC // =TextScriptChipTrader86C580C
 	mov r1, #0x40 
 	ldr r2, off_809A3B0 // =unk_200EF40 
 	ldr r3, dword_809A3B4 // =0x600d400 
@@ -1047,7 +1047,7 @@ sub_809A360:
 	.balign 4, 0x00
 off_809A3A4: .word byte_86C54D4
 off_809A3A8: .word byte_8099E5C
-off_809A3AC: .word scripts_86C580C
+off_809A3AC: .word TextScriptChipTrader86C580C
 off_809A3B0: .word unk_200EF40
 dword_809A3B4: .word 0x600D400
 off_809A3B8: .word dword_86A5D60
@@ -1086,14 +1086,14 @@ loc_809A3E4:
 	thumb_local_start
 sub_809A3EC:
 	push {r4-r7,lr}
-	ldr r0, off_809A400 // =scripts_86C580C 
+	ldr r0, off_809A400 // =TextScriptChipTrader86C580C
 	ldr r1, [r5,#8]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	ldr r0, [r5,#0x74]
 	bl sub_809A80C
 	mov r0, #0
 	pop {r4-r7,pc}
-off_809A400: .word scripts_86C580C
+off_809A400: .word TextScriptChipTrader86C580C
 	thumb_func_end sub_809A3EC
 
 	thumb_local_start
@@ -1107,7 +1107,7 @@ sub_809A404:
 	bl chatbox_8045F4C
 	cmp r0, #0
 	bne loc_809A43A
-	ldr r0, off_809A448 // =scripts_86C580C 
+	ldr r0, off_809A448 // =TextScriptChipTrader86C580C
 	mov r1, #0x33 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0x17
@@ -1129,7 +1129,7 @@ loc_809A442:
 	mov r0, #1
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_809A448: .word scripts_86C580C
+off_809A448: .word TextScriptChipTrader86C580C
 	thumb_func_end sub_809A404
 
 	thumb_local_start
@@ -1171,7 +1171,7 @@ loc_809A488:
 	mov r1, #0x88
 	str r0, [r5,r1]
 	bl sub_809A868
-	ldr r0, off_809A894 // =scripts_86C580C 
+	ldr r0, off_809A894 // =TextScriptChipTrader86C580C
 	mov r1, #0x35 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0
@@ -1333,14 +1333,14 @@ loc_809A5B8:
 	strb r0, [r5,#0xf]
 	b loc_809A60C
 loc_809A5EC:
-	ldr r0, off_809A894 // =scripts_86C580C 
+	ldr r0, off_809A894 // =TextScriptChipTrader86C580C
 	mov r1, #0x36 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #2
 	strb r0, [r5,#9]
 	b loc_809A60C
 loc_809A5FA:
-	ldr r0, off_809A894 // =scripts_86C580C 
+	ldr r0, off_809A894 // =TextScriptChipTrader86C580C
 	mov r1, #0x33 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #8
@@ -1357,7 +1357,7 @@ loc_809A610:
 off_809A614: .word byte_809A628
 off_809A618: .word off_809A624
 	.word eS200AC80
-	.word scripts_86C580C
+	.word TextScriptChipTrader86C580C
 off_809A624: .word unk_2020204
 byte_809A628: .byte 0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0xFF, 0x0
 	thumb_func_end sub_809A520
@@ -1482,7 +1482,7 @@ loc_809A6F8:
 	bl sub_809A80C
 	b loc_809A74A
 loc_809A72A:
-	ldr r0, off_809A894 // =scripts_86C580C 
+	ldr r0, off_809A894 // =TextScriptChipTrader86C580C
 	mov r1, #0x33 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0x17
@@ -1511,7 +1511,7 @@ sub_809A75C:
 	push {r4-r7,lr}
 	ldr r0, [r5,#0x74]
 	bl sub_809A80C
-	ldr r0, off_809A780 // =scripts_86C580C 
+	ldr r0, off_809A780 // =TextScriptChipTrader86C580C
 	mov r1, #0x8c
 	ldr r1, [r5,r1]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -1525,7 +1525,7 @@ loc_809A77A:
 	strb r1, [r5,#9]
 	mov r0, #0
 	pop {r4-r7,pc}
-off_809A780: .word scripts_86C580C
+off_809A780: .word TextScriptChipTrader86C580C
 	thumb_func_end sub_809A75C
 
 	thumb_local_start
@@ -1575,7 +1575,7 @@ loc_809A7C4:
 	bl sub_809A80C
 	mov r1, #0
 	strb r1, [r5,#9]
-	ldr r0, off_809A894 // =scripts_86C580C 
+	ldr r0, off_809A894 // =TextScriptChipTrader86C580C
 	mov r1, #0x33 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0x17
@@ -1629,7 +1629,7 @@ sub_809A80C:
 	mov r4, #6
 	mov r5, #2
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-	ldr r0, off_809A858 // =eDialogScript2033404 
+	ldr r0, off_809A858 // =eTextScript2033404
 	mov r1, #6
 	ldr r2, off_809A85C // =unk_200EF40 
 	ldr r3, dword_809A860 // =0x600d400 
@@ -1642,7 +1642,7 @@ sub_809A80C:
 	.balign 4, 0x00
 off_809A850: .word tileRefs86C5790
 off_809A854: .word tileRefs8099E78
-off_809A858: .word eDialogScript2033404
+off_809A858: .word eTextScript2033404
 off_809A85C: .word unk_200EF40
 dword_809A860: .word 0x600D400
 off_809A864: .word dword_86A5D60
@@ -1674,7 +1674,7 @@ sub_809A880:
 	pop {pc}
 off_809A88C: .word dword_809A890
 dword_809A890: .word 0x321E140A
-off_809A894: .word scripts_86C580C
+off_809A894: .word TextScriptChipTrader86C580C
 byte_809A898: .byte 0x16, 0x0, 0x0, 0x5, 0x16, 0x1, 0x1, 0x5, 0x16, 0x2, 0x2, 0x5, 0xFF
 	.byte 0xFF, 0xFF, 0xFF
 byte_809A8A8: .byte 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17, 0x47, 0x1, 0xFF
@@ -1864,7 +1864,7 @@ sub_809AAB8:
 	bl sub_8033FC0
 	bl sub_8003984
 	bl sub_8003AD4
-	ldr r0, off_809AD78 // =eDialogScript2033404 
+	ldr r0, off_809AD78 // =eTextScript2033404
 	mov r1, #0xa
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	bl sub_8046664 // () -> void
@@ -1883,7 +1883,7 @@ sub_809AADC:
 	bl chatbox_8045F4C
 	cmp r0, #0
 	bne loc_809AB0C
-	ldr r0, off_809AD78 // =eDialogScript2033404 
+	ldr r0, off_809AD78 // =eTextScript2033404
 	mov r1, #0xc
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #1
@@ -1897,7 +1897,7 @@ sub_809AADC:
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_809AB0C:
-	ldr r0, off_809AD78 // =eDialogScript2033404 
+	ldr r0, off_809AD78 // =eTextScript2033404
 	mov r1, #0xb
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0
@@ -1934,7 +1934,7 @@ loc_809AB3A:
 	strb r0, [r5,#8]
 	mov r0, #0x68 
 	bl sound_play // () -> void
-	ldr r0, off_809AD78 // =eDialogScript2033404 
+	ldr r0, off_809AD78 // =eTextScript2033404
 	mov r1, #0xb
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	b loc_809AC20
@@ -1957,7 +1957,7 @@ loc_809AB5A:
 	beq loc_809AB92
 	cmp r0, #2
 	beq loc_809AC14
-	ldr r0, off_809AD78 // =eDialogScript2033404 
+	ldr r0, off_809AD78 // =eTextScript2033404
 	mov r1, #0xd
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #1
@@ -2024,12 +2024,12 @@ loc_809ABF4:
 loc_809AC06:
 	str r0, [r5,#0x74]
 	strb r1, [r5,#8]
-	ldr r0, off_809AD7C // =byte_86C67E4 
+	ldr r0, off_809AD7C // =TextScriptLottery86C67E4
 	mov r1, #0xe
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	b loc_809AC20
 loc_809AC14:
-	ldr r0, off_809AD78 // =eDialogScript2033404 
+	ldr r0, off_809AD78 // =eTextScript2033404
 	mov r1, #0x14
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #1
@@ -2079,7 +2079,7 @@ sub_809AC70:
 	ldr r0, [r5,#0x78]
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
-	ldr r0, off_809AD7C // =byte_86C67E4
+	ldr r0, off_809AD7C // =TextScriptLottery86C67E4
 	ldr r1, [r5,#0x74]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0
@@ -2090,7 +2090,7 @@ sub_809AC70:
 	thumb_local_start
 sub_809AC88:
 	push {r4-r7,lr}
-	ldr r0, off_809AD7C // =byte_86C67E4
+	ldr r0, off_809AD7C // =TextScriptLottery86C67E4
 	ldr r1, [r5,#0x74]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r1, #0x1c
@@ -2212,8 +2212,8 @@ sub_809AD4C:
 	bl sub_8003AEA
 	mov r0, #0
 	pop {r4-r7,pc}
-off_809AD78: .word eDialogScript2033404
-off_809AD7C: .word byte_86C67E4
+off_809AD78: .word eTextScript2033404
+off_809AD7C: .word TextScriptLottery86C67E4
 	.byte 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17, 0x7, 0x2, 0xFF, 0x14
 	.byte 0x3E, 0xE0, 0xB9, 0x73, 0x8, 0x3A, 0xFF, 0xF, 0x4, 0x80, 0x2
 	.byte 0xFF, 0x1E, 0x27, 0xFF, 0xC, 0x8, 0x7, 0x2, 0xFF, 0x1E, 0x4B

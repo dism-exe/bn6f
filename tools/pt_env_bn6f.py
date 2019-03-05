@@ -57,7 +57,7 @@ pt.env(gameFiles={
 	(0x8021DA8, 0x8026450), # size=0x46a8
 'asm/asm03_0.s':
 	(0x8026450, 0x8031CC4), # size=0xB874
-'data/spritePointersList.s':
+'data/SpritePointersList.s':
 	(0x8031CC4, 0x8033764), # size=0x1AA0
 'asm/asm03_1.s':
 	(0x8033764, 0x803FD08), # size=0xC5A4
@@ -832,7 +832,7 @@ pt.env(gameFiles={
 	(0x86C526C, 0x86C52B4), # size=0x48
 'data/dat38_65.s':
 	(0x86C52B4, 0x86C580C), # size=0x558
-'data/scripts/scripts_86C580C.bin':
+'data/scripts/TextScriptChipTrader86C580C.bin':
 	(0x86C580C, 0x86C67E4), # size=0xFD8
 'data/dat38_66.s':
 	(0x86C67E4, 0x86C6B30), # size=0x34C
@@ -1020,15 +1020,15 @@ pt.env(gameFiles={
 	(0x86DDB7C, 0x86DDBA0), # size=0x24
 'data/dat38_85.s':
 	(0x86DDBA0, 0x86F3F5C), # size=0x163BC
-'data/scripts/scripts_fullSynchro_86F3F5C.bin':
+'data/scripts/TextScriptBattleTutFullSyncrho.bin':
 	(0x86F3F5C, 0x86F4498), # size=0x53C
-'data/scripts/scripts_dad_cybeastTut_86F4498.bin':
+'data/scripts/TextScriptDadCybeastTut.bin':
 	(0x86F4498, 0x86F53CC), # size=0xF34
-'data/scripts/scripts_shuko_crossTut_86F53CC.bin':
+'data/scripts/TextScriptShukoCrossTut.bin':
 	(0x86F53CC, 0x86F5834), # size=0x468
 'data/dat38_86.s':
 	(0x86F5834, 0x87370C0), # size=0x4188C
-'data/scripts/scripts_commErr_87370C0.bin':
+'data/scripts/TextScriptCommError87370C0.bin':
 	(0x87370C0, 0x873811C), # size=0x105C
 'data/dat38_87.s':
 	(0x873811C, 0x87E4500), # size=0xAC3E4

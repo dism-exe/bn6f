@@ -645,7 +645,7 @@ sub_812D83C:
 	ldr r0, off_812D850 // =0x64 
 	str r0, [r5,#0x6c]
 	mov r0, #0x41 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 locret_812D84E:
 	pop {pc}
 off_812D850: .word 0x64
@@ -704,7 +704,7 @@ loc_812D892:
 	mov r1, #0x30 
 loc_812D8B6:
 	mov r0, r1
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 loc_812D8BC:
 	ldrb r0, [r5,#0x16]
 	cmp r0, #0
@@ -915,7 +915,7 @@ sub_812DA4C:
 	mov r0, #0x30 
 	strb r0, [r5,#2]
 	mov r0, #0x41 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	mov r0, #0xf0
 	strh r0, [r5,#0x28]
 	pop {pc}

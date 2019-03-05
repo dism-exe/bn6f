@@ -56,15 +56,15 @@ off_803FD64: .word unk_2033400
 chatbox_runScript_202da04:
 	push {r4,r5,lr}
 	mov r1, r0
-	ldr r0, off_803FD74 // =eDialogScript202DA04
+	ldr r0, off_803FD74 // =eTextScript202DA04
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	pop {r4,r5,pc}
-off_803FD74: .word eDialogScript202DA04
+off_803FD74: .word eTextScript202DA04
 	thumb_func_end chatbox_runScript_202da04
 
-// (u16 *scriptArr, u8 scriptID) -> void
-	thumb_func_start chatbox_803FD78
-chatbox_803FD78:
+// (void *textScript, u8 scriptIdx) -> void
+	thumb_func_start chatbox_runScript_803FD78
+chatbox_runScript_803FD78:
 	push {r4,r5,lr}
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	// src
@@ -80,16 +80,19 @@ chatbox_803FD78:
 	.byte 0, 0
 off_803FD90: .word byte_803FD94
 byte_803FD94: .byte 0x7E, 0x0, 0x83, 0x0, 0x7F, 0x0, 0x81, 0x0
-	thumb_func_end chatbox_803FD78
+	thumb_func_end chatbox_runScript_803FD78
 
-// (u16 *scriptArr, u8 scriptID) -> void
+// (void *textScript, u8 scriptIdx) -> void
 	thumb_func_start chatbox_runScript_803FD9C
 chatbox_runScript_803FD9C:
 	push {r4,r5,lr}
 	mov r4, #0
 	b loc_803FDA8
 	.balign 4, 0x00
-loc_803FDA4:
+	thumb_func_end chatbox_runScript_803FD9C
+
+	thumb_func_start chatbox_runScript_803FDA4
+chatbox_runScript_803FDA4:
 	push {r4,r5,lr}
 	mov r4, #1
 loc_803FDA8:
@@ -130,9 +133,9 @@ off_803FDF4: .word 0x280
 off_803FDFC: .word byte_86BFE20
 off_803FE00: .word unk_3001B40
 off_803FE04: .word byte_86BFE40
-	thumb_func_end chatbox_runScript_803FD9C
+    thumb_func_end chatbox_runScript_803FDA4
 
-// (u16 *scriptArr, u8 scriptID) -> void
+// (void *textScript, u8 scriptIdx) -> void
 	thumb_func_start chatbox_runScript_803FE08
 chatbox_runScript_803FE08:
 	push {r4,r5,lr}
@@ -141,8 +144,8 @@ chatbox_runScript_803FE08:
 	.byte 0, 0
 	thumb_func_end chatbox_runScript_803FE08
 
-	thumb_func_start chatbox_803FE10
-chatbox_803FE10:
+	thumb_func_start chatbox_runScript_803FE10
+chatbox_runScript_803FE10:
 	push {r4,r5,lr}
 	mov r4, #1
 loc_803FE14:
@@ -183,7 +186,7 @@ off_803FE60: .word 0x320
 off_803FE68: .word byte_86C0900
 off_803FE6C: .word unk_3001B40
 off_803FE70: .word byte_86C0920
-	thumb_func_end chatbox_803FE10
+	thumb_func_end chatbox_runScript_803FE10
 
 // (u16 *scriptList, u8 scriptOffIdx) -> void
 	thumb_func_start chatbox_runScript_803FE74
@@ -784,10 +787,10 @@ dword_8040370: .word 0x1D2
 chatbox_runTrainScript:
 	push {r4,r5,lr}
 	mov r1, r0
-	ldr r0, off_8040380 // =eDialogScript2034A04
+	ldr r0, off_8040380 // =eTextScript2034A04
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	pop {r4,r5,pc}
-off_8040380: .word eDialogScript2034A04
+off_8040380: .word eTextScript2034A04
 	thumb_func_end chatbox_runTrainScript
 
 // (void *scripts, u8 scriptOffIdx) -> void
@@ -2467,6 +2470,11 @@ off_8041130: .word 0x100
 	thumb_func_end chatbox_804110C
 
 	thumb_local_start
+/*
+E9 = newline
+Description: moves the position for text writing to the next line
+Parameters: 0
+*/
 chatbox_E9_newline:
 	push {lr}
 	ldrb r2, [r5,#0xf]
@@ -2494,6 +2502,21 @@ off_804115C: .word byte_803FCE4
 	thumb_func_end chatbox_E9_newline
 
 	thumb_local_start
+/*
+EA = flag
+Description: does various things with flags
+EA 00 XX XX = set flag XXXX
+EA 01 XX XX = clear flag XXXX
+EA 02 XX XX = toggle flag XXXX
+EA 03 XX XX YY = set flag range (XXXX = starting flag, YY = amount of flags)
+EA 04 XX XX YY = clear flag range (XXXX = starting flag, YY = amount of flags)
+EA 05 = undefined (freeze)
+EA 06 XX = load flag number from 02009CD0 + XX * 4h + 4Ch and set that flag
+EA 07 XX XX = set flag XXXX and XXXX+80h, then copy some stuff based on XXXX-1CA0h (?????) (might be related to mail?)
+EA 08 XX XX = nop, but continues with script (XXXX isn't used?)
+EA 09 XX XX = set flag XXXX and XXXX+200h, then do something else with XXXX (?????)
+EA 0A XX XX = set flag XXXX and XXXX+40h, then do something else with XXXX (?????)
+*/
 chatbox_EA_flag:
 	push {lr}
 	ldr r2, off_8041180 // =off_8041184
@@ -2632,6 +2655,14 @@ chatbox_8041238:
 	thumb_func_end chatbox_8041238
 
 	thumb_local_start
+/*
+EB = option
+Description: creates an option to be selected using select
+Parameters: 5
+Parameter 1 = ??
+Parameters 2-4 = cursor settings
+EB XX LR UD = Pressing left moves cursor to option L, right moves cursor to option R, up moves cursor to option U, down moves cursor to option D
+*/
 chatbox_EB_option:
 	push {lr}
 	// mask
@@ -2670,6 +2701,14 @@ chatbox_EB_option:
 	thumb_func_end chatbox_EB_option
 
 	thumb_local_start
+/*
+EC = label
+Description: continue printing text after an arrow spawned by createchoice
+Parameters: 2
+Parameter 1 = "spaces" mode (0 = full text spaces, 1 = 1pxl lines)
+Parameter 2 = amount of "spaces" before text
+Example: EC 01 04 = display text 4 pixels behind an arrow spawned by createchoice
+*/
 chatbox_EC_label:
 	push {lr}
 	ldrb r2, [r4,#1]
@@ -3774,6 +3813,14 @@ loc_8041AD4:
 	thumb_func_end chatbox_8041ABC
 
 	thumb_local_start
+/*
+F0 = jump
+Description: execute a different script
+F0 00 XX = execute script XX (FF will continue with the current script)
+F0 01 = load 8-bit script number from 02009D6C and execute that script (if the number is FF, it will continue with the current script)
+F0 02 XX = store XX into 02009D6C (if XX = FFh, nothing happens and the script continues)
+F0 XX = ? (this is for XX above 02)
+*/
 chatbox_F0_jump:
 	push {lr}
 	ldrb r0, [r4,#1]
@@ -4526,13 +4573,13 @@ loc_8042014:
 off_8042060: .word off_8042064
 off_8042064: .word byte_873D9FC
 	.word dword_86EA94C
-	.word dword_86EB354
+	.word TextScriptEnemyNames86EB354
 	.word byte_86EF71C
-	.word dword_86CF4AC
+	.word TextScript86CF4AC
 	.word byte_873EA50
 	.word byte_873EA50
 	.word dword_86EA94C
-	.word byte_87F2E38
+	.word TextScriptNaviNames0
 	.word reqBBS_requestNames_textualData
 off_804208C: .word byte_8042090
 byte_8042090: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -4586,8 +4633,8 @@ chatbox_80420BC:
 	mov r0, #1
 	pop {pc}
 off_8042114: .word off_8042118
-off_8042118: .word byte_87F2E38
-	.word dword_87F2ED0
+off_8042118: .word TextScriptNaviNames0
+	.word TextScriptNaviNames1
 off_8042120: .word 0x140
 	thumb_func_end chatbox_80420BC
 

@@ -348,7 +348,7 @@
 // .global sub_8031A7A
 
 	.include "asm/chatbox.inc"
-// .global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 // .global chatbox_runScript_803FE74 // (u16 *scriptList, u8 scriptOffIdx) -> void
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
@@ -842,8 +842,8 @@
 // .global byte_86CB360
 
 	.include "data/dat38_87.inc"
-// .global dialogScript_873B9E0
-// .global byte_87E36F8
+// .global TextScriptCommError873B9E0
+// .global TextScript87E36F8
 
 	.include "data/dat38_88.inc"
 // .global dword_87E4FE0
@@ -862,9 +862,9 @@
 // .global byte_87E6BDC
 
 	.include "data/dat38_96.inc"
-// .global byte_87F2654
-// .global dword_87F2808
-// .global dword_87F2A1C
+// .global TextScriptNetworkEnterFolderName1
+// .global TextScriptNetworkEnterFolderName0
+// .global TextScriptNetworkRequestConnection87F2A1C
 
 
 /* Undeclared Symbols */
@@ -1018,7 +1018,7 @@
 // .equ unk_2018A00, 0x2018A00
 // .equ eTileRefs2018A04, 0x2018A04
 // .equ unk_201AA00, 0x201AA00
-// .equ unk_201BA00, 0x201BA00
+// .equ eTextScript201BA00, 0x201BA00
 // .equ byte_201BA10, 0x201BA10
 // .equ unk_201F320, 0x201F320
 // .equ unk_201F5A0, 0x201F5A0
@@ -1048,7 +1048,7 @@
 // .equ word_202A604, 0x202A604
 // .equ byte_202AB00, 0x202AB00
 // .equ byte_202AF00, 0x202AF00
-// .equ eDialogScript202DA04, 0x202DA04
+// .equ eTextScript202DA04, 0x202DA04
 // .equ byte_2030003, 0x2030003
 // .equ unk_2030A00, 0x2030A00
 // .equ unk_2032A00, 0x2032A00

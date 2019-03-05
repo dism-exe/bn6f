@@ -23,7 +23,7 @@ signed int __fastcall sub_812F000(char a1)
 
     *(v1 + 31) = a1;
     *(v1 + 2) = 48;
-    sub_8132280(65);
+    chatbox_runScript_803FD9C_on_eTextScript201BA20(65);
     result = 240;
     *(v1 + 40) = 240;
     return result;
@@ -203,7 +203,7 @@ void __noreturn sub_812F190()
                         *(v0 + 16) = 4;
                         if ( v12 != 2 )
                         {
-                            sub_8132280(64);
+                            chatbox_runScript_803FD9C_on_eTextScript201BA20(64);
                             v13 = 3;
                             if ( *(v0 + 38) == 8 )
                                 v13 = 4;
@@ -406,7 +406,7 @@ void sub_812F390()
                         if ( v11 <= 2 )
                         {
                             v12 = v11;
-                            sub_8132280(64);
+                            chatbox_runScript_803FD9C_on_eTextScript201BA20(64);
                             *(v0 + 73) = *(v0 + 2);
                             *(v0 + 2) = 36;
                             *(v0 + 22) = 0;
@@ -824,7 +824,7 @@ void sub_812F7C8()
                         {
                             sub_813068C();
                             *(v0 + 2) = 52;
-                            sub_8132280(65);
+                            chatbox_runScript_803FD9C_on_eTextScript201BA20(65);
                         }
                         return;
                     }
@@ -1195,7 +1195,7 @@ void sub_812FAE4()
                             sub_81307BC(v17);
                             if ( v19 )
                             {
-                                sub_8132280(66);
+                                chatbox_runScript_803FD9C_on_eTextScript201BA20(66);
                                 *(v0 + 73) = *(v0 + 2);
                                 *(v0 + 2) = 28;
                                 *(v0 + 12) = 0;
@@ -1294,7 +1294,7 @@ signed int sub_812FC50()
     }
     sub_803F798();
     sound_play(115, v15, v16);
-    sub_8132280(61);
+    chatbox_runScript_803FD9C_on_eTextScript201BA20(61);
     result = 8;
     *(v0 + 12) = 8;
     return result;
@@ -1627,7 +1627,7 @@ u32 sub_812FFA0()
         sub_81302F4(*(v1 + 44), 1);
         *(v1 + 2) = 40;
         *(v1 + 3) = 0;
-        sub_8132280(60);
+        chatbox_runScript_803FD9C_on_eTextScript201BA20(60);
         sub_8046696(6);
         *(v1 + 20) = 0;
         result = sub_81325CC();

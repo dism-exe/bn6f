@@ -209,7 +209,7 @@ typedef struct {
 	this array determines the script to be run for some type of NPCs
 	Hypothetical number of entries: 8*6 + 5 = 53
 	*/
-	u16 *scriptArray;            // loc=0x94
+	void *textScriptay;            // loc=0x94
 	// size=0x98
 }NPC;
 

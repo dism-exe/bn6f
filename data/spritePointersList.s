@@ -1,6 +1,6 @@
-	.include "data/spritePointersList.inc"
+	.include "data/SpritePointersList.inc"
 
-spritePointersList: .word battleSpritePtrs
+SpritePointersList: .word battleSpritePtrs
 	.word virusBattleSpritePtrs
 	.word naviBattleSpritePtrs
 	.word off_8031E00
@@ -1202,9 +1202,12 @@ off_8032F88: .word off_80331AC
 	.word off_803320C
 	.word 0x0
 	.word off_8033230
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word off_803326C
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word jt_big_80332C0
 	.word off_8033380
 	.word 0x0

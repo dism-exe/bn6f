@@ -2,7 +2,7 @@
 	.equ INC_DATA_SPRITEPOINTERS_8031CC4, 0
 
 /* Public Symbols */
-	.global spritePointersList
+	.global SpritePointersList
 	.global off_8032108
 	.global mugshotSpritePtrs
 	.global guiSpritePtrs

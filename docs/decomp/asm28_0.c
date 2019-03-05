@@ -161,7 +161,7 @@ int sub_809A05C()
 {
     int v0; // r5
 
-    chatbox_runScript(dialogScript86C580C, *(v0 + 8));
+    chatbox_runScript(TextScriptChipTrader86C580C, *(v0 + 8));
     sub_809A360(*(v0 + 116));
     *(v0 + 9) = 0;
     return 0;
@@ -209,7 +209,7 @@ signed int sub_809A078()
             v10 = word_200AC86;
             *(v8 + 80) = word_200AC86;
             *(v0 + 128) = v10;
-            chatbox_runScript(dialogScript86C580C, 15);
+            chatbox_runScript(TextScriptChipTrader86C580C, 15);
             LOWORD(dword_200ACB0) = 0;
             word_200AC84 = 0;
             word_200AC86 = 0;
@@ -405,7 +405,7 @@ int __fastcall sub_809A360(int a1)
     *(*(v2 + oToolkit_Unk200a220_Ptr) + 8) = *(v1 + 112);
     copyTiles(a1, 0, 0, byte_86C54D4, 9, dword_4 + 1);
     copyTiles(v3 + 1, 2, 0, byte_8099E5C, 7, &byte_0[2]);
-    return renderTextGfx_8045F8C(dialogScript86C580C, 64, &unk_200EF40, 100717568);
+    return renderTextGfx_8045F8C(TextScriptChipTrader86C580C, 64, &unk_200EF40, 100717568);
 }
 
 
@@ -449,7 +449,7 @@ int __noreturn sub_809A3EC()
 {
     int v0; // r5
 
-    chatbox_runScript(dialogScript86C580C, *(v0 + 8));
+    chatbox_runScript(TextScriptChipTrader86C580C, *(v0 + 8));
     sub_809A80C(*(v0 + 116));
     return 0;
 }
@@ -471,7 +471,7 @@ signed int sub_809A404()
     }
     else
     {
-        chatbox_runScript(dialogScript86C580C, 51);
+        chatbox_runScript(TextScriptChipTrader86C580C, 51);
         ClearEventFlagFromImmediate(23, 37);
         *(v0 + 132) = 8;
         *(v0 + 9) = 1;
@@ -511,7 +511,7 @@ signed int sub_809A44C()
     {
         *(v0 + 136) = *(*(v1 + oToolkit_ChatboxPtr) + 76);
         sub_809A868();
-        chatbox_runScript(dialogScript86C580C, 53);
+        chatbox_runScript(TextScriptChipTrader86C580C, 53);
         *(v0 + 9) = 0;
         return 0;
     }
@@ -587,7 +587,7 @@ signed int sub_809A520()
         return 1;
     if ( chatbox_8045F4C() )
     {
-        chatbox_runScript(dialogScript86C580C, 51);
+        chatbox_runScript(TextScriptChipTrader86C580C, 51);
         *(v0 + 132) = 8;
         *(v0 + 9) = 0;
     }
@@ -645,7 +645,7 @@ signed int sub_809A520()
         }
         else
         {
-            chatbox_runScript(dialogScript86C580C, 54);
+            chatbox_runScript(TextScriptChipTrader86C580C, 54);
             *(v0 + 9) = 2;
         }
     }
@@ -756,7 +756,7 @@ signed int sub_809A6EC()
         }
         else
         {
-            chatbox_runScript(dialogScript86C580C, 51);
+            chatbox_runScript(TextScriptChipTrader86C580C, 51);
             ClearEventFlagFromImmediate(23, 37);
             *(v0 + 132) = 8;
             *(v0 + 9) = 1;
@@ -775,7 +775,7 @@ int sub_809A75C()
     char v1; // r1
 
     sub_809A80C(*(v0 + 116));
-    chatbox_runScript(dialogScript86C580C, *(v0 + 140));
+    chatbox_runScript(TextScriptChipTrader86C580C, *(v0 + 140));
     v1 = 1;
     if ( *(v0 + 140) != 55 )
         v1 = 0;
@@ -840,7 +840,7 @@ LABEL_8:
     {
         sub_809A80C(*(v0 + 116));
         *(v0 + 9) = 0;
-        chatbox_runScript(dialogScript86C580C, 51);
+        chatbox_runScript(TextScriptChipTrader86C580C, 51);
         ClearEventFlagFromImmediate(23, 37);
         *(v0 + 132) = 8;
     }
@@ -859,7 +859,7 @@ int __fastcall sub_809A80C(int a1)
     *(tk->unk_200A220 + 2) = *(v1 + 112);
     copyTiles(a1, 0, 0, tileRefs86C5790, 9, dword_4 + 1);
     copyTiles(v3 + 2, 2, 0, tileRefs8099E78, 6, &byte_0[2]);
-    return renderTextGfx_8045F8C(&eDialogScript2033404, 6, &unk_200EF40, 100717568);
+    return renderTextGfx_8045F8C(&eTextScript2033404, 6, &unk_200EF40, 100717568);
 }
 
 
@@ -1019,7 +1019,7 @@ int __fastcall sub_809AAB8(int a1, int a2, int a3)
     sub_8033FC0(0, a2, a3);
     sub_8003984();
     sub_8003AD4();
-    chatbox_runScript(&eDialogScript2033404, 10);
+    chatbox_runScript(&eTextScript2033404, 10);
     sub_8046664();
     result = 0;
     *(v3 + 8) = 0;
@@ -1039,13 +1039,13 @@ signed int sub_809AADC()
         return 1;
     if ( chatbox_8045F4C() )
     {
-        chatbox_runScript(&eDialogScript2033404, 11);
+        chatbox_runScript(&eTextScript2033404, 11);
         result = 0;
         *(v0 + 8) = 0;
     }
     else
     {
-        chatbox_runScript(&eDialogScript2033404, 12);
+        chatbox_runScript(&eTextScript2033404, 12);
         *(v0 + 8) = 1;
         ClearEventFlagFromImmediate(23, 37);
         *(v0 + 132) = 8;
@@ -1086,7 +1086,7 @@ signed int sub_809AB20()
         {
             *(v1 + 8) = 4;
             sound_play(104, v6, v3);
-            chatbox_runScript(&eDialogScript2033404, 11);
+            chatbox_runScript(&eTextScript2033404, 11);
             return 0;
         }
     }
@@ -1143,14 +1143,14 @@ signed int sub_809AB20()
             }
             *(v1 + 116) = v12;
             *(v1 + 8) = v13;
-            chatbox_runScript(&byte_86C67E4, 14);
+            chatbox_runScript(&TextScriptLottery86C67E4, 14);
         }
         else
         {
             if ( v7 == 2 )
-                chatbox_runScript(&eDialogScript2033404, 20);
+                chatbox_runScript(&eTextScript2033404, 20);
             else
-                chatbox_runScript(&eDialogScript2033404, 13);
+                chatbox_runScript(&eTextScript2033404, 13);
             *(v1 + 8) = 1;
         }
         return 0;
@@ -1187,7 +1187,7 @@ int sub_809AC70()
     int v0; // r5
 
     ClearEventFlag(*(v0 + 120));
-    chatbox_runScript(&byte_86C67E4, *(v0 + 116));
+    chatbox_runScript(&TextScriptLottery86C67E4, *(v0 + 116));
     return 0;
 }
 
@@ -1198,7 +1198,7 @@ int sub_809AC88()
     int v0; // r5
     char v1; // r1
 
-    chatbox_runScript(&byte_86C67E4, *(v0 + 116));
+    chatbox_runScript(&TextScriptLottery86C67E4, *(v0 + 116));
     v1 = 28;
     if ( *(v0 + 116) != 15 )
         v1 = 0;
@@ -2136,7 +2136,7 @@ int __fastcall sub_809CB68(int a1, int a2, int a3)
     sub_8033FC0(0, a2, a3);
     sub_8003984();
     sub_8003AD4();
-    chatbox_runScript(&eDialogScript2033404, 30);
+    chatbox_runScript(&eTextScript2033404, 30);
     result = 0;
     *(v3 + 8) = 0;
     *(v3 + 28) = 0;
@@ -2157,7 +2157,7 @@ signed int sub_809CB88()
         chatbox_8045F3C(256);
         if ( !v1 )
         {
-            chatbox_runScript(&eDialogScript2033404, 32);
+            chatbox_runScript(&eTextScript2033404, 32);
             *(v0 + 8) = 2;
             return 0;
         }
@@ -2176,13 +2176,13 @@ signed int sub_809CB88()
                 sub_80010BE(0);
                 *(v0 + 112) = 0;
 LABEL_10:
-                chatbox_runScript(&eDialogScript2033404, 32);
+                chatbox_runScript(&eTextScript2033404, 32);
                 result = 0;
                 *(v0 + 8) = 0;
                 return result;
             }
         }
-        chatbox_runScript(&eDialogScript2033404, 31);
+        chatbox_runScript(&eTextScript2033404, 31);
         *(v0 + 8) = 1;
         return 0;
     }
@@ -2222,7 +2222,7 @@ signed int sub_809CC00()
     sub_803F4EC(v4);
     *(v0 + 8) = v4;
     if ( v4 )
-        chatbox_runScript(&eDialogScript2033404, 34);
+        chatbox_runScript(&eTextScript2033404, 34);
     return 0;
 }
 
@@ -2267,7 +2267,7 @@ LABEL_12:
                     *(v1[11] + 76) = v7;
                     sub_80010BE(v7);
                     sound_play(141, v8, v9);
-                    chatbox_runScript(&eDialogScript2033404, 35);
+                    chatbox_runScript(&eTextScript2033404, 35);
                     goto LABEL_11;
                 }
                 v5 += 4;
@@ -2277,7 +2277,7 @@ LABEL_12:
                 goto LABEL_12;
             sound_play(104, 2, byte_809CCF8);
             sub_80010C6();
-            chatbox_runScript(&eDialogScript2033404, 32);
+            chatbox_runScript(&eTextScript2033404, 32);
 LABEL_11:
             sub_81440D8();
             *(v0 + 8) = 1;
@@ -2296,7 +2296,7 @@ LABEL_11:
 // 0x809cd34
 int sub_809CD34()
 {
-    chatbox_runScript(&eDialogScript2033404, 33);
+    chatbox_runScript(&eTextScript2033404, 33);
     return 0;
 }
 
@@ -2332,7 +2332,7 @@ signed int sub_809CD60()
             sub_803F4EC(v4);
             *(v0 + 8) = v4;
             ClearEventFlagFromImmediate(1, 99);
-            chatbox_runScript(&eDialogScript2033404, 49);
+            chatbox_runScript(&eTextScript2033404, 49);
             return 0;
         }
         --word_200AD04[1];
@@ -2351,7 +2351,7 @@ signed int sub_809CD60()
 // 0x809cdc4
 int sub_809CDC4()
 {
-    chatbox_runScript(&eDialogScript2033404, 31);
+    chatbox_runScript(&eTextScript2033404, 31);
     return 0;
 }
 
@@ -2378,7 +2378,7 @@ int sub_809CDD4()
         if ( v0 != 15 )
             v2 = 51;
     }
-    chatbox_runScript(&eDialogScript2033404, v2);
+    chatbox_runScript(&eTextScript2033404, v2);
     return 0;
 }
 

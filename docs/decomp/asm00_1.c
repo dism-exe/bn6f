@@ -6307,7 +6307,7 @@ signed int sub_8007EB8()
             v3 += 3;
         v4 = v3;
     }
-    chatbox_runScript(scripts_commErr_87370C0, v4);
+    chatbox_runScript(TextScriptCommError87370C0, v4);
     result = 4;
     *(v0 + 1) = 4;
     return result;
@@ -8849,7 +8849,7 @@ int sub_800951E()
     }
     else
     {
-        chatbox_runScript(scripts_fullSynchro_86F3F5C, 10);
+        chatbox_runScript(TextScriptBattleTutFullSyncrho, 10);
         result = 4;
         *(v0 + 3) = 4;
     }
@@ -8888,7 +8888,7 @@ int sub_8009552()
             v2 = 32;
         else
             v2 = 16;
-        chatbox_runScript(scripts_dad_cybeastTut_86F4498, v2);
+        chatbox_runScript(TextScriptDadCybeastTut, v2);
         result = 4;
         *(v0 + 3) = 4;
     }
@@ -8921,7 +8921,7 @@ int sub_8009594()
     }
     else
     {
-        chatbox_runScript(scripts_shuko_crossTut_86F53CC, 3);
+        chatbox_runScript(TextScriptShukoCrossTut, 3);
         result = 4;
         *(v0 + 3) = 4;
     }
@@ -8950,7 +8950,7 @@ int sub_80095C8()
     else
     {
         v1 = getPETNaviSelect();
-        chatbox_runScript(scripts_commErr_87370C0, v1 + 115);
+        chatbox_runScript(TextScriptCommError87370C0, v1 + 115);
         result = 4;
         *(v0 + 3) = 4;
     }
@@ -9404,7 +9404,7 @@ int sub_8009966()
     else
     {
         v1 = getPETNaviSelect();
-        chatbox_runScript(scripts_commErr_87370C0, v1 + 115);
+        chatbox_runScript(TextScriptCommError87370C0, v1 + 115);
         result = 4;
         *(v0 + 3) = 4;
     }
@@ -9783,7 +9783,7 @@ int sub_8009C56()
     else
     {
         v1 = getPETNaviSelect();
-        chatbox_runScript(scripts_commErr_87370C0, v1 + 115);
+        chatbox_runScript(TextScriptCommError87370C0, v1 + 115);
         result = 4;
         *(v0 + 3) = 4;
     }
@@ -9985,12 +9985,12 @@ int sub_8009E10()
 
 
 // 0x8009e2c
-signed int sub_8009E2C()
+signed int RunTextScriptDustManUndernetTut_8009E2C()
 {
     int v0; // r5
     signed int result; // r0
 
-    chatbox_runScript(dialogScript_87F2F68, *(*(v0 + 144) + 4));
+    chatbox_runScript(TextScriptDustManUndernetTut, *(*(v0 + 144) + 4));
     result = 4;
     *(v0 + 2) = 4;
     return result;
@@ -10201,7 +10201,7 @@ int sub_8009F8A()
     else
     {
         v1 = getPETNaviSelect();
-        chatbox_runScript(scripts_commErr_87370C0, v1 + 115);
+        chatbox_runScript(TextScriptCommError87370C0, v1 + 115);
         result = 4;
         *(v0 + 3) = 4;
     }

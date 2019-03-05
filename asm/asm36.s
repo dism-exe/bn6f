@@ -212,7 +212,7 @@ sub_8130208:
 	ldrb r1, [r0,r1]
 	mov r0, #0xf
 	and r1, r0
-	ldr r0, off_8130238 // =dword_86CF4AC
+	ldr r0, off_8130238 // =TextScript86CF4AC
 	mov r4, #8
 	mov r5, #1
 	ldr r6, off_813024C // =dword_86B7AE0 
@@ -221,7 +221,7 @@ sub_8130208:
 	pop {r4-r7,pc}
 	.word unk_20347D8
 off_8130234: .word word_2023FA0
-off_8130238: .word dword_86CF4AC
+off_8130238: .word TextScript86CF4AC
 off_813023C: .word off_8130240
 off_8130240: .word byte_2017A00
 off_8130244: .word dword_8130248
@@ -505,7 +505,7 @@ loc_8130436:
 	mov r1, #0x30 
 loc_813045C:
 	mov r0, r1
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 locret_8130462:
 	pop {pc}
 	thumb_func_end sub_8130424
@@ -944,11 +944,11 @@ sub_81307BC:
 	tst r0, r0
 	beq locret_81307F0
 	mov r0, #0x3f 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	b loc_81307DE
 loc_81307D8:
 	mov r0, #0x3e 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 loc_81307DE:
 	ldrb r0, [r5,#2]
 	mov r1, #0x49 
@@ -1226,7 +1226,7 @@ loc_8130A62:
 	beq loc_8130B08
 	push {r0}
 	mov r0, #0x40 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	pop {r0}
 	mov r1, #3
 	ldrh r0, [r5,#0x26]
@@ -1269,7 +1269,7 @@ loc_8130ADA:
 	strh r1, [r5,#0x2a]
 	bl sub_8131C04
 	mov r0, #0x41 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	b loc_8130B08
 loc_8130AFA:
 	bl sub_81313C0
@@ -1291,7 +1291,7 @@ loc_8130B12:
 	mov r0, #4
 	strb r0, [r5,#0x1f]
 	mov r0, #0x41 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	mov r0, #0xf0
 	strh r0, [r5,#0x28]
 locret_8130B2C:
@@ -1449,7 +1449,7 @@ loc_8130C50:
 	mov r0, #4
 	strb r0, [r5,#2]
 	mov r0, #0x68 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	ldrb r1, [r5,#0x1b]
 	mov r2, #0x20 
 	orr r1, r2
@@ -1739,7 +1739,7 @@ loc_8130EA0:
 	mov r0, #0x18
 	strb r0, [r5,#0x1f]
 	mov r0, #0x41 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	mov r0, #0xf0
 	strh r0, [r5,#0x28]
 locret_8130EB8:
@@ -2113,7 +2113,7 @@ loc_813117E:
 	b loc_813119C
 loc_813118C:
 	mov r0, #0x68 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	b loc_813119C
 loc_8131194:
 	bl sub_81313C0
@@ -2180,7 +2180,7 @@ sub_8131210:
 	ldrb r0, [r5,#0xc]
 	ldr r1, off_81312D0 // =dword_81312D4
 	ldrb r0, [r1,r0]
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	b locret_81312C8
 loc_813123E:
 	bl sub_803DD60
@@ -2220,7 +2220,7 @@ loc_813126C:
 	strb r0, [r5,#0xc]
 	ldr r1, off_81312D0 // =dword_81312D4
 	ldrb r0, [r1,r0]
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	bl sub_81314E4
 	b locret_81312C8
 loc_8131292:
@@ -2231,7 +2231,7 @@ loc_8131292:
 	bl isJoystickIRQActive
 	beq locret_81312C8
 	mov r0, #0x69 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	mov r1, #4
 	ldrb r0, [r7,#0x11]
 	tst r0, r0
@@ -2338,7 +2338,7 @@ loc_8131350:
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	mov r0, #0x68 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	ldrb r1, [r5,#0x1b]
 	mov r0, #0x20 
 	orr r1, r0
@@ -2396,7 +2396,7 @@ loc_81313D2:
 	mov r1, #0x30 
 loc_81313F6:
 	mov r0, r1
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 locret_81313FC:
 	pop {pc}
 	.byte 0, 0
@@ -2841,7 +2841,7 @@ sub_8131768:
 	mov r0, #0x83
 	bl sound_play // () -> void
 	mov r0, #0x68 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	ldrb r1, [r5,#0x1b]
 	mov r0, #0x20 
 	orr r1, r0
@@ -2854,7 +2854,7 @@ dword_8131788: .word 0xFEDC
 sub_813178C:
 	push {lr}
 	mov r0, #0x67 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	mov r0, #0xc
 	strb r0, [r5,#2]
 	mov r0, #0
@@ -3889,15 +3889,15 @@ dword_8132278: .word 0xFFFFFFFF
 dword_813227C: .word 0x2000
 	thumb_func_end sub_8132194
 
-	thumb_func_start sub_8132280
-sub_8132280:
+	thumb_func_start chatbox_runScript_803FD9C_on_eTextScript201BA20
+chatbox_runScript_803FD9C_on_eTextScript201BA20:
 	push {lr}
 	mov r1, r0
-	ldr r0, off_813228C // =byte_201BA20
-	bl chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
+	ldr r0, off_813228C // =eTextScript201BA20
+	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 	pop {pc}
-off_813228C: .word byte_201BA20
-	thumb_func_end sub_8132280
+off_813228C: .word eTextScript201BA20
+	thumb_func_end chatbox_runScript_803FD9C_on_eTextScript201BA20
 
 	thumb_func_start sub_8132290
 sub_8132290:
@@ -4985,14 +4985,14 @@ sub_8132BA8:
 	bl sub_8132EF4
 	bl sub_8132F4C
 	bl sub_8132FD0
-	ldr r0, off_8132C30 // =byte_201BF00
+	ldr r0, off_8132C30 // =eTextScript201BF00
 	mov r1, #0xa
-	bl chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
+	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 	mov r0, #0x40 
 	bl chatbox_setFlags2009F38
 	pop {pc}
 dword_8132C2C: .word 0x1F40
-off_8132C30: .word byte_201BF00
+off_8132C30: .word eTextScript201BF00
 	thumb_local_start
 sub_8132C34:
 	push {lr}
@@ -5097,7 +5097,7 @@ loc_8132CD4:
 	ldr r0, off_8132D7C // =off_8132D80
 	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_8132D14 // =off_8132D18
-	ldr r1, off_8132D4C // =byte_201BF00
+	ldr r1, off_8132D4C // =eTextScript201BF00
 	ldr r2, off_8132D50 // =decomp_2013A00 
 	bl sub_8123300
 	// j
@@ -5107,7 +5107,7 @@ loc_8132CD4:
 	// cpyOff
 	mov r2, #1
 	// tileRefs
-	ldr r3, off_8132D90 // =unk_201BA00 
+	ldr r3, off_8132D90 // =eTextScript201BA00
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -5129,7 +5129,7 @@ off_8132D18: .word dword_86CF618
 	.word dword_86CF730
 	.word dword_86CF618
 	.word dword_86CF730
-off_8132D4C: .word byte_201BF00
+off_8132D4C: .word eTextScript201BF00
 off_8132D50: .word decomp_2013A00
 off_8132D54: .word off_8132D58
 off_8132D58: .word dword_86C9108
@@ -5146,13 +5146,13 @@ off_8132D80: .word 0x886C8054
 	.word 0x6000020
 	.word decomp_2013A00
 	.word 0x886CF508
-off_8132D90: .word unk_201BA00
+off_8132D90: .word eTextScript201BA00
 	.word decomp_2013A00
 	.word 0x0
 	thumb_local_start
 sub_8132D9C:
 	push {r4-r7,lr}
-	ldr r0, off_8132EEC // =byte_201BF00
+	ldr r0, off_8132EEC // =eTextScript201BF00
 	mov r1, #0
 	ldr r2, off_8132E9C // =byte_2017A00 
 	ldr r3, dword_8132EA0 // =0x6004000 
@@ -5163,7 +5163,7 @@ sub_8132D9C:
 	bl renderTextGfx_8045F8C
 	thumb_func_end sub_8132D9C
 
-	ldr r0, off_8132EEC // =byte_201BF00
+	ldr r0, off_8132EEC // =eTextScript201BF00
 	mov r1, #1
 	ldr r2, off_8132EA4 // =unk_2017E00 
 	ldr r3, dword_8132EA8 // =0x6004200 
@@ -5172,7 +5172,7 @@ sub_8132D9C:
 	ldr r6, off_8132EF0 // =dword_86B7AE0 
 	mov r7, #0
 	bl renderTextGfx_8045F8C
-	ldr r0, off_8132EEC // =byte_201BF00
+	ldr r0, off_8132EEC // =eTextScript201BF00
 	mov r1, #2
 	ldr r2, off_8132EAC // =unk_2018200 
 	ldr r3, dword_8132EB0 // =0x6004400 
@@ -5181,7 +5181,7 @@ sub_8132D9C:
 	ldr r6, off_8132EF0 // =dword_86B7AE0 
 	mov r7, #0
 	bl renderTextGfx_8045F8C
-	ldr r0, off_8132EEC // =byte_201BF00
+	ldr r0, off_8132EEC // =eTextScript201BF00
 	mov r1, #3
 	ldr r2, off_8132EB4 // =unk_2018600 
 	ldr r3, dword_8132EB8 // =0x6004600 
@@ -5194,7 +5194,7 @@ sub_8132D9C:
 	mov r1, r10
 	ldr r1, [r1,#0x34]
 	bl sub_8132FB8
-	ldr r0, off_8132EEC // =byte_201BF00
+	ldr r0, off_8132EEC // =eTextScript201BF00
 	mov r1, #7
 	ldr r2, off_8132EBC // =unk_2018E00 
 	ldr r3, dword_8132EC0 // =0x6004a00 
@@ -5207,7 +5207,7 @@ sub_8132D9C:
 	mov r1, r10
 	ldr r1, [r1,#0x34]
 	bl sub_8132FB8
-	ldr r0, off_8132EEC // =byte_201BF00
+	ldr r0, off_8132EEC // =eTextScript201BF00
 	mov r1, #7
 	ldr r2, off_8132EC4 // =unk_2019200 
 	ldr r3, dword_8132EC8 // =0x6004c00 
@@ -5220,7 +5220,7 @@ sub_8132D9C:
 	mov r1, r10
 	ldr r1, [r1,#0x34]
 	bl sub_8132FB8
-	ldr r0, off_8132EEC // =byte_201BF00
+	ldr r0, off_8132EEC // =eTextScript201BF00
 	mov r1, #7
 	ldr r2, off_8132ECC // =unk_2019600 
 	ldr r3, dword_8132ED0 // =0x6004e00 
@@ -5233,7 +5233,7 @@ sub_8132D9C:
 	mov r1, r10
 	ldr r1, [r1,#0x34]
 	bl sub_8132FC4
-	ldr r0, off_8132EEC // =byte_201BF00
+	ldr r0, off_8132EEC // =eTextScript201BF00
 	mov r1, #8
 	ldr r2, off_8132ED4 // =byte_2019A00 
 	ldr r3, dword_8132ED8 // =0x6005000 
@@ -5246,7 +5246,7 @@ sub_8132D9C:
 	mov r1, r10
 	ldr r1, [r1,#0x38]
 	str r0, [r1,#8]
-	ldr r0, off_8132EEC // =byte_201BF00
+	ldr r0, off_8132EEC // =eTextScript201BF00
 	mov r1, #6
 	ldr r2, off_8132EDC // =unk_2019E00 
 	ldr r3, dword_8132EE0 // =0x6005200 
@@ -5255,7 +5255,7 @@ sub_8132D9C:
 	ldr r6, off_8132EF0 // =dword_86B7AE0 
 	mov r7, #0
 	bl renderTextGfx_8045F8C
-	ldr r0, off_8132EEC // =byte_201BF00
+	ldr r0, off_8132EEC // =eTextScript201BF00
 	mov r1, #5
 	ldr r2, off_8132EE4 // =unk_201A200 
 	ldr r3, dword_8132EE8 // =0x6005400 
@@ -5286,7 +5286,7 @@ off_8132EDC: .word unk_2019E00
 dword_8132EE0: .word 0x6005200
 off_8132EE4: .word unk_201A200
 dword_8132EE8: .word 0x6005400
-off_8132EEC: .word byte_201BF00
+off_8132EEC: .word eTextScript201BF00
 off_8132EF0: .word dword_86B7AE0
 	thumb_local_start
 sub_8132EF4:
@@ -5336,7 +5336,7 @@ off_8132F48: .word unk_201C4C0
 sub_8132F4C:
 	push {r4-r7,lr}
 	bl sub_8132F78
-	ldr r0, off_8132F70 // =byte_201BF00
+	ldr r0, off_8132F70 // =eTextScript201BF00
 	mov r1, #4
 	ldr r2, off_8132F68 // =unk_2018A00 
 	ldr r3, dword_8132F6C // =0x6004800 
@@ -5350,7 +5350,7 @@ sub_8132F4C:
 	pop {r4-r7,pc}
 off_8132F68: .word unk_2018A00
 dword_8132F6C: .word 0x6004800
-off_8132F70: .word byte_201BF00
+off_8132F70: .word eTextScript201BF00
 off_8132F74: .word dword_86B7AE0
 	thumb_local_start
 sub_8132F78:
@@ -5691,7 +5691,7 @@ loc_81332C8:
 loc_81332D6:
 	bl sub_8133EC0
 	mov r0, #0
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	ldr r0, off_813338C // =word_202A020 
 	bl sub_811FE34
 	ldr r0, off_8133394 // =unk_202A3E0 
@@ -5920,7 +5920,7 @@ loc_81334E2:
 	mov r0, #0x83
 	bl sound_play // () -> void
 	mov r0, #0xb
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	b locret_8133534
 loc_8133504:
 	mov r0, #0x81
@@ -5932,13 +5932,13 @@ loc_8133504:
 	mov r0, #0xc
 	str r0, [r5,#0x68]
 	mov r0, #0x10
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #8
 	strb r0, [r5,#3]
 	b locret_8133534
 loc_8133526:
 	mov r0, #0x11
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #4
 	strb r0, [r5,#3]
 	mov r0, #0
@@ -6000,7 +6000,7 @@ loc_8133590:
 	mov r4, #0x1b
 loc_81335A8:
 	mov r0, r4
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #0
 	strb r0, [r5,#3]
 	mov r0, #0
@@ -6023,7 +6023,7 @@ sub_81335C0:
 	bl chatbox_8045F3C
 	bne locret_81335D4
 	mov r0, #0x14
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #0
 	str r0, [r5,#0x68]
 locret_81335D4:
@@ -6086,7 +6086,7 @@ loc_8133636:
 	mov r0, #0xc
 	str r0, [r5,#0x68]
 	mov r0, #0xc
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 locret_8133646:
 	pop {pc}
 	thumb_func_end sub_8133618
@@ -6114,7 +6114,7 @@ loc_8133666:
 	mov r0, #0x14
 	str r0, [r5,#0x68]
 	mov r0, #0x1a
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 locret_813367A:
 	pop {pc}
 	thumb_func_end sub_8133648
@@ -6125,7 +6125,7 @@ sub_813367C:
 	sub r0, #4
 	ldr r1, off_8133690 // =byte_8133694
 	ldr r0, [r1,r0]
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #0x69 
 	bl sound_play // () -> void
 	pop {pc}
@@ -6144,7 +6144,7 @@ sub_81336A0:
 	cmp r0, r1
 	beq loc_81336B8
 	mov r0, #0xc
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 loc_81336B8:
 	mov r0, #0xc
 	str r0, [r5,#0x68]
@@ -6192,7 +6192,7 @@ loc_81336FA:
 	cmp r1, r2
 	beq loc_8133720
 	mov r0, #0xd
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	bl sub_8134FE0
 	mov r0, #8
 	str r0, [r5,#0x68]
@@ -6204,7 +6204,7 @@ loc_8133720:
 	mov r4, #0x1b
 loc_813372A:
 	mov r0, r4
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #0
 	strb r0, [r5,#3]
 	mov r0, #0
@@ -6225,7 +6225,7 @@ sub_8133740:
 	mov r0, #0xc
 	str r0, [r5,#0x68]
 	mov r0, #0x12
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 locret_8133758:
 	pop {pc}
 	.balign 4, 0x00
@@ -6252,7 +6252,7 @@ sub_8133770:
 	cmp r0, #0x30 
 	beq locret_8133784
 	mov r0, #0x1b
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #0
 	strb r0, [r5,#3]
 locret_8133784:
@@ -6273,7 +6273,7 @@ sub_8133788:
 	mov r0, #0
 	strb r0, [r5,#2]
 	mov r0, #0x17
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	b loc_81337B0
 loc_81337A8:
 	mov r0, #4
@@ -6327,7 +6327,7 @@ sub_81337E8:
 	mov r0, #0
 	strb r0, [r5,#2]
 	mov r0, #0x17
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #0x7b 
 	bl sound_play // () -> void
 	b loc_8133864
@@ -6605,7 +6605,7 @@ loc_8133A7C:
 	bl chatbox_8045F3C
 	beq loc_8133AA0
 	mov r0, #0xb
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #4
 	strb r0, [r5,#1]
 	mov r0, #4
@@ -6623,7 +6623,7 @@ loc_8133AA0:
 	b loc_8133AE2
 loc_8133AB2:
 	mov r0, #0x1b
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #4
 	strb r0, [r5,#1]
 	mov r0, #0xc
@@ -6637,7 +6637,7 @@ loc_8133AC6:
 	bl sub_81207C4
 	bl sub_8131588
 	mov r0, #0x18
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #4
 	bl sub_813175C
 	mov r0, #4
@@ -6675,7 +6675,7 @@ loc_8133B2C:
 	bl isJoystickIRQActive
 	beq loc_8133B4C
 	mov r0, #0xb
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #4
 	strb r0, [r5,#1]
 	mov r0, #4
@@ -6711,7 +6711,7 @@ sub_8133B74:
 	bne loc_8133B8A
 	mov r0, #0x18
 loc_8133B8A:
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 loc_8133B8E:
 	bl sub_81340FC
 	bl sub_80465BC
@@ -6754,7 +6754,7 @@ loc_8133BD4:
 	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	str r1, [r0,#0x4c]
 	mov r0, #2
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #0x69 
 	bl sound_play // () -> void
 	mov r0, #1
@@ -6839,7 +6839,7 @@ loc_8133C72:
 	mov r6, #0x1b
 loc_8133C88:
 	mov r0, r6
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	strb r4, [r5,#2]
 	ldrb r0, [r5,#3]
 	strb r0, [r5,#0xd]
@@ -6874,7 +6874,7 @@ sub_8133C9C:
 	mov r0, #0x83
 	bl sound_play // () -> void
 	mov r0, #0x21 
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	b loc_8133D56
 loc_8133CD2:
 	ldrh r2, [r5,#0x20]
@@ -6896,7 +6896,7 @@ loc_8133CE8:
 	b loc_8133CFC
 loc_8133CF0:
 	mov r0, #0xe
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #8
 	str r0, [r5,#0x68]
 	b locret_8133D5A
@@ -6917,7 +6917,7 @@ loc_8133CFC:
 	b locret_8133D5A
 loc_8133D1C:
 	mov r0, #1
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #8
 	str r0, [r5,#0x68]
 	b locret_8133D5A
@@ -6942,7 +6942,7 @@ loc_8133D36:
 	mov r0, #0x82
 	bl sound_play // () -> void
 	mov r0, #0x19
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 loc_8133D56:
 	mov r0, #0xc
 	str r0, [r5,#0x68]
@@ -7163,7 +7163,7 @@ loc_8133EDC:
 	ldr r0, off_8133FB4 // =off_8133FB8
 	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_8133F2C // =off_8133F30
-	ldr r1, off_8133F64 // =unk_2028A20 
+	ldr r1, off_8133F64 // =eTextScript2028A20
 	ldr r2, off_8133F68 // =decomp_2013A00 
 	bl sub_8123300
 	// j
@@ -7202,7 +7202,7 @@ off_8133F30: .word dword_86CEE84
 	.word dword_86CF1A8
 	.word dword_86CEE84
 	.word dword_86CF1A8
-off_8133F64: .word unk_2028A20
+off_8133F64: .word eTextScript2028A20
 off_8133F68: .word decomp_2013A00
 off_8133F6C: .word off_8133F70
 off_8133F70: .word dword_86C9108
@@ -7410,14 +7410,14 @@ dword_813418C: .word 0x1B60030
 	thumb_func_end sub_8134138
 
 	thumb_local_start
-sub_8134190:
+chatbox_runScript_803FD9C_on_eTextScript2028A20:
 	push {lr}
 	mov r1, r0
-	ldr r0, off_813419C // =unk_2028A20 
-	bl chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
+	ldr r0, off_813419C // =eTextScript2028A20
+	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 	pop {pc}
-off_813419C: .word unk_2028A20
-	thumb_func_end sub_8134190
+off_813419C: .word eTextScript2028A20
+	thumb_func_end chatbox_runScript_803FD9C_on_eTextScript2028A20
 
 	thumb_local_start
 sub_81341A0:
@@ -9560,7 +9560,7 @@ loc_813521C:
 	bne loc_8135224
 	mov r0, #6
 loc_8135224:
-	bl sub_8134190
+	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
 	mov r0, #0x69 
 	bl sound_play // () -> void
 	ldrb r0, [r5,#3]
@@ -10495,7 +10495,7 @@ loc_81359C2:
 	mov r0, #0xff
 	strh r0, [r5,#0x30]
 	mov r0, #5
-	bl sub_8135F88
+	bl chatbox_runScript_803FD9C_on_eTextScript201D280
 	mov r0, #0x38 
 	strb r0, [r5,#2]
 	b loc_8135A08
@@ -10862,7 +10862,7 @@ off_8135CEC: .word unk_201D180
 	.word unk_201E670
 	.word decomp_2013A00
 	.word 0x886D55C8
-	.word unk_201D280
+	.word eTextScript201D280
 	.word decomp_2013A00
 	.word dword_86CDBC4
 	.word byte_3001610
@@ -11160,17 +11160,17 @@ dword_8135F7C: .word 0x600B800
 off_8135F80: .word dword_86A5D60
 off_8135F84: .word byte_813565C
 	thumb_local_start
-sub_8135F88:
+chatbox_runScript_803FD9C_on_eTextScript201D280:
 	push {r4,lr}
 	mov r1, r0
-	ldr r0, off_8135F94 // =unk_201D280 
-	bl chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
+	ldr r0, off_8135F94 // =eTextScript201D280
+	bl chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 	pop {r4,pc}
-off_8135F94: .word unk_201D280
+off_8135F94: .word eTextScript201D280
 	.word unk_201F2F0
 	.word 0x200
 	.word unk_201F4F0
-	thumb_func_end sub_8135F88
+	thumb_func_end chatbox_runScript_803FD9C_on_eTextScript201D280
 
 	thumb_local_start
 sub_8135FA4:
@@ -11532,7 +11532,7 @@ off_8136278: .word 0x14C
 sub_813627C:
 	push {lr}
 	mov r0, #0
-	bl sub_8135F88
+	bl chatbox_runScript_803FD9C_on_eTextScript201D280
 	mov r0, #0x7b 
 	bl sound_play // () -> void
 	mov r0, #0x34 
@@ -12253,7 +12253,7 @@ loc_81367EE:
 	mov r0, #0x83
 	bl sound_play // () -> void
 	mov r0, #4
-	bl sub_8135F88
+	bl chatbox_runScript_803FD9C_on_eTextScript201D280
 locret_8136802:
 	pop {pc}
 	thumb_func_end sub_81367C0
@@ -12537,7 +12537,7 @@ sub_8136A74:
 	cmp r0, #0x28 
 	beq loc_8136A8C
 	mov r0, #1
-	bl sub_8135F88
+	bl chatbox_runScript_803FD9C_on_eTextScript201D280
 loc_8136A8C:
 	mov r0, #0x2c 
 	strb r0, [r5,#3]
@@ -12696,7 +12696,7 @@ dword_8136B9C: .word 0xA0B0B
 sub_8136BA0:
 	push {r4-r7,lr}
 	mov r1, r0
-	ldr r0, off_8136BC8 // =unk_201D280 
+	ldr r0, off_8136BC8 // =eTextScript201D280
 	ldr r2, off_8136BCC // =byte_201B200
 	ldr r3, dword_8136BD0 // =0x600b800 
 	mov r4, #0xa
@@ -12714,7 +12714,7 @@ sub_8136BA0:
 	mov r5, #6
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r4-r7,pc}
-off_8136BC8: .word unk_201D280
+off_8136BC8: .word eTextScript201D280
 off_8136BCC: .word byte_201B200
 dword_8136BD0: .word 0x600B800
 off_8136BD4: .word dword_86A5D60
@@ -13052,7 +13052,7 @@ sub_8136EF8:
 	push {lr}
 	bl sub_81375D8
 	mov r0, #0
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #8
 	strb r0, [r5]
 	pop {pc}
@@ -13078,7 +13078,7 @@ sub_8136F0C:
 	beq locret_8136F3C
 	bl sub_81375D8
 	mov r0, #1
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0xc
 	strb r0, [r5]
 locret_8136F3C:
@@ -13105,7 +13105,7 @@ sub_8136F40:
 	beq locret_8136F70
 	bl sub_81375D8
 	mov r0, #2
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x10
 	strb r0, [r5]
 locret_8136F70:
@@ -13132,7 +13132,7 @@ sub_8136F74:
 	bl chatbox_8045F3C
 	bne locret_8136FA2
 	mov r0, #3
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x14
 	strb r0, [r5]
 locret_8136FA2:
@@ -13181,7 +13181,7 @@ loc_8136FEA:
 	mov r0, #0
 	bl sub_8137670
 	mov r0, #0xa
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x1c
 	strb r0, [r5]
 	b locret_813700C
@@ -13189,7 +13189,7 @@ loc_8136FFC:
 	mov r0, #0
 	bl sub_8137670
 	mov r0, #0xb
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x1c
 	strb r0, [r5]
 locret_813700C:
@@ -13232,7 +13232,7 @@ sub_8137028:
 	bl sub_813BFB8
 	beq loc_813705A
 	mov r0, #0xd
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	b loc_813706C
 loc_813705A:
 	ldr r0, off_8137098 // =0x34 
@@ -13241,7 +13241,7 @@ loc_813705A:
 	bl sub_813BF60
 	bne loc_8137078
 	mov r0, #0xc
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 loc_813706C:
 	mov r0, #0
 	bl sub_8137670
@@ -13287,7 +13287,7 @@ sub_81370AC:
 	cmp r0, #0x14
 	blt locret_81370C2
 	mov r0, #0xf
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x2c 
 	strb r0, [r5]
 locret_81370C2:
@@ -13329,7 +13329,7 @@ sub_81370D4:
 	ldr r0, dword_813715C // =0x1 
 	bl sub_8137670
 	mov r0, #0x14
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	bl sub_81375D8
 	mov r0, #0x38 
 	strb r0, [r5]
@@ -13338,7 +13338,7 @@ loc_8137112:
 	mov r0, #0
 	bl sub_8137670
 	mov r0, #0x10
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x34 
 	strb r0, [r5]
 	b locret_8137156
@@ -13346,7 +13346,7 @@ loc_8137124:
 	mov r0, #0
 	bl sub_8137670
 	mov r0, #0x11
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x34 
 	strb r0, [r5]
 	b locret_8137156
@@ -13359,7 +13359,7 @@ loc_8137136:
 	bl sub_813B9B4
 	beq locret_8137156
 	mov r0, #0x12
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x34 
 	strb r0, [r5]
 	mov r0, #0
@@ -13401,7 +13401,7 @@ sub_8137170:
 	bl chatbox_8045F3C
 	bne locret_813719E
 	mov r0, #0x15
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x3c 
 	strb r0, [r5]
 locret_813719E:
@@ -13439,7 +13439,7 @@ sub_81371B0:
 	bl sub_813BB68
 	beq loc_81371E2
 	mov r0, #0x17
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x44 
 	strb r0, [r5]
 	b locret_8137222
@@ -13450,7 +13450,7 @@ loc_81371E2:
 	bl sub_813BFB8
 	beq loc_81371F6
 	mov r0, #0x18
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	b loc_8137208
 loc_81371F6:
 	ldr r0, off_813722C // =0x8c 
@@ -13459,7 +13459,7 @@ loc_81371F6:
 	bl sub_813BF60
 	beq loc_8137214
 	mov r0, #0x16
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 loc_8137208:
 	mov r0, #0
 	bl sub_8137670
@@ -13502,7 +13502,7 @@ sub_8137244:
 	cmp r0, #0x14
 	blt locret_813725A
 	mov r0, #0x19
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x4c 
 	strb r0, [r5]
 locret_813725A:
@@ -13542,7 +13542,7 @@ sub_813726C:
 	ldr r0, dword_81372E0 // =0x1 
 	bl sub_8137670
 	mov r0, #0x1c
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	bl sub_81375D8
 	mov r0, #0x58 
 	strb r0, [r5]
@@ -13551,7 +13551,7 @@ loc_81372A6:
 	mov r0, #0
 	bl sub_8137670
 	mov r0, #0x1a
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x54 
 	strb r0, [r5]
 	b locret_81372D8
@@ -13564,7 +13564,7 @@ loc_81372B8:
 	bl sub_813B9B4
 	beq locret_81372D8
 	mov r0, #0x1b
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x54 
 	strb r0, [r5]
 	mov r0, #0
@@ -13614,7 +13614,7 @@ sub_81372F4:
 	bne locret_8137332
 	bl sub_81375D8
 	mov r0, #0x1d
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x5c 
 	strb r0, [r5]
 locret_8137332:
@@ -13641,7 +13641,7 @@ sub_8137334:
 	bne locret_8137366
 	bl sub_81375D8
 	mov r0, #0x1e
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x60 
 	strb r0, [r5]
 locret_8137366:
@@ -13681,7 +13681,7 @@ loc_8137388:
 	bl sub_813BB68
 	beq loc_81373B2
 	mov r0, #0x20 
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0
 	bl sub_8137670
 	mov r0, #0x68 
@@ -13694,7 +13694,7 @@ loc_81373B2:
 	bl sub_813BFB8
 	beq loc_81373C6
 	mov r0, #0x22 
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	b loc_81373D8
 loc_81373C6:
 	ldr r0, off_8137494 // =0x90 
@@ -13703,7 +13703,7 @@ loc_81373C6:
 	bl sub_813BF60
 	beq loc_81373E4
 	mov r0, #0x1f
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 loc_81373D8:
 	mov r0, #0
 	bl sub_8137670
@@ -13774,7 +13774,7 @@ loc_8137446:
 loc_8137466:
 	mov r7, r6
 	mov r0, #0x21 
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0
 	bl sub_8137670
 	mov r0, #0x68 
@@ -13817,7 +13817,7 @@ sub_81374AC:
 	cmp r0, #0x14
 	blt locret_81374C2
 	mov r0, #0x23 
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x70 
 	strb r0, [r5]
 locret_81374C2:
@@ -13865,7 +13865,7 @@ loc_81374FE:
 	bl sub_813B9B4
 	beq locret_813751E
 	mov r0, #0x24 
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x78 
 	strb r0, [r5]
 	mov r0, #0
@@ -13915,7 +13915,7 @@ sub_8137550:
 	blt locret_813756A
 	bl sub_81375D8
 	mov r0, #0x25 
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x84
 	strb r0, [r5]
 locret_813756A:
@@ -13941,7 +13941,7 @@ sub_813756C:
 	bl chatbox_8045F3C
 	beq locret_813759A
 	mov r0, #0x26 
-	bl sub_81376A8
+	bl RunTextScriptNaviCustDialog
 	mov r0, #0x88
 	strb r0, [r5]
 locret_813759A:
@@ -14104,14 +14104,14 @@ sub_813768C:
 	thumb_func_end sub_813768C
 
 	thumb_local_start
-sub_81376A8:
+RunTextScriptNaviCustDialog:
 	push {lr}
 	mov r1, r0
-	ldr r0, off_81376B4 // =dword_86D5708
+	ldr r0, off_81376B4 // =TextScriptNaviCustDialog
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	pop {pc}
-off_81376B4: .word dword_86D5708
-	thumb_func_end sub_81376A8
+off_81376B4: .word TextScriptNaviCustDialog
+	thumb_func_end RunTextScriptNaviCustDialog
 
 	thumb_func_start sub_81376B8
 sub_81376B8:
@@ -14675,7 +14675,7 @@ loc_8137AE8:
 	ldr r0, off_8137BA0 // =off_8137BA4
 	bl decompAndCopyData // (u32 *initRefs) -> void
 	ldr r0, off_8137B28 // =off_8137B2C
-	ldr r1, off_8137B60 // =byte_201BF00
+	ldr r1, off_8137B60 // =eTextScript201BF00
 	ldr r2, off_8137B64 // =decomp_2013A00 
 	bl sub_8123300
 	// j
@@ -14685,7 +14685,7 @@ loc_8137AE8:
 	// cpyOff
 	mov r2, #1
 	// tileRefs
-	ldr r3, off_8137BC0 // =unk_201BA00 
+	ldr r3, off_8137BC0 // =eTextScript201BA00
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -14707,7 +14707,7 @@ off_8137B2C: .word dword_86D8FA4
 	.word dword_86D9068
 	.word dword_86D8FA4
 	.word dword_86D9068
-off_8137B60: .word byte_201BF00
+off_8137B60: .word eTextScript201BF00
 off_8137B64: .word decomp_2013A00
 off_8137B68: .word off_8137B6C
 off_8137B6C: .word dword_86C9108
@@ -14731,7 +14731,7 @@ off_8137BA4: .word 0x886C8054
 	.word 0x6004000
 	.word 0x2800
 	.word 0x886D8E94
-off_8137BC0: .word unk_201BA00
+off_8137BC0: .word eTextScript201BA00
 	.word decomp_2013A00
 	.word 0x886C9BD4
 	.word 0x6014800
@@ -14877,7 +14877,7 @@ loc_8137D82:
 	.balign 4, 0x00
 off_8137D94: .word dword_86F0D7C
 	.word off_8137D9C
-off_8137D9C: .word byte_201BF00
+off_8137D9C: .word eTextScript201BF00
 off_8137DA0: .word 0x200
 	thumb_func_end sub_8137D50
 
@@ -15447,9 +15447,9 @@ loc_8138196:
 	add r2, r2, r3
 	add r2, r2, r1
 	str r2, [r4,#0x54]
-	ldr r0, off_813820C // =byte_201BF00
+	ldr r0, off_813820C // =eTextScript201BF00
 	mov r1, r7
-	bl chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
+	bl chatbox_runScript_803FD78 // (void *textScript, u8 scriptIdx) -> void
 	mov r5, #0
 loc_81381F6:
 	mov r0, r5
@@ -15459,7 +15459,7 @@ off_81381FC: .word unk_201CF00
 off_8138200: .word unk_2000260
 off_8138204: .word unk_20018C0
 dword_8138208: .word 0x95999
-off_813820C: .word byte_201BF00
+off_813820C: .word eTextScript201BF00
 	thumb_func_end sub_8138170
 
 	thumb_local_start

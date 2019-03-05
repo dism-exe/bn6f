@@ -751,7 +751,7 @@
 // .global dword_86CD924
 
 	.include "data/dat38_71.inc"
-// .global dword_86CF4AC
+// .global TextScript86CF4AC
 
 	.include "data/dat38_78.inc"
 // .global dword_86DAC40
@@ -766,7 +766,7 @@
 // .global dword_86E43DC
 // .global byte_86E587C
 // .global dword_86EA94C
-// .global dword_86EB354
+// .global TextScriptEnemyNames86EB354
 // .global byte_86EB8B8
 // .global dword_86EE0CC
 
@@ -856,12 +856,12 @@
 // .equ byte_201AE00, 0x201AE00
 // .equ byte_201B200, 0x201B200
 // .equ byte_201B480, 0x201B480
-// .equ unk_201BA00, 0x201BA00
+// .equ eTextScript201BA00, 0x201BA00
 // .equ unk_201BA04, 0x201BA04
-// .equ byte_201BA20, 0x201BA20
-// .equ byte_201BF20, 0x201BF20
+// .equ eTextScript201BA20, 0x201BA20
+// .equ eTextScript201BF20, 0x201BF20
 // .equ unk_201C400, 0x201C400
-// .equ unk_201D280, 0x201D280
+// .equ eTextScript201D280, 0x201D280
 // .equ unk_201D2F8, 0x201D2F8
 // .equ unk_201D700, 0x201D700
 // .equ unk_201D774, 0x201D774

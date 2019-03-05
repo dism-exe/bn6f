@@ -42,13 +42,13 @@ int chatbox_uncomp_803FD54()
 // (u8 scriptID) -> void
 void __fastcall chatbox_runScript_202da04(int a1)
 {
-    chatbox_runScript(eDialogScript202DA04, a1);
+    chatbox_runScript(eTextScript202DA04, a1);
 }
 
 
 // 0x803fd78
-// (u16 *scriptArr, u8 scriptID) -> void
-void __fastcall chatbox_803FD78(int a1, int a2)
+// (void *textScript, u8 scriptIdx) -> void
+void __fastcall chatbox_runScript_803FD78(int a1, int a2)
 {
     int v2; // r10
 
@@ -58,7 +58,7 @@ void __fastcall chatbox_803FD78(int a1, int a2)
 
 
 // 0x803fd9c
-// (u16 *scriptArr, u8 scriptID) -> void
+// (void *textScript, u8 scriptIdx) -> void
 void __fastcall chatbox_runScript_803FD9C(int a1, int a2)
 {
     int v2; // r10
@@ -71,7 +71,7 @@ void __fastcall chatbox_runScript_803FD9C(int a1, int a2)
 
 
 // 0x803fe08
-// (u16 *scriptArr, u8 scriptID) -> void
+// (void *textScript, u8 scriptIdx) -> void
 void chatbox_runScript_803FE08()
 {
     JUMPOUT(&loc_803FE14);
@@ -79,7 +79,7 @@ void chatbox_runScript_803FE08()
 
 
 // 0x803fe10
-void __fastcall chatbox_803FE10(int a1, int a2)
+void __fastcall chatbox_runScript_803FE10(int a1, int a2)
 {
     int v2; // r10
 
@@ -447,7 +447,7 @@ void __noreturn chatbox_copyTiles_8040344()
 // (u8 scriptOffIdx) -> void
 void __cdecl chatbox_runTrainScript(u8 scriptOffIdx)
 {
-    chatbox_runScript(eDialogScript2034A04, scriptOffIdx);
+    chatbox_runScript(eTextScript2034A04, scriptOffIdx);
 }
 
 

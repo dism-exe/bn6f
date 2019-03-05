@@ -47,7 +47,7 @@
 // .global sub_8030808
 // .global loc_803150A
 
-	.include "data/spritePointersList.inc"
+	.include "data/SpritePointersList.inc"
 // .global off_8032108
 
 	.include "asm/chatbox.inc"

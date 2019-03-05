@@ -140,12 +140,12 @@
 	.global byte_86EA925
 	.global dword_86EA92C
 	.global dword_86EA94C
-	.global dword_86EB354
+	.global TextScriptEnemyNames86EB354
 	.global byte_86EB8B8
 	.global dword_86EE0CC
-	.global dword_86EF4D4
+	.global TextScriptChipDesc86EF4D4
 	.global byte_86EF71C
-	.global notAdded_scripts_86EF78C
+	.global TextScriptBattleRunDialog
 	.global byte_86F0300
 	.global byte_86F0374
 	.global dword_86F047C
@@ -220,8 +220,8 @@
 	.global dword_86F2E34
 	.global dword_86F2E40
 	.global dword_86F2E54
-	.global dword_86F2E60
-	.global dword_86F3868
+	.global TextScriptBattleTut1
+	.global TextScriptBattleTutAreaGrab
 
 
 /* External Symbols */

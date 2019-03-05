@@ -2904,7 +2904,7 @@ void *__fastcall init_s_02011C50_8036E90(int a1, int a2, int a3, int a4)
     v5[8] = &dword_8037690;
     v5[9] = &dword_8037690;
     v5[0xA] = &dword_8037690;
-    v5[offsetof(s_02011C50, unk_0C)] = eDialogScript202DA04;
+    v5[offsetof(s_02011C50, unk_0C)] = eTextScript202DA04;
     result = &off_8036EC4;
     v5[offsetof(s_02011C50, unk_0D)] = &off_8036EC4;
     return result;
@@ -4003,7 +4003,7 @@ signed int __fastcall uncomp_8037AD0(signed int result)
     if ( result < 0 )
     {
         SWI_LZ77UnCompReadNormalWrite8bit(((2 * result) >> 1), &unk_2034A00);
-        result = eDialogScript2034A04;
+        result = eTextScript2034A04;
     }
     return result;
 }
@@ -4015,7 +4015,7 @@ signed int __fastcall uncomp_8037AEC(signed int result)
     if ( result < 0 )
     {
         SWI_LZ77UnCompReadNormalWrite8bit(((2 * result) >> 1), &unk_2033400);
-        result = &eDialogScript2033404;
+        result = &eTextScript2033404;
     }
     return result;
 }
@@ -5803,7 +5803,7 @@ void decomp_initGfx_8038F30()
 // 0x8038f74
 int __noreturn sub_8038F74()
 {
-    return renderTextGfx_8045F8C(dialogScript_873B9E0, 40, decomp_2013A00, 100683776);
+    return renderTextGfx_8045F8C(TextScriptCommError873B9E0, 40, decomp_2013A00, 100683776);
 }
 
 
@@ -9025,7 +9025,7 @@ void __fastcall sub_803B522(signed int a1, int a2, int a3, int a4)
     v12 = v7[2];
     v13 = *(v7 + 2);
     if ( a1 >= 10 )
-        (loc_8045FE4)(byte_87E36F8, v8, v9, v10);
+        (loc_8045FE4)(TextScript87E36F8, v8, v9, v10);
     else
         sub_8045FC6();
 }
@@ -9057,7 +9057,7 @@ int __fastcall sub_803B63C(int a1, int a2, int a3, int a4)
     v11 = *(v7 + 1);
     v12 = *(v7 + 2);
     v13 = *(v7 + 3);
-    return renderTextGfx_8045F8C(byte_87E36F8, v8, v9, v10);
+    return renderTextGfx_8045F8C(TextScript87E36F8, v8, v9, v10);
 }
 
 
@@ -9311,17 +9311,17 @@ void __fastcall sub_803BB2C(int a1)
     v2 = **v1;
     if ( v2 == 40 || v2 == 48 )
     {
-        chatbox_runScript_803FD9C(dword_87F2A1C, a1);
+        chatbox_runScript_803FD9C(TextScriptNetworkRequestConnection87F2A1C, a1);
     }
     else if ( v2 == 76 )
     {
         v3 = a1;
         v4 = sub_8123360();
-        chatbox_runScript_803FD9C(*(&off_803BB74 + v4), v3);
+        chatbox_runScript_803FD9C(*(&TextScriptNetworkEnterFolderNamePtrs + v4), v3);
     }
     else
     {
-        chatbox_runScript_803FE74(byte_87E36F8, a1);
+        chatbox_runScript_803FE74(TextScript87E36F8, a1);
     }
 }
 
@@ -9463,7 +9463,7 @@ void sub_803BEC0()
         v1 = *i;
         if ( !*i )
             break;
-        v2 = &byte_87E36F8[*&byte_87E36F8[2 * i[1]]];
+        v2 = &TextScript87E36F8[*&TextScript87E36F8[2 * i[1]]];
         while ( 1 )
         {
             v3 = *v2;
@@ -10916,7 +10916,7 @@ int sub_803CC14()
     result = IsPaletteFadeActive();
     if ( !v2 )
     {
-        sub_803CCB0(11);
+        RunTextScriptCommError_803CCB0(11);
         result = 8;
         *v0 = 8;
     }
@@ -10971,9 +10971,9 @@ void __fastcall __noreturn copyData_803CC60(int a1, int a2, int a3, int a4)
 
 
 // 0x803ccb0
-void __fastcall sub_803CCB0(int a1)
+void __fastcall RunTextScriptCommError_803CCB0(int a1)
 {
-    chatbox_runScript_803FD9C(dialogScript_873B9E0, a1);
+    chatbox_runScript_803FD9C(TextScriptCommError873B9E0, a1);
 }
 
 
@@ -11040,7 +11040,7 @@ int sub_803CD40()
     result = IsPaletteFadeActive();
     if ( !v2 )
     {
-        sub_803CD64(10);
+        RunTextScriptCommError_803CD64(10);
         result = 8;
         *v0 = 8;
     }
@@ -11064,9 +11064,9 @@ void __fastcall sub_803CD58(int a1, int a2, int a3, int a4)
 
 
 // 0x803cd64
-void __fastcall sub_803CD64(int a1)
+void __fastcall RunTextScriptCommError_803CD64(int a1)
 {
-    chatbox_runScript(dialogScript_873B9E0, a1);
+    chatbox_runScript(TextScriptCommError873B9E0, a1);
 }
 
 

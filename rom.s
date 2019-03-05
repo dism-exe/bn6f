@@ -35,8 +35,8 @@ ChipDataArr:
 	.include "data/ChipDataArr.s"
 asm03_0:
 	.include "asm/asm03_0.s"
-spritePointersList:
-	.include "data/spritePointersList.s"
+SpritePointersList:
+	.include "data/SpritePointersList.s"
 asm03_1:
 	.include "asm/asm03_1.s"
 chatbox:

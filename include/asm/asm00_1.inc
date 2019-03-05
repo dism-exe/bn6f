@@ -1053,7 +1053,7 @@
 // .global dword_86E09F8
 
 	.include "data/dat38_96.inc"
-// .global dialogScript_87F2F68
+// .global TextScriptDustManUndernetTut
 
 
 /* Undeclared Symbols */
@@ -1334,9 +1334,9 @@
 	.equ IWRAMRoutinesROMLocation, 0x81D6000
 	.equ IWRAMRoutinesROMLocation, 0x81D6000
 	.equ IWRAMRoutinesROMLocation, 0x81D6000
-// .global scripts_fullSynchro_86F3F5C
-// .global scripts_dad_cybeastTut_86F4498
-// .global scripts_shuko_crossTut_86F53CC
-// .global scripts_commErr_87370C0
+// .global TextScriptBattleTutFullSyncrho
+// .global TextScriptDadCybeastTut
+// .global TextScriptShukoCrossTut
+// .global TextScriptCommError87370C0
 
 	.endif // INC_ASM_ASM00_1

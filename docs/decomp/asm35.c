@@ -237,7 +237,7 @@ void sub_812ED58()
     {
         if ( eStruct200BC30_getRef()[14] == 2 )
             v1 = 48;
-        sub_8132280(v1);
+        chatbox_runScript_803FD9C_on_eTextScript201BA20(v1);
     }
 }
 

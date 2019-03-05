@@ -404,7 +404,7 @@ loc_812ED6A:
 	mov r1, #0x30 
 loc_812ED8A:
 	mov r0, r1
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 locret_812ED90:
 	pop {pc}
 	.balign 4, 0x00

@@ -1464,16 +1464,16 @@ void sub_8047834()
             sub_80465A0(byte_8046B74);
             sub_811980C(*(v1 + 1), v1[4], 0, 0);
             sub_8119854(120, 80, 0);
-            chatbox_runScript(eDialogScript202BA04, 127);
+            chatbox_runScript(eTextScript202BA04, 127);
         }
         else if ( v2 == 1 )
         {
-            chatbox_runScript(eDialogScript202BA04, *(v1 + 1));
+            chatbox_runScript(eTextScript202BA04, *(v1 + 1));
             sub_80478B8();
         }
         else
         {
-            chatbox_runScript(eDialogScript202DA04, *(v1 + 1) >> 2);
+            chatbox_runScript(eTextScript202DA04, *(v1 + 1) >> 2);
             sub_80478B8();
             sub_80465A0(byte_8046B84);
         }
@@ -3637,7 +3637,7 @@ void sub_8049BC0()
             v5 = v3 >> 4;
             CopyWords(off_8049C84[v4], off_8049C70[v0], 0x20u);
             sub_802FE28(32 * v0 + 1074855968, (byte_8049C58[v4] + 2864) | (*(&dword_8049C68 + v0) << 12), 2, 0);
-            (loc_8000AC8)(&eDialogScript202BA04[512 * v5], (v0 << 9) + 100756992, 512);
+            (loc_8000AC8)(&eTextScript202BA04[512 * v5], (v0 << 9) + 100756992, 512);
             sub_8132A50(166, 32 * v0 + 19, 1, 16 * v0 + 880);
         }
         ++v0;
@@ -4125,7 +4125,7 @@ signed int __fastcall sub_804A1FC(int a1, _BYTE *a2)
     unsigned __int8 *v2; // r4
     signed int result; // r0
 
-    v2 = dword_86CF4AC + *(dword_86CF4AC + a1);
+    v2 = TextScript86CF4AC + *(TextScript86CF4AC + a1);
     while ( 1 )
     {
         result = *v2;
@@ -5073,7 +5073,7 @@ signed int __fastcall sub_804AEC4(int a1, int a2, int a3)
 // 0x804af10
 void __fastcall sub_804AF10(int a1)
 {
-    chatbox_803FD78(dialogScript86C580C, a1);
+    chatbox_runScript_803FD78(TextScriptChipTrader86C580C, a1);
 }
 
 

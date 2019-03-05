@@ -64,8 +64,8 @@
 // .global sub_802FE6A
 // .global sub_802FE7A
 
-	.include "data/spritePointersList.inc"
-// .global spritePointersList
+	.include "data/SpritePointersList.inc"
+// .global SpritePointersList
 // .global mugshotSpritePtrs
 // .global guiSpritePtrs
 

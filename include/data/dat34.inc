@@ -101,7 +101,7 @@
 // .global sub_812F014
 
 	.include "asm/asm36.inc"
-// .global sub_8132280
+// .global chatbox_runScript_803FD9C_on_eTextScript201BA20
 // .global sub_81323B0
 // .global sub_8132430
 // .global sub_81324A8

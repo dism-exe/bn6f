@@ -622,8 +622,8 @@ comp_86C526C:
 	.incbin "data/compressed/comp_86C526C.lz77"
 dat38_65:
 	.include "data/dat38_65.s"
-scripts_86C580C:
-	.incbin "data/scripts/scripts_86C580C.bin"
+TextScriptChipTrader86C580C:
+	.incbin "data/scripts/TextScriptChipTrader86C580C.bin"
 dat38_66:
 	.include "data/dat38_66.s"
 comp_86C6B30:
@@ -810,16 +810,16 @@ comp_86DDB7C:
 	.incbin "data/compressed/comp_86DDB7C.lz77"
 dat38_85:
 	.include "data/dat38_85.s"
-scripts_fullSynchro_86F3F5C:
-	.incbin "data/scripts/scripts_fullSynchro_86F3F5C.bin"
-scripts_dad_cybeastTut_86F4498:
-	.incbin "data/scripts/scripts_dad_cybeastTut_86F4498.bin"
-scripts_shuko_crossTut_86F53CC:
-	.incbin "data/scripts/scripts_shuko_crossTut_86F53CC.bin"
+TextScriptBattleTutFullSyncrho:
+	.incbin "data/scripts/TextScriptBattleTutFullSyncrho.bin"
+TextScriptDadCybeastTut:
+	.incbin "data/scripts/TextScriptDadCybeastTut.bin"
+TextScriptShukoCrossTut:
+	.incbin "data/scripts/TextScriptShukoCrossTut.bin"
 dat38_86:
 	.include "data/dat38_86.s"
-scripts_commErr_87370C0:
-	.incbin "data/scripts/scripts_commErr_87370C0.bin"
+TextScriptCommError87370C0:
+	.incbin "data/scripts/TextScriptCommError87370C0.bin"
 dat38_87:
 	.include "data/dat38_87.s"
 comp_87E4500:

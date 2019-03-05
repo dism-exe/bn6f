@@ -229,7 +229,7 @@
 
 	.include "asm/chatbox.inc"
 // .global chatbox_uncompBasedOnMap_803FD08 // () -> int
-// .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_runScript_803FD78 // (void *textScript, u8 scriptIdx) -> void
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global byte_8043CA4
@@ -440,14 +440,14 @@
 // .global byte_86C9D6C
 
 	.include "data/dat38_71.inc"
-// .global dword_86CF4AC
+// .global TextScript86CF4AC
 
 	.include "data/dat38_80.inc"
 // .global off_86DC3F8
 
 	.include "data/dat38_85.inc"
 // .global dword_86EA94C
-// .global dword_86EB354
+// .global TextScriptEnemyNames86EB354
 // .global byte_86EF71C
 
 	.include "data/dat38_86.inc"
@@ -590,9 +590,9 @@
 // .equ byte_202AB00, 0x202AB00
 // .equ byte_202AF00, 0x202AF00
 // .equ eDecomp202BA00, 0x202BA00
-// .equ eDialogScript202BA04, 0x202BA04
+// .equ eTextScript202BA04, 0x202BA04
 // .equ byte_202DA00, 0x202DA00
-// .equ eDialogScript202DA04, 0x202DA04
+// .equ eTextScript202DA04, 0x202DA04
 // .equ byte_202F800, 0x202F800
 // .equ byte_202FA00, 0x202FA00
 // .equ byte_2030200, 0x2030200
@@ -639,7 +639,7 @@
 // .global compSpriteWhiteDot_84E0C4C
 // .global comp_86C5190
 // .global comp_86C526C
-// .global scripts_86C580C
+// .global TextScriptChipTrader86C580C
 // .global comp_86C73D8
 // .global comp_86C7764
 // .global comp_86C7980

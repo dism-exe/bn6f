@@ -25,7 +25,7 @@
 	.global reqBBS_81409F4
 	.global reqBBS_setFlag_e17b0f7_8140A00
 	.global reqBBS_clearFlag_8140A0C
-	.global reqBBS_runDialog_8140A70
+	.global reqBBS_RunTextScriptWhoAmI
 	.global byte_8140A74
 	.global byte_8140A8C
 	.global dword_8140AA4
@@ -140,7 +140,7 @@
 // .global byte_86C9D6C
 
 	.include "data/dat38_87.inc"
-// .global dword_87DAC90
+// .global TextScriptWhoAmI
 
 	.include "data/dat38_92.inc"
 // .global dword_87E74F4
@@ -190,7 +190,7 @@
 // .equ unk_201AA00, 0x201AA00
 // .equ unk_201AA04, 0x201AA04
 // .equ byte_201B200, 0x201B200
-// .equ unk_201BA00, 0x201BA00
+// .equ eTextScript201BA00, 0x201BA00
 // .equ unk_201BA04, 0x201BA04
 // .equ unk_201C200, 0x201C200
 // .equ byte_201CA00, 0x201CA00
@@ -200,7 +200,7 @@
 // .equ unk_2029A00, 0x2029A00
 // .equ reqBBS_requestInfo_textOffsets, 0x2029A04
 // .equ unk_2033A00, 0x2033A00
-// .equ reqBBS_dialogList, 0x2033A04
+// .equ reqBBS_eTextScript, 0x2033A04
 // .equ byte_30016D0, 0x30016D0
 // .equ iPallete3001750, 0x3001750
 // .equ byte_3001960, 0x3001960

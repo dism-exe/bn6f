@@ -28,7 +28,7 @@
 	.global sub_8130864
 	.global byte_8130905
 	.global sub_81312F4
-	.global sub_8132280
+	.global chatbox_runScript_803FD9C_on_eTextScript201BA20
 	.global sub_8132290
 	.global sub_81322E8
 	.global sub_8132398
@@ -222,8 +222,8 @@
 // .global sub_803EF7C
 
 	.include "asm/chatbox.inc"
-// .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
-// .global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_runScript_803FD78 // (void *textScript, u8 scriptIdx) -> void
+// .global chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global chatbox_setFlags2009F38
@@ -407,12 +407,12 @@
 	.include "data/dat38_71.inc"
 // .global dword_86CEE84
 // .global dword_86CF1A8
-// .global dword_86CF4AC
+// .global TextScript86CF4AC
 // .global dword_86CF618
 // .global dword_86CF730
 
 	.include "data/dat38_74.inc"
-// .global dword_86D5708
+// .global TextScriptNaviCustDialog
 
 	.include "data/dat38_76.inc"
 // .global dword_86D8FA4
@@ -477,10 +477,10 @@
 // .equ unk_2019E00, 0x2019E00
 // .equ unk_201A200, 0x201A200
 // .equ byte_201B200, 0x201B200
-// .equ unk_201BA00, 0x201BA00
-// .equ byte_201BA20, 0x201BA20
+// .equ eTextScript201BA00, 0x201BA00
+// .equ eTextScript201BA20, 0x201BA20
 // .equ byte_201BE80, 0x201BE80
-// .equ byte_201BF00, 0x201BF00
+// .equ eTextScript201BF00, 0x201BF00
 // .equ unk_201C380, 0x201C380
 // .equ unk_201C400, 0x201C400
 // .equ unk_201C480, 0x201C480
@@ -496,7 +496,7 @@
 // .equ unk_201CF00, 0x201CF00
 // .equ unk_201CF80, 0x201CF80
 // .equ unk_201D180, 0x201D180
-// .equ unk_201D280, 0x201D280
+// .equ eTextScript201D280, 0x201D280
 // .equ word_201DA80, 0x201DA80
 // .equ unk_201DD70, 0x201DD70
 // .equ unk_201E670, 0x201E670
@@ -547,7 +547,7 @@
 // .equ unk_202708C, 0x202708C
 // .equ unk_20270EC, 0x20270EC
 // .equ unk_202714C, 0x202714C
-// .equ unk_2028A20, 0x2028A20
+// .equ eTextScript2028A20, 0x2028A20
 // .equ unk_202A000, 0x202A000
 // .equ word_202A020, 0x202A020
 // .equ dword_202A034, 0x202A034

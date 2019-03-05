@@ -1927,13 +1927,13 @@ byte_201B200:: // 0x201b200
 	.space 640
 byte_201B480:: // 0x201b480
 	.space 1408
-unk_201BA00:: // 0x201ba00
+eTextScript201BA00:: // 0x201ba00
 	.space 4
 unk_201BA04:: // 0x201ba04
 	.space 12
 byte_201BA10:: // 0x201ba10
 	.space 16
-byte_201BA20:: // 0x201ba20
+eTextScript201BA20:: // 0x201ba20
 	.space 32
 byte_201BA40:: // 0x201ba40
 	.space 288
@@ -1949,19 +1949,19 @@ byte_201BDF8:: // 0x201bdf8
 	.space 136
 byte_201BE80:: // 0x201be80
 	.space 128
-byte_201BF00:: // 0x201bf00
+eTextScript201BF00:: // 0x201bf00
 	.space 32
-byte_201BF20:: // 0x201bf20
+eTextScript201BF20:: // 0x201bf20
 	.space 288
 unk_201C040:: // 0x201c040
 	.space 192
-unk_201C100:: // 0x201c100
+eTextScript201C100:: // 0x201c100
 	.space 176
 unk_201C1B0:: // 0x201c1b0
 	.space 80
 unk_201C200:: // 0x201c200
 	.space 32
-unk_201C220:: // 0x201c220
+eTextScript201C220:: // 0x201c220
 	.space 216
 unk_201C2F8:: // 0x201c2f8
 	.space 136
@@ -1987,7 +1987,7 @@ unk_201C4F0:: // 0x201c4f0
 	.space 16
 unk_201C500:: // 0x201c500
 	.space 512
-unk_201C700:: // 0x201c700
+eTextScript201C700:: // 0x201c700
 	.space 128
 byte_201C780:: // 0x201c780
 	.space 640
@@ -2017,7 +2017,7 @@ unk_201D1DC:: // 0x201d1dc
 	.space 68
 unk_201D220:: // 0x201d220
 	.space 96
-unk_201D280:: // 0x201d280
+eTextScript201D280:: // 0x201d280
 	.space 120
 unk_201D2F8:: // 0x201d2f8
 	.space 40
@@ -2359,7 +2359,7 @@ unk_2028690:: // 0x2028690
 	.space 880
 unk_2028A00:: // 0x2028a00
 	.space 32
-unk_2028A20:: // 0x2028a20
+eTextScript2028A20:: // 0x2028a20
 	.space 1504
 unk_2029000:: // 0x2029000
 	.space 512
@@ -2401,7 +2401,7 @@ byte_202AF00:: // 0x202af00
 	.space 2816
 eDecomp202BA00:: // 0x202ba00
 	.space 4
-eDialogScript202BA04:: // 0x202ba04
+eTextScript202BA04:: // 0x202ba04
 	.space 4092
 unk_202CA00:: // 0x202ca00
 	.space 512
@@ -2421,7 +2421,7 @@ byte_202D800:: // 0x202d800
 	.space 512
 byte_202DA00:: // 0x202da00
 	.space 4
-eDialogScript202DA04:: // 0x202da04
+eTextScript202DA04:: // 0x202da04
 	.space 508
 byte_202DC00:: // 0x202dc00
 	.space 512
@@ -2461,7 +2461,7 @@ byte_2030204:: // 0x2030204
 	.space 513
 byte_2030405:: // 0x2030405
 	.space 1115
-comp_2030860:: // 0x2030860
+eTextScript2030860:: // 0x2030860
 	.space 416
 unk_2030A00:: // 0x2030a00
 	.space 1120
@@ -2523,7 +2523,7 @@ word_2033042:: // 0x2033042
 	.space 958
 unk_2033400:: // 0x2033400
 	.space 4
-eDialogScript2033404:: // 0x2033404
+eTextScript2033404:: // 0x2033404
 	.space 764
 unk_2033700:: // 0x2033700
 	.space 256
@@ -2533,7 +2533,7 @@ unk_203381C:: // 0x203381c
 	.space 484
 unk_2033A00:: // 0x2033a00
 	.space 4
-reqBBS_dialogList:: // 0x2033a04
+reqBBS_eTextScript:: // 0x2033a04
 	.space 508
 unk_2033C00:: // 0x2033c00
 	.space 44
@@ -2623,7 +2623,7 @@ byte_20349C0:: // 0x20349c0
 	.space 64
 unk_2034A00:: // 0x2034a00
 	.space 4
-eDialogScript2034A04:: // 0x2034a04
+eTextScript2034A04:: // 0x2034a04
 	.space 12
 byte_2034A10:: // 0x2034a10
 	.space 80

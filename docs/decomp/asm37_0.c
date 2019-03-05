@@ -456,7 +456,7 @@ void sub_813BA64()
 {
     int v0; // r10
 
-    CopyWords(*(v0 + oToolkit_Unk200414c_Ptr), &unk_201BA00, 0x40u);
+    CopyWords(*(v0 + oToolkit_Unk200414c_Ptr), &eTextScript201BA00, 0x40u);
     CopyWords(*(v0 + oToolkit_Unk2004190_Ptr), byte_201BA40, &byte_188);
 }
 
@@ -466,7 +466,7 @@ void sub_813BA80()
 {
     int v0; // r10
 
-    CopyWords(&unk_201BA00, *(v0 + oToolkit_Unk200414c_Ptr), 0x40u);
+    CopyWords(&eTextScript201BA00, *(v0 + oToolkit_Unk200414c_Ptr), 0x40u);
     CopyWords(byte_201BA40, *(v0 + oToolkit_Unk2004190_Ptr), &byte_188);
 }
 
