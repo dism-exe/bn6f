@@ -154,7 +154,7 @@
 // .global object_setFlag2
 // .global object_clearFlag2
 // .global object_getFlag2
-// .global sub_801BDDE
+// .global AddRandomVarianceToTwoCoords
 // .global sub_801E754
 // .global loc_801E792
 
@@ -162,8 +162,8 @@
 // .global sub_802CE10
 // .global sub_802CE78
 // .global sub_802CEA6
-// .global sub_802D234
-// .global get_802D246 // () -> int
+// .global GetBattleMode
+// .global GetBattleEffects // () -> int
 
 	.include "asm/asm31.inc"
 // .global sub_80C5B76

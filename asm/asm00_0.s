@@ -2127,9 +2127,9 @@ sub_8001382:
 sub_800138E:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
-	ldr r2, [r1,#0x5c]
+	ldr r2, [r1,#oBattleState_Unk_5c]
 	bic r2, r0
-	str r2, [r1,#0x5c]
+	str r2, [r1,#oBattleState_Unk_5c]
 	mov pc, lr
 	thumb_func_end sub_800138E
 
@@ -2145,7 +2145,7 @@ sub_800139A:
 sub_80013A2:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
-	str r0, [r1,#0x5c]
+	str r0, [r1,#oBattleState_Unk_5c]
 	mov pc, lr
 	thumb_func_end sub_80013A2
 

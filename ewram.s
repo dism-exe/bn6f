@@ -2567,7 +2567,6 @@ word_203401E:: // 0x203401e
 	.space 98
 unk_2034080:: // 0x2034080
 	.space 124
-dword_20340FC:: // 0x20340fc
 	.space 740
 unk_20343E0:: // 0x20343e0
 	.space 32
@@ -3225,7 +3224,7 @@ dword_203CDF0:: // 0x203cdf0
 	.space 4
 byte_203CDF4:: // 0x203cdf4
 	.space 12
-byte_203CE00:: // 0x203ce00
+ePlayerBattleVars:: // 0x203ce00
 	.space 100
 byte_203CE64:: // 0x203ce64
 	.space 108

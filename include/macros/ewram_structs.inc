@@ -11,6 +11,7 @@
 	.include "structs/OverworldNPCObject.inc"
 	.include "structs/OverworldMapObject.inc"
 	.include "structs/UnkMapScriptState_2011e60.inc"
+	.include "structs/PlayerBattleVars.inc"
 
 /*
 rough notes for now
@@ -155,6 +156,10 @@ known offsets from https://pastebin.com/grDF80Vp
 0x4 - times moved
 0x8 - num counter hits
 0xb - was cross used
+
+what is ePlayerBattleVars? field 0e is karma
+
+sub_801BCF4 = animate battle sprite?
 */
 
 /*

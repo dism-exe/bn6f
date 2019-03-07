@@ -480,8 +480,8 @@
 
 	.include "asm/asm03_0.inc"
 // .global sub_802CDD0
-// .global sub_802D234
-// .global get_802D246 // () -> int
+// .global GetBattleMode
+// .global GetBattleEffects // () -> int
 // .global sub_802EF5C
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf

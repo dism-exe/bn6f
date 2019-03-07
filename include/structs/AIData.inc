@@ -36,7 +36,7 @@
 	struct_org 0x20
 	\struct_entry \label\()_TotalDamageTaken, 2 // loc=0x20
 	\struct_entry \label\()_JoypadHeld, 2 // loc=0x22
-	\struct_entry \label\()_JoypadDown, 2 // loc=0x24
+	\struct_entry \label\()_JoypadPressed, 2 // loc=0x24
 	\struct_entry \label\()_JoypadUp, 2 // loc=0x26
 	\struct_entry \label\()_JoypadReleased, 2 // loc=0x28
 	struct_org 0x2c
