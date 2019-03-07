@@ -37,6 +37,7 @@
 	\struct_entry \label\()_AliveBattleActors // loc=0x80
 	\struct_entry \label\()_AlivePlayerActors, 0x10 // loc=0x80
 	\struct_entry \label\()_AliveOpponentActors, 0x10 // loc=0x90
+	\struct_entry \label\()_Unk_a0 // loc=0xa0
 	struct_org 0xd0
 	\struct_entry \label\()_BattleActors // loc=0xd0
 	\struct_entry \label\()_PlayerActors, 0x10 // loc=0xd0

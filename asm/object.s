@@ -1549,7 +1549,7 @@ loc_800C4F0:
 	cmp r4, #8
 	blt loc_800C4DE
 	// memBlock
-	ldr r0, off_800C584 // =byte_2039AE0 
+	ldr r0, off_800C584 // =ePanelData 
 	// size
 	ldr r1, off_800C588 // =0x500 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -1614,7 +1614,7 @@ loc_800C53C:
 	pop {r4-r7,pc}
 off_800C57C: .word byte_800C590
 off_800C580: .word byte_800C5B8
-off_800C584: .word byte_2039AE0
+off_800C584: .word ePanelData
 off_800C588: .word 0x500
 off_800C58C: .word 0x708
 byte_800C590: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x1, 0x1, 0x1, 0x1, 0x1, 0x0, 0x0
@@ -1629,7 +1629,7 @@ byte_800C5B8: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 
 sub_800C5E0:
 	push {r4-r7,lr}
 	bl sub_800C192
-	ldr r7, off_800C8CC // =byte_2039AE0 
+	ldr r7, off_800C8CC // =ePanelData 
 	mov r6, #0
 loc_800C5EA:
 	ldrb r4, [r7,#0xa]
@@ -1770,7 +1770,7 @@ sub_800C6E0:
 	add r0, r0, r1
 	mov r1, #0x20 
 	mul r0, r1
-	ldr r1, off_800C8D8 // =byte_2039AE0 
+	ldr r1, off_800C8D8 // =ePanelData 
 	add r0, r0, r1
 	mov pc, lr
 	thumb_func_end sub_800C6E0
@@ -2046,10 +2046,10 @@ sub_800C8C2:
 	ldr r0, off_800C8EC // =unk_2034010 
 	add r0, r0, r1
 	mov pc, lr
-off_800C8CC: .word byte_2039AE0
+off_800C8CC: .word ePanelData
 off_800C8D0: .word byte_203F6B0
 off_800C8D4: .word byte_800D730
-off_800C8D8: .word byte_2039AE0
+off_800C8D8: .word ePanelData
 dword_800C8DC: .word 0xF880080
 off_800C8E0: .word unk_2034018
 off_800C8E4: .word byte_203F6B0
@@ -2567,21 +2567,28 @@ loc_800CC82:
 	thumb_func_end object_isValidPanel
 
 	thumb_func_start object_checkPanelParameters
+// r0 = panelx
+// r1 = panely
+// r2 = flags that should be set
+// r3 = flags that should be clear
 object_checkPanelParameters:
 	push {r4,r5,lr}
 	mov r4, r2
 	mov r5, r3
 	bl object_getPanelParameters
+	// does the panel have no flags?
 	tst r0, r0
-	beq loc_800CCA2
+	beq .failure
+	// check wanted clear flags
 	tst r0, r5
-	bne loc_800CCA2
+	bne .failure
+	// check wanted set flags
 	and r0, r4
 	cmp r0, r4
-	bne loc_800CCA2
+	bne .failure
 	mov r0, #1
 	pop {r4,r5,pc}
-loc_800CCA2:
+.failure
 	mov r0, #0
 	pop {r4,r5,pc}
 	thumb_func_end object_checkPanelParameters
@@ -2634,7 +2641,7 @@ object_highlightPanelRegion:
 	ldr r1, [sp,#0x10]
 	bl object_getFlipDirection // (int a1, int a2) -> int
 	str r0, [sp,#0xc]
-	ldr r4, off_800CDAC // =off_8019B78 
+	ldr r4, off_800CDAC // =PanelOffsetListsPointerTable 
 	ldr r2, [sp,#8]
 	lsl r2, r2, #2
 	ldr r4, [r4,r2]
@@ -2679,7 +2686,7 @@ object_highlightPanelRegionBlue:
 	ldr r1, [sp,#0x10]
 	bl object_getFlipDirection // (int a1, int a2) -> int
 	str r0, [sp,#0xc]
-	ldr r4, off_800CDAC // =off_8019B78 
+	ldr r4, off_800CDAC // =PanelOffsetListsPointerTable 
 	ldr r2, [sp,#8]
 	lsl r2, r2, #2
 	ldr r4, [r4,r2]
@@ -2734,7 +2741,7 @@ loc_800CD9C:
 loc_800CDA8:
 	add sp, sp, #0x14
 	pop {r4,r6,pc}
-off_800CDAC: .word off_8019B78
+off_800CDAC: .word PanelOffsetListsPointerTable
 off_800CDB0: .word byte_8019C34
 	thumb_func_end object_highlightPanelRegionBlue
 
@@ -3682,7 +3689,7 @@ object_getPanelRegion:
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	str r3, [sp,#0xc]
-	ldr r0, off_800D458 // =off_8019B78 
+	ldr r0, off_800D458 // =PanelOffsetListsPointerTable 
 	lsl r4, r4, #2
 	ldr r4, [r0,r4]
 	mov r0, r6
@@ -3722,7 +3729,7 @@ loc_800D452:
 	mov r0, r6
 	add sp, sp, #0x1c
 	pop {r4,r6,pc}
-off_800D458: .word off_8019B78
+off_800D458: .word PanelOffsetListsPointerTable
 	thumb_func_end object_getPanelRegion
 
 	thumb_func_start sub_800D45C

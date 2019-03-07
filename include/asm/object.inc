@@ -146,7 +146,7 @@
 // .global sub_80103BC
 // .global sub_8014150
 // .global sub_80182B4
-// .global off_8019B78
+// .global PanelOffsetListsPointerTable
 // .global byte_8019C34
 // .global object_setFlag // (int a1) -> void
 // .global object_clearFlag // (int bitfield) -> void
@@ -241,7 +241,7 @@
 // .equ byte_203674B, 0x203674B
 // .equ byte_203674C, 0x203674C
 // .equ byte_203674D, 0x203674D
-// .equ byte_2039AE0, 0x2039AE0
+// .equ ePanelData, 0x2039AE0
 // .equ byte_2039AE1, 0x2039AE1
 // .equ byte_2039AE6, 0x2039AE6
 // .equ byte_2039AE7, 0x2039AE7

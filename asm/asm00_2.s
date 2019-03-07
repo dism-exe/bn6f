@@ -1189,8 +1189,12 @@ byte_800F604: .byte 0xFF, 0x0, 0x6, 0x1, 0x0, 0x6, 0xFF, 0x0, 0x1, 0x1, 0x0, 0x1
 	.byte 0x0
 	thumb_func_end sub_800F598
 
-	thumb_func_start sub_800F614
-sub_800F614:
+	thumb_func_start setFieldBattleObject_800F614
+// something to do with spawning actual field battle objects
+// r0 is battle object
+// r1 is alliance
+// r2 is some param
+setFieldBattleObject_800F614:
 	push {lr}
 	mov r3, #0xc
 	mul r3, r1
@@ -1199,7 +1203,7 @@ sub_800F614:
 	add r1, r1, r3
 	lsl r3, r2, #3
 	add r1, r1, r3
-	add r1, #0xa0
+	add r1, #oBattleState_Unk_a0
 	tst r2, r2
 	bne loc_800F648
 	ldr r2, [r1]
@@ -1217,7 +1221,7 @@ loc_800F63E:
 	str r3, [r1]
 	str r0, [r1,#4]
 	mov r3, #0
-	strh r3, [r2,#0x24]
+	strh r3, [r2,#oBattleObject_HP]
 	b locret_800F654
 loc_800F648:
 	ldr r2, [r1]
@@ -1225,10 +1229,10 @@ loc_800F648:
 	tst r2, r2
 	beq locret_800F654
 	mov r3, #0
-	strh r3, [r2,#0x24]
+	strh r3, [r2,#oBattleObject_HP]
 locret_800F654:
 	pop {pc}
-	thumb_func_end sub_800F614
+	thumb_func_end setFieldBattleObject_800F614
 
 	thumb_func_start sub_800F656
 sub_800F656:
@@ -8621,7 +8625,7 @@ locret_8012DB6:
 sub_8012DB8:
 	push {lr}
 	ldr r3, off_8012DD0 // =byte_8012DD4
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl sub_8015C94
 	cmp r0, #0
 	beq locret_8012DCC
@@ -14956,76 +14960,89 @@ loc_8015E42:
 	pop {r4,pc}
 	thumb_func_end sub_8015DF0
 
-	thumb_func_start sub_8015E46
-sub_8015E46:
+	thumb_func_start GetRandomRelativePanelFiltered
+// input:
+// r0 - panelx
+// r1 - panely
+// r2 - panel params that should be set
+// r3 - panel params that should be clear
+// r4 - which list of relative panel offsets
+// r6 - alliance direction
+// returns:
+// r0 - random panelx
+// r1 - random panely
+// r2 - number of available panels
+GetRandomRelativePanelFiltered:
 	push {r4,r7,lr}
-	ldr r7, off_8015E54 // =off_8019B78 
+	ldr r7, =PanelOffsetListsPointerTable 
 	lsl r4, r4, #2
 	ldr r4, [r7,r4]
-	bl sub_8015E58
+	bl _GetRandomRelativePanelFiltered
 	pop {r4,r7,pc}
-off_8015E54: .word off_8019B78
-	thumb_func_end sub_8015E46
+	// 8015E54
+	.pool
+	thumb_func_end GetRandomRelativePanelFiltered
 
 	thumb_local_start
-sub_8015E58:
+// GetRandomRelativePanelFilteredFromList
+_GetRandomRelativePanelFiltered:
 	push {r4,r6,lr}
 	sub sp, sp, #0x38
-	str r0, [sp,#0x1c]
-	str r1, [sp,#0x20]
-	str r2, [sp,#0x24]
-	str r3, [sp,#0x28]
+	str r0, [sp,#0x1c] // oStack_PanelX
+	str r1, [sp,#0x20] // oStack_PanelY
+	str r2, [sp,#0x24] // oStack_SetPanelParams
+	str r3, [sp,#0x28] // oStack_ClearPanelParams
 	mov r0, r6
 	bl object_getAllianceDirection
-	str r0, [sp,#0x2c]
+	str r0, [sp,#0x2c] // oStack_Direction
 	mov r6, #0
-loc_8015E6E:
+.loop
 	mov r0, #0
 	ldrsb r0, [r4,r0]
 	cmp r0, #0x7f
-	beq loc_8015EA8
+	beq .doneCheckingPanels
 	mov r1, #1
 	ldrsb r1, [r4,r1]
-	ldr r2, [sp,#0x2c]
-	mul r0, r2
-	ldr r2, [sp,#0x1c]
+	ldr r2, [sp,#0x2c] // oStack_Direction
+	mul r0, r2 // direction is signed, 1 or -1
+	ldr r2, [sp,#0x1c] // oStack_PanelX
 	add r0, r0, r2
-	str r0, [sp,#0x30]
-	ldr r2, [sp,#0x20]
+	str r0, [sp,#0x30] // oStack_RelativePanelX
+	ldr r2, [sp,#0x20] // oStack_PanelY
 	add r1, r1, r2
-	str r1, [sp,#0x34]
-	ldr r2, [sp,#0x24]
-	ldr r3, [sp,#0x28]
+	str r1, [sp,#0x34] // oStack_RelativePanelY
+	ldr r2, [sp,#0x24] // oStack_SetPanelParams
+	ldr r3, [sp,#0x28] // oStack_ClearPanelParams
 	bl object_checkPanelParameters
 	tst r0, r0
-	beq loc_8015EA4
-	ldr r0, [sp,#0x30]
-	ldr r1, [sp,#0x34]
+	beq .notMatchingPanelParams
+	ldr r0, [sp,#0x30] // oStack_RelativePanelX
+	ldr r1, [sp,#0x34] // oStack_RelativePanelY
 	lsl r1, r1, #4
 	orr r0, r1
 	add r1, sp, #0
 	strb r0, [r1,r6]
 	add r6, #1
-loc_8015EA4:
+.notMatchingPanelParams
 	add r4, #2
-	b loc_8015E6E
-loc_8015EA8:
+	b .loop
+.doneCheckingPanels
 	mov r2, r6
 	mov r0, r6
-	beq loc_8015EC2
+	beq .noPanelMatch
 	bl GetPositiveSignedRNG2
 	mov r1, r6
 	svc 6
 	add r0, sp, #0
 	ldrb r0, [r0,r1]
-	lsr r1, r0, #4
+	lsr r1, r0, #4 // r1 = panel y
 	lsl r0, r0, #0x1d
-	lsr r0, r0, #0x1d
+	lsr r0, r0, #0x1d // r0 = panel x
 	mov r2, r6
-loc_8015EC2:
+.noPanelMatch
 	add sp, sp, #0x38
 	pop {r4,r6,pc}
-	thumb_func_end sub_8015E58
+	thumb_func_end _GetRandomRelativePanelFiltered
 
 	thumb_local_start
 sub_8015EC6:
@@ -19801,11 +19818,13 @@ byte_8019B06: .byte 0x5, 0xFE, 0x4, 0xFE, 0x3, 0xFE, 0x2, 0xFE, 0x1, 0xFE, 0x0, 
 	.byte 0xFC, 0x1, 0xFB, 0x1, 0x5, 0x0, 0x4, 0x0, 0x3, 0x0, 0x2, 0x0
 	.byte 0xFE, 0x0, 0xFD, 0x0, 0xFC, 0x0, 0xFB, 0x0, 0x7F
 byte_8019B63: .byte 0x0, 0x0, 0x0, 0xFE, 0x0, 0xFF, 0x0, 0x1, 0x0, 0x2, 0x7F
-byte_8019B6E: .byte 0x0, 0xFE, 0x0, 0xFF, 0x0, 0x1, 0x0, 0x2, 0x7F, 0x0
-off_8019B78: .word byte_80198E8
+byte_8019B6E: .byte 0x0, 0xFE, 0x0, 0xFF, 0x0, 0x1, 0x0, 0x2, 0x7F
+	.balign 4, 0
+PanelOffsetListsPointerTable:
+	.word byte_80198E8
 	.word byte_80198E9
 	.word byte_80198EC
-off_8019B84: .word byte_80198F1
+	.word byte_80198F1
 	.word byte_80198F4
 	.word byte_80198FB
 	.word byte_8019900
@@ -19828,7 +19847,7 @@ off_8019B84: .word byte_80198F1
 	.word byte_80199A7
 	.word byte_80199AC
 	.word byte_80199B1
-off_8019BE0: .word byte_80199B6
+	.word byte_80199B6 // this specific value is (sort of) referenced directly
 	.word byte_80199C5
 	.word byte_80199DA
 	.word byte_80199F5
@@ -23774,7 +23793,7 @@ sub_801BD3C:
 	bcs loc_801BDA2
 	beq loc_801BD9C
 	lsr r3, r3, #0x17
-	ldr r7, off_801BE68 // =off_8019B78 
+	ldr r7, off_801BE68 // =PanelOffsetListsPointerTable 
 	ldr r7, [r7,r3]
 	mov r3, #0
 loc_801BD5E:
@@ -23936,7 +23955,7 @@ loc_801BE50:
 	mov r0, #1
 	pop {r6,r7,pc}
 	.balign 4, 0x00
-off_801BE68: .word off_8019B78
+off_801BE68: .word PanelOffsetListsPointerTable
 off_801BE6C: .word byte_8019C34
 	thumb_func_end sub_801BE2A
 

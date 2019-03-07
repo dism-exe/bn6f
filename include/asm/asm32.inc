@@ -429,7 +429,7 @@
 // .global sub_8015C48
 // .global sub_8015C94
 // .global sub_8015D80
-// .global sub_8015E46
+// .global GetRandomRelativePanelFiltered
 // .global sub_8016380
 // .global sub_80165B8
 // .global sub_80165C2
@@ -441,7 +441,7 @@
 // .global sub_8016CE8
 // .global sub_8016EC4
 // .global sub_8018810
-// .global off_8019B78
+// .global PanelOffsetListsPointerTable
 // .global object_updateCollisionPanels
 // .global object_setCollisionPanelsToCurrent
 // .global object_clearCollisionRegion // () -> void
@@ -573,7 +573,7 @@
 // .global sub_8109630
 // .global sub_8109660
 // .global sub_81096BA
-// .global sub_81096FA
+// .global GetAllianceDependentPanelParamArgs
 // .global sub_8109708
 // .global sub_810971A
 // .global sub_81097B4

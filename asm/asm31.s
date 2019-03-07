@@ -343,7 +343,7 @@ sub_80B845C:
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1
 	ldr r3, off_80B8490 // =byte_80B8494 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 loc_80B8472:
 	push {r0,r2,r3}
 	bl object_getPanelsInColumnFiltered
@@ -6778,7 +6778,7 @@ sub_80BB52E:
 	beq loc_80BB540
 	mov r0, #0x1d
 loc_80BB540:
-	ldr r7, off_80BB5F0 // =off_8019B78 
+	ldr r7, off_80BB5F0 // =PanelOffsetListsPointerTable 
 	lsl r0, r0, #2
 	ldr r7, [r7,r0]
 loc_80BB546:
@@ -6865,7 +6865,7 @@ locret_80BB5E8:
 	pop {r1-r3,pc}
 	.balign 4, 0x00
 off_80BB5EC: .word 0x12C
-off_80BB5F0: .word off_8019B78
+off_80BB5F0: .word PanelOffsetListsPointerTable
 dword_80BB5F4: .word 0xA050601
 dword_80BB5F8: .word 0x180000
 dword_80BB5FC: .word 0x300000
@@ -29824,7 +29824,7 @@ sub_80C673A:
 	add r0, r0, r1
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_80C6760 // =off_80C6764 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	mov r4, #4
 	ldrb r6, [r5,#oBattleObject_Alliance]
 	ldrb r7, [r5,#oBattleObject_DirectionFlip]
@@ -36936,7 +36936,7 @@ sub_80C9F18:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_80C9F60 // =off_80C9F64 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl sub_800D120
 	cmp r0, #0
 	beq loc_80C9F36
@@ -40782,7 +40782,7 @@ loc_80CBE6E:
 	mov r1, #0xff
 	and r1, r3
 	mov r2, #0
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80CBE80:
 	pop {pc}
 	thumb_func_end sub_80CBE4A
@@ -43371,7 +43371,7 @@ sub_80CD2B4:
 	mov r1, #0xff
 	and r1, r3
 	mov r2, #1
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80CD2DE:
 	pop {pc}
 dword_80CD2E0: .word 0x8000
@@ -44035,7 +44035,7 @@ sub_80CD830:
 	orr r3, r2
 	strb r3, [r0,#oObjectHeader_Flags]
 	mov r2, #1
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80CD856:
 	pop {pc}
 	thumb_func_end sub_80CD830
@@ -44130,7 +44130,7 @@ sub_80CD91E:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_80CDAC4 // =byte_80CDAC8
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_checkPanelParameters
 	tst r0, r0
 	bne loc_80CD958
@@ -44562,7 +44562,7 @@ loc_80CDCAA:
 	strb r2, [r0,#oObjectHeader_Flags]
 	ldrb r1, [r0,#oBattleObject_Alliance]
 	ldrb r2, [r3,#5]
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80CDCBA:
 	pop {r4,pc}
 	thumb_func_end sub_80CDC7C
@@ -44894,7 +44894,7 @@ sub_80CDF60:
 	orr r2, r3
 	strb r2, [r0,#oObjectHeader_Flags]
 	mov r2, #0
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80CDF82:
 	pop {pc}
 	thumb_func_end sub_80CDF60
@@ -45488,7 +45488,7 @@ sub_80CE424:
 	mov r5, r2
 	mov r6, r0
 	mov r7, r1
-	ldr r4, off_80CE524 // =off_8019B78 
+	ldr r4, off_80CE524 // =PanelOffsetListsPointerTable 
 	lsl r3, r3, #2
 	ldr r4, [r4,r3]
 loc_80CE432:
@@ -45540,7 +45540,7 @@ sub_80CE468:
 	bcs loc_80CE4DC
 	beq loc_80CE4D6
 	lsr r3, r3, #0x17
-	ldr r7, off_80CE528 // =off_8019B78 
+	ldr r7, off_80CE528 // =PanelOffsetListsPointerTable 
 	ldr r7, [r7,r3]
 	mov r3, #0
 loc_80CE48A:
@@ -45618,8 +45618,8 @@ loc_80CE50A:
 dword_80CE518: .word 0x1090C02
 dword_80CE51C: .word 0x4050100
 off_80CE520: .word byte_80CE3AC
-off_80CE524: .word off_8019B78
-off_80CE528: .word off_8019B78
+off_80CE524: .word PanelOffsetListsPointerTable
+off_80CE528: .word PanelOffsetListsPointerTable
 off_80CE52C: .word byte_8019C34
 	thumb_func_end sub_80CE468
 
@@ -47449,7 +47449,7 @@ sub_80CF374:
 	mov r3, #0xff
 	and r3, r1
 	mov r2, #1
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80CF3A0:
 	pop {pc}
 	.byte 0x0, 0x0
@@ -48458,7 +48458,7 @@ loc_80CFBE6:
 	strb r2, [r0,#oObjectHeader_Flags]
 	mov r1, r3
 	ldrb r2, [r0,#oBattleObject_Param2]
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80CFBF4:
 	pop {pc}
 	.balign 4, 0x00
@@ -55681,7 +55681,7 @@ sub_80D3374:
 loc_80D337C:
 	mov r0, r6
 	ldr r3, off_80D33F0 // =off_80D33F4 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_getPanelsInColumnFiltered
 	cmp r0, #0
 	bne loc_80D339C
@@ -56187,7 +56187,7 @@ sub_80D3742:
 	mov r1, #0xff
 	and r1, r3
 	mov r2, #1
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80D376E:
 	pop {pc}
 	thumb_func_end sub_80D3742
@@ -56232,10 +56232,10 @@ loc_80D3798:
 	bne loc_80D37C6
 loc_80D37B8:
 	ldr r3, off_80D37E0 // =byte_80D37E4
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	mov r4, #0xa
 	ldrb r6, [r5,#oBattleObject_Alliance]
-	bl sub_8015E46
+	bl GetRandomRelativePanelFiltered
 loc_80D37C6:
 	mov r2, #0
 	mov r3, #0
@@ -56245,13 +56245,17 @@ loc_80D37C6:
 	add sp, sp, #0x10
 	pop {r4,r6,r7,pc}
 	.word 0, 0
-	.byte 0, 0
+	.balign 4, 0
 off_80D37E0: .word byte_80D37E4
-byte_80D37E4: .byte 0x20, 0x0, 0x1, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x20, 0x0, 0x0
-	.byte 0x0
+byte_80D37E4:
+	.word 0x00010020
+	.word 0x00000000
+	.word 0x00010000
+	.word 0x00000020
 	thumb_func_end sub_80D3770
 
 	thumb_local_start
+// get actors in columns in front of this object
 sub_80D37F4:
 	push {r4,r6,r7,lr}
 	bl object_getFrontDirection // () -> int
@@ -56264,7 +56268,7 @@ sub_80D37F4:
 loc_80D3806:
 	push {r0}
 	ldr r3, off_80D3830 // =off_80D3834 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_getPanelsInColumnFiltered
 	add r6, r6, r0
 	add r7, r7, r0
@@ -57802,7 +57806,7 @@ sub_80D4408:
 	mov r1, #0xff
 	and r1, r3
 	mov r2, #1
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80D4434:
 	pop {pc}
 	.balign 4, 0x00
@@ -58531,7 +58535,7 @@ sub_80D49CC:
 	mov r1, #0xff
 	and r1, r3
 	mov r2, #1
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80D49F4:
 	pop {pc}
 	thumb_func_end sub_80D49CC
@@ -59291,7 +59295,7 @@ loc_80D4FE6:
 	strb r2, [r0,#oObjectHeader_Flags]
 	ldrb r1, [r0,#oBattleObject_Alliance]
 	mov r2, #1
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80D4FF4:
 	pop {pc}
 	thumb_func_end sub_80D4FA6
@@ -64604,7 +64608,7 @@ sub_80D7A78:
 	ldrh r1, [r5,#oBattleObject_AllianceAndDirectionFlip]
 	strh r1, [r0,#oBattleObject_AllianceAndDirectionFlip]
 	mov r2, #1
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80D7A94:
 	pop {pc}
 	thumb_func_end sub_80D7A78
@@ -66711,7 +66715,7 @@ sub_80D8B96:
 	strb r1, [r0,#oObjectHeader_Flags]
 	ldrb r1, [r0,#oBattleObject_Alliance]
 	mov r2, #1
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80D8BBA:
 	pop {pc}
 	thumb_func_end sub_80D8B96
@@ -69749,7 +69753,7 @@ sub_80DA390:
 	mov r1, #0xff
 	and r1, r3
 	mov r2, #1
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80DA3BE:
 	pop {pc}
 	thumb_func_end sub_80DA390
@@ -70819,7 +70823,7 @@ sub_80DABE8:
 	push {lr}
 	push {r0,r1}
 	ldr r3, off_80DACD4 // =off_80DABFC 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	pop {r0,r1}
 	ldr r4, off_80DACD8 // =byte_80DACC0 
 	bl sub_8015D80
@@ -70838,7 +70842,7 @@ sub_80DAC0C:
 	str r1, [sp,#4]
 	ldr r4, off_80DACDC // =byte_80DACC0 
 	ldr r3, off_80DACE0 // =dword_80DACB0 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	str r2, [sp,#0x28]
 	str r3, [sp,#0x2c]
 	mov r6, #0
@@ -71708,7 +71712,7 @@ sub_80DB2C6:
 	strb r2, [r0,#oObjectHeader_Flags]
 	ldrb r1, [r5,#oBattleObject_Alliance]
 	mov r2, #0
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80DB2EC:
 	pop {pc}
 	.byte 0, 0
@@ -71921,7 +71925,7 @@ sub_80DB48A:
 	mov r5, r2
 	mov r6, r0
 	mov r7, r1
-	ldr r4, off_80DB560 // =off_8019B78 
+	ldr r4, off_80DB560 // =PanelOffsetListsPointerTable 
 	lsl r3, r3, #2
 	ldr r4, [r4,r3]
 loc_80DB498:
@@ -72016,7 +72020,7 @@ byte_80DB541: .byte 0xFF, 0xFF, 0x0, 0xFF, 0x1, 0x0, 0xFF, 0x0, 0x0, 0x0, 0x1, 0
 dword_80DB554: .word 0xC62
 dword_80DB558: .word 0x15050300
 dword_80DB55C: .word 0x1000000
-off_80DB560: .word off_8019B78
+off_80DB560: .word PanelOffsetListsPointerTable
 dword_80DB564: .word 0x405FF0A
 dword_80DB568: .word 0xFFFFF000
 dword_80DB56C: .word 0x405FF0C
@@ -79168,7 +79172,7 @@ loc_80DEE02:
 	ldrb r1, [r2,#0x13]
 	push {r0,r1}
 	ldr r3, off_80DEE40 // =byte_80DEE44
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_checkPanelParameters
 	cmp r0, #0
 	pop {r0,r1}
@@ -87529,7 +87533,7 @@ sub_80E3038:
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	str r3, [sp,#0xc]
-	ldr r0, off_80E3094 // =off_8019B78 
+	ldr r0, off_80E3094 // =PanelOffsetListsPointerTable 
 	lsl r4, r4, #2
 	ldr r4, [r0,r4]
 	mov r0, r6
@@ -87570,7 +87574,7 @@ loc_80E308C:
 	add sp, sp, #0x1c
 	pop {r4,r6,pc}
 	.balign 4, 0x00
-off_80E3094: .word off_8019B78
+off_80E3094: .word PanelOffsetListsPointerTable
 dword_80E3098: .word 0x10000
 	thumb_func_end sub_80E3038
 
@@ -87835,7 +87839,7 @@ sub_80E3264:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_80E327C // =off_80E3280 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_getFirstPanelInDirectionFiltered
 	pop {r4,pc}
 off_80E327C: .word off_80E3280
@@ -89164,7 +89168,7 @@ loc_80E3C60:
 	add r0, r0, r1
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_80E3CB0 // =byte_80E3CB4
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_checkPanelParameters
 	cmp r0, #0
 	bne loc_80E3C86
@@ -91369,7 +91373,7 @@ sub_80E4C96:
 	strb r1, [r0,#0x16]
 	str r6, [r0,#0x2c]
 	mov r2, #1
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80E4CB4:
 	pop {pc}
 	.balign 4, 0x00
@@ -91541,7 +91545,7 @@ sub_80E4DD0:
 	eor r0, r1
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_80E4E70 // =byte_80E4E74
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_getClosestPanelMatchingRowFiltered
 	cmp r0, #0
 	bne loc_80E4E14
@@ -98706,7 +98710,7 @@ sub_80E8396:
 	strb r1, [r0,#oBattleObject_Alliance]
 	str r6, [r0,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	mov r2, #1
-	bl sub_800F614
+	bl setFieldBattleObject_800F614
 locret_80E83B4:
 	pop {pc}
 	.balign 4, 0x00
@@ -99856,7 +99860,7 @@ loc_80E8C06:
 	strb r0, [r5,r2]
 loc_80E8C1E:
 	ldr r3, off_80E8C30 // =byte_80E8C34
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl sub_80E8D92
 	lsl r2, r1, #4
 	add r2, r2, r0
@@ -106982,7 +106986,7 @@ loc_80EC9A4:
 	ldr r0, off_80ECA04 // =dword_80ECA08
 	ldrb r4, [r0,r4]
 	lsl r4, r4, #2
-	ldr r0, off_80ECA30 // =off_8019B78 
+	ldr r0, off_80ECA30 // =PanelOffsetListsPointerTable 
 	ldr r4, [r0,r4]
 	bl object_getFrontDirection // () -> int
 	push {r0}
@@ -107043,7 +107047,7 @@ dword_80ECA20: .word 0x10000
 dword_80ECA24: .word 0x1E0000
 dword_80ECA28: .word 0x180000
 dword_80ECA2C: .word 0x300000
-off_80ECA30: .word off_8019B78
+off_80ECA30: .word PanelOffsetListsPointerTable
 	thumb_func_end sub_80ECA0C
 
 	thumb_local_start
@@ -107581,7 +107585,7 @@ loc_80ECE34:
 	add r0, r0, r4
 	sub r6, #4
 	ldr r3, off_80ECEA8 // =byte_80ECEAC
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	push {r0,r1}
 	bl object_checkPanelParameters
 	cmp r0, #0
@@ -107856,7 +107860,7 @@ loc_80ED04A:
 	push {r0,r7}
 	sub sp, sp, #4
 	ldr r3, off_80ED07C // =byte_80ED080
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	mov r7, sp
 	bl object_getPanelsInColumnFiltered
 	mov r1, #1
@@ -109041,7 +109045,7 @@ locret_80ED94C:
 	thumb_local_start
 sub_80ED94E:
 	push {r4,r6,lr}
-	ldr r6, off_80EDCB8 // =off_8019B78 
+	ldr r6, off_80EDCB8 // =PanelOffsetListsPointerTable 
 	ldr r6, [r6,#0x68] // (off_8019BE0 - 0x8019b78)
 	bl object_getFrontDirection // () -> int
 	mov r4, r0
@@ -109479,7 +109483,7 @@ loc_80EDC92:
 locret_80EDCB4:
 	pop {pc}
 	.balign 4, 0x00
-off_80EDCB8: .word off_8019B78
+off_80EDCB8: .word PanelOffsetListsPointerTable
 dword_80EDCBC: .word 0x45A00
 	thumb_func_end sub_80EDC78
 
@@ -109912,7 +109916,7 @@ locret_80EDFE8:
 	thumb_local_start
 sub_80EDFEA:
 	push {r4,r6,lr}
-	ldr r6, off_80EE03C // =off_8019B78 
+	ldr r6, off_80EE03C // =PanelOffsetListsPointerTable 
 	ldr r6, [r6,#0x68] // (off_8019BE0 - 0x8019b78)
 	bl object_getFrontDirection // () -> int
 	mov r4, r0
@@ -109951,7 +109955,7 @@ locret_80EE032:
 	pop {r4,r6,pc}
 dword_80EE034: .word 0x200000
 dword_80EE038: .word 0xC3C
-off_80EE03C: .word off_8019B78
+off_80EE03C: .word PanelOffsetListsPointerTable
 dword_80EE040: .word 0x95A01
 	thumb_func_end sub_80EDFEA
 
@@ -112079,7 +112083,7 @@ loc_80EF05E:
 	eor r0, r1
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_80EF0A0 // =byte_80EF0A4
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_getClosestPanelMatchingRowFiltered
 loc_80EF082:
 	mov r2, #0xc
@@ -115473,7 +115477,7 @@ sub_80F0BD2:
 	mov r3, #0
 	mov r4, #4
 	ldrb r6, [r5,#oBattleObject_Alliance]
-	bl sub_8015E46
+	bl GetRandomRelativePanelFiltered
 	tst r2, r2
 	bne loc_80F0C1C
 	mov r0, #0
@@ -154689,7 +154693,7 @@ sub_8105050:
 	thumb_local_start
 sub_810506A:
 	push {r4,r6,lr}
-	ldr r6, off_810538C // =off_8019B78 
+	ldr r6, off_810538C // =PanelOffsetListsPointerTable 
 	mov r0, #0x68 // (off_8019BE0 - 0x8019b78)
 	ldr r6, [r6,r0]
 	bl object_getFrontDirection // () -> int
@@ -155090,7 +155094,7 @@ locret_810537E:
 off_8105380: .word off_8105384
 off_8105384: .word 0x4000000
 	.word 0x8000000
-off_810538C: .word off_8019B78
+off_810538C: .word PanelOffsetListsPointerTable
 byte_8105390: .byte 0x8, 0x15, 0x1, 0x1, 0x15, 0x0, 0x0, 0x0
 byte_8105398: .byte 0xFC, 0x8, 0x0, 0x3, 0xA, 0x0, 0x80, 0xC, 0x1, 0x3, 0xA, 0x0, 0x80
 	.byte 0xC, 0x2, 0x3, 0xC8, 0x0, 0x80, 0xC, 0x3, 0x3, 0xA, 0x0, 0x80, 0xC
@@ -159978,7 +159982,7 @@ loc_8107AAE:
 	thumb_local_start
 sub_8107AB2:
 	push {r4,r6,lr}
-	ldr r6, off_8107B20 // =off_8019B78 
+	ldr r6, off_8107B20 // =PanelOffsetListsPointerTable 
 	mov r0, #0x68 // (off_8019BE0 - 0x8019b78)
 	ldr r6, [r6,r0]
 	bl object_getFrontDirection // () -> int
@@ -160034,7 +160038,7 @@ sub_8107B06:
 	ldr r6, [r7,#oAIAttackVars_Unk_30]
 	bl sub_80C4FFE
 	pop {r4,r6,pc}
-off_8107B20: .word off_8019B78
+off_8107B20: .word PanelOffsetListsPointerTable
 byte_8107B24: .byte 0x0, 0xC, 0x1, 0x1, 0x18, 0x0, 0x0, 0x1
 byte_8107B2C: .byte 0x20, 0x3, 0x0, 0x6, 0xA, 0x0, 0x40, 0x6, 0x1, 0x6, 0xA, 0x0, 0x40
 	.byte 0x6, 0x2, 0x6, 0xA, 0x0, 0x40, 0x6, 0x3, 0x6, 0xA, 0x0, 0x40, 0x6
@@ -163012,7 +163016,7 @@ sub_8109660:
 	push {r4-r7,lr}
 	mov r6, r0
 	mov r7, r1
-	ldr r4, off_81096A0 // =off_8019B78 
+	ldr r4, off_81096A0 // =PanelOffsetListsPointerTable 
 	lsl r2, r2, #2
 	ldr r4, [r4,r2]
 	lsl r5, r3, #1
@@ -163043,7 +163047,7 @@ loc_8109698:
 locret_810969C:
 	pop {r4-r7,pc}
 	.byte 0, 0
-off_81096A0: .word off_8019B78
+off_81096A0: .word PanelOffsetListsPointerTable
 	thumb_func_end sub_8109660
 
 	thumb_local_start
@@ -163097,8 +163101,8 @@ loc_81096E8:
 locret_81096F8:
 	pop {r4,pc}
 
-	thumb_func_start sub_81096FA
-sub_81096FA:
+	thumb_func_start GetAllianceDependentPanelParamArgs
+GetAllianceDependentPanelParamArgs:
 	ldrb r2, [r5,#oBattleObject_Alliance]
 	lsl r2, r2, #3
 	add r3, r3, r2
@@ -163106,7 +163110,7 @@ sub_81096FA:
 	add r3, #4
 	ldr r3, [r3]
 	mov pc, lr
-	thumb_func_end sub_81096FA
+	thumb_func_end GetAllianceDependentPanelParamArgs
 
 	thumb_func_start sub_8109708
 sub_8109708:
@@ -163114,8 +163118,8 @@ sub_8109708:
 	mov r4, r2
 	ldrb r6, [r5,#oBattleObject_Alliance]
 	ldr r3, off_8109780 // =off_8109784 
-	bl sub_81096FA
-	bl sub_8015E46
+	bl GetAllianceDependentPanelParamArgs
+	bl GetRandomRelativePanelFiltered
 	pop {r4,r6,pc}
 	thumb_func_end sub_8109708
 
@@ -163124,7 +163128,7 @@ sub_810971A:
 	push {r7,lr}
 	sub sp, sp, #8
 	ldr r3, off_8109780 // =off_8109784 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	mov r7, sp
 	bl object_getPanelsInRowFiltered
 	cmp r0, #0
@@ -163154,7 +163158,7 @@ loc_8109752:
 	mov r0, r6
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_8109780 // =off_8109784 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_checkPanelParameters
 	cmp r0, #0
 	bne loc_8109770
@@ -164448,7 +164452,7 @@ loc_810A23A:
 	mov r4, r0
 	mov r6, r1
 	ldr r3, off_810A28C // =byte_810A290
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_checkPanelParameters
 	cmp r0, #0
 	beq locret_810A252
@@ -164476,7 +164480,7 @@ loc_810A262:
 	add r1, r1, r0
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldr r3, off_810A28C // =byte_810A290
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	mov r6, r0
 	mov r7, r1
 	bl object_checkPanelParameters
@@ -164984,7 +164988,7 @@ loc_810A73E:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	push {r0,r1,r3}
 	ldr r3, off_810A834 // =byte_810A7D0
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_checkPanelParameters
 	cmp r0, #0
 	pop {r0,r1,r3}
@@ -165006,7 +165010,7 @@ loc_810A766:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r4,#0x13]
 	ldr r3, off_810A838 // =byte_810A7D0
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	push {r0,r1}
 	bl object_checkPanelParameters
 	cmp r0, #0
@@ -165014,7 +165018,7 @@ loc_810A766:
 	bne loc_810A7B4
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldr r3, off_810A83C // =byte_810A7D0
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	add r7, sp, #0
 	bl object_getPanelsInColumnFiltered
 	tst r0, r0
@@ -165585,9 +165589,9 @@ loc_810AD36:
 	ldrb r0, [r1,#oBattleObject_PanelX]
 	ldrb r1, [r1,#oBattleObject_PanelY]
 	ldr r3, off_810AE30 // =byte_810AE08
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	mov r4, #8
-	bl sub_8015E46
+	bl GetRandomRelativePanelFiltered
 	cmp r0, #0
 	beq loc_810AD62
 	lsl r1, r1, #4
@@ -165625,10 +165629,10 @@ sub_810AD88:
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
 	ldr r3, off_810AE34 // =byte_810AE08
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	mov r4, #0x2c
 	ldrb r6, [r5,#0x16]
-	bl sub_8015E46
+	bl GetRandomRelativePanelFiltered
 	pop {r4-r7,pc}
 	thumb_func_end sub_810AD88
 
@@ -165636,7 +165640,7 @@ sub_810AD88:
 sub_810AD9E:
 	push {r4-r7,lr}
 	ldr r3, off_810AE38 // =byte_810AE08
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl sub_8015C94
 	pop {r4-r7,pc}
 	thumb_func_end sub_810AD9E
@@ -165661,10 +165665,10 @@ sub_810ADAC:
 	ldrb r1, [r5,#0x13]
 	pop {r5}
 	ldr r3, off_810AE3C // =byte_810AE08
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	mov r4, #1
 	ldrb r6, [r5,#oBattleObject_Alliance]
-	bl sub_8015E46
+	bl GetRandomRelativePanelFiltered
 	tst r0, r0
 	bne locret_810AE06
 	push {r5}
@@ -165677,10 +165681,10 @@ sub_810ADAC:
 	ldrb r1, [r5,#0x13]
 	pop {r5}
 	ldr r3, off_810AE40 // =byte_810AE08
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	mov r4, #7
 	ldrb r6, [r5,#oBattleObject_Alliance]
-	bl sub_8015E46
+	bl GetRandomRelativePanelFiltered
 locret_810AE06:
 	pop {r4-r7,pc}
 byte_810AE08: .byte 0x0, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x0, 0x0, 0x80
@@ -166380,7 +166384,7 @@ sub_810B436:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_810B760 // =byte_810B6E0
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_getClosestPanelMatchingRowFiltered
 	cmp r0, #0
 	beq loc_810B47A
@@ -166391,7 +166395,7 @@ sub_810B436:
 	beq loc_810B47A
 	bl sub_810B6F0
 	ldr r3, off_810B764 // =byte_810B6E0
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	str r2, [r7,#oAIAttackVars_Unk_34]
 	str r3, [r7,#oAIAttackVars_Unk_38]
 	mov r0, #0xc
@@ -166580,7 +166584,7 @@ sub_810B5BE:
 	ldr r0, [r1,r0]
 	str r0, [r7,#oAIAttackVars_Unk_30]
 	ldr r3, off_810B774 // =byte_810B6E0
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	str r2, [r7,#oAIAttackVars_Unk_34]
 	str r3, [r7,#oAIAttackVars_Unk_38]
 	mov r0, #0xa
@@ -166602,7 +166606,7 @@ sub_810B60C:
 	add r0, r0, r1
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_810B778 // =byte_810B6E0
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	push {r0,r1}
 	bl object_checkPanelParameters
 	cmp r0, #0
@@ -166636,7 +166640,7 @@ sub_810B646:
 	add r1, r1, r2
 	push {r0,r1,lr}
 	ldr r3, off_810B77C // =byte_810B6E0
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_checkPanelParameters
 	thumb_func_end sub_810B646
 
@@ -166652,14 +166656,14 @@ sub_810B65E:
 	bl object_reservePanel
 	ldrb r0, [r4,#0x13]
 	ldr r3, off_810B780 // =byte_810B6E0
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	add r7, sp, #0
 	bl object_getPanelsIgnoreColumnFiltered
 	tst r0, r0
 	bne loc_810B690
 	ldrb r0, [r4,#0x13]
 	ldr r3, off_810B784 // =byte_810B6E0
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	add r7, sp, #0
 	bl object_getPanelsInRowFiltered
 	tst r0, r0
@@ -166690,7 +166694,7 @@ sub_810B6B4:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_810B788 // =byte_810B6E0
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	ldr r4, off_810B6D0 // =byte_810B6D4
 	bl sub_8015D80
 	pop {r4-r7,pc}
@@ -167965,7 +167969,7 @@ sub_810C2B2:
 	mov r4, r0
 	ldrb r0, [r4,#0x13]
 	ldr r3, off_810C350 // =byte_810C310
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	add r7, sp, #0
 	bl object_getPanelsInRowFiltered
 	tst r0, r0
@@ -167973,7 +167977,7 @@ sub_810C2B2:
 	ldrb r0, [r4,#0x13]
 	sub r0, #1
 	ldr r3, off_810C354 // =byte_810C310
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	add r7, sp, #0
 	bl object_getPanelsInRowFiltered
 	mov r6, r0
@@ -167981,7 +167985,7 @@ sub_810C2B2:
 	ldrb r0, [r4,#0x13]
 	add r0, #1
 	ldr r3, off_810C358 // =byte_810C310
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_getPanelsInRowFiltered
 	add r0, r0, r6
 	cmp r0, #0

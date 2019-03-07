@@ -91,7 +91,7 @@
 // .global sub_80E5410
 // .global sub_8109630
 // .global sub_8109660
-// .global sub_81096FA
+// .global GetAllianceDependentPanelParamArgs
 // .global sub_81097BA
 // .global sub_8109804
 // .global sub_8109952
