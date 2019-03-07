@@ -96702,7 +96702,7 @@ dword_80E74D0: .word 0x11A
 	thumb_func_end sub_80E7486
 
 	thumb_func_start sub_80E74D4
-sub_80E74D4:
+sub_80E74D4: // invis
 	push {lr}
 	ldr r1, off_80E74E4 // =off_80E74E8 
 	ldrb r0, [r5,#oBattleObject_CurState]

@@ -5408,10 +5408,24 @@ off_8005FB4: .word sub_8006366+1
 	.word sub_800647C+1
 	.word sub_8006366+1
 	.word sub_800647C+1
-off_8006040: .word unk_3001B60
-	.word byte_3001750
-	.word 0xFF
-	.word 0x81010
+	
+	.macro fade_params_struct unk_00_ptr:req, unk_04_ptr:req, unused_08:req, byte_0c:req, byte_0d:req, byte_0e:req, byte_0f:req
+	.word \unk_00_ptr, \unk_04_ptr
+	.word \unused_08
+	.byte \byte_0c, \byte_0d, \byte_0e, \byte_0f
+	.endm
+
+off_8006040:
+	fade_params_struct [
+		unk_00_ptr=unk_3001B60,
+		unk_04_ptr=byte_3001750,
+		unused_08=0xFF,
+		byte_0c=0x10,
+		byte_0d=0x10,
+		byte_0e=0x8,
+		byte_0f=0x0
+	]
+
 	.word 0x3001B60
 	.word 0x3001750
 	.byte 0xFF
