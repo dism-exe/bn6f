@@ -14065,7 +14065,8 @@ off_800A56C: .word unk_2039AA0
 	thumb_func_end sub_800A540
 
 	thumb_local_start
-sub_800A570:
+// byte_203CDB0 = some buffer
+sub_800A570: // shuffle folder
 	push {r4-r7,lr}
 	sub sp, sp, #0xc
 	str r0, [sp]
@@ -14081,17 +14082,17 @@ loc_800A582:
 	lsr r0, r0, #0x17
 	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#0x7] // ChipData.elemIdx
-	cmp r1, #2
+	cmp r1, #2 // giga
 	beq loc_800A59E
 	add r1, r5, r5
-	ldr r2, off_800A910 // =dword_2033000 
+	ldr r2, off_800A910 // =dword_2033000 not giga
 	ldrh r0, [r7]
 	strh r0, [r2,r1]
 	add r5, #1
 	b loc_800A5A8
 loc_800A59E:
 	add r1, r6, r6
-	ldr r2, off_800A914 // =word_2033040 
+	ldr r2, off_800A914 // =word_2033040 gigas
 	ldrh r0, [r7]
 	strh r0, [r2,r1]
 	add r6, #1
@@ -14101,34 +14102,37 @@ loc_800A5A8:
 	cmp r4, #0x1e
 	blt loc_800A582
 	ldr r0, off_800A918 // =dword_2033000 
-	mov r1, r5
+	mov r1, r5 // r5 = num non-gigas
 	beq loc_800A5D2
 	mov r2, r5
 	ldr r3, [sp,#4]
 	tst r3, r3
 	beq loc_800A5C4
-	ldr r0, dword_800A91C // =dword_2033000 
+	ldr r0, dword_800A91C // =dword_2033000+2
+// reg?
 	sub r1, #1
 	sub r2, #1
 loc_800A5C4:
 	ldr r3, [sp,#8]
 	tst r3, r3
 	beq loc_800A5CE
+// tag?
 	sub r1, #2
 	sub r2, #2
 loc_800A5CE:
 	bl sub_8000D12
 loc_800A5D2:
 	ldr r0, off_800A920 // =word_2033040 
-	mov r1, r6
+	mov r1, r6 // num gigas
 	beq loc_800A634
 	mov r2, r6
 	bl sub_8000D12
 	bl GetBattleMode
-	cmp r0, #1
+	cmp r0, #1 // crossover
 	beq loc_800A610
 	mov r4, #0
 loc_800A5E8:
+// r5 = chips in main shuffled folder
 	bl GetPositiveSignedRNG1
 	mov r1, #0xc
 	neg r1, r1
@@ -14141,6 +14145,10 @@ loc_800A5E8:
 	add r2, r4, r4
 	ldr r7, off_800A928 // =word_2033040 
 	ldrh r2, [r7,r2]
+// r0 = main shuffled folder ptr
+// r1 = main shuffled folder len
+// r2 = cur giga
+// r3 = insertion index
 	bl sub_800A672
 	mov r5, r0
 	add r4, #1
@@ -14202,6 +14210,10 @@ loc_800A664:
 	thumb_func_end sub_800A570
 
 	thumb_local_start
+// r0 = main shuffled folder ptr
+// r1 = main shuffled folder len
+// r2 = cur giga
+// r3 = insertion index
 sub_800A672:
 	push {lr}
 	sub sp, sp, #0x10
@@ -14210,26 +14222,30 @@ sub_800A672:
 	str r2, [sp,#8]
 	str r3, [sp,#0xc]
 	cmp r3, r1
-	bgt loc_800A6A2
+	bgt .insertionIndexGreaterThanFolderLength
+	// r2 = loop index
 	sub r2, r1, #1
+	// * 2 for halfword accesses
 	add r3, r2, r2
+	// r0 = last element of folder
 	add r0, r0, r3
-loc_800A688:
+.folderShiftLoop
 	ldr r3, [sp,#0xc]
 	cmp r2, r3
-	blt loc_800A698
+ // are we at the insertion index?
+	blt .stopFolderShift
 	ldrh r3, [r0]
 	strh r3, [r0,#2]
 	sub r2, #1
 	sub r0, #2
-	b loc_800A688
-loc_800A698:
+	b .folderShiftLoop
+.stopFolderShift
 	add r0, #2
 	ldr r1, [sp,#8]
 	strh r1, [r0]
 	ldr r0, [sp,#4]
 	add r0, #1
-loc_800A6A2:
+.insertionIndexGreaterThanFolderLength
 	add sp, sp, #0x10
 	pop {pc}
 	thumb_func_end sub_800A672
@@ -14640,7 +14656,7 @@ sub_800A908:
 off_800A910: .word dword_2033000
 off_800A914: .word word_2033040
 off_800A918: .word dword_2033000
-dword_800A91C: .word 0x2033002
+dword_800A91C: .word dword_2033000+2
 off_800A920: .word word_2033040
 off_800A924: .word dword_2033000
 off_800A928: .word word_2033040
