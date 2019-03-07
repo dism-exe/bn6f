@@ -17834,7 +17834,7 @@ off_802F4E0: .word unk_3001B20
 sub_802F530:
 	push {lr}
 	// memBlock
-	ldr r0, off_802F570 // =sStartScr 
+	ldr r0, off_802F570 // =eStartScreen
 	// size
 	mov r1, #0x20 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -17849,7 +17849,7 @@ sub_802F530:
 startscreen_802F544:
 	push {r4-r7,lr}
 	bl sub_803E938
-	ldr r5, off_802F570 // =sStartScr 
+	ldr r5, off_802F570 // =eStartScreen
 	ldr r0, off_802F55C // =jt_802F560 
 	ldrb r1, [r5]
 	ldr r0, [r0,r1]
@@ -17862,7 +17862,7 @@ jt_802F560: .word startScreen_802F574+1
 	.word startscreen_802F60C+1
 	.word ho_802F63C+1
 	.word sub_802F756+1
-off_802F570: .word sStartScr
+off_802F570: .word eStartScreen
 	thumb_func_end startscreen_802F544
 
 	thumb_local_start

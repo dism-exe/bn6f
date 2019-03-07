@@ -11,6 +11,9 @@
 	.include "structs/OverworldNPCObject.inc"
 	.include "structs/OverworldMapObject.inc"
 	.include "structs/UnkMapScriptState_2011e60.inc"
+	.include "structs/Chatbox.inc"
+	.include "structs/StartScreen.inc"
+	.include "structs/ReqBBSGui.inc"
 
 /*
 rough notes for now

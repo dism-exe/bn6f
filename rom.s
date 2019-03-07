@@ -5,7 +5,7 @@ to make the ROM. This file is compiled to define the whole ROM region.
 	.include "include/macros.inc"
 	.include "constants/constants.inc"
 
-    .text
+	.text
 	
 	.syntax divided
 

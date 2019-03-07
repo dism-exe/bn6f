@@ -1,4 +1,6 @@
 
+
+
 	.macro battle_object_linked_list_struct label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
         \struct_begin \label
         struct_init_defs \struct_entry, \label
@@ -12,6 +14,11 @@
 	def_struct_offsets battle_object_linked_list_struct, oBattleObjectsLinkedListStart
 	def_struct_offsets battle_object_linked_list_struct, oUnkBattleObjectLinkedList
 
+    /*
+    x, y, z, vx, vy, vz are 16.16 fixed point integers.
+    upper 16 bits are the integer portion, lower are the decimal region
+    x,y and z are also relative to the center of the battlefield
+    */
 	.macro battle_object_struct label:req, struct_entry=label_struct_entry, struct_begin=struct_begin, extra_vars_size=0
         battle_object_linked_list_struct \label\()_LinkedList, \struct_entry, \struct_begin
         object_header_struct \label, \struct_entry, \struct_begin
@@ -23,10 +30,13 @@
         u0 \label, CurStateActionPhaseAndPhaseInitialized // loc=0x8
         u0 \label, CurState_CurAction // loc=0x8
         u8 \label, CurState // loc=0x8
+            struct_const \label, CurState_INITIALIZE, 0
+            struct_const \label, CurState_UPDATE, 4
+            struct_const \label, CurState_DESTROY, 8
         u8 \label, CurAction // loc=0x9
         u0 \label, CurPhaseAndPhaseInitialized // loc=0xa
         u8 \label, CurPhase // loc=0xa
-        u8 \label, PhaseInitialized // loc=0xb
+        b8 \label, PhaseInitialized // loc=0xb
         u8 \label, Unk_0c // loc=0xc
         u8 \label, Unk_0d // loc=0xd
         u8 \label, Element // loc=0xe
@@ -41,6 +51,7 @@
         u8 \label, FuturePanelX // loc=0x14
         u8 \label, FuturePanelY // loc=0x15
         u0 \label, AllianceAndDirectionFlip // loc=0x16
+        // 0 = friend, 1 = enemy
         u8 \label, Alliance // loc=0x16
         u8 \label, DirectionFlip // loc=0x17
         u8 \label, PreventAnim // loc=0x18
@@ -60,9 +71,14 @@
         u0  \label, NameIDAndChip // loc=0x28
         u16 \label, NameID // loc=0x28
         u16 \label, Chip // loc=0x2a
-        // also includes flags
+        // also includes flags. 0x7FF is damage
         u0  \label, DamageAndStaminaDamageCounterDisabler // loc=0x2c
         u16 \label, Damage // loc=0x2c
+            struct_const \label, Damage_DOUBLE_DAMAGE, 0x8000
+            struct_const \label, Damage_PARALYZE, 0x4000
+            struct_const \label, Damage_UNINSTALL, 0x2000
+            struct_const \label, Damage_KILLERCROSS_SKULL_HIT, 0x1000
+            struct_const \label, Damage_NOTHING, 0x0800
         // ???
         u16 \label, StaminaDamageCounterDisabler // loc=0x2e
         u16 \label, Unk_30 // loc=0x30

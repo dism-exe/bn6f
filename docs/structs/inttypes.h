@@ -16,7 +16,7 @@ typedef signed short 	int16_t;
 typedef unsigned int	uint32_t;
 typedef signed int		int32_t;
 
-#define NULL    ((void*)0)
+#define NULL	((void*)0)
 
 #endif /* _MACHINE__DEFAULTYPES_H */
 
@@ -27,9 +27,9 @@ typedef signed short 	s16;
 typedef unsigned int	u32;
 typedef signed int		s32;
 
-typedef char            bool_t;
-#define true            1
-#define false           0
+typedef char			bool_t;
+#define true			1
+#define false		   0
 
 
 #endif /* INTTYPES_H */

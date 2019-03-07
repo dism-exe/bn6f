@@ -1,7 +1,7 @@
 
 	.macro battle_state_struct, label=oBattleState, struct_entry=label_struct_entry, struct_begin=struct_begin
 		\struct_begin
-		 struct_init_defs \struct_entry, \label
+		struct_init_defs \struct_entry, \label
 		struct_org 0x1
 		u8 \label, Unk_01 // loc=0x1
 		struct_org 0x4

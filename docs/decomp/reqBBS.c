@@ -999,14 +999,14 @@ char (**__fastcall reqBBS_init_s_2005780(int a1))[108]
     char (**result)[108]; // r0
 
     v1 = a1;
-    v2 = dynamicArr2005780.numPoints;
-    v3 = dynamicArr2005780.totalPointsIndex;
+    v2 = eReqBBSGui.numPoints;
+    v3 = eReqBBSGui.totalPointsIndex;
     v4 = byte_200578F[0];
-    ZeroFillByWord(&dynamicArr2005780, 44);
-    dynamicArr2005780.numPoints = v2;
-    dynamicArr2005780.totalPointsIndex = v3;
+    ZeroFillByWord(&eReqBBSGui, 44);
+    eReqBBSGui.numPoints = v2;
+    eReqBBSGui.totalPointsIndex = v3;
     byte_200578F[0] = v4;
-    dynamicArr2005780.unk_04 = v1;
+    eReqBBSGui.unk_04 = v1;
     result = &reqBBS_textualPointers + 11 * v1;
     dword_20057A8 = (&reqBBS_textualPointers + 11 * v1);
     return result;
@@ -1016,7 +1016,7 @@ char (**__fastcall reqBBS_init_s_2005780(int a1))[108]
 // 0x813f404
 int reqBBS_subsystemCotnrol()
 {
-    return (*(&jt_813F42C + dynamicArr2005780.jto_0))();
+    return (*(&jt_813F42C + eReqBBSGui.jto_0))();
 }
 
 
@@ -1532,7 +1532,7 @@ void __noreturn reqBBS_813FAB0()
     *(v0 + 8) = v5;
     if ( !(((v5 < 0) ^ v6) | (v5 == 0)) )
         reqBBS_813F8F0();
-    sChatbox.unk_50 = byte_200578F[0];
+    eChatbox.unk_50 = byte_200578F[0];
     chatbox_reqBBS_80404C0(reqBBS_eTextScript, 6, reqBBS_textualShades);
     reqBBS_drawSelectChatbox();
 }
@@ -2331,14 +2331,14 @@ int reqBBS_81406FC()
 // () -> u8
 int reqBBS_getTotalPointsIndex()
 {
-    return dynamicArr2005780.totalPointsIndex;
+    return eReqBBSGui.totalPointsIndex;
 }
 
 
 // 0x81407a8
 int __fastcall reqBBS_81407A8(int result)
 {
-    dynamicArr2005780.totalPointsIndex = result;
+    eReqBBSGui.totalPointsIndex = result;
     return result;
 }
 
@@ -2346,14 +2346,14 @@ int __fastcall reqBBS_81407A8(int result)
 // 0x81407b8
 int reqBBS_81407B8()
 {
-    return dynamicArr2005780.numPoints;
+    return eReqBBSGui.numPoints;
 }
 
 
 // 0x81407c8
 int __fastcall reqBBS_81407C8(int result)
 {
-    dynamicArr2005780.numPoints = result;
+    eReqBBSGui.numPoints = result;
     return result;
 }
 
@@ -2366,12 +2366,12 @@ signed int reqBBS_81407D8()
     TestEventFlagFromImmediate(23, 58);
     if ( v0
         || !reqBBS_814084C(byte_200578F[0])
-        || !byte_8140828[dynamicArr2005780.totalPointsIndex]
-        || byte_8140828[dynamicArr2005780.totalPointsIndex] > dynamicArr2005780.numPoints )
+        || !byte_8140828[eReqBBSGui.totalPointsIndex]
+        || byte_8140828[eReqBBSGui.totalPointsIndex] > eReqBBSGui.numPoints )
     {
         return 0;
     }
-    ++dynamicArr2005780.totalPointsIndex;
+    ++eReqBBSGui.totalPointsIndex;
     return 1;
 }
 
@@ -2498,9 +2498,9 @@ reqBBS_GUI *reqBBS_8140984()
 {
     reqBBS_GUI *result; // r0
 
-    result = &dynamicArr2005780;
-    dynamicArr2005780.numPoints = 0;
-    dynamicArr2005780.totalPointsIndex = 0;
+    result = &eReqBBSGui;
+    eReqBBSGui.numPoints = 0;
+    eReqBBSGui.totalPointsIndex = 0;
     byte_200578F[0] = 0;
     return result;
 }

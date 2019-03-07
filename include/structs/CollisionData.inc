@@ -2,7 +2,7 @@
 	.macro collision_data_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
         \struct_begin \label
         struct_init_defs \struct_entry, \label
-        u8 \label, Enabled // loc=0x0
+        b8 \label, Enabled // loc=0x0
         u8 \label, Region // loc=0x1
         u8 \label, PrimaryElement // loc=0x2
         u8 \label, Unk_03 // loc=0x3
@@ -45,6 +45,19 @@
         u32 \label, TargetCollisionTypeFlags // loc=0x34
         u32 \label, ParentObjectPtr // loc=0x38
         u32 \label, ObjectFlags1 // loc=0x3c
+            struct_const \label, ObjectFlags1_GUARD, 0x1
+            struct_const \label, ObjectFlags1_INVULNERABLE, 0x8
+            struct_const \label, ObjectFlags1_AIRSHOE, 0x10
+            struct_const \label, ObjectFlags1_FLOATSHOE, 0x20
+            struct_const \label, ObjectFlags1_CURRENTLY_MOVING, 0x40
+            struct_const \label, ObjectFlags1_PARALYZED, 0x800
+            struct_const \label, ObjectFlags1_IMMOBILIZED, 0x4000
+            struct_const \label, ObjectFlags1_FROZEN, 0x10000
+            struct_const \label, ObjectFlags1_SUPERARMOR, 0x20000
+            struct_const \label, ObjectFlags1_UNDERSHIRT, 0x40000
+            struct_const \label, ObjectFlags1_CURRENTLY_MOVING_1, 0x80000
+            struct_const \label, ObjectFlags1_AFFECTED_BY_ICE, 0x2000000
+            struct_const \label, ObjectFlags1_UNAFFECTED_BY_POISON, 0x8000000
         u32 \label, ObjectFlags2 // loc=0x40
         u32 \label, CollisionIndexBit // loc=0x44
         u32 \label, Unk_48 // loc=0x48

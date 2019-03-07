@@ -1459,7 +1459,7 @@ loc_8144C1C:
 off_8144C20: .word Timer3Control
 	thumb_func_end sub_8144BF0
 
-    thumb_local_start
+	thumb_local_start
 sub_8144C24:
 	push {r4,r5,lr}
 	ldr r1, off_8144C68 // =byte_200F460 
@@ -1506,7 +1506,7 @@ byte_8144C70: .byte 0xFF, 0xEF, 0x0, 0x0, 0xF0, 0xB5, 0x16, 0x49, 0x16, 0x4A
 	.byte 0x2, 0x70, 0x0, 0x23, 0x85, 0x20, 0x80, 0x0, 0xF, 0x18
 	.byte 0x13, 0x4E
 
-    thumb_local_start
+	thumb_local_start
 sub_8144C90:
 	mov r2, #0
 	lsl r0, r3, #4
@@ -1544,7 +1544,7 @@ loc_8144CA4:
 	.byte 0, 0
 	.word byte_200F460
 	.byte 0x95, 0x9, 0x0, 0x0, 0x94, 0x9, 0x0, 0x0, 0xFF, 0xEF, 0x0, 0x0
-    thumb_func_end sub_8144C90
+	thumb_func_end sub_8144C90
 
 	thumb_func_start sub_8144CE0
 sub_8144CE0:
@@ -4639,7 +4639,7 @@ loc_814646C:
 off_8146470: .word eStruct200FE00
 	thumb_func_end sub_8146438
 
-    thumb_local_start
+	thumb_local_start
 sub_8146474:
 	push {lr}
 	lsl r0, r0, #0x18
@@ -4664,7 +4664,7 @@ off_814649C: .word eStruct200FE00
 byte_81464A0: .byte 0x0, 0x2A, 0x2, 0xD0, 0x1, 0x20, 0xC8, 0x72, 0x0, 0xE0, 0xCB
 	.byte 0x72, 0x0, 0x20
 byte_81464AE: .byte 0x2, 0xBC, 0x8, 0x47, 0x0, 0x0
-    thumb_func_end sub_8146474
+	thumb_func_end sub_8146474
 
 	thumb_local_start
 sub_81464B4:
@@ -4709,7 +4709,7 @@ loc_81464F8:
 	bx r0
 	thumb_func_end sub_81464D4
 
-    thumb_local_start
+	thumb_local_start
 sub_81464FC:
 	push {lr}
 	ldr r0, off_814651C // =eStruct200FE00 
@@ -4746,7 +4746,7 @@ byte_8146552: .byte 0x2, 0x20, 0xD0, 0x71, 0x6, 0xE0
 byte_8146558: .byte 0x28, 0x20, 0x50, 0x83, 0x3, 0xE0
 byte_814655E: .byte 0x28, 0x20, 0x50, 0x83, 0xA, 0x20, 0x10, 0x71
 def_8146518: .byte 0x1, 0xBC, 0x0, 0x47, 0x0, 0x0
-    thumb_func_end sub_81464FC
+	thumb_func_end sub_81464FC
 
 	thumb_func_start sub_814656C
 sub_814656C:
@@ -5351,7 +5351,7 @@ sub_81469A0:
 off_81469A4: .word unk_200FE63
 	thumb_func_end sub_81469A0
 
-    thumb_local_start
+	thumb_local_start
 sub_81469A8:
 	push {lr}
 	ldr r1, off_81469B8 // =unk_2010150 
@@ -18456,11 +18456,11 @@ off_814D8A4: .word dword_2010CCC
 // (u32 *src, u32 *dest, int mode) -> void
 	thumb_func_start SWI_CpuFastSet
 SWI_CpuFastSet:
-	//   r0    Source address        (must be aligned by 4)
-	//   r1    Destination address   (must be aligned by 4)
-	//   r2    Length/Mode
-	//           Bit 0-20  Wordcount (GBA: rounded-up to multiple of 8 words)
-	//           Bit 24    Fixed Source Address (0=Copy, 1=Fill by WORD[r0])
+	//   r0	Source address		(must be aligned by 4)
+	//   r1	Destination address   (must be aligned by 4)
+	//   r2	Length/Mode
+	//		   Bit 0-20  Wordcount (GBA: rounded-up to multiple of 8 words)
+	//		   Bit 24	Fixed Source Address (0=Copy, 1=Fill by WORD[r0])
 	// Return: No return value, Data written to destination address.
 	svc 0xc
 	bx lr
@@ -18469,12 +18469,12 @@ SWI_CpuFastSet:
 // (void *src, void *dest, int mode) -> void
 	thumb_func_start SWI_CpuSet
 SWI_CpuSet:
-	//   r0    Source address        (must be aligned by 4 for 32bit, by 2 for 16bit)
-	//   r1    Destination address   (must be aligned by 4 for 32bit, by 2 for 16bit)
-	//   r2    Length/Mode
-	//           Bit 0-20  Wordcount (for 32bit), or Halfwordcount (for 16bit)
-	//           Bit 24    Fixed Source Address (0=Copy, 1=Fill by {HALF}WORD[r0])
-	//           Bit 26    Datasize (0=16bit, 1=32bit)
+	//   r0	Source address		(must be aligned by 4 for 32bit, by 2 for 16bit)
+	//   r1	Destination address   (must be aligned by 4 for 32bit, by 2 for 16bit)
+	//   r2	Length/Mode
+	//		   Bit 0-20  Wordcount (for 32bit), or Halfwordcount (for 16bit)
+	//		   Bit 24	Fixed Source Address (0=Copy, 1=Fill by {HALF}WORD[r0])
+	//		   Bit 26	Datasize (0=16bit, 1=32bit)
 	// Return: No return value, Data written to destination address.
 	svc 0xb
 	bx lr
@@ -18496,19 +18496,19 @@ SWI_Div:
 	thumb_func_start SWI_LZ77UnCompReadNormalWrite16bit
 SWI_LZ77UnCompReadNormalWrite16bit:
 	//   r0  Source address, pointing to data as such:
-	//        Data header (32bit)
-	//          Bit 0-3   Reserved
-	//          Bit 4-7   Compressed type (must be 1 for LZ77)
-	//          Bit 8-31  Size of decompressed data
-	//        Repeat below. Each Flag Byte followed by eight Blocks.
-	//        Flag data (8bit)
-	//          Bit 0-7   Type Flags for next 8 Blocks, MSB first
-	//        Block Type 0 - Uncompressed - Copy 1 Byte from Source to Dest
-	//          Bit 0-7   One data byte to be copied to dest
-	//        Block Type 1 - Compressed - Copy N+3 Bytes from Dest-Disp-1 to Dest
-	//          Bit 0-3   Disp MSBs
-	//          Bit 4-7   Number of bytes to copy (minus 3)
-	//          Bit 8-15  Disp LSBs
+	//		Data header (32bit)
+	//		  Bit 0-3   Reserved
+	//		  Bit 4-7   Compressed type (must be 1 for LZ77)
+	//		  Bit 8-31  Size of decompressed data
+	//		Repeat below. Each Flag Byte followed by eight Blocks.
+	//		Flag data (8bit)
+	//		  Bit 0-7   Type Flags for next 8 Blocks, MSB first
+	//		Block Type 0 - Uncompressed - Copy 1 Byte from Source to Dest
+	//		  Bit 0-7   One data byte to be copied to dest
+	//		Block Type 1 - Compressed - Copy N+3 Bytes from Dest-Disp-1 to Dest
+	//		  Bit 0-3   Disp MSBs
+	//		  Bit 4-7   Number of bytes to copy (minus 3)
+	//		  Bit 8-15  Disp LSBs
 	//   r1  Destination address
 	// Return: No return value.
 	svc 0x12
@@ -18519,19 +18519,19 @@ SWI_LZ77UnCompReadNormalWrite16bit:
 	thumb_func_start SWI_LZ77UnCompReadNormalWrite8bit
 SWI_LZ77UnCompReadNormalWrite8bit:
 	//   r0  Source address, pointing to data as such:
-	//        Data header (32bit)
-	//          Bit 0-3   Reserved
-	//          Bit 4-7   Compressed type (must be 1 for LZ77)
-	//          Bit 8-31  Size of decompressed data
-	//        Repeat below. Each Flag Byte followed by eight Blocks.
-	//        Flag data (8bit)
-	//          Bit 0-7   Type Flags for next 8 Blocks, MSB first
-	//        Block Type 0 - Uncompressed - Copy 1 Byte from Source to Dest
-	//          Bit 0-7   One data byte to be copied to dest
-	//        Block Type 1 - Compressed - Copy N+3 Bytes from Dest-Disp-1 to Dest
-	//          Bit 0-3   Disp MSBs
-	//          Bit 4-7   Number of bytes to copy (minus 3)
-	//          Bit 8-15  Disp LSBs
+	//		Data header (32bit)
+	//		  Bit 0-3   Reserved
+	//		  Bit 4-7   Compressed type (must be 1 for LZ77)
+	//		  Bit 8-31  Size of decompressed data
+	//		Repeat below. Each Flag Byte followed by eight Blocks.
+	//		Flag data (8bit)
+	//		  Bit 0-7   Type Flags for next 8 Blocks, MSB first
+	//		Block Type 0 - Uncompressed - Copy 1 Byte from Source to Dest
+	//		  Bit 0-7   One data byte to be copied to dest
+	//		Block Type 1 - Compressed - Copy N+3 Bytes from Dest-Disp-1 to Dest
+	//		  Bit 0-3   Disp MSBs
+	//		  Bit 4-7   Number of bytes to copy (minus 3)
+	//		  Bit 8-15  Disp LSBs
 	//   r1  Destination address
 	// Return: No return value.
 	svc 0x11
@@ -19487,7 +19487,7 @@ loc_814E012:
 locret_814E026:
 	bx r3
 byte_814E028: .word 0x68736D53
-    thumb_func_end sub_814E008
+	thumb_func_end sub_814E008
 
 	thumb_func_start SoundMainBTM, 2
 SoundMainBTM:

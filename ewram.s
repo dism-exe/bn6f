@@ -418,11 +418,10 @@ eToolkitExtraPtrsMemoryEnd:: // 0x200153c
 	.space 256 // additional buffer for dummied out randomization
 
 	.space 1348
-dynamicArr2005780:: // 0x2005780
-	.space 15
-byte_200578F:: // 0x200578f
-	.space 33
+eReqBBSGui:: // 0x2005780
+    req_bbs_gui_struct eReqBBSGui
 
+    .balign 0x10, 0x00
 eOverworldNPCObjects:: // 0x20057b0
 	overworld_npc_object_struct eOverworldNPCObject0
 	overworld_npc_object_struct eOverworldNPCObject1
@@ -449,17 +448,17 @@ reqBBS_numRequestsSent:: // 0x20065b0
 byte_20065B4:: // 0x20065b4
 	.space 12
 byte_20065C0:: // 0x20065c0
-    .space 32
+	.space 32
 byte_20065E0:: // 0x20065E0
-    .space 1
+	.space 1
 byte_20065E1:: // 0x20065E1
-    .space 2
+	.space 2
 byte_20065E3:: // 0x20065E3
-    .space 2
+	.space 2
 byte_20065E5:: // 0x20065E5
-    .space 2
+	.space 2
 byte_20065E7:: // 0x20065E7
-    .space 137
+	.space 137
 byte_2006670:: // 0x2006670
 	.space 4
 byte_2006674:: // 0x2006674
@@ -705,8 +704,8 @@ unk_2009AC0:: // 0x2009ac0
 	.space 512
 dword_2009CC0:: // 0x2009cc0
 	.space 16
-sChatbox:: // 0x2009cd0
-	.space 560
+eChatbox:: // 0x2009cd0
+    chatbox_struct eChatbox
 unk_2009F00:: // 0x2009f00
 	.space 52
 eActiveOWPlayerObjectBitfield:: // 0x2009f34
@@ -918,13 +917,13 @@ byte_200AD05:: // 0x200ad05
 	.space 1
 word_200AD06:: // 0x200ad06
 	.space 10
-sStartScr:: // 0x200ad10
-	.space 592
+eStartScreen:: // 0x200ad10
+    start_screen_struct eStartScreen
+	.space 560
 BattleSettings_200AF60:: // 0x200af60
 	.space 16
 eUnkBattleObjectLinkedList:: // 0x200af70
 	battle_object_linked_list_struct eUnkBattleObjectLinkedList
-
 byte_200AF80:: // 0x200af80
 	.space 1
 byte_200AF81:: // 0x200af81

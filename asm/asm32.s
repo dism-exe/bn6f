@@ -25998,13 +25998,13 @@ off_811C188: .word 0x390
 sub_811C18C:
 	push {lr}
 	push {r5}
-	ldr r5, off_811C1A0 // =dynamicArr2005780
+	ldr r5, off_811C1A0 // =eReqBBSGui
 	bl reqBBS_81406FC
 	pop {r5}
 	bl sprite_update
 	pop {pc}
 	.byte 0, 0
-off_811C1A0: .word dynamicArr2005780
+off_811C1A0: .word eReqBBSGui
 	thumb_func_end sub_811C18C
 
 	thumb_local_start

@@ -1767,19 +1767,19 @@ reqBBS_init_s_2005780:
 	push {r4-r7,lr}
 	push {r0}
 	// memBlock
-	ldr r0, off_813F400 // =dynamicArr2005780 
+	ldr r0, off_813F400 // =eReqBBSGui
 	mov r1, #0xd // reqBBS_GUI.numPoints
 	ldrb r1, [r0,r1]
 	mov r2, #0xe // reqBBS_GUI.totalPointsIndex
 	ldrb r2, [r0,r2]
-	mov r3, #0xf // (byte_200578F - 0x2005780)
+	mov r3, #0xf
 	ldrb r3, [r0,r3]
 	push {r1-r3}
 	// size
 	mov r1, #0x2c 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r1-r3}
-	ldr r0, off_813F400 // =dynamicArr2005780 
+	ldr r0, off_813F400 // =eReqBBSGui
 	mov r4, #0xd // reqBBS_GUI.numPoints
 	strb r1, [r0,r4]
 	mov r4, #0xe // reqBBS_GUI.totalPointsIndex
@@ -1787,7 +1787,7 @@ reqBBS_init_s_2005780:
 	mov r4, #0xf // reqBBS_GUI.unk_0F
 	strb r3, [r0,r4]
 	pop {r0}
-	ldr r5, off_813F400 // =dynamicArr2005780 
+	ldr r5, off_813F400 // =eReqBBSGui
 	strb r0, [r5,#0x4] // reqBBS_GUI.unk_04
 	ldr r2, off_813F3FC // =reqBBS_textualPointers 
 	mov r1, #0x2c 
@@ -1796,7 +1796,7 @@ reqBBS_init_s_2005780:
 	str r0, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
 	pop {r4-r7,pc}
 off_813F3FC: .word reqBBS_textualPointers
-off_813F400: .word dynamicArr2005780
+off_813F400: .word eReqBBSGui
 	thumb_func_end reqBBS_init_s_2005780
 
 	thumb_func_start reqBBS_subsystemCotnrol
@@ -1806,7 +1806,7 @@ reqBBS_subsystemCotnrol:
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
-	ldr r5, off_813F424 // =dynamicArr2005780 
+	ldr r5, off_813F424 // =eReqBBSGui
 	ldr r0, off_813F428 // =jt_813F42C 
 	ldrb r1, [r5]
 	ldr r0, [r0,r1]
@@ -1817,7 +1817,7 @@ reqBBS_subsystemCotnrol:
 	mov r9, r2
 	mov r12, r3
 	pop {r4-r7,pc}
-off_813F424: .word dynamicArr2005780
+off_813F424: .word eReqBBSGui
 off_813F428: .word jt_813F42C
 jt_813F42C: .word reqBBS_813F474+1
 	.word reqBBS_813F550+1
@@ -1848,7 +1848,7 @@ reqBBS_813F474:
 	mov r1, #0x3a 
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_813F4B6
-	ldr r0, off_813F548 // =dynamicArr2005780 
+	ldr r0, off_813F548 // =eReqBBSGui
 	ldr r1, dword_813F544 // =0xf 
 	ldrb r2, [r0,r1]
 	ldr r3, off_813F54C // =reqBBS_textualPointers 
@@ -1857,7 +1857,7 @@ reqBBS_813F474:
 	mov r0, r2
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	beq loc_813F4B6
-	ldr r0, off_813F548 // =dynamicArr2005780 
+	ldr r0, off_813F548 // =eReqBBSGui
 	ldr r1, dword_813F544 // =0xf 
 	ldrb r2, [r0,r1]
 	ldr r3, off_813F54C // =reqBBS_textualPointers 
@@ -1869,7 +1869,7 @@ reqBBS_813F474:
 	mov r0, #0x17
 	mov r1, #0x3a 
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-	ldr r0, off_813F548 // =dynamicArr2005780 
+	ldr r0, off_813F548 // =eReqBBSGui
 	ldr r1, dword_813F544 // =0xf 
 	mov r3, #0
 	strb r3, [r0,r1]
@@ -1932,7 +1932,7 @@ off_813F534: .word reqBBS_entriesGfx
 dword_813F538: .word 0x5F40
 byte_813F53C: .byte 0x40, 0x5E, 0x0, 0x0, 0xA0, 0x17, 0x0, 0x0
 dword_813F544: .word 0xF
-off_813F548: .word dynamicArr2005780
+off_813F548: .word eReqBBSGui
 off_813F54C: .word reqBBS_textualPointers
 	thumb_func_end reqBBS_813F474
 
@@ -2679,8 +2679,8 @@ reqBBS_813FAB0:
 	sub r0, #1
 	strb r0, [r5,#8]
 	bgt loc_813FB02
-	ldr r0, off_813FD9C // =sChatbox 
-	ldr r1, off_813FDA0 // =dynamicArr2005780 
+	ldr r0, off_813FD9C // =eChatbox
+	ldr r1, off_813FDA0 // =eReqBBSGui
 	ldr r2, dword_813FB1C // =0xf 
 	ldr r3, off_813FB20 // =0x50 
 	ldrb r1, [r1,r2]
@@ -2733,7 +2733,7 @@ loc_813FB40:
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_813FB6E
 	ldr r0, off_813FBB4 // =reqBBS_requestInfo_textOffsets 
-	ldr r1, off_813FDA4 // =dynamicArr2005780 
+	ldr r1, off_813FDA4 // =eReqBBSGui
 	ldr r2, dword_813FBBC // =0xf 
 	ldrb r1, [r1,r2]
 	ldr r2, off_813FBB8 // =reqBBS_textualShades 
@@ -3002,9 +3002,9 @@ off_813FD8C: .word unk_2000770
 off_813FD90: .word reqBBS_requestEntriesList
 off_813FD94: .word reqBBS_numRequestsSent
 off_813FD98: .word unk_2000770
-off_813FD9C: .word sChatbox
-off_813FDA0: .word dynamicArr2005780
-off_813FDA4: .word dynamicArr2005780
+off_813FD9C: .word eChatbox
+off_813FDA0: .word eReqBBSGui
+off_813FDA4: .word eReqBBSGui
 	thumb_func_end reqBBS_813FD14
 
 	thumb_local_start
@@ -3499,7 +3499,7 @@ dword_8140308: .word 0x60936092
 	thumb_local_start
 reqBBS_814030C:
 	push {r4-r7,lr}
-	ldr r0, off_8140344 // =dynamicArr2005780 
+	ldr r0, off_8140344 // =eReqBBSGui
 	ldr r1, dword_8140348 // =0xf 
 	ldrb r0, [r0,r1]
 	ldr r1, off_814034C // =byte_813F380 
@@ -3531,7 +3531,7 @@ loc_8140320:
 locret_8140340:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_8140344: .word dynamicArr2005780
+off_8140344: .word eReqBBSGui
 dword_8140348: .word 0xF
 off_814034C: .word byte_813F380
 off_8140350: .word dword_8140354
@@ -3671,7 +3671,7 @@ reqBBS_8140414:
 	bl sub_80018D0
 	pop {r5}
 	bl reqBBS_changeChatboxHeader
-	ldr r0, off_8140488 // =sChatbox 
+	ldr r0, off_8140488 // =eChatbox
 	ldr r2, dword_8140480 // =0xd 
 	ldrb r1, [r5,r2]
 	ldr r2, off_8140484 // =0x4c 
@@ -3680,7 +3680,7 @@ reqBBS_8140414:
 	ldrb r0, [r5,r1]
 	ldr r1, off_8140490 // =byte_8140494 
 	ldrb r1, [r1,r0]
-	ldr r0, off_8140488 // =sChatbox 
+	ldr r0, off_8140488 // =eChatbox
 	ldr r2, off_814049C // =0x54 
 	str r1, [r0,r2]
 	mov r7, r10
@@ -3693,7 +3693,7 @@ reqBBS_8140414:
 	pop {pc}
 dword_8140480: .word 0xD
 off_8140484: .word 0x4C
-off_8140488: .word sChatbox
+off_8140488: .word eChatbox
 dword_814048C: .word 0xE
 off_8140490: .word byte_8140494
 byte_8140494: .byte 0xA, 0x19, 0x23, 0x4B, 0x4B, 0x0, 0x0, 0x0
@@ -3779,7 +3779,7 @@ off_8140518: .word dword_86A5D60
 	thumb_local_start
 reqBBS_setChatboxHeaderBasedOn_0F:
 	push {r4-r7,lr}
-	ldr r0, off_8140550 // =dynamicArr2005780 
+	ldr r0, off_8140550 // =eReqBBSGui
 	ldr r1, dword_814054C // =0xf 
 	ldrb r1, [r0,r1]
 	ldr r0, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
@@ -3798,7 +3798,7 @@ off_8140540: .word byte_201B200
 dword_8140544: .word 0x6008400
 off_8140548: .word dword_86A5D60
 dword_814054C: .word 0xF
-off_8140550: .word dynamicArr2005780
+off_8140550: .word eReqBBSGui
 	thumb_func_end reqBBS_setChatboxHeaderBasedOn_0F
 
 	thumb_local_start
@@ -4120,7 +4120,7 @@ off_8140794: .word eStructArr2008450
 	thumb_func_start reqBBS_getTotalPointsIndex
 reqBBS_getTotalPointsIndex:
 	push {r4-r7,lr}
-	ldr r0, off_81409A4 // =dynamicArr2005780 
+	ldr r0, off_81409A4 // =eReqBBSGui
 	ldr r1, dword_81407A4 // =0xe 
 	ldrb r0, [r0,r1]
 	pop {r4-r7,pc}
@@ -4131,7 +4131,7 @@ dword_81407A4: .word 0xE
 	thumb_local_start
 reqBBS_81407A8:
 	push {r4-r7,lr}
-	ldr r1, off_81409A8 // =dynamicArr2005780 
+	ldr r1, off_81409A8 // =eReqBBSGui
 	ldr r2, dword_81407B4 // =0xe 
 	strb r0, [r1,r2]
 	pop {r4-r7,pc}
@@ -4142,7 +4142,7 @@ dword_81407B4: .word 0xE
 	thumb_local_start
 reqBBS_81407B8:
 	push {r4-r7,lr}
-	ldr r0, off_81409AC // =dynamicArr2005780 
+	ldr r0, off_81409AC // =eReqBBSGui
 	ldr r1, dword_81407C4 // =0xd 
 	ldrb r0, [r0,r1]
 	pop {r4-r7,pc}
@@ -4153,7 +4153,7 @@ dword_81407C4: .word 0xD
 	thumb_local_start
 reqBBS_81407C8:
 	push {r4-r7,lr}
-	ldr r1, off_81409B0 // =dynamicArr2005780 
+	ldr r1, off_81409B0 // =eReqBBSGui
 	ldr r2, dword_81407D4 // =0xd 
 	strb r0, [r1,r2]
 	pop {r4-r7,pc}
@@ -4170,13 +4170,13 @@ reqBBS_81407D8:
 	mov r1, #0x3a 
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	beq loc_8140814
-	ldr r0, off_81409B4 // =dynamicArr2005780 
+	ldr r0, off_81409B4 // =eReqBBSGui
 	ldr r1, dword_8140820 // =0xf 
 	ldrb r0, [r0,r1]
 	bl reqBBS_814084C
 	tst r0, r0
 	beq loc_8140814
-	ldr r0, off_81409B8 // =dynamicArr2005780 
+	ldr r0, off_81409B8 // =eReqBBSGui
 	ldr r1, dword_8140818 // =0xd 
 	ldr r2, dword_814081C // =0xe 
 	ldrb r1, [r0,r1]
@@ -4188,7 +4188,7 @@ reqBBS_81407D8:
 	cmp r0, r1
 	bgt loc_8140814
 	add r2, #1
-	ldr r0, off_81409BC // =dynamicArr2005780 
+	ldr r0, off_81409BC // =eReqBBSGui
 	ldr r1, dword_814081C // =0xe 
 	strb r2, [r0,r1]
 	mov r0, #1
@@ -4302,7 +4302,7 @@ off_81408D8: .word reqBBS_eRequestEntriesIDs
 reqBBS_81408DC:
 	push {r4-r7,lr}
 	bl reqBBS_81408C8
-	ldr r1, off_81409C4 // =dynamicArr2005780 
+	ldr r1, off_81409C4 // =eReqBBSGui
 	ldr r2, dword_81408EC // =0xf 
 	strb r0, [r1,r2]
 	pop {r4-r7,pc}
@@ -4376,7 +4376,7 @@ off_8140970: .word 0x110
 	thumb_func_start reqBBS_8140974
 reqBBS_8140974:
 	push {r4-r7,lr}
-	ldr r0, off_81409C8 // =dynamicArr2005780 
+	ldr r0, off_81409C8 // =eReqBBSGui
 	ldr r1, dword_8140980 // =0xf 
 	ldrb r0, [r0,r1]
 	pop {r4-r7,pc}
@@ -4387,7 +4387,7 @@ dword_8140980: .word 0xF
 	thumb_func_start reqBBS_8140984
 reqBBS_8140984:
 	push {r4-r7,lr}
-	ldr r0, off_81409CC // =dynamicArr2005780 
+	ldr r0, off_81409CC // =eReqBBSGui
 	mov r1, #0
 	ldr r2, dword_8140998 // =0xd 
 	strb r1, [r0,r2]
@@ -4399,17 +4399,17 @@ reqBBS_8140984:
 dword_8140998: .word 0xD
 dword_814099C: .word 0xE
 dword_81409A0: .word 0xF
-off_81409A4: .word dynamicArr2005780
-off_81409A8: .word dynamicArr2005780
-off_81409AC: .word dynamicArr2005780
-off_81409B0: .word dynamicArr2005780
-off_81409B4: .word dynamicArr2005780
-off_81409B8: .word dynamicArr2005780
-off_81409BC: .word dynamicArr2005780
+off_81409A4: .word eReqBBSGui
+off_81409A8: .word eReqBBSGui
+off_81409AC: .word eReqBBSGui
+off_81409B0: .word eReqBBSGui
+off_81409B4: .word eReqBBSGui
+off_81409B8: .word eReqBBSGui
+off_81409BC: .word eReqBBSGui
 off_81409C0: .word byte_813F380
-off_81409C4: .word dynamicArr2005780
-off_81409C8: .word dynamicArr2005780
-off_81409CC: .word dynamicArr2005780
+off_81409C4: .word eReqBBSGui
+off_81409C8: .word eReqBBSGui
+off_81409CC: .word eReqBBSGui
 	thumb_func_end reqBBS_8140984
 
 // (int a1) -> int

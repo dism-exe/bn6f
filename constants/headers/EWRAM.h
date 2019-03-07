@@ -28,7 +28,7 @@ in the 0x2000000 RAM region
 #define eToolkit ((Toolkit*)                     0x20093B0)
 #define eCamera ((Camera*)                      0x2009980)
 #define sSubmenu ((MenuControl*)                0x2009A30)
-#define sChatbox ((ChatBoxPropreties*)          0x2009CD0)
+#define eChatbox ((ChatBoxPropreties*)          0x2009CD0)
 /*
   Note from the past: those are sorta weird
   TODO: check this and see what's up with it
@@ -37,7 +37,7 @@ in the 0x2000000 RAM region
 #define iCurrFrame ((u16*)                      0x200A210)
 #define eJoypad ((Joystick*)                  0x200A270)
 #define i_joGameSubsysSel ((u8*)                0x200A480)
-#define sStartScr ((StartScreen*)               0x200AD10)
+#define eStartScreen ((StartScreen*)               0x200AD10)
 #define reqBBS_tile_data ((u8*)                 0x2018204)
 #define reqBBS_eRequestEntriesIDs ((u8*)        0x2023A00)
 #define reqBBS_requestNames_textualData ((u8*)  0x2025A04)

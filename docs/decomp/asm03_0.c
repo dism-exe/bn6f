@@ -12841,7 +12841,7 @@ int __fastcall sub_802F530(int a1, int a2, int a3, int a4)
     _BYTE **v4; // r10
     int result; // r0
 
-    ZeroFillByWord(&sStartScr, 32);
+    ZeroFillByWord(&eStartScreen, 32);
     result = 0;
     **v4 = 0;
     return result;
@@ -12849,11 +12849,11 @@ int __fastcall sub_802F530(int a1, int a2, int a3, int a4)
 
 
 // 0x802f544
-// set R5 = sStartScr
+// set R5 = eStartScreen
 void startscreen_802F544()
 {
     sub_803E938();
-    (*(JumpTable802F560 + sStartScr.jo_00))();
+    (*(JumpTable802F560 + eStartScreen.jo_00))();
     GetRNG2();
 }
 

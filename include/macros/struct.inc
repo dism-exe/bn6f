@@ -45,6 +45,12 @@
         .endif
     .endm
 
+    .macro struct_const label:req, name:req, val:req
+        .if __struct_entry ==__OFFSET_ENTRY
+            .equiv \label\()_\name, \val
+        .endif
+    .endm
+
     /* struct data macros */
     // use this macro to define additional types
     .macro struct_data_type label=__struct_label, field:req, size:req
@@ -80,6 +86,10 @@
 
     .macro u8_arr label=__struct_label, field:req, size:req
         struct_data_type \label, \field, \size
+    .endm
+
+    .macro b8 label=__struct_label, field:req
+        struct_data_type \label, \field, 1
     .endm
 
     .macro ptr_debug, label=__struct_label, field:req

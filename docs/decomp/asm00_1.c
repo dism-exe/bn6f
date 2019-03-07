@@ -1,15 +1,15 @@
 // 0x800318c
 char *sub_800318C()
 {
-    char *result; // r0
+	char *result; // r0
 
-    result = eBattleObjectsLinkedListStart;
-    *eUnkBattleObjectLinkedList_Prev = 0;
-    *eBattleObjectsLinkedListStart = 0;
-    *&eBattleObjectsLinkedListStart[4] = eBattleObjectsLinkedListSentinel;
-    *eBattleObjectsLinkedListSentinel = eBattleObjectsLinkedListStart;
-    *&eBattleObjectsLinkedListSentinel[4] = 0;
-    return result;
+	result = eBattleObjectsLinkedListStart;
+	*eUnkBattleObjectLinkedList_Prev = 0;
+	*eBattleObjectsLinkedListStart = 0;
+	*&eBattleObjectsLinkedListStart[4] = eBattleObjectsLinkedListSentinel;
+	*eBattleObjectsLinkedListSentinel = eBattleObjectsLinkedListStart;
+	*&eBattleObjectsLinkedListSentinel[4] = 0;
+	return result;
 }
 
 
@@ -17,555 +17,555 @@ char *sub_800318C()
 // () -> void
 int RunBattleObjectLogic()
 {
-    Toolkit *tk; // r10
-    char *v1; // r7
-    char v2; // r4
-    char zf; // zf
-    int result; // r0
+	Toolkit *tk; // r10
+	char *v1; // r7
+	char v2; // r4
+	char zf; // zf
+	int result; // r0
 
-    object_Clear3RAMBytes_800371A();
-    v1 = eBattleObjectsLinkedListStart;
-    while ( 1 )
-    {
-        v1 = *(v1 + 1);
-        if ( v1 == eBattleObjectsLinkedListSentinel )
-            break;
-        *eUnkBattleObjectLinkedList_Prev = v1;
-        v2 = v1[16];
-        if ( !tk->gamestate->unk_0A || v1[16] & 4 )
-        {
-            battle_isTimeStop();
-            if ( zf || v2 & 0x10 )
-                (*(BattleObjectFunctionJumptableTable[v1[18] & 0xF] + 4 * v1[17]))();
-        }
-        object_800372A();
-    }
-    result = 0;
-    *eUnkBattleObjectLinkedList_Prev = 0;
-    return result;
+	object_Clear3RAMBytes_800371A();
+	v1 = eBattleObjectsLinkedListStart;
+	while ( 1 )
+	{
+		v1 = *(v1 + 1);
+		if ( v1 == eBattleObjectsLinkedListSentinel )
+			break;
+		*eUnkBattleObjectLinkedList_Prev = v1;
+		v2 = v1[16];
+		if ( !tk->gamestate->unk_0A || v1[16] & 4 )
+		{
+			battle_isTimeStop();
+			if ( zf || v2 & 0x10 )
+				(*(BattleObjectFunctionJumptableTable[v1[18] & 0xF] + 4 * v1[17]))();
+		}
+		object_800372A();
+	}
+	result = 0;
+	*eUnkBattleObjectLinkedList_Prev = 0;
+	return result;
 }
 
 
 // 0x8003278
 int __fastcall SpawnBattleObjectCommon(char a1, int *a2)
 {
-    int result; // r0
-    char *v3; // r7
-    unsigned int *v4; // r1
-    unsigned int v5; // r2
-    int v6; // r5
-    unsigned int v7; // r6
-    int v8; // r5
-    int v9; // r1
-    int v10; // r2
-    int v11; // r3
-    int v12; // r4
-    int *v13; // [sp+0h] [bp-14h]
+	int result; // r0
+	char *v3; // r7
+	unsigned int *v4; // r1
+	unsigned int v5; // r2
+	int v6; // r5
+	unsigned int v7; // r6
+	int v8; // r5
+	int v9; // r1
+	int v10; // r2
+	int v11; // r3
+	int v12; // r4
+	int *v13; // [sp+0h] [bp-14h]
 
-    v13 = a2;
-    result = 16 * (a1 & 0xF);
-    v3 = dword_80032D0 + result;
-    v4 = *(dword_80032D0 + result);
-    v5 = 2147483648;
-    v6 = *(&dword_80032D0[1] + result);
-    v7 = *v4;
-    while ( v7 & v5 )
-    {
-        v5 >>= 1;
-        v6 += *(&dword_80032D0[3] + result);
-        if ( v6 >= *(&dword_80032D0[2] + result) )
-            return result;
-    }
-    *v4 = v7 | v5;
-    v8 = v6 + 16;
-    ZeroFillByWord((v8 + 4), v3[13]);
-    *v8 = v3[14];
-    result = *v13;
-    v9 = v13[1];
-    v10 = v13[2];
-    v11 = v13[3];
-    v12 = v13[4];
-    *(v8 + 1) = *v13;
-    *(v8 + 52) = v9;
-    *(v8 + 56) = v10;
-    *(v8 + 60) = v11;
-    *(v8 + 4) = v12;
-    return result;
+	v13 = a2;
+	result = 16 * (a1 & 0xF);
+	v3 = dword_80032D0 + result;
+	v4 = *(dword_80032D0 + result);
+	v5 = 2147483648;
+	v6 = *(&dword_80032D0[1] + result);
+	v7 = *v4;
+	while ( v7 & v5 )
+	{
+		v5 >>= 1;
+		v6 += *(&dword_80032D0[3] + result);
+		if ( v6 >= *(&dword_80032D0[2] + result) )
+			return result;
+	}
+	*v4 = v7 | v5;
+	v8 = v6 + 16;
+	ZeroFillByWord((v8 + 4), v3[13]);
+	*v8 = v3[14];
+	result = *v13;
+	v9 = v13[1];
+	v10 = v13[2];
+	v11 = v13[3];
+	v12 = v13[4];
+	*(v8 + 1) = *v13;
+	*(v8 + 52) = v9;
+	*(v8 + 56) = v10;
+	*(v8 + 60) = v11;
+	*(v8 + 4) = v12;
+	return result;
 }
 
 
 // 0x8003320
 int *__fastcall object_spawnType1(int a1, int a2, int a3, int a4)
 {
-    int v4; // r4
-    int v5; // r5
-    int *result; // r0
-    int v7; // [sp+0h] [bp-1Ch]
-    int v8; // [sp+4h] [bp-18h]
-    int v9; // [sp+8h] [bp-14h]
-    int v10; // [sp+Ch] [bp-10h]
-    int v11; // [sp+10h] [bp-Ch]
+	int v4; // r4
+	int v5; // r5
+	int *result; // r0
+	int v7; // [sp+0h] [bp-1Ch]
+	int v8; // [sp+4h] [bp-18h]
+	int v9; // [sp+8h] [bp-14h]
+	int v10; // [sp+Ch] [bp-10h]
+	int v11; // [sp+10h] [bp-Ch]
 
-    v7 = a1;
-    v8 = a2;
-    v9 = a3;
-    v10 = a4;
-    v11 = v4;
-    result = SpawnBattleObjectCommon(1, &v7);
-    if ( v5 )
-        result = sub_8003400();
-    return result;
+	v7 = a1;
+	v8 = a2;
+	v9 = a3;
+	v10 = a4;
+	v11 = v4;
+	result = SpawnBattleObjectCommon(1, &v7);
+	if ( v5 )
+		result = sub_8003400();
+	return result;
 }
 
 
 // 0x800333c
 int *__fastcall sub_800333C(int a1, int a2, int a3, int a4)
 {
-    int v4; // r4
-    int v5; // r5
-    int *result; // r0
-    int v7; // [sp+0h] [bp-1Ch]
-    int v8; // [sp+4h] [bp-18h]
-    int v9; // [sp+8h] [bp-14h]
-    int v10; // [sp+Ch] [bp-10h]
-    int v11; // [sp+10h] [bp-Ch]
+	int v4; // r4
+	int v5; // r5
+	int *result; // r0
+	int v7; // [sp+0h] [bp-1Ch]
+	int v8; // [sp+4h] [bp-18h]
+	int v9; // [sp+8h] [bp-14h]
+	int v10; // [sp+Ch] [bp-10h]
+	int v11; // [sp+10h] [bp-Ch]
 
-    v7 = a1;
-    v8 = a2;
-    v9 = a3;
-    v10 = a4;
-    v11 = v4;
-    result = SpawnBattleObjectCommon(1, &v7);
-    if ( v5 )
-        result = UpdateBattleObjectLinkedList();
-    return result;
+	v7 = a1;
+	v8 = a2;
+	v9 = a3;
+	v10 = a4;
+	v11 = v4;
+	result = SpawnBattleObjectCommon(1, &v7);
+	if ( v5 )
+		result = UpdateBattleObjectLinkedList();
+	return result;
 }
 
 
 // 0x8003358
 int *__fastcall object_spawnType3(int a1, int a2, int a3, int a4)
 {
-    int v4; // r4
-    Battle *obj; // r5
-    int *result; // r0
-    int v7; // [sp+0h] [bp-1Ch]
-    int v8; // [sp+4h] [bp-18h]
-    int v9; // [sp+8h] [bp-14h]
-    int v10; // [sp+Ch] [bp-10h]
-    int v11; // [sp+10h] [bp-Ch]
+	int v4; // r4
+	Battle *obj; // r5
+	int *result; // r0
+	int v7; // [sp+0h] [bp-1Ch]
+	int v8; // [sp+4h] [bp-18h]
+	int v9; // [sp+8h] [bp-14h]
+	int v10; // [sp+Ch] [bp-10h]
+	int v11; // [sp+10h] [bp-Ch]
 
-    v7 = a1;
-    v8 = a2;
-    v9 = a3;
-    v10 = a4;
-    v11 = v4;
-    result = SpawnBattleObjectCommon(3, &v7);
-    if ( obj )
-        result = sub_8003400();
-    return result;
+	v7 = a1;
+	v8 = a2;
+	v9 = a3;
+	v10 = a4;
+	v11 = v4;
+	result = SpawnBattleObjectCommon(3, &v7);
+	if ( obj )
+		result = sub_8003400();
+	return result;
 }
 
 
 // 0x8003374
 int *__fastcall sub_8003374(int a1, int a2, int a3, int a4)
 {
-    int v4; // r4
-    int v5; // r5
-    int *result; // r0
-    int v7; // [sp+0h] [bp-1Ch]
-    int v8; // [sp+4h] [bp-18h]
-    int v9; // [sp+8h] [bp-14h]
-    int v10; // [sp+Ch] [bp-10h]
-    int v11; // [sp+10h] [bp-Ch]
+	int v4; // r4
+	int v5; // r5
+	int *result; // r0
+	int v7; // [sp+0h] [bp-1Ch]
+	int v8; // [sp+4h] [bp-18h]
+	int v9; // [sp+8h] [bp-14h]
+	int v10; // [sp+Ch] [bp-10h]
+	int v11; // [sp+10h] [bp-Ch]
 
-    v7 = a1;
-    v8 = a2;
-    v9 = a3;
-    v10 = a4;
-    v11 = v4;
-    result = SpawnBattleObjectCommon(3, &v7);
-    if ( v5 )
-        result = UpdateBattleObjectLinkedList();
-    return result;
+	v7 = a1;
+	v8 = a2;
+	v9 = a3;
+	v10 = a4;
+	v11 = v4;
+	result = SpawnBattleObjectCommon(3, &v7);
+	if ( v5 )
+		result = UpdateBattleObjectLinkedList();
+	return result;
 }
 
 
 // 0x8003390
 _DWORD *__fastcall sub_8003390(int a1, int a2, int a3, int a4)
 {
-    int v4; // r4
-    int v5; // r5
-    _DWORD *result; // r0
-    int v7; // [sp+0h] [bp-1Ch]
-    int v8; // [sp+4h] [bp-18h]
-    int v9; // [sp+8h] [bp-14h]
-    int v10; // [sp+Ch] [bp-10h]
-    int v11; // [sp+10h] [bp-Ch]
+	int v4; // r4
+	int v5; // r5
+	_DWORD *result; // r0
+	int v7; // [sp+0h] [bp-1Ch]
+	int v8; // [sp+4h] [bp-18h]
+	int v9; // [sp+8h] [bp-14h]
+	int v10; // [sp+Ch] [bp-10h]
+	int v11; // [sp+10h] [bp-Ch]
 
-    v7 = a1;
-    v8 = a2;
-    v9 = a3;
-    v10 = a4;
-    v11 = v4;
-    result = SpawnBattleObjectCommon(3, &v7);
-    if ( v5 )
-        result = sub_8003440();
-    return result;
+	v7 = a1;
+	v8 = a2;
+	v9 = a3;
+	v10 = a4;
+	v11 = v4;
+	result = SpawnBattleObjectCommon(3, &v7);
+	if ( v5 )
+		result = sub_8003440();
+	return result;
 }
 
 
 // 0x80033ac
 int *__usercall object_spawnType4@<R0>(Battle *obj@<R5>, int a1@<R0>, int a2@<R1>, int a3@<R2>, int a4@<R3>)
 {
-    int v5; // r4
-    int *result; // r0
-    int v7; // [sp+0h] [bp-1Ch]
-    int v8; // [sp+4h] [bp-18h]
-    int v9; // [sp+8h] [bp-14h]
-    int v10; // [sp+Ch] [bp-10h]
-    int v11; // [sp+10h] [bp-Ch]
+	int v5; // r4
+	int *result; // r0
+	int v7; // [sp+0h] [bp-1Ch]
+	int v8; // [sp+4h] [bp-18h]
+	int v9; // [sp+8h] [bp-14h]
+	int v10; // [sp+Ch] [bp-10h]
+	int v11; // [sp+10h] [bp-Ch]
 
-    v7 = a1;
-    v8 = a2;
-    v9 = a3;
-    v10 = a4;
-    v11 = v5;
-    result = SpawnBattleObjectCommon(4, &v7);
-    if ( obj )
-        result = sub_8003400();
-    return result;
+	v7 = a1;
+	v8 = a2;
+	v9 = a3;
+	v10 = a4;
+	v11 = v5;
+	result = SpawnBattleObjectCommon(4, &v7);
+	if ( obj )
+		result = sub_8003400();
+	return result;
 }
 
 
 // 0x80033c8
 int *__fastcall sub_80033C8(int a1, int a2, int a3, int a4)
 {
-    int v4; // r4
-    int v5; // r5
-    int *result; // r0
-    int v7; // [sp+0h] [bp-1Ch]
-    int v8; // [sp+4h] [bp-18h]
-    int v9; // [sp+8h] [bp-14h]
-    int v10; // [sp+Ch] [bp-10h]
-    int v11; // [sp+10h] [bp-Ch]
+	int v4; // r4
+	int v5; // r5
+	int *result; // r0
+	int v7; // [sp+0h] [bp-1Ch]
+	int v8; // [sp+4h] [bp-18h]
+	int v9; // [sp+8h] [bp-14h]
+	int v10; // [sp+Ch] [bp-10h]
+	int v11; // [sp+10h] [bp-Ch]
 
-    v7 = a1;
-    v8 = a2;
-    v9 = a3;
-    v10 = a4;
-    v11 = v4;
-    result = SpawnBattleObjectCommon(4, &v7);
-    if ( v5 )
-        result = UpdateBattleObjectLinkedList();
-    return result;
+	v7 = a1;
+	v8 = a2;
+	v9 = a3;
+	v10 = a4;
+	v11 = v4;
+	result = SpawnBattleObjectCommon(4, &v7);
+	if ( v5 )
+		result = UpdateBattleObjectLinkedList();
+	return result;
 }
 
 
 // 0x80033e4
 _DWORD *__fastcall sub_80033E4(int a1, int a2, int a3, int a4)
 {
-    int v4; // r4
-    int v5; // r5
-    _DWORD *result; // r0
-    int v7; // [sp+0h] [bp-1Ch]
-    int v8; // [sp+4h] [bp-18h]
-    int v9; // [sp+8h] [bp-14h]
-    int v10; // [sp+Ch] [bp-10h]
-    int v11; // [sp+10h] [bp-Ch]
+	int v4; // r4
+	int v5; // r5
+	_DWORD *result; // r0
+	int v7; // [sp+0h] [bp-1Ch]
+	int v8; // [sp+4h] [bp-18h]
+	int v9; // [sp+8h] [bp-14h]
+	int v10; // [sp+Ch] [bp-10h]
+	int v11; // [sp+10h] [bp-Ch]
 
-    v7 = a1;
-    v8 = a2;
-    v9 = a3;
-    v10 = a4;
-    v11 = v4;
-    result = SpawnBattleObjectCommon(4, &v7);
-    if ( v5 )
-        result = sub_8003440();
-    return result;
+	v7 = a1;
+	v8 = a2;
+	v9 = a3;
+	v10 = a4;
+	v11 = v4;
+	result = SpawnBattleObjectCommon(4, &v7);
+	if ( v5 )
+		result = sub_8003440();
+	return result;
 }
 
 
 // 0x8003400
 int *sub_8003400()
 {
-    Battle *obj; // r5
-    int *result; // r0
-    int v2; // r1
-    _DWORD *v3; // r2
+	Battle *obj; // r5
+	int *result; // r0
+	int v2; // r1
+	_DWORD *v3; // r2
 
-    result = &obj[-1].extraVars[28];
-    v2 = *eUnkBattleObjectLinkedList_Prev;
-    if ( &obj[-1].extraVars[28] == *eUnkBattleObjectLinkedList_Prev || !*eUnkBattleObjectLinkedList_Prev )
-        return UpdateBattleObjectLinkedList();
-    *result = *eUnkBattleObjectLinkedList_Prev;
-    v3 = *(v2 + 4);
-    *(v2 + 4) = result;
-    *&obj[-1].extraVars[32] = v3;
-    *v3 = result;
-    return result;
+	result = &obj[-1].extraVars[28];
+	v2 = *eUnkBattleObjectLinkedList_Prev;
+	if ( &obj[-1].extraVars[28] == *eUnkBattleObjectLinkedList_Prev || !*eUnkBattleObjectLinkedList_Prev )
+		return UpdateBattleObjectLinkedList();
+	*result = *eUnkBattleObjectLinkedList_Prev;
+	v3 = *(v2 + 4);
+	*(v2 + 4) = result;
+	*&obj[-1].extraVars[32] = v3;
+	*v3 = result;
+	return result;
 }
 
 
 // 0x8003428
 int *UpdateBattleObjectLinkedList()
 {
-    int v0; // r5
-    int *result; // r0
-    int v2; // r2
+	int v0; // r5
+	int *result; // r0
+	int v2; // r2
 
-    result = (v0 - 16);
-    v2 = *eBattleObjectsLinkedListSentinel;
-    *(*eBattleObjectsLinkedListSentinel + 4) = v0 - 16;
-    *result = v2;
-    result[1] = eBattleObjectsLinkedListSentinel;
-    *eBattleObjectsLinkedListSentinel = v0 - 16;
-    return result;
+	result = (v0 - 16);
+	v2 = *eBattleObjectsLinkedListSentinel;
+	*(*eBattleObjectsLinkedListSentinel + 4) = v0 - 16;
+	*result = v2;
+	result[1] = eBattleObjectsLinkedListSentinel;
+	*eBattleObjectsLinkedListSentinel = v0 - 16;
+	return result;
 }
 
 
 // 0x8003440
 _DWORD *sub_8003440()
 {
-    int v0; // r5
-    _DWORD *result; // r0
-    _DWORD *v2; // r2
+	int v0; // r5
+	_DWORD *result; // r0
+	_DWORD *v2; // r2
 
-    result = (v0 - 16);
-    v2 = *&eBattleObjectsLinkedListStart[4];
-    *&eBattleObjectsLinkedListStart[4] = result;
-    result[1] = v2;
-    *result = eBattleObjectsLinkedListStart;
-    *v2 = v0 - 16;
-    return result;
+	result = (v0 - 16);
+	v2 = *&eBattleObjectsLinkedListStart[4];
+	*&eBattleObjectsLinkedListStart[4] = result;
+	result[1] = v2;
+	*result = eBattleObjectsLinkedListStart;
+	*v2 = v0 - 16;
+	return result;
 }
 
 
 // 0x8003458
 int object_freeMemory()
 {
-    _BYTE *v0; // r5
-    int *v1; // r1
-    int v2; // r1
-    _DWORD *v3; // r2
+	_BYTE *v0; // r5
+	int *v1; // r1
+	int v2; // r1
+	_DWORD *v3; // r2
 
-    *v0 = 0;
-    v1 = (&ActiveObjectBitfieldPointers)[v0[2] & 0xF];
-    *v1 &= ~(0x80000000 >> v0[3]);
-    v2 = *(v0 - 4);
-    v3 = *(v0 - 3);
-    *(v2 + 4) = v3;
-    *v3 = v2;
-    return sprite_makeUnscalable();
+	*v0 = 0;
+	v1 = (&ActiveObjectBitfieldPointers)[v0[2] & 0xF];
+	*v1 &= ~(0x80000000 >> v0[3]);
+	v2 = *(v0 - 4);
+	v3 = *(v0 - 3);
+	*(v2 + 4) = v3;
+	*v3 = v2;
+	return sprite_makeUnscalable();
 }
 
 
 // 0x8003490
 char *__fastcall InitializeStructsOfObjectType(int a1, int a2, int a3, int a4)
 {
-    char **v4; // r7
-    char *result; // r0
-    int v6; // r1
-    char v7; // r2
-    int v8; // r3
-    int v9; // r4
+	char **v4; // r7
+	char *result; // r0
+	int v6; // r1
+	char v7; // r2
+	int v8; // r3
+	int v9; // r4
 
-    v4 = &ObjectInitializationTable[4 * a1];
-    ZeroFillByWord((&ActiveObjectBitfieldPointers)[a1], 4 * ((*(v4 + 12) + 31) >> 5));
-    ZeroFillByWord(*v4, *(v4 + 4));
-    result = v4[1];
-    v6 = 0;
-    v7 = *(v4 + 10);
-    v8 = *(v4 + 12);
-    v9 = *(v4 + 11);
-    do
-    {
-        result[2] = v7;
-        result[3] = v6;
-        result += v9;
-        ++v6;
-    }
-    while ( v6 < v8 );
-    return result;
+	v4 = &ObjectInitializationTable[4 * a1];
+	ZeroFillByWord((&ActiveObjectBitfieldPointers)[a1], 4 * ((*(v4 + 12) + 31) >> 5));
+	ZeroFillByWord(*v4, *(v4 + 4));
+	result = v4[1];
+	v6 = 0;
+	v7 = *(v4 + 10);
+	v8 = *(v4 + 12);
+	v9 = *(v4 + 11);
+	do
+	{
+		result[2] = v7;
+		result[3] = v6;
+		result += v9;
+		++v6;
+	}
+	while ( v6 < v8 );
+	return result;
 }
 
 
 // 0x8003534
 char *__fastcall InitializeOWPlayerObjectStruct(int a1, int a2, int a3, int a4)
 {
-    return InitializeStructsOfObjectType(0, a2, a3, a4);
+	return InitializeStructsOfObjectType(0, a2, a3, a4);
 }
 
 
 // 0x800353e
 char *__fastcall InitializeT1BattleObjectStructs(int a1, int a2, int a3, int a4)
 {
-    return InitializeStructsOfObjectType(1, a2, a3, a4);
+	return InitializeStructsOfObjectType(1, a2, a3, a4);
 }
 
 
 // 0x8003548
 char *__fastcall InitializeT3BattleObjectStructs(int a1, int a2, int a3, int a4)
 {
-    return InitializeStructsOfObjectType(3, a2, a3, a4);
+	return InitializeStructsOfObjectType(3, a2, a3, a4);
 }
 
 
 // 0x8003552
 char *__fastcall InitializeT4BattleObjectStructs(int a1, int a2, int a3, int a4)
 {
-    return InitializeStructsOfObjectType(4, a2, a3, a4);
+	return InitializeStructsOfObjectType(4, a2, a3, a4);
 }
 
 
 // 0x800355c
 char *__fastcall InitializeOverworldNPCObjectStructs(int a1, int a2, int a3, int a4)
 {
-    return InitializeStructsOfObjectType(2, a2, a3, a4);
+	return InitializeStructsOfObjectType(2, a2, a3, a4);
 }
 
 
 // 0x8003566
 char *__fastcall InitializeOverworldMapObjectStructs(int a1, int a2, int a3, int a4)
 {
-    return InitializeStructsOfObjectType(5, a2, a3, a4);
+	return InitializeStructsOfObjectType(5, a2, a3, a4);
 }
 
 
 // 0x8003570
 int __fastcall SpawnObjectsFromList(unsigned __int8 *a1)
 {
-    int v1; // r5
-    unsigned __int8 *v2; // r7
-    int v3; // r4
-    int v4; // r1
-    int v5; // r4
-    int v7; // [sp-8h] [bp-1Ch]
+	int v1; // r5
+	unsigned __int8 *v2; // r7
+	int v3; // r4
+	int v4; // r1
+	int v5; // r4
+	int v7; // [sp-8h] [bp-1Ch]
 
-    v2 = a1;
-    v3 = 0;
-    while ( 1 )
-    {
-        v4 = *v2;
-        if ( v4 == 255 )
-            break;
-        v7 = v3;
-        v5 = *(v2 + 4);
-        (*(&SpawnObjectJumptable + v4))(v2[1], *(v2 + 1), *(v2 + 2), *(v2 + 3));
-        v3 = v7;
-        if ( v1 )
-            v3 = v7 + 1;
-        v2 += 20;
-    }
-    return v3;
+	v2 = a1;
+	v3 = 0;
+	while ( 1 )
+	{
+		v4 = *v2;
+		if ( v4 == 255 )
+			break;
+		v7 = v3;
+		v5 = *(v2 + 4);
+		(*(&SpawnObjectJumptable + v4))(v2[1], *(v2 + 1), *(v2 + 2), *(v2 + 3));
+		v3 = v7;
+		if ( v1 )
+			v3 = v7 + 1;
+		v2 += 20;
+	}
+	return v3;
 }
 
 
 // 0x80035a2
 unsigned int __fastcall sub_80035A2(unsigned int result)
 {
-    void **v1; // r1
-    char **v2; // r2
-    int **v3; // r3
-    int *v4; // r4
-    int *i; // r5
-    char *v6; // r5
-    unsigned int v7; // r7
-    int v8; // r6
-    unsigned int v9; // [sp+0h] [bp-2Ch]
-    void (**v10)(void); // [sp+4h] [bp-28h]
-    char **v11; // [sp+8h] [bp-24h]
-    int **v12; // [sp+Ch] [bp-20h]
-    int *v13; // [sp+14h] [bp-18h]
+	void **v1; // r1
+	char **v2; // r2
+	int **v3; // r3
+	int *v4; // r4
+	int *i; // r5
+	char *v6; // r5
+	unsigned int v7; // r7
+	int v8; // r6
+	unsigned int v9; // [sp+0h] [bp-2Ch]
+	void (**v10)(void); // [sp+4h] [bp-28h]
+	char **v11; // [sp+8h] [bp-24h]
+	int **v12; // [sp+Ch] [bp-20h]
+	int *v13; // [sp+14h] [bp-18h]
 
-    v1 = &FreeObjectJumptable;
-    v2 = &ObjectMemoryPointers;
-    v3 = &ActiveObjectBitfieldPointers;
-    v4 = dword_800315C;
-    for ( i = dword_8003174; ; i = v13 + 1 )
-    {
-        v9 = result;
-        v10 = v1;
-        v11 = v2;
-        v12 = v3;
-        v13 = i;
-        if ( !result )
-            break;
-        if ( result & 1 )
-        {
-            v6 = *v2;
-            v7 = 2147483648;
-            v8 = 0;
-            do
-            {
-                if ( (*v12)[v8 >> 5] & v7 )
-                    (*v10)();
-                v7 = __ROR4__(v7, 1);
-                v6 += *v4;
-                ++v8;
-            }
-            while ( v8 < *v13 );
-        }
-        result = v9 >> 1;
-        v1 = (v10 + 1);
-        v2 = v11 + 1;
-        v3 = v12 + 1;
-        ++v4;
-    }
-    return result;
+	v1 = &FreeObjectJumptable;
+	v2 = &ObjectMemoryPointers;
+	v3 = &ActiveObjectBitfieldPointers;
+	v4 = dword_800315C;
+	for ( i = dword_8003174; ; i = v13 + 1 )
+	{
+		v9 = result;
+		v10 = v1;
+		v11 = v2;
+		v12 = v3;
+		v13 = i;
+		if ( !result )
+			break;
+		if ( result & 1 )
+		{
+			v6 = *v2;
+			v7 = 2147483648;
+			v8 = 0;
+			do
+			{
+				if ( (*v12)[v8 >> 5] & v7 )
+					(*v10)();
+				v7 = __ROR4__(v7, 1);
+				v6 += *v4;
+				++v8;
+			}
+			while ( v8 < *v13 );
+		}
+		result = v9 >> 1;
+		v1 = (v10 + 1);
+		v2 = v11 + 1;
+		v3 = v12 + 1;
+		++v4;
+	}
+	return result;
 }
 
 
 // 0x800362c
 signed int __fastcall sub_800362C(signed __int16 *a1)
 {
-    int v1; // r10
-    _DWORD *v2; // r3
-    int v3; // r1
-    int v4; // r1
-    int v5; // r6
-    signed int result; // r0
+	int v1; // r10
+	_DWORD *v2; // r3
+	int v3; // r1
+	int v4; // r1
+	int v5; // r6
+	signed int result; // r0
 
-    v2 = *(v1 + oToolkit_CameraPtr);
-    v3 = a1[1] - (v2[15] >> 16);
-    if ( sCamera.unk_4C )
-        v3 = (v2[15] >> 16) - a1[1];
-    v4 = v3 + 120;
-    v5 = a1[3] - (v2[16] >> 16) + 80 - (a1[5] - (v2[17] >> 16));
-    if ( v4 < -32 || v4 >= 272 || v5 < -32 || v5 >= 224 )
-        result = 160;
-    else
-        result = v4;
-    return result;
+	v2 = *(v1 + oToolkit_CameraPtr);
+	v3 = a1[1] - (v2[15] >> 16);
+	if ( sCamera.unk_4C )
+		v3 = (v2[15] >> 16) - a1[1];
+	v4 = v3 + 120;
+	v5 = a1[3] - (v2[16] >> 16) + 80 - (a1[5] - (v2[17] >> 16));
+	if ( v4 < -32 || v4 >= 272 || v5 < -32 || v5 >= 224 )
+		result = 160;
+	else
+		result = v4;
+	return result;
 }
 
 
 // 0x8003694
 int __fastcall sub_8003694(_DWORD *a1)
 {
-    int v1; // r10
-    _DWORD *v2; // r3
-    int v3; // r1
-    int v4; // r8
-    int v5; // r6
-    int v6; // r1
-    int v7; // r6
-    int v8; // r9
-    int v9; // r6
-    int result; // r0
+	int v1; // r10
+	_DWORD *v2; // r3
+	int v3; // r1
+	int v4; // r8
+	int v5; // r6
+	int v6; // r1
+	int v7; // r6
+	int v8; // r9
+	int v9; // r6
+	int result; // r0
 
-    v2 = *(v1 + oToolkit_CameraPtr);
-    v3 = *a1 - v2[15];
-    v4 = v3;
-    v5 = a1[1] - v2[16];
-    v6 = ((v3 + v5) >> 16) + 120;
-    v7 = (v5 - v4) >> 1;
-    v8 = (v2[17] + 0x800000 + v7) >> 16;
-    v9 = ((v7 - a1[2] + v2[17]) >> 16) + 82;
-    if ( v6 < -32 || v6 >= 272 || v9 < -32 || v9 >= 224 )
-        result = v6;
-    else
-        result = v6;
-    return result;
+	v2 = *(v1 + oToolkit_CameraPtr);
+	v3 = *a1 - v2[15];
+	v4 = v3;
+	v5 = a1[1] - v2[16];
+	v6 = ((v3 + v5) >> 16) + 120;
+	v7 = (v5 - v4) >> 1;
+	v8 = (v2[17] + 0x800000 + v7) >> 16;
+	v9 = ((v7 - a1[2] + v2[17]) >> 16) + 82;
+	if ( v6 < -32 || v6 >= 272 || v9 < -32 || v9 >= 224 )
+		result = v6;
+	else
+		result = v6;
+	return result;
 }
 
 
@@ -573,13 +573,13 @@ int __fastcall sub_8003694(_DWORD *a1)
 // () -> void
 int object_Clear3RAMBytes_800371A()
 {
-    int result; // r0
+	int result; // r0
 
-    result = 0;
-    byte_2036778 = 0;
-    LOBYTE(dword_203CA7C) = 0;
-    byte_2036830 = 0;
-    return result;
+	result = 0;
+	byte_2036778 = 0;
+	LOBYTE(dword_203CA7C) = 0;
+	byte_2036830 = 0;
+	return result;
 }
 
 
@@ -587,723 +587,723 @@ int object_Clear3RAMBytes_800371A()
 // () -> void
 int object_800372A()
 {
-    int v0; // r5
-    int *v1; // r0
-    int v2; // r1
-    _BYTE *v3; // r2
-    int v4; // r0
-    int result; // r0
+	int v0; // r5
+	int *v1; // r0
+	int v2; // r1
+	_BYTE *v3; // r2
+	int v4; // r0
+	int result; // r0
 
-    v1 = &object_PtrPairs_800374C[2 * (*(v0 + oBattleObject_TypeAndSpriteOffset) & 0xF)];
-    v2 = *v1;
-    v3 = v1[1];
-    v4 = *v3;
-    *(v2 + 4 * v4) = v0;
-    result = v4 + 1;
-    *v3 = result;
-    return result;
+	v1 = &object_PtrPairs_800374C[2 * (*(v0 + oBattleObject_TypeAndSpriteOffset) & 0xF)];
+	v2 = *v1;
+	v3 = v1[1];
+	v4 = *v3;
+	*(v2 + 4 * v4) = v0;
+	result = v4 + 1;
+	*v3 = result;
+	return result;
 }
 
 
 // 0x800378c
 int *__fastcall sub_800378C(int a1, int a2, int a3, int a4)
 {
-    int *result; // r0
+	int *result; // r0
 
-    ZeroFillByWord(dword_20081D0, dword_280);
-    result = &dword_200AC18;
-    dword_200AC18 = 0;
-    return result;
+	ZeroFillByWord(dword_20081D0, dword_280);
+	result = &dword_200AC18;
+	dword_200AC18 = 0;
+	return result;
 }
 
 
 // 0x80037ac
 int __fastcall sub_80037AC(int a1, int a2, int a3, int a4)
 {
-    unsigned int v4; // r4
-    unsigned int v5; // r5
-    unsigned int v6; // r6
-    unsigned int v7; // r1
-    unsigned int v8; // r2
-    int result; // r0
-    unsigned int *v10; // r7
+	unsigned int v4; // r4
+	unsigned int v5; // r5
+	unsigned int v6; // r6
+	unsigned int v7; // r1
+	unsigned int v8; // r2
+	int result; // r0
+	unsigned int *v10; // r7
 
-    v7 = ((a2 + 0x8000) >> 16 << 16) | ((a1 + 0x8000) >> 16);
-    v8 = ((a3 + 0x8000) >> 16) | (a4 << 16);
-    result = dword_200AC18;
-    if ( dword_200AC18 < 32 )
-    {
-        v10 = &dword_20081D0[5 * dword_200AC18];
-        *v10 = v7;
-        v10[1] = v8;
-        v10[2] = v4;
-        v10[3] = v5;
-        v10[4] = v6;
-        result = dword_200AC18++ + 1;
-    }
-    return result;
+	v7 = ((a2 + 0x8000) >> 16 << 16) | ((a1 + 0x8000) >> 16);
+	v8 = ((a3 + 0x8000) >> 16) | (a4 << 16);
+	result = dword_200AC18;
+	if ( dword_200AC18 < 32 )
+	{
+		v10 = &dword_20081D0[5 * dword_200AC18];
+		*v10 = v7;
+		v10[1] = v8;
+		v10[2] = v4;
+		v10[3] = v5;
+		v10[4] = v6;
+		result = dword_200AC18++ + 1;
+	}
+	return result;
 }
 
 
 // 0x80037f4
 int sub_80037F4()
 {
-    int v0; // r6
-    signed __int16 *v1; // r3
-    int v2; // r7
-    signed int v3; // r0
-    _DWORD *v4; // r4
-    int v5; // r0
-    int result; // r0
-    signed __int16 *v7; // [sp-14h] [bp-1Ch]
+	int v0; // r6
+	signed __int16 *v1; // r3
+	int v2; // r7
+	signed int v3; // r0
+	_DWORD *v4; // r4
+	int v5; // r0
+	int result; // r0
+	signed __int16 *v7; // [sp-14h] [bp-1Ch]
 
-    if ( dword_200AC18 > 1 )
-    {
-        v0 = 0;
-        do
-        {
-            v1 = &dword_20081D0[5 * v0];
-            v2 = 0;
-            do
-            {
-                if ( v0 != v2 )
-                {
-                    if ( *(v1 + 3) & dword_20081D0[5 * v2 + 2] )
-                    {
-                        v7 = v1;
-                        v3 = sub_8003894(v1, &dword_20081D0[5 * v2]);
-                        v1 = v7;
-                        v4 = &dword_20081D0[5 * v2];
-                        if ( v3 )
-                        {
-                            **(v7 + 4) |= *(v7 + 3) & dword_20081D0[5 * v2 + 2];
-                            v5 = *(v7 + 2);
-                            if ( v5 & 0x200000 )
-                            {
-                                *&eOWPlayerObject[114] = *v4;
-                                *&eOWPlayerObject[116] = *(v4 + 1);
-                                *&eOWPlayerObject[118] = *(v4 + 2);
-                            }
-                            *v4[4] |= v5 & v4[3];
-                        }
-                    }
-                }
-                ++v2;
-            }
-            while ( dword_200AC18 > v2 );
-            ++v0;
-        }
-        while ( dword_200AC18 != v0 );
-    }
-    result = 0;
-    dword_200AC18 = 0;
-    return result;
+	if ( dword_200AC18 > 1 )
+	{
+		v0 = 0;
+		do
+		{
+			v1 = &dword_20081D0[5 * v0];
+			v2 = 0;
+			do
+			{
+				if ( v0 != v2 )
+				{
+					if ( *(v1 + 3) & dword_20081D0[5 * v2 + 2] )
+					{
+						v7 = v1;
+						v3 = sub_8003894(v1, &dword_20081D0[5 * v2]);
+						v1 = v7;
+						v4 = &dword_20081D0[5 * v2];
+						if ( v3 )
+						{
+							**(v7 + 4) |= *(v7 + 3) & dword_20081D0[5 * v2 + 2];
+							v5 = *(v7 + 2);
+							if ( v5 & 0x200000 )
+							{
+								*&eOWPlayerObject[114] = *v4;
+								*&eOWPlayerObject[116] = *(v4 + 1);
+								*&eOWPlayerObject[118] = *(v4 + 2);
+							}
+							*v4[4] |= v5 & v4[3];
+						}
+					}
+				}
+				++v2;
+			}
+			while ( dword_200AC18 > v2 );
+			++v0;
+		}
+		while ( dword_200AC18 != v0 );
+	}
+	result = 0;
+	dword_200AC18 = 0;
+	return result;
 }
 
 
 // 0x8003894
 signed int __fastcall sub_8003894(signed __int16 *a1, signed __int16 *a2)
 {
-    int v2; // r2
-    int v3; // r5
-    int v4; // r4
-    int v6; // r2
-    int v7; // r3
+	int v2; // r2
+	int v3; // r5
+	int v4; // r4
+	int v6; // r2
+	int v7; // r3
 
-    v2 = *a1 - *a2;
-    v3 = a1[1] - a2[1];
-    v4 = *(a1 + 6) + *(a2 + 6);
-    if ( v2 * v2 + v3 * v3 >= v4 * v4 )
-        return 0;
-    v6 = a1[2];
-    v7 = a2[2];
-    if ( v6 < v7 )
-    {
-        if ( v7 > v6 + *(a1 + 7) )
-            return 0;
-    }
-    else if ( v6 > v7 + *(a2 + 7) )
-    {
-        return 0;
-    }
-    return 1;
+	v2 = *a1 - *a2;
+	v3 = a1[1] - a2[1];
+	v4 = *(a1 + 6) + *(a2 + 6);
+	if ( v2 * v2 + v3 * v3 >= v4 * v4 )
+		return 0;
+	v6 = a1[2];
+	v7 = a2[2];
+	if ( v6 < v7 )
+	{
+		if ( v7 > v6 + *(a1 + 7) )
+			return 0;
+	}
+	else if ( v6 > v7 + *(a2 + 7) )
+	{
+		return 0;
+	}
+	return 1;
 }
 
 
 // 0x8003908
 void __fastcall sub_8003908()
 {
-    ZeroFillByWord(byte_2000780, 72);
+	ZeroFillByWord(byte_2000780, 72);
 }
 
 
 // 0x8003914
 signed int __fastcall sub_8003914(unsigned __int8 a1, int a2, int a3, int a4)
 {
-    unsigned __int8 v4; // ST00_1
-    int v5; // r0
-    signed int result; // r0
+	unsigned __int8 v4; // ST00_1
+	int v5; // r0
+	signed int result; // r0
 
-    v4 = a1;
-    ZeroFillByWord(byte_2000780, 72);
-    byte_2000781 = v4;
-    v5 = 16 * v4;
-    *byte_2000784 = *(&jt_80038E8 + v5 + 8);
-    byte_2000782 = *(&jt_80038E8 + v5 + 12);
-    result = 1;
-    byte_2000780[0] = 1;
-    byte_2000783 = 1;
-    return result;
+	v4 = a1;
+	ZeroFillByWord(byte_2000780, 72);
+	byte_2000781 = v4;
+	v5 = 16 * v4;
+	*byte_2000784 = *(&jt_80038E8 + v5 + 8);
+	byte_2000782 = *(&jt_80038E8 + v5 + 12);
+	result = 1;
+	byte_2000780[0] = 1;
+	byte_2000783 = 1;
+	return result;
 }
 
 
 // 0x8003940
 void __fastcall sub_8003940(int a1, int a2, int a3, int a4)
 {
-    void (*v4)(void); // r0
+	void (*v4)(void); // r0
 
-    v4 = *(&jt_80038E8 + 4 * byte_2000781 + 1);
-    if ( v4 )
-        v4();
-    ZeroFillByWord(byte_2000780, 72);
+	v4 = *(&jt_80038E8 + 4 * byte_2000781 + 1);
+	if ( v4 )
+		v4();
+	ZeroFillByWord(byte_2000780, 72);
 }
 
 
 // 0x8003962
 void __fastcall sub_8003962()
 {
-    if ( !byte_2000782 )
-        ZeroFillByWord(byte_2000780, 72);
-    byte_2000783 = 1;
+	if ( !byte_2000782 )
+		ZeroFillByWord(byte_2000780, 72);
+	byte_2000783 = 1;
 }
 
 
 // 0x800397a
 signed int sub_800397A()
 {
-    signed int result; // r0
+	signed int result; // r0
 
-    result = 1;
-    byte_2000783 = 1;
-    return result;
+	result = 1;
+	byte_2000783 = 1;
+	return result;
 }
 
 
 // 0x8003984
 int sub_8003984()
 {
-    int result; // r0
+	int result; // r0
 
-    result = byte_2000780[0];
-    if ( byte_2000780[0] )
-    {
-        result = byte_2000780[0] | 0x80;
-        byte_2000780[0] |= 0x80u;
-    }
-    return result;
+	result = byte_2000780[0];
+	if ( byte_2000780[0] )
+	{
+		result = byte_2000780[0] | 0x80;
+		byte_2000780[0] |= 0x80u;
+	}
+	return result;
 }
 
 
 // 0x800399a
 int sub_800399A()
 {
-    int result; // r0
+	int result; // r0
 
-    result = byte_2000780[0] & 0x7F;
-    byte_2000780[0] &= 0x7Fu;
-    return result;
+	result = byte_2000780[0] & 0x7F;
+	byte_2000780[0] &= 0x7Fu;
+	return result;
 }
 
 
 // 0x80039aa
 int sub_80039AA()
 {
-    int result; // r0
+	int result; // r0
 
-    result = byte_2000780[0];
-    if ( byte_2000780[0] )
-    {
-        if ( !(byte_2000780[0] & 0x80) )
-            result = (*(&jt_80038E8 + 4 * byte_2000781))();
-    }
-    return result;
+	result = byte_2000780[0];
+	if ( byte_2000780[0] )
+	{
+		if ( !(byte_2000780[0] & 0x80) )
+			result = (*(&jt_80038E8 + 4 * byte_2000781))();
+	}
+	return result;
 }
 
 
 // 0x80039cc
 int sub_80039CC()
 {
-    return byte_2000780[0];
+	return byte_2000780[0];
 }
 
 
 // 0x80039d4
 signed int __fastcall sub_80039D4(int a1)
 {
-    int v1; // r7
-    signed int v2; // r4
-    char v3; // zf
+	int v1; // r7
+	signed int v2; // r4
+	char v3; // zf
 
-    v1 = a1;
-    v2 = 0;
-    sub_80039CC();
-    if ( !v3 && byte_2000781 == v1 )
-        v2 = 1;
-    return v2;
+	v1 = a1;
+	v2 = 0;
+	sub_80039CC();
+	if ( !v3 && byte_2000781 == v1 )
+		v2 = 1;
+	return v2;
 }
 
 
 // 0x8003a58
 void __fastcall sub_8003A58()
 {
-    ZeroFillByWord(&byte_2001010, 72);
+	ZeroFillByWord(&byte_2001010, 72);
 }
 
 
 // 0x8003a64
 signed int __fastcall sub_8003A64(unsigned __int8 a1, int a2, int a3, int a4)
 {
-    unsigned __int8 v4; // ST00_1
-    int v5; // r0
-    signed int result; // r0
+	unsigned __int8 v4; // ST00_1
+	int v5; // r0
+	signed int result; // r0
 
-    v4 = a1;
-    ZeroFillByWord(&byte_2001010, 72);
-    byte_2001011 = v4;
-    v5 = 16 * v4;
-    dword_2001014 = *(&off_80039F8 + v5 + 8);
-    byte_2001012 = *(&off_80039F8 + v5 + 12);
-    result = 1;
-    byte_2001010 = 1;
-    byte_2001013 = 1;
-    return result;
+	v4 = a1;
+	ZeroFillByWord(&byte_2001010, 72);
+	byte_2001011 = v4;
+	v5 = 16 * v4;
+	dword_2001014 = *(&off_80039F8 + v5 + 8);
+	byte_2001012 = *(&off_80039F8 + v5 + 12);
+	result = 1;
+	byte_2001010 = 1;
+	byte_2001013 = 1;
+	return result;
 }
 
 
 // 0x8003a90
 void __fastcall sub_8003A90(int a1, int a2, int a3, int a4)
 {
-    void (*v4)(void); // r0
+	void (*v4)(void); // r0
 
-    v4 = *(&off_80039F8 + 4 * byte_2001011 + 1);
-    if ( v4 )
-        v4();
-    ZeroFillByWord(&byte_2001010, 72);
+	v4 = *(&off_80039F8 + 4 * byte_2001011 + 1);
+	if ( v4 )
+		v4();
+	ZeroFillByWord(&byte_2001010, 72);
 }
 
 
 // 0x8003ab2
 void __fastcall zeroFill_8003AB2()
 {
-    if ( !byte_2001012 )
-        ZeroFillByWord(&byte_2001010, 72);
-    byte_2001013 = 1;
+	if ( !byte_2001012 )
+		ZeroFillByWord(&byte_2001010, 72);
+	byte_2001013 = 1;
 }
 
 
 // 0x8003aca
 signed int sub_8003ACA()
 {
-    signed int result; // r0
+	signed int result; // r0
 
-    result = 1;
-    byte_2001013 = 1;
-    return result;
+	result = 1;
+	byte_2001013 = 1;
+	return result;
 }
 
 
 // 0x8003ad4
 int sub_8003AD4()
 {
-    int result; // r0
+	int result; // r0
 
-    result = byte_2001010;
-    if ( byte_2001010 )
-    {
-        result = byte_2001010 | 0x80;
-        byte_2001010 |= 0x80u;
-    }
-    return result;
+	result = byte_2001010;
+	if ( byte_2001010 )
+	{
+		result = byte_2001010 | 0x80;
+		byte_2001010 |= 0x80u;
+	}
+	return result;
 }
 
 
 // 0x8003aea
 int sub_8003AEA()
 {
-    int result; // r0
+	int result; // r0
 
-    result = byte_2001010 & 0x7F;
-    byte_2001010 &= 0x7Fu;
-    return result;
+	result = byte_2001010 & 0x7F;
+	byte_2001010 &= 0x7Fu;
+	return result;
 }
 
 
 // 0x8003afa
 int sub_8003AFA()
 {
-    int result; // r0
+	int result; // r0
 
-    result = byte_2001010;
-    if ( byte_2001010 )
-    {
-        if ( !(byte_2001010 & 0x80) )
-            result = (*(&off_80039F8 + 4 * byte_2001011))();
-    }
-    return result;
+	result = byte_2001010;
+	if ( byte_2001010 )
+	{
+		if ( !(byte_2001010 & 0x80) )
+			result = (*(&off_80039F8 + 4 * byte_2001011))();
+	}
+	return result;
 }
 
 
 // 0x8003b1c
 int sub_8003B1C()
 {
-    return byte_2001010;
+	return byte_2001010;
 }
 
 
 // 0x8003b24
 signed int __fastcall sub_8003B24(int a1)
 {
-    int v1; // r7
-    signed int v2; // r4
-    char v3; // zf
+	int v1; // r7
+	signed int v2; // r4
+	char v3; // zf
 
-    v1 = a1;
-    v2 = 0;
-    sub_8003B1C();
-    if ( !v3 && byte_2001011 == v1 )
-        v2 = 1;
-    return v2;
+	v1 = a1;
+	v2 = 0;
+	sub_8003B1C();
+	if ( !v3 && byte_2001011 == v1 )
+		v2 = 1;
+	return v2;
 }
 
 
 // 0x8003b4c
 int __fastcall SpawnOWPlayerObject(int result, int a2, int a3, int a4)
 {
-    unsigned int v4; // r1
-    char *v5; // r5
-    int v6; // [sp+4h] [bp-14h]
-    int v7; // [sp+10h] [bp-8h]
+	unsigned int v4; // r1
+	char *v5; // r5
+	int v6; // [sp+4h] [bp-14h]
+	int v7; // [sp+10h] [bp-8h]
 
-    v4 = 2147483648;
-    v5 = eOWPlayerObject;
-    while ( eActiveOWPlayerObjectBitfield & v4 )
-    {
-        v4 >>= 1;
-        v5 += 200;
-        if ( v5 >= &eStruct200A008 )
-            return result;
-    }
-    eActiveOWPlayerObjectBitfield |= v4;
-    *v5 = 9;
-    v5[1] = result;
-    *(v5 + 7) = v6;
-    *(v5 + 8) = a3;
-    *(v5 + 9) = a4;
-    *(v5 + 1) = v7;
-    result = 0;
-    *(v5 + 2) = 0;
-    return result;
+	v4 = 2147483648;
+	v5 = eOWPlayerObject;
+	while ( eActiveOWPlayerObjectBitfield & v4 )
+	{
+		v4 >>= 1;
+		v5 += 200;
+		if ( v5 >= &eStruct200A008 )
+			return result;
+	}
+	eActiveOWPlayerObjectBitfield |= v4;
+	*v5 = 9;
+	v5[1] = result;
+	*(v5 + 7) = v6;
+	*(v5 + 8) = a3;
+	*(v5 + 9) = a4;
+	*(v5 + 1) = v7;
+	result = 0;
+	*(v5 + 2) = 0;
+	return result;
 }
 
 
 // 0x8003b86
 int FreeOWPlayerObject()
 {
-    _BYTE *v0; // r5
+	_BYTE *v0; // r5
 
-    eActiveOWPlayerObjectBitfield &= ~(0x80000000 >> v0[3]);
-    *v0 = 0;
-    return sprite_makeUnscalable();
+	eActiveOWPlayerObjectBitfield &= ~(0x80000000 >> v0[3]);
+	*v0 = 0;
+	return sprite_makeUnscalable();
 }
 
 
 // 0x8003ba2
 char *sub_8003BA2()
 {
-    Toolkit *tk; // r10
-    NPC *player; // r5
-    char *result; // r0
+	Toolkit *tk; // r10
+	NPC *player; // r5
+	char *result; // r0
 
-    player = eOWPlayerObject;
-    do
-    {
-        if ( player->invisCollSwitch & 1 && (!tk->gamestate->unk_0A || player->invisCollSwitch & 4) )
-            (*(&off_8003B48 + byte_0[player + 1]))();
-        player = (player + 200);
-        result = &eStruct200A008;
-    }
-    while ( player < &eStruct200A008 );
-    return result;
+	player = eOWPlayerObject;
+	do
+	{
+		if ( player->invisCollSwitch & 1 && (!tk->gamestate->unk_0A || player->invisCollSwitch & 4) )
+			(*(&off_8003B48 + byte_0[player + 1]))();
+		player = (player + 200);
+		result = &eStruct200A008;
+	}
+	while ( player < &eStruct200A008 );
+	return result;
 }
 
 
 // 0x8003bf4
 int sub_8003BF4()
 {
-    signed int v0; // r0
-    signed int v1; // r1
-    char *v2; // r5
-    char v3; // r2
-    signed int v4; // ST00_4
-    signed int v5; // ST04_4
-    signed int v6; // ST00_4
-    signed int v7; // ST04_4
+	signed int v0; // r0
+	signed int v1; // r1
+	char *v2; // r5
+	char v3; // r2
+	signed int v4; // ST00_4
+	signed int v5; // ST04_4
+	signed int v6; // ST00_4
+	signed int v7; // ST04_4
 
-    v0 = 1;
-    v1 = 0;
-    v2 = eOWPlayerObject;
-    do
-    {
-        v3 = *v2;
-        if ( *v2 & 2 )
-        {
-            v4 = v0;
-            v5 = v1;
-            sub_30061E8();
-            sub_3006028(0);
-            sub_3006440(2, 96);
-            v0 = v4;
-            v1 = v5;
-        }
-        else
-        {
-            *(v2 + 45) = 0;
-            if ( v3 & 1 )
-            {
-                v6 = v0;
-                v7 = v1;
-                sub_30061E8();
-                v0 = v6;
-                v1 = v7;
-            }
-        }
-        ++v1;
-        v2 += 200;
-    }
-    while ( v1 < v0 );
-    return sub_80028C0(0);
+	v0 = 1;
+	v1 = 0;
+	v2 = eOWPlayerObject;
+	do
+	{
+		v3 = *v2;
+		if ( *v2 & 2 )
+		{
+			v4 = v0;
+			v5 = v1;
+			sub_30061E8();
+			sub_3006028(0);
+			sub_3006440(2, 96);
+			v0 = v4;
+			v1 = v5;
+		}
+		else
+		{
+			*(v2 + 45) = 0;
+			if ( v3 & 1 )
+			{
+				v6 = v0;
+				v7 = v1;
+				sub_30061E8();
+				v0 = v6;
+				v1 = v7;
+			}
+		}
+		++v1;
+		v2 += 200;
+	}
+	while ( v1 < v0 );
+	return sub_80028C0(0);
 }
 
 
 // 0x8003c70
 int sub_8003C70()
 {
-    return sub_80028C0(0);
+	return sub_80028C0(0);
 }
 
 
 // 0x8003c7a
 signed int sub_8003C7A()
 {
-    signed int result; // r0
-    char *v1; // r3
+	signed int result; // r0
+	char *v1; // r3
 
-    result = 0;
-    v1 = eOWPlayerObject;
-    do
-    {
-        *(v1 + 45) = 0;
-        v1 += 200;
-        ++result;
-    }
-    while ( result < 1 );
-    return result;
+	result = 0;
+	v1 = eOWPlayerObject;
+	do
+	{
+		*(v1 + 45) = 0;
+		v1 += 200;
+		++result;
+	}
+	while ( result < 1 );
+	return result;
 }
 
 
 // 0x8003e18
 int sub_8003E18()
 {
-    int v0; // r6
-    int *i; // r7
-    unsigned __int8 v2; // vf
-    char v3; // r2
+	int v0; // r6
+	int *i; // r7
+	unsigned __int8 v2; // vf
+	char v3; // r2
 
-    v0 = byte_2036778;
-    for ( i = &dword_2039A10; ; ++i )
-    {
-        v2 = __OFSUB__(v0--, 1);
-        if ( (v0 < 0) ^ v2 )
-            break;
-        v3 = **i;
-        if ( **i & 2 )
-        {
-            sub_30061E8();
-            sub_3006028(1);
-            sub_3006440(2, 64);
-        }
-        else
-        {
-            *(*i + 180) = 0;
-            if ( v3 & 1 )
-                sub_30061E8();
-        }
-    }
-    return sub_80028C0(1);
+	v0 = byte_2036778;
+	for ( i = &dword_2039A10; ; ++i )
+	{
+		v2 = __OFSUB__(v0--, 1);
+		if ( (v0 < 0) ^ v2 )
+			break;
+		v3 = **i;
+		if ( **i & 2 )
+		{
+			sub_30061E8();
+			sub_3006028(1);
+			sub_3006440(2, 64);
+		}
+		else
+		{
+			*(*i + 180) = 0;
+			if ( v3 & 1 )
+				sub_30061E8();
+		}
+	}
+	return sub_80028C0(1);
 }
 
 
 // 0x8003e98
 int sub_8003E98()
 {
-    return sub_80028C0(1);
+	return sub_80028C0(1);
 }
 
 
 // 0x8004218
 int sub_8004218()
 {
-    int v0; // r6
-    int *i; // r7
-    unsigned __int8 v2; // vf
-    char v3; // r2
+	int v0; // r6
+	int *i; // r7
+	unsigned __int8 v2; // vf
+	char v3; // r2
 
-    v0 = dword_203CA7C;
-    for ( i = &dword_203A010; ; ++i )
-    {
-        v2 = __OFSUB__(v0--, 1);
-        if ( (v0 < 0) ^ v2 )
-            break;
-        v3 = **i;
-        if ( **i & 2 )
-        {
-            sub_30061E8();
-            sub_3006028(3);
-            sub_3006440(2, 64);
-        }
-        else
-        {
-            *(*i + 180) = 0;
-            if ( v3 & 1 )
-                sub_30061E8();
-        }
-    }
-    return sub_80028C0(3);
+	v0 = dword_203CA7C;
+	for ( i = &dword_203A010; ; ++i )
+	{
+		v2 = __OFSUB__(v0--, 1);
+		if ( (v0 < 0) ^ v2 )
+			break;
+		v3 = **i;
+		if ( **i & 2 )
+		{
+			sub_30061E8();
+			sub_3006028(3);
+			sub_3006440(2, 64);
+		}
+		else
+		{
+			*(*i + 180) = 0;
+			if ( v3 & 1 )
+				sub_30061E8();
+		}
+	}
+	return sub_80028C0(3);
 }
 
 
 // 0x8004298
 int sub_8004298()
 {
-    return sub_80028C0(3);
+	return sub_80028C0(3);
 }
 
 
 // 0x80042a6
 signed int __fastcall sub_80042A6(signed int result, int a2, int a3, int a4)
 {
-    do
-    {
-        *(&dword_24 + a4 + 144) = 0;
-        a4 += 216;
-        ++result;
-    }
-    while ( result < 32 );
-    return result;
+	do
+	{
+		*(&dword_24 + a4 + 144) = 0;
+		a4 += 216;
+		++result;
+	}
+	while ( result < 32 );
+	return result;
 }
 
 
 // 0x8004510
 int sub_8004510()
 {
-    int v0; // r6
-    char *i; // r7
-    unsigned __int8 v2; // vf
-    char v3; // r2
+	int v0; // r6
+	char *i; // r7
+	unsigned __int8 v2; // vf
+	char v3; // r2
 
-    v0 = byte_2036830;
-    for ( i = byte_203F750; ; i += 4 )
-    {
-        v2 = __OFSUB__(v0--, 1);
-        if ( (v0 < 0) ^ v2 )
-            break;
-        v3 = **i;
-        if ( **i & 2 )
-        {
-            sub_30061E8();
-            sub_3006028(4);
-            sub_3006440(2, 64);
-        }
-        else
-        {
-            *(*i + 164) = 0;
-            if ( v3 & 1 )
-                sub_30061E8();
-        }
-    }
-    return sub_80028C0(4);
+	v0 = byte_2036830;
+	for ( i = byte_203F750; ; i += 4 )
+	{
+		v2 = __OFSUB__(v0--, 1);
+		if ( (v0 < 0) ^ v2 )
+			break;
+		v3 = **i;
+		if ( **i & 2 )
+		{
+			sub_30061E8();
+			sub_3006028(4);
+			sub_3006440(2, 64);
+		}
+		else
+		{
+			*(*i + 164) = 0;
+			if ( v3 & 1 )
+				sub_30061E8();
+		}
+	}
+	return sub_80028C0(4);
 }
 
 
 // 0x8004590
 int sub_8004590()
 {
-    return sub_80028C0(4);
+	return sub_80028C0(4);
 }
 
 
 // 0x800459a
 signed int dead_800459A()
 {
-    signed int result; // r0
-    char *v1; // r3
+	signed int result; // r0
+	char *v1; // r3
 
-    result = 0;
-    v1 = &eT4BattleObjects[16];
-    do
-    {
-        *(v1 + 41) = 0;
-        v1 += 200;
-        ++result;
-    }
-    while ( result < 32 );
-    return result;
+	result = 0;
+	v1 = &eT4BattleObjects[16];
+	do
+	{
+		*(v1 + 41) = 0;
+		v1 += 200;
+		++result;
+	}
+	while ( result < 32 );
+	return result;
 }
 
 
 // 0x80045c0
 void __fastcall SpawnOverworldNPCObject(int a1, int a2, int a3, int a4)
 {
-    unsigned int v4; // r1
-    char *v5; // r5
-    char v6; // [sp+0h] [bp-18h]
-    int v7; // [sp+4h] [bp-14h]
-    int v8; // [sp+8h] [bp-10h]
-    int v9; // [sp+Ch] [bp-Ch]
-    int v10; // [sp+10h] [bp-8h]
+	unsigned int v4; // r1
+	char *v5; // r5
+	char v6; // [sp+0h] [bp-18h]
+	int v7; // [sp+4h] [bp-14h]
+	int v8; // [sp+8h] [bp-10h]
+	int v9; // [sp+Ch] [bp-Ch]
+	int v10; // [sp+10h] [bp-8h]
 
-    v6 = a1;
-    v7 = a2;
-    v8 = a3;
-    v9 = a4;
-    v4 = 2147483648;
-    v5 = eOverworldNPCObjects;
-    while ( eActiveOverworldNPCObjectsBitfield & v4 )
-    {
-        v4 >>= 1;
-        v5 += 216;
-        if ( v5 >= byte_2006530 )
-            return;
-    }
-    eActiveOverworldNPCObjectsBitfield |= v4;
-    ZeroFillByWord(v5 + 4, 156);
-    *v5 = 9;
-    v5[1] = v6;
-    *(v5 + 9) = v7;
-    *(v5 + 10) = v8;
-    *(v5 + 11) = v9;
-    *(v5 + 1) = v10;
+	v6 = a1;
+	v7 = a2;
+	v8 = a3;
+	v9 = a4;
+	v4 = 2147483648;
+	v5 = eOverworldNPCObjects;
+	while ( eActiveOverworldNPCObjectsBitfield & v4 )
+	{
+		v4 >>= 1;
+		v5 += 216;
+		if ( v5 >= byte_2006530 )
+			return;
+	}
+	eActiveOverworldNPCObjectsBitfield |= v4;
+	ZeroFillByWord(v5 + 4, 156);
+	*v5 = 9;
+	v5[1] = v6;
+	*(v5 + 9) = v7;
+	*(v5 + 10) = v8;
+	*(v5 + 11) = v9;
+	*(v5 + 1) = v10;
 }
 
 
 // 0x8004602
 int FreeOverworldNPCObject()
 {
-    _BYTE *v0; // r5
+	_BYTE *v0; // r5
 
-    eActiveOverworldNPCObjectsBitfield &= ~(0x80000000 >> v0[3]);
-    *v0 = 0;
-    return sprite_makeUnscalable();
+	eActiveOverworldNPCObjectsBitfield &= ~(0x80000000 >> v0[3]);
+	*v0 = 0;
+	return sprite_makeUnscalable();
 }
 
 
@@ -1313,438 +1313,438 @@ int FreeOverworldNPCObject()
 // - Scenes don't seem to load, either
 char *npc_800461E()
 {
-    Toolkit *tk; // r10
-    char *result; // r0
-    char notFlag; // zf
-    NPC *npc; // r5
+	Toolkit *tk; // r10
+	char *result; // r0
+	char notFlag; // zf
+	NPC *npc; // r5
 
-    result = TestEventFlagFromImmediate(23, 1);
-    if ( notFlag )
-    {
-        npc = eOverworldNPCObjects;
-        do
-        {
-            if ( npc->invisCollSwitch & 1 && (!tk->gamestate->unk_0A || npc->invisCollSwitch & 4) )
-                (*(&off_80045BC + npc->unk_01))();
-            npc = (npc + 216);
-            result = byte_2006530;
-        }
-        while ( npc < byte_2006530 );
-    }
-    return result;
+	result = TestEventFlagFromImmediate(23, 1);
+	if ( notFlag )
+	{
+		npc = eOverworldNPCObjects;
+		do
+		{
+			if ( npc->invisCollSwitch & 1 && (!tk->gamestate->unk_0A || npc->invisCollSwitch & 4) )
+				(*(&off_80045BC + npc->unk_01))();
+			npc = (npc + 216);
+			result = byte_2006530;
+		}
+		while ( npc < byte_2006530 );
+	}
+	return result;
 }
 
 
 // 0x800467c
 int sub_800467C()
 {
-    signed int v0; // r0
-    signed int v1; // r1
-    char *v2; // r5
-    char v3; // r2
-    signed int v4; // ST00_4
-    signed int v5; // ST04_4
-    signed int v6; // ST00_4
-    signed int v7; // ST04_4
+	signed int v0; // r0
+	signed int v1; // r1
+	char *v2; // r5
+	char v3; // r2
+	signed int v4; // ST00_4
+	signed int v5; // ST04_4
+	signed int v6; // ST00_4
+	signed int v7; // ST04_4
 
-    v0 = 16;
-    v1 = 0;
-    v2 = eOverworldNPCObjects;
-    do
-    {
-        v3 = *v2;
-        if ( *v2 & 2 )
-        {
-            v4 = v0;
-            v5 = v1;
-            sub_30061E8();
-            sub_3006028(2);
-            sub_3006440(2, 96);
-            v0 = v4;
-            v1 = v5;
-        }
-        else
-        {
-            *(v2 + 49) = 0;
-            if ( v3 & 1 )
-            {
-                v6 = v0;
-                v7 = v1;
-                sub_30061E8();
-                v0 = v6;
-                v1 = v7;
-            }
-        }
-        ++v1;
-        v2 += 216;
-    }
-    while ( v1 < v0 );
-    return sub_80028C0(2);
+	v0 = 16;
+	v1 = 0;
+	v2 = eOverworldNPCObjects;
+	do
+	{
+		v3 = *v2;
+		if ( *v2 & 2 )
+		{
+			v4 = v0;
+			v5 = v1;
+			sub_30061E8();
+			sub_3006028(2);
+			sub_3006440(2, 96);
+			v0 = v4;
+			v1 = v5;
+		}
+		else
+		{
+			*(v2 + 49) = 0;
+			if ( v3 & 1 )
+			{
+				v6 = v0;
+				v7 = v1;
+				sub_30061E8();
+				v0 = v6;
+				v1 = v7;
+			}
+		}
+		++v1;
+		v2 += 216;
+	}
+	while ( v1 < v0 );
+	return sub_80028C0(2);
 }
 
 
 // 0x80046f8
 int sub_80046F8()
 {
-    return sub_80028C0(2);
+	return sub_80028C0(2);
 }
 
 
 // 0x8004702
 signed int sub_8004702()
 {
-    signed int result; // r0
-    char *v1; // r3
+	signed int result; // r0
+	char *v1; // r3
 
-    result = 0;
-    v1 = eOverworldNPCObjects;
-    do
-    {
-        *(v1 + 49) = 0;
-        v1 += 216;
-        ++result;
-    }
-    while ( result < 16 );
-    return result;
+	result = 0;
+	v1 = eOverworldNPCObjects;
+	do
+	{
+		*(v1 + 49) = 0;
+		v1 += 216;
+		++result;
+	}
+	while ( result < 16 );
+	return result;
 }
 
 
 // 0x80047e0
 int __fastcall SpawnOverworldMapObject(int result, int a2, int a3, int a4)
 {
-    unsigned int v4; // r1
-    void **v5; // r5
-    unsigned int v6; // r6
-    unsigned int v7; // r3
-    int v8; // r2
-    void *v9; // [sp+4h] [bp-18h]
-    int v10; // [sp+8h] [bp-14h]
-    int v11; // [sp+Ch] [bp-10h]
-    void *v12; // [sp+10h] [bp-Ch]
+	unsigned int v4; // r1
+	void **v5; // r5
+	unsigned int v6; // r6
+	unsigned int v7; // r3
+	int v8; // r2
+	void *v9; // [sp+4h] [bp-18h]
+	int v10; // [sp+8h] [bp-14h]
+	int v11; // [sp+Ch] [bp-10h]
+	void *v12; // [sp+10h] [bp-Ch]
 
-    v10 = a3;
-    v11 = a4;
-    v4 = 2147483648;
-    v5 = &eOverworldMapObjects;
-    v6 = 0;
-    while ( 1 )
-    {
-        v7 = v6 >> 5;
-        v8 = eActiveOverworldMapObjectsBitfield[v7];
-        if ( !(v8 & v4) )
-            break;
-        v4 = __ROR4__(v4, 1);
-        v5 += 30;
-        if ( ++v6 >= 56 )
-            return result;
-    }
-    eActiveOverworldMapObjectsBitfield[v7] = v8 | v4;
-    *v5 = 9;
-    *(v5 + 1) = result;
-    v5[3] = v9;
-    v5[4] = v10;
-    v5[5] = v11;
-    v5[1] = v12;
-    result = 0;
-    v5[2] = 0;
-    return result;
+	v10 = a3;
+	v11 = a4;
+	v4 = 2147483648;
+	v5 = &eOverworldMapObjects;
+	v6 = 0;
+	while ( 1 )
+	{
+		v7 = v6 >> 5;
+		v8 = eActiveOverworldMapObjectsBitfield[v7];
+		if ( !(v8 & v4) )
+			break;
+		v4 = __ROR4__(v4, 1);
+		v5 += 30;
+		if ( ++v6 >= 56 )
+			return result;
+	}
+	eActiveOverworldMapObjectsBitfield[v7] = v8 | v4;
+	*v5 = 9;
+	*(v5 + 1) = result;
+	v5[3] = v9;
+	v5[4] = v10;
+	v5[5] = v11;
+	v5[1] = v12;
+	result = 0;
+	v5[2] = 0;
+	return result;
 }
 
 
 // 0x8004822
 int __fastcall sub_8004822(int result, int a2, int a3, int a4)
 {
-    char *v4; // r5
-    signed int v5; // r6
-    unsigned int v6; // r1
-    unsigned int v7; // r3
-    int v8; // r2
-    unsigned __int8 v9; // vf
-    int v10; // [sp+4h] [bp-18h]
-    int v11; // [sp+8h] [bp-14h]
-    int v12; // [sp+Ch] [bp-10h]
-    int v13; // [sp+10h] [bp-Ch]
+	char *v4; // r5
+	signed int v5; // r6
+	unsigned int v6; // r1
+	unsigned int v7; // r3
+	int v8; // r2
+	unsigned __int8 v9; // vf
+	int v10; // [sp+4h] [bp-18h]
+	int v11; // [sp+8h] [bp-14h]
+	int v12; // [sp+Ch] [bp-10h]
+	int v13; // [sp+10h] [bp-Ch]
 
-    v11 = a3;
-    v12 = a4;
-    v4 = &byte_20138A8;
-    v5 = 55;
-    while ( 1 )
-    {
-        v6 = 0x80000000 >> (v5 & 0x1F);
-        v7 = v5 >> 5;
-        v8 = eActiveOverworldMapObjectsBitfield[v7];
-        if ( !(v8 & v6) )
-            break;
-        v4 -= 120;
-        v9 = __OFSUB__(v5--, 1);
-        if ( (v5 < 0) ^ v9 )
-            return result;
-    }
-    eActiveOverworldMapObjectsBitfield[v7] = v8 | v6;
-    *v4 = 9;
-    v4[1] = result;
-    *(v4 + 3) = v10;
-    *(v4 + 4) = v11;
-    *(v4 + 5) = v12;
-    *(v4 + 1) = v13;
-    result = 0;
-    *(v4 + 2) = 0;
-    return result;
+	v11 = a3;
+	v12 = a4;
+	v4 = &byte_20138A8;
+	v5 = 55;
+	while ( 1 )
+	{
+		v6 = 0x80000000 >> (v5 & 0x1F);
+		v7 = v5 >> 5;
+		v8 = eActiveOverworldMapObjectsBitfield[v7];
+		if ( !(v8 & v6) )
+			break;
+		v4 -= 120;
+		v9 = __OFSUB__(v5--, 1);
+		if ( (v5 < 0) ^ v9 )
+			return result;
+	}
+	eActiveOverworldMapObjectsBitfield[v7] = v8 | v6;
+	*v4 = 9;
+	v4[1] = result;
+	*(v4 + 3) = v10;
+	*(v4 + 4) = v11;
+	*(v4 + 5) = v12;
+	*(v4 + 1) = v13;
+	result = 0;
+	*(v4 + 2) = 0;
+	return result;
 }
 
 
 // 0x8004864
 int __fastcall sub_8004864(int result, int a2, int a3, int a4)
 {
-    unsigned int v4; // r5
-    unsigned int v5; // r1
-    unsigned int v6; // r6
-    void **v7; // r5
-    unsigned int v8; // r3
-    int v9; // r2
-    void *v10; // [sp+4h] [bp-18h]
-    int v11; // [sp+8h] [bp-14h]
-    int v12; // [sp+Ch] [bp-10h]
-    void *v13; // [sp+10h] [bp-Ch]
+	unsigned int v4; // r5
+	unsigned int v5; // r1
+	unsigned int v6; // r6
+	void **v7; // r5
+	unsigned int v8; // r3
+	int v9; // r2
+	void *v10; // [sp+4h] [bp-18h]
+	int v11; // [sp+8h] [bp-14h]
+	int v12; // [sp+Ch] [bp-10h]
+	void *v13; // [sp+10h] [bp-Ch]
 
-    v11 = a3;
-    v12 = a4;
-    v5 = 0x80000000 >> (v4 & 0x1F);
-    v6 = v4;
-    v7 = &eOverworldMapObjects + 30 * v4;
-    while ( 1 )
-    {
-        v8 = v6 >> 5;
-        v9 = eActiveOverworldMapObjectsBitfield[v8];
-        if ( !(v9 & v5) )
-            break;
-        v5 = __ROR4__(v5, 1);
-        v7 += 30;
-        if ( ++v6 >= 56 )
-            return result;
-    }
-    eActiveOverworldMapObjectsBitfield[v8] = v9 | v5;
-    *v7 = 9;
-    *(v7 + 1) = result;
-    v7[3] = v10;
-    v7[4] = v11;
-    v7[5] = v12;
-    v7[1] = v13;
-    result = 0;
-    v7[2] = 0;
-    return result;
+	v11 = a3;
+	v12 = a4;
+	v5 = 0x80000000 >> (v4 & 0x1F);
+	v6 = v4;
+	v7 = &eOverworldMapObjects + 30 * v4;
+	while ( 1 )
+	{
+		v8 = v6 >> 5;
+		v9 = eActiveOverworldMapObjectsBitfield[v8];
+		if ( !(v9 & v5) )
+			break;
+		v5 = __ROR4__(v5, 1);
+		v7 += 30;
+		if ( ++v6 >= 56 )
+			return result;
+	}
+	eActiveOverworldMapObjectsBitfield[v8] = v9 | v5;
+	*v7 = 9;
+	*(v7 + 1) = result;
+	v7[3] = v10;
+	v7[4] = v11;
+	v7[5] = v12;
+	v7[1] = v13;
+	result = 0;
+	v7[2] = 0;
+	return result;
 }
 
 
 // 0x80048b2
 int FreeOverworldMapObject()
 {
-    _BYTE *v0; // r5
+	_BYTE *v0; // r5
 
-    eActiveOverworldMapObjectsBitfield[v0[3] >> 5] &= ~__ROR4__(2147483648, v0[3]);
-    *v0 = 0;
-    return sprite_makeUnscalable();
+	eActiveOverworldMapObjectsBitfield[v0[3] >> 5] &= ~__ROR4__(2147483648, v0[3]);
+	*v0 = 0;
+	return sprite_makeUnscalable();
 }
 
 
 // 0x80048d2
 int *sub_80048D2()
 {
-    Toolkit *tk; // r10
-    int *result; // r0
-    char flag; // zf
-    void *sprite; // r5
+	Toolkit *tk; // r10
+	int *result; // r0
+	char flag; // zf
+	void *sprite; // r5
 
-    result = TestEventFlagFromImmediate(23, 2);
-    if ( flag )
-    {
-        sprite = &eOverworldMapObjects;
-        do
-        {
-            if ( *sprite & 1 && (!tk->gamestate->unk_0A || *sprite & 4) )
-                (*(&JumpTable8004724 + *(sprite + 1)))();
-            sprite = sprite + 120;
-            result = &dword_2013920;
-        }
-        while ( sprite < &dword_2013920 );
-    }
-    return result;
+	result = TestEventFlagFromImmediate(23, 2);
+	if ( flag )
+	{
+		sprite = &eOverworldMapObjects;
+		do
+		{
+			if ( *sprite & 1 && (!tk->gamestate->unk_0A || *sprite & 4) )
+				(*(&JumpTable8004724 + *(sprite + 1)))();
+			sprite = sprite + 120;
+			result = &dword_2013920;
+		}
+		while ( sprite < &dword_2013920 );
+	}
+	return result;
 }
 
 
 // 0x8004934
 int sub_8004934()
 {
-    signed int v0; // r0
-    signed int v1; // r1
-    void **structArr; // r5
-    char v3; // r2
-    signed int v4; // ST00_4
-    signed int v5; // ST04_4
-    signed int v6; // ST00_4
-    signed int v7; // ST04_4
+	signed int v0; // r0
+	signed int v1; // r1
+	void **structArr; // r5
+	char v3; // r2
+	signed int v4; // ST00_4
+	signed int v5; // ST04_4
+	signed int v6; // ST00_4
+	signed int v7; // ST04_4
 
-    v0 = 56;
-    v1 = 0;
-    structArr = &eOverworldMapObjects;
-    do
-    {
-        v3 = *structArr;
-        if ( *structArr & 2 )
-        {
-            v4 = v0;
-            v5 = v1;
-            sub_30061E8();
-            sub_3006028(5);
-            sub_3006440(2, 96);
-            v0 = v4;
-            v1 = v5;
-        }
-        else
-        {
-            structArr[25] = 0;
-            if ( v3 & 1 )
-            {
-                v6 = v0;
-                v7 = v1;
-                sub_30061E8();
-                v0 = v6;
-                v1 = v7;
-            }
-        }
-        ++v1;
-        structArr += 30;
-    }
-    while ( v1 < v0 );
-    return sub_80028C0(5);
+	v0 = 56;
+	v1 = 0;
+	structArr = &eOverworldMapObjects;
+	do
+	{
+		v3 = *structArr;
+		if ( *structArr & 2 )
+		{
+			v4 = v0;
+			v5 = v1;
+			sub_30061E8();
+			sub_3006028(5);
+			sub_3006440(2, 96);
+			v0 = v4;
+			v1 = v5;
+		}
+		else
+		{
+			structArr[25] = 0;
+			if ( v3 & 1 )
+			{
+				v6 = v0;
+				v7 = v1;
+				sub_30061E8();
+				v0 = v6;
+				v1 = v7;
+			}
+		}
+		++v1;
+		structArr += 30;
+	}
+	while ( v1 < v0 );
+	return sub_80028C0(5);
 }
 
 
 // 0x80049b0
 int sub_80049B0()
 {
-    return sub_80028C0(5);
+	return sub_80028C0(5);
 }
 
 
 // 0x80049ba
 signed int sub_80049BA()
 {
-    signed int result; // r0
-    void **v1; // r3
+	signed int result; // r0
+	void **v1; // r3
 
-    result = 0;
-    v1 = &eOverworldMapObjects;
-    do
-    {
-        v1[25] = 0;
-        v1 += 30;
-        ++result;
-    }
-    while ( result < 56 );
-    return result;
+	result = 0;
+	v1 = &eOverworldMapObjects;
+	do
+	{
+		v1[25] = 0;
+		v1 += 30;
+		++result;
+	}
+	while ( result < 56 );
+	return result;
 }
 
 
 // 0x80049e0
 int *__fastcall sub_80049E0(int a1, int a2, int a3, int a4)
 {
-    int *result; // r0
+	int *result; // r0
 
-    ZeroFillByEightWords(&byte_2006848, &byte_400);
-    result = &dword_2006C48;
-    dword_2006C48 = &byte_2006848;
-    return result;
+	ZeroFillByEightWords(&byte_2006848, &byte_400);
+	result = &dword_2006C48;
+	dword_2006C48 = &byte_2006848;
+	return result;
 }
 
 
 // 0x80049f8
 void sub_80049F8()
 {
-    ;
+	;
 }
 
 
 // 0x80049fc
 int __fastcall sub_80049FC(_BYTE *a1, int a2, int a3, int a4, int (__fastcall *a5)(_BYTE *, int, int, int))
 {
-    int v5; // r4
-    int v6; // r5
-    int v7; // r6
-    int v8; // r7
-    int v9; // r1
-    _BYTE *v10; // r0
-    _BYTE *v11; // r1
-    _BYTE *v12; // r0
-    _WORD *v13; // r1
-    signed int v14; // r2
-    char *i; // r3
-    int v16; // r2
-    unsigned int v17; // r3
-    int (__cdecl *v18)(_BYTE *, _WORD *, _DWORD, unsigned int, int, int, int); // r4
-    int v20; // [sp+0h] [bp-44h]
-    int v21; // [sp+4h] [bp-40h]
-    int v22; // [sp+8h] [bp-3Ch]
-    int v23; // [sp+Ch] [bp-38h]
-    int v24; // [sp+10h] [bp-34h]
-    int v25; // [sp+14h] [bp-30h]
-    int v26; // [sp+18h] [bp-2Ch]
-    int v27; // [sp+1Ch] [bp-28h]
-    _BYTE *v28; // [sp+24h] [bp-20h]
-    int v29; // [sp+28h] [bp-1Ch]
-    int v30; // [sp+2Ch] [bp-18h]
-    int v31; // [sp+30h] [bp-14h]
+	int v5; // r4
+	int v6; // r5
+	int v7; // r6
+	int v8; // r7
+	int v9; // r1
+	_BYTE *v10; // r0
+	_BYTE *v11; // r1
+	_BYTE *v12; // r0
+	_WORD *v13; // r1
+	signed int v14; // r2
+	char *i; // r3
+	int v16; // r2
+	unsigned int v17; // r3
+	int (__cdecl *v18)(_BYTE *, _WORD *, _DWORD, unsigned int, int, int, int); // r4
+	int v20; // [sp+0h] [bp-44h]
+	int v21; // [sp+4h] [bp-40h]
+	int v22; // [sp+8h] [bp-3Ch]
+	int v23; // [sp+Ch] [bp-38h]
+	int v24; // [sp+10h] [bp-34h]
+	int v25; // [sp+14h] [bp-30h]
+	int v26; // [sp+18h] [bp-2Ch]
+	int v27; // [sp+1Ch] [bp-28h]
+	_BYTE *v28; // [sp+24h] [bp-20h]
+	int v29; // [sp+28h] [bp-1Ch]
+	int v30; // [sp+2Ch] [bp-18h]
+	int v31; // [sp+30h] [bp-14h]
 
-    v28 = a1;
-    v29 = a2;
-    v30 = a3;
-    v31 = a4;
-    v20 = a2;
-    v21 = a3;
-    v22 = a4;
-    v23 = v5;
-    v24 = v6;
-    v25 = v7;
-    v26 = v8;
-    v27 = 0;
-    v9 = dword_2006C48;
-    if ( dword_2006C48 < &unk_2006C46 )
-    {
-        *dword_2006C48 = *a1;
-        v10 = a1 + 1;
-        v11 = (v9 + 1);
-        *v11 = *v10;
-        v12 = v10 + 1;
-        v13 = v11 + 1;
-        while ( 1 )
-        {
-            v14 = *v12;
-            if ( !*v12 )
-                break;
-            if ( v14 == 10 )
-            {
-                *v13 = 254;
-                ++v13;
-            }
-            else if ( v14 >= 32 && v14 < 96 )
-            {
-                if ( v13 >= &unk_2006C46 )
-                    break;
-                if ( v14 == 37 )
-                {
+	v28 = a1;
+	v29 = a2;
+	v30 = a3;
+	v31 = a4;
+	v20 = a2;
+	v21 = a3;
+	v22 = a4;
+	v23 = v5;
+	v24 = v6;
+	v25 = v7;
+	v26 = v8;
+	v27 = 0;
+	v9 = dword_2006C48;
+	if ( dword_2006C48 < &unk_2006C46 )
+	{
+		*dword_2006C48 = *a1;
+		v10 = a1 + 1;
+		v11 = (v9 + 1);
+		*v11 = *v10;
+		v12 = v10 + 1;
+		v13 = v11 + 1;
+		while ( 1 )
+		{
+			v14 = *v12;
+			if ( !*v12 )
+				break;
+			if ( v14 == 10 )
+			{
+				*v13 = 254;
+				++v13;
+			}
+			else if ( v14 >= 32 && v14 < 96 )
+			{
+				if ( v13 >= &unk_2006C46 )
+					break;
+				if ( v14 == 37 )
+				{
 LABEL_10:
-                    ++v12;
-                    for ( i = byte_8004B14; *i; ++i )
-                    {
-                        if ( *v12 == *i )
-                        {
-                            v16 = v27;
-                            v27 += 4;
-                            v17 = 4 * (i - byte_8004B14);
-                            v18 = *(&off_8004AC0 + v17);
-                            v12 = v18(v12, v13, *(&v20 + v16), v17 >> 2, v20, v21, v22);
-                            if ( !v18 )
+					++v12;
+					for ( i = byte_8004B14; *i; ++i )
+					{
+						if ( *v12 == *i )
+						{
+							v16 = v27;
+							v27 += 4;
+							v17 = 4 * (i - byte_8004B14);
+							v18 = *(&off_8004AC0 + v17);
+							v12 = v18(v12, v13, *(&v20 + v16), v17 >> 2, v20, v21, v22);
+				            if ( !v18 )
                                 goto LABEL_10;
                             break;
                         }

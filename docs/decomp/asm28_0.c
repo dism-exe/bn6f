@@ -2443,7 +2443,7 @@ void *sub_809CF2C()
     {
         result = reqBBS_81407D8();
         if ( result )
-            result = init_s_02011C50_8036E90(byte_809CEB4, dynamicArr2005780.totalPointsIndex + 49, 14, v2);
+            result = init_s_02011C50_8036E90(byte_809CEB4, eReqBBSGui.totalPointsIndex + 49, 14, v2);
     }
     return result;
 }

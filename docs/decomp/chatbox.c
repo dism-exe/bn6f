@@ -3417,10 +3417,10 @@ signed int chatbox_80427B4()
 {
     int v0; // r1
 
-    v0 = byte_813F380[byte_200578F[0]] + 1 + dynamicArr2005780.numPoints;
+    v0 = byte_813F380[byte_200578F[0]] + 1 + eReqBBSGui.numPoints;
     if ( v0 > 75 )
         LOBYTE(v0) = 75;
-    dynamicArr2005780.numPoints = v0;
+    eReqBBSGui.numPoints = v0;
     return 1;
 }
 

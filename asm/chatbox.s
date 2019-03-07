@@ -5542,7 +5542,7 @@ dword_80427B0: .word 0x37
 	thumb_local_start
 chatbox_80427B4:
 	push {lr}
-	ldr r0, off_8042A94 // =dynamicArr2005780
+	ldr r0, off_8042A94 // =eReqBBSGui
 	ldr r1, dword_80427DC // =0xf
 	ldr r2, off_80427E0 // =byte_813F380
 	ldrb r1, [r0,r1]
@@ -5568,7 +5568,7 @@ off_80427E0: .word byte_813F380
 	thumb_local_start
 chatbox_80427E4:
 	push {lr}
-	ldr r0, off_8042A98 // =dynamicArr2005780
+	ldr r0, off_8042A98 // =eReqBBSGui
 	ldr r1, dword_80427FC // =0xf
 	ldr r2, off_8042800 // =byte_813F380
 	ldrb r1, [r0,r1]
@@ -5586,7 +5586,7 @@ off_8042800: .word byte_813F380
 	thumb_local_start
 chatbox_8042804:
 	push {lr}
-	ldr r0, off_8042818 // =dynamicArr2005780
+	ldr r0, off_8042818 // =eReqBBSGui
 	ldr r1, dword_804281C // =0xf
 	ldrb r0, [r0,r1]
 	bl reqBBS_81408B4
@@ -5594,7 +5594,7 @@ chatbox_8042804:
 	mov r0, #1
 	pop {pc}
 	.balign 4, 0x00
-off_8042818: .word dynamicArr2005780
+off_8042818: .word eReqBBSGui
 dword_804281C: .word 0xF
 	thumb_func_end chatbox_8042804
 
@@ -5759,8 +5759,8 @@ loc_8042A86:
 	mov r7, #0
 	strb r7, [r2,#2]
 	pop {r4,r5,pc}
-off_8042A94: .word dynamicArr2005780
-off_8042A98: .word dynamicArr2005780
+off_8042A94: .word eReqBBSGui
+off_8042A98: .word eReqBBSGui
 	thumb_func_end chatbox_8042A14
 
 	thumb_local_start

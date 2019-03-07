@@ -6472,7 +6472,7 @@ ToolkitPointers: .word i_joGameSubsysSel
 	.word unk_2009740
 	.word iCurrFrame
 	.word unk_30025C0
-	.word sChatbox
+	.word eChatbox
 	.word unk_20384F0
 	.word sSubmenu
 	.word byte_200A220
