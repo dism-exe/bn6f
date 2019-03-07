@@ -9567,7 +9567,7 @@ sub_804C478:
 	pop {r4-r7,pc}
 dword_804C4AC: .word 0x4800
 dword_804C4B0: .word 0x0
-	.word iPallete3001B60
+	.word iPalette3001B60
 	.word 0xFF09080C
 	.word 0x80001084
 	.word 0x4

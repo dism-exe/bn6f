@@ -2419,7 +2419,7 @@ int sub_8005360()
     int result; // r0
     char v2; // zf
 
-    result = sub_8007800();
+    result = battle_8007800();
     if ( v2 )
     {
         result = 0;
@@ -5640,7 +5640,7 @@ int sub_80077D2()
 
 // 0x8007800
 // () -> zf
-int sub_8007800()
+int battle_8007800()
 {
     int v0; // r10
     int v1; // r0
@@ -5867,7 +5867,7 @@ void __fastcall __noreturn sub_8007A0C(int a1, int a2, int a3, int a4)
 
 // 0x8007a44
 // () -> void
-int sub_8007A44()
+int battle_8007A44()
 {
     int v0; // r5
     int v1; // r10

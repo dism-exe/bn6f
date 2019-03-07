@@ -60,7 +60,7 @@ main_subsystemJumpTable: .word startscreen_802F544+1
 	.word cb_803CCD6+1
 	.word reqBBS_cb_draw_813E0A4+1
 	.word SubMenuControl+1
-	.word ShopControl+1 // shop!
+	.word ShopControl+1
 	.word cb_8048FD4+1
 	.word ChipTraderControl+1
 	.word cb_81382AC+1

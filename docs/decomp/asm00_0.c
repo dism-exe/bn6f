@@ -1950,7 +1950,7 @@ void __fastcall main_zeroFill_80017EC(int a1, int a2, int a3, int a4)
 // 0x8001808
 void __cdecl copyPalletesToIWRAM_8001808()
 {
-    CopyByEightWords(iPallete3001B60, 0x5000000, 0x200u);
+    CopyByEightWords(iPalette3001B60, 0x5000000, 0x200u);
 }
 
 
@@ -2854,7 +2854,7 @@ void __cdecl getPalleteAndTransition_80023E0()
     int v5; // r1
     int v6; // r6
 
-    CopyByEightWords(byte_3001960, iPallete3001B60, 0x200u);
+    CopyByEightWords(byte_3001960, iPalette3001B60, 0x200u);
     CopyByEightWords(byte_3001550, iPallete3001750, 0x200u);
     v1 = byte_20097A0;
     do

@@ -3392,7 +3392,7 @@ void __fastcall __noreturn OpenSaveMenu8132BA8(int a1, int a2, int a3, int a4)
     *(v4 + 16) = sub_81207F8(2);
     v11 = sub_8021CA8();
     *(v4 + 20) = v11;
-    sub_8132CB8();
+    saveMenu_8132CB8();
 }
 
 
@@ -3417,7 +3417,7 @@ void __noreturn SaveMenuOpenUpdate8132C50()
         chatbox_clear_eFlags2009F38(64);
         *(v0 + 2) = 4;
     }
-    textGfx_8132F4C();
+    saveMenuTextGfx_8132F4C();
 }
 
 
@@ -3434,7 +3434,7 @@ void __noreturn SaveMenuUpdate8132C68()
         engine_setScreeneffect(12, 12);
         chatbox_set_eFlags2009F38(64);
     }
-    textGfx_8132F4C();
+    saveMenuTextGfx_8132F4C();
 }
 
 
@@ -3449,12 +3449,12 @@ void __noreturn ExitSaveMenu8132CA0()
         chatbox_set_eFlags2009F38(64);
         sub_811F708();
     }
-    textGfx_8132F4C();
+    saveMenuTextGfx_8132F4C();
 }
 
 
 // 0x8132cb8
-void __noreturn sub_8132CB8()
+void __noreturn saveMenu_8132CB8()
 {
     int v0; // r6
     int v1; // r7
@@ -3494,7 +3494,7 @@ void __noreturn sub_8132CB8()
 
 
 // 0x8132d9c
-void __noreturn sub_8132D9C()
+void __noreturn saveMenu_8132D9C()
 {
     renderTextGfx_8045F8C(eTextScript201BF00, 0, byte_2017A00, 100679680);
     JUMPOUT(loc_8132DB2);
@@ -3502,7 +3502,7 @@ void __noreturn sub_8132D9C()
 
 
 // 0x8132ef4
-void __noreturn sub_8132EF4()
+void __noreturn saveMenu_8132EF4()
 {
     copyTiles(6, 3, 2, byte_201C400, 8, &dword_8);
     JUMPOUT(loc_8132F08);
@@ -3510,7 +3510,7 @@ void __noreturn sub_8132EF4()
 
 
 // 0x8132f4c
-void __noreturn textGfx_8132F4C()
+void __noreturn saveMenuTextGfx_8132F4C()
 {
     sub_8132F78();
     renderTextGfx_8045F8C(eTextScript201BF00, 4, &unk_2018A00, 100681728);

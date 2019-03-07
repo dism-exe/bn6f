@@ -2663,13 +2663,13 @@ dword_8001804: .word 0x5000000
 	thumb_func_start copyPalletesToIWRAM_8001808
 copyPalletesToIWRAM_8001808:
 	push {lr}
-	ldr r0, off_8001818 // =iPallete3001B60
+	ldr r0, off_8001818 // =iPalette3001B60
 	ldr r1, dword_800181C // =0x5000000
 	mov r2, #0x20
 	lsl r2, r2, #4
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {pc}
-off_8001818: .word iPallete3001B60
+off_8001818: .word iPalette3001B60
 dword_800181C: .word 0x5000000
 	thumb_func_end copyPalletesToIWRAM_8001808
 
@@ -4348,7 +4348,7 @@ off_80023DC: .word 0x108
 getPalleteAndTransition_80023E0:
 	push {r5-r7,lr}
 	ldr r0, off_800243C // =byte_3001960
-	ldr r1, off_8002440 // =iPallete3001B60
+	ldr r1, off_8002440 // =iPalette3001B60
 	mov r2, #0x20
 	lsl r2, r2, #4
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
@@ -4393,7 +4393,7 @@ loc_8002428:
 	.balign 4, 0x00
 off_8002438: .word unk_200F388
 off_800243C: .word byte_3001960
-off_8002440: .word iPallete3001B60
+off_8002440: .word iPalette3001B60
 off_8002444: .word byte_3001550
 off_8002448: .word iPallete3001750
 off_800244C: .word byte_8002450

@@ -127,7 +127,7 @@ word_3001B56:: // 0x3001b56
 	.space 2
 word_3001B58:: // 0x3001b58
 	.space 8
-iPallete3001B60:: // 0x3001b60
+iPalette3001B60:: // 0x3001b60
 	.space 512
 dword_3001D60:: // 0x3001d60
 	.space 16

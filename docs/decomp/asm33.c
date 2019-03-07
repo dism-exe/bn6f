@@ -6462,7 +6462,7 @@ int HandleCommMenu81291E8()
 {
     int v0; // r5
 
-    return (*(off_81291FC + *(v0 + 1)))();
+    return (*(CommMenuJumpTable81291FC + *(v0 + 1)))();
 }
 
 
@@ -9928,7 +9928,7 @@ int sub_812B5C8()
     int result; // r0
 
     eStruct203F7D8[1] = sub_803EAE4();
-    (*(&off_812B5F4 + *(v0 + 2)))();
+    (*(&JumpTable812B5F4 + *(v0 + 2)))();
     result = sub_8132290();
     if ( result == 28 )
     {
@@ -10014,7 +10014,7 @@ void sub_812B698()
 
     if ( *(v0 + 27) & 2 )
         eStruct203F7D8[1] = 4;
-    v1 = sub_8007800();
+    v1 = battle_8007800();
     if ( !v1 )
     {
         *(v0 + 34) = v2;

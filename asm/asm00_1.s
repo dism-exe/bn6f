@@ -3982,7 +3982,7 @@ off_800535C: .word 0x2180
 	thumb_local_start
 sub_8005360:
 	push {lr}
-	bl sub_8007800
+	bl battle_8007800
 	bne locret_800536C
 	mov r0, #0
 	strb r0, [r5,#oGameState_SubsystemIndex]
@@ -5406,7 +5406,7 @@ off_8005FB4: .word sub_8006366+1
 	.word sub_800647C+1
 	.word sub_8006366+1
 	.word sub_800647C+1
-off_8006040: .word iPallete3001B60
+off_8006040: .word iPalette3001B60
 	.word iPallete3001750
 	.word 0xFF
 	.word 0x81010
@@ -8104,8 +8104,8 @@ byte_80077F4: .byte 0x0, 0x0, 0x3, 0x0, 0xC8, 0x0, 0xA8, 0x0
 dword_80077FC: .word 0xFFFF
 	thumb_func_end sub_80077D2
 
-	thumb_func_start sub_8007800
-sub_8007800:
+	thumb_func_start battle_8007800
+battle_8007800:
 	push {r4,r5,lr}
 	bl sub_801FE6C
 	bl sub_8020140
@@ -8130,12 +8130,12 @@ sub_8007800:
 	pop {r4,r5,pc}
 off_8007834: .word JumpTable8007838
 JumpTable8007838: .word sub_8007850+1
-	.word sub_8007A44+1
+	.word battle_8007A44+1
 	.word sub_8007B80+1
 	.word sub_8007E62+1
 	.word sub_8007F4E+1
 	.word byte_8007FEB
-	thumb_func_end sub_8007800
+	thumb_func_end battle_8007800
 
 	thumb_local_start
 sub_8007850:
@@ -8379,7 +8379,7 @@ off_8007A40: .word byte_2011800
 	thumb_func_end sub_8007A0C
 
 	thumb_local_start
-sub_8007A44:
+battle_8007A44:
 	push {r4,lr}
 	bl eStruct203F7D8_getUnk01
 	cmp r0, #4
@@ -8504,7 +8504,7 @@ off_8007B50: .word sub_8009158+1
 	.word sub_8009C94+1
 	.word sub_8009158+1
 	.word sub_8009158+1
-	thumb_func_end sub_8007A44
+	thumb_func_end battle_8007A44
 
 	thumb_local_start
 sub_8007B80:

@@ -10759,15 +10759,15 @@ off_81291E4: .word sSubmenu
 	thumb_func_start HandleCommMenu81291E8
 HandleCommMenu81291E8:
 	push {lr}
-	ldr r0, off_81291F8 // =off_81291FC 
+	ldr r0, off_81291F8 // =CommMenuJumpTable81291FC
 	ldrb r1, [r5,#1]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
 	pop {pc}
 	.hword 0x0
-off_81291F8: .word off_81291FC
-off_81291FC: .word sub_8129248+1
+off_81291F8: .word CommMenuJumpTable81291FC
+CommMenuJumpTable81291FC: .word sub_8129248+1
 	.word sub_81292A8+1
 	.word sub_8129598+1
 	.word sub_8129F04+1
@@ -15265,7 +15265,7 @@ sub_812B5C8:
 	bl sub_803EAE4
 	ldr r4, off_812B800 // =eStruct203F7D8 
 	strb r0, [r4,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
-	ldr r0, off_812B5F0 // =off_812B5F4 
+	ldr r0, JumpTable812B5F4_p // =JumpTable812B5F4
 	ldrb r1, [r5,#2]
 	ldr r0, [r0,r1]
 	mov lr, pc
@@ -15278,8 +15278,8 @@ sub_812B5C8:
 locret_812B5EC:
 	pop {r4,pc}
 	.byte 0, 0
-off_812B5F0: .word off_812B5F4
-off_812B5F4: .word sub_812B608+1
+JumpTable812B5F4_p: .word JumpTable812B5F4
+JumpTable812B5F4: .word sub_812B608+1
 	.word sub_812B640+1
 	.word sub_812B698+1
 	.word sub_812B708+1
@@ -15366,7 +15366,7 @@ sub_812B698:
 	mov r0, #4
 	strb r0, [r1,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 loc_812B6A8:
-	bl sub_8007800
+	bl battle_8007800
 	tst r0, r0
 	bne locret_812B706
 	strh r1, [r5,#0x22]

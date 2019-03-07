@@ -1556,7 +1556,7 @@ off_80348FC: .word dword_8034908
 	.word dword_8034920
 	.word 0xFFFFFFFF
 dword_8034908: .word 0xC
-	.word iPallete3001B60
+	.word iPalette3001B60
 	.word 0xFF0E0F0C
 	.word 0x80004210
 	.word 0x1
@@ -1571,7 +1571,7 @@ off_8034938: .word dword_8034944
 	.word dword_803495C
 	.word 0xFFFFFFFF
 dword_8034944: .word 0x8
-	.word iPallete3001B60
+	.word iPalette3001B60
 	.word 0xFF0E0F0C
 	.word 0x80004210
 	.word 0x1
@@ -1585,7 +1585,7 @@ dword_803495C: .word 0x8
 	.word dword_803497C
 	.word 0xFFFFFFFF
 dword_803497C: .word 0xC
-	.word iPallete3001B60
+	.word iPalette3001B60
 	.word 0xFF010F0C
 	.word 0x80004210
 	.word 0x1
@@ -1593,7 +1593,7 @@ dword_803497C: .word 0xC
 	.word dword_803499C
 	.word 0xFFFFFFFF
 dword_803499C: .word 0xC
-	.word iPallete3001B60
+	.word iPalette3001B60
 	.word 0xFF010F0C
 	.word 0x80001084
 	.word 0x2
@@ -4321,8 +4321,8 @@ map_script_overworld_803600E:
 	// size
 	mov r1, #0x14
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	str r4, [r5,#oUnkMapScriptState_2011e60UnkScriptPtr1_08] // (dword_2011E68 - 0x2011e60)
-	str r6, [r5,#oUnkMapScriptState_2011e60UnkScriptPtr2_0c] // (dword_2011E6C - 0x2011e60)
+	str r4, [r5,#oUnkMapScriptState_2011e60_UnkScriptPtr1_08] // (dword_2011E68 - 0x2011e60)
+	str r6, [r5,#oUnkMapScriptState_2011e60_UnkScriptPtr2_0c] // (dword_2011E6C - 0x2011e60)
 	ldr r6, off_803608C // =ScriptCmds8035808
 	mov r12, r6
 	mov r7, r4
@@ -4345,7 +4345,7 @@ sub_8036040:
 	mov r4, r12
 	push {r4}
 	ldr r5, off_8036090 // =eUnkMapScriptState_2011e60
-	ldr r0, [r5,#oUnkMapScriptState_2011e60UnkScriptPtr2_0c] // (dword_2011E6C - 0x2011e60)
+	ldr r0, [r5,#oUnkMapScriptState_2011e60_UnkScriptPtr2_0c] // (dword_2011E6C - 0x2011e60)
 	ldr r6, off_803608C // =ScriptCmds8035808
 	mov r12, r6
 	mov r7, r0
@@ -4368,7 +4368,7 @@ map_script_overworld_8036064:
 	mov r4, r12
 	push {r4}
 	ldr r5, off_8036090 // =eUnkMapScriptState_2011e60
-	ldr r0, [r5,#oUnkMapScriptState_2011e60UnkScriptPtr3_10] // (dword_2011E70 - 0x2011e60)
+	ldr r0, [r5,#oUnkMapScriptState_2011e60_UnkScriptPtr3_10] // (dword_2011E70 - 0x2011e60)
 	tst r0, r0
 	beq loc_8036086
 	ldr r6, off_803608C // =ScriptCmds8035808
@@ -8154,13 +8154,13 @@ sub_8038412:
 	beq loc_803842E
 	mov r6, #2
 	bl ReadMapScriptWord
-	str r4, [r3,#oUnkMapScriptState_2011e60UnkScriptPtr3_10]
+	str r4, [r3,#oUnkMapScriptState_2011e60_UnkScriptPtr3_10]
 	add r7, #6
 	mov r0, #1
 	pop {pc}
 loc_803842E:
 	mov r0, #0
-	str r0, [r3,#oUnkMapScriptState_2011e60UnkScriptPtr3_10]
+	str r0, [r3,#oUnkMapScriptState_2011e60_UnkScriptPtr3_10]
 	add r7, #2
 	mov r0, #1
 	pop {pc}
@@ -10659,7 +10659,7 @@ loc_8039EB4:
 	thumb_local_start
 sub_8039EBA:
 	push {r4-r7,lr}
-	bl sub_8007800
+	bl battle_8007800
 	bne locret_8039ECA
 	strb r1, [r5,#0x14]
 	strb r2, [r5,#0x15]

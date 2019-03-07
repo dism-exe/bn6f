@@ -6938,7 +6938,7 @@ int sub_8039EBA()
     char v3; // r2
     char v4; // zf
 
-    result = sub_8007800();
+    result = battle_8007800();
     if ( v4 )
     {
         v0[20] = v2;

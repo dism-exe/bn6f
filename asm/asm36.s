@@ -4977,11 +4977,11 @@ OpenSaveMenu8132BA8:
 	strh r0, [r5,#0x10]
 	bl sub_8021CA8
 	str r0, [r5,#0x14]
-	bl sub_8132CB8
-	bl sub_8132D9C
+	bl saveMenu_8132CB8
+	bl saveMenu_8132D9C
 	bl sub_81330AC
-	bl sub_8132EF4
-	bl textGfx_8132F4C
+	bl saveMenu_8132EF4
+	bl saveMenuTextGfx_8132F4C
 	bl sub_8132FD0
 	ldr r0, off_8132C30 // =eTextScript201BF00
 	mov r1, #0xa
@@ -5018,7 +5018,7 @@ SaveMenuOpenUpdate8132C50:
 	mov r0, #4
 	strb r0, [r5,#2]
 loc_8132C62:
-	bl textGfx_8132F4C
+	bl saveMenuTextGfx_8132F4C
 	pop {pc}
 	thumb_func_end SaveMenuOpenUpdate8132C50
 
@@ -5044,7 +5044,7 @@ loc_8132C82:
 	bl chatbox_set_eFlags2009F38
 	b loc_8132C96
 loc_8132C96:
-	bl textGfx_8132F4C
+	bl saveMenuTextGfx_8132F4C
 	pop {pc}
 off_8132C9C: .word 0x110
 	thumb_func_end SaveMenuUpdate8132C68
@@ -5058,12 +5058,12 @@ ExitSaveMenu8132CA0:
 	bl chatbox_set_eFlags2009F38
 	bl sub_811F708
 loc_8132CB2:
-	bl textGfx_8132F4C
+	bl saveMenuTextGfx_8132F4C
 	thumb_func_end ExitSaveMenu8132CA0
 
 	pop {pc}
 	thumb_local_start
-sub_8132CB8:
+saveMenu_8132CB8:
 	push {r4-r7,lr}
 	ldr r4, off_8132D78 // =unk_20096E0 
 	mov r6, #0
@@ -5111,7 +5111,7 @@ loc_8132CD4:
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-	thumb_func_end sub_8132CB8
+	thumb_func_end saveMenu_8132CB8
 
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -5150,7 +5150,7 @@ off_8132D90: .word eTextScript201BA00
 	.word eDecompBuffer2013A00
 	.word 0x0
 	thumb_local_start
-sub_8132D9C:
+saveMenu_8132D9C:
 	push {r4-r7,lr}
 	ldr r0, off_8132EEC // =eTextScript201BF00
 	mov r1, #0
@@ -5161,8 +5161,6 @@ sub_8132D9C:
 	ldr r6, off_8132EF0 // =dword_86B7AE0 
 	mov r7, #0
 	bl renderTextGfx_8045F8C
-	thumb_func_end sub_8132D9C
-
 	ldr r0, off_8132EEC // =eTextScript201BF00
 	mov r1, #1
 	ldr r2, off_8132EA4 // =unk_2017E00 
@@ -5288,8 +5286,10 @@ off_8132EE4: .word unk_201A200
 dword_8132EE8: .word 0x6005400
 off_8132EEC: .word eTextScript201BF00
 off_8132EF0: .word dword_86B7AE0
+	thumb_func_end saveMenu_8132D9C
+
 	thumb_local_start
-sub_8132EF4:
+saveMenu_8132EF4:
 	push {r4-r7,lr}
 	mov r7, r5
 	// j
@@ -5303,8 +5303,6 @@ sub_8132EF4:
 	mov r4, #8
 	mov r5, #8
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-	thumb_func_end sub_8132EF4
-
 	mov r0, #0x12
 	mov r1, #3
 	mov r2, #2
@@ -5332,8 +5330,10 @@ off_8132F3C: .word unk_201C400
 off_8132F40: .word unk_201C480
 off_8132F44: .word unk_201C4A0
 off_8132F48: .word unk_201C4C0
+	thumb_func_end saveMenu_8132EF4
+
 	thumb_local_start
-textGfx_8132F4C:
+saveMenuTextGfx_8132F4C:
 	push {r4-r7,lr}
 	bl sub_8132F78
 	ldr r0, off_8132F70 // =eTextScript201BF00
@@ -5350,7 +5350,7 @@ off_8132F68: .word unk_2018A00
 dword_8132F6C: .word 0x6004800
 off_8132F70: .word eTextScript201BF00
 off_8132F74: .word dword_86B7AE0
-	thumb_func_end textGfx_8132F4C
+	thumb_func_end saveMenuTextGfx_8132F4C
 
 	thumb_local_start
 sub_8132F78:
