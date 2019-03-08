@@ -18,10 +18,10 @@ Functions = [
   0x80408EA+1, #? 0x80408D0 <chatbox_config_80408D0>
   0x8040900+1, #? 0x80408D0 <chatbox_config_80408D0>
   0x804090C+1, #? 0x80408D0 <chatbox_config_80408D0>
-  0x8040918, # 0x8040918 <off_8040918>
+  0x8040918, # 0x8040918 <Flags8040918>
   0x8040B0E, # 0x8040B0E <>
   0x8040B60, # 0x8040B60 <>
-  0x8040E6C, # 0x8040E24 <chatbox_jt_ctrlCmds>
+  0x8040E6C, # 0x8040E24 <TextScriptBytecodeJumptable>
   0x8040EB0+1, #? 0x8040E98 <chatbox_E6_end>
   0x8040EC8, # 0x8040E98 <chatbox_E6_end>
   0x8040F44, # 0x8040EF4 <chatbox_E7_buttonhalt>

@@ -1925,7 +1925,7 @@ int __fastcall sub_30070B4(int a1)
     }
     off_30071FC(off_30071F0, dword_30071F4, dword_30071F8);
     v10 = *(v1 + 44);
-    result = off_3007204(off_3007200);
+    result = off_3007204(Flags3007200);
     if ( result )
     {
         result = 2;

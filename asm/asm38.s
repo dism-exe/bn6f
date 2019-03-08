@@ -2846,7 +2846,7 @@ loc_30071BE:
 	bx r3
 	mov r5, r10
 	ldr r5, [r5,#0x2c]
-	ldr r0, off_3007200 // =0x400
+	ldr r0, Flags3007200 // =FLAGS_3E_UNK_0400
 	ldr r3, off_3007204 // =chatbox_maskFlags_3e+1
 	mov lr, pc
 	bx r3
@@ -2863,7 +2863,7 @@ off_30071F0: .word dword_200CDA0
 dword_30071F4: .word 0x6015700
 dword_30071F8: .word 0xF00
 off_30071FC: .word sub_8000AC8+1
-off_3007200: .word 0x400
+Flags3007200: .word FLAGS_3E_UNK_0400
 off_3007204: .word chatbox_maskFlags_3e+1
 off_3007208: .word off_300720C
 off_300720C: .word off_8044314

@@ -30,13 +30,13 @@
         u0 \label, CurStateActionPhaseAndPhaseInitialized // loc=0x8
         u0 \label, CurState_CurAction // loc=0x8
         u8 \label, CurState // loc=0x8
-            struct_const \label, CurState_INITIALIZE, 0
-            struct_const \label, CurState_UPDATE, 4
-            struct_const \label, CurState_DESTROY, 8
+            struct_const CUR_STATE_INITIALIZE,  0x00
+            struct_const CUR_STATE_UPDATE,      0x04
+            struct_const CUR_STATE_DESTROY,     0x08
         u8 \label, CurAction // loc=0x9
         u0 \label, CurPhaseAndPhaseInitialized // loc=0xa
         u8 \label, CurPhase // loc=0xa
-        b8 \label, PhaseInitialized // loc=0xb
+        bool8 \label, PhaseInitialized // loc=0xb
         u8 \label, Unk_0c // loc=0xc
         u8 \label, Unk_0d // loc=0xd
         u8 \label, Element // loc=0xe
@@ -74,11 +74,11 @@
         // also includes flags. 0x7FF is damage
         u0  \label, DamageAndStaminaDamageCounterDisabler // loc=0x2c
         u16 \label, Damage // loc=0x2c
-            struct_const \label, Damage_DOUBLE_DAMAGE, 0x8000
-            struct_const \label, Damage_PARALYZE, 0x4000
-            struct_const \label, Damage_UNINSTALL, 0x2000
-            struct_const \label, Damage_KILLERCROSS_SKULL_HIT, 0x1000
-            struct_const \label, Damage_NOTHING, 0x0800
+            struct_const DAMAGE_DOUBLE,                 0x8000
+            struct_const DAMAGE_PARALYZE,               0x4000
+            struct_const DAMAGE_UNINSTALL,              0x2000
+            struct_const DAMAGE_KILLERCROSS_SKULL_HIT,  0x1000
+            struct_const DAMAGE_NOTHING,                0x0800
         // ???
         u16 \label, StaminaDamageCounterDisabler // loc=0x2e
         u16 \label, Unk_30 // loc=0x30

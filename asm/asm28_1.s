@@ -3,8 +3,8 @@
 	thumb_func_start sub_809F526
 sub_809F526:
 	push {r7,lr}
-	ldr r7, [r5,#0x60]
-	ldrb r0, [r5]
+	ldr r7, [r5, #oOverworldNPCObject_UnkFlags_60]
+	ldrb r0, [r5,#oOverworldNPCObject_ObjectHeader]
 	mov r1, #1
 	tst r0, r1
 	beq loc_809F598

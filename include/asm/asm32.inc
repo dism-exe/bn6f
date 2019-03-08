@@ -447,7 +447,7 @@
 // .global object_clearCollisionRegion // () -> void
 // .global object_setCollisionRegion
 // .global sub_801A082
-// .global object_setFlag // (int a1) -> void
+// .global object_setFlag1 // (int a1) -> void
 // .global object_clearFlag // (int bitfield) -> void
 // .global object_getFlag // () -> int
 // .global object_clearFlag2

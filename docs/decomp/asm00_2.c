@@ -2063,7 +2063,7 @@ int __fastcall sub_8010162(int a1)
             sound_play(148, 0, 0xFFFF);
     }
     if ( !(object_getFlag() & 0x400000) )
-        return object_setFlag(4);
+        return object_setFlag1(4);
     return object_clearFlag(4);
 }
 
@@ -2096,7 +2096,7 @@ int __fastcall sub_80101AE(__int16 a1)
     int result; // r0
 
     *(*(v1 + 84) + 38) = a1;
-    object_setFlag(4);
+    object_setFlag1(4);
     result = *v1 & 0xFD;
     *v1 = result;
     return result;
@@ -2467,7 +2467,7 @@ int sub_8010474()
     int v3; // r2
 
     *(*(v1 + 84) + 36) = v0;
-    object_setFlag(2);
+    object_setFlag1(2);
     return sound_play(147, v2, v3);
 }
 
@@ -7632,7 +7632,7 @@ int sub_801393A()
     }
     if ( v1[27] )
     {
-        v3 = object_setFlag(32);
+        v3 = object_setFlag1(32);
         v4 = sub_80107C0(v3);
         sub_801A082(v4, 16, 2, v5);
     }
@@ -7643,16 +7643,16 @@ int sub_801393A()
         sub_801A082(v7, 1, 2, v8);
     }
     if ( v1[28] )
-        object_setFlag(16);
+        object_setFlag1(16);
     else
         object_clearFlag(16);
-    object_setFlag(&timer_2000000);
+    object_setFlag1(&timer_2000000);
     if ( v1[29] )
-        object_setFlag(0x40000);
+        object_setFlag1(0x40000);
     else
         object_clearFlag(0x40000);
     if ( v1[35] )
-        result = object_setFlag(0x20000);
+        result = object_setFlag1(0x20000);
     else
         result = object_clearFlag(0x20000);
     return result;
@@ -8693,7 +8693,7 @@ int sub_8014326()
             if ( result & 0x200 )
             {
                 object_clearFlag2(512);
-                object_setFlag(0x200000);
+                object_setFlag1(0x200000);
                 *(v2 + 52) = 600;
                 result = sub_8015BEC(*(v0 + 22), 128);
             }
@@ -9043,14 +9043,14 @@ int sub_80145C2()
 // 0x80145d4
 int sub_80145D4()
 {
-    return object_setFlag(16);
+    return object_setFlag1(16);
 }
 
 
 // 0x80145de
 int sub_80145DE()
 {
-    return object_setFlag(0x20000);
+    return object_setFlag1(0x20000);
 }
 
 
@@ -9070,7 +9070,7 @@ int sub_80145EC()
     int v3; // r3
     int result; // r0
 
-    object_setFlag(0x20000);
+    object_setFlag1(0x20000);
     result = *(v0 + 64);
     if ( !result )
         result = sub_80E1620(0, v1, v2, v3);
@@ -9090,7 +9090,7 @@ int sub_8014606()
     int v6; // r3
     int result; // r0
 
-    v1 = object_setFlag(48);
+    v1 = object_setFlag1(48);
     v2 = sub_80107C0(v1);
     sub_801A082(v2, 16, 2, v3);
     result = *(v0 + 64);
@@ -9114,7 +9114,7 @@ int sub_801462A()
 // 0x8014640
 int sub_8014640()
 {
-    object_setFlag(0x20000);
+    object_setFlag1(0x20000);
     return sub_8014606();
 }
 
@@ -9127,7 +9127,7 @@ _DWORD *sub_8014650()
     int v2; // r2
     int v3; // r3
 
-    object_setFlag(0x20000);
+    object_setFlag1(0x20000);
     if ( !*(v0 + 64) )
         sub_80E1620(0, v1, v2, v3);
     object_setInvulnerableTime(0xFFFF);
@@ -9146,7 +9146,7 @@ _DWORD *sub_8014674()
     int v5; // r2
     int v6; // r3
 
-    v1 = object_setFlag(134217776);
+    v1 = object_setFlag1(134217776);
     v2 = sub_80107C0(v1);
     sub_801A082(v2, 16, 2, v3);
     if ( !*(v0 + 64) )
@@ -9184,14 +9184,14 @@ int sub_801472A()
 // 0x801473c
 int sub_801473C()
 {
-    return object_setFlag(16);
+    return object_setFlag1(16);
 }
 
 
 // 0x8014746
 int sub_8014746()
 {
-    return object_setFlag(0x20000);
+    return object_setFlag1(0x20000);
 }
 
 
@@ -9205,7 +9205,7 @@ void nullsub_5()
 // 0x8014754
 int sub_8014754()
 {
-    return object_setFlag(0x20000);
+    return object_setFlag1(0x20000);
 }
 
 
@@ -9216,7 +9216,7 @@ int sub_8014760()
     int v1; // r0
     char v2; // r3
 
-    v0 = object_setFlag(48);
+    v0 = object_setFlag1(48);
     v1 = sub_80107C0(v0);
     return sub_801A082(v1, 16, 2, v2);
 }
@@ -9236,7 +9236,7 @@ int sub_8014776()
 // 0x801478c
 int sub_801478C()
 {
-    object_setFlag(0x20000);
+    object_setFlag1(0x20000);
     return sub_8014760();
 }
 
@@ -9244,7 +9244,7 @@ int sub_801478C()
 // 0x801479c
 _DWORD *sub_801479C()
 {
-    object_setFlag(0x20000);
+    object_setFlag1(0x20000);
     object_setInvulnerableTime(0xFFFF);
     return sub_802D310();
 }
@@ -9257,10 +9257,10 @@ _DWORD *sub_80147B2()
     int v1; // r0
     char v2; // r3
 
-    v0 = object_setFlag(48);
+    v0 = object_setFlag1(48);
     v1 = sub_80107C0(v0);
     sub_801A082(v1, 16, 2, v2);
-    object_setFlag(0x8000000);
+    object_setFlag1(0x8000000);
     object_setInvulnerableTime(0xFFFF);
     return sub_802D310();
 }
@@ -12195,7 +12195,7 @@ int __noreturn sub_80166D0()
     int v2; // r2
     int result; // r0
 
-    object_setFlag(4096);
+    object_setFlag1(4096);
     *(v0 + 18) = *(v0 + 20);
     object_setCoordinatesFromPanels(v0);
     object_setCollisionPanelsToCurrent();
@@ -12767,7 +12767,7 @@ signed int __noreturn sub_8016D08()
     int v6; // r1
     signed int result; // r0
 
-    object_setFlag(0x100000);
+    object_setFlag1(0x100000);
     sub_800F404();
     *(v0 + 76) = 0;
     *(v0 + 18) = *(v0 + 20);
@@ -13029,15 +13029,15 @@ int __noreturn sub_8016F56()
     object_setupCollisionData(v16, v8, 2, 3);
     sub_8019F9E(v2[6]);
     if ( v7 & 0x10 )
-        object_setFlag(0x8000000);
+        object_setFlag1(0x8000000);
     if ( v7 & 8 )
-        object_setFlag(0x2000000);
+        object_setFlag1(0x2000000);
     if ( v7 & 4 )
-        object_setFlag(32);
+        object_setFlag1(32);
     if ( v7 & 2 )
-        object_setFlag(16);
+        object_setFlag1(16);
     if ( v7 & 1 )
-        object_setFlag(0x20000);
+        object_setFlag1(0x20000);
     sub_801DB84();
     v9 = sub_80103BC(*(v0 + 22) ^ 1);
     sub_800F318(v9);
@@ -13547,7 +13547,7 @@ int __usercall sub_80174FE@<R0>(Battle *obj@<R5>)
     if ( !obj->bPhaseInitialized )
     {
         sub_800F3E8();
-        object_setFlag(4195328);
+        object_setFlag1(4195328);
         sub_801A284();
         sub_801A29A();
         sub_801A2B0();
@@ -13608,7 +13608,7 @@ int __usercall sub_80175B8@<R0>(Battle *obj@<R5>)
     if ( !obj->bPhaseInitialized )
     {
         sub_800F394();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         object_clearFlag(1049665);
         sub_80101C4(obj);
         sub_801031C(2097247);
@@ -13676,7 +13676,7 @@ int sub_8017688()
     if ( !*(v0 + 11) )
     {
         sub_800F3B0();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         object_clearFlag(1049665);
         sub_801A67E();
         sub_80101C4(v0);
@@ -13749,7 +13749,7 @@ int sub_8017768()
     if ( !*(v0 + 11) )
     {
         sub_800F3CC();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         object_clearFlag(1049665);
         sub_80101C4(v0);
         sub_800EB08();
@@ -13848,7 +13848,7 @@ signed int __noreturn sub_80178D4()
     signed int result; // r0
 
     sub_800F404();
-    object_setFlag(5242880);
+    object_setFlag1(5242880);
     *(v0 + 76) = 0;
     *(*(v0 + 88) + 104) = 0;
     v1 = object_getFlag();
@@ -14143,7 +14143,7 @@ signed int __noreturn sub_8017CE0()
     char v6; // zf
     signed int result; // r0
 
-    object_setFlag(0x100000);
+    object_setFlag1(0x100000);
     *(v0 + 76) = 0;
     *(v0 + 18) = *(v0 + 20);
     object_setCoordinatesFromPanels(v0);
@@ -14282,7 +14282,7 @@ signed int __noreturn sub_8017E44()
     int v11; // r3
     signed int result; // r0
 
-    object_setFlag(0x100000);
+    object_setFlag1(0x100000);
     *(v0 + 76) = 0;
     *(v0 + 18) = *(v0 + 20);
     object_setCoordinatesFromPanels(v0);
@@ -14453,7 +14453,7 @@ signed int __noreturn sub_801802C()
         v2 = 1;
     *(v0 + 22) = v2;
     object_clearFlag2(&loc_C00);
-    object_setFlag(&LCDControl);
+    object_setFlag1(&LCDControl);
     __asm { SVC         6 }
     *(v0 + 72) = 0x400000 - *(v0 + 60);
     object_removePanelReserve(*(v0 + 20), *(v0 + 21));
@@ -14608,7 +14608,7 @@ signed int __noreturn sub_8018154()
     v2 = 0x10000000;
     if ( !(v1 & &loc_1000) )
         v2 = 0x20000000;
-    object_setFlag(v2);
+    object_setFlag1(v2);
     object_clearFlag2(&loc_3000);
     v0[25] = 60;
     object_removePanelReserve(v0[20], v0[21]);
@@ -15186,7 +15186,7 @@ int sub_801A146()
 
 // 0x801a152
 // (int a1) -> void
-int __fastcall object_setFlag(int result)
+int __fastcall object_setFlag1(int result)
 {
     int v1; // r5
 
@@ -15840,7 +15840,7 @@ int sub_801A5EE()
             v5 = v3 - 1;
             *(v2 + 36) = v5;
             if ( !(((v5 < 0) ^ v4) | (v5 == 0)) )
-                return object_setFlag(512);
+                return object_setFlag1(512);
             if ( object_getFlag() & 2 )
                 sound_play(148, 2, v6);
         }
@@ -15885,7 +15885,7 @@ int sub_801A66C()
     int v0; // r5
 
     *(*(v0 + 84) + 36) = 120;
-    return object_setFlag(512);
+    return object_setFlag1(512);
 }
 
 
@@ -16859,7 +16859,7 @@ void __fastcall sub_801AF44(int a1)
     if ( object_getFlag2() & 1 )
     {
         object_clearFlag2(1);
-        object_setFlag(256);
+        object_setFlag1(256);
         object_setAttack0();
 LABEL_42:
         sub_8002EE8();
@@ -17026,7 +17026,7 @@ int __fastcall sub_801B1C4(int a1)
             if ( !(result & 0x8000) )
                 return result;
             object_clearFlag2(0x8000);
-            object_setFlag(1073742080);
+            object_setFlag1(1073742080);
             *(v1 + 9) = 2;
             *(v1 + 10) = 0;
         }
@@ -17054,7 +17054,7 @@ LABEL_40:
             if ( object_getFlag2() & 1 )
             {
                 object_clearFlag2(1);
-                object_setFlag(256);
+                object_setFlag1(256);
                 *(v1 + 9) = 2;
                 *(v1 + 10) = 0;
             }
@@ -17100,7 +17100,7 @@ LABEL_40:
                         if ( !v2[18] || (v11 = __OFSUB__(v10, 1), v12 = v10 - 1, v2[18] = v12, ((v12 < 0) ^ v11) | (v12 == 0)) )
                             object_clearFlag(514);
                         else
-                            object_setFlag(512);
+                            object_setFlag1(512);
                         sub_800E730();
                     }
                 }
@@ -17163,7 +17163,7 @@ LABEL_8:
         if ( object_getFlag2() & 1 )
         {
             object_clearFlag2(1);
-            object_setFlag(256);
+            object_setFlag1(256);
             *(v1 + 9) = 2;
             *(v1 + 10) = 0;
             goto LABEL_29;
@@ -17245,7 +17245,7 @@ int __fastcall sub_801B4D4(int a1)
     if ( object_getFlag2() & 1 )
     {
         object_clearFlag2(1);
-        object_setFlag(256);
+        object_setFlag1(256);
         *(v1 + 9) = 2;
         *(v1 + 10) = 0;
         goto LABEL_28;
@@ -17337,7 +17337,7 @@ LABEL_8:
         if ( object_getFlag2() & 1 )
         {
             object_clearFlag2(1);
-            object_setFlag(256);
+            object_setFlag1(256);
             *(v1 + 9) = 2;
             *(v1 + 10) = 0;
             goto LABEL_29;
@@ -17430,7 +17430,7 @@ LABEL_8:
         if ( object_getFlag2() & 1 )
         {
             object_clearFlag2(1);
-            object_setFlag(256);
+            object_setFlag1(256);
             *(v1 + 9) = 2;
             *(v1 + 10) = 0;
             goto LABEL_28;
@@ -17518,7 +17518,7 @@ LABEL_9:
         if ( object_getFlag2() & 1 )
         {
             object_clearFlag2(1);
-            object_setFlag(256);
+            object_setFlag1(256);
             *(v1 + 9) = 2;
             *(v1 + 10) = 0;
             goto LABEL_30;

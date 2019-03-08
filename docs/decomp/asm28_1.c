@@ -1,7 +1,6 @@
 // 0x809f526
-int sub_809F526()
+int __usercall sub_809F526@<R0>(OverworldNPCObject *obj@<R5>)
 {
-    int v0; // r5
     int v1; // r7
     int v2; // r0
     int v3; // r1
@@ -14,34 +13,34 @@ int sub_809F526()
     int v10; // [sp-14h] [bp-1Ch]
     int v11; // [sp-10h] [bp-18h]
 
-    v1 = *(v0 + 96);
-    if ( *v0 & 1 )
+    v1 = obj->UnkFlags_60;
+    if ( obj->ObjectHeader & 1 )
     {
-        v2 = *(v0 + 36) + (*(v0 + 17) << 16);
-        v3 = *(v0 + 40) + (*(v0 + 18) << 16);
-        if ( *(v0 + 23) )
+        v2 = obj->X + (obj->Unk_11 << 16);
+        v3 = *(obj + 40) + (*(obj + 18) << 16);
+        if ( *(obj + 23) )
         {
-            v4 = *(v0 + 36) + (*(v0 + 17) << 16);
-            v5 = *(v0 + 40) + (*(v0 + 18) << 16);
-            v6 = sub_8031612(v0 + 36) << 16;
+            v4 = *(obj + 36) + (*(obj + 17) << 16);
+            v5 = *(obj + 40) + (*(obj + 18) << 16);
+            v6 = sub_8031612(obj + 36) << 16;
             v2 = v4;
             v3 = v5;
         }
         else
         {
-            v6 = *(v0 + 44);
+            v6 = *(obj + 44);
         }
         v8 = v2;
         v9 = v3;
-        v10 = v6 + (*(v0 + 19) << 16);
-        v11 = *(v0 + 12);
+        v10 = v6 + (*(obj + 19) << 16);
+        v11 = *(obj + 12);
         sub_80037AC(v2, v3, v10, v11);
         if ( !(v1 & 0x14) )
             sub_80037AC(v8, v9, v10, v11);
     }
     result = 0;
-    *(v0 + 80) = 0;
-    *(v0 + 88) = 0;
+    *(obj + 80) = 0;
+    *(obj + 88) = 0;
     return result;
 }
 

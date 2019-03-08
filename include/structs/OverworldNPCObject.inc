@@ -9,9 +9,9 @@
 		u8 \label, Unk_07 // loc=0x7
 		u8 \label, Unk_08_MainJumptableIndex // loc=0x8
 		u8 \label, MovementFlag_09 // loc=0x9
-		    struct_const \label, MovementFlag_09_STOP, 0
-		    struct_const \label, MovementFlag_09_DEFAULT_MOVING, 4
-		    struct_const \label, MovementFlag_09_STOP_ANIMATION_CONTINUES, 8
+		    struct_const MOVEMENT_FLAG_STOP,                        0x00
+		    struct_const MOVEMENT_FLAG_DEFAULT_MOVING,              0x04
+		    struct_const MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES,    0x08
         /*
         Those might not be flags, since 0x0C behaves unpredictably by 0x04 and 0x08
         0x00 - No effect, it keeps setting to 0x04
@@ -32,8 +32,8 @@
 		u8 \label, AnimationSelect // loc=0x14
 		u8 \label, AnimationSelectUpdate // loc=0x15
 		u8 \label, PaletteIndex // loc=0x16
-		b8 \label, InteractionLocked // loc=0x17
-		b8 \label, ChatTriggered // loc=0x18
+		bool8 \label, InteractionLocked // loc=0x17
+		bool8 \label, ChatTriggered // loc=0x18
 		u8 \label, TerminateScript_19 // loc=0x19 more like a return value than a state value
 		u8 \label, Undetected_1a // loc=0x1a
 		u8 \label, Undetected_1b // loc=0x1b

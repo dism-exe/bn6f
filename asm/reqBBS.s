@@ -1800,6 +1800,7 @@ off_813F400: .word eReqBBSGui
 	thumb_func_end reqBBS_init_s_2005780
 
 	thumb_func_start reqBBS_subsystemCotnrol
+// sets r5 = eReqBBSGui
 reqBBS_subsystemCotnrol:
 	push {r4-r7,lr}
 	mov r1, r8
@@ -1807,8 +1808,8 @@ reqBBS_subsystemCotnrol:
 	mov r3, r12
 	push {r1-r3}
 	ldr r5, off_813F424 // =eReqBBSGui
-	ldr r0, off_813F428 // =jt_813F42C 
-	ldrb r1, [r5]
+	ldr r0, off_813F428 // =ReqBBSSubSystemJumpTable
+	ldrb r1, [r5, #oReqBBSGui_SubsystemJumpTableOffset]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
@@ -1818,10 +1819,11 @@ reqBBS_subsystemCotnrol:
 	mov r12, r3
 	pop {r4-r7,pc}
 off_813F424: .word eReqBBSGui
-off_813F428: .word jt_813F42C
-jt_813F42C: .word reqBBS_813F474+1
-	.word reqBBS_813F550+1
-	.word reqBBS_813F590+1
+off_813F428: .word ReqBBSSubSystemJumpTable
+ReqBBSSubSystemJumpTable:
+    .word OpenReqBBSMenu813F474+1
+	.word UpdateReqBBSMenu813F550+1
+	.word ExitReqBBSMenu813F590+1
 	.word reqBBS_813F5EC+1
 	.word reqBBS_813F65C+1
 	.word reqBBS_813F6F8+1
@@ -1840,7 +1842,7 @@ jt_813F42C: .word reqBBS_813F474+1
 	thumb_func_end reqBBS_subsystemCotnrol
 
 	thumb_local_start
-reqBBS_813F474:
+OpenReqBBSMenu813F474:
 	push {lr}
 	// entryIdx
 	mov r0, #0x17
@@ -1934,10 +1936,10 @@ byte_813F53C: .byte 0x40, 0x5E, 0x0, 0x0, 0xA0, 0x17, 0x0, 0x0
 dword_813F544: .word 0xF
 off_813F548: .word eReqBBSGui
 off_813F54C: .word reqBBS_textualPointers
-	thumb_func_end reqBBS_813F474
+	thumb_func_end OpenReqBBSMenu813F474
 
 	thumb_local_start
-reqBBS_813F550:
+UpdateReqBBSMenu813F550:
 	push {lr}
 	ldr r0, dword_813F58C // =0x1f40 
 	bl sRender_08_setRenderingState
@@ -1966,10 +1968,10 @@ loc_813F57E:
 	pop {pc}
 	.balign 4, 0x00
 dword_813F58C: .word 0x1F40
-	thumb_func_end reqBBS_813F550
+	thumb_func_end UpdateReqBBSMenu813F550
 
 	thumb_local_start
-reqBBS_813F590:
+ExitReqBBSMenu813F590:
 	push {lr}
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_RenderInfoPtr]
@@ -2012,7 +2014,7 @@ loc_813F5E4:
 	mov r0, #0
 	pop {pc}
 dword_813F5E8: .word 0x1F40
-	thumb_func_end reqBBS_813F590
+	thumb_func_end ExitReqBBSMenu813F590
 
 	thumb_local_start
 reqBBS_813F5EC:

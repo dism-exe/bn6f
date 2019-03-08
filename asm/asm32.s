@@ -2236,8 +2236,8 @@ sub_810EDB8:
 	mov r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	mov r0, #1
-	lsl r0, r0, #0x16
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
+	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r7,#oAIAttackVars_Unk_0e]
 	mov r1, #4
 	mul r0, r1
@@ -3081,7 +3081,7 @@ loc_810F678:
 	mov r0, #1
 	str r0, [r5,#oBattleObject_ExtraVars+0x10]
 	mov r0, #0x40
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x7f
 	mov r1, #0
 	strb r1, [r5,r0]
@@ -4029,7 +4029,7 @@ loc_810FEBA:
 	ldrb r0, [r0,r1]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0x40
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xa
 	bl object_setAttack0
 	mov r0, #0
@@ -5109,7 +5109,7 @@ loc_811093E:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #1
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #0
@@ -5387,7 +5387,7 @@ sub_8110B50:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #1
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x20
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #0
@@ -5726,9 +5726,9 @@ byte_8110E70: .byte 0x1E, 0x1B, 0x18, 0x15, 0x18, 0x12
 sub_8110E76:
 	push {lr}
 	mov r0, #1
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x40
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	bl GetPositiveSignedRNG2
 	mov r1, #3
 	and r0, r1
@@ -5762,7 +5762,7 @@ sub_8110EB8:
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+0xc]
 	mov r0, #1
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	ldr r1, off_8110ED0 // =off_8110ED4
 	ldrb r0, [r6,#oAIState_Unk_02]
 	ldr r1, [r1,r0]
@@ -5798,7 +5798,7 @@ sub_8110EF8:
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+0xc]
 	mov r0, #1
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x6c
 	mov r1, #0x67
 	mov r2, #0x6c
@@ -6311,7 +6311,7 @@ sub_81113DE:
 	mov r0, #1
 	str r0, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0x40
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xa
 	bl object_setAttack0
 loc_8111428:
@@ -6982,7 +6982,7 @@ sub_8111A28:
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
 	mov r0, #0x40
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x10
@@ -7055,7 +7055,7 @@ loc_8111AB8:
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
 	lsl r0, r0, #0x13
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_1a]
 	mov r0, #0xc
@@ -7146,8 +7146,8 @@ sub_8111B70:
 	mov r0, #0x1e
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	mov r0, #1
-	lsl r0, r0, #0x16
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	pop {pc}
@@ -8472,7 +8472,7 @@ sub_81127E8:
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
 	mov r0, #0x40
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x1e
@@ -8552,7 +8552,7 @@ sub_811288C:
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
 	lsl r0, r0, #0x13
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #1
@@ -9725,7 +9725,7 @@ sub_8113350:
 	bl object_canMove
 	beq loc_8113394
 	mov r0, #0x40
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r6,#oAIState_Unk_04]
 	cmp r0, #1
 	bne loc_8113378
@@ -9864,7 +9864,7 @@ loc_8113466:
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
 	lsl r0, r0, #0x13
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldrb r0, [r7,#oAIAttackVars_Unk_00]
@@ -11005,7 +11005,7 @@ sub_8113E54:
 	mov r0, #0
 	strb r0, [r7,#oAIAttackVars_Unk_0c]
 	mov r0, #0x40
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xa
 	bl object_setAttack0
 	mov r0, #0
@@ -11048,7 +11048,7 @@ sub_8113EAC:
 	mov r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_0c]
 	mov r0, #0x40
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xa
 	bl object_setAttack0
 	mov r0, #0
@@ -11470,7 +11470,7 @@ sub_8114238:
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
 	mov r0, #0x40
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r7,#oAIAttackVars_Unk_03]
 	mov r1, #1
 	tst r0, r1
@@ -11562,7 +11562,7 @@ sub_81142F0:
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
 	lsl r0, r0, #0x13
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #1
@@ -12949,7 +12949,7 @@ sub_8114F6A:
 sub_8114FAA:
 	push {r4-r7,lr}
 	mov r0, #0x40
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	bl sub_80165B8
 	pop {r4-r7,pc}
 	thumb_func_end sub_8114FAA
@@ -13136,10 +13136,10 @@ loc_81151E4:
 	mov r3, #3
 	bl sub_801A082
 	mov r0, #0x40
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
-	lsl r0, r0, #0x16
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
+	bl object_setFlag1 // (int a1) -> void
 	bl sub_802D234
 	cmp r0, #6
 	beq loc_811520A
@@ -13369,7 +13369,7 @@ loc_81153C2:
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
 	lsl r0, r0, #0x13
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	bl sub_8115446
 	mov r0, #0x18
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -13497,7 +13497,7 @@ sub_81154B8:
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #1
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 locret_81154D4:
 	pop {pc}
 	.balign 4, 0x00
@@ -14951,7 +14951,7 @@ sub_811627A:
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0x40
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	pop {r4-r7,pc}
 	thumb_func_end sub_811627A
 
@@ -14966,7 +14966,7 @@ sub_81162AE:
 	push {r4-r7,lr}
 	bl sub_80165B8
 	ldr r0, dword_81162F4 // =0x800000
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	bl object_clearCollisionRegion // () -> void
 	pop {r4-r7,pc}
 dword_81162C0: .word 0xA000
@@ -31544,6 +31544,7 @@ locret_811F798:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_811F79C: .word JumpTable811F7A0
+// SubmenuPtr* r5
 JumpTable811F7A0: .word HandleChipFolderMenu8123434+1
 	.word HandleSubChipMenu8123F5C+1
 	.word HandleLibraryMenu8124B3C+1

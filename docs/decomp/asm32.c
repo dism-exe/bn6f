@@ -1686,7 +1686,7 @@ int sub_810EDB8()
     else
     {
         *(v1 + 1) = 1;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v0 + 16) = 4 * *(v1 + 14) + 1;
         object_setCounterTime(30);
         result = 0;
@@ -2226,7 +2226,7 @@ int __fastcall sub_810F660(int a1, int a2, int a3)
         *(v3 + 110) = 0;
         sub_811016C(*(v3 + 18), *(v3 + 19), 0x200000);
         *(v3 + 112) = 1;
-        object_setFlag(64);
+        object_setFlag1(64);
         *(v3 + 127) = 0;
         if ( object_getFlag() & 0xA000 )
             *(v3 + 127) = 1;
@@ -2857,7 +2857,7 @@ int __fastcall sub_810FE5C(int a1)
         *(v2 + 116) = 0;
         *(v4 + 10) = byte_810FD20[v9];
         *(v4 + 16) = byte_810FD28[v9];
-        object_setFlag(64);
+        object_setFlag1(64);
         object_setAttack0();
         *(v4 + 1) = 0;
         *(v2 + 110) = 0;
@@ -3626,7 +3626,7 @@ int sub_81108E4()
         v0->extraVars[27] = v8;
         sub_8110CC6();
         v0->currAnimation = 0;
-        object_setFlag(1);
+        object_setFlag1(1);
         *v1 = 4;
         result = 0;
         *(v1 + 1) = 0;
@@ -3813,7 +3813,7 @@ int sub_8110B50()
     if ( result & 0x80 )
     {
         *(v0 + 16) = 0;
-        object_setFlag(1);
+        object_setFlag1(1);
         *v1 = 32;
         result = 0;
         *(v1 + 1) = 0;
@@ -3999,8 +3999,8 @@ int sub_8110E76()
     char v1; // r0
     int result; // r0
 
-    object_setFlag(1);
-    object_setFlag(64);
+    object_setFlag1(1);
+    object_setFlag1(64);
     GetPositiveSignedRNG2();
     result = v1 & 3;
     *(v0 + 104) = result;
@@ -4028,7 +4028,7 @@ int sub_8110EB8()
     int v1; // r6
 
     *(v0 + 108) = 0;
-    object_setFlag(1);
+    object_setFlag1(1);
     return (*(&off_8110ED4 + *(v1 + 2)))();
 }
 
@@ -4066,7 +4066,7 @@ int sub_8110EF8()
     int result; // r0
 
     *(v1 + 108) = 0;
-    object_setFlag(1);
+    object_setFlag1(1);
     if ( !sub_8109630(108, 103, 108) )
     {
         v4 = *(v0 + 22);
@@ -4392,7 +4392,7 @@ int __fastcall sub_81113DE(int a1)
         {
             *(v4 + 12) = v7 | 16 * v8;
             *(v2 + 96) = 1;
-            object_setFlag(64);
+            object_setFlag1(64);
             object_setAttack0();
         }
     }
@@ -4875,7 +4875,7 @@ void __fastcall sub_8111A28(int a1)
         v5 = *(v2 + 23);
         v1->futurePanelY = v5;
         object_reservePanel(v4, v5);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 1;
         *(v2 + 12) = 16;
         *v2 = 4;
@@ -4937,7 +4937,7 @@ int sub_8111A8C()
         object_setCoordinatesFromPanels(v0);
         object_setCollisionPanelsToCurrent();
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         *(v1 + 26) = 1;
         result = 12;
         *v1 = 12;
@@ -5010,7 +5010,7 @@ signed int sub_8111B70()
 
     *(v0 + 16) = 4;
     v1[9] = 30;
-    object_setFlag(0x400000);
+    object_setFlag1(0x400000);
     result = 4;
     *v1 = 4;
     return result;
@@ -6021,7 +6021,7 @@ void __fastcall sub_81127E8(int a1)
         v1->futurePanelX = v4;
         v1->futurePanelY = v5;
         object_reservePanel(v4, v5);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 1;
         *(v2 + 16) = 30;
         *v2 = 4;
@@ -6092,7 +6092,7 @@ void sub_811288C()
     if ( !v2 )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         v0->currAnimation = 0;
         *(v1 + 26) = 1;
         object_exitAttackState(v0);
@@ -6998,7 +6998,7 @@ int __fastcall sub_8113350(int a1)
     v4 = object_canMove(a1);
     if ( _ZF )
         return (loc_801171C)(v4);
-    object_setFlag(64);
+    object_setFlag1(64);
     if ( *(v2 + 4) == 1 )
     {
         v6 = v1->panelX;
@@ -7084,7 +7084,7 @@ int sub_811339A()
     object_setCoordinatesFromPanels(v0);
     object_setCollisionPanelsToCurrent();
     object_clearFlag(64);
-    object_setFlag(0x80000);
+    object_setFlag1(0x80000);
     object_setCollisionRegion(1);
     result = *v2;
     if ( result != 8 )
@@ -7914,7 +7914,7 @@ int __fastcall sub_8113E54(int a1)
         *(v4 + 10) = byte_8113D98[v6];
         *(v4 + 16) = byte_8113DA8[v6];
         *(v4 + 12) = 0;
-        object_setFlag(64);
+        object_setFlag1(64);
         object_setAttack0();
         *(v4 + 1) = 0;
     }
@@ -7955,7 +7955,7 @@ int __fastcall sub_8113EAC(int a1)
         *(v4 + 10) = byte_8113D98[v8];
         *(v4 + 16) = byte_8113DA0[v8];
         *(v4 + 12) = 1;
-        object_setFlag(64);
+        object_setFlag1(64);
         object_setAttack0();
         *(v4 + 1) = 0;
     }
@@ -8280,7 +8280,7 @@ void __fastcall sub_8114238(int a1)
         v1->futurePanelX = v4;
         v1->futurePanelY = v5;
         object_reservePanel(v4, v5);
-        object_setFlag(64);
+        object_setFlag1(64);
         if ( *(v2 + 3) & 1 )
             v1->currAnimation = *(v2 + 14);
         *(v2 + 16) = *(v2 + 48);
@@ -8348,7 +8348,7 @@ int sub_81142F0()
     if ( !result )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         *(v0 + 16) = *(v0 + 24);
         *(v0 + 26) = 1;
         result = 12;
@@ -9159,7 +9159,7 @@ int __fastcall sub_8114F6A(_DWORD *a1, int a2, int a3, int a4)
 // 0x8114faa
 int sub_8114FAA()
 {
-    object_setFlag(64);
+    object_setFlag1(64);
     return sub_80165B8();
 }
 
@@ -9313,8 +9313,8 @@ void sub_81151CC()
         else
         {
             sub_801A082(v2, 53, 2, 3);
-            object_setFlag(64);
-            object_setFlag(0x400000);
+            object_setFlag1(64);
+            object_setFlag1(0x400000);
             if ( sub_802D234() != 6 )
                 object_setCounterTime(16);
             *(v1 + 52) = *(&loc_8115234 + *(v1 + 12));
@@ -9403,7 +9403,7 @@ int sub_8115398()
         object_updateCollisionPanels(v0);
         object_setCollisionRegion(1);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         sub_8115446();
         v1[8] = 24;
         result = 20;
@@ -9514,7 +9514,7 @@ int sub_81154B8()
         if ( result & 0x80 )
         {
             *(v0 + 16) = 3;
-            result = object_setFlag(1);
+            result = object_setFlag1(1);
         }
     }
     return result;
@@ -10561,7 +10561,7 @@ int sub_811627A()
     *(v0 + 106) = v2;
     *(v0 + 107) = 0;
     *(v0 + 96) = 0;
-    return object_setFlag(64);
+    return object_setFlag1(64);
 }
 
 
@@ -10576,7 +10576,7 @@ void sub_81162AA()
 int sub_81162AE()
 {
     sub_80165B8();
-    object_setFlag(0x800000);
+    object_setFlag1(0x800000);
     return object_clearCollisionRegion();
 }
 

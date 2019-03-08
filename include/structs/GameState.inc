@@ -1,5 +1,5 @@
 
-	.macro game_state_struct, label, struct_entry=label_struct_entry, struct_begin=struct_begin
+	.macro game_state_struct, label=oGameState, struct_entry=label_struct_entry, struct_begin=struct_begin
         \struct_begin
         struct_init_defs \struct_entry, \label
         u8 \label, SubsystemIndex // loc=0x0

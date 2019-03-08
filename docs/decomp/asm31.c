@@ -25431,7 +25431,7 @@ void __noreturn sub_80C69AC()
     object_spawnCollisionEffect();
     if ( *(*(v0 + 84) + 112) && !(object_getFlag() & 0x100) )
     {
-        object_setFlag(256);
+        object_setFlag1(256);
         *(v0 + 9) = 4;
         *(v0 + 10) = 0;
     }
@@ -26252,7 +26252,7 @@ int __noreturn sub_80C71C4()
     v5 = object_setupCollisionData(v3, 19, 20, 3);
     object_presentCollisionData(v5, v6);
     sound_play(148, v7, v8);
-    object_setFlag(64);
+    object_setFlag1(64);
     result = 4;
     *(v0 + 8) = 4;
     return result;
@@ -33630,7 +33630,7 @@ signed int __noreturn sub_80CBB76()
     object_presentCollisionData(v7, v8);
     if ( !*(v0 + 4) )
         **(v0 + 76) = v0;
-    object_setFlag(64);
+    object_setFlag1(64);
     *(v0 + 32) = 15;
     *(v0 + 34) = 0;
     sub_8002C7A(0);
@@ -33957,7 +33957,7 @@ signed int __fastcall sub_80CBF54(int a1)
     *(v2 + 96) = 0;
     v3 = a1;
     object_clearFlag(64);
-    object_setFlag(0x80000);
+    object_setFlag1(0x80000);
     v4 = v3[19];
     v3[20] = v3[18];
     v3[21] = v4;
@@ -33975,7 +33975,7 @@ int sub_80CBF8C()
     *(v0 + 32) = 60;
     *(v0 + 10) = 4;
     object_clearFlag(64);
-    object_setFlag(0x80000);
+    object_setFlag1(0x80000);
     result = *(v0 + 18);
     v2 = *(v0 + 19);
     *(v0 + 20) = result;
@@ -37076,7 +37076,7 @@ int sub_80CDFA4()
     {
         object_setupCollisionData(v1, 0, 24, 0);
         object_setCollisionRegion(128);
-        v3 = object_setFlag(0x1000000);
+        v3 = object_setFlag1(0x1000000);
         object_presentCollisionData(v3, v4);
         *(v0 + 96) = *(v0 + 84) + 132;
         *(v0 + 100) = 0;
@@ -53809,7 +53809,7 @@ void __noreturn sub_80D8464()
     {
         v2 = object_setupCollisionData(v1, 14, 15, 3);
         object_presentCollisionData(v2, v3);
-        object_setFlag(8);
+        object_setFlag1(8);
         *(v0 + 8) = 4;
     }
     else
@@ -82224,7 +82224,7 @@ int __fastcall sub_80E95D8(int a1, int a2, int a3)
             sub_8013754(255, 7, 59);
             sub_8013682(*(v14 + 22))[7] = 59;
         }
-        object_setFlag(262192);
+        object_setFlag1(262192);
         v23 = sub_8013682(*(v14 + 22));
         v23[27] = 1;
         v23[28] = 1;
@@ -83825,7 +83825,7 @@ signed int __fastcall __noreturn sub_80EADDC(int a1, int a2, int a3, int a4)
     v4->futurePanelX = v8;
     v4->futurePanelY = v9;
     object_reservePanel(v8, v9);
-    object_setFlag(64);
+    object_setFlag1(64);
     *(v5 + 4) = 0;
     *(v5 + 5) = 12;
     result = 4;
@@ -83989,7 +83989,7 @@ LABEL_11:
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         sub_802D234();
         if ( sub_80F02A2() )
             object_exitAttackState(v0);
@@ -84112,7 +84112,7 @@ LABEL_14:
     object_reservePanel(v6, v7);
     v8 = sub_801BE04(*(v1 + 22), *(v1 + 23), v0->panelX, v0->panelY);
     sub_8010312(v8);
-    object_setFlag(64);
+    object_setFlag1(64);
     sub_800AB46(v0->Alliance, 4, 1);
     if ( sub_80F02A2() )
         object_setAnimation(v0);
@@ -84172,7 +84172,7 @@ int sub_80EB194()
     if ( !result )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         v1[8] = v1[12];
         if ( sub_80F02A2() )
             object_setAnimation(v0);
@@ -84294,7 +84294,7 @@ void sub_80EB254()
             v0->futurePanelY = v5;
             object_reservePanel(v4, v5);
             object_setAnimation(v0);
-            object_setFlag(64);
+            object_setFlag1(64);
             *(v1 + 26) = 1;
             v0->vx = 74898 * (v0->futurePanelX - v0->panelX);
             v0->vy = 44938 * (v0->futurePanelY - v0->panelY);
@@ -84341,7 +84341,7 @@ LABEL_4:
         if ( v0->z || *(v1 + 22) != v0->panelX || *(v1 + 23) != v0->panelY )
         {
             object_clearCollisionRegion();
-            object_setFlag(32);
+            object_setFlag1(32);
         }
         if ( *(v1 + 16) == 5 )
             object_spawnCollisionRegion(v0->futurePanelX, v0->futurePanelY, 0, 0);
@@ -84377,7 +84377,7 @@ LABEL_4:
     if ( ((result < 0) ^ v10) | (result == 0) )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 8;
         *v1 = 8;
     }
@@ -84467,7 +84467,7 @@ int __fastcall sub_80EB450(int a1, int a2, int a3)
     {
         object_setAnimation(v3);
         sub_80EB562();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v4 + 1) = 4;
         *(v4 + 16) = 0;
     }
@@ -84655,7 +84655,7 @@ int sub_80EB644()
         v5 = *&byte_80EB738[v3] | (v4 << 24);
         sub_80B8E30(v3);
         sound_play(178, v6, v7);
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v1 + 16) = 0;
         *(v1 + 1) = 4;
     }
@@ -84733,7 +84733,7 @@ LABEL_7:
         result = sub_800E5FC(v3);
         if ( result )
         {
-            object_setFlag(64);
+            object_setFlag1(64);
             v4 = v0[18];
             v0[20] = v4;
             v5 = v0[19];
@@ -84798,7 +84798,7 @@ int sub_80EB862()
         v7 = (v6 + sub_80EBAE8()) << 8;
         v8 = sub_80EBB34();
         sub_80B8E30(v8);
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v1 + 16) = 21;
         object_getFrontDirection(v0);
         v9 = v0->panelX;
@@ -85038,7 +85038,7 @@ int __fastcall sub_80EBC28(int a1, int a2, int a3)
         v5 = sub_80EBD68() << 8;
         v6 = byte_80EBD2C[*(v4 + 3)] + v5;
         sub_80B8E30(v5);
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         result = 4;
         *(v4 + 1) = 4;
     }
@@ -85184,7 +85184,7 @@ int __fastcall sub_80EBE54(int a1, int a2, int a3)
         object_setAnimation(v3);
         sub_80EB562();
         *(v4 + 1) = 4;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v4 + 16) = 0;
     }
     if ( *(v4 + 16) == 1 )
@@ -85287,7 +85287,7 @@ int sub_80EBF30()
         v4 = &v0->ai->unk_68;
         sub_80B8E30(v2);
         v1 = v3;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v3 + 1) = 4;
         *(v3 + 16) = 1;
     }
@@ -85415,7 +85415,7 @@ u32 *sub_80EC044()
         v3 = &v0->ai->unk_68;
         sub_80B8E30(v2);
         v1 = v9;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         v4 = object_getFrontDirection(v0) + v0->panelX;
         v5 = v0->panelY;
         v6 = *(v9 + 12);
@@ -85539,7 +85539,7 @@ int __fastcall sub_80EC11C(int a1, int a2, int a3)
         *(v4 + 16) = 0;
         v6 = sub_80B8E58(*(v3 + 76));
         sub_80B8E30(v6);
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         result = 4;
         *(v4 + 1) = 4;
     }
@@ -85636,7 +85636,7 @@ int sub_80EC210()
     }
     else
     {
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         object_setAnimation(v0);
         object_setDefaultCounterTime();
         *(v1 + 16) = 5;
@@ -85832,7 +85832,7 @@ int __fastcall sub_80EC490(int a1, int a2, int a3)
     {
         object_setAnimation(v3);
         sub_80EB562();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v4 + 1) = 4;
         a2 = 2;
         *(v4 + 18) = 4;
@@ -85950,7 +85950,7 @@ int __fastcall sub_80EC5EC(int a1, int a2, int a3)
             v6->unk_68 = 0;
         }
         sub_80EB562();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v4 + 1) = 4;
         *(v4 + 16) = 0;
     }
@@ -86078,7 +86078,7 @@ int sub_80EC7C0()
         object_setAnimation(v0);
         sub_80EB562();
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v1 + 1) = 4;
         *(v1 + 16) = 0;
     }
@@ -86183,7 +86183,7 @@ int sub_80EC8A0()
         object_setAnimation(v0);
         object_setDefaultCounterTime();
         *(v1 + 16) = 0;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         v2 = v1;
         v3 = sub_80EC934();
         v4 = &v0->ai->unk_68;
@@ -86266,7 +86266,7 @@ int sub_80EC97C()
         object_setAnimation(v0);
         sound_play(216, v2, v3);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v1 + 16) = 15;
         *(v1 + 1) = 4;
     }
@@ -86435,7 +86435,7 @@ int sub_80ECAE8()
         v2 = v1;
         v3 = &v0->ai->unk_68;
         sub_80B8E30(15);
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         result = 4;
         *(v2 + 1) = 4;
     }
@@ -86542,7 +86542,7 @@ int __fastcall sub_80ECBCC(int a1, int a2, int a3)
         v8 = &v3->ai->unk_68;
         sub_80B8E30(v7);
         v4 = v5;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v5 + 1) = 4;
         *(v5 + 16) = 0;
     }
@@ -86624,7 +86624,7 @@ int sub_80ECCCC()
     {
         object_setAnimation(v0);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v1 + 1) = 4;
         *(v1 + 16) = 15;
     }
@@ -86689,7 +86689,7 @@ int __fastcall sub_80ECD44(int a1, int a2, int a3)
         v10 = &v3->ai->unk_68;
         sub_80B8E30(v9);
         v4 = v14;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v14 + 16) = 0;
         *(v14 + 1) = 4;
     }
@@ -86784,7 +86784,7 @@ int sub_80ECE18()
         v13 = &v0->ai->unk_68;
         sub_80B8E30(v11);
         v1 = v12;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v12 + 16) = 0;
         *(v12 + 1) = 4;
     }
@@ -86885,7 +86885,7 @@ signed int sub_80ECF48()
     v3 = v1;
     v4 = *(v0 + 88) + 104;
     sub_80B8E30(v2);
-    object_setFlag(0x400000);
+    object_setFlag1(0x400000);
     *(v3 + 14) = 9;
     *(v3 + 48) = -1;
     result = 4;
@@ -87051,7 +87051,7 @@ int sub_80ED0AC()
         v4 = *(v0 + 88) + 104;
         sub_80B8E30(v2);
         v1 = v3;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v3 + 16) = 0;
         *(v3 + 1) = 4;
     }
@@ -87181,8 +87181,8 @@ void sub_80ED154()
         v2 = sub_8018810(v0->nameID, 6, v0->Alliance, v0->directionFlip);
         v4 = *(v1 + 12);
         sub_80C97E0(v2, v2 << 16, 0, v3 << 16);
-        object_setFlag(1);
-        object_setFlag(0x400000);
+        object_setFlag1(1);
+        object_setFlag1(0x400000);
         object_setAnimation(v0);
         sub_80101D4(v5);
         *(v1 + 48) = 0;
@@ -87222,7 +87222,7 @@ int sub_80ED278()
     {
         object_setAnimation(v0);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v1 + 16) = 15;
         *(v1 + 1) = 4;
     }
@@ -87295,7 +87295,7 @@ int sub_80ED314()
         object_setAnimation(v0);
         sound_play(216, v2, v3);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v1 + 16) = 15;
         *(v1 + 1) = 4;
     }
@@ -87376,7 +87376,7 @@ int sub_80ED3B6()
 
     if ( !*(v1 + 1) )
     {
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         object_setAnimation(v0);
         v2 = *(v1 + 3);
         v3 = v1;
@@ -87475,7 +87475,7 @@ int sub_80ED470()
         v4 = &v0->ai->unk_68;
         sub_80B8E30(v2);
         v1 = v18;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v18 + 1) = 4;
         *(v18 + 16) = 42;
     }
@@ -87571,7 +87571,7 @@ signed int sub_80ED57C()
     v3 = *(v1 + 3);
     v4 = &v0->ai->unk_68;
     sub_80B8E30(v3);
-    object_setFlag(0x400000);
+    object_setFlag1(0x400000);
     *v2 = 4;
     *(v2 + 18) = byte_80ED5BC[*(v2 + 3)];
     result = 5;
@@ -87676,7 +87676,7 @@ int sub_80ED668()
         object_setAnimation(v0);
         sound_play(216, v2, v3);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v1 + 16) = 15;
         *(v1 + 1) = 4;
     }
@@ -87742,7 +87742,7 @@ int __fastcall sub_80ED700(int a1, int a2, int a3, int a4)
     {
         object_setAnimation(v4);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v5 + 16) = 15;
         *(v5 + 1) = 4;
     }
@@ -87786,7 +87786,7 @@ int __fastcall sub_80ED764(int a1, int a2, int a3)
     {
         object_setAnimation(v3);
         sub_80EB562();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v4 + 16) = 0;
         *(v4 + 1) = 4;
     }
@@ -87894,7 +87894,7 @@ int __fastcall sub_80ED82C(int a1, int a2, int a3)
         v7 = &v3->ai->unk_68;
         sub_80B8E30(v5);
         v4 = v6;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v6 + 1) = 4;
         *(v6 + 16) = 0;
     }
@@ -87975,8 +87975,8 @@ int sub_80ED8E0()
     {
         object_setAnimation(v0);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
-        object_setFlag(64);
+        object_setFlag1(0x400000);
+        object_setFlag1(64);
         result = 4;
         *(v1 + 1) = 4;
     }
@@ -88104,7 +88104,7 @@ int sub_80ED9CC()
         v4 = &v0->ai->unk_68;
         sub_80B8E30(v2);
         v1 = v3;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v3 + 1) = 4;
         *(v3 + 16) = 1;
     }
@@ -88281,7 +88281,7 @@ int sub_80EDB14()
     }
     else
     {
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         object_setAnimation(v0);
         v2 = object_setDefaultCounterTime();
         v3 = v1;
@@ -88446,7 +88446,7 @@ int sub_80EDCDC()
     {
         object_setAnimation(v0);
         object_setDefaultCounterTime();
-        object_setFlag(4194368);
+        object_setFlag1(4194368);
         *(v1 + 16) = 15;
         *(v1 + 1) = 4;
     }
@@ -88521,7 +88521,7 @@ int sub_80EDDA0()
         v3 = &v0->ai->unk_68;
         sub_80B8E30(v4);
         v1 = v2;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         sub_8010312(0x200000);
         *(v2 + 1) = 4;
         *(v2 + 16) = 1;
@@ -88673,8 +88673,8 @@ int sub_80EDE98()
     {
         object_setAnimation(v0);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
-        object_setFlag(64);
+        object_setFlag1(0x400000);
+        object_setFlag1(64);
         *(v1 + 16) = 7;
         result = 4;
         *(v1 + 1) = 4;
@@ -88769,8 +88769,8 @@ int sub_80EDF78()
     {
         object_setAnimation(v0);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
-        object_setFlag(64);
+        object_setFlag1(0x400000);
+        object_setFlag1(64);
         result = 4;
         *(v1 + 1) = 4;
     }
@@ -88891,8 +88891,8 @@ int sub_80EE060()
     {
         object_setAnimation(v0);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
-        object_setFlag(64);
+        object_setFlag1(0x400000);
+        object_setFlag1(64);
         result = 4;
         *(v1 + 1) = 4;
     }
@@ -88925,7 +88925,7 @@ signed int sub_80EE0DC()
     v3 = *(v1 + 14);
     v4 = &v0->ai->unk_68;
     sub_80B8E30(v3);
-    object_setFlag(0x400000);
+    object_setFlag1(0x400000);
     v2[8] = 10;
     result = 4;
     *v2 = 4;
@@ -89046,7 +89046,7 @@ int sub_80EE1AC()
         v4 = sub_80EBAE8() << 8;
         *(v1 + 3);
         sub_80B8E30(v4);
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         object_getFlip(v0);
         v5 = *(v0 + 19);
         v6 = object_getCoordinatesForPanels(*(v0 + 18));
@@ -89156,7 +89156,7 @@ int __fastcall sub_80EE2CE(int a1, int a2, int a3, int a4)
         object_setAnimation(v4);
         object_setDefaultCounterTime();
         sound_play(199, v7, v8);
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v5 + 16) = 21;
         *(v5 + 1) = 4;
     }
@@ -89223,7 +89223,7 @@ signed int sub_80EE370()
         result = sub_800E5FC(4);
         if ( result )
         {
-            object_setFlag(64);
+            object_setFlag1(64);
             v3 = v0[18];
             v0[20] = v3;
             v4 = v0[19];
@@ -89283,7 +89283,7 @@ int __fastcall sub_80EE406(int a1, int a2, int a3, int a4, int a5)
             v15 = sub_80EBB34();
             sub_80B8E30(v15);
         }
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v6 + 16) = 21;
         *(v6 + 1) = 4;
     }
@@ -89400,7 +89400,7 @@ signed int sub_80EE57C()
     v3 = v1;
     v4 = &v0->ai->unk_68;
     sub_80B8E30(v2);
-    object_setFlag(0x400000);
+    object_setFlag1(0x400000);
     v3[8] = 1;
     result = 4;
     *v3 = 4;
@@ -89498,7 +89498,7 @@ signed int sub_80EE654()
 
     object_setAnimation(v0);
     sub_80EB562();
-    object_setFlag(0x400000);
+    object_setFlag1(0x400000);
     result = 4;
     *v1 = 4;
     return result;
@@ -89596,7 +89596,7 @@ signed int sub_80EE71C()
     v3 = v1;
     v4 = &v0->ai->unk_68;
     sub_80B8E30(v2);
-    object_setFlag(0x400000);
+    object_setFlag1(0x400000);
     v3[8] = 1;
     result = 4;
     *v3 = 4;
@@ -89700,8 +89700,8 @@ int sub_80EE7EC()
     {
         object_setAnimation(v0);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
-        object_setFlag(64);
+        object_setFlag1(0x400000);
+        object_setFlag1(64);
         v3 = object_getFrontDirection(v0);
         v4 = *(v1 + 8);
         sub_80D8F98(v3 + v0->panelX, v0->panelY, *(v1 + 2), -262144 * *(v1 + 3));
@@ -89744,8 +89744,8 @@ int sub_80EE860()
     {
         object_setAnimation(v0);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
-        object_setFlag(64);
+        object_setFlag1(0x400000);
+        object_setFlag1(64);
         result = 4;
         *(v1 + 1) = 4;
     }
@@ -89838,7 +89838,7 @@ int sub_80EE92C()
         object_setAnimation(v0);
         object_removePanelReserve(v0->futurePanelX, v0->futurePanelY);
         object_clearFlag(4096);
-        object_setFlag(64);
+        object_setFlag1(64);
         v2 = v0->panelX;
         v3 = v0->panelY;
         v0->futurePanelX = v2;
@@ -89995,7 +89995,7 @@ int sub_80EEA78()
         sub_80EBB34();
         v4 = sub_80EBAE8();
         sub_80B8E30(v4 << 8);
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v1 + 16) = 21;
         *(v1 + 1) = 4;
     }
@@ -90094,7 +90094,7 @@ int sub_80EEB68()
         sub_80EBB34();
         v5 = sub_80EBAE8();
         sub_80B8E30(v5 << 8);
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v1 + 16) = 21;
         *(v1 + 1) = 4;
     }
@@ -90218,7 +90218,7 @@ int sub_80EEC90()
     {
         object_setAnimation(v0);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v1 + 16) = 14;
         result = 4;
         *(v1 + 1) = 4;
@@ -90317,7 +90317,7 @@ int sub_80EED74()
         object_setAnimation(v0);
         object_removePanelReserve(v0->futurePanelX, v0->futurePanelY);
         object_clearFlag(4096);
-        object_setFlag(64);
+        object_setFlag1(64);
         v2 = v0->panelX;
         v3 = v0->panelY;
         v0->futurePanelX = v2;
@@ -90466,7 +90466,7 @@ int sub_80EEED4()
     if ( ((result < 0) ^ v3) | (result == 0) )
     {
         v1[8] = 20;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         object_setAnimation(v0);
         result = 8;
         *v1 = 8;
@@ -90639,7 +90639,7 @@ int sub_80EF004()
         object_setAnimation(v0);
         object_reservePanel(v0->panelX, v0->panelY);
         object_clearCollisionRegion();
-        object_setFlag(64);
+        object_setFlag1(64);
     }
     if ( *(v1 + 16) == 27 )
     {
@@ -90726,7 +90726,7 @@ int sub_80EF0E2()
 
     if ( !*(v1 + 1) )
     {
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         object_setAnimation(v0);
         v2 = *(v1 + 3);
         v3 = v1;
@@ -90855,8 +90855,8 @@ int sub_80EF208()
     {
         object_setAnimation(v0);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
-        object_setFlag(64);
+        object_setFlag1(0x400000);
+        object_setFlag1(64);
         result = 4;
         *(v1 + 1) = 4;
     }
@@ -90919,8 +90919,8 @@ int sub_80EF29C()
     {
         object_setAnimation(v0);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
-        object_setFlag(64);
+        object_setFlag1(0x400000);
+        object_setFlag1(64);
         sub_80EF30A();
         *(v1 + 16) = 30;
         *(v1 + 1) = 4;
@@ -90980,8 +90980,8 @@ int sub_80EF348()
     {
         object_setAnimation(v0);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
-        object_setFlag(64);
+        object_setFlag1(0x400000);
+        object_setFlag1(64);
         v0->vz = 24576;
         *(v1 + 16) = 16;
         object_clearCollisionRegion();
@@ -91156,7 +91156,7 @@ int sub_80EF4D0()
     {
         object_setAnimation(v0);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v1 + 16) = 15;
         *(v1 + 1) = 4;
     }
@@ -91217,7 +91217,7 @@ int sub_80EF550()
 
     if ( !*(v1 + 1) )
     {
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v1 + 1) = 1;
         *(v1 + 16) = 3;
         object_setAnimation(v0);
@@ -91541,7 +91541,7 @@ int sub_80EF9A2()
         sub_80EBB34();
         v4 = sub_80EBAE8();
         sub_80B8E30(v4 << 8);
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v1 + 16) = 21;
         *(v1 + 1) = 4;
     }
@@ -91661,8 +91661,8 @@ int sub_80EFA74()
     }
     else
     {
-        object_setFlag(0x400000);
-        object_setFlag(64);
+        object_setFlag1(0x400000);
+        object_setFlag1(64);
         object_setAnimation(v0);
         object_setDefaultCounterTime();
         *(v1 + 16) = 8;
@@ -91792,7 +91792,7 @@ int sub_80EFC38()
         object_setAnimation(v0);
         sub_80EB562();
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         sound_play(255, v2, v3);
         *(v1 + 1) = 4;
         *(v1 + 16) = 0;
@@ -91873,8 +91873,8 @@ int __fastcall sub_80EFCD8(int a1, int a2, int a3)
     {
         v5 = sub_8013774(*(v4 + 1), 44);
         object_setAnimation(v3);
-        object_setFlag(0x400000);
-        object_setFlag(64);
+        object_setFlag1(0x400000);
+        object_setFlag1(64);
         v6 = object_getFrontDirection(v3);
         v7 = 7;
         v8 = 4;
@@ -92054,7 +92054,7 @@ void sub_80EFEAC()
 
     if ( !*(v1 + 1) )
     {
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         sub_8010312(2048);
         *(v1 + 1) = 4;
     }
@@ -92087,7 +92087,7 @@ signed int sub_80EFF00()
     int v3; // r3
     signed int result; // r0
 
-    object_setFlag(0x400000);
+    object_setFlag1(0x400000);
     *(v0 + 18) = 0;
     *(v0 + 64) = 3;
     *(v0 + 16) = 0;
@@ -92252,7 +92252,7 @@ int __fastcall sub_80F00B0(int a1, int a2, int a3, int a4)
     {
         object_setAnimation(v4);
         object_setDefaultCounterTime();
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v5 + 16) = 15;
         *(v5 + 1) = 4;
     }
@@ -92328,7 +92328,7 @@ int __fastcall sub_80F014C(int a1, int a2, int a3)
         {
             sub_80EB562();
         }
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v4 + 16) = 0;
         *(v4 + 1) = 4;
     }
@@ -92411,7 +92411,7 @@ signed int sub_80F0228()
 
     object_setAnimation(v0);
     object_setDefaultCounterTime();
-    object_setFlag(0x400000);
+    object_setFlag1(0x400000);
     *(v1 + 16) = *(v1 + 13);
     *(v1 + 18) = 16;
     v2 = *(v1 + 12);
@@ -93165,8 +93165,8 @@ signed int sub_80F09DC()
         v0->futurePanelX = v2;
         v0->futurePanelY = v3;
         object_reservePanel(v2, v3);
-        object_setFlag(64);
-        object_setFlag(0x400000);
+        object_setFlag1(64);
+        object_setFlag1(0x400000);
         v0->vx = 327680 * object_getFrontDirection(v0);
         v4 = v0->panelY;
         v5 = object_getCoordinatesForPanels(v0->panelX);
@@ -93259,7 +93259,7 @@ int sub_80F0AB6()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         object_clearFlag(0x400000);
         *(v1 + 16) = 3;
         result = *(v1 + 48);
@@ -93537,7 +93537,7 @@ int sub_80F0D08()
         v0[20] = v2;
         v0[21] = v3;
         object_reservePanel(v2, v3);
-        object_setFlag(64);
+        object_setFlag1(64);
         v0[16] = 19;
         v4 = *(v1 + 8);
         *(v1 + 48) = sub_80D19D4(7, 5, *(v1 + 2), v5);
@@ -94126,8 +94126,8 @@ int sub_80F11BC()
         v0->futurePanelX = v2;
         v0->futurePanelY = v3;
         object_reservePanel(v2, v3);
-        object_setFlag(64);
-        object_setFlag(0x400000);
+        object_setFlag1(64);
+        object_setFlag1(0x400000);
         v4 = object_setInvulnerableTime(0xFFFF);
         sub_801A082(v4, 1, 2, 0);
         v5 = v0->collisionData;
@@ -94606,7 +94606,7 @@ signed int __fastcall sub_80F162C(int a1)
         v1->futurePanelY = v5;
         object_reservePanel(v4, v5);
         object_clearCollisionRegion();
-        object_setFlag(64);
+        object_setFlag1(64);
         *(v2 + 16) = 2;
         result = 8;
         *v2 = 8;
@@ -94735,7 +94735,7 @@ int sub_80F172C()
     {
         *(v1 + 1) = 4;
         *(v0 + 16) = 4;
-        object_setFlag(64);
+        object_setFlag1(64);
         result = 6;
         *(v1 + 16) = 6;
     }
@@ -94775,7 +94775,7 @@ void sub_80F1756()
         object_updateCollisionPanels(v0);
         object_setCollisionRegion(1);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         object_clearFlag(0x400000);
         *(v1 + 16) = 8;
     }
@@ -95455,8 +95455,8 @@ int __noreturn sub_80F1C78()
         v0->futurePanelX = v2;
         v0->futurePanelY = v3;
         object_reservePanel(v2, v3);
-        object_setFlag(64);
-        object_setFlag(0x400000);
+        object_setFlag1(64);
+        object_setFlag1(0x400000);
         object_setInvulnerableTime(0xFFFF);
         sub_80F1E50(0x40000);
         v6 = sound_play(448, v4, v5);
@@ -96582,7 +96582,7 @@ signed int __fastcall sub_80F2EF4(int a1)
         v1[20] = v7;
         v1[21] = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1[16] = 4;
         *(v2 + 16) = 4;
         result = 4;
@@ -96651,7 +96651,7 @@ void sub_80F2F80()
         {
             v0->currAnimation = 0;
             object_clearFlag(64);
-            object_setFlag(0x80000);
+            object_setFlag1(0x80000);
             *(v1 + 16) = *(v1 + 24);
             *(v1 + 1) = 4;
         }
@@ -96691,7 +96691,7 @@ void __fastcall sub_80F2FE4(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 4;
         *(v2 + 26) = 1;
@@ -96750,7 +96750,7 @@ int sub_80F306C()
     {
         *(v0 + 16) = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v1 = 12;
     }
@@ -96939,8 +96939,8 @@ int sub_80F3180()
             *(v0 + 20) = v4;
             *(v0 + 21) = v5;
             object_reservePanel(v4, v5);
-            object_setFlag(64);
-            object_setFlag(0x400000);
+            object_setFlag1(64);
+            object_setFlag1(0x400000);
             object_clearCollisionRegion();
             result = 10;
             *(v1 + 16) = 10;
@@ -97106,7 +97106,7 @@ int sub_80F3312()
         {
             *(v1 + 22) = v7;
             *(v1 + 23) = v8;
-            object_setFlag(64);
+            object_setFlag1(64);
             object_clearCollisionRegion();
             result = 10;
             *(v1 + 16) = 10;
@@ -97144,7 +97144,7 @@ int sub_80F336C()
     else
     {
         *(v0 + 1) = 4;
-        object_setFlag(64);
+        object_setFlag1(64);
         object_clearCollisionRegion();
         result = 3;
         *(v0 + 16) = 3;
@@ -97196,7 +97196,7 @@ int sub_80F3396()
         *(v6 + 7) = v5;
         object_setCollisionRegion(1);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         object_clearFlag(0x400000);
         result = 3;
         *(v1 + 16) = 3;
@@ -97288,7 +97288,7 @@ signed int sub_80F3472()
         v0[20] = v8;
         v0[21] = v9;
         object_reservePanel(v8, v9);
-        object_setFlag(64);
+        object_setFlag1(64);
         v0[16] = 4;
         *(v1 + 16) = 4;
         *v1 = 8;
@@ -97360,7 +97360,7 @@ int sub_80F3518()
     {
         *(v0 + 16) = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         if ( *(v1 + 14) <= 1 )
         {
             result = 16;
@@ -98040,7 +98040,7 @@ signed int __fastcall sub_80F3D44(int a1)
         *(v1 + 68) = v9;
         *(v2 + 16) = v10;
         sub_80F3DC0();
-        object_setFlag(64);
+        object_setFlag1(64);
         result = 4;
         *v2 = 4;
     }
@@ -98078,7 +98078,7 @@ int sub_80F3DC0()
         object_setCoordinatesFromPanels(v0);
         object_setCollisionPanelsToCurrent();
         object_clearFlag(64);
-        v7 = object_setFlag(0x80000);
+        v7 = object_setFlag1(0x80000);
         result = (loc_801171C)(v7);
     }
     return result;
@@ -98282,7 +98282,7 @@ LABEL_9:
         v1->vy = v6;
         *(v2 + 16) = v7;
         sub_80F3FB0();
-        object_setFlag(64);
+        object_setFlag1(64);
         *v2 = 8;
     }
 }
@@ -98317,7 +98317,7 @@ int sub_80F3FB0()
         object_setCoordinatesFromPanels(v0);
         object_setCollisionPanelsToCurrent();
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         if ( v0->panelY == *(v1 + 12) )
         {
             result = 12;
@@ -98508,7 +98508,7 @@ signed int __fastcall sub_80F4144(int a1)
         *(v1 + 68) = v9;
         *(v2 + 16) = v10;
         sub_80F41C0();
-        object_setFlag(64);
+        object_setFlag1(64);
         result = 8;
         *v2 = 8;
     }
@@ -98545,7 +98545,7 @@ int sub_80F41C0()
         object_setCoordinatesFromPanels(v0);
         object_setCollisionPanelsToCurrent();
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v1 = 12;
     }
@@ -98738,7 +98738,7 @@ LABEL_9:
         v1->vy = v6;
         *(v2 + 16) = v7;
         sub_80F4384();
-        object_setFlag(64);
+        object_setFlag1(64);
         *v2 = 8;
     }
 }
@@ -98773,7 +98773,7 @@ int sub_80F4384()
         object_setCoordinatesFromPanels(v0);
         object_setCollisionPanelsToCurrent();
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         if ( v0->panelY == *(v1 + 48) )
         {
             result = 12;
@@ -98852,8 +98852,8 @@ int __noreturn sub_80F441C()
         v0->futurePanelX = v2;
         v0->futurePanelY = v3;
         object_reservePanel(v2, v3);
-        object_setFlag(64);
-        object_setFlag(0x400000);
+        object_setFlag1(64);
+        object_setFlag1(0x400000);
         object_setCounterTime(6);
         v4 = object_getEnemyDirection();
         v0->vx = *&byte_80F44D0[4 * *(v1 + 3)] * v4;
@@ -98990,7 +98990,7 @@ void sub_80F455C()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         object_clearFlag(0x400000);
         *(v1 + 16) = 3;
         v4 = *(v1 + 56);
@@ -99455,7 +99455,7 @@ int sub_80F4C44()
             v0[20] = v6;
             v0[21] = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0[16] = 4;
             sub_80F57DE();
             result = 3;
@@ -99501,7 +99501,7 @@ int sub_80F4CB4()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 3;
         *(v1 + 16) = 3;
     }
@@ -99583,7 +99583,7 @@ void sub_80F4D50()
             v0->futurePanelX = v5;
             v0->futurePanelY = v6;
             object_reservePanel(v5, v6);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0->currAnimation = 4;
             *(v1 + 26) = 1;
             sub_80F57DE();
@@ -99871,7 +99871,7 @@ void sub_80F4FA8()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         object_clearFlag(0x400000);
         *(v1 + 16) = 13;
     }
@@ -99923,7 +99923,7 @@ void sub_80F5028()
             v0->futurePanelX = v6;
             v0->futurePanelY = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0->currAnimation = 4;
             *(v1 + 26) = 1;
             sub_80F57DE();
@@ -99965,7 +99965,7 @@ int sub_80F50A0()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 3;
         *(v1 + 16) = 3;
     }
@@ -100001,7 +100001,7 @@ int __fastcall sub_80F50E2(int a1, int a2, int a3)
             v10 = v3->collisionData;
             v10->selfDamage = v9;
             v10->staminaDmg_counterDisabler = BYTE2(v9);
-            object_setFlag(64);
+            object_setFlag1(64);
             v11 = *&byte_80F5158[4 * *(v4 + 3)] * object_getFrontDirection(v3);
             *(v4 + 48) = v11;
             v3->vx = v11;
@@ -100203,7 +100203,7 @@ void sub_80F52A8()
             v0->futurePanelX = v6;
             v0->futurePanelY = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0->currAnimation = 4;
             *(v1 + 26) = 1;
             sub_80F57DE();
@@ -100249,7 +100249,7 @@ int sub_80F531C()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 3;
         *(v1 + 16) = 3;
     }
@@ -100943,7 +100943,7 @@ void __fastcall sub_80F5BA4(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *v2 = 4;
@@ -101010,7 +101010,7 @@ void sub_80F5C2C()
         {
             v0->currAnimation = 0;
             object_clearFlag(64);
-            object_setFlag(0x80000);
+            object_setFlag1(0x80000);
             *(v1 + 16) = *(v1 + 24);
             *(v1 + 1) = 4;
         }
@@ -101050,7 +101050,7 @@ void __fastcall sub_80F5C90(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -101109,7 +101109,7 @@ int sub_80F5D1C()
     {
         *(v0 + 16) = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v1 = 12;
     }
@@ -101240,7 +101240,7 @@ void __fastcall sub_80F5E18(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *v2 = 4;
@@ -101298,7 +101298,7 @@ int sub_80F5E9C()
     {
         *(v0 + 16) = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v1 = 12;
     }
@@ -101414,7 +101414,7 @@ void sub_80F5F26()
                 v0->futurePanelX = v8;
                 v0->futurePanelY = v9;
                 object_reservePanel(v8, v9);
-                object_setFlag(64);
+                object_setFlag1(64);
                 v0->currAnimation = 4;
                 *(v1 + 16) = 3;
                 *v1 = 24;
@@ -101621,7 +101621,7 @@ int sub_80F6052()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 3;
         *(v1 + 16) = 3;
     }
@@ -102129,8 +102129,8 @@ void __fastcall sub_80F6748(int a1)
     {
         *(v2 + 22) = v4;
         *(v2 + 23) = v5;
-        object_setFlag(64);
-        object_setFlag(0x400000);
+        object_setFlag1(64);
+        object_setFlag1(0x400000);
         v1->currAnimation = 4;
         *(v2 + 48) = 0;
         *(v2 + 26) = 1;
@@ -102208,7 +102208,7 @@ void sub_80F6880()
             sub_80F7514(*(v1 + 48));
             sub_80F7140();
             object_clearFlag(64);
-            object_setFlag(0x80000);
+            object_setFlag1(0x80000);
             object_clearFlag(0x400000);
             object_exitAttackState(v0);
         }
@@ -102264,8 +102264,8 @@ void __fastcall sub_80F6908(int a1)
     {
         *(v2 + 22) = v4;
         *(v2 + 23) = v5;
-        object_setFlag(64);
-        object_setFlag(0x400000);
+        object_setFlag1(64);
+        object_setFlag1(0x400000);
         v1->currAnimation = 4;
         *(v2 + 26) = 1;
         *(v2 + 16) = 3;
@@ -102527,8 +102527,8 @@ void sub_80F6C1C()
         {
             *(v1 + 22) = v3;
             *(v1 + 23) = v4;
-            object_setFlag(64);
-            object_setFlag(0x400000);
+            object_setFlag1(64);
+            object_setFlag1(0x400000);
             *(v1 + 26) = 1;
             v0->currAnimation = 4;
             *(v1 + 13) = 0;
@@ -102599,7 +102599,7 @@ void sub_80F6DA0()
             sub_80F7514(*(v1 + 48));
             sub_80F7140();
             object_clearFlag(64);
-            object_setFlag(0x80000);
+            object_setFlag1(0x80000);
             object_clearFlag(0x400000);
             object_exitAttackState(v0);
         }
@@ -102669,8 +102669,8 @@ void sub_80F6E20()
         {
             *(v1 + 22) = v3;
             *(v1 + 23) = v4;
-            object_setFlag(64);
-            object_setFlag(0x400000);
+            object_setFlag1(64);
+            object_setFlag1(0x400000);
             *(v1 + 26) = 1;
             v0->currAnimation = 4;
             *(v1 + 16) = 3;
@@ -102753,7 +102753,7 @@ void sub_80F6F7C()
             sub_80F7514(*(v1 + 48));
             sub_80F7140();
             object_clearFlag(64);
-            object_setFlag(0x80000);
+            object_setFlag1(0x80000);
             object_clearFlag(0x400000);
             v4 = *(v0 + 44);
             v5 = *(v0 + 84);
@@ -103126,7 +103126,7 @@ int sub_80F73FA()
     int v3; // r2
 
     object_clearFlag(64);
-    object_setFlag(0x80000);
+    object_setFlag1(0x80000);
     v1 = object_clearFlag(0x400000);
     sub_801A082(v1, 53, 2, 3);
     result = *(v0 + 44) & 0xFFFF;
@@ -103497,7 +103497,7 @@ void __fastcall sub_80F7A10(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 6;
         *v2 = 4;
@@ -103564,7 +103564,7 @@ void sub_80F7A98()
         {
             v0->currAnimation = 0;
             object_clearFlag(64);
-            object_setFlag(0x80000);
+            object_setFlag1(0x80000);
             *(v1 + 16) = *(v1 + 24);
             *(v1 + 1) = 4;
         }
@@ -103609,7 +103609,7 @@ void __fastcall sub_80F7AFC(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 6;
         *(v2 + 26) = 1;
@@ -103668,7 +103668,7 @@ int sub_80F7B9C()
     {
         *(v0 + 16) = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v1 = 12;
     }
@@ -103813,7 +103813,7 @@ signed int __fastcall sub_80F7C8C(int a1)
         v1[20] = v7;
         v1[21] = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1[16] = 4;
         *(v2 + 16) = 6;
         *(v2 + 26) = 1;
@@ -104053,7 +104053,7 @@ void sub_80F7E68()
     {
         *(v1 + 1) = 4;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         v0->currAnimation = 0;
         *(v1 + 16) = *(v1 + 24);
         v2 = **(v1 + 48);
@@ -104144,7 +104144,7 @@ signed int __fastcall sub_80F7F1E(int a1)
         v1[20] = v4;
         v1[21] = v5;
         object_reservePanel(v4, v5);
-        object_setFlag(64);
+        object_setFlag1(64);
         *(v2 + 16) = 2;
         *(v2 + 26) = 1;
         result = 8;
@@ -104276,7 +104276,7 @@ int sub_80F8014()
     {
         *(v1 + 1) = 4;
         *(v0 + 16) = 4;
-        object_setFlag(64);
+        object_setFlag1(64);
         result = 6;
         *(v1 + 16) = 6;
     }
@@ -104320,7 +104320,7 @@ int sub_80F803E()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         object_clearFlag(0x400000);
         result = 8;
         *(v1 + 16) = 8;
@@ -104773,7 +104773,7 @@ int sub_80F872C()
             v0[20] = v6;
             v0[21] = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0[16] = 4;
             result = 3;
             *(v1 + 16) = 3;
@@ -104818,7 +104818,7 @@ int sub_80F8794()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 3;
         *(v1 + 16) = 3;
     }
@@ -104884,7 +104884,7 @@ void __fastcall sub_80F882C(int a1)
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
         *(v2 + 12) = *(*(v2 + 44) + 18);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -104941,7 +104941,7 @@ int sub_80F88BC()
     if ( ((result < 0) ^ v2) | (result == 0) )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v0 = 12;
     }
@@ -105108,7 +105108,7 @@ void __fastcall sub_80F89C0(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -105165,7 +105165,7 @@ int sub_80F8A48()
     if ( ((result < 0) ^ v2) | (result == 0) )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v0 = 12;
     }
@@ -105314,7 +105314,7 @@ void __fastcall sub_80F8B74(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 52) = 0;
         *(v2 + 16) = 3;
@@ -105372,7 +105372,7 @@ int sub_80F8C04()
     if ( ((result < 0) ^ v2) | (result == 0) )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v0 = 12;
     }
@@ -105972,7 +105972,7 @@ int sub_80F92F0()
             v0[20] = v6;
             v0[21] = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0[16] = 4;
             result = 3;
             *(v1 + 16) = 3;
@@ -106017,7 +106017,7 @@ int sub_80F9358()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 3;
         *(v1 + 16) = 3;
     }
@@ -106095,7 +106095,7 @@ void sub_80F93E8()
             v0->futurePanelX = v6;
             v0->futurePanelY = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0->currAnimation = 4;
             *(v1 + 26) = 1;
             *(v1 + 16) = 3;
@@ -106139,7 +106139,7 @@ int sub_80F945C()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 3;
         *(v1 + 16) = 3;
     }
@@ -106290,7 +106290,7 @@ void sub_80F9560()
             v0->futurePanelX = v6;
             v0->futurePanelY = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0->currAnimation = 4;
             *(v1 + 26) = 1;
             *(v1 + 16) = 3;
@@ -106334,7 +106334,7 @@ int sub_80F95D4()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 3;
         *(v1 + 16) = 3;
     }
@@ -106493,7 +106493,7 @@ int sub_80F9716()
         *(v1 + 22) = sub_80F9B4C(*(v1 + 44), *(v1 + 3));
         *(v1 + 23) = v4;
         *(v1 + 12) = v5;
-        object_setFlag(64);
+        object_setFlag1(64);
         result = 3;
         *(v1 + 16) = 3;
     }
@@ -106665,7 +106665,7 @@ int sub_80F98C0()
         object_removePanelReserve(v4, v5);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        v6 = object_setFlag(0x80000);
+        v6 = object_setFlag1(0x80000);
         sub_801A082(v6, 16, 2, 3);
         object_setCollisionRegion(1);
         v7 = *(v0 + 44);
@@ -107224,7 +107224,7 @@ void sub_80FA0D0()
             v0->futurePanelX = v6;
             v0->futurePanelY = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0->currAnimation = 4;
             *(v1 + 26) = 1;
             *(v1 + 16) = 4;
@@ -107268,7 +107268,7 @@ int sub_80FA144()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 9;
         *(v1 + 16) = 9;
     }
@@ -107329,8 +107329,8 @@ int sub_80FA1D8()
         *(v1 + 16) = result;
         if ( ((result < 0) ^ v4) | (result == 0) )
         {
-            object_setFlag(64);
-            object_setFlag(0x400000);
+            object_setFlag1(64);
+            object_setFlag1(0x400000);
             v5 = *(v0 + 18);
             v6 = *(v0 + 19);
             *(v0 + 20) = v5;
@@ -107542,7 +107542,7 @@ int sub_80FA37C()
         *(v1 + 1) = 4;
         *(v0 + 16) = 3;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         object_clearFlag(0x400000);
         v2 = *(v0 + 20);
         v3 = *(v0 + 21);
@@ -107637,7 +107637,7 @@ void sub_80FA44C()
             v0->futurePanelX = v6;
             v0->futurePanelY = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0->currAnimation = 4;
             *(v1 + 26) = 1;
             *(v1 + 16) = 4;
@@ -107678,7 +107678,7 @@ int sub_80FA4BC()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 9;
         *(v1 + 16) = 9;
     }
@@ -107768,8 +107768,8 @@ int sub_80FA540()
         *(v4 + 46) = v3;
         *(v4 + 7) = BYTE2(v3);
         *(v0 + 64) = 299008 * object_getFrontDirection(v0);
-        object_setFlag(64);
-        object_setFlag(0x400000);
+        object_setFlag1(64);
+        object_setFlag1(0x400000);
         result = *(v1 + 12);
         *(v1 + 16) = result;
     }
@@ -107863,7 +107863,7 @@ int sub_80FA644()
         object_updateCollisionPanels(v0);
         *(v0 + 62) = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         v4 = object_clearFlag(0x400000);
         sub_801A082(v4, 1, 2, 3);
         v5 = *(v0 + 44);
@@ -107947,7 +107947,7 @@ void sub_80FA708()
             v0->futurePanelX = v6;
             v0->futurePanelY = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0->currAnimation = 4;
             *(v1 + 52) = 0;
             *(v1 + 26) = 1;
@@ -107989,7 +107989,7 @@ int sub_80FA780()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 9;
         *(v1 + 16) = 9;
     }
@@ -108116,8 +108116,8 @@ int __fastcall sub_80FA81E(int a1, int a2, int a3)
         v7->selfDamage = v6;
         v7->staminaDmg_counterDisabler = BYTE2(v6);
         v3->vx = 1179648 * object_getFrontDirection(v3);
-        object_setFlag(64);
-        object_setFlag(0x400000);
+        object_setFlag1(64);
+        object_setFlag1(0x400000);
         v10 = sub_80D4C0A(v4, 255, v8, v9);
         *(v4 + 52) = sub_80E7896(v10, v11, v12, 3072);
         v13 = v3->panelX;
@@ -108222,7 +108222,7 @@ int sub_80FA968()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         v4 = object_clearFlag(0x400000);
         sub_801A082(v4, 1, 2, 3);
         object_setCollisionRegion(1);
@@ -108788,7 +108788,7 @@ int sub_80FB134()
             v0[20] = v6;
             v0[21] = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0[16] = 4;
             result = 4;
             *(v1 + 16) = 4;
@@ -108833,7 +108833,7 @@ int sub_80FB19C()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 10;
         *(v1 + 16) = 10;
     }
@@ -108917,7 +108917,7 @@ int sub_80FB230()
             v0[20] = v6;
             v0[21] = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0[16] = 4;
             *(v1 + 56) = 0;
             *(v1 + 60) = 0;
@@ -108964,7 +108964,7 @@ int sub_80FB2A4()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 10;
         *(v1 + 16) = 10;
     }
@@ -109175,7 +109175,7 @@ int sub_80FB424()
             v0[20] = v6;
             v0[21] = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0[16] = 4;
             result = 4;
             *(v1 + 16) = 4;
@@ -109227,7 +109227,7 @@ int sub_80FB5E0()
             v0[20] = v6;
             v0[21] = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0[16] = 4;
             result = 4;
             *(v1 + 16) = 4;
@@ -109272,7 +109272,7 @@ int sub_80FB650()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 10;
         *(v1 + 16) = 10;
     }
@@ -110118,7 +110118,7 @@ void __fastcall sub_80FC094(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *v2 = 4;
@@ -110185,7 +110185,7 @@ void sub_80FC118()
         {
             v0->currAnimation = 0;
             object_clearFlag(64);
-            object_setFlag(0x80000);
+            object_setFlag1(0x80000);
             *(v1 + 16) = *(v1 + 24);
             *(v1 + 1) = 4;
         }
@@ -110225,7 +110225,7 @@ void __fastcall sub_80FC17C(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -110282,7 +110282,7 @@ int sub_80FC208()
     if ( ((result < 0) ^ v2) | (result == 0) )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v0 = 12;
     }
@@ -110436,7 +110436,7 @@ void __fastcall sub_80FC338(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -110493,7 +110493,7 @@ int sub_80FC3C4()
     if ( ((result < 0) ^ v2) | (result == 0) )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v0 = 12;
     }
@@ -110546,7 +110546,7 @@ int sub_80FC3E2()
     else
     {
         *(v1 + 1) = 4;
-        object_setFlag(1);
+        object_setFlag1(1);
         *(v1 + 16) = *(v1 + 13);
         sub_80D1BF4(*(v1 + 52), *(v1 + 13), v2, v3);
         v6 = sound_play(160, v4, v5);
@@ -110597,7 +110597,7 @@ LABEL_10:
         *(v0 + 21) = v5;
         object_reservePanel(v4, v5);
         sub_80FCFA8();
-        object_setFlag(64);
+        object_setFlag1(64);
         sub_80FCE7E();
         *(v1 + 60) = sub_80D4C0A((v0 + 9), 255, v6, v7);
     }
@@ -110765,7 +110765,7 @@ void sub_80FC5AE()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         *(v1 + 16) = 13;
     }
 }
@@ -110807,7 +110807,7 @@ void __fastcall sub_80FC628(int a1)
         v1->futurePanelX = v6;
         v1->futurePanelY = v7;
         object_reservePanel(v6, v7);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -111016,7 +111016,7 @@ void sub_80FC792()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         *(v1 + 16) = 13;
     }
 }
@@ -111054,7 +111054,7 @@ void __fastcall sub_80FC810(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -111111,7 +111111,7 @@ int sub_80FC898()
     if ( ((result < 0) ^ v2) | (result == 0) )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v0 = 12;
     }
@@ -111334,8 +111334,8 @@ int sub_80FCA4E()
             *(v0 + 20) = v6;
             *(v0 + 21) = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
-            v8 = object_setFlag(0x400000);
+            object_setFlag1(64);
+            v8 = object_setFlag1(0x400000);
             sub_801A082(v8, 83, 2, 1);
             v9 = *(v1 + 8);
             v10 = *(v0 + 84);
@@ -111583,7 +111583,7 @@ void sub_80FCC4C()
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
         object_clearFlag(0x400000);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         *(v1 + 16) = 13;
     }
 }
@@ -112150,7 +112150,7 @@ signed int __fastcall sub_80FD4E8(int a1)
         v1[20] = v7;
         v1[21] = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1[16] = 4;
         *(v2 + 16) = 3;
         result = 4;
@@ -112219,7 +112219,7 @@ void sub_80FD574()
         {
             v0->currAnimation = 0;
             object_clearFlag(64);
-            object_setFlag(0x80000);
+            object_setFlag1(0x80000);
             *(v1 + 16) = *(v1 + 24);
             *(v1 + 1) = 4;
         }
@@ -112259,7 +112259,7 @@ void __fastcall sub_80FD5D8(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -112316,7 +112316,7 @@ int sub_80FD664()
     if ( ((result < 0) ^ v2) | (result == 0) )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v0 = 12;
     }
@@ -112456,7 +112456,7 @@ void __fastcall sub_80FD748(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -112513,7 +112513,7 @@ int sub_80FD7D4()
     if ( ((result < 0) ^ v2) | (result == 0) )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v0 = 12;
     }
@@ -112688,7 +112688,7 @@ void __fastcall sub_80FD904(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -112745,7 +112745,7 @@ int sub_80FD98C()
     if ( ((result < 0) ^ v2) | (result == 0) )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v0 = 12;
     }
@@ -113249,7 +113249,7 @@ int sub_80FDEFC()
     int result; // r0
 
     if ( sub_801032C() & 0x20 )
-        object_setFlag(4);
+        object_setFlag1(4);
     v1 = *(v0 + 104) >> 4;
     result = *(v0 + 104) & 7;
     if ( result != *(v0 + 18) || v1 != *(v0 + 19) )
@@ -113432,7 +113432,7 @@ signed int sub_80FE130()
         *(v0 + 68) = v9;
         *(v1 + 16) = v10;
         sub_80FE1B4();
-        object_setFlag(64);
+        object_setFlag1(64);
         result = 8;
         *v1 = 8;
     }
@@ -113469,7 +113469,7 @@ int sub_80FE1B4()
         object_setCoordinatesFromPanels(v0);
         object_setCollisionPanelsToCurrent();
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v1 = 12;
     }
@@ -114481,7 +114481,7 @@ int sub_80FECB4()
             v0[21] = v7;
             object_reservePanel(v6, v7);
             v0[16] = 4;
-            object_setFlag(64);
+            object_setFlag1(64);
             object_clearCollisionRegion();
             result = 5;
             *(v1 + 16) = 5;
@@ -114533,7 +114533,7 @@ int sub_80FED28()
             *(v0 + 62) = 0;
             object_updateCollisionPanels(v0);
             object_clearFlag(64);
-            object_setFlag(0x80000);
+            object_setFlag1(0x80000);
             object_setCollisionRegion(1);
             result = 8;
             *v1 = 8;
@@ -114664,7 +114664,7 @@ int sub_80FEE44()
             v0[21] = v7;
             object_reservePanel(v6, v7);
             v0[16] = 4;
-            object_setFlag(64);
+            object_setFlag1(64);
             object_clearCollisionRegion();
             result = 5;
             *(v1 + 16) = 5;
@@ -114716,7 +114716,7 @@ int sub_80FEEB8()
             *(v0 + 62) = 0;
             object_updateCollisionPanels(v0);
             object_clearFlag(64);
-            object_setFlag(0x80000);
+            object_setFlag1(0x80000);
             object_setCollisionRegion(1);
             result = 8;
             *v1 = 8;
@@ -114948,7 +114948,7 @@ int sub_80FF068()
             v0[21] = v7;
             object_reservePanel(v6, v7);
             v0[16] = 4;
-            object_setFlag(64);
+            object_setFlag1(64);
             object_clearCollisionRegion();
             result = 5;
             *(v1 + 16) = 5;
@@ -115000,7 +115000,7 @@ int sub_80FF0DC()
             *(v0 + 62) = 0;
             object_updateCollisionPanels(v0);
             object_clearFlag(64);
-            object_setFlag(0x80000);
+            object_setFlag1(0x80000);
             object_setCollisionRegion(1);
             result = 8;
             *v1 = 8;
@@ -115229,7 +115229,7 @@ int sub_80FF2E4()
         v0[16] = 13;
         object_clearCollisionRegion();
         sub_801DD34();
-        object_setFlag(64);
+        object_setFlag1(64);
         result = 19;
         *(v1 + 16) = 19;
     }
@@ -115511,7 +115511,7 @@ int sub_80FF4A0()
         v0->z = 0;
         sprite_hasShadow();
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         object_clearFlag(0x400000);
         object_setCollisionRegion(1);
         sub_801DC7C(0, 0);
@@ -116013,7 +116013,7 @@ int sub_80FFBA8()
             v0[20] = v6;
             v0[21] = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0[16] = 4;
             result = 2;
             *(v1 + 16) = 2;
@@ -116058,7 +116058,7 @@ int sub_80FFC18()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 2;
         *(v1 + 16) = 2;
     }
@@ -116136,7 +116136,7 @@ void sub_80FFCA8()
             v0->futurePanelX = v6;
             v0->futurePanelY = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0->currAnimation = 4;
             *(v1 + 48) = 0;
             *(v1 + 26) = 1;
@@ -116182,7 +116182,7 @@ int sub_80FFD20()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 2;
         *(v1 + 16) = 2;
     }
@@ -117043,7 +117043,7 @@ int sub_810077C()
         v0[20] = v6;
         v0[21] = v7;
         object_reservePanel(v6, v7);
-        object_setFlag(64);
+        object_setFlag1(64);
         v0[16] = 4;
         *(v1 + 16) = 2;
     }
@@ -117095,7 +117095,7 @@ int sub_81007E4()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 2;
         *(v1 + 16) = 2;
     }
@@ -117470,7 +117470,7 @@ void sub_8100A5C()
             v0->futurePanelX = v5;
             v0->futurePanelY = v6;
             object_reservePanel(v5, v6);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0->currAnimation = 4;
             *(v1 + 26) = 1;
             *(v1 + 16) = 2;
@@ -117690,7 +117690,7 @@ void sub_8100BC6()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         object_clearFlag(0x400000);
         *(v1 + 16) = 12;
     }
@@ -117742,7 +117742,7 @@ void sub_8100C48()
             v0->futurePanelX = v6;
             v0->futurePanelY = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0->currAnimation = 4;
             *(v1 + 26) = 1;
             *(v1 + 16) = 2;
@@ -117786,7 +117786,7 @@ int sub_8100CB8()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 2;
         *(v1 + 16) = 2;
     }
@@ -119639,7 +119639,7 @@ LABEL_11:
         object_setCoordinatesFromPanels(v0);
         object_setCollisionPanelsToCurrent();
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         v1[26] = 1;
         object_setCollisionRegion(1);
         *(v1 + 8) = *(v1 + 12);
@@ -119665,7 +119665,7 @@ unsigned int sub_8102366()
         if ( v3 >= 0 && v3 < 3 )
             *(v1 + 12) >>= 1;
     }
-    object_setFlag(64);
+    object_setFlag1(64);
     *v1 = *v1 + 4;
     object_clearCollisionRegion();
     return sub_810990E();
@@ -121066,7 +121066,7 @@ void __fastcall sub_81030C0(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *v2 = 4;
@@ -121133,7 +121133,7 @@ void sub_810313C()
         {
             v0->currAnimation = 0;
             object_clearFlag(64);
-            object_setFlag(0x80000);
+            object_setFlag1(0x80000);
             *(v1 + 16) = *(v1 + 24);
             *(v1 + 1) = 4;
         }
@@ -121173,7 +121173,7 @@ void __fastcall sub_81031A0(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -121232,7 +121232,7 @@ int sub_810322C()
     {
         *(v0 + 16) = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v1 = 12;
     }
@@ -121377,7 +121377,7 @@ void __fastcall sub_8103320(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -121436,7 +121436,7 @@ int sub_81033AC()
     {
         *(v0 + 16) = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v1 = 12;
     }
@@ -121590,7 +121590,7 @@ void __fastcall sub_810349C(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -121649,7 +121649,7 @@ int sub_8103528()
     {
         *(v0 + 16) = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v1 = 12;
     }
@@ -121752,7 +121752,7 @@ void __fastcall sub_81035D8(int a1)
         v1->futurePanelX = v6;
         v1->futurePanelY = v7;
         object_reservePanel(v6, v7);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -121811,7 +121811,7 @@ int sub_8103660()
     {
         *(v0 + 16) = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v1 = 12;
     }
@@ -121912,7 +121912,7 @@ signed int sub_81036F0()
             return result;
         if ( *(result + 11) != 1 )
         {
-            object_setFlag(4096);
+            object_setFlag1(4096);
             sub_8103B20(*(**(v0 + 48) + 80));
         }
     }
@@ -121976,7 +121976,7 @@ int sub_8103774()
     else
     {
         *(v1 + 1) = 4;
-        object_setFlag(64);
+        object_setFlag1(64);
         *(v0 + 16) = 4;
         result = 3;
         *(v1 + 16) = 3;
@@ -122020,7 +122020,7 @@ int sub_810379E()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 3;
         *(v1 + 16) = 3;
     }
@@ -122807,7 +122807,7 @@ int __fastcall sub_81041B0(int a1)
     }
     else
     {
-        object_setFlag(64);
+        object_setFlag1(64);
         *(v1 + 16) = 67;
         *(v2 + 16) = 3;
         result = 4;
@@ -122967,7 +122967,7 @@ int sub_8104290()
         object_setCollisionRegion(2);
         sub_801DC7C(0, 0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         sub_80302A8(2, 30);
         v4 = sound_play(456, v2, v3);
         v5 = v1;
@@ -123007,7 +123007,7 @@ int __fastcall sub_8104340(int a1)
     }
     else
     {
-        object_setFlag(64);
+        object_setFlag1(64);
         *(v1 + 16) = 67;
         *(v2 + 16) = 3;
         result = 4;
@@ -123161,7 +123161,7 @@ int sub_8104420()
         object_setCollisionRegion(2);
         sub_801DC7C(0, 0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         sub_80302A8(2, 30);
         sound_play(456, v2, v3);
         result = 10;
@@ -123314,7 +123314,7 @@ int __fastcall sub_810455C(int a1)
     }
     else
     {
-        object_setFlag(64);
+        object_setFlag1(64);
         *(v1 + 16) = 67;
         *(v2 + 48) = 0;
         *(v2 + 16) = 3;
@@ -123469,7 +123469,7 @@ int sub_8104640()
         object_setCollisionRegion(2);
         sub_801DC7C(0, 0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         sub_80302A8(2, 30);
         sound_play(456, v2, v3);
         result = 10;
@@ -123662,8 +123662,8 @@ int sub_81047C0()
             v3 = v0[19];
             v0[20] = v0[18];
             v0[21] = v3;
-            object_setFlag(64);
-            object_setFlag(0x400000);
+            object_setFlag1(64);
+            object_setFlag1(0x400000);
             v0[16] = 67;
             result = 3;
             *(v1 + 16) = 3;
@@ -123981,7 +123981,7 @@ int sub_8104A30()
         *(v0 + 60) = 0;
         object_setCollisionRegion(2);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         v3 = object_clearFlag(0x400000);
         sub_801A082(v3, 1, 2, 3);
         v4 = *(v0 + 44);
@@ -124334,8 +124334,8 @@ int __fastcall sub_8104CC6(int a1, int a2, int a3)
         v7->selfDamage = v6;
         v7->staminaDmg_counterDisabler = BYTE2(v6);
         sub_810530C();
-        object_setFlag(64);
-        object_setFlag(0x400000);
+        object_setFlag1(64);
+        object_setFlag1(0x400000);
         result = sub_80D4C0A(v4, 255, v8, v9);
     }
     return result;
@@ -124432,7 +124432,7 @@ int sub_8104DC8()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         object_clearFlag(0x400000);
         v3 = object_setCollisionRegion(2);
         sub_801A082(v3, 1, 2, 3);
@@ -125381,7 +125381,7 @@ int sub_81059C0()
             v0[20] = v6;
             v0[21] = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0[16] = 21;
             result = 4;
             *(v1 + 16) = 4;
@@ -125426,7 +125426,7 @@ int sub_8105A2C()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 4;
         *(v1 + 16) = 4;
     }
@@ -125551,7 +125551,7 @@ int sub_8105AF6()
             v0[21] = v5;
             object_reservePanel(v4, v5);
             object_clearCollisionRegion();
-            object_setFlag(64);
+            object_setFlag1(64);
             v0[16] = 21;
             result = 4;
             *(v1 + 16) = 4;
@@ -125720,7 +125720,7 @@ int sub_8105C10()
         v0->z = 0;
         object_setCollisionRegion(1);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         *(v1 + 16) = 4;
         result = **(v1 + 48);
         if ( result )
@@ -125848,7 +125848,7 @@ int sub_8105CEC()
             v0[20] = v6;
             v0[21] = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0[16] = 21;
             result = 4;
             *(v1 + 16) = 4;
@@ -125893,7 +125893,7 @@ int sub_8105D5C()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 4;
         *(v1 + 16) = 4;
     }
@@ -126099,7 +126099,7 @@ int sub_8105EB4()
             v0[20] = v6;
             v0[21] = v7;
             object_reservePanel(v6, v7);
-            object_setFlag(64);
+            object_setFlag1(64);
             v0[16] = 21;
             result = 4;
             *(v1 + 16) = 4;
@@ -126144,7 +126144,7 @@ int sub_8105F20()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 4;
         *(v1 + 16) = 4;
     }
@@ -126330,7 +126330,7 @@ int sub_810604A()
             v0[21] = v5;
             object_reservePanel(v4, v5);
             object_clearCollisionRegion();
-            object_setFlag(64);
+            object_setFlag1(64);
             v0[16] = 21;
             result = 4;
             *(v1 + 16) = 4;
@@ -126500,7 +126500,7 @@ int sub_8106162()
         v0->z = 0;
         object_setCollisionRegion(1);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 4;
         *(v1 + 16) = 4;
     }
@@ -127644,7 +127644,7 @@ void __fastcall sub_8106E0C(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *v2 = 4;
@@ -127711,7 +127711,7 @@ void sub_8106E94()
         {
             v0->currAnimation = 0;
             object_clearFlag(64);
-            object_setFlag(0x80000);
+            object_setFlag1(0x80000);
             *(v1 + 16) = *(v1 + 24);
             *(v1 + 1) = 4;
         }
@@ -127755,7 +127755,7 @@ void __fastcall sub_8106EFC(int a1)
         v1->futurePanelX = v6;
         v1->futurePanelY = v7;
         object_reservePanel(v6, v7);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 48) = 0;
         *(v2 + 16) = 3;
@@ -127812,7 +127812,7 @@ int sub_8106F84()
     {
         *(v0 + 16) = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v1 = 12;
     }
@@ -127962,7 +127962,7 @@ void sub_8107050()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         *(v1 + 16) = 13;
         v4 = *(v1 + 48);
         if ( v4 )
@@ -128115,7 +128115,7 @@ void __fastcall sub_81071C0(int a1)
         v1->futurePanelX = v6;
         v1->futurePanelY = v7;
         object_reservePanel(v6, v7);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -128425,7 +128425,7 @@ void sub_81073A8()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         *(v1 + 16) = 13;
     }
 }
@@ -128467,7 +128467,7 @@ void __fastcall sub_8107438(int a1)
         v1->futurePanelX = v6;
         v1->futurePanelY = v7;
         object_reservePanel(v6, v7);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 52) = 0;
         *(v2 + 56) = 0;
@@ -128631,7 +128631,7 @@ signed int __noreturn sub_8107568()
 
     object_removePanelReserve(*(v1 + 22), *(v1 + 23));
     object_clearFlag(64);
-    v2 = object_setFlag(0x80000);
+    v2 = object_setFlag1(0x80000);
     object_canMove(v2);
     if ( v3
         || ((v4 = -3 * object_getFrontDirection(v0) + *(*(v1 + 44) + 18), v5 = v0->panelY, v4 != v0->futurePanelX)
@@ -128650,7 +128650,7 @@ signed int __noreturn sub_8107568()
         *(v1 + 22) = v4;
         *(v1 + 23) = v5;
         object_reservePanel(v4, v5);
-        object_setFlag(64);
+        object_setFlag1(64);
         v0->currAnimation = 4;
         *(v1 + 16) = 3;
         *(v1 + 26) = 1;
@@ -128869,7 +128869,7 @@ void sub_81076EE()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         *(v1 + 16) = 13;
         v4 = *(v1 + 52);
         if ( v4 )
@@ -128910,7 +128910,7 @@ void __fastcall sub_810777C(int a1)
         v1->futurePanelX = v4;
         v1->futurePanelY = v5;
         object_reservePanel(v4, v5);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -128967,7 +128967,7 @@ int sub_81077F8()
     if ( ((result < 0) ^ v2) | (result == 0) )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v0 = 12;
     }
@@ -129906,7 +129906,7 @@ void __fastcall sub_810823C(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *v2 = 4;
@@ -129973,7 +129973,7 @@ void sub_81082C4()
         {
             v0->currAnimation = 0;
             object_clearFlag(64);
-            object_setFlag(0x80000);
+            object_setFlag1(0x80000);
             *(v1 + 16) = *(v1 + 24);
             *(v1 + 1) = 4;
         }
@@ -130270,7 +130270,7 @@ void __fastcall sub_81084FC(int a1)
         v1->futurePanelX = v6;
         v1->futurePanelY = v7;
         object_reservePanel(v6, v7);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -130326,7 +130326,7 @@ int sub_8108580()
     {
         *(v0 + 16) = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v1 = 12;
     }
@@ -130584,7 +130584,7 @@ void sub_81086FC()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         *(v1 + 16) = 13;
     }
 }
@@ -130626,7 +130626,7 @@ void __fastcall sub_810878C(int a1)
         v1->futurePanelX = v6;
         v1->futurePanelY = v7;
         object_reservePanel(v6, v7);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 52) = 0;
         *(v2 + 56) = 0;
@@ -130684,7 +130684,7 @@ int sub_8108818()
     {
         *(v0 + 16) = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v1 = 12;
     }
@@ -130809,7 +130809,7 @@ signed int __noreturn sub_81088CA()
         *(v1 + 22) = v4;
         *(v1 + 23) = v5;
         object_reservePanel(v4, v5);
-        object_setFlag(64);
+        object_setFlag1(64);
         v0->currAnimation = 4;
         *(v1 + 16) = 3;
         *(v1 + 26) = 1;
@@ -130867,7 +130867,7 @@ int sub_8108964()
     {
         *(v0 + 16) = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 32;
         *v1 = 32;
     }
@@ -131034,7 +131034,7 @@ void sub_8108A5A()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         *(v1 + 16) = 13;
         v4 = *(v1 + 52);
         if ( v4 )
@@ -131075,7 +131075,7 @@ void __fastcall sub_8108AE8(int a1)
         v1->futurePanelX = v4;
         v1->futurePanelY = v5;
         object_reservePanel(v4, v5);
-        object_setFlag(64);
+        object_setFlag1(64);
         v1->currAnimation = 4;
         *(v2 + 16) = 3;
         *(v2 + 26) = 1;
@@ -131132,7 +131132,7 @@ int sub_8108B64()
     if ( ((result < 0) ^ v2) | (result == 0) )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         result = 12;
         *v0 = 12;
     }
@@ -131962,7 +131962,7 @@ int __fastcall sub_8109820(int a1)
         v5 = *(v2 + 23);
         *(v1 + 21) = v5;
         object_reservePanel(v4, v5);
-        object_setFlag(64);
+        object_setFlag1(64);
         *v2 = 4;
         if ( *(v2 + 3) )
             sub_81098C4();
@@ -132006,7 +132006,7 @@ int sub_810986E()
         object_setCoordinatesFromPanels(v0);
         object_setCollisionPanelsToCurrent();
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         *(v1 + 26) = 1;
         result = (loc_801171C)();
     }
@@ -132130,7 +132130,7 @@ void __fastcall sub_8109998(int a1)
         v1->futurePanelX = v4;
         v1->futurePanelY = v5;
         object_reservePanel(v4, v5);
-        object_setFlag(64);
+        object_setFlag1(64);
         if ( *(v2 + 3) & 1 )
             v1->currAnimation = *(v2 + 14);
         *(v2 + 16) = *(v2 + 48);
@@ -132198,7 +132198,7 @@ int sub_8109A50()
     if ( !result )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         *(v0 + 16) = *(v0 + 24);
         *(v0 + 26) = 1;
         result = 12;
@@ -132311,7 +132311,7 @@ void __fastcall sub_8109D08(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
+        object_setFlag1(64);
         SpawnT4BattleObjectWithId0(v1, &v1->vx, v1->x, v1->y, v1->z + 0x80000);
         *(v2 + 16) = 3;
         *v2 = 4;
@@ -132354,7 +132354,7 @@ int sub_8109D98()
     if ( !result )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         v0[8] = v0[12];
         result = 12;
         *v0 = 12;
@@ -132405,7 +132405,7 @@ int sub_8109DEC()
     if ( !*(v1 + 1) )
     {
         *(v1 + 1) = 1;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         v0->currAnimation = 1;
         v0->currAnimationCpy = -1;
         *(v1 + 16) = 64;
@@ -132486,7 +132486,7 @@ int sub_8109E98()
     if ( !result )
     {
         *(v0 + 16) = 3;
-        object_setFlag(1);
+        object_setFlag1(1);
         result = 4;
         *v1 = 4;
     }
@@ -133584,7 +133584,7 @@ int __fastcall sub_810AAE6(int a1)
         *(v2 + 16) = *&byte_810AB38[4 * *(v2 + 124)];
         v4[8] = 20;
         *(v2 + 96) = 1;
-        object_setFlag(64);
+        object_setFlag1(64);
         object_setAttack0();
     }
     result = 0;
@@ -133927,7 +133927,7 @@ int sub_810AF50()
     {
         *(v1 + 15) = 1;
         *(v1 + 48) = 0;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         result = 3 * *(v1 + 3) + 1;
         *(v0 + 16) = result;
     }
@@ -134049,7 +134049,7 @@ void __fastcall sub_810B090(int a1)
     }
     else
     {
-        object_setFlag(64);
+        object_setFlag1(64);
         *(v2 + 64) = v1->panelX | 16 * v1->panelY;
         *v2 = 4;
         sub_810B0B8();
@@ -134155,7 +134155,7 @@ void sub_810B15C()
     Battle *v0; // r5
 
     object_clearFlag(64);
-    object_setFlag(0x80000);
+    object_setFlag1(0x80000);
     object_exitAttackState(v0);
 }
 
@@ -134198,7 +134198,7 @@ void __fastcall sub_810B198(int a1)
         *(v2 + 22) = v9;
         *(v2 + 23) = v10;
         object_reservePanel(v1->panelX, v1->panelY);
-        object_setFlag(64);
+        object_setFlag1(64);
         *(v2 + 18) = 3;
         v6 = *(v2 + 23);
         v7 = object_getCoordinatesForPanels(*(v2 + 22));
@@ -134290,7 +134290,7 @@ int sub_810B270()
         object_updateCollisionPanels(v0);
         v0->currAnimation = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         v1[8] = v1[12];
         result = 16;
         *v1 = 16;
@@ -135125,7 +135125,7 @@ int __fastcall sub_810BCBC(int a1)
         sub_810BD5E();
         *(v3 + 16) = 10;
         sub_810B9EC();
-        object_setFlag(64);
+        object_setFlag1(64);
         object_setAttack0();
     }
     result = 0;
@@ -135342,8 +135342,8 @@ void __fastcall sub_810BFE0(int a1)
         v1->futurePanelX = v4;
         v1->futurePanelY = v5;
         object_reservePanel(v4, v5);
-        object_setFlag(64);
-        object_setFlag(0x400000);
+        object_setFlag1(64);
+        object_setFlag1(0x400000);
         object_setCounterTime(10);
         v6 = *(v2 + 12);
         __asm { SVC         6 }
@@ -135473,7 +135473,7 @@ int __fastcall sub_810C0E4(int a1, int a2, int a3)
     {
         v3->currAnimation = 0;
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         *(v4 + 26) = 1;
         *(v4 + 16) = *(v4 + 24);
         result = 16;

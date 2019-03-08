@@ -148,7 +148,7 @@
 // .global sub_80182B4
 // .global off_8019B78
 // .global byte_8019C34
-// .global object_setFlag // (int a1) -> void
+// .global object_setFlag1 // (int a1) -> void
 // .global object_clearFlag // (int bitfield) -> void
 // .global object_getFlag // () -> int
 // .global object_setFlag2

@@ -1007,7 +1007,7 @@
 // .global sub_801A100
 // .global object_setCollisionHitEffect
 // .global sub_801A146
-// .global object_setFlag // (int a1) -> void
+// .global object_setFlag1 // (int a1) -> void
 // .global object_clearFlag // (int bitfield) -> void
 // .global object_getFlag // () -> int
 // .global object_setFlag2

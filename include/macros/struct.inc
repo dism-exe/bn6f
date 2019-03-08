@@ -45,9 +45,11 @@
         .endif
     .endm
 
-    .macro struct_const label:req, name:req, val:req
+    .macro struct_const name:req, val:req
         .if __struct_entry ==__OFFSET_ENTRY
-            .equiv \label\()_\name, \val
+            .ifndef \name
+                .equiv \name, \val
+            .endif
         .endif
     .endm
 
@@ -88,7 +90,7 @@
         struct_data_type \label, \field, \size
     .endm
 
-    .macro b8 label=__struct_label, field:req
+    .macro bool8 label=__struct_label, field:req
         struct_data_type \label, \field, 1
     .endm
 

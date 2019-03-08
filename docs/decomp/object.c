@@ -3165,7 +3165,7 @@ int sub_800E730()
         object_clearFlag(-2147385344);
         if ( !(object_getFlag() & &loc_800) )
         {
-            object_setFlag(&loc_800);
+            object_setFlag1(&loc_800);
             if ( !*(v0 + 92) )
                 *(v0 + 92) = *(v0 + 8);
             *(v0 + 9) = 4;
@@ -3196,7 +3196,7 @@ int sub_800E730()
         object_clearFlag(-2147450880);
         if ( !(object_getFlag() & 0x10000) )
         {
-            object_setFlag(0x10000);
+            object_setFlag1(0x10000);
             if ( !*(v0 + 92) )
                 *(v0 + 92) = *(v0 + 8);
             *(v0 + 9) = 6;
@@ -3231,7 +3231,7 @@ LABEL_29:
     object_clearFlag(0x8000);
     if ( object_getFlag() >= 0 )
     {
-        object_setFlag(2147483648);
+        object_setFlag1(2147483648);
         if ( !*(v0 + 92) )
             *(v0 + 92) = *(v0 + 8);
         *(v0 + 9) = 7;
@@ -3254,7 +3254,7 @@ LABEL_41:
             *(v1 + 42) = 0;
             *(v1 + 44) = 0;
         }
-        object_setFlag(0x8000);
+        object_setFlag1(0x8000);
         object_clearFlag(-2147416064);
         if ( !*(v1 + 72) )
             sub_80E09EE(0, v15, v16, v17);
@@ -3276,7 +3276,7 @@ LABEL_45:
     else if ( v24 & 0x40 )
     {
         object_clearFlag2(64);
-        object_setFlag(0x4000);
+        object_setFlag1(0x4000);
     }
     v19 = *(v1 + 32);
     v5 = __OFSUB__(v19--, 1);
@@ -3290,7 +3290,7 @@ LABEL_45:
     else if ( v24 & 0x20 )
     {
         object_clearFlag2(32);
-        object_setFlag(&loc_2000);
+        object_setFlag1(&loc_2000);
         if ( !*(v1 + 76) )
             sub_80E09EE(0, v20, v21, v22);
     }
@@ -3298,7 +3298,7 @@ LABEL_45:
     v5 = __OFSUB__(v23--, 1);
     *(v1 + 40) = v23;
     if ( !(((v23 < 0) ^ v5) | (v23 == 0)) )
-        return object_setFlag(8);
+        return object_setFlag1(8);
     object_clearFlag(8);
     result = 0;
     *(v1 + 40) = 0;
@@ -3536,7 +3536,7 @@ int __fastcall object_setInvulnerableTime(__int16 a1)
     int v1; // r5
 
     *(*(v1 + 84) + 40) = a1;
-    return object_setFlag(8);
+    return object_setFlag1(8);
 }
 
 
@@ -3556,7 +3556,7 @@ int __fastcall sub_800EB18(__int16 a1)
     int v1; // r5
 
     *(*(v1 + 84) + 34) = a1;
-    return object_setFlag(0x4000);
+    return object_setFlag1(0x4000);
 }
 
 

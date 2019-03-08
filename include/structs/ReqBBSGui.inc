@@ -2,7 +2,7 @@
 	.macro req_bbs_gui_struct, label=oReqBBSGui, struct_entry=label_struct_entry, struct_begin=struct_begin
 		\struct_begin
 		struct_init_defs \struct_entry, \label
-        u8 \label, JumpTableOffset_00 // loc=0x0
+        u8 \label, SubsystemJumpTableOffset // loc=0x0
         struct_org 0x04
         u8 \label, Unk_04 // loc=0x4
         // This corresponds to the XX in (new = XX/YY)

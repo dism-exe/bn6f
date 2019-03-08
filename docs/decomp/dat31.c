@@ -31,8 +31,8 @@ void sub_810C46C()
         else
         {
             *(v1 + 1) = 1;
-            object_setFlag(64);
-            object_setFlag(0x400000);
+            object_setFlag1(64);
+            object_setFlag1(0x400000);
             sound_play(201, v3, v4);
             object_setCounterTime(30);
             v0->currAnimation = 1;
@@ -152,7 +152,7 @@ void __fastcall sub_810C544(int a1)
             object_reservePanel(v11, v12);
             *v2 = 4;
         }
-        object_setFlag(64);
+        object_setFlag1(64);
         if ( (object_getPanelParameters(v1->futurePanelX, v1->futurePanelY) & 0x20) != 32 * v1->Alliance )
             object_setPanelAlliance(v1->futurePanelX, v1->futurePanelY, v1->Alliance);
         v13 = *(v2 + 22) - v1->panelX;
@@ -202,7 +202,7 @@ void sub_810C604()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         object_setCollisionRegion(1);
         *(v1 + 26) = 1;
         *(v0 + 16) = 0;
@@ -443,9 +443,9 @@ void __fastcall sub_810C9F4(int a1)
     }
     else
     {
-        object_setFlag(64);
+        object_setFlag1(64);
         *(v2 + 1) = 1;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         v4 = v1->panelX;
         v1->futurePanelX = v4;
         v5 = v1->panelY;
@@ -741,7 +741,7 @@ int sub_810CCDC()
     if ( !result )
     {
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         object_removePanelReserve(v0->futurePanelX, v0->futurePanelY);
         JUMPOUT(*byte_810CD20);
     }
@@ -936,8 +936,8 @@ void __fastcall sub_810D280(int a1)
         v1->futurePanelX = v7;
         v1->futurePanelY = v8;
         object_reservePanel(v7, v8);
-        object_setFlag(64);
-        object_setFlag(0x400000);
+        object_setFlag1(64);
+        object_setFlag1(0x400000);
         v1->currAnimation = 1;
         *(v2 + 16) = 12;
         *v2 = 4;
@@ -976,7 +976,7 @@ int sub_810D2E4()
         object_setCoordinatesFromPanels(v0);
         object_updateCollisionPanels(v0);
         object_clearFlag(64);
-        object_setFlag(0x80000);
+        object_setFlag1(0x80000);
         v0->currAnimation = 3;
         v1[8] = 30;
         result = 8;
@@ -1465,7 +1465,7 @@ int sub_810D808()
     if ( !*(v2 + 1) )
     {
         *(v2 + 1) = 1;
-        object_setFlag(0x400000);
+        object_setFlag1(0x400000);
         *(v2 + 18) = 38;
         v1->currAnimation = 1;
         object_setCounterTime(30);

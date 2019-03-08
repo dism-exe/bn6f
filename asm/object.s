@@ -5142,7 +5142,7 @@ loc_800E786:
 	tst r0, r1
 	bne loc_800E7AE
 	mov r0, r1
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	ldr r0, [r5,#oBattleObject_Unk_5c]
 	tst r0, r0
 	bne loc_800E7A6
@@ -5192,7 +5192,7 @@ loc_800E7EA:
 	tst r0, r1
 	bne loc_800E820
 	mov r0, r1
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	ldr r0, [r5,#oBattleObject_Unk_5c]
 	tst r0, r0
 	bne loc_800E80A
@@ -5249,7 +5249,7 @@ loc_800E85E:
 	tst r0, r1
 	bne loc_800E894
 	mov r0, r1
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	ldr r0, [r5,#oBattleObject_Unk_5c]
 	tst r0, r0
 	bne loc_800E87E
@@ -5292,7 +5292,7 @@ loc_800E8B0:
 	strh r0, [r6,#oCollisionData_Unk_2c]
 loc_800E8C6:
 	ldr r0, dword_800E980 // =0x8000 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	ldr r0, dword_800E988 // =0x80010800 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r7, #0x48 
@@ -5319,7 +5319,7 @@ loc_800E8F6:
 	beq loc_800E908
 	bl object_clearFlag2
 	ldr r0, dword_800E98C // =0x4000 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 loc_800E908:
 	ldrh r0, [r6,#oCollisionData_Unk_20]
 	sub r0, #1
@@ -5339,7 +5339,7 @@ loc_800E920:
 	beq loc_800E942
 	bl object_clearFlag2
 	ldr r0, off_800E990 // =0x2000 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r7, #0x4c 
 	add r7, r7, r6
 	ldr r0, [r7]
@@ -5359,7 +5359,7 @@ loc_800E942:
 	b loc_800E95C
 loc_800E956:
 	mov r0, #8
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 loc_800E95C:
 	add sp, sp, #4
 	pop {r4,r6,r7,pc}
@@ -5612,7 +5612,7 @@ object_setInvulnerableTime:
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strh r0, [r1,#oCollisionData_Unk_28]
 	mov r0, #8
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	pop {pc}
 	thumb_func_end object_setInvulnerableTime
 
@@ -5633,7 +5633,7 @@ sub_800EB18:
 	ldr r1, [r5,#0x54]
 	strh r0, [r1,#0x22]
 	ldr r0, dword_800ECE0 // =0x4000 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	pop {pc}
 	thumb_func_end sub_800EB18
 

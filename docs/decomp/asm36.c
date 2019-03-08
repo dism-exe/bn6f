@@ -3351,16 +3351,14 @@ int __fastcall __noreturn sub_8132A50(int a1, int a2, __int16 a3, int a4)
 
 
 // 0x8132b88
-int HandleSaveMenu8132B88()
+int HandleSaveMenu8132B88(void *pSubmenu@R5)
 {
-    int v0; // r5
-
-    return (*(&JumpTable8132B9C + *(v0 + 1)))();
+    return (*(&SaveMenuJumpTable8132B9C + *(pSubmenu + 1)))();
 }
 
 
 // 0x8132ba8
-void __fastcall __noreturn OpenSaveMenu8132BA8(int a1, int a2, int a3, int a4)
+void __noreturn OpenSaveMenu8132BA8(int a1, int a2, int a3, int a4)
 {
     int v4; // r5
     int v5; // r10

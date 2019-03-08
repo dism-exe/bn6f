@@ -2,7 +2,7 @@
 	.macro collision_data_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
         \struct_begin \label
         struct_init_defs \struct_entry, \label
-        b8 \label, Enabled // loc=0x0
+        bool8 \label, Enabled // loc=0x0
         u8 \label, Region // loc=0x1
         u8 \label, PrimaryElement // loc=0x2
         u8 \label, Unk_03 // loc=0x3
@@ -45,19 +45,23 @@
         u32 \label, TargetCollisionTypeFlags // loc=0x34
         u32 \label, ParentObjectPtr // loc=0x38
         u32 \label, ObjectFlags1 // loc=0x3c
-            struct_const \label, ObjectFlags1_GUARD, 0x1
-            struct_const \label, ObjectFlags1_INVULNERABLE, 0x8
-            struct_const \label, ObjectFlags1_AIRSHOE, 0x10
-            struct_const \label, ObjectFlags1_FLOATSHOE, 0x20
-            struct_const \label, ObjectFlags1_CURRENTLY_MOVING, 0x40
-            struct_const \label, ObjectFlags1_PARALYZED, 0x800
-            struct_const \label, ObjectFlags1_IMMOBILIZED, 0x4000
-            struct_const \label, ObjectFlags1_FROZEN, 0x10000
-            struct_const \label, ObjectFlags1_SUPERARMOR, 0x20000
-            struct_const \label, ObjectFlags1_UNDERSHIRT, 0x40000
-            struct_const \label, ObjectFlags1_CURRENTLY_MOVING_1, 0x80000
-            struct_const \label, ObjectFlags1_AFFECTED_BY_ICE, 0x2000000
-            struct_const \label, ObjectFlags1_UNAFFECTED_BY_POISON, 0x8000000
+            struct_const OBJECT_FLAGS_GUARD,                    0x0000001
+            struct_const OBJECT_FLAGS_INVULNERABLE,             0x0000008
+            struct_const OBJECT_FLAGS_AIRSHOE,                  0x0000010
+            struct_const OBJECT_FLAGS_FLOATSHOE,                0x0000020
+            struct_const OBJECT_FLAGS_CURRENTLY_MOVING,         0x0000040
+            struct_const OBJECT_FLAGS_PARALYZED,                0x0000800
+            struct_const OBJECT_FLAGS_IMMOBILIZED,              0x0004000
+            struct_const OBJECT_FLAGS_FROZEN,                   0x0010000
+            struct_const OBJECT_FLAGS_SUPERARMOR,               0x0020000
+            struct_const OBJECT_FLAGS_UNDERSHIRT,               0x0040000
+            struct_const OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT,   19
+            struct_const OBJECT_FLAGS_UNK_BIT_20_BIT,           20
+            struct_const OBJECT_FLAGS_UNK_BIT_21_BIT,           21
+            struct_const OBJECT_FLAGS_UNK_BIT_22_BIT,           22
+
+            struct_const OBJECT_FLAGS_AFFECTED_BY_ICE,          0x2000000
+            struct_const OBJECT_FLAGS_UNAFFECTED_BY_POISON,     0x8000000
         u32 \label, ObjectFlags2 // loc=0x40
         u32 \label, CollisionIndexBit // loc=0x44
         u32 \label, Unk_48 // loc=0x48

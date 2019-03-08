@@ -2,7 +2,7 @@
 	.macro chatbox_struct, label=oChatbox, struct_entry=label_struct_entry, struct_begin=struct_begin
 		\struct_begin
 		struct_init_defs \struct_entry, \label
-        b8 \label, Visible // loc=0x0
+        bool8 \label, Visible // loc=0x0
         u8 \label, TextScriptIdx // loc=0x1
         u8 \label, CurrLine // loc=0x2
         u8 \label, Unk_03 // loc=0x3
@@ -11,10 +11,11 @@
         u8 \label, Und_06 // loc=0x6
         u8 \label, MugshotPaletteIdx // loc=0x7
         u8 \label, TextScriptPrintSpeed // loc=0x8
-        b8 \label, CharInPrint // loc=0x9
+        bool8 \label, CharInPrint // loc=0x9
         u8 \label, Unk_0A // loc=0xA
         // Set to -1 everytime a page loads for some reason
         u8 \label, Unk_0B // loc=0xB
+        u0 \label, BoxYX // loc=0xC
         u8 \label, BoxY // loc=0xC
         // 0x00 is neutral position
         u8 \label, BoxX // loc=0xD
@@ -49,18 +50,23 @@
         // ?? check this
         ptr \label, CurrTextScriptPtr // loc=0x34
         u32 \label, Unk_38 // loc=0x38
+        u0 \label, Und_3C_32 // suspect u32 access?
         u8 \label, Und_3C // loc=0x3C
         u8 \label, Unk_3D // loc=0x3D
-        /*
-        0x0002 - mugshotActive
-        0x0004 - ?
-        0x0008 - ?
-        0x000F - pallete rainbow active in loc_40?
-        0x0100 - hides Chatbox
-        */
         u16 \label, flags_3E // loc=0x3E
-            struct_const \label, flags_3E_MUGSHOT_ACTIVE, 0x0002
-            struct_const \label, flags_3E_HIDE_CHATBOX, 0x0100
+            struct_const FLAGS_3E_UNK_0001,              0x0001
+            struct_const FLAGS_3E_MUGSHOT_ACTIVE,        0x0002
+            struct_const FLAGS_3E_UNK_0004,              0x0004
+            struct_const FLAGS_3E_UNK_0008,              0x0008
+            struct_const FLAGS_3E_UNK_0010,              0x0010
+            struct_const FLAGS_3E_UNK_0020,              0x0020
+            struct_const FLAGS_3E_UNK_0040,              0x0040
+            struct_const FLAGS_3E_UNK_0080,              0x0080
+            struct_const FLAGS_3E_HIDE_CHATBOX,          0x0100
+            struct_const FLAGS_3E_UNK_0200,              0x0200
+            struct_const FLAGS_3E_UNK_0400,              0x0400
+            struct_const FLAGS_3E_UNK_0800,              0x0800
+            struct_const FLAGS_3E_UNK_1000,              0x1000
         u32 \label, MugshotColorFilter_40 // loc=0x40
         u32 \label, Unk_44 // loc=0x44
         u32 \label, Und_48 // loc=0x48

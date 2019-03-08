@@ -204,7 +204,7 @@ LABEL_15:
             v4 = cb->bNumCharacterTyped;
             if ( v4 > 0 )
                 goto LABEL_15;
-            v3 = (chatbox_jt_ctrlCmds[v2 - 0xE5])(0);
+            v3 = (TextScriptBytecodeJumptable[v2 - 0xE5])(0);
             if ( v3 != 2 )
                 chatbox_8040C9C();
         }
@@ -279,7 +279,7 @@ signed int chatbox_interpreteAndDrawDialogChar_1()
         }
         else
         {
-            (chatbox_jt_ctrlCmds[v2 - 0xE5])();
+            (TextScriptBytecodeJumptable[v2 - 0xE5])();
             chatbox_8040C9C();
         }
         cb->pScriptCursor = v1;
@@ -1134,7 +1134,7 @@ void __fastcall chatbox_8040DDC(int a1, int a2, int a3, int a4)
 // 0x8040e90
 // Description: do nothing (but make the script go on)
 // Parameters: 0
-signed int chatbox_E5_nop()
+signed int chatbox_E5_nop(int textScriptCursor@R4)
 {
     return 2;
 }

@@ -1016,12 +1016,12 @@ char (**__fastcall reqBBS_init_s_2005780(int a1))[108]
 // 0x813f404
 int reqBBS_subsystemCotnrol()
 {
-    return (*(&jt_813F42C + eReqBBSGui.jto_0))();
+    return (*(&ReqBBSSubSystemJumpTable + eReqBBSGui.jto_0))();
 }
 
 
 // 0x813f474
-void __noreturn reqBBS_813F474()
+void __noreturn OpenReqBBSMenu813F474()
 {
     int v0; // r5
     int v1; // r1
@@ -1055,7 +1055,7 @@ void __noreturn reqBBS_813F474()
 
 
 // 0x813f550
-void __noreturn reqBBS_813F550()
+void __noreturn UpdateReqBBSMenu813F550()
 {
     _WORD *v0; // r5
     int v1; // r10
@@ -1085,7 +1085,7 @@ void __noreturn reqBBS_813F550()
 
 
 // 0x813f590
-void __noreturn reqBBS_813F590()
+void __noreturn ExitReqBBSMenu813F590()
 {
     int v0; // r10
 

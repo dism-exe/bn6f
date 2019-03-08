@@ -4926,15 +4926,15 @@ byte_8132ABC: .byte 0x0, 0x10, 0x0, 0x40, 0x0, 0xB2, 0x2, 0xB2, 0x4, 0xB2, 0x6, 
 	thumb_func_start HandleSaveMenu8132B88
 HandleSaveMenu8132B88:
 	push {lr}
-	ldr r0, off_8132B98 // =JumpTable8132B9C
+	ldr r0, off_8132B98 // =SaveMenuJumpTable8132B9C
 	ldrb r1, [r5,#1]
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
 	pop {pc}
 	.balign 4, 0x00
-off_8132B98: .word JumpTable8132B9C
-JumpTable8132B9C: .word OpenSaveMenu8132BA8+1
+off_8132B98: .word SaveMenuJumpTable8132B9C
+SaveMenuJumpTable8132B9C: .word OpenSaveMenu8132BA8+1
 	.word SaveMenuUpdate8132C34+1
 	.word ExitSaveMenu8132CA0+1 // continuous calls as screen dims
 	thumb_func_end HandleSaveMenu8132B88
