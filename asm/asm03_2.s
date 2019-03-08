@@ -10067,7 +10067,7 @@ loc_804CABE:
 off_804CACC: .word off_804CAD0
 off_804CAD0: .word sub_804CB0C+1
 	.word sub_804CB64+1
-	.word sub_804CBA0+1
+	.word nullsub_804CBA0+1
 off_804CADC: .word byte_804C860
 	thumb_func_end sub_804CA90
 
@@ -10164,10 +10164,10 @@ dword_804CB9C: .word 0x2800
 	thumb_func_end sub_804CB64
 
 	thumb_local_start
-sub_804CBA0:
+nullsub_804CBA0:
 	push {r4-r7,lr}
 	pop {r4-r7,pc}
-	thumb_func_end sub_804CBA0
+	thumb_func_end nullsub_804CBA0
 
 	thumb_local_start
 sub_804CBA4:

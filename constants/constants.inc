@@ -1,4 +1,5 @@
 	.include "constants/gba_constants.inc"
+	.include "constants/GameAreas.inc"
 	.include "constants/iwram_end_locations.inc" // will be removed later
 
 	enum_start

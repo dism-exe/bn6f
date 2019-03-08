@@ -6310,7 +6310,7 @@ signed int sub_804CB64()
 
 
 // 0x804cba0
-void sub_804CBA0()
+void nullsub_804CBA0()
 {
     ;
 }

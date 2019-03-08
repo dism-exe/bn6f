@@ -1641,6 +1641,7 @@ byte_8034AFC: .byte 0x4, 0x0, 0x0, 0x0, 0x60, 0x1B, 0x0, 0x3, 0xC, 0x8, 0x1, 0xF
 	thumb_func_end sub_80343B0
 
 	thumb_func_start map_8034B4C
+	// (int mapGroup, int mapNumber) -> int
 map_8034B4C:
 	push {r4-r7,lr}
 	mov r2, r8

@@ -3,6 +3,9 @@
         \struct_begin \label
         struct_init_defs \struct_entry, \label
         u8 \label, ActorType // loc=0x0
+            struct_const ACTOR_TYPE_VIRUS, 0x00
+            struct_const ACTOR_TYPE_NAVI, 0x01
+            struct_const ACTOR_TYPE_PLAYER, 0x02
         u8 \label, AIIndex // loc=0x1
         u8 \label, Unk_02 // loc=0x2
         u8 \label, Unk_03 // loc=0x3
@@ -43,6 +46,7 @@
         u16 \label, Unk_2c // loc=0x2c
         struct_org 0x32
         u16 \label, Unk_32 // loc=0x32
+        // bool16???
         u16 \label, Anger // loc=0x34
         u16 \label, Unk_36 // loc=0x36
         u16 \label, Unk_38 // loc=0x38
