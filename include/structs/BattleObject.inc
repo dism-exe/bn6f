@@ -22,65 +22,43 @@
 	.macro battle_object_struct label:req, struct_entry=label_struct_entry, struct_begin=struct_begin, extra_vars_size=0
         battle_object_linked_list_struct \label\()_LinkedList, \struct_entry, \struct_begin
         object_header_struct \label, \struct_entry, \struct_begin
-        u0 \label, Params // loc=0x4
-        u8 \label, Param1 // loc=0x4
-        u8 \label, Param2 // loc=0x5
-        u8 \label, Param3 // loc=0x6
-        u8 \label, Param4 // loc=0x7
-        u0 \label, CurStateActionPhaseAndPhaseInitialized // loc=0x8
-        u0 \label, CurState_CurAction // loc=0x8
+        union5_s \label, u32, Params, u8, Param1, u8, Param2, u8, Param3, u8, Param4 // loc=0x4
+        u0 \label, CurStateActionPhaseAndPhaseInitialized // loc=0x8 u32
+        u0 \label, CurState_CurAction // loc=0x8 u16
         u8 \label, CurState // loc=0x8
             struct_const CUR_STATE_INITIALIZE,  0x00
             struct_const CUR_STATE_UPDATE,      0x04
             struct_const CUR_STATE_DESTROY,     0x08
         u8 \label, CurAction // loc=0x9
-        u0 \label, CurPhaseAndPhaseInitialized // loc=0xa
-        u8 \label, CurPhase // loc=0xa
-        bool8 \label, PhaseInitialized // loc=0xb
+        union3_s \label, u16, CurPhaseAndPhaseInitialized, u8, CurPhase, bool8, PhaseInitialized // loc=0xa
         u8 \label, Unk_0c // loc=0xc
         u8 \label, Unk_0d // loc=0xd
         u8 \label, Element // loc=0xe
         u8 \label, Unk_0f // loc=0xf
-        u0 \label, CurAnimAndCurAnimCopy // loc=0x10
-        u8 \label, CurAnim // loc=0x10
-        u8 \label, CurAnimCopy // loc=0x11
-        u0 \label, PanelXY // loc=0x12
-        u8 \label, PanelX // loc=0x12
-        u8 \label, PanelY // loc=0x13
-        u0 \label, FuturePanelXY // loc=0x14
-        u8 \label, FuturePanelX // loc=0x14
-        u8 \label, FuturePanelY // loc=0x15
-        u0 \label, AllianceAndDirectionFlip // loc=0x16
-        // 0 = friend, 1 = enemy
-        bool \label, Alliance // loc=0x16
-        u8 \label, DirectionFlip // loc=0x17
+        union3_s \label, u16, CurAnimAndCurAnimCopy, u8, CurAnim, u8, CurAnimCopy // loc=0x10
+        union3_s \label, u16, PanelXY, u8, PanelX, u8, PanelY // loc=0x12
+        union3_s \label, u16, FuturePanelXY, u8, FuturePanelX, u8, FuturePanelY // loc=0x14
+        // Alliance: 0 = friend, 1 = enemy
+        union3_s \label, u16, AllianceAndDirectionFlip, bool, Alliance, u8, DirectionFlip // loc=0x16
         u8 \label, PreventAnim // loc=0x18
         u8 \label, Unk_19 // loc=0x19
         u8 \label, ChipsHeld  // loc=0x1a
         u8 \label, Unk_1b // loc=0x1b
         u8 \label, Unk_1c // loc=0x1c
         u8 \label, Unk_1d // loc=0x1d
-        u0 \label, Unk_1e_Unk_1f // loc=0x1e
-        u8 \label, Unk_1e // loc=0x1e
-        u8 \label, Unk_1f // loc=0x1f
-        u0 \label, TimerAndTimer2 // loc=0x20
-        u16 \label, Timer // loc=0x20
-        u16 \label, Timer2 // loc=0x22
+        union3_s \label, u16, Unk_1e_Unk_1f, u8, Unk_1e, u8, Unk_1f // loc=0x1e
+        union3_s \label, u32, TimerAndTimer2, u16, Timer, u16, Timer2 // loc=0x20
         u16 \label, HP // loc=0x24
         u16 \label, MaxHP // loc=0x26
-        u0  \label, NameIDAndChip // loc=0x28
-        u16 \label, NameID // loc=0x28
-        u16 \label, Chip // loc=0x2a
-        // also includes flags. 0x7FF is damage
-        u0  \label, DamageAndStaminaDamageCounterDisabler // loc=0x2c
-        u16 \label, Damage // loc=0x2c
+        union3_s \label, u32, NameIDAndChip, u16, NameID, u16, Chip // loc=0x28
+        // Damage: also includes flags. 0x7FF is damage
+        // StaminaDamageCounterDisabler: ???
+        union3_s \label, u32, DamageAndStaminaDamageCounterDisabler, u16, Damage, u16, StaminaDamageCounterDisabler // loc=0x2c
             struct_const DAMAGE_DOUBLE,                 0x8000
             struct_const DAMAGE_PARALYZE,               0x4000
             struct_const DAMAGE_UNINSTALL,              0x2000
             struct_const DAMAGE_KILLERCROSS_SKULL_HIT,  0x1000
             struct_const DAMAGE_NOTHING,                0x0800
-        // ???
-        u16 \label, StaminaDamageCounterDisabler // loc=0x2e
         u16 \label, Unk_30 // loc=0x30
         u16 \label, Unk_32 // loc=0x32
         u16 \label, X // loc=0x34 size 4

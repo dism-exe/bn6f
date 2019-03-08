@@ -15,10 +15,8 @@
         u8 \label, Unk_0A // loc=0xA
         // Set to -1 everytime a page loads for some reason
         u8 \label, Unk_0B // loc=0xB
-        u0 \label, BoxYX // loc=0xC
-        u8 \label, BoxY // loc=0xC
-        // 0x00 is neutral position
-        u8 \label, BoxX // loc=0xD
+        // BoxX: 0x00 is neutral position
+        union3_s \label, u16, BoxYX, u8, BoxY, u8, BoxX // loc=0xC
         u8 \label, Unk_0E // loc=0xE
         // box gfx loaded from 0x00 to 0x08 at max
         u8 \label, BoxGfxLoadState_0F // loc=0xF

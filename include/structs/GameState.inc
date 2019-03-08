@@ -6,9 +6,7 @@
         u8 \label, PETNaviIndex // loc=0x1
         u8 \label, Unk_02 // loc=0x2
         u8 \label, Unk_03 // loc=0x3
-        u0 \label, MapId // loc=0x4
-        u8 \label, MapGroup // loc=0x4
-        u8 \label, MapNumber // loc=0x5
+        union3_s \label, u16, MapId, u8, MapGroup, u8, MapNumber // loc=0x4
         u8 \label, GameProgress // loc=0x6
         u8 \label, Unk_07 // loc=0x7
         // related to L button messages

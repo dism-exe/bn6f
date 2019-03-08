@@ -19,7 +19,7 @@
 	.space \size
 	.endif
 	.endm
-	
+
 	.macro offset_struct_entry label:req, size=0
 \label:
 	.struct \label + \size
@@ -101,28 +101,64 @@
     .endm
 
     /* unions types */
-    .macro union_u16u8 label=__struct_label, field16:req, field1:req, field2:req
-        u0 \label, \field16
-        u8 \lsbel, \field1
-        u8 \label, \field2
+    /*
+    always set to size type0
+    defines a data type
+    union<N-1> {
+        type0 field0;
+        type1 field1;
+        ...
+        typeN fieldN;
+    }
+    where all fields point to the same location, but field0 is the largest data type.
+    OR
+    union<N-1>_s {
+        type0 field0;
+        struct {
+            type1 field1;
+            ...
+            typeN fieldN;
+        }
+    }
+    where fields are at different locations, still within the field field0
+    */
+    // t: type, f:field. t0 must always be largest.
+    .macro union3 label=__struct_label, t0:req, f0:req, t1:req, f1:req, t2:req, f2:req
+        \t0 \label \f0
+        u0 \label \f1
+        u0 \label \f2
     .endm
-    .macro union_u32u16 label=__struct_label, field32:req, field1:req, field2:req
-        u0 \label, \field32
-        u16 \lsbel, \field1
-        u16 \label, \field2
+    .macro union4 label=__struct_label, t0:req, f0:req, t1:req, f1:req, t2:req, f2:req, t3:req, f3:req
+        \t0 \label \f0
+        u0 \label \f1
+        u0 \label \f2
+        u0 \label \f3
     .endm
-    .macro union_u32u16u8 label=__struct_label, field32:req, field16:req, field1:req, field2:req
-        u0 \label, \field32
-        u16 \lsbel, \field16
-        u8 \label, \field1
-        u8 \label, \field2
+    .macro union5 label=__struct_label, t0:req, f0:req, t1:req, f1:req, t2:req, f2:req, t3:req, f3:req, t4:req, f4:req
+        \t0 \label \f0
+        u0 \label \f1
+        u0 \label \f2
+        u0 \label \f3
+        u0 \label \f4
     .endm
-    .macro union_u32u8 label=__struct_label, field32:req, field1:req, field2:req, field3:req, field4:req
-        u0 \label, \field32
-        u8 \label, \field1
-        u8 \label, \field2
-        u8 \label, \field3
-        u8 \label, \field4
+
+    .macro union3_s label=__struct_label, t0:req, f0:req, t1:req, f1:req, t2:req, f2:req
+        u0 \label \f0
+        \t1 \label \f1
+        \t2 \label \f2
+    .endm
+    .macro union4_s label=__struct_label, t0:req, f0:req, t1:req, f1:req, t2:req, f2:req, t3:req, f3:req
+        u0 \label \f0
+        \t1 \label \f1
+        \t2 \label \f2
+        \t3 \label \f3
+    .endm
+    .macro union5_s label=__struct_label, t0:req, f0:req, t1:req, f1:req, t2:req, f2:req, t3:req, f3:req, t4:req, f4:req
+        u0 \label \f0
+        \t1 \label \f1
+        \t2 \label \f2
+        \t3 \label \f3
+        \t4 \label \f4
     .endm
 
     .macro ptr_debug, label=__struct_label, field:req
