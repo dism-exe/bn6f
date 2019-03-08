@@ -56248,6 +56248,7 @@ loc_80D37C6:
 	.balign 4, 0
 off_80D37E0: .word byte_80D37E4
 byte_80D37E4:
+// 0x20 = opponent panels?
 	.word 0x00010020
 	.word 0x00000000
 	.word 0x00010000
@@ -56283,9 +56284,9 @@ loc_80D3820:
 	.word 0, 0
 	.byte 0, 0, 0, 0
 off_80D3830: .word off_80D3834
-off_80D3834: .word 0x4000000
+off_80D3834: .word 0x4000000 // flag for opponent
 	.word 0x0
-	.word 0x8000000
+	.word 0x8000000 // flag for player
 	.word 0x0
 off_80D3844: .word byte_80D34C0
 dword_80D3848: .word 0xA000
