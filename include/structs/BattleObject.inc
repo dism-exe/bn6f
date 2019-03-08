@@ -52,7 +52,7 @@
         u8 \label, FuturePanelY // loc=0x15
         u0 \label, AllianceAndDirectionFlip // loc=0x16
         // 0 = friend, 1 = enemy
-        u8 \label, Alliance // loc=0x16
+        bool \label, Alliance // loc=0x16
         u8 \label, DirectionFlip // loc=0x17
         u8 \label, PreventAnim // loc=0x18
         u8 \label, Unk_19 // loc=0x19

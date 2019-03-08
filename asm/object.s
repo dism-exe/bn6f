@@ -5358,7 +5358,7 @@ loc_800E942:
 	strh r0, [r6,#oCollisionData_Unk_28]
 	b loc_800E95C
 loc_800E956:
-	mov r0, #8
+	mov r0, #OBJECT_FLAGS_INVULNERABLE
 	bl object_setFlag1 // (int a1) -> void
 loc_800E95C:
 	add sp, sp, #4
@@ -5611,7 +5611,7 @@ object_setInvulnerableTime:
 	push {lr}
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strh r0, [r1,#oCollisionData_Unk_28]
-	mov r0, #8
+	mov r0, #OBJECT_FLAGS_INVULNERABLE
 	bl object_setFlag1 // (int a1) -> void
 	pop {pc}
 	thumb_func_end object_setInvulnerableTime

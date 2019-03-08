@@ -90,8 +90,39 @@
         struct_data_type \label, \field, \size
     .endm
 
+    // for exclusively 0 or 1
+    .macro bool label=__struct_label, field:req
+        struct_data_type \label, \field, 1
+    .endm
+
+    // 0 or !0
     .macro bool8 label=__struct_label, field:req
         struct_data_type \label, \field, 1
+    .endm
+
+    /* unions types */
+    .macro union_u16u8 label=__struct_label, field16:req, field1:req, field2:req
+        u0 \label, \field16
+        u8 \lsbel, \field1
+        u8 \label, \field2
+    .endm
+    .macro union_u32u16 label=__struct_label, field32:req, field1:req, field2:req
+        u0 \label, \field32
+        u16 \lsbel, \field1
+        u16 \label, \field2
+    .endm
+    .macro union_u32u16u8 label=__struct_label, field32:req, field16:req, field1:req, field2:req
+        u0 \label, \field32
+        u16 \lsbel, \field16
+        u8 \label, \field1
+        u8 \label, \field2
+    .endm
+    .macro union_u32u8 label=__struct_label, field32:req, field1:req, field2:req, field3:req, field4:req
+        u0 \label, \field32
+        u8 \label, \field1
+        u8 \label, \field2
+        u8 \label, \field3
+        u8 \label, \field4
     .endm
 
     .macro ptr_debug, label=__struct_label, field:req
@@ -116,3 +147,5 @@
             .error "invalid __struct_entry"
         .endif
     .endm
+
+

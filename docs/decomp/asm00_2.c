@@ -8974,7 +8974,7 @@ int __fastcall sub_8014536(int a1)
 
     v2 = *(v1 + 88);
     v3 = sub_8013774(a1, 44);
-    return (*(&off_8014550 + v3))();
+    return (*(&JumpTable8014550 + v3))();
 }
 
 
@@ -9041,14 +9041,14 @@ int sub_80145C2()
 
 
 // 0x80145d4
-int sub_80145D4()
+int SetObjectAirshoeFlag()
 {
     return object_setFlag1(16);
 }
 
 
 // 0x80145de
-int sub_80145DE()
+int SetObjectSuperArmorFlag()
 {
     return object_setFlag1(0x20000);
 }

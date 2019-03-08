@@ -31150,7 +31150,7 @@ loc_80C7222:
 	bl object_presentCollisionData
 	mov r0, #0x94
 	bl sound_play // () -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
@@ -40485,7 +40485,7 @@ loc_80CBBDE:
 	ldr r3, [r5,#oBattleObject_RelatedObject1Ptr]
 	str r5, [r3,#oBattleObject_ObjectHeader]
 loc_80CBC00:
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xf
 	strh r0, [r5,#oBattleObject_Timer]
@@ -40915,7 +40915,7 @@ sub_80CBF54:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#0x12]
 	ldrb r1, [r5,#0x13]
@@ -40938,7 +40938,7 @@ sub_80CBF8C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -65809,7 +65809,7 @@ loc_80D84C4:
 	mov r3, #3
 	bl object_setupCollisionData
 	bl object_presentCollisionData
-	mov r0, #8
+	mov r0, #OBJECT_FLAGS_INVULNERABLE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
@@ -103622,7 +103622,7 @@ sub_80EADDC:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0
 	strb r0, [r6,#4]
@@ -103822,7 +103822,7 @@ loc_80EAF80:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	bl sub_802D234
 	cmp r0, #1
@@ -103971,7 +103971,7 @@ loc_80EB0CC:
 	ldrb r3, [r5,#oBattleObject_PanelY]
 	bl sub_801BE04
 	bl sub_8010312
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #4
@@ -104060,7 +104060,7 @@ sub_80EB194:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -104175,7 +104175,7 @@ sub_80EB254:
 	bl object_reservePanel
 	mov r0, #4
 	bl object_setAnimation
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	strb r0, [r7,#0x1a]
@@ -104327,7 +104327,7 @@ loc_80EB3B2:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #8
 	strh r0, [r7]
@@ -104830,7 +104830,7 @@ loc_80EB7BC:
 	bl sub_800E5FC
 	tst r0, r0
 	beq locret_80EB83A
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	strb r0, [r5,#oBattleObject_FuturePanelX]
@@ -108006,7 +108006,7 @@ sub_80ED154:
 	add r7, r7, r5
 	bl sub_80C97E0
 	pop {r7}
-	mov r0, #1
+	mov r0, #OBJECT_FLAGS_GUARD
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -108993,7 +108993,7 @@ sub_80ED8E0:
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
@@ -109748,7 +109748,7 @@ sub_80EDE98:
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #7
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -109862,7 +109862,7 @@ sub_80EDF78:
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
@@ -109982,7 +109982,7 @@ sub_80EE060:
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
@@ -110387,7 +110387,7 @@ sub_80EE370:
 	bl sub_800E5FC
 	tst r0, r0
 	beq locret_80EE3DC
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	strb r0, [r5,#oBattleObject_FuturePanelX]
@@ -110992,7 +110992,7 @@ sub_80EE7EC:
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
@@ -111046,7 +111046,7 @@ sub_80EE860:
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
@@ -111148,7 +111148,7 @@ sub_80EE92C:
 	mov r0, #1
 	lsl r0, r0, #0xc
 	bl object_clearFlag // (int bitfield) -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -111709,7 +111709,7 @@ sub_80EED74:
 	mov r0, #1
 	lsl r0, r0, #0xc
 	bl object_clearFlag // (int bitfield) -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -112041,7 +112041,7 @@ sub_80EF004:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_reservePanel
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 loc_80EF034:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
@@ -112285,7 +112285,7 @@ sub_80EF208:
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
@@ -112364,7 +112364,7 @@ sub_80EF29C:
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	bl sub_80EF30A
 	mov r0, #0x1e
@@ -112449,7 +112449,7 @@ sub_80EF348:
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	ldr r0, dword_80EF4A4 // =0x6000 
 	str r0, [r5,#oBattleObject_ZVelocity]
@@ -113301,7 +113301,7 @@ sub_80EFA74:
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x14
 	bl object_setAnimation
@@ -113610,7 +113610,7 @@ loc_80EFCF0:
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	bl object_getFrontDirection // () -> int
 	mov r1, #7
@@ -115209,7 +115209,7 @@ sub_80F09DC:
 	strb r0, [r5,#0x14]
 	strb r1, [r5,#0x15]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -115317,7 +115317,7 @@ sub_80F0AB6:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -115619,7 +115619,7 @@ sub_80F0D08:
 	strb r0, [r5,#0x14]
 	strb r1, [r5,#0x15]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x13
 	strb r0, [r5,#0x10]
@@ -116237,7 +116237,7 @@ sub_80F11BC:
 	strb r0, [r5,#0x14]
 	strb r1, [r5,#0x15]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -116847,7 +116847,7 @@ sub_80F162C:
 	strb r1, [r5,#0x15]
 	bl object_reservePanel
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strh r0, [r7,#0x10]
@@ -116966,7 +116966,7 @@ sub_80F172C:
 	strb r0, [r7,#1]
 	mov r0, #4
 	strb r0, [r5,#0x10]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #6
 	strh r0, [r7,#0x10]
@@ -117007,7 +117007,7 @@ sub_80F1756:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -117687,7 +117687,7 @@ sub_80F1C78:
 	strb r0, [r5,#0x14]
 	strb r1, [r5,#0x15]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -119525,7 +119525,7 @@ sub_80F2EF4:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -119588,7 +119588,7 @@ sub_80F2F80:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -119642,7 +119642,7 @@ sub_80F2FE4:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -119700,7 +119700,7 @@ sub_80F306C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -119867,7 +119867,7 @@ sub_80F3180:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -119983,7 +119983,7 @@ loc_80F325A:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x13
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -120071,7 +120071,7 @@ sub_80F3312:
 	beq loc_80F3366
 	strb r0, [r7,#oAIAttackVars_Unk_16]
 	strb r1, [r7,#oAIAttackVars_Unk_17]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #0xa
@@ -120105,7 +120105,7 @@ sub_80F336C:
 	bne loc_80F3388
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #3
@@ -120154,7 +120154,7 @@ sub_80F3396:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -120257,7 +120257,7 @@ sub_80F3472:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -120326,7 +120326,7 @@ sub_80F3518:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r7,#oAIAttackVars_Unk_0e]
 	cmp r0, #1
@@ -121291,7 +121291,7 @@ sub_80F3D44:
 	str r1, [r5,#oBattleObject_YVelocity]
 	strh r2, [r7,#oAIAttackVars_Unk_10]
 	bl sub_80F3DC0
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -121336,7 +121336,7 @@ sub_80F3DC0:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	bl sub_801171C
 locret_80F3E08:
@@ -121546,7 +121546,7 @@ loc_80F3F3A:
 	str r1, [r5,#oBattleObject_YVelocity]
 	strh r2, [r7,#oAIAttackVars_Unk_10]
 	bl sub_80F3FB0
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #8
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -121590,7 +121590,7 @@ sub_80F3FB0:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oBattleObject_PanelY]
 	ldrb r1, [r7,#oAIAttackVars_Unk_0c]
@@ -121801,7 +121801,7 @@ sub_80F4144:
 	str r1, [r5,#oBattleObject_YVelocity]
 	strh r2, [r7,#oAIAttackVars_Unk_10]
 	bl sub_80F41C0
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #8
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -121846,7 +121846,7 @@ sub_80F41C0:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -122035,7 +122035,7 @@ loc_80F430C:
 	str r1, [r5,#oBattleObject_YVelocity]
 	strh r2, [r7,#oAIAttackVars_Unk_10]
 	bl sub_80F4384
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #8
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -122080,7 +122080,7 @@ sub_80F4384:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oBattleObject_PanelY]
 	ldr r1, [r7,#oAIAttackVars_Unk_30]
@@ -122145,7 +122145,7 @@ sub_80F441C:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -122303,7 +122303,7 @@ sub_80F455C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -123092,7 +123092,7 @@ sub_80F4C44:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -123140,7 +123140,7 @@ sub_80F4CB4:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #3
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -123226,7 +123226,7 @@ sub_80F4D50:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -123534,7 +123534,7 @@ sub_80F4FA8:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -123595,7 +123595,7 @@ sub_80F5028:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -123644,7 +123644,7 @@ sub_80F50A0:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #3
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -123695,7 +123695,7 @@ loc_80F50F8:
 	strh r0, [r2,#oCollisionData_SelfDamage]
 	lsr r1, r1, #0x10
 	strb r1, [r2,#oCollisionData_StaminaDamageCounterDisabler]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	bl object_getFrontDirection // () -> int
 	ldr r1, off_80F5154 // =byte_80F5158
@@ -123908,7 +123908,7 @@ sub_80F52A8:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -123957,7 +123957,7 @@ sub_80F531C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #3
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -124932,7 +124932,7 @@ sub_80F5BA4:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -124992,7 +124992,7 @@ sub_80F5C2C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -125047,7 +125047,7 @@ sub_80F5C90:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -125106,7 +125106,7 @@ sub_80F5D1C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -125244,7 +125244,7 @@ sub_80F5E18:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -125300,7 +125300,7 @@ sub_80F5E9C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -125406,7 +125406,7 @@ loc_80F5F38:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -125568,7 +125568,7 @@ sub_80F6052:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #3
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -126347,7 +126347,7 @@ sub_80F6748:
 	beq loc_80F6784
 	strb r0, [r7,#oAIAttackVars_Unk_16]
 	strb r1, [r7,#oAIAttackVars_Unk_17]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -126453,7 +126453,7 @@ loc_80F681E:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -126500,7 +126500,7 @@ loc_80F6896:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -126559,7 +126559,7 @@ sub_80F6908:
 	beq loc_80F6946
 	strb r0, [r7,#oAIAttackVars_Unk_16]
 	strb r1, [r7,#oAIAttackVars_Unk_17]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -126814,7 +126814,7 @@ loc_80F6B22:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -126937,7 +126937,7 @@ sub_80F6C1C:
 	beq loc_80F6C6C
 	strb r0, [r7,#oAIAttackVars_Unk_16]
 	strb r1, [r7,#oAIAttackVars_Unk_17]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -127068,7 +127068,7 @@ loc_80F6D3A:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -127121,7 +127121,7 @@ loc_80F6DB6:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -127181,7 +127181,7 @@ sub_80F6E20:
 	beq loc_80F6E6C
 	strb r0, [r7,#oAIAttackVars_Unk_16]
 	strb r1, [r7,#oAIAttackVars_Unk_17]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -127296,7 +127296,7 @@ loc_80F6F18:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -127354,7 +127354,7 @@ loc_80F6F92:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -127908,7 +127908,7 @@ sub_80F73FA:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -128519,7 +128519,7 @@ sub_80F7A10:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -128579,7 +128579,7 @@ sub_80F7A98:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -128641,7 +128641,7 @@ loc_80F7B28:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -128705,7 +128705,7 @@ sub_80F7B9C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -128844,7 +128844,7 @@ sub_80F7C8C:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -129088,7 +129088,7 @@ sub_80F7E68:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -129194,7 +129194,7 @@ sub_80F7F1E:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -129315,7 +129315,7 @@ sub_80F8014:
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #6
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -129354,7 +129354,7 @@ sub_80F803E:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -130110,7 +130110,7 @@ sub_80F872C:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -130157,7 +130157,7 @@ sub_80F8794:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #3
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -130238,7 +130238,7 @@ sub_80F882C:
 	ldr r0, [r7,#oAIAttackVars_Unk_2c]
 	ldrb r0, [r0,#0x12]
 	strb r0, [r7,#oAIAttackVars_Unk_0c]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -130294,7 +130294,7 @@ sub_80F88BC:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -130452,7 +130452,7 @@ sub_80F89C0:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -130508,7 +130508,7 @@ sub_80F8A48:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -130675,7 +130675,7 @@ sub_80F8B74:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -130734,7 +130734,7 @@ sub_80F8C04:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -131557,7 +131557,7 @@ sub_80F92F0:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -131604,7 +131604,7 @@ sub_80F9358:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #3
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -131685,7 +131685,7 @@ sub_80F93E8:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -131734,7 +131734,7 @@ sub_80F945C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #3
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -131883,7 +131883,7 @@ sub_80F9560:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -131932,7 +131932,7 @@ sub_80F95D4:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #3
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -132096,7 +132096,7 @@ sub_80F9716:
 	strb r0, [r7,#oAIAttackVars_Unk_16]
 	strb r1, [r7,#oAIAttackVars_Unk_17]
 	strb r2, [r7,#oAIAttackVars_Unk_0c]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #3
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -132288,7 +132288,7 @@ sub_80F98C0:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r1, #0x10
 	mov r2, #2
@@ -133169,7 +133169,7 @@ sub_80FA0D0:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -133218,7 +133218,7 @@ sub_80FA144:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #9
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -133293,7 +133293,7 @@ loc_80FA1EE:
 	sub r0, #1
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	bgt locret_80FA228
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -133501,7 +133501,7 @@ sub_80FA37C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -133613,7 +133613,7 @@ sub_80FA44C:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -133660,7 +133660,7 @@ sub_80FA4BC:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #9
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -133745,7 +133745,7 @@ sub_80FA540:
 	ldr r1, dword_80FA634 // =0x49000 
 	mul r0, r1
 	str r0, [r5,#oBattleObject_XVelocity]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -133859,7 +133859,7 @@ sub_80FA644:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -133959,7 +133959,7 @@ sub_80FA708:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -134009,7 +134009,7 @@ sub_80FA780:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #9
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -134107,7 +134107,7 @@ sub_80FA81E:
 	ldr r1, dword_80FA8EC // =0x120000 
 	mul r0, r1
 	str r0, [r5,#oBattleObject_XVelocity]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -134263,7 +134263,7 @@ sub_80FA968:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -135113,7 +135113,7 @@ sub_80FB134:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -135160,7 +135160,7 @@ sub_80FB19C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -135242,7 +135242,7 @@ sub_80FB230:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -135292,7 +135292,7 @@ sub_80FB2A4:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -135502,7 +135502,7 @@ sub_80FB424:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -135550,7 +135550,7 @@ sub_80FB494:
 	mov r0, #0x40
 	bl object_clearFlag
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -135738,7 +135738,7 @@ sub_80FB5E0:
 	strb r0, [r5,#0x14]
 	strb r1, [r5,#0x15]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#0x10]
@@ -135786,7 +135786,7 @@ sub_80FB650:
 	mov r0, #0x40
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xa
 	strh r0, [r7,#0x10]
@@ -136979,7 +136979,7 @@ sub_80FC094:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -137038,7 +137038,7 @@ sub_80FC118:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -137093,7 +137093,7 @@ sub_80FC17C:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -137150,7 +137150,7 @@ sub_80FC208:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -137316,7 +137316,7 @@ sub_80FC338:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -137373,7 +137373,7 @@ sub_80FC3C4:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -137389,7 +137389,7 @@ sub_80FC3E2:
 	bne loc_80FC40E
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
-	mov r0, #1
+	mov r0, #OBJECT_FLAGS_GUARD
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r7,#oAIAttackVars_Unk_0d]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -137459,7 +137459,7 @@ loc_80FC472:
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
 	bl sub_80FCFA8
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	bl sub_80FCE7E
 	mov r0, #9
@@ -137639,7 +137639,7 @@ sub_80FC5AE:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xd
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -137695,7 +137695,7 @@ sub_80FC628:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -137894,7 +137894,7 @@ sub_80FC792:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xd
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -137946,7 +137946,7 @@ sub_80FC810:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -138002,7 +138002,7 @@ sub_80FC898:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -138249,7 +138249,7 @@ loc_80FCA7A:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -138511,7 +138511,7 @@ sub_80FCC4C:
 	lsl r0, r0, #0x16
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xd
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -139426,7 +139426,7 @@ sub_80FD4E8:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -139489,7 +139489,7 @@ sub_80FD574:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -139544,7 +139544,7 @@ sub_80FD5D8:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -139601,7 +139601,7 @@ sub_80FD664:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -139736,7 +139736,7 @@ sub_80FD748:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -139793,7 +139793,7 @@ sub_80FD7D4:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -139971,7 +139971,7 @@ sub_80FD904:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -140027,7 +140027,7 @@ sub_80FD98C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -140644,7 +140644,7 @@ sub_80FDEFC:
 	ldr r1, dword_80FDF34 // =0x20 
 	tst r0, r1
 	beq loc_80FDF0E
-	mov r0, #4
+	mov r0, #OBJECT_FLAGS_UNK_4
 	bl object_setFlag1 // (int a1) -> void
 loc_80FDF0E:
 	ldr r0, [r5,#oBattleObject_ExtraVars+8]
@@ -140921,7 +140921,7 @@ sub_80FE130:
 	str r1, [r5,#oBattleObject_YVelocity]
 	strh r2, [r7,#oAIAttackVars_Unk_10]
 	bl sub_80FE1B4
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #8
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -140967,7 +140967,7 @@ sub_80FE1B4:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -142279,7 +142279,7 @@ sub_80FECB4:
 	bl object_reservePanel
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #5
@@ -142367,7 +142367,7 @@ loc_80FED5E:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	bl object_setCollisionRegion
@@ -142475,7 +142475,7 @@ sub_80FEE44:
 	bl object_reservePanel
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #5
@@ -142561,7 +142561,7 @@ loc_80FEEEA:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	bl object_setCollisionRegion
@@ -142768,7 +142768,7 @@ sub_80FF068:
 	bl object_reservePanel
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #5
@@ -142854,7 +142854,7 @@ loc_80FF10E:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	bl object_setCollisionRegion
@@ -143079,7 +143079,7 @@ sub_80FF2E4:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	bl object_clearCollisionRegion // () -> void
 	bl sub_801DD34
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x13
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -143339,7 +143339,7 @@ sub_80FF4A0:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -144122,7 +144122,7 @@ sub_80FFBA8:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -144170,7 +144170,7 @@ sub_80FFC18:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -144251,7 +144251,7 @@ sub_80FFCA8:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -144302,7 +144302,7 @@ sub_80FFD20:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -145540,7 +145540,7 @@ sub_810077C:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -145588,7 +145588,7 @@ sub_81007E4:
 	bl object_clearFlag // (int bitfield) -> void
 loc_810080E:
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -145943,7 +145943,7 @@ sub_8100A5C:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -146143,7 +146143,7 @@ sub_8100BC6:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -146204,7 +146204,7 @@ sub_8100C48:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -146252,7 +146252,7 @@ sub_8100CB8:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -148884,7 +148884,7 @@ loc_8102326:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_1a]
@@ -148920,7 +148920,7 @@ sub_8102366:
 	lsr r0, r0, #1
 	str r0, [r7,#oAIAttackVars_Unk_30]
 loc_810238A:
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r7,#oAIAttackVars_Unk_00]
 	add r0, #4
@@ -150693,7 +150693,7 @@ sub_81030C0:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -150750,7 +150750,7 @@ sub_810313C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -150805,7 +150805,7 @@ sub_81031A0:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -150864,7 +150864,7 @@ sub_810322C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -151005,7 +151005,7 @@ sub_8103320:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -151064,7 +151064,7 @@ sub_81033AC:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -151207,7 +151207,7 @@ sub_810349C:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -151266,7 +151266,7 @@ sub_8103528:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -151371,7 +151371,7 @@ sub_81035D8:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -151429,7 +151429,7 @@ sub_8103660:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -151582,7 +151582,7 @@ sub_8103774:
 	bne loc_8103790
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -151620,7 +151620,7 @@ sub_810379E:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #3
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -152739,7 +152739,7 @@ sub_81041B0:
 	push {lr}
 	bl object_canMove
 	beq loc_81041CC
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x43 
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -152875,7 +152875,7 @@ sub_8104290:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	mov r1, #0x1e
@@ -152941,7 +152941,7 @@ sub_8104340:
 	push {lr}
 	bl object_canMove
 	beq loc_810435C
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x43 
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -153077,7 +153077,7 @@ sub_8104420:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	mov r1, #0x1e
@@ -153227,7 +153227,7 @@ sub_810455C:
 	push {lr}
 	bl object_canMove
 	beq loc_810457C
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x43 
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -153365,7 +153365,7 @@ sub_8104640:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	mov r1, #0x1e
@@ -153554,7 +153554,7 @@ sub_81047C0:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -153888,7 +153888,7 @@ sub_8104A30:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -154243,7 +154243,7 @@ sub_8104CC6:
 	lsr r1, r1, #0x10
 	strb r1, [r2,#oCollisionData_StaminaDamageCounterDisabler]
 	bl sub_810530C
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -154362,7 +154362,7 @@ sub_8104DC8:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x16
@@ -155747,7 +155747,7 @@ sub_81059C0:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x15
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -155793,7 +155793,7 @@ sub_8105A2C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -155902,7 +155902,7 @@ sub_8105AF6:
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x15
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -156061,7 +156061,7 @@ sub_8105C10:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -156178,7 +156178,7 @@ sub_8105CEC:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x15
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -156225,7 +156225,7 @@ sub_8105D5C:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -156417,7 +156417,7 @@ sub_8105EB4:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x15
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -156463,7 +156463,7 @@ sub_8105F20:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -156624,7 +156624,7 @@ sub_810604A:
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x15
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -156782,7 +156782,7 @@ sub_8106162:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -158286,7 +158286,7 @@ sub_8106E0C:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -158346,7 +158346,7 @@ sub_8106E94:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -158404,7 +158404,7 @@ sub_8106EFC:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -158463,7 +158463,7 @@ sub_8106F84:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -158592,7 +158592,7 @@ sub_8107050:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xd
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -158778,7 +158778,7 @@ sub_81071C0:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -159057,7 +159057,7 @@ sub_81073A8:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xd
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -159118,7 +159118,7 @@ sub_8107438:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -159272,7 +159272,7 @@ sub_8107568:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	bl object_canMove
 	beq loc_81075D6
@@ -159303,7 +159303,7 @@ loc_81075B6:
 	strb r0, [r7,#oAIAttackVars_Unk_16]
 	strb r1, [r7,#oAIAttackVars_Unk_17]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -159498,7 +159498,7 @@ sub_81076EE:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xd
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -159558,7 +159558,7 @@ sub_810777C:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -159614,7 +159614,7 @@ sub_81077F8:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -160832,7 +160832,7 @@ sub_810823C:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -160892,7 +160892,7 @@ sub_81082C4:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -161213,7 +161213,7 @@ sub_81084FC:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -161270,7 +161270,7 @@ sub_8108580:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -161501,7 +161501,7 @@ sub_81086FC:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xd
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -161562,7 +161562,7 @@ sub_810878C:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -161623,7 +161623,7 @@ sub_8108818:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -161747,7 +161747,7 @@ loc_810890A:
 	strb r0, [r7,#oAIAttackVars_Unk_16]
 	strb r1, [r7,#oAIAttackVars_Unk_17]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -161803,7 +161803,7 @@ sub_8108964:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x20 
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -161952,7 +161952,7 @@ sub_8108A5A:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xd
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -162012,7 +162012,7 @@ sub_8108AE8:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -162068,7 +162068,7 @@ sub_8108B64:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -163287,7 +163287,7 @@ sub_8109820:
 	ldrb r1, [r7,#oAIAttackVars_Unk_17]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -163341,7 +163341,7 @@ loc_8109890:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_1a]
@@ -163482,7 +163482,7 @@ sub_8109998:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r7,#oAIAttackVars_Unk_03]
 	mov r1, #1
@@ -163574,7 +163574,7 @@ sub_8109A50:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -163755,7 +163755,7 @@ sub_8109D08:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x34
 	add r0, r0, r5
@@ -163813,7 +163813,7 @@ sub_8109D98:
 	mov r0, #0x40
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -163965,7 +163965,7 @@ loc_8109EAC:
 	bne locret_8109EC2
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
-	mov r0, #1
+	mov r0, #OBJECT_FLAGS_GUARD
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -165327,7 +165327,7 @@ sub_810AAE6:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #1
 	str r0, [r5,#oBattleObject_ExtraVars]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xa
 	bl object_setAttack0
@@ -165975,7 +165975,7 @@ sub_810B090:
 	push {r4,r6,r7,lr}
 	bl object_canMove
 	beq loc_810B0B2
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -166087,7 +166087,7 @@ sub_810B15C:
 	mov r0, #0x40
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	bl object_exitAttackState
 	pop {pc}
@@ -166132,7 +166132,7 @@ sub_810B198:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #3
 	strh r0, [r7,#oAIAttackVars_Unk_12]
@@ -166238,7 +166238,7 @@ sub_810B270:
 	mov r0, #0x40
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -167392,7 +167392,7 @@ sub_810BCBC:
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	bl sub_810B9EC
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xa
 	bl object_setAttack0
@@ -167693,7 +167693,7 @@ loc_810BFF8:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -167851,7 +167851,7 @@ loc_810C120:
 	mov r0, #0x40
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_1a]

@@ -54,7 +54,7 @@ sub_810C46C:
 	beq loc_810C49E
 	mov r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_01]
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -209,7 +209,7 @@ loc_810C59C:
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 loc_810C5AC:
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
@@ -297,7 +297,7 @@ loc_810C63E:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	bl object_setCollisionRegion
@@ -636,7 +636,7 @@ sub_810C9F4:
 	bl object_exitAttackState
 	b locret_810CA4A
 loc_810CA02:
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_01]
@@ -1016,7 +1016,7 @@ loc_810CCAC:
 	mov r0, #0x40
 	bl object_clearFlag
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1
 	bl object_exitAttackState
 locret_810CCDA:
@@ -1050,7 +1050,7 @@ loc_810CCFA:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
@@ -1516,7 +1516,7 @@ sub_810D280:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #0x40
+	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -1578,7 +1578,7 @@ loc_810D302:
 	mov r0, #0x40 
 	bl object_clearFlag // (int bitfield) -> void
 	mov r0, #1
-	lsl r0, r0, #0x13
+	lsl r0, r0, #OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]

@@ -2682,7 +2682,7 @@ loc_801017E:
 	ldr r1, dword_801022C // =0x400000 
 	tst r0, r1
 	bne loc_8010190
-	mov r0, #4
+	mov r0, #OBJECT_FLAGS_UNK_4
 	bl object_setFlag1 // (int a1) -> void
 	b locret_8010196
 loc_8010190:
@@ -2713,7 +2713,7 @@ sub_80101AE:
 	push {lr}
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strh r0, [r1,#oCollisionData_Unk_26]
-	mov r0, #4
+	mov r0, #OBJECT_FLAGS_UNK_4
 	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -3110,7 +3110,7 @@ sub_8010474:
 	push {lr}
 	ldr r2, [r5,#oBattleObject_CollisionDataPtr]
 	strh r4, [r2,#oCollisionData_Unk_24]
-	mov r0, #2
+	mov r0, #OBJECT_FLAGS_UNK_2
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x93
 	bl sound_play // () -> void
@@ -11843,13 +11843,13 @@ sub_8014536:
 	mov r1, #0x2c 
 	bl sub_8013774
 	lsl r0, r0, #2
-	ldr r1, off_801454C // =off_8014550 
+	ldr r1, off_801454C // =JumpTable8014550
 	ldr r0, [r1,r0]
 	mov lr, pc
 	bx r0
 	pop {r6,pc}
-off_801454C: .word off_8014550
-off_8014550: .word nullsub_51+1
+off_801454C: .word JumpTable8014550
+JumpTable8014550: .word nullsub_51+1
 	.word nullsub_50+1
 	.word nullsub_52+1
 	.word nullsub_53+1
@@ -11857,8 +11857,8 @@ off_8014550: .word nullsub_51+1
 	.word nullsub_55+1
 	.word nullsub_56+1
 	.word sub_80145C2+1
-	.word sub_80145D4+1
-	.word sub_80145DE+1
+	.word SetObjectAirshoeFlag+1
+	.word SetObjectSuperArmorFlag+1
 	.word nullsub_4+1
 	.word sub_80145EC+1
 	.word sub_8014606+1
@@ -11925,21 +11925,22 @@ locret_80145D2:
 	thumb_func_end sub_80145C2
 
 	thumb_local_start
-sub_80145D4:
+SetObjectAirshoeFlag:
 	push {lr}
-	mov r0, #0x10
+	mov r0, #OBJECT_FLAGS_AIRSHOE
 	bl object_setFlag1 // (int a1) -> void
 	pop {pc}
-	thumb_func_end sub_80145D4
+	thumb_func_end SetObjectAirshoeFlag
 
 	thumb_local_start
-sub_80145DE:
+// (BattleObject *obj@R5) -> void
+SetObjectSuperArmorFlag:
 	push {lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
 	bl object_setFlag1 // (int a1) -> void
 	pop {pc}
-	thumb_func_end sub_80145DE
+	thumb_func_end SetObjectSuperArmorFlag
 
 	thumb_local_start
 nullsub_4:
@@ -11950,7 +11951,7 @@ nullsub_4:
 sub_80145EC:
 	push {r7,lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r7, #0x40 
 	add r7, r7, r6
@@ -11999,7 +12000,7 @@ loc_801463A:
 sub_8014640:
 	push {lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
 	bl object_setFlag1 // (int a1) -> void
 	bl sub_8014606
 	pop {pc}
@@ -12009,7 +12010,7 @@ sub_8014640:
 sub_8014650:
 	push {r7,lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r7, #0x40 
 	add r7, r7, r6
@@ -12136,7 +12137,7 @@ locret_801473A:
 	thumb_local_start
 sub_801473C:
 	push {lr}
-	mov r0, #0x10
+	mov r0, #OBJECT_FLAGS_AIRSHOE
 	bl object_setFlag1 // (int a1) -> void
 	pop {pc}
 	thumb_func_end sub_801473C
@@ -12145,7 +12146,7 @@ sub_801473C:
 sub_8014746:
 	push {lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
 	bl object_setFlag1 // (int a1) -> void
 	pop {pc}
 	thumb_func_end sub_8014746
@@ -12159,7 +12160,7 @@ nullsub_5:
 sub_8014754:
 	push {r7,lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
 	bl object_setFlag1 // (int a1) -> void
 	pop {r7,pc}
 	thumb_func_end sub_8014754
@@ -12194,7 +12195,7 @@ loc_8014786:
 sub_801478C:
 	push {lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
 	bl object_setFlag1 // (int a1) -> void
 	bl sub_8014760
 	pop {pc}
@@ -12204,7 +12205,7 @@ sub_801478C:
 sub_801479C:
 	push {r7,lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
 	bl object_setFlag1 // (int a1) -> void
 	ldr r0, dword_80147D8 // =0xffff 
 	bl object_setInvulnerableTime
@@ -16963,14 +16964,14 @@ loc_801701A:
 	mov r3, #2
 	tst r4, r3
 	beq loc_8017026
-	mov r0, #0x10
+	mov r0, #OBJECT_FLAGS_AIRSHOE
 	bl object_setFlag1 // (int a1) -> void
 loc_8017026:
 	mov r3, #1
 	tst r4, r3
 	beq loc_8017034
 	mov r0, #1
-	lsl r0, r0, #0x11
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
 	bl object_setFlag1 // (int a1) -> void
 loc_8017034:
 	bl sub_801DB84
@@ -22071,7 +22072,7 @@ loc_801AF84:
 	mov r0, r1
 	bl object_clearFlag2
 	mov r0, #1
-	lsl r0, r0, #8
+	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	bl object_setAttack0
@@ -22389,7 +22390,7 @@ loc_801B266:
 	mov r0, r1
 	bl object_clearFlag2
 	mov r0, #1
-	lsl r0, r0, #8
+	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -22557,7 +22558,7 @@ loc_801B3E0:
 	mov r0, r1
 	bl object_clearFlag2
 	mov r0, #1
-	lsl r0, r0, #8
+	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -22708,7 +22709,7 @@ loc_801B51C:
 	mov r0, r1
 	bl object_clearFlag2
 	mov r0, #1
-	lsl r0, r0, #8
+	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -22861,7 +22862,7 @@ loc_801B65C:
 	mov r0, r1
 	bl object_clearFlag2
 	mov r0, #1
-	lsl r0, r0, #8
+	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -23014,7 +23015,7 @@ loc_801B79C:
 	mov r0, r1
 	bl object_clearFlag2
 	mov r0, #1
-	lsl r0, r0, #8
+	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -23162,7 +23163,7 @@ loc_801B8CA:
 	mov r0, r1
 	bl object_clearFlag2
 	mov r0, #1
-	lsl r0, r0, #8
+	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]

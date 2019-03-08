@@ -46,14 +46,16 @@
         u32 \label, ParentObjectPtr // loc=0x38
         u32 \label, ObjectFlags1 // loc=0x3c
             struct_const OBJECT_FLAGS_GUARD,                    0x0000001
+            struct_const OBJECT_FLAGS_UNK_2                     0x0000002
+            struct_const OBJECT_FLAGS_UNK_4,                    0x0000004
             struct_const OBJECT_FLAGS_INVULNERABLE,             0x0000008
             struct_const OBJECT_FLAGS_AIRSHOE,                  0x0000010
             struct_const OBJECT_FLAGS_FLOATSHOE,                0x0000020
             struct_const OBJECT_FLAGS_CURRENTLY_MOVING,         0x0000040
             struct_const OBJECT_FLAGS_PARALYZED,                0x0000800
-            struct_const OBJECT_FLAGS_IMMOBILIZED,              0x0004000
-            struct_const OBJECT_FLAGS_FROZEN,                   0x0010000
-            struct_const OBJECT_FLAGS_SUPERARMOR,               0x0020000
+            struct_const OBJECT_FLAGS_IMMOBILIZED_BIT,          14
+            struct_const OBJECT_FLAGS_FROZEN_BIT,               16
+            struct_const OBJECT_FLAGS_SUPERARMOR_BIT,           17
             struct_const OBJECT_FLAGS_UNDERSHIRT,               0x0040000
             struct_const OBJECT_FLAGS_CURRENTLY_MOVING_1_BIT,   19
             struct_const OBJECT_FLAGS_UNK_BIT_20_BIT,           20
