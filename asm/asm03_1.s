@@ -19738,7 +19738,7 @@ loc_803EF12:
 	mov r1, r0
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0]
+	ldrh r0, [r0,#oJoypad_Held]
 	lsr r0, r0, #8
 	strb r0, [r4]
 	ldrb r0, [r1,#7]

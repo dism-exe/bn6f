@@ -118321,8 +118321,8 @@ loc_80F2168:
 	bl sub_80DFE1C
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0]
-	mov r1, #1
+	ldrh r0, [r0,#oJoypad_Held]
+	mov r1, #JOYPAD_A
 	and r0, r1
 	bne locret_80F217E
 	mov r0, #0x10

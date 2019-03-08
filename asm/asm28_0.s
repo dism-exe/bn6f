@@ -5656,8 +5656,8 @@ sub_809DB60:
 	bne loc_809DB82
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0]
-	mov r1, #0xf0
+	ldrh r0, [r0, #oJoypad_Held]
+	mov r1, #JOYPAD_ARROWS
 	tst r0, r1
 	beq loc_809DB92
 loc_809DB82:
@@ -5665,7 +5665,7 @@ loc_809DB82:
 	lsl r0, r0, #2
 	ldr r7, off_809DBC0 // =off_809DCEC 
 	ldr r0, [r7,r0]
-	mov r1, #0x50 
+	mov r1, #0x50
 	add r1, r1, r5
 	bl sub_809DBC4
 loc_809DB92:
@@ -5918,8 +5918,8 @@ sub_809DE98:
 loc_809DEBE:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0]
-	mov r1, #2
+	ldrh r0, [r0,#oJoypad_Held]
+	mov r1, #JOYPAD_B
 	tst r0, r1
 	bne locret_809DED2
 	mov r0, #0x17
