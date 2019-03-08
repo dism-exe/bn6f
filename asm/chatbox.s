@@ -6707,7 +6707,7 @@ loc_80431CA:
 	ldrb r3, [r5,r0]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #0x80
 	tst r0, r1
 	bne loc_80431EA
@@ -6929,7 +6929,7 @@ loc_8043372:
 	ldrb r3, [r5,r2]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #0x80
 	tst r0, r1
 	bne loc_80433A0
@@ -7167,7 +7167,7 @@ loc_804354A:
 	ldrb r3, [r5,r2]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #0x80
 	tst r0, r1
 	bne loc_8043578
@@ -7437,7 +7437,7 @@ loc_804373E:
 	mov r2, r1
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #0x80
 	tst r0, r1
 	bne loc_8043786
@@ -7686,7 +7686,7 @@ loc_804393C:
 	ldrb r3, [r5,r0]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #0x80
 	tst r0, r1
 	bne loc_8043970

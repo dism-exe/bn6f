@@ -30597,7 +30597,7 @@ loc_811EE52:
 loc_811EE70:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #8
 	mov r2, #1
 	ldrb r3, [r5,#4]

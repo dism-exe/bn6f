@@ -395,7 +395,7 @@ sub_8130370:
 	beq loc_81303A2
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	ldrb r1, [r5,#0xc]
 	sub r1, #1
 	ldr r2, off_81303FC // =dword_8130400
@@ -410,7 +410,7 @@ loc_81303A2:
 	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	ldrb r1, [r1,#5]
 	add r1, #1
 	mov r2, #0
@@ -2209,7 +2209,7 @@ loc_8131258:
 loc_813126C:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #3
 	mov r2, #1
 	ldrb r3, [r5,#0xc]
@@ -3678,7 +3678,7 @@ loc_81320CE:
 loc_81320DE:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	mov r1, r4
 	mov r2, #1
 	ldrb r3, [r5,#0xd]
@@ -5975,7 +5975,7 @@ sub_8133564:
 	bne locret_81335B6
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #7
 	mov r2, #0
 	mov r3, #0
@@ -6162,7 +6162,7 @@ sub_81336C4:
 	bne locret_8133738
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #7
 	mov r2, #0
 	mov r3, #0
@@ -6343,7 +6343,7 @@ loc_8133830:
 	bne loc_8133864
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #7
 	mov r2, #0
 	mov r3, #0
@@ -6389,7 +6389,7 @@ sub_813388C:
 	beq loc_81338BA
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #7
 	mov r2, #0
 	mov r3, #0xa
@@ -6469,7 +6469,7 @@ sub_8133944:
 	bne loc_8133964
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #7
 	mov r2, #1
 	ldrh r3, [r5,#0x34]
@@ -10317,7 +10317,7 @@ loc_8135888:
 loc_8135896:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	mov r1, #0x20 
 	tst r0, r1
 	beq loc_81358C2
@@ -10335,7 +10335,7 @@ loc_8135896:
 loc_81358C2:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #4
 	mov r2, #0
 	mov r3, #0
@@ -12589,7 +12589,7 @@ sub_8136AE8:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #3
 	tst r0, r1
 	beq loc_8136AFE
@@ -14538,7 +14538,7 @@ loc_81379D0:
 loc_81379F0:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	ldrb r1, [r5,#0x1e]
 	cmp r1, #7
 	blt loc_81379FE
@@ -16083,7 +16083,7 @@ sub_8138700:
 	beq locret_813872E
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	tst r0, r0
 	beq locret_813872E
 	mov r0, #0xc

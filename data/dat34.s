@@ -614,7 +614,7 @@ sub_812DFAC:
 	strb r0, [r5,#0x10]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	mov r1, #7
 	mov r2, #1
 	ldrb r3, [r5,#0x14]
@@ -733,7 +733,7 @@ sub_812E08C:
 loc_812E0AC:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	mov r1, #2
 	mov r2, #1
 	ldrb r3, [r5,#0x15]

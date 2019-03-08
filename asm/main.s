@@ -117,7 +117,7 @@ off_80003E0: .word GeneralLCDStatus_STAT_LYC_
 main_static_80003E4:
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_JoypadPtr]
-	ldrb r7, [r0,#0x13]
+	ldrb r7, [r0,#oJoypad_LowSensitivityTimer]
 	add r7, #1
 	cmp r7, #4
 	ble loc_80003F2
@@ -190,8 +190,8 @@ main_static_8000454:
 	cmp r0, #0x10
 	beq locret_80004A2
 	ldr r0, [r7,#oToolkit_JoypadPtr]
-	ldrh r2, [r0,#2]
-	ldrh r0, [r0]
+	ldrh r2, [r0,#oJoypad_Pressed]
+	ldrh r0, [r0,#oJoypad_Held]
 	ldr r1, [r7,#oToolkit_MainJumptableIndexPtr]
 	add r1, #4
 	ldrb r4, [r1]

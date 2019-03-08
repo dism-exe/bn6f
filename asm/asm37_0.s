@@ -1606,7 +1606,7 @@ sub_813C334:
 	mov r7, r0
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	tst r0, r0
 	beq loc_813C394
 	lsr r3, r7, #2

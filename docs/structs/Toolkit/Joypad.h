@@ -6,7 +6,7 @@
 typedef struct {
 	/*
 	Default: 0xFC00
-	The flags in IQR hold for this as well, the state would be 0xFC00|Flags where Flags
+	The flags in IRQ hold for this as well, the state would be 0xFC00|Flags where Flags
 	are the flags of the held keys.
 	*/
 	u16 keyState;			// loc=0x0
@@ -23,7 +23,7 @@ typedef struct {
 	0x0100	R
 	0x0200	L
 	*/
-	u16 IQR;				 // loc=0x2
+	u16 IRQ;				 // loc=0x2
 	/*
 	This only updates when the keystate changes, but then immediately returns
 	to its default state 0xFC00

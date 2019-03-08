@@ -1226,7 +1226,7 @@ reqBBS_static_813EC10:
 	mov r8, r0
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_JoypadPtr]
-	ldrh r0, [r7,#2]
+	ldrh r0, [r7,#oJoypad_Pressed]
 	mov r1, #2
 	tst r1, r0
 	beq loc_813EC26
@@ -3546,7 +3546,7 @@ reqBBS_8140358:
 	mov r8, r0
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_JoypadPtr]
-	ldrh r0, [r7,#2]
+	ldrh r0, [r7,#oJoypad_Pressed]
 	mov r1, #2
 	tst r1, r0
 	beq loc_814036E

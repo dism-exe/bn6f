@@ -1047,7 +1047,7 @@ sub_8026D06:
 loc_8026D46:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	cmp r0, #0
 	bne loc_8026D5C
 	push {r3}
@@ -8671,7 +8671,7 @@ sub_802A9D0:
 	bl sub_802B0EC
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #1
 	tst r0, r1
 	beq loc_802AA0E
@@ -8692,7 +8692,7 @@ loc_802A9FE:
 loc_802AA0E:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #2
 	tst r0, r1
 	beq loc_802AA54
@@ -8733,7 +8733,7 @@ loc_802AA54:
 loc_802AA62:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #0x20 
 	tst r0, r1
 	bne loc_802AA70
@@ -8747,7 +8747,7 @@ loc_802AA70:
 loc_802AA7C:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	ldr r1, off_802ABC8 // =0x200 
 	tst r0, r1
 	beq loc_802AA9A
@@ -8761,7 +8761,7 @@ loc_802AA7C:
 loc_802AA9A:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	ldr r1, off_802ABC4 // =0x100 
 	tst r0, r1
 	beq loc_802AAC8
@@ -8783,7 +8783,7 @@ loc_802AA9A:
 loc_802AAC8:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #0x10
 	tst r0, r1
 	beq loc_802AAE0
@@ -8795,7 +8795,7 @@ loc_802AAC8:
 loc_802AAE0:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #5
 	mov r2, #0
 	mov r3, #0
@@ -8825,7 +8825,7 @@ loc_802AB0E:
 loc_802AB20:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #1
 	tst r0, r1
 	beq loc_802AB94
@@ -10020,7 +10020,7 @@ sub_802B560:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #2
 	tst r0, r1
 	beq locret_802B5A2
@@ -18191,7 +18191,7 @@ sub_802F81C:
 	push {lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_JoypadPtr]
-	ldrh r0, [r7,#2]
+	ldrh r0, [r7,#oJoypad_Pressed]
 	mov r1, #9
 	tst r1, r0
 	beq loc_802F848

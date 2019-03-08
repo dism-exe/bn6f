@@ -5470,7 +5470,7 @@ sub_8036F84:
 	beq locret_8036F96
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	mov r1, #4
 	tst r0, r1
 locret_8036F96:
@@ -8239,7 +8239,7 @@ sub_80384A8:
 	beq loc_80384CA
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	mov r1, #1
 	tst r0, r1
 	beq loc_80384CA
@@ -8504,7 +8504,7 @@ sub_803868C:
 loc_8038698:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	mov r1, #0xb
 	tst r1, r0
 	beq locret_80386B0
@@ -9158,7 +9158,7 @@ sub_8038EDC:
 loc_8038EE6:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	ldr r1, dword_8038F08 // =0x3ff
 	tst r0, r1
 	beq loc_8038EFE
@@ -9922,7 +9922,7 @@ sub_8039888:
 	push {r4-r7,lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	mov r1, #4
 	tst r0, r1
 	bne loc_803989C
@@ -10319,7 +10319,7 @@ sub_8039BC0:
 	beq loc_8039C0E
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	mov r1, #2
 	tst r0, r1
 	beq loc_8039BE6
@@ -14751,7 +14751,7 @@ sub_803C330:
 	bne loc_803C34A
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	mov r1, #2
 	tst r0, r1
 	beq loc_803C34A
@@ -15886,7 +15886,7 @@ sub_803CB44:
 	beq loc_803CB6C
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_JoypadPtr]
-	ldrh r0, [r7,#2]
+	ldrh r0, [r7,#oJoypad_Pressed]
 	mov r1, #0x30
 	lsl r1, r1, #4
 	tst r0, r1

@@ -299,7 +299,7 @@ sub_812ECAC:
 	mov r5, r7
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #6
 	mov r2, #0
 	mov r3, #0
