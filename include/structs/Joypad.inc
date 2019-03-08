@@ -11,7 +11,6 @@
         struct_const JOYPAD_LEFT, 0x0020
         struct_const JOYPAD_UP, 0x0040
         struct_const JOYPAD_DOWN, 0x0080
-        struct_const JOYPAD_ARROWS, JOYPAD_RIGHT | JOYPAD_LEFT | JOYPAD_UP | JOYPAD_DOWN
         struct_const JOYPAD_R, 0x0100
         struct_const JOYPAD_L, 0x0200
     .endm

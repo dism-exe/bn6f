@@ -3885,7 +3885,7 @@ sub_8125594:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_JoypadPtr]
 	ldrh r0, [r7,#oJoypad_Pressed]
-	mov r1, #JOYPAD_ARROWS
+	mov r1, #JOYPAD_START | JOYPAD_B
 	tst r1, r0
 	beq loc_81255AC
 	mov r0, #0x34 
@@ -3938,7 +3938,7 @@ sub_81255F8:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_JoypadPtr]
 	ldrh r0, [r7,#oJoypad_Pressed]
-	mov r1, #JOYPAD_ARROWS
+	mov r1, #JOYPAD_START | JOYPAD_B
 	tst r1, r0
 	beq loc_8125610
 	mov r0, #0x38 
@@ -4006,7 +4006,7 @@ sub_8125678:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_JoypadPtr]
 	ldrh r0, [r7,#oJoypad_Pressed]
-	mov r1, #JOYPAD_ARROWS
+	mov r1, #JOYPAD_START | JOYPAD_B
 	tst r1, r0
 	beq loc_8125690
 	mov r0, #0x3c 
@@ -4082,7 +4082,7 @@ sub_8125704:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_JoypadPtr]
 	ldrh r0, [r7,#oJoypad_Pressed]
-	mov r1, #JOYPAD_ARROWS
+	mov r1, #JOYPAD_START | JOYPAD_B
 	tst r1, r0
 	beq loc_812571C
 	mov r0, #0x40 
@@ -4150,7 +4150,7 @@ sub_8125784:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_JoypadPtr]
 	ldrh r0, [r7,#oJoypad_Pressed]
-	mov r1, #JOYPAD_ARROWS
+	mov r1, #JOYPAD_START | JOYPAD_B
 	tst r1, r0
 	beq loc_812579C
 	mov r0, #0x44 
