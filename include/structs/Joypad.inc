@@ -3,6 +3,16 @@
         \struct_begin
         struct_init_defs \struct_entry, \label
         u16 \label, Held // loc=0x0
+            struct_const JOYPAD_A, 0x0001
+            struct_const JOYPAD_B, 0x0002
+            struct_const JOYPAD_SELECT, 0x0004
+            struct_const JOYPAD_START, 0x0008
+            struct_const JOYPAD_RIGHT, 0x0010
+            struct_const JOYPAD_LEFT, 0x0020
+            struct_const JOYPAD_UP, 0x0040
+            struct_const JOYPAD_DOWN, 0x0080
+            struct_const JOYPAD_R, 0x0100
+            struct_const JOYPAD_L, 0x0200
         u16 \label, Pressed // loc=0x2
         u16 \label, LowSensitivityHeld // loc=0x4
         u16 \label, Held2 // loc=0x6
