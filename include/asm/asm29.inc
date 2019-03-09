@@ -57,7 +57,7 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play
+// .global PlaySoundEffect
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global getPETNaviSelect // () -> u8

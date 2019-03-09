@@ -64,7 +64,7 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play
+// .global PlaySoundEffect
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void

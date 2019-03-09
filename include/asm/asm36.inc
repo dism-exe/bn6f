@@ -80,8 +80,8 @@
 // .global byte_30069A0
 
 	.include "asm/asm00_0.inc"
-// .global sound_play
-// .global sound_bgmusic_play // (int a1) -> void
+// .global PlaySoundEffect
+// .global PlaySong // (int a1) -> void
 // .global sub_800068A
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global ZeroFillByHalfword

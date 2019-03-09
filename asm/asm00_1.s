@@ -4015,7 +4015,7 @@ sub_800536E:
 	bne loc_80053BC
 	mov r0, #0x72
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 	b locret_80053DA
 loc_80053BC:
 	cmp r0, #0x9e
@@ -4026,7 +4026,7 @@ loc_80053BC:
 	ldr r1, off_80053DC // =hword_80053E0
 	lsl r0, r0, #1
 	ldrh r0, [r1,r0]
-	bl sound_play
+	bl PlaySoundEffect
 	b locret_80053DA
 loc_80053D2:
 	bl chatbox_8040818
@@ -4806,8 +4806,8 @@ sub_8005AF4:
 	mov r1, #7
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne locret_8005B68
-	mov r0, #0x79
-	bl sound_play
+	mov r0, #SOUND_SELECT_79
+	bl PlaySoundEffect
 	bl updatePlayerGameState_800107A // () -> void
 	bl sub_811EC10
 	bl sub_8003962
@@ -4892,8 +4892,8 @@ loc_8005BF0:
 	mov r0, #8
 	strb r0, [r5,#oGameState_SubsystemIndex]
 	bl musicGameState_8000784 // () -> void
-	mov r0, #0x78
-	bl sound_play
+	mov r0, #SOUND_BATTLE_START
+	bl PlaySoundEffect
 	pop {r4-r7,pc}
 dword_8005C00: .word 0x4000
 	thumb_func_end gameState_8005BC8
@@ -9266,7 +9266,7 @@ loc_80081DE:
 	cmp r0, #8
 	bne loc_80081F4
 loc_80081EE:
-	mov r2, #0x19
+	mov r2, #SONG_WINNER_0
 	mov r4, #0x5e
 	b loc_8008206
 loc_80081F4:
@@ -9276,11 +9276,11 @@ loc_80081F4:
 	mov r1, #2
 	tst r0, r1
 	bne loc_8008206
-	mov r2, #0x1f
+	mov r2, #SONG_WINNER_1
 	mov r4, #0x66
 loc_8008206:
 	mov r0, r2
-	bl sound_bgmusic_play // (int a1) -> void
+	bl PlaySong
 	strh r4, [r5,#8]
 	mov r6, #4
 	bl sub_802D246 // () -> int
@@ -9340,8 +9340,8 @@ sub_800825A:
 	mov r1, #8
 	tst r0, r1
 	beq loc_800828A
-	mov r0, #0x1a
-	bl sound_bgmusic_play // (int a1) -> void
+	mov r0, #SONG_LOSER
+	bl PlaySong
 loc_800828A:
 	bl sub_802D246 // () -> int
 	mov r1, #2
@@ -9536,7 +9536,7 @@ sub_80083E4:
 	tst r0, r0
 	beq locret_8008400
 	mov r0, #0x9f
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #8
 	str r0, [r5]
 	ldr r0, off_8008408 // =0x200
@@ -9886,20 +9886,20 @@ sub_8008688:
 	mov r0, #4
 	strb r0, [r5,#3]
 	bl sub_802D246 // () -> int
-	mov r2, #0x19
+	mov r2, #SONG_WINNER_0
 	mov r4, #0x41
 	mov r1, #2
 	tst r0, r1
 	bne loc_80086C8
-	mov r2, #0x1f
+	mov r2, #SONG_WINNER_1
 	mov r4, #0x66
 loc_80086C8:
 	cmp r6, #1
-	bne loc_80086CE
-	mov r2, #0x24
-loc_80086CE:
+	bne .playSong
+	mov r2, #SONG_ACDC_TOWN
+.playSong:
 	mov r0, r2
-	bl sound_bgmusic_play // (int a1) -> void
+	bl PlaySong
 	strh r4, [r5,#8]
 	mov r0, #0x14
 	bl loc_801E792
@@ -10009,8 +10009,8 @@ sub_8008764:
 	mov r1, #8
 	tst r0, r1
 	beq loc_8008794
-	mov r0, #0x1a
-	bl sound_bgmusic_play // (int a1) -> void
+	mov r0, #SONG_LOSER
+	bl PlaySong
 loc_8008794:
 	bl sub_802D246 // () -> int
 	mov r1, #2
@@ -10222,7 +10222,7 @@ sub_8008900:
 	tst r0, r0
 	beq locret_800891C
 	mov r0, #0x9f
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #4
 	str r0, [r5]
 	ldr r0, off_8008924 // =0x200
@@ -10419,20 +10419,20 @@ sub_8008AA0:
 	mov r0, #4
 	strb r0, [r5,#3]
 	bl sub_802D246 // () -> int
-	mov r2, #0x19
+	mov r2, #SONG_WINNER_0
 	mov r4, #0x41
 	mov r1, #2
 	tst r0, r1
 	bne loc_8008AE0
-	mov r2, #0x1f
+	mov r2, #SONG_WINNER_1
 	mov r4, #0x66
 loc_8008AE0:
 	cmp r6, #1
 	bne loc_8008AE6
-	mov r2, #0x24
+	mov r2, #SONG_ACDC_TOWN
 loc_8008AE6:
 	mov r0, r2
-	bl sound_bgmusic_play // (int a1) -> void
+	bl PlaySong
 	strh r4, [r5,#8]
 	mov r0, #0x14
 	bl loc_801E792
@@ -10542,8 +10542,8 @@ sub_8008B7C:
 	mov r1, #8
 	tst r0, r1
 	beq loc_8008BAC
-	mov r0, #0x1a
-	bl sound_bgmusic_play // (int a1) -> void
+	mov r0, #SONG_LOSER
+	bl PlaySong
 loc_8008BAC:
 	bl sub_802D246 // () -> int
 	mov r1, #2
@@ -10755,7 +10755,7 @@ sub_8008D18:
 	tst r0, r0
 	beq locret_8008D34
 	mov r0, #0x9f
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #4
 	str r0, [r5]
 	ldr r0, off_8008D3C // =0x200
@@ -10961,7 +10961,7 @@ loc_8008EE0:
 	mov r2, #0x24
 loc_8008EE6:
 	mov r0, r2
-	bl sound_bgmusic_play // (int a1) -> void
+	bl PlaySong
 	strh r4, [r5,#8]
 	mov r0, #0x14
 	bl loc_801E792
@@ -11071,8 +11071,8 @@ sub_8008F7C:
 	mov r1, #8
 	tst r0, r1
 	beq loc_8008FAC
-	mov r0, #0x1a
-	bl sound_bgmusic_play // (int a1) -> void
+	mov r0, #SONG_LOSER
+	bl PlaySong
 loc_8008FAC:
 	bl sub_802D246 // () -> int
 	mov r1, #2
@@ -11284,7 +11284,7 @@ sub_8009118:
 	tst r0, r0
 	beq locret_8009134
 	mov r0, #0x9f
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #4
 	str r0, [r5]
 	ldr r0, off_800913C // =0x200
@@ -11407,7 +11407,7 @@ loc_800922E:
 loc_8009232:
 	cmp r0, #0x63
 	beq loc_800923A
-	bl sound_bgmusic_play // (int a1) -> void
+	bl PlaySong
 loc_800923A:
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -11985,7 +11985,7 @@ loc_8009696:
 loc_800969A:
 	cmp r0, #0x63
 	beq loc_80096A2
-	bl sound_bgmusic_play // (int a1) -> void
+	bl PlaySong
 loc_80096A2:
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -12455,7 +12455,7 @@ loc_8009A1E:
 loc_8009A22:
 	cmp r0, #0x63
 	beq loc_8009A2A
-	bl sound_bgmusic_play // (int a1) -> void
+	bl PlaySong
 loc_8009A2A:
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -12846,7 +12846,7 @@ loc_8009D0E:
 loc_8009D12:
 	cmp r0, #0x63
 	beq loc_8009D1A
-	bl sound_bgmusic_play // (int a1) -> void
+	bl PlaySong
 loc_8009D1A:
 	mov r0, #4
 	strb r0, [r5,#3]
@@ -15085,7 +15085,7 @@ sub_800ABC6:
 	mov r0, #1
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0xa5
-	bl sound_play
+	bl PlaySoundEffect
 	pop {r4,pc}
 off_800ABF0: .word byte_20349C0
 off_800ABF4: .word byte_2034A10
@@ -15439,7 +15439,7 @@ sub_800AE90:
 	and r2, r3
 	bne loc_800AEA6
 	mov r0, #0x91
-	bl sound_play
+	bl PlaySoundEffect
 loc_800AEA6:
 	pop {r0,r1}
 	mov r2, #0x10

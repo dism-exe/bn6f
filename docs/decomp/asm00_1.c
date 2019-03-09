@@ -2468,13 +2468,13 @@ int __fastcall sub_800536E(int a1)
             *(v1 + 104) = result;
             if ( result == 41 )
             {
-                result = sound_play(369, v3, v4);
+                result = PlaySoundEffect(369, v3, v4);
             }
             else if ( result == 158 )
             {
                 result = *(v1 + 5);
                 if ( result <= 1 )
-                    result = sound_play(*(&dword_80053E0 + result), &dword_80053E0, v4);
+                    result = PlaySoundEffect(*(&dword_80053E0 + result), &dword_80053E0, v4);
             }
         }
     }
@@ -3251,7 +3251,7 @@ void sub_8005AF4()
                             TestEventFlagFromImmediate(23, 7);
                             if ( !v2 )
                                 return;
-                            sound_play(121, v3, v4);
+                            PlaySoundEffect(121, v3, v4);
                             updatePlayerGameState_800107A();
                             sub_811EC10(v5, v6, v7, v8);
                             sub_8003962();
@@ -3354,7 +3354,7 @@ int __fastcall gameState_8005BC8(int a1, int a2)
         updatePlayerGameState_800107A();
     *v4 = 8;
     musicGameState_8000784(8, v8, v7);
-    return sound_play(120, v9, v10);
+    return PlaySoundEffect(120, v9, v10);
 }
 
 
@@ -6615,7 +6615,7 @@ int sub_80081A4()
                 v5 = 25;
                 v6 = 94;
             }
-            sound_bgmusic_play(v5, v4, v5);
+            PlaySong(v5, v4, v5);
             *(v0 + 8) = v6;
             v8 = 4;
             if ( sub_802D246() & 8 )
@@ -6662,7 +6662,7 @@ int sub_800825A()
         sub_801BED6(937043);
         *(*(v1 + oToolkit_S2034880_Ptr) + 16) = *(*(v1 + oToolkit_S2034880_Ptr) + 13) ^ 1;
         if ( sub_802D246() & 8 )
-            sound_bgmusic_play(26, 8, v2);
+            PlaySong(26, 8, v2);
         if ( sub_802D246() & 2 )
             v3 = 94;
         else
@@ -6827,7 +6827,7 @@ int sub_80083E4()
     result = sub_800A07C(*(v0 + 5));
     if ( result )
     {
-        sound_play(159, v2, v3);
+        PlaySoundEffect(159, v2, v3);
         *v0 = 8;
         result = sub_801DACC(byte_200);
     }
@@ -7135,7 +7135,7 @@ int sub_8008688()
         }
         if ( v2 == 1 )
             v5 = 36;
-        sound_bgmusic_play(v5, 2, v5);
+        PlaySong(v5, 2, v5);
         *(v0 + 8) = v6;
         (loc_801E792)(20);
     }
@@ -7245,7 +7245,7 @@ int sub_8008764()
         sub_801BED6(8539203);
         *(*(v1 + oToolkit_S2034880_Ptr) + 16) = *(*(v1 + oToolkit_S2034880_Ptr) + 13) ^ 1;
         if ( sub_802D246() & 8 )
-            sound_bgmusic_play(26, 8, v2);
+            PlaySong(26, 8, v2);
         if ( sub_802D246() & 2 )
             v3 = 65;
         else
@@ -7436,7 +7436,7 @@ int sub_8008900()
     result = sub_800A07C(*(v0 + 5));
     if ( result )
     {
-        sound_play(159, v2, v3);
+        PlaySoundEffect(159, v2, v3);
         *v0 = 4;
         result = sub_801DACC(byte_200);
     }
@@ -7593,7 +7593,7 @@ int sub_8008AA0()
         }
         if ( v2 == 1 )
             v5 = 36;
-        sound_bgmusic_play(v5, 2, v5);
+        PlaySong(v5, 2, v5);
         *(v0 + 8) = v6;
         (loc_801E792)(20);
     }
@@ -7703,7 +7703,7 @@ int sub_8008B7C()
         sub_801BED6(19523);
         *(*(v1 + oToolkit_S2034880_Ptr) + 16) = *(*(v1 + oToolkit_S2034880_Ptr) + 13) ^ 1;
         if ( sub_802D246() & 8 )
-            sound_bgmusic_play(26, 8, v2);
+            PlaySong(26, 8, v2);
         if ( sub_802D246() & 2 )
             v3 = 65;
         else
@@ -7894,7 +7894,7 @@ int sub_8008D18()
     result = sub_800A07C(*(v0 + 5));
     if ( result )
     {
-        sound_play(159, v2, v3);
+        PlaySoundEffect(159, v2, v3);
         *v0 = 4;
         result = sub_801DACC(byte_200);
     }
@@ -8050,7 +8050,7 @@ int sub_8008EA0()
         }
         if ( v2 == 1 )
             v5 = 36;
-        sound_bgmusic_play(v5, 2, v5);
+        PlaySong(v5, 2, v5);
         *(v0 + 8) = v6;
         (loc_801E792)(20);
     }
@@ -8160,7 +8160,7 @@ int sub_8008F7C()
         sub_801BED6(19523);
         *(*(v1 + oToolkit_S2034880_Ptr) + 16) = *(*(v1 + oToolkit_S2034880_Ptr) + 13) ^ 1;
         if ( sub_802D246() & 8 )
-            sound_bgmusic_play(26, 8, v2);
+            PlaySong(26, 8, v2);
         if ( sub_802D246() & 2 )
             v3 = 65;
         else
@@ -8351,7 +8351,7 @@ int sub_8009118()
     result = sub_800A07C(*(v0 + 5));
     if ( result )
     {
-        sound_play(159, v2, v3);
+        PlaySoundEffect(159, v2, v3);
         *v0 = 4;
         result = sub_801DACC(byte_200);
     }
@@ -8461,7 +8461,7 @@ unsigned int sub_80091F0()
         else
             v6 = *(*(v0 + 60) + 2);
         if ( v6 != 99 )
-            sound_bgmusic_play(v6, 8, v5);
+            PlaySong(v6, 8, v5);
         result = 4;
         *(v0 + 3) = 4;
     }
@@ -9023,7 +9023,7 @@ unsigned int sub_8009658()
         else
             v6 = *(*(v0 + 60) + 2);
         if ( v6 != 99 )
-            sound_bgmusic_play(v6, 8, v5);
+            PlaySong(v6, 8, v5);
         result = 4;
         *(v0 + 3) = 4;
     }
@@ -9477,7 +9477,7 @@ unsigned int sub_80099E0()
         else
             v6 = *(*(v0 + 60) + 2);
         if ( v6 != 99 )
-            sound_bgmusic_play(v6, 8, v5);
+            PlaySong(v6, 8, v5);
         result = 4;
         *(v0 + 3) = 4;
     }
@@ -9856,7 +9856,7 @@ unsigned int sub_8009CD0()
         else
             v6 = *(*(v0 + 60) + 2);
         if ( v6 != 99 )
-            sound_bgmusic_play(v6, 8, v5);
+            PlaySong(v6, 8, v5);
         result = 4;
         *(v0 + 3) = 4;
     }
@@ -11791,7 +11791,7 @@ int __fastcall sub_800ABC6(int a1, int a2)
     v4 = object_getCoordinatesForPanels(a1);
     v6 = (*(*(v3 + oToolkit_S2034880_Ptr) + 13) << 8) + 70;
     SpawnT4BattleObjectWithId0(v2, 1, v4, v5 + 0x100000, 0x200000);
-    return sound_play(165, v7, v8);
+    return PlaySoundEffect(165, v7, v8);
 }
 
 
@@ -12091,7 +12091,7 @@ int __fastcall sub_800AE90(int a1, int a2)
 
     v4 = a1;
     if ( !(**(v2 + oToolkit_CurFramePtr) & 0xF) )
-        sound_play(145, a2, 0);
+        PlaySoundEffect(145, a2, 0);
     result = v4;
     if ( (v4 + 16) < 0xFF && (v5 + 16) < 0xB0 )
     {
@@ -13011,7 +13011,7 @@ int __fastcall sub_800B8EE(int a1)
 
     v2 = object_getCoordinatesForPanels(3 * (a1 ^ 1) + 2);
     SpawnT4BattleObjectWithId0(v1, v2, v2, v3, 7864320);
-    return sound_play(165, v4, v5);
+    return PlaySoundEffect(165, v4, v5);
 }
 
 
@@ -13147,7 +13147,7 @@ char *object_drawChipName()
                 (loc_801E792)(80, v10, v11, v9);
             else
                 (loc_801E792)(76, v10, v11, v9);
-            sound_play(371, v5, v6);
+            PlaySoundEffect(371, v5, v6);
             result = dword_4;
             *(v0 + 11) = 4;
         }
@@ -13232,7 +13232,7 @@ char *sub_800BA8A()
             (loc_801E792)(80, v9, v10, v8);
         else
             (loc_801E792)(76, v9, v10, v8);
-        sound_play(371, v5, v6);
+        PlaySoundEffect(371, v5, v6);
         result = dword_4;
         *(v0 + 11) = 4;
     }
@@ -13317,7 +13317,7 @@ char *sub_800BBA8()
             {
                 (loc_801E792)(80, 0, 0, byte_171);
             }
-            sound_play(371, v12, v13);
+            PlaySoundEffect(371, v12, v13);
             result = dword_4;
             *(v0 + 11) = 4;
         }

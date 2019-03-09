@@ -494,8 +494,8 @@ loc_812DEC2:
 	mov r0, #JOYPAD_B
 	bl JoypadKeyPressed
 	beq loc_812DEF6
-	mov r0, #0x83
-	bl sound_play
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	mov r0, #0xc
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
@@ -727,8 +727,8 @@ sub_812E08C:
 	beq loc_812E0FC
 	mov r1, #0
 	strh r1, [r5,#0x26]
-	mov r0, #0x83
-	bl sound_play
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	b loc_812E0FC
 loc_812E0AC:
 	mov r0, r10
@@ -749,8 +749,8 @@ loc_812E0C6:
 	beq loc_812E0DA
 	mov r0, #1
 	strb r0, [r5,#0x15]
-	mov r0, #0x83
-	bl sound_play
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	b loc_812E0E2
 loc_812E0DA:
 	mov r0, #JOYPAD_A
@@ -764,13 +764,13 @@ loc_812E0E2:
 	mov r1, #8
 loc_812E0EC:
 	strh r1, [r5,#0x26]
-	mov r0, #0x81
+	mov r0, #SOUND_MENU_SELECT
 	ldrh r1, [r5,#0x26]
 	cmp r1, #4
 	beq loc_812E0F8
-	mov r0, #0x83
+	mov r0, #SOUND_EXIT_SUBMENU
 loc_812E0F8:
-	bl sound_play
+	bl PlaySoundEffect
 loc_812E0FC:
 	bl sub_803EAE4
 	cmp r0, #4
@@ -1413,8 +1413,8 @@ loc_812E606:
 	bl sub_803F798
 	mov r0, #0x3d 
 	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
-	mov r0, #0x73 
-	bl sound_play
+	mov r0, #SOUND_UNK_73
+	bl PlaySoundEffect
 	mov r0, #8
 	strb r0, [r5,#0xc]
 	pop {r7,pc}

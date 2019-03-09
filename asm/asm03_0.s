@@ -787,8 +787,8 @@ sub_8026B04:
 	ldrb r0, [r5,#2]
 	cmp r0, #0
 	bne loc_8026B38
-	mov r0, #0x79 
-	bl sound_play
+	mov r0, #SOUND_SELECT_79
+	bl PlaySoundEffect
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	mov r0, #0x78 
@@ -1041,8 +1041,8 @@ sub_8026D06:
 	mov r4, #0xf
 	mov r5, #0x14
 	bl sub_80018D0
-	mov r0, #0x80
-	bl sound_play
+	mov r0, #SOUND_CUR_MOVE_80
+	bl PlaySoundEffect
 	b locret_8026DA6
 loc_8026D46:
 	mov r0, r10
@@ -1076,8 +1076,8 @@ loc_8026D5C:
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r4,r5}
 	bl sub_8029C08
-	mov r0, #0x80
-	bl sound_play
+	mov r0, #SOUND_CUR_MOVE_80
+	bl PlaySoundEffect
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#7]
@@ -1186,7 +1186,7 @@ sub_8026E4C:
 	bl chatbox_8040818
 loc_8026E64:
 	mov r0, #0x9e
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #4
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -1204,7 +1204,7 @@ sub_8026E78:
 	cmp r0, #0
 	bne loc_8026E92
 	mov r0, #0x9e
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0x54 
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -1278,8 +1278,8 @@ loc_8026F0C:
 	ldr r0, off_8027008 // =TextScriptBattleRunDialog
 loc_8026F0E:
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-	mov r0, #0x7b 
-	bl sound_play
+	mov r0, #SOUND_UNSELECT_7B
+	bl PlaySoundEffect
 	pop {pc}
 	thumb_func_end sub_8026EC8
 
@@ -1524,7 +1524,7 @@ sub_80270EA:
 	mov r1, #0x20 
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	mov r0, #0x91
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0xc
 	strh r0, [r5,#2]
 loc_8027112:
@@ -1613,7 +1613,7 @@ loc_80271A0:
 	mov r1, #0x20 
 	bl engine_setScreeneffect // (int a1, int a2) -> void
 	mov r0, #0x92
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0x18
 	strh r0, [r5,#2]
 loc_80271BC:
@@ -1721,7 +1721,7 @@ loc_802727E:
 	bl sub_8028E32
 	mov r0, #0x14
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 locret_802728A:
 	pop {pc}
 	thumb_func_end sub_802723A
@@ -2033,7 +2033,7 @@ loc_802748E:
 	bl sub_8028476
 	mov r0, #0x97
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0x14
 	str r0, [r5,#0x44]
 loc_80274CE:
@@ -2088,7 +2088,7 @@ loc_8027526:
 	strh r0, [r5,#2]
 	mov r0, #0x83
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 	bl sub_8028E32
 	pop {pc}
 	thumb_func_end sub_802750C
@@ -2171,7 +2171,7 @@ sub_802759E:
 	ldrh r0, [r5,#0x3a]
 	bl sub_802A0C8
 	mov r0, #0x92
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0xc
 	strh r0, [r5,#2]
 locret_80275D2:
@@ -2240,9 +2240,9 @@ sub_8027624:
 	bl sub_80302B6
 	mov r0, #0x94
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0xbc
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #8
 	strh r0, [r5,#2]
 locret_8027656:
@@ -2390,11 +2390,11 @@ sub_802774C:
 	bl sub_80302B6
 	mov r0, #0x94
 	add r0, #0xff
-	bl sound_play
-	mov r0, #0x81
-	bl sound_play
+	bl PlaySoundEffect
+	mov r0, #SOUND_MENU_SELECT
+	bl PlaySoundEffect
 	mov r0, #0xbc
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #8
 	strh r0, [r5,#2]
 	pop {pc}
@@ -2507,8 +2507,8 @@ sub_8027834:
 	str r0, [r5,#0x40]
 	mov r0, #1
 	strb r0, [r5,#2]
-	mov r0, #0x7a 
-	bl sound_play
+	mov r0, #SOUND_SELECT_7A
+	bl PlaySoundEffect
 loc_802784A:
 	ldr r0, [r5,#0x40]
 	add r0, #1
@@ -2612,8 +2612,8 @@ sub_802790C:
 	str r0, [r5,#0x40]
 	mov r0, #1
 	strb r0, [r5,#2]
-	mov r0, #0x7d 
-	bl sound_play
+	mov r0, #SOUND_UNK_7D
+	bl PlaySoundEffect
 loc_8027922:
 	ldr r0, [r5,#0x40]
 	add r0, #1
@@ -2837,7 +2837,7 @@ sub_8027AAE:
 	bl sub_80279C8
 	bl sub_8028476
 	mov r0, #0x92
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0xc
 	strh r0, [r5,#2]
 locret_8027ADC:
@@ -4665,8 +4665,8 @@ loc_8028AAA:
 	ldrb r0, [r5,#0x18]
 	cmp r0, #1
 	ble locret_8028B66
-	mov r0, #0x7f
-	bl sound_play
+	mov r0, #SOUND_MENU_CUR_MOVE
+	bl PlaySoundEffect
 	b locret_8028B66
 loc_8028ABA:
 	ldrh r0, [r7,#2]
@@ -4691,16 +4691,16 @@ loc_8028ABA:
 	strb r0, [r5,#0x1a]
 	mov r0, #1
 	strb r0, [r5,#0x19]
-	mov r0, #0x81
-	bl sound_play
+	mov r0, #SOUND_MENU_SELECT
+	bl PlaySoundEffect
 	mov r0, #0x5c 
 	strb r0, [r5,#1]
 	mov r0, #0
 	strh r0, [r5,#2]
 	b locret_8028B66
 loc_8028AF8:
-	mov r0, #0x69 
-	bl sound_play
+	mov r0, #SOUND_CANT_JACK_IN
+	bl PlaySoundEffect
 	b locret_8028B66
 loc_8028B00:
 	ldrh r0, [r7,#2]
@@ -4725,8 +4725,8 @@ loc_8028B1A:
 	strb r0, [r5,#1]
 	mov r0, #0
 	strh r0, [r5,#2]
-	mov r0, #0x7f
-	bl sound_play
+	mov r0, #SOUND_MENU_CUR_MOVE
+	bl PlaySoundEffect
 	b locret_8028B66
 loc_8028B34:
 	mov r1, #4
@@ -4747,7 +4747,7 @@ loc_8028B3C:
 	add r1, #5
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0x9c
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0x58 
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -4819,8 +4819,8 @@ loc_8028BD8:
 	cmp r0, r1
 	beq loc_8028BE6
 	strb r0, [r5,#7]
-	mov r0, #0x7f
-	bl sound_play
+	mov r0, #SOUND_MENU_CUR_MOVE
+	bl PlaySoundEffect
 loc_8028BE6:
 	bl sub_8028476
 	b locret_8028C96
@@ -4889,7 +4889,7 @@ loc_8028C60:
 	bl chip_getScript_8027D34 // (int chipID) -> void*
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0x9c
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0x18
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -4953,8 +4953,8 @@ sub_8028CCC:
 	mov r0, #2
 	strb r0, [r4,#7]
 	bl sub_8028E32
-	mov r0, #0x81
-	bl sound_play
+	mov r0, #SOUND_MENU_SELECT
+	bl PlaySoundEffect
 	mov r0, #1
 	strb r0, [r5,#0xf]
 	mov r0, #0
@@ -4969,8 +4969,8 @@ sub_8028CCC:
 	strh r0, [r5,#2]
 	b locret_8028D38
 loc_8028D30:
-	mov r0, #0x69 
-	bl sound_play
+	mov r0, #SOUND_CANT_JACK_IN
+	bl PlaySoundEffect
 	mov r0, #1
 locret_8028D38:
 	pop {pc}
@@ -4996,8 +4996,8 @@ loc_8028D5A:
 	strb r0, [r5,#1]
 	mov r0, #0
 	strh r0, [r5,#2]
-	mov r0, #0x82
-	bl sound_play
+	mov r0, #SOUND_SELECT_82
+	bl PlaySoundEffect
 	mov r0, #0
 	pop {pc}
 	thumb_func_end sub_8028D3A
@@ -5027,8 +5027,8 @@ sub_8028D6C:
 	mov r1, #1
 	mov r2, #0
 	bl sub_8029CD4
-	mov r0, #0x81
-	bl sound_play
+	mov r0, #SOUND_MENU_SELECT
+	bl PlaySoundEffect
 	mov r0, #0x48 
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -5036,8 +5036,8 @@ sub_8028D6C:
 	mov r0, #0
 	b locret_8028DBA
 loc_8028DB2:
-	mov r0, #0x69 
-	bl sound_play
+	mov r0, #SOUND_CANT_JACK_IN
+	bl PlaySoundEffect
 	mov r0, #1
 locret_8028DBA:
 	pop {pc}
@@ -5074,12 +5074,12 @@ loc_8028DE0:
 	strh r0, [r5,#2]
 	mov r0, #0x83
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0
 	b locret_8028E02
 loc_8028DFA:
-	mov r0, #0x69 
-	bl sound_play
+	mov r0, #SOUND_CANT_JACK_IN
+	bl PlaySoundEffect
 	mov r0, #1
 locret_8028E02:
 	pop {pc}
@@ -5096,8 +5096,8 @@ loc_8028E0E:
 	ldrb r0, [r4,#7]
 	cmp r0, #0
 	bne loc_8028E26
-	mov r0, #0x81
-	bl sound_play
+	mov r0, #SOUND_MENU_SELECT
+	bl PlaySoundEffect
 	mov r0, #0x38 
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -5105,8 +5105,8 @@ loc_8028E0E:
 	mov r0, #0
 	b locret_8028E2E
 loc_8028E26:
-	mov r0, #0x69 
-	bl sound_play
+	mov r0, #SOUND_CANT_JACK_IN
+	bl PlaySoundEffect
 	mov r0, #1
 locret_8028E2E:
 	pop {r6,r7,pc}
@@ -5434,8 +5434,8 @@ sub_8029032:
 	ldrb r0, [r5,#0x19]
 	tst r0, r0
 	bne loc_8029048
-	mov r0, #0x69 
-	bl sound_play
+	mov r0, #SOUND_CANT_JACK_IN
+	bl PlaySoundEffect
 	b locret_8029104
 loc_8029048:
 	ldrb r0, [r5,#0x1b]
@@ -5448,7 +5448,7 @@ loc_8029048:
 	strb r0, [r5,#0x19]
 	mov r0, #0xd3
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 	bl sub_802A0EC
 	b loc_80290F6
 loc_8029066:
@@ -5469,11 +5469,11 @@ loc_8029066:
 	mov r2, #0
 	bl sub_8029CD4
 	bl sub_802A0EC
-	mov r0, #0x83
-	bl sound_play
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	mov r0, #0xd3
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0
 	strb r0, [r5,#0x17]
 	b loc_80290F2
@@ -5483,11 +5483,11 @@ loc_80290A4:
 	bl sub_802A00C
 	tst r0, r0
 	beq loc_80290C2
-	mov r0, #0x83
-	bl sound_play
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	mov r0, #0xd3
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 	bl sub_802A0EC
 loc_80290C2:
 	ldrb r1, [r5,#8]
@@ -5517,8 +5517,8 @@ loc_80290F2:
 loc_80290F6:
 	bl sub_8028E32
 	bl sub_8028476
-	mov r0, #0x83
-	bl sound_play
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 locret_8029104:
 	pop {r4,pc}
 	.balign 4, 0x00
@@ -8678,12 +8678,12 @@ sub_802A9D0:
 	ldrb r0, [r5,#0x10]
 	cmp r0, #0xff
 	bne loc_802A9FE
-	mov r0, #0x69 
-	bl sound_play
+	mov r0, #SOUND_CANT_JACK_IN
+	bl PlaySoundEffect
 	b loc_802AB98
 loc_802A9FE:
-	mov r0, #0x82
-	bl sound_play
+	mov r0, #SOUND_SELECT_82
+	bl PlaySoundEffect
 	mov r0, #8
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -8719,8 +8719,8 @@ loc_802AA38:
 	ldr r0, off_802ABCC // =unk_2030E60 
 	ldr r1, off_802ABB4 // =unk_2031000 
 	bl sub_802B438
-	mov r0, #0x83
-	bl sound_play
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	b loc_802AB98
 loc_802AA54:
 	ldrb r0, [r5,#0x10]
@@ -8741,8 +8741,8 @@ loc_802AA62:
 loc_802AA70:
 	mov r0, #0
 	strb r0, [r5,#2]
-	mov r0, #0x7f
-	bl sound_play
+	mov r0, #SOUND_MENU_CUR_MOVE
+	bl PlaySoundEffect
 	b loc_802AB98
 loc_802AA7C:
 	mov r0, r10
@@ -8755,8 +8755,8 @@ loc_802AA7C:
 	strb r0, [r5,#1]
 	mov r0, #0
 	bl RunTextScriptBattleRunDialog
-	mov r0, #0x7b 
-	bl sound_play
+	mov r0, #SOUND_UNSELECT_7B
+	bl PlaySoundEffect
 	b loc_802AB98
 loc_802AA9A:
 	mov r0, r10
@@ -8778,7 +8778,7 @@ loc_802AA9A:
 	mov r0, #0x18
 	strb r0, [r5,#1]
 	mov r0, #0x9c
-	bl sound_play
+	bl PlaySoundEffect
 	b loc_802AB98
 loc_802AAC8:
 	mov r0, r10
@@ -8789,8 +8789,8 @@ loc_802AAC8:
 	beq loc_802AAE0
 	mov r0, #4
 	strb r0, [r5,#2]
-	mov r0, #0x7f
-	bl sound_play
+	mov r0, #SOUND_MENU_CUR_MOVE
+	bl PlaySoundEffect
 	b loc_802AB98
 loc_802AAE0:
 	mov r0, r10
@@ -8859,8 +8859,8 @@ loc_802AB36:
 	cmp r0, r1
 	bne loc_802AB6C
 loc_802AB64:
-	mov r0, #0x69 
-	bl sound_play
+	mov r0, #SOUND_CANT_JACK_IN
+	bl PlaySoundEffect
 	b loc_802AB98
 loc_802AB6C:
 	strb r0, [r5,r3]
@@ -8878,8 +8878,8 @@ loc_802AB7C:
 	ldr r0, off_802ABCC // =unk_2030E60 
 	ldr r1, off_802ABB4 // =unk_2031000 
 	bl sub_802B438
-	mov r0, #0x81
-	bl sound_play
+	mov r0, #SOUND_MENU_SELECT
+	bl PlaySoundEffect
 	b loc_802AB98
 loc_802AB94:
 	bl sub_802B560
@@ -9055,14 +9055,14 @@ loc_802ACCE:
 	cmp r0, r1
 	beq loc_802ACF2
 loc_802ACEA:
-	mov r0, #0x69 
-	bl sound_play
+	mov r0, #SOUND_CANT_JACK_IN
+	bl PlaySoundEffect
 	b loc_802AD48
 loc_802ACF2:
 	bl sub_802AF38
 	bl sub_802AF28
-	mov r0, #0x67 
-	bl sound_play
+	mov r0, #SOUND_SELECT_67
+	bl PlaySoundEffect
 	ldrb r0, [r5,#5]
 	add r0, #1
 	strb r0, [r5,#5]
@@ -9094,8 +9094,8 @@ loc_802AD34:
 	mov r1, #2
 	tst r0, r1
 	beq loc_802AD48
-	mov r0, #0x68 
-	bl sound_play
+	mov r0, #SOUND_UNSELECT_68
+	bl PlaySoundEffect
 	mov r0, #0x10
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -9249,7 +9249,7 @@ sub_802AE5C:
 	bl chatbox_check_eFlags2009F38
 	bne loc_802AE70
 	mov r0, #0x9e
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #4
 	strb r0, [r5,#1]
 loc_802AE70:
@@ -9403,8 +9403,8 @@ sub_802AF6C:
 	ldr r1, [r1,#oToolkit_RenderInfoPtr]
 	mov r0, #0x78 
 	strh r0, [r1,#0x18]
-	mov r0, #0x79 
-	bl sound_play
+	mov r0, #SOUND_SELECT_79
+	bl PlaySoundEffect
 	mov r0, #0xf
 	str r0, [r5,#0x3c]
 	mov r0, #0x78 
@@ -10045,8 +10045,8 @@ loc_802B57E:
 	ldr r0, off_802B5AC // =unk_2030E60 
 	ldr r1, off_802B5A4 // =unk_2031000 
 	bl sub_802B438
-	mov r0, #0x83
-	bl sound_play
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 locret_802B5A2:
 	pop {pc}
 off_802B5A4: .word unk_2031000
@@ -10075,8 +10075,8 @@ off_802B5CC: .word byte_802B5FC
 	thumb_local_start
 sub_802B5D0:
 	push {lr}
-	mov r0, #0x66 
-	bl sound_play
+	mov r0, #SOUND_UNK_66
+	bl PlaySoundEffect
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_802B5D0
@@ -10345,7 +10345,7 @@ loc_802B86A:
 	cmp r0, r1
 	bge loc_802B888
 	mov r0, #0x91
-	bl sound_play
+	bl PlaySoundEffect
 	ldr r0, dword_802B998 // =0xa0ab 
 	b loc_802B88A
 loc_802B888:
@@ -10467,7 +10467,7 @@ sub_802B920:
 	bl renderTextGfx_8045F8C
 	pop {r4-r7}
 	mov r0, #0x92
-	bl sound_play
+	bl PlaySoundEffect
 	b locret_802B98C
 loc_802B96E:
 	mov r0, #0x14
@@ -11131,8 +11131,8 @@ loc_802C060:
 	and r0, r1
 	cmp r0, #3
 	bne loc_802C09A
-	mov r0, #0x7e 
-	bl sound_play
+	mov r0, #SOUND_UNK_7E
+	bl PlaySoundEffect
 loc_802C09A:
 	add sp, sp, #0x74
 	pop {pc}
@@ -11197,7 +11197,7 @@ loc_802C106:
 	pop {r0,r1}
 	bl sub_802C75C
 	mov r0, #0x96
-	bl sound_play
+	bl PlaySoundEffect
 	b loc_802C15C
 loc_802C114:
 	cmp r0, #1
@@ -11207,7 +11207,7 @@ loc_802C114:
 	pop {r0}
 	bl sub_802C5B0
 	mov r0, #0x95
-	bl sound_play
+	bl PlaySoundEffect
 	b loc_802C15C
 loc_802C12A:
 	cmp r0, #2
@@ -11215,7 +11215,7 @@ loc_802C12A:
 	mov r0, r1
 	bl sub_802C646
 	mov r0, #0x95
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0x1e
 	strb r0, [r5,#0xb]
 	mov r0, #8
@@ -11231,7 +11231,7 @@ loc_802C148:
 	pop {r0}
 	bl sub_802C5E6
 	mov r0, #0x95
-	bl sound_play
+	bl PlaySoundEffect
 loc_802C15C:
 	mov r0, #0
 	strh r0, [r5,#2]
@@ -11271,8 +11271,8 @@ sub_802C170:
 loc_802C1A2:
 	bl object_addHP
 loc_802C1A6:
-	mov r0, #0x8a
-	bl sound_play
+	mov r0, #SOUND_UNK_8A
+	bl PlaySoundEffect
 	ldrh r0, [r5,#0x24]
 	strh r0, [r7,#0x34]
 	pop {r0,r5}
@@ -12998,7 +12998,7 @@ sub_802CEF4:
 	mov r0, #1
 	str r0, [r3,#oAIAttackVars_Unk_30]
 	mov r0, #0x6e 
-	bl sound_play
+	bl PlaySoundEffect
 	b loc_802CFB8
 loc_802CF30:
 	mov r6, #0xa
@@ -13119,7 +13119,7 @@ sub_802CFF8:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_802CEA6
 	mov r0, #0x8e
-	bl sound_play
+	bl PlaySoundEffect
 locret_802D01C:
 	pop {r4,pc}
 	.byte 0, 0
@@ -13841,7 +13841,7 @@ sub_802D4F0:
 	strb r0, [r6,#8]
 	mov r0, #0x83
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 loc_802D504:
 	ldrh r0, [r6,#4]
 	cmp r0, #3
@@ -14555,7 +14555,7 @@ sub_802DACC:
 	mov r0, #0
 	str r0, [r1,#0x5c]
 	mov r0, #0x6c 
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0xa
 	strh r0, [r7,#0x10]
 	mov r0, #4
@@ -15558,8 +15558,8 @@ loc_802E37C:
 	bne loc_802E406
 	tst r1, r1
 	beq loc_802E390
-	mov r0, #0x69 
-	bl sound_play
+	mov r0, #SOUND_CANT_JACK_IN
+	bl PlaySoundEffect
 loc_802E390:
 	bl sub_801EC44
 	b loc_802E406
@@ -16148,8 +16148,8 @@ loc_802E7E2:
 	bl battle_networkInvert
 	tst r0, r0
 	bne locret_802E80A
-	mov r0, #0x80
-	bl sound_play
+	mov r0, #SOUND_CUR_MOVE_80
+	bl PlaySoundEffect
 locret_802E80A:
 	pop {r6,r7,pc}
 loc_802E80C:
@@ -18173,8 +18173,8 @@ sub_802F7E8:
 	bl sub_813D960
 	mov r0, #0xc
 	strb r0, [r5,#1]
-	mov r0, #0x67 
-	bl sound_play
+	mov r0, #SOUND_SELECT_67
+	bl PlaySoundEffect
 	ldr r0, off_802F814 // =byte_802F2E4 
 	bl sub_8001B1C
 	ldr r0, off_802F818 // =dword_802F334 
@@ -18199,7 +18199,7 @@ sub_802F81C:
 	beq locret_802F88C
 	bl musicGameState_8000784 // () -> void
 	mov r0, #0x9d
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0x10
 	strb r0, [r5,#1]
 	mov r0, #0xc
@@ -18221,8 +18221,8 @@ loc_802F85C:
 	strb r0, [r5,#8]
 	cmp r0, r1
 	beq locret_802F88C
-	mov r0, #0x66 
-	bl sound_play
+	mov r0, #SOUND_UNK_66
+	bl PlaySoundEffect
 	b locret_802F88C
 loc_802F86A:
 	ldrh r0, [r7,#4]
@@ -18240,8 +18240,8 @@ loc_802F880:
 	strb r0, [r5,#8]
 	cmp r0, r1
 	beq locret_802F88C
-	mov r0, #0x66 
-	bl sound_play
+	mov r0, #SOUND_UNK_66
+	bl PlaySoundEffect
 locret_802F88C:
 	pop {pc}
 	thumb_func_end sub_802F81C

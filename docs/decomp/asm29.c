@@ -143,7 +143,7 @@ int sub_80A4ACC()
             result = *(v0 + 6);
             *(v0 + 40) = result;
             if ( result )
-                result = sound_play(112, v9, v10);
+                result = PlaySoundEffect(112, v9, v10);
         }
         else
         {
@@ -284,7 +284,7 @@ void __noreturn sub_80A5268()
             }
             v5 = v1[7];
             if ( v5 != 0xFFFF )
-                sound_play(v5, 0xFFFF, v3);
+                PlaySoundEffect(v5, 0xFFFF, v3);
         }
         SetEventFlag(v1[2]);
         v6 = *(v1 + 9);
@@ -340,13 +340,13 @@ void __noreturn sub_80A5304()
         switch ( v3 )
         {
             case 50:
-                sound_play(&dword_14C, 50, v2);
+                PlaySoundEffect(&dword_14C, 50, v2);
                 break;
             case 74:
-                sound_play(230, 74, v2);
+                PlaySoundEffect(230, 74, v2);
                 break;
             case 93:
-                sound_play(153, 93, v2);
+                PlaySoundEffect(153, 93, v2);
                 break;
         }
     }
@@ -476,7 +476,7 @@ void __noreturn sub_80A5514()
     *(v0 + 7) = *(v1 + 5);
     if ( !(*(v0 + 4) & 1) )
     {
-        sound_play(383, 0, 1);
+        PlaySoundEffect(383, 0, 1);
         if ( !*(v0 + 4) )
             *(v1 + 15) = 10;
     }
@@ -596,7 +596,7 @@ signed int sub_80A55D4()
                     result = *(v1 + 15);
                     if ( !*(v1 + 15) )
                     {
-                        sound_play(383, v9, v7);
+                        PlaySoundEffect(383, v9, v7);
                         result = 10;
                         *(v1 + 15) = 10;
                     }
@@ -1575,7 +1575,7 @@ int sub_80A5F68()
     int v2; // r2
 
     SpawnOverworldMapObject(20, v0[3], v0[4], v0[5]);
-    return sound_play(118, v1, v2);
+    return PlaySoundEffect(118, v1, v2);
 }
 
 
@@ -2038,7 +2038,7 @@ signed int __fastcall sub_80A6E0C(int a1)
     int v3; // r2
 
     v1 = sub_80A6E78();
-    sound_play(*(v1 + 2), v2, v3);
+    PlaySoundEffect(*(v1 + 2), v2, v3);
     sub_80A6E70(4);
     return 1;
 }
@@ -2443,7 +2443,7 @@ int __fastcall sub_80A7160(int a1, int a2, int a3)
         sprite_setAnimation(v3, 9u);
         sprite_loadAnimationData(v3);
         sprite_noShadow(v3);
-        result = sound_play(225, v9, v10);
+        result = PlaySoundEffect(225, v9, v10);
         *(v3 + 9) = v5 + 1;
     }
     return result;
@@ -2460,7 +2460,7 @@ int __fastcall sub_80A71EC(int a1, int a2, int a3)
     if ( result )
     {
         if ( result == 1 )
-            result = sound_play(226, a2, a3);
+            result = PlaySoundEffect(226, a2, a3);
         *(v3 + 56) = --result;
     }
     return result;
@@ -2951,7 +2951,7 @@ int __fastcall sub_80A7640(int a1, int a2, int a3)
         sprite_setAnimation(v3, 9u);
         sprite_loadAnimationData(v3);
         sprite_noShadow(v3);
-        result = sound_play(225, v9, v10);
+        result = PlaySoundEffect(225, v9, v10);
         *(v3 + 9) = v5 + 1;
     }
     return result;
@@ -2968,7 +2968,7 @@ int __fastcall sub_80A76CC(int a1, int a2, int a3)
     if ( result )
     {
         if ( result == 1 )
-            result = sound_play(226, a2, a3);
+            result = PlaySoundEffect(226, a2, a3);
         *(v3 + 52) = --result;
     }
     return result;
@@ -3538,7 +3538,7 @@ void *sub_80A7BC0()
                         v11 = sub_81420F0(*(v0 + 4));
                         SetEventFlag(v11);
                         *(v0 + 8) = 8;
-                        sound_play(115, v12, v13);
+                        PlaySoundEffect(115, v12, v13);
                         sub_81418F0();
                         sub_81418E4();
                         v15 = v14;
@@ -3868,7 +3868,7 @@ signed int __noreturn sub_80A7EF8()
 
     sprite_setAnimation(v0, *(v1 + 3) + 12);
     sprite_loadAnimationData(v0);
-    sound_play(381, v2, v3);
+    PlaySoundEffect(381, v2, v3);
     result = 4;
     v0->currAction = 4;
     return result;
@@ -3959,7 +3959,7 @@ int sub_80A7FAC()
     {
         sprite_setAnimation(v0, *(v0 + 7) + 8);
         sprite_loadAnimationData(v0);
-        sound_play(298, v4, v5);
+        PlaySoundEffect(298, v4, v5);
         *(v0 + 36) = 4;
         result = 8;
         *(v0 + 9) = 8;
@@ -3981,7 +3981,7 @@ int sub_80A7FD4()
     result = sprite_getFrameParameters();
     if ( result & 0x80 )
     {
-        sound_play(298, 128, v3);
+        PlaySoundEffect(298, 128, v3);
         v4 = *(v0 + 36);
         v5 = __OFSUB__(v4, 1);
         result = v4 - 1;
@@ -4569,7 +4569,7 @@ void sub_80A86B4()
             if ( !*(v0 + 4) && !*(v0 + 36) )
             {
                 *(v0 + 36) = 1;
-                sound_play(189, v4, v5);
+                PlaySoundEffect(189, v4, v5);
             }
         }
     }
@@ -4629,7 +4629,7 @@ void __noreturn sub_80A8748()
     *(v0 + 20) += v7;
     v8 = 2 * v2;
     if ( *&byte_80A87C8[v8] )
-        sound_play(*&byte_80A87C8[v8], v7, v6);
+        PlaySoundEffect(*&byte_80A87C8[v8], v7, v6);
     *(v0 + 8) = 4;
     sprite_update(v0);
 }
@@ -4793,7 +4793,7 @@ unsigned int sub_80A8988()
         {
             sub_8002E52();
             *(v0 + 8) = 8;
-            sound_play(420, v5, v6);
+            PlaySoundEffect(420, v5, v6);
             sub_81430B6(*(v0 + 4));
             SetEventFlag(v7);
             result = sub_81433E4(1);
@@ -4802,7 +4802,7 @@ unsigned int sub_80A8988()
         {
             sub_8002E52();
             *(v0 + 8) = 8;
-            sound_play(115, v2, v3);
+            PlaySoundEffect(115, v2, v3);
             v4 = sub_81430B6(*(v0 + 4));
             result = SetEventFlag(v4);
         }
@@ -5217,7 +5217,7 @@ int sub_80A8DB0()
         {
             v3 = sub_8143088();
             init_s_02011C50_8036E90(134791957, v3, v4, v5);
-            sound_play(290, v6, v7);
+            PlaySoundEffect(290, v6, v7);
             sub_8143204(*(v0 + 4));
             result = sub_8143220(*(v0 + 4));
         }
@@ -5386,7 +5386,7 @@ void __fastcall __noreturn sub_80A8FA0(int a1)
         sprite_loadAnimationData(v1);
         sprite_noShadow(v1);
         v1->currState = 12;
-        sound_play(dword_160, v3, v4);
+        PlaySoundEffect(dword_160, v3, v4);
         sub_80A8FE4();
     }
     TestEventFlagFromImmediate(11, 239);
@@ -5769,7 +5769,7 @@ void __noreturn sub_80A931C()
     {
         sub_8002E14(3);
         v0->currState = 8;
-        v4 = sound_play(107, v2, v3);
+        v4 = PlaySoundEffect(107, v2, v3);
         sub_80A9360(v4);
     }
     TestEventFlagFromImmediate(11, 228);
@@ -6017,7 +6017,7 @@ int sub_80A95A8()
             sub_80A9614();
             sub_8002E52();
             *(v0 + 8) = 8;
-            LODWORD(v2) = sound_play(&loc_1A4, v4, v5);
+            LODWORD(v2) = PlaySoundEffect(&loc_1A4, v4, v5);
         }
     }
     return v2;
@@ -6100,7 +6100,7 @@ void __noreturn sub_80A9680()
     sub_8002E14(v1);
     *(v0 + 36) = 0;
     sub_80A97F4();
-    sound_play(435, v2, v3);
+    PlaySoundEffect(435, v2, v3);
     *(v0 + 8) = 4;
     sub_80A96C8();
 }
@@ -6213,7 +6213,7 @@ int sub_80A979C()
                     if ( result == 1 )
                     {
                         SetEventFlagFromImmediate(11, 232);
-                        result = sound_play(215, v6, v7);
+                        result = PlaySoundEffect(215, v6, v7);
                     }
                 }
             }
@@ -6296,7 +6296,7 @@ int sub_80A9858()
         if ( ((result < 0) ^ v2) | (result == 0) )
         {
             *(v0 + 40) = *(v0 + 6);
-            result = sound_play(112, v5, v6);
+            result = PlaySoundEffect(112, v5, v6);
         }
         else
         {
@@ -6523,7 +6523,7 @@ void __noreturn sub_80A9C26()
                 sprite_setAnimation(sprite, 3u);
                 sprite_loadAnimationData(sprite);
                 sprite_noShadow(sprite);
-                sound_play(472, v3, v4);
+                PlaySoundEffect(472, v3, v4);
             }
         }
         else if ( *(sprite + 9) )
@@ -6653,7 +6653,7 @@ int sub_80A9DC0()
         sprite_loadAnimationData(v0);
         sprite_noShadow(v0);
         if ( !*(v0 + 4) )
-            sound_play(291, v2, v3);
+            PlaySoundEffect(291, v2, v3);
         result = 4;
         *(v0 + 9) = 4;
     }
@@ -6676,7 +6676,7 @@ int __fastcall sub_80A9DFE(int a1, int a2, int a3)
     if ( result == 12 )
     {
         if ( !*(v3 + 4) )
-            sound_play(309, v4, a3);
+            PlaySoundEffect(309, v4, a3);
         sprite_setAnimation(v3, 2u);
         sprite_loadAnimationData(v3);
         result = sprite_noShadow(v3);
@@ -6737,7 +6737,7 @@ int sub_80A9E5E()
         *(v0 + 16) = v3;
         *(v0 + 20) = v4;
         if ( !*(v0 + 4) )
-            sound_play(429, v2, v3);
+            PlaySoundEffect(429, v2, v3);
         result = 16;
         *(v0 + 9) = 16;
     }
@@ -6787,7 +6787,7 @@ void __noreturn sub_80A9EEC()
     sprite_noShadow(v0);
     v4 = sub_8035694((v0 + 12));
     sub_8002E14(v4);
-    sound_play(118, v5, v6);
+    PlaySoundEffect(118, v5, v6);
     *(v0 + 8) = 4;
     sub_80A9F30();
 }
@@ -7010,7 +7010,7 @@ void __noreturn sub_80AA194()
         sprite_setAnimation(v0, 1u);
         sprite_loadAnimationData(v0);
         sub_80302A8(2, 20);
-        sound_play(379, v3, v4);
+        PlaySoundEffect(379, v3, v4);
         *(v0 + 8) = 8;
     }
     sprite_update(v0);
@@ -7084,8 +7084,8 @@ void __noreturn sub_80AA248()
         sprite_setAnimation(v0, 1u);
         sprite_loadAnimationData(v0);
         sub_80302A8(1, 10);
-        sound_play(218, v3, v4);
-        sound_play(192, v5, v6);
+        PlaySoundEffect(218, v3, v4);
+        PlaySoundEffect(192, v5, v6);
         *(v0 + 8) = 8;
     }
     sprite_update(v0);
@@ -7283,7 +7283,7 @@ void __noreturn sub_80AA402()
         sub_80AA3C2(*(v0 + 40));
         if ( v3 != 255 )
         {
-            sound_play(462, v3, v4);
+            PlaySoundEffect(462, v3, v4);
             ++*(v0 + 40);
         }
         *(v0 + 36) = v3;

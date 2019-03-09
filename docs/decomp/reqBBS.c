@@ -725,7 +725,7 @@ int reqBBS_static_813EC54()
 
     engine_setScreeneffect(12, 16);
     *v0 = 8;
-    return sound_play(104, v1, v2);
+    return PlaySoundEffect(104, v1, v2);
 }
 
 
@@ -744,7 +744,7 @@ void __fastcall __noreturn reqBBS_static_813EC6C(int a1, int a2, int a3)
     v5[2] = -1;
     v5[7] = 80;
     v5[6] = 80;
-    sound_play(103, 80, a3);
+    PlaySoundEffect(103, 80, a3);
     v3[8] = 6;
     sub_80018D0(0, 0, 3, 0);
     JUMPOUT(loc_813ECAA);
@@ -2052,7 +2052,7 @@ int reqBBS_81403A8()
 
     engine_setScreeneffect(12, 16);
     *v0 = 8;
-    return sound_play(104, v1, v2);
+    return PlaySoundEffect(104, v1, v2);
 }
 
 
@@ -2071,7 +2071,7 @@ void __fastcall __noreturn reqBBS_81403C0(int a1, int a2, int a3)
     v5[2] = -1;
     v5[7] = 80;
     v5[6] = 80;
-    sound_play(103, 80, a3);
+    PlaySoundEffect(103, 80, a3);
     v3[8] = 6;
     sub_80018D0(0, 0, 3, 0);
     JUMPOUT(loc_81403FE);
@@ -2093,7 +2093,7 @@ void __fastcall __noreturn reqBBS_8140414(int a1, int a2, int a3)
     v5[2] = -1;
     v5[7] = 80;
     v5[6] = 80;
-    sound_play(103, 80, a3);
+    PlaySoundEffect(103, 80, a3);
     v3[8] = 6;
     sub_80018D0(0, 0, 3, 0);
     JUMPOUT(loc_8140452);

@@ -7,8 +7,8 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play
-// .global sound_bgmusic_play // (int a1) -> void
+// .global PlaySoundEffect
+// .global PlaySong // (int a1) -> void
 // .global getPETNaviSelect // () -> u8
 // .global calcAngle_800117C
 

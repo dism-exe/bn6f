@@ -172,7 +172,7 @@
 // .global 0x4000000
 
 	.include "asm/asm00_0.inc"
-// .global sound_play
+// .global PlaySoundEffect
 // .global sub_80005F2
 // .global sub_8000642
 // .global sub_800068A

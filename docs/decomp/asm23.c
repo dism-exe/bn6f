@@ -41,7 +41,7 @@ signed int __fastcall sub_808917C(int a1, int a2, int a3)
     v5 = *(v4 + 4);
     if ( v5[1] & 0x200 )
     {
-        sound_play(131, 512, a3);
+        PlaySoundEffect(131, 512, a3);
         *v3 = 8;
     }
     else
@@ -93,7 +93,7 @@ int __fastcall sub_8089244(int a1)
 
     CopyWords(&dword_87DE44C[8 * a1], byte_30016F0, 0x20u);
     decompAndCopyData(byte_8089268);
-    return sound_play(127, v1, v2);
+    return PlaySoundEffect(127, v1, v2);
 }
 
 
@@ -243,21 +243,21 @@ signed int __fastcall sub_8089704(int a1, int a2, int a3)
         sub_8142190(v6);
         if ( v9 )
         {
-            sound_play(105, v7, v8);
+            PlaySoundEffect(105, v7, v8);
         }
         else
         {
             sub_8142A84();
             if ( !v9 )
             {
-                sound_play(103, v10, v11);
+                PlaySoundEffect(103, v10, v11);
                 v5 = 2;
             }
         }
     }
     else if ( v4 & 2 )
     {
-        sound_play(104, a2, a3);
+        PlaySoundEffect(104, a2, a3);
         v5 = 3;
     }
     else
@@ -265,7 +265,7 @@ signed int __fastcall sub_8089704(int a1, int a2, int a3)
         v12 = *(*(v3 + oToolkit_JoypadPtr) + 4);
         if ( v12 & 0x40 )
         {
-            sound_play(102, a2, a3);
+            PlaySoundEffect(102, a2, a3);
             v13 = sub_81421D0();
             v14 = __OFSUB__(v13, 1);
             v15 = v13 - 1;
@@ -276,7 +276,7 @@ signed int __fastcall sub_8089704(int a1, int a2, int a3)
         }
         else if ( v12 & 0x80 )
         {
-            sound_play(102, a2, a3);
+            PlaySoundEffect(102, a2, a3);
             v16 = sub_81421D0() + 1;
             if ( v16 >= 4 )
                 v16 = 0;
@@ -697,7 +697,7 @@ signed int __fastcall sub_8089A60(int a1)
         if ( v4 && sub_81426CE() < 6 )
         {
             sub_8035408();
-            sound_play(356, v6, v7);
+            PlaySoundEffect(356, v6, v7);
             v8 = sub_8036E44();
             sub_8036E78(v8, v9, v10);
         }

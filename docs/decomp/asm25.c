@@ -306,7 +306,7 @@ signed int __fastcall sub_808FB68(int a1)
         sub_809E230();
         reqBBS_clearFlag_8140A0C();
         sub_809E3B2();
-        sound_play(430, v4, v5);
+        PlaySoundEffect(430, v4, v5);
         result = 0;
     }
     return result;
@@ -368,7 +368,7 @@ int __fastcall sub_808FCF0(int a1)
 
     byte_2000328 = byte_808FD14[sub_809E2B8()];
     HIBYTE(dword_2000324) = 15;
-    sound_play(107, byte_808FD14, v1);
+    PlaySoundEffect(107, byte_808FD14, v1);
     return 0;
 }
 

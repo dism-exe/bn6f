@@ -14,7 +14,7 @@ int call_m4a_2_814F00C()
 
 // 0x80005cc
 // () -> void
-int __fastcall sound_play(int a1, int a2, int a3)
+int __fastcall PlaySoundEffect(int a1, int a2, int a3)
 {
     return m4a_800061E(a1, a2, a3);
 }
@@ -22,7 +22,7 @@ int __fastcall sound_play(int a1, int a2, int a3)
 
 // 0x80005d4
 // (int a1) -> void
-int __fastcall sound_bgmusic_play(int result, int a2, int a3)
+int __fastcall PlaySong(int result, int a2, int a3)
 {
     int v3; // r10
     int v4; // r7
@@ -1241,7 +1241,7 @@ int __fastcall sub_8001040(int a1, int a2, int a3, int a4)
     if ( v4 )
     {
         if ( !(v6 & 0xF) )
-            result = sound_play(145, v8, v9);
+            result = PlaySoundEffect(145, v8, v9);
     }
     return result;
 }
@@ -2730,7 +2730,7 @@ int __fastcall sub_800232A(int *a1, int a2, int a3)
 
     result = *a1;
     if ( result >= 0 )
-        result = sound_play(result, a2, a3);
+        result = PlaySoundEffect(result, a2, a3);
     return result;
 }
 

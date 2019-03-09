@@ -33,7 +33,7 @@ void sub_810C46C()
             *(v1 + 1) = 1;
             object_setFlag1(64);
             object_setFlag1(0x400000);
-            sound_play(201, v3, v4);
+            PlaySoundEffect(201, v3, v4);
             object_setCounterTime(30);
             v0->currAnimation = 1;
         }
@@ -125,7 +125,7 @@ void __fastcall sub_810C544(int a1)
     unsigned int v14; // r1
 
     object_canMove(a1);
-    if ( _ZF || (v6 = sound_play(200, v3, v4), sub_801A082(v6, 53, 2, 3), (v7 = (*(v2 + 40))(*(v2 + 44))) == 0) )
+    if ( _ZF || (v6 = PlaySoundEffect(200, v3, v4), sub_801A082(v6, 53, 2, 3), (v7 = (*(v2 + 40))(*(v2 + 44))) == 0) )
     {
         *(v2 + 26) = 0;
         object_exitAttackState(v1);
@@ -236,7 +236,7 @@ int sub_810C686()
         *(v1 + 16) = v2 + 1;
         object_setPanelsFromCoordinates(v0);
         object_updateCollisionPanels(v0);
-        sound_play(200, v3, v4);
+        PlaySoundEffect(200, v3, v4);
         *(v0 + 64) = -*(v0 + 64);
         result = 4;
         *v1 = 4;
@@ -581,7 +581,7 @@ int sub_810CB2A()
     {
         *(v1 + 3);
         sub_810CD38();
-        sound_play(237, v3, v4);
+        PlaySoundEffect(237, v3, v4);
     }
     result = sprite_getFrameParameters();
     if ( result & 0x80 )
@@ -675,7 +675,7 @@ int sub_810CC0A()
     if ( v3 == 5 )
     {
         sub_810CD38();
-        sound_play(238, v4, v5);
+        PlaySoundEffect(238, v4, v5);
     }
     result = sprite_getFrameParameters();
     if ( result & 0x80 )
@@ -1025,7 +1025,7 @@ int sub_810D378()
     if ( !v3 )
     {
         *(v1 + 48) = 64;
-        sound_play(*&byte_810D3DE[2 * *(v1 + 3)], byte_810D3DE, v2);
+        PlaySoundEffect(*&byte_810D3DE[2 * *(v1 + 3)], byte_810D3DE, v2);
     }
     result = *(v1 + 16) - 1;
     *(v1 + 16) = result;
@@ -1288,7 +1288,7 @@ int sub_810D516()
             result = v5 - 1;
         }
         while ( v5 != 1 );
-        result = sound_play(138, v9, v10);
+        result = PlaySoundEffect(138, v9, v10);
     }
     return result;
 }
@@ -1522,7 +1522,7 @@ int __fastcall sub_810D8B2(int a1, int a2, int a3)
     if ( !v6 )
     {
         *(v4 + 14) = 16;
-        sound_play(299, v5, a3);
+        PlaySoundEffect(299, v5, a3);
     }
     result = *(v4 + 16) - 1;
     *(v4 + 16) = result;

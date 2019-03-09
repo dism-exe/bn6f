@@ -89,7 +89,7 @@ sub_800B8EE:
 	mov r4, #0x1e
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0xa5
-	bl sound_play
+	bl PlaySoundEffect
 	pop {r4,pc}
 	thumb_func_end sub_800B8EE
 
@@ -232,7 +232,7 @@ loc_800BA12:
 loc_800BA1A:
 	mov r0, #0x74
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	b locret_800BA88
@@ -341,7 +341,7 @@ loc_800BAF2:
 loc_800BAFA:
 	mov r0, #0x74
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	b locret_800BB9E
@@ -485,7 +485,7 @@ loc_800BC12:
 loc_800BC1E:
 	mov r0, #0x74
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	b locret_800BC86
@@ -795,7 +795,7 @@ loc_800BE56:
 loc_800BE5E:
 	mov r0, #0x74 
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	b locret_800BED8
@@ -1446,7 +1446,7 @@ loc_800C402:
 	bl sub_800C488
 	strh r1, [r7,#0xe]
 	mov r0, #0x97
-	bl sound_play
+	bl PlaySoundEffect
 locret_800C436:
 	pop {r4-r7,pc}
 loc_800C438:
@@ -2130,7 +2130,7 @@ object_crackPanel:
 	strb r2, [r0,#2]
 	strb r2, [r0,#6]
 	mov r0, #0x97
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #1
 	pop {pc}
 loc_800C96A:
@@ -2145,7 +2145,7 @@ loc_800C96A:
 	strb r2, [r0,#2]
 	strb r2, [r0,#6]
 	mov r0, #0x97
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #1
 	pop {pc}
 loc_800C988:
@@ -2178,7 +2178,7 @@ object_crackPanelDup1:
 	strb r2, [r0,#2]
 	strb r2, [r0,#6]
 	mov r0, #0x97
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #1
 	pop {pc}
 loc_800C9CA:
@@ -2193,7 +2193,7 @@ loc_800C9CA:
 	strb r2, [r0,#2]
 	strb r2, [r0,#6]
 	mov r0, #0x97
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #1
 	pop {pc}
 loc_800C9E8:
@@ -2225,7 +2225,7 @@ object_breakPanel:
 	strb r2, [r0,#2]
 	strb r2, [r0,#6]
 	mov r0, #0x97
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #1
 	pop {pc}
 loc_800CA28:
@@ -2256,7 +2256,7 @@ object_breakPanel_dup1:
 	strb r2, [r0,#2]
 	strb r2, [r0,#6]
 	mov r0, #0x97
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #1
 	pop {pc}
 loc_800CA64:
@@ -2270,7 +2270,7 @@ loc_800CA64:
 	strb r2, [r0,#2]
 	strb r2, [r0,#6]
 	mov r0, #0x97
-	bl sound_play
+	bl PlaySoundEffect
 loc_800CA7C:
 	mov r0, #0
 	pop {pc}
@@ -2300,7 +2300,7 @@ object_breakPanel_dup2:
 	strb r2, [r0,#2]
 	strb r2, [r0,#6]
 	mov r0, #0x97
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #1
 	pop {pc}
 loc_800CABC:
@@ -2314,7 +2314,7 @@ loc_800CABC:
 	strb r2, [r0,#2]
 	strb r2, [r0,#6]
 	mov r0, #0x97
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #1
 	pop {pc}
 loc_800CAD8:
@@ -2346,7 +2346,7 @@ object_breakPanel_dup3:
 	strb r2, [r0,#2]
 	strb r2, [r0,#6]
 	mov r0, #0x97
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #1
 	pop {pc}
 loc_800CB18:
@@ -2360,7 +2360,7 @@ loc_800CB18:
 	strb r2, [r0,#2]
 	strb r2, [r0,#6]
 	mov r0, #0x97
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #1
 	pop {pc}
 loc_800CB34:
@@ -2392,7 +2392,7 @@ object_breakPanelLoud:
 	strb r2, [r0,#2]
 	strb r2, [r0,#6]
 	mov r0, #0xda
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #1
 	pop {pc}
 loc_800CB74:
@@ -2406,7 +2406,7 @@ loc_800CB74:
 	strb r2, [r0,#2]
 	strb r2, [r0,#6]
 	mov r0, #0xda
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #1
 	pop {pc}
 loc_800CB90:
@@ -2436,7 +2436,7 @@ object_panel_setPoison:
 	strb r2, [r0,#2]
 	strb r2, [r0,#6]
 	mov r0, #0x90
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #1
 	pop {pc}
 loc_800CBCC:
@@ -4565,8 +4565,8 @@ loc_800E314:
 	ldmia r0!, {r1-r3}
 	mov r4, #6
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #0x8a
-	bl sound_play
+	mov r0, #SOUND_UNK_8A
+	bl PlaySoundEffect
 	mov r0, #0
 	b locret_800E35E
 loc_800E330:
@@ -5718,7 +5718,7 @@ object_spawnHiteffect:
 	tst r1, r0
 	beq locret_800EBCE
 	mov r0, #0x6e 
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}

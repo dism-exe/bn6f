@@ -12,7 +12,7 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play
+// .global PlaySoundEffect
 // .global sound_8000672
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global sub_8001172

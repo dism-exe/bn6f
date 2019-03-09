@@ -728,8 +728,8 @@ loc_812F5CC:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_812F5EE
-	mov r0, #0x83
-	bl sound_play
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	mov r0, #0xc
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
@@ -774,8 +774,8 @@ sub_812F628:
 	beq loc_812F698
 	mov r1, #0
 	strh r1, [r5,#0x26]
-	mov r0, #0x83
-	bl sound_play
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	b loc_812F698
 loc_812F648:
 	mov r0, r10
@@ -796,8 +796,8 @@ loc_812F662:
 	beq loc_812F676
 	mov r0, #1
 	strb r0, [r5,#0x15]
-	mov r0, #0x83
-	bl sound_play
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	b loc_812F67E
 loc_812F676:
 	mov r0, #JOYPAD_A
@@ -817,7 +817,7 @@ loc_812F688:
 	beq loc_812F694
 	mov r0, #0x83
 loc_812F694:
-	bl sound_play
+	bl PlaySoundEffect
 loc_812F698:
 	bl sub_803EAE4
 	cmp r0, #4
@@ -1631,8 +1631,8 @@ loc_812FCCC:
 	b loc_812FC8E
 loc_812FCEC:
 	bl sub_803F798
-	mov r0, #0x73 
-	bl sound_play
+	mov r0, #SOUND_UNK_73
+	bl PlaySoundEffect
 	mov r0, #0x3d 
 	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	mov r0, #8

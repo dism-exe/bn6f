@@ -1144,7 +1144,7 @@ int npc_809F048()
     int v3; // r2
 
     v1 = ReadNPCScriptHalfword((v0 + 1));
-    return sound_play(v1, v2, v3);
+    return PlaySoundEffect(v1, v2, v3);
 }
 
 
@@ -1564,7 +1564,7 @@ int sub_809F36E()
     int v3; // r2
 
     v1 = ReadNPCScriptHalfword((v0 + 1));
-    return sound_bgmusic_play(v1, v2, v3);
+    return PlaySong(v1, v2, v3);
 }
 
 
@@ -1731,7 +1731,7 @@ int sub_809F4B8()
     *(v0 + 21) = ~v2;
     *(v0 + 96) |= 0x11u;
     SpawnOverworldMapObject(0, *(v0 + 36), *(v0 + 40), *(v0 + 44));
-    return sound_play(118, v3, v4);
+    return PlaySoundEffect(118, v3, v4);
 }
 
 

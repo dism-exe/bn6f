@@ -410,7 +410,7 @@ template_functions = None
 # do this later once syms has been set
 def set_template_functions():
     analyzer.template_functions = {
-        "sound_play": (
+        "PlaySoundEffect": (
             ReturnValue("r0", datatypes.UnknownDataType),
         ),
         "sub_3007958": (

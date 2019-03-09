@@ -17,7 +17,7 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play
+// .global PlaySoundEffect
 // .global GetRNG2 // () -> int
 // .global sRender_08_setRenderingState
 // .global sub_8001780

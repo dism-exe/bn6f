@@ -9,7 +9,7 @@ signed int __fastcall sub_8083D44(int a1, int a2, int a3)
     if ( byte_201396F )
         --byte_201396F;
     if ( (byte_2013966 & 0xF) == 15 )
-        sound_play(byte_12C, 15, a3);
+        PlaySoundEffect(byte_12C, 15, a3);
     return 1;
 }
 

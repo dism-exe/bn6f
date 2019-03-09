@@ -261,7 +261,7 @@ void __noreturn sub_81235A4()
         {
             v7 = sub_8123E08();
             sub_8123D54(v7);
-            sound_play(129, v8, v9);
+            PlaySoundEffect(129, v8, v9);
             sub_811B314(1, 3);
             *(v0 + 2) = 12;
             *(v0 + 3) = 0;
@@ -271,7 +271,7 @@ void __noreturn sub_81235A4()
     else
     {
         sub_811FB64(8, v2, v3);
-        sound_play(131, v5, v6);
+        PlaySoundEffect(131, v5, v6);
     }
     sub_8123AB8();
 }
@@ -347,7 +347,7 @@ int sub_812368C()
     {
         *(v0 + 2) = 4;
         sub_811B314(1, 0);
-        sound_play(131, v3, v4);
+        PlaySoundEffect(131, v3, v4);
         return sub_8119118(0);
     }
     JoypadKeyPressed();
@@ -360,7 +360,7 @@ int sub_812368C()
         *(v0 + 32) = v13;
         return sub_8123D70(v13);
     }
-    sound_play(129, v6, v7);
+    PlaySoundEffect(129, v6, v7);
     v8 = *(off_8123768[sub_8123E08()] + *(v0 + 32));
     *(v0 + 2) = v8;
     if ( v8 != 12 )
@@ -375,7 +375,7 @@ int sub_812368C()
     {
         *(v0 + 2) = 4;
         sub_811B314(1, 0);
-        sound_play(386, v11, v12);
+        PlaySoundEffect(386, v11, v12);
         result = sub_8119118(0);
     }
     else
@@ -945,11 +945,11 @@ void sub_81240D0()
             if ( byte_201C400[v6] )
             {
                 sub_81245D4();
-                sound_play(129, v7, v8);
+                PlaySoundEffect(129, v7, v8);
             }
             else
             {
-                sound_play(105, v6, v5);
+                PlaySoundEffect(105, v6, v5);
             }
         }
     }
@@ -1021,7 +1021,7 @@ void __fastcall __noreturn sub_81241A0(int a1, int a2, int a3)
     if ( !(*(v3 + 17) & 1) )
     {
         *(v3 + 17) |= 1u;
-        sound_play(138, 1, a3);
+        PlaySoundEffect(138, 1, a3);
     }
     v6 = 8;
     if ( *(v3 + 22) <= v5 )
@@ -2597,7 +2597,7 @@ int __fastcall sub_812580C(char a1, int a2, int a3)
     int v3; // r5
 
     *(v3 + 2) = a1;
-    sound_play(131, a2, a3);
+    PlaySoundEffect(131, a2, a3);
     return engine_setScreeneffect(12, 16);
 }
 
@@ -2684,7 +2684,7 @@ LABEL_17:
     }
 LABEL_21:
     if ( v8 != *(v3 + v4 + 20) || v9 != *(v3 + v4 + 24) )
-        sound_play(127, v11, v8);
+        PlaySoundEffect(127, v11, v8);
     *(v3 + v4 + 20) = v8;
     result = v4 + 24;
     *(v3 + v4 + 24) = v9;
@@ -2695,7 +2695,7 @@ LABEL_21:
 // 0x81258e8
 int __fastcall sub_81258E8(int a1, int a2, int a3)
 {
-    return sound_play(122, a2, a3);
+    return PlaySoundEffect(122, a2, a3);
 }
 
 
@@ -3808,7 +3808,7 @@ int sub_81266E0()
         *(dword_201FC20 + v3) = v6;
         result = v7;
         if ( v7 != v6 )
-            result = sound_play(128, v2, v3);
+            result = PlaySoundEffect(128, v2, v3);
     }
     return result;
 }
@@ -4172,7 +4172,7 @@ int sub_8126E10()
             if ( v8 != v10 )
             {
                 v0[16] = v8;
-                sound_play(122, v10, v9);
+                PlaySoundEffect(122, v10, v9);
                 v0[2] = 16;
                 chatbox_set_eFlags2009F38(64);
                 return sub_81272C4();
@@ -5015,7 +5015,7 @@ void sub_8127B18()
             else
             {
                 *(v0 + 2) = 12;
-                sound_play(129, v7, v8);
+                PlaySoundEffect(129, v7, v8);
                 *(v0 + 15) = sub_8120CC8(0, &dword_8127980);
                 *(v0 + 16) = v9;
             }
@@ -5032,7 +5032,7 @@ LABEL_2:
         sub_8128318();
         sub_8128008();
         sub_81281C0();
-        sound_play(129, v5, v6);
+        PlaySoundEffect(129, v5, v6);
     }
 }
 
@@ -5080,7 +5080,7 @@ void __noreturn sub_8127BE4()
         }
         else
         {
-            sound_play(129, v5, v6);
+            PlaySoundEffect(129, v5, v6);
             v7 = *(&dword_8127C54 + *(v0 + 42));
             if ( v7 == byte_2000FE0 )
             {
@@ -5099,7 +5099,7 @@ void __noreturn sub_8127BE4()
     else
     {
         *(v0 + 2) = 4;
-        sound_play(131, v2, v3);
+        PlaySoundEffect(131, v2, v3);
     }
     sub_8127F90();
     sub_812848C();
@@ -6567,14 +6567,14 @@ int sub_812933C()
                 JoypadKeyPressed();
                 if ( !v2 )
                 {
-                    sound_play(131, v9, v10);
+                    PlaySoundEffect(131, v9, v10);
                     sub_811FB64(64, v11, v12);
                     engine_setScreeneffect(12, 16);
                 }
             }
             else
             {
-                sound_play(129, v7, v8);
+                PlaySoundEffect(129, v7, v8);
                 if ( v0[13] )
                 {
                     v0[2] = 8;
@@ -6671,14 +6671,14 @@ void sub_8129454()
                     JoypadKeyPressed();
                     if ( !v2 )
                     {
-                        sound_play(131, v12, v13);
+                        PlaySoundEffect(131, v12, v13);
                         v0[2] = 24;
                         engine_setScreeneffect(12, 16);
                     }
                 }
                 else
                 {
-                    sound_play(129, v9, v10);
+                    PlaySoundEffect(129, v9, v10);
                     if ( v0[13] <= 1 )
                     {
                         sub_813D960();
@@ -6912,14 +6912,14 @@ void sub_81296D8()
             JoypadKeyPressed();
             if ( !v6 )
             {
-                sound_play(131, v7, v8);
+                PlaySoundEffect(131, v7, v8);
                 v0[3] = 24;
                 engine_setScreeneffect(12, 16);
             }
         }
         else
         {
-            sound_play(129, v4, v5);
+            PlaySoundEffect(129, v4, v5);
             v0[3] = 12;
             v0[27] |= 1u;
             v0[28] = 0;
@@ -7119,7 +7119,7 @@ void sub_8129870()
             JoypadKeyPressed();
             if ( !v6 )
             {
-                sound_play(131, v7, v8);
+                PlaySoundEffect(131, v7, v8);
                 v0[3] = 16;
                 v0[28] = 0;
                 v0[30] = 0;
@@ -7128,7 +7128,7 @@ void sub_8129870()
         }
         else
         {
-            sound_play(129, v4, v5);
+            PlaySoundEffect(129, v4, v5);
             v0[3] = 12;
             v0[28] = 0;
             v0[30] = 0;
@@ -7272,7 +7272,7 @@ void sub_81299B0()
             JoypadKeyPressed();
             if ( !v6 )
             {
-                sound_play(131, v7, v8);
+                PlaySoundEffect(131, v7, v8);
                 v0[3] = 12;
                 v0[28] = 0;
                 v0[30] = 0;
@@ -7281,7 +7281,7 @@ void sub_81299B0()
         }
         else
         {
-            sound_play(129, v4, v5);
+            PlaySoundEffect(129, v4, v5);
             if ( v0[18] == 1 && (TestEventFlagFromImmediate(0, 242), v6) )
                 chatbox_runScript_803FD9C_on_eTextScript201BA20(5);
             else
@@ -7457,7 +7457,7 @@ void sub_8129B34()
                 JoypadKeyPressed();
                 if ( !v2 )
                 {
-                    sound_play(131, v7, v8);
+                    PlaySoundEffect(131, v7, v8);
                     v0[3] = 12;
                     v0[28] = 0;
                     v0[30] = 0;
@@ -7466,7 +7466,7 @@ void sub_8129B34()
             }
             else
             {
-                sound_play(129, v5, v6);
+                PlaySoundEffect(129, v5, v6);
                 sub_812B414();
             }
         }
@@ -7660,7 +7660,7 @@ void sub_8129D00()
             JoypadKeyPressed();
             if ( !v6 )
             {
-                sound_play(131, v7, v8);
+                PlaySoundEffect(131, v7, v8);
                 v0[3] = 12;
                 v0[28] = 0;
                 v0[30] = 0;
@@ -7669,7 +7669,7 @@ void sub_8129D00()
         }
         else
         {
-            sound_play(129, v4, v5);
+            PlaySoundEffect(129, v4, v5);
             sub_812B414();
         }
     }
@@ -7957,7 +7957,7 @@ void sub_8129F88()
     JoypadKeyPressed();
     if ( !v7 )
     {
-        sound_play(131, v5, v6);
+        PlaySoundEffect(131, v5, v6);
         *(v0 + 1) = 8;
         if ( *(v0 + 14) )
             *(v0 + 2) = sub_81325E4(*(v0 + 14));
@@ -8238,7 +8238,7 @@ void sub_812A2B4()
             JoypadKeyPressed();
             if ( !v1 )
             {
-                sound_play(131, v2, v3);
+                PlaySoundEffect(131, v2, v3);
                 sub_813D978();
                 *(v0 + 12) = 20;
                 engine_setScreeneffect(12, 16);
@@ -8510,7 +8510,7 @@ void sub_812A574()
     else
     {
         sub_813D978();
-        sound_play(131, v3, v4);
+        PlaySoundEffect(131, v3, v4);
         *(v0 + 12) = 12;
     }
 }
@@ -10106,7 +10106,7 @@ int __fastcall sub_812B768(int a1, int a2)
     }
     v5 = engine_setScreeneffect(44, 16);
     musicGameState_8000784(v5, v6, v7);
-    return sound_play(120, v8, v9);
+    return PlaySoundEffect(120, v8, v9);
 }
 
 
@@ -10592,7 +10592,7 @@ int __fastcall sub_812BD34(int a1, int a2, int a3)
             v5 = 44;
             if ( v6 != 15 )
             {
-                sound_play(115, v6, a3);
+                PlaySoundEffect(115, v6, a3);
                 v5 = 51;
             }
         }
@@ -10716,7 +10716,7 @@ int __fastcall sub_812BEEC(int a1, int a2, int a3)
         v6 = *(v3 + 16);
         if ( v6 != 17 )
         {
-            sound_play(115, v6, a3);
+            PlaySoundEffect(115, v6, a3);
             v5 = 54;
         }
         chatbox_runScript_803FD9C_on_eTextScript201BA20(v5);

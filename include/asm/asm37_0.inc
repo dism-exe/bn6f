@@ -73,7 +73,7 @@
 // .global start_800027C
 
 	.include "asm/asm00_0.inc"
-// .global sound_play
+// .global PlaySoundEffect
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void

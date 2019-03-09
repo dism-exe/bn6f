@@ -67,7 +67,7 @@ signed int __fastcall sub_8092EC4(int a1)
     v7 = sub_8143DBC();
     v9 = calcAngle_800117C(v7 - v6, HIDWORD(v6) - v8);
     sub_809E13C(((((((v9 + 16) >> 4) & 0xF) >> 1) - 1) & 7) + 8);
-    sound_play(129, v10, v11);
+    PlaySoundEffect(129, v10, v11);
     *v1 = 4;
     return 1;
 }
@@ -130,14 +130,14 @@ signed int __fastcall sub_8092F76(int a1, int a2, int a3)
     if ( v5 & 2 )
     {
         sub_809322A();
-        sound_play(131, v6, v7);
+        PlaySoundEffect(131, v6, v7);
         sub_80931FA(10);
         *v3 = 16;
     }
     else if ( v5 & 1 )
     {
         sub_80931FA(30);
-        sound_play(386, v8, v9);
+        PlaySoundEffect(386, v8, v9);
         *v3 = 20;
     }
     else
@@ -190,7 +190,7 @@ signed int __fastcall sub_8092FD2(int a1)
         sub_80931FA(8);
         sub_8144010();
         v1[9] = v10;
-        sound_play(448, v10, v11);
+        PlaySoundEffect(448, v10, v11);
         *v1 = 24;
     }
     return 1;
@@ -244,7 +244,7 @@ signed int __fastcall sub_8093054(int a1)
     {
         sub_8093074(v2);
         sub_809E254();
-        sound_play(455, v4, v5);
+        PlaySoundEffect(455, v4, v5);
         *v1 = 36;
     }
     return 1;
@@ -358,7 +358,7 @@ LABEL_7:
     }
     sub_80302A8(2, 20);
     sub_80931FA(30);
-    sound_play(192, v19, v20);
+    PlaySoundEffect(192, v19, v20);
     *v1 = 44;
     return 1;
 }
@@ -520,7 +520,7 @@ int sub_809332C()
 
     sub_809E1BC();
     SpawnOverworldMapObject(2, v0 + 0x80000, v1 + 0x80000, v2 + 2359296);
-    sound_play(165, v3, v4);
+    PlaySoundEffect(165, v3, v4);
     return 0;
 }
 

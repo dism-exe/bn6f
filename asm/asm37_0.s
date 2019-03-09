@@ -1647,8 +1647,8 @@ loc_813C386:
 	mov r2, #4
 	bl SetEventFlagRange // (u16 entryFlagBitfield) -> void
 loc_813C38E:
-	mov r0, #0x8b
-	bl sound_play
+	mov r0, #SOUND_OK_8B
+	bl PlaySoundEffect
 loc_813C394:
 	mov r0, r6
 	pop {r4-r7,pc}

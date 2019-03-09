@@ -407,7 +407,7 @@ int __fastcall sub_808CD24(int a1)
         result = TestEventFlagFromImmediate(11, 241);
         if ( v3 )
         {
-            sound_play(212, v4, v5);
+            PlaySoundEffect(212, v4, v5);
             result = SetEventFlagFromImmediate(11, 241);
         }
     }
@@ -579,7 +579,7 @@ signed int sub_808CF8C()
     {
         v4 = *(v1 + oToolkit_ChatboxPtr);
         *(v4 + 76) = *(v0 + 6);
-        sound_play(290, v4, 76);
+        PlaySoundEffect(290, v4, 76);
         v2 = 1;
     }
     return v2;
@@ -619,8 +619,8 @@ signed int sub_808CFB8()
                     if ( v6 >= 0xFFFF )
                         LOWORD(v6) = -1;
                     word_2000B46 = v6;
-                    sound_play(283, 0xFFFF, 4 * (byte_2000B48 - 114) + 32);
-                    sound_play(105, v7, v8);
+                    PlaySoundEffect(283, 0xFFFF, 4 * (byte_2000B48 - 114) + 32);
+                    PlaySoundEffect(105, v7, v8);
                     v0 = 2;
                 }
                 else

@@ -1448,7 +1448,7 @@ npc_809F048:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
-	bl sound_play
+	bl PlaySoundEffect
 	add r6, #3
 	pop {pc}
 	thumb_func_end npc_809F048
@@ -1932,7 +1932,7 @@ sub_809F36E:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
-	bl sound_bgmusic_play // (int a1) -> void
+	bl PlaySong
 	add r6, #3
 	pop {pc}
 	thumb_func_end sub_809F36E
@@ -2136,8 +2136,8 @@ sub_809F4B8:
 	mov r4, #1
 	bl SpawnOverworldMapObject
 	pop {r5}
-	mov r0, #0x76 
-	bl sound_play
+	mov r0, #SOUND_LOG_OUT_76
+	bl PlaySoundEffect
 	add r6, #1
 	pop {pc}
 	thumb_func_end sub_809F4B8

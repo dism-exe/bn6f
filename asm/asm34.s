@@ -445,7 +445,7 @@ loc_812D6E6:
 	beq loc_812D6F0
 	mov r0, #0x83
 loc_812D6F0:
-	bl sound_play
+	bl PlaySoundEffect
 locret_812D6F4:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -478,8 +478,8 @@ loc_812D71E:
 	bne loc_812D730
 	ldrb r0, [r7,#0xd]
 	strb r0, [r5,#2]
-	mov r0, #0x83
-	bl sound_play
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	b locret_812D746
 loc_812D730:
 	strb r0, [r7,#0xd]
@@ -487,8 +487,8 @@ loc_812D730:
 	strb r0, [r5,#2]
 	mov r0, #0
 	strh r0, [r7,#0x34]
-	mov r0, #0x81
-	bl sound_play
+	mov r0, #SOUND_MENU_SELECT
+	bl PlaySoundEffect
 	b locret_812D746
 loc_812D742:
 	mov r0, #0
@@ -564,8 +564,8 @@ sub_812D7A4:
 	bne loc_812D7BA
 	b loc_812D800
 loc_812D7BA:
-	mov r0, #0x81
-	bl sound_play
+	mov r0, #SOUND_MENU_SELECT
+	bl PlaySoundEffect
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
 	ldrh r2, [r5,#0x34]

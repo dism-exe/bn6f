@@ -19,17 +19,19 @@ call_m4a_2_814F00C:
 	pop {pc}
 	thumb_func_end call_m4a_2_814F00C
 
-	thumb_func_start sound_play
-// (enum SoundOffsets off) -> void
-sound_play:
+	thumb_func_start PlaySoundEffect
+// (enum SoundEffect idx) -> void
+// this can play any song in the song array but
+// usage-wise it is only be used for sound effects
+PlaySoundEffect:
 	push {r1-r7,lr}
 	bl m4a_800061E // () -> void
 	pop {r1-r7,pc}
-	thumb_func_end sound_play
+	thumb_func_end PlaySoundEffect
 
-// (int a1) -> void
-	thumb_func_start sound_bgmusic_play
-sound_bgmusic_play:
+	thumb_func_start PlaySong
+// (enum Song idx) -> void
+PlaySong:
 	push {r1-r7,lr}
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -45,7 +47,7 @@ loc_80005EC:
 	bl m4a_800061E // () -> void
 locret_80005F0:
 	pop {r1-r7,pc}
-	thumb_func_end sound_bgmusic_play
+	thumb_func_end PlaySong
 
 	thumb_func_start sub_80005F2
 sub_80005F2:
@@ -1645,7 +1647,7 @@ loc_800104A:
 	and r7, r6
 	bne locret_8001078
 	mov r0, #0x91
-	bl sound_play
+	bl PlaySoundEffect
 locret_8001078:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8001040
@@ -4220,7 +4222,7 @@ sub_800232A:
 	ldr r0, [r0]
 	cmp r0, #0
 	blt locret_8002336
-	bl sound_play
+	bl PlaySoundEffect
 locret_8002336:
 	pop {pc}
 	thumb_func_end sub_800232A

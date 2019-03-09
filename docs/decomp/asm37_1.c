@@ -1308,7 +1308,7 @@ int sub_8142BB6()
                 v8 = *(v0 + 2);
                 v9 = sub_8142868();
                 sub_8004822(19, v9, v10, v11);
-                result = sound_play(109, v6, v7);
+                result = PlaySoundEffect(109, v6, v7);
             }
         }
         v0 += 8;
@@ -1405,8 +1405,8 @@ int __fastcall sub_8142C46(int a1)
     v7 = sub_809E1AE();
     sub_8004822(19, v7, SHIDWORD(v7), v8);
     sub_80302A8(1, 20);
-    sound_play(107, v9, v10);
-    return sound_play(268, v11, v12);
+    PlaySoundEffect(107, v9, v10);
+    return PlaySoundEffect(268, v11, v12);
 }
 
 
@@ -1635,7 +1635,7 @@ int sub_8142FC8()
         {
             sub_81433DA();
             if ( v4 )
-                sound_play(105, v2, v3);
+                PlaySoundEffect(105, v2, v3);
             else
                 SetEventFlagFromImmediate(9, 98);
         }
@@ -2694,7 +2694,7 @@ int __fastcall sub_8143FC4(int a1, int a2, int a3)
     int v4; // r1
 
     if ( !dword_2001024 )
-        sound_play(440, a2, a3);
+        PlaySoundEffect(440, a2, a3);
     result = dword_2001024 + dword_2001028;
     v4 = dword_2001028 + dword_200102C;
     if ( dword_2001024 + dword_2001028 < 0 )

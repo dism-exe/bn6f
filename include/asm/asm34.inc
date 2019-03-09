@@ -32,7 +32,7 @@
 // .global byte_30069A0
 
 	.include "asm/asm00_0.inc"
-// .global sound_play
+// .global PlaySoundEffect
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global ZeroFillGFX30025c0
 // .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void

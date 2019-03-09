@@ -238,7 +238,7 @@ LABEL_17:
 	v6 = 129;
 	if ( v5 != 4 )
 		v6 = 131;
-	sound_play(v6, v5, v4);
+	PlaySoundEffect(v6, v5, v4);
 }
 
 
@@ -267,14 +267,14 @@ void sub_812D700()
 		if ( v5 == 32 )
 		{
 			*(v0 + 2) = v1[13];
-			sound_play(131, v2, v3);
+			PlaySoundEffect(131, v2, v3);
 		}
 		else
 		{
 			v1[13] = v5;
 			*(v0 + 2) = 32;
 			*(v1 + 26) = 0;
-			sound_play(129, v2, v3);
+			PlaySoundEffect(129, v2, v3);
 		}
 	}
 }
@@ -337,7 +337,7 @@ signed int sub_812D7A4()
 	JoypadKeyPressed();
 	if ( v4 )
 		return 0;
-	sound_play(129, v2, v3);
+	PlaySoundEffect(129, v2, v3);
 	v5 = *(v0 + oToolkit_Unk2001c04_Ptr);
 	v6 = *(v1 + 26);
 	v7 = *(v5 + 2);

@@ -1,3 +1,5 @@
+
+    // enum Song
     enum_start 0x00
     enum SONG_NO_MUSIC // 0x00
     enum SONG_TITLE_SCREEN // 0x01
@@ -24,13 +26,13 @@
     enum SONG_BOSS_BATTLE // 0x16
     enum SONG_FINAL_BATTLE // 0x17
     enum SONG_PAVILION // 0x18
-    enum SONG_WINNER // 0x19
-    enum SONG_LOSER //F 0x1A
+    enum SONG_WINNER_0 // 0x19
+    enum SONG_LOSER // 0x1A
     enum SONG_GAME_OVER // 0x1B
     enum SONG_BOSS_PRELUDE // 0x1C
     enum SONG_CREDITS // 0x1D
     enum SONG_NAVI_CUSTOMIZER // 0x1E
-    enum SONG_WINTER // 0x1F
+    enum SONG_WINNER_1 // 0x1F
     enum SONG_PAVILION_COMP // 0x20
     enum SONG_CYBERBEASTS // 0x21
     enum SONG_CROSSOVER_BATTLE // 0x22
@@ -38,6 +40,7 @@
     enum SONG_ACDC_TOWN // 0x24
     enum SONG_EXPO // 0x25
 
+    // enum SoundEffect
     enum_start 0x64
     enum SOUND_BEEP_64 // 0x64
     enum SOUND_TYPE // 0x65
@@ -49,7 +52,7 @@
     enum SOUND_HIT_6B // 0x6B
     enum SOUND_DELETED // 0x6C
     enum SOUND_HIT_6D // 0x6D
-    enum SOUND_HIT_6E / 0x6E
+    enum SOUND_HIT_6E // 0x6E
     enum SOUND_HIT_BOMB_0 // 0x6F
     enum SOUND_HIT_BOMB_1 // 0x70
     enum SOUND_BUSTER_CHARGE // 0x71
@@ -74,7 +77,6 @@
     enum SOUND_LOW_HP // 0x84
     enum SOUND_UNK_85 // 0x85
     enum SOUND_SELECT_86 // 0x86
-    enum SOUND_HIT_86 // 0x87
     enum SOUND_HIT_87 // 0x87
     enum SOUND_UNK_88 // 0x88
     enum SOUND_UNK_89 // 0x89

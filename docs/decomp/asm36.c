@@ -1579,7 +1579,7 @@ LABEL_23:
     v10 = 129;
     if ( v9 != 4 )
         v10 = 131;
-    sound_play(v10, v9, v8);
+    PlaySoundEffect(v10, v9, v8);
 }
 
 
@@ -1929,7 +1929,7 @@ signed int __fastcall sub_8131768(int a1, int a2, int a3)
 
     *(v3 + 38) = 0;
     *(v3 + 42) = -292;
-    sound_play(131, 65244, a3);
+    PlaySoundEffect(131, 65244, a3);
     chatbox_runScript_803FD9C_on_eTextScript201BA20(104);
     result = 32;
     *(v3 + 27) |= 0x20u;
@@ -3840,7 +3840,7 @@ int __fastcall sub_8133434(int a1)
         {
             if ( chatbox_8045F4C() )
             {
-                sound_play(129, v4, v5);
+                PlaySoundEffect(129, v4, v5);
                 v1[2] = 4;
                 result = v1[13];
                 v1[3] = result;
@@ -3894,13 +3894,13 @@ LABEL_14:
             if ( !v2 )
             {
                 *(v1 + 2) = 16;
-                sound_play(131, v6, v7);
+                PlaySoundEffect(131, v6, v7);
                 chatbox_runScript_803FD9C_on_eTextScript2028A20(11);
             }
         }
         else
         {
-            sound_play(129, v4, v5);
+            PlaySoundEffect(129, v4, v5);
             if ( chatbox_8045F4C() )
             {
                 sub_8134FE0();
@@ -3951,7 +3951,7 @@ void sub_8133564()
             JoypadKeyPressed();
             if ( !v2 )
             {
-                sound_play(131, v3, v4);
+                PlaySoundEffect(131, v3, v4);
                 v5 = 10;
                 sub_81355D8();
                 if ( !v2 )
@@ -4044,7 +4044,7 @@ void sub_8133618()
     }
     else
     {
-        sound_play(129, v2, v3);
+        PlaySoundEffect(129, v2, v3);
         *(v0 + 104) = 12;
         chatbox_runScript_803FD9C_on_eTextScript2028A20(12);
     }
@@ -4075,7 +4075,7 @@ void sub_8133648()
     else
     {
         sub_8135404();
-        sound_play(130, v2, v3);
+        PlaySoundEffect(130, v2, v3);
         *(v0 + 104) = 20;
         chatbox_runScript_803FD9C_on_eTextScript2028A20(26);
     }
@@ -4089,7 +4089,7 @@ int __fastcall sub_813367C(int a1)
     int v2; // r2
 
     chatbox_runScript_803FD9C_on_eTextScript2028A20(*&byte_8133694[a1 - 4]);
-    return sound_play(105, v1, v2);
+    return PlaySoundEffect(105, v1, v2);
 }
 
 
@@ -4132,7 +4132,7 @@ void sub_81336C4()
             JoypadKeyPressed();
             if ( !v2 )
             {
-                sound_play(131, v4, v5);
+                PlaySoundEffect(131, v4, v5);
                 if ( *(v0 + 92) == 0xFFFF )
                 {
                     v6 = 10;
@@ -4286,7 +4286,7 @@ void __fastcall __noreturn sub_81337E8(int a1)
             *(v1 + 1) = 16;
             *(v1 + 2) = 0;
             chatbox_runScript_803FD9C_on_eTextScript2028A20(23);
-            sound_play(123, v4, v5);
+            PlaySoundEffect(123, v4, v5);
             goto LABEL_20;
         }
     }
@@ -4620,7 +4620,7 @@ void sub_8133BB4()
         if ( *(v0 + 68) )
         {
             *(v0 + 68) = 0;
-            sound_play(131, v2, v3);
+            PlaySoundEffect(131, v2, v3);
         }
         else if ( *(v0 + 23) == 30 )
         {
@@ -4633,7 +4633,7 @@ void sub_8133BB4()
             *(v0 + 2) = 8;
             *(*(v1 + oToolkit_ChatboxPtr) + 76) = *(v0 + 30);
             chatbox_runScript_803FD9C_on_eTextScript2028A20(2);
-            sound_play(105, v5, v6);
+            PlaySoundEffect(105, v5, v6);
         }
     }
 }
@@ -4657,14 +4657,14 @@ void sub_8133C0C()
             if ( v4 == 12 )
             {
                 *(v0 + 3) = *(v0 + 13);
-                sound_play(131, v1, v2);
+                PlaySoundEffect(131, v1, v2);
             }
             else
             {
                 *(v0 + 13) = v4;
                 *(v0 + 3) = 12;
                 *(v0 + 52) = 0;
-                sound_play(129, v1, v2);
+                PlaySoundEffect(129, v1, v2);
             }
         }
     }
@@ -4683,7 +4683,7 @@ void sub_8133C58()
     JoypadKeyPressed();
     if ( !v3 && !v0[68] )
     {
-        sound_play(129, v1, v2);
+        PlaySoundEffect(129, v1, v2);
         v0[3] = 0;
         v4 = 10;
         sub_81355D8();
@@ -4719,7 +4719,7 @@ signed int sub_8133C9C()
         v4 = *(v0 + 76) & 0xFFFFFFFE;
         *(v0 + 76) = v4;
         *(v0 + 28) = -1;
-        sound_play(131, v4, v2);
+        PlaySoundEffect(131, v4, v2);
         chatbox_runScript_803FD9C_on_eTextScript2028A20(33);
 LABEL_17:
         result = 12;
@@ -4748,11 +4748,11 @@ LABEL_17:
         sub_81353DC();
         v10 = *(v0 + 76) | 1;
         *(v0 + 76) = v10;
-        sound_play(130, v10, v11);
+        PlaySoundEffect(130, v10, v11);
         chatbox_runScript_803FD9C_on_eTextScript2028A20(25);
         goto LABEL_17;
     }
-    sound_play(105, 1, v8);
+    PlaySoundEffect(105, 1, v8);
     if ( v9 )
     {
         chatbox_runScript_803FD9C_on_eTextScript2028A20(1);
@@ -4805,7 +4805,7 @@ signed int sub_8133D64()
         else
             v8 = 16;
 LABEL_8:
-        sound_play(105, v5, v7);
+        PlaySoundEffect(105, v5, v7);
         return v8;
     }
     v8 = 12;
@@ -4825,7 +4825,7 @@ LABEL_8:
     sub_81353F0(*&byte_8133E34[4 * v3], v3);
     v11 = *(v0 + 76) | v10;
     *(v0 + 76) = v11;
-    sound_play(129, v11, v12);
+    PlaySoundEffect(129, v11, v12);
     return 0;
 }
 
@@ -4861,7 +4861,7 @@ signed int __fastcall sub_8133E3C(int a1, int a2)
         }
     }
     if ( !v4 )
-        sound_play(122, a2, v7);
+        PlaySoundEffect(122, a2, v7);
     return v4;
 }
 
@@ -5298,7 +5298,7 @@ signed int sub_81347A4()
             v19 = *v5;
         }
     }
-    sound_play(129, v2, v3);
+    PlaySoundEffect(129, v2, v3);
     v6 = *(v0 + 13);
     v7 = *(v1 + oToolkit_Unk2001c04_Ptr);
     v8 = *(v0 + 52);
@@ -5518,7 +5518,7 @@ signed int sub_8134A3C()
         else
         {
             sub_8134ABC(v5);
-            sound_play(129, v6, v7);
+            PlaySoundEffect(129, v6, v7);
         }
     }
     return v1;
@@ -5616,7 +5616,7 @@ int sub_8134ADC()
     v9 = *v8;
     if ( v6 == v9 || (v10 = sub_8135080(v6, v5[14] >> 7, v38[14] >> 7, v7), v12) )
     {
-        sound_play(129, v8, v9);
+        PlaySoundEffect(129, v8, v9);
         sub_8134F88(*(v3 + 2));
         sub_8134FB0(*(v3 + 2));
         sub_8134F78();
@@ -5779,14 +5779,14 @@ int sub_8134CF0()
                 }
                 ZeroFillByEightWords(v5, 32);
                 *(v0 + 23) = sub_8134EA8(*(v0 + 30), v7, v8, v9);
-                sound_play(129, v10, v11);
+                PlaySoundEffect(129, v10, v11);
                 sub_8134F88(*(v0 + 32) + *(v0 + 36));
                 sub_8134FB0(*(v0 + 32) + *(v0 + 36));
                 sub_8134F78();
             }
             else
             {
-                sound_play(105, 74, v3);
+                PlaySoundEffect(105, 74, v3);
             }
         }
         else
@@ -5808,7 +5808,7 @@ int sub_8134CF0()
                 v16 = sub_8135080(*v12, v12[14] >> 7, 0, word_202A020);
                 if ( v20 )
                 {
-                    sound_play(129, v17, v18);
+                    PlaySoundEffect(129, v17, v18);
                     v21 = v14 - 1;
                     if ( v21 )
                     {
@@ -5844,7 +5844,7 @@ int sub_8134CF0()
             else
             {
 LABEL_12:
-                sound_play(105, v2, v13);
+                PlaySoundEffect(105, v2, v13);
             }
         }
     }
@@ -5861,7 +5861,7 @@ LABEL_12:
         CopyByEightWords(v33, &unk_2035C6C, 0x20u);
         CopyByEightWords(v34, v33, 0x20u);
         CopyByEightWords(&unk_2035C6C, v34, 0x20u);
-        sound_play(129, v41, v42);
+        PlaySoundEffect(129, v41, v42);
         sub_8134F78();
     }
     *(v0 + 60) = 0x7FFF;
@@ -6242,7 +6242,7 @@ signed int __fastcall sub_81351F4(int a1, int a2, int a3, int a4)
         *(*(v5 + oToolkit_ChatboxPtr) + 76) = a2;
     }
     chatbox_runScript_803FD9C_on_eTextScript2028A20(v6);
-    sound_play(105, v7, v8);
+    PlaySoundEffect(105, v7, v8);
     v4[13] = v4[3];
     result = 8;
     v4[2] = 8;
@@ -6778,7 +6778,7 @@ int sub_8135830()
         }
         if ( *(*(v1 + oToolkit_JoypadPtr) + 2) & 0x20 )
         {
-            sound_play(129, 32, v7);
+            PlaySoundEffect(129, 32, v7);
             *(v0 + 2) = 8;
             sub_8135FA4();
             sub_8135F5C();
@@ -6930,7 +6930,7 @@ int __fastcall sub_81359A0(int a1, int a2, int a3)
                 }
                 else
                 {
-                    sound_play(131, v7, v8);
+                    PlaySoundEffect(131, v7, v8);
                     sub_8046696(10);
                     *(v3 + 48) = 255;
                     chatbox_runScript_803FD9C_on_eTextScript201D280(5);
@@ -7438,7 +7438,7 @@ void __fastcall sub_8135FDC(int a1, int a2, int a3)
     {
         if ( v5 & 2 )
         {
-            sound_play(131, 2, a3);
+            PlaySoundEffect(131, 2, a3);
             sub_81360B4();
         }
         if ( !(v5 & 1) )
@@ -7529,7 +7529,7 @@ int sub_8136100()
         sub_80465A0(byte_8135654);
         v1 = 129;
     }
-    return sound_play(v1, v2, v3);
+    return PlaySoundEffect(v1, v2, v3);
 }
 
 
@@ -7566,14 +7566,14 @@ int __fastcall sub_813612C(int a1, int a2, int a3)
             v9 = sub_813B928();
             *(v3 + 14) = sub_813B920((v9 - 1) & 3);
             sub_8136384();
-            return sound_play(127, v10, v11);
+            return PlaySoundEffect(127, v10, v11);
         }
         if ( v5 & byte_100 )
         {
             v12 = sub_813B928();
             *(v3 + 14) = sub_813B920((v12 + 1) & 3);
             sub_8136384();
-            return sound_play(127, v10, v11);
+            return PlaySoundEffect(127, v10, v11);
         }
     }
     v13 = *(*(v4 + oToolkit_JoypadPtr) + 4);
@@ -7592,7 +7592,7 @@ int __fastcall sub_813612C(int a1, int a2, int a3)
             *(v3 + 44) = v11;
             result = *(v3 + 46);
             if ( result != v11 )
-                return sound_play(127, v10, v11);
+                return PlaySoundEffect(127, v10, v11);
         }
     }
     else if ( v13 & 0x30 )
@@ -7610,7 +7610,7 @@ int __fastcall sub_813612C(int a1, int a2, int a3)
             *(v3 + 40) = v11;
             result = *(v3 + 42);
             if ( result != v11 )
-                return sound_play(127, v10, v11);
+                return PlaySoundEffect(127, v10, v11);
         }
     }
     return result;
@@ -7640,7 +7640,7 @@ int sub_8136218()
     {
         if ( &dword_14C == v2 )
         {
-            sound_play(130, v3, v4);
+            PlaySoundEffect(130, v3, v4);
             *(v0 + 2) = 44;
             sub_813686C();
         }
@@ -7649,10 +7649,10 @@ int sub_8136218()
             *(v0 + 2) = 16;
             sub_813660C(1);
             sub_813C1C0(1);
-            return sound_play(129, v6, v7);
+            return PlaySoundEffect(129, v6, v7);
         }
     }
-    return sound_play(105, v3, v4);
+    return PlaySoundEffect(105, v3, v4);
 }
 
 
@@ -7665,7 +7665,7 @@ signed int sub_813627C()
     signed int result; // r0
 
     chatbox_runScript_803FD9C_on_eTextScript201D280(0);
-    sound_play(123, v1, v2);
+    PlaySoundEffect(123, v1, v2);
     result = 52;
     *(v0 + 2) = 52;
     return result;
@@ -7824,7 +7824,7 @@ int __fastcall sub_813640C(int a1, int a2, int a3)
         *(v3 + 44) = *(v3 + 62);
         *(v3 + 40) = v4;
         *(v3 + 2) = 24;
-        result = sound_play(129, v4, a3);
+        result = PlaySoundEffect(129, v4, a3);
     }
     else
     {
@@ -7835,7 +7835,7 @@ int __fastcall sub_813640C(int a1, int a2, int a3)
         sub_813660C(0);
         sub_813C1C0(0);
         sub_81362F8();
-        result = sound_play(131, v6, v7);
+        result = PlaySoundEffect(131, v6, v7);
     }
     return result;
 }
@@ -7854,7 +7854,7 @@ int sub_8136450()
 
     v1 = sub_81364BC();
     if ( !v4 )
-        return sound_play(105, v2, v3);
+        return PlaySoundEffect(105, v2, v3);
     *(v0 + 24) = v1;
     sub_81364E8(v1);
     if ( !*(v0 + 16) )
@@ -7872,7 +7872,7 @@ int sub_8136450()
     *(v0 + 14) = 0;
     *(v0 + 20) = 0;
     sub_813B920(0);
-    return sound_play(129, v5, v6);
+    return PlaySoundEffect(129, v5, v6);
 }
 
 
@@ -7938,7 +7938,7 @@ signed int __fastcall sub_813652C(int a1, int a2, int a3)
     v5 = *(*(v4 + oToolkit_JoypadPtr) + 2);
     if ( v5 & 2 )
     {
-        sound_play(131, 2, a3);
+        PlaySoundEffect(131, 2, a3);
         sub_8046696(10);
         result = 255;
         *(v3 + 48) = 255;
@@ -7946,7 +7946,7 @@ signed int __fastcall sub_813652C(int a1, int a2, int a3)
     }
     if ( v5 & 1 )
     {
-        sound_play(129, 1, a3);
+        PlaySoundEffect(129, 1, a3);
         return sub_8046696(10);
     }
     if ( v5 & 0xC0 )
@@ -7964,7 +7964,7 @@ signed int __fastcall sub_813652C(int a1, int a2, int a3)
             {
 LABEL_12:
                 *(v3 + 48) = v11;
-                return sound_play(127, v11, a3);
+                return PlaySoundEffect(127, v11, a3);
             }
             v8 = 0;
         }
@@ -8202,7 +8202,7 @@ int __fastcall sub_81367A0(int a1, int a2, int a3)
     *(v3 + 36) = v7;
     *(v3 + 32) = v4;
     *(v3 + 12) = 12;
-    return sound_play(129, v4, a3);
+    return PlaySoundEffect(129, v4, a3);
 }
 
 
@@ -8227,7 +8227,7 @@ void sub_81367C0()
     }
     *(v0 + 22) = *(v0 + 2);
     *(v0 + 2) = 48;
-    sound_play(131, v2, v3);
+    PlaySoundEffect(131, v2, v3);
     chatbox_runScript_803FD9C_on_eTextScript201D280(4);
 }
 
@@ -8353,7 +8353,7 @@ int sub_81369D0()
         sub_80465A0(byte_813683C);
         *(v0 + 3) = 48;
         *(v0 + 21) = 0;
-        sound_play(116, v2, v3);
+        PlaySoundEffect(116, v2, v3);
     }
     return sub_8136B10(2);
 }
@@ -9916,12 +9916,12 @@ signed int sub_81379A0()
         {
             if ( !sub_8138170() )
             {
-                sound_play(129, v3, v4);
+                PlaySoundEffect(129, v3, v4);
                 result = 8;
                 v0[2] = 8;
                 return result;
             }
-            sound_play(105, v3, v4);
+            PlaySoundEffect(105, v3, v4);
         }
     }
     JoypadKeyPressed();
@@ -9938,7 +9938,7 @@ signed int sub_81379A0()
     {
         v0[1] = 8;
         v0[2] = 0;
-        sound_play(131, v6, v7);
+        PlaySoundEffect(131, v6, v7);
         result = engine_setScreeneffect(12, 16);
     }
     return result;
@@ -10543,12 +10543,12 @@ int cb_81382AC()
     unsigned __int8 *v0; // r5
 
     v0 = sub_8138750();
-    return (*(&off_81382C4 + *v0))();
+    return (*(&JumpTable81382C4 + *v0))();
 }
 
 
 // 0x81382d0
-void __fastcall __noreturn sub_81382D0(int a1, int a2, int a3, int a4)
+void __fastcall __noreturn playCreditsScene_81382D0(int a1, int a2, int a3, int a4)
 {
     int v4; // r0
     int v5; // r1

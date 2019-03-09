@@ -593,7 +593,7 @@ void sub_812F530()
 									}
 									else
 									{
-										sound_play(131, 65244, 65244);
+										PlaySoundEffect(131, 65244, 65244);
 										engine_setScreeneffect(12, 16);
 										*(v0 + 3) = 1;
 									}
@@ -646,7 +646,7 @@ void sub_812F628()
 		if ( !v3 )
 		{
 			*(v0 + 38) = 0;
-			sound_play(131, 0, v2);
+			PlaySoundEffect(131, 0, v2);
 		}
 	}
 	else
@@ -669,7 +669,7 @@ void sub_812F628()
 		else
 		{
 			*(v0 + 21) = 1;
-			sound_play(131, v7, v8);
+			PlaySoundEffect(131, v7, v8);
 		}
 		v10 = 4;
 		if ( *(v0 + 21) )
@@ -679,7 +679,7 @@ void sub_812F628()
 		v12 = *(v0 + 38);
 		if ( v12 != 4 )
 			v11 = 131;
-		sound_play(v11, v12, v9);
+		PlaySoundEffect(v11, v12, v9);
 	}
 LABEL_14:
 	v13 = sub_803EAE4();
@@ -1293,7 +1293,7 @@ signed int sub_812FC50()
         while ( v10 < 60 );
     }
     sub_803F798();
-    sound_play(115, v15, v16);
+    PlaySoundEffect(115, v15, v16);
     chatbox_runScript_803FD9C_on_eTextScript201BA20(61);
     result = 8;
     *(v0 + 12) = 8;

@@ -4,8 +4,8 @@
 /* Public Symbols */
 	.global call_m4aSoundMain
 	.global call_m4a_2_814F00C
-	.global sound_play
-	.global sound_bgmusic_play // (int a1) -> void
+	.global PlaySoundEffect
+	.global PlaySong // (int a1) -> void
 	.global sub_80005F2
 	.global sub_800060A
 	.global sub_8000642

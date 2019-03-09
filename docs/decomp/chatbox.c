@@ -182,7 +182,7 @@ LABEL_15:
             cb->bNumCharacterTyped = cb->typingSpeed;
             v5 = chatbox_maskFlags_3e(0x40u);
             if ( zf )
-                v5 = sound_play(cb->unk_68, v6, offsetof(ChatBoxPropreties, unk_68));
+                v5 = PlaySoundEffect(cb->unk_68, v6, offsetof(ChatBoxPropreties, unk_68));
             if ( v6 == 228 )
             {
                 v8 = cb->unk_7C;
@@ -1621,7 +1621,7 @@ signed int chatbox_ED_select()
         if ( v5 != v6 )
         {
             *(v1 + offsetof(ChatBoxPropreties, chatbox_y)) = 0;
-            sound_play(*(v1 + 108), v6, 108);
+            PlaySoundEffect(*(v1 + 108), v6, 108);
         }
     }
 LABEL_8:
@@ -1660,7 +1660,7 @@ LABEL_18:
     if ( v10 & 1 )
     {
         if ( !chatbox_maskFlags_3e(0x80u) )
-            sound_play(*(v1 + 110), 110, v15);
+            PlaySoundEffect(*(v1 + 110), 110, v15);
 LABEL_22:
         chatbox_clearFlags_3e(80);
         chatbox_clear_eFlags2009F38(7);
@@ -1713,7 +1713,7 @@ LABEL_22:
             *(v1 + offsetof(ChatBoxPropreties, choiceCursorPos)) = v20;
             chatbox_set_eFlags2009F38(v20);
             if ( !chatbox_maskFlags_3e(0x80u) )
-                sound_play(*(v1 + 106), 106, v21);
+                PlaySoundEffect(*(v1 + 106), 106, v21);
             *(v1 + offsetof(ChatBoxPropreties, chatPageState)) = 2;
             *(v1 + offsetof(ChatBoxPropreties, chatbox_y)) = 3;
             chatbox_clearFlags_3e(16);
@@ -2499,13 +2499,13 @@ signed int __fastcall chatbox_F4_unk(int a1, int a2, int a3, int a4)
             sub_803CE08(v4[2], v4[3]);
             return 1;
         case 2u:
-            sound_play(115, v7, a3);
+            PlaySoundEffect(115, v7, a3);
             sub_803CDF8(v4[2], v4[3]);
             result = 1;
             break;
         default:
 LABEL_13:
-            sound_play(115, v7, a3);
+            PlaySoundEffect(115, v7, a3);
             v8 = v4[2];
             if ( v8 == 255 )
             {
@@ -2641,12 +2641,12 @@ int __fastcall chatbox_8041DF4(int a1, int a2, int a3, int a4, int (__fastcall *
         {
             if ( v7 == 2 )
             {
-                sound_play(115, a2, a3);
+                PlaySoundEffect(115, a2, a3);
                 sub_8021B78(v5[2] | (v5[3] << 8), v5[4], v5[5]);
             }
             else
             {
-                sound_play(115, a2, a3);
+                PlaySoundEffect(115, a2, a3);
                 sub_811FFC0();
             }
             result = a5(1);
@@ -2654,7 +2654,7 @@ int __fastcall chatbox_8041DF4(int a1, int a2, int a3, int a4, int (__fastcall *
     }
     else
     {
-        sound_play(115, a2, a3);
+        PlaySoundEffect(115, a2, a3);
         v9 = v5[2] | (v5[3] << 8);
         if ( v9 == 0xFFFF )
             v9 = *(v6 + 84);
@@ -2935,7 +2935,7 @@ signed int __fastcall chatbox_80422D4(int a1, int a2, int a3)
 {
     int v3; // r4
 
-    sound_play(*(v3 + 2) | (*(v3 + 3) << 8), *(v3 + 3) << 8, a3);
+    PlaySoundEffect(*(v3 + 2) | (*(v3 + 3) << 8), *(v3 + 3) << 8, a3);
     return 1;
 }
 
@@ -2945,7 +2945,7 @@ signed int __fastcall chatbox_80422E8(int a1, int a2, int a3)
 {
     int v3; // r4
 
-    sound_bgmusic_play(*(v3 + 2) | (*(v3 + 3) << 8), *(v3 + 3) << 8, a3);
+    PlaySong(*(v3 + 2) | (*(v3 + 3) << 8), *(v3 + 3) << 8, a3);
     return 1;
 }
 
@@ -3041,7 +3041,7 @@ signed int __fastcall chatbox_80423DC(int a1, int a2, int a3)
     int v4; // r5
     int v5; // r4
 
-    sound_play(115, a2, a3);
+    PlaySoundEffect(115, a2, a3);
     *(v4 + 76) = *(4 * *(v3 + 2) + v3 + 3) | (*(4 * *(v3 + 2) + v3 + 4) << 8) | (*(4 * *(v3 + 2) + v3 + 5) << 16) | (*(4 * *(v3 + 2) + v3 + 6) << 24);
     sub_803CFF8();
     v5 = v3 + 4 * (*(v3 + 2) + 1) + 3;
@@ -3059,7 +3059,7 @@ signed int __fastcall chatbox_8042418(int a1, int a2, int a3)
     int v7; // r0
     int v8; // r4
 
-    sound_play(115, a2, a3);
+    PlaySoundEffect(115, a2, a3);
     v5 = (2 * *(v3 + 2) + v3 + 3);
     v4[21] = 1;
     v6 = v5[1];
@@ -3179,7 +3179,7 @@ int __fastcall chatbox_804252C(int a1, int a2, int a3)
     int v6; // r6
     int v7; // r0
 
-    sound_play(138, a2, a3);
+    PlaySoundEffect(138, a2, a3);
     v4 = *(v3 + 2) | (*(v3 + 3) << 8);
     v5 = getPETNaviSelect();
     v6 = v5;
@@ -3198,7 +3198,7 @@ signed int __fastcall sub_8042554(int a1, int a2, int a3)
     signed int v6; // r0
     int v7; // r4
 
-    sound_play(115, a2, a3);
+    PlaySoundEffect(115, a2, a3);
     GetRNG2();
     v6 = *((*(v3 + 2) & v5) + v3 + 3);
     *(v4 + 76) = v6;
@@ -3312,7 +3312,7 @@ signed int chatbox_8042678()
     sub_803F798();
     v5 = v2;
     if ( !v2 )
-        sound_play(116, v0, v1);
+        PlaySoundEffect(116, v0, v1);
     v3 = *(v6 + v5 + 2);
     if ( v3 != 255 )
         chatbox_config_80408D0(v5 + 2, v3);
@@ -3556,7 +3556,7 @@ signed int chatbox_8042A9C()
         if ( v4 != 1 )
         {
             v7 = v4;
-            sound_play(115, v5, v6);
+            PlaySoundEffect(115, v5, v6);
             v4 = v7;
         }
         v12 = v4 + 4;
@@ -3587,7 +3587,7 @@ LABEL_18:
         goto LABEL_18;
     }
     if ( sub_803CDF8(v0[2], v0[3]) != 1 )
-        sound_play(115, v9, v10);
+        PlaySoundEffect(115, v9, v10);
     return 1;
 }
 
@@ -3623,7 +3623,7 @@ signed int chatbox_8042B38()
         *(v1 + 84) = v3;
         sub_803CFF8();
         v5 = v4;
-        sound_play(115, v6, v7);
+        PlaySoundEffect(115, v6, v7);
         v8 = v5 + 6;
         v9 = v0[v5 + 6];
     }
@@ -3640,7 +3640,7 @@ signed int chatbox_8042B38()
         {
             v12 = v0[2] | (v0[3] << 8) | (v0[4] << 16) | (v0[5] << 24);
             sub_803D02C();
-            sound_play(115, v13, v14);
+            PlaySoundEffect(115, v13, v14);
             return 1;
         }
         v18 = v0[2] | (v0[3] << 8) | (v0[4] << 16) | (v0[5] << 24);
@@ -3692,7 +3692,7 @@ signed int chatbox_8042C18()
         *(v1 + 84) = v3;
         sub_803D080();
         v5 = v4;
-        sound_play(115, v6, v7);
+        PlaySoundEffect(115, v6, v7);
         v8 = v5 + 6;
         v9 = v0[v5 + 6];
     }
@@ -3709,7 +3709,7 @@ signed int chatbox_8042C18()
         {
             v12 = v0[2] | (v0[3] << 8) | (v0[4] << 16) | (v0[5] << 24);
             sub_803D0B4();
-            sound_play(115, v13, v14);
+            PlaySoundEffect(115, v13, v14);
             return 1;
         }
         v18 = v0[2] | (v0[3] << 8) | (v0[4] << 16) | (v0[5] << 24);
@@ -3773,7 +3773,7 @@ int chatbox_8042D68()
         {
             if ( *(v0 + 19) != 8 )
             {
-                sound_play(*(v0 + 108), 108, v5);
+                PlaySoundEffect(*(v0 + 108), 108, v5);
                 *(v0 + 19) = 8;
             }
         }
@@ -3781,7 +3781,7 @@ int chatbox_8042D68()
     }
     if ( *(v0 + 19) != 8 )
         return 0;
-    sound_play(*(v0 + 110), 110, v5);
+    PlaySoundEffect(*(v0 + 110), 110, v5);
     chatbox_clearFlags_3e(17);
     chatbox_clear_eFlags2009F38(7);
     chatbox_set_eFlags2009F38(*(v0 + 19));
@@ -4123,7 +4123,7 @@ signed int __usercall __noreturn chatbox_8043164@<R0>(ChatBoxPropreties *cb@<R5>
     v12 = cb->choiceCursorPos;
     cb->choiceCursorPos = v11;
     if ( v11 != v12 )
-        sound_play(cb->unk_6C, v12, 108);
+        PlaySoundEffect(cb->unk_6C, v12, 108);
 LABEL_7:
     v13 = cb->choiceCursorPos;
     v14 = cb->choiceCursorPos;
@@ -4133,7 +4133,7 @@ LABEL_7:
         v15 = tk->joystick->keyPress;
         if ( v15 & 0x80 || v15 & 0x40 )
         {
-            sound_play(cb->unk_6C, 108, v8);
+            PlaySoundEffect(cb->unk_6C, 108, v8);
             *(&cb->unk_4C + cb->choiceCursorPos) = v9;
         }
     }
@@ -4170,7 +4170,7 @@ LABEL_7:
         {
             if ( cb->choiceCursorPos != 8 )
             {
-                sound_play(cb->unk_6C, 108, v17);
+                PlaySoundEffect(cb->unk_6C, 108, v17);
                 cb->choiceCursorPos = 8;
             }
         }
@@ -4178,7 +4178,7 @@ LABEL_7:
     }
     if ( cb->choiceCursorPos != 8 )
         return 0;
-    sound_play(cb->unk_6E, 110, v17);
+    PlaySoundEffect(cb->unk_6E, 110, v17);
     chatbox_clearFlags_3e(17);
     chatbox_clear_eFlags2009F38(7);
     chatbox_set_eFlags2009F38(cb->choiceCursorPos);
@@ -4282,7 +4282,7 @@ signed int __noreturn chatbox_804330C()
     v13 = *(v1 + 19);
     *(v1 + 19) = v12;
     if ( v12 != v13 )
-        sound_play(*(v1 + 108), v13, 108);
+        PlaySoundEffect(*(v1 + 108), v13, 108);
 LABEL_7:
     if ( *(v1 + 128) - 1 != *(v1 + 19) )
     {
@@ -4294,7 +4294,7 @@ LABEL_7:
             v16 = *(*(v2 + oToolkit_JoypadPtr) + 4);
             if ( v16 & 0x80 || v16 & 0x40 )
             {
-                sound_play(*(v1 + 108), 108, v15);
+                PlaySoundEffect(*(v1 + 108), 108, v15);
                 *(v1 + v17) = v10;
             }
         }
@@ -4333,7 +4333,7 @@ LABEL_7:
     }
     if ( *(v0 + 1) != 5 && *(v1 + 38) & 2 )
     {
-        sound_play(*(v1 + 106), 106, v19);
+        PlaySoundEffect(*(v1 + 106), 106, v19);
         goto LABEL_34;
     }
     v26 = *(v1 + 38);
@@ -4341,7 +4341,7 @@ LABEL_7:
     {
         if ( v26 & 8 && *(v1 + 19) != *(v1 + 128) - 1 )
         {
-            sound_play(*(v1 + 108), 108, v19);
+            PlaySoundEffect(*(v1 + 108), 108, v19);
             *(v1 + 19) = *(v1 + 128) - 1;
         }
         return 0;
@@ -4362,7 +4362,7 @@ LABEL_7:
     {
         goto LABEL_34;
     }
-    sound_play(*(v1 + 110), 110, v28);
+    PlaySoundEffect(*(v1 + 110), 110, v28);
 LABEL_34:
     chatbox_clearFlags_3e(17);
     *(v1 + 120) = 4;
@@ -4435,7 +4435,7 @@ signed int __noreturn chatbox_80434E0()
     v12 = *(v1 + 19);
     *(v1 + 19) = v11;
     if ( v11 != v12 )
-        sound_play(*(v1 + 108), v12, 108);
+        PlaySoundEffect(*(v1 + 108), v12, 108);
 LABEL_7:
     if ( *(v1 + 128) - 1 != *(v1 + 19) )
     {
@@ -4447,7 +4447,7 @@ LABEL_7:
             v15 = *(*(v2 + oToolkit_JoypadPtr) + 4);
             if ( v15 & 0x80 || v15 & 0x40 )
             {
-                sound_play(*(v1 + 108), 108, v14);
+                PlaySoundEffect(*(v1 + 108), 108, v14);
                 *(v1 + v16) = v9;
             }
         }
@@ -4486,7 +4486,7 @@ LABEL_7:
     }
     if ( *(v1 + 38) & 2 )
     {
-        sound_play(*(v1 + 106), 106, v18);
+        PlaySoundEffect(*(v1 + 106), 106, v18);
     }
     else
     {
@@ -4495,7 +4495,7 @@ LABEL_7:
         {
             if ( v25 & 8 && *(v1 + 19) != *(v1 + 128) - 1 )
             {
-                sound_play(*(v1 + 108), 108, v18);
+                PlaySoundEffect(*(v1 + 108), 108, v18);
                 *(v1 + 19) = *(v1 + 128) - 1;
             }
             return 0;
@@ -4508,7 +4508,7 @@ LABEL_7:
         *(v1 + 120) = 4;
         chatbox_set_eFlags2009F38(32);
         if ( chatbox_8042EE8(*(v0 + 5), *(v1 + 128) - 1) )
-            sound_play(*(v1 + 110), 110, v27);
+            PlaySoundEffect(*(v1 + 110), 110, v27);
     }
     chatbox_clearFlags_3e(17);
     *(v1 + 120) = 4;
@@ -4597,7 +4597,7 @@ signed int __noreturn chatbox_80436E8()
     v9 = *(v1 + 19);
     *(v1 + 19) = v8;
     if ( v8 != v9 )
-        sound_play(*(v1 + 108), v9, 108);
+        PlaySoundEffect(*(v1 + 108), v9, 108);
 LABEL_7:
     *(v1 + 112) = *(v1 + v29);
     --*(v1 + 15);
@@ -4651,7 +4651,7 @@ LABEL_7:
     }
     if ( *(v0 + 1) != 5 && *(v1 + 38) & 2 )
     {
-        v22 = sound_play(*(v1 + 106), 106, v15);
+        v22 = PlaySoundEffect(*(v1 + 106), 106, v15);
         v23 = 4;
         goto LABEL_38;
     }
@@ -4660,7 +4660,7 @@ LABEL_7:
     {
         if ( v24 & 8 && *(v1 + 19) != *(v1 + 128) - 1 )
         {
-            sound_play(*(v1 + 108), 108, v15);
+            PlaySoundEffect(*(v1 + 108), 108, v15);
             *(v1 + 19) = *(v1 + 128) - 1;
         }
         return 0;
@@ -4685,7 +4685,7 @@ LABEL_7:
         {
 LABEL_36:
             v27 = v22;
-            sound_play(*(v1 + 110), 110, v26);
+            PlaySoundEffect(*(v1 + 110), 110, v26);
             v22 = v27;
             v26 = 0;
             goto LABEL_37;
@@ -4776,7 +4776,7 @@ int __noreturn chatbox_80438EC()
     v12 = *(v0 + 19);
     *(v0 + 19) = v11;
     if ( v11 != v12 )
-        sound_play(*(v0 + 108), v12, 108);
+        PlaySoundEffect(*(v0 + 108), v12, 108);
 LABEL_7:
     *(v0 + 19) = *(v0 + 19);
     *(v0 + 112) = *(v0 + v27);
@@ -4787,7 +4787,7 @@ LABEL_7:
     v15 = *(*(v1 + oToolkit_JoypadPtr) + 4);
     if ( v15 & 0x80 || v15 & 0x40 )
     {
-        sound_play(*(v0 + 108), 108, v13);
+        PlaySoundEffect(*(v0 + 108), 108, v13);
         *(v0 + *(v0 + 19) + 76) = v16;
     }
     v17 = &byte_154[v0];
@@ -4823,10 +4823,10 @@ LABEL_7:
     if ( !(v25 & 1) )
     {
         if ( v25 & 8 )
-            sound_play(*(v0 + 108), 108, v18);
+            PlaySoundEffect(*(v0 + 108), 108, v18);
         return 0;
     }
-    sound_play(*(v0 + 110), 110, v18);
+    PlaySoundEffect(*(v0 + 110), 110, v18);
     chatbox_clearFlags_3e(17);
     chatbox_clear_eFlags2009F38(7);
     chatbox_set_eFlags2009F38(*(v0 + 19));
@@ -4855,7 +4855,7 @@ signed int __fastcall chatbox_8043A5C(int a1, int a2, int a3)
     v5 = v3[1] - 27;
     if ( v3[1] == 27 )
     {
-        sound_play(115, a2, a3);
+        PlaySoundEffect(115, a2, a3);
         v6 = v3[2];
         if ( v6 == 255 )
             v6 = *(v4 + 84) - 144;
@@ -4872,7 +4872,7 @@ signed int __fastcall chatbox_8043A5C(int a1, int a2, int a3)
     }
     else if ( v5 == 2 )
     {
-        sound_play(115, a2, a3);
+        PlaySoundEffect(115, a2, a3);
         sub_803D118(v3[2] + 144, v3[4], v3[3]);
         result = 1;
     }

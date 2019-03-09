@@ -201,7 +201,7 @@ LABEL_17:
     v7 = 129;
     if ( v6 != 4 )
         v7 = 131;
-    sound_play(v7, v6, v4);
+    PlaySoundEffect(v7, v6, v4);
 }
 
 

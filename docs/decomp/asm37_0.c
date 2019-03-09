@@ -1368,7 +1368,7 @@ int __fastcall sub_813C334(unsigned int a1, int a2)
                     SetEventFlagRange(v6, v5, 4);
                 else
                     ClearEventFlagRange(v6, v5, 4);
-                sound_play(139, v8, v9);
+                PlaySoundEffect(139, v8, v9);
             }
         }
         else

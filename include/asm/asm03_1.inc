@@ -211,8 +211,8 @@
 // .global start_8000288
 
 	.include "asm/asm00_0.inc"
-// .global sound_play
-// .global sound_bgmusic_play // (int a1) -> void
+// .global PlaySoundEffect
+// .global PlaySong // (int a1) -> void
 // .global sub_80005F2
 // .global sub_800068A
 // .global sub_80006A2

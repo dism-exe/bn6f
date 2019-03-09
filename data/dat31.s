@@ -60,7 +60,7 @@ sub_810C46C:
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xc9
-	bl sound_play
+	bl PlaySoundEffect
 	mov r0, #0x1e
 	bl object_setCounterTime
 	mov r0, #1
@@ -164,7 +164,7 @@ sub_810C544:
 	bl object_canMove
 	beq loc_810C5FA
 	mov r0, #0xc8
-	bl sound_play
+	bl PlaySoundEffect
 	mov r1, #0x35 
 	mov r2, #2
 	mov r3, #3
@@ -346,7 +346,7 @@ loc_810C6A8:
 	bl object_setPanelsFromCoordinates
 	bl object_updateCollisionPanels
 	mov r0, #0xc8
-	bl sound_play
+	bl PlaySoundEffect
 	ldr r0, [r5,#oBattleObject_XVelocity]
 	mov r1, #0
 	sub r1, #1
@@ -817,7 +817,7 @@ loc_810CB3E:
 loc_810CB52:
 	bl sub_810CD38
 	mov r0, #0xed
-	bl sound_play
+	bl PlaySoundEffect
 loc_810CB5C:
 	bl sprite_getFrameParameters
 	mov r1, #0x80
@@ -939,7 +939,7 @@ loc_810CC26:
 	mov r0, #3
 	bl sub_810CD38
 	mov r0, #0xee
-	bl sound_play
+	bl PlaySoundEffect
 loc_810CC3C:
 	bl sprite_getFrameParameters
 	mov r1, #0x80
@@ -1636,7 +1636,7 @@ sub_810D378:
 	add r0, r0, r0
 	ldr r1, off_810D3D4 // =byte_810D3DE 
 	ldrh r0, [r1,r0]
-	bl sound_play
+	bl PlaySoundEffect
 loc_810D39E:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -1870,8 +1870,8 @@ loc_810D526:
 	add r3, #4
 	sub r0, #1
 	bne loc_810D526
-	mov r0, #0x8a
-	bl sound_play
+	mov r0, #SOUND_UNK_8A
+	bl PlaySoundEffect
 loc_810D54A:
 	add sp, sp, #0x10
 	pop {pc}
@@ -2221,7 +2221,7 @@ sub_810D8B2:
 	strb r0, [r7,#oAIAttackVars_Unk_0e]
 	mov r0, #0x2c 
 	add r0, #0xff
-	bl sound_play
+	bl PlaySoundEffect
 loc_810D8D0:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
