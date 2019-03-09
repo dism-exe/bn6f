@@ -1099,7 +1099,7 @@ loc_8083D60:
 	cmp r0, r1
 	bne loc_8083D70
 	ldr r0, off_8083D78 // =0x12c 
-	bl sound_play // () -> void
+	bl sound_play
 loc_8083D70:
 	mov r0, #1
 	pop {r5,pc}

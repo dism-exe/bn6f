@@ -1668,7 +1668,7 @@ sub_8046E84:
 	tst r1, r0
 	beq loc_8046E9E
 	mov r0, #0x68 
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_8046EBC
 loc_8046E9E:
 	mov r0, #0x20 
@@ -1709,7 +1709,7 @@ sub_8046ED2:
 	mov r0, #1
 	strb r0, [r5,#7]
 	mov r0, #0x68 
-	bl sound_play // () -> void
+	bl sound_play
 loc_8046EF2:
 	mov r0, #8
 	bl chatbox_check_eFlags2009F38
@@ -1723,7 +1723,7 @@ loc_8046EFC:
 	tst r0, r0
 	bne loc_8047000
 	mov r0, #0x68 
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_8047000
 loc_8046F12:
 	ldr r1, [r5,#0x1c]
@@ -1750,7 +1750,7 @@ loc_8046F32:
 	cmp r0, #2
 	bne loc_8046F42
 	mov r0, #0x67 
-	bl sound_play // () -> void
+	bl sound_play
 loc_8046F42:
 	ldr r7, [r5,#0x20]
 	ldrb r2, [r7]
@@ -1835,7 +1835,7 @@ loc_8046FBE:
 	mov r7, #0xff
 	strb r7, [r5,#0xd]
 	mov r0, #0x73 
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_8047020
 loc_8047000:
 	ldr r0, [r5,#0x24]
@@ -1848,7 +1848,7 @@ loc_804700E:
 	ldr r0, [r5,#0x24]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0x69 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1c
 	strb r0, [r5]
 	b loc_8047020
@@ -1966,7 +1966,7 @@ sub_804709C:
 	mov r7, #0xff
 	strb r7, [r5,#0xd]
 	mov r0, #0x73 
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_8047130
 loc_804710A:
 	ldr r0, [r5,#0x24]
@@ -1982,7 +1982,7 @@ loc_8047118:
 	ldr r0, [r5,#0x24]
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0x69 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1c
 	strb r0, [r5]
 loc_8047130:
@@ -2962,7 +2962,7 @@ loc_8047976:
 	beq loc_80479AC
 loc_8047988:
 	mov r0, #0x66 
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#5]
 	mov r1, #0xff
 	eor r0, r1
@@ -3085,7 +3085,7 @@ loc_8047A64:
 	beq locret_8047A7E
 loc_8047A74:
 	mov r0, #0x66 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xff
 	strb r0, [r5,#0xd]
 locret_8047A7E:
@@ -3101,7 +3101,7 @@ sub_8047A80:
 	mov r1, #2
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #0x68 
-	bl sound_play // () -> void
+	bl sound_play
 	pop {pc}
 	thumb_func_end sub_8047A80
 
@@ -3210,7 +3210,7 @@ loc_8047B3C:
 	b loc_8047B68
 loc_8047B62:
 	mov r0, #0x67 
-	bl sound_play // () -> void
+	bl sound_play
 loc_8047B68:
 	ldr r0, [r5,#0x24]
 	mov r1, r7
@@ -3218,7 +3218,7 @@ loc_8047B68:
 	pop {r4-r7,pc}
 loc_8047B72:
 	mov r0, #0x69 
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8047B7C: .word byte_2019A00
@@ -4767,12 +4767,12 @@ sub_804930C:
 	mov r0, #0x28 
 	strb r0, [r5,#1]
 	mov r0, #0x81
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	pop {r4-r7,pc}
 loc_804934C:
 	mov r0, #0x69 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -4971,7 +4971,7 @@ sub_80494DE:
 	bl sub_813D60C
 	bne loc_8049522
 	mov r0, #0x83
-	bl sound_play // () -> void
+	bl sound_play
 	mov r4, #0xf
 	mov r0, #0x80
 	bl sub_803CB18
@@ -6724,7 +6724,7 @@ sub_804A3FC:
 	bl isJoystickIRQActive
 	beq loc_804A42C
 	mov r0, #0x9c
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x18
 	strb r0, [r5]
 	mov r0, #0
@@ -6938,7 +6938,7 @@ sub_804A5D4:
 	mov r0, #0xc
 	strb r0, [r5,#1]
 	mov r0, #0x9e
-	bl sound_play // () -> void
+	bl sound_play
 locret_804A5E8:
 	pop {pc}
 	.balign 4, 0x00
@@ -7516,7 +7516,7 @@ sub_804AAA4:
 	b locret_804AACC
 loc_804AABA:
 	mov r0, #0x68 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r5]
 	mov r0, #0xc
@@ -7546,7 +7546,7 @@ loc_804AAE8:
 	mov r0, #4
 	strb r0, [r5]
 	mov r0, #0x83
-	bl sound_play // () -> void
+	bl sound_play
 	b locret_804AB0E
 loc_804AAFA:
 	mov r0, #0x14
@@ -7554,7 +7554,7 @@ loc_804AAFA:
 	mov r0, #0
 	strh r0, [r5,#0x34]
 	mov r0, #0x81
-	bl sound_play // () -> void
+	bl sound_play
 	b locret_804AB0E
 loc_804AB0A:
 	mov r0, #0
@@ -7586,7 +7586,7 @@ sub_804AB10:
 	strb r0, [r5,r2]
 	bl sub_804AB6C
 	mov r0, #0x81
-	bl sound_play // () -> void
+	bl sound_play
 loc_804AB44:
 	mov r0, r6
 	tst r0, r0
@@ -7636,7 +7636,7 @@ sub_804AB6C:
 	tst r0, r0
 	bne loc_804AB98
 	mov r0, #0x69 
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_804AC9E
 loc_804AB98:
 	ldrh r0, [r7,#0x1c]
@@ -7695,7 +7695,7 @@ loc_804ABFA:
 	blt loc_804ABFA
 loc_804AC06:
 	mov r0, #0x69 
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_804AC9E
 loc_804AC0E:
 	mov r4, r1
@@ -7981,7 +7981,7 @@ sub_804AE04:
 	bl isJoystickIRQActive
 	beq loc_804AE44
 	mov r0, #0x81
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
 	ldrh r2, [r5,#0x34]
@@ -8113,7 +8113,7 @@ loc_804AEF4:
 loc_804AEFC:
 	bl sub_804AF10
 	mov r0, #0x69 
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#3]
 	strb r0, [r5,#0xd]
 	mov r0, #8
@@ -8178,7 +8178,7 @@ loc_804AF6A:
 	cmp r0, r1
 	beq locret_804AF7C
 	mov r0, #0x83
-	bl sound_play // () -> void
+	bl sound_play
 locret_804AF7C:
 	pop {r4-r7,pc}
 	.byte 0, 0
@@ -9977,7 +9977,7 @@ loc_804C824:
 	ldrh r0, [r0,r1]
 	tst r0, r0
 	beq locret_804C840
-	bl sound_play // () -> void
+	bl sound_play
 locret_804C840:
 	pop {r4-r7,pc}
 	.balign 4, 0x00

@@ -200,7 +200,7 @@ loc_80891EE:
 	b loc_80891FE
 loc_80891F4:
 	mov r0, #0x83
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r5]
 loc_80891FE:
@@ -239,7 +239,7 @@ sub_8089244:
 	ldr r0, off_8089264 // =byte_8089268
 	bl decompAndCopyData // (u32 *initRefs) -> void
 	mov r0, #0x7f
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8089264: .word byte_8089268
@@ -518,21 +518,21 @@ sub_8089704:
 	bl sub_8142A84
 	beq loc_808972E
 	mov r0, #0x67 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r4, #2
 	b loc_808978C
 loc_808972E:
 	b loc_808978C
 loc_8089730:
 	mov r0, #0x69 
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_808978C
 loc_8089738:
 	mov r0, #2
 	tst r0, r7
 	beq loc_8089748
 	mov r0, #0x68 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r4, #3
 	b loc_808978C
 loc_8089748:
@@ -544,7 +544,7 @@ loc_8089748:
 	beq loc_808976C
 	mov r0, #0x66 
 loc_8089756:
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_81421D0
 	sub r0, #1
 	bge loc_8089764
@@ -558,7 +558,7 @@ loc_808976C:
 	tst r0, r7
 	beq loc_808978C
 	mov r0, #0x66 
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_81421D0
 	add r0, #1
 	cmp r0, #4
@@ -980,7 +980,7 @@ sub_8089A60:
 	bl sub_8035408
 	mov r0, #0x65 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_8036E44
 	bl sub_8036E78
 loc_8089ABA:

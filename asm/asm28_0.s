@@ -1158,7 +1158,7 @@ loc_809A46C:
 	mov r0, #1
 	strb r0, [r5,#9]
 	mov r0, #0x68 
-	bl sound_play // () -> void
+	bl sound_play
 	bl chatbox_8040818
 	b loc_809A4AA
 loc_809A488:
@@ -1319,7 +1319,7 @@ loc_809A5B8:
 	mov r0, #1
 	strb r0, [r5,#9]
 	mov r0, #0x8a
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_809A880
 	strh r0, [r5,#0x1a]
 	mov r2, #0x88
@@ -1933,7 +1933,7 @@ loc_809AB3A:
 	mov r0, #4
 	strb r0, [r5,#8]
 	mov r0, #0x68 
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, off_809AD78 // =eTextScript2033404
 	mov r1, #0xb
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -2429,7 +2429,7 @@ loc_809B078:
 	add r3, #0x40
 	push {r0-r3}
 	mov r0, #0xe1
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_809E2FC
 	pop {r0-r3}
 	b loc_809B0C4
@@ -2450,7 +2450,7 @@ loc_809B0A2:
 	add r3, #0x50
 	push {r0-r3}
 	mov r0, #0xe2
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	bl loc_809E2FE
 	pop {r0-r3}
@@ -2845,7 +2845,7 @@ loc_809B8C4:
 	str r0, [r6,#0x1c]
 	mov r0, #0x8d
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_809B8E8:
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -2951,7 +2951,7 @@ loc_809B9AC:
 	str r0, [r6,#0x1c]
 	mov r0, #0x8e
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_809B9C4:
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -3812,7 +3812,7 @@ locret_809CA1E:
 	pop {r4-r7,pc}
 loc_809CA20:
 	mov r0, #0x69 
-	bl sound_play // () -> void
+	bl sound_play
 loc_809CA26:
 	mov r0, #1
 	mov r1, #0xba
@@ -4083,7 +4083,7 @@ loc_809CC7E:
 	str r0, [r2,#0x4c]
 	bl sub_80010BE
 	mov r0, #0x8d
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, byte_809CEAC+4 // =0x4
 	mov r1, #0x23
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
@@ -4099,7 +4099,7 @@ loc_809CCC0:
 	tst r0, r1
 	beq loc_809CCF0
 	mov r0, #0x68
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80010C6
 	ldr r0, byte_809CEAC+4 // =0x4
 	mov r1, #0x20
@@ -5374,7 +5374,7 @@ sub_809D964:
 	mov r0, #6
 	strb r0, [r5,r1]
 	mov r0, #0x98
-	bl sound_play // () -> void
+	bl sound_play
 loc_809D97E:
 	mov r1, #0x64 
 	ldrh r0, [r5,r1]
@@ -5619,7 +5619,7 @@ sub_809DB02:
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0x36 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_809DB4A
 loc_809DB4A:
 	pop {r0,r1}

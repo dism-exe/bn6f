@@ -19,8 +19,8 @@ call_m4a_2_814F00C:
 	pop {pc}
 	thumb_func_end call_m4a_2_814F00C
 
-// () -> void
 	thumb_func_start sound_play
+// (enum SoundOffsets off) -> void
 sound_play:
 	push {r1-r7,lr}
 	bl m4a_800061E // () -> void
@@ -1645,7 +1645,7 @@ loc_800104A:
 	and r7, r6
 	bne locret_8001078
 	mov r0, #0x91
-	bl sound_play // () -> void
+	bl sound_play
 locret_8001078:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8001040
@@ -4220,7 +4220,7 @@ sub_800232A:
 	ldr r0, [r0]
 	cmp r0, #0
 	blt locret_8002336
-	bl sound_play // () -> void
+	bl sound_play
 locret_8002336:
 	pop {pc}
 	thumb_func_end sub_800232A

@@ -495,7 +495,7 @@ loc_812DEC2:
 	bl isJoystickIRQActive
 	beq loc_812DEF6
 	mov r0, #0x83
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xc
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void
@@ -728,7 +728,7 @@ sub_812E08C:
 	mov r1, #0
 	strh r1, [r5,#0x26]
 	mov r0, #0x83
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_812E0FC
 loc_812E0AC:
 	mov r0, r10
@@ -750,7 +750,7 @@ loc_812E0C6:
 	mov r0, #1
 	strb r0, [r5,#0x15]
 	mov r0, #0x83
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_812E0E2
 loc_812E0DA:
 	mov r0, #1
@@ -770,7 +770,7 @@ loc_812E0EC:
 	beq loc_812E0F8
 	mov r0, #0x83
 loc_812E0F8:
-	bl sound_play // () -> void
+	bl sound_play
 loc_812E0FC:
 	bl sub_803EAE4
 	cmp r0, #4
@@ -1414,7 +1414,7 @@ loc_812E606:
 	mov r0, #0x3d 
 	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	mov r0, #0x73 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r5,#0xc]
 	pop {r7,pc}

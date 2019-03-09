@@ -122,7 +122,7 @@ sub_80B82E0:
 	mov r0, #0x1f
 	strb r0, [r5,#oBattleObject_Unk_19]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -246,7 +246,7 @@ sub_80B83C0:
 	tst r0, r0
 	bne loc_80B83D6
 	mov r0, #0xc7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x28 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -699,10 +699,10 @@ loc_80B8748:
 	add r1, #1
 	bl object_crackPanel
 	mov r0, #0xc0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xe
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80B877E:
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurPhase]
@@ -1193,7 +1193,7 @@ loc_80B8B30:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x33 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80B8B3C:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -1211,7 +1211,7 @@ loc_80B8B3C:
 	bl sub_80DBB0C
 	mov r0, #0xac
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x5a 
 loc_80B8B66:
 	strh r0, [r5,#oBattleObject_Timer]
@@ -1611,7 +1611,7 @@ sub_80B8F30:
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -1697,7 +1697,7 @@ sub_80B8FB6:
 	bl sub_80B903A
 	mov r0, #0x80
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80B8FE8
@@ -1876,7 +1876,7 @@ sub_80B910C:
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -2185,7 +2185,7 @@ sub_80B9340:
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -2269,7 +2269,7 @@ sub_80B93C6:
 	mov r0, #0x13
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xc6
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	bl sub_80B9458
 	mov r0, #0x78 
@@ -2465,7 +2465,7 @@ sub_80B954C:
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #2
 	mov r1, #6
 	mov r2, #1
@@ -2601,7 +2601,7 @@ sub_80B961A:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x2e 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80B966A
@@ -2680,7 +2680,7 @@ sub_80B96C2:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x8a
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x5a 
 	strh r0, [r5,#oBattleObject_Timer]
 	bl sub_80B9776
@@ -2880,7 +2880,7 @@ sub_80B9848:
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -3020,7 +3020,7 @@ loc_80B991A:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0xb
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	mov r1, #0x1e
 	bl sub_80302A8
@@ -3160,7 +3160,7 @@ sub_80B9A60:
 	mov r0, #7
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xe1
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -3489,7 +3489,7 @@ sub_80B9CDC:
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -3658,7 +3658,7 @@ loc_80B9E0E:
 loc_80B9E26:
 	mov r0, #0x3d 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 locret_80B9E2E:
 	pop {r4,pc}
 off_80B9E30: .word dword_80B9E34
@@ -3705,7 +3705,7 @@ sub_80B9E40:
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x3d 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer2]
 	b locret_80B9EEE
@@ -3868,7 +3868,7 @@ sub_80B9FD8:
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -4091,7 +4091,7 @@ sub_80BA152:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x59 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80BA31C
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
@@ -4431,7 +4431,7 @@ sub_80BA414:
 	mov r0, #0x13
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -4588,7 +4588,7 @@ sub_80BA528:
 	bl sub_80BA6A4
 	mov r0, #0xab
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x2e 
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80BA56A
@@ -4608,7 +4608,7 @@ loc_80BA54A:
 loc_80BA562:
 	mov r0, #0x15
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 locret_80BA56A:
 	pop {pc}
 	thumb_func_end sub_80BA528
@@ -4932,7 +4932,7 @@ sub_80BA7A0:
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -5034,7 +5034,7 @@ sub_80BA84C:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	bl sub_80BA946
 	mov r0, #0xba
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80BA89A
@@ -5417,7 +5417,7 @@ sub_80BAB30:
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -5494,7 +5494,7 @@ sub_80BABAC:
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0x35 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param1]
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r1, #0x14
@@ -5523,7 +5523,7 @@ loc_80BABDA:
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0x35 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param1]
 	strh r0, [r5,#oBattleObject_Timer]
 loc_80BAC0E:
@@ -5547,7 +5547,7 @@ loc_80BAC0E:
 loc_80BAC34:
 	mov r0, #0x83
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xc
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -5577,7 +5577,7 @@ sub_80BAC50:
 	bl sub_80BAF06
 	mov r0, #0x1c
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	b locret_80BAC96
 loc_80BAC78:
 	ldrh r0, [r5,#oBattleObject_Timer]
@@ -5669,7 +5669,7 @@ sub_80BAD06:
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	bl sub_80BAE7A
 	mov r0, #0x99
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80BAD32
@@ -6126,7 +6126,7 @@ sub_80BB048:
 	bl sub_80BB23E
 	mov r0, #0xf
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, off_80BB288 // =0x12c 
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #6
@@ -6157,7 +6157,7 @@ sub_80BB098:
 	bl ho_80BB170
 	mov r0, #0xf
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80BB0BA:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
@@ -6167,7 +6167,7 @@ loc_80BB0BA:
 	beq locret_80BB0D0
 loc_80BB0C6:
 	mov r0, #0xbd
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BB0D0:
@@ -6569,7 +6569,7 @@ loc_80BB3BC:
 	bl sub_80BB59A
 	mov r0, #0xf
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, off_80BB5EC // =0x12c 
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0xc
@@ -6600,7 +6600,7 @@ sub_80BB3F6:
 	bl sub_80BB4CE
 	mov r0, #0xf
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80BB418:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
@@ -6642,7 +6642,7 @@ loc_80BB44E:
 	strh r0, [r5,#oBattleObject_Timer]
 	bge locret_80BB468
 	mov r0, #0xb4
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80BB52E
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
@@ -6814,7 +6814,7 @@ loc_80BB546:
 loc_80BB588:
 	mov r0, #0x10
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	mov r1, #0x1e
 	bl sub_80302A8
@@ -6945,7 +6945,7 @@ sub_80BB694:
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -7020,7 +7020,7 @@ sub_80BB710:
 	bl sub_80BB81C
 	mov r0, #0xf
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, off_80BB910 // =0x168 
 	strh r0, [r5,#oBattleObject_Timer]
 	ldrb r0, [r5,#oBattleObject_Param1]
@@ -7049,7 +7049,7 @@ loc_80BB754:
 	bl sub_80BB81C
 	mov r0, #0xf
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param1]
 	strh r0, [r5,#oBattleObject_Timer2]
 locret_80BB770:
@@ -7094,7 +7094,7 @@ sub_80BB79A:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	bl sub_80BB8B0
 	mov r0, #0xba
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80BB7CA
@@ -7357,7 +7357,7 @@ sub_80BB99C:
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -7434,7 +7434,7 @@ sub_80BBA26:
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurPhase]
 	mov r0, #0xe3
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80BBAEC
 	b locret_80BBA8C
 loc_80BBA3E:
@@ -7706,7 +7706,7 @@ sub_80BBC2C:
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -7786,7 +7786,7 @@ loc_80BBCCC:
 	mov r0, #0x11
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xe6
-	bl sound_play // () -> void
+	bl sound_play
 locret_80BBCD6:
 	pop {pc}
 	thumb_func_end sub_80BBC80
@@ -7804,7 +7804,7 @@ sub_80BBCD8:
 	bl sub_80BBE0E
 	mov r0, #0xc1
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r4, #1
 	bl sub_80E7896
 	str r0, [r5,#oBattleObject_ExtraVars]
@@ -7870,7 +7870,7 @@ sub_80BBD60:
 	str r0, [r5,#oBattleObject_ExtraVars+4]
 	str r0, [r5,#oBattleObject_ExtraVars+8]
 	mov r0, #0xe5
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #2
 	ldrh r1, [r5,#oBattleObject_Timer]
 	bl sub_80302A8
@@ -8145,7 +8145,7 @@ sub_80BBF94:
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -8210,7 +8210,7 @@ loc_80BC012:
 	tst r0, r0
 	beq locret_80BC022
 	mov r0, #0xad
-	bl sound_play // () -> void
+	bl sound_play
 locret_80BC022:
 	pop {pc}
 	thumb_func_end sub_80BBFE8
@@ -8258,7 +8258,7 @@ sub_80BC058:
 	strb r1, [r5,#oBattleObject_CurPhase]
 	bl sub_80BC13E
 	mov r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Param2]
 	ldrb r0, [r5,#oBattleObject_Param1]
@@ -8279,7 +8279,7 @@ loc_80BC080:
 	bgt locret_80BC0AE
 	bl sub_80BC160
 	mov r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param2]
 	add r0, #1
 	strb r0, [r5,#oBattleObject_Param2]
@@ -9192,7 +9192,7 @@ loc_80BC7AC:
 	mov r0, #1
 	str r0, [r5,#oBattleObject_ExtraVars+0x14]
 	mov r0, #0x8c
-	bl sound_play // () -> void
+	bl sound_play
 loc_80BC7C4:
 	mov r0, #0x62 
 	ldrh r1, [r5,r0]
@@ -9799,7 +9799,7 @@ loc_80BCC4E:
 	strb r1, [r0,#0x10]
 	mov r0, #0x81
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BCC86:
@@ -10107,7 +10107,7 @@ sub_80BCEB2:
 	mov r1, #0x28 
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #0x71 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -10133,7 +10133,7 @@ loc_80BCEF0:
 	mov r1, #0x14
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #0x72 
-	bl sound_play // () -> void
+	bl sound_play
 loc_80BCF20:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -10202,7 +10202,7 @@ sub_80BCF7A:
 	mov r0, #0xf
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x6a 
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, [r5,#oBattleObject_ExtraVars+4]
 	bl sub_80B8E58
 	mov r0, #0x64 
@@ -10332,7 +10332,7 @@ sub_80BD084:
 	mov r0, #0x1f
 	strb r0, [r5,#oBattleObject_Unk_0c]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -10460,7 +10460,7 @@ sub_80BD156:
 	add r7, r7, r5
 	bl sub_80B8E30
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xf
 	strh r0, [r5,#oBattleObject_Timer]
 	bl sub_80BD2D8
@@ -10905,7 +10905,7 @@ sub_80BD4DC:
 	mov r0, #0x1f
 	strb r0, [r5,#oBattleObject_Param4]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -11165,7 +11165,7 @@ sub_80BD6B6:
 	add r7, r7, r5
 	bl sub_80B8E30
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xa
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #5
@@ -11366,7 +11366,7 @@ sub_80BD834:
 	tst r0, r0
 	bne loc_80BD850
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #3
@@ -11495,7 +11495,7 @@ sub_80BD8BC:
 	bl SpawnT4BattleObjectWithId0
 	pop {r0,r1}
 	mov r0, #0xc7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #3
 	mov r1, #0x23 
 	bl sub_80302A8
@@ -11751,7 +11751,7 @@ sub_80BDB04:
 	ldr r1, dword_80BDBA0 // =0x7fff 
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #0x71 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #4
@@ -11792,7 +11792,7 @@ sub_80BDB3C:
 	mov r1, #0x1e
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #0x72 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #8
@@ -12018,7 +12018,7 @@ sub_80BDD40:
 	tst r0, r0
 	bne loc_80BDD5C
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #3
@@ -12110,7 +12110,7 @@ sub_80BDDCA:
 	mov r0, #0xa
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x6a 
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, [r5,#oBattleObject_ExtraVars+8]
 	bl sub_80B8E58
 	ldr r0, [r5,#oBattleObject_ExtraVars+0x10]
@@ -12356,7 +12356,7 @@ sub_80BDFA6:
 	mov r0, #5
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldr r0, [r0,#oBattleObject_AIDataPtr]
 	ldrb r1, [r0,#oAIData_ActorType]
@@ -12562,7 +12562,7 @@ sub_80BE144:
 	tst r0, r0
 	bne loc_80BE160
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #1
@@ -12614,7 +12614,7 @@ sub_80BE190:
 	add r7, r7, r5
 	bl sub_80B8E30
 	mov r0, #0xf8
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80BE1B4:
@@ -12821,7 +12821,7 @@ sub_80BE312:
 	mov r0, #5
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -13733,7 +13733,7 @@ sub_80BEA78:
 	cmp r0, #3
 	bge loc_80BEA98
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -13779,7 +13779,7 @@ sub_80BEACE:
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x11
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80BEAE6:
@@ -13930,7 +13930,7 @@ sub_80BEBD8:
 	cmp r0, #3
 	bge loc_80BEBF8
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	orr r0, r1
@@ -14097,7 +14097,7 @@ sub_80BED0C:
 	mov r0, #5
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param3]
 	ldr r1, off_80BEDF0 // =byte_80BEDC6
 	ldrb r0, [r0,r1]
@@ -14222,7 +14222,7 @@ sub_80BEE04:
 	strb r1, [r0,#oObjectHeader_Flags]
 	str r0, [r5,#oBattleObject_ExtraVars+8]
 	mov r0, #0xba
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x46 
 	strh r0, [r5,#oBattleObject_Timer]
 	ldr r4, dword_80BF234 // =0x10a00 
@@ -14312,7 +14312,7 @@ sub_80BEEA2:
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0xf0
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r4, dword_80BF234 // =0x10a00 
 	bl sub_80E11E0
 	ldr r1, dword_80BF240 // =0x10000 
@@ -14386,7 +14386,7 @@ sub_80BEF48:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x20 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r4, dword_80BF244 // =0x1002a 
 	mov r7, #0x64 
 	add r7, r7, r5
@@ -14498,7 +14498,7 @@ sub_80BF000:
 	mov r1, #0x46 
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #0x71 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80BF03A:
@@ -14522,7 +14522,7 @@ loc_80BF03A:
 	mov r1, #0x14
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #0x72 
-	bl sound_play // () -> void
+	bl sound_play
 loc_80BF06A:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	add r0, #1
@@ -14582,7 +14582,7 @@ loc_80BF08E:
 	ldr r4, dword_80BF254 // =0x12300 
 	bl sub_80E11E0
 	mov r0, #0xc3
-	bl sound_play // () -> void
+	bl sound_play
 loc_80BF0DE:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	add r0, #1
@@ -14858,7 +14858,7 @@ sub_80BF2FC:
 	tst r0, r0
 	bne loc_80BF312
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -14985,7 +14985,7 @@ sub_80BF3CC:
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x11
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80BF3E8:
@@ -15156,7 +15156,7 @@ sub_80BF4EC:
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x11
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80BF508:
@@ -15277,7 +15277,7 @@ loc_80BF5A0:
 	str r0, [r5,#oBattleObject_ZVelocity]
 	mov r0, #0x80
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80BF5DE:
@@ -15311,7 +15311,7 @@ sub_80BF5E0:
 	b loc_80BF656
 loc_80BF614:
 	mov r0, #0xc3
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #3
 	mov r1, #0x1e
 	bl sub_80302A8
@@ -15568,7 +15568,7 @@ sub_80BF81C:
 	tst r0, r0
 	bne loc_80BF83C
 	mov r0, #0xfc
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
 	strh r0, [r5,#oBattleObject_Timer2]
@@ -15654,7 +15654,7 @@ sub_80BF8A8:
 	add r7, r7, r5
 	bl sub_80B8E30
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80BF8CC:
@@ -15691,7 +15691,7 @@ loc_80BF8FC:
 	bne loc_80BF90A
 	mov r0, #0x2c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80BF90A:
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	add r0, #1
@@ -15879,7 +15879,7 @@ sub_80BFA38:
 	bne loc_80BFA74
 	mov r0, #0x3c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
 	bl object_getFrontDirection // () -> int
@@ -15998,7 +15998,7 @@ sub_80BFAF8:
 	mov r1, #0x1e
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #0x71 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x28 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -16024,7 +16024,7 @@ loc_80BFB36:
 	mov r1, #0xa
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #0x72 
-	bl sound_play // () -> void
+	bl sound_play
 loc_80BFB66:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -16051,7 +16051,7 @@ sub_80BFB74:
 	add r7, r7, r5
 	bl sub_80B8E30
 	mov r0, #0xce
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80BFB98:
@@ -16970,7 +16970,7 @@ loc_80C0278:
 	bne loc_80C028A
 	mov r0, #0x7c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80C028A:
 	bl sub_80C02F8
 	bl sprite_getFrameParameters
@@ -17338,7 +17338,7 @@ sub_80C04CC:
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0x8c
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	ldrb r1, [r5,#oBattleObject_Param1]
 	mov r2, #1
@@ -17831,7 +17831,7 @@ sub_80C088C:
 	mov r0, #0x1f
 	strb r0, [r5,#oBattleObject_Unk_19]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -17938,7 +17938,7 @@ sub_80C0956:
 	mov r0, #2
 	strh r0, [r5,#oBattleObject_CurAnimAndCurAnimCopy]
 	mov r0, #0xbe
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #5
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -18169,7 +18169,7 @@ loc_80C0AEC:
 	cmp r0, #1
 	bne loc_80C0B00
 	mov r0, #0xbf
-	bl sound_play // () -> void
+	bl sound_play
 loc_80C0B00:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -18260,7 +18260,7 @@ sub_80C0B90:
 	mov r0, #2
 	strh r0, [r5,#oBattleObject_CurAnimAndCurAnimCopy]
 	mov r0, #0xbe
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #5
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -19669,7 +19669,7 @@ sub_80C1630:
 	tst r0, r0
 	bne loc_80C1648
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x18
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -19688,7 +19688,7 @@ loc_80C1648:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x44 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80C1668:
@@ -19849,7 +19849,7 @@ loc_80C1764:
 	bl sub_80C188C
 	mov r0, #0xb
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xc
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80C1784:
@@ -20287,7 +20287,7 @@ sub_80C1AB8:
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #3
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80C1AEC
@@ -20370,7 +20370,7 @@ sub_80C1B2E:
 	mov r0, #5
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r4, dword_80C1BC4 // =0x10c03 
 	mov r7, #0x64 
 	add r7, r7, r5
@@ -20479,7 +20479,7 @@ sub_80C1BEC:
 	mov r0, #1
 	bl sub_80C2000
 	mov r0, #0xf0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xa
 	strh r0, [r5,#oBattleObject_Timer2]
 	b locret_80C1C98
@@ -20593,7 +20593,7 @@ sub_80C1CC4:
 	add r7, r7, r5
 	bl sub_80B8E30
 	mov r0, #0xb9
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #5
 	strh r0, [r5,#oBattleObject_Timer2]
 	b locret_80C1D96
@@ -20638,7 +20638,7 @@ loc_80C1D62:
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	bl sub_80C20B4
 	mov r0, #0xb9
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, [r5,#oBattleObject_ExtraVars+4]
 	bl sub_80B8E7C
 	ldr r0, [r5,#oBattleObject_ExtraVars+8]
@@ -20713,7 +20713,7 @@ sub_80C1DC4:
 	mov r0, #0
 	bl sub_80C2082
 	mov r0, #0xc7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #2
 	ldrh r1, [r5,#oBattleObject_Timer]
 	add r1, #0x1e
@@ -20753,7 +20753,7 @@ loc_80C1E52:
 	bl sub_80C2000
 	mov r0, #0x59 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	bl sub_80C2082
 	b locret_80C1E78
@@ -21164,7 +21164,7 @@ sub_80C21E0:
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #3
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80C2214
@@ -21254,7 +21254,7 @@ sub_80C2256:
 	mov r0, #0
 	bl sub_80C2600
 	mov r0, #0xb8
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_Timer2]
 	b locret_80C22FA
@@ -21355,7 +21355,7 @@ sub_80C2324:
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #5
 	strb r0, [r5,#oBattleObject_CurAnim]
 	ldr r4, dword_80C23C8 // =0x10d03 
@@ -21460,7 +21460,7 @@ sub_80C23F0:
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #5
 	strb r0, [r5,#oBattleObject_CurAnim]
 	ldr r4, dword_80C2494 // =0x10d03 
@@ -21886,7 +21886,7 @@ sub_80C27B4:
 	mov r0, #0x1f
 	strb r0, [r5,#oBattleObject_Unk_19]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -22136,7 +22136,7 @@ sub_80C296C:
 	add r7, r7, r5
 	bl sub_80B8E30
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x14
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -22358,7 +22358,7 @@ sub_80C2B3C:
 	mov r0, #0x1f
 	strb r0, [r5,#oBattleObject_Unk_19]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -22412,7 +22412,7 @@ sub_80C2B8C:
 	mov r4, #3
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x77 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	b locret_80C2BE4
@@ -22572,7 +22572,7 @@ loc_80C2CCA:
 	ldrh r1, [r5,#oBattleObject_Timer]
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #0xbd
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	b locret_80C2D04
@@ -22685,7 +22685,7 @@ sub_80C2D8C:
 	bl sub_80B8E30
 	pop {r7}
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x14
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -22991,7 +22991,7 @@ loc_80C2FC6:
 	mov r1, #0x3c 
 	strh r1, [r0,#oBattleObject_Timer]
 	mov r0, #0x92
-	bl sound_play // () -> void
+	bl sound_play
 	push {r4}
 	ldr r4, dword_80C2FFC // =0x11400 
 	bl sub_80E11E0
@@ -23320,7 +23320,7 @@ sub_80C323C:
 	bl sub_80C3460
 	mov r0, #0x13
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Element]
 	mov r0, #0
@@ -23543,7 +23543,7 @@ sub_80C3408:
 	beq loc_80C341C
 	mov r0, #0x23 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80C341C:
 	bl object_clearCollisionRegion // () -> void
 	ldrh r0, [r5,#oBattleObject_Timer]
@@ -23727,7 +23727,7 @@ sub_80C3584:
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x21 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {pc}
@@ -23804,7 +23804,7 @@ loc_80C3616:
 	pop {r5}
 	mov r0, #0x27 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xc
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80C3624:
@@ -24010,7 +24010,7 @@ sub_80C3758:
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x17
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C37AC
@@ -24088,7 +24088,7 @@ sub_80C3816:
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0xd4
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80C383C:
@@ -24143,7 +24143,7 @@ loc_80C3890:
 	mov r0, #0xa
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0xb2
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x10
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 locret_80C389E:
@@ -24342,7 +24342,7 @@ sub_80C39BA:
 	bl sub_80C468C
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x64 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -24805,7 +24805,7 @@ sub_80C3D32:
 	bl sub_80C468C
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x32 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -24889,7 +24889,7 @@ loc_80C3E10:
 	mov r0, #0xd
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xfd
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -26291,7 +26291,7 @@ loc_80C4978:
 	strh r0, [r5,#oBattleObject_Timer2]
 	bl sprite_forceWhitePalette
 	mov r0, #0xd1
-	bl sound_play // () -> void
+	bl sound_play
 loc_80C4990:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	add r0, #1
@@ -26384,7 +26384,7 @@ loc_80C4A0E:
 	bl sub_80101AE
 	pop {r5}
 	mov r0, #0x93
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	mov r1, #0
 	strb r1, [r0]
@@ -26421,9 +26421,9 @@ sub_80C4A6C:
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x77 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xd1
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80C4A94:
@@ -26951,7 +26951,7 @@ sub_80C5014:
 	mov r1, #0x28 
 	bl sub_80302A8
 	mov r0, #0xc3
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_getFrontDirection // () -> int
 	lsl r0, r0, #1
 	ldrb r1, [r5,#oBattleObject_PanelX]
@@ -26980,7 +26980,7 @@ sub_80C5050:
 	mov r1, #0x28 
 	bl sub_80302A8
 	mov r0, #0xc3
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	push {r0,r1}
@@ -27203,7 +27203,7 @@ loc_80C5234:
 	bl sub_801A146
 	bl object_presentCollisionData
 	ldrb r0, [r7,#2]
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
@@ -27859,7 +27859,7 @@ sub_80C5760:
 	strh r0, [r5,#oBattleObject_Timer2]
 	bge loc_80C5774
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_Timer2]
 loc_80C5774:
@@ -28128,7 +28128,7 @@ loc_80C5958:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xd1
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -28568,7 +28568,7 @@ loc_80C5CC0:
 	mov r7, #0
 	bl sub_801BD3C
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -28786,7 +28786,7 @@ loc_80C5EB2:
 	bl sub_8109794
 loc_80C5EF2:
 	mov r0, #0xb9
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -29111,7 +29111,7 @@ loc_80C61B2:
 	bne loc_80C6238
 	mov r0, #0x8b
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_80C6238
 loc_80C61D6:
 	ldr r1, [r5,#oBattleObject_Z]
@@ -29458,7 +29458,7 @@ sub_80C6438:
 	ldr r0, dword_80C656C // =0x1000000 
 	str r0, [r5,#oBattleObject_Z]
 	mov r0, #0xa1
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80C647C
@@ -29549,7 +29549,7 @@ sub_80C6524:
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xa2
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	pop {pc}
@@ -29758,7 +29758,7 @@ loc_80C66BC:
 	mov r4, #0x23 
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xc
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -29776,7 +29776,7 @@ sub_80C66E4:
 	and r0, r1
 	bne loc_80C66F8
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 loc_80C66F8:
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	sub r0, #1
@@ -29956,7 +29956,7 @@ sub_80C681C:
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	bl object_setCoordinatesFromPanels // () -> void
 	mov r0, #0xbb
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C6854
@@ -30214,7 +30214,7 @@ loc_80C6A9A:
 	ldrh r0, [r0,#4]
 	tst r0, r0
 	beq loc_80C6AA6
-	bl sound_play // () -> void
+	bl sound_play
 loc_80C6AA6:
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
@@ -30355,7 +30355,7 @@ loc_80C6BE8:
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
 	mov r0, #0xa6
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
@@ -30977,7 +30977,7 @@ sub_80C7098:
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
 	mov r0, #0xd8
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C70D8
@@ -31149,7 +31149,7 @@ loc_80C7222:
 	bl object_setupCollisionData
 	bl object_presentCollisionData
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #4
@@ -31243,7 +31243,7 @@ sub_80C72DC:
 	mov r0, #0xff
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -31267,7 +31267,7 @@ sub_80C7306:
 	bl sub_80E1E20
 	pop {r7}
 	mov r0, #0xc6
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80C73BE
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_CurAnim]
@@ -31299,7 +31299,7 @@ sub_80C734E:
 	mov r4, #0
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_clearCollisionRegion // () -> void
 	ldr r0, [r5,#oBattleObject_ExtraVars+4]
 	tst r0, r0
@@ -32527,7 +32527,7 @@ loc_80C7CA8:
 	bl object_presentCollisionData
 	mov r0, #0x2f 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C7CBE:
@@ -32818,7 +32818,7 @@ loc_80C7ECE:
 	cmp r3, #2
 	bmi loc_80C7ECE
 	mov r0, #0xd9
-	bl sound_play // () -> void
+	bl sound_play
 	pop {pc}
 off_80C7EFC: .word dword_80C7F00
 dword_80C7F00: .word 0x8000
@@ -33055,7 +33055,7 @@ loc_80C80D0:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #7
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C80FE:
@@ -33129,7 +33129,7 @@ loc_80C8154:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #7
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80C8192:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -33752,7 +33752,7 @@ sub_80C8660:
 	push {r4,r6,lr}
 	mov r0, #0x1e
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldrb r2, [r5,#oBattleObject_Element]
@@ -34112,7 +34112,7 @@ loc_80C8934:
 	and r0, r1
 	ldr r1, off_80C899C // =dword_80C89A0
 	ldrb r0, [r1,r0]
-	bl sound_play // () -> void
+	bl sound_play
 loc_80C8946:
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -34343,7 +34343,7 @@ loc_80C8B12:
 	strb r0, [r5,#oBattleObject_Param4]
 	mov r0, #7
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurState_CurAction]
 locret_80C8B3C:
@@ -34454,7 +34454,7 @@ loc_80C8BFE:
 	strh r0, [r5,#oBattleObject_Z16]
 	mov r0, #7
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param2]
 	ldrb r1, [r5,#oBattleObject_Param3]
 	add r0, r0, r1
@@ -34628,7 +34628,7 @@ sub_80C8D64:
 	mov r1, #4
 	strb r1, [r5,#oBattleObject_CurPhase]
 	mov r0, #0xf7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #5
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80C8D8C
@@ -34842,7 +34842,7 @@ loc_80C8EE8:
 	bgt loc_80C8F00
 	mov r0, #0x2c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x10
 	strh r0, [r5,#oBattleObject_Timer2]
 loc_80C8F00:
@@ -35067,7 +35067,7 @@ sub_80C9074:
 	pop {r4,r6,r7,pc}
 loc_80C90A6:
 	mov r0, #0xbd
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_clearCollisionRegion // () -> void
 	bl sub_80C913C
 	tst r0, r0
@@ -35305,7 +35305,7 @@ loc_80C9268:
 	bgt loc_80C927E
 	mov r0, #0x29 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x10
 	str r0, [r5,#oBattleObject_ExtraVars+4]
 loc_80C927E:
@@ -35570,11 +35570,11 @@ loc_80C948C:
 	cmp r1, #0xc
 	bne loc_80C94A2
 	mov r0, #0xc6
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_80C94A8
 loc_80C94A2:
 	mov r0, #0xba
-	bl sound_play // () -> void
+	bl sound_play
 loc_80C94A8:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	cmp r0, #0
@@ -35881,7 +35881,7 @@ sub_80C96C8:
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
 	mov r0, #0xa0
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, [r5,#oBattleObject_X]
 	str r0, [r5,#oBattleObject_XVelocity]
 	ldr r0, [r5,#oBattleObject_Y]
@@ -36122,7 +36122,7 @@ loc_80C98B2:
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
 	mov r0, #0xb4
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C98DC
@@ -36327,7 +36327,7 @@ sub_80C9A58:
 	neg r3, r3
 	push {r0-r3}
 	mov r0, #0xb6
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r0-r3}
 loc_80C9A70:
 	add r0, r0, r2
@@ -36339,7 +36339,7 @@ loc_80C9A70:
 	neg r2, r2
 	push {r0-r3}
 	mov r0, #0xb6
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r0-r3}
 	b loc_80C9A9A
 loc_80C9A8A:
@@ -36348,7 +36348,7 @@ loc_80C9A8A:
 	neg r2, r2
 	push {r0-r3}
 	mov r0, #0xb6
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r0-r3}
 loc_80C9A9A:
 	pop {r0,r1}
@@ -36371,7 +36371,7 @@ sub_80C9AAA:
 	neg r3, r3
 	push {r0-r3}
 	mov r0, #0xb6
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r0-r3}
 loc_80C9AC2:
 	add r0, r0, r2
@@ -36381,7 +36381,7 @@ loc_80C9AC2:
 	neg r2, r2
 	push {r0-r3}
 	mov r0, #0xb6
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r0-r3}
 loc_80C9AD6:
 	pop {r0,r1}
@@ -36418,7 +36418,7 @@ loc_80C9AFA:
 	beq loc_80C9B24
 	push {r0-r3}
 	mov r0, #0xb6
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r0-r3}
 	b loc_80C9B28
 loc_80C9B24:
@@ -36772,7 +36772,7 @@ sub_80C9DE0:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #0x45 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80C9E06:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -36817,7 +36817,7 @@ sub_80C9E20:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	bl sub_80C6ADA
 	mov r0, #0xb9
-	bl sound_play // () -> void
+	bl sound_play
 loc_80C9E5C:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -37066,7 +37066,7 @@ loc_80CA038:
 loc_80CA046:
 	bl object_presentCollisionData
 	mov r0, #0xb8
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CA074
@@ -37419,7 +37419,7 @@ loc_80CA374:
 	bl object_presentCollisionData
 	bl sub_80CA510
 	mov r0, #0xb7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
@@ -37682,7 +37682,7 @@ loc_80CA59E:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_breakPanel
 	mov r0, #0xda
-	bl sound_play // () -> void
+	bl sound_play
 	mov r1, #0xc
 	mov r2, #0x33 
 	mov r0, #0x80
@@ -37916,7 +37916,7 @@ loc_80CA77C:
 	bl object_presentCollisionData
 	mov r0, #0x88
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CA7AC
@@ -38301,7 +38301,7 @@ loc_80CAAA0:
 	mov r7, #0
 	bl sub_801BD3C
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_80CAAD8
 loc_80CAABE:
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -38313,7 +38313,7 @@ loc_80CAABE:
 	mov r4, #0x11
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x97
-	bl sound_play // () -> void
+	bl sound_play
 loc_80CAAD8:
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -38762,7 +38762,7 @@ sub_80CAE28:
 	mov r3, #0
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0xeb
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x2a 
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80CAE92
@@ -38793,7 +38793,7 @@ loc_80CAE80:
 	mov r0, #0x18
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -39139,7 +39139,7 @@ sub_80CB10C:
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
 	mov r0, #0xa7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
@@ -39671,7 +39671,7 @@ loc_80CB574:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CB5B4
 	mov r0, #0xa7
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r7,pc}
 off_80CB588: .word byte_80CB58C
 byte_80CB58C: .byte 0x0, 0x0, 0x3, 0x0, 0x0, 0x80, 0x3, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x0, 0x6, 0x0
@@ -39891,7 +39891,7 @@ loc_80CB730:
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CB762
 	mov r0, #0xae
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r7,pc}
 	thumb_func_end sub_80CB71C
 
@@ -39920,7 +39920,7 @@ loc_80CB782:
 	pop {r4,pc}
 loc_80CB792:
 	mov r0, #0xc3
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x34
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -39971,7 +39971,7 @@ loc_80CB7CE:
 	mov r1, #0x28 
 	bl sub_80302A8
 	mov r0, #0xc3
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	sub r0, r1, r0
@@ -40128,7 +40128,7 @@ sub_80CB924:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x25 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	b locret_80CB962
 loc_80CB940:
 	bl sprite_getFrameParameters
@@ -40193,7 +40193,7 @@ loc_80CB98E:
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0x24 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, [r5,#oBattleObject_ExtraVars+0x10]
 	bl sub_80E5B88
 	ldr r0, [r5,#oBattleObject_ExtraVars+8]
@@ -40499,7 +40499,7 @@ loc_80CBC00:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x13
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -40646,7 +40646,7 @@ sub_80CBD32:
 	cmp r0, #0
 	bne loc_80CBD98
 	mov r0, #0xc3
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getPanelDataOffset
@@ -40693,7 +40693,7 @@ loc_80CBD98:
 	bl sub_801BD3C
 	mov r0, #0x10
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80CBDC2:
 	bl sub_802EF5C
 	bl sub_800F656
@@ -40736,7 +40736,7 @@ sub_80CBDE6:
 	b loc_80CBE38
 loc_80CBE20:
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -41046,7 +41046,7 @@ sub_80CC064:
 	ldr r7, dword_80CC0CC // =0x4200 
 	bl object_spawnCollisionRegion
 	mov r0, #0xfc
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CC090
@@ -41355,7 +41355,7 @@ loc_80CC2C6:
 	strh r0, [r5,#oBattleObject_HP]
 	strh r0, [r5,#oBattleObject_MaxHP]
 	mov r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {pc}
@@ -41810,7 +41810,7 @@ sub_80CC668:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #0x2e
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80CC690:
 	ldr r1, off_80CC6E0 // =off_80CC6E4
 	ldrb r0, [r5,#oBattleObject_CurAction]
@@ -42036,7 +42036,7 @@ sub_80CC868:
 	mov r1, #4
 	strb r1, [r5,#oBattleObject_CurPhase]
 	mov r0, #0xb7
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param2]
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80CC890
@@ -42088,7 +42088,7 @@ sub_80CC8BA:
 	mov r1, #4
 	strb r1, [r5,#oBattleObject_CurPhase]
 	mov r0, #0xb3
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_getFrontDirection // () -> int
 	mov r4, r0
 	ldr r2, off_80CC904 // =byte_80CC908 
@@ -42315,7 +42315,7 @@ sub_80CCA60:
 	str r0, [r5,#oBattleObject_Z]
 	mov r0, #6
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CCAB8
@@ -42365,7 +42365,7 @@ sub_80CCAF4:
 	str r0, [r5,#oBattleObject_Z]
 	mov r0, #0x22 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #2
@@ -42571,7 +42571,7 @@ sub_80CCC68:
 	tst r0, r0
 	bne loc_80CCCA8
 	mov r0, #0xa1
-	bl sound_play // () -> void
+	bl sound_play
 loc_80CCCA8:
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurState]
@@ -42613,7 +42613,7 @@ sub_80CCCE0:
 	tst r0, r0
 	bne loc_80CCCFC
 	mov r0, #0xa2
-	bl sound_play // () -> void
+	bl sound_play
 loc_80CCCFC:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
@@ -43101,7 +43101,7 @@ off_80CD0B8: .word sub_80CD0E0+1
 sub_80CD0E0:
 	push {lr}
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r7, [r5,#oBattleObject_ExtraVars]
 	ldrb r0, [r7]
 	strh r0, [r5,#oBattleObject_Timer2]
@@ -43131,7 +43131,7 @@ off_80CD10C: .word sub_80CD114+1
 sub_80CD114:
 	push {lr}
 	mov r0, #0xad
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, r5
 	ldrb r1, [r5,#oBattleObject_Alliance]
 	mov r2, #0
@@ -43263,7 +43263,7 @@ loc_80CD1DC:
 	b loc_80CD20E
 loc_80CD1FC:
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -43624,7 +43624,7 @@ loc_80CD4C0:
 	cmp r7, #3
 	ble loc_80CD4C0
 	mov r0, #0xad
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r4,r6,r7,pc}
 	.balign 4, 0x00
 dword_80CD4E8: .word 0x800000
@@ -43825,7 +43825,7 @@ loc_80CD688:
 	tst r0, r0
 	beq loc_80CD6D4
 	mov r0, #0xc0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	mov r1, #0xf
 	push {r5}
@@ -43917,7 +43917,7 @@ loc_80CD73E:
 	tst r0, r0
 	bne loc_80CD770
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_80CD778
 loc_80CD770:
 	bl battle_isTimeStop
@@ -44009,7 +44009,7 @@ sub_80CD7D0:
 	bl sub_80302A8
 	pop {r5}
 	mov r0, #0xc3
-	bl sound_play // () -> void
+	bl sound_play
 locret_80CD820:
 	pop {r4,r6,r7,pc}
 	.balign 4, 0x00
@@ -44167,7 +44167,7 @@ loc_80CD958:
 	ldrh r0, [r5,#oBattleObject_PanelXY]
 	strh r0, [r5,#oBattleObject_FuturePanelXY]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r1, #0xd8
 	ldrb r0, [r5,#oBattleObject_Param1]
 	cmp r0, #1
@@ -44344,7 +44344,7 @@ loc_80CDB0A:
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0xc1
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurPhase]
 locret_80CDB26:
@@ -44364,7 +44364,7 @@ sub_80CDB2C:
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0xc1
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurPhase]
 locret_80CDB4A:
@@ -44389,7 +44389,7 @@ sub_80CDB50:
 	tst r0, r1
 	bne loc_80CDB74
 	mov r0, #0xc2
-	bl sound_play // () -> void
+	bl sound_play
 loc_80CDB74:
 	mov r0, #0xc
 	strb r0, [r5,#oBattleObject_CurPhase]
@@ -44512,7 +44512,7 @@ loc_80CDC34:
 	b loc_80CDC66
 loc_80CDC54:
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -44606,7 +44606,7 @@ sub_80CDCBC:
 	mov r1, #0x1e
 	bl sub_80302A8
 	mov r0, #0xc3
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param1]
 	cmp r0, #1
 	bne locret_80CDD28
@@ -44800,7 +44800,7 @@ loc_80CDEA2:
 	bl object_setCoordinatesFromPanels // () -> void
 	mov r0, #0x14
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r7,pc}
 	thumb_func_end sub_80CDE68
 
@@ -44834,7 +44834,7 @@ loc_80CDEEA:
 sub_80CDEF8:
 	push {lr}
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -45214,7 +45214,7 @@ loc_80CE1EA:
 	bl object_addHP
 	pop {r5}
 	mov r0, #0x8a
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	add r0, #0x34 
 	ldmia r0!, {r1-r3}
@@ -45470,7 +45470,7 @@ loc_80CE3D6:
 	add r0, r0, r0
 	ldr r1, off_80CE414 // =byte_80CE418 
 	ldrh r0, [r1,r0]
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
@@ -45699,7 +45699,7 @@ loc_80CE5BA:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	mov r0, #0xb3
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CE5F0
@@ -45798,7 +45798,7 @@ sub_80CE690:
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0xd1
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param2]
 	tst r0, r0
 	beq loc_80CE6BA
@@ -46024,7 +46024,7 @@ loc_80CE858:
 	bl object_presentCollisionData
 	mov r0, #0x21 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
@@ -46647,7 +46647,7 @@ loc_80CECAC:
 	mov r4, #0
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80CEE38
 loc_80CECFA:
 	mov r0, #8
@@ -46982,7 +46982,7 @@ loc_80CEFA8:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	bl sub_80C6ADA
 	mov r0, #0xb9
-	bl sound_play // () -> void
+	bl sound_play
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer2]
@@ -47265,7 +47265,7 @@ loc_80CF202:
 	b loc_80CF23A
 loc_80CF222:
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -47325,7 +47325,7 @@ loc_80CF296:
 	mov r0, #1
 	bl object_setCollisionRegion
 	mov r0, #0xc0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -47583,7 +47583,7 @@ sub_80CF4C8:
 	mov r0, #0x10
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0xc4
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -47614,7 +47614,7 @@ sub_80CF4E6:
 	mov r4, #5
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r7, [r5,#oBattleObject_ExtraVars]
 	ldrb r0, [r7,#4]
 	tst r0, r0
@@ -48346,7 +48346,7 @@ loc_80CFAFE:
 	mov r0, #1
 	bl object_setCollisionRegion
 	mov r0, #0xc0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -48422,7 +48422,7 @@ loc_80CFB7A:
 	bl SpawnT4BattleObjectWithId0
 	ldr r1, [r5,#oBattleObject_ExtraVars]
 	ldrh r0, [r1,#4]
-	bl sound_play // () -> void
+	bl sound_play
 loc_80CFBB6:
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -48500,7 +48500,7 @@ sub_80CFC28:
 	bl object_setupCollisionData
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #0xad
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CFC5E
@@ -48640,7 +48640,7 @@ sub_80CFD1C:
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
 	mov r0, #0xed
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CFD64
@@ -48988,13 +48988,13 @@ loc_80CFFE8:
 	mov r0, #1
 	bl object_setCollisionRegion
 	mov r0, #0x97
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x97
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r4,pc}
 loc_80D0010:
 	bl object_getFrontDirection // () -> int
@@ -49227,7 +49227,7 @@ loc_80D01AC:
 	bne locret_80D01BA
 	mov r0, #0x81
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 locret_80D01BA:
 	pop {r4,pc}
 	thumb_func_end sub_80D0168
@@ -49421,7 +49421,7 @@ sub_80D0310:
 	strb r1, [r5,#oBattleObject_CurPhase]
 	mov r0, #0x47 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xb
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80D033A
@@ -49563,7 +49563,7 @@ loc_80D0420:
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
 	mov r0, #0xb3
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D043E:
@@ -50147,7 +50147,7 @@ sub_80D08CC:
 	strb r1, [r5,#oBattleObject_CurPhase]
 	bl sub_80D0A5C
 	mov r0, #0xb7
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param1]
 	ldr r1, off_80D0910 // =byte_80D0914 
 	ldrb r0, [r1,r0]
@@ -50219,7 +50219,7 @@ sub_80D0952:
 	mov r1, #4
 	strb r1, [r5,#oBattleObject_CurPhase]
 	mov r0, #0xb3
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80D09BE
 	b locret_80D0994
 loc_80D096A:
@@ -50380,7 +50380,7 @@ sub_80D0A80:
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_Param2]
 	mov r0, #0x8b
-	bl sound_play // () -> void
+	bl sound_play
 locret_80D0AA4:
 	pop {pc}
 	.balign 4, 0x00
@@ -50914,7 +50914,7 @@ sub_80D0E9E:
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	mov r0, #0x2f 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x14
@@ -51174,7 +51174,7 @@ sub_80D10B8:
 	bl object_setCollisionRegion
 	mov r0, #0x58 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xa
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80D1104
@@ -51463,7 +51463,7 @@ sub_80D12CA:
 	mov r4, #0
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x70
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #0x14
 	strh r0, [r5,#oBattleObject_Timer]
@@ -51515,7 +51515,7 @@ loc_80D135E:
 	mov r4, #0x14
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x70
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #8
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
@@ -51928,7 +51928,7 @@ loc_80D1692:
 loc_80D169C:
 	bl sub_80D1784
 	mov r0, #0xbd
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
@@ -53295,7 +53295,7 @@ sub_80D214C:
 	mov r1, #4
 	strb r1, [r5,#oBattleObject_CurPhase]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80D2174
@@ -53734,7 +53734,7 @@ sub_80D2480:
 loc_80D24DC:
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D24F0
@@ -54015,7 +54015,7 @@ sub_80D2714:
 	strb r1, [r5,#oBattleObject_PhaseInitialized]
 	bl sub_80D29F4
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80D274E
@@ -54098,7 +54098,7 @@ sub_80D27A0:
 	mov r0, #0xff
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	mov r0, #0x85
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_CurPhase]
 	add r0, #4
 	cmp r0, #8
@@ -54206,7 +54206,7 @@ loc_80D2878:
 	bgt loc_80D288C
 	mov r0, #0x2c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x10
 	strh r0, [r5,#oBattleObject_Timer2]
 loc_80D288C:
@@ -54468,7 +54468,7 @@ sub_80D2A68:
 	mov r4, #0
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_clearCollisionRegion // () -> void
 	bl sub_80D2A58
 	mov r0, #0
@@ -55143,7 +55143,7 @@ sub_80D2F70:
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x48]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#0xa]
 loc_80D2F88:
@@ -55218,7 +55218,7 @@ sub_80D2FEC:
 	tst r0, r1
 	beq locret_80D3002
 	mov r0, #0xb3
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strh r0, [r5,#0xa]
 locret_80D3002:
@@ -55983,7 +55983,7 @@ sub_80D35E0:
 	mov r0, #0xa
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -56015,7 +56015,7 @@ sub_80D3620:
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0xaa
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {pc}
@@ -56140,7 +56140,7 @@ loc_80D36E8:
 	b loc_80D3720
 loc_80D3708:
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -56355,7 +56355,7 @@ sub_80D387C:
 	bl object_setCollisionRegion
 	bl object_presentCollisionData
 	mov r0, #0xb8
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D390A
@@ -56804,7 +56804,7 @@ sub_80D3C6C:
 	mov r4, #0x1e
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0xa5
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1c
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x1e
@@ -57456,7 +57456,7 @@ sub_80D4198:
 	mov r0, #0xa
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -57564,7 +57564,7 @@ sub_80D4242:
 	ldrb r0, [r5,#oBattleObject_Param1]
 	add r0, r0, r0
 	ldrh r0, [r7,r0]
-	bl sound_play // () -> void
+	bl sound_play
 loc_80D4266:
 	ldr r0, [r5,#oBattleObject_ExtraVars+4]
 	sub r0, #1
@@ -57663,7 +57663,7 @@ loc_80D4302:
 	b loc_80D433A
 loc_80D4322:
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -58311,7 +58311,7 @@ loc_80D481E:
 	mov r2, #4
 	bl object_setPanelType
 	mov r0, #0x90
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+0xc]
 	mov r0, #8
@@ -58443,7 +58443,7 @@ loc_80D48E2:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #8
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80D493C:
 	mov r0, #0x40 
 	bl sub_801DACC
@@ -58685,7 +58685,7 @@ loc_80D4B0E:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Param2]
 	mov r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80D4B34:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	cmp r0, #7
@@ -58999,7 +58999,7 @@ loc_80D4DA8:
 	mov r0, #1
 	bl object_setCollisionRegion
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -59118,7 +59118,7 @@ sub_80D4E64:
 	pop {r5}
 	mov r0, #0x2f 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #8
@@ -59238,7 +59238,7 @@ loc_80D4F70:
 	bl sub_80E1D7A
 loc_80D4F8E:
 	mov r0, #0x90
-	bl sound_play // () -> void
+	bl sound_play
 loc_80D4F94:
 	bl object_clearCollisionRegion // () -> void
 	ldrb r0, [r5,#oObjectHeader_Flags]
@@ -59921,7 +59921,7 @@ loc_80D54DA:
 	tst r0, r0
 	bne loc_80D54E6
 	mov r0, #0xd9
-	bl sound_play // () -> void
+	bl sound_play
 loc_80D54E6:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #8
@@ -60526,7 +60526,7 @@ loc_80D59BE:
 	mov r1, #0x14
 	bl sub_80302A8
 	mov r0, #0xc0
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_crackPanel
@@ -61096,7 +61096,7 @@ loc_80D5E2A:
 	tst r0, r1
 	beq loc_80D5E5C
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -61838,7 +61838,7 @@ sub_80D644E:
 	lsl r0, r0, #2
 	ldr r1, off_80D64FC // =off_80D6500 
 	ldr r0, [r1,r0]
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_getCoordinatesForPanels // (int a1, int a2) -> (int n1, int n2)
@@ -62056,7 +62056,7 @@ loc_80D6624:
 	bne loc_80D6646
 	mov r0, #0xf
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	b locret_80D6686
 loc_80D6646:
 	sub r0, #1
@@ -62323,7 +62323,7 @@ sub_80D6810:
 	ldrb r0, [r5,#oBattleObject_Param3]
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0xbd
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D685A
@@ -62388,7 +62388,7 @@ loc_80D68A0:
 	mov r4, #0x21 
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0xb9
-	bl sound_play // () -> void
+	bl sound_play
 loc_80D68C6:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0
@@ -62665,7 +62665,7 @@ loc_80D6AF6:
 loc_80D6AFE:
 	bl object_presentCollisionData
 	mov r0, #0xf3
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D6B28
@@ -62882,7 +62882,7 @@ sub_80D6C88:
 	str r0, [r5,#oBattleObject_XVelocity]
 	str r1, [r5,#oBattleObject_ZVelocity]
 	mov r0, #0xc4
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x11
 	strh r0, [r5,#oBattleObject_Timer]
 	b loc_80D6CF0
@@ -63287,7 +63287,7 @@ sub_80D6FDC:
 	strb r1, [r5,#oBattleObject_CurPhase]
 	mov r0, #0x82
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xa
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80D7006
@@ -63477,7 +63477,7 @@ sub_80D715C:
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurPhase]
 	mov r0, #0xb8
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xa
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80D7184
@@ -63691,7 +63691,7 @@ loc_80D732C:
 	mov r4, #0
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x85
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #8
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
@@ -63712,7 +63712,7 @@ sub_80D7358:
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x13
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80D7370:
@@ -63891,7 +63891,7 @@ loc_80D74A2:
 	bl object_presentCollisionData
 	mov r0, #0x21 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80D74DC
@@ -64285,7 +64285,7 @@ loc_80D7802:
 	tst r0, r0
 	beq loc_80D784E
 	mov r0, #0xc0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	mov r1, #0xf
 	push {r5}
@@ -64392,7 +64392,7 @@ loc_80D78DA:
 	mov r4, #0
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_80D790E
 loc_80D7906:
 	bl battle_isTimeStop
@@ -64446,7 +64446,7 @@ sub_80D795C:
 	bl sub_802EF5C
 	mov r0, #0x85
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	mov r1, #0
 	mov r2, #0
@@ -64509,7 +64509,7 @@ loc_80D79E0:
 	bne loc_80D79EE
 	mov r0, #0x86
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80D79EE:
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	sub r0, #1
@@ -64742,7 +64742,7 @@ sub_80D7BB0:
 	mov r1, #4
 	strb r1, [r5,#oBattleObject_CurPhase]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param1]
 	mov r1, #0xc
 	mul r0, r1
@@ -66255,7 +66255,7 @@ sub_80D881C:
 	bne locret_80D883E
 	mov r0, #0x4a 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 locret_80D883E:
 	pop {pc}
 off_80D8840: .word off_80D8844
@@ -66419,7 +66419,7 @@ loc_80D8942:
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0x21 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D8988
@@ -66442,7 +66442,7 @@ loc_80D8998:
 	mov r4, #0
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x70
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_80D8A0E
 loc_80D89AC:
 	ldr r3, [r5,#oBattleObject_CollisionDataPtr]
@@ -66617,7 +66617,7 @@ loc_80D8AF0:
 	strh r0, [r5,#oBattleObject_Timer]
 	bl sub_80D8BD4
 	mov r0, #0xc7
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param2]
 	sub r0, #1
 	strb r0, [r5,#oBattleObject_Param2]
@@ -66901,7 +66901,7 @@ loc_80D8D26:
 	b locret_80D8D4C
 loc_80D8D3A:
 	mov r0, #0x6f 
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80D8DEE
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #8
@@ -66987,7 +66987,7 @@ loc_80D8DC0:
 	b loc_80D8DE0
 loc_80D8DD8:
 	mov r0, #0x85
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 loc_80D8DE0:
 	str r0, [sp,#4]
@@ -67513,7 +67513,7 @@ sub_80D9178:
 	strb r1, [r5,r0]
 	mov r0, #0xf
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
@@ -67646,7 +67646,7 @@ sub_80D9298:
 	push {r5,lr}
 	mov r0, #0xf
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param2]
 	cmp r0, #0
 	beq loc_80D92BE
@@ -68427,7 +68427,7 @@ loc_80D98BE:
 	bl sub_80D98E8
 	mov r0, #0x13
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r7,pc}
 dword_80D98E4: .word 0xA0000
 	thumb_func_end sub_80D9870
@@ -68550,7 +68550,7 @@ sub_80D99A4:
 	mov r4, #2
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0xd9
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
@@ -68840,7 +68840,7 @@ sub_80D9C54:
 	bl sub_80E11E0
 	mov r0, #0xbe
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	ldrb r0, [r0,#2]
 	ldr r1, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
@@ -69079,7 +69079,7 @@ loc_80D9E60:
 	mov r4, #0x4a
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x70
-	bl sound_play // () -> void
+	bl sound_play
 loc_80D9E72:
 	bl object_clearCollisionRegion // () -> void
 	ldrb r0, [r5,#oObjectHeader_Flags]
@@ -69146,7 +69146,7 @@ loc_80D9EC2:
 	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0x16
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -69202,7 +69202,7 @@ loc_80D9F3C:
 	mov r1, #0xf
 	bl sub_80302A8
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
@@ -69438,7 +69438,7 @@ sub_80DA15C:
 	mov r0, #0xa
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -69619,7 +69619,7 @@ loc_80DA2AE:
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x9b
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
@@ -69687,7 +69687,7 @@ loc_80DA336:
 	b locret_80DA378
 loc_80DA340:
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -70406,7 +70406,7 @@ loc_80DA8BA:
 	mov r4, #0
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x85
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #8
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
@@ -71057,7 +71057,7 @@ sub_80DADE0:
 	bne loc_80DADFE
 	mov r0, #0xc7
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80DADFE:
 	ldr r1, [r5,#oBattleObject_YVelocity]
 	ldr r0, [r5,#oBattleObject_Y]
@@ -71555,7 +71555,7 @@ loc_80DB1BA:
 	mov r0, #5
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80DB1C8:
@@ -71679,7 +71679,7 @@ loc_80DB2A0:
 	mov r4, #2
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x90
-	bl sound_play // () -> void
+	bl sound_play
 loc_80DB2B8:
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -71765,7 +71765,7 @@ sub_80DB324:
 	mov r0, #0x10
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0xc4
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xa
 	bl object_setCollisionHitEffect
 	bl object_clearCollisionRegion // () -> void
@@ -71823,7 +71823,7 @@ sub_80DB3B4:
 	mov r4, #5
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r3, #0xf
@@ -72345,7 +72345,7 @@ loc_80DB7DC:
 	mov r1, #0x14
 	bl sub_80302A8
 	mov r0, #0xc0
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_crackPanel
@@ -72687,7 +72687,7 @@ loc_80DBA8C:
 	beq loc_80DBABC
 	mov r0, #0x97
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrh r0, [r4,#oCollisionData_SelfDamage]
 	ldr r1, [r5,#oBattleObject_ExtraVars+4]
 	add r0, r0, r1
@@ -73040,7 +73040,7 @@ sub_80DBD10:
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
 	mov r0, #0xc4
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
@@ -73313,7 +73313,7 @@ loc_80DBF90:
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
 	mov r0, #0xc4
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r7,pc}
@@ -73387,7 +73387,7 @@ sub_80DC018:
 	mov r4, #5
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r7, [r5,#oBattleObject_ExtraVars]
 	ldrb r0, [r7,#4]
 	tst r0, r0
@@ -73597,7 +73597,7 @@ loc_80DC1D2:
 	bne loc_80DC1E0
 	mov r0, #0x12
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80DC1E0:
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	add r0, #1
@@ -73949,7 +73949,7 @@ sub_80DC484:
 	bl object_breakPanel_dup2
 	mov r0, #0x2f 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x10
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80DC4B6
@@ -74079,7 +74079,7 @@ sub_80DC588:
 	bl sub_80DC5DA
 	mov r0, #0x82
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80DC5B2
@@ -74177,7 +74177,7 @@ loc_80DC630:
 	mov r0, #0x28 
 	bl object_setCollisionRegion
 	mov r0, #0xf3
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DC668
@@ -74403,7 +74403,7 @@ loc_80DC81A:
 	bne loc_80DC828
 	mov r0, #0x41 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80DC828:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -74894,7 +74894,7 @@ sub_80DCBCC:
 	mov r1, #4
 	strb r1, [r5,#oBattleObject_CurPhase]
 	mov r0, #0xc4
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param1]
 	lsl r0, r0, #2
 	ldr r1, off_80DCC48 // =byte_80DCC4C
@@ -75095,7 +75095,7 @@ sub_80DCD74:
 	strb r1, [r5,#oBattleObject_CurPhase]
 	mov r0, #0x80
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r4, dword_80DCE34 // =0x80000 
 	bl object_getFrontDirection // () -> int
 	mul r0, r4
@@ -75409,7 +75409,7 @@ sub_80DCFF4:
 	strb r1, [r5,#oBattleObject_CurPhase]
 	mov r0, #0xc3
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80DD062
 loc_80DD00C:
 	ldr r0, [r5,#oBattleObject_XVelocity]
@@ -75933,7 +75933,7 @@ loc_80DD416:
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0x41 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
@@ -76490,7 +76490,7 @@ sub_80DD87C:
 	mov r0, #1
 	bl object_setCollisionRegion
 	mov r0, #0x97
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0x1e
@@ -77026,7 +77026,7 @@ loc_80DDCCA:
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
 	mov r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r7,pc}
@@ -77082,7 +77082,7 @@ sub_80DDD30:
 	mov r4, #5
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x70 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	mov r1, #0xf
 	bl sub_80302A8
@@ -77311,7 +77311,7 @@ sub_80DDF18:
 	ldrb r0, [r1,r0]
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xf0
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_getFrontDirection // () -> int
 	ldr r1, dword_80DDFFC // =0x80000 
 	mul r0, r1
@@ -77520,7 +77520,7 @@ loc_80DE098:
 	lsl r0, r0, #1
 	bl object_addHP
 	mov r0, #0x8a
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #5
 	mov r4, r0
 	bl sub_801A7CC
@@ -78016,7 +78016,7 @@ loc_80DE482:
 	mov r0, #1
 	bl sub_80DE70C
 	mov r0, #0xf7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DE4EC
@@ -78487,7 +78487,7 @@ loc_80DE85E:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #0x59 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DE8C0
@@ -78832,7 +78832,7 @@ sub_80DEB70:
 	pop {r5}
 	str r0, [r5,#oBattleObject_ExtraVars+0x10]
 	mov r0, #0xe1
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -78910,7 +78910,7 @@ loc_80DEBE8:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xbf
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	str r0, [r5,#oBattleObject_Z]
 	mov r0, #8
@@ -79934,7 +79934,7 @@ loc_80DF434:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	bl sub_80C6ADA
 	mov r0, #0xb9
-	bl sound_play // () -> void
+	bl sound_play
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer2]
@@ -80281,7 +80281,7 @@ sub_80DF6CE:
 	add r7, r7, r5
 	bl sub_80B8E30
 	mov r0, #0x6a 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x78 
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80DF740
@@ -80299,7 +80299,7 @@ loc_80DF6FE:
 	ldr r0, [r5,#oBattleObject_ExtraVars+4]
 	bl sub_80B8E7C
 	mov r0, #0x6a 
-	bl sound_play // () -> void
+	bl sound_play
 loc_80DF720:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -80334,9 +80334,9 @@ sub_80DF742:
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xf8
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xf9
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xb
 	str r0, [r5,#oBattleObject_ExtraVars+8]
 	ldr r4, dword_80DF904 // =0x1090b 
@@ -80371,7 +80371,7 @@ loc_80DF7A6:
 	cmp r0, #0
 	bgt loc_80DF7BA
 	mov r0, #0xf9
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xb
 	str r0, [r5,#oBattleObject_ExtraVars+8]
 loc_80DF7BA:
@@ -80409,7 +80409,7 @@ sub_80DF7D6:
 	mov r0, #0x78 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x6d 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_Timer2]
 	b locret_80DF846
@@ -80432,7 +80432,7 @@ loc_80DF802:
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0x6d 
-	bl sound_play // () -> void
+	bl sound_play
 loc_80DF82E:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -80843,7 +80843,7 @@ loc_80DFB3A:
 loc_80DFB48:
 	bl sub_80DFB56
 	mov r0, #0xc3
-	bl sound_play // () -> void
+	bl sound_play
 loc_80DFB52:
 	mov r0, #1
 locret_80DFB54:
@@ -80932,7 +80932,7 @@ sub_80DFBE4:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0xa3
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 locret_80DFC10:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -81352,7 +81352,7 @@ loc_80DFF18:
 	bl sub_8109794
 loc_80DFF50:
 	mov r0, #0xb9
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -81459,7 +81459,7 @@ sub_80DFFDC:
 	bl object_presentCollisionData
 	mov r0, #0x41 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E002C
@@ -82487,7 +82487,7 @@ loc_80E0976:
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x88
-	bl sound_play // () -> void
+	bl sound_play
 loc_80E098E:
 	ldr r4, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrh r0, [r4,#oBattleObject_NameID]
@@ -82658,7 +82658,7 @@ loc_80E0B6C:
 	bne loc_80E0B7E
 	ldr r0, off_80E0DE0 // =0x12d 
 loc_80E0B7E:
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E0B8C
@@ -82827,7 +82827,7 @@ sub_80E0CAA:
 	bne loc_80E0CC6
 	mov r0, #0x25 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80E0CC6:
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
@@ -82857,7 +82857,7 @@ loc_80E0CCA:
 	bne loc_80E0CFA
 	ldr r0, off_80E0DE0 // =0x12d 
 loc_80E0CFA:
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -83230,7 +83230,7 @@ loc_80E0F78:
 	cmp r0, #0
 	bne locret_80E0F9E
 	mov r0, #0x71 
-	bl sound_play // () -> void
+	bl sound_play
 	pop {pc}
 loc_80E0F8C:
 	ldr r0, [r5,#oBattleObject_ExtraVars+0x14]
@@ -83240,7 +83240,7 @@ loc_80E0F8C:
 	cmp r0, #1
 	bne locret_80E0F9E
 	mov r0, #0x72 
-	bl sound_play // () -> void
+	bl sound_play
 locret_80E0F9E:
 	pop {pc}
 	thumb_func_end sub_80E0F5E
@@ -84727,7 +84727,7 @@ loc_80E1A30:
 	tst r0, r0
 	bne locret_80E1A5C
 	mov r0, #0x6f 
-	bl sound_play // () -> void
+	bl sound_play
 locret_80E1A5C:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80E1A0C
@@ -84914,7 +84914,7 @@ sub_80E1B68:
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0x8c
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	ldrb r1, [r5,#oBattleObject_Param1]
 	mov r2, #1
@@ -86331,13 +86331,13 @@ sub_80E2628:
 	mov r4, #2
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x97
-	bl sound_play // () -> void
+	bl sound_play
 	b locret_80E2684
 loc_80E2678:
 	mov r4, #1
 	bl sub_80E1D7A
 	mov r0, #0x90
-	bl sound_play // () -> void
+	bl sound_play
 locret_80E2684:
 	pop {r4,r6,r7,pc}
 loc_80E2686:
@@ -86559,7 +86559,7 @@ sub_80E292C:
 	cmp r0, #0xc
 	beq loc_80E2952
 	mov r0, #0xa3
-	bl sound_play // () -> void
+	bl sound_play
 loc_80E2952:
 	pop {r0}
 loc_80E2954:
@@ -86634,7 +86634,7 @@ loc_80E29C6:
 loc_80E29DA:
 	mov r0, #0x90
 loc_80E29DC:
-	bl sound_play // () -> void
+	bl sound_play
 loc_80E29E0:
 	mov r0, #8
 	strb r0, [r5,#oBattleObject_CurState]
@@ -87091,7 +87091,7 @@ sub_80E2D08:
 	tst r0, r0
 	beq loc_80E2D22
 	mov r0, #0x91
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -87337,7 +87337,7 @@ sub_80E2EBC:
 	ldr r4, dword_80E2F10 // =0x13c00 
 	bl sub_80E11E0
 	mov r0, #0xbc
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r4, off_80E2F14 // =byte_80E2F18
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	lsl r0, r0, #2
@@ -87461,7 +87461,7 @@ sub_80E2F8C:
 	ldrb r0, [r7,#1]
 	tst r0, r0
 	beq locret_80E2FD4
-	bl sound_play // () -> void
+	bl sound_play
 locret_80E2FD4:
 	pop {r7,pc}
 loc_80E2FD6:
@@ -88395,7 +88395,7 @@ loc_80E3662:
 	ldrh r0, [r1,r0]
 	tst r0, r0
 	beq loc_80E368A
-	bl sound_play // () -> void
+	bl sound_play
 loc_80E368A:
 	add r7, sp, #0
 loc_80E368C:
@@ -89091,7 +89091,7 @@ sub_80E3B94:
 	str r5, [r0,#oBattleObject_ObjectHeader]
 	mov r0, #0xf
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
@@ -89213,7 +89213,7 @@ sub_80E3CC4:
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xbd
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param1]
 	strh r0, [r5,#oBattleObject_Timer]
 loc_80E3CDE:
@@ -89388,7 +89388,7 @@ sub_80E3E38:
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0xa0
-	bl sound_play // () -> void
+	bl sound_play
 loc_80E3E4E:
 	cmp r0, #1
 	bne loc_80E3E9C
@@ -90542,7 +90542,7 @@ sub_80E4678:
 	bl sub_80CFBC4
 	mov r0, #0x13
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -91271,7 +91271,7 @@ sub_80E4BD4:
 	bl sub_80D006E
 	pop {r0,r1}
 	mov r0, #0x64 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x14
 	strh r0, [r5,#0x20]
 	b locret_80E4C24
@@ -91575,7 +91575,7 @@ loc_80E4E16:
 	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0x89
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_CurAnimAndCurAnimCopy]
 	bl sprite_setAnimation // (u8 a1) -> void
@@ -91711,10 +91711,10 @@ loc_80E4F66:
 	mov r1, #0x1e
 	bl sub_80302A8
 	mov r0, #0xc0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xe
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Param3]
 	tst r0, r0
 	beq loc_80E4FA8
@@ -92116,7 +92116,7 @@ sub_80E5264:
 	mov r0, #3
 	str r0, [r5,#oBattleObject_ExtraVars+0xc]
 	mov r0, #0xad
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E527A
@@ -92673,7 +92673,7 @@ loc_80E564E:
 	b locret_80E566A
 loc_80E5664:
 	mov r0, #0xce
-	bl sound_play // () -> void
+	bl sound_play
 locret_80E566A:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80E5600
@@ -92963,7 +92963,7 @@ sub_80E5872:
 	mov r0, #1
 	strh r0, [r5,#oBattleObject_CurAnimAndCurAnimCopy]
 	mov r0, #0xbd
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl sub_80E5910
@@ -93582,7 +93582,7 @@ loc_80E5CD6:
 	tst r1, r1
 	bne loc_80E5CE6
 	mov r0, #0xf9
-	bl sound_play // () -> void
+	bl sound_play
 loc_80E5CE6:
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	add r0, #1
@@ -94750,7 +94750,7 @@ loc_80E65B2:
 	bl object_setCoordinatesFromPanels // () -> void
 	mov r0, #0x2a 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E65E0
@@ -94802,7 +94802,7 @@ loc_80E6626:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x2b 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -94911,7 +94911,7 @@ loc_80E66F6:
 	strh r3, [r0,#0x36]
 loc_80E6704:
 	mov r0, #0x8c
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r1, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r0, #0
 	strb r0, [r1,#oObjectHeader_Flags]
@@ -95226,7 +95226,7 @@ sub_80E6924:
 	bl sub_80D3DC4
 	str r0, [r5,#oBattleObject_ExtraVars+8]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
 loc_80E6956:
@@ -95463,7 +95463,7 @@ sub_80E6AF0:
 	lsl r3, r3, #0x10
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x77 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x14
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80E6B34
@@ -95655,7 +95655,7 @@ loc_80E6C5E:
 	lsl r0, r0, #2
 	ldr r1, off_80E6C74 // =byte_80E6C78
 	ldr r0, [r1,r0]
-	bl sound_play // () -> void
+	bl sound_play
 locret_80E6C70:
 	pop {r4,r6,pc}
 	.balign 4, 0x00
@@ -96456,7 +96456,7 @@ sub_80E72C8:
 	bl sub_80E7774
 	str r0, [r5,#oBattleObject_ExtraVars+0x14]
 	mov r0, #0xbd
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r0,r1}
 	push {r0,r1}
 	ldrb r2, [r5,#oBattleObject_Alliance]
@@ -96604,7 +96604,7 @@ loc_80E7406:
 	blt loc_80E7416
 	ldr r0, dword_80E74D0 // =0x11a 
 loc_80E7416:
-	bl sound_play // () -> void
+	bl sound_play
 	strh r4, [r1,#0x24]
 loc_80E741C:
 	add r7, #4
@@ -98608,7 +98608,7 @@ sub_80E82D4:
 	bl sub_80D006E
 	pop {r0,r1}
 	mov r0, #0xb7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x14
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80E8324
@@ -101220,7 +101220,7 @@ sub_80E95D8:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x1a
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	push {r5}
 	ldr r5, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sub_801265A
@@ -101287,7 +101287,7 @@ loc_80E96A8:
 	cmp r0, #0x1c
 	bne loc_80E96B4
 	mov r0, #0x77 
-	bl sound_play // () -> void
+	bl sound_play
 loc_80E96B4:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -101319,7 +101319,7 @@ sub_80E96C6:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x44 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r2, [r5,#oBattleObject_Param2]
 	mov r1, #5
 	bl sub_8013754
@@ -101384,7 +101384,7 @@ loc_80E9766:
 	cmp r0, #0x28 
 	bne loc_80E9772
 	mov r0, #0x77 
-	bl sound_play // () -> void
+	bl sound_play
 loc_80E9772:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -102247,7 +102247,7 @@ sub_80E9E2C:
 	bl sub_80302A8
 	mov r0, #0xab
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x2e 
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80E9E9E
@@ -102271,7 +102271,7 @@ loc_80E9E6E:
 loc_80E9E90:
 	mov r0, #0x15
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	b locret_80E9E9E
 loc_80E9E9A:
 	mov r0, #8
@@ -103023,7 +103023,7 @@ loc_80EA3E6:
 	strb r1, [r0,#oObjectHeader_Flags]
 	mov r0, #0x2f 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	b locret_80EA410
 loc_80EA40C:
 	mov r0, #8
@@ -104311,7 +104311,7 @@ loc_80EB370:
 	mov r1, #0xf
 	bl sub_80302A8
 	mov r0, #0xc0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #3
 	bl object_setAnimation
 	mov r0, #0
@@ -104429,12 +104429,12 @@ loc_80EB472:
 	cmp r0, #1
 	bne loc_80EB4F2
 	mov r0, #0x6a 
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r7,#oAIAttackVars_Unk_03]
 	cmp r0, #2
 	bne loc_80EB4B0
 	mov r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	push {r7}
 	ldr r6, [r7,#oAIAttackVars_Unk_08]
 	ldr r7, [r7,#oAIAttackVars_Unk_30]
@@ -104696,7 +104696,7 @@ loc_80EB676:
 	bl sub_80B8E30
 	pop {r7}
 	mov r0, #0xb2
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
@@ -104927,7 +104927,7 @@ sub_80EB862:
 loc_80EB88C:
 	mov r0, #0xce
 loc_80EB88E:
-	bl sound_play // () -> void
+	bl sound_play
 	push {r7}
 	bl sub_80EBB78
 	mov r4, r0
@@ -105380,7 +105380,7 @@ loc_80EBCDC:
 	cmp r0, #0xf
 	bne loc_80EBD06
 	mov r0, #0xae
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1
@@ -105579,7 +105579,7 @@ loc_80EBE76:
 	cmp r0, #1
 	bne loc_80EBEA2
 	mov r0, #0x6a 
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r7,#oAIAttackVars_Unk_0c]
 	ldrh r1, [r7,#oAIAttackVars_Unk_08]
 	mov r3, #0x18
@@ -105749,7 +105749,7 @@ loc_80EBF98:
 	ldrb r2, [r7,#oAIAttackVars_Unk_02]
 	bl sub_80C6ADA
 	mov r0, #0xb9
-	bl sound_play // () -> void
+	bl sound_play
 	ldrh r0, [r7,#oAIAttackVars_Unk_12]
 	sub r0, #1
 	strh r0, [r7,#oAIAttackVars_Unk_12]
@@ -105962,7 +105962,7 @@ loc_80EC15E:
 	cmp r0, #5
 	bne loc_80EC198
 	mov r0, #0xae
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r7,#oAIAttackVars_Unk_03]
 	cmp r0, #3
 	bne loc_80EC17C
@@ -106090,10 +106090,10 @@ loc_80EC234:
 	bl object_setAnimation
 	mov r0, #0xc0
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xc8
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, dword_80EC348 // =0x10000 
 	ldr r1, [r5,#oBattleObject_Y]
 	add r1, r1, r0
@@ -106314,7 +106314,7 @@ off_80EC3F0: .word sub_80104E0+1
 sub_80EC44C:
 	push {lr}
 	mov r0, #0x8d
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	mov r1, #0xff
 	bl sub_8015BEC
@@ -106371,7 +106371,7 @@ loc_80EC4BC:
 	cmp r0, #1
 	bne loc_80EC4FE
 	mov r0, #0xb9
-	bl sound_play // () -> void
+	bl sound_play
 	bl GetPositiveSignedRNG2
 	mov r1, #3
 	and r0, r1
@@ -106394,7 +106394,7 @@ loc_80EC4BC:
 	pop {r7}
 	b loc_80EC4FE
 	mov r0, #0
-	bl sound_play // () -> void
+	bl sound_play
 loc_80EC4FE:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	add r0, #1
@@ -106544,7 +106544,7 @@ loc_80EC62C:
 	cmp r0, #1
 	bne loc_80EC66E
 	mov r0, #0xb3
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	ldr r1, off_80EC708 // =dword_80EC70C
 	ldrb r3, [r1,r0]
@@ -106571,7 +106571,7 @@ loc_80EC662:
 	strb r1, [r7,#oAIAttackVars_Unk_0e]
 	b loc_80EC66E
 	mov r0, #0
-	bl sound_play // () -> void
+	bl sound_play
 loc_80EC66E:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	add r0, #1
@@ -106870,7 +106870,7 @@ sub_80EC8A0:
 	bl sub_80B8E30
 	pop {r7}
 	mov r0, #0xaf
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	b locret_80EC90C
@@ -106964,7 +106964,7 @@ sub_80EC97C:
 	mov r0, #0xc
 	bl object_setAnimation
 	mov r0, #0xd8
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_setDefaultCounterTime
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -107080,7 +107080,7 @@ loc_80ECA6E:
 	cmp r0, #1
 	bne loc_80ECA94
 	mov r0, #0x6a 
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_getFrontDirection // () -> int
 	ldr r4, [r7,#oAIAttackVars_Unk_0c]
 	ldrh r3, [r7,#oAIAttackVars_Unk_06]
@@ -107305,7 +107305,7 @@ loc_80ECC08:
 	add r1, #1
 	strb r1, [r0,#0x10]
 	mov r0, #0xaf
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1
@@ -107507,7 +107507,7 @@ loc_80ECDAA:
 	bne loc_80ECDC0
 	mov r0, #0x2c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80ECDC0:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	add r0, #1
@@ -107621,7 +107621,7 @@ loc_80ECE7C:
 	bl sub_80ECF00
 	mov r0, #0x8b
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldr r0, [r0,#oAIData_Unk_68]
 	ldrb r1, [r0,#0x10]
@@ -107941,7 +107941,7 @@ loc_80ED0E6:
 	strb r1, [r0,#0x10]
 	mov r0, #0x81
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80ED116:
@@ -108066,7 +108066,7 @@ loc_80ED1DC:
 	mov r4, #0
 	bl sub_80C9CDA
 	mov r0, #0xc5
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_80ED226
 loc_80ED206:
 	cmp r4, #4
@@ -108212,7 +108212,7 @@ sub_80ED314:
 	mov r0, #0xc
 	bl object_setAnimation
 	mov r0, #0xd8
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_setDefaultCounterTime
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -108237,7 +108237,7 @@ loc_80ED33C:
 	mov r3, #0
 	bl sub_80CC73C
 	mov r0, #0xb4
-	bl sound_play // () -> void
+	bl sound_play
 loc_80ED362:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -108326,7 +108326,7 @@ sub_80ED3B6:
 	add r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0xf0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 loc_80ED40E:
@@ -108662,7 +108662,7 @@ sub_80ED668:
 	mov r0, #0xc
 	bl object_setAnimation
 	mov r0, #0xd8
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_setDefaultCounterTime
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
@@ -108807,7 +108807,7 @@ loc_80ED786:
 	cmp r0, #1
 	bne loc_80ED792
 	mov r0, #0xf8
-	bl sound_play // () -> void
+	bl sound_play
 loc_80ED792:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	add r0, #1
@@ -108921,7 +108921,7 @@ loc_80ED85C:
 	add r1, #1
 	strb r1, [r0,#0x10]
 	mov r0, #0xaf
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r5,#oBattleObject_PanelX]
 	add r0, r0, r1
@@ -109025,7 +109025,7 @@ sub_80ED924:
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	mov r0, #0x2c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80ED93A:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -109194,10 +109194,10 @@ loc_80EDA30:
 	pop {r7}
 	mov r0, #0xa7
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xa8
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	mov r0, #0xa
@@ -109294,7 +109294,7 @@ sub_80EDB14:
 	bl sub_80B8E30
 	pop {r7}
 	mov r0, #0xf8
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #6
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #4
@@ -109718,7 +109718,7 @@ sub_80EDE4A:
 	strb r1, [r0,#0x11]
 	mov r0, #0xa9
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r4,r6,pc}
 	thumb_func_end sub_80EDE4A
 
@@ -109770,9 +109770,9 @@ loc_80EDEC2:
 	ldr r6, [r7,#oAIAttackVars_Unk_08]
 	bl sub_80D398E
 	mov r0, #0xf4
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xb8
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x3c 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #4
@@ -109896,7 +109896,7 @@ sub_80EDFC0:
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	mov r0, #0x9b
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80EDFD6:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -110004,7 +110004,7 @@ loc_80EE086:
 	ldr r6, [r7,#oAIAttackVars_Unk_08]
 	bl sub_80D5718
 	mov r0, #0xb8
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x2d 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #4
@@ -110088,7 +110088,7 @@ sub_80EE110:
 	bl sub_80D5890
 	mov r0, #0x9b
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80EE154:
 	ldrh r0, [r7,#oAIAttackVars_Unk_12]
 	sub r0, #1
@@ -110154,7 +110154,7 @@ sub_80EE1AC:
 	bl object_setDefaultCounterTime
 	mov r0, #0x20 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	push {r7}
 	bl sub_80EBAE8
 	lsl r0, r0, #8
@@ -110303,7 +110303,7 @@ sub_80EE2CE:
 	bl object_setAnimation
 	bl object_setDefaultCounterTime
 	mov r0, #0xc7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
@@ -110478,7 +110478,7 @@ loc_80EE41C:
 loc_80EE43C:
 	mov r0, #0xce
 loc_80EE43E:
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r7,#oAIAttackVars_Unk_03]
 	cmp r0, #0x10
 	beq loc_80EE474
@@ -110923,7 +110923,7 @@ sub_80EE748:
 	bl sub_80D7ED4
 	pop {r7}
 	mov r0, #0xf3
-	bl sound_play // () -> void
+	bl sound_play
 loc_80EE792:
 	ldrh r0, [r7,#oAIAttackVars_Unk_12]
 	sub r0, #1
@@ -111009,7 +111009,7 @@ sub_80EE7EC:
 	bl sub_80D8F98
 	mov r0, #0x12
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x46 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #4
@@ -111107,7 +111107,7 @@ loc_80EE8E2:
 	ldr r6, [r7,#oAIAttackVars_Unk_08]
 	bl sub_80D981C
 	mov r0, #0xc4
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x14
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #8
@@ -111177,7 +111177,7 @@ loc_80EE96E:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #8
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80EE994:
@@ -111219,7 +111219,7 @@ loc_80EE9BA:
 	strb r2, [r0,#oBattleObject_DirectionFlip]
 loc_80EE9D6:
 	mov r0, #0xb7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #4
@@ -111291,7 +111291,7 @@ sub_80EEA5C:
 	mov r0, #3
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	mov r0, #0x77 
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_setDefaultCounterTime
 	ldr r0, dword_80EEE50 // =0xffff 
 	bl object_setInvulnerableTime
@@ -111312,7 +111312,7 @@ sub_80EEA78:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_802CEA6
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	push {r7}
 	bl sub_80EBB34
 	mov r4, r0
@@ -111430,7 +111430,7 @@ sub_80EEB68:
 	mov r0, #5
 	bl object_setAnimation
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	push {r7}
 	bl sub_80EBB34
 	mov r4, r0
@@ -111615,7 +111615,7 @@ sub_80EECCC:
 	bne loc_80EED14
 	mov r0, #0xb
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r4, dword_80EED2C // =0x705ff11 
 	ldr r6, [r7,#oAIAttackVars_Unk_08]
 	bl object_getFrontDirection // () -> int
@@ -111738,7 +111738,7 @@ loc_80EEDB6:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #8
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80EEDDC:
@@ -111928,7 +111928,7 @@ sub_80EEF02:
 	bl object_setDefaultCounterTime
 	mov r0, #0x59 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80EEF58:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -112165,7 +112165,7 @@ sub_80EF0E2:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0xc0
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 loc_80EF13C:
@@ -112395,7 +112395,7 @@ loc_80EF2D2:
 	bl sub_80DDBAC
 	mov r0, #0xc8
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x32 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #4
@@ -112738,7 +112738,7 @@ loc_80EF578:
 	beq loc_80EF596
 	ldr r0, dword_80EF964 // =0x1c6 
 loc_80EF596:
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r1, [r7,#oAIAttackVars_Unk_12]
 	mov r0, #2
 	sub r0, r0, r1
@@ -112931,7 +112931,7 @@ loc_80EF774:
 loc_80EF778:
 	push {r0}
 	mov r0, #0x8b
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r0}
 loc_80EF782:
 	ldr r1, off_80EF7D4 // =loc_80EF7D8 
@@ -113100,7 +113100,7 @@ loc_80EF8F4:
 loc_80EF8F8:
 	push {r0}
 	mov r0, #0x8b
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r0}
 loc_80EF902:
 	ldr r1, off_80EF954 // =byte_80EF958
@@ -113193,7 +113193,7 @@ sub_80EF9A2:
 	bl object_setAnimation
 	bl object_setDefaultCounterTime
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	push {r7}
 	bl sub_80EBB34
 	mov r4, r0
@@ -113354,7 +113354,7 @@ loc_80EFA9E:
 	bl sub_8019F86
 	mov r0, #0x88
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, dword_80EFC14 // =0xffff 
 	bl object_setInvulnerableTime
 	mov r0, #4
@@ -113519,7 +113519,7 @@ sub_80EFC38:
 	lsl r0, r0, #OBJECT_FLAGS_UNK_BIT_22_BIT
 	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	mov r0, #0
@@ -113640,7 +113640,7 @@ loc_80EFD14:
 	bic r1, r2
 	strb r1, [r0,#oObjectHeader_Flags]
 	mov r0, #0xad
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #9
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #4
@@ -113723,7 +113723,7 @@ sub_80EFDB2:
 	tst r0, r0
 	bne loc_80EFE2C
 	mov r0, #0x8e
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_clearCollisionRegion // () -> void
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r0, [r5,#oBattleObject_PanelX]
@@ -113902,7 +113902,7 @@ sub_80EFF28:
 	add r1, #1
 	str r1, [r7,#oAIAttackVars_Unk_40]
 	mov r0, #0x8b
-	bl sound_play // () -> void
+	bl sound_play
 loc_80EFF50:
 	ldrb r0, [r7,#oAIAttackVars_Unk_01]
 	tst r0, r0
@@ -113916,7 +113916,7 @@ loc_80EFF50:
 	bl object_setDefaultCounterTime
 	mov r0, #0x32 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	push {r7}
 	bl sub_80EBB34
 	mov r4, r0
@@ -114173,7 +114173,7 @@ loc_80F0188:
 	cmp r0, #1
 	bne loc_80F01C8
 	mov r0, #0x6a 
-	bl sound_play // () -> void
+	bl sound_play
 	ldrh r0, [r7,#oAIAttackVars_Unk_12]
 	mov r1, #3
 	svc 6
@@ -114297,7 +114297,7 @@ sub_80F0262:
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	mov r0, #0x29 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80F027A:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r1, #2
@@ -115005,7 +115005,7 @@ loc_80F083E:
 	mov r1, #0x3c 
 	strh r1, [r0,#0x20]
 	mov r0, #0xc0
-	bl sound_play // () -> void
+	bl sound_play
 loc_80F087A:
 	mov r0, #0x3c 
 	strh r0, [r7,#0x10]
@@ -115279,7 +115279,7 @@ sub_80F0A7A:
 	bl sub_80F0B80
 	bl sub_80F0BA4
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, [r7,#0x30]
 	tst r0, r0
 	beq locret_80F0AB4
@@ -115632,7 +115632,7 @@ sub_80F0D08:
 	str r0, [r7,#0x30]
 	mov r0, #0x65 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xa
 	strh r0, [r7,#0x10]
 	b locret_80F0D5C
@@ -115988,7 +115988,7 @@ sub_80F0FF8:
 	mov r0, #0x14
 	strb r0, [r5,#0x10]
 	mov r0, #0xc7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xa
 	strh r0, [r7,#0x10]
 	b locret_80F1030
@@ -116088,7 +116088,7 @@ sub_80F10A0:
 	strb r0, [r5,#0x10]
 	bl sub_80F1148
 	mov r0, #0xba
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x3c 
 	strh r0, [r7,#0x10]
 	b locret_80F10CC
@@ -116260,7 +116260,7 @@ sub_80F11BC:
 	str r0, [r7,#0x30]
 	str r0, [r7,#0x34]
 	mov r0, #0xe4
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, dword_80F1528 // =0x60000 
 	bl sub_80F146E
 	b locret_80F1282
@@ -116462,7 +116462,7 @@ loc_80F1382:
 	bl sub_80F13B4
 	mov r0, #0x47 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 locret_80F138E:
 	pop {r4,pc}
 	thumb_func_end sub_80F1350
@@ -116739,7 +116739,7 @@ loc_80F156E:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x2e 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r7]
 locret_80F15A8:
@@ -117081,7 +117081,7 @@ sub_80F1808:
 	strb r0, [r5,#0x10]
 	mov r0, #0xb
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r7,#0x10]
 	b locret_80F187E
@@ -117237,7 +117237,7 @@ loc_80F1936:
 	bl sub_80302A8
 	mov r0, #0xd
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80F197A
 locret_80F194A:
 	pop {pc}
@@ -117341,7 +117341,7 @@ sub_80F19F0:
 	strb r0, [r5,#0x10]
 	bl sub_80F1ADE
 	mov r0, #0xfb
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r7,#0x10]
 	b locret_80F1A1C
@@ -117412,7 +117412,7 @@ sub_80F1A60:
 	bl sub_80F1B24
 	bl sub_80F1B78
 	mov r0, #0xb8
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_getFlip // () -> int
 	lsl r4, r0, #8
 	add r4, #0x41 
@@ -117583,7 +117583,7 @@ sub_80F1BC4:
 	bl sub_80F1E08
 	mov r0, #0x4d 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x46 
 	strh r0, [r7,#0x10]
 	b locret_80F1BF2
@@ -117698,7 +117698,7 @@ sub_80F1C78:
 	bl sub_80F1E50
 	mov r0, #0xc1
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r4, #0
 	mov r3, #0xa
 	lsl r3, r3, #8
@@ -117737,7 +117737,7 @@ loc_80F1CE4:
 	strh r0, [r7,#0x10]
 	bgt locret_80F1D18
 	mov r0, #0xe5
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strh r0, [r7]
 	b locret_80F1D18
@@ -118045,7 +118045,7 @@ sub_80F1F34:
 	ldr r2, [r5,#0x38]
 	ldr r3, [r5,#0x3c]
 	mov r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x23 
 	strh r0, [r7,#0x10]
 	b locret_80F1F7A
@@ -118120,7 +118120,7 @@ sub_80F1FC0:
 	bl sub_80E887C
 	str r0, [r7,#0x30]
 	mov r0, #0xad
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r7,#0x10]
 	b loc_80F1FFE
@@ -118171,7 +118171,7 @@ loc_80F2040:
 	bl sub_80F207C
 	mov r0, #0x7c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 locret_80F204C:
 	pop {r4,pc}
 	thumb_func_end sub_80F2004
@@ -118283,7 +118283,7 @@ off_80F210C: .word sub_80F2124+1
 sub_80F2124:
 	push {r4,r6,lr}
 	mov r0, #0xad
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1c
 	strb r0, [r5,#0x10]
 	ldr r0, [r5,#0x70]
@@ -118371,7 +118371,7 @@ loc_80F21C0:
 	strb r0, [r5,#0x10]
 	bl sub_80F22DA
 	mov r0, #0x6b 
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #0xff
 	strh r0, [r7,#0x10]
@@ -118381,7 +118381,7 @@ loc_80F21C0:
 loc_80F21DE:
 	mov r0, #0xa5
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_80F21E6:
 	mov r0, #0x14
 	strh r0, [r7]
@@ -119992,7 +119992,7 @@ loc_80F325A:
 	mov r0, #0x12
 	bl object_setCounterTime
 	mov r0, #0xc0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x10
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	b locret_80F32BA
@@ -121661,7 +121661,7 @@ sub_80F404E:
 	ldr r6, [r7,#oAIAttackVars_Unk_08]
 	bl sub_80C8070
 	mov r0, #0xba
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, [r7,#oAIAttackVars_Unk_30]
 	ldr r0, [r0]
 	mov r1, #4
@@ -122255,7 +122255,7 @@ loc_80F44FA:
 	bl object_spawnCollisionRegion
 	pop {r4,r6,r7}
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80F4778
 	mov r0, #0xe
 	ldrh r1, [r7,#oAIAttackVars_Unk_18]
@@ -123338,7 +123338,7 @@ sub_80F4E44:
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	mov r0, #0x59 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x10
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xc
@@ -123443,7 +123443,7 @@ sub_80F4F14:
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	mov r0, #0xc7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x11
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xc
@@ -123682,7 +123682,7 @@ loc_80F50F8:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x65 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r1, #0x53 
 	mov r2, #2
 	mov r3, #3
@@ -125155,7 +125155,7 @@ sub_80F5D74:
 	mov r0, #0x14
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xc7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_80F5DAC
@@ -125342,7 +125342,7 @@ sub_80F5EDE:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xf
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80F62EC
 loc_80F5EFA:
 	ldr r2, [r7,#oAIAttackVars_Unk_34]
@@ -125500,7 +125500,7 @@ sub_80F5FF4:
 	mov r0, #0x3c 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0xba
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80F6310
 	b locret_80F602C
 loc_80F6014:
@@ -126711,7 +126711,7 @@ sub_80F6A5C:
 	mov r0, #0x10
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xe3
-	bl sound_play // () -> void
+	bl sound_play
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0
@@ -126738,7 +126738,7 @@ loc_80F6A9C:
 	str r0, [r7,#oAIAttackVars_Unk_34]
 	bgt loc_80F6AAE
 	mov r0, #0xe3
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x20 
 	str r0, [r7,#oAIAttackVars_Unk_34]
 loc_80F6AAE:
@@ -126763,7 +126763,7 @@ sub_80F6ABC:
 	mov r0, #0x11
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xe4
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	ldr r1, off_80F6B80 // =dword_80F6B84 
 	ldrb r0, [r1,r0]
@@ -127031,7 +127031,7 @@ loc_80F6CBC:
 	bl object_setCounterTime
 	mov r0, #0x47 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r4, #0
 	mov r3, #1
 	lsl r3, r3, #8
@@ -127245,7 +127245,7 @@ sub_80F6EA6:
 	mov r0, #0xf
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xe3
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80F742E
 	mov r0, #0xc
 	bl sub_80F7500
@@ -128775,7 +128775,7 @@ loc_80F7BFA:
 	pop {r4}
 	mov r0, #0x2e 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x14
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80F7C38:
@@ -128998,7 +128998,7 @@ sub_80F7DBA:
 	bl object_setCounterTime
 	mov r0, #0x8a
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r7,#oAIAttackVars_Unk_0e]
 	add r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_0e]
@@ -130363,7 +130363,7 @@ sub_80F8914:
 	pop {r7}
 	mov r0, #0xa
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xf
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_80F8960
@@ -130563,7 +130563,7 @@ sub_80F8A9C:
 	bl object_setCounterTime
 	mov r0, #0xb
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_80F8B14
@@ -130810,7 +130810,7 @@ sub_80F8C7A:
 	bl object_setCounterTime
 	mov r0, #0xd
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	ldr r2, [r7,#oAIAttackVars_Unk_34]
@@ -131794,7 +131794,7 @@ sub_80F94D8:
 	mov r0, #0x16
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xfb
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #6
 	bl object_setCounterTime
 	mov r0, #0x14
@@ -131987,7 +131987,7 @@ loc_80F9650:
 	mov r0, #0x10
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xb8
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_getFlip // () -> int
 	lsl r4, r0, #8
 	add r4, #0x41 
@@ -132189,7 +132189,7 @@ sub_80F97C0:
 	bl sprite_hasShadow
 	mov r0, #0x3d 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	bl object_getFrontDirection // () -> int
 	ldrb r1, [r7,#oAIAttackVars_Unk_03]
 	lsl r1, r1, #3
@@ -133378,7 +133378,7 @@ sub_80FA284:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xc0
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r1, #0x3a 
 	mov r2, #2
 	mov r3, #3
@@ -133703,7 +133703,7 @@ loc_80FA51A:
 	strb r1, [r7,#oAIAttackVars_Unk_17]
 	mov r0, #0x4d 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80FAB2C
 	mov r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_00]
@@ -133779,7 +133779,7 @@ sub_80FA5B4:
 	mov r0, #0x16
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xf0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	add r0, r0, r7
 	mov r1, #0xff
@@ -134036,7 +134036,7 @@ sub_80FA7C2:
 	mov r0, #0x11
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xe6
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xc
 	bl object_setCounterTime
 	mov r0, #0x1e
@@ -134065,7 +134065,7 @@ sub_80FA7F2:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xc1
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x3c 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_80FA81C
@@ -134090,7 +134090,7 @@ sub_80FA81E:
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	mov r0, #0xc2
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r1, #0x35 
 	mov r2, #2
 	mov r3, #3
@@ -134170,7 +134170,7 @@ loc_80FA8D0:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	bgt locret_80FA8E8
 	mov r0, #0xe5
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x14
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	b locret_80FA8E8
@@ -135343,7 +135343,7 @@ sub_80FB30E:
 	mov r0, #0x11
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xad
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x18
 	bl object_setCounterTime
 	mov r4, #1
@@ -135422,7 +135422,7 @@ loc_80FB3A0:
 loc_80FB3B4:
 	mov r0, #0x7c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80FB81E
 	mov r0, #2
 	mov r1, #0x1e
@@ -135841,7 +135841,7 @@ sub_80FB6C0:
 	bl sub_80FB874
 	mov r0, #0x21
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r7,#0xe]
 	strh r0, [r7,#0x10]
 	b locret_80FB6FE
@@ -137210,7 +137210,7 @@ sub_80FC26A:
 	ldr r0, [r7,#oAIAttackVars_Unk_30]
 	bl sub_80FCF90
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xc
 	bl object_setCounterTime
 	mov r0, #0x1e
@@ -137397,7 +137397,7 @@ sub_80FC3E2:
 	ldrb r1, [r7,#oAIAttackVars_Unk_0d]
 	bl sub_80D1BF4
 	mov r0, #0xa0
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80E7A88
 	str r0, [r7,#oAIAttackVars_Unk_38]
 	b locret_80FC442
@@ -137553,7 +137553,7 @@ sub_80FC51C:
 	ldr r0, [r7,#oAIAttackVars_Unk_30]
 	bl sub_80FCF90
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xc
 	bl object_setCounterTime
 	mov r0, #0x1e
@@ -137805,7 +137805,7 @@ sub_80FC700:
 	ldr r0, [r7,#oAIAttackVars_Unk_30]
 	bl sub_80FCF90
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xc
 	bl object_setCounterTime
 	mov r0, #0x1e
@@ -138064,7 +138064,7 @@ sub_80FC8FE:
 	ldr r0, [r7,#oAIAttackVars_Unk_30]
 	bl sub_80FCF90
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xc
 	bl object_setCounterTime
 	mov r0, #0x1e
@@ -138192,7 +138192,7 @@ sub_80FC9F8:
 	lsl r3, r3, #0x10
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x77 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x14
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_80FCA4C
@@ -138363,7 +138363,7 @@ sub_80FCB64:
 	ldr r0, [r7,#oAIAttackVars_Unk_30]
 	bl sub_80FCF90
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	bl sub_80FCF36
 	mov r0, #9
 	add r0, r0, r5
@@ -139889,7 +139889,7 @@ sub_80FD852:
 	bl sub_80C82A8
 	mov r0, #0x7f
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r7,#oAIAttackVars_Unk_03]
 	ldr r1, off_80FD8A8 // =dword_80FD8AC 
 	ldrb r0, [r1,r0]
@@ -140117,7 +140117,7 @@ loc_80FDA24:
 	bl sub_80FDC2A
 	mov r0, #0x80
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x18
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_80FDA3C:
@@ -141032,7 +141032,7 @@ sub_80FE240:
 	mov r0, #7
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xe1
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x13
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_80FE27E
@@ -141122,7 +141122,7 @@ loc_80FE2EC:
 	ldr r6, [r7,#oAIAttackVars_Unk_08]
 	bl sub_80CB080
 	mov r0, #0xae
-	bl sound_play // () -> void
+	bl sound_play
 locret_80FE30A:
 	pop {r4,r6,pc}
 	thumb_func_end sub_80FE2A8
@@ -141184,7 +141184,7 @@ sub_80FE354:
 	mov r0, #7
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xe1
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x22 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_80FE38C
@@ -141343,7 +141343,7 @@ sub_80FE46C:
 	mov r0, #7
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xe1
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x13
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_80FE4A4
@@ -142913,7 +142913,7 @@ sub_80FF1A2:
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	bl sub_80FF668
 	mov r0, #0xbf
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r7,#oAIAttackVars_Unk_0d]
 	add r0, #0xc
 	strh r0, [r7,#oAIAttackVars_Unk_10]
@@ -144394,7 +144394,7 @@ loc_80FFDE8:
 	mov r0, #7
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xba
-	bl sound_play // () -> void
+	bl sound_play
 locret_80FFDF6:
 	pop {r4,pc}
 	thumb_func_end sub_80FFDAC
@@ -145679,7 +145679,7 @@ sub_8100894:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	bl sub_8101218
 	mov r0, #0x77 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x14
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_81008C0
@@ -146083,7 +146083,7 @@ sub_8100B72:
 	bl object_setCounterTime
 	bl sub_81010A0
 	mov r0, #0x99
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1e
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_8100BA4
@@ -149417,7 +149417,7 @@ sub_81026EE:
 	mov r0, #0x10
 	bl object_setCounterTime
 	mov r0, #0xce
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	b locret_8102770
@@ -149578,7 +149578,7 @@ loc_8102838:
 	bne loc_810284E
 	mov r0, #0x2c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_810284E:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	add r0, #1
@@ -149819,7 +149819,7 @@ sub_81029CE:
 	mov r0, #0
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0xfd
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	mov r1, #0x3c 
 	bl sub_80302A8
@@ -149831,7 +149831,7 @@ loc_81029FE:
 	and r0, r1
 	bne loc_8102A0C
 	mov r0, #0xe3
-	bl sound_play // () -> void
+	bl sound_play
 loc_8102A0C:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	add r0, #1
@@ -149864,7 +149864,7 @@ sub_8102A1C:
 loc_8102A3A:
 	bl sub_80B8E70
 	mov r0, r4
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #4
@@ -149945,7 +149945,7 @@ loc_8102AC0:
 	bne loc_8102ADE
 	mov r0, #0x2c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_8102ADE:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	add r0, #1
@@ -150409,7 +150409,7 @@ sub_8102E74:
 	push {r4,r6,lr}
 	mov r4, r0
 	mov r0, #0xb9
-	bl sound_play // () -> void
+	bl sound_play
 loc_8102E7E:
 	ldrb r0, [r4]
 	tst r0, r0
@@ -150919,7 +150919,7 @@ sub_8103286:
 	mov r4, #0x1c
 	bl sub_80C47EC
 	mov r0, #0xc7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xc
 	bl object_setCounterTime
 	ldrb r0, [r7,#oAIAttackVars_Unk_0c]
@@ -151113,9 +151113,9 @@ sub_81033F6:
 	ldrb r0, [r7,#oAIAttackVars_Unk_0e]
 	bl sub_8103A08
 	mov r0, #0xae
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xf
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	ldrb r0, [r7,#oAIAttackVars_Unk_0e]
@@ -151474,7 +151474,7 @@ sub_81036A6:
 	mov r4, #0x1d
 	bl sub_80C47EC
 	mov r0, #0xcf
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #5
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_81036EE
@@ -152882,7 +152882,7 @@ sub_8104290:
 	bl sub_80302A8
 	mov r0, #0xc9
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	push {r4,r6,r7}
 	mov r2, #0
 	ldrb r4, [r7,#oAIAttackVars_Unk_0d]
@@ -153084,7 +153084,7 @@ sub_8104420:
 	bl sub_80302A8
 	mov r0, #0xc9
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_8104472
@@ -153147,10 +153147,10 @@ sub_81044AA:
 	bl object_setCounterTime
 	mov r0, #0x92
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x2c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x78 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0x10
@@ -153163,7 +153163,7 @@ loc_81044DE:
 	bgt loc_81044F2
 	mov r0, #0x2c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x10
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_81044F2:
@@ -153372,7 +153372,7 @@ sub_8104640:
 	bl sub_80302A8
 	mov r0, #0xc9
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xa
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_8104692
@@ -153398,7 +153398,7 @@ sub_8104694:
 	mov r0, #0x46 
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xc6
-	bl sound_play // () -> void
+	bl sound_play
 	mov r4, #0x53 
 	mov r3, #0xb
 	lsl r3, r3, #8
@@ -153426,7 +153426,7 @@ loc_81046D6:
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	bgt loc_81046E8
 	mov r0, #0xc6
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x10
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_81046E8:
@@ -153455,10 +153455,10 @@ sub_81046F6:
 	bl sub_81050F2
 	mov r0, #0x92
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x9b
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x78 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0x10
@@ -153476,7 +153476,7 @@ loc_8104736:
 	bgt loc_810474A
 	mov r0, #0x9b
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x10
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_810474A:
@@ -153729,7 +153729,7 @@ sub_81048AA:
 	strh r2, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0xc8
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	add r0, r0, r7
 	mov r1, #0xff
@@ -154030,7 +154030,7 @@ sub_8104B68:
 	mov r0, #0xff
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	mov r0, #0xae
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r7,#oAIAttackVars_Unk_0e]
 	tst r0, r0
 	bne loc_8104B84
@@ -154129,9 +154129,9 @@ sub_8104C18:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x92
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xe3
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #2
 	ldrh r1, [r7,#oAIAttackVars_Unk_10]
 	bl sub_80302A8
@@ -154146,7 +154146,7 @@ loc_8104C50:
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	bgt loc_8104C62
 	mov r0, #0xe3
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x10
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_8104C62:
@@ -154227,7 +154227,7 @@ sub_8104CC6:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xc8
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x1d
 	bl object_setCollisionRegion
 	mov r1, #0x3a 
@@ -154298,7 +154298,7 @@ sub_8104D5E:
 	mov r0, #0x1e
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0xc0
-	bl sound_play // () -> void
+	bl sound_play
 	push {r4,r6,r7}
 	ldrb r2, [r7,#oAIAttackVars_Unk_02]
 	mov r4, #0xb4
@@ -154415,7 +154415,7 @@ sub_8104E36:
 	mov r0, #0xa
 	strb r0, [r7,#oAIAttackVars_Unk_0e]
 	mov r0, #0xe4
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x20 
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	b locret_8104E96
@@ -154436,7 +154436,7 @@ loc_8104E78:
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 	bgt loc_8104E8A
 	mov r0, #0xe4
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x20 
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_8104E8A:
@@ -155708,7 +155708,7 @@ sub_8105994:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xc4
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x20 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_81059BE
@@ -155866,7 +155866,7 @@ sub_8105AC4:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xc4
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x20 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_8105AF4
@@ -155970,7 +155970,7 @@ sub_8105B84:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x3c 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_8105BBC
@@ -156138,7 +156138,7 @@ sub_8105CC0:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x3c 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_8105CEA
@@ -156291,7 +156291,7 @@ sub_8105DE6:
 	mov r0, #0x1a
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xf3
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #6
 	bl object_setCounterTime
 	bl sub_8106690
@@ -156378,7 +156378,7 @@ sub_8105E88:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x3c 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_8105EB2
@@ -156492,7 +156492,7 @@ sub_8105F66:
 	bl sub_81066C0
 	mov r0, #0x2c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r7,#oAIAttackVars_Unk_0c]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0x10
@@ -156505,7 +156505,7 @@ loc_8105F8C:
 	bgt loc_8105FA0
 	mov r0, #0x2c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x10
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_8105FA0:
@@ -156583,7 +156583,7 @@ sub_8106014:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strb r0, [r7,#oAIAttackVars_Unk_16]
 	strb r0, [r7,#oAIAttackVars_Unk_17]
@@ -156853,7 +156853,7 @@ sub_8106208:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x94
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strb r0, [r7,#oAIAttackVars_Unk_0d]
 	mov r0, #0x3c 
@@ -157003,7 +157003,7 @@ sub_81062F8:
 	bl sub_80302A8
 	mov r0, #0xc8
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r7,#oAIAttackVars_Unk_0d]
 	tst r0, r0
 	beq locret_810637E
@@ -158521,7 +158521,7 @@ sub_8106FE6:
 	mov r0, #0xa
 	bl object_setCounterTime
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x15
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	bl sub_81079DC
@@ -158911,7 +158911,7 @@ sub_81072B8:
 	bl object_setCounterTime
 	mov r0, #0xc6
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	bl sub_8107A30
 	mov r0, #0x14
@@ -158988,7 +158988,7 @@ sub_810733E:
 	bl object_setCounterTime
 	mov r0, #0xc7
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	bl sub_8107A30
 	mov r0, #0x14
@@ -159231,7 +159231,7 @@ sub_8107518:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xc6
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	bl sub_8107A30
 	mov r0, #0x14
@@ -159413,7 +159413,7 @@ sub_8107644:
 	pop {r4,r7}
 	str r0, [r7,#oAIAttackVars_Unk_38]
 	mov r0, #0xae
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x5a 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #5
@@ -159439,7 +159439,7 @@ loc_810769A:
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	bl sub_8107B06
 	mov r0, #0xae
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, [r7,#oAIAttackVars_Unk_34]
 	tst r0, r0
 	beq loc_81076C2
@@ -159672,7 +159672,7 @@ sub_8107856:
 	bl sub_8107AB2
 	mov r0, #0x2c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r7,#oAIAttackVars_Unk_0d]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0x10
@@ -159685,7 +159685,7 @@ loc_810787C:
 	bgt loc_8107890
 	mov r0, #0x2c 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x10
 	strh r0, [r7,#oAIAttackVars_Unk_12]
 loc_8107890:
@@ -161351,7 +161351,7 @@ sub_8108602:
 	bl object_setCounterTime
 	mov r0, #0xc6
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	bl sub_8108E64
 	mov r0, #0x14
@@ -161428,7 +161428,7 @@ sub_8108688:
 	bl object_setCounterTime
 	mov r0, #0xc7
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	bl sub_8108E64
 	mov r0, #0x14
@@ -161680,7 +161680,7 @@ sub_810887A:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xc6
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	bl sub_8108E64
 	mov r0, #0x14
@@ -161862,7 +161862,7 @@ sub_81089A6:
 	pop {r4,r7}
 	str r0, [r7,#oAIAttackVars_Unk_38]
 	mov r0, #0xae
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x5a 
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #3
@@ -161888,7 +161888,7 @@ loc_81089FC:
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	bl sub_8108EE6
 	mov r0, #0xae
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r0, [r7,#oAIAttackVars_Unk_34]
 	tst r0, r0
 	beq loc_8108A24
@@ -162123,7 +162123,7 @@ sub_8108BC2:
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	bl sub_8108F28
 	mov r0, #0xb8
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r7,#oAIAttackVars_Unk_0d]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	b locret_8108BEA
@@ -162608,7 +162608,7 @@ sub_8108F74:
 	beq loc_8108FA0
 	bl sub_801A264
 	mov r0, #0x6e 
-	bl sound_play // () -> void
+	bl sound_play
 loc_8108FA0:
 	bl sub_800EA22
 	b loc_8109020
@@ -162635,7 +162635,7 @@ loc_8108FBC:
 	bl sub_8115BB0
 	mov r0, #0xcc
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_8109020
 loc_8108FDA:
 	cmp r0, #0x61 
@@ -164590,7 +164590,7 @@ loc_810A404:
 	bl sub_80E558A
 	mov r0, #0x84
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 locret_810A436:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_810A3DC
@@ -164702,7 +164702,7 @@ sub_810A4D0:
 	ldr r6, [r7,#oAIAttackVars_Unk_08]
 	bl sub_80CE7EE
 	mov r0, #0xaf
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+8]
 	mov r0, #5
@@ -165157,7 +165157,7 @@ loc_810A978:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #0x21
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #0
@@ -165462,7 +165462,7 @@ sub_810ABFE:
 	add r7, r7, r6
 	bl sub_80E0D98
 	mov r0, #0x89
-	bl sound_play // () -> void
+	bl sound_play
 locret_810AC24:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -165861,7 +165861,7 @@ loc_810AFB6:
 	add r0, #1
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #8
@@ -166971,7 +166971,7 @@ sub_810B964:
 	bl sub_810BAAC
 	mov r0, #0x9b
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x78
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #1
@@ -167823,7 +167823,7 @@ sub_810C0E4:
 	cmp r0, #2
 	bne loc_810C120
 	mov r0, #0xc0
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r1, [r7,#oAIAttackVars_Unk_0d]
 	cmp r1, #0
 	beq loc_810C120

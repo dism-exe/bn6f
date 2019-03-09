@@ -75,7 +75,7 @@
 // .global sub_3006F74
 
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global sound_play
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void

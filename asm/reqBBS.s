@@ -1266,7 +1266,7 @@ reqBBS_static_813EC54:
 	mov r0, #8
 	strb r0, [r5]
 	mov r0, #0x68 
-	bl sound_play // () -> void
+	bl sound_play
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end reqBBS_static_813EC54
@@ -1291,7 +1291,7 @@ reqBBS_static_813EC6C:
 	mov r1, #0x50 
 	strb r1, [r0,#6]
 	mov r0, #0x67 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #6
 	strb r0, [r5,#8]
 	push {r5}
@@ -3592,7 +3592,7 @@ reqBBS_81403A8:
 	mov r0, #8
 	strb r0, [r5]
 	mov r0, #0x68 
-	bl sound_play // () -> void
+	bl sound_play
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end reqBBS_81403A8
@@ -3617,7 +3617,7 @@ reqBBS_81403C0:
 	mov r1, #0x50 
 	strb r1, [r0,#6]
 	mov r0, #0x67 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #6
 	strb r0, [r5,#8]
 	push {r5}
@@ -3660,7 +3660,7 @@ reqBBS_8140414:
 	mov r1, #0x50 
 	strb r1, [r0,#6]
 	mov r0, #0x67 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #6
 	strb r0, [r5,#8]
 	push {r5}

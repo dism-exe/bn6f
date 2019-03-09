@@ -1875,7 +1875,7 @@ loc_8142BBC:
 	bl sub_8004822
 	pop {r0-r7}
 	mov r0, #0x6d 
-	bl sound_play // () -> void
+	bl sound_play
 loc_8142BEA:
 	add r5, #8
 	add r4, #1
@@ -1964,10 +1964,10 @@ loc_8142C58:
 	mov r1, #0x14
 	bl sub_80302A8
 	mov r0, #0x6b 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xd
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r4-r7,pc}
 off_8142C8C: .word byte_2006670
 	thumb_func_end sub_8142C46
@@ -2360,7 +2360,7 @@ sub_8142FC8:
 	b loc_8143048
 loc_8143008:
 	mov r0, #0x69 
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_8143048
 loc_8143010:
 	mov r0, #9
@@ -3944,7 +3944,7 @@ sub_8143FC4:
 	bne loc_8143FD6
 	mov r0, #0xb9
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_8143FD6:
 	ldr r0, [r5,#0x14] // (dword_2001024 - 0x2001010)
 	ldr r1, [r5,#0x18] // (dword_2001028 - 0x2001010)

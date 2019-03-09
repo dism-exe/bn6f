@@ -16,7 +16,7 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global sound_play
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 

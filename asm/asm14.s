@@ -618,7 +618,7 @@ loc_8072B88:
 	str r0, [r5,#0x3c]
 	ldr r0, off_8072BBC // =byte_8072BC0 
 	ldrh r0, [r0,r4]
-	bl sound_play // () -> void
+	bl sound_play
 locret_8072BA0:
 	pop {r4-r7,pc}
 	.balign 4, 0x00

@@ -39,7 +39,7 @@
 // .global start_8000288
 
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global sound_play
 // .global musicGameState_8000784 // () -> void
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void

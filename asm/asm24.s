@@ -783,7 +783,7 @@ sub_808CD24:
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne locret_808CD62
 	mov r0, #0xd4
-	bl sound_play // () -> void
+	bl sound_play
 	// entryIdx
 	mov r0, #0xb
 	// byteFlagIdx
@@ -1016,7 +1016,7 @@ sub_808CF8C:
 	ldrh r0, [r5,#6]
 	str r0, [r1,r2]
 	ldr r0, dword_808CFB4 // =0x122 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r4, #1
 loc_808CFAC:
 	mov r0, r4
@@ -1070,9 +1070,9 @@ loc_808CFDA:
 loc_808D00A:
 	strh r0, [r5,#0x6] // (word_2000B46 - 0x2000b40)
 	ldr r0, dword_808D028 // =0x11b 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x69 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r4, #2
 	b loc_808D020
 loc_808D01C:

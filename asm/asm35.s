@@ -345,7 +345,7 @@ loc_812ED1C:
 	beq loc_812ED26
 	mov r0, #0x83
 loc_812ED26:
-	bl sound_play // () -> void
+	bl sound_play
 locret_812ED2A:
 	pop {r4-r7,pc}
 	thumb_func_end sub_812ECAC

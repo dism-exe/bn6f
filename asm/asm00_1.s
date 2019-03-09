@@ -4015,7 +4015,7 @@ sub_800536E:
 	bne loc_80053BC
 	mov r0, #0x72
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	b locret_80053DA
 loc_80053BC:
 	cmp r0, #0x9e
@@ -4026,7 +4026,7 @@ loc_80053BC:
 	ldr r1, off_80053DC // =hword_80053E0
 	lsl r0, r0, #1
 	ldrh r0, [r1,r0]
-	bl sound_play // () -> void
+	bl sound_play
 	b locret_80053DA
 loc_80053D2:
 	bl chatbox_8040818
@@ -4807,7 +4807,7 @@ sub_8005AF4:
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne locret_8005B68
 	mov r0, #0x79
-	bl sound_play // () -> void
+	bl sound_play
 	bl updatePlayerGameState_800107A // () -> void
 	bl sub_811EC10
 	bl sub_8003962
@@ -4893,7 +4893,7 @@ loc_8005BF0:
 	strb r0, [r5,#oGameState_SubsystemIndex]
 	bl musicGameState_8000784 // () -> void
 	mov r0, #0x78
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r4-r7,pc}
 dword_8005C00: .word 0x4000
 	thumb_func_end gameState_8005BC8
@@ -9536,7 +9536,7 @@ sub_80083E4:
 	tst r0, r0
 	beq locret_8008400
 	mov r0, #0x9f
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	str r0, [r5]
 	ldr r0, off_8008408 // =0x200
@@ -10222,7 +10222,7 @@ sub_8008900:
 	tst r0, r0
 	beq locret_800891C
 	mov r0, #0x9f
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5]
 	ldr r0, off_8008924 // =0x200
@@ -10755,7 +10755,7 @@ sub_8008D18:
 	tst r0, r0
 	beq locret_8008D34
 	mov r0, #0x9f
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5]
 	ldr r0, off_8008D3C // =0x200
@@ -11284,7 +11284,7 @@ sub_8009118:
 	tst r0, r0
 	beq locret_8009134
 	mov r0, #0x9f
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5]
 	ldr r0, off_800913C // =0x200
@@ -15085,7 +15085,7 @@ sub_800ABC6:
 	mov r0, #1
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0xa5
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r4,pc}
 off_800ABF0: .word byte_20349C0
 off_800ABF4: .word byte_2034A10
@@ -15439,7 +15439,7 @@ sub_800AE90:
 	and r2, r3
 	bne loc_800AEA6
 	mov r0, #0x91
-	bl sound_play // () -> void
+	bl sound_play
 loc_800AEA6:
 	pop {r0,r1}
 	mov r2, #0x10

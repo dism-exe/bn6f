@@ -579,7 +579,7 @@ sub_810DE96:
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	bl sub_810DF2E
 	mov r0, #0xf7
-	bl sound_play // () -> void
+	bl sound_play
 loc_810DEAE:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -1396,7 +1396,7 @@ sub_810E5F4:
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	mov r0, #0x85
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r1, #3
 	strb r1, [r5,#oBattleObject_CurAnim]
 	ldr r0, [r5,#oBattleObject_ExtraVars+4]
@@ -1487,7 +1487,7 @@ loc_810E6A6:
 	bne loc_810E6B8
 	mov r0, #0x86
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_810E6B8:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -1809,7 +1809,7 @@ sub_810E97A:
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	mov r0, #0x85
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r1, #3
 	strb r1, [r5,#oBattleObject_CurAnim]
 	ldr r0, [r5,#oBattleObject_ExtraVars+4]
@@ -1892,7 +1892,7 @@ loc_810EA18:
 	bne loc_810EA26
 	mov r0, #0x86
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_810EA26:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	sub r0, #1
@@ -2290,7 +2290,7 @@ loc_810EE0C:
 	bl sub_80C59F6
 	mov r0, #0x87
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xe
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #8
@@ -3060,7 +3060,7 @@ sub_810F660:
 	bne loc_810F678
 	mov r0, #0xca
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #1
@@ -3160,7 +3160,7 @@ loc_810F738:
 	bl sub_810FAA0
 	bl sub_810FB30
 	mov r0, #0xf7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	bl object_setCollisionRegion
 	ldrb r0, [r5,#oObjectHeader_Flags]
@@ -3302,7 +3302,7 @@ loc_810F836:
 	mov r1, #0
 	strb r1, [r5,r0]
 	mov r0, #0xf7
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #0
@@ -4499,9 +4499,9 @@ sub_81103A0:
 	str r0, [r1]
 	mov r0, #0x2f
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x8a
-	bl sound_play // () -> void
+	bl sound_play
 loc_81103DC:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	cmp r0, #0x10
@@ -4567,7 +4567,7 @@ sub_8110416:
 	bl sub_80C4090
 	mov r0, #0x9b
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	pop {r4,r6,pc}
@@ -6143,7 +6143,7 @@ sub_811128C:
 	bne loc_81112AA
 	bl sub_81112DC
 	mov r0, #0xb2
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 loc_81112AA:
@@ -7170,7 +7170,7 @@ loc_8111B96:
 	bl sub_8111BDE
 	mov r0, #0x81
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 locret_8111BB0:
@@ -7846,10 +7846,10 @@ sub_811219C:
 	pop {r7}
 	mov r0, #0xa7
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xa8
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_81121DA:
 	bl sprite_getFrameParameters
 	mov r1, #0x80
@@ -8641,7 +8641,7 @@ sub_8112928:
 	bl sub_8112968
 	mov r0, #0xa9
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	ldrh r0, [r7,#oAIAttackVars_Unk_12]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 loc_8112944:
@@ -8999,7 +8999,7 @@ loc_8112CE2:
 	ldrb r0, [r7,#0xd]
 	strh r0, [r7,#0x10]
 	mov r0, #0xbd
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r7]
 locret_8112CF2:
@@ -9736,7 +9736,7 @@ sub_8113350:
 	bl object_reservePanel
 	mov r0, #0xaa
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 loc_8113378:
 	bl object_getFrontDirection // () -> int
 	ldr r1, [r7,#oAIAttackVars_Unk_30]
@@ -10319,7 +10319,7 @@ sub_81138D8:
 	bl sub_8113C48
 	bl sub_8113BAC
 	mov r0, #0xba
-	bl sound_play // () -> void
+	bl sound_play
 	ldrh r0, [r7,#oAIAttackVars_Unk_18]
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0xc
@@ -10377,7 +10377,7 @@ sub_811393A:
 	ldr r0, [r7,#oAIAttackVars_Unk_2c]
 	bl sub_8113C84
 	mov r0, #0xbd
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x14
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #0
@@ -10529,7 +10529,7 @@ sub_8113A76:
 	bl sub_8113BEC
 	bl sub_8113C18
 	mov r0, #0xb0
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 loc_8113A9C:
@@ -11758,7 +11758,7 @@ loc_811452C:
 	bl sub_80BC998
 	str r0, [r5,#oBattleObject_ExtraVars+0x1c]
 	mov r0, #0xe1
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	mov r2, #0x78
@@ -11844,7 +11844,7 @@ loc_81145BE:
 	str r0, [r5,r1]
 	mov r0, #0xbf
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0
@@ -12302,7 +12302,7 @@ loc_8114A02:
 	bl sub_80BC998
 	str r0, [r5,#oBattleObject_ExtraVars+0x1c]
 	mov r0, #0xe1
-	bl sound_play // () -> void
+	bl sound_play
 	pop {r0,r1}
 locret_8114A48:
 	pop {r4-r7,pc}
@@ -12825,7 +12825,7 @@ loc_8114E9E:
 	str r0, [r5,r1]
 	mov r0, #0xbf
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0
@@ -13188,7 +13188,7 @@ loc_811523C:
 	bl object_reservePanel
 	mov r0, #0x88
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #8
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 loc_811526C:
@@ -13818,7 +13818,7 @@ loc_811584E:
 	strh r0, [r7,#oAIAttackVars_Unk_10]
 	mov r0, #0x89
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 loc_8115870:
@@ -14329,7 +14329,7 @@ loc_8115D0C:
 	bl sub_8115DA4
 	mov r0, #0xb
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	strh r0, [r7,#oAIAttackVars_Unk_00]
 	mov r0, #0
@@ -14489,7 +14489,7 @@ sub_8115E94:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0x44
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #4
 	str r0, [r5,#oBattleObject_ExtraVars]
 locret_8115EBA:
@@ -21477,7 +21477,7 @@ sub_8119A48:
 	bl chatbox_check_eFlags2009F38
 	bne loc_8119A76
 	mov r0, #0x7e
-	bl sound_play // () -> void
+	bl sound_play
 loc_8119A76:
 	push {r2,r5}
 	// j
@@ -27113,7 +27113,7 @@ sub_811CDC8:
 	cmp r0, #1
 	bne loc_811CDDE
 	mov r0, #0x8d
-	bl sound_play // () -> void
+	bl sound_play
 loc_811CDDE:
 	pop {r0}
 loc_811CDE0:
@@ -27155,9 +27155,9 @@ loc_811CE18:
 	mov r0, #8
 	strb r0, [r5,#9]
 	ldr r0, off_811CE30 // =0x1cd
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xf7
-	bl sound_play // () -> void
+	bl sound_play
 locret_811CE2C:
 	pop {pc}
 	.byte 0, 0
@@ -27205,7 +27205,7 @@ sub_811CE64:
 	mov r0, #0x14
 	strb r0, [r5,#0xc]
 	ldr r0, off_811CE84 // =0x100
-	bl sound_play // () -> void
+	bl sound_play
 locret_811CE80:
 	pop {pc}
 	.balign 4, 0x00
@@ -27268,7 +27268,7 @@ loc_811CEE8:
 	sub r0, #5
 	lsl r4, r0, #1
 	ldrh r0, [r1,r4]
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r1, off_811CF24 // =byte_811CF32
 	ldrh r0, [r1,r4]
 	mov r1, #0xff
@@ -27276,7 +27276,7 @@ loc_811CEE8:
 	orr r1, r2
 	cmp r0, r1
 	beq loc_811CF12
-	bl sound_play // () -> void
+	bl sound_play
 loc_811CF12:
 	mov r0, #0x28
 	strb r0, [r5,#0xc]
@@ -27404,7 +27404,7 @@ loc_811CFF8:
 	mov r0, #8
 	strb r0, [r5,#9]
 	ldr r0, off_811D01C // =0x194
-	bl sound_play // () -> void
+	bl sound_play
 locret_811D014:
 	pop {pc}
 	.balign 4, 0x00
@@ -27523,7 +27523,7 @@ sub_811D0CC:
 	mov r0, #4
 	strb r0, [r5,#9]
 	mov r0, #0x76
-	bl sound_play // () -> void
+	bl sound_play
 	pop {pc}
 	.balign 4, 0x00
 dword_811D0E8: .word 0x10
@@ -27610,7 +27610,7 @@ sub_811D15C:
 	cmp r0, #0
 	bne loc_811D18A
 	ldr r0, dword_811D194 // =0x1c6
-	bl sound_play // () -> void
+	bl sound_play
 loc_811D18A:
 	mov r0, #8
 	strb r0, [r5,#9]
@@ -27734,7 +27734,7 @@ sub_811D248:
 	ldrb r0, [r5,#5]
 	lsl r4, r0, #1
 	ldrh r0, [r1,r4]
-	bl sound_play // () -> void
+	bl sound_play
 	ldr r1, off_811D2A0 // =byte_811D2AE
 	ldrh r0, [r1,r4]
 	mov r1, #0xff
@@ -27742,7 +27742,7 @@ sub_811D248:
 	orr r1, r2
 	cmp r0, r1
 	beq locret_811D296
-	bl sound_play // () -> void
+	bl sound_play
 locret_811D296:
 	pop {r4,pc}
 off_811D298: .word byte_811D2B8
@@ -28536,9 +28536,9 @@ sub_811DA94:
 	mov r0, #1
 	bl sub_8003060
 	ldr r0, dword_811DAEC // =0x193
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xf3
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xc0
 	mov r1, #0x64
 	bl sprite_setCoordinates
@@ -30556,11 +30556,11 @@ loc_811EE08:
 	bne loc_811EE24
 loc_811EE1C:
 	mov r0, #0x69
-	bl sound_play // () -> void
+	bl sound_play
 	b loc_811EE34
 loc_811EE24:
 	mov r0, #0x81
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0x10
 	strb r0, [r5]
 	mov r0, #4
@@ -30574,7 +30574,7 @@ loc_811EE34:
 	bl isJoystickIRQActive
 	beq loc_811EE82
 	mov r0, #0x7f
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#3]
 	strb r0, [r5,#4]
 	mov r0, #3
@@ -30585,7 +30585,7 @@ loc_811EE52:
 	bl isJoystickIRQActive
 	beq loc_811EE70
 	mov r0, #0x7f
-	bl sound_play // () -> void
+	bl sound_play
 	ldrb r0, [r5,#4]
 	strb r0, [r5,#3]
 	mov r0, #8
@@ -30645,7 +30645,7 @@ sub_811EED0:
 	mov r0, #1
 	bl sub_811EBF4
 	mov r0, #0x7c
-	bl sound_play // () -> void
+	bl sound_play
 	// entryIdx
 	mov r0, #1
 	// byteFlagIdx
@@ -31712,7 +31712,7 @@ loc_811F8EA:
 	tst r0, r1
 	bne loc_811F8F8
 	mov r0, #0x7f
-	bl sound_play // () -> void
+	bl sound_play
 loc_811F8F8:
 	mov r7, #0xff
 loc_811F8FA:
@@ -31844,7 +31844,7 @@ loc_811F9CC:
 	b loc_811F9EC
 loc_811F9E4:
 	mov r0, #0x7f
-	bl sound_play // () -> void
+	bl sound_play
 	mov r7, #0xff
 loc_811F9EC:
 	mov r0, #0x20
@@ -31937,7 +31937,7 @@ loc_811FA7E:
 	tst r0, r1
 	bne loc_811FA90
 	mov r0, #0x7f
-	bl sound_play // () -> void
+	bl sound_play
 loc_811FA90:
 	mov r0, r4
 	add sp, sp, #0x10
@@ -32061,7 +32061,7 @@ sub_811FB64:
 	push {lr}
 	strb r0, [r5,#1]
 	mov r0, #0x83
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0xc
 	mov r1, #0x10
 	bl engine_setScreeneffect // (int a1, int a2) -> void

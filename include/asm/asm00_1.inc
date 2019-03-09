@@ -218,7 +218,7 @@
 // .global sub_3006440
 
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global sound_play
 // .global sound_bgmusic_play // (int a1) -> void
 // .global sub_800065A
 // .global sound_8000672

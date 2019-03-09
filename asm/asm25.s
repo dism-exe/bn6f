@@ -426,7 +426,7 @@ sub_808FB68:
 	bl reqBBS_clearFlag_8140A0C
 	bl sub_809E3B2
 	ldr r0, dword_808FB9C // =0x1ae 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	pop {pc}
 loc_808FB94:
@@ -553,7 +553,7 @@ sub_808FCF0:
 	mov r0, #0xf
 	strb r0, [r5,#0x17] // (dword_2000324+3 - 0x2000310)
 	mov r0, #0x6b 
-	bl sound_play // () -> void
+	bl sound_play
 	mov r0, #0
 	pop {r5,pc}
 	.byte 0, 0

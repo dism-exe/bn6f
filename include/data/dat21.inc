@@ -42,7 +42,7 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global sound_play
 // .global sub_800060A
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 
