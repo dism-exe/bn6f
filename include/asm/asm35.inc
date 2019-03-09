@@ -47,7 +47,7 @@
 
 	.include "asm/asm32.inc"
 // .global sub_811BC00
-// .global isJoystickIRQActive
+// .global JoypadKeyPressed
 // .global sub_811F7F8
 // .global sub_811FAF4
 // .global sub_8120280

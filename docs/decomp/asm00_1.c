@@ -3245,7 +3245,7 @@ void sub_8005AF4()
                             chatbox_check_eFlags2009F38(128);
                             if ( !v2 )
                                 return;
-                            isJoystickIRQActive();
+                            JoypadKeyPressed();
                             if ( v2 )
                                 return;
                             TestEventFlagFromImmediate(23, 7);

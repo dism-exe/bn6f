@@ -59,7 +59,7 @@
 // .global sub_811A914
 // .global sub_811A940
 // .global sub_811A968
-// .global isJoystickIRQActive
+// .global JoypadKeyPressed
 // .global sub_811FA0C
 // .global sub_811FA22
 // .global sub_8120AB8

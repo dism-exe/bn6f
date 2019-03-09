@@ -1005,7 +1005,7 @@
 // .global ho_811ED1C // () -> void
 // .global sub_811F6C0
 // .global sub_811F6E0
-// .global isJoystickIRQActive
+// .global JoypadKeyPressed
 // .global sub_811FB78
 // .global sub_81209DC
 // .global sub_8120A38

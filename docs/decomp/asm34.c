@@ -221,10 +221,10 @@ void sub_812D690()
 			return;
 		sub_811F7F8(*(*(v1 + oToolkit_JoypadPtr) + 4), 7u, 0, 10);
 	}
-	isJoystickIRQActive();
+	JoypadKeyPressed();
 	if ( !v3 )
 		goto LABEL_17;
-	isJoystickIRQActive();
+	JoypadKeyPressed();
 	if ( v3 )
 		return;
 	v5 = 4;
@@ -260,8 +260,8 @@ void sub_812D700()
 	int v5; // r0
 
 	v1 = sub_812D6F8();
-	isJoystickIRQActive();
-	if ( !v4 || *(v0 + 2) == 32 && (isJoystickIRQActive(), !v4) )
+	JoypadKeyPressed();
+	if ( !v4 || *(v0 + 2) == 32 && (JoypadKeyPressed(), !v4) )
 	{
 		v5 = *(v0 + 2);
 		if ( v5 == 32 )
@@ -334,7 +334,7 @@ signed int sub_812D7A4()
 	int v8; // r3
 
 	v1 = sub_812D6F8();
-	isJoystickIRQActive();
+	JoypadKeyPressed();
 	if ( v4 )
 		return 0;
 	sound_play(129, v2, v3);

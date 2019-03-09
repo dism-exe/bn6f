@@ -800,7 +800,7 @@ LABEL_27:
 					}
 					else
 					{
-						isJoystickIRQActive();
+						JoypadKeyPressed();
 						if ( !v17 )
 							sub_8131768(v14, v15, v16);
 					}
@@ -1561,10 +1561,10 @@ LABEL_10:
     if ( *(v3 + 38) != 4 )
         goto LABEL_10;
 LABEL_13:
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( !v5 )
         goto LABEL_23;
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( v5 )
         return;
     chatbox_runScript_803FD9C_on_eTextScript201BA20(105);
@@ -2399,7 +2399,7 @@ void sub_8132080()
     int v0; // r5
     char v1; // zf
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( v1 )
     {
         sub_803CB18();
@@ -3890,7 +3890,7 @@ LABEL_14:
         chatbox_check_eFlags2009F38(32);
         if ( v2 )
         {
-            isJoystickIRQActive();
+            JoypadKeyPressed();
             if ( !v2 )
             {
                 *(v1 + 2) = 16;
@@ -3945,10 +3945,10 @@ void sub_8133564()
     chatbox_check_eFlags2009F38(128);
     if ( v2 && !sub_811F7F8(*(*(v1 + oToolkit_JoypadPtr) + 4), 7u, 0, 0) )
     {
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( v2 )
         {
-            isJoystickIRQActive();
+            JoypadKeyPressed();
             if ( !v2 )
             {
                 sound_play(131, v3, v4);
@@ -4126,10 +4126,10 @@ void sub_81336C4()
     chatbox_check_eFlags2009F38(128);
     if ( v2 && !sub_811F7F8(*(*(v1 + oToolkit_JoypadPtr) + 4), 7u, 0, 0) )
     {
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( v2 )
         {
-            isJoystickIRQActive();
+            JoypadKeyPressed();
             if ( !v2 )
             {
                 sound_play(131, v4, v5);
@@ -4280,7 +4280,7 @@ void __fastcall __noreturn sub_81337E8(int a1)
     {
         if ( sSubmenu.unk_02 == 36 || sSubmenu.unk_1B & 0x40 )
             goto LABEL_20;
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( !v3 )
         {
             *(v1 + 1) = 16;
@@ -4552,7 +4552,7 @@ int __fastcall sub_8133B18(int a1)
     }
     else
     {
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( !v2 )
         {
             chatbox_runScript_803FD9C_on_eTextScript2028A20(11);
@@ -4614,7 +4614,7 @@ void sub_8133BB4()
     int v5; // r1
     int v6; // r2
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( !v4 )
     {
         if ( *(v0 + 68) )
@@ -4648,8 +4648,8 @@ void sub_8133C0C()
     char v3; // zf
     int v4; // r0
 
-    isJoystickIRQActive();
-    if ( !v3 || *(v0 + 3) == 12 && (isJoystickIRQActive(), !v3) )
+    JoypadKeyPressed();
+    if ( !v3 || *(v0 + 3) == 12 && (JoypadKeyPressed(), !v3) )
     {
         if ( !*(v0 + 68) )
         {
@@ -4680,7 +4680,7 @@ void sub_8133C58()
     char v3; // zf
     int v4; // r6
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( !v3 && !v0[68] )
     {
         sound_play(129, v1, v2);
@@ -5278,7 +5278,7 @@ signed int sub_81347A4()
     int v18; // [sp+8h] [bp-1Ch]
     int v19; // [sp+Ch] [bp-18h]
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( v4 )
         return 0;
     if ( !*(v0 + 13) )
@@ -5487,7 +5487,7 @@ signed int sub_8134A3C()
     int v7; // r2
 
     v1 = 0;
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( !v2 )
     {
         v1 = 1;
@@ -6745,13 +6745,13 @@ int sub_8135830()
     *(v0 + 38) = *(v0 + 36);
     if ( !*(v0 + 13) )
     {
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( !v2 )
         {
             sub_81367C0();
             goto LABEL_20;
         }
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( !v2 )
         {
             sub_81367A0(v3, v4, v5);
@@ -6764,13 +6764,13 @@ int sub_8135830()
             goto LABEL_20;
         }
         *(v0 + 23) = 0;
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( !v2 )
         {
             sub_813627C();
             goto LABEL_20;
         }
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( !v2 )
         {
             sub_8136218();
@@ -9911,7 +9911,7 @@ signed int sub_81379A0()
     TestEventFlagFromImmediate(23, 16);
     if ( v2 )
     {
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( !v2 )
         {
             if ( !sub_8138170() )
@@ -9924,7 +9924,7 @@ signed int sub_81379A0()
             sound_play(105, v3, v4);
         }
     }
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( v2 )
     {
         v8 = v0[30];

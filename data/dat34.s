@@ -491,8 +491,8 @@ loc_812DEBC:
 	bl sub_812ED58
 	b loc_812DEF6
 loc_812DEC2:
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	beq loc_812DEF6
 	mov r0, #0x83
 	bl sound_play
@@ -722,8 +722,8 @@ sub_812E08C:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	beq loc_812E0AC
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	beq loc_812E0FC
 	mov r1, #0
 	strh r1, [r5,#0x26]
@@ -744,8 +744,8 @@ loc_812E0AC:
 	strb r0, [r5,#0x15]
 	b loc_812E0FC
 loc_812E0C6:
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	beq loc_812E0DA
 	mov r0, #1
 	strb r0, [r5,#0x15]
@@ -753,8 +753,8 @@ loc_812E0C6:
 	bl sound_play
 	b loc_812E0E2
 loc_812E0DA:
-	mov r0, #1
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_A
+	bl JoypadKeyPressed
 	beq loc_812E0FC
 loc_812E0E2:
 	mov r1, #4

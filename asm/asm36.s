@@ -425,11 +425,11 @@ loc_81303C4:
 	bl sub_81304EC
 	thumb_func_end sub_8130370
 
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	bne loc_81303E0
-	mov r0, #1
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_A
+	bl JoypadKeyPressed
 	beq locret_81303F8
 	mov r1, #4
 	ldrb r0, [r7,#0x11]
@@ -1243,8 +1243,8 @@ loc_8130AB2:
 	beq loc_8130AFE
 	cmp r0, #4
 	beq loc_8130AC8
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	beq loc_8130B08
 	bl sub_8131768
 	b loc_8130B08
@@ -2224,11 +2224,11 @@ loc_813126C:
 	bl sub_81314E4
 	b locret_81312C8
 loc_8131292:
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	bne loc_81312B0
-	mov r0, #1
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_A
+	bl JoypadKeyPressed
 	beq locret_81312C8
 	mov r0, #0x69 
 	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
@@ -3628,8 +3628,8 @@ off_8132070: .word sub_8132080+1
 	thumb_local_start
 sub_8132080:
 	push {lr}
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	beq loc_8132094
 	bl sub_813D978
 	mov r0, #0xc
@@ -5912,8 +5912,8 @@ loc_81334E2:
 	mov r0, #0x20 
 	bl chatbox_check_eFlags2009F38
 	bne loc_8133504
-	mov r0, #6
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_SELECT | JOYPAD_B
+	bl JoypadKeyPressed
 	beq locret_8133534
 	mov r0, #0x10
 	strb r0, [r5,#2]
@@ -5982,15 +5982,15 @@ sub_8133564:
 	bl sub_811F7F8
 	tst r0, r0
 	bne locret_81335B6
-	mov r0, #1
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_A
+	bl JoypadKeyPressed
 	beq loc_8133590
 	mov r0, #4
 	str r0, [r5,#0x68]
 	b locret_81335B6
 loc_8133590:
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	beq locret_81335B6
 	mov r0, #0x83
 	bl sound_play
@@ -6169,8 +6169,8 @@ sub_81336C4:
 	bl sub_811F7F8
 	tst r0, r0
 	bne locret_8133738
-	mov r0, #1
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_A
+	bl JoypadKeyPressed
 	beq loc_81336FA
 	mov r0, #0
 	ldr r1, [r5,#0x5c]
@@ -6182,8 +6182,8 @@ loc_81336F6:
 	str r0, [r5,#0x68]
 	b locret_8133738
 loc_81336FA:
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	beq locret_8133738
 	mov r0, #0x83
 	bl sound_play
@@ -6319,8 +6319,8 @@ sub_81337E8:
 	mov r2, #0x40 
 	tst r1, r2
 	bne loc_8133864
-	mov r0, #0xb
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_START | JOYPAD_B | JOYPAD_A
+	bl JoypadKeyPressed
 	beq loc_8133830
 	mov r0, #0x10
 	strb r0, [r5,#1]
@@ -6671,8 +6671,8 @@ sub_8133B18:
 	strb r0, [r5,#2]
 	b loc_8133B4C
 loc_8133B2C:
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	beq loc_8133B4C
 	mov r0, #0xb
 	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
@@ -6728,8 +6728,8 @@ loc_8133B8E:
 	thumb_local_start
 sub_8133BB4:
 	push {lr}
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	beq locret_8133C0A
 	mov r0, #0x44 
 	add r0, #0
@@ -6774,14 +6774,14 @@ locret_8133C0A:
 	thumb_local_start
 sub_8133C0C:
 	push {lr}
-	mov r0, #8
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_START
+	bl JoypadKeyPressed
 	bne loc_8133C24
 	ldrb r0, [r5,#3]
 	cmp r0, #0xc
 	bne loc_8133C52
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	beq locret_8133C56
 loc_8133C24:
 	mov r0, #0x44 
@@ -6816,8 +6816,8 @@ locret_8133C56:
 	thumb_local_start
 sub_8133C58:
 	push {r4,r6,lr}
-	mov r0, #4
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_SELECT
+	bl JoypadKeyPressed
 	beq locret_8133C98
 	mov r0, #0x44 
 	add r0, #0
@@ -8176,8 +8176,8 @@ off_81347A0: .word dword_81331FC
 sub_81347A4:
 	push {r4-r7,lr}
 	sub sp, sp, #0x10
-	mov r0, #1
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_A
+	bl JoypadKeyPressed
 	bne loc_81347B2
 	b loc_81348C4
 loc_81347B2:
@@ -8523,8 +8523,8 @@ off_8134A38: .word word_202A020
 sub_8134A3C:
 	push {lr}
 	mov r6, #0
-	mov r0, #1
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_A
+	bl JoypadKeyPressed
 	beq loc_8134AB4
 	mov r6, #1
 	mov r4, #0x44 
@@ -10278,14 +10278,14 @@ sub_8135830:
 	ldrb r0, [r5,#0xd]
 	tst r0, r0
 	bne loc_81358E0
-	mov r0, #4
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_SELECT
+	bl JoypadKeyPressed
 	beq loc_8135850
 	bl sub_81367C0
 	b loc_81358EE
 loc_8135850:
-	mov r0, #8
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_START
+	bl JoypadKeyPressed
 	beq loc_8135862
 	bl sub_81367A0
 	bl sub_8135F18
@@ -10303,14 +10303,14 @@ loc_8135862:
 loc_8135876:
 	mov r0, #0
 	strb r0, [r5,#0x17]
-	mov r0, #0xa
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_START | JOYPAD_B
+	bl JoypadKeyPressed
 	beq loc_8135888
 	bl sub_813627C
 	b loc_81358EE
 loc_8135888:
-	mov r0, #1
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_A
+	bl JoypadKeyPressed
 	beq loc_8135896
 	bl sub_8136218
 	b loc_81358EE
@@ -14506,8 +14506,8 @@ sub_81379A0:
 	mov r1, #0x10
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_81379D0
-	mov r0, #1
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_A
+	bl JoypadKeyPressed
 	beq loc_81379D0
 	bl sub_8138170
 	tst r0, r0
@@ -14522,8 +14522,8 @@ loc_81379C4:
 	strb r0, [r5,#2]
 	b locret_8137A1A
 loc_81379D0:
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	beq loc_81379F0
 	mov r0, #8
 	strb r0, [r5,#1]

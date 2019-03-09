@@ -21232,10 +21232,10 @@ void sub_811EDB4()
         IsPaletteFadeActive();
         if ( !v2 )
         {
-            isJoystickIRQActive();
+            JoypadKeyPressed();
             if ( !v2 )
                 goto LABEL_10;
-            isJoystickIRQActive();
+            JoypadKeyPressed();
             if ( !v2 )
             {
                 if ( v0[4] >= 8 )
@@ -21260,7 +21260,7 @@ LABEL_10:
             }
             if ( v0[4] < 8 )
             {
-                isJoystickIRQActive();
+                JoypadKeyPressed();
                 if ( v2 )
                 {
                     v0[4] = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 4), 8, 1, v0[4]);
@@ -21276,7 +21276,7 @@ LABEL_10:
             }
             else
             {
-                isJoystickIRQActive();
+                JoypadKeyPressed();
                 if ( !v2 )
                 {
                     sound_play(127, v6, v7);
@@ -21872,7 +21872,7 @@ void SubMenuControl()
 
 
 // 0x811f7ec
-void isJoystickIRQActive()
+void JoypadKeyPressed()
 {
     Toolkit *tk; // r10
     int v1; // r1

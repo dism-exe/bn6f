@@ -4251,7 +4251,7 @@ void __noreturn sub_804A3FC()
         if ( !zf || (sub_804AAD0(), !zf) )
 LABEL_11:
             sub_804A8F4();
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( !zf )
         {
             sound_play(156, v3, v4);
@@ -4377,7 +4377,7 @@ void sub_804A5D4()
     int v2; // r2
     char v3; // zf
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( !v3 )
     {
         *(v0 + 1) = 12;
@@ -4580,7 +4580,7 @@ void sub_804AAA4()
     int v2; // r2
     char v3; // zf
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( !v3 )
     {
         if ( *&menu->unk_1E )
@@ -4605,8 +4605,8 @@ void sub_804AAD0()
     int v2; // r2
     char v3; // zf
 
-    isJoystickIRQActive();
-    if ( !v3 || *v0 == 20 && (isJoystickIRQActive(), !v3) )
+    JoypadKeyPressed();
+    if ( !v3 || *v0 == 20 && (JoypadKeyPressed(), !v3) )
     {
         if ( *v0 == 20 )
         {
@@ -4634,7 +4634,7 @@ signed int sub_804AB10()
     int v5; // r2
 
     v1 = 0;
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( !v2 )
     {
         v1 = 1;
@@ -4977,7 +4977,7 @@ void sub_804AE04()
     int v7; // r3
     int v8; // r3
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( !v4 )
     {
         sound_play(129, v2, v3);

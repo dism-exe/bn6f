@@ -184,10 +184,10 @@ void sub_812ECAC()
         *(v2 + 31) = *(v2 + 18);
         *(v2 + 30) = v3;
     }
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( !v5 )
         goto LABEL_17;
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( v5 )
         return;
     v6 = 4;

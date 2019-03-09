@@ -330,7 +330,7 @@
 // .global sub_811EBE0
 // .global sub_811F728
 // .global sub_811F758
-// .global isJoystickIRQActive
+// .global JoypadKeyPressed
 // .global sub_811F7F8
 // .global sub_811FA22
 // .global sub_811FA98

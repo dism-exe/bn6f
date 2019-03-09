@@ -235,10 +235,10 @@ void __noreturn sub_81235A4()
     int v12; // r3
     int v13; // r0
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( v4 )
     {
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( v4 )
         {
             *(v0 + 30) = 26;
@@ -342,7 +342,7 @@ int sub_812368C()
     int v13; // r0
     int v14; // r4
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( !v2 )
     {
         *(v0 + 2) = 4;
@@ -350,7 +350,7 @@ int sub_812368C()
         sound_play(131, v3, v4);
         return sub_8119118(0);
     }
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( v2 )
     {
         v14 = 3;
@@ -929,10 +929,10 @@ void sub_81240D0()
     __int16 v9; // r0
     int v10; // r1
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( v4 )
     {
-        if ( !*(v0 + 12) || (isJoystickIRQActive(), v4) )
+        if ( !*(v0 + 12) || (JoypadKeyPressed(), v4) )
         {
             v9 = *(*(v1 + oToolkit_JoypadPtr) + 4);
             v10 = *(v0 + 12);
@@ -4155,7 +4155,7 @@ int sub_8126E10()
     int v9; // r2
     int v10; // r1
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( v4 )
     {
         if ( v0[16] == 2 || (chatbox_check_eFlags2009F38(128), !v4) )
@@ -4995,15 +4995,15 @@ void sub_8127B18()
     int v8; // r2
     char v9; // r1
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( !v4 )
         goto LABEL_2;
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( v4 )
     {
         if ( *(v0 + 30) )
         {
-            isJoystickIRQActive();
+            JoypadKeyPressed();
             if ( v4 )
             {
                 if ( sub_811F7F8(*(*(v1 + oToolkit_JoypadPtr) + 4), 4u, 0, 0) )
@@ -5070,10 +5070,10 @@ void __noreturn sub_8127BE4()
     int v6; // r2
     int v7; // r0
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( v4 )
     {
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( v4 )
         {
             *(v0 + 42) = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 4), 4, 1, *(v0 + 42));
@@ -5831,7 +5831,7 @@ void sub_8128800()
     *(v0 + 38) = *(v0 + 36);
     *(v0 + 34) = *(v0 + 32);
     *(v0 + 14) = *(v0 + 13);
-    if ( (*(v0 + 30) || (isJoystickIRQActive(), v4)) && ((chatbox_check_eFlags2009F38(8), v4) || (isJoystickIRQActive(), v4)) )
+    if ( (*(v0 + 30) || (JoypadKeyPressed(), v4)) && ((chatbox_check_eFlags2009F38(8), v4) || (JoypadKeyPressed(), v4)) )
     {
         if ( *(v0 + 30) )
         {
@@ -5855,7 +5855,7 @@ void sub_8128800()
                 }
                 else
                 {
-                    isJoystickIRQActive();
+                    JoypadKeyPressed();
                     if ( !v4 )
                         sub_8128BF0();
                 }
@@ -6300,7 +6300,7 @@ int sub_8128E2C()
     }
     else
     {
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( !v2 )
         {
             engine_setScreeneffect(12, 16);
@@ -6561,10 +6561,10 @@ int sub_812933C()
         v4 = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 2), 2, 1, v3);
         if ( v3 == v4 )
         {
-            isJoystickIRQActive();
+            JoypadKeyPressed();
             if ( v2 )
             {
-                isJoystickIRQActive();
+                JoypadKeyPressed();
                 if ( !v2 )
                 {
                     sound_play(131, v9, v10);
@@ -6665,10 +6665,10 @@ void sub_8129454()
             v7 = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 2), 2, 1, v6);
             if ( v6 == v7 )
             {
-                isJoystickIRQActive();
+                JoypadKeyPressed();
                 if ( v2 )
                 {
-                    isJoystickIRQActive();
+                    JoypadKeyPressed();
                     if ( !v2 )
                     {
                         sound_play(131, v12, v13);
@@ -6906,10 +6906,10 @@ void sub_81296D8()
     v3 = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 2), 3, 1, v2);
     if ( v2 == v3 )
     {
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( v6 )
         {
-            isJoystickIRQActive();
+            JoypadKeyPressed();
             if ( !v6 )
             {
                 sound_play(131, v7, v8);
@@ -7113,10 +7113,10 @@ void sub_8129870()
     v3 = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 2), 3, 1, v2);
     if ( v2 == v3 )
     {
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( v6 )
         {
-            isJoystickIRQActive();
+            JoypadKeyPressed();
             if ( !v6 )
             {
                 sound_play(131, v7, v8);
@@ -7266,10 +7266,10 @@ void sub_81299B0()
     v3 = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 2), 3, 1, v2);
     if ( v2 == v3 )
     {
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( v6 )
         {
-            isJoystickIRQActive();
+            JoypadKeyPressed();
             if ( !v6 )
             {
                 sound_play(131, v7, v8);
@@ -7451,10 +7451,10 @@ void sub_8129B34()
         v4 = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 2), 2, 1, v3);
         if ( v3 == v4 )
         {
-            isJoystickIRQActive();
+            JoypadKeyPressed();
             if ( v2 )
             {
-                isJoystickIRQActive();
+                JoypadKeyPressed();
                 if ( !v2 )
                 {
                     sound_play(131, v7, v8);
@@ -7654,10 +7654,10 @@ void sub_8129D00()
     v3 = sub_811FA22(*(*(v1 + oToolkit_JoypadPtr) + 2), v0[32], 1, v2);
     if ( v2 == v3 )
     {
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( v6 )
         {
-            isJoystickIRQActive();
+            JoypadKeyPressed();
             if ( !v6 )
             {
                 sound_play(131, v7, v8);
@@ -7954,7 +7954,7 @@ void sub_8129F88()
         sub_8132398(0, v2, v3, v4);
         return;
     }
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( !v7 )
     {
         sound_play(131, v5, v6);
@@ -8235,7 +8235,7 @@ void sub_812A2B4()
         IsPaletteFadeActive();
         if ( !v1 )
         {
-            isJoystickIRQActive();
+            JoypadKeyPressed();
             if ( !v1 )
             {
                 sound_play(131, v2, v3);
@@ -8494,7 +8494,7 @@ void sub_812A574()
     int v4; // r2
 
     IsPaletteFadeActive();
-    if ( v1 || (sub_8048FC4(), v2 != 28) || (isJoystickIRQActive(), v1) )
+    if ( v1 || (sub_8048FC4(), v2 != 28) || (JoypadKeyPressed(), v1) )
     {
         sub_803CB18();
         if ( !v1 )
@@ -9241,7 +9241,7 @@ int sub_812AC80()
     }
     if ( eStruct200BC30_getRef()[14] != 2 )
     {
-        isJoystickIRQActive();
+        JoypadKeyPressed();
         if ( !v2 )
         {
             if ( eStruct200BC30_getJumpOffset00() )
@@ -10611,7 +10611,7 @@ void sub_812BD60()
     char v1; // zf
     int v2; // r0
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( !v1 )
     {
         v2 = v0[16];
@@ -10733,7 +10733,7 @@ void sub_812BF10()
     _BYTE *v0; // r5
     char v1; // zf
 
-    isJoystickIRQActive();
+    JoypadKeyPressed();
     if ( !v1 )
     {
         if ( v0[16] == 17 )

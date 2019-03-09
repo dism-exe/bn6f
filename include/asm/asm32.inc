@@ -239,7 +239,7 @@
 	.global sub_811F728
 	.global sub_811F758
 	.global SubMenuControl // () -> void
-	.global isJoystickIRQActive
+	.global JoypadKeyPressed
 	.global sub_811F7F8
 	.global sub_811F91C
 	.global sub_811FA0C

@@ -4797,8 +4797,8 @@ sub_8005AF4:
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
 	bne locret_8005B68
-	mov r0, #8
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_START
+	bl JoypadKeyPressed
 	beq locret_8005B68
 	// entryIdx
 	mov r0, #0x17

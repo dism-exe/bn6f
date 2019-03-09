@@ -6720,8 +6720,8 @@ sub_804A3FC:
 	bne loc_804A44C
 	bl sub_804AAD0
 	bne loc_804A44C
-	mov r0, #0x10
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_RIGHT
+	bl JoypadKeyPressed
 	beq loc_804A42C
 	mov r0, #0x9c
 	bl sound_play
@@ -6932,8 +6932,8 @@ loc_804A5C6:
 	thumb_local_start
 sub_804A5D4:
 	push {lr}
-	mov r0, #0xe2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_DOWN | JOYPAD_UP | JOYPAD_LEFT | JOYPAD_B
+	bl JoypadKeyPressed
 	beq locret_804A5E8
 	mov r0, #0xc
 	strb r0, [r5,#1]
@@ -7506,8 +7506,8 @@ dword_804AAA0: .word 0xC24C
 	thumb_local_start
 sub_804AAA4:
 	push {lr}
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	beq locret_804AACC
 	ldrh r0, [r5,#0x1e]
 	tst r0, r0
@@ -7530,14 +7530,14 @@ locret_804AACC:
 	thumb_local_start
 sub_804AAD0:
 	push {lr}
-	mov r0, #8
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_START
+	bl JoypadKeyPressed
 	bne loc_804AAE8
 	ldrb r0, [r5]
 	cmp r0, #0x14
 	bne loc_804AB0A
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	beq locret_804AB0E
 loc_804AAE8:
 	ldrb r0, [r5]
@@ -7567,8 +7567,8 @@ locret_804AB0E:
 sub_804AB10:
 	push {r4-r7,lr}
 	mov r6, #0
-	mov r0, #1
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_A
+	bl JoypadKeyPressed
 	beq loc_804AB44
 	mov r6, #1
 	mov r4, #0x44 
@@ -7977,8 +7977,8 @@ loc_804ADF8:
 sub_804AE04:
 	push {r4-r7,lr}
 	sub sp, sp, #8
-	mov r0, #1
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_A
+	bl JoypadKeyPressed
 	beq loc_804AE44
 	mov r0, #0x81
 	bl sound_play

@@ -428,7 +428,7 @@ void sub_812F390()
 					}
 				}
 			}
-			isJoystickIRQActive();
+			JoypadKeyPressed();
 			if ( !v14 )
 			{
 				*(v0 + 2) = 12;
@@ -642,7 +642,7 @@ void sub_812F628()
 	*(v0 + 16) = 22;
 	if ( *(v0 + 3) )
 	{
-		isJoystickIRQActive();
+		JoypadKeyPressed();
 		if ( !v3 )
 		{
 			*(v0 + 38) = 0;
@@ -659,10 +659,10 @@ void sub_812F628()
 			*(v0 + 21) = v6;
 			goto LABEL_14;
 		}
-		isJoystickIRQActive();
+		JoypadKeyPressed();
 		if ( v3 )
 		{
-			isJoystickIRQActive();
+			JoypadKeyPressed();
 			if ( v3 )
 				goto LABEL_14;
 		}

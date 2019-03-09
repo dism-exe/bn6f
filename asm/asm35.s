@@ -322,11 +322,11 @@ loc_812ECF2:
 	strh r0, [r7,#0x3e]
 	strh r1, [r7,#0x3c]
 loc_812ECFA:
-	mov r0, #2
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	bne loc_812ED12
-	mov r0, #1
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_A
+	bl JoypadKeyPressed
 	beq locret_812ED2A
 	mov r1, #4
 	ldrb r0, [r5,#0x11]

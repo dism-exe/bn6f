@@ -30523,11 +30523,11 @@ sub_811EDB4:
 loc_811EDD6:
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_811EE82
-	mov r0, #0xa
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_START | JOYPAD_B
+	bl JoypadKeyPressed
 	bne loc_811EDF2
-	mov r0, #1
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_A
+	bl JoypadKeyPressed
 	beq loc_811EE34
 	ldrb r0, [r5,#4]
 	cmp r0, #8
@@ -30570,8 +30570,8 @@ loc_811EE34:
 	ldrb r0, [r5,#4]
 	cmp r0, #8
 	blt loc_811EE52
-	mov r0, #0xe0
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_DOWN | JOYPAD_UP | JOYPAD_LEFT
+	bl JoypadKeyPressed
 	beq loc_811EE82
 	mov r0, #0x7f
 	bl sound_play
@@ -30581,8 +30581,8 @@ loc_811EE34:
 	strb r0, [r5,#9]
 	b loc_811EE82
 loc_811EE52:
-	mov r0, #0x10
-	bl isJoystickIRQActive
+	mov r0, #JOYPAD_RIGHT
+	bl JoypadKeyPressed
 	beq loc_811EE70
 	mov r0, #0x7f
 	bl sound_play
@@ -31566,15 +31566,16 @@ JumpTable811F7A0: .word HandleChipFolderMenu8123434+1
 	.word 0
 	thumb_func_end SubMenuControl
 
-	thumb_func_start isJoystickIRQActive
-isJoystickIRQActive:
+	thumb_func_start JoypadKeyPressed
+// (joypad_enum_t key) -> !zf
+JoypadKeyPressed:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_JoypadPtr]
-	ldrh r1, [r1,#2]
+	ldrh r1, [r1,#oJoypad_Pressed]
 	tst r0, r1
 	mov pc, lr
 	.balign 4, 0x00
-	thumb_func_end isJoystickIRQActive
+	thumb_func_end JoypadKeyPressed
 
 	thumb_func_start sub_811F7F8
 sub_811F7F8:
