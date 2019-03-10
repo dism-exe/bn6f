@@ -1,4 +1,6 @@
 	.include "include/data/data.inc"
+	.include "include/macros/enum.inc"
+	.include "include/bytecode/text_script.inc"
 
 // TODO: put at the end of asm38 instead
 	.global IWRAMRoutinesEnd
@@ -7,8 +9,7 @@ IWRAMRoutinesEnd:
 
 	.section .rodata
 
-	.global battleSpriteMegaMan
-battleSpriteMegaMan:
+battleSpriteMegaMan::
 	.incbin "data/sprites/battleSpriteMegaMan.spr"
 battleSpriteFlameCross:
 	.incbin "data/sprites/battleSpriteFlameCross.spr"
@@ -622,10 +623,6 @@ comp_86C526C:
 	.incbin "data/compressed/comp_86C526C.lz77"
 dat38_65:
 	.include "data/dat38_65.s"
-TextScriptChipTrader86C580C:
-	.incbin "data/scripts/TextScriptChipTrader86C580C.bin"
-dat38_66:
-	.include "data/dat38_66.s"
 comp_86C6B30:
 	.incbin "data/compressed/comp_86C6B30.lz77"
 comp_86C6FD0:

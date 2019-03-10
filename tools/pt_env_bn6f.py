@@ -831,11 +831,7 @@ pt.env(gameFiles={
 'data/compressed/comp_86C526C.lz77':
 	(0x86C526C, 0x86C52B4), # size=0x48
 'data/dat38_65.s':
-	(0x86C52B4, 0x86C580C), # size=0x558
-'data/scripts/TextScriptChipTrader86C580C.bin':
-	(0x86C580C, 0x86C67E4), # size=0xFD8
-'data/dat38_66.s':
-	(0x86C67E4, 0x86C6B30), # size=0x34C
+	(0x86C52B4, 0x86C6B30),
 'data/compressed/comp_86C6B30.lz77':
 	(0x86C6B30, 0x86C6FD0), # size=0x4A0
 'data/compressed/comp_86C6FD0.lz77':

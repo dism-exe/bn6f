@@ -20354,7 +20354,7 @@ off_8119068: .word byte_811906C
 byte_811906C: .byte 0x0, 0x20, 0x1, 0x6, 0x0, 0x22, 0x1, 0x6, 0x0, 0x24, 0x1, 0x6
 off_8119078: .word dword_86B7AE0
 off_811907C: .word sub_3006B94+1
-	.word TextScript86CF4AC
+	.word TextScriptFolderNames
 	thumb_func_end sub_8119018
 
 	thumb_local_start
@@ -23364,7 +23364,7 @@ sub_811AA4C:
 	.byte 0, 0
 	.word unk_20347D8
 	.word word_2023FA0
-	.word TextScript86CF4AC
+	.word TextScriptFolderNames
 off_811AA8C: .word off_811AA90
 off_811AA90: .word unk_2017E00
 	.word unk_2018000
@@ -23583,7 +23583,7 @@ loc_811AC40:
 	bx r1
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-	.word TextScript86CF4AC
+	.word TextScriptFolderNames
 off_811AC68: .word off_811AC6C
 off_811AC6C: .word unk_2017C00
 	.word unk_2017E00
@@ -31281,15 +31281,15 @@ loc_811F598:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_811F5B4: .word off_811F5B8
-off_811F5B8: .word TileRefs_86CB21C
-	.word TileRefs_86CB240
-	.word TileRefs_86CB264
-	.word TileRefs_86CB288
-	.word TileRefs_86CB2AC
-	.word TileRefs_86CB2D0
-	.word TileRefs_86CB2F4
-	.word TileRefs_86CB318
-	.word TileRefs_86CB33C
+off_811F5B8: .word TileIds_86CB21C
+	.word TileIds_86CB240
+	.word TileIds_86CB264
+	.word TileIds_86CB288
+	.word TileIds_86CB2AC
+	.word TileIds_86CB2D0
+	.word TileIds_86CB2F4
+	.word TileIds_86CB318
+	.word TileIds_86CB33C
 	thumb_func_end copyTiles_onNaviSelect_811F54C
 
 	thumb_local_start
@@ -33067,7 +33067,7 @@ loc_812031C:
 	sub r4, #1
 	bgt loc_812031C
 	mov r6, #0
-	ldr r1, off_8120340 // =TextScript86CF4AC
+	ldr r1, off_8120340 // =TextScriptFolderNames
 	lsl r0, r0, #1
 	ldrh r0, [r1,r0]
 	add r0, r0, r1
@@ -33077,7 +33077,7 @@ loc_812031C:
 	add sp, sp, #0x14
 	pop {r4-r7,pc}
 	.byte 0, 0
-off_8120340: .word TextScript86CF4AC
+off_8120340: .word TextScriptFolderNames
 off_8120344: .word 0x200
 	thumb_func_end sub_81202FC
 

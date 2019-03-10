@@ -4,8 +4,8 @@
 /* Public Symbols */
 	.global dword_86CEE84
 	.global dword_86CF1A8
-	.global TextScript86CF4AC
-	.global TextScriptNetworkPlyTmSave86CF618
+	.global TextScriptFolderNames
+	.global CompTextScriptNetworkPlyTmSave86CF618
 	.global eTextScriptNetworkSave86CF730
 
 

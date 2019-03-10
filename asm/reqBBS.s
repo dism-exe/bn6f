@@ -1019,7 +1019,7 @@ off_813E90C: .word reqBBS_eRequestEntriesIDs
 	thumb_local_start
 reqBBS_dead_813E910:
 	push {r4-r7,lr}
-	ldr r0, off_813E97C // =eTileRefs2018A04 
+	ldr r0, off_813E97C // =eTileIds2018A04
 	mov r1, #0x40 
 	bl ZeroFillByHalfword
 	mov r6, r10
@@ -1054,7 +1054,7 @@ loc_813E934:
 	ldr r0, [r0,r3]
 	mov r2, #8
 	mul r2, r6
-	ldr r1, off_813E97C // =eTileRefs2018A04 
+	ldr r1, off_813E97C // =eTileIds2018A04
 	str r0, [r1,r2]
 	add r2, #4
 	ldr r0, off_813E98C // =byte_813EA10 
@@ -1068,11 +1068,11 @@ loc_813E968:
 	mov r0, #2
 	mov r1, #3
 	mov r2, #2
-	ldr r3, off_813E97C // =eTileRefs2018A04 
+	ldr r3, off_813E97C // =eTileIds2018A04
 	mov r4, #2
 	mov r5, #0x10
 	pop {r4-r7,pc}
-off_813E97C: .word eTileRefs2018A04
+off_813E97C: .word eTileIds2018A04
 	.byte 0x30, 0x52, 0x31, 0x52, 0x32, 0x52, 0x33, 0x52
 off_813E988: .word byte_813E990
 off_813E98C: .word byte_813EA10
@@ -1318,7 +1318,7 @@ reqBBS_static_813EC6C:
 reqBBS_draw_chatbox:
 	push {r4-r7,lr}
 	// tileRefs
-	ldr r3, off_813ECD4 // =eTileRefs2018A04 
+	ldr r3, off_813ECD4 // =eTileIds2018A04
 	// j
 	mov r0, #2
 	// i
@@ -1329,13 +1329,13 @@ reqBBS_draw_chatbox:
 	mov r5, #0xa
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r4-r7,pc}
-off_813ECD4: .word eTileRefs2018A04
+off_813ECD4: .word eTileIds2018A04
 	thumb_func_end reqBBS_draw_chatbox
 
 	thumb_local_start
 reqBBS_dead_813ECD8:
 	push {r4-r7,lr}
-	ldr r3, off_813ECF0 // =eTileRefs2018A04 
+	ldr r3, off_813ECF0 // =eTileIds2018A04
 	mov r0, #3
 	mov r1, #5
 	mov r3, #0
@@ -1345,7 +1345,7 @@ reqBBS_dead_813ECD8:
 	bl sub_80018D0
 	pop {r4-r7,pc}
 	.byte 0, 0
-off_813ECF0: .word eTileRefs2018A04
+off_813ECF0: .word eTileIds2018A04
 	thumb_func_end reqBBS_dead_813ECD8
 
 	thumb_local_start
@@ -1358,12 +1358,12 @@ dead_813ECF4:
 	// cpyOff
 	mov r2, #1
 	// tileRefs
-	ldr r3, off_813ED08 // =eTileRefs2018A04 
+	ldr r3, off_813ED08 // =eTileIds2018A04
 	mov r4, #0x18
 	mov r5, #0xa
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r4-r7,pc}
-off_813ED08: .word eTileRefs2018A04
+off_813ED08: .word eTileIds2018A04
 	thumb_func_end dead_813ECF4
 
 	thumb_local_start
@@ -3174,7 +3174,7 @@ off_813FF2C: .word reqBBS_eRequestEntriesIDs
 sub_813FF30:
 	push {r4-r7,lr}
 	pop {r4-r7,pc}
-	.word eTileRefs2018A04
+	.word eTileIds2018A04
 	.byte 0x30, 0x52, 0x31, 0x52, 0x32, 0x52, 0x33, 0x52
 	.word byte_813FF48
 	.word byte_813FFC8
@@ -3706,7 +3706,7 @@ off_814049C: .word 0x54
 reqBBS_drawChatbox_dup1:
 	push {r4-r7,lr}
 	// tileRefs
-	ldr r3, off_81404B4 // =eTileRefs2018A04 
+	ldr r3, off_81404B4 // =eTileIds2018A04
 	// j
 	mov r0, #2
 	// i
@@ -3717,7 +3717,7 @@ reqBBS_drawChatbox_dup1:
 	mov r5, #0xa
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r4-r7,pc}
-off_81404B4: .word eTileRefs2018A04
+off_81404B4: .word eTileIds2018A04
 	thumb_func_end reqBBS_drawChatbox_dup1
 
 	thumb_local_start

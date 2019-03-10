@@ -3454,7 +3454,7 @@ signed int chatbox_8042820()
 
 
 // 0x8042830
-int chatbox_F7_movebox()
+int chatbox_F7_move()
 {
     int v0; // r4
 

@@ -18384,7 +18384,7 @@ int __fastcall sub_811C554(int a1, int a2)
         if ( v9 )
         {
             SWI_LZ77UnCompReadNormalWrite8bit((v10 >> 1), &unk_2018A00);
-            v7 = eTileRefs2018A04;
+            v7 = eTileIds2018A04;
         }
         initGuiSprite_8002770(*&byte_811C5E0[v6], v7);
         sprite_setAnimation(v5, byte_811C618[v6 >> 2]);
@@ -22876,7 +22876,7 @@ int __fastcall sub_81202FC(int a1, _WORD *a2, int a3, int a4)
         v9 = __OFSUB__(v8--, 1);
     }
     while ( !(((v8 < 0) ^ v9) | (v8 == 0)) );
-    return sub_81202B4(TextScript86CF4AC + *(TextScript86CF4AC + a1), TextScript86CF4AC, v7, v6);
+    return sub_81202B4(TextScriptFolderNames + *(TextScriptFolderNames + a1), TextScriptFolderNames, v7, v6);
 }
 
 

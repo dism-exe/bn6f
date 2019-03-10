@@ -1689,6 +1689,9 @@ dword_8040B34: .word 0xE3FC
 dword_8040B38: .word 0xB520E3FE
 	thumb_func_end chatbox_8040A9A
 
+    thumb_local_start
+// (enum Mugshot idx) -> void
+sub_8040B3C:
 	push {r5}
 	ldr r2, off_8040B88 // =0x1f8
 	add r5, r5, r2
@@ -1726,10 +1729,12 @@ loc_8040B66:
 	pop {r5,pc}
 off_8040B84: .word 0x3C0
 off_8040B88: .word 0x1F8
+    thumb_func_end sub_8040B3C
+
 	thumb_local_start
 chatbox_8040B8C:
 	push {r4-r6,lr}
-	mov r0, #2
+	mov r0, #FLAGS_3E_MUGSHOT_ACTIVE
 	bl chatbox_maskFlags_3e // (int mask) -> void
 
 	beq locret_8040C24
@@ -1737,7 +1742,7 @@ chatbox_8040B8C:
 	bl chatbox_maskFlags_3e // (int mask) -> void
 
 	bne loc_8040BA4
-	ldrb r0, [r5,#0x10]
+	ldrb r0, [r5,#oChatbox_ChatboxOpenState_10]
 	cmp r0, #3
 	bne locret_8040C24
 loc_8040BA4:
@@ -2069,7 +2074,7 @@ TextScriptBytecodeJumptable: .word chatbox_E5_nop+1
 	.word chatbox_F4_unk+1
 	.word chatbox_F5_mugshot+1
 	.word chatbox_F6_textcolor+1
-	.word chatbox_F7_movebox+1
+	.word chatbox_F7_move+1
 	.word chatbox_F8_playeranimation+1
 	.word chatbox_F9_storebyte+1
 	.word chatbox_FA_print+1
@@ -4565,7 +4570,7 @@ off_8042064: .word byte_873D9FC
 	.word dword_86EA94C
 	.word TextScriptEnemyNames86EB354
 	.word byte_86EF71C
-	.word TextScript86CF4AC
+	.word TextScriptFolderNames
 	.word byte_873EA50
 	.word byte_873EA50
 	.word dword_86EA94C
@@ -5598,7 +5603,7 @@ chatbox_8042820:
 	thumb_func_end chatbox_8042820
 
 	thumb_local_start
-chatbox_F7_movebox:
+chatbox_F7_move:
 	push {lr}
 	ldr r0, off_8042840 // =off_8042844
 	ldrb r1, [r4,#1]
@@ -5671,7 +5676,7 @@ off_80429F0: .word byte_8521A12
 	.byte 0x18, 0x3, 0x70, 0x52, 0x8, 0x52, 0x0, 0x92, 0x0
 	.byte 0xE9, 0x6F, 0x89, 0x18, 0xE9, 0x67, 0x3, 0x34, 0x1
 	.byte 0x20, 0xC0, 0xBD, 0x0, 0x0
-	thumb_func_end chatbox_F7_movebox
+	thumb_func_end chatbox_F7_move
 
 	thumb_local_start
 chatbox_8042A14:

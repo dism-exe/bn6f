@@ -2775,7 +2775,7 @@ sub_8047800:
 	// cpyOff
 	mov r2, #2
 	// tileRefs
-	ldr r3, off_804782C // =eTileRefs2018A04 
+	ldr r3, off_804782C // =eTileIds2018A04
 	mov r4, #0x15
 	mov r5, #0xc
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -2789,7 +2789,7 @@ sub_8047800:
 	mov r5, #0xa
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r4-r7,pc}
-off_804782C: .word eTileRefs2018A04
+off_804782C: .word eTileIds2018A04
 off_8047830: .word byte_202F800
 	thumb_func_end sub_8047800
 
@@ -6501,7 +6501,7 @@ sub_804A1D0:
 	thumb_local_start
 sub_804A1FC:
 	push {r4-r7,lr}
-	ldr r4, off_804A22C // =TextScript86CF4AC
+	ldr r4, off_804A22C // =TextScriptFolderNames
 	lsl r0, r0, #1
 	ldrh r0, [r4,r0]
 	add r4, r4, r0
@@ -6529,7 +6529,7 @@ loc_804A224:
 locret_804A228:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_804A22C: .word TextScript86CF4AC
+off_804A22C: .word TextScriptFolderNames
 	thumb_func_end sub_804A1FC
 
 	thumb_local_start
@@ -7126,7 +7126,7 @@ menuCopyTiles_804A7C0:
 	mov r7, r5
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_804A8BC // =unk_202A3E0 
-	ldr r2, off_804A8C0 // =eTileRefs20345FC 
+	ldr r2, off_804A8C0 // =eTileIds20345FC
 	mov r3, #0xb
 	mov r5, #7
 	bl sub_81200EC
@@ -7140,13 +7140,13 @@ menuCopyTiles_804A7C0:
 	// cpyOff
 	mov r2, #2
 	// tileRefs
-	ldr r3, off_804A8C0 // =eTileRefs20345FC 
+	ldr r3, off_804A8C0 // =eTileIds20345FC
 	mov r4, #8
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_804A8BC // =unk_202A3E0 
-	ldr r2, off_804A8C4 // =eTileRefs20346DC 
+	ldr r2, off_804A8C4 // =eTileIds20346DC
 	ldr r3, off_804A8C8 // =byte_804A264 
 	ldr r4, dword_804A8CC // =0x6007600 
 	mov r5, #7
@@ -7161,13 +7161,13 @@ menuCopyTiles_804A7C0:
 	// cpyOff
 	mov r2, #2
 	// tileRefs
-	ldr r3, off_804A8C4 // =eTileRefs20346DC 
+	ldr r3, off_804A8C4 // =eTileIds20346DC
 	mov r4, #2
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_804A8BC // =unk_202A3E0 
-	ldr r2, off_804A8D0 // =eTileRefs2034714 
+	ldr r2, off_804A8D0 // =eTileIds2034714
 	mov r3, #0xa
 	lsl r3, r3, #0xc
 	ldr r4, off_804A8D4 // =0x35c 
@@ -7185,13 +7185,13 @@ menuCopyTiles_804A7C0:
 	// cpyOff
 	mov r2, #2
 	// tileRefs
-	ldr r3, off_804A8D0 // =eTileRefs2034714 
+	ldr r3, off_804A8D0 // =eTileIds2034714
 	mov r4, #2
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_804A8BC // =unk_202A3E0 
-	ldr r2, off_804A8DC // =eTileRefs203474C 
+	ldr r2, off_804A8DC // =eTileIds203474C
 	mov r3, #0xb
 	lsl r3, r3, #0xc
 	ldr r4, dword_804A8E0 // =0x216 
@@ -7208,13 +7208,13 @@ menuCopyTiles_804A7C0:
 	// cpyOff
 	mov r2, #2
 	// tileRefs
-	ldr r3, off_804A8DC // =eTileRefs203474C 
+	ldr r3, off_804A8DC // =eTileIds203474C
 	mov r4, #1
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_804A8BC // =unk_202A3E0 
-	ldr r2, off_804A8E4 // =eTileRefs2034768 
+	ldr r2, off_804A8E4 // =eTileIds2034768
 	mov r3, #9
 	lsl r3, r3, #0xc
 	ldr r4, dword_804A8E8 // =0x34f 
@@ -7231,13 +7231,13 @@ menuCopyTiles_804A7C0:
 	// cpyOff
 	mov r2, #2
 	// tileRefs
-	ldr r3, off_804A8E4 // =eTileRefs2034768 
+	ldr r3, off_804A8E4 // =eTileIds2034768
 	mov r4, #2
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_804A8BC // =unk_202A3E0 
-	ldr r2, off_804A8EC // =eTileRefs20347A0 
+	ldr r2, off_804A8EC // =eTileIds20347A0
 	mov r3, #0xb
 	lsl r3, r3, #0xc
 	ldr r4, off_804A8F0 // =0x200 
@@ -7254,25 +7254,25 @@ menuCopyTiles_804A7C0:
 	// cpyOff
 	mov r2, #2
 	// tileRefs
-	ldr r3, off_804A8EC // =eTileRefs20347A0 
+	ldr r3, off_804A8EC // =eTileIds20347A0
 	mov r4, #2
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_804A8BC: .word unk_202A3E0
-off_804A8C0: .word eTileRefs20345FC
-off_804A8C4: .word eTileRefs20346DC
+off_804A8C0: .word eTileIds20345FC
+off_804A8C4: .word eTileIds20346DC
 off_804A8C8: .word byte_804A264
 dword_804A8CC: .word 0x6007600
-off_804A8D0: .word eTileRefs2034714
+off_804A8D0: .word eTileIds2034714
 off_804A8D4: .word 0x35C
 dword_804A8D8: .word 0x6006B80
-off_804A8DC: .word eTileRefs203474C
+off_804A8DC: .word eTileIds203474C
 dword_804A8E0: .word 0x216
-off_804A8E4: .word eTileRefs2034768
+off_804A8E4: .word eTileIds2034768
 dword_804A8E8: .word 0x34F
-off_804A8EC: .word eTileRefs20347A0
+off_804A8EC: .word eTileIds20347A0
 off_804A8F0: .word 0x200
 	thumb_func_end menuCopyTiles_804A7C0
 

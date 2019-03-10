@@ -154,7 +154,7 @@ char *sub_81301DC()
 // 0x8130208
 int sub_8130208()
 {
-	return renderTextGfx_8045F8C(TextScript86CF4AC, word_2023FA0[0] & 0xF, byte_2017A00, 100731904);
+	return renderTextGfx_8045F8C(TextScriptFolderNames, word_2023FA0[0] & 0xF, byte_2017A00, 100731904);
 }
 
 
@@ -5059,8 +5059,8 @@ void __noreturn sub_8134310()
 {
     int v0; // r5
 
-    sub_81200EC(*(v0 + 46), &unk_202A3E0, eTileRefs20345FC);
-    copyTiles(33 - *(v0 + 24), 4, 2, eTileRefs20345FC, 8, &dword_C + 2);
+    sub_81200EC(*(v0 + 46), &unk_202A3E0, eTileIds20345FC);
+    copyTiles(33 - *(v0 + 24), 4, 2, eTileIds20345FC, 8, &dword_C + 2);
     JUMPOUT(loc_813433A);
 }
 

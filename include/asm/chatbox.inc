@@ -237,7 +237,7 @@
 // .global byte_86C0940
 
 	.include "data/dat38_71.inc"
-// .global TextScript86CF4AC
+// .global TextScriptFolderNames
 
 	.include "data/dat38_85.inc"
 // .global dword_86EA94C

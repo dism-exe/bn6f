@@ -212,7 +212,7 @@ sub_8130208:
 	ldrb r1, [r0,r1]
 	mov r0, #0xf
 	and r1, r0
-	ldr r0, off_8130238 // =TextScript86CF4AC
+	ldr r0, off_8130238 // =TextScriptFolderNames
 	mov r4, #8
 	mov r5, #1
 	ldr r6, off_813024C // =dword_86B7AE0 
@@ -221,7 +221,7 @@ sub_8130208:
 	pop {r4-r7,pc}
 	.word unk_20347D8
 off_8130234: .word word_2023FA0
-off_8130238: .word TextScript86CF4AC
+off_8130238: .word TextScriptFolderNames
 off_813023C: .word off_8130240
 off_8130240: .word byte_2017A00
 off_8130244: .word dword_8130248
@@ -5116,7 +5116,7 @@ loc_8132CD4:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 TextScriptNetworkPtrs8132D18_p: .word TextScriptNetworkPtrs8132D18
-TextScriptNetworkPtrs8132D18: .word TextScriptNetworkPlyTmSave86CF618
+TextScriptNetworkPtrs8132D18: .word CompTextScriptNetworkPlyTmSave86CF618
 	.word eTextScriptNetworkSave86CF730
 	.word eTextScriptNetworkSave86CF730
 	.word eTextScriptNetworkSave86CF730
@@ -5127,7 +5127,7 @@ TextScriptNetworkPtrs8132D18: .word TextScriptNetworkPlyTmSave86CF618
 	.word eTextScriptNetworkSave86CF730
 	.word eTextScriptNetworkSave86CF730
 	.word eTextScriptNetworkSave86CF730
-	.word TextScriptNetworkPlyTmSave86CF618
+	.word CompTextScriptNetworkPlyTmSave86CF618
 	.word eTextScriptNetworkSave86CF730
 eTextScript201BF00_p: .word eTextScript201BF00
 off_8132D50: .word eDecompBuffer2013A00
@@ -7597,7 +7597,7 @@ sub_8134310:
 	mov r7, r5
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_8134458 // =unk_202A3E0 
-	ldr r2, off_813445C // =eTileRefs20345FC 
+	ldr r2, off_813445C // =eTileIds20345FC
 	mov r3, #0xb
 	mov r5, #7
 	bl sub_81200EC
@@ -7612,7 +7612,7 @@ sub_8134310:
 	// cpyOff
 	mov r2, #2
 	// tileRefs
-	ldr r3, off_813445C // =eTileRefs20345FC 
+	ldr r3, off_813445C // =eTileIds20345FC
 	mov r4, #8
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -7620,7 +7620,7 @@ sub_8134310:
 
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_8134458 // =unk_202A3E0 
-	ldr r2, off_8134460 // =eTileRefs20346DC 
+	ldr r2, off_8134460 // =eTileIds20346DC
 	ldr r3, off_8134464 // =byte_81331B4
 	ldr r4, dword_8134468 // =0x6007600 
 	mov r5, #7
@@ -7632,13 +7632,13 @@ sub_8134310:
 	sub r0, r0, r1
 	mov r1, #4
 	mov r2, #2
-	ldr r3, off_8134460 // =eTileRefs20346DC 
+	ldr r3, off_8134460 // =eTileIds20346DC
 	mov r4, #2
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_8134458 // =unk_202A3E0 
-	ldr r2, off_813446C // =eTileRefs2034714 
+	ldr r2, off_813446C // =eTileIds2034714
 	mov r3, #0xa
 	lsl r3, r3, #0xc
 	ldr r4, off_8134470 // =0x35c 
@@ -7653,13 +7653,13 @@ sub_8134310:
 	sub r0, r0, r1
 	mov r1, #4
 	mov r2, #2
-	ldr r3, off_813446C // =eTileRefs2034714 
+	ldr r3, off_813446C // =eTileIds2034714
 	mov r4, #2
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_8134458 // =unk_202A3E0 
-	ldr r2, off_8134478 // =eTileRefs203474C 
+	ldr r2, off_8134478 // =eTileIds203474C
 	mov r3, #0xb
 	lsl r3, r3, #0xc
 	ldr r4, dword_813447C // =0x216 
@@ -7673,13 +7673,13 @@ sub_8134310:
 	sub r0, r0, r1
 	mov r1, #4
 	mov r2, #2
-	ldr r3, off_8134478 // =eTileRefs203474C 
+	ldr r3, off_8134478 // =eTileIds203474C
 	mov r4, #1
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_8134458 // =unk_202A3E0 
-	ldr r2, off_8134480 // =eTileRefs2034768 
+	ldr r2, off_8134480 // =eTileIds2034768
 	mov r3, #9
 	lsl r3, r3, #0xc
 	ldr r4, dword_8134484 // =0x34f 
@@ -7693,13 +7693,13 @@ sub_8134310:
 	sub r0, r0, r1
 	mov r1, #4
 	mov r2, #2
-	ldr r3, off_8134480 // =eTileRefs2034768 
+	ldr r3, off_8134480 // =eTileIds2034768
 	mov r4, #2
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
 	ldrh r0, [r7,#0x2e]
 	ldr r1, off_8134458 // =unk_202A3E0 
-	ldr r2, off_8134488 // =eTileRefs20347A0 
+	ldr r2, off_8134488 // =eTileIds20347A0
 	mov r3, #0xb
 	lsl r3, r3, #0xc
 	ldr r4, off_813448C // =0x200 
@@ -7713,7 +7713,7 @@ sub_8134310:
 	sub r0, r0, r1
 	mov r1, #4
 	mov r2, #2
-	ldr r3, off_8134488 // =eTileRefs20347A0 
+	ldr r3, off_8134488 // =eTileIds20347A0
 	mov r4, #2
 	mov r5, #0xe
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -7753,18 +7753,18 @@ locret_8134454:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8134458: .word unk_202A3E0
-off_813445C: .word eTileRefs20345FC
-off_8134460: .word eTileRefs20346DC
+off_813445C: .word eTileIds20345FC
+off_8134460: .word eTileIds20346DC
 off_8134464: .word byte_81331B4
 dword_8134468: .word 0x6007600
-off_813446C: .word eTileRefs2034714
+off_813446C: .word eTileIds2034714
 off_8134470: .word 0x35C
 dword_8134474: .word 0x6006B80
-off_8134478: .word eTileRefs203474C
+off_8134478: .word eTileIds203474C
 dword_813447C: .word 0x216
-off_8134480: .word eTileRefs2034768
+off_8134480: .word eTileIds2034768
 dword_8134484: .word 0x34F
-off_8134488: .word eTileRefs20347A0
+off_8134488: .word eTileIds20347A0
 off_813448C: .word 0x200
 	thumb_local_start
 sub_8134490:

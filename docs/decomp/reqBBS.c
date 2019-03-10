@@ -627,7 +627,7 @@ signed __int64 __fastcall reqBBS_dead_813E910(int a1, int a2, int a3, int a4)
     int v11; // ST0C_4
     char v12; // zf
 
-    ZeroFillByHalfword(eTileRefs2018A04, 0x40u, a3, a4);
+    ZeroFillByHalfword(eTileIds2018A04, 0x40u, a3, a4);
     v7 = v6 + 2 * (**(v5 + oToolkit_CurFramePtr) & 0x1F);
     v8 = &reqBBS_eRequestEntriesIDs[*(v4 + 36)];
     v9 = *(*(v4 + 40) + 12);
@@ -640,8 +640,8 @@ signed __int64 __fastcall reqBBS_dead_813E910(int a1, int a2, int a3, int a4)
         if ( !v12 )
         {
             v7 = 4 * (**(v5 + oToolkit_CurFramePtr) & 0x1F);
-            *&eTileRefs2018A04[4 * v10] = *&byte_813E990[v7];
-            *&eTileRefs2018A04[4 * v10 + 2] = *&byte_813EA10[v7];
+            *&eTileIds2018A04[4 * v10] = *&byte_813E990[v7];
+            *&eTileIds2018A04[4 * v10 + 2] = *&byte_813EA10[v7];
         }
         ++v10;
     }
@@ -754,7 +754,7 @@ void __fastcall __noreturn reqBBS_static_813EC6C(int a1, int a2, int a3)
 // 0x813ecc0
 void __noreturn reqBBS_draw_chatbox()
 {
-    copyTiles(2, 5, 1, eTileRefs2018A04, 26, &dword_8 + 2);
+    copyTiles(2, 5, 1, eTileIds2018A04, 26, &dword_8 + 2);
 }
 
 
@@ -768,7 +768,7 @@ void __noreturn reqBBS_dead_813ECD8()
 // 0x813ecf4
 void dead_813ECF4()
 {
-    copyTiles(3, 5, 1, eTileRefs2018A04, 24, &dword_8 + 2);
+    copyTiles(3, 5, 1, eTileIds2018A04, 24, &dword_8 + 2);
 }
 
 
@@ -2103,7 +2103,7 @@ void __fastcall __noreturn reqBBS_8140414(int a1, int a2, int a3)
 // 0x81404a0
 void __noreturn reqBBS_drawChatbox_dup1()
 {
-    copyTiles(2, 5, 1, eTileRefs2018A04, 26, &dword_8 + 2);
+    copyTiles(2, 5, 1, eTileIds2018A04, 26, &dword_8 + 2);
 }
 
 

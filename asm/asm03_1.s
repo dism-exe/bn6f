@@ -1316,7 +1316,7 @@ loc_80343D0:
 	// cpyOff
 	mov r2, #1
 	// tileRefs
-	ldr r3, off_803445C // =eTileRefs2017A04
+	ldr r3, off_803445C // =eTileIds2017A04
 	mov r4, #0x20
 	mov r5, #0x14
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -1325,30 +1325,30 @@ loc_80343D0:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_80343FC: .word off_8034400
-off_8034400: .word eTileRefs2017A04
+off_8034400: .word eTileIds2017A04
 	.word byte_86C22C0
 dword_8034408: .word 0x2
-	.word eTileRefs2017A04
+	.word eTileIds2017A04
 	.word byte_86C22E0
 	.word 0x2
-	.word eTileRefs2017A04
+	.word eTileIds2017A04
 	.word byte_86C2300
 	.word 0x2
-	.word eTileRefs2017A04
+	.word eTileIds2017A04
 	.word byte_86C2320
 	.word 0x2
-	.word eTileRefs2017A04
+	.word eTileIds2017A04
 	.word byte_86C2340
 	.word 0x2
-	.word eTileRefs2017A04
+	.word eTileIds2017A04
 	.word byte_86C2360
 	.word 0x2
-	.word eTileRefs2017A04
+	.word eTileIds2017A04
 	.word byte_86C2380
 	.word 0x2
 	.word 0x0
 off_8034458: .word byte_3001960
-off_803445C: .word eTileRefs2017A04
+off_803445C: .word eTileIds2017A04
 Struct8034460:
 	// seaside 1
 	.word 0x0091, 0x0, 0x0, 0x3, 0x0, 0x0, 0x0, 0x0
@@ -21636,7 +21636,7 @@ copyTileData_803FC64:
 	// cpyOff
 	mov r2, #1
 	// tileRefs
-	ldr r3, off_803FCDC // =eTileRefs2018A04
+	ldr r3, off_803FCDC // =eTileIds2018A04
 	mov r4, #0x20
 	mov r5, #0x14
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -21647,7 +21647,7 @@ copyTileData_803FC64:
 	// cpyOff
 	mov r2, #2
 	// tileRefs
-	ldr r3, off_803FCD8 // =eTileRefs2017A04
+	ldr r3, off_803FCD8 // =eTileIds2017A04
 	mov r4, #0x1e
 	mov r5, #0x14
 	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
@@ -21666,8 +21666,8 @@ initRefs803FCA4: .byte 0xD0, 0x41, 0x6C, 0x88, 0x0, 0x0, 0x0, 0x6
 	.word 0x0
 	.word unk_2018A00
 	.word 0x0
-off_803FCD8: .word eTileRefs2017A04
-off_803FCDC: .word eTileRefs2018A04
+off_803FCD8: .word eTileIds2017A04
+off_803FCDC: .word eTileIds2018A04
 off_803FCE0: .word eDecompBuffer2013A00
 byte_803FCE4: .byte 0x0, 0x2A, 0x0, 0x0, 0x0, 0x54, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end copyTileData_803FC64

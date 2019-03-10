@@ -759,7 +759,7 @@ int sub_80343B0()
     *(v0 + 3) = v1;
     *(v0 + 6) = v5;
     (loc_8000AC4)(*(v2 + 1), byte_3001960, 32);
-    copyTiles(0, 0, 1, eTileRefs2017A04, 32, dword_14);
+    copyTiles(0, 0, 1, eTileIds2017A04, 32, dword_14);
     sub_80465BC();
     return sub_80465F8();
 }
@@ -10966,7 +10966,7 @@ void __fastcall __noreturn copyData_803CC60(int a1, int a2, int a3, int a4)
     zeroFillVRAM();
     ZeroFillGFX30025c0();
     decompAndCopyData(&initRefs803CC88);
-    copyTiles(0, 0, 1, eTileRefs2017A04, 30, dword_14);
+    copyTiles(0, 0, 1, eTileIds2017A04, 30, dword_14);
 }
 
 
@@ -15052,8 +15052,8 @@ void __fastcall __noreturn copyTileData_803FC64(int a1, int a2, int a3, int a4)
     sub_80027C4();
     decompAndCopyData(&initRefs803FCA4);
     ZeroFillGFX30025c0();
-    copyTiles(0, 0, 1, eTileRefs2018A04, 32, dword_14);
-    copyTiles(0, 0, 2, eTileRefs2017A04, 30, dword_14);
+    copyTiles(0, 0, 1, eTileIds2018A04, 32, dword_14);
+    copyTiles(0, 0, 2, eTileIds2017A04, 30, dword_14);
 }
 
 

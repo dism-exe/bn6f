@@ -440,7 +440,7 @@
 // .global byte_86C9D6C
 
 	.include "data/dat38_71.inc"
-// .global TextScript86CF4AC
+// .global TextScriptFolderNames
 
 	.include "data/dat38_80.inc"
 // .global off_86DC3F8
@@ -555,7 +555,7 @@
 // .equ byte_2017204, 0x2017204
 // .equ unk_2018200, 0x2018200
 // .equ unk_2018A00, 0x2018A00
-// .equ eTileRefs2018A04, 0x2018A04
+// .equ eTileIds2018A04, 0x2018A04
 // .equ unk_2019200, 0x2019200
 // .equ unk_2019204, 0x2019204
 // .equ unk_2019400, 0x2019400
@@ -600,12 +600,12 @@
 // .equ unk_20343E0, 0x20343E0
 // .equ unk_2034458, 0x2034458
 // .equ unk_20345A8, 0x20345A8
-// .equ eTileRefs20345FC, 0x20345FC
-// .equ eTileRefs20346DC, 0x20346DC
-// .equ eTileRefs2034714, 0x2034714
-// .equ eTileRefs203474C, 0x203474C
-// .equ eTileRefs2034768, 0xeTileRefs2034768
-// .equ eTileRefs20347A0, 0x20347A0
+// .equ eTileIds20345FC, 0x20345FC
+// .equ eTileIds20346DC, 0x20346DC
+// .equ eTileIds2034714, 0x2034714
+// .equ eTileIds203474C, 0x203474C
+// .equ eTileIds2034768, 0xeTileIds2034768
+// .equ eTileIds20347A0, 0x20347A0
 // .equ dword_2034800, 0x2034800
 // .equ unk_2034814, 0x2034814
 // .equ unk_203486C, 0x203486C

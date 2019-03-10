@@ -1442,7 +1442,7 @@ void __noreturn sub_8047800()
 {
     int v0; // r5
 
-    copyTiles(*(v0 + 8) - 21, 0, 2, eTileRefs2018A04, 21, &dword_C);
+    copyTiles(*(v0 + 8) - 21, 0, 2, eTileIds2018A04, 21, &dword_C);
     copyTiles(*(v0 + 8) - 19, 1, 0, byte_202F800, 18, &dword_8 + 2);
 }
 
@@ -4125,7 +4125,7 @@ signed int __fastcall sub_804A1FC(int a1, _BYTE *a2)
     unsigned __int8 *v2; // r4
     signed int result; // r0
 
-    v2 = TextScript86CF4AC + *(TextScript86CF4AC + a1);
+    v2 = TextScriptFolderNames + *(TextScriptFolderNames + a1);
     while ( 1 )
     {
         result = *v2;
@@ -4449,18 +4449,18 @@ void __noreturn menuCopyTiles_804A7C0()
 {
     MenuControl *menu; // r5
 
-    sub_81200EC(menu->unk_2E, &unk_202A3E0, eTileRefs20345FC);
-    copyTiles(3, 4, 2, eTileRefs20345FC, 8, &dword_C + 2);
-    sub_8120390(menu->unk_2E, &unk_202A3E0, eTileRefs20346DC, byte_804A264);
-    copyTiles(1, 4, 2, eTileRefs20346DC, 2, &dword_C + 2);
-    sub_81203E4(menu->unk_2E, &unk_202A3E0, eTileRefs2034714, &dword_35C | 0xA000);
-    copyTiles(11, 4, 2, eTileRefs2034714, 2, &dword_C + 2);
-    sub_8120458(menu->unk_2E, &unk_202A3E0, eTileRefs203474C, 45590);
-    copyTiles(13, 4, 2, eTileRefs203474C, 1, &dword_C + 2);
-    sub_81204C4(menu->unk_2E, &unk_202A3E0, eTileRefs2034768, 37711);
-    copyTiles(14, 4, 2, eTileRefs2034768, 2, &dword_C + 2);
-    sub_8120618(menu->unk_2E, &unk_202A3E0, eTileRefs20347A0, byte_200 | 0xB000);
-    copyTiles(16, 4, 2, eTileRefs20347A0, 2, &dword_C + 2);
+    sub_81200EC(menu->unk_2E, &unk_202A3E0, eTileIds20345FC);
+    copyTiles(3, 4, 2, eTileIds20345FC, 8, &dword_C + 2);
+    sub_8120390(menu->unk_2E, &unk_202A3E0, eTileIds20346DC, byte_804A264);
+    copyTiles(1, 4, 2, eTileIds20346DC, 2, &dword_C + 2);
+    sub_81203E4(menu->unk_2E, &unk_202A3E0, eTileIds2034714, &dword_35C | 0xA000);
+    copyTiles(11, 4, 2, eTileIds2034714, 2, &dword_C + 2);
+    sub_8120458(menu->unk_2E, &unk_202A3E0, eTileIds203474C, 45590);
+    copyTiles(13, 4, 2, eTileIds203474C, 1, &dword_C + 2);
+    sub_81204C4(menu->unk_2E, &unk_202A3E0, eTileIds2034768, 37711);
+    copyTiles(14, 4, 2, eTileIds2034768, 2, &dword_C + 2);
+    sub_8120618(menu->unk_2E, &unk_202A3E0, eTileIds20347A0, byte_200 | 0xB000);
+    copyTiles(16, 4, 2, eTileIds20347A0, 2, &dword_C + 2);
 }
 
 

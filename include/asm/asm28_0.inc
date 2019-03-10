@@ -230,7 +230,7 @@
 // .global tileRefs86C5790
 // .global dword_86C57EC
 
-	.include "data/dat38_66.inc"
+	.include "data/dat38_65.inc"
 // .global TextScriptLottery86C67E4
 
 

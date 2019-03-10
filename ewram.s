@@ -359,7 +359,7 @@ eGameStateEnd::
 	.space 4
 unk_2001C04:: // 0x2001c04
 	.space 132
-eEventFlags:: // 0x2001c88
+ bbbbgggvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               :: // 0x2001c88
 	.space 1264
 unk_2002178:: // 0x2002178
 	.space 164
@@ -1834,7 +1834,7 @@ byte_2017204:: // 0x2017204
 	.space 2044
 byte_2017A00:: // 0x2017a00
 	.space 4
-eTileRefs2017A04:: // 0x2017a04
+eTileIds2017A04:: // 0x2017a04
 	.space 28
 byte_2017A20:: // 0x2017a20
 	.space 192
@@ -1868,7 +1868,7 @@ unk_2018800:: // 0x2018800
 	.space 512
 unk_2018A00:: // 0x2018a00
 	.space 4
-eTileRefs2018A04:: // 0x2018a04
+eTileIds2018A04:: // 0x2018a04
 	.space 508
 unk_2018C00:: // 0x2018c00
 	.space 512
@@ -2576,17 +2576,17 @@ unk_20345A8:: // 0x20345a8
 	.space 28
 unk_20345C4:: // 0x20345c4
 	.space 56
-eTileRefs20345FC:: // 0x20345fc
+eTileIds20345FC:: // 0x20345fc
 	.space 224
-eTileRefs20346DC:: // 0x20346dc
+eTileIds20346DC:: // 0x20346dc
 	.space 56
-eTileRefs2034714:: // 0x2034714
+eTileIds2034714:: // 0x2034714
 	.space 56
-eTileRefs203474C:: // 0x203474c
+eTileIds203474C:: // 0x203474c
 	.space 28
-eTileRefs2034768:: // 0x2034768
+eTileIds2034768:: // 0x2034768
 	.space 56
-eTileRefs20347A0:: // 0x20347a0
+eTileIds20347A0:: // 0x20347a0
 	.space 56
 unk_20347D8:: // 0x20347d8
 	.space 40

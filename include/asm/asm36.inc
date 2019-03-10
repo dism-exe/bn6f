@@ -407,8 +407,8 @@
 	.include "data/dat38_71.inc"
 // .global dword_86CEE84
 // .global dword_86CF1A8
-// .global TextScript86CF4AC
-// .global TextScriptNetworkPlyTmSave86CF618
+// .global TextScriptFolderNames
+// .global CompTextScriptNetworkPlyTmSave86CF618
 // .global eTextScriptNetworkSave86CF730
 
 	.include "data/dat38_74.inc"
@@ -563,12 +563,12 @@
 // .equ unk_2034570, 0x2034570
 // .equ unk_20345A8, 0x20345A8
 // .equ unk_20345C4, 0x20345C4
-// .equ eTileRefs20345FC, 0x20345FC
-// .equ eTileRefs20346DC, 0x20346DC
-// .equ eTileRefs2034714, 0x2034714
-// .equ eTileRefs203474C, 0x203474C
-// .equ eTileRefs2034768, 0xeTileRefs2034768
-// .equ eTileRefs20347A0, 0x20347A0
+// .equ eTileIds20345FC, 0x20345FC
+// .equ eTileIds20346DC, 0x20346DC
+// .equ eTileIds2034714, 0x2034714
+// .equ eTileIds203474C, 0x203474C
+// .equ eTileIds2034768, 0xeTileIds2034768
+// .equ eTileIds20347A0, 0x20347A0
 // .equ unk_20347D8, 0x20347D8
 // .equ unk_2034814, 0x2034814
 // .equ unk_203486C, 0x203486C
