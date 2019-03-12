@@ -2,7 +2,7 @@
 	.equ INC_ASM_ASM35, 0
 
 /* Public Symbols */
-	.global sub_812EAAC
+	.global CopyBackgroundTiles812EAAC
 	.global sub_812EAC4
 	.global sub_812EB78
 	.global sub_812EB88
@@ -27,8 +27,8 @@
 // .global PlaySoundEffect
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global ZeroFillGFX30025c0
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-// .global sub_80018D0
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
+// .global call_sub_3005EBA
 
 	.include "asm/asm00_1.inc"
 // .global sprite_setCoordinates

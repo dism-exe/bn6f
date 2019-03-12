@@ -572,9 +572,9 @@ int __usercall reqBBS_813E834@<R0>(reqBBS_GUI *gui@<R5>)
 // 0x813e890
 void __usercall reqBBS_813E890(reqBBS_GUI *gui@<R5>)
 {
-    copyTiles(5, 3, 2, &tileRefs_813DBE4, 23, &dword_10);
-    copyTiles(0, 0, 1, *(gui->reqBBS_textualPointers + 7), 30, dword_14);
-    sub_80018D0(0, 0, 3, 0);
+    CopyBackgroundTiles(5, 3, 2, &tileIds_813DBE4, 23, &dword_10);
+    CopyBackgroundTiles(0, 0, 1, *(gui->reqBBS_textualPointers + 7), 30, dword_14);
+    call_sub_3005EBA(0, 0, 3, 0);
 }
 
 
@@ -668,10 +668,10 @@ void __fastcall __noreturn reqBBS_static_813EA94(int a1, int a2, int a3, int a4,
     + *(*(v13 + offsetof(reqBBS_GUI, reqBBS_textualPointers)) + 12));
     if ( v16 )
     {
-        sub_80018D0(2, 3, 2, 0);
+        call_sub_3005EBA(2, 3, 2, 0);
         JUMPOUT(loc_813EAEC);
     }
-    copyTiles(2, 3, 2, off_813EB10[v15], 2, &byte_0[2]);
+    CopyBackgroundTiles(2, 3, 2, off_813EB10[v15], 2, &byte_0[2]);
     sub_813EAEE(v17, v18, v19, v20, a5, a6, a7, a8, a9, a10, a11, a12, a13);
 }
 
@@ -684,7 +684,7 @@ int __fastcall sub_813EAEE(int a1, int a2, int a3, int a4, int a5, int a6, int a
 
     if ( v14 != 7 )
         JUMPOUT(&loc_813EAA6);
-    copyTiles(19, 0, 2, *(off_813EB10 + v13), 2, &byte_0[2]);
+    CopyBackgroundTiles(19, 0, 2, *(off_813EB10 + v13), 2, &byte_0[2]);
     return a13(a5, a6, a7, a8);
 }
 
@@ -746,7 +746,7 @@ void __fastcall __noreturn reqBBS_static_813EC6C(int a1, int a2, int a3)
     v5[6] = 80;
     PlaySoundEffect(103, 80, a3);
     v3[8] = 6;
-    sub_80018D0(0, 0, 3, 0);
+    call_sub_3005EBA(0, 0, 3, 0);
     JUMPOUT(loc_813ECAA);
 }
 
@@ -754,21 +754,21 @@ void __fastcall __noreturn reqBBS_static_813EC6C(int a1, int a2, int a3)
 // 0x813ecc0
 void __noreturn reqBBS_draw_chatbox()
 {
-    copyTiles(2, 5, 1, eTileIds2018A04, 26, &dword_8 + 2);
+    CopyBackgroundTiles(2, 5, 1, eTileIds2018A04, 26, &dword_8 + 2);
 }
 
 
 // 0x813ecd8
 void __noreturn reqBBS_dead_813ECD8()
 {
-    sub_80018D0(3, 5, 1, 0);
+    call_sub_3005EBA(3, 5, 1, 0);
 }
 
 
 // 0x813ecf4
 void dead_813ECF4()
 {
-    copyTiles(3, 5, 1, eTileIds2018A04, 24, &dword_8 + 2);
+    CopyBackgroundTiles(3, 5, 1, eTileIds2018A04, 24, &dword_8 + 2);
 }
 
 
@@ -985,7 +985,7 @@ void __usercall reqBBS_813EEF4(reqBBS_GUI *gui@<R5>)
 // 0x813ef2c
 void __noreturn reqBBS_drawRequestBBS()
 {
-    copyTiles(1, 0, 2, tileRefs_813DF44, 12, &byte_0[2]);
+    CopyBackgroundTiles(1, 0, 2, tileIds_813DF44, 12, &byte_0[2]);
 }
 
 
@@ -1811,7 +1811,7 @@ int reqBBS_813FE54()
 // 0x813feb0
 void __noreturn reqBBS_813FEB0()
 {
-    copyTiles(5, 3, 2, tileRefs_813EF4C, 23, &dword_10);
+    CopyBackgroundTiles(5, 3, 2, tileIds_813EF4C, 23, &dword_10);
     JUMPOUT(loc_813FEC4);
 }
 
@@ -1878,13 +1878,13 @@ void __noreturn reqBBS_anim_814004C()
     {
         TestEventFlag(reqBBS_eRequestEntriesIDs[v2 + v4] + *(*(v0 + 40) + 12));
         if ( v5 )
-            sub_80018D0(2, 2 * v4 + 3, 2, 0);
+            call_sub_3005EBA(2, 2 * v4 + 3, 2, 0);
         else
-            copyTiles(2, 2 * v4 + 3, 2, pt_81400C8[v3], 2, &byte_0[2]);
+            CopyBackgroundTiles(2, 2 * v4 + 3, 2, pt_81400C8[v3], 2, &byte_0[2]);
         ++v4;
     }
     while ( v4 != 8 );
-    copyTiles(21, 0, 2, pt_81400C8[v3], 2, &byte_0[2]);
+    CopyBackgroundTiles(21, 0, 2, pt_81400C8[v3], 2, &byte_0[2]);
 }
 
 
@@ -1905,11 +1905,11 @@ void reqBBS_renderRequestStatus()
         {
             TestEventFlag(reqBBS_eRequestEntriesIDs[v1 + v2] + *(*(v0 + 40) + 16));
             if ( !v3 )
-                copyTiles(2, 2 * v2 + 3, 2, byte_8140244, 2, &byte_0[2]);
+                CopyBackgroundTiles(2, 2 * v2 + 3, 2, byte_8140244, 2, &byte_0[2]);
         }
         else
         {
-            copyTiles(2, 2 * v2 + 3, 2, byte_8140238, 2, &byte_0[2]);
+            CopyBackgroundTiles(2, 2 * v2 + 3, 2, byte_8140238, 2, &byte_0[2]);
         }
         ++v2;
     }
@@ -1938,7 +1938,7 @@ int reqBBS_renderRankStars()
                                                                                                                                 + 8));
         if ( !v4 )
         {
-            sub_80018D0(22, 2 * v2 + 3, 2, 0);
+            call_sub_3005EBA(22, 2 * v2 + 3, 2, 0);
             v5 = reqBBS_eRequestEntriesIDs[v1 + v2];
             result = byte_813F380[v5] + 1;
             if ( byte_813F380[v5] != -1 )
@@ -1948,7 +1948,7 @@ int reqBBS_renderRankStars()
                 {
                     v7 = result;
                     v8 = v6;
-                    copyTiles(26 - v6, 2 * v2 + 3, 2, &dword_81402C8, 1, &byte_0[2]);
+                    CopyBackgroundTiles(26 - v6, 2 * v2 + 3, 2, &dword_81402C8, 1, &byte_0[2]);
                     result = v7;
                     v6 = v8 + 1;
                 }
@@ -1978,7 +1978,7 @@ int reqBBS_81402CC()
         {
             v2 = result;
             v3 = v1;
-            copyTiles(26 - v1, 6, 1, &dword_8140308, 1, &byte_0[2]);
+            CopyBackgroundTiles(26 - v1, 6, 1, &dword_8140308, 1, &byte_0[2]);
             result = v2;
             v1 = v3 + 1;
         }
@@ -2004,7 +2004,7 @@ int reqBBS_814030C()
         {
             v2 = result;
             v3 = v1;
-            copyTiles(26 - v1, 6, 1, &dword_8140354, 1, &byte_0[2]);
+            CopyBackgroundTiles(26 - v1, 6, 1, &dword_8140354, 1, &byte_0[2]);
             result = v2;
             v1 = v3 + 1;
         }
@@ -2073,7 +2073,7 @@ void __fastcall __noreturn reqBBS_81403C0(int a1, int a2, int a3)
     v5[6] = 80;
     PlaySoundEffect(103, 80, a3);
     v3[8] = 6;
-    sub_80018D0(0, 0, 3, 0);
+    call_sub_3005EBA(0, 0, 3, 0);
     JUMPOUT(loc_81403FE);
 }
 
@@ -2095,7 +2095,7 @@ void __fastcall __noreturn reqBBS_8140414(int a1, int a2, int a3)
     v5[6] = 80;
     PlaySoundEffect(103, 80, a3);
     v3[8] = 6;
-    sub_80018D0(0, 0, 3, 0);
+    call_sub_3005EBA(0, 0, 3, 0);
     JUMPOUT(loc_8140452);
 }
 
@@ -2103,14 +2103,14 @@ void __fastcall __noreturn reqBBS_8140414(int a1, int a2, int a3)
 // 0x81404a0
 void __noreturn reqBBS_drawChatbox_dup1()
 {
-    copyTiles(2, 5, 1, eTileIds2018A04, 26, &dword_8 + 2);
+    CopyBackgroundTiles(2, 5, 1, eTileIds2018A04, 26, &dword_8 + 2);
 }
 
 
 // 0x81404b8
 void __noreturn reqBBS_drawSelectChatbox()
 {
-    copyTiles(5, 5, 1, &unk_201BA04, 20, &dword_8 + 2);
+    CopyBackgroundTiles(5, 5, 1, &unk_201BA04, 20, &dword_8 + 2);
     JUMPOUT(locret_81404CA);
 }
 
@@ -2154,7 +2154,7 @@ void reqBBS_8140588()
 {
     int v0; // r10
 
-    (loc_8000AC8)(byte_813F22C, *(v0 + oToolkit_GFX30025c0_Ptr) + 384, 128);
+    (loc_8000AC8)(byte_813F22C, *(v0 + oToolkit_iBGTileIdBlocks_Ptr) + 384, 128);
     JUMPOUT(locret_814059C);
 }
 
@@ -2164,7 +2164,7 @@ int reqBBS_81405A4()
 {
     int v0; // r10
 
-    return (loc_8000AC8)(byte_813F2AC, *(v0 + oToolkit_GFX30025c0_Ptr) + 384, 128);
+    return (loc_8000AC8)(byte_813F2AC, *(v0 + oToolkit_iBGTileIdBlocks_Ptr) + 384, 128);
 }
 
 
@@ -2178,7 +2178,7 @@ int __noreturn reqBBS_81405C0()
 // 0x81405e8
 void __noreturn reqBBS_81405E8()
 {
-    copyTiles(10, 0, 2, byte_813F32C, 8, &byte_0[2]);
+    CopyBackgroundTiles(10, 0, 2, byte_813F32C, 8, &byte_0[2]);
     JUMPOUT(locret_81405FA);
 }
 

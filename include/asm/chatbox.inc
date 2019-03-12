@@ -68,7 +68,7 @@
 // .global sub_80010EC
 // .global sub_8001154
 // .global GetRNG2 // () -> int
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
 // .global sub_8002694
 
 	.include "asm/sprite.inc"

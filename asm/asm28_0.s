@@ -583,7 +583,7 @@ byte_8099E5C: .byte 0xA0, 0xE2, 0xA2, 0xE2, 0xA4, 0xE2, 0xA6, 0xE2, 0xA8
 	.byte 0xE2, 0xAA, 0xE2, 0xAC, 0xE2, 0xA1, 0xE2, 0xA3, 0xE2
 	.byte 0xA5, 0xE2, 0xA7, 0xE2, 0xA9, 0xE2, 0xAB, 0xE2, 0xAD
 	.byte 0xE2
-tileRefs8099E78: .byte 0xA0, 0xE2, 0xA2, 0xE2, 0xA4, 0xE2, 0xA6, 0xE2, 0xA8
+tileIds8099E78: .byte 0xA0, 0xE2, 0xA2, 0xE2, 0xA4, 0xE2, 0xA6, 0xE2, 0xA8
 	.byte 0xE2, 0xAA, 0xE2, 0xA1, 0xE2, 0xA3, 0xE2, 0xA5, 0xE2
 	.byte 0xA7, 0xE2, 0xA9, 0xE2, 0xAB, 0xE2
 byte_8099E90: .byte 0x16, 0x0, 0x0, 0x5, 0x16, 0x1, 0x1, 0x5, 0x16, 0x2, 0x2, 0x5, 0xFF
@@ -1016,24 +1016,24 @@ sub_809A360:
 	mov r0, r7
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #0
-	// tileRefs
+	// tileIds
 	ldr r3, off_809A3A4 // =byte_86C54D4 
 	mov r4, #9
 	mov r5, #5
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	// j
 	add r0, r7, #1
 	// i
 	mov r1, #2
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #0
-	// tileRefs
+	// tileIds
 	ldr r3, off_809A3A8 // =byte_8099E5C
 	mov r4, #7
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	ldr r0, off_809A3AC // =TextScriptChipTrader86C580C
 	mov r1, #0x40 
 	ldr r2, off_809A3B0 // =unk_200EF40 
@@ -1611,24 +1611,24 @@ sub_809A80C:
 	mov r0, r7
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #0
-	// tileRefs
-	ldr r3, off_809A850 // =tileRefs86C5790 
+	// tileIds
+	ldr r3, off_809A850 // =tileIds86C5790
 	mov r4, #9
 	mov r5, #5
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	// j
 	add r0, r7, #2
 	// i
 	mov r1, #2
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #0
-	// tileRefs
-	ldr r3, off_809A854 // =tileRefs8099E78
+	// tileIds
+	ldr r3, off_809A854 // =tileIds8099E78
 	mov r4, #6
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	ldr r0, off_809A858 // =eTextScript2033404
 	mov r1, #6
 	ldr r2, off_809A85C // =unk_200EF40 
@@ -1640,8 +1640,8 @@ sub_809A80C:
 	bl renderTextGfx_8045F8C
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_809A850: .word tileRefs86C5790
-off_809A854: .word tileRefs8099E78
+off_809A850: .word tileIds86C5790
+off_809A854: .word tileIds8099E78
 off_809A858: .word eTextScript2033404
 off_809A85C: .word unk_200EF40
 dword_809A860: .word 0x600D400

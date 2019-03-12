@@ -2464,16 +2464,17 @@ dword_80015C8: .word 0x600E000
 dword_80015CC: .word 0x2000
 	thumb_func_end sub_80015B4
 
-	thumb_func_start copyAndFillTo_GFX30025c0_Ptr
-copyAndFillTo_GFX30025c0_Ptr:
+	thumb_func_start copyToVRAMAndClear_iBGTileIdBlocks_Ptr
+copyToVRAMAndClear_iBGTileIdBlocks_Ptr:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_GFX30025c0_Ptr]
+	ldr r0, [r0,#oToolkit_iBGTileIdBlocks_Ptr]
+	// copies
 	ldr r1, dword_80015EC // =0x600e000
 	ldr r2, dword_80015F0 // =0x2000
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_GFX30025c0_Ptr]
+	ldr r0, [r0,#oToolkit_iBGTileIdBlocks_Ptr]
 	ldr r1, dword_80015F4 // =0x800
 	ldr r2, fill // =0x2ff02ff
 	bl FillByEightWords
@@ -2482,7 +2483,7 @@ dword_80015EC: .word 0x600E000
 dword_80015F0: .word 0x2000
 dword_80015F4: .word 0x800
 fill: .word 0x2FF02FF
-	thumb_func_end copyAndFillTo_GFX30025c0_Ptr
+	thumb_func_end copyToVRAMAndClear_iBGTileIdBlocks_Ptr
 
 	thumb_func_start sub_80015FC
 sub_80015FC:
@@ -2703,7 +2704,7 @@ zeroFill_e200F3A0:
 ZeroFillGFX30025c0:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_GFX30025c0_Ptr]
+	ldr r0, [r0,#oToolkit_iBGTileIdBlocks_Ptr]
 	ldr r1, dword_800184C // =0x2000
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	pop {pc}
@@ -2738,7 +2739,7 @@ sub_800187C:
 	add r0, r0, r1
 	add r0, r0, r2
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_GFX30025c0_Ptr]
+	ldr r1, [r1,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r0
 	strh r3, [r1]
 	mov pc, lr
@@ -2748,7 +2749,7 @@ sub_800187C:
 sub_8001890:
 	push {r4-r7,lr}
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_GFX30025c0_Ptr]
+	ldr r6, [r6,#oToolkit_iBGTileIdBlocks_Ptr]
 	lsl r2, r2, #0xb
 	add r6, r6, r2
 	lsl r0, r0, #1
@@ -2774,19 +2775,20 @@ loc_80018A6:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8001890
 
-// (int j, int i, int cpyOff, u16 *tileRefs) -> void
-	thumb_func_start copyTiles
-copyTiles:
+	thumb_func_start CopyBackgroundTiles
+// (int j, int i, int tileBlock32x32, u16 *tileIds, int j_size@R4, int i_size@R5) -> void
+// this is copying Tiles for BG0 and BG2
+CopyBackgroundTiles:
 	push {r6,r7,lr}
-	ldr r7, off_80018CC // =iCopyTiles+1
+	ldr r7, off_80018CC // =iCopyBackgroundTiles+1
 	mov lr, pc
 	bx r7
 	pop {r6,r7,pc}
-off_80018CC: .word iCopyTiles+1
-	thumb_func_end copyTiles
+off_80018CC: .word iCopyBackgroundTiles+1
+	thumb_func_end CopyBackgroundTiles
 
-	thumb_func_start sub_80018D0
-sub_80018D0:
+	thumb_func_start call_sub_3005EBA
+call_sub_3005EBA:
 	push {r6,r7,lr}
 	ldr r7, off_80018DC // =sub_3005EBA+1
 	mov lr, pc
@@ -2794,13 +2796,13 @@ sub_80018D0:
 	pop {r6,r7,pc}
 	.balign 4, 0x00
 off_80018DC: .word sub_3005EBA+1
-	thumb_func_end sub_80018D0
+	thumb_func_end call_sub_3005EBA
 
 	thumb_func_start sub_80018E0
 sub_80018E0:
 	push {r6,r7,lr}
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_GFX30025c0_Ptr]
+	ldr r6, [r6,#oToolkit_iBGTileIdBlocks_Ptr]
 	lsl r2, r2, #0xb
 	add r6, r6, r2
 	lsl r1, r1, #6
@@ -2821,7 +2823,7 @@ loc_80018F2:
 	pop {r6,r7,pc}
 	push {r6,r7,lr}
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_GFX30025c0_Ptr]
+	ldr r6, [r6,#oToolkit_iBGTileIdBlocks_Ptr]
 	lsl r2, r2, #0xb
 	add r6, r6, r2
 	lsl r0, r0, #1
@@ -4534,9 +4536,9 @@ loc_80024FE:
 	ldrb r3, [r3,#0x1] // (byte_80025C9 - 0x80025c8)
 	strh r1, [r2,r3]
 	mov r2, r8
-	// cpyOff
+	// tileBlock32x32
 	ldrb r2, [r2,#0x2] // (byte_80025CA - 0x80025c8)
-	// tileRefs
+	// tileIds
 	mov r3, r9
 	lsr r4, r4, #3
 	// j
@@ -4544,7 +4546,7 @@ loc_80024FE:
 	// i
 	mov r1, #0
 	lsr r5, r5, #3
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r0,r1}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_Unk200f3a0_Ptr]

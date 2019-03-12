@@ -79,8 +79,8 @@
 // .global zeroFillVRAM
 // .global ZeroFill_byte_3001960
 // .global ZeroFillGFX30025c0
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-// .global sub_80018D0
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
+// .global call_sub_3005EBA
 
 	.include "asm/asm00_1.inc"
 // .global sub_8002FA6
@@ -122,9 +122,9 @@
 
 	.include "asm/asm37_0.inc"
 // .global byte_813DBDC
-// .global tileRefs_813DBE4
+// .global tileIds_813DBE4
 // .global byte_813DEC4
-// .global tileRefs_813DF44
+// .global tileIds_813DF44
 // .global off_813DF74
 // .global off_813E04C
 

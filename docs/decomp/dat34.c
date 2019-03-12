@@ -1505,7 +1505,7 @@ void __noreturn sub_812E9AC()
     ZeroFillByEightWords(v1, 128);
     sub_812EAC4();
     sub_812EA44();
-    sub_812EAAC();
+    CopyBackgroundTiles812EAAC();
 }
 
 

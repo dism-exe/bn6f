@@ -336,7 +336,7 @@
 	.global sub_801E724
 	.global sub_801E754
 	.global sub_801E780
-	.global loc_801E792
+	.global sub_801E792
 	.global sub_801E914
 	.global sub_801EB18
 	.global sub_801EC44
@@ -371,8 +371,8 @@
 // .global GetPositiveSignedRNG2
 // .global GetPositiveSignedRNG1
 // .global sub_800187C
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-// .global sub_80018D0
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
+// .global call_sub_3005EBA
 // .global sub_80018E0
 
 	.include "asm/sprite.inc"

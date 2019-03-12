@@ -25,7 +25,7 @@ void __noreturn main_()
         copyPalletesToIWRAM_8001808();
         copyPalletesToIWRAM_8002650();
         sprite_resetObjVars_800289C(v1, v2, v3, v4);
-        copyAndFillTo_GFX30025c0_Ptr();
+        copyToVRAMAndClear_iBGTileIdBlocks_Ptr();
         main_static_80003E4();
         ++*tk->currFrame;
         sub_8000E10();

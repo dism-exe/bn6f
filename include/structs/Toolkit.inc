@@ -12,7 +12,7 @@
         ptr \label, Unk200f3a0_Ptr // loc=0x1c
         ptr \label, Unk2009740_Ptr // loc=0x20
         ptr \label, CurFramePtr // loc=0x24
-        ptr \label, GFX30025c0_Ptr // loc=0x28
+        ptr \label, iBGTileIdBlocks_Ptr // loc=0x28
         ptr \label, ChatboxPtr // loc=0x2c
         ptr \label, Unk20384f0_Ptr // loc=0x30
         ptr \label, SubmenuPtr // loc=0x34

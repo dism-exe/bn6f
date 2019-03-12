@@ -360,7 +360,7 @@ loc_803FFD0:
 	bl chatbox_maskFlags_3e // (int mask) -> void
 
 	bne loc_803FFE2
-	bl chatbox_copyTiles_8040344
+	bl chatbox_CopyBackgroundTiles_8040344
 loc_803FFE2:
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -475,7 +475,7 @@ loc_80400B8:
 	ldr r0, Flags8040130 // =FLAGS_3E_HIDE_CHATBOX
 	bl chatbox_maskFlags_3e // (int mask) -> void
 	bne loc_80400E2
-	bl chatbox_copyTiles_8040344
+	bl chatbox_CopyBackgroundTiles_8040344
 loc_80400E2:
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -752,33 +752,34 @@ dword_8040340: .word 0x201000
 	thumb_func_end chatbox_804021C
 
 	thumb_local_start
-chatbox_copyTiles_8040344:
+// () -> void
+chatbox_CopyBackgroundTiles_8040344:
 	push {lr}
-	ldr r3, off_804036C // =spritePtrArr8045CEC
-	ldr r4, dword_8040370 // =0x1d2
+	ldr r3, =spritePtrArr8045CEC
+	ldr r4, =0x1d2
 	ldrb r4, [r5,r4]
 	lsl r4, r4, #5
-	ldrb r1, [r5,#0x10] // ChatBoxPropreties.chatboxOpenState
+	ldrb r1, [r5,#oChatbox_OpenState_10]
 	lsl r1, r1, #2
 	add r4, r4, r1
-	// tileRefs
+	// tileIds
 	ldr r3, [r3,r4]
 	push {r5}
 	// j
-	ldrb r0, [r5,#0x1c] // ChatBoxPropreties.unk_1C
+	ldrb r0, [r5,#oChatbox_CurTileXBlockPos]
 	// i
-	ldrb r1, [r5,#0x1d] // ChatBoxPropreties.unk_1D
-	// cpyOff
+	ldrb r1, [r5,#oChatbox_CurTileYBlockPos]
+	// tileBlock32x32
 	mov r2, #0
-	ldrb r4, [r5,#0x1e] // ChatBoxPropreties.unk_1E
-	ldrb r5, [r5,#0x1f] // ChatBoxPropreties.unk_1F
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	// dimensions
+	ldrb r4, [r5,#oChatbox_CurTileWidth16]
+	ldrb r5, [r5,#oChatbox_CurTileHeight16]
+	bl CopyBackgroundTiles
 	pop {r5}
 	pop {pc}
 	.balign 4, 0x00
-off_804036C: .word spritePtrArr8045CEC
-dword_8040370: .word 0x1D2
-	thumb_func_end chatbox_copyTiles_8040344
+    .pool
+	thumb_func_end chatbox_CopyBackgroundTiles_8040344
 
 // (u8 scriptOffIdx) -> void
 	thumb_func_start chatbox_runTrainScript
@@ -847,11 +848,11 @@ chatbox_runScript:
 	mov r2, #8
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	mov r1, #0xc
-	strb r1, [r5,#0x1d] // ChatBoxPropreties.unk_1D
+	strb r1, [r5,#oChatbox_CurTileYBlockPos]
 	mov r2, #0x1e
-	strb r2, [r5,#0x1e] // ChatBoxPropreties.unk_1E
+	strb r2, [r5,#oChatbox_CurTileWidth16]
 	mov r3, #8
-	strb r3, [r5,#0x1f] // ChatBoxPropreties.unk_1F
+	strb r3, [r5,#oChatbox_CurTileHeight16]
 	mov r0, #0xe2
 	strb r0, [r5,#0x1a] // ChatBoxPropreties.csrCoord
 	mov r1, #0x8d
@@ -986,11 +987,11 @@ chatbox_reqBBS_80404C0:
 	mov r2, #8
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
 	mov r1, #0xc
-	strb r1, [r5,#0x1d] // ChatBoxPropreties.unk_1D
+	strb r1, [r5,#oChatbox_CurTileYBlockPos]
 	mov r2, #0x1e
-	strb r2, [r5,#0x1e] // ChatBoxPropreties.unk_1E
+	strb r2, [r5,#oChatbox_CurTileWidth16]
 	mov r3, #8
-	strb r3, [r5,#0x1f] // ChatBoxPropreties.unk_1F
+	strb r3, [r5,#oChatbox_CurTileHeight16]
 	mov r0, #0xe2
 	strb r0, [r5,#0x1a] // ChatBoxPropreties.csrCoord
 	mov r1, #0x8d
@@ -1742,7 +1743,7 @@ chatbox_8040B8C:
 	bl chatbox_maskFlags_3e // (int mask) -> void
 
 	bne loc_8040BA4
-	ldrb r0, [r5,#oChatbox_ChatboxOpenState_10]
+	ldrb r0, [r5,#oChatbox_OpenState_10]
 	cmp r0, #3
 	bne locret_8040C24
 loc_8040BA4:

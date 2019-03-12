@@ -6471,7 +6471,7 @@ ToolkitPointers: .word i_joGameSubsysSel
 	.word unk_200F3A0
 	.word unk_2009740
 	.word iCurrFrame
-	.word unk_30025C0
+	.word iBGTileIdBlocks
 	.word eChatbox
 	.word unk_20384F0
 	.word sSubmenu
@@ -7386,7 +7386,7 @@ loc_8007236:
 	mov r1, #0x10
 	bl ZeroFillByByte // (void *mem, int size) -> void
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_GFX30025c0_Ptr]
+	ldr r0, [r0,#oToolkit_iBGTileIdBlocks_Ptr]
 	mov r1, #8
 	lsl r1, r1, #8
 	add r0, r0, r1
@@ -9097,7 +9097,7 @@ sub_8008064:
 	strh r0, [r5,#0xa]
 	mov r0, #0x10
 	mov r1, #0
-	b loc_80080AE
+	b sub_80080AE
 loc_8008096:
 	bl sub_802D246 // () -> int
 	mov r1, #8
@@ -9105,14 +9105,14 @@ loc_8008096:
 	bne loc_80080A6
 	mov r0, #0
 	mov r1, #0
-	b loc_80080AE
+	b sub_80080AE
 loc_80080A6:
 	mov r0, #0xc
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_BattleStatePtr]
 	ldrb r1, [r1,#7]
-loc_80080AE:
-	bl loc_801E792
+sub_80080AE:
+	bl sub_801E792
 loc_80080B2:
 	bl sub_801E754
 	cmp r0, #0
@@ -9297,7 +9297,7 @@ loc_8008222:
 	mov r6, #0x14
 loc_800822C:
 	mov r0, r6
-	bl loc_801E792
+	bl sub_801E792
 loc_8008232:
 	ldrh r0, [r5,#8]
 	sub r0, #1
@@ -9360,7 +9360,7 @@ loc_800829A:
 	bne loc_80082AC
 	mov r0, #0x18
 loc_80082AC:
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_80082B4:
@@ -9400,7 +9400,7 @@ sub_80082DC:
 	mov r0, #4
 	strb r0, [r5,#3]
 	mov r0, #0x1c
-	bl loc_801E792
+	bl sub_801E792
 loc_80082FE:
 	ldrh r0, [r5,#8]
 	sub r0, #1
@@ -9702,7 +9702,7 @@ sub_8008528:
 	strb r0, [r5,#3]
 	mov r0, #0
 	mov r1, #0
-	bl loc_801E792
+	bl sub_801E792
 loc_8008550:
 	bl sub_801E754
 	cmp r0, #0
@@ -9870,7 +9870,7 @@ sub_8008688:
 	push {r4,r6,lr}
 	ldrb r0, [r5,#3]
 	tst r0, r0
-	bne loc_80086DC
+	bne .loc_80086DC
 	bl sub_800A84E
 	mov r6, r0
 	ldr r0, dword_800893C // =0x824c43
@@ -9890,10 +9890,10 @@ sub_8008688:
 	mov r4, #0x41
 	mov r1, #2
 	tst r0, r1
-	bne loc_80086C8
+	bne .loc_80086C8
 	mov r2, #SONG_WINNER_1
 	mov r4, #0x66
-loc_80086C8:
+.loc_80086C8:
 	cmp r6, #1
 	bne .playSong
 	mov r2, #SONG_ACDC_TOWN
@@ -9902,21 +9902,21 @@ loc_80086C8:
 	bl PlaySong
 	strh r4, [r5,#8]
 	mov r0, #0x14
-	bl loc_801E792
-loc_80086DC:
+	bl sub_801E792
+.loc_80086DC:
 	ldrh r0, [r5,#8]
 	sub r0, #1
 	strh r0, [r5,#8]
 	bl sub_801E754
 	cmp r0, #0
-	bne locret_80086F6
+	bne .ret
 	mov r0, #8
 	ldrsh r0, [r5,r0]
 	tst r0, r0
-	bgt locret_80086F6
+	bgt .ret
 	mov r0, #0xc
 	strh r0, [r5,#2]
-locret_80086F6:
+.ret:
 	pop {r4,r6,pc}
 	thumb_func_end sub_8008688
 
@@ -9948,7 +9948,7 @@ sub_8008716:
 	tst r0, r0
 	bne loc_800872C
 	mov r0, #0x58
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #0
 	strh r0, [r5,#8]
 	mov r0, #4
@@ -10023,7 +10023,7 @@ loc_80087A2:
 loc_80087A4:
 	strh r4, [r5,#8]
 	mov r0, #0x18
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_80087B0:
@@ -10063,7 +10063,7 @@ sub_80087D8:
 	mov r0, #4
 	strb r0, [r5,#3]
 	mov r0, #0x1c
-	bl loc_801E792
+	bl sub_801E792
 loc_80087FA:
 	ldrh r0, [r5,#8]
 	sub r0, #1
@@ -10130,7 +10130,7 @@ sub_8008864:
 	ldr r0, dword_800893C // =0x824c43
 	bl sub_801BED6
 	mov r0, #0x54
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #0
 	strh r0, [r5,#8]
 	mov r0, #4
@@ -10173,7 +10173,7 @@ sub_80088B2:
 	tst r0, r0
 	bne loc_80088C8
 	mov r0, #0x1c
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #0
 	strh r0, [r5,#8]
 	mov r0, #4
@@ -10296,7 +10296,7 @@ sub_800898C:
 	bl sub_801DFA2
 	mov r0, #0
 	mov r1, #0
-	bl loc_801E792
+	bl sub_801E792
 loc_80089BE:
 	bl sub_801E754
 	cmp r0, #0
@@ -10435,7 +10435,7 @@ loc_8008AE6:
 	bl PlaySong
 	strh r4, [r5,#8]
 	mov r0, #0x14
-	bl loc_801E792
+	bl sub_801E792
 loc_8008AF4:
 	ldrh r0, [r5,#8]
 	sub r0, #1
@@ -10481,7 +10481,7 @@ sub_8008B2E:
 	tst r0, r0
 	bne loc_8008B44
 	mov r0, #0x58
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #0
 	strh r0, [r5,#8]
 	mov r0, #4
@@ -10556,7 +10556,7 @@ loc_8008BBA:
 loc_8008BBC:
 	strh r4, [r5,#8]
 	mov r0, #0x18
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_8008BC8:
@@ -10596,7 +10596,7 @@ sub_8008BF0:
 	mov r0, #4
 	strb r0, [r5,#3]
 	mov r0, #0x1c
-	bl loc_801E792
+	bl sub_801E792
 loc_8008C12:
 	ldrh r0, [r5,#8]
 	sub r0, #1
@@ -10663,7 +10663,7 @@ sub_8008C7C:
 	ldr r0, dword_8008D54 // =0x4c43
 	bl sub_801BED6
 	mov r0, #0x54
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #0
 	strh r0, [r5,#8]
 	mov r0, #4
@@ -10706,7 +10706,7 @@ sub_8008CCA:
 	tst r0, r0
 	bne loc_8008CE0
 	mov r0, #0x1c
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #0
 	strh r0, [r5,#8]
 	mov r0, #4
@@ -10828,7 +10828,7 @@ sub_8008D9C:
 	bl sub_801DFA2
 	mov r0, #0
 	mov r1, #0
-	bl loc_801E792
+	bl sub_801E792
 loc_8008DCE:
 	bl sub_801E754
 	cmp r0, #0
@@ -10964,7 +10964,7 @@ loc_8008EE6:
 	bl PlaySong
 	strh r4, [r5,#8]
 	mov r0, #0x14
-	bl loc_801E792
+	bl sub_801E792
 loc_8008EF4:
 	ldrh r0, [r5,#8]
 	sub r0, #1
@@ -11010,7 +11010,7 @@ sub_8008F2E:
 	tst r0, r0
 	bne loc_8008F44
 	mov r0, #0x58
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #0
 	strh r0, [r5,#8]
 	mov r0, #4
@@ -11085,7 +11085,7 @@ loc_8008FBA:
 loc_8008FBC:
 	strh r4, [r5,#8]
 	mov r0, #0x18
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_8008FC8:
@@ -11125,7 +11125,7 @@ sub_8008FF0:
 	mov r0, #4
 	strb r0, [r5,#3]
 	mov r0, #0x1c
-	bl loc_801E792
+	bl sub_801E792
 loc_8009012:
 	ldrh r0, [r5,#8]
 	sub r0, #1
@@ -11192,7 +11192,7 @@ sub_800907C:
 	ldr r0, dword_8009150 // =0x4c43
 	bl sub_801BED6
 	mov r0, #0x54
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #0
 	strh r0, [r5,#8]
 	mov r0, #4
@@ -11235,7 +11235,7 @@ sub_80090CA:
 	tst r0, r0
 	bne loc_80090E0
 	mov r0, #0x1c
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #0
 	strh r0, [r5,#8]
 	mov r0, #4
@@ -11515,7 +11515,7 @@ sub_80092F0:
 	bne loc_8009306
 	mov r0, #0
 	ldrb r1, [r5,#0x1a]
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_8009312
@@ -12123,7 +12123,7 @@ sub_8009784:
 	bne loc_800979A
 	mov r0, #0
 	ldrb r1, [r5,#0x1a]
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_80097A6
@@ -12561,7 +12561,7 @@ sub_8009AD8:
 	bne loc_8009AEE
 	mov r0, #0
 	ldrb r1, [r5,#0x1a]
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_8009AFA
@@ -12952,7 +12952,7 @@ sub_8009DC8:
 	bne loc_8009DDE
 	mov r0, #0
 	ldrb r1, [r5,#0x1a]
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_8009DEA

@@ -58,8 +58,8 @@
 // .global zeroFillVRAM
 // .global ZeroFill_byte_3001960
 // .global ZeroFillGFX30025c0
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-// .global sub_80018D0
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
+// .global call_sub_3005EBA
 // .global zeroFill_80024A2
 
 	.include "asm/asm00_1.inc"

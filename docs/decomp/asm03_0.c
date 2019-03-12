@@ -662,7 +662,7 @@ int sub_8026BF4()
     {
         v4 = *(v0 + 68) + 1;
         *(v0 + 68) = v4;
-        copyTiles(v4 - 1, 0, 3, byte_8026C88, 1, dword_14);
+        CopyBackgroundTiles(v4 - 1, 0, 3, byte_8026C88, 1, dword_14);
         --v3;
     }
     while ( v3 );
@@ -747,7 +747,7 @@ int sub_8026D06()
             *(v0 + 2) = 2;
             *(v2 + 24) = 0;
             sub_801E71C(120);
-            copyTiles(0, 0, 3, &unk_2035000, 15, dword_14);
+            CopyBackgroundTiles(0, 0, 3, &unk_2035000, 15, dword_14);
             sub_8029C08();
             PlaySoundEffect(128, v5, v6);
             result = *(v1[6] + 7);
@@ -2062,7 +2062,7 @@ void sub_80279FC()
         v1 += 6;
     }
     while ( *v1 != 255 );
-    copyTiles(0, 0, 3, &unk_2035000, 15, dword_14);
+    CopyBackgroundTiles(0, 0, 3, &unk_2035000, 15, dword_14);
 }
 
 
@@ -2920,7 +2920,7 @@ int sub_8028340()
 void sub_80283B0()
 {
     sub_80283C8();
-    copyTiles(0, 13, 3, &unk_2035186, 15, dword_4 + 2);
+    CopyBackgroundTiles(0, 13, 3, &unk_2035186, 15, dword_4 + 2);
 }
 
 
@@ -5574,7 +5574,7 @@ void __fastcall sub_8029CD4(int a1, int a2, int a3)
     }
     while ( v5 != 16 );
     if ( !a3 )
-        copyTiles(0, 3, 3, &unk_203505A, 15, &dword_8 + 2);
+        CopyBackgroundTiles(0, 3, 3, &unk_203505A, 15, &dword_8 + 2);
 }
 
 
@@ -5587,7 +5587,7 @@ void __fastcall sub_8029D34(int a1)
     {
         if ( (*(v1 + 64) & 0x1F) >= 28 )
             sub_8029D80();
-        copyTiles(15, 4, 3, byte_8029D64, 7, 2);
+        CopyBackgroundTiles(15, 4, 3, byte_8029D64, 7, 2);
     }
 }
 
@@ -5595,7 +5595,7 @@ void __fastcall sub_8029D34(int a1)
 // 0x8029d80
 void __noreturn sub_8029D80()
 {
-    sub_80018D0(15, 4, 3, 0);
+    call_sub_3005EBA(15, 4, 3, 0);
 }
 
 
@@ -5610,7 +5610,7 @@ void __fastcall sub_8029D94(int a1, int a2, signed int a3)
     if ( a3 >= 2 )
         v4 = 5;
     (loc_8000AC8)(dword_86E7DCC + (v4 + a2) * &dword_240, &dword_240 * v3 + 100706080, &dword_240);
-    copyTiles(1, 2 * v3 + 1, 3, &byte_8029DF8[36 * v3], 9, &byte_0[2]);
+    CopyBackgroundTiles(1, 2 * v3 + 1, 3, &byte_8029DF8[36 * v3], 9, &byte_0[2]);
 }
 
 
@@ -7046,7 +7046,7 @@ int sub_802AFD4()
     {
         v4 = *(v0 + 60) + 1;
         *(v0 + 60) = v4;
-        copyTiles(v4 - 1, 0, 3, byte_802B024, 1, dword_14);
+        CopyBackgroundTiles(v4 - 1, 0, 3, byte_802B024, 1, dword_14);
         --v3;
     }
     while ( v3 );
@@ -7541,7 +7541,7 @@ int sub_802B7A0()
             v2 = 36;
             if ( !*(v0 + 7) )
                 v2 = 52;
-            (loc_801E792)(v2);
+            (sub_801E792)(v2);
             *(v0 + 1) = 4;
             *(v0 + 2) = 0;
             result = 0;
@@ -7805,7 +7805,7 @@ void __fastcall sub_802BA24(int a1, int a2, int a3, u16 *a4)
     int v5; // r5
 
     if ( byte_2036667 )
-        copyTiles(a1, a2, a3, a4, v4, v5);
+        CopyBackgroundTiles(a1, a2, a3, a4, v4, v5);
 }
 
 
@@ -7813,7 +7813,7 @@ void __fastcall sub_802BA24(int a1, int a2, int a3, u16 *a4)
 void __fastcall sub_802BA34(int a1, int a2, int a3, __int16 a4)
 {
     if ( byte_2036667 )
-        sub_80018D0(a1, a2, a3, a4);
+        call_sub_3005EBA(a1, a2, a3, a4);
 }
 
 
@@ -7824,7 +7824,7 @@ int sub_802BD60()
     dword_20364D8 = sub_802C8EA();
     HIBYTE(dword_20364C4) = BYTE2(dword_20364C4);
     (*(&off_802BDA0 + dword_20364C0))();
-    copyTiles(SBYTE2(dword_20364C4), 2, 3, &unk_2034B30, 24, &dword_10 + 2);
+    CopyBackgroundTiles(SBYTE2(dword_20364C4), 2, 3, &unk_2034B30, 24, &dword_10 + 2);
     sub_802C460();
     return BYTE1(dword_20364C4);
 }
@@ -7870,7 +7870,7 @@ signed int __noreturn sub_802BE0C()
     signed int result; // r0
     int v2; // [sp+0h] [bp-10h]
 
-    sub_80018D0(0, 0, 3, 0);
+    call_sub_3005EBA(0, 0, 3, 0);
     *(*(v0 + oToolkit_RenderInfoPtr) + 24) = 0;
     sub_801E0A0(0, 0);
     result = 4;
@@ -8308,7 +8308,7 @@ int sub_802C2D0()
 
     if ( *(v0 + 2) == 1 )
     {
-        sub_80018D0(29, 2, 3, 0);
+        call_sub_3005EBA(29, 2, 3, 0);
         result = chatbox_check_eFlags2009F38(128);
         if ( !result )
         {
@@ -8424,7 +8424,7 @@ void sub_802C460()
             v3 = *(v0 + 7);
         v4 = sub_802C490(v3);
         if ( v6 )
-            sub_80018D0(v4, v5, 3, 0);
+            call_sub_3005EBA(v4, v5, 3, 0);
     }
 }
 
@@ -9076,7 +9076,7 @@ int sub_802CBCC()
         v3 = *(v0 + 8);
         v2 = *(v0 + 10);
     }
-    (loc_801E792)(40, v2, v3);
+    (sub_801E792)(40, v2, v3);
     *(v0 + 1) = 4;
     result = 0;
     *(v0 + 2) = 0;
@@ -13444,7 +13444,7 @@ void __fastcall startScreen_initGfx_802FCC0(int a1, int a2, int a3, int a4)
 // 0x802fd3c
 void __noreturn sub_802FD3C()
 {
-    copyTiles(0, 0, 1, byte_87F8EB0, 32, dword_14);
+    CopyBackgroundTiles(0, 0, 1, byte_87F8EB0, 32, dword_14);
 }
 
 
@@ -14249,7 +14249,7 @@ void __fastcall sub_80304E8(int a1)
         SWI_LZ77UnCompReadNormalWrite8bit(v4 + v4[1], &unk_2034A00);
         CopyByEightWords(&unk_2034A00, *(v2 + 4), 4 * *v4);
         SWI_LZ77UnCompReadNormalWrite8bit((*(v2 + 8) + 12), &unk_2034A00);
-        CopyByEightWords(&unk_2034A00, *(v2 + 12) + *(v1 + oToolkit_GFX30025c0_Ptr), 2 * **(v2 + 8) * *(*(v2 + 8) + 1));
+        CopyByEightWords(&unk_2034A00, *(v2 + 12) + *(v1 + oToolkit_iBGTileIdBlocks_Ptr), 2 * **(v2 + 8) * *(*(v2 + 8) + 1));
     }
 }
 
@@ -14266,7 +14266,7 @@ int __fastcall sub_8030540(_DWORD *a1)
     if ( v3 )
         (loc_8000AC8)(v3 + 4, v2[5], v2[6]);
     SWI_LZ77UnCompReadNormalWrite8bit((v2[2] + 12), &unk_2034A00);
-    return (loc_8000AC8)(&unk_2034A00, v2[3] + *(v1 + oToolkit_GFX30025c0_Ptr), 2 * *v2[2] * *(v2[2] + 1));
+    return (loc_8000AC8)(&unk_2034A00, v2[3] + *(v1 + oToolkit_iBGTileIdBlocks_Ptr), 2 * *v2[2] * *(v2[2] + 1));
 }
 
 
@@ -14370,7 +14370,7 @@ void __fastcall sub_8030628(int a1, int a2, int a3, int a4)
 
     v6 = 1;
     do
-        *(*(v5 + oToolkit_GFX30025c0_Ptr) + (v6++ << 11) + 2 * a4 + (v4 << 6)) = a1;
+        *(*(v5 + oToolkit_iBGTileIdBlocks_Ptr) + (v6++ << 11) + 2 * a4 + (v4 << 6)) = a1;
     while ( v6 <= 2 );
 }
 
@@ -14381,7 +14381,7 @@ __int64 __fastcall sub_8030646(__int64 result, int a2, int a3)
     int v3; // r4
     int v4; // r10
 
-    *(*(v4 + oToolkit_GFX30025c0_Ptr) + 4096 + 2 * a3 + (v3 << 6)) = WORD2(result);
+    *(*(v4 + oToolkit_iBGTileIdBlocks_Ptr) + 4096 + 2 * a3 + (v3 << 6)) = WORD2(result);
     return result;
 }
 
@@ -14392,7 +14392,7 @@ __int64 __fastcall sub_803065A(__int64 result, int a2, int a3)
     int v3; // r4
     int v4; // r10
 
-    *(*(v4 + oToolkit_GFX30025c0_Ptr) + 2048 + 2 * a3 + (v3 << 6)) = WORD2(result);
+    *(*(v4 + oToolkit_iBGTileIdBlocks_Ptr) + 2048 + 2 * a3 + (v3 << 6)) = WORD2(result);
     return result;
 }
 
@@ -14656,7 +14656,7 @@ void __fastcall sub_8030892(int a1, int a2, unsigned int a3, unsigned int a4)
         v10 = __OFADD__(v9, v13 >> 1);
         v11 = v9 + (v13 >> 1);
         if ( (v11 < 0) ^ v10 || v11 >= v13 )
-            sub_80018D0(0, (v5 + v8) & 0x1F, v7, 0);
+            call_sub_3005EBA(0, (v5 + v8) & 0x1F, v7, 0);
         else
             sub_80018E0(v4 & 0x1F, (v5 + v8) & 0x1F, v7, (2 * (v4 - 15 + (v12 >> 1)) + 2 * v12 * v11 + v6));
         ++v8;

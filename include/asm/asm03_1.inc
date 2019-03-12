@@ -246,8 +246,8 @@
 // .global ZeroFillGFX30025c0
 // .global copyMemory_8001850
 // .global sub_8001890
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-// .global sub_80018D0
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
+// .global call_sub_3005EBA
 // .global sub_80018E0
 // .global sub_8001930
 // .global sub_8001974

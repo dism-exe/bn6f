@@ -1270,7 +1270,7 @@
 // .equ off_2010908, 0x2010908
 // .equ off_2010A08, 0x2010A08
 // .equ off_2010B08, 0x2010B08
-// .equ unk_202070C, 0x202070C
+// .equ 0x202070C, 0x202070C
 // .equ byte_2030204, 0x2030204
 // .equ byte_2030405, 0x2030405
 // .equ byte_2036740, 0x2036740
@@ -1287,7 +1287,7 @@
 // .equ byte_203CFC4, 0x203CFC4
 // .equ iPallete3001750, 0x3001750
 // .equ iPallete3001B60, 0x3001B60
-// .equ byte_3003D0C, 0x3003D0C
+// .equ 0x3003D0C, 0x3003D0C
 	.equ LCDControl, 0x4000000
 	.equ BG2Rotation_ScalingParameterA_dx_, 0x4000020
 

@@ -1810,7 +1810,7 @@ void __cdecl sub_80015B4()
 
 
 // 0x80015d0
-void copyAndFillTo_GFX30025c0_Ptr()
+void copyToVRAMAndClear_iBGTileIdBlocks_Ptr()
 {
     Toolkit *tk; // r10
 
@@ -1977,7 +1977,7 @@ void __cdecl ZeroFillGFX30025c0()
 {
     int v0; // r10
 
-    ZeroFillByEightWords(*(v0 + oToolkit_GFX30025c0_Ptr), 0x2000);
+    ZeroFillByEightWords(*(v0 + oToolkit_iBGTileIdBlocks_Ptr), 0x2000);
 }
 
 
@@ -1996,7 +1996,7 @@ int __fastcall sub_800187C(int a1, int a2, int a3, __int16 a4)
     int result; // r0
 
     result = 2 * a1 + (a2 << 6) + (a3 << 11);
-    *(*(v4 + oToolkit_GFX30025c0_Ptr) + result) = a4;
+    *(*(v4 + oToolkit_iBGTileIdBlocks_Ptr) + result) = a4;
     return result;
 }
 
@@ -2013,7 +2013,7 @@ int __fastcall sub_8001890(int a1, int a2, int a3, _WORD *a4)
     _WORD *v10; // r1
 
     result = 2 * a1;
-    v8 = (*(v6 + oToolkit_GFX30025c0_Ptr) + (a3 << 11) + result + (a2 << 6));
+    v8 = (*(v6 + oToolkit_iBGTileIdBlocks_Ptr) + (a3 << 11) + result + (a2 << 6));
     v9 = 0;
     v10 = v8;
     do
@@ -2037,15 +2037,15 @@ int __fastcall sub_8001890(int a1, int a2, int a3, _WORD *a4)
 
 
 // 0x80018c2
-// (int j, int i, int cpyOff, u16 *tileRefs) -> void
-void __usercall copyTiles(int j@<R0>, int i@<R1>, int cpyOff@<R2>, u16 *tileRefs@<R3>, int a5@<R4>, int a6@<R5>)
+// (int j, int i, int cpyOff, u16 *tileIds) -> void
+void __usercall CopyBackgroundTiles(int j@<R0>, int i@<R1>, int cpyOff@<R2>, u16 *tileIds@<R3>, int a5@<R4>, int a6@<R5>)
 {
-    iCopyTiles(j, i, cpyOff, tileRefs, a5, a6);
+    iCopyBackgroundTiles(j, i, cpyOff, tileIds, a5, a6);
 }
 
 
 // 0x80018d0
-void __fastcall sub_80018D0(int a1, int a2, int a3, __int16 a4)
+void __fastcall call_sub_3005EBA(int a1, int a2, int a3, __int16 a4)
 {
     sub_3005EBA(a1, a2, a3, a4);
 }
@@ -2059,7 +2059,7 @@ int __fastcall sub_80018E0(char a1, int a2, int a3, _WORD *a4)
     int v6; // r6
     int result; // r0
 
-    v6 = *(v5 + oToolkit_GFX30025c0_Ptr) + (a3 << 11) + (a2 << 6);
+    v6 = *(v5 + oToolkit_iBGTileIdBlocks_Ptr) + (a3 << 11) + (a2 << 6);
     result = a1 & 0x1F;
     do
     {
@@ -2966,7 +2966,7 @@ __int64 __fastcall sub_80024CC(int a1, int a2, unsigned int a3, unsigned int a4)
     v11 = *(v4 + oToolkit_RenderInfoPtr);
     *(v11 + 20) = 120 - v10 - ((240 - v6) >> 1);
     *(v11 + 22) = 80 - WORD2(v10) - ((160 - v8) >> 1);
-    copyTiles(0, 0, byte_80025CA[0], v5, v6 >> 3, v8 >> 3);
+    CopyBackgroundTiles(0, 0, byte_80025CA[0], v5, v6 >> 3, v8 >> 3);
     result = v18;
     v13 = *(v4 + oToolkit_Unk200f3a0_Ptr);
     if ( v18 >= v7 )

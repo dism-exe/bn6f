@@ -21484,13 +21484,13 @@ loc_8119A76:
 	mov r0, #0x12
 	// i
 	mov r1, #0xd
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #0
-	// tileRefs
+	// tileIds
 	ldr r3, off_8119A9C // =loc_8119904
 	mov r4, #0xa
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r2,r5}
 	ldrb r0, [r5,#4]
 	tst r0, r0
@@ -21507,16 +21507,16 @@ off_8119A9C: .word loc_8119904
 	thumb_local_start
 sub_8119AA0:
 	push {r4-r7,lr}
-	// tileRefs
+	// tileIds
 	ldr r3, off_8119AC8 // =loc_811992C
 	mov r4, #0
 loc_8119AA6:
 	push {r0-r4}
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #0
 	mov r4, #1
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r0-r4}
 	sub r2, #1
 	bgt loc_8119ABA
@@ -30492,12 +30492,12 @@ sub_811ED58:
 loc_811ED8E:
 	bl sub_811F0C8
 	bl sub_811F11C
-	bl copyTiles_PET_811EF70 // () -> void
+	bl CopyBackgroundTiles_PET_811EF70 // () -> void
 	mov r1, #0x10
 	ldrsh r0, [r5,r1]
 	cmp r0, #0
 	blt locret_811EDA6
-	bl copyTiles_onNaviSelect_811F54C // () -> void
+	bl CopyBackgroundTiles_onNaviSelect_811F54C // () -> void
 locret_811EDA6:
 	pop {pc}
 off_811EDA8: .word byte_811EB78
@@ -30508,8 +30508,8 @@ off_811EDB0: .word byte_811EAB8
 	thumb_local_start
 sub_811EDB4:
 	push {r4,lr}
-	bl copyTiles_PET_811EF70 // () -> void
-	bl copyTiles_onNaviSelect_811F54C // () -> void
+	bl CopyBackgroundTiles_PET_811EF70 // () -> void
+	bl CopyBackgroundTiles_onNaviSelect_811F54C // () -> void
 	bl sub_811F24C
 	mov r0, #0x10
 	bl sub_8001B84
@@ -30631,8 +30631,8 @@ sub_811EE98:
 loc_811EEB6:
 	bl sub_811F0C8
 	bl sub_811F11C
-	bl copyTiles_PET_811EF70 // () -> void
-	bl copyTiles_onNaviSelect_811F54C // () -> void
+	bl CopyBackgroundTiles_PET_811EF70 // () -> void
+	bl CopyBackgroundTiles_onNaviSelect_811F54C // () -> void
 	pop {pc}
 byte_811EEC8: .byte 0xE0, 0xFF, 0xFF, 0xFF, 0x20, 0x0, 0x0, 0x0
 	thumb_func_end sub_811EE98
@@ -30660,7 +30660,7 @@ loc_811EEF8:
 	strb r0, [r5,#1]
 	bl sub_811F0C8
 	bl sub_811F11C
-	bl copyTiles_PET_811EF70 // () -> void
+	bl CopyBackgroundTiles_PET_811EF70 // () -> void
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_811EED0
@@ -30672,8 +30672,8 @@ sub_811EF0C:
 	bl sub_811F214
 	bl sub_811F0C8
 	bl sub_811F11C
-	bl copyTiles_PET_811EF70 // () -> void
-	bl copyTiles_onNaviSelect_811F54C // () -> void
+	bl CopyBackgroundTiles_PET_811EF70 // () -> void
+	bl CopyBackgroundTiles_onNaviSelect_811F54C // () -> void
 	pop {pc}
 	thumb_func_end sub_811EF0C
 
@@ -30696,8 +30696,8 @@ sub_811EF28:
 	bl sub_811F214
 	bl sub_811F0C8
 	bl sub_811F11C
-	bl copyTiles_PET_811EF70 // () -> void
-	bl copyTiles_onNaviSelect_811F54C // () -> void
+	bl CopyBackgroundTiles_PET_811EF70 // () -> void
+	bl CopyBackgroundTiles_onNaviSelect_811F54C // () -> void
 	pop {pc}
 	.balign 4, 0x00
 off_811EF64: .word byte_811EBA4
@@ -30708,7 +30708,7 @@ off_811EF6C: .word byte_811EAEC
 // () -> void
 // [disable] PET: (The PET graphics on top is gone)
 	thumb_local_start
-copyTiles_PET_811EF70:
+CopyBackgroundTiles_PET_811EF70:
 	push {r4,r5,r7,lr}
 	mov r7, r5
 	// i
@@ -30716,16 +30716,16 @@ copyTiles_PET_811EF70:
 	mov r0, #0x10
 	// j
 	ldrsh r0, [r7,r0]
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #0
-	// tileRefs
-	ldr r3, off_811EF88 // =PET_Gfx_tileRefs
+	// tileIds
+	ldr r3, off_811EF88 // =PET_Gfx_tileIds
 	mov r4, #0x1e
 	mov r5, #0x14
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4,r5,r7,pc}
-off_811EF88: .word PET_Gfx_tileRefs
-	thumb_func_end copyTiles_PET_811EF70
+off_811EF88: .word PET_Gfx_tileIds
+	thumb_func_end CopyBackgroundTiles_PET_811EF70
 
 	thumb_local_start
 sub_811EF8C:
@@ -31220,7 +31220,7 @@ off_811F548: .word byte_811EBDA
 
 // () -> void
 	thumb_local_start
-copyTiles_onNaviSelect_811F54C:
+CopyBackgroundTiles_onNaviSelect_811F54C:
 	push {r4-r7,lr}
 	sub sp, sp, #8
 	mov r0, #0
@@ -31266,13 +31266,13 @@ loc_811F57E:
 	mov r3, #8
 loc_811F598:
 	lsl r3, r3, #2
-	// tileRefs
+	// tileIds
 	ldr r3, [r6,r3]
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #0
 	mov r4, #9
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	ldr r3, [sp]
 	sub r3, #1
 	str r3, [sp]
@@ -31290,7 +31290,7 @@ off_811F5B8: .word TileIds_86CB21C
 	.word TileIds_86CB2F4
 	.word TileIds_86CB318
 	.word TileIds_86CB33C
-	thumb_func_end copyTiles_onNaviSelect_811F54C
+	thumb_func_end CopyBackgroundTiles_onNaviSelect_811F54C
 
 	thumb_local_start
 sub_811F5DC:
@@ -33973,13 +33973,13 @@ loc_81209B2:
 	ldr r0, [sp,#0xc]
 	// i
 	ldr r1, [sp,#0x10]
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #2
-	// tileRefs
+	// tileIds
 	mov r3, r7
 	mov r4, #0xb
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	add sp, sp, #0x14
 	pop {r4-r7,pc}
 	thumb_func_end sub_8120900

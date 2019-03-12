@@ -93,7 +93,7 @@
 // .global sub_80010C6
 // .global sub_8001172
 // .global copyMemory_8001850
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
 
 	.include "asm/sprite.inc"
 // .global sprite_loadAnimationData // () -> void
@@ -227,7 +227,7 @@
 	.include "data/dat38_65.inc"
 // .global byte_86C54D4
 // .global byte_86C5550
-// .global tileRefs86C5790
+// .global tileIds86C5790
 // .global dword_86C57EC
 
 	.include "data/dat38_65.inc"

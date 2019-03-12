@@ -1069,7 +1069,7 @@ void __noreturn sub_8047134()
     char v5; // zf
     int v6; // [sp+0h] [bp-18h]
 
-    sub_80018D0(0, 0, 2, 0);
+    call_sub_3005EBA(0, 0, 2, 0);
     sub_80465BC();
     sub_80465F8();
     v0 = sub_81179AE();
@@ -1279,7 +1279,7 @@ int __noreturn sub_804754C()
     int v0; // r5
     int v1; // r10
 
-    CopyByEightWords(byte_2017204, *(v1 + oToolkit_GFX30025c0_Ptr) + 2048, 0x800u);
+    CopyByEightWords(byte_2017204, *(v1 + oToolkit_iBGTileIdBlocks_Ptr) + 2048, 0x800u);
     return renderTextGfx_8045F8C(*(v0 + 36), 16, &unk_2015E00, 100671488);
 }
 
@@ -1442,8 +1442,8 @@ void __noreturn sub_8047800()
 {
     int v0; // r5
 
-    copyTiles(*(v0 + 8) - 21, 0, 2, eTileIds2018A04, 21, &dword_C);
-    copyTiles(*(v0 + 8) - 19, 1, 0, byte_202F800, 18, &dword_8 + 2);
+    CopyBackgroundTiles(*(v0 + 8) - 21, 0, 2, eTileIds2018A04, 21, &dword_C);
+    CopyBackgroundTiles(*(v0 + 8) - 19, 1, 0, byte_202F800, 18, &dword_8 + 2);
 }
 
 
@@ -1502,8 +1502,8 @@ int sub_80478D4()
     v2 = &unk_2019404;
     if ( **(v0 + 28) != 1 )
         v2 = &unk_2019204;
-    copyTiles(42 - *(v0 + 8), 0, 2, v2, 9, dword_4 + 1);
-    copyTiles(43 - *(v0 + 8), 2, 0, byte_8046B58, 7, &byte_0[2]);
+    CopyBackgroundTiles(42 - *(v0 + 8), 0, 2, v2, 9, dword_4 + 1);
+    CopyBackgroundTiles(43 - *(v0 + 8), 2, 0, byte_8046B58, 7, &byte_0[2]);
     v3 = 14;
     if ( **(v0 + 28) == 1 )
         v3 = 13;
@@ -4438,29 +4438,29 @@ void __noreturn sub_804A61C()
     *(&unk_20096E0 + v0) = 0;
     decompAndCopyData(&unk_20096E0);
     decompAndCopyData(&initRefs_804A6E4);
-    copyTiles(0, 0, 1, &unk_2020A20, 30, dword_14);
-    copyTiles(-30, 2, 1, &unk_201CA20, 60, &dword_10 + 1);
-    copyTiles(19, 2, 1, &unk_2035C8C, 11, &dword_10 + 1);
+    CopyBackgroundTiles(0, 0, 1, &unk_2020A20, 30, dword_14);
+    CopyBackgroundTiles(-30, 2, 1, &unk_201CA20, 60, &dword_10 + 1);
+    CopyBackgroundTiles(19, 2, 1, &unk_2035C8C, 11, &dword_10 + 1);
 }
 
 
 // 0x804a7c0
-void __noreturn menuCopyTiles_804A7C0()
+void __noreturn menuCopyBackgroundTiles_804A7C0()
 {
     MenuControl *menu; // r5
 
     sub_81200EC(menu->unk_2E, &unk_202A3E0, eTileIds20345FC);
-    copyTiles(3, 4, 2, eTileIds20345FC, 8, &dword_C + 2);
+    CopyBackgroundTiles(3, 4, 2, eTileIds20345FC, 8, &dword_C + 2);
     sub_8120390(menu->unk_2E, &unk_202A3E0, eTileIds20346DC, byte_804A264);
-    copyTiles(1, 4, 2, eTileIds20346DC, 2, &dword_C + 2);
+    CopyBackgroundTiles(1, 4, 2, eTileIds20346DC, 2, &dword_C + 2);
     sub_81203E4(menu->unk_2E, &unk_202A3E0, eTileIds2034714, &dword_35C | 0xA000);
-    copyTiles(11, 4, 2, eTileIds2034714, 2, &dword_C + 2);
+    CopyBackgroundTiles(11, 4, 2, eTileIds2034714, 2, &dword_C + 2);
     sub_8120458(menu->unk_2E, &unk_202A3E0, eTileIds203474C, 45590);
-    copyTiles(13, 4, 2, eTileIds203474C, 1, &dword_C + 2);
+    CopyBackgroundTiles(13, 4, 2, eTileIds203474C, 1, &dword_C + 2);
     sub_81204C4(menu->unk_2E, &unk_202A3E0, eTileIds2034768, 37711);
-    copyTiles(14, 4, 2, eTileIds2034768, 2, &dword_C + 2);
+    CopyBackgroundTiles(14, 4, 2, eTileIds2034768, 2, &dword_C + 2);
     sub_8120618(menu->unk_2E, &unk_202A3E0, eTileIds20347A0, byte_200 | 0xB000);
-    copyTiles(16, 4, 2, eTileIds20347A0, 2, &dword_C + 2);
+    CopyBackgroundTiles(16, 4, 2, eTileIds20347A0, 2, &dword_C + 2);
 }
 
 
@@ -4476,9 +4476,9 @@ void __noreturn sub_804A8F4()
     v2 = dword_200ACB0;
     if ( dword_200ACB0 > 7 )
         v2 = 7;
-    copyTiles(20, 4, 2, &unk_2034458, 8, 2 * v2);
+    CopyBackgroundTiles(20, 4, 2, &unk_2034458, 8, 2 * v2);
     sub_8120458(*(v1 + 36), word_202A020, &unk_20345A8, 45590);
-    copyTiles(28, 4, 2, &unk_20345A8, 1, &dword_C + 2);
+    CopyBackgroundTiles(28, 4, 2, &unk_20345A8, 1, &dword_C + 2);
 }
 
 
@@ -4998,7 +4998,7 @@ void sub_804AE04()
 // 0x804ae50
 void __noreturn sub_804AE50()
 {
-    copyTiles(21, 2, 0, &unk_203486C, 8, &dword_10 + 1);
+    CopyBackgroundTiles(21, 2, 0, &unk_203486C, 8, &dword_10 + 1);
 }
 
 
@@ -5148,7 +5148,7 @@ int sub_804AF84()
 void sub_804AFB8()
 {
     sub_81202FC(10, word_2034814, 11, 12);
-    copyTiles(1, 2, 2, word_2034814, 20, &byte_0[2]);
+    CopyBackgroundTiles(1, 2, 2, word_2034814, 20, &byte_0[2]);
 }
 
 
@@ -5665,7 +5665,7 @@ void sub_804C144()
             ++v2;
         v0[19] = v2;
     }
-    copyTiles(0, 0, 2, off_804C1B4[v2], 32, &dword_20);
+    CopyBackgroundTiles(0, 0, 2, off_804C1B4[v2], 32, &dword_20);
 }
 
 
@@ -5871,7 +5871,7 @@ int sub_804C348()
     v3[2] = 8;
     v3[3] = 16;
     *(v0 + 19) = 2;
-    sub_80018D0(0, 0, 3, 0);
+    call_sub_3005EBA(0, 0, 3, 0);
     sub_804C3C4();
     LOBYTE(dword_30[0]) = 4;
     return sub_804C3BC();
@@ -5891,7 +5891,7 @@ void sub_804C3C4()
     int v0; // r10
 
     **(v0 + oToolkit_RenderInfoPtr) |= 0x800u;
-    copyTiles(12, 0, 3, byte_86A13F0, 6, &dword_C);
+    CopyBackgroundTiles(12, 0, 3, byte_86A13F0, 6, &dword_C);
 }
 
 
@@ -6011,7 +6011,7 @@ void sub_804C5C0()
     **(v1 + oToolkit_RenderInfoPtr) |= 0x800u;
     (*(&off_804C608 + *(v0 + 12)))();
     (*(&off_804C614 + *(v0 + 13)))();
-    copyTiles(0, 0, 3, *(&off_804C5FC + *(v0 + 12)), 32, &dword_20);
+    CopyBackgroundTiles(0, 0, 3, *(&off_804C5FC + *(v0 + 12)), 32, &dword_20);
 }
 
 
@@ -6159,7 +6159,7 @@ void sub_804C770()
     v2[12] += 12;
     (*(&off_804C7B4 + *(v0 + 13)))();
     sub_804C818();
-    copyTiles(0, 0, 3, byte_86A2C80, 32, &dword_20);
+    CopyBackgroundTiles(0, 0, 3, byte_86A2C80, 32, &dword_20);
 }
 
 
@@ -6298,7 +6298,7 @@ signed int sub_804CB64()
     int v3; // [sp+0h] [bp-18h]
 
     **(v0 + oToolkit_RenderInfoPtr) |= 0x2800u;
-    copyTiles(0, 0, 3, byte_86A34E0, 30, dword_14);
+    CopyBackgroundTiles(0, 0, 3, byte_86A34E0, 30, dword_14);
     result = sub_8006990();
     if ( !v2 )
     {
@@ -6446,7 +6446,7 @@ void sub_804CCF0()
     *v1 |= 0x800u;
     v1[13] = 0;
     v1[12] = 0;
-    copyTiles(0, 0, 3, byte_86A39D0, 30, dword_14);
+    CopyBackgroundTiles(0, 0, 3, byte_86A39D0, 30, dword_14);
 }
 
 
@@ -6507,7 +6507,7 @@ void sub_804CDD4()
     if ( !v1 )
         sub_804CE3C();
     sub_804CE0C();
-    copyTiles(0, 0, 3, byte_86A3F40, 32, &dword_20);
+    CopyBackgroundTiles(0, 0, 3, byte_86A3F40, 32, &dword_20);
 }
 
 

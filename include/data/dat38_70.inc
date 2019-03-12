@@ -7,7 +7,7 @@
 	.global byte_86C9DAC
 	.global byte_86C9DCC
 	.global dword_86CA10C
-	.global PET_Gfx_tileRefs
+	.global PET_Gfx_tileIds
 	.global TileIds_86CB21C
 	.global TileIds_86CB240
 	.global TileIds_86CB264

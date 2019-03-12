@@ -142,9 +142,9 @@ int sub_800BE2C()
     else
     {
         if ( battle_networkInvert(*(v0 + 22) ^ 1) )
-            (loc_801E792)(80, 0, 0, 186);
+            (sub_801E792)(80, 0, 0, 186);
         else
-            (loc_801E792)(76, 0, 0, 186);
+            (sub_801E792)(76, 0, 0, 186);
         PlaySoundEffect(371, v1, v2);
         result = 4;
         *(v0 + 11) = 4;
@@ -285,7 +285,7 @@ void __fastcall sub_800C01C(int a1, int a2, signed int a3, int a4)
     v8 = byte_800C08C;
     if ( a3 != 255 )
         v8 = &byte_86DFA98[32 * (6 * a3 + 3 * v7 + a2 - 1)];
-    iCopyTiles(byte_800C0AA[8 * v6 + a1], 3 * a2 + 6, 2, v8, 5, 3);
+    iCopyBackgroundTiles(byte_800C0AA[8 * v6 + a1], 3 * a2 + 6, 2, v8, 5, 3);
 }
 
 
@@ -294,7 +294,7 @@ void __fastcall __noreturn sub_800C0BA(int a1, int a2, int a3)
 {
     int v3; // r10
 
-    copyTiles(byte_800C0AA[8 * *(*(v3 + oToolkit_S2034880_Ptr) + 13) + a1], 3 * a2 + 6, 2, off_800C0F4[a3], 5, &byte_0[3]);
+    CopyBackgroundTiles(byte_800C0AA[8 * *(*(v3 + oToolkit_S2034880_Ptr) + 13) + a1], 3 * a2 + 6, 2, off_800C0F4[a3], 5, &byte_0[3]);
 }
 
 
@@ -305,7 +305,7 @@ void __fastcall __noreturn sub_800C100(int a1, int a2, int a3)
     int v4; // r4
 
     v4 = *(*(v3 + oToolkit_S2034880_Ptr) + 13);
-    copyTiles(byte_800C182[8 * v4 + a1], 3 * a2 + 6, 2, &byte_86E0498[32 * (a3 ^ v4)], 5, &byte_0[1]);
+    CopyBackgroundTiles(byte_800C182[8 * v4 + a1], 3 * a2 + 6, 2, &byte_86E0498[32 * (a3 ^ v4)], 5, &byte_0[1]);
 }
 
 
@@ -314,7 +314,7 @@ void __fastcall __noreturn sub_800C138(int a1, int a2)
 {
     int v2; // r10
 
-    copyTiles(byte_800C182[8 * *(*(v2 + oToolkit_S2034880_Ptr) + 13) + a1], 3 * a2 + 6, 2, byte_800C178, 5, &byte_0[1]);
+    CopyBackgroundTiles(byte_800C182[8 * *(*(v2 + oToolkit_S2034880_Ptr) + 13) + a1], 3 * a2 + 6, 2, byte_800C178, 5, &byte_0[1]);
 }
 
 

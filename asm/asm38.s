@@ -281,40 +281,63 @@ off_3005E78: .word sub_814469C+1
 off_3005E7C: .word sub_81446AC+1
 	thumb_func_end sub_3005E6A
 
-	thumb_func_start iCopyTiles
-iCopyTiles:
+	thumb_func_start iCopyBackgroundTiles
+// (int j, int i, int tileBlock32x32, u16 *tileIds, int j_size@R4, int i_size@R5) -> void
+// copies a 2D array of dimensions [i_size][j_size] to oToolkit_iBGTileIdBlocks_Ptr
+// at the specific j and i locations.
+// assumes a maximum dimension of [32][32] per block.
+// this lets you copy any sized box, at any 2D offset in any 32x32 block
+// this is copying Tiles for BG0 and BG2
+iCopyBackgroundTiles:
 	sub sp, sp, #4
 	str r0, [sp]
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_GFX30025c0_Ptr]
-	lsl r2, r2, #11
+	ldr r6, [r6,#oToolkit_iBGTileIdBlocks_Ptr]
+	lsl r2, r2, #11 // r2_cpyOff = r2_cpyOff * 2048
+
+	// r6 = iBGTileIdBlocks_Ptr + 2048 * r2_cpyOff
+	// 32 tilesIds[32]? 32x32 background tile type?
 	add r6, r6, r2
+
+	// for loop conditions
 	add r4, r4, r0
 	add r5, r5, r1
-loc_3005E90:
+// for (int i=a1_i; i<a1_i + a5_i_size; i++)
+//      for (int j=a0_j; j<a0_j + a4_j_size; j++)
+DoubleForLoop3005E90:
+    // if ( !((j | i) & ~0x1f) )
+    // type protection, ensures only to copy if j and i are <= 31
+    // since the array is 32x32
 	mov r2, #0x1f
 	mvn r2, r2
 	mov r7, r0
 	orr r7, r1
 	tst r7, r2
 	bne loc_3005EA6
+	// copy tile
+	// r6[64*i + 2*j] = *tileIds
 	lsl r7, r0, #1
 	lsl r2, r1, #6
 	add r2, r2, r7
 	ldrh r7, [r3]
 	strh r7, [r6,r2]
 loc_3005EA6:
+    // tileIds++
 	add r3, #2
+	// while (++a0_j < j_size)
 	add r0, #1
 	cmp r0, r4
-	blt loc_3005E90
+	blt DoubleForLoop3005E90
 	ldr r0, [sp]
+	// while (++a1_i < i_size)
 	add r1, #1
 	cmp r1, r5
-	blt loc_3005E90
+	blt DoubleForLoop3005E90
+
+	// return
 	add sp, sp, #4
 	mov pc, lr
-	thumb_func_end iCopyTiles
+	thumb_func_end iCopyBackgroundTiles
 
 	thumb_func_start sub_3005EBA
 sub_3005EBA:

@@ -24,7 +24,7 @@
 // .global SeedRNG2 // () -> void
 // .global GetRNG1 // () -> void
 // .global sub_80015B4
-// .global copyAndFillTo_GFX30025c0_Ptr
+// .global copyToVRAMAndClear_iBGTileIdBlocks_Ptr
 // .global render_800172C
 // .global sRender_08_setRenderingState
 // .global main_zeroFill_80017EC

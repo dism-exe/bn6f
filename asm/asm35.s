@@ -1,22 +1,22 @@
 	.include "asm/asm35.inc"
 
-	thumb_func_start sub_812EAAC
-sub_812EAAC:
+	thumb_func_start CopyBackgroundTiles812EAAC
+CopyBackgroundTiles812EAAC:
 	push {r4-r7,lr}
 	// j
 	mov r0, #0
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #1
-	// tileRefs
+	// tileIds
 	ldr r3, off_812EAC0 // =unk_201EE20 
 	mov r4, #0x1e
 	mov r5, #0x14
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
 off_812EAC0: .word unk_201EE20
-	thumb_func_end sub_812EAAC
+	thumb_func_end CopyBackgroundTiles812EAAC
 
 	thumb_func_start sub_812EAC4
 sub_812EAC4:
@@ -422,7 +422,7 @@ sub_812ED94:
 	ldr r3, off_812EDE0 // =unk_201E920 
 	mov r4, #0x1e
 	mov r5, #0x14
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	mov r5, r7
 	bl sub_812EB92
 	ldrh r0, [r5,#0x2a]
@@ -514,7 +514,7 @@ loc_812EE4E:
 	mov r3, #0
 	mov r4, #8
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	thumb_func_end sub_812EE20
 
 	pop {r3}
@@ -523,7 +523,7 @@ loc_812EE4E:
 	mov r2, #2
 	mov r4, #8
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
 	thumb_func_start sub_812EE78
 sub_812EE78:
@@ -552,7 +552,7 @@ loc_812EE94:
 	mov r3, #0
 	mov r4, #8
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	pop {r4-r7,pc}
 off_812EEAC: .word off_812EEB0
 off_812EEB0: .word unk_2024F90
@@ -651,7 +651,7 @@ sub_812EF60:
 	ldr r3, off_812EFA0 // =unk_2025A70 
 	mov r4, #0xa
 	mov r5, #6
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
 off_812EF8C: .word word_2023FA0
 off_812EF90: .word unk_2025070

@@ -14,7 +14,7 @@
 	.global sub_3005E2C
 	.global sub_3005E60
 	.global sub_3005E6A
-	.global iCopyTiles
+	.global iCopyBackgroundTiles
 	.global sub_3005EBA
 	.global sub_3005EF0
 	.global sub_3006028

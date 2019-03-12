@@ -18,7 +18,7 @@ main_gameRoutine:
 	bl copyPalletesToIWRAM_8001808
 	bl copyPalletesToIWRAM_8002650
 	bl sprite_resetObjVars_800289C
-	bl copyAndFillTo_GFX30025c0_Ptr
+	bl copyToVRAMAndClear_iBGTileIdBlocks_Ptr
 	bl main_static_80003E4
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CurFramePtr]

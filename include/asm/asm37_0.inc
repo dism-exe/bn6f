@@ -61,9 +61,9 @@
 	.global sub_813DB24
 	.global byte_813DBC0
 	.global byte_813DBDC
-	.global tileRefs_813DBE4
+	.global tileIds_813DBE4
 	.global byte_813DEC4
-	.global tileRefs_813DF44
+	.global tileIds_813DF44
 	.global off_813DF74
 	.global off_813E04C
 

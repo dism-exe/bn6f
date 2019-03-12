@@ -15147,7 +15147,7 @@ int __noreturn sub_8119A48()
         }
     }
     v7 = v1;
-    copyTiles(18, 13, 0, byte_8119904, 10, &byte_0[2]);
+    CopyBackgroundTiles(18, 13, 0, byte_8119904, 10, &byte_0[2]);
     result = *(v0 + 4);
     if ( !*(v0 + 4) )
         sub_8119AA0(18, 15, v7 >> 2);
@@ -15173,7 +15173,7 @@ int __fastcall __spoils<R0,R2,R3,R12> __noreturn sub_8119AA0(int result, int a2,
         v5 = a3;
         v7 = v3;
         v8 = v4;
-        copyTiles(result, a2, 0, v3, 1, &byte_0[2]);
+        CopyBackgroundTiles(result, a2, 0, v3, 1, &byte_0[2]);
         result = v6;
         a3 = v5 - 1;
         if ( v5 <= 1 )
@@ -21198,9 +21198,9 @@ void sub_811ED58()
     }
     sub_811F0C8();
     sub_811F11C();
-    copyTiles_PET_811EF70();
+    CopyBackgroundTiles_PET_811EF70();
     if ( *(v0 + 16) >= 0 )
-        copyTiles_onNaviSelect_811F54C();
+        CopyBackgroundTiles_onNaviSelect_811F54C();
 }
 
 
@@ -21218,8 +21218,8 @@ void sub_811EDB4()
     int v8; // r1
     int v9; // r2
 
-    copyTiles_PET_811EF70();
-    copyTiles_onNaviSelect_811F54C();
+    CopyBackgroundTiles_PET_811EF70();
+    CopyBackgroundTiles_onNaviSelect_811F54C();
     sub_811F24C();
     sub_8001B84(16);
     if ( v2 )
@@ -21309,8 +21309,8 @@ void __noreturn sub_811EE98()
     }
     sub_811F0C8();
     sub_811F11C();
-    copyTiles_PET_811EF70();
-    copyTiles_onNaviSelect_811F54C();
+    CopyBackgroundTiles_PET_811EF70();
+    CopyBackgroundTiles_onNaviSelect_811F54C();
 }
 
 
@@ -21332,7 +21332,7 @@ void __noreturn sub_811EED0()
     *(v0 + 1) = 8;
     sub_811F0C8();
     sub_811F11C();
-    copyTiles_PET_811EF70();
+    CopyBackgroundTiles_PET_811EF70();
 }
 
 
@@ -21360,11 +21360,11 @@ void __noreturn sub_811EF28()
 
 // 0x811ef70
 // [disable] PET: (The PET graphics on top is gone)
-void __cdecl copyTiles_PET_811EF70()
+void __cdecl CopyBackgroundTiles_PET_811EF70()
 {
     int v0; // r5
 
-    copyTiles(*(v0 + 16), 0, 0, PET_Gfx_tileRefs, 30, dword_14);
+    CopyBackgroundTiles(*(v0 + 16), 0, 0, PET_Gfx_tileIds, 30, dword_14);
 }
 
 
@@ -21632,7 +21632,7 @@ int sub_811F508()
 
 // 0x811f54c
 // () -> void
-void copyTiles_onNaviSelect_811F54C()
+void CopyBackgroundTiles_onNaviSelect_811F54C()
 {
     int v0; // r5
     int v1; // r0
@@ -21664,7 +21664,7 @@ void copyTiles_onNaviSelect_811F54C()
             if ( v7 )
                 v3 = 8;
         }
-        copyTiles(*(v0 + 16) + 4, 2 * v6 + 3, 0, off_811F5B8[v3], 9, &byte_0[2]);
+        CopyBackgroundTiles(*(v0 + 16) + 4, 2 * v6 + 3, 0, off_811F5B8[v3], 9, &byte_0[2]);
         v5 = __OFSUB__(v6, 1);
         v4 = v6-- - 1 < 0;
     }
@@ -23586,7 +23586,7 @@ void __fastcall __noreturn sub_8120900(_WORD *a1, int a2, int a3, int a4)
     while ( v14 < 20 );
     *(v7 + v14) = v21 | 0x400;
     *(v8 + v14) = (v21 | 0x400) + 1;
-    copyTiles(v22, v23, 2, v7, 11, &byte_0[2]);
+    CopyBackgroundTiles(v22, v23, 2, v7, 11, &byte_0[2]);
 }
 
 

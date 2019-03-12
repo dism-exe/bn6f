@@ -936,13 +936,13 @@ loc_8026C28:
 	sub r0, #1
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_8026C84 // =byte_8026C88
 	mov r4, #1
 	mov r5, #0x14
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	sub r6, #1
 	bne loc_8026C28
 	pop {r0,r4-r7}
@@ -1040,7 +1040,7 @@ sub_8026D06:
 	mov r3, #0
 	mov r4, #0xf
 	mov r5, #0x14
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #SOUND_CUR_MOVE_80
 	bl PlaySoundEffect
 	b locret_8026DA6
@@ -1067,13 +1067,13 @@ loc_8026D5C:
 	mov r0, #0
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_8026DAC // =unk_2035000 
 	mov r4, #0xf
 	mov r5, #0x14
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4,r5}
 	bl sub_8029C08
 	mov r0, #SOUND_CUR_MOVE_80
@@ -2562,13 +2562,13 @@ loc_8027884:
 	mov r0, #0
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_8027B24 // =unk_2035000 
 	mov r4, #0xf
 	mov r5, #0x14
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4,r5}
 	ldr r0, [r5,#0x44]
 	cmp r0, #3
@@ -2758,13 +2758,13 @@ loc_8027A0E:
 	mov r0, #0
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_8027B24 // =unk_2035000 
 	mov r4, #0xf
 	mov r5, #0x14
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4,r5}
 	pop {pc}
 	.balign 4, 0x00
@@ -3904,13 +3904,13 @@ sub_80283B0:
 	mov r0, #0
 	// i
 	mov r1, #0xd
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_8028468 // =unk_2035186 
 	mov r4, #0xf
 	mov r5, #6
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4,r5,pc}
 	thumb_func_end sub_80283B0
 
@@ -7277,13 +7277,13 @@ loc_8029CEE:
 	mov r0, #0
 	// i
 	mov r1, #3
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_8029D28 // =unk_203505A 
 	mov r4, #0xf
 	mov r5, #0xa
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 locret_8029D12:
 	pop {r4-r6,pc}
 off_8029D14: .word byte_8029D18
@@ -7312,13 +7312,13 @@ loc_8029D4E:
 	mov r0, #0xf
 	// i
 	mov r1, #4
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_8029D60 // =byte_8029D64 
 	mov r4, #7
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 locret_8029D5E:
 	pop {r4,r5,pc}
 off_8029D60: .word byte_8029D64
@@ -7337,7 +7337,7 @@ sub_8029D80:
 	mov r3, #0
 	mov r4, #7
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	pop {r4,r5,pc}
 	thumb_func_end sub_8029D80
 
@@ -7374,7 +7374,7 @@ loc_8029DA2:
 	add r3, r3, r4
 	mov r4, #9
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
 off_8029DD8: .word dword_86E7DCC
 off_8029DDC: .word 0x240
@@ -9479,13 +9479,13 @@ loc_802AFF8:
 	sub r0, #1
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_802B020 // =byte_802B024
 	mov r4, #1
 	mov r5, #0x14
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	sub r6, #1
 	bne loc_802AFF8
 	pop {r0,r4-r7}
@@ -10249,7 +10249,7 @@ loc_802B7BC:
 	bne loc_802B7CE
 	mov r0, #0x34 
 loc_802B7CE:
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #4
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -10575,7 +10575,7 @@ sub_802BA24:
 	ldrb r6, [r6,#0x7] // (byte_2036667 - 0x2036660)
 	cmp r6, #0
 	beq locret_802BA32
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 locret_802BA32:
 	pop {r6,pc}
 	thumb_func_end sub_802BA24
@@ -10587,7 +10587,7 @@ sub_802BA34:
 	ldrb r6, [r6,#0x7] // (byte_2036667 - 0x2036660)
 	cmp r6, #0
 	beq locret_802BA42
-	bl sub_80018D0
+	bl call_sub_3005EBA
 locret_802BA42:
 	pop {r6,pc}
 off_802BA44: .word word_2036660
@@ -10743,13 +10743,13 @@ sub_802BD60:
 	ldrsb r0, [r5,r1]
 	// i
 	mov r1, #2
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_802BDB0 // =unk_2034B30 
 	mov r4, #0x18
 	mov r5, #0x12
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r5}
 	bl sub_802C460
 	ldrb r0, [r5,#5]
@@ -10817,7 +10817,7 @@ sub_802BE0C:
 	mov r3, #0
 	mov r4, #6
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	pop {r5}
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_RenderInfoPtr]
@@ -11464,7 +11464,7 @@ loc_802C2FA:
 	mov r3, #0
 	mov r4, #1
 	mov r5, #0x12
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	pop {r5}
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -11632,7 +11632,7 @@ loc_802C47A:
 	beq locret_802C48E
 	mov r2, #3
 	mov r3, #0
-	bl sub_80018D0
+	bl call_sub_3005EBA
 locret_802C48E:
 	pop {r4,r5,pc}
 	thumb_func_end sub_802C460
@@ -12574,7 +12574,7 @@ sub_802CBCC:
 	mov r1, r3
 loc_802CBE2:
 	mov r0, #0x28 
-	bl loc_801E792
+	bl sub_801E792
 	mov r0, #4
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -18631,13 +18631,13 @@ sub_802FD3C:
 	mov r0, #0
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #1
-	// tileRefs
+	// tileIds
 	ldr r3, off_802FD50 // =byte_87F8EB0 
 	mov r4, #0x20 
 	mov r5, #0x14
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r5,pc}
 off_802FD50: .word byte_87F8EB0
 	thumb_func_end sub_802FD3C
@@ -19740,7 +19740,7 @@ loc_80304FC:
 	ldr r0, src // =unk_2034A00 
 	ldr r1, [r5,#0xc]
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_GFX30025c0_Ptr]
+	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
 	ldr r3, [r5,#8]
 	ldrb r2, [r3]
@@ -19774,7 +19774,7 @@ loc_8030554:
 	ldr r0, off_8030578 // =unk_2034A00 
 	ldr r1, [r5,#0xc]
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_GFX30025c0_Ptr]
+	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
 	ldr r3, [r5,#8]
 	ldrb r2, [r3]
@@ -19892,7 +19892,7 @@ sub_8030628:
 loc_803062C:
 	pop {r0}
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_GFX30025c0_Ptr]
+	ldr r7, [r7,#oToolkit_iBGTileIdBlocks_Ptr]
 	lsl r6, r2, #0xb
 	add r7, r7, r6
 	lsl r6, r3, #1
@@ -19909,7 +19909,7 @@ loc_803062C:
 sub_8030646:
 	mov r2, #2
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_GFX30025c0_Ptr]
+	ldr r7, [r7,#oToolkit_iBGTileIdBlocks_Ptr]
 	lsl r6, r2, #0xb
 	add r7, r7, r6
 	lsl r6, r3, #1
@@ -19923,7 +19923,7 @@ sub_8030646:
 sub_803065A:
 	mov r2, #1
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_GFX30025c0_Ptr]
+	ldr r7, [r7,#oToolkit_iBGTileIdBlocks_Ptr]
 	lsl r6, r2, #0xb
 	add r7, r7, r6
 	lsl r6, r3, #1
@@ -20293,7 +20293,7 @@ loc_80308E0:
 	mov r3, #0
 	mov r4, #0x20 
 	mov r5, #1
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	pop {r5}
 loc_80308FA:
 	add r5, #1

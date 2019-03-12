@@ -698,7 +698,7 @@ loc_812E046:
 	bl sub_8046664 // () -> void
 	bl sub_812EB88
 	bl sub_812EB78
-	bl sub_812EAAC
+	bl CopyBackgroundTiles812EAAC
 	mov r0, #4
 	strb r0, [r5,#2]
 	b loc_812E080
@@ -1050,7 +1050,7 @@ loc_812E306:
 	bl sub_812EB88
 	bl sub_812EB78
 	bl sub_812EF20
-	bl sub_812EAAC
+	bl CopyBackgroundTiles812EAAC
 	b loc_812E35E
 loc_812E342:
 	mov r0, r4
@@ -1911,7 +1911,7 @@ sub_812E9AC:
 	bl ZeroFillByEightWords // (int a1, int a2) -> void
 	bl sub_812EAC4
 	bl sub_812EA44
-	bl sub_812EAAC
+	bl CopyBackgroundTiles812EAAC
 	bl sub_812EB88
 	bl sub_812EB78
 	bl sub_812EF20

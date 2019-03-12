@@ -403,8 +403,8 @@ int __fastcall sub_809A360(int a1)
 
     v3 = a1;
     *(*(v2 + oToolkit_Unk200a220_Ptr) + 8) = *(v1 + 112);
-    copyTiles(a1, 0, 0, byte_86C54D4, 9, dword_4 + 1);
-    copyTiles(v3 + 1, 2, 0, byte_8099E5C, 7, &byte_0[2]);
+    CopyBackgroundTiles(a1, 0, 0, byte_86C54D4, 9, dword_4 + 1);
+    CopyBackgroundTiles(v3 + 1, 2, 0, byte_8099E5C, 7, &byte_0[2]);
     return renderTextGfx_8045F8C(TextScriptChipTrader86C580C, 64, &unk_200EF40, 100717568);
 }
 
@@ -857,8 +857,8 @@ int __fastcall sub_809A80C(int a1)
 
     v3 = a1;
     *(tk->unk_200A220 + 2) = *(v1 + 112);
-    copyTiles(a1, 0, 0, tileRefs86C5790, 9, dword_4 + 1);
-    copyTiles(v3 + 2, 2, 0, tileRefs8099E78, 6, &byte_0[2]);
+    CopyBackgroundTiles(a1, 0, 0, tileIds86C5790, 9, dword_4 + 1);
+    CopyBackgroundTiles(v3 + 2, 2, 0, tileIds8099E78, 6, &byte_0[2]);
     return renderTextGfx_8045F8C(&eTextScript2033404, 6, &unk_200EF40, 100717568);
 }
 

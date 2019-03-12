@@ -223,12 +223,12 @@ loc_800B9F8:
 	bne loc_800BA12
 	mov r3, r0
 	mov r0, #0x4c
-	bl loc_801E792
+	bl sub_801E792
 	b loc_800BA1A
 loc_800BA12:
 	mov r3, r0
 	mov r0, #0x50
-	bl loc_801E792
+	bl sub_801E792
 loc_800BA1A:
 	mov r0, #0x74
 	add r0, #0xff
@@ -332,12 +332,12 @@ loc_800BAD8:
 	bne loc_800BAF2
 	mov r3, r0
 	mov r0, #0x4c
-	bl loc_801E792
+	bl sub_801E792
 	b loc_800BAFA
 loc_800BAF2:
 	mov r3, r0
 	mov r0, #0x50
-	bl loc_801E792
+	bl sub_801E792
 loc_800BAFA:
 	mov r0, #0x74
 	add r0, #0xff
@@ -474,14 +474,14 @@ loc_800BBEC:
 loc_800BC08:
 	mov r3, r0
 	mov r0, #0x4c
-	bl loc_801E792
+	bl sub_801E792
 	b loc_800BC1E
 loc_800BC12:
 	ldr r3, off_800BF78 // =0x171
 	mov r1, #0
 	mov r2, #0
 	mov r0, #0x50
-	bl loc_801E792
+	bl sub_801E792
 loc_800BC1E:
 	mov r0, #0x74
 	add r0, #0xff
@@ -786,12 +786,12 @@ sub_800BE2C:
 	bne loc_800BE56
 	mov r3, r0
 	mov r0, #0x4c 
-	bl loc_801E792
+	bl sub_801E792
 	b loc_800BE5E
 loc_800BE56:
 	mov r3, r0
 	mov r0, #0x50 
-	bl loc_801E792
+	bl sub_801E792
 loc_800BE5E:
 	mov r0, #0x74 
 	add r0, #0xff
@@ -1075,19 +1075,19 @@ loc_800C066:
 	ldr r0, [sp]
 	// i
 	ldr r1, [sp,#4]
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #2
-	// tileRefs
+	// tileIds
 	mov r3, r6
 	mov r4, #5
 	mov r5, #3
-	ldr r6, off_800C080 // =iCopyTiles+1
+	ldr r6, off_800C080 // =iCopyBackgroundTiles+1
 	mov lr, pc
 	bx r6
 	add sp, sp, #0x28
 	pop {r4-r7,pc}
 off_800C07C: .word byte_86DFA98
-off_800C080: .word iCopyTiles+1
+off_800C080: .word iCopyBackgroundTiles+1
 off_800C084: .word byte_800C08C
 off_800C088: .word byte_800C0AA
 byte_800C08C: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
@@ -1118,13 +1118,13 @@ sub_800C0BA:
 	ldr r1, [sp,#4]
 	ldr r3, off_800C0F0 // =off_800C0F4 
 	lsl r2, r2, #2
-	// tileRefs
+	// tileIds
 	ldr r3, [r3,r2]
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #2
 	mov r4, #5
 	mov r5, #3
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	add sp, sp, #0x28
 	pop {r4-r7,pc}
 	.byte 0, 0
@@ -1158,13 +1158,13 @@ sub_800C100:
 	ldr r0, [sp]
 	// i
 	ldr r1, [sp,#4]
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #2
-	// tileRefs
+	// tileIds
 	mov r3, r6
 	mov r4, #5
 	mov r5, #1
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	add sp, sp, #0x28
 	pop {r4-r7,pc}
 	thumb_func_end sub_800C100
@@ -1191,13 +1191,13 @@ sub_800C138:
 	ldr r0, [sp]
 	// i
 	ldr r1, [sp,#4]
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #2
-	// tileRefs
+	// tileIds
 	mov r3, r6
 	mov r4, #5
 	mov r5, #1
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	add sp, sp, #0x28
 	pop {r4-r7,pc}
 off_800C16C: .word byte_86E0498

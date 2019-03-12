@@ -167,33 +167,17 @@ dword_3002594:: // 0x3002594
 	.space 28
 unk_30025B0:: // 0x30025b0
 	.space 16
-unk_30025C0:: // 0x30025c0
-	.space 1116
-unk_3002A1C:: // 0x3002a1c
-	.space 2304
-unk_300331C:: // 0x300331c
-	.space 256
-unk_300341C:: // 0x300341c
-	.space 512
-unk_300361C:: // 0x300361c
-	.space 256
-unk_300371C:: // 0x300371c
-	.space 256
-unk_300381C:: // 0x300381c
-	.space 1264
-byte_3003D0C:: // 0x3003d0c
-	.space 1552
-byte_300431C:: // 0x300431c
-	.space 512
-byte_300451C:: // 0x300451c
-	.space 164
+// u16[32][32][4]
+// array of 32x32 blocks of u16 tile ids
+// 0x2000 is cleared and recopied every frame
+iBGTileIdBlocks:: // 0x30025c0
+    .space 2*32*32*4
 byte_30045C0:: // 0x30045c0
 	.space 2688
 byte_3005040:: // 0x3005040
 	.space 156
 unk_30050DC:: // 0x30050dc
 	.space 64
-byte_300511C:: // 0x300511c
 	.space 264
 unk_3005224:: // 0x3005224
 	.space 76

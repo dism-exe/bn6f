@@ -1,7 +1,7 @@
 // 0x812eaac
-void __noreturn sub_812EAAC()
+void __noreturn CopyBackgroundTiles812EAAC()
 {
-    copyTiles(0, 0, 1, &unk_201EE20, 30, dword_14);
+    CopyBackgroundTiles(0, 0, 1, &unk_201EE20, 30, dword_14);
 }
 
 
@@ -250,7 +250,7 @@ void __fastcall __noreturn sub_812ED94(int a1, int a2, int a3, int a4)
 
     ZeroFillGFX30025c0();
     sub_8046664();
-    copyTiles(0, 0, 1, &unk_201E920, 30, dword_14);
+    CopyBackgroundTiles(0, 0, 1, &unk_201E920, 30, dword_14);
     sub_812EB92();
     v5 = sub_812EC2C(*(v4 + 42), 0, 4);
     sub_812EDFC(v5, 0);
@@ -279,7 +279,7 @@ void __noreturn sub_812EE20()
     int v1; // r2
 
     v1 = *(&off_812EED8 + *(v0 + 48));
-    sub_80018D0(4, 9, 2, 0);
+    call_sub_3005EBA(4, 9, 2, 0);
     JUMPOUT(loc_812EE66);
 }
 
@@ -296,7 +296,7 @@ void __fastcall sub_812EE78(int a1)
     v3 = *(&off_812EEB0 + v2);
     if ( v2 )
         v4 = 8 - *(v1 + 48);
-    sub_80018D0(*&byte_812EEBC[v2], *&byte_812EEBC[v2 + 8], 2, 0);
+    call_sub_3005EBA(*&byte_812EEBC[v2], *&byte_812EEBC[v2 + 8], 2, 0);
 }
 
 

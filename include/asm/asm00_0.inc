@@ -79,7 +79,7 @@
 	.global GetRNG1 // () -> void
 	.global GetPositiveSignedRNG1
 	.global sub_80015B4
-	.global copyAndFillTo_GFX30025c0_Ptr
+	.global copyToVRAMAndClear_iBGTileIdBlocks_Ptr
 	.global sub_80015FC
 	.global map_8001708
 	.global render_800172C
@@ -98,8 +98,8 @@
 	.global copyMemory_8001850
 	.global sub_800187C
 	.global sub_8001890
-	.global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-	.global sub_80018D0
+	.global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
+	.global call_sub_3005EBA
 	.global sub_80018E0
 	.global sub_8001930
 	.global sub_800195C
@@ -145,7 +145,7 @@
 
 /* External Symbols */
 	.include "asm/asm38.inc"
-// .global iCopyTiles
+// .global iCopyBackgroundTiles
 // .global sub_3005EBA
 // .global sub_3006440
 

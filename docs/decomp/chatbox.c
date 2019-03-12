@@ -214,7 +214,7 @@ LABEL_16:
     while ( v3 );
     chatbox_maskFlags_3e(0x100u);
     if ( zf )
-        chatbox_copyTiles_8040344();
+        chatbox_CopyBackgroundTiles_8040344();
     chatbox_check_eFlags2009F38(128);
     if ( !zf )
     {
@@ -289,7 +289,7 @@ signed int chatbox_interpreteAndDrawDialogChar_1()
     chatbox_clearFlags_3e(64);
     chatbox_maskFlags_3e(byte_100);
     if ( v7 )
-        chatbox_copyTiles_8040344();
+        chatbox_CopyBackgroundTiles_8040344();
     chatbox_check_eFlags2009F38(128);
     if ( !v7 )
     {
@@ -429,11 +429,11 @@ signed int chatbox_804021C()
 
 
 // 0x8040344
-void __noreturn chatbox_copyTiles_8040344()
+void __noreturn chatbox_CopyBackgroundTiles_8040344()
 {
     ChatBoxPropreties *cb; // r5
 
-    copyTiles(
+    CopyBackgroundTiles(
         cb->unk_1C,
         cb->unk_1D,
         0,

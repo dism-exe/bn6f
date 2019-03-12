@@ -204,7 +204,7 @@ void sub_3005E6A()
 
 
 // 0x3005e80
-void __usercall iCopyTiles(int j@<R0>, int i@<R1>, int cpyOff@<R2>, u16 *tileRefs@<R3>, int a5@<R4>, int a6@<R5>)
+void __usercall iCopyBackgroundTiles(int j@<R0>, int i@<R1>, int cpyOff@<R2>, u16 *tileIds@<R3>, int a5@<R4>, int a6@<R5>)
 {
     Toolkit *k; // r10
     char *v7; // r6
@@ -213,14 +213,14 @@ void __usercall iCopyTiles(int j@<R0>, int i@<R1>, int cpyOff@<R2>, u16 *tileRef
     int v10; // [sp+0h] [bp-4h]
 
     v10 = j;
-    v7 = k->gfx_30025C0 + 2048 * cpyOff;
+    v7 = tk->gfx_30025C0 + 2048 * cpyOff; // 32 tilesIds[32]? 32x32 background tile type?
     v8 = a5 + j;
     v9 = a6 + i;
     while ( 1 )
     {
-        if ( !((j | i) & 0xFFFFFFE0) )
-            *&v7[64 * i + 2 * j] = *tileRefs;
-        ++tileRefs;
+        if ( !((j | i) & 0xFFFFFFE0) ) // ~31
+            *&v7[64 * i + 2 * j] = *tileIds;
+        ++tileIds;
         if ( ++j >= v8 )
         {
             j = v10;

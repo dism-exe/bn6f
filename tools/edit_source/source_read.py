@@ -4,9 +4,9 @@ This allows to synchronize IDA and radare2 databases to the source. The file can
 by different tools.
 """
 
+import logging
+
 MAIN_FILES = ['rom.s', 'data.s', 'ewram.s', 'iwram.s']
-
-
 
 class DATA_TYPES:
     i = 0
@@ -376,14 +376,14 @@ def process_function(unit, sym_table, function_types, dict_out=False):
         File Location: what file, which line number
         Function type: This is taken from the C file of its file_path
         Local symbols, ea and name: all symbols within the function
-        xrefs_to, ea and name: all external symbols to the function
+        xrefs_from, ea and name: all external symbols to the function
         pool: processed as data
     Format:
         F function_ea <function_name>:
             path: file_path:line_number
             type: function_type
             local: [local_ea <local_name>, ...]
-            xrefs_to: [xref_ea <xref_name>, ...]
+            xrefs_from: [xref_ea <xref_name>, ...]
             pool:
                 processed pool data
     :param unit: AsmFile.Unit representing the function to analyze
@@ -407,13 +407,13 @@ def process_function(unit, sym_table, function_types, dict_out=False):
         function_type = ''
 
     locals = []
-    xrefs_to = []
+    xrefs_from = []
     skipFunctionLabel = False
     pool_data = [] if dict_out else ''
     lines = content.split('\n')
     for i in range(len(lines)):
         line = lines[i]
-        # find all local labels, and xrefs_to
+        # find all local labels, and xrefs_from
         if has_label(line):
             # function label is not one of the locals
             if not skipFunctionLabel:
@@ -435,12 +435,12 @@ def process_function(unit, sym_table, function_types, dict_out=False):
             if mnemonic in ['BL', 'B', 'BEQ', 'BNE', 'BLT', 'BGT']:
                 symbol = line[line.index(' '):].strip()
                 symbol = symbol.replace('.', '%s.' % function_name) # process local labels
-                xrefs_to.append(symbol)
+                xrefs_from.append(symbol)
             if mnemonic == 'LDR' and '[' not in line:
                 pool = line[line.index(',')+1:].strip()
                 pool = pool.replace('.', '%s.' % function_name) # process local labels
                 pool = pool.replace('=', '') # remove = from pool
-                xrefs_to.append(pool)
+                xrefs_from.append(pool)
 
         # process any pool data present in the function
         if (has_label(line) and is_data(line)
@@ -482,10 +482,10 @@ def process_function(unit, sym_table, function_types, dict_out=False):
             else:
                 pool_data += process_data(pool_unit, sym_table, function_name)
 
-    # filter out xrefs_to that are locals
-    for ea in xrefs_to:
+    # filter out xrefs_from that are locals
+    for ea in xrefs_from:
         if ea in locals:
-            xrefs_to.remove(ea)
+            xrefs_from.remove(ea)
 
     # construct output
     if dict_out:
@@ -501,8 +501,8 @@ def process_function(unit, sym_table, function_types, dict_out=False):
             if label.startswith('.'):
                 label = function_name + label
             out['local'].append((sym_table[label], label))
-        out['xrefs_to'] = []
-        for label in xrefs_to:
+        out['xrefs_from'] = []
+        for label in xrefs_from:
             offset = 0
             if '+' in label:
                 base = 16 if '0x' in label else 10
@@ -511,7 +511,10 @@ def process_function(unit, sym_table, function_types, dict_out=False):
             # process local labels
             if label.startswith('.'):
                 label = function_name + label
-            out['xrefs_to'].append((sym_table[label]+offset, label))
+            if label in sym_table.keys():
+                out['xrefs_from'].append((sym_table[label]+offset, label))
+            else:
+                logging.error("unaccounted for xref: %s" % label)
             out['pool'] = pool_data
     else:
         out = 'F %07x <%s>:\n' % (function_ea, function_name)
@@ -524,8 +527,8 @@ def process_function(unit, sym_table, function_types, dict_out=False):
                 label = function_name + label
             out += '%07x <%s>, ' % (sym_table[label], label)
         out += ']\n'
-        out += '\txrefs_to: ['
-        for label in xrefs_to:
+        out += '\txrefs_from: ['
+        for label in xrefs_from:
             offset = 0
             if '+' in label:
                 base = 16 if '0x' in label else 10
@@ -535,7 +538,7 @@ def process_function(unit, sym_table, function_types, dict_out=False):
             if label.startswith('.'):
                 label = function_name + label
             out += '%07x <%s>, ' % (sym_table[label]+offset, label)
-        if len(xrefs_to): out = out[:-2] # filer last ', '
+        if len(xrefs_from): out = out[:-2] # filer last ', '
         out += ']\n'
         if pool_data:
             out += '\tpool:\n\t\t' + pool_data.replace('\n', '\n\t\t') + '\n'
@@ -559,7 +562,7 @@ def process_code(unit, sym_table, warning=False, dict_out=False):
 
 def process_data(unit, sym_table, function_label='', dict_out=False):
     """
-    Processes the following parameters:
+    Processes the following paramexecrs:
         Data effective address (according to the symbol table
         Data name
         File Location: what file, which line number
@@ -569,7 +572,7 @@ def process_data(unit, sym_table, function_label='', dict_out=False):
         D data_ea <data_name>:
             path: file_path:line_number
             types: [(data_type, num_elements), ...]
-            xrefs_to: [xref_ea <xref_name>, ...]
+            xrefs_from: [xref_ea <xref_name>, ...]
     :param unit: AsmFile.Unit representing the data to analyze
     :param sym_table: dictionary to map labels to effective addresses
     :param function_label: if thsi is a local data unit, its function label must be identified
@@ -583,7 +586,7 @@ def process_data(unit, sym_table, function_label='', dict_out=False):
     data_ea = sym_table[data_label]
 
     types = [[DATA_TYPES.ERROR, 0]]
-    xrefs_to = []
+    xrefs_from = []
     for i in range(len(lines)):
         line = filter_label(lines[i]).strip()
         if line == '':
@@ -633,7 +636,7 @@ def process_data(unit, sym_table, function_label='', dict_out=False):
                     if element.isdigit() or element.startswith('0x'):
                         # sometimes data is put alongside symbols, such as 0x0
                         continue
-                    xrefs_to.append(element)
+                    xrefs_from.append(element)
         else:
             data_type = DATA_TYPES.ERROR
             print('ERROR: invalid data format\n', function_label, '||', data_label, '||', unit.content)
@@ -657,17 +660,20 @@ def process_data(unit, sym_table, function_label='', dict_out=False):
         out['unit'] = unit
         out['path'] = '%s:%d\n' % (unit.file_path, unit.line_number)
         out['types'] = types
-        out['xrefs_to'] = []
-        for label in xrefs_to:
+        out['xrefs_from'] = []
+        for label in xrefs_from:
             offset = 0
             if '+' in label:
                 base = 16 if '0x' in label else 10
                 offset = int(label[label.index('+') + 1:], base)
                 label = label[:label.index('+')]
-                # process local labels
+            # process local labels
             if label.startswith('.'):
                 label = function_label + label
-            out['xrefs_to'].append((sym_table[label]+offset, label))
+            if label in sym_table.keys():
+                out['xrefs_from'].append((sym_table[label]+offset, label))
+            else:
+                print('not found: ' + label)
 
     else:
         out = 'D %07x <%s>:\n' % (data_ea, data_label)
@@ -677,9 +683,9 @@ def process_data(unit, sym_table, function_label='', dict_out=False):
             for type in types:
                 out += '(%s, %d), ' % (DATA_TYPES.STR[type[0]], type[1])
             out += ']\n'
-        if xrefs_to:
-            out += '\txrefs_to: ['
-            for label in xrefs_to:
+        if xrefs_from:
+            out += '\txrefs_from: ['
+            for label in xrefs_from:
                 offset = 0
                 if '+' in label:
                     base = 16 if '0x' in label else 10
@@ -744,19 +750,22 @@ def read_repo(proj_path, elf_path, file_paths, info=False):
     import os
     cwd = os.getcwd()
     os.chdir(proj_path)
+    print(os.getcwd())
     try:
         units = []
         for path in file_paths:
             if info: print('> reading %s...' % path)
             units += read_file(path)
 
-        if info: print('> processing symbol table from elf...')
+        if info: print( '> processing symbol table from elf...')
         sym_table = get_sym_table(elf_path)
 
-        if info: print('> processing function types...')
-        function_types = process_function_types(units)
+        # if info: print('> processing function types...')
+        # function_types = process_function_types(units)
+        function_types = {}
 
         if info: print('> processing units...')
+
         out = []
         for unit in units:
             if unit.id == AsmFile.UNITS.FUNCTION:
@@ -771,7 +780,7 @@ def read_repo(proj_path, elf_path, file_paths, info=False):
     finally:
         os.chdir(cwd)
 
-def main():
+def build_rsync():
     import sys
 
     if len(sys.argv) < 2:
@@ -802,7 +811,11 @@ def main():
             pass
     write_file.close()
 
-    print("Program Complete!")
+    print("> Source Reading Complete!")
+
+
+def execs():
+    exec(open('source_read.py', 'r').read())
 
 if __name__ == '__main__':
-    main()
+    units  = read_repo("../..", "bn6f.elf", ["rom.s", "data.s", "ewram.s", "iwram.s"], info=True)

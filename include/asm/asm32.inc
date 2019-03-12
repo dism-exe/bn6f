@@ -323,7 +323,7 @@
 // .global GetPositiveSignedRNG1
 // .global sub_80015FC
 // .global copyMemory_8001850
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
 // .global sub_8001B1C
 // .global sub_8001B84
 // .global loc_8002676
@@ -734,7 +734,7 @@
 // .global byte_86C9DAC
 // .global byte_86C9DCC
 // .global dword_86CA10C
-// .global PET_Gfx_tileRefs
+// .global PET_Gfx_tileIds
 // .global TileIds_86CB21C
 // .global TileIds_86CB240
 // .global TileIds_86CB264

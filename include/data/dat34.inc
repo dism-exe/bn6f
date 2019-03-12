@@ -76,7 +76,7 @@
 // .global sub_812B530
 
 	.include "asm/asm35.inc"
-// .global sub_812EAAC
+// .global CopyBackgroundTiles812EAAC
 // .global sub_812EAC4
 // .global sub_812EB78
 // .global sub_812EB88

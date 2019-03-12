@@ -20,7 +20,7 @@
         u8 \label, Unk_0E // loc=0xE
         // box gfx loaded from 0x00 to 0x08 at max
         u8 \label, BoxGfxLoadState_0F // loc=0xF
-        u8 \label, ChatboxOpenState_10 // loc=0x10
+        u8 \label, OpenState_10 // loc=0x10
         u8 \label, JumpTableOffset_11 // loc=0x11
         u8 \label, Unk_12 // loc=0x12
         u8 \label, ChoiceCursorPos // loc=0x13
@@ -32,10 +32,11 @@
         u8 \label, Unk_19 // loc=0x19
         u8 \label, CursorIdx // loc=0x1A
         u8 \label, Unk_1B // loc=0x1B
-        u8 \label, Unk_1C // loc=0x1C
-        u8 \label, Unk_1D // loc=0x1D
-        u8 \label, Unk_1E // loc=0x1E
-        u8 \label, Unk_1F // loc=0x1F
+        u8 \label, CurTileXBlockPos // loc=0x1C
+        u8 \label, CurTileYBlockPos // loc=0x1D
+        // size in number of u16 TileIds to copy
+        u8 \label, CurTileWidth16 // loc=0x1E
+        u8 \label, CurTileHeight16 // loc=0x1F
         u16 \label, Und_20 // loc=0x20
         // joypad inner struct? also in AIData
         u16 \label, JoypadHeld // loc=0x22

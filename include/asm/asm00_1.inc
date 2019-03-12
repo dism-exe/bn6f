@@ -355,7 +355,7 @@
 // .global sub_801E5F8
 // .global sub_801E724
 // .global sub_801E754
-// .global loc_801E792
+// .global sub_801E792
 
 	.include "asm/asm01.inc"
 // .global sub_801FE00
@@ -1329,7 +1329,7 @@
 // .equ dword_3002184, 0x3002184
 // .equ dword_3002188, 0x3002188
 // .equ dword_300218C, 0x300218C
-// .equ unk_30025C0, 0x30025C0
+// .equ iBGTileIdBlocks, 0x30025C0
 	.equ Window0HorizontalDimensions, 0x4000040
 	.equ IWRAMRoutinesROMLocation, 0x81D6000
 	.equ IWRAMRoutinesROMLocation, 0x81D6000

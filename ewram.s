@@ -284,7 +284,6 @@ unk_200119C:: // 0x200119c
 	.space 2
 unk_200119E:: // 0x200119E
 	.space 382
-unk_200131C:: // 0x200131c
 	.space 212
 eRngSeed20013F0:: // 0x20013f0
 	.space 16
@@ -358,21 +357,11 @@ eGameState:: // 0x2001b80
 eGameStateEnd::
 	.space 4
 unk_2001C04:: // 0x2001c04
-	.space 132
- bbbbgggvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               :: // 0x2001c88
-	.space 1264
-unk_2002178:: // 0x2002178
-	.space 164
-unk_200221C:: // 0x200221c
-	.space 20
+	.space 1580
 unk_2002230:: // 0x2002230
 	.space 236
 unk_200231C:: // 0x200231c
-	.space 2048
-unk_2002B1C:: // 0x2002b1c
-	.space 512
-unk_2002D1C:: // 0x2002d1c
-	.space 1048
+	.space 3608
 unk_2003134:: // 0x2003134
 	.space 404
 unk_20032C8:: // 0x20032c8
@@ -396,9 +385,7 @@ unk_2004334:: // 0x2004334
 unk_2004338:: // 0x2004338
 	.space 16
 unk_2004348:: // 0x2004348
-	.space 468
-unk_200451C:: // 0x200451c
-	.space 688
+	.space 1156
 unk_20047CC:: // 0x20047cc
 	.space 704
 unk_2004A8C:: // 0x2004a8c
@@ -534,9 +521,7 @@ word_2006E02:: // 0x2006e02
 word_2006E04:: // 0x2006e04
 	.space 4
 unk_2006E08:: // 0x2006e08
-	.space 20
-unk_2006E1C:: // 0x2006e1c
-	.space 220
+	.space 240
 unk_2006EF8:: // 0x2006ef8
 	.space 4728
 unk_2008170:: // 0x2008170
@@ -1615,9 +1600,7 @@ word_2010CD4:: // 0x2010cd4
 word_2010CD6:: // 0x2010cd6
 	.space 4
 word_2010CDA:: // 0x2010cda
-	.space 1602
-unk_201131C:: // 0x201131c
-	.space 1252
+	.space 2854
 byte_2011800:: // 0x2011800
 	.space 5
 byte_2011805:: // 0x2011805
@@ -1755,29 +1738,9 @@ dword_2011EF4:: // 0x2011ef4
 unk_201211C:: // 0x201211c
 	.space 256
 unk_201221C:: // 0x201221c
-	.space 2304
-unk_2012B1C:: // 0x2012b1c
-	.space 2560
-unk_201351C:: // 0x201351c
-	.space 256
-unk_201361C:: // 0x201361c
-	.space 512
-unk_201381C:: // 0x201381c
-	.space 140
+	.space 5772
 byte_20138A8:: // 0x20138a8
-	.space 1
-byte_20138A9:: // 0x20138a9
-	.space 3
-dword_20138AC:: // 0x20138ac
-	.space 4
-dword_20138B0:: // 0x20138b0
-	.space 4
-dword_20138B4:: // 0x20138b4
-	.space 4
-dword_20138B8:: // 0x20138b8
-	.space 4
-dword_20138BC:: // 0x20138bc
-	.space 100
+	.space 120
 dword_2013920:: // 0x2013920
 	.space 4
 word_2013924:: // 0x2013924
@@ -2134,7 +2097,6 @@ unk_2020484:: // 0x2020484
 	.space 124
 unk_2020500:: // 0x2020500
 	.space 524
-unk_202070C:: // 0x202070c
 	.space 788
 unk_2020A20:: // 0x2020a20
 	.space 480
@@ -2170,7 +2132,6 @@ byte_2022B94:: // 0x2022b94
 	.space 108
 byte_2022C00:: // 0x2022c00
 	.space 284
-byte_2022D1C:: // 0x2022d1c
 	.space 644
 eGuiSprite2022FA0:: // 0x2022fa0
 	.space 512

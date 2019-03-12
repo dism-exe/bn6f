@@ -114,7 +114,7 @@
 
 /* External Symbols */
 	.include "asm/asm38.inc"
-// .global iCopyTiles
+// .global iCopyBackgroundTiles
 // .global sub_30078C8
 // .global sub_30078E0
 // .global sub_3007958
@@ -127,7 +127,7 @@
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global sub_8000E30
 // .global GetPositiveSignedRNG2
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
 
 	.include "asm/asm00_1.inc"
 // .global object_freeMemory
@@ -156,7 +156,7 @@
 // .global object_getFlag2
 // .global sub_801BDDE
 // .global sub_801E754
-// .global loc_801E792
+// .global sub_801E792
 
 	.include "asm/asm03_0.inc"
 // .global sub_802CE10

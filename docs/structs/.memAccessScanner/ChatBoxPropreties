@@ -11,7 +11,7 @@ Functions = [
   0x8040128, # 0x8040128 <dword_8040128>
   0x80401F0, # 0x804017C <chatbox_804017C>
   0x8040318, # 0x8040314 <dword_8040314>
-  0x8040358, # 0x8040344 <chatbox_copyTiles_8040344>
+  0x8040358, # 0x8040344 <chatbox_CopyBackgroundTiles_8040344>
   0x80407EC, # 0x80407C8 <chatbox_map_80407C8>
   0x8040800, # 0x8040800 <>
   0x80408A4, # 0x80408A4 <dword_80408A4>
