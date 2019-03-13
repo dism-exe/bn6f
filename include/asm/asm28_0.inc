@@ -29,7 +29,7 @@
 	.global byte_809D328
 	.global sub_809E04C
 	.global sub_809E064
-	.global setFlag3_2e2_2001C88
+	.global setEventFlag_809E098
 	.global updateFlags_809E0B0 // () -> void
 	.global sub_809E0FC
 	.global sub_809E114

@@ -1146,18 +1146,14 @@ locret_813BF18:
 sub_813BF1C:
 	push {r4-r7,lr}
 	mov r6, #1
-	// entryIdx
-	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x20 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r0, #EVENT_G17
+	mov r1, #EVENT_G17_B4_FLAG7
+	bl TestEventFlagFromImmediate
 	beq loc_813BF36
 	b loc_813BF38
-	// entryIdx
 	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x23 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r1, #0x23
+	bl TestEventFlagFromImmediate
 	bne loc_813BF38
 loc_813BF36:
 	mov r6, #0
@@ -1667,11 +1663,9 @@ sub_813C3AC:
 	b loc_813C3CC
 loc_813C3B8:
 	bl sub_813C458
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
-	mov r1, #0x63 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r1, #0x63
+	bl TestEventFlagFromImmediate
 	beq loc_813C3CC
 	bl sub_8121154
 	b loc_813C3CC
@@ -1681,11 +1675,9 @@ loc_813C3CC:
 	ldrb r0, [r0,#oGameState_MapGroup]
 	cmp r0, #0x80
 	bge loc_813C40E
-	// entryIdx
-	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x1d
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r0, #EVENT_G17
+	mov r1, #EVENT_G17_NAVI_ACTIVE
+	bl TestEventFlagFromImmediate
 	beq locret_813C454
 	mov r0, #0
 	mov r1, #0x42 
@@ -1749,7 +1741,7 @@ sub_813C458:
 	bl sub_813C678
 	mov r0, #0x17
 	mov r1, #0xd
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	bl sub_813C684
 	bl sub_813CBCC
 	mov r0, r4
@@ -2704,9 +2696,9 @@ off_813CBC8: .word 0x1F4
 	thumb_local_start
 sub_813CBCC:
 	push {r4-r7,lr}
-	mov r0, #0x17
-	mov r1, #0x20 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	mov r0, #EVENT_G17
+	mov r1, #EVENT_G17_B4_FLAG7
+	bl ClearEventFlagFromImmediate
 	bl sub_813C490
 	cmp r0, #1
 	bne loc_813CBE4
@@ -2729,11 +2721,9 @@ loc_813CBE6:
 	beq loc_813CC0C
 	mov lr, pc
 	bx r1
-	// entryIdx
-	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x20 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	mov r0, #EVENT_G17
+	mov r1, #EVENT_G17_B4_FLAG7
+	bl SetEventFlagFromImmediate
 loc_813CC0C:
 	add r6, #1
 	cmp r6, #0x10

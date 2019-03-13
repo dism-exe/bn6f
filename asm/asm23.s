@@ -956,23 +956,19 @@ sub_8089A60:
 	bl sub_814219C
 	str r0, [r7,#0x10]
 	bl sub_81422B4
-	// entryIdx
 	mov r0, #7
-	// byteFlagIdx
-	mov r1, #0x40 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	mov r1, #0x40
+	bl SetEventFlagFromImmediate
 	mov r0, #2
 	mov r1, #0x25 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	mov r1, #0
 	strb r1, [r0,#oGameState_Unk_15]
-	// entryIdx
 	mov r0, #0
-	// byteFlagIdx
-	mov r1, #0x28 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r1, #0x28
+	bl TestEventFlagFromImmediate
 	bne loc_8089ABA
 	bl sub_81426CE
 	cmp r0, #6
@@ -1133,11 +1129,9 @@ sub_8089BC0:
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
 	bne loc_8089BE0
-	// entryIdx
 	mov r0, #7
-	// byteFlagIdx
-	mov r1, #0x45 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	mov r1, #0x45
+	bl SetEventFlagFromImmediate
 	mov r0, #0
 	strb r0, [r5,#8]
 	mov r0, #0x1e

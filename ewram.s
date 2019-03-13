@@ -351,7 +351,9 @@ eGameState:: // 0x2001b80
 eGameStateEnd::
 	.space 4
 unk_2001C04:: // 0x2001c04
-	.space 1580
+	.space 132
+eEventFlags:: // 0x2001C88
+    .space 1448
 unk_2002230:: // 0x2002230
 	.space 236
 unk_200231C:: // 0x200231c

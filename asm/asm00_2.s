@@ -2763,11 +2763,9 @@ sub_80101F8:
 	mov r4, r0
 	cmp r4, #0
 	bne loc_8010216
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
-	mov r1, #0x63 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r1, #0x63
+	bl TestEventFlagFromImmediate
 	bne loc_8010216
 	bl notZero_eByte200AD04
 	beq loc_8010216
@@ -27191,11 +27189,9 @@ sub_801D814:
 	beq loc_801D84A
 	cmp r0, #5
 	beq loc_801D848
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
-	mov r1, #0x63 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r1, #0x63
+	bl TestEventFlagFromImmediate
 	bne loc_801D84A
 	bl sub_802E09A
 	bne loc_801D84A
@@ -27203,11 +27199,9 @@ sub_801D814:
 	ldr r1, dword_801D850 // =0x200000 
 	tst r0, r1
 	bne loc_801D84A
-	// entryIdx
 	mov r0, #0
-	// byteFlagIdx
 	mov r1, #0xe0
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_801D84A
 loc_801D848:
 	mov r4, #1

@@ -32,7 +32,7 @@
         ptr \label, TwoTextRelatedPointers // loc=0x28
 
         // implied size via ZeroFillByWord(&eReqBBSGui, 0x2C)
-		u0 \label, Size // loc=0x20
+		u0 \label, Size // loc=0x2C
 	.endm
 
 	def_struct_offsets req_bbs_gui_struct, oReqBBSGui

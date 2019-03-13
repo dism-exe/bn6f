@@ -7519,11 +7519,9 @@ loc_8029F88:
 	ldr r1, dword_8029FB0 // =0x200000 
 	tst r0, r1
 	bne loc_8029FAC
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
-	mov r1, #0x63 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r1, #0x63
+	bl TestEventFlagFromImmediate
 	beq loc_8029FA4
 	ldrb r0, [r5,#0x10]
 	cmp r0, #0
@@ -7550,11 +7548,9 @@ sub_8029FB4:
 	ldrb r0, [r5,#0x10]
 	cmp r0, #0
 	bne loc_8029FEC
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
-	mov r1, #0x63 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r1, #0x63
+	bl TestEventFlagFromImmediate
 	bne loc_8029FEC
 	bl sub_802E09A
 	bne loc_8029FEC
@@ -7562,11 +7558,9 @@ sub_8029FB4:
 	ldr r1, dword_8029FF0 // =0x200000 
 	tst r0, r1
 	bne loc_8029FEC
-	// entryIdx
 	mov r0, #0
-	// byteFlagIdx
 	mov r1, #0xe0
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_8029FEC
 loc_8029FEA:
 	mov r4, #1
@@ -7808,11 +7802,9 @@ locret_802A21E:
 sub_802A220:
 	push {r4,r6,r7,lr}
 	mov r4, #0xff
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
-	mov r1, #0x63 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r1, #0x63
+	bl TestEventFlagFromImmediate
 	bne loc_802A2A2
 	bl sub_802D246 // () -> int
 	ldr r1, dword_802A2A8 // =0x200000 
@@ -8527,16 +8519,12 @@ off_802A898: .word sub_802A8A4+1
 	thumb_local_start
 sub_802A8A4:
 	push {lr}
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
 	mov r1, #0x97
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-	// entryIdx
+	bl SetEventFlagFromImmediate
 	mov r0, #1
-	// byteFlagIdx
 	mov r1, #0xad
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	bl decomp_802B060
 	ldr r0, off_802A918 // =unk_2035000 
 	ldr r1, dword_802A91C // =0x9070 
@@ -14016,11 +14004,9 @@ sub_802D658:
 sub_802D65E:
 	push {r4,lr}
 	mov r4, r0
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
 	mov r1, #0xd8
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq locret_802D68A
 	ldr r1, dword_802D69C // =0x196 
 	add r1, r1, r4
@@ -15281,11 +15267,9 @@ sub_802E112:
 	mov r1, #8
 	tst r0, r1
 	beq locret_802E154
-	// entryIdx
 	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x22 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r1, #0x22
+	bl TestEventFlagFromImmediate
 	beq locret_802E154
 loc_802E14E:
 	mov r0, #0x40 
@@ -17202,6 +17186,8 @@ SetEventFlagFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
+	thumb_func_end SetEventFlagFromImmediate
+
 
 // Sets a flag at eEventFlags
 // r0 - flag to set
@@ -17232,7 +17218,6 @@ SetEventFlag:
 	strb r0, [r3]
 	mov pc, lr
 	thumb_func_end SetEventFlag
-	thumb_func_end SetEventFlagFromImmediate
 
 /* (r0:u8 flagUpper, r1:u8 flagLower) -> void
    clobbers: r0,r1,r3
@@ -17252,7 +17237,7 @@ ClearEventFlagFromImmediate:
 	thumb_func_start ClearEventFlag
 ClearEventFlag:
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
+	ldr r3, [r3,#oToolkit_EventFlagsPtr]
 
 	// get byte offset of flag in memory
 	lsr r1, r0, #3
@@ -17293,7 +17278,7 @@ ToggleEventFlagFromImmediate:
 	thumb_func_start ToggleEventFlag
 ToggleEventFlag:
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
+	ldr r3, [r3,#oToolkit_EventFlagsPtr]
 
 	// get byte offset of flag in memory
 	lsr r1, r0, #3
@@ -17314,7 +17299,7 @@ ToggleEventFlag:
 	mov pc, lr
 	thumb_func_end ToggleEventFlag
 
-/* (r0:u8 flagUpper, r1:u8 flagLower) -> zf
+/* (r0:u8 eventGroupOffset, r1:u8 byteAndFlagOffset) -> zf
    clobbers: r0,r1,r3
    ignores: r2,r4-r9,r11,r12 */
 	thumb_func_start TestEventFlagFromImmediate
@@ -17325,7 +17310,8 @@ TestEventFlagFromImmediate:
     thumb_func_end TestEventFlagFromImmediate
 
 // Test a flag at eEventFlags
-// r0 - flag to test
+// r0[15:3] = event byte offset
+// r0[2:0] = event bit offset
 
 /* (r0:u16 flagToTest) -> zf
    clobbers: r0,r1,r3
@@ -17333,7 +17319,7 @@ TestEventFlagFromImmediate:
 	thumb_func_start TestEventFlag
 TestEventFlag:
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
+	ldr r3, [r3,#oToolkit_EventFlagsPtr]
 
 	// get byte offset of flag in memory
 	lsr r1, r0, #3
@@ -17376,7 +17362,7 @@ SetEventFlagRangeFromImmediate:
 SetEventFlagRange:
 	push {r4,r5,lr}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
+	ldr r4, [r4,#oToolkit_EventFlagsPtr]
 	mov r5, r0
 
 // r2 = number of event flags left to set
@@ -17433,7 +17419,7 @@ ClearEventFlagRangeFromImmediate:
 ClearEventFlagRange:
 	push {r4,r5,lr}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
+	ldr r4, [r4,#oToolkit_EventFlagsPtr]
 	mov r5, r0
 
 // r2 = number of event flags left to clear
@@ -17490,7 +17476,7 @@ ToggleEventFlagRangeFromImmediate:
 ToggleEventFlagRange:
 	push {r4,r5,lr}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_EventFlagsPtr] // Toolkit.eEventFlags
+	ldr r4, [r4,#oToolkit_EventFlagsPtr]
 	mov r5, r0
 
 // r2 = number of event flags left to toggle
@@ -18118,22 +18104,18 @@ loc_802F776:
 	ldrb r0, [r5,#2]
 	tst r0, r0
 	beq locret_802F7E0
-	// entryIdx
 	mov r0, #0x17
-	// byteFlagIdx
 	mov r1, #4
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	b locret_802F7E0
 loc_802F79A:
 	ldrb r0, [r5,#2]
 	tst r0, r0
 	beq loc_802F7B6
 	bl sub_8004D48
-	// entryIdx
 	mov r0, #0x17
-	// byteFlagIdx
 	mov r1, #4
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	bl sub_81440D8 // static () -> void
 	bl sub_8149644
 	b locret_802F7E0
@@ -18148,11 +18130,9 @@ loc_802F7B6:
 	ldrb r0, [r5,#2]
 	tst r0, r0
 	beq loc_802F7DC
-	// entryIdx
 	mov r0, #0x17
-	// byteFlagIdx
 	mov r1, #4
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 loc_802F7DC:
 	bl sub_81440D8 // static () -> void
 locret_802F7E0:

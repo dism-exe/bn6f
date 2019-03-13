@@ -1844,11 +1844,9 @@ ReqBBSSubSystemJumpTable:
 	thumb_local_start
 OpenReqBBSMenu813F474:
 	push {lr}
-	// entryIdx
 	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x3a 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r1, #0x3a
+	bl TestEventFlagFromImmediate
 	beq loc_813F4B6
 	ldr r0, off_813F548 // =eReqBBSGui
 	ldr r1, dword_813F544 // =0xf 
@@ -1870,7 +1868,7 @@ OpenReqBBSMenu813F474:
 	bl SetEventFlag
 	mov r0, #0x17
 	mov r1, #0x3a 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	ldr r0, off_813F548 // =eReqBBSGui
 	ldr r1, dword_813F544 // =0xf 
 	mov r3, #0
@@ -2728,11 +2726,9 @@ loc_813FB40:
 	mov r0, #8
 	bl chatbox_check_eFlags2009F38
 	beq loc_813FB98
-	// entryIdx
 	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x3a 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r1, #0x3a
+	bl TestEventFlagFromImmediate
 	beq loc_813FB6E
 	ldr r0, off_813FBB4 // =reqBBS_requestInfo_textOffsets 
 	ldr r1, off_813FDA4 // =eReqBBSGui
@@ -4166,11 +4162,9 @@ dword_81407D4: .word 0xD
 	thumb_func_start reqBBS_81407D8
 reqBBS_81407D8:
 	push {r4-r7,lr}
-	// entryIdx
 	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x3a 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r1, #0x3a
+	bl TestEventFlagFromImmediate
 	beq loc_8140814
 	ldr r0, off_81409B4 // =eReqBBSGui
 	ldr r1, dword_8140820 // =0xf 
@@ -4331,15 +4325,15 @@ reqBBS_81408F0:
 	// flag 5 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
 	mov r0, #0x17
 	mov r1, #0x3a 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_8140962
 	bl reqBBS_81408C8
 	bl reqBBS_8140884
 	tst r0, r0
 	bne loc_8140966
-	mov r0, #0x17
-	mov r1, #0x1d
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r0, #EVENT_G17
+	mov r1, #EVENT_G17_NAVI_ACTIVE
+	bl TestEventFlagFromImmediate
 	beq loc_814095A
 	bl getPETNaviSelect // () -> u8
 	cmp r0, #0
@@ -4347,11 +4341,11 @@ reqBBS_81408F0:
 	// flag 5 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
 	mov r0, #0x17
 	mov r1, #0x3a 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	// flag 3 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
 	mov r0, #0x17
 	mov r1, #0x3c 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	bl reqBBS_81408C8
 	bl reqBBS_81408A0
 	bl reqBBS_81408DC
@@ -4456,7 +4450,7 @@ reqBBS_setFlag_e17b0f7_8140A00:
 	// flag 7 @ 0x2001C88[0x17<<5 + 0x0] (=2001F68)
 	mov r0, #0x17
 	mov r1, #0
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end reqBBS_setFlag_e17b0f7_8140A00
 
@@ -4466,7 +4460,7 @@ reqBBS_clearFlag_8140A0C:
 	// flag 7 @ 0x2001C88[0x17<<5 + 0x0] (=2001F68)
 	mov r0, #0x17
 	mov r1, #0
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_Unk2001c04_Ptr]
 	mov r3, #0x14

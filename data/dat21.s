@@ -2429,23 +2429,23 @@ sub_8086DF8:
 	bl sub_8086EEC
 	mov r0, #5
 	mov r1, #0xf2
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq locret_8086E6A
 	bl sub_8087238
 	mov r0, #5
 	mov r1, #0xe4
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_8086E50
 	bl sub_8086FA4
 	cmp r0, #0
 	beq locret_8086E6A
 	mov r0, #5
 	mov r1, #0xff
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_8086E50
 	mov r0, #5
 	mov r1, #0xe5
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 loc_8086E50:
 	mov r1, r10
 	ldr r1, [r1,#0x3c]

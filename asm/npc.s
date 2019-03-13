@@ -797,11 +797,9 @@ dword_809EBB8: .word 0x800
 	thumb_local_start
 npc_809EBBC:
 	push {lr}
-	// entryIdx
 	mov r0, #0x17
-	// byteFlagIdx
 	mov r1, #0x15
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne locret_809EBDA
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]

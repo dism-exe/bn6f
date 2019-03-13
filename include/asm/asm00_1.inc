@@ -512,7 +512,7 @@
 // .global byte_809B5AD
 // .global sub_809D19C
 // .global sub_809E04C
-// .global setFlag3_2e2_2001C88
+// .global setEventFlag_809E098
 // .global sub_809E2C2
 // .global sub_809E2F4
 // .global sub_809E2FC

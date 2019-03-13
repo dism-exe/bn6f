@@ -21568,11 +21568,9 @@ loc_8119B02:
 	mov r4, r0
 	bl notZero_eByte200AD04
 	beq loc_8119B22
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
 	mov r1, #0x63
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_8119B22
 	mov r0, #0xc
 	add r0, r0, r4
@@ -21745,11 +21743,9 @@ sub_8119C94:
 	mov r1, #0x17
 	bl sub_80137B6 // (int a1, int a2) -> u8
 	mov r4, r0
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
 	mov r1, #0x63
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_8119CB6
 	mov r0, #0x17
 	add r4, r4, r0
@@ -21844,18 +21840,14 @@ sub_8119DE8:
 	ldrb r4, [r6]
 	mov r1, #0x80
 	orr r4, r1
-	// entryIdx
-	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x20
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r0, #EVENT_G17
+	mov r1, #EVENT_G17_B4_FLAG7
+	bl TestEventFlagFromImmediate
 	bne loc_8119E1A
 	b loc_8119E18
-	// entryIdx
 	mov r0, #0x17
-	// byteFlagIdx
 	mov r1, #0x23
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_8119E1A
 loc_8119E18:
 	mov r4, #1
@@ -25605,11 +25597,9 @@ sub_811BD88:
 	mov r4, r0
 	bl notZero_eByte200AD04
 	beq loc_811BDB4
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
 	mov r1, #0x63
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_811BDB4
 	mov r1, #0x17
 	add r4, r4, r1
@@ -28936,11 +28926,9 @@ sub_811DF94:
 	bl sprite_noShadow // () -> void
 	b loc_811DFBA
 loc_811DFB0:
-	// entryIdx
 	mov r0, #0xb
-	// byteFlagIdx
 	mov r1, #0xf2
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_811DFC0
 loc_811DFBA:
 	bl sub_811DFD4
@@ -30544,11 +30532,9 @@ loc_811EDF2:
 	b loc_811EE82
 loc_811EE08:
 	mov r4, r0
-	// entryIdx
 	mov r0, #0x17
-	// byteFlagIdx
 	mov r1, #6
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_811EE24
 	cmp r4, #6
 	beq loc_811EE1C
@@ -30646,11 +30632,9 @@ sub_811EED0:
 	bl sub_811EBF4
 	mov r0, #SOUND_UNSELECT_7C
 	bl PlaySoundEffect
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
 	mov r1, #0x63
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_811EEF8
 	bl getPETNaviSelect // () -> u8
 	cmp r0, #0
@@ -30926,11 +30910,9 @@ loc_811F122:
 	ldr r1, dword_811F178 // =0x7bfe
 	strh r1, [r2]
 loc_811F13C:
-	// entryIdx
 	mov r0, #0x17
-	// byteFlagIdx
 	mov r1, #6
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq locret_811F150
 	ldr r2, [r4,#0x1c] // (off_811F174 - 0x811f158)
 	ldr r1, dword_811F180 // =0x5a7a
@@ -34519,11 +34501,9 @@ loc_8120E22:
 	mov r7, r0
 	cmp r7, #0
 	bne loc_8120E56
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
 	mov r1, #0x63
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_8120E56
 	mov r7, r4
 	mov r6, #0
@@ -34570,11 +34550,9 @@ loc_8120E7C:
 	bne loc_8120E9A
 loc_8120E8C:
 	push {r0,r1}
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
 	mov r1, #0x63
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	pop {r0,r1}
 	bne loc_8120EA0
 loc_8120E9A:
@@ -34585,11 +34563,9 @@ loc_8120EA0:
 	add r6, #4
 	b loc_8120E66
 loc_8120EA6:
-	// entryIdx
 	mov r0, #1
-	// byteFlagIdx
 	mov r1, #0x63
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_8120EF2
 	bl getPETNaviSelect // () -> u8
 	cmp r0, #0

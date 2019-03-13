@@ -19,7 +19,7 @@ int sub_8098BE8()
 
 
 // 0x8099218
-int map_8099218()
+int RunLMessageTextScript()
 {
     Toolkit *tk; // r10
     char zf; // zf
@@ -3650,7 +3650,7 @@ int sub_809E08A()
 
 
 // 0x809e098
-unsigned int setFlag3_2e2_2001C88()
+unsigned int setEventFlag_809E098()
 {
     return SetEventFlagFromImmediate(23, 20);
 }
@@ -3658,7 +3658,7 @@ unsigned int setFlag3_2e2_2001C88()
 
 // 0x809e0a4
 // () -> void
-unsigned int clearFlag3_2e2_2001C88()
+unsigned int clearEventFlag_809E0A4()
 {
     return ClearEventFlagFromImmediate(23, 20);
 }
@@ -3670,7 +3670,7 @@ unsigned int updateFlags_809E0B0()
 {
     byte_200ACE0 = 1;
     SetEventFlagFromImmediate(23, 24);
-    return clearFlag3_2e2_2001C88();
+    return clearEventFlag_809E0A4();
 }
 
 
@@ -3733,7 +3733,7 @@ int sub_809E114()
 unsigned int sub_809E122()
 {
     byte_200ACE0 = 0;
-    setFlag3_2e2_2001C88();
+    setEventFlag_809E098();
     return ClearEventFlagFromImmediate(23, 25);
 }
 

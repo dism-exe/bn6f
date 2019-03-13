@@ -1423,11 +1423,9 @@ sub_8000EE4:
 	push {r4-r7,lr}
 	mov r4, #0
 	mov r7, #0
-	// entryIdx
 	mov r0, #0xe
-	// byteFlagIdx
 	mov r1, #0
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_8000EFA
 	add r4, #1
 	mov r0, #0x80
@@ -1473,21 +1471,17 @@ loc_8000F3A:
 	mov r0, #4
 	orr r7, r0
 loc_8000F4A:
-	// entryIdx
 	mov r0, #3
-	// byteFlagIdx
 	mov r1, #0x70
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_8000F5A
 	add r4, #1
 	mov r0, #2
 	orr r7, r0
 loc_8000F5A:
-	// entryIdx
 	mov r0, #3
-	// byteFlagIdx
 	mov r1, #0x40
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_8000F6C
 	add r4, #1
 	mov r0, #0x10
@@ -1518,11 +1512,11 @@ sub_8000F86:
 	// flag 7 @ 0x2001C88[0xE<<5 + 0x0] (=2001E48)
 	mov r0, #0xe
 	mov r1, #0
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	// flag 6 @ 0x2001C88[0x10<<5 + 0x0] (=2001E88)
 	mov r0, #0x10
 	mov r1, #1
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
 	str r4, [r0,#0x18]
@@ -1539,7 +1533,7 @@ sub_8000FAC:
 	// flag 3 @ 0x2001C88[0x17<<5 + 0x1] (=2001F69)
 	mov r0, #0x17
 	mov r1, #0xc
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_8000FCE
 	ldrb r0, [r5,#oGameState_MapGroup]
 	ldrb r1, [r5,#oGameState_LastMapGroup]
@@ -1561,7 +1555,7 @@ loc_8000FCE:
 loc_8000FDC:
 	mov r0, #0x17
 	mov r1, #0xc
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
 	thumb_func_end sub_8000FAC
 

@@ -9025,7 +9025,7 @@ sub_804C074:
 	push {r4-r7,lr}
 	mov r0, #4
 	mov r1, #0xfe
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r4, r10
 	ldr r1, [r4,#oToolkit_RenderInfoPtr]
 	ldrh r0, [r1]
@@ -9074,11 +9074,11 @@ sub_804C08C:
 	strb r0, [r5,#0x18]
 	mov r0, #4
 	mov r1, #0xfb
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_804C0EE
 	mov r0, #4
 	mov r1, #0xfe
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_804C0EE
 	bl sub_804C2D0
 loc_804C0EE:
@@ -9087,7 +9087,7 @@ loc_804C0EE:
 	strb r0, [r5,#0x10]
 	mov r0, #4
 	mov r1, #0xfe
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	bl sub_804C11C
 	pop {r4-r7,pc}
 off_804C104: .word byte_869D76C
@@ -10445,7 +10445,7 @@ sub_804CDD4:
 	strh r0, [r4]
 	mov r0, #0xb
 	mov r1, #0xf0
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_804CDF0
 	bl sub_804CE3C
 loc_804CDF0:

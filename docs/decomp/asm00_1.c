@@ -2023,7 +2023,7 @@ char *sub_8004D48()
     dword_200ACF8 = 0;
     dword_200AD00 = 0;
     byte_200ACFC = -1;
-    setFlag3_2e2_2001C88();
+    setEventFlag_809E098();
     sCamera.unk_4C = 0;
     LOBYTE(dword_20096D0) = 0;
     sub_8004702();

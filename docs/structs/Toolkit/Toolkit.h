@@ -66,21 +66,6 @@ typedef struct{
 	void *unk_2001C04;				// loc=0x40
 
 	// 02001C88
-	/*
-	bot dog disappeared while zeroing this
-	Array of flags seems to be involved with different gamestate
-	conditionals
-	Each entry is 32 bytes.
-	Entry 0x16:
-		flags 0x2e3
-		1<<2 - Makes Navi Icon visible next to PET.
-					 HP Becomes 0/0
-		1<<7 - activates when pressing L, jacking in,
-				   and talking to objects (but not NPCs?)
-					 Otherwise, it's constantly cleared
-					 when chats are inactive
-
-	*/
 	u8 *eEventFlags;				// loc=0x44
 	/*
 	Involved w/ chip data. When changed, and modifying folder,
