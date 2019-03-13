@@ -61,17 +61,17 @@ reqBBS_jtDraw_813E0CC: .word reqBBS_static_draw_813E0F8+1
 reqBBS_static_draw_813E0F8:
 	push {lr}
 	mov r0, #0
-	strb r0, [r5,#0x8] // reqBBS_GUI.animationTimer0
-	strh r0, [r5,#0x20] // reqBBS_GUI.cursorPos
-	strh r0, [r5,#0x24] // reqBBS_GUI.pagePos
-	strh r0, [r5,#0x26] // reqBBS_GUI.RO_pagePos
-	strb r0, [r5,#0x9] // reqBBS_GUI.animationTimer1
-	strb r0, [r5,#0xb] // reqBBS_GUI.unk_0B
-	bl reqBB_vram_813E6D0
+	strb r0, [r5,#oReqBBSGui_AnimationTimer0]
+	strh r0, [r5,#oReqBBSGui_CursorPos]
+	strh r0, [r5,#oReqBBSGui_PagePos]
+	strh r0, [r5,#oReqBBSGui_PagePosUpdate]
+	strb r0, [r5,#oReqBBSGui_AnimationTimer1]
+	strb r0, [r5,#oReqBBSGui_UnkState_0B]
+	bl reqBBS_vram_813E6D0
 	bl reqBBS_813E834
 	bl reqBBS_813E890
 	bl reqBBS_uncomp_813E5A0 // () -> void
-	ldrh r0, [r5,#0x24] // reqBBS_GUI.pagePos
+	ldrh r0, [r5,#oReqBBSGui_PagePos]
 	bl reqBBS_813E8CC
 	bl reqBBS_813EEF4
 	mov r7, r10
@@ -136,10 +136,10 @@ reqBBS_draw_813E188:
 	lsr r0, r0, #4
 	strb r0, [r7,#4]
 loc_813E1A2:
-	ldrh r0, [r5,#0x20] // reqBBS_GUI.cursorPos
+	ldrh r0, [r5,#oReqBBSGui_CursorPos]
 	strh r0, [r5,#0x22] // reqBBS_GUI.RO_cursorPos
-	ldrh r0, [r5,#0x24] // reqBBS_GUI.pagePos
-	strh r0, [r5,#0x26] // reqBBS_GUI.RO_pagePos
+	ldrh r0, [r5,#oReqBBSGui_PagePos]
+	strh r0, [r5,#oReqBBSGui_PagePosUpdate]
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_813E1B6
 	mov r0, #0
@@ -221,7 +221,7 @@ reqBBS_draw_813E224:
 	ldrb r1, [r0,#6]
 	add r1, #8
 	strb r1, [r0,#6]
-	ldrb r0, [r5,#0x8] // reqBBS_GUI.animationTimer0
+	ldrb r0, [r5,#oReqBBSGui_AnimationTimer0]
 	sub r0, #1
 	strb r0, [r5,#8]
 	bgt loc_813E282
@@ -229,8 +229,8 @@ reqBBS_draw_813E224:
 	ldr r0, [r0,#oToolkit_ChatboxPtr]
 	mov r1, #4
 	str r1, [r0,#0x4c]
-	ldrh r1, [r5,#0x24] // reqBBS_GUI.pagePos
-	ldrh r2, [r5,#0x20] // reqBBS_GUI.cursorPos
+	ldrh r1, [r5,#oReqBBSGui_PagePos]
+	ldrh r2, [r5,#oReqBBSGui_CursorPos]
 	add r2, r2, r1
 	ldr r7, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
 	ldr r0, [r7,#4]
@@ -280,8 +280,8 @@ loc_813E2C8:
 	mov r0, #8
 	bl chatbox_check_eFlags2009F38
 	beq loc_813E320
-	ldrh r0, [r5,#0x24] // reqBBS_GUI.pagePos
-	ldrh r1, [r5,#0x20] // reqBBS_GUI.cursorPos
+	ldrh r0, [r5,#oReqBBSGui_PagePos]
+	ldrh r1, [r5,#oReqBBSGui_CursorPos]
 	add r1, r1, r0
 	ldr r0, off_813E338 // =reqBBS_eRequestEntriesIDs 
 	ldr r2, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
@@ -352,9 +352,9 @@ reqBBS_draw_813E33C:
 	ldrb r1, [r0,#6]
 	sub r1, #8
 	strb r1, [r0,#6]
-	ldrb r0, [r5,#0x8] // reqBBS_GUI.animationTimer0
+	ldrb r0, [r5,#oReqBBSGui_AnimationTimer0]
 	sub r0, #1
-	strb r0, [r5,#0x8] // reqBBS_GUI.animationTimer0
+	strb r0, [r5,#oReqBBSGui_AnimationTimer0]
 	bgt loc_813E38E
 	mov r0, #4
 	strb r0, [r5]
@@ -807,7 +807,7 @@ off_813E6CC: .word unk_2000FF0
 	thumb_func_end reqBBS_813E660
 
 	thumb_local_start
-reqBB_vram_813E6D0:
+reqBBS_vram_813E6D0:
 	push {r5,lr}
 	bl zeroFillVRAM
 	bl ZeroFill_byte_3001960
@@ -887,7 +887,7 @@ off_813E80C: .word dword_87E7574
 	.byte 0xE0, 0x19, 0x0, 0x3, 0x60, 0x0, 0x0, 0x0
 	.word byte_87EF824
 	.byte 0x60, 0x19, 0x0, 0x3, 0x60, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	thumb_func_end reqBB_vram_813E6D0
+	thumb_func_end reqBBS_vram_813E6D0
 
 	thumb_local_start
 reqBBS_813E834:
@@ -1112,7 +1112,7 @@ off_813EA90: .word reqBBS_eRequestEntriesIDs
 	thumb_local_start
 reqBBS_static_813EA94:
 	push {r0-r7,lr}
-	ldrh r7, [r5,#0x24] // reqBBS_GUI.pagePos
+	ldrh r7, [r5,#oReqBBSGui_PagePos]
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_CurFramePtr]
 	ldrh r6, [r6]
@@ -1369,8 +1369,8 @@ off_813ED08: .word eTileIds2018A04
 	thumb_local_start
 reqBBS_drawHeaderText:
 	push {r4-r7,lr}
-	ldrh r0, [r5,#0x24] // reqBBS_GUI.pagePos
-	ldrh r1, [r5,#0x20] // reqBBS_GUI.cursorPos
+	ldrh r0, [r5,#oReqBBSGui_PagePos]
+	ldrh r1, [r5,#oReqBBSGui_CursorPos]
 	add r0, r0, r1
 	ldr r1, off_813ED30 // =reqBBS_eRequestEntriesIDs 
 	ldrb r1, [r1,r0]
@@ -1437,9 +1437,9 @@ reqBBS_813ED60:
 loc_813ED88:
 	mov r0, r1
 loc_813ED8A:
-	strh r0, [r5,#0x20] // reqBBS_GUI.cursorPos
-	strh r2, [r5,#0x24] // reqBBS_GUI.pagePos
-	strh r2, [r5,#0x26] // reqBBS_GUI.RO_pagePos
+	strh r0, [r5,#oReqBBSGui_CursorPos]
+	strh r2, [r5,#oReqBBSGui_PagePos]
+	strh r2, [r5,#oReqBBSGui_PagePosUpdate]
 locret_813ED90:
 	pop {r0,r4-r7,pc}
 	.balign 4, 0x00
@@ -1450,8 +1450,8 @@ off_813ED94: .word reqBBS_eRequestEntriesIDs
 reqBBS_813ED98:
 	push {r0-r7,lr}
 	ldrh r7, [r5,#0x1e] // reqBBS_GUI.totalNewRequests
-	ldrh r6, [r5,#0x20] // reqBBS_GUI.cursorPos
-	ldrh r4, [r5,#0x24] // reqBBS_GUI.pagePos
+	ldrh r6, [r5,#oReqBBSGui_CursorPos]
+	ldrh r4, [r5,#oReqBBSGui_PagePos]
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_JoypadPtr]
 	ldrh r0, [r3,#4]
@@ -3328,7 +3328,7 @@ byte_8140188: .byte 0x84, 0x0, 0x85, 0x0, 0x86, 0x0, 0x87, 0x0, 0x84, 0x0, 0x85
 	thumb_local_start
 reqBBS_renderRequestStatus:
 	push {r4-r7,lr}
-	ldrh r7, [r5,#0x24] // reqBBS_GUI.pagePos
+	ldrh r7, [r5,#oReqBBSGui_PagePos]
 	mov r6, #0
 loc_81401CE:
 	ldr r3, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
@@ -3396,7 +3396,7 @@ byte_8140244: .byte 0x8E, 0x0, 0x8F, 0x0, 0x90, 0x0, 0x91, 0x0
 	thumb_local_start
 reqBBS_renderRankStars:
 	push {r4-r7,lr}
-	ldrh r7, [r5,#0x24] // reqBBS_GUI.pagePos
+	ldrh r7, [r5,#oReqBBSGui_PagePos]
 	mov r6, #0
 loc_8140252:
 	ldr r3, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
@@ -3756,8 +3756,8 @@ sub_81404D0:
 	thumb_local_start
 reqBBS_renderSelectedEntry_HeaderText:
 	push {r4-r7,lr}
-	ldrh r0, [r5,#0x24] // reqBBS_GUI.pagePos
-	ldrh r1, [r5,#0x20] // reqBBS_GUI.cursorPos
+	ldrh r0, [r5,#oReqBBSGui_PagePos]
+	ldrh r1, [r5,#oReqBBSGui_CursorPos]
 	add r0, r0, r1
 	ldr r1, off_814050C // =reqBBS_eRequestEntriesIDs 
 	ldrb r1, [r1,r0]
@@ -3984,7 +3984,7 @@ locret_8140686:
 	thumb_local_start
 reqBBS_animateCursor:
 	push {r0-r7,lr}
-	ldrb r0, [r5,#0x9] // reqBBS_GUI.animationTimer1
+	ldrb r0, [r5,#oReqBBSGui_AnimationTimer1]
 	ldr r1, off_81406E0 // =dword_81406E4+2 
 	ldrb r0, [r1,r0]
 	lsl r0, r0, #7

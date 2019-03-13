@@ -90,8 +90,10 @@ class AsmFile:
         if self._is_code(line_num):
             code_end = self._find_code_end(line_num)
             return AsmFile.Unit(AsmFile.UNITS.CODE, ''.join(self.lines[line_num:code_end]), self.file_path, line_num)
-        if ':' in line:
-            return AsmFile.Unit(AsmFile.UNITS.LABEL, self.lines[line_num], self.file_path, line_num)
+        if has_label(line):
+            label_end = self._find_label_end(line_num)
+            return AsmFile.Unit(AsmFile.UNITS.LABEL, ''.join(self.lines[line_num:label_end]), self.file_path, line_num)
+        logging.error('unknown unit at %s:%d' % (self.file_path, line_num))
         return AsmFile.Unit(AsmFile.UNITS.ERROR, self.lines[line_num], self.file_path, line_num)
 
 
@@ -202,6 +204,15 @@ class AsmFile:
             cur_line = self._advance_line(cur_line+1)
         return cur_line
 
+    def _find_label_end(self, line_num):
+        cur_line = self._advance_line(line_num+1)
+        while cur_line < len(self.lines):
+            # a new label
+            if ':' in self.lines[cur_line]:
+                break
+            cur_line = self._advance_line(cur_line+1)
+        return cur_line
+
 
 def is_code(line):
     # check all possible mnemonics for code
@@ -219,7 +230,11 @@ def is_code(line):
 
 
 def is_data(line):
-    data_directives = ['.byte', '.hword', '.word', '.asciz', '.ascii', '.align', '.balign', '.incbin', '.space']
+    data_directives = \
+        [
+        '.byte', '.hword', '.word', '.asciz', '.ascii', '.align',
+        '.balign', '.incbin', '.space',
+        ]
     # filter label
     line = line.strip()
     if ':' in line:
@@ -639,7 +654,7 @@ def process_data(unit, sym_table, function_label='', dict_out=False):
                     xrefs_from.append(element)
         else:
             data_type = DATA_TYPES.ERROR
-            print('ERROR: invalid data format\n', function_label, '||', data_label, '||', unit.content)
+            logging.error('invalid data format\n', function_label, '||', data_label, '||', unit.content)
 
         # record number of elements
         if types[-1][0] == data_type and data_type != DATA_TYPES.ALIGN and data_type != DATA_TYPES.SPACE:
@@ -699,6 +714,25 @@ def process_data(unit, sym_table, function_label='', dict_out=False):
 
     return out
 
+def process_label(unit, sym_table, function_label='', dict_out=False):
+    content = filter_source(unit.content)
+    lines = content.split('\n')
+    label = get_label(lines[0]).replace(':', '')
+    if label.startswith('.'):
+        label = function_label + label
+    ea = sym_table[label]
+
+# construct output
+    if dict_out:
+        print(label)
+        out = {}
+        out['id'] = 'L'
+        out['ea'] = ea
+        out['name'] = label
+        out['unit'] = unit
+        out['path'] = '%s:%d\n' % (unit.file_path, unit.line_number)
+        return out
+    return ''
 
 def process_function_types(units, warning=False):
     # type: list[AsmFile.Unit] -> dict[str, str]
@@ -774,8 +808,10 @@ def read_repo(proj_path, elf_path, file_paths, info=False):
                 out.append(process_code(unit, sym_table, dict_out=True))
             elif unit.id == AsmFile.UNITS.DATA:
                 out.append(process_data(unit, sym_table, dict_out=True))
+            elif unit.id == AsmFile.UNITS.LABEL:
+                out.append(process_label(unit, sym_table, dict_out=True))
             else:
-                pass
+                logging.warning('could not process: ' + unit.content)
         return out
     finally:
         os.chdir(cwd)

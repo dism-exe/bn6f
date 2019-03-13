@@ -32,7 +32,7 @@ void __usercall reqBBS_static_draw_813E0F8(reqBBS_GUI *gui@<R5>, int a1@<R0>, in
     gui->RO_pagePos = 0;
     gui->animationTimer1 = 0;
     gui->unk_0B = 0;
-    reqBB_vram_813E6D0(gui);
+    reqBBS_vram_813E6D0(gui);
     reqBBS_813E834(gui);
     reqBBS_813E890(gui);
     reqBBS_uncomp_813E5A0(gui);
@@ -499,7 +499,7 @@ unsigned int reqBBS_813E660()
 
 
 // 0x813e6d0
-void __usercall reqBB_vram_813E6D0(reqBBS_GUI *gui@<R5>)
+void __usercall reqBBS_vram_813E6D0(reqBBS_GUI *gui@<R5>)
 {
     int v1; // r0
     int v2; // r1

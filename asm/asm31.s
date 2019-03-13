@@ -68,7 +68,7 @@ sub_80B8230:
 	mov r3, #0xff
 	bl sub_80C468C
 	str r0, [r5,#oBattleObject_ExtraVars]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 off_80B828C: .word byte_80B8294
@@ -305,7 +305,7 @@ loc_80B8420:
 	strb r0, [r5,#oObjectHeader_Flags]
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	bl sub_80C46B0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80B843A:
 	pop {pc}
@@ -550,7 +550,7 @@ sub_80B8600:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80B863A
 	pop {r7,pc}
@@ -938,7 +938,7 @@ sub_80B88F0:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80B88F0
@@ -1133,7 +1133,7 @@ loc_80B8A70:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0xf
 	bl sub_80E1352
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80B8AD4
 	pop {r4,r7,pc}
@@ -1237,7 +1237,7 @@ sub_80B8B6E:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sub_80E13DC
@@ -1393,7 +1393,7 @@ loc_80B8D94:
 	lsl r1, r1, #0x10
 	str r1, [r5,#oBattleObject_ZVelocity]
 loc_80B8D9C:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80B8DA6
 	pop {r4,pc}
@@ -1458,7 +1458,7 @@ loc_80B8E22:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80B8E2E:
 	pop {r4,pc}
@@ -1578,7 +1578,7 @@ sub_80B8EC4:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80B8EC4
@@ -1735,7 +1735,7 @@ loc_80B9000:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80B9012:
 	pop {pc}
@@ -1842,7 +1842,7 @@ sub_80B909C:
 	mov r1, #1
 	mov r2, #1
 	bl sub_8010DF6
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80B909C
@@ -2021,7 +2021,7 @@ loc_80B91FE:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80B9218:
 	pop {pc}
@@ -2152,7 +2152,7 @@ sub_80B92DC:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80B92DC
@@ -2316,7 +2316,7 @@ loc_80B941E:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80B9430:
 	pop {pc}
@@ -2430,7 +2430,7 @@ sub_80B94E0:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80B94E0
@@ -2742,7 +2742,7 @@ loc_80B9734:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80B974E:
 	pop {pc}
@@ -2847,7 +2847,7 @@ sub_80B97E4:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80B97E4
@@ -3051,7 +3051,7 @@ loc_80B9986:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80B9998:
 	pop {pc}
@@ -3125,7 +3125,7 @@ sub_80B99E4:
 	mov r1, #0xd
 	mov r2, #1
 	bl sub_8010DF6
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80B99E4
@@ -3310,7 +3310,7 @@ sub_80B9B58:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80B9B58
@@ -3441,11 +3441,11 @@ sub_80B9C38:
 	bl object_setCollisionHitEffect
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80B9C9A
 loc_80B9C96:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80B9C9A:
 	pop {pc}
@@ -3747,7 +3747,7 @@ loc_80B9EDE:
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80B9EEE
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80B9EEE:
 	pop {r4,pc}
@@ -3832,7 +3832,7 @@ sub_80B9F68:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80B9F68
@@ -4130,7 +4130,7 @@ loc_80BA19C:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BA1AE:
 	pop {pc}
@@ -4392,7 +4392,7 @@ sub_80BA388:
 	mov r1, #0xe
 	mov r2, #1
 	bl sub_8010DF6
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80BA388
@@ -4726,7 +4726,7 @@ loc_80BA60C:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BA62C:
 	pop {pc}
@@ -4756,7 +4756,7 @@ loc_80BA644:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BA65E:
 	pop {pc}
@@ -4897,7 +4897,7 @@ sub_80BA72C:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80BA72C
@@ -5143,7 +5143,7 @@ loc_80BA90C:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BA91E:
 	pop {pc}
@@ -5381,7 +5381,7 @@ sub_80BAAB0:
 	mov r1, #0x10
 	mov r2, #1
 	bl sub_8010DF6
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80BAAB0
@@ -5817,7 +5817,7 @@ loc_80BADFA:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BAE14:
 	pop {pc}
@@ -6073,7 +6073,7 @@ loc_80BAFA8:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0xf
 	bl sub_80E1352
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BB00C
 	pop {r4,r7,pc}
@@ -6224,7 +6224,7 @@ sub_80BB10C:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sub_80E13DC
@@ -6506,7 +6506,7 @@ loc_80BB2F8:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0xf
 	bl sub_80E1352
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BB35C
 	pop {r4,r7,pc}
@@ -6668,7 +6668,7 @@ sub_80BB46A:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sub_80E13DC
@@ -6911,7 +6911,7 @@ sub_80BB62C:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80BB62C
@@ -7132,7 +7132,7 @@ loc_80BB7E2:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BB7F4:
 	pop {pc}
@@ -7324,7 +7324,7 @@ sub_80BB938:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80BB938
@@ -7499,7 +7499,7 @@ loc_80BBAA4:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BBAB6:
 	pop {pc}
@@ -7511,7 +7511,7 @@ sub_80BBAB8:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80BBAB8
@@ -7672,7 +7672,7 @@ sub_80BBBBC:
 	mov r1, #9
 	mov r2, #1
 	bl sub_8010DF6
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80BBBBC
@@ -7924,7 +7924,7 @@ loc_80BBDCC:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BBDE6:
 	pop {pc}
@@ -8112,7 +8112,7 @@ sub_80BBF30:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80BBF30
@@ -8316,7 +8316,7 @@ loc_80BC0C6:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BC0D8:
 	pop {pc}
@@ -8449,7 +8449,7 @@ sub_80BC19C:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r0, #0x65 
 	mov r1, #0x60 
@@ -8670,7 +8670,7 @@ sub_80BC36E:
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldr r0, [r0,#oAIData_Unk_74]
 	bl sub_80E1A86
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BC388:
 	pop {pc}
@@ -8922,7 +8922,7 @@ sub_80BC524:
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
 	bl object_setCoordinatesFromPanels // () -> void
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sprite_update
 	bl sub_80BC56E
@@ -9148,7 +9148,7 @@ loc_80BC718:
 	bl sprite_forceWhitePalette
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+0x14]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	.word 0, 0
@@ -9291,7 +9291,7 @@ sub_80BC87C:
 	bl battle_isBattleOver
 	tst r0, r0
 	beq loc_80BC88A
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80BC88A:
 	ldr r1, off_80BC898 // =off_80BC89C 
@@ -9328,7 +9328,7 @@ sub_80BC8A8:
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
 	bl object_setCoordinatesFromPanels // () -> void
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BC8EC
 	pop {r4-r7,pc}
@@ -9423,7 +9423,7 @@ sub_80BC976:
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80BC996
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BC996:
 	pop {r4-r7,pc}
@@ -9541,7 +9541,7 @@ sub_80BCA24:
 	bl sprite_update
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BCA72
 	pop {r7,pc}
@@ -9617,7 +9617,7 @@ loc_80BCAF2:
 	cmp r0, #0x5a 
 	bne locret_80BCB10
 loc_80BCB0C:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BCB10:
 	pop {pc}
@@ -9736,7 +9736,7 @@ loc_80BCBA8:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0xf
 	bl sub_80E1352
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BCC0C
 	pop {r4,r7,pc}
@@ -9844,7 +9844,7 @@ loc_80BCCA6:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sub_80E13DC
@@ -10020,7 +10020,7 @@ loc_80BCDF8:
 	str r5, [r0,#oBattleObject_ExtraVars+0x10]
 	str r0, [r5,#oBattleObject_ExtraVars+0x10]
 loc_80BCE34:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BCE4C
 	pop {r4,r7,pc}
@@ -10292,7 +10292,7 @@ loc_80BD030:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sub_80E13DC
@@ -10541,7 +10541,7 @@ loc_80BD1F4:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BD208:
 	pop {r4,pc}
@@ -10839,7 +10839,7 @@ loc_80BD3CC:
 	str r5, [r0,#oBattleObject_ExtraVars+4]
 	str r0, [r5,#oBattleObject_ExtraVars+4]
 loc_80BD45A:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BD478
 	pop {r4,r6,r7,pc}
@@ -11339,7 +11339,7 @@ loc_80BD804:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BD818:
 	pop {r4,pc}
@@ -11972,7 +11972,7 @@ loc_80BDCAE:
 loc_80BDCE2:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Param4]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BDCFC
 	pop {r4,r6,r7,pc}
@@ -12200,7 +12200,7 @@ loc_80BDE78:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sub_80E13DC
@@ -12543,7 +12543,7 @@ loc_80BE10A:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BE12A:
 	pop {pc}
@@ -12751,7 +12751,7 @@ loc_80BE296:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 loc_80BE2B2:
@@ -12790,7 +12790,7 @@ loc_80BE2EA:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 loc_80BE2F8:
@@ -12901,7 +12901,7 @@ loc_80BE3AE:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BE3C2:
 	pop {pc}
@@ -13092,7 +13092,7 @@ sub_80BE4F8:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BE55C
 	pop {r4-r7,pc}
@@ -13266,7 +13266,7 @@ loc_80BE69A:
 	ldrh r1, [r5,r1]
 	cmp r0, r1
 	bne locret_80BE6BA
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BE6BA:
 	pop {r4-r7,pc}
@@ -13283,7 +13283,7 @@ sub_80BE6BC:
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldr r0, [r0,#oAIData_Unk_74]
 	bl sub_80E1A86
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BE6D6:
 	pop {r4-r7,pc}
@@ -13449,7 +13449,7 @@ sub_80BE7BC:
 	mov r2, #1
 	bl sub_8010DF6
 loc_80BE810:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	ldrb r1, [r5,#oBattleObject_Param1]
 	cmp r1, #0
@@ -13693,7 +13693,7 @@ loc_80BEA28:
 	mov r1, #0
 	strb r1, [r0]
 loc_80BEA3A:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BEA3E:
 	pop {pc}
@@ -13870,7 +13870,7 @@ loc_80BEB7E:
 	bl sub_800F29C
 	mov r2, #1
 	bl sub_8011044
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BEB8E:
 	pop {pc}
@@ -14653,7 +14653,7 @@ loc_80BF14E:
 	bl sub_800F29C
 	mov r2, #1
 	bl sub_8011044
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BF15E:
 	pop {pc}
@@ -14824,7 +14824,7 @@ sub_80BF284:
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BF2D0
 	pop {r4,r6,r7,pc}
@@ -15374,7 +15374,7 @@ loc_80BF68E:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80BF69A
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BF69A:
 	pop {pc}
@@ -15507,7 +15507,7 @@ loc_80BF730:
 	bl sub_800F29C
 	mov r2, #1
 	bl sub_8010DF6
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BF7BC
 	pop {r4,r6,r7,pc}
@@ -15850,7 +15850,7 @@ loc_80BFA0E:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80BFA1A
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BFA1A:
 	pop {pc}
@@ -16200,7 +16200,7 @@ loc_80BFCA4:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80BFCB0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80BFCB0:
 	pop {pc}
@@ -16409,7 +16409,7 @@ sub_80BFE24:
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
 	bl object_setCoordinatesFromPanels // () -> void
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sprite_update
 	bl sub_80BFE6E
@@ -16591,7 +16591,7 @@ sub_80BFF88:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80BFFC0
 	pop {r7,pc}
@@ -16701,7 +16701,7 @@ sub_80C0072:
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldr r0, [r0,#oAIData_Unk_74]
 	bl sub_80E1A86
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C0096:
 	pop {pc}
@@ -16881,7 +16881,7 @@ sub_80C0198:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C01D8
 	pop {r7,pc}
@@ -17127,7 +17127,7 @@ sub_80C0358:
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	ldrb r0, [r5,#oBattleObject_Param2]
 	cmp r0, #0
@@ -17223,7 +17223,7 @@ loc_80C0422:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80C0446
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C0446:
 	pop {r6,r7,pc}
@@ -17343,7 +17343,7 @@ sub_80C04CC:
 	ldrb r1, [r5,#oBattleObject_Param1]
 	mov r2, #1
 	bl sub_8010DF6
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C0526
 	pop {r4,r7,pc}
@@ -17466,7 +17466,7 @@ loc_80C05DE:
 	mov r0, #1
 	ldrb r1, [r5,#oBattleObject_Param1]
 	bl sub_8011044
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80C0608
 loc_80C0600:
@@ -17565,7 +17565,7 @@ sub_80C0680:
 	ldrh r0, [r5,#oBattleObject_Z16]
 	add r0, #2
 	strh r0, [r5,#oBattleObject_Z16]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C06BC
 	pop {pc}
@@ -17654,7 +17654,7 @@ loc_80C073E:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge loc_80C074C
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80C075C
 loc_80C074C:
@@ -17772,7 +17772,7 @@ loc_80C0828:
 	bl sprite_setPalette // (int pallete) -> void
 	ldr r0, dword_80C083C // =0x7fff 
 	bl sprite_setColorShader
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C0840
 	pop {pc}
@@ -18385,7 +18385,7 @@ loc_80C0C70:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80C0C7C
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C0C7C:
 	pop {r6,pc}
@@ -18701,7 +18701,7 @@ loc_80C0EC4:
 	mov r0, #0xff
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 loc_80C0ED8:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C0EE2
 	pop {r4,pc}
@@ -18759,7 +18759,7 @@ loc_80C0F42:
 	mov r0, r4
 	bl sub_80E14AC
 loc_80C0F48:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80C0F4C:
 	bl object_updateSpriteTimestop
@@ -18833,7 +18833,7 @@ loc_80C0F9A:
 	str r1, [r5,#oBattleObject_ExtraVars+4]
 	ldr r1, [r0,#oBattleObject_Z]
 	str r1, [r5,#oBattleObject_ExtraVars+8]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C0FE8
 	pop {r7,pc}
@@ -18943,7 +18943,7 @@ sub_80C10AC:
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldr r0, [r0,#oAIData_Unk_74]
 	bl sub_80E1A86
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C10C6:
 	pop {pc}
@@ -19119,7 +19119,7 @@ sub_80C11CC:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C1204
 	pop {r7,pc}
@@ -19351,7 +19351,7 @@ loc_80C13D6:
 	mov r0, #0x64 
 	ldrb r0, [r5,r0]
 	bl sub_80C1514
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C13E2:
 	pop {pc}
@@ -19368,7 +19368,7 @@ sub_80C13E4:
 	ldr r0, [r5,#oBattleObject_AIDataPtr]
 	ldr r0, [r0,#oAIData_Unk_74]
 	bl sub_80E1A86
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C13FE:
 	pop {pc}
@@ -19622,7 +19622,7 @@ sub_80C1590:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C15EC
 	pop {pc}
@@ -19908,7 +19908,7 @@ loc_80C17D0:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80C17E4
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C17E4:
 	pop {r4-r7,pc}
@@ -20242,7 +20242,7 @@ sub_80C1A34:
 	strh r0, [r5,#oBattleObject_NameID]
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Param3]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.balign 4, 0x00
@@ -20789,7 +20789,7 @@ loc_80C1E98:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C1EAA:
 	pop {pc}
@@ -21122,7 +21122,7 @@ sub_80C215C:
 	strh r0, [r5,#oBattleObject_NameID]
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Param3]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 dword_80C21A8: .word 0x1B7
@@ -21539,7 +21539,7 @@ loc_80C24B6:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_Enabled]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C24D0:
 	pop {pc}
@@ -21835,7 +21835,7 @@ sub_80C2710:
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C2770
 	pop {pc}
@@ -21946,7 +21946,7 @@ loc_80C2816:
 	bl object_checkPanelParameters
 	cmp r0, #0
 	bne loc_80C2834
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80C2852
 loc_80C2834:
@@ -22208,7 +22208,7 @@ loc_80C2A16:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C2A2A:
 	pop {pc}
@@ -22309,7 +22309,7 @@ sub_80C2A9C:
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C2AF8
 	pop {pc}
@@ -22428,7 +22428,7 @@ loc_80C2BB6:
 	bl object_checkPanelParameters
 	cmp r0, #0
 	bne loc_80C2BD4
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80C2BE4
 loc_80C2BD4:
@@ -22918,7 +22918,7 @@ loc_80C2F68:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C2F74:
 	pop {pc}
@@ -23082,7 +23082,7 @@ loc_80C3058:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0xf
 	bl sub_80E1352
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 	thumb_func_end sub_80C3024
@@ -23242,7 +23242,7 @@ loc_80C31C0:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sub_80E13DC
@@ -23338,7 +23338,7 @@ loc_80C3298:
 	mov r0, #0x12
 	bl object_setCollisionStatusEffect1
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C32B6
 	pop {pc}
@@ -23477,7 +23477,7 @@ sub_80C3368:
 locret_80C33A6:
 	pop {pc}
 loc_80C33A8:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80C3368
@@ -23561,7 +23561,7 @@ loc_80C341C:
 	sub r1, r1, r6
 	mov r4, #0x14
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C3446:
 	pop {r4,r6,pc}
@@ -23688,7 +23688,7 @@ sub_80C3504:
 	bl sub_80C36AE
 	mov r0, #1
 	str r0, [r5,#oBattleObject_ExtraVars]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C3550
 	pop {pc}
@@ -23874,7 +23874,7 @@ sub_80C3678:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80C369E
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C369E:
 	pop {pc}
@@ -24011,7 +24011,7 @@ sub_80C3758:
 	mov r0, #0x17
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C37AC
 	pop {pc}
@@ -24206,7 +24206,7 @@ loc_80C38EE:
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C38FE:
 	pop {pc}
@@ -24345,7 +24345,7 @@ sub_80C39BA:
 	bl PlaySoundEffect
 	mov r0, #0x64 
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C3A24
 	pop {pc}
@@ -24366,7 +24366,7 @@ sub_80C3A24:
 	bl object_isCurrentPanelValid
 	tst r0, r0
 	bne locret_80C3A40
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C3A40:
 	pop {r6,pc}
@@ -24501,7 +24501,7 @@ loc_80C3B22:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80C3B2E
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C3B2E:
 	pop {pc}
@@ -24808,7 +24808,7 @@ sub_80C3D32:
 	bl PlaySoundEffect
 	mov r0, #0x32 
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C3D9C
 	pop {pc}
@@ -24829,7 +24829,7 @@ sub_80C3D9C:
 	bl object_isCurrentPanelValid
 	tst r0, r0
 	bne locret_80C3DB8
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C3DB8:
 	pop {r6,pc}
@@ -24960,7 +24960,7 @@ sub_80C3E88:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge locret_80C3E96
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C3E96:
 	pop {pc}
@@ -25054,7 +25054,7 @@ loc_80C3F3C:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C3F52
 	pop {r4-r7,pc}
@@ -25318,7 +25318,7 @@ sub_80C40F8:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80C40F8
@@ -25511,7 +25511,7 @@ loc_80C439C:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C43C4
 	pop {pc}
@@ -25771,7 +25771,7 @@ sub_80C4550:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C458C
 	pop {pc}
@@ -26020,7 +26020,7 @@ sub_80C471C:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C4766
 	pop {pc}
@@ -26208,7 +26208,7 @@ loc_80C48DE:
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #0xff
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C48FC
 	pop {r4,r7,pc}
@@ -26335,7 +26335,7 @@ loc_80C49B4:
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	mov r1, #0
 	strb r1, [r0]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C49E2:
 	pop {r4,pc}
@@ -26388,7 +26388,7 @@ loc_80C4A0E:
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	mov r1, #0
 	strb r1, [r0]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C4A50:
 	pop {r4,pc}
@@ -26470,7 +26470,7 @@ loc_80C4ABC:
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	mov r1, #0
 	strb r1, [r0]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C4AEA:
 	pop {pc}
@@ -26543,7 +26543,7 @@ sub_80C4B48:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C4B84
 	pop {r4,pc}
@@ -26801,7 +26801,7 @@ loc_80C4EE8:
 	bl sub_801A4D0
 loc_80C4EF4:
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C4F02
 	pop {r7,pc}
@@ -26923,7 +26923,7 @@ loc_80C4FDA:
 	bl object_setPanelType
 loc_80C4FF0:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80C4FF8:
 	bl object_presentCollisionData
@@ -27058,7 +27058,7 @@ loc_80C50F4:
 	bl object_setCollisionHitEffect
 	bl sub_80C518C
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C5116
 	pop {r7,pc}
@@ -27103,7 +27103,7 @@ loc_80C513E:
 	b loc_80C5170
 loc_80C5168:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80C5170:
 	bl object_presentCollisionData
@@ -27204,7 +27204,7 @@ loc_80C5234:
 	bl object_presentCollisionData
 	ldrb r0, [r7,#2]
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 off_80C5248: .word byte_80C51A0
@@ -27240,7 +27240,7 @@ loc_80C5288:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80C524C
@@ -27314,7 +27314,7 @@ loc_80C5314:
 	bl sub_801A4D0
 loc_80C5320:
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C532E
 	pop {pc}
@@ -27531,7 +27531,7 @@ loc_80C548E:
 	bl object_presentCollisionData
 	mov r0, #4
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 loc_80C54CA:
@@ -27570,7 +27570,7 @@ off_80C5518: .word off_80C551C
 off_80C551C: .word sub_80C552A+1
 loc_80C5520:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80C54E0
@@ -27610,7 +27610,7 @@ loc_80C5566:
 	bne locret_80C5576
 loc_80C556E:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C5576:
 	pop {r4,r6,r7,pc}
@@ -27716,7 +27716,7 @@ loc_80C562A:
 	ldr r1, [r0,#oBattleObject_ObjectHeader]
 	add r1, #1
 	str r0, [r1]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C5654
 	pop {pc}
@@ -27757,7 +27757,7 @@ loc_80C5688:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.balign 4, 0x00
@@ -27805,7 +27805,7 @@ loc_80C56E4:
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
 loc_80C570C:
@@ -27880,7 +27880,7 @@ loc_80C578C:
 	strb r0, [r5,#oBattleObject_Param1]
 	bne locret_80C579C
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C579C:
 	pop {r4,r6,r7,pc}
@@ -27995,7 +27995,7 @@ loc_80C586C:
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C5886
 	pop {r4,pc}
@@ -28035,7 +28035,7 @@ loc_80C58C2:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 off_80C58D4: .word off_80C58D8
@@ -28180,7 +28180,7 @@ loc_80C59E8:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge locret_80C59F4
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C59F4:
 	pop {r4,r6,r7,pc}
@@ -28276,7 +28276,7 @@ loc_80C5AB2:
 	bl object_setCollisionHitEffect
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C5AD4
 	pop {pc}
@@ -28329,7 +28329,7 @@ loc_80C5B24:
 	b loc_80C5B3A
 loc_80C5B32:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80C5B3A:
 	bl object_presentCollisionData
@@ -28452,7 +28452,7 @@ loc_80C5C1E:
 	mov r0, #0xff
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C5C40
 	pop {pc}
@@ -28493,7 +28493,7 @@ loc_80C5C7C:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	.byte 0x0, 0x0
@@ -28584,7 +28584,7 @@ loc_80C5D36:
 	bl SpawnT4BattleObjectWithId0
 loc_80C5D42:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -28630,7 +28630,7 @@ loc_80C5DA4:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	bl sub_80C68B0
 loc_80C5DB6:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80C5D84
@@ -28700,7 +28700,7 @@ loc_80C5E28:
 	bl object_setCollisionHitEffect
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80C5E00
@@ -28727,7 +28727,7 @@ loc_80C5E5E:
 	pop {r4,r7,pc}
 loc_80C5E6E:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 off_80C5E78: .word off_80C5E7C
@@ -28794,7 +28794,7 @@ loc_80C5EF2:
 	b locret_80C5F0A
 loc_80C5F02:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C5F0A:
 	pop {pc}
@@ -28814,7 +28814,7 @@ loc_80C5F1C:
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80C5F2A
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C5F2A:
 	pop {pc}
@@ -28905,7 +28905,7 @@ loc_80C5FC2:
 	bl object_setupCollisionData
 	bl sub_801A146
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C5FDE
 	pop {pc}
@@ -28935,7 +28935,7 @@ loc_80C6006:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80C5FDE
@@ -29078,7 +29078,7 @@ loc_80C6182:
 	ldr r0, dword_80C627C // =0xfffee000 
 loc_80C6190:
 	str r0, [r5,#oBattleObject_ZVelocity]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C619C
 	pop {r4,r6,r7,pc}
@@ -29155,7 +29155,7 @@ loc_80C6228:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80C6238:
 	bl object_presentCollisionData
@@ -29223,7 +29223,7 @@ sub_80C62A0:
 	bl object_setCoordinatesFromPanels // () -> void
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Z16]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80C62A0
@@ -29254,7 +29254,7 @@ loc_80C62D4:
 	bx r1
 	b locret_80C62E4
 loc_80C62E0:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C62E4:
 	pop {pc}
@@ -29292,7 +29292,7 @@ loc_80C6310:
 	bl sub_80C63AE
 	b locret_80C632E
 loc_80C632A:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C632E:
 	pop {r4,r6,r7,pc}
@@ -29459,7 +29459,7 @@ sub_80C6438:
 	str r0, [r5,#oBattleObject_Z]
 	mov r0, #0xa1
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80C647C
 	pop {pc}
@@ -29562,7 +29562,7 @@ sub_80C6536:
 	mov r1, #0x80
 	and r0, r1
 	beq locret_80C6546
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80C6546:
 	pop {pc}
@@ -29631,7 +29631,7 @@ loc_80C65BA:
 	strb r0, [r5,#oBattleObject_Param2]
 	mov r0, #0xc
 	strh r0, [r5,#oBattleObject_Timer2]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	ldrb r0, [r5,#oBattleObject_Param1]
 	cmp r0, #0
@@ -29682,7 +29682,7 @@ loc_80C6630:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	.balign 4, 0x00
@@ -29708,7 +29708,7 @@ sub_80C6650:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C667A:
 	pop {pc}
@@ -29798,7 +29798,7 @@ loc_80C6704:
 	b locret_80C6724
 loc_80C671C:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C6724:
 	pop {pc}
@@ -29957,7 +29957,7 @@ sub_80C681C:
 	bl object_setCoordinatesFromPanels // () -> void
 	mov r0, #0xbb
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C6854
 	pop {pc}
@@ -30005,7 +30005,7 @@ loc_80C689A:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80C68A6
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C68A6:
 	pop {pc}
@@ -30088,7 +30088,7 @@ loc_80C6992:
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strb r0, [r1,#oCollisionData_PrimaryElement]
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80C6964
@@ -30152,7 +30152,7 @@ sub_80C6A08:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C6A32:
 	pop {pc}
@@ -30225,7 +30225,7 @@ loc_80C6AA6:
 sub_80C6AAC:
 	push {lr}
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80C6AAC
@@ -30356,7 +30356,7 @@ loc_80C6BE8:
 	bl object_presentCollisionData
 	mov r0, #0xa6
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 loc_80C6C0A:
@@ -30398,7 +30398,7 @@ off_80C6C58: .word sub_80C6C6A+1
 	.word sub_80C6CBA+1
 loc_80C6C60:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80C6C14
@@ -30467,7 +30467,7 @@ loc_80C6CD6:
 	mov r0, #0xf0
 	strh r0, [r5,#oBattleObject_X16]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C6CE2:
 	pop {pc}
@@ -30643,7 +30643,7 @@ sub_80C6DFC:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C6E50
 	pop {pc}
@@ -30677,7 +30677,7 @@ loc_80C6E76:
 	bx r1
 	b locret_80C6E86
 loc_80C6E82:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C6E86:
 	pop {pc}
@@ -30722,7 +30722,7 @@ loc_80C6EB4:
 	bl sub_80C6F50
 	b locret_80C6EDE
 loc_80C6EDA:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C6EDE:
 	pop {pc}
@@ -30978,7 +30978,7 @@ sub_80C7098:
 	bl sprite_setFlip
 	mov r0, #0xd8
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C70D8
 	pop {pc}
@@ -31009,7 +31009,7 @@ loc_80C7100:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge locret_80C710C
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C710C:
 	pop {pc}
@@ -31152,7 +31152,7 @@ loc_80C7222:
 	bl PlaySoundEffect
 	mov r0, #OBJECT_FLAGS_CURRENTLY_MOVING
 	bl object_setFlag1 // (int a1) -> void
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C7240:
 	pop {pc}
@@ -31313,7 +31313,7 @@ loc_80C7370:
 	mov r0, #0
 	str r0, [r1]
 loc_80C737C:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80C734E
@@ -31415,7 +31415,7 @@ sub_80C742C:
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Param3]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 off_80C7444: .word byte_80C7448
@@ -31439,7 +31439,7 @@ sub_80C7450:
 	bx r1
 	b locret_80C7476
 loc_80C7472:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C7476:
 	pop {pc}
@@ -32099,7 +32099,7 @@ sub_80C795C:
 	ldr r1, off_80C7974 // =byte_80C7978
 	ldrh r0, [r1,r0]
 	strh r0, [r5,#oBattleObject_Timer2]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.balign 4, 0x00
@@ -32127,7 +32127,7 @@ sub_80C7980:
 	bx r1
 	b locret_80C79AA
 loc_80C79A6:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C79AA:
 	pop {pc}
@@ -32227,7 +32227,7 @@ loc_80C7A32:
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80C7A56
 loc_80C7A52:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C7A56:
 	pop {pc}
@@ -32528,7 +32528,7 @@ loc_80C7CA8:
 	mov r0, #0x2f 
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C7CBE:
 	pop {pc}
@@ -32560,7 +32560,7 @@ loc_80C7CEE:
 	b locret_80C7CFC
 loc_80C7CF4:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C7CFC:
 	pop {pc}
@@ -32603,7 +32603,7 @@ loc_80C7D3E:
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80C7D4E
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C7D4E:
 	pop {pc}
@@ -32704,7 +32704,7 @@ loc_80C7DF6:
 	add r1, #1
 	str r1, [r0]
 loc_80C7E1A:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C7E24
 	pop {pc}
@@ -32728,7 +32728,7 @@ sub_80C7E24:
 	sub r1, #1
 	str r1, [r0]
 loc_80C7E4A:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80C7E62
 loc_80C7E50:
@@ -32787,7 +32787,7 @@ loc_80C7EAE:
 	sub r1, #1
 	str r1, [r0]
 loc_80C7EBE:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C7EC2:
 	pop {pc}
@@ -32909,7 +32909,7 @@ loc_80C7FBC:
 	mov r0, #0xff
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C7FDA:
 	pop {pc}
@@ -32945,7 +32945,7 @@ loc_80C7FFA:
 	b locret_80C8022
 loc_80C801A:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8022:
 	pop {pc}
@@ -32979,7 +32979,7 @@ loc_80C8050:
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80C8060
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8060:
 	pop {pc}
@@ -33056,7 +33056,7 @@ loc_80C80D0:
 	mov r0, #7
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C80FE:
 	pop {r4,pc}
@@ -33085,7 +33085,7 @@ sub_80C8100:
 	b locret_80C8138
 loc_80C8130:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8138:
 	pop {pc}
@@ -33137,7 +33137,7 @@ loc_80C8192:
 	b locret_80C81A4
 loc_80C819C:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C81A4:
 	pop {r4,pc}
@@ -33207,7 +33207,7 @@ sub_80C81F0:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80C81F0
@@ -33232,7 +33232,7 @@ sub_80C8232:
 	bx r1
 	b locret_80C825C
 loc_80C8258:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C825C:
 	pop {pc}
@@ -33265,7 +33265,7 @@ loc_80C8286:
 	bl sub_80C8310
 	b locret_80C829A
 loc_80C8296:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C829A:
 	pop {pc}
@@ -33495,7 +33495,7 @@ loc_80C8436:
 	mov r0, #1
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C844E:
 	pop {pc}
@@ -33541,7 +33541,7 @@ loc_80C84C8:
 	b locret_80C84D6
 loc_80C84CE:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C84D6:
 	pop {pc}
@@ -33570,7 +33570,7 @@ sub_80C84E0:
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80C8512
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8512:
 	pop {r4,r6,pc}
@@ -33656,7 +33656,7 @@ sub_80C856C:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80C856C
@@ -33680,7 +33680,7 @@ loc_80C85D6:
 	bx r1
 	b locret_80C85E6
 loc_80C85E2:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C85E6:
 	pop {pc}
@@ -33741,7 +33741,7 @@ loc_80C8626:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	b locret_80C865E
 loc_80C865A:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C865E:
 	pop {pc}
@@ -33782,7 +33782,7 @@ sub_80C8660:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	bl sub_80C8806
 loc_80C86AA:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,pc}
 	thumb_func_end sub_80C8660
@@ -33869,7 +33869,7 @@ loc_80C8752:
 	mov r0, #2
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C876A:
 	pop {pc}
@@ -33905,7 +33905,7 @@ loc_80C87A0:
 	b locret_80C87AE
 loc_80C87A6:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C87AE:
 	pop {pc}
@@ -33930,7 +33930,7 @@ loc_80C87CA:
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80C87DA
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C87DA:
 	pop {pc}
@@ -34021,7 +34021,7 @@ sub_80C8850:
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
 	bl object_setPanelsFromCoordinates
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C8892
 	pop {pc}
@@ -34045,7 +34045,7 @@ loc_80C88A8:
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.balign 4, 0x00
@@ -34093,7 +34093,7 @@ loc_80C88F8:
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
 loc_80C8920:
@@ -34162,7 +34162,7 @@ dword_80C89A0: .word 0x90909770
 	thumb_local_start
 sub_80C89A4:
 	push {r4,r6,r7,lr}
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80C89A4
@@ -34344,7 +34344,7 @@ loc_80C8B12:
 	mov r0, #7
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strh r0, [r5,#oBattleObject_CurState_CurAction]
 locret_80C8B3C:
 	pop {pc}
@@ -34373,7 +34373,7 @@ sub_80C8B3E:
 	b locret_80C8B76
 loc_80C8B6E:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8B76:
 	pop {pc}
@@ -34467,7 +34467,7 @@ loc_80C8C22:
 	b locret_80C8C34
 loc_80C8C2C:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8C34:
 	pop {r4,pc}
@@ -34573,7 +34573,7 @@ loc_80C8CF8:
 	mov r0, #1
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8D0E:
 	pop {pc}
@@ -34609,7 +34609,7 @@ loc_80C8D44:
 	b locret_80C8D52
 loc_80C8D4A:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8D52:
 	pop {pc}
@@ -34691,7 +34691,7 @@ loc_80C8DD2:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80C8DDE
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8DDE:
 	pop {pc}
@@ -34762,7 +34762,7 @@ sub_80C8E2C:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80C8E2C
@@ -34787,7 +34787,7 @@ sub_80C8E6E:
 	bx r1
 	b locret_80C8E98
 loc_80C8E94:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C8E98:
 	pop {pc}
@@ -35039,7 +35039,7 @@ loc_80C9060:
 	mov r3, #0
 	bl object_setupCollisionData
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80C9024
@@ -35078,7 +35078,7 @@ loc_80C90A6:
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 	mov r0, #0xb4
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
 loc_80C90CA:
@@ -35235,7 +35235,7 @@ sub_80C91C4:
 	bl sprite_loadAnimationData // () -> void
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80C91C4
@@ -35264,7 +35264,7 @@ loc_80C9218:
 	bx r1
 	b locret_80C922E
 loc_80C922A:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C922E:
 	pop {pc}
@@ -35337,7 +35337,7 @@ loc_80C927E:
 	bl sub_80C92F4
 	b locret_80C92BC
 loc_80C92B8:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C92BC:
 	pop {pc}
@@ -35582,7 +35582,7 @@ loc_80C94A8:
 	mov r1, #1
 	str r1, [r0,#oBattleObject_ObjectHeader]
 loc_80C94B2:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C94BC
 	pop {pc}
@@ -35614,7 +35614,7 @@ sub_80C94BC:
 	pop {r4,r7,pc}
 loc_80C94F4:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 	.balign 4, 0x00
@@ -35648,7 +35648,7 @@ sub_80C950C:
 	add r0, #1
 	strb r0, [r5,#oBattleObject_CurAnim]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80C954A
 loc_80C9546:
@@ -35888,7 +35888,7 @@ sub_80C96C8:
 	str r0, [r5,#oBattleObject_YVelocity]
 	ldr r0, [r5,#oBattleObject_Z]
 	str r0, [r5,#oBattleObject_ZVelocity]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C9726
 	pop {r7,pc}
@@ -35993,7 +35993,7 @@ loc_80C97D2:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge locret_80C97DE
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C97DE:
 	pop {pc}
@@ -36123,7 +36123,7 @@ loc_80C98B2:
 	bl object_presentCollisionData
 	mov r0, #0xb4
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C98DC
 	pop {r7,pc}
@@ -36188,7 +36188,7 @@ loc_80C9946:
 	mov r4, #0x14
 	bl SpawnT4BattleObjectWithId0
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 off_80C995C: .word off_80C9960
@@ -36310,7 +36310,7 @@ loc_80C9A42:
 	mov r4, #0x14
 	bl SpawnT4BattleObjectWithId0
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C9A56:
 	pop {r4,r6,r7,pc}
@@ -36569,7 +36569,7 @@ sub_80C9BE8:
 	mov r0, #0xff
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 loc_80C9C56:
@@ -36604,7 +36604,7 @@ off_80C9C90: .word sub_80C9CA2+1
 	.word sub_80C9CC4+1
 loc_80C9C98:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80C9C5C
@@ -36637,7 +36637,7 @@ sub_80C9CC4:
 	tst r0, r1
 	beq locret_80C9CD8
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C9CD8:
 	pop {pc}
@@ -36721,7 +36721,7 @@ loc_80C9D70:
 	strb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80C9D9E
 	pop {pc}
@@ -36854,7 +36854,7 @@ sub_80C9E88:
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_removePanelReserve
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80C9EA4:
 	pop {pc}
@@ -37067,7 +37067,7 @@ loc_80CA046:
 	bl object_presentCollisionData
 	mov r0, #0xb8
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CA074
 	pop {pc}
@@ -37101,7 +37101,7 @@ loc_80CA09E:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80CA074
@@ -37130,7 +37130,7 @@ loc_80CA0D0:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80CA0B0
@@ -37420,7 +37420,7 @@ loc_80CA374:
 	bl sub_80CA510
 	mov r0, #0xb7
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.balign 4, 0x00
@@ -37468,7 +37468,7 @@ loc_80CA3E4:
 	pop {r7,pc}
 loc_80CA3F6:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 off_80CA400: .word off_80CA404
@@ -37723,7 +37723,7 @@ loc_80CA5FC:
 	mov r0, #5
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CA61A
 	pop {r4,r7,pc}
@@ -37775,7 +37775,7 @@ loc_80CA670:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80CA680:
 	bl object_presentCollisionData
@@ -37917,7 +37917,7 @@ loc_80CA77C:
 	mov r0, #0x88
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CA7AC
 	pop {r4,pc}
@@ -37977,7 +37977,7 @@ loc_80CA806:
 	mov r4, #0x14
 	bl SpawnT4BattleObjectWithId0
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 	.balign 4, 0x00
@@ -38098,7 +38098,7 @@ sub_80CA8E2:
 	tst r0, r0
 	bne locret_80CA90C
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CA90C:
 	pop {pc}
@@ -38183,7 +38183,7 @@ loc_80CA9AA:
 	bl object_setCollisionHitEffect
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CA9CA
 	pop {pc}
@@ -38226,7 +38226,7 @@ loc_80CAA02:
 	bl SpawnT4BattleObjectWithId0
 loc_80CAA14:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.balign 4, 0x00
@@ -38274,7 +38274,7 @@ loc_80CAA5C:
 	ldmia r0!, {r1-r3}
 	mov r4, #0x14
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
 loc_80CAA84:
@@ -38353,7 +38353,7 @@ sub_80CAB14:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 	thumb_func_end sub_80CAB14
@@ -38414,7 +38414,7 @@ off_80CAB7C: .word sub_80CAB88+1
 	thumb_local_start
 sub_80CAB88:
 	push {lr}
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80CAB88
@@ -38442,7 +38442,7 @@ sub_80CAB90:
 	bx r1
 	b locret_80CABC0
 loc_80CABBC:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CABC0:
 	pop {pc}
@@ -38701,7 +38701,7 @@ loc_80CADAA:
 	bl object_setCollisionHitEffect
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CADC6:
 	pop {pc}
@@ -38735,7 +38735,7 @@ loc_80CAE0A:
 	b locret_80CAE18
 loc_80CAE10:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CAE18:
 	pop {pc}
@@ -38820,7 +38820,7 @@ sub_80CAE94:
 	bne locret_80CAEBE
 loc_80CAEB6:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CAEBE:
 	pop {r4,r6,pc}
@@ -38912,7 +38912,7 @@ sub_80CAF14:
 	ldr r1, off_80CAF88 // =byte_80CAF8C
 	ldr r1, [r1,r0]
 	str r1, [r5,#oBattleObject_ExtraVars+4]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 off_80CAF74: .word byte_80CAF78
@@ -38938,7 +38938,7 @@ sub_80CAF9C:
 	bx r1
 	b locret_80CAFBC
 loc_80CAFB8:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CAFBC:
 	pop {pc}
@@ -38995,7 +38995,7 @@ loc_80CAFFE:
 	bl SpawnT4BattleObjectWithId0
 	bl sub_80CB0AE
 loc_80CB02A:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer2]
@@ -39140,7 +39140,7 @@ sub_80CB10C:
 	bl sprite_setFlip
 	mov r0, #0xa7
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80CB10C
@@ -39164,7 +39164,7 @@ loc_80CB16A:
 	bx r1
 	b locret_80CB17A
 loc_80CB176:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CB17A:
 	pop {pc}
@@ -39198,7 +39198,7 @@ loc_80CB19E:
 	bgt locret_80CB1D8
 	mov r0, #1
 	bl sub_80CB248
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer2]
@@ -39388,7 +39388,7 @@ loc_80CB2F2:
 	lsl r0, r0, #0x10
 	str r0, [r5,#oBattleObject_ZVelocity]
 	bl sub_80CB434
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CB33E:
 	pop {pc}
@@ -39419,7 +39419,7 @@ loc_80CB38C:
 	bl object_presentCollisionData
 	b locret_80CB396
 loc_80CB392:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CB396:
 	pop {pc}
@@ -39467,7 +39467,7 @@ loc_80CB3EA:
 	bl object_setCollisionRegion
 	b locret_80CB3F6
 loc_80CB3F2:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CB3F6:
 	pop {r4,r6,pc}
@@ -39667,7 +39667,7 @@ loc_80CB560:
 loc_80CB574:
 	mov r0, #0xa
 	str r0, [r5,#oBattleObject_ExtraVars+4]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CB5B4
 	mov r0, #0xa7
@@ -39725,7 +39725,7 @@ loc_80CB606:
 	pop {pc}
 loc_80CB614:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.byte 0x0, 0x0
@@ -39887,7 +39887,7 @@ loc_80CB730:
 	bl object_presentCollisionData
 	mov r0, #1
 	strh r0, [r5,#oBattleObject_Timer2]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CB762
 	mov r0, #0xae
@@ -39928,7 +39928,7 @@ loc_80CB792:
 	bl SpawnT4BattleObjectWithId0
 loc_80CB7A4:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	.balign 4, 0x00
@@ -40068,7 +40068,7 @@ loc_80CB8CA:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer2]
 	bge locret_80CB8DC
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80CB8DC
 loc_80CB8D8:
@@ -40202,7 +40202,7 @@ loc_80CB98E:
 	str r1, [r0]
 	ldr r0, [r5,#oBattleObject_ExtraVars+0xc]
 	str r5, [r0]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r4,pc}
 	thumb_func_end sub_80CB964
@@ -40236,7 +40236,7 @@ loc_80CBA18:
 	pop {r4,r7,pc}
 loc_80CBA1E:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 off_80CBA28: .word off_80CBA2C
@@ -40269,7 +40269,7 @@ sub_80CBA52:
 	tst r0, r0
 	bne loc_80CBA6A
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -40505,7 +40505,7 @@ loc_80CBC00:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	strb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_reservePanel
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80CBB76
@@ -40698,7 +40698,7 @@ loc_80CBDC2:
 	bl sub_802EF5C
 	bl sub_800F656
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
 off_80CBDD4: .word byte_80CBDD8
@@ -40749,7 +40749,7 @@ loc_80CBE38:
 	bl object_clearCollisionRegion // () -> void
 	bl sub_800F656
 	bl sub_802EF5C
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CBE48:
 	pop {r4,r6,r7,pc}
@@ -41047,7 +41047,7 @@ sub_80CC064:
 	bl object_spawnCollisionRegion
 	mov r0, #0xfc
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CC090
 	pop {r4,r6,r7,pc}
@@ -41068,7 +41068,7 @@ loc_80CC0A0:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt loc_80CC0AC
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80CC0AC:
 	bl sprite_update
@@ -41207,7 +41207,7 @@ loc_80CC1DA:
 	b locret_80CC1E8
 loc_80CC1E0:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CC1E8:
 	pop {pc}
@@ -41681,7 +41681,7 @@ sub_80CC562:
 	b locret_80CC582
 loc_80CC57A:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CC582:
 	pop {pc}
@@ -41784,7 +41784,7 @@ loc_80CC624:
 	mov r0, #0x60 
 	bl object_setCollisionStatusEffect1
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CC668
 	pop {r4,pc}
@@ -41845,7 +41845,7 @@ loc_80CC6C2:
 	mov r4, #0x14
 	bl SpawnT4BattleObjectWithId0
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 	.byte 0x0, 0x0
@@ -41889,7 +41889,7 @@ sub_80CC6E8:
 	ble loc_80CC734
 loc_80CC72C:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80CC734:
 	bl object_highlightCurrentCollisionPanels
@@ -41977,7 +41977,7 @@ loc_80CC7DA:
 	ldrh r0, [r1,r0]
 	strh r0, [r5,#oBattleObject_HP]
 	strh r0, [r5,#oBattleObject_MaxHP]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CC7FE:
 	pop {pc}
@@ -42015,7 +42015,7 @@ loc_80CC83C:
 	b locret_80CC84A
 loc_80CC842:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80CC84A:
 	pop {pc}
@@ -42109,7 +42109,7 @@ loc_80CC8E0:
 	tst r0, r0
 	bne locret_80CC902
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	b locret_80CC902
 locret_80CC902:
@@ -42188,7 +42188,7 @@ loc_80CC99C:
 	bl object_presentCollisionData
 	ldr r0, [r5,#oBattleObject_ExtraVars+8]
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CC9A8:
 	pop {r4,pc}
@@ -42223,7 +42223,7 @@ sub_80CC9AA:
 	b locret_80CC9EC
 loc_80CC9E4:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CC9EC:
 	pop {r4,r6,r7,pc}
@@ -42316,7 +42316,7 @@ sub_80CCA60:
 	mov r0, #6
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CCAB8
 	pop {pc}
@@ -42342,7 +42342,7 @@ loc_80CCAD2:
 	ldr r1, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0
 	strb r0, [r1]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
 	.byte 0, 0
@@ -42492,7 +42492,7 @@ sub_80CCBF6:
 	add r3, r3, r4
 	mov r4, #0x14
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80CCC1C:
 	pop {pc}
@@ -42573,7 +42573,7 @@ sub_80CCC68:
 	mov r0, #0xa1
 	bl PlaySoundEffect
 loc_80CCCA8:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CCCBC
 	pop {pc}
@@ -42654,7 +42654,7 @@ sub_80CCD30:
 	mov r1, #0x80
 	and r0, r1
 	beq locret_80CCD40
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80CCD40:
 	pop {pc}
@@ -42745,7 +42745,7 @@ loc_80CCDDE:
 	bl object_setCollisionHitEffect
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CCDFA:
 	pop {pc}
@@ -42781,7 +42781,7 @@ loc_80CCE32:
 	b locret_80CCE40
 loc_80CCE38:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80CCE40:
 	pop {pc}
@@ -42960,7 +42960,7 @@ loc_80CCF9A:
 	strh r0, [r5,#oBattleObject_Timer]
 	bge locret_80CCFAA
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80CCFAA:
 	pop {pc}
@@ -43060,7 +43060,7 @@ loc_80CD06C:
 	mov r3, #0
 	bl object_setupCollisionData
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CD08C
 	pop {r7,pc}
@@ -43282,7 +43282,7 @@ loc_80CD20E:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CD234:
 	pop {pc}
@@ -43460,7 +43460,7 @@ loc_80CD392:
 	mov r1, #0
 	strh r1, [r0,#0x2e]
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CD3B0
 	pop {pc}
@@ -43500,7 +43500,7 @@ loc_80CD3E2:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 loc_80CD3F4:
@@ -43565,7 +43565,7 @@ loc_80CD45E:
 	mov r0, #0
 	strb r0, [r1]
 loc_80CD46C:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 	.balign 4, 0x00
@@ -43726,7 +43726,7 @@ loc_80CD5A2:
 	mov r0, #0xa
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CD5F8
 	pop {pc}
@@ -43853,7 +43853,7 @@ loc_80CD6D4:
 	bl object_clearCollisionRegion // () -> void
 	bl sub_800F656
 	bl sub_802EF5C
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
 	.balign 4, 0x00
@@ -43929,7 +43929,7 @@ loc_80CD778:
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_removePanelReserve
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CD78C:
 	pop {pc}
@@ -44191,7 +44191,7 @@ loc_80CD9AE:
 	bl object_setupCollisionData
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CD9CA
 	pop {r4,r7,pc}
@@ -44266,7 +44266,7 @@ loc_80CDA3A:
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl sub_802EF5C
 	bl sub_800F656
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 loc_80CDA7A:
@@ -44525,7 +44525,7 @@ loc_80CDC66:
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl sub_802EF5C
 	bl sub_800F656
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CDC7A:
 	pop {pc}
@@ -44701,7 +44701,7 @@ loc_80CDDDC:
 	bl object_setupCollisionData
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CDDFC
 	pop {pc}
@@ -44747,7 +44747,7 @@ sub_80CDE44:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80CDE44
@@ -44942,7 +44942,7 @@ loc_80CDFBA:
 	str r0, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+4]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CDFEE
 	mov r0, #1
@@ -45030,14 +45030,14 @@ sub_80CE05E:
 	pop {r5}
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_802CEA6
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CE096:
 	pop {pc}
 loc_80CE098:
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	bl sub_802CEA6
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80CE05E
@@ -45139,7 +45139,7 @@ sub_80CE138:
 	str r0, [r5,#oBattleObject_Z]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CE178
 	pop {pc}
@@ -45230,7 +45230,7 @@ loc_80CE20E:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80CE21A
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CE21A:
 	pop {r5,pc}
@@ -45307,7 +45307,7 @@ loc_80CE28C:
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CE2B4
 	pop {pc}
@@ -45344,7 +45344,7 @@ loc_80CE2DC:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	.byte 0x0, 0x0
@@ -45423,7 +45423,7 @@ loc_80CE388:
 	bl SpawnT4BattleObjectWithId0
 loc_80CE394:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -45471,7 +45471,7 @@ loc_80CE3D6:
 	ldr r1, off_80CE414 // =byte_80CE418 
 	ldrh r0, [r1,r0]
 	bl PlaySoundEffect
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
 off_80CE40C: .word byte_80CE41E
@@ -45700,7 +45700,7 @@ loc_80CE5BA:
 	bl sprite_loadAnimationData // () -> void
 	mov r0, #0xb3
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CE5F0
 	pop {r4,pc}
@@ -45740,7 +45740,7 @@ loc_80CE62C:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.byte 0x0, 0x0
@@ -45826,7 +45826,7 @@ loc_80CE6D8:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge locret_80CE6E4
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CE6E4:
 	pop {r4,r6,r7,pc}
@@ -45903,7 +45903,7 @@ loc_80CE75A:
 	ldr r1, [r5,#oBattleObject_ExtraVars]
 	mul r0, r1
 	str r0, [r5,#oBattleObject_XVelocity]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r4,pc}
 	thumb_func_end sub_80CE730
@@ -45931,7 +45931,7 @@ sub_80CE782:
 	pop {r4,r7,pc}
 loc_80CE7B2:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 off_80CE7BC: .word off_80CE7C0
@@ -45945,7 +45945,7 @@ sub_80CE7C4:
 	tst r0, r0
 	bne loc_80CE7DC
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -46025,7 +46025,7 @@ loc_80CE858:
 	mov r0, #0x21 
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
 dword_80CE878: .word 0x50000
@@ -46275,7 +46275,7 @@ sub_80CEA24:
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	tst r0, r0
 	bne locret_80CEA40
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl object_clearCollisionRegion // () -> void
 locret_80CEA40:
@@ -46314,7 +46314,7 @@ loc_80CEA5E:
 locret_80CEA7C:
 	pop {pc}
 loc_80CEA7E:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl object_clearCollisionRegion // () -> void
 	pop {pc}
@@ -46435,7 +46435,7 @@ sub_80CEB24:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80CEB24
@@ -46455,7 +46455,7 @@ sub_80CEB66:
 	bx r1
 	b locret_80CEB86
 loc_80CEB82:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CEB86:
 	pop {pc}
@@ -46650,7 +46650,7 @@ loc_80CECAC:
 	bl PlaySoundEffect
 	bl sub_80CEE38
 loc_80CECFA:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80CED12
 loc_80CED00:
@@ -46872,7 +46872,7 @@ loc_80CEEF6:
 	mov r3, #3
 	bl object_setupCollisionData
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CEF08:
 	pop {pc}
@@ -46902,7 +46902,7 @@ loc_80CEF36:
 	b locret_80CEF44
 loc_80CEF3C:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CEF44:
 	pop {pc}
@@ -47047,7 +47047,7 @@ loc_80CF046:
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80CF056
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CF056:
 	pop {pc}
@@ -47195,7 +47195,7 @@ loc_80CF16A:
 	bl object_setupCollisionData
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CF18C
 	pop {r7,pc}
@@ -47281,7 +47281,7 @@ loc_80CF23A:
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl sub_802EF5C
 	bl sub_800F656
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CF24E:
 	pop {pc}
@@ -47538,7 +47538,7 @@ loc_80CF452:
 	mov r4, #1
 	lsl r4, r4, #8
 	bl sub_80E43F6
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r7,pc}
 dword_80CF47C: .word 0x1000000
@@ -47677,7 +47677,7 @@ loc_80CF582:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80CF554
@@ -47769,7 +47769,7 @@ loc_80CF632:
 	mov r0, #0xff
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80CF656
 loc_80CF64C:
@@ -47840,7 +47840,7 @@ loc_80CF6CC:
 	ldr r1, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0
 	str r0, [r1]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r6,r7,pc}
 loc_80CF6D8:
@@ -47848,7 +47848,7 @@ loc_80CF6D8:
 	ldr r1, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0
 	str r0, [r1]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r6,r7,pc}
 off_80CF6E8: .word off_80CF6EC
@@ -47899,7 +47899,7 @@ loc_80CF748:
 	ldr r1, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0
 	str r0, [r1]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80CF756:
 	pop {r4,pc}
@@ -48051,7 +48051,7 @@ loc_80CF85A:
 	mov r0, #4
 	bl object_setCollisionRegion
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CF8B0
 	b locret_80CF8A0
@@ -48093,7 +48093,7 @@ loc_80CF8E4:
 	b locret_80CF8F2
 loc_80CF8EA:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80CF8F2:
 	pop {r4,pc}
@@ -48115,7 +48115,7 @@ sub_80CF8F8:
 	tst r0, r0
 	bne locret_80CF91C
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80CF91C:
 	pop {pc}
@@ -48221,7 +48221,7 @@ loc_80CF9EE:
 	bl object_setCollisionHitEffect
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80CFA18
 	pop {r7,pc}
@@ -48428,7 +48428,7 @@ loc_80CFBB6:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CFBC2:
 	pop {r4,pc}
@@ -48501,7 +48501,7 @@ sub_80CFC28:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #0xad
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CFC5E
 	pop {pc}
@@ -48534,7 +48534,7 @@ loc_80CFC74:
 	mov r0, #0
 	strb r0, [r1]
 loc_80CFC8C:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80CFC90:
 	bl object_presentCollisionData
@@ -48641,7 +48641,7 @@ sub_80CFD1C:
 	bl sprite_setFlip
 	mov r0, #0xed
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CFD64
 	pop {r4,r6,r7,pc}
@@ -48724,7 +48724,7 @@ loc_80CFDE4:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge locret_80CFDF0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80CFDF0:
 	pop {pc}
@@ -48901,7 +48901,7 @@ sub_80CFEE4:
 	bl object_setupCollisionData
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80CFF62
 	b locret_80CFF60
@@ -48925,7 +48925,7 @@ loc_80CFF74:
 	tst r0, r0
 	beq loc_80CFF86
 	bl object_clearCollisionRegion
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	b loc_80CFF98
 loc_80CFF86:
@@ -49036,7 +49036,7 @@ sub_80D0044:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bne loc_80D0054
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D006C
 loc_80D0054:
@@ -49144,7 +49144,7 @@ sub_80D00C4:
 	sub r1, r1, r0
 	str r1, [r5,#oBattleObject_Z]
 loc_80D011C:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D012A
 	bl sub_80D01FE
@@ -49175,7 +49175,7 @@ sub_80D0132:
 	bx r1
 	b locret_80D015C
 loc_80D0158:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D015C:
 	pop {r4,pc}
@@ -49205,7 +49205,7 @@ loc_80D017A:
 	beq loc_80D01AC
 	cmp r0, #0
 	bgt locret_80D01BA
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D01BA
 loc_80D0192:
@@ -49376,7 +49376,7 @@ sub_80D028C:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_reservePanel
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80D028C
@@ -49401,7 +49401,7 @@ sub_80D02D6:
 	bx r1
 	b locret_80D0300
 loc_80D02FC:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D0300:
 	pop {pc}
@@ -49454,7 +49454,7 @@ loc_80D034E:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80D035A
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D035A:
 	pop {pc}
@@ -49564,7 +49564,7 @@ loc_80D0420:
 	bl object_presentCollisionData
 	mov r0, #0xb3
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D043E:
 	pop {pc}
@@ -49597,7 +49597,7 @@ loc_80D047E:
 	b locret_80D048C
 loc_80D0484:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D048C:
 	pop {pc}
@@ -49630,7 +49630,7 @@ sub_80D0498:
 	bne locret_80D04D0
 loc_80D04C8:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D04D0:
 	pop {r4,r6,pc}
@@ -49707,7 +49707,7 @@ sub_80D0524:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80D0524
@@ -49727,7 +49727,7 @@ sub_80D0566:
 	bx r1
 	b locret_80D0586
 loc_80D0582:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D0586:
 	pop {pc}
@@ -49761,7 +49761,7 @@ loc_80D05B6:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge locret_80D05C2
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D05C2:
 	pop {pc}
@@ -49938,7 +49938,7 @@ loc_80D0700:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl object_crackPanel
 loc_80D0722:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D072C
 	pop {pc}
@@ -49967,7 +49967,7 @@ loc_80D0742:
 	pop {r7,pc}
 loc_80D075C:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80D072C
@@ -50088,7 +50088,7 @@ loc_80D0846:
 	bl object_presentCollisionData
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Param2]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D0866:
 	pop {pc}
@@ -50125,7 +50125,7 @@ loc_80D0896:
 	b locret_80D08AE
 loc_80D08A6:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D08AE:
 	pop {pc}
@@ -50237,7 +50237,7 @@ loc_80D096A:
 	tst r0, r0
 	bne locret_80D0994
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	b locret_80D0994
 locret_80D0994:
@@ -50423,7 +50423,7 @@ sub_80D0AC8:
 	str r0, [r5,#oBattleObject_ExtraVars+4]
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Param2]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D0B0E
 	b locret_80D0B0C
@@ -50459,7 +50459,7 @@ loc_80D0B36:
 	ldr r1, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0
 	str r0, [r1]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D0B44:
 	pop {pc}
@@ -50520,7 +50520,7 @@ loc_80D0BAA:
 	ldr r1, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0
 	str r0, [r1]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D0BB8:
 	pop {pc}
@@ -50563,7 +50563,7 @@ loc_80D0C0C:
 	ldr r1, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0
 	str r0, [r1]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D0C1A:
 	pop {pc}
@@ -50819,7 +50819,7 @@ loc_80D0DF6:
 	bl object_setCollisionHitEffect
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D0E12:
 	pop {pc}
@@ -50854,7 +50854,7 @@ loc_80D0E3E:
 	b locret_80D0E56
 loc_80D0E4E:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D0E56:
 	pop {pc}
@@ -50949,7 +50949,7 @@ loc_80D0EFA:
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80D0F0A
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D0F0A:
 	pop {pc}
@@ -51081,7 +51081,7 @@ loc_80D1004:
 	ldrh r0, [r1,r0]
 	strh r0, [r5,#oBattleObject_HP]
 	strh r0, [r5,#oBattleObject_MaxHP]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D102C:
 	pop {pc}
@@ -51119,7 +51119,7 @@ loc_80D1068:
 	bl object_removePanelReserve
 	bl sub_80D11FC
 	bl object_clearCollisionRegion
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D107C:
 	pop {pc}
@@ -51261,7 +51261,7 @@ loc_80D1168:
 	bge locret_80D1180
 loc_80D1178:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D1180:
 	pop {r4,pc}
@@ -51430,7 +51430,7 @@ loc_80D1292:
 	mov r1, #2
 	str r1, [r0,#oBattleObject_ObjectHeader]
 loc_80D12C4:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r4,pc}
 	thumb_func_end sub_80D124E
@@ -51517,7 +51517,7 @@ loc_80D135E:
 	mov r0, #SOUND_HIT_BOMB_1
 	bl PlaySoundEffect
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 off_80D1380: .word off_80D1384
@@ -51592,7 +51592,7 @@ sub_80D13F6:
 	tst r0, r0
 	bne locret_80D1418
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D1418:
 	pop {pc}
@@ -51622,7 +51622,7 @@ sub_80D142C:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80D1440
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D1440:
 	mov pc, lr
@@ -51787,7 +51787,7 @@ sub_80D1538:
 	str r0, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Param2]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.byte 0, 0
@@ -51818,7 +51818,7 @@ loc_80D15CA:
 	ldr r1, [r5,#oBattleObject_ExtraVars+8]
 	mov r0, #0
 	str r0, [r1]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D15D4:
 	pop {pc}
@@ -51949,7 +51949,7 @@ loc_80D16CA:
 	ldr r1, [r5,#oBattleObject_ExtraVars+8]
 	mov r0, #0
 	str r0, [r1]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D16D4:
 	pop {r4,r6,pc}
@@ -52131,7 +52131,7 @@ loc_80D182C:
 	bl object_presentCollisionData
 	ldrb r0, [r5,#oBattleObject_Param2]
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D184E:
 	pop {pc}
@@ -52174,7 +52174,7 @@ loc_80D189E:
 	b locret_80D18AC
 loc_80D18A4:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D18AC:
 	pop {pc}
@@ -52245,7 +52245,7 @@ loc_80D191A:
 	ldrb r0, [r5,#oBattleObject_Param2]
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D1932:
 	pop {r4,pc}
@@ -52307,7 +52307,7 @@ loc_80D19A2:
 	b locret_80D19B0
 loc_80D19A8:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D19B0:
 	pop {r4,r6,r7,pc}
@@ -52397,7 +52397,7 @@ loc_80D1A42:
 	bl object_setCollisionHitEffect
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D1A64
 locret_80D1A62:
@@ -52430,7 +52430,7 @@ loc_80D1A92:
 	b locret_80D1AA0
 loc_80D1A98:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D1AA0:
 	pop {pc}
@@ -52497,7 +52497,7 @@ loc_80D1B10:
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80D1B20
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D1B20:
 	pop {r4,pc}
@@ -52560,7 +52560,7 @@ loc_80D1B78:
 	mov r0, #2
 	bl object_setCollisionRegion
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D1B9A
 locret_80D1B98:
@@ -52600,7 +52600,7 @@ loc_80D1BCA:
 	b locret_80D1BE0
 loc_80D1BD8:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D1BE0:
 	pop {pc}
@@ -52715,7 +52715,7 @@ loc_80D1C84:
 	str r1, [r0,#oBattleObject_ObjectHeader]
 	ldr r0, [r5,#oBattleObject_ExtraVars+8]
 	str r5, [r0]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r4,pc}
 	.word 0, 0
@@ -52774,7 +52774,7 @@ loc_80D1D6C:
 	pop {r4,r7,pc}
 loc_80D1D76:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 off_80D1D80: .word off_80D1D84
@@ -52790,7 +52790,7 @@ sub_80D1D90:
 	tst r0, r0
 	bne loc_80D1DA8
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -52856,7 +52856,7 @@ sub_80D1E08:
 	tst r0, r0
 	bne loc_80D1E24
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D1E30
 loc_80D1E24:
@@ -52899,7 +52899,7 @@ loc_80D1E58:
 	strh r0, [r5,#oBattleObject_Timer2]
 	bgt loc_80D1E72
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D1E7C
 loc_80D1E72:
@@ -52940,7 +52940,7 @@ loc_80D1EAA:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80D1EB6
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D1EB6:
 	pop {pc}
@@ -53230,7 +53230,7 @@ sub_80D2058:
 	ldr r1, off_80D20D4 // =byte_80D20D8
 	ldr r0, [r1,r0]
 	str r0, [r5,#oBattleObject_ExtraVars+4]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D20D0
 loc_80D20CC:
@@ -53275,7 +53275,7 @@ loc_80D2124:
 	b locret_80D2132
 loc_80D212A:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D2132:
 	pop {pc}
@@ -53374,7 +53374,7 @@ loc_80D21D8:
 	tst r0, r1
 	bne locret_80D21F6
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D21F6:
 	pop {r4,r6,pc}
@@ -53514,7 +53514,7 @@ loc_80D2306:
 	mov r3, #3
 	bl object_setupCollisionData
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
 	.balign 4, 0x00
@@ -53644,7 +53644,7 @@ loc_80D23F0:
 	bl SpawnT4BattleObjectWithId0
 loc_80D2426:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D242E:
 	pop {r4,r7,pc}
@@ -53735,7 +53735,7 @@ loc_80D24DC:
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0xb0
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D24F0
 	pop {pc}
@@ -53810,7 +53810,7 @@ sub_80D255A:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 loc_80D2572:
@@ -53931,7 +53931,7 @@ sub_80D25F8:
 	str r0, [r5,#oBattleObject_ExtraVars+0x1c]
 	mov r0, #0
 	str r0, [r5,#oBattleObject_RelatedObject2Ptr]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D267E
 loc_80D2676:
@@ -53990,7 +53990,7 @@ loc_80D26DE:
 	b locret_80D26EC
 loc_80D26E4:
 	bl sub_80D2A68
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D26EC:
 	pop {pc}
@@ -54152,7 +54152,7 @@ loc_80D27F8:
 	b locret_80D281A
 loc_80D2812:
 	bl sub_80D2A68
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D281A:
 	pop {pc}
@@ -54549,7 +54549,7 @@ loc_80D2B04:
 	bl object_setCollisionRegion
 	mov r0, #0xa
 	bl object_setCollisionHitEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D2B2C
 	pop {r4,r6,r7,pc}
@@ -54597,7 +54597,7 @@ loc_80D2B78:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+8]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80D2B84:
 	bl sub_80D2BC0
@@ -54675,7 +54675,7 @@ off_80D2BF4: .word sub_80D2C00+1
 sub_80D2C00:
 	push {lr}
 	bl object_setCoordinatesFromPanels // () -> void
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D2C10
 	pop {pc}
@@ -54771,7 +54771,7 @@ loc_80D2CB2:
 	ldr r0, [r5,#oBattleObject_ExtraVars+4]
 	tst r0, r0
 	bne locret_80D2CBC
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D2CBC:
 	pop {r4,r6,r7,pc}
@@ -55099,7 +55099,7 @@ sub_80D2EDC:
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
 	bl sub_80D3058
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D2F3C
 	pop {pc}
@@ -55122,7 +55122,7 @@ sub_80D2F3C:
 	bl object_updateSprite
 	b locret_80D2F5A
 loc_80D2F56:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D2F5A:
 	pop {pc}
@@ -55394,7 +55394,7 @@ loc_80D311E:
 	ldr r0, dword_80D34AC // =0x280000 
 	svc 6
 	strh r0, [r5,#oBattleObject_Timer2]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r4,pc}
 	.word 0x0
@@ -55445,7 +55445,7 @@ loc_80D31CC:
 	pop {r4,r7,pc}
 loc_80D31D2:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 off_80D31DC: .word off_80D31E0
@@ -55461,7 +55461,7 @@ sub_80D31EC:
 	tst r0, r0
 	bne loc_80D3204
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -55558,7 +55558,7 @@ loc_80D329E:
 	strh r0, [r5,#oBattleObject_Timer2]
 	bgt loc_80D32B8
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D32C2
 loc_80D32B8:
@@ -55599,7 +55599,7 @@ loc_80D32F0:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80D32FC
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D32FC:
 	pop {pc}
@@ -55938,7 +55938,7 @@ loc_80D356C:
 	mov r3, #0
 	bl sub_80B89DC
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80D358C
 	pop {pc}
@@ -56160,7 +56160,7 @@ loc_80D3720:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D3740:
 	pop {pc}
@@ -56356,7 +56356,7 @@ sub_80D387C:
 	bl object_presentCollisionData
 	mov r0, #0xb8
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D390A
 	pop {pc}
@@ -56388,7 +56388,7 @@ loc_80D3934:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80D390A
@@ -56430,7 +56430,7 @@ loc_80D397C:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80D3946
@@ -56523,7 +56523,7 @@ sub_80D39E0:
 	str r0, [r5,#oBattleObject_ExtraVars+8]
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Param4]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D3A62
 loc_80D3A5A:
@@ -56582,7 +56582,7 @@ loc_80D3ACE:
 loc_80D3AD4:
 	bl object_clearCollisionRegion // () -> void
 	bl sub_80D3F32
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D3AE0:
 	pop {r4,pc}
@@ -56974,7 +56974,7 @@ loc_80D3DAE:
 	bge locret_80D3DC2
 	bl object_clearCollisionRegion // () -> void
 	bl sub_80D3F32
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D3DC2:
 	pop {pc}
@@ -57406,7 +57406,7 @@ loc_80D411A:
 	mov r3, #3
 	bl object_setupCollisionData
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80D4144
 	pop {pc}
@@ -57683,7 +57683,7 @@ loc_80D433A:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D435A:
 	pop {pc}
@@ -57878,7 +57878,7 @@ loc_80D44B4:
 	bl object_reservePanel
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r4,pc}
 	thumb_func_end sub_80D4472
@@ -58047,7 +58047,7 @@ sub_80D45EC:
 loc_80D45F8:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	bl sub_8116878
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
 	thumb_func_end sub_80D45EC
@@ -58085,7 +58085,7 @@ loc_80D461E:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	bl sub_80C7D50
 loc_80D4644:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D4648:
 	pop {r4,r6,pc}
@@ -58206,7 +58206,7 @@ loc_80D472C:
 	mov r0, #0
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80D4754
 	pop {pc}
@@ -58485,7 +58485,7 @@ loc_80D497E:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D499E:
 	pop {pc}
@@ -58507,7 +58507,7 @@ sub_80D49A0:
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_removePanelReserve
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80D49A0
@@ -58606,7 +58606,7 @@ loc_80D4A72:
 	mov r0, #0xa
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80D4A98
 	pop {r4,pc}
@@ -58691,7 +58691,7 @@ loc_80D4B34:
 	cmp r0, #7
 	bne locret_80D4B42
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D4B42:
 	pop {pc}
@@ -58752,7 +58752,7 @@ loc_80D4BA2:
 	mov r0, #0xff
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D4BBE:
 	pop {r4,pc}
@@ -58776,7 +58776,7 @@ sub_80D4BC0:
 	b locret_80D4BF4
 loc_80D4BEC:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D4BF4:
 	pop {pc}
@@ -58943,7 +58943,7 @@ loc_80D4D16:
 	bl object_setupCollisionData
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
 	.byte 0, 0
@@ -59084,7 +59084,7 @@ loc_80D4E40:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80D4DF0
@@ -59162,7 +59162,7 @@ sub_80D4EE0:
 	bl battle_isTimeStop
 	tst r0, r0
 	bne locret_80D4EFA
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D4EFA:
 	pop {pc}
@@ -59245,7 +59245,7 @@ loc_80D4F94:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D4FA4:
 	pop {pc}
@@ -59382,7 +59382,7 @@ sub_80D5050:
 	mov r0, #0xff
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D50C4
 loc_80D50BC:
@@ -59413,7 +59413,7 @@ sub_80D50C6:
 loc_80D50EE:
 	bl object_clearCollisionRegion // () -> void
 	bl sub_80D5128
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D50FA:
 	pop {pc}
@@ -59521,7 +59521,7 @@ sub_80D5160:
 	ldrb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	bl sub_80D532C
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D51E2
 loc_80D51DA:
@@ -59560,7 +59560,7 @@ loc_80D5216:
 loc_80D521C:
 	bl object_clearCollisionRegion // () -> void
 	bl sub_80D5348
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D5228:
 	pop {r4,pc}
@@ -59636,7 +59636,7 @@ loc_80D52A0:
 loc_80D52B6:
 	bl object_clearCollisionRegion // () -> void
 	bl sub_80D5348
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D52C2:
 	pop {r4,pc}
@@ -59788,7 +59788,7 @@ loc_80D53D6:
 	bl object_setCollisionHitEffect
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D53F2:
 	pop {pc}
@@ -59824,7 +59824,7 @@ loc_80D5428:
 	b locret_80D5436
 loc_80D542E:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D5436:
 	pop {pc}
@@ -59924,7 +59924,7 @@ loc_80D54DA:
 	bl PlaySoundEffect
 loc_80D54E6:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80D54C0
@@ -60035,7 +60035,7 @@ sub_80D55A4:
 	ldr r1, [r5,#oBattleObject_X]
 	add r1, r1, r0
 	str r1, [r5,#oBattleObject_X]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D55F8
 	pop {pc}
@@ -60066,7 +60066,7 @@ sub_80D55F8:
 	bl sub_8109660
 	pop {r7,pc}
 loc_80D562E:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80D55F8
@@ -60265,7 +60265,7 @@ loc_80D57E6:
 	sub r0, r0, r1
 	str r0, [r5,#oBattleObject_X]
 loc_80D57F6:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.word 0x0
@@ -60312,7 +60312,7 @@ loc_80D583C:
 	mov r1, #0
 	str r1, [r0]
 loc_80D5848:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80D5806
@@ -60428,7 +60428,7 @@ sub_80D58D8:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D592A
 locret_80D592A:
@@ -60450,7 +60450,7 @@ sub_80D592C:
 	bx r1
 	b locret_80D594C
 loc_80D5948:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D594C:
 	pop {pc}
@@ -60514,7 +60514,7 @@ loc_80D59AA:
 	beq loc_80D59BE
 	cmp r0, #0
 	bgt locret_80D59E0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D59E0
 loc_80D59BE:
@@ -60725,7 +60725,7 @@ loc_80D5B3E:
 	str r0, [r5,#oBattleObject_XVelocity]
 	bl sub_80D5C26
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D5B6E:
 	pop {pc}
@@ -60760,7 +60760,7 @@ loc_80D5BB2:
 	b locret_80D5BC0
 loc_80D5BB8:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D5BC0:
 	pop {pc}
@@ -60791,7 +60791,7 @@ sub_80D5BCC:
 	b locret_80D5BFE
 loc_80D5BF6:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D5BFE:
 	pop {r4,pc}
@@ -60876,7 +60876,7 @@ sub_80D5C6C:
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80D5C6C
@@ -60903,7 +60903,7 @@ loc_80D5CB8:
 	strh r0, [r5,#oBattleObject_Timer]
 	cmp r0, #9
 	ble locret_80D5CC6
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D5CC6:
 	pop {pc}
@@ -61025,7 +61025,7 @@ sub_80D5D78:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80D5D78
@@ -61045,7 +61045,7 @@ sub_80D5DC8:
 	bx r1
 	b locret_80D5DE8
 loc_80D5DE4:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D5DE8:
 	pop {pc}
@@ -61104,7 +61104,7 @@ loc_80D5E2A:
 	bl SpawnT4BattleObjectWithId0
 	bl sub_80D5EDE
 loc_80D5E5C:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer2]
@@ -61256,7 +61256,7 @@ loc_80D5F7E:
 	bl object_presentCollisionData
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Param3]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D5F9E:
 	pop {pc}
@@ -61304,7 +61304,7 @@ loc_80D5FEA:
 	bl SpawnT4BattleObjectWithId0
 loc_80D5FF6:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D5FFE:
 	pop {r4,pc}
@@ -61460,7 +61460,7 @@ loc_80D611E:
 	b locret_80D6146
 loc_80D613E:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D6146:
 	pop {r4,pc}
@@ -61649,7 +61649,7 @@ loc_80D62B0:
 	ldrh r0, [r1,r0]
 	strh r0, [r5,#oBattleObject_HP]
 	strh r0, [r5,#oBattleObject_MaxHP]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D62DE:
 	pop {pc}
@@ -61702,7 +61702,7 @@ loc_80D6342:
 	bl sub_80D644E
 loc_80D6346:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D634E:
 	pop {pc}
@@ -61768,7 +61768,7 @@ loc_80D63D0:
 	bl sub_80D6544
 loc_80D63D4:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D63DC:
 	pop {r4,pc}
@@ -61998,7 +61998,7 @@ sub_80D6580:
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0xff
 	strb r0, [r5,#oBattleObject_Unk_0c]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D65E0
 	pop {r7,pc}
@@ -62235,7 +62235,7 @@ loc_80D6792:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0
 	strb r1, [r0,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D67A4:
 	pop {pc}
@@ -62324,7 +62324,7 @@ sub_80D6810:
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0xbd
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D685A
 	pop {r7,pc}
@@ -62393,7 +62393,7 @@ loc_80D68C6:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0
 	strb r1, [r0,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.balign 4, 0x00
@@ -62499,7 +62499,7 @@ loc_80D69A6:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	str r5, [r0,#oBattleObject_ObjectHeader]
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D69B8
 	pop {r4,pc}
@@ -62522,7 +62522,7 @@ sub_80D69B8:
 	pop {pc}
 loc_80D69D8:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80D69B8
@@ -62666,7 +62666,7 @@ loc_80D6AFE:
 	bl object_presentCollisionData
 	mov r0, #0xf3
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D6B28
 	pop {r4,pc}
@@ -62699,7 +62699,7 @@ loc_80D6B46:
 	pop {r7,pc}
 loc_80D6B58:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r2, #0x64 
 	add r2, r2, r5
@@ -62834,7 +62834,7 @@ sub_80D6C04:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80D6C04
@@ -62858,7 +62858,7 @@ loc_80D6C6C:
 	bx r1
 	b locret_80D6C7C
 loc_80D6C78:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D6C7C:
 	pop {pc}
@@ -62915,7 +62915,7 @@ loc_80D6CAE:
 	bl SpawnT4BattleObjectWithId0
 	bl sub_80D6D3E
 loc_80D6CEA:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D6D02
 loc_80D6CF0:
@@ -63060,7 +63060,7 @@ loc_80D6DFA:
 	bl object_setCollisionHitEffect
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D6E1C:
 	pop {pc}
@@ -63097,7 +63097,7 @@ loc_80D6E4C:
 	b locret_80D6E64
 loc_80D6E5C:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D6E64:
 	pop {r4,pc}
@@ -63135,7 +63135,7 @@ loc_80D6E9E:
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80D6EAE
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D6EAE:
 	pop {pc}
@@ -63223,7 +63223,7 @@ sub_80D6F04:
 	ldrh r0, [r1,r0]
 	strh r0, [r5,#oBattleObject_HP]
 	strh r0, [r5,#oBattleObject_MaxHP]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D6F72
 loc_80D6F6E:
@@ -63266,7 +63266,7 @@ loc_80D6FB4:
 	b locret_80D6FC2
 loc_80D6FBA:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D6FC2:
 	pop {pc}
@@ -63327,7 +63327,7 @@ loc_80D7028:
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80D7038
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D7038:
 	pop {pc}
@@ -63422,7 +63422,7 @@ loc_80D70F4:
 	str r1, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+4]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D70FE:
 	pop {pc}
@@ -63456,7 +63456,7 @@ loc_80D7132:
 	b locret_80D7140
 loc_80D7138:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D7140:
 	pop {pc}
@@ -63530,7 +63530,7 @@ loc_80D7198:
 	b locret_80D71D4
 loc_80D71CC:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D71D4:
 	pop {r4,r6,r7,pc}
@@ -63662,7 +63662,7 @@ loc_80D72F2:
 	mov r3, #3
 	bl object_setupCollisionData
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D730A
 	pop {pc}
@@ -63693,7 +63693,7 @@ loc_80D732C:
 	mov r0, #SOUND_UNK_85
 	bl PlaySoundEffect
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 off_80D7348: .word off_80D734C
@@ -63771,7 +63771,7 @@ sub_80D73AC:
 	cmp r0, r1
 	bls locret_80D73D4
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D73D4:
 	pop {pc}
@@ -63892,7 +63892,7 @@ loc_80D74A2:
 	mov r0, #0x21 
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80D74DC
 	pop {r4,pc}
@@ -64022,7 +64022,7 @@ loc_80D75C6:
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80D75D2
 loc_80D75CE:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D75D2:
 	pop {pc}
@@ -64168,7 +64168,7 @@ loc_80D76DE:
 	neg r0, r0
 	mov r1, #3
 	bl sub_801DC7C
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80D774C
 	pop {pc}
@@ -64313,7 +64313,7 @@ loc_80D784E:
 	bl object_clearCollisionRegion // () -> void
 	bl sub_800F656
 	bl sub_802EF5C
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
 dword_80D7874: .word 0xFFFFD800
@@ -64404,7 +64404,7 @@ loc_80D790E:
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_removePanelReserve
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_801DD34
 locret_80D7926:
@@ -64540,7 +64540,7 @@ sub_80D7A0E:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_801DD34
 	pop {pc}
@@ -64684,7 +64684,7 @@ sub_80D7AF0:
 	mov r0, #6
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D7B5A
 loc_80D7B4E:
@@ -64722,7 +64722,7 @@ sub_80D7B5C:
 	b locret_80D7B96
 loc_80D7B8E:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D7B96:
 	pop {pc}
@@ -64829,7 +64829,7 @@ loc_80D7C4E:
 	bne locret_80D7C6C
 loc_80D7C64:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80D7C6C:
 	pop {r4,r6,pc}
@@ -65105,7 +65105,7 @@ sub_80D7E08:
 	ldr r2, [r5,#oBattleObject_Z]
 	add r2, r2, r1
 	str r2, [r5,#oBattleObject_Z]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D7E7A
 	pop {pc}
@@ -65124,7 +65124,7 @@ sub_80D7E7A:
 	bl sub_80D7E98
 	pop {r7,pc}
 loc_80D7E92:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80D7E7A
@@ -65355,7 +65355,7 @@ loc_80D8152:
 loc_80D8160:
 	bl object_presentCollisionData
 	bl object_updateSprite
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D8172
 	pop {r7,pc}
@@ -65432,7 +65432,7 @@ loc_80D81F8:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80D8208:
 	bl object_presentCollisionData
@@ -65562,7 +65562,7 @@ loc_80D82F6:
 	mov r0, #1
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D830E:
 	pop {pc}
@@ -65588,7 +65588,7 @@ sub_80D8310:
 	str r1, [r0]
 	str r1, [r5,#oBattleObject_ExtraVars]
 loc_80D833A:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80D836A
 loc_80D8340:
@@ -65610,7 +65610,7 @@ loc_80D8356:
 	str r1, [r0]
 	str r1, [r5,#oBattleObject_ExtraVars]
 loc_80D8366:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D836A:
 	pop {pc}
@@ -65697,7 +65697,7 @@ loc_80D83E6:
 	str r1, [r0]
 	str r1, [r5,#oBattleObject_ExtraVars]
 loc_80D83FA:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D83FE:
 	pop {pc}
@@ -65811,7 +65811,7 @@ loc_80D84C4:
 	bl object_presentCollisionData
 	mov r0, #OBJECT_FLAGS_INVULNERABLE
 	bl object_setFlag1 // (int a1) -> void
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D84DC:
 	pop {pc}
@@ -65941,7 +65941,7 @@ loc_80D85B0:
 	bl SpawnT4BattleObjectWithId0
 loc_80D85E6:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D85EE:
 	pop {r4,r7,pc}
@@ -66015,7 +66015,7 @@ sub_80D8644:
 	bl object_setCoordinatesFromPanels // () -> void
 	mov r0, #0
 	str r0, [r5,#oBattleObject_Z]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D868E
 	pop {pc}
@@ -66081,7 +66081,7 @@ loc_80D86E2:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0
 	strb r1, [r0,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 loc_80D86FC:
@@ -66149,7 +66149,7 @@ loc_80D875A:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0
 	strb r1, [r0,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D876C:
 	pop {pc}
@@ -66232,7 +66232,7 @@ sub_80D87C0:
 	str r1, [r5,#oBattleObject_X]
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_Param4]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D881C
 	pop {pc}
@@ -66316,7 +66316,7 @@ loc_80D887C:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer2]
 	bgt locret_80D88B0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D88B0:
 	pop {r4,r6,r7,pc}
@@ -66420,7 +66420,7 @@ loc_80D8942:
 	mov r0, #0x21 
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D8988
 locret_80D8986:
@@ -66500,7 +66500,7 @@ loc_80D8A0E:
 	bl sub_802EF5C
 	bl sub_800F656
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80D8A1E:
 	bl object_presentCollisionData
@@ -66655,7 +66655,7 @@ loc_80D8B38:
 	bl sub_802EF5C
 	bl sub_800F656
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D8B50:
 	pop {r4,pc}
@@ -66689,7 +66689,7 @@ loc_80D8B84:
 	bl sub_802EF5C
 	bl sub_800F656
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D8B94:
 	pop {r4,pc}
@@ -66856,7 +66856,7 @@ loc_80D8CD4:
 	mov r3, #3
 	bl object_setupCollisionData
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
@@ -66904,7 +66904,7 @@ loc_80D8D3A:
 	bl PlaySoundEffect
 	bl sub_80D8DEE
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D8D4C:
 	pop {pc}
@@ -67074,7 +67074,7 @@ loc_80D8E72:
 	ldr r1, [r5,#oBattleObject_X]
 	add r1, r1, r0
 	str r1, [r5,#oBattleObject_X]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D8EB0
 	pop {pc}
@@ -67094,7 +67094,7 @@ sub_80D8EB0:
 	ble loc_80D8EC0
 	pop {r7,pc}
 loc_80D8EC0:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80D8EB0
@@ -67298,7 +67298,7 @@ loc_80D900A:
 	mov r0, #0x10
 	bl object_setCollisionStatusEffect1
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80D8FE4
@@ -67338,7 +67338,7 @@ loc_80D905E:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.balign 4, 0
@@ -67368,7 +67368,7 @@ sub_80D907C:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D90AC:
 	pop {pc}
@@ -67426,7 +67426,7 @@ loc_80D90D4:
 	pop {r4,r6,r7,pc}
 loc_80D910E:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
 dword_80D9118: .word 0x405FF09
@@ -67514,7 +67514,7 @@ sub_80D9178:
 	mov r0, #0xf
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80D9178
@@ -67549,7 +67549,7 @@ loc_80D91EE:
 	bx r1
 	b locret_80D9204
 loc_80D9200:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D9204:
 	pop {pc}
@@ -67799,7 +67799,7 @@ loc_80D93CE:
 	lsl r0, r0, #0x18
 	lsr r0, r0, #0x18
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D9400:
 	pop {pc}
@@ -67847,7 +67847,7 @@ loc_80D9474:
 	b locret_80D9482
 loc_80D947A:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D9482:
 	pop {pc}
@@ -67910,7 +67910,7 @@ locret_80D94E4:
 sub_80D94E6:
 	push {lr}
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80D94E6
@@ -68010,7 +68010,7 @@ loc_80D9586:
 	strb r0, [r5,r2]
 	mov r2, #0x6b 
 	strb r1, [r5,r2]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D95AE:
 	pop {r4,pc}
@@ -68046,7 +68046,7 @@ loc_80D95D8:
 	ldr r1, [r1,#oBattleObject_RelatedObject1Ptr]
 	strh r0, [r1,#oBattleObject_HP]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b loc_80D961E
 loc_80D9600:
@@ -68071,7 +68071,7 @@ loc_80D961E:
 loc_80D9624:
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D9630:
 	pop {pc}
@@ -68221,7 +68221,7 @@ sub_80D96C8:
 	ldmia r0!, {r1-r3}
 	mov r4, #0x15
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D9788
 	pop {pc}
@@ -68252,7 +68252,7 @@ loc_80D9762:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 off_80D977C: .word off_80D9780
@@ -68287,7 +68287,7 @@ sub_80D9788:
 	mov r1, #0x10
 	tst r0, r1
 	bne loc_80D97CE
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r0, #0x34 
 	add r0, r0, r5
@@ -68337,7 +68337,7 @@ loc_80D9806:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D981A:
 	pop {r4,r6,r7,pc}
@@ -68422,7 +68422,7 @@ loc_80D98BE:
 	mov r0, #2
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D98E8
 	mov r0, #0x13
@@ -68520,7 +68520,7 @@ loc_80D9980:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D99A2:
 	pop {r4,r6,r7,pc}
@@ -68555,7 +68555,7 @@ sub_80D99A4:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	thumb_func_end sub_80D99A4
@@ -68634,7 +68634,7 @@ loc_80D9A94:
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80D9ABA
 	pop {pc}
@@ -68683,7 +68683,7 @@ loc_80D9B08:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	.balign 4, 0x00
@@ -68785,7 +68785,7 @@ loc_80D9BE6:
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_removePanelReserve
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -68861,7 +68861,7 @@ loc_80D9C8A:
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
 	bl object_removePanelReserve
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
@@ -69037,7 +69037,7 @@ loc_80D9DF2:
 	bl object_setCollisionStatusEffect1
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80D9E24
 	pop {pc}
@@ -69086,7 +69086,7 @@ loc_80D9E72:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80D9E82:
 	pop {r4,pc}
@@ -69164,7 +69164,7 @@ loc_80D9F06:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r4,r6,r7,pc}
 dword_80D9F28: .word 0xFFFFD800
@@ -69219,7 +69219,7 @@ locret_80D9F82:
 sub_80D9F84:
 	push {lr}
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80D9F84
@@ -69394,7 +69394,7 @@ loc_80DA0E6:
 	mov r3, #3
 	bl object_setupCollisionData
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80DA108
 	pop {pc}
@@ -69707,7 +69707,7 @@ loc_80DA358:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DA378:
 	pop {pc}
@@ -69937,7 +69937,7 @@ loc_80DA502:
 	mov r0, #0x10
 	bl object_setCollisionStatusEffect1
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DA52A:
 	pop {pc}
@@ -69977,7 +69977,7 @@ loc_80DA558:
 	b locret_80DA580
 loc_80DA578:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DA580:
 	pop {pc}
@@ -70016,7 +70016,7 @@ loc_80DA5AA:
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80DA5CA
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DA5CA:
 	pop {pc}
@@ -70090,7 +70090,7 @@ sub_80DA620:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80DA620
@@ -70110,7 +70110,7 @@ sub_80DA662:
 	bx r1
 	b locret_80DA682
 loc_80DA67E:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DA682:
 	pop {pc}
@@ -70172,7 +70172,7 @@ loc_80DA6C2:
 	mov r1, #0xf
 	bl sub_80302A8
 loc_80DA6FC:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DA700:
 	pop {r4,pc}
@@ -70357,7 +70357,7 @@ sub_80DA834:
 	bl object_presentCollisionData
 	ldr r0, dword_80DAA20 // =0xff80000 
 	bl sub_8002FA6
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl battle_getFlags
 	mov r2, #0
@@ -70408,7 +70408,7 @@ loc_80DA8BA:
 	mov r0, #SOUND_UNK_85
 	bl PlaySoundEffect
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.balign 4, 0x00
@@ -70491,7 +70491,7 @@ sub_80DA956:
 	mov r4, #0x14
 	bl SpawnT4BattleObjectWithId0
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80DA956
@@ -70518,7 +70518,7 @@ loc_80DA994:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80DA9A0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DA9A0:
 	pop {pc}
@@ -70620,7 +70620,7 @@ loc_80DAA62:
 	str r0, [r5,#oBattleObject_ExtraVars+0xc]
 	mov r0, #2
 	str r0, [r5,#oBattleObject_ExtraVars]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80DAA48
@@ -70674,7 +70674,7 @@ sub_80DAABC:
 	b locret_80DAB20
 loc_80DAAEA:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80DAB20
 loc_80DAAF4:
@@ -70750,7 +70750,7 @@ loc_80DAB78:
 	bl sub_80302A8
 	b locret_80DAB88
 loc_80DAB84:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DAB88:
 	pop {pc}
@@ -70996,7 +70996,7 @@ loc_80DAD64:
 	mov r0, #9
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DAD82:
 	pop {pc}
@@ -71032,7 +71032,7 @@ loc_80DADBA:
 	b locret_80DADC8
 loc_80DADC0:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DADC8:
 	pop {pc}
@@ -71089,7 +71089,7 @@ loc_80DAE36:
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80DAE46
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DAE46:
 	pop {r4,pc}
@@ -71194,7 +71194,7 @@ sub_80DAEC4:
 	ldrb r0, [r5,#oBattleObject_Param1]
 	tst r0, r0
 	bne loc_80DAF1C
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -71202,7 +71202,7 @@ sub_80DAEC4:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	b locret_80DAF28
 loc_80DAF1C:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurAction]
@@ -71241,7 +71241,7 @@ loc_80DAF52:
 	b locret_80DAF66
 loc_80DAF5E:
 	bl sub_80DB0D0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DAF66:
 	pop {pc}
@@ -71322,7 +71322,7 @@ loc_80DAFEA:
 loc_80DAFF4:
 	bl sub_80DB0D0
 loc_80DAFF8:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DAFFC:
 	pop {r4,pc}
@@ -71499,7 +71499,7 @@ loc_80DB11E:
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+8]
 	str r0, [r5,#oBattleObject_ExtraVars+4]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DB148
 	pop {pc}
@@ -71685,7 +71685,7 @@ loc_80DB2B8:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DB2C4:
 	pop {r4,pc}
@@ -71769,7 +71769,7 @@ sub_80DB324:
 	mov r0, #0xa
 	bl object_setCollisionHitEffect
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r7,pc}
 	thumb_func_end sub_80DB324
@@ -71895,7 +71895,7 @@ loc_80DB462:
 	bgt locret_80DB472
 loc_80DB46A:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DB472:
 	pop {pc}
@@ -72075,7 +72075,7 @@ loc_80DB5BE:
 	mov r1, #1
 	str r1, [r0]
 loc_80DB5DE:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DB5E8
 	pop {r7,pc}
@@ -72233,7 +72233,7 @@ sub_80DB6D4:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80DB6D4
@@ -72257,7 +72257,7 @@ loc_80DB73C:
 	bx r1
 	b locret_80DB74C
 loc_80DB748:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DB74C:
 	pop {pc}
@@ -72333,7 +72333,7 @@ loc_80DB7C8:
 	beq loc_80DB7DC
 	cmp r0, #0
 	bgt locret_80DB7FE
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80DB7FE
 loc_80DB7DC:
@@ -72510,7 +72510,7 @@ loc_80DB912:
 	mov r0, #0xff
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DB934
 	pop {r7,pc}
@@ -72640,7 +72640,7 @@ loc_80DBA1E:
 	ldr r1, dword_80DBA4C // =0xfff 
 	and r0, r1
 	str r0, [r5,#oBattleObject_ExtraVars+4]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DBA48:
 	pop {r7,pc}
@@ -72726,7 +72726,7 @@ loc_80DBADA:
 	bne loc_80DBAF8
 loc_80DBAF0:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80DBAF8:
 	add sp, sp, #0x10
@@ -72850,7 +72850,7 @@ loc_80DBBC8:
 	mov r0, #0xa
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b loc_80DBC06
 loc_80DBC02:
@@ -72881,7 +72881,7 @@ sub_80DBC0A:
 	b locret_80DBC3C
 loc_80DBC34:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DBC3C:
 	pop {pc}
@@ -72921,7 +72921,7 @@ loc_80DBC58:
 	b locret_80DBC8E
 loc_80DBC86:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DBC8E:
 	pop {pc}
@@ -73041,7 +73041,7 @@ sub_80DBD10:
 	bl sprite_setFlip
 	mov r0, #0xc4
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 dword_80DBD80: .word 0x860000
@@ -73163,7 +73163,7 @@ loc_80DBE74:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80DBE80
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DBE80:
 	pop {pc}
@@ -73314,7 +73314,7 @@ loc_80DBF90:
 	bl object_presentCollisionData
 	mov r0, #0xc4
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r7,pc}
 	.byte 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x1
@@ -73445,7 +73445,7 @@ sub_80DC0AC:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80DC0AC
@@ -73522,7 +73522,7 @@ sub_80DC108:
 	str r0, [r5,#oBattleObject_Z]
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80DC160
 	pop {r7,pc}
@@ -73623,7 +73623,7 @@ loc_80DC1EE:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80DC216
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DC216:
 	pop {r4,r6,r7,pc}
@@ -73704,7 +73704,7 @@ sub_80DC280:
 	mov r0, #0xff
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80DC2D2
 loc_80DC2C8:
@@ -73736,7 +73736,7 @@ loc_80DC2F6:
 	ldr r7, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0
 	str r0, [r7]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.byte 0x0, 0x0
@@ -73796,7 +73796,7 @@ loc_80DC378:
 	ldr r7, [r5,#oBattleObject_ExtraVars]
 	mov r0, #0
 	str r0, [r7]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80DC386:
 	add sp, sp, #0x10
@@ -73908,7 +73908,7 @@ sub_80DC41C:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80DC41C
@@ -73926,7 +73926,7 @@ sub_80DC45E:
 	bx r1
 	b locret_80DC478
 loc_80DC474:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DC478:
 	pop {pc}
@@ -73958,7 +73958,7 @@ loc_80DC4AA:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80DC4B6
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DC4B6:
 	pop {pc}
@@ -74044,7 +74044,7 @@ sub_80DC520:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 loc_80DC562:
@@ -74059,7 +74059,7 @@ loc_80DC562:
 	bx r1
 	b locret_80DC57C
 loc_80DC578:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DC57C:
 	pop {pc}
@@ -74088,7 +74088,7 @@ loc_80DC5A6:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80DC5B2
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DC5B2:
 	pop {pc}
@@ -74178,7 +74178,7 @@ loc_80DC630:
 	bl object_setCollisionRegion
 	mov r0, #0xf3
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DC668
 	pop {pc}
@@ -74215,7 +74215,7 @@ loc_80DC692:
 	ble loc_80DC6A6
 loc_80DC69E:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80DC6A6:
 	bl sub_80DC6D2
@@ -74313,7 +74313,7 @@ sub_80DC730:
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DC778
 	pop {pc}
@@ -74582,7 +74582,7 @@ loc_80DC978:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80DC984
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DC984:
 	pop {pc}
@@ -74853,7 +74853,7 @@ sub_80DCB4C:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	thumb_func_end sub_80DCB4C
@@ -74877,7 +74877,7 @@ loc_80DCBB2:
 	bx r1
 	b locret_80DCBC2
 loc_80DCBBE:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DCBC2:
 	pop {pc}
@@ -74931,7 +74931,7 @@ loc_80DCBFC:
 	mov r0, #2
 	mov r1, #0xf
 	bl sub_80302A8
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80DCC44
 loc_80DCC32:
@@ -75056,7 +75056,7 @@ sub_80DCCF8:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	thumb_func_end sub_80DCCF8
@@ -75076,7 +75076,7 @@ sub_80DCD48:
 	bx r1
 	b locret_80DCD68
 loc_80DCD64:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DCD68:
 	pop {pc}
@@ -75119,7 +75119,7 @@ loc_80DCD9A:
 	bgt loc_80DCDC0
 	bl sub_80DCDFA
 	bl sub_80DCE18
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80DCDD2
 loc_80DCDC0:
@@ -75231,7 +75231,7 @@ sub_80DCE5C:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80DCE5C
@@ -75255,7 +75255,7 @@ loc_80DCEB6:
 	cmp r0, r1
 	beq locret_80DCEC4
 loc_80DCEC0:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DCEC4:
 	pop {pc}
@@ -75345,7 +75345,7 @@ loc_80DCF62:
 	ldrh r0, [r1,r0]
 	strh r0, [r5,#oBattleObject_HP]
 	strh r0, [r5,#oBattleObject_MaxHP]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DCF86:
 	pop {pc}
@@ -75389,7 +75389,7 @@ loc_80DCFCA:
 	bl SpawnT4BattleObjectWithId0
 loc_80DCFD6:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DCFDE:
 	pop {pc}
@@ -75428,7 +75428,7 @@ loc_80DD028:
 	strh r0, [r5,#oBattleObject_Timer]
 	bge locret_80DD038
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DD038:
 	pop {r4,pc}
@@ -75549,7 +75549,7 @@ loc_80DD112:
 	ldr r0, [r0,r1]
 	bl object_setCollisionStatusEffect1
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DD15C
 locret_80DD13C:
@@ -75584,7 +75584,7 @@ sub_80DD15C:
 loc_80DD18C:
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DD198:
 	pop {pc}
@@ -75690,7 +75690,7 @@ loc_80DD23E:
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80DD25C
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DD25C:
 	pop {pc}
@@ -75934,7 +75934,7 @@ loc_80DD416:
 	mov r0, #0x41 
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	.byte 0, 0
@@ -76108,7 +76108,7 @@ sub_80DD584:
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_CurAnim]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80DD584
@@ -76401,7 +76401,7 @@ sub_80DD784:
 	bl object_setupCollisionData
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DD7FC
 	b locret_80DD7FA
@@ -76425,7 +76425,7 @@ loc_80DD80E:
 	tst r0, r0
 	beq loc_80DD820
 	bl object_clearCollisionRegion
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	b loc_80DD832
 loc_80DD820:
@@ -76544,7 +76544,7 @@ sub_80DD8F0:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bne loc_80DD900
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80DD918
 loc_80DD900:
@@ -76667,7 +76667,7 @@ loc_80DD9D4:
 	bl object_presentCollisionData
 	ldrb r0, [r5,#oBattleObject_Param2]
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DD9F6:
 	pop {pc}
@@ -76714,7 +76714,7 @@ loc_80DDA42:
 	b locret_80DDA58
 loc_80DDA50:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DDA58:
 	pop {pc}
@@ -76807,7 +76807,7 @@ loc_80DDAFC:
 	bl sprite_setPalette // (int pallete) -> void
 	mov r0, #0xa
 	str r0, [r5,#oBattleObject_ExtraVars+4]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DDB24
 	pop {r7,pc}
@@ -76858,7 +76858,7 @@ loc_80DDB76:
 	pop {pc}
 loc_80DDB84:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.byte 0x0, 0x0
@@ -77027,7 +77027,7 @@ loc_80DDCCA:
 	bl object_presentCollisionData
 	mov r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r7,pc}
 dword_80DDCEC: .word 0x80000
@@ -77134,7 +77134,7 @@ sub_80DDDB8:
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80DDDB8
@@ -77216,7 +77216,7 @@ loc_80DDE62:
 	mov r0, #0xa
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DDE7A:
 	pop {pc}
@@ -77262,7 +77262,7 @@ loc_80DDEC8:
 	b locret_80DDED6
 loc_80DDECE:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DDED6:
 	pop {pc}
@@ -77344,7 +77344,7 @@ loc_80DDF48:
 	b locret_80DDF7E
 loc_80DDF76:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DDF7E:
 	pop {r4,pc}
@@ -77373,7 +77373,7 @@ loc_80DDF98:
 	beq loc_80DDFB0
 	cmp r0, #0
 	bgt locret_80DDFB4
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80DDFB4
 loc_80DDFB0:
@@ -77475,7 +77475,7 @@ sub_80DE024:
 	str r2, [r5,#oBattleObject_ZVelocity]
 	mov r0, #0x14
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r4,r6,pc}
 	.byte 0, 0
@@ -77505,7 +77505,7 @@ loc_80DE098:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r1, #0
 	strb r1, [r0,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r0, #0x34 
 	add r0, r0, r5
@@ -77632,7 +77632,7 @@ sub_80DE168:
 	sub r0, #0x24 
 	strh r0, [r5,#oBattleObject_Z16]
 	bl sub_80DE30E
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DE1B8
 	pop {pc}
@@ -77654,7 +77654,7 @@ sub_80DE1B8:
 locret_80DE1D2:
 	pop {r4,r7,pc}
 loc_80DE1D4:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 	.balign 4, 0x00
@@ -78017,7 +78017,7 @@ loc_80DE482:
 	bl sub_80DE70C
 	mov r0, #0xf7
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DE4EC
 	pop {pc}
@@ -78055,7 +78055,7 @@ loc_80DE51C:
 	pop {r4,r7,pc}
 loc_80DE526:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 off_80DE530: .word off_80DE534
@@ -78200,7 +78200,7 @@ loc_80DE64E:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DE65E:
 	pop {r4,pc}
@@ -78488,7 +78488,7 @@ loc_80DE85E:
 	mov r0, #0x59 
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DE8C0
 	pop {pc}
@@ -78588,7 +78588,7 @@ loc_80DE944:
 	bl sub_80DE984
 	cmp r0, #0
 	bne loc_80DE956
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl object_clearCollisionRegion // () -> void
 loc_80DE956:
@@ -78777,7 +78777,7 @@ loc_80DEAEE:
 	bl sub_80DECBC
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DEB1C
 	pop {r4-r7,pc}
@@ -78810,7 +78810,7 @@ loc_80DEB3C:
 locret_80DEB54:
 	pop {r4-r7,pc}
 loc_80DEB56:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4-r7,pc}
 off_80DEB5C: .word off_80DEB60
@@ -78957,7 +78957,7 @@ loc_80DEC58:
 	bl sub_80BC9BE
 	mov r0, #0
 	str r0, [r5,#oBattleObject_ExtraVars+0x14]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DEC82:
 	pop {r4-r7,pc}
@@ -79244,7 +79244,7 @@ sub_80DEE8C:
 	bl sub_80DF016
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DEEE8
 	pop {r4-r7,pc}
@@ -79270,7 +79270,7 @@ sub_80DEEE8:
 locret_80DEF02:
 	pop {r4-r7,pc}
 loc_80DEF04:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -79375,7 +79375,7 @@ sub_80DEFC6:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4-r7,pc}
 	thumb_func_end sub_80DEFC6
@@ -79535,7 +79535,7 @@ loc_80DF114:
 	bl object_presentCollisionData
 	ldrb r0, [r5,#oBattleObject_Param1]
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80DF0C8
@@ -79559,7 +79559,7 @@ loc_80DF148:
 	b locret_80DF15E
 loc_80DF156:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 locret_80DF15E:
 	pop {pc}
@@ -79632,7 +79632,7 @@ sub_80DF1AC:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80DF1AC
@@ -79691,7 +79691,7 @@ loc_80DF254:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80DF260
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DF260:
 	pop {pc}
@@ -79814,7 +79814,7 @@ sub_80DF34C:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 loc_80DF390:
@@ -79831,7 +79831,7 @@ loc_80DF390:
 	bx r1
 	b locret_80DF3B0
 loc_80DF3AC:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DF3B0:
 	pop {pc}
@@ -79994,7 +79994,7 @@ loc_80DF4C6:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80DF4D2
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DF4D2:
 	pop {pc}
@@ -80073,7 +80073,7 @@ loc_80DF534:
 	bl sprite_setFlip
 	ldr r0, off_80DF8F0 // =0x100 
 	strh r0, [r5,#oBattleObject_NameID]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80DF520
@@ -80679,7 +80679,7 @@ loc_80DF9BE:
 	mov r0, #0xff
 	bl object_setCollisionHitEffect
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DFA58
 locret_80DF9EC:
@@ -80729,7 +80729,7 @@ loc_80DFA78:
 loc_80DFA8E:
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DFA9A:
 	pop {pc}
@@ -80763,7 +80763,7 @@ locret_80DFACC:
 	thumb_local_start
 sub_80DFACE:
 	push {lr}
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80DFACE
@@ -80979,7 +80979,7 @@ loc_80DFC70:
 	bl object_setupCollisionData
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80DFC8C
 locret_80DFC8A:
@@ -81010,7 +81010,7 @@ sub_80DFC8C:
 loc_80DFCC0:
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DFCCC:
 	pop {pc}
@@ -81269,7 +81269,7 @@ loc_80DFE8C:
 	bl object_setCollisionHitEffect
 	bl object_clearCollisionRegion // () -> void
 	bl object_presentCollisionData
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80DFE64
@@ -81296,7 +81296,7 @@ loc_80DFEC2:
 	pop {r4,r7,pc}
 loc_80DFED2:
 	bl object_clearCollisionRegion // () -> void
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 off_80DFEDC: .word off_80DFEE0
@@ -81372,7 +81372,7 @@ loc_80DFF74:
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80DFF82
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80DFF82:
 	pop {pc}
@@ -81460,7 +81460,7 @@ sub_80DFFDC:
 	mov r0, #0x41 
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E002C
 	pop {pc}
@@ -81738,7 +81738,7 @@ loc_80E023A:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80E0246
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E0246:
 	pop {pc}
@@ -81995,7 +81995,7 @@ sub_80E0568:
 	bl sub_8002E14
 loc_80E05BA:
 	bl sub_80E0616
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80E0568
@@ -82021,7 +82021,7 @@ loc_80E05E4:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80E05F0:
 	bl sprite_update
@@ -82099,7 +82099,7 @@ sub_80E0654:
 	mov r1, #8
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E0668
 	pop {pc}
@@ -82369,7 +82369,7 @@ sub_80E0864:
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 	thumb_func_end sub_80E0864
@@ -82385,7 +82385,7 @@ sub_80E08A6:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80E08BE:
 	bl sprite_update
@@ -82453,7 +82453,7 @@ sub_80E091C:
 	strb r0, [r5,#oObjectHeader_Flags]
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E0954
 	pop {r4,pc}
@@ -82659,7 +82659,7 @@ loc_80E0B6C:
 	ldr r0, off_80E0DE0 // =0x12d 
 loc_80E0B7E:
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E0B8C
 	pop {r4,pc}
@@ -83020,7 +83020,7 @@ sub_80E0E10:
 	push {lr}
 	mov r0, #1
 	str r0, [r5,#oBattleObject_ExtraVars+4]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E0E20
 	pop {pc}
@@ -83047,7 +83047,7 @@ loc_80E0E3C:
 	ldr r0, [r0]
 	cmp r0, #0
 	bne loc_80E0E4A
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
 loc_80E0E4A:
@@ -83284,7 +83284,7 @@ sub_80E0FC0:
 	strh r0, [r5,#oBattleObject_Timer]
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E100A
 	b locret_80E1008
@@ -83432,7 +83432,7 @@ loc_80E10EE:
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 loc_80E1100:
 	ldrh r0, [r5,#oBattleObject_Timer2]
@@ -83506,7 +83506,7 @@ loc_80E1188:
 	strh r0, [r5,#oBattleObject_Timer2]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 loc_80E119A:
 	ldrh r0, [r5,#oBattleObject_Timer2]
@@ -83637,7 +83637,7 @@ loc_80E129C:
 	mov r0, #0xff
 	strb r0, [r5,#oBattleObject_CurAnimCopy]
 loc_80E12B0:
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E12BA
 	pop {r4,pc}
@@ -83696,7 +83696,7 @@ loc_80E1322:
 	mov r0, r4
 	bl sub_80E14AC
 loc_80E1328:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80E132C:
 	bl object_updateSpriteTimestop
@@ -84002,7 +84002,7 @@ sub_80E1540:
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E1566
 	pop {r4,pc}
@@ -84664,7 +84664,7 @@ sub_80E19DC:
 	ldrb r0, [r5,#oBattleObject_Param1]
 	ldrb r1, [r7,r0]
 	strh r1, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 off_80E19EC: .word dword_80E19F0
@@ -84700,7 +84700,7 @@ loc_80E1A1A:
 	strh r0, [r5,#oBattleObject_Timer]
 	bhi loc_80E1A28
 loc_80E1A22:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
 loc_80E1A28:
@@ -84812,7 +84812,7 @@ sub_80E1AB4:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E1AB4
@@ -84823,7 +84823,7 @@ sub_80E1AFA:
 	bl battle_isBattleOver
 	tst r0, r0
 	beq locret_80E1B08
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E1B08:
 	pop {pc}
@@ -84919,7 +84919,7 @@ sub_80E1B68:
 	ldrb r1, [r5,#oBattleObject_Param1]
 	mov r2, #1
 	bl sub_8010DF6
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r7,pc}
 	thumb_func_end sub_80E1B68
@@ -85046,7 +85046,7 @@ loc_80E1C84:
 	mov r0, #1
 	ldrb r1, [r5,#oBattleObject_Param1]
 	bl sub_8011044
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80E1CAE
 loc_80E1CA6:
@@ -85137,7 +85137,7 @@ sub_80E1D18:
 	mov r0, #2
 	lsl r0, r0, #0x10
 	str r0, [r5,#oBattleObject_ZVelocity]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80E1D54
 	pop {pc}
@@ -85155,7 +85155,7 @@ sub_80E1D54:
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80E1D70
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E1D70:
 	pop {pc}
@@ -85228,7 +85228,7 @@ loc_80E1DC8:
 	bl sprite_loadAnimationData // () -> void
 	mov r0, #0
 	bl sprite_setPalette // (int pallete) -> void
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E1DAC
@@ -85239,7 +85239,7 @@ sub_80E1DFC:
 	bl battle_isBattleOver
 	tst r0, r0
 	beq locret_80E1E0A
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E1E0A:
 	pop {pc}
@@ -85682,7 +85682,7 @@ sub_80E20B0:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	thumb_func_end sub_80E20B0
@@ -85788,7 +85788,7 @@ sub_80E21F8:
 	strh r0, [r5,#oBattleObject_Timer]
 	ldrb r0, [r5,#oBattleObject_Param2]
 	strh r0, [r5,#oBattleObject_Timer2]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E21F8
@@ -85941,7 +85941,7 @@ loc_80E2314:
 	ldr r1, off_80E2350 // =dword_80E2354
 	ldrb r0, [r1,r0]
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.balign 4, 0x00
@@ -86283,7 +86283,7 @@ sub_80E25F0:
 	bx r0
 	mov r0, #8
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80E2628
 	pop {pc}
@@ -86341,7 +86341,7 @@ loc_80E2678:
 locret_80E2684:
 	pop {r4,r6,r7,pc}
 loc_80E2686:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80E2628
@@ -86527,7 +86527,7 @@ loc_80E28FA:
 	bx r0
 	ldrb r0, [r4,#3]
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80E292C
 	pop {r4,pc}
@@ -86636,7 +86636,7 @@ loc_80E29DA:
 loc_80E29DC:
 	bl PlaySoundEffect
 loc_80E29E0:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80E292C
@@ -87421,7 +87421,7 @@ sub_80E2F74:
 	ldrb r1, [r5,#oBattleObject_Param2]
 	mov r2, r1
 	bl sub_8000C72
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80E2F8C
 	pop {pc}
@@ -87465,7 +87465,7 @@ sub_80E2F8C:
 locret_80E2FD4:
 	pop {r7,pc}
 loc_80E2FD6:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r7,pc}
 off_80E2FDC: .word byte_80E2F48
@@ -87696,7 +87696,7 @@ sub_80E3174:
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E318E
 	pop {pc}
@@ -87721,7 +87721,7 @@ loc_80E319E:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80E31B2:
 	ldr r0, [r5,#oBattleObject_RelatedObject1Ptr]
@@ -87940,7 +87940,7 @@ loc_80E334E:
 	strh r0, [r5,#oBattleObject_Timer]
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	bl sprite_setColorShader
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E336E
 	pop {r7,pc}
@@ -87976,7 +87976,7 @@ loc_80E3394:
 	cmp r0, r1
 	blt loc_80E33AE
 loc_80E33A4:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E33D2
 	b locret_80E33D0
@@ -88602,7 +88602,7 @@ sub_80E3824:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E3824
@@ -88642,7 +88642,7 @@ loc_80E389C:
 	bx r1
 	b locret_80E38AC
 loc_80E38A8:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E38AC:
 	pop {pc}
@@ -88740,7 +88740,7 @@ sub_80E3930:
 	strh r0, [r5,#oBattleObject_CurPhaseAndPhaseInitialized]
 	b locret_80E394E
 loc_80E394A:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E394E:
 	pop {pc}
@@ -88857,7 +88857,7 @@ sub_80E39D0:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E3A32
 	pop {pc}
@@ -88893,7 +88893,7 @@ loc_80E3A58:
 	bx r1
 	b locret_80E3A68
 loc_80E3A64:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E3A68:
 	pop {pc}
@@ -88917,7 +88917,7 @@ loc_80E3A84:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80E3A90
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E3A90:
 	pop {pc}
@@ -89092,7 +89092,7 @@ sub_80E3B94:
 	mov r0, #0xf
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	thumb_func_end sub_80E3B94
@@ -89126,7 +89126,7 @@ sub_80E3C14:
 	mov r0, #0
 	ldr r1, [r5,#oBattleObject_RelatedObject1Ptr]
 	str r0, [r1,#oBattleObject_ObjectHeader]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80E3CA8
 loc_80E3C2A:
@@ -89134,7 +89134,7 @@ loc_80E3C2A:
 	ldr r0, [r0,#oBattleObject_ObjectHeader]
 	cmp r0, #0
 	bne loc_80E3C38
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80E3CA8
 loc_80E3C38:
@@ -89224,7 +89224,7 @@ loc_80E3CDE:
 	mov r0, #1
 	ldr r1, [r5,#oBattleObject_RelatedObject1Ptr]
 	str r0, [r1,#oBattleObject_ObjectHeader]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E3CF0:
 	pop {r4,pc}
@@ -89329,7 +89329,7 @@ sub_80E3D90:
 	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_HP]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E3DE0
 	pop {r7,pc}
@@ -89438,7 +89438,7 @@ loc_80E3E9C:
 	mov r1, #0x80
 	tst r0, r1
 	beq locret_80E3EAA
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E3EAA:
 	pop {pc}
@@ -89467,7 +89467,7 @@ loc_80E3ECE:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80E3EDA
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E3EDA:
 	pop {pc}
@@ -89487,7 +89487,7 @@ sub_80E3EDC:
 	mov r1, #0xb
 	cmp r0, r1
 	beq locret_80E3EFA
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E3EFA:
 	pop {pc}
@@ -89507,7 +89507,7 @@ sub_80E3EFC:
 	mov r1, #0xd
 	cmp r0, r1
 	beq loc_80E3F1A
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80E3F1A:
 	ldr r4, [r5,#oBattleObject_RelatedObject1Ptr]
@@ -89534,7 +89534,7 @@ sub_80E3F2A:
 	mov r1, #0xa
 	cmp r0, r1
 	beq loc_80E3F48
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80E3F48:
 	ldr r4, [r5,#oBattleObject_RelatedObject1Ptr]
@@ -89584,7 +89584,7 @@ loc_80E3F80:
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80E3FA0
 loc_80E3F9C:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E3FA0:
 	pop {pc}
@@ -89667,7 +89667,7 @@ sub_80E3FFC:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E3FFC
@@ -89728,7 +89728,7 @@ loc_80E40AC:
 	mov r1, #0
 	str r1, [r0]
 loc_80E40B6:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E40BA:
 	pop {r4,pc}
@@ -90127,7 +90127,7 @@ sub_80E4364:
 	strb r0, [r5,#oBattleObject_Param3]
 	ldrb r0, [r7,#3]
 	strb r0, [r5,#oBattleObject_Param4]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E43A8
 	pop {pc}
@@ -90152,7 +90152,7 @@ loc_80E43BA:
 	strh r0, [r5,#oBattleObject_Timer]
 	bne loc_80E43C6
 loc_80E43C2:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80E43C6:
 	ldrb r0, [r5,#oBattleObject_Param3]
@@ -90635,7 +90635,7 @@ sub_80E46F8:
 	add r1, #0xc
 	lsl r1, r1, #0xf
 	str r1, [r5,#oBattleObject_ZVelocity]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80E475C
 	pop {pc}
@@ -90822,7 +90822,7 @@ sub_80E4868:
 	str r1, [r5,#oBattleObject_ZVelocity]
 	mov r0, #0x1e
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80E48C0
 	pop {pc}
@@ -90849,7 +90849,7 @@ sub_80E48C0:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bne locret_80E48E8
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E48E8:
 	pop {pc}
@@ -91079,7 +91079,7 @@ sub_80E4A6E:
 	bl sprite_update
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E4AAE
 	pop {r4,pc}
@@ -91145,7 +91145,7 @@ loc_80E4B28:
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	mov r1, #0
 	str r1, [r0]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E4B32:
 	pop {r4,r6,r7,pc}
@@ -91414,7 +91414,7 @@ sub_80E4CDC:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E4D1E
 	pop {r4,pc}
@@ -91581,7 +91581,7 @@ loc_80E4E16:
 	bl sprite_setAnimation // (u8 a1) -> void
 	bl sprite_loadAnimationData // () -> void
 	bl sprite_update
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E4E84
 	pop {pc}
@@ -91606,7 +91606,7 @@ sub_80E4E84:
 	bl sub_801BC64
 	pop {pc}
 loc_80E4E9E:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 off_80E4EA4: .word off_80E4EA8
@@ -91702,7 +91702,7 @@ sub_80E4F18:
 	ldmia r0!, {r1-r3}
 	mov r4, #0x15
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b loc_80E4FB0
 loc_80E4F66:
@@ -91749,7 +91749,7 @@ sub_80E4FB6:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bne loc_80E4FC4
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80E4FC4:
 	bl sub_80E4FE8
@@ -91903,7 +91903,7 @@ sub_80E50E4:
 	str r0, [r5,#oBattleObject_ExtraVars]
 	mov r0, #3
 	strb r0, [r5,#oBattleObject_Param2]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E50FE
 	pop {pc}
@@ -91949,7 +91949,7 @@ loc_80E5134:
 	strb r0, [r5,#oBattleObject_CurAction]
 	b locret_80E514E
 loc_80E514A:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E514E:
 	pop {r4,r6,pc}
@@ -92117,7 +92117,7 @@ sub_80E5264:
 	str r0, [r5,#oBattleObject_ExtraVars+0xc]
 	mov r0, #0xad
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E527A
 	pop {pc}
@@ -92457,7 +92457,7 @@ sub_80E5494:
 	strb r0, [r5,#oObjectHeader_Flags]
 	ldr r0, [r5,#oBattleObject_ExtraVars+0xc]
 	str r5, [r0]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	thumb_func_end sub_80E5494
@@ -92497,7 +92497,7 @@ loc_80E551A:
 	ldr r0, [r5,#oBattleObject_ExtraVars+0xc]
 	mov r1, #0
 	str r1, [r0]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80E5544
 loc_80E5526:
@@ -92557,7 +92557,7 @@ sub_80E557A:
 	ldr r0, [r0]
 	cmp r0, #0
 	bne locret_80E5588
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E5588:
 	pop {pc}
@@ -92828,7 +92828,7 @@ sub_80E5734:
 	ldr r1, off_80E5794 // =off_80E5798 
 	ldr r0, [r1,r0]
 	str r0, [r5,#oBattleObject_ExtraVars+8]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	bl sub_80E57A0
 	pop {r4,r7,pc}
@@ -92903,7 +92903,7 @@ loc_80E5814:
 	mov r0, #2
 	ldr r1, [r5,#oBattleObject_ExtraVars+4]
 	strb r0, [r1]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 loc_80E5820:
@@ -92972,7 +92972,7 @@ sub_80E5872:
 locret_80E58A0:
 	pop {pc}
 loc_80E58A2:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E5872
@@ -93175,7 +93175,7 @@ sub_80E5A08:
 	strh r1, [r5,#oBattleObject_Timer2]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E5A22
 	pop {pc}
@@ -93211,7 +93211,7 @@ loc_80E5A50:
 	strh r0, [r5,#oBattleObject_Timer2]
 	bgt locret_80E5A62
 loc_80E5A5E:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E5A62:
 	pop {pc}
@@ -93539,7 +93539,7 @@ sub_80E5C4C:
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E5CA0
 	pop {pc}
@@ -93572,7 +93572,7 @@ loc_80E5CB8:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80E5D10
 loc_80E5CD6:
@@ -93680,7 +93680,7 @@ sub_80E5D68:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E5D68
@@ -94732,7 +94732,7 @@ sub_80E6580:
 	ldr r1, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r0, #0
 	strb r0, [r1,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80E65DE
 loc_80E65B2:
@@ -94751,7 +94751,7 @@ loc_80E65B2:
 	mov r0, #0x2a 
 	add r0, #0xff
 	bl PlaySoundEffect
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E65E0
 locret_80E65DE:
@@ -94915,7 +94915,7 @@ loc_80E6704:
 	ldr r1, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r0, #0
 	strb r0, [r1,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80E671E
 loc_80E6716:
@@ -95817,7 +95817,7 @@ sub_80E6E64:
 	strb r0, [r5,#oBattleObject_Param2]
 	mov r0, #1
 	strb r0, [r5,#oBattleObject_Param3]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E6E64
@@ -95837,7 +95837,7 @@ sub_80E6E74:
 	bx r1
 	b locret_80E6E94
 loc_80E6E90:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E6E94:
 	pop {pc}
@@ -95902,7 +95902,7 @@ loc_80E6EF6:
 	pop {r4,r6}
 	b locret_80E6F0E
 loc_80E6F0A:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E6F0E:
 	pop {r4,r6,pc}
@@ -96210,7 +96210,7 @@ sub_80E70F8:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E70F8
@@ -96241,7 +96241,7 @@ loc_80E716E:
 	bl sub_80E717A
 	b locret_80E7178
 loc_80E7174:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E7178:
 	pop {pc}
@@ -97026,7 +97026,7 @@ sub_80E7718:
 	strb r0, [r5,#oObjectHeader_Flags]
 	mov r0, #2
 	bl sprite_setPalette // (int pallete) -> void
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E7756
 	pop {r7,pc}
@@ -97128,7 +97128,7 @@ sub_80E77B8:
 	and r1, r2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E77B8
@@ -97184,7 +97184,7 @@ sub_80E7816:
 	cmp r0, r1
 	beq locret_80E7894
 loc_80E7890:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E7894:
 	pop {pc}
@@ -97262,7 +97262,7 @@ sub_80E78E0:
 	bl sprite_setFlip
 	ldrb r0, [r5,#oBattleObject_Param1]
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E78E0
@@ -97347,7 +97347,7 @@ sub_80E798C:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E798C
@@ -97396,7 +97396,7 @@ sub_80E79CE:
 	bx r1
 	b locret_80E7A40
 loc_80E7A3C:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E7A40:
 	pop {pc}
@@ -97439,7 +97439,7 @@ loc_80E7A7A:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80E7A86
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E7A86:
 	pop {pc}
@@ -97545,7 +97545,7 @@ sub_80E7AFC:
 	bl sprite_setFlip
 	mov r0, #0x13
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E7AFC
@@ -97609,7 +97609,7 @@ loc_80E7B62:
 	cmp r0, r1
 	beq locret_80E7BD6
 loc_80E7BD2:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E7BD6:
 	pop {pc}
@@ -97820,7 +97820,7 @@ sub_80E7CEC:
 	mov r3, #0
 	bl sub_80BC610
 	str r0, [r5,#oBattleObject_ExtraVars+0xc]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	thumb_func_end sub_80E7CEC
@@ -98295,7 +98295,7 @@ sub_80E809C:
 	str r0, [r5,#oBattleObject_YVelocity]
 	ldr r0, [r5,#oBattleObject_Z]
 	str r0, [r5,#oBattleObject_ZVelocity]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E80E0
 	pop {pc}
@@ -98331,7 +98331,7 @@ sub_80E80E0:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80E811E:
 	bl sprite_update
@@ -98544,7 +98544,7 @@ sub_80E8288:
 	mov r0, #1
 	strh r0, [r5,#oBattleObject_HP]
 	strh r0, [r5,#oBattleObject_MaxHP]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E829E
 	pop {pc}
@@ -98618,7 +98618,7 @@ loc_80E8316:
 	str r1, [r0]
 loc_80E831C:
 	bl sub_800F656
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E8324:
 	pop {r4,r6,pc}
@@ -98967,7 +98967,7 @@ off_80E8590: .word sub_80E859C+1
 	thumb_local_start
 sub_80E859C:
 	push {lr}
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E85A8
 	pop {pc}
@@ -99011,7 +99011,7 @@ loc_80E85E2:
 	ldr r0, [r5,#oBattleObject_ExtraVars+0xc]
 	mov r1, #0
 	str r1, [r0]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E85F8:
 	pop {r7,pc}
@@ -99143,7 +99143,7 @@ sub_80E86AC:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E86AC
@@ -99196,7 +99196,7 @@ sub_80E86F6:
 	cmp r0, r1
 	beq locret_80E876E
 loc_80E876A:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E876E:
 	pop {pc}
@@ -99274,7 +99274,7 @@ sub_80E87B8:
 	bl sprite_setPalette // (int pallete) -> void
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E87B8
@@ -99327,7 +99327,7 @@ sub_80E8802:
 	cmp r0, r1
 	beq locret_80E887A
 loc_80E8876:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E887A:
 	pop {pc}
@@ -99384,7 +99384,7 @@ sub_80E88C0:
 	mov r0, #2
 	mov r1, #0xc
 	bl sub_80302A8
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E88D8
 	pop {pc}
@@ -99418,7 +99418,7 @@ loc_80E88F6:
 	strb r0, [r5,#oBattleObject_CurAction]
 	b locret_80E8910
 loc_80E890C:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E8910:
 	pop {r4,r6,pc}
@@ -99501,7 +99501,7 @@ sub_80E895C:
 	and r1, r2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E895C
@@ -99554,7 +99554,7 @@ loc_80E8A1A:
 	mov r1, #0
 	str r1, [r0]
 loc_80E8A24:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E8A28:
 	pop {pc}
@@ -100090,7 +100090,7 @@ off_80E8E04: .word sub_80E8E10+1
 	thumb_local_start
 sub_80E8E10:
 	push {lr}
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E8E10
@@ -100156,7 +100156,7 @@ sub_80E8E82:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge locret_80E8E90
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E8E90:
 	pop {pc}
@@ -100265,7 +100265,7 @@ sub_80E8F00:
 	mov r3, #0
 	bl sub_80BFF00
 	str r0, [r5,#oBattleObject_ExtraVars+8]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 	thumb_func_end sub_80E8F00
@@ -101014,7 +101014,7 @@ loc_80E948C:
 	strb r0, [r5,#oBattleObject_PanelX]
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E9480
@@ -101030,7 +101030,7 @@ sub_80E9498:
 	bl sub_80E94B4
 	b locret_80E94B2
 loc_80E94AE:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E94B2:
 	pop {pc}
@@ -101055,7 +101055,7 @@ sub_80E94B4:
 	strh r0, [r5,#oBattleObject_Timer]
 	b locret_80E94DA
 loc_80E94D6:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E94DA:
 	pop {pc}
@@ -101545,7 +101545,7 @@ loc_80E985C:
 	mov r1, #2
 	orr r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	.word 0, 0
@@ -101580,7 +101580,7 @@ loc_80E98FC:
 	add r3, r3, r4
 	mov r4, #0x12
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,pc}
 off_80E9914: .word off_80E9918
@@ -101624,7 +101624,7 @@ sub_80E991C:
 	lsl r2, r2, #4
 	orr r1, r2
 	strb r1, [r4,r0]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 loc_80E9968:
 	bl sprite_update
@@ -101674,7 +101674,7 @@ sub_80E99B4:
 	push {lr}
 	mov r0, #0x28 
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E99B4
@@ -101690,7 +101690,7 @@ sub_80E99C0:
 	bl sub_80E99DC
 	b locret_80E99DA
 loc_80E99D6:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E99DA:
 	pop {pc}
@@ -101862,7 +101862,7 @@ sub_80E9B14:
 	bl sprite_update
 	bl object_getFlip // () -> int
 	bl sprite_setFlip
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80E9B56
 	pop {r4,pc}
@@ -101928,7 +101928,7 @@ loc_80E9BD0:
 	ldr r0, [r5,#oBattleObject_ExtraVars]
 	mov r1, #0
 	str r1, [r0]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E9BDA:
 	pop {r4,r6,r7,pc}
@@ -102014,7 +102014,7 @@ sub_80E9CA8:
 	strb r0, [r5,#oBattleObject_FuturePanelY]
 	ldrb r0, [r5,#oBattleObject_Param1]
 	strh r0, [r5,#oBattleObject_Timer]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_80E9CA8
@@ -102030,7 +102030,7 @@ sub_80E9CBA:
 	bl sub_80E9CD6
 	b locret_80E9CD4
 loc_80E9CD0:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E9CD4:
 	pop {pc}
@@ -102063,7 +102063,7 @@ loc_80E9CF0:
 	strb r0, [r5,#oBattleObject_CurPhase]
 	b locret_80E9D0A
 loc_80E9D06:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E9D0A:
 	pop {pc}
@@ -102274,7 +102274,7 @@ loc_80E9E90:
 	bl PlaySoundEffect
 	b locret_80E9E9E
 loc_80E9E9A:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E9E9E:
 	pop {pc}
@@ -102320,7 +102320,7 @@ loc_80E9EC6:
 	b locret_80E9EF8
 loc_80E9EF0:
 	bl sub_80E9F64
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80E9EF8:
 	pop {pc}
@@ -102493,7 +102493,7 @@ off_80EA02C: .word off_80EA020
 	thumb_local_start
 sub_80EA030:
 	push {lr}
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80EA03C
 	pop {pc}
@@ -102614,7 +102614,7 @@ loc_80EA0FC:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bgt locret_80EA108
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80EA108:
 	pop {pc}
@@ -102703,7 +102703,7 @@ sub_80EA170:
 	bl sprite_setFlip
 	ldr r0, [r4,#4]
 	bl sub_8002FA6
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80EA1BC
 	pop {r4,pc}
@@ -102814,7 +102814,7 @@ sub_80EA278:
 	str r0, [r5,#oBattleObject_ExtraVars+4]
 	str r0, [r5,#oBattleObject_ExtraVars+8]
 	str r0, [r5,#oBattleObject_ExtraVars+0xc]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov pc, lr
 	thumb_func_end sub_80EA278
@@ -102895,7 +102895,7 @@ loc_80EA310:
 	sub r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
 	bge locret_80EA31C
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80EA31C:
 	pop {r4,r6,r7,pc}
@@ -102918,7 +102918,7 @@ loc_80EA326:
 	b loc_80EA326
 loc_80EA33A:
 	pop {r5}
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_80EA31E
@@ -102968,7 +102968,7 @@ sub_80EA384:
 	mov r0, #4
 	mov r1, #0x64 
 	strb r0, [r5,r1]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	bl sub_80EA3A4
 	pop {r4-r7,pc}
@@ -103026,7 +103026,7 @@ loc_80EA3E6:
 	bl PlaySoundEffect
 	b locret_80EA410
 loc_80EA40C:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80EA410:
 	pop {r4-r7,pc}

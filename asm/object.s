@@ -115,7 +115,7 @@ loc_800B938:
 	ldr r1, off_800B948 // =dword_200F3B8
 	mov r2, #0
 	str r2, [r1,r0]
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	strb r0, [r5,#oBattleObject_CurState]
 	pop {pc}
 off_800B948: .word dword_200F3B8
@@ -561,7 +561,7 @@ loc_800BCB0:
 	tst r0, r0
 	bne locret_800BCBC
 loc_800BCB8:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_800BCBC:
 	pop {pc}
@@ -594,7 +594,7 @@ loc_800BCE8:
 	tst r0, r0
 	bne locret_800BCF4
 loc_800BCF0:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_800BCF4:
 	pop {pc}

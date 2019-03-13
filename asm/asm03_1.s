@@ -21090,7 +21090,7 @@ loc_803F870:
 	mov r0, #0x17
 	mov r1, #4
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-	bl SeedRNG2 // () -> void
+	bl SeedRNG2 // () -> int
 loc_803F87E:
 	bl RandomizeExtraToolkitPointers
 	mov r0, r4

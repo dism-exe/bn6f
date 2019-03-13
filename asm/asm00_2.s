@@ -15817,7 +15817,7 @@ loc_8016672:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80166AC
 loc_80166A4:
@@ -16867,7 +16867,7 @@ sub_8016F1A:
 	bl sub_80E1A86
 	mov r0, r5
 	bl sub_80077B4
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_8016F54:
 	pop {r4,pc}
@@ -17014,7 +17014,7 @@ loc_8017086:
 	ldr r1, [r5,#oBattleObject_AIDataPtr]
 	strb r0, [r1,#oAIData_Unk_0c]
 	bl sub_800F378
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_8017092:
 	pop {r4,r6,r7,pc}
@@ -17121,7 +17121,7 @@ loc_8017168:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80171A4
 loc_801719C:
@@ -17241,7 +17241,7 @@ sub_8017274:
 	bl IsPaletteFadeActive // () -> zf
 	tst r0, r0
 	bne loc_8017284
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_801728C
 loc_8017284:
@@ -17377,7 +17377,7 @@ loc_80173C6: .align 1, 0
 loc_80173E6:
 	bl sub_802DFC8
 	bl sub_8013FF8
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80173F2:
 	pop {r4,r7,pc}
@@ -19032,7 +19032,7 @@ loc_80181E2:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	bl sub_80D99EC
 loc_80181F0:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80181F4:
 	pop {r4,pc}

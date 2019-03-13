@@ -46,6 +46,7 @@ def dead_units(units):
     out = []
     for u in units:
         if 'ea' not in u.keys(): continue
+        if not (u['ea'] & 0x2000000): continue
         if not  xrefs_to(units, u['ea']) and not  xrefs_to(units, u['ea']+1):
             out.append(u)
     return out

@@ -21,7 +21,7 @@
 // .global sub_8000A3C
 // .global objRender_8000A44
 // .global sub_8000E10
-// .global SeedRNG2 // () -> void
+// .global SeedRNG2 // () -> int
 // .global GetRNG1 // () -> void
 // .global sub_80015B4
 // .global copyToVRAMAndClear_iBGTileIdBlocks_Ptr

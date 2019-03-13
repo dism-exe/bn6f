@@ -235,7 +235,7 @@
 // .global sub_80010C6
 // .global sub_80010D4
 // .global sub_8001172
-// .global SeedRNG2 // () -> void
+// .global SeedRNG2 // () -> int
 // .global GetRNG2 // () -> int
 // .global sub_80015FC
 // .global sRender_08_setRenderingState

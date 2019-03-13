@@ -1323,7 +1323,7 @@ sub_810E54E:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_810E57A:
 	pop {r4,pc}
@@ -15074,7 +15074,7 @@ sub_811648C:
 	bl sub_800A11C
 	mov r0, r5
 	bl sub_80077B4
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_811648C
@@ -15268,7 +15268,7 @@ sub_811670E:
 	bl sub_800A11C
 	mov r0, r5
 	bl sub_80077B4
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	pop {pc}
 	thumb_func_end sub_811670E

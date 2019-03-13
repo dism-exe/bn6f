@@ -73,7 +73,7 @@
 	.global loc_8001440
 	.global sub_80014D4
 	.global copyWords_80014EC // (void *src, void *dest, int size) -> void
-	.global SeedRNG2 // () -> void
+	.global SeedRNG2 // () -> int
 	.global GetRNG2 // () -> int
 	.global GetPositiveSignedRNG2
 	.global GetRNG1 // () -> void
