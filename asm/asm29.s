@@ -9581,8 +9581,7 @@ sub_80AA394:
 	mov r0, #3
 	strb r0, [r5]
 	mov r4, #0
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_COPYBOT_ACTIVE
+	movflag EVENT_COPYBOT_ACTIVE
 	bl TestEventFlagFromImmediate
 	bne loc_80AA3A8
 	mov r4, #2

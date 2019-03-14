@@ -3472,8 +3472,7 @@ reqBBS_init_8004DF0:
 	bl sub_804A17A
 	bl sub_811FB78
 	bl sub_8048C68
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_NAVI_ACTIVE
+	movflag EVENT_PET_NAVI_ACTIVE
 	bl SetEventFlagFromImmediate
 	mov r0, #4
 	mov r1, #1

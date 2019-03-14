@@ -1146,8 +1146,7 @@ locret_813BF18:
 sub_813BF1C:
 	push {r4-r7,lr}
 	mov r6, #1
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B4_FLAG7
+	movflag EVENT_2E4_FLAG7
 	bl TestEventFlagFromImmediate
 	beq loc_813BF36
 	b loc_813BF38
@@ -1675,8 +1674,7 @@ loc_813C3CC:
 	ldrb r0, [r0,#oGameState_MapGroup]
 	cmp r0, #0x80
 	bge loc_813C40E
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_NAVI_ACTIVE
+	movflag EVENT_PET_NAVI_ACTIVE
 	bl TestEventFlagFromImmediate
 	beq locret_813C454
 	mov r0, #0
@@ -2696,8 +2694,7 @@ off_813CBC8: .word 0x1F4
 	thumb_local_start
 sub_813CBCC:
 	push {r4-r7,lr}
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B4_FLAG7
+	movflag EVENT_2E4_FLAG7
 	bl ClearEventFlagFromImmediate
 	bl sub_813C490
 	cmp r0, #1
@@ -2721,8 +2718,7 @@ loc_813CBE6:
 	beq loc_813CC0C
 	mov lr, pc
 	bx r1
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B4_FLAG7
+	movflag EVENT_2E4_FLAG7
 	bl SetEventFlagFromImmediate
 loc_813CC0C:
 	add r6, #1

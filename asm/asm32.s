@@ -21840,8 +21840,7 @@ sub_8119DE8:
 	ldrb r4, [r6]
 	mov r1, #0x80
 	orr r4, r1
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B4_FLAG7
+	movflag EVENT_2E4_FLAG7
 	bl TestEventFlagFromImmediate
 	bne loc_8119E1A
 	b loc_8119E18

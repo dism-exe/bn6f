@@ -187,12 +187,10 @@ sub_80339CC:
 	cmp r4, #0
 	beq loc_8033A00
 	lsl r4, r4, #3
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_COPYBOT_ACTIVE
+	movflag EVENT_COPYBOT_ACTIVE
 	bl TestEventFlagFromImmediate
 	bne loc_80339FE
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_NAVI_ACTIVE
+	movflag EVENT_PET_NAVI_ACTIVE
 	bl TestEventFlagFromImmediate
 	bne loc_8033A00
 loc_80339FE:
@@ -837,8 +835,7 @@ off_8033FD8: .word unk_2011E30
 sub_8033FDC:
 	push {r4-r7,lr}
 	bl sub_813C3AC
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_NAVI_ACTIVE
+	movflag EVENT_PET_NAVI_ACTIVE
 	bl ClearEventFlagFromImmediate
 	mov r0, #0x17
 	mov r1, #3
@@ -972,12 +969,10 @@ loc_8034108:
 loc_803412A:
 	bl sub_813C3AC
 loc_803412E:
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B5_FLAG5
+	movflag EVENT_2E5_FLAG5
 	bl TestEventFlagFromImmediate
 	bne loc_8034140
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_NAVI_ACTIVE
+	movflag EVENT_PET_NAVI_ACTIVE
 	bl SetEventFlagFromImmediate
 loc_8034140:
 	bl sub_803CEB8
@@ -16216,8 +16211,7 @@ sub_803CE44:
 	mov r1, #0x42
 	mov r2, r7
 	bl sub_80137E6
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_NAVI_ACTIVE
+	movflag EVENT_PET_NAVI_ACTIVE
 	bl TestEventFlagFromImmediate
 	beq locret_803CEB4
 	mov r0, #0
@@ -17343,8 +17337,7 @@ loc_803DED6:
 	bl sub_8144CE0
 	cmp r0, #1
 	bne loc_803DEFE
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B5_FLAG0
+	movflag EVENT_2E5_FLAG0
 	bl TestEventFlagFromImmediate
 	beq loc_803DEF8
 	ldrh r0, [r7,#0xc] // (eCamera.unk_5C - 0x20099d0)
@@ -20799,8 +20792,7 @@ sub_803F6B0:
 	mov r1, #0x3c
 	strh r1, [r0,#0xc] // Camera.unk_0C
 	// flag 0 @ 0x2001c88[0x2e5] (=2001f6d)
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B5_FLAG0
+	movflag EVENT_2E5_FLAG0
 	bl SetEventFlagFromImmediate
 	pop {r4,r5,pc}
 	thumb_func_end sub_803F6B0
@@ -20828,8 +20820,7 @@ sub_803F6F4:
 	ldr r0, off_803F738 // =eCamera+80
 	mov r1, #0x3c
 	strh r1, [r0,#0xc] // (eCamera.unk_5C - 0x20099d0)
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B5_FLAG0
+	movflag EVENT_2E5_FLAG0
 	bl SetEventFlagFromImmediate
 	pop {r4,r5,pc}
 off_803F730: .word dword_803F734
@@ -21114,14 +21105,12 @@ loc_803F93C:
 	add r7, #1
 	cmp r7, #3
 	blt loc_803F93C
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B5_FLAG1
+	movflag EVENT_2E5_FLAG1
 	bl ClearEventFlagFromImmediate
 	mov r0, #1
 	pop {r1-r7,pc}
 loc_803F96A:
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B5_FLAG1
+	movflag EVENT_2E5_FLAG1
 	bl SetEventFlagFromImmediate
 	mov r0, #0
 	pop {r1-r7,pc}
@@ -21162,14 +21151,12 @@ loc_803F9A6:
 loc_803F9B0:
 	cmp r2, r3
 	bne loc_803F9C0
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B5_FLAG1
+	movflag EVENT_2E5_FLAG1
 	bl SetEventFlagFromImmediate
 	mov r0, #0
 	pop {r1-r7,pc}
 loc_803F9C0:
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B5_FLAG1
+	movflag EVENT_2E5_FLAG1
 	bl ClearEventFlagFromImmediate
 	mov r0, #1
 	pop {r1-r7,pc}

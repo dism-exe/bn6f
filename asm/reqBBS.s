@@ -4331,8 +4331,7 @@ reqBBS_81408F0:
 	bl reqBBS_8140884
 	tst r0, r0
 	bne loc_8140966
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_NAVI_ACTIVE
+	movflag EVENT_PET_NAVI_ACTIVE
 	bl TestEventFlagFromImmediate
 	beq loc_814095A
 	bl getPETNaviSelect // () -> u8

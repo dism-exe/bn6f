@@ -210,16 +210,13 @@ RunLMessageTextScript:
 	ldrb r0, [r0,#oGameState_MapGroup]
 	cmp r0, #0x80
 	bge loc_809924A
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_COPYBOT_ACTIVE
+	movflag EVENT_COPYBOT_ACTIVE
 	bl TestEventFlagFromImmediate
 	bne loc_8099282
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_NAVI_ACTIVE
+	movflag EVENT_PET_NAVI_ACTIVE
 	bl TestEventFlagFromImmediate
 	beq loc_8099282
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B5_FLAG5
+	movflag EVENT_2E5_FLAG5
 	bl TestEventFlagFromImmediate
 	bne loc_8099282
 loc_809924A:
@@ -2284,8 +2281,7 @@ sub_809AF00:
 	bl SetEventFlag
 loc_809AF4C:
 	mov r4, #0x2d
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_COPYBOT_ACTIVE
+	movflag EVENT_COPYBOT_ACTIVE
 	bl TestEventFlagFromImmediate
 	beq loc_809AF5A
 	mov r4, #0x2e
@@ -2318,8 +2314,7 @@ sub_809AF7C:
 	mul r2, r1
 	add r7, r7, r2
 	mov r6, #0
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_COPYBOT_ACTIVE
+	movflag EVENT_COPYBOT_ACTIVE
 	bl TestEventFlagFromImmediate
 	bne loc_809AF9A
 	mov r6, #0x10
@@ -2521,8 +2516,7 @@ sub_809B130:
 	blt loc_809B162
 	cmp r0, #0xf
 	bgt loc_809B162
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_COPYBOT_ACTIVE
+	movflag EVENT_COPYBOT_ACTIVE
 	bl TestEventFlagFromImmediate
 	bne loc_809B15A
 	ldr r0, byte_809B16C // =0x84
@@ -4484,8 +4478,7 @@ sub_809D270:
 	cmp r0, r3
 	bge loc_809D29E
 	mov r4, #0x37 
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_COPYBOT_ACTIVE
+	movflag EVENT_COPYBOT_ACTIVE
 	bl TestEventFlagFromImmediate
 	bne loc_809D29E
 	mov r4, #0
@@ -6134,8 +6127,7 @@ updateFlags_809E0B0:
 	strb r0, [r3]
 	push {lr}
     // if not set, map location changes after function call (also when jacking in)
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B3_FLAG7
+	movflag EVENT_2E3_FLAG7
 	bl SetEventFlagFromImmediate
 	bl clearEventFlag_809E0A4 // () -> void
 	pop {pc}
@@ -6831,15 +6823,13 @@ sub_809E4AE:
 	thumb_func_start sub_809E4BC
 sub_809E4BC:
 	push {r4-r7,lr}
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_COPYBOT_ACTIVE
+	movflag EVENT_COPYBOT_ACTIVE
 	bl ToggleEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	mov r4, #0x37 
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_COPYBOT_ACTIVE
+	movflag EVENT_COPYBOT_ACTIVE
 	bl TestEventFlagFromImmediate
 	bne loc_809E4DA
 	mov r4, #0

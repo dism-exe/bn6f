@@ -182,8 +182,7 @@ sub_8123360:
 	bl getPETNaviSelect // () -> u8
 	cmp r0, #0
 	bne loc_8123376
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B5_FLAG5
+	movflag EVENT_2E5_FLAG5
 	bl TestEventFlagFromImmediate
 	bne loc_8123390
 loc_8123376:
@@ -194,8 +193,7 @@ loc_8123376:
 	cmp r0, #0x80
 	bge loc_8123390
 	mov r4, #0
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_NAVI_ACTIVE
+	movflag EVENT_PET_NAVI_ACTIVE
 	bl TestEventFlagFromImmediate
 	beq loc_8123390
 	mov r4, #1
@@ -15292,8 +15290,7 @@ loc_812B652:
 	mov r0, #0x17
 	mov r1, #0x2d 
 	bl ClearEventFlagFromImmediate
-	mov r0, #EVENT_G17
-	mov r1, #EVENT_G17_B5_FLAG0
+	movflag EVENT_2E5_FLAG0
 	bl ClearEventFlagFromImmediate
 	bl getBattleSettings_200AF60 // () -> BattleSettings*
 	bl sub_80071D4
