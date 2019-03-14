@@ -305,8 +305,7 @@ sub_809F904:
 	thumb_func_start sub_809F90C
 sub_809F90C:
 	push {lr}
-	mov r0, #0x17
-	mov r1, #8
+	movflag EVENT_2E1_FLAG7
 	bl TestEventFlagFromImmediate
 	bne locret_809F920
 	ldr r0, off_809F9C4 // =byte_2000210 
@@ -320,8 +319,7 @@ locret_809F920:
 	thumb_func_start sub_809F922
 sub_809F922:
 	push {r4,r6,r7,lr}
-	mov r0, #0x17
-	mov r1, #8
+	movflag EVENT_2E1_FLAG7
 	bl TestEventFlagFromImmediate
 	bne locret_809F940
 	ldr r7, off_809F9C4 // =byte_2000210 
@@ -340,8 +338,7 @@ locret_809F940:
 	thumb_func_start sub_809F942
 sub_809F942:
 	push {r4-r7,lr}
-	mov r0, #0x17
-	mov r1, #8
+	movflag EVENT_2E1_FLAG7
 	bl TestEventFlagFromImmediate
 	bne locret_809F9BC
 	ldr r7, off_809F9C4 // =byte_2000210 
@@ -1128,8 +1125,7 @@ sub_809FE5E:
 	thumb_local_start
 sub_809FE7A:
 	push {r4-r7,lr}
-	mov r0, #0x17
-	mov r1, #0x40
+	movflag EVENT_2E8_FLAG7
 	bl TestEventFlagFromImmediate
 	beq locret_809FE8E
 	ldr r3, off_809FE9C // =byte_2000210 

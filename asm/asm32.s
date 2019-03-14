@@ -21568,8 +21568,7 @@ loc_8119B02:
 	mov r4, r0
 	bl notZero_eByte200AD04
 	beq loc_8119B22
-	mov r0, #1
-	mov r1, #0x63
+	movflag EVENT_2C_FLAG4
 	bl TestEventFlagFromImmediate
 	bne loc_8119B22
 	mov r0, #0xc
@@ -21743,8 +21742,7 @@ sub_8119C94:
 	mov r1, #0x17
 	bl sub_80137B6 // (int a1, int a2) -> u8
 	mov r4, r0
-	mov r0, #1
-	mov r1, #0x63
+	movflag EVENT_2C_FLAG4
 	bl TestEventFlagFromImmediate
 	beq loc_8119CB6
 	mov r0, #0x17
@@ -21844,8 +21842,7 @@ sub_8119DE8:
 	bl TestEventFlagFromImmediate
 	bne loc_8119E1A
 	b loc_8119E18
-	mov r0, #0x17
-	mov r1, #0x23
+	movflag EVENT_2E4_FLAG4
 	bl TestEventFlagFromImmediate
 	bne loc_8119E1A
 loc_8119E18:
@@ -25596,8 +25593,7 @@ sub_811BD88:
 	mov r4, r0
 	bl notZero_eByte200AD04
 	beq loc_811BDB4
-	mov r0, #1
-	mov r1, #0x63
+	movflag EVENT_2C_FLAG4
 	bl TestEventFlagFromImmediate
 	bne loc_811BDB4
 	mov r1, #0x17
@@ -30531,8 +30527,7 @@ loc_811EDF2:
 	b loc_811EE82
 loc_811EE08:
 	mov r4, r0
-	mov r0, #0x17
-	mov r1, #6
+	movflag EVENT_2E0_FLAG1
 	bl TestEventFlagFromImmediate
 	beq loc_811EE24
 	cmp r4, #6
@@ -30631,8 +30626,7 @@ sub_811EED0:
 	bl sub_811EBF4
 	mov r0, #SOUND_UNSELECT_7C
 	bl PlaySoundEffect
-	mov r0, #1
-	mov r1, #0x63
+	movflag EVENT_2C_FLAG4
 	bl TestEventFlagFromImmediate
 	beq loc_811EEF8
 	bl getPETNaviSelect // () -> u8
@@ -30909,8 +30903,7 @@ loc_811F122:
 	ldr r1, dword_811F178 // =0x7bfe
 	strh r1, [r2]
 loc_811F13C:
-	mov r0, #0x17
-	mov r1, #6
+	movflag EVENT_2E0_FLAG1
 	bl TestEventFlagFromImmediate
 	beq locret_811F150
 	ldr r2, [r4,#0x1c] // (off_811F174 - 0x811f158)
@@ -34500,8 +34493,7 @@ loc_8120E22:
 	mov r7, r0
 	cmp r7, #0
 	bne loc_8120E56
-	mov r0, #1
-	mov r1, #0x63
+	movflag EVENT_2C_FLAG4
 	bl TestEventFlagFromImmediate
 	bne loc_8120E56
 	mov r7, r4
@@ -34549,8 +34541,7 @@ loc_8120E7C:
 	bne loc_8120E9A
 loc_8120E8C:
 	push {r0,r1}
-	mov r0, #1
-	mov r1, #0x63
+	movflag EVENT_2C_FLAG4
 	bl TestEventFlagFromImmediate
 	pop {r0,r1}
 	bne loc_8120EA0
@@ -34562,8 +34553,7 @@ loc_8120EA0:
 	add r6, #4
 	b loc_8120E66
 loc_8120EA6:
-	mov r0, #1
-	mov r1, #0x63
+	movflag EVENT_2C_FLAG4
 	bl TestEventFlagFromImmediate
 	bne loc_8120EF2
 	bl getPETNaviSelect // () -> u8

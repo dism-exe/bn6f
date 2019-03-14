@@ -797,8 +797,7 @@ dword_809EBB8: .word 0x800
 	thumb_local_start
 npc_809EBBC:
 	push {lr}
-	mov r0, #0x17
-	mov r1, #0x15
+	movflag EVENT_2E2_FLAG2
 	bl TestEventFlagFromImmediate
 	bne locret_809EBDA
 	mov r7, r10

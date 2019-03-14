@@ -1150,8 +1150,7 @@ sub_813BF1C:
 	bl TestEventFlagFromImmediate
 	beq loc_813BF36
 	b loc_813BF38
-	mov r0, #0x17
-	mov r1, #0x23
+	movflag EVENT_2E4_FLAG4
 	bl TestEventFlagFromImmediate
 	bne loc_813BF38
 loc_813BF36:
@@ -1662,8 +1661,7 @@ sub_813C3AC:
 	b loc_813C3CC
 loc_813C3B8:
 	bl sub_813C458
-	mov r0, #1
-	mov r1, #0x63
+	movflag EVENT_2C_FLAG4
 	bl TestEventFlagFromImmediate
 	beq loc_813C3CC
 	bl sub_8121154
@@ -1737,8 +1735,7 @@ sub_813C458:
 	mov r0, #0
 	bl sub_80010BE
 	bl sub_813C678
-	mov r0, #0x17
-	mov r1, #0xd
+	movflag EVENT_2E1_FLAG2
 	bl ClearEventFlagFromImmediate
 	bl sub_813C684
 	bl sub_813CBCC

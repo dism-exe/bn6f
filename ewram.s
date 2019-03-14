@@ -352,6 +352,7 @@ eGameStateEnd::
 	.space 4
 unk_2001C04:: // 0x2001c04
 	.space 132
+// u8[1448]
 // continuous buffer of bit flags addressed with a u16 flag offset
 eEventFlags:: // 0x2001C88
     .space 1448

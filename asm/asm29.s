@@ -103,8 +103,7 @@ loc_80A4A4C:
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 loc_80A4A58:
 	ldrb r4, [r7,#9]
-	mov r0, #0x17
-	mov r1, #0x1c
+	movflag EVENT_2E3_FLAG3
 	bl TestEventFlagFromImmediate
 	bne loc_80A4A66
 	ldrb r4, [r7,#8]
@@ -1181,8 +1180,7 @@ sub_80A57D0:
 	strb r0, [r5,#9]
 	mov r0, #1
 	ldrb r0, [r5,#7]
-	mov r0, #5
-	mov r1, #0xf2
+	movflag EVENT_BE_FLAG5
 	bl TestEventFlagFromImmediate
 	beq loc_80A581E
 	bl sub_80A5A1C
@@ -1450,8 +1448,7 @@ loc_80A59D6:
 	and r3, r2
 	cmp r3, #2
 	beq loc_80A59FA
-	mov r0, #0x17
-	mov r1, #0x16
+	movflag EVENT_2E2_FLAG1
 	bl TestEventFlagFromImmediate
 	bne loc_80A59FA
 	mov r1, r4
@@ -1584,8 +1581,7 @@ sub_80A5AF8:
 	mov r0, #0
 	str r0, [r5,#0x24]
 	bl sub_80A5F84
-	mov r0, #5
-	mov r1, #0xf2
+	movflag EVENT_BE_FLAG5
 	bl TestEventFlagFromImmediate
 	beq loc_80A5B64
 	bl sub_80A5FD0
@@ -1622,11 +1618,9 @@ loc_80A5B82:
 	ldr r0, [r5,#0x24]
 	cmp r0, #0
 	beq loc_80A5C62
-	mov r0, #0x17
-	mov r1, #7
+	movflag EVENT_2E0_FLAG0
 	bl SetEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x28
+	movflag EVENT_L_MESSAGE_ACTIVE
 	bl SetEventFlagFromImmediate
 	add r7, #1
 	strb r7, [r5,#9]
@@ -1641,11 +1635,9 @@ loc_80A5BB0:
 	str r0, [r5,#0x24]
 	mov r7, #0
 	strb r7, [r5,#9]
-	mov r0, #0x17
-	mov r1, #7
+	movflag EVENT_2E0_FLAG0
 	bl ClearEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x28 
+	movflag EVENT_L_MESSAGE_ACTIVE
 	bl ClearEventFlagFromImmediate
 	b loc_80A5C62
 loc_80A5BDA:
@@ -1666,27 +1658,22 @@ loc_80A5BDA:
 	add r1, #4
 	ldr r0, [r5,#0x14]
 	str r0, [r6,r1]
-	mov r0, #5
-	mov r1, #0xf2
+	movflag EVENT_BE_FLAG5
 	bl TestEventFlagFromImmediate
 	bne loc_80A5C18
-	mov r0, #5
-	mov r1, #0xf3
+	movflag EVENT_BE_FLAG4
 	bl SetEventFlagFromImmediate
 	bl sub_80A5E8C
 	bl reqBBS_setFlag_e17b0f7_8140A00
 	b loc_80A5C62
 loc_80A5C18:
-	mov r0, #5
-	mov r1, #0xf4
+	movflag EVENT_BE_FLAG3
 	bl SetEventFlagFromImmediate
 	b loc_80A5C62
 loc_80A5C22:
-	mov r0, #0x17
-	mov r1, #7
+	movflag EVENT_2E0_FLAG0
 	bl ClearEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x28 
+	movflag EVENT_L_MESSAGE_ACTIVE
 	bl ClearEventFlagFromImmediate
 	cmp r4, #1
 	bne loc_80A5C48
@@ -2041,8 +2028,7 @@ byte_80A5EB8: .byte 0x41, 0x16, 0x0, 0x0, 0x42, 0x16, 0x0, 0x0, 0x43, 0x16, 0x0
 	thumb_local_start
 sub_80A5EC8:
 	push {r4,lr}
-	mov r0, #5
-	mov r1, #0xf1
+	movflag EVENT_BE_FLAG6
 	bl TestEventFlagFromImmediate
 	bne locret_80A5F46
 	bl sub_80A5F84
@@ -2057,8 +2043,7 @@ loc_80A5EE2:
 	ldrb r4, [r5,#0xb]
 	cmp r4, #0
 	bgt loc_80A5F12
-	mov r0, #5
-	mov r1, #0xe0
+	movflag EVENT_BC_FLAG7
 	bl SetEventFlagFromImmediate
 	bl sub_80A5F68
 	mov r0, #3
@@ -2071,8 +2056,7 @@ loc_80A5EE2:
 	add r4, #1
 	strb r4, [r5,#0xb]
 loc_80A5F12:
-	mov r0, #5
-	mov r1, #0xe0
+	movflag EVENT_BC_FLAG7
 	bl TestEventFlagFromImmediate
 	bne locret_80A5F46
 	ldrb r0, [r5,#5]
@@ -3171,8 +3155,7 @@ sub_80A6EBC:
 	strb r0, [r5,#6]
 	mov r0, #0x11
 	str r0, [r5,#0x38]
-	mov r0, #5
-	mov r1, #0xe5
+	movflag EVENT_BC_FLAG2
 	bl TestEventFlagFromImmediate
 	beq loc_80A6F20
 	bl sub_80A7208
@@ -3419,8 +3402,7 @@ off_80A70EC: .word dword_80A6E7C
 	thumb_local_start
 sub_80A70FC:
 	push {r4-r7,lr}
-	mov r0, #5
-	mov r1, #0xf1
+	movflag EVENT_BE_FLAG6
 	bl TestEventFlagFromImmediate
 	bne locret_80A715C
 	bl sub_809E1AE
@@ -3458,8 +3440,7 @@ loc_80A712E:
 	cmp r0, #1
 	bne locret_80A715C
 loc_80A7150:
-	mov r0, #5
-	mov r1, #0xf1
+	movflag EVENT_BE_FLAG6
 	bl SetEventFlagFromImmediate
 	mov r0, #1
 	str r0, [r5,#0x34]
@@ -3675,8 +3656,7 @@ sub_80A72D8:
 	str r0, [r5,#0x24]
 	mov r0, #0x11
 	str r0, [r5,#0x34]
-	mov r0, #5
-	mov r1, #0xe5
+	movflag EVENT_BC_FLAG2
 	bl TestEventFlagFromImmediate
 	beq loc_80A7342
 	bl sub_80A76E8
@@ -3684,8 +3664,7 @@ loc_80A7342:
 	mov r0, #4
 	strb r0, [r5,#8]
 	bl sub_80A7354
-	mov r0, #5
-	mov r1, #0xff
+	movflag EVENT_0BF_FLAG0
 	bl SetEventFlagFromImmediate
 	pop {r4-r7,pc}
 	thumb_func_end sub_80A72D8
@@ -4053,8 +4032,7 @@ off_80A75CC: .word byte_80A726C
 	thumb_local_start
 sub_80A75DC:
 	push {r4-r7,lr}
-	mov r0, #5
-	mov r1, #0xf1
+	movflag EVENT_BE_FLAG6
 	bl TestEventFlagFromImmediate
 	bne locret_80A763C
 	bl sub_809E1AE
@@ -4092,8 +4070,7 @@ loc_80A760E:
 	cmp r0, #1
 	bne locret_80A763C
 loc_80A7630:
-	mov r0, #5
-	mov r1, #0xf1
+	movflag EVENT_BE_FLAG6
 	bl SetEventFlagFromImmediate
 	mov r0, #1
 	str r0, [r5,#0x24]
@@ -4239,8 +4216,7 @@ loc_80A774C:
 	ldrb r0, [r5,#4]
 	cmp r0, r2
 	bne locret_80A775A
-	mov r0, #5
-	mov r1, #0xe5
+	movflag EVENT_BC_FLAG2
 	bl ClearEventFlagFromImmediate
 locret_80A775A:
 	pop {r4-r7,pc}
@@ -4880,8 +4856,7 @@ sub_80A7BC0:
 	bl sub_81420C8
 	cmp r0, r4
 	bne locret_80A7C3C
-	mov r0, #0x17
-	mov r1, #0x31
+	movflag EVENT_2E6_FLAG6
 	bl SetEventFlagFromImmediate
 	bl sub_8142080
 	mov r1, r0
@@ -5016,8 +4991,7 @@ sub_80A7CFE:
 	bne locret_80A7D70
 	bl IsPaletteFadeActive // () -> zf
 	beq locret_80A7D70
-	mov r0, #0x17
-	mov r1, #0x31
+	movflag EVENT_2E6_FLAG6
 	bl SetEventFlagFromImmediate
 	ldr r4, [r7,#0x24]
 	ldr r0, [r5,#0x14]
@@ -5970,8 +5944,7 @@ loc_80A8608:
 	thumb_local_start
 sub_80A860C:
 	push {r4,lr}
-	mov r0, #0x17
-	mov r1, #0x17
+	movflag EVENT_2E2_FLAG0
 	bl TestEventFlagFromImmediate
 	bne locret_80A8640
 	bl sub_809E1AE
@@ -6259,8 +6232,7 @@ loc_80A8858:
 	thumb_local_start
 sub_80A8860:
 	push {lr}
-	mov r0, #5
-	mov r1, #0xe0
+	movflag EVENT_BC_FLAG7
 	bl ClearEventFlagFromImmediate
 	bl FreeOverworldMapObject
 	pop {pc}
@@ -8091,11 +8063,9 @@ sub_80A96FC:
 	mov r0, #0xb
 	mov r1, #0xe8
 	bl ClearEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #7
+	movflag EVENT_2E0_FLAG0
 	bl ClearEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x39 
+	movflag EVENT_2E7_FLAG6
 	bl ClearEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_80A96FC

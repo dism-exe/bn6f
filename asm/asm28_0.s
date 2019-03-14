@@ -532,8 +532,7 @@ loc_8099D58:
 	lsl r1, r1, #0x10
 	lsl r2, r2, #0x10
 	bl sub_80301DC
-	mov r0, #0x17
-	mov r1, #0x15
+	movflag EVENT_2E2_FLAG2
 	bl ClearEventFlagFromImmediate
 loc_8099DA2:
 	mov r0, #0
@@ -781,8 +780,7 @@ loc_809A12E:
 	thumb_local_start
 sub_809A138:
 	push {r4-r7,lr}
-	mov r0, #0
-	mov r1, #0xf6
+	movflag EVENT_1E_FLAG1
 	bl TestEventFlagFromImmediate
 	beq loc_809A1A4
 	ldr r0, [r5,#0xc]
@@ -800,8 +798,7 @@ sub_809A138:
 loc_809A15C:
 	bl sub_803D0F4
 	str r0, [r5,#0x70]
-	mov r0, #0
-	mov r1, #0xf5
+	movflag EVENT_1E_FLAG2
 	bl TestEventFlagFromImmediate
 	beq loc_809A1A4
 	mov r0, #0x20
@@ -822,8 +819,7 @@ loc_809A15C:
 	mov r1, #0x58
 	mov r2, #0
 	bl sub_8119854
-	mov r0, #0
-	mov r1, #0xf6
+	movflag EVENT_1E_FLAG1
 	bl ClearEventFlagFromImmediate
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -861,8 +857,7 @@ loc_809A1CC:
 	bl sub_80465F8 // () -> void
 	ldr r0, [r5,#0x74]
 	bl sub_809A360
-	mov r0, #0
-	mov r1, #0xf5
+	movflag EVENT_1E_FLAG2
 	bl TestEventFlagFromImmediate
 	bne loc_809A1F6
 	mov r0, #0
@@ -1101,8 +1096,7 @@ sub_809A404:
 	ldr r0, off_809A448 // =TextScriptChipTrader86C580C
 	mov r1, #0x33 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-	mov r0, #0x17
-	mov r1, #0x25 
+	movflag EVENT_2E4_FLAG2
 	bl ClearEventFlagFromImmediate
 	mov r0, #8
 	mov r1, #0x84
@@ -1128,8 +1122,7 @@ sub_809A44C:
 	push {r4-r7,lr}
 	ldr r0, [r5,#0x74]
 	bl sub_809A80C
-	mov r0, #0x17
-	mov r1, #0x25 
+	movflag EVENT_2E4_FLAG2
 	bl TestEventFlagFromImmediate
 	beq loc_809A488
 	mov r0, #0x84
@@ -1208,11 +1201,9 @@ loc_809A4E2:
 	thumb_local_start
 sub_809A4EC:
 	push {r4-r7,lr}
-	mov r0, #0
-	mov r1, #0xf5
+	movflag EVENT_1E_FLAG2
 	bl ClearEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x25 
+	movflag EVENT_2E4_FLAG2
 	bl ClearEventFlagFromImmediate
 	mov r0, #1
 	bl sub_8033FC0
@@ -1356,8 +1347,7 @@ byte_809A628: .byte 0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0xFF, 0x0
 	thumb_local_start
 sub_809A630:
 	push {r4-r7,lr}
-	mov r0, #0
-	mov r1, #0xf6
+	movflag EVENT_1E_FLAG1
 	bl TestEventFlagFromImmediate
 	beq loc_809A694
 	ldrh r0, [r5,#0xc]
@@ -1372,8 +1362,7 @@ sub_809A630:
 loc_809A64E:
 	bl sub_802D15E
 	str r0, [r5,#0x70]
-	mov r0, #0
-	mov r1, #0xf5
+	movflag EVENT_1E_FLAG2
 	bl TestEventFlagFromImmediate
 	beq loc_809A694
 	mov r0, #0x20 
@@ -1393,8 +1382,7 @@ loc_809A64E:
 	mov r1, #0x58 
 	mov r2, #0
 	bl sub_8119854
-	mov r0, #0
-	mov r1, #0xf6
+	movflag EVENT_1E_FLAG1
 	bl ClearEventFlagFromImmediate
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -1432,8 +1420,7 @@ loc_809A6BC:
 	bl sub_80465F8 // () -> void
 	ldr r0, [r5,#0x74]
 	bl sub_809A80C
-	mov r0, #0
-	mov r1, #0xf5
+	movflag EVENT_1E_FLAG2
 	bl TestEventFlagFromImmediate
 	bne loc_809A6E6
 	mov r0, #0
@@ -1476,8 +1463,7 @@ loc_809A72A:
 	ldr r0, off_809A894 // =TextScriptChipTrader86C580C
 	mov r1, #0x33 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-	mov r0, #0x17
-	mov r1, #0x25 
+	movflag EVENT_2E4_FLAG2
 	bl ClearEventFlagFromImmediate
 	mov r0, #8
 	mov r1, #0x84
@@ -1569,8 +1555,7 @@ loc_809A7C4:
 	ldr r0, off_809A894 // =TextScriptChipTrader86C580C
 	mov r1, #0x33 
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-	mov r0, #0x17
-	mov r1, #0x25 
+	movflag EVENT_2E4_FLAG2
 	bl ClearEventFlagFromImmediate
 	mov r0, #8
 	mov r1, #0x84
@@ -1724,8 +1709,7 @@ byte_809A934: .byte 0x80, 0x79, 0x6C, 0x88, 0x0, 0x4E, 0x3, 0x2, 0x0, 0x37, 0x3
 	thumb_local_start
 sub_809A950:
 	push {r4-r7,lr}
-	mov r0, #0
-	mov r1, #0xf5
+	movflag EVENT_1E_FLAG2
 	bl TestEventFlagFromImmediate
 	beq loc_809A982
 	mov r0, #0
@@ -1775,8 +1759,7 @@ loc_809A9A4:
 	bl sub_8119854
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
-	mov r0, #0
-	mov r1, #0xf5
+	movflag EVENT_1E_FLAG2
 	bl TestEventFlagFromImmediate
 	bne loc_809A9C8
 	mov r0, #0
@@ -1879,8 +1862,7 @@ sub_809AADC:
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #1
 	strb r0, [r5,#8]
-	mov r0, #0x17
-	mov r1, #0x25 
+	movflag EVENT_2E4_FLAG2
 	bl ClearEventFlagFromImmediate
 	mov r0, #8
 	mov r1, #0x84
@@ -1903,8 +1885,7 @@ loc_809AB1A:
 	thumb_local_start
 sub_809AB20:
 	push {r4-r7,lr}
-	mov r0, #0x17
-	mov r1, #0x25 
+	movflag EVENT_2E4_FLAG2
 	bl TestEventFlagFromImmediate
 	beq loc_809AB5A
 	mov r0, #0x84
@@ -2156,8 +2137,7 @@ loc_809AD00:
 	thumb_local_start
 sub_809AD0C:
 	push {r4-r7,lr}
-	mov r0, #0
-	mov r1, #0xf5
+	movflag EVENT_1E_FLAG2
 	bl TestEventFlagFromImmediate
 	beq loc_809AD30
 	ldrb r0, [r5,#4]
@@ -2189,11 +2169,9 @@ dword_809AD48: .word 0xFFFFFFD0
 	thumb_local_start
 sub_809AD4C:
 	push {r4-r7,lr}
-	mov r0, #0
-	mov r1, #0xf5
+	movflag EVENT_1E_FLAG2
 	bl ClearEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x25
+	movflag EVENT_2E4_FLAG2
 	bl ClearEventFlagFromImmediate
 	mov r0, #1
 	bl sub_8033FC0
@@ -3928,8 +3906,7 @@ loc_809CBAA:
 	bl chatbox_8045F4C
 	cmp r0, #0
 	bne loc_809CBDC
-	mov r0, #1
-	mov r1, #0x63
+	movflag EVENT_2C_FLAG4
 	bl TestEventFlagFromImmediate
 	beq loc_809CBCC
 	bl sub_80010C6
@@ -3947,8 +3924,7 @@ loc_809CBCC:
 	mov r0, #0
 	pop {r4-r7,pc}
 loc_809CBDC:
-	mov r0, #1
-	mov r1, #0x63
+	movflag EVENT_2C_FLAG4
 	bl TestEventFlagFromImmediate
 	beq loc_809CBE8
 	b loc_809CBCC
@@ -4047,8 +4023,7 @@ loc_809CC7E:
 	ldr r0, off_809CD14 // =byte_809CD18
 	ldr r0, [r0,r4]
 	str r0, [r5,#0x78]
-	mov r0, #1
-	mov r1, #0x63
+	movflag EVENT_2C_FLAG4
 	bl SetEventFlagFromImmediate
 	bl sub_80010C6
 	mov r2, r10
@@ -4156,8 +4131,7 @@ loc_809CD9E:
 	mov r0, r4
 	bl sub_803F4EC
 	strb r4, [r5,#8]
-	mov r0, #1
-	mov r1, #0x63
+	movflag EVENT_2C_FLAG4
 	bl ClearEventFlagFromImmediate
 	ldr r0, byte_809CEAC+4 // =0x4
 	mov r1, #0x31
@@ -4367,8 +4341,7 @@ byte_809D13C: .byte 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x4, 0x0, 0x0, 0x0, 0xFC, 0xF
 	thumb_func_start sub_809D19C
 sub_809D19C:
 	push {lr}
-	mov r0, #0x17
-	mov r1, #0x16
+	movflag EVENT_2E2_FLAG1
 	bl ClearEventFlagFromImmediate
 	mov r0, #0xb
 	mov r1, #0xe4
@@ -4385,8 +4358,7 @@ sub_809D19C:
 	mov r1, #0x80
 	cmp r0, r1
 	blt loc_809D1D2
-	mov r0, #0x17
-	mov r1, #0x16
+	movflag EVENT_2E2_FLAG1
 	bl SetEventFlagFromImmediate
 loc_809D1D2:
 	ldr r0, off_809D258 // =off_809D25C 
@@ -4441,8 +4413,7 @@ loc_809D234:
 loc_809D238:
 	ldrb r0, [r7,#0x5] // (byte_2000AA5 - 0x2000aa0)
 	bl sprite_setPalette // (int pallete) -> void
-	mov r0, #0x17
-	mov r1, #0x3d 
+	movflag EVENT_2E7_FLAG2
 	bl TestEventFlagFromImmediate
 	beq loc_809D252
 	mov r0, r10
@@ -4594,23 +4565,18 @@ sub_809D348:
 	bl sub_8030B6A
 	tst r0, r0
 	beq loc_809D3BC
-	mov r0, #0x17
-	mov r1, #0x16
+	movflag EVENT_2E2_FLAG1
 	bl TestEventFlagFromImmediate
 	beq loc_809D3BC
-	mov r0, #0x17
-	mov r1, #0x3d 
+	movflag EVENT_2E7_FLAG2
 	bl TestEventFlagFromImmediate
 	beq loc_809D3A8
-	mov r0, #0x17
-	mov r1, #0x3f 
+	movflag EVENT_2E7_FLAG0
 	bl SetEventFlagFromImmediate
 loc_809D3A8:
-	mov r0, #0x17
-	mov r1, #0x3d 
+	movflag EVENT_2E7_FLAG2
 	bl ClearEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x3e 
+	movflag EVENT_2E7_FLAG1
 	bl ClearEventFlagFromImmediate
 	bl sub_809DE60
 loc_809D3BC:
@@ -4631,12 +4597,10 @@ loc_809D3BC:
 	lsl r0, r0, #0x10
 	str r0, [r5,#oOWPlayerObject_Z]
 loc_809D3E6:
-	mov r0, #0x17
-	mov r1, #0x18
+	movflag EVENT_2E3_FLAG7
 	bl TestEventFlagFromImmediate
 	beq loc_809D3FC
-	mov r0, #0x17
-	mov r1, #0x18
+	movflag EVENT_2E3_FLAG7
 	bl ClearEventFlagFromImmediate
 	bl sub_809E0C8
 loc_809D3FC:
@@ -4812,8 +4776,7 @@ loc_809D572:
 	ldrb r0, [r5,#0x10]
 	ldr r7, off_809D5AC // =off_809D5B0 
 	push {r0,r1,r3-r5}
-	mov r0, #0x17
-	mov r1, #0x16
+	movflag EVENT_2E2_FLAG1
 	bl TestEventFlagFromImmediate
 	beq loc_809D584
 	ldr r7, off_809D5B8 // =off_809D5BC 
@@ -4863,8 +4826,7 @@ sub_809D5C4:
 	mov r2, #1
 	mov r3, #2
 	push {r3}
-	mov r0, #0x17
-	mov r1, #0x16
+	movflag EVENT_2E2_FLAG1
 	bl TestEventFlagFromImmediate
 	pop {r3}
 	beq loc_809D5F4
@@ -4896,12 +4858,10 @@ loc_809D60C:
 	thumb_local_start
 sub_809D61A:
 	push {lr}
-	mov r0, #0x17
-	mov r1, #0x16
+	movflag EVENT_2E2_FLAG1
 	bl TestEventFlagFromImmediate
 	beq loc_809D630
-	mov r0, #0x17
-	mov r1, #0x3d
+	movflag EVENT_2E7_FLAG2
 	bl TestEventFlagFromImmediate
 	bne loc_809D646
 loc_809D630:
@@ -4983,16 +4943,13 @@ loc_809D6CE:
 	ldrb r0, [r5,#0x10]
 	ldr r7, off_809D718 // =off_809D71C 
 	push {r0,r1,r3-r5}
-	mov r0, #0x17
-	mov r1, #0x16
+	movflag EVENT_2E2_FLAG1
 	bl TestEventFlagFromImmediate
 	beq loc_809D6F4
-	mov r0, #0x17
-	mov r1, #0x3d
+	movflag EVENT_2E7_FLAG2
 	bl TestEventFlagFromImmediate
 	bne loc_809D6F2
-	mov r0, #0x17
-	mov r1, #0x3f
+	movflag EVENT_2E7_FLAG0
 	bl TestEventFlagFromImmediate
 	bne loc_809D6F4
 loc_809D6F2:
@@ -5270,8 +5227,7 @@ sub_809D8F4:
 	beq locret_809D91A
 	mov r0, #0
 	strb r0, [r7,#1]
-	mov r0, #0x17
-	mov r1, #0x17
+	movflag EVENT_2E2_FLAG0
 	bl ClearEventFlagFromImmediate
 	mov r0, #0x10
 	bl sub_809E004
@@ -5371,8 +5327,7 @@ sub_809D9A0:
 	str r1, [r5,#0x20]
 	b locret_809D9D6
 loc_809D9C4:
-	mov r0, #0x17
-	mov r1, #0x17
+	movflag EVENT_2E2_FLAG0
 	bl ClearEventFlagFromImmediate
 	mov r0, #0
 	strb r0, [r5,#9]
@@ -5397,13 +5352,11 @@ sub_809D9E0:
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_809DA94
 	push {r0}
-	mov r0, #0x17
-	mov r1, #0x14
+	movflag EVENT_2E2_FLAG3
 	bl TestEventFlagFromImmediate
 	pop {r0}
 	beq loc_809DA82
-	mov r0, #0x17
-	mov r1, #0x17
+	movflag EVENT_2E2_FLAG0
 	bl TestEventFlagFromImmediate
 	bne loc_809DA94
 	bl s_2011C50_ptr_1C_isNull // () -> zf
@@ -5540,23 +5493,18 @@ sub_809DB02:
 	and r0, r1
 	tst r0, r0
 	beq loc_809DB4A
-	mov r0, #0x17
-	mov r1, #0x3d
+	movflag EVENT_2E7_FLAG2
 	bl TestEventFlagFromImmediate
 	bne loc_809DB4A
-	mov r0, #0x17
-	mov r1, #0x3f
+	movflag EVENT_2E7_FLAG0
 	bl TestEventFlagFromImmediate
 	bne loc_809DB4A
-	mov r0, #0x17
-	mov r1, #0x16
+	movflag EVENT_2E2_FLAG1
 	bl TestEventFlagFromImmediate
 	beq loc_809DB4A
-	mov r0, #0x17
-	mov r1, #0x3d
+	movflag EVENT_2E7_FLAG2
 	bl SetEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x3e
+	movflag EVENT_2E7_FLAG1
 	bl SetEventFlagFromImmediate
 	mov r0, #0x36 
 	add r0, #0xff
@@ -5571,8 +5519,7 @@ loc_809DB4A:
 	thumb_local_start
 sub_809DB50:
 	push {lr}
-	mov r0, #0x17
-	mov r1, #0x17
+	movflag EVENT_2E2_FLAG0
 	bl TestEventFlagFromImmediate
 	bne locret_809DB5E
 	mov r0, #0
@@ -5587,8 +5534,7 @@ sub_809DB60:
 	mov r1, #0x34 
 	add r1, r1, r5
 	bl sub_809DBC4
-	mov r0, #0x17
-	mov r1, #0x3d
+	movflag EVENT_2E7_FLAG2
 	bl TestEventFlagFromImmediate
 	bne loc_809DB82
 	mov r0, r10
@@ -5739,26 +5685,21 @@ dword_809DDEC: .word 0xC00000
 	thumb_local_start
 sub_809DDF0:
 	push {lr}
-	mov r0, #0x17
-	mov r1, #0x16
+	movflag EVENT_2E2_FLAG1
 	bl TestEventFlagFromImmediate
 	beq locret_809DE2A
-	mov r0, #0x17
-	mov r1, #0x3d
+	movflag EVENT_2E7_FLAG2
 	bl TestEventFlagFromImmediate
 	beq locret_809DE2A
 	ldr r1, [r5,#0x50]
 	ldr r2, dword_809DE2C // =0xc00000 
 	tst r2, r1
 	beq locret_809DE2A
-	mov r0, #0x17
-	mov r1, #0x3d 
+	movflag EVENT_2E7_FLAG2
 	bl ClearEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x3e 
+	movflag EVENT_2E7_FLAG1
 	bl ClearEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x3f
+	movflag EVENT_2E7_FLAG0
 	bl SetEventFlagFromImmediate
 	bl sub_809DE60
 locret_809DE2A:
@@ -5769,23 +5710,18 @@ dword_809DE2C: .word 0xC00000
 	thumb_local_start
 sub_809DE30:
 	push {lr}
-	mov r0, #0x17
-	mov r1, #0x16
+	movflag EVENT_2E2_FLAG1
 	bl TestEventFlagFromImmediate
 	beq locret_809DE5E
-	mov r0, #0x17
-	mov r1, #0x3d
+	movflag EVENT_2E7_FLAG2
 	bl TestEventFlagFromImmediate
 	beq loc_809DE4E
-	mov r0, #0x17
-	mov r1, #0x3f
+	movflag EVENT_2E7_FLAG0
 	bl SetEventFlagFromImmediate
 loc_809DE4E:
-	mov r0, #0x17
-	mov r1, #0x3d 
+	movflag EVENT_2E7_FLAG2
 	bl ClearEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x3e 
+	movflag EVENT_2E7_FLAG1
 	bl ClearEventFlagFromImmediate
 locret_809DE5E:
 	pop {pc}
@@ -5824,18 +5760,14 @@ off_809DE90: .word byte_809CFBC
 	thumb_local_start
 sub_809DE98:
 	push {lr}
-	mov r0, #0x17
-	mov r1, #0x16
+	movflag EVENT_2E2_FLAG1
 	bl TestEventFlagFromImmediate
 	bne loc_809DEBE
-	mov r0, #0x17
-	mov r1, #0x3d 
+	movflag EVENT_2E7_FLAG2
 	bl ClearEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x3e 
+	movflag EVENT_2E7_FLAG1
 	bl ClearEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x3f 
+	movflag EVENT_2E7_FLAG0
 	bl ClearEventFlagFromImmediate
 	b locret_809DED2
 loc_809DEBE:
@@ -5845,8 +5777,7 @@ loc_809DEBE:
 	mov r1, #JOYPAD_B
 	tst r0, r1
 	bne locret_809DED2
-	mov r0, #0x17
-	mov r1, #0x3f 
+	movflag EVENT_2E7_FLAG0
 	bl ClearEventFlagFromImmediate
 locret_809DED2:
 	pop {pc}
@@ -6101,8 +6032,7 @@ sub_809E08A:
 setEventFlag_809E098:
 	push {lr}
 	// flag 3 @ 0x2001c88[0x2e2] (=2001f6a)
-	mov r0, #0x17
-	mov r1, #0x14
+	movflag EVENT_2E2_FLAG3
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end setEventFlag_809E098
@@ -6112,8 +6042,7 @@ setEventFlag_809E098:
 clearEventFlag_809E0A4:
 	push {lr}
 	// clear flag 3 @ 0x2001c88[0x2e2] (=2001f6a)
-	mov r0, #0x17
-	mov r1, #0x14
+	movflag EVENT_2E2_FLAG3
 	bl ClearEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end clearEventFlag_809E0A4
@@ -6152,8 +6081,7 @@ sub_809E0C8:
 	ldr r0, [r1,#0x24]
 	str r0, [r3,#0x10] // (dword_200ACF0 - 0x200ace0)
 	push {r3}
-	mov r0, #0x17
-	mov r1, #0x19
+	movflag EVENT_2E3_FLAG6
 	bl TestEventFlagFromImmediate
 	pop {r3}
 	bne locret_809E0FA
@@ -6202,8 +6130,7 @@ sub_809E122:
 	strb r0, [r3]
 	bl setEventFlag_809E098
 	// flag 6 @ 0x2001c88[0x2e3] (=2001f6b)
-	mov r0, #0x17
-	mov r1, #0x19
+	movflag EVENT_2E3_FLAG6
 	bl ClearEventFlagFromImmediate
 	pop {pc}
 off_809E138: .word byte_200ACE0
@@ -6214,9 +6141,7 @@ sub_809E13C:
 	push {lr}
 	ldr r3, off_809E184 // =byte_200ACE0 
 	strb r0, [r3,#2]
-	// flag 6 @ 0x2001c88[0x2e3] (=2001f6b)
-	mov r0, #0x17
-	mov r1, #0x19
+	movflag EVENT_2E3_FLAG6
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_809E13C
@@ -6229,8 +6154,7 @@ sub_809E14C:
 	bl sub_809E462
 	bne loc_809E164
 	strb r4, [r7,#0x2] // (byte_200ACE2 - 0x200ace0)
-	mov r0, #0x17
-	mov r1, #0x19
+	movflag EVENT_2E3_FLAG6
 	bl SetEventFlagFromImmediate
 	pop {r4-r7,pc}
 loc_809E164:
@@ -6248,8 +6172,7 @@ sub_809E168:
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldr r3, [r3,#oGameState_OverworldPlayerObjectPtr]
 	strb r0, [r3,#0x15]
-	mov r0, #0x17
-	mov r1, #0x19
+	movflag EVENT_2E3_FLAG6
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	.balign 4, 0x00
@@ -6785,8 +6708,7 @@ sub_809E46E:
 	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
 	mov r2, #0x64 
 	strh r0, [r7,r2]
-	mov r0, #0x17
-	mov r1, #0x17
+	movflag EVENT_2E2_FLAG0
 	bl SetEventFlagFromImmediate
 locret_809E494:
 	pop {r7,pc}

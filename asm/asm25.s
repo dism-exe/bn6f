@@ -1036,11 +1036,9 @@ loc_8090082:
 	mov r0, #0xb
 	mov r1, #0xe5
 	bl ClearEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #7
+	movflag EVENT_2E0_FLAG0
 	bl ClearEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x39 
+	movflag EVENT_2E7_FLAG6
 	bl ClearEventFlagFromImmediate
 	bl sub_808FE64
 	b loc_80900C2
@@ -1080,11 +1078,9 @@ sub_80900C8:
 	mov r0, #0xb
 	mov r1, #0xe5
 	bl SetEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #7
+	movflag EVENT_2E0_FLAG0
 	bl SetEventFlagFromImmediate
-	mov r0, #0x17
-	mov r1, #0x39
+	movflag EVENT_2E7_FLAG6
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_80900C8
