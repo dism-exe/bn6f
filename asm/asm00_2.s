@@ -2763,7 +2763,7 @@ sub_80101F8:
 	mov r4, r0
 	cmp r4, #0
 	bne loc_8010216
-	movflag EVENT_2C_FLAG4
+	movflag EVENT_2C4
 	bl TestEventFlagFromImmediate
 	bne loc_8010216
 	bl notZero_eByte200AD04
@@ -27188,7 +27188,7 @@ sub_801D814:
 	beq loc_801D84A
 	cmp r0, #5
 	beq loc_801D848
-	movflag EVENT_2C_FLAG4
+	movflag EVENT_2C4
 	bl TestEventFlagFromImmediate
 	bne loc_801D84A
 	bl sub_802E09A
@@ -27197,7 +27197,7 @@ sub_801D814:
 	ldr r1, dword_801D850 // =0x200000 
 	tst r0, r1
 	bne loc_801D84A
-	movflag EVENT_1C_FLAG7
+	movflag EVENT_1C7
 	bl TestEventFlagFromImmediate
 	beq loc_801D84A
 loc_801D848:

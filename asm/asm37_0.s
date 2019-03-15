@@ -1146,11 +1146,11 @@ locret_813BF18:
 sub_813BF1C:
 	push {r4-r7,lr}
 	mov r6, #1
-	movflag EVENT_2E4_FLAG7
+	movflag EVENT_2E47
 	bl TestEventFlagFromImmediate
 	beq loc_813BF36
 	b loc_813BF38
-	movflag EVENT_2E4_FLAG4
+	movflag EVENT_2E44
 	bl TestEventFlagFromImmediate
 	bne loc_813BF38
 loc_813BF36:
@@ -1661,7 +1661,7 @@ sub_813C3AC:
 	b loc_813C3CC
 loc_813C3B8:
 	bl sub_813C458
-	movflag EVENT_2C_FLAG4
+	movflag EVENT_2C4
 	bl TestEventFlagFromImmediate
 	beq loc_813C3CC
 	bl sub_8121154
@@ -1735,7 +1735,7 @@ sub_813C458:
 	mov r0, #0
 	bl sub_80010BE
 	bl sub_813C678
-	movflag EVENT_2E1_FLAG2
+	movflag EVENT_2E12
 	bl ClearEventFlagFromImmediate
 	bl sub_813C684
 	bl sub_813CBCC
@@ -2691,7 +2691,7 @@ off_813CBC8: .word 0x1F4
 	thumb_local_start
 sub_813CBCC:
 	push {r4-r7,lr}
-	movflag EVENT_2E4_FLAG7
+	movflag EVENT_2E47
 	bl ClearEventFlagFromImmediate
 	bl sub_813C490
 	cmp r0, #1
@@ -2715,7 +2715,7 @@ loc_813CBE6:
 	beq loc_813CC0C
 	mov lr, pc
 	bx r1
-	movflag EVENT_2E4_FLAG7
+	movflag EVENT_2E47
 	bl SetEventFlagFromImmediate
 loc_813CC0C:
 	add r6, #1

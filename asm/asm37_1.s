@@ -3485,7 +3485,7 @@ sub_8143C62:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	bl sub_8030A60
-	movflag EVENT_2E4_FLAG6
+	movflag EVENT_2E46
 	bl SetEventFlagFromImmediate
 	pop {r4-r7,pc}
 off_8143C7C: .word off_8143C80

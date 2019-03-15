@@ -2408,7 +2408,7 @@ npc_800461E:
 	mov r5, r9
 	mov r6, r12
 	push {r4-r6}
-	movflag EVENT_2E0_FLAG6
+	movflag EVENT_2E06
 	bl TestEventFlagFromImmediate
 	bne loc_800466C
 	sub sp, sp, #8
@@ -2745,7 +2745,7 @@ sub_80048D2:
 	mov r5, r9
 	mov r6, r12
 	push {r4-r6}
-	movflag EVENT_2E0_FLAG5
+	movflag EVENT_2E05
 	bl TestEventFlagFromImmediate
 	bne loc_8004920
 	sub sp, sp, #8
@@ -3368,13 +3368,13 @@ sub_8004D48:
 	ldr r1, off_8004DEC // =dword_20096D0
 	strb r0, [r1]
 	bl sub_8004702
-	movflag EVENT_2E0_FLAG4
+	movflag EVENT_2E04
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E3_FLAG4
+	movflag EVENT_2E34
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E2_FLAG2
+	movflag EVENT_2E22
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E5_FLAG2
+	movflag EVENT_2E52
 	bl ClearEventFlagFromImmediate
 	bl sub_800399A
 	bl sub_8003AEA
@@ -3670,13 +3670,13 @@ reqBBS_init_8004DF0:
 	bl sub_802E240
 	bl reqBBS_813E616
 	bl reqBBS_initMemory_813F9DA
-	movflag EVENT_2E7_FLAG5
+	movflag EVENT_2E75
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E7_FLAG2
+	movflag EVENT_2E72
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E7_FLAG1
+	movflag EVENT_2E71
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E7_FLAG0
+	movflag EVENT_2E70
 	bl ClearEventFlagFromImmediate
 	bl reqBBS_8140984
 	pop {r4-r7,pc}
@@ -3737,13 +3737,13 @@ loc_8005152:
 	bl sub_8036EFE
 	bl sub_8036F24
 	bl sub_809F90C
-	movflag EVENT_2E6_FLAG6
+	movflag EVENT_2E66
 	bl ClearEventFlagFromImmediate
 	mov r0, #0
 	bl sub_803F6B0
 	bl sub_803F500
 	bl RandomizeExtraToolkitPointers
-	movflag EVENT_2E8_FLAG6
+	movflag EVENT_2E86
 	bl TestEventFlagFromImmediate
 	bne loc_80051AA
 	bl sub_813C3AC
@@ -3759,19 +3759,19 @@ loc_80051AA:
 	strb r0, [r5,#oGameState_Unk_0e]
 	strb r0, [r5,#oGameState_Unk_03]
 	str r0, [r5,#oGameState_Unk_68]
-	movflag EVENT_2E3_FLAG6
+	movflag EVENT_2E36
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E0_FLAG6
+	movflag EVENT_2E06
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E0_FLAG5
+	movflag EVENT_2E05
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E0_FLAG7
+	movflag EVENT_2E07
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E0_FLAG0
+	movflag EVENT_2E00
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E7_FLAG6
+	movflag EVENT_2E76
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E6_FLAG5
+	movflag EVENT_2E65
 	bl ClearEventFlagFromImmediate
 	mov r0, #1
 	mov r1, #0xbb
@@ -3790,11 +3790,11 @@ loc_80051AA:
 	bl map_8034B4C
 	ldrb r0, [r5,#oGameState_MapGroup]
 	bl EnterMap_RunMapGroupAsmFunction_8030A00
-	movflag EVENT_2E7_FLAG2
+	movflag EVENT_2E72
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E7_FLAG1
+	movflag EVENT_2E71
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E7_FLAG0
+	movflag EVENT_2E70
 	bl ClearEventFlagFromImmediate
 	ldrb r0, [r5,#oGameState_Unk_16]
 	ldrb r1, [r5,#oGameState_Unk_17]
@@ -4463,9 +4463,9 @@ off_8005948: .word sub_800596C+1
 	thumb_local_start
 sub_800596C:
 	push {lr}
-	movflag EVENT_2E0_FLAG4
+	movflag EVENT_2E04
 	bl SetEventFlagFromImmediate
-	movflag EVENT_2E7_FLAG7
+	movflag EVENT_2E77
 	bl SetEventFlagFromImmediate
 	mov r0, #0xc
 	mov r1, #0x10
@@ -4479,9 +4479,9 @@ sub_800596C:
 	thumb_local_start
 sub_8005990:
 	push {lr}
-	movflag EVENT_2E0_FLAG4
+	movflag EVENT_2E04
 	bl SetEventFlagFromImmediate
-	movflag EVENT_2E7_FLAG7
+	movflag EVENT_2E77
 	bl SetEventFlagFromImmediate
 	mov r0, #4
 	mov r1, #0x10
@@ -4495,9 +4495,9 @@ sub_8005990:
 	thumb_local_start
 sub_80059B4:
 	push {lr}
-	movflag EVENT_2E0_FLAG4
+	movflag EVENT_2E04
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E7_FLAG7
+	movflag EVENT_2E77
 	bl SetEventFlagFromImmediate
 	ldr r0, off_8005A78 // =byte_8098A02
 	mov r1, #0
@@ -4508,9 +4508,9 @@ sub_80059B4:
 	thumb_local_start
 sub_80059D0:
 	push {lr}
-	movflag EVENT_2E0_FLAG4
+	movflag EVENT_2E04
 	bl SetEventFlagFromImmediate
-	movflag EVENT_2E7_FLAG7
+	movflag EVENT_2E77
 	bl SetEventFlagFromImmediate
 	ldr r0, off_8005A80 // =byte_8098A78
 	mov r1, #0
@@ -4521,7 +4521,7 @@ sub_80059D0:
 	thumb_local_start
 sub_80059EC:
 	push {lr}
-	movflag EVENT_2E0_FLAG4
+	movflag EVENT_2E04
 	bl ClearEventFlagFromImmediate
 	ldr r0, off_8005A7C // =byte_8098A2E
 	mov r1, #0
@@ -4541,9 +4541,9 @@ sub_8005A00:
 	thumb_local_start
 sub_8005A0C:
 	push {lr}
-	movflag EVENT_2E0_FLAG4
+	movflag EVENT_2E04
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_2E7_FLAG7
+	movflag EVENT_2E77
 	bl SetEventFlagFromImmediate
 	ldr r0, off_8005A88 // =byte_8098B1C
 	mov r1, #0
@@ -4554,9 +4554,9 @@ sub_8005A0C:
 	thumb_local_start
 sub_8005A28:
 	push {lr}
-	movflag EVENT_2E0_FLAG4
+	movflag EVENT_2E04
 	bl SetEventFlagFromImmediate
-	movflag EVENT_2E7_FLAG7
+	movflag EVENT_2E77
 	bl SetEventFlagFromImmediate
 	mov r0, #0xc
 	mov r1, #0x10
@@ -4572,9 +4572,9 @@ sub_8005A28:
 	thumb_local_start
 sub_8005A50:
 	push {lr}
-	movflag EVENT_2E0_FLAG4
+	movflag EVENT_2E04
 	bl SetEventFlagFromImmediate
-	movflag EVENT_2E7_FLAG7
+	movflag EVENT_2E77
 	bl SetEventFlagFromImmediate
 	mov r0, #0xc
 	mov r1, #0x10
@@ -4600,15 +4600,15 @@ sub_8005A8C:
 	ldrb r0, [r5,#oGameState_SubsystemIndex]
 	cmp r0, #4
 	bne locret_8005AF2
-	movflag EVENT_2E2_FLAG0
+	movflag EVENT_2E20
 	bl TestEventFlagFromImmediate
 	bne locret_8005AF2
 	bl sub_809E462
 	bne locret_8005AF2
-	movflag EVENT_2E0_FLAG7
+	movflag EVENT_2E07
 	bl TestEventFlagFromImmediate
 	bne locret_8005AF2
-	movflag EVENT_2E7_FLAG1
+	movflag EVENT_2E71
 	bl TestEventFlagFromImmediate
 	bne locret_8005AF2
 	bl sub_8005F28
@@ -4642,10 +4642,10 @@ sub_8005AF4:
 	ldrb r0, [r5,#oGameState_SubsystemIndex]
 	cmp r0, #4
 	bne locret_8005B68
-	movflag EVENT_2E2_FLAG0
+	movflag EVENT_2E20
 	bl TestEventFlagFromImmediate
 	bne locret_8005B68
-	movflag EVENT_2E7_FLAG2
+	movflag EVENT_2E72
 	bl TestEventFlagFromImmediate
 	bne locret_8005B68
 	bl sub_809E462
@@ -4665,7 +4665,7 @@ sub_8005AF4:
 	mov r0, #JOYPAD_START
 	bl JoypadKeyPressed
 	beq locret_8005B68
-	movflag EVENT_2E0_FLAG0
+	movflag EVENT_2E00
 	bl TestEventFlagFromImmediate
 	bne locret_8005B68
 	mov r0, #SOUND_SELECT_79
@@ -4694,7 +4694,7 @@ sub_8005B6E:
 	ldrb r0, [r5,#oGameState_SubsystemIndex]
 	cmp r0, #4
 	bne locret_8005BC6
-	movflag EVENT_2E2_FLAG0
+	movflag EVENT_2E20
 	bl TestEventFlagFromImmediate
 	bne locret_8005BC6
 	bl sub_809E462
@@ -4711,7 +4711,7 @@ sub_8005B6E:
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
 	bne locret_8005BC6
-	movflag EVENT_2E7_FLAG6
+	movflag EVENT_2E76
 	bl TestEventFlagFromImmediate
 	bne locret_8005BC6
 	mov r0, r10
@@ -4786,7 +4786,7 @@ sub_8005C04:
 	mov r5, r10
 	ldr r7, [r5,#oToolkit_Unk2011bb0_Ptr]
 	ldr r5, [r5,#oToolkit_GameStatePtr]
-	movflag EVENT_2E3_FLAG4
+	movflag EVENT_2E34
 	bl TestEventFlagFromImmediate
 	bne loc_8005C80
 	ldrb r1, [r7]
@@ -4819,7 +4819,7 @@ loc_8005C62:
 	orr r1, r0
 	str r1, [r6,#0x10]
 loc_8005C80:
-	movflag EVENT_2E3_FLAG4
+	movflag EVENT_2E34
 	bl ClearEventFlagFromImmediate
 	ldrb r0, [r7,#0x12]
 	cmp r0, #1
@@ -7286,11 +7286,11 @@ loc_80072BE:
 	mov r1, r0
 	add r1, #8
 	str r1, [r0,#0x4] // (dword_20364C4 - 0x20364c0)
-	movflag EVENT_2E6_FLAG4
+	movflag EVENT_2E64
 	bl ClearEventFlagFromImmediate
 	cmp r7, #1
 	beq loc_80072E2
-	movflag EVENT_2E6_FLAG2
+	movflag EVENT_2E62
 	bl ClearEventFlagFromImmediate
 loc_80072E2:
 	mov r0, #0
@@ -8039,9 +8039,9 @@ loc_8007898:
 	mov r1, #8
 	tst r0, r1
 	bne locret_8007936
-	movflag EVENT_2E6_FLAG4
+	movflag EVENT_2E64
 	bl SetEventFlagFromImmediate
-	movflag EVENT_2E6_FLAG2
+	movflag EVENT_2E62
 	bl SetEventFlagFromImmediate
 	b locret_8007936
 loc_80078C6:
@@ -8572,7 +8572,7 @@ loc_8007D1A:
 loc_8007D2A:
 	mov r0, #0
 	bl sub_803F4EC
-	movflag EVENT_2E6_FLAG4
+	movflag EVENT_2E64
 	bl TestEventFlagFromImmediate
 	beq loc_8007E38
 	bl sub_8001974
@@ -8692,7 +8692,7 @@ loc_8007E38:
 	bl sub_800A892
 	mov r0, #1
 	bl sub_80071A4
-	movflag EVENT_2E4_FLAG5
+	movflag EVENT_2E45
 	bl ClearEventFlagFromImmediate
 	mov r0, #0
 	strb r0, [r5,#0xa]
@@ -11276,7 +11276,7 @@ loc_800924E:
 	mov r0, #1
 	bl sub_801BECC
 	mov r4, #4
-	movflag EVENT_2E6_FLAG2
+	movflag EVENT_2E62
 	bl TestEventFlagFromImmediate
 	beq loc_8009270
 	mov r4, #0x24
@@ -11851,7 +11851,7 @@ loc_80096B6:
 	mov r0, #1
 	bl sub_801BECC
 	mov r4, #4
-	movflag EVENT_2E6_FLAG2
+	movflag EVENT_2E62
 	bl TestEventFlagFromImmediate
 	beq loc_80096D8
 	mov r4, #0x24
@@ -12318,7 +12318,7 @@ loc_8009A3E:
 	mov r0, #1
 	bl sub_801BECC
 	mov r4, #4
-	movflag EVENT_2E6_FLAG2
+	movflag EVENT_2E62
 	bl TestEventFlagFromImmediate
 	beq loc_8009A60
 	mov r4, #0x24
@@ -12706,7 +12706,7 @@ loc_8009D2E:
 	mov r0, #1
 	bl sub_801BECC
 	mov r4, #4
-	movflag EVENT_2E6_FLAG2
+	movflag EVENT_2E62
 	bl TestEventFlagFromImmediate
 	beq loc_8009D50
 	mov r4, #0x24
@@ -15689,7 +15689,7 @@ loc_800B1A8:
 	bl sub_800A8F8
 	cmp r0, #0
 	beq loc_800B242
-	movflag EVENT_2C_FLAG4
+	movflag EVENT_2C4
 	bl TestEventFlagFromImmediate
 	bne loc_800B242
 	bl getPETNaviSelect // () -> u8
@@ -15794,7 +15794,7 @@ loc_800B25A:
 	bl sub_8010D20
 	mov r1, #0xf4 // (byte_203CCD4 - 0x203cbe0)
 	str r0, [r4,r1]
-	movflag EVENT_2C_FLAG4
+	movflag EVENT_2C4
 	bl TestEventFlagFromImmediate
 	beq loc_800B2A0
 	bl sub_8121198

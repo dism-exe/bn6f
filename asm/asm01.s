@@ -76,7 +76,7 @@ sub_801FE6C:
 	ldrb r0, [r4]
 	tst r0, r0
 	beq loc_801FED2
-	movflag EVENT_2E5_FLAG2
+	movflag EVENT_2E52
 	bl TestEventFlagFromImmediate
 	beq loc_801FEB6
 	strb r6, [r4,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)

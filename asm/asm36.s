@@ -4435,7 +4435,7 @@ loc_813268A:
 	lsl r4, r4, #4
 	bl getPETNaviSelect // () -> u8
 	mov r6, r0
-	movflag EVENT_2C_FLAG4
+	movflag EVENT_2C4
 	bl TestEventFlagFromImmediate
 	bne loc_81326A0
 	mov r6, #0
@@ -12907,9 +12907,9 @@ sub_8136C24:
 	thumb_func_start sub_8136D8C
 sub_8136D8C:
 	push {r4-r7,lr}
-	movflag EVENT_1E_FLAG3
+	movflag EVENT_1E3
 	bl SetEventFlagFromImmediate
-	movflag EVENT_1E_FLAG5
+	movflag EVENT_1E5
 	bl SetEventFlagFromImmediate
 	ldr r0, off_8136EC0 // =byte_2009390 
 	mov r1, #0x10
@@ -14201,7 +14201,7 @@ loc_8137762:
 	bgt loc_8137774
 	strb r1, [r0,#5]
 loc_8137774:
-	movflag EVENT_2C_FLAG4
+	movflag EVENT_2C4
 	bl TestEventFlagFromImmediate
 	beq loc_8137786
 	bl getPETNaviSelect // () -> u8
@@ -14476,7 +14476,7 @@ locret_813799C:
 	thumb_local_start
 sub_81379A0:
 	push {lr}
-	movflag EVENT_2E2_FLAG7
+	movflag EVENT_2E27
 	bl TestEventFlagFromImmediate
 	bne loc_81379D0
 	mov r0, #JOYPAD_A
@@ -14587,10 +14587,10 @@ sub_8137A7C:
 	mov r1, #0xbf
 	mov r2, #0x13
 	bl ClearEventFlagRangeFromImmediate // (u8 entryIdx, u8 byteFlagIdx, int numEntries) -> void
-	movflag EVENT_2E2_FLAG7
+	movflag EVENT_2E27
 	bl TestEventFlagFromImmediate
 	beq loc_8137ABA
-	movflag EVENT_2E2_FLAG7
+	movflag EVENT_2E27
 	bl ClearEventFlagFromImmediate
 	mov r0, #1
 	b locret_8137ACA

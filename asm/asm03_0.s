@@ -7519,7 +7519,7 @@ loc_8029F88:
 	ldr r1, dword_8029FB0 // =0x200000 
 	tst r0, r1
 	bne loc_8029FAC
-	movflag EVENT_2C_FLAG4
+	movflag EVENT_2C4
 	bl TestEventFlagFromImmediate
 	beq loc_8029FA4
 	ldrb r0, [r5,#0x10]
@@ -7547,7 +7547,7 @@ sub_8029FB4:
 	ldrb r0, [r5,#0x10]
 	cmp r0, #0
 	bne loc_8029FEC
-	movflag EVENT_2C_FLAG4
+	movflag EVENT_2C4
 	bl TestEventFlagFromImmediate
 	bne loc_8029FEC
 	bl sub_802E09A
@@ -7556,7 +7556,7 @@ sub_8029FB4:
 	ldr r1, dword_8029FF0 // =0x200000 
 	tst r0, r1
 	bne loc_8029FEC
-	movflag EVENT_1C_FLAG7
+	movflag EVENT_1C7
 	bl TestEventFlagFromImmediate
 	beq loc_8029FEC
 loc_8029FEA:
@@ -7799,7 +7799,7 @@ locret_802A21E:
 sub_802A220:
 	push {r4,r6,r7,lr}
 	mov r4, #0xff
-	movflag EVENT_2C_FLAG4
+	movflag EVENT_2C4
 	bl TestEventFlagFromImmediate
 	bne loc_802A2A2
 	bl sub_802D246 // () -> int
@@ -15263,7 +15263,7 @@ sub_802E112:
 	mov r1, #8
 	tst r0, r1
 	beq locret_802E154
-	movflag EVENT_2E4_FLAG5
+	movflag EVENT_2E45
 	bl TestEventFlagFromImmediate
 	beq locret_802E154
 loc_802E14E:
@@ -18099,7 +18099,7 @@ loc_802F776:
 	ldrb r0, [r5,#2]
 	tst r0, r0
 	beq locret_802F7E0
-	movflag EVENT_2E0_FLAG3
+	movflag EVENT_2E03
 	bl SetEventFlagFromImmediate
 	b locret_802F7E0
 loc_802F79A:
@@ -18107,7 +18107,7 @@ loc_802F79A:
 	tst r0, r0
 	beq loc_802F7B6
 	bl sub_8004D48
-	movflag EVENT_2E0_FLAG3
+	movflag EVENT_2E03
 	bl SetEventFlagFromImmediate
 	bl sub_81440D8 // static () -> void
 	bl sub_8149644
@@ -18123,7 +18123,7 @@ loc_802F7B6:
 	ldrb r0, [r5,#2]
 	tst r0, r0
 	beq loc_802F7DC
-	movflag EVENT_2E0_FLAG3
+	movflag EVENT_2E03
 	bl SetEventFlagFromImmediate
 loc_802F7DC:
 	bl sub_81440D8 // static () -> void

@@ -1531,7 +1531,7 @@ sub_8000FAC:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	// flag 3 @ 0x2001C88[0x17<<5 + 0x1] (=2001F69)
-	movflag EVENT_2E1_FLAG3
+	movflag EVENT_2E13
 	bl TestEventFlagFromImmediate
 	bne loc_8000FCE
 	ldrb r0, [r5,#oGameState_MapGroup]
@@ -1552,7 +1552,7 @@ loc_8000FCE:
 	str r0, [r6,#0x2c]
 	str r0, [r6,#0x28]
 loc_8000FDC:
-	movflag EVENT_2E1_FLAG3
+	movflag EVENT_2E13
 	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
 	thumb_func_end sub_8000FAC
