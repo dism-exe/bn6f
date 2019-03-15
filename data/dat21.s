@@ -2427,20 +2427,20 @@ sub_8086DF8:
 	bl sub_8087150
 	bl sub_8086ED8
 	bl sub_8086EEC
-	movflag EVENT_BE5
+	movflag EVENT_5F2
 	bl TestEventFlagFromImmediate
 	beq locret_8086E6A
 	bl sub_8087238
-	movflag EVENT_BC3
+	movflag EVENT_5E4
 	bl TestEventFlagFromImmediate
 	bne loc_8086E50
 	bl sub_8086FA4
 	cmp r0, #0
 	beq locret_8086E6A
-	movflag EVENT_0BF0
+	movflag EVENT_5FF
 	bl TestEventFlagFromImmediate
 	beq loc_8086E50
-	movflag EVENT_BC2
+	movflag EVENT_5E5
 	bl SetEventFlagFromImmediate
 loc_8086E50:
 	mov r1, r10

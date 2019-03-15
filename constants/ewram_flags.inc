@@ -3,160 +3,152 @@
     // bit position is reversed for continuity
 
         enum_start 0xe0 // 0x1C
-    enum EVENT_1C7
-    enum EVENT_1C6
-    enum EVENT_1C5
-    enum EVENT_1C4
-    enum EVENT_1C3
-    enum EVENT_1C2
-    enum EVENT_1C1
-    enum EVENT_1C0
+    enum EVENT_E0
+    enum EVENT_E1
+    enum EVENT_E2
+    enum EVENT_E3
+    enum EVENT_E4
+    enum EVENT_E5
+    enum EVENT_E6
+    enum EVENT_E7
 
         enum_start 0xf0 // 0x1E
-    enum EVENT_1E7
-    enum EVENT_1E6
-    enum EVENT_1E5
-    enum EVENT_1E4
-    enum EVENT_1E3
-    enum EVENT_1E2
-    enum EVENT_1E1
-    enum EVENT_1E0
+    enum EVENT_F0
+    enum EVENT_F1
+    enum EVENT_F2
+    enum EVENT_F3
+    enum EVENT_F4
+    enum EVENT_F5
+    enum EVENT_F6
+    enum EVENT_F7
 
         enum_start 0x160 // 0x2C
-    enum EVENT_2C7
-    enum EVENT_2C6
-    enum EVENT_2C5
-    enum EVENT_2C4
-    enum EVENT_2C3
-    enum EVENT_2C2
-    enum EVENT_2C1
-    enum EVENT_2C0
+    enum EVENT_160
+    enum EVENT_161
+    enum EVENT_162
+    enum EVENT_163
+    enum EVENT_164
+    enum EVENT_165
+    enum EVENT_166
+    enum EVENT_167
 
         enum_start 0x5e0 // 0xBC
-    enum EVENT_BC7
-    enum EVENT_BC6
-    enum EVENT_BC5
-    enum EVENT_BC4
-    enum EVENT_BC3
-    enum EVENT_BC2
-    enum EVENT_BC1
-    enum EVENT_BC0
+    enum EVENT_5E0
+    enum EVENT_5E1
+    enum EVENT_5E2
+    enum EVENT_5E3
+    enum EVENT_5E4
+    enum EVENT_5E5
+    enum EVENT_5E6
+    enum EVENT_5E7
 
         enum_start 0x5f0 // 0xBE
-    enum EVENT_BE7
-    enum EVENT_BE6
-    enum EVENT_BE5
-    enum EVENT_BE4
-    enum EVENT_BE3
-    enum EVENT_BE2
-    enum EVENT_BE1
-    enum EVENT_BE0
+    enum EVENT_5F0
+    enum EVENT_5F1
+    enum EVENT_5F2
+    enum EVENT_5F3
+    enum EVENT_5F4
+    enum EVENT_5F5
+    enum EVENT_5F6
+    enum EVENT_5F7
 
         enum_start 0x5f8 // 0x0BF
-    enum EVENT_0BF7
-    enum EVENT_0BF6
-    enum EVENT_0BF5
-    enum EVENT_0BF4 
-    enum EVENT_0BF3
-    enum EVENT_0BF2
-    enum EVENT_0BF1
-    enum EVENT_0BF0
+    enum EVENT_5F8
+    enum EVENT_5F9
+    enum EVENT_5FA
+    enum EVENT_5FB 
+    enum EVENT_5FC
+    enum EVENT_5FD
+    enum EVENT_5FE
+    enum EVENT_5FF
 
         enum_start 0x1700 // 0x2E0
-    enum EVENT_2E07
-    enum EVENT_2E06
-    enum EVENT_2E05
-    enum EVENT_2E04
-    enum EVENT_2E03
-    enum EVENT_2E02
-    enum EVENT_2E01
-    enum EVENT_2E00
-
-        enum_start 0x1708 // 0x2E1
-    enum EVENT_2E17
-    enum EVENT_2E16
-    enum EVENT_2E15
-    enum EVENT_2E14
-    enum EVENT_2E13
-    enum EVENT_2E12
-    enum EVENT_2E11
-    enum EVENT_2E10
-
-        enum_start 0x1710 // 0x2E2
-    enum EVENT_2E27
-    enum EVENT_2E26
-    enum EVENT_2E25
-    enum EVENT_2E24
-    enum EVENT_2E23
-    enum EVENT_2E22
-    enum EVENT_2E21
-    enum EVENT_2E20
-
-        enum_start 0x1718 // 0x2E3
+    enum EVENT_1700
+    enum EVENT_1701
+    enum EVENT_1702
+    enum EVENT_1703
+    enum EVENT_1704
+    enum EVENT_1705
+    enum EVENT_1706
+    enum EVENT_1707
+        // 0x2E1
+    enum EVENT_1708
+    enum EVENT_1709
+    enum EVENT_170A
+    enum EVENT_170B
+    enum EVENT_170C
+    enum EVENT_170D
+    enum EVENT_170E
+    enum EVENT_170F
+        // 0x2E2
+    enum EVENT_1710
+    enum EVENT_1711
+    enum EVENT_1712
+    enum EVENT_1713
+    enum EVENT_1714
+    enum EVENT_1715
+    enum EVENT_1716
+    enum EVENT_1717
+        // 0x2E3
     // activates when pressing L, jacking in,
     // and talking to objects (but not NPCs?)
     // otherwise constantly cleared
-    enum EVENT_2E37
-    enum EVENT_2E36
-    enum EVENT_2E35
-    enum EVENT_2E34
-    enum EVENT_2E33
+    enum EVENT_1718
+    enum EVENT_1719
+    enum EVENT_171A
+    enum EVENT_171B
+    enum EVENT_171C
     // MegaMan disappears from PET, HP becomes 0/0
     enum EVENT_PET_NAVI_ACTIVE
-    enum EVENT_2E31
-    enum EVENT_2E30
-
-        enum_start 0x1720 // 0x2E4
-    enum EVENT_2E47
-    enum EVENT_2E46
-    enum EVENT_2E45
-    enum EVENT_2E44
-    enum EVENT_2E43
-    enum EVENT_2E42
-    enum EVENT_2E41
-    enum EVENT_2E40
-
+    enum EVENT_171E
+    enum EVENT_171F
+        // enum_start 0x1720 // 0x2E4
+    enum EVENT_1720
+    enum EVENT_1721
+    enum EVENT_1722
+    enum EVENT_1723
+    enum EVENT_1724
+    enum EVENT_1725
+    enum EVENT_1726
+    enum EVENT_1727
     // applies on map update (like after closing a submenu)
-        enum_start 0x1728 // 0x2E5
+        // 0x2E5
     enum EVENT_L_MESSAGE_ACTIVE
     // when enabled, Lan's sprite is replaced with MegaMan
     enum EVENT_COPYBOT_ACTIVE
-    enum EVENT_2E55
-    enum EVENT_2E54
-    enum EVENT_2E53
-    enum EVENT_2E52
-    enum EVENT_2E51
-    enum EVENT_2E50
-
-        enum_start 0x1730 // 0x2E6
-    enum EVENT_2E67
-    enum EVENT_2E66
-    enum EVENT_2E65
-    enum EVENT_2E64
-    enum EVENT_2E63
-    enum EVENT_2E62
-    enum EVENT_2E61
-    enum EVENT_2E60
-
-        enum_start 0x1738 // 0x2E7
-    enum EVENT_2E77
-    enum EVENT_2E76
-    enum EVENT_2E75
-    enum EVENT_2E74
-    enum EVENT_2E73
-    enum EVENT_2E72
-    enum EVENT_2E71
-    enum EVENT_2E70
-
-        enum_start 0x1740 // 0x2E8
-    enum EVENT_2E87
-    enum EVENT_2E86
-    enum EVENT_2E85
-    enum EVENT_2E84
-    enum EVENT_2E83
-    enum EVENT_2E82
-    enum EVENT_2E81
-    enum EVENT_2E80
+    enum EVENT_172A
+    enum EVENT_172B
+    enum EVENT_172C
+    enum EVENT_172D
+    enum EVENT_172E
+    enum EVENT_172F
+        // 0x2E6
+    enum EVENT_1730
+    enum EVENT_1731
+    enum EVENT_1732
+    enum EVENT_1733
+    enum EVENT_1734
+    enum EVENT_1735
+    enum EVENT_1736
+    enum EVENT_1737
+        // 0x2E7
+    enum EVENT_1738
+    enum EVENT_1739
+    enum EVENT_173A
+    enum EVENT_173B
+    enum EVENT_173C
+    enum EVENT_173D
+    enum EVENT_173E
+    enum EVENT_173F
+        // 0x2E8
+    enum EVENT_1740
+    enum EVENT_1741
+    enum EVENT_1742
+    enum EVENT_1743
+    enum EVENT_1744
+    enum EVENT_1745
+    enum EVENT_1746
+    enum EVENT_1747
 
 
 

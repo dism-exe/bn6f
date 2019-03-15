@@ -1844,7 +1844,7 @@ ReqBBSSubSystemJumpTable:
 	thumb_local_start
 OpenReqBBSMenu813F474:
 	push {lr}
-	movflag EVENT_2E75
+	movflag EVENT_173A
 	bl TestEventFlagFromImmediate
 	beq loc_813F4B6
 	ldr r0, off_813F548 // =eReqBBSGui
@@ -1865,7 +1865,7 @@ OpenReqBBSMenu813F474:
 	// bitfield
 	mov r0, r2
 	bl SetEventFlag
-	movflag EVENT_2E75
+	movflag EVENT_173A
 	bl ClearEventFlagFromImmediate
 	ldr r0, off_813F548 // =eReqBBSGui
 	ldr r1, dword_813F544 // =0xf 
@@ -2724,7 +2724,7 @@ loc_813FB40:
 	mov r0, #8
 	bl chatbox_check_eFlags2009F38
 	beq loc_813FB98
-	movflag EVENT_2E75
+	movflag EVENT_173A
 	bl TestEventFlagFromImmediate
 	beq loc_813FB6E
 	ldr r0, off_813FBB4 // =reqBBS_requestInfo_textOffsets 
@@ -4159,7 +4159,7 @@ dword_81407D4: .word 0xD
 	thumb_func_start reqBBS_81407D8
 reqBBS_81407D8:
 	push {r4-r7,lr}
-	movflag EVENT_2E75
+	movflag EVENT_173A
 	bl TestEventFlagFromImmediate
 	beq loc_8140814
 	ldr r0, off_81409B4 // =eReqBBSGui
@@ -4319,7 +4319,7 @@ reqBBS_81408F0:
 	tst r0, r0
 	bne loc_814095E
 	// flag 5 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
-	movflag EVENT_2E75
+	movflag EVENT_173A
 	bl TestEventFlagFromImmediate
 	bne loc_8140962
 	bl reqBBS_81408C8
@@ -4333,10 +4333,10 @@ reqBBS_81408F0:
 	cmp r0, #0
 	bne loc_814095A
 	// flag 5 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
-	movflag EVENT_2E75
+	movflag EVENT_173A
 	bl SetEventFlagFromImmediate
 	// flag 3 @ 0x2001C88[0x17<<5 + 0x7] (=2001F6F)
-	movflag EVENT_2E73
+	movflag EVENT_173C
 	bl SetEventFlagFromImmediate
 	bl reqBBS_81408C8
 	bl reqBBS_81408A0
@@ -4440,7 +4440,7 @@ reqBBS_setFlag_e17b0f7_8140A00:
 	// entry 17, byte 0, flag 7
 	push {lr}
 	// flag 7 @ 0x2001C88[0x17<<5 + 0x0] (=2001F68)
-	movflag EVENT_2E07
+	movflag EVENT_1700
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end reqBBS_setFlag_e17b0f7_8140A00
@@ -4448,7 +4448,7 @@ reqBBS_setFlag_e17b0f7_8140A00:
 	thumb_func_start reqBBS_clearFlag_8140A0C
 reqBBS_clearFlag_8140A0C:
 	push {r4,r5,lr}
-	movflag EVENT_2E07
+	movflag EVENT_1700
 	bl ClearEventFlagFromImmediate
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_Unk2001c04_Ptr]

@@ -3859,7 +3859,7 @@ loc_8041B1A:
 	ldrb r2, [r4,#1]
 	lsr r6, r2, #7
 	push {r0,r2}
-	movflag EVENT_2E16
+	movflag EVENT_1709
 	bl TestEventFlagFromImmediate
 	pop {r0,r2}
 	bne loc_8041B2E
