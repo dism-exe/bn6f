@@ -1036,7 +1036,7 @@ loc_8090082:
 	mov r0, #0xb
 	mov r1, #0xe5
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_1707
+	movflag EVENT_PET_DISABLED
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_1739
 	bl ClearEventFlagFromImmediate
@@ -1078,7 +1078,7 @@ sub_80900C8:
 	mov r0, #0xb
 	mov r1, #0xe5
 	bl SetEventFlagFromImmediate
-	movflag EVENT_1707
+	movflag EVENT_PET_DISABLED
 	bl SetEventFlagFromImmediate
 	movflag EVENT_1739
 	bl SetEventFlagFromImmediate

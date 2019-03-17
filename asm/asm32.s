@@ -30527,7 +30527,7 @@ loc_811EDF2:
 	b loc_811EE82
 loc_811EE08:
 	mov r4, r0
-	movflag EVENT_1706
+	movflag EVENT_PET_COMM_SAVE_DISABLED
 	bl TestEventFlagFromImmediate
 	beq loc_811EE24
 	cmp r4, #6
@@ -30903,7 +30903,7 @@ loc_811F122:
 	ldr r1, dword_811F178 // =0x7bfe
 	strh r1, [r2]
 loc_811F13C:
-	movflag EVENT_1706
+	movflag EVENT_PET_COMM_SAVE_DISABLED
 	bl TestEventFlagFromImmediate
 	beq locret_811F150
 	ldr r2, [r4,#0x1c] // (off_811F174 - 0x811f158)

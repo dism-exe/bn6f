@@ -532,7 +532,7 @@ loc_8099D58:
 	lsl r1, r1, #0x10
 	lsl r2, r2, #0x10
 	bl sub_80301DC
-	movflag EVENT_1715
+	movflag EVENT_EVENT_CUR_DIR_LOCKED
 	bl ClearEventFlagFromImmediate
 loc_8099DA2:
 	mov r0, #0
@@ -5227,7 +5227,7 @@ sub_809D8F4:
 	beq locret_809D91A
 	mov r0, #0
 	strb r0, [r7,#1]
-	movflag EVENT_1717
+	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl ClearEventFlagFromImmediate
 	mov r0, #0x10
 	bl sub_809E004
@@ -5327,7 +5327,7 @@ sub_809D9A0:
 	str r1, [r5,#0x20]
 	b locret_809D9D6
 loc_809D9C4:
-	movflag EVENT_1717
+	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl ClearEventFlagFromImmediate
 	mov r0, #0
 	strb r0, [r5,#9]
@@ -5352,11 +5352,11 @@ sub_809D9E0:
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_809DA94
 	push {r0}
-	movflag EVENT_1714
+	movflag EVENT_PLAYER_CAN_MOVE
 	bl TestEventFlagFromImmediate
 	pop {r0}
 	beq loc_809DA82
-	movflag EVENT_1717
+	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate
 	bne loc_809DA94
 	bl s_2011C50_ptr_1C_isNull // () -> zf
@@ -5519,7 +5519,7 @@ loc_809DB4A:
 	thumb_local_start
 sub_809DB50:
 	push {lr}
-	movflag EVENT_1717
+	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate
 	bne locret_809DB5E
 	mov r0, #0
@@ -6032,7 +6032,7 @@ sub_809E08A:
 setEventFlag_809E098:
 	push {lr}
 	// flag 3 @ 0x2001c88[0x2e2] (=2001f6a)
-	movflag EVENT_1714
+	movflag EVENT_PLAYER_CAN_MOVE
 	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end setEventFlag_809E098
@@ -6042,7 +6042,7 @@ setEventFlag_809E098:
 clearEventFlag_809E0A4:
 	push {lr}
 	// clear flag 3 @ 0x2001c88[0x2e2] (=2001f6a)
-	movflag EVENT_1714
+	movflag EVENT_PLAYER_CAN_MOVE
 	bl ClearEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end clearEventFlag_809E0A4
@@ -6708,7 +6708,7 @@ sub_809E46E:
 	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
 	mov r2, #0x64 
 	strh r0, [r7,r2]
-	movflag EVENT_1717
+	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl SetEventFlagFromImmediate
 locret_809E494:
 	pop {r7,pc}

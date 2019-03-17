@@ -7006,7 +7006,7 @@ loc_8126FC4:
 	mov r0, #0x14
 	strb r0, [r5,#2]
 	mov r6, #0x35 
-	movflag EVENT_1706
+	movflag EVENT_PET_COMM_SAVE_DISABLED
 	bl TestEventFlagFromImmediate
 	beq loc_8126FE6
 	mov r6, #0x39 

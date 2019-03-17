@@ -35,12 +35,12 @@ void sub_80A49B0()
     *(v0 + 8) = 4;
     *(v0 + 6) = 0;
     *(v0 + 7) = 0;
-    sub_80A4A08();
+    event_80A4A08();
 }
 
 
 // 0x80a4a08
-void sub_80A4A08()
+void event_80A4A08()
 {
     int v0; // r5
     int v1; // r7

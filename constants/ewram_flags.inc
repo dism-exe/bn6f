@@ -62,16 +62,18 @@
     enum EVENT_5FE
     enum EVENT_5FF
 
-        enum_start 0x1700 // 0x2E0
+        enum_start 0x1700 // [0x2E0] = 0x2001f68
     enum EVENT_1700
-    enum EVENT_1701
-    enum EVENT_1702
+    // disables object animation/translation and collisions
+    enum EVENT_NPC_OBJECTS_DISABLED
+    // applies to portals and battle animation
+    enum EVENT_NON_NPC_ANIMATION_LOCKED
     enum EVENT_1703
     enum EVENT_1704
     enum EVENT_1705
-    enum EVENT_1706
-    enum EVENT_1707
-        // 0x2E1
+    enum EVENT_PET_COMM_SAVE_DISABLED
+    enum EVENT_PET_DISABLED
+        // [0x2E1] = 0x2001f69
     enum EVENT_1708
     enum EVENT_1709
     enum EVENT_170A
@@ -80,16 +82,18 @@
     enum EVENT_170D
     enum EVENT_170E
     enum EVENT_170F
-        // 0x2E2
+        // [0x2E2] = 0x2001f6a
     enum EVENT_1710
     enum EVENT_1711
     enum EVENT_1712
     enum EVENT_1713
-    enum EVENT_1714
-    enum EVENT_1715
-    enum EVENT_1716
-    enum EVENT_1717
-        // 0x2E3
+    enum EVENT_PLAYER_CAN_MOVE
+    // if 0, npc resets to default position after talking
+    // else they remain in the direction that was facing the player
+    enum EVENT_EVENT_CUR_DIR_LOCKED
+    enum EVENT_1716 // constantly written
+    enum EVENT_1717_PLAYER_ADVANCE_FORWARD
+        // [0x2E3] = 0x2001f6b
     // activates when pressing L, jacking in,
     // and talking to objects (but not NPCs?)
     // otherwise constantly cleared

@@ -1696,7 +1696,7 @@ sub_8034C36:
 	push {r4-r7,lr}
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_8034C6A
-	movflag EVENT_1717
+	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate
 	bne loc_8034C6A
 	movflag EVENT_173D
@@ -1721,7 +1721,7 @@ sub_8034C6E:
 	push {r4-r7,lr}
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_8034C98
-	movflag EVENT_1717
+	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate
 	bne loc_8034C98
 	bl sub_809E462

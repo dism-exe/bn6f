@@ -16,7 +16,7 @@ ho_80A4984:
 	pop {pc}
 off_80A499C: .word jt_80A49A0
 jt_80A49A0: .word sub_80A49B0+1
-	.word sub_80A4A08+1
+	.word event_80A4A08+1
 	.word sub_80A4A90+1
 off_80A49AC: .word byte_80A3A44
 	thumb_func_end ho_80A4984
@@ -56,12 +56,12 @@ loc_80A49E8:
 	mov r0, #0
 	strb r0, [r5,#6]
 	strb r0, [r5,#7]
-	bl sub_80A4A08
+	bl event_80A4A08
 	pop {pc}
 	thumb_func_end sub_80A49B0
 
 	thumb_local_start
-sub_80A4A08:
+event_80A4A08:
 	push {lr}
 	mov r0, #0
 	strb r0, [r5,#7]
@@ -127,7 +127,7 @@ loc_80A4A74:
 loc_80A4A8A:
 	bl sprite_update
 	pop {pc}
-	thumb_func_end sub_80A4A08
+	thumb_func_end event_80A4A08
 
 	thumb_local_start
 sub_80A4A90:
@@ -1618,7 +1618,7 @@ loc_80A5B82:
 	ldr r0, [r5,#0x24]
 	cmp r0, #0
 	beq loc_80A5C62
-	movflag EVENT_1707
+	movflag EVENT_PET_DISABLED
 	bl SetEventFlagFromImmediate
 	movflag EVENT_L_MESSAGE_ACTIVE
 	bl SetEventFlagFromImmediate
@@ -1635,7 +1635,7 @@ loc_80A5BB0:
 	str r0, [r5,#0x24]
 	mov r7, #0
 	strb r7, [r5,#9]
-	movflag EVENT_1707
+	movflag EVENT_PET_DISABLED
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_L_MESSAGE_ACTIVE
 	bl ClearEventFlagFromImmediate
@@ -1671,7 +1671,7 @@ loc_80A5C18:
 	bl SetEventFlagFromImmediate
 	b loc_80A5C62
 loc_80A5C22:
-	movflag EVENT_1707
+	movflag EVENT_PET_DISABLED
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_L_MESSAGE_ACTIVE
 	bl ClearEventFlagFromImmediate
@@ -5944,7 +5944,7 @@ loc_80A8608:
 	thumb_local_start
 sub_80A860C:
 	push {r4,lr}
-	movflag EVENT_1717
+	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate
 	bne locret_80A8640
 	bl sub_809E1AE
@@ -8063,7 +8063,7 @@ sub_80A96FC:
 	mov r0, #0xb
 	mov r1, #0xe8
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_1707
+	movflag EVENT_PET_DISABLED
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_1739
 	bl ClearEventFlagFromImmediate

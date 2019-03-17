@@ -2408,7 +2408,7 @@ npc_800461E:
 	mov r5, r9
 	mov r6, r12
 	push {r4-r6}
-	movflag EVENT_1701
+	movflag EVENT_NPC_OBJECTS_DISABLED
 	bl TestEventFlagFromImmediate
 	bne loc_800466C
 	sub sp, sp, #8
@@ -2745,7 +2745,7 @@ sub_80048D2:
 	mov r5, r9
 	mov r6, r12
 	push {r4-r6}
-	movflag EVENT_1702
+	movflag EVENT_NON_NPC_ANIMATION_LOCKED
 	bl TestEventFlagFromImmediate
 	bne loc_8004920
 	sub sp, sp, #8
@@ -3372,7 +3372,7 @@ sub_8004D48:
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_171B
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_1715
+	movflag EVENT_EVENT_CUR_DIR_LOCKED
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_172D
 	bl ClearEventFlagFromImmediate
@@ -3761,13 +3761,13 @@ loc_80051AA:
 	str r0, [r5,#oGameState_Unk_68]
 	movflag EVENT_1719
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_1701
+	movflag EVENT_NPC_OBJECTS_DISABLED
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_1702
+	movflag EVENT_NON_NPC_ANIMATION_LOCKED
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_1700
 	bl ClearEventFlagFromImmediate
-	movflag EVENT_1707
+	movflag EVENT_PET_DISABLED
 	bl ClearEventFlagFromImmediate
 	movflag EVENT_1739
 	bl ClearEventFlagFromImmediate
@@ -4600,7 +4600,7 @@ sub_8005A8C:
 	ldrb r0, [r5,#oGameState_SubsystemIndex]
 	cmp r0, #4
 	bne locret_8005AF2
-	movflag EVENT_1717
+	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate
 	bne locret_8005AF2
 	bl sub_809E462
@@ -4642,7 +4642,7 @@ sub_8005AF4:
 	ldrb r0, [r5,#oGameState_SubsystemIndex]
 	cmp r0, #4
 	bne locret_8005B68
-	movflag EVENT_1717
+	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate
 	bne locret_8005B68
 	movflag EVENT_173D
@@ -4665,7 +4665,7 @@ sub_8005AF4:
 	mov r0, #JOYPAD_START
 	bl JoypadKeyPressed
 	beq locret_8005B68
-	movflag EVENT_1707
+	movflag EVENT_PET_DISABLED
 	bl TestEventFlagFromImmediate
 	bne locret_8005B68
 	mov r0, #SOUND_SELECT_79
@@ -4694,7 +4694,7 @@ sub_8005B6E:
 	ldrb r0, [r5,#oGameState_SubsystemIndex]
 	cmp r0, #4
 	bne locret_8005BC6
-	movflag EVENT_1717
+	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate
 	bne locret_8005BC6
 	bl sub_809E462
