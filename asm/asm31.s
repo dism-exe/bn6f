@@ -48745,7 +48745,7 @@ locret_80CFE06:
 	thumb_func_end sub_80CFDF2
 
 	thumb_local_start
-sub_80CFE08:
+sub_80CFE08: // fire hit
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x18
 	mov r7, #0
