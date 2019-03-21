@@ -3000,8 +3000,8 @@ loc_8027D22:
 	mov pc, lr
 	.balign 4, 0x00
 off_8027D28: .word off_8027D2C
-off_8027D2C: .word dword_86EA94C
-off_8027D30: .word TextScriptEnemyNames86EB354
+off_8027D2C: .word TextScriptChipNames0
+off_8027D30: .word TextScriptChipNames1
 	thumb_func_end sub_8027D10
 
 // (int chipID) -> void*
@@ -12040,8 +12040,8 @@ sub_802C75C:
 	add sp, sp, #0x70
 	pop {r5,pc}
 off_802C7C0: .word off_802C7C4
-off_802C7C4: .word dword_86EA94C
-	.word TextScriptEnemyNames86EB354
+off_802C7C4: .word TextScriptChipNames0
+	.word TextScriptChipNames1
 off_802C7CC: .word unk_2035320
 dword_802C7D0: .word 0x600BA80
 off_802C7D4: .word dword_86B7AE0

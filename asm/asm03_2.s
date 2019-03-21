@@ -2632,8 +2632,8 @@ loc_80476C4:
 	pop {r0,r5,r7,pc}
 	.byte 0, 0
 off_80476E0: .word off_80476E4
-off_80476E4: .word dword_86EA94C
-	.word TextScriptEnemyNames86EB354
+off_80476E4: .word TextScriptChipNames0
+	.word TextScriptChipNames1
 off_80476EC: .word eDecompBuffer2013A00
 dword_80476F0: .word 0x6008400
 off_80476F4: .word byte_86EF71C

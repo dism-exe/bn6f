@@ -32813,8 +32813,8 @@ loc_8120160:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8120174: .word off_8120178
-off_8120178: .word dword_86EA94C
-	.word TextScriptEnemyNames86EB354
+off_8120178: .word TextScriptChipNames0
+	.word TextScriptChipNames1
 off_8120180: .word 0x200
 dword_8120184: .word 0x137
 dword_8120188: .word 0x139
@@ -32892,8 +32892,8 @@ loc_8120202:
 	add sp, sp, #0x14
 	pop {r4-r7,pc}
 off_8120214: .word off_8120218
-off_8120218: .word dword_86EA94C
-	.word TextScriptEnemyNames86EB354
+off_8120218: .word TextScriptChipNames0
+	.word TextScriptChipNames1
 off_8120220: .word eTextScript201BA20
 off_8120224: .word 0x200
 	thumb_func_end sub_8120194
@@ -32936,8 +32936,8 @@ loc_8120258:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_812026C: .word off_8120270
-off_8120270: .word dword_86EA94C
-	.word TextScriptEnemyNames86EB354
+off_8120270: .word TextScriptChipNames0
+	.word TextScriptChipNames1
 off_8120278: .word eTextScript201BA20
 dword_812027C: .word 0x200
 	thumb_func_end sub_8120228

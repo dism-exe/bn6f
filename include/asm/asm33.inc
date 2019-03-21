@@ -365,8 +365,8 @@
 // .global byte_86DDB24
 
 	.include "data/dat38_85.inc"
-// .global dword_86EA94C
-// .global TextScriptEnemyNames86EB354
+// .global TextScriptChipNames0
+// .global TextScriptChipNames1
 
 	.include "data/dat38_86.inc"
 // .global byte_872CF94

@@ -139,8 +139,8 @@
 	.global dword_86EA42C
 	.global byte_86EA925
 	.global dword_86EA92C
-	.global dword_86EA94C
-	.global TextScriptEnemyNames86EB354
+	.global TextScriptChipNames0
+	.global TextScriptChipNames1
 	.global byte_86EB8B8
 	.global dword_86EE0CC
 	.global TextScriptChipDesc86EF4D4

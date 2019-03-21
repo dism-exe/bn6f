@@ -3366,7 +3366,7 @@ int __fastcall sub_812626C(int a1, int a2, _DWORD *a3)
             v20 = a3;
             v21 = v8;
             sub_80070E6(v12);
-            v10 = &off_81263B8;
+            v10 = &TextScriptChipNamesPtrs;
             v11 = v12;
             a3 = v20;
             v8 = v21;
@@ -3444,7 +3444,7 @@ void **__fastcall sub_8126334(int a1, int a2, _DWORD *a3)
     v7 = 0;
     do
     {
-        result = &off_81263B8;
+        result = &TextScriptChipNamesPtrs;
         v9 = *v5;
         if ( *v5 )
         {

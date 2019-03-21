@@ -4565,13 +4565,13 @@ loc_8042014:
 	pop {pc}
 off_8042060: .word off_8042064
 off_8042064: .word byte_873D9FC
-	.word dword_86EA94C
-	.word TextScriptEnemyNames86EB354
+	.word TextScriptChipNames0
+	.word TextScriptChipNames1
 	.word byte_86EF71C
 	.word TextScriptFolderNames
 	.word byte_873EA50
 	.word byte_873EA50
-	.word dword_86EA94C
+	.word TextScriptChipNames0
 	.word TextScriptNaviNames0
 	.word reqBBS_requestNames_textualData
 off_804208C: .word byte_8042090

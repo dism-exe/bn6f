@@ -21,13 +21,15 @@ def get_tbl():
            'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '*',
            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
            'u', 'v', 'w', 'x', 'y', 'z', '[RV]', '[BX]', '[EX]', '[SP]', '[FZ]']
-    for i in range(len(tbl), 0xE5):
+    for i in range(len(tbl), 0xEA):
         tbl.append('\\x%X' % i)
     symbols = ['-', 'x', '=', ':', '%', '?', '+', '[]', '[bat]', '\xA1', '!', '&', ',', '\xA5',
                '.', '\xA7', ';', '\'', '"', '~', '/', '(', ')', '\xAF', '\xB0', '_', '[z]',
                '[L]', '[B]', '[R]', '[A]']
     for i in range(0x98, 0xB7):
         tbl[i] = symbols[i-0x98]
+    tbl[0xE6] = '$'
+    tbl[0xE9] = '\\n'
     return tbl
 
 def bn6f_str(byte_arr, tbl):
@@ -75,10 +77,11 @@ def get_cmd_macro(sects, cmd):
 
             if cmd_bytes == base:
                 name = '%x_' % cmd_bytes[0] + sect['name']
-
+    # convert to snake case
+    for c in name:
+        if c.isupper():
+            name = name.replace(c, '_%c' % c.lower())
     return name
-    pass
-
 
 def parse_text_script(config_ini_path, bin_path, address):
     #type (str, str, int) -> str
@@ -86,37 +89,53 @@ def parse_text_script(config_ini_path, bin_path, address):
     units = [] # text script discrete string/cmd units
     rel_pointers = []
     end_addr = 0
+    script_cur = 0
     with open(bin_path, 'rb') as bin_file:
         bin_file.seek(address)
         rel_pointers = read_relative_pointers(bin_file, address)
         last_script_pointer = max(rel_pointers)
         end_script = False
         while bin_file.tell() < address + last_script_pointer or not end_script:
+            # define script start
+            if bin_file.tell() - address in rel_pointers:
+                units.append(script_cur)
+                script_cur += 1
             byte = bin_file.read(1)
             # read string
             string = b''
-            while byte and ord(byte) < 0xE5:
+            while byte and ord(byte) < 0xE5 or ord(byte) == 0xE6 or ord(byte) == 0xE9:
                 # not a command, process string
                 string = string + byte
+                if ord(byte) == 0xE6:
+                    end_script = bin_file.tell() > address+last_script_pointer
+                    break # this string terminates
                 byte = bin_file.read(1)
             if string:
                 units.append(string)
+                continue
                 # print(units[-1])
-            if byte == b'': break
+            if byte == b'':
+                print('error: could not read byte')
+                break
             cmd = byte
-            end_script = bin_file.tell() > address+last_script_pointer and ord(cmd) == 0xE6
+            if not end_script:
+                end_script = bin_file.tell() > address+last_script_pointer and ord(cmd) == 0xE6
             # read command
             num_params = 0
             for i in range(4): # max number of bytes per command base
                 num_params = get_param_count(sects, cmd)
                 # print(cmd, num_params)
-                if num_params >= 0: break
+                if num_params >= 0:
+                    break
                 byte = bin_file.read(1)
                 cmd = cmd + byte
-            if num_params < 0: break
+            if num_params < 0:
+                print("error: could not find number of parameters for ", cmd)
+                break
             params = bin_file.read(num_params)
             units.append((cmd, params))
         end_addr = bin_file.tell()
+
     # generate script
     script = ['text_script_start unk_%X' % address]
     rel_pointer_ids = {}
@@ -139,17 +158,16 @@ def parse_text_script(config_ini_path, bin_path, address):
     start_unit = True
     script_count = 0
     for unit in units:
-        print(unit)
-        if start_unit:
-            script.append('text_script %d, unk_%d' %(script_count, script_count))
-            script_count += 1
-            start_unit = False
+        # print(unit)
         if type(unit) is bytes:
-            s = '\t// %s\n' % bn6f_str(unit, get_tbl())
-            s += '\t.byte '
-            for i in unit:
-                s += '0x%X, ' % i
-            s = s[:-2]
+            if len(unit) == 1 and unit[0] == 0xE6:
+                s = '\t' + get_cmd_macro(sects, unit)
+            else:
+                s = '\t// "%s"\n\t' % bn6f_str(unit, get_tbl())
+                s += '\t.byte '
+                for i in unit:
+                    s += '0x%X, ' % i
+                s = s[:-2]
             script.append(s)
         elif type(unit) is tuple:
             if unit[0] == b'\xe6':
@@ -160,15 +178,61 @@ def parse_text_script(config_ini_path, bin_path, address):
                 s += '0x%X, ' % param
             if unit[1]: s = s[:-2]
             script.append(s)
+        elif type(unit) is int:
+            script.append('text_script %d, scr_%d' %(unit, unit))
 
     return script, end_addr
 
-def read_script():
-    # script, end_addr = parse_text_script('mmbn6.ini', '../../bn6f.gba', 0x6cf4ac)
-    script, end_addr = parse_text_script('mmbn6.ini', '../../bn6f.gba', 0x6EB354)
-    # script, end_addr = parse_text_script('mmbn6.ini', '../../data/scripts/compScripts_credits_86C4B58.lz77.bin', 2)
+def read_script(ea, path=None):
+    if not path: path = '../../bn6f.ign'
+    script, end_addr = parse_text_script('mmbn6.ini', path, ea)
     return script, end_addr
 
+def gen_macros(config_ini_path):
+    sects = read_custom_ini(config_ini_path)
+    macros = ''
+    for sect in sects:
+        if sect['section'] in ['Command', 'Extension']:
+            base = []
+            mask = []
+            for b in sect['base'].split(' '): base.append(int(b, 16))
+            for b in sect['mask'].split(' '): mask.append(int(b, 16))
+            name = '%x_' % base[0] + sect['name']
+            # convert to snake case
+            for c in name:
+                if c.isupper():
+                    name = name.replace(c, '_%c' % c.lower())
+            # figure out how many parameters
+            params = ''
+            i = 0
+            for b in mask:
+                if b != 0xFF:
+                    params += 'p%d:req, ' % i
+                    i += 1
+            if params.endswith(', '): params = params[:-2]
+            macros += '.macro %s %s\n' % (name, params)
+            # define base bytes
+            bytes = '.byte '
+            for b in base:
+                bytes += '0x%X, ' % b
+            bytes += params.replace('p', '\p').replace(':req', '')
+            if bytes.endswith(', '): bytes = bytes[:-2]
+            macros += '\t' + bytes + '\n'
+            macros += '.endm\n'
+    return macros
 
 if __name__ == '__main__':
-    read_script()
+    # print(gen_macros('mmbn6.ini'))
+    # exit(0)
+    import sys
+    if len(sys.argv) < 2:
+        print('usage: text_script_dumper <address> [file]')
+    if len(sys.argv) > 2:
+        path = sys.argv[2]
+    else:
+        path = None
+    script, end_addr = read_script(int(sys.argv[1], 16), path)
+
+    for i in script:
+        print('    ' + i.replace('\t', '    '))
+    print(hex(end_addr))

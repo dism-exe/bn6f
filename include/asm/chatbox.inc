@@ -240,8 +240,8 @@
 // .global TextScriptFolderNames
 
 	.include "data/dat38_85.inc"
-// .global dword_86EA94C
-// .global TextScriptEnemyNames86EB354
+// .global TextScriptChipNames0
+// .global TextScriptChipNames1
 // .global byte_86EF71C
 // .global byte_86F2960
 // .global byte_86F2980

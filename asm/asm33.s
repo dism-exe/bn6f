@@ -5538,7 +5538,7 @@ sub_812626C:
 	mov r4, #0
 loc_812629C:
 	ldr r6, [sp]
-	ldr r0, off_81263B4 // =off_81263B8
+	ldr r0, TextScriptChipNamesPtrs_p // =TextScriptChipNamesPtrs
 	ldrh r1, [r5]
 	tst r1, r1
 	bne loc_81262B2
@@ -5640,7 +5640,7 @@ sub_8126334:
 	mov r4, #0
 loc_8126356:
 	ldr r6, [sp]
-	ldr r0, off_81263B4 // =off_81263B8
+	ldr r0, TextScriptChipNamesPtrs_p // =TextScriptChipNamesPtrs
 	ldrh r1, [r5]
 	tst r1, r1
 	bne loc_812636C
@@ -5689,9 +5689,9 @@ loc_81263A0:
 	pop {r7}
 	mov r8, r7
 	pop {r4-r7,pc}
-off_81263B4: .word off_81263B8
-off_81263B8: .word dword_86EA94C
-	.word TextScriptEnemyNames86EB354
+TextScriptChipNamesPtrs_p: .word TextScriptChipNamesPtrs
+TextScriptChipNamesPtrs: .word TextScriptChipNames0
+	.word TextScriptChipNames1
 off_81263C0: .word off_81263C4
 off_81263C4: .word unk_201CC20
 	.word unk_201CC20
