@@ -1032,6 +1032,7 @@ dword_8000C58: .word 0x99999999
 	thumb_func_end sub_8000C00
 
 	thumb_func_start sub_8000C5C
+// get num bcd digits?
 sub_8000C5C:
 	mov r1, #1
 	tst r0, r0

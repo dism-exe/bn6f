@@ -19,7 +19,7 @@
 	.space \size
 	.endif
 	.endm
-	
+
 	.macro offset_struct_entry label:req, size=0
 \label:
 	.struct \label + \size

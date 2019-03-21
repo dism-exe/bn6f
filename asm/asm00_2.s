@@ -24514,6 +24514,7 @@ loc_801C286:
 	thumb_func_end sub_801C202
 
 	thumb_local_start
+// print HP?
 sub_801C296:
 	push {r3,r6,lr}
 	ldrh r0, [r4,#2]
@@ -24549,7 +24550,7 @@ loc_801C2A8:
 loc_801C2D6:
 	cmp r0, #4
 	bge loc_801C2E0
-	strb r1, [r7,r0]
+	strb r1, [r7,r0] // store blank character in HP?
 	add r0, #1
 	b loc_801C2D6
 loc_801C2E0:
@@ -29027,7 +29028,7 @@ sub_801E658:
 sub_801E660:
 	push {r4,r6,lr}
 	mov r4, r0
-	ldr r2, off_801E6FC // =word_801E700 
+	ldr r2, off_801E6FC // =byte_801E700 
 	ldrb r6, [r2,r4]
 	ldr r0, [r5,#0x48]
 	ldrb r0, [r0,#0x16]
@@ -29072,7 +29073,7 @@ sub_801E69C:
 sub_801E6A8:
 	push {r4,r6,lr}
 	ldr r0, [r5,#0x48]
-	ldrb r0, [r0,#0x16]
+	ldrb r0, [r0,#oBattleObject_Alliance]
 	bl sub_8015B54
 loc_801E6B2:
 	cmp r1, #0
@@ -29081,9 +29082,9 @@ loc_801E6B2:
 	ldrb r0, [r2,r0]
 	mov r1, r3
 	b locret_801E6EE
-loc_801E6BE:
+loc_801E6BE: .align 1, 0
 	mov r4, r1
-	ldr r2, off_801E6FC // =word_801E700 
+	ldr r2, off_801E6FC // =byte_801E700 
 	ldrb r6, [r2,r4]
 	cmp r4, #0xb
 	beq loc_801E6CC
@@ -29113,10 +29114,8 @@ locret_801E6EE:
 	pop {r4,r6,pc}
 off_801E6F0: .word byte_801E6F4
 byte_801E6F4: .byte 0x0, 0x2, 0x3, 0x1, 0x5, 0x4, 0x0, 0x0
-off_801E6FC: .word word_801E700
-word_801E700: .hword 0x500, 0x706, 0x908, 0x605, 0x807
-	.hword 0x1409, 0xF14, 0x1110, 0x1312, 0x100F
-	.hword 0x1211, 0x1613, 0x16, 0x0
+off_801E6FC: .word byte_801E700
+byte_801E700: .byte 0x0, 0x5, 0x6, 0x7, 0x8, 0x9, 0x5, 0x6, 0x7, 0x8, 0x9, 0x14, 0x14, 0xF, 0x10, 0x11, 0x12, 0x13, 0xf, 0x10, 0x11, 0x12, 0x13, 0x16, 0x16, 0x0, 0x0, 0x0
 	thumb_func_end sub_801E6A8
 
 	thumb_func_start sub_801E71C
