@@ -632,7 +632,7 @@
 	.global sub_8109630
 	.global sub_8109660
 	.global sub_81096BA
-	.global sub_81096FA
+	.global GetAllianceDependentPanelParamArgs
 	.global sub_8109708
 	.global sub_810971A
 	.global sub_81097B4
@@ -843,7 +843,7 @@
 // .global sub_800F46C
 // .global sub_800F486
 // .global sub_800F49E
-// .global sub_800F614
+// .global setFieldBattleObject_800F614
 // .global sub_800F656
 // .global sub_800F672
 // .global sub_800F884
@@ -949,7 +949,7 @@
 // .global sub_8015C48
 // .global sub_8015C94
 // .global sub_8015D80
-// .global sub_8015E46
+// .global GetRandomRelativePanelFiltered
 // .global sub_8016004
 // .global sub_8016218
 // .global sub_801632C
@@ -990,7 +990,7 @@
 // .global byte_80199B6
 // .global byte_80199F5
 // .global byte_80199F5
-// .global off_8019B78
+// .global PanelOffsetListsPointerTable
 // .global off_8019BE0
 // .global byte_8019C34
 // .global sub_8019F86

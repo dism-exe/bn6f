@@ -76,7 +76,7 @@
 // .global object_getFlipDirection // (int a1, int a2) -> int
 
 	.include "asm/asm00_2.inc"
-// .global off_8019B78
+// .global PanelOffsetListsPointerTable
 // .global byte_8019C34
 // .global sub_801A29A
 
@@ -179,7 +179,7 @@
 // .equ dword_200F340, 0x200F340
 // .equ dword_200F350, 0x200F350
 // .equ unk_2034F60, 0x2034F60
-// .equ byte_2039AE0, 0x2039AE0
+// .equ ePanelData, 0x2039AE0
 // .equ off_3000E70, 0x3000E70
 // .equ byte_3001150, 0x3001150
 // .equ byte_3001550, 0x3001550

@@ -3054,7 +3054,7 @@ unk_2039AA0:: // 0x2039aa0
 	.space 60
 unk_2039ADC:: // 0x2039adc
 	.space 4
-byte_2039AE0:: // 0x2039ae0
+ePanelData:: // 0x2039ae0
 	.space 1
 byte_2039AE1:: // 0x2039ae1
 	.space 5

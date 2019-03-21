@@ -119,7 +119,7 @@ sub_8026510:
 loc_8026520:
 	push {r0,r1}
 	ldr r3, off_8026540 // =byte_8026544
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl object_checkPanelParameters
 	cmp r0, #0
 	pop {r0,r1}
@@ -13705,7 +13705,7 @@ sub_802D3CA:
 	beq loc_802D3DA
 	ldr r3, off_802D630 // =byte_802D420
 loc_802D3DA:
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl sub_802D430
 	strb r0, [r7,#oAIAttackVars_Unk_16]
 	strb r1, [r7,#oAIAttackVars_Unk_17]

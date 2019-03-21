@@ -17,7 +17,7 @@
 	.global sub_800F46C
 	.global sub_800F486
 	.global sub_800F49E
-	.global sub_800F614
+	.global setFieldBattleObject_800F614
 	.global sub_800F656
 	.global sub_800F672
 	.global sub_800F884
@@ -189,7 +189,7 @@
 	.global sub_8015C94
 	.global sub_8015CC0
 	.global sub_8015D80
-	.global sub_8015E46
+	.global GetRandomRelativePanelFiltered
 	.global sub_8016004
 	.global sub_8016218
 	.global sub_801632C
@@ -230,7 +230,7 @@
 	.global byte_80198F4
 	.global byte_80199B6
 	.global byte_80199F5
-	.global off_8019B78
+	.global PanelOffsetListsPointerTable
 	.global off_8019BE0
 	.global byte_8019C34
 	.global sub_8019F86
@@ -656,7 +656,7 @@
 // .global off_8109450
 // .global off_81094D0
 // .global off_8109550
-// .global sub_81096FA
+// .global GetAllianceDependentPanelParamArgs
 
 	.include "asm/asm37_0.inc"
 // .global sub_813BF1C

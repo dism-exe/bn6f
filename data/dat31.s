@@ -547,7 +547,7 @@ loc_810C862:
 	add r0, r0, r1
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_810C8AC // =byte_810C8B0 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	push {r0,r1}
 	bl object_checkPanelParameters
 	cmp r0, #0
@@ -558,7 +558,7 @@ loc_810C862:
 	sub r0, r1, r0
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r3, off_810C8AC // =byte_810C8B0 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	push {r0,r1}
 	bl object_checkPanelParameters
 	cmp r0, #0
@@ -1268,7 +1268,7 @@ sub_810CEAE:
 	beq loc_810CF16
 loc_810CEF2:
 	ldr r3, off_810CFA8 // =byte_810CFAC 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	push {r0,r1}
 	bl object_checkPanelParameters
 	cmp r0, #0
@@ -1278,7 +1278,7 @@ loc_810CEF2:
 	b loc_810CF16
 loc_810CF08:
 	ldr r3, off_810CFBC // =byte_810CFC0 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl sub_8015C94
 	b loc_810CF16
 loc_810CF14:
@@ -2059,7 +2059,7 @@ loc_810D6AE:
 	ldrb r1, [r5,#oBattleObject_PanelY]
 	ldr r4, off_810D6C4 // =byte_810D6C8 
 	ldr r3, off_810D6D0 // =byte_810D6D4 
-	bl sub_81096FA
+	bl GetAllianceDependentPanelParamArgs
 	bl sub_8015D80
 	tst r0, r0
 	beq loc_810D6A8

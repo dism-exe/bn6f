@@ -615,7 +615,7 @@
 // .global sub_80EA11C
 // .global sub_80EB04C
 // .global sub_80EB234
-// .global sub_81096FA
+// .global GetAllianceDependentPanelParamArgs
 // .global sub_810971A
 
 	.include "asm/asm32.inc"

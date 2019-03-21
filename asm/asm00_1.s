@@ -5417,13 +5417,13 @@ off_8005FB4: .word sub_8006366+1
 
 off_8006040:
 	fade_params_struct [
-		unk_00_ptr=unk_3001B60,
-		unk_04_ptr=byte_3001750,
-		unused_08=0xFF,
-		byte_0c=0x10,
-		byte_0d=0x10,
-		byte_0e=0x8,
-		byte_0f=0x0
+		unk_00_ptr: unk_3001B60,
+		unk_04_ptr: byte_3001750,
+		unused_08: 0xFF,
+		byte_0c: 0x10,
+		byte_0d: 0x10,
+		byte_0e: 0x8,
+		byte_0f: 0x0
 	]
 
 	.word 0x3001B60
