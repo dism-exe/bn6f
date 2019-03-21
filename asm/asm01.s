@@ -3,10 +3,10 @@
 	thumb_func_start sub_801FE00
 sub_801FE00:
 	push {lr}
-	ldr r3, off_80200B4 // =eStruct203F7D8 
+	ldr r3, off_80200B4 // =eStruct203F7D8
 	mov r0, #0
 	str r0, [r3]
-	ldr r3, off_80200B8 // =eStruct2036780 
+	ldr r3, off_80200B8 // =eStruct2036780
 	mov r0, #0
 	strh r0, [r3,#0x2] // (eFlags2036782 - 0x2036780)
 	mov r0, #0xff
@@ -23,7 +23,7 @@ sub_801FE00:
 	thumb_func_start sub_801FE24
 sub_801FE24:
 	push {r4,lr}
-	bl sub_802D246 // () -> int
+	bl GetBattleEffects // () -> int
 	mov r1, #8
 	tst r0, r1
 	bne loc_801FE4A
@@ -44,7 +44,7 @@ loc_801FE4A:
 	mov r3, #0
 	bl sub_803DCE8
 loc_801FE56:
-	ldr r3, off_80200CC // =eStruct203F7D8 
+	ldr r3, off_80200CC // =eStruct203F7D8
 	mov r0, #1
 	strb r0, [r3]
 locret_801FE5C:
@@ -53,14 +53,14 @@ locret_801FE5C:
 
 	thumb_func_start sub_801FE5E
 sub_801FE5E:
-	ldr r3, off_80200D0 // =eStruct203F7D8 
+	ldr r3, off_80200D0 // =eStruct203F7D8
 	ldrb r0, [r3]
 	mov pc, lr
 	thumb_func_end sub_801FE5E
 
 	thumb_func_start sub_801FE64
 sub_801FE64:
-	ldr r1, off_80200D4 // =eStruct203F7D8 
+	ldr r1, off_80200D4 // =eStruct203F7D8
 	mov r0, #0
 	strb r0, [r1]
 	mov pc, lr
@@ -69,7 +69,7 @@ sub_801FE64:
 	thumb_func_start sub_801FE6C
 sub_801FE6C:
 	push {r4,r6,lr}
-	ldr r4, off_80200D8 // =eStruct203F7D8 
+	ldr r4, off_80200D8 // =eStruct203F7D8
 	ldrb r6, [r4,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	mov r0, #2
 	strb r0, [r4,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
@@ -84,7 +84,7 @@ sub_801FE6C:
 	cmp r0, #2
 	bne locret_801FEE6
 	push {r5}
-	bl sub_802D246 // () -> int
+	bl GetBattleEffects // () -> int
 	mov r1, #8
 	tst r0, r1
 	pop {r5}
@@ -103,7 +103,7 @@ loc_801FEB0:
 	b locret_801FEE6
 loc_801FEB6:
 	push {r5}
-	bl sub_802D246 // () -> int
+	bl GetBattleEffects // () -> int
 	mov r1, #8
 	tst r0, r1
 	pop {r5}
@@ -116,11 +116,11 @@ loc_801FECC:
 	ldrb r0, [r4,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	b locret_801FEE6
 loc_801FED2:
-	ldr r0, off_80200DC // =eStruct2036780 
+	ldr r0, off_80200DC // =eStruct2036780
 	ldr r1, off_80200E0 // =unk_20399F0 
 	mov r2, #0x10
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
-	ldr r0, off_80200E4 // =eStruct2036780 
+	ldr r0, off_80200E4 // =eStruct2036780
 	ldr r1, off_80200E8 // =unk_2039A00 
 	mov r2, #0x10
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
@@ -130,7 +130,7 @@ locret_801FEE6:
 
 	thumb_func_start eStruct203F7D8_getUnk01
 eStruct203F7D8_getUnk01:
-	ldr r0, off_80200EC // =eStruct203F7D8 
+	ldr r0, off_80200EC // =eStruct203F7D8
 	ldrb r0, [r0,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	mov pc, lr
 	thumb_func_end eStruct203F7D8_getUnk01
@@ -160,7 +160,7 @@ sub_801FF18:
 	sub sp, sp, #4
 	cmp r0, #2
 	bne loc_801FFD2
-	ldr r4, off_80200F0 // =eStruct203F7D8 
+	ldr r4, off_80200F0 // =eStruct203F7D8
 	ldr r5, off_80200F4 // =unk_20399F0 
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_BattleStatePtr]
@@ -211,7 +211,7 @@ loc_801FF66:
 	ldr r1, [r5,#0x8] // (dword_2039A08 - 0x2039a00)
 	str r1, [r7,r0]
 loc_801FF84:
-	ldr r5, off_8020108 // =eStruct2036780 
+	ldr r5, off_8020108 // =eStruct2036780
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r1, [r0]
@@ -267,7 +267,7 @@ sub_801FFD6:
 	nop 
 	b loc_802004E
 loc_801FFEA:
-	ldr r4, off_8020110 // =eStruct203F7D8 
+	ldr r4, off_8020110 // =eStruct203F7D8
 	ldr r5, off_8020114 // =unk_20399F0 
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_BattleStatePtr]
@@ -325,7 +325,7 @@ loc_802004E:
 	nop 
 	b loc_80200A0
 loc_802005A:
-	ldr r5, off_8020128 // =eStruct2036780 
+	ldr r5, off_8020128 // =eStruct2036780
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r1, [r0]
@@ -367,7 +367,7 @@ loc_80200A0:
 
 	thumb_func_start sub_80200A4
 sub_80200A4:
-	ldr r3, off_8020130 // =eStruct203F7D8 
+	ldr r3, off_8020130 // =eStruct203F7D8
 	strb r0, [r3,#0x3] // (eStruct203F7D8+3 - 0x203f7d8)
 	ldrb r0, [r3,#0x2] // (eStruct203F7D8+2 - 0x203f7d8)
 	mov r1, #1
@@ -413,7 +413,7 @@ off_8020130: .word eStruct203F7D8
 eStruct2038160_clearStruct:
 	push {lr}
 	// memBlock
-	ldr r0, off_8020164 // =eStruct2038160 
+	ldr r0, off_8020164 // =eStruct2038160
 	// size
 	mov r1, #4
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
@@ -428,7 +428,7 @@ sub_8020140:
 	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0xc
 	bne locret_802015C
-	ldr r7, off_8020168 // =eStruct2038160 
+	ldr r7, off_8020168 // =eStruct2038160
 	bl sub_813D66C
 	bl sub_803C620
 	strb r0, [r7,#0x1] // (eStruct2038160_BattleTerminate01 - 0x2038160)
@@ -438,7 +438,7 @@ locret_802015C:
 
 	thumb_func_start eStruct2038160_getBattleTerminate01
 eStruct2038160_getBattleTerminate01:
-	ldr r0, off_802016C // =eStruct2038160 
+	ldr r0, off_802016C // =eStruct2038160
 	ldrb r0, [r0,#0x1] // (eStruct2038160_BattleTerminate01 - 0x2038160)
 	// <endpool>
 	mov pc, lr

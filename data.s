@@ -2,6 +2,8 @@
 	.include "include/macros/enum.inc"
 	.include "include/bytecode/text_script.inc"
 
+	.include "charmap.inc"
+
 // TODO: put at the end of asm38 instead
 	.global IWRAMRoutinesEnd
 IWRAMRoutinesEnd:

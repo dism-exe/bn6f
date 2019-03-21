@@ -164,651 +164,653 @@
 
 
     /* bytecode macros */
-    .macro e5_nop
+    .macro ts_nop
         .byte 0xE5
     .endm
-    .macro e6_end
+    .macro ts_end
         .byte 0xE6
     .endm
-    .macro e7_key_wait p0:req
+    .macro ts_key_wait p0:req
         .byte 0xE7, \p0
     .endm
-    .macro e8_msg_open
+    .macro ts_msg_open
         .byte 0xE8, 0x0
     .endm
-    .macro e8_msg_close
+    .macro ts_msg_close
         .byte 0xE8, 0x1
     .endm
-    .macro e8_msg_open_quick
+    .macro ts_msg_open_quick
         .byte 0xE8, 0x2
     .endm
-    .macro e8_msg_close_quick
+    .macro ts_msg_close_quick
         .byte 0xE8, 0x3
     .endm
-    .macro e8_msg_open_ext p0:req, p1:req
+    .macro ts_msg_open_ext p0:req, p1:req
         .byte 0xE8, 0x4, \p0, \p1
     .endm
-    .macro e8_msg_close_ext p0:req, p1:req
+    .macro ts_msg_close_ext p0:req, p1:req
         .byte 0xE8, 0x5, \p0, \p1
     .endm
-    .macro e8_msg_open_quick_ext p0:req, p1:req
+    .macro ts_msg_open_quick_ext p0:req, p1:req
         .byte 0xE8, 0x6, \p0, \p1
     .endm
-    .macro e8_msg_close_quick_ext p0:req, p1:req
+    .macro ts_msg_close_quick_ext p0:req, p1:req
         .byte 0xE8, 0x7, \p0, \p1
     .endm
-    .macro e8_msg_open_menu
+    .macro ts_msg_open_menu
         .byte 0xE8, 0x8
     .endm
-    .macro e8_msg_close_menu
+    .macro ts_msg_close_menu
         .byte 0xE8, 0x9
     .endm
-    .macro e8_msg_open_menu_quick
+    .macro ts_msg_open_menu_quick
         .byte 0xE8, 0xA
     .endm
-    .macro e8_msg_close_menu_quick
+    .macro ts_msg_close_menu_quick
         .byte 0xE8, 0xB
     .endm
-    .macro e8_msg_open_crossover
+    .macro ts_msg_open_crossover
         .byte 0xE8, 0xC
     .endm
-    .macro e8_msg_close_crossover
+    .macro ts_msg_close_crossover
         .byte 0xE8, 0xD
     .endm
-    .macro e8_msg_open_crossover_quick
+    .macro ts_msg_open_crossover_quick
         .byte 0xE8, 0xE
     .endm
-    .macro e8_msg_close_crossover_quick
+    .macro ts_msg_close_crossover_quick
         .byte 0xE8, 0xF
     .endm
-    .macro e8_msg_open_email
+    .macro ts_msg_open_email
         .byte 0xE8, 0x10
     .endm
-    .macro e8_msg_close_email
+    .macro ts_msg_close_email
         .byte 0xE8, 0x11
     .endm
-    .macro e9_newline
+    .macro ts_newline
         .byte 0xE9
     .endm
-    .macro ea_flag_set p0:req, p1:req
+    .macro ts_flag_set p0:req, p1:req
         .byte 0xEA, 0x0, \p0, \p1
     .endm
-    .macro ea_flag_clear p0:req, p1:req
+    .macro ts_flag_clear p0:req, p1:req
         .byte 0xEA, 0x1, \p0, \p1
     .endm
-    .macro ea_flag_toggle p0:req, p1:req
+    .macro ts_flag_toggle p0:req, p1:req
         .byte 0xEA, 0x2, \p0, \p1
     .endm
-    .macro ea_flag_multi_set p0:req, p1:req, p2:req
+    .macro ts_flag_multi_set p0:req, p1:req, p2:req
         .byte 0xEA, 0x3, \p0, \p1, \p2
     .endm
-    .macro ea_flag_multi_clear p0:req, p1:req, p2:req
+    .macro ts_flag_multi_clear p0:req, p1:req, p2:req
         .byte 0xEA, 0x4, \p0, \p1, \p2
     .endm
-    .macro ea_flag_set_buffered p0:req
+    .macro ts_flag_set_buffered p0:req
         .byte 0xEA, 0x6, \p0
     .endm
-    .macro ea_flag_add_mail p0:req, p1:req
+    .macro ts_flag_add_mail p0:req, p1:req
         .byte 0xEA, 0x7, \p0, \p1
     .endm
-    .macro ea_flag_add_b_b_s_message p0:req, p1:req
+    .macro ts_flag_add_b_b_s_message p0:req, p1:req
         .byte 0xEA, 0x9, \p0, \p1
     .endm
-    .macro ea_flag_add_request p0:req, p1:req
+    .macro ts_flag_add_request p0:req, p1:req
         .byte 0xEA, 0xA, \p0, \p1
     .endm
-    .macro eb_option p0:req, p1:req, p2:req
+    .macro ts_option p0:req, p1:req, p2:req
         .byte 0xEB, \p0, \p1, \p2
     .endm
-    .macro ec_space p0:req
+    .macro ts_space p0:req
         .byte 0xEC, 0x0, \p0
     .endm
-    .macro ec_space_px p0:req
+    .macro ts_space_px p0:req
         .byte 0xEC, 0x1, \p0
     .endm
-    .macro ed_select p0:req, p1:req
+    .macro ts_select p0:req, p1:req
         .byte 0xED, \p0, \p1
     .endm
-    .macro ee_wait p0:req, p1:req
+    .macro ts_wait p0:req, p1:req
         .byte 0xEE, 0x0, \p0, \p1
     .endm
-    .macro ee_wait_skip p0:req, p1:req
+    .macro ts_wait_skip p0:req, p1:req
         .byte 0xEE, 0x1, \p0, \p1
     .endm
-    .macro ee_wait_flag p0:req, p1:req
+    .macro ts_wait_flag p0:req, p1:req
         .byte 0xEE, 0x2, \p0, \p1
     .endm
-    .macro ee_wait_o_w_var p0:req, p1:req
+    .macro ts_wait_o_w_var p0:req, p1:req
         .byte 0xEE, 0x3, \p0, \p1
     .endm
-    .macro ee_wait_flag_clear p0:req, p1:req
+    .macro ts_wait_flag_clear p0:req, p1:req
         .byte 0xEE, 0x4, \p0, \p1
     .endm
-    .macro ee_wait_hold p0:req, p1:req
+    .macro ts_wait_hold p0:req, p1:req
         .byte 0xEE, 0xFF, \p0, \p1
     .endm
-    .macro ef_check_flag p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_flag p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x0, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_chapter p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_chapter p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x1, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_sub_area p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_sub_area p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x2, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_global p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_global p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x3, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_area p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_area p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x4, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_game_version p0:req, p1:req
+    .macro ts_check_game_version p0:req, p1:req
         .byte 0xEF, 0x5, \p0, \p1
     .endm
-    .macro ef_check_chip_gate p0:req, p1:req
+    .macro ts_check_chip_gate p0:req, p1:req
         .byte 0xEF, 0x6, \p0, \p1
     .endm
-    .macro ef_check_item07 p0:req, p1:req, p2:req, p3:req, p4:req
+    .macro ts_check_item07 p0:req, p1:req, p2:req, p3:req, p4:req
         .byte 0xEF, 0x7, \p0, \p1, \p2, \p3, \p4
     .endm
-    .macro ef_check_chip_code p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
+    .macro ts_check_chip_code p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
         .byte 0xEF, 0x8, \p0, \p1, \p2, \p3, \p4, \p5, \p6
     .endm
-    .macro ef_check_pack_chip_code p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
+    .macro ts_check_pack_chip_code p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
         .byte 0xEF, 0x9, \p0, \p1, \p2, \p3, \p4, \p5, \p6
     .endm
-    .macro ef_check_give_item p0:req, p1:req, p2:req, p3:req, p4:req
+    .macro ts_check_give_item p0:req, p1:req, p2:req, p3:req, p4:req
         .byte 0xEF, 0xA, \p0, \p1, \p2, \p3, \p4
     .endm
-    .macro ef_check_take_item p0:req, p1:req, p2:req, p3:req, p4:req
+    .macro ts_check_take_item p0:req, p1:req, p2:req, p3:req, p4:req
         .byte 0xEF, 0xB, \p0, \p1, \p2, \p3, \p4
     .endm
-    .macro ef_set_item p0:req, p1:req
+    .macro ts_set_item p0:req, p1:req
         .byte 0xEF, 0xC, \p0, \p1
     .endm
-    .macro ef_check_item0_d p0:req, p1:req, p2:req, p3:req, p4:req
+    .macro ts_check_item0_d p0:req, p1:req, p2:req, p3:req, p4:req
         .byte 0xEF, 0xD, \p0, \p1, \p2, \p3, \p4
     .endm
-    .macro ef_check_give_zenny p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
+    .macro ts_check_give_zenny p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
         .byte 0xEF, 0xE, \p0, \p1, \p2, \p3, \p4, \p5, \p6
     .endm
-    .macro ef_check_take_zenny p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
+    .macro ts_check_take_zenny p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
         .byte 0xEF, 0xF, \p0, \p1, \p2, \p3, \p4, \p5, \p6
     .endm
-    .macro ef_set_zenny p0:req, p1:req, p2:req, p3:req
+    .macro ts_set_zenny p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x10, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_zenny p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
+    .macro ts_check_zenny p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
         .byte 0xEF, 0x11, \p0, \p1, \p2, \p3, \p4, \p5, \p6
     .endm
-    .macro ef_check_give_bug_frags p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
+    .macro ts_check_give_bug_frags p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
         .byte 0xEF, 0x12, \p0, \p1, \p2, \p3, \p4, \p5, \p6
     .endm
-    .macro ef_check_take_bug_frags p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
+    .macro ts_check_take_bug_frags p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
         .byte 0xEF, 0x13, \p0, \p1, \p2, \p3, \p4, \p5, \p6
     .endm
-    .macro ef_set_bug_frags p0:req, p1:req, p2:req, p3:req
+    .macro ts_set_bug_frags p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x14, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_bug_frags p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
+    .macro ts_check_bug_frags p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req
         .byte 0xEF, 0x15, \p0, \p1, \p2, \p3, \p4, \p5, \p6
     .endm
-    .macro ef_check_have_one_item p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_have_one_item p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x1A, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_item_give_navi_cust_program p0:req, p1:req, p2:req
+    .macro ts_item_give_navi_cust_program p0:req, p1:req, p2:req
         .byte 0xEF, 0x1B, \p0, \p1, \p2
     .endm
-    .macro ef_item_take_navi_cust_program p0:req, p1:req, p2:req
+    .macro ts_item_take_navi_cust_program p0:req, p1:req, p2:req
         .byte 0xEF, 0x1C, \p0, \p1, \p2
     .endm
-    .macro ef_item_set_navi_cust_program p0:req, p1:req, p2:req, p3:req
+    .macro ts_item_set_navi_cust_program p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x1D, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_navi_cust_program p0:req, p1:req, p2:req, p3:req, p4:req, p5:req
+    .macro ts_check_navi_cust_program p0:req, p1:req, p2:req, p3:req, p4:req, p5:req
         .byte 0xEF, 0x1E, \p0, \p1, \p2, \p3, \p4, \p5
     .endm
-    .macro ef_check_have_two_item p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_have_two_item p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x20, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_battle_result p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_battle_result p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x21, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_shop_stock p0:req, p1:req, p2:req
+    .macro ts_check_shop_stock p0:req, p1:req, p2:req
         .byte 0xEF, 0x22, \p0, \p1, \p2
     .endm
-    .macro ef_check_multi_flag p0:req, p1:req, p2:req, p3:req, p4:req
+    .macro ts_check_multi_flag p0:req, p1:req, p2:req, p3:req, p4:req
         .byte 0xEF, 0x28, \p0, \p1, \p2, \p3, \p4
     .endm
-    .macro ef_check_water_god_program p0:req
+    .macro ts_check_water_god_program p0:req
         .byte 0xEF, 0x29, \p0
     .endm
-    .macro ef_check_chip p0:req, p1:req, p2:req, p3:req, p4:req, p5:req
+    .macro ts_check_chip p0:req, p1:req, p2:req, p3:req, p4:req, p5:req
         .byte 0xEF, 0x2A, \p0, \p1, \p2, \p3, \p4, \p5
     .endm
-    .macro ef_check_double_souls p0:req, p1:req
+    .macro ts_check_double_souls p0:req, p1:req
         .byte 0xEF, 0x2B, \p0, \p1
     .endm
-    .macro ef_check_link_navi p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req, p7:req, p8:req, p9:req, p10:req, p11:req, p12:req
+    .macro ts_check_link_navi p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req, p7:req, p8:req, p9:req, p10:req, p11:req, p12:req
         .byte 0xEF, 0x2E, \p0, \p1, \p2, \p3, \p4, \p5, \p6, \p7, \p8, \p9, \p10, \p11, \p12
     .endm
-    .macro ef_check_navi_all p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req, p7:req, p8:req, p9:req, p10:req, p11:req
+    .macro ts_check_navi_all p0:req, p1:req, p2:req, p3:req, p4:req, p5:req, p6:req, p7:req, p8:req, p9:req, p10:req, p11:req
         .byte 0xEF, 0x2F, \p0, \p1, \p2, \p3, \p4, \p5, \p6, \p7, \p8, \p9, \p10, \p11
     .endm
-    .macro ef_check_base_h_p p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_base_h_p p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x31, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_library_dark_full p0:req, p1:req
+    .macro ts_check_library_dark_full p0:req, p1:req
         .byte 0xEF, 0x32, \p0, \p1
     .endm
-    .macro ef_check_library p0:req, p1:req, p2:req, p3:req, p4:req
+    .macro ts_check_library p0:req, p1:req, p2:req, p3:req, p4:req
         .byte 0xEF, 0x33, \p0, \p1, \p2, \p3, \p4
     .endm
-    .macro ef_check_library_standard p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_library_standard p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x34, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_library_mega p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_library_mega p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x35, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_library_giga p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_library_giga p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x36, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_library_p_a p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_library_p_a p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x37, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_library_secret p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_library_secret p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x38, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_library_dark p0:req, p1:req, p2:req, p3:req
+    .macro ts_check_library_dark p0:req, p1:req, p2:req, p3:req
         .byte 0xEF, 0x39, \p0, \p1, \p2, \p3
     .endm
-    .macro ef_check_request_b_b_s_rank p0:req, p1:req, p2:req, p3:req, p4:req
+    .macro ts_check_request_b_b_s_rank p0:req, p1:req, p2:req, p3:req, p4:req
         .byte 0xEF, 0x3B, \p0, \p1, \p2, \p3, \p4
     .endm
-    .macro f0_jump_buffer
+    .macro ts_jump_buffer
         .byte 0xF0, 0x1
     .endm
-    .macro f0_jump_buffer_set p0:req
+    .macro ts_jump_buffer_set p0:req
         .byte 0xF0, 0x2, \p0
     .endm
-    .macro f0_jump p0:req
+    .macro ts_jump p0:req
         .byte 0xF0, 0x0, \p0
     .endm
-    .macro f0_jump_random p0:req
+    .macro ts_jump_random p0:req
         .byte 0xF0, \p0
     .endm
-    .macro f1_text_speed p0:req
+    .macro ts_text_speed p0:req
         .byte 0xF1, 0x0, \p0
     .endm
-    .macro f2_clear_msg
+    .macro ts_clear_msg
         .byte 0xF2
     .endm
-    .macro f3_control_lock
+    .macro ts_control_lock
         .byte 0xF3, 0x0
     .endm
-    .macro f3_control_unlock
+    .macro ts_control_unlock
         .byte 0xF3, 0x1
     .endm
-    .macro f3_control_set p0:req
+    .macro ts_control_set p0:req
         .byte 0xF3, 0x2, \p0
     .endm
-    .macro f4_item_give p0:req, p1:req
+    .macro ts_item_give p0:req, p1:req
         .byte 0xF4, 0x0, \p0, \p1
     .endm
-    .macro f4_item_take p0:req, p1:req
+    .macro ts_item_take p0:req, p1:req
         .byte 0xF4, 0x1, \p0, \p1
     .endm
-    .macro f4_item_set p0:req, p1:req
+    .macro ts_item_set p0:req, p1:req
         .byte 0xF4, 0x2, \p0, \p1
     .endm
-    .macro f4_item_give_chip p0:req, p1:req, p2:req, p3:req
+    .macro ts_item_give_chip p0:req, p1:req, p2:req, p3:req
         .byte 0xF4, 0x10, \p0, \p1, \p2, \p3
     .endm
-    .macro f4_item_take_chip p0:req, p1:req, p2:req, p3:req
+    .macro ts_item_take_chip p0:req, p1:req, p2:req, p3:req
         .byte 0xF4, 0x11, \p0, \p1, \p2, \p3
     .endm
-    .macro f4_item_set_chip p0:req, p1:req, p2:req, p3:req
+    .macro ts_item_set_chip p0:req, p1:req, p2:req, p3:req
         .byte 0xF4, 0x12, \p0, \p1, \p2, \p3
     .endm
-    .macro f4_item_give_all_chips
+    .macro ts_item_give_all_chips
         .byte 0xF4, 0x15
     .endm
-    .macro f5_mugshot_show p0:req
+    .macro ts_mugshot_show p0:req
         .byte 0xF5, 0x0, \p0
     .endm
-    .macro f5_mugshot_hide
+    .macro ts_mugshot_hide
         .byte 0xF5, 0x1
     .endm
-    .macro f5_mugshot_palette p0:req
+    .macro ts_mugshot_palette p0:req
         .byte 0xF5, 0x2, \p0
     .endm
-    .macro f5_mugshot_animation p0:req
+    .macro ts_mugshot_animation p0:req
         .byte 0xF5, 0x3, \p0
     .endm
-    .macro f5_mugshot_o_a_m_palette p0:req
+    .macro ts_mugshot_o_a_m_palette p0:req
         .byte 0xF5, 0x4, \p0
     .endm
-    .macro f6_color p0:req
+    .macro ts_color p0:req
         .byte 0xF6, 0x0, \p0
     .endm
-    .macro f6_color_buffered p0:req
+    .macro ts_color_buffered p0:req
         .byte 0xF6, 0x1, \p0
     .endm
-    .macro f7_position_box p0:req, p1:req, p2:req
+    .macro ts_position_box p0:req, p1:req, p2:req
         .byte 0xF7, 0x0, \p0, \p1, \p2
     .endm
-    .macro f7_position_text p0:req, p1:req, p2:req
+    .macro ts_position_text p0:req, p1:req, p2:req
         .byte 0xF7, 0x2, \p0, \p1, \p2
     .endm
-    .macro f7_position_arrow p0:req, p1:req
+    .macro ts_position_arrow p0:req, p1:req
         .byte 0xF7, 0x4, \p0, \p1
     .endm
-    .macro f7_position_mugshot p0:req, p1:req
+    .macro ts_position_mugshot p0:req, p1:req
         .byte 0xF7, 0x5, \p0, \p1
     .endm
-    .macro f7_position_text_center p0:req, p1:req
+    .macro ts_position_text_center p0:req, p1:req
         .byte 0xF7, 0x6, \p0, \p1
     .endm
-    .macro f7_position_option_horizontal p0:req
+    .macro ts_position_option_horizontal p0:req
         .byte 0xF7, 0x7, \p0
     .endm
-    .macro f7_position_option_vertical p0:req
+    .macro ts_position_option_vertical p0:req
         .byte 0xF7, 0x8, \p0
     .endm
-    .macro f7_position_option_from_center p0:req
+    .macro ts_position_option_from_center p0:req
         .byte 0xF7, 0x9, \p0
     .endm
-    .macro f8_player_lock
+    .macro ts_player_lock
         .byte 0xF8, 0x0
     .endm
-    .macro f8_player_animate_scene p0:req
+    .macro ts_player_animate_scene p0:req
         .byte 0xF8, 0x1, \p0
     .endm
-    .macro f8_player_unlock
+    .macro ts_player_unlock
         .byte 0xF8, 0x2
     .endm
-    .macro f8_player_finish
+    .macro ts_player_finish
         .byte 0xF8, 0x3
     .endm
-    .macro f8_player_reset_scene
+    .macro ts_player_reset_scene
         .byte 0xF8, 0x4
     .endm
-    .macro f8_player_animate_object p0:req
+    .macro ts_player_animate_object p0:req
         .byte 0xF8, 0x5, \p0
     .endm
-    .macro f8_player_reset_object
+    .macro ts_player_reset_object
         .byte 0xF8, 0x6
     .endm
-    .macro f9_store_timer p0:req, p1:req
+    .macro ts_store_timer p0:req, p1:req
         .byte 0xF9, 0x0, \p0, \p1
     .endm
-    .macro f9_store_global p0:req, p1:req
+    .macro ts_store_global p0:req, p1:req
         .byte 0xF9, 0x1, \p0, \p1
     .endm
-    .macro fa_print_item p0:req, p1:req
+    .macro ts_print_item p0:req, p1:req
         .byte 0xFA, 0x0, 0x0, 0x0, \p0, \p1
     .endm
-    .macro fa_print_chip1 p0:req, p1:req
+    .macro ts_print_chip1 p0:req, p1:req
         .byte 0xFA, 0x0, 0x0, 0x1, \p0, \p1
     .endm
-    .macro fa_print_chip2 p0:req, p1:req
+    .macro ts_print_chip2 p0:req, p1:req
         .byte 0xFA, 0x0, 0x0, 0x2, \p0, \p1
     .endm
-    .macro fa_print_code p0:req, p1:req
+    .macro ts_print_code p0:req, p1:req
         .byte 0xFA, 0x0, 0x0, 0x3, \p0, \p1
     .endm
-    .macro fa_print_folder_name p0:req, p1:req
+    .macro ts_print_folder_name p0:req, p1:req
         .byte 0xFA, 0x0, 0x0, 0x4, \p0, \p1
     .endm
-    .macro fa_print_navi_cust_program5 p0:req, p1:req
+    .macro ts_print_navi_cust_program5 p0:req, p1:req
         .byte 0xFA, 0x0, 0x0, 0x5, \p0, \p1
     .endm
-    .macro fa_print_navi_cust_program6 p0:req, p1:req
+    .macro ts_print_navi_cust_program6 p0:req, p1:req
         .byte 0xFA, 0x0, 0x0, 0x6, \p0, \p1
     .endm
-    .macro fa_print_chip7 p0:req, p1:req
+    .macro ts_print_chip7 p0:req, p1:req
         .byte 0xFA, 0x0, 0x0, 0x7, \p0, \p1
     .endm
-    .macro fa_print_navi p0:req, p1:req
+    .macro ts_print_navi p0:req, p1:req
         .byte 0xFA, 0x0, 0x0, 0x8, \p0, \p1
     .endm
-    .macro fa_print_request p0:req, p1:req
+    .macro ts_print_request p0:req, p1:req
         .byte 0xFA, 0x0, 0x0, 0x9, \p0, \p1
     .endm
-    .macro fa_print_current_navi p0:req
+    .macro ts_print_current_navi p0:req
         .byte 0xFA, 0x1, 0x0, \p0
     .endm
-    .macro fa_print_current_navi_o_w p0:req
+    .macro ts_print_current_navi_o_w p0:req
         .byte 0xFA, 0x1, 0x4, \p0
     .endm
-    .macro fa_print_zenny3 p0:req
+    .macro ts_print_zenny3 p0:req
         .byte 0xFA, 0x3, 0x0, 0x0, \p0
     .endm
-    .macro fa_print_zenny4 p0:req
+    .macro ts_print_zenny4 p0:req
         .byte 0xFA, 0x4, 0x0, 0x0, \p0
     .endm
-    .macro fa_print_buffer03 p0:req, p1:req
+    .macro ts_print_buffer03 p0:req, p1:req
         .byte 0xFA, 0x3, \p0, \p1
     .endm
-    .macro fa_print_buffer04 p0:req, p1:req
+    .macro ts_print_buffer04 p0:req, p1:req
         .byte 0xFA, 0x4, \p0, \p1
     .endm
-    .macro fa_print_navi_data_chip_stat p0:req, p1:req
+    .macro ts_print_navi_data_chip_stat p0:req, p1:req
         .byte 0xFA, 0x6, \p0, \p1
     .endm
-    .macro fa_print_buffered_short_string p0:req
+    .macro ts_print_buffered_short_string p0:req
         .byte 0xFA, 0xB, \p0
     .endm
-    .macro fa_print_link_buffer p0:req
+    .macro ts_print_link_buffer p0:req
         .byte 0xFA, 0xC, \p0
     .endm
-    .macro fb_start_give_random_zenny p0:req
+    .macro ts_start_give_random_zenny p0:req
         .byte 0xFB, 0x0, \p0
     .endm
-    .macro fb_start_give_random_chip_code p0:req
+    .macro ts_start_give_random_chip_code p0:req
         .byte 0xFB, 0x1, \p0
     .endm
-    .macro fb_start_random_battle
+    .macro ts_start_random_battle
         .byte 0xFB, 0x2
     .endm
-    .macro fb_start_fixed_battle p0:req, p1:req
+    .macro ts_start_fixed_battle p0:req, p1:req
         .byte 0xFB, 0x3, \p0, \p1
     .endm
-    .macro fb_start_shop p0:req
+    .macro ts_start_shop p0:req
         .byte 0xFB, 0x5, \p0
     .endm
-    .macro fb_start_bug_frag_trader p0:req
+    .macro ts_start_bug_frag_trader p0:req
         .byte 0xFB, 0x6, 0x1, \p0
     .endm
-    .macro fb_start_chip_trader p0:req, p1:req
+    .macro ts_start_chip_trader p0:req, p1:req
         .byte 0xFB, 0x6, \p0, \p1
     .endm
-    .macro fb_start_heal p0:req, p1:req
+    .macro ts_start_heal p0:req, p1:req
         .byte 0xFB, 0x8, \p0, \p1
     .endm
-    .macro fb_start_b_b_s p0:req
+    .macro ts_start_b_b_s p0:req
         .byte 0xFB, 0xA, \p0
     .endm
-    .macro fb_start_map p0:req
+    .macro ts_start_map p0:req
         .byte 0xFB, 0xB, \p0
     .endm
-    .macro fb_start_give_folder p0:req
+    .macro ts_start_give_folder p0:req
         .byte 0xFB, 0xD, \p0
     .endm
-    .macro fb_start_request_b_b_s p0:req
+    .macro ts_start_request_b_b_s p0:req
         .byte 0xFB, 0xE, \p0
     .endm
-    .macro fb_start_mailbox p0:req
+    .macro ts_start_mailbox p0:req
         .byte 0xFB, 0xF, \p0
     .endm
-    .macro fc_call_save p0:req, p1:req, p2:req
+    .macro ts_call_save p0:req, p1:req, p2:req
         .byte 0xFC, 0x0, \p0, \p1, \p2
     .endm
-    .macro fc_call_p_e_t_effect p0:req
+    .macro ts_call_p_e_t_effect p0:req
         .byte 0xFC, 0x3, 0x0, \p0
     .endm
-    .macro fc_call_minigame_effect p0:req
+    .macro ts_call_minigame_effect p0:req
         .byte 0xFC, 0x3, 0x2, \p0
     .endm
-    .macro fc_call_scenario_effect p0:req
+    .macro ts_call_scenario_effect p0:req
         .byte 0xFC, 0x3, 0x4, \p0
     .endm
-    .macro fc_call_reset_fishing_minigame p0:req
+    .macro ts_call_reset_fishing_minigame p0:req
         .byte 0xFC, 0x3, 0x5, \p0
     .endm
-    .macro fc_call_reset_evil_spirits p0:req
+    .macro ts_call_reset_evil_spirits p0:req
         .byte 0xFC, 0x3, 0x6, \p0
     .endm
-    .macro fc_call_aster_land_stock_add p0:req
+    .macro ts_call_aster_land_stock_add p0:req
         .byte 0xFC, 0x3, 0x7, \p0
     .endm
-    .macro fc_call_reload_soul_weapons p0:req
+    .macro ts_call_reload_soul_weapons p0:req
         .byte 0xFC, 0x3, 0x8, \p0
     .endm
-    .macro fc_call_get_crossover_points p0:req
+    .macro ts_call_get_crossover_points p0:req
         .byte 0xFC, 0x3, 0x9, \p0
     .endm
-    .macro fc_call_set_crossover_points p0:req
+    .macro ts_call_set_crossover_points p0:req
         .byte 0xFC, 0x3, 0xA, \p0
     .endm
-    .macro fc_call_add_all_b_b_s_messages p0:req
+    .macro ts_call_add_all_b_b_s_messages p0:req
         .byte 0xFC, 0x3, 0xB, \p0
     .endm
-    .macro fc_call_change_player_sprite p0:req
+    .macro ts_call_change_player_sprite p0:req
         .byte 0xFC, 0x3, 0xC, \p0
     .endm
-    .macro fc_call_add_all_requests p0:req
+    .macro ts_call_add_all_requests p0:req
         .byte 0xFC, 0x3, 0xD, \p0
     .endm
-    .macro fc_call_buffer_gold_mystery_data_location p0:req
+    .macro ts_call_buffer_gold_mystery_data_location p0:req
         .byte 0xFC, 0x3, 0xE, \p0
     .endm
-    .macro fc_call_unload_objects p0:req
+    .macro ts_call_unload_objects p0:req
         .byte 0xFC, 0x3, 0xF, \p0
     .endm
-    .macro fc_call_reload_objects p0:req
+    .macro ts_call_reload_objects p0:req
         .byte 0xFC, 0x3, 0x10, \p0
     .endm
-    .macro fc_call_reload_navi_base_stats p0:req
+    .macro ts_call_reload_navi_base_stats p0:req
         .byte 0xFC, 0x3, 0x11, \p0
     .endm
-    .macro fc_call_reload_navi_stat_boosts p0:req
+    .macro ts_call_reload_navi_stat_boosts p0:req
         .byte 0xFC, 0x3, 0x12, \p0
     .endm
-    .macro fc_call_set_full_h_p p0:req
+    .macro ts_call_set_full_h_p p0:req
         .byte 0xFC, 0x3, 0x13, \p0
     .endm
-    .macro fc_call_max_virus_delete_count p0:req
+    .macro ts_call_max_virus_delete_count p0:req
         .byte 0xFC, 0x3, 0x14, \p0
     .endm
-    .macro fc_call_fade_out
+    .macro ts_call_fade_out
         .byte 0xFC, 0x4
     .endm
-    .macro fc_call_give_all_navi_cust_programs
+    .macro ts_call_give_all_navi_cust_programs
         .byte 0xFC, 0x5
     .endm
-    .macro fc_call_disable_mugshot_brighten
+    .macro ts_call_disable_mugshot_brighten
         .byte 0xFC, 0x6
     .endm
-    .macro fc_call_check_outside_jack_in p0:req, p1:req
+    .macro ts_call_check_outside_jack_in p0:req, p1:req
         .byte 0xFC, 0x8, \p0, \p1
     .endm
-    .macro fc_call_disturb_icon p0:req
+    .macro ts_call_disturb_icon p0:req
         .byte 0xFC, 0x9, \p0
     .endm
-    .macro fc_call_change_navi p0:req
+    .macro ts_call_change_navi p0:req
         .byte 0xFC, 0xF, \p0
     .endm
-    .macro fc_call_request_points_add
+    .macro ts_call_request_points_add
         .byte 0xFC, 0x10
     .endm
-    .macro fc_call_request_points_buffer
+    .macro ts_call_request_points_buffer
         .byte 0xFC, 0x11
     .endm
-    .macro fc_call_request_finish
+    .macro ts_call_request_finish
         .byte 0xFC, 0x13
     .endm
-    .macro fc_call_rush_food_buffer
+    .macro ts_call_rush_food_buffer
         .byte 0xFC, 0x14
     .endm
-    .macro fd_sound_play00 p0:req, p1:req
+    .macro ts_sound_play00 p0:req, p1:req
         .byte 0xFD, 0x0, \p0, \p1
     .endm
-    .macro fd_sound_stop_bgm
+    .macro ts_sound_stop_bgm
         .byte 0xFD, 0x1, 0xFF, 0x0
     .endm
-    .macro fd_sound_play_bgm p0:req, p1:req
+    .macro ts_sound_play_bgm p0:req, p1:req
         .byte 0xFD, 0x1, \p0, \p1
     .endm
-    .macro fd_sound_enable_text_sfx
+    .macro ts_sound_enable_text_sfx
         .byte 0xFD, 0x2
     .endm
-    .macro fd_sound_disable_text_sfx
+    .macro ts_sound_disable_text_sfx
         .byte 0xFD, 0x3
     .endm
-    .macro fd_sound_stop
+    .macro ts_sound_stop
         .byte 0xFD, 0x4
     .endm
-    .macro fd_sound_fade_out p0:req, p1:req
+    .macro ts_sound_fade_out p0:req, p1:req
         .byte 0xFD, 0x5, \p0, \p1
     .endm
-    .macro fd_sound_play06 p0:req, p1:req
+    .macro ts_sound_play06 p0:req, p1:req
         .byte 0xFD, 0x6, \p0, \p1
     .endm
-    .macro fd_sound_play07 p0:req, p1:req
+    .macro ts_sound_play07 p0:req, p1:req
         .byte 0xFD, 0x7, \p0, \p1
     .endm
-    .macro fd_sound_enable_choice_sfx
+    .macro ts_sound_enable_choice_sfx
         .byte 0xFD, 0x8
     .endm
-    .macro fd_sound_disable_choice_sfx
+    .macro ts_sound_disable_choice_sfx
         .byte 0xFD, 0x9
     .endm
-    .macro fd_sound_play_area_bgm
+    .macro ts_sound_play_area_bgm
         .byte 0xFD, 0xA
     .endm
-    .macro fd_sound_fade_in_bgm p0:req, p1:req
+    .macro ts_sound_fade_in_bgm p0:req, p1:req
         .byte 0xFD, 0xB, \p0, \p1
     .endm
-    .macro fe_menu_option_number_trader p0:req
+    .macro ts_menu_option_number_trader p0:req
         .byte 0xFE, 0x0, \p0
     .endm
-    .macro fe_menu_select_number_trader
+    .macro ts_menu_select_number_trader
         .byte 0xFE, 0x1
     .endm
-    .macro fe_menu_option_number p0:req
+    .macro ts_menu_option_number p0:req
         .byte 0xFE, 0x2, \p0
     .endm
-    .macro fe_menu_select_buffered_password p0:req, p1:req, p2:req
+    .macro ts_menu_select_buffered_password p0:req, p1:req, p2:req
         .byte 0xFE, 0x3, \p0, \p1, \p2
     .endm
-    .macro fe_menu_option_name p0:req
+    .macro ts_menu_option_name p0:req
         .byte 0xFE, 0x4, \p0
     .endm
-    .macro fe_menu_select_name p0:req, p1:req, p2:req
+    .macro ts_menu_select_name p0:req, p1:req, p2:req
         .byte 0xFE, 0x5, \p0, \p1, \p2
     .endm
-    .macro fe_menu_option_password p0:req
+    .macro ts_menu_option_password p0:req
         .byte 0xFE, 0xD, \p0
     .endm
-    .macro fe_menu_select_password p0:req, p1:req, p2:req, p3:req
+    .macro ts_menu_select_password p0:req, p1:req, p2:req, p3:req
         .byte 0xFE, 0x10, \p0, \p1, \p2, \p3
     .endm
-    .macro fe_menu_option_crossover_trader p0:req
+    .macro ts_menu_option_crossover_trader p0:req
         .byte 0xFE, 0x11, \p0
     .endm
-    .macro fe_menu_select_crossover_trader
+    .macro ts_menu_select_crossover_trader
         .byte 0xFE, 0x12
     .endm
-    .macro ff_ereader_name p0:req
+    .macro ts_ereader_name p0:req
         .byte 0xFF, 0x0, \p0
     .endm
-    .macro ff_ereader_desc p0:req
+    .macro ts_ereader_desc01 p0:req
         .byte 0xFF, 0x1, \p0
     .endm
-    .macro fa_ereader_desc p0:req
+    .macro ts_ereader_desc0A p0:req
         .byte 0xFA, 0xA, \p0
     .endm
+
+
 
 
     .endif // TEXT_SCRIPT_INC

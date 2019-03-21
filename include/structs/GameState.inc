@@ -12,7 +12,7 @@
         // related to L button messages
         u8 \label, Unk_08 // loc=0x8
         u8 \label, Unk_09 // loc=0x9
-        u8 \label, Unk_0a // loc=0xa
+        u8 \label, BattlePaused // loc=0xa
         u8 \label, Unk_0b // loc=0xb
 
         u8 \label, LastMapGroup // loc=0xc

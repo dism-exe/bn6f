@@ -17,7 +17,7 @@
 	.global sub_800F46C
 	.global sub_800F486
 	.global sub_800F49E
-	.global sub_800F614
+	.global setFieldBattleObject_800F614
 	.global sub_800F656
 	.global sub_800F672
 	.global sub_800F884
@@ -43,9 +43,9 @@
 	.global sub_800FE28
 	.global sub_800FE36
 	.global sub_800FE52
-	.global sub_800FFE4
-	.global sub_800FFEE
-	.global sub_800FFFE
+	.global SetAIData_Unk_44_Flag
+	.global ClearAIData_Unk_44_Flag
+	.global GetAIData_Unk_44_Flag
 	.global sub_8010004
 	.global sub_8010018
 	.global sub_801002C
@@ -129,16 +129,16 @@
 	.global sub_80134C8
 	.global sub_8013554
 	.global sub_80135E8
-	.global sub_8013682 // (int idx) -> void*
-	.global sub_80136CC
-	.global sub_80136D8
-	.global sub_80136E4
+	.global GetPlayerBattleVarsAddr // (int idx) -> void*
+	.global GetPlayerBattleVarByte
+	.global GetPlayerBattleVarSignedByte
+	.global GetPlayerBattleVarHword
 	.global sub_80136F0
 	.global sub_8013704
-	.global sub_8013754
-	.global sub_8013764
-	.global sub_8013774
-	.global sub_8013790
+	.global SetPlayerBattleVarByte_AllianceFromBattleObject
+	.global SetPlayerBattleVarHword_AllianceFromBattleObject
+	.global GetPlayerBattleVarByte_AllianceFromBattleObject
+	.global GetPlayerBattleVarHword_AllianceFromBattleObject
 	.global navicust_801379E // (int a1, int a2, int a3) -> void
 	.global sub_80137B6 // (int a1, int a2) -> u8
 	.global sub_80137E6
@@ -189,7 +189,7 @@
 	.global sub_8015C94
 	.global sub_8015CC0
 	.global sub_8015D80
-	.global sub_8015E46
+	.global GetRandomRelativePanelFiltered
 	.global sub_8016004
 	.global sub_8016218
 	.global sub_801632C
@@ -230,7 +230,7 @@
 	.global byte_80198F4
 	.global byte_80199B6
 	.global byte_80199F5
-	.global off_8019B78
+	.global PanelOffsetListsPointerTable
 	.global off_8019BE0
 	.global byte_8019C34
 	.global sub_8019F86
@@ -292,7 +292,7 @@
 	.global sub_801BCD0
 	.global sub_801BCF4
 	.global sub_801BD3C
-	.global sub_801BDDE
+	.global AddRandomVarianceToTwoCoords
 	.global sub_801BE04
 	.global nullsub_10
 	.global sub_801BE2A
@@ -533,9 +533,9 @@
 // .global sub_802CFF8
 // .global sub_802D1B4
 // .global sub_802D1BE
-// .global sub_802D234
-// .global sub_802D246 // () -> int
-// .global sub_802D26A
+// .global GetBattleMode
+// .global GetBattleEffects // () -> int
+// .global GetBattlePanelColumnPattern
 // .global sub_802D310
 // .global sub_802D644
 // .global sub_802D65E
@@ -548,7 +548,7 @@
 // .global sub_802E032
 // .global sub_802E066
 // .global sub_802E070
-// .global sub_802E09A
+// .global TestBattleFlag_0x40
 // .global sub_802E1D8
 // .global sub_802E440
 // .global sub_802E44A
@@ -656,7 +656,7 @@
 // .global off_8109450
 // .global off_81094D0
 // .global off_8109550
-// .global sub_81096FA
+// .global GetAllianceDependentPanelParamArgs
 
 	.include "asm/asm37_0.inc"
 // .global sub_813BF1C
@@ -848,7 +848,7 @@
 // .equ byte_203CB10, 0x203CB10
 // .equ byte_203CCE0, 0x203CCE0
 // .equ dword_203CDF0, 0x203CDF0
-// .equ byte_203CE00, 0x203CE00
+// .equ ePlayerBattleVars, 0x203CE00
 // .equ byte_203CED0, 0x203CED0
 // .equ byte_203CED1, 0x203CED1
 // .equ byte_203CED3, 0x203CED3

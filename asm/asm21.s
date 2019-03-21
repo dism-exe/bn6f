@@ -34,7 +34,7 @@ sub_8080DA0:
 	ldr r0, off_8080E2C // =off_8081220 
 	ldr r0, [r0,r1]
 	bl sub_8002354
-	bl sub_802D234
+	bl GetBattleMode
 	cmp r0, #1
 	beq locret_8080DE8
 	bl sub_803537C

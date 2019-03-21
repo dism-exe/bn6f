@@ -105,7 +105,7 @@
 
 	.include "asm/asm00_2.inc"
 // .global enemy_getStruct2
-// .global sub_80136CC
+// .global GetPlayerBattleVarByte
 // .global sub_80137B6 // (int a1, int a2) -> u8
 // .global sub_80137FE
 // .global sub_80182B4
@@ -136,7 +136,7 @@
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 
 	.include "asm/asm03_0.inc"
-// .global sub_802D266
+// .global GetBattleSettingsUnk01FromBattleSettings
 // .global sub_802D652
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global SetEventFlag

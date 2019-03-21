@@ -9771,7 +9771,7 @@ loc_80AA59E:
 	beq loc_80AA5DC
 loc_80AA5B8:
 	push {r0}
-	bl sub_802D266
+	bl GetBattleSettingsUnk01FromBattleSettings
 	mov r4, r0
 	bl getPETNaviSelect // () -> u8
 	mov r1, #0x3e 
@@ -10270,7 +10270,7 @@ sub_80AA910:
 	str r5, [sp,#0x14]
 	ldr r0, [sp,#0x14]
 	mov r1, #0x26 
-	bl sub_80136CC
+	bl GetPlayerBattleVarByte
 	mov r1, #1
 	tst r0, r1
 	beq loc_80AA946

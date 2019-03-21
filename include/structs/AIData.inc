@@ -39,7 +39,7 @@
         struct_org 0x20
         u16 \label, TotalDamageTaken // loc=0x20
         u16 \label, JoypadHeld // loc=0x22
-        u16 \label, JoypadDown // loc=0x24
+        u16 \label, JoypadPressed // loc=0x24
         u16 \label, JoypadUp // loc=0x26
         u16 \label, JoypadReleased // loc=0x28
         struct_org 0x2c

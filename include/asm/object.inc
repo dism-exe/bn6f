@@ -146,7 +146,7 @@
 // .global sub_80103BC
 // .global sub_8014150
 // .global sub_80182B4
-// .global off_8019B78
+// .global PanelOffsetListsPointerTable
 // .global byte_8019C34
 // .global object_setFlag1 // (int a1) -> void
 // .global object_clearFlag // (int bitfield) -> void
@@ -154,7 +154,7 @@
 // .global object_setFlag2
 // .global object_clearFlag2
 // .global object_getFlag2
-// .global sub_801BDDE
+// .global AddRandomVarianceToTwoCoords
 // .global sub_801E754
 // .global sub_801E792
 
@@ -162,8 +162,8 @@
 // .global sub_802CE10
 // .global sub_802CE78
 // .global sub_802CEA6
-// .global sub_802D234
-// .global sub_802D246 // () -> int
+// .global GetBattleMode
+// .global GetBattleEffects // () -> int
 
 	.include "asm/asm31.inc"
 // .global sub_80C5B76
@@ -241,7 +241,7 @@
 // .equ byte_203674B, 0x203674B
 // .equ byte_203674C, 0x203674C
 // .equ byte_203674D, 0x203674D
-// .equ byte_2039AE0, 0x2039AE0
+// .equ ePanelData, 0x2039AE0
 // .equ byte_2039AE1, 0x2039AE1
 // .equ byte_2039AE6, 0x2039AE6
 // .equ byte_2039AE7, 0x2039AE7

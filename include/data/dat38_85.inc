@@ -141,7 +141,7 @@
 	.global dword_86EA92C
 	.global TextScriptChipNames0
 	.global TextScriptChipNames1
-	.global byte_86EB8B8
+	.global TextScriptChipDescriptions0
 	.global dword_86EE0CC
 	.global TextScriptChipDesc86EF4D4
 	.global byte_86EF71C

@@ -429,7 +429,7 @@
 // .global sub_8015C48
 // .global sub_8015C94
 // .global sub_8015D80
-// .global sub_8015E46
+// .global GetRandomRelativePanelFiltered
 // .global sub_8016380
 // .global sub_80165B8
 // .global sub_80165C2
@@ -441,7 +441,7 @@
 // .global sub_8016CE8
 // .global sub_8016EC4
 // .global sub_8018810
-// .global off_8019B78
+// .global PanelOffsetListsPointerTable
 // .global object_updateCollisionPanels
 // .global object_setCollisionPanelsToCurrent
 // .global object_clearCollisionRegion // () -> void
@@ -480,8 +480,8 @@
 
 	.include "asm/asm03_0.inc"
 // .global sub_802CDD0
-// .global sub_802D234
-// .global sub_802D246 // () -> int
+// .global GetBattleMode
+// .global GetBattleEffects // () -> int
 // .global sub_802EF5C
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
@@ -573,7 +573,7 @@
 // .global sub_8109630
 // .global sub_8109660
 // .global sub_81096BA
-// .global sub_81096FA
+// .global GetAllianceDependentPanelParamArgs
 // .global sub_8109708
 // .global sub_810971A
 // .global sub_81097B4
@@ -767,7 +767,7 @@
 // .global byte_86E587C
 // .global TextScriptChipNames0
 // .global TextScriptChipNames1
-// .global byte_86EB8B8
+// .global TextScriptChipDescriptions0
 // .global dword_86EE0CC
 
 	.include "data/dat38_86.inc"

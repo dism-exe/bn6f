@@ -23,10 +23,10 @@ def get_tbl():
            'u', 'v', 'w', 'x', 'y', 'z', '[RV]', '[BX]', '[EX]', '[SP]', '[FZ]']
     for i in range(len(tbl), 0xEA):
         tbl.append('\\x%X' % i)
-    symbols = ['-', 'x', '=', ':', '%', '?', '+', '[]', '[bat]', '\xA1', '!', '&', ',', '\xA5',
-               '.', '\xA7', ';', '\'', '"', '~', '/', '(', ')', '\xAF', '\xB0', '_', '[z]',
+    symbols = ['-', 'x', '=', ':', '%', '?', '+', '[]', '[bat]', '\\xA1', '!', '&', ',', '\\xA5',
+               '.', '\\xA7', ';', '\'', '"', '~', '/', '(', ')', '\\xAF', '\\xB0', '\\xB1', '_', '[z]',
                '[L]', '[B]', '[R]', '[A]']
-    for i in range(0x98, 0xB7):
+    for i in range(0x98, 0xB8):
         tbl[i] = symbols[i-0x98]
     tbl[0xE6] = '$'
     tbl[0xE9] = '\\n'
@@ -76,7 +76,7 @@ def get_cmd_macro(sects, cmd):
             for b in sect['base'].split(' '): base.append(int(b, 16))
 
             if cmd_bytes == base:
-                name = '%x_' % cmd_bytes[0] + sect['name']
+                name = 'ts_'  + sect['name']
     # convert to snake case
     for c in name:
         if c.isupper():
@@ -106,18 +106,23 @@ def parse_text_script(config_ini_path, bin_path, address):
             while byte and ord(byte) < 0xE5 or ord(byte) == 0xE6 or ord(byte) == 0xE9:
                 # not a command, process string
                 string = string + byte
+                # separate strings by line
+                if ord(byte) == 0xE9:
+                    units.append(string)
+                    string = b''
                 if ord(byte) == 0xE6:
+                    # FIXME: skips last commands in last script if they don't end in e6
                     end_script = bin_file.tell() > address+last_script_pointer
                     break # this string terminates
                 byte = bin_file.read(1)
             if string:
                 units.append(string)
-                continue
-                # print(units[-1])
             if byte == b'':
                 print('error: could not read byte')
                 break
             cmd = byte
+            if ord(cmd) == 0xE6:
+                continue # accounted for in string
             if not end_script:
                 end_script = bin_file.tell() > address+last_script_pointer and ord(cmd) == 0xE6
             # read command
@@ -155,23 +160,15 @@ def parse_text_script(config_ini_path, bin_path, address):
         rel_pointers_macro += '%d, ' % rel_pointer_ids[p]
     rel_pointers_macro = rel_pointers_macro[:-2]
     script.append(rel_pointers_macro)
-    start_unit = True
-    script_count = 0
     for unit in units:
         # print(unit)
         if type(unit) is bytes:
             if len(unit) == 1 and unit[0] == 0xE6:
                 s = '\t' + get_cmd_macro(sects, unit)
             else:
-                s = '\t// "%s"\n\t' % bn6f_str(unit, get_tbl())
-                s += '\t.byte '
-                for i in unit:
-                    s += '0x%X, ' % i
-                s = s[:-2]
+                s = '\t.string "%s"' % bn6f_str(unit, get_tbl())
             script.append(s)
         elif type(unit) is tuple:
-            if unit[0] == b'\xe6':
-                start_unit = True
             name = get_cmd_macro(sects, unit[0])
             s = '\t%s ' % name
             for param in unit[1]:
@@ -197,7 +194,7 @@ def gen_macros(config_ini_path):
             mask = []
             for b in sect['base'].split(' '): base.append(int(b, 16))
             for b in sect['mask'].split(' '): mask.append(int(b, 16))
-            name = '%x_' % base[0] + sect['name']
+            name = 'ts_'  + sect['name']
             # convert to snake case
             for c in name:
                 if c.isupper():

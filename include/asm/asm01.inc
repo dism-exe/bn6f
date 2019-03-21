@@ -38,7 +38,7 @@
 // .global sub_800A0D6
 
 	.include "asm/asm03_0.inc"
-// .global sub_802D246 // () -> int
+// .global GetBattleEffects // () -> int
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 
 	.include "asm/asm03_1.inc"

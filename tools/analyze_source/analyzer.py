@@ -214,7 +214,8 @@ def remove_function_specific_callbacks(function_value):
 # exceptions:
 # - object_createCollisionData: force second function return for data
 # - sub_801B9E6: has a jumptable passed to it
-force_all_paths_functions = set((0x8019892, 0x801B9E6))  # object_createCollisionData, sub_801B9E6
+# - sub_801AF44: force path which calls sub_801B9E6
+force_all_paths_functions = set((0x8019892, 0x801B9E6, 0x801AF44))  # object_createCollisionData, sub_801B9E6, sub_801AF44
 
 def run_analyzer_common(src_file, funcstate, function_start_time):
     function_total_time = 0
@@ -359,6 +360,10 @@ def run_analyzer_common(src_file, funcstate, function_start_time):
         # don't attempt to run any conditional branches if this function already had its conditional branches executed
         # unless the function is forced to run all paths each time
         if function_name in function_trackers and return_regs is not None and funcstate.function.value not in force_all_paths_functions:
+            break
+
+        # sub_801AF44
+        if funcstate.function.value == 0x801AF44 and "loc_801B18E" in funcstate.found_labels:
             break
 
         # now check if we have any conditional labels left

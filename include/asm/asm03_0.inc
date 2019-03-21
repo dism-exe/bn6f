@@ -46,11 +46,11 @@
 	.global sub_802D15E
 	.global sub_802D1B4
 	.global sub_802D1BE
-	.global sub_802D234
-	.global sub_802D246 // () -> int
-	.global sub_802D254 // () -> int
-	.global sub_802D266
-	.global sub_802D26A
+	.global GetBattleMode
+	.global GetBattleEffects // () -> int
+	.global GetBattleEffectsFromBattleSettings // () -> int
+	.global GetBattleSettingsUnk01FromBattleSettings
+	.global GetBattlePanelColumnPattern
 	.global getBattleSettings_200AF60 // () -> BattleSettings*
 	.global copyBattleSettingsTo_200AF60 // (BattleSettings *src) -> void
 	.global battleSettings_setFlags_unkSettings // (int mask) -> void
@@ -78,7 +78,7 @@
 	.global sub_802E04E
 	.global sub_802E066
 	.global sub_802E070
-	.global sub_802E09A
+	.global TestBattleFlag_0x40
 	.global sub_802E112
 	.global sub_802E156
 	.global sub_802E1BE
@@ -310,9 +310,9 @@
 // .global sub_800F46C
 // .global sub_800FB54
 // .global sub_800FC9E
-// .global sub_800FFE4
-// .global sub_800FFEE
-// .global sub_800FFFE
+// .global SetAIData_Unk_44_Flag
+// .global ClearAIData_Unk_44_Flag
+// .global GetAIData_Unk_44_Flag
 // .global sub_8010004
 // .global sub_8010018
 // .global sub_801002C
@@ -334,14 +334,14 @@
 // .global sub_80116AE
 // .global object_exitAttackState
 // .global sub_8012EA8
-// .global sub_8013682 // (int idx) -> void*
-// .global sub_80136CC
-// .global sub_80136D8
-// .global sub_80136E4
-// .global sub_8013754
-// .global sub_8013764
-// .global sub_8013774
-// .global sub_8013790
+// .global GetPlayerBattleVarsAddr // (int idx) -> void*
+// .global GetPlayerBattleVarByte
+// .global GetPlayerBattleVarSignedByte
+// .global GetPlayerBattleVarHword
+// .global SetPlayerBattleVarByte_AllianceFromBattleObject
+// .global SetPlayerBattleVarHword_AllianceFromBattleObject
+// .global GetPlayerBattleVarByte_AllianceFromBattleObject
+// .global GetPlayerBattleVarHword_AllianceFromBattleObject
 // .global sub_80137B6 // (int a1, int a2) -> u8
 // .global sub_8013816
 // .global sub_801382E
@@ -615,7 +615,7 @@
 // .global sub_80EA11C
 // .global sub_80EB04C
 // .global sub_80EB234
-// .global sub_81096FA
+// .global GetAllianceDependentPanelParamArgs
 // .global sub_810971A
 
 	.include "asm/asm32.inc"
@@ -681,7 +681,7 @@
 // .global dword_86E944C
 // .global TextScriptChipNames0
 // .global TextScriptChipNames1
-// .global byte_86EB8B8
+// .global TextScriptChipDescriptions0
 // .global dword_86EE0CC
 // .global TextScriptChipDesc86EF4D4
 // .global byte_86EF71C

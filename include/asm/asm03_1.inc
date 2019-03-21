@@ -322,7 +322,7 @@
 	.include "asm/asm03_0.inc"
 // .global sub_802D070
 // .global sub_802D150
-// .global sub_802D246 // () -> int
+// .global GetBattleEffects // () -> int
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global SetEventFlag
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void

@@ -3332,7 +3332,7 @@ sub_3007550:
 	tst r1, r2
 	bne loc_30075BC
 	lsl r1, r1, #2
-	ldr r2, off_30075F8 // =off_8019B78
+	ldr r2, off_30075F8 // =PanelOffsetListsPointerTable
 	ldr r4, [r2,r1]
 	ldrb r0, [r5,#oCollisionData_Alliance]
 	ldrb r1, [r5,#oCollisionData_Flip]
@@ -3407,7 +3407,7 @@ loc_30075E8:
 loc_30075F4:
 	add sp, sp, #8
 	pop {r4-r7,pc}
-off_30075F8: .word off_8019B78
+off_30075F8: .word PanelOffsetListsPointerTable
 	thumb_func_end sub_3007550
 
 	thumb_local_start
@@ -3634,7 +3634,7 @@ sub_300777C:
 	tst r1, r2
 	bne loc_30077D6
 	lsl r1, r1, #2
-	ldr r2, off_3007820 // =off_8019B78
+	ldr r2, off_3007820 // =PanelOffsetListsPointerTable
 	ldr r4, [r2,r1]
 	ldrb r0, [r5,#oCollisionData_Alliance]
 	ldrb r1, [r5,#oCollisionData_Flip]
@@ -3710,7 +3710,7 @@ loc_300781A:
 	pop {r0}
 	mov r8, r0
 	pop {r4-r7,pc}
-off_3007820: .word off_8019B78
+off_3007820: .word PanelOffsetListsPointerTable
 off_3007824: .word byte_8019C34
 	thumb_func_end sub_300777C
 
@@ -3720,7 +3720,7 @@ sub_3007828:
 	mov r5, r0
 	ldrb r1, [r0,#1]
 	lsl r1, r1, #2
-	ldr r2, off_3007864 // =off_8019B78
+	ldr r2, off_3007864 // =PanelOffsetListsPointerTable
 	ldr r4, [r2,r1]
 	ldrb r0, [r5,#4]
 	ldrb r1, [r5,#5]
@@ -3747,7 +3747,7 @@ loc_3007840:
 locret_3007860:
 	pop {r4-r6,pc}
 	.balign 4, 0x00
-off_3007864: .word off_8019B78
+off_3007864: .word PanelOffsetListsPointerTable
 	thumb_func_end sub_3007828
 
 	thumb_local_start
@@ -3852,22 +3852,27 @@ word_3007924: .hword 0x8000, 0x1, 0x4000, 0x1, 0x10, 0x1, 0x50, 0x1, 0x110, 0x1,
 
 	thumb_func_start sub_3007958
 sub_3007958:
+	// is panel x in range [1,6]?
 	sub r3, r0, #1
 	cmp r3, #6
 	bcs loc_3007970
+	// is panel y in range [1,3]?
 	sub r3, r1, #1
 	cmp r3, #3
 	bcs loc_3007970
+// panely * 8
 	lsl r1, r1, #3
+// panely * 8 + panelx
 	add r1, r1, r0
+// (panely * 8 + panelx) * 32
 	lsl r0, r1, #5
-	ldr r1, off_3007974 // =byte_2039AE0
+	ldr r1, off_3007974 // =ePanelData
 	add r0, r0, r1
 	mov pc, lr
 loc_3007970:
 	mov r0, #0
 	mov pc, lr
-off_3007974: .word byte_2039AE0
+off_3007974: .word ePanelData
 	thumb_func_end sub_3007958
 
 	thumb_local_start

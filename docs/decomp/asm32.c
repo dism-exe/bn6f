@@ -14685,7 +14685,7 @@ int __fastcall sub_8119438(int a1, int a2, int a3, int a4)
     v21 = dword_86EE0CC;
     v22 = *(v4 + 14);
     if ( v22 <= 255 )
-        v21 = byte_86EB8B8;
+        v21 = TextScriptChipDescriptions0;
     return renderTextGfx_8045F8C(v21, v22, dword_811919C[*(v4 + 5)], 32 * off_8119128[*(v4 + 5)][2] + 100728832);
 }
 
@@ -15506,7 +15506,7 @@ int __fastcall sub_8119EEC(int a1, int a2, int a3, int a4)
     v7 = dword_86EE0CC;
     v8 = *(v4 + 14);
     if ( v8 <= 255 )
-        v7 = byte_86EB8B8;
+        v7 = TextScriptChipDescriptions0;
     return renderTextGfx_8045F8C(v7, v8, *(&off_8119FE8 + *(v4 + 5)), 32 * (&off_8119FD0)[*(v4 + 5)][2] + 100728832);
 }
 
