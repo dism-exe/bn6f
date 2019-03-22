@@ -3355,10 +3355,10 @@ MapScript_jump_if_unk_navicust_range: // 8035A74
 	thumb_local_start
 // 0x09 hword byte1 byte2 byte3 destination
 // if byte1 == 0xff:
-//     jump if byte2 < GetTotalChipCount(hword) < byte3
+//	 jump if byte2 < GetTotalChipCount(hword) < byte3
 // else:
-//     jump if byte2 < GetChipCountOfCode(byte1, hword) < byte3
-//     GetChipCountOfCode calls chip_8021C7C
+//	 jump if byte2 < GetChipCountOfCode(byte1, hword) < byte3
+//	 GetChipCountOfCode calls chip_8021C7C
 // related to chips
 //
 MapScript_jump_if_chip_count_in_range: // 8035AAA
@@ -4267,7 +4267,7 @@ off_8036090: .word eUnkMapScriptState_2011e60
 
 	thumb_local_start
 /* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:u8 result
-    preserves: r6,r7
+	preserves: r6,r7
 	unused: r0-r3,r5,r8-r12*/
 ReadMapScriptByte: // 8036094
 	push {r7,lr}
@@ -4278,7 +4278,7 @@ ReadMapScriptByte: // 8036094
 
 	thumb_local_start
 /* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:s8 result
-    preserves: r6,r7
+	preserves: r6,r7
 	unused: r0-r3,r5,r8-r12*/
 ReadMapScriptSignedByte: // 803609C
 	push {r7,lr}
@@ -4292,7 +4292,7 @@ ReadMapScriptSignedByte: // 803609C
 	thumb_local_start
 /* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:u16 result
 	spoils: r6
-    preserves: r7
+	preserves: r7
 	unused: r0-r3,r5,r8-r12*/
 ReadMapScriptHalfword: // 80360A8
 	push {r7,lr}
@@ -4307,7 +4307,7 @@ ReadMapScriptHalfword: // 80360A8
 	thumb_local_start
 /* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:s16 result
 	spoils: r6
-    preserves: r7
+	preserves: r7
 	unused: r0-r3,r5,r8-r12*/
 ReadMapScriptSignedHalfword: // 80360B6
 	push {r7,lr}
@@ -4324,7 +4324,7 @@ ReadMapScriptSignedHalfword: // 80360B6
 	thumb_local_start
 /* (r6:uint offsetToValue, r7:u8 * curScriptCmdPtr) -> r4:u32 result
 	spoils: r6
-    preserves: r7
+	preserves: r7
 	unused: r0-r3,r5,r8-r12*/
 ReadMapScriptWord: // 80360C8
 	push {r7,lr}
@@ -17516,44 +17516,44 @@ loc_803E04A:
 	.word DebugStr803E0FE
 	.word DebugStr803E108
 DebugStr803E088:
-    .hword 0x314
-    .asciz "ID(%D)"
+	.hword 0x314
+	.asciz "ID(%D)"
 DebugStr803E091:
-    .hword 0x414
-    .asciz "PL NUM(%D)"
+	.hword 0x414
+	.asciz "PL NUM(%D)"
 DebugStr803E09E:
-    .hword 0x214
-    .asciz "SIO WAIT"
+	.hword 0x214
+	.asciz "SIO WAIT"
 DebugStr803E0A9:
-    .hword 0x214
-    .asciz "SIO OFF"
+	.hword 0x214
+	.asciz "SIO OFF"
 DebugStr803E0B3:
-    .hword 0x214
-    .asciz "SIO ON"
+	.hword 0x214
+	.asciz "SIO ON"
 DebugStr803E0BC:
-    .hword 0x214
-    .asciz "SIO ERROR"
+	.hword 0x214
+	.asciz "SIO ERROR"
 DebugStr803E0C8:
-    .hword 0x214
-    .asciz "SIO ERROR2"
+	.hword 0x214
+	.asciz "SIO ERROR2"
 DebugStr803E0D5:
-    .hword 0xA14
-    .asciz "ST:0x%X"
+	.hword 0xA14
+	.asciz "ST:0x%X"
 DebugStr803E0DF:
-    .hword 0x514
-    .asciz "RNO:0x%X"
+	.hword 0x514
+	.asciz "RNO:0x%X"
 DebugStr803E0EA:
-    .hword 0xD14
-    .asciz "RECV:%X"
+	.hword 0xD14
+	.asciz "RECV:%X"
 DebugStr803E0F4:
-    .hword 0xE14
-    .asciz "RECV:%X"
+	.hword 0xE14
+	.asciz "RECV:%X"
 DebugStr803E0FE:
-    .hword 0xF14
-    .asciz "RECV:%X"
+	.hword 0xF14
+	.asciz "RECV:%X"
 DebugStr803E108:
-    .hword 0x60A
-    .asciz "S:%D,R:%D"
+	.hword 0x60A
+	.asciz "S:%D,R:%D"
 	thumb_func_end sub_803E018
 
 	thumb_local_start

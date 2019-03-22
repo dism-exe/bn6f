@@ -42,33 +42,33 @@ dword_86CEE84: .word 0x63E10, 0x63E0000, 0x66004400, 0x820000, 0x10B00D9
 	.word 0x9E0C171C, 0x5DA138B0, 0x38B341, 0x312A3700, 0x2A38262A
 	.word 0x26108029
 dword_86CF1A8:
-    .incbin "data/scripts/comp_86CF1A8.lz"
+	.incbin "data/scripts/comp_86CF1A8.lz"
 	.balign 4, 0x00
 TextScriptFolderNames:
-    text_script_start TextScriptFolderNames
-    text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 8
-    text_script 0, scr_0
-        .string "LanFldr$"
-    text_script 1, scr_1
-        .string "ExpoFldr$"
-    text_script 2, scr_2
-        .string "GiftFldr$"
-    text_script 3, scr_3
-        .string "ExptFldr$"
-    text_script 4, scr_4
-        .string "AprtcFld$"
-    text_script 5, scr_5
-        .string "SoulFldr$"
-    text_script 6, scr_6
-        .string "--$"
-    text_script 7, scr_7
-        .string "RandFldr$"
-    text_script 8, scr_8
-        .string "Pack$"
+	text_script_start TextScriptFolderNames
+	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 8
+	text_script 0, scr_0
+		.string "LanFldr$"
+	text_script 1, scr_1
+		.string "ExpoFldr$"
+	text_script 2, scr_2
+		.string "GiftFldr$"
+	text_script 3, scr_3
+		.string "ExptFldr$"
+	text_script 4, scr_4
+		.string "AprtcFld$"
+	text_script 5, scr_5
+		.string "SoulFldr$"
+	text_script 6, scr_6
+		.string "--$"
+	text_script 7, scr_7
+		.string "RandFldr$"
+	text_script 8, scr_8
+		.string "Pack$"
 comp_86CF508:
-    .incbin "data/scripts/comp_86CF508.lz"
+	.incbin "data/scripts/comp_86CF508.lz"
 CompTextScriptNetworkPlyTmSave86CF618:
-    .incbin "data/scripts/comp_86CF618.lz"
+	.incbin "data/scripts/comp_86CF618.lz"
 // NOTE (TextScript): what is this? it's not compressed, and not valid text script.
 TextScriptNetworkSave86CF730: .word 0x13310, 0x1330000, 0x24001E00, 0x2A0000, 0x360030
 	.word 0x46010040, 0x4F004B00, 0x1005400, 0xCF008300, 0x2F011600

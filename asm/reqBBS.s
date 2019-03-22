@@ -1821,7 +1821,7 @@ reqBBS_subsystemCotnrol:
 off_813F424: .word eReqBBSGui
 off_813F428: .word ReqBBSSubSystemJumpTable
 ReqBBSSubSystemJumpTable:
-    .word OpenReqBBSMenu813F474+1
+	.word OpenReqBBSMenu813F474+1
 	.word UpdateReqBBSMenu813F550+1
 	.word ExitReqBBSMenu813F590+1
 	.word reqBBS_813F5EC+1
@@ -2702,7 +2702,7 @@ dword_813FB14: .word 0x5F40
 off_813FB18: .word reqBBS_eTextScript
 dword_813FB1C: .word 0xF
 off_813FB20: .word 0x50
-    thumb_func_end reqBBS_813FAB0
+	thumb_func_end reqBBS_813FAB0
 
 	thumb_local_start
 reqBBS_813FB24:
@@ -3927,7 +3927,7 @@ locret_8140634:
 off_8140638: .word reqBBS_eRequestEntriesIDs
 	thumb_func_end reqBBS_8140604
 
-    thumb_local_start
+	thumb_local_start
 sub_814063C:
 	push {r0-r7,lr}
 	ldrh r7, [r5,#0x1e]

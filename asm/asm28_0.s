@@ -6055,7 +6055,7 @@ updateFlags_809E0B0:
 	mov r0, #1
 	strb r0, [r3]
 	push {lr}
-    // if not set, map location changes after function call (also when jacking in)
+	// if not set, map location changes after function call (also when jacking in)
 	movflag EVENT_1718
 	bl SetEventFlagFromImmediate
 	bl clearEventFlag_809E0A4 // () -> void

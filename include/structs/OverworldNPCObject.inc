@@ -9,16 +9,16 @@
 		u8 \label, Unk_07 // loc=0x7
 		u8 \label, Unk_08_MainJumptableIndex // loc=0x8
 		u8 \label, MovementFlag_09 // loc=0x9
-		    struct_const MOVEMENT_FLAG_STOP,                        0x00
-		    struct_const MOVEMENT_FLAG_DEFAULT_MOVING,              0x04
-		    struct_const MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES,    0x08
-        /*
-        Those might not be flags, since 0x0C behaves unpredictably by 0x04 and 0x08
-        0x00 - No effect, it keeps setting to 0x04
-        0x04 - Default, moving
-        0x08 - Stop
-        0x0C - Stop, with a weird location transformation for a moment.
-        */
+			struct_const MOVEMENT_FLAG_STOP,						0x00
+			struct_const MOVEMENT_FLAG_DEFAULT_MOVING,			  0x04
+			struct_const MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES,	0x08
+		/*
+		Those might not be flags, since 0x0C behaves unpredictably by 0x04 and 0x08
+		0x00 - No effect, it keeps setting to 0x04
+		0x04 - Default, moving
+		0x08 - Stop
+		0x0C - Stop, with a weird location transformation for a moment.
+		*/
 		u8 \label, MovementFlag_0a // loc=0xa
 		u8 \label, Unk_0b // loc=0xb
 		u8 \label, Volume // loc=0xc

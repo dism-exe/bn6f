@@ -6425,17 +6425,17 @@ SetExtraToolkitPointers:
 	add r4, r4, r2
 	str r4, [r0,r1]
 	add r1, #4
-	// reads extra garbage
+	// reads extra garbageq
 	cmp r1, #(ToolkitExtraPtrsOffsetsEnd - ToolkitExtraPtrsOffsets + 4)
 	blt .copyToolkitExtraPtrsLoop
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 
 	// 8006C94
-ToolkitExtraPtrs_eToolkitExtraPtrsMemory_p:       .word eToolkitExtraPtrsMemory
+ToolkitExtraPtrs_eToolkitExtraPtrsMemory_p:	   .word eToolkitExtraPtrsMemory
 ToolkitExtraPtrs_eUnusedExtraToolkitPtrsOffset_p: .word eUnusedExtraToolkitPtrsOffset
-ToolkitExtraPtrs_ToolkitExtraPtrsMemorySize_p:    .word TOOLKIT_EXTRA_PTRS_MEMORY_SIZE
-ToolkitExtraPtrs_copyWords_80014EC_p:             .word copyWords_80014EC+1
+ToolkitExtraPtrs_ToolkitExtraPtrsMemorySize_p:	.word TOOLKIT_EXTRA_PTRS_MEMORY_SIZE
+ToolkitExtraPtrs_copyWords_80014EC_p:			 .word copyWords_80014EC+1
 	thumb_func_end SetExtraToolkitPointers
 
 	// unused?
@@ -11785,7 +11785,7 @@ loc_80095E4:
 locret_80095F4:
 	pop {pc}
 	.balign 4, 0x00
-    .pool
+	.pool
 	thumb_func_end sub_80095C8
 
 	thumb_local_start

@@ -355,7 +355,7 @@ unk_2001C04:: // 0x2001c04
 // u8[1448]
 // continuous buffer of bit flags addressed with a u16 flag offset
 eEventFlags:: // 0x2001C88
-    .space 1448
+	.space 1448
 unk_2002230:: // 0x2002230
 	.space 236
 unk_200231C:: // 0x200231c
@@ -404,9 +404,9 @@ eToolkitExtraPtrsMemoryEnd:: // 0x200153c
 
 	.space 1348
 eReqBBSGui:: // 0x2005780
-    req_bbs_gui_struct eReqBBSGui
+	req_bbs_gui_struct eReqBBSGui
 
-    .balign 0x10, 0x00
+	.balign 0x10, 0x00
 eOverworldNPCObjects:: // 0x20057b0
 	overworld_npc_object_struct eOverworldNPCObject0
 	overworld_npc_object_struct eOverworldNPCObject1
@@ -688,7 +688,7 @@ unk_2009AC0:: // 0x2009ac0
 dword_2009CC0:: // 0x2009cc0
 	.space 16
 eChatbox:: // 0x2009cd0
-    chatbox_struct eChatbox
+	chatbox_struct eChatbox
 unk_2009F00:: // 0x2009f00
 	.space 52
 eActiveOWPlayerObjectBitfield:: // 0x2009f34
@@ -901,7 +901,7 @@ byte_200AD05:: // 0x200ad05
 word_200AD06:: // 0x200ad06
 	.space 10
 eStartScreen:: // 0x200ad10
-    start_screen_struct eStartScreen
+	start_screen_struct eStartScreen
 	.space 560
 BattleSettings_200AF60:: // 0x200af60
 	.space 16

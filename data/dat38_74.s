@@ -1,6 +1,6 @@
 	.include "data/dat38_74.inc"
 comp_86D55C8:
-    .incbin "data/scripts/comp_86D55C8.lz"
+	.incbin "data/scripts/comp_86D55C8.lz"
 TextScriptNaviCustDialog: .word 0x1600050, 0x2A40192, 0x34C034C, 0x34C034C, 0x34C034C
 	.word 0x37C034C, 0x3CF03A6, 0x3FC03FC, 0x4780448, 0x4CF04A2
 	.word 0x51304CF, 0x61505C2, 0x6700643, 0x6EC06C1, 0x78E0719

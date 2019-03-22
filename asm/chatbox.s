@@ -133,7 +133,7 @@ off_803FDF4: .word 0x280
 off_803FDFC: .word byte_86BFE20
 off_803FE00: .word unk_3001B40
 off_803FE04: .word byte_86BFE40
-    thumb_func_end chatbox_runScript_803FDA4
+	thumb_func_end chatbox_runScript_803FDA4
 
 // (void *textScript, u8 scriptIdx) -> void
 	thumb_func_start chatbox_runScript_803FE08
@@ -516,7 +516,7 @@ off_8040138: .word sub_3006F8C+1
 byte_8040140: .byte 0x0, 0xB, 0x4D, 0x25, 0x44, 0x2A, 0x0, 0x0
 	.word byte_8043CA4
 Flags804014C: .word FLAGS_3E_UNK_0800 | FLAGS_3E_UNK_0040
-    .word 0x138
+	.word 0x138
 	thumb_func_end chatbox_interpreteAndDrawDialogChar_1
 
 	thumb_local_start
@@ -778,7 +778,7 @@ chatbox_CopyBackgroundTiles_8040344:
 	pop {r5}
 	pop {pc}
 	.balign 4, 0x00
-    .pool
+	.pool
 	thumb_func_end chatbox_CopyBackgroundTiles_8040344
 
 // (u8 scriptOffIdx) -> void
@@ -1690,7 +1690,7 @@ dword_8040B34: .word 0xE3FC
 dword_8040B38: .word 0xB520E3FE
 	thumb_func_end chatbox_8040A9A
 
-    thumb_local_start
+	thumb_local_start
 // (enum Mugshot idx) -> void
 sub_8040B3C:
 	push {r5}
@@ -1730,7 +1730,7 @@ loc_8040B66:
 	pop {r5,pc}
 off_8040B84: .word 0x3C0
 off_8040B88: .word 0x1F8
-    thumb_func_end sub_8040B3C
+	thumb_func_end sub_8040B3C
 
 	thumb_local_start
 chatbox_8040B8C:
@@ -2378,7 +2378,7 @@ loc_804107A:
 	bl chatbox_clearFlags_3e // (int mask) -> void
 	mov r0, #1
 	pop {pc}
-    .pool
+	.pool
 	thumb_func_end chatbox_804103E
 
 	thumb_local_start

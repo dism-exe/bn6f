@@ -165482,7 +165482,7 @@ sub_810AC34:
 	thumb_func_end sub_810AC34
 
 	// this is code that hasn't been referenced yet
-    thumb_local_start
+	thumb_local_start
 sub_810AC38:
 	push {r4-r7,lr}
 	ldr r0, [r5,#0x6c]
@@ -165525,27 +165525,27 @@ loc_810AC82:
 loc_810AC86:
 	mov r0, #0
 	pop {r4-r7,pc}
-    thumb_func_end sub_810AC38
+	thumb_func_end sub_810AC38
 
-    thumb_local_start
+	thumb_local_start
 sub_810AC8A:
 	push {r4-r7,lr}
 	pop {r4-r7,pc}
-    thumb_func_end sub_810AC8A
+	thumb_func_end sub_810AC8A
 
-    thumb_local_start
+	thumb_local_start
 sub_810AC8E:
 	push {r4-r7,lr}
 	pop {r4-r7,pc}
 	thumb_func_end sub_810AC8E
 
-    thumb_local_start
+	thumb_local_start
 sub_810AC92:
 	push {r4-r7,lr}
 	pop {r4-r7,pc}
 	thumb_func_end sub_810AC92
 
-    thumb_local_start
+	thumb_local_start
 sub_810AC96:
 	push {r4-r7,lr}
 	pop {r4-r7,pc}

@@ -29196,7 +29196,7 @@ locret_801E790:
 	mov pc, lr
 	thumb_func_end sub_801E780
 
-    thumb_local_start
+	thumb_local_start
 sub_801E792:
 	push {r4-r7,lr}
 	sub sp, sp, #0xc
@@ -29270,7 +29270,7 @@ loc_801E81C:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_801E824: .word eStruct2035280
-    thumb_func_end sub_801E792
+	thumb_func_end sub_801E792
 
 	thumb_local_start
 sub_801E828:
@@ -29724,7 +29724,7 @@ sub_801EB9C:
 	pop {r4,r6,r7,pc}
 off_801EBC0: .word dword_86EA92C
 off_801EBC4: .word unk_3001AC0
-    thumb_func_end sub_801EB9C
+	thumb_func_end sub_801EB9C
 
 	thumb_local_start
 sub_801EBC8:

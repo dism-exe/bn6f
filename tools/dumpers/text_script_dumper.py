@@ -244,5 +244,5 @@ if __name__ == '__main__':
     script, end_addr = read_script(int(sys.argv[1], 16), path)
 
     for i in script:
-        print('    ' + i.replace('\t', '    '))
+        print('\t' + i)
     print(hex(end_addr))

@@ -35,14 +35,14 @@
 		struct_org 0x5c
 		u8 \label, Unk_5c // loc=0x5c
 		struct_org 0x80
-        u0 \label, AliveBattleActors // loc=0x80
-        u8_arr \label, AlivePlayerActors, 0x10 // loc=0x80
-        u8_arr \label, AliveOpponentActors, 0x10 // loc=0x90
-        u0 \label, Unk_a0 // loc=0xa0
-        struct_org 0xd0
-        u0 \label, BattleActors // loc=0xd0
-        u8_arr \label, PlayerActors, 0x10 // loc=0xd0
-        u8_arr \label, OpponentActors, 0x10 // loc=0xe0
+		u0 \label, AliveBattleActors // loc=0x80
+		u8_arr \label, AlivePlayerActors, 0x10 // loc=0x80
+		u8_arr \label, AliveOpponentActors, 0x10 // loc=0x90
+		u0 \label, Unk_a0 // loc=0xa0
+		struct_org 0xd0
+		u0 \label, BattleActors // loc=0xd0
+		u8_arr \label, PlayerActors, 0x10 // loc=0xd0
+		u8_arr \label, OpponentActors, 0x10 // loc=0xe0
 		u0 \label, Size // loc=0xf0
 	.endm
 

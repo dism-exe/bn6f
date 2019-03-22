@@ -171,7 +171,7 @@ unk_30025B0:: // 0x30025b0
 // array of 32x32 blocks of u16 tile ids
 // 0x2000 is cleared and recopied every frame
 iBGTileIdBlocks:: // 0x30025c0
-    .space 2*32*32*4
+	.space 2*32*32*4
 byte_30045C0:: // 0x30045c0
 	.space 2688
 byte_3005040:: // 0x3005040

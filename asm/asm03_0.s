@@ -15292,18 +15292,18 @@ locret_802E170:
 	.word DebugStr802E187
 	.word DebugStr802E1A2
 DebugStr802E180:
-    .hword 0x20D
-    .asciz "%04x"
+	.hword 0x20D
+	.asciz "%04x"
 DebugStr802E187:
-    .hword 0x219
-    .ascii "%04x\n"
-    .ascii "%04x\n"
-    .ascii "%04x\n"
-    .ascii "%04x\n"
-    .asciz "%04x"
+	.hword 0x219
+	.ascii "%04x\n"
+	.ascii "%04x\n"
+	.ascii "%04x\n"
+	.ascii "%04x\n"
+	.asciz "%04x"
 DebugStr802E1A2:
-    .hword 0x814
-    .asciz "%02x,%02x,%04x"
+	.hword 0x814
+	.asciz "%02x,%02x,%04x"
 	.byte 0x0
 	thumb_func_end sub_802E156
 
@@ -17302,7 +17302,7 @@ TestEventFlagFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
-    thumb_func_end TestEventFlagFromImmediate
+	thumb_func_end TestEventFlagFromImmediate
 
 // Test a flag at eEventFlags
 // r0[15:3] = event byte offset
@@ -17343,7 +17343,7 @@ SetEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
-    thumb_func_end SetEventFlagRangeFromImmediate
+	thumb_func_end SetEventFlagRangeFromImmediate
 
 
 // Set multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
@@ -17401,7 +17401,7 @@ ClearEventFlagRangeFromImmediate:
 	lsl r0, r0, #8
 	orr r0, r1
 // fallthrough
-    thumb_func_end ClearEventFlagRangeFromImmediate
+	thumb_func_end ClearEventFlagRangeFromImmediate
 
 // Clears multiple flags in sequence starting at the flag in r0 (i.e. r0, r0+1, r0+2 etc.)
 // Number of flags to clear is in r2
@@ -21176,17 +21176,17 @@ DebugStrings8030FF4: .word DebugStr8031004
 	.word DebugStr8031026
 	.word DebugStr8031037
 DebugStr8031004:
-    .hword 0xD00
-    .asciz "00 X:%8X Y:%8X"
+	.hword 0xD00
+	.asciz "00 X:%8X Y:%8X"
 DebugStr8031015:
-    .hword 0xE00
-    .asciz "01 X:%8X Y:%8X"
+	.hword 0xE00
+	.asciz "01 X:%8X Y:%8X"
 DebugStr8031026:
-    .hword 0xF00
-    .asciz "02 X:%8X Y:%8X"
+	.hword 0xF00
+	.asciz "02 X:%8X Y:%8X"
 DebugStr8031037:
-    .hword 0x1000
-    .asciz "03 X:%8X Y:%8X"
+	.hword 0x1000
+	.asciz "03 X:%8X Y:%8X"
 	thumb_func_end sub_8030F7C
 
 	thumb_local_start

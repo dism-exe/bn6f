@@ -303,11 +303,11 @@ iCopyBackgroundTiles:
 	add r4, r4, r0
 	add r5, r5, r1
 // for (int i=a1_i; i<a1_i + a5_i_size; i++)
-//      for (int j=a0_j; j<a0_j + a4_j_size; j++)
+//	  for (int j=a0_j; j<a0_j + a4_j_size; j++)
 DoubleForLoop3005E90:
-    // if ( !((j | i) & ~0x1f) )
-    // type protection, ensures only to copy if j and i are <= 31
-    // since the array is 32x32
+	// if ( !((j | i) & ~0x1f) )
+	// type protection, ensures only to copy if j and i are <= 31
+	// since the array is 32x32
 	mov r2, #0x1f
 	mvn r2, r2
 	mov r7, r0
@@ -322,7 +322,7 @@ DoubleForLoop3005E90:
 	ldrh r7, [r3]
 	strh r7, [r6,r2]
 loc_3005EA6:
-    // tileIds++
+	// tileIds++
 	add r3, #2
 	// while (++a0_j < j_size)
 	add r0, #1
