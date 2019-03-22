@@ -7169,18 +7169,18 @@ loc_81270EC:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_812711C: .word off_8127120
-off_8127120: .word byte_86D7578
-	.word byte_86D7578
-	.word byte_86D7578
-	.word byte_86D7578
-	.word byte_86D7578
-	.word byte_86D7578
-	.word byte_86D78C0
-	.word byte_86D7C24
-	.word byte_86D7F74
-	.word TextScriptNaviCustAndFolders86D82C4
-	.word byte_86D860C
-	.word byte_86D7578
+off_8127120: .word CompTextScript86D7578
+	.word CompTextScript86D7578
+	.word CompTextScript86D7578
+	.word CompTextScript86D7578
+	.word CompTextScript86D7578
+	.word CompTextScript86D7578
+	.word CompTextScript86D78C0
+	.word CompTextScript86D7C24
+	.word CompTextScript86D7F74
+	.word CompTextScriptNaviCustAndFolders86D82C4
+	.word CompTextScript86D860C
+	.word CompTextScript86D7578
 	.word byte_86D894C
 off_8127154: .word eTextScript201BF20
 off_8127158: .word eDecompBuffer2013A00

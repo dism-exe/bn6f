@@ -2900,7 +2900,7 @@ byte_8027B4F: .byte 0x0, 0x1, 0xF, 0x2, 0x1, 0x9, 0x0, 0x3, 0xD, 0x2, 0x2, 0xB, 
 	.byte 0x0, 0xC, 0x3, 0x2, 0xA, 0xB, 0x0, 0xFF, 0x0
 TextScriptFirstBattleTutorials: .word TextScriptBattleTut1
 	.word TextScriptBattleTutAreaGrab
-	.word TextScriptBattleTutFullSyncrho
+	.word TextScriptBattleTutFullSynchro
 TextScriptPtrArr8027BDC: .word TextScriptDadCybeastTut
 	.word TextScriptDadCybeastTut
 	.word TextScriptDadCybeastTut

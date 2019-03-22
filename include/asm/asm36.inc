@@ -409,7 +409,7 @@
 // .global dword_86CF1A8
 // .global TextScriptFolderNames
 // .global CompTextScriptNetworkPlyTmSave86CF618
-// .global eTextScriptNetworkSave86CF730
+// .global TextScriptNetworkSave86CF730
 
 	.include "data/dat38_74.inc"
 // .global TextScriptNaviCustDialog

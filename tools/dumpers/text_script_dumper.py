@@ -93,11 +93,15 @@ def parse_text_script(config_ini_path, bin_path, address):
     with open(bin_path, 'rb') as bin_file:
         bin_file.seek(address)
         rel_pointers = read_relative_pointers(bin_file, address)
+        for p in rel_pointers: print(hex(p) + ' ', end='');
+        print('')
         last_script_pointer = max(rel_pointers)
         end_script = False
+
         while bin_file.tell() < address + last_script_pointer or not end_script:
-            # define script start
+            # check script start
             if bin_file.tell() - address in rel_pointers:
+                # print(hex(script_cur), hex(bin_file.tell() - address))
                 units.append(script_cur)
                 script_cur += 1
             byte = bin_file.read(1)
@@ -123,6 +127,14 @@ def parse_text_script(config_ini_path, bin_path, address):
             cmd = byte
             if ord(cmd) == 0xE6:
                 continue # accounted for in string
+
+            # handle control commands
+            # check script start
+            if bin_file.tell() - address in rel_pointers:
+                print(hex(script_cur), hex(bin_file.tell() - address))
+                units.append(script_cur)
+                script_cur += 1
+
             if not end_script:
                 end_script = bin_file.tell() > address+last_script_pointer and ord(cmd) == 0xE6
             # read command
@@ -224,6 +236,7 @@ if __name__ == '__main__':
     import sys
     if len(sys.argv) < 2:
         print('usage: text_script_dumper <address> [file]')
+        exit(0)
     if len(sys.argv) > 2:
         path = sys.argv[2]
     else:

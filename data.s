@@ -584,7 +584,7 @@ spriteWhiteDot:
 compSpriteWhiteDot_84E0C4C:
 	.incbin "data/sprites/compSpriteWhiteDot_84E0C4C.lz77"
 dat38_59:
-	.include "data/dat38_59.s"
+	.include "data/dat38_59.s" // sprites
 comp_857CCC8:
 	.incbin "data/compressed/comp_857CCC8.lz77"
 comp_857D43C:
@@ -809,8 +809,7 @@ comp_86DDB7C:
 	.incbin "data/compressed/comp_86DDB7C.lz77"
 dat38_85:
 	.include "data/dat38_85.s"
-TextScriptBattleTutFullSyncrho:
-	.incbin "data/scripts/TextScriptBattleTutFullSyncrho.bin"
+	.include "data/scripts/TextScriptBattleTutFullSynchro.s"
 TextScriptDadCybeastTut:
 	.incbin "data/scripts/TextScriptDadCybeastTut.bin"
 TextScriptShukoCrossTut:

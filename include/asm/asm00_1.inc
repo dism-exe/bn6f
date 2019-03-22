@@ -1334,7 +1334,7 @@
 	.equ IWRAMRoutinesROMLocation, 0x81D6000
 	.equ IWRAMRoutinesROMLocation, 0x81D6000
 	.equ IWRAMRoutinesROMLocation, 0x81D6000
-// .global TextScriptBattleTutFullSyncrho
+// .global TextScriptBattleTutFullSynchro
 // .global TextScriptDadCybeastTut
 // .global TextScriptShukoCrossTut
 // .global TextScriptCommError87370C0

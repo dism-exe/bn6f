@@ -11667,7 +11667,7 @@ sub_800951E:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_8009534
-	ldr r0, =TextScriptBattleTutFullSyncrho
+	ldr r0, =TextScriptBattleTutFullSynchro
 	mov r1, #0xa
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	mov r0, #4

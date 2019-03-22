@@ -8849,7 +8849,7 @@ int sub_800951E()
     }
     else
     {
-        chatbox_runScript(TextScriptBattleTutFullSyncrho, 10);
+        chatbox_runScript(TextScriptBattleTutFullSynchro, 10);
         result = 4;
         *(v0 + 3) = 4;
     }

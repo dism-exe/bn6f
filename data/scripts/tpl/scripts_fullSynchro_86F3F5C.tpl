@@ -1,4 +1,4 @@
-@archive TextScriptBattleTutFullSyncrho
+@archive TextScriptBattleTutFullSynchro
 @size 13
 
 script 0 mmbn6 {

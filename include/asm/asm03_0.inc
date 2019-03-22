@@ -1003,7 +1003,7 @@
 // .global comp_86DDAD0
 // .global comp_86DDB44
 // .global comp_86DDB7C
-// .global TextScriptBattleTutFullSyncrho
+// .global TextScriptBattleTutFullSynchro
 // .global TextScriptDadCybeastTut
 // .global TextScriptShukoCrossTut
 // .global comp_87F3370

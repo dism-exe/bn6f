@@ -345,12 +345,12 @@
 // .global dword_86D6954
 
 	.include "data/dat38_75.inc"
-// .global byte_86D7578
-// .global byte_86D78C0
-// .global byte_86D7C24
-// .global byte_86D7F74
-// .global TextScriptNaviCustAndFolders86D82C4
-// .global byte_86D860C
+// .global CompTextScript86D7578
+// .global CompTextScript86D78C0
+// .global CompTextScript86D7C24
+// .global CompTextScript86D7F74
+// .global CompTextScriptNaviCustAndFolders86D82C4
+// .global CompTextScript86D860C
 // .global byte_86D894C
 
 	.include "data/dat38_77.inc"

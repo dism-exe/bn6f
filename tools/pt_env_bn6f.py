@@ -1016,7 +1016,7 @@ pt.env(gameFiles={
 	(0x86DDB7C, 0x86DDBA0), # size=0x24
 'data/dat38_85.s':
 	(0x86DDBA0, 0x86F3F5C), # size=0x163BC
-'data/scripts/TextScriptBattleTutFullSyncrho.bin':
+'data/scripts/TextScriptBattleTutFullSynchro.s':
 	(0x86F3F5C, 0x86F4498), # size=0x53C
 'data/scripts/TextScriptDadCybeastTut.bin':
 	(0x86F4498, 0x86F53CC), # size=0xF34
