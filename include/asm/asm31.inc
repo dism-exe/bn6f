@@ -660,7 +660,7 @@
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
-// .global sub_8000AC8
+// .global QueueEightWordAlignedGFXTransfer
 // .global sub_8000C72
 // .global sub_8000DE0
 // .global calcAngle_800117C

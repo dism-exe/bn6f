@@ -15193,7 +15193,7 @@ sub_812B530:
 	add r0, #4
 	ldr r1, dword_812B56C // =0x6014700 
 	ldr r2, off_812B570 // =0x100 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldrb r0, [r5,#0x1b]
 	mov r1, #0x10
 	orr r0, r1

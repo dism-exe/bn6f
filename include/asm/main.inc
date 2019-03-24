@@ -19,7 +19,7 @@
 // .global sub_80007BE
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global sub_8000A3C
-// .global objRender_8000A44
+// .global ProcessGFXTransferQueue
 // .global sub_8000E10
 // .global SeedRNG2 // () -> void
 // .global GetRNG1 // () -> void

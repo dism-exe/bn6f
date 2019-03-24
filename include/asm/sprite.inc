@@ -54,7 +54,7 @@
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global HalfwordFill
 // .global WordFill
-// .global sub_8000AC8
+// .global QueueEightWordAlignedGFXTransfer
 
 	.include "asm/asm00_2.inc"
 // .global sub_800F26C

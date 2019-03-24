@@ -147,7 +147,7 @@ sub_8033978:
 	ldr r0, off_80339B0 // =dword_86C0D20 
 	ldr r1, dword_80339B4 // =0x6017200 
 	ldr r2, off_80339B8 // =0x100 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #0
 	bl sub_8033DA0
 	pop {r4-r7,pc}
@@ -155,11 +155,11 @@ loc_8033998:
 	ldr r0, off_80339C0 // =byte_86C1F80 
 	ldr r1, dword_80339B4 // =0x6017200 
 	ldr r2, off_80339C4 // =0x340 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, off_80339C8 // =byte_86C1F20 
 	ldr r1, off_80339BC // =byte_30016D0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_80339B0: .word dword_86C0D20
@@ -436,7 +436,7 @@ loc_8033C02:
 	ldr r0, [r1,r4]
 	ldr r1, dword_8033C58 // =0x6017380 
 	ldr r2, off_8033C5C // =0x80 
-	bl sub_8000AC4
+	bl QueueWordAlignedGFXTransfer
 	ldr r0, dword_8033C60 // =0x40120006 
 	ldr r1, dword_8033C64 // =0xc79c 
 	mov r2, #1
@@ -473,7 +473,7 @@ sub_8033C68:
 	ldr r0, [r1,r0]
 	ldr r1, dword_8033CD8 // =0x6017400 
 	ldr r2, off_8033CDC // =0x100 
-	bl sub_8000AC4
+	bl QueueWordAlignedGFXTransfer
 	ldrb r0, [r5,#6]
 	ldr r1, off_8033CC0 // =byte_8033CC4
 	ldrb r0, [r1,r0]
@@ -528,7 +528,7 @@ sub_8033CF0:
 	ldr r0, [r1,r0]
 	ldr r1, dword_8033D74 // =0x6017400 
 	ldr r2, off_8033D78 // =0x100 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldrb r0, [r5,#6]
 	add r0, #1
 	cmp r0, #0x12
@@ -612,7 +612,7 @@ loc_8033DBC:
 	add r0, r0, r6
 	ldr r1, off_8033E08 // =byte_30016D0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_8033DD0: .word off_8033DD4
@@ -806,7 +806,7 @@ sub_8033F80:
 	ldr r0, off_8033FA8 // =byte_86C1AA0 
 	ldr r1, dword_8033FAC // =0x6017580 
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, off_8033FB0 // =byte_8033FB4
 	lsl r4, r4, #2
 	ldr r0, [r0,r4]
@@ -1308,7 +1308,7 @@ loc_80343D0:
 	ldr r0, [r7,#4]
 	ldr r1, off_8034458 // =byte_3001960 
 	mov r2, #0x20 
-	bl sub_8000AC4
+	bl QueueWordAlignedGFXTransfer
 	// j
 	mov r0, #0
 	// i
@@ -14096,7 +14096,7 @@ loc_803BE78:
 	ldr r0, [sp,#4]
 	ldr r1, [sp,#8]
 	ldr r2, [sp,#0xc]
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add sp, sp, #0x10
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -15147,7 +15147,7 @@ loc_803C5DE:
 	add r0, r0, r1
 	ldr r1, dword_803C5FC // =0x6017e80 
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 locret_803C5EC:
 	pop {r4-r7,pc}
 	.byte 0, 0

@@ -7849,7 +7849,7 @@ sub_80075CA:
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	// dataList
 	ldr r0, dataList // =off_80075F0 
-	bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+	bl QueueGFXTransfersInList // (u32 *dataRefs) -> void
 	ldr r0, off_800761C // =dword_86DDBA0
 	ldr r1, dword_8007620 // =0x6001460 
 	bl SWI_LZ77UnCompReadNormalWrite16bit

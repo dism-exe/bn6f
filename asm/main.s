@@ -13,7 +13,7 @@ main_gameRoutine:
 	bl sub_80019A0
 	bl render_800172C
 	bl objRender_802FE0C
-	bl objRender_8000A44
+	bl ProcessGFXTransferQueue
 	bl getPalleteAndTransition_80023E0
 	bl renderPalletes_8001808
 	bl renderPalletesAndObjs_8002650

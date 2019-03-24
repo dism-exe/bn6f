@@ -356,9 +356,9 @@
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
-// .global sub_8000AC4
-// .global sub_8000AC8
-// .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+// .global QueueWordAlignedGFXTransfer
+// .global QueueEightWordAlignedGFXTransfer
+// .global QueueGFXTransfersInList // (u32 *dataRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
 // .global sub_8000D84

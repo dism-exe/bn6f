@@ -58,7 +58,7 @@
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global WordFill
-// .global sub_8000AC8
+// .global QueueEightWordAlignedGFXTransfer
 // .global sub_8000C00
 // .global sub_8000C5C
 

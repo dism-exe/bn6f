@@ -29,12 +29,12 @@
 	.global WordFill
 	.global FillByEightWords
 	.global sub_8000A3C
-	.global objRender_8000A44
-	.global sub_8000AC4
-	.global sub_8000AC8
+	.global ProcessGFXTransferQueue
+	.global QueueWordAlignedGFXTransfer
+	.global QueueEightWordAlignedGFXTransfer
 	.global loc_8000ACA
 	.global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
-	.global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+	.global QueueGFXTransfersInList // (u32 *dataRefs) -> void
 	.global sub_8000C00
 	.global sub_8000C5C
 	.global sub_8000C72

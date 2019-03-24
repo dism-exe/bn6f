@@ -543,7 +543,7 @@ loc_300608C:
 	ldrh r3, [r5,#8]
 	lsl r3, r3, #5
 	add r1, r1, r3
-	ldr r7, off_3006104 // =sub_8000AC8+1
+	ldr r7, off_3006104 // =QueueEightWordAlignedGFXTransfer+1
 	mov lr, pc
 	bx r7
 	mov r5, r8
@@ -580,7 +580,7 @@ off_30060E8: .word dword_200F350
 	.word dword_200F350
 	.word dword_200F350
 dword_3006100: .word 0x6010000
-off_3006104: .word sub_8000AC8+1
+off_3006104: .word QueueEightWordAlignedGFXTransfer+1
 	thumb_func_end sub_3006028
 
 	thumb_local_start
@@ -2042,14 +2042,14 @@ loc_3006BF6:
 	tst r1, r1
 	beq loc_3006C04
 	sub r2, r2, r0
-	ldr r3, off_3006C0C // =sub_8000AC8+1
+	ldr r3, off_3006C0C // =QueueEightWordAlignedGFXTransfer+1
 	mov lr, pc
 	bx r3
 loc_3006C04:
 	mov r0, r9
 	pop {pc}
 off_3006C08: .word off_3006B18
-off_3006C0C: .word sub_8000AC8+1
+off_3006C0C: .word QueueEightWordAlignedGFXTransfer+1
 	.word ZeroFillByByte+1
 off_3006C14: .word dword_3006B84
 	thumb_func_end sub_3006B94
@@ -2841,7 +2841,7 @@ loc_30071BE:
 	ldr r0, off_30071F0 // =dword_200CDA0
 	ldr r1, dword_30071F4 // =0x6015700
 	ldr r2, dword_30071F8 // =0xf00
-	ldr r3, off_30071FC // =sub_8000AC8+1
+	ldr r3, off_30071FC // =QueueEightWordAlignedGFXTransfer+1
 	mov lr, pc
 	bx r3
 	mov r5, r10
@@ -2862,7 +2862,7 @@ locret_30071E8:
 off_30071F0: .word dword_200CDA0
 dword_30071F4: .word 0x6015700
 dword_30071F8: .word 0xF00
-off_30071FC: .word sub_8000AC8+1
+off_30071FC: .word QueueEightWordAlignedGFXTransfer+1
 off_3007200: .word 0x400
 off_3007204: .word chatbox_maskFlags_3e+1
 off_3007208: .word off_300720C

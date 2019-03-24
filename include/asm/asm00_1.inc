@@ -232,7 +232,7 @@
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global WordFill
-// .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+// .global QueueGFXTransfersInList // (u32 *dataRefs) -> void
 // .global sub_8000D12
 // .global sub_8000D84
 // .global sub_8000FAC
