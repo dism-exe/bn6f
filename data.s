@@ -1,5 +1,7 @@
 	.include "include/data/data.inc"
 
+	.include "charmap.inc"
+
 // TODO: put at the end of asm38 instead
 	.global IWRAMRoutinesEnd
 IWRAMRoutinesEnd:

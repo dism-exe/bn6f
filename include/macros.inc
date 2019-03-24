@@ -1,3 +1,4 @@
+	.include "charmap.inc"
 	.include "include/macros/label.inc"
 	.include "include/macros/struct.inc"
 	.include "include/macros/enum.inc"
@@ -96,9 +97,12 @@ print_expr_test_label:
 		.macro u8 field:req
 			.print "\label\()_\field"
 		.endm
-		__defined_types = 0
+		
 	.endm
 	__struct_label_stack\()\size
+	.endm
+
+	.macro u8
 	.endm
 
 	.macro _struct_end size:req
@@ -106,10 +110,10 @@ print_expr_test_label:
 	.endm
 
 	.macro set_struct_label label:req
-	__struct_label_stack_size = __struct_label_stack_size + 1
 	.altmacro
 	_add_struct_label %__struct_label_stack_size, \label
 	.noaltmacro
+	__struct_label_stack_size = __struct_label_stack_size + 1
 	.endm
 
 	.macro struct_end
