@@ -54,7 +54,7 @@
 	.global loc_8001048
 	.global updatePlayerGameState_800107A // () -> void
 	.global getPETNaviSelect // () -> u8
-	.global sub_80010BE
+	.global setPETNaviSelect
 	.global sub_80010C6
 	.global sub_80010D4
 	.global sub_80010EC

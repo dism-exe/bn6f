@@ -34835,7 +34835,7 @@ sub_8121198:
 	pop {r4,pc}
 	thumb_func_end sub_8121198
 
-	.byte 0, 0
+	.balign 4, 0
 off_81211B0: .word byte_81211B4
 byte_81211B4: .byte 0x41, 0x1, 0x50, 0x1, 0x5F, 0x1, 0x6E, 0x1, 0x7D, 0x1, 0x8C
 	.byte 0x1, 0x9B, 0x1, 0xAA, 0x1, 0xB9, 0x1, 0xC8, 0x1, 0xD7, 0x1
@@ -34852,6 +34852,7 @@ off_81211D0: .word byte_8123199
 	.word byte_81231F1
 	.word byte_81231F9
 	.word byte_8123201
+
 off_81211FC: .word pt_8121200
 pt_8121200: .word off_8121230
 	.word off_812148C
@@ -34865,21 +34866,5 @@ pt_8121200: .word off_8121230
 	.word off_812291C
 	.word off_8122BF8
 	.word off_8122EBC
-off_8121230: .word off_8121234
-off_8121234: .word byte_8121270
-	.word byte_812127C
-	.word byte_8121288
-	.word byte_812129C
-	.word byte_81212B0
-	.word byte_81212CC
-	.word byte_81212E8
-	.word byte_812130C
-	.word byte_8121330
-	.word byte_8121354
-	.word byte_8121388
-	.word byte_81213BC
-	.word byte_81213F0
-	.word byte_8121424
 	// <endfile>
-	.word byte_8121458
 /*For debugging purposes, connect comment at any range!*/

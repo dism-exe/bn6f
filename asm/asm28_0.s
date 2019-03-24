@@ -3312,7 +3312,7 @@ loc_809C042:
 loc_809C050:
 	bl sub_80010C6
 	ldrb r0, [r7,#0x14]
-	bl sub_80010BE
+	bl setPETNaviSelect
 	bl sub_8120DF0
 	bl sub_8033FDC
 	mov r0, #0
@@ -3960,7 +3960,7 @@ loc_809CBAA:
 	beq loc_809CBCC
 	bl sub_80010C6
 	mov r0, #0
-	bl sub_80010BE
+	bl setPETNaviSelect
 	mov r0, #0
 	str r0, [r5,#0x70]
 	b loc_809CBE8
@@ -4081,7 +4081,7 @@ loc_809CC7E:
 	ldr r2, [r2,#0x2c]
 	ldr r0, [r5,#0x78]
 	str r0, [r2,#0x4c]
-	bl sub_80010BE
+	bl setPETNaviSelect
 	mov r0, #0x8d
 	bl sound_play // () -> void
 	ldr r0, byte_809CEAC+4 // =0x4

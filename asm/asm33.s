@@ -15298,7 +15298,7 @@ sub_812B608:
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_812B620
 	mov r0, #0
-	bl sub_80010BE
+	bl setPETNaviSelect
 loc_812B620:
 	ldrh r4, [r5,#0x2a]
 	str r4, [r5,#0x44]
@@ -15396,7 +15396,7 @@ loc_812B6D8:
 	mov r0, #0xc
 	strb r0, [r5,#2]
 	ldrb r0, [r5,#0x1a]
-	bl sub_80010BE
+	bl setPETNaviSelect
 	bl sub_813C3AC
 	bl sub_8036E78
 	mov r0, #0x17

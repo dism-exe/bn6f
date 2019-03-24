@@ -89,7 +89,7 @@
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
-// .global sub_80010BE
+// .global setPETNaviSelect
 // .global sub_80010C6
 // .global sub_8001172
 // .global sub_8001850

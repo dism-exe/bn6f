@@ -53,7 +53,7 @@
 // .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
 // .global sub_8000C00
 // .global getPETNaviSelect // () -> u8
-// .global sub_80010BE
+// .global setPETNaviSelect
 // .global sub_80015FC
 // .global sub_80017AA
 // .global sub_80017E0

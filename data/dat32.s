@@ -1,5 +1,21 @@
 	.include "data/dat32.inc"
 
+off_8121230: .word off_8121234
+off_8121234: .word byte_8121270
+	.word byte_812127C
+	.word byte_8121288
+	.word byte_812129C
+	.word byte_81212B0
+	.word byte_81212CC
+	.word byte_81212E8
+	.word byte_812130C
+	.word byte_8121330
+	.word byte_8121354
+	.word byte_8121388
+	.word byte_81213BC
+	.word byte_81213F0
+	.word byte_8121424
+	.word byte_8121458
 byte_8121270: .byte 0x0
 	.byte 0x0, 0x0, 0x0, 0x14, 0x0, 0x0, 0x0, 0xFF, 0xFF, 0xFF, 0xFF
 byte_812127C: .byte 0x0, 0x0, 0x0, 0x0, 0x28, 0x0, 0x0, 0x0, 0xFF, 0xFF, 0xFF, 0xFF

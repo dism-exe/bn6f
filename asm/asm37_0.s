@@ -1745,7 +1745,7 @@ sub_813C458:
 	bl getPETNaviSelect // () -> u8
 	mov r4, r0
 	mov r0, #0
-	bl sub_80010BE
+	bl setPETNaviSelect
 	bl sub_813C678
 	mov r0, #0x17
 	mov r1, #0xd
@@ -1753,7 +1753,7 @@ sub_813C458:
 	bl sub_813C684
 	bl sub_813CBCC
 	mov r0, r4
-	bl sub_80010BE
+	bl setPETNaviSelect
 	bl sub_803CE44
 	pop {r4,pc}
 	.byte 0, 0

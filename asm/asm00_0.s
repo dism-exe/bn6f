@@ -1714,13 +1714,13 @@ getPETNaviSelect:
 	mov pc, lr
 	thumb_func_end getPETNaviSelect
 
-	thumb_func_start sub_80010BE
-sub_80010BE:
+	thumb_func_start setPETNaviSelect
+setPETNaviSelect:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	strb r0, [r3,#oGameState_PETNaviIndex]
 	mov pc, lr
-	thumb_func_end sub_80010BE
+	thumb_func_end setPETNaviSelect
 
 	thumb_func_start sub_80010C6
 sub_80010C6:

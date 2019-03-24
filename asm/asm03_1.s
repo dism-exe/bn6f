@@ -986,7 +986,7 @@ loc_8034108:
 	bne loc_803412A
 	bl sub_80010C6
 	mov r0, #0
-	bl sub_80010BE
+	bl setPETNaviSelect
 	bl sub_8120DF0
 	bl sub_813C3AC
 	bl sub_80010C6
@@ -8008,7 +8008,7 @@ sub_80382FE:
 	mov r6, #1
 	bl ReadMapScriptByte
 	mov r0, r4
-	bl sub_80010BE
+	bl setPETNaviSelect
 	bl sub_8120DF0
 	bl sub_813C3AC
 	bl sub_803CEB8

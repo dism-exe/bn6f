@@ -81,7 +81,7 @@
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global getPETNaviSelect // () -> u8
-// .global sub_80010BE
+// .global setPETNaviSelect
 // .global GetRNG2 // () -> int
 
 	.include "asm/asm00_2.inc"

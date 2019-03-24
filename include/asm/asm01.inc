@@ -14,13 +14,9 @@
 	.global sub_8020140
 	.global sub_802015E
 	.global off_8020170
-	.global off_8020174
 	.global off_8020178
-	.global off_802017C
 	.global off_8020180
-	.global off_8020184
 	.global off_8020188
-	.global off_802018C
 	.global off_8020190
 	.global off_80201E4
 	.global pt_8020240
