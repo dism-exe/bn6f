@@ -4458,7 +4458,7 @@ reqBBS_clearFlag_8140A0C:
 	mov r1, #0
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r5, r10
-	ldr r5, [r5,#oToolkit_Unk2001c04_Ptr]
+	ldr r5, [r5,#oToolkit_S2001c04_Ptr]
 	mov r3, #0x14
 	ldrh r0, [r5,r3]
 	mov r3, #0x12

@@ -6668,7 +6668,7 @@ sub_804A360:
 	mov r3, #4
 	bl sub_8120018
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	mov r0, #5
 	strb r0, [r1,#2]
 	mov r0, #4
@@ -7944,7 +7944,7 @@ locret_804ADCE:
 sub_804ADD0:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	mov r1, #0xff
 	strb r1, [r0]
 	strb r1, [r0,#2]
@@ -7983,7 +7983,7 @@ sub_804AE04:
 	mov r0, #0x81
 	bl sound_play // () -> void
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrh r2, [r5,#0x34]
 	mov r1, #2
 	mov r4, #3

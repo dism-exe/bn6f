@@ -222,7 +222,7 @@ sub_8021C02:
 	sub sp, sp, #4
 	push {r0,r1}
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_Unk2001c04_Ptr]
+	ldr r2, [r2,#oToolkit_S2001c04_Ptr]
 	pop {r0,r1}
 	ldrb r2, [r2,#5]
 	str r2, [sp]

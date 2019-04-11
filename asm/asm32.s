@@ -30964,7 +30964,7 @@ loc_811F190:
 	mov r6, r1
 	mov r4, r2
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldrb r3, [r1,#6]
 	lsl r3, r3, #2
 	ldr r6, [r6,r3]
@@ -32066,7 +32066,7 @@ sub_811FB64:
 	thumb_func_start sub_811FB78
 sub_811FB78:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	strb r0, [r1,#6]
 	mov pc, lr
@@ -32091,7 +32091,7 @@ loc_811FB94:
 	ldr r3, [r3,r7]
 	ldr r3, [r3,r1]
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldrb r1, [r1,#6]
 	lsl r1, r1, #2
 	ldr r4, [r3,r1]
@@ -32318,7 +32318,7 @@ sub_811FDB8:
 	sub sp, sp, #0x14
 	mov r4, r0
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r6, [r0,#5]
 	cmp r6, #1
 	ble loc_811FE22
@@ -33614,7 +33614,7 @@ sub_8120740:
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r6, [r0,#5]
 	cmp r6, #1
 	ble loc_81207A8
@@ -34054,7 +34054,7 @@ dword_8120A84: .word 0x137
 sub_8120A88:
 	push {r4-r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r4, [r0,#5]
 loc_8120A90:
 	mov r7, r10
@@ -34082,7 +34082,7 @@ loc_8120A9E:
 sub_8120AB8:
 	push {r4-r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r4, [r0,#5]
 loc_8120AC0:
 	mov r7, r10
@@ -34396,7 +34396,7 @@ sub_8120D10:
 loc_8120D46:
 	mov r6, #0xf
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#5]
 	cmp r0, #1
 	bne loc_8120D64
@@ -34404,7 +34404,7 @@ loc_8120D46:
 	mov r0, #0x22 
 	bl sub_8137718
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r2, [r0,#5]
 	sub r2, #1
 	b loc_8120D9A
@@ -34431,7 +34431,7 @@ loc_8120D8C:
 	mov r0, #0x22 
 	bl sub_8137718
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r2, [r0,#5]
 	sub r2, #1
 loc_8120D9A:
@@ -34494,7 +34494,7 @@ loc_8120DFA:
 	cmp r1, r2
 	beq loc_8120E22
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#7]
 	cmp r1, #0x40 
 	bne loc_8120E16
@@ -34824,7 +34824,7 @@ loc_8121192:
 sub_8121198:
 	push {r4,lr}
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldr r4, [r1,#0x30]
 	bl getPETNaviSelect // () -> u8
 	lsl r0, r0, #1

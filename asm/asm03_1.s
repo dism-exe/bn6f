@@ -911,7 +911,7 @@ loc_8034064:
 	mov r1, #0
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk2001c04_Ptr]
+	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	strh r0, [r7,#0x12]
 	strh r0, [r7,#0x14]
@@ -1008,7 +1008,7 @@ loc_803412E:
 loc_8034140:
 	bl sub_803CEB8
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	mov r2, #0
 	str r2, [r0,#0x24]
 	str r2, [r0,#0x28]
@@ -1040,7 +1040,7 @@ loc_8034140:
 	mov r1, #0
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk2001c04_Ptr]
+	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	strh r0, [r7,#0x12]
 	strh r0, [r7,#0x14]
@@ -2347,7 +2347,7 @@ npc_80350BC:
 	pop {r4,pc}
 loc_80350E2:
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Unk2001c04_Ptr]
+	ldr r4, [r4,#oToolkit_S2001c04_Ptr]
 	// entryIdx
 	mov r0, #0x17
 	// byteFlagIdx
@@ -4204,7 +4204,7 @@ MapScriptCmd_write_gamestate_byte: // 8035EF2
 sub_8035F0E:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	mov r6, #1
 	bl ReadMapScriptByte
 	add r0, r0, r4
@@ -5308,7 +5308,7 @@ sub_8036E44:
 	ldr r7, off_8036E74 // =off_80360E4 
 	mov r0, r10
 	ldr r6, [r0,#oToolkit_GameStatePtr]
-	ldr r4, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r4, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r1, [r6,#4]
 	ldrb r2, [r6,#5]
 	ldrb r0, [r6,#7]
@@ -5339,7 +5339,7 @@ off_8036E74: .word off_80360E4
 sub_8036E78:
 	push {r4-r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#4]
 	bl sound_bgmusic_play // (int a1) -> void
 	pop {r4-r7,pc}
@@ -5349,7 +5349,7 @@ sub_8036E78:
 sub_8036E86:
 	push {r4-r7,lr}
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	strb r0, [r1,#4]
 	pop {r4-r7,pc}
 	thumb_func_end sub_8036E86
@@ -5397,7 +5397,7 @@ sub_8036ED4:
 	mov r0, #0
 	str r0, [r1,#0x38] // s_02011C50.unk_38
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	strh r0, [r1,#0x12] // s_02011C50.unk_12
 	strh r0, [r1,#0x14] // s_02011C50.pad_13+1
@@ -21064,7 +21064,7 @@ loc_803F814:
 	bl save_memSetFlags_8006E0E // (u8 *mem, int size) -> void
 	pop {r0-r2}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Unk2001c04_Ptr]
+	ldr r4, [r4,#oToolkit_S2001c04_Ptr]
 	ldr r4, [r4,#0x68]
 	bl sub_803F894
 	cmp r0, r4
@@ -21126,7 +21126,7 @@ dword_803F890: .word 0x6710
 sub_803F894:
 	push {r1-r7,lr}
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk2001c04_Ptr]
+	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	str r0, [r7,#0x68]
 	mov r0, #0
@@ -21147,7 +21147,7 @@ sub_803F8B2:
 	push {lr}
 	ldr r0, off_803F914 // =EXE6_InfoText_timestamp
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	add r1, #0x6c 
 	mov r2, #0x14
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
@@ -21158,7 +21158,7 @@ sub_803F8B2:
 sub_803F8C4:
 	push {r1-r7,lr}
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk2001c04_Ptr]
+	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
 	ldr r6, [r7,#0x68]
 	mov r0, #0
 	str r0, [r7,#0x68]
@@ -21187,7 +21187,7 @@ sub_803F8F4:
 	push {r1-r7,lr}
 	ldr r0, off_803F914 // =EXE6_InfoText_timestamp
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	add r1, #0x6c 
 	mov r2, #0x13
 loc_803F900:

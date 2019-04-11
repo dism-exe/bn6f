@@ -9774,7 +9774,7 @@ sub_80AA4C0:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_Unk2001c04_Ptr]
+	ldr r6, [r6,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	ldrb r3, [r7,#oGameState_MapGroup]
 	cmp r3, #0x80
@@ -11034,7 +11034,7 @@ loc_80AAD9A:
 sub_80AADA6:
 	push {r4,r6,r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#5]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_S_Chip_2002178_Ptr]
@@ -11056,7 +11056,7 @@ loc_80AADB6:
 	ldr r2, off_80AAE80 // =0xf00 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#5]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_S_Chip_2002178_Ptr]

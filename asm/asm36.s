@@ -152,7 +152,7 @@ sub_8130194:
 	strh r1, [r4,#0x2] // (word_2023FA2 - 0x2023fa0)
 	add r4, #4
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r1,#5]
 	mov r2, #0
 	ldr r1, off_81301D4 // =unk_20018EC 
@@ -180,7 +180,7 @@ sub_81301DC:
 	ldr r0, off_8130204 // =byte_812F044
 	bl sub_80465A0 // (void *a1) -> void
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r4, [r0,#5]
 	mov r6, #0
 loc_81301EC:
@@ -407,7 +407,7 @@ sub_8130370:
 	bne loc_81303C4
 loc_81303A2:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
@@ -5356,7 +5356,7 @@ off_8132F74: .word dword_86B7AE0
 sub_8132F78:
 	push {r4-r7,lr}
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_Unk2001c04_Ptr]
+	ldr r6, [r6,#oToolkit_S2001c04_Ptr]
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_Unk200a220_Ptr]
 	ldr r0, [r6,#0x18]
@@ -8222,7 +8222,7 @@ loc_81347F8:
 	bl sound_play // () -> void
 	ldrb r7, [r5,#0xd]
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrh r2, [r5,#0x34]
 	mov r1, #0
 	mov r4, #1
@@ -9190,7 +9190,7 @@ off_8134F74: .word unk_202A3E0
 sub_8134F78:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	mov r1, #0xff
 	strb r1, [r0]
 	strb r1, [r0,#2]
@@ -14194,7 +14194,7 @@ sub_8137718:
 	bne loc_813773E
 	mov r6, #0
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldrb r1, [r1,#5]
 loc_813773E:
 	str r1, [sp]
@@ -14215,7 +14215,7 @@ loc_8137762:
 	tst r6, r6
 	bne loc_8137774
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r1, [r0,#5]
 	add r1, #1
 	cmp r1, #3
@@ -14350,7 +14350,7 @@ loc_8137842:
 	b loc_813785E
 loc_8137858:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldrb r1, [r1,#5]
 loc_813785E:
 	ldr r3, off_8137880 // =unk_20018EC 

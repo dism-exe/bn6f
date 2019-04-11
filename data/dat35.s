@@ -1614,7 +1614,7 @@ loc_812FCB8:
 	b loc_812FCEC
 loc_812FCCC:
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r1, [r0,#5]
 	mov r4, r1
 	mov r2, #0x26 

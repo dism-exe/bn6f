@@ -1292,7 +1292,7 @@ off_8000E0C: .word 0x3C
 	thumb_func_start sub_8000E10
 sub_8000E10:
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk2001c04_Ptr]
+	ldr r3, [r3,#oToolkit_S2001c04_Ptr]
 	ldr r0, [r3,#0x18]
 	add r0, #1
 	ldr r1, dword_8000E24 // =0x14988f0 
@@ -1308,7 +1308,7 @@ dword_8000E24: .word 0x14988F0
 	thumb_func_start sub_8000E28
 sub_8000E28:
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk2001c04_Ptr]
+	ldr r3, [r3,#oToolkit_S2001c04_Ptr]
 	ldr r0, [r3,#0x18]
 	mov pc, lr
 	thumb_func_end sub_8000E28
@@ -1534,7 +1534,7 @@ sub_8000F86:
 	mov r1, #1
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	str r4, [r0,#0x18]
 	bl sub_803F79E
 locret_8000FAA:
@@ -1564,7 +1564,7 @@ loc_8000FCE:
 	mov r0, #0
 	str r0, [r5,#oGameState_CurBattleDataPtr]
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_Unk2001c04_Ptr]
+	ldr r6, [r6,#oToolkit_S2001c04_Ptr]
 	str r0, [r6,#0x1c]
 	str r0, [r6,#0x2c]
 	str r0, [r6,#0x28]
@@ -1727,7 +1727,7 @@ sub_80010C6:
 	push {lr}
 	bl getPETNaviSelect // () -> u8
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk2001c04_Ptr]
+	ldr r3, [r3,#oToolkit_S2001c04_Ptr]
 	strb r0, [r3,#7]
 	pop {pc}
 	thumb_func_end sub_80010C6

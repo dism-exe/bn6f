@@ -4685,7 +4685,7 @@ loc_809D40A:
 	bne loc_809D446
 	ldrb r1, [r5,#0x13]
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk2001c04_Ptr]
+	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
 	ldrh r0, [r7,#0x12]
 	add r0, r0, r1
 	strh r0, [r7,#0x12]

@@ -451,7 +451,7 @@ loc_81235E8:
 	tst r0, r0
 	bne loc_8123628
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#4]
@@ -1248,7 +1248,7 @@ sub_8123D10:
 sub_8123D24:
 	push {r4-r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r4, [r0,#5]
 	mov r6, #0
 loc_8123D2E:
@@ -1827,7 +1827,7 @@ sub_8124230:
 	mov r1, #0xa
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Unk2001c04_Ptr]
+	ldr r4, [r4,#oToolkit_S2001c04_Ptr]
 	ldr r0, dword_8124258 // =0x1770 
 	str r0, [r4,#0x24]
 	mov r0, #0x10
@@ -1872,7 +1872,7 @@ sub_812427C:
 	mov r1, #0xb
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Unk2001c04_Ptr]
+	ldr r4, [r4,#oToolkit_S2001c04_Ptr]
 	ldr r0, dword_81242A8 // =0x1770 
 	str r0, [r4,#0x28]
 	ldr r0, [r4,#0x1c]
@@ -2339,7 +2339,7 @@ sub_8124660:
 	push {r4,lr}
 	strb r0, [r5,#0x10]
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Unk2001c04_Ptr]
+	ldr r4, [r4,#oToolkit_S2001c04_Ptr]
 	ldr r0, [r4,#0x24]
 	tst r0, r0
 	bne loc_8124686
@@ -2408,7 +2408,7 @@ sub_81246D8:
 	push {r4,lr}
 	strb r0, [r5,#0x10]
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Unk2001c04_Ptr]
+	ldr r4, [r4,#oToolkit_S2001c04_Ptr]
 	ldr r0, [r4,#0x28]
 	tst r0, r0
 	bne loc_8124708
@@ -2484,7 +2484,7 @@ off_8124758: .word unk_201C100
 sub_812475C:
 	push {r4-r7,lr}
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk2001c04_Ptr]
+	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
 	ldr r0, [r7,#0x24]
 	tst r0, r0
 	beq loc_812477A
@@ -7865,7 +7865,7 @@ loc_81276DA:
 sub_81276E4:
 	push {r4,lr}
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldr r4, [r1,#0x30]
 	bl getPETNaviSelect // () -> u8
 	mov r2, r0
@@ -15495,7 +15495,7 @@ sub_812B7C4:
 	cmp r0, #1
 	bne locret_812B7DC
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrh r1, [r0,#8]
 	add r1, #1
 	ldr r2, dword_812B7FC // =0x3e7 
@@ -15514,7 +15514,7 @@ sub_812B7E0:
 	cmp r0, #1
 	bne locret_812B7F8
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrh r1, [r0,#0xa]
 	add r1, #1
 	ldr r2, dword_812B7FC // =0x3e7 

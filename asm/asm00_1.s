@@ -3428,7 +3428,7 @@ sub_8004DF0:
 	str r0, [r5,#oGameState_Unk_6c]
 	str r0, [r5,#oGameState_Unk_70]
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	str r0, [r1,#0x18]
 	mov r0, #1
@@ -4876,7 +4876,7 @@ gameState_8005BC8:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_Unk2001c04_Ptr]
+	ldr r6, [r6,#oToolkit_S2001c04_Ptr]
 	str r0, [r5,#oGameState_CurBattleDataPtr]
 	bl GetBattleEffectsFromBattleSettings // () -> int
 	ldr r1, dword_8005C00 // =0x4000 
@@ -5011,7 +5011,7 @@ loc_8005CB8:
 	strb r6, [r5,#oGameState_MapGroup]
 	strb r7, [r5,#oGameState_MapNumber]
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk2001c04_Ptr]
+	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	strh r0, [r7,#0x12]
 	strh r0, [r7,#0x14]
@@ -8675,7 +8675,7 @@ sub_8007CA0:
 	push {r4,r6,r7,lr}
 	bl musicGameState_8000784 // () -> void
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Unk2001c04_Ptr]
+	ldr r4, [r4,#oToolkit_S2001c04_Ptr]
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_MainJumptableIndexPtr]
 	mov r7, r10
