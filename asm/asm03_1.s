@@ -3190,30 +3190,30 @@ byte_80357F0: .byte 0x3C, 0x3D, 0x3E, 0x3F, 0x10, 0x11, 0x12, 0x13, 0x14
 	.byte 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D
 	.byte 0x1E, 0x1F, 0x0, 0x0, 0x0, 0x0
 ScriptCmds8035808:
-	.word MapScript_end+1
-	.word MapScript_jump+1
-	.word MapScript_jump_if_progress_in_range+1
-	.word MapScript_jump_if_flag_set+1
-	.word MapScript_jump_if_flag_range_set+1
-	.word MapScript_jump_if_flag_clear+1
-	.word MapScript_jump_if_flag_range_clear+1
-	.word MapScript_jump_if_mem_equals+1
-	.word MapScript_jump_if_unk_navicust_range+1
-	.word MapScript_jump_if_chip_count_in_range+1
+	.word MapScriptCmd_end+1
+	.word MapScriptCmd_jump+1
+	.word MapScriptCmd_jump_if_progress_in_range+1
+	.word MapScriptCmd_jump_if_flag_set+1
+	.word MapScriptCmd_jump_if_flag_range_set+1
+	.word MapScriptCmd_jump_if_flag_clear+1
+	.word MapScriptCmd_jump_if_flag_range_clear+1
+	.word MapScriptCmd_jump_if_mem_equals+1
+	.word MapScriptCmd_jump_if_unk_navicust_range+1
+	.word MapScriptCmd_jump_if_chip_count_in_range+1
 	.word sub_803793A+1
 	.word sub_803795C+1
-	.word MapScript_cmd_8035afa+1
-	.word MapScript_cmd_8035b44+1
-	.word MapScript_jump_if_game_state_0e_equals+1
-	.word MapScript_jump_if_game_state_0e_not_equals+1
+	.word MapScriptCmd_cmd_8035afa+1
+	.word MapScriptCmd_cmd_8035b44+1
+	.word MapScriptCmd_jump_if_game_state_0e_equals+1
+	.word MapScriptCmd_jump_if_game_state_0e_not_equals+1
 	.word sub_803797E+1
 	.word sub_80379A0+1
-	.word MapScript_jump_if_player_z_equals+1
-	.word MapScript_jump_if_player_z_not_equals+1
-	.word MapScript_jump_if_game_state_44_equals+1
-	.word MapScript_jump_if_game_state_44_not_equals+1
-	.word MapScript_jump_if_map_group_compare_last_map_group+1
-	.word MapScript_cmd_8035ca0+1
+	.word MapScriptCmd_jump_if_player_z_equals+1
+	.word MapScriptCmd_jump_if_player_z_not_equals+1
+	.word MapScriptCmd_jump_if_game_state_44_equals+1
+	.word MapScriptCmd_jump_if_game_state_44_not_equals+1
+	.word MapScriptCmd_jump_if_map_group_compare_last_map_group+1
+	.word MapScriptCmd_cmd_8035ca0+1
 	.word MapScriptCmd_cmd_8035cd6+1
 	.word MapScriptCmd_cmd_8035cf8+1
 	.word MapScriptCmd_jump_if_fade_active+1
@@ -3265,27 +3265,27 @@ ScriptCmds8035808:
 	thumb_local_start
 // 0x00
 // return from script
-MapScript_end: // 8035920
+MapScriptCmd_end: // 8035920
 	mov r0, #0
 	mov pc, lr
-	thumb_func_end MapScript_end
+	thumb_func_end MapScriptCmd_end
 
 	thumb_local_start
 // 0x01 destination
 // jump
-MapScript_jump: // 8035924
+MapScriptCmd_jump: // 8035924
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump
+	thumb_func_end MapScriptCmd_jump
 
 	thumb_local_start
 // 0x02 byte1 byte2 destination
 // jump if byte1 <= progress byte <= byte2
-MapScript_jump_if_progress_in_range: // 8035932
+MapScriptCmd_jump_if_progress_in_range: // 8035932
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3308,12 +3308,12 @@ MapScript_jump_if_progress_in_range: // 8035932
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_progress_in_range
+	thumb_func_end MapScriptCmd_jump_if_progress_in_range
 
 	thumb_local_start
 // 0x03 byte flag destination
 // jump if event flag in mem or immediate is set
-MapScript_jump_if_flag_set: // 8035962
+MapScriptCmd_jump_if_flag_set: // 8035962
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3338,12 +3338,12 @@ MapScript_jump_if_flag_set: // 8035962
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_flag_set
+	thumb_func_end MapScriptCmd_jump_if_flag_set
 
 	thumb_local_start
 // 0x04 byte flag destination
 // jump if (all) event flags in the event flag range are set
-MapScript_jump_if_flag_range_set: // 8035992
+MapScriptCmd_jump_if_flag_range_set: // 8035992
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3363,12 +3363,12 @@ MapScript_jump_if_flag_range_set: // 8035992
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_flag_range_set
+	thumb_func_end MapScriptCmd_jump_if_flag_range_set
 
 	thumb_local_start
 // 0x05 byte flag destination
 // jump if event flag in mem or immediate is clear
-MapScript_jump_if_flag_clear: // 80359BE
+MapScriptCmd_jump_if_flag_clear: // 80359BE
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3392,12 +3392,12 @@ MapScript_jump_if_flag_clear: // 80359BE
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_flag_clear
+	thumb_func_end MapScriptCmd_jump_if_flag_clear
 
 	thumb_local_start
 // 0x06 byte flag destination
 // jump if not all event flags in the event flag range are set
-MapScript_jump_if_flag_range_clear: // 80359EE
+MapScriptCmd_jump_if_flag_range_clear: // 80359EE
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3417,7 +3417,7 @@ MapScript_jump_if_flag_range_clear: // 80359EE
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_flag_range_clear
+	thumb_func_end MapScriptCmd_jump_if_flag_range_clear
 
 	thumb_local_start
 // 0x07 0x00 word destination byte
@@ -3425,7 +3425,7 @@ MapScript_jump_if_flag_range_clear: // 80359EE
 // 0x07 0x02 word destination word
 // jump if [word] == param
 // this command is variable length
-MapScript_jump_if_mem_equals: // 8035A1A
+MapScriptCmd_jump_if_mem_equals: // 8035A1A
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptWord // word
@@ -3470,12 +3470,12 @@ MapScript_jump_if_mem_equals: // 8035A1A
 	mov r7, r1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_mem_equals
+	thumb_func_end MapScriptCmd_jump_if_mem_equals
 
 	thumb_local_start
 // 0x08 byte1 byte2 byte3 destination
 // jump if byte2 < sub_803CE28(byte1) < byte3
-MapScript_jump_if_unk_navicust_range: // 8035A74
+MapScriptCmd_jump_if_unk_navicust_range: // 8035A74
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3499,7 +3499,7 @@ MapScript_jump_if_unk_navicust_range: // 8035A74
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_unk_navicust_range
+	thumb_func_end MapScriptCmd_jump_if_unk_navicust_range
 
 	thumb_local_start
 // 0x09 hword byte1 byte2 byte3 destination
@@ -3510,7 +3510,7 @@ MapScript_jump_if_unk_navicust_range: // 8035A74
 //     GetChipCountOfCode calls chip_8021C7C
 // related to chips
 //
-MapScript_jump_if_chip_count_in_range: // 8035AAA
+MapScriptCmd_jump_if_chip_count_in_range: // 8035AAA
 	push {lr}
 	mov r6, #3
 	bl ReadMapScriptByte
@@ -3547,13 +3547,13 @@ MapScript_jump_if_chip_count_in_range: // 8035AAA
 	add r7, #10
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_chip_count_in_range
+	thumb_func_end MapScriptCmd_jump_if_chip_count_in_range
 
 	thumb_local_start
 // 0x0c byte1 signedbyte2 destination
 // sub_8031A7A(complex) returns r0, r1. if r0 == 0, r1 is used in comparison
 // jump if byte1 == compByte
-MapScript_cmd_8035afa: // 8035afa
+MapScriptCmd_cmd_8035afa: // 8035afa
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptSignedByte
@@ -3589,12 +3589,12 @@ loc_8035B3E:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_cmd_8035afa
+	thumb_func_end MapScriptCmd_cmd_8035afa
 
 	thumb_local_start
 // 0x0d byte1 signedbyte2 destination
 // like 0x0c except jumps if not equal
-MapScript_cmd_8035b44: // 8035b44
+MapScriptCmd_cmd_8035b44: // 8035b44
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptSignedByte
@@ -3630,12 +3630,12 @@ loc_8035B88:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_cmd_8035b44
+	thumb_func_end MapScriptCmd_cmd_8035b44
 
 	thumb_local_start
 // 0x0e byte1 destination
 // jump if byte1 == eGameState_Unk_0e
-MapScript_jump_if_game_state_0e_equals: // 8035b8e
+MapScriptCmd_jump_if_game_state_0e_equals: // 8035b8e
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3653,12 +3653,12 @@ MapScript_jump_if_game_state_0e_equals: // 8035b8e
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_game_state_0e_equals
+	thumb_func_end MapScriptCmd_jump_if_game_state_0e_equals
 
 	thumb_local_start
 // 0x0f byte1 destination
 // jump if byte1 != eGameStateUnk_0e
-MapScript_jump_if_game_state_0e_not_equals: // 8035BB2
+MapScriptCmd_jump_if_game_state_0e_not_equals: // 8035BB2
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3676,12 +3676,12 @@ loc_8035BD0:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_game_state_0e_not_equals
+	thumb_func_end MapScriptCmd_jump_if_game_state_0e_not_equals
 
 	thumb_local_start
 // 0x12 signedhword1 destination
 // jump if (eOWPlayerObject_Z >> 0x10) == signedhword1
-MapScript_jump_if_player_z_equals: // 8035BD6
+MapScriptCmd_jump_if_player_z_equals: // 8035BD6
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3701,13 +3701,13 @@ MapScript_jump_if_player_z_equals: // 8035BD6
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_player_z_equals
+	thumb_func_end MapScriptCmd_jump_if_player_z_equals
 
 	thumb_local_start
 // 0x13 signedhword1 destination
 // jump if (eOWPlayerObjectUnk_24 >> 0x10) != signedhword1
 // eOWPlayerObjectUnk_24 is signed
-MapScript_jump_if_player_z_not_equals: // 8035BFE
+MapScriptCmd_jump_if_player_z_not_equals: // 8035BFE
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3727,12 +3727,12 @@ loc_8035C20:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_player_z_not_equals
+	thumb_func_end MapScriptCmd_jump_if_player_z_not_equals
 
 	thumb_local_start
 // 0x14 hword1 destination
 // jump if hword1 == eGameStateUnk_44
-MapScript_jump_if_game_state_44_equals: // 8035C26
+MapScriptCmd_jump_if_game_state_44_equals: // 8035C26
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3750,12 +3750,12 @@ loc_8035C44:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_game_state_44_equals
+	thumb_func_end MapScriptCmd_jump_if_game_state_44_equals
 
 	thumb_local_start
 // 0x15 hword1 destination
 // jump if hword1 != eGameStateUnk_44
-MapScript_jump_if_game_state_44_not_equals: // 8035C4A
+MapScriptCmd_jump_if_game_state_44_not_equals: // 8035C4A
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3773,14 +3773,14 @@ loc_8035C68:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_game_state_44_not_equals
+	thumb_func_end MapScriptCmd_jump_if_game_state_44_not_equals
 
 	thumb_local_start
 // 0x16 0x01 destination
 // jump if eGameStateMapGroup == eGameStateLastMapGroup
 // 0x16 !0x01 destination
 // jump if eGameStateMapGroup != eGameStateLastMapGroup
-MapScript_jump_if_map_group_compare_last_map_group: // 8035C6E
+MapScriptCmd_jump_if_map_group_compare_last_map_group: // 8035C6E
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3808,14 +3808,14 @@ MapScript_jump_if_map_group_compare_last_map_group: // 8035C6E
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_map_group_compare_last_map_group
+	thumb_func_end MapScriptCmd_jump_if_map_group_compare_last_map_group
 
 	thumb_local_start
 // 0x17 destination1 destination5 destination9
 // jumptable, using [[eToolkit_Unk20047cc_Ptr] + 0x4c] as the base index
 // default is destination1
 // eToolkit_Unk20047cc_Ptr
-MapScript_cmd_8035ca0: // 8035CA0
+MapScriptCmd_cmd_8035ca0: // 8035CA0
 	push {lr}
 	mov r0, #0
 	mov r1, #0x4c 
@@ -3841,7 +3841,7 @@ loc_8035CCA:
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_cmd_8035ca0
+	thumb_func_end MapScriptCmd_cmd_8035ca0
 
 	thumb_local_start
 // 0x18 byte1 destination2
@@ -6267,7 +6267,8 @@ sub_8037480:
 	orr r0, r2
 	pop {r1-r3,pc}
 	.balign 4, 0x00
-jt_big_803749C: .word sub_80376C4+1
+jt_big_803749C:
+	.word sub_80376C4+1
 	.word sub_80376DC+1
 	.word sub_80376F4+1
 	.word sub_8037740+1
@@ -6288,20 +6289,20 @@ jt_big_803749C: .word sub_80376C4+1
 	.word sub_80378C2+1
 	.word sub_80378EE+1
 	.word sub_8037904+1
-	.word MapScript_jump+1
-	.word MapScript_jump_if_progress_in_range+1
-	.word MapScript_jump_if_flag_set+1
-	.word MapScript_jump_if_flag_range_set+1
-	.word MapScript_jump_if_flag_clear+1
-	.word MapScript_jump_if_flag_range_clear+1
-	.word MapScript_jump_if_mem_equals+1
+	.word MapScriptCmd_jump+1
+	.word MapScriptCmd_jump_if_progress_in_range+1
+	.word MapScriptCmd_jump_if_flag_set+1
+	.word MapScriptCmd_jump_if_flag_range_set+1
+	.word MapScriptCmd_jump_if_flag_clear+1
+	.word MapScriptCmd_jump_if_flag_range_clear+1
+	.word MapScriptCmd_jump_if_mem_equals+1
 	.word sub_8037914+1
-	.word MapScript_jump_if_unk_navicust_range+1
-	.word MapScript_jump_if_chip_count_in_range+1
+	.word MapScriptCmd_jump_if_unk_navicust_range+1
+	.word MapScriptCmd_jump_if_chip_count_in_range+1
 	.word sub_803793A+1
 	.word sub_803795C+1
-	.word MapScript_cmd_8035afa+1
-	.word MapScript_cmd_8035b44+1
+	.word MapScriptCmd_cmd_8035afa+1
+	.word MapScriptCmd_cmd_8035b44+1
 	.word sub_803797E+1
 	.word sub_80379A0+1
 	.word sub_80379C2+1
@@ -6367,17 +6368,21 @@ jt_big_803749C: .word sub_80376C4+1
 	.word sub_803828E+1
 	.word sub_803829A+1
 	.word sub_80382AE+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_80382BA+1
 	.word sub_80382DE+1
 	.word sub_80382F2+1
 	.word sub_80382FE+1
 	.word sub_8038322+1
 	.word sub_8038346+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_8038362+1
 	.word sub_8038386+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_80383AA+1
 	.word sub_80383DE+1
 	.word sub_8038412+1
