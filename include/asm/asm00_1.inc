@@ -42,7 +42,7 @@
 	.global InitializeOverworldNPCObjectStructs
 	.global InitializeOverworldMapObjectStructs
 	.global SpawnObjectsFromList
-	.global sub_80035A2
+	.global FreeAllObjectsOfSpecifiedTypes
 	.global sub_800362C
 	.global sub_8003694
 	.global sub_800378C

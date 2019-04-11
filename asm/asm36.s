@@ -16207,7 +16207,7 @@ sub_81387D8:
 	bl sub_8036F24
 	bl sub_809F90C
 	mov r0, #0x25 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	pop {pc}
 	thumb_func_end sub_81387D8
 
@@ -16235,7 +16235,7 @@ sub_8138848:
 sub_8138884:
 	push {lr}
 	mov r0, #0x25 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end sub_8138884

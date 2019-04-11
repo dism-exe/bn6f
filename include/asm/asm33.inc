@@ -63,7 +63,7 @@
 // .global sub_80024A2
 
 	.include "asm/asm00_1.inc"
-// .global sub_80035A2
+// .global FreeAllObjectsOfSpecifiedTypes
 // .global sub_8003962
 // .global sub_8003AB2
 // .global sub_8004702

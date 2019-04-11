@@ -20431,7 +20431,7 @@ sub_8030A60:
 	str r0, [r4,#oGameState_Unk_20]
 	push {r0}
 	mov r0, #4
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	pop {r0}
 	mov r1, #0
 loc_8030A7A:

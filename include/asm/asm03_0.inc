@@ -233,7 +233,7 @@
 	.include "asm/asm00_1.inc"
 // .global sprite_hasShadow
 // .global sprite_setFlip
-// .global sub_80035A2
+// .global FreeAllObjectsOfSpecifiedTypes
 // .global SpawnOverworldNPCObject
 // .global sub_8004D48
 // .global sub_8004DF0

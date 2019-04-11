@@ -28,11 +28,20 @@ ActiveObjectBitfieldPointers:
 	.word eActiveT3BattleObjectsBitfield
 	.word eActiveT4BattleObjectsBitfield
 	.word eActiveOverworldMapObjectsBitfield
-byte_800315C: .byte 0xC8, 0x0, 0x0, 0x0, 0xD8, 0x0, 0x0, 0x0, 0xD8, 0x0, 0x0, 0x0, 0xD8
-	.byte 0x0, 0x0, 0x0, 0xC8, 0x0, 0x0, 0x0, 0x78, 0x0, 0x0, 0x0
-byte_8003174: .byte 0x1, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x20, 0x0
-	.byte 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x38, 0x0, 0x0, 0x0
-	thumb_func_end sub_80030BA
+ObjectMemorySizes:
+	.word oOWPlayerObject_Size
+	.word oT1BattleObject_Size
+	.word oOverworldNPCObject_Size
+	.word oT3BattleObject_Size
+	.word oT4BattleObject_Size
+	.word oOverworldMapObject_Size
+MaxAmountOfObjects:
+	.word 1
+	.word NUM_T1_BATTLE_OBJECTS
+	.word NUM_OVERWORLD_NPC_OBJECTS
+	.word NUM_T3_BATTLE_OBJECTS
+	.word NUM_T4_BATTLE_OBJECTS
+	.word NUM_OVERWORLD_MAP_OBJECTS
 
 	thumb_local_start
 sub_800318C:
@@ -629,78 +638,104 @@ SpawnObjectsFromList:
 	pop {r4-r7,pc}
 	thumb_func_end SpawnObjectsFromList
 
-	thumb_func_start sub_80035A2
-sub_80035A2:
+	.set oStack_FreeObjectJumptable, 0x4
+	.set oStack_ObjectMemoryPointers, 0x8
+	.set oStack_ActiveObjectBitfieldPointers, 0xc
+	.set oStack_ObjectMemorySizes, 0x10
+	.set oStack_MaxAmountOfObjects, 0x14
+
+	thumb_func_start FreeAllObjectsOfSpecifiedTypes
+/* r0 - bitfield of which object types to free */
+FreeAllObjectsOfSpecifiedTypes:
 	push {r4-r7,lr}
 	sub sp, sp, #0x18
 	ldr r1, off_8003618 // =FreeObjectJumptable 
 	ldr r2, off_800361C // =ObjectMemoryPointers 
 	ldr r3, off_8003620 // =ActiveObjectBitfieldPointers 
-	ldr r4, off_8003624 // =byte_800315C 
-	ldr r5, off_8003628 // =byte_8003174 
-loc_80035B0:
+	ldr r4, off_8003624 // =ObjectMemorySizes 
+	ldr r5, off_8003628 // =MaxAmountOfObjects 
+.loop
 	str r0, [sp]
-	str r1, [sp,#4]
-	str r2, [sp,#8]
-	str r3, [sp,#0xc]
-	str r4, [sp,#0x10]
-	str r5, [sp,#0x14]
+	str r1, [sp,#oStack_FreeObjectJumptable]
+	str r2, [sp,#oStack_ObjectMemoryPointers]
+	str r3, [sp,#oStack_ActiveObjectBitfieldPointers]
+	str r4, [sp,#oStack_ObjectMemorySizes]
+	str r5, [sp,#oStack_MaxAmountOfObjects]
+	// are there no more objects to free?
 	tst r0, r0
-	beq loc_8003614
+	beq .doneFreeingObjects
+	// test whether to free the current object type
 	mov r1, #1
 	tst r0, r1
-	beq loc_80035FA
-	ldr r5, [sp,#8]
+	beq .skipObjectType
+	// get the memory pointer of the object
+	ldr r5, [sp,#oStack_ObjectMemoryPointers]
 	ldr r5, [r5]
+	// r7 - current object bit
 	mov r7, #0x80
 	lsl r7, r7, #0x18
+	// r6 - current object index
 	mov r6, #0
-loc_80035D0:
-	ldr r0, [sp,#0xc]
+.freeAllObjectsOfTypeLoop
+	ldr r0, [sp,#oStack_ActiveObjectBitfieldPointers]
 	ldr r0, [r0]
+	// get byte offset of bitfield
 	lsr r1, r6, #5
 	lsl r1, r1, #2
 	ldr r0, [r0,r1]
+	// is the object active?
 	tst r0, r7
-	beq loc_80035E6
-	ldr r0, [sp,#4]
+	beq .objectNotActive
+	// call free object routine
+	ldr r0, [sp,#oStack_FreeObjectJumptable]
 	ldr r0, [r0]
 	mov lr, pc
 	bx r0
-loc_80035E6:
+.objectNotActive
+	// current bit to test has to be rotated
+	// because map objects have more than 32
+	// slots allocated
 	mov r0, #1
 	ror r7, r0
-	ldr r0, [sp,#0x10]
+	// read the size of the object...
+	ldr r0, [sp,#oStack_ObjectMemorySizes]
 	ldr r0, [r0]
+	// ...and add it to the current object pointer
+	// to get the next object
 	add r5, r5, r0
+	// increment current object index
 	add r6, #1
-	ldr r0, [sp,#0x14]
+	ldr r0, [sp,#oStack_MaxAmountOfObjects]
 	ldr r0, [r0]
+	// have we freed all objects yet?
 	cmp r6, r0
-	blt loc_80035D0
-loc_80035FA:
+	blt .freeAllObjectsOfTypeLoop
+.skipObjectType
+	// read current state
 	ldr r0, [sp]
-	ldr r1, [sp,#4]
-	ldr r2, [sp,#8]
-	ldr r3, [sp,#0xc]
-	ldr r4, [sp,#0x10]
-	ldr r5, [sp,#0x14]
+	ldr r1, [sp,#oStack_FreeObjectJumptable]
+	ldr r2, [sp,#oStack_ObjectMemoryPointers]
+	ldr r3, [sp,#oStack_ActiveObjectBitfieldPointers]
+	ldr r4, [sp,#oStack_ObjectMemorySizes]
+	ldr r5, [sp,#oStack_MaxAmountOfObjects]
+	// shift to get the next value in the bitfield
 	lsr r0, r0, #1
+	// advance to the next element
 	add r1, #4
 	add r2, #4
 	add r3, #4
 	add r4, #4
 	add r5, #4
-	b loc_80035B0
-loc_8003614:
+	b .loop
+.doneFreeingObjects
 	add sp, sp, #0x18
 	pop {r4-r7,pc}
 off_8003618: .word FreeObjectJumptable
 off_800361C: .word ObjectMemoryPointers
 off_8003620: .word ActiveObjectBitfieldPointers
-off_8003624: .word byte_800315C
-off_8003628: .word byte_8003174
-	thumb_func_end sub_80035A2
+off_8003624: .word ObjectMemorySizes
+off_8003628: .word MaxAmountOfObjects
+	thumb_func_end FreeAllObjectsOfSpecifiedTypes
 
 	thumb_func_start sub_800362C
 sub_800362C:
@@ -3959,7 +3994,7 @@ sub_800531C:
 	push {lr}
 	bl chatbox_8040818
 	mov r0, #0x21 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8004702
 	bl sub_80024A2
 	bl sub_8003962
@@ -4058,7 +4093,7 @@ sub_80053E4:
 	beq locret_800545C
 	bl chatbox_8040818
 	mov r0, #0x25 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_80341AA
 	mov r7, r10
 	ldr r0, [r7,#oToolkit_MainJumptableIndexPtr]
@@ -4162,7 +4197,7 @@ off_8005520: .word ePETMenuData
 sub_8005524:
 	push {lr}
 	mov r0, #0x21 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8004702
 	bl sub_8005F40
 	bl sub_8005F6C
@@ -4198,7 +4233,7 @@ sub_800555A:
 	beq locret_80055CC
 	bl chatbox_8040818
 	mov r0, #0x21 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8004702
 	bl sub_8005F40
 	bl sub_8005F6C
@@ -4237,7 +4272,7 @@ sub_80055CE:
 	beq locret_8005640
 	bl chatbox_8040818
 	mov r0, #0x21 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8004702
 	bl sub_8005F40
 	bl sub_8005F6C
@@ -4276,7 +4311,7 @@ sub_8005642:
 	beq locret_80056B4
 	bl chatbox_8040818
 	mov r0, #0x21 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8004702
 	bl sub_8005F40
 	bl sub_8005F6C
@@ -4316,7 +4351,7 @@ sub_80056B8:
 	beq locret_800572A
 	bl chatbox_8040818
 	mov r0, #0x21 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8004702
 	bl sub_8005F40
 	bl sub_8005F6C
@@ -4355,7 +4390,7 @@ sub_800572C:
 	beq locret_800579E
 	bl chatbox_8040818
 	mov r0, #0x21 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8004702
 	bl sub_8005F40
 	bl sub_8005F6C
@@ -4394,7 +4429,7 @@ sub_80057A0:
 	beq locret_8005812
 	bl chatbox_8040818
 	mov r0, #0x21 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8004702
 	bl sub_8005F40
 	bl sub_8005F6C
@@ -4457,7 +4492,7 @@ sub_800585A:
 	beq locret_80058CC
 	bl chatbox_8040818
 	mov r0, #0x21 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8004702
 	bl sub_8005F40
 	bl sub_8005F6C
@@ -4908,7 +4943,7 @@ sub_8005C04:
 	mov r0, #0
 	str r0, [r5,#oGameState_Unk_20]
 	mov r0, #0x25 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	mov r5, r10
 	ldr r1, [r5,#oToolkit_Unk2011bb0_Ptr]
 	ldr r0, [r1,#0x14]
@@ -5112,7 +5147,7 @@ sub_8005D88:
 	mov r0, #0
 	str r0, [r5,#oGameState_Unk_20]
 	mov r0, #0x25 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
@@ -5133,7 +5168,7 @@ sub_8005DBE:
 	mov r0, #0
 	str r0, [r5,#oGameState_Unk_20]
 	mov r0, #0x25 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
@@ -5153,7 +5188,7 @@ dead_8005DF0:
 	mov r0, #0
 	str r0, [r5,#oGameState_Unk_20]
 	mov r0, #0x25 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
@@ -5173,7 +5208,7 @@ dead_8005E22:
 	mov r0, #0
 	str r0, [r5,#oGameState_Unk_20]
 	mov r0, #0x25 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
@@ -5193,7 +5228,7 @@ dead_8005E54:
 	mov r0, #0
 	str r0, [r5,#oGameState_Unk_20]
 	mov r0, #0x25 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
@@ -8967,7 +9002,7 @@ sub_8007F2C:
 	bne locret_8007F4C
 	bl musicGameState_8000784 // () -> void
 	mov r0, #0x1a
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	mov r0, #8
 	strb r0, [r5]
 	mov r0, #4
@@ -11811,7 +11846,7 @@ loc_8009508:
 	beq locret_800951C
 	bl musicGameState_8000784 // () -> void
 	mov r0, #0x1a
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	mov r0, #8
 	str r0, [r5]
 locret_800951C:
@@ -12386,7 +12421,7 @@ loc_8009950:
 	beq locret_8009964
 	bl musicGameState_8000784 // () -> void
 	mov r0, #0x1a
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	mov r0, #8
 	str r0, [r5]
 locret_8009964:
@@ -12777,7 +12812,7 @@ loc_8009C40:
 	beq locret_8009C54
 	bl musicGameState_8000784 // () -> void
 	mov r0, #0x1a
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	mov r0, #8
 	str r0, [r5]
 locret_8009C54:
@@ -13210,7 +13245,7 @@ loc_8009F74:
 	beq locret_8009F88
 	bl musicGameState_8000784 // () -> void
 	mov r0, #0x1a
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	mov r0, #8
 	str r0, [r5]
 locret_8009F88:

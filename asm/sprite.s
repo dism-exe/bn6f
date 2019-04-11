@@ -1649,6 +1649,7 @@ loc_80030F4:
 	mov r0, #0
 	mov r1, #0
 	pop {r4-r7,pc}
+	thumb_func_end sub_80030BA
 	.balign 4, 0x00
 
 /*For debugging purposes, connect comment at any range!*/

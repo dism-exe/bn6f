@@ -1421,19 +1421,30 @@ off_8034670: .word off_80665A4
 	.word off_8069304
 	.word off_806A260
 	.word off_806A26C
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word off_806AE08
 	.word off_806AE1C
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word off_806C7B0
 	.word off_806C7CC
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word off_806DFB0
 	.word off_806DFF0
 	.word off_807022C
 	.word off_807026C
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word off_8071EB0
 	.word off_8071EBC
 	.word off_80758A0
@@ -1454,12 +1465,16 @@ off_8034728: .word off_80665BC
 	.word off_806A284
 	.word 0x0
 	.word off_806AE44
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word off_806C804
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word off_806E070
 	.word off_80702EC
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word off_8071ED4
 	.word off_80758C4
 	.word off_807811C
@@ -1496,15 +1511,16 @@ NPCList_maps80: .word off_80665B4
 	.word off_806A278
 	.word 0x0
 	.word off_806AE30
-	.word 0
-	.byte 0, 0, 0, 0
+	.word 0x0
+	.word 0x0
 	.word off_806C7E8
-	.word 0, 0
-	.byte 0, 0, 0, 0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word off_806E030
 	.word off_80702AC
-	.word 0
-	.byte 0, 0, 0, 0
+	.word 0x0
+	.word 0x0
 	.word off_8071EC8
 	.word off_80758B8
 	.word off_8078114
@@ -1518,12 +1534,16 @@ off_803483C: .word sub_8066540+1
 	.word sub_806A1DE+1
 	.word 0x0
 	.word sub_806AD00+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_806C59C+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_806DCD4+1
 	.word sub_806FFDA+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_8071CEE+1
 	.word sub_80755EE+1
 	.word sub_8077E84+1
@@ -1537,12 +1557,16 @@ off_8034898: .word sub_806649C+1
 	.word sub_806A120+1
 	.word 0x0
 	.word sub_806AB94+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_806C35C+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_806DA58+1
 	.word sub_806FD54+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_8071C30+1
 	.word sub_8075530+1
 	.word sub_8077DE0+1
@@ -2454,12 +2478,12 @@ sub_8035194:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldrb r0, [r3,#oGameState_MapGroup]
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_80351A2
 	b locret_80351AE
 loc_80351A2:
 	ldr r2, off_80351B0 // =off_8034898 
-	sub r0, #0x80
+	sub r0, #INTERNET_MAP_GROUP_START
 	lsl r0, r0, #2
 	ldr r2, [r2,r0]
 	mov lr, pc
@@ -3209,28 +3233,28 @@ ScriptCmds8035808:
 	.word MapScriptCmd_write_hword+1
 	.word MapScriptCmd_write_word+1
 	.word MapScriptCmd_write_gamestate_byte+1
-	.word sub_8035F0E+1
-	.word sub_8035F2A+1
-	.word sub_8035F3E+1
-	.word sub_8035F52+1
-	.word sub_8035F6A+1
+	.word MapScriptCmd_write_eStruct2001c04_byte+1
+	.word MapScriptCmd_call_sub_8001B1C+1
+	.word MapScriptCmd_call_sub_8001B1C_multiple+1
+	.word MapScriptCmd_call_sub_8030A30_8035194+1
+	.word MapScriptCmd_cmd_8035F6A+1
 	.word sub_80380B4+1
 	.word sub_80380C8+1
 	.word sub_80380EA+1
 	.word sub_803810E+1
 	.word sub_8038132+1
 	.word sub_803813E+1
-	.word sub_8035F98+1
+	.word MapScriptCmd_call_sub_8033FC0+1
 	.word 0x0
 	.word sub_80381FA+1
 	.word sub_803821E+1
-	.word sub_8035FBA+1
+	.word MapScriptCmd_write_script_struct_10_word+1
 	.word sub_803827A+1
 	.word sub_803828E+1
 	.word sub_803829A+1
 	.word sub_80382AE+1
 	.word 0x0
-	.word sub_8035FDE+1
+	.word MapScriptCmd_spawn_or_free_objects+1
 	.word sub_80382BA+1
 	.word sub_8038322+1
 	.word sub_8038346+1
@@ -4201,7 +4225,7 @@ MapScriptCmd_write_gamestate_byte: // 8035EF2
 	thumb_local_start
 // 0x2b byte1 byte2
 // [eStruct2001c04[byte1]] = byte2
-sub_8035F0E:
+MapScriptCmd_write_eStruct2001c04_byte: // 8035F0E
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
@@ -4214,10 +4238,12 @@ sub_8035F0E:
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035F0E
+	thumb_func_end MapScriptCmd_write_eStruct2001c04_byte
 
 	thumb_local_start
-sub_8035F2A:
+// 0x2c word1
+// do sub_8001B1C(r0=word1)
+MapScriptCmd_call_sub_8001B1C: // 8035F2A
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -4226,10 +4252,13 @@ sub_8035F2A:
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035F2A
+	thumb_func_end MapScriptCmd_call_sub_8001B1C
 
 	thumb_local_start
-sub_8035F3E:
+// 0x2d word1
+// do sub_8002354(r0=word1)
+// r0 is a list of arguments for r1, terminated by negative
+MapScriptCmd_call_sub_8001B1C_multiple: // 8035F3E
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -4238,10 +4267,13 @@ sub_8035F3E:
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035F3E
+	thumb_func_end MapScriptCmd_call_sub_8001B1C_multiple
 
 	thumb_local_start
-sub_8035F52:
+// 0x2e
+// call sub_8030A30, then sub_8035194
+// uses map group/number as args
+MapScriptCmd_call_sub_8030A30_8035194: // 8035F52
 	push {lr}
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
@@ -4252,10 +4284,13 @@ sub_8035F52:
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035F52
+	thumb_func_end MapScriptCmd_call_sub_8030A30_8035194
 
 	thumb_local_start
-sub_8035F6A:
+// 0x2f byte1
+// if byte1 == 0xff, call sub_8001B6C with r0 as 0x0 to 0x11
+// else, call sub_8001B6C with r0=byte1
+MapScriptCmd_cmd_8035F6A: // 8035F6A
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4279,10 +4314,13 @@ loc_8035F8E:
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035F6A
+	thumb_func_end MapScriptCmd_cmd_8035F6A
 
 	thumb_local_start
-sub_8035F98:
+// 0x36 byte1 byte2
+// call sub_8033FC0
+// arg is either from mem or byte2
+MapScriptCmd_call_sub_8033FC0: // 8035F98
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4299,10 +4337,14 @@ loc_8035FB0:
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035F98
+	thumb_func_end MapScriptCmd_call_sub_8033FC0
 
 	thumb_local_start
-sub_8035FBA:
+// 0x3a  0x01
+// store 0x0 at the script struct + 0x10
+// 0x3a !0x01 word2
+// store word2 at the script struct + 0x10
+MapScriptCmd_write_script_struct_10_word: // 8035FBA
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4320,10 +4362,15 @@ loc_8035FD4:
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035FBA
+	thumb_func_end MapScriptCmd_write_script_struct_10_word
 
 	thumb_local_start
-sub_8035FDE:
+// 0x40 0x01 byte2
+// call FreeAllObjectsOfSpecifiedTypes(r0=byte2)
+// 0x40 !0x01 word2
+// call SpawnObjectsFromList(r0=word2)
+// both functions are relaed to object initialization
+MapScriptCmd_spawn_or_free_objects: // 8035FDE
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4340,11 +4387,11 @@ loc_8035FFC:
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r0, r4
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035FDE
+	thumb_func_end MapScriptCmd_spawn_or_free_objects
 
 	thumb_local_start
 sub_803600E:
@@ -6271,13 +6318,13 @@ jt_big_803749C: .word sub_80376C4+1
 	.word MapScriptCmd_write_hword+1
 	.word MapScriptCmd_write_word+1
 	.word MapScriptCmd_write_gamestate_byte+1
-	.word sub_8035F0E+1
+	.word MapScriptCmd_write_eStruct2001c04_byte+1
 	.word sub_8037A06+1
 	.word sub_8037A2A+1
-	.word sub_8035F2A+1
-	.word sub_8035F3E+1
-	.word sub_8035F52+1
-	.word sub_8035F6A+1
+	.word MapScriptCmd_call_sub_8001B1C+1
+	.word MapScriptCmd_call_sub_8001B1C_multiple+1
+	.word MapScriptCmd_call_sub_8030A30_8035194+1
+	.word MapScriptCmd_cmd_8035F6A+1
 	.word sub_8037A42+1
 	.word sub_8037A70+1
 	.word sub_8037A7C+1
@@ -6303,7 +6350,7 @@ jt_big_803749C: .word sub_80376C4+1
 	.word sub_803810E+1
 	.word sub_8038132+1
 	.word sub_803813E+1
-	.word sub_8035F98+1
+	.word MapScriptCmd_call_sub_8033FC0+1
 	.word sub_803816A+1
 	.word sub_80381A0+1
 	.word sub_80381E0+1
@@ -7596,7 +7643,7 @@ loc_8037FE6:
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r0, r4
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	add r7, #3
 	mov r0, #1
 	pop {pc}

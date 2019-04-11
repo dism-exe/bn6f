@@ -184,4 +184,10 @@ ePETMenuData = pet menu struct
 s16 0x10 - x tile offset of where to draw these screen tiles (menu items, PET title + lines) https://i.imgur.com/Dn34dUF.png
 
 */
+
+/*
+look at:
+- sub_8001B1C
+*/
+
 // .macro overworld_npc_object_struct, struct_entry=label_struct_entry, struct_begin=struct_begin

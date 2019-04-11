@@ -15337,7 +15337,7 @@ loc_812B652:
 	bl sub_8046664 // () -> void
 	bl chatbox_8040818
 	mov r0, #0x21 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	bl sub_8004702
 	bl sub_80024A2
 	bl sub_8003962

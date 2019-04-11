@@ -119,7 +119,7 @@
 
 	.include "asm/asm00_1.inc"
 // .global sprite_setCoordinates
-// .global sub_80035A2
+// .global FreeAllObjectsOfSpecifiedTypes
 // .global sub_800378C
 // .global sub_80037F4
 // .global sub_8003962

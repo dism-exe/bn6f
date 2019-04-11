@@ -263,7 +263,7 @@
 
 	.include "asm/asm00_1.inc"
 // .global SpawnObjectsFromList
-// .global sub_80035A2
+// .global FreeAllObjectsOfSpecifiedTypes
 // .global sub_8003914
 // .global sub_8003940
 // .global sub_80039CC
