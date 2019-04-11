@@ -3860,7 +3860,7 @@ sub_3007978:
 	ldr r1, off_30079A0 // =unk_2034F60
 	ldr r2, [r0,r1]
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk20384f0_Ptr]
+	ldr r1, [r1,#oToolkit_CollisionDataPtr]
 	mov r0, #0
 loc_3007988:
 	lsl r2, r2, #1

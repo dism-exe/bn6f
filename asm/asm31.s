@@ -82155,14 +82155,14 @@ loc_80E06AC:
 	mov r0, #8
 loc_80E06B8:
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #1
 	ldr r1, off_80E06DC // =byte_2036740 
 	strb r0, [r1]
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80E06C8:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne locret_80E06DA
 	mov r0, #1

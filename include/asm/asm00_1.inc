@@ -97,11 +97,11 @@
 	.global sub_8005F40
 	.global sub_8005F6C
 	.global sub_8005F84
-	.global engine_setScreeneffect // (int a1, int a2) -> void
+	.global SetScreenFade // (int a1, int a2) -> void
 	.global loc_8006274
 	.global sub_80062C8
 	.global sub_80062EC
-	.global IsPaletteFadeActive // () -> zf
+	.global IsScreenFadeActive // () -> zf
 	.global loc_80062FC
 	.global subsystem_triggerTransition_800630A
 	.global math_sinTable
@@ -1148,7 +1148,7 @@
 // .equ iCurrFrame, 0x200A210
 // .equ byte_200A220, 0x200A220
 // .equ eJoypad, 0x200A270
-// .equ byte_200A440, 0x200A440
+// .equ fadeInfo_200A440, 0x200A440
 // .equ byte_200A441, 0x200A441
 // .equ byte_200A442, 0x200A442
 // .equ byte_200A443, 0x200A443
@@ -1235,7 +1235,7 @@
 // .equ eT4BattleObject0, 0x2036870
 // .equ unk_2038160, 0x2038160
 // .equ unk_2038170, 0x2038170
-// .equ unk_20384F0, 0x20384F0
+// .equ eCollisionData, 0x20384F0
 // .equ dword_2039A10, 0x2039A10
 // .equ unk_2039AA0, 0x2039AA0
 // .equ unk_2039ADC, 0x2039ADC
@@ -1273,7 +1273,7 @@
 // .equ byte_203CCD4, 0x203CCD4
 // .equ byte_203CCE0, 0x203CCE0
 // .equ byte_203CDA8, 0x203CDA8
-// .equ byte_203CDB0, 0x203CDB0
+// .equ eBattleFolder, 0x203CDB0
 // .equ word_203CDE8, 0x203CDE8
 // .equ byte_203CDEA, 0x203CDEA
 // .equ dword_203CDF0, 0x203CDF0

@@ -136,9 +136,9 @@
 // .global sub_8005524
 // .global sub_8005F40
 // .global sub_8005F6C
-// .global engine_setScreeneffect // (int a1, int a2) -> void
+// .global SetScreenFade // (int a1, int a2) -> void
 // .global sub_80062C8
-// .global IsPaletteFadeActive // () -> zf
+// .global IsScreenFadeActive // () -> zf
 
 	.include "asm/asm00_2.inc"
 // .global sub_8010C76

@@ -22,8 +22,8 @@
 // .global sub_800183C
 
 	.include "asm/asm00_1.inc"
-// .global engine_setScreeneffect // (int a1, int a2) -> void
-// .global IsPaletteFadeActive // () -> zf
+// .global SetScreenFade // (int a1, int a2) -> void
+// .global IsScreenFadeActive // () -> zf
 
 	.include "asm/asm02.inc"
 // .global dword_8021AEC

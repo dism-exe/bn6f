@@ -68,8 +68,8 @@
 // .global sub_8003AB2
 // .global sub_8004702
 // .global sub_8005F40
-// .global engine_setScreeneffect // (int a1, int a2) -> void
-// .global IsPaletteFadeActive // () -> zf
+// .global SetScreenFade // (int a1, int a2) -> void
+// .global IsScreenFadeActive // () -> zf
 // .global RandomizeExtraToolkitPointers
 // .global sub_8006DEC
 // .global sub_80070BC

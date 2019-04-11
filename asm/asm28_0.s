@@ -5439,7 +5439,7 @@ sub_809D9E0:
 	ldrb r0, [r7,#0x15] // (byte_200ACF5 - 0x200ace0)
 	tst r0, r0
 	bne loc_809DA98
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_809DA94
 	push {r0}
 	// entryIdx

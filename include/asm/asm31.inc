@@ -716,8 +716,8 @@
 // .global sub_80033E4
 // .global object_freeMemory
 // .global sub_800362C
-// .global engine_setScreeneffect // (int a1, int a2) -> void
-// .global IsPaletteFadeActive // () -> zf
+// .global SetScreenFade // (int a1, int a2) -> void
+// .global IsScreenFadeActive // () -> zf
 // .global math_sinTable
 // .global math_cosTable
 // .global battle_isPaused

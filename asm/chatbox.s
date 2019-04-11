@@ -5038,7 +5038,7 @@ loc_804245C:
 	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 	mov r0, #0x2c 
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	pop {r4,r5}
 	mov r0, #1
 	strb r0, [r5,#4]
@@ -5071,7 +5071,7 @@ loc_804248C:
 	bl sub_803522E
 	mov r0, #0x2c 
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	pop {r4,r5,r7}
 	mov r0, #1
 	strb r0, [r5,#4]
@@ -5367,7 +5367,7 @@ chatbox_80426C4:
 	push {lr}
 	mov r0, #0xc
 	mov r1, #0xc
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	add r4, #2
 	mov r0, #1
 	pop {pc}

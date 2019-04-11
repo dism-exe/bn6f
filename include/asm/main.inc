@@ -54,7 +54,7 @@
 // .global sub_8004DF0
 // .global cb_80050EC // () -> void
 // .global sub_80062EC
-// .global IsPaletteFadeActive // () -> zf
+// .global IsScreenFadeActive // () -> zf
 // .global subsystem_triggerTransition_800630A
 // .global sub_8006910
 // .global SetPrimaryToolkitPointers // () -> void

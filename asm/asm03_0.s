@@ -1522,7 +1522,7 @@ sub_80270EA:
 	str r0, [r5,#0x40]
 	mov r0, #0x34 
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x91
 	bl sound_play // () -> void
 	mov r0, #0xc
@@ -1535,14 +1535,14 @@ loc_8027112:
 	thumb_local_start
 sub_8027118:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne loc_802712E
 	mov r0, #0x10
 	strh r0, [r5,#2]
 	mov r0, #0x30 
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 loc_802712E:
 	bl sub_80298D8
 	pop {pc}
@@ -1551,12 +1551,12 @@ loc_802712E:
 	thumb_local_start
 sub_8027134:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne loc_802714A
 	mov r0, #4
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x14
 	strh r0, [r5,#2]
 loc_802714A:
@@ -1567,7 +1567,7 @@ loc_802714A:
 	thumb_local_start
 sub_8027150:
 	push {r4,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne loc_80271BC
 	ldrb r3, [r5,#8]
@@ -1611,7 +1611,7 @@ loc_80271A0:
 	bl sub_8028E32
 	mov r0, #0
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x92
 	bl sound_play // () -> void
 	mov r0, #0x18
@@ -1624,7 +1624,7 @@ loc_80271BC:
 	thumb_local_start
 sub_80271C2:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_80271F2
 	mov r0, #4
@@ -2143,7 +2143,7 @@ sub_8027580:
 	str r0, [r5,#0x40]
 	mov r0, #4
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
 	strh r0, [r5,#2]
 locret_802759C:
@@ -2153,12 +2153,12 @@ locret_802759C:
 	thumb_local_start
 sub_802759E:
 	push {r4,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_80275D2
 	mov r0, #0
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	ldrh r0, [r5,#0x38]
 	strh r0, [r5,#0x3a]
 	ldrh r0, [r5,#0x3a]
@@ -2182,7 +2182,7 @@ off_80275D4: .word dword_20349A0
 	thumb_local_start
 sub_80275D8:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_80275EA
 	mov r0, #4
@@ -2234,7 +2234,7 @@ sub_8027624:
 	str r0, [r5,#0x40]
 	mov r0, #0x64 
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #1
 	mov r1, #0x28 
 	bl sub_80302B6
@@ -2257,7 +2257,7 @@ sub_8027658:
 	str r0, [r5,#0x40]
 	cmp r0, #0x32 
 	blt locret_8027670
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027670
 	mov r0, #0xc
@@ -2309,7 +2309,7 @@ loc_80276AA:
 	bl sub_8028E32
 	mov r0, #0x60 
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x10
 	strh r0, [r5,#2]
 	pop {r4,r6,pc}
@@ -2318,7 +2318,7 @@ loc_80276AA:
 	thumb_local_start
 sub_80276D6:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027706
 	mov r0, #4
@@ -2384,7 +2384,7 @@ sub_802774C:
 	str r0, [r5,#0x40]
 	mov r0, #0x64 
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #1
 	mov r1, #0x28 
 	bl sub_80302B6
@@ -2408,7 +2408,7 @@ sub_802777C:
 	str r0, [r5,#0x40]
 	cmp r0, #0x32 
 	blt locret_8027794
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027794
 	mov r0, #0xc
@@ -2465,7 +2465,7 @@ loc_80277DA:
 	bl sub_8028E32
 	mov r0, #0x60 
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x10
 	strh r0, [r5,#2]
 	pop {r4,r6,pc}
@@ -2474,7 +2474,7 @@ loc_80277DA:
 	thumb_local_start
 sub_8027806:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_802782E
 	mov r0, #4
@@ -2815,7 +2815,7 @@ sub_8027A90:
 	str r0, [r5,#0x40]
 	mov r0, #4
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
 	strh r0, [r5,#2]
 locret_8027AAC:
@@ -2825,12 +2825,12 @@ locret_8027AAC:
 	thumb_local_start
 sub_8027AAE:
 	push {r4,r6,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027ADC
 	mov r0, #0
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	ldrb r0, [r5,#0x1a]
 	bl sub_802A088
 	bl sub_80279FC
@@ -2847,7 +2847,7 @@ locret_8027ADC:
 	thumb_local_start
 sub_8027ADE:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027B1A
 	bl sub_80279FC
@@ -3028,7 +3028,7 @@ off_8027D54: .word dword_86EE0CC
 	thumb_local_start
 sub_8027D58:
 	push {r4,lr}
-	ldr r2, off_8027F0C // =byte_203CDB0 
+	ldr r2, off_8027F0C // =eBattleFolder 
 	ldr r1, dword_8027D74 // =0xffff 
 	mov r3, #0x1e
 loc_8027D60:
@@ -3234,7 +3234,7 @@ sub_8027EE8:
 	mov r3, r6
 loc_8027EFA:
 	mov r2, #0
-	ldr r1, off_8027F0C // =byte_203CDB0 
+	ldr r1, off_8027F0C // =eBattleFolder 
 loc_8027EFE:
 	strb r2, [r4]
 	str r1, [r4,#8]
@@ -3244,7 +3244,7 @@ loc_8027EFE:
 	bne loc_8027EFE
 locret_8027F0A:
 	pop {r4,r6,pc}
-off_8027F0C: .word byte_203CDB0
+off_8027F0C: .word eBattleFolder
 	thumb_func_end sub_8027EE8
 
 	thumb_local_start
@@ -5984,7 +5984,7 @@ locret_8029458:
 	thumb_local_start
 sub_802945A:
 	push {r4,r6,r7,lr}
-	ldr r3, off_8029510 // =byte_203CDB0 
+	ldr r3, off_8029510 // =eBattleFolder 
 	mov r4, #0
 	mov r6, #0
 	mov r2, #0x1e
@@ -6031,7 +6031,7 @@ sub_8029488:
 	blt loc_80294D8
 	b locret_80294DE
 loc_80294A8:
-	ldr r3, off_8029510 // =byte_203CDB0 
+	ldr r3, off_8029510 // =eBattleFolder 
 	lsl r6, r6, #1
 	add r3, r3, r6
 	mov r7, #4
@@ -6069,7 +6069,7 @@ sub_80294E0:
 	mov r0, #0x5f 
 	ldrb r6, [r5,r0]
 loc_80294E6:
-	ldr r3, off_8029510 // =byte_203CDB0 
+	ldr r3, off_8029510 // =eBattleFolder 
 	mov r4, #0
 	mov r7, #0
 	sub r7, #1
@@ -6093,7 +6093,7 @@ loc_8029508:
 	cmp r6, #0
 	bgt loc_80294E6
 	pop {r4,r6,r7,pc}
-off_8029510: .word byte_203CDB0
+off_8029510: .word eBattleFolder
 	thumb_func_end sub_80294E0
 
 	thumb_local_start
@@ -6331,7 +6331,7 @@ sub_8029688:
 	str r0, [sp]
 loc_80296A2:
 	ldr r7, off_8029784 // =dword_2033000 
-	ldr r6, off_80298D4 // =byte_203CDB0 
+	ldr r6, off_80298D4 // =eBattleFolder 
 	ldrb r4, [r5,#6]
 	cmp r4, #0
 	beq loc_80296DE
@@ -6373,7 +6373,7 @@ loc_80296E8:
 	tst r0, r0
 	beq loc_80296FE
 	lsl r0, r0, #1
-	ldr r1, off_80298D4 // =byte_203CDB0 
+	ldr r1, off_80298D4 // =eBattleFolder 
 	add r0, r0, r1
 	cmp r0, r6
 	bne loc_80296FE
@@ -6399,7 +6399,7 @@ loc_802970C:
 	ldrb r4, [r5,#6]
 	cmp r4, #0
 	beq loc_8029750
-	ldr r6, off_80298D4 // =byte_203CDB0 
+	ldr r6, off_80298D4 // =eBattleFolder 
 	mov r3, #0
 loc_8029724:
 	mov r0, r3
@@ -6436,7 +6436,7 @@ loc_802975A:
 	tst r0, r0
 	beq loc_8029770
 	lsl r0, r0, #1
-	ldr r1, off_80298D4 // =byte_203CDB0 
+	ldr r1, off_80298D4 // =eBattleFolder 
 	add r0, r0, r1
 	cmp r0, r6
 	bne loc_8029770
@@ -6476,7 +6476,7 @@ sub_8029788:
 	str r0, [sp]
 loc_80297A2:
 	ldr r7, off_80298C0 // =word_2036660 
-	ldr r6, off_80298D4 // =byte_203CDB0 
+	ldr r6, off_80298D4 // =eBattleFolder 
 	mov r3, #0
 	mov r2, #0
 	ldrb r4, [r5,#6]
@@ -6519,7 +6519,7 @@ loc_80297EA:
 	tst r0, r0
 	beq loc_8029800
 	lsl r0, r0, #1
-	ldr r1, off_80298D4 // =byte_203CDB0 
+	ldr r1, off_80298D4 // =eBattleFolder 
 	add r0, r0, r1
 	cmp r0, r6
 	bne loc_8029800
@@ -6578,7 +6578,7 @@ sub_802983C:
 	str r0, [sp]
 loc_8029856:
 	ldr r7, off_80298C0 // =word_2036660 
-	ldr r6, off_80298D4 // =byte_203CDB0 
+	ldr r6, off_80298D4 // =eBattleFolder 
 	ldrb r4, [r5,#6]
 	cmp r4, #0
 	beq loc_802988E
@@ -6618,7 +6618,7 @@ loc_8029898:
 	tst r0, r0
 	beq loc_80298AE
 	lsl r0, r0, #1
-	ldr r1, off_80298D4 // =byte_203CDB0 
+	ldr r1, off_80298D4 // =eBattleFolder 
 	add r0, r0, r1
 	cmp r0, r6
 	bne loc_80298AE
@@ -6640,7 +6640,7 @@ loc_80298BC:
 off_80298C0: .word word_2036660
 off_80298C4: .word byte_80298C8
 byte_80298C8: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-off_80298D4: .word byte_203CDB0
+off_80298D4: .word eBattleFolder
 	thumb_func_end sub_802983C
 
 	thumb_local_start
@@ -7915,7 +7915,7 @@ sub_802A2E8:
 	beq locret_802A30A
 	mov r0, #0x54 
 	mov r1, #0xa
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x5c 
 	mov r1, #0xa
 	bl loc_8006274 // (int a1, int a2) -> void
@@ -7943,7 +7943,7 @@ sub_802A30C:
 	bl sub_8000642
 	add r4, #2
 	strb r4, [r5,#0x13]
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	bl loc_80062FC // () -> zf
 	cmp r0, #0
 	bne locret_802A33C
@@ -7961,7 +7961,7 @@ sub_802A33E:
 	bne locret_802A360
 	mov r0, #0x50 
 	mov r1, #0xa
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x58 
 	mov r1, #0xa
 	bl loc_8006274 // (int a1, int a2) -> void
@@ -7989,7 +7989,7 @@ sub_802A362:
 	bl sub_8000642
 	add r4, #2
 	strb r4, [r5,#0x13]
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	bl loc_80062FC // () -> zf
 	cmp r0, #0
 	bne locret_802A392
@@ -8401,7 +8401,7 @@ locret_802A664:
 	.word dword_20364C0
 	.word unk_2035000
 	.word unk_20365C0
-	.word byte_203CDB0
+	.word eBattleFolder
 	.byte 0xFF, 0x1, 0x0, 0x0, 0x20, 0x9C, 0x0, 0x6
 byte_802A680: .byte 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77
 	.byte 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77
@@ -10237,10 +10237,10 @@ sub_802B7A0:
 	bl sub_802B9FE
 	mov r0, #0x14
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	b locret_802B7DE
 loc_802B7BC:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_802B7DE
 	mov r0, #0x24 
@@ -10509,7 +10509,7 @@ sub_802B9B8:
 	strh r0, [r5,#2]
 	mov r0, #0x10
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 locret_802B9D2:
 	pop {pc}
 	thumb_func_end sub_802B9B8
@@ -10517,7 +10517,7 @@ locret_802B9D2:
 	thumb_local_start
 sub_802B9D4:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_802B9E2
 	mov r0, #8
@@ -11488,11 +11488,11 @@ sub_802C328:
 	bne loc_802C33C
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_802C33C:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_802C346
 	mov r0, #8
 	str r0, [r5]
@@ -17869,7 +17869,7 @@ startScreen_802F574:
 	bl startScreen_initGfx_802FCC0
 	mov r0, #0xc
 	mov r1, #0xff
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl musicGameState_8000784 // () -> void
 	ldr r0, off_802F5EC // =pt_802F5F0 
 	bl sub_8002354
@@ -17987,7 +17987,7 @@ sub_802F668:
 	bl sub_802FD3C
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5,#1]
 	pop {pc}
@@ -17998,7 +17998,7 @@ off_802F6A0: .word 0x1340
 	thumb_local_start
 sub_802F6A4:
 	push {r4,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_802F6B0
 	mov r0, #8
 	strb r0, [r5,#1]
@@ -18016,7 +18016,7 @@ sub_802F6B2:
 	strb r0, [r5,#1]
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	b locret_802F6FA
 loc_802F6C8:
 	sub r0, #1
@@ -18062,7 +18062,7 @@ sub_802F710:
 	ble loc_802F71C
 	bl sub_802F8D8
 loc_802F71C:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_802F754
 	ldrh r0, [r5,#4]
 	cmp r0, #0
@@ -18187,7 +18187,7 @@ sub_802F81C:
 	mov r1, #9
 	tst r1, r0
 	beq loc_802F848
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_802F88C
 	bl musicGameState_8000784 // () -> void
 	mov r0, #0x9d
@@ -18196,7 +18196,7 @@ sub_802F81C:
 	strb r0, [r5,#1]
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	b locret_802F88C
 loc_802F848:
 	ldrh r0, [r7,#4]

@@ -20,14 +20,8 @@ SECTIONS
 
     OVERLAY . :
     {
-        ewram_t4_battle_objects { ewram.o(ewram_t4_battle_objects); }
-        ewram_2036860 { ewram.o(ewram_2036860); }
-    } >ewram_region
-    
-    ewram_2038170 . (NOLOAD) :
-    ALIGN(4)
-    {
-        ewram.o(ewram_2038170);
+        ewram_battle { ewram.o(ewram_battle); }
+        ewram_2034000 { ewram.o(ewram_2034000); }
     } >ewram_region
 
     iwram (NOLOAD) :

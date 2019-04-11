@@ -12390,13 +12390,13 @@ loc_8014900:
 	mov r0, #0x44 
 loc_8014902:
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	ldr r0, dword_8014940 // =0x4000 
 	bl sub_801DACC
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_8014912:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne locret_801493E
 	bl GetBattleMode
@@ -12478,11 +12478,11 @@ loc_80149A2:
 	mov r0, #0x40 
 loc_80149A4:
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_80149AE:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne locret_80149EA
 	bl sub_800A97A
@@ -17238,7 +17238,7 @@ loc_801722C:
 	bl sub_80077B4
 	mov r0, #4
 	mov r1, #4
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r4, #1
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x74 
@@ -17257,7 +17257,7 @@ locret_8017272:
 	thumb_local_start
 sub_8017274:
 	push {r4,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne loc_8017284
 	mov r0, #8
@@ -19671,21 +19671,21 @@ byte_80191C8: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 
 	thumb_func_start sub_801986C
 sub_801986C:
 	push {r4,r5,lr}
-	ldr r1, off_80198E4 // =dword_2035310 
+	ldr r1, off_80198E4 // =eActiveCollisionDataBitfield 
 	mov r0, #0
 	str r0, [r1]
 	mov r5, #1
 	lsl r5, r5, #0x1f
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Unk20384f0_Ptr]
+	ldr r4, [r4,#oToolkit_CollisionDataPtr]
 loc_801987C:
 	// memBlock
 	mov r0, r4
 	// size
-	mov r1, #0xa8
+	mov r1, #oCollisionData_Size
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	str r5, [r4,#0x44]
-	add r4, #0xa8
+	str r5, [r4,#oCollisionData_CollisionIndexBit]
+	add r4, #oCollisionData_Size
 	lsr r5, r5, #1
 	bne loc_801987C
 	bl sub_8019FA4
@@ -19697,8 +19697,8 @@ object_createCollisionData:
 	push {r4,lr}
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#oToolkit_Unk20384f0_Ptr]
-	ldr r3, off_80198E4 // =dword_2035310 
+	ldr r0, [r0,#oToolkit_CollisionDataPtr]
+	ldr r3, off_80198E4 // =eActiveCollisionDataBitfield 
 	ldr r2, [r3]
 	mov r1, #1
 	lsl r1, r1, #0x1f
@@ -19715,13 +19715,13 @@ loc_80198AE:
 	str r2, [r3]
 	mov r4, r0
 	// size
-	mov r1, #0x44 
+	mov r1, #0x44
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	mov r0, #0x48 
+	mov r0, #0x48
 	// memBlock
 	add r0, r0, r4
 	// size
-	mov r1, #0x60 
+	mov r1, #0x60
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, r4
 	mov r1, #1
@@ -19737,14 +19737,14 @@ sub_80198CE:
 	mov r1, #0
 	strb r1, [r0,#oCollisionData_Enabled]
 	ldr r2, [r0,#oCollisionData_CollisionIndexBit]
-	ldr r3, off_80198E4 // =dword_2035310 
+	ldr r3, off_80198E4 // =eActiveCollisionDataBitfield 
 	ldr r1, [r3]
 	bic r1, r2
 	str r1, [r3]
 locret_80198E0:
 	mov pc, lr
 	.balign 4, 0x00
-off_80198E4: .word dword_2035310
+off_80198E4: .word eActiveCollisionDataBitfield
 byte_80198E8: .byte 0x7F
 byte_80198E9: .byte 0x0, 0x0, 0x7F
 byte_80198EC: .byte 0x0, 0x0, 0x1, 0x0, 0x7F
@@ -20787,7 +20787,7 @@ sub_801A4DC:
 	ldr r2, [r5,#oBattleObject_CollisionDataPtr]
 	mov r5, r1
 	ldr r1, [r2,#oCollisionData_Unk_7c]
-	ldr r2, off_801A550 // =unk_20384F0 
+	ldr r2, off_801A550 // =eCollisionData 
 	mov r3, #0
 loc_801A4E8:
 	cmp r5, #4
@@ -20796,13 +20796,13 @@ loc_801A4E8:
 	beq loc_801A502
 	lsl r1, r1, #1
 	bcc loc_801A4FE
-	ldr r4, [r2,#0x38]
+	ldr r4, [r2,#oCollisionData_ParentObjectPtr]
 	str r4, [r0]
 	add r0, #4
 	add r3, #1
 	sub r5, #4
 loc_801A4FE:
-	add r2, #0xa8
+	add r2, #oCollisionData_Size
 	b loc_801A4E8
 loc_801A502:
 	mov r0, r3
@@ -20837,7 +20837,7 @@ dword_801A540: .word 0xFFFF
 dword_801A544: .word 0x100040
 off_801A548: .word 0x2000000
 off_801A54C: .word 0x1500
-off_801A550: .word unk_20384F0
+off_801A550: .word eCollisionData
 	thumb_func_end sub_801A506
 
 	thumb_local_start

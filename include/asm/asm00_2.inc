@@ -399,8 +399,8 @@
 // .global sub_8002FB2
 // .global object_freeMemory
 // .global sub_800362C
-// .global engine_setScreeneffect // (int a1, int a2) -> void
-// .global IsPaletteFadeActive // () -> zf
+// .global SetScreenFade // (int a1, int a2) -> void
+// .global IsScreenFadeActive // () -> zf
 // .global sub_80077B4
 // .global battle_isPaused
 // .global battle_isTimeStop
@@ -815,7 +815,7 @@
 // .equ dword_20352E0, 0x20352E0
 // .equ dword_20352E0, 0x20352E0
 // .equ dword_20352E4, 0x20352E4
-// .equ dword_2035310, 0x2035310
+// .equ eActiveCollisionDataBitfield, 0x2035310
 // .equ dword_20367E0, 0x20367E0
 // .equ dword_20367F0, 0x20367F0
 // .equ byte_20367F4, 0x20367F4
@@ -837,7 +837,7 @@
 // .equ byte_203685A, 0x203685A
 // .equ byte_203685B, 0x203685B
 // .equ byte_203685C, 0x203685C
-// .equ unk_20384F0, 0x20384F0
+// .equ eCollisionData, 0x20384F0
 // .equ dword_2038528, 0x2038528
 // .equ unk_203A380, 0x203A380
 // .equ unk_203A980, 0x203A980

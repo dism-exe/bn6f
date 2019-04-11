@@ -279,8 +279,8 @@
 // .global sub_8005F32
 // .global sub_8005F40
 // .global sub_8005F6C
-// .global engine_setScreeneffect // (int a1, int a2) -> void
-// .global IsPaletteFadeActive // () -> zf
+// .global SetScreenFade // (int a1, int a2) -> void
+// .global IsScreenFadeActive // () -> zf
 // .global math_sinTable
 // .global sub_80068EC
 // .global sub_8006910

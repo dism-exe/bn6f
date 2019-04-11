@@ -94,7 +94,7 @@
 // .global subsystem_launchChipTrader
 // .global sub_8005EA2
 // .global subsystem_launchMail
-// .global engine_setScreeneffect // (int a1, int a2) -> void
+// .global SetScreenFade // (int a1, int a2) -> void
 // .global getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
 // .global sub_800B6B0
 

@@ -27,7 +27,7 @@
 // .global sub_8003940
 // .global sub_80039D4
 // .global SpawnOverworldMapObject
-// .global IsPaletteFadeActive // () -> zf
+// .global IsScreenFadeActive // () -> zf
 
 	.include "asm/asm03_0.inc"
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void

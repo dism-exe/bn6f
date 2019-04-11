@@ -21,9 +21,9 @@
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 
 	.include "asm/asm00_1.inc"
-// .global engine_setScreeneffect // (int a1, int a2) -> void
+// .global SetScreenFade // (int a1, int a2) -> void
 // .global sub_80062C8
-// .global IsPaletteFadeActive // () -> zf
+// .global IsScreenFadeActive // () -> zf
 
 	.include "asm/asm02.inc"
 // .global split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)

@@ -176,7 +176,7 @@ loc_81419CC:
 	bne loc_8141A0C
 	bl sub_809E462
 	bne loc_8141A0C
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8141A0C
 	mov r0, #0x80
 	bl chatbox_8045F3C
@@ -4041,7 +4041,7 @@ loc_814407E:
 	beq loc_8144092
 	bl sub_811E744
 loc_8144092:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_81440A6
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]

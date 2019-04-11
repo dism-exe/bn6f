@@ -32,7 +32,7 @@
 
 	.include "asm/asm00_1.inc"
 // .global sprite_setCoordinates
-// .global engine_setScreeneffect // (int a1, int a2) -> void
+// .global SetScreenFade // (int a1, int a2) -> void
 // .global sub_80062C8
 
 	.include "asm/asm03_1.inc"

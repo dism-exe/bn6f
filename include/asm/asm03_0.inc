@@ -237,10 +237,10 @@
 // .global SpawnOverworldNPCObject
 // .global sub_8004D48
 // .global sub_8004DF0
-// .global engine_setScreeneffect // (int a1, int a2) -> void
+// .global SetScreenFade // (int a1, int a2) -> void
 // .global loc_8006274
 // .global sub_80062EC
-// .global IsPaletteFadeActive // () -> zf
+// .global IsScreenFadeActive // () -> zf
 // .global loc_80062FC
 // .global math_sinTable
 // .global math_cosTable
@@ -954,7 +954,7 @@
 // .equ dword_203CA48, 0x203CA48
 // .equ byte_203CA50, 0x203CA50
 // .equ byte_203CA80, 0x203CA80
-// .equ byte_203CDB0, 0x203CDB0
+// .equ eBattleFolder, 0x203CDB0
 // .equ byte_203CED0, 0x203CED0
 // .equ dword_203CED4, 0x203CED4
 // .equ dword_203CFB0, 0x203CFB0

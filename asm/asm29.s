@@ -4949,7 +4949,7 @@ sub_80A7C58:
 	bne loc_80A7C7E
 	bl sub_809E462
 	bne loc_80A7C7E
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_80A7C7E
 	bl sub_809E3A2
 	beq loc_80A7C7E
@@ -5054,7 +5054,7 @@ sub_80A7CFE:
 	bne locret_80A7D70
 	bl sub_809E462
 	bne locret_80A7D70
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_80A7D70
 	// entryIdx
 	mov r0, #0x17
@@ -7014,7 +7014,7 @@ sub_80A8DF0:
 loc_80A8E0A:
 	bl sub_809E462
 	bne loc_80A8E18
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_80A8E18
 	mov r4, #0
 loc_80A8E18:

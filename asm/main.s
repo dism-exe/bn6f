@@ -180,7 +180,7 @@ dword_8000450: .word 0x3FF
 	thumb_local_start
 main_static_8000454:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_80004A2
 	bl sub_813D60C
 	bne locret_80004A2

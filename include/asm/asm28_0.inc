@@ -126,7 +126,7 @@
 // .global SpawnOWPlayerObject
 // .global FreeOWPlayerObject
 // .global SpawnOverworldMapObject
-// .global IsPaletteFadeActive // () -> zf
+// .global IsScreenFadeActive // () -> zf
 
 	.include "asm/asm00_2.inc"
 // .global sub_8013704

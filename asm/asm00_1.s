@@ -3791,7 +3791,7 @@ GameStateJumptable: .word EnterMap+1
 	thumb_local_start
 EnterMap:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	bne loc_8005152
 	pop {pc}
 loc_8005152:
@@ -3881,7 +3881,7 @@ loc_80051AA:
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	ldrb r0, [r5,#oGameState_Unk_16]
 	ldrb r1, [r5,#oGameState_Unk_17]
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
 	strb r0, [r5,#oGameState_Unk_16]
 	mov r0, #0x10
@@ -3947,7 +3947,7 @@ sub_80052D8:
 	bl sub_80024AE
 	bl sub_803F530
 	bne locret_800531A
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_800531A
 	bl sub_800531C
 locret_800531A:
@@ -4007,7 +4007,7 @@ sub_800536E:
 	bl sub_8004590
 	bl sub_8004934
 	bl sub_80024AE
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_80053DA
 	ldr r0, [r5,#0x68]
 	sub r0, #1
@@ -4054,7 +4054,7 @@ sub_80053E4:
 	bl sub_8004590
 	bl sub_8004934
 	bl sub_80024AE
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_800545C
 	bl chatbox_8040818
 	mov r0, #0x25 
@@ -4110,7 +4110,7 @@ loc_8005474:
 	ldrb r0, [r7,#0x1] // (byte_200DF21 - 0x200df20)
 	cmp r0, #4
 	bne loc_80054D6
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_80054D6
 	bl sub_8001850
 	bl sub_8001820
@@ -4129,7 +4129,7 @@ loc_80054D6:
 	bne loc_80054EA
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	b locret_800551C
 loc_80054EA:
 	ldrb r0, [r7,#0x1] // (byte_200DF21 - 0x200df20)
@@ -4194,7 +4194,7 @@ sub_800555A:
 	bl sub_8004590
 	bl sub_8004934
 	bl sub_80024AE
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_80055CC
 	bl chatbox_8040818
 	mov r0, #0x21 
@@ -4233,7 +4233,7 @@ sub_80055CE:
 	bl sub_8004590
 	bl sub_8004934
 	bl sub_80024AE
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8005640
 	bl chatbox_8040818
 	mov r0, #0x21 
@@ -4272,7 +4272,7 @@ sub_8005642:
 	bl sub_8004590
 	bl sub_8004934
 	bl sub_80024AE
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_80056B4
 	bl chatbox_8040818
 	mov r0, #0x21 
@@ -4312,7 +4312,7 @@ sub_80056B8:
 	bl sub_8004590
 	bl sub_8004934
 	bl sub_80024AE
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_800572A
 	bl chatbox_8040818
 	mov r0, #0x21 
@@ -4351,7 +4351,7 @@ sub_800572C:
 	bl sub_8004590
 	bl sub_8004934
 	bl sub_80024AE
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_800579E
 	bl chatbox_8040818
 	mov r0, #0x21 
@@ -4390,7 +4390,7 @@ sub_80057A0:
 	bl sub_8004590
 	bl sub_8004934
 	bl sub_80024AE
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8005812
 	bl chatbox_8040818
 	mov r0, #0x21 
@@ -4429,7 +4429,7 @@ sub_8005814:
 	bl sub_8004590
 	bl sub_8004934
 	bl sub_80024AE
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8005858
 	bl chatbox_8040818
 	bl sub_811F6E0
@@ -4453,7 +4453,7 @@ sub_800585A:
 	bl sub_8004590
 	bl sub_8004934
 	bl sub_80024AE
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_80058CC
 	bl chatbox_8040818
 	mov r0, #0x21 
@@ -4493,7 +4493,7 @@ sub_80058D0:
 	mov r0, #1
 	bl sub_811EBE0
 	bne locret_800593C
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_800593C
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	bne locret_800593C
@@ -4558,7 +4558,7 @@ sub_800596C:
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_8035738
 	mov r0, #0x10
 	strb r0, [r5]
@@ -4580,7 +4580,7 @@ sub_8005990:
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #4
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_8035738
 	mov r0, #0x10
 	strb r0, [r5]
@@ -4676,7 +4676,7 @@ sub_8005A28:
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_8035738
 	mov r0, #0x3c 
 	str r0, [r5,#0x68]
@@ -4700,7 +4700,7 @@ sub_8005A50:
 	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_8035738
 	mov r0, #0xa0
 	str r0, [r5,#0x68]
@@ -4747,7 +4747,7 @@ sub_8005A8C:
 	mov r0, #1
 	bl sub_811EBE0
 	bne locret_8005AF2
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8005AF2
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	bne locret_8005AF2
@@ -4760,7 +4760,7 @@ sub_8005A8C:
 	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 	mov r0, #0x2c 
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 locret_8005AF2:
 	pop {r5,pc}
 	thumb_func_end sub_8005A8C
@@ -4792,7 +4792,7 @@ sub_8005AF4:
 	mov r0, #1
 	bl sub_811EBE0
 	bne loc_8005B64
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8005B68
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	bne locret_8005B68
@@ -4845,7 +4845,7 @@ sub_8005B6E:
 	mov r0, #1
 	bl sub_811EBE0
 	bne locret_8005BC6
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8005BC6
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	bne locret_8005BC6
@@ -5030,7 +5030,7 @@ subsystem_launchBBS:
 	bl updatePlayerGameState_800107A // () -> void
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x1c
 	strb r0, [r5,#oGameState_SubsystemIndex]
 	pop {r4-r7,pc}
@@ -5047,7 +5047,7 @@ subsystem_launchReqBBS:
 	bl updatePlayerGameState_800107A // () -> void
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x30 
 	strb r0, [r5,#oGameState_SubsystemIndex]
 	pop {r4-r7,pc}
@@ -5064,7 +5064,7 @@ subsystem_launchShop:
 	bl updatePlayerGameState_800107A // () -> void
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r1, #0x20 
 	strb r1, [r5,#oGameState_SubsystemIndex]
 	pop {r4-r7,pc}
@@ -5099,7 +5099,7 @@ loc_8005D5C:
 	strb r1, [r5,#oGameState_SubsystemIndex]
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0
 	pop {r4,r5,pc}
 	thumb_func_end subsystem_launchChipTrader
@@ -5215,7 +5215,7 @@ sub_8005E86:
 	bl updatePlayerGameState_800107A // () -> void
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x28 
 	strb r0, [r5,#oGameState_SubsystemIndex]
 	pop {r4-r7,pc}
@@ -5231,7 +5231,7 @@ sub_8005EA2:
 	bl updatePlayerGameState_800107A // () -> void
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r1, #0x2c 
 	strb r1, [r5,#oGameState_SubsystemIndex]
 	pop {r4-r7,pc}
@@ -5257,7 +5257,7 @@ subsystem_launchMail:
 	strb r1, [r5,#oGameState_SubsystemIndex]
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0
 	pop {r4,r5,pc}
 	thumb_func_end subsystem_launchMail
@@ -5507,8 +5507,8 @@ off_8006040:
 	thumb_func_end sub_8005F84
 
 // (int a1, int a2) -> void
-	thumb_func_start engine_setScreeneffect
-engine_setScreeneffect:
+	thumb_func_start SetScreenFade
+SetScreenFade:
 	mov r3, #0
 	b loc_8006276
 loc_8006274:
@@ -5517,7 +5517,7 @@ loc_8006276:
 	push {r5,lr}
 	cmp r0, #0xff
 	beq locret_80062C0
-	ldr r5, off_80063BC // =byte_200A440 
+	ldr r5, off_80063BC // =fadeInfo_200A440 
 	add r5, r5, r3
 	push {r0,r1}
 	mov r0, r3
@@ -5555,11 +5555,11 @@ locret_80062C0:
 	pop {r5,pc}
 	.balign 4, 0x00
 off_80062C4: .word off_8006040
-	thumb_func_end engine_setScreeneffect
+	thumb_func_end SetScreenFade
 
 	thumb_func_start sub_80062C8
 sub_80062C8:
-	ldr r0, off_80063BC // =byte_200A440 
+	ldr r0, off_80063BC // =fadeInfo_200A440 
 	ldrb r1, [r0,#0x3] // (byte_200A443 - 0x200a440)
 	ldrb r0, [r0,#0x1] // (byte_200A441 - 0x200a440)
 	mov pc, lr
@@ -5577,7 +5577,7 @@ sub_80062D6:
 	push {r5,lr}
 	mov r0, #0x20 
 loc_80062DA:
-	ldr r5, off_80063BC // =byte_200A440 
+	ldr r5, off_80063BC // =fadeInfo_200A440 
 	add r5, r5, r0
 	bl sub_8006330
 	// memBlock
@@ -5597,25 +5597,25 @@ sub_80062EC:
 	thumb_func_end sub_80062EC
 
 // () -> zf
-	thumb_func_start IsPaletteFadeActive
-IsPaletteFadeActive:
+	thumb_func_start IsScreenFadeActive
+IsScreenFadeActive:
 	mov r3, #0
 	b loc_80062FE
 loc_80062FC:
 	mov r3, #0x20 
 loc_80062FE:
-	ldr r0, off_80063BC // =byte_200A440 
+	ldr r0, off_80063BC // =fadeInfo_200A440 
 	add r0, r0, r3
 	ldrb r0, [r0,#0x3] // (byte_200A443 - 0x200a440)
 	mov r1, #1
 	cmp r0, r1
 	mov pc, lr
-	thumb_func_end IsPaletteFadeActive
+	thumb_func_end IsScreenFadeActive
 
 	thumb_func_start subsystem_triggerTransition_800630A
 subsystem_triggerTransition_800630A:
 	push {r4-r7,lr}
-	ldr r5, off_80063BC // =byte_200A440 
+	ldr r5, off_80063BC // =fadeInfo_200A440 
 	mov r4, #0
 loc_8006310:
 	ldrb r0, [r5]
@@ -5639,7 +5639,7 @@ off_800632C: .word off_8005FB4
 	thumb_local_start
 sub_8006330:
 	push {r5,lr}
-	ldr r5, off_80063BC // =byte_200A440 
+	ldr r5, off_80063BC // =fadeInfo_200A440 
 	add r5, r5, r0
 	bl sub_800634C
 	ldrb r0, [r5,#0xc]
@@ -5654,7 +5654,7 @@ sub_8006330:
 	thumb_local_start
 sub_800634C:
 	push {r5,lr}
-	ldr r5, off_80063BC // =byte_200A440 
+	ldr r5, off_80063BC // =fadeInfo_200A440 
 	add r5, r5, r0
 	lsr r2, r0, #4
 	strb r2, [r5,#0xc]
@@ -5707,12 +5707,12 @@ loc_800637C:
 	bl sub_8002378
 	pop {r4-r7,pc}
 loc_80063B0:
-	ldr r0, off_80063BC // =byte_200A440 
+	ldr r0, off_80063BC // =fadeInfo_200A440 
 	sub r0, r5, r0
 	bl sub_8006330
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_80063BC: .word byte_200A440
+off_80063BC: .word fadeInfo_200A440
 	thumb_func_end sub_8006366
 
 	thumb_local_start
@@ -5800,16 +5800,16 @@ sub_8006444:
 	bl sub_8006414
 	pop {r6,pc}
 loc_800645E:
-	ldr r0, off_8006478 // =byte_200A440 
+	ldr r0, off_8006478 // =fadeInfo_200A440 
 	sub r0, r5, r0
 	bl sub_800634C
 	mov r0, #0x64 
 	mov r1, #0xff
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_800647C
 	pop {r6,pc}
 dword_8006474: .word 0x10
-off_8006478: .word byte_200A440
+off_8006478: .word fadeInfo_200A440
 	thumb_func_end sub_8006444
 
 	thumb_local_start
@@ -6489,7 +6489,7 @@ ToolkitPointers: .word i_joGameSubsysSel
 	.word iCurrFrame
 	.word unk_30025C0
 	.word sChatbox
-	.word unk_20384F0
+	.word eCollisionData
 	.word sSubmenu
 	.word byte_200A220
 ToolkitPointersEnd:
@@ -8952,7 +8952,7 @@ sub_8007F14:
 	bne locret_8007F2A
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
 	strb r0, [r5,#1]
 locret_8007F2A:
@@ -8962,7 +8962,7 @@ locret_8007F2A:
 	thumb_local_start
 sub_8007F2C:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne locret_8007F4C
 	bl musicGameState_8000784 // () -> void
@@ -9020,11 +9020,11 @@ sub_8007FA4:
 	bl sub_80062EC
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_8007FC4:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne locret_8007FD0
 	mov r0, #4
@@ -11802,12 +11802,12 @@ loc_80094FA:
 	mov r0, #0xc
 loc_80094FC:
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_800951C
 loc_8009508:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_800951C
 	bl musicGameState_8000784 // () -> void
 	mov r0, #0x1a
@@ -12377,12 +12377,12 @@ sub_800993A:
 	bne loc_8009950
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_8009964
 loc_8009950:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8009964
 	bl musicGameState_8000784 // () -> void
 	mov r0, #0x1a
@@ -12768,12 +12768,12 @@ sub_8009C2A:
 	bne loc_8009C40
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_8009C54
 loc_8009C40:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8009C54
 	bl musicGameState_8000784 // () -> void
 	mov r0, #0x1a
@@ -13201,12 +13201,12 @@ sub_8009F5E:
 	bne loc_8009F74
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 	b locret_8009F88
 loc_8009F74:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8009F88
 	bl musicGameState_8000784 // () -> void
 	mov r0, #0x1a
@@ -13801,7 +13801,7 @@ loc_800A33E:
 loc_800A35C:
 	push {r0}
 	// dest
-	ldr r1, off_800A3E0 // =byte_203CDB0
+	ldr r1, off_800A3E0 // =eBattleFolder
 	// halfwordCount
 	mov r2, #0x3c
 	bl CopyHalfwords // (u16 *src, u16 *dest, int halfwordCount) -> void
@@ -13818,7 +13818,7 @@ loc_800A370:
 	add r3, r0, r0
 	cmp r0, #0xff
 	beq loc_800A394
-	ldr r0, off_800A3E0 // =byte_203CDB0 
+	ldr r0, off_800A3E0 // =eBattleFolder 
 	ldrh r4, [r0]
 	ldrh r5, [r0,r3]
 	strh r5, [r0]
@@ -13834,7 +13834,7 @@ loc_800A394:
 	add r3, r1, r1
 	cmp r0, #0xff
 	beq loc_800A3CE
-	ldr r0, off_800A3E0 // =byte_203CDB0 
+	ldr r0, off_800A3E0 // =eBattleFolder 
 	cmp r3, #0x38 
 	beq loc_800A3B2
 	ldrh r4, [r0,#0x38] // (word_203CDE8 - 0x203cdb0)
@@ -13860,7 +13860,7 @@ loc_800A3C4:
 	mov r2, #0x44 
 	strb r6, [r3,r2]
 loc_800A3CE:
-	ldr r0, off_800A3E0 // =byte_203CDB0 
+	ldr r0, off_800A3E0 // =eBattleFolder 
 	mov r1, r7
 	mov r2, r6
 	bl sub_800A570
@@ -13868,7 +13868,7 @@ locret_800A3D8:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_800A3DC: .word dword_802137C
-off_800A3E0: .word byte_203CDB0
+off_800A3E0: .word eBattleFolder
 	thumb_func_end sub_800A318
 
 	thumb_local_start
@@ -13949,7 +13949,7 @@ loc_800A474:
 	cmp r0, r2
 	bne loc_800A482
 	ldrh r0, [r6,r2]
-	ldr r1, off_800A4DC // =byte_203CDB0 
+	ldr r1, off_800A4DC // =eBattleFolder 
 	strh r0, [r1]
 	b loc_800A4A6
 loc_800A482:
@@ -13957,7 +13957,7 @@ loc_800A482:
 	cmp r0, r2
 	bne loc_800A490
 	ldrh r0, [r6,r2]
-	ldr r1, off_800A4DC // =byte_203CDB0 
+	ldr r1, off_800A4DC // =eBattleFolder 
 	strh r0, [r1,#0x38] // (word_203CDE8 - 0x203cdb0)
 	b loc_800A4A6
 loc_800A490:
@@ -13965,12 +13965,12 @@ loc_800A490:
 	cmp r0, r2
 	bne loc_800A49E
 	ldrh r0, [r6,r2]
-	ldr r1, off_800A4DC // =byte_203CDB0 
+	ldr r1, off_800A4DC // =eBattleFolder 
 	strh r0, [r1,#0x3a] // (byte_203CDEA - 0x203cdb0)
 	b loc_800A4A6
 loc_800A49E:
 	ldrh r0, [r6,r2]
-	ldr r1, off_800A4DC // =byte_203CDB0 
+	ldr r1, off_800A4DC // =eBattleFolder 
 	strh r0, [r1,r3]
 	add r3, #2
 loc_800A4A6:
@@ -13985,7 +13985,7 @@ loc_800A4B6:
 	mov r0, #0x80
 	tst r0, r4
 	beq loc_800A4D2
-	ldr r0, off_800A4DC // =byte_203CDB0 
+	ldr r0, off_800A4DC // =eBattleFolder 
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_BattleStatePtr]
 	mov r3, #0x17
@@ -14000,7 +14000,7 @@ loc_800A4D2:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_800A4D8: .word dword_802137C
-off_800A4DC: .word byte_203CDB0
+off_800A4DC: .word eBattleFolder
 	thumb_func_end sub_800A3E4
 
 	thumb_local_start
@@ -14079,7 +14079,7 @@ off_800A56C: .word unk_2039AA0
 	thumb_func_end sub_800A540
 
 	thumb_local_start
-// byte_203CDB0 = some buffer
+// eBattleFolder = some buffer
 sub_800A570: // shuffle folder
 	push {r4-r7,lr}
 	sub sp, sp, #0xc

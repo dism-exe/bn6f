@@ -363,8 +363,8 @@
 // .global sprite_addCoordinates
 // .global sprite_getCoordinates
 // .global sub_8005524
-// .global engine_setScreeneffect // (int a1, int a2) -> void
-// .global IsPaletteFadeActive // () -> zf
+// .global SetScreenFade // (int a1, int a2) -> void
+// .global IsScreenFadeActive // () -> zf
 // .global math_sinTable
 // .global math_cosTable
 // .global sub_80077B4

@@ -12,7 +12,7 @@
 	\struct_entry \label\()_CurFramePtr, 4 // loc=0x24
 	\struct_entry \label\()_GFX30025c0_Ptr, 4 // loc=0x28
 	\struct_entry \label\()_ChatboxPtr, 4 // loc=0x2c
-	\struct_entry \label\()_Unk20384f0_Ptr, 4 // loc=0x30
+	\struct_entry \label\()_CollisionDataPtr, 4 // loc=0x30
 	\struct_entry \label\()_SubmenuPtr, 4 // loc=0x34
 	\struct_entry \label\()_Unk200a220_Ptr, 4 // loc=0x38
 	\struct_entry \label\()_GameStatePtr, 4 // loc=0x3c

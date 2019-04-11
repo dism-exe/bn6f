@@ -99,7 +99,7 @@
 // .global SpawnOverworldMapObject
 // .global FreeOverworldMapObject
 // .global sub_80062C8
-// .global IsPaletteFadeActive // () -> zf
+// .global IsScreenFadeActive // () -> zf
 // .global math_sinTable
 // .global math_cosTable
 

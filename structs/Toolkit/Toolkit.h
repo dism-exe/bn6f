@@ -55,7 +55,7 @@ typedef struct{
 	// 02009CD0
 	ChatBoxPropreties *chatbox;  // loc=0x2C
 	// 020384F0
-	void *unk_20384F0;                // loc=0x30
+	void *eCollisionData;                // loc=0x30
 	// 02009A30
 	MenuControl *submenu;                // loc=0x34
 	// 0200A220

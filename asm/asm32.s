@@ -30521,7 +30521,7 @@ sub_811EDB4:
 	strb r0, [r5,#9]
 	b loc_811EE82
 loc_811EDD6:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_811EE82
 	mov r0, #0xa
 	bl sub_811F7EC
@@ -32059,7 +32059,7 @@ sub_811FB64:
 	bl sound_play // () -> void
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	pop {pc}
 	thumb_func_end sub_811FB64
 
