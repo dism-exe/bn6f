@@ -357,7 +357,7 @@ eGameState:: // 0x2001b80
 	game_state_struct eGameState
 eGameStateEnd::
 	.space 4
-unk_2001C04:: // 0x2001c04
+eStruct2001c04:: // 0x2001c04
 	.space 132
 eEventFlags:: // 0x2001c88
 	.space 1264

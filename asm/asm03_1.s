@@ -3190,25 +3190,25 @@ ScriptCmds8035808:
 	.word MapScript_jump_if_game_state_44_not_equals+1
 	.word MapScript_jump_if_map_group_compare_last_map_group+1
 	.word MapScript_cmd_8035ca0+1
-	.word MapScriptCmd_8035cd6+1
-	.word MapScriptCmd_8035cf8+1
+	.word MapScriptCmd_cmd_8035cd6+1
+	.word MapScriptCmd_cmd_8035cf8+1
 	.word MapScriptCmd_jump_if_fade_active+1
 	.word MapScriptCmd_jump_if_eStruct200a6a0_initialized+1
 	.word MapScriptCmd_jump_if_in_pet_menu+1
 	.word MapScriptCmd_set_screen_fade+1
-	.word sub_8035D98+1
-	.word sub_8035DB4+1
-	.word sub_8035DD6+1
-	.word sub_8035DF8+1
-	.word sub_8035E16+1
-	.word sub_8035E34+1
-	.word sub_8035E54+1
-	.word sub_8035E74+1
-	.word sub_8035E8E+1
-	.word sub_8035EAA+1
-	.word sub_8035EC2+1
-	.word sub_8035EDA+1
-	.word sub_8035EF2+1
+	.word MapScriptCmd_set_game_state_16_17+1
+	.word MapScriptCmd_set_event_flag+1
+	.word MapScriptCmd_clear_event_flag+1
+	.word MapScriptCmd_set_event_flag_range+1
+	.word MapScriptCmd_clear_event_flag_range+1
+	.word MapScriptCmd_set_event_flag_list+1
+	.word MapScriptCmd_clear_event_flag_list+1
+	.word MapScriptCmd_call_native_function+1
+	.word MapScriptCmd_run_cutscene_maybe+1
+	.word MapScriptCmd_write_byte+1
+	.word MapScriptCmd_write_hword+1
+	.word MapScriptCmd_write_word+1
+	.word MapScriptCmd_write_gamestate_byte+1
 	.word sub_8035F0E+1
 	.word sub_8035F2A+1
 	.word sub_8035F3E+1
@@ -3826,7 +3826,7 @@ loc_8035CCA:
 // returns 0 if the summation is greater than 0x2a30
 // returns 1 if 0x1c20 < summation <= 0x2a30
 // else returns 2
-MapScriptCmd_8035cd6: // 8035cd6
+MapScriptCmd_cmd_8035cd6: // 8035cd6
 	push {lr}
 	bl sub_800B734
 	mov r6, #1
@@ -3842,12 +3842,12 @@ loc_8035CF2:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_8035cd6
+	thumb_func_end MapScriptCmd_cmd_8035cd6
 
 	thumb_local_start
 // 0x19 byte1 destination2
 // same as above but performs !=
-MapScriptCmd_8035cf8:
+MapScriptCmd_cmd_8035cf8:
 	push {lr}
 	bl sub_800B734
 	mov r6, #1
@@ -3863,7 +3863,7 @@ loc_8035D14:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_8035cf8
+	thumb_func_end MapScriptCmd_cmd_8035cf8
 
 	thumb_local_start
 // 0x1a destination1
@@ -3951,7 +3951,9 @@ loc_8035D8E:
 	thumb_func_end MapScriptCmd_set_screen_fade
 
 	thumb_local_start
-sub_8035D98:
+// 0x1e byte1 byte2
+// store byte1 and byte2 in eGameState_Unk_16 and eGameState_Unk_17 respectively
+MapScriptCmd_set_game_state_16_17: // 8035D98
 	push {lr}
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
@@ -3964,10 +3966,14 @@ sub_8035D98:
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035D98
+	thumb_func_end MapScriptCmd_set_game_state_16_17
 
 	thumb_local_start
-sub_8035DB4:
+// 0x1f byte1 hword2
+// set event flag
+// byte1 == 0xff: event flag is hword2
+// byte1 != 0xff: event flag is the word in script mem with byte1 as offset
+MapScriptCmd_set_event_flag: // 8035DB4
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3985,10 +3991,14 @@ loc_8035DCA:
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035DB4
+	thumb_func_end MapScriptCmd_set_event_flag
 
 	thumb_local_start
-sub_8035DD6:
+// 0x20 byte1 hword2
+// clear event flag
+// byte1 == 0xff: event flag is hword2
+// byte1 != 0xff: event flag is the word in script mem with byte1 as offset
+MapScriptCmd_clear_event_flag: // 8035DD6
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4005,10 +4015,12 @@ loc_8035DEC:
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035DD6
+	thumb_func_end MapScriptCmd_clear_event_flag
 
 	thumb_local_start
-sub_8035DF8:
+// 0x21 byte1 hword2
+// set byte1 event flags starting at the event flag hword2
+MapScriptCmd_set_event_flag_range: // 8035DF8
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4021,10 +4033,12 @@ sub_8035DF8:
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035DF8
+	thumb_func_end MapScriptCmd_set_event_flag_range
 
 	thumb_local_start
-sub_8035E16:
+// 0x22 byte1 hword2
+// clear byte1 event flags starting at the event flag hword2
+MapScriptCmd_clear_event_flag_range: // 8035E16
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4037,10 +4051,12 @@ sub_8035E16:
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035E16
+	thumb_func_end MapScriptCmd_clear_event_flag_range
 
 	thumb_local_start
-sub_8035E34:
+// 0x23 word1
+// set the list of event flags at word1, terminated by (presumably) -1
+MapScriptCmd_set_event_flag_list: // 8035E34
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -4057,10 +4073,12 @@ loc_8035E4E:
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035E34
+	thumb_func_end MapScriptCmd_set_event_flag_list
 
 	thumb_local_start
-sub_8035E54:
+// 0x24 word1
+// clear the list of event flags at word1, terminated by (presumably) -1
+MapScriptCmd_clear_event_flag_list: // 8035E54
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -4077,10 +4095,12 @@ loc_8035E6E:
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035E54
+	thumb_func_end MapScriptCmd_clear_event_flag_list
 
 	thumb_local_start
-sub_8035E74:
+// 0x25 word1 word5
+// call the asm function word1 with word2 in r0
+MapScriptCmd_call_native_function: // 8035E74
 	push {lr}
 	mov r6, #5
 	bl ReadMapScriptWord
@@ -4092,10 +4112,13 @@ sub_8035E74:
 	add r7, #9
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035E74
+	thumb_func_end MapScriptCmd_call_native_function
 
 	thumb_local_start
-sub_8035E8E:
+// 0x26 word1 word5
+// call init_s_02011C50_8036E90 with r0=word1 and r1=word5
+// important script function
+MapScriptCmd_run_cutscene_maybe: // 8035E8E
 	push {lr}
 	mov r6, #5
 	bl ReadMapScriptWord
@@ -4107,10 +4130,12 @@ sub_8035E8E:
 	add r7, #9
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035E8E
+	thumb_func_end MapScriptCmd_run_cutscene_maybe
 
 	thumb_local_start
-sub_8035EAA:
+// 0x27 word1 byte5
+// [word1] = byte5
+MapScriptCmd_write_byte: // 8035EAA
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -4121,10 +4146,12 @@ sub_8035EAA:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035EAA
+	thumb_func_end MapScriptCmd_write_byte
 
 	thumb_local_start
-sub_8035EC2:
+// 0x28 word1 hword5
+// [word1] = hword5
+MapScriptCmd_write_hword: // 8035EC2
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -4135,10 +4162,12 @@ sub_8035EC2:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035EC2
+	thumb_func_end MapScriptCmd_write_hword
 
 	thumb_local_start
-sub_8035EDA:
+// 0x29 word1 word5
+// [word1] = word5
+MapScriptCmd_write_word: // 8035EDA
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -4149,10 +4178,12 @@ sub_8035EDA:
 	add r7, #9
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035EDA
+	thumb_func_end MapScriptCmd_write_word
 
 	thumb_local_start
-sub_8035EF2:
+// 0x2a byte1 byte2
+// [eGameState[byte1]] = byte2
+MapScriptCmd_write_gamestate_byte: // 8035EF2
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -4165,9 +4196,11 @@ sub_8035EF2:
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035EF2
+	thumb_func_end MapScriptCmd_write_gamestate_byte
 
 	thumb_local_start
+// 0x2b byte1 byte2
+// [eStruct2001c04[byte1]] = byte2
 sub_8035F0E:
 	push {lr}
 	mov r0, r10
@@ -6227,17 +6260,17 @@ jt_big_803749C: .word sub_80376C4+1
 	.word sub_80379C2+1
 	.word sub_80379E4+1
 	.word MapScriptCmd_set_screen_fade+1
-	.word sub_8035D98+1
-	.word sub_8035DB4+1
-	.word sub_8035DD6+1
-	.word sub_8035DF8+1
-	.word sub_8035E16+1
-	.word sub_8035E34+1
-	.word sub_8035E54+1
-	.word sub_8035EAA+1
-	.word sub_8035EC2+1
-	.word sub_8035EDA+1
-	.word sub_8035EF2+1
+	.word MapScriptCmd_set_game_state_16_17+1
+	.word MapScriptCmd_set_event_flag+1
+	.word MapScriptCmd_clear_event_flag+1
+	.word MapScriptCmd_set_event_flag_range+1
+	.word MapScriptCmd_clear_event_flag_range+1
+	.word MapScriptCmd_set_event_flag_list+1
+	.word MapScriptCmd_clear_event_flag_list+1
+	.word MapScriptCmd_write_byte+1
+	.word MapScriptCmd_write_hword+1
+	.word MapScriptCmd_write_word+1
+	.word MapScriptCmd_write_gamestate_byte+1
 	.word sub_8035F0E+1
 	.word sub_8037A06+1
 	.word sub_8037A2A+1

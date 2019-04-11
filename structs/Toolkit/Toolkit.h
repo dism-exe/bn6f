@@ -63,7 +63,7 @@ typedef struct{
 	// 02001B80
 	GameState *gamestate;          // loc=0x3C
 	// 02001C04
-	void *unk_2001C04;                // loc=0x40
+	void *eStruct2001c04;                // loc=0x40
 
 	// 02001C88
 	/*
