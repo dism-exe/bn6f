@@ -41,7 +41,7 @@ def count_functions():
     output = ""
     for function_pair in sorted_function_counts:
         function_sym = syms[function_pair[0]]
-        output += "{:07x} <{}:{}> {}: {}\n".format(function_sym.value, function_sym.filename, function_sym.line_num, function_sym.name, function_pair[1])
+        output += "{:07x} <{}:{}> {}: {}\n".format(function_sym.value, function_sym.filename, function_sym.line_num + 1, function_sym.name, function_pair[1])
 
     with open("function_counts.txt", "w+") as f:
         f.write(output)
