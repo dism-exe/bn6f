@@ -1126,3 +1126,4 @@ def read_opcode(line, funcstate, src_file, fileline):
             return True
     else:
         return False
+    

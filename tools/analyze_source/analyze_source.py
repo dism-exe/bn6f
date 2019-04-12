@@ -77,6 +77,8 @@ import parser
 import readelf
 import scanner
 import multiprocessing
+import sandbox
+
 #from datatypes import DataType
 
 def main():
@@ -139,10 +141,12 @@ def main():
     analyzer.set_syms_and_scanned_files(syms, scanned_files)
     opcodes.set_syms_and_scanned_files(syms, scanned_files)
     datatypes.set_syms_and_scanned_files(syms, scanned_files)
+    sandbox.set_syms_and_scanned_files(syms, scanned_files)
     global analyzer_start_time
     analyzer_start_time = time.time()
+    sandbox.count_functions()
     #debug_print("evaluate vObjectTiles: %s" % type(opcodes.evaluate_data("vObjectTiles", global_fileline).ref).__name__)
-    analyzer.read_battle_object_jumptables()
+    #analyzer.read_battle_object_jumptables()
     #analyze_source.benchmark_line_iterator(scanned_files)
 
 def benchmark_line_iterator(scanned_files):
@@ -222,12 +226,13 @@ if __name__ == "__main__":
         for i in range(5):
             print('\a')
             time.sleep(0.4)
-        print_post_output_info(start_time, analyzer_end_time)
+        #print_post_output_info(start_time, analyzer_end_time)
         #print("%s:%s: Error!" % (global_fileline.filename, global_fileline.line_num))
         global_fileline_error("Error!")
 
-    analyzer_end_time = time.time()
-    for i in range(5):
-        print('\a')
-        time.sleep(0.4)
-    print_post_output_info(start_time, analyzer_end_time)
+    if False:
+        analyzer_end_time = time.time()
+        for i in range(5):
+            print('\a')
+            time.sleep(0.4)
+        print_post_output_info(start_time, analyzer_end_time)
