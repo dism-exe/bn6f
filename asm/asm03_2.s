@@ -6721,7 +6721,7 @@ sub_804A3FC:
 	bl sub_804AAD0
 	bne loc_804A44C
 	mov r0, #0x10
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_804A42C
 	mov r0, #0x9c
 	bl sound_play // () -> void
@@ -6933,7 +6933,7 @@ loc_804A5C6:
 sub_804A5D4:
 	push {lr}
 	mov r0, #0xe2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_804A5E8
 	mov r0, #0xc
 	strb r0, [r5,#1]
@@ -7507,7 +7507,7 @@ dword_804AAA0: .word 0xC24C
 sub_804AAA4:
 	push {lr}
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_804AACC
 	ldrh r0, [r5,#0x1e]
 	tst r0, r0
@@ -7531,13 +7531,13 @@ locret_804AACC:
 sub_804AAD0:
 	push {lr}
 	mov r0, #8
-	bl sub_811F7EC
+	bl IsButtonPressed
 	bne loc_804AAE8
 	ldrb r0, [r5]
 	cmp r0, #0x14
 	bne loc_804AB0A
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_804AB0E
 loc_804AAE8:
 	ldrb r0, [r5]
@@ -7568,7 +7568,7 @@ sub_804AB10:
 	push {r4-r7,lr}
 	mov r6, #0
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_804AB44
 	mov r6, #1
 	mov r4, #0x44 
@@ -7978,7 +7978,7 @@ sub_804AE04:
 	push {r4-r7,lr}
 	sub sp, sp, #8
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_804AE44
 	mov r0, #0x81
 	bl sound_play // () -> void

@@ -426,10 +426,10 @@ loc_81303C4:
 	thumb_func_end sub_8130370
 
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	bne loc_81303E0
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_81303F8
 	mov r1, #4
 	ldrb r0, [r7,#0x11]
@@ -1244,7 +1244,7 @@ loc_8130AB2:
 	cmp r0, #4
 	beq loc_8130AC8
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8130B08
 	bl sub_8131768
 	b loc_8130B08
@@ -2225,10 +2225,10 @@ loc_813126C:
 	b locret_81312C8
 loc_8131292:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	bne loc_81312B0
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_81312C8
 	mov r0, #0x69 
 	bl sub_8132280
@@ -3629,7 +3629,7 @@ off_8132070: .word sub_8132080+1
 sub_8132080:
 	push {lr}
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8132094
 	bl sub_813D978
 	mov r0, #0xc
@@ -5913,7 +5913,7 @@ loc_81334E2:
 	bl chatbox_8045F3C
 	bne loc_8133504
 	mov r0, #6
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_8133534
 	mov r0, #0x10
 	strb r0, [r5,#2]
@@ -5983,14 +5983,14 @@ sub_8133564:
 	tst r0, r0
 	bne locret_81335B6
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8133590
 	mov r0, #4
 	str r0, [r5,#0x68]
 	b locret_81335B6
 loc_8133590:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_81335B6
 	mov r0, #0x83
 	bl sound_play // () -> void
@@ -6170,7 +6170,7 @@ sub_81336C4:
 	tst r0, r0
 	bne locret_8133738
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_81336FA
 	mov r0, #0
 	ldr r1, [r5,#0x5c]
@@ -6183,7 +6183,7 @@ loc_81336F6:
 	b locret_8133738
 loc_81336FA:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_8133738
 	mov r0, #0x83
 	bl sound_play // () -> void
@@ -6320,7 +6320,7 @@ sub_81337E8:
 	tst r1, r2
 	bne loc_8133864
 	mov r0, #0xb
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8133830
 	mov r0, #0x10
 	strb r0, [r5,#1]
@@ -6672,7 +6672,7 @@ sub_8133B18:
 	b loc_8133B4C
 loc_8133B2C:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8133B4C
 	mov r0, #0xb
 	bl sub_8134190
@@ -6729,7 +6729,7 @@ loc_8133B8E:
 sub_8133BB4:
 	push {lr}
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_8133C0A
 	mov r0, #0x44 
 	add r0, #0
@@ -6775,13 +6775,13 @@ locret_8133C0A:
 sub_8133C0C:
 	push {lr}
 	mov r0, #8
-	bl sub_811F7EC
+	bl IsButtonPressed
 	bne loc_8133C24
 	ldrb r0, [r5,#3]
 	cmp r0, #0xc
 	bne loc_8133C52
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_8133C56
 loc_8133C24:
 	mov r0, #0x44 
@@ -6817,7 +6817,7 @@ locret_8133C56:
 sub_8133C58:
 	push {r4,r6,lr}
 	mov r0, #4
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_8133C98
 	mov r0, #0x44 
 	add r0, #0
@@ -8177,7 +8177,7 @@ sub_81347A4:
 	push {r4-r7,lr}
 	sub sp, sp, #0x10
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	bne loc_81347B2
 	b loc_81348C4
 loc_81347B2:
@@ -8524,7 +8524,7 @@ sub_8134A3C:
 	push {lr}
 	mov r6, #0
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8134AB4
 	mov r6, #1
 	mov r4, #0x44 
@@ -10279,13 +10279,13 @@ sub_8135830:
 	tst r0, r0
 	bne loc_81358E0
 	mov r0, #4
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8135850
 	bl sub_81367C0
 	b loc_81358EE
 loc_8135850:
 	mov r0, #8
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8135862
 	bl sub_81367A0
 	bl sub_8135F18
@@ -10304,13 +10304,13 @@ loc_8135876:
 	mov r0, #0
 	strb r0, [r5,#0x17]
 	mov r0, #0xa
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8135888
 	bl sub_813627C
 	b loc_81358EE
 loc_8135888:
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8135896
 	bl sub_8136218
 	b loc_81358EE
@@ -14507,7 +14507,7 @@ sub_81379A0:
 	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 	bne loc_81379D0
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_81379D0
 	bl sub_8138170
 	tst r0, r0
@@ -14523,7 +14523,7 @@ loc_81379C4:
 	b locret_8137A1A
 loc_81379D0:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_81379F0
 	mov r0, #8
 	strb r0, [r5,#1]

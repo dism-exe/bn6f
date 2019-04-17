@@ -323,10 +323,10 @@ loc_812ECF2:
 	strh r1, [r7,#0x3c]
 loc_812ECFA:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	bne loc_812ED12
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_812ED2A
 	mov r1, #4
 	ldrb r0, [r5,#0x11]

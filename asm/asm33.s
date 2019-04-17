@@ -409,7 +409,7 @@ locret_81235A0:
 sub_81235A4:
 	push {lr}
 	mov r0, #0xa
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_81235BC
 	mov r0, #8
 	bl sub_811FB64
@@ -418,7 +418,7 @@ sub_81235A4:
 	b loc_8123628
 loc_81235BC:
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_81235E8
 	bl sub_8123E08
 	bl sub_8123D54
@@ -522,7 +522,7 @@ locret_812368A:
 sub_812368C:
 	push {r4-r7,lr}
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_81236B0
 	mov r0, #4
 	strb r0, [r5,#2]
@@ -536,7 +536,7 @@ sub_812368C:
 	b locret_8123760
 loc_81236B0:
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_812373E
 	mov r0, #0x81
 	bl sound_play // () -> void
@@ -1644,7 +1644,7 @@ locret_81240CC:
 sub_81240D0:
 	push {lr}
 	mov r0, #0xa
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_81240E2
 	mov r0, #8
 	bl sub_811FB64
@@ -1654,7 +1654,7 @@ loc_81240E2:
 	tst r0, r0
 	beq loc_8124112
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8124112
 	ldr r0, off_8124130 // =unk_201C400 
 	ldrh r1, [r5,#0x14]
@@ -6821,7 +6821,7 @@ loc_8126E0A:
 sub_8126E10:
 	push {r4,lr}
 	mov r0, #0xa
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8126E28
 	mov r0, #8
 	bl sub_811FB64
@@ -8334,7 +8334,7 @@ locret_8127B14:
 sub_8127B18:
 	push {lr}
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8127B2A
 loc_8127B22:
 	mov r0, #8
@@ -8342,7 +8342,7 @@ loc_8127B22:
 	b locret_8127B8E
 loc_8127B2A:
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8127B4C
 	ldrh r0, [r5,#0x1e]
 	tst r0, r0
@@ -8358,7 +8358,7 @@ loc_8127B4C:
 	tst r0, r0
 	beq locret_8127B8E
 	mov r0, #8
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8127B72
 	mov r0, #0xc
 	strb r0, [r5,#2]
@@ -8427,7 +8427,7 @@ dword_8127BE0: .word 0x1D20
 sub_8127BE4:
 	push {lr}
 	mov r0, #0xa
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8127BFA
 	mov r0, #4
 	strb r0, [r5,#2]
@@ -8436,7 +8436,7 @@ sub_8127BE4:
 	b loc_8127C46
 loc_8127BFA:
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8127C34
 	mov r0, #0x81
 	bl sound_play // () -> void
@@ -9678,14 +9678,14 @@ sub_8128800:
 	tst r0, r0
 	bne loc_812881C
 	mov r0, #0xa
-	bl sub_811F7EC
+	bl IsButtonPressed
 	bne loc_812882C
 loc_812881C:
 	mov r0, #8
 	bl chatbox_8045F3C
 	beq loc_8128834
 	mov r0, #0xa
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8128834
 loc_812882C:
 	mov r0, #8
@@ -9749,7 +9749,7 @@ loc_812889A:
 	b loc_81288B0
 loc_81288A4:
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_81288B0
 	bl sub_8128BF0
 loc_81288B0:
@@ -10432,7 +10432,7 @@ loc_8128E92:
 	b loc_8128EB8
 loc_8128EA4:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8128EB8
 	mov r0, #0xc
 	mov r1, #0x10
@@ -10937,7 +10937,7 @@ loc_8129380:
 	b loc_81293E8
 loc_8129388:
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_81293B8
 	mov r0, #0x81
 	bl sound_play // () -> void
@@ -10958,7 +10958,7 @@ loc_8129388:
 	b loc_81293E8
 loc_81293B8:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_81293E8
 	mov r0, #0x83
 loc_81293C2:
@@ -11071,7 +11071,7 @@ loc_81294A8:
 	b loc_8129514
 loc_81294B2:
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_81294FA
 	mov r0, #0x81
 	bl sound_play // () -> void
@@ -11104,7 +11104,7 @@ loc_81294E2:
 	b loc_8129514
 loc_81294FA:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8129514
 	mov r0, #0x83
 	bl sound_play // () -> void
@@ -11340,7 +11340,7 @@ sub_81296D8:
 	b locret_8129734
 loc_81296F8:
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_812971A
 	mov r0, #0x81
 	bl sound_play // () -> void
@@ -11356,7 +11356,7 @@ loc_81296F8:
 	b locret_8129734
 loc_812971A:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_8129734
 	mov r0, #0x83
 	bl sound_play // () -> void
@@ -11562,7 +11562,7 @@ sub_8129870:
 	b locret_81298D2
 loc_8129890:
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_81298B2
 	mov r0, #0x81
 	bl sound_play // () -> void
@@ -11578,7 +11578,7 @@ loc_8129890:
 	b locret_81298D2
 loc_81298B2:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_81298D2
 	mov r0, #0x83
 	bl sound_play // () -> void
@@ -11734,7 +11734,7 @@ sub_81299B0:
 	b locret_8129A1C
 loc_81299D0:
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_81299FC
 	mov r0, #0x81
 	bl sound_play // () -> void
@@ -11755,7 +11755,7 @@ loc_81299F6:
 	b locret_8129A1C
 loc_81299FC:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_8129A1C
 	mov r0, #0x83
 	bl sound_play // () -> void
@@ -11945,7 +11945,7 @@ sub_8129B34:
 	b locret_8129B8E
 loc_8129B5A:
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8129B6E
 	mov r0, #0x81
 	bl sound_play // () -> void
@@ -11953,7 +11953,7 @@ loc_8129B5A:
 	b locret_8129B8E
 loc_8129B6E:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_8129B8E
 	mov r0, #0x83
 	bl sound_play // () -> void
@@ -12182,7 +12182,7 @@ sub_8129D00:
 	b locret_8129D56
 loc_8129D22:
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_8129D36
 	mov r0, #0x81
 	bl sound_play // () -> void
@@ -12190,7 +12190,7 @@ loc_8129D22:
 	b locret_8129D56
 loc_8129D36:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_8129D56
 	mov r0, #0x83
 	bl sound_play // () -> void
@@ -12515,7 +12515,7 @@ loc_8129F98:
 	beq loc_8129FCE
 loc_8129F9C:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_8129FDC
 	mov r0, #0x83
 	bl sound_play // () -> void
@@ -12894,7 +12894,7 @@ sub_812A2B4:
 	bl IsScreenFadeActive // () -> zf
 	beq locret_812A2E8
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_812A2E8
 	mov r0, #0x83
 	bl sound_play // () -> void
@@ -13226,7 +13226,7 @@ sub_812A574:
 	cmp r1, #0x1c
 	bne loc_812A59C
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_812A59C
 	bl sub_813D978
 	mov r0, #0x83
@@ -14160,7 +14160,7 @@ loc_812ACB0:
 	cmp r0, #2
 	beq loc_812ACE0
 	mov r0, #3
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_812ACE0
 	bl sub_803EA60
 	cmp r0, #0
@@ -16228,7 +16228,7 @@ locret_812BD5C:
 sub_812BD60:
 	push {lr}
 	mov r0, #3
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_812BDBC
 	ldrb r0, [r5,#0x10]
 	cmp r0, #0x11
@@ -16381,7 +16381,7 @@ locret_812BF0E:
 sub_812BF10:
 	push {lr}
 	mov r0, #3
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_812BF68
 	ldrb r0, [r5,#0x10]
 	cmp r0, #0x11

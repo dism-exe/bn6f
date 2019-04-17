@@ -30524,10 +30524,10 @@ loc_811EDD6:
 	bl IsScreenFadeActive // () -> zf
 	beq loc_811EE82
 	mov r0, #0xa
-	bl sub_811F7EC
+	bl IsButtonPressed
 	bne loc_811EDF2
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_811EE34
 	ldrb r0, [r5,#4]
 	cmp r0, #8
@@ -30571,7 +30571,7 @@ loc_811EE34:
 	cmp r0, #8
 	blt loc_811EE52
 	mov r0, #0xe0
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_811EE82
 	mov r0, #0x7f
 	bl sound_play // () -> void
@@ -30582,7 +30582,7 @@ loc_811EE34:
 	b loc_811EE82
 loc_811EE52:
 	mov r0, #0x10
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_811EE70
 	mov r0, #0x7f
 	bl sound_play // () -> void
@@ -31561,15 +31561,15 @@ JumpTable811F7A0: .word sub_8123434+1
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end menuControl_cb_openSubmenu
 
-	thumb_func_start sub_811F7EC
-sub_811F7EC:
+	thumb_func_start IsButtonPressed
+IsButtonPressed:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_JoypadPtr]
-	ldrh r1, [r1,#2]
+	ldrh r1, [r1,#oJoypad_Pressed]
 	tst r0, r1
 	mov pc, lr
 	.balign 4, 0x00
-	thumb_func_end sub_811F7EC
+	thumb_func_end IsButtonPressed
 
 	thumb_func_start sub_811F7F8
 sub_811F7F8:

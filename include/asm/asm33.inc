@@ -207,7 +207,7 @@
 // .global sub_811F6C0
 // .global sub_811F708
 // .global sub_811F728
-// .global sub_811F7EC
+// .global IsButtonPressed
 // .global sub_811F7F8
 // .global sub_811F91C
 // .global sub_811FA0C

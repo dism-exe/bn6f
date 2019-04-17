@@ -4835,7 +4835,7 @@ sub_8005AF4:
 	bl chatbox_8045F3C
 	bne locret_8005B68
 	mov r0, #8
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_8005B68
 	// entryIdx
 	mov r0, #0x17

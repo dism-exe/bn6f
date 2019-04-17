@@ -190,4 +190,24 @@ look at:
 - sub_8001B1C
 */
 
+/*
+20047cc - navi abilities?
+01 - atk+
+02 - spd+
+03 - charge+
+06 - fstbarr
+07 - b+left ability
+0a - custom level
+0b - mega level
+0e - mood
+23 - super armor
+2c - current form (in battle only?)
+31 - processing bug
+3e - max base HP
+40 - cur HP
+42 - HP+
+63 - turns until custbug activates
+
+*/
+
 // .macro overworld_npc_object_struct, struct_entry=label_struct_entry, struct_begin=struct_begin

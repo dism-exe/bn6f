@@ -492,7 +492,7 @@ loc_812DEBC:
 	b loc_812DEF6
 loc_812DEC2:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_812DEF6
 	mov r0, #0x83
 	bl sound_play // () -> void
@@ -723,7 +723,7 @@ sub_812E08C:
 	tst r0, r0
 	beq loc_812E0AC
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_812E0FC
 	mov r1, #0
 	strh r1, [r5,#0x26]
@@ -745,7 +745,7 @@ loc_812E0AC:
 	b loc_812E0FC
 loc_812E0C6:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_812E0DA
 	mov r0, #1
 	strb r0, [r5,#0x15]
@@ -754,7 +754,7 @@ loc_812E0C6:
 	b loc_812E0E2
 loc_812E0DA:
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq loc_812E0FC
 loc_812E0E2:
 	mov r1, #4

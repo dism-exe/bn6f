@@ -423,10 +423,10 @@ sub_812D690:
 	pop {r5,r7}
 loc_812D6C4:
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	bne loc_812D6DC
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_812D6F4
 	mov r1, #4
 	ldrb r0, [r5,#0x11]
@@ -464,13 +464,13 @@ sub_812D700:
 	bl sub_812D6F8
 	mov r7, r0
 	mov r0, #8
-	bl sub_811F7EC
+	bl IsButtonPressed
 	bne loc_812D71E
 	ldrb r0, [r5,#2]
 	cmp r0, #0x20 
 	bne loc_812D742
 	mov r0, #2
-	bl sub_811F7EC
+	bl IsButtonPressed
 	beq locret_812D746
 loc_812D71E:
 	ldrb r0, [r5,#2]
@@ -560,7 +560,7 @@ sub_812D7A4:
 	bl sub_812D6F8
 	mov r5, r0
 	mov r0, #1
-	bl sub_811F7EC
+	bl IsButtonPressed
 	bne loc_812D7BA
 	b loc_812D800
 loc_812D7BA:
