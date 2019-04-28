@@ -1409,17 +1409,17 @@ int sub_813C3AC()
     }
     if ( *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) >= 128 )
     {
-        v11 = sub_80137FE(0);
-        if ( sub_80137FE(0) > v11 )
-            sub_80137E6(0, 64, v11);
+        v11 = GetField16FromSelectedS20047CCStruct(0);
+        if ( GetField16FromSelectedS20047CCStruct(0) > v11 )
+            SetField16ToSelectedS20047CCStruct(0, 64, v11);
         v12 = getPETNaviSelect();
-        v13 = sub_80137FE(v12);
+        v13 = GetField16FromSelectedS20047CCStruct(v12);
         v14 = getPETNaviSelect();
-        result = sub_80137FE(v14);
+        result = GetField16FromSelectedS20047CCStruct(v14);
         if ( result > v13 )
         {
             v15 = getPETNaviSelect();
-            result = sub_80137E6(v15, 64, v13);
+            result = SetField16ToSelectedS20047CCStruct(v15, 64, v13);
         }
     }
     else
@@ -1427,12 +1427,12 @@ int sub_813C3AC()
         result = TestEventFlagFromImmediate(23, 29);
         if ( !v5 )
         {
-            v7 = sub_80137FE(0);
-            sub_80137E6(0, 64, v7);
+            v7 = GetField16FromSelectedS20047CCStruct(0);
+            SetField16ToSelectedS20047CCStruct(0, 64, v7);
             v8 = getPETNaviSelect();
-            v9 = sub_80137FE(v8);
+            v9 = GetField16FromSelectedS20047CCStruct(v8);
             v10 = getPETNaviSelect();
-            result = sub_80137E6(v10, 64, v9);
+            result = SetField16ToSelectedS20047CCStruct(v10, 64, v9);
         }
     }
     return result;
@@ -2509,7 +2509,7 @@ int __fastcall sub_813CF1C(char a1)
 // 0x813cf2c
 int __fastcall sub_813CF2C(__int16 a1)
 {
-    return sub_80137E6(0, 84, a1);
+    return SetField16ToSelectedS20047CCStruct(0, 84, a1);
 }
 
 

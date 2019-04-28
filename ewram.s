@@ -385,7 +385,9 @@ unk_2004338:: // 0x2004338
 unk_2004348:: // 0x2004348
 	.space 1156
 unk_20047CC:: // 0x20047cc
-	.space 704
+    s_20047cc_struct eS20047CC_0
+    s_20047cc_struct eS20047CC_1
+	.space 504
 unk_2004A8C:: // 0x2004a8c
 	.space 404
 unk_2004C20:: // 0x2004c20

@@ -21386,8 +21386,8 @@ int __noreturn sub_811EFB8()
     if ( sub_8123360() )
     {
         v2 = getPETNaviSelect();
-        *(v1 + 8) = sub_80137FE(v2);
-        *(v1 + 12) = sub_80137FE(v2);
+        *(v1 + 8) = GetField16FromSelectedS20047CCStruct(v2);
+        *(v1 + 12) = GetField16FromSelectedS20047CCStruct(v2);
     }
     else
     {
@@ -23971,7 +23971,7 @@ int sub_8120DF0()
             break;
         v4 = *(*(v0 + oToolkit_Unk2001c04_Ptr) + 7);
         if ( v3 == 64 )
-            v5 = sub_80137FE(v4);
+            v5 = GetField16FromSelectedS20047CCStruct(v4);
         else
             v5 = sub_80137B6(v4);
         *v1 = v5;
@@ -23997,7 +23997,7 @@ int sub_8120DF0()
             }
         }
     }
-    navicust_8014018(v6);
+    SelectS20047CCStruct8014018(v6);
     init_8013B4E();
     v12 = &v33;
     for ( k = 0; ; k += 4 )
@@ -24006,7 +24006,7 @@ int sub_8120DF0()
         v15 = *&byte_81210C8[k];
         if ( v15 == 64 )
         {
-            sub_80137E6(v14, 64, *v12);
+            SetField16ToSelectedS20047CCStruct(v14, 64, *v12);
             goto LABEL_25;
         }
         if ( v15 == -1 )
@@ -24029,11 +24029,11 @@ LABEL_25:
             v19 = *(&off_8120F44 + result);
             v20 = sub_8121108();
             v22 = *(v21 + 4 * v20);
-            sub_80137E6(v18, 66, v22);
-            sub_80137E6(v18, 62, v22);
+            SetField16ToSelectedS20047CCStruct(v18, 66, v22);
+            SetField16ToSelectedS20047CCStruct(v18, 62, v22);
             result = *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup);
             if ( result < 128 )
-                result = sub_80137E6(v18, 64, v22);
+                result = SetField16ToSelectedS20047CCStruct(v18, 64, v22);
         }
     }
     else
@@ -24042,13 +24042,13 @@ LABEL_25:
         v24 = *(&off_8120F44 + v23);
         v25 = sub_8121108();
         v27 = *(v26 + 4 * v25);
-        sub_80137E6(v23, 66, v27);
-        v28 = sub_80137E6(v23, 62, v27);
+        SetField16ToSelectedS20047CCStruct(v23, 66, v27);
+        v28 = SetField16ToSelectedS20047CCStruct(v23, 62, v27);
         sub_8121154(v28, v29, v30, v31);
-        v32 = sub_80137FE(v23);
+        v32 = GetField16FromSelectedS20047CCStruct(v23);
         result = *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup);
         if ( result < 128 )
-            result = sub_80137E6(v23, 64, v32);
+            result = SetField16ToSelectedS20047CCStruct(v23, 64, v32);
     }
     return result;
 }

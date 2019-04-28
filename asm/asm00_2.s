@@ -9456,13 +9456,13 @@ sub_8013422:
 	mov r1, #0x64 
 	mul r0, r1
 	add r0, r0, r2
-	bl initStruct_8013438 // (void *struc) -> void
+	bl initStruct_8013438 // (void *struct) -> void
 	pop {pc}
 	.balign 4, 0x00
 off_8013434: .word ePlayerBattleVars
 	thumb_func_end sub_8013422
 
-// (void *struc) -> void
+// (void *struct) -> void
 	thumb_func_start initStruct_8013438
 initStruct_8013438:
 	push {r4,lr}
@@ -9860,20 +9860,23 @@ GetPlayerBattleVarHword:
 	pop {r6,pc}
 	thumb_func_end GetPlayerBattleVarHword
 
-	thumb_func_start sub_80136F0
-sub_80136F0:
+	thumb_func_start SetField8ToSelectedS20047CCStruct
+// (bool structSel, int a2, u8 a3) -> void
+SetField8ToSelectedS20047CCStruct:
+    // type safety, ensure bool (0, 1)
 	cmp r0, #0
 	beq loc_80136F6
 	mov r0, #1
 loc_80136F6:
-	mov r3, #0x64 
+    // Toolkit->S20047CC_Ptrs[oS20047CC*a1 + a2] = a3
+	mov r3, #oS20047CC_Size
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	strb r2, [r3,r1]
 	mov pc, lr
-	thumb_func_end sub_80136F0
+	thumb_func_end SetField8ToSelectedS20047CCStruct
 
 	thumb_func_start sub_8013704
 sub_8013704:
@@ -9884,7 +9887,7 @@ loc_801370A:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	ldrb r0, [r3,r1]
 	mov pc, lr
@@ -9899,7 +9902,7 @@ loc_801371E:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	ldrb r0, [r3,r1]
 	mov pc, lr
@@ -9914,7 +9917,7 @@ loc_8013732:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	strh r2, [r3,r1]
 	mov pc, lr
@@ -9929,7 +9932,7 @@ loc_8013746:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	ldrh r0, [r3,r1]
 	mov pc, lr
@@ -9993,12 +9996,12 @@ GetPlayerBattleVarHword_AllianceFromBattleObject:
 navicust_801379E:
 	push {lr}
 	push {r1,r2}
-	bl navicust_8014018 // (int idx_8014034) -> bool
+	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
 	pop {r1,r2}
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	strb r2, [r3,r1]
 	pop {pc}
@@ -10009,12 +10012,12 @@ navicust_801379E:
 sub_80137B6:
 	push {lr}
 	push {r1}
-	bl navicust_8014018 // (int idx_8014034) -> bool
+	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
 	pop {r1}
 	mov r3, #100
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	ldrb r0, [r3,r1]
 	pop {pc}
@@ -10024,46 +10027,50 @@ sub_80137B6:
 sub_80137CE:
 	push {lr}
 	push {r1}
-	bl navicust_8014018 // (int idx_8014034) -> bool
+	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
 	pop {r1}
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	ldrsb r0, [r3,r1]
 	pop {pc}
 	thumb_func_end sub_80137CE
 
-	thumb_func_start sub_80137E6
-sub_80137E6:
+	thumb_func_start SetField16ToSelectedS20047CCStruct
+// (int structSelectIdx, int structOffset, u16 val) -> void
+SetField16ToSelectedS20047CCStruct:
 	push {lr}
+	// Toolkit->S20047CC_Ptrs[oS20047CC_Size*SelectS20047CCStruct8014018(a1)+a2] = a3
 	push {r1,r2}
-	bl navicust_8014018 // (int idx_8014034) -> bool
+	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
 	pop {r1,r2}
-	mov r3, #0x64 
+	mov r3, #oS20047CC_Size
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	strh r2, [r3,r1]
 	pop {pc}
-	thumb_func_end sub_80137E6
+	thumb_func_end SetField16ToSelectedS20047CCStruct
 
-	thumb_func_start sub_80137FE
-sub_80137FE:
+	thumb_func_start GetField16FromSelectedS20047CCStruct
+// (int structSelectIdx, int structOffset) -> u16
+GetField16FromSelectedS20047CCStruct:
 	push {lr}
+	// return Toolkit->S20047CC_Ptrs[100*SelectS20047CCStruct8014018(a1)+a2]
 	push {r1}
-	bl navicust_8014018 // (int idx_8014034) -> bool
+	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
 	pop {r1}
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	ldrh r0, [r3,r1]
 	pop {pc}
-	thumb_func_end sub_80137FE
+	thumb_func_end GetField16FromSelectedS20047CCStruct
 
 	thumb_func_start sub_8013816
 sub_8013816:
@@ -10106,7 +10113,7 @@ sub_8013846:
 	push {r4,lr}
 	mov r0, #0
 	bl sub_8013854
-	bl initStruct_8013438 // (void *struc) -> void
+	bl initStruct_8013438 // (void *struct) -> void
 	pop {r4,pc}
 	thumb_func_end sub_8013846
 
@@ -10521,7 +10528,7 @@ init_8013B4E:
 loc_8013B56:
 	mov r4, r1
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk20047cc_Ptr]
+	ldr r7, [r7,#oToolkit_S20047CC_Ptrs]
 	mov r2, #0x64 
 	mul r0, r2
 	add r7, r7, r0
@@ -10537,7 +10544,7 @@ init_8013B64:
 	mov r7, r0
 loc_8013B6E:
 	mov r0, r7
-	bl initStruct_8013438 // (void *struc) -> void
+	bl initStruct_8013438 // (void *struct) -> void
 	mov r0, #0x10
 	mul r0, r4
 	ldr r6, off_8013CB4 // =byte_80210DD 
@@ -10597,7 +10604,7 @@ sub_8013BDA:
 	mov r7, r0
 	mov r4, r1
 	mov r0, r7
-	bl initStruct_8013438 // (void *struc) -> void
+	bl initStruct_8013438 // (void *struct) -> void
 	mov r0, #0x10
 	mul r0, r4
 	ldr r6, off_8013CB8 // =byte_80210DD 
@@ -11148,22 +11155,25 @@ locret_8014016:
 	pop {pc}
 	thumb_func_end sub_8013FF8
 
-// (int idx_8014034) -> bool
-	thumb_func_start navicust_8014018
-navicust_8014018:
+	thumb_func_start SelectS20047CCStruct8014018
+// (int idx) -> bool8
+SelectS20047CCStruct8014018:
+    // return byte_8014034[a1]
 	ldr r1, off_8014030 // =byte_8014034 
 	ldrb r0, [r1,r0]
 	mov pc, lr
-	thumb_func_end navicust_8014018
+	thumb_func_end SelectS20047CCStruct8014018
 
 	thumb_func_start sub_801401E
+// (int a1) -> void*
 sub_801401E:
 	push {lr}
-	bl navicust_8014018 // (int idx_8014034) -> bool
+	// return &Toolkit->S20047CC_Ptrs[100*SelectS20047CCStruct8014018(a1)]
+	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
 	mov r1, #0x64 
 	mul r0, r1
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk20047cc_Ptr]
+	ldr r1, [r1,#oToolkit_S20047CC_Ptrs]
 	add r0, r0, r1
 	pop {pc}
 off_8014030: .word byte_8014034
@@ -14684,7 +14694,7 @@ loc_8015C36:
 	mov r0, r4
 	mov r1, #0xe
 	mov r2, #0
-	bl sub_80136F0
+	bl SetField8ToSelectedS20047CCStruct
 	add r4, #1
 	cmp r4, #7
 	blt loc_8015C36

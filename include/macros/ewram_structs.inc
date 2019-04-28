@@ -15,6 +15,7 @@
 	.include "structs/StartScreen.inc"
 	.include "structs/ReqBBSGui.inc"
 	.include "structs/PlayerBattleVars.inc"
+	.include "structs/S20047CC.inc"
 
 /*
 rough notes for now

@@ -8,12 +8,12 @@ sub_8123208:
 	ldr r4, off_81232FC // =word_200DCF0 
 	mov r1, #0x42 
 	mov r0, r7
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	ldrh r2, [r4]
 	add r2, r2, r0
 	mov r0, r7
 	mov r1, #0x42 
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	mov r1, #1
 	mov r0, r7
 	bl sub_80137B6 // (int a1, int a2) -> u8
@@ -1544,12 +1544,12 @@ sub_8123F7C:
 	strb r0, [r5,#0x11]
 	bl getPETNaviSelect // () -> u8
 	mov r4, r0
-	mov r1, #0x40 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHP
+	bl GetField16FromSelectedS20047CCStruct
 	strh r0, [r5,#0x18]
 	mov r0, r4
-	mov r1, #0x42 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHPUpdate
+	bl GetField16FromSelectedS20047CCStruct
 	strh r0, [r5,#0x1a]
 	ldr r0, off_812404C // =unk_201EBDC 
 	mov r1, #0xb
@@ -1805,7 +1805,7 @@ loc_8124204:
 	bl getPETNaviSelect // () -> u8
 	mov r1, #0x40 
 	ldrh r2, [r5,#0x18]
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8124228: .word unk_201C4B0
@@ -6553,12 +6553,12 @@ sub_8126B6C:
 	str r0, [r5,#0x48]
 	bl getPETNaviSelect // () -> u8
 	mov r4, r0
-	mov r1, #0x40 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHP
+	bl GetField16FromSelectedS20047CCStruct
 	strh r0, [r5,#0x34]
 	mov r0, r4
-	mov r1, #0x42 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHPUpdate
+	bl GetField16FromSelectedS20047CCStruct
 	strh r0, [r5,#0x36]
 	bl getPETNaviSelect // () -> u8
 	mov r1, #9

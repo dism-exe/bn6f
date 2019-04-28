@@ -164,8 +164,8 @@
 // .global byte_80066E0
 
 	.include "asm/asm00_2.inc"
-// .global sub_80137E6
-// .global sub_80137FE
+// .global SetField16ToSelectedS20047CCStruct
+// .global GetField16FromSelectedS20047CCStruct
 
 	.include "asm/asm03_0.inc"
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void

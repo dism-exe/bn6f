@@ -7379,7 +7379,7 @@ unsigned int sub_80AA4C0()
                             v23 = result;
                             v24 = sub_802D266(result);
                             v25 = getPETNaviSelect();
-                            v26 = sub_80137FE(v25) + 4;
+                            v26 = GetField16FromSelectedS20047CCStruct(v25) + 4;
                             __asm { SVC         6 }
                             _VF = __OFSUB__(v26, v24);
                             _ZF = v26 == v24;

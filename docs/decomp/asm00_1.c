@@ -6184,7 +6184,7 @@ void __fastcall sub_8007CA0(int a1, int a2, int a3)
             v24 = *(v3 + 52);
             if ( !*(v3 + 52) )
                 v24 = 1;
-            sub_80137E6(v23, 64, v24);
+            SetField16ToSelectedS20047CCStruct(v23, 64, v24);
         }
         v25 = sub_802D246();
         if ( !(v25 & 8) )
@@ -10634,7 +10634,7 @@ int sub_800A2F8()
     int result; // r0
 
     __asm { SVC         6 }
-    *(*(v0 + oToolkit_Unk20047cc_Ptr) + 43) = *(*(v0 + oToolkit_Unk20047cc_Ptr) + 62);
+    *(*(v0 + oToolkit_S20047CC_Ptrs) + 43) = *(*(v0 + oToolkit_S20047CC_Ptrs) + 62);
     v5 = *(v0 + oToolkit_S2034880_Ptr);
     v6 = *(v5 + 60);
     *(v5 + 15) = v6[3];

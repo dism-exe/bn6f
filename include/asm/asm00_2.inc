@@ -133,7 +133,7 @@
 	.global GetPlayerBattleVarByte
 	.global GetPlayerBattleVarSignedByte
 	.global GetPlayerBattleVarHword
-	.global sub_80136F0
+	.global SetField8ToSelectedS20047CCStruct
 	.global sub_8013704
 	.global SetPlayerBattleVarByte_AllianceFromBattleObject
 	.global SetPlayerBattleVarHword_AllianceFromBattleObject
@@ -141,8 +141,8 @@
 	.global GetPlayerBattleVarHword_AllianceFromBattleObject
 	.global navicust_801379E // (int a1, int a2, int a3) -> void
 	.global sub_80137B6 // (int a1, int a2) -> u8
-	.global sub_80137E6
-	.global sub_80137FE
+	.global SetField16ToSelectedS20047CCStruct
+	.global GetField16FromSelectedS20047CCStruct
 	.global sub_8013816
 	.global sub_801382E
 	.global sub_8013846
@@ -159,7 +159,7 @@
 	.global sub_8013DA0
 	.global sub_8013FAE
 	.global sub_8013FD0
-	.global navicust_8014018 // (int idx_8014034) -> bool
+	.global SelectS20047CCStruct8014018 // (int idx) -> bool8
 	.global sub_801401E
 	.global sub_8014040
 	.global sub_8014150

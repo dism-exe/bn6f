@@ -107,7 +107,7 @@
 // .global enemy_getStruct2
 // .global GetPlayerBattleVarByte
 // .global sub_80137B6 // (int a1, int a2) -> u8
-// .global sub_80137FE
+// .global GetField16FromSelectedS20047CCStruct
 // .global sub_80182B4
 
 	.include "asm/asm01.inc"

@@ -30738,11 +30738,11 @@ loc_811EFCE:
 	bl getPETNaviSelect // () -> u8
 	mov r4, r0
 	mov r1, #0x40
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	str r0, [r6,#8]
 	mov r0, r4
 	mov r1, #0x42
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	str r0, [r6,#0xc]
 loc_811EFE6:
 	ldr r0, off_811F0C0 // =byte_86CB360
@@ -34479,7 +34479,7 @@ loc_8120DFA:
 	cmp r1, #0x40
 	bne loc_8120E16
 	mov r1, #0x40
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	b loc_8120E1A
 loc_8120E16:
 	bl sub_80137B6 // (int a1, int a2) -> u8
@@ -34515,7 +34515,7 @@ loc_8120E50:
 	b loc_8120E3A
 loc_8120E56:
 	mov r0, r7
-	bl navicust_8014018 // (int idx_8014034) -> bool
+	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
 	mov r1, r7
 	bl init_8013B4E // (bool a1, int a2) -> void
 	mov r7, r4
@@ -34528,7 +34528,7 @@ loc_8120E66:
 	cmp r1, #0x40
 	bne loc_8120E7C
 	ldr r2, [r7]
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	b loc_8120EA0
 loc_8120E7C:
 	cmp r1, r2
@@ -34569,11 +34569,11 @@ loc_8120EA6:
 	mov r6, r2
 	mov r0, r4
 	mov r1, #0x42
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	mov r0, r4
 	mov r1, #0x3e
 	mov r2, r6
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldrb r0, [r7,#oGameState_MapGroup]
@@ -34582,7 +34582,7 @@ loc_8120EA6:
 	mov r2, r6
 	mov r0, r4
 	mov r1, #0x40
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	b loc_8120F3C
 loc_8120EF2:
 	bl getPETNaviSelect // () -> u8
@@ -34596,15 +34596,15 @@ loc_8120EF2:
 	mov r6, r2
 	mov r0, r4
 	mov r1, #0x42
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	mov r0, r4
 	mov r1, #0x3e
 	mov r2, r6
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	bl sub_8121154
 	mov r0, r4
 	mov r1, #0x42
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	mov r6, r0
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -34614,7 +34614,7 @@ loc_8120EF2:
 	mov r2, r6
 	mov r0, r4
 	mov r1, #0x40
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 loc_8120F3C:
 	add sp, sp, #0x40
 	pop {r4-r7,pc}

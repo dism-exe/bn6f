@@ -5,6 +5,7 @@
 """
 import re
 
+
 POINTER_SIZE = 32  # (bits) size of a pointer in ARM7TDMI
 
 # setting that specified whether the structure uses signed/unsigned primitives as u8/i32 or uint8_t/int32_t
@@ -41,14 +42,14 @@ class StructMember:
 	otherContent: str  # Any more text that comes after // loc=<location>
 
 	def __init__(self, _type: str, name: str, location: int, otherContent: str, structSize=None):
-	"""
-	Initiates the entry with a type, name, and location.
-	This is parted from strings passed in that are found in the input file.
-	If the entry is a POINTER, its type is still passed in but its size is automatically set to POINTER_SIZE
-	:param _type: This is the type of the member, ex. (uint8_t) or (longSword*)
-	:param name: The name of the member. If it contains *, the member is regarded as a pointer, like _type.
-	:param location:
-	"""
+		"""
+		Initiates the entry with a type, name, and location.
+		This is parted from strings passed in that are found in the input file.
+		If the entry is a POINTER, its type is still passed in but its size is automatically set to POINTER_SIZE
+		:param _type: This is the type of the member, ex. (uint8_t) or (longSword*)
+		:param name: The name of the member. If it contains *, the member is regarded as a pointer, like _type.
+		:param location:
+		"""
 		self.type = _type
 		# if _size is not None, that means this is a structure, and you can't figure out its size from context.
 		if not structSize:

@@ -1719,11 +1719,11 @@ sub_80010D4:
 	push {r4-r7,lr}
 	mov r4, r0
 	mov r1, #0x42
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	mov r6, r0
 	mov r0, r4
 	mov r1, #0x40
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	mov r1, r6
 	pop {r4-r7,pc}
 	thumb_func_end sub_80010D4
@@ -1734,7 +1734,7 @@ sub_80010EC:
 	mov r4, r0
 	mov r6, r1
 	mov r1, #0x42
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	cmp r6, r0
 	ble loc_80010FE
 	mov r6, r0
@@ -1742,7 +1742,7 @@ loc_80010FE:
 	mov r0, r4
 	mov r1, #0x40
 	mov r2, r6
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	pop {r4-r7,pc}
 	thumb_func_end sub_80010EC
 

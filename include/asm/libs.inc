@@ -74,7 +74,7 @@
 	.global SWI_Sqrt
 	.global sub_814D8CC
 	.global sub_814D8F0
-	.global sub_814D954
+	.global libSave_CopyToGamePak
 	.global sub_814D994
 	.global sub_814D9C4
 	.global sub_814DA9C

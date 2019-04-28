@@ -18624,8 +18624,9 @@ loc_814D948:
 	bx r0
 	thumb_func_end sub_814D8F0
 
-	thumb_func_start sub_814D954
-sub_814D954:
+	thumb_func_start libSave_CopyToGamePak
+// (u8 *p, u8 *pGamePak, int size) -> void
+libSave_CopyToGamePak:
 	push {r4,r5,lr}
 	mov r5, r0
 	mov r4, r1
@@ -18658,7 +18659,7 @@ loc_814D984:
 	.balign 4, 0x00
 off_814D98C: .word GamePakWaitstateControl
 dword_814D990: .word 0xFFFC
-	thumb_func_end sub_814D954
+	thumb_func_end libSave_CopyToGamePak
 
 	thumb_func_start sub_814D994
 sub_814D994:
@@ -18761,7 +18762,7 @@ loc_814DA3A:
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4
-	bl sub_814D954
+	bl libSave_CopyToGamePak
 	mov r0, r6
 	mov r1, r5
 	mov r2, r4

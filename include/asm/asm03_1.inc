@@ -305,11 +305,11 @@
 // .global sub_800B734
 
 	.include "asm/asm00_2.inc"
-// .global sub_80136F0
+// .global SetField8ToSelectedS20047CCStruct
 // .global sub_8013704
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
-// .global sub_80137E6
-// .global sub_80137FE
+// .global SetField16ToSelectedS20047CCStruct
+// .global GetField16FromSelectedS20047CCStruct
 // .global sub_80141AC
 // .global sub_8015C32
 
@@ -779,7 +779,7 @@
 // .global sub_814A828
 // .global SWI_LZ77UnCompReadNormalWrite8bit // (void *src, void *dest) -> void
 // .global sub_814D8F0
-// .global sub_814D954
+// .global libSave_CopyToGamePak
 // .global sub_814D9C4
 
 	.include "data/dat38_60.inc"

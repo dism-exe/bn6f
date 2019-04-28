@@ -2221,7 +2221,7 @@ signed int chatbox_80419F8()
     int v4; // r1
 
     v1 = getPETNaviSelect();
-    v2 = sub_80137FE(v1);
+    v2 = GetField16FromSelectedS20047CCStruct(v1);
     v3 = 4;
     if ( v2 < (*(v0 + 2) | (*(v0 + 3) << 8)) )
         v3 = 5;

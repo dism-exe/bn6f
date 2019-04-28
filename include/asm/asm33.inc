@@ -82,8 +82,8 @@
 	.include "asm/asm00_2.inc"
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6 // (int a1, int a2) -> u8
-// .global sub_80137E6
-// .global sub_80137FE
+// .global SetField16ToSelectedS20047CCStruct
+// .global GetField16FromSelectedS20047CCStruct
 
 	.include "asm/asm02.inc"
 // .global getChip8021DA8 // (int chip_idx) -> ChipData*

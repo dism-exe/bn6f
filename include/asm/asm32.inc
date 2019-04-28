@@ -422,10 +422,10 @@
 // .global sub_80126E4
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6 // (int a1, int a2) -> u8
-// .global sub_80137E6
-// .global sub_80137FE
+// .global SetField16ToSelectedS20047CCStruct
+// .global GetField16FromSelectedS20047CCStruct
 // .global init_8013B4E // (bool a1, int a2) -> void
-// .global navicust_8014018 // (int idx_8014034) -> bool
+// .global SelectS20047CCStruct8014018 // (int idx) -> bool8
 // .global sub_8015C48
 // .global sub_8015C94
 // .global sub_8015D80

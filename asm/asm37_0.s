@@ -1657,70 +1657,73 @@ sub_813C3AC:
 	push {r4-r7,lr}
 	bl getPETNaviSelect // () -> u8
 	tst r0, r0
-	beq loc_813C3B8
-	b loc_813C3CC
-loc_813C3B8:
+	beq .IfNoNaviSelected
+	b .loc_813C3CC
+.IfNoNaviSelected:
 	bl sub_813C458
 	movflag EVENT_163
 	bl TestEventFlagFromImmediate
-	beq loc_813C3CC
+	beq .loc_813C3CC
+    // if (!EVENT_163)
 	bl sub_8121154
-	b loc_813C3CC
-loc_813C3CC:
+	b .loc_813C3CC
+.loc_813C3CC:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_MapGroup]
 	cmp r0, #0x80
-	bge loc_813C40E
+	bge .IfInternetMap
+    // if (real world map)
 	movflag EVENT_PET_NAVI_ACTIVE
 	bl TestEventFlagFromImmediate
-	beq locret_813C454
+	beq .ret
+    // if (EVENT_PET_NAVI_ACTIVE)
 	mov r0, #0
-	mov r1, #0x42 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHPUpdate
+	bl GetField16FromSelectedS20047CCStruct
 	mov r7, r0
 	mov r0, #0
-	mov r1, #0x40 
+	mov r1, #oS20047CC_NaviHP
 	mov r2, r7
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	bl getPETNaviSelect // () -> u8
-	mov r1, #0x42 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHPUpdate
+	bl GetField16FromSelectedS20047CCStruct
 	mov r7, r0
 	bl getPETNaviSelect // () -> u8
-	mov r1, #0x40 
+	mov r1, #oS20047CC_NaviHP
 	mov r2, r7
-	bl sub_80137E6
-	b locret_813C454
-loc_813C40E:
+	bl SetField16ToSelectedS20047CCStruct
+	b .ret
+.IfInternetMap:
 	mov r0, #0
-	mov r1, #0x42 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHPUpdate
+	bl GetField16FromSelectedS20047CCStruct
 	mov r4, r0
 	mov r0, #0
-	mov r1, #0x40 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHP
+	bl GetField16FromSelectedS20047CCStruct
 	cmp r0, r4
-	ble loc_813C42E
+	ble .loc_813C42E
 	mov r0, #0
-	mov r1, #0x40 
+	mov r1, #0xoS20047CC_NaviHP
 	mov r2, r4
-	bl sub_80137E6
-loc_813C42E:
+	bl SetField16ToSelectedS20047CCStruct
+.loc_813C42E:
 	bl getPETNaviSelect // () -> u8
-	mov r1, #0x42 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHPUpdate
+	bl GetField16FromSelectedS20047CCStruct
 	mov r4, r0
 	bl getPETNaviSelect // () -> u8
-	mov r1, #0x40 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHP
+	bl GetField16FromSelectedS20047CCStruct
 	cmp r0, r4
-	ble locret_813C454
+	ble .ret
 	bl getPETNaviSelect // () -> u8
-	mov r1, #0x40 
+	mov r1, #0xoS20047CC_NaviHP
 	mov r2, r4
-	bl sub_80137E6
-locret_813C454:
+	bl SetField16ToSelectedS20047CCStruct
+.ret:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813C3AC
@@ -3205,7 +3208,7 @@ sub_813CF2C:
 	mov r2, r0
 	mov r0, #0
 	mov r1, #0x54 
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813CF2C

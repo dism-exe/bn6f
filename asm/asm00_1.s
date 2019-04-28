@@ -8609,7 +8609,7 @@ loc_8007D4E:
 	bne loc_8007D6E
 	mov r2, #1
 loc_8007D6E:
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 loc_8007D72:
 	bl GetBattleEffects // () -> int
 	mov r1, #8
@@ -13573,7 +13573,7 @@ battle_getFlags:
 sub_800A2F8:
 	push {r4,lr}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Unk20047cc_Ptr]
+	ldr r4, [r4,#oToolkit_S20047CC_Ptrs]
 	ldrh r0, [r4,#0x3e]
 	mov r1, #0x64
 	svc 6
@@ -15736,7 +15736,7 @@ loc_800B1C8:
 loc_800B1D2:
 	mov r0, #0xc
 	add r0, r0, r4
-	bl initStruct_8013438 // (void *struc) -> void
+	bl initStruct_8013438 // (void *struct) -> void
 	b loc_800B242
 loc_800B1DC:
 	mov r0, #0xc
@@ -15776,7 +15776,7 @@ loc_800B216:
 loc_800B220:
 	mov r0, #0xc
 	add r0, r0, r4
-	bl initStruct_8013438 // (void *struc) -> void
+	bl initStruct_8013438 // (void *struct) -> void
 	mov r0, #0
 	bl sub_801401E
 	mov r1, #0xc

@@ -9775,7 +9775,7 @@ loc_80AA5B8:
 	mov r4, r0
 	bl getPETNaviSelect // () -> u8
 	mov r1, #0x3e 
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	add r0, #4
 	mov r1, #5
 	svc 6

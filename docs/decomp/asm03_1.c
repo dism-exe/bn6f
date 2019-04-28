@@ -835,7 +835,7 @@ int __fastcall sub_8034BB8(int a1)
     result = s_2011C50_ptr_1C_isNull();
     if ( !zf )
     {
-        ho_803851C();
+        cutscene_803851C();
         ClearEventFlagFromImmediate(7, 66);
         ClearEventFlagFromImmediate(7, 67);
         ClearEventFlagFromImmediate(9, 98);
@@ -1740,10 +1740,10 @@ int sub_80355EC()
     while ( *v1 != 255 )
     {
         if ( *v1 == v3 )
-            return sub_80136F0(0, 34, 1);
+            return SetField8ToSelectedS20047CCStruct(0, 34, 1);
         ++v1;
     }
-    return sub_80136F0(0, 34, 0);
+    return SetField8ToSelectedS20047CCStruct(0, 34, 0);
 }
 
 
@@ -5100,7 +5100,7 @@ signed int sub_80384F8()
 
 // 0x803851c
 // () -> void
-void *ho_803851C()
+void *cutscene_803851C()
 {
     Toolkit *tk; // r10
     s_02011C50 *v1; // r5
@@ -11208,21 +11208,21 @@ int sub_803CE44()
     result = *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup);
     if ( result < 128 )
     {
-        v2 = **(v0 + oToolkit_Unk2004334_Ptr) + sub_80137FE(0);
-        sub_80137E6(0, 66, v2);
+        v2 = **(v0 + oToolkit_Unk2004334_Ptr) + GetField16FromSelectedS20047CCStruct(0);
+        SetField16ToSelectedS20047CCStruct(0, 66, v2);
         result = TestEventFlagFromImmediate(23, 29);
         if ( !v3 )
         {
-            sub_80137E6(0, 64, v2);
+            SetField16ToSelectedS20047CCStruct(0, 64, v2);
             result = getPETNaviSelect();
             if ( result )
             {
                 v4 = getPETNaviSelect();
-                v5 = sub_80137FE(v4);
+                v5 = GetField16FromSelectedS20047CCStruct(v4);
                 v6 = getPETNaviSelect();
-                sub_80137E6(v6, 66, v5);
+                SetField16ToSelectedS20047CCStruct(v6, 66, v5);
                 v7 = getPETNaviSelect();
-                result = sub_80137E6(v7, 64, v5);
+                result = SetField16ToSelectedS20047CCStruct(v7, 64, v5);
             }
         }
     }
@@ -11239,8 +11239,8 @@ int sub_803CEB8()
 
     v0 = getPETNaviSelect();
     v1 = v0;
-    v2 = sub_80137FE(v0);
-    sub_80137E6(v1, 64, v2);
+    v2 = GetField16FromSelectedS20047CCStruct(v0);
+    SetField16ToSelectedS20047CCStruct(v1, 64, v2);
     return 0;
 }
 
@@ -11255,8 +11255,8 @@ int sub_803CED4()
 
     v1 = getPETNaviSelect();
     v2 = v1;
-    v3 = sub_80137FE(v1);
-    return sub_80137E6(v2, 66, **(v0 + oToolkit_Unk2004334_Ptr) + v3);
+    v3 = GetField16FromSelectedS20047CCStruct(v1);
+    return SetField16ToSelectedS20047CCStruct(v2, 66, **(v0 + oToolkit_Unk2004334_Ptr) + v3);
 }
 
 
@@ -11267,8 +11267,8 @@ int __fastcall sub_803CEF8(int a1)
     __int16 v2; // r0
 
     v1 = a1;
-    v2 = sub_80137FE(a1);
-    return sub_80137E6(v1, 64, v2);
+    v2 = GetField16FromSelectedS20047CCStruct(a1);
+    return SetField16ToSelectedS20047CCStruct(v1, 64, v2);
 }
 
 
@@ -11280,10 +11280,10 @@ int sub_803CF10()
     int v2; // r7
 
     v1 = getPETNaviSelect();
-    v2 = **(v0 + oToolkit_Unk2004334_Ptr) + sub_80137FE(v1);
+    v2 = **(v0 + oToolkit_Unk2004334_Ptr) + GetField16FromSelectedS20047CCStruct(v1);
     if ( v2 < 1 )
         LOWORD(v2) = 1;
-    return sub_80137E6(v1, 66, v2);
+    return SetField16ToSelectedS20047CCStruct(v1, 66, v2);
 }
 
 
@@ -11298,11 +11298,11 @@ int __fastcall sub_803CF3C(int a1, int a2)
     if ( v2 != 112 )
         JUMPOUT(&locret_803CFAE);
     v3 = 20 * a2;
-    v4 = (sub_80137FE(0) + 20 * a2);
+    v4 = (GetField16FromSelectedS20047CCStruct(0) + 20 * a2);
     if ( v4 > &byte_3E8 )
         v4 = &byte_3E8;
     v5 = v4;
-    sub_80137E6(0, 62, v4);
+    SetField16ToSelectedS20047CCStruct(0, 62, v4);
     return sub_803CF74(v5, v3);
 }
 
@@ -11318,11 +11318,11 @@ int __fastcall sub_803CF74(int a1, int a2)
     v2 = a2;
     v3 = getPETNaviSelect();
     sub_813C3AC();
-    v4 = v2 + sub_80137FE(v3);
-    sub_80137E6(v3, 64, v4);
-    result = sub_80137FE(v3);
+    v4 = v2 + GetField16FromSelectedS20047CCStruct(v3);
+    SetField16ToSelectedS20047CCStruct(v3, 64, v4);
+    result = GetField16FromSelectedS20047CCStruct(v3);
     if ( result < v4 )
-        result = sub_80137E6(v3, 64, result);
+        result = SetField16ToSelectedS20047CCStruct(v3, 64, result);
     return result;
 }
 
@@ -14562,7 +14562,7 @@ signed int sub_803F79E()
             v3 = 0;
             while ( 1 )
             {
-                sub_814D954(&timer_2000000, 0xE000100, 26384);
+                libSave_CopyToGamePak(&timer_2000000, 0xE000100, 26384);
                 v6 = v3;
                 if ( !sub_814D9C4(&timer_2000000, 234881280, 26384) )
                     break;
@@ -14718,7 +14718,7 @@ signed int sub_803F918()
     v3 = 0;
     while ( 1 )
     {
-        sub_814D954(byte_2006710, 0xE007E00, dword_28);
+        libSave_CopyToGamePak(byte_2006710, 0xE007E00, dword_28);
         v5 = v3;
         if ( !sub_814D9C4(byte_2006710, 234913280, dword_28) )
             break;
@@ -14798,7 +14798,7 @@ signed int sub_803F9E4()
     v3 = 0;
     while ( 1 )
     {
-        sub_814D954(&dword_2006740, 0xE007E80, &dword_78);
+        libSave_CopyToGamePak(&dword_2006740, 0xE007E80, &dword_78);
         v5 = v3;
         if ( !sub_814D9C4(&dword_2006740, 234913408, &dword_78) )
             break;
@@ -14871,7 +14871,7 @@ BOOL sub_803FAB4()
     do
     {
         sub_803FAEE();
-        sub_814D954(dword_20067C0, 0xE007F80, byte_80);
+        libSave_CopyToGamePak(dword_20067C0, 0xE007F80, byte_80);
         v3 = v0;
         if ( !sub_814D9C4(dword_20067C0, 234913664, byte_80) )
             ++v1;
@@ -14903,7 +14903,7 @@ void sub_803FAEE()
 void __fastcall sub_803FB04(int a1)
 {
     dword_20067C0[0] = a1;
-    sub_814D954(dword_20067C0, 0xE007F80, byte_80);
+    libSave_CopyToGamePak(dword_20067C0, 0xE007F80, byte_80);
 }
 
 

@@ -12774,7 +12774,7 @@ sub_8136C24:
 	str r0, [sp,#0xc]
 	mov r0, #0
 	mov r1, #0x3e 
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	str r0, [sp,#0x10]
 	mov r0, #0
 	mov r1, #0x2c 
@@ -12801,8 +12801,8 @@ sub_8136C24:
 	bl sub_80137B6 // (int a1, int a2) -> u8
 	str r0, [sp,#0x28]
 	mov r0, #0
-	mov r1, #0x40 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHP
+	bl GetField16FromSelectedS20047CCStruct
 	str r0, [sp,#0x2c]
 	mov r0, #0
 	mov r1, #0x56 
@@ -12829,7 +12829,7 @@ sub_8136C24:
 	bl sub_80137B6 // (int a1, int a2) -> u8
 	str r0, [sp,#0x44]
 	mov r0, #0
-	bl navicust_8014018 // (int idx_8014034) -> bool
+	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
 	mov r1, #0
 	bl init_8013B4E // (bool a1, int a2) -> void
 	mov r0, #0
@@ -12847,7 +12847,7 @@ sub_8136C24:
 	mov r0, #0
 	mov r1, #0x3e 
 	ldr r2, [sp,#0x10]
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	mov r0, #0
 	mov r1, #0x2c 
 	ldr r2, [sp,#0x14]
@@ -12875,7 +12875,7 @@ sub_8136C24:
 	mov r0, #0
 	mov r1, #0x40 
 	ldr r2, [sp,#0x2c]
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	mov r0, #0
 	mov r1, #0x56 
 	ldr r2, [sp,#0x30]

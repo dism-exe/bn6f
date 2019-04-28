@@ -17294,7 +17294,7 @@ ToggleEventFlag:
 	mov pc, lr
 	thumb_func_end ToggleEventFlag
 
-/* (r0:u8 eventGroupOffset, r1:u8 byteAndFlagOffset) -> zf
+/* (r0:u8 eventGroupOffset, r1:u8 byteAndFlagOffset) -> !zf
    clobbers: r0,r1,r3
    ignores: r2,r4-r9,r11,r12 */
 	thumb_func_start TestEventFlagFromImmediate
@@ -17308,7 +17308,7 @@ TestEventFlagFromImmediate:
 // r0[15:3] = event byte offset
 // r0[2:0] = event bit offset
 
-/* (r0:u16 flagToTest) -> zf
+/* (r0:u16 flagToTest) -> !zf
    clobbers: r0,r1,r3
    ignores: r2,r4-r9,r11,r12 */
 	thumb_func_start TestEventFlag

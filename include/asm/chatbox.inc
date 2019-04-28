@@ -100,7 +100,7 @@
 
 	.include "asm/asm00_2.inc"
 // .global sub_8013704
-// .global sub_80137FE
+// .global GetField16FromSelectedS20047CCStruct
 
 	.include "asm/asm02.inc"
 // .global dword_8021AEC

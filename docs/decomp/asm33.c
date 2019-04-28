@@ -13,8 +13,8 @@ int sub_8123208()
 
     v0 = getPETNaviSelect();
     v1 = v0;
-    v2 = sub_80137FE(v0);
-    sub_80137E6(v1, 66, word_200DCF0 + v2);
+    v2 = GetField16FromSelectedS20047CCStruct(v0);
+    SetField16ToSelectedS20047CCStruct(v1, 66, word_200DCF0 + v2);
     v3 = word_200DCF2 + sub_80137B6(v1);
     if ( v3 > 4 )
         LOBYTE(v3) = 4;
@@ -4026,8 +4026,8 @@ void __fastcall __noreturn sub_8126B6C(int a1, int a2, int a3, int a4)
     *(v4 + 18) = v13;
     *(v4 + 72) = v13;
     v14 = getPETNaviSelect();
-    *(v4 + 52) = sub_80137FE(v14);
-    *(v4 + 54) = sub_80137FE(v14);
+    *(v4 + 52) = GetField16FromSelectedS20047CCStruct(v14);
+    *(v4 + 54) = GetField16FromSelectedS20047CCStruct(v14);
     v15 = getPETNaviSelect();
     *(v4 + 20) = sub_80137B6(v15);
     v16 = getPETNaviSelect();

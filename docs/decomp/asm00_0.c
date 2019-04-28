@@ -1336,8 +1336,8 @@ int __fastcall sub_80010D4(int a1)
     int v1; // r4
 
     v1 = a1;
-    sub_80137FE(a1);
-    return sub_80137FE(v1);
+    GetField16FromSelectedS20047CCStruct(a1);
+    return GetField16FromSelectedS20047CCStruct(v1);
 }
 
 
@@ -1350,10 +1350,10 @@ int __fastcall sub_80010EC(int a1, int a2)
 
     v2 = a1;
     v3 = a2;
-    v4 = sub_80137FE(a1);
+    v4 = GetField16FromSelectedS20047CCStruct(a1);
     if ( v3 > v4 )
         LOWORD(v3) = v4;
-    return sub_80137E6(v2, 64, v3);
+    return SetField16ToSelectedS20047CCStruct(v2, 64, v3);
 }
 
 

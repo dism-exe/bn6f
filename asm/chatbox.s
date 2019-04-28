@@ -3688,7 +3688,7 @@ chatbox_80419F8:
 	push {lr}
 	bl getPETNaviSelect // () -> u8
 	mov r1, #0x3e
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	ldrb r1, [r4,#2]
 	ldrb r2, [r4,#3]
 	lsl r2, r2, #8

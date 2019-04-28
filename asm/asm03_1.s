@@ -1670,7 +1670,7 @@ loc_8034BFE:
 	bl map_script_overworld_8036064
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	beq loc_8034C2C
-	bl ho_803851C // () -> void
+	bl cutscene_803851C // () -> void
 	mov r0, #7
 	mov r1, #0x42
 	bl ClearEventFlagFromImmediate
@@ -2782,13 +2782,13 @@ loc_803560E:
 	mov r0, #0
 	mov r1, #0x22
 	mov r2, #1
-	bl sub_80136F0
+	bl SetField8ToSelectedS20047CCStruct
 	pop {r4-r7,pc}
 loc_803561A:
 	mov r0, #0
 	mov r1, #0x22
 	mov r2, #0
-	bl sub_80136F0
+	bl SetField8ToSelectedS20047CCStruct
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8035628: .word word_803562C
@@ -3663,9 +3663,9 @@ MapScript_jump_if_map_group_compare_last_map_group: // 8035C6E
 
 	thumb_local_start
 // 0x17 destination1 destination5 destination9
-// jumptable, using [[eToolkit_Unk20047cc_Ptr] + 0x4c] as the base index
+// jumptable, using [[eToolkit_S20047CC_Ptrs] + 0x4c] as the base index
 // default is destination1
-// eToolkit_Unk20047cc_Ptr
+// eToolkit_S20047CC_Ptrs
 MapScript_cmd_8035ca0: // 8035CA0
 	push {lr}
 	mov r0, #0
@@ -6040,6 +6040,7 @@ sub_803746E:
 	thumb_func_end sub_803746E
 
 	thumb_local_start
+// (int a1, int a2) -> int
 sub_8037480:
 	push {r1-r3,lr}
 	add r3, r1, r0
@@ -6055,7 +6056,8 @@ sub_8037480:
 	orr r0, r2
 	pop {r1-r3,pc}
 	.balign 4, 0x00
-jt_big_803749C: .word sub_80376C4+1
+CutsceneCommandsJumpTable803749C:
+    .word sub_80376C4+1
 	.word sub_80376DC+1
 	.word sub_80376F4+1
 	.word sub_8037740+1
@@ -6155,17 +6157,21 @@ jt_big_803749C: .word sub_80376C4+1
 	.word sub_803828E+1
 	.word sub_803829A+1
 	.word sub_80382AE+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0
+	.word 0
+	.word 0
 	.word sub_80382BA+1
 	.word sub_80382DE+1
 	.word sub_80382F2+1
 	.word sub_80382FE+1
 	.word sub_8038322+1
 	.word sub_8038346+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0
+	.word 0
 	.word sub_8038362+1
 	.word sub_8038386+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0
+	.word 0
 	.word sub_80383AA+1
 	.word sub_80383DE+1
 	.word sub_8038412+1
@@ -6187,13 +6193,14 @@ byte_8037695: .byte 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
 	thumb_func_end sub_8037480
 
 	thumb_local_start
+// () -> int
 sub_80376C4:
 	push {lr}
 	movflag EVENT_1741
 	bl TestEventFlagFromImmediate
-	bne loc_80376D4
+	bne .eventActive
 	bl sub_813C3AC
-loc_80376D4:
+.eventActive:
 	bl sub_8036EFE
 	mov r0, #0
 	pop {pc}
@@ -8167,9 +8174,10 @@ loc_8038510:
 	pop {pc}
 	thumb_func_end sub_80384F8
 
-// () -> void
+
 	thumb_local_start
-ho_803851C:
+// () -> void
+cutscene_803851C:
 	push {r4-r7,lr}
 	mov r4, r8
 	mov r5, r12
@@ -8181,7 +8189,7 @@ ho_803851C:
 	mov r0, #0x1c
 	mov r8, r0
 loc_8038530:
-	ldr r6, off_80385B8 // =jt_big_803749C
+	ldr r6, off_80385B8 // =CutsceneCommandsJumpTable803749C
 	mov r12, r6
 	mov r7, r8
 	ldr r7, [r5,r7]
@@ -8189,6 +8197,7 @@ loc_8038538:
 	mov r6, r12
 	ldrb r0, [r7]
 	lsl r0, r0, #2
+	// CutsceneCommandsJumpTable803749C[*tk->S2011c50_Ptr->Unk_12]();
 	ldr r0, [r6,r0]
 	mov lr, pc
 	bx r0
@@ -8243,9 +8252,9 @@ loc_80385AE:
 	mov r12, r5
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_80385B8: .word jt_big_803749C
+off_80385B8: .word CutsceneCommandsJumpTable803749C
 off_80385BC: .word dword_8037690
-	thumb_func_end ho_803851C
+	thumb_func_end cutscene_803851C
 
 	thumb_local_start
 sub_80385C0:
@@ -16163,7 +16172,7 @@ sub_803CE44:
 	mov r4, r0
 	mov r4, r0
 	mov r1, #0x3e
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	mov r7, r0
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_Unk2004334_Ptr]
@@ -16173,30 +16182,30 @@ sub_803CE44:
 	mov r0, #0
 	mov r1, #0x42
 	mov r2, r7
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	movflag EVENT_PET_NAVI_ACTIVE
 	bl TestEventFlagFromImmediate
 	beq locret_803CEB4
 	mov r0, #0
 	mov r1, #0x40
 	mov r2, r7
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	bl getPETNaviSelect // () -> u8
 	cmp r0, #0
 	beq locret_803CEB4
 	bl getPETNaviSelect // () -> u8
 	mov r4, r0
 	mov r1, #0x3e
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	mov r7, r0
 	bl getPETNaviSelect // () -> u8
 	mov r1, #0x42
 	mov r2, r7
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	bl getPETNaviSelect // () -> u8
 	mov r1, #0x40
 	mov r2, r7
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 locret_803CEB4:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -16208,11 +16217,11 @@ sub_803CEB8:
 	bl getPETNaviSelect // () -> u8
 	mov r4, r0
 	mov r1, #0x42
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	mov r2, r0
 	mov r0, r4
 	mov r1, #0x40
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	mov r0, #0
 	pop {r4-r7,pc}
 	thumb_func_end sub_803CEB8
@@ -16223,7 +16232,7 @@ sub_803CED4:
 	bl getPETNaviSelect // () -> u8
 	mov r4, r0
 	mov r1, #0x3e
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	mov r7, r0
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_Unk2004334_Ptr]
@@ -16232,7 +16241,7 @@ sub_803CED4:
 	mov r7, r2
 	mov r0, r4
 	mov r1, #0x42
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_803CED4
 
@@ -16241,11 +16250,11 @@ sub_803CEF8:
 	push {r4-r7,lr}
 	mov r4, r0
 	mov r1, #0x42
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	mov r2, r0
 	mov r0, r4
 	mov r1, #0x40
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	pop {r4-r7,pc}
 	.byte 0, 0
 	thumb_func_end sub_803CEF8
@@ -16256,7 +16265,7 @@ sub_803CF10:
 	bl getPETNaviSelect // () -> u8
 	mov r4, r0
 	mov r1, #0x3e
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	mov r7, r0
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_Unk2004334_Ptr]
@@ -16270,7 +16279,7 @@ loc_803CF30:
 	mov r0, r4
 	mov r1, #0x42
 	mov r2, r7
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_803CF10
 
@@ -16284,7 +16293,7 @@ sub_803CF3C:
 	mov r0, #0
 	mov r4, r0
 	mov r1, #0x3e
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	add r0, r0, r7
 	ldr r1, off_803CF70 // =0x3e8
 	cmp r0, r1
@@ -16295,7 +16304,7 @@ loc_803CF5A:
 	mov r6, r2
 	mov r0, r4
 	mov r1, #0x3e
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	mov r0, r6
 	mov r1, r7
 	bl sub_803CF74
@@ -16313,21 +16322,21 @@ sub_803CF74:
 	bl sub_813C3AC
 	mov r0, r4
 	mov r1, #0x40
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	add r7, r7, r0
 	mov r0, r4
 	mov r1, #0x40
 	mov r2, r7
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	mov r0, r4
 	mov r1, #0x42
-	bl sub_80137FE
+	bl GetField16FromSelectedS20047CCStruct
 	cmp r0, r7
 	bge locret_803CFAE
 	mov r2, r0
 	mov r0, r4
 	mov r1, #0x40
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 locret_803CFAE:
 	pop {r4-r7,pc}
 	thumb_func_end sub_803CF74
@@ -20865,7 +20874,7 @@ loc_803F7DC:
 	ldr r1, dword_803F88C // =0xe000100
 	ldr r2, dword_803F890 // =0x6710
 	push {r0-r2}
-	bl sub_814D954
+	bl libSave_CopyToGamePak
 	pop {r0-r2}
 	push {r0-r3,r7}
 	bl sub_814D9C4
@@ -21053,7 +21062,7 @@ loc_803F93C:
 	ldr r1, dword_803F9D8 // =0xe007e00
 	ldr r2, off_803F9DC // =0x28
 	push {r0-r2}
-	bl sub_814D954
+	bl libSave_CopyToGamePak
 	pop {r0-r2}
 	push {r0-r3,r7}
 	bl sub_814D9C4
@@ -21153,7 +21162,7 @@ loc_803FA08:
 	ldr r1, dword_803FAA8 // =0xe007e80
 	ldr r2, off_803FAAC // =0x78
 	push {r0-r2}
-	bl sub_814D954
+	bl libSave_CopyToGamePak
 	pop {r0-r2}
 	push {r0-r3,r7}
 	bl sub_814D9C4
@@ -21239,7 +21248,7 @@ loc_803FABA:
 	ldr r1, dword_803FB20 // =0xe007f80
 	ldr r2, off_803FB24 // =0x80
 	push {r0-r2}
-	bl sub_814D954
+	bl libSave_CopyToGamePak
 	pop {r0-r2}
 	push {r0-r3,r6,r7}
 	bl sub_814D9C4
@@ -21284,7 +21293,7 @@ sub_803FB04:
 	ldr r0, off_803FB1C // =dword_20067C0
 	ldr r1, dword_803FB20 // =0xe007f80
 	ldr r2, off_803FB24 // =0x80
-	bl sub_814D954
+	bl libSave_CopyToGamePak
 	pop {r0-r7,pc}
 	.balign 4, 0x00
 off_803FB18: .word dword_20067C0

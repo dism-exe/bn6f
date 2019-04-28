@@ -9127,7 +9127,7 @@ int __fastcall sub_814D8F0(int a1, int a2, int a3)
 
 
 // 0x814d954
-int __fastcall sub_814D954(_BYTE *a1, _BYTE *a2, int a3)
+int __fastcall libSave_CopyToGamePak(_BYTE *a1, _BYTE *a2, int a3)
 {
     _BYTE *v3; // r5
     _BYTE *v4; // r4
@@ -9209,7 +9209,7 @@ int __fastcall sub_814DA28(_BYTE *a1, _BYTE *a2, int a3, int a4)
     v6 = a3;
     for ( i = 0; i <= 2; i = (i + 1) & 0xFF )
     {
-        sub_814D954(v4, v5, v6);
+        libSave_CopyToGamePak(v4, v5, v6);
         a4 = sub_814D9C4(v4, v5, v6);
         if ( !a4 )
             break;

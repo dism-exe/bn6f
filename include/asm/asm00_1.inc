@@ -321,7 +321,7 @@
 // .global GetPlayerBattleVarByte_AllianceFromBattleObject
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6 // (int a1, int a2) -> u8
-// .global sub_80137E6
+// .global SetField16ToSelectedS20047CCStruct
 // .global sub_8013854
 // .global sub_8013884
 // .global sub_801401E

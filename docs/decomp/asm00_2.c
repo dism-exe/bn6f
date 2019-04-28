@@ -7295,13 +7295,13 @@ int __fastcall sub_80136E4(int a1, int a2)
 
 
 // 0x80136f0
-int __fastcall sub_80136F0(int a1, int a2, char a3)
+int __fastcall SetField8ToSelectedS20047CCStruct(int a1, int a2, char a3)
 {
     int v3; // r10
     int result; // r0
 
     result = 100 * (a1 != 0);
-    *(*(v3 + oToolkit_Unk20047cc_Ptr) + result + a2) = a3;
+    *(*(v3 + oToolkit_S20047CC_Ptrs) + result + a2) = a3;
     return result;
 }
 
@@ -7311,7 +7311,7 @@ int __fastcall sub_8013704(int a1, int a2)
 {
     int v2; // r10
 
-    return *(*(v2 + oToolkit_Unk20047cc_Ptr) + 100 * (a1 != 0) + a2);
+    return *(*(v2 + oToolkit_S20047CC_Ptrs) + 100 * (a1 != 0) + a2);
 }
 
 
@@ -7320,7 +7320,7 @@ int __fastcall sub_8013718(int a1, int a2)
 {
     int v2; // r10
 
-    return *(*(v2 + oToolkit_Unk20047cc_Ptr) + 100 * (a1 != 0) + a2);
+    return *(*(v2 + oToolkit_S20047CC_Ptrs) + 100 * (a1 != 0) + a2);
 }
 
 
@@ -7331,7 +7331,7 @@ int __fastcall sub_801372C(int a1, int a2, __int16 a3)
     int result; // r0
 
     result = 100 * (a1 != 0);
-    *(*(v3 + oToolkit_Unk20047cc_Ptr) + result + a2) = a3;
+    *(*(v3 + oToolkit_S20047CC_Ptrs) + result + a2) = a3;
     return result;
 }
 
@@ -7341,7 +7341,7 @@ int __fastcall sub_8013740(int a1, int a2)
 {
     int v2; // r10
 
-    return *(*(v2 + oToolkit_Unk20047cc_Ptr) + 100 * (a1 != 0) + a2);
+    return *(*(v2 + oToolkit_S20047CC_Ptrs) + 100 * (a1 != 0) + a2);
 }
 
 
@@ -7414,8 +7414,8 @@ int __fastcall navicust_801379E(int a1, int a2, char a3)
     int v6; // [sp+0h] [bp-Ch]
 
     v4 = a3;
-    result = 100 * navicust_8014018(a1);
-    *(*(v3 + oToolkit_Unk20047cc_Ptr) + result + v6) = v4;
+    result = 100 * SelectS20047CCStruct8014018(a1);
+    *(*(v3 + oToolkit_S20047CC_Ptrs) + result + v6) = v4;
     return result;
 }
 
@@ -7427,7 +7427,7 @@ int __fastcall sub_80137B6(int a1)
     int v1; // r10
     int v3; // [sp+0h] [bp-8h]
 
-    return *(*(v1 + oToolkit_Unk20047cc_Ptr) + 100 * navicust_8014018(a1) + v3);
+    return *(*(v1 + oToolkit_S20047CC_Ptrs) + 100 * SelectS20047CCStruct8014018(a1) + v3);
 }
 
 
@@ -7437,12 +7437,12 @@ int __fastcall sub_80137CE(int a1)
     int v1; // r10
     int v3; // [sp+0h] [bp-8h]
 
-    return *(*(v1 + oToolkit_Unk20047cc_Ptr) + 100 * navicust_8014018(a1) + v3);
+    return *(*(v1 + oToolkit_S20047CC_Ptrs) + 100 * SelectS20047CCStruct8014018(a1) + v3);
 }
 
 
 // 0x80137e6
-int __fastcall sub_80137E6(int a1, int a2, __int16 a3)
+int __fastcall SetField16ToSelectedS20047CCStruct(int a1, int a2, __int16 a3)
 {
     int v3; // r10
     __int16 v4; // ST04_2
@@ -7450,19 +7450,19 @@ int __fastcall sub_80137E6(int a1, int a2, __int16 a3)
     int v6; // [sp+0h] [bp-Ch]
 
     v4 = a3;
-    result = 100 * navicust_8014018(a1);
-    *(*(v3 + oToolkit_Unk20047cc_Ptr) + result + v6) = v4;
+    result = 100 * SelectS20047CCStruct8014018(a1);
+    *(*(v3 + oToolkit_S20047CC_Ptrs) + result + v6) = v4;
     return result;
 }
 
 
 // 0x80137fe
-int __fastcall sub_80137FE(int a1)
+int __fastcall GetField16FromSelectedS20047CCStruct(int a1)
 {
     int v1; // r10
     int v3; // [sp+0h] [bp-8h]
 
-    return *(*(v1 + oToolkit_Unk20047cc_Ptr) + 100 * navicust_8014018(a1) + v3);
+    return *(*(v1 + oToolkit_S20047CC_Ptrs) + 100 * SelectS20047CCStruct8014018(a1) + v3);
 }
 
 
@@ -7839,7 +7839,7 @@ void init_8013B4E()
     int v0; // r10
     int v1; // r7
 
-    v1 = *(v0 + oToolkit_Unk20047cc_Ptr);
+    v1 = *(v0 + oToolkit_S20047CC_Ptrs);
     JUMPOUT(&loc_8013B6E);
 }
 
@@ -8344,7 +8344,7 @@ void __fastcall sub_8013FF8(int a1)
 
 // 0x8014018
 // (int idx_8014034) -> bool
-int __fastcall navicust_8014018(int a1)
+int __fastcall SelectS20047CCStruct8014018(int a1)
 {
     return byte_8014034[a1];
 }
@@ -8355,7 +8355,7 @@ int __fastcall sub_801401E(int a1)
 {
     int v1; // r10
 
-    return 100 * navicust_8014018(a1) + *(v1 + oToolkit_Unk20047cc_Ptr);
+    return 100 * SelectS20047CCStruct8014018(a1) + *(v1 + oToolkit_S20047CC_Ptrs);
 }
 
 
@@ -11303,7 +11303,7 @@ int sub_8015C32()
 
     v0 = 0;
     do
-        result = sub_80136F0(v0++, 14, 0);
+        result = SetField8ToSelectedS20047CCStruct(v0++, 14, 0);
     while ( v0 < 7 );
     return result;
 }
