@@ -9054,12 +9054,12 @@ locret_80A9EB4:
 sub_80A9EB6:
 	push {r4-r7,lr}
 	mov r0, #1
-	ldr r1, off_80A9EC8 // =unk_2011C50 
+	ldr r1, off_80A9EC8 // =eCutsceneState
 	strb r0, [r1,#0x8] // (byte_2011C58 - 0x2011c50)
 	pop {r4-r7,pc}
 dword_80A9EC0: .word 0x2AAAA
 dword_80A9EC4: .word 0x16C1
-off_80A9EC8: .word unk_2011C50
+off_80A9EC8: .word eCutsceneState
 	thumb_func_end sub_80A9EB6
 
 	thumb_func_start sub_80A9ECC

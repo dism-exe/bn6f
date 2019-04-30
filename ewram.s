@@ -1679,20 +1679,11 @@ dword_2011C2C:: // 0x2011c2c
 	.space 8
 dword_2011C34:: // 0x2011c34
 	.space 28
-unk_2011C50:: // 0x2011c50
-	.space 4
-unk_2011C54:: // 0x2011c54
-	.space 1
-unk_2011C55:: // 0x2011c55
-	.space 1
-unk_2011C56:: // 0x2011c56
-	.space 1
-unk_2011C57:: // 0x2011c57
-	.space 1
-byte_2011C58:: // 0x2011c58
-	.space 104
-dword_2011CC0:: // 0x2011cc0
-	.space 32
+
+eCutsceneState:: // 0x2011c50
+	cutscene_state_struct eCutsceneState
+eCutsceneStateEnd:: // 0x2011ce0
+
 unk_2011CE0:: // 0x2011ce0
 	.space 48
 dword_2011D10:: // 0x2011d10

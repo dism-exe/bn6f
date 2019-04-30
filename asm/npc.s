@@ -641,7 +641,7 @@ sub_809EA74:
 sub_809EA82:
 	push {r4,r7,lr}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_S2011c50_Ptr]
+	ldr r4, [r4,#oToolkit_CutsceneStatePtr]
 	mov r7, #0x80
 	ldr r0, [r5,r7]
 	mov r7, #0x84
@@ -1790,7 +1790,7 @@ locret_809F290:
 sub_809F292:
 	push {lr}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_S2011c50_Ptr]
+	ldr r4, [r4,#oToolkit_CutsceneStatePtr]
 	ldrb r0, [r6,#1]
 	ldrb r1, [r6,#2]
 	strb r1, [r4,r0]
@@ -1802,7 +1802,7 @@ sub_809F292:
 sub_809F2A2:
 	push {lr}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_S2011c50_Ptr]
+	ldr r4, [r4,#oToolkit_CutsceneStatePtr]
 	ldrb r0, [r6,#1]
 	ldrb r1, [r6,#2]
 	ldrb r0, [r4,r0]
@@ -1821,7 +1821,7 @@ loc_809F2BC:
 sub_809F2C0:
 	push {lr}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_S2011c50_Ptr]
+	ldr r4, [r4,#oToolkit_CutsceneStatePtr]
 	ldrb r0, [r6,#1]
 	ldrb r1, [r6,#2]
 	ldrb r0, [r4,r0]

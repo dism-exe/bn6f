@@ -12,6 +12,7 @@
 	.include "structs/OverworldMapObject.inc"
 	.include "structs/UnkMapScriptState_2011e60.inc"
 	.include "structs/PlayerBattleVars.inc"
+	.include "structs/CutsceneState.inc"
 
 /*
 rough notes for now

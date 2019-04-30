@@ -6516,7 +6516,7 @@ ToolkitPointers: .word i_joGameSubsysSel
 	.word eJoypad
 	.word unk_200AC40
 	.word eCamera
-	.word unk_2011C50
+	.word eCutsceneState
 	.word byte_2011BB0
 	.word eBattleState
 	.word unk_200F3A0

@@ -2988,7 +2988,7 @@ sub_809B9EC:
 sub_809BA14:
 	push {r5-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#oToolkit_S2011c50_Ptr]
+	ldr r5, [r5,#oToolkit_CutsceneStatePtr]
 	mov r0, #0x70 
 	add r6, r5, r0
 	ldr r0, [r6]
@@ -3650,7 +3650,7 @@ sub_809C890:
 	lsr r1, r1, #0x10
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x10
-	ldr r0, off_809C93C // =unk_2011C50 
+	ldr r0, off_809C93C // =eCutsceneState 
 	ldr r0, [r0,#0x70] // (dword_2011CC0 - 0x2011c50)
 	ldrb r0, [r0,#0xc]
 	lsl r0, r0, #2
@@ -3685,19 +3685,19 @@ byte_809C90C: .byte 0xE0, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xC0, 0xFF, 0x0, 0
 	.byte 0x0, 0x0, 0x0, 0xA0, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 byte_809C924: .byte 0x0, 0x0, 0xE0, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xC0, 0xFF, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0xA0, 0xFF, 0x0, 0x0, 0x0, 0x0
-off_809C93C: .word unk_2011C50
+off_809C93C: .word eCutsceneState
 	thumb_func_end sub_809C890
 
 	thumb_func_start sub_809C940
 sub_809C940:
 	push {r4-r7,lr}
-	ldr r0, off_809C950 // =unk_2011C50 
+	ldr r0, off_809C950 // =eCutsceneState 
 	ldr r0, [r0,#0x70] // (dword_2011CC0 - 0x2011c50)
 	ldr r0, [r0,#0x14]
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r4-r7,pc}
-off_809C950: .word unk_2011C50
+off_809C950: .word eCutsceneState
 	thumb_func_end sub_809C940
 
 	thumb_local_start

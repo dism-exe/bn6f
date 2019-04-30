@@ -3008,7 +3008,7 @@ loc_804152A:
 	ldrb r0, [r4,#2]
 	ldrb r1, [r4,#3]
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_S2011c50_Ptr]
+	ldr r2, [r2,#oToolkit_CutsceneStatePtr]
 	add r2, #8
 	add r2, r2, r0
 	ldrb r0, [r2]
@@ -6442,7 +6442,7 @@ off_8042FEC: .word chatbox_8042FF4+1
 chatbox_8042FF4:
 	push {lr}
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_S2011c50_Ptr]
+	ldr r2, [r2,#oToolkit_CutsceneStatePtr]
 	add r2, #8
 	ldrb r0, [r4,#2]
 	ldrb r1, [r4,#3]
@@ -7905,10 +7905,11 @@ byte_8043B54: .byte 0xE0, 0xA2, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0, 0x40, 0xA3, 0x0, 
 	.byte 0x86, 0x9A, 0x0, 0x2, 0x4, 0x0, 0x0, 0x0, 0x88, 0x9A, 0x0, 0x2
 	.byte 0x4, 0x0, 0x0, 0x0, 0x8A, 0x9A, 0x0, 0x2, 0x4, 0x0, 0x0, 0x0
 	.byte 0x8C, 0x9A, 0x0, 0x2, 0x4, 0x0, 0x0, 0x0
-off_8043C64: .word unk_2011C54
-	.word unk_2011C55
-	.word unk_2011C56
-	.word unk_2011C57
+off_8043C64:
+	.word eCutsceneState_Unk_04
+	.word eCutsceneState_Unk_05
+	.word eCutsceneState_Unk_06
+	.word eCutsceneState_Unk_07
 	.word unk_200A293
 	.word 0x0
 	.word 0x0

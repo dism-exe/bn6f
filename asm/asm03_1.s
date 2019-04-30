@@ -1741,7 +1741,7 @@ loc_8034BFE:
 	bl sub_8036064
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	beq loc_8034C2C
-	bl ho_803851C // () -> void
+	bl runCutscene_803851C // () -> void
 	mov r0, #7
 	mov r1, #0x42 
 	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -5405,7 +5405,7 @@ sub_8036E86:
 init_s_02011C50_8036E90:
 	push {r5,lr}
 	mov r5, r10
-	ldr r5, [r5,#oToolkit_S2011c50_Ptr]
+	ldr r5, [r5,#oToolkit_CutsceneStatePtr]
 	push {r0,r1}
 	mov r0, r5
 	mov r1, #0x90
@@ -5434,7 +5434,7 @@ off_8036EC4: .word LCDControl
 sub_8036ED4:
 	push {r4-r7,lr}
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2011c50_Ptr]
+	ldr r1, [r1,#oToolkit_CutsceneStatePtr]
 	mov r0, #1
 	str r0, [r1,#0x1c] // s_02011C50.ptr_1C
 	ldr r0, off_8036F20 // =dword_8037690 
@@ -5458,7 +5458,7 @@ sub_8036ED4:
 sub_8036EFE:
 	push {r4-r7,lr}
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2011c50_Ptr]
+	ldr r1, [r1,#oToolkit_CutsceneStatePtr]
 	mov r0, #1
 	str r0, [r1,#0x1c] // s_02011C50.ptr_1C
 	ldr r0, off_8036F20 // =dword_8037690 
@@ -5478,7 +5478,7 @@ off_8036F20: .word dword_8037690
 	thumb_func_start sub_8036F24
 sub_8036F24:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2011c50_Ptr]
+	ldr r1, [r1,#oToolkit_CutsceneStatePtr]
 	ldr r0, [r1,#0x1c] // s_02011C50.ptr_1C
 	cmp r0, #1
 	bne locret_8036F34
@@ -5493,7 +5493,7 @@ locret_8036F34:
 	thumb_func_start s_2011C50_ptr_1C_isNull
 s_2011C50_ptr_1C_isNull:
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2011c50_Ptr]
+	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	ldr r0, [r0,#0x1c] // s_02011C50.ptr_1C
 	tst r0, r0
 	mov pc, lr
@@ -5503,7 +5503,7 @@ s_2011C50_ptr_1C_isNull:
 	thumb_func_start s_2011C50_8036F40
 s_2011C50_8036F40:
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2011c50_Ptr]
+	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	mov r2, #1
 	ldr r0, [r0,#0x40] // s_02011C50.unk_40
 	ldr r1, off_8036F54 // =byte_80991F4
@@ -5519,7 +5519,7 @@ off_8036F54: .word byte_80991F4
 	thumb_func_start sub_8036F58
 sub_8036F58:
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2011c50_Ptr]
+	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	mov r2, #1
 	ldr r0, [r0,#0x40]
 	ldr r1, off_8036F6C // =byte_80988E4
@@ -5535,7 +5535,7 @@ off_8036F6C: .word byte_80988E4
 	thumb_func_start sub_8036F70
 sub_8036F70:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2011c50_Ptr]
+	ldr r1, [r1,#oToolkit_CutsceneStatePtr]
 	mov r2, #1
 	ldr r1, [r1,#0x40]
 	cmp r1, r0
@@ -6015,7 +6015,7 @@ sub_80372EC:
 	strb r2, [r5,#6]
 	push {r0-r3}
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_S2011c50_Ptr]
+	ldr r7, [r7,#oToolkit_CutsceneStatePtr]
 	ldr r7, [r7,#4]
 	ldr r0, [r7,#0xc]
 	ldr r1, [r7,#0x10]
@@ -6267,8 +6267,8 @@ sub_8037480:
 	orr r0, r2
 	pop {r1-r3,pc}
 	.balign 4, 0x00
-jt_big_803749C:
-	.word sub_80376C4+1
+CutsceneCommandJumptable:
+	.word MapScriptCmd_navi_abilities_8037c64+1
 	.word sub_80376DC+1
 	.word sub_80376F4+1
 	.word sub_8037740+1
@@ -6404,7 +6404,8 @@ byte_8037695: .byte 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
 	thumb_func_end sub_8037480
 
 	thumb_local_start
-sub_80376C4:
+// 0x00
+MapScriptCmd_navi_abilities_8037c64:
 	push {lr}
 	// entryIdx
 	mov r0, #0x17
@@ -6417,7 +6418,7 @@ loc_80376D4:
 	bl sub_8036EFE
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_80376C4
+	thumb_func_end MapScriptCmd_navi_abilities_8037c64
 
 	thumb_local_start
 sub_80376DC:
@@ -8392,19 +8393,19 @@ loc_8038510:
 
 // () -> void
 	thumb_local_start
-ho_803851C:
+runCutscene_803851C:
 	push {r4-r7,lr}
 	mov r4, r8
 	mov r5, r12
 	push {r4,r5}
 	mov r5, r10
-	ldr r5, [r5,#oToolkit_S2011c50_Ptr]
+	ldr r5, [r5,#oToolkit_CutsceneStatePtr]
 	mov r0, #0
-	strb r0, [r5,#0x12]
-	mov r0, #0x1c
+	strb r0, [r5,#oCutsceneState_Unk_12]
+	mov r0, #oCutsceneState_CutsceneScriptPos
 	mov r8, r0
 loc_8038530:
-	ldr r6, off_80385B8 // =jt_big_803749C 
+	ldr r6, off_80385B8 // =CutsceneCommandJumptable 
 	mov r12, r6
 	mov r7, r8
 	ldr r7, [r5,r7]
@@ -8416,9 +8417,9 @@ loc_8038538:
 	mov lr, pc
 	bx r0
 	bne loc_8038538
-	ldrb r0, [r5,#0x12]
-	add r0, #0x1 // (loc_3FC+1 - 0x3fc)
-	strb r0, [r5,#0x12]
+	ldrb r0, [r5,#oCutsceneState_Unk_12]
+	add r0, #0x1
+	strb r0, [r5,#oCutsceneState_Unk_12]
 	mov r0, r8
 	ldr r1, [r5,r0]
 	cmp r1, #1
@@ -8466,9 +8467,9 @@ loc_80385AE:
 	mov r12, r5
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_80385B8: .word jt_big_803749C
+off_80385B8: .word CutsceneCommandJumptable
 off_80385BC: .word dword_8037690
-	thumb_func_end ho_803851C
+	thumb_func_end runCutscene_803851C
 
 	thumb_local_start
 sub_80385C0:
