@@ -53,15 +53,21 @@ signed int __fastcall sub_808F810(int a1)
 void __noreturn sub_808F8AC()
 {
     int v0; // r10
-    int v1; // r5
+    Battle *v1; // r5
+    __int64 v2; // r0
 
     (loc_809E314)(3);
     v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    sprite_load(128, 28, 108);
-    sprite_setAnimation(*(v1 + 20));
-    sprite_loadAnimationData();
-    sub_8002F90();
-    sprite_update();
+    sprite_load(v1, 128, 28, 108);
+    sprite_setAnimation(v1, v1->futurePanelX);
+    sprite_loadAnimationData(v1);
+    sprite_noShadow(v1);
+    sprite_update(v1);
+    (loc_809E2FE)(byte_200032C);
+    v2 = sub_809E1AE();
+    sub_809E188(v2, SHIDWORD(v2), 0x400000);
+    sub_809E23C();
+    (loc_809E306)(4);
 }
 
 
@@ -115,17 +121,17 @@ signed int __fastcall sub_808F900(int a1)
 void __noreturn sub_808F990()
 {
     int v0; // r10
-    int v1; // r5
+    Battle *v1; // r5
 
     sub_809E230();
     sub_809E304();
     sub_809E312();
     v1 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-    sprite_load(128, 24, 55);
-    sprite_setAnimation(*(v1 + 20));
-    sprite_loadAnimationData();
-    sub_8002F90();
-    sprite_update();
+    sprite_load(v1, 128, 24, 55);
+    sprite_setAnimation(v1, v1->futurePanelX);
+    sprite_loadAnimationData(v1);
+    sprite_noShadow(v1);
+    sprite_update(v1);
 }
 
 
@@ -300,7 +306,7 @@ signed int __fastcall sub_808FB68(int a1)
         sub_809E230();
         reqBBS_clearFlag_8140A0C();
         sub_809E3B2();
-        sound_play(430, v4, v5);
+        PlaySoundEffect(430, v4, v5);
         result = 0;
     }
     return result;
@@ -316,7 +322,7 @@ int __fastcall sub_808FBA0(int a1)
 
     sub_809E1AE();
     sub_809E2B8();
-    return sub_80047E0(27, v1, v2, v3);
+    return SpawnOverworldMapObject(27, v1, v2, v3);
 }
 
 
@@ -362,7 +368,7 @@ int __fastcall sub_808FCF0(int a1)
 
     byte_2000328 = byte_808FD14[sub_809E2B8()];
     HIBYTE(dword_2000324) = 15;
-    sound_play(107, byte_808FD14, v1);
+    PlaySoundEffect(107, byte_808FD14, v1);
     return 0;
 }
 
@@ -438,7 +444,7 @@ int sub_808FDC0()
     v0 = TestEventFlagFromImmediate(11, 251);
     if ( v4 )
     {
-        ZeroFillByWord(&unk_2000310, 0x60u, v2, v3);
+        ZeroFillByWord(&unk_2000310, 96);
         sub_808FE64(v5, v6, v7, v8);
         byte_2000314 = -1;
         dword_2000330 = 255;
@@ -463,13 +469,11 @@ int sub_808FDC0()
 // 0x808fe34
 int sub_808FE34()
 {
-    int v0; // r2
-    int v1; // r3
-    char v2; // zf
+    char v0; // zf
 
     TestEventFlagFromImmediate(11, 251);
-    if ( v2 )
-        ZeroFillByWord(&unk_2000310, 0x60u, v0, v1);
+    if ( v0 )
+        ZeroFillByWord(&unk_2000310, 96);
     dword_2000330 = 255;
     sub_808FF9C();
     sub_809003C();
@@ -481,7 +485,7 @@ int sub_808FE34()
 // 0x808fe64
 int __fastcall sub_808FE64(int a1, int a2, int a3, int a4)
 {
-    ZeroFillByWord(33626928, 0x80u, a3, a4);
+    ZeroFillByWord(byte_2011B30, 128);
     return 0;
 }
 
@@ -547,7 +551,7 @@ int sub_808FED8()
     v1 = 0;
     do
     {
-        sub_80047E0(26, 0, 0, 0x400000);
+        SpawnOverworldMapObject(26, 0, 0, 0x400000);
         ++v1;
     }
     while ( v1 < v0 );
@@ -625,7 +629,7 @@ int sub_808FF70()
     v0 = 0;
     do
     {
-        result = sub_80047E0(28, 0, 0, 0);
+        result = SpawnOverworldMapObject(28, 0, 0, 0);
         ++v0;
     }
     while ( v0 < 7 );
@@ -657,7 +661,7 @@ int sub_808FF9C()
 
     v1 = sub_808FFC0();
     v3 = v2;
-    sub_80047E0(27, v1, v4, 0x400000);
+    SpawnOverworldMapObject(27, v1, v4, 0x400000);
     *(v0 + 5) = v3;
     return 0;
 }
@@ -805,7 +809,7 @@ unsigned int __fastcall sub_80900C8(int a1)
 
     v2 = sub_809E1AE();
     v4 = *(v1 + 6);
-    sub_80047E0(29, v2 + 32, HIDWORD(v2) - 32, v3 - 32);
+    SpawnOverworldMapObject(29, v2 + 32, HIDWORD(v2) - 32, v3 - 32);
     *(v1 + 6) = v4 + 1;
     SetEventFlagFromImmediate(11, 229);
     SetEventFlagFromImmediate(23, 7);

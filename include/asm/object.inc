@@ -114,20 +114,20 @@
 
 /* External Symbols */
 	.include "asm/asm38.inc"
-// .global sub_3005E80
+// .global iCopyBackgroundTiles
 // .global sub_30078C8
 // .global sub_30078E0
 // .global sub_3007958
 // .global sub_30079A4
 
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 // .global sub_8000E30
 // .global GetPositiveSignedRNG2
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
 
 	.include "asm/asm00_1.inc"
 // .global object_freeMemory
@@ -148,7 +148,7 @@
 // .global sub_80182B4
 // .global PanelOffsetListsPointerTable
 // .global byte_8019C34
-// .global object_setFlag // (int a1) -> void
+// .global object_setFlag1 // (int a1) -> void
 // .global object_clearFlag // (int bitfield) -> void
 // .global object_getFlag // () -> int
 // .global object_setFlag2
@@ -156,7 +156,7 @@
 // .global object_getFlag2
 // .global AddRandomVarianceToTwoCoords
 // .global sub_801E754
-// .global loc_801E792
+// .global sub_801E792
 
 	.include "asm/asm03_0.inc"
 // .global sub_802CE10

@@ -1,4 +1,4 @@
-@archive scripts_shuko_crossTut_86F53CC
+@archive TextScriptShukoCrossTut
 @size 7
 
 script 1 mmbn6 {

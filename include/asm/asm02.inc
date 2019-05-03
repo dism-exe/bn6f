@@ -2,7 +2,7 @@
 	.equ INC_ASM_ASM02, 0
 
 /* Public Symbols */
-	.global getChip_8021DA8 // (int chip_idx) -> ChipData*
+	.global getChip8021DA8 // (int chip_idx) -> ChipData*
 	.global sub_8021AB4
 	.global split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
 	.global sub_8021B2A
@@ -11,7 +11,7 @@
 	.global GetChipCountOfCode
 	.global GetTotalChipCount
 	.global sub_8021C02
-	.global sub_8021C68
+	.global zeroFill_e2002230
 	.global chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
 	.global sub_8021CA8
 	.global sub_8021D08

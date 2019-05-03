@@ -102,7 +102,7 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global sub_8000AC8
@@ -147,7 +147,7 @@
 // .global s_2011C50_ptr_1C_isNull // () -> zf
 
 	.include "asm/chatbox.inc"
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 
 	.include "asm/asm03_2.inc"
 // .global sub_8046818
@@ -252,7 +252,7 @@
 // .equ byte_2006670, 0x2006670
 // .equ byte_2006674, 0x2006674
 // .equ byte_2006676, 0x2006676
-// .equ byte_200BE70, 0x200BE70
+// .equ eStruct200BE70, 0x200BE70
 // .equ dword_200BE7C, 0x200BE7C
 // .equ unk_2011EA0, 0x2011EA0
 // .equ eOverworldMapObjects, 0x2011EE0

@@ -11,7 +11,11 @@
 	.include "structs/OverworldNPCObject.inc"
 	.include "structs/OverworldMapObject.inc"
 	.include "structs/UnkMapScriptState_2011e60.inc"
+	.include "structs/Chatbox.inc"
+	.include "structs/StartScreen.inc"
+	.include "structs/ReqBBSGui.inc"
 	.include "structs/PlayerBattleVars.inc"
+	.include "structs/S20047CC.inc"
 
 /*
 rough notes for now
@@ -38,27 +42,27 @@ void __fastcall sub_8030B1E(int a1, int a2)
 
   if ( *(v2 + 4) )
   {
-    lowerBound = 0;
-    upperBound = *(v2 + 4);
-    do
-    {
-      index = (lowerBound + upperBound) / 2;
-      elemPtr = (*tileData + sizeof(tileData) * index);
-      canonicalPosition = *elemPtr;
-      if (a2 == canonicalPosition)
-        break;
-      if (a2 <= canonicalPosition)
-        upperBound = index;
-      else
-        lowerBound = index + 1;
-    }
-    while ( lowerBound < upperBound );
-    if ( a2 == canonicalPosition )
-    {
-      do
-        elemPtr -= 2;
-      while ( elemPtr >= *tileData && a2 == *elemPtr );
-    }
+	lowerBound = 0;
+	upperBound = *(v2 + 4);
+	do
+	{
+	  index = (lowerBound + upperBound) / 2;
+	  elemPtr = (*tileData + sizeof(tileData) * index);
+	  canonicalPosition = *elemPtr;
+	  if (a2 == canonicalPosition)
+		break;
+	  if (a2 <= canonicalPosition)
+		upperBound = index;
+	  else
+		lowerBound = index + 1;
+	}
+	while ( lowerBound < upperBound );
+	if ( a2 == canonicalPosition )
+	{
+	  do
+		elemPtr -= 2;
+	  while ( elemPtr >= *tileData && a2 == *elemPtr );
+	}
   }
 }
 

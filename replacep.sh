@@ -9,7 +9,7 @@ if [ "$1" = "" -o "$2" = "" ]; then
 	exit 0
 fi
 
-files=$(grep -lwr --include="*.s" --include="*.h" --include="*.inc" --exclude-dir="tools" --exclude-dir=".git" "$1")
+files=$(grep -lwr --include="*.s" --include="*.h" --include="*.inc" --include="*.c" --exclude-dir="tools" --exclude-dir=".git" "$1")
 
 if [ "$files" != "" ]; then
 	sed -i 's/\<'"$1"'\>/'"$2"'/' $files

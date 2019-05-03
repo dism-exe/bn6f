@@ -2,7 +2,7 @@
 	.equ INC_ASM_ASM03_2, 0
 
 /* Public Symbols */
-	.global render_graphicalText_8045F8C
+	.global renderTextGfx_8045F8C
 	.global sub_8045FBC
 	.global sub_8045FC6
 	.global sub_8045FD0
@@ -15,7 +15,7 @@
 	.global sub_8046670
 	.global sub_804668A
 	.global sub_8046696
-	.global sub_80466C4
+	.global getStructFrom2008450
 	.global sub_80467D8
 	.global sub_80467FC
 	.global sub_8046818
@@ -26,7 +26,7 @@
 	.global sub_80468EC
 	.global sub_804691A
 	.global sub_8046CC8
-	.global cb_8046CF8
+	.global ShopControl
 	.global sub_8047D84
 	.global sub_8048C24
 	.global sub_8048C68
@@ -50,7 +50,7 @@
 	.global sub_804A24C
 	.global sub_804A2CC
 	.global sub_804A2E8
-	.global cb_804A304
+	.global ChipTraderControl
 	.global sub_804BD00
 	.global sub_804C058
 	.global sub_804C074
@@ -75,7 +75,7 @@
 // .global sub_3006F74
 
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
@@ -84,24 +84,24 @@
 // .global HalfwordFill
 // .global FillByEightWords
 // .global sub_8000AC8
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
 // .global getPETNaviSelect // () -> u8
 // .global GetRNG2 // () -> int
 // .global GetPositiveSignedRNG2
 // .global sub_80015FC
-// .global sub_8001708
-// .global sub_8001778
-// .global sub_8001788
-// .global sub_80017A0
-// .global sub_80017AA
-// .global sub_80017E0
-// .global sub_8001820
-// .global sub_800183C
-// .global sub_8001850
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-// .global sub_80018D0
+// .global map_8001708
+// .global sRender_08_setRenderingState
+// .global renderInfo_8001788
+// .global renderInfo_80017A0
+// .global zeroFillVRAM
+// .global ZeroFill_byte_3001960
+// .global zeroFill_e2009740
+// .global ZeroFillGFX30025c0
+// .global copyMemory_8001850
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
+// .global call_sub_3005EBA
 // .global sub_8001974
 // .global sub_8001B1C
 // .global sub_8001B6C
@@ -114,7 +114,7 @@
 // .global sub_8002818
 // .global sub_8002874
 // .global sub_80028D4
-// .global sub_8002906
+// .global uncompSprite_8002906
 // .global sprite_makeUnscalable
 
 	.include "asm/asm00_1.inc"
@@ -122,7 +122,7 @@
 // .global SpawnObjectsFromList
 // .global sub_8003962
 // .global sub_800399A
-// .global sub_8003AB2
+// .global zeroFill_8003AB2
 // .global sub_8003AEA
 // .global sub_8005F40
 // .global sub_8005F84
@@ -136,7 +136,7 @@
 // .global sub_800A7D0 // () -> (zf, int)
 
 	.include "asm/asm02.inc"
-// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global getChip8021DA8 // (int chip_idx) -> ChipData*
 // .global dword_8021AEC
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 // .global GetChipCountOfCode
@@ -149,7 +149,7 @@
 // .global TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
 // .global TestEventFlag // (u16 entryFlagBitfield) -> zf
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
-// .global sub_802FF4C
+// .global camera_802FF4C
 // .global sub_803037C
 // .global sub_8030472
 // .global sub_8030AA4
@@ -228,8 +228,8 @@
 // .global sub_803F79E
 
 	.include "asm/chatbox.inc"
-// .global chatbox_uncomp_803FD08 // () -> int
-// .global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
+// .global chatbox_uncompBasedOnMap_803FD08 // () -> int
+// .global chatbox_runScript_803FD78 // (void *textScript, u8 scriptIdx) -> void
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
 // .global byte_8043CA4
@@ -237,8 +237,8 @@
 // .global byte_8044064
 // .global chatbox_8045EEC
 // .global chatbox_8045EFC
-// .global chatbox_8045F1C
-// .global chatbox_8045F3C
+// .global chatbox_set_eFlags2009F38
+// .global chatbox_check_eFlags2009F38
 // .global chatbox_8045F4C
 
 	.include "data/dat03.inc"
@@ -330,7 +330,7 @@
 // .global sub_811EBE0
 // .global sub_811F728
 // .global sub_811F758
-// .global sub_811F7EC
+// .global JoypadKeyPressed
 // .global sub_811F7F8
 // .global sub_811FA22
 // .global sub_811FA98
@@ -440,14 +440,14 @@
 // .global byte_86C9D6C
 
 	.include "data/dat38_71.inc"
-// .global dword_86CF4AC
+// .global TextScriptFolderNames
 
 	.include "data/dat38_80.inc"
 // .global off_86DC3F8
 
 	.include "data/dat38_85.inc"
-// .global dword_86EA94C
-// .global dword_86EB354
+// .global TextScriptChipNames0
+// .global TextScriptChipNames1
 // .global byte_86EF71C
 
 	.include "data/dat38_86.inc"
@@ -503,10 +503,10 @@
 // .equ byte_2001860, 0x2001860
 // .equ byte_2001880, 0x2001880
 // .equ byte_20018A0, 0x20018A0
-// .equ byte_2008450, 0x2008450
+// .equ eStructArr2008450, 0x2008450
 // .equ byte_2008451, 0x2008451
 // .equ byte_2008452, 0x2008452
-// .equ byte_2008453, 0x2008453
+// .equ eStructArr2008453, 0x2008453
 // .equ unk_20096E0, 0x20096E0
 // .equ sSubmenu, 0x2009A30
 // .equ byte_200A220, 0x200A220
@@ -525,7 +525,7 @@
 // .equ word_200A2B2, 0x200A2B2
 // .equ word_200A2B4, 0x200A2B4
 // .equ word_200A2B6, 0x200A2B6
-// .equ unk_200AC80, 0x200AC80
+// .equ eS200AC80, 0x200AC80
 // .equ word_200AC84, 0x200AC84
 // .equ word_200AC86, 0x200AC86
 // .equ dword_200ACB0, 0x200ACB0
@@ -545,7 +545,7 @@
 // .equ unk_2013960, 0x2013960
 // .equ byte_2013965, 0x2013965
 // .equ word_2013974, 0x2013974
-// .equ decomp_2013A00, 0x2013A00
+// .equ eDecompBuffer2013A00, 0x2013A00
 // .equ unk_2013C00, 0x2013C00
 // .equ unk_2013C40, 0x2013C40
 // .equ unk_2015A00, 0x2015A00
@@ -555,7 +555,7 @@
 // .equ byte_2017204, 0x2017204
 // .equ unk_2018200, 0x2018200
 // .equ unk_2018A00, 0x2018A00
-// .equ unk_2018A04, 0x2018A04
+// .equ eTileIds2018A04, 0x2018A04
 // .equ unk_2019200, 0x2019200
 // .equ unk_2019204, 0x2019204
 // .equ unk_2019400, 0x2019400
@@ -584,15 +584,15 @@
 // .equ dword_202A03C, 0x202A03C
 // .equ unk_202A200, 0x202A200
 // .equ unk_202A3E0, 0x202A3E0
-// .equ word_202A3F4, 0x202A3F4
-// .equ word_202A3FC, 0x202A3FC
+// .equ byte_202A3F4, 0x202A3F4
+// .equ byte_202A3FC, 0x202A3FC
 // .equ unk_202A600, 0x202A600
-// .equ unk_202AB00, 0x202AB00
-// .equ unk_202AF00, 0x202AF00
-// .equ unk_202BA00, 0x202BA00
-// .equ unk_202BA04, 0x202BA04
-// .equ unk_202DA00, 0x202DA00
-// .equ unk_202DA04, 0x202DA04
+// .equ byte_202AB00, 0x202AB00
+// .equ byte_202AF00, 0x202AF00
+// .equ eDecomp202BA00, 0x202BA00
+// .equ eTextScript202BA04, 0x202BA04
+// .equ byte_202DA00, 0x202DA00
+// .equ eTextScript202DA04, 0x202DA04
 // .equ byte_202F800, 0x202F800
 // .equ byte_202FA00, 0x202FA00
 // .equ byte_2030200, 0x2030200
@@ -600,12 +600,12 @@
 // .equ unk_20343E0, 0x20343E0
 // .equ unk_2034458, 0x2034458
 // .equ unk_20345A8, 0x20345A8
-// .equ unk_20345FC, 0x20345FC
-// .equ unk_20346DC, 0x20346DC
-// .equ unk_2034714, 0x2034714
-// .equ unk_203474C, 0x203474C
-// .equ unk_2034768, 0x2034768
-// .equ unk_20347A0, 0x20347A0
+// .equ eTileIds20345FC, 0x20345FC
+// .equ eTileIds20346DC, 0x20346DC
+// .equ eTileIds2034714, 0x2034714
+// .equ eTileIds203474C, 0x203474C
+// .equ eTileIds2034768, 0xeTileIds2034768
+// .equ eTileIds20347A0, 0x20347A0
 // .equ dword_2034800, 0x2034800
 // .equ unk_2034814, 0x2034814
 // .equ unk_203486C, 0x203486C
@@ -625,7 +625,7 @@
 // .equ byte_30016B0, 0x30016B0
 // .equ byte_30016D0, 0x30016D0
 // .equ byte_3001730, 0x3001730
-// .equ byte_3001750, 0x3001750
+// .equ iPallete3001750, 0x3001750
 // .equ byte_3001960, 0x3001960
 // .equ unk_3001980, 0x3001980
 // .equ unk_30019C0, 0x30019C0
@@ -633,13 +633,13 @@
 // .equ unk_3001AC0, 0x3001AC0
 // .equ unk_3001AE0, 0x3001AE0
 // .equ byte_3001B00, 0x3001B00
-// .equ unk_3001B60, 0x3001B60
+// .equ iPallete3001B60, 0x3001B60
 	.equ IWRAMRoutinesROMLocation, 0x81D6000
 // .global spriteWhiteDot
 // .global compSpriteWhiteDot_84E0C4C
 // .global comp_86C5190
 // .global comp_86C526C
-// .global scripts_86C580C
+// .global TextScriptChipTrader86C580C
 // .global comp_86C73D8
 // .global comp_86C7764
 // .global comp_86C7980

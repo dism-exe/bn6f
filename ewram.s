@@ -8,7 +8,7 @@
 	.space 96
 dword_2000060:: // 0x2000060
 	.space 16
-unk_2000070:: // 0x2000070
+byte_2000070:: // 0x2000070
 	.space 32
 unk_2000090:: // 0x2000090
 	.space 16
@@ -20,17 +20,11 @@ unk_2000200:: // 0x2000200
 	.space 16
 byte_2000210:: // 0x2000210
 	.space 2
-byte_2000212:: // 0x2000212
 	.space 1
-byte_2000213:: // 0x2000213
 	.space 1
-word_2000214:: // 0x2000214
 	.space 2
-word_2000216:: // 0x2000216
 	.space 2
-dword_2000218:: // 0x2000218
 	.space 8
-dword_2000220:: // 0x2000220
 	.space 64
 unk_2000260:: // 0x2000260
 	.space 48
@@ -70,7 +64,7 @@ unk_2000370:: // 0x2000370
 	.space 368
 byte_20004E0:: // 0x20004e0
 	.space 400
-unk_2000670:: // 0x2000670
+byte_2000670:: // 0x2000670
 	.space 256
 unk_2000770:: // 0x2000770
 	.space 16
@@ -266,11 +260,11 @@ byte_20010F0:: // 0x20010f0
 	.space 48
 rngSeed_2001120:: // 0x2001120
 	.space 16
-unk_2001130:: // 0x2001130
+byte_2001130:: // 0x2001130
 	.space 16
 dword_2001140:: // 0x2001140
 	.space 16
-reqBBS_bxo_2001150:: // 0x2001150
+reqBBS_eStruct2001150:: // 0x2001150
 	.space 4
 byte_2001154:: // 0x2001154
 	.space 36
@@ -284,11 +278,10 @@ unk_200119C:: // 0x200119c
 	.space 2
 unk_200119E:: // 0x200119E
 	.space 382
-unk_200131C:: // 0x200131c
 	.space 212
-dword_20013F0:: // 0x20013f0
+eRngSeed20013F0:: // 0x20013f0
 	.space 16
-unk_2001400:: // 0x2001400
+byte_2001400:: // 0x2001400
 	.space 268
 unk_200150C:: // 0x200150c
 	.space 244
@@ -314,7 +307,7 @@ byte_2001880:: // 0x2001880
 	.space 32
 byte_20018A0:: // 0x20018a0
 	.space 16
-unk_20018B0:: // 0x20018b0
+byte_20018B0:: // 0x20018b0
 	.space 8
 dword_20018B8:: // 0x20018b8
 	.space 8
@@ -359,20 +352,14 @@ eGameStateEnd::
 	.space 4
 unk_2001C04:: // 0x2001c04
 	.space 132
-eEventFlags:: // 0x2001c88
-	.space 1264
-unk_2002178:: // 0x2002178
-	.space 164
-unk_200221C:: // 0x200221c
-	.space 20
+// u8[1448]
+// continuous buffer of bit flags addressed with a u16 flag offset
+eEventFlags:: // 0x2001C88
+	.space 1448
 unk_2002230:: // 0x2002230
 	.space 236
 unk_200231C:: // 0x200231c
-	.space 2048
-unk_2002B1C:: // 0x2002b1c
-	.space 512
-unk_2002D1C:: // 0x2002d1c
-	.space 1048
+	.space 3608
 unk_2003134:: // 0x2003134
 	.space 404
 unk_20032C8:: // 0x20032c8
@@ -396,11 +383,11 @@ unk_2004334:: // 0x2004334
 unk_2004338:: // 0x2004338
 	.space 16
 unk_2004348:: // 0x2004348
-	.space 468
-unk_200451C:: // 0x200451c
-	.space 688
+	.space 1156
 unk_20047CC:: // 0x20047cc
-	.space 704
+    s_20047cc_struct eS20047CC_0
+    s_20047cc_struct eS20047CC_1
+	.space 504
 unk_2004A8C:: // 0x2004a8c
 	.space 404
 unk_2004C20:: // 0x2004c20
@@ -418,11 +405,10 @@ eToolkitExtraPtrsMemoryEnd:: // 0x200153c
 	.space 256 // additional buffer for dummied out randomization
 
 	.space 1348
-dynamicArr:: // 0x2005780
-	.space 15
-unk_200578F:: // 0x200578f
-	.space 33
+eReqBBSGui:: // 0x2005780
+	req_bbs_gui_struct eReqBBSGui
 
+	.balign 0x10, 0x00
 eOverworldNPCObjects:: // 0x20057b0
 	overworld_npc_object_struct eOverworldNPCObject0
 	overworld_npc_object_struct eOverworldNPCObject1
@@ -449,17 +435,17 @@ reqBBS_numRequestsSent:: // 0x20065b0
 byte_20065B4:: // 0x20065b4
 	.space 12
 byte_20065C0:: // 0x20065c0
-    .space 32
+	.space 32
 byte_20065E0:: // 0x20065E0
-    .space 1
+	.space 1
 byte_20065E1:: // 0x20065E1
-    .space 2
+	.space 2
 byte_20065E3:: // 0x20065E3
-    .space 2
+	.space 2
 byte_20065E5:: // 0x20065E5
-    .space 2
+	.space 2
 byte_20065E7:: // 0x20065E7
-    .space 137
+	.space 137
 byte_2006670:: // 0x2006670
 	.space 4
 byte_2006674:: // 0x2006674
@@ -476,7 +462,7 @@ dword_2006740:: // 0x2006740
 	.space 4
 dword_2006744:: // 0x2006744
 	.space 12
-unk_2006750:: // 0x2006750
+byte_2006750:: // 0x2006750
 	.space 32
 word_2006770:: // 0x2006770
 	.space 2
@@ -514,13 +500,13 @@ unk_2006CC0:: // 0x2006cc0
 	.space 56
 unk_2006CF8:: // 0x2006cf8
 	.space 56
-unk_2006D30:: // 0x2006d30
+byte_2006D30:: // 0x2006d30
 	.space 56
-unk_2006D68:: // 0x2006d68
+byte_2006D68:: // 0x2006d68
 	.space 56
 byte_2006DA0:: // 0x2006da0
 	.space 56
-unk_2006DD8:: // 0x2006dd8
+byte_2006DD8:: // 0x2006dd8
 	.space 36
 word_2006DFC:: // 0x2006dfc
 	.space 2
@@ -535,9 +521,7 @@ word_2006E02:: // 0x2006e02
 word_2006E04:: // 0x2006e04
 	.space 4
 unk_2006E08:: // 0x2006e08
-	.space 20
-unk_2006E1C:: // 0x2006e1c
-	.space 220
+	.space 240
 unk_2006EF8:: // 0x2006ef8
 	.space 4728
 unk_2008170:: // 0x2008170
@@ -556,16 +540,11 @@ dword_20081BC:: // 0x20081bc
 	.space 4
 dword_20081C0:: // 0x20081c0
 	.space 16
-unk_20081D0:: // 0x20081d0
+dword_20081D0:: // 0x20081d0
 	.space 640
-byte_2008450:: // 0x2008450
-	.space 1
-byte_2008451:: // 0x2008451
-	.space 1
-byte_2008452:: // 0x2008452
-	.space 1
-byte_2008453:: // 0x2008453
-	.space 1317
+// looks dynamic
+eStructArr2008450:: // 0x2008453
+	.space 1320
 byte_2008978:: // 0x2008978
 	.space 4
 dword_200897C:: // 0x200897c
@@ -583,7 +562,7 @@ word_2009398:: // 0x2009398
 	.space 2
 word_200939A:: // 0x200939a
 	.space 2
-word_200939C:: // 0x200939c
+byte_200939C:: // 0x200939c
 	.space 8
 dword_20093A4:: // 0x20093a4
 	.space 4
@@ -710,13 +689,13 @@ unk_2009AC0:: // 0x2009ac0
 	.space 512
 dword_2009CC0:: // 0x2009cc0
 	.space 16
-sChatbox:: // 0x2009cd0
-	.space 560
+eChatbox:: // 0x2009cd0
+	chatbox_struct eChatbox
 unk_2009F00:: // 0x2009f00
 	.space 52
 eActiveOWPlayerObjectBitfield:: // 0x2009f34
 	.space 4
-dword_2009F38:: // 0x2009f38
+eFlags2009F38:: // 0x2009f38
 	.space 8
 eOWPlayerObject:: // 0x2009f40
 	overworld_player_object_struct eOWPlayerObject
@@ -732,7 +711,7 @@ word_200A00C:: // 0x200a00c
 	.space 2
 word_200A00E:: // 0x200a00e
 	.space 2
-unk_200A010:: // 0x200a010
+word_200A010:: // 0x200a010
 	.space 512
 iCurrFrame:: // 0x200a210
 	.space 16
@@ -851,11 +830,11 @@ word_200A6F6:: // 0x200a6f6
 	.space 378
 dword_200A870:: // 0x200a870
 	.space 16
-dword_200A880:: // 0x200a880
+doff_200A880:: // 0x200a880
 	.space 4
-dword_200A884:: // 0x200a884
+doff_200A884:: // 0x200a884
 	.space 4
-dword_200A888:: // 0x200a888
+off_200A888:: // 0x200a888
 	.space 8
 dword_200A890:: // 0x200a890
 	.space 4
@@ -887,7 +866,7 @@ byte_200AC35:: // 0x200ac35
 	.space 11
 unk_200AC40:: // 0x200ac40
 	.space 64
-unk_200AC80:: // 0x200ac80
+eS200AC80:: // 0x200ac80
 	.space 4
 word_200AC84:: // 0x200ac84
 	.space 44
@@ -917,19 +896,19 @@ byte_200ACFC:: // 0x200acfc
 	.space 4
 dword_200AD00:: // 0x200ad00
 	.space 4
-byte_200AD04:: // 0x200ad04
+word_200AD04:: // 0x200ad04
 	.space 1
 byte_200AD05:: // 0x200ad05
 	.space 1
 word_200AD06:: // 0x200ad06
 	.space 10
-sStartScr:: // 0x200ad10
-	.space 592
+eStartScreen:: // 0x200ad10
+	start_screen_struct eStartScreen
+	.space 560
 BattleSettings_200AF60:: // 0x200af60
 	.space 16
 eUnkBattleObjectLinkedList:: // 0x200af70
 	battle_object_linked_list_struct eUnkBattleObjectLinkedList
-
 byte_200AF80:: // 0x200af80
 	.space 1
 byte_200AF81:: // 0x200af81
@@ -950,7 +929,7 @@ byte_200AF90:: // 0x200af90
 	.space 4
 dword_200AF94:: // 0x200af94
 	.space 12
-unk_200AFA0:: // 0x200afa0
+byte_200AFA0:: // 0x200afa0
 	.space 512
 byte_200B1A0:: // 0x200b1a0
 	.space 1
@@ -974,23 +953,22 @@ word_200B1BA:: // 0x200b1ba
 	.space 246
 unk_200B2B0:: // 0x200b2b0
 	.space 512
-dword_200B4B0:: // 0x200b4b0
-	.space 4
-dword_200B4B4:: // 0x200b4b4
-	.space 4
-dword_200B4B8:: // 0x200b4b8
-	.space 4
-dword_200B4BC:: // 0x200b4bc
-	.space 4
-dword_200B4C0:: // 0x200b4c0
-	.space 1904
-byte_200BC30:: // 0x200bc30
+// array of 5 words, then zeros?
+fiveWordArr200B4B0:: // 0x200b4b0
+	.space 4*5
+	.space 4*5
+	.space 4*5
+	.space 4*5
+	.space 4*5
+	.space 4*5
+	.space 1800
+eStruct200BC30:: // 0x200bc30
 	.space 1
 byte_200BC31:: // 0x200bc31
 	.space 1
 byte_200BC32:: // 0x200bc32
 	.space 3
-byte_200BC35:: // 0x200bc35
+eStruct200BC30_JumpOffset05:: // 0x200bc35
 	.space 7
 byte_200BC3C:: // 0x200bc3c
 	.space 1
@@ -1024,9 +1002,9 @@ byte_200BC60:: // 0x200bc60
 	.space 1
 byte_200BC61:: // 0x200bc61
 	.space 15
-unk_200BC70:: // 0x200bc70
+byte_200BC70:: // 0x200bc70
 	.space 512
-byte_200BE70:: // 0x200be70
+eStruct200BE70:: // 0x200be70
 	.space 1
 byte_200BE71:: // 0x200be71
 	.space 3
@@ -1171,7 +1149,7 @@ byte_200DF21:: // 0x200df21
 	.space 3
 byte_200DF24:: // 0x200df24
 	.space 1
-byte_200DF25:: // 0x200df25
+eFlags200DF25:: // 0x200df25
 	.space 3
 byte_200DF28:: // 0x200df28
 	.space 1
@@ -1199,7 +1177,7 @@ byte_200F348:: // 0x200f348
 	.space 8
 dword_200F350:: // 0x200f350
 	.space 16
-byte_200F360:: // 0x200f360
+eStruct200F360:: // 0x200f360
 	.space 1
 byte_200F361:: // 0x200f361
 	.space 1
@@ -1211,7 +1189,7 @@ unk_200F380:: // 0x200f380
 	.space 8
 unk_200F388:: // 0x200f388
 	.space 1
-unk_200F389:: // 0x200f389
+byte_200F389:: // 0x200f389
 	.space 7
 unk_200F390:: // 0x200f390
 	.space 16
@@ -1219,9 +1197,9 @@ unk_200F3A0:: // 0x200f3a0
 	.space 16
 dword_200F3B0:: // 0x200f3b0
 	.space 8
-unk_200F3B8:: // 0x200f3b8
+dword_200F3B8:: // 0x200f3b8
 	.space 12
-unk_200F3C4:: // 0x200f3c4
+word_200F3C4:: // 0x200f3c4
 	.space 12
 dword_200F3D0:: // 0x200f3d0
 	.space 16
@@ -1295,7 +1273,7 @@ byte_200FDF4:: // 0x200fdf4
 	.space 1
 byte_200FDF5:: // 0x200fdf5
 	.space 11
-byte_200FE00:: // 0x200fe00
+eStruct200FE00:: // 0x200fe00
 	.space 1
 byte_200FE01:: // 0x200fe01
 	.space 1
@@ -1622,9 +1600,7 @@ word_2010CD4:: // 0x2010cd4
 word_2010CD6:: // 0x2010cd6
 	.space 4
 word_2010CDA:: // 0x2010cda
-	.space 1602
-unk_201131C:: // 0x201131c
-	.space 1252
+	.space 2854
 byte_2011800:: // 0x2011800
 	.space 5
 byte_2011805:: // 0x2011805
@@ -1762,29 +1738,9 @@ dword_2011EF4:: // 0x2011ef4
 unk_201211C:: // 0x201211c
 	.space 256
 unk_201221C:: // 0x201221c
-	.space 2304
-unk_2012B1C:: // 0x2012b1c
-	.space 2560
-unk_201351C:: // 0x201351c
-	.space 256
-unk_201361C:: // 0x201361c
-	.space 512
-unk_201381C:: // 0x201381c
-	.space 140
+	.space 5772
 byte_20138A8:: // 0x20138a8
-	.space 1
-byte_20138A9:: // 0x20138a9
-	.space 3
-dword_20138AC:: // 0x20138ac
-	.space 4
-dword_20138B0:: // 0x20138b0
-	.space 4
-dword_20138B4:: // 0x20138b4
-	.space 4
-dword_20138B8:: // 0x20138b8
-	.space 4
-dword_20138BC:: // 0x20138bc
-	.space 100
+	.space 120
 dword_2013920:: // 0x2013920
 	.space 4
 word_2013924:: // 0x2013924
@@ -1811,7 +1767,7 @@ byte_2013965:: // 0x2013965
 	.space 15
 word_2013974:: // 0x2013974
 	.space 140
-decomp_2013A00:: // 0x2013a00
+eDecompBuffer2013A00:: // 0x2013a00
 	.space 512
 unk_2013C00:: // 0x2013c00
 	.space 64
@@ -1841,7 +1797,7 @@ byte_2017204:: // 0x2017204
 	.space 2044
 byte_2017A00:: // 0x2017a00
 	.space 4
-byte_2017A04:: // 0x2017a04
+eTileIds2017A04:: // 0x2017a04
 	.space 28
 byte_2017A20:: // 0x2017a20
 	.space 192
@@ -1875,7 +1831,7 @@ unk_2018800:: // 0x2018800
 	.space 512
 unk_2018A00:: // 0x2018a00
 	.space 4
-unk_2018A04:: // 0x2018a04
+eTileIds2018A04:: // 0x2018a04
 	.space 508
 unk_2018C00:: // 0x2018c00
 	.space 512
@@ -1933,13 +1889,13 @@ byte_201B200:: // 0x201b200
 	.space 640
 byte_201B480:: // 0x201b480
 	.space 1408
-unk_201BA00:: // 0x201ba00
+eTextScript201BA00:: // 0x201ba00
 	.space 4
 unk_201BA04:: // 0x201ba04
 	.space 12
 byte_201BA10:: // 0x201ba10
 	.space 16
-byte_201BA20:: // 0x201ba20
+eTextScript201BA20:: // 0x201ba20
 	.space 32
 byte_201BA40:: // 0x201ba40
 	.space 288
@@ -1955,19 +1911,19 @@ byte_201BDF8:: // 0x201bdf8
 	.space 136
 byte_201BE80:: // 0x201be80
 	.space 128
-byte_201BF00:: // 0x201bf00
+eTextScript201BF00:: // 0x201bf00
 	.space 32
-byte_201BF20:: // 0x201bf20
+eTextScript201BF20:: // 0x201bf20
 	.space 288
 unk_201C040:: // 0x201c040
 	.space 192
-unk_201C100:: // 0x201c100
+eTextScript201C100:: // 0x201c100
 	.space 176
 unk_201C1B0:: // 0x201c1b0
 	.space 80
 unk_201C200:: // 0x201c200
 	.space 32
-unk_201C220:: // 0x201c220
+eTextScript201C220:: // 0x201c220
 	.space 216
 unk_201C2F8:: // 0x201c2f8
 	.space 136
@@ -1993,7 +1949,7 @@ unk_201C4F0:: // 0x201c4f0
 	.space 16
 unk_201C500:: // 0x201c500
 	.space 512
-unk_201C700:: // 0x201c700
+eTextScript201C700:: // 0x201c700
 	.space 128
 byte_201C780:: // 0x201c780
 	.space 640
@@ -2023,7 +1979,7 @@ unk_201D1DC:: // 0x201d1dc
 	.space 68
 unk_201D220:: // 0x201d220
 	.space 96
-unk_201D280:: // 0x201d280
+eTextScript201D280:: // 0x201d280
 	.space 120
 unk_201D2F8:: // 0x201d2f8
 	.space 40
@@ -2141,7 +2097,6 @@ unk_2020484:: // 0x2020484
 	.space 124
 unk_2020500:: // 0x2020500
 	.space 524
-unk_202070C:: // 0x202070c
 	.space 788
 unk_2020A20:: // 0x2020a20
 	.space 480
@@ -2165,27 +2120,26 @@ unk_20227A0:: // 0x20227a0
 	.space 592
 unk_20229F0:: // 0x20229f0
 	.space 176
-unk_2022AA0:: // 0x2022aa0
+eGuiSprite2022AA0:: // 0x2022aa0
 	.space 16
-unk_2022AB0:: // 0x2022ab0
+byte_2022AB0:: // 0x2022ab0
 	.space 192
 unk_2022B70:: // 0x2022b70
 	.space 6
 byte_2022B76:: // 0x2022b76
 	.space 30
-unk_2022B94:: // 0x2022b94
+byte_2022B94:: // 0x2022b94
 	.space 108
-unk_2022C00:: // 0x2022c00
+byte_2022C00:: // 0x2022c00
 	.space 284
-unk_2022D1C:: // 0x2022d1c
 	.space 644
-unk_2022FA0:: // 0x2022fa0
+eGuiSprite2022FA0:: // 0x2022fa0
 	.space 512
-unk_20231A0:: // 0x20231a0
+byte_20231A0:: // 0x20231a0
 	.space 1660
-unk_202381C:: // 0x202381c
+byte_202381C:: // 0x202381c
 	.space 484
-reqBBS_requestEntries_IDs:: // 0x2023a00
+reqBBS_eRequestEntriesIDs:: // 0x2023a00
 	.space 416
 word_2023BA0:: // 0x2023ba0
 	.space 16
@@ -2365,7 +2319,7 @@ unk_2028690:: // 0x2028690
 	.space 880
 unk_2028A00:: // 0x2028a00
 	.space 32
-unk_2028A20:: // 0x2028a20
+eTextScript2028A20:: // 0x2028a20
 	.space 1504
 unk_2029000:: // 0x2029000
 	.space 512
@@ -2393,43 +2347,43 @@ unk_202A204:: // 0x202a204
 	.space 476
 unk_202A3E0:: // 0x202a3e0
 	.space 20
-word_202A3F4:: // 0x202a3f4
+byte_202A3F4:: // 0x202a3f4
 	.space 8
-word_202A3FC:: // 0x202a3fc
+byte_202A3FC:: // 0x202a3fc
 	.space 516
 unk_202A600:: // 0x202a600
 	.space 4
-unk_202A604:: // 0x202a604
+word_202A604:: // 0x202a604
 	.space 1276
-unk_202AB00:: // 0x202ab00
+byte_202AB00:: // 0x202ab00
 	.space 1024
-unk_202AF00:: // 0x202af00
+byte_202AF00:: // 0x202af00
 	.space 2816
-unk_202BA00:: // 0x202ba00
+eDecomp202BA00:: // 0x202ba00
 	.space 4
-unk_202BA04:: // 0x202ba04
+eTextScript202BA04:: // 0x202ba04
 	.space 4092
 unk_202CA00:: // 0x202ca00
 	.space 512
 unk_202CC00:: // 0x202cc00
 	.space 512
-unk_202CE00:: // 0x202ce00
+byte_202CE00:: // 0x202ce00
 	.space 512
-unk_202D000:: // 0x202d000
+byte_202D000:: // 0x202d000
 	.space 512
-unk_202D200:: // 0x202d200
+byte_202D200:: // 0x202d200
 	.space 512
-unk_202D400:: // 0x202d400
+byte_202D400:: // 0x202d400
 	.space 512
-unk_202D600:: // 0x202d600
+byte_202D600:: // 0x202d600
 	.space 512
-unk_202D800:: // 0x202d800
+byte_202D800:: // 0x202d800
 	.space 512
-unk_202DA00:: // 0x202da00
+byte_202DA00:: // 0x202da00
 	.space 4
-unk_202DA04:: // 0x202da04
+eTextScript202DA04:: // 0x202da04
 	.space 508
-unk_202DC00:: // 0x202dc00
+byte_202DC00:: // 0x202dc00
 	.space 512
 unk_202DE00:: // 0x202de00
 	.space 416
@@ -2467,7 +2421,7 @@ byte_2030204:: // 0x2030204
 	.space 513
 byte_2030405:: // 0x2030405
 	.space 1115
-comp_2030860:: // 0x2030860
+eTextScript2030860:: // 0x2030860
 	.space 416
 unk_2030A00:: // 0x2030a00
 	.space 1120
@@ -2529,7 +2483,7 @@ word_2033042:: // 0x2033042
 	.space 958
 unk_2033400:: // 0x2033400
 	.space 4
-unk_2033404:: // 0x2033404
+eTextScript2033404:: // 0x2033404
 	.space 764
 unk_2033700:: // 0x2033700
 	.space 256
@@ -2539,7 +2493,7 @@ unk_203381C:: // 0x203381c
 	.space 484
 unk_2033A00:: // 0x2033a00
 	.space 4
-reqBBS_dialogList:: // 0x2033a04
+reqBBS_eTextScript:: // 0x2033a04
 	.space 508
 unk_2033C00:: // 0x2033c00
 	.space 44
@@ -2582,17 +2536,17 @@ unk_20345A8:: // 0x20345a8
 	.space 28
 unk_20345C4:: // 0x20345c4
 	.space 56
-unk_20345FC:: // 0x20345fc
+eTileIds20345FC:: // 0x20345fc
 	.space 224
-unk_20346DC:: // 0x20346dc
+eTileIds20346DC:: // 0x20346dc
 	.space 56
-unk_2034714:: // 0x2034714
+eTileIds2034714:: // 0x2034714
 	.space 56
-unk_203474C:: // 0x203474c
+eTileIds203474C:: // 0x203474c
 	.space 28
-unk_2034768:: // 0x2034768
+eTileIds2034768:: // 0x2034768
 	.space 56
-unk_20347A0:: // 0x20347a0
+eTileIds20347A0:: // 0x20347a0
 	.space 56
 unk_20347D8:: // 0x20347d8
 	.space 40
@@ -2628,7 +2582,7 @@ byte_20349C0:: // 0x20349c0
 	.space 64
 unk_2034A00:: // 0x2034a00
 	.space 4
-unk_2034A04:: // 0x2034a04
+eTextScript2034A04:: // 0x2034a04
 	.space 12
 byte_2034A10:: // 0x2034a10
 	.space 80
@@ -2674,7 +2628,7 @@ byte_203526D:: // 0x203526d
 	.space 7
 dword_2035274:: // 0x2035274
 	.space 12
-byte_2035280:: // 0x2035280
+eStruct2035280:: // 0x2035280
 	.space 1
 byte_2035281:: // 0x2035281
 	.space 1
@@ -2692,7 +2646,7 @@ byte_2035295:: // 0x2035295
 	.space 1
 byte_2035296:: // 0x2035296
 	.space 1
-byte_2035297:: // 0x2035297
+eStruct2035280_NaviStatusGfxIdx17:: // 0x2035297
 	.space 1
 byte_2035298:: // 0x2035298
 	.space 1
@@ -2876,9 +2830,11 @@ unk_2036750:: // 0x2036750
 	.space 40
 byte_2036778:: // 0x2036778
 	.space 8
-word_2036780:: // 0x2036780
+// flags? flag 0x02 is set without clearing mem
+eStruct2036780:: // 0x2036780
 	.space 2
-word_2036782:: // 0x2036782
+// flag (0x0008): pause toggle in-battle (not custom)
+eFlags2036782:: // 0x2036782
 	.space 2
 byte_2036784:: // 0x2036784
 	.space 2
@@ -3011,9 +2967,10 @@ unk_2037A00:: // 0x2037a00
 	.space 4
 unk_2037A04:: // 0x2037a04
 	.space 1884
-unk_2038160:: // 0x2038160
+eStruct2038160:: // 0x2038160
 	.space 1
-byte_2038161:: // 0x2038161
+// when set to nonzero in battle, battle simply terminates. Defeat message may display
+eStruct2038160_BattleTerminate01:: // 0x2038161
 	.space 15
 
 	.section ewram_2038170
@@ -3164,6 +3121,8 @@ byte_203CA74:: // 0x203ca74
 	.space 6
 word_203CA7A:: // 0x203ca7a
 	.space 2
+// triggers when an attack is used. Usually changes to from 0x00 to 0x01 and toggles
+// till end of attack. some chips cause others like 0x05
 dword_203CA7C:: // 0x203ca7c
 	.space 4
 byte_203CA80:: // 0x203ca80
@@ -3392,7 +3351,7 @@ byte_203F6D0:: // 0x203f6d0
 	.space 128
 byte_203F750:: // 0x203f750
 	.space 136
-byte_203F7D8:: // 0x203f7d8
+eStruct203F7D8:: // 0x203f7d8
 	.space 8
 dword_203F7E0:: // 0x203f7e0
 	.space 4

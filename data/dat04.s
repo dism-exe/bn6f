@@ -50,7 +50,7 @@ off_804E940: .word byte_804EEF7
 	.word byte_804F744
 	.word byte_804F96E
 	.word byte_804F9C5
-off_804E954: .word off_804F9D8
+npc_map00_804E954: .word off_804F9D8
 	.word off_8051624
 	.word off_8051B5C
 	.word off_8051F48

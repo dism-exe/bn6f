@@ -175,6 +175,7 @@
 	.charmap ")", 0xAE
 	.charmap "｢", 0xAF
 	.charmap "｣", 0xB0
+	.charmap ">", 0xB1 // this was just missing from tbl. filling with random char
 	.charmap "_", 0xB2
 	.charmap "[z]", 0xB3
 	.charmap "[L]", 0xB4
@@ -458,5 +459,5 @@
 	.charmap "[bracket1]", 0xE4E6
 	.charmap "[bracket2]", 0xE4E7
 	.charmap "[.]", 0xE4E8
-	.charmap "$", 0xE6 // e6_end
+	.charmap "$", 0xE6 // ts_end
 	.charmap "\n", 0xE9

@@ -275,7 +275,7 @@ __int64 __fastcall sub_813B84C(int a1)
 
 
 // 0x813b920
-char __fastcall sub_813B920(char result)
+int __fastcall sub_813B920(int result)
 {
     byte_20096D8 = result;
     return result;
@@ -290,14 +290,12 @@ int sub_813B928()
 
 
 // 0x813b934
-void __fastcall sub_813B934(int a1, int a2, int a3, int a4)
+void __fastcall zeroFill_813B934()
 {
-    int v4; // r10
-    int v5; // r2
-    int v6; // r3
+    Toolkit *tk; // r10
 
-    ZeroFillByWord(*(v4 + oToolkit_Unk2004190_Ptr), &byte_188, a3, a4);
-    ZeroFillByWord(*(v4 + oToolkit_Unk200414c_Ptr), 0x40u, v5, v6);
+    ZeroFillByWord(tk->unk_2004190, &byte_188);
+    ZeroFillByWord(tk->unk_200414C, 64);
 }
 
 
@@ -458,7 +456,7 @@ void sub_813BA64()
 {
     int v0; // r10
 
-    CopyWords(*(v0 + oToolkit_Unk200414c_Ptr), &unk_201BA00, 0x40u);
+    CopyWords(*(v0 + oToolkit_Unk200414c_Ptr), &eTextScript201BA00, 0x40u);
     CopyWords(*(v0 + oToolkit_Unk2004190_Ptr), byte_201BA40, &byte_188);
 }
 
@@ -468,7 +466,7 @@ void sub_813BA80()
 {
     int v0; // r10
 
-    CopyWords(&unk_201BA00, *(v0 + oToolkit_Unk200414c_Ptr), 0x40u);
+    CopyWords(&eTextScript201BA00, *(v0 + oToolkit_Unk200414c_Ptr), 0x40u);
     CopyWords(byte_201BA40, *(v0 + oToolkit_Unk2004190_Ptr), &byte_188);
 }
 
@@ -1370,7 +1368,7 @@ int __fastcall sub_813C334(unsigned int a1, int a2)
                     SetEventFlagRange(v6, v5, 4);
                 else
                     ClearEventFlagRange(v6, v5, 4);
-                sound_play(139, v8, v9);
+                PlaySoundEffect(139, v8, v9);
             }
         }
         else
@@ -1411,17 +1409,17 @@ int sub_813C3AC()
     }
     if ( *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) >= 128 )
     {
-        v11 = sub_80137FE(0);
-        if ( sub_80137FE(0) > v11 )
-            sub_80137E6(0, 64, v11);
+        v11 = GetField16FromSelectedS20047CCStruct(0);
+        if ( GetField16FromSelectedS20047CCStruct(0) > v11 )
+            SetField16ToSelectedS20047CCStruct(0, 64, v11);
         v12 = getPETNaviSelect();
-        v13 = sub_80137FE(v12);
+        v13 = GetField16FromSelectedS20047CCStruct(v12);
         v14 = getPETNaviSelect();
-        result = sub_80137FE(v14);
+        result = GetField16FromSelectedS20047CCStruct(v14);
         if ( result > v13 )
         {
             v15 = getPETNaviSelect();
-            result = sub_80137E6(v15, 64, v13);
+            result = SetField16ToSelectedS20047CCStruct(v15, 64, v13);
         }
     }
     else
@@ -1429,12 +1427,12 @@ int sub_813C3AC()
         result = TestEventFlagFromImmediate(23, 29);
         if ( !v5 )
         {
-            v7 = sub_80137FE(0);
-            sub_80137E6(0, 64, v7);
+            v7 = GetField16FromSelectedS20047CCStruct(0);
+            SetField16ToSelectedS20047CCStruct(0, 64, v7);
             v8 = getPETNaviSelect();
-            v9 = sub_80137FE(v8);
+            v9 = GetField16FromSelectedS20047CCStruct(v8);
             v10 = getPETNaviSelect();
-            result = sub_80137E6(v10, 64, v9);
+            result = SetField16ToSelectedS20047CCStruct(v10, 64, v9);
         }
     }
     return result;
@@ -2473,7 +2471,7 @@ int sub_813CEA0()
     if ( result != 255 )
     {
         v5 = split9BitsFromBitfield_8021AE0(*(2 * result + 60 * v6 + *(v0 + oToolkit_S_Chip_2002178_Ptr)));
-        result = getChip_8021DA8(v5)[8];
+        result = *(getChip8021DA8(v5) + 8);
         if ( result > v1 )
             result = navicust_801379E(0, v3, 255);
     }
@@ -2511,7 +2509,7 @@ int __fastcall sub_813CF1C(char a1)
 // 0x813cf2c
 int __fastcall sub_813CF2C(__int16 a1)
 {
-    return sub_80137E6(0, 84, a1);
+    return SetField16ToSelectedS20047CCStruct(0, 84, a1);
 }
 
 
@@ -2624,7 +2622,7 @@ signed int __fastcall sub_813D48C(int a1)
     sub_802D158(v4);
     v5 = 1;
     v6 = off_813D4E4[v9];
-    v7 = change_20013F0_800151C();
+    GetRNG2();
     (*(&off_813D4D4 + byte_813D500[v7 & 0xF]))();
     return v5;
 }
@@ -2634,38 +2632,42 @@ signed int __fastcall sub_813D48C(int a1)
 __int64 sub_813D510()
 {
     int v0; // r4
-    int v1; // r6
+    char v1; // r0
+    int v2; // r6
     int i; // r3
-    unsigned __int8 *v3; // r5
-    int v4; // r0
-    char *v5; // r7
-    int v6; // r6
-    __int64 v8; // [sp-10h] [bp-24h]
+    unsigned __int8 *v4; // r5
+    int v5; // r0
+    unsigned __int8 *v6; // r7
+    char v7; // r0
+    int v8; // r6
+    __int64 v10; // [sp-10h] [bp-24h]
 
-    v1 = change_20013F0_800151C() & 0xF;
+    GetRNG2();
+    v2 = v1 & 0xF;
     for ( i = 0; ; ++i )
     {
-        v3 = (v0 + 12 * i);
-        v4 = *v3;
-        if ( v4 == 255 )
+        v4 = (v0 + 12 * i);
+        v5 = *v4;
+        if ( v5 == 255 )
             break;
-        if ( !*v3 )
+        if ( !*v4 )
         {
-            v4 = v3[4];
-            if ( v4 > v1 )
+            v5 = v4[4];
+            if ( v5 > v2 )
                 break;
         }
     }
-    LODWORD(v8) = v4;
-    HIDWORD(v8) = *v3;
-    v5 = getChip_8021DA8(*(v3 + 1));
-    v6 = change_20013F0_800151C() & 3;
-    while ( v5[v6] == 255 )
+    LODWORD(v10) = v5;
+    HIDWORD(v10) = *v4;
+    v6 = getChip8021DA8(*(v4 + 1));
+    GetRNG2();
+    v8 = v7 & 3;
+    while ( v6[v8] == 255 )
     {
-        if ( ++v6 > 0 )
-            v6 = 0;
+        if ( ++v8 > 0 )
+            v8 = 0;
     }
-    return v8;
+    return v10;
 }
 
 
@@ -2673,29 +2675,31 @@ __int64 sub_813D510()
 int sub_813D568()
 {
     int v0; // r4
-    int v1; // r6
+    char v1; // r0
+    int v2; // r6
     int i; // r3
-    unsigned __int8 *v3; // r5
+    unsigned __int8 *v4; // r5
     int result; // r0
-    int v5; // r1
-    int v6; // r2
+    int v6; // r1
+    int v7; // r2
 
-    v1 = change_20013F0_800151C() & 0xF;
+    GetRNG2();
+    v2 = v1 & 0xF;
     for ( i = 0; ; ++i )
     {
-        v3 = (v0 + 12 * i);
-        result = *v3;
+        v4 = (v0 + 12 * i);
+        result = *v4;
         if ( result == 255 )
             break;
         if ( result == 1 )
         {
-            result = v3[4];
-            if ( result > v1 )
+            result = v4[4];
+            if ( result > v2 )
                 break;
         }
     }
-    v5 = *v3;
-    v6 = *(v3 + 1);
+    v6 = *v4;
+    v7 = *(v4 + 1);
     return result;
 }
 
@@ -2704,37 +2708,39 @@ int sub_813D568()
 int sub_813D598()
 {
     int v0; // r4
-    int v1; // r6
+    char v1; // r0
+    int v2; // r6
     int i; // r3
-    unsigned __int8 *v3; // r5
+    unsigned __int8 *v4; // r5
     int result; // r0
-    int v5; // r1
-    int v6; // r2
-    int v7; // r3
+    int v6; // r1
+    int v7; // r2
+    int v8; // r3
 
-    v1 = change_20013F0_800151C() & 0xF;
+    GetRNG2();
+    v2 = v1 & 0xF;
     for ( i = 0; ; ++i )
     {
-        v3 = (v0 + 12 * i);
-        result = *v3;
+        v4 = (v0 + 12 * i);
+        result = *v4;
         if ( result == 255 )
             break;
         if ( result == 2 )
         {
-            result = v3[4];
-            if ( result > v1 )
+            result = v4[4];
+            if ( result > v2 )
                 break;
         }
     }
-    v5 = *v3;
-    v6 = *(v3 + 1);
-    v7 = v3[1];
+    v6 = *v4;
+    v7 = *(v4 + 1);
+    v8 = v4[1];
     return result;
 }
 
 
 // 0x813d5c8
-char __fastcall sub_813D5C8(char result)
+int __fastcall sub_813D5C8(int result)
 {
     byte_200BC56 = result;
     return result;
@@ -2756,9 +2762,9 @@ int sub_813D5DC()
 
 
 // 0x813d5e8
-char __fastcall sub_813D5E8(char result)
+int __fastcall sub_813D5E8(int result)
 {
-    byte_200AF85 |= result;
+    unk_200AF85 |= result;
     return result;
 }
 
@@ -2770,8 +2776,19 @@ int sub_813D60C()
 }
 
 
+// 0x813d61c
+int sub_813D61C()
+{
+    int result; // r0
+
+    result = 0;
+    byte_200BC55 = 0;
+    return result;
+}
+
+
 // 0x813d62c
-char __fastcall sub_813D62C(char result)
+int __fastcall sub_813D62C(int result)
 {
     byte_200BC55 = result;
     return result;
@@ -2891,7 +2908,7 @@ int __fastcall sub_813D7B8(int a1)
         return sub_813D5E8(1);
     (*(&off_813D7E8 + v2))();
     result = 0;
-    byte_200AF81 = 0;
+    unk_200AF81 = 0;
     return result;
 }
 
@@ -3020,7 +3037,7 @@ int sub_813D8D0()
 
 
 // 0x813d90c
-char __fastcall sub_813D90C(char result)
+int __fastcall sub_813D90C(int result)
 {
     byte_200BC57 = result;
     return result;
@@ -3078,13 +3095,13 @@ signed int __fastcall sub_813D94C(int a1)
 
 
 // 0x813d960
-void __fastcall sub_813D960(int a1, int a2, int a3, int a4)
+void __cdecl sub_813D960()
 {
-    char v4; // r4
+    char v0; // r4
 
-    v4 = byte_200BC57;
-    ZeroFillByWord(&byte_200BC50, 0x10u, a3, a4);
-    byte_200BC57 = v4;
+    v0 = byte_200BC57;
+    ZeroFillByWord(&byte_200BC50, 16);
+    byte_200BC57 = v0;
 }
 
 
@@ -3109,7 +3126,7 @@ signed int sub_813D98C()
 
 
 // 0x813d9a0
-__int16 __fastcall sub_813D9A0(__int16 result)
+int __fastcall sub_813D9A0(int result)
 {
     word_200BC58 = result;
     return result;
@@ -3167,8 +3184,8 @@ void sub_813DA0C()
     }
     else
     {
-        CopyWords(&struct_2036780, &unk_20399F0, 0x10u);
-        CopyWords(&struct_2036780, &unk_2039A00, 0x10u);
+        CopyWords(&eStruct2036780, &unk_20399F0, 0x10u);
+        CopyWords(&eStruct2036780, &unk_2039A00, 0x10u);
     }
 }
 
@@ -3176,7 +3193,7 @@ void sub_813DA0C()
 // 0x813da84
 void __fastcall sub_813DA84(int a1, int a2, int a3, int a4)
 {
-    ZeroFillByWord(&byte_2010290, 0x10u, a3, a4);
+    ZeroFillByWord(&byte_2010290, 16);
 }
 
 
@@ -3206,7 +3223,7 @@ void sub_813DAC0()
 int sub_813DADC()
 {
     int v0; // r5
-    char v1; // r4
+    int v1; // r4
     char v2; // zf
 
     v1 = 1;
@@ -3224,15 +3241,15 @@ __int16 *sub_813DAF4()
     int v0; // r10
     __int16 *result; // r0
 
-    result = &struct_2036780;
-    struct_2036780 = **(v0 + oToolkit_JoypadPtr);
-    HIWORD(dword_2036788) = struct_2036780;
+    result = &eStruct2036780;
+    eStruct2036780 = **(v0 + oToolkit_JoypadPtr);
+    HIWORD(dword_2036788) = eStruct2036780;
     return result;
 }
 
 
 // 0x813db24
-signed int __fastcall sub_813DB24(int a1, int a2)
+u32 __fastcall sub_813DB24(int a1, int a2)
 {
     int v2; // r7
     char v3; // r0
@@ -3244,7 +3261,7 @@ signed int __fastcall sub_813DB24(int a1, int a2)
     u32 v9; // r6
     int v10; // r0
     int v11; // r1
-    signed int result; // r0
+    u32 result; // r0
     int v13; // [sp+4h] [bp-18h]
 
     v13 = a2;

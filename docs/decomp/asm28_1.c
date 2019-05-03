@@ -1,7 +1,6 @@
 // 0x809f526
-int sub_809F526()
+int __usercall sub_809F526@<R0>(OverworldNPCObject *obj@<R5>)
 {
-    int v0; // r5
     int v1; // r7
     int v2; // r0
     int v3; // r1
@@ -14,34 +13,34 @@ int sub_809F526()
     int v10; // [sp-14h] [bp-1Ch]
     int v11; // [sp-10h] [bp-18h]
 
-    v1 = *(v0 + 96);
-    if ( *v0 & 1 )
+    v1 = obj->UnkFlags_60;
+    if ( obj->ObjectHeader & 1 )
     {
-        v2 = *(v0 + 36) + (*(v0 + 17) << 16);
-        v3 = *(v0 + 40) + (*(v0 + 18) << 16);
-        if ( *(v0 + 23) )
+        v2 = obj->X + (obj->Unk_11 << 16);
+        v3 = *(obj + 40) + (*(obj + 18) << 16);
+        if ( *(obj + 23) )
         {
-            v4 = *(v0 + 36) + (*(v0 + 17) << 16);
-            v5 = *(v0 + 40) + (*(v0 + 18) << 16);
-            v6 = sub_8031612(v0 + 36) << 16;
+            v4 = *(obj + 36) + (*(obj + 17) << 16);
+            v5 = *(obj + 40) + (*(obj + 18) << 16);
+            v6 = sub_8031612(obj + 36) << 16;
             v2 = v4;
             v3 = v5;
         }
         else
         {
-            v6 = *(v0 + 44);
+            v6 = *(obj + 44);
         }
         v8 = v2;
         v9 = v3;
-        v10 = v6 + (*(v0 + 19) << 16);
-        v11 = *(v0 + 12);
+        v10 = v6 + (*(obj + 19) << 16);
+        v11 = *(obj + 12);
         sub_80037AC(v2, v3, v10, v11);
         if ( !(v1 & 0x14) )
             sub_80037AC(v8, v9, v10, v11);
     }
     result = 0;
-    *(v0 + 80) = 0;
-    *(v0 + 88) = 0;
+    *(obj + 80) = 0;
+    *(obj + 88) = 0;
     return result;
 }
 
@@ -87,8 +86,8 @@ int sub_809F612()
     *(v0 + 10) = *(v0 + 30);
     if ( !(*(v0 + 96) & 0x1002) )
     {
-        sprite_setAnimation(*(v0 + 20));
-        sprite_loadAnimationData();
+        sprite_setAnimation(v0, *(v0 + 20));
+        sprite_loadAnimationData(v0);
     }
     result = 0;
     *(v0 + 24) = 0;
@@ -111,7 +110,7 @@ signed int sub_809F638()
 
 // 0x809f64c
 // (u8 bitfield_arr[2]) -> u16
-int __fastcall getBitfieldFromArr_809F64C(unsigned __int8 *a1)
+int __fastcall ReadNPCScriptHalfword(unsigned __int8 *a1)
 {
     return (a1[1] << 8) | *a1;
 }
@@ -119,7 +118,7 @@ int __fastcall getBitfieldFromArr_809F64C(unsigned __int8 *a1)
 
 // 0x809f656
 // (void* a1) -> int
-int __fastcall sub_809F656(unsigned __int8 *a1)
+int __fastcall ReadNPCScriptWord(unsigned __int8 *a1)
 {
     return (a1[3] << 24) | *a1 | (a1[1] << 8) | (a1[2] << 16);
 }
@@ -215,11 +214,11 @@ int sub_809F922()
 // 0x809f942
 int sub_809F942()
 {
-    int v0; // r10
+    Toolkit *tk; // r10
     int result; // r0
     char v2; // zf
     int v3; // r6
-    _DWORD *v4; // r4
+    OWPlayer *player; // r4
     int *i; // r7
     unsigned __int8 v6; // vf
     int v7; // r5
@@ -231,17 +230,17 @@ int sub_809F942()
     if ( v2 )
     {
         v3 = byte_2000210[0];
-        v4 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
+        player = tk->gamestate->player;
         for ( i = &dword_2000220; ; ++i )
         {
             v6 = __OFSUB__(v3--, 1);
             if ( (v3 < 0) ^ v6 )
                 break;
             v7 = *i;
-            if ( *(*i + 44) == v4[9] )
+            if ( *(*i + 44) == player->unk_24 )
             {
-                v8 = *(v7 + 36) - v4[7];
-                v9 = *(v7 + 40) - v4[8];
+                v8 = *(v7 + 36) - player->x;
+                v9 = *(v7 + 40) - player->y;
                 if ( v8 - v9 <= 2359296 && v8 - v9 >= -3670016 && v8 + v9 <= 1835008 && v8 + v9 >= -1835008 )
                 {
                     v10 = *i;
@@ -267,11 +266,11 @@ void sub_809F9BE()
 
 
 // 0x809f9c8
-void __fastcall sub_809F9C8(int a1, int a2, int a3, int a4)
+void __fastcall zeroFill_e2004348()
 {
-    int v4; // r10
+    Toolkit *tk; // r10
 
-    ZeroFillByEightWords(*(v4 + oToolkit_Unk2004348_Ptr), 0x480u, a3, a4);
+    ZeroFillByEightWords(tk->unk_2004348, &dword_480);
 }
 
 
@@ -687,7 +686,7 @@ __int64 sub_809FD70()
     word_2000216 = 0;
     word_2000214 = 0;
     v0 = &v8;
-    v1 = off_80A3428;
+    v1 = GoldMysteryDataEntries;
     v2 = 0;
     while ( *v1 )
     {
@@ -698,7 +697,7 @@ __int64 sub_809FD70()
     }
     v3 = sub_8000E3A(&v8, v2);
     byte_2000213 = v3;
-    v4 = &off_80A3428[3 * v3];
+    v4 = &GoldMysteryDataEntries[3 * v3];
     word_2000214 = *v4;
     v5 = v4[1];
     ByteFill(&v7, 16, 0xFFu);
@@ -772,7 +771,7 @@ unsigned int __fastcall sub_809FE44(unsigned int result)
     if ( result == word_2000216 )
     {
         result = 12 * byte_2000213;
-        v1 = off_80A3428[result / 4 + 1];
+        v1 = GoldMysteryDataEntries[result / 4 + 1];
     }
     return result;
 }

@@ -1,4 +1,4 @@
-@archive scripts_commErr_87370C0
+@archive TextScriptCommError87370C0
 @size 138
 
 script 0 mmbn6 {

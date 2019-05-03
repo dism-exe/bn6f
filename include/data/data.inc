@@ -55,7 +55,7 @@
 	.global comp_82CED74
 	.global comp_82D2AC8
 	.global comp_82D6FE4
-	.global comp_82DABC8
+	.global compSprite_82DABC8
 	.global comp_82DD9A8
 	.global compBattleSprite_Colonel
 	.global comp_82E4050
@@ -268,7 +268,7 @@
 	.global compScripts_credits_86C4B58
 	.global comp_86C5190
 	.global comp_86C526C
-	.global scripts_86C580C
+	.global TextScriptChipTrader86C580C
 	.global comp_86C6B30
 	.global comp_86C6FD0
 	.global comp_86C73D8
@@ -342,10 +342,10 @@
 	.global comp_86DDAD0
 	.global comp_86DDB44
 	.global comp_86DDB7C
-	.global scripts_fullSynchro_86F3F5C
-	.global scripts_dad_cybeastTut_86F4498
-	.global scripts_shuko_crossTut_86F53CC
-	.global scripts_commErr_87370C0
+	.global TextScriptBattleTutFullSynchro
+	.global TextScriptDadCybeastTut
+	.global TextScriptShukoCrossTut
+	.global TextScriptCommError87370C0
 	.global comp_87E4500
 	.global comp_87E5020
 	.global comp_87E50D4

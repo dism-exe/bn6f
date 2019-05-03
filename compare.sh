@@ -3,7 +3,7 @@
 
 # create baserom.txt if necessary
 if [ ! -f baserom.txt ]; then
-    hexdump -C baserom.gba > baserom.txt
+	hexdump -C baserom.gba > baserom.txt
 fi
 
 hexdump -C bn6f.gba > bn6f.txt

@@ -13,14 +13,14 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global sub_80015FC
-// .global sub_80017AA
-// .global sub_80017E0
-// .global sub_800183C
+// .global zeroFillVRAM
+// .global ZeroFill_byte_3001960
+// .global ZeroFillGFX30025c0
 
 	.include "asm/asm00_1.inc"
 // .global engine_setScreeneffect // (int a1, int a2) -> void
@@ -35,17 +35,17 @@
 // .global sub_803E8F8
 // .global sub_803EA50
 // .global sub_803EA58
-// .global sub_803EA60
-// .global sub_803EA70
+// .global eStruct200BC30_getJumpOffset00
+// .global eStruct200BC30_setJumpOffset00
 // .global sub_803EAE4
 // .global sub_803EBAC
-// .global sub_803EBF4
+// .global eStruct200BC30_getRef
 // .global sub_803EF74
 // .global sub_803F798
 
 	.include "asm/chatbox.inc"
 // .global chatbox_8040818
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 
 	.include "asm/asm03_2.inc"
 // .global sub_80465A0 // (void *a1) -> void
@@ -59,7 +59,7 @@
 // .global sub_811A940
 // .global sub_811A968
 // .global sub_811BC24
-// .global sub_811F7EC
+// .global JoypadKeyPressed
 // .global sub_811FA0C
 // .global sub_811FA22
 // .global sub_8120CC8
@@ -76,7 +76,7 @@
 // .global sub_812B530
 
 	.include "asm/asm35.inc"
-// .global sub_812EAAC
+// .global CopyBackgroundTiles812EAAC
 // .global sub_812EAC4
 // .global sub_812EB78
 // .global sub_812EB88
@@ -101,7 +101,7 @@
 // .global sub_812F014
 
 	.include "asm/asm36.inc"
-// .global sub_8132280
+// .global chatbox_runScript_803FD9C_on_eTextScript201BA20
 // .global sub_81323B0
 // .global sub_8132430
 // .global sub_81324A8
@@ -121,9 +121,9 @@
 
 
 /* Undeclared Symbols */
-// .equ decomp_2013A00, 0x2013A00
-// .equ unk_2022AA0, 0x2022AA0
-// .equ unk_2022FA0, 0x2022FA0
+// .equ eDecompBuffer2013A00, 0x2013A00
+// .equ eGuiSprite2022AA0, 0x2022AA0
+// .equ eGuiSprite2022FA0, 0x2022FA0
 // .equ unk_2024290, 0x2024290
 // .equ unk_2025070, 0x2025070
 // .equ unk_20251A0, 0x20251A0

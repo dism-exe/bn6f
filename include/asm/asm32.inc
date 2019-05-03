@@ -238,8 +238,8 @@
 	.global sub_811F708
 	.global sub_811F728
 	.global sub_811F758
-	.global menuControl_cb_openSubmenu // () -> void
-	.global sub_811F7EC
+	.global SubMenuControl // () -> void
+	.global JoypadKeyPressed
 	.global sub_811F7F8
 	.global sub_811F91C
 	.global sub_811FA0C
@@ -302,7 +302,7 @@
 // .global 0x4000000
 
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
@@ -311,7 +311,7 @@
 // .global WordFill
 // .global sub_8000AC4
 // .global sub_8000AC8
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 // .global sub_8000C00
 // .global sub_8000C5C
@@ -322,8 +322,8 @@
 // .global GetPositiveSignedRNG2
 // .global GetPositiveSignedRNG1
 // .global sub_80015FC
-// .global sub_8001850
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+// .global copyMemory_8001850
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
 // .global sub_8001B1C
 // .global sub_8001B84
 // .global loc_8002676
@@ -331,7 +331,7 @@
 	.include "asm/sprite.inc"
 // .global sprite_loadAnimationData // () -> void
 // .global sprite_update
-// .global sub_8002770 // (int a1, int a2) -> void
+// .global initGuiSprite_8002770 // (int a1, int a2) -> void
 // .global loc_8002774
 // .global sprite_setScaleParameters
 // .global sub_8002C52
@@ -422,10 +422,10 @@
 // .global sub_80126E4
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6 // (int a1, int a2) -> u8
-// .global sub_80137E6
-// .global sub_80137FE
+// .global SetField16ToSelectedS20047CCStruct
+// .global GetField16FromSelectedS20047CCStruct
 // .global init_8013B4E // (bool a1, int a2) -> void
-// .global navicust_8014018 // (int idx_8014034) -> bool
+// .global SelectS20047CCStruct8014018 // (int idx) -> bool8
 // .global sub_8015C48
 // .global sub_8015C94
 // .global sub_8015D80
@@ -447,7 +447,7 @@
 // .global object_clearCollisionRegion // () -> void
 // .global object_setCollisionRegion
 // .global sub_801A082
-// .global object_setFlag // (int a1) -> void
+// .global object_setFlag1 // (int a1) -> void
 // .global object_clearFlag // (int bitfield) -> void
 // .global object_getFlag // () -> int
 // .global object_clearFlag2
@@ -469,7 +469,7 @@
 // .global byte_80203EA
 
 	.include "asm/asm02.inc"
-// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global getChip8021DA8 // (int chip_idx) -> ChipData*
 // .global split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
 // .global dword_8021AEC
 // .global sub_8021B2A
@@ -497,24 +497,24 @@
 // .global sub_803D138
 // .global sub_803D148
 // .global sub_803DD60
-// .global sub_803F524
+// .global notZero_eByte200AD04
 // .global sub_803F674
 // .global sub_803F740
 
 	.include "asm/chatbox.inc"
 // .global chatbox_8040818
-// .global chatbox_8045F2C // (int a1) ->
-// .global chatbox_8045F3C
+// .global chatbox_clear_eFlags2009F38 // (int a1) ->
+// .global chatbox_check_eFlags2009F38
 
 	.include "asm/asm03_2.inc"
-// .global render_graphicalText_8045F8C
+// .global renderTextGfx_8045F8C
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
 // .global sub_80465F8 // () -> void
 // .global sub_8046664 // () -> void
 // .global sub_8046670
 // .global sub_804668A
-// .global sub_80466C4
+// .global getStructFrom2008450
 // .global sub_80468E0
 // .global sub_8047D84
 // .global sub_804A24C
@@ -626,15 +626,15 @@
 	.include "asm/asm33.inc"
 // .global sub_8123208
 // .global sub_8123360
-// .global sub_8123434
-// .global ho_8123F5C
+// .global HandleChipFolderMenu8123434
+// .global HandleSubChipMenu8123F5C
 // .global byte_8124B1C
-// .global sub_8124B3C
-// .global sub_8126B4C
-// .global menuControl_cb_email
-// .global sub_8128730
+// .global HandleLibraryMenu8124B3C
+// .global HandleMegaManStatusMenu8126B4C
+// .global HandleEmailMenu81279F8
+// .global HandleKeyItemMenu8128730
 // .global sub_8128CBC
-// .global sub_81291E8
+// .global HandleCommMenu81291E8
 // .global sub_8129248
 
 	.include "asm/asm36.inc"
@@ -643,7 +643,7 @@
 // .global sub_8132A14
 // .global sub_8132A50
 // .global dword_8132A9C
-// .global sub_8132B88
+// .global HandleSaveMenu8132B88
 // .global sub_8133200
 // .global sub_81355D8
 // .global sub_81356D4
@@ -734,16 +734,16 @@
 // .global byte_86C9DAC
 // .global byte_86C9DCC
 // .global dword_86CA10C
-// .global PET_Gfx_tileRefs
-// .global TileRefs_86CB21C
-// .global TileRefs_86CB240
-// .global TileRefs_86CB264
-// .global TileRefs_86CB288
-// .global TileRefs_86CB2AC
-// .global TileRefs_86CB2D0
-// .global TileRefs_86CB2F4
-// .global TileRefs_86CB318
-// .global TileRefs_86CB33C
+// .global PET_Gfx_tileIds
+// .global TileIds_86CB21C
+// .global TileIds_86CB240
+// .global TileIds_86CB264
+// .global TileIds_86CB288
+// .global TileIds_86CB2AC
+// .global TileIds_86CB2D0
+// .global TileIds_86CB2F4
+// .global TileIds_86CB318
+// .global TileIds_86CB33C
 // .global byte_86CB360
 // .global sprite_86CBB7C
 // .global sprite_86CC13C
@@ -751,7 +751,7 @@
 // .global dword_86CD924
 
 	.include "data/dat38_71.inc"
-// .global dword_86CF4AC
+// .global TextScriptFolderNames
 
 	.include "data/dat38_78.inc"
 // .global dword_86DAC40
@@ -765,9 +765,9 @@
 // .global dword_86E411C
 // .global dword_86E43DC
 // .global byte_86E587C
-// .global dword_86EA94C
-// .global dword_86EB354
-// .global byte_86EB8B8
+// .global TextScriptChipNames0
+// .global TextScriptChipNames1
+// .global TextScriptChipDescriptions0
 // .global dword_86EE0CC
 
 	.include "data/dat38_86.inc"
@@ -784,11 +784,11 @@
 // .equ byte_2001010, 0x2001010
 // .equ dword_2001020, 0x2001020
 // .equ dword_2001020, 0x2001020
-// .equ reqBBS_bxo_2001150, 0x2001150
+// .equ reqBBS_eStruct2001150, 0x2001150
 // .equ unk_2001186, 0x2001186
 // .equ unk_200119E, 0x200119E
 // .equ unk_20018EC, 0x20018EC
-// .equ dynamicArr, 0x2005780
+// .equ eReqBBSGui, 0x2005780
 // .equ byte_20065C0, 0x20065C0
 // .equ unk_20096E0, 0x20096E0
 // .equ sSubmenu, 0x2009A30
@@ -817,13 +817,13 @@
 // .equ ePETMenuData, 0x200DF20
 // .equ byte_200DF21, 0x200DF21
 // .equ byte_200DF24, 0x200DF24
-// .equ byte_200DF25, 0x200DF25
+// .equ eFlags200DF25, 0x200DF25
 // .equ byte_200DF28, 0x200DF28
 // .equ byte_200DF29, 0x200DF29
 // .equ byte_200DF2A, 0x200DF2A
 // .equ byte_200DF2B, 0x200DF2B
 // .equ word_200DF30, 0x200DF30
-// .equ byte_200F360, 0x200F360
+// .equ eStruct200F360, 0x200F360
 // .equ unk_2010100, 0x2010100
 // .equ byte_2011C10, 0x2011C10
 // .equ byte_2011E40, 0x2011E40
@@ -856,12 +856,12 @@
 // .equ byte_201AE00, 0x201AE00
 // .equ byte_201B200, 0x201B200
 // .equ byte_201B480, 0x201B480
-// .equ unk_201BA00, 0x201BA00
+// .equ eTextScript201BA00, 0x201BA00
 // .equ unk_201BA04, 0x201BA04
-// .equ byte_201BA20, 0x201BA20
-// .equ byte_201BF20, 0x201BF20
+// .equ eTextScript201BA20, 0x201BA20
+// .equ eTextScript201BF20, 0x201BF20
 // .equ unk_201C400, 0x201C400
-// .equ unk_201D280, 0x201D280
+// .equ eTextScript201D280, 0x201D280
 // .equ unk_201D2F8, 0x201D2F8
 // .equ unk_201D700, 0x201D700
 // .equ unk_201D774, 0x201D774
@@ -881,10 +881,10 @@
 // .equ unk_20222A0, 0x20222A0
 // .equ unk_20222F0, 0x20222F0
 // .equ unk_20226F0, 0x20226F0
-// .equ unk_2022AA0, 0x2022AA0
-// .equ unk_2022C00, 0x2022C00
-// .equ unk_2022FA0, 0x2022FA0
-// .equ unk_20231A0, 0x20231A0
+// .equ eGuiSprite2022AA0, 0x2022AA0
+// .equ byte_2022C00, 0x2022C00
+// .equ eGuiSprite2022FA0, 0x2022FA0
+// .equ byte_20231A0, 0x20231A0
 // .equ byte_2023BC0, 0x2023BC0
 // .equ byte_2023BC8, 0x2023BC8
 // .equ word_2023FA0, 0x2023FA0
@@ -914,14 +914,14 @@
 // .equ unk_2028000, 0x2028000
 // .equ unk_202CA00, 0x202CA00
 // .equ unk_202CC00, 0x202CC00
-// .equ unk_202CE00, 0x202CE00
-// .equ unk_202D000, 0x202D000
-// .equ unk_202D200, 0x202D200
-// .equ unk_202D400, 0x202D400
-// .equ unk_202D600, 0x202D600
-// .equ unk_202D800, 0x202D800
-// .equ unk_202DA00, 0x202DA00
-// .equ unk_202DC00, 0x202DC00
+// .equ byte_202CE00, 0x202CE00
+// .equ byte_202D000, 0x202D000
+// .equ byte_202D200, 0x202D200
+// .equ byte_202D400, 0x202D400
+// .equ byte_202D600, 0x202D600
+// .equ byte_202D800, 0x202D800
+// .equ byte_202DA00, 0x202DA00
+// .equ byte_202DC00, 0x202DC00
 // .equ unk_202DE00, 0x202DE00
 // .equ byte_202E17C, 0x202E17C
 // .equ byte_202F57C, 0x202F57C

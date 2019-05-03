@@ -2,7 +2,7 @@
 	.equ INC_ASM_ASM35, 0
 
 /* Public Symbols */
-	.global sub_812EAAC
+	.global CopyBackgroundTiles812EAAC
 	.global sub_812EAC4
 	.global sub_812EB78
 	.global sub_812EB88
@@ -24,11 +24,11 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
-// .global sub_800183C
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-// .global sub_80018D0
+// .global ZeroFillGFX30025c0
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
+// .global call_sub_3005EBA
 
 	.include "asm/asm00_1.inc"
 // .global sprite_setCoordinates
@@ -37,17 +37,17 @@
 
 	.include "asm/asm03_1.inc"
 // .global sub_803CE28
-// .global sub_803EBF4
+// .global eStruct200BC30_getRef
 
 	.include "asm/asm03_2.inc"
-// .global render_graphicalText_8045F8C
+// .global renderTextGfx_8045F8C
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_8046664 // () -> void
-// .global sub_80466C4
+// .global getStructFrom2008450
 
 	.include "asm/asm32.inc"
 // .global sub_811BC00
-// .global sub_811F7EC
+// .global JoypadKeyPressed
 // .global sub_811F7F8
 // .global sub_811FAF4
 // .global sub_8120280
@@ -66,7 +66,7 @@
 // .global byte_812DADC
 
 	.include "asm/asm36.inc"
-// .global sub_8132280
+// .global chatbox_runScript_803FD9C_on_eTextScript201BA20
 
 	.include "asm/asm37_0.inc"
 // .global sub_813B780

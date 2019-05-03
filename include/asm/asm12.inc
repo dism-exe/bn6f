@@ -11,7 +11,7 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sub_8001778
+// .global sRender_08_setRenderingState
 // .global sub_8001780
 // .global sub_800195C
 // .global sub_80019D0
@@ -20,7 +20,7 @@
 
 	.include "asm/sprite.inc"
 // .global sub_80028D4
-// .global sub_8002906
+// .global uncompSprite_8002906
 
 	.include "asm/asm00_1.inc"
 // .global SpawnObjectsFromList
@@ -28,7 +28,7 @@
 	.include "asm/asm03_0.inc"
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
 // .global ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-// .global sub_802FF4C
+// .global camera_802FF4C
 // .global sub_803037C
 // .global sub_8030472
 // .global sub_80304E8
@@ -38,7 +38,7 @@
 // .global sub_8034FB8
 
 	.include "asm/chatbox.inc"
-// .global chatbox_uncomp_803FD08 // () -> int
+// .global chatbox_uncompBasedOnMap_803FD08 // () -> int
 
 	.include "data/dat11.inc"
 // .global off_806D6B0

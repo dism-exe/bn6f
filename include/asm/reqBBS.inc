@@ -10,7 +10,7 @@
 	.global reqBBS_813EE58
 	.global byte_813F380
 	.global reqBBS_init_s_2005780
-	.global reqBBS_cb_813F404
+	.global reqBBS_subsystemCotnrol
 	.global reqBBS_813F9A0
 	.global reqBBS_initMemory_813F9DA
 	.global sub_813FA24
@@ -25,7 +25,7 @@
 	.global reqBBS_81409F4
 	.global reqBBS_setFlag_e17b0f7_8140A00
 	.global reqBBS_clearFlag_8140A0C
-	.global reqBBS_runDialog_8140A70
+	.global reqBBS_RunTextScriptWhoAmI
 	.global byte_8140A74
 	.global byte_8140A8C
 	.global dword_8140AA4
@@ -64,23 +64,23 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 // .global sub_8000AC8
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
 // .global GetRNG2 // () -> int
 // .global sub_80015FC
-// .global sub_8001778
+// .global sRender_08_setRenderingState
 // .global sub_8001788
-// .global sub_80017A0
-// .global sub_80017AA
-// .global sub_80017E0
-// .global sub_800183C
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-// .global sub_80018D0
+// .global renderInfo_80017A0
+// .global zeroFillVRAM
+// .global ZeroFill_byte_3001960
+// .global ZeroFillGFX30025c0
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
+// .global call_sub_3005EBA
 
 	.include "asm/asm00_1.inc"
 // .global sub_8002FA6
@@ -103,10 +103,10 @@
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_reqBBS_80404C0
 // .global chatbox_8040818
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 
 	.include "asm/asm03_2.inc"
-// .global render_graphicalText_8045F8C
+// .global renderTextGfx_8045F8C
 // .global sub_8045FC6
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
@@ -122,9 +122,9 @@
 
 	.include "asm/asm37_0.inc"
 // .global byte_813DBDC
-// .global tileRefs_813DBE4
+// .global tileIds_813DBE4
 // .global byte_813DEC4
-// .global tileRefs_813DF44
+// .global tileIds_813DF44
 // .global off_813DF74
 // .global off_813E04C
 
@@ -140,7 +140,7 @@
 // .global byte_86C9D6C
 
 	.include "data/dat38_87.inc"
-// .global dword_87DAC90
+// .global TextScriptWhoAmI
 
 	.include "data/dat38_92.inc"
 // .global dword_87E74F4
@@ -168,44 +168,44 @@
 // .equ unk_2000770, 0x2000770
 // .equ unk_2000FC0, 0x2000FC0
 // .equ unk_2000FF0, 0x2000FF0
-// .equ reqBBS_bxo_2001150, 0x2001150
+// .equ reqBBS_eStruct2001150, 0x2001150
 // .equ byte_2001154, 0x2001154
 // .equ dword_2001178, 0x2001178
-// .equ unk_2001400, 0x2001400
-// .equ dynamicArr, 0x2005780
+// .equ byte_2001400, 0x2001400
+// .equ eReqBBSGui, 0x2005780
 // .equ byte_2005784, 0x2005784
 // .equ byte_200578D, 0x200578D
 // .equ byte_200578E, 0x200578E
-// .equ byte_200578F, 0x200578F
+
 // .equ dword_20057A8, 0x20057A8
 // .equ reqBBS_numRequestsSent, 0x20065B0
-// .equ byte_2008450, 0x2008450
-// .equ sChatbox, 0x2009CD0
-// .equ decomp_2013A00, 0x2013A00
+// .equ eStructArr2008450, 0x2008450
+// .equ eChatbox, 0x2009CD0
+// .equ eDecompBuffer2013A00, 0x2013A00
 // .equ unk_2018200, 0x2018200
 // .equ reqBBS_tile_data, 0x2018204
 // .equ unk_2018A00, 0x2018A00
-// .equ unk_2018A04, 0x2018A04
+// .equ eTileIds2018A04, 0x2018A04
 // .equ unk_2019200, 0x2019200
 // .equ unk_201AA00, 0x201AA00
 // .equ unk_201AA04, 0x201AA04
 // .equ byte_201B200, 0x201B200
-// .equ unk_201BA00, 0x201BA00
+// .equ eTextScript201BA00, 0x201BA00
 // .equ unk_201BA04, 0x201BA04
 // .equ unk_201C200, 0x201C200
 // .equ byte_201CA00, 0x201CA00
-// .equ reqBBS_requestEntries_IDs, 0x2023A00
+// .equ reqBBS_eRequestEntriesIDs, 0x2023A00
 // .equ unk_2025A00, 0x2025A00
 // .equ reqBBS_requestNames_textualData, 0x2025A04
 // .equ unk_2029A00, 0x2029A00
 // .equ reqBBS_requestInfo_textOffsets, 0x2029A04
 // .equ unk_2033A00, 0x2033A00
-// .equ reqBBS_dialogList, 0x2033A04
+// .equ reqBBS_eTextScript, 0x2033A04
 // .equ byte_30016D0, 0x30016D0
-// .equ byte_3001750, 0x3001750
+// .equ iPallete3001750, 0x3001750
 // .equ byte_3001960, 0x3001960
 // .equ unk_30019C0, 0x30019C0
 // .equ unk_30019E0, 0x30019E0
-// .equ unk_3001B60, 0x3001B60
+// .equ iPallete3001B60, 0x3001B60
 
 	.endif // INC_ASM_REQBBS

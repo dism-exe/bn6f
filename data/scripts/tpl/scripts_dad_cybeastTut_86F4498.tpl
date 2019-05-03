@@ -1,4 +1,4 @@
-@archive scripts_dad_cybeastTut_86F4498
+@archive TextScriptDadCybeastTut
 @size 40
 
 script 0 mmbn6 {

@@ -358,7 +358,7 @@ script 93 mmbn6s {
 	end
 }
 script 100 mmbn6s {
-	"Clear Time     "
+	"Clear Time	 "
 	printBuffer
 		buffer = 0
 		minLength = 2
@@ -382,7 +382,7 @@ script 101 mmbn6s {
 	end
 }
 script 102 mmbn6s {
-	"              "
+	"			  "
 	spacePx
 		count = 2
 	"M "
@@ -394,7 +394,7 @@ script 102 mmbn6s {
 	end
 }
 script 103 mmbn6s {
-	"              "
+	"			  "
 	spacePx
 		count = 2
 	"G "

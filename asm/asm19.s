@@ -23,7 +23,7 @@ sub_807CDEC:
 	ldr r2, [r5,#0x2c]
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
-	bl sub_802FF4C
+	bl camera_802FF4C
 	bl sub_8030472
 	ldr r0, off_807CE48 // =unk_2037800 
 	bl sub_80028D4
@@ -31,8 +31,8 @@ sub_807CDEC:
 	lsl r1, r1, #2
 	ldr r0, off_807CE4C // =off_807CE50 
 	ldr r0, [r0,r1]
-	bl sub_8002906
-	bl chatbox_uncomp_803FD08 // () -> int
+	bl uncompSprite_8002906
+	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
 	bl sub_807CFFC
 	bl sub_8034FB8
 	pop {r4-r7,pc}
@@ -112,7 +112,7 @@ sub_807CF24:
 	bl sub_8001780
 	ldr r1, [r7,#0xc]
 	orr r0, r1
-	bl sub_8001778
+	bl sRender_08_setRenderingState
 	ldr r0, off_807CF9C // =off_807CFA0 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2

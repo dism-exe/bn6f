@@ -41,7 +41,7 @@ signed int __fastcall sub_808917C(int a1, int a2, int a3)
     v5 = *(v4 + 4);
     if ( v5[1] & 0x200 )
     {
-        sound_play(131, 512, a3);
+        PlaySoundEffect(131, 512, a3);
         *v3 = 8;
     }
     else
@@ -92,8 +92,8 @@ int __fastcall sub_8089244(int a1)
     int v2; // r2
 
     CopyWords(&dword_87DE44C[8 * a1], byte_30016F0, 0x20u);
-    decompAndCopyData_8000B30(byte_8089268);
-    return sound_play(127, v1, v2);
+    decompAndCopyData(byte_8089268);
+    return PlaySoundEffect(127, v1, v2);
 }
 
 
@@ -134,7 +134,7 @@ signed int sub_808964C()
     int v1; // r0
     char v2; // zf
     char v3; // r0
-    char v4; // r0
+    int v4; // r0
     int v5; // r0
 
     v1 = sub_814219C();
@@ -243,21 +243,21 @@ signed int __fastcall sub_8089704(int a1, int a2, int a3)
         sub_8142190(v6);
         if ( v9 )
         {
-            sound_play(105, v7, v8);
+            PlaySoundEffect(105, v7, v8);
         }
         else
         {
             sub_8142A84();
             if ( !v9 )
             {
-                sound_play(103, v10, v11);
+                PlaySoundEffect(103, v10, v11);
                 v5 = 2;
             }
         }
     }
     else if ( v4 & 2 )
     {
-        sound_play(104, a2, a3);
+        PlaySoundEffect(104, a2, a3);
         v5 = 3;
     }
     else
@@ -265,21 +265,21 @@ signed int __fastcall sub_8089704(int a1, int a2, int a3)
         v12 = *(*(v3 + oToolkit_JoypadPtr) + 4);
         if ( v12 & 0x40 )
         {
-            sound_play(102, a2, a3);
+            PlaySoundEffect(102, a2, a3);
             v13 = sub_81421D0();
             v14 = __OFSUB__(v13, 1);
             v15 = v13 - 1;
             if ( (v15 < 0) ^ v14 )
-                LOBYTE(v15) = 3;
+                v15 = 3;
             sub_81421C8(v15);
             v5 = 1;
         }
         else if ( v12 & 0x80 )
         {
-            sound_play(102, a2, a3);
+            PlaySoundEffect(102, a2, a3);
             v16 = sub_81421D0() + 1;
             if ( v16 >= 4 )
-                LOBYTE(v16) = 0;
+                v16 = 0;
             sub_81421C8(v16);
             v5 = 1;
         }
@@ -310,7 +310,7 @@ signed int sub_80897A6()
 
     if ( !v0[19] )
     {
-        chatbox_8045F3C(128);
+        chatbox_check_eFlags2009F38(128);
         if ( v1 )
         {
             if ( chatbox_8045F4C() )
@@ -339,7 +339,7 @@ signed int sub_80897E8()
     _BYTE *v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         sub_8089CB4();
@@ -464,7 +464,7 @@ signed int sub_80898B2()
     _BYTE *v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         sub_814216E();
@@ -527,10 +527,10 @@ signed int sub_808991C()
 {
     _BYTE *v0; // r5
     char v1; // zf
-    char v2; // r0
+    int v2; // r0
     int v3; // r0
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         sub_8089CB4();
@@ -697,7 +697,7 @@ signed int __fastcall sub_8089A60(int a1)
         if ( v4 && sub_81426CE() < 6 )
         {
             sub_8035408();
-            sound_play(356, v6, v7);
+            PlaySoundEffect(356, v6, v7);
             v8 = sub_8036E44();
             sub_8036E78(v8, v9, v10);
         }
@@ -733,7 +733,7 @@ signed int sub_8089AE8()
     char v2; // zf
     char v3; // r0
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v2 )
     {
         sub_8089CB4();
@@ -786,7 +786,7 @@ signed int sub_8089B54()
     char v1; // zf
     char v2; // r0
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         sub_8089CB4();
@@ -825,7 +825,7 @@ signed int sub_8089B94()
     int v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( !v1 )
         return 1;
     *(v0 + 8) = 1;
@@ -855,7 +855,7 @@ signed int sub_8089BC0()
     _BYTE *v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         SetEventFlagFromImmediate(7, 69);
@@ -889,7 +889,7 @@ signed int sub_8089BFA()
     _BYTE *v0; // r5
     char v1; // zf
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
     {
         v0[8] = 0;
@@ -967,7 +967,7 @@ void __fastcall sub_8089CA4(int a1)
 
 
 // 0x8089cb0
-__int16 __fastcall sub_8089CB0(__int16 result)
+int __fastcall sub_8089CB0(int result)
 {
     int v1; // r5
 
@@ -1054,7 +1054,7 @@ int sub_8089D0E()
     do
     {
         if ( *v0 )
-            result = sub_80048B2();
+            result = FreeOverworldMapObject();
         ++v0;
         ++v1;
     }

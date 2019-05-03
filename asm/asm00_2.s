@@ -109,7 +109,7 @@ sub_800EE26:
 	push {r0,r1}
 	// idx
 	ldrh r0, [r6,#0x34]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#0xf]
 	strb r0, [r7,#oAIAttackVars_Unk_1d]
 	ldrh r0, [r6,#0x34]
@@ -120,7 +120,7 @@ sub_800EE26:
 	push {r1-r3}
 	// idx
 	ldrh r0, [r6,#0x34]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#9]
 	pop {r1-r3}
 	mov r4, #2
@@ -165,11 +165,11 @@ sub_800EE98:
 	mov r0, r4
 	bl sub_801E2BA
 	mov r0, #0x8d
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 loc_800EEBA:
 	// idx
 	ldrh r0, [r6,#0x34]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r4, r0
 	ldrb r0, [r4,#0x16] // ChipData.unk_16
 	mov r1, #0x80
@@ -179,7 +179,7 @@ loc_800EEBA:
 	add r0, r0, r0
 	ldr r1, off_800EEF4 // =byte_800EEF8 
 	ldrh r0, [r1,r0]
-	ldr r2, off_800EEF0 // =unk_200F3C4 
+	ldr r2, off_800EEF0 // =word_200F3C4
 	add r3, r6, r6
 	strh r0, [r2,r3]
 	ldrh r1, [r6,#0x28]
@@ -192,7 +192,7 @@ locret_800EEE2:
 	pop {r0-r4,pc}
 	.word 0, 0
 	.byte 0, 0, 0, 0
-off_800EEF0: .word unk_200F3C4
+off_800EEF0: .word word_200F3C4
 off_800EEF4: .word byte_800EEF8
 byte_800EEF8: .byte 0x0, 0x15, 0x0, 0x2A, 0x0, 0x40, 0xFF, 0xFF, 0xFF, 0xFF
 	thumb_func_end sub_800EE98
@@ -256,7 +256,7 @@ loc_800EF5C:
 loc_800EF6A:
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -281,7 +281,7 @@ loc_800EF8E:
 loc_800EF96:
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -304,7 +304,7 @@ loc_800EFB8:
 loc_800EFC0:
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -327,7 +327,7 @@ loc_800EFE2:
 loc_800EFEA:
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -350,7 +350,7 @@ loc_800F00C:
 loc_800F014:
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -369,7 +369,7 @@ loc_800F02E:
 loc_800F036:
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -393,7 +393,7 @@ loc_800F058:
 	bgt loc_800F090
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -438,7 +438,7 @@ sub_800F09E:
 	bne loc_800F0E0
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -462,7 +462,7 @@ loc_800F0E0:
 	bne loc_800F106
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -482,7 +482,7 @@ loc_800F106:
 	bne loc_800F12C
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -502,7 +502,7 @@ loc_800F12C:
 	bne loc_800F14A
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -518,7 +518,7 @@ loc_800F14A:
 	bne loc_800F170
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -538,7 +538,7 @@ loc_800F170:
 	bne loc_800F196
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -558,7 +558,7 @@ loc_800F196:
 	bne loc_800F1BC
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -1885,7 +1885,7 @@ loc_800FB74:
 	beq loc_800FBEE
 	mov r0, r5
 	bl sub_800EDD0
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#6]
 	ldr r1, [r5,#oBattleObject_AIDataPtr]
 	cmp r0, #0xa
@@ -1955,7 +1955,7 @@ loc_800FBEE:
 loc_800FC0C:
 	// idx
 	ldrh r0, [r7,#oAIAttackVars_Unk_14]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#0xf]
 	strb r0, [r7,#oAIAttackVars_Unk_1d]
 	b loc_800FC18
@@ -1986,7 +1986,7 @@ sub_800FC30:
 	mov r1, #0x53 
 	cmp r0, r1
 	beq loc_800FC58
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#9]
 	mov r1, #1
 	tst r0, r1
@@ -2680,14 +2680,14 @@ sub_8010162:
 	tst r1, r1
 	bne loc_801017E
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 loc_801017E:
 	bl object_getFlag // () -> int
 	ldr r1, dword_801022C // =0x400000 
 	tst r0, r1
 	bne loc_8010190
-	mov r0, #4
-	bl object_setFlag // (int a1) -> void
+	mov r0, #OBJECT_FLAGS_UNK_4
+	bl object_setFlag1 // (int a1) -> void
 	b locret_8010196
 loc_8010190:
 	mov r0, #4
@@ -2717,8 +2717,8 @@ sub_80101AE:
 	push {lr}
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	strh r0, [r1,#oCollisionData_Unk_26]
-	mov r0, #4
-	bl object_setFlag // (int a1) -> void
+	mov r0, #OBJECT_FLAGS_UNK_4
+	bl object_setFlag1 // (int a1) -> void
 	ldrb r0, [r5,#oObjectHeader_Flags]
 	mov r1, #2
 	bic r0, r1
@@ -2767,13 +2767,10 @@ sub_80101F8:
 	mov r4, r0
 	cmp r4, #0
 	bne loc_8010216
-	// entryIdx
-	mov r0, #1
-	// byteFlagIdx
-	mov r1, #0x63 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	movflag EVENT_163
+	bl TestEventFlagFromImmediate
 	bne loc_8010216
-	bl sub_803F524
+	bl notZero_eByte200AD04
 	beq loc_8010216
 	mov r4, #0xd
 loc_8010216:
@@ -3115,10 +3112,10 @@ sub_8010474:
 	push {lr}
 	ldr r2, [r5,#oBattleObject_CollisionDataPtr]
 	strh r4, [r2,#oCollisionData_Unk_24]
-	mov r0, #2
-	bl object_setFlag // (int a1) -> void
+	mov r0, #OBJECT_FLAGS_UNK_2
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x93
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	pop {pc}
 	thumb_func_end sub_8010474
 
@@ -3143,7 +3140,7 @@ sub_8010488:
 	strh r3, [r0,r1]
 	mov r0, #0x58 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	pop {r4,r7,pc}
 loc_80104B6:
 	ldrb r0, [r5,#oBattleObject_PanelX]
@@ -3161,7 +3158,7 @@ loc_80104B6:
 	mov r4, #0
 	bl sub_80E1D7A
 	mov r0, #0x90
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	pop {r4,r7,pc}
 	thumb_func_end sub_8010488
 
@@ -3184,7 +3181,7 @@ sub_80104E0:
 loc_8010500:
 	bl sub_80E1D7A
 	mov r0, #0x90
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	pop {r4,r7,pc}
 	thumb_func_end sub_80104E0
 
@@ -3212,8 +3209,8 @@ loc_801051E:
 	ldmia r0!, {r1-r3}
 	mov r4, #6
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #0x8a
-	bl sound_play // () -> void
+	mov r0, #SOUND_UNK_8A
+	bl PlaySoundEffect
 loc_801053E:
 	add r7, #4
 	add r6, #1
@@ -3433,7 +3430,7 @@ sub_80106C0:
 	beq loc_8010738
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#7]
 	cmp r1, #1
 	beq loc_80106F6
@@ -3495,7 +3492,7 @@ sub_8010740:
 	beq loc_80107B6
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#0x16]
 	mov r2, #2
 	tst r1, r2
@@ -3629,7 +3626,7 @@ loc_801083E:
 	bl SpawnT4BattleObjectWithId0
 	mov r0, #0x1a
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	pop {r4,pc}
 	thumb_func_end sub_8010820
 
@@ -3783,7 +3780,7 @@ sub_80109A4:
 	ldr r2, dword_80109D8 // =0xffff 
 	cmp r0, r2
 	beq loc_80109D0
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrh r0, [r0,#0x1a]
 	mov r2, #0xfa
 	lsl r2, r2, #2
@@ -3904,7 +3901,7 @@ locret_8010AE2:
 sub_8010AE4:
 	push {r4,lr}
 	mov r4, r1
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrh r1, [r0,#0x1a]
 	ldr r2, off_8010D28 // =0x3e9 
 	sub r1, r1, r2
@@ -4086,7 +4083,7 @@ sub_8010C50:
 	beq locret_8010C74
 	// idx
 	mov r0, r4
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrh r0, [r0,#0x1a]
 	ldr r1, dword_8010D40 // =0x3ff 
 	sub r0, r0, r1
@@ -4099,7 +4096,7 @@ locret_8010C74:
 	thumb_func_start sub_8010C76
 sub_8010C76:
 	push {r4,lr}
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrh r1, [r0,#0x1a]
 	ldr r2, off_8010D28 // =0x3e9 
 	cmp r1, r2
@@ -4139,7 +4136,7 @@ byte_8010CB8: .byte 0x0, 0x10, 0x0, 0x0, 0x0, 0x12, 0x0, 0x0, 0x0, 0x14, 0x0, 0x
 	thumb_func_start sub_8010CE0
 sub_8010CE0:
 	push {r4,lr}
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrh r1, [r0,#0x1a]
 	ldr r2, off_8010D28 // =0x3e9 
 	cmp r1, r2
@@ -5191,12 +5188,12 @@ loc_8011594:
 	mov r0, #1
 	b loc_80115C0
 loc_80115B0:
-	mov r0, #0x85
-	bl sound_play // () -> void
+	mov r0, #SOUND_UNK_85
+	bl PlaySoundEffect
 	b loc_80115BE
 loc_80115B8:
 	mov r0, #0x6d 
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 loc_80115BE:
 	mov r0, #0
 loc_80115C0:
@@ -5246,8 +5243,8 @@ loc_80115FC:
 	mov r0, #1
 	b loc_801161C
 loc_8011614:
-	mov r0, #0x85
-	bl sound_play // () -> void
+	mov r0, #SOUND_UNK_85
+	bl PlaySoundEffect
 	mov r0, #0
 loc_801161C:
 	str r0, [sp,#4]
@@ -5273,8 +5270,8 @@ object_applyDamage:
 	ldmia r0!, {r1-r3}
 	mov r4, #0
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #0x70 
-	bl sound_play // () -> void
+	mov r0, #SOUND_HIT_BOMB_1
+	bl PlaySoundEffect
 	pop {r0}
 locret_801164A:
 	pop {r4,pc}
@@ -7695,7 +7692,7 @@ loc_80126EA:
 	add r7, #0xa0
 loc_80126F6:
 	strh r0, [r7,#oAIAttackVars_Unk_14]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r6, r0
 	ldr r1, [r6,#0x10]
 	str r1, [r7,#oAIAttackVars_Unk_0c]
@@ -7827,7 +7824,7 @@ loc_80127E4:
 	str r6, [sp,#0x14]
 	lsr r4, r4, #8
 	str r4, [sp,#0x18]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r4, r0
 	ldrb r0, [r4,#0x1f]
 	bl sub_8010D58
@@ -7844,7 +7841,7 @@ loc_80127E4:
 	str r6, [sp,#0x14]
 	lsr r4, r4, #8
 	str r4, [sp,#0x18]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r4, r0
 loc_8012822:
 	ldr r0, [sp,#4]
@@ -7865,8 +7862,8 @@ loc_8012822:
 loc_8012844:
 	add r1, r1, r0
 	strh r1, [r7,#oAIAttackVars_Unk_08]
-	mov r0, #0x87
-	bl sound_play // () -> void
+	mov r0, #SOUND_HIT_87
+	bl PlaySoundEffect
 loc_801284E:
 	ldr r0, [sp,#0xc]
 	strh r0, [r7,#oAIAttackVars_Unk_06]
@@ -7889,8 +7886,8 @@ loc_8012872:
 	bne loc_8012880
 	bl sub_80143A6
 loc_801287A:
-	mov r0, #0x87
-	bl sound_play // () -> void
+	mov r0, #SOUND_HIT_87
+	bl PlaySoundEffect
 loc_8012880:
 	ldrh r0, [r7,#oAIAttackVars_Unk_08]
 	ldr r1, [sp,#0x14]
@@ -7975,7 +7972,7 @@ sub_80128FC:
 	bne loc_8012998
 loc_8012928:
 	ldr r0, [sp]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -8054,7 +8051,7 @@ sub_801299C:
 sub_80129A6:
 	push {r7,lr}
 	strh r0, [r7,#0x14]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldr r1, [r0,#0x10]
 	str r1, [r7,#0xc]
 	ldrb r1, [r0,#0xa]
@@ -8124,7 +8121,7 @@ sub_8012A38:
 	mov r6, #0
 	// idx
 	mov r0, r1
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r4, r0
 	ldrb r1, [r4,#9]
 	mov r2, #2
@@ -8203,7 +8200,7 @@ sub_8012ABC:
 	mov r7, #0
 	// idx
 	mov r0, r6
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -8240,7 +8237,7 @@ loc_8012B1A:
 	mov r7, #0
 	// idx
 	mov r0, r6
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -8287,7 +8284,7 @@ loc_8012B6E:
 	mov r7, #0
 	// idx
 	mov r0, r6
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -8327,7 +8324,7 @@ sub_8012BA2:
 	mov r7, #0
 	// idx
 	mov r0, r6
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -8371,7 +8368,7 @@ sub_8012BE8:
 	bgt loc_8012C30
 	mov r7, #0
 	mov r0, r6
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -8416,7 +8413,7 @@ locret_8012C48:
 sub_8012C4A:
 	push {r4,lr}
 	mov r4, r1
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -8861,7 +8858,7 @@ sub_8012F62:
 	bl sub_8010004
 	ldr r1, dword_8012FC0 // =0xffff 
 	beq loc_8012F90
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#6]
 	cmp r0, #0xa
 	bne loc_8012F90
@@ -8941,8 +8938,8 @@ loc_8013008:
 	ldrb r1, [r5,#oBattleObject_Alliance]
 	cmp r0, r1
 	bne loc_8013044
-	mov r0, #0x69 
-	bl sound_play // () -> void
+	mov r0, #SOUND_CANT_JACK_IN
+	bl PlaySoundEffect
 	bl sub_801EC44
 	b loc_8013044
 loc_801303C:
@@ -9206,7 +9203,7 @@ sub_8013236:
 	blt loc_8013244
 	b loc_8013360
 loc_8013244:
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r7, r0
 	ldrb r4, [r7,#6]
 	mov r1, #0x2c 
@@ -9455,17 +9452,17 @@ byte_801341B: .byte 0x0, 0x6, 0x7, 0x8, 0x9, 0xA, 0xB
 	thumb_func_start sub_8013422
 sub_8013422:
 	push {lr}
-	ldr r2, off_8013434 // =ePlayerBattleVars 
+	ldr r2, off_8013434 // =ePlayerBattleVars
 	mov r1, #0x64 
 	mul r0, r1
 	add r0, r0, r2
-	bl initStruct_8013438 // (void *struc) -> void
+	bl initStruct_8013438 // (void *struct) -> void
 	pop {pc}
 	.balign 4, 0x00
 off_8013434: .word ePlayerBattleVars
 	thumb_func_end sub_8013422
 
-// (void *struc) -> void
+// (void *struct) -> void
 	thumb_func_start initStruct_8013438
 initStruct_8013438:
 	push {r4,lr}
@@ -9787,7 +9784,7 @@ loc_8013678:
 GetPlayerBattleVarsAddr:
 	mov r1, #0x64 
 	mul r0, r1
-	ldr r1, =ePlayerBattleVars 
+	ldr r1, =ePlayerBattleVars
 	add r0, r0, r1
 	mov pc, lr
 // 801368C
@@ -9863,20 +9860,23 @@ GetPlayerBattleVarHword:
 	pop {r6,pc}
 	thumb_func_end GetPlayerBattleVarHword
 
-	thumb_func_start sub_80136F0
-sub_80136F0:
+	thumb_func_start SetField8ToSelectedS20047CCStruct
+// (bool structSel, int a2, u8 a3) -> void
+SetField8ToSelectedS20047CCStruct:
+    // type safety, ensure bool (0, 1)
 	cmp r0, #0
 	beq loc_80136F6
 	mov r0, #1
 loc_80136F6:
-	mov r3, #0x64 
+    // Toolkit->S20047CC_Ptrs[oS20047CC*a1 + a2] = a3
+	mov r3, #oS20047CC_Size
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	strb r2, [r3,r1]
 	mov pc, lr
-	thumb_func_end sub_80136F0
+	thumb_func_end SetField8ToSelectedS20047CCStruct
 
 	thumb_func_start sub_8013704
 sub_8013704:
@@ -9887,7 +9887,7 @@ loc_801370A:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	ldrb r0, [r3,r1]
 	mov pc, lr
@@ -9902,7 +9902,7 @@ loc_801371E:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	ldrb r0, [r3,r1]
 	mov pc, lr
@@ -9917,7 +9917,7 @@ loc_8013732:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	strh r2, [r3,r1]
 	mov pc, lr
@@ -9932,7 +9932,7 @@ loc_8013746:
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	ldrh r0, [r3,r1]
 	mov pc, lr
@@ -9996,12 +9996,12 @@ GetPlayerBattleVarHword_AllianceFromBattleObject:
 navicust_801379E:
 	push {lr}
 	push {r1,r2}
-	bl navicust_8014018 // (int idx_8014034) -> bool
+	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
 	pop {r1,r2}
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	strb r2, [r3,r1]
 	pop {pc}
@@ -10012,12 +10012,12 @@ navicust_801379E:
 sub_80137B6:
 	push {lr}
 	push {r1}
-	bl navicust_8014018 // (int idx_8014034) -> bool
+	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
 	pop {r1}
 	mov r3, #100
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	ldrb r0, [r3,r1]
 	pop {pc}
@@ -10027,46 +10027,50 @@ sub_80137B6:
 sub_80137CE:
 	push {lr}
 	push {r1}
-	bl navicust_8014018 // (int idx_8014034) -> bool
+	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
 	pop {r1}
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	ldrsb r0, [r3,r1]
 	pop {pc}
 	thumb_func_end sub_80137CE
 
-	thumb_func_start sub_80137E6
-sub_80137E6:
+	thumb_func_start SetField16ToSelectedS20047CCStruct
+// (int structSelectIdx, int structOffset, u16 val) -> void
+SetField16ToSelectedS20047CCStruct:
 	push {lr}
+	// Toolkit->S20047CC_Ptrs[oS20047CC_Size*SelectS20047CCStruct8014018(a1)+a2] = a3
 	push {r1,r2}
-	bl navicust_8014018 // (int idx_8014034) -> bool
+	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
 	pop {r1,r2}
-	mov r3, #0x64 
+	mov r3, #oS20047CC_Size
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	strh r2, [r3,r1]
 	pop {pc}
-	thumb_func_end sub_80137E6
+	thumb_func_end SetField16ToSelectedS20047CCStruct
 
-	thumb_func_start sub_80137FE
-sub_80137FE:
+	thumb_func_start GetField16FromSelectedS20047CCStruct
+// (int structSelectIdx, int structOffset) -> u16
+GetField16FromSelectedS20047CCStruct:
 	push {lr}
+	// return Toolkit->S20047CC_Ptrs[100*SelectS20047CCStruct8014018(a1)+a2]
 	push {r1}
-	bl navicust_8014018 // (int idx_8014034) -> bool
+	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
 	pop {r1}
 	mov r3, #0x64 
 	mul r0, r3
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk20047cc_Ptr]
+	ldr r3, [r3,#oToolkit_S20047CC_Ptrs]
 	add r3, r3, r0
 	ldrh r0, [r3,r1]
 	pop {pc}
-	thumb_func_end sub_80137FE
+	thumb_func_end GetField16FromSelectedS20047CCStruct
 
 	thumb_func_start sub_8013816
 sub_8013816:
@@ -10109,7 +10113,7 @@ sub_8013846:
 	push {r4,lr}
 	mov r0, #0
 	bl sub_8013854
-	bl initStruct_8013438 // (void *struc) -> void
+	bl initStruct_8013438 // (void *struct) -> void
 	pop {r4,pc}
 	thumb_func_end sub_8013846
 
@@ -10257,7 +10261,7 @@ loc_8013956:
 	ldrb r1, [r6,#0x1b]
 	tst r1, r1
 	beq loc_8013970
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	bl sub_80107C0
 	mov r1, #0x10
 	mov r2, #2
@@ -10274,19 +10278,19 @@ loc_8013980:
 	ldrb r1, [r6,#0x1c]
 	tst r1, r1
 	beq loc_801398E
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	b loc_8013992
 loc_801398E:
 	bl object_clearFlag // (int bitfield) -> void
 loc_8013992:
 	ldr r0, off_8013CAC // =timer_2000000 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #1
 	lsl r0, r0, #0x12
 	ldrb r1, [r6,#0x1d]
 	tst r1, r1
 	beq loc_80139A8
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	b loc_80139AC
 loc_80139A8:
 	bl object_clearFlag // (int bitfield) -> void
@@ -10297,7 +10301,7 @@ loc_80139AC:
 	ldrb r1, [r6,r2]
 	tst r1, r1
 	beq loc_80139BE
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	b locret_80139C2
 loc_80139BE:
 	bl object_clearFlag // (int bitfield) -> void
@@ -10425,7 +10429,7 @@ loc_8013A94:
 	mov r4, #0xe
 	bl sub_80E08C4
 	mov r0, #0x8e
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	b loc_8013ADC
 loc_8013AB4:
 	cmp r1, #0xf5
@@ -10524,7 +10528,7 @@ init_8013B4E:
 loc_8013B56:
 	mov r4, r1
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk20047cc_Ptr]
+	ldr r7, [r7,#oToolkit_S20047CC_Ptrs]
 	mov r2, #0x64 
 	mul r0, r2
 	add r7, r7, r0
@@ -10540,7 +10544,7 @@ init_8013B64:
 	mov r7, r0
 loc_8013B6E:
 	mov r0, r7
-	bl initStruct_8013438 // (void *struc) -> void
+	bl initStruct_8013438 // (void *struct) -> void
 	mov r0, #0x10
 	mul r0, r4
 	ldr r6, off_8013CB4 // =byte_80210DD 
@@ -10600,7 +10604,7 @@ sub_8013BDA:
 	mov r7, r0
 	mov r4, r1
 	mov r0, r7
-	bl initStruct_8013438 // (void *struc) -> void
+	bl initStruct_8013438 // (void *struct) -> void
 	mov r0, #0x10
 	mul r0, r4
 	ldr r6, off_8013CB8 // =byte_80210DD 
@@ -10754,7 +10758,7 @@ loc_8013D20:
 	ldrh r0, [r0,r1]
 	tst r0, r0
 	beq locret_8013D3C
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 locret_8013D3C:
 	pop {r4-r7,pc}
 	.byte 0, 0
@@ -11125,8 +11129,8 @@ sub_8013FD0:
 	sub r0, r1, #1
 loc_8013FEC:
 	bl object_subtractHP
-	mov r0, #0x6b 
-	bl sound_play // () -> void
+	mov r0, #SOUND_HIT_6B
+	bl PlaySoundEffect
 locret_8013FF6:
 	pop {r5,pc}
 	thumb_func_end sub_8013FD0
@@ -11151,22 +11155,25 @@ locret_8014016:
 	pop {pc}
 	thumb_func_end sub_8013FF8
 
-// (int idx_8014034) -> bool
-	thumb_func_start navicust_8014018
-navicust_8014018:
+	thumb_func_start SelectS20047CCStruct8014018
+// (int idx) -> bool8
+SelectS20047CCStruct8014018:
+    // return byte_8014034[a1]
 	ldr r1, off_8014030 // =byte_8014034 
 	ldrb r0, [r1,r0]
 	mov pc, lr
-	thumb_func_end navicust_8014018
+	thumb_func_end SelectS20047CCStruct8014018
 
 	thumb_func_start sub_801401E
+// (int a1) -> void*
 sub_801401E:
 	push {lr}
-	bl navicust_8014018 // (int idx_8014034) -> bool
+	// return &Toolkit->S20047CC_Ptrs[100*SelectS20047CCStruct8014018(a1)]
+	bl SelectS20047CCStruct8014018 // (int idx) -> bool8
 	mov r1, #0x64 
 	mul r0, r1
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk20047cc_Ptr]
+	ldr r1, [r1,#oToolkit_S20047CC_Ptrs]
 	add r0, r0, r1
 	pop {pc}
 off_8014030: .word byte_8014034
@@ -11197,8 +11204,8 @@ sub_8014040:
 	ldmia r0!, {r1-r3}
 	mov r4, #6
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #0x8a
-	bl sound_play // () -> void
+	mov r0, #SOUND_UNK_8A
+	bl PlaySoundEffect
 locret_801407E:
 	pop {r4,r5,pc}
 	thumb_func_end sub_8014040
@@ -11558,7 +11565,7 @@ sub_8014326:
 	bl object_clearFlag2
 	mov r0, #1
 	lsl r0, r0, #0x15
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x96
 	lsl r0, r0, #2
 	strh r0, [r4,#oAIData_Anger]
@@ -11850,13 +11857,13 @@ sub_8014536:
 	mov r1, #0x2c 
 	bl GetPlayerBattleVarByte_AllianceFromBattleObject
 	lsl r0, r0, #2
-	ldr r1, off_801454C // =off_8014550 
+	ldr r1, off_801454C // =JumpTable8014550
 	ldr r0, [r1,r0]
 	mov lr, pc
 	bx r0
 	pop {r6,pc}
-off_801454C: .word off_8014550
-off_8014550: .word nullsub_51+1
+off_801454C: .word JumpTable8014550
+JumpTable8014550: .word nullsub_51+1
 	.word nullsub_50+1
 	.word nullsub_52+1
 	.word nullsub_53+1
@@ -11864,8 +11871,8 @@ off_8014550: .word nullsub_51+1
 	.word nullsub_55+1
 	.word nullsub_56+1
 	.word sub_80145C2+1
-	.word sub_80145D4+1
-	.word sub_80145DE+1
+	.word SetObjectAirshoeFlag+1
+	.word SetObjectSuperArmorFlag+1
 	.word nullsub_4+1
 	.word sub_80145EC+1
 	.word sub_8014606+1
@@ -11932,21 +11939,22 @@ locret_80145D2:
 	thumb_func_end sub_80145C2
 
 	thumb_local_start
-sub_80145D4:
+SetObjectAirshoeFlag:
 	push {lr}
-	mov r0, #0x10
-	bl object_setFlag // (int a1) -> void
+	mov r0, #OBJECT_FLAGS_AIRSHOE
+	bl object_setFlag1 // (int a1) -> void
 	pop {pc}
-	thumb_func_end sub_80145D4
+	thumb_func_end SetObjectAirshoeFlag
 
 	thumb_local_start
-sub_80145DE:
+// (BattleObject *obj@R5) -> void
+SetObjectSuperArmorFlag:
 	push {lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
+	bl object_setFlag1 // (int a1) -> void
 	pop {pc}
-	thumb_func_end sub_80145DE
+	thumb_func_end SetObjectSuperArmorFlag
 
 	thumb_local_start
 nullsub_4:
@@ -11957,8 +11965,8 @@ nullsub_4:
 sub_80145EC:
 	push {r7,lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
+	bl object_setFlag1 // (int a1) -> void
 	mov r7, #0x40 
 	add r7, r7, r6
 	ldr r0, [r7]
@@ -11973,7 +11981,7 @@ locret_8014604:
 sub_8014606:
 	push {r7,lr}
 	mov r0, #0x30 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	bl sub_80107C0
 	mov r1, #0x10
 	mov r2, #2
@@ -12006,8 +12014,8 @@ loc_801463A:
 sub_8014640:
 	push {lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
+	bl object_setFlag1 // (int a1) -> void
 	bl sub_8014606
 	pop {pc}
 	thumb_func_end sub_8014640
@@ -12016,8 +12024,8 @@ sub_8014640:
 sub_8014650:
 	push {r7,lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
+	bl object_setFlag1 // (int a1) -> void
 	mov r7, #0x40 
 	add r7, r7, r6
 	ldr r0, [r7]
@@ -12035,7 +12043,7 @@ loc_8014668:
 sub_8014674:
 	push {r7,lr}
 	ldr r0, dword_80147DC // =GameHeader
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	bl sub_80107C0
 	mov r1, #0x10
 	mov r2, #2
@@ -12143,8 +12151,8 @@ locret_801473A:
 	thumb_local_start
 sub_801473C:
 	push {lr}
-	mov r0, #0x10
-	bl object_setFlag // (int a1) -> void
+	mov r0, #OBJECT_FLAGS_AIRSHOE
+	bl object_setFlag1 // (int a1) -> void
 	pop {pc}
 	thumb_func_end sub_801473C
 
@@ -12152,8 +12160,8 @@ sub_801473C:
 sub_8014746:
 	push {lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
+	bl object_setFlag1 // (int a1) -> void
 	pop {pc}
 	thumb_func_end sub_8014746
 
@@ -12166,8 +12174,8 @@ nullsub_5:
 sub_8014754:
 	push {r7,lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
+	bl object_setFlag1 // (int a1) -> void
 	pop {r7,pc}
 	thumb_func_end sub_8014754
 
@@ -12175,7 +12183,7 @@ sub_8014754:
 sub_8014760:
 	push {lr}
 	mov r0, #0x30 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	bl sub_80107C0
 	mov r1, #0x10
 	mov r2, #2
@@ -12201,8 +12209,8 @@ loc_8014786:
 sub_801478C:
 	push {lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
+	bl object_setFlag1 // (int a1) -> void
 	bl sub_8014760
 	pop {pc}
 	thumb_func_end sub_801478C
@@ -12211,8 +12219,8 @@ sub_801478C:
 sub_801479C:
 	push {r7,lr}
 	mov r0, #1
-	lsl r0, r0, #0x11
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
+	bl object_setFlag1 // (int a1) -> void
 	ldr r0, dword_80147D8 // =0xffff 
 	bl object_setInvulnerableTime
 	bl sub_802D310
@@ -12223,13 +12231,13 @@ sub_801479C:
 sub_80147B2:
 	push {lr}
 	mov r0, #0x30 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	bl sub_80107C0
 	mov r1, #0x10
 	mov r2, #2
 	bl sub_801A082
-	ldr r0, dword_80147E0 // =0x8000000 
-	bl object_setFlag // (int a1) -> void
+	ldr r0, dword_80147E0 // =0x8000000
+	bl object_setFlag1 // (int a1) -> void
 	ldr r0, dword_80147D8 // =0xffff 
 	bl object_setInvulnerableTime
 	bl sub_802D310
@@ -12804,9 +12812,9 @@ loc_8014C72:
 	neg r1, r1
 	bl sub_801DC06
 	mov r0, #0x8d
-	bl sound_play // () -> void
-	mov r0, #0x77 
-	bl sound_play // () -> void
+	bl PlaySoundEffect
+	mov r0, #SOUND_LOG_IN_77
+	bl PlaySoundEffect
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 loc_8014C9E:
@@ -12921,7 +12929,7 @@ loc_8014D82:
 	ldr r0, dword_8014E04 // =0x80000 
 	bl sub_8010312
 	mov r0, #0xf7
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r4, #0x2e 
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	lsl r0, r0, #8
@@ -12954,7 +12962,7 @@ loc_8014D82:
 	ldr r1, off_8014E00 // =0x1cd 
 loc_8014DD0:
 	mov r0, r1
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #2
 	mov r1, #0x3c 
 	bl sub_80302B6
@@ -13020,7 +13028,7 @@ sub_8014E08:
 	bl sub_80E11E0
 	mov r0, #1
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r1, #0x2c 
 	bl GetPlayerBattleVarByte_AllianceFromBattleObject
 	cmp r0, #1
@@ -13174,7 +13182,7 @@ loc_8014FBA:
 	ldr r0, dword_801503C // =0x80000 
 	bl sub_8010312
 	mov r0, #0xf7
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r4, #0x2e 
 	ldrb r0, [r5,#oBattleObject_Alliance]
 	lsl r0, r0, #8
@@ -13207,7 +13215,7 @@ loc_8014FBA:
 	ldr r1, off_8015038 // =0x1cd 
 loc_8015008:
 	mov r0, r1
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #2
 	mov r1, #0x3c 
 	bl sub_80302B6
@@ -13273,7 +13281,7 @@ sub_8015040:
 	bl sub_80E11E0
 	mov r0, #1
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r1, #0x2c 
 	bl GetPlayerBattleVarByte_AllianceFromBattleObject
 	cmp r0, #1
@@ -13443,7 +13451,7 @@ loc_80151E6:
 	strb r1, [r0,#oObjectHeader_Flags]
 	mov r0, #0x9b
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r4, #0x3e 
 	orr r4, r6
 	ldrb r0, [r5,#oBattleObject_Alliance]
@@ -13479,7 +13487,7 @@ loc_80151E6:
 	ldr r1, off_80152C4 // =0x1cd 
 loc_801526E:
 	mov r0, r1
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #2
 	mov r1, #0x4b 
 	bl sub_80302B6
@@ -13498,7 +13506,7 @@ loc_8015288:
 loc_8015292:
 	mov r0, #0x9b
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 loc_801529A:
 	ldrh r0, [r7,#oAIAttackVars_Unk_10]
 	sub r0, #1
@@ -13559,7 +13567,7 @@ sub_80152C8:
 	bl sub_80E11E0
 	mov r0, #1
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r1, #0x2c 
 	bl GetPlayerBattleVarByte_AllianceFromBattleObject
 	cmp r0, #1
@@ -13823,9 +13831,9 @@ loc_8015578:
 	neg r1, r1
 	bl sub_801DC06
 	mov r0, #0x8d
-	bl sound_play // () -> void
-	mov r0, #0x77 
-	bl sound_play // () -> void
+	bl PlaySoundEffect
+	mov r0, #SOUND_LOG_IN_77
+	bl PlaySoundEffect
 	mov r0, #4
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 loc_8015594:
@@ -13936,7 +13944,7 @@ loc_801565E:
 	add r0, #1
 	strb r0, [r7,#oAIAttackVars_Unk_01]
 	mov r0, #0x8e
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
@@ -14053,7 +14061,7 @@ loc_801577C:
 	mov r0, #4
 	bl battle_setFlags
 	mov r0, #0x8e
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	ldrb r0, [r5,#oBattleObject_FuturePanelX]
 	strb r0, [r5,#oBattleObject_PanelX]
 	ldrb r1, [r5,#oBattleObject_FuturePanelY]
@@ -14686,7 +14694,7 @@ loc_8015C36:
 	mov r0, r4
 	mov r1, #0xe
 	mov r2, #0
-	bl sub_80136F0
+	bl SetField8ToSelectedS20047CCStruct
 	add r4, #1
 	cmp r4, #7
 	blt loc_8015C36
@@ -14974,7 +14982,7 @@ loc_8015E42:
 // r2 - number of available panels
 GetRandomRelativePanelFiltered:
 	push {r4,r7,lr}
-	ldr r7, =PanelOffsetListsPointerTable 
+	ldr r7, =PanelOffsetListsPointerTable
 	lsl r4, r4, #2
 	ldr r4, [r7,r4]
 	bl _GetRandomRelativePanelFiltered
@@ -15491,7 +15499,7 @@ loc_80163E2:
 	tst r0, r0
 	beq loc_8016410
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #2
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x10
@@ -15615,7 +15623,7 @@ sub_80164C0:
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #0x14
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #0x1e
@@ -15668,7 +15676,7 @@ sub_8016520:
 	strb r1, [r0,#oObjectHeader_Flags]
 	mov r0, #0x2a 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 loc_8016552:
 	ldrh r0, [r5,#oBattleObject_Timer2]
 	sub r0, #1
@@ -15836,7 +15844,7 @@ loc_8016672:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80166AC
 loc_80166A4:
@@ -15873,7 +15881,7 @@ sub_80166D0:
 	push {r6,r7,lr}
 	mov r0, #1
 	lsl r0, r0, #0xc
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	ldrh r0, [r5,#oBattleObject_FuturePanelXY]
 	strh r0, [r5,#oBattleObject_PanelXY]
 	bl object_setCoordinatesFromPanels // () -> void
@@ -16393,7 +16401,7 @@ sub_8016B36:
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r0, #0x19
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_8016B5C:
@@ -16425,7 +16433,7 @@ sub_8016B72:
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	mov r0, #0x2e 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_8016B9A:
@@ -16447,7 +16455,7 @@ loc_8016B9A:
 	bne locret_8016BD0
 	mov r0, #0x25 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	ldr r0, [r5,#oBattleObject_Unk_5c]
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	mov r0, #0
@@ -16614,7 +16622,7 @@ sub_8016D08:
 	push {r6,r7,lr}
 	mov r0, #1
 	lsl r0, r0, #0x14
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	bl sub_800F404
 	mov r0, #0
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
@@ -16824,15 +16832,15 @@ dword_8016EC0: .word 0x80110C00
 	thumb_func_start sub_8016EC4
 sub_8016EC4:
 	push {lr}
-	ldr r1, off_8016ED4 // =off_8016ED8 
+	ldr r1, JumpTable8016ED8_p // =JumpTable8016ED8
 	ldrb r0, [r5,#oBattleObject_CurPhase]
 	ldr r1, [r1,r0]
 	mov lr, pc
 	bx r1
 	pop {pc}
 	.balign 4, 0x00
-off_8016ED4: .word off_8016ED8
-off_8016ED8: .word sub_8016EE0+1
+JumpTable8016ED8_p: .word JumpTable8016ED8
+JumpTable8016ED8: .word sub_8016EE0+1
 	.word sub_8016F1A+1
 	thumb_func_end sub_8016EC4
 
@@ -16886,7 +16894,7 @@ sub_8016F1A:
 	bl sub_80E1A86
 	mov r0, r5
 	bl sub_80077B4
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_8016F54:
 	pop {r4,pc}
@@ -16965,33 +16973,33 @@ loc_8016FE6:
 	beq loc_8017000
 	mov r0, #1
 	lsl r0, r0, #0x1b
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 loc_8017000:
 	mov r3, #8
 	tst r4, r3
 	beq loc_801700E
 	mov r0, #1
 	lsl r0, r0, #0x19
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 loc_801700E:
 	mov r3, #4
 	tst r4, r3
 	beq loc_801701A
 	mov r0, #0x20 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 loc_801701A:
 	mov r3, #2
 	tst r4, r3
 	beq loc_8017026
-	mov r0, #0x10
-	bl object_setFlag // (int a1) -> void
+	mov r0, #OBJECT_FLAGS_AIRSHOE
+	bl object_setFlag1 // (int a1) -> void
 loc_8017026:
 	mov r3, #1
 	tst r4, r3
 	beq loc_8017034
 	mov r0, #1
-	lsl r0, r0, #0x11
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_SUPERARMOR_BIT
+	bl object_setFlag1 // (int a1) -> void
 loc_8017034:
 	bl sub_801DB84
 	ldrb r0, [r5,#oBattleObject_Alliance]
@@ -17033,7 +17041,7 @@ loc_8017086:
 	ldr r1, [r5,#oBattleObject_AIDataPtr]
 	strb r0, [r1,#oAIData_Unk_0c]
 	bl sub_800F378
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_8017092:
 	pop {r4,r6,r7,pc}
@@ -17140,7 +17148,7 @@ loc_8017168:
 	mov r1, #2
 	bic r0, r1
 	strb r0, [r5,#oObjectHeader_Flags]
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_80171A4
 loc_801719C:
@@ -17260,7 +17268,7 @@ sub_8017274:
 	bl IsPaletteFadeActive // () -> zf
 	tst r0, r0
 	bne loc_8017284
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 	b locret_801728C
 loc_8017284:
@@ -17396,7 +17404,7 @@ loc_80173C6: .align 1, 0
 loc_80173E6:
 	bl sub_802DFC8
 	bl sub_8013FF8
-	mov r0, #4
+	mov r0, #CUR_STATE_UPDATE
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80173F2:
 	pop {r4,r7,pc}
@@ -17472,7 +17480,7 @@ sub_801746E:
 	str r0, [r1,#oAIData_Unk_5c]
 	str r0, [r1,#oAIData_Unk_68]
 	mov r0, #0x6c 
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #0x34 
 	add r0, r0, r5
 	ldmia r0!, {r1-r3}
@@ -17541,7 +17549,7 @@ sub_80174FE:
 	bne loc_8017582
 	bl sub_800F3E8
 	ldr r0, dword_80175B0 // =0x400400 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	bl sub_801A284
 	bl sub_801A29A
 	bl sub_801A2B0
@@ -17616,7 +17624,7 @@ sub_80175B8:
 	bne loc_8017628
 	bl sub_800F394
 	ldr r0, dword_8017674 // =0x400000 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	ldr r0, byte_801766C // =0x41
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_80101C4
@@ -17703,7 +17711,7 @@ sub_8017688:
 	bne loc_8017708
 	bl sub_800F3B0
 	ldr r0, dword_8017754 // =0x400000 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	ldr r0, byte_801774C // =0x41
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_801A67E
@@ -17711,7 +17719,7 @@ sub_8017688:
 	bl sub_800EB08
 	mov r0, #0x19
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	ldr r0, dword_8017764 // =0x20005f 
 	bl sub_801031C
 	bl sub_8012EA8
@@ -17795,14 +17803,14 @@ sub_8017768:
 	bne loc_80177E4
 	bl sub_800F3CC
 	ldr r0, dword_8017850 // =0x400000 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	ldr r0, byte_8017848 // =0x41
 	bl object_clearFlag // (int bitfield) -> void
 	bl sub_80101C4
 	bl sub_800EB08
 	mov r0, #0x2e 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	ldr r0, dword_8017860 // =0x20005f 
 	bl sub_801031C
 	bl sub_8012EA8
@@ -17876,7 +17884,7 @@ loc_8017802:
 	str r0, [r5,#oBattleObject_Z]
 	mov r0, #0x25 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_CurAnim]
 	mov r0, #8
@@ -17941,7 +17949,7 @@ sub_80178D4:
 	push {r6,r7,lr}
 	bl sub_800F404
 	ldr r0, dword_8017A90 // =0x500000 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldr r1, [r5,#oBattleObject_AIDataPtr]
@@ -18177,7 +18185,7 @@ sub_8017AB4:
 	lsl r1, r1, #0x10
 	lsr r1, r1, #0x10
 	beq loc_8017B5E
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#9]
 	mov r1, #1
 	tst r0, r1
@@ -18409,7 +18417,7 @@ sub_8017CE0:
 	push {r6,r7,lr}
 	mov r0, #1
 	lsl r0, r0, #0x14
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrh r0, [r5,#oBattleObject_FuturePanelXY]
@@ -18582,7 +18590,7 @@ sub_8017E44:
 	push {r4,r6,r7,lr}
 	mov r0, #1
 	lsl r0, r0, #0x14
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0
 	str r0, [r5,#oBattleObject_RelatedObject1Ptr]
 	ldrh r0, [r5,#oBattleObject_FuturePanelXY]
@@ -18824,7 +18832,7 @@ loc_801803C:
 	ldr r0, off_8018298 // =0xc00 
 	bl object_clearFlag2
 	ldr r0, off_801829C // =LCDControl 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #0x40 
 	lsl r0, r0, #0x10
 	ldr r1, [r5,#oBattleObject_Z]
@@ -18839,7 +18847,7 @@ loc_801803C:
 	strb r0, [r5,#oBattleObject_Unk_19]
 	mov r0, #0x2b 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	bl object_clearCollisionRegion // () -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PreventAnim]
@@ -18909,7 +18917,7 @@ sub_80180A8:
 	strb r0, [r5,#oBattleObject_Unk_19]
 	mov r0, #0xd
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #0x10
 	strb r0, [r5,#oBattleObject_PreventAnim]
 locret_80180EA:
@@ -18986,7 +18994,7 @@ sub_8018154:
 	ldr r1, dword_80182A8 // =0x20000000 
 loc_8018164:
 	mov r0, r1
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	ldr r0, off_80182AC // =0x3000 
 	bl object_clearFlag2
 	mov r0, #0x3c 
@@ -19051,7 +19059,7 @@ loc_80181E2:
 	ldr r6, [r5,#oBattleObject_DamageAndStaminaDamageCounterDisabler]
 	bl sub_80D99EC
 loc_80181F0:
-	mov r0, #8
+	mov r0, #CUR_STATE_DESTROY
 	str r0, [r5,#oBattleObject_CurStateActionPhaseAndPhaseInitialized]
 locret_80181F4:
 	pop {r4,pc}
@@ -20254,14 +20262,14 @@ sub_801A146:
 	thumb_func_end sub_801A146
 
 // (int a1) -> void
-	thumb_func_start object_setFlag
-object_setFlag:
+	thumb_func_start object_setFlag1
+object_setFlag1:
 	ldr r1, [r5,#oBattleObject_CollisionDataPtr]
 	ldr r2, [r1,#oCollisionData_ObjectFlags1]
 	orr r2, r0
 	str r2, [r1,#oCollisionData_ObjectFlags1]
 	mov pc, lr
-	thumb_func_end object_setFlag
+	thumb_func_end object_setFlag1
 
 // (int bitfield) -> void
 	thumb_func_start object_clearFlag
@@ -20569,8 +20577,8 @@ sub_801A324:
 	ldmia r0!, {r1-r3}
 	mov r4, #6
 	bl SpawnT4BattleObjectWithId0
-	mov r0, #0x8a
-	bl sound_play // () -> void
+	mov r0, #SOUND_UNK_8A
+	bl PlaySoundEffect
 locret_801A368:
 	pop {r4,pc}
 	thumb_func_end sub_801A324
@@ -20739,8 +20747,8 @@ loc_801A47C:
 	bne locret_801A4A4
 	bl sub_801E270
 	push {r0}
-	mov r0, #0x86
-	bl sound_play // () -> void
+	mov r0, #SOUND_SELECT_86
+	bl PlaySoundEffect
 	pop {r0}
 locret_801A4A4:
 	pop {r4,r6,pc}
@@ -20963,7 +20971,7 @@ loc_801A610:
 	tst r0, r1
 	beq loc_801A632
 	mov r0, #0x94
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 loc_801A632:
 	ldr r0, dword_801A644 // =0x202 
 	bl object_clearFlag // (int bitfield) -> void
@@ -20971,7 +20979,7 @@ loc_801A632:
 loc_801A63A:
 	mov r0, #1
 	lsl r0, r0, #9
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 locret_801A642:
 	pop {r6,pc}
 dword_801A644: .word 0x202
@@ -21007,7 +21015,7 @@ sub_801A66C:
 	strh r0, [r1,#oCollisionData_Unk_24]
 	mov r0, #1
 	lsl r0, r0, #9
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	pop {pc}
 	thumb_func_end sub_801A66C
 
@@ -22093,8 +22101,8 @@ loc_801AF84:
 	mov r0, r1
 	bl object_clearFlag2
 	mov r0, #1
-	lsl r0, r0, #8
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	bl object_setAttack0
 	b loc_801B142
@@ -22133,7 +22141,7 @@ loc_801AFE4:
 	mov r0, #0
 	strb r0, [r5,#oBattleObject_PreventAnim]
 	bl GetAIData_Unk_44_Flag
-	ldr r1, off_801B1A8 // =0x8000000 
+	ldr r1, off_801B1A8 // =0x8000000
 	tst r0, r1
 	beq loc_801B006
 	mov r0, r1
@@ -22360,7 +22368,7 @@ loc_801B1FA:
 	mov r0, r1
 	bl object_clearFlag2
 	ldr r0, dword_801B384 // =0x40000100 
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -22380,7 +22388,7 @@ loc_801B21C:
 	push {r0}
 	bl sprite_forceWhitePalette
 	mov r0, #0x6d 
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	bl sub_801A67E
 	pop {r0}
 	bl object_subtractHP
@@ -22411,8 +22419,8 @@ loc_801B266:
 	mov r0, r1
 	bl object_clearFlag2
 	mov r0, #1
-	lsl r0, r0, #8
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -22490,7 +22498,7 @@ loc_801B324:
 loc_801B32C:
 	mov r0, #1
 	lsl r0, r0, #9
-	bl object_setFlag // (int a1) -> void
+	bl object_setFlag1 // (int a1) -> void
 loc_801B334:
 	bl sub_800E730
 loc_801B338:
@@ -22541,8 +22549,8 @@ sub_801B394:
 	beq loc_801B3BC
 	push {r0}
 	bl sprite_forceWhitePalette
-	mov r0, #0x85
-	bl sound_play // () -> void
+	mov r0, #SOUND_UNK_85
+	bl PlaySoundEffect
 	pop {r0}
 	bl object_subtractHP
 	tst r1, r1
@@ -22579,8 +22587,8 @@ loc_801B3E0:
 	mov r0, r1
 	bl object_clearFlag2
 	mov r0, #1
-	lsl r0, r0, #8
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -22694,8 +22702,8 @@ sub_801B4D4:
 	beq loc_801B4FC
 	push {r0}
 	bl sprite_forceWhitePalette
-	mov r0, #0x85
-	bl sound_play // () -> void
+	mov r0, #SOUND_UNK_85
+	bl PlaySoundEffect
 	pop {r0}
 	bl object_subtractHP
 	tst r1, r1
@@ -22730,8 +22738,8 @@ loc_801B51C:
 	mov r0, r1
 	bl object_clearFlag2
 	mov r0, #1
-	lsl r0, r0, #8
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -22845,8 +22853,8 @@ sub_801B610:
 	beq loc_801B638
 	push {r0}
 	bl sprite_forceWhitePalette
-	mov r0, #0x85
-	bl sound_play // () -> void
+	mov r0, #SOUND_UNK_85
+	bl PlaySoundEffect
 	pop {r0}
 	bl object_subtractHP
 	tst r1, r1
@@ -22883,8 +22891,8 @@ loc_801B65C:
 	mov r0, r1
 	bl object_clearFlag2
 	mov r0, #1
-	lsl r0, r0, #8
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -22998,8 +23006,8 @@ sub_801B750:
 	beq loc_801B778
 	push {r0}
 	bl sprite_forceWhitePalette
-	mov r0, #0x85
-	bl sound_play // () -> void
+	mov r0, #SOUND_UNK_85
+	bl PlaySoundEffect
 	pop {r0}
 	bl object_subtractHP
 	tst r1, r1
@@ -23036,8 +23044,8 @@ loc_801B79C:
 	mov r0, r1
 	bl object_clearFlag2
 	mov r0, #1
-	lsl r0, r0, #8
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -23143,8 +23151,8 @@ sub_801B878:
 	beq loc_801B8A0
 	push {r0}
 	bl sprite_forceWhitePalette
-	mov r0, #0x85
-	bl sound_play // () -> void
+	mov r0, #SOUND_UNK_85
+	bl PlaySoundEffect
 	pop {r0}
 	bl object_subtractHP
 	tst r1, r1
@@ -23184,8 +23192,8 @@ loc_801B8CA:
 	mov r0, r1
 	bl object_clearFlag2
 	mov r0, #1
-	lsl r0, r0, #8
-	bl object_setFlag // (int a1) -> void
+	lsl r0, r0, #OBJECT_FLAGS_INVULNERABLE
+	bl object_setFlag1 // (int a1) -> void
 	mov r0, #2
 	strb r0, [r5,#oBattleObject_CurAction]
 	mov r0, #0
@@ -23372,7 +23380,7 @@ loc_801BA3A:
 	mov r4, #0x6b 
 loc_801BA58:
 	mov r0, r4
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	pop {r1}
 	tst r1, r1
 	beq loc_801BA76
@@ -23388,7 +23396,7 @@ loc_801BA76:
 	bl sub_802DD2A
 	tst r0, r0
 	beq loc_801BA86
-	ldr r0, off_801BB18 // =0x8000000 
+	ldr r0, off_801BB18 // =0x8000000
 	bl SetAIData_Unk_44_Flag
 	b loc_801BA8C
 loc_801BA86:
@@ -23793,7 +23801,7 @@ sub_801BD3C:
 	bcs loc_801BDA2
 	beq loc_801BD9C
 	lsr r3, r3, #0x17
-	ldr r7, off_801BE68 // =PanelOffsetListsPointerTable 
+	ldr r7, off_801BE68 // =PanelOffsetListsPointerTable
 	ldr r7, [r7,r3]
 	mov r3, #0
 loc_801BD5E:
@@ -23963,12 +23971,12 @@ off_801BE6C: .word byte_8019C34
 sub_801BE70:
 	push {lr}
 	// memBlock
-	ldr r0, off_801BFE8 // =byte_2035280 
+	ldr r0, off_801BFE8 // =eStruct2035280
 	// size
 	mov r1, #0x60 
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r2, #0x20 
-	ldr r1, off_801BFE8 // =byte_2035280 
+	ldr r1, off_801BFE8 // =eStruct2035280
 	strh r2, [r1,#0x22] // (word_20352A2 - 0x2035280)
 	mov r2, #0
 	sub r2, #1
@@ -24000,7 +24008,7 @@ off_801BEB4: .word dword_20367E0
 
 	thumb_func_start sub_801BEB8
 sub_801BEB8:
-	ldr r1, off_801BFE8 // =byte_2035280 
+	ldr r1, off_801BFE8 // =eStruct2035280
 	ldr r2, [r1,#0x44] // (dword_20352C4 - 0x2035280)
 	orr r2, r0
 	str r2, [r1,#0x44] // (dword_20352C4 - 0x2035280)
@@ -24009,7 +24017,7 @@ sub_801BEB8:
 
 	thumb_func_start sub_801BEC2
 sub_801BEC2:
-	ldr r1, off_801BFE8 // =byte_2035280 
+	ldr r1, off_801BFE8 // =eStruct2035280
 	ldr r2, [r1,#0x44] // (dword_20352C4 - 0x2035280)
 	bic r2, r0
 	str r2, [r1,#0x44] // (dword_20352C4 - 0x2035280)
@@ -24018,7 +24026,7 @@ sub_801BEC2:
 
 	thumb_func_start sub_801BECC
 sub_801BECC:
-	ldr r1, off_801BFE8 // =byte_2035280 
+	ldr r1, off_801BFE8 // =eStruct2035280
 	ldr r2, [r1,#0x40] // (dword_20352C0 - 0x2035280)
 	orr r2, r0
 	str r2, [r1,#0x40] // (dword_20352C0 - 0x2035280)
@@ -24027,7 +24035,7 @@ sub_801BECC:
 
 	thumb_func_start sub_801BED6
 sub_801BED6:
-	ldr r1, off_801BFE8 // =byte_2035280 
+	ldr r1, off_801BFE8 // =eStruct2035280
 	ldr r2, [r1,#0x40] // (dword_20352C0 - 0x2035280)
 	bic r2, r0
 	str r2, [r1,#0x40] // (dword_20352C0 - 0x2035280)
@@ -24037,7 +24045,7 @@ sub_801BED6:
 	thumb_func_start sub_801BEE0
 sub_801BEE0:
 	push {r5-r7,lr}
-	ldr r5, off_801BFE8 // =byte_2035280 
+	ldr r5, off_801BFE8 // =eStruct2035280
 	ldr r6, off_801BF00 // =off_801BF04 
 	ldr r7, [r5,#0x40] // (dword_20352C0 - 0x2035280)
 loc_801BEE8:
@@ -24085,7 +24093,7 @@ off_801BF04: .word sub_801BFEE+1
 	thumb_func_start sub_801BF64
 sub_801BF64:
 	push {r5-r7,lr}
-	ldr r5, off_801BFE8 // =byte_2035280 
+	ldr r5, off_801BFE8 // =eStruct2035280
 	ldr r6, off_801BF84 // =off_801BF88 
 	ldr r7, [r5,#0x44] // (dword_20352C4 - 0x2035280)
 loc_801BF6C:
@@ -24128,7 +24136,7 @@ off_801BF88: .word sub_801C06E+1
 	.word sub_801D564+1
 	.word sub_801D65C+1
 	.word sub_801D792+1
-off_801BFE8: .word byte_2035280
+off_801BFE8: .word eStruct2035280
 	thumb_func_end sub_801BF64
 
 	thumb_local_start
@@ -24195,7 +24203,7 @@ loc_801C048:
 loc_801C050:
 	lsl r0, r0, #0x17
 	lsr r0, r0, #0x17
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldr r0, [r0,#0x20]
 loc_801C05A:
 	mov r1, r7
@@ -24719,13 +24727,13 @@ sub_801C416:
 	mov r0, #0x11
 	// i
 	mov r1, #0x12
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #0
-	// tileRefs
-	ldr r3, tileRefs // =byte_801D904
+	// tileIds
+	ldr r3, tileIds // =byte_801D904
 	mov r4, #0xa
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	ldr r0, dword_801C45C // =0x40780090 
 	ldr r1, dword_801C460 // =0x9768 
 	mov r2, #1
@@ -24741,7 +24749,7 @@ sub_801C416:
 dword_801C444: .word 0x600C980
 dword_801C448: .word 0x600CA40
 off_801C44C: .word off_801D8D8
-tileRefs: .word byte_801D904
+tileIds: .word byte_801D904
 off_801C454: .word byte_3001670
 off_801C458: .word word_3001684
 dword_801C45C: .word 0x40780090
@@ -24776,7 +24784,7 @@ sub_801C470:
 	mov r0, #2
 	bl battle_setFlags
 	mov r0, #0x8f
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 locret_801C4AC:
 	pop {pc}
 	thumb_func_end sub_801C470
@@ -24800,7 +24808,7 @@ sub_801C4AE:
 	mov r0, #2
 	bl battle_setFlags
 	mov r0, #0x8f
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 locret_801C4DA:
 	pop {pc}
 dword_801C4DC: .word 0x4000
@@ -24836,7 +24844,7 @@ loc_801C500:
 	mov r2, #3
 	mov r4, #0x10
 	mov r5, #1
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #8
 	and r0, r6
 	ldr r3, off_801C6BC // =byte_801C6C0
@@ -24855,7 +24863,7 @@ loc_801C534:
 	mov r4, #0x10
 	push {r5}
 	mov r5, #1
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	pop {r5}
 	lsr r4, r6, #0xa
 	cmp r4, #0
@@ -24865,7 +24873,7 @@ loc_801C534:
 	mov r2, #3
 	ldr r3, dword_801C6B0 // =0x922a 
 	mov r5, #1
-	bl sub_80018D0
+	bl call_sub_3005EBA
 loc_801C55C:
 	lsr r6, r6, #7
 	mov r0, #7
@@ -24911,7 +24919,7 @@ loc_801C592:
 	mov r2, #3
 	mov r4, #0x10
 	mov r5, #1
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	b locret_801C5F2
 loc_801C5B2:
 	mov r0, #7
@@ -24921,7 +24929,7 @@ loc_801C5B2:
 	mov r4, #0x10
 	push {r5}
 	mov r5, #1
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	pop {r5}
 	lsr r4, r6, #0xa
 	cmp r4, #0
@@ -24931,7 +24939,7 @@ loc_801C5B2:
 	mov r2, #3
 	ldr r3, dword_801C6B0 // =0x922a 
 	mov r5, #1
-	bl sub_80018D0
+	bl call_sub_3005EBA
 loc_801C5DA:
 	lsr r6, r6, #7
 	mov r0, #7
@@ -24985,7 +24993,7 @@ loc_801C620:
 	lsl r0, r0, #1
 	ldr r1, off_801C6E4 // =byte_801C6E8
 	ldrh r0, [r1,r0]
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 locret_801C63E:
 	pop {pc}
 	thumb_func_end sub_801C5F4
@@ -25003,7 +25011,7 @@ sub_801C640:
 	mov r4, #0x10
 	push {r5}
 	mov r5, #1
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	pop {r5}
 	ldrh r6, [r5,#0x20]
 	lsr r4, r6, #0xa
@@ -25015,7 +25023,7 @@ sub_801C640:
 	ldr r3, dword_801C6B0 // =0x922a 
 	push {r5}
 	mov r5, #1
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	pop {r5}
 loc_801C678:
 	ldr r0, dword_801C6D8 // =0x4000 
@@ -25084,8 +25092,8 @@ sub_801C6EE:
 	mov r3, #0
 	mov r4, #0x11
 	mov r5, #2
-	bl sub_80018D0
-	ldr r0, off_801C83C // =byte_2035280 
+	bl call_sub_3005EBA
+	ldr r0, off_801C83C // =eStruct2035280
 	ldr r0, [r0,#0x48] // (dword_20352C8 - 0x2035280)
 	bl sub_800ED90
 	cmp r3, #0
@@ -25100,7 +25108,7 @@ sub_801C6EE:
 	mov r5, #1
 	ldr r6, off_801C824 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r7, r0
 	mov r4, r0
 	mov r0, #0
@@ -25116,7 +25124,7 @@ sub_801C6EE:
 	bl sub_80018E0
 	// idx
 	ldr r0, [sp]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r1, [r0,#9]
 	mov r2, #2
 	tst r1, r2
@@ -25177,7 +25185,7 @@ loc_801C7C8:
 	sub r3, #1
 	bne loc_801C7C8
 loc_801C7DE:
-	ldr r0, off_801C83C // =byte_2035280 
+	ldr r0, off_801C83C // =eStruct2035280
 	ldr r0, [r0,#0x48] // (dword_20352C8 - 0x2035280)
 	ldr r1, [sp]
 	mov r3, #0
@@ -25202,13 +25210,13 @@ loc_801C806:
 	add r0, #0
 	// i
 	mov r1, #0x12
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	add r3, sp, #0xc
 	mov r4, #9
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 loc_801C818:
 	add sp, sp, #0x30
 	pop {r4-r7,pc}
@@ -25220,7 +25228,7 @@ off_801C82C: .word byte_801D954
 dword_801C830: .word 0xD1B8
 dword_801C834: .word 0xD1CE
 dword_801C838: .word 0xD1D2
-off_801C83C: .word byte_2035280
+off_801C83C: .word eStruct2035280
 	thumb_func_end sub_801C6EE
 
 	thumb_local_start
@@ -25255,8 +25263,8 @@ loc_801C85A:
 	blt loc_801C886
 	mov r0, #0
 	strb r0, [r5,#6]
-	mov r0, #0x84
-	bl sound_play // () -> void
+	mov r0, #SOUND_LOW_HP
+	bl PlaySoundEffect
 loc_801C886:
 	ldrb r0, [r5,#0x1c]
 	cmp r0, #0
@@ -25369,13 +25377,13 @@ loc_801C92A:
 	add r0, #1
 	// i
 	ldrb r1, [r5,#2]
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	mov r3, r6
 	mov r4, #4
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r5}
 	ldrb r0, [r5,#3]
 	lsl r0, r0, #5
@@ -25443,15 +25451,15 @@ sub_801C9C8:
 	push {r4,r5,lr}
 	lsl r1, r1, #4
 	ldr r3, off_801C9E0 // =byte_801D964 
-	// tileRefs
+	// tileIds
 	add r3, r3, r1
 	// i
 	mov r1, #2
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
 	mov r4, #4
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4,r5,pc}
 	.byte 0, 0
 off_801C9E0: .word byte_801D964
@@ -25519,14 +25527,14 @@ sub_801CA34:
 	sub r0, r0, r6
 	// i
 	mov r1, #4
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_801CA74 // =byte_801D984
 	mov r4, #8
 	add r4, r4, r6
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	b locret_801CA72
 loc_801CA5E:
 	mov r0, #0x16
@@ -25537,7 +25545,7 @@ loc_801CA5E:
 	mov r4, #8
 	add r4, r4, r6
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 locret_801CA72:
 	pop {r4-r6,pc}
 off_801CA74: .word byte_801D984
@@ -25582,14 +25590,14 @@ loc_801CAAE:
 	mov r0, #0x1e
 	// j
 	sub r0, r0, r2
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #0
-	// tileRefs
+	// tileIds
 	mov r3, sp
 	mov r4, #9
 	mov r5, #2
 	push {r1}
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r1}
 	add r1, #2
 	add r6, #2
@@ -26286,7 +26294,7 @@ sub_801D048:
 	mov r3, #0
 	mov r4, #0xc
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	b locret_801D128
 loc_801D070:
 	push {r4-r7}
@@ -26298,18 +26306,18 @@ loc_801D070:
 	mov r5, #1
 	ldr r6, off_801D1D0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	// j
 	mov r0, #0xe
 	// i
 	mov r1, #5
-	// tileRefs
+	// tileIds
 	ldr r3, off_801D18C // =byte_801D190
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
 	mov r4, #2
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4-r7}
 	ldrh r0, [r7,#0xc]
 	bl sub_801D12A
@@ -26369,25 +26377,25 @@ loc_801D0FE:
 	mov r0, #9
 	// i
 	mov r1, #5
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	mov r3, sp
 	mov r4, #4
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r0-r3}
 	// j
 	mov r0, #0x11
 	// i
 	mov r1, #5
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	mov r3, sp
 	mov r4, #4
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r0-r3}
 locret_801D128:
 	pop {r4-r7,pc}
@@ -26573,13 +26581,13 @@ sub_801D2A4:
 	mov r0, #1
 	// i
 	mov r1, #0x12
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #0
-	// tileRefs
+	// tileIds
 	ldr r3, off_801D340 // =byte_801D9B4
 	mov r4, #0x1c
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r5}
 	ldr r0, [r5,#0x48]
 	ldrb r0, [r0,#0x16]
@@ -26626,7 +26634,7 @@ sub_801D2A4:
 	mov r3, #0
 	mov r4, #9
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	pop {r5}
 loc_801D32A:
 	add sp, sp, #4
@@ -26661,7 +26669,7 @@ sub_801D344:
 	mov r1, #0x1c
 	b loc_801D3A2
 loc_801D36C:
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r3, [r0,#7]
 	cmp r3, #2
 	ble loc_801D378
@@ -26697,7 +26705,7 @@ loc_801D3A2:
 	mov r5, #1
 	ldr r6, off_801D3F0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	add sp, sp, #0x10
 	pop {r4-r7,pc}
 off_801D3BC: .word off_801D3C0
@@ -27182,13 +27190,13 @@ loc_801D7B8:
 	add r0, #1
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	mov r3, r6
 	mov r4, #4
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r5}
 	mov r4, #0x52 
 	ldrb r0, [r5,r4]
@@ -27219,11 +27227,8 @@ sub_801D814:
 	beq loc_801D84A
 	cmp r0, #5
 	beq loc_801D848
-	// entryIdx
-	mov r0, #1
-	// byteFlagIdx
-	mov r1, #0x63 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	movflag EVENT_163
+	bl TestEventFlagFromImmediate
 	bne loc_801D84A
 	bl TestBattleFlag_0x40
 	bne loc_801D84A
@@ -27231,11 +27236,8 @@ sub_801D814:
 	ldr r1, dword_801D850 // =0x200000 
 	tst r0, r1
 	bne loc_801D84A
-	// entryIdx
-	mov r0, #0
-	// byteFlagIdx
-	mov r1, #0xe0
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	movflag EVENT_E0
+	bl TestEventFlagFromImmediate
 	beq loc_801D84A
 loc_801D848:
 	mov r4, #1
@@ -27337,7 +27339,7 @@ sub_801DA24:
 	ldr r0, off_801DA40 // =off_801ECB4 
 	bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
 	bl sub_80103EC
-	ldr r1, off_801DB50 // =byte_2035280 
+	ldr r1, off_801DB50 // =eStruct2035280
 	str r0, [r1,#0x48] // (dword_20352C8 - 0x2035280)
 	pop {pc}
 	.byte 0, 0
@@ -27348,7 +27350,7 @@ dword_801DA44: .word 0x1F09
 	thumb_func_start sub_801DA48
 sub_801DA48:
 	push {r5-r7,lr}
-	ldr r5, off_801DB50 // =byte_2035280 
+	ldr r5, off_801DB50 // =eStruct2035280
 	ldr r6, off_801DA68 // =off_801DA6C 
 	mov r7, r0
 loc_801DA50:
@@ -27396,7 +27398,7 @@ off_801DA6C: .word sub_801DB60+1
 	thumb_func_start sub_801DACC
 sub_801DACC:
 	push {r5-r7,lr}
-	ldr r5, off_801DB50 // =byte_2035280 
+	ldr r5, off_801DB50 // =eStruct2035280
 	ldr r6, off_801DAEC // =off_801DAF0 
 	ldr r7, [r5,#0x44] // (dword_20352C4 - 0x2035280)
 	and r7, r0
@@ -27439,7 +27441,7 @@ off_801DAF0: .word sub_801DB54+1
 	.word sub_801EC2C+1
 	.word sub_801EC84+1
 	.word sub_801E060+1
-off_801DB50: .word byte_2035280
+off_801DB50: .word eStruct2035280
 	thumb_func_end sub_801DACC
 
 	thumb_local_start
@@ -27791,7 +27793,7 @@ sub_801DD60:
 	mov r3, #0
 	mov r4, #0xc
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	pop {r4,r5,pc}
 	thumb_func_end sub_801DD60
 
@@ -27840,7 +27842,7 @@ sub_801DDD8:
 	mov r3, #0
 	mov r4, #0x12
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #1
 	mov r1, #4
 	lsl r0, r1
@@ -27859,13 +27861,13 @@ sub_801DDF6:
 	mov r0, #6
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_801DEBC // =word_801ED6C 
 	mov r4, #0x12
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	mov r0, #1
 	mov r1, #4
 	lsl r0, r1
@@ -27882,7 +27884,7 @@ sub_801DE1E:
 	mov r3, #0
 	mov r4, #0x12
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #1
 	mov r1, #5
 	lsl r0, r1
@@ -27901,13 +27903,13 @@ sub_801DE3C:
 	mov r0, #6
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_801DEBC // =word_801ED6C 
 	mov r4, #0x12
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	mov r0, #1
 	mov r1, #5
 	lsl r0, r1
@@ -27924,7 +27926,7 @@ sub_801DE64:
 	mov r3, #0
 	mov r4, #0x12
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #1
 	mov r1, #0x11
 	lsl r0, r1
@@ -27952,13 +27954,13 @@ loc_801DE8C:
 	mov r0, #6
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_801DEC0 // =word_801EDB4 
 	mov r4, #0x12
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	mov r0, #1
 	mov r1, #0x11
 	lsl r0, r1
@@ -28015,7 +28017,7 @@ sub_801DF0C:
 	mov r0, #1
 	lsl r0, r0, #0x11
 	bl sub_801DA48
-	ldr r1, off_801E0D8 // =byte_2035280 
+	ldr r1, off_801E0D8 // =eStruct2035280
 	mov r0, #0
 	strb r0, [r1,#0x18] // (byte_2035298 - 0x2035280)
 	strb r0, [r1,#0x19] // (byte_2035299 - 0x2035280)
@@ -28056,7 +28058,7 @@ dword_801DF88: .word 0x20
 
 	thumb_func_start sub_801DF8C
 sub_801DF8C:
-	ldr r1, off_801E0D8 // =byte_2035280 
+	ldr r1, off_801E0D8 // =eStruct2035280
 	strh r0, [r1,#0x22] // (word_20352A2 - 0x2035280)
 	mov pc, lr
 	thumb_func_end sub_801DF8C
@@ -28064,7 +28066,7 @@ sub_801DF8C:
 	thumb_func_start sub_801DF92
 sub_801DF92:
 	push {lr}
-	ldr r1, off_801E0D8 // =byte_2035280 
+	ldr r1, off_801E0D8 // =eStruct2035280
 	mov r0, #0
 	strh r0, [r1,#0x20] // (word_20352A0 - 0x2035280)
 	mov r0, #0x12
@@ -28080,7 +28082,7 @@ sub_801DFA2:
 	ble loc_801DFAC
 	mov r0, r1
 loc_801DFAC:
-	ldr r1, off_801E0D8 // =byte_2035280 
+	ldr r1, off_801E0D8 // =eStruct2035280
 	strh r0, [r1,#0x20] // (word_20352A0 - 0x2035280)
 	pop {r1,pc}
 	.balign 4, 0x00
@@ -28090,7 +28092,7 @@ dword_801DFB4: .word 0x4000
 	thumb_func_start sub_801DFB8
 sub_801DFB8:
 	push {lr}
-	ldr r2, off_801E0D8 // =byte_2035280 
+	ldr r2, off_801E0D8 // =eStruct2035280
 	ldrh r1, [r2,#0x20] // (word_20352A0 - 0x2035280)
 	add r0, r0, r1
 	ldr r1, dword_801DFCC // =0x4000 
@@ -28106,7 +28108,7 @@ dword_801DFCC: .word 0x4000
 	thumb_local_start
 sub_801DFD0:
 	push {lr}
-	ldr r2, off_801E0D8 // =byte_2035280 
+	ldr r2, off_801E0D8 // =eStruct2035280
 	ldrh r1, [r2,#0x20] // (word_20352A0 - 0x2035280)
 	sub r1, r1, r0
 	bge loc_801DFDC
@@ -28119,7 +28121,7 @@ loc_801DFDC:
 
 	thumb_func_start sub_801DFE4
 sub_801DFE4:
-	ldr r0, off_801E0D8 // =byte_2035280 
+	ldr r0, off_801E0D8 // =eStruct2035280
 	ldrh r0, [r0,#0x20] // (word_20352A0 - 0x2035280)
 	mov pc, lr
 	thumb_func_end sub_801DFE4
@@ -28133,7 +28135,7 @@ sub_801DFEA:
 	mov r3, #0
 	mov r4, #0x11
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #1
 	lsl r0, r0, #6
 	bl sub_801BEC2
@@ -28168,7 +28170,7 @@ sub_801E022:
 	mov r3, #0
 	mov r4, #6
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #1
 	lsl r0, r0, #7
 	bl sub_801BEC2
@@ -28178,18 +28180,18 @@ sub_801E022:
 	thumb_local_start
 sub_801E03E:
 	push {r4,r5,lr}
-	ldr r3, off_801E0D8 // =byte_2035280 
+	ldr r3, off_801E0D8 // =eStruct2035280
 	// j
 	ldrb r0, [r3,#0x1] // (byte_2035281 - 0x2035280)
 	// i
 	ldrb r1, [r3,#0x2] // (byte_2035282 - 0x2035280)
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_801E05C // =byte_801EDFC
 	mov r4, #6
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	mov r0, #1
 	lsl r0, r0, #7
 	bl sub_801BEB8
@@ -28206,7 +28208,7 @@ sub_801E060:
 	mov r3, #0
 	mov r4, #6
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #1
 	lsl r0, r0, #0x17
 	bl sub_801BEC2
@@ -28216,18 +28218,18 @@ sub_801E060:
 	thumb_local_start
 sub_801E07C:
 	push {r4,r5,lr}
-	ldr r3, off_801E0D8 // =byte_2035280 
+	ldr r3, off_801E0D8 // =eStruct2035280
 	// j
 	mov r0, #0x18
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_801E09C // =byte_801EDFC
 	mov r4, #6
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	mov r0, #1
 	lsl r0, r0, #0x17
 	bl sub_801BEB8
@@ -28239,7 +28241,7 @@ off_801E09C: .word byte_801EDFC
 	thumb_func_start sub_801E0A0
 sub_801E0A0:
 	push {lr}
-	ldr r3, off_801E0D8 // =byte_2035280 
+	ldr r3, off_801E0D8 // =eStruct2035280
 	ldr r2, [r3,#0x48] // (dword_20352C8 - 0x2035280)
 	ldrh r2, [r2,#0x24]
 	strh r2, [r3,#0x24] // (word_20352A4 - 0x2035280)
@@ -28255,7 +28257,7 @@ sub_801E0A0:
 	thumb_local_start
 sub_801E0BC:
 	push {lr}
-	ldr r1, off_801E0D8 // =byte_2035280 
+	ldr r1, off_801E0D8 // =eStruct2035280
 	ldr r0, [r1,#0x48] // (dword_20352C8 - 0x2035280)
 	ldrh r0, [r0,#0x24]
 	strh r0, [r1,#0x24] // (word_20352A4 - 0x2035280)
@@ -28265,7 +28267,7 @@ sub_801E0BC:
 	thumb_func_start sub_801E0C8
 sub_801E0C8:
 	push {r5,lr}
-	ldr r5, off_801E0D8 // =byte_2035280 
+	ldr r5, off_801E0D8 // =eStruct2035280
 	strh r0, [r5,#0x26] // (word_20352A6 - 0x2035280)
 	pop {r5,pc}
 	thumb_func_end sub_801E0C8
@@ -28273,10 +28275,10 @@ sub_801E0C8:
 	thumb_func_start sub_801E0D0
 sub_801E0D0:
 	push {lr}
-	ldr r3, off_801E0D8 // =byte_2035280 
+	ldr r3, off_801E0D8 // =eStruct2035280
 	strb r0, [r3,#0x1c] // (byte_203529C - 0x2035280)
 	pop {pc}
-off_801E0D8: .word byte_2035280
+off_801E0D8: .word eStruct2035280
 	thumb_func_end sub_801E0D0
 
 	thumb_local_start
@@ -28291,14 +28293,14 @@ sub_801E0DC:
 	mov r3, #0
 	mov r4, #4
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #0x1a
 	mov r1, #2
 	mov r2, #3
 	mov r3, #0
 	mov r4, #4
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #1
 	lsl r0, r0, #0xa
 	bl sub_801BEC2
@@ -28362,7 +28364,7 @@ sub_801E15C:
 	lsl r0, r0, #9
 	bl sub_801DA48
 	mov r0, #0x9f
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	pop {pc}
 off_801E184: .word off_801E188
 off_801E188: .word dword_86E611C
@@ -28392,7 +28394,7 @@ loc_801E1B0:
 	mov r4, #0x11
 	sub r4, r4, r6
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #1
 	lsl r0, r0, #8
 	bl sub_801BEC2
@@ -28426,18 +28428,18 @@ loc_801E1F8:
 	add r0, r0, r1
 	// i
 	mov r1, #2
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
 	ldr r3, off_801E220 // =word_801EE14 
 	cmp r6, #9
 	bne loc_801E20A
-	// tileRefs
+	// tileIds
 	ldr r3, off_801E224 // =word_801EE58 
 loc_801E20A:
 	mov r4, #0x11
 	sub r4, r4, r6
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	mov r0, #1
 	lsl r0, r0, #8
 	bl sub_801BEB8
@@ -28455,7 +28457,7 @@ sub_801E228:
 	mov r0, #0x13
 loc_801E230:
 	mov r7, r0
-	ldr r6, off_801E4AC // =byte_2035280 
+	ldr r6, off_801E4AC // =eStruct2035280
 	ldr r1, [r6,#0x40] // (dword_20352C0 - 0x2035280)
 	mov r0, #1
 	lsl r0, r0, #8
@@ -28475,7 +28477,7 @@ loc_801E242:
 	mov r5, #1
 	ldr r6, off_801E444 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #1
 	lsl r0, r0, #8
 	bl sub_801BECC
@@ -28488,7 +28490,7 @@ loc_801E242:
 	thumb_local_start
 sub_801E270:
 	push {r4-r7,lr}
-	ldr r6, off_801E4AC // =byte_2035280 
+	ldr r6, off_801E4AC // =eStruct2035280
 	ldr r0, [r6,#0x40] // (dword_20352C0 - 0x2035280)
 	mov r1, #1
 	lsl r1, r1, #8
@@ -28513,7 +28515,7 @@ loc_801E28C:
 	mov r5, #1
 	ldr r6, off_801E444 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #1
 	lsl r0, r0, #8
 	bl sub_801BECC
@@ -28528,7 +28530,7 @@ locret_801E2B8:
 sub_801E2BA:
 	push {r4-r7,lr}
 	push {r0}
-	ldr r6, off_801E4AC // =byte_2035280 
+	ldr r6, off_801E4AC // =eStruct2035280
 	ldr r0, [r6,#0x40] // (dword_20352C0 - 0x2035280)
 	mov r1, #1
 	lsl r1, r1, #8
@@ -28561,7 +28563,7 @@ loc_801E2F0:
 	mov r5, #1
 	ldr r6, off_801E444 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #1
 	lsl r0, r0, #8
 	bl sub_801BECC
@@ -28572,7 +28574,7 @@ loc_801E312:
 	pop {r0}
 	pop {r4-r7,pc}
 	push {r4-r7,lr}
-	ldr r6, off_801E4AC // =byte_2035280 
+	ldr r6, off_801E4AC // =eStruct2035280
 	ldr r0, [r6,#0x40] // (dword_20352C0 - 0x2035280)
 	mov r1, #1
 	lsl r1, r1, #8
@@ -28594,7 +28596,7 @@ loc_801E32C:
 	mov r5, #1
 	ldr r6, off_801E444 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #1
 	lsl r0, r0, #8
 	bl sub_801BECC
@@ -28613,7 +28615,7 @@ sub_801E35A:
 	mov r3, #0
 	mov r4, #8
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #1
 	lsl r0, r0, #0xb
 	bl sub_801BED6
@@ -28627,13 +28629,13 @@ sub_801E376:
 	mov r0, #0xb
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_801E394 // =byte_801EE78
 	mov r4, #8
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	mov r0, #1
 	lsl r0, r0, #0xb
 	bl sub_801BEB8
@@ -28655,7 +28657,7 @@ sub_801E398:
 	mov r5, #1
 	ldr r6, off_801E444 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #1
 	lsl r0, r0, #0xb
 	bl sub_801BECC
@@ -28674,7 +28676,7 @@ sub_801E3C4:
 	mov r3, #0
 	mov r4, #8
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	ldr r0, dword_801E3E0 // =0x100000 
 	bl sub_801BEC2
 	pop {r4,r5,pc}
@@ -28689,13 +28691,13 @@ sub_801E3E4:
 	mov r0, #0xb
 	// i
 	mov r1, #0x10
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_801E404 // =byte_801EF10
 	mov r4, #8
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	ldr r0, dword_801E400 // =0x100000 
 	bl sub_801BEB8
 	pop {r4,r5,pc}
@@ -28707,7 +28709,7 @@ off_801E404: .word byte_801EF10
 	thumb_func_start sub_801E408
 sub_801E408:
 	push {r4-r7,lr}
-	ldr r1, off_801E4AC // =byte_2035280 
+	ldr r1, off_801E4AC // =eStruct2035280
 	mov r0, #0x32 
 	strh r0, [r1,#0x32] // (word_20352B2 - 0x2035280)
 	ldr r0, off_801E438 // =byte_86F0374 
@@ -28718,7 +28720,7 @@ sub_801E408:
 	mov r5, #1
 	ldr r6, off_801E444 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r0, #1
 	lsl r0, r0, #0x14
 	bl sub_801BECC
@@ -28743,7 +28745,7 @@ sub_801E44C:
 	mov r3, #0
 	mov r4, #0xb
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #1
 	lsl r0, r0, #0xc
 	bl sub_801BEC2
@@ -28762,14 +28764,14 @@ sub_801E468:
 	thumb_func_start sub_801E474
 sub_801E474:
 	push {lr}
-	ldr r1, off_801E4AC // =byte_2035280 
+	ldr r1, off_801E4AC // =eStruct2035280
 	strb r0, [r1,#0xb] // (byte_203528B - 0x2035280)
 	ldr r1, off_801E49C // =off_801E4A0 
 	lsl r0, r0, #2
 	// dataList
 	ldr r0, [r1,r0]
 	bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
-	ldr r1, off_801E4AC // =byte_2035280 
+	ldr r1, off_801E4AC // =eStruct2035280
 	mov r0, #0x3f 
 	strb r0, [r1]
 	mov r0, #1
@@ -28783,7 +28785,7 @@ off_801E49C: .word off_801E4A0
 off_801E4A0: .word off_801EF30
 	.word off_801EF4C
 	.word off_801EF68
-off_801E4AC: .word byte_2035280
+off_801E4AC: .word eStruct2035280
 	thumb_func_end sub_801E474
 
 	thumb_local_start
@@ -28808,10 +28810,10 @@ loc_801E4C4:
 	mov r3, #0
 	push {r1}
 	push {r0,r1,r3-r5}
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	pop {r0,r1,r3-r5}
 	mov r2, #3
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	pop {r1}
 	add r1, #2
 	add r6, #2
@@ -28872,9 +28874,9 @@ loc_801E536:
 loc_801E542:
 	// i
 	mov r1, r4
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	mov r3, sp
 	push {r4}
 	mov r0, #0x1d
@@ -28887,7 +28889,7 @@ loc_801E554:
 	sub r0, r0, r4
 	add r4, #1
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4}
 loc_801E560:
 	add r7, #2
@@ -28906,7 +28908,7 @@ loc_801E568:
 sub_801E574:
 	push {r4,r5,r7,lr}
 	mov r1, #0xff
-	ldr r0, off_801E77C // =byte_2035280 
+	ldr r0, off_801E77C // =eStruct2035280
 	add r0, #0x28 
 	strh r1, [r0]
 	strh r1, [r0,#0x2] // (word_20352AA - 0x20352a8)
@@ -28928,7 +28930,7 @@ loc_801E594:
 	mov r4, #9
 	mov r5, #1
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	mov r7, r0
 	pop {r0,r2-r4,r6}
 	ldr r1, off_801E5D4 // =0x240 
@@ -28971,12 +28973,12 @@ sub_801E5EC:
 	thumb_func_start sub_801E5F8
 sub_801E5F8:
 	push {r4,r5,lr}
-	ldr r5, off_801E77C // =byte_2035280 
+	ldr r5, off_801E77C // =eStruct2035280
 	mov r0, #0
 	strb r0, [r5,#0x12] // (byte_2035292 - 0x2035280)
 	mov r0, #0xff
 	strb r0, [r5,#0x13] // (byte_2035293 - 0x2035280)
-	strb r0, [r5,#0x17] // (byte_2035297 - 0x2035280)
+	strb r0, [r5,#0x17] // (eStruct2035280_NaviStatusGfxIdx17 - 0x2035280)
 	mov r0, #0xff
 	strb r0, [r5,#0x15] // (byte_2035295 - 0x2035280)
 	mov r1, #0x78 
@@ -29018,7 +29020,7 @@ dword_801E654: .word 0x200000
 	thumb_func_start sub_801E658
 sub_801E658:
 	mov r0, #0
-	ldr r1, off_801E77C // =byte_2035280 
+	ldr r1, off_801E77C // =eStruct2035280
 	strb r0, [r1,#0x1e] // (byte_203529E - 0x2035280)
 	mov pc, lr
 	thumb_func_end sub_801E658
@@ -29122,7 +29124,7 @@ word_801E700: .hword 0x500, 0x706, 0x908, 0x605, 0x807
 	thumb_func_start sub_801E71C
 sub_801E71C:
 	push {r1,lr}
-	ldr r1, off_801E77C // =byte_2035280 
+	ldr r1, off_801E77C // =eStruct2035280
 	strb r0, [r1,#0x12] // (byte_2035292 - 0x2035280)
 	pop {r1,pc}
 	thumb_func_end sub_801E71C
@@ -29130,15 +29132,15 @@ sub_801E71C:
 	thumb_func_start sub_801E724
 sub_801E724:
 	push {r5,lr}
-	ldr r5, off_801E77C // =byte_2035280 
-	ldrb r2, [r5,#0x17] // (byte_2035297 - 0x2035280)
+	ldr r5, off_801E77C // =eStruct2035280
+	ldrb r2, [r5,#0x17] // (eStruct2035280_NaviStatusGfxIdx17 - 0x2035280)
 	cmp r2, #0xff
 	bne loc_801E730
 	ldrb r2, [r5,#0x15] // (byte_2035295 - 0x2035280)
 loc_801E730:
 	strb r2, [r5,#0x1f] // (byte_203529F - 0x2035280)
 	strb r1, [r5,#0x16] // (byte_2035296 - 0x2035280)
-	strb r0, [r5,#0x17] // (byte_2035297 - 0x2035280)
+	strb r0, [r5,#0x17] // (eStruct2035280_NaviStatusGfxIdx17 - 0x2035280)
 	mov r0, #0xff
 	strb r0, [r5,#0x13] // (byte_2035293 - 0x2035280)
 	pop {r5,pc}
@@ -29165,7 +29167,7 @@ sub_801E748:
 	thumb_func_start sub_801E754
 sub_801E754:
 	push {r1,r2,lr}
-	ldr r2, off_801E77C // =byte_2035280 
+	ldr r2, off_801E77C // =eStruct2035280
 	ldr r1, [r2,#0x40] // (dword_20352C0 - 0x2035280)
 	mov r0, #1
 	lsl r0, r0, #0xf
@@ -29186,7 +29188,7 @@ loc_801E770:
 locret_801E778:
 	pop {r1,r2,pc}
 	.balign 4, 0x00
-off_801E77C: .word byte_2035280
+off_801E77C: .word eStruct2035280
 	thumb_func_end sub_801E754
 
 	thumb_func_start sub_801E780
@@ -29202,14 +29204,17 @@ loc_801E78C:
 	strb r0, [r2,#0x7] // (byte_2036847 - 0x2036840)
 locret_801E790:
 	mov pc, lr
-loc_801E792:
+	thumb_func_end sub_801E780
+
+	thumb_local_start
+sub_801E792:
 	push {r4-r7,lr}
 	sub sp, sp, #0xc
 	str r0, [sp]
 	str r1, [sp,#4]
 	str r2, [sp,#8]
 	str r3, [sp,#0xc]
-	ldr r3, off_801E824 // =byte_2035280 
+	ldr r3, off_801E824 // =eStruct2035280
 	ldr r3, [r3,#0x40] // (dword_20352C0 - 0x2035280)
 	mov r0, #1
 	lsl r0, r0, #0xf
@@ -29274,8 +29279,8 @@ loc_801E81C:
 	add sp, sp, #0xc
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_801E824: .word byte_2035280
-	thumb_func_end sub_801E780
+off_801E824: .word eStruct2035280
+	thumb_func_end sub_801E792
 
 	thumb_local_start
 sub_801E828:
@@ -29451,13 +29456,13 @@ sub_801E95C:
 	mov r5, #1
 	ldr r6, off_801EAA0 // =dword_86B7AE0 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	pop {r2-r5}
 	strb r0, [r5,#9]
 	push {r2,r3}
 	// idx
 	ldrh r0, [r5,#4]
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#9]
 	mov r1, #2
 	tst r0, r1
@@ -29674,14 +29679,14 @@ sub_801EB50:
 	mov r3, #0
 	mov r4, #0x1e
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #0
 	mov r1, #0x12
 	mov r2, #0
 	mov r3, #0
 	mov r4, #0x1e
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	mov r0, #1
 	lsl r0, r0, #0x12
 	bl sub_801BEC2
@@ -29695,18 +29700,23 @@ sub_801EB7C:
 	mov r0, #0
 	// i
 	mov r1, #0x12
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #3
-	// tileRefs
+	// tileIds
 	ldr r3, off_801EB98 // =byte_801EE98
 	mov r4, #0x1e
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	mov r0, #1
 	lsl r0, r0, #0x12
 	bl sub_801BEB8
 	pop {pc}
+
 off_801EB98: .word byte_801EE98
+	thumb_func_end sub_801EB7C
+
+	thumb_local_start
+sub_801EB9C:
 	push {r4,r6,r7,lr}
 	ldr r0, off_801EBC0 // =dword_86EA92C 
 	ldr r1, off_801EBC4 // =unk_3001AC0 
@@ -29719,16 +29729,16 @@ off_801EB98: .word byte_801EE98
 	lsl r0, r0, #0x12
 	bl sub_801DA48
 	mov r0, #0
-	ldr r1, off_801ECB0 // =byte_2035280 
+	ldr r1, off_801ECB0 // =eStruct2035280
 	strb r0, [r1,#0x1a] // (byte_203529A - 0x2035280)
 	pop {r4,r6,r7,pc}
 off_801EBC0: .word dword_86EA92C
 off_801EBC4: .word unk_3001AC0
-	thumb_func_end sub_801EB7C
+	thumb_func_end sub_801EB9C
 
 	thumb_local_start
 sub_801EBC8:
-	ldr r1, off_801ECB0 // =byte_2035280 
+	ldr r1, off_801ECB0 // =eStruct2035280
 	strb r0, [r1,#0x1a] // (byte_203529A - 0x2035280)
 	mov r0, #0
 	strh r0, [r1,#0x30] // (word_20352B0 - 0x2035280)
@@ -29768,7 +29778,7 @@ off_801EBFC: .word 0x100
 	ldr r0, dword_801EC20 // =0x80000 
 	bl sub_801DA48
 	mov r0, #0
-	ldr r1, off_801ECB0 // =byte_2035280 
+	ldr r1, off_801ECB0 // =eStruct2035280
 	strh r0, [r1,#0x34] // (word_20352B4 - 0x2035280)
 	pop {pc}
 dword_801EC20: .word 0x80000
@@ -29811,7 +29821,7 @@ sub_801EC44:
 	mov r0, #1
 	lsl r0, r0, #0x15
 	bl sub_801DA48
-	ldr r1, off_801ECB0 // =byte_2035280 
+	ldr r1, off_801ECB0 // =eStruct2035280
 	mov r0, #0x3c 
 	strb r0, [r1,#0x1b] // (byte_203529B - 0x2035280)
 	pop {r4,r6,r7,pc}
@@ -29849,5 +29859,5 @@ off_801ECAC:
 	.word byte_30016D0
 	thumb_func_end sub_801EC90
 
-off_801ECB0: .word byte_2035280
+off_801ECB0: .word eStruct2035280
 /*For debugging purposes, connect comment at any range!*/

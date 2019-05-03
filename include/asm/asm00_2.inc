@@ -133,7 +133,7 @@
 	.global GetPlayerBattleVarByte
 	.global GetPlayerBattleVarSignedByte
 	.global GetPlayerBattleVarHword
-	.global sub_80136F0
+	.global SetField8ToSelectedS20047CCStruct
 	.global sub_8013704
 	.global SetPlayerBattleVarByte_AllianceFromBattleObject
 	.global SetPlayerBattleVarHword_AllianceFromBattleObject
@@ -141,8 +141,8 @@
 	.global GetPlayerBattleVarHword_AllianceFromBattleObject
 	.global navicust_801379E // (int a1, int a2, int a3) -> void
 	.global sub_80137B6 // (int a1, int a2) -> u8
-	.global sub_80137E6
-	.global sub_80137FE
+	.global SetField16ToSelectedS20047CCStruct
+	.global GetField16FromSelectedS20047CCStruct
 	.global sub_8013816
 	.global sub_801382E
 	.global sub_8013846
@@ -159,7 +159,7 @@
 	.global sub_8013DA0
 	.global sub_8013FAE
 	.global sub_8013FD0
-	.global navicust_8014018 // (int idx_8014034) -> bool
+	.global SelectS20047CCStruct8014018 // (int idx) -> bool8
 	.global sub_801401E
 	.global sub_8014040
 	.global sub_8014150
@@ -247,7 +247,7 @@
 	.global sub_801A100
 	.global object_setCollisionHitEffect
 	.global sub_801A146
-	.global object_setFlag // (int a1) -> void
+	.global object_setFlag1 // (int a1) -> void
 	.global object_clearFlag // (int bitfield) -> void
 	.global object_getFlag // () -> int
 	.global object_setFlag2
@@ -336,7 +336,7 @@
 	.global sub_801E724
 	.global sub_801E754
 	.global sub_801E780
-	.global loc_801E792
+	.global sub_801E792
 	.global sub_801E914
 	.global sub_801EB18
 	.global sub_801EC44
@@ -351,7 +351,7 @@
 // .global 0x4000000
 
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global musicGameState_8000784 // () -> void
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
@@ -371,8 +371,8 @@
 // .global GetPositiveSignedRNG2
 // .global GetPositiveSignedRNG1
 // .global sub_800187C
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-// .global sub_80018D0
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
+// .global call_sub_3005EBA
 // .global sub_80018E0
 
 	.include "asm/sprite.inc"
@@ -519,7 +519,7 @@
 // .global byte_802136C
 
 	.include "asm/asm02.inc"
-// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global getChip8021DA8 // (int chip_idx) -> ChipData*
 // .global sub_8021D14
 
 	.include "asm/asm03_0.inc"
@@ -567,13 +567,13 @@
 
 	.include "asm/asm03_1.inc"
 // .global sub_803D0C8
-// .global sub_803F524
+// .global notZero_eByte200AD04
 
 	.include "asm/chatbox.inc"
 // .global loc_8040A04
 
 	.include "asm/asm03_2.inc"
-// .global render_graphicalText_8045F8C
+// .global renderTextGfx_8045F8C
 
 	.include "data/dat08.inc"
 // .global byte_8061416
@@ -773,12 +773,12 @@
 /* Undeclared Symbols */
 // .equ timer_2000000, 0x2000000
 // .equ unk_20018C0, 0x20018C0
-// .equ unk_200F3C4, 0x200F3C4
+// .equ word_200F3C4, 0x200F3C4
 // .equ unk_2020000, 0x2020000
 // .equ byte_20349C0, 0x20349C0
 // .equ unk_2034A60, 0x2034A60
 // .equ unk_2034F60, 0x2034F60
-// .equ byte_2035280, 0x2035280
+// .equ eStruct2035280, 0x2035280
 // .equ byte_2035281, 0x2035281
 // .equ byte_2035282, 0x2035282
 // .equ byte_203528B, 0x203528B
@@ -787,7 +787,7 @@
 // .equ byte_2035293, 0x2035293
 // .equ byte_2035295, 0x2035295
 // .equ byte_2035296, 0x2035296
-// .equ byte_2035297, 0x2035297
+// .equ eStruct2035280_NaviStatusGfxIdx17, 0x2035297
 // .equ byte_2035298, 0x2035298
 // .equ byte_2035299, 0x2035299
 // .equ byte_203529A, 0x203529A

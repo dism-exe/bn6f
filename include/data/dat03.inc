@@ -10,9 +10,9 @@
 	.global dword_804D098
 	.global dword_804D09C
 	.global dword_804D0A0
-	.global off_804D0A4
+	.global map00_ACDC_804D0A4
 	.global off_804D0AC
-	.global off_804D0B4
+	.global npc_map00_ACDC_804D0B4
 	.global off_804D0BC
 	.global off_804D0E4
 	.global byte_804D0FC

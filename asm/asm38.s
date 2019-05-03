@@ -46,11 +46,11 @@ nullsub_38:
 	thumb_func_start sub_3005CDA
 sub_3005CDA:
 	push {lr}
-	ldr r0, off_3005D20 // =sub_803EA68+1
+	ldr r0, off_3005D20 // =eStruct200BC30_getJumpOffset00_pushpop+1
 	mov lr, pc
 	bx r0
 	mov r1, r0
-	ldr r0, jt_81D620C // =off_3005D10
+	ldr r0, jt_81D620C // =iJumpTable3005D10
 	ldr r0, [r0,r1]
 	mov lr, pc
 	bx r0
@@ -71,12 +71,12 @@ sub_3005CF0:
 	bx lr
 off_3005D04: .word dword_200A870
 	.word eCamera+0x50 // eCamera.unk_50
-jt_81D620C: .word off_3005D10
-off_3005D10: .word sub_803DE72+1
+jt_81D620C: .word iJumpTable3005D10
+iJumpTable3005D10: .word sub_803DE72+1
 	.word sub_813D5DC+1
 	.word sub_813D5DC+1
 	.word sub_813D5DC+1
-off_3005D20: .word sub_803EA68+1
+off_3005D20: .word eStruct200BC30_getJumpOffset00_pushpop+1
 	thumb_func_end sub_3005CF0
 
 	thumb_local_start
@@ -281,40 +281,63 @@ off_3005E78: .word sub_814469C+1
 off_3005E7C: .word sub_81446AC+1
 	thumb_func_end sub_3005E6A
 
-	thumb_func_start sub_3005E80
-sub_3005E80:
+	thumb_func_start iCopyBackgroundTiles
+// (int j, int i, int tileBlock32x32, u16 *tileIds, int j_size@R4, int i_size@R5) -> void
+// copies a 2D array of dimensions [i_size][j_size] to oToolkit_iBGTileIdBlocks_Ptr
+// at the specific j and i locations.
+// assumes a maximum dimension of [32][32] per block.
+// this lets you copy any sized box, at any 2D offset in any 32x32 block
+// this is copying Tiles for BG0 and BG2
+iCopyBackgroundTiles:
 	sub sp, sp, #4
 	str r0, [sp]
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_GFX30025c0_Ptr]
-	lsl r2, r2, #11
+	ldr r6, [r6,#oToolkit_iBGTileIdBlocks_Ptr]
+	lsl r2, r2, #11 // r2_cpyOff = r2_cpyOff * 2048
+
+	// r6 = iBGTileIdBlocks_Ptr + 2048 * r2_cpyOff
+	// 32 tilesIds[32]? 32x32 background tile type?
 	add r6, r6, r2
+
+	// for loop conditions
 	add r4, r4, r0
 	add r5, r5, r1
-loc_3005E90:
+// for (int i=a1_i; i<a1_i + a5_i_size; i++)
+//	  for (int j=a0_j; j<a0_j + a4_j_size; j++)
+DoubleForLoop3005E90:
+	// if ( !((j | i) & ~0x1f) )
+	// type protection, ensures only to copy if j and i are <= 31
+	// since the array is 32x32
 	mov r2, #0x1f
 	mvn r2, r2
 	mov r7, r0
 	orr r7, r1
 	tst r7, r2
 	bne loc_3005EA6
+	// copy tile
+	// r6[64*i + 2*j] = *tileIds
 	lsl r7, r0, #1
 	lsl r2, r1, #6
 	add r2, r2, r7
 	ldrh r7, [r3]
 	strh r7, [r6,r2]
 loc_3005EA6:
+	// tileIds++
 	add r3, #2
+	// while (++a0_j < j_size)
 	add r0, #1
 	cmp r0, r4
-	blt loc_3005E90
+	blt DoubleForLoop3005E90
 	ldr r0, [sp]
+	// while (++a1_i < i_size)
 	add r1, #1
 	cmp r1, r5
-	blt loc_3005E90
+	blt DoubleForLoop3005E90
+
+	// return
 	add sp, sp, #4
 	mov pc, lr
-	thumb_func_end sub_3005E80
+	thumb_func_end iCopyBackgroundTiles
 
 	thumb_func_start sub_3005EBA
 sub_3005EBA:
@@ -599,7 +622,7 @@ sub_3006108:
 	ldrh r7, [r5,#6]
 	tst r7, r7
 	beq loc_3006140
-	ldr r7, off_300619C // =byte_3001750
+	ldr r7, off_300619C // =iPallete3001750
 	mov r2, #0x20 
 loc_3006128:
 	sub r2, #4
@@ -667,7 +690,7 @@ loc_3006196:
 loc_3006198:
 	mov r5, r8
 	pop {pc}
-off_300619C: .word byte_3001750
+off_300619C: .word iPallete3001750
 off_30061A0: .word dword_200F340
 off_30061A4: .word byte_3001550
 	thumb_func_end sub_3006108
@@ -1549,7 +1572,7 @@ sub_3006814:
 	push {r4-r7,lr}
 	mov r0, r12
 	push {r0}
-	ldr r0, off_30068C0 // =dword_3001D70
+	ldr r0, off_30068C0 // =iObjectAttr3001D70
 	ldr r2, off_30068C4 // =unk_30025B0
 	ldr r3, off_30068C8 // =unk_3002170
 	ldr r6, off_30068CC // =dword_3002590
@@ -1602,7 +1625,7 @@ loc_3006868:
 	b loc_3006868
 loc_3006874:
 	ldr r0, off_30068D8 // =word_200A6F0
-	ldr r1, off_30068C0 // =dword_3001D70
+	ldr r1, off_30068C0 // =iObjectAttr3001D70
 	mov r3, #0x20 
 loc_300687A:
 	ldrh r4, [r0]
@@ -1641,7 +1664,7 @@ loc_30068A0:
 	mov r12, r0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_30068C0: .word dword_3001D70
+off_30068C0: .word iObjectAttr3001D70
 off_30068C4: .word unk_30025B0
 off_30068C8: .word unk_3002170
 off_30068CC: .word dword_3002590
@@ -1840,7 +1863,7 @@ loc_3006A26:
 loc_3006A40:
 	mov r0, r5
 	mov r1, #3
-	ldr r5, off_3006B14 // =__divsi3+1
+	ldr r5, off_3006B14 // =sub_814DA9C+1
 	mov lr, pc
 	bx r5
 	mov r5, r0
@@ -1941,7 +1964,7 @@ loc_3006ADC:
 loc_3006AF6:
 	mov r0, r5
 	mov r1, #3
-	ldr r5, off_3006B14 // =__divsi3+1
+	ldr r5, off_3006B14 // =sub_814DA9C+1
 	mov lr, pc
 	bx r5
 	mov r5, r0
@@ -1954,7 +1977,7 @@ loc_3006AF6:
 	mov r10, r6
 	mov r12, r7
 	pop {r4-r7,pc}
-off_3006B14: .word __divsi3+1
+off_3006B14: .word sub_814DA9C+1
 off_3006B18: .word sub_3006C38+1
 	.word sub_3006C3C+1
 	.word sub_3006F42+1
@@ -2433,7 +2456,7 @@ loc_3006EAE:
 	add r7, #0x34
 	ldrh r2, [r7]
 	lsl r2, r2, #6
-	ldr r1, off_3006F14 // =unk_200AFA0
+	ldr r1, off_3006F14 // =byte_200AFA0
 	add r1, r1, r2
 	push {r0,r1}
 	mov r0, r6
@@ -2466,7 +2489,7 @@ off_3006EEC: .word unk_2001186
 	.word byte_2001A08
 	.word byte_2001A64
 	.word byte_2001AC0
-off_3006F14: .word unk_200AFA0
+off_3006F14: .word byte_200AFA0
 off_3006F18: .word CopyBytes+1
 off_3006F1C: .word byte_200A220
 	thumb_func_end sub_3006E98
@@ -2846,7 +2869,7 @@ loc_30071BE:
 	bx r3
 	mov r5, r10
 	ldr r5, [r5,#0x2c]
-	ldr r0, off_3007200 // =0x400
+	ldr r0, Flags3007200 // =FLAGS_3E_UNK_0400
 	ldr r3, off_3007204 // =chatbox_maskFlags_3e+1
 	mov lr, pc
 	bx r3
@@ -2863,7 +2886,7 @@ off_30071F0: .word dword_200CDA0
 dword_30071F4: .word 0x6015700
 dword_30071F8: .word 0xF00
 off_30071FC: .word sub_8000AC8+1
-off_3007200: .word 0x400
+Flags3007200: .word FLAGS_3E_UNK_0400
 off_3007204: .word chatbox_maskFlags_3e+1
 off_3007208: .word off_300720C
 off_300720C: .word off_8044314

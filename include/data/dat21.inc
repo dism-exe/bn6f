@@ -42,7 +42,7 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global sub_800060A
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 
@@ -125,7 +125,7 @@
 // .global byte_86B7D4B
 
 	.include "data/dat38_87.inc"
-// .global dword_87DAC90
+// .global TextScriptWhoAmI
 
 
 /* Undeclared Symbols */
@@ -139,7 +139,7 @@
 // .equ unk_2013960, 0x2013960
 // .equ byte_2013966, 0x2013966
 // .equ byte_201396F, 0x201396F
-// .equ byte_3001750, 0x3001750
-// .equ unk_3001B60, 0x3001B60
+// .equ iPallete3001750, 0x3001750
+// .equ iPallete3001B60, 0x3001B60
 
 	.endif // INC_DATA_DAT21

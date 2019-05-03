@@ -13,11 +13,11 @@ unsigned int sub_8071B50()
     sub_803037C(*(v0 + 4), *(v0 + 5));
     sub_8030AA4(*(v0 + 4), *(v0 + 5));
     v2 = *(v0 + 5);
-    sub_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
+    camera_802FF4C(*(v0 + 36), *(v0 + 40), *(v0 + 44), *(v0 + 4));
     sub_8030472();
-    sub_80028D4(byte_2037800, v3, v4, v5);
-    sub_8002906(*(&off_8071BB4 + *(v0 + 5)));
-    chatbox_uncomp_803FD08();
+    sub_80028D4(&eT4BattleObjects[4000], v3, v4, v5);
+    uncompSprite_8002906(*(&off_8071BB4 + *(v0 + 5)));
+    chatbox_uncompBasedOnMap_803FD08();
     sub_8071CEE();
     return sub_8034FB8();
 }
@@ -36,13 +36,13 @@ void sub_8071C30()
     int v0; // r10
     int v1; // r5
     void **v2; // r7
-    __int16 v3; // r0
+    int v3; // r0
 
     v1 = *(v0 + oToolkit_GameStatePtr);
     v2 = &off_8071C68 + 4 * *(v1 + oGameState_MapNumber);
     sub_800195C(*v2, v2[1], v2[2]);
     v3 = sub_8001780();
-    sub_8001778(v3 | v2[3]);
+    sRender_08_setRenderingState(v3 | v2[3]);
     sub_80304E8(off_8071C9C[*(v1 + oGameState_MapNumber)]);
 }
 
@@ -82,7 +82,7 @@ int sub_8071CEE()
 {
     int v0; // r10
 
-    return sub_8003570(*(&off_8071D08 + *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)));
+    return SpawnObjectsFromList(*(&off_8071D08 + *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapNumber)));
 }
 
 
@@ -115,7 +115,8 @@ int __fastcall sub_8072B70(int a1)
     char v5; // zf
     int v6; // r0
     unsigned __int8 v7; // vf
-    int v8; // r2
+    __int16 v8; // r0
+    int v9; // r2
 
     v2 = *(v1 + oToolkit_Unk2001c04_Ptr);
     v3 = a1;
@@ -127,8 +128,9 @@ int __fastcall sub_8072B70(int a1)
         result = v6 - 1;
         if ( (result < 0) ^ v7 )
         {
-            *(v2 + 60) = dword_258 + (change_20013F0_800151C() & 0x1FF);
-            result = sound_play(*&byte_8072BC0[2 * v3], dword_258, v8);
+            GetRNG2();
+            *(v2 + 60) = dword_258 + (v8 & 0x1FF);
+            result = PlaySoundEffect(*&byte_8072BC0[2 * v3], dword_258, v9);
         }
         else
         {

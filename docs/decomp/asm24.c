@@ -14,11 +14,12 @@ int sub_808C378()
     int v2; // r0
     unsigned __int8 v3; // vf
     int v4; // r2
-    unsigned int v5; // r1
-    int v6; // r0
+    unsigned __int8 v5; // r0
+    unsigned int v6; // r1
     int v7; // r0
-    __int64 v9; // [sp-2Ch] [bp-40h]
-    int v10; // [sp-24h] [bp-38h]
+    int v8; // r0
+    __int64 v10; // [sp-2Ch] [bp-40h]
+    int v11; // [sp-24h] [bp-38h]
 
     v1 = (v0 + 112);
     if ( !*(v0 + 4) )
@@ -35,23 +36,26 @@ int sub_808C378()
     if ( ((v2 < 0) ^ v3) | (v2 == 0) )
     {
         *(v0 + 116) = 1;
-        v9 = sub_809E1AE();
-        v10 = v4 + 0x100000;
+        v10 = sub_809E1AE();
+        v11 = v4 + 0x100000;
         do
-            v5 = change_20013F0_800151C() >> 5;
-        while ( v5 == *(v0 + 124) );
-        *(v0 + 124) = v5;
-        sub_80047E0(23, v9, SHIDWORD(v9), v10);
+        {
+            GetRNG2();
+            v6 = v5 >> 5;
+        }
+        while ( v6 == *(v0 + 124) );
+        *(v0 + 124) = v6;
+        SpawnOverworldMapObject(23, v10, SHIDWORD(v10), v11);
         v1 = (v0 + 112);
     }
     --*v1;
-    v6 = v1[2];
-    v3 = __OFSUB__(v6, 1);
-    v7 = v6 - 1;
-    if ( (v7 < 0) ^ v3 )
+    v7 = v1[2];
+    v3 = __OFSUB__(v7, 1);
+    v8 = v7 - 1;
+    if ( (v8 < 0) ^ v3 )
         sub_8143294();
     else
-        v1[2] = v7;
+        v1[2] = v8;
     sub_80302A8(0, 1);
     return *v1;
 }
@@ -90,7 +94,7 @@ int __fastcall sub_808CA68(int a1, int a2, int a3, int a4)
     int v6; // r0
     int v7; // r2
 
-    ZeroFillByWord(33557312, 0x98u, a3, a4);
+    ZeroFillByWord(&unk_2000B40, 152);
     byte_2000B43 = 32;
     sub_808CC84();
     ClearEventFlagFromImmediate(9, 216);
@@ -210,7 +214,7 @@ int sub_808CBA0()
     }
     do
     {
-        result = sub_80047E0(16, 0, 0, 0);
+        result = SpawnOverworldMapObject(16, 0, 0, 0);
         ++v1;
     }
     while ( v1 < v2 );
@@ -224,7 +228,7 @@ int sub_808CBD8()
     int v0; // r10
     int v1; // r2
 
-    sub_80047E0(17, 0, 0, 0);
+    SpawnOverworldMapObject(17, 0, 0, 0);
     reqBBS_setFlag_e17b0f7_8140A00();
     sub_8001172(3);
     if ( *(*(v0 + oToolkit_GameStatePtr) + oGameState_MapGroup) != 133 )
@@ -403,7 +407,7 @@ int __fastcall sub_808CD24(int a1)
         result = TestEventFlagFromImmediate(11, 241);
         if ( v3 )
         {
-            sound_play(212, v4, v5);
+            PlaySoundEffect(212, v4, v5);
             result = SetEventFlagFromImmediate(11, 241);
         }
     }
@@ -575,7 +579,7 @@ signed int sub_808CF8C()
     {
         v4 = *(v1 + oToolkit_ChatboxPtr);
         *(v4 + 76) = *(v0 + 6);
-        sound_play(290, v4, 76);
+        PlaySoundEffect(290, v4, 76);
         v2 = 1;
     }
     return v2;
@@ -615,8 +619,8 @@ signed int sub_808CFB8()
                     if ( v6 >= 0xFFFF )
                         LOWORD(v6) = -1;
                     word_2000B46 = v6;
-                    sound_play(283, 0xFFFF, 4 * (byte_2000B48 - 114) + 32);
-                    sound_play(105, v7, v8);
+                    PlaySoundEffect(283, 0xFFFF, 4 * (byte_2000B48 - 114) + 32);
+                    PlaySoundEffect(105, v7, v8);
                     v0 = 2;
                 }
                 else

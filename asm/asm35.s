@@ -1,22 +1,22 @@
 	.include "asm/asm35.inc"
 
-	thumb_func_start sub_812EAAC
-sub_812EAAC:
+	thumb_func_start CopyBackgroundTiles812EAAC
+CopyBackgroundTiles812EAAC:
 	push {r4-r7,lr}
 	// j
 	mov r0, #0
 	// i
 	mov r1, #0
-	// cpyOff
+	// tileBlock32x32
 	mov r2, #1
-	// tileRefs
+	// tileIds
 	ldr r3, off_812EAC0 // =unk_201EE20 
 	mov r4, #0x1e
 	mov r5, #0x14
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
 off_812EAC0: .word unk_201EE20
-	thumb_func_end sub_812EAAC
+	thumb_func_end CopyBackgroundTiles812EAAC
 
 	thumb_func_start sub_812EAC4
 sub_812EAC4:
@@ -139,7 +139,7 @@ sub_812EB92:
 loc_812EB9A:
 	push {r1,r2}
 	mov r0, r1
-	bl sub_80466C4
+	bl getStructFrom2008450
 	pop {r1,r2}
 	bne locret_812EBAC
 	mov r0, r4
@@ -157,7 +157,7 @@ sub_812EBB8:
 	mov r1, #1
 	push {r1}
 	mov r0, r1
-	bl sub_80466C4
+	bl getStructFrom2008450
 	pop {r1}
 	bne locret_812EBD0
 	mov r2, #0xb4
@@ -177,7 +177,7 @@ sub_812EBD8:
 	mov r6, r1
 	bl sub_80465A0 // (void *a1) -> void
 	mov r0, r6
-	bl sub_80466C4
+	bl getStructFrom2008450
 	beq loc_812EBFE
 	mov r5, r1
 	ldr r0, [sp]
@@ -299,7 +299,7 @@ sub_812ECAC:
 	mov r5, r7
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#4]
+	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
 	mov r1, #6
 	mov r2, #0
 	mov r3, #0
@@ -322,11 +322,11 @@ loc_812ECF2:
 	strh r0, [r7,#0x3e]
 	strh r1, [r7,#0x3c]
 loc_812ECFA:
-	mov r0, #2
-	bl sub_811F7EC
+	mov r0, #JOYPAD_B
+	bl JoypadKeyPressed
 	bne loc_812ED12
-	mov r0, #1
-	bl sub_811F7EC
+	mov r0, #JOYPAD_A
+	bl JoypadKeyPressed
 	beq locret_812ED2A
 	mov r1, #4
 	ldrb r0, [r5,#0x11]
@@ -345,7 +345,7 @@ loc_812ED1C:
 	beq loc_812ED26
 	mov r0, #0x83
 loc_812ED26:
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 locret_812ED2A:
 	pop {r4-r7,pc}
 	thumb_func_end sub_812ECAC
@@ -397,14 +397,14 @@ loc_812ED6A:
 	tst r1, r0
 	bne locret_812ED90
 	mov r1, #0x40 
-	bl sub_803EBF4
+	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
 	cmp r0, #2
 	bne loc_812ED8A
 	mov r1, #0x30 
 loc_812ED8A:
 	mov r0, r1
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 locret_812ED90:
 	pop {pc}
 	.balign 4, 0x00
@@ -414,7 +414,7 @@ locret_812ED90:
 sub_812ED94:
 	push {r4-r7,lr}
 	mov r7, r5
-	bl sub_800183C
+	bl ZeroFillGFX30025c0
 	bl sub_8046664 // () -> void
 	mov r0, #0
 	mov r1, #0
@@ -422,7 +422,7 @@ sub_812ED94:
 	ldr r3, off_812EDE0 // =unk_201E920 
 	mov r4, #0x1e
 	mov r5, #0x14
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	mov r5, r7
 	bl sub_812EB92
 	ldrh r0, [r5,#0x2a]
@@ -514,7 +514,7 @@ loc_812EE4E:
 	mov r3, #0
 	mov r4, #8
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	thumb_func_end sub_812EE20
 
 	pop {r3}
@@ -523,7 +523,7 @@ loc_812EE4E:
 	mov r2, #2
 	mov r4, #8
 	mov r5, #2
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
 	thumb_func_start sub_812EE78
 sub_812EE78:
@@ -552,7 +552,7 @@ loc_812EE94:
 	mov r3, #0
 	mov r4, #8
 	mov r5, #2
-	bl sub_80018D0
+	bl call_sub_3005EBA
 	pop {r4-r7,pc}
 off_812EEAC: .word off_812EEB0
 off_812EEB0: .word unk_2024F90
@@ -641,7 +641,7 @@ sub_812EF60:
 	mov r5, #3
 	ldr r6, off_812EF9C // =dword_86A5D60 
 	mov r7, #0
-	bl render_graphicalText_8045F8C
+	bl renderTextGfx_8045F8C
 	thumb_func_end sub_812EF60
 
 	bl sub_812EFA4
@@ -651,7 +651,7 @@ sub_812EF60:
 	ldr r3, off_812EFA0 // =unk_2025A70 
 	mov r4, #0xa
 	mov r5, #6
-	bl copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+	bl CopyBackgroundTiles
 	pop {r4-r7,pc}
 off_812EF8C: .word word_2023FA0
 off_812EF90: .word unk_2025070

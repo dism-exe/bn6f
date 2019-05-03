@@ -310,8 +310,8 @@ sub_8092EC4:
 	and r0, r1
 	add r0, #8
 	bl sub_809E13C
-	mov r0, #0x81
-	bl sound_play // () -> void
+	mov r0, #SOUND_MENU_SELECT
+	bl PlaySoundEffect
 	mov r0, #4
 	strb r0, [r5]
 	mov r0, #1
@@ -370,8 +370,8 @@ sub_8092F76:
 	b loc_8092FB6
 loc_8092F8C:
 	bl sub_809322A
-	mov r0, #0x83
-	bl sound_play // () -> void
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	mov r0, #0xa
 	bl sub_80931FA
 	mov r0, #0x10
@@ -382,7 +382,7 @@ loc_8092FA2:
 	bl sub_80931FA
 	mov r0, #0x83
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #0x14
 	strb r0, [r5]
 	b loc_8092FBA
@@ -427,7 +427,7 @@ sub_8092FD2:
 	strb r1, [r5,#9]
 	mov r0, #0xc1
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #0x18
 	strb r0, [r5]
 loc_809300E:
@@ -477,7 +477,7 @@ sub_8093054:
 	bl sub_809E254
 	mov r0, #0xc8
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #0x24 
 	strb r0, [r5]
 loc_8093070:
@@ -571,7 +571,7 @@ loc_809313A:
 	mov r0, #0x1e
 	bl sub_80931FA
 	mov r0, #0xc0
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #0x2c 
 	strb r0, [r5]
 	b loc_8093168
@@ -768,7 +768,7 @@ sub_809332C:
 	ldr r4, dword_8093354 // =0x7c1c0000 
 	bl SpawnOverworldMapObject
 	mov r0, #0xa5
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00

@@ -766,7 +766,7 @@
 // .global comp_82CED74
 // .global comp_82D2AC8
 // .global comp_82D6FE4
-// .global comp_82DABC8
+// .global compSprite_82DABC8
 // .global comp_82DD9A8
 // .global comp_82E0114
 // .global comp_82E4050

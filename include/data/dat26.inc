@@ -13,7 +13,7 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global calcAngle_800117C
 
 	.include "asm/asm00_1.inc"

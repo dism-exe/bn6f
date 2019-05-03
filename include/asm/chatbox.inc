@@ -2,16 +2,16 @@
 	.equ INC_ASM_CHATBOX, 0
 
 /* Public Symbols */
-	.global chatbox_uncomp_803FD08 // () -> int
-	.global chatbox_dead_uncomp_803FD3C
+	.global chatbox_uncompBasedOnMap_803FD08 // () -> int
+	.global chatbox_uncomp_803FD3C
 	.global chatbox_runScript_202da04 // (u8 scriptID) -> void
-	.global chatbox_803FD78 // (u16 *scriptArr, u8 scriptID) -> void
-	.global chatbox_runScript_803FD9C // (u16 *scriptArr, u8 scriptID) -> void
-	.global loc_803FDA4
-	.global chatbox_runScript_803FE08 // (u16 *scriptArr, u8 scriptID) -> void
-	.global chatbox_803FE10
+	.global chatbox_runScript_803FD78 // (void *textScript, u8 scriptIdx) -> void
+	.global chatbox_runScript_803FD9C // (void *textScript, u8 scriptIdx) -> void
+	.global chatbox_runScript_803FDA4
+	.global chatbox_runScript_803FE08 // (void *textScript, u8 scriptIdx) -> void
+	.global chatbox_runScript_803FE10
 	.global chatbox_runScript_803FE74 // (u16 *scriptList, u8 scriptOffIdx) -> void
-	.global chatbox_onUpdate_803FEB4
+	.global chatbox_onUpdate
 	.global byte_804033B
 	.global off_804033C
 	.global chatbox_runTrainScript // (u8 scriptOffIdx) -> void
@@ -36,9 +36,9 @@
 	.global chatbox_8045EDC
 	.global chatbox_8045EEC
 	.global chatbox_8045EFC
-	.global chatbox_8045F1C
-	.global chatbox_8045F2C // (int a1) ->
-	.global chatbox_8045F3C
+	.global chatbox_set_eFlags2009F38
+	.global chatbox_clear_eFlags2009F38 // (int a1) ->
+	.global chatbox_check_eFlags2009F38
 	.global chatbox_8045F4C
 
 
@@ -49,8 +49,8 @@
 // .global sub_30070B4
 
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
-// .global sound_bgmusic_play // (int a1) -> void
+// .global PlaySoundEffect
+// .global PlaySong // (int a1) -> void
 // .global sub_800068A
 // .global sub_80006A2
 // .global musicGameState_8000784 // () -> void
@@ -68,7 +68,7 @@
 // .global sub_80010EC
 // .global sub_8001154
 // .global GetRNG2 // () -> int
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
 // .global sub_8002694
 
 	.include "asm/sprite.inc"
@@ -96,11 +96,11 @@
 // .global subsystem_launchMail
 // .global engine_setScreeneffect // (int a1, int a2) -> void
 // .global getBattleSettingsFromList0 // (int battleSettingsIdx) -> BattleSettings*
-// .global sub_800B6B0
+// .global eStruct200A008_getUnk01
 
 	.include "asm/asm00_2.inc"
 // .global sub_8013704
-// .global sub_80137FE
+// .global GetField16FromSelectedS20047CCStruct
 
 	.include "asm/asm02.inc"
 // .global dword_8021AEC
@@ -148,7 +148,7 @@
 // .global sub_803D118
 // .global sub_803D128
 // .global sub_803D138
-// .global sub_803F524
+// .global notZero_eByte200AD04
 // .global sub_803F798
 // .global byte_803FCE4
 
@@ -237,11 +237,11 @@
 // .global byte_86C0940
 
 	.include "data/dat38_71.inc"
-// .global dword_86CF4AC
+// .global TextScriptFolderNames
 
 	.include "data/dat38_85.inc"
-// .global dword_86EA94C
-// .global dword_86EB354
+// .global TextScriptChipNames0
+// .global TextScriptChipNames1
 // .global byte_86EF71C
 // .global byte_86F2960
 // .global byte_86F2980
@@ -857,8 +857,8 @@
 // .global dword_87A3B84
 
 	.include "data/dat38_96.inc"
-// .global byte_87F2E38
-// .global dword_87F2ED0
+// .global TextScriptNaviNames0
+// .global TextScriptNaviNames1
 
 
 /* Undeclared Symbols */
@@ -868,7 +868,7 @@
 // .equ dword_2001A04, 0x2001A04
 // .equ dword_2001A60, 0x2001A60
 // .equ dword_2001ABC, 0x2001ABC
-// .equ dynamicArr, 0x2005780
+// .equ eReqBBSGui, 0x2005780
 // .equ sSubmenu, 0x2009A30
 // .equ unk_2009A80, 0x2009A80
 // .equ unk_2009A82, 0x2009A82
@@ -876,11 +876,11 @@
 // .equ unk_2009A86, 0x2009A86
 // .equ unk_2009A88, 0x2009A88
 // .equ unk_2009A8A, 0x2009A8A
-// .equ dword_2009F38, 0x2009F38
+// .equ eFlags2009F38, 0x2009F38
 // .equ eOWPlayerObject, 0x2009F40
 // .equ unk_200A293, 0x200A293
 // .equ i_joGameSubsysSel, 0x200A480
-// .equ unk_200AFA0, 0x200AFA0
+// .equ byte_200AFA0, 0x200AFA0
 // .equ unk_200B2B0, 0x200B2B0
 // .equ unk_200BEA0, 0x200BEA0
 // .equ unk_200C1A0, 0x200C1A0
@@ -900,12 +900,12 @@
 // .equ unk_2011C57, 0x2011C57
 // .equ byte_201F070, 0x201F070
 // .equ reqBBS_requestNames_textualData, 0x2025A04
-// .equ unk_202DA00, 0x202DA00
-// .equ unk_202DA04, 0x202DA04
+// .equ byte_202DA00, 0x202DA00
+// .equ eTextScript202DA04, 0x202DA04
 // .equ byte_202FA00, 0x202FA00
 // .equ unk_2033400, 0x2033400
 // .equ unk_2034A00, 0x2034A00
-// .equ unk_2034A04, 0x2034A04
+// .equ eTextScript2034A04, 0x2034A04
 // .equ byte_3001650, 0x3001650
 // .equ byte_3001710, 0x3001710
 // .equ unk_3001B40, 0x3001B40

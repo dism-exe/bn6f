@@ -12,7 +12,7 @@ sub_814187C:
 	strb r0, [r5,#0x10] // (dword_2001020 - 0x2001010)
 	mov r0, #7
 	mov r1, #0
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	mov r0, #0
 	pop {r4-r7,pc}
 	thumb_func_end sub_814187C
@@ -179,7 +179,7 @@ loc_81419CC:
 	bl IsPaletteFadeActive // () -> zf
 	beq loc_8141A0C
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8141A0C
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -317,11 +317,9 @@ loc_8141ACE:
 	thumb_local_start
 sub_8141AD2:
 	push {r4-r7,lr}
-	// entryIdx
 	mov r0, #7
-	// byteFlagIdx
 	mov r1, #1
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_8141B00
 	ldrb r0, [r5,#0x11]
 	tst r0, r0
@@ -501,7 +499,7 @@ sub_8141F7C:
 	push {r0-r3}
 	mov r0, #7
 	mov r1, #0
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	pop {r0-r3}
 	bne loc_8141FA4
 	cmp r2, r3
@@ -551,14 +549,14 @@ loc_8141FE4:
 	bl SpawnObjectsFromList
 	mov r0, #7
 	mov r1, #2
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_814201A
 	ldr r0, off_8142048 // =byte_8089DF4 
 	mov r1, #0
 	bl init_s_02011C50_8036E90
 	mov r0, #7
 	mov r1, #2
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 loc_814201A:
 	bl sub_809E3A2
 	beq loc_814202A
@@ -568,7 +566,7 @@ loc_814201A:
 loc_814202A:
 	mov r0, #7
 	mov r1, #0
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
 off_8142034: .word off_8141B18
 dword_8142038: .word 0x140
@@ -724,7 +722,7 @@ sub_8142134:
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, #7
 	mov r1, #0x40 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	mov r0, #0
 	pop {r4-r7,pc}
 	thumb_func_end sub_8142134
@@ -1078,7 +1076,7 @@ sub_8142510:
 	mov r6, #1
 	mov r0, #7
 	mov r1, #0x40 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_814253E
 	mov r6, #0
 	bl sub_8142734
@@ -1128,7 +1126,7 @@ loc_8142594:
 	bl sub_8036E86
 	mov r0, #0
 	mov r1, #0x28 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_81425B4
 	bl sub_81426CE
 	cmp r0, #6
@@ -1143,7 +1141,7 @@ loc_81425B4:
 	strb r1, [r0,#0x15]
 	mov r0, #7
 	mov r1, #0x44 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_81425D4
 	ldr r0, off_8142608 // =byte_8089448 
 	mov r1, #0
@@ -1151,19 +1149,19 @@ loc_81425B4:
 loc_81425D4:
 	mov r0, #7
 	mov r1, #0x40 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r0, #7
 	mov r1, #0x42 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r0, #7
 	mov r1, #0x43 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r0, #7
 	mov r1, #0x46 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r0, #7
 	mov r1, #0x47 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 locret_81425FC:
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
@@ -1185,7 +1183,7 @@ sub_8142618:
 	beq loc_814266C
 	mov r0, #7
 	mov r1, #0x42 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_814264A
 	mov r3, r10
 	ldr r3, [r3,#0x3c]
@@ -1194,16 +1192,16 @@ sub_8142618:
 	beq loc_814267C
 	mov r0, #7
 	mov r1, #0x42 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	b loc_814267C
 loc_814264A:
 	mov r0, #7
 	mov r1, #0x43 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_814265E
 	mov r0, #7
 	mov r1, #0x43 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	b loc_814267C
 loc_814265E:
 	bl sub_80357AE
@@ -1214,14 +1212,14 @@ loc_814265E:
 loc_814266C:
 	mov r0, #7
 	mov r1, #0x42 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r0, #7
 	mov r1, #0x43 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 loc_814267C:
 	mov r0, #7
 	mov r1, #0x46 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_8142690
 	ldr r0, off_81426BC // =byte_80893CC 
 	mov r1, #0
@@ -1230,7 +1228,7 @@ loc_814267C:
 loc_8142690:
 	mov r0, #7
 	mov r1, #0x47 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_81426A4
 	ldr r0, off_81426C0 // =dword_8089128 
 	mov r1, #0
@@ -1239,10 +1237,10 @@ loc_8142690:
 loc_81426A4:
 	mov r0, #7
 	mov r1, #0x46 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r0, #7
 	mov r1, #0x47 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
 	.byte 0x0, 0x0
 off_81426B8: .word byte_8089554
@@ -1680,7 +1678,7 @@ byte_8142A74: .byte 0x3, 0x0, 0x0, 0x3, 0xFD, 0x0, 0x0, 0xFD, 0x7F, 0x7F, 0x7F, 
 sub_8142A84:
 	push {r4-r7,lr}
 	mov r7, r0
-	ldr r5, off_8142AAC // =eOverworldMapObjects 
+	ldr r5, off_8142AAC // =eOverworldMapObjects
 	mov r4, #0
 	mov r6, #0
 loc_8142A8E:
@@ -1757,7 +1755,7 @@ loc_8142AF6:
 sub_8142B04:
 	push {r4-r7,lr}
 	mov r7, r0
-	ldr r5, off_8142B54 // =eOverworldMapObjects 
+	ldr r5, off_8142B54 // =eOverworldMapObjects
 	mov r4, #0
 	mov r6, #0
 loc_8142B0E:
@@ -1875,7 +1873,7 @@ loc_8142BBC:
 	bl sub_8004822
 	pop {r0-r7}
 	mov r0, #0x6d 
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 loc_8142BEA:
 	add r5, #8
 	add r4, #1
@@ -1963,11 +1961,11 @@ loc_8142C58:
 	mov r0, #1
 	mov r1, #0x14
 	bl sub_80302A8
-	mov r0, #0x6b 
-	bl sound_play // () -> void
+	mov r0, #SOUND_HIT_6B
+	bl PlaySoundEffect
 	mov r0, #0xd
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	pop {r4-r7,pc}
 off_8142C8C: .word byte_2006670
 	thumb_func_end sub_8142C46
@@ -1995,7 +1993,7 @@ off_8142CAC: .word 0x420
 	thumb_func_start sub_8142CB0
 sub_8142CB0:
 	push {r4-r7,lr}
-	ldr r5, off_8142D54 // =byte_200BE70 
+	ldr r5, off_8142D54 // =eStruct200BE70 
 	bl sub_8142D58
 	bl sub_8142DA0
 	ldr r5, [r5,#0xc] // (dword_200BE7C - 0x200be70)
@@ -2009,7 +2007,7 @@ sub_8142CB0:
 	thumb_func_start sub_8142CC8
 sub_8142CC8:
 	push {r4-r7,lr}
-	ldr r5, off_8142D54 // =byte_200BE70 
+	ldr r5, off_8142D54 // =eStruct200BE70 
 	ldrb r4, [r5]
 	mov r5, r0
 	lsl r1, r1, #2
@@ -2081,13 +2079,13 @@ sub_8142D4C:
 	push {r4-r7,lr}
 	bl sub_80307D8
 	pop {r4-r7,pc}
-off_8142D54: .word byte_200BE70
+off_8142D54: .word eStruct200BE70
 	thumb_func_end sub_8142D4C
 
 	thumb_local_start
 sub_8142D58:
 	push {r4-r7,lr}
-	ldr r5, off_8142E04 // =byte_200BE70 
+	ldr r5, off_8142E04 // =eStruct200BE70 
 	ldr r6, off_8142E08 // =unk_2000B40 
 	ldrb r4, [r5]
 	ldrb r0, [r6,#0x8] // (byte_2000B48 - 0x2000b40)
@@ -2128,7 +2126,7 @@ locret_8142D9E:
 sub_8142DA0:
 	push {r4-r7,lr}
 	push {r0}
-	ldr r5, off_8142E04 // =byte_200BE70 
+	ldr r5, off_8142E04 // =eStruct200BE70 
 	ldr r6, off_8142E08 // =unk_2000B40 
 	ldrb r4, [r5]
 	ldrb r0, [r6,#0x9] // (byte_2000B49 - 0x2000b40)
@@ -2183,7 +2181,7 @@ loc_8142DF8:
 	ldrh r0, [r2,r1]
 	pop {pc}
 off_8142E00: .word byte_8142E0C
-off_8142E04: .word byte_200BE70
+off_8142E04: .word eStruct200BE70
 off_8142E08: .word unk_2000B40
 byte_8142E0C: .byte 0x50, 0x3C, 0xD0, 0x45, 0x90, 0x4A, 0xC0, 0x49
 off_8142E14: .word byte_8142E24
@@ -2227,7 +2225,7 @@ sub_8142ECC:
 	push {r0-r3}
 	mov r0, #9
 	mov r1, #0x60 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	pop {r0-r3}
 	bne loc_8142F00
 	cmp r2, r3
@@ -2323,7 +2321,7 @@ loc_8142FA6:
 	bl sub_81430F4
 	mov r0, #9
 	mov r1, #0x60 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 loc_8142FBA:
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -2345,7 +2343,7 @@ sub_8142FC8:
 	bl sub_8143248
 	mov r0, #9
 	mov r1, #0x62 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_8143010
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
@@ -2356,20 +2354,20 @@ sub_8142FC8:
 	beq loc_8143008
 	mov r0, #9
 	mov r1, #0x62 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	b loc_8143048
 loc_8143008:
-	mov r0, #0x69 
-	bl sound_play // () -> void
+	mov r0, #SOUND_CANT_JACK_IN
+	bl PlaySoundEffect
 	b loc_8143048
 loc_8143010:
 	mov r0, #9
 	mov r1, #0x63 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_8143024
 	mov r0, #9
 	mov r1, #0x63 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	b loc_8143048
 loc_8143024:
 	bl sub_80357AE
@@ -2382,10 +2380,10 @@ loc_8143024:
 loc_8143038:
 	mov r0, #9
 	mov r1, #0x62 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r0, #9
 	mov r1, #0x63 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 loc_8143048:
 	bl sub_8143198
 	bne loc_814306E
@@ -2398,10 +2396,10 @@ loc_8143048:
 loc_814305E:
 	mov r0, #9
 	mov r1, #0x62 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r0, #9
 	mov r1, #0x63 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 loc_814306E:
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -2782,8 +2780,8 @@ loc_8143324:
 	mov r1, #0xf0
 	and r0, r1
 	lsl r0, r0, #1
-	ldr r1, off_8143390 // =math_cosTable 
-	ldr r2, off_8143394 // =math_sinTable 
+	ldr r1, off_8143390 // =math_cosTable
+	ldr r2, off_8143394 // =math_sinTable
 	ldrsh r1, [r1,r0]
 	ldrsh r2, [r2,r0]
 	mov r0, #0x80
@@ -3156,7 +3154,7 @@ sub_8143978:
 	push {r0-r3}
 	mov r0, #0xd
 	mov r1, #0x30 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	pop {r0-r3}
 	bne loc_81439B6
 	cmp r2, r3
@@ -3205,7 +3203,7 @@ loc_8143A02:
 	bl sub_8143C62
 	mov r0, #0xd
 	mov r1, #0x36 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	beq loc_8143A2E
 	ldr r0, off_8143A50 // =byte_8093358 
 	mov r1, #0
@@ -3213,17 +3211,17 @@ loc_8143A02:
 	bl sub_8143F38
 	mov r0, #0xd
 	mov r1, #0x36 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 loc_8143A2E:
 	mov r0, #0xd
 	mov r1, #0x30 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r0, #0xd
 	mov r1, #0x34 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r0, #0xd
 	mov r1, #0x35 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 loc_8143A46:
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -3243,7 +3241,7 @@ sub_8143A54:
 	bne loc_8143B04
 	mov r0, #0xd
 	mov r1, #0x34 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_8143A86
 	mov r3, r10
 	ldr r3, [r3,#0x3c]
@@ -3252,16 +3250,16 @@ sub_8143A54:
 	beq loc_8143AD6
 	mov r0, #0xd
 	mov r1, #0x34 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	b loc_8143AD6
 loc_8143A86:
 	mov r0, #0xd
 	mov r1, #0x35 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	bl TestEventFlagFromImmediate
 	bne loc_8143A9A
 	mov r0, #0xd
 	mov r1, #0x35 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	b loc_8143AD6
 loc_8143A9A:
 	bl sub_80357AE
@@ -3283,10 +3281,10 @@ loc_8143ABE:
 loc_8143AC6:
 	mov r0, #0xd
 	mov r1, #0x34 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r0, #0xd
 	mov r1, #0x35 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 loc_8143AD6:
 	bl sub_8143D4C
 	cmp r0, r1
@@ -3309,10 +3307,10 @@ loc_8143AF0:
 loc_8143B04:
 	mov r0, #0xd
 	mov r1, #0x34 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r0, #0xd
 	mov r1, #0x35 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 locret_8143B14:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -3487,9 +3485,8 @@ sub_8143C62:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	bl sub_8030A60
-	mov r0, #0x17
-	mov r1, #0x21 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	movflag EVENT_1721
+	bl SetEventFlagFromImmediate
 	pop {r4-r7,pc}
 off_8143C7C: .word off_8143C80
 off_8143C80: .word off_8072C10
@@ -3502,7 +3499,7 @@ sub_8143C88:
 	bl reqBBS_setFlag_e17b0f7_8140A00
 	mov r0, #1
 	mov r1, #0xbb
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	bl sub_8143B30
 	ldr r4, off_8143D08 // =off_8143D0C 
 	lsl r0, r0, #2
@@ -3536,7 +3533,7 @@ sub_8143CC8:
 	bl reqBBS_clearFlag_8140A0C
 	mov r0, #1
 	mov r1, #0xbb
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	bl sub_8143B30
 	ldr r4, off_8143D08 // =off_8143D0C 
 	lsl r0, r0, #2
@@ -3944,7 +3941,7 @@ sub_8143FC4:
 	bne loc_8143FD6
 	mov r0, #0xb9
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 loc_8143FD6:
 	ldr r0, [r5,#0x14] // (dword_2001024 - 0x2001010)
 	ldr r1, [r5,#0x18] // (dword_2001028 - 0x2001010)

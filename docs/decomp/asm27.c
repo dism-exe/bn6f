@@ -1,7 +1,7 @@
 // 0x80946c4
 int sub_80946C4()
 {
-    decompAndCopyData_8000B30(&initRefs_80946D4);
+    decompAndCopyData(&initRefs_80946D4);
     return 0;
 }
 
@@ -25,7 +25,7 @@ int sub_8094714()
 // 0x8094720
 int __fastcall sub_8094720(int a1, int a2, int a3, int a4)
 {
-    ZeroFillByWord(&unk_2026404, 0x1000u, a3, a4);
+    ZeroFillByWord(&unk_2026404, 4096);
     sub_8094738(&unk_2026404);
     return 0;
 }
@@ -45,7 +45,7 @@ int __fastcall sub_8094738(int a1)
     v4 = 0;
     do
     {
-        CopyHalfwords(100 * v4 + v3, v4 * v1 + v2, 0x64u);
+        CopyHalfwords((100 * v4 + v3), (v4 * v1 + v2), 100);
         ++v4;
     }
     while ( v4 < 34 );

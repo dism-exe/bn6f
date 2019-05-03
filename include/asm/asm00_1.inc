@@ -57,7 +57,7 @@
 	.global sub_80039D4
 	.global sub_8003A64
 	.global sub_8003A90
-	.global sub_8003AB2
+	.global zeroFill_8003AB2
 	.global sub_8003AD4
 	.global sub_8003AEA
 	.global sub_8003B1C
@@ -79,8 +79,8 @@
 	.global sub_80048D2
 	.global sub_8004934
 	.global sub_8004D48
-	.global sub_8004DF0
-	.global cb_80050EC // () -> void
+	.global reqBBS_init_8004DF0
+	.global cbGameState_80050EC // () -> void
 	.global sub_8005524
 	.global gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 	.global sub_8005C04
@@ -188,11 +188,11 @@
 	.global sub_800B3D8
 	.global sub_800B460
 	.global sub_800B46C
-	.global sub_800B6B0
-	.global sub_800B6CE
-	.global sub_800B6D4
-	.global sub_800B6DA
-	.global sub_800B6E0
+	.global eStruct200A008_getUnk01
+	.global eStruct200A008_setUnk04
+	.global eStruct200A008_getUnk04
+	.global eStruct200A008_setUnk06
+	.global eStruct200A008_getUnk06
 	.global sub_800B734
 	.global sub_800B79A
 	.global sub_800B884
@@ -218,8 +218,8 @@
 // .global sub_3006440
 
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
-// .global sound_bgmusic_play // (int a1) -> void
+// .global PlaySoundEffect
+// .global PlaySong // (int a1) -> void
 // .global sub_800065A
 // .global sound_8000672
 // .global musicGameState_8000784 // () -> void
@@ -246,24 +246,24 @@
 // .global GetPositiveSignedRNG2
 // .global GetRNG1 // () -> void
 // .global GetPositiveSignedRNG1
-// .global sub_8001708
-// .global sub_8001778
-// .global sub_8001788
-// .global sub_80017A0
-// .global sub_80017AA
-// .global sub_80017E0
-// .global sub_8001820
-// .global sub_800182E
-// .global sub_8001850
+// .global map_8001708
+// .global sRender_08_setRenderingState
+// .global renderInfo_8001788
+// .global renderInfo_80017A0
+// .global zeroFillVRAM
+// .global ZeroFill_byte_3001960
+// .global zeroFill_e2009740
+// .global zeroFill_e200F3A0
+// .global copyMemory_8001850
 // .global sub_800187C
 // .global sub_8001974
-// .global sub_8001AFC
+// .global zeroFill_e20094C0
 // .global sub_8001B6C
-// .global sub_8002368
+// .global zeroFill_e20097A0
 // .global sub_8002378
 // .global sub_800239A
 // .global sub_80023A8
-// .global sub_80024A2
+// .global zeroFill_80024A2
 // .global sub_80024AE
 // .global sub_8002668
 
@@ -321,7 +321,7 @@
 // .global GetPlayerBattleVarByte_AllianceFromBattleObject
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6 // (int a1, int a2) -> u8
-// .global sub_80137E6
+// .global SetField16ToSelectedS20047CCStruct
 // .global sub_8013854
 // .global sub_8013884
 // .global sub_801401E
@@ -355,7 +355,7 @@
 // .global sub_801E5F8
 // .global sub_801E724
 // .global sub_801E754
-// .global loc_801E792
+// .global sub_801E792
 
 	.include "asm/asm01.inc"
 // .global sub_801FE00
@@ -363,21 +363,21 @@
 // .global sub_801FE5E
 // .global sub_801FE64
 // .global sub_801FE6C
-// .global sub_801FEE8
+// .global eStruct203F7D8_getUnk01
 // .global sub_801FEEE
 // .global sub_80200A4
-// .global sub_8020134
+// .global eStruct2038160_clearStruct
 // .global sub_8020140
-// .global sub_802015E
+// .global eStruct2038160_getBattleTerminate01
 
 	.include "data/dat01.inc"
 // .global dword_802137C
 // .global byte_80213AC
 
 	.include "asm/asm02.inc"
-// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global getChip8021DA8 // (int chip_idx) -> ChipData*
 // .global sub_8021AB4
-// .global sub_8021C68
+// .global zeroFill_e2002230
 // .global chip_8021C7C // (int chip_idx, int searchItem, int off) -> void*
 // .global sub_8021D08
 // .global sub_8021D36
@@ -434,21 +434,21 @@
 // .global sub_802FDB0
 // .global loc_802FDB4
 // .global sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
-// .global sub_802FF2C
-// .global sub_802FF4C
+// .global cleareMemory_802FF2C
+// .global camera_802FF4C
 // .global sub_802FFF4
 // .global sub_80301B2
 // .global sub_80303E8
 // .global sub_8030580
 // .global EnterMap_RunMapGroupAsmFunction_8030A00
-// .global sub_8030A30
+// .global map_8030A30
 // .global sub_8031A7A
 
 	.include "asm/asm03_1.inc"
 // .global sub_8033948
 // .global sub_80339CC
 // .global sub_80341AA
-// .global sub_8034B4C
+// .global map_8034B4C
 // .global sub_8034BB8
 // .global sub_803532C
 // .global sub_80355A8
@@ -471,8 +471,8 @@
 // .global sub_803DD60
 // .global sub_803DDA4
 // .global sub_803DE24
-// .global sub_803EA60
-// .global sub_803EBF4
+// .global eStruct200BC30_getJumpOffset00
+// .global eStruct200BC30_getRef
 // .global loc_803ED90
 // .global sub_803F4EC
 // .global sub_803F500
@@ -483,8 +483,8 @@
 	.include "asm/chatbox.inc"
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
-// .global chatbox_8045F2C // (int a1) ->
-// .global chatbox_8045F3C
+// .global chatbox_clear_eFlags2009F38 // (int a1) ->
+// .global chatbox_check_eFlags2009F38
 
 	.include "asm/asm03_2.inc"
 // .global sub_8046664 // () -> void
@@ -512,7 +512,7 @@
 // .global byte_809B5AD
 // .global sub_809D19C
 // .global sub_809E04C
-// .global setFlag3_2e2_2001C88
+// .global setEventFlag_809E098
 // .global sub_809E2C2
 // .global sub_809E2F4
 // .global sub_809E2FC
@@ -529,7 +529,7 @@
 // .global sub_809F68C
 // .global sub_809F90C
 // .global sub_809F942
-// .global sub_809F9C8
+// .global zeroFill_e2004348
 // .global sub_809F9DC
 // .global sub_809FAF4
 
@@ -1005,7 +1005,7 @@
 // .global ho_811ED1C // () -> void
 // .global sub_811F6C0
 // .global sub_811F6E0
-// .global sub_811F7EC
+// .global JoypadKeyPressed
 // .global sub_811FB78
 // .global sub_81209DC
 // .global sub_8120A38
@@ -1024,7 +1024,7 @@
 
 	.include "asm/asm37_0.inc"
 // .global sub_813B768
-// .global sub_813B934
+// .global zeroFill_813B934
 // .global sub_813C324
 // .global sub_813C3AC
 // .global sub_813D60C
@@ -1044,7 +1044,7 @@
 
 	.include "asm/libs.inc"
 // .global sub_81440D8 // static () -> void
-// .global sub_8144EEC
+// .global eStruct200FE00_setUnk04To15h
 // .global SWI_LZ77UnCompReadNormalWrite16bit
 
 	.include "data/dat38_85.inc"
@@ -1053,14 +1053,14 @@
 // .global dword_86E09F8
 
 	.include "data/dat38_96.inc"
-// .global dword_87F2F68
+// .global TextScriptDustManUndernetTut
 
 
 /* Undeclared Symbols */
 // .equ dword_2000060, 0x2000060
 // .equ unk_2000260, 0x2000260
 // .equ byte_20004E0, 0x20004E0
-// .equ unk_2000670, 0x2000670
+// .equ byte_2000670, 0x2000670
 // .equ byte_2000780, 0x2000780
 // .equ byte_2000781, 0x2000781
 // .equ byte_2000782, 0x2000782
@@ -1077,7 +1077,7 @@
 // .equ eUnusedExtraToolkitPtrsOffset, 0x2001060
 // .equ dword_2001064, 0x2001064
 // .equ eActiveOverworldNPCObjectsBitfield, 0x20010E0
-// .equ dword_20013F0, 0x20013F0
+// .equ eRngSeed20013F0, 0x20013F0
 // .equ byte_2001600, 0x2001600
 // .equ dword_20018B8, 0x20018B8
 // .equ unk_20018C0, 0x20018C0
@@ -1100,7 +1100,7 @@
 // .equ dword_20081B8, 0x20081B8
 // .equ dword_20081BC, 0x20081BC
 // .equ dword_20081C0, 0x20081C0
-// .equ unk_20081D0, 0x20081D0
+// .equ dword_20081D0, 0x20081D0
 // .equ unk_2008980, 0x2008980
 // .equ unk_2008E80, 0x2008E80
 // .equ eBattleObjectsLinkedListStart, 0x2009380
@@ -1127,7 +1127,7 @@
 // .equ sSubmenu, 0x2009A30
 // .equ eBattleObjectsLinkedListSentinel, 0x2009AB0
 // .equ dword_2009AB4, 0x2009AB4
-// .equ sChatbox, 0x2009CD0
+// .equ eChatbox, 0x2009CD0
 // .equ eActiveOWPlayerObjectBitfield, 0x2009F34
 // .equ eOWPlayerObject, 0x2009F40
 // .equ byte_2009F41, 0x2009F41
@@ -1183,7 +1183,7 @@
 // .equ byte_200DF28, 0x200DF28
 // .equ unk_200F3A0, 0x200F3A0
 // .equ dword_200F3B0, 0x200F3B0
-// .equ unk_200F3B8, 0x200F3B8
+// .equ dword_200F3B8, 0x200F3B8
 // .equ byte_200F410, 0x200F410
 // .equ byte_2011800, 0x2011800
 // .equ byte_2011BB0, 0x2011BB0
@@ -1233,7 +1233,7 @@
 // .equ byte_2036830, 0x2036830
 // .equ eT4BattleObject0_LinkedList, 0x2036860
 // .equ eT4BattleObject0, 0x2036870
-// .equ unk_2038160, 0x2038160
+// .equ eStruct2038160, 0x2038160
 // .equ unk_2038170, 0x2038170
 // .equ unk_20384F0, 0x20384F0
 // .equ dword_2039A10, 0x2039A10
@@ -1315,28 +1315,28 @@
 // .equ byte_203F694, 0x203F694
 // .equ byte_203F6D0, 0x203F6D0
 // .equ byte_203F750, 0x203F750
-// .equ byte_203F7D8, 0x203F7D8
-// .equ byte_203F7D8, 0x203F7D8
+// .equ eStruct203F7D8, 0x203F7D8
+// .equ eStruct203F7D8, 0x203F7D8
 // .equ dword_203F7E0, 0x203F7E0
 // .equ byte_203F7E4, 0x203F7E4
 // .equ byte_3000EA8, 0x3000EA8
 // .equ byte_3001690, 0x3001690
-// .equ byte_3001750, 0x3001750
+// .equ iPallete3001750, 0x3001750
 // .equ byte_3001960, 0x3001960
 // .equ unk_3001980, 0x3001980
-// .equ unk_3001B60, 0x3001B60
+// .equ iPallete3001B60, 0x3001B60
 // .equ dword_3002180, 0x3002180
 // .equ dword_3002184, 0x3002184
 // .equ dword_3002188, 0x3002188
 // .equ dword_300218C, 0x300218C
-// .equ unk_30025C0, 0x30025C0
+// .equ iBGTileIdBlocks, 0x30025C0
 	.equ Window0HorizontalDimensions, 0x4000040
 	.equ IWRAMRoutinesROMLocation, 0x81D6000
 	.equ IWRAMRoutinesROMLocation, 0x81D6000
 	.equ IWRAMRoutinesROMLocation, 0x81D6000
-// .global scripts_fullSynchro_86F3F5C
-// .global scripts_dad_cybeastTut_86F4498
-// .global scripts_shuko_crossTut_86F53CC
-// .global scripts_commErr_87370C0
+// .global TextScriptBattleTutFullSynchro
+// .global TextScriptDadCybeastTut
+// .global TextScriptShukoCrossTut
+// .global TextScriptCommError87370C0
 
 	.endif // INC_ASM_ASM00_1

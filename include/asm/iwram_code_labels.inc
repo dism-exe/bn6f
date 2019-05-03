@@ -34,8 +34,8 @@
 	.equ loc_3005E6A, 0x3005e6a
 	.global loc_3005E6A
 
-	.equ copyTiles_iram, 0x3005e80
-	.global copyTiles_iram
+	.equ CopyBackgroundTiles_iram, 0x3005e80
+	.global CopyBackgroundTiles_iram
 
 	.equ sub_3005EBA, 0x3005eba
 	.global sub_3005EBA

@@ -2,8 +2,8 @@
 	.equ INC_DATA_DAT38_87, 0
 
 /* Public Symbols */
-	.global byte_873811C
-	.global dword_873B9E0
+	.global TextScriptYouGotNewVirusData
+	.global TextScriptCommError873B9E0
 	.global dword_873D108
 	.global byte_873D9FC
 	.global comp_873DE4C
@@ -610,7 +610,7 @@
 	.global dword_87A3AFC
 	.global dword_87A3B08
 	.global dword_87A3B84
-	.global dword_87DAC90
+	.global TextScriptWhoAmI
 	.global sprite_87DC190
 	.global sprite_87DC5F0
 	.global byte_87DD248
@@ -624,8 +624,8 @@
 	.global sprite_87E1D84
 	.global sprite_87E24F4
 	.global sprite_87E2860
-	.global byte_87E30A0
-	.global byte_87E36F8
+	.global TextScriptDialog87E30A0
+	.global TextScript87E36F8
 
 
 /* External Symbols */
