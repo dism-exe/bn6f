@@ -27,7 +27,7 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global GetPositiveSignedRNG2
 
 	.include "asm/asm00_1.inc"
@@ -70,7 +70,7 @@
 // .global object_clearCollisionRegion // () -> void
 // .global object_setCollisionRegion
 // .global sub_801A082
-// .global object_setFlag // (int a1) -> void
+// .global object_setFlag1 // (int a1) -> void
 // .global object_clearFlag // (int bitfield) -> void
 // .global object_getFlag // () -> int
 // .global object_reservePanel

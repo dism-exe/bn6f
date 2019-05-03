@@ -1,8 +1,8 @@
 	.include "asm/asm02.inc"
 
 // (int chip_idx) -> ChipData*
-	thumb_func_start getChip_8021DA8
-getChip_8021DA8:
+	thumb_func_start getChip8021DA8
+getChip8021DA8:
 	ldr r1, off_8021AB0 // =ChipDataArr_8021DA8 
 	mov r2, #44
 	mul r0, r2
@@ -11,7 +11,7 @@ getChip_8021DA8:
 	mov pc, lr
 	.byte 0, 0
 off_8021AB0: .word ChipDataArr_8021DA8
-	thumb_func_end getChip_8021DA8
+	thumb_func_end getChip8021DA8
 
 	thumb_func_start sub_8021AB4
 sub_8021AB4:
@@ -271,8 +271,8 @@ off_8021C60: .word unk_20018EC
 dword_8021C64: .word 0x1FF
 	thumb_func_end sub_8021C02
 
-	thumb_func_start sub_8021C68
-sub_8021C68:
+	thumb_func_start zeroFill_e2002230
+zeroFill_e2002230:
 	push {lr}
 	mov r0, r10
 	// memBlock
@@ -283,7 +283,7 @@ sub_8021C68:
 	pop {pc}
 	.balign 4, 0x00
 dword_8021C78: .word 0xF00
-	thumb_func_end sub_8021C68
+	thumb_func_end zeroFill_e2002230
 
 // (int chip_idx, int searchItem, int off) -> void*
 	thumb_func_start chip_8021C7C
@@ -291,7 +291,7 @@ chip_8021C7C:
 	push {r4,r7,lr}
 	mov r2, r0
 	push {r1,r2}
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	pop {r1,r2}
 	add r0, #0
 	mov r3, #0
@@ -326,7 +326,7 @@ loc_8021CB0:
 	// idx
 	mov r0, r2
 	push {r2}
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	pop {r2}
 	push {r0,r2}
 	mov r0, r2

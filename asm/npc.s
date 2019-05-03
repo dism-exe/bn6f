@@ -797,11 +797,8 @@ dword_809EBB8: .word 0x800
 	thumb_local_start
 npc_809EBBC:
 	push {lr}
-	// entryIdx
-	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x15
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	movflag EVENT_EVENT_CUR_DIR_LOCKED
+	bl TestEventFlagFromImmediate
 	bne locret_809EBDA
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -1448,7 +1445,7 @@ npc_809F048:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	add r6, #3
 	pop {pc}
 	thumb_func_end npc_809F048
@@ -1916,7 +1913,7 @@ sub_809F354:
 	push {lr}
 	mov r7, r10
 	ldr r4, [r7,#oToolkit_Unk200f3a0_Ptr]
-	ldr r7, off_809F4B4 // =byte_87E30A0 
+	ldr r7, TextScriptDialog87E30A0_p // =TextScriptDialog87E30A0
 	bl sub_8002C68
 	ldrb r0, [r6,#1]
 	tst r0, r0
@@ -1932,7 +1929,7 @@ sub_809F36E:
 	push {lr}
 	add r0, r6, #1
 	bl ReadNPCScriptHalfword // (u8 bitfield_arr[2]) -> u16
-	bl sound_bgmusic_play // (int a1) -> void
+	bl PlaySong
 	add r6, #3
 	pop {pc}
 	thumb_func_end sub_809F36E
@@ -2086,7 +2083,7 @@ sub_809F45A:
 	tst r1, r1
 	beq loc_809F498
 	strb r2, [r5,#0x1c]
-	ldr r3, off_809F4B4 // =byte_87E30A0 
+	ldr r3, TextScriptDialog87E30A0_p // =TextScriptDialog87E30A0
 	mov r2, #0x94
 	str r3, [r5,r2]
 	mov r0, r1
@@ -2111,7 +2108,7 @@ loc_809F498:
 	bl FreeOverworldNPCObject
 	bl npc_809F51E
 	pop {pc}
-off_809F4B4: .word byte_87E30A0
+TextScriptDialog87E30A0_p: .word TextScriptDialog87E30A0
 	thumb_func_end sub_809F45A
 
 	thumb_local_start
@@ -2136,8 +2133,8 @@ sub_809F4B8:
 	mov r4, #1
 	bl SpawnOverworldMapObject
 	pop {r5}
-	mov r0, #0x76 
-	bl sound_play // () -> void
+	mov r0, #SOUND_LOG_OUT_76
+	bl PlaySoundEffect
 	add r6, #1
 	pop {pc}
 	thumb_func_end sub_809F4B8

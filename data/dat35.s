@@ -6,7 +6,7 @@
 sub_812EFE4:
 	push {lr}
 	mov r0, #6
-	bl sub_80466C4
+	bl getStructFrom2008450
 	bne locret_812EFFC
 	ldrb r0, [r1,#1]
 	cmp r0, #0x1d
@@ -27,7 +27,7 @@ sub_812F000:
 	mov r0, #0x30 
 	strb r0, [r5,#2]
 	mov r0, #0x41 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	mov r0, #0xf0
 	strh r0, [r5,#0x28]
 	pop {pc}
@@ -43,7 +43,7 @@ sub_812F014:
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
 loc_812F026:
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	bne loc_812F034
 	bl sub_81440D8 // static () -> void
@@ -79,7 +79,7 @@ sub_812F094:
 	bx r0
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq locret_812F0B8
 	mov r0, #0
@@ -263,7 +263,7 @@ loc_812F1E2:
 	beq loc_812F28E
 	push {r0}
 	mov r0, #0x40 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	pop {r0}
 	mov r1, #3
 	ldrh r0, [r5,#0x26]
@@ -310,14 +310,14 @@ loc_812F28E:
 	b loc_812F290
 loc_812F290:
 	bl sub_813064C
-	thumb_func_end sub_812F190
-
 	bl sub_8130810
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 dword_812F29C: .word 0xFFFFFFFF
 byte_812F2A0: .byte 0xDC, 0xFE, 0x0, 0x0, 0xDB, 0xFE, 0x0, 0x0
 dword_812F2A8: .word 0x8003
+	thumb_func_end sub_812F190
+
 	thumb_local_start
 sub_812F2AC:
 	push {r4-r7,lr}
@@ -510,7 +510,7 @@ loc_812F40E:
 	bgt loc_812F456
 	push {r0}
 	mov r0, #0x40 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	pop {r0}
 	ldrb r1, [r5,#2]
 	mov r2, #0x49 
@@ -542,7 +542,7 @@ loc_812F460:
 	bl sub_8130424
 	b loc_812F48E
 loc_812F466:
-	mov r0, #2
+	mov r0, #JOYPAD_B
 	bl IsButtonPressed
 	beq loc_812F48E
 	mov r0, #0xc
@@ -651,7 +651,7 @@ sub_812F530:
 	strb r0, [r5,#0x10]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	mov r1, #7
 	mov r2, #1
 	ldrb r3, [r5,#0x14]
@@ -728,8 +728,8 @@ loc_812F5CC:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	bne loc_812F5EE
-	mov r0, #0x83
-	bl sound_play // () -> void
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	mov r0, #0xc
 	mov r1, #0x10
 	bl SetScreenFade // (int a1, int a2) -> void
@@ -769,18 +769,18 @@ sub_812F628:
 	ldrb r0, [r5,#3]
 	tst r0, r0
 	beq loc_812F648
-	mov r0, #2
+	mov r0, #JOYPAD_B
 	bl IsButtonPressed
 	beq loc_812F698
 	mov r1, #0
 	strh r1, [r5,#0x26]
-	mov r0, #0x83
-	bl sound_play // () -> void
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	b loc_812F698
 loc_812F648:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	mov r1, #2
 	mov r2, #1
 	ldrb r3, [r5,#0x15]
@@ -791,16 +791,16 @@ loc_812F648:
 	strb r0, [r5,#0x15]
 	b loc_812F698
 loc_812F662:
-	mov r0, #2
+	mov r0, #JOYPAD_B
 	bl IsButtonPressed
 	beq loc_812F676
 	mov r0, #1
 	strb r0, [r5,#0x15]
-	mov r0, #0x83
-	bl sound_play // () -> void
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	b loc_812F67E
 loc_812F676:
-	mov r0, #1
+	mov r0, #JOYPAD_A
 	bl IsButtonPressed
 	beq loc_812F698
 loc_812F67E:
@@ -817,7 +817,7 @@ loc_812F688:
 	beq loc_812F694
 	mov r0, #0x83
 loc_812F694:
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 loc_812F698:
 	bl sub_803EAE4
 	cmp r0, #4
@@ -1034,7 +1034,7 @@ loc_812F818:
 	mov r0, #0x34 
 	strb r0, [r5,#2]
 	mov r0, #0x41 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	b loc_812F852
 loc_812F84E:
 	bl sub_8130424
@@ -1500,7 +1500,7 @@ loc_812FBE0:
 	bl sub_81307BC
 	bne loc_812FC1C
 	mov r0, #0x42 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	ldrb r0, [r5,#2]
 	mov r1, #0x49 
 	strb r0, [r5,r1]
@@ -1631,10 +1631,10 @@ loc_812FCCC:
 	b loc_812FC8E
 loc_812FCEC:
 	bl sub_803F798
-	mov r0, #0x73 
-	bl sound_play // () -> void
+	mov r0, #SOUND_UNK_73
+	bl PlaySoundEffect
 	mov r0, #0x3d 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	mov r0, #8
 	strb r0, [r5,#0xc]
 	pop {r4-r7,pc}
@@ -1648,15 +1648,15 @@ off_812FD0C: .word unk_202714C
 sub_812FD10:
 	push {r4-r7,lr}
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_812FD42
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	mov r4, r0
 	bl sub_803EA50
 	mov r6, r0
 	bl sub_803EBAC
 	mov r0, r4
-	bl sub_803EA70
+	bl eStruct200BC30_setJumpOffset00
 	mov r0, r6
 	bl sub_803EA58
 	mov r0, #0xc
@@ -1690,12 +1690,12 @@ off_812FD5C: .word sub_812AC14+1
 sub_812FD6C:
 	push {lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_812FD96
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq locret_812FDBE
-	bl sub_803EBF4
+	bl eStruct200BC30_getRef
 	ldrb r0, [r0,#0xe]
 	cmp r0, #2
 	bne loc_812FD96
@@ -1705,13 +1705,13 @@ sub_812FD6C:
 	bl sub_8149568
 	b locret_812FDBE
 loc_812FD96:
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	mov r4, r0
 	bl sub_803EA50
 	mov r6, r0
 	bl sub_803EBAC
 	mov r0, r4
-	bl sub_803EA70
+	bl eStruct200BC30_setJumpOffset00
 	mov r0, r6
 	bl sub_803EA58
 	mov r0, #8
@@ -1728,7 +1728,7 @@ sub_812FDC0:
 	push {lr}
 	bl IsScreenFadeActive // () -> zf
 	beq locret_812FE02
-	bl sub_803EA60
+	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
 	beq loc_812FDD8
 	bl sub_8149644
@@ -1930,7 +1930,7 @@ loc_812FF3C:
 	tst r3, r3
 	bne loc_812FF90
 	mov r0, #8
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	beq loc_812FF90
 	bl chatbox_8040818
 	mov r0, #0xc
@@ -2003,7 +2003,7 @@ loc_812FFBC:
 	mov r0, #0
 	strb r0, [r5,#3]
 	mov r0, #0x3c 
-	bl sub_8132280
+	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	mov r0, #6
 	bl sub_8046696
 	mov r0, #0

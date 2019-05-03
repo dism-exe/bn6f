@@ -199,8 +199,8 @@ loc_80891EE:
 	bl sub_8089280
 	b loc_80891FE
 loc_80891F4:
-	mov r0, #0x83
-	bl sound_play // () -> void
+	mov r0, #SOUND_EXIT_SUBMENU
+	bl PlaySoundEffect
 	mov r0, #8
 	strb r0, [r5]
 loc_80891FE:
@@ -237,9 +237,9 @@ sub_8089244:
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	// initRefs
 	ldr r0, off_8089264 // =byte_8089268
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
-	mov r0, #0x7f
-	bl sound_play // () -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
+	mov r0, #SOUND_MENU_CUR_MOVE
+	bl PlaySoundEffect
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8089264: .word byte_8089268
@@ -517,22 +517,22 @@ sub_8089704:
 	beq loc_8089730
 	bl sub_8142A84
 	beq loc_808972E
-	mov r0, #0x67 
-	bl sound_play // () -> void
+	mov r0, #SOUND_SELECT_67
+	bl PlaySoundEffect
 	mov r4, #2
 	b loc_808978C
 loc_808972E:
 	b loc_808978C
 loc_8089730:
-	mov r0, #0x69 
-	bl sound_play // () -> void
+	mov r0, #SOUND_CANT_JACK_IN
+	bl PlaySoundEffect
 	b loc_808978C
 loc_8089738:
 	mov r0, #2
 	tst r0, r7
 	beq loc_8089748
-	mov r0, #0x68 
-	bl sound_play // () -> void
+	mov r0, #SOUND_UNSELECT_68
+	bl PlaySoundEffect
 	mov r4, #3
 	b loc_808978C
 loc_8089748:
@@ -544,7 +544,7 @@ loc_8089748:
 	beq loc_808976C
 	mov r0, #0x66 
 loc_8089756:
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	bl sub_81421D0
 	sub r0, #1
 	bge loc_8089764
@@ -557,8 +557,8 @@ loc_808976C:
 	mov r0, #0x80
 	tst r0, r7
 	beq loc_808978C
-	mov r0, #0x66 
-	bl sound_play // () -> void
+	mov r0, #SOUND_UNK_66
+	bl PlaySoundEffect
 	bl sub_81421D0
 	add r0, #1
 	cmp r0, #4
@@ -593,7 +593,7 @@ sub_80897A6:
 	tst r0, r0
 	bne loc_80897E4
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80897E4
 	bl chatbox_8045F4C
 	cmp r0, #0
@@ -621,7 +621,7 @@ loc_80897E4:
 sub_80897E8:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8089804
 	bl sub_8089CB4
 	beq loc_8089804
@@ -734,7 +734,7 @@ loc_80898AE:
 sub_80898B2:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_80898E4
 	bl sub_814216E
 	bne loc_80898CE
@@ -794,7 +794,7 @@ loc_8089918:
 sub_808991C:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_808994E
 	bl sub_8089CB4
 	beq loc_808994E
@@ -956,23 +956,19 @@ sub_8089A60:
 	bl sub_814219C
 	str r0, [r7,#0x10]
 	bl sub_81422B4
-	// entryIdx
 	mov r0, #7
-	// byteFlagIdx
-	mov r1, #0x40 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	mov r1, #0x40
+	bl SetEventFlagFromImmediate
 	mov r0, #2
 	mov r1, #0x25 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	mov r1, #0
 	strb r1, [r0,#oGameState_Unk_15]
-	// entryIdx
 	mov r0, #0
-	// byteFlagIdx
-	mov r1, #0x28 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	mov r1, #0x28
+	bl TestEventFlagFromImmediate
 	bne loc_8089ABA
 	bl sub_81426CE
 	cmp r0, #6
@@ -980,7 +976,7 @@ sub_8089A60:
 	bl sub_8035408
 	mov r0, #0x65 
 	add r0, #0xff
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 	bl sub_8036E44
 	bl sub_8036E78
 loc_8089ABA:
@@ -1015,7 +1011,7 @@ loc_8089AE4:
 sub_8089AE8:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8089B2A
 	bl sub_8089CB4
 	beq loc_8089B2A
@@ -1068,7 +1064,7 @@ loc_8089B50:
 sub_8089B54:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8089B7A
 	bl sub_8089CB4
 	beq loc_8089B7A
@@ -1102,7 +1098,7 @@ loc_8089B90:
 sub_8089B94:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8089BA6
 	mov r0, #1
 	strb r0, [r5,#8]
@@ -1131,13 +1127,11 @@ loc_8089BBC:
 sub_8089BC0:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8089BE0
-	// entryIdx
 	mov r0, #7
-	// byteFlagIdx
-	mov r1, #0x45 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	mov r1, #0x45
+	bl SetEventFlagFromImmediate
 	mov r0, #0
 	strb r0, [r5,#8]
 	mov r0, #0x1e
@@ -1167,7 +1161,7 @@ loc_8089BF6:
 sub_8089BFA:
 	push {r4-r7,lr}
 	mov r0, #0x80
-	bl chatbox_8045F3C
+	bl chatbox_check_eFlags2009F38
 	bne loc_8089C12
 	mov r0, #0
 	strb r0, [r5,#8]

@@ -57,7 +57,7 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 // .global getPETNaviSelect // () -> u8
@@ -107,7 +107,7 @@
 // .global enemy_getStruct2
 // .global GetPlayerBattleVarByte
 // .global sub_80137B6 // (int a1, int a2) -> u8
-// .global sub_80137FE
+// .global GetField16FromSelectedS20047CCStruct
 // .global sub_80182B4
 
 	.include "asm/asm01.inc"
@@ -131,7 +131,7 @@
 // .global byte_8020CE4
 
 	.include "asm/asm02.inc"
-// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global getChip8021DA8 // (int chip_idx) -> ChipData*
 // .global sub_8021B2A
 // .global sub_8021B92 // (int idx, int searchItem, int off) -> void*
 
@@ -158,7 +158,7 @@
 // .global sub_8036F70
 
 	.include "asm/chatbox.inc"
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 // .global chatbox_8045F4C
 
 	.include "data/dat22.inc"
@@ -207,7 +207,7 @@
 // .global reqBBS_81409F4
 // .global reqBBS_setFlag_e17b0f7_8140A00
 // .global reqBBS_clearFlag_8140A0C
-// .global reqBBS_runDialog_8140A70
+// .global reqBBS_RunTextScriptWhoAmI
 // .global byte_8140C60
 // .global byte_8140C68
 // .global byte_8140C7C
@@ -279,7 +279,7 @@
 // .equ dword_2000F94, 0x2000F94
 // .equ dword_2000F98, 0x2000F98
 // .equ dword_2000F9C, 0x2000F9C
-// .equ unk_2001130, 0x2001130
+// .equ byte_2001130, 0x2001130
 // .equ unk_20018B0, 0x20018B0
 // .equ eOverworldNPCObjects, 0x20057B0
 // .equ eOverworldNPCObjects, 0x20057B0

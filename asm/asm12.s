@@ -23,7 +23,7 @@ sub_806D8F8:
 	ldr r2, [r5,#0x2c]
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
-	bl sub_802FF4C
+	bl camera_802FF4C
 	bl sub_8030472
 	ldr r0, off_806D954 // =unk_2037800 
 	bl sub_80028D4
@@ -31,8 +31,8 @@ sub_806D8F8:
 	lsl r1, r1, #2
 	ldr r0, off_806D958 // =off_806D95C 
 	ldr r0, [r0,r1]
-	bl sub_8002906
-	bl chatbox_uncomp_803FD08 // () -> int
+	bl uncompSprite_8002906
+	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
 	bl sub_806DCD4
 	bl sub_8034FB8
 	pop {r4-r7,pc}
@@ -120,7 +120,7 @@ sub_806DA58:
 	bl sub_8001780
 	ldr r1, [r7,#0xc]
 	orr r0, r1
-	bl sub_8001778
+	bl sRender_08_setRenderingState
 	ldr r0, off_806DB90 // =off_806DB94 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
@@ -214,10 +214,10 @@ sub_806DC0C:
 	push {r0,r1}
 	mov r0, #0
 	mov r1, #0x8e
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	mov r0, #0
 	mov r1, #0x8f
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl ClearEventFlagFromImmediate
 	pop {r0,r1}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -263,12 +263,10 @@ sub_806DC7A:
 loc_806DC86:
 	mov r0, #0
 	mov r1, #0x8e
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-	// entryIdx
+	bl ClearEventFlagFromImmediate
 	mov r0, #0
-	// byteFlagIdx
 	mov r1, #0x8f
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806DC7A
 
@@ -283,12 +281,10 @@ sub_806DC98:
 loc_806DCA4:
 	mov r0, #0
 	mov r1, #0x8e
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-	// entryIdx
+	bl ClearEventFlagFromImmediate
 	mov r0, #0
-	// byteFlagIdx
 	mov r1, #0x8f
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806DC98
 
@@ -303,12 +299,10 @@ sub_806DCB6:
 loc_806DCC2:
 	mov r0, #0
 	mov r1, #0x8e
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
-	// entryIdx
+	bl ClearEventFlagFromImmediate
 	mov r0, #0
-	// byteFlagIdx
 	mov r1, #0x8f
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	bl SetEventFlagFromImmediate
 	pop {pc}
 	thumb_func_end sub_806DCB6
 

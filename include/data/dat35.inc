@@ -16,7 +16,7 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
 
@@ -37,17 +37,17 @@
 // .global sub_803E8F8
 // .global sub_803EA50
 // .global sub_803EA58
-// .global sub_803EA60
-// .global sub_803EA70
+// .global eStruct200BC30_getJumpOffset00
+// .global eStruct200BC30_setJumpOffset00
 // .global sub_803EAE4
 // .global sub_803EBAC
-// .global sub_803EBF4
+// .global eStruct200BC30_getRef
 // .global sub_803EF74
 // .global sub_803F798
 
 	.include "asm/chatbox.inc"
 // .global chatbox_8040818
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 
 	.include "asm/asm03_2.inc"
 // .global sub_80465A0 // (void *a1) -> void
@@ -55,7 +55,7 @@
 // .global sub_80465F8 // () -> void
 // .global sub_8046664 // () -> void
 // .global sub_8046696
-// .global sub_80466C4
+// .global getStructFrom2008450
 // .global sub_804A24C
 
 	.include "asm/asm32.inc"
@@ -104,7 +104,7 @@
 // .global sub_8130810
 // .global sub_8130850
 // .global sub_8130864
-// .global sub_8132280
+// .global chatbox_runScript_803FD9C_on_eTextScript201BA20
 // .global sub_81323B0
 // .global sub_8132430
 // .global sub_81324A8

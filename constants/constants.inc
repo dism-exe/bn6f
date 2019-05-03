@@ -1,4 +1,7 @@
 	.include "constants/gba_constants.inc"
+	.include "constants/GameAreas.inc"
+	.include "constants/SoundOffsets.inc"
+	.include "constants/ewram_flags.inc"
 	.include "constants/iwram_end_locations.inc" // will be removed later
 
 	enum_start
@@ -27,13 +30,11 @@
 	enum GREEN_MYSTERY_DATA  // 5
 	enum UNK_MYSTERY_DATA_6  // 6
 
+
+
 	.equiv NULL, 0
 	.equiv timer_2000000, 0x2000000
 
-	enum_start 0
-	enum ACTOR_TYPE_VIRUS  // 0
-	enum ACTOR_TYPE_NAVI   // 1
-	enum ACTOR_TYPE_PLAYER // 2
 
 	.equiv BATTLE_ACTORS_PER_SIDE, 4
 

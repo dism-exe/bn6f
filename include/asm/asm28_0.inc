@@ -29,7 +29,7 @@
 	.global byte_809D328
 	.global sub_809E04C
 	.global sub_809E064
-	.global setFlag3_2e2_2001C88
+	.global setEventFlag_809E098
 	.global updateFlags_809E0B0 // () -> void
 	.global sub_809E0FC
 	.global sub_809E114
@@ -84,16 +84,16 @@
 
 /* External Symbols */
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyWords // (u32 *src, u32 *dest, int size) -> void
-// .global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+// .global decompAndCopyData // (u32 *initRefs) -> void
 // .global getPETNaviSelect // () -> u8
 // .global setPETNaviSelect
 // .global sub_80010C6
 // .global sub_8001172
-// .global sub_8001850
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
+// .global copyMemory_8001850
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
 
 	.include "asm/sprite.inc"
 // .global sprite_loadAnimationData // () -> void
@@ -120,7 +120,7 @@
 // .global sub_8003962
 // .global sub_8003984
 // .global sub_800399A
-// .global sub_8003AB2
+// .global zeroFill_8003AB2
 // .global sub_8003AD4
 // .global sub_8003AEA
 // .global SpawnOWPlayerObject
@@ -162,14 +162,14 @@
 // .global init_s_02011C50_8036E90
 // .global s_2011C50_ptr_1C_isNull // () -> zf
 // .global sub_8036F98
-// .global sub_8037AEC
+// .global uncomp_8037AEC
 // .global sub_803CD98
 // .global sub_803CE28
 // .global sub_803D080
 // .global sub_803D0C8
 // .global sub_803D0F4
 // .global sub_803D108
-// .global clear_200AD04 // () -> void
+// .global clear_e200AD04 // () -> void
 // .global sub_803F4EC
 // .global loc_803F512
 // .global sub_803F560
@@ -180,15 +180,15 @@
 // .global sub_803F9E4
 
 	.include "asm/chatbox.inc"
-// .global chatbox_dead_uncomp_803FD3C
+// .global chatbox_uncomp_803FD3C
 // .global chatbox_runTrainScript // (u8 scriptOffIdx) -> void
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 // .global chatbox_8040818
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 // .global chatbox_8045F4C
 
 	.include "asm/asm03_2.inc"
-// .global render_graphicalText_8045F8C
+// .global renderTextGfx_8045F8C
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_80465BC
 // .global sub_80465F8 // () -> void
@@ -227,11 +227,11 @@
 	.include "data/dat38_65.inc"
 // .global byte_86C54D4
 // .global byte_86C5550
-// .global byte_86C5790
+// .global tileIds86C5790
 // .global dword_86C57EC
 
-	.include "data/dat38_66.inc"
-// .global byte_86C67E4
+	.include "data/dat38_65.inc"
+// .global TextScriptLottery86C67E4
 
 
 /* Undeclared Symbols */
@@ -248,7 +248,7 @@
 // .equ dword_2000AB0, 0x2000AB0
 // .equ dword_2000AB4, 0x2000AB4
 // .equ dword_2000AB8, 0x2000AB8
-// .equ dynamicArr, 0x2005780
+// .equ eReqBBSGui, 0x2005780
 // .equ eOverworldNPCObjects, 0x20057B0
 // .equ eOverworldNPCObjects, 0x20057B0
 // .equ eOverworldNPCObjects, 0x20057B0
@@ -262,7 +262,7 @@
 // .equ byte_2009F4E, 0x2009F4E
 // .equ byte_2009F4F, 0x2009F4F
 // .equ byte_2009FC3, 0x2009FC3
-// .equ unk_200AC80, 0x200AC80
+// .equ eS200AC80, 0x200AC80
 // .equ word_200AC84, 0x200AC84
 // .equ word_200AC86, 0x200AC86
 // .equ dword_200ACB0, 0x200ACB0
@@ -277,23 +277,23 @@
 // .equ dword_200ACF8, 0x200ACF8
 // .equ byte_200ACFC, 0x200ACFC
 // .equ dword_200AD00, 0x200AD00
-// .equ byte_200AD04, 0x200AD04
+// .equ word_200AD04, 0x200AD04
 // .equ word_200AD06, 0x200AD06
 // .equ unk_200EF40, 0x200EF40
 // .equ eCutsceneState, 0x2011C50
 // .equ dword_2011CC0, 0x2011CC0
 // .equ unk_2020000, 0x2020000
 // .equ unk_2020204, 0x2020204
-// .equ unk_202DA04, 0x202DA04
+// .equ eTextScript202DA04, 0x202DA04
 // .equ byte_202FA04, 0x202FA04
-// .equ unk_2033404, 0x2033404
+// .equ eTextScript2033404, 0x2033404
 // .equ unk_2033700, 0x2033700
 // .equ unk_2034E00, 0x2034E00
 // .equ unk_2036500, 0x2036500
 // .equ unk_3001B20, 0x3001B20
 	.equ Undocumented_GreenSwap, 0x4000002
 	.equ InterruptEnableRegister, 0x4000200
-// .global scripts_86C580C
+// .global TextScriptChipTrader86C580C
 // .global comp_86C73D8
 // .global comp_86C7980
 

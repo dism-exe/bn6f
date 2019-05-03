@@ -1,77 +1,88 @@
 
-	.macro overworld_npc_object_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
+	.macro overworld_npc_object_struct, label=oOverworldNPCObject, struct_entry=label_struct_entry, struct_begin=struct_begin
 	
-	object_header_struct \label, \struct_entry, \struct_begin
+		object_header_struct \label, \struct_entry, \struct_begin
 
-	\struct_entry \label\()_WalkingSpeed, 1 // loc=0x4
-	\struct_entry \label\()_WalkingTimer, 1 // loc=0x5
-	\struct_entry \label\()_Undetected_06, 1 // loc=0x6
-	\struct_entry \label\()_Unk_07, 1 // loc=0x7
-	\struct_entry \label\()_Unk_08_MainJumptableIndex, 1 // loc=0x8
-	\struct_entry \label\()_MovementFlag_09, 1 // loc=0x9
-	\struct_entry \label\()_MovementFlag_0a, 1 // loc=0xa
-	\struct_entry \label\()_Unk_0b, 1 // loc=0xb
-	\struct_entry \label\()_Unk_0c, 1 // loc=0xc
-	\struct_entry \label\()_Unk_0d, 1 // loc=0xd
-	\struct_entry \label\()_Unk_0e, 1 // loc=0xe
-	\struct_entry \label\()_Unk_0f, 1 // loc=0xf
-	\struct_entry \label\()_Unk_10, 1 // loc=0x10
-	\struct_entry \label\()_Unk_11, 1 // loc=0x11
-	\struct_entry \label\()_Unk_12, 1 // loc=0x12
-	\struct_entry \label\()_Unk_13, 1 // loc=0x13
-	\struct_entry \label\()_AnimationSelect, 1 // loc=0x14
-	\struct_entry \label\()_AnimationSelectUpdate, 1 // loc=0x15
-	\struct_entry \label\()_PaletteIndex, 1 // loc=0x16
-	\struct_entry \label\()_InteractionLocked, 1 // loc=0x17
-	\struct_entry \label\()_ChatTriggered, 1 // loc=0x18
-	\struct_entry \label\()_TerminateScript_19, 1 // loc=0x19 more like a return value than a state value
-	\struct_entry \label\()_Undetected_1a, 1 // loc=0x1a
-	\struct_entry \label\()_Undetected_1b, 1 // loc=0x1b
-	\struct_entry \label\()_TextScriptIndex, 1 // loc=0x1c
-	\struct_entry \label\()_Unk_1d, 1 // loc=0x1d
-	\struct_entry \label\()_Unk_1e, 1 // loc=0x1e
-	\struct_entry \label\()_TerminateScript_1f, 1 // loc=0x1f
-	\struct_entry \label\()_AnimationTimer, 2 // loc=0x20
-	\struct_entry \label\()_Timer_20, 2 // loc=0x22
-	\struct_entry \label\()_X, 4 // loc=0x24
-	\struct_entry \label\()_Y, 4 // loc=0x28
-	\struct_entry \label\()_Z, 4 // loc=0x2c
-	\struct_entry \label\()_NextX, 4 // loc=0x30
-	\struct_entry \label\()_NextY, 4 // loc=0x34
-	\struct_entry \label\()_NextZ, 4 // loc=0x38
-	\struct_entry \label\()_NPCSprite, 2 // loc=0x3c
-	\struct_entry \label\()_NPCSpriteUpdate, 2 // loc=0x3e
-	\struct_entry \label\()_DeltaX, 4 // loc=0x40
-	\struct_entry \label\()_DeltaY, 4 // loc=0x44
-	\struct_entry \label\()_DeltaZ, 4 // loc=0x48
-	\struct_entry \label\()_AnimationScriptPtr, 4 // loc=0x4c
-	\struct_entry \label\()_Unk_50, 4 // loc=0x50
-	\struct_entry \label\()_Unk_54, 4 // loc=0x54
-	\struct_entry \label\()_Unk_58, 4 // loc=0x58
-	\struct_entry \label\()_UnkNPCScriptPtr_5c, 4 // loc=0x5c
-	\struct_entry \label\()_UnkFlags_60, 4 // loc=0x60
-	\struct_entry \label\()_Unk_64, 4 // loc=0x64
-	\struct_entry \label\()_Flags_68, 4 // loc=0x68
-	\struct_entry \label\()_Flags_68_Update, 4 // loc=0x6c
-	\struct_entry \label\()_Unk_70, 4 // loc=0x70
-	\struct_entry \label\()_Unk_74, 4 // loc=0x74
-	\struct_entry \label\()_Unk_78, 4 // loc=0x78
-	\struct_entry \label\()_Undetected_7c, 4 // loc=0x7c
-	\struct_entry \label\()_Unk_80, 1 // loc=0x80 read internally as u32
-	\struct_entry \label\()_Unk_81, 1 // loc=0x81
-	\struct_entry \label\()_WalkingSpeedReload, 1 // loc=0x82
-	\struct_entry \label\()_WalkingTimerReload, 1 // loc=0x83
-	\struct_entry \label\()_Unk_84, 4 // loc=0x84
-	\struct_entry \label\()_Undetected_88, 4 // loc=0x88
-	\struct_entry \label\()_Undetected_8c, 4 // loc=0x8c
-	\struct_entry \label\()_Chatbox_90, 4 // loc=0x90
-	\struct_entry \label\()_TextScriptPtr, 4 // loc=0x94
-	// loc=0x98
-	.space 8 // align to nearest power of 4 relative to struct
-	\struct_entry \label\()_SpriteData // loc=0xa0
-	object_sprite_struct \label\()_SpriteData, \struct_entry // loc=0xa0
-	\struct_entry \label\()_Size
-	\struct_entry \label\()_End // loc=0xd8
+		u8 \label, WalkingSpeed // loc=0x4
+		u8 \label, WalkingTimer // loc=0x5
+		u8 \label, Undetected_06 // loc=0x6
+		u8 \label, Unk_07 // loc=0x7
+		u8 \label, Unk_08_MainJumptableIndex // loc=0x8
+		u8 \label, MovementFlag_09 // loc=0x9
+			struct_const MOVEMENT_FLAG_STOP,						0x00
+			struct_const MOVEMENT_FLAG_DEFAULT_MOVING,			  0x04
+			struct_const MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES,	0x08
+		/*
+		Those might not be flags, since 0x0C behaves unpredictably by 0x04 and 0x08
+		0x00 - No effect, it keeps setting to 0x04
+		0x04 - Default, moving
+		0x08 - Stop
+		0x0C - Stop, with a weird location transformation for a moment.
+		*/
+		u8 \label, MovementFlag_0a // loc=0xa
+		u8 \label, Unk_0b // loc=0xb
+		u8 \label, Volume // loc=0xc
+		u8 \label, Unk_0d // loc=0xd
+		u8 \label, Unk_0e // loc=0xe
+		u8 \label, Unk_0f // loc=0xf
+		u8 \label, Unk_10 // loc=0x10
+		u8 \label, Unk_11 // loc=0x11
+		u8 \label, Unk_12 // loc=0x12
+		u8 \label, Unk_13 // loc=0x13
+		u8 \label, AnimationSelect // loc=0x14
+		u8 \label, AnimationSelectUpdate // loc=0x15
+		u8 \label, PaletteIndex // loc=0x16
+		bool8 \label, InteractionLocked // loc=0x17
+		bool8 \label, ChatTriggered // loc=0x18
+		u8 \label, TerminateScript_19 // loc=0x19 more like a return value than a state value
+		u8 \label, Undetected_1a // loc=0x1a
+		u8 \label, Undetected_1b // loc=0x1b
+		u8 \label, TextScriptIndex // loc=0x1c
+		u8 \label, Unk_1d // loc=0x1d
+		u8 \label, Unk_1e // loc=0x1e
+		u8 \label, TerminateScript_1f // loc=0x1f
+		u16 \label, AnimationTimer // loc=0x20
+		u16 \label, Timer_20 // loc=0x22
+		u32 \label, X // loc=0x24
+		u32 \label, Y // loc=0x28
+		u32 \label, Z // loc=0x2c
+		u32 \label, NextX // loc=0x30
+		u32 \label, NextY // loc=0x34
+		u32 \label, NextZ // loc=0x38
+		u16 \label, NPCSprite // loc=0x3c
+		u16 \label, NPCSpriteUpdate // loc=0x3e
+		u32 \label, DeltaX // loc=0x40
+		u32 \label, DeltaY // loc=0x44
+		u32 \label, DeltaZ // loc=0x48
+		ptr \label, AnimationScriptPtr // loc=0x4c
+		u32 \label, Unk_50 // loc=0x50
+		u32 \label, Unk_54 // loc=0x54
+		u32 \label, Unk_58 // loc=0x58
+		ptr \label, UnkNPCScriptPtr_5c // loc=0x5c
+		u32 \label, UnkFlags_60 // loc=0x60
+
+		u32 \label, Unk_64 // loc=0x64
+		u32 \label, Flags_68 // loc=0x68
+		u32 \label, Flags_68_Update // loc=0x6c
+		u32 \label, Unk_70 // loc=0x70
+		u32 \label, Unk_74 // loc=0x74
+		u32 \label, Unk_78 // loc=0x78
+		u32 \label, Undetected_7c // loc=0x7c
+		u8 \label, Unk_80 // loc=0x80 read internally as u32
+		u8 \label, Unk_81 // loc=0x81
+		u8 \label, WalkingSpeedReload // loc=0x82
+		u8 \label, WalkingTimerReload // loc=0x83
+		u32 \label, Unk_84 // loc=0x84
+		u32 \label, Undetected_88 // loc=0x88
+		u32 \label, Undetected_8c // loc=0x8c
+		ptr \label, Chatbox_90 // loc=0x90
+		ptr \label, TextScriptPtr // loc=0x94
+		// loc=0x98
+		.space 8 // align to nearest power of 4 relative to struct
+		u0 \label, SpriteData // loc=0xa0
+		object_sprite_struct \label\()_SpriteData, \struct_entry // loc=0xa0
+		u0 \label, Size
+		u0 \label, End // loc=0xd8
 	.endm
 
 	def_struct_offsets overworld_npc_object_struct, oOverworldNPCObject

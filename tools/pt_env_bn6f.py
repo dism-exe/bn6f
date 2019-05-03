@@ -6,9 +6,13 @@
 # set up a new environment
 pt.clrenv()
 
+# project path
+projPath = '../../../SPB_Data/dev/dis/bn6f/'
+pt.env(projPath=projPath)
+
 ## ROM Paths
 pt.env(ROMPath= '')
-pt.env(elfPath='dev/dis/bn6f/bn6f.elf')
+pt.env(elfPath=projPath + 'bn6f.elf')
 
 ## search utils
 pt.env(compareBinPath= '')
@@ -18,7 +22,7 @@ pt.env(decompPath='docs/decomp/')
 
 ## disassembly utils
 # TODO set this to your project path relative to your analysis idb path
-pt.env(dismProjPath= '../SPB_Data/dev/dis/bn6f/')
+pt.env(dismProjPath= [projPath])
 # header files generated for *.s files. The file structure is duplicated there
 # (ie. files in data/datXX.s will have headers as inc/data/datXX.inc)
 pt.env(incPath='include/')
@@ -34,9 +38,9 @@ pt.env(gameFiles={
 'asm/asm00_0.s':
 	(0x80005AC, 0x80026A4), # size=0x20F8
 'asm/sprite.s':
-	(0x80026A4, 0x8002DC8), # size=0x724
+	(0x80026A4, 0x80030FC), # size=0xa58
 'asm/asm00_1.s':
-	(0x8002DC8, 0x800BD34), # size=0x8F6C
+	(0x80030FC, 0x800BD34), # size=0x8F6C
 'asm/object.s':
 	(0x800BD34, 0x800ED80), # size=0x304C
 'asm/asm00_2.s':
@@ -53,7 +57,7 @@ pt.env(gameFiles={
 	(0x8021DA8, 0x8026450), # size=0x46a8
 'asm/asm03_0.s':
 	(0x8026450, 0x8031CC4), # size=0xB874
-'data/spritePointers_8031CC4.s':
+'data/SpritePointersList.s':
 	(0x8031CC4, 0x8033764), # size=0x1AA0
 'asm/asm03_1.s':
 	(0x8033764, 0x803FD08), # size=0xC5A4
@@ -827,11 +831,7 @@ pt.env(gameFiles={
 'data/compressed/comp_86C526C.lz77':
 	(0x86C526C, 0x86C52B4), # size=0x48
 'data/dat38_65.s':
-	(0x86C52B4, 0x86C580C), # size=0x558
-'data/scripts/scripts_86C580C.bin':
-	(0x86C580C, 0x86C67E4), # size=0xFD8
-'data/dat38_66.s':
-	(0x86C67E4, 0x86C6B30), # size=0x34C
+	(0x86C52B4, 0x86C6B30),
 'data/compressed/comp_86C6B30.lz77':
 	(0x86C6B30, 0x86C6FD0), # size=0x4A0
 'data/compressed/comp_86C6FD0.lz77':
@@ -1016,15 +1016,15 @@ pt.env(gameFiles={
 	(0x86DDB7C, 0x86DDBA0), # size=0x24
 'data/dat38_85.s':
 	(0x86DDBA0, 0x86F3F5C), # size=0x163BC
-'data/scripts/scripts_fullSynchro_86F3F5C.bin':
+'data/scripts/TextScriptBattleTutFullSynchro.s':
 	(0x86F3F5C, 0x86F4498), # size=0x53C
-'data/scripts/scripts_dad_cybeastTut_86F4498.bin':
+'data/scripts/TextScriptDadCybeastTut.bin':
 	(0x86F4498, 0x86F53CC), # size=0xF34
-'data/scripts/scripts_shuko_crossTut_86F53CC.bin':
+'data/scripts/TextScriptShukoCrossTut.bin':
 	(0x86F53CC, 0x86F5834), # size=0x468
 'data/dat38_86.s':
 	(0x86F5834, 0x87370C0), # size=0x4188C
-'data/scripts/scripts_commErr_87370C0.bin':
+'data/scripts/TextScriptCommError87370C0.bin':
 	(0x87370C0, 0x873811C), # size=0x105C
 'data/dat38_87.s':
 	(0x873811C, 0x87E4500), # size=0xAC3E4

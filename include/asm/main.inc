@@ -15,44 +15,44 @@
 // .global start_800024C
 
 	.include "asm/asm00_0.inc"
-// .global sub_80007B2
+// .global zeroFill_80007B2
 // .global sub_80007BE
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global sub_8000A3C
 // .global ProcessGFXTransferQueue
 // .global sub_8000E10
-// .global SeedRNG2 // () -> void
+// .global SeedRNG2 // () -> int
 // .global GetRNG1 // () -> void
 // .global sub_80015B4
-// .global render_80015D0
+// .global copyToVRAMAndClear_iBGTileIdBlocks_Ptr
 // .global render_800172C
-// .global sub_8001778
-// .global main_static_80017EC
-// .global renderPalletes_8001808
-// .global sub_8001820
-// .global sub_800182E
-// .global sub_8001850
+// .global sRender_08_setRenderingState
+// .global main_zeroFill_80017EC
+// .global copyPalletesToIWRAM_8001808
+// .global zeroFill_e2009740
+// .global zeroFill_e200F3A0
+// .global copyMemory_8001850
 // .global sub_8001974
 // .global cb_call_200A880
 // .global sub_80019A0
-// .global sub_8001AFC
+// .global zeroFill_e20094C0
 // .global PET_onUpdate_8001B94
-// .global sub_8002368
+// .global zeroFill_e20097A0
 // .global getPalleteAndTransition_80023E0
-// .global sub_80024A2
+// .global zeroFill_80024A2
 // .global sub_800260C
-// .global renderPalletesAndObjs_8002650
+// .global copyPalletesToIWRAM_8002650
 
 	.include "asm/sprite.inc"
 // .global sub_80027C4
-// .global sprite_handleObjSprites_800289C
+// .global sprite_resetObjVars_800289C
 
 	.include "asm/asm00_1.inc"
 // .global sub_8003962
-// .global sub_8003AB2
+// .global zeroFill_8003AB2
 // .global sub_8004D48
-// .global sub_8004DF0
-// .global cb_80050EC // () -> void
+// .global reqBBS_init_8004DF0
+// .global cbGameState_80050EC // () -> void
 // .global sub_80062EC
 // .global IsScreenFadeActive // () -> zf
 // .global subsystem_triggerTransition_800630A
@@ -63,10 +63,10 @@
 // .global isSameSubsystem_800A732 // () -> zf
 
 	.include "asm/asm03_0.inc"
-// .global Load_ho_802F544
+// .global startscreen_802F544
 // .global sub_802FDB0
-// .global objRender_802FE0C
-// .global sub_802FF2C
+// .global copyObjAttributesToIWRAM_802FE0C
+// .global cleareMemory_802FF2C
 
 	.include "asm/asm03_1.inc"
 // .global ho_jackIn_80341B6
@@ -81,26 +81,26 @@
 // .global sub_803DE5C
 // .global sub_803E900
 // .global sub_803EBC8
-// .global clear_200AD04 // () -> void
+// .global clear_e200AD04 // () -> void
 // .global cb_803FB3C
-// .global sub_803FCF0
+// .global clearChatboxAndEvent
 
 	.include "asm/chatbox.inc"
-// .global chatbox_onUpdate_803FEB4
+// .global chatbox_onUpdate
 
 	.include "asm/asm03_2.inc"
 // .global sub_804657C // () -> void
 // .global sub_80467D8
-// .global cb_8046CF8
+// .global ShopControl
 // .global cb_8048FD4
 // .global cb_8049E04
-// .global cb_804A304
+// .global ChipTraderControl
 
 	.include "asm/asm32.inc"
-// .global menuControl_cb_openSubmenu // () -> void
+// .global SubMenuControl // () -> void
 
 	.include "asm/asm33.inc"
-// .global menuControl_cb_email
+// .global HandleEmailMenu81279F8
 
 	.include "asm/asm36.inc"
 // .global cb_81382AC
@@ -111,7 +111,7 @@
 
 	.include "asm/reqBBS.inc"
 // .global reqBBS_cb_draw_813E0A4
-// .global reqBBS_cb_813F404
+// .global reqBBS_subsystemCotnrol
 
 	.include "asm/libs.inc"
 // .global sub_8144240

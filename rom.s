@@ -5,7 +5,7 @@ to make the ROM. This file is compiled to define the whole ROM region.
 	.include "include/macros.inc"
 	.include "constants/constants.inc"
 
-    .text
+	.text
 	
 	.syntax divided
 
@@ -35,8 +35,8 @@ ChipDataArr:
 	.include "data/ChipDataArr.s"
 asm03_0:
 	.include "asm/asm03_0.s"
-spritePointers_8031CC4:
-	.include "data/spritePointers_8031CC4.s"
+SpritePointersList:
+	.include "data/SpritePointersList.s"
 asm03_1:
 	.include "asm/asm03_1.s"
 chatbox:

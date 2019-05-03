@@ -3,8 +3,8 @@
 	thumb_func_start sub_809F526
 sub_809F526:
 	push {r7,lr}
-	ldr r7, [r5,#0x60]
-	ldrb r0, [r5]
+	ldr r7, [r5, #oOverworldNPCObject_UnkFlags_60]
+	ldrb r0, [r5,#oOverworldNPCObject_ObjectHeader]
 	mov r1, #1
 	tst r0, r1
 	beq loc_809F598
@@ -305,16 +305,13 @@ sub_809F904:
 	thumb_func_start sub_809F90C
 sub_809F90C:
 	push {lr}
-	// entryIdx
-	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #8
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	movflag EVENT_1708
+	bl TestEventFlagFromImmediate
 	bne locret_809F920
 	ldr r0, off_809F9C4 // =byte_2000210 
 	mov r1, #0
 	strb r1, [r0]
-	str r1, [r0,#0x8] // (dword_2000218 - 0x2000210)
+	str r1, [r0,#0x8]
 locret_809F920:
 	pop {pc}
 	thumb_func_end sub_809F90C
@@ -322,11 +319,8 @@ locret_809F920:
 	thumb_func_start sub_809F922
 sub_809F922:
 	push {r4,r6,r7,lr}
-	// entryIdx
-	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #8
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	movflag EVENT_1708
+	bl TestEventFlagFromImmediate
 	bne locret_809F940
 	ldr r7, off_809F9C4 // =byte_2000210 
 	ldrb r6, [r7]
@@ -344,11 +338,8 @@ locret_809F940:
 	thumb_func_start sub_809F942
 sub_809F942:
 	push {r4-r7,lr}
-	// entryIdx
-	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #8
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	movflag EVENT_1708
+	bl TestEventFlagFromImmediate
 	bne locret_809F9BC
 	ldr r7, off_809F9C4 // =byte_2000210 
 	ldrb r6, [r7]
@@ -405,7 +396,7 @@ loc_809F9AE:
 	bl sub_809F90C
 	pop {r0}
 	ldr r7, off_809F9C4 // =byte_2000210 
-	str r0, [r7,#0x8] // (dword_2000218 - 0x2000210)
+	str r0, [r7,#0x8]
 	pop {r4-r7,pc}
 locret_809F9BC:
 	pop {r4-r7,pc}
@@ -414,13 +405,13 @@ locret_809F9BC:
 	thumb_func_start sub_809F9BE
 sub_809F9BE:
 	ldr r7, off_809F9C4 // =byte_2000210 
-	ldr r7, [r7,#0x8] // (dword_2000218 - 0x2000210)
+	ldr r7, [r7,#0x8]
 	mov pc, lr
 off_809F9C4: .word byte_2000210
 	thumb_func_end sub_809F9BE
 
-	thumb_func_start sub_809F9C8
-sub_809F9C8:
+	thumb_func_start zeroFill_e2004348
+zeroFill_e2004348:
 	push {r4-r7,lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk2004348_Ptr]
@@ -429,7 +420,7 @@ sub_809F9C8:
 	pop {r4-r7,pc}
 	.balign 4, 0
 dword_809F9D8: .word 0x480
-	thumb_func_end sub_809F9C8
+	thumb_func_end zeroFill_e2004348
 
 	thumb_func_start sub_809F9DC
 sub_809F9DC:
@@ -970,9 +961,9 @@ sub_809FD70:
 	push {r4-r7,lr}
 	ldr r6, off_809FE9C // =byte_2000210 
 	mov r0, #0
-	strb r0, [r6,#0x2] // (byte_2000212 - 0x2000210)
-	strh r0, [r6,#0x6] // (word_2000216 - 0x2000210)
-	strh r0, [r6,#0x4] // (word_2000214 - 0x2000210)
+	strb r0, [r6,#0x2]
+	strh r0, [r6,#0x6]
+	strh r0, [r6,#0x4]
 	sub sp, sp, #0x20
 	mov r4, sp
 	ldr r7, GoldMysteryDataEntries_p
@@ -992,13 +983,13 @@ loc_809FD96:
 	mov r1, r3
 	bl sub_8000E3A
 	sub sp, sp, #0x10
-	strb r0, [r6,#0x3] // (byte_2000213 - 0x2000210)
+	strb r0, [r6,#0x3]
 	mov r1, #0xc
 	mul r0, r1
 	ldr r1, GoldMysteryDataEntries_p
 	add r1, r1, r0
 	ldr r0, [r1]
-	strh r0, [r6,#0x4] // (word_2000214 - 0x2000210)
+	strh r0, [r6,#0x4]
 	mov r0, #0
 	ldr r1, [r1,#4]
 	mov r2, sp
@@ -1012,7 +1003,7 @@ loc_809FD96:
 	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	pop {r0-r2}
 	bl sub_809FA68
-	strb r1, [r6,#0x2] // (byte_2000212 - 0x2000210)
+	strb r1, [r6,#0x2]
 	add sp, sp, #0x10
 	add sp, sp, #0x20
 	pop {r4-r7,pc}
@@ -1024,10 +1015,10 @@ sub_809FDCE:
 	ldr r6, off_809FE9C // =byte_2000210 
 	lsl r1, r1, #8
 	orr r0, r1
-	ldrh r1, [r6,#0x4] // (word_2000214 - 0x2000210)
+	ldrh r1, [r6,#0x4]
 	cmp r0, r1
 	bne locret_809FDDE
-	strh r2, [r6,#0x6] // (word_2000216 - 0x2000210)
+	strh r2, [r6,#0x6]
 locret_809FDDE:
 	pop {r4-r7,pc}
 	thumb_func_end sub_809FDCE
@@ -1036,7 +1027,7 @@ locret_809FDDE:
 sub_809FDE0:
 	push {r4-r7,lr}
 	ldr r6, off_809FE9C // =byte_2000210 
-	ldrh r0, [r6,#0x6] // (word_2000216 - 0x2000210)
+	ldrh r0, [r6,#0x6]
 	tst r0, r0
 	beq locret_809FE34
 	sub sp, sp, #0x10
@@ -1048,13 +1039,13 @@ sub_809FDE0:
 	mov r2, #0x20 
 	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	mov r0, sp
-	ldrh r1, [r6,#0x6] // (word_2000216 - 0x2000210)
+	ldrh r1, [r6,#0x6]
 	bl sub_8000E3A
 	add r7, r0, #1
 	add sp, sp, #0x10
 	ldr r4, InternetMysteryDataMapGroupEntries_p2 // =InternetMysteryDataMapGroupEntries 
-	ldrb r0, [r6,#0x4] // (word_2000214 - 0x2000210)
-	ldrb r1, [r6,#0x5] // (word_2000214+1 - 0x2000210)
+	ldrb r0, [r6,#0x4]
+	ldrb r1, [r6,#0x5]
 	sub r0, #0x80
 	lsl r0, r0, #3
 	add r0, #4
@@ -1072,14 +1063,14 @@ loc_809FE16:
 	cmp r3, r7
 	bne loc_809FE2C
 	ldrh r0, [r4,#2]
-	strh r0, [r6,#0x6] // (word_2000216 - 0x2000210)
+	strh r0, [r6,#0x6]
 	b locret_809FE34
 loc_809FE2C:
 	add r4, #0xc
 	b loc_809FE16
 loc_809FE30:
 	mov r0, #0
-	strh r0, [r6,#0x6] // (word_2000216 - 0x2000210)
+	strh r0, [r6,#0x6]
 locret_809FE34:
 	pop {r4-r7,pc}
 	thumb_func_end sub_809FDE0
@@ -1088,7 +1079,7 @@ locret_809FE34:
 sub_809FE36:
 	push {r4-r7,lr}
 	ldr r6, off_809FE9C // =byte_2000210 
-	ldrh r7, [r6,#0x6] // (word_2000216 - 0x2000210)
+	ldrh r7, [r6,#0x6]
 	cmp r4, r7
 	bne locret_809FE42
 	add r0, #1
@@ -1100,16 +1091,16 @@ locret_809FE42:
 sub_809FE44:
 	push {r5-r7,lr}
 	ldr r6, off_809FE9C // =byte_2000210 
-	ldrh r1, [r6,#0x6] // (word_2000216 - 0x2000210)
+	ldrh r1, [r6,#0x6]
 	cmp r0, r1
 	bne locret_809FE5C
-	ldrb r0, [r6,#0x3] // (byte_2000213 - 0x2000210)
+	ldrb r0, [r6,#0x3]
 	mov r1, #0xc
 	mul r0, r1
 	ldr r4, GoldMysteryDataEntries_p // =GoldMysteryDataEntries 
 	add r4, r4, r0
 	ldr r4, [r4,#4]
-	ldrb r3, [r6,#0x2] // (byte_2000212 - 0x2000210)
+	ldrb r3, [r6,#0x2]
 locret_809FE5C:
 	pop {r5-r7,pc}
 	thumb_func_end sub_809FE44
@@ -1118,13 +1109,13 @@ locret_809FE5C:
 sub_809FE5E:
 	push {r5-r7,lr}
 	ldr r6, off_809FE9C // =byte_2000210 
-	ldrb r0, [r6,#0x4] // (word_2000214 - 0x2000210)
+	ldrb r0, [r6,#0x4]
 	mov r1, #0x10
 	svc 6
 	mov r2, #0xa
 	mul r0, r2
 	add r0, r0, r1
-	ldrb r1, [r6,#0x5] // (word_2000214+1 - 0x2000210)
+	ldrb r1, [r6,#0x5]
 	mov r2, #0
 	mov r3, #0
 	bl chatbox_8045EFC
@@ -1134,16 +1125,13 @@ sub_809FE5E:
 	thumb_local_start
 sub_809FE7A:
 	push {r4-r7,lr}
-	// entryIdx
-	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x40 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	movflag EVENT_1740
+	bl TestEventFlagFromImmediate
 	beq locret_809FE8E
 	ldr r3, off_809FE9C // =byte_2000210 
-	ldrb r1, [r3,#0x4] // (word_2000214 - 0x2000210)
-	ldrb r2, [r3,#0x5] // (word_2000214+1 - 0x2000210)
-	ldrb r3, [r3,#0x2] // (byte_2000212 - 0x2000210)
+	ldrb r1, [r3,#0x4]
+	ldrb r2, [r3,#0x5]
+	ldrb r3, [r3,#0x2]
 locret_809FE8E:
 	// <endpool>
 	pop {r4-r7,pc}

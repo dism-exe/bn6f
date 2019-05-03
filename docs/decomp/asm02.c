@@ -1,27 +1,26 @@
 // 0x8021aa4
-// (int chip_idx) -> ChipData*
-char *__fastcall getChip_8021DA8(int a1)
+void *__fastcall getChip8021DA8(int chipData)
 {
-    return &ChipDataArr_8021DA8[44 * a1];
+    return &ChipDataArr_8021DA8[44 * chipData];
 }
 
 
 // 0x8021ab4
 int __fastcall sub_8021AB4(int a1, int a2)
 {
-    int v2; // r10
+    Toolkit *tk; // r10
     signed int v3; // r6
     int v4; // r0
     int v5; // r1
     int result; // r0
-    int v7; // [sp-4h] [bp-14h]
+    char *v7; // [sp-4h] [bp-14h]
 
-    v7 = 60 * a2 + *(v2 + oToolkit_S_Chip_2002178_Ptr);
+    v7 = tk->sChip_2002178 + 60 * a2;
     CopyWords(a1, v7, 0x3Cu);
     v3 = 0;
     do
     {
-        v4 = split9BitsFromBitfield_8021AE0(*(v7 + v3));
+        v4 = split9BitsFromBitfield_8021AE0(*&v7[v3]);
         result = sub_8021B2A(v4, v5, 1);
         v3 += 2;
     }
@@ -160,16 +159,16 @@ signed int __fastcall sub_8021B92(int a1, int a2, int a3)
 
 
 // 0x8021bc0
-int __fastcall sub_8021BC0(signed int a1, int a2)
+int __fastcall GetChipCountOfCode(signed int chipIdx, int a2)
 {
     char v2; // zf
     int result; // r0
     int v4; // [sp+0h] [bp-10h]
     int v5; // [sp+4h] [bp-Ch]
 
-    v4 = a1;
+    v4 = chipIdx;
     v5 = a2;
-    sub_8006EA4(a1, a2);
+    sub_8006EA4(chipIdx, a2);
     if ( v2 )
         result = *chip_8021C7C(v4, v5);
     else
@@ -179,7 +178,7 @@ int __fastcall sub_8021BC0(signed int a1, int a2)
 
 
 // 0x8021bd8
-int __fastcall sub_8021BD8(signed int a1)
+int __fastcall GetTotalChipCount(signed int a1)
 {
     int v1; // r10
     char v2; // zf
@@ -249,11 +248,11 @@ int __fastcall sub_8021C02(int a1, int a2)
 
 
 // 0x8021c68
-void __fastcall sub_8021C68(int a1, int a2, int a3, int a4)
+void __fastcall zeroFill_e2002230()
 {
-    int v4; // r10
+    Toolkit *tk; // r10
 
-    ZeroFillByWord(*(v4 + oToolkit_Unk2002230_Ptr), 0xF00u, a3, a4);
+    ZeroFillByWord(tk->unk_2002230, 3840);
 }
 
 
@@ -262,14 +261,14 @@ void __fastcall sub_8021C68(int a1, int a2, int a3, int a4)
 char *__fastcall chip_8021C7C(int a1, int a2)
 {
     Toolkit *toolkit; // r10
-    char *arr; // r0
+    unsigned __int8 *arr; // r0
     int v4; // r3
     int v6; // [sp-8h] [bp-14h]
     int vIdx; // [sp-4h] [bp-10h]
 
     v6 = a2;
     vIdx = a1;
-    arr = getChip_8021DA8(a1);
+    arr = getChip8021DA8(a1);
     v4 = 0;
     while ( v6 != arr[v4] )
     {
@@ -292,7 +291,7 @@ __int64 sub_8021CA8()
     char v3; // zf
     signed int v4; // r3
     int v5; // r1
-    char *v7; // [sp-8h] [bp-1Ch]
+    _BYTE *v7; // [sp-8h] [bp-1Ch]
     signed int v8; // [sp-4h] [bp-18h]
 
     v1 = 0LL;
@@ -300,7 +299,7 @@ __int64 sub_8021CA8()
     do
     {
         v8 = v2;
-        v7 = getChip_8021DA8(v2);
+        v7 = getChip8021DA8(v2);
         sub_8006E84(v8);
         if ( v3 )
         {

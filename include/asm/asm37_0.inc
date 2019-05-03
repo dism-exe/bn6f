@@ -8,7 +8,7 @@
 	.global sub_813B84C
 	.global sub_813B920
 	.global sub_813B928
-	.global sub_813B934
+	.global zeroFill_813B934
 	.global sub_813B950
 	.global sub_813B9B4
 	.global sub_813B9C4
@@ -61,9 +61,9 @@
 	.global sub_813DB24
 	.global byte_813DBC0
 	.global byte_813DBDC
-	.global tileRefs_813DBE4
+	.global tileIds_813DBE4
 	.global byte_813DEC4
-	.global tileRefs_813DF44
+	.global tileIds_813DF44
 	.global off_813DF74
 	.global off_813E04C
 
@@ -73,7 +73,7 @@
 // .global start_800027C
 
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global ZeroFillByByte // (void *mem, int size) -> void
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
@@ -87,11 +87,11 @@
 	.include "asm/asm00_2.inc"
 // .global navicust_801379E // (int a1, int a2, int a3) -> void
 // .global sub_80137B6 // (int a1, int a2) -> u8
-// .global sub_80137E6
-// .global sub_80137FE
+// .global SetField16ToSelectedS20047CCStruct
+// .global GetField16FromSelectedS20047CCStruct
 
 	.include "asm/asm02.inc"
-// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global getChip8021DA8 // (int chip_idx) -> ChipData*
 // .global split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
 
 	.include "asm/asm03_0.inc"
@@ -158,10 +158,10 @@
 // .equ unk_2006C88, 0x2006C88
 // .equ unk_2006CC0, 0x2006CC0
 // .equ unk_2006CF8, 0x2006CF8
-// .equ unk_2006D30, 0x2006D30
-// .equ unk_2006D68, 0x2006D68
+// .equ byte_2006D30, 0x2006D30
+// .equ byte_2006D68, 0x2006D68
 // .equ byte_2006DA0, 0x2006DA0
-// .equ unk_2006DD8, 0x2006DD8
+// .equ byte_2006DD8, 0x2006DD8
 // .equ byte_2009470, 0x2009470
 // .equ unk_2009480, 0x2009480
 // .equ byte_20096D8, 0x20096D8
@@ -177,7 +177,7 @@
 // .equ byte_200AF83, 0x200AF83
 // .equ byte_200AF85, 0x200AF85
 // .equ dword_200B1B0, 0x200B1B0
-// .equ byte_200BC30, 0x200BC30
+// .equ eStruct200BC30, 0x200BC30
 // .equ byte_200BC3E, 0x200BC3E
 // .equ byte_200BC50, 0x200BC50
 // .equ byte_200BC51, 0x200BC51
@@ -192,18 +192,18 @@
 // .equ byte_200DD10, 0x200DD10
 // .equ byte_200DD11, 0x200DD11
 // .equ byte_200DD14, 0x200DD14
-// .equ byte_200F360, 0x200F360
+// .equ eStruct200F360, 0x200F360
 // .equ unk_200FFF0, 0x200FFF0
 // .equ unk_2010150, 0x2010150
 // .equ byte_20101B4, 0x20101B4
 // .equ byte_2010290, 0x2010290
-// .equ unk_201BA00, 0x201BA00
+// .equ eTextScript201BA00, 0x201BA00
 // .equ byte_201BA40, 0x201BA40
 // .equ byte_201BC40, 0x201BC40
 // .equ byte_201BC80, 0x201BC80
 // .equ reqBBS_requestNames_textualData, 0x2025A04
 // .equ reqBBS_requestInfo_textOffsets, 0x2029A04
-// .equ word_2036780, 0x2036780
+// .equ eStruct2036780, 0x2036780
 // .equ dword_2036788, 0x2036788
 // .equ unk_20399F0, 0x20399F0
 // .equ unk_2039A00, 0x2039A00

@@ -8,7 +8,7 @@ sprite_loadAnimationData:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
-	ldr r4, off_80026C0 // =sub_3006730+1 
+	ldr r4, off_80026C0 // =sub_3006730+1
 	mov lr, pc
 	bx r4
 	pop {r4,r5,pc}
@@ -17,7 +17,7 @@ sprite_loadAnimationData:
 	thumb_func_start sprite_80026B6
 sprite_80026B6:
 	push {r4,lr}
-	ldr r4, off_80026C0 // =sub_3006730+1 
+	ldr r4, off_80026C0 // =sub_3006730+1
 	mov lr, pc
 	bx r4
 	pop {r4,pc}
@@ -31,7 +31,7 @@ sprite_update:
 	lsr r3, r3, #4
 	lsl r3, r3, #4
 	add r5, r5, r3
-	ldr r4, off_80026E0 // =sub_3006792+1 
+	ldr r4, off_80026E0 // =sub_3006792+1
 	mov lr, pc
 	bx r4
 	pop {r4,r5,pc}
@@ -40,7 +40,7 @@ sprite_update:
 	thumb_func_start sprite_chatbox_80026D6
 sprite_chatbox_80026D6:
 	push {r4,lr}
-	ldr r4, off_80026E0 // =sub_3006792+1 
+	ldr r4, off_80026E0 // =sub_3006792+1
 	mov lr, pc
 	bx r4
 	pop {r4,pc}
@@ -71,13 +71,13 @@ sprite_load:
 	beq loc_8002708
 	b loc_8002716
 loc_8002708:
-	ldr r4, off_8002724 // =spritePointers_8031CC4 
+	ldr r4, off_8002724 // =SpritePointersList
 	ldr r4, [r4,r2]
 	lsl r3, r3, #2
 	ldr r0, [r4,r3]
 	cmp r0, #0
 	bge loc_8002716
-	ldr r0, off_8002728 // =spriteWhiteDot 
+	ldr r0, sprite8002728 // =spriteWhiteDot
 loc_8002716:
 	push {r1}
 	bl sprite_initialize // (void *a1) -> void
@@ -85,8 +85,8 @@ loc_8002716:
 	strb r1, [r5,#oObjectSprite_Unk_03]
 	pop {r4,r5,pc}
 	.balign 4, 0x00
-off_8002724: .word spritePointers_8031CC4
-off_8002728: .word spriteWhiteDot
+off_8002724: .word SpritePointersList
+sprite8002728: .word spriteWhiteDot
 	thumb_func_end sprite_load
 
 // (void *a1) -> void
@@ -122,18 +122,18 @@ sprite_initialize:
 spriteLoadMugshot_800275A:
 	push {lr}
 	lsl r0, r0, #2
-	ldr r1, off_800276C // =mugshots_8032598 
+	ldr r1, off_800276C // =mugshotSpritePtrs
 	ldr r0, [r0,r1]
 	bl sprite_initialize // (void *a1) -> void
 	mov r0, #0x80
 	strh r0, [r5,#0x16]
 	pop {pc}
-off_800276C: .word mugshots_8032598
+off_800276C: .word mugshotSpritePtrs
 	thumb_func_end spriteLoadMugshot_800275A
 
 // (int a1, int a2) -> void
-	thumb_func_start sub_8002770
-sub_8002770:
+	thumb_func_start initGuiSprite_8002770
+initGuiSprite_8002770:
 	mov r2, #0x80
 	b loc_8002776
 loc_8002774:
@@ -142,9 +142,9 @@ loc_8002776:
 	push {r4-r6,lr}
 	mov r6, r2
 	mov r4, r1
-	add r5, #0x20 
+	add r5, #0x20
 	lsl r0, r0, #2
-	ldr r1, off_8002798 // =guiSprites_803271C 
+	ldr r1, off_8002798 // =guiSpritePtrs
 	ldr r0, [r0,r1]
 	cmp r0, #0
 	bge loc_800278A
@@ -156,27 +156,27 @@ loc_800278A:
 	strh r0, [r5,#0x16]
 	pop {r4-r6,pc}
 	.balign 4, 0x00
-off_8002798: .word guiSprites_803271C
-	thumb_func_end sub_8002770
+off_8002798: .word guiSpritePtrs
+	thumb_func_end initGuiSprite_8002770
 
 	thumb_local_start
 sub_800279C:
 	push {r5,lr}
-	add r5, #0x20 
+	add r5, #0x20
 	lsl r0, r0, #2
-	ldr r1, off_80027B0 // =mugshots_8032598 
+	ldr r1, off_80027B0 // =mugshotSpritePtrs
 	ldr r0, [r0,r1]
 	bl sprite_initialize // (void *a1) -> void
 	mov r0, #0x80
 	strh r0, [r5,#0x16]
 	pop {r5,pc}
-off_80027B0: .word mugshots_8032598
+off_80027B0: .word mugshotSpritePtrs
 	thumb_func_end sub_800279C
 
 	thumb_func_start sub_80027B4
 sub_80027B4:
-	ldr r0, off_80027BC // =dword_200F350 
-	ldr r1, dword_80027C0 // =0x1 
+	ldr r0, off_80027BC // =dword_200F350
+	ldr r1, dword_80027C0 // =0x1
 	str r1, [r0]
 	mov pc, lr
 off_80027BC: .word dword_200F350
@@ -185,48 +185,48 @@ dword_80027C0: .word 0x1
 
 	thumb_func_start sub_80027C4
 sub_80027C4:
-	ldr r1, off_8002804 // =byte_20098A8 
+	ldr r1, off_8002804 // =byte_20098A8
 	mov r0, #0
 	strb r0, [r1,#0x1] // (byte_20098A9 - 0x20098a8)
 	mov r0, #0xc
 	strb r0, [r1]
-	ldr r0, dword_8002808 // =0x32f 
+	ldr r0, dword_8002808 // =0x32f
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
 	thumb_func_end sub_80027C4
 
 	thumb_func_start sub_80027D4
 sub_80027D4:
-	ldr r1, off_8002804 // =byte_20098A8 
+	ldr r1, off_8002804 // =byte_20098A8
 	mov r0, #4
 	strb r0, [r1,#0x1] // (byte_20098A9 - 0x20098a8)
 	mov r0, #0xa
 	strb r0, [r1]
-	ldr r0, dword_800280C // =0x2ff 
+	ldr r0, dword_800280C // =0x2ff
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
 	thumb_func_end sub_80027D4
 
 	thumb_func_start sub_80027E4
 sub_80027E4:
-	ldr r1, off_8002804 // =byte_20098A8 
+	ldr r1, off_8002804 // =byte_20098A8
 	mov r0, #4
 	strb r0, [r1,#0x1] // (byte_20098A9 - 0x20098a8)
 	mov r0, #8
 	strb r0, [r1]
-	ldr r0, byte_8002810 // =0xff 
+	ldr r0, byte_8002810 // =0xff
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
 	thumb_func_end sub_80027E4
 
 	thumb_func_start sub_80027F4
 sub_80027F4:
-	ldr r1, off_8002804 // =byte_20098A8 
+	ldr r1, off_8002804 // =byte_20098A8
 	mov r0, #0
 	strb r0, [r1,#0x1] // (byte_20098A9 - 0x20098a8)
 	mov r0, #0x10
 	strb r0, [r1]
-	ldr r0, byte_8002810 // =0xff 
+	ldr r0, byte_8002810 // =0xff
 	strh r0, [r1,#0x2] // (word_20098AA - 0x20098a8)
 	mov pc, lr
 off_8002804: .word byte_20098A8
@@ -254,7 +254,7 @@ loc_800282A:
 	add r0, r0, r1
 	ldrb r1, [r5,#0x15]
 	lsr r1, r1, #4
-	ldr r3, off_8002868 // =byte_3001550 
+	ldr r3, off_8002868 // =byte_3001550
 	lsl r1, r1, #5
 	add r3, r3, r1
 	mov r6, #0
@@ -262,7 +262,7 @@ loc_8002840:
 	ldr r2, [r0,r6]
 	str r2, [r3,r6]
 	add r6, #4
-	cmp r6, #0x20 
+	cmp r6, #0x20
 	blt loc_8002840
 	ldrh r7, [r5,#6]
 	tst r7, r7
@@ -271,9 +271,9 @@ loc_8002840:
 	lsr r0, r0, #0x11
 	lsr r2, r7, #0xf
 	lsl r2, r2, #2
-	mov r6, #0x20 
+	mov r6, #0x20
 	mov r7, r3
-	ldr r1, off_8002864 // =sub_3005EF0+1 
+	ldr r1, off_8002864 // =sub_3005EF0+1
 	mov lr, pc
 	bx r1
 locret_8002862:
@@ -284,7 +284,7 @@ off_8002868: .word byte_3001550
 
 	thumb_func_start sub_800286C
 sub_800286C:
-	ldr r0, off_80028CC // =dword_200F340 
+	ldr r0, off_80028CC // =dword_200F340
 	mov r1, #0
 	str r1, [r0]
 	mov pc, lr
@@ -303,7 +303,7 @@ sub_8002874:
 	str r0, [r5,#0x24]
 	ldr r2, [r0]
 	add r0, #4
-	ldr r1, dword_8002898 // =0x6010000 
+	ldr r1, dword_8002898 // =0x6010000
 	ldrh r3, [r5,#8]
 	lsl r3, r3, #5
 	add r1, r1, r3
@@ -313,14 +313,14 @@ locret_8002896:
 dword_8002898: .word 0x6010000
 	thumb_func_end sub_8002874
 
-	thumb_func_start sprite_handleObjSprites_800289C
-sprite_handleObjSprites_800289C:
+	thumb_func_start sprite_resetObjVars_800289C
+sprite_resetObjVars_800289C:
 	push {lr}
-	ldr r1, off_80028B4 // =dword_20093A8 
+	ldr r1, off_80028B4 // =dword_20093A8
 	mov r0, #0
 	str r0, [r1]
-	ldr r0, off_80028B8 // =dword_200A890 
-	ldr r1, off_80028BC // =0x388 
+	ldr r0, off_80028B8 // =dword_200A890
+	ldr r1, off_80028BC // =0x388
 	mov r2, #0
 	mvn r2, r2
 	bl WordFill
@@ -329,29 +329,29 @@ sprite_handleObjSprites_800289C:
 off_80028B4: .word dword_20093A8
 off_80028B8: .word dword_200A890
 off_80028BC: .word 0x388
-	thumb_func_end sprite_handleObjSprites_800289C
+	thumb_func_end sprite_resetObjVars_800289C
 
 	thumb_func_start sub_80028C0
 sub_80028C0:
-	ldr r1, off_80028CC // =dword_200F340 
+	ldr r1, off_80028CC // =dword_200F340
 	ldr r1, [r1]
-	ldr r2, off_80028D0 // =unk_200F389 
+	ldr r2, off_80028D0 // =byte_200F389
 	strb r1, [r2,r0]
 	mov pc, lr
 	.balign 4, 0x00
 off_80028CC: .word dword_200F340
-off_80028D0: .word unk_200F389
+off_80028D0: .word byte_200F389
 	thumb_func_end sub_80028C0
 
 	thumb_func_start sub_80028D4
 sub_80028D4:
 	push {r5,lr}
-	ldr r5, off_8002BF0 // =byte_200DCA0 
+	ldr r5, off_8002BF0 // =byte_200DCA0
 	push {r0}
 	// memBlock
 	mov r0, r5
 	// size
-	mov r1, #0x50 
+	mov r1, #0x50
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {r0}
 	str r0, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
@@ -367,23 +367,23 @@ sub_80028D4:
 	// mem
 	add r0, #0x1c
 	// byteCount
-	mov r1, #0x30 
+	mov r1, #0x30
 	// byte
 	mov r2, #0xff
 	bl ByteFill // (u8 *mem, int byteCount, u8 byte) -> void
 	pop {r5,pc}
 	thumb_func_end sub_80028D4
 
-	thumb_func_start sub_8002906
-sub_8002906:
+	thumb_func_start uncompSprite_8002906
+uncompSprite_8002906:
 	push {r4-r7,lr}
 	mov r1, r8
 	mov r2, r9
 	push {r1,r2}
-	ldr r5, off_8002BF0 // =byte_200DCA0 
+	ldr r5, off_8002BF0 // =byte_200DCA0
 	ldr r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
-	ldr r4, off_8002BC0 // =spritePointers_8031CC4 
-	ldr r6, dword_8002BC4 // =0x2040000 
+	ldr r4, off_8002BC0 // =SpritePointersList
+	ldr r6, dword_8002BC4 // =0x2040000
 	mov r7, r0
 loc_8002918:
 	ldrb r0, [r7]
@@ -444,12 +444,12 @@ loc_800297C:
 	mov r8, r1
 	mov r9, r2
 	pop {r4-r7,pc}
-	thumb_func_end sub_8002906
+	thumb_func_end uncompSprite_8002906
 
 	thumb_local_start
 sub_8002986:
 	push {r5,lr}
-	ldr r5, off_8002BF0 // =byte_200DCA0 
+	ldr r5, off_8002BF0 // =byte_200DCA0
 	mov r2, #0
 loc_800298C:
 	lsl r1, r2, #1
@@ -476,10 +476,10 @@ sub_80029A8:
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
-	ldr r5, off_8002BF0 // =byte_200DCA0 
+	ldr r5, off_8002BF0 // =byte_200DCA0
 	ldr r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
-	ldr r4, off_8002BC0 // =spritePointers_8031CC4 
-	ldr r6, off_8002BC8 // =dword_2033000 
+	ldr r4, off_8002BC0 // =SpritePointersList
+	ldr r6, off_8002BC8 // =dword_2033000
 	mov r7, r0
 loc_80029BC:
 	ldrb r0, [r7]
@@ -581,10 +581,10 @@ sub_8002A64:
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
-	ldr r5, off_8002BF0 // =byte_200DCA0 
+	ldr r5, off_8002BF0 // =byte_200DCA0
 	ldr r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
-	ldr r4, off_8002BC0 // =spritePointers_8031CC4 
-	ldr r6, off_8002BC8 // =dword_2033000 
+	ldr r4, off_8002BC0 // =SpritePointersList
+	ldr r6, off_8002BC8 // =dword_2033000
 	lsl r2, r0, #0x18
 	lsr r2, r2, #0x16
 	lsr r3, r0, #8
@@ -642,8 +642,8 @@ loc_8002AD2:
 	thumb_func_start sub_8002ADE
 sub_8002ADE:
 	push {r4-r7,lr}
-	ldr r5, off_8002BF0 // =byte_200DCA0 
-	ldr r4, off_8002BC0 // =spritePointers_8031CC4 
+	ldr r5, off_8002BF0 // =byte_200DCA0
+	ldr r4, off_8002BC0 // =SpritePointersList
 	ldrb r3, [r5]
 	cmp r3, #0
 	beq locret_8002B2E
@@ -694,11 +694,11 @@ sprite_decompress:
 	mov r2, r9
 	mov r3, r12
 	push {r1-r3}
-	ldr r5, off_8002BF0 // =byte_200DCA0 
+	ldr r5, off_8002BF0 // =byte_200DCA0
 	bl sub_8002BCC
 	ldr r1, [r5,#0x4c] // (dword_200DCEC - 0x200dca0)
-	ldr r4, off_8002BC0 // =spritePointers_8031CC4 
-	ldr r6, off_8002BC8 // =dword_2033000 
+	ldr r4, off_8002BC0 // =SpritePointersList
+	ldr r6, off_8002BC8 // =dword_2033000
 	mov r3, r5
 	add r3, #4
 	mov r9, r1
@@ -761,7 +761,7 @@ loc_8002BB2:
 	mov r12, r3
 	pop {r4-r7,pc}
 	.byte 0, 0
-off_8002BC0: .word spritePointers_8031CC4
+off_8002BC0: .word SpritePointersList
 dword_8002BC4: .word 0x2040000
 off_8002BC8: .word dword_2033000
 	thumb_func_end sprite_decompress
@@ -818,7 +818,7 @@ loc_8002C36:
 	tst r0, r1
 	beq loc_8002C4E
 	ldrb r3, [r5,#0x13]
-	mov r1, #0x3e 
+	mov r1, #0x3e
 	and r3, r1
 	lsr r3, r3, #1
 	pop {r0-r2}
@@ -887,7 +887,7 @@ sprite_setMosaicScalingParameters:
 	strb r0, [r3,#3]
 	mov r0, #0
 	strb r0, [r3]
-	mov r0, #0x3f 
+	mov r0, #0x3f
 	strb r0, [r3,#1]
 	mov pc, lr
 	thumb_func_end sub_8002C7A
@@ -952,7 +952,7 @@ sub_8002CF6:
 	thumb_local_start
 sub_8002D06:
 	push {r5,lr}
-	ldr r3, off_8002D10 // =sub_30061E8+1 
+	ldr r3, off_8002D10 // =sub_30061E8+1
 	mov lr, pc
 	bx r3
 	pop {r5,pc}
@@ -986,7 +986,7 @@ loc_8002D22:
 	strb r2, [r5,#0x11]
 	push {r7}
 	ldrb r7, [r5,#0x13]
-	mov r1, #0x3e 
+	mov r1, #0x3e
 	bic r7, r1
 	lsl r0, r0, #1
 	orr r7, r0
@@ -1017,7 +1017,7 @@ loc_8002D60:
 	strb r0, [r5,#oObjectSprite_Unk_11]
 	ldrb r0, [r5,#oObjectSprite_Unk_13]
 	mov r2, r0
-	mov r1, #0x3e 
+	mov r1, #0x3e
 	and r0, r1
 	lsr r0, r0, #1
 	bic r2, r1
@@ -1371,14 +1371,14 @@ sprite_setFlip:
 	lsl r3, r3, #4
 	add r3, r3, r5
 	ldrb r2, [r3,#oObjectSprite_Unk_13]
-	mov r1, #0x30 
+	mov r1, #0x30
 	bic r2, r1
 	lsl r0, r0, #4
 	orr r2, r0
 	strb r2, [r3,#oObjectSprite_Unk_13]
 	and r2, r1
 	ldrb r1, [r3,#oObjectSprite_Unk_16]
-	mov r0, #0x30 
+	mov r0, #0x30
 	bic r1, r0
 	orr r1, r2
 	strb r1, [r3,#oObjectSprite_Unk_16]
@@ -1392,7 +1392,7 @@ sprite_getFlip:
 	lsl r3, r3, #4
 	add r3, r3, r0
 	ldrb r0, [r3,#oObjectSprite_Unk_16]
-	mov r1, #0x30 
+	mov r1, #0x30
 	and r0, r1
 	lsr r0, r0, #4
 	mov pc, lr
@@ -1493,7 +1493,7 @@ sub_8003006:
 	lsl r3, r3, #4
 	add r3, r3, r5
 	ldrb r0, [r3,#oObjectSprite_Unk_03]
-	mov r1, #0x20 
+	mov r1, #0x20
 	orr r0, r1
 	strb r0, [r3,#oObjectSprite_Unk_03]
 	mov pc, lr
@@ -1506,7 +1506,7 @@ sub_8003018:
 	lsl r3, r3, #4
 	add r3, r3, r5
 	ldrb r0, [r3,#3]
-	mov r1, #0x20 
+	mov r1, #0x20
 	bic r0, r1
 	strb r0, [r3,#3]
 	mov pc, lr
@@ -1526,7 +1526,7 @@ sub_800302A:
 	orr r1, r0
 	strb r1, [r3,#oObjectSprite_Unk_16]
 	ldrb r0, [r3,#oObjectSprite_Unk_03]
-	mov r1, #0x40 
+	mov r1, #0x40
 	orr r0, r1
 	strb r0, [r3,#oObjectSprite_Unk_03]
 	mov pc, lr

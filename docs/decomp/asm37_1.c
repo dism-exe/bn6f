@@ -1,7 +1,7 @@
 // 0x814187c
 int __fastcall sub_814187C(int a1, int a2, int a3, int a4)
 {
-    ZeroFillByWord(&byte_2001018, 0x10u, a3, a4);
+    ZeroFillByWord(&byte_2001018, 16);
     LOBYTE(dword_2001020) = 80;
     SetEventFlagFromImmediate(7, 0);
     return 0;
@@ -50,7 +50,7 @@ int sub_81418CE()
 
 
 // 0x81418da
-char __fastcall sub_81418DA(char result, char a2)
+int __fastcall sub_81418DA(int result, char a2)
 {
     LOBYTE(dword_2001024) = result;
     BYTE1(dword_2001024) = a2;
@@ -141,7 +141,7 @@ int sub_81419A0()
                 IsPaletteFadeActive();
                 if ( !v1 )
                 {
-                    chatbox_8045F3C(128);
+                    chatbox_check_eFlags2009F38(128);
                     if ( v1 )
                     {
                         if ( **(v0 + oToolkit_GameStatePtr) == 4 )
@@ -325,8 +325,8 @@ unsigned int sub_8141F7C()
     int v10; // r1
     int v11; // r2
     int v12; // r3
-    signed int v13; // r0
-    signed int v14; // r0
+    unsigned int v13; // r0
+    unsigned int v14; // r0
     int v15; // r2
     int v16; // r3
     int v18; // [sp-10h] [bp-24h]
@@ -342,7 +342,7 @@ unsigned int sub_8141F7C()
     TestEventFlagFromImmediate(7, 0);
     if ( !v2 || v20 != v21 || v18 != v19 )
     {
-        ZeroFillByWord(&unk_2000BE0, 0x140u, v20, v21);
+        ZeroFillByWord(&unk_2000BE0, 320);
         sub_814189A(v3, v4, v5, v6);
     }
     v7 = (&off_8141B18)[sub_8142080()];
@@ -352,14 +352,14 @@ unsigned int sub_8141F7C()
         v9 = sub_81420F0(v8);
         TestEventFlag(v9);
         if ( v2 )
-            sub_80047E0(13, v10, v11, v12);
+            SpawnOverworldMapObject(13, v10, v11, v12);
         ++v8;
         ++v7;
     }
     v13 = sub_8142080();
     sub_81418DA(*(&dword_8142044 + v13), 15);
     v14 = sub_8142080();
-    sub_8003570(off_8141B24[v14]);
+    SpawnObjectsFromList(off_8141B24[v14]);
     TestEventFlagFromImmediate(7, 2);
     if ( !v2 )
     {
@@ -384,10 +384,10 @@ void sub_814204C()
 
 
 // 0x8142050
-int __fastcall sub_8142050(int a1)
+unsigned int __fastcall sub_8142050(int a1)
 {
     int v1; // r4
-    int result; // r0
+    unsigned int result; // r0
     char (*v3)[72]; // r7
 
     v1 = a1;
@@ -413,7 +413,7 @@ int sub_8142072()
 
 
 // 0x8142080
-signed int sub_8142080()
+unsigned int sub_8142080()
 {
     int v0; // r10
     unsigned int i; // r6
@@ -466,7 +466,7 @@ int __fastcall sub_81420F0(int a1)
 // 0x8142102
 unsigned int sub_8142102()
 {
-    signed int v0; // r0
+    unsigned int v0; // r0
 
     v0 = sub_8142080();
     return ClearEventFlagRange(*&byte_8142120[4 * v0], *&byte_8142120[4 * v0 + 2], *&byte_8142120[4 * v0 + 2]);
@@ -476,7 +476,7 @@ unsigned int sub_8142102()
 // 0x8142134
 int __fastcall sub_8142134(int a1, int a2, int a3, int a4)
 {
-    ZeroFillByWord(&byte_2000784[4], 0x40u, a3, a4);
+    ZeroFillByWord(&byte_2000784[4], 64);
     SetEventFlagFromImmediate(7, 64);
     return 0;
 }
@@ -499,7 +499,7 @@ int sub_814215A()
 
 
 // 0x8142166
-char __fastcall sub_8142166(char result)
+int __fastcall sub_8142166(int result)
 {
     byte_200078E = result;
     return result;
@@ -556,7 +556,7 @@ signed int __fastcall sub_81421B2(int a1)
 
 
 // 0x81421c8
-char __fastcall sub_81421C8(char result)
+int __fastcall sub_81421C8(int result)
 {
     byte_200078B[0] = result;
     return result;
@@ -692,7 +692,7 @@ int sub_81422B4()
 BOOL sub_81422BE()
 {
     char v0; // zf
-    signed int v1; // r4
+    unsigned int v1; // r4
     int v2; // r0
     BOOL result; // r0
 
@@ -764,7 +764,7 @@ int sub_8142510()
             TestEventFlag(v8);
             if ( v3 )
             {
-                sub_80047E0(15, v9, v10, v11);
+                SpawnOverworldMapObject(15, v9, v10, v11);
                 sub_8142178();
                 ClearEventFlag(v7 + 5712);
             }
@@ -849,7 +849,7 @@ void nullsub_37()
 
 
 // 0x81426ce
-signed int sub_81426CE()
+unsigned int sub_81426CE()
 {
     int v0; // r10
     unsigned int i; // r6
@@ -892,25 +892,23 @@ int sub_814270A()
 int sub_8142734()
 {
     int v0; // r7
-    int v1; // r2
-    int v2; // r3
     int i; // r4
-    unsigned __int8 v4; // vf
-    int v5; // r0
+    unsigned __int8 v2; // vf
+    int v3; // r0
     int result; // r0
-    char v7; // zf
+    char v5; // zf
 
     v0 = *&byte_8142774[2 * sub_81426CE()];
     for ( i = sub_814278C(); ; ClearEventFlag(v0 + i) )
     {
-        v4 = __OFSUB__(i--, 1);
-        if ( (i < 0) ^ v4 )
+        v2 = __OFSUB__(i--, 1);
+        if ( (i < 0) ^ v2 )
             break;
     }
-    ZeroFillByWord(byte_2006670, 0xA0u, v1, v2);
-    v5 = sub_81427F2();
-    result = TestEventFlag(v5);
-    if ( !v7 )
+    ZeroFillByWord(byte_2006670, 160);
+    v3 = sub_81427F2();
+    result = TestEventFlag(v3);
+    if ( !v5 )
         result = sub_814227A(result);
     return result;
 }
@@ -1005,13 +1003,13 @@ char *__fastcall sub_81428C2(int a1)
 
 
 // 0x81428d4
-int __fastcall sub_81428D4(int a1)
+unsigned int __fastcall sub_81428D4(int a1)
 {
     int v1; // r4
     int v2; // r0
     int v4; // r7
-    int v5; // r6
-    int v6; // r7
+    unsigned int v5; // r6
+    unsigned int v6; // r7
     __int64 v7; // ST00_8
     int v8; // r0
     int v9; // r1
@@ -1037,7 +1035,7 @@ int __fastcall sub_81428D4(int a1)
 
 
 // 0x8142952
-int __fastcall sub_8142952(unsigned int a1, int a2, int a3)
+unsigned int __fastcall sub_8142952(unsigned int a1, int a2, int a3)
 {
     return (a1 + byte_8142980[2 * a2] * a3) | (((a1 >> 8) + byte_8142980[2 * a2 + 1] * a3) << 8);
 }
@@ -1057,7 +1055,7 @@ int sub_8142990()
 signed int __fastcall sub_814299C(unsigned int a1, unsigned int a2)
 {
     signed int v2; // r7
-    int v3; // r2
+    signed int v3; // r2
     int v4; // r3
 
     v2 = 0;
@@ -1077,25 +1075,23 @@ signed int __fastcall sub_814299C(unsigned int a1, unsigned int a2)
 int sub_81429CA()
 {
     char *v0; // r6
-    int v1; // r2
-    int v2; // r3
-    unsigned int v3; // r4
-    int v4; // r7
+    unsigned int v1; // r4
+    int v2; // r7
     int result; // r0
     char *i; // r7
-    int v7; // r2
+    int v5; // r2
 
     v0 = sub_81421D8();
-    ZeroFillByWord(v0, 0x10u, v1, v2);
-    v3 = sub_8142990();
-    v4 = *(&off_8142A1C + sub_81421D0());
+    ZeroFillByWord(v0, 16);
+    v1 = sub_8142990();
+    v2 = *(&off_8142A1C + sub_81421D0());
     result = 2 * (sub_809E2B8() >> 1);
-    for ( i = (v4 + result); ; i += 8 )
+    for ( i = (v2 + result); ; i += 8 )
     {
-        v7 = *i;
-        if ( v7 == 127 )
+        v5 = *i;
+        if ( v5 == 127 )
             break;
-        result = (v3 + v7) | (((v3 >> 8) + i[1]) << 8);
+        result = (v1 + v5) | (((v1 >> 8) + i[1]) << 8);
         *v0 = result;
         v0 += 4;
     }
@@ -1106,13 +1102,13 @@ int sub_81429CA()
 // 0x8142a84
 int sub_8142A84()
 {
-    char *v0; // r5
+    void **v0; // r5
     signed int v1; // r4
     int v2; // r6
     int v3; // r0
     char v4; // zf
 
-    v0 = byte_2011EE0;
+    v0 = &eOverworldMapObjects;
     v1 = 0;
     v2 = 0;
     do
@@ -1124,7 +1120,7 @@ int sub_8142A84()
             if ( !v4 )
                 ++v2;
         }
-        v0 += 120;
+        v0 += 30;
         ++v1;
     }
     while ( v1 < 56 );
@@ -1187,14 +1183,14 @@ int sub_8142ADA()
 int __fastcall sub_8142B04(int a1)
 {
     int v1; // r7
-    char *v2; // r5
+    void **v2; // r5
     signed int v3; // r4
     int v4; // r6
     int v5; // r0
     char v6; // zf
 
     v1 = a1;
-    v2 = byte_2011EE0;
+    v2 = &eOverworldMapObjects;
     v3 = 0;
     v4 = 0;
     do
@@ -1202,7 +1198,7 @@ int __fastcall sub_8142B04(int a1)
         v5 = sub_8142B28();
         if ( !v6 && v5 == v1 )
             ++v4;
-        v2 += 120;
+        v2 += 30;
         ++v3;
     }
     while ( v3 < 56 );
@@ -1312,7 +1308,7 @@ int sub_8142BB6()
                 v8 = *(v0 + 2);
                 v9 = sub_8142868();
                 sub_8004822(19, v9, v10, v11);
-                result = sound_play(109, v6, v7);
+                result = PlaySoundEffect(109, v6, v7);
             }
         }
         v0 += 8;
@@ -1409,8 +1405,8 @@ int __fastcall sub_8142C46(int a1)
     v7 = sub_809E1AE();
     sub_8004822(19, v7, SHIDWORD(v7), v8);
     sub_80302A8(1, 20);
-    sound_play(107, v9, v10);
-    return sound_play(268, v11, v12);
+    PlaySoundEffect(107, v9, v10);
+    return PlaySoundEffect(268, v11, v12);
 }
 
 
@@ -1575,7 +1571,7 @@ int sub_8142ECC()
             v6 = sub_81430B6(v5);
             TestEventFlag(v6);
             if ( v2 )
-                sub_80047E0(22, *&(*v4)[2] << 16, *&(*v4)[4] << 16, *&(*v4)[6] << 16);
+                SpawnOverworldMapObject(22, *&(*v4)[2] << 16, *&(*v4)[4] << 16, *&(*v4)[6] << 16);
             ++v5;
             v4 = (v4 + 8);
         }
@@ -1587,7 +1583,7 @@ int sub_8142ECC()
             sub_81430B6(v8);
             TestEventFlag(v9);
             if ( v2 )
-                sub_80047E0(22, v7[1] << 16, v7[2] << 16, v7[3] << 16);
+                SpawnOverworldMapObject(22, v7[1] << 16, v7[2] << 16, v7[3] << 16);
             ++v8;
             v7 += 4;
         }
@@ -1596,7 +1592,7 @@ int sub_8142ECC()
         do
         {
             if ( *v10 )
-                sub_80047E0(24, 0, 0, 0);
+                SpawnOverworldMapObject(24, 0, 0, 0);
             v10 += 20;
             ++v11;
         }
@@ -1619,7 +1615,7 @@ int sub_8142FC8()
     char v5; // zf
     int v6; // r2
     int v7; // r3
-    signed int v8; // r0
+    unsigned int v8; // r0
     int v9; // r2
     int v10; // r3
 
@@ -1639,7 +1635,7 @@ int sub_8142FC8()
         {
             sub_81433DA();
             if ( v4 )
-                sound_play(105, v2, v3);
+                PlaySoundEffect(105, v2, v3);
             else
                 SetEventFlagFromImmediate(9, 98);
         }
@@ -1677,7 +1673,7 @@ LABEL_20:
 
 
 // 0x8143088
-signed int sub_8143088()
+unsigned int sub_8143088()
 {
     int v0; // r10
     unsigned int i; // r6
@@ -1773,18 +1769,16 @@ int sub_8143198()
 // 0x81431c6
 unsigned int __fastcall sub_81431C6(int a1, int a2, int a3, int a4)
 {
-    int v4; // r2
-    int v5; // r3
-    int v6; // r0
-    int v7; // r1
-    unsigned int v8; // r1
+    int v4; // r0
+    int v5; // r1
+    unsigned int v6; // r1
 
     sub_814339C(a1, a2, a3, a4);
-    ZeroFillByWord(byte_2000D20, &loc_A0, v4, v5);
-    v6 = sub_81430B6(0);
-    ClearEventFlagRange(v6, v7, 8);
+    ZeroFillByWord(byte_2000D20, &loc_A0);
+    v4 = sub_81430B6(0);
+    ClearEventFlagRange(v4, v5, 8);
     sub_81430B6(0);
-    return ClearEventFlagRange(v8, v8, 8);
+    return ClearEventFlagRange(v6, v6, 8);
 }
 
 
@@ -1799,10 +1793,12 @@ char *__fastcall sub_81431F8(int a1)
 int __fastcall sub_8143204(int a1)
 {
     char *v1; // r5
+    char v2; // r0
     int result; // r0
 
     v1 = sub_81431F8(a1);
-    result = (change_20013F0_800151C() & 0x3F) + 30;
+    GetRNG2();
+    result = (v2 & 0x3F) + 30;
     *(v1 + 3) = result;
     return result;
 }
@@ -1813,10 +1809,12 @@ int __fastcall sub_8143220(int a1)
 {
     int v1; // r4
     char *v2; // r5
+    char v3; // r0
 
     v1 = a1;
     v2 = sub_81431F8(a1);
-    *(v2 + 1) = (change_20013F0_800151C() & 0x3F) + 30;
+    GetRNG2();
+    *(v2 + 1) = (v3 & 0x3F) + 30;
     return sub_81432FA(v1, 1);
 }
 
@@ -1944,10 +1942,12 @@ int sub_8143314()
     int result; // r0
     char v3; // zf
     int v4; // r4
-    int v5; // r0
-    int v6; // r1
-    int v7; // r2
-    int v8; // r0
+    __int16 v5; // r0
+    char v6; // r0
+    int v7; // r0
+    int v8; // r1
+    int v9; // r2
+    int v10; // r0
 
     v1 = byte_2000D20;
     result = sub_8143470();
@@ -1966,16 +1966,18 @@ int sub_8143314()
         }
         *v1 = 1;
         v1[1] = 0;
-        *(v1 + 2) = change_20013F0_800151C();
+        GetRNG2();
+        *(v1 + 2) = v5;
         sub_8143204(v4);
         sub_8143220(v4);
-        v5 = 2 * (change_20013F0_800151C() & 0xF0);
-        v6 = *&byte_8006660[v5] << 16;
-        v7 = *&byte_80065E0[v5] << 16;
-        v8 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
-        *(v1 + 2) = *(v8 + 28) - v6;
-        *(v1 + 3) = *(v8 + 32) - v7;
-        result = sub_80047E0(24, 0, 0, 0);
+        GetRNG2();
+        v7 = 2 * (v6 & 0xF0);
+        v8 = *&math_cosTable[v7] << 16;
+        v9 = *&math_sinTable[v7] << 16;
+        v10 = *(*(v0 + oToolkit_GameStatePtr) + oGameState_OverworldPlayerObjectPtr);
+        *(v1 + 2) = *(v10 + 28) - v8;
+        *(v1 + 3) = *(v10 + 32) - v9;
+        result = SpawnOverworldMapObject(24, 0, 0, 0);
     }
     return result;
 }
@@ -1984,11 +1986,8 @@ int sub_8143314()
 // 0x814339c
 int __fastcall sub_814339C(int a1, int a2, int a3, int a4)
 {
-    int v4; // r2
-    int v5; // r3
-
     sub_8003A64(2u, a2, a3, a4);
-    ZeroFillByWord(&byte_2001018, 0x40u, v4, v5);
+    ZeroFillByWord(&byte_2001018, 64);
     sub_81433D2(5);
     sub_8143406();
     sub_814343A();
@@ -1997,7 +1996,7 @@ int __fastcall sub_814339C(int a1, int a2, int a3, int a4)
 
 
 // 0x81433c2
-char __fastcall sub_81433C2(char result)
+int __fastcall sub_81433C2(int result)
 {
     byte_2001018 = result;
     return result;
@@ -2012,7 +2011,7 @@ int sub_81433CA()
 
 
 // 0x81433d2
-char __fastcall sub_81433D2(char result)
+int __fastcall sub_81433D2(int result)
 {
     byte_2001019 = result;
     return result;
@@ -2055,9 +2054,11 @@ signed int __fastcall sub_81433F6(signed int result)
 // 0x8143406
 int sub_8143406()
 {
+    char v0; // r0
     int result; // r0
 
-    result = change_20013F0_800151C() & 3;
+    GetRNG2();
+    result = v0 & 3;
     byte_200101A = result;
     return result;
 }
@@ -2180,7 +2181,7 @@ int sub_8143978()
                 ClearEventFlag(v8);
                 v9 = *(v4 + 1);
                 v10 = sub_8143DBC();
-                sub_80047E0(43, v10, v11, v12);
+                SpawnOverworldMapObject(43, v10, v11, v12);
             }
             ++v5;
             v4 += 4;
@@ -2216,7 +2217,7 @@ int sub_8143A54()
     int v7; // r0
     int v8; // r2
     int v9; // r3
-    signed int v10; // r0
+    unsigned int v10; // r0
     int v11; // r2
     int v12; // r3
     int result; // r0
@@ -2286,7 +2287,7 @@ LABEL_24:
 
 
 // 0x8143b30
-signed int sub_8143B30()
+unsigned int sub_8143B30()
 {
     int v0; // r10
     unsigned int i; // r6
@@ -2304,7 +2305,7 @@ signed int sub_8143B30()
 int __fastcall sub_8143B5E(int a1)
 {
     int v1; // r4
-    int v2; // r3
+    unsigned int v2; // r3
     int result; // r0
     int v4; // r1
 
@@ -2320,7 +2321,7 @@ int __fastcall sub_8143B5E(int a1)
 int __fastcall sub_8143B88(int a1)
 {
     int v1; // r4
-    signed int v2; // r0
+    unsigned int v2; // r0
     int v3; // r1
 
     v1 = a1;
@@ -2334,7 +2335,7 @@ int __fastcall sub_8143B88(int a1)
 signed int __fastcall sub_8143BB0(int a1)
 {
     int v1; // r4
-    signed int v2; // r0
+    unsigned int v2; // r0
     char (*v3)[24]; // r7
     unsigned int v4; // r5
     int v5; // r0
@@ -2397,7 +2398,7 @@ int __fastcall sub_8143C30(int a1, int a2, int a3, int a4)
 // 0x8143c62
 unsigned int sub_8143C62()
 {
-    signed int v0; // r0
+    unsigned int v0; // r0
 
     v0 = sub_8143B30();
     sub_8030A60(*(&off_8143C80 + v0));
@@ -2501,13 +2502,13 @@ int sub_8143DBC()
 
 
 // 0x8143dea
-int __fastcall sub_8143DEA(int a1)
+unsigned int __fastcall sub_8143DEA(int a1)
 {
     int v1; // r4
     int v2; // r0
     int v4; // r7
-    int v5; // r6
-    int v6; // r7
+    unsigned int v5; // r6
+    unsigned int v6; // r7
     __int64 v7; // ST00_8
     int v8; // r0
     int v9; // r1
@@ -2533,7 +2534,7 @@ int __fastcall sub_8143DEA(int a1)
 
 
 // 0x8143e68
-int __fastcall sub_8143E68(unsigned int a1, int a2, int a3)
+unsigned int __fastcall sub_8143E68(unsigned int a1, int a2, int a3)
 {
     return (a1 + byte_8143E94[2 * a2] * a3) | (((a1 >> 8) + byte_8143E94[2 * a2 + 1] * a3) << 8);
 }
@@ -2600,11 +2601,8 @@ void sub_8143F1C()
 // 0x8143f20
 int __fastcall sub_8143F20(int a1, int a2, int a3, int a4)
 {
-    int v4; // r2
-    int v5; // r3
-
     sub_8003A64(5u, a2, a3, a4);
-    ZeroFillByWord(&byte_2001018, 0x40u, v4, v5);
+    ZeroFillByWord(&byte_2001018, 64);
     return 0;
 }
 
@@ -2696,7 +2694,7 @@ int __fastcall sub_8143FC4(int a1, int a2, int a3)
     int v4; // r1
 
     if ( !dword_2001024 )
-        sound_play(440, a2, a3);
+        PlaySoundEffect(440, a2, a3);
     result = dword_2001024 + dword_2001028;
     v4 = dword_2001028 + dword_200102C;
     if ( dword_2001024 + dword_2001028 < 0 )

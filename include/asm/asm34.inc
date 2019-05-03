@@ -32,11 +32,11 @@
 // .global byte_30069A0
 
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global ZeroFillByEightWords // (int a1, int a2) -> void
-// .global sub_800183C
-// .global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-// .global sub_80018D0
+// .global ZeroFillGFX30025c0
+// .global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
+// .global call_sub_3005EBA
 
 	.include "asm/asm00_1.inc"
 // .global sprite_setCoordinates
@@ -45,8 +45,8 @@
 
 	.include "asm/asm03_1.inc"
 // .global sub_803C754
-// .global sub_803EA60
-// .global sub_803EBF4
+// .global eStruct200BC30_getJumpOffset00
+// .global eStruct200BC30_getRef
 
 	.include "asm/chatbox.inc"
 // .global chatbox_8040818
@@ -54,7 +54,7 @@
 	.include "asm/asm03_2.inc"
 // .global sub_80465A0 // (void *a1) -> void
 // .global sub_8046664 // () -> void
-// .global sub_80466C4
+// .global getStructFrom2008450
 
 	.include "asm/asm32.inc"
 // .global sub_811980C
@@ -89,7 +89,7 @@
 // .global byte_812C288
 
 	.include "asm/asm36.inc"
-// .global sub_8132280
+// .global chatbox_runScript_803FD9C_on_eTextScript201BA20
 
 	.include "asm/libs.inc"
 // .global sub_81440D8 // static () -> void

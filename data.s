@@ -1,4 +1,6 @@
 	.include "include/data/data.inc"
+	.include "include/macros/enum.inc"
+	.include "include/bytecode/text_script.inc"
 
 	.include "charmap.inc"
 
@@ -9,8 +11,7 @@ IWRAMRoutinesEnd:
 
 	.section .rodata
 
-	.global battleSpriteMegaMan
-battleSpriteMegaMan:
+battleSpriteMegaMan::
 	.incbin "data/sprites/battleSpriteMegaMan.spr"
 battleSpriteFlameCross:
 	.incbin "data/sprites/battleSpriteFlameCross.spr"
@@ -126,8 +127,8 @@ comp_82D2AC8:
 	.incbin "data/sprites/comp_82D2AC8.lz77"
 comp_82D6FE4:
 	.incbin "data/sprites/comp_82D6FE4.lz77"
-comp_82DABC8:
-	.incbin "data/sprites/comp_82DABC8.lz77"
+compSprite_82DABC8:
+	.incbin "data/sprites/compSprite_82DABC8.lz77"
 comp_82DD9A8:
 	.incbin "data/sprites/comp_82DD9A8.lz77"
 compBattleSprite_Colonel:
@@ -583,7 +584,7 @@ spriteWhiteDot:
 compSpriteWhiteDot_84E0C4C:
 	.incbin "data/sprites/compSpriteWhiteDot_84E0C4C.lz77"
 dat38_59:
-	.include "data/dat38_59.s"
+	.include "data/dat38_59.s" // sprites
 comp_857CCC8:
 	.incbin "data/compressed/comp_857CCC8.lz77"
 comp_857D43C:
@@ -624,10 +625,6 @@ comp_86C526C:
 	.incbin "data/compressed/comp_86C526C.lz77"
 dat38_65:
 	.include "data/dat38_65.s"
-scripts_86C580C:
-	.incbin "data/scripts/scripts_86C580C.bin"
-dat38_66:
-	.include "data/dat38_66.s"
 comp_86C6B30:
 	.incbin "data/compressed/comp_86C6B30.lz77"
 comp_86C6FD0:
@@ -812,16 +809,15 @@ comp_86DDB7C:
 	.incbin "data/compressed/comp_86DDB7C.lz77"
 dat38_85:
 	.include "data/dat38_85.s"
-scripts_fullSynchro_86F3F5C:
-	.incbin "data/scripts/scripts_fullSynchro_86F3F5C.bin"
-scripts_dad_cybeastTut_86F4498:
-	.incbin "data/scripts/scripts_dad_cybeastTut_86F4498.bin"
-scripts_shuko_crossTut_86F53CC:
-	.incbin "data/scripts/scripts_shuko_crossTut_86F53CC.bin"
+	.include "data/scripts/TextScriptBattleTutFullSynchro.s"
+TextScriptDadCybeastTut:
+	.incbin "data/scripts/TextScriptDadCybeastTut.bin"
+TextScriptShukoCrossTut:
+	.incbin "data/scripts/TextScriptShukoCrossTut.bin"
 dat38_86:
 	.include "data/dat38_86.s"
-scripts_commErr_87370C0:
-	.incbin "data/scripts/scripts_commErr_87370C0.bin"
+TextScriptCommError87370C0:
+	.incbin "data/scripts/TextScriptCommError87370C0.bin"
 dat38_87:
 	.include "data/dat38_87.s"
 comp_87E4500:

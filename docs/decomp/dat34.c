@@ -99,9 +99,10 @@ void sub_812DBE0()
     unsigned int v9; // r3
     unsigned int v10; // r3
     int v11; // r0
-    char v12; // r1
-    u32 v13; // r0
-    char v14; // zf
+    int v12; // r0
+    char v13; // r1
+    u32 v14; // r0
+    char v15; // zf
 
     *(v0 + 16) = 12;
     *(v0 + 42) = sub_812ED34();
@@ -153,13 +154,13 @@ void sub_812DBE0()
                             sub_812F014();
                             *(v0 + 22) = 1;
                             *(v0 + 16) = 4;
-                            if ( v11 != 2 )
+                            if ( v12 != 2 )
                             {
-                                sub_8132280(64);
-                                v12 = 3;
+                                chatbox_runScript_803FD9C_on_eTextScript201BA20(64);
+                                v13 = 3;
                                 if ( *(v0 + 38) == 8 )
-                                    v12 = 4;
-                                *(v0 + 16) = v12;
+                                    v13 = 4;
+                                *(v0 + 16) = v13;
                                 *(v0 + 38) = 16;
                             }
                             break;
@@ -168,7 +169,7 @@ void sub_812DBE0()
                         {
 LABEL_34:
                             IsPaletteFadeActive();
-                            if ( !v14 )
+                            if ( !v15 )
                                 sub_812ECAC();
                         }
                         else
@@ -179,9 +180,9 @@ LABEL_34:
                             {
                                 *(v0 + 2) = 8;
                                 *(v0 + 3) = 0;
-                                v13 = sub_81325CC();
+                                v14 = sub_81325CC();
                                 *(v0 + 38) = 2;
-                                *(v13 + 8) = 2;
+                                *(v14 + 8) = 2;
                                 engine_setScreeneffect(12, 16);
                             }
                         }
@@ -357,7 +358,7 @@ void sub_812DDE8()
                             else
                             {
                                 v12 = v11;
-                                sub_8132280(64);
+                                chatbox_runScript_803FD9C_on_eTextScript201BA20(64);
                                 *(v0 + 2) = 36;
                                 *(v0 + 22) = 0;
                                 *(v0 + 16) = 4;
@@ -375,10 +376,10 @@ void sub_812DDE8()
                     }
                 }
             }
-            sub_811F7EC();
+            JoypadKeyPressed();
             if ( !v16 )
             {
-                sound_play(131, v14, v15);
+                PlaySoundEffect(131, v14, v15);
                 engine_setScreeneffect(12, 16);
                 *(v0 + 2) = 12;
                 *(v0 + 20) = 0;
@@ -582,11 +583,11 @@ void sub_812E08C()
     *(v0 + 16) = 22;
     if ( *(v0 + 3) )
     {
-        sub_811F7EC();
+        JoypadKeyPressed();
         if ( !v3 )
         {
             *(v0 + 38) = 0;
-            sound_play(131, 0, v2);
+            PlaySoundEffect(131, 0, v2);
         }
     }
     else
@@ -599,17 +600,17 @@ void sub_812E08C()
             *(v0 + 21) = v6;
             goto LABEL_14;
         }
-        sub_811F7EC();
+        JoypadKeyPressed();
         if ( v3 )
         {
-            sub_811F7EC();
+            JoypadKeyPressed();
             if ( v3 )
                 goto LABEL_14;
         }
         else
         {
             *(v0 + 21) = 1;
-            sound_play(131, v7, v8);
+            PlaySoundEffect(131, v7, v8);
         }
         v10 = 4;
         if ( *(v0 + 21) )
@@ -619,7 +620,7 @@ void sub_812E08C()
         v12 = *(v0 + 38);
         if ( v12 != 4 )
             v11 = 131;
-        sound_play(v11, v12, v9);
+        PlaySoundEffect(v11, v12, v9);
     }
 LABEL_14:
     v13 = sub_803EAE4();
@@ -664,7 +665,7 @@ LABEL_14:
                         *(v0 + 40) = v23;
                         if ( v23 >= 180 )
                         {
-                            sub_8132280(64);
+                            chatbox_runScript_803FD9C_on_eTextScript201BA20(64);
                             sub_812F014();
                         }
                         return;
@@ -938,7 +939,7 @@ void sub_812E440()
     int v7; // r0
     int v8; // r1
     __int16 v9; // r0
-    int v10; // r1
+    int v10; // r0
     __int16 v11; // r0
     u8 *v12; // r6
     _BYTE *v13; // r0
@@ -997,14 +998,14 @@ void sub_812E440()
                         (loc_812EE38)(0);
                     }
                     sub_811BC24(v8 + 60, 68, 0);
-                    v10 = *(v0 + 46);
-                    if ( 180 - v10 <= 60 )
+                    v10 = 180 - *(v0 + 46);
+                    if ( v10 <= 60 )
                     {
                         v11 = sub_812EDFC(*(v0 + 42) & 0x7FFF, 1);
                         *(v0 + 48) = v11;
                         (loc_812EE38)(1);
                     }
-                    sub_811BC24(180 - v10, 68, 1);
+                    sub_811BC24(v10, 68, 1);
                 }
                 *(v0 + 38) = 0;
                 *(v6 + 8) = 0;
@@ -1085,8 +1086,8 @@ signed int sub_812E5A8()
         sub_803D108(v9, *(v10 + 67), 1);
     }
     sub_803F798();
-    sub_8132280(61);
-    sound_play(115, v11, v12);
+    chatbox_runScript_803FD9C_on_eTextScript201BA20(61);
+    PlaySoundEffect(115, v11, v12);
     result = 8;
     *(v0 + 12) = 8;
     return result;
@@ -1099,22 +1100,20 @@ int sub_812E61C()
     int v0; // r5
     int result; // r0
     char v2; // zf
-    char v3; // r4
-    int v4; // r0
-    char v5; // r6
-    int v6; // r1
-    int v7; // r2
-    int v8; // r3
+    int v3; // r4
+    int v4; // r6
+    int v5; // r1
+    int v6; // r2
+    int v7; // r3
 
-    result = chatbox_8045F3C(8);
+    result = chatbox_check_eFlags2009F38(8);
     if ( !v2 )
     {
         v3 = eStruct200BC30_getJumpOffset00();
         v4 = sub_803EA50();
-        v5 = v4;
-        sub_803EBAC(v4, v6, v7, v8);
+        sub_803EBAC(v4, v5, v6, v7);
         eStruct200BC30_setJumpOffset00(v3);
-        sub_803EA58(v5);
+        sub_803EA58(v4);
         *(v0 + 12) = 12;
         result = engine_setScreeneffect(12, 16);
     }
@@ -1138,17 +1137,16 @@ int sub_812E678()
     int v0; // r5
     char v1; // zf
     int result; // r0
-    char v3; // r4
-    int v4; // r0
-    char v5; // r6
-    int v6; // r1
-    int v7; // r2
-    int v8; // r3
+    int v3; // r4
+    int v4; // r6
+    int v5; // r1
+    int v6; // r2
+    int v7; // r3
 
-    chatbox_8045F3C(128);
+    chatbox_check_eFlags2009F38(128);
     if ( v1 )
         goto LABEL_8;
-    result = chatbox_8045F3C(8);
+    result = chatbox_check_eFlags2009F38(8);
     if ( v1 )
         return result;
     if ( eStruct200BC30_getRef()[14] != 2 )
@@ -1156,10 +1154,9 @@ int sub_812E678()
 LABEL_8:
         v3 = eStruct200BC30_getJumpOffset00();
         v4 = sub_803EA50();
-        v5 = v4;
-        sub_803EBAC(v4, v6, v7, v8);
+        sub_803EBAC(v4, v5, v6, v7);
         eStruct200BC30_setJumpOffset00(v3);
-        sub_803EA58(v5);
+        sub_803EA58(v4);
         *(v0 + 12) = 8;
         result = engine_setScreeneffect(12, 16);
     }
@@ -1183,8 +1180,6 @@ int sub_812E6CC()
     int v4; // r1
     int v5; // r2
     int v6; // r3
-    int v7; // r2
-    int v8; // r3
 
     result = IsPaletteFadeActive();
     if ( !v2 )
@@ -1200,7 +1195,7 @@ int sub_812E6CC()
         sub_8132614();
         *(v0 + 3) = 16;
         *(v0 + 30) = 0;
-        ZeroFillByWord(dword_20251A0, 0x10u, v7, v8);
+        ZeroFillByWord(dword_20251A0, 16);
         sub_812AFC8();
     }
     return result;
@@ -1364,7 +1359,7 @@ void sub_812E7F4()
                     {
                         if ( !v8 )
                         {
-                            chatbox_8045F3C(8);
+                            chatbox_check_eFlags2009F38(8);
                             if ( !v10 )
                             {
                                 chatbox_8040818();
@@ -1477,51 +1472,40 @@ void __noreturn sub_812E910()
 void __noreturn sub_812E9AC()
 {
     int v0; // r10
-    char *v1; // r0
-    int v2; // r7
+    char *v1; // r7
+    int v2; // r0
     int v3; // r1
     int v4; // r2
     int v5; // r3
-    int v6; // r0
-    int v7; // r1
-    int v8; // r2
-    int v9; // r3
-    int v10; // r0
-    int v11; // r1
-    int v12; // r2
-    int v13; // r3
-    _WORD *v14; // r0
-    _BYTE *v15; // r0
-    int v16; // r2
-    int v17; // r3
+    _WORD *v6; // r0
+    _BYTE *v7; // r0
 
     v1 = sub_812ED2C();
-    v2 = v1;
-    sub_80017AA(v1, v3, v4, v5);
-    sub_80017E0(v6, v7, v8, v9);
-    sub_800183C(v10, v11, v12, v13);
+    zeroFillVRAM();
+    ZeroFill_byte_3001960(v2, v3, v4, v5);
+    ZeroFillGFX30025c0();
     sub_80015FC(16);
     sub_8046664();
     chatbox_8040818();
-    v14 = *(v0 + oToolkit_RenderInfoPtr);
-    *v14 = -16576;
-    v14[8] = 0;
-    v14[9] = 0;
-    v14[10] = 0;
-    v14[11] = 0;
-    v14[12] = 0;
-    v14[13] = 0;
-    v15 = *(v0 + oToolkit_Unk200f3a0_Ptr);
-    v15[8] = 47;
-    v15[10] = 63;
-    v15[1] = 16;
-    v15[5] = 0;
-    *v15 = -16;
-    v15[4] = 14;
-    ZeroFillByEightWords(v2, 0x80u, v16, v17);
+    v6 = *(v0 + oToolkit_RenderInfoPtr);
+    *v6 = -16576;
+    v6[8] = 0;
+    v6[9] = 0;
+    v6[10] = 0;
+    v6[11] = 0;
+    v6[12] = 0;
+    v6[13] = 0;
+    v7 = *(v0 + oToolkit_Unk200f3a0_Ptr);
+    v7[8] = 47;
+    v7[10] = 63;
+    v7[1] = 16;
+    v7[5] = 0;
+    *v7 = -16;
+    v7[4] = 14;
+    ZeroFillByEightWords(v1, 128);
     sub_812EAC4();
     sub_812EA44();
-    sub_812EAAC();
+    CopyBackgroundTiles812EAAC();
 }
 
 
@@ -1531,7 +1515,7 @@ void sub_812EA44()
     sub_812AF3C();
     sub_812AF78();
     sub_812AF98();
-    decompAndCopyData_8000B30(off_812EA60);
+    decompAndCopyData(off_812EA60);
 }
 
 

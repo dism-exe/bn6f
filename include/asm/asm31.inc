@@ -656,7 +656,7 @@
 // .global 0x4000000
 
 	.include "asm/asm00_0.inc"
-// .global sound_play // () -> void
+// .global PlaySoundEffect
 // .global ZeroFillByHalfword
 // .global ZeroFillByWord // (void *memBlock, int size) -> void
 // .global CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
@@ -1007,7 +1007,7 @@
 // .global sub_801A100
 // .global object_setCollisionHitEffect
 // .global sub_801A146
-// .global object_setFlag // (int a1) -> void
+// .global object_setFlag1 // (int a1) -> void
 // .global object_clearFlag // (int bitfield) -> void
 // .global object_getFlag // () -> int
 // .global object_setFlag2
@@ -1070,7 +1070,7 @@
 // .global byte_802136D
 
 	.include "asm/asm02.inc"
-// .global getChip_8021DA8 // (int chip_idx) -> ChipData*
+// .global getChip8021DA8 // (int chip_idx) -> ChipData*
 
 	.include "asm/asm03_0.inc"
 // .global ho_8026554
@@ -1102,7 +1102,7 @@
 
 	.include "asm/chatbox.inc"
 // .global chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-// .global chatbox_8045F3C
+// .global chatbox_check_eFlags2009F38
 
 	.include "asm/asm03_2.inc"
 // .global sub_80465BC
@@ -1270,7 +1270,7 @@
 // .equ off_2010908, 0x2010908
 // .equ off_2010A08, 0x2010A08
 // .equ off_2010B08, 0x2010B08
-// .equ unk_202070C, 0x202070C
+// .equ 0x202070C, 0x202070C
 // .equ byte_2030204, 0x2030204
 // .equ byte_2030405, 0x2030405
 // .equ byte_2036740, 0x2036740
@@ -1285,9 +1285,9 @@
 // .equ dword_203CFBC, 0x203CFBC
 // .equ dword_203CFC0, 0x203CFC0
 // .equ byte_203CFC4, 0x203CFC4
-// .equ byte_3001750, 0x3001750
-// .equ unk_3001B60, 0x3001B60
-// .equ byte_3003D0C, 0x3003D0C
+// .equ iPallete3001750, 0x3001750
+// .equ iPallete3001B60, 0x3001B60
+// .equ 0x3003D0C, 0x3003D0C
 	.equ LCDControl, 0x4000000
 	.equ BG2Rotation_ScalingParameterA_dx_, 0x4000020
 

@@ -4,8 +4,8 @@
 /* Public Symbols */
 	.global call_m4aSoundMain
 	.global call_m4a_2_814F00C
-	.global sound_play // () -> void
-	.global sound_bgmusic_play // (int a1) -> void
+	.global PlaySoundEffect
+	.global PlaySong // (int a1) -> void
 	.global sub_80005F2
 	.global sub_800060A
 	.global sub_8000642
@@ -14,7 +14,7 @@
 	.global sub_800068A
 	.global sub_80006A2
 	.global musicGameState_8000784 // () -> void
-	.global sub_80007B2
+	.global zeroFill_80007B2
 	.global sub_80007BE
 	.global ZeroFillByByte // (void *mem, int size) -> void
 	.global ZeroFillByHalfword
@@ -33,7 +33,7 @@
 	.global QueueWordAlignedGFXTransfer
 	.global QueueEightWordAlignedGFXTransfer
 	.global loc_8000ACA
-	.global decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	.global decompAndCopyData // (u32 *initRefs) -> void
 	.global QueueGFXTransfersInList // (u32 *dataRefs) -> void
 	.global sub_8000C00
 	.global sub_8000C5C
@@ -73,33 +73,33 @@
 	.global loc_8001440
 	.global sub_80014D4
 	.global copyWords_80014EC // (void *src, void *dest, int size) -> void
-	.global SeedRNG2 // () -> void
+	.global SeedRNG2 // () -> int
 	.global GetRNG2 // () -> int
 	.global GetPositiveSignedRNG2
 	.global GetRNG1 // () -> void
 	.global GetPositiveSignedRNG1
 	.global sub_80015B4
-	.global render_80015D0
+	.global copyToVRAMAndClear_iBGTileIdBlocks_Ptr
 	.global sub_80015FC
-	.global sub_8001708
+	.global map_8001708
 	.global render_800172C
-	.global sub_8001778
+	.global sRender_08_setRenderingState
 	.global sub_8001780
-	.global sub_8001788
-	.global sub_80017A0
-	.global sub_80017AA
-	.global sub_80017E0
-	.global main_static_80017EC
+	.global renderInfo_8001788
+	.global renderInfo_80017A0
+	.global zeroFillVRAM
+	.global ZeroFill_byte_3001960
+	.global main_zeroFill_80017EC
 	.global off_8001800
-	.global renderPalletes_8001808
-	.global sub_8001820
-	.global sub_800182E
-	.global sub_800183C
-	.global sub_8001850
+	.global copyPalletesToIWRAM_8001808
+	.global zeroFill_e2009740
+	.global zeroFill_e200F3A0
+	.global ZeroFillGFX30025c0
+	.global copyMemory_8001850
 	.global sub_800187C
 	.global sub_8001890
-	.global copyTiles // (int j, int i, int cpyOff, u16 *tileRefs) -> void
-	.global sub_80018D0
+	.global CopyBackgroundTiles // (int j, int i, int cpyOff, u16 *tileIds) -> void
+	.global call_sub_3005EBA
 	.global sub_80018E0
 	.global sub_8001930
 	.global sub_800195C
@@ -119,25 +119,25 @@
 	.global sub_8001A58
 	.global sub_8001A6A
 	.global nullsub_39
-	.global sub_8001AFC
+	.global zeroFill_e20094C0
 	.global sub_8001B1C
 	.global sub_8001B6C
 	.global sub_8001B84
 	.global PET_onUpdate_8001B94
 	.global sub_8002354
-	.global sub_8002368
+	.global zeroFill_e20097A0
 	.global sub_8002378
 	.global sub_800239A
 	.global sub_80023A8
 	.global getPalleteAndTransition_80023E0
 	.global Initialize_eStruct200a6a0
 	.global sub_8002484
-	.global sub_80024A2
+	.global zeroFill_80024A2
 	.global sub_80024AE
 	.global Is_eStruct200a6a0_Initialized
 	.global loc_80024D8
 	.global sub_800260C
-	.global renderPalletesAndObjs_8002650
+	.global copyPalletesToIWRAM_8002650
 	.global sub_8002668
 	.global loc_8002676
 	.global sub_8002694
@@ -145,7 +145,7 @@
 
 /* External Symbols */
 	.include "asm/asm38.inc"
-// .global sub_3005E80
+// .global iCopyBackgroundTiles
 // .global sub_3005EBA
 // .global sub_3006440
 
@@ -153,7 +153,7 @@
 // .global start_800024C
 
 	.include "asm/sprite.inc"
-// .global sprite_handleObjSprites_800289C
+// .global sprite_resetObjVars_800289C
 
 	.include "asm/asm00_1.inc"
 // .global InitializeOWPlayerObjectStruct
@@ -164,8 +164,8 @@
 // .global byte_80066E0
 
 	.include "asm/asm00_2.inc"
-// .global sub_80137E6
-// .global sub_80137FE
+// .global SetField16ToSelectedS20047CCStruct
+// .global GetField16FromSelectedS20047CCStruct
 
 	.include "asm/asm03_0.inc"
 // .global SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
@@ -220,7 +220,7 @@
 
 /* Undeclared Symbols */
 // .equ rngSeed_2001120, 0x2001120
-// .equ dword_20013F0, 0x20013F0
+// .equ eRngSeed20013F0, 0x20013F0
 // .equ dword_20018E8, 0x20018E8
 // .equ unk_2006840, 0x2006840
 // .equ byte_20094C0, 0x20094C0
@@ -244,16 +244,16 @@
 // .equ dword_200A6A4, 0x200A6A4
 // .equ dword_200A6A8, 0x200A6A8
 // .equ dword_200A6AC, 0x200A6AC
-// .equ dword_200A880, 0x200A880
-// .equ dword_200A884, 0x200A884
-// .equ dword_200A888, 0x200A888
+// .equ doff_200A880, 0x200A880
+// .equ doff_200A884, 0x200A884
+// .equ off_200A888, 0x200A888
 // .equ dword_200AC1C, 0x200AC1C
-// .equ dword_200B4B0, 0x200B4B0
+// .equ fiveWordArr200B4B0, 0x200B4B0
 // .equ dword_200B4B4, 0x200B4B4
 // .equ dword_200B4B8, 0x200B4B8
 // .equ dword_200B4BC, 0x200B4BC
 // .equ dword_200B4C0, 0x200B4C0
-// .equ byte_200BE70, 0x200BE70
+// .equ eStruct200BE70, 0x200BE70
 // .equ dword_200BE7C, 0x200BE7C
 // .equ unk_200DF40, 0x200DF40
 // .equ unk_200E440, 0x200E440
@@ -297,10 +297,10 @@
 // .equ byte_3001550, 0x3001550
 // .equ byte_3001710, 0x3001710
 // .equ byte_3001730, 0x3001730
-// .equ byte_3001750, 0x3001750
+// .equ iPallete3001750, 0x3001750
 // .equ byte_3001960, 0x3001960
 // .equ unk_3001B40, 0x3001B40
-// .equ unk_3001B60, 0x3001B60
+// .equ iPallete3001B60, 0x3001B60
 	.equ LCDControl, 0x4000000
 	.equ VerticalCounter_LY_, 0x4000006
 	.equ BG0Control, 0x4000008

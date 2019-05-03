@@ -285,8 +285,8 @@ sub_813B928:
 off_813B930: .word byte_20096D8
 	thumb_func_end sub_813B928
 
-	thumb_func_start sub_813B934
-sub_813B934:
+	thumb_func_start zeroFill_813B934
+zeroFill_813B934:
 	push {lr}
 	mov r0, r10
 	// memBlock
@@ -302,7 +302,7 @@ sub_813B934:
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	pop {pc}
 off_813B94C: .word 0x188
-	thumb_func_end sub_813B934
+	thumb_func_end zeroFill_813B934
 
 	thumb_func_start sub_813B950
 sub_813B950:
@@ -479,7 +479,7 @@ sub_813BA64:
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_Unk200414c_Ptr]
-	ldr r1, off_813BA9C // =unk_201BA00 
+	ldr r1, off_813BA9C // =eTextScript201BA00
 	mov r2, #0x40 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, r10
@@ -495,7 +495,7 @@ sub_813BA80:
 	push {lr}
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_Unk200414c_Ptr]
-	ldr r0, off_813BA9C // =unk_201BA00 
+	ldr r0, off_813BA9C // =eTextScript201BA00
 	mov r2, #0x40 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r1, r10
@@ -504,7 +504,7 @@ sub_813BA80:
 	ldr r2, off_813BAA4 // =0x188 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	pop {pc}
-off_813BA9C: .word unk_201BA00
+off_813BA9C: .word eTextScript201BA00
 off_813BAA0: .word byte_201BA40
 off_813BAA4: .word 0x188
 	thumb_func_end sub_813BA80
@@ -1075,7 +1075,7 @@ loc_813BE9E:
 sub_813BEA8:
 	push {r4-r7,lr}
 	// mem
-	ldr r0, off_813BF08 // =unk_2006D30 
+	ldr r0, off_813BF08 // =byte_2006D30 
 	mov r4, r0
 	// byteCount
 	mov r1, #0x31 
@@ -1126,7 +1126,7 @@ loc_813BEFE:
 	strb r2, [r0,r1]
 locret_813BF06:
 	pop {r4-r7,pc}
-off_813BF08: .word unk_2006D30
+off_813BF08: .word byte_2006D30
 	thumb_func_end sub_813BEA8
 
 	thumb_local_start
@@ -1146,18 +1146,12 @@ locret_813BF18:
 sub_813BF1C:
 	push {r4-r7,lr}
 	mov r6, #1
-	// entryIdx
-	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x20 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	movflag EVENT_1720
+	bl TestEventFlagFromImmediate
 	beq loc_813BF36
 	b loc_813BF38
-	// entryIdx
-	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x23 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
+	movflag EVENT_1723
+	bl TestEventFlagFromImmediate
 	bne loc_813BF38
 loc_813BF36:
 	mov r6, #0
@@ -1606,7 +1600,7 @@ sub_813C334:
 	mov r7, r0
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
-	ldrh r0, [r0,#2]
+	ldrh r0, [r0,#oJoypad_Pressed]
 	tst r0, r0
 	beq loc_813C394
 	lsr r3, r7, #2
@@ -1647,8 +1641,8 @@ loc_813C386:
 	mov r2, #4
 	bl SetEventFlagRange // (u16 entryFlagBitfield) -> void
 loc_813C38E:
-	mov r0, #0x8b
-	bl sound_play // () -> void
+	mov r0, #SOUND_OK_8B
+	bl PlaySoundEffect
 loc_813C394:
 	mov r0, r6
 	pop {r4-r7,pc}
@@ -1663,76 +1657,73 @@ sub_813C3AC:
 	push {r4-r7,lr}
 	bl getPETNaviSelect // () -> u8
 	tst r0, r0
-	beq loc_813C3B8
-	b loc_813C3CC
-loc_813C3B8:
+	beq .IfNoNaviSelected
+	b .loc_813C3CC
+.IfNoNaviSelected:
 	bl sub_813C458
-	// entryIdx
-	mov r0, #1
-	// byteFlagIdx
-	mov r1, #0x63 
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
-	beq loc_813C3CC
+	movflag EVENT_163
+	bl TestEventFlagFromImmediate
+	beq .loc_813C3CC
+    // if (!EVENT_163)
 	bl sub_8121154
-	b loc_813C3CC
-loc_813C3CC:
+	b .loc_813C3CC
+.loc_813C3CC:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r0, [r0,#oGameState_MapGroup]
 	cmp r0, #0x80
-	bge loc_813C40E
-	// entryIdx
-	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x1d
-	bl TestEventFlagFromImmediate // (int entryIdx, int byteFlagIdx) -> zf
-	beq locret_813C454
+	bge .IfInternetMap
+    // if (real world map)
+	movflag EVENT_PET_NAVI_ACTIVE
+	bl TestEventFlagFromImmediate
+	beq .ret
+    // if (EVENT_PET_NAVI_ACTIVE)
 	mov r0, #0
-	mov r1, #0x42 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHPUpdate
+	bl GetField16FromSelectedS20047CCStruct
 	mov r7, r0
 	mov r0, #0
-	mov r1, #0x40 
+	mov r1, #oS20047CC_NaviHP
 	mov r2, r7
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	bl getPETNaviSelect // () -> u8
-	mov r1, #0x42 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHPUpdate
+	bl GetField16FromSelectedS20047CCStruct
 	mov r7, r0
 	bl getPETNaviSelect // () -> u8
-	mov r1, #0x40 
+	mov r1, #oS20047CC_NaviHP
 	mov r2, r7
-	bl sub_80137E6
-	b locret_813C454
-loc_813C40E:
+	bl SetField16ToSelectedS20047CCStruct
+	b .ret
+.IfInternetMap:
 	mov r0, #0
-	mov r1, #0x42 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHPUpdate
+	bl GetField16FromSelectedS20047CCStruct
 	mov r4, r0
 	mov r0, #0
-	mov r1, #0x40 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHP
+	bl GetField16FromSelectedS20047CCStruct
 	cmp r0, r4
-	ble loc_813C42E
+	ble .loc_813C42E
 	mov r0, #0
-	mov r1, #0x40 
+	mov r1, #oS20047CC_NaviHP
 	mov r2, r4
-	bl sub_80137E6
-loc_813C42E:
+	bl SetField16ToSelectedS20047CCStruct
+.loc_813C42E:
 	bl getPETNaviSelect // () -> u8
-	mov r1, #0x42 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHPUpdate
+	bl GetField16FromSelectedS20047CCStruct
 	mov r4, r0
 	bl getPETNaviSelect // () -> u8
-	mov r1, #0x40 
-	bl sub_80137FE
+	mov r1, #oS20047CC_NaviHP
+	bl GetField16FromSelectedS20047CCStruct
 	cmp r0, r4
-	ble locret_813C454
+	ble .ret
 	bl getPETNaviSelect // () -> u8
-	mov r1, #0x40 
+	mov r1, #oS20047CC_NaviHP
 	mov r2, r4
-	bl sub_80137E6
-locret_813C454:
+	bl SetField16ToSelectedS20047CCStruct
+.ret:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813C3AC
@@ -1747,9 +1738,8 @@ sub_813C458:
 	mov r0, #0
 	bl setPETNaviSelect
 	bl sub_813C678
-	mov r0, #0x17
-	mov r1, #0xd
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	movflag EVENT_170D
+	bl ClearEventFlagFromImmediate
 	bl sub_813C684
 	bl sub_813CBCC
 	mov r0, r4
@@ -1828,7 +1818,7 @@ sub_813C584:
 	push {r4-r7,lr}
 	sub sp, sp, #4
 	str r0, [sp]
-	ldr r0, off_813C638 // =unk_2006D68 
+	ldr r0, off_813C638 // =byte_2006D68 
 	mov r1, #0x31 
 	bl ZeroFillByByte // (void *mem, int size) -> void
 	ldr r0, off_813C63C // =byte_2006DA0 
@@ -1855,7 +1845,7 @@ loc_813C5A0:
 	bl sub_813B9B4
 	tst r0, r0
 	beq loc_813C5CC
-	ldr r1, off_813C638 // =unk_2006D68 
+	ldr r1, off_813C638 // =byte_2006D68 
 	strb r0, [r1,r5]
 	add r5, #1
 loc_813C5CC:
@@ -1870,7 +1860,7 @@ loc_813C5CC:
 loc_813C5DC:
 	mov r4, #0
 loc_813C5DE:
-	ldr r2, off_813C638 // =unk_2006D68 
+	ldr r2, off_813C638 // =byte_2006D68 
 	ldrb r0, [r2,r4]
 	cmp r0, r6
 	bne loc_813C5EE
@@ -1920,7 +1910,7 @@ sub_813C624:
 	pop {r0,r2,pc}
 	.balign 4, 0x00
 off_813C634: .word byte_813C640
-off_813C638: .word unk_2006D68
+off_813C638: .word byte_2006D68
 off_813C63C: .word byte_2006DA0
 byte_813C640: .byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0xFF, 0xFF, 0x0, 0x0, 0x0
@@ -1945,7 +1935,7 @@ sub_813C678:
 sub_813C684:
 	push {r4-r7,lr}
 	sub sp, sp, #4
-	ldr r0, off_813C744 // =unk_2006DD8 
+	ldr r0, off_813C744 // =byte_2006DD8 
 	mov r1, #8
 	bl ZeroFillByByte // (void *mem, int size) -> void
 	mov r6, #6
@@ -1966,7 +1956,7 @@ loc_813C698:
 	ldrb r1, [r0]
 	tst r1, r1
 	beq loc_813C6CA
-	ldr r0, off_813C744 // =unk_2006DD8 
+	ldr r0, off_813C744 // =byte_2006DD8 
 	strb r1, [r0,r6]
 	add r2, r6, #1
 loc_813C6BE:
@@ -2037,7 +2027,7 @@ loc_813C730:
 	add sp, sp, #4
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_813C744: .word unk_2006DD8
+off_813C744: .word byte_2006DD8
 off_813C748: .word navicust_jt_NCPs
 navicust_jt_NCPs: .word sub_813C808+1
 	.word navicust_NCP_SuperArmor+1
@@ -2704,9 +2694,8 @@ off_813CBC8: .word 0x1F4
 	thumb_local_start
 sub_813CBCC:
 	push {r4-r7,lr}
-	mov r0, #0x17
-	mov r1, #0x20 
-	bl ClearEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	movflag EVENT_1720
+	bl ClearEventFlagFromImmediate
 	bl sub_813C490
 	cmp r0, #1
 	bne loc_813CBE4
@@ -2729,11 +2718,8 @@ loc_813CBE6:
 	beq loc_813CC0C
 	mov lr, pc
 	bx r1
-	// entryIdx
-	mov r0, #0x17
-	// byteFlagIdx
-	mov r1, #0x20 
-	bl SetEventFlagFromImmediate // (u8 entryIdx, u8 byteFlagIdx) -> void
+	movflag EVENT_1720
+	bl SetEventFlagFromImmediate
 loc_813CC0C:
 	add r6, #1
 	cmp r6, #0x10
@@ -3168,7 +3154,7 @@ sub_813CEA0:
 	add r0, r0, r1
 	ldrh r0, [r0]
 	bl split9BitsFromBitfield_8021AE0 // (int bitfield) -> (int, int)
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	ldrb r0, [r0,#8]
 	cmp r0, r7
 	ble loc_813CEF2
@@ -3222,7 +3208,7 @@ sub_813CF2C:
 	mov r2, r0
 	mov r0, #0
 	mov r1, #0x54 
-	bl sub_80137E6
+	bl SetField16ToSelectedS20047CCStruct
 	pop {pc}
 	.balign 4, 0x00
 	thumb_func_end sub_813CF2C
@@ -3549,7 +3535,7 @@ loc_813D538:
 	mov r6, #0
 	// idx
 	mov r0, r2
-	bl getChip_8021DA8 // (int chip_idx) -> ChipData*
+	bl getChip8021DA8 // (int chip_idx) -> ChipData*
 	mov r7, r0
 	bl GetRNG2 // () -> int
 	mov r1, #3
@@ -4181,11 +4167,11 @@ sub_813D98C:
 	push {lr}
 	bl sub_813D978
 	mov r0, #4
-	ldr r1, off_813D99C // =byte_200BC30 
+	ldr r1, off_813D99C // =eStruct200BC30 
 	strb r0, [r1,#0xe] // (byte_200BC3E - 0x200bc30)
 	pop {pc}
 	.balign 4, 0x00
-off_813D99C: .word byte_200BC30
+off_813D99C: .word eStruct200BC30
 	thumb_func_end sub_813D98C
 
 	thumb_func_start sub_813D9A0
@@ -4255,21 +4241,21 @@ off_813DA08: .word byte_20101B4
 	thumb_local_start
 sub_813DA0C:
 	push {r4,lr}
-	ldr r4, off_813DB0C // =byte_203F7D8 
+	ldr r4, off_813DB0C // =eStruct203F7D8 
 	mov r0, #2
-	strb r0, [r4,#0x1] // (byte_203F7D8+1 - 0x203f7d8)
+	strb r0, [r4,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	ldrb r0, [r4]
 	tst r0, r0
 	beq loc_813DA22
 	bl sub_813D9AC
-	strb r0, [r4,#0x1] // (byte_203F7D8+1 - 0x203f7d8)
+	strb r0, [r4,#0x1] // (eStruct203F7D8+1 - 0x203f7d8)
 	b locret_813DA36
 loc_813DA22:
-	ldr r0, off_813DB10 // =word_2036780 
+	ldr r0, off_813DB10 // =eStruct2036780 
 	ldr r1, off_813DB14 // =unk_20399F0 
 	mov r2, #0x10
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
-	ldr r0, off_813DB18 // =word_2036780 
+	ldr r0, off_813DB18 // =eStruct2036780 
 	ldr r1, off_813DB1C // =unk_2039A00 
 	mov r2, #0x10
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
@@ -4385,16 +4371,16 @@ sub_813DAF4:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r1, [r0]
-	ldr r0, off_813DB04 // =word_2036780 
+	ldr r0, off_813DB04 // =eStruct2036780 
 	strh r1, [r0]
 	strh r1, [r0,#0xa] // (dword_2036788+2 - 0x2036780)
 	pop {pc}
-off_813DB04: .word word_2036780
+off_813DB04: .word eStruct2036780
 off_813DB08: .word 0x214
-off_813DB0C: .word byte_203F7D8
-off_813DB10: .word word_2036780
+off_813DB0C: .word eStruct203F7D8
+off_813DB10: .word eStruct2036780
 off_813DB14: .word unk_20399F0
-off_813DB18: .word word_2036780
+off_813DB18: .word eStruct2036780
 off_813DB1C: .word unk_2039A00
 	thumb_func_end sub_813DAF4
 
@@ -4411,7 +4397,7 @@ sub_813DB24:
 	beq loc_813DB36
 	mov r0, #1
 loc_813DB36:
-	ldr r4, off_813DBA0 // =byte_200F360 
+	ldr r4, off_813DBA0 // =eStruct200F360 
 	strb r0, [r4]
 	mov r5, #0
 loc_813DB3C:
@@ -4471,7 +4457,7 @@ loc_813DB98:
 	add sp, sp, #8
 	pop {r4-r7,pc}
 	.byte 0, 0
-off_813DBA0: .word byte_200F360
+off_813DBA0: .word eStruct200F360
 dword_813DBA4: .word 0x42523545
 off_813DBA8: .word byte_813DBAC
 byte_813DBAC: .byte 0x0, 0x40, 0x0, 0x0, 0x0, 0x2, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0
@@ -4482,7 +4468,7 @@ byte_813DBC0: .byte 0x10, 0xB5, 0x4, 0x4C, 0x20, 0x81, 0xE1, 0x80, 0xA2
 	.word dword_200B1B0
 	.word 0x42523545
 byte_813DBDC: .byte 0x0, 0x0, 0x0, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
-tileRefs_813DBE4: .hword 0x4200
+tileIds_813DBE4: .hword 0x4200
 	.byte 0x2, 0x42, 0x4, 0x42, 0x6, 0x42, 0x8, 0x42, 0xA, 0x42, 0xC
 	.byte 0x42, 0xE, 0x42, 0x10, 0x42, 0x12, 0x42, 0x14, 0x42, 0x16, 0x42
 	.byte 0x18, 0x42, 0x1A, 0x42, 0x1C, 0x42, 0x1E, 0x42, 0x20, 0x42, 0x22
@@ -4563,7 +4549,7 @@ byte_813DEC4: .byte 0x0, 0x60, 0x0, 0x60, 0x0, 0x60, 0x20, 0x60, 0x22, 0x60
 	.byte 0x0, 0x60, 0x3F, 0x60, 0x41, 0x60, 0x43, 0x60, 0x45, 0x60
 	.byte 0x47, 0x60, 0x49, 0x60, 0x4B, 0x60, 0x4D, 0x60, 0x0, 0x60
 	.byte 0x0, 0x60, 0x0, 0x60, 0x0, 0x60, 0x0, 0x60
-tileRefs_813DF44: .hword 0x61E0, 0x61E2, 0x61E4, 0x61E6, 0x61E8, 0x61EA, 0x61EC, 0x61EE
+tileIds_813DF44: .hword 0x61E0, 0x61E2, 0x61E4, 0x61E6, 0x61E8, 0x61EA, 0x61EC, 0x61EE
 	.hword 0x61F0, 0x61F2, 0x61F4, 0x61F6, 0x61E1, 0x61E3, 0x61E5, 0x61E7
 	.hword 0x61E9, 0x61EB, 0x61ED, 0x61EF, 0x61F1, 0x61F3, 0x61F5, 0x61F7
 off_813DF74: .word reqBBS_requestNames_textualData

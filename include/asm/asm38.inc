@@ -14,7 +14,7 @@
 	.global sub_3005E2C
 	.global sub_3005E60
 	.global sub_3005E6A
-	.global sub_3005E80
+	.global iCopyBackgroundTiles
 	.global sub_3005EBA
 	.global sub_3005EF0
 	.global sub_3006028
@@ -87,7 +87,7 @@
 
 	.include "asm/asm03_1.inc"
 // .global sub_803DE72
-// .global sub_803EA68
+// .global eStruct200BC30_getJumpOffset00_pushpop
 
 	.include "asm/chatbox.inc"
 // .global chatbox_maskFlags_3e // (int mask) -> void
@@ -106,7 +106,7 @@
 	.include "asm/libs.inc"
 // .global sub_814469C
 // .global sub_81446AC
-// .global __divsi3
+// .global sub_814DA9C
 
 	.include "data/dat38_60.inc"
 // .global byte_86ACD60
@@ -148,7 +148,7 @@
 // .equ dword_200A870, 0x200A870
 // .equ dword_200A890, 0x200A890
 // .equ dword_200A894, 0x200A894
-// .equ unk_200AFA0, 0x200AFA0
+// .equ byte_200AFA0, 0x200AFA0
 // .equ dword_200B1A8, 0x200B1A8
 // .equ unk_200BEA0, 0x200BEA0
 // .equ dword_200CDA0, 0x200CDA0
@@ -183,10 +183,10 @@
 // .equ off_3000E70, 0x3000E70
 // .equ byte_3001150, 0x3001150
 // .equ byte_3001550, 0x3001550
-// .equ byte_3001750, 0x3001750
+// .equ iPallete3001750, 0x3001750
 // .equ byte_3001950, 0x3001950
 // .equ dword_3001D60, 0x3001D60
-// .equ dword_3001D70, 0x3001D70
+// .equ iObjectAttr3001D70, 0x3001D70
 // .equ word_3001D74, 0x3001D74
 // .equ word_3001D76, 0x3001D76
 // .equ word_3001D7E, 0x3001D7E

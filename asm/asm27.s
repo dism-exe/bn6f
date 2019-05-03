@@ -5,7 +5,7 @@ sub_80946C4:
 	push {r4-r7,lr}
 	// initRefs
 	ldr r0, off_80946D0 // =initRefs_80946D4 
-	bl decompAndCopyData_8000B30 // (u32 *initRefs) -> void
+	bl decompAndCopyData // (u32 *initRefs) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 off_80946D0: .word initRefs_80946D4
@@ -60,7 +60,7 @@ sub_8094720:
 	thumb_local_start
 sub_8094738:
 	push {r4-r7,lr}
-	ldr r5, off_809477C // =byte_200BE70 
+	ldr r5, off_809477C // =eStruct200BE70 
 	ldr r7, [r5,#0xc] // (dword_200BE7C - 0x200be70)
 	ldr r1, [r7,#8]
 	add r7, r7, r1
@@ -95,7 +95,7 @@ off_8094774: .word unk_2025404
 off_8094778: .word unk_2026404
 off_809477C:
 	// <endpool> <endfile>
-	.word byte_200BE70
+	.word eStruct200BE70
 	thumb_func_end sub_8094738
 
 /*For debugging purposes, connect comment at any range!*/

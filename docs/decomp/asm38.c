@@ -203,36 +203,33 @@ void sub_3005E6A()
 }
 
 
-// 0x3005e90
-int sub_3005E90() { // could not decompile
-    asm(".func\
-    .thumb_func\
-    sub_3005E90:\
-        mov r2, #0x1f\
-        mvn r2, r2\
-        mov r7, r0\
-        orr r7, r1\
-        tst r7, r2\
-        bne loc_3005EA6\
-        lsl r7, r0, #1\
-        lsl r2, r1, #6\
-        add r2, r2, r7\
-        ldrh r7, [r3]\
-        strh r7, [r6,r2]\
-    loc_3005EA6:\
-        add r3, #2\
-        add r0, #1\
-        cmp r0, r4\
-        blt sub_3005E90\
-        ldr r0, [sp]\
-        add r1, #1\
-        cmp r1, r5\
-        blt sub_3005E90\
-        add sp, sp, #4\
-        mov pc, lr\
-    .endfunc // sub_3005E90"
-    );
+// 0x3005e80
+void __usercall iCopyBackgroundTiles(int j@<R0>, int i@<R1>, int cpyOff@<R2>, u16 *tileIds@<R3>, int a5@<R4>, int a6@<R5>)
+{
+    Toolkit *k; // r10
+    char *v7; // r6
+    int v8; // r4
+    int v9; // r5
+    int v10; // [sp+0h] [bp-4h]
+
+    v10 = j;
+    v7 = tk->gfx_30025C0 + 2048 * cpyOff; // 32 tilesIds[32]? 32x32 background tile type?
+    v8 = a5 + j;
+    v9 = a6 + i;
+    while ( 1 )
+    {
+        if ( !((j | i) & 0xFFFFFFE0) ) // ~31
+            *&v7[64 * i + 2 * j] = *tileIds;
+        ++tileIds;
+        if ( ++j >= v8 )
+        {
+            j = v10;
+            if ( ++i >= v9 )
+                break;
+        }
+    }
 }
+
 
 // 0x3005eba
 int __fastcall sub_3005EBA(int result, int a2, int a3, __int16 a4)
@@ -297,7 +294,7 @@ int __fastcall sub_3005EF0(int result, int a2, int a3)
 
 
 // 0x3005f34
-unsigned int __fastcall sub_3005F34(int a1, int a2, int a3, unsigned int a4)
+int __fastcall sub_3005F34(int a1, int a2, int a3, unsigned int a4)
 {
     int v4; // r8
     unsigned int v5; // r4
@@ -308,7 +305,7 @@ unsigned int __fastcall sub_3005F34(int a1, int a2, int a3, unsigned int a4)
 
 
 // 0x3005f56
-unsigned int __fastcall sub_3005F56(int a1, int a2, int a3, unsigned int a4)
+int __fastcall sub_3005F56(int a1, int a2, int a3, unsigned int a4)
 {
     int v4; // r8
     unsigned int v5; // r4
@@ -964,9 +961,9 @@ int sub_3006814()
     int *v11; // r1
     signed int v12; // r3
     signed int v13; // r2
-    int *v14; // r5
+    void **v14; // r5
     signed int v15; // r4
-    void (__fastcall *v16)(int, unsigned int, int, int); // r12
+    void (__cdecl *v16)(void *, int, int); // r12
     int v18; // [sp-4h] [bp-18h]
 
     v18 = v0;
@@ -1031,7 +1028,7 @@ LABEL_9:
     v16 = off_30068E0;
     do
     {
-        v16(*v14, v14[1], v13, v12);
+        v16(*v14, v14[1], v13);
         v14 += 2;
         --v15;
     }
@@ -1928,7 +1925,7 @@ int __fastcall sub_30070B4(int a1)
     }
     off_30071FC(off_30071F0, dword_30071F4, dword_30071F8);
     v10 = *(v1 + 44);
-    result = off_3007204(off_3007200);
+    result = off_3007204(Flags3007200);
     if ( result )
     {
         result = 2;

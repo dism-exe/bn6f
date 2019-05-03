@@ -2,12 +2,12 @@
 	.equ INC_DATA_DAT38_75, 0
 
 /* Public Symbols */
-	.global byte_86D7578
-	.global byte_86D78C0
-	.global byte_86D7C24
-	.global byte_86D7F74
-	.global byte_86D82C4
-	.global byte_86D860C
+	.global CompTextScript86D7578
+	.global CompTextScript86D78C0
+	.global CompTextScript86D7C24
+	.global CompTextScript86D7F74
+	.global CompTextScriptNaviCustAndFolders86D82C4
+	.global CompTextScript86D860C
 	.global byte_86D894C
 
 

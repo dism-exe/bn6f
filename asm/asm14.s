@@ -23,7 +23,7 @@ sub_8071B50:
 	ldr r2, [r5,#0x2c]
 	ldrb r3, [r5,#4]
 	ldrb r4, [r5,#5]
-	bl sub_802FF4C
+	bl camera_802FF4C
 	bl sub_8030472
 	ldr r0, off_8071BAC // =unk_2037800 
 	bl sub_80028D4
@@ -31,8 +31,8 @@ sub_8071B50:
 	lsl r1, r1, #2
 	ldr r0, off_8071BB0 // =off_8071BB4 
 	ldr r0, [r0,r1]
-	bl sub_8002906
-	bl chatbox_uncomp_803FD08 // () -> int
+	bl uncompSprite_8002906
+	bl chatbox_uncompBasedOnMap_803FD08 // () -> int
 	bl sub_8071CEE
 	bl sub_8034FB8
 	pop {r4-r7,pc}
@@ -91,7 +91,7 @@ sub_8071C30:
 	bl sub_8001780
 	ldr r1, [r7,#0xc]
 	orr r0, r1
-	bl sub_8001778
+	bl sRender_08_setRenderingState
 	ldr r0, off_8071C98 // =off_8071C9C 
 	ldrb r1, [r5,#oGameState_MapNumber]
 	lsl r1, r1, #2
@@ -618,7 +618,7 @@ loc_8072B88:
 	str r0, [r5,#0x3c]
 	ldr r0, off_8072BBC // =byte_8072BC0 
 	ldrh r0, [r0,r4]
-	bl sound_play // () -> void
+	bl PlaySoundEffect
 locret_8072BA0:
 	pop {r4-r7,pc}
 	.balign 4, 0x00

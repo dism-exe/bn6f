@@ -1,5 +1,5 @@
 // 0x8000000
-void __noreturn start_()
+void __noreturn GameEntryPoint()
 {
     _R0 = 18;
     __asm { MSR         CPSR_cf, R0 }
@@ -15,8 +15,8 @@ void __noreturn start_()
     start_clearMemory(0x7000000, 1024);
     start_clearMemory(0x5000000, 1024);
     start_copyMemory(IWRAMRoutinesROMLocation, dword_3005B00, 7892);
-    CpuSet_toolKit();
-    sub_8006C22(sub_8006C22);
+    SetPrimaryToolkitPointers();
+    RandomizeExtraToolkitPointers();
     start_800023C();
 }
 

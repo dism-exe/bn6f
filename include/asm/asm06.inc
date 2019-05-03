@@ -13,19 +13,19 @@
 
 	.include "asm/sprite.inc"
 // .global sub_80028D4
-// .global sub_8002906
+// .global uncompSprite_8002906
 
 	.include "asm/asm00_1.inc"
 // .global SpawnObjectsFromList
 
 	.include "asm/asm03_0.inc"
-// .global sub_802FF4C
+// .global camera_802FF4C
 // .global sub_803037C
 // .global sub_8030472
 // .global sub_8030AA4
 
 	.include "asm/chatbox.inc"
-// .global chatbox_uncomp_803FD08 // () -> int
+// .global chatbox_uncompBasedOnMap_803FD08 // () -> int
 
 	.include "data/dat05.inc"
 // .global off_8059294

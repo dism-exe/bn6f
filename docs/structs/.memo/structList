@@ -1,0 +1,9 @@
+Toolkit(size=0x94, loc=0x20093B0):
+  // Always in R10.
+  toolkit_table = 0x08006BDC
+  08006BC0 <CpuSet_toolKit> (size=0x3C, !complete)
+
+ChatboxPropreties(size=0x230, loc=0x2009CD0):
+  // TODO: Change size: 0x98
+  0x80408D0 <chatbox_config_80408D0>
+  0x803FCF0 <chatbox_clear_803FCF0> (size=0x230)
