@@ -1,4 +1,3 @@
-	.include "asm/asm19.inc"
 
 	thumb_func_start sub_807CDEC
 sub_807CDEC:

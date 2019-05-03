@@ -1,4 +1,3 @@
-	.include "asm/asm03_1.inc"
 
 off_8033764: .word spriteWhiteDot
 	.word byte_8699EDC

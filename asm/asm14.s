@@ -1,4 +1,3 @@
-	.include "asm/asm14.inc"
 
 	thumb_func_start sub_8071B50
 sub_8071B50:

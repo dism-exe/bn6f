@@ -1,4 +1,3 @@
-	.include "asm/asm03_0.inc"
 
 	thumb_local_start
 sub_8026450:
@@ -18631,7 +18630,7 @@ locret_802FD68:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	.word byte_200B1A0
-off_802FD70: .word unk_30025B0
+off_802FD70:: .word unk_30025B0
 dword_802FD74: .word 0x8
 	.word unk_3002580
 	.byte 0x4, 0x0, 0x0, 0x0, 0xB0, 0xE, 0x0, 0x3, 0xA0, 0x2, 0x0, 0x0, 0x70, 0x21

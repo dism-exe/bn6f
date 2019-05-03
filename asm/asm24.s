@@ -1,4 +1,3 @@
-	.include "asm/asm24.inc"
 
 	thumb_local_start
 sub_808BEFC:

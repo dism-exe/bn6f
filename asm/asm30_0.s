@@ -1,4 +1,3 @@
-	.include "asm/asm30_0.inc"
 
 	thumb_func_start sub_80AED50
 sub_80AED50:

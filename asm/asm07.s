@@ -1,4 +1,3 @@
-	.include "asm/asm07.inc"
 
 	thumb_func_start sub_805DF08
 sub_805DF08:

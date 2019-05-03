@@ -1,4 +1,3 @@
-	.include "asm/object.inc"
 
 	thumb_func_start sub_800B884
 sub_800B884:

@@ -1,4 +1,3 @@
-	.include "asm/asm01.inc"
 
 	thumb_func_start sub_801FE00
 sub_801FE00:

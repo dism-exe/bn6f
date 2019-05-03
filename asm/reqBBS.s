@@ -1,4 +1,3 @@
-	.include "asm/reqBBS.inc"
 
 	thumb_func_start reqBBS_813E07C
 reqBBS_813E07C:

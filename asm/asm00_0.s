@@ -1,4 +1,3 @@
-	.include "asm/asm00_0.inc"
 
 	thumb_func_start call_m4aSoundMain
 call_m4aSoundMain:

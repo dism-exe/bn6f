@@ -1,6 +1,5 @@
-	.include "asm/asm38.inc"
 
-dword_3005B00: .word 0xE3A03301, 0xE2833C02, 0xE5932000, 0xE1D310B8, 0xE14F0000
+dword_3005B00:: .word 0xE3A03301, 0xE2833C02, 0xE5932000, 0xE1D310B8, 0xE14F0000
 	.word 0xE92D400F, 0xE3A00000, 0xE1C300B8, 0xE0021822, 0xE59F0168
 	.word 0xE5900000, 0xE1100000, 0x1A000011, 0xE3A0C008, 0xE2110004
 	.word 0x1A00003B, 0xE3A00001, 0xE1C300B8, 0xE3A0C01C, 0xE2110080
@@ -1774,7 +1773,7 @@ loc_3006988:
 off_3006994: .word byte_3001950
 off_3006998: .word byte_3001150
 off_300699C: .word dword_3002590
-byte_30069A0: .byte 0x4, 0x4, 0x4, 0x0, 0x4, 0x0, 0x4, 0x4
+byte_30069A0:: .byte 0x4, 0x4, 0x4, 0x0, 0x4, 0x0, 0x4, 0x4
 	thumb_func_end sub_3006920
 
 	thumb_local_start
@@ -2005,7 +2004,7 @@ off_3006B18: .word sub_3006C38+1
 	.word 0x0
 	.word 0x0
 	.word sub_3006E7C+1
-dword_3006B84: .word 0x0, 0x44444444, 0x88888888, 0xCCCCCCCC
+dword_3006B84:: .word 0x0, 0x44444444, 0x88888888, 0xCCCCCCCC
 	thumb_func_end sub_3006A5E
 
 	thumb_func_start sub_3006B94
@@ -2539,7 +2538,7 @@ off_3006F54: .word byte_3006F58
 byte_3006F58: .byte 0x3, 0x0, 0x0, 0x0
 	thumb_func_end sub_3006F48
 
-	thumb_local_start
+	thumb_func_start sub_3006F5C
 sub_3006F5C:
 	ldrb r7, [r0,#1]
 	ldr r1, off_3006F68
@@ -2551,13 +2550,13 @@ off_3006F68: .word byte_3006F6C
 byte_3006F6C: .byte 0x3, 0x2, 0x3, 0x3
 	thumb_func_end sub_3006F5C
 
-	thumb_local_start
+	thumb_func_start sub_3006F70
 sub_3006F70:
 	add r0, #3
 	mov pc, lr
 	thumb_func_end sub_3006F70
 
-	thumb_local_start
+	thumb_func_start sub_3006F74
 sub_3006F74:
 	ldrb r7, [r0,#1]
 	ldr r1, off_3006F80 // =byte_3006F84

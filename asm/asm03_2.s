@@ -1,4 +1,3 @@
-	.include "asm/asm03_2.inc"
 
 	thumb_func_start renderTextGfx_8045F8C
 renderTextGfx_8045F8C:

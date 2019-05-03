@@ -1,4 +1,3 @@
-	.include "asm/asm35.inc"
 
 	thumb_func_start CopyBackgroundTiles812EAAC
 CopyBackgroundTiles812EAAC:

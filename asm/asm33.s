@@ -1,4 +1,3 @@
-	.include "asm/asm33.inc"
 
 	thumb_func_start sub_8123208
 sub_8123208:

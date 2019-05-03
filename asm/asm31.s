@@ -1,4 +1,3 @@
-	.include "asm/asm31.inc"
 
 	thumb_func_start sub_80B81EC
 // some sort of generic function for enemies?

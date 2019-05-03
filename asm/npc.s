@@ -1,4 +1,3 @@
-	.include "asm/npc.inc"
 
 	thumb_func_start npc_809E570
 npc_809E570:

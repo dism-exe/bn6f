@@ -1,4 +1,3 @@
-	.include "asm/start.inc"
 
 	arm_func_start GameEntryPoint
 GameEntryPoint:

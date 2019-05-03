@@ -1,4 +1,3 @@
-	.include "asm/asm13.inc"
 
 	thumb_func_start sub_806FC08
 sub_806FC08:

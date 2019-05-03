@@ -1,4 +1,3 @@
-	.include "asm/asm02.inc"
 
 // (int chip_idx) -> ChipData*
 	thumb_func_start getChip8021DA8

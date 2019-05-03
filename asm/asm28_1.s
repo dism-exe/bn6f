@@ -1,4 +1,3 @@
-	.include "asm/asm28_1.inc"
 
 	thumb_func_start sub_809F526
 sub_809F526:
