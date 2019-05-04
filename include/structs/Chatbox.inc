@@ -1,7 +1,7 @@
 
-	.macro chatbox_struct, label=oChatbox, struct_entry=label_struct_entry, struct_begin=struct_begin
-		\struct_begin
-		struct_init_defs \struct_entry, \label
+	.macro chatbox_struct, label=oChatbox, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		\set_struct_start_address
+		set_struct_label \struct_entry, \label
 		bool8 Visible // loc=0x0
 		u8 TextScriptIdx // loc=0x1
 		u8 CurrLine // loc=0x2
@@ -100,7 +100,7 @@
 		struct_org 0x230
 		// size guessed as 0x230 from ZeroFillByWord(tk->ChatboxPtr, 0x230)
 		u0 Size // loc=0x230
-		struct_end
+		restore_struct_label
 	.endm
 
 	def_struct_offsets chatbox_struct, oChatbox

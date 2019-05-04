@@ -16,9 +16,9 @@
 		struct_const JOYPAD_L, 0x0200
 	.endm
 
-	.macro joypad_struct, label=oJoypad, struct_entry=label_struct_entry, struct_begin=struct_begin
-		\struct_begin
-		struct_init_defs \struct_entry, \label
+	.macro joypad_struct, label=oJoypad, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		\set_struct_start_address
+		set_struct_label \struct_entry, \label
 		joypad_enum_t Held // loc=0x0
 		// no unused flags set to one, only used signals
 		joypad_enum_t Pressed // loc=0x2
@@ -37,7 +37,7 @@
 		u8 Undetected_12 // loc=0x12
 		u8 LowSensitivityTimer // loc=0x13
 		u0 Size // loc=0x14
-		struct_end
+		restore_struct_label
 	.endm
 
 	def_struct_offsets joypad_struct, oJoypad

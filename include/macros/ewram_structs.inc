@@ -114,8 +114,8 @@ todo figure out what to call this (collision, tile effects?)
 
 */
 	// ex = example of address that uses this struct
-	.macro unk_ex_2011a20_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
-	\struct_begin \label
+	.macro unk_ex_2011a20_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+	\set_struct_start_address \label
 	\struct_entry \label\()_UnkPtr_00, 4 // loc=0x0
 	\struct_entry \label\()_Unk_04, 2 // loc=0x4
 	\struct_entry \label\()_Unk_06, 1 // loc=0x6
@@ -129,8 +129,8 @@ todo figure out what to call this (collision, tile effects?)
 
 	def_struct_offsets unk_ex_2011a20_struct, oUnk_Ex2011a20
 
-	.macro ow_collision_state_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
-	\struct_begin \label
+	.macro ow_collision_state_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+	\set_struct_start_address \label
 	\struct_entry \label\()_CoordEventPositionDataPtr, 4 // loc=0x0
 	\struct_entry \label\()_CoordEventPositionDataSize, 2 // loc=0x4
 	\struct_entry \label\()_Unk_06, 2 // loc=0x6
@@ -215,4 +215,4 @@ look at:
 
 */
 
-// .macro overworld_npc_object_struct, struct_entry=label_struct_entry, struct_begin=struct_begin
+// .macro overworld_npc_object_struct, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address

@@ -1,8 +1,8 @@
 // not done
 
-	.macro overworld_player_object_struct, label=oOWPlayerObject, struct_entry=label_struct_entry, struct_begin=struct_begin
-		struct_init_defs \struct_entry, \label
-		object_header_struct \label, \struct_entry, \struct_begin
+	.macro overworld_player_object_struct, label=oOWPlayerObject, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		set_struct_label \struct_entry, \label
+		object_header_struct \label, \struct_entry, \set_struct_start_address
 		.space 0x10
 		u8 AnimationSelect // loc=0x14
 		u8 AnimationSelectUpdate // loc=0x15
@@ -17,10 +17,9 @@
 		u32 NextY // loc=0x2c
 		u32 NextZ // loc=0x30
 		.space 0x5c
-		u0 SpriteData // loc=0x90
 		object_sprite_struct \label\()_SpriteData, \struct_entry // loc=0x90
 		u0 Size // loc=0xc8
-		struct_end
+		restore_struct_label
 	.endm
 
 	def_struct_offsets overworld_player_object_struct, oOWPlayerObject
@@ -35,8 +34,8 @@
 	.equiv oOWObjectCoords_NextY, 0x12
 
 /*
-	.macro overworld_player_object_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
-		object_header_struct \struct_entry, \struct_begin
+	.macro overworld_player_object_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		object_header_struct \struct_entry, \set_struct_start_address
 		u8 WalkingSpeed // loc=0x4
 		u8 WalkingTimer // loc=0x5
 		u8 Undetected_06 // loc=0x6

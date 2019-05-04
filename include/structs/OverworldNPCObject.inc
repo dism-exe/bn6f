@@ -1,7 +1,7 @@
 
-	.macro overworld_npc_object_struct, label=oOverworldNPCObject, struct_entry=label_struct_entry, struct_begin=struct_begin
-		struct_init_defs \struct_entry, \label
-		object_header_struct \label, \struct_entry, \struct_begin
+	.macro overworld_npc_object_struct, label=oOverworldNPCObject, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		set_struct_label \struct_entry, \label
+		object_header_struct \label, \struct_entry, \set_struct_start_address
 
 		u8 WalkingSpeed // loc=0x4
 		u8 WalkingTimer // loc=0x5
@@ -9,9 +9,9 @@
 		u8 Unk_07 // loc=0x7
 		u8 Unk_08_MainJumptableIndex // loc=0x8
 		u8 MovementFlag_09 // loc=0x9
-			struct_const MOVEMENT_FLAG_STOP,						0x00
-			struct_const MOVEMENT_FLAG_DEFAULT_MOVING,			  0x04
-			struct_const MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES,	0x08
+			struct_const MOVEMENT_FLAG_STOP,                      0x00
+			struct_const MOVEMENT_FLAG_DEFAULT_MOVING,            0x04
+			struct_const MOVEMENT_FLAG_STOP_ANIMATION_CONTINUES,  0x08
 		/*
 		Those might not be flags, since 0x0C behaves unpredictably by 0x04 and 0x08
 		0x00 - No effect, it keeps setting to 0x04
@@ -79,11 +79,10 @@
 		ptr TextScriptPtr // loc=0x94
 		// loc=0x98
 		.space 8 // align to nearest power of 4 relative to struct
-		u0 SpriteData // loc=0xa0
 		object_sprite_struct \label\()_SpriteData, \struct_entry // loc=0xa0
 		u0 Size
 		u0 End // loc=0xd8
-		struct_end
+		restore_struct_label
 	.endm
 
 	def_struct_offsets overworld_npc_object_struct, oOverworldNPCObject

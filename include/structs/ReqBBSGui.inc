@@ -1,7 +1,7 @@
 
-	.macro req_bbs_gui_struct, label=oReqBBSGui, struct_entry=label_struct_entry, struct_begin=struct_begin
-		\struct_begin
-		struct_init_defs \struct_entry, \label
+	.macro req_bbs_gui_struct, label=oReqBBSGui, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		\set_struct_start_address
+		set_struct_label \struct_entry, \label
 		u8 SubsystemJumpTableOffset // loc=0x0
 		struct_org 0x04
 		u8 Unk_04 // loc=0x4

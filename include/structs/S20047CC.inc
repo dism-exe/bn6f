@@ -1,9 +1,9 @@
     .ifndef STRUCT_S20047CC_INC
     .set STRUCT_S20047CC_INC, 1
 
-	.macro s_20047cc_struct, label=oS20047CC, struct_entry=label_struct_entry, struct_begin=struct_begin
-		\struct_begin
-		struct_init_defs \struct_entry, \label
+	.macro s_20047cc_struct, label=oS20047CC, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		\set_struct_start_address
+		set_struct_label \struct_entry, \label
         u8 Unk_00  // loc=0x0
         u8 Unk_01  // loc=0x1
         u8 Unk_02  // loc=0x2
@@ -78,7 +78,7 @@
         u8 Unk_60  // loc=0x60
             u8_arr Und_61, 0x03
         u0 Size // loc=0x64
-		struct_end
+		restore_struct_label
     .endm
 
    	def_struct_offsets s_20047cc_struct, oS20047CC

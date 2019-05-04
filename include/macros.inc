@@ -121,7 +121,7 @@ print_expr_test_label:
 	__struct_label_stack_size = __struct_label_stack_size + 1
 	.endm
 
-	.macro struct_end
+	.macro restore_struct_label
 	__struct_label_stack_size = __struct_label_stack_size - 1
 	.if __struct_label_stack_size
 	.altmacro
@@ -137,14 +137,14 @@ print_expr_test_label:
 	ram_struct_b \label\()_B_
 	u8 AField3
 	u8 AField4
-	struct_end
+	restore_struct_label
 	.endm
 
 	.macro ram_struct_b label:req
 	set_struct_label \label
 	u8 BField
 	u8 BField2
-	struct_end
+	restore_struct_label
 	.endm
 
 	ram_struct_a oLabelA

@@ -1,7 +1,7 @@
 
-	.macro object_header_struct, label=oObjectHeader, struct_entry=label_struct_entry, struct_begin=struct_begin
-		\struct_begin \label
-		struct_init_defs \struct_entry, \label
+	.macro object_header_struct, label=oObjectHeader, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		\set_struct_start_address \label
+		set_struct_label \struct_entry, \label
 		u0 ObjectHeader // loc=0x0
 		u8 Flags // loc=0x0
 			struct_const OBJECT_FLAG_ACTIVE,                  0x01
@@ -17,7 +17,7 @@
 		u0 Type			// 0X
 		u8 SpriteOffset // X0
 		u8 ListIndex // loc=0x3
-		struct_end
+		restore_struct_label
 	.endm
 
 	def_struct_offsets object_header_struct, oObjectHeader

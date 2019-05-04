@@ -1,7 +1,7 @@
 
-	.macro game_state_struct, label=oGameState, struct_entry=label_struct_entry, struct_begin=struct_begin
-		\struct_begin
-		struct_init_defs \struct_entry, \label
+	.macro game_state_struct, label=oGameState, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		\set_struct_start_address
+		set_struct_label \struct_entry, \label
 		u8 SubsystemIndex // loc=0x0
 		u8 PETNaviIndex // loc=0x1
 		u8 Unk_02 // loc=0x2
@@ -54,7 +54,7 @@
 		u32 Unk_70 // loc=0x70
 		u8_arr Unk_74, 0xc // loc=0x74
 		u0 Size // 0x80
-		struct_end
+		restore_struct_label
 	.endm
 
 	def_struct_offsets game_state_struct, oGameState

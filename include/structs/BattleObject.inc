@@ -1,12 +1,12 @@
 
-	.macro battle_object_linked_list_struct label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
-		\struct_begin \label
-		struct_init_defs \struct_entry, \label
+	.macro battle_object_linked_list_struct label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		\set_struct_start_address \label
+		set_struct_label \struct_entry, \label
 		ptr Prev
 		ptr Next
 		.space 8
 		u0 Size
-		struct_end
+		restore_struct_label
 	.endm
 
 	def_struct_offsets battle_object_linked_list_struct, oBattleObjectsLinkedListSentinel
@@ -18,10 +18,10 @@
 	upper 16 bits are the integer portion, lower are the decimal region
 	x,y and z are also relative to the center of the battlefield
 	*/
-	.macro battle_object_struct label:req, struct_entry=label_struct_entry, struct_begin=struct_begin, extra_vars_size=0
-		struct_init_defs \struct_entry, \label
-		battle_object_linked_list_struct \label\()_LinkedList, \struct_entry, \struct_begin
-		object_header_struct \label, \struct_entry, \struct_begin
+	.macro battle_object_struct label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address, extra_vars_size=0
+		set_struct_label \struct_entry, \label
+		battle_object_linked_list_struct \label\()_LinkedList, \struct_entry, \set_struct_start_address
+		object_header_struct \label, \struct_entry, \set_struct_start_address
 
 		union
 		u32 Params // loc=0x4
@@ -146,36 +146,35 @@
 		u8_arr ExtraVars, \extra_vars_size // loc=0x60, 44 for t1 and t3, 28 for t4
 		u0 SizeWithoutSpriteDataAndLinkedList // loc=0x8c OR 0x7c
 		.space 4
-		u0 SpriteData // loc=0x90
 		object_sprite_struct \label\()_SpriteData, \struct_entry // loc=0x90 OR 0x80
 		u0 SizeWithoutLinkedList
 		u0 End // loc=0xd8 OR 0xc8
-		struct_end
+		restore_struct_label
 	.endm
 
 	// hacking size values for now until I can figure out this mess of how battle object structs are defined
-	battle_object_struct oBattleObject, offset_struct_entry, offset_struct_begin
+	battle_object_struct oBattleObject, offset_struct_entry, set_offset_struct_start_address
 	.set oBattleObject_Size, oBattleObject_SizeWithoutLinkedList + oBattleObject_LinkedList_Size
 
-	battle_object_struct oT1BattleObject, offset_struct_entry, offset_struct_begin, 0x2c
+	battle_object_struct oT1BattleObject, offset_struct_entry, set_offset_struct_start_address, 0x2c
 	.set oT1BattleObject_Size, oT1BattleObject_SizeWithoutLinkedList + oT1BattleObject_LinkedList_Size
 
-	battle_object_struct oT3BattleObject, offset_struct_entry, offset_struct_begin, 0x2c
+	battle_object_struct oT3BattleObject, offset_struct_entry, set_offset_struct_start_address, 0x2c
 	.set oT3BattleObject_Size, oT3BattleObject_SizeWithoutLinkedList + oT3BattleObject_LinkedList_Size
 
-	battle_object_struct oT4BattleObject, offset_struct_entry, offset_struct_begin, 0x1c
+	battle_object_struct oT4BattleObject, offset_struct_entry, set_offset_struct_start_address, 0x1c
 	.set oT4BattleObject_Size, oT4BattleObject_SizeWithoutLinkedList + oT4BattleObject_LinkedList_Size
 
 	.macro t1_battle_object_struct label:req
-	battle_object_struct \label, label_struct_entry, struct_begin, 0x2c
+	battle_object_struct \label, label_struct_entry, set_struct_start_address, 0x2c
 	// maybe define offsets here as well?
 	.endm
 
-	.macro t3_battle_object_struct label:req, linked_list_before_space
-	battle_object_struct \label, label_struct_entry, struct_begin, 0x2c
+	.macro t3_battle_object_struct label:req
+	battle_object_struct \label, label_struct_entry, set_struct_start_address, 0x2c
 	// maybe define offsets here as well?
 	.endm
 
-	.macro t4_battle_object_struct label:req, linked_list_before_space
-	battle_object_struct \label, label_struct_entry, struct_begin, 0x1c
+	.macro t4_battle_object_struct label:req
+	battle_object_struct \label, label_struct_entry, set_struct_start_address, 0x1c
 	.endm

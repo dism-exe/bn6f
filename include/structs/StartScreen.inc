@@ -1,7 +1,7 @@
 
-	.macro start_screen_struct, label=oStartScreen, struct_entry=label_struct_entry, struct_begin=struct_begin
-		\struct_begin
-		struct_init_defs \struct_entry, \label
+	.macro start_screen_struct, label=oStartScreen, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		\set_struct_start_address
+		set_struct_label \struct_entry, \label
 		u0 Unk_00 // loc=0x00 accessed as u16
 		u8 JumpTableOff_00 // loc=0x0
 		u8 JumpTableOff_01 // loc=0x1
@@ -20,7 +20,7 @@
 		// implied size via ZeroFillByWord(&eStartScreen, 32);
 		struct_org 0x20
 		u0 Size // loc=0x20
-		struct_end
+		restore_struct_label
 	.endm
 
 	def_struct_offsets start_screen_struct, oStartScreen

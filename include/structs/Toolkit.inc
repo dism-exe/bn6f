@@ -1,6 +1,6 @@
 /*
-	.macro toolkit_struct, label, struct_entry=label_struct_entry, struct_begin=struct_begin
-	\struct_begin
+	.macro toolkit_struct, label, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+	\set_struct_start_address
 	\struct_entry \label\()_MainJumptableIndexPtr, 4 // loc=0x0
 	\struct_entry \label\()_JoypadPtr, 4 // loc=0x4
 	\struct_entry \label\()_RenderInfoPtr, 4 // loc=0x8
@@ -40,9 +40,9 @@
 	\struct_entry \label\()_UnusedGarbage, 4	// loc=0x90*/
 
 	// toolkit struct, always in r10
-	.macro toolkit_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
-		\struct_begin
-		struct_init_defs \struct_entry, \label
+	.macro toolkit_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		\set_struct_start_address
+		set_struct_label \struct_entry, \label
 		ptr MainJumptableIndexPtr // loc=0x0
 		ptr JoypadPtr // loc=0x4
 		ptr RenderInfoPtr // loc=0x8
@@ -81,7 +81,7 @@
 		ptr Unk2005038_Ptr // loc=0x8c
 		u32 UnusedGarbage // loc=0x90
 		u0  Size // loc=0x94
-		struct_end
+		restore_struct_label
 	.endm
 
 	def_struct_offsets toolkit_struct, oToolkit

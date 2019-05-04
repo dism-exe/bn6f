@@ -1,7 +1,7 @@
 
-	.macro cutscene_state_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
-	\struct_begin
-	struct_init_defs \struct_entry, \label
+	.macro cutscene_state_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+	\set_struct_start_address
+	set_struct_label \struct_entry, \label
 	struct_org 0x4
 	u8 Unk_04 // loc=0x4
 	u8 Unk_05 // loc=0x5
@@ -21,7 +21,7 @@
 	ptr originalCutsceneScriptPos_40 // loc=0x40
 	struct_org 0x90
 	u0 Size // loc=0x90
-	struct_end
+	restore_struct_label
 	.endm
 
 	def_struct_offsets cutscene_state_struct, oCutsceneState

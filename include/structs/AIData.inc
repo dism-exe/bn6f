@@ -1,7 +1,7 @@
 
-	.macro ai_data_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
-		\struct_begin \label
-		struct_init_defs \struct_entry, \label
+	.macro ai_data_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		\set_struct_start_address \label
+		set_struct_label \struct_entry, \label
 		u8 ActorType // loc=0x0
 			struct_const ACTOR_TYPE_VIRUS, 0x00
 			struct_const ACTOR_TYPE_NAVI, 0x01
@@ -74,13 +74,13 @@
 		u8_arr AttackVars, 0x50 // loc=0xa0
 		u0 Size // loc=0x100
 		u0 End // loc=0x100
-		struct_end
+		restore_struct_label
 	.endm
 
 // ai state and ai attack vars might be swapped
-	.macro ai_state_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
-		\struct_begin \label
-		struct_init_defs \struct_entry, \label
+	.macro ai_state_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		\set_struct_start_address \label
+		set_struct_label \struct_entry, \label
 		u8 Unk_00 // loc=0x0
 		u8 Unk_01 // loc=0x1
 		u8 Unk_02 // loc=0x2
@@ -98,12 +98,12 @@
 		struct_org 0x20
 		u0 Size // loc=0x20
 		u0 End // loc=0x20
-		struct_end
+		restore_struct_label
 	.endm
 
-	.macro ai_attack_vars_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
-		\struct_begin \label
-		struct_init_defs \struct_entry, \label
+	.macro ai_attack_vars_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		\set_struct_start_address \label
+		set_struct_label \struct_entry, \label
 		u8 Unk_00 // loc=0x0
 		u8 Unk_01 // loc=0x1
 		u8 Unk_02 // loc=0x2
@@ -142,7 +142,7 @@
 		struct_org 0x50
 		u0 Size // loc=0x50
 		u0 End // loc=0x50
-		struct_end
+		restore_struct_label
 	.endm
 
 	def_struct_offsets ai_data_struct, oAIData

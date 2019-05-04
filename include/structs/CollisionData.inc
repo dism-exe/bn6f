@@ -1,7 +1,7 @@
 
-	.macro collision_data_struct, label:req, struct_entry=label_struct_entry, struct_begin=struct_begin
-		\struct_begin \label
-		struct_init_defs \struct_entry, \label
+	.macro collision_data_struct, label:req, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		\set_struct_start_address \label
+		set_struct_label \struct_entry, \label
 		bool8 Enabled // loc=0x0
 		u8 Region // loc=0x1
 		u8 PrimaryElement // loc=0x2
@@ -99,7 +99,7 @@
 		u32 InflictedBugs // loc=0xa4
 		u0 Size // loc=0xa8
 		u0 End // loc=0xa8
-		struct_end
+		restore_struct_label
 	.endm
 
 	def_struct_offsets collision_data_struct, oCollisionData

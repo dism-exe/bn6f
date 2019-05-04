@@ -1,15 +1,15 @@
 	.set __dummy_symbol__, 0
-	.set __struct_begin_label__, 0
+	.set __struct_start_address__, 0
 
-	.macro struct_begin label=__dummy_symbol__
+	.macro set_struct_start_address label=__dummy_symbol__
 	.ifndef \label
 \label::
 	.endif
-	.set __struct_begin_label__, .
+	.set __struct_start_address__, .
 	.endm
 
-	.macro offset_struct_begin label=0
-	.set __struct_begin_label__, 0
+	.macro set_offset_struct_start_address label=0
+	.set __struct_start_address__, 0
 	.struct 0
 	.endm
 
@@ -68,11 +68,11 @@
 	.endm
 
 	.macro def_struct_offsets macro:req, label:req
-	\macro \label, offset_struct_entry, offset_struct_begin
+	\macro \label, offset_struct_entry, set_offset_struct_start_address
 	.endm
 
 	.macro struct_org offset:req
-	.space __struct_begin_label__ + \offset - .
+	.space __struct_start_address__ + \offset - .
 	.endm
 
 	__struct_label_stack_index = 0
@@ -138,14 +138,23 @@
 	.purgem __struct_label_stack\()\index
 	.endm
 
-	.macro set_struct_label label:req
+	// needed by struct data macros: u0, u8, u16, u32, ptr, custom types, etc
+	.macro set_struct_label struct_entry:req, label:req
+	.if \struct_entry == label_struct_entry
+		.set __struct_entry, __LABEL_ENTRY
+	.elseif \struct_entry == offset_struct_entry
+		.set __struct_entry, __OFFSET_ENTRY
+	.else
+		.error "set_struct_label: invalid struct_entry"
+	.endif
+
 	__struct_label_stack_index = __struct_label_stack_index + 1
 	.altmacro
 	_add_struct_label %__struct_label_stack_index, \label
 	.noaltmacro
 	.endm
 
-	.macro struct_end
+	.macro restore_struct_label
 	.altmacro
 	_purge_struct_data_macros %__struct_label_stack_index
 	.noaltmacro
@@ -155,18 +164,6 @@
 	_struct_end %__struct_label_stack_index
 	.noaltmacro
 	.endif
-	.endm
-
-	// needed by struct data macros: u0, u8, u16, u32, ptr, custom types, etc
-	.macro struct_init_defs, struct_entry:req, label:req
-		set_struct_label \label
-		.if \struct_entry == label_struct_entry
-			.set __struct_entry, __LABEL_ENTRY
-		.elseif \struct_entry == offset_struct_entry
-			.set __struct_entry, __OFFSET_ENTRY
-		.else
-			.error "struct_init_defs: invalid struct_entry"
-		.endif
 	.endm
 
 	.macro struct_const name:req, val:req

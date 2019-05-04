@@ -1,6 +1,7 @@
 
-	.macro object_sprite_struct, label=oObjectSprite, struct_entry=label_struct_entry, struct_begin=struct_begin
-		struct_init_defs \struct_entry, \label
+	.macro object_sprite_struct, label=oObjectSprite, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		set_struct_label \struct_entry, \label
+\label:
 		u8 Unk_00 // loc=0x0
 		u8 Unk_01 // loc=0x1
 		u8 Unk_02 // loc=0x2
@@ -27,7 +28,7 @@
 		u32 Unk_30 // loc=0x30
 		u32 Unk_34 // loc=0x34
 		u0 Size // loc=0x38
-		struct_end
+		restore_struct_label
 	.endm
 
 	.struct 0

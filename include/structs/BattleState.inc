@@ -1,7 +1,7 @@
 
-	.macro battle_state_struct, label=oBattleState, struct_entry=label_struct_entry, struct_begin=struct_begin
-		\struct_begin
-		struct_init_defs \struct_entry, \label
+	.macro battle_state_struct, label=oBattleState, struct_entry=label_struct_entry, set_struct_start_address=set_struct_start_address
+		\set_struct_start_address
+		set_struct_label \struct_entry, \label
 		struct_org 0x1
 		u8 Unk_01 // loc=0x1
 		struct_org 0x4
@@ -44,7 +44,7 @@
 		u8_arr PlayerActors, 0x10 // loc=0xd0
 		u8_arr OpponentActors, 0x10 // loc=0xe0
 		u0 Size // loc=0xf0
-		struct_end
+		restore_struct_label
 	.endm
 
 	def_struct_offsets battle_state_struct, oBattleState
