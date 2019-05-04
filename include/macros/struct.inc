@@ -13,6 +13,48 @@
 	.struct 0
 	.endm
 
+	/* unions types */
+	/* defines overloaded data types
+	use union to start the union
+	use nextu to reset back to where the start position was
+	use endu to complete the union
+	total size of the union is the size of the largest union entry */
+
+	__in_union = 0
+
+	.macro union
+	__union_max_size = 0
+	__union_offset = 0
+	__in_union = 1
+	.endm
+
+	.macro nextu
+	__union_offset = 0
+	.endm
+
+	.macro endu
+	.space __union_max_size
+	__in_union = 0
+	.endm
+
+	.macro struct_entry label:req, size=0
+	.if __in_union
+		.set \label, . + __union_offset
+		__union_offset = __union_offset + \size
+		.if __union_offset > __union_max_size
+			__union_max_size = __union_offset
+		.endif
+	.else
+\label:
+		.if \size // suppress warning from size = 0
+			.space \size
+		.endif
+	.endif
+	.if __struct_entry == __LABEL_ENTRY
+		.global \label
+	.endif
+	.endm
+
 	.macro label_struct_entry label:req, size=0
 \label::
 	.if \size // suppress warning from size = 0
@@ -46,7 +88,7 @@
 	.endm
 
 	.macro struct_const name:req, val:req
-		.if __struct_entry ==__OFFSET_ENTRY
+		.if __struct_entry == __OFFSET_ENTRY
 			.ifndef \name
 				.equiv \name, \val
 			.endif
@@ -56,14 +98,7 @@
 	/* struct data macros */
 	// use this macro to define additional types
 	.macro struct_data_type label=__struct_label, field:req, size:req
-		// run correct macro based on flag
-		.if __struct_entry == __LABEL_ENTRY
-			label_struct_entry \label\()_\field, \size
-		.elseif __struct_entry == __OFFSET_ENTRY
-			offset_struct_entry \label\()_\field, \size
-		.else
-			.error "struct_data_type: invalid __struct_entry"
-		.endif
+		struct_entry \label\()_\field, \size
 	.endm
 
 	.macro u0 label=__struct_label, field:req
@@ -98,67 +133,6 @@
 	// 0 or !0
 	.macro bool8 label=__struct_label, field:req
 		struct_data_type \label, \field, 1
-	.endm
-
-	/* unions types */
-	/*
-	always set to size type0
-	defines a data type
-	union<N-1> {
-		type0 field0;
-		type1 field1;
-		...
-		typeN fieldN;
-	}
-	where all fields point to the same location, but field0 is the largest data type.
-	OR
-	union<N-1>_s {
-		type0 field0;
-		struct {
-			type1 field1;
-			...
-			typeN fieldN;
-		}
-	}
-	where fields are at different locations, still within the field field0
-	*/
-	// t: type, f:field. t0 must always be largest.
-	.macro union3 label=__struct_label, t0:req, f0:req, t1:req, f1:req, t2:req, f2:req
-		\t0 \label \f0
-		u0 \label \f1
-		u0 \label \f2
-	.endm
-	.macro union4 label=__struct_label, t0:req, f0:req, t1:req, f1:req, t2:req, f2:req, t3:req, f3:req
-		\t0 \label \f0
-		u0 \label \f1
-		u0 \label \f2
-		u0 \label \f3
-	.endm
-	.macro union5 label=__struct_label, t0:req, f0:req, t1:req, f1:req, t2:req, f2:req, t3:req, f3:req, t4:req, f4:req
-		\t0 \label \f0
-		u0 \label \f1
-		u0 \label \f2
-		u0 \label \f3
-		u0 \label \f4
-	.endm
-
-	.macro union3_s label=__struct_label, t0:req, f0:req, t1:req, f1:req, t2:req, f2:req
-		u0 \label \f0
-		\t1 \label \f1
-		\t2 \label \f2
-	.endm
-	.macro union4_s label=__struct_label, t0:req, f0:req, t1:req, f1:req, t2:req, f2:req, t3:req, f3:req
-		u0 \label \f0
-		\t1 \label \f1
-		\t2 \label \f2
-		\t3 \label \f3
-	.endm
-	.macro union5_s label=__struct_label, t0:req, f0:req, t1:req, f1:req, t2:req, f2:req, t3:req, f3:req, t4:req, f4:req
-		u0 \label \f0
-		\t1 \label \f1
-		\t2 \label \f2
-		\t3 \label \f3
-		\t4 \label \f4
 	.endm
 
 	.macro ptr_debug, label=__struct_label, field:req

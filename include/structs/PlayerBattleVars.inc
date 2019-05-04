@@ -3,7 +3,7 @@
 
 	\struct_begin \label
 	struct_org 0xe
-	\struct_entry \label\()_Karma, 1 // loc=0xe
+	\struct_entry \label\()_Mood, 1 // loc=0xe
 	struct_org 0x2c
 	\struct_entry \label\()_Transformation, 1 // loc=0x2c
 	struct_org 0x64

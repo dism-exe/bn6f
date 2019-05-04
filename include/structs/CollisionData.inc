@@ -12,7 +12,12 @@
 		u8 \label, StaminaDamageCounterDisabler // loc=0x7
 		u8 \label, PoisonPanelTimer // loc=0x8
 		u8 \label, HitEffect // loc=0x9
-		union3_s \label, u16, PanelXY, u8, PanelX, u8, PanelY // loc=0xa
+		union
+		u8 \label, PanelX // loc=0xa
+		u8 \label, PanelY // loc=0xb
+		nextu
+		u16 \label, PanelXY // loc=0xa
+		endu
 		u8 \label, Direction // loc=0xc
 		u8 \label, CounterTimer // loc=0xd
 		u8 \label, HitModifierBase // loc=0xe
@@ -26,7 +31,12 @@
 		u8 \label, Unk_17 // loc=0x17
 		u8 \label, SecondaryElementWeakness // loc=0x18
 		u8 \label, SecondaryElement // loc=0x19
-		union3_s \label, u16, Unk_1a_1b, u8, Unk_1a, u8, Unk_1b // loc=0x1a
+		union
+		u8 \label, Unk_1a // loc=0x1a
+		u8 \label, Unk_1b // loc=0x1b
+		nextu
+		u16 \label, Unk_1a_1b // loc=0x1a
+		endu
 		u16 \label, Unk_1c // loc=0x1c
 		u16 \label, Unk_1e // loc=0x1e
 		u16 \label, Unk_20 // loc=0x20
