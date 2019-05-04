@@ -75,9 +75,91 @@
 	.space __struct_begin_label__ + \offset - .
 	.endm
 
+	__struct_label_stack_index = 0
+
+	.macro _add_struct_label index:req, label:req
+	.macro __struct_label_stack\()\index
+		.ifdef __defined_types
+		.purgem u0
+		.purgem u8
+		.purgem u16
+		.purgem u32
+		.purgem ptr
+		.purgem u8_arr
+		.purgem bool
+		.purgem bool8
+		.endif
+
+		/* struct data macros */
+		.macro u0 field:req
+			struct_entry \label\()_\field
+		.endm
+
+		.macro u8 field:req
+			struct_entry \label\()_\field, 1
+		.endm
+
+		.macro u16 field:req
+			struct_entry \label\()_\field, 2
+		.endm
+
+		.macro u32 field:req
+			struct_entry \label\()_\field, 4
+		.endm
+
+		.macro ptr field:req
+			struct_entry \label\()_\field, 4
+		.endm
+
+		.macro u8_arr field:req, arr_size:req
+			struct_entry \label\()_\field, \arr_size
+		.endm
+
+		// for exclusively 0 or 1
+		.macro bool field:req
+			struct_entry \label\()_\field, 1
+		.endm
+
+		// 0 or !0
+		.macro bool8 field:req
+			struct_entry \label\()_\field, 1
+		.endm
+
+		.set __defined_types, 1
+	.endm
+	__struct_label_stack\()\index
+	.endm
+
+	.macro _struct_end index:req
+	__struct_label_stack\()\index
+	.endm
+
+	.macro _purge_struct_data_macros index:req
+	.purgem __struct_label_stack\()\index
+	.endm
+
+	.macro set_struct_label label:req
+	__struct_label_stack_index = __struct_label_stack_index + 1
+	.altmacro
+	_add_struct_label %__struct_label_stack_index, \label
+	.noaltmacro
+	.endm
+
+	.macro struct_end
+	.altmacro
+	_purge_struct_data_macros %__struct_label_stack_index
+	.noaltmacro
+	__struct_label_stack_index = __struct_label_stack_index - 1
+	.if __struct_label_stack_index
+	.altmacro
+	_struct_end %__struct_label_stack_index
+	.noaltmacro
+	.endif
+	.endm
+
 	// needed by struct data macros: u0, u8, u16, u32, ptr, custom types, etc
 	.macro struct_init_defs, struct_entry:req, label:req
-		.set __struct_label, \label
+		set_struct_label \label
 		.if \struct_entry == label_struct_entry
 			.set __struct_entry, __LABEL_ENTRY
 		.elseif \struct_entry == offset_struct_entry
@@ -93,41 +175,6 @@
 				.equiv \name, \val
 			.endif
 		.endif
-	.endm
-
-	/* struct data macros */
-	.macro u0 label=__struct_label, field:req
-		struct_entry \label\()_\field
-	.endm
-
-	.macro u8 label=__struct_label, field:req
-		struct_entry \label\()_\field, 1
-	.endm
-
-	.macro u16 label=__struct_label, field:req
-		struct_entry \label\()_\field, 2
-	.endm
-
-	.macro u32 label=__struct_label, field:req
-		struct_entry \label\()_\field, 4
-	.endm
-
-	.macro ptr label=__struct_label, field:req
-		struct_entry \label\()_\field, 4
-	.endm
-
-	.macro u8_arr label=__struct_label, field:req, size:req
-		struct_entry \label\()_\field, \size
-	.endm
-
-	// for exclusively 0 or 1
-	.macro bool label=__struct_label, field:req
-		struct_entry \label\()_\field, 1
-	.endm
-
-	// 0 or !0
-	.macro bool8 label=__struct_label, field:req
-		struct_entry \label\()_\field, 1
 	.endm
 
 	.macro ptr_debug, label=__struct_label, field:req
