@@ -96,43 +96,38 @@
 	.endm
 
 	/* struct data macros */
-	// use this macro to define additional types
-	.macro struct_data_type label=__struct_label, field:req, size:req
-		struct_entry \label\()_\field, \size
-	.endm
-
 	.macro u0 label=__struct_label, field:req
-		struct_data_type \label, \field, 0
+		struct_entry \label\()_\field
 	.endm
 
 	.macro u8 label=__struct_label, field:req
-		struct_data_type \label, \field, 1
+		struct_entry \label\()_\field, 1
 	.endm
 
 	.macro u16 label=__struct_label, field:req
-		struct_data_type \label, \field, 2
+		struct_entry \label\()_\field, 2
 	.endm
 
 	.macro u32 label=__struct_label, field:req
-		struct_data_type \label, \field, 4
+		struct_entry \label\()_\field, 4
 	.endm
 
 	.macro ptr label=__struct_label, field:req
-		struct_data_type \label, \field, 4
+		struct_entry \label\()_\field, 4
 	.endm
 
 	.macro u8_arr label=__struct_label, field:req, size:req
-		struct_data_type \label, \field, \size
+		struct_entry \label\()_\field, \size
 	.endm
 
 	// for exclusively 0 or 1
 	.macro bool label=__struct_label, field:req
-		struct_data_type \label, \field, 1
+		struct_entry \label\()_\field, 1
 	.endm
 
 	// 0 or !0
 	.macro bool8 label=__struct_label, field:req
-		struct_data_type \label, \field, 1
+		struct_entry \label\()_\field, 1
 	.endm
 
 	.macro ptr_debug, label=__struct_label, field:req
