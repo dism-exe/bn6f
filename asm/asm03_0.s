@@ -7931,7 +7931,7 @@ sub_802A30C:
 	add r4, #2
 	strb r4, [r5,#0x13]
 	bl IsScreenFadeActive // () -> zf
-	bl loc_80062FC // () -> zf
+	bl isScreenFadeActive_80062FC // () -> zf
 	cmp r0, #0
 	bne locret_802A33C
 	mov r0, #8
@@ -7977,7 +7977,7 @@ sub_802A362:
 	add r4, #2
 	strb r4, [r5,#0x13]
 	bl IsScreenFadeActive // () -> zf
-	bl loc_80062FC // () -> zf
+	bl isScreenFadeActive_80062FC // () -> zf
 	cmp r0, #0
 	bne locret_802A392
 	mov r0, #0

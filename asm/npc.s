@@ -2141,7 +2141,7 @@ sub_809F4B8:
 	thumb_local_start
 npc_809F4EE:
 	push {lr}
-	bl sub_80062C8
+	bl screenFade_80062C8
 	cmp r1, #0
 	beq loc_809F502
 	add r0, r6, #1

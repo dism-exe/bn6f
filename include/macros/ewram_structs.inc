@@ -17,6 +17,7 @@
 	.include "structs/PlayerBattleVars.inc"
 	.include "structs/CutsceneState.inc"
 	.include "structs/S20047CC.inc"
+	.include "structs/ScreenFade.inc"
 
 /*
 rough notes for now

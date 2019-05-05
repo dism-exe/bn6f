@@ -477,7 +477,7 @@ sub_813040C:
 	thumb_func_start sub_8130424
 sub_8130424:
 	push {lr}
-	bl sub_80062C8
+	bl screenFade_80062C8
 	cmp r0, #0xc
 	bne loc_8130436
 	mov r0, #8
@@ -2369,7 +2369,7 @@ byte_81313B0: .byte 0x0, 0x8, 0x0, 0x0, 0x1, 0x0, 0x0, 0x0, 0x1, 0x0, 0x1, 0x0, 
 	thumb_local_start
 sub_81313C0:
 	push {lr}
-	bl sub_80062C8
+	bl screenFade_80062C8
 	cmp r0, #0xc
 	bne loc_81313D2
 	mov r0, #8

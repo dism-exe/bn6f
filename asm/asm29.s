@@ -550,7 +550,7 @@ sub_80A5268:
 	mov r0, r0
 	bl TestEventFlag // (u16 entryFlagBitfield) -> zf
 	bne loc_80A52DA
-	bl sub_80062C8
+	bl screenFade_80062C8
 	lsr r0, r0, #2
 	mov r1, #1
 	tst r0, r1

@@ -5296,6 +5296,7 @@ off_8005FB4: .word sub_8006366+1
 	.word sub_800647C+1
 	.word sub_8006366+1
 	.word sub_800647C+1
+	thumb_func_end sub_8005F84
 
 	.macro fade_params_struct unk_00_ptr:req, unk_04_ptr:req, unused_08:req, byte_0c:req, byte_0d:req, byte_0e:req, byte_0f:req
 	.word \unk_00_ptr, \unk_04_ptr
@@ -5307,92 +5308,318 @@ off_8006040:
 	fade_params_struct [
 		unk_00_ptr: iPalette3001B60,
 		unk_04_ptr: iPallete3001750,
-		unused_08: 0xFF,
+		unused_08: 0xff,
 		byte_0c: 0x10,
 		byte_0d: 0x10,
 		byte_0e: 0x8,
 		byte_0f: 0x0
 	]
-
-	.word 0x3001B60
-	.word 0x3001750
-	.byte 0xFF
-	.word 0x10000000
-	.word 0x60100810
-	.word 0x5003001B
-	.word 0xFF030017
-	.word 0x10000000
-	.word 0x60000C10
-	.word 0x5003001B
-	.word 0xFF030017
-	.word 0x10000000
-	.word 0x60100C10
-	.word 0x5003001B
-	.word 0xFF030017
-	.word 0x9000000
-	.word 0x60000C0A
-	.word 0x5003001B
-	.word 0xFF030017
-	.word 0x9000000
-	.word 0x60040C0A
-	.word 0x5003001B
-	.word 0xFF030017
-	.word 0xF000000
-	.word 0x60000C0D
-	.word 0x5003001B
-	.word 0xFF030017
-	.word 0xF000000
-	.word 0x60100C0D
-	.word 0x5003001B
-	.word 0xFF030017
-	.word 0xF000000
-	.word 0x6000080D
-	.word 0x5003001B
-	.word 0xFF030017
-	.word 0xF000000
-	.word 0x6010080D
-	.word 0x5003001B
-	.word 0xFF030017
-	.word 0x10000000
-	.word 0x60000810
-	.word 0x5003001B
-	.word 0xFF030017
-	.word 0x10000000
-	.word 0x60100810
-	.word 0xF003001B
-	.word 0xFF030018
-	.byte 0x0, 0x0, 0x0, 0x0, 0x1, 0x8, 0x0, 0x60, 0x1B, 0x0, 0x3, 0xF0, 0x18
-	.byte 0x0, 0x3, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x1, 0x8, 0x10, 0x60, 0x1B, 0x0
-	.byte 0x3, 0x50, 0x17, 0x0, 0x3, 0xFF, 0x0, 0x0, 0x0, 0x9, 0x0, 0xC, 0x0
-	.byte 0x60, 0x1B, 0x0, 0x3, 0x50, 0x17, 0x0, 0x3, 0xFF, 0x0, 0x0, 0x0, 0x9
-	.byte 0x0, 0xC, 0x4, 0x60, 0x1B, 0x0, 0x3, 0x50, 0x17, 0x0, 0x3, 0xFF, 0x0
-	.byte 0x0, 0x0, 0x10, 0x0, 0xC, 0x0, 0x60, 0x1B, 0x0, 0x3, 0x50, 0x17, 0x0
-	.byte 0x3, 0xFF, 0x0, 0x0, 0x0, 0x10, 0x0, 0xC, 0x10, 0x60, 0x1B, 0x0, 0x3
-	.byte 0x50, 0x17, 0x0, 0x3, 0xFF, 0x0, 0x0, 0x0, 0x1, 0x0, 0xC, 0x0, 0x60
-	.byte 0x1B, 0x0, 0x3, 0x50, 0x17, 0x0, 0x3, 0xFF, 0x0, 0x0, 0x0, 0x1, 0x0
-	.byte 0xC, 0x10, 0x60, 0x1B, 0x0, 0x3, 0x50, 0x17, 0x0, 0x3, 0xFF, 0x0, 0x0
-	.byte 0x0, 0x9, 0xA, 0xC, 0x0, 0x60, 0x1B, 0x0, 0x3, 0x50, 0x17, 0x0, 0x3
-	.byte 0xFF, 0x0, 0x0, 0x0, 0x9, 0xA, 0xC, 0x5, 0x80, 0x1C, 0x0, 0x3, 0x90
-	.byte 0x18, 0x0, 0x3, 0xFF, 0x0, 0x0, 0x0, 0x5, 0x4, 0xC, 0x0, 0x80, 0x1C
-	.byte 0x0, 0x3, 0x90, 0x18, 0x0, 0x3, 0xFF, 0x0, 0x0, 0x0, 0x5, 0x4, 0xC
-	.byte 0x3, 0x60, 0x1B, 0x0, 0x3, 0x50, 0x17, 0x0, 0x3, 0xFF, 0x0, 0x0, 0x0
-	.byte 0xE, 0xB, 0xC, 0x0, 0x60, 0x1B, 0x0, 0x3, 0x50, 0x17, 0x0, 0x3, 0xFF
-	.byte 0x0, 0x0, 0x0
-	.word 0x80C0B0E
-	.byte 0x60, 0x1B, 0x0, 0x3, 0x50, 0x17, 0x0, 0x3, 0xFF, 0x0, 0x0, 0x0
-	.word 0x80C0B0E
-	.byte 0x60, 0x1B, 0x0, 0x3, 0x70, 0x18, 0x0, 0x3, 0xFF, 0x0, 0x0, 0x0
-	.byte 0x10, 0x1, 0xC, 0x0, 0x60, 0x1B, 0x0, 0x3, 0x70, 0x18, 0x0, 0x3
-	.byte 0xFF, 0x0, 0x0, 0x0, 0x10, 0x1, 0xC, 0x10, 0x60, 0x1B, 0x0, 0x3
-	.byte 0x50, 0x17, 0x0, 0x3, 0xFF, 0x0, 0x0, 0x0, 0xF, 0xF, 0xC, 0x0
-	.byte 0x60, 0x1B, 0x0, 0x3, 0x50, 0x17, 0x0, 0x3, 0xFF, 0x0, 0x0, 0x0
-	.byte 0xF, 0xF, 0xC, 0x10, 0x60, 0x1B, 0x0, 0x3, 0x50, 0x17, 0x0, 0x3
-	.byte 0xFF, 0x0, 0x0, 0x0, 0x0, 0x10, 0xC, 0x0, 0x60, 0x1B, 0x0, 0x3
-	.byte 0x50, 0x17, 0x0, 0x3, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x10, 0xC, 0x10
-	.byte 0x60, 0x1B, 0x0, 0x3, 0x50, 0x17, 0x0, 0x3, 0xFF, 0x0, 0x0, 0x0
-	.byte 0x9, 0x0, 0xC, 0x0, 0x60, 0x1B, 0x0, 0x3, 0x50, 0x17, 0x0, 0x3
-	.byte 0xFF, 0x0, 0x0, 0x0, 0x9, 0x0, 0xC, 0x10
-	thumb_func_end sub_8005F84
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x10,
+		byte_0d: 0x10,
+		byte_0e: 0x8,
+		byte_0f: 0x10
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x10,
+		byte_0d: 0x10,
+		byte_0e: 0xc,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x10,
+		byte_0d: 0x10,
+		byte_0e: 0xc,
+		byte_0f: 0x10
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x9,
+		byte_0d: 0xa,
+		byte_0e: 0xc,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x9,
+		byte_0d: 0xa,
+		byte_0e: 0xc,
+		byte_0f: 0x4
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0xf,
+		byte_0d: 0xd,
+		byte_0e: 0xc,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0xf,
+		byte_0d: 0xd,
+		byte_0e: 0xc,
+		byte_0f: 0x10
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0xf,
+		byte_0d: 0xd,
+		byte_0e: 0x8,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0xf,
+		byte_0d: 0xd,
+		byte_0e: 0x8,
+		byte_0f: 0x10
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x10,
+		byte_0d: 0x10,
+		byte_0e: 0x8,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x10,
+		byte_0d: 0x10,
+		byte_0e: 0x8,
+		byte_0f: 0x10
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPalette30018F0,
+		unused_08: 0xff,
+		byte_0c: 0x0,
+		byte_0d: 0x1,
+		byte_0e: 0x8,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPalette30018F0,
+		unused_08: 0xff,
+		byte_0c: 0x0,
+		byte_0d: 0x1,
+		byte_0e: 0x8,
+		byte_0f: 0x10
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x9,
+		byte_0d: 0x0,
+		byte_0e: 0xc,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x9,
+		byte_0d: 0x0,
+		byte_0e: 0xc,
+		byte_0f: 0x4
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x10,
+		byte_0d: 0x0,
+		byte_0e: 0xc,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x10,
+		byte_0d: 0x0,
+		byte_0e: 0xc,
+		byte_0f: 0x10
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x1,
+		byte_0d: 0x0,
+		byte_0e: 0xc,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x1,
+		byte_0d: 0x0,
+		byte_0e: 0xc,
+		byte_0f: 0x10
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x9,
+		byte_0d: 0xa,
+		byte_0e: 0xc,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x9,
+		byte_0d: 0xa,
+		byte_0e: 0xc,
+		byte_0f: 0x5
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001C80,
+		unk_04_ptr: iPalette3001890,
+		unused_08: 0xff,
+		byte_0c: 0x5,
+		byte_0d: 0x4,
+		byte_0e: 0xc,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001C80,
+		unk_04_ptr: iPalette3001890,
+		unused_08: 0xff,
+		byte_0c: 0x5,
+		byte_0d: 0x4,
+		byte_0e: 0xc,
+		byte_0f: 0x3
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0xe,
+		byte_0d: 0xb,
+		byte_0e: 0xc,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0xe,
+		byte_0d: 0xb,
+		byte_0e: 0xc,
+		byte_0f: 0x8
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0xe,
+		byte_0d: 0xb,
+		byte_0e: 0xc,
+		byte_0f: 0x8
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPalette3001870,
+		unused_08: 0xff,
+		byte_0c: 0x10,
+		byte_0d: 0x1,
+		byte_0e: 0xc,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPalette3001870,
+		unused_08: 0xff,
+		byte_0c: 0x10,
+		byte_0d: 0x1,
+		byte_0e: 0xc,
+		byte_0f: 0x10
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0xf,
+		byte_0d: 0xf,
+		byte_0e: 0xc,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0xf,
+		byte_0d: 0xf,
+		byte_0e: 0xc,
+		byte_0f: 0x10
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x0,
+		byte_0d: 0x10,
+		byte_0e: 0xc,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x0,
+		byte_0d: 0x10,
+		byte_0e: 0xc,
+		byte_0f: 0x10
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x9,
+		byte_0d: 0x0,
+		byte_0e: 0xc,
+		byte_0f: 0x0
+	]
+	fade_params_struct [
+		unk_00_ptr: iPalette3001B60,
+		unk_04_ptr: iPallete3001750,
+		unused_08: 0xff,
+		byte_0c: 0x9,
+		byte_0d: 0x0,
+		byte_0e: 0xc,
+		byte_0f: 0x10
+	]
 
 // (int a1, int a2) -> void
 	thumb_func_start SetScreenFade
@@ -5405,7 +5632,7 @@ loc_8006276:
 	push {r5,lr}
 	cmp r0, #0xff
 	beq locret_80062C0
-	ldr r5, off_80063BC // =fadeInfo_200A440 
+	ldr r5, off_80063BC // =eScreenFade 
 	add r5, r5, r3
 	push {r0,r1}
 	mov r0, r3
@@ -5431,7 +5658,7 @@ loc_8006276:
 	mov r0, #1
 	strb r0, [r5]
 	mov r0, #1
-	strb r0, [r5,#3]
+	strb r0, [r5,#oScreenFade_Unk_03]
 	mov r0, #0
 	strb r0, [r5,#2]
 	cmp r1, #0xff
@@ -5445,13 +5672,13 @@ locret_80062C0:
 off_80062C4: .word off_8006040
 	thumb_func_end SetScreenFade
 
-	thumb_func_start sub_80062C8
-sub_80062C8:
-	ldr r0, off_80063BC // =fadeInfo_200A440 
+	thumb_func_start screenFade_80062C8
+screenFade_80062C8:
+	ldr r0, off_80063BC // =eScreenFade 
 	ldrb r1, [r0,#0x3] // (byte_200A443 - 0x200a440)
 	ldrb r0, [r0,#0x1] // (byte_200A441 - 0x200a440)
 	mov pc, lr
-	thumb_func_end sub_80062C8
+	thumb_func_end screenFade_80062C8
 
 	thumb_local_start
 sub_80062D0:
@@ -5465,7 +5692,7 @@ sub_80062D6:
 	push {r5,lr}
 	mov r0, #0x20
 loc_80062DA:
-	ldr r5, off_80063BC // =fadeInfo_200A440 
+	ldr r5, off_80063BC // =eScreenFade 
 	add r5, r5, r0
 	bl sub_8006330
 	// memBlock
@@ -5488,22 +5715,25 @@ sub_80062EC:
 	thumb_func_start IsScreenFadeActive
 IsScreenFadeActive:
 	mov r3, #0
-	b loc_80062FE
-loc_80062FC:
-	mov r3, #0x20
-loc_80062FE:
-	ldr r0, off_80063BC // =fadeInfo_200A440 
+	b IsScreenFadeActive_common
+
+	thumb_func_start isScreenFadeActive_80062FC
+isScreenFadeActive_80062FC:
+	mov r3, #oScreenFade_Size
+IsScreenFadeActive_common:
+	ldr r0, off_80063BC // =eScreenFade 
 	add r0, r0, r3
-	ldrb r0, [r0,#0x3] // (byte_200A443 - 0x200a440)
+	ldrb r0, [r0,#oScreenFade_Unk_03] // (byte_200A443 - 0x200a440)
 	mov r1, #1
 	cmp r0, r1
 	mov pc, lr
 	thumb_func_end IsScreenFadeActive
+	thumb_func_end isScreenFadeActive_80062FC
 
 	thumb_func_start subsystem_triggerTransition_800630A
 subsystem_triggerTransition_800630A:
 	push {r4-r7,lr}
-	ldr r5, off_80063BC // =fadeInfo_200A440 
+	ldr r5, off_80063BC // =eScreenFade 
 	mov r4, #0
 loc_8006310:
 	ldrb r0, [r5]
@@ -5527,7 +5757,7 @@ off_800632C: .word off_8005FB4
 	thumb_local_start
 sub_8006330:
 	push {r5,lr}
-	ldr r5, off_80063BC // =fadeInfo_200A440
+	ldr r5, off_80063BC // =eScreenFade
 	add r5, r5, r0
 	bl sub_800634C
 	ldrb r0, [r5,#0xc]
@@ -5542,7 +5772,7 @@ sub_8006330:
 	thumb_local_start
 sub_800634C:
 	push {r5,lr}
-	ldr r5, off_80063BC // =fadeInfo_200A440
+	ldr r5, off_80063BC // =eScreenFade
 	add r5, r5, r0
 	lsr r2, r0, #4
 	strb r2, [r5,#0xc]
@@ -5595,12 +5825,12 @@ loc_800637C:
 	bl sub_8002378
 	pop {r4-r7,pc}
 loc_80063B0:
-	ldr r0, off_80063BC // =fadeInfo_200A440 
+	ldr r0, off_80063BC // =eScreenFade 
 	sub r0, r5, r0
 	bl sub_8006330
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_80063BC: .word fadeInfo_200A440
+off_80063BC: .word eScreenFade
 	thumb_func_end sub_8006366
 
 	thumb_local_start
@@ -5688,7 +5918,7 @@ sub_8006444:
 	bl sub_8006414
 	pop {r6,pc}
 loc_800645E:
-	ldr r0, off_8006478 // =fadeInfo_200A440 
+	ldr r0, off_8006478 // =eScreenFade 
 	sub r0, r5, r0
 	bl sub_800634C
 	mov r0, #0x64
@@ -5697,7 +5927,7 @@ loc_800645E:
 	bl sub_800647C
 	pop {r6,pc}
 dword_8006474: .word 0x10
-off_8006478: .word fadeInfo_200A440
+off_8006478: .word eScreenFade
 	thumb_func_end sub_8006444
 
 	thumb_local_start

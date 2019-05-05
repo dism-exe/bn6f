@@ -782,28 +782,15 @@ unk_200A400:: // 0x200a400
 	.space 32
 unk_200A420:: // 0x200a420
 	.space 32
-fadeInfo_200A440:: // 0x200a440
-	.space 1
-byte_200A441:: // 0x200a441
-	.space 1
-byte_200A442:: // 0x200a442
-	.space 1
-byte_200A443:: // 0x200a443
-	.space 1
-word_200A444:: // 0x200a444
-	.space 4
-word_200A448:: // 0x200a448
-	.space 2
-word_200A44A:: // 0x200a44a
-	.space 6
-off_200A450:: // 0x200a450
-	.space 4
-off_200A454:: // 0x200a454
-	.space 4
-word_200A458:: // 0x200a458
-	.space 4
-word_200A45C:: // 0x200a45c
-	.space 36
+
+eScreenFade:: // 0x200a440
+	screen_fade_struct eScreenFade
+eScreenFadeEnd:: // 0x200a460
+
+eScreenFade2:: // 0x200a460
+	screen_fade_struct eScreenFade2
+eScreenFade2End:: // 0x200a480
+
 i_joGameSubsysSel:: // 0x200a480
 	.space 16
 dword_200A490:: // 0x200a490
