@@ -1,4 +1,3 @@
-	.include "asm/main.inc"
 
 	thumb_func_start main_
 main_:
@@ -13,7 +12,7 @@ main_gameRoutine:
 	bl sub_80019A0
 	bl render_800172C
 	bl copyObjAttributesToIWRAM_802FE0C
-	bl objRender_8000A44
+	bl ProcessGFXTransferQueue
 	bl getPalleteAndTransition_80023E0
 	bl copyPalletesToIWRAM_8001808
 	bl copyPalletesToIWRAM_8002650
@@ -180,7 +179,7 @@ dword_8000450: .word 0x3FF
 	thumb_local_start
 main_static_8000454:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_80004A2
 	bl sub_813D60C
 	bne locret_80004A2

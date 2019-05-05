@@ -1,4 +1,3 @@
-	.include "asm/asm29.inc"
 
 	thumb_func_start ho_80A4984
 ho_80A4984:
@@ -4884,7 +4883,7 @@ sub_80A7C58:
 	bne loc_80A7C7E
 	bl sub_809E462
 	bne loc_80A7C7E
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_80A7C7E
 	bl sub_809E3A2
 	beq loc_80A7C7E
@@ -4989,7 +4988,7 @@ sub_80A7CFE:
 	bne locret_80A7D70
 	bl sub_809E462
 	bne locret_80A7D70
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_80A7D70
 	movflag EVENT_1731
 	bl SetEventFlagFromImmediate
@@ -6934,7 +6933,7 @@ sub_80A8DF0:
 loc_80A8E0A:
 	bl sub_809E462
 	bne loc_80A8E18
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_80A8E18
 	mov r4, #0
 loc_80A8E18:
@@ -8942,12 +8941,12 @@ locret_80A9EB4:
 sub_80A9EB6:
 	push {r4-r7,lr}
 	mov r0, #1
-	ldr r1, off_80A9EC8 // =unk_2011C50 
+	ldr r1, off_80A9EC8 // =eCutsceneState
 	strb r0, [r1,#0x8] // (byte_2011C58 - 0x2011c50)
 	pop {r4-r7,pc}
 dword_80A9EC0: .word 0x2AAAA
 dword_80A9EC4: .word 0x16C1
-off_80A9EC8: .word unk_2011C50
+off_80A9EC8: .word eCutsceneState
 	thumb_func_end sub_80A9EB6
 
 	thumb_func_start sub_80A9ECC
@@ -9655,7 +9654,7 @@ sub_80AA4C0:
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_Unk2001c04_Ptr]
+	ldr r6, [r6,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	ldrb r3, [r7,#oGameState_MapGroup]
 	cmp r3, #0x80
@@ -10907,7 +10906,7 @@ loc_80AAD9A:
 sub_80AADA6:
 	push {r4,r6,r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#5]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_S_Chip_2002178_Ptr]
@@ -10929,7 +10928,7 @@ loc_80AADB6:
 	ldr r2, off_80AAE80 // =0xf00 
 	bl CopyWords // (u32 *src, u32 *dest, int size) -> void
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#5]
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_S_Chip_2002178_Ptr]

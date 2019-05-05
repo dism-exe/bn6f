@@ -1,4 +1,3 @@
-	.include "asm/asm31.inc"
 
 	thumb_func_start sub_80B81EC
 // some sort of generic function for enemies?
@@ -35821,20 +35820,21 @@ locret_80C965A:
 	pop {pc}
 off_80C965C: .word 0x4000000
 off_80C9660: .word 0x8000000
-byte_80C9664: .byte 0xC, 0x1B, 0x0, 0x1, 0xE, 0x0, 0xC, 0x1B, 0x2, 0x3, 0xE, 0x0, 0xC
-	.byte 0x1B, 0x4, 0x5, 0xE, 0x0, 0x8, 0x0, 0x3, 0x4, 0x4, 0x7, 0x4, 0x0
-	.byte 0x3, 0x4, 0x1, 0x0, 0x4, 0x0
-	.word 0x2010403
-	.word 0x4030004
-	.word 0x1B0C0401
-	.word 0xE0706
-	.word 0x9081B0C
-	.word 0xC000E
-	.word 0xE0B0A
+byte_80C9664:
+	.byte 0xc, 0x1b, 0x0, 0x1, 0xe, 0x0
+	.byte 0xc, 0x1b, 0x2, 0x3, 0xe, 0x0
+	.byte 0xc, 0x1b, 0x4, 0x5, 0xe, 0x0
+	.byte 0x8, 0x0, 0x3, 0x4, 0x4, 0x7
+	.byte 0x4, 0x0, 0x3, 0x4, 0x1, 0x0
+	.byte 0x4, 0x0, 0x3, 0x4, 0x1, 0x2
+	.byte 0x4, 0x0, 0x3, 0x4, 0x1, 0x4
+	.byte 0xc, 0x1b, 0x6, 0x7, 0xe, 0x0
+	.byte 0xc, 0x1b, 0x8, 0x9, 0xe, 0x0
+	.byte 0xc, 0x0, 0xa, 0xb, 0xe, 0x0
 	thumb_func_end sub_80C9640
 
 	thumb_func_start sub_80C96A0
-sub_80C96A0:
+sub_80C96A0: // shield
 	push {lr}
 	ldr r1, off_80C96B8 // =off_80C96BC 
 	ldrb r0, [r5,#oBattleObject_CurState]
@@ -82154,14 +82154,14 @@ loc_80E06AC:
 	mov r0, #8
 loc_80E06B8:
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #1
 	ldr r1, off_80E06DC // =byte_2036740 
 	strb r0, [r1]
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_80E06C8:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne locret_80E06DA
 	mov r0, #1
@@ -86087,10 +86087,10 @@ loc_80E2444:
 loc_80E2448:
 	ldr r3, off_80E2498 // =off_80E24A0
 	ldmia r3!, {r0-r2}
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r3, off_80E249C // =off_80E24AC
 	ldmia r3!, {r0-r2}
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #0x46 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -90256,10 +90256,10 @@ sub_80E4470:
 	push {lr}
 	ldr r3, off_80E449C // =off_80E44A4
 	ldmia r3!, {r0-r2}
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r3, off_80E44A0 // =off_80E44B0
 	ldmia r3!, {r0-r2}
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	bl sub_80E4532
 	str r0, [r5,#oBattleObject_ExtraVars]
 	tst r0, r0
@@ -94112,10 +94112,10 @@ sub_80E60EC:
 loc_80E610A:
 	ldr r3, off_80E6160 // =off_80E6168
 	ldmia r3!, {r0-r2}
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r3, off_80E6164 // =off_80E6174
 	ldmia r3!, {r0-r2}
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #0x3c 
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -96558,10 +96558,10 @@ sub_80E73A2:
 	bne loc_80E73C4
 	ldr r3, off_80E7430 // =off_80E7438
 	ldmia r3!, {r0-r2}
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r3, off_80E7434 // =off_80E7444
 	ldmia r3!, {r0-r2}
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #0x3c
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4

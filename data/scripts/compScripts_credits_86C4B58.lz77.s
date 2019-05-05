@@ -1,5 +1,5 @@
 // FIXME (TextScript): Match decompile this
-decompressed_compScripts_credits_86C4B58:
+decompressed_compScripts_credits_86C4B58::
 .byte 00 75
 .byte 05 00 DA 00 E3 00 ED 00 F7 00 00 01 0A 01 17 01 28 01
 .byte 34 01 41 01 49 01 5A 01 66 01 78 01 84 01 94 01 A1 01 A8 01

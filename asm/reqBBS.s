@@ -1,4 +1,3 @@
-	.include "asm/reqBBS.inc"
 
 	thumb_func_start reqBBS_813E07C
 reqBBS_813E07C:
@@ -81,7 +80,7 @@ reqBBS_static_draw_813E0F8:
 	bl sub_80015FC
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	// a1
 	ldr r0, off_813E178 // =byte_813DBDC
 	bl sub_80465A0 // (void *a1) -> void
@@ -140,7 +139,7 @@ loc_813E1A2:
 	strh r0, [r5,#0x22] // reqBBS_GUI.RO_cursorPos
 	ldrh r0, [r5,#oReqBBSGui_PagePos]
 	strh r0, [r5,#oReqBBSGui_PagePosUpdate]
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_813E1B6
 	mov r0, #0
 	bl reqBBS_static_813EC10
@@ -161,7 +160,7 @@ reqBBS_draw_813E1C8:
 	ldr r1, dword_813E220 // =0x1f40 
 	strh r1, [r0]
 	bl reqBBS_813E534
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_813E21C
 	ldrb r0, [r5,#0x5] // reqBBS_GUI.numNewRequests
 	ldr r1, [r5,#0x28] // reqBBS_GUI.reqBBS_textualPointers
@@ -396,7 +395,7 @@ reqBBS_draw_813E398:
 	strb r1, [r0,#7]
 	mov r1, #0x50 
 	strb r1, [r0,#6]
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_813E3EA
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
@@ -445,7 +444,7 @@ reqBBS_draw_813E3F4:
 	strb r1, [r0,#7]
 	mov r1, #0x50 
 	strb r1, [r0,#6]
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_813E446
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
@@ -555,7 +554,7 @@ loc_813E4C8:
 	strb r0, [r5,#8]
 	mov r0, #0x10
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 loc_813E4EC:
 	bl reqBBS_813E534
 	mov r0, #0
@@ -582,7 +581,7 @@ reqBBS_draw_813E4F4:
 	bne loc_813E522
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
 	strb r0, [r5]
 	b loc_813E52A
@@ -1262,7 +1261,7 @@ reqBBS_static_813EC54:
 	push {lr}
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
 	strb r0, [r5]
 	mov r0, #SOUND_UNSELECT_68
@@ -1401,7 +1400,7 @@ reqBBS_813ED40:
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_813ED58: .word byte_813DEC4
@@ -1504,7 +1503,7 @@ reqBBS_813EDE4:
 	add r0, r0, r2
 	ldr r1, dword_813EE38 // =0x6017f80 
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldrh r1, [r5,#0x20]
 	mov r0, #3
 	mov r3, #0x10
@@ -1893,7 +1892,7 @@ loc_813F4B6:
 	bl sub_80015FC
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	ldr r0, off_813F534 // =reqBBS_entriesGfx 
 	bl sub_80465A0 // (void *a1) -> void
 	ldrh r0, [r5,#0x1e]
@@ -1953,7 +1952,7 @@ loc_813F56A:
 	strh r0, [r5,#0x22]
 	ldrh r0, [r5,#0x24]
 	strh r0, [r5,#0x26]
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_813F57E
 	mov r0, #0
 	bl reqBBS_8140358
@@ -1974,7 +1973,7 @@ ExitReqBBSMenu813F590:
 	ldr r1, dword_813F5E8 // =0x1f40 
 	strh r1, [r0]
 	bl reqBBS_813F8F0
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_813F5E4
 	ldrb r0, [r5,#5]
 	ldr r1, [r5,#0x28]
@@ -2204,7 +2203,7 @@ reqBBS_813F754:
 	strb r1, [r0,#7]
 	mov r1, #0x50 
 	strb r1, [r0,#6]
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_813F7A6
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
@@ -2253,7 +2252,7 @@ reqBBS_813F7B0:
 	strb r1, [r0,#7]
 	mov r1, #0x50 
 	strb r1, [r0,#6]
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_813F802
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
@@ -2363,7 +2362,7 @@ loc_813F884:
 	strb r0, [r5,#8]
 	mov r0, #0x10
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 loc_813F8A8:
 	bl reqBBS_813F8F0
 	mov r0, #0
@@ -2390,7 +2389,7 @@ reqBBS_813F8B0:
 	bne loc_813F8DE
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
 	strb r0, [r5]
 	b loc_813F8E6
@@ -2619,7 +2618,7 @@ reqBBS_813FA54:
 	strb r1, [r0,#7]
 	mov r1, #0x50 
 	strb r1, [r0,#6]
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_813FAA6
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_Unk2009740_Ptr]
@@ -3581,7 +3580,7 @@ reqBBS_81403A8:
 	push {lr}
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
 	strb r0, [r5]
 	mov r0, #SOUND_UNSELECT_68
@@ -3829,7 +3828,7 @@ reqBBS_8140588:
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_81405A0: .word byte_813F22C
@@ -3845,7 +3844,7 @@ reqBBS_81405A4:
 	ldr r2, [r2,#oToolkit_iBGTileIdBlocks_Ptr]
 	add r1, r1, r2
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_81405BC: .word byte_813F2AC
@@ -3985,7 +3984,7 @@ reqBBS_animateCursor:
 	add r0, r0, r2
 	ldr r1, dword_81406DC // =0x6017f80 
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldrh r1, [r5,#0x20]
 	mov r0, #3
 	mov r3, #0x10
@@ -4451,7 +4450,7 @@ reqBBS_clearFlag_8140A0C:
 	movflag EVENT_1700
 	bl ClearEventFlagFromImmediate
 	mov r5, r10
-	ldr r5, [r5,#oToolkit_Unk2001c04_Ptr]
+	ldr r5, [r5,#oToolkit_S2001c04_Ptr]
 	mov r3, #0x14
 	ldrh r0, [r5,r3]
 	mov r3, #0x12

@@ -1,4 +1,3 @@
-	.include "asm/sprite.inc"
 
 // () -> void
 	thumb_func_start sprite_loadAnimationData
@@ -307,7 +306,7 @@ sub_8002874:
 	ldrh r3, [r5,#8]
 	lsl r3, r3, #5
 	add r1, r1, r3
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 locret_8002896:
 	pop {r5,pc}
 dword_8002898: .word 0x6010000
@@ -1649,6 +1648,7 @@ loc_80030F4:
 	mov r0, #0
 	mov r1, #0
 	pop {r4-r7,pc}
+	thumb_func_end sub_80030BA
 	.balign 4, 0x00
 
 /*For debugging purposes, connect comment at any range!*/

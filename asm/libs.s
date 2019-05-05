@@ -1,4 +1,3 @@
-	.include "asm/libs.inc"
 
 // static () -> void
 	thumb_func_start sub_81440D8

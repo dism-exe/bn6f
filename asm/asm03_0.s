@@ -1,4 +1,3 @@
-	.include "asm/asm03_0.inc"
 
 	thumb_local_start
 sub_8026450:
@@ -1471,7 +1470,7 @@ loc_8027096:
 	add r0, r0, r1
 	ldr r1, dword_80270C0 // =0x60172c0 
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldrb r0, [r5,#8]
 	mov r1, #0x10
 	mul r0, r1
@@ -1480,7 +1479,7 @@ loc_8027096:
 	ldr r0, off_80270C4 // =byte_872CF94 
 	ldr r1, off_80270C8 // =byte_30016F0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #4
 	strh r0, [r5,#2]
 	pop {r4,pc}
@@ -1522,7 +1521,7 @@ sub_80270EA:
 	str r0, [r5,#0x40]
 	mov r0, #0x34 
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x91
 	bl PlaySoundEffect
 	mov r0, #0xc
@@ -1535,14 +1534,14 @@ loc_8027112:
 	thumb_local_start
 sub_8027118:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne loc_802712E
 	mov r0, #0x10
 	strh r0, [r5,#2]
 	mov r0, #0x30 
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 loc_802712E:
 	bl sub_80298D8
 	pop {pc}
@@ -1551,12 +1550,12 @@ loc_802712E:
 	thumb_local_start
 sub_8027134:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne loc_802714A
 	mov r0, #4
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x14
 	strh r0, [r5,#2]
 loc_802714A:
@@ -1567,7 +1566,7 @@ loc_802714A:
 	thumb_local_start
 sub_8027150:
 	push {r4,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne loc_80271BC
 	ldrb r3, [r5,#8]
@@ -1611,7 +1610,7 @@ loc_80271A0:
 	bl sub_8028E32
 	mov r0, #0
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x92
 	bl PlaySoundEffect
 	mov r0, #0x18
@@ -1624,7 +1623,7 @@ loc_80271BC:
 	thumb_local_start
 sub_80271C2:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_80271F2
 	mov r0, #4
@@ -2143,7 +2142,7 @@ sub_8027580:
 	str r0, [r5,#0x40]
 	mov r0, #4
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
 	strh r0, [r5,#2]
 locret_802759C:
@@ -2153,12 +2152,12 @@ locret_802759C:
 	thumb_local_start
 sub_802759E:
 	push {r4,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_80275D2
 	mov r0, #0
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	ldrh r0, [r5,#0x38]
 	strh r0, [r5,#0x3a]
 	ldrh r0, [r5,#0x3a]
@@ -2182,7 +2181,7 @@ off_80275D4: .word dword_20349A0
 	thumb_local_start
 sub_80275D8:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_80275EA
 	mov r0, #4
@@ -2234,7 +2233,7 @@ sub_8027624:
 	str r0, [r5,#0x40]
 	mov r0, #0x64 
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #1
 	mov r1, #0x28 
 	bl sub_80302B6
@@ -2257,7 +2256,7 @@ sub_8027658:
 	str r0, [r5,#0x40]
 	cmp r0, #0x32 
 	blt locret_8027670
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027670
 	mov r0, #0xc
@@ -2309,7 +2308,7 @@ loc_80276AA:
 	bl sub_8028E32
 	mov r0, #0x60 
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x10
 	strh r0, [r5,#2]
 	pop {r4,r6,pc}
@@ -2318,7 +2317,7 @@ loc_80276AA:
 	thumb_local_start
 sub_80276D6:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027706
 	mov r0, #4
@@ -2384,7 +2383,7 @@ sub_802774C:
 	str r0, [r5,#0x40]
 	mov r0, #0x64 
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #1
 	mov r1, #0x28 
 	bl sub_80302B6
@@ -2408,7 +2407,7 @@ sub_802777C:
 	str r0, [r5,#0x40]
 	cmp r0, #0x32 
 	blt locret_8027794
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027794
 	mov r0, #0xc
@@ -2465,7 +2464,7 @@ loc_80277DA:
 	bl sub_8028E32
 	mov r0, #0x60 
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x10
 	strh r0, [r5,#2]
 	pop {r4,r6,pc}
@@ -2474,7 +2473,7 @@ loc_80277DA:
 	thumb_local_start
 sub_8027806:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_802782E
 	mov r0, #4
@@ -2815,7 +2814,7 @@ sub_8027A90:
 	str r0, [r5,#0x40]
 	mov r0, #4
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
 	strh r0, [r5,#2]
 locret_8027AAC:
@@ -2825,12 +2824,12 @@ locret_8027AAC:
 	thumb_local_start
 sub_8027AAE:
 	push {r4,r6,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027ADC
 	mov r0, #0
 	mov r1, #0x20 
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	ldrb r0, [r5,#0x1a]
 	bl sub_802A088
 	bl sub_80279FC
@@ -2847,7 +2846,7 @@ locret_8027ADC:
 	thumb_local_start
 sub_8027ADE:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_8027B1A
 	bl sub_80279FC
@@ -3028,7 +3027,7 @@ off_8027D54: .word dword_86EE0CC
 	thumb_local_start
 sub_8027D58:
 	push {r4,lr}
-	ldr r2, off_8027F0C // =byte_203CDB0 
+	ldr r2, off_8027F0C // =eBattleFolder 
 	ldr r1, dword_8027D74 // =0xffff 
 	mov r3, #0x1e
 loc_8027D60:
@@ -3234,7 +3233,7 @@ sub_8027EE8:
 	mov r3, r6
 loc_8027EFA:
 	mov r2, #0
-	ldr r1, off_8027F0C // =byte_203CDB0 
+	ldr r1, off_8027F0C // =eBattleFolder 
 loc_8027EFE:
 	strb r2, [r4]
 	str r1, [r4,#8]
@@ -3244,7 +3243,7 @@ loc_8027EFE:
 	bne loc_8027EFE
 locret_8027F0A:
 	pop {r4,r6,pc}
-off_8027F0C: .word byte_203CDB0
+off_8027F0C: .word eBattleFolder
 	thumb_func_end sub_8027EE8
 
 	thumb_local_start
@@ -3552,7 +3551,7 @@ sub_802811C:
 	push {lr}
 	// dataList
 	ldr r0, off_8028154 // =off_802A744 
-	bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+	bl QueueGFXTransfersInList // (u32 *dataRefs) -> void
 	ldrb r0, [r5,#0x10]
 	bl sub_802812C
 	pop {pc}
@@ -3565,15 +3564,15 @@ sub_802812C:
 	bl sub_8028164
 	ldr r1, dword_8028158 // =0x60170e0 
 	mov r2, #0x40 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add r0, r0, r2
 	ldr r1, dword_802815C // =0x6017160 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, r4
 	bl sub_8028172
 	ldr r1, off_8028160 // =byte_30016B0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4,pc}
 off_8028154: .word off_802A744
 dword_8028158: .word 0x60170E0
@@ -3632,7 +3631,7 @@ sub_80281C4:
 	push {r2,r3,lr}
 	bl sub_80281A8
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add r1, #0x80
 	pop {r2,r3,pc}
 	thumb_func_end sub_80281C4
@@ -3658,7 +3657,7 @@ sub_80281E4:
 	mul r0, r2
 	ldr r3, off_8028200 // =byte_8725894 
 	add r0, r0, r3
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r1-r3,pc}
 	.balign 4, 0x00
 dword_80281FC: .word 0x600A4A0
@@ -3670,7 +3669,7 @@ sub_8028204:
 	push {r2,r3,lr}
 	bl sub_8028214
 	mov r2, #0x40 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add r1, #0x40 
 	pop {r2,r3,pc}
 	thumb_func_end sub_8028204
@@ -3778,7 +3777,7 @@ sub_80282AE:
 	beq loc_80282BC
 	add r0, r0, r2
 loc_80282BC:
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {pc}
 	thumb_func_end sub_80282AE
 
@@ -3789,7 +3788,7 @@ sub_80282C2:
 	ldr r2, off_80283A4 // =0x100 
 	add r0, r0, r2
 	add r0, r0, r2
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {pc}
 	thumb_func_end sub_80282C2
 
@@ -3801,7 +3800,7 @@ sub_80282D2:
 	ldrb r3, [r4,#7]
 	mul r3, r2
 	add r0, r0, r3
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add r1, #0xc0
 	add r1, #0xc0
 	pop {pc}
@@ -3848,7 +3847,7 @@ sub_8028320:
 	ldr r2, off_80283A8 // =0x300 
 	add r0, r0, r2
 	ldr r2, off_80283A4 // =0x100 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	b locret_802833E
 loc_8028334:
 	ldr r0, off_8028368 // =byte_802A700 
@@ -3867,7 +3866,7 @@ sub_8028340:
 	ldrb r3, [r4,#7]
 	mul r3, r2
 	add r0, r0, r3
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add r1, #0xc0
 	add r1, #0xc0
 	pop {pc}
@@ -4078,12 +4077,12 @@ sub_80284E2:
 	beq loc_8028536
 	ldr r1, dword_802865C // =0x6009560 
 	ldr r2, dword_8028660 // =0x540
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, [sp,#4]
 	ldr r0, [r0,#0x28]
 	ldr r1, off_8028664 // =unk_3001AA0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 loc_8028536:
 	ldr r1, [sp,#4]
 	ldrb r0, [r1,#7]
@@ -4103,7 +4102,7 @@ loc_802854C:
 	ldr r1, off_8028818 // =byte_86E587C 
 	add r0, r0, r1
 	ldr r1, off_802881C // =unk_3001A80 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, [sp]
 	lsr r0, r0, #9
 	cmp r0, #0x1c
@@ -4116,7 +4115,7 @@ loc_8028564:
 	add r0, r0, r1
 	ldr r1, dword_8028644 // =0x6009aa0 
 	mov r2, #0x40 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, [sp,#4]
 	ldrb r1, [r0,#9]
 	mov r2, #0x12
@@ -4129,14 +4128,14 @@ loc_8028564:
 	ldr r1, off_8028648 // =dword_86E3598 
 	add r0, r0, r1
 	ldr r1, dword_802864C // =0x6009ae0 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r0}
 	mov r2, #0xc
 	mul r0, r2
 	ldr r1, off_8028680 // =dword_86E3B18 
 	add r0, r0, r1
 	ldr r1, off_8028684 // =unk_3001AD4 
-	bl sub_8000AC4
+	bl QueueWordAlignedGFXTransfer
 	ldr r0, [sp,#8]
 	cmp r0, #0
 	beq loc_80285C6
@@ -4177,7 +4176,7 @@ loc_80285DC:
 	add r0, r0, r2
 	mov r2, #0x40 
 	push {r3}
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r3}
 	sub r1, #0x40 
 	sub r3, #1
@@ -4209,11 +4208,11 @@ sub_80285FE:
 	beq loc_802863A
 	ldr r1, dword_802865C // =0x6009560 
 	ldr r2, dword_8028660 // =0x540
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, [r4,#0x28]
 	ldr r1, off_8028664 // =unk_3001AA0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 loc_802863A:
 	bl sub_802869E
 	pop {r4,pc}
@@ -4244,7 +4243,7 @@ sub_802868C:
 	mov r4, r3
 	mov r2, #0x40 
 loc_8028692:
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add r1, r1, r2
 	sub r4, #1
 	bne loc_8028692
@@ -4288,13 +4287,13 @@ loc_80286E4:
 	ldr r0, [r0,r1]
 	ldr r1, dword_80287F0 // =0x6009560 
 	ldr r2, dword_80287F4 // =0x540
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r1}
 	ldr r0, off_8028710 // =off_8028714 
 	ldr r0, [r0,r1]
 	ldr r1, off_80287FC // =unk_3001AA0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	bl sub_802869E
 	pop {pc}
 off_8028704: .word off_8028708
@@ -4312,7 +4311,7 @@ sub_802871C:
 	ldr r0, off_802874C // =byte_8723034 
 	ldr r1, dword_80287F0 // =0x6009560 
 	ldr r2, dword_80287F4 // =0x540
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #0xb
 	bl getLocOfActiveChips_8027E1C // (int a1) -> void*
 	ldrb r0, [r0,#6]
@@ -4322,7 +4321,7 @@ sub_802871C:
 	add r0, r0, r1
 	ldr r1, off_80287FC // =unk_3001AA0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	bl sub_802869E
 	pop {pc}
 	.balign 4, 0x00
@@ -4337,11 +4336,11 @@ sub_8028754:
 	ldr r0, off_8028774 // =dword_87225B4 
 	ldr r1, dword_80287F0 // =0x6009560 
 	ldr r2, dword_80287F4 // =0x540
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, off_8028778 // =dword_87257D4 
 	ldr r1, off_80287FC // =unk_3001AA0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	bl sub_802869E
 	pop {pc}
 off_8028774: .word dword_87225B4
@@ -4355,11 +4354,11 @@ sub_802877C:
 	ldr r0, off_802879C // =dword_8733E74 
 	ldr r1, dword_80287F0 // =0x6009560 
 	ldr r2, dword_80287F4 // =0x540
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, off_80287A0 // =dword_87343D4 
 	ldr r1, off_80287FC // =unk_3001AA0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	bl sub_802869E
 	pop {pc}
 off_802879C: .word dword_8733E74
@@ -4380,11 +4379,11 @@ loc_80287AE:
 	ldr r0, off_80287EC // =dword_8722AF4 
 	ldr r1, dword_80287F0 // =0x6009560 
 	ldr r2, dword_80287F4 // =0x540
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, off_80287F8 // =dword_8725854 
 	ldr r1, off_80287FC // =unk_3001AA0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	bl sub_802869E
 	pop {r0}
 	pop {pc}
@@ -4400,7 +4399,7 @@ sub_80287D2:
 	ldr r0, off_8028818 // =byte_86E587C 
 	ldr r1, off_802881C // =unk_3001A80 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {pc}
 	.balign 4, 0x00
 off_80287EC: .word dword_8722AF4
@@ -4569,7 +4568,7 @@ sub_802899C:
 	ldr r1, dword_80289DC // =0x6016cc0 
 	ldr r2, dword_80289E0 // =0x200
 	add r0, r0, r3
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 loc_80289C2:
 	ldr r0, dword_80289D0 // =0x80020064 
 	ldr r1, dword_80289D4 // =0xb766 
@@ -5984,7 +5983,7 @@ locret_8029458:
 	thumb_local_start
 sub_802945A:
 	push {r4,r6,r7,lr}
-	ldr r3, off_8029510 // =byte_203CDB0 
+	ldr r3, off_8029510 // =eBattleFolder 
 	mov r4, #0
 	mov r6, #0
 	mov r2, #0x1e
@@ -6031,7 +6030,7 @@ sub_8029488:
 	blt loc_80294D8
 	b locret_80294DE
 loc_80294A8:
-	ldr r3, off_8029510 // =byte_203CDB0 
+	ldr r3, off_8029510 // =eBattleFolder 
 	lsl r6, r6, #1
 	add r3, r3, r6
 	mov r7, #4
@@ -6069,7 +6068,7 @@ sub_80294E0:
 	mov r0, #0x5f 
 	ldrb r6, [r5,r0]
 loc_80294E6:
-	ldr r3, off_8029510 // =byte_203CDB0 
+	ldr r3, off_8029510 // =eBattleFolder 
 	mov r4, #0
 	mov r7, #0
 	sub r7, #1
@@ -6093,7 +6092,7 @@ loc_8029508:
 	cmp r6, #0
 	bgt loc_80294E6
 	pop {r4,r6,r7,pc}
-off_8029510: .word byte_203CDB0
+off_8029510: .word eBattleFolder
 	thumb_func_end sub_80294E0
 
 	thumb_local_start
@@ -6331,7 +6330,7 @@ sub_8029688:
 	str r0, [sp]
 loc_80296A2:
 	ldr r7, off_8029784 // =dword_2033000 
-	ldr r6, off_80298D4 // =byte_203CDB0 
+	ldr r6, off_80298D4 // =eBattleFolder 
 	ldrb r4, [r5,#6]
 	cmp r4, #0
 	beq loc_80296DE
@@ -6373,7 +6372,7 @@ loc_80296E8:
 	tst r0, r0
 	beq loc_80296FE
 	lsl r0, r0, #1
-	ldr r1, off_80298D4 // =byte_203CDB0 
+	ldr r1, off_80298D4 // =eBattleFolder 
 	add r0, r0, r1
 	cmp r0, r6
 	bne loc_80296FE
@@ -6399,7 +6398,7 @@ loc_802970C:
 	ldrb r4, [r5,#6]
 	cmp r4, #0
 	beq loc_8029750
-	ldr r6, off_80298D4 // =byte_203CDB0 
+	ldr r6, off_80298D4 // =eBattleFolder 
 	mov r3, #0
 loc_8029724:
 	mov r0, r3
@@ -6436,7 +6435,7 @@ loc_802975A:
 	tst r0, r0
 	beq loc_8029770
 	lsl r0, r0, #1
-	ldr r1, off_80298D4 // =byte_203CDB0 
+	ldr r1, off_80298D4 // =eBattleFolder 
 	add r0, r0, r1
 	cmp r0, r6
 	bne loc_8029770
@@ -6476,7 +6475,7 @@ sub_8029788:
 	str r0, [sp]
 loc_80297A2:
 	ldr r7, off_80298C0 // =word_2036660 
-	ldr r6, off_80298D4 // =byte_203CDB0 
+	ldr r6, off_80298D4 // =eBattleFolder 
 	mov r3, #0
 	mov r2, #0
 	ldrb r4, [r5,#6]
@@ -6519,7 +6518,7 @@ loc_80297EA:
 	tst r0, r0
 	beq loc_8029800
 	lsl r0, r0, #1
-	ldr r1, off_80298D4 // =byte_203CDB0 
+	ldr r1, off_80298D4 // =eBattleFolder 
 	add r0, r0, r1
 	cmp r0, r6
 	bne loc_8029800
@@ -6578,7 +6577,7 @@ sub_802983C:
 	str r0, [sp]
 loc_8029856:
 	ldr r7, off_80298C0 // =word_2036660 
-	ldr r6, off_80298D4 // =byte_203CDB0 
+	ldr r6, off_80298D4 // =eBattleFolder 
 	ldrb r4, [r5,#6]
 	cmp r4, #0
 	beq loc_802988E
@@ -6618,7 +6617,7 @@ loc_8029898:
 	tst r0, r0
 	beq loc_80298AE
 	lsl r0, r0, #1
-	ldr r1, off_80298D4 // =byte_203CDB0 
+	ldr r1, off_80298D4 // =eBattleFolder 
 	add r0, r0, r1
 	cmp r0, r6
 	bne loc_80298AE
@@ -6640,7 +6639,7 @@ loc_80298BC:
 off_80298C0: .word word_2036660
 off_80298C4: .word byte_80298C8
 byte_80298C8: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-off_80298D4: .word byte_203CDB0
+off_80298D4: .word eBattleFolder
 	thumb_func_end sub_802983C
 
 	thumb_local_start
@@ -7362,7 +7361,7 @@ loc_8029DA2:
 	ldr r2, dword_8029DE0 // =0x600a720 
 	add r1, r1, r2
 	ldr r2, off_8029DDC // =0x240 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #1
 	mov r1, #1
 	lsl r6, r6, #1
@@ -7415,7 +7414,7 @@ sub_8029EAC:
 	add r0, r0, r1
 	ldr r1, off_8029EC4 // =unk_3001AA0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {pc}
 off_8029EC0: .word dword_86E944C
 off_8029EC4: .word unk_3001AA0
@@ -7903,7 +7902,7 @@ sub_802A2E8:
 	beq locret_802A30A
 	mov r0, #0x54 
 	mov r1, #0xa
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x5c 
 	mov r1, #0xa
 	bl loc_8006274 // (int a1, int a2) -> void
@@ -7931,7 +7930,7 @@ sub_802A30C:
 	bl sub_8000642
 	add r4, #2
 	strb r4, [r5,#0x13]
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	bl loc_80062FC // () -> zf
 	cmp r0, #0
 	bne locret_802A33C
@@ -7949,7 +7948,7 @@ sub_802A33E:
 	bne locret_802A360
 	mov r0, #0x50 
 	mov r1, #0xa
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x58 
 	mov r1, #0xa
 	bl loc_8006274 // (int a1, int a2) -> void
@@ -7977,7 +7976,7 @@ sub_802A362:
 	bl sub_8000642
 	add r4, #2
 	strb r4, [r5,#0x13]
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	bl loc_80062FC // () -> zf
 	cmp r0, #0
 	bne locret_802A392
@@ -8389,7 +8388,7 @@ locret_802A664:
 	.word dword_20364C0
 	.word unk_2035000
 	.word unk_20365C0
-	.word byte_203CDB0
+	.word eBattleFolder
 	.byte 0xFF, 0x1, 0x0, 0x0, 0x20, 0x9C, 0x0, 0x6
 byte_802A680: .byte 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77
 	.byte 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77, 0x77
@@ -9901,7 +9900,7 @@ loc_802B496:
 	mov r2, #0x20 
 	mul r3, r2
 	add r1, r1, r3
-	bl sub_8000AC4
+	bl QueueWordAlignedGFXTransfer
 	ldr r0, [sp]
 	add r0, #1
 	str r0, [sp]
@@ -10221,10 +10220,10 @@ sub_802B7A0:
 	bl sub_802B9FE
 	mov r0, #0x14
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	b locret_802B7DE
 loc_802B7BC:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_802B7DE
 	mov r0, #0x24 
@@ -10493,7 +10492,7 @@ sub_802B9B8:
 	strh r0, [r5,#2]
 	mov r0, #0x10
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 locret_802B9D2:
 	pop {pc}
 	thumb_func_end sub_802B9B8
@@ -10501,7 +10500,7 @@ locret_802B9D2:
 	thumb_local_start
 sub_802B9D4:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	cmp r0, #0
 	bne locret_802B9E2
 	mov r0, #8
@@ -10536,7 +10535,7 @@ sub_802B9FE:
 	add r0, r0, r1
 	ldr r1, off_802BA14 // =unk_3001AA0 
 	mov r2, #8
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r1-r3,pc}
 off_802BA10: .word byte_802BA48
 off_802BA14: .word unk_3001AA0
@@ -11045,12 +11044,12 @@ loc_802BFE4:
 	ldr r1, dword_802C00C // =0x600bd00 
 	mov r2, #0x2a 
 	lsl r2, r2, #6
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r1}
 	mov r0, r1
 	ldr r1, off_802C010 // =unk_3001AE0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r5}
 	mov r0, #0
 	strb r0, [r5,#0xb]
@@ -11472,11 +11471,11 @@ sub_802C328:
 	bne loc_802C33C
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_802C33C:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_802C346
 	mov r0, #8
 	str r0, [r5]
@@ -11537,7 +11536,7 @@ sub_802C34E:
 	ldr r0, [r7]
 	ldr r1, [r7,#4]
 	ldr r2, [r7,#8]
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #0
 	mov r1, #0x60 
 	mul r0, r1
@@ -11546,22 +11545,22 @@ sub_802C34E:
 	add r0, r0, r1
 	ldr r1, [r7,#0x4] // (off_802C428 - 0x802c424)
 	ldr r2, [r7,#0x8] // (off_802C42C - 0x802c424)
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r7, off_802C444 // =off_802C448 
 	ldr r0, [r7]
 	ldr r1, [r7,#0x4] // (dword_802C44C - 0x802c448)
 	ldr r2, [r7,#0x8] // (off_802C450 - 0x802c448)
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	bl getPETNaviSelect // () -> u8
 	bl sub_8028164
 	ldr r1, dword_802C458 // =0x6014000 
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	bl getPETNaviSelect // () -> u8
 	bl sub_8028172
 	ldr r1, off_802C45C // =byte_30016B0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 off_802C3F4: .word dword_20364C0
 off_802C3F8: .word off_802C3FC
@@ -13716,6 +13715,7 @@ byte_802D420: .byte 0x0, 0x0, 0x0, 0x0, 0xA0, 0x0, 0x88, 0xF, 0x20, 0x0, 0x0, 0x
 	thumb_func_end sub_802D3CA
 
 	thumb_local_start
+// choose beast over panel?
 sub_802D430:
 	push {r4,r6,r7,lr}
 	sub sp, sp, #0x20
@@ -17858,7 +17858,7 @@ startScreen_802F574:
 	bl startScreen_initGfx_802FCC0
 	mov r0, #0xc
 	mov r1, #0xff
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl musicGameState_8000784 // () -> void
 	ldr r0, off_802F5EC // =pt_802F5F0 
 	bl sub_8002354
@@ -17976,7 +17976,7 @@ sub_802F668:
 	bl sub_802FD3C
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5,#1]
 	pop {pc}
@@ -17987,7 +17987,7 @@ off_802F6A0: .word 0x1340
 	thumb_local_start
 sub_802F6A4:
 	push {r4,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_802F6B0
 	mov r0, #8
 	strb r0, [r5,#1]
@@ -18005,7 +18005,7 @@ sub_802F6B2:
 	strb r0, [r5,#1]
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	b locret_802F6FA
 loc_802F6C8:
 	sub r0, #1
@@ -18051,7 +18051,7 @@ sub_802F710:
 	ble loc_802F71C
 	bl sub_802F8D8
 loc_802F71C:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_802F754
 	ldrh r0, [r5,#4]
 	cmp r0, #0
@@ -18167,7 +18167,7 @@ sub_802F81C:
 	mov r1, #9
 	tst r1, r0
 	beq loc_802F848
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_802F88C
 	bl musicGameState_8000784 // () -> void
 	mov r0, #0x9d
@@ -18176,7 +18176,7 @@ sub_802F81C:
 	strb r0, [r5,#1]
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	b locret_802F88C
 loc_802F848:
 	ldrh r0, [r7,#4]
@@ -18630,7 +18630,7 @@ locret_802FD68:
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 	.word byte_200B1A0
-off_802FD70: .word unk_30025B0
+off_802FD70:: .word unk_30025B0
 dword_802FD74: .word 0x8
 	.word unk_3002580
 	.byte 0x4, 0x0, 0x0, 0x0, 0xB0, 0xE, 0x0, 0x3, 0xA0, 0x2, 0x0, 0x0, 0x70, 0x21
@@ -19687,7 +19687,7 @@ sub_80304E8:
 	add r0, #4
 	ldr r1, [r5,#0x14]
 	ldr r2, [r5,#0x18]
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 loc_80304FC:
 	ldr r7, [r5]
 	tst r7, r7
@@ -19735,7 +19735,7 @@ sub_8030540:
 	add r0, #4
 	ldr r1, [r5,#0x14]
 	ldr r2, [r5,#0x18]
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 loc_8030554:
 	ldr r0, [r5,#8]
 	// dest
@@ -19753,7 +19753,7 @@ loc_8030554:
 	ldrb r3, [r3,#1]
 	mul r2, r3
 	lsl r2, r2, #1
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 off_8030578: .word unk_2034A00
 off_803057C: .word eDecompBuffer2013A00
@@ -20411,7 +20411,7 @@ sub_8030A60:
 	str r0, [r4,#oGameState_Unk_20]
 	push {r0}
 	mov r0, #4
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	pop {r0}
 	mov r1, #0
 loc_8030A7A:

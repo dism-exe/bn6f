@@ -1,4 +1,3 @@
-	.include "asm/asm09.inc"
 
 	thumb_func_start sub_8062AB0
 sub_8062AB0:

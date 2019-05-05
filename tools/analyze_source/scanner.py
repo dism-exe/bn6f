@@ -155,7 +155,11 @@ def recursive_scan_includes(filepath, scanned_files, syms=None, callbacks=None):
                     if in_block_comment:
                         uncommented_line += " "
                         if char == "*":
-                            char = iter_line.next()
+                            try:
+                                char = iter_line.next()
+                            except StopIteration:
+                                break
+
                             uncommented_line += " "
                             if char == "/":
                                 in_block_comment = False
@@ -163,7 +167,11 @@ def recursive_scan_includes(filepath, scanned_files, syms=None, callbacks=None):
                         uncommented_line += " " * (len(line) - iter_line.index - 1)
                         break
                     elif char == "/":
-                        char = iter_line.next()
+                        try:
+                            char = iter_line.next()
+                        except StopIteration:
+                            break
+
                         if char == "/":
                             uncommented_line += "  " + " " * (len(line) - iter_line.index - 1)
                             break

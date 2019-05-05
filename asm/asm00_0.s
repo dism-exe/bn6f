@@ -1,4 +1,3 @@
-	.include "asm/asm00_0.inc"
 
 	thumb_func_start call_m4aSoundMain
 call_m4aSoundMain:
@@ -709,8 +708,8 @@ clearWord_e200AC1C:
 	mov pc, lr
 	thumb_func_end clearWord_e200AC1C
 
-	thumb_func_start objRender_8000A44
-objRender_8000A44:
+	thumb_func_start ProcessGFXTransferQueue
+ProcessGFXTransferQueue:
 	push {lr}
 	mov r0, r8
 	mov r1, r9
@@ -765,36 +764,42 @@ CopyJumpTable8000AA8: .word CopyBytes+1
 	.word CopyHalfwords+1
 	.word CopyWords+1
 	.word CopyByEightWords+1
-	thumb_func_end objRender_8000A44
+	thumb_func_end ProcessGFXTransferQueue
 
 	thumb_local_start
-sub_8000AB8:
+QueueUnk00GFXTransfer:
 	mov r3, #0
 	b loc_8000ACA
 
 	thumb_local_start
-loc_8000ABC:
+QueueByteAlignedGFXTransfer:
 	mov r3, #1
 	b loc_8000ACA
 
 	thumb_local_start
-loc_8000AC0:
+QueueHwordAlignedGFXTransfer:
 	mov r3, #2
 	b loc_8000ACA
 
-	thumb_func_start sub_8000AC4
-sub_8000AC4:
+	thumb_func_start QueueWordAlignedGFXTransfer
+QueueWordAlignedGFXTransfer:
 	mov r3, #3
 	b loc_8000ACA
 
-	thumb_func_start sub_8000AC8
-sub_8000AC8:
+	thumb_func_start QueueEightWordAlignedGFXTransfer
+QueueEightWordAlignedGFXTransfer:
 	mov r3, #4
 
+// r0 - queued source
+// r1 - queued dest
+// r2 - queued size
+// r3 - copy type (preset)
+// preserves r0-r2
 loc_8000ACA:
 	push {r4-r7}
 	mov r7, r3
-	ldr r3, off_8000B10 // =dword_200AC1C
+	ldr r3, off_8000B10 // =dword_200AC1C 
+	// r4 = count of something?
 	ldr r4, [r3]
 	cmp r4, #0x60
 	bge loc_8000AF4
@@ -803,29 +808,34 @@ loc_8000ACA:
 	str r4, [r3]
 	ldr r4, off_8000B14 // =fiveWordArr200B4B0
 	mov r6, #0x14
+	// r5 = count * sizeof(fiveWordArr200B4B0)
 	mul r5, r6
+	// r4 = fiveWordArr200B4B0[top]
 	add r4, r4, r5
 	str r0, [r4]
 	str r1, [r4,#4]
 	str r2, [r4,#8]
 	str r7, [r4,#0x10]
-	ldr r3, off_8000AF8 // =byte_8000AFC
+	ldr r3, off_8000AF8 // =dword_8000AFC
 	lsl r7, r7, #2
 	ldr r3, [r3,r7]
 	str r3, [r4,#0xc]
 loc_8000AF4:
 	pop {r4-r7}
 	mov pc, lr
-off_8000AF8: .word byte_8000AFC
-byte_8000AFC: .byte 0x0, 0x0, 0x0, 0x84, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
-	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+off_8000AF8: .word dword_8000AFC
+dword_8000AFC: .word 0x84000000
+	.word 0xffffffff
+	.word 0xffffffff
+	.word 0xffffffff
+	.word 0xffffffff
 off_8000B10: .word dword_200AC1C
 off_8000B14: .word fiveWordArr200B4B0
-	thumb_func_end sub_8000AB8
-	thumb_func_end loc_8000ABC
-	thumb_func_end loc_8000AC0
-	thumb_func_end sub_8000AC4
-	thumb_func_end sub_8000AC8
+	thumb_func_end QueueUnk00GFXTransfer
+	thumb_func_end QueueByteAlignedGFXTransfer
+	thumb_func_end QueueHwordAlignedGFXTransfer
+	thumb_func_end QueueWordAlignedGFXTransfer
+	thumb_func_end QueueEightWordAlignedGFXTransfer
 
 	thumb_local_start
 sub_8000B18:
@@ -837,7 +847,7 @@ loc_8000B1C:
 	beq locret_8000B2E
 	ldr r1, [r7,#4]
 	ldr r2, [r7,#8]
-	bl sub_8000AB8
+	bl QueueUnk00GFXTransfer
 	add r7, #0xc
 	b loc_8000B1C
 locret_8000B2E:
@@ -920,8 +930,8 @@ ret_reachedTerminator_8000B8C:
 
 // (u32 *dataRefs) -> void
 // [break] open PET
-	thumb_func_start decomp_initGfx_8000B8E
-decomp_initGfx_8000B8E:
+	thumb_func_start QueueGFXTransfersInList
+QueueGFXTransfersInList:
 	push {r4-r7,lr}
 	mov r7, r0
 loc_8000B92:
@@ -959,22 +969,22 @@ loc_8000BBC:
 	bne loc_8000BDC
 	b loc_8000BE2
 loc_8000BD0:
-	bl loc_8000ABC
+	bl QueueByteAlignedGFXTransfer
 	b loc_8000BE6
 loc_8000BD6:
-	bl loc_8000AC0
+	bl QueueHwordAlignedGFXTransfer
 	b loc_8000BE6
 loc_8000BDC:
-	bl sub_8000AC4
+	bl QueueWordAlignedGFXTransfer
 	b loc_8000BE6
 loc_8000BE2:
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 loc_8000BE6:
 	add r7, #0xc
 	b loc_8000B92
 locret_8000BEA:
 	pop {r4-r7,pc}
-	thumb_func_end decomp_initGfx_8000B8E
+	thumb_func_end QueueGFXTransfersInList
 
 	thumb_local_start
 sub_8000BEC:
@@ -1034,6 +1044,7 @@ dword_8000C58: .word 0x99999999
 	thumb_func_end sub_8000C00
 
 	thumb_func_start sub_8000C5C
+// get num bcd digits?
 sub_8000C5C:
 	mov r1, #1
 	tst r0, r0
@@ -1282,7 +1293,7 @@ off_8000E0C: .word 0x3C
 	thumb_func_start sub_8000E10
 sub_8000E10:
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk2001c04_Ptr]
+	ldr r3, [r3,#oToolkit_S2001c04_Ptr]
 	ldr r0, [r3,#0x18]
 	add r0, #1
 	ldr r1, dword_8000E24 // =0x14988f0
@@ -1298,7 +1309,7 @@ dword_8000E24: .word 0x14988F0
 	thumb_func_start sub_8000E28
 sub_8000E28:
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk2001c04_Ptr]
+	ldr r3, [r3,#oToolkit_S2001c04_Ptr]
 	ldr r0, [r3,#0x18]
 	mov pc, lr
 	thumb_func_end sub_8000E28
@@ -1518,7 +1529,7 @@ sub_8000F86:
 	mov r1, #1
 	bl SetEventFlagFromImmediate
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	str r4, [r0,#0x18]
 	bl sub_803F79E
 locret_8000FAA:
@@ -1547,7 +1558,7 @@ loc_8000FCE:
 	mov r0, #0
 	str r0, [r5,#oGameState_CurBattleDataPtr]
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_Unk2001c04_Ptr]
+	ldr r6, [r6,#oToolkit_S2001c04_Ptr]
 	str r0, [r6,#0x1c]
 	str r0, [r6,#0x2c]
 	str r0, [r6,#0x28]
@@ -1696,20 +1707,20 @@ getPETNaviSelect:
 	mov pc, lr
 	thumb_func_end getPETNaviSelect
 
-	thumb_func_start sub_80010BE
-sub_80010BE:
+	thumb_func_start setPETNaviSelect
+setPETNaviSelect:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	strb r0, [r3,#oGameState_PETNaviIndex]
 	mov pc, lr
-	thumb_func_end sub_80010BE
+	thumb_func_end setPETNaviSelect
 
 	thumb_func_start sub_80010C6
 sub_80010C6:
 	push {lr}
 	bl getPETNaviSelect // () -> u8
 	mov r3, r10
-	ldr r3, [r3,#oToolkit_Unk2001c04_Ptr]
+	ldr r3, [r3,#oToolkit_S2001c04_Ptr]
 	strb r0, [r3,#7]
 	pop {pc}
 	thumb_func_end sub_80010C6
@@ -3299,7 +3310,7 @@ sub_8001C44:
 	ldr r0, [r0]
 	ldr r1, [r7,#0xc]
 	ldr r2, [r7,#0x10]
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {pc}
 	thumb_func_end sub_8001C44
 
@@ -3378,7 +3389,7 @@ loc_8001CA6:
 	ldr r1, [r7,#0x10]
 	ldrb r2, [r7,#0x16]
 	lsl r2, r2, #5
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4,r7,pc}
 	.balign 4, 0x00
 off_8001CE4: .word off_8001AB8
@@ -3428,7 +3439,7 @@ loc_8001D0E:
 	ldr r1, [r7,#0x10]
 	ldrb r2, [r7,#0x16]
 	lsl r2, r2, #6
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4,r7,pc}
 	.balign 4, 0x00
 off_8001D4C: .word off_8001AB8

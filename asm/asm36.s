@@ -1,4 +1,3 @@
-	.include "asm/asm36.inc"
 
 	thumb_local_start
 sub_8130020:
@@ -90,7 +89,7 @@ sub_8130084:
 	strb r1, [r5,#0x18]
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	pop {r7,pc}
 	.byte 0x0, 0x0
 dword_8130100: .word 0x1F40
@@ -152,7 +151,7 @@ sub_8130194:
 	strh r1, [r4,#0x2] // (word_2023FA2 - 0x2023fa0)
 	add r4, #4
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r1,#5]
 	mov r2, #0
 	ldr r1, off_81301D4 // =unk_20018EC 
@@ -180,7 +179,7 @@ sub_81301DC:
 	ldr r0, off_8130204 // =byte_812F044
 	bl sub_80465A0 // (void *a1) -> void
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r4, [r0,#5]
 	mov r6, #0
 loc_81301EC:
@@ -407,7 +406,7 @@ sub_8130370:
 	bne loc_81303C4
 loc_81303A2:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
 	ldrh r0, [r0,#oJoypad_LowSensitivityHeld]
@@ -426,10 +425,10 @@ loc_81303C4:
 	thumb_func_end sub_8130370
 
 	mov r0, #JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	bne loc_81303E0
 	mov r0, #JOYPAD_A
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq locret_81303F8
 	mov r1, #4
 	ldrb r0, [r7,#0x11]
@@ -483,7 +482,7 @@ sub_8130424:
 	bne loc_8130436
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 loc_8130436:
 	ldrb r0, [r5,#2]
 	mov r1, #0x49 
@@ -1131,7 +1130,7 @@ loc_81309B8:
 	ble loc_81309B8
 	tst r3, r3
 	bne loc_81309FE
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_81309FE
 	ldrh r0, [r5,#0x2a]
 	strh r0, [r5,#0x32]
@@ -1244,7 +1243,7 @@ loc_8130AB2:
 	cmp r0, #4
 	beq loc_8130AC8
 	mov r0, #JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_8130B08
 	bl sub_8131768
 	b loc_8130B08
@@ -1274,7 +1273,7 @@ loc_8130ADA:
 loc_8130AFA:
 	bl sub_81313C0
 loc_8130AFE:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8130B08
 	bl sub_8131210
 loc_8130B08:
@@ -1613,7 +1612,7 @@ loc_8130D8A:
 	ble loc_8130D8A
 	tst r3, r3
 	bne loc_8130DC4
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8130DC4
 	bl sub_8131864
 	mov r0, #0x18
@@ -1705,7 +1704,7 @@ loc_8130E24:
 	strh r1, [r5,#0x26]
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	b loc_8130E84
 loc_8130E70:
 	cmp r0, #4
@@ -1830,7 +1829,7 @@ loc_8130F4E:
 	strb r0, [r5,#0xc]
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 locret_8130F76:
 	pop {r4-r7,pc}
 	thumb_func_end sub_8130F1C
@@ -1838,7 +1837,7 @@ locret_8130F76:
 	thumb_local_start
 sub_8130F78:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8130FBA
 	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0
@@ -1936,7 +1935,7 @@ loc_813101A:
 	tst r3, r3
 	bne loc_8131062
 loc_8131040:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8131062
 	bl sub_81312FC
 	mov r0, #0
@@ -2155,7 +2154,7 @@ sub_81311F0:
 	bl sub_8131EE4
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	pop {pc}
 dword_813120C: .word 0xFEDB
 	thumb_func_end sub_81311F0
@@ -2225,10 +2224,10 @@ loc_813126C:
 	b locret_81312C8
 loc_8131292:
 	mov r0, #JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	bne loc_81312B0
 	mov r0, #JOYPAD_A
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq locret_81312C8
 	mov r0, #0x69 
 	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
@@ -2336,7 +2335,7 @@ loc_8131350:
 	bl sub_81314E4
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x68 
 	bl chatbox_runScript_803FD9C_on_eTextScript201BA20
 	ldrb r1, [r5,#0x1b]
@@ -2375,7 +2374,7 @@ sub_81313C0:
 	bne loc_81313D2
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 loc_81313D2:
 	ldrb r0, [r5,#2]
 	strb r0, [r5,#0x16]
@@ -3481,7 +3480,7 @@ off_8131F34: .word sub_8131F3C+1
 	thumb_local_start
 sub_8131F3C:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8131F74
 	mov r0, #1
 	bl sub_813D90C
@@ -3498,7 +3497,7 @@ sub_8131F3C:
 	bl sub_803EF60
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strh r0, [r5,#0x24]
 locret_8131F74:
@@ -3542,7 +3541,7 @@ off_8131FB4: .word sub_8131FC4+1
 	thumb_local_start
 sub_8131FC4:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8132010
 	mov r0, #1
 	bl sub_813D90C
@@ -3629,7 +3628,7 @@ off_8132070: .word sub_8132080+1
 sub_8132080:
 	push {lr}
 	mov r0, #JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_8132094
 	bl sub_813D978
 	mov r0, #0xc
@@ -4473,7 +4472,7 @@ sub_81326D4:
 	strb r1, [r5,r0]
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	pop {pc}
 	.byte 0, 0
 off_8132710: .word byte_81326C8
@@ -4524,7 +4523,7 @@ sub_813278C:
 	thumb_local_start
 sub_81327A0:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_81327AE
 	mov r1, #8
 	mov r0, #0x48 
@@ -4961,7 +4960,7 @@ OpenSaveMenu8132BA8:
 	strb r0, [r5,#2]
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_8046664 // () -> void
 	mov r0, #0
 	bl sub_81207F8
@@ -5008,7 +5007,7 @@ JumpTable8132C48: .word SaveMenuOpenUpdate8132C50+1
 	thumb_local_start
 SaveMenuOpenUpdate8132C50:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8132C62
 	mov r0, #0x40 
 	bl chatbox_clear_eFlags2009F38 // (int a1) ->
@@ -5036,7 +5035,7 @@ loc_8132C82:
 	strb r0, [r5,#1]
 	mov r0, #0xc
 	mov r1, #0xc
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x40 
 	bl chatbox_set_eFlags2009F38
 	b loc_8132C96
@@ -5049,7 +5048,7 @@ off_8132C9C: .word 0x110
 	thumb_local_start
 ExitSaveMenu8132CA0:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8132CB2
 	mov r0, #0x40 
 	bl chatbox_set_eFlags2009F38
@@ -5353,7 +5352,7 @@ off_8132F74: .word dword_86B7AE0
 sub_8132F78:
 	push {r4-r7,lr}
 	mov r6, r10
-	ldr r6, [r6,#oToolkit_Unk2001c04_Ptr]
+	ldr r6, [r6,#oToolkit_S2001c04_Ptr]
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_Unk200a220_Ptr]
 	ldr r0, [r6,#0x18]
@@ -5623,7 +5622,7 @@ sub_8133228:
 	strh r1, [r0,#0x1a]
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_8046664 // () -> void
 	mov r0, #0
 	strh r0, [r5,#0x18]
@@ -5806,7 +5805,7 @@ off_81333EC: .word sub_8133400+1
 	thumb_local_start
 sub_8133400:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8133410
 	mov r0, #4
 	strb r0, [r5,#2]
@@ -5910,7 +5909,7 @@ loc_81334E2:
 	bl chatbox_check_eFlags2009F38
 	bne loc_8133504
 	mov r0, #JOYPAD_SELECT | JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq locret_8133534
 	mov r0, #0x10
 	strb r0, [r5,#2]
@@ -5980,14 +5979,14 @@ sub_8133564:
 	tst r0, r0
 	bne locret_81335B6
 	mov r0, #JOYPAD_A
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_8133590
 	mov r0, #4
 	str r0, [r5,#0x68]
 	b locret_81335B6
 loc_8133590:
 	mov r0, #JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq locret_81335B6
 	mov r0, #SOUND_EXIT_SUBMENU
 	bl PlaySoundEffect
@@ -6167,7 +6166,7 @@ sub_81336C4:
 	tst r0, r0
 	bne locret_8133738
 	mov r0, #JOYPAD_A
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_81336FA
 	mov r0, #0
 	ldr r1, [r5,#0x5c]
@@ -6180,7 +6179,7 @@ loc_81336F6:
 	b locret_8133738
 loc_81336FA:
 	mov r0, #JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq locret_8133738
 	mov r0, #SOUND_EXIT_SUBMENU
 	bl PlaySoundEffect
@@ -6317,7 +6316,7 @@ sub_81337E8:
 	tst r1, r2
 	bne loc_8133864
 	mov r0, #JOYPAD_START | JOYPAD_B | JOYPAD_A
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_8133830
 	mov r0, #0x10
 	strb r0, [r5,#1]
@@ -6515,7 +6514,7 @@ sub_81339BC:
 	bl sub_81340FC
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8133A2A
 	bl sub_8046664 // () -> void
 	bl zeroFill_e2002230
@@ -6669,7 +6668,7 @@ sub_8133B18:
 	b loc_8133B4C
 loc_8133B2C:
 	mov r0, #JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_8133B4C
 	mov r0, #0xb
 	bl chatbox_runScript_803FD9C_on_eTextScript2028A20
@@ -6726,7 +6725,7 @@ loc_8133B8E:
 sub_8133BB4:
 	push {lr}
 	mov r0, #JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq locret_8133C0A
 	mov r0, #0x44 
 	add r0, #0
@@ -6772,13 +6771,13 @@ locret_8133C0A:
 sub_8133C0C:
 	push {lr}
 	mov r0, #JOYPAD_START
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	bne loc_8133C24
 	ldrb r0, [r5,#3]
 	cmp r0, #0xc
 	bne loc_8133C52
 	mov r0, #JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq locret_8133C56
 loc_8133C24:
 	mov r0, #0x44 
@@ -6814,7 +6813,7 @@ locret_8133C56:
 sub_8133C58:
 	push {r4,r6,lr}
 	mov r0, #JOYPAD_SELECT
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq locret_8133C98
 	mov r0, #0x44 
 	add r0, #0
@@ -8174,7 +8173,7 @@ sub_81347A4:
 	push {r4-r7,lr}
 	sub sp, sp, #0x10
 	mov r0, #JOYPAD_A
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	bne loc_81347B2
 	b loc_81348C4
 loc_81347B2:
@@ -8219,7 +8218,7 @@ loc_81347F8:
 	bl PlaySoundEffect
 	ldrb r7, [r5,#0xd]
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrh r2, [r5,#0x34]
 	mov r1, #0
 	mov r4, #1
@@ -8521,7 +8520,7 @@ sub_8134A3C:
 	push {lr}
 	mov r6, #0
 	mov r0, #JOYPAD_A
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_8134AB4
 	mov r6, #1
 	mov r4, #0x44 
@@ -9187,7 +9186,7 @@ off_8134F74: .word unk_202A3E0
 sub_8134F78:
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	mov r1, #0xff
 	strb r1, [r0]
 	strb r1, [r0,#2]
@@ -10177,7 +10176,7 @@ sub_81356F4:
 	strb r0, [r5,#2]
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_8046664 // () -> void
 	mov r0, #0
 	strb r0, [r5,#0x17]
@@ -10254,7 +10253,7 @@ off_81357E0: .word sub_813581C+1
 	thumb_local_start
 sub_813581C:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_813582C
 	bl sub_8135F18
 	mov r0, #4
@@ -10276,13 +10275,13 @@ sub_8135830:
 	tst r0, r0
 	bne loc_81358E0
 	mov r0, #JOYPAD_SELECT
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_8135850
 	bl sub_81367C0
 	b loc_81358EE
 loc_8135850:
 	mov r0, #JOYPAD_START
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_8135862
 	bl sub_81367A0
 	bl sub_8135F18
@@ -10301,13 +10300,13 @@ loc_8135876:
 	mov r0, #0
 	strb r0, [r5,#0x17]
 	mov r0, #JOYPAD_START | JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_8135888
 	bl sub_813627C
 	b loc_81358EE
 loc_8135888:
 	mov r0, #JOYPAD_A
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_8135896
 	bl sub_8136218
 	b loc_81358EE
@@ -10650,7 +10649,7 @@ sub_8135AF8:
 	strb r0, [r5,#2]
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_813BAC4
 	b loc_8135B2A
 loc_8135B26:
@@ -10685,7 +10684,7 @@ sub_8135B54:
 	push {r4,lr}
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8135B90
 	bl chatbox_8040818
 	mov r0, #0x40 
@@ -12574,7 +12573,7 @@ loc_8136ACC:
 	strb r0, [r5,#3]
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl chatbox_8040818
 locret_8136AE2:
 	pop {pc}
@@ -14173,7 +14172,7 @@ sub_8137718:
 	bne loc_813773E
 	mov r6, #0
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldrb r1, [r1,#5]
 loc_813773E:
 	str r1, [sp]
@@ -14194,7 +14193,7 @@ loc_8137762:
 	tst r6, r6
 	bne loc_8137774
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r1, [r0,#5]
 	add r1, #1
 	cmp r1, #3
@@ -14326,7 +14325,7 @@ loc_8137842:
 	b loc_813785E
 loc_8137858:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldrb r1, [r1,#5]
 loc_813785E:
 	ldr r3, off_8137880 // =unk_20018EC 
@@ -14436,7 +14435,7 @@ loc_8137906:
 	strb r0, [r5,#0xe]
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 dword_8137958: .word 0x1F40
@@ -14464,7 +14463,7 @@ off_8137984: .word sub_8137990+1
 	thumb_local_start
 sub_8137990:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_813799C
 	mov r0, #4
 	strb r0, [r5,#2]
@@ -14480,7 +14479,7 @@ sub_81379A0:
 	bl TestEventFlagFromImmediate
 	bne loc_81379D0
 	mov r0, #JOYPAD_A
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_81379D0
 	bl sub_8138170
 	tst r0, r0
@@ -14496,7 +14495,7 @@ loc_81379C4:
 	b locret_8137A1A
 loc_81379D0:
 	mov r0, #JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_81379F0
 	mov r0, #8
 	strb r0, [r5,#1]
@@ -14506,7 +14505,7 @@ loc_81379D0:
 	bl PlaySoundEffect
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	b locret_8137A1A
 loc_81379F0:
 	mov r0, r10
@@ -14578,7 +14577,7 @@ sub_8137A7C:
 	bl sub_80465BC
 	bl sub_80465F8 // () -> void
 	bl sub_81380E0
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8137AC8
 	bl chatbox_8040818
 	mov r0, #0x40 
@@ -15594,7 +15593,7 @@ sub_813838C:
 	strh r1, [r0,#8]
 	mov r0, #8
 	mov r1, #4
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0
 	strh r0, [r5,#4]
 	mov r0, #4
@@ -15609,11 +15608,11 @@ dword_81383C0: .word 0x1E89
 	thumb_local_start
 sub_81383C4:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_81383E8
 	mov r0, #0x80
 	mov r1, #0xff
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	ldr r0, off_81383EC // =byte_8138944
 	str r0, [r5,#0x18]
 	ldr r0, off_81383F0 // =byte_8138B90
@@ -15721,7 +15720,7 @@ sub_81384AC:
 	add r1, r1, r2
 	ldr r0, off_81384CC // =unk_2014A00 
 	ldr r2, off_81384C4 // =0x600 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	thumb_func_end sub_81384AC
 
 	pop {r3-r7,pc}
@@ -15850,7 +15849,7 @@ sub_8138584:
 	ldrb r1, [r3,#1]
 	add r3, #2
 	str r3, [r5,#0x18]
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
@@ -15863,7 +15862,7 @@ sub_8138598:
 	ldrb r1, [r3,#1]
 	add r3, #2
 	str r3, [r5,#0x18]
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0
 	pop {pc}
 	.balign 4, 0x00
@@ -15950,7 +15949,7 @@ sub_8138624:
 	push {r3}
 	mov r0, #0x80
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	pop {r3}
 	b loc_813865E
 loc_813863A:
@@ -15966,7 +15965,7 @@ loc_813863A:
 	bl sub_8030A60
 	mov r0, #0x7c 
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	pop {r3}
 loc_813865E:
 	add r3, #2
@@ -16048,7 +16047,7 @@ locret_81386FE:
 	thumb_local_start
 sub_8138700:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_813872E
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
@@ -16057,7 +16056,7 @@ sub_8138700:
 	beq locret_813872E
 	mov r0, #0xc
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x1f
 	mov r1, #0xe
 	bl sub_800068A
@@ -16078,7 +16077,7 @@ sub_8138730:
 	sub r0, #1
 	strh r0, [r5,#4]
 	bne locret_813874E
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_813874E
 	ldr r0, [r5,#0x20]
 	bl sub_8000F86
@@ -16176,7 +16175,7 @@ sub_81387D8:
 	bl sub_8036F24
 	bl sub_809F90C
 	mov r0, #0x25 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	pop {pc}
 	thumb_func_end sub_81387D8
 
@@ -16204,7 +16203,7 @@ sub_8138848:
 sub_8138884:
 	push {lr}
 	mov r0, #0x25 
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	pop {pc}
 	.byte 0, 0
 	thumb_func_end sub_8138884

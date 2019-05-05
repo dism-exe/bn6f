@@ -1,6 +1,6 @@
-TextScriptBattleTutFullSynchro:
+TextScriptBattleTutFullSynchro::
 	text_script_start TextScriptBattleTutFullSynchro
-	// FIXME (TextScript): pointers not correctly identified due to F0 00 00 and F0 00 commands
+	// FIXME (TextScript):: pointers not correctly identified due to F0 00 00 and F0 00 commands
 	// not identified correctly
 	//text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
 	.hword 0x1A, 0x52, 0x6C, 0xA3, 0x14A, 0x16F, 0x18C, 0x1BA, 0x252, 0x277, 0x3CD, 0x4C3

@@ -1,4 +1,3 @@
-	.include "asm/asm04.inc"
 
 	thumb_func_start sub_804E62C
 sub_804E62C:

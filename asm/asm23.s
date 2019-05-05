@@ -1,4 +1,3 @@
-	.include "asm/asm23.inc"
 
 	thumb_local_start
 sub_8088CA0:
@@ -627,7 +626,7 @@ sub_80897E8:
 	beq loc_8089804
 	mov r0, #4
 	mov r1, #0xff
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x24 
 	strb r0, [r5]
 loc_8089804:
@@ -638,11 +637,11 @@ loc_8089804:
 	thumb_local_start
 sub_8089808:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8089822
 	mov r0, #0
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #5
 	bl sub_8089CB0
 	mov r0, #0x28 
@@ -668,7 +667,7 @@ loc_8089836:
 	thumb_local_start
 sub_808983A:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8089856
 	bl sub_8089D44
 	bl sub_814216E
@@ -827,7 +826,7 @@ sub_8089960:
 	beq loc_808997A
 	mov r0, #4
 	mov r1, #0xff
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x4c 
 	strb r0, [r5]
 loc_808997A:
@@ -838,11 +837,11 @@ loc_808997A:
 	thumb_local_start
 sub_808997E:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8089998
 	mov r0, #0
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #5
 	bl sub_8089CB0
 	mov r0, #0x50 
@@ -884,7 +883,7 @@ loc_80899D4:
 	thumb_local_start
 sub_80899D8:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_80899EE
 	bl sub_8089CB4
 	beq loc_80899EE

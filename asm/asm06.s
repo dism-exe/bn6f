@@ -1,4 +1,3 @@
-	.include "asm/asm06.inc"
 
 	thumb_func_start sub_80595B8
 sub_80595B8:

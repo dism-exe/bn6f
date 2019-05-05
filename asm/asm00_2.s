@@ -1,4 +1,3 @@
-	.include "asm/asm00_2.inc"
 
 	thumb_func_start sub_800ED80
 sub_800ED80:
@@ -12398,13 +12397,13 @@ loc_8014900:
 	mov r0, #0x44 
 loc_8014902:
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	ldr r0, dword_8014940 // =0x4000 
 	bl sub_801DACC
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_8014912:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne locret_801493E
 	bl GetBattleMode
@@ -12486,11 +12485,11 @@ loc_80149A2:
 	mov r0, #0x40 
 loc_80149A4:
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5,#3]
 loc_80149AE:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne locret_80149EA
 	bl sub_800A97A
@@ -16330,15 +16329,15 @@ byte_8016A68: .byte 0x0, 0x0, 0x0, 0x0, 0x41, 0x0, 0x61, 0x4, 0x81, 0x8, 0xC2, 0
 	.word byte_8610881
 	.word 0x4210441
 byte_8016A9C: .byte 0x0, 0x0, 0x0, 0x0, 0x2, 0x4, 0x23, 0x4
-	.word byte_8660444
-	.word loc_8880886+1
+	.word 0x8660444
+	.word 0x8880887
 	.word 0xCCC0CAA
 	.word 0x110F0CEE
 	.word 0x11101110
 	.word 0xCEE110F
 	.word 0xCAA0CCC
-	.word loc_8870888
-	.word byte_8650866
+	.word 0x8870888
+	.word 0x8650866
 	.word 0x4430444
 	.word 0x4210422
 	thumb_func_end sub_8016A38
@@ -17246,7 +17245,7 @@ loc_801722C:
 	bl sub_80077B4
 	mov r0, #4
 	mov r1, #4
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r4, #1
 	ldr r7, [r5,#oBattleObject_AIDataPtr]
 	add r7, #0x74 
@@ -17265,7 +17264,7 @@ locret_8017272:
 	thumb_local_start
 sub_8017274:
 	push {r4,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne loc_8017284
 	mov r0, #CUR_STATE_DESTROY
@@ -19679,21 +19678,21 @@ byte_80191C8: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 
 	thumb_func_start sub_801986C
 sub_801986C:
 	push {r4,r5,lr}
-	ldr r1, off_80198E4 // =dword_2035310 
+	ldr r1, off_80198E4 // =eActiveCollisionDataBitfield 
 	mov r0, #0
 	str r0, [r1]
 	mov r5, #1
 	lsl r5, r5, #0x1f
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Unk20384f0_Ptr]
+	ldr r4, [r4,#oToolkit_CollisionDataPtr]
 loc_801987C:
 	// memBlock
 	mov r0, r4
 	// size
-	mov r1, #0xa8
+	mov r1, #oCollisionData_Size
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	str r5, [r4,#0x44]
-	add r4, #0xa8
+	str r5, [r4,#oCollisionData_CollisionIndexBit]
+	add r4, #oCollisionData_Size
 	lsr r5, r5, #1
 	bne loc_801987C
 	bl sub_8019FA4
@@ -19705,8 +19704,8 @@ object_createCollisionData:
 	push {r4,lr}
 	mov r0, r10
 	// memBlock
-	ldr r0, [r0,#oToolkit_Unk20384f0_Ptr]
-	ldr r3, off_80198E4 // =dword_2035310 
+	ldr r0, [r0,#oToolkit_CollisionDataPtr]
+	ldr r3, off_80198E4 // =eActiveCollisionDataBitfield 
 	ldr r2, [r3]
 	mov r1, #1
 	lsl r1, r1, #0x1f
@@ -19723,13 +19722,13 @@ loc_80198AE:
 	str r2, [r3]
 	mov r4, r0
 	// size
-	mov r1, #0x44 
+	mov r1, #0x44
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
-	mov r0, #0x48 
+	mov r0, #0x48
 	// memBlock
 	add r0, r0, r4
 	// size
-	mov r1, #0x60 
+	mov r1, #0x60
 	bl ZeroFillByWord // (void *memBlock, int size) -> void
 	mov r0, r4
 	mov r1, #1
@@ -19745,14 +19744,14 @@ sub_80198CE:
 	mov r1, #0
 	strb r1, [r0,#oCollisionData_Enabled]
 	ldr r2, [r0,#oCollisionData_CollisionIndexBit]
-	ldr r3, off_80198E4 // =dword_2035310 
+	ldr r3, off_80198E4 // =eActiveCollisionDataBitfield 
 	ldr r1, [r3]
 	bic r1, r2
 	str r1, [r3]
 locret_80198E0:
 	mov pc, lr
 	.balign 4, 0x00
-off_80198E4: .word dword_2035310
+off_80198E4: .word eActiveCollisionDataBitfield
 byte_80198E8: .byte 0x7F
 byte_80198E9: .byte 0x0, 0x0, 0x7F
 byte_80198EC: .byte 0x0, 0x0, 0x1, 0x0, 0x7F
@@ -19828,7 +19827,7 @@ byte_8019B06: .byte 0x5, 0xFE, 0x4, 0xFE, 0x3, 0xFE, 0x2, 0xFE, 0x1, 0xFE, 0x0, 
 byte_8019B63: .byte 0x0, 0x0, 0x0, 0xFE, 0x0, 0xFF, 0x0, 0x1, 0x0, 0x2, 0x7F
 byte_8019B6E: .byte 0x0, 0xFE, 0x0, 0xFF, 0x0, 0x1, 0x0, 0x2, 0x7F
 	.balign 4, 0
-PanelOffsetListsPointerTable:
+PanelOffsetListsPointerTable::
 	.word byte_80198E8
 	.word byte_80198E9
 	.word byte_80198EC
@@ -19876,7 +19875,7 @@ PanelOffsetListsPointerTable:
 	.word byte_8019B06
 	.word byte_8019B63
 	.word byte_8019B6E
-byte_8019C34: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0
+byte_8019C34:: .byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0
 	.byte 0x20, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x10, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x40, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0, 0x0, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x60, 0x0, 0x10, 0x0, 0x0, 0x0, 0x20, 0x0, 0x0, 0x0
@@ -20795,7 +20794,7 @@ sub_801A4DC:
 	ldr r2, [r5,#oBattleObject_CollisionDataPtr]
 	mov r5, r1
 	ldr r1, [r2,#oCollisionData_Unk_7c]
-	ldr r2, off_801A550 // =unk_20384F0 
+	ldr r2, off_801A550 // =eCollisionData 
 	mov r3, #0
 loc_801A4E8:
 	cmp r5, #4
@@ -20804,13 +20803,13 @@ loc_801A4E8:
 	beq loc_801A502
 	lsl r1, r1, #1
 	bcc loc_801A4FE
-	ldr r4, [r2,#0x38]
+	ldr r4, [r2,#oCollisionData_ParentObjectPtr]
 	str r4, [r0]
 	add r0, #4
 	add r3, #1
 	sub r5, #4
 loc_801A4FE:
-	add r2, #0xa8
+	add r2, #oCollisionData_Size
 	b loc_801A4E8
 loc_801A502:
 	mov r0, r3
@@ -20845,7 +20844,7 @@ dword_801A540: .word 0xFFFF
 dword_801A544: .word 0x100040
 off_801A548: .word 0x2000000
 off_801A54C: .word 0x1500
-off_801A550: .word unk_20384F0
+off_801A550: .word eCollisionData
 	thumb_func_end sub_801A506
 
 	thumb_local_start
@@ -24208,7 +24207,7 @@ loc_801C050:
 loc_801C05A:
 	mov r1, r7
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 loc_801C062:
 	add r4, #8
 	add r7, #0x80
@@ -24522,6 +24521,7 @@ loc_801C286:
 	thumb_func_end sub_801C202
 
 	thumb_local_start
+// print HP?
 sub_801C296:
 	push {r3,r6,lr}
 	ldrh r0, [r4,#2]
@@ -24557,7 +24557,7 @@ loc_801C2A8:
 loc_801C2D6:
 	cmp r0, #4
 	bge loc_801C2E0
-	strb r1, [r7,r0]
+	strb r1, [r7,r0] // store blank character in HP?
 	add r0, #1
 	b loc_801C2D6
 loc_801C2E0:
@@ -24599,10 +24599,10 @@ loc_801C310:
 	ldr r0, [r4,r0]
 	mov r1, r5
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add r0, r0, r2
 	add r1, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 loc_801C32A:
 	add r5, #0x20 
 	sub r6, #1
@@ -24688,7 +24688,7 @@ loc_801C3CC:
 	ldr r0, [r1,r0]
 	mov r1, r6
 	mov r2, #0x40 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add r6, #0x40 
 	sub r7, #1
 	bne loc_801C3CC
@@ -24716,7 +24716,7 @@ loc_801C3FE:
 	blt loc_801C410
 	sub r2, #8
 loc_801C410:
-	bl sub_8000AC4
+	bl QueueWordAlignedGFXTransfer
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_801C3EE
 
@@ -25052,7 +25052,7 @@ loc_801C69E:
 	ldr r0, off_801C6DC // =byte_86E1CD8 
 	add r0, r0, r3
 	ldr r1, off_801C6E0 // =unk_3001A80 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 locret_801C6AE:
 	pop {r4-r6,pc}
 dword_801C6B0: .word 0x922A
@@ -25392,7 +25392,7 @@ loc_801C92A:
 	add r0, r0, r1
 	ldr r1, [r3,#0x4] // (off_801C974 - 0x801c970)
 	ldr r2, [r3,#0x8] // (dword_801C978 - 0x801c970)
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add sp, sp, #0x10
 	pop {r4,r6,r7,pc}
 	.balign 4, 0x00
@@ -25744,7 +25744,7 @@ loc_801CBBE:
 	ldr r0, [r1,r0]
 	ldr r1, dword_801CD68 // =0x6017680 
 	ldr r2, off_801CD6C // =0x100 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	thumb_func_end sub_801CB38
 
 	thumb_local_start
@@ -25759,7 +25759,7 @@ sub_801CBD0:
 	ldr r2, off_801CD6C // =0x100 
 	add r1, r1, r2
 	ldr r2, off_801CD70 // =0x80 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	b loc_801CC0A
 loc_801CBEC:
 	ldrb r1, [r5,#0xe]
@@ -25776,7 +25776,7 @@ loc_801CBF6:
 	add r0, r0, r1
 	ldr r1, dword_801CDC8 // =0x6017780 
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 loc_801CC0A:
 	ldrb r1, [r5,#0x10]
 	cmp r1, #3
@@ -25798,7 +25798,7 @@ loc_801CC24:
 loc_801CC2A:
 	ldr r1, off_801CD78 // =byte_30016D0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r0,r4,r6,r7,pc}
 	thumb_func_end sub_801CBD0
 
@@ -25819,11 +25819,11 @@ sub_801CC34:
 	ldr r1, off_801CDCC // =byte_872D094
 	add r0, r0, r1
 	ldr r1, dword_801CD68 // =0x6017680 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, off_801CDD4 // =byte_872D014 
 	add r1, r1, r2
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #0xff
 	strb r0, [r5,#0x10]
 loc_801CC64:
@@ -25847,7 +25847,7 @@ loc_801CC76:
 	mul r1, r2
 	add r0, r0, r1
 	ldr r1, off_801CD78 // =byte_30016D0 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add sp, sp, #0x30
 	pop {r0,r4,r7,pc}
 	thumb_func_end sub_801CC34
@@ -25910,7 +25910,7 @@ loc_801CCF0:
 	ldr r0, off_801CDA0 // =byte_801CDA4
 	ldr r1, off_801CD78 // =byte_30016D0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 locret_801CD00:
 	pop {pc}
 	.balign 4, 0x00
@@ -26692,7 +26692,7 @@ loc_801D390:
 	ldr r2, [sp,#4]
 	add r1, r1, r2
 	ldr r2, off_801D3CC // =0x280 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, [sp]
 	bl sub_8027D10
 loc_801D3A2:
@@ -26732,7 +26732,7 @@ sub_801D3F8:
 	mov r4, r3
 	mov r2, #0x40 
 loc_801D400:
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add r1, r1, r2
 	sub r4, #1
 	bne loc_801D400
@@ -26781,7 +26781,7 @@ sub_801D47A:
 	ldr r0, off_801D500 // =dword_86E98CC 
 	add r0, r0, r1
 	ldr r1, dword_801D504 // =0x6017900 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_BattleStatePtr]
 	ldrb r0, [r0,#0xd]
@@ -26924,22 +26924,22 @@ loc_801D5AC:
 	push {r1}
 	ldr r1, dword_801D638 // =0x6017680 
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	b loc_801D5CE
 loc_801D5BA:
 	push {r1}
 	ldr r1, dword_801D638 // =0x6017680 
 	mov r2, #0x60 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, off_801D650 // =dword_86A5D60 
 	ldr r1, dword_801D63C // =0x60176e0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 loc_801D5CE:
 	ldr r0, off_801D654 // =dword_86E966C 
 	ldr r1, dword_801D640 // =0x6017700 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r4, #0
 	pop {r0}
 	bl sub_8000C00
@@ -26967,7 +26967,7 @@ loc_801D5FA:
 	ldr r0, off_801D650 // =dword_86A5D60 
 	ldr r1, dword_801D64C // =0x6017760 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 locret_801D618:
 	pop {r4,r6,r7,pc}
 	thumb_func_end sub_801D590
@@ -26979,7 +26979,7 @@ sub_801D61A:
 	mul r0, r2
 	ldr r3, off_801D634 // =off_86E968C 
 	add r0, r0, r3
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r1,pc}
 	.balign 4, 0x00
 off_801D62C: .word dword_86E958C
@@ -27206,7 +27206,7 @@ loc_801D7B8:
 	add r0, r0, r1
 	ldr r1, [r3,#0x4] // (off_801D804 - 0x801d800)
 	ldr r2, [r3,#0x8] // (dword_801D808 - 0x801d800)
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add sp, sp, #0x10
 	pop {r4,r6,r7,pc}
 	.balign 4, 0x00
@@ -27337,7 +27337,7 @@ sub_801DA24:
 	strh r0, [r1,#0xa]
 	// dataList
 	ldr r0, off_801DA40 // =off_801ECB4 
-	bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+	bl QueueGFXTransfersInList // (u32 *dataRefs) -> void
 	bl sub_80103EC
 	ldr r1, off_801DB50 // =eStruct2035280
 	str r0, [r1,#0x48] // (dword_20352C8 - 0x2035280)
@@ -27810,7 +27810,7 @@ sub_801DD7C:
 sub_801DD88:
 	push {lr}
 	ldr r0, off_801DDA0 // =off_801DDA4 
-	bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+	bl QueueGFXTransfersInList // (u32 *dataRefs) -> void
 	mov r0, #8
 	bl sub_801BECC
 	mov r0, #8
@@ -27856,7 +27856,7 @@ sub_801DDF6:
 	ldr r0, off_801DEC4 // =dword_86E1C78 
 	ldr r1, off_801DEC8 // =unk_3001A80 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	// j
 	mov r0, #6
 	// i
@@ -27898,7 +27898,7 @@ sub_801DE3C:
 	ldr r0, off_801DEC4 // =dword_86E1C78 
 	ldr r1, off_801DEC8 // =unk_3001A80 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	// j
 	mov r0, #6
 	// i
@@ -27949,7 +27949,7 @@ loc_801DE8C:
 	add r0, r0, r1
 	ldr r1, off_801DEC8 // =unk_3001A80 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	// j
 	mov r0, #6
 	// i
@@ -27981,7 +27981,7 @@ sub_801DED0:
 	ldr r0, off_801DF6C // =dword_86E489C 
 	ldr r1, dword_801DF70 // =0x600c440 
 	ldr r2, off_801DF74 // =0x380 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #0x10
 	bl sub_801BECC
 	mov r0, #0x10
@@ -27996,7 +27996,7 @@ sub_801DEEE:
 	ldr r0, off_801DF6C // =dword_86E489C 
 	ldr r1, dword_801DF70 // =0x600c440 
 	ldr r2, off_801DF74 // =0x380 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #0x20 
 	bl sub_801BECC
 	mov r0, #0x20 
@@ -28010,7 +28010,7 @@ sub_801DF0C:
 	bl sub_801DF92
 	// dataList
 	ldr r0, off_801DF5C // =off_801DF60 
-	bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+	bl QueueGFXTransfersInList // (u32 *dataRefs) -> void
 	mov r0, #1
 	lsl r0, r0, #0x11
 	bl sub_801BECC
@@ -28030,11 +28030,11 @@ sub_801DF32:
 	bl sub_801DF92
 	// dataList
 	ldr r0, off_801DF5C // =off_801DF60 
-	bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+	bl QueueGFXTransfersInList // (u32 *dataRefs) -> void
 	ldr r0, off_801DF80 // =dword_86E1C78 
 	ldr r1, off_801DF84 // =byte_3001B00 
 	ldr r2, dword_801DF88 // =0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #1
 	lsl r0, r0, #0x11
 	bl sub_801BECC
@@ -28045,7 +28045,8 @@ sub_801DF32:
 	.balign 4, 0x00
 off_801DF5C: .word off_801DF60
 off_801DF60: .word dword_86E4C1C
-	.byte 0xC0, 0xC7, 0x0, 0x6, 0x80, 0x1, 0x0, 0x0
+	.word 0x600C7C0
+	.word 0x180
 off_801DF6C: .word dword_86E489C
 dword_801DF70: .word 0x600C440
 off_801DF74: .word 0x380
@@ -28316,7 +28317,7 @@ sub_801E10E:
 	ldr r0, off_801E12C // =dword_86E1C78 
 	ldr r1, off_801E130 // =unk_3001A80 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 loc_801E122:
 	mov r0, #1
 	lsl r0, r0, #0xa
@@ -28359,7 +28360,7 @@ sub_801E15C:
 	bl sub_801DACC
 	// dataList
 	ldr r0, off_801E184 // =off_801E188 
-	bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+	bl QueueGFXTransfersInList // (u32 *dataRefs) -> void
 	mov r0, #1
 	lsl r0, r0, #9
 	bl sub_801DA48
@@ -28770,8 +28771,8 @@ sub_801E474:
 	lsl r0, r0, #2
 	// dataList
 	ldr r0, [r1,r0]
-	bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
-	ldr r1, off_801E4AC // =eStruct2035280
+	bl QueueGFXTransfersInList // (u32 *dataRefs) -> void
+	ldr r1, off_801E4AC // =byte_2035280 
 	mov r0, #0x3f 
 	strb r0, [r1]
 	mov r0, #1
@@ -29029,7 +29030,7 @@ sub_801E658:
 sub_801E660:
 	push {r4,r6,lr}
 	mov r4, r0
-	ldr r2, off_801E6FC // =word_801E700 
+	ldr r2, off_801E6FC // =byte_801E700 
 	ldrb r6, [r2,r4]
 	ldr r0, [r5,#0x48]
 	ldrb r0, [r0,#0x16]
@@ -29074,7 +29075,7 @@ sub_801E69C:
 sub_801E6A8:
 	push {r4,r6,lr}
 	ldr r0, [r5,#0x48]
-	ldrb r0, [r0,#0x16]
+	ldrb r0, [r0,#oBattleObject_Alliance]
 	bl sub_8015B54
 loc_801E6B2:
 	cmp r1, #0
@@ -29083,9 +29084,9 @@ loc_801E6B2:
 	ldrb r0, [r2,r0]
 	mov r1, r3
 	b locret_801E6EE
-loc_801E6BE:
+loc_801E6BE: .align 1, 0
 	mov r4, r1
-	ldr r2, off_801E6FC // =word_801E700 
+	ldr r2, off_801E6FC // =byte_801E700 
 	ldrb r6, [r2,r4]
 	cmp r4, #0xb
 	beq loc_801E6CC
@@ -29115,10 +29116,8 @@ locret_801E6EE:
 	pop {r4,r6,pc}
 off_801E6F0: .word byte_801E6F4
 byte_801E6F4: .byte 0x0, 0x2, 0x3, 0x1, 0x5, 0x4, 0x0, 0x0
-off_801E6FC: .word word_801E700
-word_801E700: .hword 0x500, 0x706, 0x908, 0x605, 0x807
-	.hword 0x1409, 0xF14, 0x1110, 0x1312, 0x100F
-	.hword 0x1211, 0x1613, 0x16, 0x0
+off_801E6FC: .word byte_801E700
+byte_801E700: .byte 0x0, 0x5, 0x6, 0x7, 0x8, 0x9, 0x5, 0x6, 0x7, 0x8, 0x9, 0x14, 0x14, 0xF, 0x10, 0x11, 0x12, 0x13, 0xf, 0x10, 0x11, 0x12, 0x13, 0x16, 0x16, 0x0, 0x0, 0x0
 	thumb_func_end sub_801E6A8
 
 	thumb_func_start sub_801E71C
@@ -29310,10 +29309,10 @@ loc_801E844:
 	beq loc_801E84E
 	add r7, #4
 loc_801E84E:
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add r0, #0x20 
 	add r1, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	sub r1, #0x60 
 	sub r6, #1
 	bne loc_801E844
@@ -29350,23 +29349,23 @@ loc_801E890:
 	mov r2, #0x20 
 	ldr r1, dword_801E934 // =0x6017300 
 	mov r0, r6
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add r1, #0x20 
 	mov r0, r7
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, r6
 	add r0, #0x20 
 	add r1, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, r7
 	add r0, #0x20 
 	add r1, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 loc_801E8C0:
 	ldr r0, off_801E938 // =byte_86F2900 
 	ldr r1, off_801E93C // =byte_30016B0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 	thumb_func_end sub_801E838
 
@@ -29531,10 +29530,10 @@ loc_801E9FC:
 	ldr r0, off_801EA90 // =dword_86E1C78 
 	ldr r1, off_801EA94 // =byte_30016B0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	// dataList
 	ldr r0, off_801EAAC // =off_801EAB0 
-	bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+	bl QueueGFXTransfersInList // (u32 *dataRefs) -> void
 	mov r0, #0
 	pop {r4-r7,pc}
 	pop {r1-r3,r5}
@@ -29553,10 +29552,10 @@ loc_801EA3C:
 	and r0, r4
 	lsl r0, r0, #2
 	ldr r0, [r6,r0]
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add r0, r0, r2
 	add r1, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	sub r1, #0xa0
 	lsr r4, r4, #4
 	sub r7, #1
@@ -29721,7 +29720,7 @@ sub_801EB9C:
 	ldr r0, off_801EBC0 // =dword_86EA92C 
 	ldr r1, off_801EBC4 // =unk_3001AC0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #1
 	lsl r0, r0, #0x12
 	bl sub_801BECC
@@ -29760,7 +29759,7 @@ sub_801EBDE:
 	ldr r0, off_801EBF4 // =dword_86E97CC 
 	ldr r1, dword_801EBF8 // =0x6017800 
 	ldr r2, off_801EBFC // =0x100 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #1
 	lsl r0, r0, #0x13
 	bl sub_801BEB8
@@ -29772,7 +29771,7 @@ off_801EBFC: .word 0x100
 	ldr r0, off_801EC24 // =dword_86E9A0C 
 	ldr r1, off_801EC28 // =byte_30016D0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, dword_801EC20 // =0x80000 
 	bl sub_801BECC
 	ldr r0, dword_801EC20 // =0x80000 
@@ -29810,11 +29809,11 @@ sub_801EC44:
 	ldr r0, off_801EC74 // =dword_86E994C 
 	ldr r1, dword_801EC78 // =0x6016d00 
 	mov r2, #0xc0
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, off_801EC7C // =dword_86E9A0C 
 	ldr r1, off_801EC80 // =byte_30016F0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #1
 	lsl r0, r0, #0x15
 	bl sub_801BECC
@@ -29847,7 +29846,7 @@ sub_801EC90:
 	ldr r0, off_801ECA8 // =dword_86E9A0C 
 	ldr r1, off_801ECAC // =byte_30016D0 
 	mov r2, #0x20 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #1
 	lsl r0, r0, #0x16
 	bl sub_801BEB8

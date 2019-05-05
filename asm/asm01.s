@@ -1,4 +1,3 @@
-	.include "asm/asm01.inc"
 
 	thumb_func_start sub_801FE00
 sub_801FE00:
@@ -447,14 +446,18 @@ eStruct2038160_getBattleTerminate01:
 off_8020164: .word eStruct2038160
 off_8020168: .word eStruct2038160
 off_802016C: .word eStruct2038160
-off_8020170: .word off_8020190
-off_8020174: .word off_80201E4
-off_8020178: .word off_8020190
-off_802017C: .word pt_8020240
-off_8020180: .word off_8020190
-off_8020184: .word pt_802029C
-off_8020188: .word off_8020190
-off_802018C: .word off_80202F8
+off_8020170:
+	.word off_8020190
+	.word off_80201E4
+off_8020178:
+	.word off_8020190
+	.word pt_8020240
+off_8020180:
+	.word off_8020190
+	.word pt_802029C
+off_8020188:
+	.word off_8020190
+	.word off_80202F8
 off_8020190: .word off_80B1B7C
 	.word off_80B1B7C
 	.word off_80B1B7C

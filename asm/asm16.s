@@ -1,4 +1,3 @@
-	.include "asm/asm16.inc"
 
 	thumb_func_start sub_8077D00
 sub_8077D00:

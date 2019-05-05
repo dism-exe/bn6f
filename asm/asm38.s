@@ -1,6 +1,5 @@
-	.include "asm/asm38.inc"
 
-dword_3005B00: .word 0xE3A03301, 0xE2833C02, 0xE5932000, 0xE1D310B8, 0xE14F0000
+dword_3005B00:: .word 0xE3A03301, 0xE2833C02, 0xE5932000, 0xE1D310B8, 0xE14F0000
 	.word 0xE92D400F, 0xE3A00000, 0xE1C300B8, 0xE0021822, 0xE59F0168
 	.word 0xE5900000, 0xE1100000, 0x1A000011, 0xE3A0C008, 0xE2110004
 	.word 0x1A00003B, 0xE3A00001, 0xE1C300B8, 0xE3A0C01C, 0xE2110080
@@ -566,7 +565,7 @@ loc_300608C:
 	ldrh r3, [r5,#8]
 	lsl r3, r3, #5
 	add r1, r1, r3
-	ldr r7, off_3006104 // =sub_8000AC8+1
+	ldr r7, off_3006104 // =QueueEightWordAlignedGFXTransfer+1
 	mov lr, pc
 	bx r7
 	mov r5, r8
@@ -603,7 +602,7 @@ off_30060E8: .word dword_200F350
 	.word dword_200F350
 	.word dword_200F350
 dword_3006100: .word 0x6010000
-off_3006104: .word sub_8000AC8+1
+off_3006104: .word QueueEightWordAlignedGFXTransfer+1
 	thumb_func_end sub_3006028
 
 	thumb_local_start
@@ -1774,7 +1773,7 @@ loc_3006988:
 off_3006994: .word byte_3001950
 off_3006998: .word byte_3001150
 off_300699C: .word dword_3002590
-byte_30069A0: .byte 0x4, 0x4, 0x4, 0x0, 0x4, 0x0, 0x4, 0x4
+byte_30069A0:: .byte 0x4, 0x4, 0x4, 0x0, 0x4, 0x0, 0x4, 0x4
 	thumb_func_end sub_3006920
 
 	thumb_local_start
@@ -2005,7 +2004,7 @@ off_3006B18: .word sub_3006C38+1
 	.word 0x0
 	.word 0x0
 	.word sub_3006E7C+1
-dword_3006B84: .word 0x0, 0x44444444, 0x88888888, 0xCCCCCCCC
+dword_3006B84:: .word 0x0, 0x44444444, 0x88888888, 0xCCCCCCCC
 	thumb_func_end sub_3006A5E
 
 	thumb_func_start sub_3006B94
@@ -2065,14 +2064,14 @@ loc_3006BF6:
 	tst r1, r1
 	beq loc_3006C04
 	sub r2, r2, r0
-	ldr r3, off_3006C0C // =sub_8000AC8+1
+	ldr r3, off_3006C0C // =QueueEightWordAlignedGFXTransfer+1
 	mov lr, pc
 	bx r3
 loc_3006C04:
 	mov r0, r9
 	pop {pc}
 off_3006C08: .word off_3006B18
-off_3006C0C: .word sub_8000AC8+1
+off_3006C0C: .word QueueEightWordAlignedGFXTransfer+1
 	.word ZeroFillByByte+1
 off_3006C14: .word dword_3006B84
 	thumb_func_end sub_3006B94
@@ -2539,7 +2538,7 @@ off_3006F54: .word byte_3006F58
 byte_3006F58: .byte 0x3, 0x0, 0x0, 0x0
 	thumb_func_end sub_3006F48
 
-	thumb_local_start
+	thumb_func_start sub_3006F5C
 sub_3006F5C:
 	ldrb r7, [r0,#1]
 	ldr r1, off_3006F68
@@ -2551,13 +2550,13 @@ off_3006F68: .word byte_3006F6C
 byte_3006F6C: .byte 0x3, 0x2, 0x3, 0x3
 	thumb_func_end sub_3006F5C
 
-	thumb_local_start
+	thumb_func_start sub_3006F70
 sub_3006F70:
 	add r0, #3
 	mov pc, lr
 	thumb_func_end sub_3006F70
 
-	thumb_local_start
+	thumb_func_start sub_3006F74
 sub_3006F74:
 	ldrb r7, [r0,#1]
 	ldr r1, off_3006F80 // =byte_3006F84
@@ -2864,7 +2863,7 @@ loc_30071BE:
 	ldr r0, off_30071F0 // =dword_200CDA0
 	ldr r1, dword_30071F4 // =0x6015700
 	ldr r2, dword_30071F8 // =0xf00
-	ldr r3, off_30071FC // =sub_8000AC8+1
+	ldr r3, off_30071FC // =QueueEightWordAlignedGFXTransfer+1
 	mov lr, pc
 	bx r3
 	mov r5, r10
@@ -2885,7 +2884,7 @@ locret_30071E8:
 off_30071F0: .word dword_200CDA0
 dword_30071F4: .word 0x6015700
 dword_30071F8: .word 0xF00
-off_30071FC: .word sub_8000AC8+1
+off_30071FC: .word QueueEightWordAlignedGFXTransfer+1
 Flags3007200: .word FLAGS_3E_UNK_0400
 off_3007204: .word chatbox_maskFlags_3e+1
 off_3007208: .word off_300720C
@@ -3883,7 +3882,7 @@ sub_3007978:
 	ldr r1, off_30079A0 // =unk_2034F60
 	ldr r2, [r0,r1]
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk20384f0_Ptr]
+	ldr r1, [r1,#oToolkit_CollisionDataPtr]
 	mov r0, #0
 loc_3007988:
 	lsl r2, r2, #1

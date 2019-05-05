@@ -1,4 +1,3 @@
-	.include "asm/asm35.inc"
 
 	thumb_func_start CopyBackgroundTiles812EAAC
 CopyBackgroundTiles812EAAC:
@@ -323,10 +322,10 @@ loc_812ECF2:
 	strh r1, [r7,#0x3c]
 loc_812ECFA:
 	mov r0, #JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	bne loc_812ED12
 	mov r0, #JOYPAD_A
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq locret_812ED2A
 	mov r1, #4
 	ldrb r0, [r5,#0x11]
@@ -385,7 +384,7 @@ sub_812ED58:
 	bne loc_812ED6A
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 loc_812ED6A:
 	mov r0, #0x1c
 	strb r0, [r5,#2]

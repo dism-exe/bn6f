@@ -1,4 +1,3 @@
-	.include "asm/asm03_1.inc"
 
 off_8033764: .word spriteWhiteDot
 	.word byte_8699EDC
@@ -147,19 +146,19 @@ sub_8033978:
 	ldr r0, off_80339B0 // =dword_86C0D20
 	ldr r1, dword_80339B4 // =0x6017200
 	ldr r2, off_80339B8 // =0x100
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r0, #0
 	bl sub_8033DA0
 	pop {r4-r7,pc}
 loc_8033998:
-	ldr r0, off_80339C0 // =byte_86C1F80
-	ldr r1, dword_80339B4 // =0x6017200
-	ldr r2, off_80339C4 // =0x340
-	bl sub_8000AC8
-	ldr r0, off_80339C8 // =byte_86C1F20
-	ldr r1, off_80339BC // =byte_30016D0
-	mov r2, #0x20
-	bl sub_8000AC8
+	ldr r0, off_80339C0 // =byte_86C1F80 
+	ldr r1, dword_80339B4 // =0x6017200 
+	ldr r2, off_80339C4 // =0x340 
+	bl QueueEightWordAlignedGFXTransfer
+	ldr r0, off_80339C8 // =byte_86C1F20 
+	ldr r1, off_80339BC // =byte_30016D0 
+	mov r2, #0x20 
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_80339B0: .word dword_86C0D20
@@ -429,11 +428,11 @@ loc_8033C02:
 	ldr r1, off_8033C20 // =off_8033C24
 	lsl r4, r4, #2
 	ldr r0, [r1,r4]
-	ldr r1, dword_8033C58 // =0x6017380
-	ldr r2, off_8033C5C // =0x80
-	bl sub_8000AC4
-	ldr r0, dword_8033C60 // =0x40120006
-	ldr r1, dword_8033C64 // =0xc79c
+	ldr r1, dword_8033C58 // =0x6017380 
+	ldr r2, off_8033C5C // =0x80 
+	bl QueueWordAlignedGFXTransfer
+	ldr r0, dword_8033C60 // =0x40120006 
+	ldr r1, dword_8033C64 // =0xc79c 
 	mov r2, #1
 	mov r3, #0
 	bl sub_802FE28 // (u32 a1, u16 a2, int notUsed, int a4) -> void
@@ -466,9 +465,9 @@ sub_8033C68:
 	ldr r1, off_8033D28 // =off_8033D2C
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
-	ldr r1, dword_8033CD8 // =0x6017400
-	ldr r2, off_8033CDC // =0x100
-	bl sub_8000AC4
+	ldr r1, dword_8033CD8 // =0x6017400 
+	ldr r2, off_8033CDC // =0x100 
+	bl QueueWordAlignedGFXTransfer
 	ldrb r0, [r5,#6]
 	ldr r1, off_8033CC0 // =byte_8033CC4
 	ldrb r0, [r1,r0]
@@ -521,9 +520,9 @@ sub_8033CF0:
 	ldr r1, off_8033D28 // =off_8033D2C
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
-	ldr r1, dword_8033D74 // =0x6017400
-	ldr r2, off_8033D78 // =0x100
-	bl sub_8000AC8
+	ldr r1, dword_8033D74 // =0x6017400 
+	ldr r2, off_8033D78 // =0x100 
+	bl QueueEightWordAlignedGFXTransfer
 	ldrb r0, [r5,#6]
 	add r0, #1
 	cmp r0, #0x12
@@ -602,9 +601,9 @@ loc_8033DBC:
 	lsl r4, r4, #2
 	ldr r0, [r0,r4]
 	add r0, r0, r6
-	ldr r1, off_8033E08 // =byte_30016D0
-	mov r2, #0x20
-	bl sub_8000AC8
+	ldr r1, off_8033E08 // =byte_30016D0 
+	mov r2, #0x20 
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_8033DD0: .word off_8033DD4
@@ -792,7 +791,7 @@ sub_8033F80:
 	ldr r0, off_8033FA8 // =byte_86C1AA0
 	ldr r1, dword_8033FAC // =0x6017580
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, off_8033FB0 // =byte_8033FB4
 	lsl r4, r4, #2
 	ldr r0, [r0,r4]
@@ -884,7 +883,7 @@ loc_8034064:
 	movflag EVENT_1700
 	bl ClearEventFlagFromImmediate
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk2001c04_Ptr]
+	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	strh r0, [r7,#0x12]
 	strh r0, [r7,#0x14]
@@ -952,7 +951,7 @@ loc_8034108:
 	bne loc_803412A
 	bl sub_80010C6
 	mov r0, #0
-	bl sub_80010BE
+	bl setPETNaviSelect
 	bl sub_8120DF0
 	bl sub_813C3AC
 	bl sub_80010C6
@@ -968,7 +967,7 @@ loc_803412E:
 loc_8034140:
 	bl sub_803CEB8
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	mov r2, #0
 	str r2, [r0,#0x24]
 	str r2, [r0,#0x28]
@@ -992,7 +991,7 @@ loc_8034140:
 	movflag EVENT_1700
 	bl ClearEventFlagFromImmediate
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk2001c04_Ptr]
+	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	strh r0, [r7,#0x12]
 	strh r0, [r7,#0x14]
@@ -1114,7 +1113,7 @@ sub_8034268:
 	str r0, [r5,#8]
 	mov r0, #0
 	mov r1, #4
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5,#1]
 	bl sub_80343B0 // () -> void
@@ -1126,7 +1125,7 @@ off_80342A0: .word 0x50
 	thumb_local_start
 sub_80342A4:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_80342C0
 	ldrh r0, [r5,#4]
 	sub r0, #1
@@ -1134,7 +1133,7 @@ sub_80342A4:
 	bgt loc_80342C0
 	mov r0, #4
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
 	strb r0, [r5,#1]
 loc_80342C0:
@@ -1145,7 +1144,7 @@ loc_80342C0:
 	thumb_local_start
 sub_80342C6:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_80342D6
 	mov r0, #8
 	strb r0, [r5]
@@ -1258,9 +1257,9 @@ loc_80343D0:
 	strh r1, [r5,#6]
 	mov r7, r3
 	ldr r0, [r7,#4]
-	ldr r1, off_8034458 // =byte_3001960
-	mov r2, #0x20
-	bl sub_8000AC4
+	ldr r1, off_8034458 // =byte_3001960 
+	mov r2, #0x20 
+	bl QueueWordAlignedGFXTransfer
 	// j
 	mov r0, #0
 	// i
@@ -1373,19 +1372,30 @@ maps80_8034670: .word off_80665A4
 	.word off_8069304
 	.word off_806A260
 	.word off_806A26C
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word off_806AE08
 	.word off_806AE1C
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word off_806C7B0
 	.word off_806C7CC
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word off_806DFB0
 	.word off_806DFF0
 	.word off_807022C
 	.word off_807026C
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word off_8071EB0
 	.word off_8071EBC
 	.word off_80758A0
@@ -1406,12 +1416,16 @@ off_8034728: .word off_80665BC
 	.word off_806A284
 	.word 0x0
 	.word off_806AE44
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word off_806C804
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word off_806E070
 	.word off_80702EC
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word off_8071ED4
 	.word off_80758C4
 	.word off_807811C
@@ -1448,15 +1462,16 @@ NPCList_maps80: .word off_80665B4
 	.word off_806A278
 	.word 0x0
 	.word off_806AE30
-	.word 0
-	.byte 0, 0, 0, 0
+	.word 0x0
+	.word 0x0
 	.word off_806C7E8
-	.word 0, 0
-	.byte 0, 0, 0, 0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word off_806E030
 	.word off_80702AC
-	.word 0
-	.byte 0, 0, 0, 0
+	.word 0x0
+	.word 0x0
 	.word off_8071EC8
 	.word off_80758B8
 	.word off_8078114
@@ -1470,12 +1485,16 @@ off_803483C: .word sub_8066540+1
 	.word sub_806A1DE+1
 	.word 0x0
 	.word sub_806AD00+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_806C59C+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_806DCD4+1
 	.word sub_806FFDA+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_8071CEE+1
 	.word sub_80755EE+1
 	.word sub_8077E84+1
@@ -1489,12 +1508,16 @@ off_8034898: .word sub_806649C+1
 	.word sub_806A120+1
 	.word 0x0
 	.word sub_806AB94+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_806C35C+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_806DA58+1
 	.word sub_806FD54+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_8071C30+1
 	.word sub_8075530+1
 	.word sub_8077DE0+1
@@ -1670,7 +1693,7 @@ loc_8034BFE:
 	bl map_script_overworld_8036064
 	bl s_2011C50_ptr_1C_isNull // () -> zf
 	beq loc_8034C2C
-	bl cutscene_803851C // () -> void
+	bl runCutscene_803851C // () -> void
 	mov r0, #7
 	mov r1, #0x42
 	bl ClearEventFlagFromImmediate
@@ -1694,7 +1717,7 @@ loc_8034C2C:
 	thumb_func_start sub_8034C36
 sub_8034C36:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8034C6A
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate
@@ -1719,7 +1742,7 @@ loc_8034C6A:
 	thumb_local_start
 sub_8034C6E:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8034C98
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate
@@ -2264,7 +2287,7 @@ npc_80350BC:
 	pop {r4,pc}
 loc_80350E2:
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Unk2001c04_Ptr]
+	ldr r4, [r4,#oToolkit_S2001c04_Ptr]
 	movflag EVENT_170A
 	bl TestEventFlagFromImmediate
 	beq loc_8035102
@@ -2360,12 +2383,12 @@ sub_8035194:
 	mov r3, r10
 	ldr r3, [r3,#oToolkit_GameStatePtr]
 	ldrb r0, [r3,#oGameState_MapGroup]
-	cmp r0, #0x80
+	cmp r0, #INTERNET_MAP_GROUP_START
 	bge loc_80351A2
 	b locret_80351AE
 loc_80351A2:
 	ldr r2, off_80351B0 // =off_8034898
-	sub r0, #0x80
+	sub r0, #INTERNET_MAP_GROUP_START
 	lsl r0, r0, #2
 	ldr r2, [r2,r0]
 	mov lr, pc
@@ -3041,71 +3064,71 @@ byte_80357F0: .byte 0x3C, 0x3D, 0x3E, 0x3F, 0x10, 0x11, 0x12, 0x13, 0x14
 	.byte 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D
 	.byte 0x1E, 0x1F, 0x0, 0x0, 0x0, 0x0
 ScriptCmds8035808:
-	.word MapScript_end+1
-	.word MapScript_jump+1
-	.word MapScript_jump_if_progress_in_range+1
-	.word MapScript_jump_if_flag_set+1
-	.word MapScript_jump_if_flag_range_set+1
-	.word MapScript_jump_if_flag_clear+1
-	.word MapScript_jump_if_flag_range_clear+1
-	.word MapScript_jump_if_mem_equals+1
-	.word MapScript_jump_if_unk_navicust_range+1
-	.word MapScript_jump_if_chip_count_in_range+1
+	.word MapScriptCmd_end+1
+	.word MapScriptCmd_jump+1
+	.word MapScriptCmd_jump_if_progress_in_range+1
+	.word MapScriptCmd_jump_if_flag_set+1
+	.word MapScriptCmd_jump_if_flag_range_set+1
+	.word MapScriptCmd_jump_if_flag_clear+1
+	.word MapScriptCmd_jump_if_flag_range_clear+1
+	.word MapScriptCmd_jump_if_mem_equals+1
+	.word MapScriptCmd_jump_if_unk_navicust_range+1
+	.word MapScriptCmd_jump_if_chip_count_in_range+1
 	.word sub_803793A+1
 	.word sub_803795C+1
-	.word MapScript_cmd_8035afa+1
-	.word MapScript_cmd_8035b44+1
-	.word MapScript_jump_if_game_state_0e_equals+1
-	.word MapScript_jump_if_game_state_0e_not_equals+1
+	.word MapScriptCmd_cmd_8035afa+1
+	.word MapScriptCmd_cmd_8035b44+1
+	.word MapScriptCmd_jump_if_game_state_0e_equals+1
+	.word MapScriptCmd_jump_if_game_state_0e_not_equals+1
 	.word sub_803797E+1
 	.word sub_80379A0+1
-	.word MapScript_jump_if_player_z_equals+1
-	.word MapScript_jump_if_player_z_not_equals+1
-	.word MapScript_jump_if_game_state_44_equals+1
-	.word MapScript_jump_if_game_state_44_not_equals+1
-	.word MapScript_jump_if_map_group_compare_last_map_group+1
-	.word MapScript_cmd_8035ca0+1
-	.word MapScriptCmd_8035cd6+1
-	.word MapScriptCmd_8035cf8+1
+	.word MapScriptCmd_jump_if_player_z_equals+1
+	.word MapScriptCmd_jump_if_player_z_not_equals+1
+	.word MapScriptCmd_jump_if_game_state_44_equals+1
+	.word MapScriptCmd_jump_if_game_state_44_not_equals+1
+	.word MapScriptCmd_jump_if_map_group_compare_last_map_group+1
+	.word MapScriptCmd_cmd_8035ca0+1
+	.word MapScriptCmd_cmd_8035cd6+1
+	.word MapScriptCmd_cmd_8035cf8+1
 	.word MapScriptCmd_jump_if_fade_active+1
 	.word MapScriptCmd_jump_if_eStruct200a6a0_initialized+1
 	.word MapScriptCmd_jump_if_in_pet_menu+1
-	.word sub_8035D6A+1
-	.word sub_8035D98+1
-	.word sub_8035DB4+1
-	.word sub_8035DD6+1
-	.word sub_8035DF8+1
-	.word sub_8035E16+1
-	.word sub_8035E34+1
-	.word sub_8035E54+1
-	.word sub_8035E74+1
-	.word sub_8035E8E+1
-	.word sub_8035EAA+1
-	.word sub_8035EC2+1
-	.word sub_8035EDA+1
-	.word sub_8035EF2+1
-	.word sub_8035F0E+1
-	.word sub_8035F2A+1
-	.word sub_8035F3E+1
-	.word sub_8035F52+1
-	.word sub_8035F6A+1
+	.word MapScriptCmd_set_screen_fade+1
+	.word MapScriptCmd_set_game_state_16_17+1
+	.word MapScriptCmd_set_event_flag+1
+	.word MapScriptCmd_clear_event_flag+1
+	.word MapScriptCmd_set_event_flag_range+1
+	.word MapScriptCmd_clear_event_flag_range+1
+	.word MapScriptCmd_set_event_flag_list+1
+	.word MapScriptCmd_clear_event_flag_list+1
+	.word MapScriptCmd_call_native_function+1
+	.word MapScriptCmd_run_cutscene_maybe+1
+	.word MapScriptCmd_write_byte+1
+	.word MapScriptCmd_write_hword+1
+	.word MapScriptCmd_write_word+1
+	.word MapScriptCmd_write_gamestate_byte+1
+	.word MapScriptCmd_write_eStruct2001c04_byte+1
+	.word MapScriptCmd_call_sub_8001B1C+1
+	.word MapScriptCmd_call_sub_8001B1C_multiple+1
+	.word MapScriptCmd_call_sub_8030A30_8035194+1
+	.word MapScriptCmd_cmd_8035F6A+1
 	.word sub_80380B4+1
 	.word sub_80380C8+1
 	.word sub_80380EA+1
 	.word sub_803810E+1
 	.word sub_8038132+1
 	.word sub_803813E+1
-	.word sub_8035F98+1
+	.word MapScriptCmd_call_sub_8033FC0+1
 	.word 0x0
 	.word sub_80381FA+1
 	.word sub_803821E+1
-	.word sub_8035FBA+1
+	.word MapScriptCmd_write_script_struct_10_word+1
 	.word sub_803827A+1
 	.word sub_803828E+1
 	.word sub_803829A+1
 	.word sub_80382AE+1
 	.word 0x0
-	.word sub_8035FDE+1
+	.word MapScriptCmd_spawn_or_free_objects+1
 	.word sub_80382BA+1
 	.word sub_8038322+1
 	.word sub_8038346+1
@@ -3116,27 +3139,27 @@ ScriptCmds8035808:
 	thumb_local_start
 // 0x00
 // return from script
-MapScript_end: // 8035920
+MapScriptCmd_end: // 8035920
 	mov r0, #0
 	mov pc, lr
-	thumb_func_end MapScript_end
+	thumb_func_end MapScriptCmd_end
 
 	thumb_local_start
 // 0x01 destination
 // jump
-MapScript_jump: // 8035924
+MapScriptCmd_jump: // 8035924
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump
+	thumb_func_end MapScriptCmd_jump
 
 	thumb_local_start
 // 0x02 byte1 byte2 destination
-// jump if byte1 < progress byte < byte2
-MapScript_jump_if_progress_in_range: // 8035932
+// jump if byte1 <= progress byte <= byte2
+MapScriptCmd_jump_if_progress_in_range: // 8035932
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3159,12 +3182,12 @@ MapScript_jump_if_progress_in_range: // 8035932
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_progress_in_range
+	thumb_func_end MapScriptCmd_jump_if_progress_in_range
 
 	thumb_local_start
 // 0x03 byte flag destination
 // jump if event flag in mem or immediate is set
-MapScript_jump_if_flag_set: // 8035962
+MapScriptCmd_jump_if_flag_set: // 8035962
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3189,12 +3212,12 @@ MapScript_jump_if_flag_set: // 8035962
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_flag_set
+	thumb_func_end MapScriptCmd_jump_if_flag_set
 
 	thumb_local_start
 // 0x04 byte flag destination
 // jump if (all) event flags in the event flag range are set
-MapScript_jump_if_flag_range_set: // 8035992
+MapScriptCmd_jump_if_flag_range_set: // 8035992
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3214,12 +3237,12 @@ MapScript_jump_if_flag_range_set: // 8035992
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_flag_range_set
+	thumb_func_end MapScriptCmd_jump_if_flag_range_set
 
 	thumb_local_start
 // 0x05 byte flag destination
 // jump if event flag in mem or immediate is clear
-MapScript_jump_if_flag_clear: // 80359BE
+MapScriptCmd_jump_if_flag_clear: // 80359BE
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3243,12 +3266,12 @@ MapScript_jump_if_flag_clear: // 80359BE
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_flag_clear
+	thumb_func_end MapScriptCmd_jump_if_flag_clear
 
 	thumb_local_start
 // 0x06 byte flag destination
 // jump if not all event flags in the event flag range are set
-MapScript_jump_if_flag_range_clear: // 80359EE
+MapScriptCmd_jump_if_flag_range_clear: // 80359EE
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3268,7 +3291,7 @@ MapScript_jump_if_flag_range_clear: // 80359EE
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_flag_range_clear
+	thumb_func_end MapScriptCmd_jump_if_flag_range_clear
 
 	thumb_local_start
 // 0x07 0x00 word destination byte
@@ -3276,7 +3299,7 @@ MapScript_jump_if_flag_range_clear: // 80359EE
 // 0x07 0x02 word destination word
 // jump if [word] == param
 // this command is variable length
-MapScript_jump_if_mem_equals: // 8035A1A
+MapScriptCmd_jump_if_mem_equals: // 8035A1A
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptWord // word
@@ -3321,12 +3344,12 @@ MapScript_jump_if_mem_equals: // 8035A1A
 	mov r7, r1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_mem_equals
+	thumb_func_end MapScriptCmd_jump_if_mem_equals
 
 	thumb_local_start
 // 0x08 byte1 byte2 byte3 destination
 // jump if byte2 < sub_803CE28(byte1) < byte3
-MapScript_jump_if_unk_navicust_range: // 8035A74
+MapScriptCmd_jump_if_unk_navicust_range: // 8035A74
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3350,7 +3373,7 @@ MapScript_jump_if_unk_navicust_range: // 8035A74
 	add r7, #8
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_unk_navicust_range
+	thumb_func_end MapScriptCmd_jump_if_unk_navicust_range
 
 	thumb_local_start
 // 0x09 hword byte1 byte2 byte3 destination
@@ -3361,7 +3384,7 @@ MapScript_jump_if_unk_navicust_range: // 8035A74
 //	 GetChipCountOfCode calls chip_8021C7C
 // related to chips
 //
-MapScript_jump_if_chip_count_in_range: // 8035AAA
+MapScriptCmd_jump_if_chip_count_in_range: // 8035AAA
 	push {lr}
 	mov r6, #3
 	bl ReadMapScriptByte
@@ -3398,13 +3421,13 @@ MapScript_jump_if_chip_count_in_range: // 8035AAA
 	add r7, #10
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_chip_count_in_range
+	thumb_func_end MapScriptCmd_jump_if_chip_count_in_range
 
 	thumb_local_start
 // 0x0c byte1 signedbyte2 destination
 // sub_8031A7A(complex) returns r0, r1. if r0 == 0, r1 is used in comparison
 // jump if byte1 == compByte
-MapScript_cmd_8035afa: // 8035afa
+MapScriptCmd_cmd_8035afa: // 8035afa
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptSignedByte
@@ -3440,12 +3463,12 @@ loc_8035B3E:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_cmd_8035afa
+	thumb_func_end MapScriptCmd_cmd_8035afa
 
 	thumb_local_start
 // 0x0d byte1 signedbyte2 destination
 // like 0x0c except jumps if not equal
-MapScript_cmd_8035b44: // 8035b44
+MapScriptCmd_cmd_8035b44: // 8035b44
 	push {lr}
 	mov r6, #2
 	bl ReadMapScriptSignedByte
@@ -3481,12 +3504,12 @@ loc_8035B88:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_cmd_8035b44
+	thumb_func_end MapScriptCmd_cmd_8035b44
 
 	thumb_local_start
 // 0x0e byte1 destination
 // jump if byte1 == eGameState_Unk_0e
-MapScript_jump_if_game_state_0e_equals: // 8035b8e
+MapScriptCmd_jump_if_game_state_0e_equals: // 8035b8e
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3504,12 +3527,12 @@ MapScript_jump_if_game_state_0e_equals: // 8035b8e
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_game_state_0e_equals
+	thumb_func_end MapScriptCmd_jump_if_game_state_0e_equals
 
 	thumb_local_start
 // 0x0f byte1 destination
 // jump if byte1 != eGameStateUnk_0e
-MapScript_jump_if_game_state_0e_not_equals: // 8035BB2
+MapScriptCmd_jump_if_game_state_0e_not_equals: // 8035BB2
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3527,12 +3550,12 @@ loc_8035BD0:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_game_state_0e_not_equals
+	thumb_func_end MapScriptCmd_jump_if_game_state_0e_not_equals
 
 	thumb_local_start
 // 0x12 signedhword1 destination
 // jump if (eOWPlayerObject_Z >> 0x10) == signedhword1
-MapScript_jump_if_player_z_equals: // 8035BD6
+MapScriptCmd_jump_if_player_z_equals: // 8035BD6
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3552,13 +3575,13 @@ MapScript_jump_if_player_z_equals: // 8035BD6
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_player_z_equals
+	thumb_func_end MapScriptCmd_jump_if_player_z_equals
 
 	thumb_local_start
 // 0x13 signedhword1 destination
 // jump if (eOWPlayerObjectUnk_24 >> 0x10) != signedhword1
 // eOWPlayerObjectUnk_24 is signed
-MapScript_jump_if_player_z_not_equals: // 8035BFE
+MapScriptCmd_jump_if_player_z_not_equals: // 8035BFE
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3578,12 +3601,12 @@ loc_8035C20:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_player_z_not_equals
+	thumb_func_end MapScriptCmd_jump_if_player_z_not_equals
 
 	thumb_local_start
 // 0x14 hword1 destination
 // jump if hword1 == eGameStateUnk_44
-MapScript_jump_if_game_state_44_equals: // 8035C26
+MapScriptCmd_jump_if_game_state_44_equals: // 8035C26
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3601,12 +3624,12 @@ loc_8035C44:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_game_state_44_equals
+	thumb_func_end MapScriptCmd_jump_if_game_state_44_equals
 
 	thumb_local_start
 // 0x15 hword1 destination
 // jump if hword1 != eGameStateUnk_44
-MapScript_jump_if_game_state_44_not_equals: // 8035C4A
+MapScriptCmd_jump_if_game_state_44_not_equals: // 8035C4A
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -3624,14 +3647,14 @@ loc_8035C68:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_game_state_44_not_equals
+	thumb_func_end MapScriptCmd_jump_if_game_state_44_not_equals
 
 	thumb_local_start
 // 0x16 0x01 destination
 // jump if eGameStateMapGroup == eGameStateLastMapGroup
 // 0x16 !0x01 destination
 // jump if eGameStateMapGroup != eGameStateLastMapGroup
-MapScript_jump_if_map_group_compare_last_map_group: // 8035C6E
+MapScriptCmd_jump_if_map_group_compare_last_map_group: // 8035C6E
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3659,14 +3682,14 @@ MapScript_jump_if_map_group_compare_last_map_group: // 8035C6E
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_jump_if_map_group_compare_last_map_group
+	thumb_func_end MapScriptCmd_jump_if_map_group_compare_last_map_group
 
 	thumb_local_start
 // 0x17 destination1 destination5 destination9
 // jumptable, using [[eToolkit_S20047CC_Ptrs] + 0x4c] as the base index
 // default is destination1
 // eToolkit_S20047CC_Ptrs
-MapScript_cmd_8035ca0: // 8035CA0
+MapScriptCmd_cmd_8035ca0: // 8035CA0
 	push {lr}
 	mov r0, #0
 	mov r1, #0x4c
@@ -3692,7 +3715,7 @@ loc_8035CCA:
 	mov r7, r4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScript_cmd_8035ca0
+	thumb_func_end MapScriptCmd_cmd_8035ca0
 
 	thumb_local_start
 // 0x18 byte1 destination2
@@ -3701,7 +3724,7 @@ loc_8035CCA:
 // returns 0 if the summation is greater than 0x2a30
 // returns 1 if 0x1c20 < summation <= 0x2a30
 // else returns 2
-MapScriptCmd_8035cd6: // 8035cd6
+MapScriptCmd_cmd_8035cd6: // 8035cd6
 	push {lr}
 	bl sub_800B734
 	mov r6, #1
@@ -3717,12 +3740,12 @@ loc_8035CF2:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_8035cd6
+	thumb_func_end MapScriptCmd_cmd_8035cd6
 
 	thumb_local_start
 // 0x19 byte1 destination2
 // same as above but performs !=
-MapScriptCmd_8035cf8:
+MapScriptCmd_cmd_8035cf8:
 	push {lr}
 	bl sub_800B734
 	mov r6, #1
@@ -3738,7 +3761,7 @@ loc_8035D14:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end MapScriptCmd_8035cf8
+	thumb_func_end MapScriptCmd_cmd_8035cf8
 
 	thumb_local_start
 // 0x1a destination1
@@ -3747,7 +3770,7 @@ MapScriptCmd_jump_if_fade_active: // 8035D1A
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8035D2E
 	add r7, #5
 	mov r0, #1
@@ -3796,7 +3819,12 @@ loc_8035D64:
 	thumb_func_end MapScriptCmd_jump_if_in_pet_menu
 
 	thumb_local_start
-sub_8035D6A:
+// 0x1d byte1 byte2 byte3
+// if byte1 == 0xff:
+//     SetScreenFade(byte2, byte3)
+// else:
+//     SetScreenFade([eUnkMapScriptState_2011e60 + byte1], [eUnkMapScriptState_2011e60 + byte1 + 1])
+MapScriptCmd_set_screen_fade: // 8035D6A
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3814,14 +3842,16 @@ loc_8035D7E:
 	bl ReadMapScriptByte
 	mov r1, r4
 loc_8035D8E:
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035D6A
+	thumb_func_end MapScriptCmd_set_screen_fade
 
 	thumb_local_start
-sub_8035D98:
+// 0x1e byte1 byte2
+// store byte1 and byte2 in eGameState_Unk_16 and eGameState_Unk_17 respectively
+MapScriptCmd_set_game_state_16_17: // 8035D98
 	push {lr}
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
@@ -3834,10 +3864,14 @@ sub_8035D98:
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035D98
+	thumb_func_end MapScriptCmd_set_game_state_16_17
 
 	thumb_local_start
-sub_8035DB4:
+// 0x1f byte1 hword2
+// set event flag
+// byte1 == 0xff: event flag is hword2
+// byte1 != 0xff: event flag is the word in script mem with byte1 as offset
+MapScriptCmd_set_event_flag: // 8035DB4
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3855,10 +3889,14 @@ loc_8035DCA:
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035DB4
+	thumb_func_end MapScriptCmd_set_event_flag
 
 	thumb_local_start
-sub_8035DD6:
+// 0x20 byte1 hword2
+// clear event flag
+// byte1 == 0xff: event flag is hword2
+// byte1 != 0xff: event flag is the word in script mem with byte1 as offset
+MapScriptCmd_clear_event_flag: // 8035DD6
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3875,10 +3913,12 @@ loc_8035DEC:
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035DD6
+	thumb_func_end MapScriptCmd_clear_event_flag
 
 	thumb_local_start
-sub_8035DF8:
+// 0x21 byte1 hword2
+// set byte1 event flags starting at the event flag hword2
+MapScriptCmd_set_event_flag_range: // 8035DF8
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3891,10 +3931,12 @@ sub_8035DF8:
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035DF8
+	thumb_func_end MapScriptCmd_set_event_flag_range
 
 	thumb_local_start
-sub_8035E16:
+// 0x22 byte1 hword2
+// clear byte1 event flags starting at the event flag hword2
+MapScriptCmd_clear_event_flag_range: // 8035E16
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -3907,10 +3949,12 @@ sub_8035E16:
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035E16
+	thumb_func_end MapScriptCmd_clear_event_flag_range
 
 	thumb_local_start
-sub_8035E34:
+// 0x23 word1
+// set the list of event flags at word1, terminated by (presumably) -1
+MapScriptCmd_set_event_flag_list: // 8035E34
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -3927,10 +3971,12 @@ loc_8035E4E:
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035E34
+	thumb_func_end MapScriptCmd_set_event_flag_list
 
 	thumb_local_start
-sub_8035E54:
+// 0x24 word1
+// clear the list of event flags at word1, terminated by (presumably) -1
+MapScriptCmd_clear_event_flag_list: // 8035E54
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -3947,10 +3993,12 @@ loc_8035E6E:
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035E54
+	thumb_func_end MapScriptCmd_clear_event_flag_list
 
 	thumb_local_start
-sub_8035E74:
+// 0x25 word1 word5
+// call the asm function word1 with word2 in r0
+MapScriptCmd_call_native_function: // 8035E74
 	push {lr}
 	mov r6, #5
 	bl ReadMapScriptWord
@@ -3962,10 +4010,13 @@ sub_8035E74:
 	add r7, #9
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035E74
+	thumb_func_end MapScriptCmd_call_native_function
 
 	thumb_local_start
-sub_8035E8E:
+// 0x26 word1 word5
+// call init_s_02011C50_8036E90 with r0=word1 and r1=word5
+// important script function
+MapScriptCmd_run_cutscene_maybe: // 8035E8E
 	push {lr}
 	mov r6, #5
 	bl ReadMapScriptWord
@@ -3977,10 +4028,12 @@ sub_8035E8E:
 	add r7, #9
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035E8E
+	thumb_func_end MapScriptCmd_run_cutscene_maybe
 
 	thumb_local_start
-sub_8035EAA:
+// 0x27 word1 byte5
+// [word1] = byte5
+MapScriptCmd_write_byte: // 8035EAA
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -3991,10 +4044,12 @@ sub_8035EAA:
 	add r7, #6
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035EAA
+	thumb_func_end MapScriptCmd_write_byte
 
 	thumb_local_start
-sub_8035EC2:
+// 0x28 word1 hword5
+// [word1] = hword5
+MapScriptCmd_write_hword: // 8035EC2
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -4005,10 +4060,12 @@ sub_8035EC2:
 	add r7, #7
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035EC2
+	thumb_func_end MapScriptCmd_write_hword
 
 	thumb_local_start
-sub_8035EDA:
+// 0x29 word1 word5
+// [word1] = word5
+MapScriptCmd_write_word: // 8035EDA
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -4019,10 +4076,12 @@ sub_8035EDA:
 	add r7, #9
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035EDA
+	thumb_func_end MapScriptCmd_write_word
 
 	thumb_local_start
-sub_8035EF2:
+// 0x2a byte1 byte2
+// [eGameState[byte1]] = byte2
+MapScriptCmd_write_gamestate_byte: // 8035EF2
 	push {lr}
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
@@ -4035,13 +4094,15 @@ sub_8035EF2:
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035EF2
+	thumb_func_end MapScriptCmd_write_gamestate_byte
 
 	thumb_local_start
-sub_8035F0E:
+// 0x2b byte1 byte2
+// [eStruct2001c04[byte1]] = byte2
+MapScriptCmd_write_eStruct2001c04_byte: // 8035F0E
 	push {lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	mov r6, #1
 	bl ReadMapScriptByte
 	add r0, r0, r4
@@ -4051,10 +4112,12 @@ sub_8035F0E:
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035F0E
+	thumb_func_end MapScriptCmd_write_eStruct2001c04_byte
 
 	thumb_local_start
-sub_8035F2A:
+// 0x2c word1
+// do sub_8001B1C(r0=word1)
+MapScriptCmd_call_sub_8001B1C: // 8035F2A
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -4063,10 +4126,13 @@ sub_8035F2A:
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035F2A
+	thumb_func_end MapScriptCmd_call_sub_8001B1C
 
 	thumb_local_start
-sub_8035F3E:
+// 0x2d word1
+// do sub_8002354(r0=word1)
+// r0 is a list of arguments for r1, terminated by negative
+MapScriptCmd_call_sub_8001B1C_multiple: // 8035F3E
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptWord
@@ -4075,10 +4141,13 @@ sub_8035F3E:
 	add r7, #5
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035F3E
+	thumb_func_end MapScriptCmd_call_sub_8001B1C_multiple
 
 	thumb_local_start
-sub_8035F52:
+// 0x2e
+// call sub_8030A30, then sub_8035194
+// uses map group/number as args
+MapScriptCmd_call_sub_8030A30_8035194: // 8035F52
 	push {lr}
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_GameStatePtr]
@@ -4089,10 +4158,13 @@ sub_8035F52:
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035F52
+	thumb_func_end MapScriptCmd_call_sub_8030A30_8035194
 
 	thumb_local_start
-sub_8035F6A:
+// 0x2f byte1
+// if byte1 == 0xff, call sub_8001B6C with r0 as 0x0 to 0x11
+// else, call sub_8001B6C with r0=byte1
+MapScriptCmd_cmd_8035F6A: // 8035F6A
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4116,10 +4188,13 @@ loc_8035F8E:
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035F6A
+	thumb_func_end MapScriptCmd_cmd_8035F6A
 
 	thumb_local_start
-sub_8035F98:
+// 0x36 byte1 byte2
+// call sub_8033FC0
+// arg is either from mem or byte2
+MapScriptCmd_call_sub_8033FC0: // 8035F98
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4136,10 +4211,14 @@ loc_8035FB0:
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035F98
+	thumb_func_end MapScriptCmd_call_sub_8033FC0
 
 	thumb_local_start
-sub_8035FBA:
+// 0x3a  0x01
+// store 0x0 at the script struct + 0x10
+// 0x3a !0x01 word2
+// store word2 at the script struct + 0x10
+MapScriptCmd_write_script_struct_10_word: // 8035FBA
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4157,10 +4236,15 @@ loc_8035FD4:
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035FBA
+	thumb_func_end MapScriptCmd_write_script_struct_10_word
 
 	thumb_local_start
-sub_8035FDE:
+// 0x40 0x01 byte2
+// call FreeAllObjectsOfSpecifiedTypes(r0=byte2)
+// 0x40 !0x01 word2
+// call SpawnObjectsFromList(r0=word2)
+// both functions are relaed to object initialization
+MapScriptCmd_spawn_or_free_objects: // 8035FDE
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -4177,11 +4261,11 @@ loc_8035FFC:
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r0, r4
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_8035FDE
+	thumb_func_end MapScriptCmd_spawn_or_free_objects
 
 	thumb_local_start
 map_script_overworld_803600E:
@@ -5145,7 +5229,7 @@ sub_8036E44:
 	ldr r7, off_8036E74 // =off_80360E4
 	mov r0, r10
 	ldr r6, [r0,#oToolkit_GameStatePtr]
-	ldr r4, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r4, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r1, [r6,#4]
 	ldrb r2, [r6,#5]
 	ldrb r0, [r6,#7]
@@ -5176,7 +5260,7 @@ off_8036E74: .word off_80360E4
 sub_8036E78:
 	push {r4-r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#4]
 	bl PlaySong
 	pop {r4-r7,pc}
@@ -5186,7 +5270,7 @@ sub_8036E78:
 sub_8036E86:
 	push {r4-r7,lr}
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	strb r0, [r1,#4]
 	pop {r4-r7,pc}
 	thumb_func_end sub_8036E86
@@ -5195,7 +5279,7 @@ sub_8036E86:
 init_s_02011C50_8036E90:
 	push {r5,lr}
 	mov r5, r10
-	ldr r5, [r5,#oToolkit_S2011c50_Ptr]
+	ldr r5, [r5,#oToolkit_CutsceneStatePtr]
 	push {r0,r1}
 	mov r0, r5
 	mov r1, #0x90
@@ -5224,7 +5308,7 @@ off_8036EC4: .word LCDControl
 sub_8036ED4:
 	push {r4-r7,lr}
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2011c50_Ptr]
+	ldr r1, [r1,#oToolkit_CutsceneStatePtr]
 	mov r0, #1
 	str r0, [r1,#0x1c] // s_02011C50.ptr_1C
 	ldr r0, off_8036F20 // =dword_8037690
@@ -5234,7 +5318,7 @@ sub_8036ED4:
 	mov r0, #0
 	str r0, [r1,#0x38] // s_02011C50.unk_38
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	strh r0, [r1,#0x12] // s_02011C50.unk_12
 	strh r0, [r1,#0x14] // s_02011C50.pad_13+1
@@ -5247,7 +5331,7 @@ sub_8036ED4:
 sub_8036EFE:
 	push {r4-r7,lr}
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2011c50_Ptr]
+	ldr r1, [r1,#oToolkit_CutsceneStatePtr]
 	mov r0, #1
 	str r0, [r1,#0x1c] // s_02011C50.ptr_1C
 	ldr r0, off_8036F20 // =dword_8037690
@@ -5266,7 +5350,7 @@ off_8036F20: .word dword_8037690
 	thumb_func_start sub_8036F24
 sub_8036F24:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2011c50_Ptr]
+	ldr r1, [r1,#oToolkit_CutsceneStatePtr]
 	ldr r0, [r1,#0x1c] // s_02011C50.ptr_1C
 	cmp r0, #1
 	bne locret_8036F34
@@ -5281,7 +5365,7 @@ locret_8036F34:
 	thumb_func_start s_2011C50_ptr_1C_isNull
 s_2011C50_ptr_1C_isNull:
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2011c50_Ptr]
+	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	ldr r0, [r0,#0x1c] // s_02011C50.ptr_1C
 	tst r0, r0
 	mov pc, lr
@@ -5291,7 +5375,7 @@ s_2011C50_ptr_1C_isNull:
 	thumb_func_start s_2011C50_8036F40
 s_2011C50_8036F40:
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2011c50_Ptr]
+	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	mov r2, #1
 	ldr r0, [r0,#0x40] // s_02011C50.unk_40
 	ldr r1, off_8036F54 // =byte_80991F4
@@ -5307,7 +5391,7 @@ off_8036F54: .word byte_80991F4
 	thumb_func_start sub_8036F58
 sub_8036F58:
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_S2011c50_Ptr]
+	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	mov r2, #1
 	ldr r0, [r0,#0x40]
 	ldr r1, off_8036F6C // =byte_80988E4
@@ -5323,7 +5407,7 @@ off_8036F6C: .word byte_80988E4
 	thumb_func_start sub_8036F70
 sub_8036F70:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_S2011c50_Ptr]
+	ldr r1, [r1,#oToolkit_CutsceneStatePtr]
 	mov r2, #1
 	ldr r1, [r1,#0x40]
 	cmp r1, r0
@@ -5338,7 +5422,7 @@ loc_8036F7E:
 	thumb_local_start
 sub_8036F84:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8036F96
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_JoypadPtr]
@@ -5803,7 +5887,7 @@ sub_80372EC:
 	strb r2, [r5,#6]
 	push {r0-r3}
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_S2011c50_Ptr]
+	ldr r7, [r7,#oToolkit_CutsceneStatePtr]
 	ldr r7, [r7,#4]
 	ldr r0, [r7,#0xc]
 	ldr r1, [r7,#0x10]
@@ -5902,7 +5986,7 @@ sub_8037396:
 	mov r0, #1
 	bl sub_803744C
 	mov r1, r4
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	pop {r1}
 	mov r0, #1
 	add r1, #3
@@ -5913,7 +5997,7 @@ sub_8037396:
 sub_80373B6:
 	push {lr}
 	push {r1}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	pop {r1}
 	beq loc_80373C8
 	mov r0, #1
@@ -6055,9 +6139,9 @@ sub_8037480:
 	lsl r0, r0, #8
 	orr r0, r2
 	pop {r1-r3,pc}
-	.balign 4, 0x00
-CutsceneCommandsJumpTable803749C:
-    .word sub_80376C4+1
+	.balign 4, 0
+CutsceneCommandJumptable:
+	.word MapScriptCmd_navi_abilities_8037c64+1
 	.word sub_80376DC+1
 	.word sub_80376F4+1
 	.word sub_8037740+1
@@ -6078,43 +6162,43 @@ CutsceneCommandsJumpTable803749C:
 	.word sub_80378C2+1
 	.word sub_80378EE+1
 	.word sub_8037904+1
-	.word MapScript_jump+1
-	.word MapScript_jump_if_progress_in_range+1
-	.word MapScript_jump_if_flag_set+1
-	.word MapScript_jump_if_flag_range_set+1
-	.word MapScript_jump_if_flag_clear+1
-	.word MapScript_jump_if_flag_range_clear+1
-	.word MapScript_jump_if_mem_equals+1
+	.word MapScriptCmd_jump+1
+	.word MapScriptCmd_jump_if_progress_in_range+1
+	.word MapScriptCmd_jump_if_flag_set+1
+	.word MapScriptCmd_jump_if_flag_range_set+1
+	.word MapScriptCmd_jump_if_flag_clear+1
+	.word MapScriptCmd_jump_if_flag_range_clear+1
+	.word MapScriptCmd_jump_if_mem_equals+1
 	.word sub_8037914+1
-	.word MapScript_jump_if_unk_navicust_range+1
-	.word MapScript_jump_if_chip_count_in_range+1
+	.word MapScriptCmd_jump_if_unk_navicust_range+1
+	.word MapScriptCmd_jump_if_chip_count_in_range+1
 	.word sub_803793A+1
 	.word sub_803795C+1
-	.word MapScript_cmd_8035afa+1
-	.word MapScript_cmd_8035b44+1
+	.word MapScriptCmd_cmd_8035afa+1
+	.word MapScriptCmd_cmd_8035b44+1
 	.word sub_803797E+1
 	.word sub_80379A0+1
 	.word sub_80379C2+1
 	.word sub_80379E4+1
-	.word sub_8035D6A+1
-	.word sub_8035D98+1
-	.word sub_8035DB4+1
-	.word sub_8035DD6+1
-	.word sub_8035DF8+1
-	.word sub_8035E16+1
-	.word sub_8035E34+1
-	.word sub_8035E54+1
-	.word sub_8035EAA+1
-	.word sub_8035EC2+1
-	.word sub_8035EDA+1
-	.word sub_8035EF2+1
-	.word sub_8035F0E+1
+	.word MapScriptCmd_set_screen_fade+1
+	.word MapScriptCmd_set_game_state_16_17+1
+	.word MapScriptCmd_set_event_flag+1
+	.word MapScriptCmd_clear_event_flag+1
+	.word MapScriptCmd_set_event_flag_range+1
+	.word MapScriptCmd_clear_event_flag_range+1
+	.word MapScriptCmd_set_event_flag_list+1
+	.word MapScriptCmd_clear_event_flag_list+1
+	.word MapScriptCmd_write_byte+1
+	.word MapScriptCmd_write_hword+1
+	.word MapScriptCmd_write_word+1
+	.word MapScriptCmd_write_gamestate_byte+1
+	.word MapScriptCmd_write_eStruct2001c04_byte+1
 	.word sub_8037A06+1
 	.word sub_8037A2A+1
-	.word sub_8035F2A+1
-	.word sub_8035F3E+1
-	.word sub_8035F52+1
-	.word sub_8035F6A+1
+	.word MapScriptCmd_call_sub_8001B1C+1
+	.word MapScriptCmd_call_sub_8001B1C_multiple+1
+	.word MapScriptCmd_call_sub_8030A30_8035194+1
+	.word MapScriptCmd_cmd_8035F6A+1
 	.word sub_8037A42+1
 	.word sub_8037A70+1
 	.word sub_8037A7C+1
@@ -6140,7 +6224,7 @@ CutsceneCommandsJumpTable803749C:
 	.word sub_803810E+1
 	.word sub_8038132+1
 	.word sub_803813E+1
-	.word sub_8035F98+1
+	.word MapScriptCmd_call_sub_8033FC0+1
 	.word sub_803816A+1
 	.word sub_80381A0+1
 	.word sub_80381E0+1
@@ -6157,21 +6241,21 @@ CutsceneCommandsJumpTable803749C:
 	.word sub_803828E+1
 	.word sub_803829A+1
 	.word sub_80382AE+1
-	.word 0
-	.word 0
-	.word 0
+	.word 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_80382BA+1
 	.word sub_80382DE+1
 	.word sub_80382F2+1
 	.word sub_80382FE+1
 	.word sub_8038322+1
 	.word sub_8038346+1
-	.word 0
-	.word 0
+	.word 0x0
+	.word 0x0
 	.word sub_8038362+1
 	.word sub_8038386+1
-	.word 0
-	.word 0
+	.word 0x0
+	.word 0x0
 	.word sub_80383AA+1
 	.word sub_80383DE+1
 	.word sub_8038412+1
@@ -6193,8 +6277,8 @@ byte_8037695: .byte 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
 	thumb_func_end sub_8037480
 
 	thumb_local_start
-// () -> int
-sub_80376C4:
+// 0x00
+MapScriptCmd_navi_abilities_8037c64:
 	push {lr}
 	movflag EVENT_1741
 	bl TestEventFlagFromImmediate
@@ -6204,7 +6288,7 @@ sub_80376C4:
 	bl sub_8036EFE
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_80376C4
+	thumb_func_end MapScriptCmd_navi_abilities_8037c64
 
 	thumb_local_start
 sub_80376DC:
@@ -6358,7 +6442,7 @@ loc_80377E0:
 	thumb_local_start
 sub_80377E4:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_80377F2
 	add r7, #1
 	mov r0, #1
@@ -7432,7 +7516,7 @@ loc_8037FE6:
 	mov r6, #2
 	bl ReadMapScriptByte
 	mov r0, r4
-	bl sub_80035A2
+	bl FreeAllObjectsOfSpecifiedTypes
 	add r7, #3
 	mov r0, #1
 	pop {pc}
@@ -7685,7 +7769,7 @@ loc_80381B4:
 	bl sub_803522E
 	mov r0, #0x2c
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	add r7, #3
 	mov r0, #1
 	pop {pc}
@@ -7699,7 +7783,7 @@ sub_80381E0:
 	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 	mov r0, #0x2c
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	add r7, #1
 	mov r0, #1
 	pop {pc}
@@ -7882,7 +7966,7 @@ sub_80382FE:
 	mov r6, #1
 	bl ReadMapScriptByte
 	mov r0, r4
-	bl sub_80010BE
+	bl setPETNaviSelect
 	bl sub_8120DF0
 	bl sub_813C3AC
 	bl sub_803CEB8
@@ -8176,20 +8260,19 @@ loc_8038510:
 
 
 	thumb_local_start
-// () -> void
-cutscene_803851C:
+runCutscene_803851C:
 	push {r4-r7,lr}
 	mov r4, r8
 	mov r5, r12
 	push {r4,r5}
 	mov r5, r10
-	ldr r5, [r5,#oToolkit_S2011c50_Ptr]
+	ldr r5, [r5,#oToolkit_CutsceneStatePtr]
 	mov r0, #0
-	strb r0, [r5,#0x12]
-	mov r0, #0x1c
+	strb r0, [r5,#oCutsceneState_Unk_12]
+	mov r0, #oCutsceneState_CutsceneScriptPos
 	mov r8, r0
 loc_8038530:
-	ldr r6, off_80385B8 // =CutsceneCommandsJumpTable803749C
+	ldr r6, off_80385B8 // =CutsceneCommandJumptable
 	mov r12, r6
 	mov r7, r8
 	ldr r7, [r5,r7]
@@ -8197,14 +8280,14 @@ loc_8038538:
 	mov r6, r12
 	ldrb r0, [r7]
 	lsl r0, r0, #2
-	// CutsceneCommandsJumpTable803749C[*tk->S2011c50_Ptr->Unk_12]();
+	// CutsceneCommandJumptable[*tk->S2011c50_Ptr->Unk_12]();
 	ldr r0, [r6,r0]
 	mov lr, pc
 	bx r0
 	bne loc_8038538
-	ldrb r0, [r5,#0x12]
-	add r0, #0x1 // (loc_3FC+1 - 0x3fc)
-	strb r0, [r5,#0x12]
+	ldrb r0, [r5,#oCutsceneState_Unk_12]
+	add r0, #0x1
+	strb r0, [r5,#oCutsceneState_Unk_12]
 	mov r0, r8
 	ldr r1, [r5,r0]
 	cmp r1, #1
@@ -8252,9 +8335,9 @@ loc_80385AE:
 	mov r12, r5
 	pop {r4-r7,pc}
 	.balign 4, 0x00
-off_80385B8: .word CutsceneCommandsJumpTable803749C
+off_80385B8: .word CutsceneCommandJumptable
 off_80385BC: .word dword_8037690
-	thumb_func_end cutscene_803851C
+	thumb_func_end runCutscene_803851C
 
 	thumb_local_start
 sub_80385C0:
@@ -8345,7 +8428,7 @@ sub_8038630:
 	bl sub_80005F2
 	mov r0, #8
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5]
 	pop {r4-r7,pc}
@@ -8356,7 +8439,7 @@ dword_8038670: .word 0x1340
 	thumb_local_start
 sub_8038674:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8038684
 	ldr r0, off_8038688 // =0xb4
 	strh r0, [r5,#4]
@@ -8385,7 +8468,7 @@ loc_8038698:
 	beq locret_80386B0
 	mov r0, #0xc
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0xc
 	strb r0, [r5]
 locret_80386B0:
@@ -8395,7 +8478,7 @@ locret_80386B0:
 	thumb_local_start
 sub_80386B2:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_80386C4
 	ldr r0, off_80386C8 // =0x40
 	bl sRender_08_setRenderingState
@@ -8575,7 +8658,7 @@ sub_8038B04:
 	bl chatbox_8040818
 	mov r0, #8
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5]
 	pop {pc}
@@ -8602,7 +8685,7 @@ off_8038B78: .word sub_8038B80+1
 	thumb_local_start
 sub_8038B80:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8038B98
 	mov r0, #4
 	strb r0, [r5,#1]
@@ -9039,7 +9122,7 @@ loc_8038EE6:
 	beq loc_8038EFE
 	mov r0, #0xc
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
 	strb r0, [r5]
 loc_8038EFE:
@@ -9053,7 +9136,7 @@ dword_8038F08: .word 0x3FF
 sub_8038F0C:
 	push {lr}
 	bl sub_8039198
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8038F2A
 	bl loc_803D1AC // () -> void
 	bl clear_e200AD04 // () -> void
@@ -9508,7 +9591,7 @@ off_803962C: .word 0x40
 	thumb_local_start
 sub_8039630:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_8039652
 	bl zeroFillVRAM
 	bl ZeroFillGFX30025c0
@@ -9559,7 +9642,7 @@ sub_8039694:
 	bl sub_80015FC
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl copyData_803B216
 	bl sub_803C2EC
 	bl sub_8046664 // () -> void
@@ -9598,7 +9681,7 @@ dword_8039708: .word 0x1F40
 	thumb_local_start
 sub_803970C:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_803972A
 	mov r0, #8
 	bl chatbox_check_eFlags2009F38
@@ -9618,7 +9701,7 @@ loc_803972A:
 	thumb_local_start
 sub_8039734:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_80397A8
 	bl sub_803995C
 	cmp r0, #1
@@ -9638,7 +9721,7 @@ loc_803974E:
 	beq loc_8039780
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0xc
 	strb r0, [r5,#1]
 	b loc_80397A8
@@ -9647,7 +9730,7 @@ loc_803976C:
 	bl PlaySoundEffect
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x10
 	strb r0, [r5,#1]
 	b loc_80397A8
@@ -9656,7 +9739,7 @@ loc_8039780:
 	bl PlaySoundEffect
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x14
 	strb r0, [r5,#1]
 	b loc_80397A8
@@ -9665,7 +9748,7 @@ loc_8039794:
 	bl PlaySoundEffect
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x18
 	strb r0, [r5,#1]
 	b loc_80397A8
@@ -9701,7 +9784,7 @@ sub_80397BC:
 	thumb_local_start
 sub_80397DC:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_80397F0
 	bl cleareMemory_802FF2C
 	mov r0, #0xc
@@ -9716,7 +9799,7 @@ loc_80397F0:
 	thumb_local_start
 sub_80397F6:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8039810
 	bl cleareMemory_802FF2C
 	mov r0, #0
@@ -9734,7 +9817,7 @@ loc_8039810:
 	thumb_local_start
 sub_8039816:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_803982A
 	bl cleareMemory_802FF2C
 	mov r0, #0x14
@@ -9749,7 +9832,7 @@ loc_803982A:
 	thumb_local_start
 sub_8039830:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8039840
 	bl cleareMemory_802FF2C
 	mov r0, #4
@@ -9806,7 +9889,7 @@ sub_8039888:
 loc_803989C:
 	mov r0, #4
 	mov r1, #0xff
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0xd7
 	bl PlaySoundEffect
 	mov r0, #8
@@ -9826,7 +9909,7 @@ sub_80398B0:
 	bl sub_803993A
 	mov r0, #0
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
 	strb r0, [r5,#1]
 	mov r0, #0
@@ -9873,7 +9956,7 @@ loc_8039918:
 loc_803991C:
 	ldr r0, [r7,#4]
 	ldr r1, [r7,#8]
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	add r7, #0xc
 	b loc_80398E8
 loc_8039928:
@@ -10061,7 +10144,7 @@ sub_8039AB8:
 	bl sub_803C320
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x13
 	bl sub_803BB2C
 	mov r0, #0x10
@@ -10082,7 +10165,7 @@ sub_8039AE4:
 	beq loc_8039B00
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x13
 	bl sub_803BB2C
 	mov r0, #0x10
@@ -10115,7 +10198,7 @@ sub_8039B0A:
 	bl sub_803C320
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x13
 	bl sub_803BB2C
 	mov r0, #0x10
@@ -10124,7 +10207,7 @@ sub_8039B0A:
 loc_8039B48:
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0xa
 	bl sub_803BB2C
 	mov r0, #0x18
@@ -10137,14 +10220,14 @@ loc_8039B5A:
 	thumb_local_start
 sub_8039B60:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8039B7C
 	mov r0, #8
 	bl chatbox_check_eFlags2009F38
 	beq loc_8039B7C
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x14
 	strb r0, [r5,#1]
 loc_8039B7C:
@@ -10155,7 +10238,7 @@ loc_8039B7C:
 	thumb_local_start
 sub_8039B82:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8039B92
 	mov r0, #8
 	strb r0, [r5]
@@ -10169,7 +10252,7 @@ loc_8039B92:
 	thumb_local_start
 sub_8039B98:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8039BBA
 	bl sub_803A524
 	bne loc_8039BBA
@@ -10461,7 +10544,7 @@ loc_8039DF2:
 	bl sub_8147B24
 	mov r0, #0x2c
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl musicGameState_8000784 // () -> void
 	mov r0, #SOUND_BATTLE_START
 	bl PlaySoundEffect
@@ -10513,7 +10596,7 @@ loc_8039E7A:
 sub_8039E80:
 	push {r4-r7,lr}
 	bl sub_803C620
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8039EB4
 	bl chatbox_8040818
 	bl copyMemory_8001850
@@ -10675,7 +10758,7 @@ loc_8039FBA:
 	bl sub_8147B24
 	mov r0, #0x2c
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl musicGameState_8000784 // () -> void
 	mov r0, #SOUND_BATTLE_START
 	bl PlaySoundEffect
@@ -10728,8 +10811,8 @@ sub_803A03A:
 	beq loc_803A04E
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
-	mov r0, #0x54
+	bl SetScreenFade // (int a1, int a2) -> void
+	mov r0, #0x54 
 	strb r0, [r5,#1]
 loc_803A04E:
 	bl sub_803A1B0
@@ -10739,7 +10822,7 @@ loc_803A04E:
 	thumb_local_start
 sub_803A054:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_803A066
 	bl copyMemory_8001850
 	bl sub_803CCC0
@@ -10756,8 +10839,8 @@ sub_803A06C:
 	beq loc_803A080
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
-	mov r0, #0x5c
+	bl SetScreenFade // (int a1, int a2) -> void
+	mov r0, #0x5c 
 	strb r0, [r5,#1]
 loc_803A080:
 	bl sub_803A1B0
@@ -10767,7 +10850,7 @@ loc_803A080:
 	thumb_local_start
 sub_803A086:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_803A09A
 	bl copyMemory_8001850
 	ldr r0, off_803A0A0 // =sub_8039570+1
@@ -10786,8 +10869,8 @@ sub_803A0A4:
 	beq loc_803A0B8
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
-	mov r0, #0x64
+	bl SetScreenFade // (int a1, int a2) -> void
+	mov r0, #0x64 
 	strb r0, [r5,#1]
 loc_803A0B8:
 	bl sub_803A1B0
@@ -10797,7 +10880,7 @@ loc_803A0B8:
 	thumb_local_start
 sub_803A0BE:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_803A0CE
 	mov r0, #8
 	strb r0, [r5]
@@ -10815,8 +10898,8 @@ sub_803A0D4:
 	beq loc_803A0E8
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
-	mov r0, #0x6c
+	bl SetScreenFade // (int a1, int a2) -> void
+	mov r0, #0x6c 
 	strb r0, [r5,#1]
 loc_803A0E8:
 	bl sub_803A1B0
@@ -10826,7 +10909,7 @@ loc_803A0E8:
 	thumb_local_start
 sub_803A0EE:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_803A0FE
 	mov r0, #8
 	strb r0, [r5]
@@ -11599,7 +11682,7 @@ sub_803A6E4:
 	bl copyData_803B3C8
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0
 	strb r0, [r5,#8]
 	strb r0, [r5,#0x12]
@@ -11690,7 +11773,7 @@ loc_803A78C:
 	thumb_local_start
 sub_803A79A:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_803A7B2
 	mov r0, #0x14
 	bl sub_803BB2C
@@ -12250,7 +12333,7 @@ sub_803AC02:
 loc_803AC1A:
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0x14
 	strb r0, [r5,#1]
 loc_803AC26:
@@ -12261,7 +12344,7 @@ loc_803AC26:
 	thumb_local_start
 sub_803AC2C:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_803AC50
 	bl sub_803BA28
 	bl sub_803C3E0
@@ -12648,8 +12731,8 @@ sub_803AEE6:
 loc_803AF04:
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
-	mov r0, #0x30
+	bl SetScreenFade // (int a1, int a2) -> void
+	mov r0, #0x30 
 	strb r0, [r5,#1]
 	b loc_803AF16
 loc_803AF12:
@@ -12663,7 +12746,7 @@ loc_803AF16:
 	thumb_local_start
 sub_803AF1C:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_803AF40
 	bl sub_803BA28
 	bl sub_803C3E0
@@ -12698,8 +12781,8 @@ sub_803AF46:
 loc_803AF5E:
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
-	mov r0, #0x3c
+	bl SetScreenFade // (int a1, int a2) -> void
+	mov r0, #0x3c 
 	strb r0, [r5,#1]
 loc_803AF6A:
 	bl sub_803A820
@@ -12727,7 +12810,7 @@ loc_803AF8A:
 	thumb_local_start
 sub_803AF90:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_803AFBC
 	mov r4, #0
 	bl sub_803C3E0
@@ -12888,8 +12971,8 @@ sub_803B184:
 	bl copyData_803B45C
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
-	mov r0, #0x5a
+	bl SetScreenFade // (int a1, int a2) -> void
+	mov r0, #0x5a 
 	bl sub_803BB2C
 	mov r0, #4
 	strb r0, [r5,#1]
@@ -12901,7 +12984,7 @@ dword_803B1C0: .word 0x1F40
 	thumb_local_start
 sub_803B1C4:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_803B1D0
 	mov r0, #8
 	strb r0, [r5,#1]
@@ -12920,7 +13003,7 @@ sub_803B1D6:
 	bl PlaySoundEffect
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0xc
 	strb r0, [r5,#1]
 loc_803B1F2:
@@ -12931,7 +13014,7 @@ loc_803B1F2:
 	thumb_local_start
 sub_803B1F8:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_803B210
 	bl chatbox_8040818
 	mov r0, #2
@@ -13973,7 +14056,7 @@ loc_803BE78:
 	ldr r0, [sp,#4]
 	ldr r1, [sp,#8]
 	ldr r2, [sp,#0xc]
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add sp, sp, #0x10
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -15024,7 +15107,7 @@ loc_803C5DE:
 	add r0, r0, r1
 	ldr r1, dword_803C5FC // =0x6017e80
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 locret_803C5EC:
 	pop {r4-r7,pc}
 	.byte 0, 0
@@ -15845,7 +15928,7 @@ sub_803CBD0:
 	bl sub_80005F2
 	mov r0, #8
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5]
 	pop {r4-r7,pc}
@@ -15856,7 +15939,7 @@ dword_803CC10: .word 0x1F40
 	thumb_local_start
 sub_803CC14:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_803CC26
 	mov r0, #0xb
 	bl RunTextScriptCommError_803CCB0
@@ -15874,7 +15957,7 @@ sub_803CC28:
 	beq locret_803CC3E
 	mov r0, #0xc
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0xc
 	strb r0, [r5]
 locret_803CC3E:
@@ -15884,7 +15967,7 @@ locret_803CC3E:
 	thumb_local_start
 sub_803CC40:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_803CC58
 	bl chatbox_8040818
 	ldr r0, off_803CC5C // =0x40
@@ -15992,7 +16075,7 @@ sub_803CCFC:
 	bl sub_80005F2
 	mov r0, #8
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5]
 	pop {r4-r7,pc}
@@ -16003,7 +16086,7 @@ dword_803CD3C: .word 0x1F40
 	thumb_local_start
 sub_803CD40:
 	push {r4-r7,lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_803CD52
 	mov r0, #0xa
 	bl RunTextScriptCommError_803CD64
@@ -16709,7 +16792,7 @@ loc_803D212:
 	bl renderInfo_80017A0
 	mov r0, r4
 	mov r1, #0xff
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	bl sub_8005F40
 	bl sub_8005F6C
 	bl sub_80027C4
@@ -16736,7 +16819,7 @@ sub_803D24C:
 	mov r0, #0
 loc_803D25E:
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0xb4
 	strb r0, [r5,#4]
 	mov r0, #8
@@ -16749,7 +16832,7 @@ dword_803D270: .word 0x1F40
 	thumb_local_start
 sub_803D274:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_803D292
 	ldrb r0, [r5,#4]
 	sub r0, #1
@@ -16758,7 +16841,7 @@ sub_803D274:
 	bgt locret_803D292
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0xc
 	strb r0, [r5]
 locret_803D292:
@@ -16769,7 +16852,7 @@ locret_803D292:
 	thumb_local_start
 sub_803D298:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_803D2A4
 	mov r0, #0x10
 	strb r0, [r5]
@@ -20902,7 +20985,7 @@ loc_803F814:
 	bl save_memSetFlags_8006E0E // (u8 *mem, int size) -> void
 	pop {r0-r2}
 	mov r4, r10
-	ldr r4, [r4,#oToolkit_Unk2001c04_Ptr]
+	ldr r4, [r4,#oToolkit_S2001c04_Ptr]
 	ldr r4, [r4,#0x68]
 	bl sub_803F894
 	cmp r0, r4
@@ -20957,7 +21040,7 @@ dword_803F890: .word 0x6710
 sub_803F894:
 	push {r1-r7,lr}
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk2001c04_Ptr]
+	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	str r0, [r7,#0x68]
 	mov r0, #0
@@ -20978,7 +21061,7 @@ sub_803F8B2:
 	push {lr}
 	ldr r0, off_803F914 // =EXE6_InfoText_timestamp
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	add r1, #0x6c
 	mov r2, #0x14
 	bl CopyBytes // (u8 *src, u8 *dest, int byteCount) -> void
@@ -20989,7 +21072,7 @@ sub_803F8B2:
 sub_803F8C4:
 	push {r1-r7,lr}
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk2001c04_Ptr]
+	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
 	ldr r6, [r7,#0x68]
 	mov r0, #0
 	str r0, [r7,#0x68]
@@ -21018,7 +21101,7 @@ sub_803F8F4:
 	push {r1-r7,lr}
 	ldr r0, off_803F914 // =EXE6_InfoText_timestamp
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	add r1, #0x6c
 	mov r2, #0x13
 loc_803F900:
@@ -21348,8 +21431,8 @@ sub_803FB64:
 	bl renderInfo_80017A0
 	bl sub_803FBE8
 	mov r0, #8
-	mov r1, #0x20
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	mov r1, #0x20 
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5]
 	mov r0, #0xb4
@@ -21374,7 +21457,7 @@ playGameOver_803FB9C:
 loc_803FBB4:
 	mov r0, #0xc
 	mov r1, #8
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #8
 	strb r0, [r5]
 locret_803FBC0:
@@ -21384,7 +21467,7 @@ locret_803FBC0:
 	thumb_local_start
 sub_803FBC2:
 	push {lr}
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq locret_803FBE0
 	bl sub_8006910
 	bl sub_802F530

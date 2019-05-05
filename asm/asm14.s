@@ -1,4 +1,3 @@
-	.include "asm/asm14.inc"
 
 	thumb_func_start sub_8071B50
 sub_8071B50:
@@ -581,7 +580,7 @@ byte_8072B01: .byte 0x3, 0xFF, 0xC5, 0x11, 0x1F, 0x2B, 0x7, 0x8, 0x5, 0xFF, 0xC0
 sub_8072B54:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#oToolkit_Unk2001c04_Ptr]
+	ldr r5, [r5,#oToolkit_S2001c04_Ptr]
 	ldr r0, [r5,#0x38]
 	add r0, #1
 	cmp r0, #0xa
@@ -599,7 +598,7 @@ loc_8072B6C:
 sub_8072B70:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#oToolkit_Unk2001c04_Ptr]
+	ldr r5, [r5,#oToolkit_S2001c04_Ptr]
 	mov r4, r0
 	bl sub_8034C36
 	beq locret_8072BA0
@@ -628,7 +627,7 @@ locret_8072BA0:
 sub_8072BA4:
 	push {r4-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#oToolkit_Unk2001c04_Ptr]
+	ldr r5, [r5,#oToolkit_S2001c04_Ptr]
 	mov r0, #0x10
 	str r0, [r5,#0x3c]
 	mov r0, #0

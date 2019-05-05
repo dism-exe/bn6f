@@ -1,4 +1,3 @@
-	.include "asm/asm32.inc"
 
 	thumb_func_start sub_810D970
 sub_810D970:
@@ -17593,7 +17592,7 @@ sub_8117A14:
 	ldr r1, dword_8117A80 // =0x6013b40
 	mov r2, #0x20
 	lsl r2, r2, #4
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8117A7C: .word unk_2016300
@@ -17676,7 +17675,7 @@ sub_8117AB4:
 	ldr r1, dword_8117B30 // =0x6013c40
 	mov r2, #0x10
 	lsl r2, r2, #4
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 off_8117B2C: .word unk_2016400
@@ -20692,7 +20691,7 @@ loc_8119454:
 	mov r6, #0
 loc_8119478:
 	push {r0-r2}
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r0-r2}
 	add r0, r0, r4
 	ldr r3, off_8119658 // =0x100
@@ -20719,8 +20718,8 @@ loc_8119478:
 	ldr r1, [sp]
 	ldr r2, dword_8119664 // =0x800
 	add r1, r1, r2
-	mov r2, #0x40
-	bl sub_8000AC8
+	mov r2, #0x40 
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r1, off_811964C // =off_8119304
 	ldrb r2, [r5,#5]
 	lsl r2, r2, #2
@@ -20741,7 +20740,7 @@ loc_8119478:
 	ldr r2, dword_8119670 // =0x840
 	add r1, r1, r2
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r1, off_8119650 // =off_8119330
 	ldrb r2, [r5,#5]
 	lsl r2, r2, #2
@@ -23856,33 +23855,33 @@ sub_811AE7C:
 	ldr r2, [sp,#4]
 	lsl r2, r2, #2
 	ldr r1, [r1,r2]
-	ldr r2, off_811AF44 // =0x80
-	bl sub_8000AC8
+	ldr r2, off_811AF44 // =0x80 
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r1, off_811AF48 // =off_811AF4C
 	ldr r0, [r1,r4]
 	ldr r1, off_811AF7C // =off_811AF80
 	ldr r2, [sp,#4]
 	lsl r2, r2, #2
 	ldr r1, [r1,r2]
-	mov r2, #0x20
-	bl sub_8000AC8
-	ldr r1, off_811AF88 // =off_811AF8C
+	mov r2, #0x20 
+	bl QueueEightWordAlignedGFXTransfer
+	ldr r1, off_811AF88 // =off_811AF8C 
 	lsl r6, r6, #2
 	ldr r0, [r1,r6]
 	ldr r1, off_811AFB8 // =byte_811AFBC
 	ldr r2, [sp,#4]
 	lsl r2, r2, #2
 	ldr r1, [r1,r2]
-	ldr r2, off_811AFD4 // =0x200
-	bl sub_8000AC8
-	ldr r0, off_811AFD0 // =off_86DC3F8
-	ldr r1, off_811AFC4 // =off_811AFC8
+	ldr r2, off_811AFD4 // =0x200 
+	bl QueueEightWordAlignedGFXTransfer
+	ldr r0, off_811AFD0 // =off_86DC3F8 
+	ldr r1, off_811AFC4 // =off_811AFC8 
 	ldr r2, [sp,#4]
 	lsl r2, r2, #2
 	ldr r1, [r1,r2]
-	mov r2, #0x20
-	bl sub_8000AC8
-	mov r1, #0x23
+	mov r2, #0x20 
+	bl QueueEightWordAlignedGFXTransfer
+	mov r1, #0x23 
 loc_811AEF2:
 	strb r1, [r5]
 loc_811AEF4:
@@ -29148,7 +29147,7 @@ loc_811E14C:
 	ldr r1, dword_811E15C // =0x6015580
 	mov r2, #0xa
 	lsl r2, r2, #5
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 	.balign 4, 0x00
 dword_811E15C: .word 0x6015580
@@ -29921,7 +29920,7 @@ loc_811E774:
 	ldr r1, dword_811E794 // =0x6014180
 	mov r2, #0x34
 	lsl r2, r2, #4
-	bl sub_8000AC4
+	bl QueueWordAlignedGFXTransfer
 	pop {r4-r7,pc}
 dword_811E794: .word 0x6014180
 off_811E798: .word unk_2027000
@@ -30395,8 +30394,8 @@ loc_811EC9A:
 	tst r0, r0
 	bne loc_811EC9A
 	// dataList
-	ldr r0, off_811ECF4 // =unk_20096E0
-	bl decomp_initGfx_8000B8E // (u32 *dataRefs) -> void
+	ldr r0, off_811ECF4 // =unk_20096E0 
+	bl QueueGFXTransfersInList // (u32 *dataRefs) -> void
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_811ECB0: .word off_811ECB4
@@ -30504,13 +30503,13 @@ sub_811EDB4:
 	strb r0, [r5,#9]
 	b loc_811EE82
 loc_811EDD6:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_811EE82
 	mov r0, #JOYPAD_START | JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	bne loc_811EDF2
 	mov r0, #JOYPAD_A
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_811EE34
 	ldrb r0, [r5,#4]
 	cmp r0, #8
@@ -30551,7 +30550,7 @@ loc_811EE34:
 	cmp r0, #8
 	blt loc_811EE52
 	mov r0, #JOYPAD_DOWN | JOYPAD_UP | JOYPAD_LEFT
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_811EE82
 	mov r0, #SOUND_MENU_CUR_MOVE
 	bl PlaySoundEffect
@@ -30562,7 +30561,7 @@ loc_811EE34:
 	b loc_811EE82
 loc_811EE52:
 	mov r0, #JOYPAD_RIGHT
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq loc_811EE70
 	mov r0, #SOUND_MENU_CUR_MOVE
 	bl PlaySoundEffect
@@ -30938,7 +30937,7 @@ loc_811F190:
 	mov r6, r1
 	mov r4, r2
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldrb r3, [r1,#6]
 	lsl r3, r3, #2
 	ldr r6, [r6,r3]
@@ -31384,7 +31383,7 @@ loc_811F6A8:
 	ldr r2, [sp,#0x10]
 	mov r3, #0x40
 	mul r2, r3
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	add sp, sp, #0x18
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -31540,16 +31539,16 @@ JumpTable811F7A0: .word HandleChipFolderMenu8123434+1
 	.word 0
 	thumb_func_end SubMenuControl
 
-	thumb_func_start JoypadKeyPressed
+	thumb_func_start IsButtonPressed
 // (joypad_enum_t key) -> !zf
-JoypadKeyPressed:
+IsButtonPressed:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_JoypadPtr]
 	ldrh r1, [r1,#oJoypad_Pressed]
 	tst r0, r1
 	mov pc, lr
 	.balign 4, 0x00
-	thumb_func_end JoypadKeyPressed
+	thumb_func_end IsButtonPressed
 
 	thumb_func_start sub_811F7F8
 sub_811F7F8:
@@ -32039,14 +32038,14 @@ sub_811FB64:
 	bl PlaySoundEffect
 	mov r0, #0xc
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	pop {pc}
 	thumb_func_end sub_811FB64
 
 	thumb_func_start sub_811FB78
 sub_811FB78:
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
 	strb r0, [r1,#6]
 	mov pc, lr
@@ -32071,7 +32070,7 @@ loc_811FB94:
 	ldr r3, [r3,r7]
 	ldr r3, [r3,r1]
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldrb r1, [r1,#6]
 	lsl r1, r1, #2
 	ldr r4, [r3,r1]
@@ -32298,7 +32297,7 @@ sub_811FDB8:
 	sub sp, sp, #0x14
 	mov r4, r0
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r6, [r0,#5]
 	cmp r6, #1
 	ble loc_811FE22
@@ -33120,7 +33119,7 @@ loc_81203B4:
 	ldr r0, [r0,#0x20]
 	mov r1, r4
 	mov r2, #0x80
-	bl sub_8000AC4
+	bl QueueWordAlignedGFXTransfer
 	b loc_81203D2
 loc_81203CC:
 	mov r0, #0
@@ -33594,7 +33593,7 @@ sub_8120740:
 	sub sp, sp, #0x10
 	mov r4, r0
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r6, [r0,#5]
 	cmp r6, #1
 	ble loc_81207A8
@@ -34034,7 +34033,7 @@ dword_8120A84: .word 0x137
 sub_8120A88:
 	push {r4-r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r4, [r0,#5]
 loc_8120A90:
 	mov r7, r10
@@ -34062,7 +34061,7 @@ loc_8120A9E:
 sub_8120AB8:
 	push {r4-r7,lr}
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r4, [r0,#5]
 loc_8120AC0:
 	mov r7, r10
@@ -34376,7 +34375,7 @@ sub_8120D10:
 loc_8120D46:
 	mov r6, #0xf
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#5]
 	cmp r0, #1
 	bne loc_8120D64
@@ -34384,7 +34383,7 @@ loc_8120D46:
 	mov r0, #0x22
 	bl sub_8137718
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r2, [r0,#5]
 	sub r2, #1
 	b loc_8120D9A
@@ -34411,7 +34410,7 @@ loc_8120D8C:
 	mov r0, #0x22
 	bl sub_8137718
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r2, [r0,#5]
 	sub r2, #1
 loc_8120D9A:
@@ -34474,7 +34473,7 @@ loc_8120DFA:
 	cmp r1, r2
 	beq loc_8120E22
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrb r0, [r0,#7]
 	cmp r1, #0x40
 	bne loc_8120E16
@@ -34795,7 +34794,7 @@ loc_8121192:
 sub_8121198:
 	push {r4,lr}
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	ldr r4, [r1,#0x30]
 	bl getPETNaviSelect // () -> u8
 	lsl r0, r0, #1
@@ -34806,7 +34805,7 @@ sub_8121198:
 	pop {r4,pc}
 	thumb_func_end sub_8121198
 
-	.byte 0, 0
+	.balign 4, 0
 off_81211B0: .word byte_81211B4
 byte_81211B4: .byte 0x41, 0x1, 0x50, 0x1, 0x5F, 0x1, 0x6E, 0x1, 0x7D, 0x1, 0x8C
 	.byte 0x1, 0x9B, 0x1, 0xAA, 0x1, 0xB9, 0x1, 0xC8, 0x1, 0xD7, 0x1
@@ -34823,6 +34822,7 @@ off_81211D0: .word byte_8123199
 	.word byte_81231F1
 	.word byte_81231F9
 	.word byte_8123201
+
 off_81211FC: .word pt_8121200
 pt_8121200: .word off_8121230
 	.word off_812148C
@@ -34836,21 +34836,5 @@ pt_8121200: .word off_8121230
 	.word off_812291C
 	.word off_8122BF8
 	.word off_8122EBC
-off_8121230: .word off_8121234
-off_8121234: .word byte_8121270
-	.word byte_812127C
-	.word byte_8121288
-	.word byte_812129C
-	.word byte_81212B0
-	.word byte_81212CC
-	.word byte_81212E8
-	.word byte_812130C
-	.word byte_8121330
-	.word byte_8121354
-	.word byte_8121388
-	.word byte_81213BC
-	.word byte_81213F0
-	.word byte_8121424
 	// <endfile>
-	.word byte_8121458
 /*For debugging purposes, connect comment at any range!*/

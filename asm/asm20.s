@@ -1,4 +1,3 @@
-	.include "asm/asm20.inc"
 
 	thumb_func_start sub_807ECD0
 sub_807ECD0:

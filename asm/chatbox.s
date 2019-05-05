@@ -1,4 +1,3 @@
-	.include "asm/chatbox.inc"
 
 // () -> int
 	thumb_func_start chatbox_uncompBasedOnMap_803FD08
@@ -98,9 +97,9 @@ chatbox_runScript_803FDA4:
 loc_803FDA8:
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	ldr r0, off_803FDEC // =byte_86BFBA0
-	ldr r1, dword_803FDF0 // =0x600dc80
-	ldr r2, off_803FDF4 // =0x280
-	bl sub_8000AC8
+	ldr r1, dword_803FDF0 // =0x600dc80 
+	ldr r2, off_803FDF4 // =0x280 
+	bl QueueEightWordAlignedGFXTransfer
 	cmp r4, #1
 	beq loc_803FDC6
 	ldr r0, off_803FDFC // =byte_86BFE20
@@ -151,9 +150,9 @@ chatbox_runScript_803FE10:
 loc_803FE14:
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	ldr r0, off_803FE58 // =byte_86C05E0
-	ldr r1, dword_803FE5C // =0x600dc80
-	ldr r2, off_803FE60 // =0x320
-	bl sub_8000AC8
+	ldr r1, dword_803FE5C // =0x600dc80 
+	ldr r2, off_803FE60 // =0x320 
+	bl QueueEightWordAlignedGFXTransfer
 	cmp r4, #1
 	beq loc_803FE32
 	ldr r0, off_803FE68 // =byte_86C0900
@@ -193,13 +192,13 @@ off_803FE70: .word byte_86C0920
 chatbox_runScript_803FE74:
 	push {r4,r5,lr}
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
-	ldr r0, off_803FE9C // =spriteWhiteDot
-	ldr r1, dword_803FEA0 // =0x600dc80
-	ldr r2, off_803FEA4 // =0x6f8
-	bl sub_8000AC8
-	ldr r0, off_803FEAC // =spriteWhiteDot
-	ldr r1, off_803FEB0 // =unk_3001B40
-	mov r2, #0x20
+	ldr r0, off_803FE9C // =spriteWhiteDot 
+	ldr r1, dword_803FEA0 // =0x600dc80 
+	ldr r2, off_803FEA4 // =0x6f8 
+	bl QueueEightWordAlignedGFXTransfer
+	ldr r0, off_803FEAC // =spriteWhiteDot 
+	ldr r1, off_803FEB0 // =unk_3001B40 
+	mov r2, #0x20 
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {r4,r5,pc}
 off_803FE90: .word byte_803FE94
@@ -898,13 +897,13 @@ chatbox_runScript:
 	mov r0, #0xd
 	mov r2, #oChatbox_Unk_90
 	str r0, [r5,r2]
-	ldr r0, off_804046C // =dword_86BEB20
-	ldr r1, dword_8040470 // =0x600dc80
-	ldr r2, off_8040474 // =0x160
-	bl sub_8000AC8
-	ldr r0, off_804047C // =byte_86BEC80
-	ldr r1, off_8040480 // =unk_3001B40
-	mov r2, #0x20
+	ldr r0, off_804046C // =dword_86BEB20 
+	ldr r1, dword_8040470 // =0x600dc80 
+	ldr r2, off_8040474 // =0x160 
+	bl QueueEightWordAlignedGFXTransfer
+	ldr r0, off_804047C // =byte_86BEC80 
+	ldr r1, off_8040480 // =unk_3001B40 
+	mov r2, #0x20 
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	ldr r0, off_8040484 // =dword_86B7AC0
 	ldr r1, off_8040488 // =byte_3001710
@@ -1037,13 +1036,13 @@ chatbox_reqBBS_80404C0:
 	mov r0, #0xd
 	mov r2, #oChatbox_Unk_90
 	str r0, [r5,r2]
-	ldr r0, off_80405A8 // =dword_86BEB20
-	ldr r1, dword_80405AC // =0x600dc80
-	ldr r2, off_80405B0 // =0x160
-	bl sub_8000AC8
-	ldr r0, off_80405B4 // =byte_86BEC80
-	ldr r1, off_80405B8 // =unk_3001B40
-	mov r2, #0x20
+	ldr r0, off_80405A8 // =dword_86BEB20 
+	ldr r1, dword_80405AC // =0x600dc80 
+	ldr r2, off_80405B0 // =0x160 
+	bl QueueEightWordAlignedGFXTransfer
+	ldr r0, off_80405B4 // =byte_86BEC80 
+	ldr r1, off_80405B8 // =unk_3001B40 
+	mov r2, #0x20 
 	bl CopyByEightWords // (u32 *src, u32 *dest, int byteCount) -> void
 	pop {r0}
 	ldr r1, off_80405C0 // =byte_3001710
@@ -1176,7 +1175,7 @@ dead_80405F8:
 	str r0, [r5,r2]
 	pop {r0,r2}
 	ldr r1, byte_80406E4 // =0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r0}
 	ldr r1, off_80406F0 // =unk_3001B40
 	mov r2, #0x20
@@ -1350,7 +1349,7 @@ chatbox_804082C:
 	add r0, r0, r2
 	ldr r1, dword_804088C // =0x6017f00
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldrb r0, [r5,#0x1a]
 	ldrb r1, [r5,#0x1b]
 	lsl r0, r0, #0x10
@@ -1473,7 +1472,7 @@ chatbox_ED_select_8040944:
 	add r0, r0, r2
 	ldr r1, dword_80409A8 // =0x6017f80
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	mov r2, r5
 	add r2, #0x94
 	ldrb r1, [r2]
@@ -1527,7 +1526,7 @@ chatbox_80409C8:
 	ldr r0, off_80409D8 // =dword_86A4A40
 	ldr r1, dword_80409DC // =0x6017f80
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {pc}
 	.hword 0x0
 off_80409D8: .word dword_86A4A40
@@ -1545,7 +1544,7 @@ chatbox_80409E0:
 	add r0, r0, r2
 	ldr r1, dword_8040A78 // =0x6017f80
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldrb r1, [r5,#0x18]
 	ldr r0, [r5,#0x70]
 	add r0, r0, r1
@@ -1630,7 +1629,7 @@ chatbox_8040A9A:
 	add r0, r0, r2
 	ldr r1, dword_8040B18 // =0x6017f80
 	mov r2, #0x80
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldrb r1, [r5,#0x18]
 	ldr r0, [r5,#0x70]
 	add r0, r0, r1
@@ -1918,11 +1917,11 @@ loc_8040CDA:
 	ldr r0, [r4,#8]
 	ldr r1, [r4,#0xc]
 	ldr r2, [r4,#0x10]
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	ldr r0, [r4,#0x14]
 	ldr r1, [r4,#0x18]
 	ldr r2, [r4,#0x1c]
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {r4,r6,r7}
 	push {r4,r6}
 	ldr r0, [r7,#8]
@@ -3048,7 +3047,7 @@ loc_804152A:
 	ldrb r0, [r4,#2]
 	ldrb r1, [r4,#3]
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_S2011c50_Ptr]
+	ldr r2, [r2,#oToolkit_CutsceneStatePtr]
 	add r2, #8
 	add r2, r2, r0
 	ldrb r0, [r2]
@@ -5076,7 +5075,7 @@ loc_804245C:
 	bl gameState_8005BC8 // (BattleSettings *r0Bt, bool r1) -> void
 	mov r0, #0x2c
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	pop {r4,r5}
 	mov r0, #1
 	strb r0, [r5,#4]
@@ -5109,7 +5108,7 @@ loc_804248C:
 	bl sub_803522E
 	mov r0, #0x2c
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	pop {r4,r5,r7}
 	mov r0, #1
 	strb r0, [r5,#4]
@@ -5405,7 +5404,7 @@ chatbox_80426C4:
 	push {lr}
 	mov r0, #0xc
 	mov r1, #0xc
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	add r4, #2
 	mov r0, #1
 	pop {pc}
@@ -6477,7 +6476,7 @@ off_8042FEC: .word chatbox_8042FF4+1
 chatbox_8042FF4:
 	push {lr}
 	mov r2, r10
-	ldr r2, [r2,#oToolkit_S2011c50_Ptr]
+	ldr r2, [r2,#oToolkit_CutsceneStatePtr]
 	add r2, #8
 	ldrb r0, [r4,#2]
 	ldrb r1, [r4,#3]
@@ -7917,7 +7916,7 @@ jt_8043B00: .word sub_8033FC0+1
 	.word sub_813C3AC+1
 	.word sub_803CEB8+1
 	.word sub_80AA86E+1
-byte_8043B54: .byte 0xE0, 0xA2, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0, 0x40, 0xA3, 0x0, 0x2
+byte_8043B54:: .byte 0xE0, 0xA2, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0, 0x40, 0xA3, 0x0, 0x2
 	.byte 0x20, 0x0, 0x0, 0x0, 0x0, 0xA3, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0
 	.byte 0x60, 0xA3, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0, 0x0, 0xAA, 0x2, 0x2
 	.byte 0x20, 0x0, 0x0, 0x0, 0x20, 0xAA, 0x2, 0x2, 0x20, 0x0, 0x0, 0x0
@@ -7940,23 +7939,24 @@ byte_8043B54: .byte 0xE0, 0xA2, 0x0, 0x2, 0x20, 0x0, 0x0, 0x0, 0x40, 0xA3, 0x0, 
 	.byte 0x86, 0x9A, 0x0, 0x2, 0x4, 0x0, 0x0, 0x0, 0x88, 0x9A, 0x0, 0x2
 	.byte 0x4, 0x0, 0x0, 0x0, 0x8A, 0x9A, 0x0, 0x2, 0x4, 0x0, 0x0, 0x0
 	.byte 0x8C, 0x9A, 0x0, 0x2, 0x4, 0x0, 0x0, 0x0
-off_8043C64: .word unk_2011C54
-	.word unk_2011C55
-	.word unk_2011C56
-	.word unk_2011C57
+off_8043C64:
+	.word eCutsceneState_Unk_04
+	.word eCutsceneState_Unk_05
+	.word eCutsceneState_Unk_06
+	.word eCutsceneState_Unk_07
 	.word unk_200A293
 	.word 0x0
 	.word 0x0
 	.word sSubmenu+0x20 // sSubmenu.unk_20
 off_8043C84: .word byte_2011A9D
 	.word 0x0
-off_8043C8C: .word unk_2009A80
+off_8043C8C:: .word unk_2009A80
 	.word unk_2009A82
 	.word unk_2009A84
 	.word unk_2009A86
 	.word unk_2009A88
 	.word unk_2009A8A
-byte_8043CA4: .byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
+byte_8043CA4:: .byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
 	.byte 0x8, 0x8, 0x6, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
 	.byte 0x8, 0x8, 0x8, 0x8, 0x8, 0x7, 0x7, 0x7, 0x8, 0x6, 0x7, 0x7, 0x6, 0x6, 0x7, 0x6, 0x8
 	.byte 0x7, 0x7, 0x7, 0x7, 0x7, 0x7, 0x7, 0x7, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8, 0x8
@@ -8067,7 +8067,7 @@ byte_8044264: .byte 0x2D, 0x2D, 0x2D, 0x0, 0x41, 0x53, 0x53, 0x0, 0x43, 0x4F
 	.byte 0x50, 0x0, 0x44, 0x31, 0x4B, 0x0, 0x4B, 0x30, 0x4B, 0x0
 	.byte 0x41, 0x35, 0x5A, 0x0, 0x53, 0x31, 0x54, 0x0, 0x48, 0x31
 	.byte 0x56, 0x0, 0x0, 0x0, 0x0, 0x0
-off_8044314: .word unk_200BEA0
+off_8044314:: .word unk_200BEA0
 	.byte 0x20, 0x20, 0x20, 0x20, 0xA0, 0xC1, 0x0, 0x2, 0x20, 0x20
 	.byte 0x20, 0x20, 0xB0, 0xBE, 0x0, 0x2, 0x20, 0x20, 0x20, 0x20
 	.byte 0xB0, 0xC1, 0x0, 0x2, 0x20, 0x20, 0x20, 0x20, 0xC0, 0xBE
@@ -8078,7 +8078,7 @@ off_8044314: .word unk_200BEA0
 	.byte 0x0, 0x2, 0x20, 0x20, 0x20, 0x20, 0xF0, 0xBE, 0x0, 0x2
 	.byte 0x20, 0x20, 0x20, 0x20, 0xF0, 0xC1, 0x0, 0x2, 0x20, 0x20
 	.byte 0x20, 0x20, 0x0, 0x0, 0x0, 0x0
-off_8044378: .word unk_200C1A0
+off_8044378:: .word unk_200C1A0
 	.word 0xA0202020
 	.word unk_200C1B0
 	.byte 0x20, 0x20, 0x20, 0xA0, 0xC0, 0xC1, 0x0, 0x2, 0x20, 0x20
@@ -8103,7 +8103,7 @@ off_8044378: .word unk_200C1A0
 	.word byte_200C7F0
 	.word 0x20202020
 	.word 0x0
-off_804440C: .word byte_200C7A0
+off_804440C:: .word byte_200C7A0
 	.byte 0x20, 0x20, 0x20, 0xA0, 0xB0, 0xC7, 0x0, 0x2, 0x20, 0x20
 	.byte 0x20, 0xA0, 0xC0, 0xC7, 0x0, 0x2, 0x20, 0x20, 0x20, 0xA0
 	.byte 0xD0, 0xC7, 0x0, 0x2, 0x20, 0x20, 0x20, 0xA0, 0xE0, 0xC7

@@ -1,4 +1,3 @@
-	.include "asm/asm34.inc"
 
 	thumb_func_start sub_812D378
 sub_812D378:
@@ -49,7 +48,7 @@ sub_812D3A8:
 	mov r3, #4
 	bl sub_8120018
 	mov r1, r10
-	ldr r1, [r1,#oToolkit_Unk2001c04_Ptr]
+	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	mov r0, #5
 	strb r0, [r1,#2]
 	mov r0, #4
@@ -423,10 +422,10 @@ sub_812D690:
 	pop {r5,r7}
 loc_812D6C4:
 	mov r0, #JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	bne loc_812D6DC
 	mov r0, #JOYPAD_A
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq locret_812D6F4
 	mov r1, #4
 	ldrb r0, [r5,#0x11]
@@ -464,13 +463,13 @@ sub_812D700:
 	bl sub_812D6F8
 	mov r7, r0
 	mov r0, #JOYPAD_START
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	bne loc_812D71E
 	ldrb r0, [r5,#2]
 	cmp r0, #0x20 
 	bne loc_812D742
 	mov r0, #JOYPAD_B
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	beq locret_812D746
 loc_812D71E:
 	ldrb r0, [r5,#2]
@@ -560,14 +559,14 @@ sub_812D7A4:
 	bl sub_812D6F8
 	mov r5, r0
 	mov r0, #JOYPAD_A
-	bl JoypadKeyPressed
+	bl IsButtonPressed
 	bne loc_812D7BA
 	b loc_812D800
 loc_812D7BA:
 	mov r0, #SOUND_MENU_SELECT
 	bl PlaySoundEffect
 	mov r0, r10
-	ldr r0, [r0,#oToolkit_Unk2001c04_Ptr]
+	ldr r0, [r0,#oToolkit_S2001c04_Ptr]
 	ldrh r2, [r5,#0x34]
 	mov r1, #2
 	mov r4, #3
@@ -683,7 +682,7 @@ sub_812D880:
 	bne loc_812D892
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 loc_812D892:
 	ldrb r0, [r5,#2]
 	strb r0, [r5,#0x16]
@@ -929,7 +928,7 @@ sub_812DA60:
 	bne loc_812DA72
 	mov r0, #8
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 loc_812DA72:
 	bl eStruct200BC30_getJumpOffset00
 	cmp r0, #0

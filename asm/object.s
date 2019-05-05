@@ -1,4 +1,3 @@
-	.include "asm/object.inc"
 
 	thumb_func_start sub_800B884
 sub_800B884:
@@ -129,7 +128,7 @@ object_dimScreen:
 	bne loc_800B964
 	mov r0, #0x3c
 	mov r1, #4
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -138,7 +137,7 @@ loc_800B964:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	add r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne locret_800B97C
 	ldrb r0, [r5,#oBattleObject_CurAction]
@@ -158,7 +157,7 @@ sub_800B97E:
 	bne loc_800B996
 	mov r0, #0x78
 	mov r1, #0x80
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #0
 	strh r0, [r5,#oBattleObject_Timer]
 	mov r0, #4
@@ -167,7 +166,7 @@ loc_800B996:
 	ldrh r0, [r5,#oBattleObject_Timer]
 	add r0, #1
 	strh r0, [r5,#oBattleObject_Timer]
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne locret_800B9AE
 	ldrb r0, [r5,#oBattleObject_CurAction]
@@ -553,11 +552,11 @@ object_undimScreen:
 loc_800BCA4:
 	mov r0, #0x38
 	mov r1, #4
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_800BCB0:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne locret_800BCBC
 loc_800BCB8:
@@ -586,11 +585,11 @@ sub_800BCC0:
 loc_800BCDC:
 	mov r0, #0x74
 	mov r1, #0x80
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 	mov r0, #4
 	strb r0, [r5,#oBattleObject_PhaseInitialized]
 loc_800BCE8:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne locret_800BCF4
 loc_800BCF0:
@@ -614,19 +613,19 @@ sub_800BCF6:
 	beq loc_800BD1A
 	cmp r0, #0
 	beq loc_800BD1A
-	mov r0, #0x3c
-	ldr r1, off_800BF7C // =0x100
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	mov r0, #0x3c 
+	ldr r1, off_800BF7C // =0x100 
+	bl SetScreenFade // (int a1, int a2) -> void
 	b loc_800BD22
 loc_800BD1A:
 	mov r0, #0x84
 	mov r1, #0x10
-	bl engine_setScreeneffect // (int a1, int a2) -> void
+	bl SetScreenFade // (int a1, int a2) -> void
 loc_800BD22:
 	mov r0, #4
 	strb r0, [r5,#0xb]
 loc_800BD26:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	tst r0, r0
 	bne locret_800BD32
 	mov r0, #8

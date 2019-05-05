@@ -1,6 +1,5 @@
-	.include "data/SpritePointersList.inc"
 
-SpritePointersList: .word battleSpritePtrs
+SpritePointersList:: .word battleSpritePtrs
 	.word virusBattleSpritePtrs
 	.word naviBattleSpritePtrs
 	.word off_8031E00
@@ -10,7 +9,7 @@ SpritePointersList: .word battleSpritePtrs
 	.word objSpritePtrs
 	.word mugshotSpritePtrs
 	.word guiSpritePtrs
-battleSpritePtrs: .word battleSpriteMegaMan
+battleSpritePtrs:: .word battleSpriteMegaMan
 	.word battleSpriteFlameCross
 	.word battleSpriteElecCross
 	.word battleSpriteSlashCross
@@ -24,7 +23,7 @@ battleSpritePtrs: .word battleSpriteMegaMan
 	.word battleSprite_8233728
 	.word battleSprite_823B768
 	.word spriteWhiteDot
-virusBattleSpritePtrs: .word spriteWhiteDot
+virusBattleSpritePtrs:: .word spriteWhiteDot
 	.word compVirusBattleSpriteMetteur + 1<<31
 	.word compVirusBattleSprite_8242E94 + 1<<31
 	.word virusBattleSprite_8244164
@@ -56,7 +55,7 @@ virusBattleSpritePtrs: .word spriteWhiteDot
 	.word comp_8263484 + 1<<31
 	.word spriteWhiteDot
 	.word comp_82647E4 + 1<<31
-naviBattleSpritePtrs: .word spriteWhiteDot
+naviBattleSpritePtrs:: .word spriteWhiteDot
 	.word battleSpriteFlameMan
 	.word battleSpriteElecMan
 	.word battleSpriteSlashMan
@@ -79,7 +78,7 @@ naviBattleSpritePtrs: .word spriteWhiteDot
 	.word compSpriteWhiteDot_84E0C4C + 1<<31
 	.word comp_82E8470 + 1<<31
 	.word compSpriteWhiteDot_84E0C4C + 1<<31
-off_8031E00: .word sprite_82EFE48
+off_8031E00:: .word sprite_82EFE48
 	.word sprite_82F39C0
 	.word sprite_82F569C
 	.word sprite_82F6ECC
@@ -184,7 +183,7 @@ off_8031E00: .word sprite_82EFE48
 	.word compSpriteWhiteDot_84E0C4C + 1<<31
 	.word sprite_8350628
 	.word compSpriteWhiteDot_84E0C4C + 1<<31
-off_8031FA4: .word sprite_8350888
+off_8031FA4:: .word sprite_8350888
 	.word sprite_8351FA8
 	.word sprite_8352360
 	.word sprite_83536BC
@@ -273,10 +272,10 @@ off_8031FA4: .word sprite_8350888
 	.word sprite_8395660
 	.word sprite_8396650
 	.word spriteWhiteDot
-off_8032108: .word byte_83971C0
+off_8032108:: .word byte_83971C0
 	.word byte_8398048
 	.word spriteWhiteDot
-off_8032114: .word sprite_8399578
+off_8032114:: .word sprite_8399578
 	.word sprite_839AAB8
 	.word sprite_839B9C0
 	.word sprite_839CCDC
@@ -308,7 +307,7 @@ off_8032114: .word sprite_8399578
 	.word sprite_83BCC70
 	.word sprite_83BD228
 	.word sprite_83BE6B0
-npcSpritePtrs: .word npcSpriteLan
+npcSpritePtrs:: .word npcSpriteLan
 	.word npcSpriteMayl
 	.word npcSpriteDex
 	.word npcSpriteYai
@@ -404,7 +403,7 @@ npcSpritePtrs: .word npcSpriteLan
 	.word npcSpriteProgman
 	.word npcSpriteProgman
 	.word npcSpriteProgman
-objSpritePtrs: .word sprite_849B424
+objSpritePtrs:: .word sprite_849B424
 	.word sprite_849BA28
 	.word sprite_849D164
 	.word objSpriteSkullBarrier
@@ -565,7 +564,7 @@ objSpritePtrs: .word sprite_849B424
 	.word sprite_84DF96C
 	.word comp_84E00A0 + 1<<31
 	.word spriteWhiteDot
-mugshotSpritePtrs: .word mugshotLan
+mugshotSpritePtrs:: .word mugshotLan
 	.word mugshotMayl
 	.word mugshotDex
 	.word mugshotYai
@@ -662,7 +661,7 @@ mugshotSpritePtrs: .word mugshotLan
 	.word sprite_84F3B08
 	.word sprite_84F3B08
 	.word mugshotBlack
-guiSpritePtrs: .word sprite_86CBB7C
+guiSpritePtrs:: .word sprite_86CBB7C
 	.word sprite_86CC13C
 	.word sprite_86CD410
 	.word comp_86C6B30 + 1<<31
@@ -719,7 +718,7 @@ guiSpritePtrs: .word sprite_86CBB7C
 	.word sprite_87DDB7C
 	.word spriteWhiteDot
 	.word spriteWhiteDot
-off_8032800: .word sprite_87E069C
+off_8032800:: .word sprite_87E069C
 	.word sprite_87E0854
 	.word sprite_87E0E44
 	.word spriteWhiteDot
@@ -825,14 +824,14 @@ off_8032800: .word sprite_87E069C
 	.word sprite_837D8E0
 	.word sprite_838E194
 	.word sprite_83A9190
-off_80329A8: .word off_8032A20
+off_80329A8:: .word off_8032A20
 	.word off_8032A38
 	.word off_8032A74
 	.word off_8032AF8
 	.word off_8032B34
 	.word off_8032B70
 	.word off_8032BA0
-off_80329C4: .word off_8032BE8
+off_80329C4:: .word off_8032BE8
 	.word off_8032C00
 	.word off_8032C24
 	.word off_8032C48
@@ -854,13 +853,13 @@ off_80329C4: .word off_8032BE8
 	.word off_8032EF4
 	.word off_8032F18
 	.word off_8032F48
-off_8032A20: .word byte_84FAFCC
+off_8032A20:: .word byte_84FAFCC
 	.word byte_84FF308
 	.word byte_84FF4AC
 	.word dword_8500F1C
 	.word byte_8503098
 	.word byte_850323C
-off_8032A38: .word byte_8503C90
+off_8032A38:: .word byte_8503C90
 	.word byte_85077F8
 	.word byte_850799C
 	.word byte_8509354
@@ -875,7 +874,7 @@ off_8032A38: .word byte_8503C90
 	.word byte_85120AC
 	.word byte_8515394
 	.word byte_8515538
-off_8032A74: .word byte_85162E0
+off_8032A74:: .word byte_85162E0
 	.word byte_8519D64
 	.word byte_851A0AC
 	.word byte_85162E0
@@ -908,7 +907,7 @@ off_8032A74: .word byte_85162E0
 	.word byte_852C560
 	.word byte_852EFA0
 	.word byte_852E780
-off_8032AF8: .word byte_852F144
+off_8032AF8:: .word byte_852F144
 	.word byte_85330DC
 	.word byte_8533280
 	.word byte_8535488
@@ -923,7 +922,7 @@ off_8032AF8: .word byte_852F144
 	.word byte_8545468
 	.word byte_8547C24
 	.word byte_8547DC8
-off_8032B34: .word byte_85495B4
+off_8032B34:: .word byte_85495B4
 	.word byte_854D26C
 	.word byte_854D410
 	.word byte_8550B90
@@ -938,7 +937,7 @@ off_8032B34: .word byte_85495B4
 	.word byte_855B17C
 	.word byte_855DBC0
 	.word byte_855DD64
-off_8032B70: .word byte_855EE14
+off_8032B70:: .word byte_855EE14
 	.word byte_85621EC
 	.word byte_8562390
 	.word byte_8564358
@@ -950,7 +949,7 @@ off_8032B70: .word byte_855EE14
 	.word byte_856E4F8
 	.word byte_8570BBC
 	.word byte_8570D60
-off_8032BA0: .word byte_8572DEC
+off_8032BA0:: .word byte_8572DEC
 	.word byte_8576500
 	.word byte_85766A4
 	.word byte_8579340
@@ -968,13 +967,13 @@ off_8032BA0: .word byte_8572DEC
 	.word byte_858CDA4
 	.word byte_858E380
 	.word byte_858E524
-off_8032BE8: .word dword_858F110
+off_8032BE8:: .word dword_858F110
 	.word off_8592304
 	.word dword_85924A8
 	.word dword_858F110
 	.word off_8592304
 	.word dword_8594D80
-off_8032C00: .word dword_8598328
+off_8032C00:: .word dword_8598328
 	.word byte_859B428
 	.word byte_859B5CC
 	.word dword_8598328
@@ -983,7 +982,7 @@ off_8032C00: .word dword_8598328
 	.word dword_8598328
 	.word byte_859B428
 	.word byte_85A2198
-off_8032C24: .word byte_85A5590
+off_8032C24:: .word byte_85A5590
 	.word byte_85A8B04
 	.word byte_85A8CA8
 	.word byte_85A5590
@@ -992,7 +991,7 @@ off_8032C24: .word byte_85A5590
 	.word byte_85A5590
 	.word byte_85A8B04
 	.word dword_85AEFA8
-off_8032C48: .word dword_85B22DC
+off_8032C48:: .word dword_85B22DC
 	.word off_85B5D28
 	.word dword_85B5ECC
 	.word dword_85B22DC
@@ -1001,7 +1000,7 @@ off_8032C48: .word dword_85B22DC
 	.word dword_85B22DC
 	.word off_85B5D28
 	.word dword_85BB3D0
-off_8032C6C: .word dword_8598328
+off_8032C6C:: .word dword_8598328
 	.word byte_859B428
 	.word byte_85BE350
 	.word byte_85A5590
@@ -1016,7 +1015,7 @@ off_8032C6C: .word dword_8598328
 	.word dword_85CB0A8
 	.word off_85CD6B4
 	.word dword_85CD858
-off_8032CA8: .word off_85D0894
+off_8032CA8:: .word off_85D0894
 	.word off_85D183C
 	.word dword_85D19E0
 	.word off_85D2EE0
@@ -1033,7 +1032,7 @@ off_8032CA8: .word off_85D0894
 	.word off_85D2EE0
 	.word off_85D2D3C
 	.word dword_85D44B0
-off_8032CFC: .word off_85D2EE0
+off_8032CFC:: .word off_85D2EE0
 	.word off_85D35B8
 	.word dword_85D375C
 	.word off_85D2EE0
@@ -1081,7 +1080,7 @@ off_8032CFC: .word off_85D2EE0
 	.word off_85D2EE0
 	.word off_85D430C
 	.word dword_85D44B0
-off_8032DBC: .word off_85D2EE0
+off_8032DBC:: .word off_85D2EE0
 	.word off_85D430C
 	.word dword_85D44B0
 	.word off_85D2EE0
@@ -1129,7 +1128,7 @@ off_8032DBC: .word off_85D2EE0
 	.word off_85D2EE0
 	.word off_85D35B8
 	.word dword_85D375C
-off_8032E7C: .word dword_85D4E48
+off_8032E7C:: .word dword_85D4E48
 	.word off_85D895C
 	.word dword_85D8B00
 	.word dword_85D4E48
@@ -1138,7 +1137,7 @@ off_8032E7C: .word dword_85D4E48
 	.word dword_85D4E48
 	.word off_85DDB74
 	.word dword_85DDD18
-off_8032EA0: .word dword_85D4E48
+off_8032EA0:: .word dword_85D4E48
 	.word off_85E0670
 	.word dword_85E0814
 	.word dword_85D4E48
@@ -1147,19 +1146,19 @@ off_8032EA0: .word dword_85D4E48
 	.word dword_85D4E48
 	.word off_85E0670
 	.word dword_85E519C
-off_8032EC4: .word dword_85D4E48
+off_8032EC4:: .word dword_85D4E48
 	.word off_85E79D0
 	.word dword_85E7B74
 	.word dword_85D4E48
 	.word off_85EAD2C
 	.word dword_85EAED0
-off_8032EDC: .word dword_85FEF08
+off_8032EDC:: .word dword_85FEF08
 	.word off_85EE2A4
 	.word dword_85EE448
 	.word dword_85FEF08
 	.word off_85EE2A4
 	.word dword_85F1B20
-off_8032EF4: .word dword_85D4E48
+off_8032EF4:: .word dword_85D4E48
 	.word off_85F4D84
 	.word dword_85F4F28
 	.word dword_85D4E48
@@ -1168,7 +1167,7 @@ off_8032EF4: .word dword_85D4E48
 	.word dword_85D4E48
 	.word off_85FB848
 	.word dword_85FB9EC
-off_8032F18: .word dword_85FEF08
+off_8032F18:: .word dword_85FEF08
 	.word off_8602590
 	.word dword_8602734
 	.word dword_85FEF08
@@ -1180,7 +1179,7 @@ off_8032F18: .word dword_85FEF08
 	.word dword_85FEF08
 	.word off_8602590
 	.word spriteWhiteDot
-off_8032F48: .word dword_85FEF08
+off_8032F48:: .word dword_85FEF08
 	.word off_860D678
 	.word spriteWhiteDot
 	.word dword_85FEF08
@@ -1189,14 +1188,14 @@ off_8032F48: .word dword_85FEF08
 	.word dword_85FEF08
 	.word off_860D678
 	.word spriteWhiteDot
-off_8032F6C: .word off_8032FE4
+off_8032F6C:: .word off_8032FE4
 	.word off_8032FFC
 	.word off_8033038
 	.word off_80330BC
 	.word off_80330F8
 	.word off_8033134
 	.word off_8033164
-off_8032F88: .word off_80331AC
+off_8032F88:: .word off_80331AC
 	.word off_80331C4
 	.word off_80331E8
 	.word off_803320C
@@ -1219,28 +1218,13 @@ off_8032F88: .word off_80331AC
 	.word off_80334B8
 	.word off_80334DC
 	.word off_803350C
-off_8032FE4: .word sub_8030628+1
+off_8032FE4:: .word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_8032FFC: .word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_8033038: .word sub_8030628+1
+off_8032FFC:: .word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
 	.word sub_8030628+1
@@ -1255,67 +1239,7 @@ off_8033038: .word sub_8030628+1
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-pt_8033090: .word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_80330BC: .word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_80330F8: .word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_8033134: .word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_8033164: .word sub_8030628+1
+off_8033038:: .word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
 	.word sub_8030628+1
@@ -1333,22 +1257,13 @@ off_8033164: .word sub_8030628+1
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_80331AC: .word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_80331C4: .word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
 	.word sub_8030628+1
-	.word sub_8030808+1
+pt_8033090:: .word sub_8030808+1
 	.word sub_803086C+1
-off_80331E8: .word sub_8030628+1
+	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
 	.word sub_8030628+1
@@ -1357,16 +1272,7 @@ off_80331E8: .word sub_8030628+1
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_803320C: .word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_8033230: .word sub_8030628+1
+off_80330BC:: .word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
 	.word sub_8030628+1
@@ -1381,7 +1287,100 @@ off_8033230: .word sub_8030628+1
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_803326C: .word sub_8030628+1
+off_80330F8:: .word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_8033134:: .word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_8033164:: .word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_80331AC:: .word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_80331C4:: .word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_80331E8:: .word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_803320C:: .word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_8033230:: .word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_803326C:: .word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
 	.word sub_8030628+1
@@ -1400,7 +1399,7 @@ off_803326C: .word sub_8030628+1
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-jt_big_80332C0: .word sub_8030628+1
+jt_big_80332C0:: .word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
 	.word sub_8030628+1
@@ -1422,7 +1421,7 @@ jt_big_80332C0: .word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
 	.word sub_8030628+1
-off_8033318: .word sub_8030808+1
+off_8033318:: .word sub_8030808+1
 	.word sub_803086C+1
 	.word sub_8030628+1
 	.word sub_8030808+1
@@ -1448,28 +1447,7 @@ off_8033318: .word sub_8030808+1
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_8033380: .word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
+off_8033380:: .word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
 	.word sub_8030628+1
@@ -1496,46 +1474,13 @@ off_8033380: .word sub_8030628+1
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_8033440: .word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_8033464: .word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
 	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_8033488: .word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_80334A0: .word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_80334B8: .word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-	.word sub_8030628+1
-	.word sub_8030808+1
-	.word sub_803086C+1
-off_80334DC: .word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
 	.word sub_8030628+1
@@ -1547,7 +1492,10 @@ off_80334DC: .word sub_8030628+1
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-off_803350C: .word sub_8030628+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_8033440:: .word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
 	.word sub_8030628+1
@@ -1556,14 +1504,65 @@ off_803350C: .word sub_8030628+1
 	.word sub_8030628+1
 	.word sub_8030808+1
 	.word sub_803086C+1
-pt_8033530: .word off_80335A8
+off_8033464:: .word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_8033488:: .word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_80334A0:: .word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_80334B8:: .word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_80334DC:: .word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+off_803350C:: .word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+	.word sub_8030628+1
+	.word sub_8030808+1
+	.word sub_803086C+1
+pt_8033530:: .word off_80335A8
 	.word off_80335B4
 	.word off_80335C8
 	.word off_80335F4
 	.word off_8033608
 	.word off_803361C
 	.word off_803362C
-pt_803354C: .word off_8033644
+pt_803354C:: .word off_8033644
 	.word off_803364C
 	.word off_8033658
 	.word off_8033664
@@ -1586,15 +1585,15 @@ pt_803354C: .word off_8033644
 	.word off_8033748
 	.word off_8033754
 	.word off_8033764
-off_80335A8: .word byte_8619BD0
+off_80335A8:: .word byte_8619BD0
 	.word byte_861AD84
 	.word byte_861B31C
-off_80335B4: .word byte_861B338
+off_80335B4:: .word byte_861B338
 	.word byte_861C770
 	.word byte_861CC50
 	.word byte_861CEE8
 	.word byte_861D05C
-off_80335C8: .word byte_861D4D8
+off_80335C8:: .word byte_861D4D8
 	.word byte_861D4D8
 	.word byte_861D4D8
 	.word byte_861D4D8
@@ -1605,50 +1604,50 @@ off_80335C8: .word byte_861D4D8
 	.word dword_8620350
 	.word dword_8620A9C
 	.word dword_8620A9C
-off_80335F4: .word dword_8620E58
+off_80335F4:: .word dword_8620E58
 	.word byte_8622CFC
 	.word byte_86246F0
 	.word byte_8625B10
 	.word byte_8627DF8
-off_8033608: .word byte_8628968
+off_8033608:: .word byte_8628968
 	.word byte_862AB08
 	.word dword_862B6E0
 	.word dword_862C160
 	.word dword_862C978
-off_803361C: .word dword_862D0A0
+off_803361C:: .word dword_862D0A0
 	.word dword_862E15C
 	.word dword_863168C
 	.word dword_8632288
-off_803362C: .word dword_8633084
+off_803362C:: .word dword_8633084
 	.word dword_8634E64
 	.word dword_8635EB4
 	.word dword_8636A7C
 	.word dword_86376B4
 	.word dword_8638E70
-off_8033644: .word dword_863951C
+off_8033644:: .word dword_863951C
 	.word dword_863B234
-off_803364C: .word dword_863D1A4
+off_803364C:: .word dword_863D1A4
 	.word dword_863F830
 	.word dword_8642B34
-off_8033658: .word dword_86460FC
+off_8033658:: .word dword_86460FC
 	.word dword_86475CC
 	.word dword_8648BA8
-off_8033664: .word dword_864A484
+off_8033664:: .word dword_864A484
 	.word dword_864D860
 	.word dword_8651B2C
-off_8033670: .word dword_8656C0C
+off_8033670:: .word dword_8656C0C
 	.word dword_865A08C
 	.word dword_865B77C
 	.word dword_8660604
 	.word byte_866296C
-off_8033684: .word byte_866446C
+off_8033684:: .word byte_866446C
 	.word dword_8664F04
 	.word 0x0
 	.word dword_8664F04
 	.word 0x0
 	.word dword_8664F04
 	.word dword_8664F04
-off_80336A0: .word dword_8664988
+off_80336A0:: .word dword_8664988
 	.word dword_8664F04
 	.word dword_8664988
 	.word dword_8664988
@@ -1664,7 +1663,7 @@ off_80336A0: .word dword_8664988
 	.word dword_8664988
 	.word dword_8664988
 	.word dword_8664F04
-off_80336E0: .word dword_8664F04
+off_80336E0:: .word dword_8664F04
 	.word dword_8664F04
 	.word dword_8664988
 	.word dword_8664988
@@ -1680,20 +1679,20 @@ off_80336E0: .word dword_8664F04
 	.word dword_8664988
 	.word dword_8664988
 	.word dword_8664988
-off_8033720: .word dword_8665548
+off_8033720:: .word dword_8665548
 	.word dword_8667820
 	.word dword_866B038
-off_803372C: .word byte_866D090
+off_803372C:: .word byte_866D090
 	.word byte_8671A74
 	.word byte_8673418
-off_8033738: .word byte_8675094
+off_8033738:: .word byte_8675094
 	.word byte_8678F4C
-off_8033740: .word byte_867D85C
+off_8033740:: .word byte_867D85C
 	.word byte_8680690
-off_8033748: .word byte_868316C
+off_8033748:: .word byte_868316C
 	.word byte_8687DCC
 	.word byte_868CB78
-off_8033754: .word byte_868EBA0
+off_8033754:: .word byte_868EBA0
 	.word byte_8691154
 	.word byte_8694FB4
 	.word spriteWhiteDot

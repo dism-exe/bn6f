@@ -1,6 +1,5 @@
-	.include "data/dat38_71.inc"
 
-dword_86CEE84: .word 0x63E10, 0x63E0000, 0x66004400, 0x820000, 0x10B00D9
+dword_86CEE84:: .word 0x63E10, 0x63E0000, 0x66004400, 0x820000, 0x10B00D9
 	.word 0x6B00013B, 0xD1019E01, 0x20101, 0x23C0235, 0x2600241
 	.word 0xC2028B00, 0x502FE02, 0x30F0003, 0x3330317, 0x65000338
 	.word 0x1A03B003, 0x43604, 0x48B0463, 0x52904EF, 0x9F056400
@@ -41,10 +40,10 @@ dword_86CEE84: .word 0x63E10, 0x63E0000, 0x66004400, 0x820000, 0x10B00D9
 	.word 0xF03AF03A, 0x105E93A, 0xF005AB38, 0xF03AF03A, 0x106E93A
 	.word 0x9E0C171C, 0x5DA138B0, 0x38B341, 0x312A3700, 0x2A38262A
 	.word 0x26108029
-dword_86CF1A8:
+dword_86CF1A8::
 	.incbin "data/scripts/comp_86CF1A8.lz"
 	.balign 4, 0x00
-TextScriptFolderNames:
+TextScriptFolderNames::
 	text_script_start TextScriptFolderNames
 	text_script_rel_pointers 0, 1, 2, 3, 4, 5, 6, 7, 8, 8, 8
 	text_script 0, scr_0
@@ -65,12 +64,12 @@ TextScriptFolderNames:
 		.string "RandFldr$"
 	text_script 8, scr_8
 		.string "Pack$"
-comp_86CF508:
+comp_86CF508::
 	.incbin "data/scripts/comp_86CF508.lz"
-CompTextScriptNetworkPlyTmSave86CF618:
+CompTextScriptNetworkPlyTmSave86CF618::
 	.incbin "data/scripts/comp_86CF618.lz"
-// NOTE (TextScript): what is this? it's not compressed, and not valid text script.
-TextScriptNetworkSave86CF730: .word 0x13310, 0x1330000, 0x24001E00, 0x2A0000, 0x360030
+// NOTE (TextScript):: what is this? it's not compressed, and not valid text script.
+TextScriptNetworkSave86CF730:: .word 0x13310, 0x1330000, 0x24001E00, 0x2A0000, 0x360030
 	.word 0x46010040, 0x4F004B00, 0x1005400, 0xCF008300, 0x2F011600
 	.word 0x311A0001, 0xE6321E3E, 0x27002E16, 0xDE63E37, 0x352E2D
 	.word 0x370DE638, 0xE6383929, 0xF2000000, 0xF29BC200, 0xE6C20001

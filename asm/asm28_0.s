@@ -1,4 +1,3 @@
-	.include "asm/asm28_0.inc"
 
 	thumb_local_start
 sub_8098BE8:
@@ -2950,7 +2949,7 @@ sub_809B9EC:
 sub_809BA14:
 	push {r5-r7,lr}
 	mov r5, r10
-	ldr r5, [r5,#oToolkit_S2011c50_Ptr]
+	ldr r5, [r5,#oToolkit_CutsceneStatePtr]
 	mov r0, #0x70 
 	add r6, r5, r0
 	ldr r0, [r6]
@@ -3274,7 +3273,7 @@ loc_809C042:
 loc_809C050:
 	bl sub_80010C6
 	ldrb r0, [r7,#0x14]
-	bl sub_80010BE
+	bl setPETNaviSelect
 	bl sub_8120DF0
 	bl sub_8033FDC
 	mov r0, #0
@@ -3612,7 +3611,7 @@ sub_809C890:
 	lsr r1, r1, #0x10
 	lsr r2, r2, #0x10
 	lsr r3, r3, #0x10
-	ldr r0, off_809C93C // =unk_2011C50 
+	ldr r0, off_809C93C // =eCutsceneState 
 	ldr r0, [r0,#0x70] // (dword_2011CC0 - 0x2011c50)
 	ldrb r0, [r0,#0xc]
 	lsl r0, r0, #2
@@ -3647,19 +3646,19 @@ byte_809C90C: .byte 0xE0, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xC0, 0xFF, 0x0, 0
 	.byte 0x0, 0x0, 0x0, 0xA0, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 byte_809C924: .byte 0x0, 0x0, 0xE0, 0xFF, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0xC0, 0xFF, 0x0
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0xA0, 0xFF, 0x0, 0x0, 0x0, 0x0
-off_809C93C: .word unk_2011C50
+off_809C93C: .word eCutsceneState
 	thumb_func_end sub_809C890
 
 	thumb_func_start sub_809C940
 sub_809C940:
 	push {r4-r7,lr}
-	ldr r0, off_809C950 // =unk_2011C50 
+	ldr r0, off_809C950 // =eCutsceneState 
 	ldr r0, [r0,#0x70] // (dword_2011CC0 - 0x2011c50)
 	ldr r0, [r0,#0x14]
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r4-r7,pc}
-off_809C950: .word unk_2011C50
+off_809C950: .word eCutsceneState
 	thumb_func_end sub_809C940
 
 	thumb_local_start
@@ -3911,7 +3910,7 @@ loc_809CBAA:
 	beq loc_809CBCC
 	bl sub_80010C6
 	mov r0, #0
-	bl sub_80010BE
+	bl setPETNaviSelect
 	mov r0, #0
 	str r0, [r5,#0x70]
 	b loc_809CBE8
@@ -4030,7 +4029,7 @@ loc_809CC7E:
 	ldr r2, [r2,#0x2c]
 	ldr r0, [r5,#0x78]
 	str r0, [r2,#0x4c]
-	bl sub_80010BE
+	bl setPETNaviSelect
 	mov r0, #0x8d
 	bl PlaySoundEffect
 	ldr r0, byte_809CEAC+4 // =0x4
@@ -4620,7 +4619,7 @@ loc_809D40A:
 	bne loc_809D446
 	ldrb r1, [r5,#0x13]
 	mov r7, r10
-	ldr r7, [r7,#oToolkit_Unk2001c04_Ptr]
+	ldr r7, [r7,#oToolkit_S2001c04_Ptr]
 	ldrh r0, [r7,#0x12]
 	add r0, r0, r1
 	strh r0, [r7,#0x12]
@@ -5349,7 +5348,7 @@ sub_809D9E0:
 	ldrb r0, [r7,#0x15] // (byte_200ACF5 - 0x200ace0)
 	tst r0, r0
 	bne loc_809DA98
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_809DA94
 	push {r0}
 	movflag EVENT_PLAYER_CAN_MOVE

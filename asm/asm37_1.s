@@ -1,4 +1,3 @@
-	.include "asm/asm37_1.inc"
 
 	thumb_func_start sub_814187C
 sub_814187C:
@@ -176,7 +175,7 @@ loc_81419CC:
 	bne loc_8141A0C
 	bl sub_809E462
 	bne loc_8141A0C
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_8141A0C
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -1982,7 +1981,7 @@ sub_8142C94:
 	ldr r0, off_8142CA4 // =dword_8619730 
 	ldr r1, dword_8142CA8 // =0x6006c00 
 	ldr r2, off_8142CAC // =0x420 
-	bl sub_8000AC8
+	bl QueueEightWordAlignedGFXTransfer
 	pop {pc}
 	.balign 4, 0x00
 off_8142CA4: .word dword_8619730
@@ -4038,7 +4037,7 @@ loc_814407E:
 	beq loc_8144092
 	bl sub_811E744
 loc_8144092:
-	bl IsPaletteFadeActive // () -> zf
+	bl IsScreenFadeActive // () -> zf
 	beq loc_81440A6
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]

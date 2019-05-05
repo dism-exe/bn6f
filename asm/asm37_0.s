@@ -1,4 +1,3 @@
-	.include "asm/asm37_0.inc"
 
 	thumb_func_start sub_813B768
 sub_813B768:
@@ -1706,7 +1705,7 @@ sub_813C3AC:
 	cmp r0, r4
 	ble .loc_813C42E
 	mov r0, #0
-	mov r1, #0xoS20047CC_NaviHP
+	mov r1, #oS20047CC_NaviHP
 	mov r2, r4
 	bl SetField16ToSelectedS20047CCStruct
 .loc_813C42E:
@@ -1720,7 +1719,7 @@ sub_813C3AC:
 	cmp r0, r4
 	ble .ret
 	bl getPETNaviSelect // () -> u8
-	mov r1, #0xoS20047CC_NaviHP
+	mov r1, #oS20047CC_NaviHP
 	mov r2, r4
 	bl SetField16ToSelectedS20047CCStruct
 .ret:
@@ -1736,14 +1735,14 @@ sub_813C458:
 	bl getPETNaviSelect // () -> u8
 	mov r4, r0
 	mov r0, #0
-	bl sub_80010BE
+	bl setPETNaviSelect
 	bl sub_813C678
 	movflag EVENT_170D
 	bl ClearEventFlagFromImmediate
 	bl sub_813C684
 	bl sub_813CBCC
 	mov r0, r4
-	bl sub_80010BE
+	bl setPETNaviSelect
 	bl sub_803CE44
 	pop {r4,pc}
 	.byte 0, 0
