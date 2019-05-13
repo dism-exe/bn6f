@@ -3768,8 +3768,8 @@ loc_8005152:
 	bl zeroFill_8003AB2
 	bl sub_802F0D8
 	bl sub_802F0F4
-	bl sub_8036EFE
-	bl sub_8036F24
+	bl cutscene_8036EFE
+	bl clearCutsceneScriptPosIfMagicValue0x1_8036F24
 	bl sub_809F90C
 	movflag EVENT_1731
 	bl ClearEventFlagFromImmediate
@@ -3850,7 +3850,7 @@ off_8005264: .word 0x1740
 	thumb_local_start
 gamestate_8005268:
 	push {lr}
-	bl sub_8036F24
+	bl clearCutsceneScriptPosIfMagicValue0x1_8036F24
 	bl sub_8034BB8
 	mov r0, #0
 	strb r0, [r5,#0xe]
@@ -4446,7 +4446,7 @@ sub_80058D0:
 	bne locret_800593C
 	bl IsScreenFadeActive // () -> zf
 	beq locret_800593C
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne locret_800593C
 	ldr r0, [r5,#oGameState_OverworldPlayerObjectPtr]
 	add r0, #0x1c
@@ -4652,7 +4652,7 @@ sub_8005A8C:
 	bne locret_8005AF2
 	bl IsScreenFadeActive // () -> zf
 	beq locret_8005AF2
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne locret_8005AF2
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -4691,7 +4691,7 @@ sub_8005AF4:
 	bne loc_8005B64
 	bl IsScreenFadeActive // () -> zf
 	beq locret_8005B68
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne locret_8005B68
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -4740,7 +4740,7 @@ sub_8005B6E:
 	bne locret_8005BC6
 	bl IsScreenFadeActive // () -> zf
 	beq locret_8005BC6
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne locret_8005BC6
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -7609,7 +7609,7 @@ sub_8007338:
 	mov r4, #0
 	bl camera_802FF4C
 	mov r0, #0
-	bl sub_80301B2
+	bl camera_80301B2
 	pop {pc}
 	.word 0x100000
 	thumb_func_end sub_8007338

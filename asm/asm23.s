@@ -123,7 +123,7 @@ off_8089154: .word sub_8089160+1
 sub_8089160:
 	push {r4-r7,lr}
 	mov r0, #0
-	bl sub_80301B2
+	bl camera_80301B2
 	mov r0, #0
 	bl sub_8033FC0
 	mov r0, #0
@@ -922,7 +922,7 @@ sub_8089A10:
 	lsl r0, r0, #2
 	ldr r0, [r1,r0]
 	str r0, [r5,#0x3c]
-	bl sub_8036F98
+	bl cutsceneCamera_setCutsceneCameraScript_8036f98
 	mov r0, #1
 	strb r0, [r5,#0x13]
 	mov r0, #0x3c 
@@ -1276,7 +1276,7 @@ sub_8089CC4:
 	bl sub_81429CA
 	ldr r0, off_8089CD8 // =byte_8089480
 	str r0, [r5,#0x3c]
-	bl sub_8036F98
+	bl cutsceneCamera_setCutsceneCameraScript_8036f98
 	mov r0, #1
 	strb r0, [r5,#0x13]
 	pop {r4-r7,pc}
@@ -1288,7 +1288,7 @@ sub_8089CDC:
 	push {r4-r7,lr}
 	ldr r0, off_8089CF4 // =byte_808948A
 	str r0, [r5,#0x3c]
-	bl sub_8036F98
+	bl cutsceneCamera_setCutsceneCameraScript_8036f98
 	mov r0, #1
 	strb r0, [r5,#0x13]
 	bl sub_8089D0E

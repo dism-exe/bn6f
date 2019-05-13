@@ -18,6 +18,7 @@
 	.include "structs/CutsceneState.inc"
 	.include "structs/S20047CC.inc"
 	.include "structs/ScreenFade.inc"
+	.include "structs/S2001c04.inc"
 
 /*
 rough notes for now

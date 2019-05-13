@@ -1624,7 +1624,7 @@ byte_2011B30:: // 0x2011b30
 	.space 128
 byte_2011BB0:: // 0x2011bb0
 	.space 32
-dword_2011BD0:: // 0x2011bd0
+cutsceneCameraInfo_2011bd0:: // 0x2011bd0
 	.space 4
 dword_2011BD4:: // 0x2011bd4
 	.space 60

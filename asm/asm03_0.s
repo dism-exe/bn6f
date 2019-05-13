@@ -12717,11 +12717,13 @@ off_802CCB4: .word sub_80E07E0+1
 	.word sub_80E81B4+1
 	.word sub_80E8BC0+1
 	.word sub_80E8ADC+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_80E91B8+1
 	.word sub_80E943E+1
 	.word sub_80E979C+1
-	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
+	.word 0x0
+	.word 0x0
 	.word sub_80E92EE+1
 off_802CD5C: .word sub_80C0DD8+1
 	.word sub_80C2A4C+1
@@ -19211,14 +19213,14 @@ sub_8030194:
 	mov pc, lr
 	thumb_func_end sub_8030194
 
-	thumb_func_start sub_80301B2
-sub_80301B2:
+	thumb_func_start camera_80301B2
+camera_80301B2:
 	mov r2, r10
 	ldr r2, [r2,#oToolkit_CameraPtr]
 	strb r0, [r2,#3]
 	str r1, [r2,#0x14]
 	mov pc, lr
-	thumb_func_end sub_80301B2
+	thumb_func_end camera_80301B2
 
 	thumb_func_start sub_80301BC
 sub_80301BC:

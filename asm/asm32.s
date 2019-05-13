@@ -29341,7 +29341,7 @@ loc_811E2E4:
 	mov r1, #0x24
 	push {r0,r1}
 	ldr r0, off_811E308 // =dword_8089128
-	bl sub_8036F70
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F70
 	pop {r0,r1}
 	beq loc_811E2F8
 	sub r0, #0x14
@@ -29464,7 +29464,7 @@ loc_811E3DE:
 	mov r0, #0xdc
 	push {r0,r1}
 	ldr r0, off_811E408 // =dword_8089128
-	bl sub_8036F70
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F70
 	pop {r0,r1}
 	beq loc_811E3FC
 	sub r0, #0x14

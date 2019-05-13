@@ -734,7 +734,7 @@ sub_8033EE8:
 	movflag EVENT_1731
 	bl TestEventFlagFromImmediate
 	bne loc_8033EFC
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	cmp r0, #1
 	bgt locret_8033F32
 loc_8033EFC:
@@ -1673,7 +1673,7 @@ sub_8034BB8:
 	mov r3, r9
 	mov r4, r12
 	push {r2-r4}
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_8034BFE
 	bl sub_8036040
 	bl sub_809C968
@@ -1691,7 +1691,7 @@ sub_8034BB8:
 	bl sub_809CF2C
 loc_8034BFE:
 	bl map_script_overworld_8036064
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	beq loc_8034C2C
 	bl runCutscene_803851C // () -> void
 	mov r0, #7
@@ -1730,7 +1730,7 @@ sub_8034C36:
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
 	bne loc_8034C6A
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_8034C6A
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -1752,7 +1752,7 @@ sub_8034C6E:
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
 	bne loc_8034C98
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_8034C98
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -1767,7 +1767,7 @@ sub_8034C9C:
 	movflag EVENT_173D
 	bl TestEventFlagFromImmediate
 	bne loc_8034CB2
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_8034CB2
 	mov r0, #1
 	pop {r4-r7,pc}
@@ -1851,7 +1851,7 @@ loc_8034D44:
 	bl PlaySoundEffect
 	b loc_8034D52
 loc_8034D4C:
-	ldr r0, off_8034D64 // =byte_80988E4
+	ldr r0, off_8034D64 // =CutsceneScript_80988E4
 	bl init_s_02011C50_8036E90
 loc_8034D52:
 	mov r0, #1
@@ -1860,7 +1860,7 @@ loc_8034D52:
 off_8034D58: .word 0x16D0
 off_8034D5C: .word 0x100
 off_8034D60: .word byte_8098824
-off_8034D64: .word byte_80988E4
+off_8034D64: .word CutsceneScript_80988E4
 off_8034D68: .word dword_8034D6C
 dword_8034D6C: .word 0x602
 byte_8034D70: .byte 0x0, 0x0, 0xC, 0x0, 0xFF, 0x0, 0x0, 0x0, 0xFF, 0x0, 0x0, 0x0
@@ -1880,7 +1880,7 @@ sub_8034D7C:
 	movflag EVENT_L_MESSAGE_ACTIVE
 	bl TestEventFlagFromImmediate
 	bne loc_8034DA4
-	ldr r0, off_8034DAC // =byte_80991F4
+	ldr r0, off_8034DAC // =CutsceneScript_80991F4
 	bl init_s_02011C50_8036E90
 	mov r0, #0
 	pop {r4-r7,pc}
@@ -1888,7 +1888,7 @@ loc_8034DA4:
 	mov r0, #1
 	pop {r4-r7,pc}
 off_8034DA8: .word 0x200
-off_8034DAC: .word byte_80991F4
+off_8034DAC: .word CutsceneScript_80991F4
 	thumb_func_end sub_8034D7C
 
 	thumb_local_start
@@ -2104,7 +2104,7 @@ off_8034F64: .word byte_8098358
 	thumb_local_start
 sub_8034F68:
 	push {r4-r7,lr}
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne locret_8034FA8
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
@@ -2156,7 +2156,7 @@ loc_8034FCE:
 	movflag EVENT_1703
 	bl TestEventFlagFromImmediate
 	bne loc_8035004
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_8035004
 	ldr r4, off_8035020 // =byte_809895C
 	mov r0, #1
@@ -2263,7 +2263,7 @@ npc_80350A8:
 	mov r0, #1
 	mov r1, r5
 	add r1, #0x1c
-	bl sub_80301B2
+	bl camera_80301B2
 	pop {r5,pc}
 	.balign 4, 0x00
 	thumb_func_end npc_80350A8
@@ -3063,6 +3063,8 @@ off_80357EC: .word byte_80357F0
 byte_80357F0: .byte 0x3C, 0x3D, 0x3E, 0x3F, 0x10, 0x11, 0x12, 0x13, 0x14
 	.byte 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x1D
 	.byte 0x1E, 0x1F, 0x0, 0x0, 0x0, 0x0
+
+// possible file boundary
 ScriptCmds8035808:
 	.word MapScriptCmd_end+1
 	.word MapScriptCmd_jump+1
@@ -5304,112 +5306,112 @@ off_8036EC4: .word LCDControl
 	.byte 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0
 	thumb_func_end init_s_02011C50_8036E90
 
-	thumb_func_start sub_8036ED4
-sub_8036ED4:
+	thumb_func_start cutscene_8036ED4
+cutscene_8036ED4:
 	push {r4-r7,lr}
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_CutsceneStatePtr]
-	mov r0, #1
-	str r0, [r1,#0x1c] // s_02011C50.ptr_1C
+	mov r0, #CUTSCENE_SCRIPT_UNK_MAGIC_SCRIPT_VALUE_0x1
+	str r0, [r1,#oCutsceneState_CutsceneScriptPos] // s_02011C50.ptr_1C
 	ldr r0, off_8036F20 // =DummyCutsceneScript
-	str r0, [r1,#0x20] // s_02011C50.ptr_20
-	str r0, [r1,#0x24] // s_02011C50.ptr_24
-	str r0, [r1,#0x28] // s_02011C50.ptr_28
+	str r0, [r1,#oCutsceneState_CutsceneScriptPos2] // s_02011C50.ptr_20
+	str r0, [r1,#oCutsceneState_CutsceneScriptPos3] // s_02011C50.ptr_24
+	str r0, [r1,#oCutsceneState_CutsceneScriptPos4] // s_02011C50.ptr_28
 	mov r0, #0
-	str r0, [r1,#0x38] // s_02011C50.unk_38
+	str r0, [r1,#oCutsceneState_UnkCutsceneScript_38] // s_02011C50.unk_38
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_S2001c04_Ptr]
 	mov r0, #0
-	strh r0, [r1,#0x12] // s_02011C50.unk_12
-	strh r0, [r1,#0x14] // s_02011C50.pad_13+1
+	strh r0, [r1,#oS2001c04_Unk_12]
+	strh r0, [r1,#oS2001c04_Unk_14]
 	movflag EVENT_1731
 	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
-	thumb_func_end sub_8036ED4
+	thumb_func_end cutscene_8036ED4
 
-	thumb_func_start sub_8036EFE
-sub_8036EFE:
+	thumb_func_start cutscene_8036EFE
+cutscene_8036EFE:
 	push {r4-r7,lr}
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_CutsceneStatePtr]
-	mov r0, #1
-	str r0, [r1,#0x1c] // s_02011C50.ptr_1C
+	mov r0, #CUTSCENE_SCRIPT_UNK_MAGIC_SCRIPT_VALUE_0x1
+	str r0, [r1,#oCutsceneState_CutsceneScriptPos] // s_02011C50.ptr_1C
 	ldr r0, off_8036F20 // =DummyCutsceneScript
-	str r0, [r1,#0x20] // s_02011C50.ptr_20
-	str r0, [r1,#0x24] // s_02011C50.ptr_24
-	str r0, [r1,#0x28] // s_02011C50.ptr_28
-	mov r0, #0
-	str r0, [r1,#0x38] // s_02011C50.unk_38
+	str r0, [r1,#oCutsceneState_CutsceneScriptPos2] // s_02011C50.ptr_20
+	str r0, [r1,#oCutsceneState_CutsceneScriptPos3] // s_02011C50.ptr_24
+	str r0, [r1,#oCutsceneState_CutsceneScriptPos4] // s_02011C50.ptr_28
+	mov r0, #NULL
+	str r0, [r1,#oCutsceneState_UnkCutsceneScript_38] // s_02011C50.unk_38
 	movflag EVENT_1731
 	bl ClearEventFlagFromImmediate
 	pop {r4-r7,pc}
 	.byte 0, 0
 off_8036F20: .word DummyCutsceneScript
-	thumb_func_end sub_8036EFE
+	thumb_func_end cutscene_8036EFE
 
-	thumb_func_start sub_8036F24
-sub_8036F24:
+	thumb_func_start clearCutsceneScriptPosIfMagicValue0x1_8036F24
+clearCutsceneScriptPosIfMagicValue0x1_8036F24:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_CutsceneStatePtr]
-	ldr r0, [r1,#0x1c] // s_02011C50.ptr_1C
-	cmp r0, #1
-	bne locret_8036F34
-	mov r0, #0
-	str r0, [r1,#0x1c] // s_02011C50.ptr_1C
-	str r0, [r1,#0x40] // s_02011C50.unk_40
-locret_8036F34:
+	ldr r0, [r1,#oCutsceneState_CutsceneScriptPos] // s_02011C50.ptr_1C
+	cmp r0, #CUTSCENE_SCRIPT_UNK_MAGIC_SCRIPT_VALUE_0x1
+	bne .doNotClearCutsceneScript
+	mov r0, #NULL
+	str r0, [r1,#oCutsceneState_CutsceneScriptPos] // s_02011C50.ptr_1C
+	str r0, [r1,#oCutsceneState_originalCutsceneScriptPos_40] // s_02011C50.unk_40
+.doNotClearCutsceneScript
 	mov pc, lr
-	thumb_func_end sub_8036F24
+	thumb_func_end clearCutsceneScriptPosIfMagicValue0x1_8036F24
 
 // () -> zf
-	thumb_func_start s_2011C50_ptr_1C_isNull
-s_2011C50_ptr_1C_isNull:
+	thumb_func_start IsCutsceneScriptNonNull
+IsCutsceneScriptNonNull:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
-	ldr r0, [r0,#0x1c] // s_02011C50.ptr_1C
+	ldr r0, [r0,#oCutsceneState_CutsceneScriptPos] // s_02011C50.ptr_1C
 	tst r0, r0
 	mov pc, lr
-	thumb_func_end s_2011C50_ptr_1C_isNull
+	thumb_func_end IsCutsceneScriptNonNull
 
 // () -> zf
-	thumb_func_start s_2011C50_8036F40
-s_2011C50_8036F40:
+	thumb_func_start cutscene_checkOriginalCutsceneScriptPos_8036F40
+cutscene_checkOriginalCutsceneScriptPos_8036F40:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	mov r2, #1
-	ldr r0, [r0,#0x40] // s_02011C50.unk_40
-	ldr r1, off_8036F54 // =byte_80991F4
+	ldr r0, [r0,#oCutsceneState_originalCutsceneScriptPos_40] // s_02011C50.unk_40
+	ldr r1, off_8036F54 // =CutsceneScript_80991F4
 	cmp r0, r1
 	beq loc_8036F50
 	mov r2, #0
 loc_8036F50:
 	tst r2, r2
 	mov pc, lr
-off_8036F54: .word byte_80991F4
-	thumb_func_end s_2011C50_8036F40
+off_8036F54: .word CutsceneScript_80991F4
+	thumb_func_end cutscene_checkOriginalCutsceneScriptPos_8036F40
 
-	thumb_func_start sub_8036F58
-sub_8036F58:
+	thumb_func_start cutscene_checkOriginalCutsceneScriptPos_8036F58
+cutscene_checkOriginalCutsceneScriptPos_8036F58:
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_CutsceneStatePtr]
 	mov r2, #1
-	ldr r0, [r0,#0x40]
-	ldr r1, off_8036F6C // =byte_80988E4
+	ldr r0, [r0,#oCutsceneState_originalCutsceneScriptPos_40]
+	ldr r1, off_8036F6C // =CutsceneScript_80988E4
 	cmp r0, r1
 	beq loc_8036F68
 	mov r2, #0
 loc_8036F68:
 	tst r2, r2
 	mov pc, lr
-off_8036F6C: .word byte_80988E4
-	thumb_func_end sub_8036F58
+off_8036F6C: .word CutsceneScript_80988E4
+	thumb_func_end cutscene_checkOriginalCutsceneScriptPos_8036F58
 
-	thumb_func_start sub_8036F70
-sub_8036F70:
+	thumb_func_start cutscene_checkOriginalCutsceneScriptPos_8036F70
+cutscene_checkOriginalCutsceneScriptPos_8036F70:
 	mov r1, r10
 	ldr r1, [r1,#oToolkit_CutsceneStatePtr]
 	mov r2, #1
-	ldr r1, [r1,#0x40]
+	ldr r1, [r1,#oCutsceneState_originalCutsceneScriptPos_40]
 	cmp r1, r0
 	beq loc_8036F7E
 	mov r2, #0
@@ -5417,7 +5419,7 @@ loc_8036F7E:
 	mov r0, r2
 	tst r0, r0
 	mov pc, lr
-	thumb_func_end sub_8036F70
+	thumb_func_end cutscene_checkOriginalCutsceneScriptPos_8036F70
 
 	thumb_local_start
 TryCutsceneSkip:
@@ -5433,17 +5435,17 @@ TryCutsceneSkip:
 	pop {r4-r7,pc}
 	thumb_func_end TryCutsceneSkip
 
-	thumb_func_start sub_8036F98
-sub_8036F98:
+	thumb_func_start cutsceneCamera_setCutsceneCameraScript_8036f98
+cutsceneCamera_setCutsceneCameraScript_8036f98:
 	push {lr}
-	ldr r1, off_8036FD4 // =dword_2011BD0
+	ldr r1, off_8036FD4 // =cutsceneCameraInfo_2011bd0
 	str r0, [r1]
 	mov r0, #0
 	str r0, [r1,#0x4] // (dword_2011BD4 - 0x2011bd0)
 	mov r0, #0
-	bl sub_80301B2
+	bl camera_80301B2
 	pop {pc}
-	thumb_func_end sub_8036F98
+	thumb_func_end cutsceneCamera_setCutsceneCameraScript_8036f98
 
 	thumb_func_start sub_8036FAA
 sub_8036FAA:
@@ -5453,14 +5455,14 @@ sub_8036FAA:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	ldr r1, [r1,#oGameState_OverworldPlayerObjectPtr]
 	add r1, #0x1c
-	bl sub_80301B2
+	bl camera_80301B2
 	pop {pc}
 	thumb_func_end sub_8036FAA
 
 	thumb_local_start
-cutscene_8036FBC:
+cutscene_cameraMaybe_8036FBC:
 	push {r4-r7,lr}
-	ldr r5, off_8036FD4 // =dword_2011BD0
+	ldr r5, off_8036FD4 // =cutsceneCameraInfo_2011bd0
 	ldr r1, [r5]
 	ldrb r2, [r1]
 	ldr r0, off_8036FD8 // =off_8036FDC
@@ -5471,11 +5473,11 @@ cutscene_8036FBC:
 	str r1, [r5]
 	tst r0, r0
 	pop {r4-r7,pc}
-off_8036FD4: .word dword_2011BD0
+off_8036FD4: .word cutsceneCameraInfo_2011bd0
 off_8036FD8: .word off_8036FDC
-off_8036FDC: .word sub_8037030+1
-	.word sub_803705A+1
-	.word sub_80370B4+1
+off_8036FDC: .word cutsceneCamera_setCameraPosition_8037030+1
+	.word cutsceneCamera_scrollCamera_803705a+1
+	.word cutsceneCamera_end_80370b4+1
 	.word sub_80370B8+1
 	.word sub_80370E4+1
 	.word sub_8037104+1
@@ -5494,19 +5496,19 @@ off_8036FDC: .word sub_8037030+1
 	.word sub_80373FC+1
 	.word sub_803741C+1
 	.word sub_8037432+1
-	thumb_func_end cutscene_8036FBC
+	thumb_func_end cutscene_cameraMaybe_8036FBC
 
 	thumb_local_start
-sub_8037030:
+cutsceneCamera_setCameraPosition_8037030:
 	push {lr}
 	mov r0, #1
-	bl sub_803746E
+	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r2, r0, #0xc
 	mov r0, #3
-	bl sub_803746E
+	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r3, r0, #0xc
 	mov r0, #5
-	bl sub_803746E
+	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r4, r0, #0xc
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_CameraPtr]
@@ -5516,10 +5518,10 @@ sub_8037030:
 	mov r0, #1
 	add r1, #7
 	pop {pc}
-	thumb_func_end sub_8037030
+	thumb_func_end cutsceneCamera_setCameraPosition_8037030
 
 	thumb_local_start
-sub_803705A:
+cutsceneCamera_scrollCamera_803705a:
 	push {lr}
 	ldrb r0, [r5,#6]
 	cmp r0, #0
@@ -5527,25 +5529,25 @@ sub_803705A:
 	mov r0, #1
 	strb r0, [r5,#6]
 	mov r0, #1
-	bl sub_8037460
+	bl ReadCutsceneCameraScriptHalfword
 	strh r0, [r5,#4]
 loc_803706E:
 	mov r6, r10
 	ldr r6, [r6,#oToolkit_CameraPtr]
 	mov r0, #3
-	bl sub_803746E
+	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #8
 	ldr r3, [r6,#0x30]
 	add r0, r0, r3
 	str r0, [r6,#0x30]
 	mov r0, #5
-	bl sub_803746E
+	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #8
 	ldr r3, [r6,#0x34]
 	add r0, r0, r3
 	str r0, [r6,#0x34]
 	mov r0, #7
-	bl sub_803746E
+	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #8
 	ldr r3, [r6,#0x38]
 	add r0, r0, r3
@@ -5563,13 +5565,13 @@ loc_803706E:
 loc_80370B0:
 	mov r0, #1
 	pop {pc}
-	thumb_func_end sub_803705A
+	thumb_func_end cutsceneCamera_scrollCamera_803705a
 
 	thumb_local_start
-sub_80370B4:
+cutsceneCamera_end_80370b4:
 	mov r0, #0
 	mov pc, lr
-	thumb_func_end sub_80370B4
+	thumb_func_end cutsceneCamera_end_80370b4
 
 	thumb_local_start
 sub_80370B8:
@@ -5580,7 +5582,7 @@ sub_80370B8:
 	mov r2, #1
 	strb r2, [r5,#6]
 	mov r0, #1
-	bl sub_8037460
+	bl ReadCutsceneCameraScriptHalfword
 	strh r0, [r5,#4]
 loc_80370CC:
 	ldrh r2, [r5,#4]
@@ -5603,10 +5605,10 @@ sub_80370E4:
 	push {lr}
 	push {r1}
 	mov r0, #2
-	bl sub_803744C
+	bl ReadCutsceneCameraScriptByte
 	mov r4, r0
 	mov r0, #1
-	bl sub_803744C
+	bl ReadCutsceneCameraScriptByte
 	mov r1, r4
 	bl sub_80302A8
 	pop {r1}
@@ -5710,20 +5712,20 @@ sub_8037196:
 	mov r2, #1
 	strb r2, [r5,#6]
 	mov r0, #1
-	bl sub_803746E
+	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x14]
 	mov r0, #3
-	bl sub_803746E
+	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x18]
 	mov r0, #5
-	bl sub_803746E
+	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #0x10
 	str r0, [r5,#0x1c]
 loc_80371C2:
 	mov r0, #7
-	bl sub_8037460
+	bl ReadCutsceneCameraScriptHalfword
 	mov r1, r0
 	strh r1, [r5,#4]
 	mov r0, #0x40
@@ -5813,19 +5815,19 @@ sub_8037260:
 	ldr r7, [r7,#oToolkit_GameStatePtr]
 	ldr r7, [r7,#oGameState_OverworldPlayerObjectPtr]
 	mov r0, #1
-	bl sub_803746E
+	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #0x10
 	ldr r3, [r7,#0x1c]
 	add r0, r0, r3
 	str r0, [r5,#0x14]
 	mov r0, #3
-	bl sub_803746E
+	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #0x10
 	ldr r3, [r7,#0x20]
 	add r0, r0, r3
 	str r0, [r5,#0x18]
 	mov r0, #5
-	bl sub_803746E
+	bl ReadCutsceneCameraScriptSignedHalfword
 	lsl r0, r0, #0x10
 	ldr r3, [r7,#0x24]
 	add r0, r0, r3
@@ -5922,10 +5924,10 @@ sub_8037332:
 	push {lr}
 	push {r1}
 	mov r0, #1
-	bl sub_803744C
+	bl ReadCutsceneCameraScriptByte
 	mov r4, r0
 	mov r0, #2
-	bl sub_8037480
+	bl ReadCutsceneCameraScriptWord
 	mov r1, r4
 	bl chatbox_runScript // (void *scripts, u8 scriptOffIdx) -> void
 	pop {r1}
@@ -5955,7 +5957,7 @@ sub_803736A:
 	push {lr}
 	push {r1}
 	mov r0, #1
-	bl sub_8037480
+	bl ReadCutsceneCameraScriptWord
 	bl sub_8001B1C
 	pop {r1}
 	mov r0, #1
@@ -5968,7 +5970,7 @@ sub_8037380:
 	push {lr}
 	push {r1}
 	mov r0, #1
-	bl sub_803744C
+	bl ReadCutsceneCameraScriptByte
 	bl sub_8001B6C
 	pop {r1}
 	mov r0, #1
@@ -5981,10 +5983,10 @@ sub_8037396:
 	push {lr}
 	push {r1}
 	mov r0, #2
-	bl sub_803744C
+	bl ReadCutsceneCameraScriptByte
 	mov r4, r0
 	mov r0, #1
-	bl sub_803744C
+	bl ReadCutsceneCameraScriptByte
 	mov r1, r4
 	bl SetScreenFade // (int a1, int a2) -> void
 	pop {r1}
@@ -6013,7 +6015,7 @@ sub_80373CC:
 	push {lr}
 	push {r1,r5}
 	mov r0, #1
-	bl sub_8037460
+	bl ReadCutsceneCameraScriptHalfword
 	mov r0, r0
 	bl SetEventFlag
 	pop {r1,r5}
@@ -6027,7 +6029,7 @@ sub_80373E4:
 	push {lr}
 	push {r1}
 	mov r0, #1
-	bl sub_8037460
+	bl ReadCutsceneCameraScriptHalfword
 	mov r0, r0
 	bl ClearEventFlag // (u16 entryFlagBitfield) -> void
 	pop {r1}
@@ -6041,10 +6043,10 @@ sub_80373FC:
 	push {lr}
 	push {r1}
 	mov r0, #2
-	bl sub_803744C
+	bl ReadCutsceneCameraScriptByte
 	mov r4, r0
 	mov r0, #1
-	bl sub_803744C
+	bl ReadCutsceneCameraScriptByte
 	mov r1, r4
 	bl sub_800068A
 	pop {r1}
@@ -6058,7 +6060,7 @@ sub_803741C:
 	push {lr}
 	push {r1}
 	mov r0, #1
-	bl sub_8037460
+	bl ReadCutsceneCameraScriptHalfword
 	bl PlaySong
 	pop {r1}
 	mov r0, #1
@@ -6071,10 +6073,10 @@ sub_8037432:
 	push {lr}
 	push {r1}
 	mov r0, #1
-	bl sub_8037480
+	bl ReadCutsceneCameraScriptWord
 	mov r1, r0
 	mov r0, #1
-	bl sub_80301B2
+	bl camera_80301B2
 	pop {r1}
 	mov r0, #1
 	add r1, #5
@@ -6082,25 +6084,25 @@ sub_8037432:
 	thumb_func_end sub_8037432
 
 	thumb_local_start
-sub_803744C:
+ReadCutsceneCameraScriptByte:
 	push {r1-r3,lr}
 	add r3, r1, r0
 	ldrb r0, [r3]
 	pop {r1-r3,pc}
-	thumb_func_end sub_803744C
+	thumb_func_end ReadCutsceneCameraScriptByte
 
 	thumb_local_start
-sub_8037454:
+ReadCutsceneCameraScriptSignedByte:
 	push {r1-r3,lr}
 	add r3, r1, r0
 	ldrb r0, [r3]
 	lsl r0, r0, #0x18
 	asr r0, r0, #0x18
 	pop {r1-r3,pc}
-	thumb_func_end sub_8037454
+	thumb_func_end ReadCutsceneCameraScriptSignedByte
 
 	thumb_local_start
-sub_8037460:
+ReadCutsceneCameraScriptHalfword:
 	push {r1-r3,lr}
 	add r3, r1, r0
 	ldrb r0, [r3,#1]
@@ -6108,10 +6110,10 @@ sub_8037460:
 	lsl r0, r0, #8
 	orr r0, r2
 	pop {r1-r3,pc}
-	thumb_func_end sub_8037460
+	thumb_func_end ReadCutsceneCameraScriptHalfword
 
 	thumb_local_start
-sub_803746E:
+ReadCutsceneCameraScriptSignedHalfword:
 	push {r1-r3,lr}
 	add r3, r1, r0
 	ldrb r0, [r3,#1]
@@ -6121,11 +6123,11 @@ sub_803746E:
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
 	pop {r1-r3,pc}
-	thumb_func_end sub_803746E
+	thumb_func_end ReadCutsceneCameraScriptSignedHalfword
 
 	thumb_local_start
 // (int a1, int a2) -> int
-sub_8037480:
+ReadCutsceneCameraScriptWord:
 	push {r1-r3,lr}
 	add r3, r1, r0
 	ldrb r0, [r3,#3]
@@ -6141,17 +6143,17 @@ sub_8037480:
 	pop {r1-r3,pc}
 	.balign 4, 0
 CutsceneCommandJumptable:
-	.word MapScriptCmd_navi_abilities_8037c64+1
-	.word sub_80376DC+1
-	.word sub_80376F4+1
-	.word sub_8037740+1
-	.word sub_8037790+1
-	.word sub_80377B6+1
-	.word sub_80377D0+1
-	.word sub_80377E4+1
-	.word sub_80377F6+1
-	.word sub_8037808+1
-	.word sub_8037826+1
+	.word MapScriptCmd_end_for_map_reload_maybe_8037c64+1
+	.word MapScriptCmd_end_for_map_reload_maybe_80376dc+1
+	.word MapScriptCmd_pause+1
+	.word MapScriptCmd_long_pause+1
+	.word MapScriptCmd_wait_chatbox+1
+	.word MapScriptCmd_halt_if_player_sprite_cur_frame_not_equal_maybe+1
+	.word MapScriptCmd_next_80377D0+1
+	.word MapScriptCmd_wait_screen_fade+1
+	.word MapScriptCmd_wait_camera_script+1
+	.word MapScriptCmd_wait_var_equal+1
+	.word MapScriptCmd_wait_cutscene_process+1
 	.word sub_8037840+1
 	.word sub_8037852+1
 	.word sub_8037866+1
@@ -6274,121 +6276,128 @@ byte_8037695: .byte 0xFF, 0xFF, 0xFF, 0x48, 0xFF, 0x34, 0xFF, 0x54, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
 	.byte 0xFF, 0xFF
-	thumb_func_end sub_8037480
+	thumb_func_end ReadCutsceneCameraScriptWord
 
 	thumb_local_start
 // 0x00
-MapScriptCmd_navi_abilities_8037c64:
+MapScriptCmd_end_for_map_reload_maybe_8037c64:
 	push {lr}
 	movflag EVENT_1741
 	bl TestEventFlagFromImmediate
 	bne .eventActive
 	bl sub_813C3AC
-.eventActive:
-	bl sub_8036EFE
+.eventActive
+	bl cutscene_8036EFE
 	mov r0, #0
 	pop {pc}
-	thumb_func_end MapScriptCmd_navi_abilities_8037c64
+	thumb_func_end MapScriptCmd_end_for_map_reload_maybe_8037c64
 
 	thumb_local_start
-sub_80376DC:
+MapScriptCmd_end_for_map_reload_maybe_80376dc:
 	push {lr}
 	movflag EVENT_1741
 	bl TestEventFlagFromImmediate
-	bne loc_80376EC
+	bne .eventActive
 	bl sub_813C3AC
-loc_80376EC:
-	bl sub_8036ED4
+.eventActive
+	bl cutscene_8036ED4
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_80376DC
+	thumb_func_end MapScriptCmd_end_for_map_reload_maybe_80376dc
 
 	thumb_local_start
-sub_80376F4:
+MapScriptCmd_pause:
 	push {lr}
-	ldrb r0, [r5,#0x12]
-	add r0, #0
+	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
+	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED
 	bl cutscene_testFlag0x2c_80385E0
-	bne loc_8037722
-	ldrb r0, [r5,#0x12]
-	add r0, #0
+	bne .scriptPauseAlreadyInitialized
+
+	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
+	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED
 	bl cutscene_setFlag0x2c_80385C0
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq loc_8037716
+	beq .immediateParam
 	ldrb r4, [r5,r4]
-	b loc_803771C
-loc_8037716:
+	b .gotParam
+.immediateParam
 	mov r6, #2
 	bl ReadMapScriptByte
-loc_803771C:
-	ldrb r1, [r5,#0x12]
-	add r1, #0xc
+.gotParam
+	// set pause timer of current cutscene script
+	ldrb r1, [r5,#oCutsceneState_WhichCutsceneScript]
+	add r1, #oCutsceneState_CutsceneScript1PauseTimer
 	strb r4, [r5,r1]
-loc_8037722:
-	ldrb r1, [r5,#0x12]
-	add r1, #0xc
+
+.scriptPauseAlreadyInitialized
+	// decrement cutscene timer
+	ldrb r1, [r5,#oCutsceneState_WhichCutsceneScript]
+	add r1, #oCutsceneState_CutsceneScript1PauseTimer
 	ldrb r0, [r5,r1]
 	sub r0, #1
 	strb r0, [r5,r1]
-	bge loc_803773C
-	ldrb r0, [r5,#0x12]
-	add r0, #0
+	bge .timerStillActive
+
+	// clear pause flag
+	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
+	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED
 	bl cutscene_clearFlag0x2c_80385D0
+	// advance to the next command
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-loc_803773C:
+.timerStillActive
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_80376F4
+	thumb_func_end MapScriptCmd_pause
 
 	thumb_local_start
-sub_8037740:
+MapScriptCmd_long_pause:
 	push {lr}
-	ldrb r0, [r5,#0x12]
-	add r0, #4
+	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
+	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED_LONG
 	bl cutscene_testFlag0x2c_80385E0
-	bne loc_8037770
-	ldrb r0, [r5,#0x12]
-	add r0, #4
+	bne .scriptPauseAlreadyInitialized
+	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
+	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED_LONG
 	bl cutscene_setFlag0x2c_80385C0
 	mov r6, #1
 	bl ReadMapScriptByte
 	cmp r4, #0xff
-	beq loc_8037762
+	beq .immediateParam
 	ldrh r4, [r5,r4]
-	b loc_8037768
-loc_8037762:
+	b .gotParam
+.immediateParam
 	mov r6, #2
 	bl ReadMapScriptHalfword
-loc_8037768:
-	ldrb r1, [r5,#0x12]
+.gotParam
+	ldrb r1, [r5,#oCutsceneState_WhichCutsceneScript]
 	lsl r1, r1, #1
-	add r1, #0x14
+	add r1, #oCutsceneState_CutsceneScript1LongPauseTimer
 	strh r4, [r5,r1]
-loc_8037770:
-	ldrb r1, [r5,#0x12]
+.scriptPauseAlreadyInitialized
+	ldrb r1, [r5,#oCutsceneState_WhichCutsceneScript]
 	lsl r1, r1, #1
-	add r1, #0x14
+	add r1, #oCutsceneState_CutsceneScript1LongPauseTimer
 	ldrh r0, [r5,r1]
 	sub r0, #1
 	strh r0, [r5,r1]
-	bge loc_803778C
-	ldrb r0, [r5,#0x12]
-	add r0, #4
+	bge .timerStillActive
+	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
+	add r0, #CUTSCENE_FLAG_0x2c_SCRIPT_1_PAUSED_LONG
 	bl cutscene_clearFlag0x2c_80385D0
 	add r7, #4
 	mov r0, #1
 	pop {pc}
-loc_803778C:
+.timerStillActive
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_8037740
+	thumb_func_end MapScriptCmd_long_pause
 
 	thumb_local_start
-sub_8037790:
+MapScriptCmd_wait_chatbox:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -6407,14 +6416,14 @@ loc_80377AC:
 loc_80377B2:
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_8037790
+	thumb_func_end MapScriptCmd_wait_chatbox
 
 	thumb_local_start
-sub_80377B6:
+MapScriptCmd_halt_if_player_sprite_cur_frame_not_equal_maybe:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
-	bl sub_809E434
+	bl getOWPlayerSpriteFrameParameters_809E434 // sprite_getFrameParameters
 	cmp r0, r4
 	bne loc_80377CC
 	add r7, #2
@@ -6423,51 +6432,52 @@ sub_80377B6:
 loc_80377CC:
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_80377B6
+	thumb_func_end MapScriptCmd_halt_if_player_sprite_cur_frame_not_equal_maybe
 
 	thumb_local_start
-sub_80377D0:
+MapScriptCmd_next_80377D0:
 	push {lr}
-	bl sub_809E228
+	// always returns zero
+	bl returnZero_809E228
 	cmp r0, #0
-	bne loc_80377E0
+	bne .haltScript
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-loc_80377E0:
+.haltScript
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_80377D0
+	thumb_func_end MapScriptCmd_next_80377D0
 
 	thumb_local_start
-sub_80377E4:
+MapScriptCmd_wait_screen_fade:
 	push {lr}
 	bl IsScreenFadeActive // () -> zf
-	beq loc_80377F2
+	beq .screenFadeActive
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-loc_80377F2:
+.screenFadeActive
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_80377E4
+	thumb_func_end MapScriptCmd_wait_screen_fade
 
 	thumb_local_start
-sub_80377F6:
+MapScriptCmd_wait_camera_script:
 	push {lr}
-	ldrb r0, [r5,#0x13]
+	ldrb r0, [r5,#oCutsceneState_CutsceneCameraScriptActive]
 	tst r0, r0
-	bne loc_8037804
+	bne .cameraScriptActive
 	add r7, #1
 	mov r0, #1
 	pop {pc}
-loc_8037804:
+.cameraScriptActive
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_80377F6
+	thumb_func_end MapScriptCmd_wait_camera_script
 
 	thumb_local_start
-sub_8037808:
+MapScriptCmd_wait_var_equal:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
@@ -6475,31 +6485,31 @@ sub_8037808:
 	mov r6, #2
 	bl ReadMapScriptByte
 	cmp r0, r4
-	bne loc_8037822
+	bne .varNotEqual
 	add r7, #3
 	mov r0, #1
 	pop {pc}
-loc_8037822:
+.varNotEqual
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_8037808
+	thumb_func_end MapScriptCmd_wait_var_equal
 
 	thumb_local_start
-sub_8037826:
+MapScriptCmd_wait_cutscene_process:
 	push {lr}
 	mov r6, #1
 	bl ReadMapScriptByte
 	ldr r0, [r5,r4]
 	ldrb r0, [r0]
 	cmp r0, #0x11
-	bne loc_803783C
+	bne .notEndOpcode
 	add r7, #2
 	mov r0, #1
 	pop {pc}
-loc_803783C:
+.notEndOpcode
 	mov r0, #0
 	pop {pc}
-	thumb_func_end sub_8037826
+	thumb_func_end MapScriptCmd_wait_cutscene_process
 
 	thumb_local_start
 sub_8037840:
@@ -7729,7 +7739,7 @@ sub_803816A:
 	bl ReadMapScriptWord
 	str r4, [r5,#0x3c]
 	mov r0, r4
-	bl sub_8036F98
+	bl cutsceneCamera_setCutsceneCameraScript_8036f98
 	mov r0, #1
 	strb r0, [r5,#0x13]
 	add r7, #6
@@ -8267,7 +8277,7 @@ runCutscene_803851C:
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_CutsceneStatePtr]
 	mov r0, #0
-	strb r0, [r5,#oCutsceneState_whichCutsceneScript_12]
+	strb r0, [r5,#oCutsceneState_WhichCutsceneScript]
 	mov r0, #oCutsceneState_CutsceneScriptPos
 	mov r8, r0
 .executeCutsceneScriptsLoop
@@ -8292,9 +8302,9 @@ runCutscene_803851C:
 	bne .cutsceneCommandLoop
 
 	// increment cutscene script index?
-	ldrb r0, [r5,#oCutsceneState_whichCutsceneScript_12]
+	ldrb r0, [r5,#oCutsceneState_WhichCutsceneScript]
 	add r0, #1
-	strb r0, [r5,#oCutsceneState_whichCutsceneScript_12]
+	strb r0, [r5,#oCutsceneState_WhichCutsceneScript]
 
 	// get current cutscene script struct offset
 	mov r0, r8
@@ -8317,8 +8327,8 @@ runCutscene_803851C:
 	ldr r0, [r5,#oCutsceneState_Unk_3c]
 	tst r0, r0
 	beq .loc_803856A
-	bl cutscene_8036FBC
-	strb r0, [r5,#oCutsceneState_Unk_13]
+	bl cutscene_cameraMaybe_8036FBC
+	strb r0, [r5,#oCutsceneState_CutsceneCameraScriptActive]
 .loc_803856A:
 	bl TryCutsceneSkip
 	beq .doneCutsceneIteration

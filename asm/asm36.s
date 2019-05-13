@@ -16161,7 +16161,7 @@ sub_81387D8:
 	mov r4, #0
 	bl camera_802FF4C
 	mov r0, #0
-	bl sub_80301B2
+	bl camera_80301B2
 	mov r0, #0
 	mov r1, #0
 	mov r2, #0
@@ -16171,8 +16171,8 @@ sub_81387D8:
 	bl zeroFill_8003AB2
 	bl sub_802F0D8
 	bl sub_802F0F4
-	bl sub_8036EFE
-	bl sub_8036F24
+	bl cutscene_8036EFE
+	bl clearCutsceneScriptPosIfMagicValue0x1_8036F24
 	bl sub_809F90C
 	mov r0, #0x25 
 	bl FreeAllObjectsOfSpecifiedTypes

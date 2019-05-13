@@ -4348,7 +4348,7 @@ chatbox_8041EB0:
 	strb r0, [r5,#4]
 	b loc_8041EE2
 loc_8041EC8:
-	bl sub_809E228
+	bl returnZero_809E228
 	cmp r0, #0
 	bne loc_8041EE2
 	bl sub_809E2B8

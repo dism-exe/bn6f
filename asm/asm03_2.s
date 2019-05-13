@@ -9103,9 +9103,9 @@ sub_804C11C:
 	mov r0, #1
 	bl sub_811EBE0
 	bne locret_804C142
-	bl s_2011C50_8036F40 // () -> zf
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F40 // () -> zf
 	bne locret_804C142
-	bl sub_8036F58
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F58
 	bne locret_804C142
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38

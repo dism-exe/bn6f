@@ -456,7 +456,7 @@ sub_808FBC0:
 	ldr r5, off_808FCE0 // =off_808F5D4 
 	ldr r5, [r5]
 	mov r0, #0
-	bl sub_80301B2
+	bl camera_80301B2
 	ldrb r3, [r5,#0xc] // (byte_200031C - 0x2000310)
 	lsl r3, r3, #1
 	mov r1, #0x40 
@@ -480,7 +480,7 @@ sub_808FBEC:
 	ldr r5, off_808FCE0 // =off_808F5D4 
 	ldr r5, [r5]
 	mov r0, #0
-	bl sub_80301B2
+	bl camera_80301B2
 	mov r0, r10
 	ldr r0, [r0,#oToolkit_GameStatePtr]
 	ldrb r1, [r0,#oGameState_MapGroup]

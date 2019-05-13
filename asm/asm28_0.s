@@ -188,7 +188,7 @@ byte_809913D: .byte 0xB5, 0xA8, 0x88, 0x71, 0xF7, 0xED, 0xFA, 0x1, 0x21
 byte_80991E1: .byte 0xB5, 0x1, 0x20, 0x51, 0x46, 0xC9, 0x6B, 0x89, 0x69
 	.byte 0x1C, 0x31, 0x96, 0xF7, 0xE1, 0xFF, 0x0, 0x20, 0xF0
 	.byte 0xBD
-byte_80991F4: .byte 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17, 0x47, 0x0, 0xFF
+CutsceneScript_80991F4: .byte 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17, 0x47, 0x0, 0xFF
 	.byte 0x4, 0x4B
 	.word RunLMessageTextScript+1
 	.word 0x554B8004
@@ -520,7 +520,7 @@ loc_8099D58:
 	lsl r2, r2, #0x10
 	bl loc_809E1A4
 	mov r0, #0
-	bl sub_80301B2
+	bl camera_80301B2
 	mov r0, #0xe
 	mov r1, #0x10
 	mov r2, #0x12
@@ -548,7 +548,7 @@ sub_8099DAC:
 	ldr r1, [r1,#oToolkit_GameStatePtr]
 	ldr r1, [r1,#oGameState_OverworldPlayerObjectPtr]
 	add r1, #0x1c
-	bl sub_80301B2
+	bl camera_80301B2
 	mov r0, #0
 	pop {r4-r7,pc}
 byte_8099DC0: .byte 0x3F, 0x0, 0x6, 0x29, 0xFF, 0x31, 0x17, 0x3E, 0xE0, 0xB9
@@ -2265,7 +2265,7 @@ loc_809AF4C:
 loc_809AF5A:
 	strb r4, [r5,#4]
 	mov r0, #0
-	bl sub_80301B2
+	bl camera_80301B2
 	ldr r0, [r7,#0x24]
 	ldr r1, [r7,#0x28]
 	ldr r3, [r7,#0x30]
@@ -2864,7 +2864,7 @@ loc_809B960:
 	strb r0, [r5,#9]
 	mov r0, #1
 	mov r1, r6
-	bl sub_80301B2
+	bl camera_80301B2
 	mov r0, #0
 	pop {r4-r7,pc}
 	.word byte_809B174
@@ -3137,7 +3137,7 @@ loc_809BDE6:
 loc_809BE4A:
 	mov r0, #1
 	mov r1, r6
-	bl sub_80301B2
+	bl camera_80301B2
 loc_809BE52:
 	mov r3, r10
 	ldr r3, [r3,#0x3c]
@@ -3526,7 +3526,7 @@ sub_809C7A0:
 	strb r2, [r5,#0x13]
 	str r1, [r5,#0x3c]
 	mov r0, r1
-	bl sub_8036F98
+	bl cutsceneCamera_setCutsceneCameraScript_8036f98
 	mov r0, #0
 	pop {r4-r7,pc}
 	.balign 4, 0x00
@@ -3692,7 +3692,7 @@ sub_809C968:
 	ldrb r6, [r7,#oGameState_MapGroup]
 	cmp r6, #0x80
 	blt loc_809CA26
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_809CA26
 	mov r7, r10
 	ldr r7, [r7,#oToolkit_GameStatePtr]
@@ -4614,7 +4614,7 @@ loc_809D40A:
 	bl sub_809DFA0
 	tst r0, r0
 	beq loc_809D446
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	tst r0, r0
 	bne loc_809D446
 	ldrb r1, [r5,#0x13]
@@ -5046,7 +5046,7 @@ off_809D7A4: .word off_809D798
 	thumb_local_start
 sub_809D7A8:
 	push {lr}
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	tst r0, r0
 	bne loc_809D7E2
 	ldrb r0, [r5,#0x10]
@@ -5358,7 +5358,7 @@ sub_809D9E0:
 	movflag EVENT_1717_PLAYER_ADVANCE_FORWARD
 	bl TestEventFlagFromImmediate
 	bne loc_809DA94
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_809DA94
 	ldrb r0, [r5,#0x10]
 	strb r0, [r5,#0x11]
@@ -5788,7 +5788,7 @@ sub_809DED4:
 	mov r0, #1
 	bl sub_811EBE0
 	bne loc_809DEE4
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	beq loc_809DEEA
 loc_809DEE4:
 	mov r0, #0
@@ -6286,12 +6286,12 @@ locret_809E222:
 off_809E224: .word byte_200ACE0
 	thumb_func_end sub_809E218
 
-	thumb_func_start sub_809E228
-sub_809E228:
+	thumb_func_start returnZero_809E228
+returnZero_809E228:
 	mov r0, #0
 	mov pc, lr
 	.word byte_200ACE0
-	thumb_func_end sub_809E228
+	thumb_func_end returnZero_809E228
 
 	thumb_func_start sub_809E230
 sub_809E230:
@@ -6647,15 +6647,15 @@ locret_809E42C:
 off_809E430: .word byte_2000AA0
 	thumb_func_end sub_809E3D6
 
-	thumb_func_start sub_809E434
-sub_809E434:
+	thumb_func_start getOWPlayerSpriteFrameParameters_809E434
+getOWPlayerSpriteFrameParameters_809E434:
 	push {r5,lr}
 	mov r5, r10
 	ldr r5, [r5,#oToolkit_GameStatePtr]
 	ldr r5, [r5,#oGameState_OverworldPlayerObjectPtr]
 	bl sprite_getFrameParameters
 	pop {r5,pc}
-	thumb_func_end sub_809E434
+	thumb_func_end getOWPlayerSpriteFrameParameters_809E434
 
 	thumb_func_start sub_809E442
 sub_809E442:

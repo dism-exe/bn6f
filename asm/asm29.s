@@ -864,9 +864,9 @@ loc_80A557A:
 	thumb_local_start
 sub_80A5588:
 	push {lr}
-	bl s_2011C50_8036F40 // () -> zf
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F40 // () -> zf
 	bne locret_80A55CA
-	bl sub_8036F58
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F58
 	bne locret_80A55CA
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -3169,9 +3169,9 @@ loc_80A6F20:
 	thumb_local_start
 sub_80A6F2C:
 	push {r4-r7,lr}
-	bl s_2011C50_8036F40 // () -> zf
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F40 // () -> zf
 	bne loc_80A6F66
-	bl sub_8036F58
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F58
 	bne loc_80A6F66
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -3671,9 +3671,9 @@ loc_80A7342:
 	thumb_local_start
 sub_80A7354:
 	push {r4-r7,lr}
-	bl s_2011C50_8036F40 // () -> zf
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F40 // () -> zf
 	bne loc_80A738E
-	bl sub_8036F58
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F58
 	bne loc_80A738E
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -4879,7 +4879,7 @@ sub_80A7C58:
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
 	bne loc_80A7C7E
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_80A7C7E
 	bl sub_809E462
 	bne loc_80A7C7E
@@ -4984,7 +4984,7 @@ sub_80A7CFE:
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
 	bne locret_80A7D70
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne locret_80A7D70
 	bl sub_809E462
 	bne locret_80A7D70
@@ -5701,7 +5701,7 @@ sub_80A8424:
 	strb r0, [r5,#7]
 	b loc_80A8478
 loc_80A843A:
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_80A8478
 	bl sub_809E462
 	bne loc_80A8478
@@ -5736,7 +5736,7 @@ loc_80A8478:
 sub_80A8484:
 	push {lr}
 	ldr r0, off_80A84C0 // =byte_808C74C
-	bl sub_8036F70
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F70
 	bne locret_80A84BC
 	ldrb r0, [r5,#7]
 	sub r0, #1
@@ -6926,9 +6926,9 @@ sub_80A8DF0:
 	bl chatbox_check_eFlags2009F38
 	bne loc_80A8E18
 	ldr r0, byte_80A8E20 // =0xf0
-	bl sub_8036F70
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F70
 	bne loc_80A8E0A
-	bl s_2011C50_ptr_1C_isNull // () -> zf
+	bl IsCutsceneScriptNonNull // () -> zf
 	bne loc_80A8E18
 loc_80A8E0A:
 	bl sub_809E462
@@ -7027,9 +7027,9 @@ sub_80A8F08:
 	bl sub_80A8FA0
 	b loc_80A8F3A
 loc_80A8F1E:
-	bl s_2011C50_8036F40 // () -> zf
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F40 // () -> zf
 	bne loc_80A8F3A
-	bl sub_8036F58
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F58
 	bne loc_80A8F3A
 	mov r0, #0x80
 	bl chatbox_check_eFlags2009F38
@@ -9495,10 +9495,10 @@ sub_80AA322:
 	bl sub_81279A8
 	bne loc_80AA33E
 	ldr r0, off_80AA364 // =byte_8088514
-	bl sub_8036F70
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F70
 	bne loc_80AA33E
 	ldr r0, off_80AA368 // =byte_8088708
-	bl sub_8036F70
+	bl cutscene_checkOriginalCutsceneScriptPos_8036F70
 	bne loc_80AA33E
 	mov r4, #3
 loc_80AA33E:
